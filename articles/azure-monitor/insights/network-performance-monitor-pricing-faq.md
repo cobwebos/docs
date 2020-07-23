@@ -1,44 +1,36 @@
 ---
 title: Azure 网络性能监视器的定价常见问题解答 | Microsoft Docs
 description: 常见问题解答 - Azure 网络性能监视器
-services: monitoring-and-diagnostics
-documentationcenter: na
-author: agummadi
-manager: cherylmc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: log-analytics
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+author: agummadi
+ms.author: agummadi
 ms.date: 04/02/2018
-ms.author: ajaycode
-ms.openlocfilehash: 77cacd7f94d8ddd92fcd7383d2d0a7929734eaeb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f44afd84c58c94c6a8d3e6145e8a4f66e0e2e782
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60401402"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539646"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Azure 网络性能监视器的定价变化
 
-我们听取了客户的反馈，最近已针对 Azure 中的各种监视服务推出了[新的定价体验](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)。 本文以易于阅读的“问答”形式，汇总了与 Azure [网络性能监视器](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) 相关的定价变化。
+我们听取了客户的反馈，最近已针对 Azure 中的各种监视服务推出了[新的定价体验](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)。 本文以易于阅读的“问答”形式，汇总了与 Azure [网络性能监视器](../../networking/network-monitoring-overview.md) (NPM) 相关的定价变化。
 
 网络性能监视器包括三个组件：
-* [性能监视器](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
-* [服务终结点监视器](https://docs.microsoft.com/azure/networking/network-monitoring-overview)
-* [ExpressRoute 监视器](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
+* [性能监视器](../../networking/network-monitoring-overview.md#performance-monitor)
+* [服务终结点监视器](../../networking/network-monitoring-overview.md)
+* [ExpressRoute 监视器](../../networking/network-monitoring-overview.md#expressroute-monitor)
 
 以下各部分介绍了 NPM 组件的定价变化。
 
-## <a name="performance-monitor"></a>性能监视
+## <a name="performance-monitor"></a>性能监视器
 
 **在旧模型中如何计收性能监视器的使用费？**
 
 NPM 的计费基于以下两个组件的用量和消耗量：
 * **节点**：所有综合事务都在节点上发起和终结。 节点也称为代理或 Microsoft 管理代理。
-* **Data**：各种网络测试结果存储在 Log Analytics 工作区中。
+* **数据**：各种网络测试的结果存储在 Log Analytics 工作区中。
 
 在旧模型中，帐单是根据节点数和生成的数据量计算的。 
 
@@ -53,9 +45,9 @@ NPM 中的性能监视器功能现在根据以下各项的组合计费：
 
 性能监视器监视网络中两个或更多个位置之间的连接。 一个子网中的一组节点或代理与另一个子网中的一组节点之间的连接称为子网链接。
 
-**我有两个子网（A 和 B），并且每个子网包含多个代理。性能监视器监视从子网 A 中所有代理到子网 B 中所有代理的连接。是否根据子网间的连接数计费？**
+**我有两个子网（A 和 B），并且在每个子网中都有多个代理。性能监视器监视子网 A 上的所有代理与子网 B 上的所有代理的连接。是否会根据子网间连接的数量向我收费？**
 
-不。 计费时，从子网 A 到子网 B 的所有连接将统一合并成一个子网链接。 只会计收一个连接的费用。 性能监视器继续监视每个子网中各个代理之间的连接。
+不是。 计费时，从子网 A 到子网 B 的所有连接将统一合并成一个子网链接。 只会计收一个连接的费用。 性能监视器继续监视每个子网中各个代理之间的连接。
 
 **监视子网链接的费用是多少？**
 
@@ -63,7 +55,7 @@ NPM 中的性能监视器功能现在根据以下各项的组合计费：
 
 **如何对性能监视器生成的数据收费？**
 
-引入 （数据上传到 Azure Monitor，处理数据和索引中的 Log Analytics 工作区） 的费用是可在上找到[定价页](https://azure.microsoft.com/pricing/details/log-analytics/)Log analytics，在数据引入部分。 [定价页](https://azure.microsoft.com/pricing/details/log-analytics/)上的“数据保留”部分中还提供了针对数据保留（即，在第一个月后，根据客户选项保留数据）收取的费用。
+Log Analytics 的[定价页](https://azure.microsoft.com/pricing/details/log-analytics/)上的“数据引入”部分中提供了针对引入（将数据上传到 Azure Monitor 的 Log Analytics 工作区，以及数据处理和编制索引）收取的费用。 [定价页](https://azure.microsoft.com/pricing/details/log-analytics/)上的“数据保留”部分中还提供了针对数据保留（即，在第一个月后，根据客户选项保留数据）收取的费用。
 
 
 ## <a name="expressroute-monitor"></a>ExpressRoute 监视器
@@ -72,7 +64,7 @@ NPM 中的性能监视器功能现在根据以下各项的组合计费：
 
 ExpressRoute 监视器的费用根据监视期间生成的数据量计费。 有关详细信息，请参阅“如何对性能监视器生成的数据收费？”
 
-**我使用 ExpressRoute 监视器来监视多条 ExpressRoute 线路。费用是否根据监视的线路数来计收？**
+**我使用 ExpressRoute 监视器来监视多个 ExpressRoute 线路。我是否根据所监视的回路数量收费？**
 
 我们不会根据线路数或对等互连类型（例如专用对等互连、Microsoft 对等互连）来计费， 而是根据数据量计费，如前所述。
 
@@ -115,9 +107,8 @@ ExpressRoute 监视器的费用根据监视期间生成的数据量计费。 有
 
 **服务终结点监视器的费用是多少？**
 
-请参阅[连接监视](https://azure.microsoft.com/pricing/details/network-watcher/)部分，了解监视终结点的整月费用。 Log Analytics 的[定价页](https://azure.microsoft.com/pricing/details/log-analytics/)上的“数据引入”部分中提供了数据费用。
+请参阅 "[连接监视](https://azure.microsoft.com/pricing/details/network-watcher/)" 部分，了解每月监视终结点的成本。 Log Analytics 的[定价页](https://azure.microsoft.com/pricing/details/log-analytics/)上的“数据引入”部分中提供了数据费用。
 
 ## <a name="references"></a>参考
 
-[Log Analytics 定价常见问题解答](https://azure.microsoft.com/pricing/details/log-analytics/)：常见问题解答部分提供了有关免费层、每个节点的定价和其他定价详细信息。
-
+[Log Analytics 定价常见问题解答](https://azure.microsoft.com/pricing/details/log-analytics/) - 常见问题解答部分提供了有关免费层、每个节点的定价和其他定价详细信息。

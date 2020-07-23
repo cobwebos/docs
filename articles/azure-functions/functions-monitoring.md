@@ -1,164 +1,139 @@
 ---
 title: 监视 Azure Functions
-description: 了解如何使用 Azure Functions 使用 Azure Application Insights 监视函数执行。
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构
+description: 了解如何将 Azure Application Insights 和 Azure Functions 结合使用来监视函数执行。
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: glenga
-ms.openlocfilehash: fecf6759dd7b277dda10fa2656e6ae9407490370
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 5560d24601b8aef0d8a4058cc2c04e27e9c86362
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922963"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170405"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
-[Azure Functions](functions-overview.md)提供了与内置集成[Azure Application Insights](../azure-monitor/app/app-insights-overview.md)来监视函数。 本文介绍如何配置 Azure Functions 将由系统生成日志文件发送到 Application Insights。
+[Azure Functions](functions-overview.md) 提供与 [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) 的内置集成来监视函数。 本文介绍如何配置 Azure Functions 来将系统生成的日志文件发送到 Application Insights。
 
-我们建议使用 Application Insights，因为它会收集日志、 性能和数据时出错。 它会自动检测性能异常并包括强大的分析工具帮助您诊断问题并了解如何使用你的函数。 Application Insights 有助于持续提高性能与可用性。 您甚至可以在本地函数应用项目开发过程中使用 Application Insights。 有关详细信息，请参阅[什么是 Application Insights？](../azure-monitor/app/app-insights-overview.md)。
+建议使用 Application Insights，因为这可收集日志、性能和错误数据。 它将自动检测性能异常，并且包含了强大的分析工具来帮助诊断问题，以及了解函数的使用方式。 Application Insights 有助于持续提高性能与可用性。 你甚至可以在本地函数应用项目开发过程中使用 Application Insights。 有关详细信息，请参阅[什么是 Application Insights？](../azure-monitor/app/app-insights-overview.md)。
 
-根据所需的 Application Insights 检测内置 Azure Functions，只需要是有效的检测密钥，将函数应用程序连接到 Application Insights 资源。
+由于所需的 Application Insights 检测内置于 Azure Functions 中，因此只需一个有效的检测密钥即可将函数应用连接到 Application Insights 资源。 在 Azure 中创建函数应用资源后，应将检测密钥添加到应用程序设置中。 如果函数应用还没有此密钥，则可以进行[手动设置](#enable-application-insights-integration)。  
 
 ## <a name="application-insights-pricing-and-limits"></a>Application Insights 定价和限制
 
-可以免费试用 Application Insights 与函数应用的集成。 没有每日限制可以免费处理多少数据。 可能会达到此限制在测试期间。 当你达到每日限制时，Azure 会提供门户和电子邮件通知。 如果您错过这些警报并达到的限制，新的日志不会显示在 Application Insights 查询中。 请注意以避免不必要的故障排除时间的限制。 有关详细信息，请参阅[在 Application Insights 中管理定价和数据量](../azure-monitor/app/pricing.md)。
+可以免费试用 Application Insights 与 Azure Functions 的集成。 每日可免费处理的数据量有限。 在测试期间可能会达到此限制。 当你达到每日限制时，Azure 会提供门户和电子邮件通知。 如果未收到这些警报并达到限制，则新日志不会显示在 Application Insights 查询中。 请注意限制，以免在故障排除上花费不必要的时间。 有关详细信息，请参阅[在 Application Insights 中管理定价和数据量](../azure-monitor/app/pricing.md)。
 
-## <a name="enable-application-insights-integration"></a>启用 Application Insights 集成
+> [!IMPORTANT]
+> Application Insights 具有[采样](../azure-monitor/app/sampling.md)功能，可以防止在峰值负载时为已完成的执行生成过多的遥测数据。 采样功能默认处于启用状态。 如果你看起来缺少数据，则可能需要调整采样设置来适应你的具体监视方案。 若要了解详细信息，请参阅[配置采样](#configure-sampling)。
 
-对于将数据发送到 Application Insights 的函数应用，它需要知道 Application Insights 资源的检测密钥。 该密钥必须位于名为 **APPINSIGHTS_INSTRUMENTATIONKEY** 的应用设置中。
-
-### <a name="new-function-app-in-the-portal"></a>在门户中新的 function app
-
-当您[Azure 门户中创建 function app](functions-create-first-azure-function.md)，默认情况下启用 Application Insights 的集成。 Application Insights 资源具有相同的名称作为 function app 中，并创建同一区域中或在最近的区域中。
-
-若要查看正在创建的 Application Insights 资源，请选择它以展开**Application Insights**窗口。 您可以更改**新的资源名称**或选择其他**位置**中[Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)你想要将数据存储。
-
-![在创建函数应用时启用 Application Insights](media/functions-monitoring/enable-ai-new-function-app.png)
-
-当你选择**创建**，Application Insights 资源创建 function app 中，它具有与`APPINSIGHTS_INSTRUMENTATIONKEY`应用程序设置中设置。 所有内容就可以了。
-
-<a id="manually-connect-an-app-insights-resource"></a>
-### <a name="add-to-an-existing-function-app"></a>将添加到现有函数应用 
-
-创建函数应用中使用时[Azure CLI](functions-create-first-azure-function-azure-cli.md)， [Visual Studio](functions-create-your-first-function-visual-studio.md)，或[Visual Studio Code](functions-create-first-function-vs-code.md)，必须创建 Application Insights 资源。 您然后可以检测密钥从该资源为应用程序设置中添加 function app。
-
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
-
-早期版本的函数使用内置的监视，不再建议。 在启用此类函数应用的 Application Insights 集成时，您必须还[禁用内置日志记录](#disable-built-in-logging)。  
+[适用于 Azure Functions 的 Application Insights 支持的功能](../azure-monitor/app/azure-functions-supported-features.md)中详细介绍了函数应用可用的 Application Insights 功能的完整列表。
 
 ## <a name="view-telemetry-in-monitor-tab"></a>在“监视”选项卡中查看遥测数据
 
-与[已启用 Application Insights 集成](#enable-application-insights-integration)，可以查看中的遥测数据**监视器**选项卡。
+[启用 Application Insights 集成](#enable-application-insights-integration)后，可以在“监视”选项卡中查看遥测数据。
 
-1. 在函数应用页中，选择已配置 Application Insights 后，具有至少一次运行的函数。 然后选择**监视器**选项卡。
-
-   ![选择“监视”选项卡](media/functions-monitoring/monitor-tab.png)
-
-1. 选择**刷新**定期，直至函数调用的列表显示。
-
-   它可以需要长达五分钟出现遥测客户端的数据传输到服务器进行批处理的列表。 (不适用于延迟[实时指标 Stream](../azure-monitor/app/live-stream.md)。 加载页面时，该服务会连接到 Functions 主机，因此，日志会直接流式传输到页面。）
+1. 在函数应用页中，选择在配置 Application Insights 之后至少运行过一次的函数。 然后，在左窗格中选择“监视”。 定期选择“刷新”，直到显示函数调用列表。
 
    ![调用列表](media/functions-monitoring/monitor-tab-ai-invocations.png)
 
-1. 若要查看特定函数调用的日志，选择该调用对应的“日期”列链接。
+    > [!NOTE]
+    > 在遥测客户端对数据进行批处理以传输到服务器时，最长可能需要 5 分钟的时间才会显示该列表。 这种延迟不适用于[实时指标流](../azure-monitor/app/live-stream.md)。 加载页面时，该服务会连接到 Functions 主机，因此，日志会直接流式传输到页面。
 
-   ![调用详细信息链接](media/functions-monitoring/invocation-details-link-ai.png)
-
-   该调用的日志记录输出显示在新页中。
+1. 若要查看特定函数调用的日志，选择该调用对应的“日期 (UTC)”列链接。 该调用的日志记录输出显示在新页中。
 
    ![调用详细信息](media/functions-monitoring/invocation-details-ai.png)
 
-您可以看到，有两个页面**Application Insights 中运行**链接到 Application Insights Analytics 查询可检索的数据。
+1. 选择“在 Application Insights 中运行”，以查看在 Azure 日志中检索 Azure Monitor 日志数据的查询源。 如果这是首次在订阅中使用 Azure Log Analytics，系统会要求启用它。
 
-![在 Application Insights 中运行](media/functions-monitoring/run-in-ai.png)
+1. 启用 Log Analytics 后，将显示以下查询。 可以看到查询结果仅限于最近 30 天 (`where timestamp > ago(30d)`)。 此外，结果最多显示 20 行 (`take 20`)。 相比之下，函数的调用详细信息列表显示最近 30 天的信息，没有任何限制。
 
-将显示下面的查询。 您所见，该调用列表将限制到最后一个 30 天。 此列表显示不超过 20 个行 (`where timestamp > ago(30d) | take 20`)。 调用详细信息列表为过去 30 天没有限制。
-
-![Application Insights Analytics 调用列表](media/functions-monitoring/ai-analytics-invocation-list.png)
+   ![Application Insights Analytics 调用列表](media/functions-monitoring/ai-analytics-invocation-list.png)
 
 有关详细信息，请参阅本文稍后的[查询遥测数据](#query-telemetry-data)。
 
 ## <a name="view-telemetry-in-application-insights"></a>在 Application Insights 中查看遥测
 
-若要从 Azure 门户中的函数应用中打开 Application Insights，请转到 function app**概述**页。 下**配置功能**，选择**Application Insights**。
+若要从 Azure 门户中的函数应用打开 Application Insights，请在左侧页面中的“设置”下选择“Application Insights” 。 如果这是首次将 Application Insights 与订阅一起使用，则系统会提示启用它：选择“打开 Application Insights”，然后在下一页上选择“应用” 。
 
-![从函数应用概述页中打开 Application Insights](media/functions-monitoring/ai-link.png)
+![从函数应用“概述”页面打开 Application Insights](media/functions-monitoring/ai-link.png)
 
-有关如何使用 Application Insights 的信息，请参阅 [Application Insights 文档](https://docs.microsoft.com/azure/application-insights/)。 本部分介绍如何在 Application Insights 中查看数据的一些示例。 如果您已经熟悉 Application Insights，你可以直接转到[有关如何配置和自定义遥测数据的部分](#configure-categories-and-log-levels)。
+有关如何使用 Application Insights 的信息，请参阅 [Application Insights 文档](https://docs.microsoft.com/azure/application-insights/)。 本部分介绍如何在 Application Insights 中查看数据的一些示例。 如果已经熟悉 Application Insights，则可以直接转到[有关如何配置和自定义遥测数据的部分](#configure-categories-and-log-levels)。
 
-![Application Insights 概述选项卡](media/functions-monitoring/metrics-explorer.png)
+![Application Insights“概述”选项卡](media/functions-monitoring/metrics-explorer.png)
 
-评估行为、 性能和函数中的错误时，可以提供帮助的 Application Insights 以下几个方面：
+在评估函数中的行为、性能和错误时，Application Insights 的以下方面可能会有所帮助：
 
-| Tab | 描述 |
+| 调查 | 说明 |
 | ---- | ----------- |
-| **[失败](../azure-monitor/app/asp-net-exceptions.md)** |  创建图表和基于函数失败和服务器异常的警报。 操作名称是函数名称。 依赖项中的失败不会显示，除非实现依赖项的自定义遥测数据。 |
-| **[性能](../azure-monitor/app/performance-counters.md)** | 分析性能问题。 |
-| **服务器** | 查看资源利用率和每个服务器的吞吐量。 在函数阻碍基础资源的调试方案下，此数据非常有用。 服务器被称为云角色实例。 |
-| **[指标](../azure-monitor/app/metrics-explorer.md)** | 创建图表和基于指标的警报。 度量值包括函数调用、 执行时间和成功率的数。 |
-| **[实时指标流](../azure-monitor/app/live-stream.md)** | 创建实时查看指标数据。 |
+| **[失败](../azure-monitor/app/asp-net-exceptions.md)** |  基于函数失败和服务器异常来创建图表和警报。 操作名称是函数名称。 不显示依赖项中的失败，除非为依赖项实现了自定义遥测。 |
+| **[性能](../azure-monitor/app/performance-counters.md)** | 通过查看每个 Cloud 角色实例的资源利用率和吞吐量来分析性能问题。 在函数阻碍基础资源的调试方案下，此数据非常有用。 |
+| **[指标](../azure-monitor/app/metrics-explorer.md)** | 创建基于指标的图表和警报。 指标包括函数调用次数、执行时间和成功率。 |
+| **[实时指标    ](../azure-monitor/app/live-stream.md)** | 近实时地查看创建的指标数据。 |
 
 ## <a name="query-telemetry-data"></a>查询遥测数据
 
-[Application Insights 分析](../azure-monitor/app/analytics.md)，可以访问数据库的表中的窗体中的所有遥测数据。 Analytics 提供了一种用于提取、处理和可视化数据的查询语言。
+借助 [Application Insights Analytics](../azure-monitor/app/analytics.md)，便可以访问数据库中以表形式存储的所有遥测数据。 Analytics 提供了一种用于提取、处理和可视化数据的查询语言。 
 
-![选择 Analytics](media/functions-monitoring/select-analytics.png)
+选择“日志”以浏览或查询记录的事件。
 
 ![Analytics 示例](media/functions-monitoring/analytics-traces.png)
 
 下面是一个查询示例，它显示过去 30 分钟内每个辅助角色的请求的分布。
 
-```
+<pre>
 requests
 | where timestamp > ago(30m) 
 | summarize count() by cloud_RoleInstance, bin(timestamp, 1m)
 | render timechart
-```
+</pre>
 
-可用的表所示**架构**在左侧选项卡。 可以在下表中找到由函数调用生成的数据：
+可用的表会显示在左侧的“架构”选项卡中。 可以在下表中找到由函数调用生成的数据：
 
-| 表 | 描述 |
+| 表 | 说明 |
 | ----- | ----------- |
-| **traces** | 创建由运行时和函数代码的日志。 |
-| **requests** | 每个函数调用的一个请求。 |
+| **traces** | 由运行时和函数代码创建的日志。 |
+| **requests** | 一个请求用于一个函数调用。 |
 | **异常** | 由运行时引发的任何异常。 |
-| **customMetrics** | 成功和失败的调用、 成功率和持续时间的计数。 |
-| **customEvents** | 事件跟踪的运行时，例如：触发函数的 HTTP 请求。 |
-| **performanceCounters** | 有关性能的服务器上运行函数的信息。 |
+| **customMetrics** | 成功和失败调用的计数、成功率和持续时间。 |
+| **customEvents** | 运行时跟踪的事件，例如：触发函数的 HTTP 请求。 |
+| **performanceCounters** | 有关运行函数的服务器的性能的信息。 |
 
-其他表适用于可用性测试，以及客户端和浏览器遥测。 可以实现自定义遥测以向其中添加数据。
+其他表适用于可用性测试、客户端和浏览器遥测。 可以实现自定义遥测以向其中添加数据。
 
 在每个表内，一些函数特定的数据位于 `customDimensions` 字段。  例如，以下查询检索所有具有日志级别 `Error` 的跟踪。
 
-```
+<pre>
 traces 
 | where customDimensions.LogLevel == "Error"
-```
+</pre>
 
-运行时提供`customDimensions.LogLevel`和`customDimensions.Category`字段。 您可以在函数代码中编写的日志中的其他字段。 请参阅本文后面部分中的[结构化日志记录](#structured-logging)。
+运行时提供了 `customDimensions.LogLevel` 和 `customDimensions.Category` 字段。 可以在日志中提供在函数代码中编写的其他字段。 请参阅本文后面部分中的[结构化日志记录](#structured-logging)。
 
 ## <a name="configure-categories-and-log-levels"></a>配置类别和日志级别
 
-无需进行任何自定义配置，可以使用 Application Insights。 默认配置可能会导致大量数据。 如果使用的是 Visual Studio Azure 订阅，可能会达到 Application Insights 的数据上限。 稍后在本文中，您将了解如何配置和自定义函数发送到 Application Insights 的数据。 为函数应用，在配置日志记录[host.json]文件。
+可以使用 Application Insights 而无需任何自定义配置。 默认配置可能会产生大量数据。 如果使用的是 Visual Studio Azure 订阅，可能会达到 Application Insights 的数据上限。 本文后面的部分将介绍如何配置和自定义函数发送到 Application Insights 的数据。 对于函数应用，在 [host.json] 文件中配置日志记录。
 
 ### <a name="categories"></a>类别
 
-对于每个日志，Azure Functions 记录器都包含一个类别。 类别指示运行时代码或函数代码的哪个部分编写日志。 
+对于每个日志，Azure Functions 记录器都包含一个类别。 类别指示运行时代码或函数代码的哪个部分编写日志。 下表描述了运行时创建的日志的主要类别。 
 
-Functions 运行时创建日志具有类别开头"主机。 "函数已启动，""函数已执行"和"函数已完成"日志具有类别"Host.Executor"。 
+| 类别 | 说明 |
+| ----- | ----- | 
+| Host.Results | 这些日志在 Application Insights 中显示为“requests”。 它们指示函数的成功或失败。 所有这些日志均在 `Information` 级别编写。 如果在 `Warning` 或更高级别进行筛选，则不会看到任何这些数据。 |
+| Host.Aggregator | 这些日志在一段[可配置](#configure-the-aggregator)的时间内提供函数调用的计数和平均值。 默认时段为 30 秒或 1,000 个结果，以先满足的条件为准。 日志位于 Application Insights 中的 **customMetrics** 表内。 示例包括运行数、成功率和持续时间。 所有这些日志均在 `Information` 级别编写。 如果在 `Warning` 或更高级别进行筛选，则不会看到任何这些数据。 |
 
-如果在函数代码中编写日志，其类别为"函数"。
+除了这些类别，其余类别的所有日志在 Application Insights 的“traces”表中提供。
+
+由 Functions 运行时编写以 `Host` 开头的类别的所有日志。 “函数已启动”和“函数已完成”日志的类别为 `Host.Executor` 。 对于成功运行，这些日志属于 `Information` 级别。 异常在 `Error` 级别记录。 运行时还创建 `Warning` 级别日志，例如：已发送到病毒邮件队列的队列邮件。
+
+Functions 运行时创建具有以“Host”开头的类别的日志。 在版本 1.x 中，`function started`、`function executed` 和 `function completed` 日志的类别为 `Host.Executor`。 从版本 2.x 开始，这些日志的类别为 `Function.<YOUR_FUNCTION_NAME>`。
+
+如果在函数代码中编写日志，则类别为 `Function.<YOUR_FUNCTION_NAME>.User`，并且可以是任何日志级别。 在 Functions 运行时的版本 1.x 中，类别为 `Function`。
 
 ### <a name="log-levels"></a>日志级别
 
-此外包括 Azure Functions 记录器*日志级别*与每个日志。 [LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel) 是一个枚举，整数代码指示相对重要性：
+此外，对于每个日志，Azure Functions 记录器都会包含一个日志级别。 [LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel) 是一个枚举，整数代码指示相对重要性：
 
 |LogLevel    |代码|
 |------------|---|
@@ -172,13 +147,13 @@ Functions 运行时创建日志具有类别开头"主机。 "函数已启动，"
 
 日志级别 `None` 将在下一节中进行介绍。 
 
-### <a name="log-configuration-in-hostjson"></a>在 host.json 中的日志配置
+### <a name="log-configuration-in-hostjson"></a>host.json 中的日志配置
 
-[Host.json] 文件配置函数应用发送到 Application Insights 的日志记录数量。 对于每个类别，均可以指示要发送的最小日志级别。 有两个示例： 第一个示例针对[Functions 版本 2.x 运行时](functions-versions.md#version-2x)(.NET Core) 和第二个示例适用于 1.x 版运行时。
+[Host.json] 文件配置函数应用发送到 Application Insights 的日志记录数量。 对于每个类别，均可以指示要发送的最小日志级别。 有两个示例：第一个示例针对 Functions 运行时[版本 2.x 和更高版本](functions-versions.md#version-2x)（具有 .NET Core），第二个示例针对版本 1.x 运行时。
 
-### <a name="version-2x"></a>版本 2.x
+### <a name="version-2x-and-higher"></a>版本 2.x 和更高版本
 
-v2.x 运行时使用 [.NET Core 日志记录筛选器层次结构](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)。 
+版本 v2.x 和更高版本的 Functions 运行时使用 [.NET Core 日志记录筛选器层次结构](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)。 
 
 ```json
 {
@@ -213,15 +188,15 @@ v2.x 运行时使用 [.NET Core 日志记录筛选器层次结构](https://docs.
 
 此示例设置以下规则：
 
-* 具有类别的日志`Host.Results`或`Function`，仅发送`Error`级别及更高版本到 Application Insights。 `Warning` 级别及以下级别的日志将被忽略。
+* 对于 `Host.Results` 或 `Function` 类别的日志，仅将 `Error` 级别及更高级别发送到 Application Insights。 `Warning` 级别及以下级别的日志将被忽略。
 * 对于 `Host.Aggregator` 类别的日志，将所有日志发送到 Application Insights。 `Trace` 日志级别与某些记录器称为 `Verbose` 的日志级别相同，但在 [host.json] 文件中请使用 `Trace`。
 * 对于所有其他日志，仅向 Application Insights 发送 `Information` 级别及更高级别。
 
-[host.json] 中的类别值控制所有以相同值开头的类别的日志记录。 `Host` 在中[host.json]控制日志记录`Host.General`， `Host.Executor`， `Host.Results`，依次类推。
+[host.json] 中的类别值控制所有以相同值开头的类别的日志记录。 [host.json] 中的 `Host` 控制 `Host.General`、`Host.Executor`、`Host.Results` 等等的日志记录。
 
-如果 [host.json] 包含以相同字符串开头的多个类别，则先匹配较长的类别。 假设你想从运行时除外`Host.Aggregator`进行记录`Error`级别，但您想`Host.Aggregator`在`Information`级别：
+如果 [host.json] 包含以相同字符串开头的多个类别，则先匹配较长的类别。 假设想要让运行时中除 `Host.Aggregator` 之外的所有内容都在 `Error` 级别记录，而想让 `Host.Aggregator` 在 `Information` 级别记录：
 
-### <a name="version-2x"></a>版本 2.x 
+### <a name="version-2x-and-later"></a>版本 2.x 和更高版本
 
 ```json
 {
@@ -254,37 +229,7 @@ v2.x 运行时使用 [.NET Core 日志记录筛选器层次结构](https://docs.
 }
 ```
 
-若要禁止某个类别的所有日志，可以使用日志级别 `None`。 无日志写入与该类别和它上面没有日志级别。
-
-以下各部分描述了运行时创建的日志的主要类别。 
-
-### <a name="category-hostresults"></a>类别 Host.Results
-
-这些日志在 Application Insights 中显示为“requests”。 它们指示函数的成功或失败。
-
-![请求图表](media/functions-monitoring/requests-chart.png)
-
-所有这些日志写入在`Information`级别。 如果在筛选`Warning`或更高版本，不会看到任何此类数据。
-
-### <a name="category-hostaggregator"></a>类别 Host.Aggregator
-
-这些日志在一段[可配置](#configure-the-aggregator)的时间内提供函数调用的计数和平均值。 默认时段为 30 秒或 1,000 个结果，以先满足的条件为准。 
-
-日志位于 Application Insights 中的 **customMetrics** 表内。 示例包括运行、 成功率和持续时间数。
-
-![customMetrics 查询](media/functions-monitoring/custom-metrics-query.png)
-
-所有这些日志写入在`Information`级别。 如果在筛选`Warning`或更高版本，不会看到任何此类数据。
-
-### <a name="other-categories"></a>其他类别
-
-除了已经列出的类别，其余类别的所有日志在 Application Insights 的 **traces** 表中提供。
-
-![traces 查询](media/functions-monitoring/analytics-traces.png)
-
-使用类别的开头的所有日志`Host`编写的 Functions 运行时。 "函数已启动"和"函数已完成"日志具有类别`Host.Executor`。 对于成功运行，这些日志是`Information`级别。 在记录异常`Error`级别。 运行时还创建 `Warning` 级别日志，例如：已发送到病毒邮件队列的队列邮件。
-
-由函数代码编写的日志具有类别`Function`，可以是任何日志级别。
+若要禁止某个类别的所有日志，可以使用日志级别 `None`。 不存在使用该类别编写的日志，该类别上也没有日志级别。
 
 ## <a name="configure-the-aggregator"></a>配置聚合器
 
@@ -301,9 +246,9 @@ v2.x 运行时使用 [.NET Core 日志记录筛选器层次结构](https://docs.
 
 ## <a name="configure-sampling"></a>配置采样
 
-Application Insights 有[采样](../azure-monitor/app/sampling.md)可以防止生成过多遥测数据上的功能已完成的执行时间的峰值负载。 当传入执行数的速率超过指定的阈值时，Application Insights 开始随机忽略某些传入的执行。 默认设置为每秒执行的最大数目为 20 (五个 in 版本 1.x)。 可以在 [host.json] 中配置采样。  下面是一个示例：
+Application Insights 具有[采样](../azure-monitor/app/sampling.md)功能，可以防止在峰值负载时为已完成的执行生成过多的遥测数据。 当传入执行的速率超过指定的阈值时，Application Insights 开始随机忽略某些传入执行。 每秒执行的最大次数的默认设置为 20（版本 1.x 中为 5）。 可以在 [host.json](https://docs.microsoft.com/azure/azure-functions/functions-host-json#applicationinsights) 中配置采样。  下面是一个示例：
 
-### <a name="version-2x"></a>版本 2.x 
+### <a name="version-2x-and-later"></a>版本 2.x 和更高版本
 
 ```json
 {
@@ -311,12 +256,15 @@ Application Insights 有[采样](../azure-monitor/app/sampling.md)可以防止�
     "applicationInsights": {
       "samplingSettings": {
         "isEnabled": true,
-        "maxTelemetryItemsPerSecond" : 20
+        "maxTelemetryItemsPerSecond" : 20,
+        "excludedTypes": "Request"
       }
     }
   }
 }
 ```
+
+在版本2.x 中，可以从采样中排除某些类型的遥测数据。 在上面的示例中，类型的数据 `Request` 从采样中排除。 这可确保记录)  (请求的*所有*函数执行，而其他类型的遥测仍会受到采样的限制。
 
 ### <a name="version-1x"></a>版本 1.x 
 
@@ -331,18 +279,15 @@ Application Insights 有[采样](../azure-monitor/app/sampling.md)可以防止�
 }
 ```
 
-> [!NOTE]
-> [采样](../azure-monitor/app/sampling.md)是默认启用的。 如果您看起来会丢失数据，您可能需要调整采样设置以适合特定监视方案。
-
 ## <a name="write-logs-in-c-functions"></a>在 C# 函数中编写日志
 
 可以在 Application Insights 中显示为 traces 的函数代码中编写日志。
 
 ### <a name="ilogger"></a>ILogger
 
-在函数中使用 [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 参数，而不是 `TraceWriter` 参数。 通过使用创建的日志`TraceWriter`转到 Application Insights 中，但`ILogger`使你能够实现[结构化日志记录](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)。
+在函数中使用 [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 参数，而不是 `TraceWriter` 参数。 通过使用 `TraceWriter` 创建的日志会转到 Application Insights，但借助 `ILogger` 可执行[结构化日志记录](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)。
 
-使用 `ILogger` 对象，可以调用 `Log<level>`ILogger 上的 [ 扩展方法](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods)来创建日志。 下面的代码编写`Information`日志类别为"函数"。
+使用 `ILogger` 对象，可以调用 [ILogger 上的 `Log<level>` 扩展方法](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods)来创建日志。 下面的代码编写类别为“Function.<YOUR_FUNCTION_NAME>.User.”的 `Information` 日志
 
 ```cs
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
@@ -362,9 +307,9 @@ logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionK
 
 如果保留相同的消息字符串并颠倒参数的顺序，则生成的消息文本将在错误的位置生成值。
 
-以这种方式处理占位符，以便可以执行结构化日志记录。 Application Insights 存储参数名称 / 值对和消息字符串。 结果是消息参数变为可以查询的字段。
+以这种方式处理占位符，以便可以执行结构化日志记录。 Application Insights 存储参数名称值对和消息字符串。 结果是消息参数变为可以查询的字段。
 
-如果记录器方法调用类似于前面的示例，您可以查询该字段`customDimensions.prop__rowKey`。 `prop__`以确保在运行时将添加和字段在函数代码的字段之间没有冲突添加添加前缀。
+如果记录器方法调用类似于前面的示例，则可以查询字段 `customDimensions.prop__rowKey`。 添加 `prop__` 前缀以确保运行时添加的字段和函数代码添加的字段之间没有冲突。
 
 此外，可以通过引用字段 `customDimensions.prop__{OriginalFormat}` 查询原始消息字符串。  
 
@@ -372,7 +317,7 @@ logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionK
 
 ```json
 {
-  customDimensions: {
+  "customDimensions": {
     "prop__{OriginalFormat}":"C# Queue trigger function processed: {message}",
     "Category":"Function",
     "LogLevel":"Information",
@@ -389,7 +334,7 @@ logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionK
 logger.LogMetric("TestMetric", 1234);
 ```
 
-此代码是调用的替代方法`TrackMetric`通过用于.NET 的 Application Insights API。
+此代码是一种替代方法，使用适用于 .NET 的 Application Insights API 调用 `TrackMetric`。
 
 ## <a name="write-logs-in-javascript-functions"></a>在 JavaScript 函数中写入日志
 
@@ -401,33 +346,53 @@ context.log('JavaScript HTTP trigger function processed a request.' + context.in
 
 ### <a name="custom-metrics-logging"></a>自定义指标日志记录
 
-运行时[版本 1.x](functions-versions.md#creating-1x-apps) Functions 运行时，可以使用 Node.js 函数中`context.log.metric`方法来在 Application Insights 中创建自定义指标。 此方法当前不支持在版本 2.x。 下面是示例方法调用：
+在 Functions 运行时的 [1.x 版](functions-versions.md#creating-1x-apps)上运行时，Node.js 函数可以使用 `context.log.metric` 方法在 Application Insights 中创建自定义指标。 版本 2.x 和更高版本目前不支持此方法。 下面是示例方法调用：
 
 ```javascript
 context.log.metric("TestMetric", 1234);
 ```
 
-此代码是调用的替代方法`trackMetric`通过用于 Application Insights Node.js SDK。
+此代码是一种替代方法，使用适用于 Application Insights 的 Node.js SDK 调用 `trackMetric`。
 
-## <a name="log-custom-telemetry-in-c-functions"></a>登录自定义遥测C#函数
+## <a name="log-custom-telemetry-in-c-functions"></a>在 C# 函数中记录自定义遥测
 
-可以使用 [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) NuGet 程序包将自定义遥测数据发送到 Application Insights。 以下 C# 示例使用[自定义遥测 API](../azure-monitor/app/api-custom-events-metrics.md)。 示例针对的是 .NET 类库，但对于 C# 脚本，Application Insights 代码是相同的。
+Functions 特定版本的 Application Insights SDK 可用于将自定义遥测数据从函数发送到 Application Insights：[Microsoft.Azure.WebJobs.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights)。 在命令提示符中使用以下命令来安装此包：
 
-### <a name="version-2x"></a>版本 2.x
+# <a name="command"></a>[命令](#tab/cmd)
 
-版本 2.x 运行时使用 Application Insights 中的较新功能自动将遥测与当前操作进行关联。 无需手动设置该操作`Id`， `ParentId`，或`Name`字段。
+```cmd
+dotnet add package Microsoft.Azure.WebJobs.Logging.ApplicationInsights --version <VERSION>
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version <VERSION>
+```
+
+---
+
+在此命令中，将 `<VERSION>` 替换为此包的版本，该版本支持 [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs/) 的已安装版本。 
+
+以下 C# 示例使用[自定义遥测 API](../azure-monitor/app/api-custom-events-metrics.md)。 示例针对的是 .NET 类库，但对于 C# 脚本，Application Insights 代码是相同的。
+
+### <a name="version-2x-and-later"></a>版本 2.x 和更高版本
+
+版本 2.x 和更高版本运行时使用 Application Insights 中的较新功能自动将遥测与当前操作进行关联。 不需要手动设置操作 `Id`、`ParentId` 或 `Name` 字段。
 
 ```cs
 using System;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.ApplicationInsights;
-using Microsoft.ApplicationInsights.DataContracts;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
+using System.Linq;
 
 namespace functionapp0915
 {
@@ -482,6 +447,8 @@ namespace functionapp0915
     }
 }
 ```
+
+[GetMetric](../azure-monitor/app/api-custom-events-metrics.md#getmetric) 是当前建议用于创建指标的 API。
 
 ### <a name="version-1x"></a>版本 1.x
 
@@ -564,13 +531,15 @@ namespace functionapp0915
 }
 ```
 
-不要调用`TrackRequest`或`StartOperation<RequestTelemetry>`因为您将看到函数调用的重复请求。  Functions 运行时自动跟踪请求。
+请勿调用 `TrackRequest` 或 `StartOperation<RequestTelemetry>`，因为将显示函数调用的重复请求。  Functions 运行时自动跟踪请求。
 
-不要设置 `telemetryClient.Context.Operation.Id`。 许多函数同时运行时，此全局设置会导致不正确的关联。 请改为创建新的遥测实例（`DependencyTelemetry`、`EventTelemetry`）并修改其 `Context` 属性。 然后将遥测实例传入到 `TelemetryClient` 的相应 `Track` 方法（`TrackDependency()`、`TrackEvent()`）。 此方法可确保遥测具有当前函数调用的正确的相关详细信息。
+不要设置 `telemetryClient.Context.Operation.Id`。 当多个函数同时运行时，这种全局设置会导致不正确的关联。 请改为创建新的遥测实例（`DependencyTelemetry`、`EventTelemetry`）并修改其 `Context` 属性。 然后将遥测实例传入到 `TelemetryClient` 的相应 `Track` 方法（`TrackDependency()`、`TrackEvent()`、`TrackMetric()`）。 此方法可确保遥测具有当前函数调用的正确关联详细信息。
 
-## <a name="log-custom-telemetry-in-javascript-functions"></a>在 JavaScript 函数中的日志自定义遥测
+## <a name="log-custom-telemetry-in-javascript-functions"></a>在 JavaScript 函数中记录自定义遥测
 
-[Application Insights Node.js SDK](https://www.npmjs.com/package/applicationinsights) 当前为 beta 版本。 下面是一些可将自定义遥测发送到 Application Insights 的示例代码：
+下面是用[Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js)发送自定义遥测数据的示例代码片段：
+
+### <a name="version-2x-and-later"></a>版本 2.x 和更高版本
 
 ```javascript
 const appInsights = require("applicationinsights");
@@ -580,26 +549,76 @@ const client = appInsights.defaultClient;
 module.exports = function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
-    client.trackEvent({name: "my custom event", tagOverrides:{"ai.operation.id": context.invocationId}, properties: {customProperty2: "custom property value"}});
-    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:{"ai.operation.id": context.invocationId}});
-    client.trackMetric({name: "custom metric", value: 3, tagOverrides:{"ai.operation.id": context.invocationId}});
-    client.trackTrace({message: "trace message", tagOverrides:{"ai.operation.id": context.invocationId}});
-    client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:{"ai.operation.id": context.invocationId}});
-    client.trackRequest({name:"GET /customers", url:"http://myserver/customers", duration:309, resultCode:200, success:true, tagOverrides:{"ai.operation.id": context.invocationId}});
+    // Use this with 'tagOverrides' to correlate custom telemetry to the parent function invocation.
+    var operationIdOverride = {"ai.operation.id":context.traceContext.traceparent};
+
+    client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride);
+    client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
+    client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
+    client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
+    client.trackRequest({name:"GET /customers", url:"http://myserver/customers", duration:309, resultCode:200, success:true, tagOverrides:operationIdOverride});
 
     context.done();
 };
 ```
 
-`tagOverrides`参数集`operation_Id`到函数的调用 id。 通过此设置，可为给定的函数调用关联所有自动生成的遥测和自定义遥测。
+### <a name="version-1x"></a>版本 1.x
+
+```javascript
+const appInsights = require("applicationinsights");
+appInsights.setup();
+const client = appInsights.defaultClient;
+
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    // Use this with 'tagOverrides' to correlate custom telemetry to the parent function invocation.
+    var operationIdOverride = {"ai.operation.id":context.operationId};
+
+    client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride);
+    client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
+    client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
+    client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
+    client.trackRequest({name:"GET /customers", url:"http://myserver/customers", duration:309, resultCode:200, success:true, tagOverrides:operationIdOverride});
+
+    context.done();
+};
+```
+
+`tagOverrides` 参数将 `operation_Id` 设置为函数的调用 ID。 通过此设置，可为给定的函数调用关联所有自动生成的遥测和自定义遥测。
 
 ## <a name="dependencies"></a>依赖项
 
-Functions v2 会自动收集有关 HTTP 请求、 服务总线和 SQL 的依赖项。
+Functions v2 自动收集 HTTP 请求、ServiceBus、EventHub 和 SQL 的依赖项。
 
-可以编写自定义代码来显示依赖项。 有关示例，请参阅中的示例代码[C#自定义遥测部分](#log-custom-telemetry-in-c-functions)。 示例代码会导致*应用程序映射*在 Application Insights 中看起来像以下映像：
+可以编写自定义代码来显示这些依赖项。 有关示例，请参阅 [C# 自定义遥测部分](#log-custom-telemetry-in-c-functions)中的示例代码。 该示例代码会导致 Application Insights 中出现如下图所示的应用程序映射：
 
 ![应用程序映射](./media/functions-monitoring/app-map.png)
+
+## <a name="enable-application-insights-integration"></a>启用 Application Insights 集成
+
+对于将数据发送到 Application Insights 的函数应用，它需要知道 Application Insights 资源的检测密钥。 该密钥必须位于名为 **APPINSIGHTS_INSTRUMENTATIONKEY** 的应用设置中。
+
+[在 Azure 门户中](functions-create-first-azure-function.md)创建函数应用时，请在命令行中使用 [Azure Functions Core Tools](functions-create-first-azure-function-azure-cli.md) 或 [Visual Studio Code](functions-create-first-function-vs-code.md)，默认情况下会启用 Application Insights 集成。 Application Insights 资源的名称与函数应用的相同，并且在同一区域或最接近的区域中创建。
+
+### <a name="new-function-app-in-the-portal"></a>门户中的新函数应用
+
+若要查看正在创建的 Application Insights 资源，请选择该资源，展开“Application Insights”窗口。 可以更改“新建资源名称”，或者在 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中选择另一个需要在其中存储数据的“位置” 。
+
+![在创建函数应用时启用 Application Insights](media/functions-monitoring/enable-ai-new-function-app.png)
+
+选择“创建”时，Application Insights 资源通过函数应用创建，该函数应用在应用程序设置中设置了 `APPINSIGHTS_INSTRUMENTATIONKEY`。 一切准备就绪。
+
+<a id="manually-connect-an-app-insights-resource"></a>
+### <a name="add-to-an-existing-function-app"></a>添加到现有函数应用 
+
+使用 [Visual Studio](functions-create-your-first-function-visual-studio.md) 创建函数应用时，必须创建 Application Insights 资源。 然后，可以添加该资源中的检测密钥，作为函数应用中的[应用程序设置](functions-how-to-use-azure-function-app-settings.md#settings)。
+
+[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+
+早期版本的 Functions 使用了内置监视功能，现不再建议使用该功能。 为此类函数应用启用 Application Insights 集成时，还必须[禁用内置日志记录功能](#disable-built-in-logging)。  
 
 ## <a name="report-issues"></a>报告问题
 
@@ -607,26 +626,49 @@ Functions v2 会自动收集有关 HTTP 请求、 服务总线和 SQL 的依赖�
 
 ## <a name="streaming-logs"></a>流式处理日志
 
-开发应用程序时，以近乎实时的方式查看日志记录信息通常很有用。 您可以查看生成的函数在 Azure 门户中或在本地计算机上的命令行会话日志文件的流。
+开发应用程序时，通常需要了解在 Azure 中运行时，以近乎实时的速度写入日志的内容。
 
-这相当于在调试期间函数时，看到的输出[本地开发](functions-develop-local.md)。 有关详细信息，请参阅[如何流式传输日志](../app-service/troubleshoot-diagnostic-logs.md#streamlogs)。
+可以通过两种方式查看由函数执行生成的日志文件流。
 
-> [!NOTE]
-> 流式处理日志仅支持单个实例的 Functions 主机。 当你的函数扩展到多个实例时，其他实例中的数据不会显示在日志流。 [实时指标 Stream](../azure-monitor/app/live-stream.md)在 Application Insights does 支持多个实例。 虽然还在接近实时，流分析还基于[采样的数据](#configure-sampling)。
+* **内置日志流式处理**：借助应用服务平台即可查看应用程序日志文件流。 这等效于在[本地开发](functions-develop-local.md)期间调试函数时以及在门户中使用“测试”选项卡时所显示的输出。 此时将显示所有基于日志的信息。 有关详细信息，请参阅[流式处理日志](../app-service/troubleshoot-diagnostic-logs.md#stream-logs)。 这种流式处理方法仅支持单个实例，不能用于在消耗计划中的 Linux 上运行的应用。
+
+* **实时指标流**：当函数应用[连接到 Application Insights](#enable-application-insights-integration) 时，可以使用[实时指标流](../azure-monitor/app/live-stream.md)在 Azure 门户中近实时地查看日志数据和其他指标。 当监视在多个实例或消耗计划中的 Linux 上运行的函数时，请使用此方法。 此方法使用[抽样数据](#configure-sampling)。
+
+可以在门户和大多数本地开发环境中查看日志流。 
 
 ### <a name="portal"></a>门户
 
-若要在门户中查看流式处理日志，请选择**平台功能**函数应用程序中的选项卡。 然后，在**监视**，选择**日志流式处理**。
+可以在门户中查看这两种类型的日志流。
 
-![启用在门户中的流式处理日志](./media/functions-monitoring/enable-streaming-logs-portal.png)
+#### <a name="built-in-log-streaming"></a>内置日志流式处理
 
-这将应用连接到日志流式处理服务和应用程序日志显示在窗口。 您可以切换**应用程序日志**并**Web 服务器日志**。  
+若要在门户中查看流式处理日志，请在函数应用中选择“平台功能”选项卡。 然后，在“监视”下，选择“日志流式处理” 。
 
-![在门户中查看流式日志](./media/functions-monitoring/streaming-logs-window.png)
+![在门户中启用流式处理日志](./media/functions-monitoring/enable-streaming-logs-portal.png)
+
+这会将应用连接到日志流式处理服务，窗口中将显示应用程序日志。 可以在“应用程序日志”和“Web 服务器日志”之间切换 。  
+
+![在门户中查看流式处理日志](./media/functions-monitoring/streaming-logs-window.png)
+
+#### <a name="live-metrics-stream"></a>实时指标流
+
+若要查看应用的实时指标流，请选择函数应用的“概述”选项卡。 Application Insights 启用后，“配置的功能”下将显示“Application Insights”链接 。 使用此链接将转到应用的“Application Insights”页。
+
+在 Application Insights 中，选择“实时指标流”。 “示例遥测”下降显示[采样日志条目](#configure-sampling)。
+
+![在门户中查看实时指标流](./media/functions-monitoring/live-metrics-stream.png) 
+
+### <a name="visual-studio-code"></a>Visual Studio Code
+
+[!INCLUDE [functions-enable-log-stream-vs-code](../../includes/functions-enable-log-stream-vs-code.md)]
+
+### <a name="core-tools"></a>Core Tools
+
+[!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
 ### <a name="azure-cli"></a>Azure CLI
 
-可以使用启用流式处理日志[Azure CLI](/cli/azure/install-azure-cli)。 使用以下命令登录，请选择订阅并流式传输日志文件：
+可以使用 [Azure CLI](/cli/azure/install-azure-cli) 启用流式处理日志。 使用以下命令登录，选择订阅并流式传输日志文件：
 
 ```azurecli
 az login
@@ -637,7 +679,7 @@ az webapp log tail --resource-group <RESOURCE_GROUP_NAME> --name <FUNCTION_APP_N
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-可以使用启用流式处理日志[Azure PowerShell](/powershell/azure/overview)。 对于 PowerShell，使用以下命令添加 Azure 帐户，请选择订阅并流式传输日志文件：
+可以使用 [Azure PowerShell](/powershell/azure/overview) 启用流式处理日志。 对于 PowerShell，使用以下命令添加 Azure 帐户，选择订阅并流式传输日志文件：
 
 ```powershell
 Add-AzAccount
@@ -646,11 +688,47 @@ Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscripti
 Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
 ```
 
+## <a name="scale-controller-logs-preview"></a> (预览缩放控制器日志) 
+
+此功能为预览版。 
+
+[Azure Functions 缩放控制器](./functions-scale.md#runtime-scaling)监视运行应用的 Azure Functions 主机的实例。 此控制器根据当前性能决定何时添加或删除实例。 可以让规模控制器发出日志 Application Insights 或 Blob 存储，以便更好地了解规模控制器为 function app 做出的决策。
+
+若要启用此功能，请添加一个名为的新应用程序设置 `SCALE_CONTROLLER_LOGGING_ENABLED` 。 此设置的值必须采用 `<DESTINATION>:<VERBOSITY>` 以下格式：
+
+[!INCLUDE [functions-scale-controller-logging](../../includes/functions-scale-controller-logging.md)]
+
+例如，以下 Azure CLI 命令将启用从规模控制器到 Application Insights 的详细日志记录：
+
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--settings SCALE_CONTROLLER_LOGGING_ENABLED=AppInsights:Verbose
+```
+
+在此示例中， `<FUNCTION_APP_NAME>` 请 `<RESOURCE_GROUP_NAME>` 将和分别替换为函数应用的名称和资源组名称。 
+
+以下 Azure CLI 命令通过将详细级别设置为来禁用日志记录 `None` ：
+
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--settings SCALE_CONTROLLER_LOGGING_ENABLED=AppInsights:None
+```
+
+还可以通过 `SCALE_CONTROLLER_LOGGING_ENABLED` 使用以下 Azure CLI 命令删除设置来禁用日志记录：
+
+```azurecli-interactive
+az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--setting-names SCALE_CONTROLLER_LOGGING_ENABLED
+```
+
 ## <a name="disable-built-in-logging"></a>禁用内置日志记录
 
-当启用 Application Insights 时，请禁用使用 Azure 存储的内置日志记录。 内置日志记录对于使用轻工作负荷测试非常有用，但并不是为了高负载生产环境中使用。 对于生产监视，我们建议使用 Application Insights。 如果在生产环境中使用内置日志记录，则日志记录记录可能不完整由于 Azure 存储限制。
+启用 Application Insights 时，请禁用使用 Azure 存储的内置日志记录。 内置日志记录对于使用轻工作负载测试非常有用，但不适合在高负载生产环境中使用。 对于生产监视，建议使用 Application Insights。 如果在生产环境中使用内置日志记录，日志记录可能因 Azure 存储限制而不完整。
 
-若要禁用内置日志记录，请删除 `AzureWebJobsDashboard` 应用设置。 有关如何在 Azure 门户中删除应用设置的信息，请参阅[如何管理函数应用](functions-how-to-use-azure-function-app-settings.md#settings)的“应用程序设置”部分。 删除应用设置之前，请确保没有现有函数相同的函数应用中使用 Azure 存储触发器或绑定设置。
+若要禁用内置日志记录，请删除 `AzureWebJobsDashboard` 应用设置。 有关如何在 Azure 门户中删除应用设置的信息，请参阅[如何管理函数应用](functions-how-to-use-azure-function-app-settings.md#settings)的“应用程序设置”部分。 在删除应用设置之前，请确保同一函数应用中没有任何现有的函数将此设置用于 Azure 存储触发器或绑定。
 
 ## <a name="next-steps"></a>后续步骤
 

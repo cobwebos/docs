@@ -2,28 +2,21 @@
 title: 在门户中自动缩放云服务 | Microsoft Docs
 description: 了解如何使用门户在 Azure 中为云服务 Web 角色或辅助角色配置自动缩放规则。
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 701d4404-5cc0-454b-999c-feb94c1685c0
+author: tgore03
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: f5597773b3127852481d5e14844bed889c4d6f83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: tagore
+ms.openlocfilehash: e5452e0794083afabbee2759c5b37feb1eed0c88
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61435195"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223680"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>如何在门户中为云服务配置自动缩放
 
-针对云服务辅助角色设置条件，以触发缩减或扩展操作。 针对角色的条件可以基于 CPU、磁盘或角色的网络负载。 也可以基于消息队列或与订阅关联的其他一些 Azure 资源的指标来设置条件。
+针对云服务辅助角色设置条件，以触发横向缩减或扩展操作。 针对角色的条件可以基于 CPU、磁盘或角色的网络负载。 也可以基于消息队列或与订阅关联的其他一些 Azure 资源的指标来设置条件。
 
 > [!NOTE]
 > 本文着重于云服务 Web 和辅助角色。 如果直接创建虚拟机（经典），该虚拟机将托管在云服务中。 可以通过将标准虚拟机与[可用性集](../virtual-machines/windows/classic/configure-availability-classic.md)相关联来缩放标准虚拟机，并手动将其打开或关闭。
@@ -41,24 +34,24 @@ ms.locfileid: "61435195"
 
 * 若要使应用程序具有高可用性，应确保为其部署两个或更多角色实例。 有关详细信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/)。
 
-* 仅当所有角色都处于“就绪”状态时才能自动缩放。  
+* 仅当所有角色都处于“就绪”状态时才能自动缩放  。  
 
 
 ## <a name="where-scale-is-located"></a>缩放位置
 选择云服务之后，应会看到云服务边栏选项卡。
 
-1. 在云服务边栏选项卡上的“角色和实例”磁贴中，选择云服务的名称。   
-   **重要说明**：请务必单击云服务角色，而不是以下角色的角色实例。
+1. 在云服务边栏选项卡上的“角色和实例”  磁贴中，选择云服务的名称。   
+   **重要说明**：请务必单击云服务角色，而不是角色下面的角色实例。
 
-    ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
-2. 选择“缩放”磁贴。
+    !["角色" 和 "实例" 磁贴的屏幕截图，其中包含 S B Queue 1 选项，以红色列出。](./media/cloud-services-how-to-scale-portal/roles-instances.png)
+2. 选择“缩放”**** 磁贴。
 
-    ![](./media/cloud-services-how-to-scale-portal/scale-tile.png)
+    !["操作" 页的屏幕截图，其中的销售磁贴以红色显示。](./media/cloud-services-how-to-scale-portal/scale-tile.png)
 
 ## <a name="automatic-scale"></a>自动缩放
 可以使用**手动**或**自动**模式来配置角色的缩放设置。 顾名思义，“手动”模式可以设置实例的绝对计数。 但是，“自动”模式可让你设置规则来控制缩放的方式和程度。
 
-将“缩放方式”选项设置为“计划和性能规则”。
+将“缩放方式”**** 选项设置为“计划和性能规则”****。
 
 ![包含配置文件和规则的云服务缩放设置](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
 
@@ -66,14 +59,14 @@ ms.locfileid: "61435195"
 2. 添加父配置文件的规则。
 3. 添加另一个配置文件。
 
-选择“添加配置文件”。 配置文件确定了用于缩放的模式：**始终**、**定期**和**固定日期**。
+选择“添加配置文件”****。 配置文件确定了用于缩放的模式：**始终**、**定期**和**固定日期**。
 
-配置了配置文件和规则之后，请选择顶部的“保存”图标。
+配置了配置文件和规则之后，请选择顶部的“保存”**** 图标。
 
 #### <a name="profile"></a>配置文件
 配置文件可设置缩放的实例数下限和上限，以及此缩放范围生效的时间。
 
-* **始终**
+* **Always**
 
     始终使此范围的实例数保持可用。  
 
@@ -89,16 +82,16 @@ ms.locfileid: "61435195"
 
     ![使用固定日期的云服务缩放](./media/cloud-services-how-to-scale-portal/select-fixed.png)
 
-配置了配置文件之后，请选择配置文件边栏选项卡底部的“确定”按钮。
+配置了配置文件之后，请选择配置文件边栏选项卡底部的“确定”**** 按钮。
 
 #### <a name="rule"></a>规则
 规则将添加到配置文件，代表触发缩放的条件。
 
 规则触发器基于云服务的指标（CPU 使用量、磁盘活动或网络活动），可以在其中添加条件值。 此外，也可以基于消息队列或与订阅关联的其他一些 Azure 资源的指标来设置触发器。
 
-![](./media/cloud-services-how-to-scale-portal/rule-settings.png)
+![带有红色 "指标名称" 选项的 "规则" 对话框的屏幕截图。](./media/cloud-services-how-to-scale-portal/rule-settings.png)
 
-配置规则之后，请选择规则边栏选项卡底部的“确定”按钮。
+配置规则之后，请选择规则边栏选项卡底部的“确定”**** 按钮。
 
 ## <a name="back-to-manual-scale"></a>返回到手动缩放
 导航到 [缩放设置](#where-scale-is-located)，并将 **缩放方式** 选项设置为 **手动输入的实例计数**。
@@ -112,3 +105,6 @@ ms.locfileid: "61435195"
 3. 要缩放的角色实例。
 
 配置缩放设置后，请选择顶部的 **保存** 图标。
+
+
+

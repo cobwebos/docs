@@ -1,53 +1,51 @@
 ---
-title: 对 Azure 市场和 AppSource 的支持 | Azure
-description: Azure 市场和 AppSource 支持信息和链接
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: yijenj
-manager: nunoc
+title: Microsoft 商业市场支持 - Azure 市场
+description: 合作伙伴中心的 Azure 市场和 AppSource 的支持信息和链接
 ms.service: marketplace
-ms.topic: article
-ms.date: 10/05/2018
-ms.author: yijenj
-ms.openlocfilehash: 496fef7cfd93004e77a710942cffabbf23d6b29a
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+author: keferna
+ms.author: keferna
+ms.date: 04/14/2020
+ms.openlocfilehash: 1e4539dcec1f3f57f7fcc0ca0b8d8c266dc1bc99
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937703"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121497"
 ---
-# <a name="support-for-the-marketplace"></a>市场的支持  
-以下是市场的支持选项列表。  
+# <a name="support-for-microsoft-commercial-marketplace"></a>Microsoft 商业市场的支持
 
-此外，还可以在 [C+AI 社区论坛的市场通道](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)中让你的许多问题得到解答。  
+你是否有关于 Microsoft 商业市场发布者入门的问题？ 以下是商业市场的支持选项。 除了以下资源，你还可以在 [C+AI 社区论坛的市场通道](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)中获得很多问题的答案。  
 
 ## <a name="onboarding"></a>登记
 
-与 Microsoft 开具票证[marketplace 发布者支持](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820)问题载入和开始使用，或与 Microsoft[合作伙伴支持](https://partner.microsoft.com/support)如果您有关于 Microsoft 合作伙伴网络问题。
+针对登记和入门问题，通过 Microsoft [市场发布者支持](https://aka.ms/marketplacepublishersupport)开具工单。
 
-## <a name="cloud-partner-portal"></a>云合作伙伴门户  
+## <a name="partner-center"></a>合作伙伴中心
 
-| 支持渠道 | 描述 | 可用性 |  
+| 支持渠道 | 说明 | 可用性 |  
 |:--- |:--- |:--- |  
-| 如需帮助，请访问位于[市场支持](https://go.microsoft.com/fwlink/?linkid=844975)中的“创建事件”页</li> </ul> | 支持使用云合作伙伴门户。 | 太平洋标准时间上午 6 点至下午 6 点提供支持。 |  
+| 如需帮助，请访问位于[市场支持](https://aka.ms/marketplacepublishersupport)中的“创建事件”页</li> </ul> | 合作伙伴中心支持。 | 工作日全天候提供支持。 |  
 
 ## <a name="technical"></a>技术方面  
 
-| 支持渠道 | 描述 |  
+| 支持渠道 | 说明 |  
 |:--- |:--- |  
-| MSDN 论坛：市场位于 [social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Microsoft Developer Network 论坛。 |  
+| MSDN 论坛：市场位于 [Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/products/azure) | Microsoft Developer Network 论坛。 |  
 | Stack Overflow：Azure 位于 [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | 用于获取解决方案并就 Azure 市场的所有相关内容提问的 Stack Overflow 环境。<ul> <li>Stack Overflow：Azure 市场位于 [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Stack Overflow：Azure 资源管理器位于 [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Stack Overflow：Azure 上的虚拟机位于 [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Stack Overflow：Azure 上的容器位于 [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
-| AppSource 的支持：[appsourcecrm@Microsoft.com](mailto:appsourcecrm@microsoft.com) | 支持发布 Dynamics 应用 |
 
 ## <a name="marketing-resources"></a>市场营销资源  
 
-| 支持渠道 | 描述 | 可用性 |  
+| 支持渠道 | 说明 | 可用性 |  
 |:--- |:--- |:--- |  
 | 电子邮件： [cosell@microsoft.com](mailto:cosell@microsoft.com) | 针对载入流程以及与共同销售计划相关的问题提供支持。 | 基于太平洋时区。 |  
 | 电子邮件： [gtm@microsoft.com](mailto:gtm@microsoft.com) | 支持享受 GTM 权益和提出程序问题。 | 营业时间基于太平洋时区。 |  
 | 电子邮件： [cebrand@microsoft.com](mailto:cebrand@microsoft.com) | 解答有关 Azure 徽标使用和品牌推广的问题。 |  |  
 
-
 ## <a name="next-steps"></a>后续步骤
-访问 [Azure 市场和 AppSource 发布者指南](./marketplace-publishers-guide.md)页。  
- 
+
+* 访问[“商业市场发布者指南”页面](index.yml)。
+* 详细了解[合作伙伴中心商业市场计划的支持](partner-center-portal/support.md)。
+
 ---

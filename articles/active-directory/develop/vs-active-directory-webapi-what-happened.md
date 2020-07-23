@@ -1,24 +1,21 @@
 ---
 title: 连接到 Azure AD 时对 WebAPI 项目所做的更改
 description: 介绍使用 Visual Studio 连接到 Azure AD 时，WebAPI 项目会发生什么情况
-services: active-directory
 author: ghogen
-manager: douge
-ms.assetid: 57630aee-26a2-4326-9dbb-ea2a66daa8b0
-ms.prod: visual-studio-dev15
-ms.technology: vs-azure
+manager: jillfra
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.prod: visual-studio-windows
+ms.technology: vs-azure
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f4946251cf72d7869ec5fc2f0fd844b9c06ac34
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7075fbd098736bb297f4a2e3a93aecca5b9182a8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60353272"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478852"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>我的 WebAPI 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况
 
@@ -34,7 +31,7 @@ ms.locfileid: "60353272"
 
 影响项目文件 *.NET 引用和 `packages.config`（NuGet 引用）。
 
-| Type | 参考 |
+| 类型 | 参考 |
 | --- | --- |
 | .NET; NuGet | Microsoft.Owin |
 | .NET; NuGet | Microsoft.Owin.Host.SystemWeb |
@@ -45,9 +42,9 @@ ms.locfileid: "60353272"
 | .NET; NuGet | Owin |
 | .NET; NuGet | System.IdentityModel.Tokens.Jwt |
 
-选择了“读取目录数据”选项时的其他引用：
+选择了“读取目录数据”  选项时的其他引用：
 
-| Type | 参考 |
+| 类型 | 参考 |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer（仅限 Visual Studio 2015） |
@@ -61,7 +58,7 @@ ms.locfileid: "60353272"
 
 删除了以下引用（仅限 ASP.NET 4 项目，如 Visual Studio 2015 中所示）：
 
-| Type | 参考 |
+| 类型 | 参考 |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
@@ -70,7 +67,7 @@ ms.locfileid: "60353272"
 ## <a name="project-file-changes"></a>项目文件更改
 
 - 将属性 `IISExpressSSLPort` 设置为不同的数字。
-- 将属性 `WebProject_DirectoryAccessLevelKey` 设置为 0 或 1（如果选择了“读取目录数据”选项）。
+- 将属性 `WebProject_DirectoryAccessLevelKey` 设置为 0 或 1（如果选择了“读取目录数据”  选项）。
 - 将属性 `IISUrl` 设置为 `https://localhost:<port>/`，其中 `<port>` 匹配 `IISExpressSSLPort` 值。
 
 ## <a name="webconfig-or-appconfig-changes"></a>web.config 或 app.config 发生更改
@@ -93,7 +90,7 @@ ms.locfileid: "60353272"
 
 - 在 `System.IdentityModel.Tokens.Jwt` 的 `<runtime><assemblyBinding>` 节点下添加了 `<dependentAssembly>` 元素。
 
-- 如果选择了“读取目录数据”选项，在 `<appSettings>` 下添加了以下配置条目：
+- 如果选择了“读取目录数据”  选项，在 `<appSettings>` 下添加了以下配置条目：
 
     ```xml
     <add key="ida:Password" value="<Your Azure AD app's new password>" />
@@ -103,7 +100,7 @@ ms.locfileid: "60353272"
 
 - 向 `Controllers/ValueController.cs` 和任何其他现有控制器添加了 `[Authorize]` 属性。
 
-- 添加了身份验证启动类 `App_Start/Startup.Auth.cs`（其中包含 Azure AD 身份验证的启动逻辑）或相应地对其进行了修改。 如果选择了“读取目录数据”选项，则此文件还包含用于接收 OAuth 代码以及用 OAuth 代码交换访问令牌的代码。
+- 添加了身份验证启动类 `App_Start/Startup.Auth.cs`（其中包含 Azure AD 身份验证的启动逻辑）或相应地对其进行了修改。 如果选择了“读取目录数据”  选项，则此文件还包含用于接收 OAuth 代码以及用 OAuth 代码交换访问令牌的代码。
 
 - （仅限带 ASP.NET 4 应用的 Visual Studio 2015）删除了 `App_Start/IdentityConfig.cs`，并添加了 `Controllers/AccountController.cs`、`Models/IdentityModel.cs` 和 `Providers/ApplicationAuthProvider.cs`。
 
@@ -124,11 +121,11 @@ ms.locfileid: "60353272"
 ## <a name="changes-on-azure"></a>对 Azure 的更改
 
 - 在添加连接服务时选择的域中创建了 Azure AD 应用程序。
-- 更新了应用，以便在选择了“读取目录数据”选项时包含“读取目录数据”权限。
+- 更新了应用，以便在选择了“读取目录数据”选项时包含“读取目录数据”  权限。
 
 [详细了解 Azure Active Directory](https://azure.microsoft.com/services/active-directory/)。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure Active Directory 的身份验证方案](authentication-scenarios.md)
-- [向 ASP.NET Web 应用添加 Microsoft 登录功能](quickstart-v1-aspnet-webapp.md)
+- [向 ASP.NET Web 应用添加 Microsoft 登录功能](quickstart-v2-aspnet-webapp.md)

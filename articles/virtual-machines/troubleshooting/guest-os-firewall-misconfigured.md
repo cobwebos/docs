@@ -1,10 +1,10 @@
 ---
 title: Azure VM 来宾 OS 防火墙配置不正确 | Microsoft Docs
-description: ''
+description: 了解如何使用串行控制台或脱机方法在远程 Azure VM 上诊断并修复配置错误的来宾操作系统防火墙。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: fcea5e4e6bb108f1a8d8036e51a5dae8a9e6431b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e6f42bdf462ac5261f77bc05c62e50500345fe37
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60711010"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80422533"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Azure VM 来宾 OS 防火墙配置不正确
 
@@ -49,13 +49,13 @@ ms.locfileid: "60711010"
 
 可以编辑以下规则，以便启用对 VM 的访问（通过 RDP）或提供更轻松的故障排除体验：
 
-*   远程桌面 (TCP-IN)：这是标准规则，提供对 VM 的主要访问，其方法是允许在 Azure 中使用 RDP。
+*   远程桌面 (TCP-In)：这是标准规则，提供对 VM 的主要访问，其方法是允许在 Azure 中使用 RDP。
 
 *   Windows 远程管理 (HTTP-In)：此规则允许通过 PowerShell 连接到 VM。在 Azure 中，可以通过这种类型的访问权限使用远程脚本和故障排除的脚本方面的功能。
 
 *   文件和打印机共享 (SMB-In)：可以通过此规则以故障排除选项的方式进行网络共享访问。
 
-*   文件和打印机共享（回显请求 - ICMPv4-In）：可使用此规则对 VM 执行 ping 操作。
+*   文件和打印机共享（回应请求 - ICMPv4-In）：可以通过此规则 ping VM。
 
 在“串行控制台访问”实例中，可以查询防火墙规则的当前状态。
 

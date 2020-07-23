@@ -1,84 +1,88 @@
 ---
-title: Azure AD 域服务 - 检查托管域的运行状况 | Microsoft Docs
-description: 在 Azure 门户中使用运行状况页检查托管域的运行状况。
+title: 检查 Azure Active Directory 域服务的运行状况 |Microsoft Docs
+description: 了解如何检查 Azure Active Directory 域服务（Azure AD DS）托管域的运行状况，以及如何使用 Azure 门户了解状态消息。
 services: active-directory-ds
-documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 8999eec3-f9da-40b3-997a-7a2587911e96
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 05/20/2019
-ms.author: mstephen
-ms.openlocfilehash: c3ff0b7daeaef077ea0d83782aeac6cda56fc659
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.topic: how-to
+ms.date: 07/06/2020
+ms.author: iainfou
+ms.openlocfilehash: 34f4ecfd4cc3432babbd26d65bd37ea4d1fb882c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66246474"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040412"
 ---
-# <a name="check-the-health-of-an-azure-ad-domain-services-managed-domain"></a>检查 Azure AD 域服务托管域的运行状况
+# <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>检查 Azure Active Directory 域服务托管域的运行状况
 
-## <a name="overview-of-the-health-page"></a>运行状况页概述
-使用 Azure 门户中的运行状况页，可以随时了解托管域发生的最新情况。 本文逐步讲解运行状况页中的元素。
+Azure Active Directory 域服务（Azure AD DS）运行一些后台任务，以使托管域保持健康和最新。 这些任务包括备份、应用安全更新和从 Azure AD 同步数据。 如果 Azure AD DS 托管域存在问题，则可能无法成功完成这些任务。 若要查看并解决任何问题，可以使用 Azure 门户检查托管域的运行状况状态。
 
-### <a name="how-to-view-the-health-of-your-managed-domain"></a>如何查看托管域的运行状况
-1. 在 Azure 门户中导航到 [Azure AD 域服务页](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices)。
-2. 单击要查看其运行状况的域。
-3. 在左侧导航窗格中，单击“运行状况”  。
+本文介绍如何查看 Azure AD DS 健康状况，并了解显示的信息或警报。
 
-下图演示了一个示例运行状况页：![示例运行状况页](./media/active-directory-domain-services-alerts/health-page.png)
+## <a name="view-the-health-status"></a>查看运行状况状态
 
->[!NOTE]
-> 托管域的运行状况每隔一小时评估一次。 对托管域进行更改后，请等到进入下一评估周期，以查看托管域的更新运行状况。 右上角的“上次评估时间”时间戳显示上次评估托管域运行状况的时间。
->
+使用 Azure 门户查看托管域的运行状况状态。 可以查看有关上次备份时间和与 Azure AD 同步的信息，以及指示托管域的运行状况问题的任何警报。 若要查看托管域的运行状况状态，请完成以下步骤：
 
-### <a name="status-of-your-managed-domain"></a>托管域的状态
-运行状况页右上角的状态指示托管域的总体运行状况。 该状态考虑到了域中发生的所有现有警报。 也可以在 Azure AD 域服务的概述页上查看域的状态。
+1. 在 Azure 门户中，搜索并选择**Azure AD 域服务**"。
+1. 选择托管域，如*aaddscontoso.com*。
+1. 在 Azure AD DS 资源 "窗口的左侧，选择"**运行状况**"。 以下示例屏幕截图显示了一个正常的托管域以及上次备份的状态和 Azure AD 同步：
+
+    ![Azure 门户显示 Azure Active Directory 域服务状态的运行状况页面概述](./media/check-health/health-page.png)
+
+上次检查托管域的时间，运行状况页面*最后计算*的时间戳将会显示。 托管域的运行状况每小时计算一次。 如果对托管域进行任何更改，请等待下一个评估周期，以查看更新的运行状况状态。
+
+右上方的状态指示托管域的总体运行状况。 状态决定了域中所有现有警报。 下表详细说明了可用状态指示器：
 
 | 状态 | 图标 | 说明 |
 | --- | :----: | --- |
-| 正在运行 | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15"> | 托管域平稳运行，未发生任何严重警报或警告警报。 此域可能发生了信息性的警报。 |
-| 需要注意（警告） | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15"> | 托管域中未发生严重警报，但有一个或多个警告警报需要解决。 |
-| 需要注意（严重） | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15"> | 托管域上发生了一个或多个严重警报。 此外，还可能会收到警告和/或信息性警报。 |
-| 正在部署 | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15"> | 正在部署域。 |
+| 正在运行 | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | 托管域正在正常运行，没有任何严重或警告警报。 域可能包含信息性警报。 |
+| 需要注意（警告） | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15" alt="Yellow exclamation mark for warning"> | 托管域上没有关键警报，但有一个或多个应解决的警告警报。 |
+| 需要注意（严重） | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15" alt="Red exclamation mark for critical"> | 必须解决托管域上的一个或多个关键警报。 还可能会出现警告和/或信息性警报。 |
+| 正在部署 | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | 正在部署托管域。 |
 
-## <a name="monitors"></a>监视器
-监视器是 Azure AD 域服务定期监视的托管域功能。 使监视器保持正常运行状态的最佳方法是解决托管域的任何现存警报。
+## <a name="understand-monitors-and-alerts"></a>了解监视器和警报
 
-Azure AD 域服务目前会监视以下功能：
- - 备份
- - 与 Azure AD 同步
+托管域的运行状况状态显示两种类型的信息*监视器*和*警报*。 监视器显示核心后台任务完成的时间。 警报提供了信息或建议来提高托管域的稳定性。
 
-### <a name="the-backup-monitor"></a>“备份”监视器
-此功能监视是否正在执行托管域的定期备份。 下表解释了备份监视器详细信息列中期望显示的内容：
+### <a name="monitors"></a>监视器
+
+监视器是定期检查的托管域区域。 如果托管域有任何活动警报，则可能会导致其中一个监视器报告问题。 Azure AD DS 当前包含以下区域的监视器：
+
+* 备份
+* 与 Azure AD 同步
+
+#### <a name="backup-monitor"></a>备份监视器
+
+备份监视器检查托管域的自动定期备份是否成功运行。 下表详细介绍了可用的备份监视器状态：
 
 | 详细信息值 | 说明 |
 | --- | --- |
-|“从未备份” | 对于新建的托管域，此状态是正常的。 一般情况下，会在预配托管域之后的 24 小时内创建第一个备份。 如果托管域不是新建的，或者此状态的持续时间有异常，请[联系支持人员](contact-us.md)。 |
-| 最后一个备份是在 1 到 14 天前创建的 | 一般情况下，备份监视器预期会看到此值。 |
-| 最后一个备份是在 14 天前创建的。 | 自上次备份以来超过两周的时间都是不正常的。 现存的严重警报可能会阻止定期备份托管域。 首先，请解决托管域的任何现存警报，如果问题持续出现，请[联系支持人员](contact-us.md)。 |
+| 从未备份 | 对于新托管域，此状态为 "正常"。 部署托管域后，应在24小时内创建第一次备份。 如果此状态仍然存在，请[打开 Azure 支持请求][azure-support]。 |
+| 最后一个备份是在 1 到 14 天前创建的 | 此时间范围是备份监视器的预期状态。 自动定期备份应在此期间进行。 |
+| 最后一个备份是在 14 天前创建的。 | 时间跨度超过两周表示自动定期备份出现问题。 活动严重警报可能会阻止对托管域进行备份。 解决托管域的任何活动警报。 如果备份监视器未随后更新状态以报告最近的备份，请[打开 Azure 支持请求][azure-support]。 |
 
+#### <a name="synchronization-with-azure-ad-monitor"></a>与 Azure AD 监视器同步
 
-### <a name="the-synchronization-with-azure-ad-monitor"></a>“与 Azure AD 同步”监视器
-Microsoft 会监视托管域与 Azure Active Directory 同步的频率。 对象（用户和组）的数目以及自上次同步以来在 Azure AD 目录中所做的更改数目都可能影响同步周期的持续时间。 如果托管域上次是在三天前同步的，请[联系支持人员](contact-us.md)。
+托管域与 Azure Active Directory 定期同步。 用户和组对象的数量，以及自上次同步后在 Azure AD 目录中所做的更改数会影响同步所用的时间。 如果托管域在三天前同步，请检查并解决所有活动警报。 如果在解决任何活动警报后，同步监视器未将状态更新为显示最近的同步，请[打开 Azure 支持请求][azure-support]。
 
-## <a name="alerts"></a>警报
-如果需要解决托管域中的问题才能让 Azure AD 域服务运行，则会生成警报。 每条警报解释了问题，并提供一个解决方法 URL，其中概述了解决问题的步骤。 若要查看所有警报及其解决方法，请访问[排查警报问题](troubleshoot-alerts.md)一文。
+### <a name="alerts"></a>警报
 
-### <a name="alert-severity"></a>警报严重性
-警报分为三个不同的严重级别：严重、警告和信息性。
+对于托管域中需要满足服务才能正常运行的问题，会生成警报。 每个警报都说明了该问题，并提供了一个 URL，其中概述了解决此问题的特定步骤。 有关可能的警报及其解决方法的详细信息，请参阅[解决警报问题](troubleshoot-alerts.md)。
 
- * **严重警报**表示出现了对托管域造成严重影响的问题。 应该立即解决这些警报，因为 Microsoft 无法监视、管理、修补和同步托管域。 
- * **警告警报**告知出现了将来可能影响托管域的问题。 这些警报提供保护托管域的建议。
- * **信息性警报**是指不会对域造成负面影响的通知。 信息性警报旨在让你了解域和 Azure AD 域服务中发生的情况。
+运行状况状态警报分为以下严重性级别：
+
+ * **严重警报**是严重影响托管域的问题。 应该立即解决这些警报。 在解决问题之前，Azure 平台无法监视、管理、修补和同步托管域。
+ * 如果问题仍然存在，**警告警报**将通知你可能会影响托管域操作的问题。 这些警报还提供保护托管域的建议。
+ * **信息警报**是不会对托管域产生负面影响的通知。 信息警报可提供有关托管域中发生的情况的一些见解。
 
 ## <a name="next-steps"></a>后续步骤
-- [解决托管域中的警报](troubleshoot-alerts.md)
-- [详细了解 Azure AD 域服务](overview.md)
-- [联系产品团队](contact-us.md)
+
+有关 "运行状况状态" 页中显示的警报的详细信息，请参阅在[托管域上解决警报][troubleshoot-alerts]
+
+<!-- INTERNAL LINKS -->
+[azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md
+[troubleshoot-alerts]: troubleshoot-alerts.md

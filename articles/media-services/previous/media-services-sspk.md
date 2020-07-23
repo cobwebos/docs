@@ -1,6 +1,6 @@
 ---
-title: 授权 Microsoft® 平滑流式处理客户端移植工具包
-description: 了解如何为 Microsoft® 平滑流式处理客户端移植工具包授权。
+title: 授权 Microsoft&reg; 平滑流式处理客户端移植工具包
+description: 了解如何为 Microsoft&reg; 平滑流式处理客户端移植工具包授权。
 services: media-services
 documentationcenter: ''
 author: xpouyat
@@ -12,16 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 505def9cde7cddf2ddcc23408fa3159de886167a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 7fce1fc529f3af71cac17d8011fe065c6381a419
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61472681"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677146"
 ---
-# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>授权 Microsoft® 平滑流式处理客户端移植工具包 
+# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>授权 Microsoft&reg; 平滑流式处理客户端移植工具包 
 ## <a name="overview"></a>概述
 Microsoft 平滑流式处理客户端移植工具包（简称 **SSPK**）是经过优化的平滑流式处理客户端实现，可帮助嵌入式设备制造商、有线和移动运营商、内容服务提供商、手持设备制造商、独立软件供应商 (ISV) 和解决方案提供商创建产品和服务，用于流式传输平滑流式处理格式的自适应内容。 SSPK 是平滑流式处理客户端的与设备和平台无关的实现，许可接受方可将它移植到任何设备和平台。 
 
@@ -29,7 +28,7 @@ Microsoft 平滑流式处理客户端移植工具包（简称 **SSPK**）是经�
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>描述
+## <a name="description"></a>说明
 经过授权的 SSPK 可以提供优异的商业价值。 SSPK 许可证为行业提供：
 
 * 采用 C++ 的平滑流式处理移植工具包源代码 
@@ -43,7 +42,7 @@ Microsoft 平滑流式处理客户端移植工具包（简称 **SSPK**）是经�
   * 可与硬件 A/V 解码器（解码、绘制）交互的编程接口
 * 数字权限管理 (DRM) 接口 
   * 可通过 DRM 抽象层 (DAL) 处理 DRM 的编程接口
-  * Microsoft PlayReady 移植工具包是单独发售的，但可通过此接口集成。 有关 Microsoft PlayReady 设备许可的详细信息，请单击[此处](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl)。
+  * Microsoft PlayReady 移植工具包是单独发售的，但可通过此接口集成。 有关 Microsoft PlayReady 设备许可的详细信息，请单击 [此处](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl)。
 * 实现示例 
   * 适用于 Linux 的 PAL 实现示例
   * 适用于 GStreamer 的 HAL 实现示例
@@ -73,11 +72,12 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 ## <a name="licensing-procedure-and-sspk-access"></a>许可过程和 SSPK 访问权限
 有关所有许可查询的信息，请发送电子邮件到 [sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com)。
 
-已注册的中期受证者可以访问 [SSPK 分发门户](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/)。
+已注册的中期受证者可以访问 SSPK 分发门户。
 
 中期和最终 SSPK 受证者可以将技术问题提交到 [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)。
 
 ## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>Microsoft 平滑流式处理客户端中期产品协议受证人
+
 * Adroit Business Solutions, Inc
 * Advanced Digital Broadcast SA
 * AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
@@ -90,10 +90,10 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * EchoStar Purchasing Corporation
 * Enseo, Inc.
 * Fluendo S.A.
+* Guangzhou Shikun Electronics., Ltd.
 * HANDAN BroadInfoCom Co., Ltd.
 * Infomir GMBH
 * Irdeto USA Inc.
-* iWEDIA S.A. 
 * Liberty Global Services BV
 * MediaTek Inc.
 * MStar Co, Ltd
@@ -104,7 +104,6 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * SoftAtHome
 * Sony Corporation
 * Tatung Technology Inc.
-* TCL Technology Electronics (Huizhou) Co., Ltd.
 * Top Victory Investments, Ltd.
 * Vestel Elektronik Sanayi ve Ticaret A.S.
 * VisualOn, Inc.
@@ -113,51 +112,41 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Microsoft 平滑流式处理客户端最终产品协议受证人
 * Advanced Digital Broadcast SA
 * AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
-* Albis Technologies Ltd.
-* Amazon Digital Services, Inc.
-* AmTRAN Technology Co., Ltd.
 * Arcadyan Technology Corporation
-* Arion Technology, Inc.
-* ATMACA ELEKTRONİK SAN. VE TİC. A.Ş
-* British Sky Broadcasting Limited
-* CastPal Technology Inc., Shenzhen
+* Arcelik
 * Compal Electronics, Inc.
-* Dongguan Digital AV Technology Corp., Ltd.
-* EchoStar Purchasing Corporation
-* Enseo, Inc.
-* FilmFlex Movies Limited
+* 明示技术有限
 * Fluendo S.A.
 * FUNAI ELECTRIC CO., LTD
-* Gibson Innovations Limited
-* Haier Information Applicantion S.R.L
-* HANDAN BroadInfoCom Co., Ltd.
 * Hisense International Co., Ltd. 
-* Homecast Co., Ltd
-* Hon Hai Precision Industry Co., Ltd.
-* Infomir GMBH
+* HKC 公司有限
+* 中国香港 Konka 有限公司
+* Innolux 公司
+* Innopia 技术，Inc。
 * Kaonmedia Co., Ltd.
 * KDDI Corporation
+* 成名电气有限公司
+* MIRC 电子设备有限
 * Nintendo Co., Ltd.
-* Orange SA
-* Saffron Digital Limited
-* Sagemcom Broadband SAS
-* Shenzhen Coship Electronics CO., LTD
+* ONEPLUS 电子（SHENZHEN）有限公司。
+* Panasonic 公司
+* Qingdao Haier information Optronics
+* Shenzhen ATEKO 相片电力公司
+* Shenzhen Chuangwei-RGB Electronics Co.,Ltd.
 * Shenzhen Jiuzhou Electric Co., Ltd
+* Shenzhen KTC 技术有限公司。 
+* Shenzhen Maxmade 技术有限公司
+* Shenzhen MTC，有限公司
 * Shenzhen Skyworth Digital Technology Co., Ltd
 * Sichuan Changhong Electric Co., Ltd.
 * Skardin Industrial Corp.
 * Sky Deutschland Fernsehen GmbH & Co. KG
-* SmarDTV S.A.
+* SMARDTV GLOBAL SAS
 * SoftAtHome
 * Sony Corporation
-* TCL Overseas Marketing (Macao Commercial Offshore) Limited
 * Technicolor Delivery Technologies, SAS
-* Tongfang Global Ltd.
 * Top Victory Investments, Ltd.
-* Toshiba Lifestyle Products & Services Corporation
-* Universal Media Corporation /Slovakia/ s.r.o.
-* VIZIO, Inc.
-* Wistron Corporation
+* UMC 波兰 sp。 o.o。
 * ZTE Corporation
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径

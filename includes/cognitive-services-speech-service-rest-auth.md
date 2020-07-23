@@ -4,38 +4,43 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: 9cad860b8808dd2682995768c282d8376ab5d9be
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: dc5e251fee00ee22edb2261c1abd8404714834ba
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145356"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "78668650"
 ---
 ## <a name="authentication"></a>Authentication
 
-每个请求需要授权标头。 下表列出了每个服务支持的标头：
+每个请求都需要一个授权标头。 下表列出了每个服务支持的标头：
 
 | 支持的授权标头 | 语音转文本 | 文本转语音 |
 |------------------------|----------------|----------------|
-| Ocp-Apim-Subscription-Key | “是” | “否” |
-| Authorization:持有者 | “是” | “是” |
+| Ocp-Apim-Subscription-Key | 是 | 否 |
+| 授权：持有者 | 是 | 是 |
 
-使用 `Ocp-Apim-Subscription-Key` 标头时，只需提供订阅密钥。 例如:
+使用 `Ocp-Apim-Subscription-Key` 标头时，只需提供订阅密钥。 例如：
 
-```
+```http
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
-使用 `Authorization: Bearer` 标头时，需要向 `issueToken` 终结点发出请求。 在此请求中，交换有效期为 10 分钟的访问令牌的订阅密钥。 下面的几个部分将介绍如何获取令牌、使用令牌和刷新令牌。
-
+使用 `Authorization: Bearer` 标头时，需要向 `issueToken` 终结点发出请求。 在此请求中，交换有效期为 10 分钟的访问令牌的订阅密钥。 下面的几个部分将介绍如何获取令牌、使用令牌。
 
 ### <a name="how-to-get-an-access-token"></a>如何获取访问令牌
 
-若要获取访问令牌，需使用 `Ocp-Apim-Subscription-Key` 和订阅密钥向 `issueToken` 终结点发出请求。
+若要获取访问令牌，需使用 `issueToken` 和订阅密钥向 `Ocp-Apim-Subscription-Key` 终结点发出请求。
 
-支持以下区域和终结点：
+`issueToken` 终结点具有以下格式：
 
-[!INCLUDE [](./cognitive-services-speech-service-endpoints-token-service.md)]
+```http
+https://<REGION_IDENTIFIER>.api.cognitive.microsoft.com/sts/v1.0/issueToken
+```
+
+将 `<REGION_IDENTIFIER>` 替换为与下表中的订阅区域匹配的标识符：
+
+[!INCLUDE [](cognitive-services-speech-service-region-identifier.md)]
 
 使用这些示例创建访问令牌请求。
 
@@ -57,7 +62,7 @@ Content-Length: 0
 
 此示例是获取访问令牌的简单 PowerShell 脚本。 请将 `YOUR_SUBSCRIPTION_KEY` 替换为语音服务订阅密钥。 请务必使用与订阅匹配的正确区域终结点。 此示例目前设置为“美国西部”。
 
-```Powershell
+```powershell
 $FetchTokenHeader = @{
   'Content-type'='application/x-www-form-urlencoded';
   'Content-Length'= '0';
@@ -76,7 +81,7 @@ $OAuthToken
 
 cURL 是 Linux（及面向 Linux 的 Windows 子系统）中提供的一种命令行工具。 此 cURL 命令演示如何获取访问令牌。 请将 `YOUR_SUBSCRIPTION_KEY` 替换为语音服务订阅密钥。 请务必使用与订阅匹配的正确区域终结点。 此示例目前设置为“美国西部”。
 
-```cli
+```console
 curl -v -X POST
  "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
  -H "Content-type: application/x-www-form-urlencoded" \
@@ -88,7 +93,7 @@ curl -v -X POST
 
 此 C# 类演示如何获取访问令牌。 实例化该类时，请传递语音服务订阅密钥。 如果订阅不在美国西部区域，请更改 `FetchTokenUri` 的值，以便与订阅的区域相匹配。
 
-```cs
+```csharp
 public class Authentication
 {
     public static readonly string FetchTokenUri =
@@ -130,6 +135,7 @@ public class Authentication
 import requests
 
 subscription_key = 'REPLACE_WITH_YOUR_KEY'
+
 
 def get_token(subscription_key):
     fetch_token_url = 'https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken'

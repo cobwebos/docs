@@ -1,20 +1,14 @@
 ---
-title: Azure 消息传递比较 - 事件网格、事件中心、服务总线
+title: 比较 Azure 消息传送服务
 description: 介绍三种 Azure 消息传递服务 - Azure 事件网格、事件中心和服务总线。 推荐不同场景使用的服务。
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: overview
-ms.date: 01/30/2019
-ms.author: spelluru
-ms.custom: seodec18
-ms.openlocfilehash: d2daa23a22fae6ba420a146599c0c0ba659a94f2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 07/07/2020
+ms.openlocfilehash: 9c539accbc41f56e4421b9e793c25496987363aa
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540799"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101369"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>在 Azure 消息传递服务之间进行选择 - 事件网格、事件中心和服务总线
 
@@ -44,7 +38,7 @@ Azure 提供三种协助在整个解决方案中传递事件消息的服务。 �
 
 ## <a name="comparison-of-services"></a>服务对比
 
-| 服务 | 目的 | Type | 使用时机 |
+| 服务 | 目的 | 类型 | 何时使用 |
 | ------- | ------- | ---- | ----------- |
 | 事件网格 | 反应编程 | 事件分发（离散） | 对状态更改做出响应 |
 | 事件中心 | 大数据管道 | 事件流式处理（系列） | 遥测数据和分布式数据流式处理 |
@@ -90,7 +84,7 @@ Azure 事件中心是大数据管道。 它促进遥测数据和事件流数据�
 
 ## <a name="use-the-services-together"></a>同时使用多种服务
 
-在某些情况下，可同时使用多种服务满足不同的角色。 例如，电子商务网站可以使用服务总线处理订单，使用事件中心捕获站点遥测数据，使用事件网格响应事件（例如商品已云发货）。
+在某些情况下，可同时使用多种服务满足不同的角色。 例如，电子商务网站可以使用服务总线处理订单，使用事件中心捕获站点遥测数据，使用事件网格响应事件（例如商品已发货）。
 
 在其他情况下，可将它们链接在一起以形成事件和数据管道。 使用事件网格可响应其他服务中的事件。 有关结合使用事件网格和事件中心以将数据迁移到数据仓库的实例，请参阅[将大数据流式传输到数据仓库](event-grid-event-hubs-integration.md)。 下图显示流式处理数据的工作流。
 
@@ -98,7 +92,7 @@ Azure 事件中心是大数据管道。 它促进遥测数据和事件流数据�
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章： 
-
+- [Azure 中的异步消息传送选项](/azure/architecture/guide/technology-choices/messaging)
 - [Events, Data Points, and Messages - Choosing the right Azure messaging service for your data](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/)（事件、数据点和消息 - 为数据选择合适的 Azure 消息传递服务）。
 - [存储队列和服务总线队列 - 比较与对照](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 - 若要开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。

@@ -1,21 +1,21 @@
 ---
 title: 使用必应拼写检查 API
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解必应拼写检查模式、设置和与 API 相关的其他信息。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: b847615e8440a8992c8130d12cd6111afe3d33d2
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
-ms.translationtype: HT
+ms.openlocfilehash: c5c9ad8be8bd4cd834b01a0c67e0bbc81b8cdd4a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390225"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "68881886"
 ---
 # <a name="using-the-bing-spell-check-api"></a>使用必应拼写检查 API
 

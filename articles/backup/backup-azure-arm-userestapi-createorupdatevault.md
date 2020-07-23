@@ -1,21 +1,14 @@
 ---
-title: Azure 备份：使用 REST API 创建恢复服务保管库
-description: 使用 REST API 管理 Azure VM 备份的备份和还原操作
-services: backup
-author: pvrk
-manager: shivamg
-keywords: REST API、Azure VM 备份、Azure VM 还原；
-ms.service: backup
+title: 使用 REST API 创建恢复服务保管库
+description: 本文介绍如何使用 REST API 管理 Azure VM 备份的备份和还原操作。
 ms.topic: conceptual
 ms.date: 08/21/2018
-ms.author: pullabhk
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: 4f18b10ee3f4148badc8e53a9660c9f5c998aef7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 1901c35d2b4d8bcd02cc064fcfc844e19969e3b5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60646701"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74173418"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>使用 REST API 创建 Azure 恢复服务保管库
 
@@ -33,10 +26,10 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 以下标头是必需的：
 
-| 请求标头   | 描述 |
+| 请求标头   | 说明 |
 |------------------|-----------------|
-| Content-Type：  | 必需。 设置为 `application/json`。 |
-| Authorization： | 必需。 设置为有效的 `Bearer` [访问令牌](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
+| Content-Type：   | 必需。 设置为 `application/json`。 |
+| Authorization：  | 必需。 设置为有效的`Bearer` [访问令牌](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
 
 有关如何创建请求的详细信息，请参阅 [REST API 请求/响应的组件](/rest/api/azure/#components-of-a-rest-api-requestresponse)。
 
@@ -44,10 +37,10 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 下面的通用定义用来构建请求正文：
 
-|名称  |需要  |Type  |描述  |
+|名称  |必选  |类型  |说明  |
 |---------|---------|---------|---------|
 |eTag     |         |   String      |  可选的 eTag       |
-|位置     |  true       |String         |   资源位置      |
+|location     |  true       |String         |   资源位置      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  保管库的属性       |
 |sku     |         |  [Sku](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    指明每个 Azure 资源的唯一系统标识符     |
 |标记     |         | Object        |     资源标记    |
@@ -72,10 +65,10 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 对于要创建或更新恢复服务保管库的操作，有两个成功响应：
 
-|名称  |类型  |描述  |
+|名称  |类型  |说明  |
 |---------|---------|---------|
 |200 正常     |   [保管库](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)      | OK        |
-|201 Created     | [保管库](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   已创建      |
+|201 Created     | [保管库](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   创建      |
 
 有关 REST API 响应的详细信息，请参阅[处理响应消息](/rest/api/azure/#process-the-response-message)。
 

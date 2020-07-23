@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: stewu
 ms.openlocfilehash: 0bf0843314f38c0de28820c82e95b7921297bf40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60518473"
 ---
 # <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>跨区域迁移 Azure Data Lake Storage Gen1
@@ -25,7 +25,7 @@ Azure Data Lake Storage Gen1 在新区域中推出后，用户可以选择执行
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 订阅**。 有关详细信息，请参阅[立即创建免费 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)。
+* **一个 Azure 订阅**。 有关详细信息，请参阅[立即创建免费 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)。
 * **在两个不同的区域中提供 Data Lake Storage Gen1 帐户**。 有关详细信息，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)。
 * **Azure 数据工厂**。 有关详细信息，请参阅 [Azure 数据工厂简介](../data-factory/introduction.md)。
 

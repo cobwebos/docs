@@ -1,5 +1,6 @@
 ---
-title: 在 Azure API 管理中修改开发人员门户中的页面内容 | Microsoft Docs
+title: 在 API 管理中修改开发人员门户中的页面内容
+titleSuffix: Azure API Management
 description: 了解如何在 Azure API 管理中编辑开发人员门户上的页面内容。
 services: api-management
 documentationcenter: ''
@@ -10,16 +11,14 @@ ms.assetid: 186128fe-41c0-4efb-9efe-2478ad4d103f
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: vlvinogr
-ms.openlocfilehash: fd9902a83a813daffc52e089e6e8bfc4137c5b8f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: ebf2cbd430339378a09d10d91ad61327d24842e4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60656621"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75430637"
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>在 Azure API 管理中修改开发人员门户上的页面内容和页面布局
 在 Azure API 管理中自定义开发人员门户有三种基本方法：
@@ -30,7 +29,7 @@ ms.locfileid: "60656621"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="page-structure"> </a>开发人员门户页面结构
+## <a name="structure-of-developer-portal-pages"></a><a name="page-structure"> </a>开发人员门户页面结构
 
 开发人员门户基于内容管理系统。 每页的布局是基于一组小型页面元素（称为小组件）构建的：
 
@@ -42,20 +41,20 @@ ms.locfileid: "60656621"
 
 在日常页面编辑中，通常只修改“内容”小组件，此组件拥有针对每个单独页面的不同内容。
 
-## <a name="modify-layout-widget"> </a>修改布局小组件的内容
+## <a name="modifying-the-contents-of-a-layout-widget"></a><a name="modify-layout-widget"> </a>修改布局小组件的内容
 
 开发人员门户可从 Azure 门户进行访问。
 
-1. 单击 API 管理实例的工具栏中的“开发人员门户”。
-2. 若要编辑小组件的内容，请单击左侧“开发人员门户”菜单中由两个画刷组成的图标。
-3. 若要修改标头的内容，请滚动到左侧列表中的“标头”部分。
+1. 单击 API 管理实例的工具栏中的“开发人员门户”  。
+2. 若要编辑小组件的内容，请单击左侧“开发人员门户”菜单中由两个画刷组成的图标。 
+3. 若要修改标头的内容，请滚动到左侧列表中的“标头”部分。 
 
     可以在字段中对小组件进行编辑。
-4. 做好发布更改的准备以后，请单击页面底部的“发布”。
+4. 做好发布更改的准备以后，请单击页面底部的“发布”。 
 
 现在，就能够在开发人员门户中的每一页上看见此新的标头。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a><a name="next-steps"> </a>后续步骤
 * [跨开发人员门户更新页面元素所用的样式][customize-styles]
 * [修改门户生成的页面所用的模板][portal-templates]（例如 API 文档、产品、用户身份验证等）
 

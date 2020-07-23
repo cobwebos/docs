@@ -1,25 +1,25 @@
 ---
-title: 本地 web UI 管理 Azure Data Box，Azure 数据框大量 |Microsoft Docs
-description: 介绍如何使用本地 web UI 管理在 Data Box 和数据框大量设备
+title: 使用本地 web UI 管理 Azure Data Box/Azure Data Box Heavy
+description: 介绍如何使用本地 Web UI 管理 Data Box 和 Data Box Heavy 设备
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: bf8af37b0caf51966e336bcb4cea0c4ece5ca9c7
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 34b1ce42850fcefcc2b0d146e7f33d720fd8062d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496264"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202540"
 ---
-# <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>使用本地 web UI 来管理你的数据框和大量数据框
+# <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>使用本地 Web UI 管理 Data Box 和 Data Box Heavy
 
-本文介绍了一些可以在数据框和数据框大量设备执行的配置和管理任务。 你可以管理通过 Azure 门户 UI 的数据框和数据框大量设备和设备的本地 web UI。 本文重点介绍可使用本地 Web UI 执行的任务。
+本文介绍可在 Data Box 和 Data Box Heavy 设备上执行的一些配置和管理任务。 可以通过 Azure 门户 UI 和设备的本地 Web UI 管理 Data Box 和 Data Box Heavy 设备。 本文重点介绍可使用本地 Web UI 执行的任务。
 
-本地 web UI 的数据框和数据框大量用于设备的初始配置。 此外可以使用本地 web UI 关闭或重新启动设备、 运行诊断测试、 更新软件、 查看复制日志和生成日志包供 Microsoft 支持部门。 具有两个独立的节点的数据框大量设备，则可以访问与设备的每个节点相对应的两个单独的本地 web Ui。
+Data Box 和 Data Box Heavy 的本地 Web UI 用于设备的初始配置。 你还可以使用本地 web UI 关闭或重新启动设备、运行诊断测试、更新软件、查看复制日志，并为 Microsoft 支持部门生成日志包。 在具有两个独立节点的 Data Box Heavy 设备上，可以访问对应于每个设备节点的两个独立本地 Web UI。
 
 本文包括以下教程：
 
@@ -29,9 +29,11 @@ ms.locfileid: "66496264"
 - 查看设备的可用容量
 - 跳过校验和验证
 
+[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
+
 ## <a name="generate-support-package"></a>生成支持包
 
-如果遇到任何设备问题，可通过系统日志创建支持包。 Microsoft 支持部门使用此包来解决此问题。 若要生成支持包，请执行以下步骤：
+如果遇到任何设备问题，可通过系统日志创建支持包。 Microsoft 支持部门使用此包来解决此问题。 要生成支持包，请执行以下步骤：
 
 1. 在本地 Web UI 中，转到“联系支持部门”并单击“创建支持包”   。
 
@@ -52,9 +54,9 @@ ms.locfileid: "66496264"
 
 ## <a name="shut-down-or-restart-your-device"></a>关闭或重启设备
 
-您可以关闭或重新启动你的设备使用本地 web UI。 在重启之前，建议使共享依次在主机和设备上脱机。 这能在最大程度上减少发生数据损坏的可能性。 关闭设备时，请确保当前未执行数据复制。
+可使用本地 Web UI 关闭或重启设备。 在重启之前，建议使共享依次在主机和设备上脱机。 这能在最大程度上减少发生数据损坏的可能性。 关闭设备时，请确保当前未执行数据复制。
 
-若要关闭你的设备，请执行以下步骤。
+若要关闭设备，请执行以下步骤。
 
 1. 在本地 Web UI 中，转到“关闭或重启”  。
 2. 单击“关闭”  。
@@ -80,11 +82,11 @@ ms.locfileid: "66496264"
 
 ## <a name="download-bom-or-manifest-files"></a>下载 BOM 或清单文件
 
-材料清单 (BOM) 或清单文件包含复制到数据框或数据框大量的文件的列表。 当你准备设备进行发布时，将生成这些文件。
+物料清单 (BOM) 或清单文件包含要复制到 Data Box 或 Data Box Heavy 的文件列表。 当您准备要装运的设备时，将生成导入顺序的这些文件。
 
-在开始之前，请确保你的设备已完成**准备交付**步骤。 遵循以下步骤下载 BOM 或清单文件：
+在开始之前，请确保设备已完成“准备寄送”步骤。  按照以下步骤下载导入顺序的 BOM 或清单文件：
 
-1. 请转到你的设备的本地 web UI。 你将看到设备完成准备交付。 设备准备完成后，设备状态将显示为“已准备好寄送”。 
+1. 转到设备的本地 Web UI。 可以看到，设备已完成“准备寄送”步骤。 设备准备完成后，设备状态将显示为“已准备好寄送”。 
 
     ![设备已准备好寄送](media/data-box-portal-admin/ready-to-ship.png)
 
@@ -111,7 +113,7 @@ ms.locfileid: "66496264"
 将 Data Box 寄回到 Azure 数据中心后，使用此列表来验证已上传到 Azure 存储帐户的文件。 示例清单文件如下所示。
 
 > [!NOTE]
-> 在数据框重负载，列表中的文件 （物料清单文件） 的两个集都存在对应于在设备上的两个节点。
+> 在 Data Box Heavy 上，提供了对应于两个设备节点的两组文件列表（BOM 文件）。
 
 ```xml
 <file size="52689" crc64="0x95a62e3f2095181e">\databox\media\data-box-deploy-copy-data\prepare-to-ship2.png</file>
@@ -153,7 +155,7 @@ ms.locfileid: "66496264"
 <file size="3603" crc64="0x7e34c25d5606693f">\databox\TOC.yml</file>
 ```
 
-此文件包含所有上的文件已复制的数据框或数据框大量的列表。 在此文件中，*crc64* 值与针对相应文件生成的校验和相关。
+此文件包含已在 Data Box 或 Data Box Heavy 上复制的所有文件的列表。 在此文件中，*crc64* 值与针对相应文件生成的校验和相关。
 
 ## <a name="view-available-capacity-of-the-device"></a>查看设备的可用容量
 
@@ -168,16 +170,19 @@ ms.locfileid: "66496264"
 
 准备寄送时，默认会生成数据的校验和。 在某些罕见的情况下，根据所用的数据类型（小型文件），性能可能较慢。 在这种情况，则可以跳过校验和。
 
+准备发货期间的校验和计算仅适用于进口订单，不适用于出口订单。 
+
 我们强烈建议仅在性能受到严重影响的情况下禁用校验和。
 
-1. 在右上角的本地 web UI 的设备，请转到**设置**。
+1. 在设备的本地 web UI 的右上角，单击 "**设置**"。
 
     ![禁用校验和](media/data-box-local-web-ui-admin/disable-checksum.png)
 
-2. 禁用校验和验证 
-3. 单击“应用”  。
+2. 禁用校验和验证****
+3. 单击“应用”。
 
-## <a name="next-steps"></a>后续步骤
+> [!NOTE]
+> "跳过校验和计算" 选项仅在 Azure Data Box 处于解锁状态时才可用。 锁定设备时，不会显示此选项。
 
-- 了解如何[通过 Azure 门户中管理的数据框和数据框大量](data-box-portal-admin.md)。
+- 了解如何[通过 Azure 门户管理 Data Box 和 Azure Data Box Heavy](data-box-portal-admin.md)。
 

@@ -1,30 +1,25 @@
 ---
-title: 使用 Docker Compose 创建多容器应用 - Azure 应用服务
-description: 在数分钟内在用于容器的 Azure Web 应用中部署你的第一个多容器应用
+title: 快速入门：创建多容器应用
+description: 部署第一个多容器应用即可开始使用 Azure 应用服务上的多容器应用。
 keywords: azure 应用服务, web 应用, linux, docker compose, 多容器, 用于容器的 web 应用, 多个容器, 容器, wordpress, azure db for mysql, 包含容器的生产数据库
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: msangapu-msft
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 08/23/2019
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 543ba3ee4e72c5d31708e9b4983e7889421940ca
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.custom: mvc, seodec18
+ms.openlocfilehash: ab8e416e460546dcf758c83aa8b357139c6dbefb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546223"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82085867"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>使用 Docker Compose 配置创建多容器（预览版）应用
 
-在[用于容器的 Web 应用](app-service-linux-intro.md)中可以灵活使用 Docker 映像。 本快速入门展示了如何在 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 中使用 Docker Compose 配置将多容器应用部署到用于容器的 Web 应用。
+> [!NOTE]
+> 多容器处于预览状态。
+
+在[用于容器的 Web 应用](app-service-linux-intro.md)中可以灵活使用 Docker 映像。 本快速入门介绍如何在 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 中使用 Docker Compose 配置将多容器应用（预览）部署到用于容器的 Web 应用。
 
 你将在 Cloud Shell 中完成本快速入门，但是也可以使用 [Azure CLI](/cli/azure/install-azure-cli)（2.0.32 或更高版本）在本地运行这些命令。 
 
@@ -45,10 +40,10 @@ ms.locfileid: "59546223"
 ```bash
 mkdir quickstart
 
-cd quickstart
+cd $HOME/quickstart
 ```
 
-接下来，运行以下命令将示例应用存储库克隆到 quickstart 目录。 然后切换到 `multicontainerwordpress` 目录。
+接下来请运行以下命令，将示例应用存储库克隆到快速入门目录。 然后切换到 `multicontainerwordpress` 目录。
 
 ```bash
 git clone https://github.com/Azure-Samples/multicontainerwordpress
@@ -60,7 +55,7 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../../includes/resource-group.md)]
 
-在 Cloud Shell 中，使用 [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) 命令创建资源组。 以下示例在“美国中南部”位置创建名为 *myResourceGroup* 的资源组。 若要查看**标准**层中 Linux 上的应用服务支持的所有位置，请运行 [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations) 命令。
+在 Cloud Shell 中，使用 [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) 命令创建资源组。 下面的示例命令在“美国中南部”位置创建名为 *myResourceGroup* 的资源组。  若要查看**标准**层中 Linux 上的应用服务支持的所有位置，请运行 [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations) 命令。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"
@@ -82,7 +77,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 创建应用服务计划后，Azure CLI 会显示类似于以下示例的信息：
 
-```json
+<pre>
 {
   "adminSiteName": null,
   "appServicePlanName": "myAppServicePlan",
@@ -93,24 +88,27 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
   "location": "South Central US",
   "maximumNumberOfWorkers": 1,
   "name": "myAppServicePlan",
-  < JSON data removed for brevity. >
+  &lt; JSON data removed for brevity. &gt;
   "targetWorkerSizeId": 0,
   "type": "Microsoft.Web/serverfarms",
   "workerTierName": null
 }
-```
+</pre>
 
 ## <a name="create-a-docker-compose-app"></a>创建 Docker Compose 应用
 
-在 Cloud Shell 终端中，使用 [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 命令在 `myAppServicePlan` 应用服务计划中创建一个多容器 [Web 应用](app-service-linux-intro.md)。 不要忘记将 _\<app_name>_ 替换为唯一的应用名称。
+> [!NOTE]
+> 目前，Azure 应用服务上的 Docker Compose 的限制为 4,000 个字符。
 
-```bash
+在 Cloud Shell 终端中，使用 [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 命令在 `myAppServicePlan` 应用服务计划中创建一个多容器 [Web 应用](app-service-linux-intro.md)。 不要忘记将 _\<app_name>_ 替换为唯一的应用名称（有效字符是 `a-z`、`0-9` 和 `-`）。
+
+```azurecli
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml
 ```
 
 创建 Web 应用后，Azure CLI 会显示类似于以下示例的输出：
 
-```json
+<pre>
 {
   "additionalProperties": {},
   "availabilityState": "Normal",
@@ -119,11 +117,11 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
   "cloningInfo": null,
   "containerSize": 0,
   "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app_name>.azurewebsites.net",
+  "defaultHostName": "&lt;app_name&gt;.azurewebsites.net",
   "enabled": true,
-  < JSON data removed for brevity. >
+  &lt; JSON data removed for brevity. &gt;
 }
-```
+</pre>
 
 ### <a name="browse-to-the-app"></a>浏览到应用
 

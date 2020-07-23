@@ -5,15 +5,15 @@ services: storage
 author: alkohli
 ms.service: storage
 ms.subservice: blobs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 4c4ac9489b9613b2eeaf26a3df9f4cbc664a1026
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6514b149b057d690d37551bd0489c63852addb1e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60730684"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207497"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>具有低或无网络宽带的大型数据集的数据传输
  
@@ -47,19 +47,19 @@ ms.locfileid: "60730684"
 
 |                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy              |    导入/导出                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
-|    数据大小                        |    最多为 35 TB                 |    每个设备最多 80 TB                       |    每个设备最多 800 TB               |    变量                            |
-|    数据类型                        |    Azure Blob                  |    Azure Blob<br>Azure 文件                    |    Azure Blob<br>Azure 文件            |    Azure Blob<br>Azure 文件          |
-|    外形规格                      |    每笔订单 5 个 SSD             |    每笔订单 1 X 50 磅 桌面大小的设备    |    每笔订单 1 X ~500 磅 大型设备    |    每笔订单最多 10 个 HDD/SSD        |
-|    初始设置时间               |    低 <br>（15 分钟）            |    低等到中等 <br> （<30 分钟）               |    中等<br>（1-2 小时）               |    中等到困难<br>（不定） |
-|    将数据发送到 Azure               |    是                          |    是                                           |    是                                   |    是                                 |
-|    从 Azure 导出数据           |    否                           |    否                                            |    否                                    |    是                                 |
-|    加密                       |    AES 128 位                  |    AES 256 位                                   |    AES 256 位                           |    AES 128 位                         |
-|    硬件                         |     Microsoft 提供          |    Microsoft 提供                            |    Microsoft 提供                    |    客户提供                   |
-|    网络接口                |    USB 3.1/SATA                 |    RJ 45，SFP+                                   |    RJ45，QSFP+                           |    SATA II/SATA III                    |
-|    合作伙伴集成              |    部分                         |    [高](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [高](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    部分                                |
-|    寄送                         |    Microsoft 托管            |    Microsoft 托管                             |    Microsoft 托管                     |    由客户管理                    |
-| 数据移动时使用         |在商务区域内|在商务区域内|在商务区域内|跨地理区域，例如美国到欧洲|
-|    定价                          |    [定价](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [价格](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [价格](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [定价](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
+|    **数据大小**                    |    最多为 35 TB                 |    每个设备最多 80 TB                       |    每个设备最多 800 TB               |    变量                            |
+|    **Data type**                    |    Azure Blob                  |    Azure Blob<br>Azure 文件存储                    |    Azure Blob<br>Azure 文件存储            |    Azure Blob<br>Azure 文件存储          |
+|    **外形规格**                  |    每笔订单 5 个 SSD             |    每笔订单 1 X 50 磅 桌面大小的设备    |    每笔订单 1 X ~500 磅 大型设备    |    每笔订单最多 10 个 HDD/SSD        |
+|    **初始设置时间**           |    低 <br>（15 分钟）            |    低等到中等 <br> （<30 分钟）               |    中等<br>（1-2 小时）               |    中等到困难<br>（不定） |
+|    **将数据发送到 Azure**           |    是                          |    是                                           |    是                                   |    是                                 |
+|    **从 Azure 导出数据**       |    否                           |    否                                            |    否                                    |    是                                 |
+|    **加密**                   |    AES 128 位                  |    AES 256 位                                   |    AES 256 位                           |    AES 128 位                         |
+|    **硬件**                     |     Microsoft 提供          |    Microsoft 提供                            |    Microsoft 提供                    |    客户提供                   |
+|    **网络接口**            |    USB 3.1/SATA                 |    RJ 45，SFP+                                   |    RJ45，QSFP+                           |    SATA II/SATA III                    |
+|    **合作伙伴集成**          |    一些                         |    [高](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                          |    [高](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                  |    一些                                |
+|    **寄送**                     |    Microsoft 托管            |    Microsoft 托管                             |    Microsoft 托管                     |    由客户管理                    |
+| **数据移动时使用**     |在商务区域内|在商务区域内|在商务区域内|跨地理区域，例如美国到欧洲|
+|    **定价**                      |    [定价](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [定价](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [定价](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [定价](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
 
 ## <a name="next-steps"></a>后续步骤

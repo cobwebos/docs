@@ -1,19 +1,19 @@
 ---
-title: 教程 - 在会话和设备间共享 Azure 空间定位点 | Microsoft Docs
+title: 教程：在会话和设备间共享定位点
 description: 在本教程中，你会了解如何使用后端服务在 Unity 中的 Android/iOS 设备之间共享 Azure 空间定位点标识符。
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ff9868dd7347812eb6ef566288ec364bc89b6955
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 3b377f87bdba40c90cb3af6caef2c089d7b7de49
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629307"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "77615501"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>教程：在会话和设备间共享 Azure 空间定位点
 
@@ -38,17 +38,63 @@ Azure 空间定位点是一种跨平台开发人员服务。通过该服务，�
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
-## <a name="open-the-sample-project-in-unity"></a>在 Unity 中打开示例项目
+## <a name="download-the-sample-project"></a>下载示例项目
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
 ## <a name="deploy-your-sharing-anchors-service"></a>部署共享定位点服务
 
+## <a name="visual-studio"></a>[Visual Studio](#tab/VS)
+
 打开 Visual Studio，然后在 `Sharing\SharingServiceSample` 文件夹中打开项目。
 
 [!INCLUDE [Publish Azure](../../../includes/spatial-anchors-publish-azure.md)]
 
+## <a name="visual-studio-code"></a>[Visual Studio Code](#tab/VSC)
+
+在 VS Code 中部署服务之前，需要创建资源组和应用服务计划。
+
+### <a name="sign-in-to-azure"></a>登录到 Azure
+
+导航到 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>并登陆到 Azure 订阅。
+
+### <a name="create-a-resource-group"></a>创建资源组
+
+[!INCLUDE [resource group intro text](../../../includes/resource-group.md)]
+
+在“资源组”  旁边，选择“新建”  。
+
+将资源组命名为 **myResourceGroup**，然后选择“确定”  。
+
+### <a name="create-an-app-service-plan"></a>创建应用服务计划
+
+[!INCLUDE [app-service-plan](../../../includes/app-service-plan.md)]
+
+在“托管计划”旁边  ，选择“新建”  。
+
+在“配置托管计划”对话框中，使用以下设置： 
+
+| 设置 | 建议的值 | 说明 |
+|-|-|-|
+|应用服务计划| MySharingServicePlan | 应用服务计划的名称。 |
+| 位置 | 美国西部 | 托管 Web 应用的数据中心。 |
+| 大小 | 免费 | 确定托管功能的[定价层](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 |
+
+选择“确定”  。
+
+打开 Visual Studio Code，然后在 `Sharing\SharingServiceSample` 文件夹中打开项目。 按照<a href="https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">本教程</a>通过 Visual Studio Code 部署共享服务。 可以按照“使用 Visual Studio Code 打开”部分中的步骤进行操作。 请不要按照上面步骤中的说明创建另一个 mvc 项目，因为你已有需要部署和发布的项目 - SharingServiceSample。
+
+---
+
+## <a name="deploy-the-sample-app"></a>部署示例应用
+
 [!INCLUDE [Run Share Anchors Sample](../../../includes/spatial-anchors-run-share-sample.md)]
+
+## <a name="troubleshooting"></a>故障排除
+
+### <a name="unity-20193"></a>Unity 2019.3
+
+由于中断性变更，目前不支持 Unity 2019.3。 请使用 Unity 2019.1 或 2019.2。
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
@@ -56,7 +102,8 @@ Azure 空间定位点是一种跨平台开发人员服务。通过该服务，�
 
 在本教程中，你在 Azure 中部署了 ASP.NET Core Web 应用，然后配置并部署了 Unity 应用。 你使用应用创建了空间定位点，然后使用 ASP.NET Core Web 应用与其他设备共享它们。
 
-若要详细了解如何改进 ASP.NET Core Web 应用，使其使用 Cosmos DB 存储共享的空间定位点标识符，请继续阅读下一教程。 Azure Cosmos DB 将为 ASP.NET Core Web 应用带来持久性。 这样应用就可以在今天创建一个定位点，然后过几天再回来查找它，只需使用存储在 Web 应用中的定位点标识符即可。
+可以改进 ASP.NET Core Web 应用，使其使用 Azure Cosmos DB 来保存共享的空间定位点标识符的存储。 添加 Azure Cosmos DB 支持可让 ASP.NET Core Web 应用立即创建一个定位点，然后过几天再回来查找它，只需使用存储在 Web 应用中的定位点标识符即可。
 
 > [!div class="nextstepaction"]
-> [教程：使用 Azure Cosmos DB 存储定位点](./tutorial-use-cosmos-db-to-store-anchors.md)
+> [使用 Azure Cosmo DB 存储定位点](./tutorial-use-cosmos-db-to-store-anchors.md)
+

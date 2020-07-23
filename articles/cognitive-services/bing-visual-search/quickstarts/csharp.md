@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用必应视觉搜索 REST API 和 C# 获取图像见解
+title: 快速入门：使用 REST API 和 C# 获取图像见解 - 必应视觉搜索
 titleSuffix: Azure Cognitive Services
 description: 了解如何将图像上传到必应视觉搜索 API 并获取其相关见解。
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 04/26/2019
+ms.date: 05/22/2020
 ms.author: scottwhi
-ms.openlocfilehash: b1518af9c37ffe0b8175e741b363d79941e3caaf
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: b64a3e9d3e6f5393fb47c41ad34a9f1ed78cb44a
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65905702"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872766"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>快速入门：使用必应视觉搜索 REST API 和 C# 获取图像见解
 
@@ -41,7 +41,7 @@ ms.locfileid: "65905702"
     using System.Collections.Generic;
     ```
 
-2. 为订阅密钥、终结点以及要上传的图像的路径添加变量：
+2. 为订阅密钥、终结点以及要上传的图像的路径添加变量。 对于 `uriBase` 值，可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```csharp
         const string accessKey = "<my_subscription_key>";
@@ -49,7 +49,7 @@ ms.locfileid: "65905702"
         static string imagePath = @"<path_to_image>";
     ```
 
-3. 创建名为 `GetImageFileName()` 的方法以获取图像的路径：
+3. 创建名为 `GetImageFileName()` 的方法以获取图像的路径。
     
     ```csharp
     static string GetImageFileName(string path)
@@ -58,7 +58,7 @@ ms.locfileid: "65905702"
             }
     ```
 
-4. 创建一个方法用于获取图像的二进制数据：
+4. 创建一个方法用于获取图像的二进制数据。
 
     ```csharp
     static byte[] GetImageBinary(string path)
@@ -69,7 +69,7 @@ ms.locfileid: "65905702"
 
 ## <a name="build-the-form-data"></a>生成窗体数据
 
-若要上传本地图像，请先生成要发送到 API 的窗体数据。 窗体数据必须包含 `Content-Disposition` 标头，其 `name` 参数必须设置为“image”，`filename` 参数可设置为任意字符串。 窗体内容包含图像的二进制数据。 可以上传的最大图像大小为 1 MB。
+1. 若要上传本地图像，请先生成要发送到 API 的窗体数据。 窗体数据包括 `Content-Disposition` 标头，`name` 参数设置为“图像”且 `filename` 参数设置为图像的文件名。 窗体内容包含图像的二进制数据。 可以上传的最大图像大小为 1 MB。
 
     ```
     --boundary_1234-abcd
@@ -80,7 +80,7 @@ ms.locfileid: "65905702"
     --boundary_1234-abcd--
     ```
 
-1. 添加边界字符串以设置 POST 窗体数据的格式。 边界字符串确定数据的开头、结尾和换行字符：
+2. 添加边界字符串以设置 POST 窗体数据的格式。 边界字符串确定数据的开头、结尾和换行字符。
 
     ```csharp
     // Boundary strings for form data in body of POST.
@@ -90,14 +90,14 @@ ms.locfileid: "65905702"
     static string EndBoundaryTemplate = "--{0}--";
     ```
 
-2. 使用以下变量将参数添加到窗体数据：
+3. 使用以下变量将参数添加到窗体数据：
 
     ```csharp
     const string CONTENT_TYPE_HEADER_PARAMS = "multipart/form-data; boundary={0}";
     const string POST_BODY_DISPOSITION_HEADER = "Content-Disposition: form-data; name=\"image\"; filename=\"{0}\"" + CRLF +CRLF;
     ```
 
-3. 创建名为 `BuildFormDataStart()` 的函数，以使用边界字符串和图像路径创建窗体数据的开头部分：
+4. 创建名为 `BuildFormDataStart()` 的函数，以使用边界字符串和图像路径创建窗体数据的开头部分。
     
     ```csharp
         static string BuildFormDataStart(string boundary, string filename)
@@ -111,7 +111,7 @@ ms.locfileid: "65905702"
         }
     ```
 
-4. 创建名为 `BuildFormDataEnd()` 的函数，以使用边界字符串创建窗体数据的结尾部分：
+5. 创建名为 `BuildFormDataEnd()` 的函数，以使用边界字符串创建窗体数据的结尾部分。
     
     ```csharp
         static string BuildFormDataEnd(string boundary)
@@ -126,7 +126,7 @@ ms.locfileid: "65905702"
 
 2. 使用 `WebRequest` 存储 URI、contentType 值和标头。  
 
-3. 使用 `request.GetRequestStream()` 写入窗体和图像数据，然后获取响应。 函数应如下所示：
+3. 使用 `request.GetRequestStream()` 写入窗体和图像数据，然后获取响应。 函数应类似于以下代码：
         
     ```csharp
         static string BingImageSearch(string startFormData, string endFormData, byte[] image, string contentTypeValue)
@@ -158,14 +158,14 @@ ms.locfileid: "65905702"
 
 ## <a name="create-the-main-method"></a>创建 Main 方法
 
-1. 在应用程序的 `Main` 方法中，获取图像的文件名和二进制数据：
+1. 在应用程序的 `Main()` 方法中，获取图像的文件名和二进制数据。
 
     ```csharp
     var filename = GetImageFileName(imagePath);
     var imageBinary = GetImageBinary(imagePath);
     ```
 
-2. 通过设置 POST 正文的边界格式来对其进行设置。 然后调用 `startFormData()` 和 `endFormData` 来创建窗体数据：
+2. 通过设置 POST 正文的边界格式来对其进行设置。 然后调用 `BuildFormDataStart()` 和 `BuildFormDataEnd()` 来创建窗体数据。
 
     ```csharp
     // Set up POST body.
@@ -174,13 +174,13 @@ ms.locfileid: "65905702"
     var endFormData = BuildFormDataEnd(boundary);
     ```
 
-3. 通过设置 `CONTENT_TYPE_HEADER_PARAMS` 和窗体数据边界的格式来创建 `ContentType` 值：
+3. 通过设置 `CONTENT_TYPE_HEADER_PARAMS` 和窗体数据边界的格式来创建 `ContentType` 值。
 
     ```csharp
     var contentTypeHdrValue = string.Format(CONTENT_TYPE_HEADER_PARAMS, boundary);
     ```
 
-4. 通过调用 `BingImageSearch()` 并列显响应来获取 API 响应：
+4. 通过调用 `BingImageSearch()` 来获取 API 响应，然后输出响应。
 
     ```csharp
     var json = BingImageSearch(startFormData, endFormData, imageBinary, contentTypeHdrValue);
@@ -191,81 +191,81 @@ ms.locfileid: "65905702"
 
 ## <a name="using-httpclient"></a>使用 HttpClient
 
-如果使用 `HttpClient`，则可以使用 `MultipartFormDataContent` 类来生成窗体数据。 只需使用以下代码节来替换上一示例中的相应方法。
+如果使用 `HttpClient`，则可以使用 `MultipartFormDataContent` 类来生成窗体数据。 使用以下代码节来替换上一示例中的相应方法：
 
-将 `Main` 方法替换为以下代码：
+1. 将 `Main()`方法替换为以下代码：
 
-```csharp
-        static void Main()
-        {
-            try
-            {
-                Console.OutputEncoding = System.Text.Encoding.UTF8;
+   ```csharp
+           static void Main()
+           {
+               try
+               {
+                   Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-                if (accessKey.Length == 32)
-                {
-                    if (IsImagePathSet(imagePath))
-                    {
-                        var filename = GetImageFileName(imagePath);
-                        Console.WriteLine("Getting image insights for image: " + filename);
-                        var imageBinary = GetImageBinary(imagePath);
+                   if (accessKey.Length == 32)
+                   {
+                       if (IsImagePathSet(imagePath))
+                       {
+                           var filename = GetImageFileName(imagePath);
+                           Console.WriteLine("Getting image insights for image: " + filename);
+                           var imageBinary = GetImageBinary(imagePath);
 
-                        var boundary = string.Format(BoundaryTemplate, Guid.NewGuid());
-                        var json = BingImageSearch(imageBinary, boundary, uriBase, accessKey);
+                           var boundary = string.Format(BoundaryTemplate, Guid.NewGuid());
+                           var json = BingImageSearch(imageBinary, boundary, uriBase, accessKey);
 
-                        Console.WriteLine("\nJSON Response:\n");
-                        Console.WriteLine(JsonPrettyPrint(json));
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Invalid Bing Visual Search API subscription key!");
-                    Console.WriteLine("Please paste yours into the source code.");
-                }
+                           Console.WriteLine("\nJSON Response:\n");
+                           Console.WriteLine(JsonPrettyPrint(json));
+                       }
+                   }
+                   else
+                   {
+                       Console.WriteLine("Invalid Bing Visual Search API subscription key!");
+                       Console.WriteLine("Please paste yours into the source code.");
+                   }
 
-                Console.Write("\nPress Enter to exit ");
-                Console.ReadLine();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-```
+                   Console.Write("\nPress Enter to exit ");
+                   Console.ReadLine();
+               }
+               catch (Exception e)
+               {
+                   Console.WriteLine(e.Message);
+               }
+           }
+   ```
 
-将 `BingImageSearch` 方法替换为以下代码：
+2. 将 `BingImageSearch()`方法替换为以下代码：
 
-```csharp
-        /// <summary>
-        /// Calls the Bing visual search endpoint and returns the JSON response.
-        /// </summary>
-        static string BingImageSearch(byte[] image, string boundary, string uri, string subscriptionKey)
-        {
-            var requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
-            requestMessage.Headers.Add("Ocp-Apim-Subscription-Key", accessKey);
+   ```csharp
+           /// <summary>
+           /// Calls the Bing visual search endpoint and returns the JSON response.
+           /// </summary>
+           static string BingImageSearch(byte[] image, string boundary, string uri, string subscriptionKey)
+           {
+               var requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
+               requestMessage.Headers.Add("Ocp-Apim-Subscription-Key", accessKey);
 
-            var content = new MultipartFormDataContent(boundary);
-            content.Add(new ByteArrayContent(image), "image", "myimage");
-            requestMessage.Content = content;
+               var content = new MultipartFormDataContent(boundary);
+               content.Add(new ByteArrayContent(image), "image", "myimage");
+               requestMessage.Content = content;
 
-            var httpClient = new HttpClient();
+               var httpClient = new HttpClient();
 
-            Task<HttpResponseMessage> httpRequest = httpClient.SendAsync(requestMessage, HttpCompletionOption.ResponseContentRead, CancellationToken.None);
-            HttpResponseMessage httpResponse = httpRequest.Result;
-            HttpStatusCode statusCode = httpResponse.StatusCode;
-            HttpContent responseContent = httpResponse.Content;
+               Task<HttpResponseMessage> httpRequest = httpClient.SendAsync(requestMessage, HttpCompletionOption.ResponseContentRead, CancellationToken.None);
+               HttpResponseMessage httpResponse = httpRequest.Result;
+               HttpStatusCode statusCode = httpResponse.StatusCode;
+               HttpContent responseContent = httpResponse.Content;
 
-            string json = null;
+               string json = null;
 
-            if (responseContent != null)
-            {
-                Task<String> stringContentsTask = responseContent.ReadAsStringAsync();
-                json = stringContentsTask.Result;
-            }
+               if (responseContent != null)
+               {
+                   Task<String> stringContentsTask = responseContent.ReadAsStringAsync();
+                   json = stringContentsTask.Result;
+               }
 
-            return json;
-        }
-```
+               return json;
+           }
+   ```
 
 ## <a name="next-steps"></a>后续步骤
 

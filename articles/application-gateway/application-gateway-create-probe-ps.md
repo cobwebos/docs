@@ -1,32 +1,25 @@
 ---
-title: 创建自定义探测 - Azure 应用程序网关 - PowerShell | Microsoft Docs
+title: 使用 PowerShell 创建自定义探测
+titleSuffix: Azure Application Gateway
 description: 了解如何使用 Resource Manager 中的 PowerShell 创建应用程序网关的自定义探测
 services: application-gateway
-documentationcenter: na
 author: vhorne
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 68feb660-7fa4-4f69-a7e4-bdd7bdc474db
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/26/2017
+ms.topic: how-to
+ms.date: 07/09/2020
 ms.author: victorh
-ms.openlocfilehash: acd70bacd23755cd764bc782a297d80db3622424
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2a269137508feb8a2d2cc0710986e1b74b91c0ea
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66135249"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186735"
 ---
-# <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>使用适用于 Azure 资源管理器的 PowerShell 创建 Azure 应用程序网关的自定义探测
+# <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>使用适用于 Azure Resource Manager 的 PowerShell 创建 Azure 应用程序网关的自定义探测
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-gateway-create-probe-portal.md)
-> * [Azure 资源管理器 PowerShell](application-gateway-create-probe-ps.md)
+> * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure 经典 PowerShell](application-gateway-create-probe-classic-ps.md)
 
 在本文中，将使用 PowerShell 向现有应用程序网关添加自定义探测。 如果应用程序包含特定运行状况检查页面。或者未在默认 Web 应用程序上提供成功的响应，那么它们非常适合使用自定义探测。
@@ -63,9 +56,9 @@ ms.locfileid: "66135249"
    New-AzResourceGroup -Name appgw-rg -Location 'West US'
    ```
 
-Azure 资源管理器要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
+Azure Resource Manager 要求所有资源组指定一个位置。 此位置用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
 
-在上述示例中，我们创建了名为“appgw-RG”的资源组，位置为“美国西部”。
+在上述示例中，我们创建了名为“appgw-RG”**** 的资源组，位置为“美国西部”****。
 
 ### <a name="create-a-virtual-network-and-a-subnet"></a>创建虚拟网络和子网
 
@@ -84,7 +77,7 @@ $subnet = $vnet.Subnets[0]
 
 ### <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>创建前端配置的公共 IP 地址
 
-在 West US 区域的 **appgw-rg** 资源组中创建公共 IP 资源 **publicIP01**。 此示例使用公共 IP 地址作为应用程序网关的前端 IP 地址。  应用程序网关要求公共 IP 地址具有动态创建的 DNS 名称，因此在公共 IP 地址创建过程中不能指定 `-DomainNameLabel`。
+在 "美国西部" 区域的资源组**appgw-rg**中创建公共 IP 资源**publicIP01** 。 此示例使用公共 IP 地址作为应用程序网关的前端 IP 地址。  应用程序网关要求公共 IP 地址具有动态创建的 DNS 名称，因此在公共 IP 地址创建过程中不能指定 `-DomainNameLabel`。
 
 ```powershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -Location 'West US' -AllocationMethod Dynamic
@@ -94,14 +87,14 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -
 
 在创建应用程序网关之前设置所有配置项。 以下示例将创建应用程序网关资源所需的配置项。
 
-| 组件 | **说明** |
+| **组件** | **说明** |
 |---|---|
-| 网关 IP 配置 | 应用程序网关的 IP 配置。|
-| 后端池 | 由 IP 地址、FQDN 或 NIC 组成的池，这些池成员供托管 Web 应用程序的应用程序服务器使用|
-| 运行状况探测 | 用于监视后端池成员运行状况的自定义探测|
-| HTTP 设置 | 端口、协议、基于 cookie 的相关性、探测和超时等一系列设置。  这些设置决定将流量路由到后端池成员的方式|
-| 前端端口 | 应用程序网关在该端口上侦听流量|
-| 侦听器 | 协议、前端 IP 配置和前端端口的组合。 侦听器用于侦听传入请求。
+| **网关 IP 配置** | 应用程序网关的 IP 配置。|
+| 后端池  | 由 IP 地址、FQDN 或 NIC 组成的池，这些池成员供托管 Web 应用程序的应用程序服务器使用|
+| 运行状况探测  | 用于监视后端池成员运行状况的自定义探测|
+| **HTTP 设置** | 端口、协议、基于 cookie 的相关性、探测和超时等一系列设置。  这些设置决定将流量路由到后端池成员的方式|
+| **前端端口** | 应用程序网关在该端口上侦听流量|
+| **侦听器** | 协议、前端 IP 配置和前端端口的组合。 侦听器用于侦听传入请求。
 |**规则**| 基于 HTTP 设置将流量路由到相应的后端。|
 
 ```powershell
@@ -174,7 +167,7 @@ Set-AzApplicationGateway -ApplicationGateway $getgw
 
 ## <a name="get-application-gateway-dns-name"></a>获取应用程序网关 DNS 名称
 
-创建网关后，下一步是配置用于通信的前端。 使用公共 IP 时，应用程序网关需要动态分配的 DNS 名称，这会造成不方便。 若要确保最终用户可以访问应用程序网关，可以使用 CNAME 记录以指向应用程序网关的公共终结点。 [在 Azure 中配置自定义域名](../cloud-services/cloud-services-custom-domain-name-portal.md)。 为此，可使用附加到应用程序网关的 PublicIPAddress 元素检索应用程序网关及其关联的 IP/DNS 名称的详细信息。 应使用应用程序网关的 DNS 名称来创建 CNAME 记录，使两个 Web 应用程序都指向此 DNS 名称。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
+创建网关后，下一步是配置用于通信的前端。 使用公共 IP 时，应用程序网关需要动态分配的 DNS 名称，这会造成不方便。 若要确保最终用户能够访问应用程序网关，可以使用指向应用程序网关的公共终结点的 CNAME 记录。 [在 Azure 中配置自定义域名](../cloud-services/cloud-services-custom-domain-name-portal.md)。 为此，可使用附加到应用程序网关的 PublicIPAddress 元素检索应用程序网关及其关联的 IP/DNS 名称的详细信息。 应使用应用程序网关的 DNS 名称来创建 CNAME 记录，使两个 Web 应用程序都指向此 DNS 名称。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01
@@ -204,5 +197,5 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>后续步骤
 
-访问以下文档，了解如何配置 SSL 卸载：[配置 SSL 卸载](application-gateway-ssl-arm.md)
+访问以下文档，了解如何配置 TLS 卸载：[配置 TLS 卸载](application-gateway-ssl-arm.md)
 

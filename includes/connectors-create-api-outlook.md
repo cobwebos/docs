@@ -1,17 +1,17 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 187906a912c999142d764de6ad5da3daccf63ba7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 11/03/2016
+ms.openlocfilehash: e42292f7848eba0b4545b713f7bbc491f35fe4a9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146792"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789354"
 ---
-1. 在搜索框中，输入“outlook.com”作为筛选器。 对于此示例中，请选择此触发器：**新电子邮件到达时**
+1. 在搜索框中，输入“outlook.com”作为筛选器。 对于此示例，选择以下触发器：“收到新电子邮件时”
 
    ![查找 Outlook.com 触发器或操作](./media/connectors-create-api-outlook/select-outlook.png)
 
@@ -19,7 +19,7 @@ ms.locfileid: "66146792"
 
    ![登录到 Outlook.com 帐户](./media/connectors-create-api-outlook/sign-in-outlook.png)  
 
-3. 选择 Outlook.com 帐户凭据。
+1. 选择 Outlook.com 帐户凭据。
 
    ![选择登录帐户](./media/connectors-create-api-outlook/outlook-sign-in.png)  
 

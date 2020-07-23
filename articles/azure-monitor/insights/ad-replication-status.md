@@ -1,24 +1,17 @@
 ---
-title: 使用 Azure Monitor 监视 Active Directory 复制状态 | Microsoft Docs
+title: 监视 Active Directory 复制状态
 description: Active Directory 复制状态解决方案包定期监视 Active Directory 环境中是否有任何复制失败。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 1b988972-8e01-4f83-a7f4-87f62778f91d
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
+ms.subservice: logs
+ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 01/24/2018
-ms.author: magoedte
-ms.openlocfilehash: f7bbde98c6ef35021cc03b2646193d3601ca1cff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 65ced5021305dce15236ded59cf79a6578e7372a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60495076"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516781"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>使用 Azure Monitor 监视 Active Directory 复制状态
 
@@ -26,12 +19,19 @@ ms.locfileid: "60495076"
 
 Active Directory 是企业 IT 环境的关键组件。 若要确保高可用性和高性能，每个域控制器都有其自己的 Active Directory 数据库副本。 域控制器会彼此相互复制，以便在整个企业内传播更改。 这一复制过程中的失败可能导致整个企业内出现各种问题。
 
-AD 复制状态解决方案包定期监视 Active Directory 环境中是否有任何复制失败。
+AD 复制状态解决方案定期监视 Active Directory 环境中是否有任何复制失败。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand-solution.md)]
 
 ## <a name="installing-and-configuring-the-solution"></a>安装和配置解决方案
 使用以下信息安装和配置解决方案。
+
+### <a name="prerequisites"></a>先决条件
+
+* “AD 复制状态”解决方案要求在每台安装了适用于 Windows 的 Log Analytics 代理（也称为 Microsoft Monitoring Agent (MMA)）的计算机上安装受支持的 .NET Framework 4.6.2 或更高版本。  该代理由 System Center 2016 - Operations Manager、Operations Manager 2012 R2 和 Azure Monitor 使用。
+* 该解决方案支持运行 Windows Server 2008 和 2008 R2、Windows Server 2012 和 2012 R2 以及 Windows Server 2016 的域控制器。
+* 一个 Log Analytics 工作区，用于在 Azure 门户中通过 Azure 市场添加 Active Directory 运行状况检查解决方案。 无需其他配置。
+
 
 ### <a name="install-agents-on-domain-controllers"></a>在域控制器上安装代理
 你必须将代理安装在属于要评估的域成员的域控制器上。 或者，你必须在成员服务器上安装代理，并配置代理以将 AD 复制数据发送到 Azure Monitor。 若要了解如何将 Windows 计算机连接到 Azure Monitor，请参阅[将 Windows 计算机连接到 Azure Monitor](../../azure-monitor/platform/agent-windows.md)。 如果域控制器已经是你要连接到 Azure Monitor 的现有 System Center Operations Manager 环境的一部分，请参阅[将 Operations Manager 连接到 Azure Monitor](../../azure-monitor/platform/om-agents.md)。
@@ -44,7 +44,7 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 3. 在该计算机上，设置以下注册表项：<br>注册表项：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication<br>值：IsTarget<br>值数据：**true**
 
    > [!NOTE]
-   > 重新启动 Microsoft Monitoring Agent 服务 (HealthService.exe) 这些更改会生效。
+   > 在重新启动 Microsoft Monitoring Agent 服务（HealthService.exe）之前，这些更改不会生效。
    > ### <a name="install-solution"></a>安装解决方案
    > 按照[安装监视解决方案](solutions.md#install-a-monitoring-solution)中描述的过程，将 **Active Directory 复制状态**解决方案添加到 Log Analytics 工作区。 无需进一步的配置。
 
@@ -62,7 +62,7 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-“AD 复制状态”磁贴显示目前有多少复制错误。 严重复制错误是指那些处于或高于 Active Directory 林 75% [逻辑删除生存期](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx)的错误。
+“AD 复制状态”磁贴显示目前有多少复制错误。 严重复制错误是指那些处于或高于 Active Directory 林 75% [逻辑删除生存期](/previous-versions/windows/it-pro/windows-server-2003/cc784932(v=ws.10))的错误。
 
 ![AD 复制状态磁贴](./media/ad-replication-status/oms-ad-replication-tile.png)
 
@@ -123,14 +123,14 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 答：信息每 5 天更新一次。
 
 **问：是否有方法来配置此数据的更新频率？**
-答：现在不行。
+答：目前没有。
 
 **问：是否需要将所有域控制器添加到我的 Log Analytics 工作区中以查看复制状态？**
 答：不需要，只需要添加一个域控制器。 如果 Log Analytics 工作区中有多个域控制器，则所有域控制器的数据发送到 Azure Monitor。
 
 **问：我不想将任何域控制器添加到我的 Log Analytics 工作区。是否仍可以使用 AD 复制状态解决方案？**
 
-答：可以。 可以设置注册表项的值来实现此目的。 请参阅[启用非域控制器](#enable-non-domain-controller)。
+答：是的。 可以设置注册表项的值来实现此目的。 请参阅[启用非域控制器](#enable-non-domain-controller)。
 
 **问：执行数据收集的进程的名称是什么？**
 答：AdvisorAssessment.exe
@@ -142,7 +142,7 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 答：通过 LDAP 收集复制信息。
 
 **问：是否有某种方法来配置收集数据的时间？**
-答：现在不行。
+答：目前没有。
 
 **问：需要哪些权限才能收集数据？**
 答：针对 Active Directory 的普通用户权限就足够了。

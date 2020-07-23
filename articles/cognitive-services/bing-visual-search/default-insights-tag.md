@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: b6bc323f4e8deaf975c292f92d862b1fbe0e2714
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a11bf408f06b5c4e621f0af1f71f23c335dc2069
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60510116"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512633"
 ---
 # <a name="default-insights-tag"></a>默认见解标记
 
@@ -100,7 +100,7 @@ ms.locfileid: "60510116"
 
 ## <a name="pagesincluding-insight"></a>PagesIncluding 见解
 
-PagesIncluding 见解提供了包含此图像的网页列表。 它是实际的列表`Image`对象，和`hostPageUrl`字段包含的网页中包括的图像的 URL。 示例用法中，请参阅[PagesIncluding 见解示例](./bing-insights-usage.md#pagesincluding-insight-example)。
+PagesIncluding 见解提供了包含此图像的网页列表。 它实际上是一个对象列表 `Image` ，该 `hostPageUrl` 字段包含包含图像的网页的 URL。 有关示例用法，请参阅[PagesIncluding 见解示例](./bing-insights-usage.md#pagesincluding-insight-example)。
 
 ```json
       {
@@ -139,7 +139,7 @@ PagesIncluding 见解提供了包含此图像的网页列表。 它是实际的�
 
 ## <a name="shoppingsources-insight"></a>ShoppingSources 见解
 
-ShoppingSources 见解提供了一个网站列表，用户可以在这些网站中购买图像中显示的商品。 产品/服务列表包括其中用户可以购买项网页的 URL、 项和评级或评价的详细信息的价格。 有关示例用法，请参阅 [ShoppingSources 示例](./bing-insights-usage.md#shoppingsources-insight-example)。
+ShoppingSources 见解提供了一个网站列表，用户可以在这些网站中购买图像中显示的商品。 产品/服务列表包括用户可在其中购买项目的网页的 URL、商品的价格以及评级或查看详细信息。 有关示例用法，请参阅 [ShoppingSources 示例](./bing-insights-usage.md#shoppingsources-insight-example)。
 
 ```json
       {
@@ -168,7 +168,7 @@ ShoppingSources 见解提供了一个网站列表，用户可以在这些网站�
 
 ## <a name="moresizes-insight"></a>MoreSizes 见解
 
-MoreSizes 见解标识 Internet 找到的必应图像的大小 （更大或较小） 的数目 (请参阅`availableSizesCount`字段):
+MoreSizes 见解标识在 Internet 上找到 Bing 的图像的大小（更大或更小）（请参阅 `availableSizesCount` 字段）：
 
 ```json
       {
@@ -203,7 +203,7 @@ MoreSizes 见解标识 Internet 找到的必应图像的大小 （更大或较�
 
 ## <a name="visualsearch-insight"></a>VisualSearch 见解
 
-VisualSearch 见解提供了与原始图像在视觉上相似的图像列表（包含与原始图像中显示的内容类似的内容）。 示例用法中，请参阅[VisualSearch 见解示例](./bing-insights-usage.md#visualsearch-insight-example)。
+VisualSearch 见解提供了与原始图像在视觉上相似的图像列表（包含与原始图像中显示的内容类似的内容）。 有关示例用法，请参阅[VisualSearch 见解示例](./bing-insights-usage.md#visualsearch-insight-example)。
 
 ```json
       {
@@ -243,7 +243,7 @@ VisualSearch 见解提供了与原始图像在视觉上相似的图像列表（�
 
 ## <a name="recipes-insight"></a>Recipes 见解
 
-Recipes 见解提供了一个网页列表，这些网页中包含用于制作图像中显示的食物的配方。 示例用法中，请参阅[配方见解示例](./bing-insights-usage.md#recipes-insight-example)。
+Recipes 见解提供了一个网页列表，这些网页中包含用于制作图像中显示的食物的配方。 有关示例用法，请参阅[食谱见解示例](./bing-insights-usage.md#recipes-insight-example)。
 
 ```json
       {
@@ -278,7 +278,7 @@ Recipes 见解提供了一个网页列表，这些网页中包含用于制作图
 
 ## <a name="imagebyid-insight"></a>ImageById 见解
 
-ImageById 见解提供`Image`的图像的请求适用于 insights 对象：
+ImageById 见解提供一个 `Image` 图像的对象，该对象是你请求以下内容的见解：
 
 ```json
       {
@@ -377,7 +377,7 @@ ProductVisualSearch 见解提供了与原始图像中显示的产品在视觉上
 
 ## <a name="relatedsearches-insight"></a>RelatedSearches 见解
 
-RelatedSearches 见解提供了其他人（基于其他用户的搜索词）进行的相关搜索列表。 示例用法中，请参阅[RelatedSearches 见解示例](./bing-insights-usage.md#relatedsearches-insight-example)。
+RelatedSearches 见解提供了其他人（基于其他用户的搜索词）进行的相关搜索列表。 有关示例用法，请参阅[RelatedSearches 见解示例](./bing-insights-usage.md#relatedsearches-insight-example)。
 
 ```json
       {
@@ -400,7 +400,7 @@ RelatedSearches 见解提供了其他人（基于其他用户的搜索词）进�
 
 ## <a name="documentlevelsuggestions-insight"></a>DocumentLevelSuggestions 见解
 
-DocumentLevelSuggestions 见解提供了基于映像的内容的建议的搜索术语的列表：
+DocumentLevelSuggestions 见解提供基于图像内容的建议搜索词列表：
 
 ```json
       {
@@ -423,6 +423,14 @@ DocumentLevelSuggestions 见解提供了基于映像的内容的建议的搜索�
 
 ## <a name="next-steps"></a>后续步骤
 
-请查看[示例的必应 insights 使用情况](bing-insights-usage.md)若要查看必应可能会显示 visual 见解的方式。
+查看[bing insights 使用情况示例](bing-insights-usage.md)，了解必应如何显示视觉对象见解。
 
-若要快速了解如何使用第一个请求，请参阅快速入门：[C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)。
+若要快速了解如何使用第一个请求，请参阅快速入门：
+
+* [C#](quickstarts/csharp.md)
+
+* [Java](quickstarts/java.md)
+
+* [node.js](quickstarts/nodejs.md)
+
+* [Python](quickstarts/python.md)。

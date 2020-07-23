@@ -7,14 +7,14 @@ author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: 9de1bcf4-b15b-4d0b-9284-8889ecf0c438
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: 3b5b11b148910e9bd1348b20a25fa8383fc2ec9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f821f8f8fddfafbdba060fd3f9940ce32c138755
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60812747"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121344"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-sdk-for-nodejs"></a>使用适用于 Node.js 的 Azure SDK 管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -23,9 +23,9 @@ ms.locfileid: "60812747"
 
 支持以下版本：
 * **Node.js 版本：0.10.0 或更高版本**
-* **用于帐户的 REST API 版本：2015-10-01-preview**
-* **用于目录的 REST API 版本：2015-10-01-preview**
-* **用于作业的 REST API 版本：2016-03-20-preview**
+* **帐户的 REST API 版本：2015 年 10 月 1 日预览版**
+* **目录的 REST API 版本：2015 年 10 月 1 日预览版**
+* **作业的 REST API 版本：2015 年 3 月 20 日预览版**
 
 ## <a name="features"></a>功能
 * 帐户管理：创建、获取、列出、更新和删除。
@@ -131,5 +131,3 @@ catalogClient.catalog.listDatabases(accountName, function (err, result, request,
 
 ## <a name="see-also"></a>另请参阅
 * [Microsoft Azure SDK for Node.js](https://github.com/azure/azure-sdk-for-node)
-* [Microsoft Azure SDK for Node.js - Data Lake Store 管理](https://github.com/Azure/azure-sdk-for-node/tree/autorest/lib/services/dataLake.Store)
-

@@ -1,23 +1,24 @@
 ---
-title: 创建支持基于 URL 路径的重定向的应用程序网关 - Azure PowerShell
+title: 使用 PowerShell 实现基于 URL 路径的重定向 - Azure 应用程序网关
 description: 了解如何使用 Azure PowerShell 创建支持基于 URL 路径的重定向流量的应用程序网关。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 4/3/2019
+ms.date: 03/19/2020
 ms.author: victorh
-ms.openlocfilehash: e4222ac9269220f7155351889a4d1c8167988414
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.topic: how-to
+ms.openlocfilehash: 7a0e29d3fc90d50f23247a9c11cd4846aa4fb158
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729513"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806031"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>使用 Azure PowerShell 创建支持基于 URL 路径的重定向的应用程序网关
 
-创建[应用程序网关](application-gateway-introduction.md)时，可以使用 Azure PowerShell 配置[基于 URL 的路由规则](application-gateway-url-route-overview.md)。 在本教程中，将使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)创建后端池。 然后创建 URL 路由规则，以确保 Web 流量重定向到相应的后端池。
+创建[应用程序网关](application-gateway-introduction.md)时，可以使用 Azure PowerShell 配置[基于 URL 的路由规则](application-gateway-url-route-overview.md)。 在本文中，将使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)创建后端池。 然后创建 URL 路由规则，以确保 Web 流量重定向到相应的后端池。
 
-本教程介绍如何执行下列操作：
+在本文中，学习如何：
 
 > [!div class="checklist"]
 > * 设置网络
@@ -29,7 +30,7 @@ ms.locfileid: "66729513"
 
 ![URL 路由示例](./media/tutorial-url-redirect-powershell/scenario.png)
 
-如果需要，也可以使用 [Azure CLI](tutorial-url-redirect-cli.md) 完成本教程中的步骤。
+如果需要，可以使用 [Azure CLI](tutorial-url-redirect-cli.md) 完成此过程。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -37,7 +38,7 @@ ms.locfileid: "66729513"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块版本 1.0.0 或更高版本。 若要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+如果选择在本地安装和使用 PowerShell，则此过程需要 Azure PowerShell 模块 1.0.0 或更高版本。 若要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -49,7 +50,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>创建网络资源
 
-使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建 myBackendSubnet 和 myAGSubnet 的子网配置   。 使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 和子网配置创建名为 myVNet 的虚拟网络  。 最后使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 创建名为 myAGPublicIPAddress 的公共 IP 地址  。 这些资源用于提供与应用程序网关及其关联资源的网络连接。
+使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建 myBackendSubnet 和 myAGSubnet 的子网配置 。 使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 和子网配置创建名为 myVNet 的虚拟网络。 最后使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 创建名为 myAGPublicIPAddress 的公共 IP 地址。 这些资源用于提供与应用程序网关及其关联资源的网络连接。
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -84,7 +85,7 @@ New-AzPublicIpAddress `
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>创建 IP 配置和前端端口
 
-使用 [New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration) 将前面创建的 myAGSubnet 关联到应用程序网关  。 使用 [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig) 将 myAGPublicIPAddress 分配给应用程序网关  。 然后，可以使用 [New-AzApplicationGatewayFrontendPort](/powershell/module/az.network/new-azapplicationgatewayfrontendport) 创建 HTTP 端口。
+使用 [New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration) 将前面创建的 myAGSubnet 关联到应用程序网关。 使用 [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig) 将 *myAGPublicIPAddress* 分配给应用程序网关。 然后，可以使用 [New-AzApplicationGatewayFrontendPort](/powershell/module/az.network/new-azapplicationgatewayfrontendport) 创建 HTTP 端口。
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -112,7 +113,7 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-default-pool-and-settings"></a>创建默认池和设置
 
-使用 [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool) 为应用程序网关创建名为 appGatewayBackendPool 的默认后端池  。 使用 [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting) 配置后端池的设置。
+使用 [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool) 为应用程序网关创建名为 appGatewayBackendPool 的默认后端池。 使用 [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting) 配置后端池的设置。
 
 ```azurepowershell-interactive
 $defaultPool = New-AzApplicationGatewayBackendAddressPool `
@@ -128,9 +129,9 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-default-listener-and-rule"></a>创建默认侦听器和规则
 
-应用程序网关需要侦听器才能适当地将流量路由到后端池。 在本教程中，将创建多个侦听器。 第一个基本侦听器应在根 URL 收到流量。 其他侦听器应在特定 URL（如 `http://52.168.55.24:8080/images/` 或 `http://52.168.55.24:8081/video/`）收到流量。
+应用程序网关需要侦听器才能适当地将流量路由到后端池。 在本文中，将创建多个侦听器。 第一个基本侦听器应在根 URL 收到流量。 其他侦听器应在特定 URL（如 `http://52.168.55.24:8080/images/` 或 `http://52.168.55.24:8081/video/`）收到流量。
 
-使用 [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) 以及前面创建的前端配置和前端端口创建名为 defaultListener 的侦听器  。 侦听器需要使用规则来了解哪个后端池使用传入流量。 使用 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) 创建一个名为 rule1 的基本规则  。
+使用 [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) 以及前面创建的前端配置和前端端口创建名为 defaultListener 的侦听器。 侦听器需要使用规则来了解哪个后端池使用传入流量。 使用 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) 创建一个名为 rule1 的基本规则。
 
 ```azurepowershell-interactive
 $defaultlistener = New-AzApplicationGatewayHttpListener `
@@ -149,7 +150,7 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway"></a>创建应用程序网关
 
-现在已创建所需的支持资源，请使用 [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku) 为名为 myAppGateway 的应用程序网关指定参数，然后再使用 [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) 创建它  。
+现在已创建所需的支持资源，请使用 [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku) 为名为 myAppGateway 的应用程序网关指定参数，然后再使用 [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) 创建它。
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
@@ -205,7 +206,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ### <a name="add-listeners"></a>添加侦听器
 
-使用 [Add-AzApplicationGatewayHttpListener](/powershell/module/az.network/add-azapplicationgatewayhttplistener) 添加路由流量所需的名为 backendListener 和 redirectedListener 的侦听器   。
+使用 [Add-AzApplicationGatewayHttpListener](/powershell/module/az.network/add-azapplicationgatewayhttplistener) 添加路由流量所需的名为 backendListener 和 redirectedListener 的侦听器 。
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -242,7 +243,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ### <a name="add-the-default-url-path-map"></a>添加默认 URL 路径映射
 
-URL 路径映射可确保将特定的 URL 路由到特定的后端池。 可以使用 [New-AzApplicationGatewayPathRuleConfig](/powershell/module/az.network/new-azapplicationgatewaypathruleconfig) 和 [Add-AzApplicationGatewayUrlPathMapConfig](/powershell/module/az.network/add-azapplicationgatewayurlpathmapconfig) 创建名为 imagePathRule 和 videoPathRule 的 URL 路径映射   。
+URL 路径映射可确保将特定的 URL 路由到特定的后端池。 可以使用 [New-AzApplicationGatewayPathRuleConfig](/powershell/module/az.network/new-azapplicationgatewaypathruleconfig) 和 [Add-AzApplicationGatewayUrlPathMapConfig](/powershell/module/az.network/add-azapplicationgatewayurlpathmapconfig) 创建名为 imagePathRule 和 videoPathRule 的 URL 路径映射 。
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -347,7 +348,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ### <a name="add-routing-rules"></a>添加路由规则
 
-路由规则可将 URL 映射与所创建的侦听器相关联。 可以使用 [Add-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule) 添加名为 defaultRule 和 redirectedRule 的规则   。
+路由规则可将 URL 映射与所创建的侦听器相关联。 可以使用 [Add-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule) 添加名为 defaultRule 和 redirectedRule 的规则 。
 
 
 ```azurepowershell-interactive

@@ -1,32 +1,26 @@
 ---
-title: 垂直缩放 Azure 虚拟机规模集 | Microsoft Docs
+title: 垂直缩放 Azure 虚拟机规模集
 description: 如何使用 Azure 自动化垂直缩放虚拟机以响应监视警报
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 16b17421-6b8f-483e-8a84-26327c44e9d3
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-multiple
-ms.devlang: na
-ms.topic: article
+ms.subservice: autoscale
 ms.date: 04/18/2019
-ms.author: manayar
-ms.openlocfilehash: 3846815dabdc9e351f3d8449feb88affb9c6efdb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.reviewer: avverma
+ms.custom: avverma
+ms.openlocfilehash: 597a9e3b018f4ddb68710dff65094f35828b3c4b
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60803518"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232655"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>使用虚拟机规模集垂直自动缩放
 
-本文介绍如何使用或不使用重新设置对 Azure [虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)进行垂直缩放。 有关不在规模集中的 VM 的垂直缩放，请参阅[使用 Azure 自动化垂直缩放 Azure 虚拟机](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+本文介绍如何使用或不使用重新设置对 Azure [虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)进行垂直缩放。 
 
-垂直缩放，也称为*纵向扩展*和*纵向缩减*，即增大或减小虚拟机 (VM) 大小，以响应工作负荷。 将此行为与[水平缩放](virtual-machine-scale-sets-autoscale-overview.md)（也称为扩大和缩小，其中 VM 数目的更改取决于工作负荷）进行比较。
+垂直缩放，也称为*纵向扩展*和*纵向缩减*，即增大或减小虚拟机 (VM) 大小，以响应工作负荷。 将此行为与[水平缩放](virtual-machine-scale-sets-autoscale-overview.md)（也称为横向扩展和横向缩减，其中 VM 数目的更改取决于工作负荷）进行比较。
 
 重新设置意味着删除现有 VM 并将其替换为新的 VM。 增加或减少虚拟机规模集中 VM 的大小时，某些情况下需要调整现有 VM 的大小并保留数据，而在其他情况下则需要部署新大小的新 VM。 本文档介绍这两种情况。
 
@@ -43,9 +37,9 @@ ms.locfileid: "60803518"
 4. 将警报添加到使用 Webhook 通知的虚拟机规模集。
 
 > [!NOTE]
-> 由于第一个虚拟机的大小有限制，它可以调整到的大小可能会由于当前虚拟机部署到的群集的其他大小而受到限制。 在本文中使用的已发布自动化 Runbook 中，我们将遵循这种限制，只在以下 VM 大小对的范围内进行缩放。 这意味着，Standard_D1v2 虚拟机不会突然间扩展到 Standard_G5，或者突然间缩减到 Basic_A0。 也不支持受约束的虚拟机大小增加/减少。 可以选择在以下大小对之间缩放：
+> 由于第一个虚拟机的大小有限制，它可以调整到的大小可能会由于当前虚拟机部署到的群集的其他大小而受到限制。 在本文中使用的已发布自动化 Runbook 中，我们将遵循这种限制，只在以下 VM 大小对的范围内进行缩放。 这意味着，Standard_D1v2 虚拟机不会突然间扩展到 Standard_G5，或者突然间缩减到 Basic_A0。 此外，不支持受约束的虚拟机大小纵向扩展/缩减。 可以选择在以下大小对之间缩放：
 > 
-> | VM 大小缩放对 |  |
+> | VM 大小缩放对成员 | 成员 |
 > | --- | --- |
 > | Basic_A0 |Basic_A4 |
 > | Standard_A0 |Standard_A4 |
@@ -89,7 +83,7 @@ ms.locfileid: "60803518"
 > | Standard_ND6s |Standard_ND24s |
 > | Standard_NV6 |Standard_NV24 |
 > | Standard_NV6s_v2 |Standard_NV24s_v2 |
-> 
+> | Standard_NV12s_v3 |Standard_NV48s_v3 |
 > 
 
 ## <a name="create-an-azure-automation-account-with-run-as-capability"></a>使用运行时功能创建 Azure 自动化帐户
@@ -159,10 +153,10 @@ Add-AzMetricAlertRule  -Name  $alertName `
 
 有关如何创建警报的详细信息，请参阅以下文章：
 
-* [Azure Monitor PowerShell 快速入门示例](../azure-monitor/platform/powershell-quickstart-samples.md)
-* [Azure Monitor 跨平台 CLI 快速入门示例](../azure-monitor/platform/cli-samples.md)
+* [Azure Monitor PowerShell 示例](../azure-monitor/samples/powershell-samples.md)
+* [Azure Monitor 跨平台 CLI 示例](../azure-monitor/samples/cli-samples.md)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 本文对简单的垂直缩放示例进行了介绍。 借助这些构建基块 - 自动化帐户、Runbook、Webhook、警报，可以使用一组自定义操作连接各种事件。
 

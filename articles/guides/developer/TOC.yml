@@ -3,7 +3,7 @@
     - name: 开发人员指南
       href: azure-developer-guide.md
     - name: SDK 和工具
-      href: 'https://docs.microsoft.com/azure/index#pivot=sdkstools'
+      href: 'https://aka.ms/azsdkpackages'
 - name: 快速入门
   items:
     - name: Web 应用
@@ -83,7 +83,7 @@
     - name: 计划
       items:
         - name: Web 应用程序体系结构
-          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/managed-web-app/'
+          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/basic-web-app'
         - name: VM 体系结构
           href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/'
         - name: 连接到本地网络
@@ -127,7 +127,7 @@
     - name: 缩放
       items:
         - name: Web 和移动应用
-          href: 'https://docs.microsoft.com/azure/app-service/web-sites-scale'
+          href: 'https://docs.microsoft.com/azure/app-service/manage-scale-up'
         - name: 虚拟机
           href: 'https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview'
         - name: 微服务应用
@@ -135,7 +135,7 @@
     - name: 安全
       items:
         - name: Web 和移动应用
-          href: 'https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl'
+          href: 'https://docs.microsoft.com/azure/app-service/configure-ssl-bindings'
     - name: 备份
       items:
         - name: Web 和移动应用
@@ -160,7 +160,7 @@
           href: 'https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-create-vmss'
         - name: 缩放 Windows VM
           href: 'https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-create-vmss'
-- name: 引用
+- name: 参考
   items:
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/'
@@ -175,7 +175,7 @@
         - name: PHP
           href: 'https://github.com/Azure/azure-sdk-for-php/blob/master/README.md'
         - name: Python
-          href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/'
+          href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/README.md'
         - name: Ruby
           href: 'https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md'
     - name: 命令行界面
@@ -189,7 +189,7 @@
 - name: 资源
   items:
     - name: Azure 限制和配额
-      href: ../../azure-subscription-service-limits.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json
+      href: ../../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json
     - name: Azure 区域
       href: 'https://azure.microsoft.com/regions/'
     - name: Azure 路线图

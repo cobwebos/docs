@@ -1,22 +1,21 @@
 ---
 title: 了解 Azure IoT 中心查询语言 | Microsoft Docs
 description: 开发人员指南 - 介绍了类似 SQL 的 IoT 中心查询语言，该语言用于在 IoT 中心检索设备/模块孪生和作业的相关信息。
-author: rezasherafat
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
-ms.author: rezas
-ms.openlocfilehash: e5387f1e44a55b0a30f8620b49d237ac1e1ec2b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: robinsh
+ms.openlocfilehash: bcc53322ac6942b52853be561bc3441e23fbf53b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61442080"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80632933"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>用于设备和模块孪生、作业和消息路由的 IoT 中心查询语言
 
-IoT 中心提供类似于 SQL 的强大语言，用于检索有关[设备孪生](iot-hub-devguide-device-twins.md)、[作业](iot-hub-devguide-jobs.md)和[消息路由](iot-hub-devguide-messages-d2c.md)的信息。 本文内容：
+IoT 中心提供类似于 SQL 的强大语言，用于检索有关[设备孪生](iot-hub-devguide-device-twins.md)、[模块孪生](iot-hub-devguide-module-twins.md)、[作业](iot-hub-devguide-jobs.md)和[消息路由](iot-hub-devguide-messages-d2c.md)的信息。 本文内容：
 
 * IoT 中心查询语言的主要功能简介，以及
 * 语言的详细说明。 有关用于消息路由的查询语言的详细信息，请参阅[消息路由中的查询](../iot-hub/iot-hub-devguide-routing-query-syntax.md)。
@@ -25,7 +24,7 @@ IoT 中心提供类似于 SQL 的强大语言，用于检索有关[设备孪生]
 
 ## <a name="device-and-module-twin-queries"></a>设备和模块孪生查询
 
-[设备孪生](iot-hub-devguide-device-twins.md)和模块孪生可以包含标记和属性形式的任意 JSON 对象。 通过 IoT 中心，可将设备孪生和模块孪生作为包含所有孪生信息的单个 JSON 文档进行查询。
+[设备孪生](iot-hub-devguide-device-twins.md)和[模块孪生](iot-hub-devguide-module-twins.md)可以包含标记和属性形式的任意 JSON 对象。 通过 IoT 中心，可将设备孪生和模块孪生作为包含所有孪生信息的单个 JSON 文档进行查询。
 
 例如，假定 IoT 中心设备孪生具有以下结构（模块孪生将与之类似，只是具有附加的 moduleId）：
 
@@ -112,7 +111,7 @@ SELECT * FROM devices
   WHERE properties.reported.connectivity IN ['wired', 'wifi']
 ```
 
-通常需要它才能识别包含特定属性的所有设备孪生。 为此，IoT 中心支持函数 `is_defined()`。 例如，若要检索定义了 `connectivity` 属性的设备孪生，请使用以下查询：
+通常需要它才能识别包含特定属性的所有设备孪生。 为此，IoT 中心支持函数 `is_defined()` 。 例如，若要检索定义了 `connectivity` 属性的设备孪生，请使用以下查询：
 
 ```SQL
 SELECT * FROM devices
@@ -159,7 +158,7 @@ SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 
 ### <a name="module-twin-queries"></a>模块孪生查询
 
-对模块孪生进行查询类似于对设备孪生进行查询，但使用你可以查询 device.modules 的一个不同集合/命名空间，即不“从设备”查询：
+对模块孪生进行查询类似于对设备孪生进行查询，但使用不同的集合/命名空间，即不从**设备**进行查询，而是从 **devices.modules** 进行查询：
 
 ```sql
 SELECT * FROM devices.modules
@@ -233,13 +232,13 @@ query.nextAsTwin(onResults);
 ### <a name="limitations"></a>限制
 
 > [!IMPORTANT]
-> 关于设备孪生中的最新值，查询结果可能有几分钟的延迟。 如果通过 ID 查询单个设备孪生，请使用检索设备双向 API。 此 API 始终包含最新值，并具有更高的节流限制。
+> 关于设备孪生中的最新值，查询结果可能有几分钟的延迟。 如果按 ID 查询单个设备孪生，请使用[获取孪生 REST API](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin)。 此 API 始终返回最新值，并具有更高的节流限制。 可以直接发出 REST API 或使用 [Azure IoT 中心服务 SDK](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks) 之一中的等效功能。
 
 目前，仅支持在基元类型（无对象）之间进行比较，例如，仅在这些属性具有基元值时才支持 `... WHERE properties.desired.config = properties.reported.config`。
 
 ## <a name="get-started-with-jobs-queries"></a>作业查询入门
 
-使用[作业](iot-hub-devguide-jobs.md)可对一组设备执行操作。 每个设备孪生包含名为**作业**的集合中该设备参与的作业的信息。
+使用[作业](iot-hub-devguide-jobs.md)可对一组设备执行操作。 每个设备孪生包含名为 **作业**的集合中该设备参与的作业的信息。
 
 ```json
 {
@@ -315,7 +314,7 @@ SELECT * FROM devices.jobs
 
 ## <a name="basics-of-an-iot-hub-query"></a>IoT 中心查询基础知识
 
-每个 IoT 中心查询都包括 SELECT 和 FROM 子句，以及可选的 WHERE 和 GROUP BY 子句。 每个查询针对 JSON 文档的集合（例如，设备孪生）运行。 FROM 子句指示要迭代的文档集合（**devices** 或 **devices.jobs**）。 然后，应用 WHERE 子句中的筛选器。 使用聚合时，将按 GROUP BY 子句中的指定对此步骤的结果分组。 对于每组，将按照 SELECT 子句中的指定生成一行。
+每个 IoT 中心查询都包括 SELECT 和 FROM 子句，以及可选的 WHERE 和 GROUP BY 子句。 每个查询针对 JSON 文档的集合（例如，设备孪生）运行。 FROM 子句指示要迭代的文档集合（**devices**、**devices.modules** 或 **devices.jobs**）。 然后，应用 WHERE 子句中的筛选器。 使用聚合时，将按 GROUP BY 子句中的指定对此步骤的结果分组。 对于每组，将按照 SELECT 子句中的指定生成一行。
 
 ```sql
 SELECT <select_list>
@@ -326,10 +325,10 @@ SELECT <select_list>
 
 ## <a name="from-clause"></a>FROM 子句
 
-FROM <from_specification> 子句只能假定两个值：用于查询设备孪生的“FROM devices”，或用于根据设备详情查询作业“FROM devices.jobs”。
-
+FROM <from_specification> 子句只能假定三个值：用于查询设备孪生的“FROM devices”、用于查询模块孪生的“FROM devices.modules”或用于根据设备详情查询作业“FROM devices.jobs”  。
 
 ## <a name="where-clause"></a>WHERE 子句
+
 **WHERE <filter_condition>** 子句是可选的。 它指定要将 FROM 集合中的 JSON 文档内含在结果中时需满足的一项或多项条件。 任何 JSON 文档必须将指定的条件求值为“true”才能包含在结果中。
 
 [表达式和条件](iot-hub-devguide-query-language.md#expressions-and-conditions)部分介绍了允许的条件。
@@ -366,6 +365,7 @@ SELECT [TOP <max number>] <projection list>
 目前，仅支持在针对设备孪生执行的聚合查询中使用除 **SELECT*** 以外的选择子句。
 
 ## <a name="group-by-clause"></a>GROUP BY 子句
+
 **GROUP BY <group_specification>** 子句是可选步骤，可在 WHERE 子句中指定的筛选器后、在 SELECT 中指定的投影前执行该子句。 它根据属性值来分组文档。 这些组用于生成 SELECT 子句中指定的聚合值。
 
 下面是使用 GROUP BY 的查询示例：
@@ -393,15 +393,15 @@ GROUP BY <group_by_element>
 > [!IMPORTANT]
 > 术语 `group` 目前被视为查询中的特殊关键字。 如果你使用 `group` 作为属性名，请考虑使用双括号将其括起来以避免错误，例如 `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'`。
 >
->
 
 ## <a name="expressions-and-conditions"></a>表达式和条件
+
 从较高层面讲，*表达式*可以：
 
 * 求值结果为 JSON 类型的实例（例如布尔值、数字、字符串、数组或对象）。
 * 由设备 JSON 文档中的操作数据以及使用内置运算符和函数的常量定义。
 
-条件是求值为布尔值的表达式。 将任何不同于布尔值“true”的常数视为“false”。 此规则包括“Null”、“undefined”、任何对象或数组实例、任何字符串和布尔值“false”。
+条件是求值为布尔值的表达式。 将任何不同于布尔值“true”的常数视为“false” 。 此规则包括“Null”、“undefined”、任何对象或数组实例、任何字符串和布尔值“false”  。
 
 表达式的语法为：
 
@@ -443,6 +443,7 @@ GROUP BY <group_by_element>
 | string_literal |字符串文本是以零个或多个 Unicode 字符序列或转义符序列表示的 Unicode 字符串。 字符串文本括在单引号或双引号中。 允许的转义符：`\'`、`\"`、`\\`、`\uXXXX`（由 4 个十六进制数字定义的 Unicode 字符）。 |
 
 ### <a name="operators"></a>运算符
+
 支持以下运算符：
 
 | 系列 | 运算符 |
@@ -452,20 +453,21 @@ GROUP BY <group_by_element>
 | 比较 |=、!=、<、>、<=、>=、<> |
 
 ### <a name="functions"></a>函数
+
 查询克隆和作业时唯一受支持的函数是：
 
-| 函数 | 描述 |
+| 函数 | 说明 |
 | -------- | ----------- |
 | IS_DEFINED(property) | 返回一个布尔值，指示是否已向属性分配值（包括 `null`）。 |
 
 在路由情况下，支持以下数学函数：
 
-| 函数 | 描述 |
+| 函数 | 说明 |
 | -------- | ----------- |
 | ABS(x) | 返回指定数值表达式的绝对（正）值。 |
 | EXP(x) | 返回指定数值表达式 (e^x) 的指数值。 |
 | POWER(x,y) | 返回指定表达式相对指定幂 (x^y) 的值。|
-| SQUARE(x) | 返回指定数字值的平方。 |
+| SQUARE(x)    | 返回指定数字值的平方。 |
 | CEILING(x) | 返回大于或等于指定数值表达式的最小整数值。 |
 | FLOOR(x) | 返回小于或等于指定数值表达式的最大整数。 |
 | SIGN(x) | 返回指定数值表达式的正数 (+1)、零 (0) 或负数 (-1)。|
@@ -473,12 +475,12 @@ GROUP BY <group_by_element>
 
 在路由情况下，支持以下检查和强制转换类型的函数：
 
-| 函数 | 描述 |
+| 函数 | 说明 |
 | -------- | ----------- |
 | AS_NUMBER | 将输入字符串转换为数字。 如果输入数字，则为 `noop`；如果字符串不表示数字，则为 `Undefined`。|
 | IS_ARRAY | 返回一个布尔值，指示指定表达式类型是否为数组。 |
 | IS_BOOL | 返回一个布尔值，指示指定表达式的类型是否为布尔表达式。 |
-| IS_DEFINED | 返回一个布尔，它指示属性是否已经分配了值。 |
+| IS_DEFINED | 返回一个布尔，它指示属性是否已经分配了值。 仅当该值为基元类型时才支持此功能。 基元类型包括字符串、布尔值、数字或 `null`。 不支持日期/时间、对象类型和数组。 |
 | IS_NULL | 返回一个布尔值，指示指定表达式的类型是否为 null。 |
 | IS_NUMBER | 返回一个布尔值，指示指定表达式的类型是否为数字。 |
 | IS_OBJECT | 返回一个布尔值，指示指定表达式的类型是否为 JSON 对象。 |
@@ -487,7 +489,7 @@ GROUP BY <group_by_element>
 
 在路由情况下，支持以下字符串函数：
 
-| 函数 | 描述 |
+| 函数 | 说明 |
 | -------- | ----------- |
 | CONCAT(x, y, …) | 返回一个字符串，该字符串是连接两个或多个字符串值的结果。 |
 | LENGTH(x) | 返回指定字符串表达式的字符数。|

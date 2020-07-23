@@ -1,10 +1,10 @@
 ---
 title: 使用 RDP 连接到 Azure VM 时排查身份验证错误 | Microsoft Docs
-description: ''
+description: 了解如何排查使用远程桌面协议 (RDP) 连接到 Azure 虚拟机 (VM) 时出现的身份验证错误。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 47d3b827099d3a4a7520ac66765d2928795b6e49
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 03356c0b4a93f4befdbc529523e58642137a8887
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60594923"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80420815"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>使用 RDP 连接到 Azure VM 时排查身份验证错误
 
@@ -39,7 +39,7 @@ ms.locfileid: "60594923"
 
 ### <a name="error-message-3-generic-connection-error"></a>错误消息 3（泛型连接错误）
 
-此计算机无法连接到远程计算机。再次尝试连接，如果问题仍然存在，请与远程计算机的所有者或网络管理员联系。
+此计算机无法连接到远程计算机。  再次尝试连接，如果问题仍然存在，请与远程计算机的所有者或网络管理员联系。
 
 ## <a name="cause"></a>原因
 
@@ -188,13 +188,13 @@ Reset-ComputerMachinePassword -Server "<COMPUTERNAME>" -Credential <DOMAIN CREDE
 REG query "HKLM\SYSTEM\CurrentControlSet\Control\Lsa" /v disabledomaincreds
 ```
 
-如果此项设置为“1”，则表示服务器已设置为不允许使用域凭据。 请将此项更改为“0”。
+如果此项设置为“1”，则表示服务器已设置为不允许使用域凭据  。 请将此项更改为“0”  。
 
 ### <a name="for-standalone-vms"></a>对于独立 VM
 
 #### <a name="check-minencryptionlevel"></a>检查 MinEncryptionLevel
 
-在 CMD 实例中，运行以下命令以查询 MinEncryptionLevel 注册表值：
+在 CMD 实例中，运行以下命令以查询 MinEncryptionLevel 注册表值  ：
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel
@@ -204,13 +204,13 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP
 
 * 4 (FIPS)：转到[检查符合 FIP 的算法连接](#fips-compliant)。
 
-* 3（128 位加密）：通过运行以下命令将严重性设置为“2”：
+* 3（128 位加密）：通过运行以下命令将严重性设置为“2”  ：
 
     ```cmd
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 2 /f
     ```
 
-* 2（可能的最高加密，由客户端指定）：你可以尝试通过运行以下命令将加密设置为最小值“1”：
+* 2（可能的最高加密，由客户端指定）：你可以尝试通过运行以下命令将加密设置为最小值“1”  ：
 
     ```cmd
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 1 /f
@@ -228,7 +228,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Prot
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled
 ```
 
-如果返回值不全是“1”，则表示协议已禁用。 要启用这些协议，请运行以下命令：
+如果返回值不全是“1”，则表示协议已禁用  。 要启用这些协议，请运行以下命令：
 
 ```cmd
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
@@ -246,7 +246,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Prot
 > [!Note]
 > 从来宾操作系统日志获取 SCHANNEL 错误的 SSH/TLS 版本 x.x.
 
-#### <a name="fips-compliant"></a>检查符合 FIP 的算法连接
+#### <a name="check-fips-compliant-algorithms-connections"></a><a name="fips-compliant"></a>检查符合 FIPs 标准的算法连接
 
 可以强制执行远程桌面以仅使用符合 FIP 的算法连接。 可使用注册表项设置该操作。 为此，请打开提升的命令提示符窗口，然后查询以下项：
 
@@ -254,7 +254,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Prot
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy" /v Enabled
 ```
 
-如果该命令返回“1”，请将注册表值更改为“0”。
+如果该命令返回“1”，请将注册表值更改为“0”   。
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy" /v Enabled /t REG_DWORD /d 0
@@ -266,7 +266,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy" /v Ena
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel
 ```
 
-如果该命令返回“4”，请将注册表值更改为“2”
+如果该命令返回“4”，请将注册表值更改为“2”  
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 2

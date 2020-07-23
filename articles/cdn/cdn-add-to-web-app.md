@@ -3,24 +3,24 @@ title: 教程 - 向 Azure 应用服务 Web 应用添加Azure CDN | Microsoft Doc
 description: 本教程演示如何向 Azure 应用服务 Web 应用添加 Azure 内容分发网络 (CDN)，以便在全球靠近客户的服务器缓存和分发静态文件。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/14/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 33b47d33262a4968a0eafb9ec70ef73e50975735
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 18054e47a987a7e79e9083b6f7a2f20b059c7f28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602811"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81254602"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>教程：向 Azure 应用服务 Web 应用添加 Azure CDN
 
@@ -40,7 +40,7 @@ ms.locfileid: "53602811"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
 - [安装 Git](https://git-scm.com/)
 - [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
@@ -64,23 +64,23 @@ ms.locfileid: "53602811"
 
 ![在门户中选择应用服务应用](media/cdn-add-to-web-app/portal-select-app-services.png)
 
-在“应用服务”页的“设置”部分，选择“网络”>“为应用配置 Azure CDN”。
+在“应用服务”页的“设置”部分，选择“网络”>“为应用配置 Azure CDN”。  
 
 ![在门户中选择 CDN](media/cdn-add-to-web-app/portal-select-cdn.png)
 
-在“Azure 内容分发网络”页中，按表中的指定提供“新建终结点”设置。
+在“Azure 内容分发网络”页中，按表中的指定提供“新建终结点”设置。 
 
 ![在门户中创建配置文件和终结点](media/cdn-add-to-web-app/portal-new-endpoint.png)
 
-| 设置 | 建议的值 | Description |
+| 设置 | 建议的值 | 说明 |
 | ------- | --------------- | ----------- |
 | **CDN 配置文件** | myCDNProfile | CDN 配置文件是具有同一定价层的 CDN 终结点的集合。 |
 | **定价层** | 标准 Akamai | [定价层](cdn-features.md)指定提供商和可用功能。 本教程使用标准 Akamai。 |
-| **CDN 终结点名称** | azureedge.net 域中的任何唯一名称 | 可在 *&lt;endpointname&gt;*.azureedge.net 域中访问缓存的资源。
+| **CDN 终结点名称** | azureedge.net 域中的任何唯一名称 | 可在 *&lt;endpointname&gt;* .azureedge.net 域中访问缓存的资源。
 
 选择“创建”创建 CDN 配置文件。
 
-Azure 将创建配置文件和终结点。 新的终结点显示在“终结点”列表中，预配后其状态为“正在运行”。
+Azure 将创建配置文件和终结点。 新的终结点显示在“终结点”列表中，预配后其状态为“正在运行” 。
 
 ![列表中的新建终结点](media/cdn-add-to-web-app/portal-new-endpoint-in-list.png)
 
@@ -89,9 +89,9 @@ Azure 将创建配置文件和终结点。 新的终结点显示在“终结点�
  终结点不会立即可供使用，因为注册传播需花时间： 
    - 对于 **Microsoft 推出的 Azure CDN 标准版**配置文件，传播通常可在 10 分钟内完成。 
    - 对于 **Akamai 的 Azure CDN 标准版**配置文件，传播通常可在一分钟内完成。 
-   - 对于 Verizon 的 Azure CDN 标准版和 Verizon 的 Azure CDN 高级版配置文件，传播通常可在 90 分钟内完成。 
+   - 对于 Verizon 的 Azure CDN 标准版和 Verizon 的 Azure CDN 高级版配置文件，传播通常可在 90 分钟内完成 。 
 
-示例应用有一个 index.html 文件，此外还有 css、img 和 js 文件夹，其中包含其他静态资产。 在 CDN 终结点上，所有这些文件的内容路径是相同的。 例如，以下两个 URL 都可以访问 css 文件夹中的 bootstrap.css 文件：
+示例应用有一个 index.html 文件，此外还有 css、img 和 js 文件夹，其中包含其他静态资产   。 在 CDN 终结点上，所有这些文件的内容路径是相同的。 例如，以下两个 URL 都可以访问 css 文件夹中的 bootstrap.css 文件： 
 
 ```
 http://<appname>.azurewebsites.net/css/bootstrap.css
@@ -125,7 +125,7 @@ CDN 定期根据生存时间 (TTL) 配置刷新其在源 Web 应用中的资源�
 
 ### <a name="deploy-a-change-to-the-web-app"></a>将更改部署到 Web 应用
 
-打开 index.html 文件，将“- V2”添加到 H1 标题，如以下示例所示： 
+打开 index.html 文件，将“- V2”添加到 H1 标题，如以下示例所示 ： 
 
 ```
 <h1>Azure App Service - Sample Static HTML Site - V2</h1>
@@ -166,7 +166,7 @@ http://<endpointname>.azureedge.net/index.html
 
 ![选择终结点](media/cdn-add-to-web-app/portal-select-endpoint.png)
 
-在“终结点”页顶部，选择“清除”。
+在“终结点”页顶部，选择“清除” 。
 
 ![选择“清除”](media/cdn-add-to-web-app/portal-select-purge.png)
 
@@ -182,7 +182,7 @@ http://<endpointname>.azureedge.net/index.html
 
 ![清除通知](media/cdn-add-to-web-app/portal-purge-notification.png)
 
-浏览到 index.html 的 CDN 终结点 URL 时，可以看到之前向主页标题添加的 V2，这表示 CDN 缓存已刷新。
+浏览到 index.html 的 CDN 终结点 URL 时，可以看到之前向主页标题添加的 V2，这表示 CDN 缓存已刷新 。
 
 ```
 http://<endpointname>.azureedge.net/index.html
@@ -206,9 +206,9 @@ Azure CDN 提供以下缓存行为选项：
 
 ### <a name="change-the-cache-behavior"></a>更改缓存行为
 
-在 Azure 门户的“CDN 终结点”页上，选择“缓存”。
+在 Azure 门户的“CDN 终结点”页上，选择“缓存”。 
 
-从“查询字符串缓存行为”下拉列表中选择“缓存每个唯一的 URL”。
+从“查询字符串缓存行为”下拉列表中选择“缓存每个唯一的 URL”。 
 
 选择“保存”。
 
@@ -226,14 +226,14 @@ Azure CDN 返回当前的 Web 应用内容，其在标题中包含“V2”。
 
 若要确保此页缓存在 CDN 中，请刷新页面。 
 
-打开“index.html”，将“V2”更改为“V3”，然后部署该更改。 
+打开“index.html”，将“V2”更改为“V3”，然后部署该更改  。 
 
 ```bash
 git commit -am "version 3"
 git push azure master
 ```
 
-在浏览器中，转到包含新的查询字符串（例如 `q=2`）的 CDN 终结点 URL。 Azure CDN 获取当前的 index.html 文件并显示“V3”。 但是，如果使用 `q=1` 查询字符串导航到 CDN 终结点，则会显示“V2”。
+在浏览器中，转到包含新的查询字符串（例如 `q=2`）的 CDN 终结点 URL。 Azure CDN 获取当前的 index.html 文件并显示“V3” 。 但是，如果使用 `q=1` 查询字符串导航到 CDN 终结点，则会显示“V2”。
 
 ```
 http://<endpointname>.azureedge.net/index.html?q=2

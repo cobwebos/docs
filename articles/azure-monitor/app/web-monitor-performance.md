@@ -1,24 +1,14 @@
 ---
 title: 使用 Application Insights 监视应用的运行状况和使用情况
 description: Application Insights 入门。 分析本地或 Microsoft Azure 应用程序的使用情况、可用性和性能。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 40650472-e860-4c1b-a589-9956245df307
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: d7b8037f50fc4877fe233925f3e922648169f73b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 873fc41585c387246d83008a8f97d6c4d9a32c3b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60373000"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80985059"
 ---
 # <a name="monitor-performance-in-web-applications"></a>在 Web 应用程序中监视性能
 
@@ -29,16 +19,15 @@ Application Insights 可监视 Java 和 ASP.NET Web 应用程序和服务、WCF 
 
 在客户端，Application Insights 可从网页和各种设备（包括 iOS、Android 和 Windows 应用商店应用）获取遥测。
 
-## <a name="setup"></a>设置性能监视
+## <a name="set-up-performance-monitoring"></a><a name="setup"></a>设置性能监视
 如果尚未将 Application Insights 添加到项目（即，如果它没有 ApplicationInsights.config），则选择以下方式之一开始操作：
 
 * [ASP.NET Web 应用](../../azure-monitor/app/asp-net.md)
   * [添加异常监视](../../azure-monitor/app/asp-net-exceptions.md)
   * [添加依赖项监视](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Java EE Web 应用](../../azure-monitor/app/java-get-started.md)
-  * [添加依赖项监视](../../azure-monitor/app/java-agent.md)
+* [Java EE Web 应用](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
 
-## <a name="view"></a>探索性能指标
+## <a name="exploring-performance-metrics"></a><a name="view"></a>探索性能指标
 在 [Azure 门户](https://portal.azure.com)中，浏览到为应用程序设置的 Application Insights 资源。 “概述”边栏选项卡显示基本性能数据：
 
 单击任意图表查看更多详细信息，并查看更长时间段的结果。 例如，单击“请求”磁贴，并选择时间范围：
@@ -52,10 +41,10 @@ Application Insights 可监视 Java 和 ASP.NET Web 应用程序和服务、WCF 
 > [!NOTE]
 > **取消选中所有指标**查看可用的完整选择。 指标分为多个组；选择某个组的任意成员时，仅显示该组的其他成员。
 
-## <a name="metrics"></a>这一切意味着什么？ 性能磁贴和报表
+## <a name="what-does-it-all-mean-performance-tiles-and-reports"></a><a name="metrics"></a>这一切意味着什么？ 性能磁贴和报表
 有多个性能指标可供获取。 让我们先从默认在应用程序边栏选项卡上显示的指标开始。
 
-### <a name="requests"></a>Requests
+### <a name="requests"></a>请求
 指定时间段内收到的 HTTP 请求数。 将此结果与其他报表中的结果比较，查看应用行为如何因负载而异。
 
 HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
@@ -105,18 +94,18 @@ HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
 
 *我看不到“添加警报”按钮。* - 这是否是你对其具有只读访问权限的组帐户？ 请咨询帐户管理员。
 
-## <a name="diagnosis"></a>诊断问题
+## <a name="diagnosing-issues"></a><a name="diagnosis"></a>诊断问题
 下面是查找和诊断性能问题的一些提示：
 
 * 设置 [Web 测试][availability]，以便在网站出现故障或响应错误或缓慢时得到警报。 
 * 将请求计数与其他指标比较，查看故障或响应缓慢是否与负载有关。
 * 在代码中[插入和搜索跟踪语句][diagnostic]以帮助查明问题。
 * 使用[实时指标流][livestream]监视正在运行的 Web 应用。
-* 使用.NET 应用程序的状态捕获[快照调试器][snapshot]。
+* 使用[快照调试器][snapshot]捕获 .NET 应用程序的状态。
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>通过性能调查体验来发现和修复性能瓶颈
 
-可以使用新的性能调查体验来审查 Web 应用中性能低下的操作。 可以快速选择一个特定的性能低下的操作，并使用[探查器](../../azure-monitor/app/profiler.md)深入到代码中来查明导致操作性能低下的根源。 使用新的为选定操作显示的持续时间分布，只需一瞥，便可快速评估客户的体验有多糟糕。 你可以看到每个性能低下的操作影响了多少用户交互。 在下面的示例中，我们决定更详细地查看“GET Customers/Details”操作的体验。 在持续时间分布中，我们可以看到有三个峰值。 最左侧的峰值约为 400 ms，表示响应体验很棒。 中间峰值约为 1.2 s，表示体验一般。 最后一个是 3.6 s，这里出现一个小的峰值，表示 99% 的体验，这可能会导致我们的客户因不满意而离开。 该体验比同一操作的很棒体验慢十倍。 
+可以使用新的性能调查体验来审查 Web 应用中性能低下的操作。 您可以快速选择特定的慢速操作并使用[探查器](../../azure-monitor/app/profiler.md)使操作缓慢地降低到代码的速度。 使用新的为选定操作显示的持续时间分布，只需一瞥，便可快速评估客户的体验有多糟糕。 你可以看到每个性能低下的操作影响了多少用户交互。 在下面的示例中，我们决定更详细地查看“GET Customers/Details”操作的体验。 在持续时间分布中，我们可以看到有三个峰值。 最左侧的峰值约为 400 ms，表示响应体验很棒。 中间峰值约为 1.2 s，表示体验一般。 最后一个是 3.6 s，这里出现一个小的峰值，表示 99% 的体验，这可能会导致我们的客户因不满意而离开。 该体验比同一操作的很棒体验慢十倍。 
 
 ![“GET Customers/Details”三个持续时间峰值](./media/web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
 
@@ -139,10 +128,10 @@ HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
 ![“GET Customers/Details”在 7 天范围中的三个持续时间峰值和时间窗口](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
 
 
-## <a name="next"></a>后续步骤
+## <a name="next-steps"></a><a name="next"></a>后续步骤
 [Web 测试][availability] - 使 Web 请求按固定间隔从世界各地发送到应用程序。
 
-[捕获和搜索诊断跟踪][diagnostic] - 插入跟踪调用并筛查结果以查明问题。
+[捕获和搜索诊断跟踪][diagnostic] - 插入跟踪调用并筛选结果以查明问题。
 
 [使用情况跟踪][usage] - 查明用户使用应用程序的方式。
 

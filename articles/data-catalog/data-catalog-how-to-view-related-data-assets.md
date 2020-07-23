@@ -1,18 +1,17 @@
 ---
 title: 如何查看 Azure 数据目录中的相关数据资产
 description: 本文介绍如何在 Azure 数据目录中查看所选数据资产的相关数据资产。
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: b01c328812113ad721b7632978ad28e54a6a3ef1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 08/01/2019
+ms.openlocfilehash: fb5352b4cc84801296d9e621053672328b02692a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61000090"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523360"
 ---
 # <a name="how-to-view-related-data-assets-in-azure-data-catalog"></a>如何查看 Azure 数据目录中的相关数据资产？
 借助 Azure 数据目录，可以查看与所选数据资产相关的数据资产，并查看它们之间的关系。 
@@ -29,11 +28,11 @@ ms.locfileid: "61000090"
 > 要使数据目录导入两个数据资产之间的关系，必须同时注册这两个资产。 如果已单独添加其中一个数据资产，请重新添加该资产和另一个数据资产以导入它们之间的关系。
 
 ## <a name="view-related-data-assets"></a>查看相关数据资产
-若要查看与所选数据集相关的数据资产，请使用下图所示的“关系”选项卡： 
+若要查看与所选数据集相关的数据资产，请使用下图所示的“关系”选项卡****： 
 
 ![Azure 数据目录 - 查看相关数据资产](media/data-catalog-how-to-view-related-data-assets/relationships-tab.png)
 
-在此示例中，所选 ProductSubcategory 数据资产之间存在两种关系： 
+在此示例中，所选 ProductSubcategory 数据资产之间存在两种关系****： 
 
 - 产品表的 ProductSubcategoryID 列与所选 ProductSubcategory 表的 ProductSubcategoryID 列之间具有外键关系。 
 - ProductSubCategory 表的 ProductCategoryID 列与所选 ProductCategory 表的 ProductCategoryID 列之间具有外键关系。

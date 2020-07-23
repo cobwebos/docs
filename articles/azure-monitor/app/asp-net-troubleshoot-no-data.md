@@ -1,40 +1,32 @@
 ---
 title: 排查无数据问题 - 用于 .NET 的 Application Insights
 description: 在 Azure Application Insights 中看不到数据？ 试试这里。
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: e231569f-1b38-48f8-a744-6329f41d91d3
-ms.service: application-insights
-ms.workload: mobile
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/23/2018
-ms.author: mbullwin
-ms.openlocfilehash: cf818756f583974a8a9b53a9a0cce31dd93d042b
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.date: 05/21/2020
+ms.openlocfilehash: 351ef145ab65fee8397034912f9a6ce295f1f909
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299308"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517161"
 ---
-# <a name="troubleshooting-no-data---application-insights-for-net"></a>排查无数据问题 - 用于 .NET 的 Application Insights
+# <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>排查无数据问题 - 用于 .NET/.NET Core 的 Application Insights
+
 ## <a name="some-of-my-telemetry-is-missing"></a>缺少一些遥测数据
 *在 Application Insights 中，我只看到应用生成的一部分事件。*
 
 * 如果持续看到同一个部分，可能是由于自适应[采样](../../azure-monitor/app/sampling.md)所导致。 要确认这一点，请打开“搜索”（通过“概述”边栏选项卡），并查看请求或其他事件的实例。 单击“属性”部分底部的“...”，获取完整的属性详细信息。 如果请求计数 > 1，则表示采样正在进行。
 * 否则，有可能是已达到定价计划的[数据率限制](../../azure-monitor/app/pricing.md#limits-summary)。 系统每隔一分钟应用这些限制。
 
-*我随机遇到数据丢失。*
+我不时地遇到数据丢失问题。
 
-* 检查您是否遇到的数据损失时[遥测通道](telemetry-channels.md#does-applicationinsights-channel-offer-guaranteed-telemetry-delivery-or-what-are-the-scenarios-where-telemetry-can-be-lost)
+* 检查是否在[遥测通道](telemetry-channels.md#does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost)中发生了数据丢失问题
 
-* 检查遥测通道中的任何已知问题[Github 存储库](https://github.com/Microsoft/ApplicationInsights-dotnet/issues)
+* 检查是否发生了遥测通道 [GitHub 存储库](https://github.com/Microsoft/ApplicationInsights-dotnet/issues)中所述的任何已知问题
 
-*当应用程序即将停止时遇到在控制台应用程序或 Web 应用上的数据丢失。*
+当应用即将停止时，控制台应用或 Web 应用中出现了数据丢失问题。
 
-* SDK 通道将遥测数据保留在缓冲区，并将其发送批。 如果应用程序正在关闭，你可能需要显式调用[flush （)](api-custom-events-metrics.md#flushing-data)。 行为`Flush()`取决于实际[通道](telemetry-channels.md#built-in-telemetrychannels)使用。
+* SDK 通道在缓冲区中保留遥测数据，并分批发送这些数据。 如果应用程序正在关闭，则你可能需要显式调用 [Flush()](api-custom-events-metrics.md#flushing-data)。 `Flush()` 的行为取决于使用的实际[通道](telemetry-channels.md#built-in-telemetry-channels)。
 
 ## <a name="no-data-from-my-server"></a>服务器未提供数据
 *我已在 Web 服务器上安装应用，但未看到服务器提供任何遥测数据。服务器在开发计算机上正常运行。*
@@ -46,15 +38,15 @@ ms.locfileid: "66299308"
 
 * 请参阅[排查状态监视器问题](../../azure-monitor/app/monitor-performance-live-website-now.md#troubleshoot)。
 
-## <a name="q01"></a>Visual Studio 中没有“添加 Application Insights”选项
+## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>Visual Studio 中没有“添加 Application Insights”选项
 *在解决方案资源管理器中右键单击现有项目时，未看到任何 Application Insights 选项。*
 
 * 工具并非支持所有类型的 .NET 项目。 支持 Web 和 WCF 项目。 对于其他项目类型，例如桌面或服务应用程序，仍可以[手动将 Application Insights SDK 添加到项目](../../azure-monitor/app/windows-desktop.md)。
-* 请务必使用 [Visual Studio 2013 Update 3 或更高版本](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs)。 该软件预装了开发人员分析工具，其中提供了 Application Insights SDK。
-* 选择“工具”、“扩展和更新”，检查“开发人员分析工具”是否已安装并启用。    如果是，请单击“更新”查看是否有可用的更新。 
-* 打开“新建项目”对话框，选择“ASP.NET Web 应用程序”。 如果看到了 Application Insights 选项，则表示工具已安装。 如果没有，请尝试卸载然后重新安装 Developer Analytics Tools。
+* 请务必使用 [Visual Studio 2013 Update 3 或更高版本](/visualstudio/releasenotes/vs2013-update3-rtm-vs)。 该软件预装了开发人员分析工具，其中提供了 Application Insights SDK。
+* 选择“工具”、“扩展和更新”，检查“开发人员分析工具”是否已安装并启用。   如果是，请单击“更新”查看是否有可用的更新。
+* 打开“新建项目”对话框，选择“ASP.NET Web 应用程序”。 如果看到了 Application Insights 选项，则表示工具已安装。 如果未看到，请尝试卸载并重新安装 Developer Analytics Tools。
 
-## <a name="q02"></a>添加 Application Insights 失败
+## <a name="adding-application-insights-failed"></a><a name="q02"></a>添加 Application Insights 失败
 *尝试将 Application Insights 添加到现有项目时看到错误消息。*
 
 可能的原因：
@@ -69,12 +61,12 @@ ms.locfileid: "66299308"
 * 在浏览器中，检查是否可以访问 [Azure 门户](https://portal.azure.com)。 打开“设置”并查看是否有任何限制。
 * [将 Application Insights 添加到现有项目](../../azure-monitor/app/asp-net.md)：在解决方案资源管理器中，右键单击项目并选择“添加 Application Insights”。
 
-## <a name="emptykey"></a>遇到错误“检测密钥不能为空”
+## <a name="i-get-an-error-instrumentation-key-cannot-be-empty"></a><a name="emptykey"></a>遇到错误“检测密钥不能为空”
 可能是在安装 Application Insights 或日志记录适配器时发生了问题。
 
-在解决方案资源管理器中右键单击项目，并选择“Application Insights”>“配置 Application Insights”  。 将得到一个对话框，邀请你登录 Azure 并创建 Application Insights 资源或重复使用现有资源。
+在解决方案资源管理器中右键单击项目，并选择“Application Insights”>“配置 Application Insights”。 将得到一个对话框，邀请你登录 Azure 并创建 Application Insights 资源或重复使用现有资源。
 
-## <a name="NuGetBuild"></a> 生成服务器上出现“缺少 NuGet 包”
+## <a name="nuget-packages-are-missing-on-my-build-server"></a><a name="NuGetBuild"></a> 生成服务器上出现“缺少 NuGet 包”
 *在开发计算机上调试时所有生成都没有问题，但生成服务器上出现 NuGet 错误。*
 
 请参阅 [NuGet Package Restore](https://docs.nuget.org/Consume/Package-Restore)（NuGet 包还原）和 [Automatic Package Restore](https://docs.nuget.org/Consume/package-restore/migrating-to-automatic-package-restore)（自动包还原）。
@@ -91,10 +83,10 @@ ms.locfileid: "66299308"
 解决方法：
 
 * 确保 Visual Studio 版本为 2013 Update 3 或更高。
-* 选择“工具”、“扩展和更新”，检查“开发人员分析工具”是否已安装并启用。    如果是，请单击“更新”查看是否有可用的更新。 
-* 在解决方案资源管理器中右键单击项目。 如果看到命令“Application Insights”>“配置 Application Insights”，请使用它将项目连接到 Application Insights 服务中的资源。 
+* 选择“工具”、“扩展和更新”，检查“开发人员分析工具”是否已安装并启用。   如果是，请单击“更新”查看是否有可用的更新。
+* 在解决方案资源管理器中右键单击项目。 如果看到命令“Application Insights”>“配置 Application Insights”，请使用它将项目连接到 Application Insights 服务中的资源。
 
-否则，开发人员分析工具不直接支持项目类型。 要查看遥测数据，请登录到 [Azure 门户](https://portal.azure.com)，在左侧导航栏中选择“Application Insights”，然后选择应用程序。
+否则，Developer Analytics Tools 不会直接支持你的项目类型。 要查看遥测数据，请登录到 [Azure 门户](https://portal.azure.com)，在左侧导航栏中选择“Application Insights”，然后选择应用程序。
 
 ## <a name="access-denied-on-opening-application-insights-from-visual-studio"></a>从 Visual Studio 打开 Application Insights 时出现“拒绝访问”
 *使用“打开 Application Insights”菜单命令时转到了 Azure 门户，但同时出现“拒绝访问”错误。*
@@ -128,23 +120,23 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
   然后，会看到一些摘要图表。 可以逐个单击这些图表查看详细信息。
 * 在 Visual Studio 中调试应用时，请单击“Application Insights”按钮。
 
-## <a name="q03"></a>没有服务器数据（或根本没有数据）
+## <a name="no-server-data-or-no-data-at-all"></a><a name="q03"></a>没有服务器数据（或根本没有数据）
 *我运行了应用，并在 Microsoft Azure 中打开 Application Insights 服务，但所有图表都显示“了解如何收集...”或“未配置”。* 或者，*只有页面视图和用户数据，但没有任何服务器数据。*
 
 * 在 Visual Studio 中以调试模式运行应用程序 (F5)。 使用应用程序，以便生成一些遥测。 检查是否可以在 Visual Studio 的“输出”窗口中看到记录的事件。  
-  ![](./media/asp-net-troubleshoot-no-data/output-window.png)
+  ![显示在 Visual Studio 中以调试模式运行应用程序的屏幕截图。](./media/asp-net-troubleshoot-no-data/output-window.png)
 * 在 Application Insights 门户中，打开[诊断搜索](../../azure-monitor/app/diagnostic-search.md)。 数据通常会先显示在此处。
 * 单击“刷新”按钮。 边栏选项卡会定期自行刷新，但你也可以手动刷新。 时间范围越大，刷新间隔就越长。
-* 检查检测密钥是否匹配。 在 Application Insights 门户的应用主边栏选项卡中，查看“概要”下拉列表中的“检测密钥”。   然后，在 Visual Studio 的项目中，打开 ApplicationInsights.config 并找到 `<instrumentationkey>`。 检查两个密钥是否相同。 如果不同：  
+* 检查检测密钥是否匹配。 在 Application Insights 门户的应用主边栏选项卡中，查看“概要”下拉列表中的“检测密钥”。  然后，在 Visual Studio 的项目中，打开 ApplicationInsights.config 并找到 `<instrumentationkey>`。 检查两个密钥是否相同。 如果不同：  
   * 在门户中单击“Application Insights”，并找到具有正确密钥的应用资源；或
   * 在 Visual Studio 解决方案资源管理器中右键单击项目，并依次选择“Application Insights”、“配置”。 重置应用，将遥测数据发送到正确的资源。
   * 如果找不到匹配的密钥，请检查在 Visual Studio 中使用的登录凭据是否与门户中使用的相同。
 * 在 [Microsoft Azure 主页仪表板](https://portal.azure.com)中，查看服务运行状况地图。 如果看到警报指示，请等待它们恢复“正常”，关闭再重新打开 Application Insights 应用程序边栏选项卡。
-* 另请查看[我们的状态博客](https://blogs.msdn.microsoft.com/servicemap-status/)。
+* 另请查看[我们的状态博客](https://techcommunity.microsoft.com/t5/azure-monitor-status/bg-p/AzureMonitorStatusBlog)。
 * 是否针对[服务器端 SDK](../../azure-monitor/app/api-custom-events-metrics.md) 编写了可能更改 `TelemetryClient` 实例或 `TelemetryContext` 中的检测密钥的任何代码？ 或者，是否编写了可能筛选掉过多内容的[筛选或采样配置](../../azure-monitor/app/api-filtering-sampling.md)？
 * 如果编辑了 ApplicationInsights.config，请仔细检查 [TelemetryInitializers 和 TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md) 的配置。 命名不当的类型或参数可能导致 SDK 不发送任何数据。
 
-## <a name="q04"></a>未提供有关页面视图、浏览器和使用情况的任何数据
+## <a name="no-data-on-page-views-browsers-usage"></a><a name="q04"></a>未提供有关页面视图、浏览器和使用情况的任何数据
 *在“服务器响应时间”和“服务器请求”图表中看到了数据，但“页面视图加载时间”或者“浏览器”或“使用情况”边栏选项卡中没有任何数据。*
 
 这些数据来自网页中的脚本。 
@@ -162,11 +154,10 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>将应用发布到服务器后未看到（服务器）数据
 * 请检查是否确实将 Microsoft. ApplicationInsights DLL 连同 Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll 一起复制到了服务器。
 * 在防火墙中，可能需要[打开某些 TCP 端口](../../azure-monitor/app/ip-addresses.md)。
-* 如果必须使用代理在企业网络外部发送数据，请在 Web.config 中设置 [defaultProxy](https://msdn.microsoft.com/library/aa903360.aspx)
+* 如果必须使用代理在企业网络外部发送数据，请在 Web.config 中设置 [defaultProxy](/previous-versions/dotnet/netframework-1.1/aa903360(v=vs.71))
 * Windows Server 2008：请确保已安装以下更新：[KB2468871](https://support.microsoft.com/kb/2468871)、[KB2533523](https://support.microsoft.com/kb/2533523)、[KB2600217](https://support.microsoft.com/kb/2600217)。
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>我以前看到了数据，但现在看不到
-* 请查看[状态博客](https://blogs.msdn.com/b/applicationinsights-status/)。
 * 是否达到了数据点的每月配额？ 打开“设置/配额和定价”即可检查。如果达到了配额，可以升级计划，或付费购买更多的容量。 请参阅[定价方案](https://azure.microsoft.com/pricing/details/application-insights/)。
 
 ## <a name="i-dont-see-all-the-data-im-expecting"></a>未按预期看到所有数据
@@ -179,7 +170,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 在 2018 年 2 月 5 日，我们宣布我们删除了客户端 IP 地址的日志记录。 这不会影响地理位置。
 
 > [!NOTE]
-> 如果需要 IP 地址的前 3 个八位字节，则可以使用[遥测初始化程序](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer)添加自定义属性。
+> 如果需要 IP 地址的前 3 个八位字节，则可以使用[遥测初始化程序](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)添加自定义属性。
 > 这不会影响 2018 年 2 月 5 日之前收集的数据。
 
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>用户遥测数据包含错误的地理数据
@@ -192,7 +183,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 
 按照这些说明来捕获框架的故障排除日志。
 
-### <a name="net-framework"></a>.NET framework
+### <a name="net-framework"></a>.NET Framework
 
 1. 从 NuGet 安装 [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) 包。 安装的版本必须与当前安装的 `Microsoft.ApplicationInsighs` 版本匹配
 
@@ -215,7 +206,9 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 
 ### <a name="net-core"></a>.NET Core
 
-1. 安装[Microsoft.AspNetCore.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNetCore.ApplicationInsights.HostingStartup)从 NuGet 包。 安装的版本必须与当前安装的 `Microsoft.ApplicationInsights` 版本匹配
+1. 从 NuGet 安装 ASP.NET Core 包的[APPLICATION INSIGHTS SDK NuGet 包](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)。 安装的版本必须与当前安装的版本匹配 `Microsoft.ApplicationInsights` 。
+
+   最新版本的 Applicationinsights.config 是2.14.0，它是指 Applicationinsights.config 版本2.14.0。 因此，要安装的 Applicationinsights.config 版本应为2.14.0。
 
 2. 修改 `Startup.cs` 类中的 `ConfigureServices` 方法：
 
@@ -233,5 +226,38 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 
 4. 完成后还原这些更改。
 
+
+## <a name="collect-logs-with-perfview"></a><a name="PerfView"></a> 使用 PerfView 收集日志
+[PerfView](https://github.com/Microsoft/perfview) 是一个免费的诊断和性能分析工具，它可以从许多源收集诊断信息并将其可视化，从而帮助你查明 CPU、内存和其他问题。
+
+PerfView 可以捕获 Application Insights SDK 日志和 EventSource 自我故障排除日志。
+
+若要收集日志，请下载 PerfView 并运行以下命令：
+```cmd
+PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-ApplicationInsights-Core,*Microsoft-ApplicationInsights-Data,*Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,*Microsoft-ApplicationInsights-Extensibility-DependencyCollector,*Microsoft-ApplicationInsights-Extensibility-HostingStartup,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,*Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,*Microsoft-ApplicationInsights-Extensibility-Web,*Microsoft-ApplicationInsights-Extensibility-WindowsServer,*Microsoft-ApplicationInsights-WindowsServer-Core,*Microsoft-ApplicationInsights-Extensibility-EventSourceListener,*Microsoft-ApplicationInsights-AspNetCore
+```
+
+可根据需要修改这些参数：
+- **MaxCollectSec**。 设置此参数可防止 PerfView 无限期运行并影响服务器的性能。
+- **OnlyProviders**。 设置此参数可以仅从 SDK 收集日志。 可根据自己的具体调查自定义此列表。 
+- **NoGui**。 设置此参数可以在不使用 GUI 的情况下收集日志。
+
+
+有关详细信息，请参阅：
+- [使用 PerfView 记录性能跟踪](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView)。
+- [Application Insights 事件源](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
+
+## <a name="collect-logs-with-dotnet-trace"></a>使用 dotnet-trace 收集日志
+
+在基于 Linux 的环境中，收集用于故障排除的日志的另一种特别有用的方法是使用 [`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace)
+
+```bash
+dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore
+```
+
+## <a name="how-to-remove-application-insights"></a>如何删除 Application Insights
+
+按照[此文](../../azure-monitor/app/remove-application-insights.md)中提供的步骤，了解如何在 Visual Studio 中删除 Application Insights。
+
 ## <a name="still-not-working"></a>仍然无法解决问题...
-* [Application Insights 论坛](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
+* [有关 Application Insights 的 Microsoft 问答页](/answers/topics/azure-monitor.html)

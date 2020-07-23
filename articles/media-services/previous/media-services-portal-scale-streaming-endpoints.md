@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 23eb51428dcf4961febfb592bf957bb8beeeda57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 40820170bae275f090c5f898387698fc562e59ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61463102"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80985535"
 ---
 # <a name="scale-streaming-endpoints-with-the-azure-portal"></a>使用 Azure 门户缩放流式处理终结点
 ## <a name="overview"></a>概述
@@ -29,22 +28,22 @@ ms.locfileid: "61463102"
 > 
 > 
 
-高级流式处理终结点适合用于高级工作负载，同时提供可缩放的专用带宽容量。 默认情况下，使用高级流式处理终结点的客户会获得一个流式处理单位 (SU)。 可通过添加 SU 来缩放流式处理终结点。 每个 SU 均为应用程序提供额外的带宽容量。 有关流式处理终结点类型和 CDN 配置的详细信息，请参阅[流式处理终结点概述](media-services-streaming-endpoints-overview.md)主题。
+高级  流式处理终结点适合用于高级工作负载，同时提供可缩放的专用带宽容量。 默认情况下，使用高级  流式处理终结点的客户会获得一个流式处理单位 (SU)。 可通过添加 SU 来缩放流式处理终结点。 每个 SU 为应用程序提供额外的带宽容量。 有关流式处理终结点类型和 CDN 配置的详细信息，请参阅[流式处理终结点概述](media-services-streaming-endpoints-overview.md)主题。
  
 本主题介绍了如何缩放流式处理终结点。
 
-有关定价详细信息，请参阅[媒体服务定价详细信息](https://go.microsoft.com/fwlink/?LinkId=275107)。
+有关定价详细信息，请参阅[媒体服务定价详细信息](https://azure.microsoft.com/pricing/details/media-services/)。
 
 ## <a name="scale-streaming-endpoints"></a>缩放流式处理终结点
 
 若要更改流式处理单位数，请按照以下步骤操作：
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 媒体服务帐户。
-2. 在“设置”窗口中，选择“流式处理终结点”。
+2. 在“设置”  窗口中，选择“流式处理终结点”  。
 3. 单击要缩放的流式处理终结点。 
 
     > [!NOTE] 
-    > 只能缩放高级流式处理终结点。
+    > 只能缩放高级  流式处理终结点。
 
 4. 滑动滑块，以指定流式处理单位数。
 

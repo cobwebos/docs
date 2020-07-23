@@ -1,23 +1,18 @@
 ---
-title: 适用于 Windows 的 Azure 诊断扩展 | Microsoft Docs
+title: 适用于 Windows 的 Azure 诊断扩展
 description: 使用 Azure 诊断扩展监视 Azure Windows VM
-services: virtual-machines-windows
-documentationcenter: ''
 author: johnkemnetz
 manager: ashwink
-editor: ''
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: 58c520ecbaf764140748167e458c301ab56de375
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 1d38a3cac5525de6835bbb0f9873cbd0636d44a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60232879"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81869671"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>适用于 Windows VM 的 Azure 诊断扩展
 
@@ -25,7 +20,7 @@ ms.locfileid: "60232879"
 
 Azure 诊断 VM 扩展可用来从 Windows VM 收集监视数据，例如性能计数器和事件日志。 你可以精细地指定要收集什么数据以及希望该数据出现在何处，例如 Azure 存储帐户或 Azure 事件中心。 还可以使用该数据在 Azure 门户中构建图表或创建指标警报。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
 
@@ -37,11 +32,11 @@ Azure 诊断扩展要求目标虚拟机已连接到 Internet。
 
 ## <a name="extension-schema"></a>扩展架构
 
-[本文档介绍了 Azure 诊断扩展架构和属性值。](../../azure-monitor/platform/diagnostics-extension-schema-1dot3.md)
+[本文档介绍了 Azure 诊断扩展架构和属性值。](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
 
 ## <a name="template-deployment"></a>模板部署
 
-可使用 Azure 资源管理器模板部署 Azure VM 扩展。 可在 Azure 资源管理器模板中使用上一部分中详细说明的 JSON 架构，以在 Azure 资源管理器模板部署期间运行 Azure 诊断扩展。 请参阅[将监视和诊断与 Windows VM 和 Azure 资源管理器模板配合使用](extensions-diagnostics-template.md)。
+可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 可在 Azure 资源管理器模板中使用上一部分中详细说明的 JSON 架构，以在 Azure 资源管理器模板部署期间运行 Azure 诊断扩展。 请参阅[将监视和诊断与 Windows VM 和 Azure 资源管理器模板配合使用](extensions-diagnostics-template.md)。
 
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
 
@@ -61,7 +56,7 @@ az vm extension set \
 
 可以使用 `Set-AzVMDiagnosticsExtension` 命令将 Azure 诊断扩展添加到现有的虚拟机。 另请参阅[使用 PowerShell 在运行 Windows 的虚拟机中启用 Azure 诊断](ps-extensions-diagnostics.md)。
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 
 ```powershell
@@ -88,8 +83,8 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="next-steps"></a>后续步骤
 * [详细了解 Azure 诊断扩展](../../azure-monitor/platform/diagnostics-extension-overview.md)
-* [查看扩展架构和版本](../../azure-monitor/platform/diagnostics-extension-schema.md)
+* [查看扩展架构和版本](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)

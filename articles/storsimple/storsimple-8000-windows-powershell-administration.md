@@ -1,25 +1,17 @@
 ---
-title: PowerShell for StorSimple 设备管理 | Microsoft Docs
+title: 用于 StorSimple 的 PowerShell 的设备管理
 description: 了解如何使用 Windows PowerShell for StorSimple 来管理 StorSimple 设备。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: how-to
 ms.date: 01/09/2018
-ms.author: alkohli@microsoft.com
-ms.openlocfilehash: 564c121aa90746498a94022fd0fb8d8529142c91
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: alkohli
+ms.openlocfilehash: c1976adba0159b54bd64b2c8830c3aaad9959912
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698396"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513702"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>使用 Windows PowerShell for StorSimple 管理设备
 
@@ -58,10 +50,10 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 1. 在 PuTTY“**重新配置**”对话框中，在“**类别**”窗格内，选择“**键盘**”。
 2. 请确保选中以下选项（启动新会话时，默认会选中这些选项）。
    
-   | 键盘项 | 选择 |
+   | 键盘项 | Select |
    | --- | --- |
    | Backspace 键 |Control-? (127) |
-   | Home 和 End 键 |标准 |
+   | Home 和 End 键 |Standard |
    | 功能键和键盘 |ESC[n~ |
    | 光标键的初始状态 |一般 |
    | 数字小键盘的初始状态 |一般 |
@@ -113,11 +105,11 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
      > [!NOTE]
      > 如果忘记了设备管理员密码并且无法通过选项 1 或选项 2 进行连接，那么这是首选选项。
 
-4. **更改语言**：此选项用于更改 Windows PowerShell 界面上的显示语言。 支持的语言包括英语、日语、俄语、法语、韩语、西班牙语、意大利语、德语、中文和葡萄牙语（巴西）。
+4. **更改语言**：此选项用于更改 Windows PowerShell 界面上的显示语言。 支持的语言包括英语、日语、俄语、法语、韩语、西班牙语、意大利语、德语、中文和葡萄牙语。
 
 ## <a name="connect-remotely-to-storsimple-using-windows-powershell-for-storsimple"></a>使用 Windows PowerShell for StorSimple 远程连接到 StorSimple
 
-可以使用 Windows PowerShell 远程处理连接到 StorSimple 设备。 采取这种方式连接时，不会看到菜单。 （仅当使用设备上的串行控制台连接时，才会看到菜单。 远程连接使你直接进入串行控制台上的“选项 1 – 完全访问权限”的等效选项。）借助 Windows PowerShell 远程处理，可以连接到某个特定运行空间。 也可指定显示语言。
+可以使用 Windows PowerShell 远程处理连接到 StorSimple 设备。 采取这种方式连接时，不会看到菜单。 （仅当使用设备上的串行控制台连接时，才会看到菜单。 远程连接使你直接进入串行控制台上的“选项 1 – 完全访问权限”的等效选项。）借助 Windows PowerShell 远程处理，可连接到特定的运行空间。 也可以指定显示语言。
 
 显示语言与通过使用串行控制台菜单中的“**更改语言**”选项设置的语言无关。 如果未指定显示语言，远程 PowerShell 会自动选取连接所用设备的区域设置。
 
@@ -159,7 +151,7 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 
 在 Windows PowerShell for StorSimple 中，有关于 cmdlet 的帮助信息。 此帮助的在线最新版本也可用，可以用它来更新系统上的帮助信息。
 
-获取关于此界面的帮助信息与获取关于 Windows PowerShell 的帮助信息很相似，且大多数与帮助信息相关的 cmdlet 将正常工作。 您可以联机找到适用于 Windows PowerShell 的帮助：[Microsoft.PowerShell.Core](/powershell/module/Microsoft.PowerShell.Core/).
+获取关于此界面的帮助信息与获取关于 Windows PowerShell 的帮助信息很相似，且大多数与帮助信息相关的 cmdlet 将正常工作。 可以联机找到针对 Windows PowerShell 的帮助：[Microsoft.PowerShell.Core](/powershell/module/Microsoft.PowerShell.Core/).
 
 下面是关于此 Windows PowerShell 界面的帮助信息类型的简要说明，包括如何更新帮助信息。
 

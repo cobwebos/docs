@@ -1,25 +1,24 @@
 ---
-title: Azure 通知中心安全推送
+title: 适用于 iOS 的 Azure 通知中心安全推送
 description: 了解如何从 Azure 将安全推送通知发送到 iOS 应用。 代码示例是使用 .Objective-C 和 C# 编写的。
 documentationcenter: ios
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
 services: notification-hubs
-ms.assetid: 17d42b0a-2c80-4e35-a1ed-ed510d19f4b4
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: d88bdb1eaeb95413df84bf69ed4fc763b6d4901f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: aa84ad9f48f79a77bad1445dadc8c5c965b13655
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61458480"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85248694"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure 通知中心安全推送
 
@@ -48,13 +47,13 @@ ms.locfileid: "61458480"
 本安全推送教程演示如何安全地发送推送通知。 本教程以[通知用户](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)教程为基础，因此应先完成该教程中的步骤。
 
 > [!NOTE]
-> 本教程假设已根据[通知中心入门 (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) 中所述创建并配置了通知中心。
+> 本教程假定你已按照[使用 Azure 通知中心向 iOS 应用程序发送推送通知](ios-sdk-get-started.md)中所述创建并配置了通知中心。
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## <a name="modify-the-ios-project"></a>修改 iOS 项目
 
-现在，将应用后端修改为只发送通知的 ID，必须更改 iOS 应用来处理该通知并回调后端以检索要显示的安全消息。
+现在，将应用后端修改为只发送通知的 ID，必须更改 iOS 应用来处理该通知并回调后端以检索要显示的安全消息**。
 
 若要实现此目标，我们必须编写逻辑来从应用后端检索安全内容。
 
@@ -119,8 +118,8 @@ ms.locfileid: "61458480"
 
     此方法使用存储在共享首选项中的凭据调用应用后端来检索通知内容。
 
-4. 现在我们必须处理传入通知，并使用上面的方法来检索要显示的内容。 首先，我们必须使 iOS 应用能在接收推送通知时在后台运行。 在 **XCode** 中，在左侧面板上选择应用项目，并单击中央窗格的“目标”部分中的主应用目标。
-5. 然后，单击中央窗格顶部的“功能”选项卡，并选中“远程通知”复选框。
+4. 现在我们必须处理传入通知，并使用上面的方法来检索要显示的内容。 首先，我们必须使 iOS 应用能在接收推送通知时在后台运行。 在 **XCode** 中，在左侧面板上选择应用项目，并单击中央窗格的“目标”**** 部分中的主应用目标。
+5. 然后，单击中央窗格顶部的“功能”**** 选项卡，并选中“远程通知”**** 复选框。
 
     ![][IOS1]
 
@@ -157,6 +156,6 @@ ms.locfileid: "61458480"
 
 1. 在 XCode 中，在物理 iOS 设备上运行此应用（推送通知将无法在模拟器中正常工作）。
 2. 在 iOS 应用 UI 中，输入用户名和密码。 这些信息可以是任意字符串，但必须是相同的值。
-3. 在 iOS 应用 UI 中，单击“登录”。 然后单击“发送推送”。 应该能看到通知中心中所显示的安全通知。
+3. 在 iOS 应用 UI 中，单击“登录”****。 然后单击“发送推送”****。 应该能看到通知中心中所显示的安全通知。
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-secure-push/secure-push-ios-1.png

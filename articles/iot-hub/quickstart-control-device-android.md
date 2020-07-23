@@ -7,45 +7,49 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 03/15/2019
+ms.custom:
+- mvc
+- mqtt
+ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 4f9f4ccb53f9530122f0a2463f8f45b596856282
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 3e5afae9421d13d986ad6c891c8e889f590f04a2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149676"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044713"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>快速入门：控制连接到 IoT 中心的设备 (Android)
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入云，并从云管理设备。 在本快速入门中，会使用直接方法来控制连接到 IoT 中心的模拟设备。 可使用直接方法远程更改连接到 IoT 中心的设备的行为。
-
-本快速入门使用两个预先编写的 Java 应用程序：
-
-* 模拟设备应用程序，可响应从后端服务应用程序调用的直接方法。 为了接收直接方法调用，此应用程序会连接到 IoT 中心上特定于设备的终结点。
-
-* 服务应用程序，可在 Android 设备上调用直接方法。 为了在设备上调用直接方法，此应用程序会连接到 IoT 中心上的服务端终结点。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+在本快速入门中，会使用直接方法来控制连接到 Azure IoT 中心的模拟设备。 IoT 中心是一项 Azure 服务，使你可以从云管理 IoT 设备，并将大量设备遥测引入云进行存储或处理。 可使用直接方法远程更改连接到 IoT 中心的设备的行为。 本快速入门使用两个应用程序：一个是模拟设备应用程序，用于响应从后端服务应用程序调用的直接方法；另一个是服务应用程序，用于在 Android 设备上调用直接方法。
 
 ## <a name="prerequisites"></a>先决条件
 
-* [https://developer.android.com/studio/](https://developer.android.com/studio/)提供的 Android Studio。 有关 Android Studio 安装的详细信息，请参阅 [Android 安装](https://developer.android.com/studio/install)。
+* 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-* 本文中的示例使用 Android SDK 27。
+* [带 Android SDK 27 的 Android Studio](https://developer.android.com/studio/)。 有关详细信息，请参阅[安装 Android Studio](https://developer.android.com/studio/install)。
 
-* 运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IOT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
+* [Git](https://git-scm.com/download/)。
 
-   ```azurecli-interactive
-   az extension add --name azure-cli-iot-ext
-   ```
+* [设备 SDK 示例 Android 应用程序](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample)，包括在 [Azure IoT 示例 (Java)](https://github.com/Azure-Samples/azure-iot-samples-java) 中。
 
-* 本快速入门需要两个示例应用程序：[设备 SDK 示例 Android 应用程序](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample)和[服务 SDK 示例 Android 应用程序](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/service/AndroidSample)。 这两个示例都是 GitHub 上 azure-iot-samples-java 存储库的一部分。 请下载或克隆 [azure-iot-samples-java](https://github.com/Azure-Samples/azure-iot-samples-java) 存储库。
+* [服务 SDK 示例 Android 应用程序](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/service/AndroidSample)，包括在 Azure IoT 示例 (Java) 中。
+
+* 端口 8883 在防火墙中处于打开状态。 本快速入门中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+### <a name="add-azure-iot-extension"></a>添加 Azure IoT 扩展
+
+运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展会将特定于 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 的命令添加到 Azure CLI。
+
+```azurecli-interactive
+az extension add --name azure-iot
+```
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -63,11 +67,11 @@ IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入�
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
-   **MyAndroidDevice**：此值是为注册的设备提供的名称。 请按显示的方法使用 MyAndroidDevice。 如果为设备选择其他名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
+   **MyAndroidDevice**：这是所注册的设备的名称。 建议使用 **MyAndroidDevice**，如图所示。 如果为设备选择不同名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
     ```azurecli-interactive
     az iot hub device-identity create \
-      --hub-name YourIoTHubName --device-id MyAndroidDevice
+      --hub-name {YourIoTHubName} --device-id MyAndroidDevice
     ```
 
 2. 在 Azure Cloud Shell 中运行以下命令，以获取刚注册设备的_设备连接字符串_：
@@ -76,7 +80,7 @@ IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入�
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
-      --hub-name YourIoTHubName \
+      --hub-name {YourIoTHubName} \
       --device-id MyAndroidDevice \
       --output table
     ```
@@ -94,22 +98,22 @@ IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入�
 **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
 ```azurecli-interactive
-az iot hub show-connection-string --name YourIoTHubName --output table
+az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
 ```
 
 记下如下所示的服务连接字符串：
 
-`HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={YourSharedAccessKey}`
+`HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
 
-稍后会在快速入门中用到此值。 服务连接字符串与设备连接字符串不同。
+稍后会在快速入门中用到此值。 此服务连接字符串与你在上一步中记录的设备连接字符串不同。
 
 ## <a name="listen-for-direct-method-calls"></a>侦听直接方法调用
 
+本快速入门的这两个示例都是 GitHub 上 azure-iot-samples-java 存储库的一部分。 请下载或克隆 [azure-iot-samples-java](https://github.com/Azure-Samples/azure-iot-samples-java) 存储库。
+
 设备 SDK 示例应用程序可以在物理 Android 设备或 Android 模拟器上运行。 示例会连接到 IoT 中心的特定于设备的终结点，发送模拟遥测数据，并侦听中心的直接方法调用。 在本快速入门中，中心的直接方法调用告知设备对其发送遥测的间隔进行更改。 执行直接方法后，模拟设备会将确认发送回中心。
 
-1. 在 Android Studio 中打开 GitHub 示例 Android 项目。 此项目位于克隆的或下载的 [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java) 存储库副本的以下目录中。
-
-        \azure-iot-samples-java\iot-hub\Samples\device\AndroidSample
+1. 在 Android Studio 中打开 GitHub 示例 Android 项目。 此项目位于克隆的或下载的 [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java) 存储库副本的以下目录中：\azure-iot-samples-java\iot-hub\Samples\device\AndroidSample。
 
 2. 在 Android Studio 中打开示例项目的 *gradle.properties*，将 **Device_Connection_String** 占位符替换为此前记下的设备连接字符串。
 
@@ -135,14 +139,14 @@ az iot hub show-connection-string --name YourIoTHubName --output table
 
 ## <a name="read-the-telemetry-from-your-hub"></a>从中心读取遥测数据
 
-在本部分，将使用具有 [IoT 扩展](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest)的 Azure Cloud Shell 监视 Android 设备发送的设备消息。
+在本部分中，将使用具有 [IoT 扩展](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)的 Azure Cloud Shell 监视 Android 设备发送的消息。
 
 1. 通过 Azure Cloud Shell 运行以下命令以建立连接并从 IoT 中心读取消息：
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
     ```azurecli-interactive
-    az iot hub monitor-events --hub-name YourIoTHubName --output table
+    az iot hub monitor-events --hub-name {YourIoTHubName} --output table
     ```
 
     以下屏幕截图显示了 IoT 中心接收 Android 设备发送的遥测数据后的输出：
@@ -157,16 +161,14 @@ az iot hub show-connection-string --name YourIoTHubName --output table
 
 请在单独的物理 Android 设备或 Android 模拟器上运行此应用。
 
-IoT 中心后端服务应用程序通常在云中运行，这样可以更轻松地减轻与敏感的连接字符串相关联的风险。该字符串控制某个 IoT 中心的所有设备。 在此示例中，我们将它作为 Android 应用运行，仅仅是为了演示。 其他语言版本的本快速入门提供其他与后端服务应用程序更匹配的示例。
+IoT 中心后端服务应用程序通常在云中运行，这样可以更轻松地减轻与敏感的连接字符串相关联的风险。该字符串控制某个 IoT 中心的所有设备。 在此示例中，我们将它作为 Android 应用运行，仅仅是为了演示。 其他语言版本的本快速入门提供与典型后端服务应用程序更匹配的示例。
 
-1. 在 Android Studio 中打开 GitHub 服务示例 Android 项目。 此项目位于克隆的或下载的 [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java) 存储库副本的以下目录中。
+1. 在 Android Studio 中打开 GitHub 服务示例 Android 项目。 此项目位于克隆的或下载的 [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java) 存储库副本的以下目录中：\azure-iot-samples-java\iot-hub\Samples\service\AndroidSample。
 
-        \azure-iot-samples-java\iot-hub\Samples\service\AndroidSample
-
-2. 在 Android Studio 中打开示例项目的 *gradle.properties*，将 **ConnectionString** 和 **DeviceId** 属性的值更新为此前记下的服务连接字符串和已注册的 Android 设备 ID。
+2. 在 Android Studio 中，打开示例项目的 *gradle.properties*。 将 **ConnectionString** 和 **DeviceId** 属性的值更新为此前记下的服务连接字符串和已注册的 Android 设备 ID。
 
     ```
-    ConnectionString=HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={YourSharedAccessKey}
+    ConnectionString=HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}
     DeviceId=MyAndroidDevice
     ```
 

@@ -1,24 +1,13 @@
 ---
-title: Azure 服务总线消息浏览 | Microsoft Docs
-description: 浏览和速览服务总线消息
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Azure 服务总线 - 消息浏览
+description: 通过浏览和扫视服务总线消息，Azure 服务总线客户端可以枚举队列或订阅中驻留的所有消息。
 ms.topic: article
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: 425cf262b80e83a4d06074a567a2921eee12f9c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 0f2d4ed1225aef4c28a5f3d841669c2e3122ba10
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60402745"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341245"
 ---
 # <a name="message-browsing"></a>消息浏览
 
@@ -28,13 +17,13 @@ ms.locfileid: "60402745"
 
 已使用和过期的消息通过异步运行“垃圾回收”操作进行清理，但这不一定与消息过期完全同步。因此，`Peek` 可能确实会返回已过期的消息，如果接下来对队列或订阅调用接收操作，这些消息将会遭到删除或成为死信。
 
-如果试图从队列中恢复延迟的消息，请务必注意这一点。 已超过其 [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc#Microsoft_Azure_ServiceBus_Message_ExpiresAtUtc) 时刻的消息便无法再通过其他任何方式进行定期检索，即使是 Peek 返回的消息，也不例外。 返回这些消息是有意而为之，因为 Peek 是反映日志当前状态的诊断工具。
+如果试图从队列中恢复延迟的消息，请务必注意这一点。 其 [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc#Microsoft_Azure_ServiceBus_Message_ExpiresAtUtc) 时刻已过的消息，便无法再通过其他任何方式定期检索，即使是 Peek 返回的消息，也不例外。 返回这些消息是有意而为之，因为 Peek 是反映日志当前状态的诊断工具。
 
 Peek 还会返回锁定的消息，以及当前由其他接收程序处理但尚未完成的消息。 不过，由于 Peek 返回的快照已断开连接，因此无法通过速览消息观测到消息的锁定状态，如果应用程序尝试读取 [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) 和 [LockToken](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.locktoken#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_LockToken) 属性，它们会抛出 [InvalidOperationException](/dotnet/api/system.invalidoperationexception)。
 
 ## <a name="peek-apis"></a>Peek API
 
-[Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) 和 [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) 方法存在于所有 .NET 和 Java 客户端库以及所有接收程序对象中：**MessageReceiver**、**MessageSession**、**QueueClient** 和 **SubscriptionClient**。 Peek 适用于所有队列、订阅及其对应的死信队列。
+[Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) 和 [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) 方法存在于所有 .NET 和 Java 客户端库以及所有接收程序对象中：**MessageReceiver**、**MessageSession**。 Peek 适用于所有队列、订阅及其对应的死信队列。
 
 如果重复调用，Peek 方法会按序号从低到高的顺序，枚举队列或订阅日志中的所有消息。 这是消息的排队顺序，并不是消息的最终检索顺序。
 

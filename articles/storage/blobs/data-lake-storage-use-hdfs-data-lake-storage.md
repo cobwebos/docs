@@ -4,28 +4,28 @@ description: 适用于 Azure Data Lake Storage Gen2 的 HDFS CLI 简介
 services: storage
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: 24123278ff353860ff2af59f4fd77645dfc189e3
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 36e6b39aaf481abaabe4fb5a4a71a527d1e74749
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938857"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109444"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>将 HDFS CLI 与 Data Lake Storage Gen2 配合使用
 
-您可以访问和管理存储帐户中的数据，就像使用通过命令行接口[Hadoop 分布式文件系统 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)。 本文提供了一些示例，将帮助你入门。
+可以使用命令行界面来访问并管理存储帐户中的数据，就像像使用 [Hadoop 分布式文件系统 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 一样。 本文提供了一些有助于入门的示例。
 
-HDInsight 提供对在本地附加到计算节点的分布式文件系统的访问。 可以通过在 HDFS 和其他 Hadoop 支持的文件系统中使用直接交互的 shell 访问此文件系统。
+HDInsight 可以访问在本地附加到计算节点的分布式容器。 可以使用与 HDFS 以及 Hadoop 支持的其他文件系统直接交互的 shell 来访问此容器。
 
-HDFS CLI 的详细信息，请参阅[官方文档](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html)和[HDFS 权限指南](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
+有关 HDFS CLI 的详细信息，请参阅[官方文档](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html)和 [HDFS 权限指南](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
 
 >[!NOTE]
->如果你使用 Azure Databricks 而不 HDInsight，并且你想要使用命令行界面与你的数据进行交互，您可以使用 Databricks CLI 与 Databricks 文件系统进行交互。 请参阅[Databricks CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)。
+>如果你使用的是 Azure Databricks 而不是 HDInsight，并且想要通过使用命令行界面与数据进行交互，则可以使用 Databricks CLI 与 Databricks 文件系统进行交互。 请参阅[DATABRICKS CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)。
 
 ## <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>在 Linux 上结合使用 HDFS CLI 和 HDInsight Hadoop 群集
 
@@ -42,35 +42,35 @@ hdfs dfs -mkdir /samplefolder
 可以在 Azure 门户中 HDInsight 群集边栏选项卡的“SSH + 群集登录”部分中找到连接字符串。 SSH 凭据是在创建群集时指定的。
 
 >[!IMPORTANT]
->创建群集后便开始 HDInsight 群集计费，删除群集后停止计费。 群集以每分钟按比例收费，因此无需再使用群集时，应始终将其删除。 若要了解如何删除群集，请参阅我们的[有关该主题的文章](../../hdinsight/hdinsight-delete-cluster.md)。 但是，即使删除了 HDInsight 群集，在启用了 Data Lake Storage Gen2 的存储帐户中存储的数据仍然会保留。
+>创建群集后便开始 HDInsight 群集计费，删除群集后停止计费。 HDInsight 群集按分钟收费，因此不再需要使用群集时，应将其删除。 若要了解如何删除群集，请参阅我们的[有关该主题的文章](../../hdinsight/hdinsight-delete-cluster.md)。 但是，即使删除了 HDInsight 群集，在启用了 Data Lake Storage Gen2 的存储帐户中存储的数据仍然会保留。
 
-## <a name="create-a-file-system"></a>创建文件系统
+## <a name="create-a-container"></a>创建容器
 
-    hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/
+`hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/`
 
-* 将 `<file-system-name>` 占位符替换为你要为文件系统提供的名称。
+* 将 `<container-name>` 占位符替换为你要为容器指定的名称。
 
 * 将 `<storage-account-name>` 占位符替换为存储帐户的名称。
 
 ## <a name="get-a-list-of-files-or-directories"></a>获取文件或目录列表
 
-    hdfs dfs -ls <path>
+`hdfs dfs -ls <path>`
 
-将 `<path>` 占位符替换为文件系统或文件系统文件夹的 URI。
+将 `<path>` 占位符替换为容器或容器文件夹的 URI。
 
 例如： `hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
 
 ## <a name="create-a-directory"></a>创建目录
 
-    hdfs dfs -mkdir [-p] <path>
+`hdfs dfs -mkdir [-p] <path>`
 
-将 `<path>` 占位符替换为根文件系统名称或文件系统中的文件夹。
+将 `<path>` 占位符替换为根容器名称或容器中的文件夹。
 
 例如： `hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
 
 ## <a name="delete-a-file-or-directory"></a>删除文件或目录
 
-    hdfs dfs -rm <path>
+`hdfs dfs -rm <path>`
 
 将 `<path>` 占位符替换为要删除的文件或文件夹的 URI。
 
@@ -78,7 +78,7 @@ hdfs dfs -mkdir /samplefolder
 
 ## <a name="display-the-access-control-lists-acls-of-files-and-directories"></a>显示文件和目录的访问控制列表 (ACL)
 
-    hdfs dfs -getfacl [-R] <path>
+`hdfs dfs -getfacl [-R] <path>`
 
 示例：
 
@@ -88,7 +88,7 @@ hdfs dfs -mkdir /samplefolder
 
 ## <a name="set-acls-of-files-and-directories"></a>设置文件和目录的 ACL
 
-    hdfs dfs -setfacl [-R] [-b|-k -m|-x <acl_spec> <path>]|[--set <acl_spec> <path>]
+`hdfs dfs -setfacl [-R] [-b|-k -m|-x <acl_spec> <path>]|[--set <acl_spec> <path>]`
 
 示例：
 
@@ -98,19 +98,19 @@ hdfs dfs -mkdir /samplefolder
 
 ## <a name="change-the-owner-of-files"></a>更改文件的所有者
 
-    hdfs dfs -chown [-R] <new_owner>:<users_group> <URI>
+`hdfs dfs -chown [-R] <new_owner>:<users_group> <URI>`
 
 请参阅 [chown](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chown)
 
 ## <a name="change-group-association-of-files"></a>更改文件的组关联
 
-    hdfs dfs -chgrp [-R] <group> <URI>
+`hdfs dfs -chgrp [-R] <group> <URI>`
 
 请参阅 [chgrp](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chgrp)
 
 ## <a name="change-the-permissions-of-files"></a>更改文件的权限
 
-    hdfs dfs -chmod [-R] <mode> <URI>
+`hdfs dfs -chmod [-R] <mode> <URI>`
 
 请参阅 [chmod](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chmod)
 
@@ -120,4 +120,4 @@ hdfs dfs -mkdir /samplefolder
 
 * [在 Azure Databricks 中使用支持 Azure Data Lake Storage Gen2 的帐户](./data-lake-storage-quickstart-create-databricks-account.md)
 
-* [了解有关文件和目录的访问控制列表](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
+* [了解文件和目录上的访问控制列表](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)

@@ -1,29 +1,21 @@
 ---
-title: 高级 Azure Monitor 中的查询 |Microsoft Docs
+title: Azure Monitor 中的高级查询 |Microsoft Docs
 description: 本文提供有关在 Azure Monitor 中使用 Analytics 门户编写查询的教程。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 11/15/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 65713ed9c2d0635e776a7a7e5f205b6d55438ed4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 11/15/2018
+ms.openlocfilehash: 3d228c62cd2d1bcb7f4515cd698186e2ebcbe929
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60589590"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77670281"
 ---
 # <a name="writing-advanced-queries-in-azure-monitor"></a>在 Azure Monitor 中编写高级查询
 
 > [!NOTE]
-> 应完成[开始使用 Azure 监视器 Log Analytics](get-started-portal.md)并[查询入门](get-started-queries.md)之前完成本课程中。
+> 在完成本课程之前，应先完成 [Azure Monitor Log Analytics 入门](get-started-portal.md)和[查询入门](get-started-queries.md)。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -76,7 +68,7 @@ Event
 ```
 
 ## <a name="print"></a>Print
-`print` 将返回一个单列单行的表，其中显示计算结果。 这通常可在需要简单计算的情况下。 例如，要在 PST 中查找当前时间并添加具有 EST 的列：
+`print` 将返回一个单列单行的表，其中显示计算结果。 这通常用于需要简单计算的情况。 例如，要在 PST 中查找当前时间并添加具有 EST 的列：
 
 ```Kusto
 print nowPst = now()-8h

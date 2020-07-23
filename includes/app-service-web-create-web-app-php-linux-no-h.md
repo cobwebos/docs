@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: c876c60f89ecf0d7be01f70dedec70a6c84b1b91
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 3a2bfb28da98260d9ac5040aa2097611ee18b5ca
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66137810"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848057"
 ---
 在 `myAppServicePlan` 应用服务计划中创建一个 [Web 应用](../articles/app-service/containers/app-service-linux-intro.md)。 
 
@@ -21,15 +21,15 @@ ms.locfileid: "66137810"
 
 ```azurecli-interactive
 # Bash
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.0" --deployment-local-git
+az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.3" --deployment-local-git
 # PowerShell
-az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.0" --deployment-local-git
+az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.3" --deployment-local-git
 ```
 
 创建 Web 应用后，Azure CLI 会显示类似于以下示例的输出：
 
-```json
-Local git is configured with url of 'https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git'
+<pre>
+Local git is configured with url of 'https://&lt;username&gt;@&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git'
 {
   "availabilityState": "Normal",
   "clientAffinityEnabled": true,
@@ -37,15 +37,15 @@ Local git is configured with url of 'https://<username>@<app-name>.scm.azurewebs
   "cloningInfo": null,
   "containerSize": 0,
   "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app-name>.azurewebsites.net",
-  "deploymentLocalGitUrl": "https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git",
+  "defaultHostName": "&lt;app-name&gt;.azurewebsites.net",
+  "deploymentLocalGitUrl": "https://&lt;username&gt;@&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git",
   "enabled": true,
-  < JSON data removed for brevity. >
+  &lt; JSON data removed for brevity. &gt;
 }
-```
+</pre>
 
 现在你已经创建了一个新的空 Web 应用并启用了 Git 部署。
 
 > [!NOTE]
-> Git 远程的 URL 将显示在 `deploymentLocalGitUrl` 属性中，其格式为 `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git`。 保存此 URL，因为后面需要它。
+> Git 远程的 URL 将显示在 `deploymentLocalGitUrl` 属性中，其格式为 `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git`。 保存此 URL，后续将会用到。
 >

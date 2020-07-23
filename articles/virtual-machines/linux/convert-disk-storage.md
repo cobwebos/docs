@@ -1,37 +1,27 @@
 ---
-title: 转换 Azure 托管磁盘存储的标准到高级或标准到高级版 |Microsoft Docs
+title: 在标准和高级 SSD 之间转换托管磁盘存储
 description: 如何使用 Azure CLI 将 Azure 托管磁盘存储从标准类型转换为高级类型，或者从高级类型转换为标准类型。
-services: virtual-machines-linux
-documentationcenter: ''
 author: roygara
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: bc42bcbf7149f88eb895317a411c7acd5913d63d
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
-ms.translationtype: MT
+ms.openlocfilehash: 51ebecf784b7a3ec38f84703a74e96d277afa70c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417693"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84658210"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>将 Azure 托管磁盘存储从标准类型转换为高级类型，或者从高级类型转换为标准类型
 
-有四个磁盘类型的 Azure 托管磁盘：Azure 超高 Ssd （预览版）、 高级 SSD、 标准 SSD 和 HDD 标准。 您可以在三个 GA 磁盘类型之间切换 (高级 SSD、 标准 SSD 和 HDD 标准) 根据性能需求。 你尚不能够切换来自或发往超高的 SSD，必须部署一个新。
+有四种磁盘类型的 Azure 托管磁盘： Azure ultra Ssd （预览版）、高级 SSD、标准 SSD 和标准 HDD。 可以根据性能需求在三种 GA 磁盘类型（高级 SSD、标准 SSD 和标准 HDD）之间切换。 你还不能从或切换到 ultra SSD，你必须部署一个新的。
 
 非托管磁盘不支持此功能。 但是，可以轻松[将非托管磁盘转换为托管磁盘](convert-unmanaged-to-managed-disks.md)，然后即可切换磁盘类型。
 
 本文介绍如何使用 Azure CLI 将托管磁盘从标准类型转换为高级类型，或者从高级类型转换为标准类型。 若要安装或升级 CLI 工具，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 * 磁盘转换需要重启虚拟机 (VM)，因此请在预先存在的维护时段内计划磁盘存储迁移。
 * 对于非托管磁盘，请先[转换为托管磁盘](convert-unmanaged-to-managed-disks.md)，以便可以在存储选项之间切换。
@@ -138,16 +128,16 @@ az vm start --ids $vmId
 
 ## <a name="switch-managed-disks-between-standard-and-premium-in-azure-portal"></a>使用 Azure 门户在标准类型与高级类型之间切换托管磁盘
 
-执行以下步骤:
+执行以下步骤：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在“虚拟机”列表中选择 VM。 
-3. 如果该 VM 未停止，请在 VM“概述”窗格的顶部选择“停止”，然后等待该 VM 停止。  
-4. 在 VM 对应的窗格中，从菜单中选择“磁盘”  。
+2. 在“虚拟机”列表中选择 VM。
+3. 如果该 VM 未停止，请在 VM“概述”窗格的顶部选择“停止”，然后等待该 VM 停止。 
+4. 在 VM 对应的窗格中，从菜单中选择“磁盘”。
 5. 选择要转换的磁盘。
-6. 在菜单中选择“配置”  。
-7. 将“帐户类型”从“标准 HDD”更改为“高级 SSD”，或者从“高级 SSD”更改为“标准 HDD”。     
-8. 选择“保存”并关闭磁盘窗格。 
+6. 在菜单中选择“配置”。
+7. 将“帐户类型”从“标准 HDD”更改为“高级 SSD”，或者从“高级 SSD”更改为“标准 HDD”。    
+8. 选择“保存”并关闭磁盘窗格。
 
 磁盘类型会即时更新。 转换后，可以重启 VM。
 

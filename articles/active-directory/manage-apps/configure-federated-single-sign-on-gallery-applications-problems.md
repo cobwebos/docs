@@ -1,26 +1,25 @@
 ---
-title: 配置 Azure AD 库应用程序的联合单一登录时遇到的问题 | Microsoft Docs
+title: 为 Azure AD 库应用配置联合 SSO 时出现问题
 description: 解决在使用 SAML 配置 Azure AD 应用程序库中所列应用程序的联合单一登录时可能遇到的一些常见问题
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 554fb73ea7bf4f866eda3e9f3d629f871cb5e582
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: MT
+ms.openlocfilehash: 858e61c6371aac28d709a9016e4b9cbed6befe3f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65781172"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763595"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>配置 Azure AD 库应用程序的联合单一登录时遇到的问题
 
@@ -42,7 +41,7 @@ ms.locfileid: "65781172"
 
 若要了解应用程序预配置的模式，请执行以下操作：
 
-1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。转到步骤 7。 如果已经位于 Azure AD 上的应用程序配置边栏选项卡中。
+1. 打开[**Azure 门户**](https://portal.azure.com/)，并以 "**全局管理员**" 或 "**共同管理员**" 身份登录。中转到步骤7。 如果已经位于 Azure AD 上的应用程序配置边栏选项卡中。
 
 2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
@@ -52,25 +51,25 @@ ms.locfileid: "65781172"
 
 5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-   * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6. 选择要配置单一登录的应用程序。
 
-7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”。
+7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”****。
 
-8. 从“模式”下拉列表中选择“基于 SAML 的登录”。
+8. 从“模式”**** 下拉列表中选择“基于 SAML 的登录”****。
 
-9. 转到“域和 URL”部分下的“标识符”或“回复 URL”文本框。
+9. 转到“域和 URL”**** 部分下的“标识符”**** 或“回复 URL”**** 文本框。
 
 10. 有三种方法可以了解应用程序支持的模式：
 
-    * 在文本框中，可以看到受支持的模式作为一个占位符。*示例：*<https://contoso.com>。
+    * 在文本框中，可以看到受支持的模式作为一个占位符。*示例：* <https://contoso.com>。
 
     * 如果此模式不受支持，当在文本框中试图输入值时会看到一个红色感叹号。 将鼠标悬停在红色感叹号上，就能看到受支持的模式。
 
-    * 在应用程序的教程中，还可以获得受支持的模式的信息。 在“配置 Azure AD 单一登录”部分下。 转到该步骤下，在“域和 URL”部分下找到已配置的值。
+    * 在应用程序的教程中，还可以获得受支持的模式的信息。 在“配置 Azure AD 单一登录”**** 部分下。 转到该步骤下，在“域和 URL”**** 部分下找到已配置的值。
 
-如果此值与 Azure AD 上预配置的模式不匹配。 可以：
+如果此值与 Azure AD 上预配置的模式不匹配。 你可以：
 
 -   与应用程序供应商沟通以获取与 Azure AD 上预配置的模式匹配的值
 
@@ -86,7 +85,7 @@ Azure AD 会根据所选值或 SAML AuthRequest 中应用程序要求的格式�
 
 若要从 Azure AD 下载应用程序元数据或证书，请执行以下步骤：
 
-1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
+1. 打开[**Azure 门户**](https://portal.azure.com/)，并以 "**全局管理员**" 或 "**共同管理员**" 身份登录。
 
 2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
@@ -100,15 +99,15 @@ Azure AD 会根据所选值或 SAML AuthRequest 中应用程序要求的格式�
 
 6. 选择已配置单一登录的应用程序。
 
-7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”。
+7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”****。
 
-8. 转到“SAML 签名证书”部分，并单击“下载”列值。 根据应用程序对于配置单一登录的要求，将看到下载元数据 XML 或下载证书选项。
+8. 转到“SAML 签名证书”**** 部分，并单击“下载”**** 列值。 根据应用程序对于配置单一登录的要求，将看到下载元数据 XML 或下载证书选项。
 
 Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文件进行检索。
 
 ## <a name="dont-know-how-to-customize-saml-claims-sent-to-an-application"></a>不知道如何自定义发送到应用程序的 SAML 声明
 
-若要了解如何自定义发送到应用程序的 SAML 属性声明，请参阅 [Azure Active Directory 中的声明映射](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)，了解详细信息。
+若要了解如何自定义发送到应用程序的 SAML 属性声明，请参阅 [Azure Active Directory 中的声明映射](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)获取详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Azure Active Directory 管理应用程序](what-is-application-management.md)

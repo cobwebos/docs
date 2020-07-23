@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 LiquidFiles 集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 LiquidFiles 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 LiquidFiles 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5352040dbbe33569dfdb4e987d8bd84435702230
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6514594d3119ebf8fab774c3e84c85e34bdfeaf4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917506"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67097931"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-liquidfiles"></a>教程：Azure Active Directory 与 LiquidFiles 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "64917506"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 LiquidFiles 的集成，需要以下项：
 
@@ -106,9 +106,9 @@ ms.locfileid: "64917506"
 
     ![LiquidFiles 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<YOUR_SERVER_URL>/saml/init` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<YOUR_SERVER_URL>/saml/init`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<YOUR_SERVER_URL>` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<YOUR_SERVER_URL>`
 
     c. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<YOUR_SERVER_URL>/saml/consume`
 
@@ -119,7 +119,7 @@ ms.locfileid: "64917506"
 
     ![编辑 SAML 签名证书](common/edit-certificate.png)
 
-6. 在“SAML 签名证书”部分中，复制**指纹**并将其保存在计算机上。 
+6. 在“SAML 签名证书”部分中，复制**指纹**并将其保存在计算机上。
 
     ![复制指纹值](common/copy-thumbprint.png)
 
@@ -137,13 +137,13 @@ ms.locfileid: "64917506"
 
 1. 以管理员身份登录 LiquidFiles 公司站点。
 
-1. 从菜单的“管理员”>“配置”  中单击“单一登录”  。
+1. 从菜单的“管理员”>“配置”中单击“单一登录”。
 
 1. 在“单一登录”  配置页上，执行以下步骤
 
     ![配置单一登录](./media/liquidfiles-tutorial/tutorial_single_01.png)
 
-    a. 选择“SAML 2”  作为“单一登录方法”  。
+    a. 选择“SAML 2”作为“单一登录方法”。
 
     b. 在“IDP 登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
@@ -155,7 +155,7 @@ ms.locfileid: "64917506"
 
     f. 在“身份验证上下文”文本框中，键入值 `urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport`。
 
-    g. 单击“ **保存**”。
+    g. 单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -175,7 +175,7 @@ ms.locfileid: "64917506"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -197,7 +197,7 @@ ms.locfileid: "64917506"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

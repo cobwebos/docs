@@ -1,8 +1,8 @@
 ---
 title: H264 多比特率 720p Media Encoder Standard 预设 - Azure | Microsoft 文档
 description: 本主题概述 **H264 多比特率 720p** 任务预设。
-author: WenJason
-manager: digimobile
+author: Juliako
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,20 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 03/19/2019
-ms.date: 04/01/2019
-ms.author: v-jay
+ms.date: 03/19/2019
+ms.author: juliako
 ms.openlocfilehash: 47fe4494ad37566f7849b5b123cfb77323d3edd3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61463627"
 ---
 # <a name="h264-multiple-bitrate-720p"></a>H264 多比特率 720p
 `Media Encoder Standard` 定义了一组在创建编码作业时可使用的编码预设。 可以使用 `preset name` 指定编码媒体文件采用的格式。 也可以创建自己的 JSON 或基于 XML 的预设（使用 UTF-8 或 UTF-16 编码）。 然后，将自定义预设传递到编码器。 有关此 `Media Encoder Standard` 编码器支持的所有预设名称的列表，请参阅 [Media Encoder Standard 的任务预设](media-services-mes-presets-overview.md)。  
   
- 本主题演示 XML 和 JSON 格式的 `H264 Multiple Bitrate 720p` 预设。  
+ 本主题介绍 XML 和 JSON 格式的 `H264 Multiple Bitrate 720p` 预设。  
   
  此预设产生一组 6 GOP 对齐的 MP4 文件，范围从 3400 kbps 到 400 kbps，以及立体声 AAC 音频。 有关此预设的配置文件、比特率、采样率等的详细信息，请观察下面定义的 XML 或 JSON。 有关这些预设中的每个元素的含义及其有效值的说明，请参阅 [Media Encoder Standard 架构](media-services-mes-schema.md)主题。  
   

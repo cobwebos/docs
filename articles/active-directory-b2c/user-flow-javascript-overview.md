@@ -1,46 +1,53 @@
 ---
-title: JavaScript 和页协定版本-Azure Active Directory B2C |Microsoft Docs
-description: 了解如何启用 JavaScript 和 Azure Active Directory B2C 中使用页协定版本。
+title: JavaScript 和页面布局版本
+titleSuffix: Azure AD B2C
+description: 了解如何在 Azure Active Directory B2C 中启用 JavaScript 和使用页面布局版本。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 04/25/2019
-ms.author: marsma
+ms.topic: how-to
+ms.date: 02/10/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ef474bec71a9015209b5748b6947816002bd4a5d
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: cbc0f607af31d0e3b3715e73ddbde19143bd1599
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66511975"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85384135"
 ---
-# <a name="javascript-and-page-contract-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的 JavaScript 和页协定版本
+# <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的 JavaScript 和页面布局版本
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Azure AD B2C 提供一组包含 HTML、 CSS 和 JavaScript 的用户流和自定义策略中的用户界面元素的打包内容。 若要为应用程序中启用 JavaScript，您必须将元素添加到您[自定义策略](active-directory-b2c-overview-custom.md)或启用的门户中的用户流，选择页面协定，再使用[b2clogin.com](b2clogin.md)在请求中。
+Azure AD B2C 提供一组打包的内容，其中包含的 HTML、CSS 和 JavaScript 适用于用户流中的用户界面元素和自定义策略。
 
-如果你想要启用[JavaScript](javascript-samples.md)客户端代码中，您将希望确保您正在基于 JavaScript 的元素是固定不变。 否则，任何更改可能导致意外的行为上用户页。 若要防止这些问题，可以强制使用页协定并指定页协定版本。 这样做可确保您已基于 JavaScript 的所有内容定义是不可变。 即使不打算启用 JavaScript，可为您的页面来指定页协定版本。
+若要为应用程序启用 JavaScript，请执行以下操作：
 
-## <a name="user-flows"></a>用户流
+* 使用 Azure 门户在用户流上启用它
+* 选择一个[页面布局](page-layout.md)
+* 在请求中使用[b2clogin.com](b2clogin.md)
 
-在用户流属性中，可以启用 JavaScript，这样也会强制使用页面协定。 然后就可以设置页面协定版本，如下一部分所述。
+如果打算启用 [JavaScript](javascript-samples.md) 客户端代码，则 JavaScript 所基于的元素必须是不可变的。 如果它们不是不可变的，则任何更改都可能会导致用户页上出现意外行为。 为了防止这些问题，请强制使用页面布局，并指定页面布局版本，确保 JavaScript 所基于的内容定义是不可变的。 即使不打算启用 JavaScript，也可为页面指定页面布局版本。
 
-![启用 JavaScript 设置](media/user-flow-javascript-overview/javascript-settings.png)
+## <a name="enable-javascript"></a>启用 JavaScript
 
-不管是否在用户流的属性中启用 JavaScript，都可以为用户流页面指定页面协定版本。 打开用户流，然后选择“页面布局”  。 在“布局名称”下选择一个用户流页面，然后选择“页面协定版本”。  
+在用户流**属性**中，可以启用 JavaScript。 启用 JavaScript 也会强制使用页面布局。 然后就可以设置用户流的页面布局版本，如下一部分所述。
 
-![启用 JavaScript 设置](media/user-flow-javascript-overview/page-contract-version.png)
+![用户流属性页面，突出显示了“启用 JavaScript”设置](media/user-flow-javascript-overview/javascript-settings.png)
 
-## <a name="custom-policies"></a>自定义策略
+## <a name="select-a-page-layout-version"></a>选择页面布局版本
 
-若要自定义策略中启用 JavaScript，您将添加**ScriptExecution**元素**RelyingParty**自定义策略文件中的元素。 有关详细信息，请参阅[以便在 Azure Active Directory B2C 中使用 JavaScript 示例](javascript-samples.md)。
+不管是否在用户流的属性中启用 JavaScript，都可以为用户流页面指定页面布局版本。 打开用户流，然后选择“页面布局”  。 在“布局名称”下选择一个用户流页面，然后选择“页面布局版本”。  
 
-自定义策略中启用 JavaScript，您可以为您的页面指定页协定版本。 有关指定页协定的详细信息，请参阅[选择使用自定义策略的 Azure Active Directory B2C 中的页协定](page-contract.md)。
+若要了解不同的页面布局版本，请参阅[页面布局版本更改日志](page-layout.md)。
+
+![门户中的页面布局设置，显示了页面布局版本下拉列表](media/user-flow-javascript-overview/page-layout-version.png)
+
+[!INCLUDE [active-directory-b2c-javascript-guidelines](../../includes/active-directory-b2c-javascript-guidelines.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅[用于 Azure Active Directory B2C 中的 JavaScript 示例](javascript-samples.md)。
+有关 JavaScript 使用的示例，可参阅[在 Azure Active Directory B2C 中使用的 JavaScript 示例](javascript-samples.md)。

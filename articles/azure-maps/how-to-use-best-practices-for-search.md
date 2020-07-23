@@ -1,97 +1,105 @@
 ---
-title: 如何有效地使用 Azure Maps 搜索服务搜索 |Microsoft Docs
-description: 了解如何使用 Azure Maps 搜索服务搜索使用最佳方案
-ms.author: v-musehg
-ms.date: 04/08/2019
+title: Azure Maps 搜索服务的最佳做法 | Microsoft Azure Maps
+description: 了解如何在 Microsoft Azure Maps 中使用搜索服务时应用最佳做法。
+author: philmea
+ms.author: philmea
+ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9cb0f89b4a48d7139adb35dcef48c0115b005c57
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
-ms.translationtype: MT
+ms.openlocfilehash: 8f8f5a2f605f8e8b7109267e5223593eb1e2cfb9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205607"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84264360"
 ---
-# <a name="best-practices-to-use-azure-maps-search-service"></a>使用 Azure 地图搜索服务的最佳做法
+# <a name="best-practices-for-azure-maps-search-service"></a>Azure Maps 搜索服务的最佳做法
 
-Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)包含使用各种功能，例如中的 Api 的搜索兴趣点 (POI) 数据以某一位置的地址搜索。 在本文中，我们将分享调用通过 Azure Maps 搜索服务的数据的最佳做法。 可以了解如何执行以下操作：
+Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)包括提供各种功能的 api，可帮助开发人员按名称或类别搜索地址、位置、业务列表和其他地理信息。 例如，"[模糊搜索" API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)允许用户搜索地址或兴趣点（POI）。
 
-* 生成查询，以返回相关的匹配项
-* 限制搜索结果
-* 了解不同结果类型之间的差异
-* 读取地址搜索响应结构
+本文介绍如何在调用 Azure Maps 搜索服务中的数据时应用最佳做法。 将了解如何执行以下操作：
 
+* 生成查询以返回相关的匹配项
+* 限定搜索结果
+* 了解结果类型之间的差异
+* 阅读地址搜索-响应结构
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-若要调用任何 Maps 服务 API，需要具有 Maps 帐户和密钥。 有关创建帐户和检索密钥的信息，请参阅[如何管理 Azure Maps 帐户和密钥](how-to-manage-account-keys.md)。
+若要调用任何 Azure Maps 服务 API，需要具有 Azure Maps 帐户和密钥。 有关详细信息，请参阅[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)和[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 
 
-> [!Tip]
-> 若要查询的搜索服务，可以使用[Postman 应用](https://www.getpostman.com/apps)来生成 REST 调用，也可以使用任何您喜欢的 API 开发环境。
+有关 Azure Maps 中身份验证的信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
 
+> [!TIP]
+> 若要查询搜索服务，可以使用[Postman 应用程序](https://www.getpostman.com/apps)来生成 REST API 调用。 也可使用你喜欢的任何 API 开发环境。
 
-## <a name="best-practices-for-geocoding"></a>地理编码的最佳做法
+## <a name="best-practices-to-geocode-addresses"></a>地理编码地址的最佳做法
 
-在搜索使用 Azure Maps 搜索服务的完整或部分地址时，它采用搜索词，并返回地址的经度和纬度坐标。 此过程称为地理编码。 在国家/地区中进行地理编码的能力取决于道路数据覆盖范围和地理编码服务的地理编码精度。
+使用 Azure Maps 搜索服务搜索完整或部分地址时，API 将从搜索查询中读取关键字。 然后，它将返回地址的经度和纬度坐标。 此过程称为“地理编码”。 
 
-请参阅[地理编码覆盖区域](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage)按国家/地区中了解有关 Azure Maps 地理编码功能的详细信息。
+在国家/地区中进行地理编码的能力取决于道路数据的可用性和地理编码服务的地理编码精度。 有关按国家或地区的 Azure Maps 地理编码功能的详细信息，请参阅[地理编码覆盖范围](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage)。
 
-### <a name="limit-search-results"></a>限制搜索结果
+### <a name="limit-search-results"></a>限定搜索结果
 
-   在本部分中，将了解如何使用 Azure Maps 搜索 Api 限制搜索结果。 
+ Azure Maps 搜索 API 有助于你适当地限定搜索结果。 你可以限定结果，以便仅向用户显示相关数据。
 
-   > [!Note]
-   > 并非所有搜索 Api 完全都支持下面列出的参数
+> [!NOTE]
+> 与本文讨论的参数相比，搜索 API 支持的参数更多。
 
-   **地理偏置搜索结果**
+#### <a name="geobiased-search-results"></a>地理编码的搜索结果
 
-   地理偏置到您的结果与你的用户的相关区域您应始终添加详细的最大可能位置输入。 若要限制搜索结果，请考虑添加以下输入的类型：
+若要将结果地理编码为用户的相关区域，请始终添加尽可能多的位置详细信息。 建议通过指定一些输入类型来限定搜索结果：
 
-   1. 设置`countrySet`参数，例如"美国，FR"。 默认搜索行为是搜索整个世界，可能会返回不必要的结果。 如果您的查询不包括`countrySet`参数，搜索可能返回不准确的结果。 例如，搜索名为的城市**贝尔维尤**将返回结果来自美国和法国，由于没有名为城市**贝尔维尤**法国和美国境内。
+* 设置 `countrySet` 参数。 例如，可以将其设置为 `US,FR`。 默认情况下，该 API 会在整个世界中搜索，因此它可能会返回不必要的结果。 如果查询没有 `countrySet` 参数，搜索可能会返回不准确的结果。 例如，如果搜索名为 Bellevue 的城市，则会返回来自美国和法国的结果，因为这两个国家/地区都包含名为 Bellevue 的城市 。
 
-   2. 可以使用`btmRight`和`topleft`参数来设置边界框以将搜索限制在地图上的特定区域。
+* 可使用 `btmRight` 和 `topleft` 参数来设置边界框。 这些参数将搜索限定为地图上的特定区域。
 
-   3. 若要影响的区域关系的结果，可以定义`lat`并`lon`协调参数和设置的搜索区域使用 radius`radius`参数。
-
-
-   **模糊搜索参数**
-
-   1. `minFuzzyLevel`和`maxFuzzyLevel`，帮助返回相关的匹配项，即使查询参数并不完全对应于所需的信息。 大多数搜索查询默认`minFuzzyLevel=1`和`maxFuzzyLevel=2`以提高性能并减少不正常的结果。 需要"restrant"的搜索词的示例，它当匹配到"餐馆"`maxFuzzyLevel`设置为 2。 根据请求的需求，可以重写默认模糊级别。 
-
-   2. 此外可以指定要使用返回的结果类型的确切一`idxSet`参数。 为此可以提交的索引以逗号分隔列表，项顺序并不重要。 以下是受支持的索引：
-
-       * `Addr` - **地址范围**:对于某些街道有开头和结尾街道; 的内插的地址点这些点表示为地址范围。
-       * `Geo` - **地理区域**:它是表示管理部门的土地的地图、 国家/地区、 状态、 城市的区域。
-       * `PAD` - **点地址**:街道名称和编号与特定地址所在在索引中，例如，Soquel Dr 2501 在地图上的点。 它是准确性的最高级别的可用地址。  
-       * `POI` - **兴趣点**:值得注意，可能感兴趣点，在地图上。  [获取搜索地址](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)不会返回 Poi。  
-       * `Str` - **街道**:在地图上的街道的表示形式。
-       * `XStr` - **跨街道/交集**:表示形式的交接点;两个街道相交的位置。
+* 若要影响结果的相关性区域，请定义 `lat` 和 `lon` 坐标参数。 请使用 `radius` 参数设置搜索区域的半径。
 
 
-       **用法示例**:
+#### <a name="fuzzy-search-parameters"></a>模糊搜索参数
 
-       * idxSet = POI （只搜索兴趣点） 
+如果不知道某个搜索查询的用户输入，我们建议使用 Azure Maps [模糊搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)。 例如，用户的输入可以是地址，也可以是感兴趣点的类型（POI），如*购物购物中心*。 该 API 可将 POI 搜索和地理编码组合成规范的“单行搜索”。 
 
-       * idxSet = 键盘，Addr (搜索仅，解决了板 = 点地址，Addr = 地址范围)
+* 即使查询参数与用户需要的信息不完全匹配，`minFuzzyLevel` 和 `maxFuzzyLevel` 参数也有助于返回相关的匹配项。 可以将搜索查询设定为默认值 `minFuzzyLevel=1` 和 `maxFuzzyLevel=2`，以提高性能并减少不正常的结果。 
 
-### <a name="reverse-geocode-and-geography-entity-type-filter"></a>反向地理编码和地理实体类型筛选器
+    例如，当 `maxFuzzyLevel` 参数设置为 2 时，搜索词 restrant 与 restaurant 匹配 。 可在需要时覆盖默认的模糊级别。 
 
-执行与反向地理编码搜索时[搜索地址反向 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)，该服务有能力，可以返回的管理区域的多边形。 只需提供参数`entityType`在请求中，您可以缩小搜索范围的指定的地理实体类型。 生成的响应将包含 geography ID，以及匹配的实体类型。 如果提供多个实体，终结点将返回**可用的最小实体**。 返回几何图形 ID 可用于获取通过该地理几何图形[获取多边形服务](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)。
+* 使用 `idxSet` 参数为一组具体的结果类型设置优先级。 要为一组具体的结果设置优先级，可以提交以逗号分隔的索引列表。 在列表中，项顺序并不重要。 Azure Maps 支持以下索引：
 
-**示例请求：**
+* `Addr` - **地址范围**：从街道的开头和结尾处插入的地址点。 这些点表示为地址范围。
+* `Geo` - **地理区域**：地理行政区域。 例如，地理位置可以是国家/地区、省/市/自治区或市县。
+* `PAD` - **点地址**：包含街道名称和编号的地址。 可在索引中找到点地址。 例如，Soquel Dr 2501。 点地址提供了地址的最高准确性级别。  
+* `POI` - **兴趣点**：地图上的点，值得注意或可能令人感兴趣。 [地址搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) 不返回 POI。  
+* `Str` - **街道**：地图上的街道。
+* `XStr` - **十字路口或交叉口**：两条道路相交的交叉口或位置。
+
+
+#### <a name="usage-examples"></a>用法示例
+
+* `idxSet=POI` - 仅搜索 POI。 
+
+* `idxSet=PAD,Addr` - 仅搜索地址。 `PAD` 指示点地址，`Addr` 指示地址范围。
+
+### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>地理实体类型的反向地理编码和筛选
+
+在[地址搜索反向 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 中执行反向地理编码搜索时，该服务可以返回多边形来表示行政区域。 例如，yoi 可能需要提取城市的区域多边形。 若要将搜索范围缩小到特定地理实体类型，请在请求中包含 `entityType` 参数。 
+
+生成的响应包含地域 ID 和匹配的实体类型。 如果提供了多个实体，则终结点将返回可用的最小实体。 可使用返回的几何图形 ID 通过 [Polygon 搜索服务](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)来获取地理位置的几何图形。
+
+#### <a name="sample-request"></a>示例请求
 
 ```HTTP
 https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscription-key={subscription-key}&query=47.6394532,-122.1304551&language=en-US&entityType=Municipality
 ```
 
-**响应：**
+#### <a name="response"></a>响应
 
 ```JSON
 {
     "summary": {
-        "queryTime": 8,
+        "queryTime": 14,
         "numResults": 1
     },
     "addresses": [
@@ -105,12 +113,6 @@ https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscrip
                 "municipality": "Redmond",
                 "country": "United States",
                 "countryCodeISO3": "USA",
-                "freeformAddress": "Redmond, WA",
-                "boundingBox": {
-                    "northEast": "47.717105,-122.034537",
-                    "southWest": "47.627016,-122.164998",
-                    "entity": "position"
-                },
                 "countrySubdivisionName": "Washington"
             },
             "position": "47.639454,-122.130455",
@@ -125,34 +127,36 @@ https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscrip
 }
 ```
 
-### <a name="search-results-language"></a>搜索结果语言
+### <a name="set-the-results-language"></a>设置结果语言
 
-`language`参数，可设置应在哪些语言搜索中返回结果。 如果未在请求中设置语言，搜索服务将自动默认为国家/地区中最常用的语言。 此外，当指定的语言中的数据不可用，则使用默认语言。 请参阅[支持的语言](https://docs.microsoft.com/azure/azure-maps/supported-languages)有关相对于按国家/地区的 Azure Maps 服务支持的语言的列表。
+使用 `language` 参数为返回的搜索结果设置语言。 如果请求未设置语言，则默认情况下搜索服务将使用该国家或地区的最常用语言。 如果指定的语言中没有可用的数据，则将使用默认语言。 
+
+有关详细信息，请参阅 [Azure Maps 支持的语言](https://docs.microsoft.com/azure/azure-maps/supported-languages)。
 
 
-### <a name="predictive-mode-auto-suggest"></a>预测模式 （自动建议）
+### <a name="use-predictive-mode-automatic-suggestions"></a>使用预测模式（自动建议）
 
-若要查找更多匹配项的部分查询`typeahead`参数应设置为 'true'。 该查询将被解释为部分输入和搜索将在进入预测的模式。 否则该服务将假定传入的所有相关信息。
+若要查找部分查询的更多匹配项，请将 `typeahead` 参数设置为 `true`。 此查询被解释为部分输入，搜索进入预测模式。 如果未将 `typeahead` 参数设置为 `true`，则该服务会假定所有相关信息都已传入。
 
-在此示例下面的查询可以看到"Microso"中，查询搜索地址服务与`typeahead`参数设置为**true**。 如果发现响应，可以看到，搜索服务解释作为部分查询的查询和响应包含的自动建议查询的结果。
+在下面的示例查询中，将针对 Microso 查询地址搜索服务。 此处，`typeahead` 参数设置为 `true`。 响应显示搜索服务将查询解释为部分查询。 响应包含自动建议的查询结果。
 
-**示例查询：**
+#### <a name="sample-query"></a>示例查询
 
 ```HTTP
 https://atlas.microsoft.com/search/address/json?subscription-key={subscription-key}&api-version=1.0&typeahead=true&countrySet=US&lat=47.6370891183&lon=-122.123736172&query=Microsoft
 ```
 
-**响应：**
+#### <a name="response"></a>响应
 
 ```JSON
 {
     "summary": {
         "query": "microsoft",
         "queryType": "NON_NEAR",
-        "queryTime": 25,
-        "numResults": 6,
+        "queryTime": 18,
+        "numResults": 7,
         "offset": 0,
-        "totalResults": 6,
+        "totalResults": 7,
         "fuzzyLevel": 1,
         "geoBias": {
             "lat": 47.6370891183,
@@ -162,74 +166,236 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
     "results": [
         {
             "type": "Street",
-            "id": "US/STR/p0/10294417",
-            "score": 2.594,
-            "dist": 327.546040632591,
+            "id": "US/STR/p0/9438784",
+            "score": 2.594099998474121,
+            "dist": 314.0590106663596,
             "address": {
                 "streetName": "Microsoft Way",
+                "municipalitySubdivision": "Redmond",
+                "municipality": "Redmond",
+            },
+            "position": {
+                "lat": 47.63988,
+                "lon": -122.12438
+            },
+            "viewport": {
+                "topLeftPoint": {
+                    "lat": 47.64223,
+                    "lon": -122.1256,
+                    "valid": true
+                },
+                "btmRightPoint": {
+                    "lat": 47.63748,
+                    "lon": -122.12309,
+                    "valid": true
+                }
+            }
+        },
+        {
+            "type": "Street",
+            "id": "US/STR/p0/1756074",
+            "score": 2.592679977416992,
+            "dist": 876.0272035824189,
+            "address": {
+                "streetName": "Microsoft Road",
                 "municipalitySubdivision": "Redmond",
                 "municipality": "Redmond",
                 "countrySecondarySubdivision": "King",
                 "countryTertiarySubdivision": "Seattle East",
                 "countrySubdivision": "WA",
+                "countrySubdivisionName": "Washington",
                 "postalCode": "98052",
-                "extendedPostalCode": "980526399,980528300",
                 "countryCode": "US",
-                "country": "United States Of America",
+                "country": "United States",
                 "countryCodeISO3": "USA",
-                "freeformAddress": "Microsoft Way, Redmond, WA 98052",
-                "countrySubdivisionName": "Washington"
+                "freeformAddress": "Microsoft Road, Redmond, WA 98052"
             },
             "position": {
-                "lat": 47.63989,
-                "lon": -122.12509
+                "lat": 47.64032,
+                "lon": -122.1344
             },
             "viewport": {
                 "topLeftPoint": {
-                    "lat": 47.63748,
-                    "lon": -122.12309
+                    "lat": 47.64253,
+                    "lon": -122.13535,
+                    "valid": true
                 },
                 "btmRightPoint": {
-                    "lat": 47.64223,
-                    "lon": -122.13061
+                    "lat": 47.63816,
+                    "lon": -122.13305,
+                    "valid": true
                 }
             }
         },
-        ...,
-        ...,
-        ...,
-        ...,
         {
             "type": "Street",
-            "id": "US/STR/p0/9063400",
-            "score": 2.075,
-            "dist": 3655467.6406921702,
+            "id": "US/STR/p0/1470668",
+            "score": 2.5290400981903076,
+            "dist": 2735.4883918101486,
+            "address": {
+                "streetName": "Microsoft West Campus Road",
+                "municipalitySubdivision": "Redmond",
+                "municipality": "Bellevue",
+                "countrySecondarySubdivision": "King",
+                "countryTertiarySubdivision": "Seattle East",
+                "countrySubdivision": "WA",
+                "countrySubdivisionName": "Washington",
+                "postalCode": "98007",
+                "countryCode": "US",
+                "country": "United States",
+                "countryCodeISO3": "USA",
+                "freeformAddress": "Microsoft West Campus Road, Bellevue, WA 98007"
+            },
+            "position": {
+                "lat": 47.65784,
+                "lon": -122.14335
+            },
+            "viewport": {
+                "topLeftPoint": {
+                    "lat": 47.65785,
+                    "lon": -122.14335,
+                    "valid": true
+                },
+                "btmRightPoint": {
+                    "lat": 47.65784,
+                    "lon": -122.14325,
+                    "valid": true
+                }
+            }
+        },
+        {
+            "type": "Street",
+            "id": "US/STR/p0/12812615",
+            "score": 2.527509927749634,
+            "dist": 2870.9579016916873,
+            "address": {
+                "streetName": "Microsoft West Campus Road",
+                "municipalitySubdivision": "Redmond",
+                "municipality": "Redmond",
+                "countrySecondarySubdivision": "King",
+                "countryTertiarySubdivision": "Seattle East",
+                "countrySubdivision": "WA",
+                "countrySubdivisionName": "Washington",
+                "postalCode": "98052",
+                "countryCode": "US",
+                "country": "United States",
+                "countryCodeISO3": "USA",
+                "freeformAddress": "Microsoft West Campus Road, Redmond, WA 98052"
+            },
+            "position": {
+                "lat": 47.66034,
+                "lon": -122.1404
+            },
+            "viewport": {
+                "topLeftPoint": {
+                    "lat": 47.66039,
+                    "lon": -122.14325,
+                    "valid": true
+                },
+                "btmRightPoint": {
+                    "lat": 47.65778,
+                    "lon": -122.13749,
+                    "valid": true
+                }
+            }
+        },
+        {
+            "type": "Street",
+            "id": "US/STR/p0/197588",
+            "score": 2.4630401134490967,
+            "dist": 878.1404663812472,
+            "address": {
+                "streetName": "157th Avenue Northeast",
+                "municipalitySubdivision": "Redmond",
+                "municipality": "Redmond",
+                "countrySecondarySubdivision": "King",
+                "countryTertiarySubdivision": "Seattle East",
+                "countrySubdivision": "WA",
+                "countrySubdivisionName": "Washington",
+                "postalCode": "98052",
+                "extendedPostalCode": "980525344, 980525398, 980525399",
+                "countryCode": "US",
+                "country": "United States",
+                "countryCodeISO3": "USA",
+                "freeformAddress": "157th Avenue Northeast, Redmond, WA 98052"
+            },
+            "position": {
+                "lat": 47.64351,
+                "lon": -122.13056
+            },
+            "viewport": {
+                "topLeftPoint": {
+                    "lat": 47.64473,
+                    "lon": -122.13058,
+                    "valid": true
+                },
+                "btmRightPoint": {
+                    "lat": 47.6425,
+                    "lon": -122.13016,
+                    "valid": true
+                }
+            }
+        },
+        {
+            "type": "Street",
+            "id": "US/STR/p0/3033991",
+            "score": 2.0754499435424805,
+            "dist": 3655467.8844475765,
             "address": {
                 "streetName": "Microsoft Way",
                 "municipalitySubdivision": "Yorkmount, Charlotte",
+            },
+            "position": {
+                "lat": 35.14267,
+                "lon": -80.91824
+            },
+            "viewport": {
+                "topLeftPoint": {
+                    "lat": 35.14287,
+                    "lon": -80.91839,
+                    "valid": true
+                },
+                "btmRightPoint": {
+                    "lat": 35.14267,
+                    "lon": -80.91814,
+                    "valid": true
+                }
+            }
+        },
+        {
+            "type": "Street",
+            "id": "US/STR/p0/8395877",
+            "score": 2.0754499435424805,
+            "dist": 3655437.0037482483,
+            "address": {
+                "streetName": "Microsoft Way",
+                "municipalitySubdivision": "Charlotte",
                 "municipality": "Charlotte",
                 "countrySecondarySubdivision": "Mecklenburg",
                 "countryTertiarySubdivision": "Township 1 Charlotte",
                 "countrySubdivision": "NC",
-                "postalCode": "28217",
+                "countrySubdivisionName": "North Carolina",
+                "postalCode": "28273",
+                "extendedPostalCode": "282738105, 282738106, 282738108, 2827382, 282738200",
                 "countryCode": "US",
-                "country": "United States Of America",
+                "country": "United States",
                 "countryCodeISO3": "USA",
-                "freeformAddress": "Microsoft Way, Charlotte, NC 28217",
-                "countrySubdivisionName": "North Carolina"
+                "freeformAddress": "Microsoft Way, Charlotte, NC 28273"
             },
             "position": {
-                "lat": 35.14279,
-                "lon": -80.91814
+                "lat": 35.14134,
+                "lon": -80.9198
             },
             "viewport": {
                 "topLeftPoint": {
-                    "lat": 35.14267,
-                    "lon": -80.91814
+                    "lat": 35.14274,
+                    "lon": -80.92159,
+                    "valid": true
                 },
                 "btmRightPoint": {
-                    "lat": 35.14279,
-                    "lon": -80.91824
+                    "lat": 35.14002,
+                    "lon": -80.91824,
+                    "valid": true
                 }
             }
         }
@@ -238,34 +404,35 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 ```
 
 
-### <a name="uri-encoding-to-handle-special-characters"></a>URI 编码来处理特殊字符 
+### <a name="encode-a-uri-to-handle-special-characters"></a>对 URI 进行编码以处理特殊字符 
 
-若要查找交叉街道地址，即"第一种途径 & 联合 Street，西雅图"、 特殊字符 & 发送请求之前要编码的需求。 我们建议编码的 URI 中的字符数据使用 %字符进行编码的所有字符的位置以及为其 utf-8 字符相对应的两个字符十六进制值。
+若要查找十字路口地址，必须对 URI 进行编码，使其能够处理地址中的特殊字符。 请看下面的地址示例：1st Avenue & Union Street, Seattle. 在此示例中，发送请求之前，请对与符号 (`&`) 进行编码。 
 
-**用法示例**:
+建议在 URI 中对字符数据进行编码。 在 URI 中，使用百分号 (`%`) 和两个字符的十六进制值（与字符的 UTF-8 代码相对应）对所有字符进行编码。
 
-获取搜索地址：
+#### <a name="usage-examples"></a>用法示例
+
+从以下地址开始：
 
 ```
 query=1st Avenue & E 111th St, New York
 ```
 
- 应编码为：
+对地址进行编码：
 
 ```
-query"=1st%20Avenue%20%26%20E%20111th%20St%2C%20New%20York
+query=1st%20Avenue%20%26%20E%20111th%20St%2C%20New%20York
 ```
 
+可使用以下方法。
 
-以下是要用于不同的语言的不同方法： 
-
-JavaScript/TypeScript:
+JavaScript 或 TypeScript：
 ```Javascript
 encodeURIComponent(query)
 ```
 
-C#/ VB:
-```C#
+C# 或 Visual Basic：
+```csharp
 Uri.EscapeDataString(query)
 ```
 
@@ -286,55 +453,59 @@ C++：
 curl_easy_escape(query)
 ```
 
-PHP:
+PHP：
 ```PHP
 urlencode(query)
 ```
 
-Ruby:
+Ruby：
 ```Ruby
 CGI::escape(query) 
 ```
 
-Swift:
+Swift：
 ```Swift
 query.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet()) 
 ```
 
-转到：
+GO：
 ```Go
 import ("net/url") 
 url.QueryEscape(query)
 ```
 
 
-## <a name="best-practices-for-poi-search"></a>POI 搜索最佳实践
+## <a name="best-practices-for-poi-searching"></a>有关 POI 搜索的最佳做法
 
-感兴趣 (POI) 搜索的点，可按名称，例如，按名称搜索业务请求 POI 结果。 我们强烈建议你使用`countrySet`参数来指定国家/地区，应用程序需要覆盖，因为默认行为将搜索整个世界，可能会返回不必要的结果和/或导致更长的搜索时间。
+在 POI 搜索中，可以按名称请求 POI 结果。 例如，可按名称搜索企业。 
+
+强烈建议使用 `countrySet` 参数指定应用程序需要覆盖的国家/地区。 默认行为是在整个世界中搜索。 此搜索范围可能会返回不必要的结果，并且搜索可能需要较长时间。
 
 ### <a name="brand-search"></a>品牌搜索
 
-若要提高相关性的结果以及在响应中的信息，感兴趣点 (POI) 搜索响应包括可用于进一步分析的响应的品牌信息。
+为了改善结果与响应中信息的相关性，POI 搜索响应中包含品牌信息。 可使用此信息进一步分析响应。
 
-让我们[POI 类别搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory)加油站附近 Microsoft 园区 （华盛顿州雷德蒙德） 的请求。 如果发现响应时，可以看到返回每个 POI 的品牌信息。
+在请求中，可提交以逗号分隔的品牌名称列表。 使用此列表，通过设置 `brandSet` 参数将结果限定为特定品牌。 在列表中，项顺序并不重要。 如果提供多个品牌列表，则返回的结果必须属于至少一个列表。
 
-**示例查询：**
+若要探索品牌搜索，请创建 [POI 类别搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory)请求。 在下面的示例中，我们将寻找位于华盛顿州雷蒙德的 Microsoft 校园附近的加油站。 响应显示返回的每个 POI 的品牌信息。
+
+#### <a name="sample-query"></a>示例查询
 
 ```HTTP
 https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&api-version=1.0&query=gas%20station&limit=3&lat=47.6413362&lon=-122.1327968
 ```
 
-**响应：**
+#### <a name="response"></a>响应
 
 ```JSON
 {
     "summary": {
         "query": "gas station",
         "queryType": "NON_NEAR",
-        "queryTime": 206,
+        "queryTime": 276,
         "numResults": 3,
         "offset": 0,
-        "totalResults": 742169,
+        "totalResults": 762680,
         "fuzzyLevel": 1,
         "geoBias": {
             "lat": 47.6413362,
@@ -344,8 +515,8 @@ https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&
     "results": [
         {
             "type": "POI",
-            "id": "US/POI/p0/245813",
-            "score": 5.663,
+            "id": "US/POI/p0/8831765",
+            "score": 5.6631999015808105,
             "dist": 1037.0280221303253,
             "info": "search:ta:840531000004190-US",
             "poi": {
@@ -356,7 +527,15 @@ https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&
                         "name": "Chevron"
                     }
                 ],
+                "categorySet": [
+                    {
+                        "id": 7311
+                    }
+                ],
                 "url": "www.chevron.com",
+                "categories": [
+                    "petrol station"
+                ],
                 "classifications": [
                     {
                         "code": "PETROL_STATION",
@@ -373,16 +552,6 @@ https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&
                 "streetNumber": "2444",
                 "streetName": "Bel Red Rd",
                 "municipalitySubdivision": "Northeast Bellevue, Bellevue",
-                "municipality": "Bellevue",
-                "countrySecondarySubdivision": "King",
-                "countryTertiarySubdivision": "Seattle East",
-                "countrySubdivision": "WA",
-                "postalCode": "98007",
-                "countryCode": "US",
-                "country": "United States Of America",
-                "countryCodeISO3": "USA",
-                "freeformAddress": "2444 Bel Red Rd, Bellevue, WA 98007",
-                "countrySubdivisionName": "Washington"
             },
             "position": {
                 "lat": 47.63201,
@@ -391,28 +560,116 @@ https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&
             "viewport": {
                 "topLeftPoint": {
                     "lat": 47.63291,
-                    "lon": -122.13414
+                    "lon": -122.13414,
+                    "valid": true
                 },
                 "btmRightPoint": {
                     "lat": 47.63111,
-                    "lon": -122.13148
+                    "lon": -122.13148,
+                    "valid": true
                 }
             },
             "entryPoints": [
                 {
                     "type": "main",
                     "position": {
-                        "lat": 47.63223,
-                        "lon": -122.13311
+                        "lat": 47.63222,
+                        "lon": -122.13312,
+                        "valid": true
                     }
                 }
             ]
         },
-        ...,
         {
             "type": "POI",
-            "id": "US/POI/p0/7727106",
-            "score": 5.662,
+            "id": "US/POI/p0/8831752",
+            "score": 5.662710189819336,
+            "dist": 1330.1278248163273,
+            "info": "search:ta:840539001100326-US",
+            "poi": {
+                "name": "76",
+                "phone": "+(1)-(425)-7472126",
+                "brands": [
+                    {
+                        "name": "76"
+                    }
+                ],
+                "categorySet": [
+                    {
+                        "id": 7311
+                    }
+                ],
+                "url": "www.76.com",
+                "categories": [
+                    "petrol station"
+                ],
+                "classifications": [
+                    {
+                        "code": "PETROL_STATION",
+                        "names": [
+                            {
+                                "nameLocale": "en-US",
+                                "name": "petrol station"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "address": {
+                "streetNumber": "2421",
+                "streetName": "148Th Ave Ne",
+                "municipalitySubdivision": "Redmond, Bridle Trails, Bellevue",
+                "municipality": "Redmond, Bellevue",
+                "countrySecondarySubdivision": "King",
+                "countryTertiarySubdivision": "Seattle East",
+                "countrySubdivision": "WA",
+                "countrySubdivisionName": "Washington",
+                "postalCode": "98007",
+                "countryCode": "US",
+                "country": "United States",
+                "countryCodeISO3": "USA",
+                "freeformAddress": "2421 148Th Ave Ne, Bellevue, WA 98007",
+                "localName": "Bellevue"
+            },
+            "position": {
+                "lat": 47.63187,
+                "lon": -122.14365
+            },
+            "viewport": {
+                "topLeftPoint": {
+                    "lat": 47.63277,
+                    "lon": -122.14498,
+                    "valid": true
+                },
+                "btmRightPoint": {
+                    "lat": 47.63097,
+                    "lon": -122.14232,
+                    "valid": true
+                }
+            },
+            "entryPoints": [
+                {
+                    "type": "minor",
+                    "position": {
+                        "lat": 47.63187,
+                        "lon": -122.14374,
+                        "valid": true
+                    }
+                },
+                {
+                    "type": "main",
+                    "position": {
+                        "lat": 47.63186,
+                        "lon": -122.14313,
+                        "valid": true
+                    }
+                }
+            ]
+        },
+        {
+            "type": "POI",
+            "id": "US/POI/p0/8831764",
+            "score": 5.662449836730957,
             "dist": 1458.645407416307,
             "info": "search:ta:840539000488527-US",
             "poi": {
@@ -423,7 +680,15 @@ https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&
                         "name": "Texaco"
                     }
                 ],
+                "categorySet": [
+                    {
+                        "id": 7311
+                    }
+                ],
                 "url": "www.texaco.com/",
+                "categories": [
+                    "petrol station"
+                ],
                 "classifications": [
                     {
                         "code": "PETROL_STATION",
@@ -440,17 +705,6 @@ https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&
                 "streetNumber": "15248",
                 "streetName": "Bel Red Rd",
                 "municipalitySubdivision": "Redmond",
-                "municipality": "Redmond",
-                "countrySecondarySubdivision": "King",
-                "countryTertiarySubdivision": "Seattle East",
-                "countrySubdivision": "WA",
-                "postalCode": "98052",
-                "extendedPostalCode": "980525511",
-                "countryCode": "US",
-                "country": "United States Of America",
-                "countryCodeISO3": "USA",
-                "freeformAddress": "15248 Bel Red Rd, Redmond, WA 98052",
-                "countrySubdivisionName": "Washington"
             },
             "position": {
                 "lat": 47.62843,
@@ -459,19 +713,22 @@ https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&
             "viewport": {
                 "topLeftPoint": {
                     "lat": 47.62933,
-                    "lon": -122.13761
+                    "lon": -122.13761,
+                    "valid": true
                 },
                 "btmRightPoint": {
                     "lat": 47.62753,
-                    "lon": -122.13495
+                    "lon": -122.13495,
+                    "valid": true
                 }
             },
             "entryPoints": [
                 {
                     "type": "main",
                     "position": {
-                        "lat": 47.62826,
-                        "lon": -122.13626
+                        "lat": 47.62827,
+                        "lon": -122.13628,
+                        "valid": true
                     }
                 }
             ]
@@ -483,74 +740,73 @@ https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&
 
 ### <a name="airport-search"></a>机场搜索
 
-POI 搜索支持通过使用正式的机场代码搜索机场。 例如， **SEA** （西雅图塔科马国际机场）。 
+通过使用 POI 搜索 API，你可以使用其官方代码查找机场。 例如，可以使用 SEA 查找西雅图-塔科马国际机场： 
 
 ```HTTP
 https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&api-version=1.0&query=SEA 
 ```
 
-### <a name="nearby-search"></a>邻近搜索
+### <a name="nearby-search"></a>附近搜索
 
-若要检索仅 POI 结果以某一位置[附近的搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby)可能是正确的选择。 此终结点将仅返回 POI 结果，而不使用搜索查询参数中。 若要限制结果，建议将半径设置。
+若要检索围绕特定位置的 POI 结果，可以尝试使用[附近搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby)。 终结点仅返回 POI 结果。 它不接受搜索查询参数。 
+
+建议设置半径以限定结果。
 
 ## <a name="understanding-the-responses"></a>了解响应
 
-让我们将地址搜索请求向 Azure Maps [search 服务](https://docs.microsoft.com/rest/api/maps/search)西雅图中的地址。 如果您仔细查看下面的请求 URL 中，我们将设置`countrySet`参数**美国**搜索美国中的地址。
+让我们通过向 Azure Maps 搜索服务发出地址搜索请求来查找西雅图的地址。 在下面的请求 URL 中，我们将 `countrySet` 参数设置为 `US` 以搜索美国地址。
 
-**示例查询：**
+### <a name="sample-query"></a>示例查询
 
 ```HTTP
 https://atlas.microsoft.com/search/address/json?subscription-key={subscription-key}&api-version=1&query=400%20Broad%20Street%2C%20Seattle%2C%20WA&countrySet=US
 ```
 
-进一步让我们看下面的响应结构。 在响应中的结果对象的结果类型是不同的。 如果仔细观察你可以看到我们有三种不同类型的结果对象，它是"点地址"、"Street"和"跨 Street"。 请注意，该地址搜索未返回 Poi。 `Score`为每个响应对象的参数指示相对的匹配分数对同一响应中其他对象的分数。 请参阅[获取搜索地址](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)若要了解有关响应对象参数的详细信息。
+### <a name="supported-types-of-results"></a>支持的结果类型
 
-**支持的结果类型：**
+* **点地址**：地图上的点，包含特定地址并附有街道名称和编号。 点地址提供了地址的最高准确性级别。 
 
-* **点地址：** 具有街道名称和编号与特定地址的映射的点。 可用地址的准确性最高级别。 
+* **地址范围**：从街道的开头和结尾处插入的地址点范围。  
 
-* **地址范围：** 对于某些街道有开头和结尾街道; 的内插的地址点这些点表示为地址范围。 
+* **Geography**：地图上的区域，表示地理行政区域，例如国家/地区、州、省/市/自治区或市/县。 
 
-* **地理位置：** 它是表示管理部门的土地的地图、 国家/地区、 状态、 城市的区域。 
+* **POI**：地图上的点，值得注意或可能令人感兴趣。
 
-* **POI-（感兴趣的点）：** 值得注意，可能感兴趣点，在地图上。
+* **街道**：地图上的街道。 地址解析为包含地址的街道的纬度和经度坐标。 门牌号码可能不会处理。 
 
-* **街道：** 在地图上的街道的表示形式。 地址将解析为包含地址的街道名的纬度/经度坐标。 门牌号码可能不会处理。 
+* **十字路口**：交叉路口。 十字路口表示两条道路相交的交叉口。
 
-* **十字路口：** 交集。 交接点; 的表示形式两个街道相交的位置。
+### <a name="response"></a>响应
 
-**响应：**
+让我们看一下响应结构。 在下面的响应中，结果对象的类型不同。 如果仔细看一看，你将看到三种类型的结果对象：
+
+* 点地址
+* 街道
+* 十字路口
+
+请注意，地址搜索不会返回 POI。  
+
+每个响应对象的 `Score` 参数指示匹配的分数如何与同一响应中其他对象的分数相关。 有关响应对象参数的详细信息，请参阅[获取搜索地址](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)。
 
 ```JSON
 {
     "summary": {
         "query": "400 broad street seattle wa",
         "queryType": "NON_NEAR",
-        "queryTime": 129,
+        "queryTime": 146,
         "numResults": 6,
         "offset": 0,
-        "totalResults": 6,
+        "totalResults": 7,
         "fuzzyLevel": 1
     },
     "results": [
         {
             "type": "Point Address",
-            "id": "US/PAD/p0/43076024",
-            "score": 9.894,
+            "id": "US/PAD/p0/28725082",
+            "score": 9.893799781799316,
             "address": {
                 "streetNumber": "400",
                 "streetName": "Broad Street",
-                "municipalitySubdivision": "Seattle, South Lake Union, Lower Queen Anne",
-                "municipality": "Seattle",
-                "countrySecondarySubdivision": "King",
-                "countryTertiarySubdivision": "Seattle",
-                "countrySubdivision": "WA",
-                "postalCode": "98109",
-                "countryCode": "US",
-                "country": "United States Of America",
-                "countryCodeISO3": "USA",
-                "freeformAddress": "400 Broad Street, Seattle, WA 98109",
-                "countrySubdivisionName": "Washington"
             },
             "position": {
                 "lat": 47.62039,
@@ -559,11 +815,13 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
             "viewport": {
                 "topLeftPoint": {
                     "lat": 47.62129,
-                    "lon": -122.35061
+                    "lon": -122.35061,
+                    "valid": true
                 },
                 "btmRightPoint": {
                     "lat": 47.61949,
-                    "lon": -122.34795
+                    "lon": -122.34795,
+                    "valid": true
                 }
             },
             "entryPoints": [
@@ -571,111 +829,118 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
                     "type": "main",
                     "position": {
                         "lat": 47.61982,
-                        "lon": -122.34886
+                        "lon": -122.34886,
+                        "valid": true
                     }
                 }
             ]
         },
         {
             "type": "Street",
-            "id": "US/STR/p0/2440854",
-            "score": 8.129,
+            "id": "US/STR/p0/6700384",
+            "score": 8.129190444946289,
             "address": {
                 "streetName": "Broad Street",
-                "municipalitySubdivision": "Seattle, Westlake, South Lake Union",
-                "municipality": "Seattle",
-                "countrySecondarySubdivision": "King",
-                "countryTertiarySubdivision": "Seattle",
-                "countrySubdivision": "WA",
-                "postalCode": "98109",
-                "extendedPostalCode": "981094347,981094700,981094701,981094702",
-                "countryCode": "US",
-                "country": "United States Of America",
-                "countryCodeISO3": "USA",
-                "freeformAddress": "Broad Street, Seattle, WA 98109",
-                "countrySubdivisionName": "Washington"
             },
             "position": {
-                "lat": 47.62553,
-                "lon": -122.33936
+                "lat": 47.61724,
+                "lon": -122.35207
             },
             "viewport": {
                 "topLeftPoint": {
-                    "lat": 47.62545,
-                    "lon": -122.33861
+                    "lat": 47.61825,
+                    "lon": -122.35336,
+                    "valid": true
                 },
                 "btmRightPoint": {
-                    "lat": 47.62574,
-                    "lon": -122.33974
+                    "lat": 47.61626,
+                    "lon": -122.35078,
+                    "valid": true
                 }
             }
         },
         {
             "type": "Street",
-            "id": "US/STR/p0/8450985",
-            "score": 8.129,
+            "id": "US/STR/p0/9701953",
+            "score": 8.129190444946289,
             "address": {
                 "streetName": "Broad Street",
-                "municipalitySubdivision": "Seattle, Belltown",
-                "municipality": "Seattle",
-                "countrySecondarySubdivision": "King",
-                "countryTertiarySubdivision": "Seattle",
-                "countrySubdivision": "WA",
-                "postalCode": "98109,98121",
-                "extendedPostalCode": "981094991,981211117,981211237,981213206",
-                "countryCode": "US",
-                "country": "United States Of America",
-                "countryCodeISO3": "USA",
-                "freeformAddress": "Broad Street, Seattle, WA",
-                "countrySubdivisionName": "Washington"
             },
             "position": {
-                "lat": 47.61691,
-                "lon": -122.35251
+                "lat": 47.61965,
+                "lon": -122.349
             },
             "viewport": {
                 "topLeftPoint": {
-                    "lat": 47.61502,
-                    "lon": -122.35041
+                    "lat": 47.62066,
+                    "lon": -122.35041,
+                    "valid": true
                 },
                 "btmRightPoint": {
                     "lat": 47.61857,
-                    "lon": -122.35484
+                    "lon": -122.34761,
+                    "valid": true
                 }
             }
         },
-        ...,
-        ...,
         {
-            "type": "Cross Street",
-            "id": "US/XSTR/p1/3816818",
-            "score": 6.759,
+            "type": "Street",
+            "id": "US/STR/p0/11721297",
+            "score": 8.129190444946289,
             "address": {
-                "streetName": "Broad Street & Valley Street",
-                "municipalitySubdivision": "South Lake Union, Seattle",
+                "streetName": "Broad Street",
+                "municipalitySubdivision": "Seattle, Downtown Seattle, Denny Regrade, Belltown",
                 "municipality": "Seattle",
                 "countrySecondarySubdivision": "King",
                 "countryTertiarySubdivision": "Seattle",
                 "countrySubdivision": "WA",
-                "postalCode": "98109",
+                "countrySubdivisionName": "Washington",
+                "postalCode": "98121",
+                "extendedPostalCode": "981211237",
                 "countryCode": "US",
-                "country": "United States Of America",
+                "country": "United States",
                 "countryCodeISO3": "USA",
-                "freeformAddress": "Broad Street & Valley Street, Seattle, WA 98109",
-                "countrySubdivisionName": "Washington"
+                "freeformAddress": "Broad Street, Seattle, WA 98121"
             },
             "position": {
-                "lat": 47.62574,
-                "lon": -122.33861
+                "lat": 47.61825,
+                "lon": -122.35078
             },
             "viewport": {
                 "topLeftPoint": {
-                    "lat": 47.62664,
-                    "lon": -122.33994
+                    "lat": 47.61857,
+                    "lon": -122.35078,
+                    "valid": true
                 },
                 "btmRightPoint": {
-                    "lat": 47.62484,
-                    "lon": -122.33728
+                    "lat": 47.61825,
+                    "lon": -122.35041,
+                    "valid": true
+                }
+            }
+        },
+        {
+            "type": "Cross Street",
+            "id": "US/XSTR/p1/232144",
+            "score": 6.754479885101318,
+            "address": {
+                "streetName": "Broad Street & Valley Street",
+                "municipalitySubdivision": "South Lake Union, Seattle",
+            },
+            "position": {
+                "lat": 47.62545,
+                "lon": -122.33974
+            },
+            "viewport": {
+                "topLeftPoint": {
+                    "lat": 47.62635,
+                    "lon": -122.34107,
+                    "valid": true
+                },
+                "btmRightPoint": {
+                    "lat": 47.62455,
+                    "lon": -122.33841,
+                    "valid": true
                 }
             }
         }
@@ -683,12 +948,12 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 }
 ```
 
-### <a name="geometry"></a>几何图形
+### <a name="geometry"></a>Geometry
 
-当响应类型是**几何图形**，它可以包括在返回的 geometry ID**数据源**"geometry"和"id"下的对象。 例如，[获取多边形服务](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)可以请求以 GeoJSON 格式，如一组实体的城市或机场轮廓的几何图形数据。 可以使用此边界数据用于[地理围栏](https://docs.microsoft.com/azure/azure-maps/tutorial-geofence)或[的几何图形内搜索 Poi](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)。
+Geometry 响应类型可能包括在 `geometry` 和 `id` 下的 `dataSources` 对象中返回的几何图形 ID。 例如，可使用 [Polygon 搜索服务](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)以 GeoJSON 格式请求几何数据。 使用此格式可以获取一组实体的城市或机场分布。 然后，可以使用此边界数据[设置地理围栏](https://docs.microsoft.com/azure/azure-maps/tutorial-geofence)或[在几何图形内搜索 POI](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)。
 
 
-[搜索地址](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)或[模糊搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)API 响应可以包括**geometry ID** "geometry"和"id"下的数据源对象中返回。
+[地址搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) API 或[模糊搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) API 的响应可以包括在 `dataSources` 和 `geometry` 下的 `id` 对象中返回的几何图形 ID：
 
 
 ```JSON 
@@ -701,5 +966,10 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解[如何构建 Azure Maps 搜索服务请求](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)。
-* 探索 Azure Maps[搜索服务 API 文档](https://docs.microsoft.com/rest/api/maps/search)。 
+有关详细信息，请阅读以下文章：
+
+> [!div class="nextstepaction"]
+> [如何生成 Azure Maps 搜索服务请求](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)
+
+> [!div class="nextstepaction"]
+> [语音服务 API 文档](https://docs.microsoft.com/rest/api/maps/search)

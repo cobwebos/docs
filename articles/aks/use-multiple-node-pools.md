@@ -1,89 +1,51 @@
 ---
-title: 使用多个节点池在 Azure Kubernetes 服务 (AKS)
-description: 了解如何创建和管理群集在 Azure Kubernetes 服务 (AKS) 的多个节点池
+title: 在 Azure Kubernetes 服务 (AKS) 中使用多个节点池
+description: 了解如何为 Azure Kubernetes 服务 (AKS) 中的群集创建和管理多个节点池
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: article
-ms.date: 05/17/2019
-ms.author: iainfou
-ms.openlocfilehash: a295dfa1f7f2c58b3e45036212434837ac4bfb4d
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.date: 04/08/2020
+ms.openlocfilehash: c35b3cdbde79a771eccc42c7c3a60b0ab4e08e8a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475451"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250849"
 ---
-# <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>预览-创建和管理群集在 Azure Kubernetes 服务 (AKS) 的多个节点池
+# <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的群集创建和管理多个节点池
 
-在 Azure Kubernetes 服务 (AKS) 节点具有相同配置的组合在一起成*节点池*。 这些节点池包含运行应用程序的基础虚拟机。 创建 AKS 群集，这会创建时定义节点和它们的大小 (SKU) 的初始数目*默认节点池*。 若要支持具有不同的计算或存储需求的应用程序，可以创建其他节点池。 例如，使用这些附加节点池提供计算密集型应用程序的 Gpu 或 SSD 的高性能存储访问。
-
-本文介绍如何创建和管理 AKS 群集中的多个节点池。 此功能目前处于预览状态。
-
-> [!IMPORTANT]
-> AKS 预览版功能是自助服务的选择加入。 提供这些项目是为了从我们的社区收集反馈和 bug。 在预览版中，这些功能不是用于生产环境中使用。 公共预览版中的功能属于最大努力支持。 AKS 技术支持团队的协助营业时间太平洋时区 （太平洋标准时间） 仅将提供。 有关其他信息，请参阅以下支持文章：
->
-> * [AKS 支持策略][aks-support-policies]
-> * [Azure 支持常见问题][aks-faq]
-
-## <a name="before-you-begin"></a>开始之前
-
-需要安装并配置 Azure CLI 2.0.61 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
-
-### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
-
-CLI 命令来创建和管理多个节点池均位于*aks 预览版*CLI 扩展。 安装*aks 预览版*Azure CLI 扩展使用[az 扩展添加][ az-extension-add]命令，如下面的示例中所示：
-
-```azurecli-interactive
-az extension add --name aks-preview
-```
+在 Azure Kubernetes 服务 (AKS) 中，采用相同配置的节点分组成节点池。 这些节点池包含运行应用程序的底层 VM。 节点的初始数量和大小 (SKU) 是创建 AKS 群集时（此时会创建[系统节点池][use-system-pool]）定义的。 若要支持具有不同计算或存储需求的应用程序，可以创建额外的用户节点池。 系统节点池主要用于托管关键系统 Pod（例如 CoreDNS 和 tunnelfront）。 用户节点池主要用于托管应用程序 Pod。 但是，如果希望在 AKS 群集中只有一个池，可以在系统节点池上计划应用程序 Pod。 用户节点池用于放置应用程序特定的 Pod。 例如，使用这些额外的用户节点池可为计算密集型应用程序提供 GPU，或者访问高性能 SSD 存储。
 
 > [!NOTE]
-> 如果您先前安装了*aks 预览版*扩展，安装任何可用更新使用`az extension update --name aks-preview`命令。
+> 利用此功能可以更好地控制如何创建和管理多个节点池。 因此，需要使用单独的命令来执行创建/更新/删除操作。 以前，通过 `az aks create` 或 `az aks update` 执行的群集操作使用 managedCluster API，并且只能通过这些操作更改控制平面和单个节点池。 此功能通过 agentPool API 为代理池公开单独的操作集，并要求使用 `az aks nodepool` 命令集对单个节点池执行操作。
 
-### <a name="register-multiple-node-pool-feature-provider"></a>注册多个节点池功能提供程序
+本文介绍如何在 AKS 群集中创建和管理多个节点池。
 
-若要创建的 AKS 群集，可以使用多个节点池，请先启用你的订阅上的两个功能标志。 多节点池群集使用的虚拟机规模集 (VMSS) 来管理部署和 Kubernetes 节点的配置。 注册*MultiAgentpoolPreview*并*VMSSPreview*使用功能标志[az 功能注册][ az-feature-register]命令中所示下面的示例：
+## <a name="before-you-begin"></a>准备阶段
 
-```azurecli-interactive
-az feature register --name MultiAgentpoolPreview --namespace Microsoft.ContainerService
-az feature register --name VMSSPreview --namespace Microsoft.ContainerService
-```
-
-> [!NOTE]
-> 创建已成功注册后任何 AKS 群集*MultiAgentpoolPreview*使用此预览群集体验。 若要继续创建正则、 完全受支持的群集，不要启用预览功能在生产订阅。 使用单独的测试或开发的 Azure 订阅进行测试预览功能。
-
-状态显示为“已注册”需要几分钟时间  。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MultiAgentpoolPreview')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
-```
-
-准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态  ：
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
+需要安装并配置 Azure CLI 2.2.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
 ## <a name="limitations"></a>限制
 
-创建和管理 AKS 群集中以支持多个节点池时，应考虑以下限制：
+创建和管理支持多个节点池的 AKS 群集时存在以下限制：
 
-* 多个节点池才可用于创建已成功注册后的群集*MultiAgentpoolPreview*并*VMSSPreview*功能为你的订阅。 无法添加或管理现有之前已成功注册这些功能创建的 AKS 群集与节点池。
-* 无法删除第一个节点池。
-* 不能使用 HTTP 应用程序路由外接程序。
-* 无法添加/更新/删除节点池与大多数操作使用现有资源管理器模板。 相反，[使用单独的资源管理器模板](#manage-node-pools-using-a-resource-manager-template)到 AKS 群集中的节点池进行更改。
-* 不能使用群集自动缩放程序 （目前以预览版在 AKS 中）。
-
-虽然此功能处于预览状态，下面的其他限制适用：
-
-* AKS 群集可以具有最多八个节点池。
-* AKS 群集可以在这些八个节点的池之间具有最多 400 节点。
+* 请参阅 [Azure Kubernetes 服务 (AKS) 中可用的配额、虚拟机大小限制和区域][quotas-skus-regions]。
+* 可以删除系统节点池，前提是有另一个可在 AKS 群集中取代它的系统节点池。
+* 系统池必须至少包含一个节点，而用户节点池则可能包含零个或零个以上的节点。
+* AKS 群集必须通过标准 SKU 负载均衡器来使用多个节点池，而基本 SKU 负载均衡器并不支持该功能。
+* AKS 群集必须对节点使用虚拟机规模集。
+* 节点池的名称只能包含小写字母数字字符，且必须以小写字母开头。 Linux 节点池的名称长度必须为 1 到 12 个字符；Windows 节点池的名称长度必须为 1 到 6 个字符。
+* 所有节点池都必须位于同一虚拟网络中。
+* 在创建群集的过程中创建多个节点池时，节点池使用的所有 Kubernetes 版本都必须与已为控制平面设置的版本相匹配。 这可以在已使用每节点池操作预配了群集后更新。
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
-若要开始，请使用单个节点池创建 AKS 群集。 下面的示例使用[az 组创建][ az-group-create]命令以创建名为的资源组*myResourceGroup*中*eastus*区域。 名为 AKS 群集*myAKSCluster*然后，使用创建[az aks 创建][ az-aks-create]命令。 一个 *-kubernetes 版本*的*1.12.6*用于说明如何更新下一个步骤中的节点池。 你可以指定任何[受支持的 Kubernetes 版本][supported-versions]。
+> [!Important]
+> 如果在生产环境中为 AKS 群集运行单个系统节点池，则建议至少将三个节点用作节点池。
+
+若要开始，请创建包含单个节点池的 AKS 群集。 以下示例使用[az group create][az-group-create]命令在*eastus*区域中创建名为*myResourceGroup*的资源组。 然后使用 [az AKS create][az-aks-create] 命令创建名为 *myAKSCluster* 的 AKS 群集。
+
+> [!NOTE]
+> 使用多个节点池时，**不支持**“基本”负载均衡器 SKU。 默认情况下，AKS 群集是在 Azure CLI 和 Azure 门户中使用“标准”负载均衡器 SKU 创建的。
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -93,15 +55,18 @@ az group create --name myResourceGroup --location eastus
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --enable-vmss \
-    --node-count 1 \
+    --vm-set-type VirtualMachineScaleSets \
+    --node-count 2 \
     --generate-ssh-keys \
-    --kubernetes-version 1.12.6
+    --load-balancer-sku standard
 ```
 
 创建群集需要几分钟时间。
 
-群集准备就绪后，使用[az aks get-credentials 来获取凭据][ az-aks-get-credentials]命令，用于获取群集凭据`kubectl`:
+> [!NOTE]
+> 为了确保群集可靠运行，应在默认节点池中至少运行 2（两）个节点，因为基本系统服务将在整个节点池中运行。
+
+群集准备就绪后，请使用 [az aks get-credentials][az-aks-get-credentials] 命令获取要与 `kubectl` 结合使用的群集凭据：
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -109,7 +74,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 ## <a name="add-a-node-pool"></a>添加节点池
 
-上一步中创建的群集有一个单个节点池。 让我们添加第二个节点池 using [az aks 节点池添加][ az-aks-nodepool-add]命令。 下面的示例创建一个名为的节点池*mynodepool*运行一次*3*节点：
+在上一步骤中创建的群集包含单个节点池。 让我们使用 [az aks nodepool add][az-aks-nodepool-add] 命令添加另一个节点池。 以下示例创建名为 *mynodepool* 的节点池，该节点池运行 *3* 个节点：
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -119,61 +84,172 @@ az aks nodepool add \
     --node-count 3
 ```
 
-若要查看的节点池的状态，请使用[az aks 节点池列表][ az-aks-nodepool-list]命令并指定资源组和群集名称：
+> [!NOTE]
+> 节点池的名称必须以小写字母开头，且只能包含字母数字字符。 Linux 节点池的名称长度必须为 1 到 12 个字符；Windows 节点池的名称长度必须为 1 到 6 个字符。
+
+若要查看节点池的状态，请使用 [az aks node pool list][az-aks-nodepool-list] 命令并指定资源组和群集名称：
 
 ```azurecli-interactive
-az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster -o table
+az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
 ```
 
-以下示例输出表明*mynodepool*已成功创建三个节点都在节点池。 在上一步骤中，默认值创建 AKS 群集时*nodepool1*创建时使用的节点计数*1*。
+以下示例输出显示已成功地在节点池中创建包含三个节点的 *mynodepool*。 在上一步骤中创建 AKS 群集时，已创建包含 *2* 个节点的默认 *nodepool1*。
 
-```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster -o table
-
-AgentPoolType            Count    MaxPods    Name        OrchestratorVersion    OsDiskSizeGb    OsType    ProvisioningState    ResourceGroup         VmSize
------------------------  -------  ---------  ----------  ---------------------  --------------  --------  -------------------  --------------------  ---------------
-VirtualMachineScaleSets  3        110        mynodepool  1.12.6                 100             Linux     Succeeded            myResourceGroupPools  Standard_DS2_v2
-VirtualMachineScaleSets  1        110        nodepool1   1.12.6                 100             Linux     Succeeded            myResourceGroupPools  Standard_DS2_v2
+```output
+[
+  {
+    ...
+    "count": 3,
+    ...
+    "name": "mynodepool",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  },
+  {
+    ...
+    "count": 2,
+    ...
+    "name": "nodepool1",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  }
+]
 ```
 
 > [!TIP]
-> 如果没有*OrchestratorVersion*或*VmSize*添加节点池时指定了根据 AKS 群集的默认值创建节点。 在此示例中，这是 Kubernetes 版本*1.12.6*和节点大小*Standard_DS2_v2*。
+> 如果在添加节点池时未指定*VmSize* ，则 Windows 节点池的默认大小和 Linux 节点池的*Standard_DS2_v2* *Standard_D2s_v3* 。 如果未指定 OrchestratorVersion，则它将默认为与控制平面相同的版本。
 
-## <a name="upgrade-a-node-pool"></a>升级的节点池
+### <a name="add-a-node-pool-with-a-unique-subnet-preview"></a>添加具有唯一子网 (预览的节点池) 
 
-第一步中创建 AKS 群集时`--kubernetes-version`的*1.12.6*指定。 让我们来升级*mynodepool*到 Kubernetes *1.12.7*。 使用[az aks 节点的池升级][ az-aks-nodepool-upgrade]命令，将升级的节点池，如下面的示例中所示：
+工作负荷可能需要将群集的节点拆分为单独的池，以便进行逻辑隔离。 对于群集中每个节点池专用的单独子网，可以支持此隔离。 这可以满足要求，例如，在节点池中拆分非连续的虚拟网络地址空间。
+
+#### <a name="limitations"></a>限制
+
+* 分配给 nodepools 的所有子网都必须属于同一虚拟网络。
+* 系统箱必须有权访问群集中的所有节点，以通过 coreDNS 提供关键功能，如 DNS 解析。
+* 在预览期间，按节点池分配唯一子网仅限于 Azure CNI。
+* 在预览期间，不支持将网络策略用于每个节点池的唯一子网。
+
+若要创建具有专用子网的节点池，请在创建节点池时传递子网资源 ID 作为附加参数。
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name mynodepool \
+    --node-count 3 \
+    --vnet-subnet-id <YOUR_SUBNET_RESOURCE_ID>
+```
+
+## <a name="upgrade-a-node-pool"></a>升级节点池
+
+> [!NOTE]
+> 不能对群集或节点池同时执行升级和缩放操作，否则会返回错误。 而只能先在目标资源上完成一个操作类型，然后再在同一资源上执行下一个请求。 请阅读[故障排除指南](https://aka.ms/aks-pending-upgrade)中的详细信息。
+
+本部分中的命令说明如何升级单个特定的节点池。 [下一部分](#upgrade-a-cluster-control-plane-with-multiple-node-pools)将会说明升级控制平面与节点池的 Kubernetes 版本之间的关系。
+
+> [!NOTE]
+> 节点池的 OS 映像版本与群集的 Kubernetes 版本相关联。 只能先升级 OS 映像，然后再升级群集。
+
+由于本示例包含两个节点池，因此必须使用 [az aks nodepool upgrade][az-aks-nodepool-upgrade] 来升级节点池。 若要查看可用的升级，请使用[az aks get 升级][az-aks-get-upgrades]
+
+```azurecli-interactive
+az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
+```
+
+让我们升级*mynodepool*。 如以下示例中所示，使用 [az aks nodepool upgrade][az-aks-nodepool-upgrade] 命令升级节点池：
 
 ```azurecli-interactive
 az aks nodepool upgrade \
     --resource-group myResourceGroup \
     --cluster-name myAKSCluster \
     --name mynodepool \
-    --kubernetes-version 1.12.7 \
+    --kubernetes-version KUBERNETES_VERSION \
     --no-wait
 ```
 
-列出使用重新工作节点池的状态[az aks 节点池列表][ az-aks-nodepool-list]命令。 下面的示例演示*mynodepool*处于*升级*状态变为*1.12.7*:
+使用 [az aks node pool list][az-aks-nodepool-list] 命令再次列出节点池的状态。 下面的示例演示*mynodepool*处于*升级*状态，以便*KUBERNETES_VERSION*：
 
-```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster -o table
-
-AgentPoolType            Count    MaxPods    Name        OrchestratorVersion    OsDiskSizeGb    OsType    ProvisioningState    ResourceGroup    VmSize
------------------------  -------  ---------  ----------  ---------------------  --------------  --------  -------------------  ---------------  ---------------
-VirtualMachineScaleSets  3        110        mynodepool  1.12.7                 100             Linux     Upgrading            myResourceGroup  Standard_DS2_v2
-VirtualMachineScaleSets  1        110        nodepool1   1.12.6                 100             Linux     Succeeded            myResourceGroup  Standard_DS2_v2
+```azurecli
+az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ```
 
-花费几分钟才能将节点升级到指定的版本。
+```output
+[
+  {
+    ...
+    "count": 3,
+    ...
+    "name": "mynodepool",
+    "orchestratorVersion": "KUBERNETES_VERSION",
+    ...
+    "provisioningState": "Upgrading",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  },
+  {
+    ...
+    "count": 2,
+    ...
+    "name": "nodepool1",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "provisioningState": "Succeeded",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  }
+]
+```
 
-作为最佳做法，应为相同的 Kubernetes 版本升级 AKS 群集中的所有节点池。 升级单个节点池的功能，可以执行滚动升级，可以安排节点池来维护应用程序正常运行时间之间的 pod。
+将节点升级到指定的版本需要花费几分钟时间。
 
-## <a name="scale-a-node-pool"></a>扩展节点池
+最佳做法是将 AKS 群集中的所有节点池升级到相同的 Kubernetes 版本。 `az aks upgrade` 的默认行为是将所有节点池连同控制平面一起升级，以实现这种一致性。 升级单个节点池的功能可让你执行滚动升级，并在节点池之间计划 pod，使应用程序的正常运行时间保持在上述约束范围内。
 
-为你的应用程序工作负荷需求变化，可能需要缩放池中节点的节点数。 可缩放的节点数，向上或向下。
+## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>升级包含多个节点池的群集控制平面
+
+> [!NOTE]
+> Kubernetes 使用标准的[语义化版本控制](https://semver.org/)方案。 版本号以 *x.y.z* 表示，其中，*x* 是主要版本，*y* 是次要版本，*z* 是修补程序版本。 例如，版本 *1.12.6* 中的 1 是主要版本，12 是次要版本，6 是修补程序版本。 控制平面和初始节点池的 Kubernetes 版本是在群集创建过程中设置的。 将所有附加节点池添加到群集时，将为其设置 Kubernetes 版本。 不同节点池的 Kubernetes 版本可能不同，节点池与控制平面的 Kubernetes 版本也可能不同。
+
+AKS 群集包含两个具有关联 Kubernetes 版本的群集资源对象。
+
+1. 群集控制平面 Kubernetes 版本。
+2. 具有 Kubernetes 版本的节点池。
+
+一个控制平面映射到一个或多个节点池。 升级操作的行为取决于所用的 Azure CLI 命令。
+
+升级 AKS 控制平面需要使用 `az aks upgrade`。 此命令将升级群集中的控制平面版本和所有节点池。
+
+结合 `--control-plane-only` 标志发出 `az aks upgrade` 命令只会升级群集控制平面， 而不会更改群集中任何关联的节点池。
+
+升级单个节点池需要使用 `az aks nodepool upgrade`。 此命令只会升级具有指定 Kubernetes 版本的目标节点池
+
+### <a name="validation-rules-for-upgrades"></a>升级验证规则
+
+群集控制平面和节点池的有效 Kubernetes 升级由以下规则集验证。
+
+* 用于升级节点池的有效版本的规则：
+   * 节点池版本的主要版本必须与控制平面相同。
+   * 节点池的次要版本必须在控制平面版本的两个次要版本范围内。 
+   * 节点池版本不能大于控制平面的 `major.minor.patch` 版本。
+
+* 提交升级操作的规则：
+   * 无法降级控制平面或节点池的 Kubernetes 版本。
+   * 如果未指定节点池的 Kubernetes 版本，则行为取决于所用的客户端。 资源管理器模板中的声明会回退到为节点池定义的现有版本（如果已使用）。如果未设置现有版本，则会使用控制平面版本进行回退。
+   * 可以在给定的时间升级或者缩放控制平面或节点池，而不能同时对单个控制平面或节点池资源提交多个操作。
+
+## <a name="scale-a-node-pool-manually"></a>手动缩放节点池
+
+当应用程序工作负荷需求发生变化时，你可能需要缩放节点池中的节点数。 可以增加或减少节点数。
 
 <!--If you scale down, nodes are carefully [cordoned and drained][kubernetes-drain] to minimize disruption to running applications.-->
 
-若要缩放的池中节点的节点数，请使用[az aks 节点池规模][ az-aks-nodepool-scale]命令。 下面的示例中的节点数量进行缩放*mynodepool*到*5*:
+若要缩放节点池中的节点数，请使用 [az aks node pool scale][az-aks-nodepool-scale] 命令。 以下示例将 *mynodepool* 中的节点数缩放为 *5*：
 
 ```azurecli-interactive
 az aks nodepool scale \
@@ -184,50 +260,102 @@ az aks nodepool scale \
     --no-wait
 ```
 
-列出使用重新工作节点池的状态[az aks 节点池列表][ az-aks-nodepool-list]命令。 下面的示例演示*mynodepool*处于*缩放*状态的新的计数*5*节点：
+使用 [az aks node pool list][az-aks-nodepool-list] 命令再次列出节点池的状态。 以下示例显示 *mynodepool* 处于 *Scaling*（正在缩放）状态，其中的新节点计数为 *5*：
 
-```console
-$ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster -o table
-
-AgentPoolType            Count    MaxPods    Name        OrchestratorVersion    OsDiskSizeGb    OsType    ProvisioningState    ResourceGroup         VmSize
------------------------  -------  ---------  ----------  ---------------------  --------------  --------  -------------------  --------------------  ---------------
-VirtualMachineScaleSets  5        110        mynodepool  1.12.7                 100             Linux     Scaling              myResourceGroupPools  Standard_DS2_v2
-VirtualMachineScaleSets  1        110        nodepool1   1.12.6                 100             Linux     Succeeded            myResourceGroupPools  Standard_DS2_v2
+```azurecli
+az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ```
 
-花费几分钟时间才能完成缩放操作。
+```output
+[
+  {
+    ...
+    "count": 5,
+    ...
+    "name": "mynodepool",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "provisioningState": "Scaling",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  },
+  {
+    ...
+    "count": 2,
+    ...
+    "name": "nodepool1",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "provisioningState": "Succeeded",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  }
+]
+```
+
+需要花费几分钟时间来完成缩放操作。
+
+## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>通过启用群集来自动缩放特定节点池自动缩放程序
+
+AKS 提供单独的功能，可使用称为[群集自动缩放程序](cluster-autoscaler.md)的功能自动缩放节点池。 可以为每个节点池启用此功能，每个节点池具有唯一的最小和最大刻度计数。 了解如何[使用每个节点池的群集自动缩放程序](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled)。
 
 ## <a name="delete-a-node-pool"></a>删除节点池
 
-如果不再需要池时，可以将其删除并删除基础 VM 节点。 若要删除节点池，请使用[az aks 节点池删除][ az-aks-nodepool-delete]命令并指定节点的池名称。 以下示例将删除*mynoodepool*前面步骤中创建：
+不再需要某个池时，可将其删除并删除底层 VM 节点。 若要删除节点池，请使用 [az aks node pool delete][az-aks-nodepool-delete] 命令并指定节点池名称。 以下示例删除在前面步骤中创建的 *mynoodepool*：
 
 > [!CAUTION]
-> 没有恢复选项时删除节点池可能会发生数据丢失。 如果不能在其他节点池上计划的 pod，这些应用程序将不可用。 请确保在使用的应用程序没有数据备份或能够在群集中其他节点的池上运行时，不要删除节点池。
+> 如果删除节点池时发生数据丢失，没有任何选项可以恢复数据。 如果无法在其他节点池中计划 pod，则这些应用程序将不可用。 当使用中的应用程序没有数据备份或者无法在群集中的其他节点池上运行时，请务必不要删除节点池。
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name mynodepool --no-wait
 ```
 
-从下面的示例输出[az aks 节点池列表][ az-aks-nodepool-list]命令显示*mynodepool*处于*删除*状态：
+[az aks node pool list][az-aks-nodepool-list] 命令的以下示例输出显示 *mynodepool* 处于 *Deleting*（正在删除）状态：
 
-```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster -o table
-
-AgentPoolType            Count    MaxPods    Name        OrchestratorVersion    OsDiskSizeGb    OsType    ProvisioningState    ResourceGroup         VmSize
------------------------  -------  ---------  ----------  ---------------------  --------------  --------  -------------------  --------------------  ---------------
-VirtualMachineScaleSets  5        110        mynodepool  1.12.7                 100             Linux     Deleting             myResourceGroupPools  Standard_DS2_v2
-VirtualMachineScaleSets  1        110        nodepool1   1.12.6                 100             Linux     Succeeded            myResourceGroupPools  Standard_DS2_v2
+```azurecli
+az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ```
 
-需要几分钟，若要删除的节点和节点池。
+```output
+[
+  {
+    ...
+    "count": 5,
+    ...
+    "name": "mynodepool",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "provisioningState": "Deleting",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  },
+  {
+    ...
+    "count": 2,
+    ...
+    "name": "nodepool1",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "provisioningState": "Succeeded",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  }
+]
+```
+
+删除节点和节点池需要花费几分钟时间。
 
 ## <a name="specify-a-vm-size-for-a-node-pool"></a>指定节点池的 VM 大小
 
-在上一示例中创建节点池的默认 VM 大小使用在群集中创建的节点。 一种更常见方案是为你要使用不同的 VM 大小和功能创建节点池。 例如，可以创建包含具有大量的 CPU 或内存中，节点的节点池或提供 GPU 支持的节点池。 在下一步中，你[使用 taints 和 tolerations](#schedule-pods-using-taints-and-tolerations)告知 Kubernetes 计划程序如何限制对可以在这些节点运行的 pod 的访问。
+在前面的创建节点池示例中，对群集中创建的节点使用了默认 VM 大小。 一个更常见的场景是创建具有不同 VM 大小和功能的节点池。 例如，可以创建一个包含具有大量 CPU 或内存的节点的节点池，或创建一个提供 GPU 支持的节点池。 下一步骤将[使用排斥和容许](#schedule-pods-using-taints-and-tolerations)来告知 Kubernetes 计划程序如何将访问权限限制为可在这些节点上运行的 pod。
 
-在以下示例中，将创建使用基于 GPU 的节点池*Standard_NC6* VM 大小。 这些虚拟机采用 NVIDIA Tesla K80 卡。 有关可用的 VM 大小的信息，请参阅[在 Azure 中 Linux 虚拟机的大小][vm-sizes]。
+在以下示例中，创建使用*Standard_NC6* VM 大小的基于 GPU 的节点池。 这些 VM 采用 NVIDIA Tesla K80 卡。 有关可用 VM 大小的信息，请参阅 [Azure 中的 Linux 虚拟机大小][vm-sizes]。
 
-创建节点池使用[az aks 节点池添加][ az-aks-nodepool-add]试命令。 这一次，指定的名称*gpunodepool*，并使用`--node-vm-size`参数来指定*Standard_NC6*大小：
+再次使用 [az aks node pool add][az-aks-nodepool-add] 命令创建节点池。 这一次，请指定名称*gpunodepool*，并使用 `--node-vm-size` 参数指定*Standard_NC6*大小：
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -239,29 +367,55 @@ az aks nodepool add \
     --no-wait
 ```
 
-从下面的示例输出[az aks 节点池列表][ az-aks-nodepool-list]命令显示*gpunodepool*是*创建*节点指定*VmSize*:
+[az aks node pool list ][az-aks-nodepool-list] 命令的以下示例输出显示 *gpunodepool* 正在创建具有指定 *VmSize* 的节点：**
 
-```console
-$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster -o table
-
-AgentPoolType            Count    MaxPods    Name         OrchestratorVersion    OsDiskSizeGb    OsType    ProvisioningState    ResourceGroup         VmSize
------------------------  -------  ---------  -----------  ---------------------  --------------  --------  -------------------  --------------------  ---------------
-VirtualMachineScaleSets  1        110        gpunodepool  1.12.6                 100             Linux     Creating             myResourceGroupPools  Standard_NC6
-VirtualMachineScaleSets  1        110        nodepool1    1.12.6                 100             Linux     Succeeded            myResourceGroupPools  Standard_DS2_v2
+```azurecli
+az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ```
 
-需要几分钟*gpunodepool*要成功创建。
+```output
+[
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "gpunodepool",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "provisioningState": "Creating",
+    ...
+    "vmSize": "Standard_NC6",
+    ...
+  },
+  {
+    ...
+    "count": 2,
+    ...
+    "name": "nodepool1",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "provisioningState": "Succeeded",
+    ...
+    "vmSize": "Standard_DS2_v2",
+    ...
+  }
+]
+```
 
-## <a name="schedule-pods-using-taints-and-tolerations"></a>计划使用 taints 和 tolerations pod
+成功创建 *gpunodepool* 需要花费几分钟时间。
 
-现在将具有两个节点池在群集中最初创建的默认节点池和基于 GPU 的节点池。 使用[kubectl 获取节点][ kubectl-get]命令以查看你的群集中的节点。 下面的示例输出显示在每个节点池中的一个节点：
+## <a name="schedule-pods-using-taints-and-tolerations"></a>使用排斥和容许计划 pod
+
+群集现在包含两个节点池 - 最初创建的默认节点池，以及基于 GPU 的节点池。 使用 [kubectl get nodes][kubectl-get] 命令查看群集中的节点。 以下示例输出显示了节点：
 
 ```console
-$ kubectl get nodes
+kubectl get nodes
+```
 
+```output
 NAME                                 STATUS   ROLES   AGE     VERSION
-aks-gpunodepool-28993262-vmss000000  Ready    agent   4m22s   v1.12.6
-aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.12.6
+aks-gpunodepool-28993262-vmss000000  Ready    agent   4m22s   v1.15.7
+aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.15.7
 ```
 
 Kubernetes 计划程序能够使用排斥和容许来限制可在节点上运行的工作负荷。
@@ -269,15 +423,15 @@ Kubernetes 计划程序能够使用排斥和容许来限制可在节点上运行
 * 将**排斥**应用到指明了只能计划特定 pod 的节点。
 * 然后，将**容许**应用到可以*容许*节点排斥的 pod。
 
-有关如何使用的详细信息高级 Kubernetes 计划功能，请参阅[在 AKS 中的高级计划程序功能的最佳做法][taints-tolerations]
+有关如何使用 Kubernetes 高级计划功能的详细信息，请参阅[有关 AKS 中的高级计划程序功能的最佳做法][taints-tolerations]
 
-在此示例中，将不应用到基于 GPU 的节点[kubectl 不节点][ kubectl-taint]命令。 指定的输出中的上一个基于 GPU 的节点的名称`kubectl get nodes`命令。 不作为应用*键： 值*，然后计划选项。 下面的示例使用*sku = gpu*配对，并定义 pod 否则必须*NoSchedule*功能：
+本示例使用 --node-taints 命令向基于 GPU 的节点应用排斥。 指定上述 `kubectl get nodes` 命令的输出中显示的基于 GPU 的节点名称。 排斥以“键=值”对的形式应用，然后作为计划选项应用。 以下示例使用 *sku=gpu* 对，并定义具有 *NoSchedule* 功能的其他 pod：
 
 ```console
-kubectl taint node aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
+az aks nodepool add --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
 ```
 
-下面的基本示例 YAML 清单使用允许以允许基于 GPU 的节点上运行 NGINX pod 的 Kubernetes 计划程序。 若要对 MNIST 数据集运行 Tensorflow 作业更为合适，但耗时比较长的示例，请参阅[适用于计算密集型工作负荷在 AKS 上使用 Gpu][gpu-cluster]。
+以下基本示例 YAML 清单使用容许来允许 Kubernetes 计划程序在基于 GPU 的节点上运行 NGINX pod。 有关针对 MNIST 数据集运行 Tensorflow 作业的更适当但更耗时的示例，请参阅[对 AKS 上的计算密集型工作负荷使用 GPU][gpu-cluster]。
 
 创建名为 `gpu-toleration.yaml` 的文件，并将其复制到以下示例 YAML 中：
 
@@ -304,17 +458,19 @@ spec:
     effect: "NoSchedule"
 ```
 
-Pod 使用计划`kubectl apply -f gpu-toleration.yaml`命令：
+使用 `kubectl apply -f gpu-toleration.yaml` 命令计划 pod：
 
 ```console
 kubectl apply -f gpu-toleration.yaml
 ```
 
-它需要几秒钟来计划 pod 和 NGINX 映像提取。 使用[kubectl 描述 pod] [ kubectl-describe]命令查看 pod 状态。 以下浓缩版的示例输出显示*sku = gpu:NoSchedule*允许应用。 在事件部分中，计划程序已分配到 pod *aks gpunodepool 28993262 vmss000000*基于 GPU 的节点：
+只需花费几秒钟时间即可计划 pod 并提取 NGINX 映像。 使用 [kubectl describe pod][kubectl-describe] 命令查看 pod 状态。 以下精简示例输出显示已应用 *sku=gpu:NoSchedule* 容许。 在 events 节中，计划程序已将 pod 分配到 *aks-gpunodepool-28993262-vmss000000* 基于 GPU 的节点：
 
 ```console
-$ kubectl describe pod mypod
+kubectl describe pod mypod
+```
 
+```output
 [...]
 Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
                  node.kubernetes.io/unreachable:NoExecute for 300s
@@ -329,88 +485,216 @@ Events:
   Normal  Started    4m40s  kubelet, aks-gpunodepool-28993262-vmss000000  Started container
 ```
 
-可以在节点上计划具有此应用不的 pod *gpunodepool*。 将计划中的任何其他 pod *nodepool1*节点池。 如果您创建其他节点的池，可以使用其他 taints 并 tolerations 来限制哪些 pod 可以安排在这些节点资源上。
+只能在 gpunodepool 中的节点上计划已应用此容许的 Pod。 任何其他 pod 将在 *nodepool1* 节点池中计划。 如果创建额外的节点池，可以使用额外的排斥和容许来限制可在这些节点资源上计划的 pod。
 
-## <a name="manage-node-pools-using-a-resource-manager-template"></a>管理节点池使用资源管理器模板
+## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>指定节点池的排斥、标签或标记
 
-当你使用 Azure 资源管理器模板创建和托管的资源，通常可以更新模板并重新部署中的设置，若要更新的资源。 使用 AKS 中的节点池，不能更新初始节点池配置文件后创建 AKS 群集。 此行为意味着你不能更新现有资源管理器模板、 节点池，请进行的更改并重新部署。 相反，必须创建单独的资源管理器模板的更新仅现有 AKS 群集的代理池。
+创建节点池时，可将排斥、标签或标记添加到该节点池。 添加排斥、标签或标记时，该节点池中的所有节点也会获取该排斥、标签或标记。
 
-创建一个模板，如`aks-agentpools.json`并粘贴下面的示例清单。 此示例模板配置以下设置：
+若要创建具有排斥的节点池，请使用 [az aks nodepool add][az-aks-nodepool-add]。 指定名称 taintnp，并使用 `--node-taints` 参数为排斥指定 sku=gpu:NoSchedule。 
 
-* 更新*Linux*名为代理池*myagentpool*运行三个节点。
-* 设置节点中运行 Kubernetes 版本的节点池*1.12.8*。
-* 定义具有的节点大小*Standard_DS2_v2*。
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name taintnp \
+    --node-count 1 \
+    --node-taints sku=gpu:NoSchedule \
+    --no-wait
+```
 
-根据需要更新，添加或删除节点池根据需要请编辑这些值：
+以下来自[az aks nodepool list][az-aks-nodepool-list]命令的示例输出显示*taintnp*正在*创建*具有指定*nodeTaints*的节点：
+
+```console
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+
+[
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "taintnp",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "provisioningState": "Creating",
+    ...
+    "nodeTaints":  [
+      "sku=gpu:NoSchedule"
+    ],
+    ...
+  },
+ ...
+]
+```
+
+排斥信息将显示在 Kubernetes 中，以便于处理节点的计划规则。
+
+还可以在创建节点池期间向节点池添加标签。 在节点池中设置的标签将添加到节点池中的每个节点。 这些[标签将显示在 Kubernetes 中][kubernetes-labels]，以便于处理节点的计划规则。
+
+若要创建具有标签的节点池，请使用 [az aks nodepool add][az-aks-nodepool-add]。 指定名称 labelnp，并使用 `--labels` 参数为标签指定 dept=IT 和 costcenter=9999。  
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name labelnp \
+    --node-count 1 \
+    --labels dept=IT costcenter=9999 \
+    --no-wait
+```
+
+> [!NOTE]
+> 只能在创建节点池期间为节点池设置标签。 此外，标签必须是键/值对，并采用[有效的语法][kubernetes-label-syntax]。
+
+以下来自[az aks nodepool list][az-aks-nodepool-list]命令的示例输出显示*labelnp*正在*创建*具有指定*nodeLabels*的节点：
+
+```console
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+
+[
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "labelnp",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "provisioningState": "Creating",
+    ...
+    "nodeLabels":  {
+      "dept": "IT",
+      "costcenter": "9999"
+    },
+    ...
+  },
+ ...
+]
+```
+
+可将 Azure 标记应用到 AKS 群集中的节点池。 应用到某个节点池的标记将应用到该节点池中的每个节点，并通过升级持久保存。 标记还会应用于在横向扩展操作期间添加到节点池的新节点。 添加标记有助于完成策略跟踪或成本估算等任务。
+
+使用 [az aks nodepool add][az-aks-nodepool-add] 创建节点池。 指定名称 tagnodepool，并使用 `--tag` 参数为标记指定 dept=IT 和 costcenter=9999。  
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name tagnodepool \
+    --node-count 1 \
+    --tags dept=IT costcenter=9999 \
+    --no-wait
+```
+
+> [!NOTE]
+> 在使用 [az aks nodepool update][az-aks-nodepool-update] 命令时以及在创建群集期间，也可以使用 `--tags` 参数。 在创建群集期间，`--tags` 参数会将标记应用到连同群集一起创建的初始节点池。 所有标记名称必须遵守[使用标记来组织 Azure 资源][tag-limitation]中所述的限制。 使用 `--tags` 参数更新节点池会更新所有现有标记值，并追加任何新标记。 例如，如果节点池对标记使用了 dept=IT 和 costcenter=9999，而你使用标记的 team=dev 和 costcenter=111 更新了该节点池，则该节点池将对标记使用 dept=IT、costcenter=111 和 team=dev。      
+
+以下来自[az aks nodepool list][az-aks-nodepool-list]命令的示例输出显示*tagnodepool*正在*创建*具有指定*标记*的节点：
+
+```azurecli
+az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+```
+
+```output
+[
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "tagnodepool",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "provisioningState": "Creating",
+    ...
+    "tags": {
+      "dept": "IT",
+      "costcenter": "9999"
+    },
+    ...
+  },
+ ...
+]
+```
+
+## <a name="manage-node-pools-using-a-resource-manager-template"></a>使用资源管理器模板管理节点池
+
+使用 Azure 资源管理器模板创建和管理资源时，通常可以更新该模板中的设置，然后重新部署以更新资源。 对于 AKS 中的节点池，一旦创建 AKS 群集，就无法更新初始节点池的配置文件。 此行为意味着无法更新现有的资源管理器模板，更改节点池，然后重新部署。 必须创建单独的资源管理器模板来仅更新现有 AKS 群集的节点池。
+
+创建一个模板（例如 `aks-agentpools.json`）并粘贴以下示例清单。 此示例模板配置以下设置：
+
+* 将名为 *myagentpool* 的 *Linux* 节点池更新为运行三个节点。
+* 将节点池中的节点设置为运行 Kubernetes 版本 1.15.7。
+* 将节点大小定义为 *Standard_DS2_v2*。
+
+根据需要编辑这些值，以更新、添加或删除节点池：
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "clusterName": {
-      "type": "string",
-      "metadata": {
-        "description": "The name of your existing AKS cluster."
-      }
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusterName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of your existing AKS cluster."
+            }
+        },
+        "location": {
+            "type": "string",
+            "metadata": {
+                "description": "The location of your existing AKS cluster."
+            }
+        },
+        "agentPoolName": {
+            "type": "string",
+            "defaultValue": "myagentpool",
+            "metadata": {
+                "description": "The name of the agent pool to create or update."
+            }
+        },
+        "vnetSubnetId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "The Vnet subnet resource ID for your existing AKS cluster."
+            }
+        }
     },
-    "location": {
-      "type": "string",
-      "metadata": {
-        "description": "The location of your existing AKS cluster."
-      }
+    "variables": {
+        "apiVersion": {
+            "aks": "2020-01-01"
+        },
+        "agentPoolProfiles": {
+            "maxPods": 30,
+            "osDiskSizeGB": 0,
+            "agentCount": 3,
+            "agentVmSize": "Standard_DS2_v2",
+            "osType": "Linux",
+            "vnetSubnetId": "[parameters('vnetSubnetId')]"
+        }
     },
-    "agentPoolName": {
-      "type": "string",
-      "defaultValue": "myagentpool",
-      "metadata": {
-        "description": "The name of the agent pool to create or update."
-      }
-    },
-    "vnetSubnetId": {
-      "type": "string",
-      "defaultValue": "",
-      "metadata": {
-        "description": "The Vnet subnet resource ID for your existing AKS cluster."
-      }
-    }
-  },
-  "variables": {
-    "apiVersion": {
-      "aks": "2019-04-01"
-    },
-    "agentPoolProfiles": {
-      "maxPods": 30,
-      "osDiskSizeGB": 0,
-      "agentCount": 3,
-      "agentVmSize": "Standard_DS2_v2",
-      "osType": "Linux",
-      "vnetSubnetId": "[parameters('vnetSubnetId')]"
-    }
-  },
-  "resources": [
-    {
-      "apiVersion": "2019-04-01",
-      "type": "Microsoft.ContainerService/managedClusters/agentPools",
-      "name": "[concat(parameters('clusterName'),'/', parameters('agentPoolName'))]",
-      "location": "[parameters('location')]",
-      "properties": {
-            "maxPods": "[variables('agentPoolProfiles').maxPods]",
-            "osDiskSizeGB": "[variables('agentPoolProfiles').osDiskSizeGB]",
-            "count": "[variables('agentPoolProfiles').agentCount]",
-            "vmSize": "[variables('agentPoolProfiles').agentVmSize]",
-            "osType": "[variables('agentPoolProfiles').osType]",
-            "storageProfile": "ManagedDisks",
-      "type": "VirtualMachineScaleSets",
-            "vnetSubnetID": "[variables('agentPoolProfiles').vnetSubnetId]",
-            "orchestratorVersion": "1.12.8"
-      }
-    }
-  ]
+    "resources": [
+        {
+            "apiVersion": "2020-01-01",
+            "type": "Microsoft.ContainerService/managedClusters/agentPools",
+            "name": "[concat(parameters('clusterName'),'/', parameters('agentPoolName'))]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "maxPods": "[variables('agentPoolProfiles').maxPods]",
+                "osDiskSizeGB": "[variables('agentPoolProfiles').osDiskSizeGB]",
+                "count": "[variables('agentPoolProfiles').agentCount]",
+                "vmSize": "[variables('agentPoolProfiles').agentVmSize]",
+                "osType": "[variables('agentPoolProfiles').osType]",
+                "storageProfile": "ManagedDisks",
+                "type": "VirtualMachineScaleSets",
+                "vnetSubnetID": "[variables('agentPoolProfiles').vnetSubnetId]",
+                "orchestratorVersion": "1.15.7"
+            }
+        }
+    ]
 }
 ```
 
-使用此模板进行部署[az 组部署创建][ az-group-deployment-create]命令，如下面的示例中所示。 系统会提示输入现有的 AKS 群集名称和位置：
+如以下示例中所示，使用 [az group deployment create][az-group-deployment-create] 命令部署此模板。 系统将提示输入现有的 AKS 群集名称和位置：
 
 ```azurecli-interactive
 az group deployment create \
@@ -418,58 +702,154 @@ az group deployment create \
     --template-file aks-agentpools.json
 ```
 
-可能需要几分钟才能更新 AKS 群集，具体取决于节点池设置和资源管理器模板中定义的操作。
+> [!TIP]
+> 可以通过在模板中添加 tag 属性，将标记添加到节点池，如以下示例所示。
+> 
+> ```json
+> ...
+> "resources": [
+> {
+>   ...
+>   "properties": {
+>     ...
+>     "tags": {
+>       "name1": "val1"
+>     },
+>     ...
+>   }
+> }
+> ...
+> ```
+
+更新 AKS 群集可能需要花费几分钟时间，具体取决于资源管理器模板中定义的节点池设置和操作。
+
+## <a name="assign-a-public-ip-per-node-for-your-node-pools-preview"></a> (预览为节点池分配每个节点的公共 IP) 
+
+> [!WARNING]
+> 必须安装 CLI 预览版扩展0.4.43 或更高版本，才能使用公共 IP 每节点功能。
+
+AKS 节点无需使用自身的公共 IP 地址进行通信。 但是，方案可能需要节点池中的节点接收其自己的专用公共 IP 地址。 常见的情况是，游戏工作负荷，控制台需要直接连接到云虚拟机以最大程度地减少跃点。 此方案可通过注册预览功能、节点公共 IP (preview) 来实现 AKS。
+
+若要安装和更新最新的 aks 扩展，请使用以下 Azure CLI 命令：
+
+```azurecli
+az extension add --name aks-preview
+az extension update --name aks-preview
+az extension list
+```
+
+用以下 Azure CLI 命令为 Node 公共 IP 功能注册：
+
+```azurecli-interactive
+az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
+```
+注册该功能可能需要几分钟时间。  可以通过以下命令检查状态：
+
+```azurecli-interactive
+ az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/NodePublicIPPreview')].{Name:name,State:properties.state}"
+```
+
+注册成功后，创建新的资源组。
+
+```azurecli-interactive
+az group create --name myResourceGroup2 --location eastus
+```
+
+创建新的 AKS 群集并为节点附加公共 IP。 节点池中的每个节点都接收唯一的公共 IP。 可以通过查看虚拟机规模集实例来验证这一点。
+
+```azurecli-interactive
+az aks create -g MyResourceGroup2 -n MyManagedCluster -l eastus  --enable-node-public-ip
+```
+
+对于现有的 AKS 群集，你还可以添加新的节点池，并为节点附加一个公共 IP。
+
+```azurecli-interactive
+az aks nodepool add -g MyResourceGroup2 --cluster-name MyManagedCluster -n nodepool2 --enable-node-public-ip
+```
+
+> [!Important]
+> 预览期间，Azure 实例元数据服务目前不支持检索标准层 VM SKU 的公共 IP 地址。 由于此限制，不能使用 kubectl 命令显示分配给节点的公共 Ip。 但是，将分配 Ip 并按预期方式工作。 节点的公共 Ip 会附加到虚拟机规模集中的实例。
+
+可以通过多种方式找到节点的公共 Ip：
+
+* 使用 Azure CLI 命令[az vmss-instance-public-ip][az-list-ips]
+* 使用[PowerShell 或 Bash 命令][vmss-commands]。 
+* 通过查看虚拟机规模集中的实例，还可以查看 Azure 门户中的公共 Ip。
+
+> [!Important]
+> [节点资源组][node-resource-group]包含节点及其公共 ip。 执行命令时，请使用节点资源组来查找节点的公共 Ip。
+
+```azurecli
+az vmss list-instance-public-ips -g MC_MyResourceGroup2_MyManagedCluster_eastus -n YourVirtualMachineScaleSetName
+```
 
 ## <a name="clean-up-resources"></a>清理资源
 
-在本文中，您创建的 AKS 群集，包括基于 GPU 的节点。 若要减少不必要的成本，你可能想要删除*gpunodepool*，或整个 AKS 群集。
+在本文中，你已创建包含基于 GPU 的节点的 AKS 群集。 为了减少不必要的费用，我们建议删除 *gpunodepool* 或整个 AKS 群集。
 
-若要删除基于 GPU 的节点池，请使用[删除 az aks nodepool] [ az-aks-nodepool-delete]命令，在下面的示例中所示：
+若要删除基于 GPU 的节点池，请如以下示例中所示使用 [az aks nodepool delete][az-aks-nodepool-delete] 命令：
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name gpunodepool
 ```
 
-若要删除群集本身，请使用[az 组删除][ az-group-delete]命令删除 AKS 资源组：
+若要删除群集本身，请使用 [az group delete][az-group-delete] 命令删除 AKS 资源组：
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
+还可以删除为 "节点池的公共 IP" 方案创建的其他群集。
+
+```azurecli-interactive
+az group delete --name myResourceGroup2 --yes --no-wait
+```
+
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，您学习了如何创建和管理 AKS 群集中的多个节点池。 有关如何跨节点池控制 pod 的详细信息，请参阅[在 AKS 中的高级计划程序功能的最佳做法][operator-best-practices-advanced-scheduler]。
+详细了解[系统节点池][use-system-pool]。
 
-若要创建和使用 Windows Server 容器节点池，请参阅[在 AKS 中创建的 Windows Server 容器][aks-windows]。
+本文已介绍如何在 AKS 群集中创建和管理多个节点池。 有关如何跨节点池控制 pod 的详细信息，请参阅[有关 AKS 中的高级计划程序功能的最佳做法][operator-best-practices-advanced-scheduler]。
+
+若要创建和使用 Windows Server 容器节点池，请参阅[在 AKS 中创建 Windows server 容器][aks-windows]。
+
+使用[邻近组][reduce-latency-ppg]可减少 AKS 应用程序的延迟。
 
 <!-- EXTERNAL LINKS -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-taint]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#taint
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+[kubernetes-labels]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+[kubernetes-label-syntax]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
 
 <!-- INTERNAL LINKS -->
-[azure-cli-install]: /cli/azure/install-azure-cli
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-group-create]: /cli/azure/group#az-group-create
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-nodepool-add]: /cli/azure/ext/aks-preview/aks#ext-aks-preview-az-aks-nodepool-add
-[az-aks-nodepool-list]: /cli/azure/ext/aks-preview/aks#ext-aks-preview-az-aks-nodepool-list
-[az-aks-nodepool-upgrade]: /cli/azure/ext/aks-preview/aks#ext-aks-preview-az-aks-nodepool-upgrade
-[az-aks-nodepool-scale]: /cli/azure/ext/aks-preview/aks#ext-aks-preview-az-aks-nodepool-scale
-[az-aks-nodepool-delete]: /cli/azure/ext/aks-preview/aks#ext-aks-preview-az-aks-nodepool-delete
-[vm-sizes]: ../virtual-machines/linux/sizes.md
-[taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
-[gpu-cluster]: gpu-cluster.md
-[az-group-delete]: /cli/azure/group#az-group-delete
-[install-azure-cli]: /cli/azure/install-azure-cli
-[supported-versions]: supported-kubernetes-versions.md
-[operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 [aks-windows]: windows-container-cli.md
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-get-upgrades]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-upgrades
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add
+[az-aks-nodepool-list]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-list
+[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-update
+[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-upgrade
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-scale
+[az-aks-nodepool-delete]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-delete
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-group-create]: /cli/azure/group#az-group-create
+[az-group-delete]: /cli/azure/group#az-group-delete
 [az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
-[aks-support-policies]: support-policies.md
-[aks-faq]: faq.md
+[gpu-cluster]: gpu-cluster.md
+[install-azure-cli]: /cli/azure/install-azure-cli
+[operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
+[quotas-skus-regions]: quotas-skus-regions.md
+[supported-versions]: supported-kubernetes-versions.md
+[tag-limitation]: ../azure-resource-manager/management/tag-resources.md
+[taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
+[vm-sizes]: ../virtual-machines/linux/sizes.md
+[use-system-pool]: use-system-pools.md
+[ip-limitations]: ../virtual-network/virtual-network-ip-addresses-overview-arm#standard
+[node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
+[vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
+[az-list-ips]: /cli/azure/vmss?view=azure-cli-latest.md#az-vmss-list-instance-public-ips
+[reduce-latency-ppg]: reduce-latency-ppg.md

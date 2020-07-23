@@ -1,19 +1,18 @@
 ---
-title: 在 Azure 可用性区域中创建区域冗余虚拟网络网关 | Microsoft Docs
+title: 在 Azure 可用性区域中创建区域冗余虚拟网络网关
 description: 在可用性区域中部署 VPN 网关和 ExpressRoute 网关
 services: vpn-gateway
+titleSuffix: Azure VPN Gateway
 author: cherylmc
-Customer intent: As someone with a basic network background, I want to understand how to create zone-redundant gateways.
 ms.service: vpn-gateway
-ms.topic: article
-ms.date: 04/26/2019
+ms.topic: how-to
+ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 209c4deec2863de21362ab69a7f1d372921ac147
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 6cd0b2f31af187d881fe650c0829bb28e353dcbf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575564"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987625"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>在 Azure 可用性区域中创建区域冗余虚拟网络网关
 
@@ -21,27 +20,11 @@ ms.locfileid: "64575564"
 
 ## <a name="before-you-begin"></a>开始之前
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-可以使用在计算机上本地安装的 PowerShell，也可以使用 Azure Cloud Shell。 如果选择在本地安装并使用 PowerShell，必须使用最新版 PowerShell 模块，才能使用此功能。
+## <a name="1-declare-your-variables"></a><a name="variables"></a>1.声明变量
 
-[!INCLUDE [Cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
-
-### <a name="to-use-powershell-locally"></a>在本地使用 PowerShell 的具体步骤
-
-如果在计算机本地使用 PowerShell（而不使用 Cloud Shell），必须安装 PowerShell 模块 1.0.0 或更高版本。 若要检查已安装 PowerShell 的版本，请运行下面的命令：
-
-```azurepowershell
-Get-Module Az -ListAvailable | Select-Object -Property Name,Version,Path
-```
-
-如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
-
-[!INCLUDE [PowerShell login](../../includes/vpn-gateway-ps-login-include.md)]
-
-## <a name="variables"></a>1.声明变量
-
-下面列出了示例步骤中需要用到的值。 此外，一些示例步骤还使用已声明的变量。 若要在自己的环境中执行这些步骤，请务必将这些值替换为自己的值。 指定位置时，请确认指定的区域是否受支持。 有关详细信息，请参阅[常见问题](#faq)。
+声明要使用的变量。 使用以下示例，根据需要将值替换为自己的值。 如果在练习期间的任何时候关闭了 PowerShell/Cloud Shell 会话，只需再次复制和粘贴该值，重新声明变量。 指定位置时，请确认指定的区域是否受支持。 有关详细信息，请参阅[常见问题](#faq)。
 
 ```azurepowershell-interactive
 $RG1         = "TestRG1"
@@ -59,7 +42,7 @@ $GwIP1       = "VNet1GWIP"
 $GwIPConf1   = "gwipconf1"
 ```
 
-## <a name="configure"></a>2.创建虚拟网络
+## <a name="2-create-the-virtual-network"></a><a name="configure"></a>2. 创建虚拟网络
 
 创建资源组。
 
@@ -75,7 +58,7 @@ $besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubnet1 -AddressPrefix $BEPr
 $vnet = New-AzVirtualNetwork -Name $VNet1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNet1Prefix -Subnet $fesub1,$besub1
 ```
 
-## <a name="gwsub"></a>3.添加网关子网
+## <a name="3-add-the-gateway-subnet"></a><a name="gwsub"></a>3. 添加网关子网
 
 网关子网包含虚拟网络网关服务使用的保留 IP 地址。 运行下面的示例，以添加并设置网关子网：
 
@@ -91,34 +74,34 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0
 ```azurepowershell-interactive
 $getvnet | Set-AzVirtualNetwork
 ```
-## <a name="publicip"></a>4.请求公共 IP 地址
+## <a name="4-request-a-public-ip-address"></a><a name="publicip"></a>4. 请求公共 IP 地址
  
 在这一步中，选择适用于要创建的网关的说明。 选择用于部署网关的区域取决于为公共 IP 地址指定的区域。
 
-### <a name="ipzoneredundant"></a>对于区域冗余网关
+### <a name="for-zone-redundant-gateways"></a><a name="ipzoneredundant"></a>对于区域冗余网关
 
-使用标准 PublicIpaddress SKU 请求获取公共 IP 地址，但不指定任何区域。 在这种情况下，创建的标准公共 IP 地址是区域冗余公共 IP。   
+使用标准**** PublicIpaddress SKU 请求获取公共 IP 地址，但不指定任何区域。 在这种情况下，创建的标准公共 IP 地址是区域冗余公共 IP。   
 
 ```azurepowershell-interactive
 $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard
 ```
 
-### <a name="ipzonalgw"></a>对于区块网关
+### <a name="for-zonal-gateways"></a><a name="ipzonalgw"></a>对于区块网关
 
-使用标准 PublicIpaddress SKU 请求获取公共 IP 地址。 指定区域（1、2 或 3）。 所有网关实例都会部署在此区域中。
+使用标准**** PublicIpaddress SKU 请求获取公共 IP 地址。 指定区域（1、2 或 3）。 所有网关实例都会部署在此区域中。
 
 ```azurepowershell-interactive
 $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard -Zone 1
 ```
 
-### <a name="ipregionalgw"></a>对于区域网关
+### <a name="for-regional-gateways"></a><a name="ipregionalgw"></a>对于区域网关
 
-使用基本 PublicIpaddress SKU 请求获取公共 IP 地址。 在这种情况下，网关部署为区域网关，并且不会内置有任何区域冗余。 网关实例分别会在任意区域中创建。
+使用基本**** PublicIpaddress SKU 请求获取公共 IP 地址。 在这种情况下，网关部署为区域网关，并且不会内置有任何区域冗余。 网关实例分别会在任意区域中创建。
 
 ```azurepowershell-interactive
 $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Dynamic -Sku Basic
 ```
-## <a name="gwipconfig"></a>5.创建 IP 配置
+## <a name="5-create-the-ip-configuration"></a><a name="gwipconfig"></a>5. 创建 IP 配置
 
 ```azurepowershell-interactive
 $getvnet = Get-AzVirtualNetwork -ResourceGroupName $RG1 -Name $VNet1
@@ -126,7 +109,7 @@ $subnet = Get-AzVirtualNetworkSubnetConfig -Name $GwSubnet1 -VirtualNetwork $get
 $gwipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GwIPConf1 -Subnet $subnet -PublicIpAddress $pip1
 ```
 
-## <a name="gwconfig"></a>6.创建网关
+## <a name="6-create-the-gateway"></a><a name="gwconfig"></a>6. 创建网关
 
 创建虚拟网络网关。
 
@@ -142,7 +125,7 @@ New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 
 New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1AZ
 ```
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a><a name="faq"></a>常见问题解答
 
 ### <a name="what-will-change-when-i-deploy-these-new-skus"></a>部署这些新 SKU 时会发生什么变化？
 
@@ -154,7 +137,7 @@ New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 
 
 ### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>我可以在哪些区域中使用新 SKU？
 
-请参阅[可用性区域](../availability-zones/az-overview.md#services-support-by-region)有关可用区域的最新列表。
+有关可用区域的最新列表，请参阅[可用性区域](../availability-zones/az-region.md)。
 
 ### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>我能否将现有虚拟网络网关更改/迁移/升级为区域冗余网关或区域网关？
 

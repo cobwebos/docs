@@ -1,21 +1,15 @@
 ---
 title: Azure 快速入门 - 运行 Batch 作业 - CLI
-description: 快速了解如何使用 Azure CLI 运行 Batch 作业。
-services: batch
-author: laurenhughes
-manager: jeconnoc
-ms.service: batch
-ms.devlang: azurecli
+description: 快速了解如何使用 Azure CLI 运行 Batch 作业。 从命令行或通过脚本创建和管理 Azure 资源。
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: df56fd00d5a5ff2f9e9000b39939d0f33b3737d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3ec3ab6cc988ba1d11231a1bda1eec15d6e811c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66127492"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82116326"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>快速入门：使用 Azure CLI 运行第一个 Batch 作业
 
@@ -29,7 +23,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速�
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
+使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
 以下示例在“eastus2”位置创建名为“myResourceGroup”的资源组。
 

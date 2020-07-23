@@ -3,34 +3,34 @@ title: 应用程序列表中意料之外的应用程序 | Microsoft Docs
 description: 如何查看租户中的全部应用程序，并了解应用程序如何显示在“企业应用程序”下的“所有应用程序”列表中
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1cb4eeb52d0680695bda266ad1a563b2ef5ee02
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 97eef1f331d8e6965e378d6a76cfa7a0c50feb9a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65781097"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85317469"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>应用程序列表中意料之外的应用程序
 
-本文介绍应用程序如何显示在“企业应用程序”下的“所有应用程序”列表中。 
+本文介绍应用程序如何显示在“企业应用程序”**** 下的“所有应用程序”**** 列表中。 
 
 ## <a name="how-to-see-all-applications-in-your-tenant"></a>如何查看租户中的全部应用程序
 
-若要查看租户中的所有应用程序，需要使用“筛选器”控件，在“所有应用程序”列表下显示“所有应用程序”。 执行以下步骤:
+若要查看租户中的所有应用程序，需要使用“筛选器”**** 控件，在“所有应用程序”**** 列表下显示“所有应用程序”****。 请执行这些步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
+1.  打开[**Azure 门户**](https://portal.azure.com/)，并以 "**全局管理员**" 或 "**共同管理员**" 身份登录。
 
 2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
@@ -40,13 +40,13 @@ ms.locfileid: "65781097"
 
 5.  单击“所有应用程序”，查看所有应用程序的列表。
 
-6.  在“所有应用程序列表”顶部，单击以使用“筛选器”控件。
+6.  在“所有应用程序列表”**** 顶部，单击以使用“筛选器”**** 控件。
 
-7.  在“筛选器”窗格上，将“显示”选项设为“所有应用程序”。
+7.  在“筛选器”**** 窗格上，将“显示”**** 选项设为“所有应用程序”****。
 
 ## <a name="why-does-a-specific-application-appear-in-my-all-applications-list"></a>为什么在所有应用程序列表中出现某个特定应用程序？
 
-筛选为“所有应用程序”时，“所有应用程序列表”会显示租户中的每个服务主体对象。 服务主体对象以多种方式出现在此列表中：
+筛选为“所有应用程序”**** 时，“所有应用程序列表”**** **** 会显示租户中的每个服务主体对象。 服务主体对象以多种方式出现在此列表中：
 
 1. 添加应用程序库的任何应用程序时，包括：
 
@@ -56,7 +56,7 @@ ms.locfileid: "65781097"
 
    3. **以自定义方式开发的应用程序** - 组织要在 Azure AD 应用程序开发平台上开发的应用程序，但可能尚不存在
 
-   4. **非库应用程序** - 引入自己的应用程序！ 任何所需的 Web 链接或任何呈现“用户名”和“密码”字段的应用程序，都支持 SAML 或 OpenID Connect 协议，或支持为实现单一登录而预集成到 Azure AD 的 SCIM。
+   4. **非库应用程序**–引入你自己的应用程序！ 任何所需的 Web 链接或任何呈现“用户名”和“密码”字段的应用程序，都支持 SAML 或 OpenID Connect 协议，或支持为实现单一登录而预集成到 Azure AD 的 SCIM。
 
 2. 注册或登录与 Azure Active Directory 集成的<sup></sup>第三方应用程序时。 [Smartsheet](https://app.smartsheet.com/b/home) 或 [DocuSign](https://www.docusign.net/member/MemberLogin.aspx) 就是一个示例。
 
@@ -66,7 +66,7 @@ ms.locfileid: "65781097"
 
 5. 当通过使用 [V2.0 应用程序注册门户](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)创建以自定义方式开发的应用程序，来添加新应用程序注册之时
 
-6. 添加正在使用 Visual Studio 的 [ASP.net 身份验证方法](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)或[连接的服务](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)开发的应用程序时
+6. 添加正在使用 Visual Studio 的 [ASP.net 身份验证方法](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)或[连接的服务](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/)开发的应用程序时
 
 7. 使用 [Azure AD PowerShell 模块](/powershell/azure/install-adv2?view=azureadps-2.0)创建服务主体对象时
 
@@ -90,7 +90,7 @@ ms.locfileid: "65781097"
 
 若要**删除应用程序**，请执行以下步骤：
 
-1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
+1. 打开[**Azure 门户**](https://portal.azure.com/)，并以 "**全局管理员**" 或 "**共同管理员**" 身份登录。
 
 2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
@@ -104,11 +104,11 @@ ms.locfileid: "65781097"
 
 6. 选择要删除的应用程序。
 
-7. 加载应用程序后，在应用程序顶部的“概述”窗格中，单击“删除”图标。
+7. 加载应用程序后，在应用程序顶部的“概述”**** 窗格中，单击“删除”**** 图标。
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>我要禁用用户未来针对应用程序的所有同意操作
 
-针对整个目录禁用用户同意操作，可防止最终用户同意任何应用程序。 管理员仍可以代表用户的同意。 若要深入了解应用程序同意，以及为何要或不这样操作，请参阅[了解用户和管理员同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)。
+针对整个目录禁用用户同意操作，可防止最终用户同意任何应用程序。 管理员仍可以代表用户授予许可。 若要深入了解应用程序同意，以及为何要或不这样操作，请参阅[了解用户和管理员同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)。
 
 若要**禁用用户未来在整个目录中执行的所有同意操作**，请执行以下步骤：
 
@@ -118,11 +118,11 @@ ms.locfileid: "65781097"
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在导航菜单中，单击“用户和组”。
+4.  单击导航菜单中的 "**用户和组**"。
 
-5.  单击“用户设置”。
+5.  单击 "**用户设置**"。
 
-6.  通过将“用户可以允许应用访问其数据”切换为“否”来禁用用户未来的所有同意操作，并单击“保存”按钮。
+6.  通过将“用户可以允许应用访问其数据”**** 切换为“否”**** 来禁用用户未来的所有同意操作，并单击“保存”**** 按钮。
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Azure Active Directory 管理应用程序](what-is-application-management.md)

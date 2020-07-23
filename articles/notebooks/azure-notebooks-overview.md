@@ -1,28 +1,20 @@
 ---
-title: Azure Notebooks 概述
-description: 使用免费的 Azure Notebooks 服务在云中运行 Jupyter 笔记本，不需要进行设置或配置。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: douge
-ms.assetid: 9cea5a8e-c52d-4bdc-9e4a-cecdc1ad02c1
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Azure Notebooks 预览版概述
+description: 使用免费的 Azure Notebooks 预览版服务在云中运行 Jupyter 笔记本，不需要进行设置或配置。
 ms.topic: overview
 ms.date: 04/05/2019
-ms.author: kraigb
-ms.openlocfilehash: 4840a9839fe1f2a31470d4a67b3755b82077fd90
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d229e48e5c49a9a672c533fb24231e9329e524c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280096"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85831397"
 ---
-# <a name="overview-of-azure-notebooks"></a>Azure Notebooks 概述
+# <a name="overview-of-azure-notebooks-preview"></a>Azure Notebooks 预览版概述
 
-Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyter 笔记本而无需进行安装。 [Jupyter](https://jupyter.org/)（以前称为 IPython）是一个开放源代码项目，可让你将 Markdown 文本、可执行代码、持久性数据、图形和可视化效果轻松合并到单个可共享画布，即笔记本（jupyter.org 提供的图片）：
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyter 笔记本而无需进行安装。 [Jupyter](https://jupyter.org/)（以前称为 IPython）是一个开放源代码项目，可让你将 Markdown 文本、可执行代码、持久性数据、图形和可视化效果轻松合并到单个可共享画布，称为笔记本（jupyter.org 提供的图片）：
 
 [![Jupyter 笔记本的示例](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
@@ -119,4 +111,4 @@ Azure Notebooks 预配置了以下 Jupyter 扩展：
   - [演示幻灯片放映](present-jupyter-notebooks-slideshow.md)
   - [处理数据文件](work-with-project-data-files.md)
   - [访问数据资源](access-data-resources-jupyter-notebooks.md)
-  - [使用 Azure 机器学习服务](use-machine-learning-services-jupyter-notebooks.md)
+  - [使用 Azure 机器学习](use-machine-learning-services-jupyter-notebooks.md)

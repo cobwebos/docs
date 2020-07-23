@@ -1,22 +1,21 @@
 ---
 title: 在 Azure Cosmos DB 中使用唯一键
-description: 了解如何使用 Azure Cosmos 数据库中的唯一键
-author: rimman
-ms.author: rimman
+description: 了解如何为 Azure Cosmos 数据库定义和使用唯一键。 本文还介绍唯一键如何添加一层数据完整性。
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 12/02/2019
 ms.reviewer: sngun
-ms.openlocfilehash: af3c7771ce977cf248c5f1b61ba1c535a10ccd3c
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: f234579c6fb2b6f1bc0cd518b87ea69fae30093a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242512"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74869827"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Azure Cosmos DB 中的唯一键约束
 
-唯一键在 Azure Cosmos 容器中添加一个数据完整性层。 在创建 Azure Cosmos 容器时将创建唯一键策略。 使用唯一键可确保逻辑分区内一个或多个值的唯一性。 此外，可以保证每个[分区键](partition-data.md)的唯一性。 
+唯一键在 Azure Cosmos 容器中添加一个数据完整性层。 在创建 Azure Cosmos 容器时将创建唯一键策略。 使用唯一键可确保逻辑分区内一个或多个值的唯一性。 此外，可以保证每个[分区键](partition-data.md)的唯一性。
 
 使用唯一键策略创建容器后，该策略会根据唯一键约束的指定，阻止在逻辑分区中执行会导致重复的创建新项或更新现有项的操作。 分区键与唯一键的组合可保证某个项在容器范围内的唯一性。
 
@@ -56,4 +55,4 @@ ms.locfileid: "66242512"
 ## <a name="next-steps"></a>后续步骤
 
 * 详细了解[逻辑分区](partition-data.md)
-* 探索[如何定义唯一键](how-to-define-unique-keys.md)创建容器时
+* 了解创建容器时[如何定义唯一键](how-to-define-unique-keys.md)

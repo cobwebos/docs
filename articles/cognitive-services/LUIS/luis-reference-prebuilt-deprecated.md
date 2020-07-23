@@ -1,6 +1,6 @@
 ---
-title: 已弃用的预生成实体
-titleSuffix: Azure
+title: 已弃用的预生成实体 - LUIS
+titleSuffix: Azure Cognitive Services
 description: 本文包含了语言理解 (LUIS) 中已弃用的预构建实体的信息。
 services: cognitive-services
 author: diberry
@@ -8,29 +8,29 @@ ms.custom: seodec18
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 02/28/2019
+ms.topic: reference
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 653fbd65e5ccfbc65781f2332b35d10237f718d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 46da828b7553fdf9cdded817febd3bb95cd4cbb9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60712774"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "78270678"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>LUIS 应用中已弃用的预生成实体
 以下预构建实体已被弃用，不能添加到新的 LUIS 应用中。
 
-* **Datetime**：使用 datetime 的现有 LUIS 应用应当迁移到 datetimeV2，虽然 datetime 实体在使用它的现存应用中可以继续工作。
-* **Geography**：使用 geography 的现有 LUIS 应用在 2018 年 12 月之前一直受支持。
-* **Encyclopedia**：使用 encyclopedia 的现有 LUIS 应用在 2018 年 12 月之前一直受支持。
+* **Datetime**：使用 **datetime** 的现有 LUIS 应用应当迁移到 **datetimeV2**，虽然 datetime 实体在使用它的现存应用中可以继续工作。
+* **Geography**：使用 **geography** 的现有 LUIS 应用在 2018 年 12 月之前一直受支持。
+* **Encyclopedia**：使用 **encyclopedia** 的现有 LUIS 应用在 2018 年 12 月之前一直受支持。
 
 ## <a name="geography-culture"></a>Geography 语言区域
 **Geography** 仅在 `en-us` 区域设置中可用。
 
 #### <a name="3-geography-subtypes"></a>3 个 Geography 子类型
 
-预构建实体   |   示例陈述   |   JSON
+预生成实体   |   示例陈述   |   JSON
 ------|------|------|
 `builtin.geography.city`   |  `seattle`    |`{ "type": "builtin.geography.city", "entity": "seattle" }`|
 `builtin.geography.city`   |  `paris`    |`{ "type": "builtin.geography.city", "entity": "paris" }`|
@@ -43,7 +43,7 @@ ms.locfileid: "60712774"
 **Encyclopedia** 仅在 `en-US` 区域设置中可用。
 
 #### <a name="encyclopedia-subtypes"></a>Encyclopedia 子类型
-Encyclopedia 内置实体包括下表中的 100 多个子类型：此外，encyclopedia 实体经常映射到多种类型。 例如，查询 Ronald Reagan 产生以下项： 
+Encyclopedia 内置实体包括下表中的 100 多个子类型；此外，encyclopedia 实体通常映射到多个类型。 例如，查询 Ronald Reagan 产生以下项：
 
 ```json
 {
@@ -65,7 +65,7 @@ Encyclopedia 内置实体包括下表中的 100 多个子类型：此外，encyc
  ```
 
 
-预构建实体   |   预构建实体（子类型）   |   示例陈述
+预生成实体   |   预构建实体（子类型）   |   示例陈述
 ------|------|------|
 `builtin.encyclopedia.people.person`| `builtin.encyclopedia.people.person`| `bryan adams` |
 `builtin.encyclopedia.people.person`| `builtin.encyclopedia.film.producer`| `walt disney` |
@@ -163,5 +163,5 @@ Encyclopedia 内置实体包括下表中的 100 多个子类型：此外，encyc
 
 ## <a name="next-steps"></a>后续步骤
 
-了解[维度](luis-reference-prebuilt-dimension.md)、[电子邮件](luis-reference-prebuilt-email.md)实体和[数字](luis-reference-prebuilt-number.md)。 
+了解[维度](luis-reference-prebuilt-dimension.md)、[电子邮件](luis-reference-prebuilt-email.md)实体和[数字](luis-reference-prebuilt-number.md)。
 

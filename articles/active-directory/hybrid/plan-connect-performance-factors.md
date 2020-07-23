@@ -6,18 +6,19 @@ author: billmath
 manager: daveba
 tags: azuread
 ms.service: active-directory
+ms.subservice: hybrid
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a3a57fbe5df690e4dbdba8cbab85e62648bb298
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8e0b641cb05b25486bd1b11c2d313898d694f8c2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60295360"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253488"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>影响 Azure AD Connect 性能的因素
 
@@ -142,7 +143,7 @@ Active Directory CS 中存在大量持久的[断开连接器对象](concept-azur
 
 ## <a name="azure-ad-connect-dependency-factors"></a>Azure AD Connect 依赖项因素
 
-Azure AD Connect 的性能依赖于它导入和导出到的已连接目录的性能。 例如，它需要导入的 Active Directory 的大小或 Azure AD 服务的网络延迟。 预配引擎使用的 SQL 数据库也会影响同步周期的整体性能。
+Azure AD Connect 的性能依赖于它导入和导出到的已连接目录的性能。 例如，它需要导入的 Active Directory 的大小或 Azure AD 服务的网络延迟。 预配引擎使用的 SQL 数据库还会影响同步周期的总体性能。
 
 ### <a name="active-directory-factors"></a>Active Directory 因素
 
@@ -171,7 +172,7 @@ Azure AD 使用限制来防止云服务受到拒绝服务 (DoS) 攻击。 目前
 
 - 拥有 10 万名以上用户的组织，可通过使 SQL 数据库和预配引擎位于同一服务器来减少网络延迟。
 - 鉴于同步过程的磁盘输入和输出 (I/O) 要求高，为获得最佳结果，请对预配引擎的 SQL 数据库使用固态硬盘 (SSD)；如果无法使用，则考虑使用 RAID 0 或 RAID 1 配置。
-- 请勿提前执行完全同步，这会造成不必要的改动和增加响应时间。
+- 请勿执行完全同步提前;这会导致不必要的变动和响应时间变慢。
 
 ## <a name="conclusion"></a>结束语
 

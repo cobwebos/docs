@@ -1,32 +1,32 @@
 ---
-title: 使用 Azure Policy 限制 VM 扩展安装 | Microsoft Docs
+title: 使用 Azure 策略限制 VM 扩展安装
 description: 使用 Azure Policy 限制扩展部署。
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
-ms.author: roiyz;cynthn
-ms.openlocfilehash: dfaeff5e8f90e72645293d15c454f78f17b08fb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: akjosh
+ms.reviewer: cynthn
+ms.openlocfilehash: 96cd16c08421a4e365391c0db0b257f71a06551f
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387326"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919806"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>使用 Azure Policy 限制 Windows VM 上的扩展安装
 
-如果想要阻止在 Windows VM 上使用或安装某些扩展，可以使用 PowerShell 创建 Azure Policy 以限制资源组中的 VM 扩展。 
+如果要阻止在 Windows Vm 上使用或安装某些扩展，可以使用 PowerShell 创建 Azure 策略定义，以限制资源组中 Vm 的扩展。 
 
 本教程在 Cloud Shell 中使用 Azure PowerShell，后者已不断更新到最新版本。 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="create-a-rules-file"></a>创建规则文件
 
@@ -88,7 +88,6 @@ nano $home/clouddrive/parameters.json
         "type": "Array",
         "metadata": {
             "description": "The list of extensions that will be denied.",
-            "strongType": "type",
             "displayName": "Denied extension"
         }
     }
@@ -141,7 +140,7 @@ $assignment
 
 ## <a name="test-the-policy"></a>测试策略
 
-若要测试策略，请尝试使用 VM 访问扩展。 以下命令应失败并显示消息“Set-AzVMAccessExtension:策略不允许使用资源 'myVMAccess'”。
+若要测试策略，请尝试使用 VM 访问扩展。 以下内容应失败，并出现消息 "AzVMAccessExtension：资源 ' myVMAccess ' 被策略禁止 '"。
 
 ```azurepowershell-interactive
 Set-AzVMAccessExtension `
@@ -151,7 +150,7 @@ Set-AzVMAccessExtension `
    -Location EastUS 
 ```
 
-在门户中，密码更改将失败并显示消息“由于违反策略，模板部署失败” 。
+在门户中，密码更改将失败并显示消息“由于违反策略，模板部署失败” 消息。
 
 ## <a name="remove-the-assignment"></a>删除分配
 

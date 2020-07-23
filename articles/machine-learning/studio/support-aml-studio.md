@@ -1,31 +1,31 @@
 ---
 title: 获取支持和培训
-titleSuffix: Azure Machine Learning Studio
-description: 获取 Azure 机器学习工作室的支持和培训并为其提供反馈
+titleSuffix: ML Studio (classic) - Azure
+description: 获取 Azure 机器学习工作室（经典）的支持和培训并为其提供反馈
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: peterclu
-ms.author: amlstudiodocs
+ms.author: peterlu
 ms.date: 01/18/2019
-ms.openlocfilehash: f7e5881b5b046379b4c79252489a4b3dd8eb1cad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 708f337ebc627f863f632a677a2186a9d7fe99f8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60502077"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213170"
 ---
-# <a name="get-support-and-training-for-azure-machine-learning-studio"></a>获取 Azure 机器学习工作室的支持和培训
+# <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>获取 Azure 机器学习工作室（经典）的支持和培训
 
-本文介绍如何了解有关 Azure 机器学习工作室的详细信息，以及如何获取相关问题的支持。
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-## <a name="learn-more-about-studio"></a>详细了解工作室
+本文介绍如何了解有关 Azure 机器学习工作室（经典）的详细信息，以及如何获取相关问题的支持。
+
+## <a name="learn-more-about-studio-classic"></a>详细了解工作室（经典）
 
 请参阅我们的学习资源：
 + [教程和操作说明文章](../studio/index.yml) 
 + [初学者的数据科学视频](../studio/data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) 
-+ [算法备忘单](../studio/algorithm-cheat-sheet.md) 
 
 ## <a name="submit-doc-feedback"></a>提交文档反馈
 
@@ -35,9 +35,9 @@ ms.locfileid: "60502077"
 
 请查看这些支持资源：
 
-+ **面向 Azure 客户的技术支持**：通过 Azure 门户[提交和管理支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。
++ **面向 Azure 客户的技术支持**：通过 Azure 门户[提交和管理支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
 
-+ **用户论坛**：在 [MSDN 上的 Azure 机器学习工作室支持论坛](https://aka.ms/aml-forum-studio)中提出问题、回答问题并与其他用户交流。
++ **用户论坛**：提出问题、解答问题，并与[Azure 机器学习 Studio （经典）支持论坛](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)中的其他用户进行连接。
 
 + **Stack Overflow**：访问 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) 上标记为“Azure-Machine-Learning”的 Azure 机器学习社区。
 

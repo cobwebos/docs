@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
 ms.openlocfilehash: 87f6b9cef50e4b8c388be835b2aa7bed8177ac4b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61447418"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>使用 azureiotsolutions.com 站点来部署解决方案加速器
@@ -26,9 +26,9 @@ ms.locfileid: "61447418"
 
 可在以下配置中部署解决方案加速器：
 
-* **标准**：扩展的基础结构部署，适用于开发生产环境。 Azure 容器服务将微服务部署到多个 Azure 虚拟机。 Kubernetes 会协调托管单个微服务的 Docker 容器。
-* **基本**：降低成本版本，适用于演示或部署测试。 所有微服务都部署到一个 Azure 虚拟机。
-* **本地**：用于测试和开发的本地计算机部署。 此方法将微服务部署到本地 Docker 容器，并连接到云中的 IoT 中心、Azure Cosmos DB 和 Azure 存储服务。
+* **标准**：用于开发生产环境的扩展基础结构部署。 Azure 容器服务将微服务部署到多个 Azure 虚拟机。 Kubernetes 会协调托管单个微服务的 Docker 容器。
+* **基本**：用于演示的降低成本版本或测试部署。 所有微服务都部署到一个 Azure 虚拟机。
+* **Local**：用于测试和开发的本地计算机部署。 此方法将微服务部署到本地 Docker 容器，并连接到云中的 IoT 中心、Azure Cosmos DB 和 Azure 存储服务。
 
 每个解决方案加速器都使用 IoT 中心、Azure 流分析和 Cosmos DB 等 Azure 服务的不同组合。 有关详细信息，请访问 [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators) 并选择解决方案加速器。
 
@@ -38,14 +38,14 @@ ms.locfileid: "61447418"
 
 部署解决方案加速器、管理用户以及管理 Azure 服务的权限取决于你在所选目录中的角色。 与解决方案加速器关联的常见 Azure AD 角色包括：
 
-* **全局管理员**：对于每个 Azure AD 租户，可以有多个[全局管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md)：
+* **全局管理员**：每个 Azure AD 租户可以有多个[全局管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md)：
 
   * 创建某个 Azure AD 租户时，默认情况下会成为该租户的全局管理员。
   * 全局管理员可以部署基本和标准解决方案加速器。
 
-* **域用户**：对于每个 Azure AD 租户，可以有多个域用户。 域用户可以部署基本解决方案加速器。
+* **域用户**：每个 Azure AD 租户可以有多个域用户。 域用户可以部署基本解决方案加速器。
 
-* **来宾用户**：对于每个 Azure AD 租户，可以有多个来宾用户。 来宾用户不能在 Azure AD 租户中部署解决方案加速器。
+* **Guest 用户**：每个 Azure AD 租户可以有多个来宾用户。 来宾用户不能在 Azure AD 租户中部署解决方案加速器。
 
 有关 Azure AD 中用户及角色的详细信息，请参阅以下资源：
 
@@ -60,13 +60,13 @@ AzureIoTSolutions.com 站点链接到 [Azure IoT 认证设备目录](https://cat
 
 ![设备目录](media/iot-accelerators-permissions/devicecatalog.png)
 
-如果你是硬件制造商，请单击“成为合作伙伴”，了解如何成为 Microsoft IoT 认证计划的合作伙伴。
+如果你是硬件制造商，请单击“成为合作伙伴”，了解如何成为 Microsoft IoT 认证计划的合作伙伴****。
 
 ## <a name="next-steps"></a>后续步骤
 
 若要试用某个 IoT 解决方案加速器，请参阅以下快速入门：
 
 * [尝试远程监视解决方案](quickstart-remote-monitoring-deploy.md)
-* [尝试互联工厂解决方案](quickstart-connected-factory-deploy.md)
+* [尝试连接工厂解决方案](quickstart-connected-factory-deploy.md)
 * [尝试预测性维护解决方案](quickstart-predictive-maintenance-deploy.md)
 * [尝试设备模拟解决方案](quickstart-device-simulation-deploy.md)

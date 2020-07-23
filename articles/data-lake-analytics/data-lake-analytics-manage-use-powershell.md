@@ -7,30 +7,30 @@ author: matt1883
 ms.author: mahi
 ms.reviewer: jasonwhowell
 ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/29/2018
-ms.openlocfilehash: 4273828c9c2bdb75fcbc1de45da55c5a03dd615f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a197ef645b4b3ba2cb656e93778d6546462f431a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66156423"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121327"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
 本文介绍如何使用 Azure PowerShell 管理 Azure Data Lake Analytics 帐户、数据源、用户和作业。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 若要将 PowerShell 与 Data Lake Analytics 配合使用，请收集以下信息： 
 
 * **订阅 ID**：Data Lake Analytics 帐户所在的 Azure 订阅的 ID。
-* **资源组**：Data Lake Analytics 帐户所在的 Azure 资源组的名称。
-* **Data Lake Analytics 帐户名**：Data Lake Analytics 帐户的名称。
-* **默认的 Data Lake Store 帐户名**：每个 Data Lake Analytics 帐户都有默认的 Data Lake Store 帐户。
+* **资源组**：包含 Data Lake Analytics 帐户的 Azure 资源组的名称。
+* **Data Lake Analytics 帐户名称**：Data Lake Analytics 帐户的名称。
+* **默认的 Data Lake Store 帐户名称**：每个 Data Lake Analytics 帐户都有一个默认的 Data Lake Store 帐户。
 * **位置**：Data Lake Analytics 帐户的位置，如“美国东部 2”或其他支持的位置。
 
 本教程中的 PowerShell 代码片段使用上述变量来存储该信息
@@ -245,7 +245,7 @@ Get-AdlJob -Account $adla -State Accepted,Compiling,New,Paused,Scheduling,Start
 * 已取消
 * 已失败
 * 无
-* 已成功
+* 成功
 
 ``` powershell
 # List Successful jobs.
@@ -553,9 +553,9 @@ foreach ($sub in $subs)
 
 ## <a name="create-a-data-lake-analytics-account-using-a-template"></a>使用模板创建 Data Lake Analytics 帐户
 
-还可以通过以下示例使用 Azure 资源组模板：[使用模板创建 Data Lake Analytics 帐户](https://github.com/Azure-Samples/data-lake-analytics-create-account-with-arm-template)
+还可以使用以下示例使用 Azure 资源组模板：[使用模板创建 Data Lake Analytics 帐户](https://github.com/Azure-Samples/data-lake-analytics-create-account-with-arm-template)
 
 ## <a name="next-steps"></a>后续步骤
 * [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
-* 通过 [Azure 门户](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [Azure CLI](data-lake-analytics-get-started-cli.md) 使用 Data Lake Analytics 入门
-* 使用 [Azure portal](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md) 管理 Azure Data Lake Analytics 
+* 使用[Azure 门户](data-lake-analytics-get-started-portal.md)  |  [Azure PowerShell](data-lake-analytics-get-started-powershell.md)开始使用 Data Lake Analytics  |  [Azure CLI](data-lake-analytics-get-started-cli.md)
+* 使用[Azure 门户](data-lake-analytics-manage-use-portal.md)  |  [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)  |  [CLI](data-lake-analytics-manage-use-cli.md)管理 Azure Data Lake Analytics 

@@ -1,24 +1,22 @@
 ---
 title: Azure 流分析中的数据驱动调试
 description: 本文介绍如何使用 Azure 门户中的作业关系图和指标对 Azure 流分析作业进行故障排除。
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/01/2017
-ms.openlocfilehash: 4a6d359b27b9a2e52d71ed5f8547041645147605
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fdb3c5c12af8e9022f5babc84126badda890dce5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61479870"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044475"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>使用作业关系图进行数据驱动调试
 
-Azure 门户的“监视”边栏选项卡中的作业关系图可帮助你将作业管道可视化。 它显示了输入、输出和查询步骤。 可使用作业关系图检查每个步骤的指标，并且在解决问题时，更快速地隔离问题源。
+使用 Azure 门户中“监视”边栏选项卡里的作业关系图，可以可视化作业管道。 它显示了输入、输出和查询步骤。 可使用作业关系图检查每个步骤的指标，并且在解决问题时，更快速地隔离问题源。
 
 ## <a name="using-the-job-diagram"></a>使用作业关系图
 
@@ -50,7 +48,7 @@ Azure 门户的“监视”边栏选项卡中的作业关系图可帮助你将�
 
 QueryLastProcessedTime 指标指示特定步骤收到数据的时间。 通过查看拓扑，可以从输出处理器开始反向检查，判断哪个步骤未接收数据。 如果一个步骤未收到数据，请转到它之前的查询步骤。 检查前面的查询步骤是否具有时间范围，以及是否经过了充足的、用于输出数据的时间。 （注意：时间范围会对齐到小时。）
  
-如果前一个查询步骤是输入处理器，请使用输入指标帮助解答下列针对性问题。 它们可帮助你判断作业是否正从其输入源获取数据。 如果查询已分区，请检查每个分区。
+如果前一个查询步骤是输入处理器，请使用输入指标帮助解答下列针对性问题。 它们可以帮助判断作业是否正从其输入源获取数据。 如果查询已分区，请检查每个分区。
  
 ### <a name="how-much-data-is-being-read"></a>正在读取的数据量有多少？
 
@@ -81,11 +79,11 @@ QueryLastProcessedTime 指标指示特定步骤收到数据的时间。 通过�
 
 
 ## <a name="get-help"></a>获取帮助
-有关更多帮助，请访问我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。 
+如需获取进一步的帮助，请阅读[关于 Azure 流分析的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。 
 
 ## <a name="next-steps"></a>后续步骤
 * [流分析简介](stream-analytics-introduction.md)
 * [流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [扩展流分析作业](stream-analytics-scale-jobs.md)
-* [流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

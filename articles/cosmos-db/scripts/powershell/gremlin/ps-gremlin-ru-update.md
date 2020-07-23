@@ -1,19 +1,20 @@
 ---
-title: Azure PowerShell 脚本-Azure Cosmos DB Update RU/s Gremlin API
-description: Azure PowerShell 脚本-Azure Cosmos DB Update RU/s Gremlin API
+title: 用于更新 RU/秒的 PowerShell 脚本 - Azure Cosmos DB Gremlin API
+description: Azure PowerShell 脚本 - Azure Cosmos DB 更新 RU/秒 - Gremlin API
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
-ms.date: 05/18/2019
+ms.subservice: cosmosdb-graph
+ms.topic: sample
+ms.date: 05/01/2020
 ms.author: mjbrown
-ms.openlocfilehash: 30a7b4b9151496a753d31568411e436930ec0f55
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: febf39c8017a5db559ef2063a2c9bdee200acdf7
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247464"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82653033"
 ---
-# <a name="update-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>适用于 Azure Cosmos DB 的 Gremlin API 更新为数据库或图形的 RU/秒
+# <a name="update-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>更新 Azure Cosmos DB 的数据库或图的 RU/秒 - Gremlin API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -35,10 +36,11 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBGremlinGraphThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraphthroughput) | 获取 Gremlin API 图的吞吐量值。 |
+| [Update-AzCosmosDBGremlinGraphThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbgremlingraphthroughput) | 更新 Gremlin API 图的吞吐量值。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||

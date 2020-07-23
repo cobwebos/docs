@@ -3,18 +3,18 @@ title: Azure PowerShell 脚本示例 - 配置站点到站点 VPN | Microsoft Doc
 description: 配置站点到站点 VPN。
 services: vpn-gateway
 documentationcenter: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 04/30/2018
 ms.author: alzam
-ms.openlocfilehash: 33a79461e1373657c366623e7ef5dbaf6aecf78f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9960b701f3c9766ab8d51c8fa5e575c1bdc5d5c5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66113696"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507530"
 ---
 # <a name="create-a-vpn-gateway-and-add-a-site-to-site-connection-using-powershell"></a>使用 PowerShell 创建 VPN 网关并添加站点到站点连接
 
@@ -93,7 +93,7 @@ Remove-AzResourceGroup -Name TestRG1
 
 此脚本使用以下命令创建部署。 表中的每一项均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | 添加子网配置。 在虚拟网络创建过程中将使用此配置。 |
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | 获取虚拟网络详细信息。 |

@@ -1,70 +1,156 @@
 ---
-title: Azure AD 授权管理 （预览版）-Azure Active Directory 故障排除
-description: 了解有关的某些项应检查以帮助您解决 Azure Active Directory 权利管理 （预览版）。
+title: 权利管理疑难解答-Azure AD
+description: 了解你应检查哪些项目以帮助你解决 Azure Active Directory 的权利管理。
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: barclayn
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.subservice: compliance
-ms.date: 05/30/2019
-ms.author: rolyon
+ms.date: 06/17/2020
+ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2526ef10c3080dae1b32881a109a9436a0fd390
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 8bf19123888dd26073016131c93047b0cd0afaf4
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66473821"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145753"
 ---
-# <a name="troubleshoot-azure-ad-entitlement-management-preview"></a>排查 Azure AD 授权管理 （预览版）
+# <a name="troubleshoot-azure-ad-entitlement-management"></a>排查 Azure AD 权利管理的问题
 
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+本文介绍应检查哪些项目来帮助排查 Azure Active Directory (Azure AD) 权利管理的问题。
 
-本指南介绍了一些应检查以帮助您解决 Azure Active Directory (Azure AD) 授权管理的项。
+## <a name="administration"></a>管理
 
-## <a name="checklist-for-entitlement-management-administration"></a>授权管理管理的清单
+* 如果在配置授权管理时收到 "拒绝访问" 消息，并且你是全局管理员，请确保目录中有[Azure AD Premium P2 (或 EMS E5) 许可证](entitlement-management-overview.md#license-requirements)。
 
-* 如果收到访问被拒绝的消息时配置授权管理，并且你是全局管理员，请确保你的目录具有[Azure AD Premium P2 （或 EMS E5） 许可证](entitlement-management-overview.md#license-requirements)。  
-* 如果收到访问被拒绝消息时创建或查看访问包，并且你是目录的创建者组的成员，则必须创建之前创建第一个访问包目录。
+* 如果在创建或查看访问包时收到 "访问被拒绝" 消息，并且您是目录创建者组的成员，则必须在创建第一个访问包之前[创建目录](entitlement-management-catalog-create.md)。
 
-## <a name="checklist-for-adding-a-resource"></a>用于添加资源的清单
+## <a name="resources"></a>资源
 
-* 有关可访问包中的资源的应用程序，它必须具有至少一个可分配的资源角色。 角色由应用程序本身定义，并在 Azure AD 中管理。 请注意，在 Azure 门户还可能显示不能选为应用程序的服务的服务主体。  具体而言， **Exchange Online**并**SharePoint Online**是服务，不具有在目录中，资源角色，因此它们不能访问包中包含的应用程序。  相反，使用基于组的许可建立合适的许可证的用户需要访问这些服务。
+* 应用程序的角色由应用程序自身定义，并在 Azure AD 中进行管理。 如果应用程序没有任何资源角色，则权限管理会将用户分配到**默认访问**角色。
 
-* 对于要访问包中的资源组，必须能可修改 Azure AD 中。  不能作为资源分配源自在内部部署 Active Directory 中的组，因为不能在 Azure AD 中更改其所有者或成员属性。  
+    请注意，Azure 门户可能还会显示不能选作应用程序的服务的服务主体。  特别是， **Exchange online**和**SharePoint online**是服务，而不是在目录中具有资源角色的应用程序，因此它们不能包含在访问包中。  相反，使用基于组的许可为需要访问这些服务的用户建立适当的许可。
 
-* 不能作为资源添加 SharePoint Online 文档库和单个文档。  相反，创建一个 Azure AD 安全组、 访问包中包括的组和站点角色和在 SharePoint Online 中使用组来控制对文档库或文档的访问。
+* 要使组成为访问包中的资源，该组必须能够在 Azure AD 中可修改。  源自本地 Active Directory 的组无法分配为资源，因为无法在 Azure AD 中更改其所有者或成员属性。   也无法在 Azure AD 中修改作为通讯组在 Exchange Online 中创建的组。 
 
-* 如果有已分配给你想要具有访问包管理的资源的用户，请确保将用户分配到相应的策略具有访问包。 例如，你可能想要在组中已有的用户访问包中包含一个组。 如果用户组需要持续访问权限，它们必须具有访问包的相应策略，以便他们看不到组失去访问权限。 通过要求请求包含该资源的访问包的用户，或者直接将它们分配给访问包，可以分配访问包。 有关详细信息，请参阅[编辑和管理现有访问包](entitlement-management-access-package-edit.md)。
+* 无法将 SharePoint 联机文档库和单个文档添加为资源。  相反，请创建一个[Azure AD 安全组](../fundamentals/active-directory-groups-create-azure-portal.md)，在 access 包中包含该组和站点角色，然后在 SharePoint Online 中使用该组来控制对文档库或文档的访问。
 
-## <a name="checklist-for-providing-external-users-access"></a>用于为外部用户提供访问的清单
+* 如果有已分配给要使用访问包管理的资源的用户，请确保已使用适当的策略将这些用户分配给访问包。 例如，你可能希望在访问包中包含一个组，该组中已有用户。 如果该组中的这些用户需要继续访问，则他们必须具有访问包的适当策略，以便不会失去对组的访问权限。 你可以通过请求用户请求包含该资源的访问包，或直接将其分配给访问包来分配访问包。 有关详细信息，请参阅[更改访问包的请求和审批设置](entitlement-management-access-package-request-policy.md)。
 
-* 如果某个 B2B[允许列表](../b2b/allow-deny-list.md)，则不允许其目录的用户将无法再请求的访问权限。
+* 删除团队的成员时，也会从 Microsoft 365 组中删除它们。 从团队的聊天功能中删除可能会延迟。 有关详细信息，请参阅[组成员身份](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)。
 
-* 请确保没有任何[条件性访问策略](../conditional-access/require-managed-devices.md)，会阻止外部用户请求访问或无法访问包中使用应用程序。
+* 确保你的目录未在多地域进行配置。 权利管理当前不支持 SharePoint Online 的多地域位置。 SharePoint Online 站点必须位于默认地理位置，才能由权利管理进行管理。 有关详细信息，请参阅[OneDrive 和 SharePoint Online 中的多地理功能](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365)。
 
-## <a name="checklist-for-request-issues"></a>请求问题的清单
+## <a name="access-packages"></a>访问包
 
-* 当用户想要请求访问包的访问权限时，请务必使用它们**我访问门户链接**访问包。 有关详细信息，请参阅[复制我访问门户链接](entitlement-management-access-package-edit.md#copy-my-access-portal-link)。
+* 如果尝试删除访问包或策略，并看到一条错误消息，指出存在活动的分配，如果看不到任何具有分配的用户，请查看最近删除的用户是否仍具有分配。 在用户删除后的30天时段内，可以还原该用户帐户。   
 
-* 当用户登录到我访问门户来请求访问包时，请确保它们使用其组织帐户身份验证。 组织帐户可以是任一帐户中的资源目录，或包含在其中一个访问包的策略的目录中。 如果用户的帐户不是组织帐户，或该目录不包含在策略中，用户将不会看到访问包。 有关详细信息，请参阅[请求的访问权限访问包](entitlement-management-request-access.md)。
+## <a name="external-users"></a>外部用户
 
-* 如果将阻止用户在登录到的资源目录，它们将不能请求我访问门户中的访问权限。 用户可以请求访问权限之前，必须从用户的配置文件中删除登录块。 若要删除的登录块中，在 Azure 门户中，单击**Azure Active Directory**，单击**用户**，单击用户，然后单击**配置文件**。 编辑**设置**部分，并更改**阻止登录**到**否**。 有关详细信息，请参阅[添加或更新用户的个人资料信息使用 Azure Active Directory](../fundamentals/active-directory-users-profile-azure-portal.md)。  您还可以检查该用户已被阻止原因[Identity Protection 策略](../identity-protection/howto-unblock-user.md)。
+* 当外部用户要请求访问包的访问权限时，请确保他们使用访问包的 "**我的访问门户" 链接**。 有关详细信息，请参阅 "[共享链接" 来请求访问包](entitlement-management-access-package-settings.md)。 如果外部用户仅访问**myaccess.microsoft.com** ，而不使用 "完全访问权限" 门户链接，则他们将在自己的组织中而不是在组织中看到可供他们使用的访问包。
 
-* 在我访问门户中，如果用户是请求者和审批者，他们将看不访问包其请求上**审批**页。 此行为是有意而为-用户不能批准他们自己的请求。 请确保已配置的策略的其他审批者发送请求访问包。 有关详细信息，请参阅[编辑现有策略](entitlement-management-access-package-edit.md#edit-an-existing-policy)。
+* 如果外部用户无法请求访问包的访问权限或无法访问资源，请务必检查[外部用户的设置](entitlement-management-external-users.md#settings-for-external-users)。
 
-* 如果新的外部用户，不以前签名在目录中，收到访问程序包，包括 SharePoint Online 站点，如之前在 SharePoint Online 中预配其帐户未完全传递，将显示其访问包。
+* 如果以前未在目录中登录的新外部用户接收到包含 SharePoint Online 站点的访问包，则其访问包将显示为未完全传递，直到其帐户在 SharePoint Online 中设置。 有关共享设置的详细信息，请参阅[查看 SharePoint Online 外部共享设置](entitlement-management-external-users.md#review-your-sharepoint-online-external-sharing-settings)。
+
+## <a name="requests"></a>请求
+
+* 当用户要请求访问包的访问权限时，请确保他们使用访问包的 "**我的访问门户" 链接**。 有关详细信息，请参阅 "[共享链接" 来请求访问包](entitlement-management-access-package-settings.md)。
+
+* 如果在浏览器设置为“专用”或“匿名”模式时打开“我的访问权限”门户，这可能会与登录行为产生冲突。 建议在访问“我的访问权限”门户时不要在浏览器的“专用”或“匿名”模式下使用。
+
+* 当尚未在你的目录中的用户登录到“我的访问权限”门户以请求访问包时，请确保他们使用其组织帐户进行身份验证。 组织帐户可以是资源目录中的帐户，也可以是其他目录中的帐户，该目录包含在访问包的其中一个策略中。 如果用户的帐户不是组织帐户，或者策略中不包含他们验证的目录，那么用户将看不到访问包。 有关详细信息，请参阅[请求访问访问包](entitlement-management-request-access.md)。
+
+* 如果阻止用户登录到资源目录，则他们将无法在“我的访问权限”门户中请求访问。 必须从用户配置文件中删除登录块，用户才可以请求访问。 若要删除登录块，请在 Azure 门户中单击 " **Azure Active Directory**"，单击 "**用户**"，单击用户，然后单击 "**配置文件**"。 编辑**设置**部分，并将 **"阻止登录**" 更改为 "**否**"。 有关详细信息，请参阅[使用 Azure Active Directory 添加或更新用户的配置文件信息](../fundamentals/active-directory-users-profile-azure-portal.md)。  你还可以检查用户是否因[Identity Protection 策略](../identity-protection/howto-unblock-user.md)而被阻止。
+
+* 在 "我的 Access" 门户中，如果某个用户既是请求者又是审批者，他们将不会在 "**审批**" 页上看到他们对访问包的请求。 此行为是有意行为 - 用户无法批准自己的请求。 确保他们请求的访问包在策略上配置了其他审批者。 有关详细信息，请参阅[更改访问包的请求和审批设置](entitlement-management-access-package-request-policy.md)。
+
+### <a name="view-a-requests-delivery-errors"></a>查看请求的传递错误
+
+**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
+
+1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
+
+1. 在左侧菜单中单击“访问包”，然后打开访问包。****
+
+1. 单击“请求”。****
+
+1. 选择要查看的请求。
+
+    如果请求有任何传递错误，**将无法传递**或**部分传递**请求状态。
+
+    如果存在传递错误，则会在请求的详细信息窗格中显示传递错误的计数。
+
+1. 单击计数可查看该请求的所有传递错误。
+
+### <a name="reprocess-a-request"></a>重新处理请求
+
+如果在触发访问包重新处理请求后遇到错误，则必须等待系统重新处理请求。 系统多次尝试重新处理几个小时，因此在这段时间内不能强制重新处理。 
+
+您只能重新处理状态为 "传递" 的请求已**失败**或**部分传递**且完成时间不到一周。 否则 **，"重新**处理" 按钮将灰显。
+
+![重新处理按钮灰显](./media/entitlement-management-troubleshoot/cancel-reprocess-grayedout.png)
+
+- 如果在试用时段内修复错误，请求状态将更改为 "正在**传递**"。 该请求将重新处理，而不需要用户执行其他操作。
+
+- 如果在试用时段内未修复此错误，则请求状态可能为 "**未通过**" 或 "**部分送达**"。 然后 **，可以使用 "重新**处理" 按钮。 你将需要7天来重新处理请求。
+
+**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
+
+1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
+
+1. 在左侧菜单中单击“访问包”，然后打开访问包。****
+
+1. 单击“请求”。****
+
+1. 单击要重新处理的请求。
+
+1. 在 "请求详细信息" 窗格中，单击 "重新处理**请求**"。
+
+    ![重新处理失败的请求](./media/entitlement-management-troubleshoot/reprocess-request.png)
+
+### <a name="cancel-a-pending-request"></a>取消挂起的请求
+
+您只能取消尚未传递或传递失败的挂起的请求。否则，"**取消**" 按钮将灰显。
+
+**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
+
+1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
+
+1. 在左侧菜单中单击“访问包”，然后打开访问包。****
+
+1. 单击“请求”。****
+
+1. 单击要取消的请求。
+
+1. 在请求详细信息窗格中，单击“取消请求”。****
+
+## <a name="multiple-policies"></a>多个策略
+
+* 权利管理遵循最少特权最佳实践。 当用户请求访问具有多个应用策略的访问包时，授权管理包括逻辑，以帮助确保更严格或更多的特定策略优先于一般策略。 如果策略是通用的，则权限管理可能不会向请求者显示该策略，也可能会自动选择更严格的策略。
+
+* 例如，假设有一个访问包，其中有两个策略适用于这两个策略应用于请求者。 第一个策略用于包括请求者的特定用户。 第二个策略适用于请求者所属的目录中的所有用户。 在这种情况下，会自动为请求者选择第一个策略，因为这是更严格的策略。 未向请求者提供选择第二个策略的选项。
+
+* 如果应用了多个策略，则自动选择的策略或向请求者显示的策略基于以下优先级逻辑：
+
+    | 策略优先级 | 范围 |
+    | --- | --- |
+    | P1 | 目录或特定连接的组织中的特定用户和组 |
+    | P2 | 目录中的所有成员 (不包括来宾)  |
+    | P3 | 目录中的所有用户 (包括来宾) 或特定连接的组织 |
+    | P4 | 所有连接的组织或所有用户 (所有连接的组织 + 任何新的外部用户)  |
+    
+    如果任何策略的优先级较高，则会忽略低优先级类别。 有关如何向请求者显示多个具有相同优先级的策略的示例，请参阅[选择策略](entitlement-management-request-access.md#select-a-policy)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [查看报表的用户如何获取的访问权利管理中](entitlement-management-reports.md)
+- [管控外部用户的访问权限](entitlement-management-external-users.md)
+- [查看有关用户如何在权利管理中获取访问权限的报告](entitlement-management-reports.md)

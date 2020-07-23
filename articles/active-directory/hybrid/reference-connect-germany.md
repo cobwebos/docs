@@ -1,6 +1,6 @@
 ---
 title: 德国 Microsoft 云中的 Azure AD Connect
-description: Azure AD Connect 会将本地目录与 Azure Active Directory 集成。 这样，便可以为集成到 Azure AD 的 Office 365、Azure 和 SaaS 应用程序提供一个通用标识。
+description: Azure AD Connect 会将本地目录与 Azure Active Directory 集成。 这样便可以为集成到 Azure AD 的 Office 365、Azure 和 SaaS 应用程序提供一个通用标识。
 keywords: Azure AD Connect 介绍, Azure AD Connect 概述, 什么是 Azure AD Connect, 安装 Active Directory, 德国, 黑森林
 services: active-directory
 documentationcenter: ''
@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 62f0d82a543c0ae4e629eda3bca18b0a06322f2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60381225"
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>德国 Microsoft 云中的 Azure AD Connect - 公共预览版
@@ -54,7 +54,7 @@ Azure AD Connect 提供本地 Active Directory 和 Azure Active Directory 之间
 
 下表描述了边栏选项卡中所示的功能。
 
-| 标题 | 描述 |
+| 标题 | 说明 |
 | --- | --- |
 | 同步状态 |指示同步处于启用状态，还是处于禁用状态。 |
 | 上次同步 |上次成功执行同步的时间。 |

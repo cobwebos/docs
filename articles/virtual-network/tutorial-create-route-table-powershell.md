@@ -4,25 +4,24 @@ description: 本文介绍了如何使用 PowerShell 通过路由表来路由网�
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: cd13b3a7a3bc4d5a80e44d146e08c14e81ffdb60
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
-ms.translationtype: MT
+ms.openlocfilehash: b08a5e63bc78b5b86b1802e7c8f334bad43167fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730071"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84688351"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-powershell"></a>使用 PowerShell 通过路由表路由网络流量
 
@@ -42,7 +41,7 @@ ms.locfileid: "66730071"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装和使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+如果选择在本地安装和使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 ## <a name="create-a-route-table"></a>创建路由表
 
@@ -114,7 +113,7 @@ $subnetConfigDmz = Add-AzVirtualNetworkSubnetConfig `
 $virtualNetwork | Set-AzVirtualNetwork
 ```
 
-使用 [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) 将 *myRouteTablePublic* 路由表关联到 Public  子网，然后使用 [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) 将子网配置写入虚拟网络。
+使用 [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) 将 *myRouteTablePublic* 路由表关联到 Public 子网，然后使用 [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) 将子网配置写入虚拟网络。
 
 ```azurepowershell-interactive
 Set-AzVirtualNetworkSubnetConfig `
@@ -194,7 +193,7 @@ $vmNva = New-AzVM `
 
 在虚拟网络中创建两个 VM，以便可以在后续步骤中验证来自公共子网的流量是否通过网络虚拟设备路由到专用子网。  
 
-使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 在 Public 子网中创建一个 VM。  以下示例在 *myVirtualNetwork* 虚拟网络的公共  子网中创建名为 *myVmPublic* 的 VM。
+使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 在 Public 子网中创建一个 VM。 以下示例在 *myVirtualNetwork* 虚拟网络的公共子网中创建名为 *myVmPublic* 的 VM。
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -250,7 +249,7 @@ New-NetFirewallRule -DisplayName "Allow ICMPv4-In" -Protocol ICMPv4
 
 虽然本文中使用跟踪路由来测试路由，但在生产部署中，不建议允许 ICMP 通过 Windows 防火墙。
 
-在“启用 IP 转发”中已经在 Azure 中为 VM 的网络接口启用了 IP 转发。 在 VM 中，VM 中运行的操作系统或应用程序也必须能够转发网络流量。 在 *myVmNva* 的操作系统中启用 IP 转发。
+在“启用 IP 转发”中，已经在 Azure 中为 VM 的网络接口启用了 IP 转发。 在 VM 中，VM 中运行的操作系统或应用程序也必须能够转发网络流量。 在 *myVmNva* 的操作系统中启用 IP 转发。
 
 在 *myVmPrivate* VM 中的命令提示符下，通过远程桌面连接到 *myVmNva*：
 
@@ -275,7 +274,7 @@ mstsc /v:myVmPublic
 在 *myVmPublic* VM 上，通过 PowerShell 输入以下命令来允许 ICMP 通过 Windows 防火墙：
 
 ```powershell
-New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
 ```
 
 若要测试从 *myVmPublic* VM 发往 *myVmPrivate* VM 的网络流量的路由，请在 *myVmPublic* VM 上通过 PowerShell 输入以下命令：
@@ -284,7 +283,7 @@ New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
 tracert myVmPrivate
 ```
 
-响应类似于以下示例：
+其响应类似于如下示例：
 
 ```
 Tracing route to myVmPrivate.vpgub4nqnocezhjgurw44dnxrc.bx.internal.cloudapp.net [10.0.1.4]
@@ -306,7 +305,7 @@ Trace complete.
 tracert myVmPublic
 ```
 
-响应类似于以下示例：
+其响应类似于如下示例：
 
 ```
 Tracing route to myVmPublic.vpgub4nqnocezhjgurw44dnxrc.bx.internal.cloudapp.net [10.0.0.4]

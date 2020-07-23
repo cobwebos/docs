@@ -1,34 +1,31 @@
 ---
 title: 管理已向 Azure 文件同步注册的服务器 | Microsoft Docs
 description: 了解如何向 Azure 文件同步存储同步服务注册和注销 Windows Server。
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ef6def9f03a880d9fc8d649fe226caf597ba0ad5
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: c457dacd947c7af8a6be94205ed135ce04a49a06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991828"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509500"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>管理已向 Azure 文件同步注册的服务器
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 你可以使用 Windows Server 上的任意可用协议在本地访问数据（包括 SMB、NFS 和 FTPS），并且可以在世界各地获取所需的缓存数。
 
 下面的文章说明如何向存储同步服务注册服务器并进行管理。 若要了解如何部署端到端的 Azure 文件同步，请参阅[如何部署 Azure 文件同步](storage-sync-files-deployment-guide.md)。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>向存储同步服务注册/注销服务器
-向 Azure 文件同步注册服务器可在 Windows Server 和 Azure 之间建立信任关系。 这种关系随后可用于创建服务器上的服务器终结点，该终结点表示应与 Azure 文件共享（也称为云终结点）同步的特定文件夹。 
+向 Azure 文件同步注册服务器可在 Windows Server 和 Azure 之间建立信任关系。 这种关系随后可用于创建服务器上的服务器终结点**，该终结点表示应与 Azure 文件共享（也称为云终结点）** 同步的特定文件夹。 
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 若要向存储同步服务注册服务器，首先必须确保服务器满足以下先决条件：
 
-* 服务器必须运行支持的 Windows Server 版本。 有关详细信息，请参阅 [Azure 文件同步系统要求和互操作性](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability)。
+* 服务器必须运行支持的 Windows Server 版本。 有关详细信息，请参阅 [Azure 文件同步系统要求和互操作性](storage-sync-files-planning.md#windows-file-server-considerations)。
 * 确保已部署存储同步服务。 有关如何部署存储同步服务的详细信息，请参阅[如何部署 Azure 文件同步](storage-sync-files-deployment-guide.md)。
 * 确保服务器已连接到 Internet，并且 Azure 可以访问。
 * 使用服务器管理器 UI 禁用适用于管理员的 IE 增强的安全配置。
@@ -61,7 +58,7 @@ ms.locfileid: "65991828"
 ```    
 
 ### <a name="register-a-server-with-storage-sync-service"></a>向存储同步服务注册服务器
-服务器必须先向存储同步服务注册，然后才能在 Azure 文件同步同步组中用作服务器终结点。 服务器一次只能向一个存储同步服务注册。
+服务器必须先向存储同步服务** 注册，然后才能在 Azure 文件同步同步组** 中用作服务器终结点**。 服务器一次只能向一个存储同步服务注册。
 
 #### <a name="install-the-azure-file-sync-agent"></a>安装 Azure 文件同步代理
 1. [下载 Azure 文件同步代理](https://go.microsoft.com/fwlink/?linkid=858257)。
@@ -79,11 +76,8 @@ ms.locfileid: "65991828"
 > 如果服务器是故障转移群集的成员，则需要在群集中的每个节点上安装 Azure 文件同步代理。
 
 #### <a name="register-the-server-using-the-server-registration-ui"></a>使用服务器注册 UI 注册服务器
-> [!Important]  
-> 云解决方案提供商 (CSP) 订阅不能使用服务器注册 UI。 请改用 PowerShell（在本部分下面介绍）。
-
 1. 如果服务器注册 UI 在完成 Azure 文件同步代理安装之后未立即启动，则可以通过执行 `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe` 来手动启动它。
-2. 单击“登录”以访问 Azure 订阅。 
+2. 单击“登录”** 以访问 Azure 订阅。 
 
     ![服务器注册 UI 的打开对话框](media/storage-sync-files-server-registration/server-registration-ui-1.png)
 
@@ -99,7 +93,7 @@ ms.locfileid: "65991828"
 > 如果服务器是故障转移群集的成员，则每台服务器都需要运行服务器注册。 在 Azure 门户中查看已注册的服务器时，Azure 文件同步会自动将每个节点识别为相同故障转移群集的成员，并相应地将它们分组在一起。
 
 #### <a name="register-the-server-with-powershell"></a>使用 PowerShell 注册服务器
-也可以通过 PowerShell 执行服务器注册。 这是云解决方案提供商 (CSP) 订阅唯一支持的服务器注册方法：
+也可以通过 PowerShell 执行服务器注册。 
 
 ```powershell
 Register-AzStorageSyncServer -ResourceGroupName "<your-resource-group-name>" -StorageSyncServiceName "<your-storage-sync-service-name>"
@@ -149,7 +143,7 @@ Get-AzStorageSyncGroup -ResourceGroupName $resourceGroup -StorageSyncServiceName
 #### <a name="unregister-the-server"></a>注销服务器
 现在已召回所有数据并已从所有同步组中删除服务器，服务器可以进行注销。 
 
-1. 在 Azure 门户中，导航到存储同步服务的“已注册的服务器”部分。
+1. 在 Azure 门户中，导航到存储同步服务的 "*已注册服务器*" 部分。
 2. 右键单击要注销的服务器，然后单击“注销服务器”。
 
     ![注销服务器](media/storage-sync-files-server-registration/unregister-server-1.png)
@@ -164,7 +158,7 @@ Get-AzStorageSyncGroup -ResourceGroupName $resourceGroup -StorageSyncServiceName
 可通过使用 `StorageSyncNetworkLimit` cmdlet 限制 Azure 文件同步的网络利用率。
 
 > [!Note]  
-> 访问分层文件或使用 Invoke-StorageSyncFileRecall cmdlet 时，网络限制不适用。
+> 访问分层文件时，不会应用网络限制。
 
 例如，可以创建新的中止值来确保 Azure 文件同步在工作周的上午 9 点到下午 5 点（17:00 点）之间不超过 10 Mbps： 
 

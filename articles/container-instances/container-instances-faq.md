@@ -1,105 +1,106 @@
 ---
-title: Azure 容器实例-方面的常见问题
-description: 有关与 Azure 容器实例服务相关的常见问题的答案
-services: container-instances
+title: 常见问题
+description: 有关 Azure 容器实例服务的常见问题解答
 author: dkkapur
-manager: jeconnoc
-ms.service: container-instances
 ms.topic: article
-ms.date: 4/25/2019
-ms.author: dekapur
-ms.openlocfilehash: 99882bd23d7b94afc550247172e5b70deb23bec9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: MT
+ms.date: 06/02/2020
+ms.openlocfilehash: 21643ccfb6bb256e29114435ccb39a009d1b8dae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791399"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806595"
 ---
-# <a name="frequently-asked-questions-about-azure-container-instances"></a>有关 Azure 容器实例常见问题
+# <a name="frequently-asked-questions-about-azure-container-instances"></a>有关 Azure 容器实例的常见问题解答
 
-本文介绍 Azure 容器实例有关的常见问题。
+本文解答有关 Azure 容器实例的常见问题。
 
 ## <a name="deployment"></a>部署
 
-### <a name="how-large-can-my-container-image-be"></a>我的容器映像可以有多大？
+### <a name="how-large-can-my-container-image-be"></a>容器映像的最大大小是什么？
 
-Azure 容器实例上的可部署容器映像的最大大小为 15 GB。 你可以部署较大的图像根据在时间点的确切可用性部署，但这不保证。
+可在 Azure 容器实例上部署的容器映像的最大大小为 15 GB。 根据部署时的确切可用性，也许可以部署更大的映像，但不保证可以做到这一点。
 
-容器映像的大小会影响其所需的时间部署，通常你想要保留你的容器映像越小越好。
+容器映像的大小会影响部署所需的时间，因此，一般情况下，我们会尽可能地保留较小的容器映像。
 
-### <a name="how-can-i-speed-up-the-deployment-of-my-container"></a>如何提高我的容器的部署速度
+### <a name="how-can-i-speed-up-the-deployment-of-my-container"></a>如何加速容器的部署？
 
-由于部署时间的主要决定因素之一是图像大小，查找有关如何缩减大小。 删除不需要或减小图像中的层 （通过选择较浅的基础 OS 映像） 的图层。 例如，如果您在运行 Linux 容器，请考虑使用 Alpine 为您的基础映像而不是完整的 Ubuntu Server。 同样，对于 Windows 容器，使用 Nano Server 基本映像在可能的情况。 
+由于部署速度的主要决定因素之一是映像大小，因此请找到减小大小的办法。 删除不需要的层，或者减小映像中的层大小（选择较精简的基础 OS 映像）。 例如，如果运行 Linux 容器，请考虑使用 Alpine 作为基础映像，而不是使用完整的 Ubuntu Server。 同样，对于 Windows 容器，请尽可能地使用 Nano Server 基础映像。 
 
-此外应检查在 Azure 容器映像中，通过提供预先缓存映像列表[列出缓存映像](/rest/api/container-instances/listcachedimages)API。 您可能能够切出的映像层为预先缓存映像之一。 
+还应查看 Azure 容器映像中预缓存映像的列表（通过[列出缓存的映像](/rest/api/container-instances/location/listcachedimages) API 获取）。 也许可以换出某个预缓存映像的映像层。 
 
-查看更多[详细指南](container-instances-troubleshooting.md#container-takes-a-long-time-to-start)上减小容器启动时间。
+有关如何减少容器启动时间，请参阅[更详细的指南](container-instances-troubleshooting.md#container-takes-a-long-time-to-start)。
 
-### <a name="what-windows-base-os-images-are-supported"></a>支持哪些 Windows 基本操作系统映像映像？
+### <a name="what-windows-base-os-images-are-supported"></a>支持哪些 Windows 基础 OS 映像？
+
+> [!NOTE]
+> 由于在2020中的 Windows 更新后向后兼容性出现问题，下面的映像版本包含我们建议在基础映像中使用的最小版本号。 使用较旧映像版本的当前部署不受影响，但新的部署应遵循以下基本映像。 
 
 #### <a name="windows-server-2016-base-images"></a>Windows Server 2016 基础映像
 
-* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `10.0.14393.x`， `sac2016`
-* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016`，  `10.0.14393.x`
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver)： `sac2016` `10.0.14393.3506` 或更高版本
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore)： `ltsc2016` `10.0.14393.3506` 或更高版本
 
 > [!NOTE]
-> 不支持基于 1709年或 1803年的半年频道发布的 Windows 映像。
+> 不支持基于半年频道版本 1709 或 1803 的 Windows 映像。
 
-#### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 和客户端基础映像 （预览版）
+#### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 和客户端基础映像（预览版）
 
-* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809`， `10.0.17763.x`
-* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019`， `1809`， `10.0.17763.x`
-* [Windows](https://hub.docker.com/_/microsoft-windows): `1809`， `10.0.17763.x` 
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver)： `1809` `10.0.17763.1040` 或更高版本
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore)： `ltsc2019` 、 `1809` `10.0.17763.1040` 或更高版本
+* [Windows](https://hub.docker.com/_/microsoft-windows)： `1809` `10.0.17763.1040` 或更高版本
 
-### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>在我的容器中应使用何种.NET 或.NET Core 映像层？ 
+### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>应在容器中使用哪个 .NET 或 .NET Core 映像层？ 
 
-使用满足你的要求的最小图像。 对于 Linux，可以使用*运行时 alpine*自.NET Core 2.1 发布以来一直支持.NET Core 映像。 对于 Windows，如果您使用的完整的.NET Framework，然后需要使用 Windows Server Core 映像 (仅限运行时的图像，如*4.7.2-windowsservercore-ltsc2016*)。 仅限运行时映像更小，但不是支持需要.NET SDK 的工作负荷。
+使用符合要求的最小映像。 对于 Linux，可以使用 *runtime-alpine* .NET Core 映像，从 .NET Core 2.1 版本开始就已支持此映像。 对于 Windows，如果使用完整的 .NET Framework，则需要使用 Windows Server Core 映像（仅限运行时的映像，例如 *4.7.2-windowsservercore-ltsc2016*）。 仅限运行时的映像较小，但不支持需要 .NET SDK 的工作负荷。
 
 ## <a name="availability-and-quotas"></a>可用性和配额
 
-### <a name="how-many-cores-and-memory-should-i-allocate-for-my-containers-or-the-container-group"></a>多少个核心和内存应该我分配的我的容器或容器组？
+### <a name="how-many-cores-and-memory-should-i-allocate-for-my-containers-or-the-container-group"></a>应为容器或容器组分配多少核心和内存？
 
-这确实取决于你的工作负荷。 从小规模着手并测试性能，以查看你的容器执行的操作。 [监视 CPU 和内存资源使用情况](container-instances-monitor.md)，以及如何将核心或基于类型的容器中部署的进程的内存。 
+这实际上取决于工作负荷。 请从较小的数量着手，并测试容器的性能如何。 [监视 CPU 和内存资源用量](container-instances-monitor.md)，然后根据在容器中部署的进程类型增加核心或内存。
 
-请确保也检查[资源可用性](container-instances-region-availability.md#availability---general)区域中部署 CPU 内核数和每个容器组的可用内存的上限。 
+另外，请务必检查所部署到的区域的[资源可用性](container-instances-region-availability.md#availability---general)，以确定每个容器组的可用 CPU 核心数和内存上限。 
 
-### <a name="what-underlying-infrastructure-does-aci-run-on"></a>ACI 上运行哪些底层基础结构？
+> [!NOTE]
+> 服务的底层基础结构使用了容器组的少量资源。 容器将能够访问分配给该组的大部分而不是全部资源。 因此，为组中的容器请求资源时，请规划一个小型资源缓冲区。
 
-Azure 容器实例的目标是为无服务器的容器按需服务，因此我们希望您能致力于制定你的容器，而不用担心基础结构 ！ 对于那些想或想要进行比较的性能，在 ACI 在上运行的各种 sku 时，Azure Vm 集主要来自 F 和 D 系列。 我们预计这随着我们不断开发和优化该服务在将来的更改。 
+### <a name="what-underlying-infrastructure-does-aci-run-on"></a>ACI 在哪个底层基础结构上运行？
 
-### <a name="i-want-to-deploy-thousand-of-cores-on-aci---can-i-get-my-quota-increased"></a>我想要部署千条 ACI 上的内核-获取我增加的配额？
+Azure 容器实例旨在用作无服务器按需容器服务，因此，我们希望你专注于开发容器，而不用考虑基础结构！ 对于那些有好奇心的或者想要比较性能的客户，可以在采用各种 SKU 的 Azure VM 集（主要是 F 和 D 系列）上运行 ACI。 我们会持续开发和优化服务，预计这种情况将来会改变。 
+
+### <a name="i-want-to-deploy-thousand-of-cores-on-aci---can-i-get-my-quota-increased"></a>我想要在 ACI 上部署几千个核心 - 是否可以提高配额？
  
-是 （有时）。 请参阅[配额和限制](container-instances-quotas.md)一文，了解当前配额和限制可以通过请求增加。
+在某些情况下是可以提高的。 有关当前的配额以及可以请求提高的限制，请参阅[配额和限制](container-instances-quotas.md)一文。
 
-### <a name="can-i-deploy-with-more-than-4-cores-and-16-gb-of-ram"></a>可以使用超过 4 个核心和 16 GB RAM 进行部署
+### <a name="can-i-deploy-with-more-than-4-cores-and-16-gb-of-ram"></a>是否可以部署 4 个以上的核心和 16 GB 以上的 RAM？
 
-还不可以。 目前，这些是容器组的最大值。 与特定的要求或请求联系 Azure 支持部门。 
+还不可以。 目前这些数字是容器组的上限。 如有具体的要求和请求，请联系 Azure 支持部门。 
 
-### <a name="when-will-aci-be-in-a-specific-region"></a>ACI 何时在特定区域？
+### <a name="when-will-aci-be-in-a-specific-region"></a>ACI 何时在特定的区域推出？
 
-发布当前区域可用性[此处](container-instances-region-availability.md#availability---general)。 如果有某个特定区域的需求，请联系 Azure 支持。
+[此处](container-instances-region-availability.md#availability---general)发布了当前推出的区域。 如果你在特定的区域需要满足某项要求，请联系 Azure 支持部门。
 
 ## <a name="features-and-scenarios"></a>功能和方案
 
 ### <a name="how-do-i-scale-a-container-group"></a>如何缩放容器组？
 
-目前，缩放不可用的容器或容器组。 如果需要运行多个实例，使用我们的 API 来实现自动化和创建更多容器组创建到服务的请求。 
+目前，容器或容器组不可缩放。 如果需要运行更多实例，请使用我们的 API 进行自动化，并创建更多请求以在服务中创建容器组。 
 
-### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>可用于自定义 VNet 中运行的实例有哪些功能？
+### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>自定义 VNet 中运行的实例可以使用哪些功能？
 
-你可以部署所选的 Azure 虚拟网络中的容器组和委派到容器组，以在 Azure 资源之间路由 VNet 中的流量的专用 Ip。 容器组部署到虚拟网络当前处于预览状态，并在正式版 (GA) 之前此功能的某些方面可能会更改。 请参阅[预览版限制](container-instances-vnet.md#preview-limitations)更新信息。
+可以[在所选 Azure 虚拟网络中部署容器组](container-instances-vnet.md)，并将专用 IP 委托给容器组，以在 VNet 中跨 Azure 资源路由流量。 将容器组部署到虚拟网络目前适用于一部分 Azure 区域中的生产工作负荷。
 
 ## <a name="pricing"></a>定价
 
-### <a name="when-does-the-meter-start-running"></a>测定仪何时开始运行？
+### <a name="when-does-the-meter-start-running"></a>计量器何时开始运行？
 
-我们开始拉取第一个容器的映像 （适用于新的部署） 或容器组重新启动 （如果已部署），直到停止的容器组的时间通过计算容器组持续时间。 详细信息，请参阅[容器实例定价](https://azure.microsoft.com/pricing/details/container-instances/)。
+计算的容器组持续时间从我们开始提取你的第一个容器映像（对于新部署）或重启容器组（如果已部署）开始，到容器组停止为止。 请参阅[容器实例定价](https://azure.microsoft.com/pricing/details/container-instances/)中的详细信息。
 
-### <a name="do-i-stop-being-charged-when-my-containers-are-stopped"></a>停止容器停止时，你被收费？
+### <a name="do-i-stop-being-charged-when-my-containers-are-stopped"></a>停止容器后是否会停止计费？
 
-计量器停止运行后停止整个容器组。 只要运行容器组中的容器，我们将资源保存在以防你想要再次启动容器。 
+停止整个容器组后，计量器将停止运行。 只要容器组中的容器正在运行，我们就会保留资源，以防需要再次启动容器。 
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解详细信息](container-instances-overview.md)了解 Azure 容器实例。
-* [排查常见问题](container-instances-troubleshooting.md)Azure 容器实例中。
+* [详细了解](container-instances-overview.md) Azure 容器实例。
+* [排查 Azure 容器实例中的常见问题](container-instances-troubleshooting.md)

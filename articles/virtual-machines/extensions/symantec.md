@@ -1,30 +1,29 @@
 ---
-title: 在 Azure 中的 Windows VM 上安装 Symantec Endpoint Protection | Microsoft Docs
+title: 在 Azure 中的 Windows VM 上安装 Symantec Endpoint Protection
 description: 了解如何在使用经典部署模型创建的新的或现有的 Azure VM 上安装和配置 Symantec Endpoint Protection 安全扩展。
 services: virtual-machines-windows
 documentationcenter: ''
 author: roiyz
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-service-management
 ms.assetid: 19dcebc7-da6b-4510-907b-d64088e81fa2
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
-ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.author: roiyz
-ms.openlocfilehash: 65b52c88741e618e8048451370918b06db73a651
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: akjosh
+ms.openlocfilehash: 63f9441d4df9551405c2ab2bf8c0c67d7de5753c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60617871"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77919900"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>如何在 Windows VM 上安装和配置 Symantec Endpoint Protection
-> [!IMPORTANT] 
-> Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
+Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器部署模型和经典部署模型](../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 
 本文介绍如何在运行 Windows Server 的现有虚拟机 (VM) 上安装和配置 Symantec Endpoint Protection 客户端。 这是完整的客户端，其中包括病毒和间谍软件防护、防火墙和入侵防御等服务。 该客户端通过 VM 代理作为安全扩展插件进行安装。
 
@@ -62,8 +61,8 @@ Set-AzureVMExtension -Publisher Symantec –Version $Agent.Version -ExtensionNam
 若要验证 Symantec 安全扩展插件是否已安装并处于最新状态：
 
 1. 登录到虚拟机。 有关说明，请参阅[如何登录到运行 Windows Server 的虚拟机][Logon]。
-2. 对于 Windows Server 2008 R2，请单击“开始”>“Symantec Endpoint Protection”。 对于 Windows Server 2012 或 Windows Server 2012 R2，在开始屏幕键入“Symantec”，并单击“Symantec Endpoint Protection”。
-3. 在“状态 - Symantec Endpoint Protection”窗口的“状态”选项卡中，根据需要应用更新或重启。
+2. 对于 Windows Server 2008 R2，请单击“开始”>“Symantec Endpoint Protection”****。 对于 Windows Server 2012 或 Windows Server 2012 R2，在开始屏幕键入“Symantec”，并单击“Symantec Endpoint Protection”********。
+3. 在“状态 - Symantec Endpoint Protection”窗口的“状态”选项卡中，根据需要应用更新或重启********。
 
 ## <a name="additional-resources"></a>其他资源
 [如何登录到运行 Windows Server 的虚拟机][Logon]

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a13d2a62c64ea114e45b49e38eda0ddc686fe7cf
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 5fc1f6434bea8f75c7bcc7859c6f90d7abdd031b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66143160"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "71091039"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workable"></a>教程：Azure Active Directory 与 Workable 的集成
 
@@ -142,7 +142,7 @@ ms.locfileid: "66143160"
 
 3. 注销 URL
 
-启用单一登录后，Workable 帐户管理员会通知你，随后便可以使用 Workable 帐户子域通过 [Workable 的 SSO 页](https://id.workable.com/sso/signin)进行登录。
+启用单一登录后，Workable 帐户管理员会通知你，随后便可以使用 Workable 帐户子域通过 [Workable 的 SSO 页](https://help.workable.com/hc/en-us/articles/360000067753-Single-Sign-on-SSO-Overview-Pro)进行登录。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -162,7 +162,7 @@ ms.locfileid: "66143160"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon\@yourcompanydomain.extension`。  例如，BrittaSimon@contoso.com。
+    b. 在“用户名”字段中键入 `brittasimon\@yourcompanydomain.extension`。  例如，BrittaSimon@contoso.com 。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 

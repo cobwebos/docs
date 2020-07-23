@@ -1,35 +1,32 @@
 ---
-title: 在 Azure 中使用资源管理器模板创建经典指标警报
+title: 资源管理器模板 - 创建指标警报
 description: 了解如何使用资源管理器模板创建经典指标警报，以便通过电子邮件或 Webhook 接收通知。
-author: johnkemnetz
-services: azure-monitor
-ms.service: azure-monitor
+author: rboucher
+ms.author: robb
 ms.topic: conceptual
-ms.date: 4/27/2018
-ms.author: johnkem
-ms.subservice: metrics
-ms.openlocfilehash: df26547132403bfe2f3fb3be74e5d1a3d9400967
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 03/09/2020
+ms.subservice: alerts
+ms.openlocfilehash: fef975c9822cd44b94074874621e1c87a60ed27d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60776433"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505442"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建经典指标警报
-本文说明如何使用 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)配置 Azure 指标警报。 这样，便可以在创建资源时自动对资源设置警报，确保正确监视所有资源。
-
-> [!NOTE]
+> [!WARNING]
 > 
-> 本文介绍如何使用资源管理器模板创建经典指标警报。 如果你正在寻找使用模板创建[较新指标警报](../../azure-monitor/platform/alerts-metric-near-real-time.md)的方法，那么[本文](alerts-metric-create-templates.md)可提供详细信息。
+> 本文介绍如何使用资源管理器模板创建经典指标警报。 经典警报已于 2019 年 8 月停用，并将于 2020 年 6 月完全弃用。 你不能在公共 Azure 上新建经典警报。 Azure 的某些区域版本可能仍然有这个选项，但我们建议你尽可能改用模板创建[较新的指标警报](../../azure-monitor/platform/alerts-metric-near-real-time.md)。 [此文](alerts-metric-create-templates.md)提供了详细信息。
 >
 
+本文说明如何使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)配置 Azure 经典指标警报。 这样，便可以在创建资源时自动对资源设置警报，确保正确监视所有资源。
 
 基本步骤如下所示：
 
 1. 创建一个描述如何创建警报的 JSON 文件作为模板。
-2. [使用任意部署方法部署模板](../../azure-resource-manager/resource-group-template-deploy.md)。
+2. [使用任意部署方法部署模板](../../azure-resource-manager/templates/deploy-powershell.md)。
 
-下面我们先单独针对警报，然后针对创建其他资源期间的警报，说明如何创建资源管理器模板。
+下面我们先单独针对警报，然后针对创建其他资源期间的警报，描述如何创建 Resource Manager 模板。
 
 ## <a name="resource-manager-template-for-a-classic-metric-alert"></a>经典指标警报的资源管理器模板
 若要使用 Resource Manager 模板创建警报，需要创建 `Microsoft.Insights/alertRules` 类型的资源，并填充所有相关属性。 下面是用于创建警报规则的模板。
@@ -179,7 +176,7 @@ ms.locfileid: "60776433"
 }
 ```
 
-[此处提供](https://msdn.microsoft.com/library/azure/dn933805.aspx)了警报规则的架构和属性说明。
+[此处提供](/rest/api/monitor/alertrules)了警报规则的架构和属性说明。
 
 ## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>具有经典指标警报的资源的资源管理器模板
 在创建的资源过程中创建警报时，Resource Manager 模板上的警报通常很有用。 例如，可能想要确保每次部署虚拟机时均设置了“CPU % > 80”规则。 为此，请在 VM 模板的资源数组中将警报规则添加为资源，使用 `dependsOn` 属性将依赖项添加到 VM 资源 ID。 下面是创建 Windows VM 并在 CPU 利用率高于 80% 时添加警报以通知订阅管理员的完整示例。
@@ -403,6 +400,5 @@ ms.locfileid: "60776433"
 
 ## <a name="next-steps"></a>后续步骤
 * [详细了解警报](alerts-overview.md)
-* [将诊断设置添加](../../azure-monitor/platform/diagnostic-logs-stream-template.md)到 Resource Manager 模板
+* [将诊断设置添加](../../azure-monitor/platform/diagnostic-settings-template.md) 到 Resource Manager 模板
 * 有关 JSON 语法和属性，请参阅 [Microsoft.Insights/alertrules](/azure/templates/microsoft.insights/alertrules) 模板参考。
-

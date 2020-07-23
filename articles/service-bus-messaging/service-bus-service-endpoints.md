@@ -1,26 +1,17 @@
 ---
-title: 适用于 Azure 服务总线的虚拟网络服务终结点和规则 | Microsoft Docs
-description: 将 Microsoft.ServiceBus 服务终结点添加到虚拟网络。
-services: service-bus
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus
-ms.devlang: na
+title: 为 Azure 服务总线配置虚拟网络服务终结点
+description: 本文提供了有关如何向虚拟网络中添加 Microsoft.ServiceBus 服务终结点的信息。
 ms.topic: article
-ms.date: 09/05/2018
-ms.author: aschhab
-ms.openlocfilehash: 0801469d586e6f2d6514927cdc7b894900a3aa35
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 2b3e7d23dcfd3f932aefa3809ebd13b9cfee0c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61471955"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340988"
 ---
-# <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>使用具有 Azure 服务总线的虚拟网络服务终结点
+# <a name="configure-virtual-network-service-endpoints-for-azure-service-bus"></a>为 Azure 服务总线配置虚拟网络服务终结点
 
-通过集成服务总线与[虚拟网络 (VNet) 服务终结点][vnet-sep]可从绑定到虚拟网络的工作负荷（如虚拟机）安全地访问消息传递功能，同时在两端保护网络流量路径。
+通过将服务总线与[虚拟网络 (VNet) 服务终结点][vnet-sep]集成可从绑定到虚拟网络的工作负荷（如虚拟机）安全地访问消息传递功能，同时在两端保护网络流量路径。
 
 配置为绑定到至少一个虚拟网络子网服务终结点后，相应的服务总线命名空间将不再接受授权虚拟网络以外的任何位置的流量。 从虚拟网络的角度来看，通过将服务总线命名空间绑定到服务终结点，可配置从虚拟网络子网到消息传递服务的独立网络隧道。
 
@@ -32,12 +23,9 @@ ms.locfileid: "61471955"
 > 实现虚拟网络时，受信任的 Microsoft 服务不受支持。
 >
 > 不适用于虚拟网络常见 Azure 方案（请注意，该列表内容并不详尽）-
-> - Azure Monitor
-> - Azure 流分析
 > - 与 Azure 事件网格的集成
 > - Azure IoT 中心路由
 > - Azure IoT Device Explorer
-> - Azure 数据资源管理器
 >
 > 以下 Microsoft 服务必须在虚拟网络中
 > - Azure 应用服务
@@ -45,10 +33,8 @@ ms.locfileid: "61471955"
 
 > [!IMPORTANT]
 > 虚拟网络仅在[高级层](service-bus-premium-messaging.md)服务总线命名空间中受支持。
-
-## <a name="enable-service-endpoints-with-service-bus"></a>在服务总线中启用服务终结点
-
-在服务总线中使用 VNet 服务终结点的一个重要考虑因素是，不应在将标准层服务总线命名空间和高级层服务总线命名空间混合使用的应用程序中启用这些终结点。 因为标准层不支持 VNet，所以终结点将被限制为仅用于高级层命名空间。
+> 
+> 在服务总线中使用 VNet 服务终结点时，不应在将标准层服务总线命名空间和高级层服务总线命名空间混合使用的应用程序中启用这些终结点。 原因是标准层不支持 VNet。 此终结点仅限于高级层命名空间。
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>通过 VNet 集成启用的高级安全方案 
 
@@ -62,12 +48,36 @@ ms.locfileid: "61471955"
 
 虚拟网络规则是一种防火墙安全功能，用于控制是否允许 Azure 服务总线服务器接受来自特定虚拟网络子网的连接。
 
-将服务总线命名空间绑定到虚拟网络的过程分为两步。 首先需要在虚拟网络子网上创建“虚拟网络服务终结点”，并按照[服务终结点概述][vnet-sep]中的说明为“Microsoft.ServiceBus”启用该终结点。 添加服务终结点后，使用虚拟网络规则将服务总线命名空间绑定到该终结点。
+将服务总线命名空间绑定到虚拟网络的过程分为两步。 首先需要在虚拟网络子网上创建“虚拟网络服务终结点”，并按照[服务终结点概述][vnet-sep]中的说明为“Microsoft.ServiceBus”启用该终结点 。 添加服务终结点后，使用虚拟网络规则将服务总线命名空间绑定到该终结点。
 
 虚拟网络规则是服务总线命名空间与虚拟网络子网的关联。 存在此规则时，绑定到子网的所有工作负荷都有权访问服务总线命名空间。 服务总线本身永远不会建立出站连接，不需要获得访问权限，因此永远不会通过启用此规则来授予对子网的访问权限。
 
-### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建虚拟网络规则
+## <a name="use-azure-portal"></a>使用 Azure 门户
+本部分演示如何使用 Azure 门户添加虚拟网络服务终结点。 若要限制访问，需要集成此事件中心命名空间的虚拟网络服务终结点。
 
+1. 在 [Azure 门户](https://portal.azure.com)中，导航到“服务总线命名空间”。
+2. 在左侧菜单中选择“网络”选项。 默认情况下，“所有网络”选项处于选中状态。 命名空间接受来自任何 IP 地址的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。 
+
+    ![防火墙 - 选中了“所有网络”选项](./media/service-endpoints/firewall-all-networks-selected.png)
+1. 在页面顶部，选择“选定的网络”选项。
+2. 在页面的“虚拟网络”部分，选择“+添加现有虚拟网络” 。 
+
+    ![添加现有虚拟网络](./media/service-endpoints/add-vnet-menu.png)
+3. 从虚拟网络列表中选择虚拟网络，然后选择“子网”。 将虚拟网络添加到列表之前，必须启用服务终结点。 如果未启用服务终结点，门户将提示启用。
+   
+   ![选择子网](./media/service-endpoints/select-subnet.png)
+
+4. 为 Microsoft.ServiceBus 启用子网的服务终结点后，应显示指示启用成功的以下消息。 选择页面底部的“添加”，添加网络。 
+
+    ![选择子网并启用终结点](./media/service-endpoints/subnet-service-endpoint-enabled.png)
+
+    > [!NOTE]
+    > 如果无法使用资源管理器模板启用服务终结点，可以忽略有关缺少虚拟网络服务终结点的消息。 此功能在门户中不可用。
+6. 在工具栏上选择“保存”，保存这些设置。 等待几分钟，直到门户通知中显示确认消息。 应禁用“保存”按钮。 
+
+    ![保存网络](./media/service-endpoints/save-vnet.png)
+
+## <a name="use-resource-manager-template"></a>使用 Resource Manager 模板
 以下资源管理器模板支持向现有服务总线命名空间添加虚拟网络规则。
 
 模板参数：
@@ -83,7 +93,7 @@ ms.locfileid: "61471955"
 > ```json
 > "defaultAction": "Allow"
 > ```
-> 至
+> to
 > ```json
 > "defaultAction": "Deny"
 > ```
@@ -181,6 +191,7 @@ ms.locfileid: "61471955"
             }
           ],
           "ipRules":[<YOUR EXISTING IP RULES>],
+          "trustedServiceAccessEnabled": false,          
           "defaultAction": "Deny"
         }
       }
@@ -199,5 +210,5 @@ ms.locfileid: "61471955"
 - [Azure 服务总线 IP 筛选][ip-filtering]
 
 [vnet-sep]: ../virtual-network/virtual-network-service-endpoints-overview.md
-[lnk-deploy]: ../azure-resource-manager/resource-group-template-deploy.md
+[lnk-deploy]: ../azure-resource-manager/templates/deploy-powershell.md
 [ip-filtering]: service-bus-ip-filtering.md

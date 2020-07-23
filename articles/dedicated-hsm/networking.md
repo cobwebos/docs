@@ -2,8 +2,8 @@
 title: 网络注意事项 - Azure 专用 HSM | Microsoft Docs
 description: 适用于 Azure 专用 HSM 部署的网络注意事项概述
 services: dedicated-hsm
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
@@ -11,13 +11,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: barclayn
-ms.openlocfilehash: 042ecabe38969a6a26c27622b8c3d25193b3e7c2
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.author: mbaldwin
+ms.openlocfilehash: 06cd02177d7d5c478f3378eb05517f1a37297e92
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62118020"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84300709"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure 专用 HSM 网络
 
@@ -39,7 +38,7 @@ Azure 专用 HSM 需要高度安全的网络环境。 无论是要 Azure 云连�
 
 ### <a name="subnets"></a>子网
 
-子网将部署资源的虚拟网络分段成可由 Azure 资源使用的独立地址空间。 专用 HSM 部署在虚拟网络的子网中。 客户子网中部署的每个专用 HSM 设备将从此子网接收专用 IP 地址。 需将部署 HSM 设备的子网显式委托给服务：Microsoft.HardwareSecurityModules/dedicatedHSMs。 这会向 HSM 服务授予特定的权限，使其可部署到该子网中。 专用 HSM 委托会对子网施加特定的策略限制。 委托的子网目前不支持网络安全组 (NSG) 和用户定义的路由 (UDR)。 因此，将某个子网委托给专用 HSM 后，该子网只可用于部署 HSM 资源。 将其他任何客户资源部署到该子网都会失败。
+子网将部署资源的虚拟网络分段成可由 Azure 资源使用的独立地址空间。 专用 HSM 部署在虚拟网络的子网中。 客户子网中部署的每个专用 HSM 设备将从此子网接收专用 IP 地址。 需将部署 HSM 设备的子网显式委托给服务 Microsoft.HardwareSecurityModules/dedicatedHSMs。 这会向 HSM 服务授予特定的权限，使其可部署到该子网中。 专用 HSM 委托会对子网施加特定的策略限制。 委托的子网目前不支持网络安全组 (NSG) 和用户定义的路由 (UDR)。 因此，将某个子网委托给专用 HSM 后，该子网只可用于部署 HSM 资源。 将其他任何客户资源部署到该子网都会失败。
 
 
 ### <a name="expressroute-gateway"></a>ExpressRoute 网关
@@ -60,7 +59,7 @@ Azure 专用 HSM 需要高度安全的网络环境。 无论是要 Azure 云连�
 
 ### <a name="site-to-site-vpn"></a>站点到站点 VPN
 
-使用站点到站点虚拟专用网络可在基于 Azure 的专用 HSM 与本地 IT 之间实现安全通信。 若要执行此操作的原因让一个备份工具，以便在 HSM 内部应用程序和需要两个用于运行备份之间的连接。
+使用站点到站点虚拟专用网络可在基于 Azure 的专用 HSM 与本地 IT 之间实现安全通信。 这样做的一个原因是，在本地有一个用于 HSM 的备份设备，并且需要两个连接才能运行备份。
 
 ## <a name="connecting-virtual-networks"></a>连接虚拟网络
 
@@ -78,7 +77,7 @@ HSM 设备可以通过软件库将流量重定向到备用 HSM。 如果设备�
 
 ### <a name="cross-region-ha-using-vpn-gateway"></a>使用 VPN 网关实现跨区域的高可用性
 
-对于全局分布式应用程序或高可用性区域故障转移方案，需要跨区域连接虚拟网络。 借助 Azure 专用 HSM，可以使用一个能在两个虚拟网络之间提供安全隧道的 VPN 网关来实现高可用性。 有关使用 VPN 网关建立 VNet 到 VNet 连接的详细信息，请参阅标题为[什么是 VPN 网关？](../vpn-gateway/vpn-gateway-about-vpngateways.md#V2V)的文章
+对于全局分布式应用程序或高可用性区域故障转移方案，需要跨区域连接虚拟网络。 借助 Azure 专用 HSM，可以使用一个能在两个虚拟网络之间提供安全隧道的 VPN 网关来实现高可用性。 有关使用 VPN 网关建立 VNet 到 VNet 连接的详细信息，请参阅标题为[什么是 VPN 网关？](../vpn-gateway/design.md#V2V)的文章
 
 > [!NOTE]
 > 目前，全局 VNet 对等互连在使用专用 HSM 的跨区域连接方案中不可用，为此应改用 VPN 网关。 
@@ -87,9 +86,9 @@ HSM 设备可以通过软件库将流量重定向到备用 HSM。 如果设备�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [常见问题](faq.md)
+- [常见问题解答](faq.md)
 - [可支持性](supportability.md)
-- [高可用性](high-availability.md)
+- 高可用性
 - [物理安全性](physical-security.md)
-- [监视](monitoring.md)
+- [Monitoring](monitoring.md)
 - [部署体系结构](deployment-architecture.md)

@@ -1,27 +1,20 @@
 ---
-title: 教程 - 使用 Azure PowerShell 在规模集中安装应用程序 | Microsoft Docs
+title: 教程 - 使用 Azure PowerShell 在规模集中安装应用程序
 description: 了解如何使用自定义脚本扩展通过 Azure PowerShell 将应用程序安装到虚拟机规模集中
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ju-shim
+ms.author: jushiman
 ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: powershell
 ms.date: 11/08/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 4c6216f3dff3cbf4c8d838810c4dd786f1c34ec1
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 999a869ec30316a330413f309e1e7431d92fac9f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66728654"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195929"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-azure-powershell"></a>教程：使用 Azure PowerShell 在虚拟机规模集中安装应用程序
 
@@ -32,7 +25,7 @@ ms.locfileid: "66728654"
 > * 使用 Azure 自定义脚本扩展
 > * 更新规模集中运行的应用程序
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -109,10 +102,6 @@ Update-AzVmss `
 若要允许访问基本的 Web 应用程序，请使用 [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) 和 [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) 创建网络安全组。 有关详细信息，请参阅 [Azure 虚拟机规模集的网络](virtual-machine-scale-sets-networking.md)。
 
 ```azurepowershell-interactive
-# Get information about the scale set
-$vmss = Get-AzVmss `
-            -ResourceGroupName "myResourceGroup" `
-            -VMScaleSetName "myScaleSet"
 
 #Create a rule to allow traffic over port 80
 $nsgFrontendRule = New-AzNetworkSecurityRuleConfig `
@@ -147,11 +136,6 @@ $frontendSubnetConfig = Set-AzVirtualNetworkSubnetConfig `
 
 Set-AzVirtualNetwork -VirtualNetwork $vnet
 
-# Update the scale set and apply the Custom Script Extension to the VM instances
-Update-AzVmss `
-    -ResourceGroupName "myResourceGroup" `
-    -Name "myScaleSet" `
-    -VirtualMachineScaleSet $vmss
 ```
 
 
@@ -167,7 +151,7 @@ Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select IpAddress
 
 ![IIS 中的基本网页](media/tutorial-install-apps-powershell/running-iis.png)
 
-将 Web 浏览器保持打开，以便在下一步骤中可以看到更新的版本。
+让 Web 浏览器保持打开状态，以便在下一步骤中可以看到更新的版本。
 
 
 ## <a name="update-app-deployment"></a>更新应用部署

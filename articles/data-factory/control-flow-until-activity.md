@@ -1,25 +1,26 @@
 ---
-title: Azure 数据工厂中的 Until 活动 | Microsoft 文档
+title: Azure 数据工厂中的 Until 活动
 description: Until 活动将在循环中执行一组活动，直到与活动相关联的条件的计算结果为 true 或超时。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-ms.openlocfilehash: 5a053ab213390a12c5d2051a802a1fa98279c344
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 63873a4f8301d3cb20488b02b32200f476922276
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66155173"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81417940"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Until 活动
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Until 活动提供的功能与 do-until 循环结构以编程语言提供的功能相同。 它在循环中将执行一组活动，直到与活动相关联的条件的计算结果为 true。 你可以在数据工厂中为 Until 活动指定超时值。 
 
 ## <a name="syntax"></a>语法
@@ -52,13 +53,13 @@ Until 活动提供的功能与 do-until 循环结构以编程语言提供的功�
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 需要
+properties | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
-name | `Until` 活动的名称。 | String | “是”
-类型 | 必须设置为 Until。 | String | “是”
-表达式 | 计算结果必须为 true 或 false 的表达式 | 表达式。  | “是”
-timeout | 此处在指定的时间之后 do-until 循环超时。 | 字符串。 `d.hh:mm:ss` 或 `hh:mm:ss` 默认值为 7 天。 最大值为：90 天。 | “否”
-活动 | 在表达式计算结果为 `true` 前将执行的活动集。 | 活动数组 |  “是”
+name | `Until` 活动的名称。 | String | 是
+type | 必须设置为 Until  。 | String | 是
+表达式 | 计算结果必须为 true 或 false 的表达式 | 表达式。  | 是
+timeout | 此处在指定的时间之后 do-until 循环超时。 | 字符串。 `d.hh:mm:ss` 或 `hh:mm:ss` 默认值为 7 天。 最大值为 90 天。 | 否
+活动 | 在表达式计算结果为 `true` 前将执行的活动集。 | 活动数组 |  是
 
 ## <a name="example-1"></a>示例 1
 
@@ -66,7 +67,7 @@ timeout | 此处在指定的时间之后 do-until 循环超时。 | 字符串。
 > 本部分提供运行管道的 JSON 定义和示例 PowerShell 命令。 有关使用 Azure PowerShell 和 JSON 定义创建数据工厂管道的分步说明演练，请参阅[教程：使用 Azure PowerShell 创建数据工厂](quickstart-create-data-factory-powershell.md)。
 
 ### <a name="pipeline-with-until-activity"></a>包含 Until 活动的管道
-在此示例中，管道包含两个活动：**Until** 和 **Wait**。 在循环中运行 Web 活动之前，Wait 活动会等待指定的期间。 若要了解数据工厂中的表达式和函数，请参阅[表达式语言和函数](control-flow-expression-language-functions.md)。 
+在此示例中，管道具有两个活动：**Until** 和 **Wait**。 在循环中运行 Web 活动之前，Wait 活动会等待指定的期间。 若要了解数据工厂中的表达式和函数，请参阅[表达式语言和函数](control-flow-expression-language-functions.md)。 
 
 ```json
 {
@@ -200,17 +201,14 @@ timeout | 此处在指定的时间之后 do-until 循环超时。 | 字符串。
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>"
         }
     }
 }
 ```
 
 ### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>参数化的 Azure Blob 数据集 (BlobDataset.json)
-管道将 folderPath 设置为管道参数 outputPath1 或 outputPath2 的值。 
+管道将 folderPath  设置为管道参数 outputPath1  或 outputPath2  的值。 
 
 ```json
 {

@@ -1,40 +1,28 @@
 ---
-title: Azure Service Fabric 容器和服务的资源治理 | Microsoft Docs
+title: 容器和服务的资源调控
 description: Azure Service Fabric 允许指定在容器内部或外部运行的服务的资源限制。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/9/2017
-ms.author: aljo, subramar
-ms.openlocfilehash: e011554e61411fddca034f024c30c2270593e07b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 11ca6e29829d911717a829b3e4dee0a190856a52
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60772529"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81115149"
 ---
 # <a name="resource-governance"></a>资源调控
 
-在同一节点或群集上运行多个服务时，其中一个服务可能会占用更多资源，导致相应流程中的其他服务缺少资源。 这种问题称为“邻近干扰”问题。 借助 Azure Service Fabric，开发者可以为每个服务指定资源保留和限制，从而保证并限制资源使用。
+在同一节点或群集上运行多个服务时，其中一个服务可能会占用更多资源，导致相应流程中的其他服务缺少资源。 这种问题称为“邻近干扰”问题。 借助 Azure Service Fabric，开发者可以为每个服务指定资源预留和限制，从而保证并限制资源使用。
 
 > 继续阅读本文之前，建议先熟悉 [Service Fabric 应用程序模型](service-fabric-application-model.md)和 [Service Fabric 托管模型](service-fabric-hosting-model.md)。
 >
 
 ## <a name="resource-governance-metrics"></a>资源调控指标
 
-根据[服务包](service-fabric-application-model.md)，Service Fabric 支持资源治理。 可以在代码包之间进一步划分分配到服务包的资源。 指定的资源限制也意味着资源保留。 Service Fabric 支持使用两个内置[指标](service-fabric-cluster-resource-manager-metrics.md)，为每个服务包指定 CPU 和内存：
+根据[服务包](service-fabric-application-model.md)，Service Fabric 支持资源治理。 可以在代码包之间进一步划分分配到服务包的资源。 指定的资源限制也意味着资源预留。 Service Fabric 支持使用两个内置[指标](service-fabric-cluster-resource-manager-metrics.md)，为每个服务包指定 CPU 和内存：
 
-* *CPU*（指标名称 `servicefabric:/_CpuCores`）：主机计算机上可用的逻辑内核。 所有节点上的全部内核都进行了相同的加权。
+* *CPU*（指标名称 `servicefabric:/_CpuCores`）：主机计算机上可用的逻辑核心。 所有节点上的全部内核都进行了相同的加权。
 
-* *内存*（指标名称 `servicefabric:/_MemoryInMB`）：内存以 MB 为单位，映射到计算机上可用的物理内存。
+* *内存*（指标名称 `servicefabric:/_MemoryInMB`）：内存以 MB 表示，并映射到计算机上可用的物理内存。
 
 对于这两个指标，[群集资源管理器](service-fabric-cluster-resource-manager-cluster-description.md)跟踪总群集容量、群集中每个节点上的负载以及群集中剩余的资源。 这两个指标等同于其他任何用户指标或自定义指标。 现有全部功能都可以与它们结合使用：
 
@@ -42,11 +30,12 @@ ms.locfileid: "60772529"
 * 群集可根据这两个指标进行[碎片整理](service-fabric-cluster-resource-manager-defragmentation-metrics.md)。
 * [描述群集](service-fabric-cluster-resource-manager-cluster-description.md)时，可为这两个指标设置缓冲容量。
 
-这些指标不支持[动态负载报告](service-fabric-cluster-resource-manager-metrics.md)，在创建时即定义了这些指标的负载。
+> [!NOTE]
+> 这些指标不支持[动态负载报告](service-fabric-cluster-resource-manager-metrics.md)；在创建时即定义了这些指标的负载。
 
 ## <a name="resource-governance-mechanism"></a>资源治理机制
 
-Service Fabric 运行时当前不提供资源保留。 当进程或容器打开时，运行时就会将资源限制设置为创建时定义的负载。 此外，如果资源超额，运行时还会拒绝打开新服务包。 为了更好地理解此过程的工作原理，请以下面包含两个 CPU 内核的节点为例（等同于内存治理机制）：
+Service Fabric 运行时当前不提供资源预留。 当进程或容器打开时，运行时就会将资源限制设置为创建时定义的负载。 此外，如果资源超额，运行时还会拒绝打开新服务包。 为了更好地理解此过程的工作原理，请以下面包含两个 CPU 内核的节点为例（等同于内存治理机制）：
 
 1. 首先，在节点上放置一个需要一个 CPU 内核的容器。 运行时打开此容器，并将 CPU 限制设置为一个内核。 此容器无法使用多个内核。
 
@@ -56,9 +45,9 @@ Service Fabric 运行时当前不提供资源保留。 当进程或容器打开�
 
 不过，在两种情况下，其他进程可能会争用 CPU。 在这种情况下，示例中的进程和容器可能会遇到邻近干扰问题：
 
-* *混用治理和非治理服务和容器*：如果用户创建服务时没有指定任何资源治理，运行时将它视为不占用任何资源，能够将它放置在示例中的节点上。 在这种情况下，这一新进程实际上会占用部分 CPU，占用的是已在节点上运行的服务的份额。 此问题有两种解决方案。 在同一群集中不混用治理和非治理服务，或使用[放置约束](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)，阻止这两种类型的服务最终位于同一组节点上。
+* *混用调控和非调控服务与容器*：如果用户创建服务时没有指定任何资源治理，运行时将它视为不占用任何资源，能够将它放置在示例中的节点上。 在这种情况下，这一新进程实际上会占用部分 CPU，占用的是已在节点上运行的服务的份额。 此问题有两种解决方案。 在同一群集中不混用治理和非治理服务，或使用[放置约束](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)，阻止这两种类型的服务最终位于同一组节点上。
 
-* *其他进程在 Service Fabric 外的节点上启动（例如，OS 服务）*：在这种情况下，Service Fabric 外的进程也会与现有服务争用 CPU。 此问题的解决方案是，考虑 OS 开销以正确设置节点容量，如下一部分中所示。
+* *其他进程在 Service Fabric 外的节点上启动（例如 OS 服务）* ：在这种情况下，Service Fabric 外的进程也会与现有服务争用 CPU。 此问题的解决方案是，考虑 OS 开销以正确设置节点容量，如下一部分中所示。
 
 ## <a name="cluster-setup-for-enabling-resource-governance"></a>启用资源治理所需的群集设置
 
@@ -76,7 +65,7 @@ Service Fabric 运行时当前不提供资源保留。 当进程或容器打开�
 </Section>
 ```
 
-如果需要完全手动设置节点容量，可以使用常规机制来描述群集中的节点。 下面的示例展示了如何设置有四个内核和 2GB 内存的节点：
+对于大多数客户和方案，建议配置为自动检测 CPU 和内存的节点容量（默认情况下自动检测已启用）。 但是，如果需要完全手动设置节点容量，则可以使用用于描述群集中节点的机制按节点类型进行配置。 下面的示例展示了如何设置具有四个核心和 2GB 内存的节点类型：
 
 ```xml
     <NodeType Name="MyNodeType">
@@ -110,6 +99,18 @@ Service Fabric 运行时当前不提供资源保留。 当进程或容器打开�
 </Section>
 ```
 
+> [!IMPORTANT]
+> 从 Service Fabric version 7.0 开始，我们更新了在用户手动提供节点资源容量值的情况下，节点资源容量的规则计算方法。 让我们考虑以下这种情况：
+>
+> * 节点上总共有 10 个 CPU 核心数
+> * SF 配置为使用用户服务总资源的 80%（默认设置），这将为节点上运行的其他服务（包括 Service Fabric 系统服务）保留 20% 的缓冲区
+> * 用户决定手动覆盖 CPU 核心数指标的节点资源容量，并将其设置为 5 个核心
+>
+> 我们已更改了关于 Service Fabric 用户服务可用容量的规则计算方式，内容如下：
+>
+> * 在 Service Fabric 7.0 之前，用户服务的可用容量将计算为 5 个核心数（忽略 20% 的容量缓冲区）
+> * 从 Service Fabric 7.0 开始，用户服务的可用容量将计算为 4 个核心数（不忽略 20% 的容量缓冲区）
+
 ## <a name="specify-resource-governance"></a>指定资源治理
 
 应用程序清单（ServiceManifestImport 部分）中指定了资源调控限制，如以下示例所示：
@@ -135,13 +136,13 @@ Service Fabric 运行时当前不提供资源保留。 当进程或容器打开�
 
 在此示例中，服务包 ServicePackageA 在驻留的节点上拥有一个内核的资源。 此服务包有两个代码包（CodeA1 和 CodeA2），并且都指定了 `CpuShares` 参数。 CpuShares 512:256 的比例将核心划分到两个代码包中。
 
-因此，在此示例中，CodeA1 分得三分之二个内核，CodeA2 分得三分之一个内核（和相同的软保证保留）。 如果没有为代码包指定 CpuShares，Service Fabric 会在这两个代码包之间平分内核。
+因此，在此示例中，CodeA1 分得三分之二个内核，CodeA2 分得三分之一个内核（和相同的软保证预留）。 如果没有为代码包指定 CpuShares，Service Fabric 会在这两个代码包之间平分内核。
 
-内存限制是绝对的，所以这两个代码包都限制为 1024 MB 内存（和相同的软保证保留）。 代码包（容器或进程）无法分配到超出此限制的内存。如果尝试这样做，则会抛出内存不足异常。 若要强制执行资源限制，服务包中的所有代码包均应指定内存限制。
+内存限制是绝对的，所以这两个代码包都限制为 1024 MB 内存（和相同的软保证预留）。 代码包（容器或进程）无法分配到超出此限制的内存。如果尝试这样做，则会抛出内存不足异常。 若要强制执行资源限制，服务包中的所有代码包均应指定内存限制。
 
 ### <a name="using-application-parameters"></a>使用应用程序参数
 
-指定资源调控时，可使用[应用程序参数](service-fabric-manage-multiple-environment-app-configuration.md)管理多个应用配置。 下例展示应用程序参数的用法：
+指定资源调控设置时，可使用[应用程序参数](service-fabric-manage-multiple-environment-app-configuration.md)管理多个应用配置。 下例展示应用程序参数的用法：
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
@@ -186,14 +187,35 @@ Service Fabric 运行时当前不提供资源保留。 当进程或容器打开�
 >
 > 使用应用程序参数指定资源调控时，Service Fabric 无法降级到 6.1 之前的版本。
 
+## <a name="enforcing-the-resource-limits-for-user-services"></a>强制执行用户服务的资源限制
+
+虽然将资源治理应用于 Service Fabric 服务可以确保这些受治理资源服务不超过其资源配额，但许多用户仍然需要以非治理模式运行某些 Service Fabric 服务。 使用非治理 Service Fabric 服务时，可能会遇到“失控”的非治理服务消耗 Service Fabric 节点上所有可用资源的情况，这可能会导致严重的问题，例如：
+
+* 节点上运行的其他服务（包括 Service Fabric 系统服务）的资源不足
+* 节点以不正常状态结束
+* 群集管理 API Service Fabric 无响应
+
+为了防止发生这些情况，Service Fabric 允许你对节点上运行的所有 Service Fabric 用户服务（受治理和未受治理）实施资源限制，以确保用户服务永远不会使用超过指定数量的资源 ** 。 此限制可通过将 ClusterManifest 的 PlacementAndLoadBalancing 部分中的 EnforceUserServiceMetricCapacities 配置的值设置为 true 来实现。 默认情况下，此设置处于关闭状态。
+
+```xml
+<SectionName="PlacementAndLoadBalancing">
+    <ParameterName="EnforceUserServiceMetricCapacities" Value="false"/>
+</Section>
+```
+
+其他备注：
+
+* 资源限制强制仅适用于 `servicefabric:/_CpuCores` 和 `servicefabric:/_MemoryInMB` 资源指标
+* 仅当资源指标的节点容量可用于 Service Fabric 时，资源限制强制实施才会起作用，可以通过自动检测机制，也可以通过用户手动指定节点容量（如[启用资源治理的群集设置](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance)部分所述）。 如果未配置节点容量，则无法使用资源限制强制实施功能，因为 Service Fabric 不知道要为用户服务保留多少资源。 如果“EnforceUserServiceMetricCapacities”为 true 但未配置节点容量，则 Service Fabric 将发出运行状况警告。
+
 ## <a name="other-resources-for-containers"></a>容器的其他资源
 
 除了 CPU 和内存之外，还可以为容器指定其他资源限制。 这些限制是在代码包一级指定，并在容器启动时应用。 这些资源与 CPU 和内存不同，群集资源管理器不会注意到它们，也不会针对它们进行任何容量检查或负载均衡。
 
 * *MemorySwapInMB*：容器可使用的交换内存量。
-* *MemoryReservationInMB*：内存治理软限制，仅当在节点上检测到内存争用时，才强制执行此限制。
+* *MemoryReservationInMB*：内存调控软限制，仅当在节点上检测到内存争用时才强制执行此限制。
 * *CpuPercent*：容器可使用的 CPU 百分比。 如果为服务包指定了 CPU 限制，将有效忽略此参数。
-* *MaximumIOps*：容器可使用（读取和写入）的最大 IOPS。
+* *MaximumIOps*：容器可使用的最大 IOPS（读取和写入）。
 * *MaximumIOBytesps*：容器可使用（读取和写入）的最大 IO（字节/秒）。
 * *BlockIOWeight*：相对于其他容器的块 IO 权重。
 

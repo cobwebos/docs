@@ -3,24 +3,23 @@ title: 分析 Azure 网络安全组流日志 - Graylog | Microsoft Docs
 description: 了解如何在 Azure 中使用网络观察程序与 Graylog 来管理和分析网络安全组流日志。
 services: network-watcher
 documentationcenter: na
-author: mattreatMSFT
-manager: vitinnan
+author: damendo
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
-ms.author: mareat
-ms.openlocfilehash: a5fadcfce154740a79a8764f44f08b21ad18f4d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: damendo
+ms.openlocfilehash: 7a4aa4cc545d6941f144ce0657ede7199d4f8f57
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60625157"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497108"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>在 Azure 中使用网络观察程序与 Graylog 来管理和分析网络安全组流日志
 
@@ -178,20 +177,20 @@ sudo ./logstash-plugin install logstash-input-azureblob
 
 1. 使用针对 Graylog 服务器 Web 界面配置的 URL 导航到该界面。 可以通过将浏览器定向到 `http://<graylog-server-ip>:9000/` 来访问该界面
 
-2. 若要导航到配置页，请在顶部导航栏的右侧选择“系统”下拉菜单，并单击“输入”。
+2. 若要导航到配置页，请在顶部导航栏的右侧选择“系统”下拉菜单，并单击“输入”。********
    或者导航到 `http://<graylog-server-ip>:9000/system/inputs`
 
    ![入门](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
 
-3. 若要启动新输入，请在“选择输入”下拉列表中选择“GELF UDP”，并填写表单。 GELF 是“Graylog 扩展日志格式”(Graylog Extended Log Format) 的缩写。 GELF 格式由 Graylog 开发。 若要详细了解此格式的优点，请参阅 Graylog [文档](https://docs.graylog.org/en/2.2/pages/gelf.html)。
+3. 若要启动新输入，请在“选择输入”下拉列表中选择“GELF UDP”，并填写表单。****** GELF 是“Graylog 扩展日志格式”(Graylog Extended Log Format) 的缩写。 GELF 格式由 Graylog 开发。 若要详细了解此格式的优点，请参阅 Graylog [文档](https://docs.graylog.org/en/2.2/pages/gelf.html)。
 
    确保将输入绑定到配置 Graylog 服务器的 IP。 IP 地址应与 Logstash 配置文件 UDP 输出中的 **host** 字段匹配。 默认端口应是 *12201*。 确保端口与 Logstash 配置文件中指定的 UDP 输出中的 **port** 字段匹配。
 
    ![输入](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
 
-   启动输入后，应会看到它显示在“本地输入”部分中，如下图所示：
+   启动输入后，应会看到它显示在“本地输入”部分中，如下图所示：****
 
-   ![](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
+   ![屏幕截图，显示包含已启动的输入的 "本地输入" 部分。](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
 
    若要详细了解 Graylog 消息输入，请参阅[文档](https://docs.graylog.org/en/2.2/pages/sending_data.html#what-are-graylog-message-inputs)。
 
@@ -199,7 +198,7 @@ sudo ./logstash-plugin install logstash-input-azureblob
 
 ### <a name="search-through-graylog-messages"></a>搜索整个 Graylog 消息
 
-等待一段时间让 Graylog 服务器收集消息后，可以搜索整个消息。 若要检查正在发送到 Graylog 服务器的消息，请在“输入”配置页中，单击所创建的 GELF UDP 输入的“显示收到的消息”按钮。 随后会定向到如下图所示的屏幕： 
+等待一段时间让 Graylog 服务器收集消息后，可以搜索整个消息。 若要检查正在发送到 Graylog 服务器的消息，请在“输入”配置页中，单击所创建的 GELF UDP 输入的“显示收到的消息”按钮。******** 随后会定向到如下图所示的屏幕： 
 
 ![直方图](./media/network-watcher-analyze-nsg-flow-logs-graylog/histogram.png)
 
@@ -215,25 +214,25 @@ sudo ./logstash-plugin install logstash-input-azureblob
 
 ### <a name="create-a-dashboard"></a>创建仪表板
 
-1. 在顶部导航栏中，选择“仪表板”或导航到 `http://<graylog-server-ip>:9000/dashboards/`
+1. 在顶部导航栏中，选择“仪表板”或导航到 `http://<graylog-server-ip>:9000/dashboards/`****
 
-2. 在此处，请单击绿色的“创建仪表板”按钮，并在简短表单中填写仪表板的标题和说明。 单击“保存”按钮创建新仪表板。 随后会出现如下图所示的仪表板：
+2. 在此处，请单击绿色的“创建仪表板”按钮，并在简短表单中填写仪表板的标题和说明。**** 单击“保存”按钮创建新仪表板。**** 随后会出现如下图所示的仪表板：
 
     ![仪表板](./media/network-watcher-analyze-nsg-flow-logs-graylog/dashboards.png)
 
 ### <a name="add-widgets"></a>添加小组件
 
-可以单击仪表板的标题来查看该仪表板，但目前它是空的，因为尚未添加任何小组件。 可添加到仪表板中的简易且有用的小组件类型是“快速值”图表，其中显示所选字段的值列表及其分布。
+可以单击仪表板的标题来查看该仪表板，但目前它是空的，因为尚未添加任何小组件。 可添加到仪表板中的简易且有用的小组件类型是“快速值”图表，其中显示所选字段的值列表及其分布。****
 
-1. 在顶部导航栏中选择“搜索”，导航回到接收流日志的 UDP 输入的搜索结果。
+1. 在顶部导航栏中选择“搜索”，导航回到接收流日志的 UDP 输入的搜索结果。****
 
-2. 在屏幕左侧的“搜索结果”窗格下，找到“字段”选项卡，其中列出了每个传入流元组消息的各个字段。
+2. 在屏幕左侧的“搜索结果”窗格下，找到“字段”选项卡，其中列出了每个传入流元组消息的各个字段。********
 
-3. 选择要从中进行可视化的任何所需参数（本示例选择了 IP 源）。 若要显示可能的小组件列表，请单击字段左侧的蓝色下拉箭头，并选择“快速值”生成小组件。 应会看到下图所示的内容：
+3. 选择要从中进行可视化的任何所需参数（本示例选择了 IP 源）。 若要显示可能的小组件列表，请单击字段左侧的蓝色下拉箭头，并选择“快速值”生成小组件。**** 应会看到下图所示的内容：
 
-   ![Source IP](./media/network-watcher-analyze-nsg-flow-logs-graylog/srcip.png)
+   ![源 IP](./media/network-watcher-analyze-nsg-flow-logs-graylog/srcip.png)
 
-4. 在此处，可以选择小组件右上角的“添加到仪表板”按钮，并选择要添加的相应仪表板。
+4. 在此处，可以选择小组件右上角的“添加到仪表板”按钮，并选择要添加的相应仪表板。****
 
 5. 导航回到仪表板可以看到刚刚添加的小组件。
 

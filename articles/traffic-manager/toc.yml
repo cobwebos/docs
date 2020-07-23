@@ -10,6 +10,8 @@
       href: quickstart-create-traffic-manager-profile.md
     - name: 创建流量管理器配置文件 - PowerShell
       href: quickstart-create-traffic-manager-profile-powershell.md
+    - name: 创建流量管理器配置文件 - Azure CLI
+      href: quickstart-create-traffic-manager-profile-cli.md
 - name: 教程
   items:
     - name: 路由流量以降低延迟
@@ -57,7 +59,7 @@
       href: traffic-manager-how-it-works.md
     - name: 常见问题解答
       href: traffic-manager-FAQs.md
-- name: 如何
+- name: 操作方式
   items:
     - name: 在流量管理器中配置性能路由
       href: traffic-manager-configure-performance-routing-method.md
@@ -81,17 +83,23 @@
       href: traffic-manager-load-balancing-azure.md
     - name: 测量流量管理器性能
       href: traffic-manager-performance-considerations.md
-    - name: 启用诊断日志
+    - name: 启用资源日志
       href: traffic-manager-diagnostic-logs.md
     - name: 使用 Azure PowerShell 管理流量管理器
       href: traffic-manager-powershell-arm.md
     - name: 将 Internet 域指向流量管理器
       href: traffic-manager-point-internet-domain.md
-    - name: 故障排除
+    - name: 子网替代
+      items:
+        - name: 配置子网替代 - Azure CLI
+          href: traffic-manager-subnet-override-cli.md
+        - name: 配置子网替代 - PowerShell
+          href: traffic-manager-subnet-override-powershell.md
+    - name: 疑难解答
       items:
         - name: 排查 Azure 流量管理器中出现降级状态的问题
           href: traffic-manager-troubleshooting-degraded.md
-- name: 引用
+- name: 参考
   items:
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?service=traffic-manager'
@@ -106,33 +114,25 @@
     - name: Ruby
       href: 'https://www.rubydoc.info/gems/azure_mgmt_traffic_manager'
     - name: Python
-      href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-trafficmanager.html'
+      href: 'https://azure.github.io/azure-sdk-for-python/ref/Traffic-Manager.html'
     - name: REST
       href: 'https://msdn.microsoft.com/library/mt163667.aspx'
     - name: 资源管理器模板
       href: /azure/templates/microsoft.network/trafficmanagerprofiles
-- name: 相关内容
-  items:
-    - name: 应用程序网关
-      href: /azure/application-gateway/
-    - name: 负载均衡器
-      href: /azure/load-balancer/
-    - name: Azure DNS
-      href: /azure/dns/
 - name: 资源
   items:
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 博客
       href: 'https://azure.microsoft.com/blog/topics/networking/'
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/traffic-manager/'
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 服务限制
-      href: '../azure-subscription-service-limits.md#traffic-manager-limits'
+      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#traffic-manager-limits'
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=traffic-manager'
     - name: SLA

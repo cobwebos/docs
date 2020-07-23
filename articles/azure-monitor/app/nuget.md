@@ -1,21 +1,14 @@
 ---
-title: Azure Application Insights - 依赖项自动收集 | Microsoft Docs
-description: Application Insights 自动收集和可视化依赖项
-services: application-insights
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+title: Azure Monitor Application Insights NuGet 包
+description: 用于 ASP.NET、ASP.NET Core、Python 的 Azure Monitor Application Insights NuGet 包列表
 ms.topic: reference
 ms.date: 10/16/2018
-ms.author: mbullwin
-ms.openlocfilehash: 3ad2f4788a765366066023724772f5432d0d56eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 91b48aee64a6b6942719f7f4abfb444b894c728e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60699199"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807156"
 ---
 # <a name="application-insights-nuget-packages"></a>Application Insights NuGet 包
 
@@ -25,24 +18,40 @@ ms.locfileid: "60699199"
 
 | 包名称 | 稳定版本 | 描述 | 下载 |
 |-------------------------------|-----------------------|------------|----|
-| Microsoft.ApplicationInsights | 2.8.0 | 提供用于所有 Application Insights 遥测类型传输的核心功能，且作为所有其他 Application Insights 包的依赖包 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
+| Microsoft.ApplicationInsights | 2.12.0 | 提供用于所有 Application Insights 遥测类型传输的核心功能，且作为所有其他 Application Insights 包的依赖包 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
 |Microsoft.ApplicationInsights.Agent.Intercept | 2.4.0 | 可拦截方法调用 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent.Intercept/) |
-| Microsoft.ApplicationInsights.DependencyCollector | 2.8.0 | 适用于 .NET 应用程序的 Application Insights 依赖项收集器。 这是一个用于 Application Insights 平台专用包的依赖包，可自动收集依赖项遥测数据。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) |
-| Microsoft.ApplicationInsights.PerfCounterCollector | 2.8.0 | Application Insights 性能计数器，可用于将性能收集器收集的数据发送到 Application Insights。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) |
-| Microsoft.ApplicationInsights.Web | 2.8.0 | 适用于 .NET Web 应用程序的 Application Insights | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) |
-| Microsoft.ApplicationInsights.WindowsServer | 2.8.0 | Application Insights Windows Server NuGet 包可自动收集 .NET 应用程序的 Application Insights 遥测数据。 此包可用作 Application Insights 平台专用包的依赖包，也可用作平台专用包未涵盖的 .NET 应用程序独立包（例如用于 .NET 辅助角色的包）。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)  
-| Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel | 2.8.0 | 向 Application Insights Windows Server SDK 提供遥测渠道，此 SDK 将保留脱机方案中的遥测数据。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
+| Microsoft.ApplicationInsights.DependencyCollector | 2.12.0 | 适用于 .NET 应用程序的 Application Insights 依赖项收集器。 这是一个用于 Application Insights 平台专用包的依赖包，可自动收集依赖项遥测数据。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) |
+| Microsoft.ApplicationInsights.PerfCounterCollector | 2.12.0 | Application Insights 性能计数器，可用于将性能收集器收集的数据发送到 Application Insights。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) |
+| Microsoft.ApplicationInsights.Web | 2.12.0 | 适用于 .NET Web 应用程序的 Application Insights | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) |
+| Microsoft.ApplicationInsights.WindowsServer | 2.12.0 | Application Insights Windows Server NuGet 包可自动收集 .NET 应用程序的 Application Insights 遥测数据。 此包可用作 Application Insights 平台专用包的依赖包，也可用作平台专用包未涵盖的 .NET 应用程序独立包（例如用于 .NET 辅助角色的包）。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)  
+| Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel | 2.12.0 | 向 Application Insights Windows Server SDK 提供遥测渠道，此 SDK 将保留脱机方案中的遥测数据。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
 
 ## <a name="common-packages-for-aspnet-core"></a>适用于 ASP.NET Core 的常用包
 
 | 包名称 | 稳定版本 | 描述 | 下载 |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft.ApplicationInsights.AspNetCore | 2.5.0 | 适用于 ASP.NET Core Web 应用程序的 Application Insights。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/) |
-| Microsoft.ApplicationInsights | 2.8.0 | 此包提供用于所有 Application Insights 遥测类型传输的核心功能，且作为所有其他 Application Insights 包的依赖包 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
-| Microsoft.ApplicationInsights.DependencyCollector | 2.8.0 | 适用于 .NET 应用程序的 Application Insights 依赖项收集器。 这是一个用于 Application Insights 平台专用包的依赖包，可自动收集依赖项遥测数据。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) |
-| Microsoft.ApplicationInsights.PerfCounterCollector | 2.8.0 | Application Insights 性能计数器，可用于将性能收集器收集的数据发送到 Application Insights。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) |
-| Microsoft.ApplicationInsights.WindowsServer | 2.8.0 | Application Insights Windows Server NuGet 包可自动收集 .NET 应用程序的 Application Insights 遥测数据。 此包可用作 Application Insights 平台专用包的依赖包，也可用作平台专用包未涵盖的 .NET 应用程序独立包（例如用于 .NET 辅助角色的包）。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)  |
-| Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel | 2.8.0 | 向 Application Insights Windows Server SDK 提供遥测渠道，此 SDK 将保留脱机方案中的遥测数据。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
+| Microsoft.ApplicationInsights | 2.12.0 | 此包提供用于所有 Application Insights 遥测类型传输的核心功能，且作为所有其他 Application Insights 包的依赖包 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
+| Microsoft.ApplicationInsights.DependencyCollector | 2.12.0 | 适用于 .NET 应用程序的 Application Insights 依赖项收集器。 这是一个用于 Application Insights 平台专用包的依赖包，可自动收集依赖项遥测数据。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) |
+| Microsoft.ApplicationInsights.PerfCounterCollector | 2.12.0 | Application Insights 性能计数器，可用于将性能收集器收集的数据发送到 Application Insights。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) |
+| Microsoft.ApplicationInsights.WindowsServer | 2.12.0 | Application Insights Windows Server NuGet 包可自动收集 .NET 应用程序的 Application Insights 遥测数据。 此包可用作 Application Insights 平台专用包的依赖包，也可用作平台专用包未涵盖的 .NET 应用程序独立包（例如用于 .NET 辅助角色的包）。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)  |
+| Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel | 2.12.0 | 向 Application Insights Windows Server SDK 提供遥测渠道，此 SDK 将保留脱机方案中的遥测数据。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
+
+## <a name="common-packages-for-python-using-opencensus"></a>使用 OpenCensus 的通用 Python 包
+| 包名称 | 稳定版本 | 描述 | 下载 |
+|-------------------------------|-----------------------|------------|----|
+| opencensus-ext-azure | 1.0.0 | Application Insights，用于通过 OpenCensus 为 Azure Monitor 提供数据的 Python 应用程序。 | [下载包](https://pypi.org/project/opencensus-ext-azure/) |
+| opencensus-ext-django | 0.7.2 | 此包提供与 Python [django](https://pypi.org/project/django/) 库的集成。 | [下载包](https://pypi.org/project/opencensus-ext-django/) |
+| opencensus-ext-flask | 0.7.3 | 此包提供与 Python [flask](https://pypi.org/project/flask/) 库的集成。 | [下载包](https://pypi.org/project/opencensus-ext-flask/) |
+| opencensus-ext-httplib | 0.7.2 | 此包提供与用于 Python3 的 Python [http.client](https://docs.python.org/3/library/http.client.html) 库和用于 Python2 的 [httplib](https://docs.python.org/2/library/httplib.html) 的集成。 | [下载包](https://pypi.org/project/opencensus-ext-httplib/) |
+| opencensus-ext-logging | 0.1.0 | 此包使用跟踪数据扩充日志记录。 | [下载包](https://pypi.org/project/opencensus-ext-logging/) |
+| opencensus-ext-mysql | 0.1.2 | 此包提供与 Python [mysql-connector](https://pypi.org/project/mysql-connector/) 库的集成。 | [下载包](https://pypi.org/project/opencensus-ext-mysql/) |
+| opencensus-ext-postgresql | 0.1.2 | 此包提供与 Python [psycopg2](https://pypi.org/project/psycopg2/) 库的集成。 | [下载包](https://pypi.org/project/opencensus-ext-postgresql/) |
+| opencensus-ext-pymongo | 0.7.1 | 此包提供与 Python [pymongo](https://pypi.org/project/pymongo/) 库的集成。 | [下载包](https://pypi.org/project/opencensus-ext-pymongo/) |
+| opencensus-ext-pymysql | 0.1.2 | 此包提供与 Python [PyMySQL](https://pypi.org/project/PyMySQL/) 库的集成。 | [下载包](https://pypi.org/project/opencensus-ext-pymysql/) |
+| opencensus-ext-pyramid | 0.7.1 | 此包提供与 Python [pyramid](https://pypi.org/project/pyramid/) 库的集成。 | [下载包](https://pypi.org/project/opencensus-ext-pyramid/) |
+| opencensus-ext-requests | 0.7.2 | 此包提供与 Python [requests](https://pypi.org/project/requests/) 库的集成。 | [下载包](https://pypi.org/project/opencensus-ext-requests/) |
+| opencensus-ext-sqlalchemy | 0.1.2 | 此包提供与 Python [SQLAlchemy](https://pypi.org/project/SQLAlchemy/) 库的集成。 | [下载包](https://pypi.org/project/opencensus-ext-sqlalchemy/) |
 
 ## <a name="listenerscollectorsappenders"></a>侦听器/收集器/追加器
 
@@ -70,7 +79,7 @@ ms.locfileid: "60699199"
 | Microsoft.ApplicationInsights.Agent_x64 | 2.2.1 |  为 x64 应用程序启用运行时数据收集功能 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x64/) |
 | Microsoft.ApplicationInsights.Agent_x86 | 2.2.1 |  为 x86 应用程序启用运行时数据收集功能。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x86/) |
 
-这些包属于[状态监视器](../../azure-monitor/app/monitor-performance-live-website-now.md)中运行时监视的核心功能。 无需直接下载这些包，只需使用状态监视器安装程序即可。 如果要详细了解这些包如何在后台工作，请参阅我们的一位开发人员撰写的这篇[博客文章](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)。
+这些包属于[状态监视器](../../azure-monitor/app/monitor-performance-live-website-now.md)中运行时监视的核心功能。 无需直接下载这些包，只需使用状态监视器安装程序即可。 如果要详细了解这些包如何在后台工作，请参阅我们的一位开发人员撰写的这篇[博客文章](https://apmtips.com/posts/2016-11-18-how-application-insights-status-monitor-not-monitors-dependencies/)。
 
 ## <a name="additional-packages"></a>其他包
 

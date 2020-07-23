@@ -1,17 +1,17 @@
 ---
 title: 什么是 Azure DNS？
 description: Microsoft Azure 上的 DNS 托管服务概述。 在 Microsoft Azure 上托管域。
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
-ms.author: victorh
-ms.openlocfilehash: 530730dcf303a54803816e6f2af8787298c1c658
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: rohink
+ms.openlocfilehash: 1543c0daae7d637730a5f8f9da2305423ba7f84e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65795596"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "76932405"
 ---
 # <a name="what-is-azure-dns"></a>什么是 Azure DNS？
 
@@ -25,7 +25,7 @@ Azure DNS 附带了以下功能。
 
 Azure DNS 中的 DNS 域托管在 DNS 名称服务器的 Azure 全球网络上。 Azure DNS 使用任意广播网络。 每个 DNS 查询由最近的可用 DNS 服务器来应答，为你的域提供快速性能和高可用性。
 
-## <a name="security"></a>安全
+## <a name="security"></a>安全性
 
  Azure DNS 基于 Azure 资源管理器，后者提供以下功能：
 
@@ -51,7 +51,7 @@ DNS 基于在 Azure 中托管的 DNS 区域数和接收的 DNS 查询数进行�
 
 ## <a name="customizable-virtual-networks-with-private-domains"></a>具有专用域的可自定义虚拟网络
 
-Azure DNS 还支持专用 DNS 域，其使用的功能当前为公共预览版。 此功能允许在专用虚拟网络中使用自定义域名而不使用当前可用的由 Azure 提供的名称。
+Azure DNS 还支持 DNS 专用域。 此功能允许在专用虚拟网络中使用自定义域名而不使用当前可用的由 Azure 提供的名称。
 
 有关详细信息，请参阅[在专用域中使用 Azure DNS](private-dns-overview.md)。
 

@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric Reliable Services 生命周期 | Microsoft Docs
-description: 了解 Service Fabric Reliable Services 中的生命周期事件
-services: service-fabric
-documentationcenter: java
+title: Azure Service Fabric Reliable Services 生命周期
+description: 了解使用 Java 的 Azure Service Fabric Reliable Services 应用程序中的生命周期事件以实现有状态和无状态服务。
 author: PavanKunapareddyMSFT
-manager: chackdan
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 36c1ff2ace944d84120bf456060c7504170a814c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b86f68126825f146a50ed21edf2acbda2b5181cf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60772935"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245171"
 ---
 # <a name="reliable-services-lifecycle"></a>Reliable Services 生命周期
 > [!div class="op_single_selector"]
@@ -123,7 +115,7 @@ Service Fabric 更改有状态服务的主副本的原因有多种。 最常见�
 
 由于服务有状态，所以它们也可能使用 [Reliable Collections](service-fabric-reliable-services-reliable-collections.md)。 在 Service Fabric 中，主副本降级后，首先会撤销基础状态的写入访问权限。 这会导致可能影响服务生命周期的另外一系列问题。 集合将根据计时和是否已移动或关闭副本返回异常。 请务必正确处理这些异常。 
 
-由 Service Fabric 引发的异常可能是永久的 [(`FabricException`)](https://docs.microsoft.com/java/api/system.fabric.exception) 或临时的 [(`FabricTransientException`)](https://docs.microsoft.com/java/api/system.fabric.exception.fabrictransientexception)。 应记录并引发永久异常。 可以基于重试逻辑重试临时异常。
+由 Service Fabric 引发的异常可能是永久的 [(`FabricException`)](/java/api/system.fabric.exception) 或临时的 [(`FabricTransientException`)](/java/api/system.fabric.exception.fabrictransientexception)。 应记录并引发永久异常。 可以基于重试逻辑重试临时异常。
 
 测试和验证 Reliable Services 时，处理因结合使用 `ReliableCollections` 和服务生命周期事件而产生的异常是一个重要环节。 建议始终在负载范围内运行服务。 还应执行升级和[混沌测试](service-fabric-controlled-chaos.md)，然后再部署到生产环境。 以下基本步骤有助于确保已正确实现服务和处理生命周期事件。
 
@@ -138,4 +130,3 @@ Service Fabric 更改有状态服务的主副本的原因有多种。 最常见�
 ## <a name="next-steps"></a>后续步骤
 * [Reliable Services 简介](service-fabric-reliable-services-introduction.md)
 * [Reliable Services 快速启动](service-fabric-reliable-services-quick-start-java.md)
-

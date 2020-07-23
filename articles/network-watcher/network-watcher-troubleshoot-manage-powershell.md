@@ -1,25 +1,23 @@
 ---
-title: 对 Azure 虚拟网络网关和连接进行故障排除 - PowerShell | Microsoft 文档
+title: 对 Azure VNet 网关和连接进行故障排除 | Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: 此页说明了如何使用 Azure 网络观察程序对 PowerShell cmdlet 进行故障排除
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: f6f0a813-38b6-4a1f-8cfc-1dfdf979f595
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: kumud
-ms.openlocfilehash: c1038059f52fdddaa52f3575440a20a6f884226f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: 1461f7f9811145553da6c200111d4db1f013060e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690824"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738679"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>使用 Azure 网络观察程序 PowerShell 对虚拟网络网关和连接进行故障排除
 
@@ -49,8 +47,7 @@ ms.locfileid: "64690824"
 第一步是检索网络观察程序实例。 `$networkWatcher` 变量传递给步骤 4 中的 `Start-AzNetworkWatcherResourceTroubleshooting` cmdlet。
 
 ```powershell
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
-$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
+$networkWatcher = Get-AzNetworkWatcher -Location "WestCentralUS" 
 ```
 
 ## <a name="retrieve-a-virtual-network-gateway-connection"></a>检索虚拟网络网关连接

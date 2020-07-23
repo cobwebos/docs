@@ -1,25 +1,24 @@
 ---
-title: Azure AD Connect：排查 SQL 连接问题 | Microsoft 文档
+title: Azure AD Connect：排查 SQL 连接问题 | Microsoft Docs
 description: 介绍如何排查使用 Azure AD Connect 时出现的 SQL 连接问题。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-origin.date: 05/14/2018
-ms.date: 11/12/2018
-ms.component: hybrid
-ms.author: v-junlch
-ms.openlocfilehash: dea88951682c24d2a470d5bd7646722481e4db2f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.topic: troubleshooting
+ms.date: 05/14/2018
+ms.subservice: hybrid
+ms.author: billmath
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d5f8b87684847089a05341a5a68f6ad3e2ac86b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60381312"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85355856"
 ---
 # <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>排除使用 Azure AD Connect 时的 SQL 连接问题
 本文说明如何排查 Azure AD Connect 与 SQL Server 之间的连接问题。 
@@ -32,15 +31,15 @@ ms.locfileid: "60381312"
 打开 powershell 窗口并导入 ADSyncTools Powershell 模块
 
 ``` powershell
-Import-Module "C:\Program Files\Azure Active Directory Connect\Tools\AdSyncTools.psm1" 
+Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\Tools\AdSyncTools.psm1" 
 ```
 
 >[!NOTE]
 >Install-Module 需要更新到 [PowerShell 5.0 (WMF 5.0)](https://www.microsoft.com/download/details.aspx?id=50395) 或更高版本；  
-或者安装 [PackageManagement PowerShell 模块预览 - 2016 年 3 月，适用于 PowerShell 3.0/4.0](https://www.microsoft.com/download/details.aspx?id=51451) 
+或者安装 [PackageManagement PowerShell 模块预览 - 2016 年 3 月，适用于 PowerShell 3.0/4.0](/powershell/module/PackageManagement) 
 
-- 显示所有命令：`Get-Command -Module AdSyncTools` 
-- 执行 powershell 函数：具有以下参数的 `Connect-ADSyncDatabase`
+-  显示所有命令：`Get-Command -Module AdSyncTools` 
+-  执行 powershell 函数：具有以下参数的 `Connect-ADSyncDatabase`
     - Server。 SQL Server 名称。
     - Instance。 （可选）SQL Server 实例名称和（可选）你要使用的端口号。 不要指定此参数来使用默认实例。
     - UserName。 （可选）用于连接的用户帐户。 如果留空，将使用当前登录的用户。 如果要连接到远程 SQL Server，应使用你为 Azure ADConnect SQL 连接创建的自定义服务帐户。 Azure AD Connect 使用 Azure AD Connect 同步服务帐户向远程 SQL Server 进行身份验证。
@@ -50,9 +49,9 @@ Import-Module "C:\Program Files\Azure Active Directory Connect\Tools\AdSyncTools
 
 仅使用服务器名称的示例：
 ```
-PS C:\Program Files\Azure Active Directory Connect\Tools> import-module .\AdSyncTools.psm1
+PS C:\Program Files\Microsoft Azure Active Directory Connect\Tools> import-module .\AdSyncTools.psm1
 
-PS C:\Program Files\Azure Active Directory Connect\Tools> Connect-AdSyncDatabase -Server SQL1
+PS C:\Program Files\Microsoft Azure Active Directory Connect\Tools> Connect-AdSyncDatabase -Server SQL1
 Resolving server address : SQL1
     InterNetworkV6 : fe80::6c90:a995:3e70:ef74%17
     InterNetworkV6 : 2001:4898:e0:66:6c90:a995:3e70:ef74
@@ -82,13 +81,13 @@ Container                        :
 
 
 
-PS C:\Program Files\Azure Active Directory Connect\Tools> 
+PS C:\Program Files\Microsoft Azure Active Directory Connect\Tools> 
 ```
 
 使用不存在的实例和端口号的示例：
 
 ```
-PS C:\Program Files\Azure Active Directory Connect\tools> Connect-AdSyncDatabase -Server SQL1 -Instance "INSTANCE1"
+PS C:\Program Files\Microsoft Azure Active Directory Connect\tools> Connect-AdSyncDatabase -Server SQL1 -Instance "INSTANCE1"
 Resolving server address : SQL1
     InterNetworkV6 : fe80::6c90:a995:3e70:ef74%17
     InterNetworkV6 : 2001:4898:e0:66:6c90:a995:3e70:ef74
@@ -109,7 +108,7 @@ At line:1 char:1
 TROUBLESHOOTING: Attempting to query the SQL Server Browser service configuration on SQL1.
 Get-ADSyncSQLBrowserInstances : Unable to read the SQL Server Browser configuration. An existing connection was forcibly closed by the remote host. 
 Ensure port 1434 (UDP) is open on SQL1 and the SQL Server Browser service is running. 
-At C:\Program Files\Azure Active Directory Connect\tools\AdSyncTools.psm1:1717 char:18
+At C:\Program Files\Microsoft Azure Active Directory Connect\tools\AdSyncTools.psm1:1717 char:18
 +     $instances = Get-ADSyncSQLBrowserInstances $Server
 +                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     + CategoryInfo          : ConnectionError: (:) [Write-Error], WriteErrorException
@@ -126,8 +125,8 @@ ation Manager on SQL1 to verify the instance name and TCP/IP port assignment man
 You must specify both the instance name and the port to connect when the SQL Server Browser service is not running. An inbound firewall rule on SQL1 is required for the associated port.
     Example: 'MySQLInstance,1234' where 1234 has a matching firewall rule.
 
-PS C:\Program Files\Azure Active Directory Connect\tools> 
-PS C:\Program Files\Azure Active Directory Connect\tools> Connect-AdSyncDatabase -Server SQL1 -Instance "INSTANCE1,99"
+PS C:\Program Files\Microsoft Azure Active Directory Connect\tools> 
+PS C:\Program Files\Microsoft Azure Active Directory Connect\tools> Connect-AdSyncDatabase -Server SQL1 -Instance "INSTANCE1,99"
 Resolving server address : SQL1
     InterNetworkV6 : fe80::6c90:a995:3e70:ef74%17
     InterNetworkV6 : 2001:4898:e0:66:6c90:a995:3e70:ef74
@@ -169,10 +168,9 @@ TcpStatus    : Blocked - the inbound firewall rule for port 58379 is missing or 
 
 
 
-PS C:\Program Files\Azure Active Directory Connect\tools>  
+PS C:\Program Files\Microsoft Azure Active Directory Connect\tools>  
 ```
 
 ## <a name="next-steps"></a>后续步骤
 - [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
 -  [Azure AD 与 Azure AD Connect 的连接](tshoot-connect-connectivity.md)
-

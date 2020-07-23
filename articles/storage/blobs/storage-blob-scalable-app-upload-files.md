@@ -1,21 +1,18 @@
 ---
-title: 将大量随机数据以并行方式上传到 Azure 存储 | Microsoft Docs
-description: 了解如何使用 Azure SDK 将大量随机数据以并行方式上传到 Azure 存储帐户
-services: storage
+title: 将大量随机数据并行上传到 Azure 存储
+description: 了解如何使用 Azure 存储客户端库将大量随机数据以并行方式上传到 Azure 存储帐户
 author: roygara
 ms.service: storage
-ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 02/20/2018
+ms.date: 10/08/2019
 ms.author: rogarana
-ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 63de2045498b312580640859c1911046f9785d8e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: dd87e1a9bcff55813dff420976df58351386fb34
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794348"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75371932"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>将大量随机数据以并行方式上传到 Azure 存储
 
@@ -29,9 +26,9 @@ ms.locfileid: "65794348"
 > * 运行应用程序
 > * 验证连接数
 
-Azure Blob 存储提供可缩放的服务来存储数据。 为了尽可能提高应用程序的性能，建议了解 blob 存储的工作方式。 了解 Azure Blob 的限制非常重要，要深入了解这些限制，请访问：[Blob 存储可伸缩性目标](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets)。
+Azure Blob 存储提供可缩放的服务来存储数据。 为了尽可能提高应用程序的性能，建议了解 blob 存储的工作方式。 了解 Azure Blob 的限制非常重要，要深入了解这些限制，请访问：[Blob 存储的可伸缩性和性能目标](../blobs/scalability-targets.md)。
 
-在使用 Blob 设计高性能应用程序时，[分区命名](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#subheading47)是另一个重要因素。 Azure 存储使用基于范围的分区方案来进行缩放和负载均衡。 此配置意味着具有相似命名约定或前缀的文件转到相同分区。 此逻辑还包括文件上传到的容器的名称。 本教程中使用名称为 GUID 的文件以及随机生成的内容。 然后将这些文件和内容上传到五个使用随机名称的不同容器。
+在使用 Blob 设计高性能应用程序时，[分区命名](../blobs/storage-performance-checklist.md#partitioning)是另一个潜在重要因素。 对于大于或等于4 MiB 的块大小，会使用[高吞吐量块 blob](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/)，并且分区命名不会影响性能。 对于小于4 MiB 的块大小，Azure 存储使用基于范围的分区方案来进行缩放和负载均衡。 此配置意味着具有相似命名约定或前缀的文件转到相同分区。 此逻辑还包括文件上传到的容器的名称。 本教程中使用名称为 GUID 的文件以及随机生成的内容。 然后将这些文件和内容上传到五个使用随机名称的不同容器。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -47,13 +44,13 @@ mstsc /v:<publicIpAddress>
 
 ## <a name="configure-the-connection-string"></a>配置连接字符串
 
-在 Azure 门户中，导航到存储帐户。 在存储帐户的“设置”下选择“访问密钥”。 从主密钥或辅助密钥复制“连接字符串”。 登录到上一教程中创建的虚拟机。 以管理员身份打开“命令提示符”，并使用 `/m` 开关运行 `setx` 命令，该命令可保存计算机设置环境变量。 重载“命令提示符”后，环境变量才可用。 替换以下示例中的 \<storageConnectionString\>：
+在 Azure 门户中导航到存储帐户。 在存储帐户的“设置”  下选择“访问密钥”  。 从主密钥或辅助密钥复制**连接字符串**。 登录到上一教程中创建的虚拟机。 以管理员身份打开“命令提示符”，并使用 `/m` 开关运行 `setx` 命令，该命令可保存计算机设置环境变量  。 重载“命令提示符”后，环境变量才可用  。 请替换以下示例中的 **\<storageConnectionString\>** ：
 
 ```
 setx storageconnectionstring "<storageConnectionString>" /m
 ```
 
-完成后，打开另一“命令提示符”，导航到 `D:\git\storage-dotnet-perf-scale-app` 并键入 `dotnet build` 以生成应用程序。
+完成后，打开另一“命令提示符”，导航到 `D:\git\storage-dotnet-perf-scale-app` 并键入 `dotnet build` 以生成应用程序  。
 
 ## <a name="run-the-application"></a>运行应用程序
 
@@ -69,12 +66,12 @@ dotnet run
 
 除设置线程和连接限制设置外，还需将 [UploadFromStreamAsync ](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) 方法的 [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) 配置为使用并行，并禁用 MD5 哈希验证。 文件以 100 mb 的块上传，此配置提高了性能，但如果网络性能不佳，可能成本高昂，因为如果出现失败，会重试整个 100 mb 的块。
 
-|属性|值|说明|
+|properties|值|说明|
 |---|---|---|
 |[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| 上传时，此设置将 blob 分为多个块。 为获得最佳性能，此值应为内核数的 8 倍。 |
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| 该属性禁用对上传内容的 MD5 哈希检查。 禁用 MD5 验证可加快传输速度。 但是不能确认传输文件的有效性或完整性。   |
 |[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| 该属性确定是否计算和存储文件的 MD5 哈希。   |
-| [RetryPolicy](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.retrypolicy)| 2 秒回退，最多重试 10 次 |确定请求的重试策略。 重试连接失败，在此示例中，[ExponentialRetry](/dotnet/api/microsoft.azure.batch.common.exponentialretry) 策略配置为 2 秒回退，最多可重试 10 次。 当应用程序快要达到 [blob 存储可伸缩性目标](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets)时，此设置非常重要。  |
+| [RetryPolicy](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.retrypolicy)| 2 秒回退，最多重试 10 次 |确定请求的重试策略。 重试连接失败，在此示例中，[ExponentialRetry](/dotnet/api/microsoft.azure.batch.common.exponentialretry) 策略配置为 2 秒回退，最多可重试 10 次。 当应用程序快要达到 Blob 存储的可伸缩性目标时，此设置非常重要。 有关详细信息，请参阅 [Blob 存储的可伸缩性和性能目标](../blobs/scalability-targets.md)。  |
 
 下例显示了 `UploadFilesAsync` 任务：
 
@@ -174,7 +171,7 @@ Upload has been completed in 142.0429536 seconds. Press any key to continue
 
 ### <a name="validate-the-connections"></a>验证连接
 
-在上载文件的同时，可以验证存储帐户的并发连接数。 打开“命令提示符”并键入 `netstat -a | find /c "blob:https"`。 此命令显示当前使用 `netstat` 打开的连接数。 下例显示的输出与自己运行该教程时看到的输出类似。 如该示例所示，上传随机文件到存储帐户时，打开了 800 个连接。 此值在整个上传过程中不断更改。 通过以并行块区块的形式进行上传，可显著减少传输内容所需的时间。
+在上载文件的同时，可以验证存储帐户的并发连接数。 打开“命令提示符”  并键入 `netstat -a | find /c "blob:https"`。 此命令显示当前使用 `netstat` 打开的连接数。 下例显示的输出与自己运行该教程时看到的输出类似。 如该示例所示，上传随机文件到存储帐户时，打开了 800 个连接。 此值在整个上传过程中不断更改。 通过以并行块区块的形式进行上传，可显著减少传输内容所需的时间。
 
 ```
 C:\>netstat -a | find /c "blob:https"

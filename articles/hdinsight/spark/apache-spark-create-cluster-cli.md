@@ -1,34 +1,35 @@
 ---
-title: 使用 Azure CLI 在 Azure HDInsight 中创建 Apache Spark 群集
+title: 快速入门：Apache Spark 具有 Azure CLI 的群集 - Azure HDInsight
 description: 本快速入门展示了如何使用 Azure CLI 在 Azure HDInsight 中创建 Apache Spark 群集。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
-ms.date: 05/09/2019
-ms.author: hrasheed
-ms.openlocfilehash: b9478ca8e1b31c1761e063a6789e96043f9a2c68
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.date: 02/03/2020
+ms.openlocfilehash: 02113988c76dd2565c7109c2ac18c3d1287189db
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65556810"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891129"
 ---
-# <a name="create-an-apache-spark-cluster-in-azure-hdinsight-with-azure-cli"></a>使用 Azure CLI 在 Azure HDInsight 中创建 Apache Spark 群集
+# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>快速入门：使用 Azure CLI 在 Azure HDInsight 中创建 Apache Spark 群集
 
-在本快速入门中，你将了解如何使用 Azure CLI 在 Azure HDInsight 中创建 Apache Spark 群集。 通过 Apache Spark 可以使用内存处理进行快速数据分析和群集计算。 [Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 是用于管理 Azure 资源的 Microsoft 跨平台命令行体验。
+本快速入门介绍如何使用 Azure 命令行接口 (CLI) 在 Azure HDInsight 中创建 Apache Spark 群集。 Azure HDInsight 是适用于企业的分析服务，具有托管、全面且开源的特点。 用于 HDInsight 的 Apache Spark 框架使用内存中处理功能实现快速数据分析和群集计算。 Azure CLI 是用于管理 Azure 资源的 Microsoft 跨平台命令行体验。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果将多个群集一起使用，则需创建一个虚拟网络；如果使用的是 Spark 群集，则还需使用 Hive Warehouse Connector。 有关详细信息，请参阅[为 Azure HDInsight 规划虚拟网络](../hdinsight-plan-virtual-network-deployment.md)和[将 Apache Spark 和 Apache Hive 与 Hive Warehouse Connector 集成](../interactive-query/apache-hive-warehouse-connector.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-Azure CLI。 如果尚未安装 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 来了解步骤。
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)（如果不想使用 Azure Cloud Shell）。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-an-apache-spark-cluster"></a>创建 Apache Spark 群集
 
-1. 登录到 Azure 订阅。 如果你打算使用 Azure Cloud Shell，则只需要在代码块的右上角选择“尝试”  。 否则，请输入以下命令：
+1. 登录到 Azure 订阅。 如果打算使用 Azure Cloud Shell，请在以下代码块的右上角选择“试用”  。 否则，请输入以下命令：
 
     ```azurecli-interactive
     az login
@@ -103,12 +104,12 @@ Azure CLI。 如果尚未安装 Azure CLI，请参阅[安装 Azure CLI](https://
         --http-password $httpCredential \
         --http-user admin \
         --location $location \
-        --size $clusterSizeInNodes \
+        --workernode-count $clusterSizeInNodes \
         --ssh-password $sshCredentials \
         --ssh-user sshuser \
         --storage-account $AZURE_STORAGE_ACCOUNT \
         --storage-account-key $AZURE_STORAGE_KEY \
-        --storage-default-container $AZURE_STORAGE_CONTAINER \
+        --storage-container $AZURE_STORAGE_CONTAINER \
         --version $clusterVersion
     ```
 
@@ -141,7 +142,7 @@ az group delete \
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你学习了如何使用 Azure CLI 在 Azure HDInsight 中创建 Apache Spark 群集。  转到下一教程，了解如何使用 HDInsight Spark 群集针对示例数据运行交互式查询。
+在本快速入门中，你学习了如何使用 Azure CLI 在 Azure HDInsight 中创建 Apache Spark 群集。  转到下一教程，了解如何使用 HDInsight 群集针对示例数据运行交互式查询。
 
 > [!div class="nextstepaction"]
 > [在 Apache Spark 上运行交互式查询](./apache-spark-load-data-run-query.md)

@@ -1,27 +1,24 @@
 ---
 title: 使用事件处理程序主机接收事件 - Azure 事件中心 | Microsoft Docs
 description: 本文介绍 Azure 事件中心中的事件处理程序主机，它简化了检查点操作、租用和读取事件的管理。
-services: event-hubs
-documentationcenter: .net
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: 26f0abb48ba268f79167ed5d00e4f96d8b5e5998
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/23/2020
+ms.openlocfilehash: 338b4e890d61aca0d48287db6f042f9dc088754b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60821873"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320632"
 ---
-# <a name="receive-events-from-azure-event-hubs-using-event-processor-host"></a>使用事件处理程序主机从 Azure 事件中心接收事件
+# <a name="event-processor-host"></a>事件处理程序主机
+> [!NOTE]
+> 本文适用于旧版 Azure 事件中心 SDK。 若要了解如何将代码迁移到新版 SDK，请参阅以下迁移指南。 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)
+> - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)
+> - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)
+> - [Java Script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)
+>
+> 另请参阅[跨应用程序的多个实例均衡分区负载](event-processor-balance-partition-load.md)。
 
 Azure 事件中心是强大的遥测引入服务，使用它能以较低的成本流式传输数百万个事件。 本文介绍如何通过*事件处理程序主机* (EPH) 使用引用的事件；EPH 是一个智能使用者代理，可以简化检查点、租用和并行事件读取器的管理。  
 
@@ -39,7 +36,7 @@ Azure 事件中心是强大的遥测引入服务，使用它能以较低的成�
 
 1. **缩放：** 创建多个使用者，每个使用者获取若干事件中心分区的读取所有权。
 2. **负载均衡：** 动态增加或减少使用者。 例如，将新的传感器类型（例如一氧化碳检测器）添加到每个家庭后，事件数会增多。 在这种情况下，操作员（人类）会增加使用者实例的数目。 然后，使用者池可以重新均衡它们拥有的分区数，以便与新添加的使用者分担负载。
-3. **故障时无缝恢复：** 如果某个使用者（使用者 A）发生故障（例如，托管使用者的虚拟机突然崩溃），其他使用者必须能够拾取使用者 A 拥有的分区并继续。 此外，称作“检查点”或“偏移量”的延续点应该位于**使用者 A** 发生故障时的确切位置，或者略微在该位置的前面。
+3. **故障时无缝恢复：** 如果某个使用者（使用者 A）发生故障（例如，托管使用者的虚拟机突然崩溃），其他使用者必须能够拾取使用者 A 拥有的分区并继续 。 此外，称作“检查点”或“偏移量”的延续点应该位于**使用者 A** 发生故障时的确切位置，或者略微在该位置的前面。 
 4. **使用事件：** 尽管前面三个要点能够应对使用者的管理，但还必须提供代码来使用事件并对其执行有用的操作；例如，聚合事件并将其上传到 Blob 存储。
 
 你无需为此生成自己的解决方案，事件中心会通过 [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) 接口和 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) 类提供此功能。
@@ -113,10 +110,10 @@ public class SimpleEventProcessor : IEventProcessor
 | **使用者组名称** | **分区 ID** | **主机名（所有者）** | **租约（或所有权）获取时间** | **分区（检查点）中的偏移量** |
 | --- | --- | --- | --- | --- |
 | $Default | 0 | Consumer\_VM3 | 2018-04-15T01:23:45 | 156 |
-| $Default | 第 | Consumer\_VM4 | 2018-04-15T01:22:13 | 734 |
+| $Default | 1 | Consumer\_VM4 | 2018-04-15T01:22:13 | 734 |
 | $Default | 2 | Consumer\_VM0 | 2018-04-15T01:22:56 | 122 |
-| : |   |   |   |   |
-| : |   |   |   |   |
+| 解码的字符： |   |   |   |   |
+| 解码的字符： |   |   |   |   |
 | $Default | 15 | Consumer\_VM3 | 2018-04-15T01:22:56 | 976 |
 
 此处，每个主机按特定的持续时间（租约持续时间）获取分区所有权。 如果某个主机发生故障（VM 关闭），则租约将会过期。 其他主机尝试获取分区所有权，其中一个主机会成功。 此过程会重置具有新所有者的分区上的租约。 这样，每次只会有一个读取者可以从使用者组中任意给定的分区读取事件。
@@ -179,19 +176,27 @@ Epoch 功能可让用户确保在任意时间点使用者组中只有一个接�
 在流处理中，用户有时想要在单个使用者组中创建多个接收器。 若要支持此类方案，我们确实可以创建一个不带 Epoch 的接收器；在本例中，我们最多允许在使用者组中创建 5 个并发的接收器。
 
 ### <a name="mixed-mode"></a>混合模式
-我们不建议在其中创建接收方使用时期，然后切换到无 epoch 或进行相反转换的相同使用者组上的应用程序使用情况。 但是，如果发生这种行为，服务将使用以下规则进行处理：
+我们不建议这种应用方案：创建一个带有 Epoch 的接收器，然后在同一使用者组中切换为非 Epoch，反之亦然。 但是，如果发生这种行为，服务将使用以下规则进行处理：
 
 - 如果已创建一个使用 Epoch e1 的接收器，并且该接收器正在接收事件；同时，创建的新接收器不带 Epoch，那么，创建新接收器的操作将会失败。 Epoch 接收器始终在系统中优先。
-- 如果已创建一个使用 Epoch e1 的接收器，并且该接收器已断开连接；同时，在新 MessagingFactory 中创建的新接收器不带 Epoch，那么，创建新接收器的操作将会成功。 有一点需要此处我们的系统将检测在大约 10 分钟后的"接收方断开连接"。
+- 如果已创建一个使用 Epoch e1 的接收器，并且该接收器已断开连接；同时，在新 MessagingFactory 中创建的新接收器不带 Epoch，那么，创建新接收器的操作将会成功。 此处需要注意一点：系统将在大约 10 分钟后检测“接收器断开连接”。
 - 如果创建了一个或多个不带 Epoch 的接收器，并且创建了使用 Epoch e1 的新接收器，那么，所有旧接收器将断开连接。
+
+
+> [!NOTE]
+> 我们建议对使用 epoch 的应用程序和不使用epoch 的应用程序使用不同的使用者组以避免出错。 
 
 
 ## <a name="next-steps"></a>后续步骤
 
 熟悉事件处理程序主机后，请参阅以下文章来详细了解事件中心：
 
-* 使用 [事件中心教程](event-hubs-dotnet-standard-getstarted-send.md)
+- 事件中心入门
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-node-send-v2.md)
 * [事件中心编程指南](event-hubs-programming-guide.md)
 * [事件中心中的可用性和一致性](event-hubs-availability-and-consistency.md)
-* [事件中心常见问题解答](event-hubs-faq.md)
+* [事件中心常见问题](event-hubs-faq.md)
 * [GitHub 上的事件中心示例](https://github.com/Azure/azure-event-hubs/tree/master/samples)

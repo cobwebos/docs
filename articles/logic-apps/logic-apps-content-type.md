@@ -1,21 +1,16 @@
 ---
-title: 处理内容类型 - Azure 逻辑应用 | Microsoft 文档
-description: 了解逻辑应用在设计时和运行时如何处理内容类型
+title: 处理内容类型
+description: 了解如何在设计时和运行时在 Azure 逻辑应用中处理工作流中的各种内容类型
 services: logic-apps
-ms.service: logic-apps
-author: ecfan
-ms.author: estfan
-manager: jeconnoc
-ms.topic: article
-ms.date: 07/20/2018
-ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 2a9318317d5a01136a42b4fb6d580bafaf53ec4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.reviewer: klam, logicappspm
+ms.topic: conceptual
+ms.date: 07/20/2018
+ms.openlocfilehash: ae0abe288edda2ce01311d8533b1f104409efce0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60685721"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75666867"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>在 Azure 逻辑应用中处理内容类型
 
@@ -61,9 +56,9 @@ ms.locfileid: "60685721"
   
   如果没有架构，可以生成架构。 
   
-  1. 在请求触发器中，选择“使用示例有效负载生成架构”。  
+  1. 在请求触发器中，选择“使用示例有效负载生成架构”。   
   
-  2. 在“输入或粘贴示例 JSON 有效负载”下，提供示例有效负载并选择“完成”。 例如： 
+  2. 在“输入或粘贴示例 JSON 有效负载”下，提供示例有效负载并选择“完成”。   例如： 
 
      ![提供示例 JSON 有效负载](./media/logic-apps-content-type/request-trigger.png)
 
@@ -140,15 +135,16 @@ ms.locfileid: "60685721"
 
 此列表描述了使用这些[函数](../logic-apps/workflow-definition-language-functions-reference.md)时逻辑应用如何转换内容：
 
-* `json()`：将数据强制转换到 `application/json`
-* `xml()`：将数据强制转换到 `application/xml`
-* `binary()`：将数据强制转换到 `application/octet-stream`
-* `string()`：将数据强制转换到 `text/plain`
-* `base64()`：将内容转换为 base64 字符串
-* `base64toString()`：将转换为 base64 编码的字符串 `text/plain`
-* `base64toBinary()`：将转换为 base64 编码的字符串 `application/octet-stream`
-* `encodeDataUri()`：将字符串编码为 dataUri 字节数组
-* `decodeDataUri()`：解码`dataUri`到字节数组
+* `json()`：将数据强制转换为 `application/json`
+* `xml()`：将数据强制转换为 `application/xml`
+* `binary()`：将数据强制转换为 `application/octet-stream`
+* `string()`：将数据强制转换为 `text/plain`
+* `base64()`：将内容转换为 base64 编码的字符串
+* `base64toString()`：将 base64 编码的字符串转换为 `text/plain`
+* `base64toBinary()`：将 base64 编码的字符串转换为 `application/octet-stream`
+* `dataUri()`：将字符串转换为数据 URI
+* `dataUriToBinary()`：将数据 URI 转换为二进制字符串
+* `dataUriToString()`：将数据 URI 转换为字符串
 
 例如，如果收到 `Content-Type` 设置为 `application/xml` 的 HTTP 请求，如以下内容所示：
 

@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 05/10/2016
 ms.author: rogardle
 ms.openlocfilehash: e2601d5200f0b8ebcfb856bffb871f01b3acb215
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66148943"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "67173598"
 ---
 > [!NOTE]
 > 这适用于基于 DC/OS 的 ACS 群集。 无需为基于 Swarm 的 ACS 群集执行此操作。

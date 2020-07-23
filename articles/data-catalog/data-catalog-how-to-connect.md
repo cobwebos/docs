@@ -1,36 +1,33 @@
 ---
 title: 如何连接到 Azure 数据目录中的数据源
 description: 操作指南文章重点说明如何使用 Azure 数据目录连接到发现的数据源。
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 4e6b27a5-cf75-4012-b88c-333c1fe638e8
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: c64340491dba11870364610a6c2ff62e25c1328a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 08/01/2019
+ms.openlocfilehash: 1190a0f34206004b72730a6af85bbe5db7d9961a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61001787"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "68976772"
 ---
 # <a name="how-to-connect-to-data-sources"></a>如何连接到数据源
 ## <a name="introduction"></a>简介
-**Microsoft Azure 数据目录**是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 换而言之，**Azure 数据目录**旨在帮助人们发现、了解和使用数据源，并帮助组织从其现有数据中获取更多价值。 此方案的一个重要方面在于使用数据 - 用户发现数据源并了解其用途后，下一步就是连接到数据源将其数据投入使用。
+**Microsoft Azure 数据目录**是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 换句话说， **Azure 数据目录**就是帮助人们发现、了解和使用数据源，并帮助组织从其现有数据中获取更多价值。 此方案的一个重要方面在于使用数据 - 用户发现数据源并了解其用途后，下一步就是连接到数据源将其数据投入使用。
 
 ## <a name="data-source-locations"></a>数据源位置
 在数据源注册期间，**Azure 数据目录**会接收有关数据源的元数据。 此元数据包括数据源位置的详细信息。 位置的详细信息因数据源而不同，但始终包含连接所需的信息。 例如，SQL Server 表的位置包括服务器名称、数据库名称、架构名称和表名，而 SQL Server Reporting Services 报表的位置包括服务器名称和报表的路径。 其他数据源类型的位置会反映源系统的结构和功能。
 
 ## <a name="integrated-client-tools"></a>集成客户端工具
-要连接到数据源，最简单的方法是使用 “Azure 数据目录”门户中的"打开方式..."菜单。 此菜单会显示一份列表，列表上列有用于连接到所选数据资产的选项。
+要连接到数据源，最简单的方法是使用 “Azure 数据目录”**** 门户中的"打开方式..."菜单。 此菜单会显示一份列表，列表上列有用于连接到所选数据资产的选项。
 使用默认磁贴视图时，此菜单在每个磁贴上可用。
 
  ![从数据资产磁贴在 Excel 中打开 SQL Server 表](./media/data-catalog-how-to-connect/data-catalog-how-to-connect1.png)
 
 使用列表视图时，菜单会显示在门户窗口顶部的搜索栏。
 
- ![从搜索栏在报表管理器中打开 SQL Server Reporting Services 报表](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
+ ![在报表管理器中打开 SQL Server Reporting Services 报表](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
 
 ## <a name="supported-client-applications"></a>支持的客户端应用程序
 在 Azure 数据目录门户中为数据源 使用“打开方式...”菜单时，正确的客户端应用程序必须安装在客户端计算机上。
@@ -45,7 +42,7 @@ ms.locfileid: "61001787"
 | 报表管理器 |http:// |请参阅 [SQL Server Reporting Services 的浏览器要求](https://technet.microsoft.com/library/ms156511.aspx) |
 
 ## <a name="your-data-your-tools"></a>数据，工具
-菜单中可用的选项取决于当前所选的数据资产类型。 当然，并非所有可能的工具都包括在“打开方式...” 菜单中，但仍可以使用任何客户端工具轻松连接到数据源。 在“Azure 数据目录”门户中选中某数据资产时，会在属性窗格中显示其完整位置。
+菜单中可用的选项取决于当前所选的数据资产类型。 当然，并非所有可能的工具都包括在“打开方式...” 菜单中，但仍可以使用任何客户端工具轻松连接到数据源。 在“Azure 数据目录”**** 门户中选中某数据资产时，会在属性窗格中显示其完整位置。
 
  ![SQL Server 表的连接信息](./media/data-catalog-how-to-connect/data-catalog-how-to-connect3.png)
 
@@ -58,8 +55,8 @@ ms.locfileid: "61001787"
 
  ![包含提供的请求访问指令的连接信息](./media/data-catalog-how-to-connect/data-catalog-how-to-connect4.png)
 
-## <a name="summary"></a>摘要
-使用 **Azure 数据目录**注册数据源，将结构性元数据和描述性元数据从数据源复制到目录服务，使数据可被发现。 注册并发现数据源后，用户可以从“Azure 数据目录”门户使用“打开方式...”菜单， 或者使用用户自己选择的数据工具连接到数据源。
+## <a name="summary"></a>总结
+使用 **Azure 数据目录**注册数据源，将结构性元数据和描述性元数据从数据源复制到目录服务，使数据可被发现。 注册并发现数据源后，用户可以从“Azure 数据目录”**** 门户使用“打开方式...”菜单， 或者使用用户自己选择的数据工具连接到数据源。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [Azure 数据目录入门](data-catalog-get-started.md)教程，了解有关如何连接到数据源的分步详细说明。

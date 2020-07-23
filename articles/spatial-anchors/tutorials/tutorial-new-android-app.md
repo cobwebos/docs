@@ -1,19 +1,19 @@
 ---
-title: 教程 - 有关使用 Azure 空间定位点创建新 Android 应用的分步说明 | Microsoft Docs
+title: 教程：创建新的 Android 应用
 description: 本教程介绍如何使用 Azure 空间定位点创建新的 Android 应用。
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
-ms.date: 04/03/2019
+ms.date: 06/22/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9838add4f83434848d61f3ae86db71765efdc59a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 3ef24e29e5dde90aa829c46d789256e6e5f3233b
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995721"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296196"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>教程：有关使用 Azure 空间定位点创建新 Android 应用的分步说明
 
@@ -23,20 +23,20 @@ ms.locfileid: "59995721"
 
 若要完成本教程，请确保做好以下准备：
 
-- 具有 <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3 +</a> 的 Windows 或 macOS 计算机。
+- 具有 <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4+</a> 的 Windows 或 macOS 计算机。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">支持开发人员</a>和 <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 功能</a>的 Android 设备。
 
 ## <a name="getting-started"></a>入门
 
-启动 Android Studio。 在“欢迎使用 Android Studio”窗口中，选择“启动新的 Android Studio 项目”。 如果已打开某个项目，请选择“文件”->“新建项目”。
+启动 Android Studio。 在“欢迎使用 Android Studio”窗口中，选择“启动新的 Android Studio 项目”。  如果已打开某个项目，请选择“文件”->“新建项目”。 
 
-在“创建新项目”窗口中的“手机和平板电脑”部分下，选择“空活动”并单击“下一步”。 然后，在“最低 API 级别”下选择 `API 26: Android 8.0 (Oreo)`，并确保“语言”设置为 `Java`。 可以更改“项目名称”和“位置”以及“包名称”。 将其他选项保持不变。 单击“完成”。 “组件安装程序”随即运行。 完成后，单击“完成”。 经过某种处理后，Android Studio 将打开 IDE。
+在“创建新项目”窗口中的“手机和平板电脑”部分下，选择“空活动”并单击“下一步”。    然后，在“最低 API 级别”下选择 `API 26: Android 8.0 (Oreo)`，并确保“语言”设置为 `Java`。  可以更改“项目名称”和“位置”以及“包名称”。 将其他选项保持不变。 单击“完成”。 “组件安装程序”随即运行。 完成后，单击“完成”。 经过某种处理后，Android Studio 将打开 IDE。
 
 ## <a name="trying-it-out"></a>体验一下
 
-若要测试新应用，请使用 USB 线缆将开发人员启用的设备连接到开发计算机。 单击“运行”->“运行‘应用’”。 在“选择部署目标”窗口中选择自己的设备，然后单击“确定”。 Android Studio 将在连接的设备上安装并启动该应用。 现在应会看到“Hello World!” 显示在设备上运行的应用中。 单击“运行”->“停止‘应用’”。
+若要测试新应用，请使用 USB 线缆将开发人员启用的设备连接到开发计算机。 单击“运行”->“运行‘应用’”。  在“选择部署目标”窗口中选择自己的设备，然后单击“确定”。  Android Studio 将在连接的设备上安装并启动该应用。 现在应会看到“Hello World!” 显示在设备上运行的应用中。 单击“运行”->“停止‘应用’”。 
 
-## <a name="integrating-arcore"></a>集成 _ARCore_
+## <a name="integrating-_arcore_"></a>集成 _ARCore_
 
 <a href="https://developers.google.com/ar/discover/" target="_blank">_ARCore_</a> 是用于构建增强现实体验的 Google 平台，可让设备在移动时跟踪自身的位置，并建立自身对真实世界的理解。
 
@@ -57,21 +57,21 @@ ms.locfileid: "59995721"
 </application>
 ```
 
-修改 `Gradle Scripts\build.gradle (Module: app)` 以包含以下条目。 此代码确保应用面向 ARCore 版本 1.7。 完成此项更改后，Gradle 可能会发出一条通知，询问是否要同步：请单击“立即同步”。
+修改 `Gradle Scripts\build.gradle (Module: app)` 以包含以下条目。 此代码将确保应用面向 ARCore 版本 1.8。 完成此项更改后，Gradle 可能会发出一条通知，询问是否要同步：请单击“立即同步”。
 
 ```
 dependencies {
     ...
-    implementation 'com.google.ar:core:1.7.0'
+    implementation 'com.google.ar:core:1.11.0'
     ...
 }
 ```
 
-## <a name="integrating-sceneform"></a>集成 _Sceneform_
+## <a name="integrating-_sceneform_"></a>集成 _Sceneform_
 
-使用 <a href="https://developers.google.com/ar/develop/java/sceneform/" target="_blank">_Sceneform_</a> 能够轻松地在增强现实应用中渲染逼真的 3D 场景，且无需学习 OpenGL。
+使用 [_Sceneform_](https://developers.google.com/sceneform/develop/) 能够轻松地在增强现实应用中渲染逼真的 3D 场景，且无需学习 OpenGL。
 
-修改 `Gradle Scripts\build.gradle (Module: app)` 以包含以下条目。 此代码允许应用使用 Java 8 中的语言构造，而 `Sceneform` 要求使用此类构造。 它还确保应用面向 `Sceneform` 版本 1.7，该版本应该与应用使用的 ARCore 版本相匹配。 完成此项更改后，Gradle 可能会发出一条通知，询问是否要同步：请单击“立即同步”。
+修改 `Gradle Scripts\build.gradle (Module: app)` 以包含以下条目。 此代码允许应用使用 Java 8 中的语言构造，而 `Sceneform` 要求使用此类构造。 它还将确保应用面向 `Sceneform` 版本 1.8，因为该版本应该与此应用正在使用的 ARCore 版本相匹配。 完成此项更改后，Gradle 可能会发出一条通知，询问是否要同步：请单击“立即同步”。
 
 ```
 android {
@@ -85,7 +85,7 @@ android {
 
 dependencies {
     ...
-    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.7.0'
+    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.11.0'
     ...
 }
 ```
@@ -117,24 +117,24 @@ dependencies {
 
 最后，添加以下 `handleTap()` 方法，用于将所有元素关联到一起。 此方法将创建一个球体，并将其放在点击位置。 该球体最初为黑色，因为 `this.recommendedSessionProgress` 目前设置为零。 稍后将调整此值。
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=150-158,170-171,174-182,198-199)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=151-159,171-172,175-183,199-200)]
 
 将应用[重新部署](#trying-it-out)到设备，以再次对其进行验证。 此时，可以四处移动设备，让 ARCore 开始识别环境。 然后点击屏幕，以创建黑色球体并将其放在所选的表面上。
 
 ## <a name="attach-a-local-azure-spatial-anchor"></a>附加本地 Azure 空间定位点
 
-修改 `Gradle Scripts\build.gradle (Module: app)` 以包含以下条目。 此代码确保应用面向 Azure 空间定位点版本 1.0.2。 即，可以引用任何最新版本的 Azure 空间定位点。
+修改 `Gradle Scripts\build.gradle (Module: app)` 以包含以下条目。 此代码将确保应用面向 Azure 空间定位点版本 2.2.0。 即，可以引用任何最新版本的 Azure 空间定位点。 可以在[此处](https://github.com/Azure/azure-spatial-anchors-samples/releases)找到发行说明。
 
 ```
 dependencies {
     ...
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[1.0.2]"
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[1.0.2]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[2.2.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[2.2.0]"
     ...
 }
 ```
 
-右键单击 `app\java\<PackageName>`->“新建”->“Java 类”。 将“名称”设置为 _MyFirstApp_，将“超类”设置为 _android.app.Application_。 将其他选项保持不变。 单击“确定”。 将创建名为 `MyFirstApp.java` 的文件。 将以下 import 语句添加到该文件：
+右键单击 `app\java\<PackageName>`->“新建”->“Java 类”。  将“名称”设置为 _MyFirstApp_，将“超类”设置为 _android.app.Application_。  将其他选项保持不变。 单击“确定”。 将创建名为 `MyFirstApp.java` 的文件。 将以下 import 语句添加到该文件：
 
 ```java
 import com.microsoft.CloudServices;
@@ -169,7 +169,7 @@ import com.microsoft.CloudServices;
 
 接下来，在 `mainActivity` 类中添加以下 `initializeSession()` 方法。 调用该方法后，它会确保在启动应用期间创建并正确初始化 Azure 空间定位点会话。
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=89-97,146)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=89-97,147)]
 
 现在，将 `initializeSession()` 方法挂接到 `onCreate()` 方法。 另外，请确保将相机源中的帧发送到 Azure 空间定位点 SDK 进行处理。
 
@@ -177,17 +177,17 @@ import com.microsoft.CloudServices;
 
 最后，将以下代码添加到 `handleTap()` 方法中。 此代码将本地 Azure 空间定位点附加到要放入真实世界的黑色球体。
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=150-158,170-182,198-199&highlight=12-13)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=151-159,171-183,199-200&highlight=12-13)]
 
 再次[重新部署](#trying-it-out)应用。 四处移动设备，点击屏幕，然后放置黑色球体。 不过，代码这一次会创建本地 Azure 空间定位点并将其附加到球体。
 
-在继续进一步的操作之前，需要创建 Azure 空间定位点帐户标识符和密钥（如果尚未创建）。 遵循以下部分获取这些信息。
+在继续进一步的操作之前，需要创建 Azure 空间定位点帐户以获取帐户标识符、密钥和域（如果尚未创建）。 遵循以下部分获取这些信息。
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
 ## <a name="upload-your-local-anchor-into-the-cloud"></a>将本地定位点上传到云中
 
-创建 Azure 空间定位点帐户标识符和密钥后，可以返回到 `app\java\<PackageName>\MainActivity` 并在其中添加以下 import 语句：
+创建 Azure 空间定位点帐户标识符、密钥和域后，可以返回到 `app\java\<PackageName>\MainActivity` 并在其中添加以下 import 语句：
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=40-45&highlight=3-6)]
 
@@ -195,9 +195,9 @@ import com.microsoft.CloudServices;
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=60-65&highlight=3-6)]
 
-现在，将以下代码添加到 `initializeSession()` 方法中。 首先，此代码允许应用监视 Azure 空间定位点 SDK 从相机源收集帧的进度。 在收集期间，球体颜色将从最初的黑色开始变为灰色。 收集到足够的帧，可将定位点提交到云中之后，球体将变为白色。 其次，此代码将提供所需的凭据来与云后端通信。 可在以下位置将应用配置为使用你的帐户标识符和密钥。 在[设置空间定位点资源](#create-a-spatial-anchors-resource)时，将它们复制到文本编辑器中。
+现在，将以下代码添加到 `initializeSession()` 方法中。 首先，此代码允许应用监视 Azure 空间定位点 SDK 从相机源收集帧的进度。 在收集期间，球体颜色将从最初的黑色开始变为灰色。 收集到足够的帧，可将定位点提交到云中之后，球体将变为白色。 其次，此代码将提供所需的凭据来与云后端通信。 可在以下位置将应用配置为使用你的帐户标识符、密钥和域。 在[设置空间定位点资源](#create-a-spatial-anchors-resource)时，将它们复制到文本编辑器中。
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=89-120,142-146&highlight=11-36)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=89-120,142-148&highlight=11-37)]
 
 接下来，在 `mainActivity` 类中添加以下 `uploadCloudAnchorAsync()` 方法。 调用此方法后，它会以异步方式等到从设备中收集了足够的帧为止。 收集到足够的帧后，此方法会立即将球体颜色切换为黄色，然后开始将本地 Azure 空间定位点上传到云中。 上传完成后，该代码会返回定位标识符。
 
@@ -205,7 +205,7 @@ import com.microsoft.CloudServices;
 
 最后，让我们将所有元素挂接到一起。 在 `handleTap()` 方法中添加以下代码。 创建球体后，此代码将立即调用 `uploadCloudAnchorAsync()` 方法。 该方法返回后，以下代码将对球体执行一次最终更新，将其颜色更改为蓝色。
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=150-158,170-199&highlight=24-37)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=151-159,171-200&highlight=24-37)]
 
 再次[重新部署](#trying-it-out)应用。 四处移动设备，点击屏幕，然后放置球体。 不过，这一次，在收集相机帧的过程中，球体颜色将从黑色更改为白色。 收集到足够的帧后，球体将变为黄色，并且云上传操作将会开始。 上传完成后，球体将变为蓝色。 （可选）也可以使用 Android Studio 中的 `Logcat` 窗口来监视应用发送的日志消息。 例如，帧捕获期间的会话进度，以及上传完成后由云返回的定位点标识符。
 

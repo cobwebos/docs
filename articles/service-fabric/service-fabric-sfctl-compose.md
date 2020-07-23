@@ -1,32 +1,23 @@
 ---
-title: Azure Service Fabric CLI - sfctl compose | Microsoft Docs
-description: 介绍 Service Fabric CLI sfctl compose 命令。
-services: service-fabric
-documentationcenter: na
-author: Christina-Kang
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
+title: Azure Service Fabric CLI- sfctl compose
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于 Docker Compose 应用程序的命令列表。
+author: jeffj6123
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 4b5cbb4a24b61de7e64a52ef950deedab3eec263
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 1/16/2020
+ms.author: jejarry
+ms.openlocfilehash: e84b35ff3dfa7be0c848a4d7b906c622d9b88914
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60837260"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257341"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 创建、删除和管理 Docker Compose 应用程序。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|说明|
 | --- | --- |
 | create | 创建 Service Fabric compose 部署。 |
 | list | 获取在 Service Fabric 群集中创建的 compose 部署列表。 |
@@ -41,24 +32,24 @@ ms.locfileid: "60837260"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --deployment-name [必需] | 部署的名称。 |
 | --file-path       [必需] | 目标 Docker Compose 文件的路径。 |
 | --encrypted-pass | 不提示输入容器注册表密码，而是使用已加密的通行短语。 |
 | --has-pass | 将提示输入容器注册表的密码。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 默认值\: 60。 |
 | --user | 用于连接容器注册表的用户名。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-compose-list"></a>sfctl compose list
 获取在 Service Fabric 群集中创建的 compose 部署列表。
@@ -67,21 +58,21 @@ ms.locfileid: "60837260"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则该继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
 | --max-results | 作为分页查询的一部分返回的最大结果数。 此参数定义返回结果数的上限。 如果根据配置中定义的最大消息大小限制，无法将这些结果容纳到消息中，则返回的结果数可能小于指定的最大结果数。 如果此参数为零或者未指定，则分页查询包含返回消息中最多可容纳的结果数。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-compose-remove"></a>sfctl compose remove
 从群集中删除现有的 Service Fabric compose 部署。
@@ -90,20 +81,20 @@ ms.locfileid: "60837260"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --deployment-name [必需] | 部署的标识。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-compose-status"></a>sfctl compose status
 获取有关 Service Fabric compose 部署的信息。
@@ -112,20 +103,20 @@ ms.locfileid: "60837260"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --deployment-name [必需] | 部署的标识。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-compose-upgrade"></a>sfctl compose upgrade
 开始升级 Service Fabric 群集中的 compose 部署。
@@ -134,7 +125,7 @@ ms.locfileid: "60837260"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --deployment-name [必需] | 部署的名称。 |
 | --file-path        [必需] | 目标 Docker compose 文件的路径。 |
@@ -148,7 +139,7 @@ ms.locfileid: "60837260"
 | --health-check-wait | 启动运行状况检查进程之前，完成升级域后等待的时间长度。 |
 | --replica-set-check | 出现意外问题时，阻止处理升级域并防止可用性丢失的最大时长。 <br><br> 当此超时到期时，无论是否存在可用性丢失问题，都将继续处理升级域。 每个升级域启动时重置超时。 有效值介于 0 和 42949672925（含）之间。 |
 | --svc-type-health-map | 描述用于评估不同服务类型的运行状况的运行状况策略的 JSON 编码对象列表。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 默认值\: 60。 |
 | --unhealthy-app | 报告错误之前允许的最大不正常应用程序百分比。 <br><br> 例如，若要允许 10% 的应用程序处于不正常状态，此值为 10。 该百分比表示在将群集视为出错之前可处于不正常状态的应用程序的最大容许百分比。 如果未超过该百分比，但至少存在一个不正常的应用程序，则将运行状况评估为 Warning。 该百分比的计算方式是将不正常的应用程序数除以群集中的应用程序实例总数。 |
 | --upgrade-domain-timeout | 执行 FailureAction 前，每个升级域需等待的时长。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
 | --upgrade-kind | 默认值\: Rolling。 |
@@ -159,13 +150,13 @@ ms.locfileid: "60837260"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-compose-upgrade-rollback"></a>sfctl compose upgrade-rollback
 开始在 Service Fabric 群集中回退 compose 部署升级。
@@ -174,20 +165,20 @@ ms.locfileid: "60837260"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --deployment-name [必需] | 部署的标识。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-compose-upgrade-status"></a>sfctl compose upgrade-status
 获取在此 Service Fabric Compose 部署中执行的最新升级的详细信息。
@@ -196,22 +187,22 @@ ms.locfileid: "60837260"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --deployment-name [必需] | 部署的标识。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 
 ## <a name="next-steps"></a>后续步骤
 - [安装](service-fabric-cli.md) Service Fabric CLI。
-- 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。
+- 了解如何通过[示例脚本](./scripts/sfctl-upgrade-application.md)使用 Service Fabric CLI。

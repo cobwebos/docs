@@ -1,23 +1,18 @@
 ---
-title: 在 Azure DNS 中托管反向 DNS 查找区域 | Microsoft Docs
+title: 在 Azure DNS 中托管反向 DNS 查找区域
 description: 了解如何使用 Azure DNS 托管 IP 范围的反向 DNS 查找区域
-services: dns
-documentationcenter: na
-author: vhorne
-manager: jeconnoc
+author: rohinkoul
 ms.service: dns
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: victorh
-ms.openlocfilehash: cb2f04c692d4b5f385a89ba6a3071c20ef1bdf21
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: rohink
+ms.openlocfilehash: d6fabd58baf8fb3dc30c2468efd5bdc8179d5f95
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66143672"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84709192"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>在 Azure DNS 中托管反向 DNS 查找区域
 
@@ -33,12 +28,12 @@ ms.locfileid: "66143672"
 
 ## <a name="create-a-reverse-lookup-dns-zone"></a>创建反向查找 DNS 区域
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在“中心”菜单上，单击“新建” > “网络”，然后单击“DNS 区域”。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 在“中心”菜单上，单击“新建” > “网络”，然后单击“DNS 区域”。****************
 
    ![“DNS 区域”选项](./media/dns-reverse-dns-hosting/figure1.png)
 
-1. 在“创建 DNS 区域”窗格中，命名 DNS 区域。 IPv4 和 IPv6 前缀的区域名称不同。 使用有关 [IPv4](#ipv4) 或 [IPv6](#ipv6) 的说明为区域命名。 完成后，选择“创建”以创建区域。
+1. 在“创建 DNS 区域”窗格中，命名 DNS 区域。  IPv4 和 IPv6 前缀的区域名称不同。 使用有关 [IPv4](#ipv4) 或 [IPv6](#ipv6) 的说明为区域命名。 完成后，选择“创建”以创建区域。 
 
 ### <a name="ipv4"></a>IPv4
 
@@ -55,7 +50,7 @@ IPv4 反向查找区域的名称基于其所代表的 IP 范围。 应采用以�
 
  ![“创建 DNS 区域”窗格，已填写其中的输入框](./media/dns-reverse-dns-hosting/figure2.png)
 
-“资源组位置”定义资源组的位置。 它对 DNS 区域没有影响。 DNS 区域位置始终是“全局”，并且不会显示。
+“资源组位置”定义资源组的位置。  它对 DNS 区域没有影响。 DNS 区域位置始终是“全局”，并且不会显示。
 
 以下示例演示如何通过 Azure PowerShell 和 Azure CLI 完成此任务。
 
@@ -86,7 +81,7 @@ IPv6 反向查找区域的名称应采用以下格式：`<IPv6 network prefix in
 
  ![“创建 DNS 区域”窗格，已填写其中的输入框](./media/dns-reverse-dns-hosting/figure3.png)
 
-“资源组位置”定义资源组的位置。 它对 DNS 区域没有影响。 DNS 区域位置始终是“全局”，并且不会显示。
+“资源组位置”定义资源组的位置。  它对 DNS 区域没有影响。 DNS 区域位置始终是“全局”，并且不会显示。
 
 以下示例演示如何通过 Azure PowerShell 和 Azure CLI 完成此任务。
 
@@ -120,16 +115,16 @@ az network dns zone create -g MyResourceGroup -n 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2
 
 以下示例指导用户在 Azure DNS 的反向 DNS 区域中创建 PTR 记录。 若要了解其他记录类型并修改现有记录，请参阅[使用 Azure 门户管理 DNS 记录和记录集](dns-operations-recordsets-portal.md)。
 
-1. 在“DNS 区域”窗格顶部，选择“+ 记录集”打开“添加记录集”窗格。
+1. 在“DNS 区域”  窗格顶部，选择“+ 记录集”  打开“添加记录集”  窗格。
 
    ![用于创建记录集的按钮](./media/dns-reverse-dns-hosting/figure4.png)
 
 1. PTR 记录的记录集名称需为以倒序排序的 IPv4 地址的其余部分。 
 
-   在此示例中，已填充前三个八进制数，作为区域名称 (.2.0.192) 的一部分。 因此，“名称”框中提供仅最后一个八进制数。 例如，对于 IP 地址为 192.0.2.15 的资源，可将记录集命名为 **15**。  
-1. 对于“类型”，请选择“PTR”。  
-1. 在“域名”字段中，输入使用该 IP 的资源的完全限定域名 (FQDN)。
-1. 单击窗格底部的“确定”创建 DNS 记录。
+   在此示例中，已填充前三个八进制数，作为区域名称 (.2.0.192) 的一部分。 因此，“名称”框中提供仅最后一个八进制数。  例如，对于 IP 地址为 192.0.2.15 的资源，可将记录集命名为 **15**。  
+1. 对于“类型”，请选择“PTR”。    
+1. 在“域名”字段中，输入使用该 IP 的资源的完全限定域名 (FQDN)  。
+1. 单击窗格底部的“确定”创建 DNS 记录。 
 
    ![“添加记录集”窗格，已填写其中的输入框](./media/dns-reverse-dns-hosting/figure5.png)
 
@@ -149,23 +144,23 @@ azure network dns record-set add-record MyResourceGroup 2.0.192.in-addr.arpa 15 
 #### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
-    az network dns record-set ptr add-record -g MyResourceGroup -z 2.0.192.in-addr.arpa -n 15 --ptrdname dc1.contoso.com
+az network dns record-set ptr add-record -g MyResourceGroup -z 2.0.192.in-addr.arpa -n 15 --ptrdname dc1.contoso.com
 ```
 
 ### <a name="ipv6"></a>IPv6
 
 以下示例将指导用户创建新的 PTR 记录。 若要了解其他记录类型并修改现有记录，请参阅[使用 Azure 门户管理 DNS 记录和记录集](dns-operations-recordsets-portal.md)。
 
-1. 在“DNS 区域”窗格顶部，选择“+ 记录集”打开“添加记录集”窗格。
+1. 在“DNS 区域”  窗格顶部，选择“+ 记录集”  打开“添加记录集”  窗格。
 
    ![用于创建记录集的按钮](./media/dns-reverse-dns-hosting/figure6.png)
 
 2. PTR 记录的记录集名称需为以倒序排序的 IPv6 地址的其余部分。 不能包含任何零压缩。 
 
-   在此示例中，已填充 IPv6 的前 64 位，作为区域名称的一部分 (0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa)。 因此，“名称”框中仅提供了最后 64 位。 以倒序顺序输入 IP 地址的后 64 位，使用句点作为十六进制数之间的分隔符。 例如，对于 IP 地址为 2001:0db8:abdc:0000:f524:10bc:1af9:405e 的资源，可将记录集命名为 **e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f**。  
-3. 对于“类型”，请选择“PTR”。  
-4. 在“域名”字段中，输入使用该 IP 的资源的 FQDN。
-5. 单击窗格底部的“确定”创建 DNS 记录。
+   在此示例中，已填充 IPv6 的前 64 位，作为区域名称的一部分 (0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa)。 因此，“名称”框中仅提供了最后 64 位。  以倒序顺序输入 IP 地址的后 64 位，使用句点作为十六进制数之间的分隔符。 例如，对于 IP 地址为 2001:0db8:abdc:0000:f524:10bc:1af9:405e 的资源，可将记录集命名为 **e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f**。  
+3. 对于“类型”，请选择“PTR”。    
+4. 在“域名”字段中，输入使用该 IP 的资源的 FQDN  。
+5. 单击窗格底部的“确定”创建 DNS 记录。 
 
 ![“添加记录集”窗格，已填写其中的输入框](./media/dns-reverse-dns-hosting/figure7.png)
 
@@ -179,23 +174,23 @@ New-AzDnsRecordSet -Name "e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f" -RecordType PTR -Zone
 
 #### <a name="azure-classic-cli"></a>Azure 经典 CLI
 
-```
+```azurecli
 azure network dns record-set add-record MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f PTR --ptrdname dc2.contoso.com 
 ```
  
 #### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
-    az network dns record-set ptr add-record -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -n e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f --ptrdname dc2.contoso.com
+az network dns record-set ptr add-record -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -n e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f --ptrdname dc2.contoso.com
 ```
 
 ## <a name="view-records"></a>查看记录
 
-若要查看创建的记录，请在 Azure 门户中浏览到 DNS 区域。 在“DNS 区域”窗格的下半部分，可以看到 DNS 区域的记录。 应会看到默认的 NS 和 SOA 记录以及创建的新记录。 NS 和 SOA 记录已在每个区域中创建。 
+若要查看创建的记录，请在 Azure 门户中浏览到 DNS 区域。 在“DNS 区域”窗格的下半部分，可以看到 DNS 区域的记录。  应会看到默认的 NS 和 SOA 记录以及创建的新记录。 NS 和 SOA 记录已在每个区域中创建。 
 
 ### <a name="ipv4"></a>IPv4
 
-“DNS 区域”窗格显示 IPv4 PTR 记录：
+“DNS 区域”窗格显示 IPv4 PTR 记录： 
 
 ![“DNS 区域”窗格，其中包含 IPv4 记录](./media/dns-reverse-dns-hosting/figure8.png)
 
@@ -210,18 +205,18 @@ Get-AzDnsRecordSet -ZoneName 2.0.192.in-addr.arpa -ResourceGroupName MyResourceG
 #### <a name="azure-classic-cli"></a>Azure 经典 CLI
 
 ```azurecli
-    azure network dns record-set list MyResourceGroup 2.0.192.in-addr.arpa
+azure network dns record-set list MyResourceGroup 2.0.192.in-addr.arpa
 ```
 
 #### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
-    azure network dns record-set list -g MyResourceGroup -z 2.0.192.in-addr.arpa
+az network dns record-set list -g MyResourceGroup -z 2.0.192.in-addr.arpa
 ```
 
 ### <a name="ipv6"></a>IPv6
 
-“DNS 区域”窗格显示 IPv6 PTR 记录：
+“DNS 区域”窗格显示 IPv6 PTR 记录： 
 
 ![“DNS 区域”窗格，其中包含 IPv6 记录](./media/dns-reverse-dns-hosting/figure9.png)
 
@@ -236,13 +231,13 @@ Get-AzDnsRecordSet -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceG
 #### <a name="azure-classic-cli"></a>Azure 经典 CLI
 
 ```azurecli
-    azure network dns record-set list MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
+azure network dns record-set list MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
 #### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
-    azure network dns record-set list -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
+az network dns record-set list -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
 ## <a name="faq"></a>常见问题解答

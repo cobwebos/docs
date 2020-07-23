@@ -1,0 +1,82 @@
+### YamlMime:Landing
+title: Azure Kinect DK 文档
+summary: Azure Kinect DK 是一款开发人员工具包，配有先进的 AI 传感器，提供复杂的计算机视觉和语音模型。 Kinect 将深度传感器、空间麦克风阵列与视频摄像头和方向传感器整合成一体式的小型设备，提供多种模式、选项和软件开发工具包 (SDK)。
+metadata:
+  title: Azure Kinect DK 文档
+  description: Azure Kinect DK 是一款开发人员工具包，配有先进的 AI 传感器，提供复杂的计算机视觉和语音模型。 Kinect 将深度传感器、空间麦克风阵列与视频摄像头和方向传感器整合成一体式的小型设备，提供多种模式、选项和 SDK。
+  ms.prod: kinect-dk
+  ms.topic: landing-page
+  author: tesych
+  ms.author: tesych
+  ms.date: 03/11/2020
+  ms.openlocfilehash: f1691507d75d6de630f3c5a48cd59c8cc22b5999
+  ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 03/31/2020
+  ms.locfileid: "80421932"
+landingContent:
+- title: 关于 Azure Kinect DK
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Kinect DK？
+      url: about-azure-kinect-dk.md
+  - linkListType: reference
+    links:
+    - text: 硬件规格
+      url: hardware-specification.md
+    - text: 系统要求
+      url: system-requirements.md
+- title: 入门
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Azure Kinect 传感器 SDK
+      url: sensor-sdk-download.md
+    - text: Azure Kinect 人体跟踪 SDK
+      url: body-sdk-download.md
+  - linkListType: quickstart
+    links:
+    - text: 设置 Azure Kinect DK
+      url: set-up-azure-kinect-dk.md
+    - text: 将传感器流录制到文件中
+      url: record-sensor-streams-file.md
+    - text: 生成第一个 Azure Kinect 应用程序
+      url: build-first-app.md
+    - text: 设置人体跟踪 SDK
+      url: body-sdk-setup.md
+    - text: 生成第一个人体跟踪应用
+      url: build-first-body-app.md
+- title: 使用传感器 SDK
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 找到并打开设备
+      url: find-then-open-device.md
+    - text: 检索图像数据
+      url: about-sensor-sdk.md
+    - text: 访问麦克风
+      url: access-mics.md
+    - text: 录制和播放
+      url: record-playback-api.md
+- title: 使用人体跟踪 SDK
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 获取人体跟踪结果
+      url: get-body-tracking-results.md
+    - text: 访问人体帧中的数据
+      url: access-data-body-frame.md
+- title: 参考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 传感器 SDK API
+      url: https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/index.html
+    - text: 人体跟踪 SDK API
+      url: https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/index.html
+    - text: 视觉服务
+      url: https://azure.microsoft.com/services/cognitive-services/directory/vision/
+    - text: 语音服务
+      url: https://docs.microsoft.com/azure/cognitive-services/speech-service/

@@ -1,38 +1,42 @@
 ---
-title: 将 Azure Active Directory 与 Azure Kubernetes Service 集成
-description: 了解如何使用 Azure CLI 创建支持 Azure Active Directory 的 Azure Kubernetes 服务 (AKS) 群集
+title: 将 Azure Active Directory 与 Azure Kubernetes Service （旧版）集成
+description: 了解如何使用 Azure CLI 创建和启用 Azure Active Directory Azure Kubernetes Service （AKS）群集（旧）
 services: container-service
-author: iainfoulds
-ms.service: container-service
+author: TomGeske
 ms.topic: article
-ms.date: 04/16/2019
-ms.author: iainfou
-ms.openlocfilehash: d80ad5abecc968a9fe3c82d62ddd8577856a3c54
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.date: 07/20/2020
+ms.author: thomasge
+ms.openlocfilehash: dfc3a546f4845d5eb2e4e144b66b5d97e4a68829
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65835186"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518022"
 ---
-# <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>使用 Azure CLI 将 Azure Active Directory 与 Azure Kubernetes 服务集成
+# <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>使用 Azure CLI （旧版）将 Azure Active Directory 与 Azure Kubernetes 服务集成
 
 可将 Azure Kubernetes Service (AKS) 配置为使用 Azure Active Directory (AD) 进行用户身份验证。 在此配置中，可以使用 Azure AD 身份验证令牌登录到 AKS 群集。 群集操作员还可以根据用户标识或目录组成员身份来配置 Kubernetes 基于角色的访问控制 (RBAC)。
 
-本文介绍如何创建所需的 Azure AD 组件，然后部署支持 Azure AD 的群集并在 AKS 群集中创建一个基本的 RBAC 角色。 也可以[使用 Azure 门户完成这些步骤][azure-ad-portal]。
+本文介绍如何创建所需的 Azure AD 组件，然后部署支持 Azure AD 的群集并在 AKS 群集中创建一个基本的 RBAC 角色。
 
-有关本文中使用的完整示例脚本，请参阅 [Azure CLI 示例 - Azure AD 与 AKS 集成][complete-script]。
+有关本文中使用的完整示例脚本，请参阅 [Azure CLI 示例 - AKS 与 Azure AD 集成][complete-script]。
 
-以下限制适用：
+> [!Important]
+> AKS 提供了一个经过改进的新[AKS Azure AD][managed-aad]体验，无需管理服务器或客户端应用程序。 如果要迁移，请按照[此处][managed-aad-migrate]的说明进行操作。
 
-- 只有在创建新的启用 RBAC 的群集时，才能启用 Azure AD。 不能在现有 AKS 群集上启用 Azure AD。
+## <a name="the-following-limitations-apply"></a>以下限制适用：
+
+- 只能在启用 RBAC 的群集上启用 Azure AD。
 
 ## <a name="before-you-begin"></a>开始之前
 
 需要安装并配置 Azure CLI 2.0.61 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
+在浏览器中访问 [https://shell.azure.com](https://shell.azure.com) 以打开 Cloud Shell。
+
 为了保持一致并帮助运行本文中的命令，请为所需的 AKS 群集名称创建一个变量。 以下示例使用名称 *myakscluster*：
 
-```azurecli-interactive
+```console
 aksname="myakscluster"
 ```
 
@@ -43,7 +47,7 @@ aksname="myakscluster"
 在 Kubernetes 群集内部，使用 Webhook 令牌身份验证来验证身份验证令牌。 Webhook 令牌身份验证作为 AKS 群集的一部分进行配置和管理。 有关 Webhook 令牌身份验证的详细信息，请参阅 [Webhook 身份验证文档][kubernetes-webhook]。
 
 > [!NOTE]
-> 将 Azure AD 配置用于 AKS 身份验证时，会配置两个 Azure AD 应用程序。 此操作必须由 Azure 租户管理员完成。
+> 若要配置 Azure AD 以进行 AKS 身份验证，需配置两个 Azure AD 应用程序。 此操作必须由 Azure 租户管理员完成。
 
 ## <a name="create-azure-ad-server-component"></a>创建 Azure AD 服务器组件
 
@@ -58,7 +62,7 @@ serverApplicationId=$(az ad app create \
     --identifier-uris "https://${aksname}Server" \
     --query appId -o tsv)
 
-# Update the application group memebership claims
+# Update the application group membership claims
 az ad app update --id $serverApplicationId --set groupMembershipClaims=All
 ```
 
@@ -78,7 +82,7 @@ serverApplicationSecret=$(az ad sp credential reset \
 Azure AD 需要执行以下操作的有权：
 
 * 读取目录数据
-* 登录并读取用户个人资料
+* 登录并读取用户配置文件
 
 使用 [az ad app permission add][az-ad-app-permission-add] 命令分配这些权限：
 
@@ -123,13 +127,13 @@ oAuthPermissionId=$(az ad app show --id $serverApplicationId --query "oauth2Perm
 使用 [az ad app permission add][az-ad-app-permission-add] 命令添加对客户端应用程序和服务器应用程序组件的权限，以使用 oAuth2 通信流。 然后，使用 [az ad app permission grant][az-ad-app-permission-grant] 命令授予客户端应用程序与服务器应用程序通信的权限：
 
 ```azurecli-interactive
-az ad app permission add --id $clientApplicationId --api $serverApplicationId --api-permissions $oAuthPermissionId=Scope
+az ad app permission add --id $clientApplicationId --api $serverApplicationId --api-permissions ${oAuthPermissionId}=Scope
 az ad app permission grant --id $clientApplicationId --api $serverApplicationId
 ```
 
 ## <a name="deploy-the-cluster"></a>部署群集
 
-创建两个 Azure AD 应用程序后，请创建 AKS 群集本身。 首先使用 [az group create][az-group-create] 命令创建资源组。 下面的示例创建中的资源组*EastUS*区域：
+创建两个 Azure AD 应用程序后，请创建 AKS 群集本身。 首先使用 [az group create][az-group-create] 命令创建资源组。 以下示例在*EastUS*区域中创建资源组：
 
 为群集创建资源组：
 
@@ -161,7 +165,7 @@ az aks get-credentials --resource-group myResourceGroup --name $aksname --admin
 
 ## <a name="create-rbac-binding"></a>创建 RBAC 绑定
 
-在对 AKS 群集使用 Azure Active Directory 帐户之前，需要创建角色绑定或群集角色绑定。 “角色”定义要授予的权限，“绑定”将这些权限应用于目标用户。 这些分配可应用于特定命名空间或整个群集。 有关详细信息，请参阅[使用 RBAC 授权][rbac-authorization]。
+在对 AKS 群集使用 Azure Active Directory 帐户之前，需要创建角色绑定或群集角色绑定。 “角色”定义要授予的权限，“绑定”将这些权限应用于目标用户 。 这些分配可应用于特定命名空间或整个群集。 有关详细信息，请参阅[使用 RBAC 授权][rbac-authorization]。
 
 使用 [az ad signed-in-user show][az-ad-signed-in-user-show] 命令获取用户当前登录用户的用户主体名称 (UPN)。 在下一步骤中，将为 Azure AD 集成启用此用户帐户。
 
@@ -172,7 +176,7 @@ az ad signed-in-user show --query userPrincipalName -o tsv
 > [!IMPORTANT]
 > 如果为其授予 RBAC 绑定的用户在同一个 Azure AD 租户中，请根据 *userPrincipalName* 分配权限。 如果该用户位于不同的 Azure AD 租户中，请查询并改用 *objectId* 属性。
 
-创建名为 `basic-azure-ad-binding.yaml` 的 YAML 清单并粘贴以下内容。 在最后一行中，请将 *userPrincipalName_or_objectId* 替换为前一命令的 UPN 或对象 ID 输出：
+创建名为 `basic-azure-ad-binding.yaml` 的 YAML 清单并粘贴以下内容。 在最后一行中，将*userPrincipalName_or_objectId*替换为前一命令中的 UPN 或对象 ID 输出：
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -203,7 +207,7 @@ kubectl apply -f basic-azure-ad-binding.yaml
 az aks get-credentials --resource-group myResourceGroup --name $aksname --overwrite-existing
 ```
 
-现在，使用 [kubectl get pods][kubectl-get] 命令查看所有命名空间中的 pod。
+现在，使用 [kubectl get pods][kubectl-get] 命令查看所有命名空间中的 pod：
 
 ```console
 kubectl get pods --all-namespaces
@@ -212,8 +216,10 @@ kubectl get pods --all-namespaces
 你将收到一条登录提示，指出在 Web 浏览器中使用 Azure AD 凭据进行身份验证。 成功完成身份验证后，`kubectl` 命令会显示 AKS 群集中的 pod，如以下示例输出中所示：
 
 ```console
-$ kubectl get pods --all-namespaces
+kubectl get pods --all-namespaces
+```
 
+```output
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code BYMK7UXVD to authenticate.
 
 NAMESPACE     NAME                                    READY   STATUS    RESTARTS   AGE
@@ -232,13 +238,13 @@ kube-system   tunnelfront-6ff887cffb-xkfmq            1/1     Running   0       
 
 如果在使用 Web 浏览器成功登录后看到了以下示例输出中所示的授权错误消息，请检查以下问题：
 
-```console
+```output
 error: You must be logged in to the server (Unauthorized)
 ```
 
-* 您定义了相应的对象 ID 或 UPN，具体取决于用户帐户是否相同的 Azure AD 租户中。
+* 你定义了适当的对象 ID 或 UPN，具体取决于用户帐户是否在同一 Azure AD 租户中。
 * 用户不是 200 多个组的成员。
-* 在服务器的应用程序注册中定义的机密与使用配置的值匹配 `--aad-server-app-secret`
+* 服务器应用程序注册中定义的机密与使用 `--aad-server-app-secret` 配置的值相匹配
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -260,7 +266,7 @@ error: You must be logged in to the server (Unauthorized)
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-group-create]: /cli/azure/group#az-group-create
-[open-id-connect]:../active-directory/develop/v1-protocols-openid-connect-code.md
+[open-id-connect]: ../active-directory/develop/v2-protocols-oidc.md
 [az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
 [az-ad-app-create]: /cli/azure/ad/app#az-ad-app-create
 [az-ad-app-update]: /cli/azure/ad/app#az-ad-app-update
@@ -272,9 +278,10 @@ error: You must be logged in to the server (Unauthorized)
 [az-group-create]: /cli/azure/group#az-group-create
 [az-account-show]: /cli/azure/account#az-account-show
 [az-ad-signed-in-user-show]: /cli/azure/ad/signed-in-user#az-ad-signed-in-user-show
-[azure-ad-portal]: azure-ad-integration.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
-[rbac-authorization]: concepts-identity.md#role-based-access-controls-rbac
+[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
+[managed-aad]: managed-aad.md
+[managed-aad-migrate]: managed-aad.md#upgrading-to-aks-managed-azure-ad-integration

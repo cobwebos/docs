@@ -1,6 +1,6 @@
 ---
-title: 教程：创建单页 Web 应用 - 必应新闻搜索 API
-titlesuffix: Azure Cognitive Services
+title: 教程：使用必应新闻搜索 API 创建单页 Web 应用
+titleSuffix: Azure Cognitive Services
 description: 使用本教程构建可向必应新闻 API 发送搜索查询并在网页内显示结果的单页 Web 应用程序。
 services: cognitive-services
 author: aahill
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 01/10/2019
+ms.date: 06/23/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 78a985180fb2b665aed75b39acfc4d39ccd04132
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9721a00ef1f0df056b3300ababfee0d0d29bbddc
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798565"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801268"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>教程：创建单页 Web 应用
 
@@ -40,6 +40,14 @@ ms.locfileid: "65798565"
 
 教程页是完全独立的；它不使用任何外部框架、样式表或图像文件， 而仅使用广泛支持的 JavaScript 语言功能，并且适用于所有主要 Web 浏览器的当前版本。
 
+
+## <a name="prerequisites"></a>先决条件
+
+若要继续学习本教程，需要必应搜索 API 的订阅密钥。 如果没有这些内容，则需要创建：
+
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="创建必应搜索资源"  target="_blank">创建必应搜索资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。 部署后，单击“转到资源”。
+
 ## <a name="app-components"></a>应用组件
 与任何单页 Web 应用一样，本教程应用程序包含以下三个部分：
 
@@ -53,7 +61,7 @@ ms.locfileid: "65798565"
 ```html
 <form name="bing" onsubmit="return newBingNewsSearch(this)">
 ```
-`onsubmit` 处理程序返回了 `false`，这样可以阻止表单提交到服务器。 JavaScript 代码将执行从表单中收集所需的信息并执行搜索的工作。
+`onsubmit` 处理程序返回 `false`，这会阻止表单提交到服务器。 JavaScript 代码将执行从表单中收集所需的信息并执行搜索的工作。
 
 HTML 还包含部门（HTML `<div>` 标记），其中显示搜索结果。
 
@@ -61,7 +69,7 @@ HTML 还包含部门（HTML `<div>` 标记），其中显示搜索结果。
 
 为了避免将必应搜索 API 订阅密钥包含在代码中，我们使用浏览器的持久性存储来存储密钥。 在存储密钥之前，系统会提示我们输入用户的密钥。 如果该密钥稍后被 API 拒绝，我们将使已存储的密钥失效，因此系统会再次提示用户输入。
 
-我们定义使用 `localStorage` 对象（并非所有浏览器都支持它）或 cookie 的 `storeValue` 和 `retrieveValue` 函数。 `getSubscriptionKey()` 函数使用这些函数来存储和检索用户的密钥。
+我们定义使用 `localStorage` 对象（并非所有浏览器都支持它）或 cookie 的 `storeValue` 和 `retrieveValue` 函数。 `getSubscriptionKey()` 函数使用这些函数来存储和检索用户的密钥。 可以使用下面的全局终结点，也可以使用资源的 Azure 门户中显示的[自定义子域](../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
 ``` javascript
 // Cookie names for data we store
@@ -296,7 +304,7 @@ function handleBingResponse() {
         showDiv("sidebar", renderRelatedItems(results.relatedSearches));
 }
 ```
-主要搜索结果在 JSON 响应中返回为顶级 `value` 对象。 我们将这些结果传递给函数 `renderResults()`，该函数会对其进行遍历并调用一个单独的函数以将每一项呈现到 HTML 中。 生成的 HTML 将返回到 `renderSearchResults()`，该 HTML 在其中插入到页面中的 `results` 部门。
+主要搜索结果在 JSON 响应中返回为顶级 `value` 对象。 我们将这些结果传递给函数 `renderResults()`，该函数会对其进行遍历并调用一个单独的函数以将每一项呈现到 HTML 中。 生成的 HTML 将返回到 `renderSearchResults()`，该 HTML 在其中插入到页面中的 `results` 划分。
 
 ```javascript
 function renderResults(items) {
@@ -313,7 +321,7 @@ function renderResults(items) {
     return html.join("\n\n");
 }
 ```
-必应新闻搜索 API 最多返回四种不同类型的相关结果，每个都有其自己的顶级对象。 它们是：
+必应新闻搜索 API 最多返回四种不同类型的相关结果，每个都有其自己的顶级对象。 它们分别是：
 
 |关系|说明|
 |-|-|
@@ -344,9 +352,9 @@ searchItemRenderers = {
 |`index`| 结果项集合中的结果项的索引。|
 |`count`| 搜索结果项集合中的项数。|
 
-`index` 和 `count` 参数可用于计算结果数、为集合的开头或末尾生成特殊的 HTML、在一定数量的项后插入换行符，等等。 如果呈现器不需要此功能，则不需要接受这两个参数。
+`index` 和 `count` 参数可用于计算结果数、为集合的开头或末尾生成特殊的 HTML、在一定数量的项后插入换行符，等等。 呈现器在不需要此功能的情况下，不需接受这两个参数。
 
-`news` 呈现器显示在以下 javascript 摘录中：
+`news` 呈现器显示在以下 JavaScript 摘录中：
 ```javascript
     // render news story
     news: function (item) {
@@ -381,7 +389,7 @@ searchItemRenderers = {
 > * 生成链接到图像及所在页面的 HTML `<a>` 标记。
 > * 可生成显示有关图像及所在站点的信息的说明。
 
-`<img>` 标记以及缩略图 URL 的 `h` 和 `w` 字段中均使用了缩略图大小。 然后，[必应缩略图服务](resize-and-crop-thumbnails.md)会提供正好为该大小的缩略图。
+`<img>` 标记以及缩略图 URL 的 `h` 和 `w` 字段中均使用了缩略图大小。 然后，[必应缩略图服务](../bing-web-search/resize-and-crop-thumbnails.md)会提供正好为该大小的缩略图。
 
 ## <a name="persisting-client-id"></a>保留客户端 ID
 来自必应搜索 API 的响应可能包含应通过后续请求发送回 API 的 `X-MSEdge-ClientID` 标头。 如果正在使用多个必应搜索 API，应将相同客户端 ID 用于所有这些必应搜索 API（如有可能）。
@@ -397,19 +405,22 @@ searchItemRenderers = {
 > [!NOTE]
 > 在生产 Web 应用程序中，应执行请求服务器端。 否则，你的必应搜索 API 密钥必须包含在网页中，该网页可供查看来源的任何人使用。 收费取决于 API 订阅密钥下的所有使用量（即使请求是由未经授权的用户发出的，也是如此），因此请确保不要公开你的密钥。
 
-进行开发时，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 来自此类代理的响应有一个 `Access-Control-Expose-Headers` 标头，此标头将响应头列入允许列表，并将它们提供给 JavaScript。
+进行开发时，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 此类代理的响应包含 `Access-Control-Expose-Headers` 标头，该标头允许响应标头并使其可供 JavaScript 访问。
 
-安装 CORS 代理很容易，教程应用可以用它来访问客户端 ID 标头。 首先，如果尚未安装 Node.js，请[安装它](https://nodejs.org/en/download/)。 然后，在命令窗口中发出以下命令：
+安装 CORS 代理很容易，教程应用可以用它来访问客户端 ID 标头。 首先，如果尚未安装 Node.js，请先[安装](https://nodejs.org/en/download/)。 然后，在命令窗口中发出以下命令：
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-接下来，在 HTML 文件中将必应 Web 搜索终结点更改为：
+接下来，在 HTML 文件中将必应 Web 搜索终结点更改为：\
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+最后，运行下面的命令，启动 CORS 代理：
 
-最后，使用以下命令启动 CORS 代理：
-
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 使用教程应用期间，不要关闭命令窗口；关闭窗口会导致代理停止运行。 在搜索结果下的可展开 HTTP 响应头部分中，现在可以看到 `X-MSEdge-ClientID` 响应头（以及其他响应头），并验证此响应头是否对所有请求都相同。
 

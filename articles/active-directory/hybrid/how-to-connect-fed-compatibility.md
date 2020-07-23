@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/23/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54f5090101c486562e33de56402db348c6038c8a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f3ca659535c225ca6736fe7bba8aa5b0120c684c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60244763"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85359817"
 ---
 # <a name="azure-ad-federation-compatibility-list"></a>Azure AD 联合身份验证兼容性列表
 Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单一登录与更安全的应用程序访问，以便在不使用任何第三方解决方案的情况下实施混合部署和仅限云的部署。 与大多数 Microsoft Online 服务一样，Office 365 可与 Azure Active Directory 集成，以利用目录服务、身份验证和授权。 Azure Active Directory 还为数千种 SaaS 应用程序与本地 Web 应用程序提供单一登录。 有关支持的 SaaS 应用程序，请参阅 Azure Active Directory [应用程序库](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)。 
@@ -30,7 +30,7 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 如果组织使用第三方联合解决方案，则可使用 Office 365 等 Microsoft Online 服务为本地 Active Directory 用户配置单一登录，前提是第三方联合解决方案可与 Azure Active Directory 兼容。  有关兼容性的问题，请联系标识提者。  若想查看经 Microsoft 测试发现与 Azure AD 兼容的标识提供者列表，请单击[此处](https://www.microsoft.com/download/details.aspx?id=56843)。 
 
 >[!NOTE]
->Microsoft 不再提供验证测试来验证独立标识提者与 Azure Active Directory 是否兼容。 若想测试产品的互操作性，请参阅这些[指南](https://www.microsoft.com/download/details.aspx?id=56843)。 
+>Microsoft 不再向独立的标识提供者提供是否符合 Azure Active Directory 的验证测试。 若想测试产品的互操作性，请参阅这些[指南](https://www.microsoft.com/download/details.aspx?id=56843)。 
 
 ## <a name="next-steps"></a>后续步骤
 

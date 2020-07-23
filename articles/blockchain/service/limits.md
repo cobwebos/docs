@@ -1,67 +1,69 @@
 ---
-title: Azure 区块链限制
-description: 服务和 Azure 区块链服务中的功能限制概述
-services: azure-blockchain
-keywords: 区块链
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/02/2019
-ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: janders
-manager: femila
-ms.openlocfilehash: 169ec7a8ef407af3f754046aa8e3b06793a7e962
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
-ms.translationtype: MT
+title: Azure 区块链服务限制
+description: Azure 区块链服务中的服务和功能限制概述
+ms.date: 04/02/2020
+ms.topic: conceptual
+ms.reviewer: ravastra
+ms.openlocfilehash: 71e1bebf10fa0142870d03977182472da1ad031f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028165"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80676518"
 ---
-# <a name="limits-in-azure-blockchain-service"></a>在 Azure 区块链服务中的限制
+# <a name="limits-in-azure-blockchain-service"></a>Azure 区块链服务中的限制
 
-Azure 区块链服务提供服务和功能限制，例如成员可以具有的节点、 联盟限制和存储量的数目。
+Azure 区块链服务具有服务和功能限制，如成员可以具有的节点数、联合会限制和存储量。
 
 ## <a name="pricing-tier"></a>定价层
 
-事务和验证程序节点的最大限制取决于是否预配 Azure 区块链服务基本或标准定价层。
+事务和验证器节点的最大限制取决于是否在基本或标准定价层预配 Azure 区块链服务。
 
-| 定价层 | 节点的最大事务 | 验证程序节点的最大 |
+| 定价层 | 最大事务节点数 | 最大验证器节点 |
 |:---|:---:|:---:|
-| 基本 | 10 | 1 |
+| Basic | 10 | 1 |
 | 标准 | 10 | 2 |
 
-不支持成员的创建后更改定价层之间基本和标准。
+联盟网络应该至少有两个 Azure 区块链 Service 标准层节点。 标准层节点包括两个验证器节点。 需要四个验证器节点来满足[伊斯坦布尔错综复杂容错的共识](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus)。
+
+"基本" 层用于开发、测试和概念证明。 将标准层用于生产级部署。 如果使用区块链数据管理器或发送大量专用事务，还应使用“标准”层。
+
+不支持在创建成员后在“基本”定价层和“标准”定价层之间进行切换。
 
 ## <a name="storage-capacity"></a>存储容量
 
-最大的会计数据和日志可以每个节点中使用的存储量为 1tb。
+每个节点用于分类帐数据和日志的最大存储量为 1.8 tb。
 
-不支持减小分类帐和日志存储大小。
+不支持降低分类帐和日志存储大小。
+## <a name="consortium-limits"></a>协会限制
 
-## <a name="consortium-limits"></a>联盟限制
+* **联盟和成员名称必须**与 Azure 区块链服务中的其他联盟和成员名称唯一。
 
-* **协会以及成员名称必须是唯一**从 Azure 区块链服务中的其他联合会和成员名称。
+* **不能更改成员和联盟名称**
 
-* **不能更改成员和联盟的名称**
+* **联盟中的所有成员都必须在同一定价层中**
 
-* **联盟中的所有成员必须都在相同的定价层**
+* **参与联盟的所有成员必须位于同一区域**
 
-* **加入联盟的所有成员必须都位于同一区域**
+    在联盟中创建的第一个成员决定区域。 联盟的受邀成员必须与第一个成员位于同一区域。 将所有成员限制为同一区域有助于确保网络共识不会受到负面影响。
 
-    在联盟中创建的第一个成员决定了区域。 已邀请的成员到联盟必须驻留在第一个成员所在的同一区域中。 限制到同一区域的所有成员，可帮助确保网络达成一致意见不产生负面影响。
+* **联盟至少必须有一个管理员**
 
-* **联盟必须具有至少一个管理员**
+    如果联盟中只有一个管理员，则他们不能将其自身从协会中删除，也不能删除其成员，直到在协会中添加或升级其他管理员。
 
-    如果在联盟中只有一个管理员，不能将自己从联盟移除或删除其成员，直到添加或升级在联盟中其他管理员。
+* **不能再次添加从联合会删除的成员**
 
-* **删除从联盟的成员不能再次添加**
+    相反，他们必须重新邀请加入联盟并创建新成员。 不会删除其现有成员资源来保留历史事务。
 
-    相反，它们必须重新邀请加入联盟并创建新的成员。 不会删除其现有的成员资源，以保留历史交易记录。
+* **联盟中的所有成员都必须使用同一分类帐版本**
 
-* **联盟中的所有成员必须都使用相同的分类帐版本**
+    有关 Azure 区块链服务中可用的修补、更新和分类帐版本的详细信息，请参阅[修补程序、更新和版本](ledger-versions.md)。
 
-    修补、 更新和分类帐版本 Azure 区块链服务中提供的详细信息，请参阅[修补、 更新和版本](ledger-versions.md)。
+## <a name="performance"></a>性能
+
+不要使用*eth。* 每次提交事务时，估计气体函数。 *Eth. 估算*函数消耗大量内存。 多次调用函数可以减少每秒的事务数。
+
+如果可能，请使用保守气体值提交事务，并最大限度地*eth.estimate*减少使用
 
 ## <a name="next-steps"></a>后续步骤
 
-* [修补、 更新和版本](ledger-versions.md)
+详细了解有关系统修补和升级的策略-[修补、更新和版本](ledger-versions.md)。

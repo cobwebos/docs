@@ -1,6 +1,6 @@
 ---
 title: 将必应新闻搜索 API v5 升级到 v7
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 发现需要更新为使用版本 7 的应用部分。
 services: cognitive-services
 author: swhite-msft
@@ -10,22 +10,22 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 235cc1c74c099a71d289d38369ebc10132564825
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: bad0ef849af7c94e63f1dfbebda7f47caef9947d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383298"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80294366"
 ---
 # <a name="news-search-api-upgrade-guide"></a>新闻搜索 API 升级指南
 
 本升级指南确定了必应新闻搜索 API 版本 5 与版本 7 的不同之处。 本指南有助于发现需要更新为使用版本 7 的应用部分。
 
-## <a name="breaking-changes"></a>重大变化
+## <a name="breaking-changes"></a>中断性变更
 
 ### <a name="endpoints"></a>终结点
 
-- 终结点的版本号已从 v5 更改为 v7。 例如， https://api.cognitive.microsoft.com/bing/v7.0  /news/search。
+- 终结点的版本号已从 v5 更改为 v7。 例如，`https://api.cognitive.microsoft.com/bing/v7.0/news/search` 。
 
 ### <a name="error-response-objects-and-error-codes"></a>错误响应对象和错误代码
 
@@ -37,7 +37,7 @@ ms.locfileid: "66383298"
 
 - 已将 v5 错误代码替换为以下可取的 `code` 和 `subCode` 值。
 
-|代码|SubCode|描述
+|代码|SubCode|说明
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|只要出现任何子代码条件，必应就会返回 ServerError。 如果 HTTP 状态代码为 500，响应就会包含这些错误。
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>已阻止|只要请求的任何部分无效，必应就会返回 InvalidRequest。 例如，缺少必需参数或参数值无效。<br/><br/>如果错误是 ParameterMissing 或 ParameterInvalidValue，HTTP 状态代码为 400。<br/><br/>如果错误是 HttpNotAllowed，则 HTTP 状态代码为 410。
@@ -54,7 +54,7 @@ RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
 ResourceAccessDenied|InsufficientAuthorization
 ExceededVolume|RateLimitExceeded
 ExceededQpsLimit|RateLimitExceeded
-已禁用|InsufficientAuthorization.AuthorizationDisabled
+禁用|InsufficientAuthorization.AuthorizationDisabled
 UnexpectedError|ServerError.UnexpectedError
 DataSourceErrors|ServerError.ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
@@ -90,4 +90,4 @@ InsufficientScope|InsufficientAuthorization
 
 - 已将 `sort` 字段添加到 [News](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) 对象。 `sort` 字段显示文章排序顺序。 例如，文章按相关性（默认设置）或日期排序。
 
-- 已添加 [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) 对象，用于定义排序顺序。 `isSelected` 字段指明响应是否使用了排序顺序。 如果为 true  ，表明响应使用了排序顺序。 如果 `isSelected` 为 false  ，可以使用 `url` 字段中的 URL 来请求获取其他排序顺序。
+- 已添加 [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) 对象，用于定义排序顺序。 `isSelected` 字段指明响应是否使用了排序顺序。 如果为 true****，表明响应使用了排序顺序。 如果 `isSelected` 为 false****，可以使用 `url` 字段中的 URL 来请求获取其他排序顺序。

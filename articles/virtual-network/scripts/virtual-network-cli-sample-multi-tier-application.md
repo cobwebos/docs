@@ -1,13 +1,10 @@
 ---
-title: Azure CLI 脚本示例 - 为多层应用程序创建网络 | Microsoft Docs
+title: 为多层应用程序创建 VNet - Azure CLI 脚本示例
 description: Azure CLI 脚本示例 - 为多层应用程序创建虚拟网络。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
-tags: ''
-ms.assetid: ''
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: sample
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 9bd6fac54c4f6c86c4e1c624ffc26f626e938e49
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 39a993324a476f0e1f1d17858ae126742e4f69f9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64715701"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74083849"
 ---
 # <a name="create-a-network-for-multi-tier-applications-script-sample"></a>为多层应用程序创建网络脚本示例
 
@@ -48,7 +45,7 @@ az group delete --name MyResourceGroup --yes
 
 此脚本使用以下命令创建资源组、虚拟网络和网络安全组。 下表中的每条命令均链接到特定于命令的文档：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/azure/group) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](/cli/azure/network/vnet) | 创建 Azure 虚拟网络和前端子网。 |

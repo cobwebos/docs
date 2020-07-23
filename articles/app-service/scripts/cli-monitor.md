@@ -1,27 +1,20 @@
 ---
-title: Azure CLI 脚本示例 - 使用 Web 服务器日志监视应用 | Microsoft Docs
-description: Azure CLI 脚本示例 - 使用 Web 服务器日志监视应用服务中的应用
-services: appservice
-documentationcenter: appservice
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI：使用 Web 服务器日志监视应用
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 此示例演示如何使用 Web 服务器日志监视应用。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 0887656f-611c-4627-8247-b5cded7cef60
-ms.service: app-service
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: c0bdf64e7fd9bf7de3ea46f6c08741b61ef0013f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 60abd47eaf176b6c802ebb8a20f74b5c1eb68f0a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136693"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80057780"
 ---
 # <a name="monitor-an-app-service-appwith-web-server-logs-using-azure-cli"></a>使用 Azure CLI 通过 Web 服务器日志监视应用服务应用
 
@@ -43,7 +36,7 @@ ms.locfileid: "66136693"
 
 此脚本使用以下命令创建资源组、应用服务应用和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 创建应用服务计划。 |

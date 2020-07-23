@@ -1,26 +1,26 @@
 ---
-title: 配置、 优化和故障排除与 Azure 存储 AzCopy |Microsoft Docs
-description: 配置、 优化和故障排除 AzCopy。
-services: storage
+title: 对配合 Azure 存储使用的 AzCopy 进行配置、优化和故障排除 | Microsoft Docs
+description: 对 AzCopy 进行配置、优化和故障排除
 author: normesta
 ms.service: storage
-ms.topic: article
-ms.date: 05/14/2019
+ms.topic: how-to
+ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 18dc3e224df18c900653e4549badcdd93f0df6ec
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.reviewer: dineshm
+ms.openlocfilehash: acfe868f26d7509d1dd06554482b4fb3b29a5b22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688019"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504349"
 ---
-# <a name="configure-optimize-and-troubleshoot-azcopy"></a>配置、 优化和故障排除 AzCopy
+# <a name="configure-optimize-and-troubleshoot-azcopy"></a>对 AzCopy 进行配置、优化和故障排除
 
-AzCopy 是一个命令行实用工具，可用于向 / 从存储帐户复制 blob 或文件。 本文可帮助您执行高级的配置任务，并可帮助你使用 AzCopy 时，可能会出现的问题进行疑难解答。
+AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 或文件。 本文将帮助你执行高级配置任务，以排查使用 AzCopy 时可能出现的问题。
 
 > [!NOTE]
-> 如果您正在寻找的内容来帮助你开始使用 AzCopy，请参阅以下文章之一：
+> 如果你正在寻找 AzCopy 入门内容，请参阅以下文章：
 > - [AzCopy 入门](storage-use-azcopy-v10.md)
 > - [使用 AzCopy 和 Blob 存储传输数据](storage-use-azcopy-blobs.md)
 > - [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
@@ -28,62 +28,118 @@ AzCopy 是一个命令行实用工具，可用于向 / 从存储帐户复制 blo
 
 ## <a name="configure-proxy-settings"></a>配置代理设置
 
-若要配置适用于 AzCopy 的代理设置，设置`https_proxy`环境变量。
+若要为 AzCopy 配置代理设置，请设置 `https_proxy` 环境变量。 如果在 Windows 中运行 AzCopy，AzCopy 会自动检测代理设置，因此你无需在 Windows 中使用此设置。 如果在 Windows 中选择使用此设置，此设置会替代自动检测。
 
 | 操作系统 | 命令  |
 |--------|-----------|
-| **Windows** | `set https_proxy=<proxy IP>:<proxy port>` |
+| **Windows** | 在命令提示符处使用 `set https_proxy=<proxy IP>:<proxy port>`<br> 在 PowerShell 中使用 `$env:https_proxy="<proxy IP>:<proxy port>"`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
-| **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
+| **macOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
-目前，AzCopy 不支持需要使用 NTLM 或 Kerberos 进行身份验证的代理。
+AzCopy 目前不支持要求通过 NTLM 或 Kerberos 进行身份验证的代理。
 
-## <a name="optimize-throughput"></a>优化吞吐量
+### <a name="bypassing-a-proxy"></a>绕过代理 ###
 
-设置`AZCOPY_CONCURRENCY_VALUE`环境变量配置的并发请求数以及控制吞吐量性能和资源消耗。 如果您的计算机具有少于 5 个 Cpu，则此变量的值设置为`32`。 否则，默认值等于 16 的 Cpu 数的乘积。 此变量的最大的默认值是`300`，但可以手动设置此值更高版本或更低。
+如果在 Windows 上运行 AzCopy，并且想要告诉它根本_不_使用代理（而不是自动检测设置），请使用这些命令。 使用这些设置时，AzCopy 将不会查找或尝试使用任何代理。
+
+| 操作系统 | 环境 | 命令  |
+|--------|-----------|----------|
+| **Windows** | 命令提示符（CMD） | `set HTTPS_PROXY=dummy.invalid` <br>`set NO_PROXY=*`|
+| **Windows** | PowerShell | `$env:HTTPS_PROXY="dummy.invalid"` <br>`$env:NO_PROXY="*"`<br>|
+
+在其他操作系统上，如果要不使用代理，只需将 HTTPS_PROXY 变量保留为未设置。
+
+## <a name="optimize-performance"></a>优化性能
+
+可以指定性能基准，然后使用命令和环境变量在性能与资源消耗量之间找到最佳的平衡。
+
+本部分将帮助你执行以下优化任务：
+
+> [!div class="checklist"]
+> * 运行基准测试
+> * 优化吞吐量
+> * 优化内存用量 
+> * 优化文件同步
+
+### <a name="run-benchmark-tests"></a>运行基准测试
+
+可以对特定的 blob 容器或文件共享运行性能基准测试，以查看一般性能统计信息和标识性能瓶颈。 
+
+使用以下命令运行性能基准测试。
+
+|    |     |
+|--------|-----------|
+| **语法** | `azcopy benchmark 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **示例** | `azcopy benchmark 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
+
+> [!TIP]
+> 此示例将路径参数括在单引号 ('') 内。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
+
+此命令通过将测试数据上传到指定的目标来运行性能基准测试。 测试数据将在内存中生成、上传到目标，并在完成测试后从目标中删除。 可以使用可选的命令参数来指定要生成的文件数以及文件的大小。
+
+有关详细的参考文档，请参阅[azcopy 基准](storage-ref-azcopy-bench.md)。
+
+若要查看此命令的详细帮助指导，请键入 `azcopy benchmark -h` 并按 ENTER 键。
+
+### <a name="optimize-throughput"></a>优化吞吐量
+
+可以在命令中使用 `cap-mbps` 标志来设置吞吐量数据速率的上限。 例如，以下命令将恢复作业，并将每秒的上限吞吐量恢复为 `10` 兆字节（Mb）。 
+
+```azcopy
+azcopy jobs resume <job-id> --cap-mbps 10
+```
+
+传输小型文件时，吞吐量可能会下降。 可以设置 `AZCOPY_CONCURRENCY_VALUE` 环境变量来提高吞吐量。 此变量指定可发生的并发请求数。  
+
+如果计算机中的 CPU 少于 5 个，则此变量的值将设置为 `32`。 否则，默认值等于 16 乘以 CPU 数。 此变量的最大默认值为 `3000`，但可以手动增大或减小此值。 
 
 | 操作系统 | 命令  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
-| **MacOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
+| **macOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 
-使用`azcopy env`检查此变量的当前值。  如果值为空，则`AZCOPY_CONCURRENCY_VALUE`变量设置的默认值为`300`。
+使用 `azcopy env` 检查此变量的当前值。 如果该值为空白，你可以通过查看任何 AzCopy 日志文件的开头部分来读取所用的值。 日志中会报告所选的值以及选择该值的原因。
 
-## <a name="change-the-location-of-the-log-files"></a>更改日志文件的位置
+在设置此变量之前，我们建议运行基准测试。 基准测试过程将报告建议的并发值。 或者，如果网络条件和有效负载不同，请将此变量设置为单词 `AUTO` 而不是特定的数字。 这样，AzCopy 始终会运行它在基准测试中使用的相同自动优化过程。
 
-默认情况下，日志文件位于`%USERPROFILE\\.azcopy`目录上 Windows，或在`$HOME\\.azcopy`Mac 和 Linux 上的目录。 如果你需要通过使用以下命令，可以更改此位置。
+### <a name="optimize-memory-use"></a>优化内存用量
+
+设置 `AZCOPY_BUFFER_GB` 环境变量，以指定 AzCopy 在下载和上传文件时要使用的最大系统内存量。
+请以 GB 表示此值。
 
 | 操作系统 | 命令  |
 |--------|-----------|
-| **Windows** | `set AZCOPY_LOG_LOCATION=<value>` |
-| **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
-| **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
+| **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
+| **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
+| **macOS** | `export AZCOPY_BUFFER_GB=<value>` |
 
-使用`azcopy env`检查此变量的当前值。 如果值为空，然后日志会写入到默认位置。
+### <a name="optimize-file-synchronization"></a>优化文件同步
 
-## <a name="change-the-default-log-level"></a>更改默认日志级别
+[sync](storage-ref-azcopy-sync.md) 命令标识目标中的所有文件，然后在开始同步操作前比较文件名和上次修改的时间戳。 如果有大量文件，则可通过消除此前期处理来提高性能。 
 
-默认情况下，AzCopy 日志级别设置为`INFO`。 如果你想要减少日志详细程度，以节省磁盘空间，使用来覆盖此设置``--log-level``选项。 
+若要实现此目的，请改用 [azcopy copy](storage-ref-azcopy-copy.md) 命令，并将 `--overwrite` 标志设置为 `ifSourceNewer`。 AzCopy 会在文件复制时比较文件，而不执行任何预先扫描和比较。 如果有大量文件要比较，这会提供性能优势。
 
-可用日志级别为： `DEBUG`， `INFO`， `WARNING`， `ERROR`， `PANIC`，并`FATAL`。
+[azcopy copy](storage-ref-azcopy-copy.md) 命令不会从目标中删除文件，因此，若要在源中不存在文件时删除目标中的文件，请使用 [azcopy sync](storage-ref-azcopy-sync.md) 命令，并将 `--delete-destination` 标志设置为 `true` 或 `prompt` 值。 
 
 ## <a name="troubleshoot-issues"></a>排查问题
 
-AzCopy 将创建每个作业日志和计划的文件。 可以使用日志调查并解决任何潜在问题。 
+AzCopy 为每个作业创建日志和计划文件。 可以使用日志调查并解决任何潜在问题。 
 
-日志将包含失败的状态 (`UPLOADFAILED`， `COPYFAILED`，和`DOWNLOADFAILED`)，完整路径和失败的原因。
+日志将包含失败状态（`UPLOADFAILED`、`COPYFAILED` 和 `DOWNLOADFAILED`）、完整路径和失败的原因。
 
-默认情况下的日志和计划文件位于`%USERPROFILE\\.azcopy`上 Windows 目录或`$HOME\\.azcopy`Mac 和 Linux 上的目录。
+默认情况下，日志和计划文件位于 Windows 上的 `%USERPROFILE%\.azcopy` 目录中或 Mac 和 Linux 上的 `$HOME$\.azcopy` 目录中，但可根据需要更改此位置。
+
+相关错误不一定是文件中出现的第一个错误。 对于网络错误、超时和服务器忙等错误，AzCopy 将重试最多 20 次，通常重试过程会成功。  你看到的第一个错误可能是已成功重试的无害内容。  因此，请查找 `UPLOADFAILED`、`COPYFAILED` 或 `DOWNLOADFAILED` 附近的错误，而不是查看文件中的第一个错误。 
 
 > [!IMPORTANT]
-> 提交到 Microsoft 支持部门 （或故障排除问题涉及任何第三方），请求时共享你想要执行的命令经过修订的版本。 这可以确保不会意外地与任何人共享 SAS。 可以在日志文件的开头找到经修订的版本。
+> 向 Microsoft 支持部门提交请求（或解决涉及任何第三方的问题）时，请共享要执行的命令的修正版本。 这可以确保不会意外地与任何人共享 SAS。 可以在日志文件的开头找到经修订的版本。
 
 ### <a name="review-the-logs-for-errors"></a>查看日志中的错误
 
-以下命令将获取所有的错误`UPLOADFAILED`状态从`04dc9ca9-158f-7945-5933-564021086c79`日志：
+以下命令从 `04dc9ca9-158f-7945-5933-564021086c79` 日志中获取 `UPLOADFAILED` 状态的所有错误：
 
-**Windows**
+**Windows (PowerShell)**
 
 ```
 Select-String UPLOADFAILED .\04dc9ca9-158f-7945-5933-564021086c79.log
@@ -122,4 +178,49 @@ azcopy jobs resume <job-id> --source-sas="<sas-token>"
 azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 ```
 
-当恢复作业时，AzCopy 会查看的作业计划文件。 计划文件列出了所有的文件已标识用于处理首次创建作业时。 当恢复作业时，AzCopy 将尝试传输的所有文件中没有已传输的计划文件列出。
+> [!TIP]
+> 用单引号 ('') 将路径参数（如 SAS 令牌）括起来。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
+
+恢复某个作业时，AzCopy 会查看作业计划文件。 该计划文件列出了首次创建该作业时标识为待处理的所有文件。 恢复某个作业时，AzCopy 会尝试传输计划文件中列出的且尚未传输的所有文件。
+
+## <a name="change-the-location-of-the-plan-and-log-files"></a>更改计划和日志文件的位置
+
+默认情况下，计划和日志文件位于 Windows 上的 `%USERPROFILE%\.azcopy` 目录中，或 Mac 和 Linux 上的 `$HOME$\.azcopy` 目录中。 可以更改此位置。
+
+### <a name="change-the-location-of-plan-files"></a>更改计划文件的位置
+
+使用以下任何命令。
+
+| 操作系统 | 命令  |
+|--------|-----------|
+| **Windows** | PowerShell`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> 在命令提示符下，使用：`set AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **macOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
+
+使用 `azcopy env` 检查此变量的当前值。 如果该值为空白，则计划文件将写入默认位置。
+
+### <a name="change-the-location-of-log-files"></a>更改日志文件的位置
+
+使用以下任何命令。
+
+| 操作系统 | 命令  |
+|--------|-----------|
+| **Windows** | PowerShell`$env:AZCOPY_LOG_LOCATION="<value>"` <br> 在命令提示符下，使用：`set AZCOPY_LOG_LOCATION=<value>`|
+| **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
+| **macOS** | `export AZCOPY_LOG_LOCATION=<value>` |
+
+使用 `azcopy env` 检查此变量的当前值。 如果该值为空白，则日志将写入默认位置。
+
+## <a name="change-the-default-log-level"></a>更改默认日志级别
+
+AzCopy 日志级别默认设置为 `INFO`。 若要降低日志详细程度以节省磁盘空间，请使用 ``--log-level`` 选项覆盖此设置。 
+
+可用的日志级别：`NONE`、`DEBUG`、`INFO`、`WARNING`、`ERROR`、`PANIC` 和 `FATAL`。
+
+## <a name="remove-plan-and-log-files"></a>删除计划和日志文件
+
+若要从本地计算机中删除所有计划和日志文件以节省磁盘空间，请使用 `azcopy jobs clean` 命令。
+
+若要删除只与一个作业关联的计划和日志文件，请使用 `azcopy jobs rm <job-id>`。 请将此示例中的 `<job-id>` 占位符替换为作业的作业 ID。
+
+

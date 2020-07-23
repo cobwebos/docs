@@ -1,18 +1,14 @@
 ---
-title: 对 Azure 容器实例中的容器化任务使用重启策略
+title: 为运行一次的任务重启策略
 description: 了解如何使用 Azure 容器实例来执行一直要运行到完成的任务，例如生成、测试渲染作业或制作其映像。
-services: container-instances
-author: dlepow
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
-ms.author: danlep
-ms.openlocfilehash: 06872eefd0d500a22214109ad5055dd236b5a6ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a582036ae54a0b100b768e37bcf0d952521559d9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60608116"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261339"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>使用重启策略运行容器化任务
 
@@ -26,7 +22,7 @@ ms.locfileid: "60608116"
 
 在 Azure 容器实例中创建[容器组](container-instances-container-groups.md)时，可以指定三个重启策略设置中的一个。
 
-| 重启策略   | 描述 |
+| 重启策略   | 说明 |
 | ---------------- | :---------- |
 | `Always` | 始终重启容器组中的容器。 如果在创建容器时未指定重启策略，则会应用此**默认**设置。 |
 | `Never` | 永远不重启容器组中的容器。 容器最多运行一次。 |
@@ -34,7 +30,7 @@ ms.locfileid: "60608116"
 
 ## <a name="specify-a-restart-policy"></a>指定重启策略
 
-重启策略的指定方式取决于容器实例的创建方式，例如，是使用 Azure CLI、Azure PowerShell cmdlet 还是 Azure 门户。 在 Azure CLI 中，请在调用 [az container create][az-container-create] 时指定 `--restart-policy` 参数。
+重启策略的指定方式取决于容器实例的创建方式，例如，是使用 Azure CLI、Azure PowerShell cmdlet 还是 Azure 门户。 在 Azure CLI 中，在调用 [az container create][az-container-create] 时指定 `--restart-policy` 参数。
 
 ```azurecli-interactive
 az container create \
@@ -46,7 +42,7 @@ az container create \
 
 ## <a name="run-to-completion-example"></a>一直运行到完成的示例
 
-若要查看操作中的重启策略，可从 Microsoft 创建的容器实例[aci wordcount] [ aci-wordcount-image]映像，并指定`OnFailure`重启策略。 此示例容器运行一个 Python 脚本，默认情况下，该脚本会分析莎士比亚著作[哈姆雷特](http://shakespeare.mit.edu/hamlet/full.html)中的文本，将 10 个最常见的单词写入 STDOUT，然后退出。
+若要查看重启策略的工作方式，请基于 Microsoft [aci-wordcount][aci-wordcount-image] 映像创建一个容器实例，并指定 `OnFailure` 重启策略。 此示例容器运行一个 Python 脚本，默认情况下，该脚本会分析莎士比亚著作[哈姆雷特](http://shakespeare.mit.edu/hamlet/full.html)中的文本，将 10 个最常见的单词写入 STDOUT，然后退出。
 
 使用以下 [az container create][az-container-create] 命令运行示例容器：
 
@@ -61,7 +57,10 @@ az container create \
 Azure 容器实例将启动该容器，然后在其应用程序（在本例中为脚本）退出时停止。 当 Azure 容器实例停止重启策略为 `Never` 或 `OnFailure` 的某个容器时，该容器的状态将设置为 **Terminated**。 可以使用 [az container show][az-container-show] 命令检查容器的状态：
 
 ```azurecli-interactive
-az container show --resource-group myResourceGroup --name mycontainer --query containers[0].instanceView.currentState.state
+az container show \
+    --resource-group myResourceGroup \
+    --name mycontainer \
+    --query containers[0].instanceView.currentState.state
 ```
 
 示例输出：
@@ -91,13 +90,13 @@ az container logs --resource-group myResourceGroup --name mycontainer
  ('HAMLET', 386)]
 ```
 
-此示例显示了由脚本发送到 STDOUT 的输出。 但是，容器化任务可能会将其输出写入到持久性存储供以后检索。 例如，写入到 [Azure 文件共享](container-instances-mounting-azure-files-volume.md)。
+此示例显示了由脚本发送到 STDOUT 的输出。 但是，容器化任务可能会将其输出写入到持久性存储供以后检索。 例如，写入到 [Azure 文件共享](./container-instances-volume-azure-files.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-基于任务的情况下，例如批处理具有多个容器的大型数据集可以充分利用自定义[环境变量](container-instances-environment-variables.md)或[命令行](container-instances-start-command.md)在运行时。
+基于任务的方案（例如，使用多个容器批量处理大型数据集）可以在运行时利用自定义的[环境变量](container-instances-environment-variables.md)或[命令行](container-instances-start-command.md)。
 
-有关如何保存一直运行到完成的容器的输出，请参阅[装载包含 Azure 容器实例的 Azure 文件共享](container-instances-mounting-azure-files-volume.md)。
+有关如何保存一直运行到完成的容器的输出，请参阅[装载包含 Azure 容器实例的 Azure 文件共享](./container-instances-volume-azure-files.md)。
 
 <!-- LINKS - External -->
 [aci-wordcount-image]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount

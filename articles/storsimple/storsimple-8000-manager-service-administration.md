@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2017
 ms.author: alkohli
-ms.openlocfilehash: b5490c4e79ee1458b498f539c0db2cc189fce7f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c8d8e3b9058b753dc2a6da35878449c94399225e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60723300"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508038"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>使用 StorSimple Device Manager 服务管理 StorSimple 设备
 

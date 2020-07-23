@@ -1,28 +1,30 @@
 ---
 title: 创建使用 IPv6 的公共负载均衡器 - Azure CLI
-titlesuffix: Azure Load Balancer
-description: 了解如何使用 Azure CLI 创建使用 IPv6 的公共负载均衡器。
+titleSuffix: Azure Load Balancer
+description: 通过此学习路径使用 Azure CLI 着手创建使用 IPv6 的公共负载均衡器。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 keywords: ipv6, azure 负载均衡器, 双堆栈, 公共 ip, 本机 ipv6, 移动, iot
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
-ms.author: kumud
-ms.openlocfilehash: 1caa8e7554024c3b2e3d86436d3d494d7995169a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 03bedba280fca4c051685eabdfa47eaaf00f05d3
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60516670"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963319"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>使用 Azure CLI 创建使用 IPv6 的公共负载均衡器
 
+>[!NOTE] 
+>本文介绍了一项简介性的 IPv6 功能，该功能允许基本负载均衡器提供 IPv4 和 IPv6 连接。 [适用于 Azure VNET 的 IPv6](../virtual-network/ipv6-overview.md) 现在提供综合性 IPv6 连接，可以将 IPv6 连接与虚拟网络集成，包含 IPv6 网络安全组规则、IPv6 用户定义路由、IPv6 基本和标准负载均衡等关键功能。  适用于 Azure VNET 的 IPv6 是建议用于 Azure 中的 IPv6 应用程序的标准。 请参阅[适用于 Azure VNET PowerShell 部署的 IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) 
 
 Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 负载均衡器还可以在多个端口和/或多个 IP 地址上显示这些服务。
 
@@ -50,7 +52,7 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 * **后端地址池**：包含从负载均衡器接收网络流量的虚拟机网络接口 (NIC)。
 * **负载均衡规则**：所含规则可将负载均衡器上的公共端口映射到后端地址池的端口上。
 * **入站 NAT 规则**：所含网络地址转换 (NAT) 规则可将负载均衡器上的公共端口映射到后端地址池中特定虚拟机的端口。
-* **探测器**：包含用于检查后端地址池中虚拟机实例的可用性的运行状况探测器。
+* **探测器**：包含用于检查后端地址池中虚拟机实例的可用性的运行状况探测器
 
 ## <a name="set-up-azure-cli"></a>设置 Azure CLI
 
@@ -197,43 +199,45 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 
     预期输出：
 
-        info:    Executing command network lb show
-        info:    Looking up the load balancer "myIPv4IPv6Lb"
-        data:    Id                              : /subscriptions/########-####-####-####-############/resourceGroups/pscontosorg1southctrlus09152016/providers/Microsoft.Network/loadBalancers/myIPv4IPv6Lb
-        data:    Name                            : myIPv4IPv6Lb
-        data:    Type                            : Microsoft.Network/loadBalancers
-        data:    Location                        : southcentralus
-        data:    Provisioning state              : Succeeded
-        data:
-        data:    Frontend IP configurations:
-        data:    Name             Provisioning state  Private IP allocation  Private IP   Subnet  Public IP
-        data:    ---------------  ------------------  ---------------------  -----------  ------  ---------
-        data:    FrontendVipIPv4  Succeeded           Dynamic                                     myIPv4Vip
-        data:    FrontendVipIPv6  Succeeded           Dynamic                                     myIPv6Vip
-        data:
-        data:    Probes:
-        data:    Name                 Provisioning state  Protocol  Port  Path  Interval  Count
-        data:    -------------------  ------------------  --------  ----  ----  --------  -----
-        data:    ProbeForIPv4AndIPv6  Succeeded           Tcp       80          15        2
-        data:
-        data:    Backend Address Pools:
-        data:    Name             Provisioning state
-        data:    ---------------  ------------------
-        data:    BackendPoolIPv4  Succeeded
-        data:    BackendPoolIPv6  Succeeded
-        data:
-        data:    Load Balancing Rules:
-        data:    Name                  Provisioning state  Load distribution  Protocol  Frontend port  Backend port  Enable floating IP  Idle timeout in minutes
-        data:    --------------------  ------------------  -----------------  --------  -------------  ------------  ------------------  -----------------------
-        data:    LBRuleForIPv4-Port80  Succeeded           Default            Tcp       80             80            false               4
-        data:    LBRuleForIPv6-Port80  Succeeded           Default            Tcp       80             8080          false               4
-        data:
-        data:    Inbound NAT Rules:
-        data:    Name                 Provisioning state  Protocol  Frontend port  Backend port  Enable floating IP  Idle timeout in minutes
-        data:    -------------------  ------------------  --------  -------------  ------------  ------------------  -----------------------
-        data:    NatRule-For-Rdp-VM1  Succeeded           Tcp       3389           3389          false               4
-        data:    NatRule-For-Rdp-VM2  Succeeded           Tcp       3391           3389          false               4
-        info:    network lb show
+    ```output
+    info:    Executing command network lb show
+    info:    Looking up the load balancer "myIPv4IPv6Lb"
+    data:    Id                              : /subscriptions/########-####-####-####-############/resourceGroups/pscontosorg1southctrlus09152016/providers/Microsoft.Network/loadBalancers/myIPv4IPv6Lb
+    data:    Name                            : myIPv4IPv6Lb
+    data:    Type                            : Microsoft.Network/loadBalancers
+    data:    Location                        : southcentralus
+    data:    Provisioning state              : Succeeded
+    data:
+    data:    Frontend IP configurations:
+    data:    Name             Provisioning state  Private IP allocation  Private IP   Subnet  Public IP
+    data:    ---------------  ------------------  ---------------------  -----------  ------  ---------
+    data:    FrontendVipIPv4  Succeeded           Dynamic                                     myIPv4Vip
+    data:    FrontendVipIPv6  Succeeded           Dynamic                                     myIPv6Vip
+    data:
+    data:    Probes:
+    data:    Name                 Provisioning state  Protocol  Port  Path  Interval  Count
+    data:    -------------------  ------------------  --------  ----  ----  --------  -----
+    data:    ProbeForIPv4AndIPv6  Succeeded           Tcp       80          15        2
+    data:
+    data:    Backend Address Pools:
+    data:    Name             Provisioning state
+    data:    ---------------  ------------------
+    data:    BackendPoolIPv4  Succeeded
+    data:    BackendPoolIPv6  Succeeded
+    data:
+    data:    Load Balancing Rules:
+    data:    Name                  Provisioning state  Load distribution  Protocol  Frontend port  Backend port  Enable floating IP  Idle timeout in minutes
+    data:    --------------------  ------------------  -----------------  --------  -------------  ------------  ------------------  -----------------------
+    data:    LBRuleForIPv4-Port80  Succeeded           Default            Tcp       80             80            false               4
+    data:    LBRuleForIPv6-Port80  Succeeded           Default            Tcp       80             8080          false               4
+    data:
+    data:    Inbound NAT Rules:
+    data:    Name                 Provisioning state  Protocol  Frontend port  Backend port  Enable floating IP  Idle timeout in minutes
+    data:    -------------------  ------------------  --------  -------------  ------------  ------------------  -----------------------
+    data:    NatRule-For-Rdp-VM1  Succeeded           Tcp       3389           3389          false               4
+    data:    NatRule-For-Rdp-VM2  Succeeded           Tcp       3391           3389          false               4
+    info:    network lb show
+    ```
 
 ## <a name="create-nics"></a>创建 NIC
 
@@ -296,8 +300,4 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
     az vm create --resource-group $rgname --name $vm2Name --image $imageurn --admin-username $vmUserName --admin-password $mySecurePassword --nics $nic2Id --location $location --availability-set $availabilitySetName --size "Standard_A1" 
     ```
 
-## <a name="next-steps"></a>后续步骤
 
-[开始配置内部负载均衡器](load-balancer-get-started-ilb-arm-cli.md)  
-[配置负载均衡器分发模式](load-balancer-distribution-mode.md)  
-[配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)

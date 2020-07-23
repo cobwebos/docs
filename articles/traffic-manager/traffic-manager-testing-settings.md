@@ -1,22 +1,21 @@
 ---
 title: 验证 Azure 流量管理器设置
-description: 本文帮助验证流量管理器设置。
+description: 本文介绍如何验证流量管理器设置和测试流量路由方法。
 services: traffic-manager
-author: rockboyfor
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 03/16/2017
-ms.date: 02/18/2019
-ms.author: v-yeche
-ms.openlocfilehash: 1e954e3c4ebba245d91cfb84ab583b314150e5b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 03/16/2017
+ms.author: rohink
+ms.openlocfilehash: 894f01244fef94e9f5a60823ba06ff38c01288a1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60771611"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186990"
 ---
 # <a name="verify-traffic-manager-settings"></a>验证流量管理器设置
 
@@ -36,7 +35,9 @@ ms.locfileid: "60771611"
 2. 键入 `ipconfig /flushdns` 以刷新 DNS 解析程序缓存。
 3. 键入 `nslookup <your Traffic Manager domain name>`。 例如，以下命令会检查前缀为 *myapp.contoso* 的域名
 
-        nslookup myapp.contoso.trafficmanager.cn
+    ```powershell
+    nslookup myapp.contoso.trafficmanager.net
+    ```
 
     典型的结果会显示以下信息：
 
@@ -72,5 +73,3 @@ ms.locfileid: "60771611"
 * [关于流量管理器流量路由方法](traffic-manager-routing-methods.md)
 * [流量管理器性能注意事项](traffic-manager-performance-considerations.md)
 * [流量管理器降级状态疑难解答](traffic-manager-troubleshooting-degraded.md)
-
-<!-- Update_Description: update meta properties -->

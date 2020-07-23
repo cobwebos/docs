@@ -1,7 +1,7 @@
 ---
-title: Azure CLI 脚本示例-配置 IPv6 虚拟网络终结点 （预览版）
+title: Azure CLI 脚本示例 - 配置 IPv6 前端
 titlesuffix: Azure Virtual Network
-description: 启用 IPv6 终结点在 Azure 虚拟网络中使用 Azure CLI
+description: 使用 Azure CLI 在 Azure 虚拟网络中启用 IPv6 终结点
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,35 +12,39 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
-ms.openlocfilehash: a1c8f151a4c6459064d92ff2efb44fa8b74f8fc1
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.openlocfilehash: 1ef8742bc4f8de2d08d9bb4fc98b3df6f9420737
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63761460"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80235029"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>配置虚拟网络脚本示例 （预览版） 中的 IPv6 终结点
+# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>在虚拟网络脚本示例中配置 IPv6 终结点（预览）
 
-本文介绍如何部署双堆栈 （IPv4 + IPv6） 应用程序中包括一个双堆栈子网，使用双 （IPv4 + IPv6） 前端配置，具有双重 IP 配置的 Nic 的 Vm 的负载均衡器使用的双堆栈虚拟网络的 Azure双网络安全组规则和双公共 Ip。
+本文介绍如何在 Azure 中部署一个双堆栈 (IPv4 + IPv6) 应用程序，其中包含具有双堆栈子网的双堆栈虚拟网络、采用双重 (IPv4 + IPv6) 前端配置的负载均衡器、具有采用双重 IP 配置的 NIC 的 VM、双重网络安全组规则，以及双重公共 IP。
 
 可以通过 Azure [Cloud Shell](https://shell.azure.com/bash) 或本地 Azure CLI 安装来执行脚本。 如果在本地使用 CLI，此脚本要求运行版本 2.0.28 或更高版本。 要查找已安装的版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果在本地运行 CLI，则还需运行 `az login` 以创建与 Azure 的连接。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备组件
-若要为 Azure 虚拟网络功能使用 IPv6，必须按如下所示配置一次你的订阅：
+## <a name="prerequisites"></a>先决条件
+若要使用 Azure 虚拟网络的 IPv6 功能，你必须按如下所示配置订阅一次：
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
+az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
-功能注册最多需要 30 分钟才能完成。 可以通过运行以下 Azure CLI 命令检查注册状态：
 
-```azurelci
+功能注册最多需要 30 分钟才能完成。 可以通过运行以下 Azure CLI 命令来检查注册状态：
+
+```azurecli
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
+az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
+
 注册完成后，运行以下命令：
 
-```azurelci
+```azurecli
 az provider register --namespace Microsoft.Network
 ```
 
@@ -259,6 +263,7 @@ az vm create \
 --image MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest
 
 ```
+
 ## <a name="clean-up-deployment"></a>清理部署
 
 运行以下命令来删除资源组、VM 和所有相关资源：
@@ -271,17 +276,17 @@ az group delete --name <resourcegroupname> --yes
 
 此脚本使用以下命令创建资源组、虚拟机、可用性集、负载均衡器和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) | 创建 Azure 虚拟网络和子网。 |
 | [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-create) | 使用静态 IP 地址和关联的 DNS 名称创建公共 IP 地址。 |
 | [az network lb create](https://docs.microsoft.com/cli/azure/network/lb#az-network-lb-create) | 创建 Azure 负载均衡器。 |
-| [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe#az-network-lb-probe-create) | 创建负载均衡器探测。 负载均衡器探测用于监视负载均衡器集中的每个 VM。 如果任何 VM 无法访问，流量将不会路由到该 VM。 |
-| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#az-network-lb-rule-create) | 创建负载均衡器规则。 在此示例中，将为端口 80 创建一个规则。 当 HTTP 流量到达负载均衡器时，它会路由到 LB 集中某个 VM 的端口 80。 |
+| [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe#az-network-lb-probe-create) | 创建负载均衡器探测。 负载均衡器探测用于监视负载均衡器集中的每个 VM。 如果任何 VM 无法访问，流量不会路由到该 VM。 |
+| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#az-network-lb-rule-create) | 创建负载均衡器规则。 在此示例中，为端口 80 创建一个规则。 当 HTTP 流量到达负载均衡器时，它会路由到 LB 集中某个 VM 的端口 80。 |
 | [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule#az-network-lb-inbound-nat-rule-create) | 创建负载均衡器网络地址转换 (NAT) 规则。  NAT 规则将负载均衡器的端口映射到 VM 上的端口。 在本示例中，将为发往负载均衡器集中的每个 VM 的 SSH 流量创建 NAT 规则。  |
 | [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#az-network-nsg-create) | 创建网络安全组 (NSG)，这是 Internet 和虚拟机之间的安全边界。 |
-| [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule#az-network-nsg-rule-create) | 创建 NSG 规则以允许入站流量。 在此示例中，将为 SSH 流量打开端口 22。 |
+| [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule#az-network-nsg-rule-create) | 创建 NSG 规则以允许入站流量。 在此示例中，为 SSH 流量打开端口 22。 |
 | [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#az-network-nic-create) | 创建虚拟网卡并将其连接到虚拟网络、子网和 NSG。 |
 | [az vm availability-set create](https://docs.microsoft.com/cli/azure/network/lb/rule#az-network-lb-rule-create) | 创建可用性集。 可用性集通过将虚拟机分布到各个物理资源上（以便发生故障时，不会影响整个集）来确保应用程序运行时间。 |
 | [az vm create](/cli/azure/vm#az-vm-create) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和 NSG。 此命令还指定要使用的虚拟机映像和管理凭据。  |

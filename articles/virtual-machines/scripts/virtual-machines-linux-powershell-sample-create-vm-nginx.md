@@ -1,27 +1,25 @@
 ---
-title: Azure PowerShell 脚本示例 - NGINX | Microsoft 文档
+title: Azure PowerShell 脚本示例 - NGINX
 description: Azure PowerShell 脚本示例 - NGINX
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: edf4a3fe1f21e65e266b74a7be530cf11b30d1dd
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 6bfa9522833dc7ec57c7db9b2ee59ece0457e3b3
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981808"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459689"
 ---
 # <a name="create-an-nginx-vm-with-powershell"></a>使用 PowerShell 创建 NGINX VM
 
@@ -31,7 +29,7 @@ ms.locfileid: "55981808"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+ 
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -49,7 +47,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 此脚本使用以下命令创建部署。 表中的每一项均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | 创建子网配置。 在虚拟网络创建过程中将使用此配置。 |

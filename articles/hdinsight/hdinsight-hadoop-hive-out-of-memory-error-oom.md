@@ -3,18 +3,18 @@ title: 解决 Azure HDInsight 中的 Hive 内存不足错误
 description: 解决 HDInsight 中的 Hive 内存不足错误。 客户方案为跨多个大型表运行查询。
 keywords: 内存不足错误, OOM, Hive 设置
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
+ms.topic: troubleshooting
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/14/2018
-ms.author: hrasheed
-ms.openlocfilehash: 2e7328b95aecc8e644d7b9e2ec407a62551fff79
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 11/28/2019
+ms.openlocfilehash: 71f9bc75bc2b84708af54ba89918cd874099a2d4
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712782"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961891"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>解决 Azure HDInsight 中的 Apache Hive 内存不足错误
 
@@ -24,21 +24,23 @@ ms.locfileid: "64712782"
 
 客户运行了 Hive 查询：
 
-    SELECT
-        COUNT (T1.COLUMN1) as DisplayColumn1,
-        …
-        …
-        ….
-    FROM
-        TABLE1 T1,
-        TABLE2 T2,
-        TABLE3 T3,
-        TABLE5 T4,
-        TABLE6 T5,
-        TABLE7 T6
-    where (T1.KEY1 = T2.KEY1….
-        …
-        …
+```sql
+SELECT
+    COUNT (T1.COLUMN1) as DisplayColumn1,
+    …
+    …
+    ….
+FROM
+    TABLE1 T1,
+    TABLE2 T2,
+    TABLE3 T3,
+    TABLE5 T4,
+    TABLE6 T5,
+    TABLE7 T6
+where (T1.KEY1 = T2.KEY1….
+    …
+    …
+```
 
 此查询有一些繁琐之处：
 
@@ -48,11 +50,14 @@ ms.locfileid: "64712782"
 
 Hive 查询在 24 节点 A3 HDInsight 群集上用了 26 分钟才完成。 客户注意到以下警告消息：
 
+```output
     Warning: Map Join MAPJOIN[428][bigTable=?] in task 'Stage-21:MAPRED' is a cross product
     Warning: Shuffle Join JOIN[8][tables = [t1933775, t1932766]] in Stage 'Stage-4:MAPRED' is a cross product
+```
 
 通过使用 Apache Tez 执行引擎， 相同的查询运行了 15 分钟，并引发以下错误：
 
+```output
     Status: Failed
     Vertex failed, vertexName=Map 5, vertexId=vertex_1443634917922_0008_1_05, diagnostics=[Task failed, taskId=task_1443634917922_0008_1_05_000006, diagnostics=[TaskAttempt 0 failed, info=[Error: Failure while running task:java.lang.RuntimeException: java.lang.OutOfMemoryError: Java heap space
         at
@@ -76,15 +81,15 @@ Hive 查询在 24 节点 A3 HDInsight 群集上用了 26 分钟才完成。 客�
         at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
         at java.lang.Thread.run(Thread.java:745)
     Caused by: java.lang.OutOfMemoryError: Java heap space
+```
 
 使用更大的虚拟机（例如，D12）时，也出现了该错误。
-
 
 ## <a name="debug-the-out-of-memory-error"></a>调试内存不足错误
 
 我们的支持团队和工程团队合作发现了造成内存不足错误的原因之一是 [Apache JIRA 中所述的已知问题](https://issues.apache.org/jira/browse/HIVE-8306)：
 
-    When hive.auto.convert.join.noconditionaltask = true we check noconditionaltask.size and if the sum  of tables sizes in the map join is less than noconditionaltask.size the plan would generate a Map join, the issue with this is that the calculation doesn't take into account the overhead introduced by different HashTable implementation as results if the sum of input sizes is smaller than the noconditionaltask size by a small margin queries will hit OOM.
+"如果为，则为。 hive.auto.convert.join.noconditionaltask.size = true 我们检查 hive.auto.convert.join.noconditionaltask.size，如果映射联接中的表大小之和小于 hive.auto.convert.join.noconditionaltask.size，则该计划将生成一个映射联接，此问题的问题在于，计算不会考虑由不同哈希表实现产生的开销，因此，如果输入大小的总和小于小边距查询会命中 OOM 的 hive.auto.convert.join.noconditionaltask.size 大小。"
 
 hive-site.xml 文件中的 **Hive.auto.convert.join.noconditionaltask** 已设置为 **true**：
 
@@ -100,21 +105,21 @@ hive-site.xml 文件中的 **Hive.auto.convert.join.noconditionaltask** 已设�
 </property>
 ```
 
-映射联接很可能是 Java 堆空间内存不足错误的原因。 如博客文章 [HDInsight 中的 Hadoop Yarn 内存设置](https://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx)所述，使用 Tez 执行引擎时，所用的堆空间事实上属于 Tez 容器。 请参阅下图，其中描述了 Tez 容器内存。
+映射联接很可能是 Java 堆空间内存不足错误的原因。 如博客文章 [HDInsight 中的 Hadoop Yarn 内存设置](https://docs.microsoft.com/archive/blogs/shanyu/hadoop-yarn-memory-settings-in-hdinsight)所述，使用 Tez 执行引擎时，所用的堆空间事实上属于 Tez 容器。 请参阅下图，其中描述了 Tez 容器内存。
 
 ![Tez 容器内存示意图：Hive 内存不足错误](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 
-如该博客文章中所述，以下两项内存设置定义了堆的容器内存：**hive.tez.container.size** 和 **hive.tez.java.opts**。 从我们的经验来看，内存不足异常并不意味着容器太小， 而是表示 Java 堆大小 (hive.tez.java.opts) 太小。 因此，每当看到内存不足时，可尝试增大 **hive.tez.java.opts**。 必要时，可能需要增大 **hive.tez.container.size**。 **java.opts** 设置应该大约为 **container.size** 的 80%。
+如该博客文章中所述，以下两项内存设置定义了堆的容器内存：**hive.tez.container.size** 和 **hive.tez.java.opts**。 从我们的经验来看，内存不足异常并不意味着容器大小太小。 而是表示 Java 堆大小 (hive.tez.java.opts) 太小。 因此，每当看到内存不足时，可尝试增大 **hive.tez.java.opts**。 必要时，可能需要增大 **hive.tez.container.size**。 **java.opts** 设置应该大约为 **container.size** 的 80%。
 
 > [!NOTE]  
 > **hive.tez.java.opts** 设置必须始终小于 **hive.tez.container.size**。
-> 
-> 
 
-由于 D12 计算机具有 28GB 内存，因此我们决定使用 10GB (10240MB) 的容器大小并将 80% 分配给 java.opts：
+由于 D12 计算机具有 28 GB 内存，因此我们决定使用 10 GB （10240 MB）的容器大小，并将80% 分配给 java。
 
-    SET hive.tez.container.size=10240
-    SET hive.tez.java.opts=-Xmx8192m
+```console
+SET hive.tez.container.size=10240
+SET hive.tez.java.opts=-Xmx8192m
+```
 
 使用新设置，查询可在 10 分钟内成功运行。
 

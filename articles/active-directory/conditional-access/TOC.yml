@@ -6,31 +6,47 @@
       href: overview.md
 - name: 快速入门
   items:
-    - name: 要求对特定应用执行 MFA
-      href: app-based-mfa.md
     - name: 要求接受使用条款
       href: require-tou.md
-    - name: 检测到会话风险时阻止访问
-      href: app-sign-in-risk.md
 - name: 教程
   items:
-    - name: 迁移经典 MFA 策略
-      href: policy-migration-mfa.md
+    - name: 需要 Azure 多重身份验证
+      href: ../authentication/tutorial-enable-azure-mfa.md?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json
 - name: 概念
   expanded: false
   items:
-    - name: 基线保护策略
-      href: concept-baseline-protection.md
-    - name: 条件
-      href: conditions.md
-    - name: 位置条件
-      href: location-condition.md
-    - name: 控制
-      href: controls.md
+    - name: 常用条件访问策略
+      href: concept-conditional-access-policy-common.md
+    - name: 条件访问策略组件
+      href: concept-conditional-access-policies.md
+    - name: 分配
+      items:
+        - name: 用户和组
+          href: concept-conditional-access-users-groups.md
+        - name: 云应用或操作
+          href: concept-conditional-access-cloud-apps.md
+        - name: 条件
+          href: concept-conditional-access-conditions.md
+    - name: 访问控制
+      items:
+        - name: 授予
+          href: concept-conditional-access-grant.md
+        - name: 会话
+          href: concept-conditional-access-session.md
+    - name: 见解和报告
+      href: howto-conditional-access-insights-reporting.md
+    - name: “仅报表”模式
+      href: concept-conditional-access-report-only.md
     - name: 服务依赖项
       href: service-dependencies.md
+    - name: 位置条件
+      href: location-condition.md
     - name: 假设分析工具
       href: what-if-tool.md
+    - name: 自定义控件
+      href: controls.md
+    - name: 经典策略迁移
+      href: policy-migration.md
 - name: 操作指南
   expanded: true
   items:
@@ -38,49 +54,77 @@
       href: plan-conditional-access.md
     - name: 最佳做法
       href: best-practices.md
-    - name: 基线策略
+    - name: 常用条件访问策略
       items:
-        - name: 要求管理员进行 MFA
-          href: howto-baseline-protect-administrators.md
-        - name: 最终用户保护
-          href: howto-baseline-protect-end-users.md
         - name: 阻止传统身份验证
-          href: howto-baseline-protect-legacy-auth.md
-        - name: 要求将 MFA 用于服务管理
-          href: howto-baseline-protect-azure.md
+          href: howto-conditional-access-policy-block-legacy.md
+        - name: 要求对管理员执行 MFA
+          href: howto-conditional-access-policy-admin-mfa.md
+        - name: 要求将 MFA 用于 Azure 管理
+          href: howto-conditional-access-policy-azure-management.md
+        - name: 要求所有用户执行 MFA
+          href: howto-conditional-access-policy-all-users-mfa.md
+        - name: 基于登录风险的条件访问
+          href: howto-conditional-access-policy-risk.md
+        - name: 基于用户风险的条件访问
+          href: howto-conditional-access-policy-risk-user.md
+        - name: 保护安全信息注册
+          href: howto-conditional-access-policy-registration.md
+        - name: 按位置阻止访问
+          href: howto-conditional-access-policy-location.md
+        - name: 要求符合的设备
+          href: howto-conditional-access-policy-compliant-device.md
+        - name: 阻止访问
+          href: howto-conditional-access-policy-block-access.md
     - name: 阻止传统身份验证
       href: block-legacy-authentication.md
-    - name: 迁移经典策略
-      href: policy-migration.md
-    - name: 登录频率和浏览器持久性控制
-      href: howto-conditional-access-session-lifetime.md
     - name: 需要已批准的客户端应用
       href: app-based-conditional-access.md
     - name: 需要应用保护策略
       href: app-protection-based-conditional-access.md
     - name: 需要托管设备
       href: require-managed-devices.md
-    - name: 需要受信任的网络才能进行 MFA 注册
-      href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: 要求对来自不受信任网络的访问尝试执行 MFA
       href: untrusted-networks.md
     - name: 需要使用条款
       href: terms-of-use.md
-- name: 引用
+    - name: 配置“仅报表”模式
+      href: howto-conditional-access-report-only.md
+    - name: 登录频率和浏览器持久性控制
+      href: howto-conditional-access-session-lifetime.md
+    - name: 迁移经典策略
+      href: policy-migration-mfa.md
+    - name: 疑难解答
+      items:
+        - name: 排查登录问题
+          href: troubleshoot-conditional-access.md
+        - name: 使用 What If 工具排查问题
+          href: troubleshoot-conditional-access-what-if.md
+        - name: 常见问题解答
+          href: faqs.md
+- name: 参考
   items:
-    - name: 技术参考
-      href: technical-reference.md
+    - name: Beta 版本图形 API
+      items:
+        - name: conditionalAccessPolicy API
+          href: /graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta
+        - name: namedLocation API
+          href: /graph/api/resources/namedlocation?view=graph-rest-beta
+        - name: countryNamedLocation API
+          href: /graph/api/resources/countrynamedlocation?view=graph-rest-beta
+        - name: ipNamedLocation API
+          href: /graph/api/resources/ipnamedlocation?view=graph-rest-beta
 - name: 资源
   items:
     - name: Azure 反馈论坛
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD'
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: 服务更新
       href: ../fundamentals/whats-new.md
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
     - name: 视频
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

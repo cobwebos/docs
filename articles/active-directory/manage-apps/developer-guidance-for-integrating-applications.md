@@ -3,28 +3,27 @@ title: 注册应用程序以使用 Azure Active Directory | Microsoft Docs
 description: 本文专门为 IT 专业人员编写，提供有关将 Azure 应用程序与 Active Directory 集成的指导。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/30/2018
-ms.author: mimart
-ms.custom: seohack1
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd51bfd377aed2a7edd8c64d2f3dc99c3388e45a
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: f0c66c1fc9a9b93d5b4d3af0440ec3fdc276a9b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65824675"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763408"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>为 Azure Active Directory 开发业务线应用
 本指南提供开发用于 Azure Active Directory (AD) 的业务线 (LoB) 应用程序的概述，目标受众为 Active Directory/Office 365 全局管理员。
 
 ## <a name="overview"></a>概述
-构建集成 Azure AD 的应用程序可让组织的用户使用 Office 365 单一登录。 在 Azure AD 中拥有应用程序可让用户控制应用程序的身份验证策略。 若要详细了解条件访问以及如何使用多重身份验证 (MFA) 保护应用，请参阅 [Configuring access rules](../conditional-access/app-based-mfa.md)（配置访问规则）。
+构建集成 Azure AD 的应用程序可让组织的用户使用 Office 365 单一登录。 在 Azure AD 中拥有应用程序可让用户控制应用程序的身份验证策略。 若要了解有关条件性访问的详细信息以及如何使用多重身份验证（MFA）保护应用，请参阅[配置访问规则](../conditional-access/app-based-mfa.md)。
 
 注册应用程序以使用 Azure Active Directory。 注册应用程序意味着开发人员可以使用 Azure AD 对用户进行身份验证并请求访问用户资源（如电子邮件、日历和文档）。
 
@@ -41,8 +40,8 @@ ms.locfileid: "65824675"
   * 使用 Azure Active Directory 作为 oAuth 授权服务器（保护应用程序公开的 API）
 * 声明让应用程序按预期运行所需的权限，包括：
 
-     - 应用权限（仅限全局管理员）。 例如:另一个 Azure AD 应用程序中的角色成员身份，或相对于 Azure 资源、资源组或订阅的角色成员身份
-     - 委派的权限（任何用户）。 例如:Azure AD、登录和读取配置文件
+     - 应用权限（仅限全局管理员）。 例如：另一个 Azure AD 应用程序中的角色成员身份，或相对于 Azure 资源、资源组或订阅的角色成员身份
+     - 委派的权限（任何用户）。 例如：Azure AD、登录和读取配置文件
 
 > [!NOTE]
 > 默认情况下，任何成员都可以注册应用程序。 要了解如何限定只有特定成员拥有注册应用程序的权限，请参阅 [How applications are added to Azure AD](../develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)（如何将应用程序添加到 Azure AD）。

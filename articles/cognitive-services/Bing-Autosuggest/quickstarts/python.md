@@ -1,25 +1,26 @@
 ---
 title: 快速入门：使用必应自动建议 REST API 和 Python 建议搜索查询
-titlesuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以帮助你快速开始使用必应自动建议 API。
+titleSuffix: Azure Cognitive Services
+description: 了解如何使用必应自动建议 API 快速开始实时建议搜索词。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 38cc9440e3cb5492ef1f45b3907fd2c00867f350
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.custom: tracking-python
+ms.openlocfilehash: ea2605258b37c8dd706c5ff82d060d1a14770f63
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66385014"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608989"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-python"></a>快速入门：使用必应自动建议 REST API 和 Python 建议搜索查询
 
-使用此快速入门开始调用必应自动建议 API 并获取 JSON 响应。 这个简单的 Python 应用程序向 API 发送部分搜索查询，并返回搜索建议。 虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingAutosuggestv7.py) 上获得
+按照此快速入门的要求，学习如何调用必应自动建议 API 并读取 JSON 响应。 这个简单的 Python 应用程序向 API 发送部分搜索查询，并返回搜索建议。 虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingAutosuggestv7.py) 上获得
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -35,7 +36,7 @@ ms.locfileid: "66385014"
     import http.client, urllib.parse, json
     ```
 
-2. 为 API 主机和路径、[市场代码](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)和部分搜索查询创建变量。
+2. 为 API 主机和路径、[市场代码](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)和部分搜索查询创建变量。 使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```python
     subscriptionKey = 'enter key here'
@@ -45,7 +46,7 @@ ms.locfileid: "66385014"
     query = 'sail'
     ```
 
-3. 通过将市场代码追加到 `?mkt=` 参数并将查询追加到 `&q=` 参数来创建参数字符串。
+3. 通过将市场代码追加到 `mkt=` 参数并将查询追加到 `q=` 参数来创建参数字符串。
 
     ```python
     params = '?mkt=' + mkt + '&q=' + query

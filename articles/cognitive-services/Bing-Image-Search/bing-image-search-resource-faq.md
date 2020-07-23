@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
-ms.topic: troubleshooting
+ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 20b8dbcae36555baf3913ab160575a631e204dd9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2d919640431ce014d34372812d9c07bb84d750b2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60917798"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184049"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>有关必应图像搜索 API 的常见问题解答 (FAQ)
 
@@ -25,7 +25,7 @@ ms.locfileid: "60917798"
 
 下面列出了必应图像搜索 API 的可能响应头。
 
-| `Attribute`         | `Description` |
+| 属性           | 说明   |
 | ------------------- | ------------- |
 | `X-MSEdge-ClientID` |必应分配给用户的唯一 ID |
 | `BingAPIs-Market`   |用于完成请求的市场 |
@@ -35,19 +35,22 @@ ms.locfileid: "60917798"
 
 不过，通过 JavaScript 调用必应图像搜索 API 时，浏览器内置的安全功能 (CORS) 可能会阻止访问这些标头的值。
 
-若要访问这些标头，可以通过 CORS 代理发出必应图像搜索 API 请求。 此类代理的响应中有 `Access-Control-Expose-Headers` 标头，可以将响应头列入白名单，让其可供 JavaScript 访问。
+若要访问这些标头，可以通过 CORS 代理发出必应图像搜索 API 请求。 此类代理的响应中有 `Access-Control-Expose-Headers` 头，可以将响应头列入允许列表，让响应头可供 JavaScript 访问。
 
 CORS 代理安装起来很简单，可便于[教程应用](tutorial-bing-image-search-single-page-app.md)访问可选的客户端标头。 首先，如果尚未安装 Node.js，请先[安装](https://nodejs.org/en/download/)。 然后，在命令提示符处输入以下命令。
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-接下来，将 HTML 文件中的必应图像搜索 API 终结点更改为：
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+接下来，将 HTML 文件中的必应图像搜索 API 终结点更改为： \
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 最后，运行下面的命令，启动 CORS 代理：
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 使用教程应用期间，不要关闭命令窗口；关闭窗口会导致代理停止运行。 在搜索结果下的可展开 HTTP 响应头部分中，现在可以看到 `X-MSEdge-ClientID` 响应头（以及其他响应头），并验证此响应头是否对所有请求都相同。
 
@@ -65,4 +68,4 @@ CORS 代理安装起来很简单，可便于[教程应用](tutorial-bing-image-s
 
 ## <a name="see-also"></a>另请参阅
 
- [堆栈溢出：认知服务](https://stackoverflow.com/questions/tagged/bing-api)
+ [Stack Overflow：认知服务](https://stackoverflow.com/questions/tagged/bing-api)

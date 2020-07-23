@@ -1,26 +1,21 @@
 ---
-title: 如何为给定 API 选择权限 | Microsoft Docs
+title: 为给定 API 选择权限
 description: 了解要开发的应用程序的客户端和资源应用程序如何使用权限请求
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 07/15/2019
 ms.author: ryanwi
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42d5ce8a890f6f02e03a16b60f358d9430a09f88
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
-ms.translationtype: MT
+ms.openlocfilehash: 2735403ff02914213d68db27e2635e7329261f5e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545835"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80883884"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>如何为给定 API 选择权限 
 

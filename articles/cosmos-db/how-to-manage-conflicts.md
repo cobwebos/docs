@@ -1,17 +1,17 @@
 ---
-title: 了解如何管理 Azure Cosmos DB 中区域之间的冲突
-description: 了解如何管理 Azure Cosmos DB 中的冲突
-author: markjbrown
+title: 在 Azure Cosmos DB 中管理区域之间的冲突
+description: 了解如何在 Azure Cosmos DB 中通过创建“以最后写入者为准”或自定义冲突解决策略来管理冲突
+author: anfeldma-ms
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 05/23/2019
-ms.author: mjbrown
-ms.openlocfilehash: 63d8b0dc8c446f70b981aacd1a18e6a60a217983
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: HT
+ms.topic: how-to
+ms.date: 06/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: ebc5ea6e39b3c4c5f7451c60fef976f6a12b1312
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240938"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261522"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的冲突解决策略
 
@@ -19,9 +19,11 @@ ms.locfileid: "66240938"
 
 ## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>创建“以最后写入者为准”冲突解决策略
 
-这些示例介绍如何使用“以最后写入者为准”冲突解决策略设置一个容器。 “以最后写入者为准”的默认路径是时间戳字段或 `_ts` 属性。 这还可以设置为数值类型的用户定义路径。 如果发生冲突，最高值优先。 如果路径未设置或无效，则它默认为 `_ts`。 使用此策略解决的冲突不会显示在冲突源中。 此策略可供所有 API 使用。
+这些示例介绍如何使用“以最后写入者为准”冲突解决策略设置一个容器。 “以最后写入者为准”的默认路径是时间戳字段或 `_ts` 属性。 对于 SQL API，也可以将其设置为数值类型的用户定义路径。 如果发生冲突，最高值优先。 如果路径未设置或无效，则它默认为 `_ts`。 使用此策略解决的冲突不会显示在冲突源中。 此策略可供所有 API 使用。
 
-### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK
+### <a name="net-sdk"></a><a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 ```csharp
 DocumentCollection lwwCollection = await createClient.CreateDocumentCollectionIfNotExistsAsync(
@@ -36,7 +38,42 @@ DocumentCollection lwwCollection = await createClient.CreateDocumentCollectionIf
   });
 ```
 
-### <a id="create-custom-conflict-resolution-policy-lww-java-async"></a>Java 异步 SDK
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
+
+```csharp
+Container container = await createClient.GetDatabase(this.databaseName)
+    .CreateContainerIfNotExistsAsync(new ContainerProperties(this.lwwCollectionName, "/partitionKey")
+    {
+        ConflictResolutionPolicy = new ConflictResolutionPolicy()
+        {
+            Mode = ConflictResolutionMode.LastWriterWins,
+            ResolutionPath = "/myCustomId",
+        }
+    });
+```
+---
+
+### <a name="java-v4-sdk"></a><a id="create-custom-conflict-resolution-policy-lww-javav4"></a> Java V4 SDK
+
+# <a name="async"></a>[异步](#tab/api-async)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) 异步 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConflictResolutionLWWAsync)]
+
+# <a name="sync"></a>[Sync](#tab/api-sync)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=ManageConflictResolutionLWWSync)]
+
+--- 
+
+### <a name="java-v2-sdks"></a><a id="create-custom-conflict-resolution-policy-lww-javav2"></a>Java V2 SDK
+
+# <a name="async-java-v2-sdk"></a>[Async Java V2 SDK](#tab/async)
+
+[Async Java V2 SDK](sql-api-sdk-async-java.md) (Maven [com.microsoft.azure::azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
 
 ```java
 DocumentCollection collection = new DocumentCollection();
@@ -46,7 +83,9 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-### <a id="create-custom-conflict-resolution-policy-lww-java-sync"></a>Java 同步 SDK
+# <a name="sync-java-v2-sdk"></a>[Sync Java V2 SDK](#tab/sync)
+
+[Sync Java V2 SDK](sql-api-sdk-java.md) (Maven [com.microsoft.azure::azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb))
 
 ```java
 DocumentCollection lwwCollection = new DocumentCollection();
@@ -55,8 +94,9 @@ ConflictResolutionPolicy lwwPolicy = ConflictResolutionPolicy.createLastWriterWi
 lwwCollection.setConflictResolutionPolicy(lwwPolicy);
 DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, lwwCollection);
 ```
+---
 
-### <a id="create-custom-conflict-resolution-policy-lww-javascript"></a>Node.js/JavaScript/TypeScript SDK
+### <a name="nodejsjavascripttypescript-sdk"></a><a id="create-custom-conflict-resolution-policy-lww-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 const database = client.database(this.databaseName);
@@ -71,17 +111,18 @@ const { container: lwwContainer } = await database.containers.createIfNotExists(
 );
 ```
 
-### <a id="create-custom-conflict-resolution-policy-lww-python"></a>Python SDK
+### <a name="python-sdk"></a><a id="create-custom-conflict-resolution-policy-lww-python"></a>Python SDK
 
 ```python
 udp_collection = {
-                'id': self.udp_collection_name,
-                'conflictResolutionPolicy': {
-                    'mode': 'LastWriterWins',
-                    'conflictResolutionPath': '/myCustomId'
-                    }
-                }
-udp_collection = self.try_create_document_collection(create_client, database, udp_collection)
+    'id': self.udp_collection_name,
+    'conflictResolutionPolicy': {
+        'mode': 'LastWriterWins',
+        'conflictResolutionPath': '/myCustomId'
+    }
+}
+udp_collection = self.try_create_document_collection(
+    create_client, database, udp_collection)
 ```
 
 ## <a name="create-a-custom-conflict-resolution-policy-using-a-stored-procedure"></a>使用存储过程创建自定义冲突解决策略
@@ -99,7 +140,6 @@ udp_collection = self.try_create_document_collection(create_client, database, ud
 
 > [!IMPORTANT]
 > 与任何存储过程一样，自定义冲突解决过程可以访问具有相同分区键的任何数据，并可以执行任何插入、更新或删除操作来解决冲突。
-
 
 此存储过程示例通过从 `/myCustomId` 路径中选择最小值来解决冲突。
 
@@ -157,7 +197,9 @@ function resolver(incomingItem, existingItem, isTombstone, conflictingItems) {
 }
 ```
 
-### <a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>.NET SDK
+### <a name="net-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>.NET SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 ```csharp
 DocumentCollection udpCollection = await createClient.CreateDocumentCollectionIfNotExistsAsync(
@@ -180,7 +222,46 @@ UriFactory.CreateStoredProcedureUri(this.databaseName, this.udpCollectionName, "
 });
 ```
 
-### <a id="create-custom-conflict-resolution-policy-stored-proc-java-async"></a>Java 异步 SDK
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
+
+```csharp
+Container container = await createClient.GetDatabase(this.databaseName)
+    .CreateContainerIfNotExistsAsync(new ContainerProperties(this.udpCollectionName, "/partitionKey")
+    {
+        ConflictResolutionPolicy = new ConflictResolutionPolicy()
+        {
+            Mode = ConflictResolutionMode.Custom,
+            ResolutionProcedure = string.Format("dbs/{0}/colls/{1}/sprocs/{2}", this.databaseName, this.udpCollectionName, "resolver")
+        }
+    });
+
+await container.Scripts.CreateStoredProcedureAsync(
+    new StoredProcedureProperties("resolver", File.ReadAllText(@"resolver.js"))
+);
+```
+---
+
+### <a name="java-v4-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-javav4"></a> Java V4 SDK
+
+# <a name="async"></a>[异步](#tab/api-async)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) 异步 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConflictResolutionSprocAsync)]
+
+# <a name="sync"></a>[Sync](#tab/api-sync)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=ManageConflictResolutionSprocSync)]
+
+--- 
+
+### <a name="java-v2-sdks"></a><a id="create-custom-conflict-resolution-policy-stored-proc-javav2"></a>Java V2 SDK
+
+# <a name="async-java-v2-sdk"></a>[Async Java V2 SDK](#tab/async)
+
+[Async Java V2 SDK](sql-api-sdk-async-java.md) (Maven [com.microsoft.azure::azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
 
 ```java
 DocumentCollection collection = new DocumentCollection();
@@ -190,9 +271,9 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-创建容器后，必须创建 `resolver` 存储过程。
+# <a name="sync-java-v2-sdk"></a>[Sync Java V2 SDK](#tab/sync)
 
-### <a id="create-custom-conflict-resolution-policy-stored-proc-java-sync"></a>Java 同步 SDK
+[Sync Java V2 SDK](sql-api-sdk-java.md) (Maven [com.microsoft.azure::azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb))
 
 ```java
 DocumentCollection udpCollection = new DocumentCollection();
@@ -202,10 +283,11 @@ ConflictResolutionPolicy udpPolicy = ConflictResolutionPolicy.createCustomPolicy
 udpCollection.setConflictResolutionPolicy(udpPolicy);
 DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, udpCollection);
 ```
+---
 
 创建容器后，必须创建 `resolver` 存储过程。
 
-### <a id="create-custom-conflict-resolution-policy-stored-proc-javascript"></a>Node.js/JavaScript/TypeScript SDK
+### <a name="nodejsjavascripttypescript-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 const database = client.database(this.databaseName);
@@ -224,27 +306,29 @@ const { container: udpContainer } = await database.containers.createIfNotExists(
 
 创建容器后，必须创建 `resolver` 存储过程。
 
-### <a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python SDK
+### <a name="python-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python SDK
 
 ```python
 udp_collection = {
-  'id': self.udp_collection_name,
-  'conflictResolutionPolicy': {
-      'mode': 'Custom',
-      'conflictResolutionProcedure': 'dbs/' + self.database_name + "/colls/" + self.udp_collection_name + '/sprocs/resolver'
-      }
-  }
-udp_collection = self.try_create_document_collection(create_client, database, udp_collection)
+    'id': self.udp_collection_name,
+    'conflictResolutionPolicy': {
+        'mode': 'Custom',
+        'conflictResolutionProcedure': 'dbs/' + self.database_name + "/colls/" + self.udp_collection_name + '/sprocs/resolver'
+    }
+}
+udp_collection = self.try_create_document_collection(
+    create_client, database, udp_collection)
 ```
 
 创建容器后，必须创建 `resolver` 存储过程。
-
 
 ## <a name="create-a-custom-conflict-resolution-policy"></a>创建自定义冲突解决策略
 
 这些示例介绍如何使用自定义冲突解决策略设置一个容器。 这些冲突会显示在冲突源中。
 
-### <a id="create-custom-conflict-resolution-policy-dotnet"></a>.NET SDK
+### <a name="net-sdk"></a><a id="create-custom-conflict-resolution-policy-dotnet"></a>.NET SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 ```csharp
 DocumentCollection manualCollection = await createClient.CreateDocumentCollectionIfNotExistsAsync(
@@ -258,7 +342,41 @@ DocumentCollection manualCollection = await createClient.CreateDocumentCollectio
   });
 ```
 
-### <a id="create-custom-conflict-resolution-policy-java-async"></a>Java 异步 SDK
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
+
+```csharp
+Container container = await createClient.GetDatabase(this.databaseName)
+    .CreateContainerIfNotExistsAsync(new ContainerProperties(this.manualCollectionName, "/partitionKey")
+    {
+        ConflictResolutionPolicy = new ConflictResolutionPolicy()
+        {
+            Mode = ConflictResolutionMode.Custom
+        }
+    });
+```
+---
+
+### <a name="java-v4-sdk"></a><a id="create-custom-conflict-resolution-policy-javav4"></a> Java V4 SDK
+
+# <a name="async"></a>[异步](#tab/api-async)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) 异步 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConflictResolutionCustomAsync)]
+
+# <a name="sync"></a>[Sync](#tab/api-sync)
+
+   Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=ManageConflictResolutionCustomSync)]
+
+--- 
+
+### <a name="java-v2-sdks"></a><a id="create-custom-conflict-resolution-policy-javav2"></a>Java V2 SDK
+
+# <a name="async-java-v2-sdk"></a>[Async Java V2 SDK](#tab/async)
+
+[Async Java V2 SDK](sql-api-sdk-async-java.md) (Maven [com.microsoft.azure::azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
 
 ```java
 DocumentCollection collection = new DocumentCollection();
@@ -268,7 +386,9 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-### <a id="create-custom-conflict-resolution-policy-java-sync"></a>Java 同步 SDK
+# <a name="sync-java-v2-sdk"></a>[Sync Java V2 SDK](#tab/sync)
+
+[Sync Java V2 SDK](sql-api-sdk-java.md) (Maven [com.microsoft.azure::azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb))
 
 ```java
 DocumentCollection manualCollection = new DocumentCollection();
@@ -277,8 +397,9 @@ ConflictResolutionPolicy customPolicy = ConflictResolutionPolicy.createCustomPol
 manualCollection.setConflictResolutionPolicy(customPolicy);
 DocumentCollection createdCollection = client.createCollection(database.getSelfLink(), collection, null).getResource();
 ```
+---
 
-### <a id="create-custom-conflict-resolution-policy-javascript"></a>Node.js/JavaScript/TypeScript SDK
+### <a name="nodejsjavascripttypescript-sdk"></a><a id="create-custom-conflict-resolution-policy-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 const database = client.database(this.databaseName);
@@ -292,16 +413,16 @@ const {
 });
 ```
 
-### <a id="create-custom-conflict-resolution-policy-python"></a>Python SDK
+### <a name="python-sdk"></a><a id="create-custom-conflict-resolution-policy-python"></a>Python SDK
 
 ```python
 database = client.ReadDatabase("dbs/" + self.database_name)
 manual_collection = {
-                    'id': self.manual_collection_name,
-                    'conflictResolutionPolicy': {
-                          'mode': 'Custom'
-                        }
-                    }
+    'id': self.manual_collection_name,
+    'conflictResolutionPolicy': {
+        'mode': 'Custom'
+    }
+}
 manual_collection = client.CreateContainer(database['_self'], collection)
 ```
 
@@ -309,13 +430,42 @@ manual_collection = client.CreateContainer(database['_self'], collection)
 
 这些示例介绍如何从容器的冲突源读取。 只有在未自动解决冲突或使用自定义冲突策略的情况下，冲突才显示在冲突源中。
 
-### <a id="read-from-conflict-feed-dotnet"></a>.NET SDK
+### <a name="net-sdk"></a><a id="read-from-conflict-feed-dotnet"></a>.NET SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 ```csharp
 FeedResponse<Conflict> conflicts = await delClient.ReadConflictFeedAsync(this.collectionUri);
 ```
 
-### <a id="read-from-conflict-feed-java-async"></a>Java 异步 SDK
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
+
+```csharp
+FeedIterator<ConflictProperties> conflictFeed = container.Conflicts.GetConflictQueryIterator();
+while (conflictFeed.HasMoreResults)
+{
+    FeedResponse<ConflictProperties> conflicts = await conflictFeed.ReadNextAsync();
+    foreach (ConflictProperties conflict in conflicts)
+    {
+        // Read the conflicted content
+        MyClass intendedChanges = container.Conflicts.ReadConflictContent<MyClass>(conflict);
+        MyClass currentState = await container.Conflicts.ReadCurrentAsync<MyClass>(conflict, new PartitionKey(intendedChanges.MyPartitionKey));
+
+        // Do manual merge among documents
+        await container.ReplaceItemAsync<MyClass>(intendedChanges, intendedChanges.Id, new PartitionKey(intendedChanges.MyPartitionKey));
+
+        // Delete the conflict
+        await container.Conflicts.DeleteAsync(conflict, new PartitionKey(intendedChanges.MyPartitionKey));
+    }
+}
+```
+---
+
+### <a name="java-v2-sdks"></a><a id="read-from-conflict-feed-javav2"></a>Java V2 SDK
+
+# <a name="async-java-v2-sdk"></a>[Async Java V2 SDK](#tab/async)
+
+[Async Java V2 SDK](sql-api-sdk-async-java.md) (Maven [com.microsoft.azure::azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
 
 ```java
 FeedResponse<Conflict> response = client.readConflicts(this.manualCollectionUri, null)
@@ -324,8 +474,9 @@ for (Conflict conflict : response.getResults()) {
     /* Do something with conflict */
 }
 ```
+# <a name="sync-java-v2-sdk"></a>[Sync Java V2 SDK](#tab/sync)
 
-### <a id="read-from-conflict-feed-java-sync"></a>Java 同步 SDK
+[Sync Java V2 SDK](sql-api-sdk-java.md) (Maven [com.microsoft.azure::azure-documentdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb))
 
 ```java
 Iterator<Conflict> conflictsIterator = client.readConflicts(this.collectionLink, null).getQueryIterator();
@@ -334,8 +485,9 @@ while (conflictsIterator.hasNext()) {
     /* Do something with conflict */
 }
 ```
+---
 
-### <a id="read-from-conflict-feed-javascript"></a>Node.js/JavaScript/TypeScript SDK
+### <a name="nodejsjavascripttypescript-sdk"></a><a id="read-from-conflict-feed-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 const container = client
@@ -345,7 +497,7 @@ const container = client
 const { result: conflicts } = await container.conflicts.readAll().toArray();
 ```
 
-### <a id="read-from-conflict-feed-python"></a>Python
+### <a name="python"></a><a id="read-from-conflict-feed-python"></a>Python
 
 ```python
 conflicts_iterator = iter(client.ReadConflicts(self.manual_collection_link))
@@ -359,10 +511,10 @@ while conflict:
 
 了解以下 Azure Cosmos DB 概念：
 
-* [全球分布 - 揭秘](global-dist-under-the-hood.md)
-* [如何配置应用程序中的多主数据库](how-to-multi-master.md)
-* [配置多宿主客户端](how-to-manage-database-account.md#configure-multiple-write-regions)
-* [在 Azure Cosmos DB 帐户中添加或删除区域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-* [如何配置应用程序中的多主数据库](how-to-multi-master.md)。
-* [分区和数据分布](partition-data.md)
-* [Azure Cosmos DB 中的索引](indexing-policies.md)
+- [全球分布 - 揭秘](global-dist-under-the-hood.md)
+- [如何在应用程序中配置多主数据库](how-to-multi-master.md)
+- [配置多宿主客户端](how-to-manage-database-account.md#configure-multiple-write-regions)
+- [在 Azure Cosmos DB 帐户中添加或删除区域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+- [如何配置应用程序中的多主数据库](how-to-multi-master.md)。
+- [分区和数据分布](partition-data.md)
+- [Azure Cosmos DB 中的索引](indexing-policies.md)

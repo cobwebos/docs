@@ -1,10 +1,10 @@
 ---
-title: 教程 - 在 Azure 中的 Linux 虚拟机上部署 LAMP | Microsoft Docs
+title: 教程 - 在 Azure 中的 Linux 虚拟机上部署 LAMP
 description: 本教程介绍如何在 Azure 中的 Linux 虚拟机上安装 LAMP 堆栈
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 6c12603a-e391-4d3e-acce-442dd7ebb2fe
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: c69c7055e420ffa64e547f5c3fe53d997cf90168
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 2a636ae5609d9cb5c81782af5a419a27d7880106
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753701"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80154366"
 ---
 # <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>教程：在 Azure 中的 Linux 虚拟机上安装 LAMP Web 服务器
 
@@ -35,7 +35,7 @@ ms.locfileid: "55753701"
 
 此设置用于快速测试或概念证明。 有关 LAMP 堆栈的详细信息，包括针对生产环境的建议，请参阅 [Ubuntu 文档](https://help.ubuntu.com/community/ApacheMySQLPHP)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+本教程在 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 中使用 CLI，后者已不断更新到最新版本。 若要打开 Cloud Shell，请从任何代码块的顶部选择“试一试”  。
 
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
@@ -113,7 +113,7 @@ sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程在 Azure 中部署了一台 LAMP 服务器。 你已了解如何：
+本教程在 Azure 中部署了一台 LAMP 服务器。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Ubuntu VM
@@ -122,10 +122,10 @@ sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 > * 验证安装和配置
 > * 在 LAMP 服务器上安装 WordPress
 
-转到下一教程，了解如何使用 SSL 证书保护 Web 服务器。
+转到下一教程，了解如何使用 TLS/SSL 证书保护 Web 服务器。
 
 > [!div class="nextstepaction"]
-> [使用 SSL 保护 Web 服务器](tutorial-secure-web-server.md)
+> [使用 TLS 保护 Web 服务器](tutorial-secure-web-server.md)
 
 [2]: ./media/tutorial-lamp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lamp-stack/apachesuccesspage.png

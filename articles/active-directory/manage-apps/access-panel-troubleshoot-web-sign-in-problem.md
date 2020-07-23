@@ -3,25 +3,25 @@ title: 登录到访问面板网站时出现问题 | Microsoft Docs
 description: 指导解决尝试登录以使用访问面板时可能会遇到的问题
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviwer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7c6a9c3f26c8939176197a2ecf2fcd6026e9928
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 4f2ad4db231c616b3022ecafc62b12d6d81b67fc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784308"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84760807"
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>登录到访问面板网站时出现问题
 
@@ -39,7 +39,7 @@ ms.locfileid: "65784308"
 
 ## <a name="general-issues-to-check-first"></a>首先要检查的常规问题 
 
--   确保用户登录到正确的 URL：<https://myapps.microsoft.com>
+-   请确保用户登录到**正确的 URL**：<https://myapps.microsoft.com>
 
 -   确保用户的浏览器已将该 URL 添加到其**受信任的站点**
 
@@ -51,7 +51,7 @@ ms.locfileid: "65784308"
 
 -   确保**多重身份验证**未阻止用户访问。
 
--   确保**条件访问策略**或 **Identity Protection** 策略不会阻止用户访问。
+-   确保**条件访问策略**或**标识保护**策略不会阻止用户访问。
 
 -   确保用户的**身份验证联系信息**是最新的以允许强制执行多重身份验证或条件访问策略。
 
@@ -104,9 +104,9 @@ ms.locfileid: "65784308"
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在导航菜单中，单击“用户和组”。
+4.  单击导航菜单中的 "**用户和组**"。
 
-5.  单击“所有用户”。
+5.  单击“所有用户”****。
 
 6.  **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
@@ -122,15 +122,15 @@ ms.locfileid: "65784308"
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在导航菜单中，单击“用户和组”。
+4.  单击导航菜单中的 "**用户和组**"。
 
-5.  单击“所有用户”。
+5.  单击“所有用户”****。
 
 6.  **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
-7.  单击“配置文件”。
+7.  单击 "**配置文件**"。
 
-8.  在“设置”下，确保“阻止登录”设置为“否”。
+8.  在“设置”**** 下，确保“阻止登录”**** 设置为“否”****。
 
 ### <a name="reset-a-users-password"></a>重置用户的密码
 
@@ -142,21 +142,21 @@ ms.locfileid: "65784308"
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在导航菜单中，单击“用户和组”。
+4.  单击导航菜单中的 "**用户和组**"。
 
-5.  单击“所有用户”。
+5.  单击“所有用户”****。
 
 6.  **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
-7.  单击用户窗格顶部的“重置密码”按钮。
+7.  单击用户窗格顶部的“重置密码”**** 按钮。
 
-8.  在出现的“重置密码”窗格上，单击“重置密码”按钮。
+8.  在出现的“重置密码”**** 窗格上，单击“重置密码”**** 按钮。
 
 9.  为用户复制**临时密码**或**输入新密码**。
 
 10. 告知用户此新密码，在他们下一次登录到 Azure Active Directory 时，需要更改此密码。
 
-### <a name="enable-self-service-password-reset"></a>启用自助服务密码重置
+### <a name="enable-self-service-password-reset"></a>启用自助式密码重置
 
 若要启用自助服务密码重置，请执行以下部署步骤：
 
@@ -174,13 +174,13 @@ ms.locfileid: "65784308"
 
 3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4. 在导航菜单中，单击“用户和组”。
+4. 单击导航菜单中的 "**用户和组**"。
 
-5. 单击“所有用户”。
+5. 单击“所有用户”****。
 
-6. 单击窗格顶部的“多重身份验证”按钮。
+6. 单击窗格顶部的“多重身份验证”**** 按钮。
 
-7. 在**多重身份验证管理门户**加载后，确保位于“用户”选项卡上。
+7. 在**多重身份验证管理门户**加载后，确保位于 "**用户**" 选项卡上。
 
 8. 通过搜索、筛选或排序在用户列表中找到用户。
 
@@ -193,7 +193,7 @@ ms.locfileid: "65784308"
 
 ### <a name="check-a-users-authentication-contact-info"></a>检查用户的身份验证联系信息
 
-若要检查用于多重身份验证、条件访问、Identity Protection 和密码重置的用户身份验证联系信息，请执行以下步骤：
+若要检查用于多重身份验证、条件访问、标识保护和密码重置的用户身份验证联系信息，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
@@ -201,15 +201,15 @@ ms.locfileid: "65784308"
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在导航菜单中，单击“用户和组”。
+4.  单击导航菜单中的 "**用户和组**"。
 
-5.  单击“所有用户”。
+5.  单击“所有用户”****。
 
 6.  **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
-7.  单击“配置文件”。
+7.  单击 "**配置文件**"。
 
-8.  向下滚动到“身份验证联系信息”。
+8.  向下滚动到“身份验证联系信息”****。
 
 9.  **查看**为用户注册的数据并根据需要进行更新。
 
@@ -223,13 +223,13 @@ ms.locfileid: "65784308"
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在导航菜单中，单击“用户和组”。
+4.  单击导航菜单中的 "**用户和组**"。
 
-5.  单击“所有用户”。
+5.  单击“所有用户”****。
 
 6.  **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
-7.  单击“组”查看用户所属的组。
+7.  单击“组”**** 查看用户所属的组。
 
 ### <a name="check-a-users-assigned-licenses"></a>检查用户的已分配许可证
 
@@ -241,13 +241,13 @@ ms.locfileid: "65784308"
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在导航菜单中，单击“用户和组”。
+4.  单击导航菜单中的 "**用户和组**"。
 
-5.  单击“所有用户”。
+5.  单击“所有用户”****。
 
 6.  **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
-7.  单击“许可证”查看当前已分配给用户的许可证。
+7.  单击“许可证”**** 查看当前已分配给用户的许可证。
 
 ### <a name="assign-a-user-a-license"></a>为用户分配许可证 
 
@@ -259,21 +259,21 @@ ms.locfileid: "65784308"
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在导航菜单中，单击“用户和组”。
+4.  单击导航菜单中的 "**用户和组**"。
 
-5.  单击“所有用户”。
+5.  单击“所有用户”****。
 
 6.  **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
-7.  单击“许可证”查看当前已分配给用户的许可证。
+7.  单击“许可证”**** 查看当前已分配给用户的许可证。
 
-8.  单击“分配”按钮。
+8.  单击 "**分配**" 按钮。
 
 9.  从可用产品列表中选择**一个或多个产品**。
 
-10. **可选**单击“分配选项”项精确分配产品。 完成此操作后，单击“确定”。
+10. **可选**单击“分配选项”**** 项精确分配产品。 完成此操作后，单击“确定”****。
 
-11. 单击“分配”按钮，将这些许可证分配给此用户。
+11. 单击“分配”**** 按钮，将这些许可证分配给此用户。
 
 ## <a name="if-these-troubleshooting-steps-do-not-resolve-the-issue"></a>如果这些故障排除步骤未解决此问题
 

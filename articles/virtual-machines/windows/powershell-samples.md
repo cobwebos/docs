@@ -1,33 +1,25 @@
 ---
-title: Azure 虚拟机 PowerShell 示例 | Microsoft 文档
+title: Azure 虚拟机 PowerShell 示例
 description: Azure 虚拟机 PowerShell 示例
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: sample
 ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 576fe268bec12c16c7c2e2076dfa066c908693d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 712ff713a4aa7c014b14323cea7c0d6be1c9f53c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60583683"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202228"
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Azure 虚拟机 PowerShell 示例
 
 下表提供了用于创建和管理 Windows 虚拟机 (VM) 的 PowerShell 脚本示例的链接。
 
-| | |
+| Script | 说明 |
 |---|---|
 |**创建虚拟机**||
 | [快速创建虚拟机](./../scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 根据简单的提示创建资源组、虚拟机和所有相关资源。|
@@ -50,4 +42,5 @@ ms.locfileid: "60583683"
 | [加密 VM 及其数据磁盘](./../scripts/virtual-machines-windows-powershell-sample-encrypt-vm.md?toc=%2fpowershell%2fazure%2ftoc.json) | 创建 Azure Key Vault、加密密钥和服务主体，然后对 VM 进行加密。 |
 |**监视虚拟机**||
 | [使用 Azure Monitor 监视 VM](./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 创建一个虚拟机，安装 Azure Log Analytics 代理，然后在 Log Analytics 工作区中注册该 VM。  |
+| [使用 PowerShell 收集订阅中所有 VM 的详细信息](../scripts/virtual-machines-powershell-sample-collect-vm-details.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 创建一个 csv，其中包含所提供订阅中 VM 的 VM 名称、资源组名称、区域、虚拟网络、子网、专用 IP 地址、OS 类型和公共 IP 地址。
 | | |

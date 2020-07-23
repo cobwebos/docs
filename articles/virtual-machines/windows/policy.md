@@ -1,26 +1,20 @@
 ---
-title: 通过 Azure 中 Windows VM 上的策略强制执行安全性 | Microsoft Docs
-description: 如何将策略应用到 Azure 资源管理器 Windows 虚拟机
-services: virtual-machines-windows
-documentationcenter: ''
-author: singhkays
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 0b71ba54-01db-43ad-9bca-8ab358ae141b
+title: 在 Azure 中的 Windows Vm 上强制实施安全策略
+description: 如何向 Azure Resource Manager Windows 虚拟机应用策略
+author: mimckitt
+manager: vashan
 ms.service: virtual-machines-windows
+ms.subservice: security
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
-ms.author: kasing
-ms.openlocfilehash: 654c23474ebc96a6873f82f51f969da5c7d2d20c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: mimckitt
+ms.openlocfilehash: a0ff463bd7f77f8a4a138bf41698059102809215
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60780796"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82098690"
 ---
 # <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>使用 Azure 资源管理器向 Windows VM 应用策略
 通过使用策略，组织可以在整个企业中强制实施各种约定和规则。 强制实施所需行为有助于消除风险，同时为组织的成功做出贡献。 本文将介绍如何使用 Azure 资源管理器策略，为组织中的虚拟机定义相应行为。
@@ -37,7 +31,6 @@ ms.locfileid: "60780796"
       {
         "field": "type",
         "in": [
-          "Microsoft.Compute/disks",
           "Microsoft.Compute/virtualMachines",
           "Microsoft.Compute/VirtualMachineScaleSets"
         ]
@@ -106,7 +99,7 @@ ms.locfileid: "60780796"
 }
 ```
 
-若要了解策略字段，请参阅[策略别名](../../governance/policy/concepts/definition-structure.md#aliases)。
+有关策略字段的信息，请参阅[策略别名](../../governance/policy/concepts/definition-structure.md#aliases)。
 
 ## <a name="managed-disks"></a>托管磁盘
 
@@ -158,7 +151,7 @@ ms.locfileid: "60780796"
 
 ## <a name="images-for-virtual-machines"></a>虚拟机映像
 
-出于安全考虑，可要求在环境中部署仅已批准的自定义映像。 可以指定包含已批准映像的资源组，或特定已批准映像。
+出于安全考虑，可要求仅在环境中部署已批准的自定义映像。 可以指定包含已批准映像的资源组，或特定已批准映像。
 
 下例需要来自已批准资源组的映像：
 
@@ -198,7 +191,7 @@ ms.locfileid: "60780796"
 
 ## <a name="virtual-machine-extensions"></a>虚拟机扩展
 
-建议禁止某些扩展类型的使用情况。 例如，扩展名可能与某些自定义虚拟机映像不兼容。 下例演示如何阻止特定扩展。 该示例使用发布者和类型来确定要阻止的扩展。
+可能想要禁止使用某些类型的扩展。 例如，扩展名可能与某些自定义虚拟机映像不兼容。 下例演示如何阻止特定扩展。 该示例使用发布者和类型来确定要阻止的扩展。
 
 ```json
 {

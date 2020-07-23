@@ -1,16 +1,17 @@
 ---
-author: sptramer
-ms.service: azure-powershell
 ms.topic: include
-ms.date: 02/13/2019
-ms.author: sttramer
-ms.openlocfilehash: f72b9a9738bf44711051947d9422047f4c1f7c7f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.date: 06/05/2019
+author: mikefrobbins
+ms.author: mirobb
+manager: barbkess
+ms.openlocfilehash: 32a725f6f84a1a79df9b1211d95ecb2ac530aa07
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66111320"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85378478"
 ---
-本示例需要 Azure PowerShell。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 
+本示例需要 Azure PowerShell。 运行 `Get-Module -ListAvailable Az` 即可查找版本。
+如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 
 
-运行 `Connect-AzAccount`，创建与 Azure 的连接。 
+通过运行 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure。 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ee7e58aa6298977b279d0d538fefb24da657388
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 08453928ab000cf906c451fa6c1cd619a00ee4ca
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357024"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67561201"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>教程：将 Appraisd 与 Azure Active Directory 集成
 
@@ -89,7 +89,7 @@ ms.locfileid: "66357024"
     > [!NOTE]
     > 在本教程稍后将介绍的“Appraisd SSO 配置”页面上，你获取了实际的登录 URL 和中继状态值。
 
-1. Appraisd 应用程序需要特定格式的 SAML 断言，这要求向“SAML 令牌属性”配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 与 **user.userprincipalname**相映射。 Appraisd 应用程序要求将  **nameidentifier** 与  **user.mail** 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射 ****  。
+1. Appraisd 应用程序需要特定格式的 SAML 断言，这要求向“SAML 令牌属性”配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 Appraisd 应用程序要求通过 **user.mail** 对 **nameidentifier** 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射。 
 
     ![image](common/edit-attribute.png)
 
@@ -147,7 +147,7 @@ ms.locfileid: "66357024"
 1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤  ：
    1. 在“名称”  字段中，输入 `B. Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B. Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B. Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
    1. 单击“创建”。 
 
@@ -161,12 +161,12 @@ ms.locfileid: "66357024"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
 1. 在“用户和组”对话框中，选择“用户”列表中的“B. Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-appraisd-test-user"></a>创建 Appraisd 测试用户

@@ -11,34 +11,33 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: adsolank;juliako;
-ms.openlocfilehash: 304ecda320e1fdd9573bc961fde74efe03400aa3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.date: 09/22/2019
+ms.author: juliako
+ms.reviewer: adsolank
+ms.openlocfilehash: c24218dc116803ca0e0a1f166b7b54b24fc4d5ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712956"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78163788"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>使用 Azure Media Indexer 2 预览版为媒体文件编制索引
-## <a name="overview"></a>概述
-Azure Media Indexer 2 预览版媒体处理器 (MP) 让你能够使媒体文件和内容可供搜索，以及生成隐藏式字幕跟踪。 与 [Azure Media Indexer](media-services-index-content.md)以前的版本相比， **Azure Media Indexer 2 预览版** 执行索引的速度更快，并提供更广泛的语言支持。 支持的语言包括英语、西班牙语、法语、德语、意大利语、中文（普通话，简体）、葡萄牙语、阿拉伯语、俄语和日语。
+
+> [!NOTE]
+> 将停用**Azure Media Indexer 2**媒体处理器。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。 [Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)将替换此旧媒体处理器。 有关详细信息，请参阅[从 Azure Media Indexer 和 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)。
+
+Azure Media Indexer 2 预览版媒体处理器 (MP) 让你能够使媒体文件和内容可供搜索，以及生成隐藏式字幕跟踪****。 与 [Azure Media Indexer](media-services-index-content.md)以前的版本相比， **Azure Media Indexer 2 预览版** 执行索引的速度更快，并提供更广泛的语言支持。 支持的语言包括英语、西班牙语、法语、德语、意大利语、中文（普通话，简体）、葡萄牙语、阿拉伯语、俄语和日语。
 
 **Azure Media Indexer 2 预览版** MP 目前为预览版。
 
 本文演示如何使用 **Azure Media Indexer 2 预览版**创建索引作业。
 
-> [!NOTE]
-> 请注意以下事项：
-> 
-> Indexer 2 在 Azure China 和 Azure Government 中不受支持。
-> 
-> 在编制内容的索引时，请确保使用语音极其清晰的媒体文件（没有背景音乐、噪音、特效音或麦克风电流嘶嘶声）。 适当内容的某些示例包括：录制的会议、讲座或演示内容。 以下内容可能不适合用于编制索引：电影、电视剧、混合了音频和声音特效的任何内容、带有背景噪音（电流嘶嘶声）的不当录制内容。
-> 
-> 
+## <a name="considerations"></a>注意事项
 
-本文提供有关 **Azure Media Indexer 2 预览版**的详细信息，并演示如何通过适用于 .NET 的媒体服务 SDK 使用它
-
+请注意以下事项：
+ 
+* 索引器2在 Azure 中国世纪互联和 Azure 政府版中不受支持。
+* 在编制内容的索引时，请确保使用语音极其清晰的媒体文件（没有背景音乐、噪音、特效音或麦克风电流嘶嘶声）。 适当内容的某些示例包括：录制的会议、讲座或演示内容。 以下内容可能不适合用于编制索引：电影、电视剧、混合了音频和声音特效的任何内容、带有背景噪音（电流嘶嘶声）的不当录制内容。
+ 
 ## <a name="input-and-output-files"></a>输入和输出文件
 ### <a name="input-files"></a>输入文件
 音频或视频文件
@@ -46,7 +45,6 @@ Azure Media Indexer 2 预览版媒体处理器 (MP) 让你能够使媒体文件�
 ### <a name="output-files"></a>输出文件
 索引作业可以生成以下格式的隐藏字幕文件：  
 
-* **SAMI**
 * **TTML**
 * **WebVTT**
 
@@ -87,7 +85,7 @@ Azure Media Indexer 2 预览版支持以下语言的语音转换为文本功能�
 * 日语 [JaJp]
 * 俄语 [RuRu]
 * 英式英语 [EnGb]
-* 西班牙语 （墨西哥） [EsMx] 
+* 西班牙语（墨西哥） [EsMx] 
 
 ## <a name="supported-file-types"></a>支持的文件类型
 
@@ -120,7 +118,7 @@ Azure Media Indexer 2 预览版支持以下语言的语音转换为文本功能�
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
+设置开发环境，并在 app.config 文件中填充连接信息，如[通过 .net 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
 
 #### <a name="example"></a>示例
 

@@ -1,22 +1,34 @@
 ---
-title: 诊断 Azure Cosmos DB Java 异步 SDK 并对其进行故障排除
-description: 使用客户端日志记录等功能和其他第三方工具来确定、诊断和排查 Azure Cosmos DB 问题。
-author: moderakh
+title: 诊断 Azure Cosmos DB Async Java SDK v2 并对其进行故障排除
+description: 使用客户端日志记录等功能和其他第三方工具来确定、诊断和排查 Async Java SDK v2 中的 Azure Cosmos DB 问题。
+author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 04/30/2019
-ms.author: moderakh
+ms.date: 05/11/2020
+ms.author: anfeldma
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 572139743c66546622450cef8f8a0fa264d24779
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
-ms.translationtype: MT
+ms.openlocfilehash: 10ad2fa3eb03254894c51fff66389ec3a8da4c38
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65519985"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651891"
 ---
-# <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>排查将 Java 异步 SDK 与 Azure Cosmos DB SQL API 帐户配合使用时出现的问题
+# <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>排查将 Azure Cosmos DB Async Java SDK v2 于 SQL API 帐户配合使用时出现的问题
+
+> [!div class="op_single_selector"]
+> * [Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
+> * [Async Java SDK v2](troubleshoot-java-async-sdk.md)
+> * [.NET](troubleshoot-dot-net-sdk.md)
+> 
+
+> [!IMPORTANT]
+> 这不是最新的 Azure Cosmos DB Java SDK！ 应将项目升级到 [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md)，然后阅读 Azure Cosmos DB Java SDK v4 [故障排除指南](troubleshoot-java-sdk-v4-sql.md)。 请按照[迁移到 Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) 指南和 [Reactor 与 RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) 指南中的说明进行升级。 
+>
+> 本文仅介绍 Azure Cosmos DB Async Java SDK v2 的故障排除。 有关详细信息，请参阅 Azure Cosmos DB Async Java SDK v2 [发行说明](sql-api-sdk-async-java.md)、[Maven 存储库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)和[性能提示](performance-tips-async-java.md)。
+>
+
 本文介绍了将 [Java 异步 SDK](sql-api-sdk-async-java.md) 与 Azure Cosmos DB SQL API 帐户配合使用时的常见问题、解决方法、诊断步骤和工具。
 Java 异步 SDK 提供客户端逻辑表示用于访问 Azure Cosmos DB SQL API。 本文介绍了在遇到任何问题时可以提供帮助的工具和方法。
 
@@ -27,7 +39,7 @@ Java 异步 SDK 提供客户端逻辑表示用于访问 Azure Cosmos DB SQL API�
 * 查看[性能提示](performance-tips-async-java.md)并按照建议的做法进行操作。
 * 阅读本文的其余部分，如果找不到解决方案， 则提交 [GitHub 问题](https://github.com/Azure/azure-cosmosdb-java/issues)。
 
-## <a name="common-issues-workarounds"></a>常见问题和解决方法
+## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>常见问题和解决方法
 
 ### <a name="network-issues-netty-read-timeout-failure-low-throughput-high-latency"></a>网络问题、Netty 读取超时故障、低吞吐量、高延迟
 
@@ -38,7 +50,7 @@ Java 异步 SDK 提供客户端逻辑表示用于访问 Azure Cosmos DB SQL API�
 #### <a name="connection-throttling"></a>连接限制
 连接限制可能会因[主机上的连接限制]或 [Azure SNAT (PAT) 端口耗尽]而出现。
 
-##### <a name="connection-limit-on-host"></a>主机上的连接限制
+##### <a name="connection-limit-on-a-host-machine"></a><a name="connection-limit-on-host"></a>主机上的连接限制
 某些 Linux 系统（例如 Red Hat）的打开文件总数存在上限。 Linux 中的套接字以文件形式实现，因此，此上限也限制了连接总数。
 运行以下命令。
 
@@ -47,7 +59,7 @@ ulimit -a
 ```
 允许的最大打开文件数（标识为“nofile”）至少需要是连接池大小的两倍。 有关详细信息，请参阅[性能提示](performance-tips-async-java.md)。
 
-##### <a name="snat"></a>Azure SNAT (PAT) 端口耗尽
+##### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT (PAT) 端口耗尽
 
 如果应用部署在没有公共 IP 地址的 Azure 虚拟机上，则默认情况下，[Azure SNAT 端口](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)用于建立与 VM 外部任何终结点的连接。 从 VM 到 Azure Cosmos DB 终结点，允许的连接数受 [Azure SNAT 配置](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)的限制。
 
@@ -58,15 +70,15 @@ ulimit -a
     启用服务终结点后，不再从公共 IP 向 Azure Cosmos DB 发送请求， 而是发送虚拟网络和子网标识。 如果仅允许公共 IP，则此更改可能会导致防火墙丢失。 如果使用防火墙，则在启用服务终结点后，请使用[虚拟网络 ACL](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl) 将子网添加到防火墙。
 * 将公共 IP 分配给 Azure VM。
 
-##### <a name="cant-connect"></a>不能访问的服务-防火墙
-``ConnectTimeoutException`` 指示 SDK 无法访问的服务。
-使用直接模式下时，可能会收到失败如下所示：
+##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>无法访问服务 - 防火墙
+``ConnectTimeoutException`` 指示 SDK 无法访问服务。
+使用直接模式时，可能会出现类似如下的错误：
 ```
 GoneException{error=null, resourceAddress='https://cdb-ms-prod-westus-fd4.documents.azure.com:14940/apps/e41242a5-2d71-5acb-2e00-5e5f744b12de/services/d8aa21a5-340b-21d4-b1a2-4a5333e7ed8a/partitions/ed028254-b613-4c2a-bf3c-14bd5eb64500/replicas/131298754052060051p//', statusCode=410, message=Message: The requested resource is no longer available at the server., getCauseInfo=[class: class io.netty.channel.ConnectTimeoutException, message: connection timed out: cdb-ms-prod-westus-fd4.documents.azure.com/101.13.12.5:14940]
 ```
 
-如果必须在应用程序计算机上运行的防火墙，打开端口范围 10000 到 20000 直接模式下使用它们。
-此外请按照[主机计算机上的连接限制](#connection-limit-on-host)。
+如果应用计算机上有防火墙正在运行，请打开端口范围 10,000 到 20,000，这是直接模式使用的端口范围。
+请遵循[主机上的连接限制](#connection-limit-on-host)。
 
 #### <a name="http-proxy"></a>HTTP 代理
 
@@ -80,6 +92,9 @@ SDK 使用 [Netty](https://netty.io/) IO 库与 Azure Cosmos DB 通信。 SDK �
 Netty IO 线程仅用于非阻塞性 Netty IO 工作。 SDK 将其中一个 Netty IO 线程上的 API 调用结果返回至应用代码。 如果应用在收到 Netty 线程上的结果后执行持续时间较长的操作，则 SDK 可能会没有足够的 IO 线程来执行其内部 IO 工作。 此类应用编码可能会导致低吞吐量、高延迟和 `io.netty.handler.timeout.ReadTimeoutException` 故障。 解决方法是在知道操作需要耗费一定时间的情况下切换线程。
 
 例如，请查看以下代码片段。 你可能会在 Netty 线程上执行耗时超过几毫秒的持续时间较长的工作。 在这种情况下，你最终会陷入没有 Netty IO 线程来处理 IO 工作的状态。 因此，你会遇到 ReadTimeoutException 故障。
+
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-readtimeout"></a>Async Java SDK V2 (Maven com.microsoft.azure::azure-cosmosdb)
+
 ```java
 @Test
 public void badCodeWithReadTimeoutException() throws Exception {
@@ -131,13 +146,19 @@ public void badCodeWithReadTimeoutException() throws Exception {
     assertThat(failureCount.get()).isGreaterThan(0);
 }
 ```
-   解决方法是更改用于执行需要耗费一定时间的工作的线程。 为应用定义计划程序的单一实例。
-   ```java
+解决方法是更改用于执行需要耗费一定时间的工作的线程。 为应用定义计划程序的单一实例。
+
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-scheduler"></a>Async Java SDK V2 (Maven com.microsoft.azure::azure-cosmosdb)
+
+```java
 // Have a singleton instance of an executor and a scheduler.
 ExecutorService ex  = Executors.newFixedThreadPool(30);
 Scheduler customScheduler = rx.schedulers.Schedulers.from(ex);
-   ```
-   你可能会需要完成需耗费一定时间的工作，例如，计算工作量繁重的工作或阻塞性 IO。 在这种情况下，使用 `.observeOn(customScheduler)` API 将线程切换为 `customScheduler` 提供的辅助角色。
+```
+你可能会需要完成需耗费一定时间的工作，例如，计算工作量繁重的工作或阻塞性 IO。 在这种情况下，使用 `.observeOn(customScheduler)` API 将线程切换为 `customScheduler` 提供的辅助角色。
+
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-applycustomscheduler"></a>Async Java SDK V2 (Maven com.microsoft.azure::azure-cosmosdb)
+
 ```java
 Observable<ResourceResponse<Document>> createObservable = client
         .createDocument(getCollectionLink(), docDefinition, null, false);
@@ -167,17 +188,17 @@ Azure Cosmos DB 仿真器 HTTPS 证书是自签名证书。 若要将 SDK 与仿
 Exception in thread "main" java.lang.NoSuchMethodError: rx.Observable.toSingle()Lrx/Single;
 ```
 
-上述异常表明 RxJava lib (例如，1.2.2) 的较旧版本上具有依赖关系。 我们的 SDK 依赖于 RxJava 1.3.8 RxJava 的早期版本中不可用的 api。 
+上述异常表明你依赖于旧版本的 RxJava 库（例如 1.2.2）。 我们的 SDK 依赖于 RxJava 1.3.8，它具有早期版本的 RxJava 中没有的 API。 
 
-解决方法的此类 issuses 是确定哪些其他依赖项将在 RxJava 1.2.2 和排除 RxJava 1.2.2，对的可传递依赖关系，并允许 CosmosDB SDK 自带的较新版本。
+此类问题的解决方法是，确定其他哪些依赖项会引入 RxJava-1.2.2，并排除对 RxJava-1.2.2 的传递依赖关系，让 CosmosDB SDK 能够引入较新版本。
 
-若要确定哪些库引入了 RxJava 1.2.2 项目 pom.xml 文件旁边运行以下命令：
+若要确定引入 RxJava-1.2.2 的库，请在项目 pom.xml 文件旁边运行以下命令：
 ```bash
 mvn dependency:tree
 ```
-有关详细信息，请参阅[maven 依赖项树指南](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html)。
+有关详细信息，请参阅 [maven 依赖项树指南](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html)。
 
-一旦您认定了 RxJava 1.2.2 是项目的可传递依赖项的其他依赖项，您可以修改依赖项 lib pom 文件和排除 RxJava 可传递依赖项中它：
+确定 RxJava-1.2.2 是项目中其他哪个依赖项的传递依赖项，即可在 pom 文件中修改该库的依赖项，并排除它带来的 RxJava 传递依赖关系：
 
 ```xml
 <dependency>
@@ -193,10 +214,10 @@ mvn dependency:tree
 </dependency>
 ```
 
-有关详细信息，请参阅[排除可传递依赖项指南](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html)。
+有关详细信息，请参阅[排除传递依赖关系指南](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html)。
 
 
-## <a name="enable-client-sice-logging"></a>启用客户端 SDK 日志记录
+## <a name="enable-client-sdk-logging"></a><a name="enable-client-sice-logging"></a>启用客户端 SDK 日志记录
 
 Java 异步 SDK 使用 SLF4j 作为日志记录外观，支持记录到常用的记录框架，如 log4j 和 logback。
 
@@ -235,7 +256,7 @@ log4j.appender.A1.layout.ConversionPattern=%d %5X{pid} [%t] %-5p %c - %m%n
 
 有关详细信息，请参阅 [sfl4j 日志记录手册](https://www.slf4j.org/manual.html)。
 
-## <a name="netstats"></a>OS 网络统计信息
+## <a name="os-network-statistics"></a><a name="netstats"></a>OS 网络统计信息
 运行 netstat 命令，掌握处于 `ESTABLISHED` 和 `CLOSE_WAIT` 等状态的连接数。
 
 在 Linux 上可以运行以下命令。

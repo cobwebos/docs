@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: c315961a-fa33-45cf-82b9-4551e70d32dd
 ms.service: dns
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
-ms.openlocfilehash: c2ef842fd62ef060f06536d66387c3facd0627b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 9f5b535a341956e5675ba96ba9570bd3f2ff3443
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60640372"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710943"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>使用动态 DNS 在自己的 DNS 服务器中注册主机名
 
@@ -61,7 +60,7 @@ then
 fi
 ```
 
-还可以使用 `nsupdate` 命令来执行安全的 DDNS 更新。 例如，在使用 Bind DNS 服务器时，将[生成](http://linux.yyz.us/nsupdate/)公钥-私钥对。 已为 DNS 服务器[配置](http://linux.yyz.us/dns/ddns-server.html)密钥的公共部分，所以它可以验证请求中的签名。 若要为 `nsupdate` 提供密钥对，请使用 `-k` 选项，以便对 DDNS 更新请求进行签名。
+还可以使用 `nsupdate` 命令来执行安全的 DDNS 更新。 例如，在使用 Bind DNS 服务器时，将生成公钥-私钥对 (`http://linux.yyz.us/nsupdate/`)。 已为 DNS 服务器配置 (`http://linux.yyz.us/dns/ddns-server.html`) 密钥的公共部分，所以它可以验证请求中的签名。 若要为 `nsupdate` 提供密钥对，请使用 `-k` 选项，以便对 DDNS 更新请求进行签名。
 
 如果使用 Windows DNS 服务器，可以使用 `nsupdate` 中包含 `-g` 参数的 Kerberos 身份验证，但它在 `nsupdate` 的 Windows 版本中不可用。 若要使用 Kerberos，请使用 `kinit` 来加载凭据。 例如，可以从 [keytab 文件](https://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)加载凭据，然后 `nsupdate -g` 就可以从缓存拾取该凭据。
 

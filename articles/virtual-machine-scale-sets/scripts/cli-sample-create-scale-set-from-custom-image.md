@@ -1,27 +1,20 @@
 ---
-title: Azure CLI 示例 - 使用自定义 VM 映像 | Microsoft Docs
-description: Azure CLI 示例
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.devlang: azurecli
+title: Azure CLI 示例 - 使用自定义 VM 映像
+description: 此脚本创建使用自定义 VM 映像作为 VM 实例源的虚拟机规模集。
+author: axayjo
+ms.author: akjosh
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: virtual-machine-scale-sets
+ms.subservice: imaging
 ms.date: 03/27/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 637a2e48ca95b5d1a456f9a48f7c8e9008b1d14d
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.reviewer: cynthn
+ms.custom: akjosh
+ms.openlocfilehash: c0960d16fd5022d54804ae579d9154c540a17732
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697736"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494950"
 ---
 # <a name="create-a-virtual-machine-scale-set-from-a-custom-vm-image-with-the-azure-cli"></a>使用 Azure CLI 基于自定义 VM 映像创建虚拟机规模集
 此脚本创建使用自定义 VM 映像作为 VM 实例源的虚拟机规模集。
@@ -50,6 +43,4 @@ az group delete --name myResourceGroup
 | [az group delete](/cli/azure/ad/group) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/overview)。
-
-可以在 [Azure 虚拟机规模集文档](../cli-samples.md)中找到其他虚拟机规模集 Azure CLI 脚本示例。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure/overview)。

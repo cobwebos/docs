@@ -1,37 +1,31 @@
 ---
 title: Durable Functions 的单一实例 - Azure
 description: 如何使用 Azure Functions 的 Durable Functions 扩展中的单一实例。
-services: functions
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: c032ba046668310ff71d067d22a805fc6446667c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 4eff7c4c91ed664fcf1f4fc7a8be2d43d24e5c6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683802"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76262803"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Durable Functions 中的单一实例业务流程协调程序 (Azure Functions)
 
-对于后台作业，通常需要确保一次只运行特定业务流程协调程序的一个实例。 这可以在 [Durable Functions](durable-functions-overview.md) 中通过在创建业务流程协调程序时为其分配特定的实例 ID 来实现。
+对于后台作业，通常需要确保一次只运行特定业务流程协调程序的一个实例。 通过在创建业务流程协调程序时将特定实例 ID 分配给该业务流程协调程序，可以确保 [Durable Functions](durable-functions-overview.md) 中的这种单一实例行为。
 
 ## <a name="singleton-example"></a>单一实例示例
 
-以下 C# 和 JavaScript 示例显示了一个 HTTP 触发器函数，该函数创建一个单一实例后台作业业务流程。 该代码可确保只存在一个具有指定实例 ID 的实例。
+以下示例显示了一个 HTTP 触发器函数，该函数创建一个单一实例后台作业业务流程。 该代码可确保只存在一个具有指定实例 ID 的实例。
 
-### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("HttpStartSingle")]
 public static async Task<HttpResponseMessage> RunSingle(
     [HttpTrigger(AuthorizationLevel.Function, methods: "post", Route = "orchestrators/{functionName}/{instanceId}")] HttpRequestMessage req,
-    [OrchestrationClient] DurableOrchestrationClient starter,
+    [DurableClient] IDurableOrchestrationClient starter,
     string functionName,
     string instanceId,
     ILogger log)
@@ -56,9 +50,13 @@ public static async Task<HttpResponseMessage> RunSingle(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+> [!NOTE]
+> 前面的 C# 代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `OrchestrationClient` 属性而不是 `DurableClient` 属性，并且必须使用 `DurableOrchestrationClient` 参数类型，而不是 `IDurableOrchestrationClient`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-function.json 文件如下所示：
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+**function.json**
+
 ```json
 {
   "bindings": [
@@ -84,7 +82,8 @@ function.json 文件如下所示：
 }
 ```
 
-JavaScript 代码如下所示：
+**index.js**
+
 ```javascript
 const df = require("durable-functions");
 
@@ -112,10 +111,9 @@ module.exports = async function(context, req) {
 };
 ```
 
-默认情况下，实例 ID 是随机生成的 GUID。 但在此示例中，实例 ID 通过 URL 在路由数据中传递。 该代码调用 [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetStatusAsync_) (C#) 或 `getStatus` (JavaScript) 检查具有指定 ID 的实例是否已在运行。 如果未运行，将使用该 ID 创建实例。
+---
 
-> [!WARNING]
-> 在 JavaScript 中进行本地开发时，需将环境变量 `WEBSITE_HOSTNAME` 设置为 `localhost:<port>`（例如， 设置为 `localhost:7071`），以便使用 `DurableOrchestrationClient` 上的方法。 有关此要求的详细信息，请参阅 [GitHub 问题](https://github.com/Azure/azure-functions-durable-js/issues/28)。
+默认情况下，实例 ID 是随机生成的 GUID。 但是，在前面的示例中，实例 ID 通过 URL 在路由数据中传递。 该代码调用 `GetStatusAsync` (C#) 或 `getStatus` (JavaScript) 检查具有指定 ID 的实例是否已在运行。 如果没有此类实例正在运行，将使用该 ID 创建一个新实例。
 
 > [!NOTE]
 > 在此示例中有潜在的争用条件。 如果 **HttpStartSingle** 的两个实例同时执行，则两个函数调用都将报告成功，但实际上只会启动一个业务流程实例。 根据你的要求，这可能会产生不良副作用。 因此，必须确保没有两个请求可以同时执行此触发器函数。
@@ -125,4 +123,4 @@ module.exports = async function(context, req) {
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解如何调用子业务流程](durable-functions-sub-orchestrations.md)
+> [了解业务流程的本机 HTTP 功能](durable-functions-http-features.md)

@@ -1,39 +1,36 @@
 ---
-title: Azure 防火墙威胁智能基于筛选
-description: 了解有关 Azure 防火墙威胁智能筛选
+title: 基于 Azure 防火墙威胁智能的筛选
+description: 可以为防火墙启用基于威胁智能的筛选，以提醒和拒绝来自/到达已知恶意 IP 地址和域的流量。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 3/11/2019
+ms.date: 05/12/2020
 ms.author: victorh
-ms.openlocfilehash: 4ef9089c94d9e806cc519c4f8243cdcb7e73953a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: e51cc8905a7b4a88bb7f7dabaf24bb30159ff86c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60194017"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655085"
 ---
-# <a name="azure-firewall-threat-intelligence-based-filtering---public-preview"></a>Azure 防火墙威胁智能基于筛选-公共预览版
+# <a name="azure-firewall-threat-intelligence-based-filtering"></a>基于 Azure 防火墙威胁智能的筛选
 
-可以为防火墙启用基于威胁智能的筛选，以提醒和拒绝来自/到达已知恶意 IP 地址和域的流量。 IP 地址和域源自 Microsoft 威胁智能源。 [Intelligent Security Graph](https://www.microsoft.com/en-us/security/operations/intelligence)为 Microsoft 威胁智能提供支持，并由多个服务，包括 Azure 安全中心。
+可以为防火墙启用基于威胁智能的筛选，以提醒和拒绝来自/到达已知恶意 IP 地址和域的流量。 IP 地址和域源自 Microsoft 威胁智能源。 [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) 为 Microsoft 威胁智能助力，它已得到 Azure 安全中心等多项服务的运用。<br>
+<br>
 
-![防火墙威胁智能](media/threat-intel/firewall-threat.png)
+:::image type="content" source="media/threat-intel/firewall-threat.png" alt-text="防火墙威胁智能" border="false":::
 
-> [!IMPORTANT]
-> 威胁智能基于筛选当前处于公共预览状态，并提供预览版服务级别协议。 某些功能可能不受支持或者受限。  有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+如果已启用基于威胁智能的筛选，则将在任何 NAT 规则、网络规则或应用程序规则之前处理相关规则。
 
-如果启用了威胁智能基于筛选，则关联的规则之前处理操作的 NAT 规则、 网络规则或应用程序规则。 预览期间，只有最高置信度记录包含。
+可以选择仅在触发规则时记录警报，也可以选择警报和拒绝模式。
 
-您可以选择时触发一个规则，也可以选择警报并拒绝模式只记录警报。
+默认情况下，基于威胁智能的筛选在警报模式下启用。 门户界面在你的区域可用之前，无法关闭此功能或更改模式。
 
-默认情况下，在警报模式中启用威胁智能基于筛选。 无法关闭此功能或更改的模式，直到你的区域中，门户界面变得可用。
-
-![威胁智能基于筛选门户界面](media/threat-intel/threat-intel-ui.png)
+:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="基于威胁智能的筛选门户界面":::
 
 ## <a name="logs"></a>日志
 
-以下日志摘录显示了触发的规则：
+以下日志摘录显示了一个触发的规则：
 
 ```
 {
@@ -49,12 +46,12 @@ ms.locfileid: "60194017"
 
 ## <a name="testing"></a>测试
 
-- **出站测试**-出站流量警报应该很少见，因为它意味着您的环境已遭到破坏。 若要帮助测试出站警报正在，将触发警报的测试创建 FQDN。 使用**testmaliciousdomain.eastus.cloudapp.azure.com**为出站测试。
+- 出站测试 - 出站流量警报应该比较罕见，因为这意味着环境已泄露。 为了帮助测试出站警报是否正常工作，已创建一个触发警报的测试 FQDN。 使用 **testmaliciousdomain.eastus.cloudapp.azure.com** 进行出站测试。
 
-- **入站测试**-您有望看到警报上的传入流量，如果在防火墙上配置 DNAT 规则。 即使 DNAT 规则允许仅特定源，否则拒绝流量，也是如此。 Azure 防火墙不会对所有已知的端口扫描程序; 不发出警报仅在扫描仪上的已知还参与恶意活动。
+- 入站测试 - 如果在防火墙上配置了 DNAT 规则，则预计可以看到传入流量的警报。 即使只允许在 DNAT 规则中使用特定源也是如此，否则流量会被拒绝。 Azure 防火墙不会在所有已知的端口扫描仪上发出警报；仅在已知也会参与恶意活动的扫描仪上发出警报。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅[Azure 防火墙日志分析示例](log-analytics-samples.md)
+- 请参阅 [Azure 防火墙 Log Analytics 示例](log-analytics-samples.md)
 - 了解如何[部署和配置 Azure 防火墙](tutorial-firewall-deploy-portal.md)
-- 查看[Microsoft 安全性智能报告](https://www.microsoft.com/en-us/security/operations/security-intelligence-report)
+- 查看 [Microsoft 安全智能报告](https://www.microsoft.com/en-us/security/operations/security-intelligence-report)

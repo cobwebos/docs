@@ -1,25 +1,16 @@
 ---
-title: Azure Functions 开发指南 | Microsoft 文档
+title: Azure Functions 开发指南
 description: 了解在 Azure 中开发函数时需要掌握的 Azure Functions 概念和技术，包括各种编程语言和绑定。
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: 开发人员指南, Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
-ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 10/12/2017
-ms.author: glenga
-ms.openlocfilehash: 5b2b7f3cd6bfa219b794edc63d6bf8b2784b713c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: 9a3c0643f4fc965ff64106758320aeb445aaf9ae
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62120732"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921743"
 ---
-# <a name="azure-functions-developers-guide"></a>Azure Functions 开发人员指南
+# <a name="azure-functions-developer-guide"></a>Azure Functions 开发人员指南
 在 Azure Functions 中，特定函数共享一些核心技术概念和组件，不受所用语言或绑定限制。 跳转学习某个特定语言或绑定的详细信息之前，请务必通读此通用概述。
 
 本文假定你已阅读 [Azure Functions 概述](functions-overview.md)。
@@ -44,6 +35,8 @@ Function.json 文件定义函数触发器、绑定和其他配置设置。 每�
 }
 ```
 
+有关详细信息，请参阅 [Azure Functions 触发器和绑定概念](functions-triggers-bindings.md)。
+
 在 `bindings` 属性配置两个触发器和绑定。 每个绑定共享一些通用设置和一些特定于个别类型的绑定的设置。 每个绑定都需要以下设置：
 
 | 属性 | 值/类型 | 注释 |
@@ -53,7 +46,7 @@ Function.json 文件定义函数触发器、绑定和其他配置设置。 每�
 | `name` |string |将用于函数中绑定数据的名称。 对于 C#，它将是参数名称；对于 JavaScript，它是键/值列表中的键。 |
 
 ## <a name="function-app"></a>函数应用
-函数应用在 Azure 中提供用于运行函数的执行上下文。 函数应用由一个或多个共同管理、部署和缩放的独立函数组成。 函数应用中的所有函数共享相同的定价计划、连续部署和运行时版本。 将函数应用视为组织和共同管理函数的一种方法。 
+函数应用在 Azure 中提供用于运行函数的执行上下文。 因此，它是函数的部署和管理单元。 函数应用由一个或多个共同管理、部署和缩放的独立函数组成。 函数应用中的所有函数共享相同的定价计划、部署方法和运行时版本。 将函数应用视为组织和共同管理函数的一种方法。 若要了解详细信息，请参阅[如何管理函数应用](functions-how-to-use-azure-function-app-settings.md)。 
 
 > [!NOTE]
 > 函数应用中的所有函数必须使用相同的语言编写。 在 Azure Functions 运行时的[先前版本](functions-versions.md)中，这不是必需的。
@@ -71,7 +64,7 @@ Function.json 文件定义函数触发器、绑定和其他配置设置。 每�
 
 <!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 
-## <a id="fileupdate"></a> 如何编辑 Azure 门户中的函数
+## <a name="how-to-edit-functions-in-the-azure-portal"></a><a id="fileupdate"></a> 如何编辑 Azure 门户中的函数
 通过 Azure 门户中内置的函数编辑器可直接内联更新代码和 function.json 文件。 建议仅用于小的更改或概念证明 - 最佳做法是使用 VS Code 等本地开发工具。
 
 ## <a name="parallel-execution"></a>并行执行
@@ -79,7 +72,7 @@ Function.json 文件定义函数触发器、绑定和其他配置设置。 每�
 
 ## <a name="functions-runtime-versioning"></a>Functions 运行时版本控制
 
-可使用 `FUNCTIONS_EXTENSION_VERSION` 应用设置配置 Functions 运行时的版本。 例如，值“~2”表示 Function App 将使用 2.x 作为其主版本。 Function Apps 在发布后，将升级到各自新的次要版本。 有关详细信息（包括如何查看函数应用的确切版本），请参阅[如何针对 Azure Functions 运行时版本](set-runtime-version.md)。
+可使用 `FUNCTIONS_EXTENSION_VERSION` 应用设置配置 Functions 运行时的版本。 例如，值 "~ 3" 表示 function app 将使用1.x 作为其主版本。 函数应用在发布后会升级到每个新的次要版本。 有关详细信息（包括如何查看函数应用的确切版本），请参阅[如何针对 Azure Functions 运行时版本](set-runtime-version.md)。
 
 ## <a name="repositories"></a>存储库
 Azure Functions 代码为开放源，位于 GitHub 存储库：
@@ -107,5 +100,5 @@ Azure Functions 代码为开放源，位于 GitHub 存储库：
 * [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 * [在本地对 Azure Functions 进行编码和测试](./functions-develop-local.md)
 * [Azure Functions 最佳实践](functions-best-practices.md)
-* [Azure Functions C# 开发人员参考](functions-reference-csharp.md)
-* [Azure Functions NodeJS 开发人员参考](functions-reference-node.md)
+* [Azure Functions C# 开发人员参考](functions-dotnet-class-library.md)
+* [Azure Functions Node.js 开发人员参考](functions-reference-node.md)

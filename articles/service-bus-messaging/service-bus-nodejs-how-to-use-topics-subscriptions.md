@@ -1,36 +1,27 @@
 ---
-title: 如何通过 Node.js 使用 Azure 服务总线主题和订阅 | Microsoft Docs
-description: 了解如何在来自 Node.js 应用的 Azure 中使用服务总线主题和订阅。
-services: service-bus-messaging
-documentationcenter: nodejs
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: b9f5db85-7b6c-4cc7-bd2c-bd3087c99875
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
+title: 通过 azure/service-bus Node.js 包使用 Azure 服务总线主题
+description: 了解如何通过使用 azure/service-bus 包的 Node.js 应用在 Azure 中使用服务总线主题和订阅。
+author: spelluru
 ms.devlang: nodejs
-ms.topic: article
-ms.date: 04/15/2019
-ms.author: aschhab
-ms.openlocfilehash: 3b805a80330dd44ac4a65db88950393d3d4d60b7
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
-ms.translationtype: MT
+ms.topic: quickstart
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.openlocfilehash: d4b382a0cf857f9cfe1065815e9b07b8260023a8
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65992099"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339791"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>如何使用服务总线主题和订阅使用 Node.js 和 azure sb 包
-> [!div class="op_multi_selector" title1="Programming language" title2="Node.js pacakge"]
-> - [(Node.js | azure-sb)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
-> - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>快速入门：如何通过 Node.js 和 azure-sb 包使用服务总线主题与订阅
+本教程介绍如何使用 [azure-sb](https://www.npmjs.com/package/azure-sb) 包创建 Node.js 应用程序，用于将消息发送到服务总线主题，并从服务总线订阅接收消息。 示例以 JavaScript 编写并使用 Node.js [Azure 模块](https://www.npmjs.com/package/azure)，该模块在内部使用 `azure-sb` 包。
 
-在本教程中，学习如何创建 Node.js 应用程序以将消息发送到服务总线主题接收来自服务总线订阅使用的消息[azure sb](https://www.npmjs.com/package/azure-sb)包。 相关示例用 JavaScript 编写并使用 Node.js [Azure 模块](https://www.npmjs.com/package/azure)它在内部使用`azure-sb`包。
+> [!IMPORTANT]
+> [azure-sb](https://www.npmjs.com/package/azure-sb) 包使用[服务总线 REST 运行时 API](/rest/api/servicebus/service-bus-runtime-rest)。 可以使用新的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 包获得更快的体验，因为该包使用更快的 [AMQP 1.0 协议](service-bus-amqp-overview.md)。 
+> 
+> 若要详细了解新包，请参阅[如何通过 Node.js 和 @azure/service-bus 包使用服务总线主题和订阅](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package)，否则请继续阅读以了解如何使用 [azure](https://www.npmjs.com/package/azure) 包。
 
-[Azure sb](https://www.npmjs.com/package/azure-sb)包使用[服务总线 REST 运行时 Api](/rest/api/servicebus/service-bus-runtime-rest)。 您可以获得更快地使用新体验[ @azure/service-bus ](https://www.npmjs.com/package/@azure/service-bus)包，它使用更快地[AMQP 1.0 协议](service-bus-amqp-overview.md)。 若要了解有关新包的详细信息，请参阅[如何通过 Node.js 使用服务总线主题和订阅并@azure/service-bus包](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package)，否则，请继续阅读以了解如何使用[azure](https://www.npmjs.com/package/azure)包。
-
-此处介绍的方案包括：
+本文涉及的方案包括：
 
 - 创建主题和订阅 
 - 创建订阅筛选器 
@@ -40,12 +31,12 @@ ms.locfileid: "65992099"
 
 有关主题和订阅的详细信息，请参阅[后续步骤](#next-steps)一节。
 
-## <a name="prerequisites"></a>必备组件
-- Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 你可以[激活 Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或者注册[免费试用帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-- 按照[快速入门：使用 Azure 门户创建一个服务总线主题和对此主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来创建服务总线**命名空间**并获取**连接字符串**。
+## <a name="prerequisites"></a>先决条件
+- Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+- 遵循[快速入门：使用 Azure 门户创建服务总线主题以及对该主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)中的步骤创建服务总线**命名空间**并获取**连接字符串**。
 
     > [!NOTE]
-    > 在本快速入门中，你将使用 **Node.js** 创建一个**主题**和对此主题的**订阅**。 
+    > 在本快速入门中，你将使用 **Node.js** 创建**主题**以及对该主题的**订阅**。 
 
 ## <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 创建一个空的 Node.js 应用程序。 有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站]、[Node.js 云服务][Node.js Cloud Service]（使用 Windows PowerShell），或“使用 WebMatrix 创建网站”。
@@ -54,7 +45,7 @@ ms.locfileid: "65992099"
 若要使用服务总线，请下载 Node.js Azure 包。 此包包括一组用来与服务总线 REST 服务通信的库。
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>使用 Node 包管理器 (NPM) 可获取该程序包
-1. 打开命令行接口，例如 PowerShell (Windows)、Terminal (Mac) 或 Bash (Unix)。
+1. 打开命令行接口，例如 PowerShell (Windows)、Terminal (Mac) 或 Bash (Unix)  。
 2. 导航到创建示例应用程序的文件夹。
 3. 在命令窗口中键入 **npm install azure**，这应会生成以下输出：
 
@@ -81,7 +72,7 @@ var azure = require('azure');
 ```
 
 ### <a name="set-up-a-service-bus-connection"></a>设置服务总线连接
-Azure 模块将读取前面在执行步骤“获取凭据”时获取的连接字符串的环境变量 `AZURE_SERVICEBUS_CONNECTION_STRING`。 如果未设置此环境变量，则在调用 `createServiceBusService` 时必须指定帐户信息。
+Azure 模块读取你在准备[前提条件](#prerequisites)时获得的连接字符串的环境变量 `AZURE_SERVICEBUS_CONNECTION_STRING`。 如果再次需要有关获取连接字符串的说明，请参阅[获取连接字符串](service-bus-quickstart-topics-subscriptions-portal.md#get-the-connection-string)。 如果未设置此环境变量，则在调用 `createServiceBusService` 时必须指定帐户信息。
 
 有关设置 Azure 云服务环境变量的示例，请参阅[设置环境变量](../container-instances/container-instances-environment-variables.md#azure-cli-example)。
 
@@ -137,7 +128,7 @@ function (returnObject, finalCallback, next)
 
 在此回叫中并且在处理 `returnObject`（来自对服务器请求的响应）后，回叫必须调用 next（如果存在），继续处理其他筛选器或调用 `finalCallback` 以结束服务调用。
 
-Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分别是 **ExponentialRetryPolicyFilter** 和 **LinearRetryPolicyFilter**。 以下代码创建一个 ServiceBusService 对象，该对象使用 ExponentialRetryPolicyFilter：
+Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分别是 **ExponentialRetryPolicyFilter** 和 **LinearRetryPolicyFilter**。 以下代码创建一个 ServiceBusService 对象，该对象使用 ExponentialRetryPolicyFilter ：
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -148,9 +139,9 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 主题订阅也是使用 **ServiceBusService** 对象创建的。 订阅已命名，并可具有可选筛选器，用于限制传送到订阅的虚拟队列的消息集。
 
 > [!NOTE]
-> 除非删除它或与之相关的主题，否则订阅是永久性的。 如果应用程序包含创建订阅的逻辑，则它应首先使用 `getSubscription` 方法检查该订阅是否存在。
+> 默认情况下，除非删除订阅或与之关联的主题，否则订阅是持久性的。 如果应用程序包含创建订阅的逻辑，则它应首先使用 `getSubscription` 方法检查该订阅是否存在。
 >
->
+> 可以通过设置 [AutoDeleteOnIdle 属性](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle)自动删除订阅。
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>创建具有默认 (MatchAll) 筛选器的订阅
 MatchAll 筛选器是创建订阅时使用的默认筛选器。 使用 **MatchAll** 筛选器时，发布到主题的所有消息都将置于订阅的虚拟队列中。 以下示例创建名为“AllMessages”的订阅，并使用默认的 MatchAll 筛选器。
@@ -166,7 +157,7 @@ serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
 ### <a name="create-subscriptions-with-filters"></a>创建具有筛选器的订阅
 还可以创建筛选器，以确定发送到主题的哪些消息应该在特定主题订阅中显示。
 
-订阅支持的最灵活的一种筛选器类型是 **SqlFilter**，它实现了一部分 SQL92 功能。 SQL 筛选器将对发布到主题的消息的属性进行操作。 有关可用于 SQL 筛选器的表达式的更多详细信息，请参阅 [SqlFilter.SqlExpression][SqlFilter.SqlExpression] 语法。
+订阅支持的最灵活的一种筛选器是 **SqlFilter**，它实现了一部分 SQL92 功能。 SQL 筛选器将对发布到主题的消息的属性进行操作。 有关可用于 SQL 筛选器的表达式的更多详细信息，请参阅 [SqlFilter.SqlExpression][SqlFilter.SqlExpression] 语法。
 
 可以使用 ServiceBusService 对象的 `createRule` 方法向订阅中添加筛选器。 此方法允许向现有订阅中添加新筛选器。
 
@@ -314,7 +305,7 @@ serviceBusService.receiveSubscriptionMessage('MyTopic', 'HighMessages', { isPeek
 如果应用程序在处理消息之后，但在调用 `deleteMessage` 方法之前崩溃，则在应用程序重启时会将该消息重新传送给它。 此行为通常称为“至少处理一次”。 也就是说，每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果方案不允许重复处理，则应该向应用程序添加逻辑来处理重复消息传送。 可以使用消息的 MessageId 属性，该属性在各次传送尝试中保持不变。
 
 ## <a name="delete-topics-and-subscriptions"></a>删除主题和订阅
-主题和订阅具有持久性，必须通过 [Azure 门户][Azure portal]或以编程方式显式删除。
+除非设置了 [autoDeleteOnIdle 属性](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle)，否则主题和订阅是持久性的，必须通过 [Azure 门户][Azure portal]或以编程方式显式删除。
 下面的示例演示如何删除名为 `MyTopic` 的主题：
 
 ```javascript
@@ -336,7 +327,7 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 ```
 
 > [!NOTE]
-> 你可以管理与服务总线资源[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)。 服务总线资源管理器允许用户连接到服务总线命名空间并轻松管理消息实体。 该工具提供高级的功能，如导入/导出功能或测试主题、 队列、 订阅、 中继服务、 通知中心和事件中心的功能。 
+> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
 
 ## <a name="next-steps"></a>后续步骤
 现在，已了解有关 Service Bus 主题的基础知识，单击下面的链接可了解更多信息。
@@ -349,7 +340,7 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 [Azure portal]: https://portal.azure.com
 [SqlFilter.SqlExpression]: service-bus-messaging-sql-filter.md
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter
+[SqlFilter]: /javascript/api/@azure/arm-servicebus/sqlfilter?view=azure-node-latest
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [创建 Node.js 应用程序并将其部署到 Azure 网站]: ../app-service/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md

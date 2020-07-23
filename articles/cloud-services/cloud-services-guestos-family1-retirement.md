@@ -5,21 +5,15 @@ services: cloud-services
 documentationcenter: na
 author: raiye
 manager: timlt
-editor: ''
-ms.assetid: 37b422e9-0713-4a81-a942-f553ef478064
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: d6429766b6aac547fd99279659acb1067298e77c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 0e60a8a563819b38bbe67a0b532c6dcada6821b7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60518968"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835625"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>来宾 OS 系列 1 停用通知
 我们已在 2013 年 6 月 1 日宣布停用 OS 系列 1。
@@ -28,7 +22,7 @@ ms.locfileid: "60518968"
 
 **2014 年 11 月 3 日** - 来宾 OS 系列 1 的延长支持结束，该系列完全停用。 仍基于系列 1 的所有服务将受影响。 我们随时可能会停止这些服务。 除非自己手动升级服务，否则无法保证服务将继续运行。
 
-如果有其他疑问，请访问[云服务论坛](https://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc)或[联系 Azure 支持人员](https://azure.microsoft.com/support/options/)。
+如果有其他疑问，请访问[适用于云服务的 Microsoft 问答页面](https://docs.microsoft.com/answers/topics/azure-cloud-services.html)或[联系 Azure 支持](https://azure.microsoft.com/support/options/)。
 
 ## <a name="are-you-affected"></a>了解你是否受到影响
 如果存在下列任一情况，则表示云服务已受到影响：
@@ -37,7 +31,7 @@ ms.locfileid: "60518968"
 2. 未在云服务的 ServiceConfiguration.cscfg 文件中显式指定 osFamily 的值。 当前，系统对此情况使用默认值“1”。
 3. Azure 门户将来宾操作系统系列值列为“Windows Server 2008”。
 
-要了解哪个云服务在运行哪个 OS 系列，可以在 Azure PowerShell 中运行以下脚本，但必须首先[设置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 该脚本的详细信息，请参阅[Azure 来宾 OS 系列 1 生命：2014 年 6 月](https://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx)。
+要了解哪个云服务在运行哪个 OS 系列，可以在 Azure PowerShell 中运行以下脚本，但必须首先[设置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 有关该脚本的详细信息，请参阅 [Azure 来宾 OS 系列 1 生命周期终结：2014 年 6 月](https://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx)。
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {
@@ -54,10 +48,10 @@ foreach($subscription in Get-AzureSubscription) {
 ## <a name="recommendations-if-you-are-affected"></a>如果受到影响，请遵循以下建议
 建议将云服务角色迁移到支持的来宾 OS 系列之一：
 
-基于 Windows Server 2012 R2 的**来宾 OS 系列 4.x***（建议）*
+基于 Windows Server 2012 R2 的**来宾 OS 系列 4.x** *（建议）*
 
 1. 确保应用程序使用了 SDK 2.1 或更高版本以及 .NET framework 4.0、4.5 或 4.5.1。
-2. 在 ServiceConfiguration.cscfg 文件中将 osFamily 特性设置为“4”，并重新部署云服务。
+2. 在 ServiceConfiguration.cscfg 文件中将 osFamily 特性设置为“4”，然后重新部署云服务。
 
 基于 Windows Server 2012 的**来宾 OS 系列 3.x**
 

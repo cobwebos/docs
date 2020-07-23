@@ -1,20 +1,18 @@
 ---
 title: 从 Azure Application Insights 发送警报 | Microsoft Docs
 description: 本教程介绍如何使用 Azure Application Insights 发送警报以响应应用程序中的错误。
-keywords: ''
+ms.subservice: application-insights
+ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/10/2019
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: 05285a177827cd0dd1e0e39e779a395ccfdfc0cd
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 1c39bfdbcfb924505473b20b3d56a28d54c84f93
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578758"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505867"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>使用 Azure Application Insights 监视和警报应用程序的运行状况
 
@@ -26,11 +24,11 @@ Azure Application Insights 可用于监视应用程序，并在其不可用、�
 > * 创建可用性测试以持续检查应用程序的响应
 > * 出现问题时向管理员发送邮件
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 
-创建 [Application Insights 资源](https://docs.microsoft.com/azure/azure-monitor/learn/dotnetcore-quick-start#enable-application-insights)。
+创建 [Application Insights 资源](./dotnetcore-quick-start.md#enable-application-insights)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -40,15 +38,15 @@ Azure Application Insights 可用于监视应用程序，并在其不可用、�
 
 通过 Application Insights 中的可用性测试，可以从世界各地自动测试应用程序。   在本教程中，你将执行一项 URL 测试，以确保 Web 应用程序可用。  还可以创建完整的演练以测试其详细运行状况。 
 
-1. 选择“Application Insights”，然后选择订阅。  
+1. 选择“Application Insights”，然后选择订阅  。  
 
-2. 选择“调查”菜单下的“可用性”，然后单击“创建测试”。
+2. 选择“调查”菜单下的“可用性”，然后单击“创建测试”    。
 
     ![添加可用性测试](media/tutorial-alert/add-test-001.png)
 
 3. 键入测试名称，保留其他默认值。  此项选择将从五个不同的地理位置，每隔 5 分钟针对应用程序 URL 触发请求。
 
-4. 选择“警报”打开“警报”下拉列表，可在其中定义测试失败时如何做出响应。 选择“Near-realtime”并将状态设置为“已启用”。
+4. 选择“警报”打开“警报”下拉列表，可在其中定义测试失败时如何做出响应   。 选择“Near-realtime”并将状态设置为“已启用”。  
 
     键入满足警报条件时要发送到的电子邮件地址。  可根据需要键入满足警报条件时要调用的 webhook 的地址。
 
@@ -58,7 +56,7 @@ Azure Application Insights 可用于监视应用程序，并在其不可用、�
 
     ![编辑警报](media/tutorial-alert/edit-alert-001.png)
 
-6. 将失败的位置数设置为大于或等于 3。 创建一个[操作组](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)，用于配置当达到警报阈值时向谁发出通知。
+6. 将失败的位置数设置为大于或等于 3。 创建一个[操作组](../platform/action-groups.md)，用于配置当达到警报阈值时向谁发出通知。
 
     ![保存警报 UI](media/tutorial-alert/save-alert-001.png)
 

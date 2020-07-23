@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 4f0b6dc725fbce2140ede98e7924730c4426e084
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b04b44c907e3210f3cc3975b36639f4fe275eef9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64727509"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67099213"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bitbucket"></a>教程：Azure Active Directory 与 Kantega SSO for Bitbucket 集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "64727509"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Kantega SSO for Bitbucket 的集成，需要以下项：
 
@@ -101,7 +101,7 @@ ms.locfileid: "64727509"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”  部分中执行以下步骤：
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
     ![Kantega SSO for Bitbucket 域和 URL 单一登录信息](common/idp-intiated.png)
 
@@ -109,7 +109,7 @@ ms.locfileid: "64727509"
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
+5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     ![Kantega SSO for Bitbucket 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
@@ -172,7 +172,7 @@ ms.locfileid: "64727509"
 
     ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon6.png)
 
-    a. 复制“应用 ID URI”  值并将其用作 Azure 门户中“基本 SAML 配置”  部分中的“标识符、回复 URL 和登录 URL”  。
+    a. 复制“应用 ID URI”值并将其用作 Azure 门户中“基本 SAML 配置”部分中的“标识符、回复 URL 和登录 URL”。
 
     b. 单击“下一步”。 
 
@@ -216,7 +216,7 @@ ms.locfileid: "64727509"
 
     b. 在“已知域”文本框中输入域名  。
 
-    c. 单击“ **保存**”。
+    c. 单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -236,7 +236,7 @@ ms.locfileid: "64727509"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 `brittasimon@yourcompanydomain.extension`   
+    b. 在“用户名”字段中，键入 `brittasimon@yourcompanydomain.extension`  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -259,7 +259,7 @@ ms.locfileid: "64727509"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -293,11 +293,11 @@ ms.locfileid: "64727509"
 
     ![添加员工](./media/kantegassoforbitbucket-tutorial/user4.png) 
 
-    a. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。 
+    a. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
     b. 在“全名”文本框中，键入用户（例如 Britta Simon）的全名。 
 
-    c. 在“电子邮件地址”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。 
+    c. 在“电子邮件地址”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
     d. 在“密码”文本框中，键入用户的密码。 
 

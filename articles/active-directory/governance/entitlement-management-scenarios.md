@@ -1,127 +1,162 @@
 ---
-title: 在 Azure AD 授权管理 （预览版）-Azure Active Directory 中的常见方案
-description: 了解应遵循针对 Azure Active Directory 权利管理 （预览版） 中的常见方案的高级步骤。
+title: 授权管理的常见方案-Azure AD
+description: 了解 Azure Active Directory 授权管理的常见方案应遵循的高级步骤。
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 04/23/2019
-ms.author: rolyon
+ms.date: 06/18/2020
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a50f4a8a63022668dac68c974f8c828c72777c9
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 72a9dc504edac01654fb21ec3386a596e03492c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66473105"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85077797"
 ---
-# <a name="common-scenarios-in-azure-ad-entitlement-management-preview"></a>在 Azure AD 授权管理 （预览版） 中的常见方案
+# <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Azure AD 授权管理的常见方案
 
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+可以通过多种方式配置组织的权利管理。 不过，如果刚开始使用，则了解管理员、目录所有者、访问包管理器、审批者和请求者的常见方案非常有用。
 
-有几种方法，您可以为你的组织中配置权利管理。 但是，如果您刚开始，则有助于您了解有关管理员、 审批者和请求者的常见方案。
+## <a name="delegate"></a>委托
 
-## <a name="administrators"></a>管理员
+### <a name="administrator-delegate-management-of-resources"></a>管理员：委派资源管理
 
-### <a name="im-new-to-entitlement-management-and-i-want-help-with-getting-started"></a>我刚刚接触权利管理，并且我想入门的帮助
+1. [观看视频：从 IT 经理委托到部门经理](https://www.microsoft.com/videoplayer/embed/RE3Lq00)
+1. [将用户委托给目录创建者角色](entitlement-management-delegate-catalog.md)
 
-> [!div class="mx-tableFixed"]
-> | Steps | 示例 |
-> | --- | --- |
-> | [请按照教程，以创建第一个访问包](entitlement-management-access-package-first.md) | [![Azure 门户的图标](./media/entitlement-management-scenarios/azure-portal.png)](./media/entitlement-management-scenarios/azure-portal-expanded.png#lightbox) |
+### <a name="catalog-creator-delegate-management-of-resources"></a>目录创建者：委派资源管理
 
-### <a name="i-want-to-allow-users-in-my-directory-to-request-access-to-groups-applications-or-sharepoint-sites"></a>我想要允许我的目录来请求访问组、 应用程序或 SharePoint 站点中的用户
+- [“创建新目录”](entitlement-management-catalog-create.md#create-a-catalog)
 
-> [!div class="mx-tableFixed"]
-> | Steps | 示例 |
-> | --- | --- |
-> | **1.** [在目录中创建新的访问包](entitlement-management-access-package-create.md#start-new-access-package) | ![创建访问包](./media/entitlement-management-scenarios/access-package.png) |
-> | **2.** [添加资源角色，以访问包](entitlement-management-access-package-edit.md#add-resource-roles)<ul><li>组</li><li>应用程序</li><li>SharePoint 站点</li></ul> | ![添加资源角色](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **3.** [添加策略](entitlement-management-access-package-edit.md#policy-for-users-in-your-directory)<ul><li>在目录中的用户</li><li>需要审批</li><li>过期设置</li></ul> | ![添加策略](./media/entitlement-management-scenarios/policy.png) |
+### <a name="catalog-owner-delegate-management-of-resources"></a>目录所有者：委派资源管理
 
-### <a name="i-want-to-allow-users-from-my-business-partners-directory-including-users-not-yet-in-my-directory-to-request-access-to-groups-applications-or-sharepoint-sites"></a>我想要允许用户从我的业务合作伙伴目录 （我的目录中尚不包括用户） 组、 应用程序或 SharePoint 站点的请求访问
+1. [将共同所有者添加到目录](entitlement-management-catalog-create.md#add-additional-catalog-owners)
+1. [将资源添加到目录](entitlement-management-catalog-create.md#add-resources-to-a-catalog)
 
-> [!div class="mx-tableFixed"]
-> | Steps | 示例 |
-> | --- | --- |
-> | **1.** [在目录中创建新的访问包](entitlement-management-access-package-create.md#start-new-access-package) | ![创建访问包](./media/entitlement-management-scenarios/access-package.png) |
-> | **2.** [添加资源角色，以访问包](entitlement-management-access-package-edit.md#add-resource-roles) | ![添加资源角色](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **3.** [添加用于外部用户的策略](entitlement-management-access-package-edit.md#policy-for-users-not-in-your-directory)<ul><li>不在目录中的用户</li><li>需要审批</li><li>过期设置</li></ul> | ![添加为外部用户的策略](./media/entitlement-management-scenarios/policy-external.png) |
-> | **4.** [发送我访问门户链接，以请求为您的业务合作伙伴访问包](entitlement-management-access-package-edit.md#copy-my-access-portal-link)<ul><li>业务合作伙伴可以与他们的用户共享链接</li></ul> |  |
+### <a name="catalog-owner-delegate-management-of-access-packages"></a>目录所有者：委派访问包的管理
 
-### <a name="i-want-to-change-the-groups-applications-or-sharepoint-sites-in-an-access-package"></a>我想要更改的组、 应用程序或访问包中的 SharePoint 站点
+1. [观看视频：从目录所有者委托访问程序包管理器](https://www.microsoft.com/videoplayer/embed/RE3Lq08)
+1. [委托用户访问包管理器角色](entitlement-management-delegate-managers.md)
 
-> [!div class="mx-tableFixed"]
-> | Steps | 示例 |
-> | --- | --- |
-> | **1.** 打开访问包 | ![添加资源角色](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **2.** [添加或删除资源角色](entitlement-management-access-package-edit.md#add-resource-roles) | ![添加资源角色](./media/entitlement-management-scenarios/resource-roles-add.png) |
+## <a name="govern-access-for-users-in-your-organization"></a>为组织中的用户管理访问权限
 
-### <a name="i-want-to-view-who-has-an-assignment-to-groups-applications-or-sharepoint-sites"></a>我想要查看谁具有组、 应用程序，或 SharePoint 站点的分配
+### <a name="access-package-manager-allow-employees-in-your-organization-to-request-access-to-resources"></a>访问包管理器：允许组织中的员工请求对资源的访问权限
 
-> [!div class="mx-tableFixed"]
-> | Steps | 示例 |
-> | --- | --- |
-> | **1.** 打开访问包 | ![添加资源角色](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **2.** [查看分配](entitlement-management-access-package-edit.md#view-who-has-an-assignment)<ul><li>哪些用户有权访问包的视图</li><li>查看哪些用户的访问权限已过期</li></ul> |  |
+1. [创建新的访问包](entitlement-management-access-package-create.md#start-new-access-package)
+1. [将组、团队、应用程序或 SharePoint 站点添加到 access 包](entitlement-management-access-package-create.md#resource-roles)
+1. [添加请求策略以允许目录中的用户请求访问](entitlement-management-access-package-create.md#for-users-in-your-directory)
+1. [指定过期设置](entitlement-management-access-package-create.md#lifecycle)
 
-### <a name="i-want-to-view-groups-applications-or-sharepoint-sites-a-user-has-access-to"></a>我想要查看组、 应用程序或用户有权访问的 SharePoint 站点
+### <a name="requestor-request-access-to-resources"></a>请求者：请求对资源的访问权限
 
-> [!div class="mx-tableFixed"]
-> | Steps | 示例 |
-> | --- | --- |
-> | [查看用户分配的报告](entitlement-management-reports.md)<ul><li>当所请求的视图和谁批准</li></ul> |  |
+1. [登录到“我的访问权限”门户](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
+1. 查找访问包
+1. [请求访问权限](entitlement-management-request-access.md#request-an-access-package)
 
-## <a name="approvers"></a>审批者
+### <a name="approver-approve-requests-to-resources"></a>审批者：批准对资源的请求
 
-### <a name="i-want-to-approve-requests-to-access-groups-applications-or-sharepoint-sites"></a>我想要批准请求，从而访问组、 应用程序或 SharePoint 站点
+1. [在“我的访问权限”门户中打开请求](entitlement-management-request-approve.md#open-request)
+1. [批准或拒绝访问请求](entitlement-management-request-approve.md#approve-or-deny-request)
 
-> [!div class="mx-tableFixed"]
-> | Steps | 示例 |
-> | --- | --- |
-> | **1.** [我访问门户中打开请求](entitlement-management-request-approve.md#open-request) | [![我访问门户图标](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
-> | **2.** [批准访问请求](entitlement-management-request-approve.md#approve-or-deny-request) | ![批准访问](./media/entitlement-management-scenarios/approve-access.png) |
+### <a name="requestor-view-the-resources-you-already-have-access-to"></a>请求者：查看你有权访问的资源
 
-## <a name="requestors"></a>请求者
+1. [登录到“我的访问权限”门户](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
+1. 查看活动访问包
 
-### <a name="i-want-to-view-the-groups-applications-or-sharepoint-sites-available-to-me-and-request-access"></a>我想要查看组、 应用程序或提供给我的 SharePoint 站点和请求的访问权限
+## <a name="govern-access-for-users-outside-your-organization"></a>为组织外部的用户管理访问权限
 
-> [!div class="mx-tableFixed"]
-> | Steps | 示例 |
-> | --- | --- |
-> | **1.** [登录到我访问门户](entitlement-management-request-access.md#sign-in-to-the-my-access-portal) | [![我访问门户图标](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
-> | **2.** 查找访问包 |  |
-> | **3.** [请求访问权限](entitlement-management-request-access.md#request-an-access-package) | ![请求访问权限](./media/entitlement-management-scenarios/request-access.png) |
+### <a name="administrator-collaborate-with-an-external-partner-organization"></a>管理员：与外部合作伙伴组织协作
 
-### <a name="im-an-external-user-and-i-want-to-request-access-to-groups-applications-or-sharepoint-sites-with-a-direct-link"></a>我是外部用户，我想要请求的访问权限组、 应用程序或 SharePoint 站点具有直接链接
+1. [阅读外部用户访问权限的工作方式](entitlement-management-external-users.md#how-access-works-for-external-users)
+1. [查看外部用户的设置](entitlement-management-external-users.md#settings-for-external-users)
+1. [添加与外部组织的连接](entitlement-management-organization.md)
 
-> [!div class="mx-tableFixed"]
-> | Steps | 示例 |
-> | --- | --- |
-> | **1.** [查找你收到了我访问门户链接](entitlement-management-access-package-edit.md#copy-my-access-portal-link) |  |
-> | **2.** [登录到我访问门户](entitlement-management-request-access.md#sign-in-to-the-my-access-portal) | [![我访问门户图标](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
-> | **3.** [请求访问权限](entitlement-management-request-access.md#request-an-access-package) | ![请求访问权限外部用户](./media/entitlement-management-scenarios/request-access-external.png) |
+### <a name="access-package-manager-collaborate-with-an-external-partner-organization"></a>访问包管理器：与外部合作伙伴组织协作
 
-### <a name="i-want-to-view-the-groups-applications-or-sharepoint-sites-i-already-have-access-to"></a>我想要查看我已有权访问的组、 应用程序或 SharePoint 站点
+1. [创建新的访问包](entitlement-management-access-package-create.md#start-new-access-package)
+1. [将组、团队、应用程序或 SharePoint 站点添加到 access 包](entitlement-management-access-package-resources.md#add-resource-roles)
+1. [添加请求策略以允许不在你的目录中的用户请求访问权限](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
+1. [指定过期设置](entitlement-management-access-package-create.md#lifecycle)
+1. [复制链接以请求访问包](entitlement-management-access-package-settings.md)
+1. 发送指向外部合作伙伴联系人合作伙伴的链接，以与其用户共享
 
-> [!div class="mx-tableFixed"]
-> | Steps | 示例 |
-> | --- | --- |
-> | **1.** [登录到我访问门户](entitlement-management-request-access.md#sign-in-to-the-my-access-portal) | [![我访问门户图标](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
-> | **2.** 查看活动的访问权限的包 |  |
+### <a name="requestor-request-access-to-resources-as-an-external-user"></a>请求者：作为外部用户请求对资源的访问权限
+
+1. 查找从联系人收到的访问包链接
+1. [登录到“我的访问权限”门户](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
+1. [请求访问权限](entitlement-management-request-access.md#request-an-access-package)
+
+### <a name="approver-approve-requests-to-resources"></a>审批者：批准对资源的请求
+
+1. [在“我的访问权限”门户中打开请求](entitlement-management-request-approve.md#open-request)
+1. [批准或拒绝访问请求](entitlement-management-request-approve.md#approve-or-deny-request)
+
+### <a name="requestor-view-the-resources-your-already-have-access-to"></a>请求者：查看已有权访问的资源
+
+1. [登录到“我的访问权限”门户](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
+1. 查看活动访问包
+
+## <a name="day-to-day-management"></a>日常管理
+
+### <a name="access-package-manager-update-the-resources-for-a-project"></a>访问包管理器：更新项目的资源
+
+1. [观看视频：日常管理：内容已更改](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
+1. 打开访问包
+1. [添加或删除组、团队、应用程序或 SharePoint 站点](entitlement-management-access-package-resources.md#add-resource-roles)
+
+### <a name="access-package-manager-update-the-duration-for-a-project"></a>访问包管理器：更新项目的持续时间
+
+1. [观看视频：日常管理：内容已更改](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
+1. 打开访问包
+1. [打开生命周期设置](entitlement-management-access-package-lifecycle-policy.md#open-lifecycle-settings)
+1. [更新过期设置](entitlement-management-access-package-lifecycle-policy.md#lifecycle)
+
+### <a name="access-package-manager-update-how-access-is-approved-for-a-project"></a>访问包管理器：更新如何为项目批准访问权限
+
+1. [观看视频：日常管理：内容已更改](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
+1. [打开请求和审批设置的现有策略](entitlement-management-access-package-request-policy.md#open-an-existing-policy-of-request-and-approval-settings)
+1. [更新审批设置](entitlement-management-access-package-request-policy.md#approval)
+
+### <a name="access-package-manager-update-the-people-for-a-project"></a>访问包管理器：更新项目人员
+
+1. [观看视频：日常管理：内容已更改](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
+1. [删除不再需要访问权限的用户](entitlement-management-access-package-assignments.md)
+1. [打开请求和审批设置的现有策略](entitlement-management-access-package-request-policy.md#open-an-existing-policy-of-request-and-approval-settings)
+1. [添加需要访问权限的用户](entitlement-management-access-package-request-policy.md#for-users-in-your-directory)
+
+### <a name="access-package-manager-directly-assign-specific-users-to-an-access-package"></a>访问包管理器：将特定用户直接分配到访问包
+
+1. [如果用户需要不同的生命周期设置，请将新策略添加到 access 包](entitlement-management-access-package-request-policy.md#add-a-new-policy-of-request-and-approval-settings)
+1. [直接将特定用户分配到访问包](entitlement-management-access-package-assignments.md#directly-assign-a-user)
+
+## <a name="assignments-and-reports"></a>分配和报告
+
+### <a name="administrator-view-who-has-assignments-to-an-access-package"></a>管理员：查看谁具有访问包的分配
+
+1. 打开访问包
+1. [查看分配](entitlement-management-access-package-assignments.md#view-who-has-an-assignment)
+1. [存档报表和日志](entitlement-management-logs-and-reporting.md)
+
+### <a name="administrator-view-resources-assigned-to-users"></a>管理员：查看分配给用户的资源
+
+1. [查看用户的访问包](entitlement-management-reports.md#view-access-packages-for-a-user)
+1. [查看用户的资源分配](entitlement-management-reports.md#view-resource-assignments-for-a-user)
+
+## <a name="programmatic-administration"></a>编程管理
+
+你还可以使用 Microsoft Graph 管理访问包、目录、策略、请求和分配。  具有具有委托权限的应用程序的相应角色中的用户 `EntitlementManagement.ReadWrite.All` 可以调用[权限管理 API](https://docs.microsoft.com/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [教程：创建第一个访问包](entitlement-management-access-package-first.md)
-- [编辑和管理现有访问包](entitlement-management-access-package-edit.md)
+- [委托和角色](entitlement-management-delegate.md)
+- [请求过程和电子邮件通知](entitlement-management-process.md)

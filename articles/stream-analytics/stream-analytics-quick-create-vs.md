@@ -1,29 +1,30 @@
 ---
-title: 使用适用于 Visual Studio 的 Azure 流分析工具创建流分析作业
+title: 快速入门 - 使用 Visual Studio 创建 Azure 流分析作业
 description: 本快速入门展示了如何开始使用 Visual Studio 创建流分析作业、配置输入和输出，以及定义查询。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 12/20/2018
+ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.custom: mvc
-ms.openlocfilehash: 9f62cd132e9aa969a804cd48d552baf9719a0eb6
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 5e654fe5d31a225a855da8477e073ceeb1a68634
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66302999"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767232"
 ---
-# <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-stream-analytics-tools-for-visual-studio"></a>快速入门：使用适用于 Visual Studio 的 Azure 流分析工具创建流分析作业
+# <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>快速入门：使用 Visual Studio 创建 Azure 流分析作业
 
 本快速入门展示了如何使用用于 Visual Studio 的 Azure 流分析工具创建和运行流分析作业。 示例作业从 IoT 中心设备中读取流式处理数据。 你将定义一个作业，用以计算超过 27° 时的平均温度并将生成的输出事件写入到 blob 存储中的一个新文件。
+
+> [!NOTE]
+> Visual Studio 和 Visual Studio Code 工具不支持“中国东部”、“中国北部”、“德国中部”和“德国东北部”区域中的作业。
 
 ## <a name="before-you-begin"></a>开始之前
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
-* 登录到 [Azure 门户](https://portal.azure.com/)。
+* 登录 [Azure 门户](https://portal.azure.com/)。
 
 * 安装 Visual Studio 2019、Visual Studio 2015 或 Visual Studio 2013 Update 4。 支持 Enterprise (Ultimate/Premium)、Professional、Community 版本。 不支持 Express 版本。
 
@@ -33,7 +34,7 @@ ms.locfileid: "66302999"
 
 在定义流分析作业之前，应该对稍后会配置为作业输入的数据进行准备。 若要对作业所需的输入数据进行准备，请完成以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 2. 选择“创建资源” > “物联网” > “IoT 中心”    。
 
@@ -169,7 +170,7 @@ ms.locfileid: "66302999"
 
 2. 将第 15 行的占位符替换为在上一部分保存的 Azure IoT 中心设备连接字符串。
 
-3. 单击“运行”  。 输出会显示传感器数据和发送到 IoT 中心的消息。
+3. 单击 **“运行”** 。 输出会显示传感器数据和发送到 IoT 中心的消息。
 
    ![Raspberry Pi Azure IoT 联机模拟器](./media/stream-analytics-quick-create-portal/ras-pi-connection-string.png)
 

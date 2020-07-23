@@ -1,23 +1,16 @@
 ---
-title: Azure Service Fabric 托管模型 | Microsoft Docs
+title: Azure Service Fabric 托管模型
 description: 介绍已部署的 Service Fabric 服务和服务主机进程的副本（或实例）之间的关系。
-services: service-fabric
-documentationcenter: .net
 author: harahma
-manager: chackdan
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: d2d958a89bff40483e1cd473538f7d1a6971d266
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b6c55ab52f4e51ddf2a39e03bed3ea543a6096be
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60483533"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247449"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric 托管模型
 本文概述 Azure Service Fabric 提供的应用程序托管模型，并介绍**共享进程**模型和**独占进程**模型之间的差异。 本文介绍已部署的应用程序在 Service Fabric 节点上的外观，以及服务和服务主机进程的副本（或实例）之间的关系。
@@ -33,7 +26,7 @@ ms.locfileid: "60483533"
 
 让我们通过示例来了解托管模型。 假设有一个 *ApplicationType* 的“MyAppType”，它的 *ServiceType* 为“MyServiceType”。 “MyServiceType”由 *ServicePackage*“MyServicePackage”提供，此 ServicePackage 的 *CodePackage* 为“MyCodePackage”。 “MyCodePackage”在运行时注册 *ServiceType*“MyServiceType”。
 
-假设有三个节点群集，创建“MyAppType”类型的应用程序 **fabric:/App1**。 在此应用程序 **fabric:/App1** 中创建“MyServiceType”类型的服务 **fabric:/App1/ServiceA**。 该服务有 2 个分区（例如 **P1** 和 **P2**），每个分区有 3 个副本。 下图显示了将此应用程序部署在节点后的视图。
+假设有三个节点群集，创建“MyAppType”类型的应用程序 fabric:/App1。 在此应用程序 **fabric:/App1** 中创建“MyServiceType”类型的服务 **fabric:/App1/ServiceA**。 该服务有 2 个分区（例如 **P1** 和 **P2**），每个分区有 3 个副本。 下图显示了此应用程序部署在节点后的视图。
 
 
 ![已部署应用程序的节点视图的示意图][node-view-one]
@@ -106,28 +99,28 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 >
 >- 独占进程托管模型与 **ServicePackageActivationMode**（相当于 **ExclusiveProcess**）对应。 若要使用此设置，应在创建服务时显式指定。 
 >
->- 若要查看服务的托管模型，请查询[服务说明][p2]，并查看 **ServicePackageActivationMode** 的值。
+>- 若要查看服务的托管模型，请查询[服务说明][p2]，并查看 ServicePackageActivationMode 的值。
 >
 >
 
 ## <a name="work-with-a-deployed-service-package"></a>使用已部署服务包
-节点上 *ServicePackage* 的活动副本称为[已部署服务包][p3]。 使用独占进程模型创建服务时，对于给定应用程序，同一 *ServicePackage* 可能有多个已部署服务包。 执行特定于已部署服务包的操作时，应提供 **ServicePackageActivationId** 来标识特定的已部署服务包。 例如，在[报告已部署服务包的运行状况][p4]或[重启已部署服务包的代码包][p5]时，请提供 ID。
+节点上 ServicePackage 的活动副本称为[已部署服务包][p3]。 使用独占进程模型创建服务时，对于给定应用程序，同一 *ServicePackage* 可能有多个已部署服务包。 执行特定于已部署服务包的操作时，应提供 **ServicePackageActivationId** 来标识特定的已部署服务包。 例如，在[报告已部署服务包的运行状况][p4]或[重启已部署服务包的代码包][p5]时，请提供 ID。
 
-通过在节点上查询[已部署服务包][p3]的列表，可以找到已部署服务包的 **ServicePackageActivationId**。 在节点上查询[已部署服务包][p6]、[已部署副本][p7]和[已部署代码包][p8]时，查询结果还包含父级已部署服务包的 ServicePackageActivationId。
+通过在节点上查询[已部署服务包][p3]的列表，可以找到已部署服务包的 ServicePackageActivationId。 在节点上查询[已部署服务包][p6]、[已部署副本][p7]和[已部署代码包][p8]时，查询结果还包含父级已部署服务包的 ServicePackageActivationId。
 
 > [!NOTE]
 >- 在共享进程托管模型下，对于指定应用程序，指定节点上只会激活一个 *ServicePackage* 副本。 ServicePackage 的 **ServicePackageActivationId** 是空字符串，不需要在执行已部署服务包相关操作时指定。 
 >
-> - 在独占进程托管模型下，对于指定应用程序，指定节点上可能有一个或多个活动的 *ServicePackage* 副本。 每个活动副本具有非空的 **ServicePackageActivationId**，需要在执行已部署服务包相关操作时指定。 
+> - 在独占进程托管模型下，对于指定应用程序，指定节点上可能有一个或多个活动的 *ServicePackage* 副本。 每个活动副本具有非空的 ServicePackageActivationId，需要在执行已部署服务包相关操作时指定。 
 >
 > - 如果省略了 **ServicePackageActivationId**，则它默认为空字符串。 如果存在共享进程模型下激活的已部署服务包，则需在此包上执行操作。 否则，操作会失败。
 >
-> - 不要对 **ServicePackageActivationId** 执行一次查询或缓存。 此 ID 是动态生成的，会出于各种原因发生更改。 执行需要 **ServicePackageActivationId** 的操作前，应先在节点上查询[已部署服务包][p3]的列表。 然后使用查询结果中的 **ServicePackageActivationId** 执行原始操作。
+> - 不要对 **ServicePackageActivationId** 执行一次查询或缓存。 此 ID 是动态生成的，会出于各种原因发生更改。 执行需要 ServicePackageActivationId 的操作前，应先在节点上查询[已部署服务包][p3]的列表。 然后使用查询结果中的 **ServicePackageActivationId** 执行原始操作。
 >
 >
 
 ## <a name="guest-executable-and-container-applications"></a>来宾可执行文件和容器应用程序
-Service Fabric 将[来宾可执行文件][a2]和[容器][a3]应用程序视为自包含式无状态服务。 *ServiceHost*（进程或容器）中没有 Service Fabric 运行时。 由于这些是自包含服务，因此每个 *ServiceHost* 包含的副本数不适用于这些服务。 这些服务使用的最常见配置是单分区，其中 [InstanceCount][c2]等于 -1（每个群集节点上运行一个服务代码副本）。 
+Service Fabric 将[来宾可执行文件][a2]和[容器][a3]应用程序视为自包含式无状态服务。 *ServiceHost*（进程或容器）中没有 Service Fabric 运行时。 由于这些是自包含服务，因此每个 *ServiceHost* 包含的副本数不适用于这些服务。 这些服务使用的最常见配置是单分区，其中 [InstanceCount][c2] 等于 -1（每个群集节点上运行一个服务代码副本）。 
 
 这些服务的默认 **ServicePackageActivationMode** 是 **SharedProcess**，在这种情况下，对于指定应用程序，Service Fabric 只会在节点上激活一个 *ServicePackage* 副本。  这意味着只有一个服务代码副本将运行节点。 如果希望有多个服务代码副本在节点上运行，请在创建服务时将 **ServicePackageActivationMode** 指定为 **ExclusiveProcess**。 例如，在创建 *ServiceType*（在 *ServiceManifest* 中指定）的多个服务多个服务（*Service1* 到 *ServiceN*）或服务具有多个分区时，可以执行此操作。 
 
@@ -150,7 +143,7 @@ Service Fabric 将[来宾可执行文件][a2]和[容器][a3]应用程序视为�
 
 独占进程托管模型不适用于每个 *ServicePackage* 具有多个 *ServiceType* 的应用程序模型。 这是因为每个 *ServicePackage* 具有多个 *ServiceType* 的目的是提高副本间的资源共享以及每个进程的副本密度。 独占进程模型旨在实现不同的效果。
 
-请考虑这种情况：每个 *ServicePackage* 有多个 *ServiceType*，并且不同的 *CodePackage* 分别注册一个 *ServiceType*. 假设有一个具有 2 个 CodePackage 的 ServicePackage“MultiTypeServicePackage”：
+请考虑这种情况：每个 *ServicePackage* 有多个 *ServiceType*，并且不同的 *CodePackage* 分别注册一个 *ServiceType*. 假设有一个具有 2 个 CodePackage 的 ServicePackage“MultiTypeServicePackage” ：
 
 - “MyCodePackageA”注册 ServiceType“MyServiceTypeA”。
 - “MyCodePackageB”注册 ServiceType“MyServiceTypeB”。
@@ -176,6 +169,10 @@ Service Fabric 将[来宾可执行文件][a2]和[容器][a3]应用程序视为�
 
 在上面的示例中，你可能会想，如果“MyCodePackageA”同时注册“MyServiceTypeA”和“MyServiceTypeB”并且没有“MyCodePackageB”，那么将不会运行冗余的 *CodePackage*。 这是对的，但此应用程序模型不适用于独占进程托管模型。 如果目的是将每个副本放入其自己的专用进程，则不需要从同一个 *CodePackage* 注册两个 *ServiceType*。 只需将每个 *ServiceType* 放入其自身的 *ServicePackage* 即可。
 
+### <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services 和执行组件分支子进程
+
+服务结构不支持 Reliable Services，因此也不支持 Reliable Actors 分支子进程。 这里举例说明其不受支持的原因：[CodePackageActivationContext](/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) 不能用于注册不受支持的子过程，并且取消令牌仅发送到已注册过程；若子过程在父过程收到取消令牌后未关闭，会导致各种问题，例如升级失败。
+
 ## <a name="next-steps"></a>后续步骤
 [打包应用程序][a4]并准备好进行部署。
 
@@ -196,16 +193,16 @@ Service Fabric 将[来宾可执行文件][a2]和[容器][a3]应用程序视为�
 [a4]: service-fabric-package-apps.md
 [a5]: service-fabric-deploy-remove-applications.md
 
-[r1]: https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-createservice
+[r1]: /rest/api/servicefabric/sfclient-api-createservice
 
-[c1]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync
-[c2]: https://docs.microsoft.com/dotnet/api/system.fabric.description.statelessservicedescription.instancecount
+[c1]: /dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync
+[c2]: /dotnet/api/system.fabric.description.statelessservicedescription.instancecount
 
-[p1]: https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice
-[p2]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricservicedescription
-[p3]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicePackage
-[p4]: https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricdeployedservicepackagehealthreport
-[p5]: https://docs.microsoft.com/powershell/module/servicefabric/restart-servicefabricdeployedcodepackage
-[p6]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicetype
-[p7]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedreplica
-[p8]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedcodepackage
+[p1]: /powershell/module/servicefabric/new-servicefabricservice
+[p2]: /powershell/module/servicefabric/get-servicefabricservicedescription
+[p3]: /powershell/module/servicefabric/get-servicefabricdeployedservicepackage
+[p4]: /powershell/module/servicefabric/send-servicefabricdeployedservicepackagehealthreport
+[p5]: /powershell/module/servicefabric/restart-servicefabricdeployedcodepackage
+[p6]: /powershell/module/servicefabric/get-servicefabricdeployedservicetype
+[p7]: /powershell/module/servicefabric/get-servicefabricdeployedreplica
+[p8]: /powershell/module/servicefabric/get-servicefabricdeployedcodepackage

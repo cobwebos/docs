@@ -1,21 +1,22 @@
 ---
-title: 教程：生成用于翻译、合成与分析文本的 Flask 应用 - 文本翻译 API
+title: 教程：生成用于翻译、合成与分析文本的 Flask 应用 - 翻译
 titleSuffix: Azure Cognitive Services
-description: 在本教程中，你将生成一个基于 Flask 的 Web 应用，该应用使用 Azure 认知服务来翻译文本、分析情绪，并将翻译的文本合成为语音。 本教程重点介绍用于实现该应用程序的 Python 代码和 Flask 路由。 本教程不会将过多的时间花费在控制该应用的 Javascript 代码上，而是提供需要检查的所有文件。
+description: 在本教程中，你将生成一个基于 Flask 的 Web 应用以翻译文本、分析情绪，并将翻译的文本合成为语音。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 4df2de7f0428ffe35712a29bfef645b6feb66813
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.date: 05/26/2020
+ms.author: swmachan
+ms.custom: tracking-python
+ms.openlocfilehash: b70ac801765461401a7bfa1d2f251fb41176dccb
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515003"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232757"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>教程：生成使用 Azure 认知服务的 Flask 应用
 
@@ -27,17 +28,17 @@ ms.locfileid: "66515003"
 > * 获取 Azure 订阅密钥
 > * 设置开发环境并安装依赖项
 > * 创建 Flask 应用
-> * 使用文本翻译 API 翻译文本
+> * 使用“翻译”来翻译文本
 > * 使用文本分析来分析输入文本和翻译内容中的积极/消极情绪
 > * 使用语音服务将翻译的文本转换为合成语音
 > * 在本地运行 Flask 应用
 
 > [!TIP]
-> 如果想要跳过这些步骤并查看最终的整个代码，请参阅 [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Flask-App-Tutorial) 上的完整示例和生成说明。
+> 如果想要跳过这些步骤并查看最终的全部代码，请参阅 [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Flask-App-Tutorial) 上的完整示例和生成说明。
 
 ## <a name="what-is-flask"></a>什么是 Flask？
 
-Flask 是用于创建 Web 应用程序的微框架。 也就是说，Flask 提供所需的工具、库和技术用于生成 Web 应用程序。 此 Web 应用程序可以是一些网页、一篇博客、Wiki，甚至可以是基于 Web 的日历应用程序或商业网站。
+Flask 是用于创建 Web 应用程序的微框架。 也就是说，Flask 提供所需的工具、库和技术用于生成 Web 应用程序。 此 Web 应用程序可以是一些网页、一篇博客、Wiki，也可以具有较强的实用性，例如基于 Web 的日历应用程序或商业网站。
 
 完成本教程后若要进行深入了解，请参考以下有用链接：
 
@@ -52,14 +53,14 @@ Flask 是用于创建 Web 应用程序的微框架。 也就是说，Flask 提�
 * [Git 工具](https://git-scm.com/downloads)
 * IDE 或文本编辑器，例如 [Visual Studio Code](https://code.visualstudio.com/) 或 [Atom](https://atom.io/)  
 * [Chrome](https://www.google.com/chrome/browser/) 或 [Firefox](https://www.mozilla.org/firefox)
-* **文本翻译**订阅密钥（请注意，不需要选择区域。）
+* “翻译”订阅密钥（请注意，不需要选择区域。）
 * **美国西部**区域的**文本分析**订阅密钥。
 * **美国西部**区域的**语音服务**订阅密钥。
 
 ## <a name="create-an-account-and-subscribe-to-resources"></a>创建帐户并订阅资源
 
 如前所述，在本教程中需要三个订阅密钥。 这意味着，需要在 Azure 帐户中为以下服务创建资源：
-* 文本翻译
+* 转换器
 * 文本分析
 * 语音服务
 
@@ -128,7 +129,7 @@ Requests 是用于发送 HTTP 1.1 请求的常用模块。 无需手动将查询
    ```
 
 > [!NOTE]
-> 若要详细了解 Requests，请参阅 [Requests：HTTP for Humans](http://docs.python-requests.org/en/master/)。
+> 若要详细了解 Requests，请参阅 [Requests：HTTP for Humans](https://2.python-requests.org/en/master/)。
 
 ### <a name="install-and-configure-flask"></a>安装并配置 Flask
 
@@ -151,7 +152,7 @@ Requests 是用于发送 HTTP 1.1 请求的常用模块。 无需手动将查询
    export FLASK_APP=app.py
    ```
 
-   Windows  ：
+   **Windows**：
    ```
    set FLASK_APP=app.py
    ```
@@ -239,20 +240,20 @@ def about():
    flask run
    ```
 
-4. 打开浏览器并导航到提供的 URL。 应会看到单页应用。 按 **Ctrl + C** 终止该应用。
+4. 打开浏览器并导航到提供的 URL。 应会看到单页应用。 请按 **Ctrl + C** 终止该应用。
 
 ## <a name="translate-text"></a>翻译文本
 
 大致了解简单 Flask 应用的工作方式后，让我们：
 
-* 编写一些 Python 代码来调用文本翻译 API 并返回响应
+* 编写一些 Python 代码来调用“翻译”并返回响应
 * 创建一个 Flask 路由用于调用 Python 代码
 * 使用文本输入和翻译区域、语言选择器和翻译按钮更新 HTML
 * 编写 Javascript 代码，使用户能够通过 HTML 来与 Flask 应用交互
 
-### <a name="call-the-translator-text-api"></a>调用文本翻译 API
+### <a name="call-the-translator"></a>调用“翻译”
 
-要做的第一件事是编写一个函数来调用文本翻译 API。 此函数采用两个参数：`text_input` 和 `language_output`。 每当用户在该应用中按下翻译按钮时，就会调用此函数。 HTML 中的文本区域作为 `text_input` 发送，HTML 中的语言选择值作为 `language_output` 发送。
+要做的第一件事是编写一个函数来调用“翻译”。 此函数采用两个参数：`text_input` 和 `language_output`。 每当用户在该应用中按下翻译按钮时，就会调用此函数。 HTML 中的文本区域作为 `text_input` 发送，HTML 中的语言选择值作为 `language_output` 发送。
 
 1. 让我们先在工作目录的根目录中创建名为 `translate.py` 的文件。
 2. 接下来，将以下代码添加到 `translate.py`。 此函数采用两个参数：`text_input` 和 `language_output`。
@@ -262,7 +263,8 @@ def about():
    # Don't forget to replace with your Cog Services subscription key!
    # If you prefer to use environment variables, see Extra Credit for more info.
    subscription_key = 'YOUR_TRANSLATOR_TEXT_SUBSCRIPTION_KEY'
-
+   
+   # Don't forget to replace with your Cog Services location!
    # Our Flask route will supply two arguments: text_input and language_output.
    # When the translate text button is pressed in our Flask app, the Ajax request
    # will grab these values from our web app, and use them in the request.
@@ -275,6 +277,7 @@ def about():
 
        headers = {
            'Ocp-Apim-Subscription-Key': subscription_key,
+           'Ocp-Apim-Subscription-Region': 'location',
            'Content-type': 'application/json',
            'X-ClientTraceId': str(uuid.uuid4())
        }
@@ -286,7 +289,7 @@ def about():
        response = requests.post(constructed_url, headers=headers, json=body)
        return response.json()
    ```
-3. 添加文本翻译订阅密钥并保存。
+3. 添加“翻译”订阅密钥并保存。
 
 ### <a name="add-a-route-to-apppy"></a>将路由添加到 `app.py`
 
@@ -472,7 +475,7 @@ flask run
 
 ## <a name="analyze-sentiment"></a>分析情绪
 
-[文本分析 API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) 可用于执行情绪分析、从文本中提取关键短语，或检测源语言。 在此应用中，我们将使用情绪分析来确定提供的文本是积极的、中性的还是消极的。 API 将返回介于 0 与 1 之间的数字评分。 评分接近 1 代表积极的情绪，评分接近 0 代表消极的情绪。
+[文本分析 API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) 可用于执行情绪分析、从文本中提取关键短语，或检测源语言。 在此应用中，我们将使用情绪分析来确定提供的文本是积极的、中性的还是消极的。 该 API 返回介于 0 与 1 之间的数字评分。 评分接近 1 代表积极的情绪，评分接近 0 代表消极的情绪。
 
 在本部分，你将执行以下几项操作：
 
@@ -775,10 +778,10 @@ flask run
        <option value="(zh-CN, Kangkang, Apollo)">Chinese (Mainland) | Male | Kangkang, Apollo</option>
        <option value="(zh-HK, Tracy, Apollo)">Chinese (Hong Kong)| Female | Tracy, Apollo</option>
        <option value="(zh-HK, Danny, Apollo)">Chinese (Hong Kong) | Male | Danny, Apollo</option>
-       <option value="(zh-TW, Yating, Apollo)">Chinese (Taiwan)| Female | Yaiting, Apollo</option>
+       <option value="(zh-TW, Yating, Apollo)">Chinese (Taiwan)| Female | Yating, Apollo</option>
        <option value="(zh-TW, Zhiwei, Apollo)">Chinese (Taiwan) | Male | Zhiwei, Apollo</option>
        <option value="(hr-HR, Matej)">Croatian | Male | Matej</option>
-       <option value="(en-US, Jessa24kRUS)">English (US) | Female | Jessa24kRUS</option>
+       <option value="(en-US, AriaRUS)">English (US) | Female | AriaRUS</option>
        <option value="(en-US, Guy24kRUS)">English (US) | Male | Guy24kRUS</option>
        <option value="(en-IE, Sean)">English (IE) | Male | Sean</option>
        <option value="(fr-FR, Julie, Apollo)">French | Female | Julie, Apollo</option>
@@ -795,7 +798,7 @@ flask run
        <option value="(it-IT, Cosimo, Apollo)">Italian | Male | Cosimo, Apollo</option>
        <option value="(ja-JP, Ichiro, Apollo)">Japanese | Male | Ichiro</option>
        <option value="(ja-JP, HarukaRUS)">Japanese | Female | HarukaRUS</option>
-       <option value="(ko-KR, HeamiRUS)">Korean | Female | Haemi</option>
+       <option value="(ko-KR, HeamiRUS)">Korean | Female | Heami</option>
        <option value="(pt-BR, HeloisaRUS)">Portuguese (Brazil) | Female | HeloisaRUS</option>
        <option value="(pt-BR, Daniel, Apollo)">Portuguese (Brazil) | Male | Daniel, Apollo</option>
        <option value="(pt-PT, HeliaRUS)">Portuguese (Portugal) | Female | HeliaRUS</option>
@@ -938,7 +941,7 @@ flask run
    });
    ```
 
-### <a name="test-your-app"></a>测试应用
+### <a name="test-your-app"></a>测试应用程序
 
 让我们在应用中测试语音合成。
 
@@ -959,6 +962,6 @@ flask run
 
 ## <a name="next-steps"></a>后续步骤
 
-* [文本翻译 API 参考](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
+* [翻译引用](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
 * [文本分析 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
 * [文本到语音 API 参考](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)

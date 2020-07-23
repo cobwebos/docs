@@ -1,20 +1,15 @@
 ---
-title: 如何使用 Azure 开发人员空间使用 kubectl
-titleSuffix: Azure Dev Spaces
+title: 如何将 kubectl 与 Azure Dev Spaces 配合使用
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 05/11/2018
 ms.topic: conceptual
-description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
+description: 了解如何在启用 Azure Dev Spaces 的 Azure Kubernetes Service 群集上的开发环境中使用 kubectl 命令
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 0dfe88966deeb4dcf0196aa1f1584a06794b36a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 7530cde68b2ce8d06fb7b16a9a147f0f0bc8645c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60686318"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75438367"
 ---
 # <a name="use-kubectl-with-an-azure-dev-space"></a>将 kubectl 与 Azure Dev Space 配合使用
 
@@ -25,5 +20,5 @@ ms.locfileid: "60686318"
 - 列出所有可用的上下文：`kubectl config get-contexts`。 
 - 更改上下文：`kubectl config use-context <context-name>`
 - 查看 Kubernetes 仪表板：运行 `kubectl proxy`，然后将浏览器打开到该命令发出的地址（将 `/ui` 追加到 URL 后以导航到 Kubernetes 仪表板）。
-- 在名为 *default* 的默认 Azure Dev Spaces 空间中列出正在运行的服务：`kubectl get services --namespace=default`
+- 列出默认 Azure Dev Spaces 空间中名为*default*的正在运行的服务：`kubectl get services --namespace=default`
 

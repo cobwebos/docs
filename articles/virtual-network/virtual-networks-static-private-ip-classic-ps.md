@@ -4,24 +4,24 @@ description: 了解如何使用 PowerShell 为虚拟机（经典）配置专用 
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
-editor: tysonn
+manager: dcscontentpm
 tags: azure-service-management
 ms.assetid: 60c7b489-46ae-48af-a453-2b429a474afd
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a1be2966cf568fc5101fb0d887f0d55a8a1876d0
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 669b8427f13efcc55a69bc7c970b6658a6719cd8
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65952505"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134715"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>使用 PowerShell 为虚拟机（经典）配置专用 IP 地址
 
@@ -40,94 +40,114 @@ ms.locfileid: "65952505"
 ## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>如何验证特定 IP 地址是否可用：
 若要验证 IP 地址 *192.168.1.101* 在名为 *TestVNet* 的 VNet 中是否可用，请运行以下 PowerShell 命令并验证 *IsAvailable* 的值：
 
-    Test-AzureStaticVNetIP –VNetName TestVNet –IPAddress 192.168.1.101 
+```azurepowershell
+Test-AzureStaticVNetIP –VNetName TestVNet –IPAddress 192.168.1.101 
+```
 
 预期输出：
 
-    IsAvailable          : True
-    AvailableAddresses   : {}
-    OperationDescription : Test-AzureStaticVNetIP
-    OperationId          : fd3097e1-5f4b-9cac-8afa-bba1e3492609
-    OperationStatus      : Succeeded
+```output
+IsAvailable          : True
+AvailableAddresses   : {}
+OperationDescription : Test-AzureStaticVNetIP
+OperationId          : fd3097e1-5f4b-9cac-8afa-bba1e3492609
+OperationStatus      : Succeeded
+```
 
 ## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>如何在创建 VM 时指定静态专用 IP 地址
 下面的 PowerShell 脚本将创建名为 *TestService* 的全新云服务，然后从 Azure 中检索映像，在新的云服务中使用检索到的映像创建名为 *DNS01* 的 VM，对该 VM 进行设置，使之位于名为 *FrontEnd* 的子网中，最后再将 *192.168.1.7* 设置为该 VM 的静态专用 IP 地址：
 
-    New-AzureService -ServiceName TestService -Location "Central US"
-    $image = Get-AzureVMImage | where {$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
-    New-AzureVMConfig -Name DNS01 -InstanceSize Small -ImageName $image.ImageName |
-      Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! |
-      Set-AzureSubnet –SubnetNames FrontEnd |
-      Set-AzureStaticVNetIP -IPAddress 192.168.1.7 |
-      New-AzureVM -ServiceName TestService –VNetName TestVNet
+```azurepowershell
+New-AzureService -ServiceName TestService -Location "Central US"
+$image = Get-AzureVMImage | where {$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
+New-AzureVMConfig -Name DNS01 -InstanceSize Small -ImageName $image.ImageName |
+    Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! |
+    Set-AzureSubnet –SubnetNames FrontEnd |
+    Set-AzureStaticVNetIP -IPAddress 192.168.1.7 |
+    New-AzureVM -ServiceName TestService –VNetName TestVNet
+```
 
 预期输出：
 
-    WARNING: No deployment found in service: 'TestService'.
-    OperationDescription OperationId                          OperationStatus
-    -------------------- -----------                          ---------------
-    New-AzureService     fcf705f1-d902-011c-95c7-b690735e7412 Succeeded      
-    New-AzureVM          3b99a86d-84f8-04e5-888e-b6fc3c73c4b9 Succeeded  
+```output
+WARNING: No deployment found in service: 'TestService'.
+OperationDescription OperationId                          OperationStatus
+-------------------- -----------                          ---------------
+New-AzureService     fcf705f1-d902-011c-95c7-b690735e7412 Succeeded      
+New-AzureVM          3b99a86d-84f8-04e5-888e-b6fc3c73c4b9 Succeeded  
+```
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>如何检索 VM 的静态专用 IP 地址信息
 要查看使用上述脚本创建的 VM 静态专用 IP 地址信息，请运行以下 PowerShell 命令，并观察 *IpAddress* 的值：
 
-    Get-AzureVM -Name DNS01 -ServiceName TestService
+```azurepowershell
+Get-AzureVM -Name DNS01 -ServiceName TestService
+```
 
 预期输出：
 
-    DeploymentName              : TestService
-    Name                        : DNS01
-    Label                       : 
-    VM                          : Microsoft.WindowsAzure.Commands.ServiceManagement.Model.PersistentVM
-    InstanceStatus              : Provisioning
-    IpAddress                   : 192.168.1.7
-    InstanceStateDetails        : Windows is preparing your computer for first use...
-    PowerState                  : Started
-    InstanceErrorCode           : 
-    InstanceFaultDomain         : 0
-    InstanceName                : DNS01
-    InstanceUpgradeDomain       : 0
-    InstanceSize                : Small
-    HostName                    : rsR2-797
-    AvailabilitySetName         : 
-    DNSName                     : http://testservice000.cloudapp.net/
-    Status                      : Provisioning
-    GuestAgentStatus            : Microsoft.WindowsAzure.Commands.ServiceManagement.Model.GuestAgentStatus
-    ResourceExtensionStatusList : {Microsoft.Compute.BGInfo}
-    PublicIPAddress             : 
-    PublicIPName                : 
-    NetworkInterfaces           : {}
-    ServiceName                 : TestService
-    OperationDescription        : Get-AzureVM
-    OperationId                 : 34c1560a62f0901ab75cde4fed8e8bd1
-    OperationStatus             : OK
+```output
+DeploymentName              : TestService
+Name                        : DNS01
+Label                       : 
+VM                          : Microsoft.WindowsAzure.Commands.ServiceManagement.Model.PersistentVM
+InstanceStatus              : Provisioning
+IpAddress                   : 192.168.1.7
+InstanceStateDetails        : Windows is preparing your computer for first use...
+PowerState                  : Started
+InstanceErrorCode           : 
+InstanceFaultDomain         : 0
+InstanceName                : DNS01
+InstanceUpgradeDomain       : 0
+InstanceSize                : Small
+HostName                    : rsR2-797
+AvailabilitySetName         : 
+DNSName                     : http://testservice000.cloudapp.net/
+Status                      : Provisioning
+GuestAgentStatus            : Microsoft.WindowsAzure.Commands.ServiceManagement.Model.GuestAgentStatus
+ResourceExtensionStatusList : {Microsoft.Compute.BGInfo}
+PublicIPAddress             : 
+PublicIPName                : 
+NetworkInterfaces           : {}
+ServiceName                 : TestService
+OperationDescription        : Get-AzureVM
+OperationId                 : 34c1560a62f0901ab75cde4fed8e8bd1
+OperationStatus             : OK
+```
 
 ## <a name="how-to-remove-a-static-private-ip-address-from-a-vm"></a>如何从 VM 中删除静态专用 IP 地址
 若要删除使用上述脚本添加到 VM 的静态专用 IP 地址，请运行以下 PowerShell 命令：
 
-    Get-AzureVM -ServiceName TestService -Name DNS01 |
-      Remove-AzureStaticVNetIP |
-      Update-AzureVM
+```azurepowershell
+Get-AzureVM -ServiceName TestService -Name DNS01 |
+    Remove-AzureStaticVNetIP |
+    Update-AzureVM
+```
 
 预期输出：
 
-    OperationDescription OperationId                          OperationStatus
-    -------------------- -----------                          ---------------
-    Update-AzureVM       052fa6f6-1483-0ede-a7bf-14f91f805483 Succeeded
+```output
+OperationDescription OperationId                          OperationStatus
+-------------------- -----------                          ---------------
+Update-AzureVM       052fa6f6-1483-0ede-a7bf-14f91f805483 Succeeded
+```
 
 ## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>如何将静态专用 IP 地址添加到现有 VM
 若要向使用上述脚本创建的 VM 添加静态专用 IP 地址，请运行以下命令：
 
-    Get-AzureVM -ServiceName TestService -Name DNS01 |
-      Set-AzureStaticVNetIP -IPAddress 192.168.1.7 |
-      Update-AzureVM
+```azurepowershell
+Get-AzureVM -ServiceName TestService -Name DNS01 |
+    Set-AzureStaticVNetIP -IPAddress 192.168.1.7 |
+    Update-AzureVM
+```
 
 预期输出：
 
-    OperationDescription OperationId                          OperationStatus
-    -------------------- -----------                          ---------------
-    Update-AzureVM       77d8cae2-87e6-0ead-9738-7c7dae9810cb Succeeded 
+```output
+OperationDescription OperationId                          OperationStatus
+-------------------- -----------                          ---------------
+Update-AzureVM       77d8cae2-87e6-0ead-9738-7c7dae9810cb Succeeded 
+```
 
 ## <a name="set-ip-addresses-within-the-operating-system"></a>在操作系统中设置 IP 地址
 

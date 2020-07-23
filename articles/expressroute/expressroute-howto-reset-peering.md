@@ -1,19 +1,18 @@
 ---
-title: 重置线路对等互连 - ExpressRoute：Azure | Microsoft Docs
+title: Azure ExpressRoute：重置线路对等互连
 description: 如何禁用和启用 ExpressRoute 线路的对等互连。
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: conceptual
-ms.date: 08/15/2018
+ms.topic: how-to
+ms.date: 01/13/2018
 ms.author: charwen
-ms.custom: seodec18
-ms.openlocfilehash: 8541362a16c7d12a0e3a4cf009ed9cd5faf9f1cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cc4266a92d510ac84118922f7db09c99234045b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60366294"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84735245"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>重置 ExpressRoute 线路对等互连
 
@@ -21,11 +20,11 @@ ms.locfileid: "60366294"
 
 存在几个有助于重置 ExpressRoute 对等互连的方案。
 * 测试灾难恢复设计和实现。 例如，你有两条 ExpressRoute 线路。 可以禁用一条线路的对等互连，并强制网络流量故障转移到另一条线路。
-* 对 ExpressRoute 线路的 Azure 专用对等互连启用双向转发检测 (BFD)。 如果 ExpressRoute 线路在 2018 年 8 月 1 日之后创建，将默认启用 BFD。 如果线路在此之前创建，则未启用 BFD。 可以通过禁用对等互连并重新启用它来启用 BFD。 应注意，BFD 仅在 Azure 专用对等互连上受支持。
+* 对 ExpressRoute 线路的 Azure 专用对等互连或 Microsoft 对等互连启用双向转发检测 (BFD)。 如果在 1 2018 年8月之后创建了 ExpressRoute 线路 10 2020，则在 Azure 专用对等互连上默认启用 BFD。 如果线路在此之前创建，则未启用 BFD。 可以通过禁用对等互连并重新启用它来启用 BFD。 
 
 ### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
@@ -51,7 +50,7 @@ ms.locfileid: "60366294"
    ```azurepowershell-interactive
    $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
    ```
-5. 标识要禁用或启用的对等互连。 对等互连是一个数组。 在以下示例中，Peerings[0] 是 Azure 专用对等互连，而 Peerings[1] 是 Microsoft 对等互连。
+5. 标识要禁用或启用的对等互连。 对等互连是一个数组**。 在以下示例中，Peerings[0] 是 Azure 专用对等互连，而 Peerings[1] 是 Microsoft 对等互连。
 
    ```azurepowershell-interactive
    Name                             : ExpressRouteARMCircuit

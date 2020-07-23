@@ -1,18 +1,19 @@
 ---
-title: 快速入门 - 使用 Azure CLI 创建 Azure DNS 区域和记录
+title: 快速入门：创建 Azure DNS 区域和记录 - Azure CLI
+titleSuffix: Azure DNS
 description: 快速入门 - 了解如何在 Azure DNS 中创建 DNS 区域和记录。 这是有关使用 Azure CLI 创建和管理你的第一个 DNS 区域和记录的分步指南。
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: 7a2c300e30050e7e46a2b2c724258539df85e410
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: rohink
+ms.openlocfilehash: e6904c013cf2ed897bdc7c8b32f04fe500fc31d9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66111338"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "76937197"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure DNS 区域和记录
 
@@ -20,7 +21,7 @@ ms.locfileid: "66111338"
 
 DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS 中托管域，需要为该域名创建 DNS 区域。 随后会在此 DNS 区域内为每个 DNS 记录创建域。 最后，要将 DNS 区域发布到 Internet，需要为域配置名称服务器。 以下描述了上述每一个步骤。
 
-Azure DNS 现在还支持专用 DNS 区域（当前为公开预览版）。 若要详细了解专用 DNS 区域，请参阅[将 Azure DNS 用于专用域](private-dns-overview.md)。 有关如何创建专用 DNS 区域的示例，请参阅[通过 CLI 开始使用 Azure DNS 专用区域](./private-dns-getstarted-cli.md)。
+Azure DNS 还支持专用 DNS 区域。 若要详细了解专用 DNS 区域，请参阅[将 Azure DNS 用于专用域](private-dns-overview.md)。 有关如何创建专用 DNS 区域的示例，请参阅[通过 CLI 开始使用 Azure DNS 专用区域](./private-dns-getstarted-cli.md)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -92,7 +93,7 @@ az network dns record-set list -g MyResourceGroup -z contoso.xyz
 
    ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
 
-主机名 www\.contoso.xyz 解析为 10.10.10.10，正如你配置的那样。 此结果表明名称解析正常工作。
+主机名 www\.contoso.xyz 解析为 10.10.10.10，正如你配置的那样   。 此结果表明名称解析正常工作。
 
 ## <a name="delete-all-resources"></a>删除所有资源
 

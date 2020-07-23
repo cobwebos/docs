@@ -1,23 +1,13 @@
 ---
 title: 在 Java Web 项目中排查 Application Insights 问题
 description: 故障排除指南 - 使用 Application Insights 监视实时 Java 应用。
-services: application-insights
-documentationcenter: java
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ef602767-18f2-44d2-b7ef-42b404edd0e9
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/14/2018
-ms.author: mbullwin
-ms.openlocfilehash: eaade5f9ec9db7e8d224305147dafc264916d9c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 03/14/2019
+ms.openlocfilehash: ecc9a298d122919138683b48527574a1ff3e5edc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60899493"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84484783"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>用于 Java 的 Application Insights 的故障排除与常见问题解答
 使用 [Java 中的 Azure Application Insights][java] 时有疑问或遇到问题？ 请参考下面的提示。
@@ -27,7 +17,7 @@ ms.locfileid: "60899493"
 
 * 如果依赖项 `<version>` 元素使用包含通配符字符的模式（例如(Maven) `<version>[2.0,)</version>` 或 (Gradle) `version:'2.0.+'`），则尝试改为指定特定版本，如 `2.0.1`。 请参阅最新版本的[发行说明](https://github.com/Microsoft/ApplicationInsights-Java/releases)。
 
-## <a name="no-data"></a>没有数据
+## <a name="no-data"></a>无数据
 **我已成功添加 Application Insights 并运行应用，但在门户中从未看到数据。**
 
 * 请稍等片刻，并单击“刷新”。 图表会定期自行刷新，但你也可以手动刷新。 刷新间隔取决于图表的时间范围。
@@ -35,20 +25,19 @@ ms.locfileid: "60899493"
 * 确认 xml 文件中没有 `<DisableTelemetry>true</DisableTelemetry>` 节点。
 * 在防火墙中，可能需要打开 TCP 端口 80 和 443 才能将传出流量发送到 dc.services.visualstudio.com。 请参阅 [full list of firewall exceptions](../../azure-monitor/app/ip-addresses.md)（防火墙例外的完整列表）
 * 在 Microsoft Azure 开始面板中查看服务状态映射。 如果看到警报指示，请等待它们恢复“正常”，关闭再重新打开 Application Insights 应用程序边栏选项卡。
-* 在 ApplicationInsights.xml 文件（位于项目的 resources 文件夹）中的根节点下添加 `<SDKLogger />` 元素，打开 IDE 控制台窗口日志记录功能，并检查条目的前面是否带有 AI：INFO/WARN/ERROR 以发现任何可疑日志。
+* [Turn on logging](#debug-data-from-the-sdk)通过在 `<SDKLogger />` ApplicationInsights.xml 文件（在项目的 resources 文件夹中）中的根节点下添加一个元素来打开日志记录，并检查是否有任何可疑日志以 AI： INFO/警告/错误开头的条目。 
 * 查看控制台输出消息中是否包含“已成功找到配置文件”语句，确保 Java SDK 成功加载正确的 ApplicationInsights.xml 文件。
 * 如果找不到配置文件，请检查输出消息来确定在何处搜索配置文件，并确保 ApplicationInsights.xml 位在这些搜索位置之一。 根据经验法则，可以将配置文件放置在 Application Insights SDK JAR 的附近。 例如：在 Tomcat 中，这可能是 WEB-INF/classes 文件夹。 在开发期间，可以将 ApplicationInsights.xml 放在 Web 项目的 resources 文件夹中。
 * 另请查看 [GitHub 问题页](https://github.com/Microsoft/ApplicationInsights-Java/issues)，了解 SDK 的已知问题。
 * 请确保使用相同版本的 Application Insights Core、Web、代理和日志记录追加器以避免任何版本冲突问题。
 
 #### <a name="i-used-to-see-data-but-it-has-stopped"></a>我以前看到了数据，但现在看不到
-* 请查看[状态博客](https://blogs.msdn.com/b/applicationinsights-status/)。
-* 是否达到了数据点的每月配额？ 打开“设置/配额和定价”即可检查。如果达到了配额，可以升级计划，或付费购买更多的容量。 请参阅[定价方案](https://azure.microsoft.com/pricing/details/application-insights/)。
+* 是否达到了数据点的每月配额？ 打开 "设置/配额和定价" 以了解。如果是这样，您可以升级您的计划或支付额外的容量。 请参阅[定价方案](https://azure.microsoft.com/pricing/details/application-insights/)。
 * 最近是否升级了 SDK？ 请确保项目目录内仅存在唯一 SDK jar。 不应存在两个不同版本的 SDK。
 * 是否正在查看正确的 AI 资源？ 请将应用程序的 iKey 与预期遥测的资源的 iKey 相匹配。 它们应相同。
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>未按预期看到所有数据
-* 打开“使用情况和预估成本”页面并检查[采样](../../azure-monitor/app/sampling.md)是否正在进行。 （如果传输百分比为 100%，表示当前未执行采样。）可将 Application Insights 服务设置为只接受来自应用的一部分遥测数据。 这有助于保持在每月的遥测配额范围内。
+* 打开“使用情况和预估成本”页面并检查[采样](../../azure-monitor/app/sampling.md)是否正在进行。 （100% 传输意味着采样未处于操作中。）可以将 Application Insights 服务设置为仅接受来自应用的一小部分遥测数据。 这有助于保持在每月的遥测配额范围内。
 * 是否已启用 SDK 采样？ 如果是，将按为所有适用类型指定的速率对数据进行采样。
 * 是否正在运行较旧版本的 Java SDK？ 从版本 2.0.1 开始，我们引入了容错机制以处理间歇性网络和后端故障，以及本地驱动器上的数据持久性。
 * 是否由于过度遥测而受到限制？ 如果启用“信息日志记录”，会看到日志消息“应用受到限制”。 当前的限制为 32000 个遥测项/秒。
@@ -57,7 +46,6 @@ ms.locfileid: "60899493"
 * 是否已按照[配置 Java 代理](java-agent.md)配置 Java 代理？
 * 请确保 java 代理 jar 和 AI-Agent.xml 文件放置在同一文件夹中。
 * 请确保自动收集功能支持你尝试自动收集的依赖项。 目前我们仅支持 MySQL、MsSQL、Oracle DB 和 用于 Redis 的 Azure 缓存依赖项收集。
-* 使用的是 JDK 1.7 还是 JDK 1.8？ 目前我们在 JDK 9 中不支持依赖项收集。
 
 ## <a name="no-usage-data"></a>无使用情况数据
 **我看到了请求和响应时间的相关数据，但没有看到页面视图、浏览器或用户数据。**
@@ -92,10 +80,10 @@ ms.locfileid: "60899493"
 如果使用 XML 方法，则必须在更改值后重新启动应用程序。
 
 ## <a name="changing-the-target"></a>更改目标
-**如何更改项目要将数据发送到的 Azure 资源？**
+**如何更改项目向其发送数据的 Azure 资源？**
 
 * [获取新资源的检测密钥][java]
-* 如果使用用于 Eclipse 的 Azure 工具包将 Application Insights 添加到项目，请右键单击 Web 项目，选择“Azure”、“配置 Application Insights”，然后更改密钥。
+* 如果使用用于 Eclipse 的 Azure 工具包将 Application Insights 添加到项目，请右键单击 Web 项目，选择“Azure”、“配置 Application Insights”，然后更改密钥。********
 * 如果已将检测密钥配置为环境变量，请使用新 iKey 更新环境变量的值。
 * 否则，请更新项目的 resources 文件夹中 ApplicationInsights.xml 内的密钥。
 
@@ -110,16 +98,16 @@ ms.locfileid: "60899493"
 也可以指示记录器将信息输出到某个文件：
 
 ```XML
-  <SDKLogger type="FILE">
+  <SDKLogger type="FILE"><!-- or "CONSOLE" to print to stderr -->
     <Level>TRACE</Level>
     <UniquePrefix>AI</UniquePrefix>
     <BaseFolderPath>C:/agent/AISDK</BaseFolderPath>
 </SDKLogger>
 ```
 
-### <a name="spring-boot-starter"></a>Spring Boot 起动器
+### <a name="spring-boot-starter"></a>Spring Boot Starter
 
-若要使用 Spring Boot 应用使用应用程序见解 Spring Boot 起动器启用 SDK 日志记录，将以下代码添加到`application.properties`文件。:
+若要使用 Application Insight Spring Boot Starter 启用 Spring Boot 应用的 SDK 日志记录，请将以下内容添加到 `application.properties` 文件中：
 
 ```yaml
 azure.application-insights.logger.type=file
@@ -127,20 +115,42 @@ azure.application-insights.logger.base-folder-path=C:/agent/AISDK
 azure.application-insights.logger.level=trace
 ```
 
+或者输出到标准错误：
+
+```yaml
+azure.application-insights.logger.type=console
+azure.application-insights.logger.level=trace
+```
+
 ### <a name="java-agent"></a>Java 代理
 
-若要启用日志记录 JVM 代理更新[Ai-agent.xml 文件](java-agent.md)。
+若要启用 JVM 代理日志记录，请更新 [AI-Agent.xml 文件](java-agent.md)：
 
 ```xml
-<AgentLogger type="FILE">
+<AgentLogger type="FILE"><!-- or "CONSOLE" to print to stderr -->
     <Level>TRACE</Level>
     <UniquePrefix>AI</UniquePrefix>
     <BaseFolderPath>C:/agent/AIAGENT</BaseFolderPath>
 </AgentLogger>
 ```
 
+### <a name="java-command-line-properties"></a>Java 命令行属性
+_自版本 2.4.0_
+
+若要使用命令行选项启用日志记录，而不更改配置文件，请执行以下操作：
+
+```
+java -Dapplicationinsights.logger.file.level=trace -Dapplicationinsights.logger.file.uniquePrefix=AI -Dapplicationinsights.logger.baseFolderPath="C:/my/log/dir" -jar MyApp.jar
+```
+
+或者输出到标准错误：
+
+```
+java -Dapplicationinsights.logger.console.level=trace -jar MyApp.jar
+```
+
 ## <a name="the-azure-start-screen"></a>Azure 开始屏幕
-**我正在查看 [Azure 门户](https://portal.azure.com)。地图是否告知有关应用的信息？**
+**我正在查看[Azure 门户](https://portal.azure.com)。地图是否会告诉我应用的相关内容？**
 
 不会，它只显示世界各地的 Azure 服务器的运行状况。
 
@@ -156,7 +166,7 @@ azure.application-insights.logger.level=trace
 在防火墙中，可能需要打开 TCP 端口 80 和 443 才能将传出流量发送到 dc.services.visualstudio.com 和 f5.services.visualstudio.com。
 
 ## <a name="data-retention"></a>数据保留
-**数据在门户中保留多长时间？是否安全？**
+**数据在门户中保留多长时间？这是否安全？**
 
 请参阅[数据保留和隐私][data]。
 
@@ -168,7 +178,7 @@ Application Insights 使用 `org.apache.http`。 这将在命名空间 `com.micr
 
 
 ## <a name="next-steps"></a>后续步骤
-**我为 Java 服务器应用设置了 Application Insights。接下来还可以做些什么？**
+**我设置了 Java server 应用的 Application Insights。我还可以做些什么？**
 
 * [监视网页的可用性][availability]
 * [监视网页的使用情况][usage]

@@ -1,29 +1,23 @@
 ---
-title: 了解虚拟机规模集模板 | Microsoft Docs
-description: 了解如何创建虚拟机规模集的基本的规模集模板
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: drewm
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
+title: 了解虚拟机规模集模板
+description: 了解如何通过几个简单的步骤为 Azure 虚拟机规模集创建基本规模集模板。
+author: mimckitt
+ms.author: mimckitt
+ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: template
 ms.date: 04/26/2019
-ms.author: manayar
-ms.openlocfilehash: 8b6a6b78dc74572b22d397b5536efa1394401bbc
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 6f47e07dcffd977121b4142924a77bdb93de3fc3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64868905"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503041"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>了解虚拟机规模集模板
-[Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)是部署成组的相关资源的好办法。 本系列教程演示如何创建基本的规模集模板以及如何修改此模板以满足各种场景。 所有示例都来自此 [GitHub 存储库](https://github.com/gatneil/mvss)。
+[Azure 资源管理器模板](../azure-resource-manager/templates/overview.md#template-deployment-process)是部署成组的相关资源的好办法。 本系列教程演示如何创建基本规模集模板，以及如何修改此模板以满足各种场景。 所有示例都来自此 [GitHub 存储库](https://github.com/gatneil/mvss)。
 
 此模板简单易用。 有关更完整的规模集模板的示例，请参阅 [Azure 快速入门模板 GitHub 存储库](https://github.com/Azure/azure-quickstart-templates)，并搜索包含字符串 `vmss` 的文件夹。
 
@@ -75,7 +69,7 @@ Resource Manager 模板还可用于定义以后要在模板中使用的变量。
 ```
 
 ## <a name="specify-location"></a>指定位置
-若要指定虚拟网络的位置，请使用[资源管理器模板函数](../azure-resource-manager/resource-group-template-functions.md)。 此函数必须括在引号和方括号内，如：`"[<template-function>]"`。 在本例中，使用 `resourceGroup` 函数。 该函数不使用任何参数，并返回 JSON 对象和有关要将部署部署到的资源组的元数据。 资源组在部署时由用户进行设置。 然后此值会通过 `.location` 编入到该 JSON 对象的索引中，以便从该 JSON 对象中获取位置。
+若要指定虚拟网络的位置，请使用[资源管理器模板函数](../azure-resource-manager/templates/template-functions.md)。 此函数必须括在引号和方括号内，如：`"[<template-function>]"`。 在本例中，使用 `resourceGroup` 函数。 该函数不使用任何参数，并返回 JSON 对象和有关要将部署部署到的资源组的元数据。 资源组在部署时由用户进行设置。 然后此值会通过 `.location` 编入到该 JSON 对象的索引中，以便从该 JSON 对象中获取位置。
 
 ```json
        "location": "[resourceGroup().location]",
@@ -121,7 +115,7 @@ Resource Manager 模板还可用于定义以后要在模板中使用的变量。
 ## <a name="specify-scale-set-properties"></a>指定规模集属性
 规模集具有多个用于自定义规模集中 VM 的属性。 有关这些属性的完整列表，请参阅[模板参考](/azure/templates/microsoft.compute/virtualmachinescalesets)。 在本教程中，仅设置一些常用属性。
 ### <a name="supply-vm-size-and-capacity"></a>提供 VM 大小和容量
-规模集需要知道要创建的 VM 的大小（“sku name”） 和要创建的此类 VM的 数量（“sku capacity”）。 若要查看可用的 VM 大小，请参阅 [VM 大小文档](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes)。
+规模集需要知道要创建的 VM 的大小（“sku name”） 和要创建的此类 VM的 数量（“sku capacity”）。 若要查看可用的 VM 大小，请参阅 [VM 大小文档](../virtual-machines/windows/sizes.md)。
 
 ```json
        "sku": {
@@ -131,7 +125,7 @@ Resource Manager 模板还可用于定义以后要在模板中使用的变量。
 ```
 
 ### <a name="choose-type-of-updates"></a>选择更新类型
-规模集还需要知道如何处理规模集的更新。 目前，有三个选项， `Manual`，`Rolling`和`Automatic`。 有关这两者之间的区别的详细信息，请参阅文档[如何升级规模集](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)。
+规模集还需要知道如何处理规模集的更新。 目前有三个选项：`Manual`、`Rolling`、`Automatic`。 有关这两者之间的区别的详细信息，请参阅文档[如何升级规模集](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)。
 
 ```json
        "properties": {

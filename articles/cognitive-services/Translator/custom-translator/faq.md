@@ -1,22 +1,21 @@
 ---
 title: 常见问题解答 - 自定义翻译
 titleSuffix: Azure Cognitive Services
-description: 提供有关自定义翻译的常见问题的解答。
-author: rajdeep-in
-manager: christw
+description: 本文包含有关 Azure 认知服务自定义转换器的常见问题的解答。
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
-ms.author: v-pawal
+ms.date: 05/26/2020
+ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 79dc5baacb19143f2b31de7f3822af382c2e6cf4
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
-ms.translationtype: MT
+ms.openlocfilehash: 2edc5e9e255af321a30521ba1e707eea30d81f73
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384044"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957590"
 ---
-# <a name="frequently-asked-questions"></a>常见问题
+# <a name="custom-translator-frequently-asked-questions"></a>自定义翻译人员常见问题
 
 本文包含有关[自定义翻译](https://portal.customtranslator.azure.ai)的常见问题解答。
 
@@ -41,7 +40,7 @@ ms.locfileid: "66384044"
 
 ## <a name="how-do-you-access-a-deployed-system"></a>如何访问已部署的系统？
 
-可以使用 Microsoft 文本翻译 API V3 并指定 CategoryID 来访问已部署的系统。 在 [API 参考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)网页中可以找到有关文本翻译 API 的详细信息。
+通过指定类别 Id，可以通过转换器访问部署的系统。 有关转换器的详细信息，请参阅[API 参考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)网页。
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>如果我的数据已进行句子对齐，如何跳过对齐和断句？
 

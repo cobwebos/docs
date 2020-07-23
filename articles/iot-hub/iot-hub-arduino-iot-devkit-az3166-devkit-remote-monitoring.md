@@ -1,5 +1,5 @@
 ---
-title: IoT DevKit 到云 -- 将 IoT MXChip DevKit 连接到 Azure IoT 中心 | Microsoft Docs
+title: 将 MXChip IoT DevKit 连接到 Azure IoT 中心远程监视
 description: 本教程介绍了如何将 IoT DevKit AZ3166 上的传感器的状态发送到 Azure IoT 远程监视解决方案加速器。
 author: liydu
 manager: jeffya
@@ -9,12 +9,11 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: ae8dc263e08528c6e3b3bae8c779162c96d51f43
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 598e361949b000724645c841910b1682a7bbb1a3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61324242"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81258450"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>将 MXChip IoT DevKit 连接到 Azure IoT 远程监视解决方案加速器
 
@@ -58,7 +57,7 @@ ms.locfileid: "61324242"
 
 5. 单击“添加设备”。
 
-6. 对于“自定义设备”，单击“新增”。
+6. 对于“自定义设备”，单击“新增”。 
   
    ![添加新设备](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-add-new-device.png)
 
@@ -82,7 +81,7 @@ ms.locfileid: "61324242"
 4. 展开左侧的“ARDUINO 示例”部分，浏览到“MXCHIP AZ3166 的示例 > AzureIoT”，然后选择“RemoteMonitoring”。 它将打开一个新的 VS Code 窗口，其中包含一个项目文件夹。
 
    > [!NOTE]
-   > 如果无意中关闭了窗格，可以重新打开它。 使用 `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) 打开命令面板，键入“Arduino”，然后找到并选择“Arduino:Examples”。
+   > 如果无意中关闭了窗格，可以重新打开它。 使用 `Ctrl+Shift+P`（macOS: `Cmd+Shift+P`）打开命令面板，键入“Arduino”，然后找到并选择“Arduino: Examples”。
 
 ## <a name="provision-required-azure-services"></a>预配所需的 Azure 服务
 
@@ -120,7 +119,7 @@ DevKit 将重新启动并开始运行代码。
 
 ## <a name="change-device-id"></a>更改设备 ID
 
-如果希望在代码中将硬编码的 **AZ3166** 更改为自定义的设备 ID，请修改[远程监视示例](https://github.com/Microsoft/devkit-sdk/blob/master/AZ3166/src/libraries/AzureIoT/examples/RemoteMonitoring/RemoteMonitoring.ino#L23)中显示的代码行。
+如果希望在代码中将硬编码的 **AZ3166** 更改为自定义的设备 ID，请修改[远程监视示例](../iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md)中显示的代码行。
 
 ## <a name="problems-and-feedback"></a>问题和反馈
 
@@ -135,6 +134,6 @@ DevKit 将重新启动并开始运行代码。
 
 * [Azure IoT 解决方案加速器概述](https://docs.microsoft.com/azure/iot-suite/)
 
-* [将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+* [将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序](/azure/iot-central/core/howto-connect-devkit)
 
 * [IoT 开发人员工具包](https://microsoft.github.io/azure-iot-developer-kit/) 

@@ -1,76 +1,166 @@
-- name: Windows 虚拟桌面
+- name: Windows 虚拟桌面 2020 春季版
   href: index.yml
 - name: 概述
   items:
     - name: 什么是 Windows 虚拟桌面？
       href: overview.md
+    - name: 新增功能
+      href: whats-new.md
+    - name: 2019 秋季版文档
+      href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: 教程
   items:
-    - name: 1. 在 Windows 虚拟桌面中创建租户
-      href: tenant-setup-azure-active-directory.md
-    - name: 2. 使用 PowerShell 创建服务主体和角色分配
-      href: create-service-principal-role-powershell.md
-    - name: 3. 通过 Azure 市场创建主机池
+    - name: 1. 使用 Azure 门户创建主机池
       href: create-host-pools-azure-marketplace.md
-    - name: 4. 管理应用组
+    - name: 2. 管理应用组
       href: manage-app-groups.md
-    - name: 5. 创建主机池以验证服务更新
+    - name: 3. 创建主机池以验证服务更新
       href: create-validation-host-pool.md
+    - name: 4. 设置服务警报
+      href: set-up-service-alerts.md
 - name: 操作说明
   items:
     - name: 连接到 Windows 虚拟桌面资源
       items:
-        - name: 从 Windows 10 或 Windows 7 进行连接
-          href: connect-windows-7-and-10.md
-        - name: 从 Web 浏览器进行连接
+        - name: 使用 Windows 桌面客户端进行连接
+          href: connect-windows-7-10.md
+        - name: 使用 Web 客户端进行连接
           href: connect-web.md
-    - name: 使用 Azure 资源管理器模板创建主机池
-      href: create-host-pools-arm-template.md
-    - name: 使用 PowerShell 创建主机池
-      href: create-host-pools-powershell.md
-    - name: 为主机池设置用户配置文件共享
-      href: create-host-pools-user-profile.md
-    - name: 配置 Windows 虚拟桌面负载均衡方法
-      href: configure-host-pool-load-balancing.md
-    - name: 准备和自定义主 VHD 映像
-      href: set-up-customize-master-image.md
-    - name: 在主 VHD 映像中安装 Office
-      href: install-office-on-wvd-master-image.md
-    - name: 为 Windows 虚拟桌面配置 GPU
-      href: configure-vm-gpu.md
-    - name: 自动缩放会话主机
-      href: set-up-scaling-script.md
+        - name: 使用 Android 客户端进行连接
+          href: connect-android.md
+        - name: 使用 macOS 客户端进行连接
+          href: connect-macos.md
+        - name: 使用 iOS 客户端进行连接
+          href: connect-ios.md
+    - name: 设置 PowerShell 模块
+      href: powershell-module.md
+    - name: 创建主机池和会话主机
+      items:
+        - name: PowerShell
+          href: create-host-pools-powershell.md
+        - name: 部署 Windows 7 虚拟机
+          href: deploy-windows-7-virtual-machine.md
+        - name: 部署基于 GPU 的会话主机
+          href: configure-vm-gpu.md
+        - name: 展开现有的主机池
+          href: expand-existing-host-pool.md
+        - name: 使用 PowerShell 管理应用组
+          href: manage-app-groups-powershell.md
+    - name: 创建配置文件容器
+      items:
+        - name: 使用基于 VM 的文件共享
+          href: create-host-pools-user-profile.md
+        - name: 使用 Azure NetApp 文件
+          href: create-fslogix-profile-container.md
+        - name: 使用 Azure 文件存储和 Azure AD DS
+          href: create-profile-container-adds.md
+        - name: 使用 Azure 文件存储和 AD DS
+          href: create-file-share.md
+    - name: 配置主机池设置
+      items:
+        - name: RDP 属性
+          href: customize-rdp-properties.md
+        - name: 共用主机池的负载均衡
+          href: configure-host-pool-load-balancing.md
+        - name: 个人桌面分配类型
+          href: configure-host-pool-personal-desktop-assignment-type.md
+    - name: 使用 Windows 虚拟桌面许可证
+      href: apply-windows-license.md
+    - name: 自定义会话主机映像
+      items:
+        - name: 设置主 VHD 映像
+          href: set-up-customize-master-image.md
+        - name: 在主 VHD 映像中安装 Office
+          href: install-office-on-wvd-master-image.md
+    - name: 自定义源
+      href: customize-feed-for-virtual-desktop-users.md
+    - name: 使用服务诊断
+      items:
+        - name: 将诊断与 Log Analytics 配合使用
+          href: diagnostics-log-analytics.md
+    - name: 发布内置应用
+      href: publish-apps.md
+    - name: 设置 MSIX 应用附加
+      href: app-attach.md
+    - name: 使用 Microsoft Teams
+      href: teams-on-wvd.md
+    - name: 设置 Azure 多重身份验证
+      href: set-up-mfa.md
+    - name: 配置自动更新
+      href: configure-automatic-updates.md
+    - name: 安装语言包
+      href: language-packs.md
 - name: 概念
   items:
+    - name: 安全 URL 列表
+      href: safe-url-list.md
     - name: Windows 虚拟桌面环境
       href: environment-setup.md
+    - name: 确定用户连接延迟
+      href: connection-latency.md
     - name: Windows 虚拟桌面中的委托访问
       href: delegated-access-virtual-desktop.md
     - name: 主机池负载均衡方法
       href: host-pool-load-balancing.md
     - name: FSLogix 配置文件容器和 Azure 文件
       href: fslogix-containers-azure-files.md
-- name: 故障排除
+    - name: FSLogix 配置文件容器的存储选项
+      href: store-fslogix-profile.md
+    - name: 合作伙伴集成
+      href: partners.md
+    - name: Windows 10 Enterprise 多会话常见问题解答
+      href: windows-10-multisession-faq.md
+    - name: 数据位置
+      href: data-locations.md
+- name: 疑难解答
   items:
     - name: 故障排除概述、反馈和支持
       href: troubleshoot-set-up-overview.md
-    - name: 确定诊断功能的问题
+    - name: 识别和诊断问题
       href: diagnostics-role-service.md
-    - name: 创建租户和主机池
+    - name: 创建主机池
       href: troubleshoot-set-up-issues.md
     - name: 会话主机虚拟机配置
       href: troubleshoot-vm-configuration.md
-    - name: 远程桌面客户端连接
-      href: troubleshoot-client-connection.md
+    - name: 远程桌面服务连接
+      href: troubleshoot-service-connection.md
+    - name: 远程桌面客户端问题
+      href: troubleshoot-client.md
     - name: Windows 虚拟桌面 PowerShell
       href: troubleshoot-powershell.md
     - name: 诊断图形性能问题
       href: remotefx-graphics-performance-counters.md
-- name: 引用
+- name: 参考
   items:
-    - name: PowerShell
-      href: /powershell/windows-virtual-desktop/overview
+    - name: 安全最佳做法
+      href: security-guide.md
+    - name: Linux 支持
+      href: linux-overview.md
+    - name: 支持的 RDP 文件设置
+      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context'
+    - name: 网络指南
+      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context'
+    - name: 虚拟机大小调整指南
+      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context'
 - name: 资源
   items:
+    - name: PowerShell
+      href: /powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization
+    - name: REST API 参考
+      href: /rest/api/desktopvirtualization/
+    - name: 体验评估器
+      href: 'https://azure.microsoft.com/services/virtual-desktop/assessment/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 学习路径
+      href: 'https://docs.microsoft.com/learn/paths/m365-wvd/'
+    - name: 操作说明视频
+      href: 'https://support.microsoft.com/help/4563049/how-to-videos-about-windows-virtual-desktop'
     - name: 技术社区支持组
       href: 'https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop'
+    - name: UserVoice 论坛
+      href: 'https://windowsvirtualdesktop.uservoice.com/forums/921118-general'
+    - name: Microsoft 365 路线图
+      href: 'https://aka.ms/wvdroadmap'
+    - name: Azure 资源管理器模板
+      href: 'https://github.com/Azure/RDS-Templates/tree/master/wvd-templates'

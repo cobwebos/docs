@@ -1,19 +1,17 @@
 ---
 title: Azure IoT 中心消息路由查询 | Microsoft 文档
-description: 开发人员指南 - Azure IoT 中心消息路由查询语法。
+description: 了解 IoT 中心消息路由查询语言，该语言可用于向消息应用丰富的查询，以便接收重要的数据。
 author: ash2017
-manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 94d3599fe919cf648be7115be68002d2aa458ee3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: b76ef431e4c0ad63929378c1f48c6ab06776cb25
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60400637"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84688953"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT 中心消息路由查询语法
 
@@ -51,14 +49,15 @@ IoT 中心为所有设备到云的消息传送定义了[格式](iot-hub-devguide
 
 系统属性有助于标识消息的内容和源。 
 
-| 属性 | Type | 描述 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| contentType | string | 用户指定消息的内容类型。 若要允许查询消息正文，此值应设置应用程序/JSON。 |
-| contentEncoding | string | 用户指定消息的编码类型。 如果 contentType 设置为应用程序/JSON，则允许的值为 UTF-8、UTF-16 和 UTF-32。 |
-| iothub-connection-device-id | string | 此值由 IoT 中心设置，标识设备的 ID。 若要查询，请使用 `$connectionDeviceId`。 |
-| iothub-enqueuedtime | string | 此值由 IoT 中心设置，表示 UTC 中消息排入队列的实际时间。 若要查询，请使用 `enqueuedTime`。 |
+| contentType | 字符串 | 用户指定消息的内容类型。 若要允许查询消息正文，此值应设置应用程序/JSON。 |
+| contentEncoding | 字符串 | 用户指定消息的编码类型。 如果 contentType 设置为应用程序/JSON，则允许的值为 UTF-8、UTF-16 和 UTF-32。 |
+| iothub-connection-device-id | 字符串 | 此值由 IoT 中心设置，标识设备的 ID。 若要查询，请使用 `$connectionDeviceId`。 |
+| iothub-enqueuedtime | 字符串 | 此值由 IoT 中心设置，表示 UTC 中消息排入队列的实际时间。 若要查询，请使用 `enqueuedTime`。 |
+| iothub-interface-name | 字符串 | 此值由用户设置，表示实现遥测消息的数字克隆接口的名称。 若要查询，请使用 `$interfaceName`。 此功能在[IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)中提供。 |
 
-如 [IoT 中心消息](iot-hub-devguide-messages-construct.md)中所述，一条消息中还有其他系统属性。 除了 contentType，还可以查询 contentEncoding 和 enqueuedTime、connectionDeviceId 和 connectionModuleId。
+如 [IoT 中心消息](iot-hub-devguide-messages-construct.md)中所述，一条消息中还有其他系统属性。 除了**contentType**、 **contentEncoding**和**EnqueuedTime**，还可以查询**connectionDeviceId**和**为 connectionmoduleid** 。
 
 ### <a name="application-properties"></a>应用程序属性
 
@@ -86,9 +85,9 @@ processingPath = 'hot'
 $contentEncoding = 'UTF-8' AND processingPath = 'hot'
 ```
 
-受支持的运算符和函数的完整列表在[表达式和条件](iot-hub-devguide-query-language.md#expressions-and-conditions)中列出
+[表达式和条件](iot-hub-devguide-query-language.md#expressions-and-conditions)中显示了支持的运算符和函数的完整列表。
 
-## <a name="message-routing-query-based-on-message-body"></a>基于消息正文的消息路由查询 
+## <a name="message-routing-query-based-on-message-body"></a>基于消息正文的消息路由查询
 
 若要启用对消息正文的查询，消息应采用以 UTF-8、UTF-16 或 UTF-32 编码的 JSON 格式。 在系统属性中，`contentType` 必须设置为 `application/JSON`，而 `contentEncoding` 则设置为一个受支持的 UTF 编码。 如果未指定这些属性，IoT 中心将不会计算消息正文的查询表达式。 
 
@@ -141,6 +140,10 @@ deviceClient.sendEvent(message, (err, res) => {
 });
 ```
 
+> [!NOTE] 
+> 这说明了如何处理 javascript 中正文的编码。 若要查看 c # 中的示例，请下载[Azure IoT c # 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)。 解压缩 master.zip 文件。 Visual Studio 解决方案*SimulatedDevice*的 Program.cs 文件演示如何编码和将消息提交到 IoT 中心。 这是用于测试消息路由的相同示例，如[消息路由教程](tutorial-routing.md)中所述。 在 Program.cs 的底部，它还提供了一个方法，用于读取其中一个编码文件，对其进行解码，并将其写回作为 ASCII，以便您可以读取它。 
+
+
 ### <a name="query-expressions"></a>查询表达式
 
 对消息正文的查询需要以 `$body` 为前缀。 你可以在查询表达式中使用正文引用、正文数组引用或多个正文引用。 查询表达式还可以将正文引用与消息系统属性和消息应用程序属性引用组合在一起。 例如，以下所有查询表达式都有效： 
@@ -163,7 +166,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ## <a name="message-routing-query-based-on-device-twin"></a>基于设备孪生的消息路由查询 
 
-通过消息路由，可以查询[设备孪生](iot-hub-devguide-device-twins.md)标记和属性，这些是 JSON 对象。 请注意，不支持对模块孪生的查询。 设备孪生标记和属性的示例如下所示。
+通过消息路由，可以查询[设备孪生](iot-hub-devguide-device-twins.md)标记和属性，这些是 JSON 对象。 还支持对模块孪生进行查询。 设备孪生标记和属性的示例如下所示。
 
 ```JSON
 {
@@ -196,7 +199,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ### <a name="query-expressions"></a>查询表达式
 
-对消息正文的查询需要以 `$twin` 为前缀。 此外，查询表达式还可以将孪生标记或属性引用与正文引用、消息系统属性和消息应用程序属性引用组合在一起。 我们建议在标记和属性中使用唯一名称，因为查询不区分大小写。 同时，请避免使用 `twin`、`$twin`、`body` 或 `$body` 作为属性名称。 例如，以下所有查询表达式都有效： 
+对消息双子的查询需要以为前缀 `$twin` 。 此外，查询表达式还可以将孪生标记或属性引用与正文引用、消息系统属性和消息应用程序属性引用组合在一起。 我们建议在标记和属性中使用唯一名称，因为查询不区分大小写。 这同时适用于设备孪生和模块孪生。 同时，请避免使用 `twin`、`$twin`、`body` 或 `$body` 作为属性名称。 例如，以下所有查询表达式都有效： 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'
@@ -209,6 +212,8 @@ $body.Weather.Temperature = 50 AND $twin.properties.desired.telemetryConfig.send
 ```sql
 $twin.tags.deploymentLocation.floor = 1 
 ```
+
+不支持在负载或属性名称中有句点的 body 或 device 双子的路由查询。
 
 ## <a name="next-steps"></a>后续步骤
 

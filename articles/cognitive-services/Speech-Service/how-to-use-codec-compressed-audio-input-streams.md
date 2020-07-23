@@ -1,66 +1,70 @@
 ---
-title: Stream 编解码器压缩的音频和语音 SDK-语音服务
+title: 使用语音 SDK 流式传输编解码器压缩的音频 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 了解如何将流式传输到 Azure 使用语音 SDK 的语音服务的压缩的音频。 适用于C++， C#，并适用于 Linux 的 Java。
+description: 了解如何使用语音 SDK 将压缩音频流式传输到语音服务。 适用于用于 Linux 的 C++、C# 和 Java，Android 中的 Java 和 iOS 中的 Objective-C。
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 03/30/2020
 ms.author: amishu
-ms.openlocfilehash: 41a55eca321cbe1bfa23a889b8e3ce7c701ce769
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+zone_pivot_groups: programming-languages-set-twelve
+ms.openlocfilehash: 13cb35ffa650661da2855787279c4bdc37126ac9
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65468045"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585007"
 ---
-# <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>使用编解码器压缩音频输入使用语音 SDK
+# <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>在语音 SDK 中使用编解码器压缩的音频输入
 
-Speech SDK**压缩音频输入 Stream** API 提供了一种方法来流式传输到语音服务的压缩的音频使用 PullStream 或 PushStream。
+语音服务 SDK 压缩音频输入流  API 提供了一种使用 `PullStream` 或 `PushStream` 将压缩音频流式传输到语音服务的方法。
 
-> [!IMPORTANT]
-> 仅支持流式处理压缩的音频C++， C#，并在 Linux （Ubuntu 16.04、 Ubuntu 18.04、 Debian 9） 上的 Java。
+当前支持对 c #、c + +、Windows 上的 Java （UWP 应用程序不受支持）和 Linux （Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7/8、CentOS 7/8）进行流式处理压缩的输入音频。 Android 中的 Java 和 iOS 平台中的 Objective-C 也支持该功能。
+* RHEL 8 和 CentOS 8 需要 Speech SDK 版本1.10.0 或更高版本
+* Windows 需要语音 SDK 版本 1.11.0 或更高版本。
 
-Wav/PCM 请参阅主线语音文档。  外部 wav/PCM，支持以下编解码器压缩输入的格式：
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
-- MP3
-- 大作/OGG
+## <a name="prerequisites"></a>先决条件
 
-## <a name="prerequisites-to-using-codec-compressed-audio-input"></a>必备组件以使用编解码器压缩音频输入
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/csharp/prerequisites.md)]
+::: zone-end
 
-安装适用于 Linux 的语音 SDK 使用压缩的音频输入这些其他依赖项：
+::: zone pivot="programming-language-cpp"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/cpp/prerequisites.md)]
+::: zone-end
 
-```sh
-sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
-```
+::: zone pivot="programming-language-java"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/java/prerequisites.md)]
+::: zone-end
 
-## <a name="example-code-using-codec-compressed-audio-input"></a>示例代码使用编解码器压缩音频输入
+::: zone pivot="programming-language-objectivec"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/objectivec/prerequisites.md)]
+::: zone-end
 
-若要流式传输到语音服务以压缩音频格式，创建`PullAudioInputStream`或`PushAudioInputStream`。 然后，创建`AudioConfig`流类的实例，从指定流的压缩格式。
+## <a name="example-code-using-codec-compressed-audio-input"></a>使用编解码器压缩的音频输入的示例代码
 
-我们假设您有一个名为的输入的流类`myPushStream`并且正在使用大作/OGG。 你的代码可能如下所示：
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/csharp/examples.md)]
+::: zone-end
 
-```csharp
-using Microsoft.CognitiveServices.Speech;
-using Microsoft.CognitiveServices.Speech.Audio;
+::: zone pivot="programming-language-cpp"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/cpp/examples.md)]
+::: zone-end
 
-var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+::: zone pivot="programming-language-java"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/java/examples.md)]
+::: zone-end
 
-// Create an audio config specifying the compressed audio format and the instance of your input stream class.
-var audioFormat = AudioStreamFormat.GetCompressedFormat(AudioStreamContainerFormat.OGG_OPUS);
-var audioConfig = AudioConfig.FromStreamInput(myPushStream, audioFormat);
-
-var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
-
-var result = await recognizer.RecognizeOnceAsync();
-
-var text = result.GetText();
-```
+::: zone pivot="programming-language-objectivec"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/objectivec/examples.md)]
+::: zone-end
 
 ## <a name="next-steps"></a>后续步骤
 
-- [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
-- [了解如何在 C# 中识别语音](quickstart-csharp-dotnet-windows.md)
+> [!div class="nextstepaction"]
+> [了解如何识别语音](quickstarts/speech-to-text-from-microphone.md)

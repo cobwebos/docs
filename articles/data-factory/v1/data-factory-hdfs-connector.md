@@ -1,27 +1,26 @@
 ---
-title: 从本地 HDFS 移动数据 | Microsoft Docs
+title: 从本地 HDFS 移动数据
 description: 了解如何使用 Azure 数据工厂从本地 HDFS 移动数据。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 3215b82d-291a-46db-8478-eac1a3219614
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fe1324479ed3b1438e993504552c6279bcef5a15
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: e3f158bb4e8208d00fdfbc44b4afaf067183b6d2
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431081"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087310"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>使用 Azure 数据工厂从本地 HDFS 移动数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-hdfs-connector.md)
 > * [版本 2（当前版本）](../connector-hdfs.md)
 
@@ -48,15 +47,15 @@ ms.locfileid: "66431081"
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从 HDFS 源移动数据。
 
-创建管道的最简单方法是使用  复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+创建管道的最简单方法是使用**** 复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-还可以使用以下工具来创建管道：Azure 门户  、Visual Studio  、Azure PowerShell  、Azure 资源管理器模板  、.NET API  和 REST API  。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+也可以使用以下工具创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API************************。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
-1. 创建链接服务可将输入和输出数据存储链接到数据工厂  。
-2. 创建数据集以表示复制操作的输入和输出数据  。
-3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出  。
+1. 创建**链接服务**以将输入和输出数据存储链接到数据工厂。
+2. 创建用于表示复制操作的输入和输出数据的**数据集**。
+3. 创建包含复制活动的**管道**，该活动将数据集作为输入，并将数据集作为输出。
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于从 HDFS 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从本地 HDFS 复制到 Azure Blob](#json-example-copy-data-from-on-premises-hdfs-to-azure-blob) 部分。
 
@@ -65,15 +64,15 @@ ms.locfileid: "66431081"
 ## <a name="linked-service-properties"></a>链接服务属性
 链接服务可将数据存储链接到数据工厂。 可创建 **Hdfs** 类型的链接服务，以便将本地 HDFS 链接到数据工厂。 下表提供 HDFS 链接服务专属 JSON 元素的描述。
 
-| 属性 | 说明 | 必选 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
-| type |type 属性必须设置为：**Hdfs** |是 |
+| type |Type 属性必须设置为： **Hdfs** |是 |
 | url |HDFS 的 URL |是 |
 | authenticationType |匿名或 Windows。 <br><br> 若要对 HDFS 连接器使用 **Kerberos 身份验证**，请参阅[此部分](#use-kerberos-authentication-for-hdfs-connector)相应地设置本地环境。 |是 |
 | userName |Windows 身份验证的用户名。 对于 Kerberos 身份验证，指定 `<username>@<domain>.com`。 |是（对于 Windows 身份验证） |
 | password |Windows 身份验证的密码。 |是（对于 Windows 身份验证） |
 | gatewayName |数据工厂服务用于连接到 HDFS 的网关的名称。 |是 |
-| encryptedCredential |[新 AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue)访问凭据的输出。 |否 |
+| encryptedCredential |访问凭据的[AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue)输出。 |否 |
 
 ### <a name="using-anonymous-authentication"></a>使用匿名身份验证
 
@@ -116,15 +115,15 @@ ms.locfileid: "66431081"
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
 
-每种数据集的 **typeProperties** 节有所不同，该部分提供有关数据在数据存储中的位置信息。 **FileShare** 类型数据集（包括 HDFS 数据集）的 typeProperties 节具有以下属性
+每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息****。 **FileShare** 类型数据集（包括 HDFS 数据集）的 typeProperties 节具有以下属性
 
-| 属性 | 说明 | 需要 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
-| folderPath |文件夹路径。 示例： `myfolder`<br/><br/>请对字符串中的特殊字符使用转义符“\”。 例如：对于 folder\subfolder，请指定 folder\\\\subfolder；对于 d:\samplefolder，请指定 d:\\\\samplefolder。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
-| fileName |如果希望表引用文件夹中的特定文件，请在 **folderPath** 中指定文件名。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt` (例如::Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
+| folderPath |文件夹路径。 示例：`myfolder`<br/><br/>请对字符串中的特殊字符使用转义符“\”。 例如：对于 folder\subfolder，请指定 folder\\\\subfolder；对于 d:\samplefolder，请指定 d:\\\\samplefolder。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
+| fileName |指定 **folderPath** 中的文件的名称（如果你想要引用该文件夹中的特定文件）。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（例如：： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
 | partitionedBy |partitionedBy 可用于指定时序数据的动态 folderPath 和 filename。 示例：folderPath 可针对每小时的数据参数化。 |否 |
-| format | 支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat      。 请将格式中的“type”属性设置为上述值之一  。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
-| compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：“最佳”和“最快”   。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
+| format | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
+| compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：“最佳”和“最快” 。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
 
 > [!NOTE]
 > filename 和 fileFilter 不能同时使用。
@@ -169,7 +168,7 @@ ms.locfileid: "66431081"
 
 **FileSystemSource** 支持以下属性：
 
-| 属性 | 说明 | 允许的值 | 需要 |
+| Property | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
 | recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True、False（默认值） |否 |
 
@@ -179,12 +178,12 @@ ms.locfileid: "66431081"
 ## <a name="json-example-copy-data-from-on-premises-hdfs-to-azure-blob"></a>JSON 示例：将数据从本地 HDFS 复制到 Azure Blob
 此示例演示如何将数据从本地 HDFS 复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动，**直接**将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。  
 
-此示例提供了以下数据工厂实体的 JSON 定义。 可以通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 使用这些定义创建管道，以便将数据从 HDFS 复制到 Azure Blob 存储。
+此示例提供了以下数据工厂实体的 JSON 定义。 可以使用这些定义创建管道，通过使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)将数据从 HDFS 复制到 Azure Blob 存储。
 
 1. [OnPremisesHdfs](#linked-service-properties) 类型的链接服务。
-2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)类型的链接服务。
 3. [FileShare](#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)类型的输出[数据集](data-factory-create-datasets.md)。
 5. 包含复制活动的[管道](data-factory-create-pipelines.md)，其使用 [FileSystemSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
 此示例每隔一小时将数据从本地 HDFS 复制到 Azure blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
@@ -249,7 +248,7 @@ ms.locfileid: "66431081"
 
 **Azure Blob 输出数据集：**
 
-数据将写入到新 blob，每隔一小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
+数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```JSON
 {
@@ -307,7 +306,7 @@ ms.locfileid: "66431081"
 }
 ```
 
-**管道中使用文件系统源和 Blob 接收器的复制活动：**
+**管道中具有文件系统源和 Blob 接收器的复制活动：**
 
 管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将 **source** 类型设置为 **FileSystemSource**，将 **sink** 类型设置为 **BlobSink**。 为 **query** 属性指定的 SQL 查询选择复制过去一小时的数据。
 
@@ -351,112 +350,124 @@ ms.locfileid: "66431081"
 
 ## <a name="use-kerberos-authentication-for-hdfs-connector"></a>对 HDFS 连接器使用 Kerberos 身份验证
 设置本地环境有两个选项，以便在 HDFS 连接器中使用 Kerberos 身份验证。 可以选择更适合情况的选项。
-* 选项 1：[将网关计算机加入 Kerberos 领域](#kerberos-join-realm)
+* 选项1：将[网关计算机加入 Kerberos 领域](#kerberos-join-realm)
 * 选项 2：[启用 Windows 域和 Kerberos 领域之间的相互信任](#kerberos-mutual-trust)
 
-### <a name="kerberos-join-realm"></a>选项 1：将网关计算机加入 Kerberos 领域
+### <a name="option-1-join-gateway-machine-in-kerberos-realm"></a><a name="kerberos-join-realm"></a>选项 1：将网关计算机加入 Kerberos 领域
 
 #### <a name="requirement"></a>要求：
 
 * 网关计算机需要加入 Kerberos 领域，而不能加入任何 Windows 域。
 
-#### <a name="how-to-configure"></a>如何配置：
+#### <a name="how-to-configure"></a>配置方式：
 
 **在网关计算机上：**
 
-1.  运行 **Ksetup** 实用工具以配置 Kerberos KDC 服务器和领域。
+1.  运行 Ksetup 实用工具来配置 Kerberos KDC 服务器和领域。
 
-    由于 Kerberos 领域不同于 Windows 域，计算机必须配置为工作组的成员。 这可以通过按如下所示设置 Kerberos 领域和添加 KDC 服务器来实现。 根据需要将 *REALM.COM* 替换为自己的领域。
+    由于 Kerberos 领域不同于 Windows 域，计算机必须配置为工作组的成员。 这可以通过按如下所示设置 Kerberos 领域和添加 KDC 服务器来实现。 根据需要，将 REALM.COM 替换为各自的领域。
 
-            C:> Ksetup /setdomain REALM.COM
-            C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+    ```cmd
+    C:> Ksetup /setdomain REALM.COM
+    C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+    ```
 
     执行这 2 个命令后，**重启**计算机。
 
-2.  使用 **Ksetup** 命令验证配置。 输出应如下所示：
+2.  使用 Ksetup 命令验证配置。 输出应如下所示：
 
-            C:> Ksetup
-            default realm = REALM.COM (external)
-            REALM.com:
-                kdc = <your_kdc_server_address>
+    ```cmd
+    C:> Ksetup
+    default realm = REALM.COM (external)
+    REALM.com:
+        kdc = <your_kdc_server_address>
+        ```
 
-**在 Azure 数据工厂中：**
+**In Azure Data Factory:**
 
-* 使用 **Windows 身份验证**配置 HDFS 连接器，以及用于连接到 HDFS 数据源的 Kerberos 主体名称和密码。 查看配置详细信息中的 [HDFS 链接服务属性](#linked-service-properties)部分。
+* Configure the HDFS connector using **Windows authentication** together with your Kerberos principal name and password to connect to the HDFS data source. Check [HDFS Linked Service properties](#linked-service-properties) section on configuration details.
 
-### <a name="kerberos-mutual-trust"></a>选项 2：启用 Windows 域和 Kerberos 领域之间的相互信任
+### <a name="kerberos-mutual-trust"></a>Option 2: Enable mutual trust between Windows domain and Kerberos realm
 
-#### <a name="requirement"></a>要求：
-*   网关计算机必须加入 Windows 域。
-*   需要可更新域控制器的设置的权限。
+#### Requirement:
+*   The gateway machine must join a Windows domain.
+*   You need permission to update the domain controller's settings.
 
-#### <a name="how-to-configure"></a>如何配置：
+#### How to configure:
 
 > [!NOTE]
-> 根据需要将下面教程中的 REALM.COM 和 AD.COM 替换为自己的领域和域控制器。
+> Replace REALM.COM and AD.COM in the following tutorial with your own respective realm and domain controller as needed.
 
-**在 KDC 服务器上：**
+**On KDC server:**
 
-1. 编辑 **krb5.conf** 文件中的 KDC 配置，以便让 KDC 信任引用以下配置模板的 Windows 域。 默认情况下，该配置位于 **/etc/krb5.conf**。
+1. Edit the KDC configuration in **krb5.conf** file to let KDC trust Windows Domain referring to the following configuration template. By default, the configuration is located at **/etc/krb5.conf**.
 
-           [logging]
-            default = FILE:/var/log/krb5libs.log
-            kdc = FILE:/var/log/krb5kdc.log
-            admin_server = FILE:/var/log/kadmind.log
+   ```config
+   [logging]
+   default = FILE:/var/log/krb5libs.log
+   kdc = FILE:/var/log/krb5kdc.log
+   admin_server = FILE:/var/log/kadmind.log
 
-           [libdefaults]
-            default_realm = REALM.COM
-            dns_lookup_realm = false
-            dns_lookup_kdc = false
-            ticket_lifetime = 24h
-            renew_lifetime = 7d
-            forwardable = true
+   [libdefaults]
+   default_realm = REALM.COM
+   dns_lookup_realm = false
+   dns_lookup_kdc = false
+   ticket_lifetime = 24h
+   renew_lifetime = 7d
+   forwardable = true
 
-           [realms]
-            REALM.COM = {
-             kdc = node.REALM.COM
-             admin_server = node.REALM.COM
-            }
-           AD.COM = {
-            kdc = windc.ad.com
-            admin_server = windc.ad.com
-           }
+   [realms]
+   REALM.COM = {
+       kdc = node.REALM.COM
+       admin_server = node.REALM.COM
+   }
+   AD.COM = {
+   kdc = windc.ad.com
+   admin_server = windc.ad.com
+   }
 
-           [domain_realm]
-            .REALM.COM = REALM.COM
-            REALM.COM = REALM.COM
-            .ad.com = AD.COM
-            ad.com = AD.COM
+   [domain_realm]
+   .REALM.COM = REALM.COM
+   REALM.COM = REALM.COM
+   .ad.com = AD.COM
+   ad.com = AD.COM
 
-           [capaths]
-            AD.COM = {
-             REALM.COM = .
-            }
+   [capaths]
+   AD.COM = {
+       REALM.COM = .
+   }
+   ```
 
    配置后**重新启动** KDC 服务。
 
-2. 准备名为主体**krbtgt/REALM.COM\@AD.COM**在 KDC 服务器，使用以下命令：
+2. 使用以下命令准备 KDC 服务器中名为 krbtgt/REALM.COM\@AD.COM 的主体：
 
-           Kadmin> addprinc krbtgt/REALM.COM@AD.COM
+   ```cmd
+   Kadmin> addprinc krbtgt/REALM.COM@AD.COM
+   ```
 
 3. 在 **hadoop.security.auth_to_local** HDFS 服务配置文件中，添加 `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//`。
 
 **在域控制器上：**
 
-1.  运行以下 **Ksetup** 命令添加一个领域条目：
+1.  运行以下 Ksetup 命令以添加一个领域条目：
 
-            C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-            C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+    ```cmd
+    C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+    C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+    ```
 
-2.  建立从 Windows 域到 Kerberos 领域的信任关系。 [password] 是主体的密码**krbtgt/REALM.COM\@AD.COM**。
+2.  建立从 Windows 域到 Kerberos 领域的信任关系。 [password] 是主体 krbtgt/REALM.COM\@AD.COM 的密码。
 
-            C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
+    ```cmd
+    C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
+    ```
 
 3.  选择在 Kerberos 中使用的加密算法。
 
     1. 转到“服务器管理器”>“组策略管理”>“域”>“组策略对象”>“默认或活动的域策略”，单击“编辑”。
 
-    2. 在“组策略管理编辑器”  弹出窗口中，转到“计算机配置”>“策略”>“Windows 设置”>“安全设置”>“本地策略”>“安全选项”，配置“网络安全:  配置 Kerberos 允许使用的加密类型”。
+    2. 在“组策略管理编辑器”弹出窗口中，转到“计算机配置”>“策略”>“Windows 设置”>“安全设置”>“本地策略”>“安全选项”，配置“网络安全:配置 Kerberos 允许使用的加密类型”。
 
     3. 选择连接到 KDC 时要使用的加密算法。 通常情况下，可以简单地选择所有选项。
 
@@ -464,15 +475,17 @@ ms.locfileid: "66431081"
 
     4. 使用 **Ksetup** 命令可指定要在特定领域上使用的加密算法。
 
-                C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
+       ```cmd
+       C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
+       ```
 
 4.  在域帐户和 Kerberos 主体之间创建映射，以便在 Windows 域中使用 Kerberos 主体。
 
-    1. 启动管理工具 >“Active Directory 用户和计算机”  。
+    1. 启动管理工具 >“Active Directory 用户和计算机”。
 
-    2. 通过单击“查看”   > “高级功能”  配置高级功能。
+    2. 通过单击“查看” > “高级功能”配置高级功能。
 
-    3. 找到要创建映射的帐户，并右键单击以查看“名称映射”  > 单击“Kerberos 名称”  选项卡。
+    3. 找到要创建映射的帐户，并右键单击以查看“名称映射”> 单击“Kerberos 名称”选项卡。
 
     4. 从领域中添加主体。
 
@@ -480,10 +493,12 @@ ms.locfileid: "66431081"
 
 **在网关计算机上：**
 
-* 运行以下 **Ksetup** 命令添加一个领域条目。
+* 运行以下 Ksetup 命令以添加一个领域条目。
 
-            C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-            C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+   ```cmd
+   C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+   C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+   ```
 
 **在 Azure 数据工厂中：**
 

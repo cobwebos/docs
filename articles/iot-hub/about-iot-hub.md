@@ -3,30 +3,32 @@ title: Azure IoT 中心简介 | Microsoft Docs
 description: 了解 Azure IoT 中心。 此 IoT 服务针对可缩放数据引入、设备管理和安全性而构建。
 author: nberdy
 ms.author: nberdy
-ms.date: 07/04/2018
+ms.date: 08/08/2019
 ms.topic: overview
-ms.custom: mvc
+ms.custom:
+- mvc
+- amqp
+- mqtt
 ms.service: iot-hub
 services: iot-hub
-manager: briz
-ms.openlocfilehash: 6dadd746bccd028a2b81a980d99ab47ec9e6e2a3
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 06c0ff7060f4a9d71af11ae75d52ad7f4bf14c6b
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726731"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730854"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT 中心是什么？
 
-IoT 中心托管服务在云中进行托管，充当中央消息中心，用于 IoT 应用程序与其管理的设备之间的双向通信。 可以使用 Azure IoT 中心，通过数百万 IoT 设备和云托管解决方案后端之间可靠又安全的通信，生成 IoT 解决方案。 几乎可以将任何设备连接到 IoT 中心。
+IoT 中心托管服务在云中进行托管，充当中央消息中心，用于 IoT 应用程序与其管理的设备之间的双向通信。 可以使用 Azure IoT 中心，将数百万 IoT 设备和云托管解决方案后端之间建立可靠又安全的通信，生成 IoT 解决方案。 几乎可以将任何设备连接到 IoT 中心。
 
-IoT 中心支持设备与云之间的双向通信。 IoT 中心支持多种消息传递模式，例如设备到云的遥测、从设备上传文件以及从云控制设备的请求-回复方式。 IoT 中心监视有助于通过跟踪事件（例如设备创建、设备故障和设备连接），维持解决方案的运行状况。
+IoT 中心支持设备与云之间的双向通信。 IoT 中心支持多种消息传递模式，例如设备到云的遥测、从设备上传文件以及从云控制设备的请求-回复方式。 IoT 中心的监视功能可跟踪各种事件（例如设备创建、设备故障和设备连接），有助于维持解决方案的良好运行。
 
 IoT 中心的功能有助于生成可缩放且功能完整的 IoT 解决方案，例如管理制造业中使用的工业设备、跟踪医疗保健中宝贵的资产以及监视办公大楼使用情况。
 
 ## <a name="scale-your-solution"></a>缩放解决方案
 
-IoT 中心可扩展为数百万个同时连接的设备，以及每秒数百万个事件以支持 IoT 工作负载。 IoT 中心提供多种服务级别，最大限度地满足你的缩放需求。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/iot-hub/)。
+IoT 中心可扩展为数百万个同时连接的设备，以及每秒数百万个事件以支持 IoT 工作负载。 有关缩放 IoT 中心的详细信息，请参阅 [IoT 中心缩放](iot-hub-scaling.md?branch=release-iotbasic)。 若要详细了解 IoT 中心提供的多层服务以及如何最好地满足可伸缩性需求，请查看[定价页](https://azure.microsoft.com/pricing/details/iot-hub/)。
 
 ## <a name="secure-your-communications"></a>保护通信
 
@@ -50,7 +52,7 @@ IoT 中心为发送数据的设备提供保护信道。
 
 内置的消息路由功能可以灵活地设置基于规则的自动消息扇出：
 
-* 使用消息路由控制中心发送设备遥测的位置。
+* 使用[消息路由](iot-hub-devguide-messages-d2c.md)控制你的中心发送设备遥测数据的位置。
 
 * 无需支付额外费用，即可将消息路由到多个终结点。
 
@@ -70,7 +72,7 @@ IoT 中心为发送数据的设备提供保护信道。
 
 ## <a name="configure-and-control-your-devices"></a>配置和控制设备
 
-可以通过内置功能的数组，管理连接到 IoT 中心的设备。
+可以通过一系列的内置功能，管理连接到 IoT 中心的设备。
 
 * 存储、同步和查询设备元数据和所有设备的状态信息。
 
@@ -100,7 +102,7 @@ IoT 中心和设备 SDK 支持用于连接设备的以下协议：
 * MQTT
 * 基于 WebSocket 的 MQTT
 
-如果解决方案无法使用设备库，则设备可以使用 MQTT v3.1.1、HTTPS 1.1 或 AMQP 1.0 协议，本地连接到中心。
+如果解决方案无法使用设备库，则设备可以使用 MQTT v3.1.1、HTTPS 1.1 或 AMQP 1.0 协议，以本地化的方式连接到中心。
 
 如果解决方案无法使用其中一种支持的协议，则可以将 IoT 中心扩展到支持自定义协议：
 
@@ -110,9 +112,9 @@ IoT 中心和设备 SDK 支持用于连接设备的以下协议：
 
 ## <a name="quotas-and-limits"></a>配额和限制
 
-每个 Azure 订阅都有默认的配额限制以防止服务滥用，并且这些限制可能会影响 IoT 解决方案的作用域。 每个订阅的当前限制是每个订阅 50 个 IoT 中心。 可以通过联系支持人员，请求增加配额。 有关配额限制的更多详细信息，请参阅：
+每个 Azure 订阅都有默认的配额限制以防止服务滥用，并且这些限制可能会影响 IoT 解决方案的作用域。 每个订阅的当前限制是每个订阅 50 个 IoT 中心。 可以通过联系支持人员，请求增加配额。 有关详细信息，请参阅 [IoT 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。 有关配额限制的详细信息，请参阅以下文章之一：
 
-* [Azure 订阅服务限制](../azure-subscription-service-limits.md)
+* [Azure 订阅服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 * [IoT Hub throttling and you](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)（IoT 中心限制和你）
 
@@ -121,3 +123,7 @@ IoT 中心和设备 SDK 支持用于连接设备的以下协议：
 若要尝试端对端的 IoT 解决方案，请参阅 IoT 中心快速入门：
 
 * [快速入门：将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-node.md)
+
+若要详细了解如何通过 Azure IoT 构建和部署 IoT 解决方案，请访问：
+
+* [基础知识：Azure IoT 技术和解决方案](../iot-fundamentals/iot-services-and-technologies.md)。

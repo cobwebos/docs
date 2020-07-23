@@ -7,14 +7,15 @@ author: matt1883
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/08/2018
-ms.openlocfilehash: 82007c780a0c9ff3bb2e1a50a4826499f9df9c9f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: tracking-python
+ms.openlocfilehash: 23c2560d44dfeaa871c88d40175d60b3b29dc1b8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60811705"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121259"
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>使用 Python 管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -32,14 +33,14 @@ ms.locfileid: "60811705"
 
 安装以下模块：
 
-* **azure-mgmt-resource** 模块包括 Active Directory 等的其他 Azure 模块。
+* **Azure 管理资源**模块包含用于 Active Directory 的其他 azure 模块，等等。
 * **azure-datalake-store** 模块包含 Azure Data Lake Store 文件系统操作。 
-* **azure-mgmt-datalake-store** 模块包括 Azure Data Lake Store 帐户管理操作。
-* azure-mgmt-datalake-analytics 模块包含 Azure Data Lake Analytics 操作。 
+* **Azure 管理 datalake**模块包括 Azure Data Lake Store 帐户管理操作。
+* azure-mgmt-datalake-analytics**** 模块包含 Azure Data Lake Analytics 操作。 
 
 首先，通过运行以下命令来确保具有最新 `pip`：
 
-```
+```console
 python -m pip install --upgrade pip
 ```
 
@@ -47,7 +48,7 @@ python -m pip install --upgrade pip
 
 从命令行使用以下 `pip` 命令安装模块：
 
-```
+```console
 pip install azure-mgmt-resource
 pip install azure-datalake-store
 pip install azure-mgmt-datalake-store
@@ -59,41 +60,45 @@ pip install azure-mgmt-datalake-analytics
 将以下代码粘贴到脚本中：
 
 ```python
-## Use this only for Azure AD service-to-service authentication
+# Use this only for Azure AD service-to-service authentication
 #from azure.common.credentials import ServicePrincipalCredentials
 
-## Use this only for Azure AD end-user authentication
+# Use this only for Azure AD end-user authentication
 #from azure.common.credentials import UserPassCredentials
 
-## Required for Azure Resource Manager
+# Required for Azure Resource Manager
 from azure.mgmt.resource.resources import ResourceManagementClient
 from azure.mgmt.resource.resources.models import ResourceGroup
 
-## Required for Azure Data Lake Store account management
+# Required for Azure Data Lake Store account management
 from azure.mgmt.datalake.store import DataLakeStoreAccountManagementClient
 from azure.mgmt.datalake.store.models import DataLakeStoreAccount
 
-## Required for Azure Data Lake Store filesystem management
+# Required for Azure Data Lake Store filesystem management
 from azure.datalake.store import core, lib, multithread
 
-## Required for Azure Data Lake Analytics account management
+# Required for Azure Data Lake Analytics account management
 from azure.mgmt.datalake.analytics.account import DataLakeAnalyticsAccountManagementClient
 from azure.mgmt.datalake.analytics.account.models import DataLakeAnalyticsAccount, DataLakeStoreAccountInformation
 
-## Required for Azure Data Lake Analytics job management
+# Required for Azure Data Lake Analytics job management
 from azure.mgmt.datalake.analytics.job import DataLakeAnalyticsJobManagementClient
 from azure.mgmt.datalake.analytics.job.models import JobInformation, JobState, USqlJobProperties
 
-## Required for Azure Data Lake Analytics catalog management
+# Required for Azure Data Lake Analytics catalog management
 from azure.mgmt.datalake.analytics.catalog import DataLakeAnalyticsCatalogManagementClient
 
-## Use these as needed for your application
-import logging, getpass, pprint, uuid, time
+# Use these as needed for your application
+import logging
+import getpass
+import pprint
+import uuid
+import time
 ```
 
 运行此脚本以验证是否可以导入模块。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
 ### <a name="interactive-user-authentication-with-a-pop-up"></a>使用弹出窗口的交互用户身份验证
 
@@ -102,7 +107,8 @@ import logging, getpass, pprint, uuid, time
 ### <a name="interactive-user-authentication-with-a-device-code"></a>使用设备代码的交互用户身份验证
 
 ```python
-user = input('Enter the user to authenticate with that has permission to subscription: ')
+user = input(
+    'Enter the user to authenticate with that has permission to subscription: ')
 password = getpass.getpass()
 credentials = UserPassCredentials(user, password)
 ```
@@ -110,7 +116,8 @@ credentials = UserPassCredentials(user, password)
 ### <a name="noninteractive-authentication-with-spi-and-a-secret"></a>使用 SPI 和机密的非交互身份验证
 
 ```python
-credentials = ServicePrincipalCredentials(client_id = 'FILL-IN-HERE', secret = 'FILL-IN-HERE', tenant = 'FILL-IN-HERE')
+credentials = ServicePrincipalCredentials(
+    client_id='FILL-IN-HERE', secret='FILL-IN-HERE', tenant='FILL-IN-HERE')
 ```
 
 ### <a name="noninteractive-authentication-with-api-and-a-certificate"></a>使用 API 和证书的非交互身份验证
@@ -122,9 +129,9 @@ credentials = ServicePrincipalCredentials(client_id = 'FILL-IN-HERE', secret = '
 示例中使用了这些变量。
 
 ```python
-subid= '<Azure Subscription ID>'
+subid = '<Azure Subscription ID>'
 rg = '<Azure Resource Group Name>'
-location = '<Location>' # i.e. 'eastus2'
+location = '<Location>'  # i.e. 'eastus2'
 adls = '<Azure Data Lake Store Account Name>'
 adla = '<Azure Data Lake Analytics Account Name>'
 ```
@@ -134,13 +141,15 @@ adla = '<Azure Data Lake Analytics Account Name>'
 ```python
 resourceClient = ResourceManagementClient(credentials, subid)
 adlaAcctClient = DataLakeAnalyticsAccountManagementClient(credentials, subid)
-adlaJobClient = DataLakeAnalyticsJobManagementClient( credentials, 'azuredatalakeanalytics.net')
+adlaJobClient = DataLakeAnalyticsJobManagementClient(
+    credentials, 'azuredatalakeanalytics.net')
 ```
 
 ## <a name="create-an-azure-resource-group"></a>创建 Azure 资源组
 
 ```python
-armGroupResult = resourceClient.resource_groups.create_or_update( rg, ResourceGroup( location=location ) )
+armGroupResult = resourceClient.resource_groups.create_or_update(
+    rg, ResourceGroup(location=location))
 ```
 
 ## <a name="create-data-lake-analytics-account"></a>创建 Data Lake Analytics 帐户
@@ -203,11 +212,12 @@ jobResult = adlaJobClient.job.create(
 ```python
 jobResult = adlaJobClient.job.get(adla, jobId)
 while(jobResult.state != JobState.ended):
-    print('Job is not yet done, waiting for 3 seconds. Current state: ' + jobResult.state.value)
+    print('Job is not yet done, waiting for 3 seconds. Current state: ' +
+          jobResult.state.value)
     time.sleep(3)
     jobResult = adlaJobClient.job.get(adla, jobId)
 
-print ('Job finished with result: ' + jobResult.result.value)
+print('Job finished with result: ' + jobResult.result.value)
 ```
 
 ## <a name="list-pipelines-and-recurrences"></a>列出管道和重复周期
@@ -234,7 +244,8 @@ DataLakeAnalyticsAccountManagementClient 对象提供用于为 Data Lake Analyti
 ```python
 policies = adlaAccountClient.computePolicies.listByAccount(rg, adla)
 for p in policies:
-    print('Name: ' + p.name + 'Type: ' + p.objectType + 'Max AUs / job: ' + p.maxDegreeOfParallelismPerJob + 'Min priority / job: ' + p.minPriorityPerJob)
+    print('Name: ' + p.name + 'Type: ' + p.objectType + 'Max AUs / job: ' +
+          p.maxDegreeOfParallelismPerJob + 'Min priority / job: ' + p.minPriorityPerJob)
 ```
 
 ### <a name="create-a-new-compute-policy"></a>创建新计算策略
@@ -243,8 +254,10 @@ for p in policies:
 
 ```python
 userAadObjectId = "3b097601-4912-4d41-b9d2-78672fc2acde"
-newPolicyParams = ComputePolicyCreateOrUpdateParameters(userAadObjectId, "User", 50, 250)
-adlaAccountClient.computePolicies.createOrUpdate(rg, adla, "GaryMcDaniel", newPolicyParams)
+newPolicyParams = ComputePolicyCreateOrUpdateParameters(
+    userAadObjectId, "User", 50, 250)
+adlaAccountClient.computePolicies.createOrUpdate(
+    rg, adla, "GaryMcDaniel", newPolicyParams)
 ```
 
 ## <a name="next-steps"></a>后续步骤

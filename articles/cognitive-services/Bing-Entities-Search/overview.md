@@ -1,6 +1,6 @@
 ---
 title: 什么是必应实体搜索 API？
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用必应实体搜索 API 从搜索查询中提取和搜索实体和场所。
 services: cognitive-services
 author: swhite-msft
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: overview
-ms.date: 02/01/2019
+ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 679a3d9efbeeb75e0aa8e3986fa85b7ecf0d77bd
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 4afb20699d52ea80d7ba6cf9760a465b61cc6d6b
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388500"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85604805"
 ---
 # <a name="what-is-bing-entity-search-api"></a>什么是必应实体搜索 API？
 
-必应实体搜索 API 向必应发送搜索查询，然后获得包含实体和场所的结果。 场所结果包括餐馆、酒店或其他本地商业场所。 如果查询指定了本地商业场所的名称或询问某类商业场所（例如，“我附近的餐馆”），则必应会返回场所。 如果查询指定知名的人物、场所（旅游景点、州、国家/地区等）或事物，则必应会返回实体。
+必应实体搜索 API 向必应发送搜索查询，然后获得包含实体和场所的结果。 位置结果包括餐馆、酒店或其他当地企业。 如果查询指定了本地商业场所的名称或询问某类商业场所（例如，“我附近的餐馆”），则必应会返回场所。 如果查询指定知名的人物、场所（旅游景点、州、国家/地区等）或事物，则必应会返回实体。
 
 |Feature  |说明  |
 |---------|---------|
@@ -31,7 +31,7 @@ ms.locfileid: "66388500"
 
 必应实体搜索 API 是一项 RESTful Web 服务，可以轻松地通过任何编程语言调用，只要该语言能够发出 HTTP 请求和分析 JSON 即可。 可以通过 REST API 或 SDK 使用此服务。
 
-1. 创建可以访问必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有 Azure 订阅，可以免费[创建一个帐户](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)。
+1. 创建可以访问必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有 Azure 订阅，可以免费[创建一个帐户](https://azure.microsoft.com/free/cognitive-services/)。
 2. 使用有效的搜索查询向 API 发送请求。
 3. 通过分析返回的 JSON 消息处理 API 响应。
 
@@ -41,3 +41,4 @@ ms.locfileid: "66388500"
 * 若要快速开始你的第一个请求，请尝试使用[快速入门](quickstarts/csharp.md)。
 * [必应实体搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) 参考部分。
 * [必应使用和显示要求](./use-display-requirements.md)指定了允许用户如何使用通过必应搜索 API 获得的内容和信息。
+* 请访问[必应搜索 API 中心页](../bing-web-search/search-the-web.md)，浏览其他可用的 API。

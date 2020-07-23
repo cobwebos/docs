@@ -1,100 +1,102 @@
 ---
 title: 监视 Azure Site Recovery 进程服务器
-description: 本文介绍如何监视 Azure Site Recovery 进程服务器。
+description: 本文介绍如何监视用于 VMware VM/物理服务器灾难恢复的 Azure Site Recovery 进程服务器
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 4ff52e737438210296b8f2201d5e66e1d38b7bc9
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: eebaa70cee99380ac67b8f6516a5b08ff2832c86
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66418282"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134734"
 ---
 # <a name="monitor-the-process-server"></a>监视进程服务器
 
-本文介绍如何监视[Site Recovery](site-recovery-overview.md)进程服务器。
+本文介绍如何监视 [Site Recovery](site-recovery-overview.md) 进程服务器。
 
-- 设置本地 VMware Vm 和物理服务器到 Azure 的灾难恢复时，将使用的进程服务器。
-- 默认情况下在配置服务器上运行的进程服务器。 部署配置服务器时，它是默认情况下安装。
-- （可选） 到复制的计算机的较大的规模和句柄数和更大的复制流量，可以部署附加的横向扩展进程服务器。
+- 在将本地 VMware VM 和物理服务器的灾难恢复设置到 Azure 时，会使用进程服务器。
+- 默认情况下，进程服务器在配置服务器上运行。 它会在你部署配置服务器时默认安装。
+- （可选）若要缩放和处理更多的复制计算机和更高的复制流量，可以部署更多的横向扩展进程服务器。
 
-[了解详细信息](vmware-physical-azure-config-process-server-overview.md)有关角色和部署进程服务器。
+[详细了解](vmware-physical-azure-config-process-server-overview.md)进程服务器的角色和部署。
 
 ## <a name="monitoring-overview"></a>监视概述
 
-因为进程服务器具有很多角色，尤其是在复制的数据缓存、 压缩和传输到 Azure，请务必监视持续的进程服务器运行状况。
+由于进程服务器具有如此多的角色，尤其是在复制数据缓存、压缩和传输到 Azure 时，因此持续监视进程服务器运行状况非常重要。
 
-有很多情况下，通常会影响进程服务器性能。 影响性能的问题会级联作用 VM 运行状况，最终将其复制的计算机和进程服务器推送到严重状态。 情况包括：
+有一些情况通常会影响进程服务器的性能。 影响性能的问题会对 VM 运行状况产生关联影响，最终导致进程服务器及其复制计算机进入严重状态。 这类情况包括：
 
-- 大量的虚拟机使用的进程服务器，接近或超过建议的限制。
-- 使用进程服务器虚拟机具有高改动率。
-- Vm 和进程服务器之间的网络吞吐量并不足以复制数据上传到进程服务器。
-- 进程服务器与 Azure 之间的网络吞吐量不足以将从进程服务器到 Azure 的复制数据上传。
+- 大量 VM 使用进程服务器，接近或超过建议限制。
+- 使用进程服务器的 VM 的改动率较高。
+- VM 与进程服务器之间的网络吞吐量不足以将复制数据上传到进程服务器。
+- 进程服务器与 Azure 之间的网络吞吐量不足以将复制数据从进程服务器上传到 Azure。
 
-所有这些问题可能会影响 Vm 的恢复点目标 (RPO)。 
+所有这些问题都可能会影响 VM 的恢复点目标 (RPO)。 
 
-**为什么？** 因为正在为虚拟机生成恢复点需要所有磁盘的 VM 具有公共的点。 如果一个磁盘具有较高更改率、 复制速度较慢，或进程服务器不的最佳选择，它会影响如何有效地创建恢复点。
+为什么？ 因为为 VM 生成恢复点需要 VM 上的所有磁盘具有一个共同点。 如果某个磁盘的改动率较高、复制速度较慢或是进程服务器不是最佳状态，则会影响创建恢复点的效率。
 
 ## <a name="monitor-proactively"></a>主动监视
 
-若要避免与进程服务器的问题，它十分重要：
+若要避免进程服务器出现问题，请务必：
 
-- 了解针对进程服务器使用的特定要求[容量和大小调整指南](site-recovery-plan-capacity-vmware.md#capacity-considerations)，请确保进程服务器部署，并根据建议运行。
-- 监视警报，并解决问题发生时，若要使有效运行的进程服务器。
+- 使用[容量和大小调整指南](site-recovery-plan-capacity-vmware.md#capacity-considerations)了解进程服务器的特定要求，并确保根据建议部署并运行进程服务器。
+- 监视警报并在出现问题时进行故障排除，使进程服务器保持高效运行。
 
 
 ## <a name="process-server-alerts"></a>进程服务器警报
 
-进程服务器生成的运行状况警报下, 表中汇总的一个数字。
+进程服务器会生成一些运行状况警报，在下表中进行了汇总。
 
-**警报类型** | **详细信息**
+警报类型 | **详细信息**
 --- | ---
-![Healthy][green] | 进程服务器已连接并且正常运行。
-![警告][yellow] | 在过去 15 分钟的 CPU 利用率 > 80%
+![正常][green] | 进程服务器已连接并且状态正常。
+![警告][yellow] | 过去 15 分钟内的 CPU 使用率 > 80%
 ![警告][yellow] | 过去 15 分钟内的内存使用率 > 80%
-![警告][yellow] | 在过去 15 分钟的缓存文件夹的可用空间 < 30%
-![警告][yellow] | 进程服务器服务未运行最后 15 分钟
-![严重][red] | 在过去 15 分钟的 CPU 利用率 > 95%
+![警告][yellow] | 过去 15 分钟内的缓存文件夹可用空间 < 30%
+![警告][yellow] | Site Recovery 每五分钟监视挂起/传出数据，估计进程服务器缓存中的数据在 30 分钟内无法上传到 Azure。
+![警告][yellow] | 进程服务器服务在过去 15 分钟内未运行
+![严重][red] | 过去 15 分钟内的 CPU 使用率 > 95%
 ![严重][red] | 过去 15 分钟内的内存使用率 > 95%
-![严重][red] | 缓存文件夹的可用空间 < 25%在过去 15 分钟
-![严重][red] | 15 分钟的进程服务器无检测信号。
+![严重][red] | 过去 15 分钟内的缓存文件夹可用空间 < 25%
+![严重][red] | Site Recovery 每五分钟监视挂起/传出数据，估计进程服务器缓存中的数据在 45 分钟内无法上传到 Azure。
+![严重][red] | 在 15 分钟内没有来自进程服务器的检测信号。
 
 ![表键](./media/vmware-physical-azure-monitor-process-server/table-key.png)
 
 > [!NOTE]
-> 进程服务器的总体运行状况状态为基础生成的最差警报。
+> 进程服务器的总体运行状况基于生成的最差警报。
 
 
 
 ## <a name="monitor-process-server-health"></a>监视进程服务器运行状况
 
-您可以监视的进程服务器的运行状况状态，如下所示： 
+可以按如下所示监视进程服务器的运行状况： 
 
-1. 若要监视的复制运行状况和状态的复制的计算机，和的进程服务器，在保管库中的 >**复制的项**，单击你想要监视的计算机。
-2. 在中**复制运行状况**，可以监视 VM 运行状况状态。 单击要向下钻取有关错误详细信息的状态。
+1. 若要监视复制计算机及其进程服务器的复制运行状况和状态，请在保管库 >“复制的项”中，单击要监视的计算机。
+2. 在“复制运行状况”中，可以监视 VM 运行状况。 单击状态以向下钻取错误详细信息。
 
-    ![在 VM 仪表板中的进程服务器运行状况](./media/vmware-physical-azure-monitor-process-server/vm-ps-health.png)
+    ![VM 仪表板中的进程服务器运行状况](./media/vmware-physical-azure-monitor-process-server/vm-ps-health.png)
 
-4. 在中**进程服务器运行状况**，可以监视进程服务器的状态。 有关详细信息，向下钻取。
+4. 在“进程服务器运行状况”中，可以监视进程服务器的状态。 向下钻取详细信息。
 
-    ![在 VM 仪表板中的进程服务器详细信息](./media/vmware-physical-azure-monitor-process-server/ps-summary.png)
+    ![VM 仪表板中的进程服务器详细信息](./media/vmware-physical-azure-monitor-process-server/ps-summary.png)
 
-5. 此外可以在 VM 页上使用的图形表示形式监视运行状况。
-    - 横向扩展进程服务器将突出显示为橙色，如果有与其关联的警告和红色; 如果它具有任何关键问题。 
-    - 如果进程服务器运行在配置服务器上的默认部署中，然后将相应地突出配置服务器。
-    - 若要向下钻取，请单击配置服务器或进程服务器上。 请注意任何问题和任何修正建议。
+5. 还可以使用 VM 页上的图形表示形式来监视运行状况。
+    - 横向扩展进程服务器在有与之关联的警告时以橙色突出显示，在有任何严重问题时为红色。 
+    - 如果进程服务器在配置服务器上的默认部署中运行，则会相应地突出显示配置服务器。
+    - 若要向下钻取，请单击配置服务器或进程服务器。 请记下任何问题以及任何修正建议。
 
-你还可以监视进程服务器下的保管库中**Site Recovery 基础结构**。 在中**管理 Site Recovery 基础结构**，单击**配置服务器**。 选择配置服务器与进程服务器和向下钻关联向下到进程服务器详细信息。
+还可以在“Site Recovery 基础结构”下的保管库中监视进程服务器。 在“管理 Site Recovery 基础结构”中，单击“配置服务器”。 选择与进程服务器关联的配置服务器，并向下钻取到进程服务器详细信息。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果有任何处理服务器问题，请按照我们[故障排除指南](vmware-physical-azure-troubleshoot-process-server.md)
-- 如需更多帮助，请在 [Azure Site Recovery 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)中提问。 
+- 如果有任何进程服务器问题，请遵循我们的[故障排除指南](vmware-physical-azure-troubleshoot-process-server.md)
+- 如需更多帮助，请在[有关 Azure Site Recovery 的 Microsoft Q&A 问题页面](/answers/topics/azure-site-recovery.html)中提问。 
 
 [green]: ./media/vmware-physical-azure-monitor-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-monitor-process-server/yellow.png

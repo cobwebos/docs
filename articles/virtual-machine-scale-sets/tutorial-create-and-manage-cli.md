@@ -1,27 +1,20 @@
 ---
-title: 教程 - 创建和管理 Azure 虚拟机规模集 | Microsoft Docs
+title: 教程 - 创建和管理 Azure 虚拟机规模集
 description: 了解如何使用 Azure CLI 创建虚拟机规模集以及某些常见的管理任务，例如如何启动和停止实例，或者如何更改规模集容量。
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ju-shim
+ms.author: jushiman
 ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
 ms.date: 03/27/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: b0d2a72567783ca1c127f76d94ddc9c5e007ea89
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: ff4a2b9cb66013900b5b9969a4281d1a20d9c122
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751015"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736435"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>教程：使用 Azure CLI 创建和管理虚拟机规模集
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 在虚拟机规模集的整个生命周期内，可能需要运行一个或多个管理任务。 本教程介绍如何执行下列操作：
@@ -41,7 +34,7 @@ ms.locfileid: "55751015"
 
 
 ## <a name="create-a-resource-group"></a>创建资源组
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机规模集前创建资源组。 使用 [az group create](/cli/azure/group) 命令创建资源组。 在此示例中，在“eastus”区域中创建了名为“myResourceGroup”的资源组。 
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机规模集前创建资源组。 使用“[az group create](/cli/azure/group)”命令创建资源组。 在此示例中，在“eastus”区域中创建了名为“myResourceGroup”的资源组。 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -66,7 +59,7 @@ az vmss create \
 
 
 ## <a name="view-the-vm-instances-in-a-scale-set"></a>查看规模集中的 VM 实例
-若要在规模集中查看 VM 实例的列表，请使用 [az vmss list-instances](/cli/azure/vmss)，如下所示：
+若要查看规模集中的 VM 实例的列表，请使用 [az vmss list-instances](/cli/azure/vmss)，如下所示：
 
 ```azurecli-interactive
 az vmss list-instances \
@@ -77,7 +70,7 @@ az vmss list-instances \
 
 以下示例输出显示了规模集中的两个 VM 实例：
 
-```bash
+```output
   InstanceId  LatestModelApplied    Location    Name          ProvisioningState    ResourceGroup    VmId
 ------------  --------------------  ----------  ------------  -------------------  ---------------  ------------------------------------
            1  True                  eastus      myScaleSet_1  Succeeded            MYRESOURCEGROUP  c059be0c-37a2-497a-b111-41272641533c
@@ -108,7 +101,7 @@ az vmss list-instance-connection-info \
 
 以下示例输出显示了实例名称、负载均衡器的公共 IP 地址，以及可以通过 NAT 规则将流量转发到其中的端口号：
 
-```bash
+```output
 {
   "instance 1": "13.92.224.66:50001",
   "instance 3": "13.92.224.66:50003"
@@ -117,19 +110,19 @@ az vmss list-instance-connection-info \
 
 通过 SSH 连接到第一个 VM 实例。 使用 `-p` 参数指定公共 IP 地址和端口号，如前述命令所示：
 
-```azurecli-interactive
+```console
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
 登录到 VM 实例以后，可以根据需要执行一些手动配置更改。 现在，请按正常方式关闭 SSH 会话：
 
-```bash
+```console
 exit
 ```
 
 
 ## <a name="understand-vm-instance-images"></a>了解 VM 实例映像
-在教程开头创建规模集时，为 VM 实例指定的 `--image` 为 *UbuntuLTS*。 Azure Marketplace 包括许多可用于创建 VM 实例的映像。 若要查看最常用的映像列表，请使用 [az vm image list](/cli/azure/vm/image) 命令。
+在教程开头创建规模集时，为 VM 实例指定的 `--image` 为 *UbuntuLTS*。 Azure 市场包括许多可用于创建 VM 实例的映像。 若要查看最常用的映像列表，请使用 [az vm image list](/cli/azure/vm/image) 命令。
 
 ```azurecli-interactive
 az vm image list --output table
@@ -137,7 +130,7 @@ az vm image list --output table
 
 以下示例输出显示 Azure 上的最常用 VM 映像。 可以使用 *UrnAlias* 在创建规模集时指定一个最常用的映像。
 
-```bash
+```output
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
 -------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
 CentOS         OpenLogic               7.3                 OpenLogic:CentOS:7.3:latest                                     CentOS               latest
@@ -161,7 +154,7 @@ az vm image list --offer CentOS --all --output table
 
 以下浓缩版输出显示了一些可用的 CentOS 7.3 映像：
 
-```azurecli-interactive 
+```output
 Offer    Publisher   Sku   Urn                                 Version
 -------  ----------  ----  ----------------------------------  -------------
 CentOS   OpenLogic   7.3   OpenLogic:CentOS:7.3:7.3.20161221   7.3.20161221
@@ -173,6 +166,9 @@ CentOS   OpenLogic   7.3   OpenLogic:CentOS:7.3:7.3.20170925   7.3.20170925
 ```
 
 若要部署使用特定映像的规模集，请使用“Urn”列中的值。 指定映像时，可将映像版本号替换为 *latest*，以便选择最新的发行版。 在以下示例中，`--image` 参数用于指定最新版本的 CentOS 7.3 映像。
+
+> [!IMPORTANT]
+> 建议使用最新版本的映像。 指定“最新版本”以使用部署时可用的最新版本的映像。 请注意，即使使用的是“最新版本”，VM 映像部署后也不会自动更新，即使新版本可用也是如此。
 
 由于只需数分钟即可创建和配置所有的规模集资源和 VM 实例，因此不需部署以下规模集：
 
@@ -192,11 +188,11 @@ VM 实例大小或 *SKU* 决定了可供 VM 实例使用的计算资源（如 CP
 ### <a name="vm-instance-sizes"></a>VM 实例大小
 下表将常用 VM 大小按类别分成了多个用例。
 
-| Type                     | 常见大小           |    说明       |
+| 类型                     | 常见大小           |    说明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [常规用途](../virtual-machines/linux/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0-7| CPU 与内存之比均衡。 适用于开发/测试、小到中型应用程序和数据解决方案。  |
 | [计算优化](../virtual-machines/linux/sizes-compute.md)   | Fs, F             | 高 CPU 与内存之比。 适用于中等流量的应用程序、网络设备和批处理。        |
-| [内存优化](../virtual-machines/linux/sizes-memory.md)    | Esv3、Ev3、M、GS、G、DSv2、DS、Dv2、D   | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存中分析。                 |
+| [内存优化](../virtual-machines/linux/sizes-memory.md)    | Esv3、Ev3、M、GS、G、DSv2、DS、Dv2、D   | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存分析。                 |
 | [存储优化](../virtual-machines/linux/sizes-storage.md)      | LS                | 高磁盘吞吐量和 IO。 适用于大数据、SQL 和 NoSQL 数据库。                                                         |
 | [GPU](../virtual-machines/linux/sizes-gpu.md)          | NV, NC            | 专门针对大量图形绘制和视频编辑的 VM。       |
 | [高性能](../virtual-machines/linux/sizes-hpc.md) | H, A8-11          | 功能极其强大的 CPU VM 具有可选的高吞吐量网络接口 (RDMA)。 
@@ -210,7 +206,7 @@ az vm list-sizes --location eastus --output table
 
 输出类似于以下浓缩版示例，其中显示了分配给每个 VM 大小的资源：
 
-```azurecli-interactive
+```output
   MaxDataDiskCount    MemoryInMb  Name                      NumberOfCores    OsDiskSizeInMb    ResourceDiskSizeInMb
 ------------------  ------------  ----------------------  ---------------  ----------------  ----------------------
                  4          3584  Standard_DS1_v2                       1           1047552                    7168

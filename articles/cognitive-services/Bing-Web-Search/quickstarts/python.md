@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 2f26392bdac34dd831e04c772e5357f5e41fc746
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.custom: seodec2018, tracking-python
+ms.openlocfilehash: c4dd2de53f0222b687a05690727f0aa9e25c7d53
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390208"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608666"
 ---
 # <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>快速入门：使用 Python 调用必应 Web 搜索 API  
 
-使用本快速入门进行你的第一次必应 Web 搜索 API 并接收 JSON 响应。 这个 Python 应用程序会向该 API 发送一个搜索请求并显示响应。 虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
+根据此快速入门中的说明对必应 Web 搜索 API 进行第一次调用。 这个 Python 应用程序会向该 API 发送一个搜索请求并显示 JSON 响应。 虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
-此示例作为 Jupyter 笔记本在 [MyBinder](https://mybinder.org) 上运行。 选择“启动活页夹锁屏提醒”：
+此示例作为 Jupyter 笔记本在 [MyBinder](https://mybinder.org) 上运行。 若要运行它，请选择“启动活页夹”锁屏提醒：
 
 [![活页夹](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingWebSearchAPI.ipynb)
 
@@ -34,34 +34,36 @@ ms.locfileid: "66390208"
 
 ## <a name="define-variables"></a>定义变量
 
-将 `subscription_key` 值替换为来自你的 Azure 帐户的有效订阅密钥。
+1. 将 `subscription_key` 值替换为来自你的 Azure 帐户的有效订阅密钥。
 
-```python
-subscription_key = "YOUR_ACCESS_KEY"
-assert subscription_key
-```
+   ```python
+   subscription_key = "YOUR_ACCESS_KEY"
+   assert subscription_key
+   ```
 
-声明必应 Web 搜索 API 终结点。 如果遇到任何授权错误，请在 Azure 仪表板中针对必应搜索终结点仔细检查此值。
+2. 声明必应 Web 搜索 API 终结点。 你可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
-```python
-search_url = "https://api.cognitive.microsoft.com/bing/v7.0/search"
-```
+   ```python
+   search_url = "https://api.cognitive.microsoft.com/bing/v7.0/search"
+   ```
 
-可以通过替换 `search_term` 的值随意自定义搜索查询。
+3. （可选）通过替换 `search_term` 的值自定义搜索查询。
 
-```python
-search_term = "Azure Cognitive Services"
-```
+   ```python
+   search_term = "Azure Cognitive Services"
+   ```
 
 ## <a name="make-a-request"></a>发出请求
 
-以下代码块使用 `requests` 库调用必应 Web 搜索 API 并将结果作为 JSON 对象返回。 API 密钥是在 `headers` 字典中传入的，搜索词和查询参数是在 `params` 字典中传入的。 有关选项和参数的完整列表，请参阅[必应 Web 搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) 文档。
+此代码使用 `requests` 库调用必应 Web 搜索 API 并将结果作为 JSON 对象返回。 API 密钥是在 `headers` 字典中传入的，搜索词和查询参数是在 `params` 字典中传入的。 
+
+有关选项和参数的完整列表，请参阅[必应 Web 搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)。
 
 ```python
 import requests
 
-headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
-params  = {"q": search_term, "textDecorations":True, "textFormat":"HTML"}
+headers = {"Ocp-Apim-Subscription-Key": subscription_key}
+params = {"q": search_term, "textDecorations": True, "textFormat": "HTML"}
 response = requests.get(search_url, headers=headers, params=params)
 response.raise_for_status()
 search_results = response.json()
@@ -69,7 +71,7 @@ search_results = response.json()
 
 ## <a name="format-and-display-the-response"></a>格式化并显示响应
 
-`search_results` 对象包括搜索结果以及元数据，例如相关查询和页面。 此代码使用 `IPython.display` 库格式化响应并在浏览器中显示响应。
+`search_results` 对象包括搜索结果以及相关查询和页等元数据。 此代码使用 `IPython.display` 库格式化响应并在浏览器中显示响应。
 
 ```python
 from IPython.display import HTML
@@ -77,18 +79,18 @@ from IPython.display import HTML
 rows = "\n".join(["""<tr>
                        <td><a href=\"{0}\">{1}</a></td>
                        <td>{2}</td>
-                     </tr>""".format(v["url"],v["name"],v["snippet"]) \
+                     </tr>""".format(v["url"], v["name"], v["snippet"])
                   for v in search_results["webPages"]["value"]])
 HTML("<table>{0}</table>".format(rows))
 ```
 
 ## <a name="sample-code-on-github"></a>GitHub 上的示例代码
 
-如果希望在本地运行此代码，[GitHub 上提供了完整的示例](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingWebSearchv7.py)。
+若要在本地运行此代码，请参阅 [GitHub 上提供的完整的示例](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingWebSearchv7.py)。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [必应 Web 搜索单页应用教程](../tutorial-bing-web-search-single-page-app.md)
+> [必应 Web 搜索 API 单页应用教程](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

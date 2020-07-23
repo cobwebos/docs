@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 SpaceIQ 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 SpaceIQ 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 SpaceIQ 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: de2b60ef280ceebdc97ea7dfc208df1cea3956c0
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b3358ad473ede9e8d78a835e8c68e690e5340638
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699881"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67090094"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-spaceiq"></a>教程：Azure Active Directory 与 SpaceIQ 的集成
+# <a name="tutorial-azure-active-directory-integration-with-spaceiq"></a>教程：Azure Active Directory 与 SpaceIQ 集成
 
 在本教程中，了解如何将 SpaceIQ 与 Azure Active Directory (Azure AD) 集成。
 将 SpaceIQ 与 Azure AD 集成提供以下优势：
@@ -34,7 +34,7 @@ ms.locfileid: "64699881"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 SpaceIQ 的集成，需具备以下各项：
 
@@ -80,7 +80,7 @@ ms.locfileid: "64699881"
 2. **[配置 SpaceIQ 单一登录](#configure-spaceiq-single-sign-on)** - 在应用程序端配置单一登录。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 SpaceIQ 测试用户](#create-spaceiq-test-user) - 在 SpaceIQ 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式  。
+5. **创建 SpaceIQ 测试用户[ - 在 SpaceIQ 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式](#create-spaceiq-test-user)** 。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -105,7 +105,7 @@ ms.locfileid: "64699881"
 
     ![SpaceIQ 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中键入 URL：`https://api.spaceiq.com` 
+    a. 在“标识符”文本框中键入 URL：`https://api.spaceiq.com`
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://api.spaceiq.com/saml/<instanceid>/callback`
 
@@ -150,7 +150,7 @@ ms.locfileid: "64699881"
 
     d. 在记事本中打开下载的证书文件，复制其内容，然后将其粘贴到“X.509 证书”框中  。
 
-    e. 单击“ **保存**”。
+    e. 单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -170,7 +170,7 @@ ms.locfileid: "64699881"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 `brittasimon@yourcompanydomain.extension`   
+    b. 在“用户名”字段中，键入 `brittasimon@yourcompanydomain.extension`  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -193,7 +193,7 @@ ms.locfileid: "64699881"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

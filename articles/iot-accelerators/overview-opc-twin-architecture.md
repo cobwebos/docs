@@ -1,19 +1,19 @@
 ---
 title: OPC 孪生体系结构 - Azure | Microsoft Docs
-description: OPC 孪生体系结构
+description: 本文提供 OPC 孪生体系结构体系结构的概述。 它介绍了服务器的发现、激活、浏览和监视。
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: overview
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: d1c10e056de1bc61b5365550bf2543d2cdf61229
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b8d4424c92ff24c36650e34a5d050bdc5f0f9091
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59783896"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "73819858"
 ---
 # <a name="opc-twin-architecture"></a>OPC 孪生体系结构
 
@@ -35,6 +35,6 @@ ms.locfileid: "59783896"
 
    ![OPC 孪生的工作原理](media/overview-opc-twin-architecture/opc-twin3.png)
 
-1. 还可以使用孪生服务 REST 接口在 OPC 发布服务器中创建受监视的项和订阅。 OPC 发布服务器允许将遥测数据从 OPC UA 服务器系统发送到 IoT 中心。 有关 OPC 发布服务器的详细信息，请参阅 GitHub 上的 [OPC 发布服务器](https://github.com/Azure/iot-edge-opc-publisher)存储库。
+1. 还可以使用孪生服务 REST 接口在 OPC 发布服务器中创建受监视的项和订阅。 OPC 发布服务器允许将遥测数据从 OPC UA 服务器系统发送到 IoT 中心。 有关 OPC 发布服务器的详细信息，请参阅[什么是 OPC 发布服务器](overview-opc-publisher.md)。
 
    ![OPC 孪生的工作原理](media/overview-opc-twin-architecture/opc-twin4.png)

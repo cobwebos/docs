@@ -1,26 +1,24 @@
 ---
-title: 教程：使用 Azure 门户创建和管理流分析作业
+title: 教程 - 使用 Azure 门户创建和管理流分析作业
 description: 本教程以端到端方式演示了如何使用 Azure 流分析来分析电话呼叫流中的欺诈性呼叫。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: f78555b37cc82c1e97a6f51ec504bc47937ee8c4
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 577a80f04ad186ab1575fa78db3fa59402d6058f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66493415"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697400"
 ---
-# <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>使用流分析来分析电话呼叫数据并在 Power BI 仪表板中将结果可视化
+# <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>教程：使用流分析来分析电话呼叫数据并在 Power BI 仪表板中将结果可视化
 
 本教程介绍如何使用 Azure 流分析来分析电话呼叫数据。 由客户端应用程序生成的电话呼叫数据包含一些欺诈性呼叫，这些呼叫将由流分析作业进行筛选。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 生成示例性的电话呼叫数据并将其发送到 Azure 事件中心
@@ -35,7 +33,7 @@ ms.locfileid: "66493415"
 开始之前，请执行以下操作：
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/)。
-* 登录到 [Azure 门户](https://portal.azure.com/)。
+* 登录 [Azure 门户](https://portal.azure.com/)。
 * 请从 Microsoft 下载中心下载电话呼叫事件生成器应用 [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip)，或者从 [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) 获取源代码。
 * 你将需要 Power BI 帐户。
 
@@ -45,7 +43,7 @@ ms.locfileid: "66493415"
 
 请按以下步骤创建一个事件中心，然后向该事件中心发送呼叫数据：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 选择“创建资源” > “物联网” > “事件中心”    。
 
    ![在门户中创建 Azure 事件中心](media/stream-analytics-manage-job/find-event-hub-resource.png)
@@ -191,7 +189,7 @@ ms.locfileid: "66493415"
 
 ## <a name="define-a-query-to-analyze-input-data"></a>定义用于分析输入数据的查询
 
-下一步是创建一个分析实时数据的转换。 请使用[流分析查询语言](https://msdn.microsoft.com/library/dn834998.aspx)来定义转换查询。 在本教程中使用的查询可检测电话数据中的欺诈性呼叫。
+下一步是创建一个分析实时数据的转换。 请使用[流分析查询语言](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)来定义转换查询。 在本教程中使用的查询可检测电话数据中的欺诈性呼叫。
 
 在此示例中，同一用户在五秒钟内在不同的位置发起了欺诈性呼叫。 例如，同一用户不能合法地同时从美国和澳大利亚发起呼叫。 若要定义流分析作业的转换查询，请执行以下操作：
 
@@ -212,7 +210,7 @@ ms.locfileid: "66493415"
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-   若要检查欺诈性呼叫，可根据 `CallRecTime` 值来自联接流数据。 然后，可以查找 `CallingIMSI` 值（始发号码）相同，但 `SwitchNum` 值（来源国家/地区）不同的呼叫记录。 当对流数据使用 JOIN 操作时，该联接必须对可以及时分隔匹配行的程度施加一定限制。 由于流数据是无限的，因此请使用 [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics) 函数在联接的 **ON** 子句中指定关系的时间限制。
+   若要检查欺诈性呼叫，可根据 `CallRecTime` 值来自联接流数据。 然后，可以查找 `CallingIMSI` 值（始发号码）相同，但 `SwitchNum` 值（来源国家/地区）不同的呼叫记录。 当对流数据使用 JOIN 操作时，该联接必须对可以及时分隔匹配行的程度施加一定限制。 由于流数据是无限的，因此请使用 [DATEDIFF](https://docs.microsoft.com/stream-analytics-query/datediff-azure-stream-analytics) 函数在联接的 **ON** 子句中指定关系的时间限制。
 
    除 **DATEDIFF** 函数以外，此查询就像正常的 SQL 联接一样。 此查询中使用的 **DATEDIFF** 函数是特定于流分析的，必须显示在 `ON...BETWEEN` 子句中。
 
@@ -266,7 +264,7 @@ ms.locfileid: "66493415"
 
 在本教程的此部分中，请使用 Power BI 团队创建的示例性 [ASP.NET](https://asp.net/) Web 应用程序来嵌入仪表板。 有关如何嵌入仪表板的详细信息，请参阅[使用 Power BI 嵌入](https://docs.microsoft.com/power-bi/developer/embedding)一文。
 
-若要设置应用程序，请访问 [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) GitHub 存储库，然后按照“用户拥有数据”部分的说明操作（请使用 **integrate-dashboard-web-app** 子部分的重定向 URL 和主页 URL）。  由于我们使用的是“仪表板”示例，因此请使用 [GitHub 存储库](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User%20Owns%20Data/integrate-dashboard-web-app)中的 **integrate-dashboard-web-app** 示例代码。
+若要设置应用程序，请访问 [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) GitHub 存储库，然后按照“用户拥有数据”部分的说明操作（请使用 **integrate-web-app** 子部分下的重定向 URL 和主页 URL）。  由于我们使用的是“仪表板”示例，因此请使用 [GitHub 存储库](https://github.com/microsoft/PowerBI-Developer-Samples/tree/master/.NET%20Framework/Embed%20for%20your%20organization/integrate-web-app)中的 **integrate-web-app** 示例代码。
 在浏览器中运行应用程序以后，请执行以下步骤，将此前创建的仪表板嵌入网页中：
 
 1. 选择“登录到 Power BI”  ，以便授予应用程序访问 Power BI 帐户中的仪表板的权限。

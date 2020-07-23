@@ -1,27 +1,25 @@
 ---
-title: 使用 Azure 数据工厂从 PostgreSQL 移动数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 PostgreSQL 移动数据
 description: 了解如何使用 Azure 数据工厂从 PostgreSQL 移动数据。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 888d9ebc-2500-4071-b6d1-0f6bd1b5997c
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: bd39b0aae5b76f37e2153f8e4c4502be994fa5b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461997"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79281231"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>使用 Azure 数据工厂从 PostgreSQL 移动数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-onprem-postgresql-connector.md)
 > * [版本 2（当前版本）](../connector-postgresql.md)
 
@@ -33,7 +31,7 @@ ms.locfileid: "61461997"
 
 可以将数据从本地 PostgreSQL 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持用作接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 数据工厂当前支持将数据从 PostgreSQL 数据库移至其他数据存储，而不支持将数据从其他数据存储移至 PostgreSQL 数据库。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 数据工厂服务支持使用数据管理网关连接到本地 PostgreSQL 源。 请参阅[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文，了解数据管理网关和设置网关的分步说明。
 
@@ -48,9 +46,8 @@ ms.locfileid: "61461997"
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 PostgreSQL 数据存储移动数据。
 
-- 创建管道的最简单方法是使用  复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+- 创建管道的最简单方法是使用**** 复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 - 还可以使用以下工具来创建管道：
-  - Azure 门户
   - Visual Studio
   - Azure PowerShell
   - Azure 资源管理器模板
@@ -61,9 +58,9 @@ ms.locfileid: "61461997"
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
-1. 创建链接服务可将输入和输出数据存储链接到数据工厂  。
-2. 创建数据集以表示复制操作的输入和输出数据  。
-3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出  。
+1. 创建**链接服务**以将输入和输出数据存储链接到数据工厂。
+2. 创建用于表示复制操作的输入和输出数据的**数据集**。
+3. 创建包含复制活动的**管道**，该活动将数据集作为输入，并将数据集作为输出。
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。 有关用于从本地 PostgreSQL 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 PostgreSQL 复制到 Azure Blob](#json-example-copy-data-from-postgresql-to-azure-blob) 部分。
 
@@ -72,13 +69,13 @@ ms.locfileid: "61461997"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供 PostgreSQL 链接服务专属 JSON 元素的说明。
 
-| 属性 | 说明 | 必选 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | type |type 属性必须设置为：**OnPremisesPostgreSql** |是 |
 | server |PostgreSQL 服务器的名称。 |是 |
 | database |PostgreSQL 数据库的名称。 |是 |
-| schema |数据库中架构的名称。 架构名称区分大小写。 |否 |
-| authenticationType |用于连接到 PostgreSQL 数据库的身份验证类型。 可能的值包括：Anonymous、Basic 和 Windows。 |是 |
+| 架构 |数据库中架构的名称。 架构名称区分大小写。 |否 |
+| authenticationType |用于连接到 PostgreSQL 数据库的身份验证类型。 可能的值为：Anonymous、Basic 和 Windows。 |是 |
 | username |如果使用基本或 Windows 身份验证，请指定用户名。 |否 |
 | password |指定为用户名指定的用户帐户的密码。 |否 |
 | gatewayName |网关的名称 - 数据工厂服务应使用此网关连接到本地 PostgreSQL 数据库。 |是 |
@@ -88,7 +85,7 @@ ms.locfileid: "61461997"
 
 每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable** 类型的数据集的 typeProperties 部分（包括 PostgreSQL 数据集）具有以下属性：
 
-| 属性 | 说明 | 需要 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | tableName |链接服务引用的 PostgreSQL 数据库实例中表的名称。 TableName 区分大小写。 |否（如果指定了 **RelationalSource** 的**query**） |
 
@@ -97,11 +94,11 @@ ms.locfileid: "61461997"
 
 而可用于此活动的 typeProperties 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
 
-当源属于 **RelationalSource** 类型（包括 PostgreSQL）时，以下属性可在 typeProperties 节中使用：
+当 source 的类型为**RelationalSource** （包括 PostgreSQL）时，typeProperties 节中提供以下属性：
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| Property | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`"query": "select * from \"MySchema\".\"MyTable\""`。 |否（如果指定了**数据集**的 **tableName**） |
+| 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`"query": "select * from \"MySchema\".\"MyTable\""`。 |否（如果指定了**数据集**的 **tableName**） |
 
 > [!NOTE]
 > 架构和表名称区分大小写。 在查询中将名称括在 `""`（双引号）中。
@@ -111,7 +108,7 @@ ms.locfileid: "61461997"
  `"query": "select * from \"MySchema\".\"MyTable\""`
 
 ## <a name="json-example-copy-data-from-postgresql-to-azure-blob"></a>JSON 示例：将数据从 PostgreSQL 复制到 Azure Blob
-此示例提供示例 JSON 定义，可使用这些定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它们演示如何将数据从 PostgreSQL 数据库复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
+此示例提供示例 JSON 定义，可用于通过使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 它们演示如何将数据从 PostgreSQL 数据库复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
 
 > [!IMPORTANT]
 > 此示例提供 JSON 代码段。 它不包括创建数据工厂的分步说明。 请参阅文章[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)以获取分步说明。
@@ -119,9 +116,9 @@ ms.locfileid: "61461997"
 此示例具有以下数据工厂实体：
 
 1. [OnPremisesPostgreSql](data-factory-onprem-postgresql-connector.md#linked-service-properties) 类型的链接服务。
-2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)类型的链接服务。
 3. [RelationalTable](data-factory-onprem-postgresql-connector.md#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)类型的输出[数据集](data-factory-create-datasets.md)。
 5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [RelationalSource](data-factory-onprem-postgresql-connector.md#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
 此示例每小时将数据从 PostgreSQL 数据库中的查询结果复制到 blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
@@ -191,7 +188,7 @@ ms.locfileid: "61461997"
 
 **Azure Blob 输出数据集：**
 
-数据将写入到新 blob，每隔一小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态评估 blob 的文件夹路径和文件名。 文件夹路径使用开始时间的年、月、日和小时部分。
+数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态评估 blob 的文件夹路径和文件名。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```json
 {
@@ -249,9 +246,9 @@ ms.locfileid: "61461997"
 }
 ```
 
-**包含复制活动的管道：**
+**复制活动的管道：**
 
-管道包含配置为使用输入和输出数据集，且计划每小时运行一次的复制活动。 在管道 JSON 定义中， **源** 类型设置为 **RelationalSource** **接收器** 类型设置为 **BlobSink**。 为 **query** 属性指定的 SQL 查询从 PostgreSQL 数据库的 public.usstates 表中选择数据。
+管道包含配置为使用输入和输出数据集，且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将 **source** 类型设置为 **RelationalSource**，将 **sink** 类型设置为 **BlobSink**。 为 **query** 属性指定的 SQL 查询从 PostgreSQL 数据库的 public.usstates 表中选择数据。
 
 ```json
 {
@@ -297,7 +294,7 @@ ms.locfileid: "61461997"
 }
 ```
 ## <a name="type-mapping-for-postgresql"></a>PostgreSQL 的类型映射
-如[数据移动活动](data-factory-data-movement-activities.md)一文中所述，复制活动通过以下 2 步方法执行从源类型到接收器类型的自动类型转换：
+如[数据移动活动](data-factory-data-movement-activities.md)一文中所述，复制活动通过以下2步方法执行从源类型到接收器类型的自动类型转换：
 
 1. 从本机源类型转换为 .NET 类型
 2. 从 .NET 类型转换为本机接收器类型
@@ -306,12 +303,12 @@ ms.locfileid: "61461997"
 
 | PostgreSQL 数据库类型 | PostgresSQL 别名 | .NET Framework 类型 |
 | --- | --- | --- |
-| abstime | |Datetime |
+| abstime | |datetime |
 | bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Byte[], String |
 | bit varying [ (n) ] |varbit |Byte[], String |
-| boolean |bool |Boolean |
+| boolean |bool |布尔 |
 | box | |Byte[], String |
 | bytea | |Byte[], String |
 | character [(n)] |char [(n)] |String |
@@ -319,9 +316,9 @@ ms.locfileid: "61461997"
 | cid | |String |
 | cidr | |String |
 | circle | |Byte[], String |
-| date | |Datetime |
+| date | |datetime |
 | daterange | |String |
-| double precision |float8 |Double |
+| 双精度 |float8 |Double |
 | inet | |Byte[], String |
 | intarry | |String |
 | int4range | |String |
@@ -333,8 +330,8 @@ ms.locfileid: "61461997"
 | line | |Byte[], String |
 | lseg | |Byte[], String |
 | macaddr | |Byte[], String |
-| money | |Decimal |
-| numeric [(p, s)] |decimal [(p, s)] |Decimal |
+| money | |小数 |
+| numeric [(p, s)] |decimal [(p, s)] |小数 |
 | numrange | |String |
 | oid | |Int32 |
 | path | |Byte[], String |

@@ -1,26 +1,25 @@
 ---
-title: 在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker | Microsoft Docs
+title: 在 Azure 中的 SLES 上设置 Pacemaker | Microsoft Docs
 description: 在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: jeconnoc
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/16/2018
-ms.author: sedusch
-ms.openlocfilehash: 9a23f13947c4c7a77460ff389861e1dcc1de3c7f
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.date: 06/24/2020
+ms.author: radeltch
+ms.openlocfilehash: ed754e3f69feaf6d5415db8f71cb5c1bb65632e0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65992111"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85368238"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -28,16 +27,16 @@ ms.locfileid: "65992111"
 [deployment-guide]:deployment-guide.md
 [dbms-guide]:dbms-guide.md
 [sap-hana-ha]:sap-hana-high-availability.md
-[virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
-[virtual-machines-windows-maintenance]:../../windows/maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
+[virtual-machines-linux-maintenance]:../../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
+[virtual-machines-windows-maintenance]:../../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
 [sles-nfs-guide]:high-availability-guide-suse-nfs.md
 [sles-guide]:high-availability-guide-suse.md
 
 有两个选项可用来在 Azure 中设置 Pacemaker 群集。 可以使用隔离代理，它负责通过 Azure API 重新启动失败的节点；还可以使用 SBD 设备。
 
-SBD 设备至少需要一个额外的充当 iSCSI 目标服务器并提供 SBD 设备的虚拟机。 不过，也可以与其他 Pacemaker 群集共享这些 iSCSI 目标服务器。 使用 SBD 设备的优点是可以更快地进行故障转移，如果使用本地 SBD 设备，则不需要对操作 pacemaker 群集的方式进行任何更改。 最多可对一个 Pacemaker 群集使用三个 SBD 设备，以允许某个 SBD 设备不可用，例如，在修补 iSCSI 目标服务器的 OS 期间。 若要对每个 Pacemaker 使用多个 SBD 设备，请务必部署多个 iSCSI 目标服务器并从每个 iSCSI 目标服务器连接一个 SBD。 我们建议使用一个或三个 SBD 设备。 如果只配置两个 SBD 设备，而其中一个不可用，则 Pacemaker 无法自动隔离群集节点。 当一个 iSCSI 目标服务器关闭时，若要进行隔离，必须使用三个 SBD 设备，因此需要使用三个 iSCSI 目标服务器。
+SBD 设备至少需要一个额外的充当 iSCSI 目标服务器并提供 SBD 设备的虚拟机。 不过，也可以与其他 Pacemaker 群集共享这些 iSCSI 目标服务器。 使用 SBD 设备的优点是，如果你已经在本地使用 SBD 设备，则不需要对 pacemaker 群集的运行方式进行任何更改。 最多可对一个 Pacemaker 群集使用三个 SBD 设备，以允许某个 SBD 设备不可用，例如，在修补 iSCSI 目标服务器的 OS 期间。 若要对每个 Pacemaker 使用多个 SBD 设备，请务必部署多个 iSCSI 目标服务器并从每个 iSCSI 目标服务器连接一个 SBD。 我们建议使用一个或三个 SBD 设备。 如果只配置两个 SBD 设备，而其中一个不可用，则 Pacemaker 无法自动隔离群集节点。 如果希望能够在一个 iSCSI 目标服务器关闭时进行防护，则必须使用三个 SBD 设备，因此可以使用三个 iSCSI 目标服务器，这是使用 SBDs 时最具弹性的配置。
 
-如果不希望另外投资购买一台虚拟机，也可以使用 Azure 隔离代理。 其缺点在于，如果资源停止失败或者群集节点不再可以彼此通信，则故障转移可能要花费 10 到 15 分钟。
+Azure 隔离代理不需要部署其他虚拟机。   
 
 ![SLES 上的 Pacemaker 概述](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
@@ -62,6 +61,9 @@ SBD 设备至少需要一个额外的充当 iSCSI 目标服务器并提供 SBD �
    <pre><code>sudo zypper update
    </code></pre>
 
+   > [!NOTE]
+   > 升级或更新 OS 后，可能需要重新启动 OS。 
+
 1. 删除包
 
    请卸载以下包，避免 targetcli 和 SLES 12 SP3 的已知问题。 可以忽略找不到的包的相关错误
@@ -84,7 +86,7 @@ SBD 设备至少需要一个额外的充当 iSCSI 目标服务器并提供 SBD �
 
 在所有 **iSCSI 目标虚拟机**上运行以下命令，为 SAP 系统使用的群集创建 iSCSI 磁盘。 以下示例中为多个群集创建 SBD 设备。 其中演示了如何对多个群集使用一个 iSCSI 目标服务器。 在 OS 磁盘中放置 SBD 设备。 确保有足够的空间。
 
-**`nfs`** 用于标识 NFS 群集**ascsnw1**用来标识的 ASCS 群集**NW1**， **dbnw1**用来标识的数据库群集**NW1**， **nfs 0**并**nfs 1** NFS 群集节点的主机名**nw1 xscs 0**和**nw1 xscs 1**的主机名**NW1** ASCS 群集节点，并**nw1-db-0**并**nw1-db-1**是群集节点的主机名的数据库。 请将其替换为群集节点的主机名和 SAP 系统的 SID。
+**`nfs`** 用于标识 NFS 群集，ascsnw1 用于标识 NW1 的 ASCS 群集，dbnw1 用于标识 NW1 的数据库群集，nfs-0 和 nfs-1 是 NFS 群集节点的主机名，nw1-xscs-0 和 nw1-xscs-1 是 NW1 ASCS 群集节点的主机名，nw1-db-0 和 nw1-db-1 是数据库群集节点的主机名。 请将其替换为群集节点的主机名和 SAP 系统的 SID。
 
 <pre><code># Create the root folder for all SBD devices
 sudo mkdir /sbd
@@ -176,7 +178,7 @@ o- / ...........................................................................
 
 从群集连接到在最后一步中创建的 iSCSI 设备。
 在要创建的新群集的节点上运行以下命令。
-以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2。
+以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2  。
 
 1. **[A]** 连接到 iSCSI 设备
 
@@ -299,10 +301,9 @@ o- / ...........................................................................
    [...]
    <b>SBD_STARTMODE="always"</b>
    [...]
-   <b>SBD_WATCHDOG="yes"</b>
    </code></pre>
 
-   创建`softdog`配置文件
+   创建 `softdog` 配置文件
 
    <pre><code>echo softdog | sudo tee /etc/modules-load.d/softdog.conf
    </code></pre>
@@ -314,12 +315,27 @@ o- / ...........................................................................
 
 ## <a name="cluster-installation"></a>群集安装
 
-以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2。
+以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2  。
 
 1. [A] 更新 SLES
 
    <pre><code>sudo zypper update
    </code></pre>
+
+1. **[A]** 安装群集资源所需的组件
+
+   <pre><code>sudo zypper in socat
+   </code></pre>
+
+1. **[A]** 安装群集资源所需的 azure-lb 组件
+
+   <pre><code>sudo zypper in resource-agents
+   </code></pre>
+
+   > [!NOTE]
+   > 检查 resource-agents 包的版本，并确保满足最低版本要求：  
+   > - 对于 SLES 12 SP4/SP5，版本必须至少为 resource-agents-4.3.018.a7fb5035-3.30.1。  
+   > - 对于 SLES 15/15 SP1，版本必须至少为 resource-agents-4.3.0184.6ee15eb2-4.13.1。  
 
 1. **[A]** 配置操作系统
 
@@ -348,9 +364,12 @@ o- / ...........................................................................
    vm.dirty_background_bytes = 314572800
    </code></pre>
 
-1. **[A]** Configure cloud-netconfig-azure for HA Cluster
+1. **[A]** 为 HA 群集配置 cloud-netconfig-azure
 
-   若要防止云网络插件删除 （Pacemaker 必须控制 VIP 分配） 的虚拟 IP 地址如下所示更改网络接口的配置文件。 有关详细信息请参阅[SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633)。 
+   >[!NOTE]
+   > 通过运行 zypper info cloud-netconfig-azure，检查安装的 cloud-netconfig-azure 包的版本。 如果环境中的版本为 1.3 或更高版本，则不再需要通过云网络插件来禁止管理网络接口。 如果版本低于 1.3，则建议将 cloud-netconfig-azure 包更新为最新的可用版本。  
+
+   按下面所示更改网络接口的配置文件，以防止云网络插件删除虚拟 IP 地址（Pacemaker 必须控制 VIP 分配）。 有关详细信息，请参阅 [SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633)。 
 
    <pre><code># Edit the configuration file
    sudo vi /etc/sysconfig/network/ifcfg-eth0 
@@ -374,14 +393,15 @@ o- / ...........................................................................
 
 1. [2] 启用 SSH 访问
 
-   <pre><code># insert the public key you copied in the last step into the authorized keys file on the second server
-   sudo vi /root/.ssh/authorized_keys
-   
+   <pre><code>
    sudo ssh-keygen
-
+   
    # Enter file in which to save the key (/root/.ssh/id_rsa): -> Press ENTER
    # Enter passphrase (empty for no passphrase): -> Press ENTER
    # Enter same passphrase again: -> Press ENTER
+   
+   # insert the public key you copied in the last step into the authorized keys file on the second server
+   sudo vi /root/.ssh/authorized_keys   
    
    # copy the public key
    sudo cat /root/.ssh/id_rsa.pub
@@ -393,10 +413,36 @@ o- / ...........................................................................
    sudo vi /root/.ssh/authorized_keys
    </code></pre>
 
-1. [A] 安装隔离代理
+1. **[A]** 基于 Azure 隔离代理使用 STONITH 设备安装围栏代理包。  
    
    <pre><code>sudo zypper install fence-agents
    </code></pre>
+
+   >[!IMPORTANT]
+   > 安装的包防护版本 **-代理**必须至少为**4.4.0** ，以便在群集节点需要隔离的情况下，使用 Azure 隔离代理更快地进行故障转移。 如果运行的版本较低，建议更新包。  
+
+
+1. **[A]** 安装 AZURE Python SDK 
+   - 在 SLES 12 SP4 或 SLES 12 SP5 上
+   <pre><code>
+    # You may need to activate the Public cloud extention first
+    SUSEConnect -p sle-module-public-cloud/12/x86_64
+    sudo zypper install python-azure-mgmt-compute
+   </code></pre> 
+
+   - 在 SLES 15 及更高版本上 
+   <pre><code>
+    # You may need to activate the Public cloud extention first. In this example the SUSEConnect command is for SLES 15 SP1
+    SUSEConnect -p sle-module-public-cloud/15.1/x86_64
+    sudo zypper install python3-azure-mgmt-compute
+   </code></pre> 
+ 
+   >[!IMPORTANT]
+   >根据您的版本和映像类型，您可能需要在安装 Azure Python SDK 之前激活操作系统版本的公有云扩展。
+   >可以通过运行 SUSEConnect---列表扩展来检查扩展。  
+   >若要通过 Azure 隔离代理获得更快的故障转移时间：
+   > - 在 SLES 12 SP4 或 SLES 12 SP5 上，安装版本**4.6.2**或更高版本的包 python-azure 管理-计算  
+   > - 在 SLES 15 上安装版本**4.6.2**或更高版本的包 python**3**-azure 管理-计算 
 
 1. [A] 设置主机名称解析
 
@@ -415,16 +461,28 @@ o- / ...........................................................................
    </code></pre>
 
 1. [1] 安装群集
-
-   <pre><code>sudo ha-cluster-init
+- 如果使用 SBD 设备进行防护
+   <pre><code>sudo ha-cluster-init -u
    
    # ! NTP is not configured to start at system boot.
    # Do you want to continue anyway (y/n)? <b>y</b>
    # /root/.ssh/id_rsa already exists - overwrite (y/n)? <b>n</b>
-   # Network address to bind to (e.g.: 192.168.1.0) [10.0.0.0] <b>Press ENTER</b>
-   # Multicast address (e.g.: 239.x.x.x) [239.232.97.43] <b>Press ENTER</b>
-   # Multicast port [5405] <b>Press ENTER</b>
+   # Address for ring0 [10.0.0.6] <b>Press ENTER</b>
+   # Port for ring0 [5405] <b>Press ENTER</b>
    # SBD is already configured to use /dev/disk/by-id/scsi-36001405639245768818458b930abdf69;/dev/disk/by-id/scsi-36001405afb0ba8d3a3c413b8cc2cca03;/dev/disk/by-id/scsi-36001405f88f30e7c9684678bc87fe7bf - overwrite (y/n)? <b>n</b>
+   # Do you wish to configure an administration IP (y/n)? <b>n</b>
+   </code></pre>
+
+- 如果*不使用*SBD 设备进行防护
+   <pre><code>sudo ha-cluster-init -u
+   
+   # ! NTP is not configured to start at system boot.
+   # Do you want to continue anyway (y/n)? <b>y</b>
+   # /root/.ssh/id_rsa already exists - overwrite (y/n)? <b>n</b>
+   # Address for ring0 [10.0.0.6] <b>Press ENTER</b>
+   # Port for ring0 [5405] <b>Press ENTER</b>
+   # Do you wish to use SBD (y/n)? <b>n</b>
+   #WARNING: Not configuring SBD - STONITH will be disabled.
    # Do you wish to configure an administration IP (y/n)? <b>n</b>
    </code></pre>
 
@@ -443,12 +501,12 @@ o- / ...........................................................................
    <pre><code>sudo passwd hacluster
    </code></pre>
 
-1. [A] 将 corosync 配置为使用其他传输，并添加 nodelist。 否则，群集不会工作。
+1. **[A]** 调整 corosync 设置。  
 
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   如果值不存在或不同，请将以下粗体显示的内容添加到文件。 请确保将令牌更改为 30000，以允许内存保留维护。 有关详细信息，请参阅这篇适用于 [Linux][virtual-machines-linux-maintenance] 或 [Windows][virtual-machines-windows-maintenance] 的文章。 此外，请务必删除参数 mcastaddr。
+   如果值不存在或不同，请将以下粗体显示的内容添加到文件。 请确保将令牌更改为 30000，以允许内存保留维护。 有关详细信息，请参阅这篇适用于 [Linux][virtual-machines-linux-maintenance] 或 [Windows][virtual-machines-windows-maintenance] 的文章。
 
    <pre><code>[...]
      <b>token:          30000
@@ -460,20 +518,16 @@ o- / ...........................................................................
      interface { 
         [...] 
      }
-     <b>transport:      udpu</b>
-     # remove parameter mcastaddr
-     <b># mcastaddr: IP</b>
+     transport:      udpu
    } 
-   <b>nodelist {
+   nodelist {
      node {
-      # IP address of <b>prod-cl1-0</b>
       ring0_addr:10.0.0.6
      }
      node {
-      # IP address of <b>prod-cl1-1</b>
       ring0_addr:10.0.0.7
      } 
-   }</b>
+   }
    logging {
      [...]
    }
@@ -491,45 +545,70 @@ o- / ...........................................................................
    <pre><code>sudo service corosync restart
    </code></pre>
 
+## <a name="default-pacemaker-configuration-for-sbd"></a>SBD 的默认 Pacemaker 配置
+
+本部分中的配置仅适用于使用 SBD STONITH 的情况。  
+
+1. **[1]** 启用 STONITH 设备并设置隔离延迟
+
+<pre><code>sudo crm configure property stonith-timeout=144
+sudo crm configure property stonith-enabled=true
+
+# List the resources to find the name of the SBD device
+sudo crm resource list
+sudo crm resource stop stonith-sbd
+sudo crm configure delete <b>stonith-sbd</b>
+sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
+   params pcmk_delay_max="15" \
+   op monitor interval="15" timeout="15"
+</code></pre>
+
 ## <a name="create-azure-fence-agent-stonith-device"></a>创建 Azure 隔离代理 STONITH 设备
 
+本部分文档仅适用于使用 STONITH （基于 Azure 隔离代理）的情况。
 STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步骤创建服务主体。
 
-1. 转到 [https://portal.azure.com](https://portal.azure.com)
+1. 转到 <https://portal.azure.com>
 1. 打开“Azure Active Directory”边栏选项卡  
    转到“属性”并记下目录 ID。 这是“租户 ID”。
 1. 单击“应用注册”
-1. 单击“添加”
-1. 输入名称，选择应用程序类型“Web 应用/API”，输入登录 URL（例如 http\://localhost），并单击“创建”
-1. 不会使用登录 URL，可为它输入任何有效的 URL
-1. 选择新应用，并在“设置”选项卡中单击“密钥”
-1. 输入新密钥的说明，选择“永不过期”，并单击“保存”
+1. 单击“新建注册”
+1. 输入名称，选择“仅限此组织目录中的帐户” 
+2. 选择“Web”作为应用程序类型，输入登录 URL（例如 http:\//localhost），然后单击“添加”  
+   不会使用登录 URL，可为它输入任何有效的 URL
+1. 选择“证书和机密”，然后单击“新建客户端机密”
+1. 输入新密钥的说明，选择“永不过期”，并单击“添加”
 1. 记下值。 此值用作服务主体的**密码**
-1. 记下应用程序 ID。 此 ID 用作服务主体的用户名（以下步骤中的“登录 ID”）
+1. 选择“概述”。 记下应用程序 ID。 此 ID 用作服务主体的用户名（以下步骤中的“登录 ID”）
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** 为隔离代理创建自定义角色
 
-默认情况下，服务主体无权访问 Azure 资源。 需要为服务主体授予启动和停止（解除分配）群集所有虚拟机的权限。 如果尚未创建自定义角色，可以使用 [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) 或 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 来创建它
+默认情况下，服务主体无权访问 Azure 资源。 需要为服务主体授予启动和停止（解除分配）群集所有虚拟机的权限。 如果尚未创建自定义角色，可以使用 [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) 或 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli) 来创建它
 
 将以下内容用于输入文件。 你需要调整内容以适应你的订阅，也就是说，将 c276fc76-9cd4-44c9-99a7-4fd71546436e 和 e91d47c4-76f3-4271-a796-21b4ecfe3624 替换为你的订阅的 ID。 如果只有一个订阅，请删除 AssignableScopes 中的第二个条目。
 
 ```json
 {
-  "Name": "Linux Fence Agent Role",
-  "Id": null,
-  "IsCustom": true,
-  "Description": "Allows to deallocate and start virtual machines",
-  "Actions": [
-    "Microsoft.Compute/*/read",
-    "Microsoft.Compute/virtualMachines/deallocate/action",
-    "Microsoft.Compute/virtualMachines/start/action"
-  ],
-  "NotActions": [
-  ],
-  "AssignableScopes": [
-    "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
-    "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
-  ]
+    "properties": {
+        "roleName": "Linux Fence Agent Role",
+        "description": "Allows to power-off and start virtual machines",
+        "assignableScopes": [
+            "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
+            "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Compute/*/read",
+                    "Microsoft.Compute/virtualMachines/powerOff/action",
+                    "Microsoft.Compute/virtualMachines/start/action"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
 }
 ```
 
@@ -552,40 +631,34 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 
 编辑虚拟机的权限后，可以在群集中配置 STONITH 设备。
 
-<pre><code># replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
+<pre><code>sudo crm configure property stonith-enabled=true
+crm configure property concurrent-fencing=true
+# replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
 sudo crm configure primitive rsc_st_azure stonith:fence_azure_arm \
-   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
+  params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>" \
+  pcmk_monitor_retries=4 pcmk_action_limit=3 power_timeout=240 pcmk_reboot_timeout=900 \ 
+  op monitor interval=3600 timeout=120
 
 sudo crm configure property stonith-timeout=900
-sudo crm configure property stonith-enabled=true
+
 </code></pre>
 
-## <a name="default-pacemaker-configuration-for-sbd"></a>SBD 的默认 Pacemaker 配置
+> [!IMPORTANT]
+> 对监视和防护操作进行反序列化。 因此，如果存在运行时间较长的监视操作和同时发生的防护事件，则群集故障转移不会延迟，因为已在运行监视操作。
 
-1. **[1]** 启用 STONITH 设备并设置隔离延迟
+> [!TIP]
+>Azure 隔离代理要求与[使用标准 ILB 的 VM 的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)中所述的公共终结点建立出站连接并提供可能的解决方案。  
 
-<pre><code>sudo crm configure property stonith-timeout=144
-sudo crm configure property stonith-enabled=true
+## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>用于 Azure 计划事件的 Pacemaker 配置
 
-# List the resources to find the name of the SBD device
-sudo crm resource list
-sudo crm resource stop stonith-sbd
-sudo crm configure delete <b>stonith-sbd</b>
-sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
-   params pcmk_delay_max="15" \
-   op monitor interval="15" timeout="15"
+Azure 提供[计划事件](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events)。 计划事件通过元数据服务提供，可为应用程序留出时间来准备 VM 关闭、VM 重新部署等事件。资源代理 [azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161) 可监视计划的 Azure 事件。 如果检测到事件，该代理将尝试停止受影响 VM 上的所有资源，并将它们移至群集中的另一个节点。 若要实现这一点，必须配置其他 Pacemaker 资源。 
+
+1. **[A]** 确保已安装 azure-events 代理包，并且其版本是最新的。 
+
+<pre><code>sudo zypper info resource-agents
 </code></pre>
 
-## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>适用于 Azure 的 pacemaker 配置计划事件
-
-Azure 产品/服务[计划事件](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events)。 预定的事件元数据服务通过提供和留出时间让应用程序准备事件，例如 VM 关闭、 重新部署 VM，等等。资源代理 **[azure 事件](https://github.com/ClusterLabs/resource-agents/pull/1161)** 计划 Azure 事件监视器。 如果检测到事件，则代理将尝试停止受影响的 VM 上的所有资源并将它们移动到群集中的另一个节点。 若要实现的更多的 Pacemaker 资源必须配置。 
-
-1. **[A]** 安装**azure 事件**代理。 
-
-<pre><code>sudo zypper install resource-agents
-</code></pre>
-
-2. **[1]** Pacemaker 中配置的资源。 
+2. **[1]** 配置 Pacemaker 中的资源。 
 
 <pre><code>
 #Place the cluster in maintenance mode
@@ -600,10 +673,10 @@ sudo crm configure property maintenance-mode=false
 </code></pre>
 
    > [!NOTE]
-   > 将群集放加入或退出维护模式时配置 azure 事件代理的 Pacemaker 资源后，可能会收到类似的警告消息：  
-     警告： 上 bootstrap 选项： 未知的属性 ' hostName_<strong>主机名</strong>  
-     警告： 上 bootstrap 选项： 未知的属性 ' azure events_globalPullState  
-     警告： 上 bootstrap 选项： 未知的属性 ' hostName_<strong>主机名</strong>  
+   > 为 azure-events 代理配置 Pacemaker 资源后，将群集置于维护模式或退出维护模式时，可能会收到以下警告消息：  
+     警告: cib-bootstrap-options: 未知属性 "hostName_  hostname"  
+     警告: cib-bootstrap-options: 未知属性 "azure-events_globalPullState"  
+     警告: cib-bootstrap-options: 未知属性 "hostName_ hostname"  
    > 可以忽略这些警告消息。
 
 ## <a name="next-steps"></a>后续步骤
@@ -613,4 +686,4 @@ sudo crm configure property maintenance-mode=false
 * [适用于 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
 * [SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性][sles-nfs-guide]
 * [SUSE Linux Enterprise Server for SAP Applications 上 Azure VM 中的 SAP NetWeaver 的高可用性][sles-guide]
-* 若要了解如何在 Azure VM 上建立 SAP HANA 高可用性以及规划灾难恢复，请参阅 [Azure 虚拟机 (VM) 上的 SAP HANA 高可用性][sap-hana-ha]
+* 若要了解如何在 Azure VM 上为 SAP HANA 建立高可用性和规划灾难恢复，请参阅 [Azure 虚拟机 (VM) 上 SAP HANA 的高可用性][sap-hana-ha]

@@ -1,26 +1,26 @@
 ---
-title: Azure 数据工厂中的 If Condition 活动 | Microsoft 文档
+title: Azure 数据工厂中的 If Condition 活动
 description: If Condition 活动允许你控制基于条件的处理流。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-ms.openlocfilehash: 52f96b8fc2a1288c652169817a3a73d7b26caac9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 9f65ffc9ef24b18ce0f18571c1f3fc91e7ca7fdf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66153473"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85414600"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure 数据工厂中的 If Condition 活动
-If Condition 活动可提供 if 语句在编程语言中提供相同的功能。 当条件计算结果为 `true` 时，它会计算一组活动，当条件计算结果为 `false` 时，它会计算另一组活动。 
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+If Condition 活动可提供 if 语句在编程语言中提供相同的功能。 当条件计算结果为时，它将执行一组活动 `true` ，而当条件计算结果为时，还会执行另一组活动 `false` 。 
 
 ## <a name="syntax"></a>语法
 
@@ -64,13 +64,13 @@ If Condition 活动可提供 if 语句在编程语言中提供相同的功能。
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 需要
+properties | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
-名称 | if-condition 活动名称。 | String | “是”
-类型 | 必须设置为“IfCondition” | String | “是”
-表达式 | 计算结果必须为 true 或 false 的表达式 | 具有结果类型布尔的表达式 | “是”
-ifTrueActivities | 表达式计算结果为 `true` 时将执行的活动集。 | Array | “是”
-ifFalseActivities | 表达式计算结果为 `false` 时将执行的活动集。 | Array | “是”
+name | if-condition 活动名称。 | String | 是
+type | 必须设置为“IfCondition”  | String | 是
+表达式 | 计算结果必须为 true 或 false 的表达式 | 具有结果类型布尔的表达式 | 是
+ifTrueActivities | 表达式计算结果为 `true` 时将执行的活动集。 | Array | 是
+ifFalseActivities | 表达式计算结果为 `false` 时将执行的活动集。 | Array | 是
 
 ## <a name="example"></a>示例
 此示例中的管道可将数据从输入文件夹复制到一个输出文件夹。 输出文件夹由管道参数的值决定：routeSelection。 如果 routeSelection 的值为 true，数据将复制到 outputPath1。 而如果 routeSelection 的值为 false，数据将复制到 outputPath2。 
@@ -183,7 +183,7 @@ ifFalseActivities | 表达式计算结果为 `false` 时将执行的活动集。
 
 ```json
 "expression":  {
-    "value":  "@pipeline().parameters.routeSelection == 1", 
+    "value":  "@equals(pipeline().parameters.routeSelection,1)", 
     "type": "Expression"
 }
 ```
@@ -197,17 +197,14 @@ ifFalseActivities | 表达式计算结果为 `false` 时将执行的活动集。
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>"
         }
     }
 }
 ```
 
 ### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>参数化的 Azure Blob 数据集 (BlobDataset.json)
-管道将 folderPath 设置为管道参数 outputPath1 或 outputPath2 的值。 
+管道将 folderPath  设置为管道参数 outputPath1  或 outputPath2  的值。 
 
 ```json
 {

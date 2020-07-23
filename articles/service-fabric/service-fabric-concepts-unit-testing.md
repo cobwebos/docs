@@ -1,25 +1,13 @@
 ---
-title: 对 Azure Service Fabric 中的有状态服务进行单元测试 | Microsoft Docs
+title: 对 Azure Service Fabric 中的有状态服务进行单元测试
 description: 了解对 Service Fabric 有状态服务进行单元测试的概念和实践。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/04/2018
-ms.author: atsenthi
-ms.openlocfilehash: ad7cf3a1dfcef8795ceb378a59a1cf0b2010293e
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
-ms.translationtype: MT
+ms.openlocfilehash: 12e8a47d9685dee12594f4e2afaa848d9688d185
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595504"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75433914"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>对 Service Fabric 中的有状态服务进行单元测试
 
@@ -51,8 +39,8 @@ ms.locfileid: "65595504"
 状态管理器应视为远程资源，并因此进行模拟。 模拟状态管理器时，需要有一些基础内存存储，用于跟踪保存到状态管理器的内容，以便可以进行读取和验证。 实现此目的的一个简单方法是创建每个“可靠集合”类型的模拟实例。 在这些模拟中，使用与针对该集合执行的操作保持紧密一致的数据类型。 以下是每个可靠集合的一些建议数据类型
 
 - IReliableDictionary<TKey, TValue> -> System.Collections.Concurrent.ConcurrentDictionary<TKey, TValue>
-- IReliableQueue<T> -> System.Collections.Generic.Queue<T>
-- IReliableConcurrentQueue<T> -> System.Collections.Concurrent.ConcurrentQueue<T>
+- IReliableQueue\<T> -> System.Collections.Generic.Queue\<T>
+- IReliableConcurrentQueue\<T> -> System.Collections.Concurrent.ConcurrentQueue\<T>
 
 #### <a name="many-state-manager-instances-single-storage"></a>许多状态管理器实例，单个存储
 如前所述，状态管理器和可靠集合应视为远程资源。 因此，这些资源应该并且将在单元测试中进行模拟。 但是，在运行有状态服务的多个实例时，要使每个模拟状态管理器在不同的有状态服务实例之间保持同步将是一项挑战。 当有状态服务在群集上运行时，Service Fabric 负责保持每个次要副本的状态管理器与主要副本一致。 因此，测试的行为应相同，以便它们可以模拟角色更改。

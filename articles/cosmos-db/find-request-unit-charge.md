@@ -3,15 +3,15 @@ title: 在 Azure Cosmos DB 中查找请求单位 (RU) 费用
 description: 了解如何查找针对 Azure Cosmos 容器执行的任何操作所产生的请求单位 (RU) 费用。
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 05/23/2019
+ms.topic: how-to
+ms.date: 09/01/2019
 ms.author: thweiss
-ms.openlocfilehash: 0671556a1ad049782090ffede509072adbac4c6a
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
-ms.translationtype: HT
+ms.openlocfilehash: bf109d3f15c9865a8e9ad1d27a1e8d320d172761
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416037"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261828"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中查找请求单位费用
 
@@ -29,17 +29,19 @@ ms.locfileid: "66416037"
 
 1. [创建新的 Azure Cosmos 帐户](create-sql-api-dotnet.md#create-account)并在其中植入数据，或选择一个已包含数据的现有 Azure Cosmos 帐户。
 
-1. 转到“数据资源管理器”窗格，然后选择要处理的容器。 
+1. 转到“数据资源管理器”窗格，然后选择要处理的容器。
 
-1. 选择“新建 SQL 查询”。 
+1. 选择“新建 SQL 查询”。
 
-1. 输入有效的查询，然后选择“执行查询”  。
+1. 输入有效的查询，然后选择“执行查询”。
 
-1. 选择“查询统计信息”，以显示执行的请求的实际请求费用。 
+1. 选择“查询统计信息”，以显示执行的请求的实际请求费用。
 
-![Azure 门户中的 SQL 查询请求费用屏幕截图](./media/find-request-unit-charge/portal-sql-query.png)
+:::image type="content" source="./media/find-request-unit-charge/portal-sql-query.png" alt-text="Azure 门户中的 SQL 查询请求费用屏幕截图":::
 
-### <a name="use-the-net-sdk-v2"></a>使用 .NET SDK V2
+### <a name="use-the-net-sdk"></a>使用 .NET SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 从 [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) 返回的对象公开 `RequestCharge` 属性：
 
@@ -74,7 +76,15 @@ while (query.HasMoreResults)
 }
 ```
 
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
+
+从 [.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) 返回的对象公开 `RequestCharge` 属性：
+
+[!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/CustomDocsSampleCode.cs?name=GetRequestCharge)]
+
 有关详细信息，请参阅[快速入门：在 Azure Cosmos DB 中使用 SQL API 帐户生成 .NET Web 应用](create-sql-api-dotnet.md)。
+
+---
 
 ### <a name="use-the-java-sdk"></a>使用 Java SDK
 
@@ -146,10 +156,12 @@ while (query.hasMoreResults()) {
 从 [Python SDK](https://pypi.org/project/azure-cosmos/) 返回的 `CosmosClient` 对象公开 `last_response_headers` 字典，该字典可映射底层 HTTP API 针对上次执行的操作返回的所有标头。 请求费用显示在 `x-ms-request-charge` 键下：
 
 ```python
-response = client.ReadItem('dbs/database/colls/container/docs/itemId', { 'partitionKey': 'partitionKey' })
+response = client.ReadItem(
+    'dbs/database/colls/container/docs/itemId', {'partitionKey': 'partitionKey'})
 request_charge = client.last_response_headers['x-ms-request-charge']
 
-response = client.ExecuteStoredProcedure('dbs/database/colls/container/sprocs/storedProcedureId', None, { 'partitionKey': 'partitionKey' })
+response = client.ExecuteStoredProcedure(
+    'dbs/database/colls/container/sprocs/storedProcedureId', None, {'partitionKey': 'partitionKey'})
 request_charge = client.last_response_headers['x-ms-request-charge']
 ```
 
@@ -167,15 +179,15 @@ RU 费用由名为 `getLastRequestStatistics` 的自定义[数据库命令](http
 
 1. [创建新的 Azure Cosmos 帐户](create-mongodb-dotnet.md#create-a-database-account)并在其中植入数据，或选择一个已包含数据的现有帐户。
 
-1. 转到“数据资源管理器”窗格，然后选择要处理的集合。 
+1. 转到“数据资源管理器”窗格，然后选择要处理的容器。
 
-1. 选择“新建查询”  。
+1. 选择“新建查询”。
 
-1. 输入有效的查询，然后选择“执行查询”  。
+1. 输入有效的查询，然后选择“执行查询”。
 
-1. 选择“查询统计信息”，以显示执行的请求的实际请求费用。 
+1. 选择“查询统计信息”，以显示执行的请求的实际请求费用。
 
-![Azure 门户中的 MongoDB 查询请求费用屏幕截图](./media/find-request-unit-charge/portal-mongodb-query.png)
+:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Azure 门户中的 MongoDB 查询请求费用屏幕截图":::
 
 ### <a name="use-the-mongodb-net-driver"></a>使用 MongoDB .NET 驱动程序
 
@@ -302,3 +314,4 @@ if (tableResult.RequestCharge.HasValue) // would be false when using Azure Stora
 * [全局缩放预配的吞吐量](scaling-throughput.md)
 * [在容器和数据库上预配吞吐量](set-throughput.md)
 * [为容器预配吞吐量](how-to-provision-container-throughput.md)
+* [使用 Azure Cosmos DB 中的指标进行监视和调试](use-metrics.md)

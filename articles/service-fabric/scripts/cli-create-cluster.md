@@ -1,30 +1,28 @@
 ---
 title: Azure CLI 脚本部署示例
-description: 使用 Azure CLI 在 Azure 中创建安全的 Service Fabric Linux 群集。
+description: 如何使用 Azure 命令行接口 (CLI) 在 Azure 中创建安全的 Service Fabric Linux 群集。
 services: service-fabric
 documentationcenter: ''
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: service-fabric
-ms.workload: multiple
-ms.devlang: na
 ms.topic: sample
 ms.date: 01/18/2018
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 3a50d6672833ab1b4986e38ca1ddf24a8c33c562
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: b454ab7396b8185e344944d7ff526414540032e2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664448"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258917"
 ---
 # <a name="create-a-secure-service-fabric-linux-cluster-in-azure"></a>在 Azure 中创建安全的 Service Fabric Linux 群集
 
-此命令创建一个自签名证书，将其添加到密钥保管库并在本地下载该证书。  新证书用于在群集部署时保护群集。  也可以使用现有证书而不是创建一个新证书。  不管怎样，证书的使用者名称都必须与用于访问 Service Fabric 群集的域匹配。 只有满足此匹配，才能为群集的 HTTPS 管理终结点和 Service Fabric Explorer 提供 SSL。 无法从 CA 获取 `.cloudapp.azure.com` 域的 SSL 证书。 必须获取群集的自定义域名。 从 CA 请求证书时，该证书的使用者名称必须与用于群集的自定义域名匹配。
+此命令创建一个自签名证书，将其添加到密钥保管库并在本地下载该证书。  新证书用于在群集部署时保护群集。  也可以使用现有证书而不是创建一个新证书。  不管怎样，证书的使用者名称都必须与用于访问 Service Fabric 群集的域匹配。 只有满足此匹配，才能为群集的 HTTPS 管理终结点和 Service Fabric Explorer 提供 TLS。 无法从 CA 获取 `.cloudapp.azure.com` 域的 TLS/SSL 证书。 必须获取群集的自定义域名。 从 CA 请求证书时，该证书的使用者名称必须与用于群集的自定义域名匹配。
 
 根据需要安装 [Azure CLI](/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
@@ -45,9 +43,9 @@ az group delete --name $ResourceGroupName
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
-| [az sf cluster create](https://docs.microsoft.com/cli/azure/sf/cluster?view=azure-cli-latest) | 新建 Service Fabric 群集。  |
+| [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) | 新建 Service Fabric 群集。  |
 
 ## <a name="next-steps"></a>后续步骤
 

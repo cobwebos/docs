@@ -1,42 +1,37 @@
 ---
 title: 快速入门：从知识库获取答案 - REST、Node.js - QnA Maker
-titlesuffix: Azure Cognitive Services
 description: 此基于 Node.js REST 的快速入门详细介绍如何以编程方式从知识库获取答案。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
-ms.topic: quickstart
-ms.date: 02/28/2019
-ms.author: diberry
-ms.openlocfilehash: 389d6ed369de513125a2bcd0d0de881f524dcd82
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.date: 02/08/2020
+ROBOTS: NOINDEX,NOFOLLOW
+ms.custom: RESTCURL2020FEB27
+ms.topic: how-to
+ms.openlocfilehash: 3003f37789634c13c2213b708f7ae963c97da873
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791543"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342776"
 ---
-# <a name="get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>使用 Node.js 从知识库获取问题的答案
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>快速入门：通过 node.js 获取知识库中问题的答案
 
-本快速入门详细介绍如何以编程方式从已发布的 QnA Maker 知识库获取答案。 知识库包含来自[数据源](../Concepts/data-sources-supported.md)的问题和答案，例如常见问题解答。 [问题](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)将发送到 QnA Maker 服务。 [响应](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties)包含最常见的预测答案。 
+本快速入门详细介绍如何以编程方式从已发布的 QnA Maker 知识库获取答案。 知识库包含来自[数据源](../Concepts/knowledge-base.md)的问题和答案，例如常见问题解答。 [问题](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)将发送到 QnA Maker 服务。 [响应](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties)包含最常见的预测答案。
+
+[参考文档](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime)  | [示例](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/get-answer/get-answer.js)
 
 ## <a name="prerequisites"></a>先决条件
 
 * [Node.js](https://nodejs.org/en/download/)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在适用于 QnA Maker 资源的 Azure 仪表板的“资源管理”下选择“密钥”。 
-* “发布”页设置。 如果没有已发布的知识库，请创建一个空的知识库，接着“设置”页上导入一个知识库，然后进行发布。 可以下载并使用[这个基本的知识库](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)。 
+* 您必须具有[QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在适用于 QnA Maker 资源的 Azure 仪表板的“资源管理”下选择“密钥”。********
+* “发布”页设置。**** 如果没有已发布的知识库，请创建一个空的知识库，接着“设置”页上导入一个知识库，然后进行发布。**** 可以下载并使用[这个基本的知识库](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)。
 
-    发布页设置包括 POST 路由值、Host 值和 EndpointKey 值。 
+    发布页设置包括 POST 路由值、Host 值和 EndpointKey 值。
 
     ![发布设置](../media/qnamaker-quickstart-get-answer/publish-settings.png)
 
-本快速入门的代码位于 [https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/get-answer) 存储库中。 
-
 ## <a name="create-a-nodejs-file"></a>创建 Node.js 文件
 
-打开 VSCode 并创建名为 `get-answer.js` 的新文件。 
+打开 VSCode 并创建名为 `get-answer.js` 的新文件。
 
 ## <a name="add-the-required-dependencies"></a>添加必需的依赖项
 
@@ -46,7 +41,7 @@ ms.locfileid: "65791543"
 
 ## <a name="add-the-required-constants"></a>添加必需的常量
 
-接下来，添加必需的常量来访问 QnA Maker。 发布知识库后，这些值会出现在“发布”页上。 
+接下来，添加必需的常量来访问 QnA Maker。 发布知识库后，这些值会出现在“发布”页上。****
 
 [!code-nodejs[Add the required constants](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/get-answer/get-answer.js?range=6-22 "Add the required constants")]
 
@@ -56,7 +51,7 @@ ms.locfileid: "65791543"
 
 [!code-nodejs[Add a POST request to send question to knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/get-answer/get-answer.js?range=24-49 "Add a POST request to send question to knowledge base")]
 
-`Authorization` 标头的值包括字符串 `EndpointKey`。 
+`Authorization` 标头的值包括字符串 `EndpointKey`。
 
 ## <a name="install-the-dependencies"></a>安装依赖项
 
@@ -80,7 +75,7 @@ node get-answer.js
 
 详细了解[请求](../how-to/metadata-generateanswer-usage.md#generateanswer-request)和[响应](../how-to/metadata-generateanswer-usage.md#generateanswer-response)。
 
-[!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+[!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

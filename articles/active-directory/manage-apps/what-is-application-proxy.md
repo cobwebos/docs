@@ -2,22 +2,22 @@
 title: 使用 Azure AD 应用程序代理发布本地应用
 description: 了解为何要在外部使用应用程序代理向远程用户发布本地 Web 应用程序。 了解应用程序代理体系结构、连接器、身份验证方法和安全优势。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: overview
 ms.workload: identity
 ms.date: 05/31/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66403a18be8337939d457c061b07de948c3e34e8
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: a5c9ba026819a542ccd0a7ae41316c0f1d325004
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730996"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976500"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>使用 Azure AD 应用程序代理为远程用户发布本地应用
 
@@ -81,14 +81,14 @@ Azure AD 使用应用程序代理来跟踪需要访问本地发布的和云中�
 
 ![Azure AD 应用程序代理体系结构](media/what-is-application-proxy/azure-ad-application-proxy-architecture.png)
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>身份验证
 
 可通过多种方法配置应用程序的单一登录，所选的方法取决于应用程序使用的身份验证。 应用程序代理支持以下类型的应用程序：
 
 * Web 应用程序
 * 想要公开给不同设备上丰富应用程序的 Web API
 * 托管在远程桌面网关之后的应用程序
-* 与 Active Directory 身份验证库 (ADAL) 集成的富客户端应用
+* 与 [Microsoft 身份验证库 (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview) 集成的丰富客户端应用
 
 应用代理适用于使用以下本机身份验证协议的应用：
 
@@ -110,7 +110,7 @@ Azure AD 使用应用程序代理来跟踪需要访问本地发布的和云中�
 * **条件访问**。 在与网络建立连接之前应用更丰富的策略控制。 使用条件访问可以针对允许哪些流量访问后端应用程序来定义限制。 基于位置、身份验证强度和用户风险配置文件，创建限制登录的策略。 随着条件访问的不断演进，会添加更多的控制措施来提高安全性，例如与 Microsoft Cloud App Security (MCAS) 的集成。 借助 MCAS 集成可为本地应用程序配置[实时监视](application-proxy-integrate-with-microsoft-cloud-application-security.md)，这样就可以利用条件访问基于条件访问策略来实时监视和控制会话。
 * **流量终止**。 与后端服务器重建会话时，发往后端应用程序的所有流量将在云中的应用程序代理服务上终止。 此连接策略意味着不会公开后端服务器来定向 HTTP 流量。 由于防火墙未受到攻击，可以更好地防范这些流量受到有针对性的 DoS（拒绝服务）攻击。
 * **所有访问都是出站的**。 应用程序代理连接器仅使用通过端口 80 和 443 与云中应用程序代理服务建立的出站连接。 由于没有入站连接，因此不需要为传入的连接或外围网络中的组件打开防火墙端口。 所有连接都是通过安全通道建立的出站连接。
-* **基于安全分析和机器学习 (ML) 的智能**。 应用程序代理是 Azure Active Directory 的一部分，因此它可以利用 [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview)（需要 [Premium P2 许可](https://azure.microsoft.com/pricing/details/active-directory/)）。 Azure AD Identity Protection 将机器学习安全智能与来自 Microsoft [反数字犯罪部门](https://news.microsoft.com/stories/cybercrime/index.html)和 [Microsoft 安全响应中心](https://www.microsoft.com/msrc)的数据馈送结合起来，以主动识别遭到入侵的帐户。 Identity Protection 针对高风险登录提供实时防护。它考虑到多种因素，包括：从受感染的设备进行访问、通过匿名化网络进行访问，或者从异常位置和不太可能的位置进行访问。这样可以增强会话的风险配置文件。 此风险配置文件用于实时保护。 其中的许多报告与事件已通过某个 API 提供，便于与 SIEM 系统集成。
+* **基于安全分析和机器学习 (ML) 的智能**。 应用程序代理是 Azure Active Directory 的一部分，因此它可以利用 [Azure AD 标识保护](https://docs.microsoft.com/azure/active-directory/identity-protection/overview)（需要 [Premium P2 许可](https://azure.microsoft.com/pricing/details/active-directory/)）。 Azure AD 标识保护将机器学习安全智能与来自 Microsoft [反数字犯罪部门](https://news.microsoft.com/stories/cybercrime/index.html)和 [Microsoft 安全响应中心](https://www.microsoft.com/msrc)的数据馈送结合起来，以主动识别遭到入侵的帐户。 “标识保护”针对高风险登录提供实时防护。它考虑到多种因素，包括：从受感染的设备进行访问、通过匿名化网络进行访问，或者从异常位置和不太可能的位置进行访问。这样可以增强会话的风险配置文件。 此风险配置文件用于实时保护。 其中的许多报告与事件已通过某个 API 提供，便于与 SIEM 系统集成。
 
 * **以服务的形式进行远程访问**。 无需担心要维护和修补本地服务器即可启用远程访问。 应用程序代理是 Microsoft 拥有的一项 Internet 级服务，因此，用户始终可以获得最新的安全修补程序和升级。 未修补的软件仍会遭受大量攻击。 根据美国国土安全局的信息，[高达 85% 的有针对性攻击都是可预防的](https://www.us-cert.gov/ncas/alerts/TA15-119A)。 使用此服务模型就不再需要承受管理边缘服务器的繁重负担，也不需要费力对其进行修补。
 
@@ -132,20 +132,20 @@ Azure AD 使用应用程序代理来跟踪需要访问本地发布的和云中�
 2. 成功登录后，Azure AD 向用户的客户端设备发送令牌。
 3. 客户端将令牌发送到应用程序代理服务，该服务检索令牌中的用户主体名称 (UPN) 和安全主体名称 (SPN)。
 4. 应用程序代理转发请求，应用程序代理[连接器](application-proxy-connectors.md)拾取请求。
-5. 连接器代表用户执行所需的任何其他身份验证（可选操作，是否执行将取决于身份验证方法），请求应用程序服务器的内部终结点，并将请求发送到本地应用程序。 
+5. 连接器代表用户执行所需的任何其他身份验证（可选操作，是否执行将取决于身份验证方法），请求应用程序服务器的内部终结点，并将请求发送到本地应用程序。
 6. 通过连接器将应用程序服务器返回的响应发送到应用程序代理服务。
 7. 响应将从应用程序代理服务发送到用户。
 
-|组件 |**说明**|
+|组件|**说明**|
 |:-|:-|
-|终结点|终结点是 URL 或 [最终用户门户](end-user-experiences.md)。 用户可通过访问外部 URL 访问位于你网络外部的应用程序。 网络内的用户可以通过 URL 或最终用户门户访问应用程序。 当用户转到其中一个终结点时，将在 Azure AD 中进行身份验证，并通过连接器路由到本地应用程序。|
+|端点|终结点是 URL 或 [最终用户门户](end-user-experiences.md)。 用户可通过访问外部 URL 访问位于你网络外部的应用程序。 网络内的用户可以通过 URL 或最终用户门户访问应用程序。 当用户转到其中一个终结点时，将在 Azure AD 中进行身份验证，并通过连接器路由到本地应用程序。|
 |Azure AD|Azure AD 使用存储在云端的租户目录执行身份验证。|
 |应用程序代理服务|应用程序代理服务作为 Azure AD 的一部分在云中运行。 它将登录令牌从用户传递到应用程序代理连接器。 应用程序代理在收到请求时转发任何可访问的标头，并根据其协议将标头设置为客户端 IP 地址。 如果传入代理的请求已有该标头，则将客户端 IP 地址添加到逗号分隔列表的末尾，该地址为标头的值。|
 |应用程序代理连接器|连接器是可在网络内的 Windows Server 上运行的轻型代理。 连接器管理云端应用程序代理服务与本地应用程序之间的通信。 它只使用出站连接，因此不需要开放任何入站端口或在 DMZ 中放置任何对象。 连接器是无状态的，可根据需要从云中提取信息。 有关连接器的详细信息（例如，它们如何均衡负载和执行身份验证），请参阅 [了解 Azure AD 应用程序代理连接器](application-proxy-connectors.md)。|
 |Active Directory (AD)|Active Directory 在本地运行，对域帐户执行身份验证。 配置单一登录后，连接器会与 AD 通信以执行所需的任何其他身份验证。|
 |本地应用程序|最后，用户便可以访问本地应用程序。|
 
-Azure AD 应用程序代理包括基于云的应用程序代理服务和本地连接器。 该连接器侦听来自应用程序代理服务的请求并处理与内部应用程序的连接。 必须注意，所有通信通过 SSL 发生，始终从连接器发起，目标为应用程序代理服务。 也就是说，通信仅限出站。 连接器在执行所有调用时，都会使用客户端证书向应用程序代理服务进行身份验证。 只有在执行初始设置步骤时，连接安全性才有所不同，因为客户端证书是在此步骤中建立的。 有关更多详细信息，请参阅应用程序代理[揭秘](application-proxy-security.md#under-the-hood)。
+Azure AD 应用程序代理包括基于云的应用程序代理服务和本地连接器。 该连接器侦听来自应用程序代理服务的请求并处理与内部应用程序的连接。 必须注意，所有通信均通过 TLS 进行，始终从连接器发起，目标为应用程序代理服务。 也就是说，通信仅限出站。 连接器在执行所有调用时，都会使用客户端证书向应用程序代理服务进行身份验证。 只有在执行初始设置步骤时，连接安全性才有所不同，因为客户端证书是在此步骤中建立的。 有关更多详细信息，请参阅应用程序代理[揭秘](application-proxy-security.md#under-the-hood)。
 
 ### <a name="application-proxy-connectors"></a>应用程序代理连接器
 
@@ -180,7 +180,7 @@ Azure AD 应用程序代理包括基于云的应用程序代理服务和本地�
 
 ## <a name="other-use-cases"></a>其他用例
 
-到目前为止，本文只是重点介绍了如何使用应用程序代理在外部发布本地应用，同时允许对所有云应用和本地应用进行单一登录。 但是，应用代理还有其他值得探讨的用例。 这些权限包括：
+到目前为止，本文只是重点介绍了如何使用应用程序代理在外部发布本地应用，同时允许对所有云应用和本地应用进行单一登录。 但是，应用代理还有其他值得探讨的用例。 其中包括：
 
 * **安全发布 REST API**。 在本地运行或者在云中的虚拟机上托管业务逻辑或 API 时，应用程序代理可提供一个公共终结点用于进行 API 访问。 使用 API 终结点访问可以控制身份验证和授权，而无需使用传入端口。 对于使用 Intune 的桌面、iOS、MAC 和 Android 设备，应用程序代理可通过多重身份验证和基于设备的条件访问等 Azure AD Premium 功能提供更高的安全性。 有关详细信息，请参阅[如何让本机客户端应用程序与代理应用程序交互](application-proxy-configure-native-client-application.md)和[结合 Azure Active Directory 和 API 管理使用 OAuth 2.0 保护 API](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad)。
 * **远程桌面服务** **(RDS)** 。 标准的 RDS 部署需要开放入站连接。 但是，[使用应用程序代理的 RDS 部署](application-proxy-integrate-with-remote-desktop-services.md)会从运行连接器服务的服务器提供永久性的出站连接。 这样，你便可以通过远程桌面服务发布本地应用程序，为最终用户提供更多的应用程序。 此外，可以使用有限的一组双重验证方法和 RDS 的条件访问控制减小部署的受攻击面。

@@ -1,21 +1,15 @@
 ---
 title: Azure Functions SendGrid 绑定
 description: Azure Functions SendGrid 绑定参考。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
-ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 663283c4dff16194dea78afbf5dd393f1fa833b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 9ed2b81c12c698822b9542bb6903189c865b572b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61437918"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84697351"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 绑定
 
@@ -29,7 +23,7 @@ ms.locfileid: "61437918"
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x"></a>包 - Functions 2.x
+## <a name="packages---functions-2x-and-higher"></a>包 - Functions 2.x 及更高版本
 
 [Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet 包 3.x 版本中提供了 SendGrid 绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) GitHub 存储库中提供了此包的源代码。
 
@@ -37,20 +31,17 @@ ms.locfileid: "61437918"
 
 ## <a name="example"></a>示例
 
-参阅语言特定的示例：
-
-* [C#](#c-example)
-* [C# 脚本 (.csx)](#c-script-example)
-* [JavaScript](#javascript-example)
-* [Java](#java-example)
-
-### <a name="c-example"></a>C# 示例
+# <a name="c"></a>[C#](#tab/csharp)
 
 以下示例演示使用服务总线队列触发器和 SendGrid 输出绑定的 [C# 函数](functions-dotnet-class-library.md)。
 
-#### <a name="synchronous-c-example"></a>同步 C# 示例：
+### <a name="synchronous"></a>同步
 
 ```cs
+using SendGrid.Helpers.Mail;
+
+...
+
 [FunctionName("SendEmail")]
 public static void Run(
     [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] Message email,
@@ -73,9 +64,14 @@ public class OutgoingEmail
     public string Body { get; set; }
 }
 ```
-#### <a name="asynchronous-c-example"></a>异步 C# 示例：
+
+### <a name="asynchronous"></a>异步
 
 ```cs
+using SendGrid.Helpers.Mail;
+
+...
+
 [FunctionName("SendEmail")]
 public static async void Run(
  [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] Message email,
@@ -103,11 +99,11 @@ public class OutgoingEmail
 
 如果在应用设置中指定了名为“AzureWebJobsSendGridApiKey”的 API 密钥，则可以不设置特性的 `ApiKey` 属性。
 
-### <a name="c-script-example"></a>C# 脚本示例
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 以下示例演示 *function.json* 文件中的一个 SendGrid 输出绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。
 
-下面是 function.json 文件中的绑定数据：
+下面是 function.json  文件中的绑定数据：
 
 ```json 
 {
@@ -162,38 +158,11 @@ public class Message
 }
 ```
 
-### <a name="java-example"></a>Java 示例
-
-以下示例使用 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中的 `@SendGridOutput` 注释来发送使用 SendGrid 输出绑定的电子邮件。
-
-```java
-@FunctionName("SendEmail")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request,
-            @SendGridOutput(
-                name = "email", dataType = "String", apiKey = "SendGridConnection", to = "test@example.com", from = "test@example.com",
-                subject= "Sending with SendGrid", text = "Hello from Azure Functions"
-                ) OutputBinding<String> email
-            )
-    {
-        String name = request.getBody().orElse("World");
-
-        final String emailBody = "{\"personalizations\":" +
-                                    "[{\"to\":[{\"email\":\"test@example.com\"}]," +
-                                    "\"subject\":\"Sending with SendGrid\"}]," +
-                                    "\"from\":{\"email\":\"test@example.com\"}," +
-                                    "\"content\":[{\"type\":\"text/plain\",\"value\": \"Hello" + name + "\"}]}";
-
-        email.setValue(emailBody);
-        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
-    }
-```
-
-### <a name="javascript-example"></a>JavaScript 示例
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 以下示例演示 *function.json* 文件中的一个 SendGrid 输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。
 
-下面是 function.json 文件中的绑定数据：
+下面是 function.json  文件中的绑定数据：
 
 ```json 
 {
@@ -216,10 +185,10 @@ public class Message
 JavaScript 代码如下所示：
 
 ```javascript
-module.exports = function (context, input) {    
+module.exports = function (context, input) {
     var message = {
          "personalizations": [ { "to": [ { "email": "sample@sample.com" } ] } ],
-        from: { email: "sender@contoso.com" },        
+        from: { email: "sender@contoso.com" },
         subject: "Azure news",
         content: [{
             type: 'text/plain',
@@ -231,7 +200,120 @@ module.exports = function (context, input) {
 };
 ```
 
-## <a name="attributes"></a>属性
+# <a name="python"></a>[Python](#tab/python)
+
+下面的示例演示了一个使用 SendGrid 绑定发送电子邮件的 HTTP 触发的函数。 可以在绑定配置中提供默认值。 例如，中的 "*发件*人" 电子邮件地址在*function.js上*配置。 
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "type": "httpTrigger",
+      "authLevel": "function",
+      "direction": "in",
+      "name": "req",
+      "methods": ["get", "post"]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    },
+    {
+      "type": "sendGrid",
+      "name": "sendGridMessage",
+      "direction": "out",
+      "apiKey": "SendGrid_API_Key",
+      "from": "sender@contoso.com"
+    }
+  ]
+}
+```
+
+以下函数说明了如何为可选属性提供自定义值。
+
+```python
+import logging
+import json
+import azure.functions as func
+
+def main(req: func.HttpRequest, sendGridMessage: func.Out[str]) -> func.HttpResponse:
+
+    value = "Sent from Azure Functions"
+
+    message = {
+        "personalizations": [ {
+          "to": [{
+            "email": "user@contoso.com"
+            }]}],
+        "subject": "Azure Functions email with SendGrid",
+        "content": [{
+            "type": "text/plain",
+            "value": value }]}
+
+    sendGridMessage.set(json.dumps(message))
+
+    return func.HttpResponse(f"Sent")
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+以下示例使用 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中的 `@SendGridOutput` 注释来发送使用 SendGrid 输出绑定的电子邮件。
+
+```java
+package com.function;
+
+import java.util.*;
+import com.microsoft.azure.functions.annotation.*;
+import com.microsoft.azure.functions.*;
+
+public class HttpTriggerSendGrid {
+
+    @FunctionName("HttpTriggerSendGrid")
+    public HttpResponseMessage run(
+
+        @HttpTrigger(
+            name = "req",
+            methods = { HttpMethod.GET, HttpMethod.POST },
+            authLevel = AuthorizationLevel.FUNCTION)
+                HttpRequestMessage<Optional<String>> request,
+
+        @SendGridOutput(
+            name = "message",
+            dataType = "String",
+            apiKey = "SendGrid_API_Key",
+            to = "user@contoso.com",
+            from = "sender@contoso.com",
+            subject = "Azure Functions email with SendGrid",
+            text = "Sent from Azure Functions")
+                OutputBinding<String> message,
+
+        final ExecutionContext context) {
+
+        final String toAddress = "user@contoso.com";
+        final String value = "Sent from Azure Functions";
+
+        StringBuilder builder = new StringBuilder()
+            .append("{")
+            .append("\"personalizations\": [{ \"to\": [{ \"email\": \"%s\"}]}],")
+            .append("\"content\": [{\"type\": \"text/plain\", \"value\": \"%s\"}]")
+            .append("}");
+
+        final String body = String.format(builder.toString(), toAddress, value);
+
+        message.setValue(body);
+
+        return request.createResponseBuilder(HttpStatus.OK).body("Sent").build();
+    }
+}
+```
+
+---
+
+## <a name="attributes-and-annotations"></a>特性和注释
+
+# <a name="c"></a>[C#](#tab/csharp)
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) 特性。
 
@@ -247,22 +329,42 @@ public static void Run(
 }
 ```
 
-有关完整示例，请参阅 [C# 示例](#c-example)。
+有关完整示例，请参阅[c # 示例](#example)。
+
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
+
+C# 脚本不支持特性。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支持特性。
+
+# <a name="python"></a>[Python](#tab/python)
+
+Python 不支持特性。
+
+# <a name="java"></a>[Java](#tab/java)
+
+使用 [SendGridOutput](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/SendGridOutput.java) 注释，可以通过提供配置值以声明方式配置 SendGrid 绑定。 有关更多详细信息，请参阅[示例](#example)和[配置](#configuration)部分。
+
+---
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 function.json 文件和 `SendGrid` 特性中设置的绑定配置属性。
+下表列出了在 function.json 文件和 `SendGrid` 特性/注释中可用的绑定配置属性**。
 
-|function.json 属性 | Attribute 属性 |说明|
-|---------|---------|----------------------|
-|**type**|| 必需 - 必须设置为 `sendGrid`。|
-|**direction**|| 必需 - 必须设置为 `out`。|
-|**name**|| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 ```$return```。 |
-|**apiKey**|**ApiKey**| 包含 API 密钥的应用设置的名称。 如果未设置，默认应用设置名称为“AzureWebJobsSendGridApiKey”。|
-|**to**|**收件人**| 收件人的电子邮件地址。 |
-|**from**|**From**| 发件人的电子邮件地址。 |
-|**subject**|**主题**| 电子邮件主题。 |
-|**text**|**Text**| 电子邮件内容。 |
+| 属性*function.js* | 特性/注释属性 | 描述 | 可选 |
+|--------------------------|-------------------------------|-------------|----------|
+| 类型 |不适用| 必须设置为 `sendGrid`。| 否 |
+| direction |不适用| 必须设置为 `out`。| 否 |
+| name |不适用| 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 `$return`。 | 否 |
+| apiKey | ApiKey | 包含 API 密钥的应用设置的名称。 如果未设置，则默认应用设置名称为*AzureWebJobsSendGridApiKey*。| 否 |
+| to| 功能 | 收件人的电子邮件地址。 | 是 |
+| from| From | 发件人的电子邮件地址。 |  是 |
+| subject| 使用者 | 电子邮件主题。 | 是 |
+| text| Text | 电子邮件内容。 | 是 |
+
+在绑定中可能会定义可选属性的默认值，并以编程方式添加或重写这些值。
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -270,7 +372,7 @@ public static void Run(
 
 ## <a name="hostjson-settings"></a>host.json 设置
 
-本部分介绍版本 2.x 中可用于此绑定的全局配置设置。 下面的示例 host.json 文件仅包含此绑定的 2.x 版本设置。 有关版本 2.x 中的全局配置设置的详细信息，请参阅 [Azure Functions 版本 2.x 的 host.json 参考](functions-host-json.md)。
+本部分介绍版本 2.x 及更高版本中可用于此绑定的全局配置设置。 下面的示例 host.json 文件仅包含此绑定的 2.x 版及更高版本设置。 若要详细了解 2.x 版及更高版本中的全局配置设置，请参阅 [Azure Functions 的 host.json 参考](functions-host-json.md)。
 
 > [!NOTE]
 > 有关 Functions 1.x 中 host.json 的参考，请参阅 [Azure Functions 1.x 的 host.json 参考](functions-host-json-v1.md)。
@@ -286,7 +388,7 @@ public static void Run(
 }
 ```  
 
-|属性  |默认 | 描述 |
+|属性  |默认 | 说明 |
 |---------|---------|---------| 
 |from|不适用|所有函数的发件人电子邮件地址。| 
 

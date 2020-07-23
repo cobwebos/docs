@@ -1,27 +1,25 @@
 ---
-title: Azure PowerShell 脚本示例 - WordPress | Microsoft 文档
+title: Azure PowerShell 脚本示例 - WordPress
 description: Azure PowerShell 脚本示例 - WordPress
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e4dd70b1d2de54d19305c89dd6b93a5a394cbdf7
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 78a7d284df2b1cf30965f1aadf43b4461e6b8de7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981173"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459655"
 ---
 # <a name="create-a-wordpress-vm-with-powershell"></a>使用 PowerShell 创建 WordPress VM
 
@@ -31,7 +29,7 @@ ms.locfileid: "55981173"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+ 
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -49,7 +47,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 此脚本使用以下命令创建部署。 表中的每一项均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | 创建子网配置。 在虚拟网络创建过程中将使用此配置。 |

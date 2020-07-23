@@ -1,8 +1,9 @@
 ---
-title: 快速入门 - 使用 Azure PowerShell 创建流量管理器配置文件以实现应用程序的高可用性
+title: 快速入门：创建配置文件以实现应用程序的高可用性 - Azure PowerShell - Azure 流量管理器
 description: 本快速入门文章介绍如何创建流量管理器配置文件，以生成高度可用的 Web 应用程序。
 services: traffic-manager
-author: KumudD
+author: rohinkoul
+mnager: twooley
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
 ms.devlang: na
@@ -10,19 +11,19 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2019
-ms.author: kumud
-ms.openlocfilehash: f6ed2e03352a335022d99cf703240552fa34e732
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.author: rohink
+ms.openlocfilehash: 0ab7392b4fa6e248d51392706fedaed156344a99
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729017"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "76934818"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建流量管理器配置文件以实现 Web 应用程序的高可用性
 
 本快速入门介绍如何创建流量管理器配置文件，以便实现 Web 应用程序的高度可用性。
 
-在本快速入门中，我们将创建 Web 应用程序的两个实例。 每个实例在不同的 Azure 区域运行。 需根据[终结点优先级](traffic-manager-routing-methods.md#priority)创建流量管理器配置文件。 此配置文件将用户流量定向到运行 Web 应用程序的主站点。 流量管理器持续监视 Web 应用程序。 如果主站点不可用，它会提供目标为备份站点的自动故障转移。
+在本快速入门中，我们将创建 Web 应用程序的两个实例。 每个实例在不同的 Azure 区域运行。 需根据[终结点优先级](traffic-manager-routing-methods.md#priority-traffic-routing-method)创建流量管理器配置文件。 此配置文件将用户流量定向到运行 Web 应用程序的主站点。 流量管理器持续监视 Web 应用程序。 如果主站点不可用，它会提供目标为备份站点的自动故障转移。
 
 如果还没有 Azure 订阅，请现在就创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

@@ -1,50 +1,74 @@
 ---
-title: 使用 Azure Maps 显示交通信息 | Microsoft Docs
-description: 如何在 Javascript 地图上显示交通数据
-author: jingjing-z
-ms.author: jinzh
-ms.date: 11/10/2018
+title: 在地图上显示交通信息 | Microsoft Azure Maps
+description: 在本文中，你将学习如何使用 Microsoft Azure Maps Web SDK 在地图上显示交通数据。
+author: Philmea
+ms.author: philmea
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 7cd7c0dbb375dad78927183dbaffe574a0dc10c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 9c17c3cc22d478d81ed3c2b2ae9f61c173aad6cd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60768829"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123915"
 ---
 # <a name="show-traffic-on-the-map"></a>在地图上显示交通信息
 
-本文演示如何在地图上显示交通和事件信息。
+Azure Maps 中提供了两种类型的交通数据：
 
-## <a name="understand-the-code"></a>了解代码
+- 事件数据 - 由基于点和线的数据组成，针对诸如施工、道路封闭和事故等事项。
+- 流量数据 - 提供有关道路交通流量的指标。 通常，交通流量流数据用于为道路着色。 这些颜色基于相对于速度限制或其他指标而言，多大的交通会减慢流量。 Azure Maps 中的交通流量数据具有三个不同的度量指标：
+    - `relative` - 相对于道路的自由流量速度。
+    - `absolute` - 是道路中所有车辆的绝对速度。
+    - `relative-delay` - 显示比平均预期延迟更慢的区域。
 
-<iframe height='456' scrolling='no' title='在地图上显示交通信息' src='//codepen.io/azuremaps/embed/WMLRPw/?height=456&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>Show traffic on a map</a>（在地图上显示交通信息）。
+下面的代码演示如何在地图上显示交通数据。
+
+```javascript
+//Show traffic on the map using the traffic options.
+map.setTraffic({
+    incidents: true,
+    flow: 'relative'
+});
+```
+
+下面是上述功能的完整运行代码示例。
+
+<br/>
+
+<iframe height='500' scrolling='no' title='在地图上显示交通信息' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>Show traffic on a map</a>（在地图上显示交通信息）。
 </iframe>
 
-在上面的代码中，第一个代码块构造 Map 对象。 有关说明，可以参阅[创建地图](map-create.md)。
+## <a name="traffic-overlay-options"></a>交通状况叠加选项
 
-第二个代码块使用地图的[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)函数中的 [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 函数在地图上呈现交通流量和事件。
+以下工具可让你在不同的交通状况叠加设置之间进行切换，以查看呈现如何变化。 
+
+<br/>
+
+<iframe height="700" style="width: 100%;" scrolling="no" title="交通状况叠加选项" src="//codepen.io/azuremaps/embed/RwbPqRY/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的触笔<a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>交通状况叠加选项</a>。
+</iframe>
 
 ## <a name="next-steps"></a>后续步骤
 
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
-
-有关完整代码示例，请参阅以下文章：
+> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [代码示例页](https://aka.ms/AzureMapsSamples)
+> [TrafficOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.trafficoptions)
 
 增强用户体验：
 
 > [!div class="nextstepaction"]
-> [地图与鼠标事件交互](./map-events.md)
+> [地图与鼠标事件交互](map-events.md)
 
 > [!div class="nextstepaction"]
-> [生成可访问的地图](./map-accessibility.md)
+> [生成可访问的地图](map-accessibility.md)
+
+> [!div class="nextstepaction"]
+> [代码示例页](https://aka.ms/AzureMapsSamples)

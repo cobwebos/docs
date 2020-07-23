@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Database for PostgreSQL 设计多租户数据库 – 超大规模 (Citus)（预览）教程
-description: 本教程演示如何创建、填充和查询 Azure Database for PostgreSQL 超大规模 (Citus)（预览版）上的分布式表。
+title: 教程：设计多租户数据库 - 超大规模 (Citus) - Azure Database for PostgreSQL
+description: 本教程介绍如何在 Azure Database for PostgreSQL 超大规模 (Citus) 中创建、填充和查询分布式表。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -9,21 +9,21 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: 73d7aebf3dbff59320e0ef92cbd54811503c71b4
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 17ac29de243f4abfff1cfc83fc6424799978bf0e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792275"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74978145"
 ---
-# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>教程：通过使用 Azure Database for PostgreSQL - 超大规模 (Citus)（预览版）设计多租户数据库
+# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>教程：通过使用 Azure Database for PostgreSQL - 超大规模 (Citus)设计多租户数据库
 
-在本教程中，你使用 Azure Database for PostgreSQL - 超大规模 (Citus)（预览版）了解如何：
+在本教程中，你将了解如何使用 Azure Database for PostgreSQL - 超大规模 (Citus) 来执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Hyperscale (Citus) 服务器组
 > * 使用 psql 实用工具创建架构
-> * 节点中的分片表
+> * 在节点之间将表分片
 > * 引入示例数据
 > * 查询租户数据
 > * 租户之间共享数据
@@ -35,7 +35,7 @@ ms.locfileid: "65792275"
 
 ## <a name="use-psql-utility-to-create-a-schema"></a>使用 psql 实用工具创建架构
 
-使用 psql 连接到 Azure Database for PostgreSQL - 超大规模 (Citus)（预览版）后，可以完成一些基本任务。 本教程将指导你创建 Web 应用，该应用允许广告厂商跟踪他们的广告系列。
+使用 psql 连接到 Azure Database for PostgreSQL - 超大规模 (Citus)后，可以完成一些基本任务。 本教程将指导你创建 Web 应用，该应用允许广告厂商跟踪他们的广告系列。
 
 多家公司可以使用该应用，让我们创建一个表来记录这些公司，创建另一个表来记录他们的广告系列。 在 psql 控制台中，运行这些命令：
 
@@ -126,11 +126,11 @@ CREATE TABLE impressions (
 
 多租户应用程序仅可以对每个租户强制实施唯一性，因此所有主键和外键包含公司 ID。
 
-## <a name="shard-tables-across-nodes"></a>节点中的分片表
+## <a name="shard-tables-across-nodes"></a>在节点之间将表分片
 
 超大规模部署基于用户指定的列的值存储不同节点上的表行。 此“分布列”标记哪个租户拥有哪些行。
 
-让我们将分布列设置为 company\_id，即租户标识符。 在 Psql 中，运行这些函数：
+让我们将分布列设置为 company\_id，即租户标识符。 在 psql 中运行以下函数：
 
 ```sql
 SELECT create_distributed_table('companies',   'id');
@@ -153,6 +153,8 @@ done
 返回到 psql 内部，大容量加载数据。 请务必在下载数据文件的目录中运行 psql。
 
 ```sql
+SET CLIENT_ENCODING TO 'utf8';
+
 \copy companies from 'companies.csv' with csv
 \copy campaigns from 'campaigns.csv' with csv
 \copy ads from 'ads.csv' with csv
@@ -269,8 +271,8 @@ SELECT id
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你学习了如何预配 Hyperscale (Citus) 服务器组。 使用 psql 连接它，创建架构和分布式数据。 你已了解如何在租户中和租户之间查询数据，以及如何自定义每租户架构。
+在本教程中，你学习了如何预配 Hyperscale (Citus) 服务器组。 你已使用 psql 连接到该组，创建了架构并分布了数据。 你已了解如何在租户中和租户之间查询数据，以及如何自定义每租户架构。
 
-接下来，了解有关超大规模的概念。
+接下来，请了解有关超大规模的概念。
 > [!div class="nextstepaction"]
 > [超大规模节点类型](https://aka.ms/hyperscale-concepts)

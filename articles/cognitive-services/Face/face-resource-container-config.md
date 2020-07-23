@@ -1,41 +1,41 @@
 ---
-title: 配置容器
-titlesuffix: Face - Azure Cognitive Services
-description: 容器配置设置。
+title: 配置容器-面部
+titleSuffix: Azure Cognitive Services
+description: 使用  命令参数配置人脸`docker run`容器运行时环境。 同时提供了必需的和可选的设置。
 services: cognitive-services
-author: diberry
+author: aahill
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/16/2019
-ms.author: diberry
-ms.openlocfilehash: 4152cf90d9de2eda15a798fbf6b5b4aa4f5646f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 2f608843e27b79d02697df8e2a7f2aba6695e10a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815407"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80878419"
 ---
 # <a name="configure-face-docker-containers"></a>配置人脸 Docker 容器
 
-使用 `docker run` 命令参数配置人脸容器运行时环境。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。 
+使用 `docker run` 命令参数配置人脸**** 容器运行时环境。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。 
 
 ## <a name="configuration-settings"></a>配置设置
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> [`ApiKey`](#apikey-configuration-setting)、[`Billing`](#billing-configuration-setting) 和 [`Eula`](#eula-setting) 设置一起使用。必须为所有三个设置提供有效值，否则容器将无法启动。 有关使用这些配置设置实例化容器的详细信息，请参阅[计费](face-how-to-install-containers.md#billing)。
+> [`ApiKey`](#apikey-configuration-setting)、 [`Billing`](#billing-configuration-setting)和[`Eula`](#eula-setting)设置一起使用，必须为所有三个值提供有效值;否则，你的容器将无法启动。 有关使用这些配置设置实例化容器的详细信息，请参阅[计费](face-how-to-install-containers.md#billing)。
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
-`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定一个值，该值必须为有效的密钥_认知服务_为指定的资源[ `Billing` ](#billing-configuration-setting)配置设置。
+`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定值，且此值必须是为 [`Billing`](#billing-configuration-setting) 配置设置指定的“认知服务”__ 资源的有效密钥。
 
 可以在以下位置找到此设置：
 
-* Azure 门户：**认知服务**资源管理下**密钥**
+* Azure 门户：**认知服务**资源管理，在 "**密钥**" 下
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 设置
 
@@ -43,17 +43,17 @@ ms.locfileid: "60815407"
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-`Billing`设置指定的终结点 URI 的_认知服务_使用在 Azure 上的资源要计数的容器的计费信息。 必须指定此配置设置，一个值，该值必须是有效的终结点 URI 对于_认知服务_在 Azure 上的资源。 容器约每 10 到 15 分钟报告一次使用情况。
+`Billing` 设置指定 Azure 上用于计量容器帐单信息的“认知服务”__ 资源的终结点 URI。 您必须为此配置设置指定一个值，并且该值必须是 Azure 上_认知服务_资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
 
 可以在以下位置找到此设置：
 
-* Azure 门户：**认知服务**概述，标记为 `Endpoint`
+* Azure 门户：**认知服务**概述，已标记`Endpoint`
 
-请记住添加_人脸_路由到终结点 URI，该示例中所示。 
+请记得将人_脸_路由添加到终结点 URI，如示例中所示。 
 
-|需要| 名称 | 数据类型 | 描述 |
+|必选| “属性” | 数据类型 | 说明 |
 |--|------|-----------|-------------|
-|是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0` |
+|是| `Billing` | 字符串 | 计费终结点 URI。 有关获取计费 URI 的详细信息，请参阅[收集所需的参数](face-how-to-install-containers.md#gathering-required-parameters)。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](../cognitive-services-custom-subdomains.md)。 |
 
 <!-- specific to face only -->
 
@@ -61,9 +61,9 @@ ms.locfileid: "60815407"
 
 `CloudAI` 部分中的配置设置提供容器特有的容器特定选项。 `CloudAI` 部分中的人脸容器支持以下设置和对象
 
-| 名称 | 数据类型 | 描述 |
+| “属性” | 数据类型 | 说明 |
 |------|-----------|-------------|
-| `Storage` | Object | 人脸容器使用的存储方案。 有关 `Storage` 对象的存储方案和关联设置的详细信息，请参阅[存储方案设置](#storage-scenario-settings) |
+| `Storage` | 对象 | 人脸容器使用的存储方案。 有关 `Storage` 对象的存储方案和关联设置的详细信息，请参阅[存储方案设置](#storage-scenario-settings) |
 
 ### <a name="storage-scenario-settings"></a>存储方案设置
 
@@ -80,7 +80,7 @@ ms.locfileid: "60815407"
 
 存储方案和关联的配置设置由 `Storage` 对象在 `CloudAI` 配置部分下进行管理。 `Storage` 对象中提供了以下配置设置：
 
-| 名称 | 数据类型 | 描述 |
+| “属性” | 数据类型 | 说明 |
 |------|-----------|-------------|
 | `StorageScenario` | String | 容器支持的存储方案。 可用值如下<br/>`Memory` - 默认值。 容器使用非持久、非分布式的内存中存储，用于单节点的临时使用情况。 如果停止或删除容器，则该容器的存储将被销毁。<br/>`Azure` - 容器使用 Azure 资源进行存储。 如果停止或删除容器，则会保留该容器的存储。|
 | `ConnectionStringOfAzureStorage` | String | 容器使用的 Azure 存储资源的连接字符串。<br/>仅当为 `StorageScenario` 配置设置指定了 `Azure` 时，才应用此设置。 |
@@ -122,7 +122,7 @@ ms.locfileid: "60815407"
 
 主机确切语法的安装位置因主机操作系统不同而异。 另外，由于 Docker 服务帐户使用的权限与主机装载位置权限之间有冲突，因此可能无法访问[主计算机](face-how-to-install-containers.md#the-host-computer)的装载位置。 
 
-|可选| 名称 | 数据类型 | 描述 |
+|可选| “属性” | 数据类型 | 说明 |
 |-------|------|-----------|-------------|
 |不允许| `Input` | String | 人脸容器不使用此项。|
 |可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -131,19 +131,21 @@ ms.locfileid: "60815407"
 
 以下示例使用的配置设置说明如何编写和使用 `docker run` 命令。  运行后，容器将继续运行，直到[停止](face-how-to-install-containers.md#stop-the-container)它。
 
-* **行继续符**：以下各部分中的 Docker 命令使用反斜杠 `\` 作为行继续符。 根据主机操作系统的要求替换或删除字符。 
-* **参数顺序**：除非很熟悉 Docker 容器，否则不要更改参数顺序。
+* **行继续**符：以下部分中的 Docker 命令使用反斜杠`\`作为行继续符。 根据主机操作系统的要求替换或删除字符。 
+* **参数顺序**：不要更改参数的顺序，除非你非常熟悉 Docker 容器。
 
 将 {_argument_name_} 替换为为你自己的值：
 
-| 占位符 | 值 | 格式或示例 |
+| 占位符 | “值” | 格式或示例 |
 |-------------|-------|---|
-|{BILLING_KEY} | 认知服务资源终结点密钥。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | 计费的终结点值包括区域和人脸路由。|`https://westcentralus.api.cognitive.microsoft.com/face/v1.0`|
+| **{API_KEY}** | “Azure `Face` 密钥”页上的 `Face` 资源的终结点密钥。 | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | Azure `Face`“概览”页面上提供了账单终结点值。| 有关显式示例，请参阅[收集所需参数](face-how-to-install-containers.md#gathering-required-parameters)。 |
+
+[!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](face-how-to-install-containers.md#billing)。
-> ApiKey 当值**键**从 Azure`Cognitive Services`资源密钥页。 
+> ApiKey 值是来自 Azure `Cognitive Services`“资源密钥”页的“密钥”****。 
 
 ## <a name="face-container-docker-examples"></a>人脸容器 Docker 示例
 
@@ -155,8 +157,8 @@ ms.locfileid: "60815407"
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
   containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \
-  Billing={BILLING_ENDPOINT_URI} \
-  ApiKey={BILLING_KEY} 
+  Billing={ENDPOINT_URI} \
+  ApiKey={API_KEY} 
   ```
 
 ### <a name="logging-example"></a>日志记录示例 
@@ -164,7 +166,7 @@ ms.locfileid: "60815407"
   ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \
-  Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} \
+  Billing={ENDPOINT_URI} ApiKey={API_KEY} \
   Logging:Console:LogLevel:Default=Information
   ```
 

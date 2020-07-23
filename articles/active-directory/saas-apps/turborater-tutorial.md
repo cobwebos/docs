@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 TurboRater 的集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 TurboRater 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 TurboRater 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
-ms.openlocfilehash: 1e67f3c7f9413382d169837eaba50d6af18552e6
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 3777cf09ec669fe3df6bca13f6960f53c689767c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956677"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67088276"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>教程：Azure Active Directory 与 TurboRater 的集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "65956677"
 
 有关服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 TurboRater 的集成，需要以下项：
 
@@ -51,7 +51,7 @@ TurboRater 支持 IDP 发起的单一登录 (SSO)。
 
 若要配置 Azure AD 中的 TurboRater 集成，需要从 Azure 市场中将 TurboRater 添加到托管 SaaS 应用列表：
 
-1. 登录到 [Azure 门户](https://portal.azure.com?azure-portal=true)。
+1. 登录 [Azure 门户](https://portal.azure.com?azure-portal=true)。
 1. 在左窗格中选择“Azure Active Directory”  。
 
     ![“Azure Active Directory”选项](common/select-azuread.png)
@@ -137,7 +137,7 @@ TurboRater 支持 IDP 发起的单一登录 (SSO)。
 
 在本部分中，会在 Azure 门户中创建名为“Britta Simon”的测试用户。
 
-1. 在 Azure 门户的左窗格中，选择“Azure Active Directory”   > “用户” > “所有用户”。   
+1. 在 Azure 门户的左窗格中，选择“Azure Active Directory”   > “用户” > “所有用户”。
 
     ![“用户”和“所有用户”选项](common/users.png)
 
@@ -151,7 +151,7 @@ TurboRater 支持 IDP 发起的单一登录 (SSO)。
 
     1. 在“名称”框中，输入“BSimon”   。
   
-    1. 在“用户名”框中，输入“BSimon\@\<yourcompanydomain>.\<extension>”   。 例如，BSimon\@contoso.com  。
+    1. 在“用户名”框中，输入“BSimon\@\<yourcompanydomain>.\<extension>”。 例如，BSimon\@contoso.com。
 
     1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
 
@@ -161,7 +161,7 @@ TurboRater 支持 IDP 发起的单一登录 (SSO)。
 
 在本部分中，通过授予 B. Simon 访问 TurboRater 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，选择“企业应用程序” > “所有应用程序” > “TurboRater”    。
+1. 在 Azure 门户中，选择“企业应用程序” > “所有应用程序” > “TurboRater”。
 
     ![“企业应用程序”窗格](common/enterprise-applications.png)
 

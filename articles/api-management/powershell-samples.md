@@ -1,5 +1,6 @@
 ---
-title: Azure PowerShell 示例 | Microsoft Docs
+title: Azure PowerShell 示例
+titleSuffix: Azure API Management
 description: 了解可用于 Azure API 管理的 Azure PowerShell 脚本。
 services: api-management
 documentationcenter: ''
@@ -9,34 +10,31 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: sample
 ms.date: 10/09/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: a3e0300fdc2ce67d508f8caccbaa5fcbc37e2182
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7e0da9632aca1475b0348bdd43c7b6b5f89e6d14
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60859505"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506666"
 ---
 # <a name="azure-powershell-samples-for-api-management"></a>适用于 API 管理的 Azure PowerShell 示例
 
 下表包含用于从 PowerShell 使用 API 管理服务的示例脚本。
 
-| | |
-|-|-|
-|**预配和管理**||
+| 预配和管理 | 说明 |
+| -------------------- | ----------- |
 |[添加用户](./scripts/powershell-add-user-and-get-subscription-key.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 在 API 管理中创建用户并获取订阅密钥。|
 |[创建 APIM 服务](./scripts/powershell-create-apim-service.md?toc=%2fpowershell%2fmodule%2ftoc.json)|创建开发人员 SKU API 管理服务。|
 |[还原服务](./scripts/powershell-backup-restore-apim-service.md?toc=%2fpowershell%2fmodule%2ftoc.json)|备份和还原 APIM 服务。|
 |[缩放 APIM 服务](./scripts/powershell-scale-and-addregion-apim-service.md?toc=%2fpowershell%2fmodule%2ftoc.json)|缩放 APIM 服务并向其添加区域。|
 |[设置自定义域](./scripts/powershell-setup-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)|在 API 管理服务的代理和门户终结点上设置自定义域。|
-|**定义 API**||
+|**定义 API**| **说明** |
 |[导入 API](./scripts/powershell-import-api-and-add-to-product.md?toc=%2fpowershell%2fmodule%2ftoc.json)|导入 API，并将其添加到 APIM 产品。|
-|**安全**||
+|**安全**| **说明** |
 |[保护后端](./scripts/powershell-secure-backend-with-mutual-certificate-authentication.md?toc=%2fpowershell%2fmodule%2ftoc.json)|通过相互证书身份验证保护后端。|
-|**保护**||
+|**保护**| **说明** |
 |[设置速率限制策略](./scripts/powershell-setup-rate-limit-policy.md?toc=%2fpowershell%2fmodule%2ftoc.json)|向产品级别的策略应用速率限制。 |
-|||

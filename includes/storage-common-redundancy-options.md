@@ -5,19 +5,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 03/26/2018
+ms.date: 01/14/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 60912adbecbfdb4e6bebd7ddfea59eafa09b985e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 73c2b742ede21a4e86d717d994f8ebc4f16389c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66114922"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77157206"
 ---
-存储帐户的复制选项包括：
+存储帐户的冗余选项包括：
 
-* [本地冗余存储 (LRS)](../articles/storage/common/storage-redundancy-lrs.md)：一种简单、低成本的复制策略。 数据在单个存储缩放单元中进行复制。
-* [区域冗余存储 (ZRS)](../articles/storage/common/storage-redundancy-zrs.md)：复制以实现高可用性和持续性。 数据跨三个可用性区域以同步方式进行复制。 
-* [异地冗余存储 (GRS)](../articles/storage/common/storage-redundancy-grs.md)：为了防范区域性的不可用而提供的跨区域复制。
-* [读取访问异地冗余存储 (RA-GRS)](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)：对副本具有读取访问权的跨区域复制。
+* 本地冗余存储 (LRS)：简单的低成本冗余策略。 数据将在主要区域中同步复制三次。
+* 区域冗余存储（ZRS）：冗余，适用于需要高可用性的方案。 在主要区域的三个 Azure 可用性区域之间同步复制数据。
+* 异地冗余存储（GRS）：跨区域冗余以防范区域性服务中断。 数据在主要区域中同步复制三次，然后异步复制到次要区域。 若要对次要区域中的数据进行读取访问，请启用读取访问异地冗余存储 (RA-GRS)。
+* 区域冗余存储（GZRS）（预览版）：冗余，适用于要求高可用性和最大持续性的方案。 数据在主要区域的三个 Azure 可用性区域之间同步复制，然后异步复制到次要区域。 若要对次要区域中的数据进行读取访问，请启用读取访问权限异地冗余存储（GZRS）。
+
+有关 Azure 存储中冗余选项的详细信息，请参阅[Azure 存储冗余](../articles/storage/common/storage-redundancy.md)。

@@ -1,7 +1,7 @@
 ---
 title: 查看和编辑视频索引器见解
 titlesuffix: Azure Media Services
-description: 本主题演示如何查看和编辑视频索引器见解。
+description: 本文演示如何查看和编辑 Azure 媒体服务视频索引器见解。
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,11 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 24a723bd32cb40807da1757b3fffb925d4ba1fef
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: MT
+ms.openlocfilehash: e9bb516d498d989b97f1069af9a9f4cb673ea96d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799189"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74892662"
 ---
 # <a name="view-and-edit-video-indexer-insights"></a>查看和编辑视频索引器见解
 
@@ -23,7 +22,7 @@ ms.locfileid: "65799189"
 
 1. 浏览到[视频索引器](https://www.videoindexer.ai/)网站并登录。
 2. 找到需从其创建视频索引器见解的视频。 有关详细信息，请参阅[在视频中查找确切的时刻](video-indexer-search.md)。
-3. 按“播放”。
+3. 按“播放”。****
 
     页面会显示视频的汇总见解。 
 
@@ -37,7 +36,7 @@ ms.locfileid: "65799189"
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用视频的深入见解](use-editor-create-project.md)
+[使用视频深入见解](use-editor-create-project.md)
 
 ## <a name="see-also"></a>另请参阅
 

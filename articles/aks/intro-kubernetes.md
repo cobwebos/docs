@@ -2,28 +2,27 @@
 title: Azure Kubernetes 服务简介
 description: 了解 Azure Kubernetes 服务的功能和优势，以便在 Azure 中部署和管理基于容器的应用程序。
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: overview
 ms.date: 05/06/2019
-ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b14e4b452c1dcd92cc3e5447428c28f1d2c5b18e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 810f887c43b5653513d6848e9b7dd2e7ced070ab
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65073818"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251325"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS)
 
-可以使用 Azure Kubernetes 服务 (AKS) 在 Azure 中轻松地部署托管的 Kubernetes 群集。 AKS 通过将大量管理工作量卸载到 Azure，来降低管理 Kubernetes 所产生的复杂性和操作开销。 作为一个托管 Kubernetes 服务，Azure 可以自动处理运行状况监视和维护等关键任务。 Kubernetes 主节点由 Azure 管理。 你只管理和维护代理节点。 作为托管型 Kubernetes 服务，AKS 是免费的 - 你只需支付群集中的代理节点费，不需支付主节点的费用。
+可以使用 Azure Kubernetes 服务 (AKS) 在 Azure 中轻松地部署托管的 Kubernetes 群集。 AKS 通过将大量管理工作量卸载到 Azure，来降低管理 Kubernetes 所产生的复杂性和操作开销。 作为一个托管 Kubernetes 服务，Azure 可以自动处理运行状况监视和维护等关键任务。 Kubernetes 主节点由 Azure 管理。 用户仅管理和维护代理节点。 作为托管型 Kubernetes 服务，AKS 是免费的 - 你只需支付群集中的代理节点费，不需支付主节点的费用。
 
-可以在 Azure 门户中使用 Azure CLI 或模板驱动型部署选项（例如资源管理器模板和 Terraform）来创建 AKS 群集。 当你部署 AKS 群集时，系统会为你部署和配置 Kubernetes 主节点和所有节点。 另外，也可在部署过程中配置其他功能，例如高级网络、Azure Active Directory 集成、监视。 Windows Server 容器支持目前正在 AKS 中以预览版提供。
+可以在 Azure 门户中使用 Azure CLI 或模板驱动型部署选项（例如资源管理器模板和 Terraform）来创建 AKS 群集。 当你部署 AKS 群集时，系统会为你部署和配置 Kubernetes 主节点和所有节点。 另外，也可在部署过程中配置其他功能，例如高级网络、Azure Active Directory 集成、监视。 AKS 支持 Windows Server 容器。
 
 有关 Kubernetes 基础知识的详细信息，请参阅 [AKS 的 Kubernetes 核心概念][concepts-clusters-workloads]。
 
 若要开始，请[通过 Azure 门户][aks-portal]或者[通过 Azure CLI][aks-cli] 完成 AKS 快速入门。
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="access-security-and-monitoring"></a>访问权限、安全性和监视
 
@@ -45,7 +44,7 @@ ms.locfileid: "65073818"
 
 ## <a name="clusters-and-nodes"></a>群集和节点
 
-AKS 节点在 Azure 虚拟机上运行。 可以将存储连接到节点和 Pod、升级群集配置以及使用 GPU。 AKS 支持运行多个节点池的 Kubernetes 群集，以支持混合操作系统和 Windows Server 容器（当前处于预览状态）。 Linux 节点运行自定义的 Ubuntu OS 映像，Windows Server 节点运行自定义的 Windows Server 2019 OS 映像。
+AKS 节点在 Azure 虚拟机上运行。 可以将存储连接到节点和 Pod、升级群集配置以及使用 GPU。 AKS 支持运行多个节点池的 Kubernetes 群集，以支持混合操作系统和 Windows Server 容器。 Linux 节点运行自定义的 Ubuntu OS 映像，Windows Server 节点运行自定义的 Windows Server 2019 OS 映像。
 
 ### <a name="cluster-node-and-pod-scaling"></a>群集节点和 Pod 缩放
 
@@ -89,9 +88,9 @@ AKS 群集可以部署到现有的虚拟网络中。 在此配置中，群集中
 
 ## <a name="development-tooling-integration"></a>开发工具集成
 
-Kubernetes 有丰富的生态系统，其中包含各种开发和管理工具，例如 Helm、Draft 以及适用于 Visual Studio Code 的 Kubernetes 扩展。 这些工具可以与 AKS 无缝地配合使用。
+Kubernetes 有丰富的生态系统，其中包含各种开发和管理工具，例如 Helm 和适用于 Visual Studio Code 的 Kubernetes 扩展。 这些工具可以与 AKS 无缝地配合使用。
 
-另外，Azure Dev Spaces 为团队提供快速、迭代的 Kubernetes 开发体验。 只需最少的配置，即可直接在 AKS 中运行和调试容器。 有关入门，请参阅 [Azure Dev Spaces][azure-dev-spaces]。
+另外，Azure Dev Spaces 为团队提供快速、迭代的 Kubernetes 开发体验。 只需最少的配置，即可直接在 AKS 中运行和调试容器。 若要开始使用，请参阅 [Azure Dev Spaces][azure-dev-spaces]。
 
 Azure DevOps 项目允许通过简单的解决方案将现有的代码和 Git 存储库带到 Azure 中。 DevOps 项目自动创建 Azure 资源（例如 AKS，Azure DevOps Services 中的一种发布管道，其中包括用于 CI 的生成管道），为 CD 设置发布管道，然后创建适用于监视的 Azure Application Insights 资源。
 
@@ -109,7 +108,7 @@ Azure Kubernetes 服务 (AKS) 已被 CNCF 认证为符合 Kubernetes 规范。
 
 ## <a name="regulatory-compliance"></a>法规符合性
 
-Azure Kubernetes 服务 (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。 有关详细信息，请参阅 [Microsoft Azure 符合性概述][compliance-doc]。
+Azure Kubernetes 服务 (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。 有关详细信息，请参阅 [Microsoft Azure 合规性概述][compliance-doc]。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -125,7 +124,7 @@ Azure Kubernetes 服务 (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。 有
 
 <!-- LINKS - internal -->
 [acr-docs]: ../container-registry/container-registry-intro.md
-[aks-aad]: ./azure-ad-integration.md
+[aks-aad]: ./azure-ad-integration-cli.md
 [aks-cli]: ./kubernetes-walkthrough.md
 [aks-gpu]: ./gpu-cluster.md
 [aks-http-routing]: ./http-application-routing.md
@@ -133,14 +132,14 @@ Azure Kubernetes 服务 (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。 有
 [aks-portal]: ./kubernetes-walkthrough-portal.md
 [aks-scale]: ./tutorial-kubernetes-scale.md
 [aks-upgrade]: ./upgrade-cluster.md
-[azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/azure-dev-spaces
-[azure-devops]: https://docs.microsoft.com/azure/devops-project/overview
+[azure-dev-spaces]: ../dev-spaces/index.yml
+[azure-devops]: ../devops-project/overview.md
 [azure-disk]: ./azure-disks-dynamic-pv.md
 [azure-files]: ./azure-files-dynamic-pv.md
-[container-health]: ../monitoring/monitoring-container-health.md
+[container-health]: ../azure-monitor/insights/container-insights-overview.md
 [aks-master-logs]: view-master-logs.md
 [aks-supported versions]: supported-kubernetes-versions.md
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
-[kubernetes-rbac]: concepts-identity.md#role-based-access-controls-rbac
+[kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
 [concepts-identity]: concepts-identity.md
 [concepts-storage]: concepts-storage.md

@@ -1,19 +1,19 @@
 ---
 title: 设置 Azure 导入/导出工具 | Microsoft Docs
 description: 了解如何设置 Azure 导入/导出服务的驱动器准备和修复工具。
-author: muralikk
+author: twooley
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/29/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: d2ce6c409ae9cbf99589d11dfc850e2324d1b0c9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c7d2cac9402477090ae412dcf21265bec4609278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60320459"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514174"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>设置 Azure 导入/导出工具
 
@@ -23,9 +23,9 @@ Microsoft Azure 导入/导出工具是可与 Microsoft Azure 导入/导出服务
 * 完成某个导入作业后，可以使用此工具修复已损坏、丢失或与其他 Blob 冲突的任何 Blob。
 * 通过某个已完成的导出作业收到驱动器后，可以使用此工具修复这些驱动器上已损坏或丢失的任何文件。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
-若要为导入作业准备驱动器，必须满足以下先决条件：
+若要为导入作业准备驱动器  ，必须满足以下先决条件：
 
 * 必须拥有一个有效的 Azure 订阅。
 * 该订阅必须包含一个存储帐户，其中有足够的可用空间可存储所要导入的文件。
@@ -36,12 +36,12 @@ Microsoft Azure 导入/导出工具是可与 Microsoft Azure 导入/导出服务
 * 需要一个或多个已连接到复制计算机的空 2.5 英寸或 3.5 英寸 SATA II、III 或 SSD 硬盘。
 * 打算导入的文件必须可从复制计算机访问，无论这些文件是位于网络共享还是本地硬盘驱动器上。
 
-若要尝试修复部分失败的导入，需要：
+若要尝试  修复部分失败的导入，需要：
 
 * 复制日志文件
 * 存储帐户密钥
 
-若要尝试修复部分失败的导出，需要：
+若要尝试  修复部分失败的导出，需要：
 
 * 复制日志文件
 * 清单文件（可选）

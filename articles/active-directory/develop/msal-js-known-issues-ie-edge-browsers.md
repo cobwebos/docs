@@ -1,79 +1,70 @@
 ---
-title: 已知问题在浏览器 （适用于 JavaScript 的 Microsoft 身份验证库） |Azure
-description: 了解如何使用 javascript (MSAL.js) 的 Microsoft 身份验证库时知道问题与 Internet Explorer 和 Microsoft Edge 浏览器。
+title: 有关 Internet Explorer 和 Microsoft Edge (MSAL.js) 的问题 | Azure
+titleSuffix: Microsoft identity platform
+description: 了解在 Internet Explorer 和 Microsoft Edge 浏览器中使用适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 的已知问题。
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/16/2019
+ms.date: 05/18/2020
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c57ed956ec50c8bac26720a27894c07353928336
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
-ms.translationtype: MT
+ms.openlocfilehash: 2a471504b88791b5bfb6ce6cc7c81d60bfbe5028
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873895"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772074"
 ---
-# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>MSAL.js 的 Internet Explorer 和 Microsoft Edge 浏览器上的已知的问题
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>有关 Internet Explorer 和 Microsoft Edge 浏览器 (MSAL.js) 的已知问题
 
-## <a name="issues-due-to-security-zones"></a>由于安全区域的问题
-我们有多个报表对 IE 和 Microsoft Edge 中的身份验证的问题 (因为的更新*40.15063.0.0 的 Microsoft Edge 浏览器版本*)。 我们正在跟踪这些，并已通知 Microsoft Edge 团队。 而 Microsoft Edge 适用于解析，以下是经常出现的问题和可能的解决方法，可实现的说明。
+## <a name="issues-due-to-security-zones"></a>安全区域引起的问题
+我们收到了关于 IE 和 Microsoft Edge 中身份验证问题的多个报告（自从将 *Microsoft Edge 浏览器版本更新为 40.15063.0.0* 以来）。 我们正在跟踪这些问题，并已通知 Microsoft Edge 团队。 在 Microsoft Edge 努力寻找解决方法的同时，我们提供了一些对常见问题的说明以及可以实施的可能的解决方法。
 
 ### <a name="cause"></a>原因
-大多数问题的原因是，如下所示。 会话存储和本地存储进行分区的 Microsoft Edge 浏览器中的安全区域。 在此特定版本的 Microsoft Edge 中，当跨区域，该应用程序将被重定向会话存储和本地存储区清除。 具体而言，正则浏览器导航窗格中，清除会话存储并在浏览器的 InPrivate 模式中清除会话和本地存储。 MSAL.js 会话存储中保存某些状态，并且依赖于在身份验证流过程中检查此状态。 清除会话存储后，此状态将丢失，因此会导致中断的体验。
+导致大多数此类问题的原因如下。 会话存储和本地存储按 Microsoft Edge 浏览器中的安全区域进行分区。 在这个特定版本的 Microsoft Edge 中，当跨区域重定向应用程序时，将清除会话存储和本地存储。 具体而言，在常规浏览器导航中清除会话存储，在浏览器的 InPrivate 模式下清除会话存储和本地存储。 MSAL.js 将某些状态保存在会话存储中，并在身份验证流期间依赖于检查此状态。 清除会话存储时，此状态会丢失，从而导致体验中断。
 
 ### <a name="issues"></a>问题
 
-- **无限重定向循环和页面重新加载在身份验证期间**。 当用户登录到 Microsoft Edge 上的应用程序时，它们将被重定向回从 AAD 登录页和卡在无限重定向循环导致重复的页面重新加载。 这通常伴随着`invalid_state`会话存储中的错误。
+- **身份验证期间无限重定向循环和页面重载**。 当用户在 Microsoft Edge 上登录到应用程序时，他们将从 AAD 登录页面重定向回原来的页面，并陷入无限重定向循环中，从而导致反复进行页面重载。 这通常伴随着会话存储中的 `invalid_state` 错误。
 
-- **无限获取令牌的循环和 AADSTS50058 错误**。 当在 Microsoft Edge 上运行的应用程序尝试获取资源的令牌时，应用程序可能会停滞在获取令牌中的调用以下的错误以及从 AAD 网络跟踪一个无限循环的状态：
+- **无限获取令牌循环和 AADSTS50058 错误**。 当 Microsoft Edge 上运行的应用程序尝试获取资源令牌时，该应用程序可能会陷入获取令牌调用的无限循环中，并在网络跟踪中从 AAD 收到以下错误：
 
     `Error :login_required; Error description:AADSTS50058: A silent sign-in request was sent but no user is signed in. The cookies used to represent the user's session were not sent in the request to Azure AD. This can happen if the user is using Internet Explorer or Edge, and the web app sending the silent sign-in request is in different IE security zone than the Azure AD endpoint (login.microsoftonline.com)`
 
-- **弹出窗口不会关闭或处于停滞状态，使用弹出窗口通过登录进行身份验证时**。 因为 MSAL.js 失去的句柄进行身份验证时通过在 Microsoft Edge 或 IE(InPrivate)，弹出窗口后输入凭据并登录，如果在导航栏中，涉及到安全区域跨多个域不会关闭弹出窗口弹出窗口中。  
+- **通过弹出窗口进行身份验证来完成登录时，弹出窗口无法关闭或卡住不动**。 通过 Microsoft Edge 或 IE(InPrivate) 中的弹出窗口进行身份验证时，输入凭据并登录后，如果导航中涉及跨安全区域的多个域，则会因为 MSAL.js 丢失弹出窗口句柄而无法关闭弹出窗口。  
 
-    下面是在 Microsoft Edge 问题跟踪程序中的这些问题的链接：  
-    - [Bug 13861050](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/13861050/)
-    - [Bug 13861663](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/13861663/)
+### <a name="update-fix-available-in-msaljs-023"></a>更新：MSAL.js 0.2.3 中提供的修补程序
+[MSAL.js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases) 发布了针对身份验证重定向循环问题的修补程序。 在 MSAL.js 配置中启用标志 `storeAuthStateInCookie` 可利用此修补程序。 默认情况下，此标志设置为 false。
 
-### <a name="update-fix-available-in-msaljs-023"></a>更新:MSAL.js 0.2.3 提供修复程序
-修复了在中发布的身份验证重定向循环问题[MSAL.js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)。 启用标志`storeAuthStateInCookie`MSAL.js 配置才能利用此修补程序中。 默认情况下此标志设置为 false。
-
-当`storeAuthStateInCookie`启用标志，MSAL.js 将使用浏览器 cookie 来存储所需的身份验证流验证的请求状态。
+启用 `storeAuthStateInCookie` 标志后，MSAL.js 将使用浏览器 Cookie 存储验证身份验证流所需的请求状态。
 
 > [!NOTE]
-> 此修补程序尚不可用 msal angular 和 msal angularjs 包装器。 此修补程序不会解决弹出窗口中的问题。
+> 此修补程序尚不适用于 msal-angular 和 msal-angularjs 包装器。 此修补程序无法解决弹出窗口的问题。
 
 使用以下解决方法。
 
 #### <a name="other-workarounds"></a>其他解决方法
-请确保测试采用以下解决方法之前在问题发生仅上的特定版本的 Microsoft Edge 浏览器和其他浏览器上的工作原理。  
-1. 若要解决这些问题的第一步，确保应用程序域，并且任何其他站点中的身份验证流重定向涉及将添加为受信任的站点中的浏览器中，安全设置，以便它们属于同一安全区域。
+在采用这些解决方法之前，请确保测试你的问题仅出现在特定版本的 Microsoft Edge 浏览器中，在其他浏览器上可以正常运行。  
+1. 若要解决这些问题，第一步是确保将身份验证流重定向中涉及的应用程序域和任何其他站点添加为浏览器安全设置中的受信任站点，以使它们属于同一安全区域。
 为此，请执行下列步骤：
-    - 打开**Internet Explorer** ，然后单击**设置**（齿轮图标） 中右上角
-    - 选择**Internet 选项**
-    - 选择**安全**选项卡
-    - 下**受信任的站点**选项，请单击**站点**按钮，然后在打开的对话框中添加 Url。
+    - 打开“Internet Explorer”，单击右上角的“设置”（齿轮图标） 。
+    - 选择“Internet 选项”
+    - 选择“安全”选项卡
+    - 在“受信任的站点”选项下，单击“站点”按钮，然后在打开的对话框中添加 URL。
 
-2. 如前文所述仅会话之后存储清除在常规导航过程之前，可能会配置 MSAL.js 以改为使用本地存储。 这可以将设置为`cacheLocation`初始化 MSAL 时的配置参数。
+2. 如前所述，由于在常规导航期间仅清除会话存储，因此，可以将 MSAL.js 配置为改用本地存储。 初始化 MSAL 时，可以将其设置为 `cacheLocation` 配置参数。
 
-请注意，这不会解决有关 InPrivate 浏览会话和本地存储系统会清除该问题。
+请注意，这不会解决 InPrivate 浏览问题，因为会话存储和本地存储都会被清除。
 
-## <a name="issues-due-to-popup-blockers"></a>由于弹出窗口阻止程序问题导致的问题
+## <a name="issues-due-to-popup-blockers"></a>弹出窗口阻止程序引起的问题
 
-有些情况下在 IE 或 Microsoft Edge，例如多重身份验证过程中发生第二个弹出窗口时，已阻止弹出窗口。 在浏览器以一次，也始终允许弹出窗口中，将收到警报。 如果你选择允许，在浏览器会自动打开的弹出窗口中，并返回`null`处理它。 因此，库不具有在窗口的句柄，并且没有办法关闭弹出窗口。 相同的问题不会发生在 Chrome 中时它会提示您允许显示弹出式窗口，因为它不会自动打开一个弹出窗口。
+有时会在 IE 或 Microsoft Edge 中阻止弹出窗口，例如在[多重身份验证](../authentication/concept-mfa-howitworks.md)期间出现第二个弹出窗口时。 你将在浏览器中收到警报，以允许弹出一次或始终弹出。 如果选择允许，浏览器将自动打开弹出窗口并为其返回 `null` 句柄。 因此，身份验证库没有该窗口的句柄，从而无法关闭弹出窗口。 当 Chrome 提示你允许弹出窗口时，由于它不会自动打开弹出窗口，因此不会发生相同的问题。
 
-作为**解决方法**，开发人员将需要允许显示弹出式窗口在 IE 和 Microsoft Edge 中的，可以先使用自己的应用程序，以避免此问题。
+作为解决方法，开发人员需要在开始使用其应用之前，在 IE 和 Microsoft Edge 中允许弹出窗口，以避免此问题。
 
 ## <a name="next-steps"></a>后续步骤
-详细了解如何[Internet Explorer 中使用 MSAL.js](msal-js-use-ie-browser.md)。
+详细了解[在 Internet Explorer 中使用 MSAL.js](msal-js-use-ie-browser.md)。

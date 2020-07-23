@@ -1,162 +1,133 @@
 ---
-title: 使用 Azure Application Insights 进行 Java Web 应用分析 | Microsoft 文档
+title: 快速入门：使用 Azure Application Insights 进行 Java Web 应用分析
 description: '使用 Application Insights 监视 Java Web 应用的应用程序性能。 '
-services: application-insights
-documentationcenter: java
-author: lgayhardt
-manager: carmonm
-ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/14/2019
+author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 4cc1456aa9928cbd4a24c203eab62e3e75b4d7c1
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
-ms.translationtype: MT
+ms.date: 05/24/2019
+ms.openlocfilehash: e56ba304d197984110de5127a0f163ac0accf1aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66256185"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81537502"
 ---
-# <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web 项目中的 Application Insights 入门
+# <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>快速入门：Java Web 项目中的 Application Insights 入门
 
-[Application Insights](https://azure.microsoft.com/services/application-insights/) 是为 Web 开发人员提供的可扩展分析服务，可帮助你了解实时应用程序的性能和使用情况。 使用它[自动检测请求、 跟踪依赖项和收集性能计数器](auto-collect-dependencies.md#java)，诊断性能问题和异常，并[编写的代码][ api]若要跟踪用户对您的应用程序。 
+在本快速入门中，你将使用 Application Insights 自动检测请求，跟踪依赖项并收集性能计数器、诊断性能问题和异常，并编写代码以跟踪用户对应用执行的操作。
 
-![概述示例数据的屏幕截图](./media/java-get-started/overview-graphs.png)
+Application Insights 是面向 Web 开发人员的可扩展分析服务，可帮助你了解实时应用程序的性能和使用情况。 Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 
-Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
+## <a name="prerequisites"></a>先决条件
 
-需要：
+* 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+* 正常运行的 Java 应用程序。
 
-* JRE 版本 1.7 或 1.8
-* [Microsoft Azure](https://azure.microsoft.com/) 订阅。
+## <a name="get-an-application-insights-instrumentation-key"></a>获取 Application Insights 检测密钥
 
-如果你更喜欢 Spring 框架，请尝试[配置 Spring Boot 初始值设定程序以使用 Application Insights 指南](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)
-
-## <a name="1-get-an-application-insights-instrumentation-key"></a>1.获取 Application Insights 检测密钥
-1. 登录到 [Microsoft Azure 门户](https://portal.azure.com)。
-2. 创建 Application Insights 资源。 将应用程序类型设置为 Java Web 应用程序。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
+2. 在 Azure 门户中，创建 Application Insights 资源。 将应用程序类型设置为 Java Web 应用程序。
 
 3. 查找新资源的检测密钥。 稍后需要将此密钥粘贴到代码项目中。
 
     ![在新资源概述中，单击“属性”，并复制检测密钥](./media/java-get-started/instrumentation-key-001.png)
 
-## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2.将用于 Java 的 Application Insights SDK 添加到项目
-*为项目选择适当的方式。*
+## <a name="add-the-application-insights-sdk-for-java-to-your-project"></a>将用于 Java 的 Application Insights SDK 添加到项目
 
-#### <a name="if-youre-using-maven-a-namemaven-setup-"></a>如果使用 Maven... <a name="maven-setup" />
-如果项目已设置为使用 Maven 进行生成，请将以下代码合并到 pom.xml 文件。
+选择项目类型。
+
+# <a name="maven"></a>[Maven](#tab/maven)
+
+如果项目已设置为使用 Maven 生成，请将以下代码合并到 pom.xml 文件。
 
 然后刷新项目依赖项，以下载库。
 
 ```XML
-
-    <repositories>
-       <repository>
-          <id>central</id>
-          <name>Central</name>
-          <url>http://repo1.maven.org/maven2</url>
-       </repository>
-    </repositories>
-
     <dependencies>
       <dependency>
         <groupId>com.microsoft.azure</groupId>
-        <artifactId>applicationinsights-web</artifactId>
+        <artifactId>applicationinsights-web-auto</artifactId>
+        <!-- or applicationinsights-web for manual web filter registration -->
         <!-- or applicationinsights-core for bare API -->
-        <version>[2.0,)</version>
+        <version>2.5.0</version>
       </dependency>
     </dependencies>
 ```
 
-* *发生了生成或校验和验证错误？* 尝试使用特定版本，例如：`<version>2.0.n</version>`。 可以在 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)（SDK 发行说明）或 [Maven artifacts](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)（Maven 项目）中找到最新版本。
-* *需要更新到新 SDK？* 请刷新项目的依赖项。
+# <a name="gradle"></a>[Gradle](#tab/gradle)
 
-#### <a name="if-youre-using-gradle-a-namegradle-setup-"></a>如果使用 Gradle... <a name="gradle-setup" />
-如果项目已设置为使用 Gradle 进行生成，请将以下代码合并到 build.gradle 文件。
+如果项目已设置为使用 Gradle 生成，请将以下代码合并到 build.gradle 文件。
 
 然后刷新项目依赖项，以下载库。
 
 ```gradle
-
-    repositories {
-      mavenCentral()
-    }
-
     dependencies {
-      compile group: 'com.microsoft.azure', name: 'applicationinsights-web', version: '2.+'
+      compile group: 'com.microsoft.azure', name: 'applicationinsights-web-auto', version: '2.5.0'
+      // or applicationinsights-web for manual web filter registration
       // or applicationinsights-core for bare API
     }
 ```
 
-#### <a name="if-youre-using-eclipse-to-create-a-dynamic-web-project-"></a>如果使用 Eclipse 创建动态 Web 项目...
-使用[用于 Java 的 Application Insights SDK 插件][eclipse]。 注意：虽然使用此插件可以通过 Application Insights 更快地完成启动和运行操作（假定未使用 Maven/Gradle），但它不是一个依赖项管理系统。 因此，更新此插件不会自动更新项目中的 Application Insights 库。
+# <a name="other-types"></a>[其他类型](#tab/other)
 
-* *发生了生成或校验和验证错误？* 尝试使用特定版本，例如：`version:'2.0.n'`。 可以在 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)（SDK 发行说明）或 [Maven artifacts](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)（Maven 项目）中找到最新版本。
-* *若要更新到新的 SDK*，请刷新项目的依赖项。
-
-#### <a name="otherwise-if-you-are-manually-managing-dependencies-"></a>否则，如果是手动管理依赖项...
 请下载[最新版本](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)，将所需文件复制到项目中，替换以前的版本。
 
-### <a name="questions"></a>问题...
-*  `-core` 与 `-web` 组件之间有怎样的关系？
-  * `applicationinsights-core` 提供单纯的 API。 始终需要此组件。
-  * `applicationinsights-web` 提供用于跟踪 HTTP 请求计数和响应时间的指标。 如果不想要自动收集此遥测数据，可以忽略此组件。 例如，如果想要编写自己的组件。
+---
+
+### <a name="questions"></a>问题
+* `-web-auto`、`-web` 与 `-core` 组件之间有怎样的关系？
+  * `applicationinsights-web-auto` 通过在运行时自动注册 Application Insights servlet 筛选器，为你提供跟踪 HTTP servlet 请求计数和响应时间的指标。
+  * `applicationinsights-web` 也为你提供跟踪 HTTP servlet 请求计数和响应时间的指标，但需要在应用程序中手动注册 Application Insights servlet 筛选器。
+  * 例如，如果应用程序不是基于 servlet 的应用程序，则 `applicationinsights-core` 仅提供单纯的 API。
   
-*  应怎样将 SDK 更新到最新版本？
-  * 如果使用 Gradle 或 Maven...
-    * 请更新生成文件，对最新版本进行指定，或者使用 Gradle/Maven 的通配符语法，以便自动包括最新的版本。 然后，请刷新项目的依赖项。 在上面的 [Gradle](#gradle-setup) 或 [Maven](#maven-setup) 的示例中，可以看到通配符语法。
+* 应怎样将 SDK 更新到最新版本？
+  * 如果使用的是 Gradle 或 Maven...
+    * 更新生成文件以指定最新版本。
   * 如果是手动管理依赖项...
     * 下载最新的 [用于 Java 的 Application Insights SDK](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) 并替换旧版本。 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)（SDK 发行说明）中描述了更改。
 
-## <a name="3-add-an-applicationinsightsxml-file"></a>3.添加 ApplicationInsights.xml 文件
-在项目中的 resources 文件夹中添加 ApplicationInsights.xml，或确保将其添加到项目的部署类路径。 将以下 XML 复制到其中。
+## <a name="add-an-applicationinsightsxml-file"></a>添加 ApplicationInsights.xml 文件
+在项目的 resources 文件夹中添加 ApplicationInsights.xml，或确保将其添加到项目的部署类路径。 将以下 XML 复制到其中。
 
-替换为从 Azure 门户获取的检测密钥。
+将检测密钥替换为从 Azure 门户获得的密钥。
 
 ```XML
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
 
-    <?xml version="1.0" encoding="utf-8"?>
-    <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+   <!-- The key from the portal: -->
+   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
 
+   <!-- HTTP request component (not required for bare API) -->
+   <TelemetryModules>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebUserTrackingTelemetryModule"/>
+   </TelemetryModules>
 
-      <!-- The key from the portal: -->
-      <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+   <!-- Events correlation (not required for bare API) -->
+   <!-- These initializers add context data to each event -->
+   <TelemetryInitializers>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationIdTelemetryInitializer"/>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationNameTelemetryInitializer"/>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebSessionTelemetryInitializer"/>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserAgentTelemetryInitializer"/>
+   </TelemetryInitializers>
 
-
-      <!-- HTTP request component (not required for bare API) -->
-      <TelemetryModules>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebUserTrackingTelemetryModule"/>
-      </TelemetryModules>
-
-      <!-- Events correlation (not required for bare API) -->
-      <!-- These initializers add context data to each event -->
-
-      <TelemetryInitializers>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationIdTelemetryInitializer"/>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationNameTelemetryInitializer"/>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebSessionTelemetryInitializer"/>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserAgentTelemetryInitializer"/>
-
-      </TelemetryInitializers>
-    </ApplicationInsights>
+</ApplicationInsights>
 ```
 
-也可将配置文件置于可以通过应用程序进行访问的任何位置。  系统属性 `-Dapplicationinsights.configurationDirectory` 指定 ApplicationInsights.xml 所在的目录。 例如，位于 `E:\myconfigs\appinsights\ApplicationInsights.xml` 的配置文件可以通过属性 `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` 进行配置。
+或者，配置文件可以位于应用程序可访问的任何位置。  系统属性 `-Dapplicationinsights.configurationDirectory` 指定 ApplicationInsights.xml 所在的目录。 例如，位于 `E:\myconfigs\appinsights\ApplicationInsights.xml` 的配置文件可以通过属性 `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` 进行配置。
 
 * 检测密钥随遥测的每个项一起发送，并告知 Application Insights 在资源中显示它。
 * HTTP 请求组件是可选的。 它自动将请求和响应时间的遥测数据发送到门户。
-* 事件关联是对 HTTP 请求组件的补充。 它将标识符分配到服务器收到的每个请求，并将此标识符添加为遥测的每个项的“Operation.Id”属性。 使用它可以通过在[诊断搜索][diagnostic]中设置筛选器，来关联与每个请求关联的遥测。
+* 事件关联是对 HTTP 请求组件的补充。 它将标识符分配给服务器收到的每个请求。 然后将此标识符作为属性添加到每个遥测项，作为属性“Operation.Id”。 使用它可以通过在[诊断搜索][diagnostic]中设置筛选器，来关联与每个请求关联的遥测。
 
 ### <a name="alternative-ways-to-set-the-instrumentation-key"></a>设置检测密钥的替代方法
 Application Insights SDK 按以下顺序查找密钥：
 
-1. 系统属性：-DAPPLICATION_INSIGHTS_IKEY=your_ikey
-2. 环境变量：APPLICATION_INSIGHTS_IKEY
+1. 系统属性：-DAPPINSIGHTS_INSTRUMENTATIONKEY=your_ikey
+2. 环境变量：APPINSIGHTS_INSTRUMENTATIONKEY
 3. 配置文件：ApplicationInsights.xml
 
 也可以 [在代码中设置方法](../../azure-monitor/app/api-custom-events-metrics.md#ikey)：
@@ -170,136 +141,14 @@ Application Insights SDK 按以下顺序查找密钥：
     }
 ```
 
-## <a name="4-add-an-http-filter"></a>4.添加 HTTP 筛选器
-最后一个配置步骤可让 HTTP 请求组件记录每个 Web 请求。 （如果只需要单纯的 API，则不需要执行此步骤。）
+## <a name="add-agent"></a>添加代理
 
-### <a name="spring-boot-applications"></a>Spring Boot 应用程序
-在 Configuration 类中注册 Application Insights `WebRequestTrackingFilter`：
+[安装 Java 代理](java-agent.md)以捕获传出的 HTTP 调用、JDBC 查询、应用程序日志记录和更好的操作命名。
 
-```Java
-package <yourpackagename>.configurations;
-
-import javax.servlet.Filter;
-
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.core.Ordered;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-import com.microsoft.applicationinsights.TelemetryConfiguration;
-import com.microsoft.applicationinsights.web.internal.WebRequestTrackingFilter;
-
-@Configuration
-public class AppInsightsConfig {
-
-    @Bean
-    public String telemetryConfig() {
-        String telemetryKey = System.getenv("<instrumentation key>");
-        if (telemetryKey != null) {
-            TelemetryConfiguration.getActive().setInstrumentationKey(telemetryKey);
-        }
-        return telemetryKey;
-    }
-
-    /**
-     * Programmatically registers a FilterRegistrationBean to register WebRequestTrackingFilter
-     * @param webRequestTrackingFilter
-     * @return Bean of type {@link FilterRegistrationBean}
-     */
-    @Bean
-    public FilterRegistrationBean webRequestTrackingFilterRegistrationBean(WebRequestTrackingFilter webRequestTrackingFilter) {
-        FilterRegistrationBean registration = new FilterRegistrationBean();
-        registration.setFilter(webRequestTrackingFilter);
-        registration.addUrlPatterns("/*");
-        registration.setOrder(Ordered.HIGHEST_PRECEDENCE + 10);
-        return registration;
-    }
-
-
-    /**
-     * Creates bean of type WebRequestTrackingFilter for request tracking
-     * @param applicationName Name of the application to bind filter to
-     * @return {@link Bean} of type {@link WebRequestTrackingFilter}
-     */
-    @Bean
-    @ConditionalOnMissingBean
-
-    public WebRequestTrackingFilter webRequestTrackingFilter(@Value("${spring.application.name:application}") String applicationName) {
-        return new WebRequestTrackingFilter(applicationName);
-    }
-
-
-}
-```
-
-> [!NOTE]
-> 如果使用的是 Spring Boot 1.3.8 或更旧版本，请将 FilterRegistrationBean 替换为下面的行
-
-```Java
-    import org.springframework.boot.context.embedded.FilterRegistrationBean;
-```
-
-此类会将 `WebRequestTrackingFilter` 配置为 http 筛选器链上的第一个筛选器。 它还会从操作系统环境变量中拉取检测密钥（如果可用）。
-
-> 我们使用 Web http 筛选器配置而不是 Spring MVC 配置，因为这是一个 Spring Boot 应用程序，有其自己的 Spring MVC 配置。 如需特定于 Spring MVC 的配置，请参阅以下部分。
-
-### <a name="applications-using-webxml"></a>使用 Web.xml 的应用程序
-在项目中找到并打开 web.xml 文件，然后将以下代码合并到 Web 应用节点下，即应用程序筛选器的配置位置。
-
-为获得最准确的结果，应该在其他所有筛选器的前面映射该筛选器。
-
-```XML
-
-    <filter>
-      <filter-name>ApplicationInsightsWebFilter</filter-name>
-      <filter-class>
-        com.microsoft.applicationinsights.web.internal.WebRequestTrackingFilter
-      </filter-class>
-    </filter>
-    <filter-mapping>
-       <filter-name>ApplicationInsightsWebFilter</filter-name>
-       <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
-   <!-- This listener handles shutting down the TelemetryClient when an application/servlet is undeployed. -->
-    <listener>
-      <listener-class>com.microsoft.applicationinsights.web.internal.ApplicationInsightsServletContextListener</listener-class>
-    </listener>
-```
-
-#### <a name="if-youre-using-spring-web-mvc-31-or-later"></a>如果使用 Spring Web MVC 3.1 或更高版本
-编辑 *-servlet.xml 中的以下元素以包含 Application Insights 包：
-
-```XML
-
-    <context:component-scan base-package=" com.springapp.mvc, com.microsoft.applicationinsights.web.spring"/>
-
-    <mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="/**"/>
-            <bean class="com.microsoft.applicationinsights.web.spring.RequestNameHandlerInterceptorAdapter" />
-        </mvc:interceptor>
-    </mvc:interceptors>
-```
-
-#### <a name="if-youre-using-struts-2"></a>如果使用 Struts 2
-将此项添加到 Struts 配置文件（通常名为 struts.xml 或 struts-default.xml）：
-
-```XML
-
-     <interceptors>
-       <interceptor name="ApplicationInsightsRequestNameInterceptor" class="com.microsoft.applicationinsights.web.struts.RequestNameInterceptor" />
-     </interceptors>
-     <default-interceptor-ref name="ApplicationInsightsRequestNameInterceptor" />
-```
-
-如果默认堆栈中定义了拦截器，可以将拦截器添加到该堆栈。
-
-## <a name="5-run-your-application"></a>5.运行应用程序
+## <a name="run-your-application"></a>运行应用程序
 在开发计算机上以调试模式运行应用程序，或将其发布到服务器。
 
-## <a name="6-view-your-telemetry-in-application-insights"></a>6.在 Application Insights 中查看遥测数据
+## <a name="view-your-telemetry-in-application-insights"></a>在 Application Insights 中查看遥测数据
 返回 [Microsoft Azure 门户](https://portal.azure.com)中的 Application Insights 资源。
 
 “概述”边栏选项卡中显示了 HTTP 请求数据。 （如果未显示，请稍候片刻，并单击“刷新”。）
@@ -310,11 +159,11 @@ public class AppInsightsConfig {
 
 单击任一图表可查看详细聚合指标。
 
-![使用图表的应用程序见解失败窗格](./media/java-get-started/006-barcharts.png)
+![带有图表的“Application Insights 故障”窗格](./media/java-get-started/006-barcharts.png)
 
-> Application Insights 假设 MVC 应用程序的 HTTP 请求的格式为： `VERB controller/action`。 例如，将 `GET Home/Product/f9anuh81`、`GET Home/Product/2dffwrf5` 和 `GET Home/Product/sdf96vws` 分组到 `GET Home/Product` 中。 这种分组可提供有意义的请求聚合，例如请求数量和请求的平均执行时间。
->
->
+<!--
+[TODO update image with 2.5.0 operation naming provided by agent]
+-->
 
 ### <a name="instance-data"></a>实例数据
 单击特定的请求类型可查看各个实例。
@@ -326,7 +175,7 @@ public class AppInsightsConfig {
 
 ![分析示例](./media/java-get-started/0025.png)
 
-## <a name="7-install-your-app-on-the-server"></a>7.在服务器上安装应用
+## <a name="install-your-app-on-the-server"></a>在服务器上安装应用
 现在，将应用程序发布到服务器供用户使用，然后查看门户上显示的遥测数据。
 
 * 请确保防火墙允许应用程序将遥测数据发送到以下端口：
@@ -344,7 +193,7 @@ public class AppInsightsConfig {
 
 ## <a name="azure-app-service-config-spring-boot"></a>Azure 应用服务配置 (Spring Boot)
 
-在 Windows 上运行的 spring Boot 应用需要其他配置，以在 Azure 应用服务上运行。 修改**web.config**并添加以下：
+在 Windows 上运行的 Spring Boot 应用需要额外的配置才能在 Azure 应用服务上运行。 修改 **web.config** 并添加以下配置：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -360,31 +209,30 @@ public class AppInsightsConfig {
 ```
 
 ## <a name="exceptions-and-request-failures"></a>异常和请求失败
-自动收集未经处理的异常。
+Application Insights Web 筛选器会自动收集未经处理的异常和请求失败。
 
-若要收集其他异常数据，可使用两个选项：
-
-* [在代码中插入 trackException() 调用][apiexceptions]。
-* [在服务器上安装 Java 代理](java-agent.md)。 指定要监视的方法。
+若要收集有关其他异常的数据，可以[在代码中插入对 trackException() 的调用][apiexceptions]。
 
 ## <a name="monitor-method-calls-and-external-dependencies"></a>监视方法调用和外部依赖项
 [安装 Java 代理](java-agent.md) ，记录指定的内部方法、通过 JDBC 发出的调用以及计时数据。
+
+该代理还可用于自动操作命名。
 
 ## <a name="w3c-distributed-tracing"></a>W3C 分布式跟踪
 
 Application Insights Java SDK 现支持 [W3C 分布式跟踪](https://w3c.github.io/trace-context/)。
 
-有关[关联](correlation.md#w3c-distributed-tracing)的文章中进一步解释了传入的 SDK 配置。
+有关[关联](correlation.md)的文章中进一步解释了传入的 SDK 配置。
 
 [AI-Agent.xml](java-agent.md) 文件中定义了传出 SDK 配置。
 
 ## <a name="performance-counters"></a>性能计数器
-打开**调查**，**指标**，以查看一系列性能计数器。
+打开“调查”、“指标”，查看一系列性能计数器 。
 
-![与所选的进程专用字节指标窗格的屏幕截图](./media/java-get-started/011-perf-counters.png)
+![已选中进程专用字节的指标窗格的屏幕截图](./media/java-get-started/011-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>自定义性能计数器收集
-要禁用收集性能计数器的标准集，请将以下代码添加到 ApplicationInsights.xml 文件的根节点下：
+若要禁用收集标准性能计数器集，请将以下代码添加到 ApplicationInsights.xml 文件的根节点下：
 
 ```XML
     <PerformanceCounters>
@@ -409,7 +257,7 @@ Application Insights Java SDK 现支持 [W3C 分布式跟踪](https://w3c.github
 * `displayName` – Application Insights 门户中显示的名称。
 * `objectName` – JMX 对象名称。
 * `attribute` – 提取的 JMX 对象名称属性
-* `type` （可选）- JMX 对象的属性类型：
+* `type`（可选）- JMX 对象的属性类型：
   * 默认值：简单类型，例如 int 或 long。
   * `composite`：性能计数器数据采用“Attribute.Data”格式
   * `tabular`：性能计数器数据采用表行格式
@@ -434,38 +282,11 @@ Application Insights Java SDK 现支持 [W3C 分布式跟踪](https://w3c.github
 ### <a name="unix-performance-counters"></a>Unix 性能计数器
 * [使用 Application Insights 插件安装 collectd](java-collectd.md) ，获取各种不同的系统和网络数据。
 
-## <a name="local-forwarder"></a>本地转发器
-
-[本地转发器](https://docs.microsoft.com/azure/application-insights/local-forwarder)是从各种 SDK 和框架中收集 Application Insights 或 [OpenCensus](https://opencensus.io/) 遥测并将其路由到 Application Insights 的代理。 它能够在 Windows 和 Linux 下运行。
-
-```xml
-<Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">
-<DeveloperMode>false</DeveloperMode>
-<EndpointAddress><!-- put the hostname:port of your LocalForwarder instance here --></EndpointAddress>
-<!-- The properties below are optional. The values shown are the defaults for each property -->
-<FlushIntervalInSeconds>5</FlushIntervalInSeconds><!-- must be between [1, 500]. values outside the bound will be rounded to nearest bound -->
-<MaxTelemetryBufferCapacity>500</MaxTelemetryBufferCapacity><!-- units=number of telemetry items; must be between [1, 1000] -->
-</Channel>
-```
-
-如果使用的是 SpringBoot 入门版，请将以下内容添加到配置文件（application.properties）中：
-
-```yml
-azure.application-insights.channel.local-forwarder.endpoint-address=<!--put the hostname:port of your LocalForwarder instance here-->
-azure.application-insights.channel.local-forwarder.flush-interval-in-seconds=<!--optional-->
-azure.application-insights.channel.local-forwarder.max-telemetry-buffer-capacity=<!--optional-->
-```
-
-SpringBoot application.properties 和 applicationinsights.xml 配置的默认值是相同的。
-
 ## <a name="get-user-and-session-data"></a>获取用户和会话数据
 好了，现在正在从 Web 服务发送遥测数据。 若要获取应用程序的 360 度全方位视图，可以添加更多监视：
 
-* [将遥测添加到网页][usage]，监视页面视图和用户指标。
+* [将遥测添加到网页][usage]，用于监视页面视图和用户指标。
 * [设置 Web 测试][availability]，确保应用程序处于活动状态且能够做出响应。
-
-## <a name="capture-log-traces"></a>捕获日志跟踪
-可以使用 Application Insights 将来自 Log4J、Logback 或其他记录框架的日志切片。 可以将日志与 HTTP 请求及其他遥测数据相关联。 [了解操作方法][javalogs]。
 
 ## <a name="send-your-own-telemetry"></a>发送自己的遥测数据
 安装 SDK 后，可以使用 API 发送自己的遥测数据。
@@ -476,9 +297,9 @@ SpringBoot application.properties 和 applicationinsights.xml 配置的默认值
 ## <a name="availability-web-tests"></a>可用性 Web 测试
 Application Insights 可以定期测试网站，检查网站是否正常运行且做出响应。
 
-[了解有关如何设置可用性 web 测试的详细信息。][availability]
+[详细了解如何设置可用性 Web 测试。][availability]
 
-## <a name="questions-problems"></a>有疑问？ 遇到问题？
+## <a name="questions-problems"></a>存在疑问？ 遇到问题？
 [Java 故障排除](java-troubleshoot.md)
 
 ## <a name="next-steps"></a>后续步骤
@@ -495,7 +316,6 @@ Application Insights 可以定期测试网站，检查网站是否正常运行�
 [apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#trackexception
 [availability]: ../../azure-monitor/app/monitor-web-app-availability.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[eclipse]: ../../azure-monitor/learn/java-quick-start.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/app/metrics-explorer.md
+[metrics]: ../../azure-monitor/platform/metrics-charts.md
 [usage]: javascript.md

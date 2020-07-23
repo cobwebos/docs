@@ -1,67 +1,62 @@
 ---
-title: 刷新 Azure Analysis Services 模型与 Azure 自动化 |Microsoft Docs
-description: 了解如何通过使用 Azure 自动化的代码模型刷新。
+title: 通过 Azure 自动化刷新 Azure Analysis Services 模型 | Microsoft Docs
+description: 本文介绍了如何使用 Azure 自动化为 Azure Analysis Services 编写模型刷新代码。
 author: chrislound
-manager: kfile
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: 4cae93cff594ad561973f8029ea7335dc4c60263
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: c3c9827814b7d638745761dbb5f3c7d2e581491b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357003"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389966"
 ---
 # <a name="refresh-with-azure-automation"></a>使用 Azure 自动化进行刷新
 
-通过使用 Azure 自动化和 PowerShell Runbook，可以执行 Azure 分析表格模型上的自动的数据刷新操作。  
+通过使用 Azure 自动化和 PowerShell Runbook，你可以对 Azure Analysis 表格模型执行自动化数据刷新操作。  
 
-这篇文章中的示例使用[PowerShell SqlServer 模块](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps)。
+本文中的示例使用[SqlServer PowerShell 模块](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps)。 本文后面提供了一个示例 PowerShell Runbook，它演示了如何刷新模型。  
 
-在本文后面提供示例 PowerShell Runbook，该示例演示了刷新模型。  
+## <a name="authentication"></a>身份验证
 
-## <a name="authentication"></a>Authentication
+所有调用都必须使用有效的 Azure Active Directory (OAuth 2) 令牌进行身份验证。  本文中的示例使用服务主体（SPN）对 Azure Analysis Services 进行身份验证。 有关详细信息，请参阅[使用 Azure 门户创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。
 
-所有调用必须使用有效的 Azure Active Directory (OAuth 2) 令牌进行身份都验证。  此文章中的示例将使用服务主体 (SPN) 对 Azure Analysis Services 进行身份验证。
-
-若要了解有关创建服务主体的详细信息，请参阅[通过使用 Azure 门户创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。
-
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 > [!IMPORTANT]
-> 下面的示例假定 Azure Analysis Services 防火墙处于禁用状态。 如果启用了防火墙，然后需要在防火墙中列入允许列表的请求发起程序的公共 IP 地址。
+> 下面的示例假定 Azure Analysis Services 防火墙被禁用。 如果启用了防火墙，则必须在防火墙规则中包括请求发起程序的公共 IP 地址。
 
-### <a name="install-sqlserver-modules-from-powershell-gallery"></a>从 PowerShell 库安装 SqlServer 模块。
+### <a name="install-sqlserver-modules-from-powershell-gallery"></a>从 PowerShell 库中安装 SqlServer 模块。
 
-1. 在 Azure 自动化帐户中，单击**模块**，然后**浏览库**。
+1. 在你的 Azure 自动化帐户中，单击“模块”，然后单击“浏览库”。 
 
-2. 在搜索栏中，搜索**SqlServer**。
+2. 在搜索栏中搜索“SqlServer”。
 
     ![搜索模块](./media/analysis-services-refresh-azure-automation/1.png)
 
-3. 选择 SqlServer，然后单击**导入**。
+3. 选择 SqlServer，然后单击“导入”。
  
     ![导入模块](./media/analysis-services-refresh-azure-automation/2.png)
 
-4. 单击“确定”。 
+4. 单击“确定”。
  
 ### <a name="create-a-service-principal-spn"></a>创建服务主体 (SPN)
 
-若要了解如何创建服务主体，请参阅[通过使用 Azure 门户创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。
+若要了解如何创建服务主体，请参阅[使用 Azure 门户创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。
 
 ### <a name="configure-permissions-in-azure-analysis-services"></a>在 Azure Analysis Services 中配置权限
  
-您创建的服务主体必须具有服务器管理员权限在服务器上。 有关详细信息，请参阅[将服务主体添加到服务器管理员角色](analysis-services-addservprinc-admins.md)。
+你创建的服务主体必须对服务器拥有服务器管理员权限。 有关详细信息，请参阅[将服务主体添加到服务器管理员角色](analysis-services-addservprinc-admins.md)。
 
 ## <a name="design-the-azure-automation-runbook"></a>设计 Azure 自动化 Runbook
 
-1. 在自动化帐户中，创建**凭据**资源，用于安全地存储服务主体。
+1. 在自动化帐户中，创建一个**凭据**资源，该资源将用来安全地存储服务主体。
 
     ![创建凭据](./media/analysis-services-refresh-azure-automation/6.png)
 
-2. 输入凭据的详细信息。  有关**用户名**，输入**SPN ClientId**，为**密码**，输入**SPN 机密**。
+2. 输入凭据的详细信息。 在“用户名”中，输入服务主体应用程序 Id (appid)，然后在“密码”中输入服务主体机密。
 
     ![创建凭据](./media/analysis-services-refresh-azure-automation/7.png)
 
@@ -69,87 +64,87 @@ ms.locfileid: "66357003"
 
     ![导入 Runbook](./media/analysis-services-refresh-azure-automation/8.png)
 
-4. 浏览**刷新 Model.ps1**文件中，提供**名称**并**说明**，然后单击**创建**。
+4. 以浏览方式找到“Refresh-Model.ps1”文件，提供“名称”和“说明”，然后单击“创建”。
 
     ![导入 Runbook](./media/analysis-services-refresh-azure-automation/9.png)
 
-5. 创建 Runbook 后，它将自动进入编辑模式。  选择“发布”  。
+5. 创建 Runbook 后，它将自动进入编辑模式。  选择“发布”。
 
     ![发布 Runbook](./media/analysis-services-refresh-azure-automation/10.png)
 
     > [!NOTE]
-    > 已创建的凭据资源之前检索 runbook 使用**Get-automationpscredential**命令。  然后将此命令传递给**Invoke ProcessASADatabase** PowerShell 命令来执行到 Azure Analysis Services 身份验证。
+    > Runbook 使用 **Get-AutomationPSCredential** 命令检索先前创建的凭据资源。  然后，此命令将传递给 **Invoke-ProcessASADatabase** PowerShell 命令，以便通过 Azure Analysis Services 执行身份验证。
 
-6. 通过单击测试 runbook**启动**。
+6. 通过单击“启动”来测试 Runbook。
 
     ![启动 Runbook](./media/analysis-services-refresh-azure-automation/11.png)
 
-7. 填写**DATABASENAME**， **ANALYSISSERVER**，并**REFRESHTYPE**参数，并单击**确定**。 **WEBHOOKDATA**手动运行 Runbook 时不需要参数。
+7. 填写“DATABASENAME”、“ANALYSISSERVER”和“REFRESHTYPE”参数，然后单击“确定”。 手动运行 Runbook 时，不需要“WEBHOOKDATA”参数。
 
     ![启动 Runbook](./media/analysis-services-refresh-azure-automation/12.png)
 
-如果 Runbook 已成功执行，则会收到如下所示的输出：
+如果成功执行了 Runbook，则会收到如下所示的输出：
 
-![成功运行](./media/analysis-services-refresh-azure-automation/13.png)
+![成功的运行](./media/analysis-services-refresh-azure-automation/13.png)
 
-## <a name="use-a-self-contained-azure-automation-runbook"></a>使用独立的 Azure 自动化 Runbook
+## <a name="use-a-self-contained-azure-automation-runbook"></a>使用自包含 Azure 自动化 Runbook
 
-Runbook 可以配置为按计划定期刷新 Azure Analysis Services 模型的触发器。
+可以将 Runbook 配置为按日程安排触发 Azure Analysis Services 模型刷新。
 
-这可以按如下所示进行配置：
+可以将其配置如下：
 
-1. 在自动化 Runbook 中，单击**计划**，然后**添加计划**。
+1. 在自动化 Runbook 中，单击“日程安排”，然后单击“添加日程安排”。
  
-    ![创建计划](./media/analysis-services-refresh-azure-automation/14.png)
+    ![创建日程安排](./media/analysis-services-refresh-azure-automation/14.png)
 
-2. 单击**计划** > **创建新计划**，然后再填写详细信息。
+2. 单击“日程安排” > “新建日程安排”，然后填写详细信息。
 
-    ![配置计划](./media/analysis-services-refresh-azure-automation/15.png)
+    ![配置日程安排](./media/analysis-services-refresh-azure-automation/15.png)
 
-3. 单击**创建**。
+3. 单击“创建”。
 
-4. 填写计划参数。 这将用每次触发 Runbook。 **WEBHOOKDATA**参数应留空时通过计划运行。
+4. 为日程安排填写参数。 它们将在 Runbook 每次触发时使用。 通过日程安排运行时，“WEBHOOKDATA”参数应保留为空。
 
     ![配置参数](./media/analysis-services-refresh-azure-automation/16.png)
 
-5. 单击“确定”。 
+5. 单击“确定”。
 
-## <a name="consume-with-data-factory"></a>使用数据工厂
+## <a name="consume-with-data-factory"></a>通过数据工厂使用
 
-若要通过使用 Azure 数据工厂中使用 runbook，首先创建**Webhook** runbook。 **Webhook**将提供可以通过 Azure 数据工厂 web 活动调用的 URL。
+若要通过 Azure 数据工厂来使用 runbook，请首先为 runbook 创建一个 **Webhook**。 **Webhook** 将提供可通过 Azure 数据工厂 Web 活动调用的 URL。
 
 > [!IMPORTANT]
-> 若要创建**Webhook**，Runbook 的状态必须是**已发布**。
+> 若要创建 **Webhook**，Runbook 的状态必须为“已发布”。
 
-1. 在自动化 Runbook 中，单击**Webhook**，然后单击**添加 Webhook**。
+1. 在自动化 Runbook 中，单击“Webhook”，然后单击“添加 Webhook”。
 
    ![添加 Webhook](./media/analysis-services-refresh-azure-automation/17.png)
 
-2. 为 Webhook 提供一个名称和到期时间。  名称只能识别在自动化 Runbook Webhook，它不会形成 URL 的一部分。
+2. 为 Webhook 指定名称和有效期。  该名称仅在自动化 Runbook 内标识 Webhook，而不构成 URL 的一部分。
 
    >[!CAUTION]
-   >请确保在关闭向导，如无法取回它一次关闭之前复制的 URL。
+   >请确保在关闭向导之前复制 URL，因为在关闭向导后就再也无法获得它了。
     
    ![配置 Webhook](./media/analysis-services-refresh-azure-automation/18.png)
 
-    Webhook 的参数可以保留为空。  在配置的 Azure 数据工厂 web 活动时，可以将参数传入 web 调用的正文。
+    Webhook 的参数可以保留为空。  配置 Azure 数据工厂 Web 活动时，可以将参数传递到 Web 调用的正文中。
 
-3. 在数据工厂中，配置**web 活动**
+3. 在数据工厂中，配置一个 **Web 活动**
 
 ### <a name="example"></a>示例
 
-   ![示例 Web 活动](./media/analysis-services-refresh-azure-automation/19.png)
+   ![Web 活动示例](./media/analysis-services-refresh-azure-automation/19.png)
 
-**URL**是创建的 Webhook 的 URL。
+**URL** 是基于 Webhook 创建的 URL。
 
-**正文**是一个 JSON 文档，其中应包含以下属性：
+**正文**是一个应当包含以下属性的 JSON 文档：
 
 
-|属性  |值  |
+|properties  |值  |
 |---------|---------|
 |**AnalysisServicesDatabase**     |Azure Analysis Services 数据库的名称 <br/> 示例：AdventureWorksDB         |
-|**AnalysisServicesServer**     |Azure Analysis Services 服务器名称。 <br/> 示例： https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/         |
-|**DatabaseRefreshType**     |若要执行的刷新的类型。 <br/> 示例：完整         |
+|**AnalysisServicesServer**     |Azure Analysis Services 服务器名称。 <br/> 示例：https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/         |
+|**DatabaseRefreshType**     |要执行的刷新的类型。 <br/> 示例：完全         |
 
 JSON 正文示例：
 
@@ -161,30 +156,30 @@ JSON 正文示例：
 }
 ```
 
-Runbook PowerShell 脚本中定义了这些参数。  Web 活动执行时，传递 JSON 有效负载是 WEBHOOKDATA。
+这些参数是在 runbook PowerShell 脚本中定义的。  当执行 Web 活动时，传递的 JSON 有效负载为 WEBHOOKDATA。
 
-这是反序列化，存储作为 PowerShell 参数，然后使用 Invoke ProcesASDatabase PowerShell 命令。
+这会被反序列化并存储为 PowerShell 参数，然后 PowerShell 命令 Invoke-ProcesASDatabase 将使用这些参数。
 
 ![反序列化的 Webhook](./media/analysis-services-refresh-azure-automation/20.png)
 
-## <a name="use-a-hybrid-worker-with-azure-analysis-services"></a>使用 Azure Analysis Services 使用混合辅助角色
+## <a name="use-a-hybrid-worker-with-azure-analysis-services"></a>将混合辅助角色用于 Azure Analysis Services
 
-Azure 虚拟机具有静态公共 IP 地址可以用作 Azure 自动化混合辅助角色。  然后可以将此公共 IP 地址添加到 Azure Analysis Services 防火墙。
+具有静态公共 IP 地址的 Azure 虚拟机可以用作 Azure 自动化混合辅助角色。  然后，可以将此公共 IP 地址添加到 Azure Analysis Services 防火墙中。
 
 > [!IMPORTANT]
-> 确保虚拟机的公共 IP 地址配置为静态。
+> 请确保将虚拟机公共 IP 地址配置为静态的。
 >
->若要了解有关配置 Azure 自动化混合辅助角色的详细信息，请参阅[使用混合 Runbook 辅助角色自动在数据中心或云资源](../automation/automation-hybrid-runbook-worker.md#install-a-hybrid-runbook-worker)。
+>若要详细了解如何配置 Azure 自动化混合辅助角色，请参阅[混合 Runbook 辅助角色安装](../automation/automation-hybrid-runbook-worker.md#hybrid-runbook-worker-installation)。
 
-混合辅助角色配置后，创建 Webhook 部分中所述[使用数据工厂使用](#consume-with-data-factory)。  唯一的区别是选择**上运行** > **混合辅助角色**选项配置 Webhook 时。
+配置混合辅助角色后，请按照[通过数据工厂使用](#consume-with-data-factory)部分中所述创建一个 Webhook。  此处的唯一区别在于，在配置 Webhook 时，请选择“运行于” > “混合辅助角色”选项。
 
-使用混合辅助角色的示例 webhook:
+使用了混合辅助角色的 Webhook 示例：
 
-![混合辅助角色的示例 Webhook](./media/analysis-services-refresh-azure-automation/21.png)
+![混合辅助角色 Webhook 示例](./media/analysis-services-refresh-azure-automation/21.png)
 
-## <a name="sample-powershell-runbook"></a>示例 PowerShell Runbook
+## <a name="sample-powershell-runbook"></a>PowerShell Runbook 示例
 
-以下代码片段示范了如何执行 Azure Analysis Services 模型刷新使用 PowerShell Runbook。
+下面的代码片段举例说明了如何使用 PowerShell Runbook 执行 Azure Analysis Services 模型刷新。
 
 ```powershell
 param

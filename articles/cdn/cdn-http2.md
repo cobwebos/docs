@@ -6,19 +6,19 @@ documentationcenter: ''
 author: lichard
 manager: erikre
 editor: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2017
-ms.author: rli
-ms.openlocfilehash: 2d27cd54486a08e18fe74c852af29d5cf6432023
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: ril
+ms.openlocfilehash: 703623e3f7f314d87417458f3f9a218dfdf45427
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60737068"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67849975"
 ---
 # <a name="http2-support-in-azure-cdn"></a>Azure CDN 中的 HTTP/2 支持
 

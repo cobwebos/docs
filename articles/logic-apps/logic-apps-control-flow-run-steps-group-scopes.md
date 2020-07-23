@@ -1,23 +1,19 @@
 ---
-title: 基于组状态添加运行操作的范围 - Azure 逻辑应用 | Microsoft Docs
-description: 如何基于 Azure 逻辑应用中的组操作状态创建运行工作流操作的范围
+title: 按作用域分组并运行操作
+description: 在 Azure 逻辑应用中创建基于组状态运行的带作用域的操作
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: jeconnoc
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 48fb2d14cd4cf99510fff88b25b9ae45814a92a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 65f9ee8f67ac4efb6ab26fa0912d11d7be7c571d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60685263"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520895"
 ---
-# <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>基于组状态，在 Azure 逻辑应用中的范围内运行操作
+# <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用作用域基于组状态运行操作
 
 若要仅在另一组操作成功或失败后运行操作，请在范围内对这些操作进行分组。 如果你希望将各个操作组织为逻辑组，评估该组的状态并执行基于作用域状态的操作，则此结构非常有用。 当某个作用域中的所有操作都完成运行后，该作用域也确定了其自己的状态。 例如，当希望实现[异常和错误处理](../logic-apps/logic-apps-exception-handling.md#scopes)时可以使用作用域。 
 
@@ -27,7 +23,7 @@ ms.locfileid: "60685263"
 
 ![设置“计划 - 定期”触发器](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文中的示例，需要具有以下各项：
 
@@ -54,7 +50,7 @@ ms.locfileid: "60685263"
 
 1. 如果尚未登录到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>，请进行登录。 创建空白逻辑应用。
 
-1. 使用以下设置添加**计划 - 定期**触发器：**时间间隔** =“1”并且**频率** =“Minute”
+1. 添加采用以下设置的“计划 - 重复”触发器： **间隔** =“1”，**频率** =“分钟”
 
    ![设置“计划 - 定期”触发器](./media/logic-apps-control-flow-run-steps-group-scopes/recurrence.png)
 
@@ -65,7 +61,7 @@ ms.locfileid: "60685263"
 
    1. 如果尚没有必应地图连接，则会要求你创建一个连接。
 
-      | 设置 | 值 | 描述 |
+      | 设置 | 值 | 说明 |
       | ------- | ----- | ----------- |
       | **连接名称** | BingMapsConnection | 提供连接的名称。 | 
       | **API 密钥** | <*your-Bing-Maps-key*> | 输入以前接收的必应地图密钥。 | 
@@ -75,15 +71,15 @@ ms.locfileid: "60685263"
 
       ![设置“必应地图 - 获取路线”操作](./media/logic-apps-control-flow-run-steps-group-scopes/get-route.png) 
 
-      有关这些参数的详细信息，请参阅 [Calculate a route](https://msdn.microsoft.com/library/ff701717.aspx)（计算路线）。
+      有关这些参数的详细信息，请参阅 [Calculate a route](/bingmaps/rest-services/routes/calculate-a-route)（计算路线）。
 
-      | 设置 | 值 | 描述 |
+      | 设置 | 值 | 说明 |
       | ------- | ----- | ----------- |
       | **路标 1** | <*起点*> | 输入路线的起点。 | 
       | **路标 2** | <*终点*> | 输入路线的目的地。 | 
-      | **避免** | 无 | 输入路线上需要避免的项目，例如高速公路、收费站等。 有关可能的值，请参阅[计算路由](https://msdn.microsoft.com/library/ff701717.aspx)。 | 
+      | **避免** | 无 | 输入路线上需要避免的项目，例如高速公路、收费站等。 有关可能的值，请参阅[计算路由](/bingmaps/rest-services/routes/calculate-a-route)。 | 
       | **优化** | timeWithTraffic | 选择一个参数来优化路线，例如距离、时间（在使用当前交通信息的情况下），等等。 此示例使用以下值：timeWithTraffic | 
-      | **距离单位** | <*your-preference*> | 输入要用来计算路线的距离单位。 此示例使用以下值：“Mile” | 
+      | **距离单位** | <*your-preference*> | 输入要用来计算路线的距离单位。 此示例使用以下值：“英里” | 
       | **旅行模式** | 驾车 | 输入路线的旅行模式。 此示例使用以下值：Driving | 
       | **运输日期/时间** | 无 | 仅适用于运输模式。 | 
       | **运输日期/时间类型** | 无 | 仅适用于运输模式。 | 
@@ -92,7 +88,7 @@ ms.locfileid: "60685263"
 1. [添加条件](../logic-apps/logic-apps-control-flow-conditional-statement.md)，检查当前交通状况下的旅行时间是否超出了指定时间。 
    对于本示例，请遵循以下步骤：
 
-   1. 使用此说明重命名条件：**如果交通时间超过指定时间**
+   1. 重命名条件并提供以下说明：**如果流量时间超过指定的时间**
 
    1. 在最左侧的列中，单击“选择值”框内部，会显示动态内容列表。 从该列表中，选择“旅行期间 - 交通”字段（以秒为单位）。 
 
@@ -100,7 +96,7 @@ ms.locfileid: "60685263"
 
    1. 在中间的框中选择此运算符：大于
 
-   1. 在最右侧列中，输入此比较值，这是秒数，等于 10 分钟：**600**
+   1. 在最右侧的列中，输入此比较值（以秒为单位，相当于 10 分钟）：**600**
 
       完成后，条件如以下示例所示：
 
@@ -130,7 +126,7 @@ ms.locfileid: "60685263"
 
    1. 游标位于函数的括号内时，选择“动态内容”，以便显示动态内容列表。 
    
-   1. 在“获取路线”部分，选择“旅行期间 - 交通”字段。
+   1. 在“获取路线”部分，选择“旅行期间 - 交通”字段 。
 
       ![选择“旅行期间 - 交通”](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-2.png)
 
@@ -147,11 +143,11 @@ ms.locfileid: "60685263"
    1. 完成后，选择“确定”。
 
    <!-- markdownlint-disable MD038 -->
-   1. 表达式求值后，添加带有前导空格的以下文本： ``` minutes```
+   1. 在表达式解析后，添加带有前导空格的以下文本：``` minutes```
   
        “正文”字段现在如下例所示：
 
-       ![已完成"正文"字段](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
+       ![完成的“正文”字段](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
    <!-- markdownlint-enable MD038 -->
 
 1. 保存逻辑应用。
@@ -165,7 +161,7 @@ ms.locfileid: "60685263"
 1. 在所需的工作流位置添加一个作用域。 例如，若要在逻辑应用工作流中的现有步骤之间添加范围，请按照下列步骤操作： 
 
    1. 将指针移到要添加范围的箭头上。 
-   选择“加号”(+) >“添加操作”。
+   选择“加号”(+) >“添加操作”  。
 
       ![添加作用域](./media/logic-apps-control-flow-run-steps-group-scopes/add-scope.png)
 
@@ -177,13 +173,13 @@ ms.locfileid: "60685263"
 1. 现在，添加要在作用域内运行的步骤，或拖动要在作用域内运行的现有步骤。 对于本例，请将以下操作拖动到作用域中：
       
    * **获取路线**
-   * 交通时间是否超过指定时间，包括“true”和“false”分支
+   * 交通时间是否超过指定时间，包括“true”和“false”分支  
 
    现在，逻辑应用如下例所示：
 
    ![添加的作用域](./media/logic-apps-control-flow-run-steps-group-scopes/scope-added.png)
 
-1. 在作用域下，添加一个条件，用以检查作用域的状态。 使用此说明重命名条件：**如果范围已失败**
+1. 在作用域下，添加一个条件，用以检查作用域的状态。 重命名条件并提供以下说明：**如果作用域失败**
 
    ![添加用以检查作用域状态的条件](./media/logic-apps-control-flow-run-steps-group-scopes/add-condition-check-scope-status.png)
   
@@ -209,18 +205,18 @@ ms.locfileid: "60685263"
 
       现在，设置条件的 `runAfter` 属性，以便条件检查范围状态并运行在后续步骤中定义的匹配操作。
 
-   1. 在“范围是否失败”条件中，选择“省略号”(...) 按钮，然后选择“配置在之后运行”。
+   1. 在“范围是否失败”条件中，选择“省略号”(...) 按钮，然后选择“配置在之后运行”  。
 
       ![配置“runAfter”属性](./media/logic-apps-control-flow-run-steps-group-scopes/configure-run-after.png)
 
-   1. 选择所有这些范围状态：“成功”、“失败”、“跳过”、“已超时”
+   1. 选择所有这些范围状态：“成功”、“失败”、“跳过”、“已超时”   
 
       ![选择范围状态](./media/logic-apps-control-flow-run-steps-group-scopes/select-run-after-statuses.png)
 
    1. 完成后，选择“完成”。 
    该条件现在显示“信息”图标。
 
-1. 在“If true”和“If false”分支中，根据每个范围状态添加要执行的操作，例如，发送电子邮件或消息。
+1. 在“If true”和“If false”分支中，根据每个范围状态添加要执行的操作，例如，发送电子邮件或消息 。
 
    ![根据范围状态添加要采取的操作](./media/logic-apps-control-flow-run-steps-group-scopes/handle-true-false-branches.png)
 
@@ -392,7 +388,7 @@ ms.locfileid: "60685263"
 
 ## <a name="get-support"></a>获取支持
 
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](/answers/topics/azure-logic-apps.html)。
 * 若要提交功能和建议或者为其投票，请访问 [Azure 逻辑应用用户反馈站点](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤

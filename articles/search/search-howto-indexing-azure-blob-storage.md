@@ -1,24 +1,27 @@
 ---
-title: 为 Azure Blob 存储内容编制索引，以便进行全文搜索 - Azure 搜索
-description: 了解如何使用 Azure 搜索为 Azure Blob 存储编制索引，以及从文档中提取文本。
-ms.date: 05/02/2019
+title: 对 Azure Blob 存储内容进行搜索
+titleSuffix: Azure Cognitive Search
+description: 了解如何使用 Azure 认知搜索为 Azure Blob 存储编制索引，以及从文档中提取文本。
+manager: nitinme
 author: mgottein
-manager: cgronlun
 ms.author: magottei
-services: search
-ms.service: search
 ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 832be20f78d1e88a3bb6d1c25c7aaf5d7354e857
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.date: 07/11/2020
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 29e123666b35e4659e68a1a925047267f8519940
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66753975"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496445"
 ---
-# <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>使用 Azure 搜索为 Azure Blob 存储中的文档编制索引
-本文说明如何使用 Azure 搜索服务为存储在 Azure Blob 存储中的文档（例如 PDF、Microsoft Office 文档和其他多种常用格式的文档）编制索引。 首先，本文说明了设置和配置 Blob 索引器的基础知识。 其次，本文更加深入地探讨了你可能会遇到的行为和场景。
+# <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>如何使用 Azure 认知搜索为 Azure Blob 存储中的文档编制索引
+
+本文说明如何使用 Azure 认知搜索为存储在 Azure Blob 存储中的文档（例如 PDF 文档、Microsoft Office 文档和其他多种常用格式文档）编制索引。 首先，本文说明了设置和配置 Blob 索引器的基础知识。 其次，本文更加深入地探讨了你可能会遇到的行为和场景。
+
+<a name="SupportedFormats"></a>
 
 ## <a name="supported-document-formats"></a>支持的文档格式
 Blob 索引器可从以下文档格式提取文本：
@@ -29,8 +32,8 @@ Blob 索引器可从以下文档格式提取文本：
 可以使用以下方式设置 Azure Blob 存储索引器：
 
 * [Azure 门户](https://ms.portal.azure.com)
-* Azure 搜索 [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
-* Azure 搜索 [.NET SDK](https://aka.ms/search-sdk)
+* Azure 认知搜索 [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
+* Azure 认知搜索 [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 
 > [!NOTE]
 > 某些功能（例如字段映射）在门户中尚不可用，必须以编程方式使用。
@@ -50,7 +53,8 @@ Blob 索引器可从以下文档格式提取文本：
 
 创建数据源：
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+```http
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -60,6 +64,7 @@ Blob 索引器可从以下文档格式提取文本：
         "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
     }   
+```
 
 有关创建数据源 API 的详细信息，请参阅[创建数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)。
 
@@ -82,7 +87,8 @@ Blob 索引器可从以下文档格式提取文本：
 
 下面介绍了如何使用可搜索 `content` 字段创建索引，以存储从 Blob 中提取的文本：   
 
-    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+```http
+    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -93,6 +99,7 @@ Blob 索引器可从以下文档格式提取文本：
             { "name": "content", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false }
           ]
     }
+```
 
 有关创建索引的详细信息，请参阅[创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)
 
@@ -101,7 +108,8 @@ Blob 索引器可从以下文档格式提取文本：
 
 创建索引和数据源后，就可以准备创建索引器了：
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+```http
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -111,50 +119,53 @@ Blob 索引器可从以下文档格式提取文本：
       "targetIndexName" : "my-target-index",
       "schedule" : { "interval" : "PT2H" }
     }
+```
 
 此索引器每隔两小时运行一次（已将计划间隔设置为“PT2H”）。 若要每隔 30 分钟运行一次索引器，可将间隔设置为“PT30M”。 支持的最短间隔为 5 分钟。 计划是可选的 - 如果省略，则索引器在创建后只运行一次。 但是，可以随时根据需要运行索引器。   
 
 有关创建索引器 API 的更多详细信息，请参阅[创建索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
 
-有关定义索引器计划的详细信息请参阅[如何安排 Azure 搜索索引器](search-howto-schedule-indexers.md)。
+若要详细了解如何定义索引器计划，请参阅[如何为 Azure 认知搜索计划索引器](search-howto-schedule-indexers.md)。
 
-## <a name="how-azure-search-indexes-blobs"></a>Azure 搜索如何为 Blob 编制索引
+<a name="how-azure-search-indexes-blobs"></a>
+
+## <a name="how-azure-cognitive-search-indexes-blobs"></a>Azure 认知搜索如何编制 Blob 的索引
 
 根据具体的[索引器配置](#PartsOfBlobToIndex)，Blob 索引器可以仅为存储元数据编制索引（如果只关注元数据，而无需为 Blob 的内容编制索引，则此功能非常有用）、为存储元数据和内容元数据编制索引，或者同时为元数据和文本内容编制索引。 默认情况下，索引器提取元数据和内容。
 
 > [!NOTE]
 > 默认情况下，包含结构化内容（例如 JSON 或 CSV）的 lob 以单一文本区块的形式编制索引。 如果想要以结构化方法为 JSON 和 CSV Blob 编制索引，请参阅[为 JSON Blob 编制索引](search-howto-index-json-blobs.md)和[为 CSV Blob 编制索引](search-howto-index-csv-blobs.md)来了解详细信息。
 >
-> 复合或嵌入式文档（例如 ZIP 存档，或者嵌入了带附件 Outlook 电子邮件的 Word 文档）也以单一文档的形式编制索引。
+> 复合文档或嵌入式文档（如 ZIP 存档、包含包含附件的嵌入 Outlook 电子邮件的 Word 文档或。带有附件的 MSG 文件）也作为单个文档编制索引。 例如，从的附件中提取的所有图像。消息文件将在 normalized_images 字段中返回。
 
 * 文档的文本内容将提取到名为 `content` 的字符串字段中。
 
 > [!NOTE]
-> Azure 搜索会根据定价层限制提取的文本数量：免费层为 32,000 个字符，基本层为 64,000 个字符，标准层、标准 S2 层和标准 S3 层为 400 万个字符。 已截断的文本会在索引器状态响应中出现一条警告。  
+> Azure 认知搜索会根据定价层限制提取的文本数量：免费层为 32,000 个字符，基本层为 64,000 个字符，标准层为 400 万个字符、标准 S2 层为 800 万个字符，标准 S3 层为 1600 万个字符。 已截断的文本会在索引器状态响应中出现一条警告。  
 
-* Blob 中用户指定的元数据属性（如果有）将逐字提取。
+* Blob 中用户指定的元数据属性（如果有）将逐字提取。 请注意，这要求在索引中定义与 blob 的元数据密钥名称相同的字段。 例如，如果 blob 有值为 `High` 的元数据密钥 `Sensitivity`，则应在搜索索引中定义一个名为“`Sensitivity`”的字段，该字段将用值“`High`”填充。
 * 标准 Blob 元数据属性将提取到以下字段中：
 
   * **metadata\_storage\_name** (Edm.String) - Blob 的文件名。 例如，对于 Blob /my-container/my-folder/subfolder/resume.pdf 而言，此字段的值是 `resume.pdf`。
   * **metadata\_storage\_path** (Edm.String) - Blob 的完整 URI（包括存储帐户）。 例如： `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`
   * **metadata\_storage\_content\_type** (Edm.String) - 用于上传 Blob 的代码指定的内容类型。 例如，`application/octet-stream`。
-  * **metadata\_storage\_last\_modified** (Edm.DateTimeOffset) - 上次修改 Blob 的时间戳。 Azure 搜索服务使用此时间戳来识别已更改的 Blob，避免在初次编制索引之后再次为所有内容编制索引。
+  * **metadata\_storage\_last\_modified** (Edm.DateTimeOffset) - 上次修改 Blob 的时间戳。 Azure 认知搜索使用此时间戳来识别已更改的 Blob，避免在初次编制索引之后再次为所有内容编制索引。
   * **metadata\_storage\_size** (Edm.Int64) - Blob 大小，以字节为单位。
   * **metadata\_storage\_content\_md5** (Edm.String) - Blob 内容的 MD5 哈希（如果有）。
-  * **元数据\_存储\_sas\_令牌**(Edm.String)-可由一个临时 SAS 令牌[自定义技能](cognitive-search-custom-skill-interface.md)若要获取对 blob 的访问。 此令牌不应存储以供将来使用，因为它可能已过期。
+  * **metadata\_storage\_sas\_token** (Edm.String) - 一个临时 SAS 令牌，可由[自定义技能](cognitive-search-custom-skill-interface.md)用来获取对 Blob 的访问权限。 不应存储此令牌供以后使用，因为它可能会过期。
 
 * 特定于每种文档格式的元数据属性将提取到[此处](#ContentSpecificMetadata)所列的字段。
 
 无需在搜索索引中针对上述所有属性定义字段 - 系统只捕获应用程序所需的属性。
 
 > [!NOTE]
-> 通常，现有索引中的字段名称与文档提取期间所生成的字段名称不同。 可以使用**字段映射**将 Azure 搜索服务提供的属性名称映射到搜索索引中的字段名称。 后面会提供字段映射的用法示例。
+> 通常，现有索引中的字段名称与文档提取期间所生成的字段名称不同。 可以使用**字段映射**将 Azure 认知搜索提供的属性名称映射到搜索索引中的字段名称。 后面会提供字段映射的用法示例。
 >
 >
 
 <a name="DocumentKeys"></a>
 ### <a name="defining-document-keys-and-field-mappings"></a>定义文档键和字段映射
-在 Azure 搜索中，文档键唯一标识某个文档。 每个搜索索引只能有一个类型为 Edm.String 的键字段。 键字段对于要添加到索引的每个文档必不可少（事实上它是唯一的必填字段）。  
+在 Azure 认知搜索中，文档键唯一标识某个文档。 每个搜索索引只能有一个类型为 Edm.String 的键字段。 键字段对于要添加到索引的每个文档必不可少（事实上它是唯一的必填字段）。  
 
 应该仔细考虑要将提取的哪个字段映射到索引的键字段。 候选字段包括：
 
@@ -163,20 +174,23 @@ Blob 索引器可从以下文档格式提取文本：
 * 如果上述所有做法都不起作用，可将一个自定义元数据属性添加到 Blob。 但是，这种做法需要通过 Blob 上传过程将该元数据属性添加到所有 Blob。 由于键是必需的属性，因此没有该属性的所有 Blob 都无法编制索引。
 
 > [!IMPORTANT]
-> 如果索引中没有键字段的显式映射，Azure 搜索服务会自动使用 `metadata_storage_path`（上述第二个选项）作为键并对该键进行 base-64 编码。
+> 如果索引中没有键字段的显式映射，Azure 认知搜索会自动使用 `metadata_storage_path` 作为键并对键值进行 base-64 编码（上述第二个选项）。
 >
 >
 
 本示例选择 `metadata_storage_name` 字段作为文档键。 同时，假设索引具有名为 `key` 的键字段，以及一个用于存储文档大小的 `fileSize` 字段。 若要连接所需的元素，请在创建或更新索引器时指定以下字段映射：
 
+```http
     "fieldMappings" : [
       { "sourceFieldName" : "metadata_storage_name", "targetFieldName" : "key", "mappingFunction" : { "name" : "base64Encode" } },
       { "sourceFieldName" : "metadata_storage_size", "targetFieldName" : "fileSize" }
     ]
+```
 
 要将所有元素合并在一起，可按如下所示添加字段映射，并为现有索引器的键启用 base-64 编码：
 
-    PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2019-05-06
+```http
+    PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -189,12 +203,32 @@ Blob 索引器可从以下文档格式提取文本：
         { "sourceFieldName" : "metadata_storage_size", "targetFieldName" : "fileSize" }
       ]
     }
+```
 
 > [!NOTE]
 > 有关字段映射的详细信息，请参阅[此文](search-indexer-field-mappings.md)。
 >
 >
 
+#### <a name="what-if-you-need-to-encode-a-field-to-use-it-as-a-key-but-you-also-want-to-search-it"></a>如果需要对某个字段进行编码以便将其用作键，但又想搜索它，该怎么办？
+
+有时，您需要使用诸如 metadata_storage_path 之类的字段的编码版本作为键，但您也需要此字段是可搜索的（不进行编码）。 为了解决此问题，可以将其映射到两个字段中：一个将用于密钥，另一个将用于搜索目的。 在下面的示例中，"*键*" 字段包含编码的路径，而*路径*字段未编码，并将用作索引中的可搜索字段。
+
+```http
+    PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2020-06-30
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+      "dataSourceName" : " blob-datasource ",
+      "targetIndexName" : "my-target-index",
+      "schedule" : { "interval" : "PT2H" },
+      "fieldMappings" : [
+        { "sourceFieldName" : "metadata_storage_path", "targetFieldName" : "key", "mappingFunction" : { "name" : "base64Encode" } },
+        { "sourceFieldName" : "metadata_storage_path", "targetFieldName" : "path" }
+      ]
+    }
+```
 <a name="WhichBlobsAreIndexed"></a>
 ## <a name="controlling-which-blobs-are-indexed"></a>控制要为哪些 Blob 编制索引
 可以控制要为哪些 Blob 编制索引，以及要跳过哪些 Blob。
@@ -202,7 +236,8 @@ Blob 索引器可从以下文档格式提取文本：
 ### <a name="index-only-the-blobs-with-specific-file-extensions"></a>只为具有特定文件扩展名的 Blob 编制索引
 使用 `indexedFileNameExtensions` 索引器配置参数可以做到只为具有指定扩展名的 Blob 编制索引。 值是包含文件扩展名（包括前置句点）逗号分隔列表的字符串。 例如，如果只要为 .PDF 和 .DOCX Blob 编制索引，请执行以下操作：
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+```http
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -210,11 +245,13 @@ Blob 索引器可从以下文档格式提取文本：
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "indexedFileNameExtensions" : ".pdf,.docx" } }
     }
+```
 
 ### <a name="exclude-blobs-with-specific-file-extensions"></a>排除具有特定文件扩展名的 Blob
 使用 `excludedFileNameExtensions` 配置参数可在编制索引时排除具有特定文件扩展名的 Blob。 值是包含文件扩展名（包括前置句点）逗号分隔列表的字符串。 例如，若要为所有 Blob 编制索引，但要排除具有 .PNG 和 .JPEG 扩展名的 Blob，请执行以下操作：
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+```http
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -222,8 +259,9 @@ Blob 索引器可从以下文档格式提取文本：
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "excludedFileNameExtensions" : ".png,.jpeg" } }
     }
+```
 
-如果同时存在 `indexedFileNameExtensions` 和 `excludedFileNameExtensions` 参数，Azure 搜索服务会先查找 `indexedFileNameExtensions`，再查找 `excludedFileNameExtensions`。 这意味着，如果两个列表中存在同一个文件扩展名，将从索引编制中排除该扩展名。
+如果同时存在 `indexedFileNameExtensions` 和 `excludedFileNameExtensions` 参数，Azure 认知搜索会先查看 `indexedFileNameExtensions`，再查看 `excludedFileNameExtensions`。 这意味着，如果两个列表中存在同一个文件扩展名，将从索引编制中排除该扩展名。
 
 <a name="PartsOfBlobToIndex"></a>
 ## <a name="controlling-which-parts-of-the-blob-are-indexed"></a>控制要为 Blob 中的哪些部分编制索引
@@ -236,7 +274,8 @@ Blob 索引器可从以下文档格式提取文本：
 
 例如，如果只要为存储元数据编制索引，请使用：
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+```http
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -244,6 +283,7 @@ Blob 索引器可从以下文档格式提取文本：
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "dataToExtract" : "storageMetadata" } }
     }
+```
 
 ### <a name="using-blob-metadata-to-control-how-blobs-are-indexed"></a>使用 Blob 元数据来控制如何为 Blob 编制索引
 
@@ -259,7 +299,8 @@ Blob 索引器可从以下文档格式提取文本：
 
 默认情况下，Blob 索引器一旦遇到包含不受支持内容类型（例如图像）的 Blob 时，就会立即停止。 当然，可以使用 `excludedFileNameExtensions` 参数跳过某些内容类型。 但是，可能需要在未事先了解所有可能的内容类型的情况下，为 Blob 编制索引。 要在遇到了不受支持的内容类型时继续编制索引，可将 `failOnUnsupportedContentType` 配置参数设置为 `false`：
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+```http
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -267,37 +308,88 @@ Blob 索引器可从以下文档格式提取文本：
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "failOnUnsupportedContentType" : false } }
     }
+```
 
-对于某些 blob，Azure 搜索无法确定其内容类型，或无法处理其他受支持内容类型的文档。 若要忽略此故障模式，将 `failOnUnprocessableDocument` 配置参数设置为 false：
+对于某些 blob，Azure 认知搜索无法确定内容类型，或无法处理其内容类型受其他方式支持的文档。 若要忽略此故障模式，将 `failOnUnprocessableDocument` 配置参数设置为 false：
 
+```http
       "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
+```
 
-Azure 搜索会限制编入索引的 blob 的大小。 这些限制记录在 [Azure 搜索中的服务限制](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)中。 过大的 blob 会被默认视为错误。 但是，如果将 `indexStorageMetadataOnlyForOversizedDocuments` 配置参数设为 true，你仍可以对过大 blob 的存储元数据编制索引： 
+Azure 认知搜索会限制进行了索引编制的 blob 的大小。 这些限制记录在 [Azure 认知搜索中的服务限制](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)中。 过大的 blob 会被默认视为错误。 但是，如果将 `indexStorageMetadataOnlyForOversizedDocuments` 配置参数设为 true，你仍可以对过大 blob 的存储元数据编制索引： 
 
+```http
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
+```
 
 如果在任意处理点（无论是在解析 blob 时，还是在将文档添加到索引时）发生错误，仍然可以继续索引。 若要忽略特定的错误数，将 `maxFailedItems` 和 `maxFailedItemsPerBatch` 配置参数设置为所需值。 例如：
 
+```http
     {
       ... other parts of indexer definition
       "parameters" : { "maxFailedItems" : 10, "maxFailedItemsPerBatch" : 10 }
     }
+```
 
 ## <a name="incremental-indexing-and-deletion-detection"></a>增量索引和删除检测
+
 将 Blob 索引器设置为按计划运行时，它将只根据 Blob 的 `LastModified` 时间戳，为更改的 Blob 重新编制索引。
 
 > [!NOTE]
 > 无需指定更改检测策略 - 系统会自动启用增量索引。
 
-若要支持删除文档，请使用“软删除”方法。 如果彻底删除 Blob，相应的文档不会从搜索索引中删除。 应该改用以下步骤：  
+若要支持删除文档，请使用“软删除”方法。 如果彻底删除 Blob，相应的文档不会从搜索索引中删除。
 
-1. 将一个自定义元数据属性添加到 Blob，告知 Azure 搜索该 Blob 已按逻辑方式删除
-2. 在数据源上配置软删除检测策略
-3. 索引器处理 Blob 后（如索引器状态 API 所示），可以使用物理方式删除该 Blob
+可通过两种方法实现软删除方法。 下面介绍了这两种方法。
+
+### <a name="native-blob-soft-delete-preview"></a>本机 Blob 软删除（预览版）
+
+> [!IMPORTANT]
+> 对本机 Blob 软删除的支持目前为预览版。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2020-06-30-Preview](https://docs.microsoft.com/azure/search/search-api-preview)提供此功能。 目前不支持门户或 .NET SDK。
+
+> [!NOTE]
+> 使用本机 Blob 软删除策略时，索引中文档的文档键必须是 Blob 属性或 Blob 元数据。
+
+在此方法中，你将使用 Azure Blob 存储提供的[本机 Blob 软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)功能。 如果在存储帐户中启用了本机 Blob 软删除，你的数据源已设置了本地软删除策略，并且索引器找到了一个已转变为软删除状态的 Blob，则索引器会从索引中删除该文档。 为 Azure Data Lake Storage Gen2 中的 Blob 编制索引时，不支持本机 Blob 软删除策略。
+
+请使用以下步骤：
+1. [为 Azure Blob 存储启用本地软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)。 我们建议将保留策略设置为比索引器间隔计划大得多的值。 这样，如果在运行索引器时出现问题，或者如果有大量的文档需要编制索引，可以为索引器留出大量的时间来最终处理已软删除的 Blob。 仅当 Azure 认知搜索索引器在处理处于“已软删除”状态的 Blob 时，才会从索引中删除文档。
+1. 在数据源中配置本机 Blob 软删除检测策略。 下面显示了一个示例。 由于此功能目前为预览版，因此必须使用预览版 REST API。
+1. 运行索引器，或者将索引器设置为按计划运行。 当索引器运行并处理 Blob 时，将从索引中删除文档。
+
+    ```
+    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2020-06-30-Preview
+    Content-Type: application/json
+    api-key: [admin key]
+    {
+        "name" : "blob-datasource",
+        "type" : "azureblob",
+        "credentials" : { "connectionString" : "<your storage connection string>" },
+        "container" : { "name" : "my-container", "query" : null },
+        "dataDeletionDetectionPolicy" : {
+            "@odata.type" :"#Microsoft.Azure.Search.NativeBlobSoftDeleteDeletionDetectionPolicy"
+        }
+    }
+    ```
+
+#### <a name="reindexing-undeleted-blobs"></a>为取消删除的 Blob 重新编制索引
+
+在存储帐户中启用本机软删除后，如果从 Azure Blob 存储中删除某个 Blob，该 Blob 将转变为“已软删除”状态，允许你在保留期内取消删除该 Blob。 如果 Azure 认知搜索数据源具有本机 Blob 软删除策略，当索引器处理已软删除的 Blob 时，它会从索引中删除该文档。 如果随后取消删除该 Blob，则索引器始终不会为该 Blob 重新编制索引。 这是因为，索引器根据 Blob 的 `LastModified` 时间戳确定要为哪些 Blob 编制索引。 取消删除某个已软删除的 Blob 时，该 Blob 的 `LastModified` 时间戳不会更新，因此，如果索引器已处理的 Blob 的 `LastModified` 时间戳比已取消删除的 Blob 的时间戳更接近当前时间，则索引器不会为取消删除的 Blob 重新编制索引。 若要确保为取消删除的 Blob 重新编制索引，需要更新该 Blob 的 `LastModified` 时间戳。 为此，可以重新保存该 Blob 的元数据。 你无需更改元数据，但重新保存元数据会更新 Blob 的 `LastModified` 时间戳，使索引器知道它需要为此 Blob 重新编制索引。
+
+### <a name="soft-delete-using-custom-metadata"></a>使用自定义元数据的软删除
+
+在此方法中，你将使用 Blob 的元数据来指示何时应从搜索索引中删除文档。
+
+使用以下步骤：
+
+1. 将一个自定义元数据键值对属性添加到 Blob，以告知 Azure 认知搜索该 Blob 已采用逻辑方式删除。
+1. 在数据源中配置软删除列检测策略。 下面显示了一个示例。
+1. 在索引器处理 Blob 并从索引中删除文档后，你可以删除 Azure Blob 存储的 Blob。
 
 例如，如果某个 Blob 具有值为 `true` 的元数据属性 `IsDeleted`，以下策略会将该 Blob 视为已删除：
 
-    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2019-05-06
+```http
+    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -305,20 +397,25 @@ Azure 搜索会限制编入索引的 blob 的大小。 这些限制记录在 [Az
         "name" : "blob-datasource",
         "type" : "azureblob",
         "credentials" : { "connectionString" : "<your storage connection string>" },
-        "container" : { "name" : "my-container", "query" : "my-folder" },
+        "container" : { "name" : "my-container", "query" : null },
         "dataDeletionDetectionPolicy" : {
             "@odata.type" :"#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",     
             "softDeleteColumnName" : "IsDeleted",
             "softDeleteMarkerValue" : "true"
         }
-    }   
+    }
+```
+
+#### <a name="reindexing-undeleted-blobs"></a>为取消删除的 Blob 重新编制索引
+
+如果在数据源中设置软删除列检测策略，再将自定义元数据添加到具有标记值的 Blob，然后运行索引器，则索引器将从索引中删除该文档。 若要为该文档重新编制索引，只需更改该 Blob 的软删除元数据值，然后重新运行索引器。
 
 ## <a name="indexing-large-datasets"></a>为大型数据集编制索引
 
 Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob 需要编制索引，可以将数据分区，并使用多个索引器来并行处理数据，从而加快索引编制的速度。 设置方法如下：
 
 - 将数据分区到多个 Blob 容器或虚拟文件夹
-- 设置多个 Azure 搜索数据源，为每个容器或文件夹各设置一个。 若要指向某个 Blob 文件夹，请使用 `query` 参数：
+- 设置多个 Azure 认知搜索数据源，为每个容器或文件夹各设置一个。 若要指向某个 Blob 文件夹，请使用 `query` 参数：
 
     ```
     {
@@ -331,20 +428,21 @@ Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob �
 
 - 为每个数据源创建相应的索引器。 所有索引器可以指向同一目标搜索索引。  
 
-- 服务中的每个搜索单位在任何给定的时间都只能运行一个索引器。 只有当索引器实际上并行运行时，如上所述创建多个索引器才很有用。 若要并行运行多个索引器，请通过创建合适数量的分区和副本来横向扩展搜索服务。 例如，如果搜索服务有 6 个搜索单位（例如，2 个分区 x 3 个副本），则 6 个索引器可以同时运行，导致索引吞吐量增加六倍。 若要详细了解缩放和容量规划，请参阅[在 Azure 搜索中缩放用于查询和索引工作负荷的资源级别](search-capacity-planning.md)。
+- 服务中的每个搜索单位在任何给定的时间都只能运行一个索引器。 只有当索引器实际上并行运行时，如上所述创建多个索引器才很有用。 若要并行运行多个索引器，请通过创建合适数量的分区和副本来横向扩展搜索服务。 例如，如果搜索服务有 6 个搜索单位（例如，2 个分区 x 3 个副本），则 6 个索引器可以同时运行，导致索引吞吐量增加六倍。 若要详细了解缩放和容量规划，请参阅[在 Azure 认知搜索中缩放用于查询和索引工作负荷的资源级别](search-capacity-planning.md)。
 
 ## <a name="indexing-documents-along-with-related-data"></a>对文档以及相关数据进行索引
 
 你可能希望从索引中的多个源“组装”文档。 例如，你可能希望将 blob 中的文本与 Cosmos DB 中存储的其他元数据进行合并。 甚至可以将推送索引 API 与各种索引器一起使用来基于多个部件搭建搜索文档。 
 
-若要使此方式可行，所有索引器和其他组件需要针对文档键达成一致。 有关详细演练，请参阅外部文章：[将文档与 Azure 搜索中的其他数据结合在一起](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)。
+若要使此方式可行，所有索引器和其他组件需要针对文档键达成一致。 有关本主题的更多详细信息，请参阅[为多个 Azure 数据源编制索引](https://docs.microsoft.com/azure/search/tutorial-multiple-data-sources)。 有关详细演练，请参阅外部文章：[Combine documents with other data in Azure Cognitive Search](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)（将文档与 Azure 认知搜索中的其他数据结合在一起）。
 
 <a name="IndexingPlainText"></a>
 ## <a name="indexing-plain-text"></a>为纯文本编制索引 
 
 如果所有 blob 都包含采用同一编码的纯文本，则可以通过使用**文本分析模式**显著提高索引编制性能。 若要使用文本分析模式，请将 `parsingMode` 配置属性设置为 `text`：
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+```http
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -352,37 +450,49 @@ Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob �
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "parsingMode" : "text" } }
     }
+```
 
 默认情况下将采用 `UTF-8` 编码。 若要指定不同的编码，请使用 `encoding` 配置属性： 
 
+```http
     {
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "parsingMode" : "text", "encoding" : "windows-1252" } }
     }
-
+```
 
 <a name="ContentSpecificMetadata"></a>
 ## <a name="content-type-specific-metadata-properties"></a>特定于内容类型的元数据属性
-下表汇总了针对每种文档格式执行的处理，并说明了 Azure 搜索提取的元数据属性。
+下表汇总了针对每种文档格式执行的处理，并说明了 Azure 认知搜索提取的元数据属性。
 
 | 文档格式/内容类型 | 特定于内容类型的元数据属性 | 处理详细信息 |
 | --- | --- | --- |
-| HTML (`text/html`) |`metadata_content_encoding`<br/>`metadata_content_type`<br/>`metadata_language`<br/>`metadata_description`<br/>`metadata_keywords`<br/>`metadata_title` |剥离 HTML 标记并提取文本 |
-| PDF (`application/pdf`) |`metadata_content_type`<br/>`metadata_language`<br/>`metadata_author`<br/>`metadata_title` |提取文本，包括嵌入的文档（不包括图像） |
+| HTML（文本/html） |`metadata_content_encoding`<br/>`metadata_content_type`<br/>`metadata_language`<br/>`metadata_description`<br/>`metadata_keywords`<br/>`metadata_title` |剥离 HTML 标记并提取文本 |
+| PDF（应用程序/pdf） |`metadata_content_type`<br/>`metadata_language`<br/>`metadata_author`<br/>`metadata_title` |提取文本，包括嵌入的文档（不包括图像） |
 | DOCX (application/vnd.openxmlformats-officedocument.wordprocessingml.document) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |提取文本，包括嵌入的文档 |
 | DOC (application/msword) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |提取文本，包括嵌入的文档 |
+| DOCM（应用程序/vnd.ms-word.document.macroenabled.12） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |提取文本，包括嵌入的文档 |
+| WORD XML（应用程序/vnd.ms-word2006ml） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |剥离 XML 标记并提取文本 |
+| WORD 2003 XML（应用程序/vnd.ms-wordml） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date` |剥离 XML 标记并提取文本 |
 | XLSX (application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |提取文本，包括嵌入的文档 |
 | XLS (application/vnd.ms-excel) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |提取文本，包括嵌入的文档 |
+| XLSM（应用程序/vnd.ms-excel.sheet.macroenabled.12） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |提取文本，包括嵌入的文档 |
 | PPTX (application/vnd.openxmlformats-officedocument.presentationml.presentation) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |提取文本，包括嵌入的文档 |
 | PPT (application/vnd.ms-powerpoint) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |提取文本，包括嵌入的文档 |
-| MSG (application/vnd.ms-outlook) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_message_bcc`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` |提取文本，包括附件 |
+| PPTM（应用程序/vnd.ms-powerpoint.presentation.macroenabled.12） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |提取文本，包括嵌入的文档 |
+| MSG (application/vnd.ms-outlook) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_from_email`<br/>`metadata_message_to`<br/>`metadata_message_to_email`<br/>`metadata_message_cc`<br/>`metadata_message_cc_email`<br/>`metadata_message_bcc`<br/>`metadata_message_bcc_email`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` |提取文本，包括从附件中提取的文本。 `metadata_message_to_email`、`metadata_message_cc_email` 和 `metadata_message_bcc_email` 是字符串集合，其余字段是字符串。|
+| ODT（应用程序/vnd.oasis.opendocument.text） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |提取文本，包括嵌入的文档 |
+| ODS（应用程序/vnd.oasis.opendocument.spreadsheet） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |提取文本，包括嵌入的文档 |
+| ODP（应用程序/vnd.oasis.opendocument.presentation） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`title` |提取文本，包括嵌入的文档 |
 | ZIP (application/zip) |`metadata_content_type` |从存档中的所有文档提取文本 |
-| XML (application/xml) |`metadata_content_type`</br>`metadata_content_encoding`</br> |剥离 XML 标记并提取文本 |
-| JSON (application/json) |`metadata_content_type`</br>`metadata_content_encoding` |提取文本<br/>注意：如果需要从 JSON Blob 提取多个文档字段，请参阅[为 JSON Blob 编制索引](search-howto-index-json-blobs.md)了解详细信息 |
+| GZ（应用程序/gzip） |`metadata_content_type` |从存档中的所有文档提取文本 |
+| EPUB（应用程序/epub+zip） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_title`<br/>`metadata_description`<br/>`metadata_language`<br/>`metadata_keywords`<br/>`metadata_identifier`<br/>`metadata_publisher` |从存档中的所有文档提取文本 |
+| XML (application/xml) |`metadata_content_type`<br/>`metadata_content_encoding`<br/> |剥离 XML 标记并提取文本 |
+| JSON (application/json) |`metadata_content_type`<br/>`metadata_content_encoding` |提取文本<br/>注意：如果需要从 JSON Blob 提取多个文档字段，请参阅[为 JSON Blob 编制索引](search-howto-index-json-blobs.md)了解详细信息 |
 | EML (message/rfc822) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_creation_date`<br/>`metadata_subject` |提取文本，包括附件 |
-| RTF（应用程序/rtf） |`metadata_content_type`</br>`metadata_author`</br>`metadata_character_count`</br>`metadata_creation_date`</br>`metadata_page_count`</br>`metadata_word_count`</br> | 提取文本|
-| 纯文本 (text/plain) |`metadata_content_type`</br>`metadata_content_encoding`</br> | 提取文本|
+| RTF（应用程序/rtf） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_page_count`<br/>`metadata_word_count`<br/> | 提取文本|
+| 纯文本 (text/plain) |`metadata_content_type`<br/>`metadata_content_encoding`<br/> | 提取文本|
 
 
-## <a name="help-us-make-azure-search-better"></a>帮助我们改进 Azure 搜索
+## <a name="help-us-make-azure-cognitive-search-better"></a>帮助我们改善 Azure 认知搜索
 如果想要请求新功能或者在改进方面有什么看法，敬请通过 [UserVoice 站点](https://feedback.azure.com/forums/263029-azure-search/)告诉我们。

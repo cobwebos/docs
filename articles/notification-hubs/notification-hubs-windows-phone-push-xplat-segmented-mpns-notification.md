@@ -1,11 +1,11 @@
 ---
-title: 使用 Azure 通知中心向特定 Windows Phone 推送通知 | Microsoft Docs
+title: 使用 Azure 通知中心将推送通知发送到特定 Windows Phone | Microsoft Docs
 description: 本教程介绍如何使用 Azure 通知中心将通知推送到注册到应用程序后端的特定（并非所有）Windows Phone 8 或 Windows Phone 8.1 设备。
 services: notification-hubs
 documentationcenter: windows
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 42726bf5-cc82-438d-9eaa-238da3322d80
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,26 +14,28 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 10f8c2e21f2dcf8c108576d54fe6776ecf04a0f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: fd8b1478b6e5112092349eddb5f24d20f6902621
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861314"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520249"
 ---
-# <a name="tutorial-push-notifications-to-specific-windows-phone-devices-by-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定 Windows Phone 设备推送通知
+# <a name="tutorial-send-push-notifications-to-specific-windows-phones-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心将推送通知发送到特定 Windows Phone
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
 本教程演示如何使用 Azure 通知中心将推送通知发送到特定 Windows Phone 8 或 Windows Phone 8.1 设备。 如果要以 Windows Phone 8.1（非 Silverlight）为目标，请参阅本教程的 [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) 版本。
 
-在通知中心创建注册时，请通过加入一个或多个标记来启用此方案。 将通知发送到标记时，已注册该标记的所有设备将接收通知。 有关标记的详细信息，请参阅[注册中的标记](notification-hubs-tags-segment-push-message.md)。
+在通知中心创建注册时，请通过加入一个或多个标记  来启用此方案。 将通知发送到标记时，已注册该标记的所有设备将接收通知。 有关标记的详细信息，请参阅[注册中的标记](notification-hubs-tags-segment-push-message.md)。
 
 > [!NOTE]
 > 通知中心 Windows Phone SDK 不支持将 Windows 推送通知服务 (WNS) 与 Windows Phone 8.1 Silverlight 应用配合使用。 若要将 WNS（而不是 MPNS）与 Windows Phone 8.1 Silverlight 应用配合使用，请遵循使用 REST API 的[通知中心 - Windows Phone Silverlight 教程]。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 向移动应用添加类别选择
@@ -43,7 +45,7 @@ ms.locfileid: "57861314"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成[教程：使用 Azure 通知中心向 Windows Phone 应用推送通知](notification-hubs-windows-mobile-push-notifications-mpns.md)。 在本教程中，请更新移动应用程序，以便注册感兴趣的突发新闻类别，只接收这些类别的推送通知。
+在开始本教程之前完成[教程：使用 Azure 通知中心向 Windows Phone 应用推送通知](notification-hubs-windows-mobile-push-notifications-mpns.md)。 在本教程中，请更新移动应用程序，以便注册感兴趣的突发新闻类别，只接收这些类别的推送通知。
 
 ## <a name="add-category-selection-to-the-mobile-app"></a>向移动应用添加类别选择
 
@@ -330,5 +332,5 @@ ms.locfileid: "57861314"
 [Use Notification Hubs to broadcast localized breaking news]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Notification Hubs How-To for Windows Phone]: ??

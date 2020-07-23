@@ -1,31 +1,27 @@
 ---
-title: 为 Azure 逻辑应用创建 Web API 和 REST API | Microsoft Docs
+title: 为 Azure 逻辑应用创建 Web API 和 REST API
 description: 创建用于调用 API、服务或系统的 Web API 和 REST API，以便在 Azure 逻辑应用中进行系统集成
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, jehollan, LADocs
-ms.topic: article
-ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
+ms.reviewer: jonfan, logicappspm
+ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: 620ede672d71338abeff5198fd5f94e92dc193d0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 01ddef37702cb4dedaefb3e94e488ef478f292c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60681805"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520794"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>创建可从 Azure 逻辑应用调用的自定义 API
 
-虽然 Azure 逻辑应用提供可用于逻辑应用工作流的 [100 多个内置连接器](../connectors/apis-list.md)，但建议调用不作为连接器提供的 API、系统和服务。 可以创建自己的 API，提供在逻辑应用中使用的操作和触发器。 下面是一些其他理由，解释为何建议创建可从逻辑应用工作流调用的自定义 API：
+虽然 Azure 逻辑应用提供可用于逻辑应用工作流的[数百个连接器](../connectors/apis-list.md)，但建议调用不作为连接器提供的 API、系统和服务。 可以创建自己的 API，提供在逻辑应用中使用的操作和触发器。 下面是一些其他理由，解释为何建议创建可从逻辑应用工作流调用的自定义 API：
 
 * 扩展当前系统集成和数据集成工作流。
 * 帮助客户使用服务来管理专业或个人任务。
 * 扩展服务的市场宣传、可发现性和使用。
 
-连接器本质上是 Web API，此类 API 将 REST 用于可插入接口、将 [Swagger 元数据格式](https://swagger.io/specification/)用于文档、将 JSON 用作其数据交换格式。 因为连接器是通过 HTTP 终结点进行通信的 REST API，所以可以使用任何语言生成连接器，如 .NET、Java 或 Node.js。 此外，还可在 [Azure 应用服务](../app-service/overview.md)上托管API，前者是一款平台即服务 (PaaS) 产品，可为 API 托管提供一种最简单且可缩放性最高的最佳方法。 
+连接器本质上是 Web API，此类 API 将 REST 用于可插入接口、将 [Swagger 元数据格式](https://swagger.io/specification/)用于文档、将 JSON 用作其数据交换格式。 因为连接器是通过 HTTP 终结点进行通信的 REST API，所以可以使用任何语言生成连接器，如 .NET、Java、Python 或 Node.js。 此外，还可在 [Azure 应用服务](../app-service/overview.md)上托管API，前者是一款平台即服务 (PaaS) 产品，可为 API 托管提供一种最简单且可缩放性最高的最佳方法。 
 
 对于要用于逻辑应用的自定义 API，API 可以提供在逻辑应用工作流中执行特定任务的[操作](./logic-apps-overview.md#logic-app-concepts)。 API 还可充当[触发器](./logic-apps-overview.md#logic-app-concepts)，在新数据或事件满足指定条件时启动逻辑应用工作流。 本主题介绍根据想要 API 提供的行为，在 API 中生成操作和触发器可以遵循的常见模式。
 
@@ -45,7 +41,7 @@ ms.locfileid: "60681805"
 
 ## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>自定义 API 和自定义连接器有何不同？
 
-本质上来说，自定义 API 和[自定义连接器](../logic-apps/custom-connector-overview.md)都是 Web API，此类 API 将 REST 用于可插入接口、将 [Swagger 元数据格式](https://swagger.io/specification/)用于文档、将 JSON 用作其数据交换格式。 因为这些 API 和连接器是通过 HTTP 终结点进行通信的 REST API，所以可以使用任何语言生成自定义 API 和连接器，如 .NET、Java 或 Node.js。
+本质上来说，自定义 API 和[自定义连接器](../logic-apps/custom-connector-overview.md)都是 Web API，此类 API 将 REST 用于可插入接口、将 [Swagger 元数据格式](https://swagger.io/specification/)用于文档、将 JSON 用作其数据交换格式。 因为这些 API 和连接器是通过 HTTP 终结点进行通信的 REST API，所以可以使用任何语言生成自定义 API 和连接器，如 .NET、Java、Python 或 Node.js。
 
 自定义 API 允许调用非连接器 API，并提供可使用 HTTP + Swagger、Azure API 管理或应用程序服务调用的终结点。 自定义连接器的工作方式与自定义 API 类似，但它还具有以下属性：
 
@@ -53,13 +49,13 @@ ms.locfileid: "60681805"
 * 在逻辑应用设计器中，显示在 Microsoft 托管连接器旁边（含图标）。
 * 仅适用于满足以下条件的连接器创建者和逻辑应用用户：在部署逻辑应用的区域中具有相同的 Azure Active Directory 租户和 Azure 订阅。
 
-还可指定注册的连接器进行 Microsoft 认证。 此过程验证注册的连接器是否满足公共使用的条件，并使这些连接器可供 Microsoft Flow 和 Microsoft PowerApps 中的用户使用。
+还可指定注册的连接器进行 Microsoft 认证。 此过程验证注册的连接器是否满足公共使用的条件，并使这些连接器可供 Power Automate 和 Microsoft PowerApps 中的用户使用。
 
 有关自定义连接器的详细信息，请参阅 
 
 * [自定义连接器概述](../logic-apps/custom-connector-overview.md)
-* [从 Web API 创建自定义连接器](../logic-apps/custom-connector-build-web-api-app-tutorial.md)
-* [在 Azure 逻辑应用中注册自定义连接器](../logic-apps/logic-apps-custom-connector-register.md)
+* [从 Web API 创建自定义连接器](/connectors/custom-connectors/create-web-api-connector)
+* [在 Azure 逻辑应用中注册自定义连接器](/connectors/custom-connectors/)
 
 ## <a name="helpful-tools"></a>有用的工具
 
@@ -140,11 +136,13 @@ ms.locfileid: "60681805"
 
 ![Webhook 操作模式](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
-> [!NOTE]
-> 目前，逻辑应用设计器不支持通过 Swagger 发现 Webhook 终结点。 因此对于此模式，需要添加 [Webhook 操作](../connectors/connectors-native-webhook.md)并指定 URL、标头以及请求正文。 另请参阅[工作流操作和触发器](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action)。 若要传入回叫 URL，可以根据需要使用以前任何字段中的 `@listCallbackUrl()` 工作流函数。
+目前，逻辑应用设计器不支持通过 Swagger 发现 Webhook 终结点。 因此对于此模式，需要添加 [Webhook 操作](../connectors/connectors-native-webhook.md)并指定 URL、标头以及请求正文。 另请参阅[工作流操作和触发器](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action)。 有关 Webhook 模式的示例，查看 [GitHub 中的 Webhook 触发器示例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
 
-> [!TIP]
-> 有关 Webhook 模式的示例，查看 [GitHub 中的 Webhook 触发器示例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
+下面是一些其他提示和说明：
+
+* 若要传入回叫 URL，可以根据需要使用以前任何字段中的 `@listCallbackUrl()` 工作流函数。
+
+* 如果同时拥有逻辑应用和订阅的服务，则在调用回调 URL 之后，无需调用 `unsubscribe` 终结点。 否则，逻辑应用运行时需要调用 `unsubscribe` 终结点以表示不需要更多调用，并且允许在服务器端进行资源清理。
 
 <a name="triggers"></a>
 
@@ -202,17 +200,19 @@ Webhook 触发器的行为非常类似于之前本主题中所述的 [Webhook �
 
 ![Webhook 触发器模式](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 
-> [!NOTE]
-> 目前，逻辑应用设计器不支持通过 Swagger 发现 Webhook 终结点。 因此对于此模式，需要添加 [Webhook 触发器](../connectors/connectors-native-webhook.md)并指定 URL、 标头以及请求正文。 另请参阅 [HTTPWebhook 触发器](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger)。 若要传入回叫 URL，可以根据需要使用以前任何字段中的 `@listCallbackUrl()` 工作流函数。
->
-> 若要防止多次处理相同数据，触发器应清理已读取且传递到逻辑应用的数据。
+目前，逻辑应用设计器不支持通过 Swagger 发现 Webhook 终结点。 因此对于此模式，需要添加 [Webhook 触发器](../connectors/connectors-native-webhook.md)并指定 URL、 标头以及请求正文。 另请参阅 [HTTPWebhook 触发器](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger)。 有关 Webhook 模式的示例，请查看 [GitHub 中的 Webhook 触发器控制器示例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
 
-> [!TIP]
-> 有关 Webhook 模式的示例，请查看 [GitHub 中的 Webhook 触发器控制器示例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
+下面是一些其他提示和说明：
 
-## <a name="secure-calls-to-your-apis-from-logic-apps"></a>通过逻辑应用保护对 API 的调用
+* 若要传入回叫 URL，可以根据需要使用以前任何字段中的 `@listCallbackUrl()` 工作流函数。
 
-创建自定义 API 后，请为 API 设置身份验证，以便可以通过逻辑应用安全地调用它们。 了解[如何通过逻辑应用保护对自定义 API 的调用](../logic-apps/logic-apps-custom-api-authentication.md)。
+* 若要防止多次处理相同数据，触发器应清理已读取且传递到逻辑应用的数据。
+
+* 如果同时拥有逻辑应用和订阅的服务，则在调用回调 URL 之后，无需调用 `unsubscribe` 终结点。 否则，逻辑应用运行时需要调用 `unsubscribe` 终结点以表示不需要更多调用，并且允许在服务器端进行资源清理。
+
+## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>提高从逻辑应用对 API 进行调用的安全性
+
+创建自定义 API 后，请为 API 设置身份验证，以便可以通过逻辑应用安全地调用它们。 了解[如何提高从逻辑应用对自定义 API 进行调用的安全性](../logic-apps/logic-apps-custom-api-authentication.md)。
 
 ## <a name="deploy-and-call-your-apis"></a>部署和调用 API
 
@@ -222,13 +222,13 @@ Webhook 触发器的行为非常类似于之前本主题中所述的 [Webhook �
 
 要使自定义 API 可供 Azure 中其他逻辑应用用户使用，必须添加安全性并将这些 API 注册为逻辑应用连接器。 有关详细信息，请参阅[自定义连接器概述](../logic-apps/custom-connector-overview.md)。 
 
-要使自定义 API 可供逻辑应用、Microsoft Flow 和 Microsoft PowerApps 中所有用户使用，必须添加安全性、将 API 注册为逻辑应用连接器并向 [Microsoft Azure 认证计划](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)提名连接器。 
+要使自定义 API 可供逻辑应用、Power Automate 和 Microsoft PowerApps 中所有用户使用，必须添加安全性、将 API 注册为逻辑应用连接器并向 [Microsoft Azure 认证计划](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)提名连接器。 
 
 ## <a name="get-support"></a>获取支持
 
 * 有关使用自定义 API 的特定帮助，请联系[customapishelp@microsoft.com](mailto:customapishelp@microsoft.com)。
 
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](/answers/topics/azure-logic-apps.html)。
 
 * 为帮助改进逻辑应用，敬请在[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)上投票或发表看法。 
 

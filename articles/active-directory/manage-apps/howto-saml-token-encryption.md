@@ -3,27 +3,25 @@ title: Azure Active Directory 中的 SAML 令牌加密
 description: 了解如何配置 Azure Active Directory SAML 令牌加密。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
-editor: ''
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2019
-ms.author: mimart
+ms.date: 03/13/2020
+ms.author: kenwith
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75f8b785b8eadd21f1f94cf82fe137d6f747e738
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
-ms.translationtype: MT
+ms.openlocfilehash: 779d1b73f45f9be5b4bd00d546987b7c1e0b6a43
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65824753"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763340"
 ---
-# <a name="how-to-configure-azure-ad-saml-token-encryption-preview"></a>如何：配置 Azure AD SAML 令牌加密（预览）
+# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>如何：配置 Azure AD SAML 令牌加密
 
 > [!NOTE]
 > 令牌加密是一项 Azure Active Directory (Azure AD) 高级功能。 若要详细了解 Azure AD 版本、功能和定价，请参阅 [Azure AD 定价](https://azure.microsoft.com/pricing/details/active-directory/)。
@@ -58,38 +56,38 @@ Azure AD 使用 AES-256 加密 SAML 断言数据。
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
 
-1. 转到“Azure Active Directory”>“企业应用程序”边栏选项卡，然后选择要为其配置令牌加密的应用程序。
+1. 转到“Azure Active Directory”>“企业应用程序”边栏选项卡，然后选择要为其配置令牌加密的应用程序。****
 
-1. 在该应用程序的页面上，选择“令牌加密”。
+1. 在该应用程序的页面上，选择“令牌加密”。****
 
     ![Azure 门户中的令牌加密选项](./media/howto-saml-token-encryption/token-encryption-option-small.png)
 
     > [!NOTE]
-    > “令牌加密”选项仅适用于已在 Azure 门户的“企业应用程序”边栏选项卡中设置的、来自应用程序库或非库应用的 SAML 应用程序。 对于其他应用程序，此菜单选项将会禁用。 对于通过 Azure 门户中的“应用注册”体验注册的应用程序，可以通过 Microsoft Graph 或 PowerShell 使用应用程序清单配置 SAML 令牌加密。
+    > “令牌加密”选项仅适用于已在 Azure 门户的“企业应用程序”边栏选项卡中设置的、来自应用程序库或非库应用的 SAML 应用程序。******** 对于其他应用程序，此菜单选项将会禁用。 对于通过 Azure 门户中的“应用注册”体验注册的应用程序，可以通过 Microsoft Graph 或 PowerShell 使用应用程序清单配置 SAML 令牌加密。****
 
-1. 在“令牌加密”页上，选择“导入证书”导入包含公共 X.509 证书的 .cer 文件。
+1. 在 "**令牌加密**" 页上，选择 "**导入证书**" 以导入包含公共 x.509 证书的 .cer 文件。
 
     ![导入包含 X.509 证书的 .cer 文件](./media/howto-saml-token-encryption/import-certificate-small.png)
 
-1. 导入证书并配置要在应用程序端使用的私钥后，选择指纹状态旁边的“...”激活加密，然后从下拉菜单选项中选择“激活令牌加密”。
+1. 导入证书并配置要在应用程序端使用的私钥后，选择指纹状态旁边的“...”激活加密，然后从下拉菜单选项中选择“激活令牌加密”。********
 
-1. 选择“是”确认激活令牌加密证书。
+1. 选择“是”确认激活令牌加密证书。****
 
 1. 确认针对应用程序发出的 SAML 断言已加密。
 
 ### <a name="to-deactivate-token-encryption-in-the-azure-portal"></a>在 Azure 门户中停用令牌加密
 
-1. 在 Azure 门户中转到“Azure Active Directory”>“企业应用程序”，然后选择已启用 SAML 令牌加密的应用程序。
+1. 在 Azure 门户中转到“Azure Active Directory”>“企业应用程序”，然后选择已启用 SAML 令牌加密的应用程序。****
 
-1. 在应用程序的页面上选择“令牌加密”，找到该证书，然后选择“...”选项显示下拉菜单。
+1. 在应用程序的页面上选择“令牌加密”，找到该证书，然后选择“...”选项显示下拉菜单。********
 
-1. 选择“停用令牌加密”。
+1. 选择“停用令牌加密”。****
 
 ## <a name="configure-saml-token-encryption-using-graph-api-powershell-or-app-manifest"></a>使用图形 API、PowerShell 或应用清单配置 SAML 令牌加密
 
 加密证书存储在 Azure AD 中的应用程序对象内，带有 `encrypt` 用法标记。 可以配置多个加密证书，正在用于加密令牌的证书由 `tokenEncryptionKeyID` 属性标识。
 
-需要使用应用程序的对象 ID 才能通过 Microsoft Graph API 或 PowerShell 配置令牌加密。 可以编程方式找到此值，或者在 Azure 门户中转到应用程序的“属性”页，然后记下“对象 ID”值。
+需要使用应用程序的对象 ID 才能通过 Microsoft Graph API 或 PowerShell 配置令牌加密。 可以编程方式找到此值，或者在 Azure 门户中转到应用程序的“属性”页，然后记下“对象 ID”值。********
 
 使用 Graph、PowerShell 或应用程序清单配置 keyCredential 时，应生成一个用作 keyId 的 GUID。
 
@@ -123,18 +121,15 @@ Azure AD 使用 AES-256 加密 SAML 断言数据。
 
 ### <a name="to-configure-token-encryption-using-powershell"></a>使用 PowerShell 配置令牌加密
 
-此功能即将推出。 
+1. 使用最新 Azure AD PowerShell 模块连接到你的租户。
 
-<!--
-1. Use the latest Azure AD PowerShell module to connect to your tenant.
-
-1. Set the token encryption settings using the **[Set-AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** command.
+1. 使用**[azure 应用程序](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** 命令设置令牌加密设置。
 
     ```
-    Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials “<KeyCredentialsObject>”  -TokenEncryptionKeyId <keyID>
+    Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials "<KeyCredentialsObject>"  -TokenEncryptionKeyId <keyID>
     ```
 
-1. Read the token encryption settings using the following commands.
+1. 使用以下命令读取令牌加密设置。
 
     ```powershell
     $app=Get-AzureADApplication -ObjectId <ApplicationObjectId>
@@ -142,15 +137,13 @@ Azure AD 使用 AES-256 加密 SAML 断言数据。
     $app.TokenEncryptionKeyId
     ```
 
--->
-
 ### <a name="to-configure-token-encryption-using-the-application-manifest"></a>使用应用程序清单配置令牌加密
 
-1. 在 Azure 门户中，转到“Azure Active Directory”>“应用注册”。
+1. 在 Azure 门户中，转到“Azure Active Directory”>“应用注册”。****
 
-1. 从下拉菜单中选择“所有应用”以显示所有应用，然后选择要配置的企业应用程序。
+1. 从下拉菜单中选择“所有应用”以显示所有应用，然后选择要配置的企业应用程序。****
 
-1. 在该应用程序的页面上，选择“清单”以编辑[应用程序清单](../develop/reference-app-manifest.md)。
+1. 在该应用程序的页面上，选择“清单”以编辑[应用程序清单](../develop/reference-app-manifest.md)。****
 
 1. 设置 `tokenEncryptionKeyId` 属性的值。
 

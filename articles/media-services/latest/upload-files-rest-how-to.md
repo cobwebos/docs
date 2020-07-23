@@ -1,5 +1,5 @@
 ---
-title: 使用 REST 将文件上传到 Azure 媒体服务帐户 | Microsoft Docs
+title: 使用 REST 将文件上传到 Azure 媒体服务 v3 帐户 | Microsoft Docs
 description: 了解如何通过创建和上传资产将媒体内容加入媒体服务。
 services: media-services
 documentationcenter: ''
@@ -13,20 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: a241f66adecbab1d0b1462f379d3765d6c1de252
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 38d46978e37ead59deb17a86f643df041452e497
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61466763"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76705762"
 ---
-# <a name="upload-files-into-a-media-services-account-using-rest"></a>使用 REST 将文件上传到媒体服务帐户
+# <a name="upload-files-into-a-media-services-v3-account-using-rest"></a>使用 REST 将文件上传到媒体服务 v3 帐户
 
 在媒体服务中，可以将数字文件上传到与资产关联的 blob容器中。 [资产](https://docs.microsoft.com/rest/api/media/operations/asset)实体可以包含视频、音频、图片、缩略图集合、文本轨道和隐藏式字幕文件（以及这些文件的相关元数据）。 将文件上传到资产的容器中后，相关内容即安全地存储在云中供后续处理和流式传输。
 
 本文介绍如何使用 REST 上传本地文件。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本主题中所述的步骤，必须：
 
@@ -39,8 +38,8 @@ ms.locfileid: "61466763"
 
 本部分介绍如何创建新的资产。
 
-1. 选择“资产” -> “创建或更新资产”。
-2. 按“发送”。
+1. 选择“资产” -> “创建或更新资产”   。
+2. 按“发送”。 
 
     ![创建资产](./media/upload-files/postman-create-asset.png)
 
@@ -50,8 +49,8 @@ ms.locfileid: "61466763"
 
 本部分介绍如何获取通过所创建资产生成的 SAS URL。 所创建的 SAS URL 具有读写权限，可用于将数字文件上传到资产容器。
 
-1. 选择“资产” -> “列出资产 URL”。
-2. 按“发送”。
+1. 选择“资产” -> “列出资产 URL”   。
+2. 按“发送”。 
 
     ![上传文件](./media/upload-files/postman-create-sas-locator.png)
 
@@ -59,7 +58,7 @@ ms.locfileid: "61466763"
 
 ## <a name="upload-a-file-to-blob-storage-using-the-upload-url"></a>使用上传 URL 将文件上传到 Blob 存储
 
-使用 Azure 存储 API 或 SDK，例如，[存储 REST API](../../storage/common/storage-rest-api-auth.md)、[Java SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md) 或 [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)。
+使用 Azure 存储 API 或 SDK，例如，[存储 REST API](../../storage/common/storage-rest-api-auth.md) 或 [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,25 +2,19 @@
 title: Azure PowerShell 脚本示例 - 计算要计费的 Blob 容器总大小 | Microsoft Docs
 description: 出于计费目的计算 Azure Blob 存储中容器的总大小。
 services: storage
-documentationcenter: na
 author: fhryo-msft
-manager: cbrooks
-editor: tysonn
-ms.assetid: ''
-ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
+ms.subservice: blobs
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: 02b4cfcc6d88430701f653665269532a4eb7092f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 12b32256c91dfcf93ca55eeb348cc78613ba860e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799246"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067105"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>计算要计费的 Blob 容器总大小
 
@@ -109,7 +103,7 @@ For-Each Signed Identifier[512 bytes]
     >使用快照时，大小仅包括此基本或快照 blob 的唯一数据。 如果未提交块在一周后未被使用，则回收到垃圾桶。 之后不计入账单。
 
 * 对于页 blob：
-  * 字节数按具有数据的不连续页面范围数乘以 12 计算。 这是在调用 GetPageRanges API 时看到的唯一页面范围数。
+  * 字节数按具有数据的不连续页面范围数乘以 12 计算。 这是在调用 GetPageRanges API 时看到的唯一页面范围数  。
 
   * 所有存储页面中的数据大小（按字节计）。
 

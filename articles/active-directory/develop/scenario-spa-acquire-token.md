@@ -1,51 +1,46 @@
 ---
-title: 单页面应用程序 （获取令牌以调用的 API）-Microsoft 标识平台
-description: 了解如何生成单页面应用程序 （获取令牌以调用的 API）
+title: 获取令牌以调用 Web API（单页应用） - Microsoft 标识平台
+description: 了解如何构建单页应用程序（获取用于调用 API 的令牌）
 services: active-directory
-documentationcenter: dev-center-name
-author: navyasric
+author: negoe
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
-ms.author: nacanuma
+ms.date: 08/20/2019
+ms.author: negoe
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4c842db8a0874d3619e0dc59b90aa12226cb984
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.openlocfilehash: eeba01a609a1a21ed564c0b9cb78a28a4ad5c95a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138816"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80882312"
 ---
-# <a name="single-page-application---acquire-a-token-to-call-an-api"></a>单页面应用程序-获取令牌以调用的 API
+# <a name="single-page-application-acquire-a-token-to-call-an-api"></a>单页应用程序：获取用于调用 API 的令牌
 
-用于获取令牌，以先尝试无提示令牌请求使用与 MSAL.js Api 为模式`acquireTokenSilent`方法。 调用此方法时，库将首先检查是否存在有效的令牌，并将其返回的浏览器存储中的缓存。 如果在缓存中没有有效的令牌，它将发送无提示令牌请求到 Azure Active Directory (Azure AD) 从隐藏的 iframe。 此方法还使库能够以续订令牌。 有关单一登录会话和 Azure AD 中的令牌生存期值的更多详细信息，请参阅[令牌生存期](active-directory-configurable-token-lifetimes.md)。
+使用 MSAL.js 获取 API 的令牌时，其模式是首先使用 `acquireTokenSilent` 方法来尝试无提示令牌请求。 调用此方法时，该库会首先检查浏览器存储中的缓存，看是否存在有效的令牌，在有的情况下会将其返回。 如果缓存中没有有效的令牌，则会从隐藏的 iframe 向 Azure Active Directory (Azure AD) 发送一个无提示令牌请求。 库也可以通过此方法来续订令牌。 有关 Azure AD 中的单一登录会话和令牌生存期值的详细信息，请参阅[令牌生存期](active-directory-configurable-token-lifetimes.md)。
 
-对 Azure AD 的无提示令牌请求可能会失败的一些原因，例如过期的 Azure AD 会话或更改密码。 在这种情况下，您可以调用 （它将提示用户） 的交互式方法之一获取的令牌。
+可能会因某些原因（例如 Azure AD 会话过期，或者密码已更改）而导致以无提示方式向 Azure AD 请求令牌失败。 在这种情况下，可以调用某个交互方法（会提示用户）来获取令牌：
 
-* [获取与一个弹出窗口的令牌](#acquire-token-with-a-pop-up-window)使用 `acquireTokenPopup`
-* [获取令牌的重定向](#acquire-token-with-redirect)使用 `acquireTokenRedirect`
+* [弹出窗口](#acquire-a-token-with-a-pop-up-window)，此方法使用 `acquireTokenPopup`
+* [重定向](#acquire-a-token-with-a-redirect)，此方法使用 `acquireTokenRedirect`
 
-**弹出窗口或重定向体验之间进行选择**
+## <a name="choose-between-a-pop-up-or-redirect-experience"></a>在弹出窗口或重定向体验之间进行选择
 
- 不能在应用程序中使用弹出窗口和重定向方法的组合。 弹出窗口或重定向体验之间的选择取决于你的应用程序流。
+ 不能在应用程序中同时使用弹出窗口和重定向方法。 在弹出窗口和重定向体验之间进行的选择取决于应用程序流：
 
-* 如果不希望用户在身份验证期间通过导航离开您的主应用程序页，建议使用弹出窗口的方法。 由于身份验证重定向发生在弹出窗口中，将保留主应用程序的状态。
+* 如果不希望用户在身份验证期间离开主应用程序页，建议使用弹出窗口方法。 由于身份验证重定向发生在弹出窗口中，系统会保留主应用程序的状态。
 
-* 在某些情况下，您可能需要使用重定向方法。 如果应用程序的用户有浏览器约束或策略在禁用弹出窗口，您可以使用重定向方法。 它还建议对 Internet Explorer 浏览器中使用的重定向方法，因为在某些[已知问题与 Internet Explorer](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser)时处理的弹出窗口。
+* 如果用户的浏览器约束或策略禁用了弹出窗口，则可使用重定向方法。 请对 Internet Explorer 浏览器使用重定向方法，因为 [Internet Explorer 上具有弹出窗口的已知问题](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser)。
 
-您可以设置你想要生成访问令牌请求时包含的访问令牌的 API 作用域。 请注意，所有请求的作用域不应授予访问令牌中，并且取决于用户的同意。
+可以设置 API 作用域，在生成访问令牌请求时需要访问令牌包括这些作用域。 请注意，可能不会在访问令牌中授予所有请求的作用域。 具体取决于用户的许可。
 
-## <a name="acquire-token-with-a-pop-up-window"></a>获取与一个弹出窗口的令牌
+## <a name="acquire-a-token-with-a-pop-up-window"></a>通过弹出窗口获取令牌
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-上面的模式，使用弹出窗口体验的方法：
+以下代码将前面描述的模式与弹出体验的方法结合起来：
 
 ```javascript
 const accessTokenRequest = {
@@ -54,10 +49,10 @@ const accessTokenRequest = {
 
 userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(accessTokenResponse) {
     // Acquire token silent success
-    // call API with token
+    // Call API with token
     let accessToken = accessTokenResponse.accessToken;
 }).catch(function (error) {
-    //Acquire token silent failure, send an interactive request.
+    //Acquire token silent failure, and send an interactive request
     if (error.errorMessage.indexOf("interaction_required") !== -1) {
         userAgentApplication.acquireTokenPopup(accessTokenRequest).then(function(accessTokenResponse) {
             // Acquire token interactive success
@@ -70,30 +65,50 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angular"></a>[Angular](#tab/angular)
 
-MSAL Angular 包装器提供了添加 HTTP 侦听器的便利`MsalInterceptor`这将自动以无提示方式获取访问令牌，并将它们附加到 Api 收到的 HTTP 请求。
+MSAL Angular 包装器提供 HTTP 侦听器，后者会自动以无提示方式获取访问令牌并将其附加到针对 API 的 HTTP 请求。
 
-你可以指定在 api 范围`protectedResourceMap`MsalInterceptor 将请求时自动获取令牌的配置选项。
+可以在 `protectedResourceMap` 配置选项中指定 API 的作用域。 `MsalInterceptor` 将在自动获取令牌时请求这些作用域。
 
 ```javascript
-//In app.module.ts
+// app.module.ts
 @NgModule({
-  imports: [ MsalModule.forRoot({
-                clientID: 'your_app_id',
-                protectedResourceMap: {"https://graph.microsoft.com/v1.0/me", ["user.read", "mail.send"]}
-            })]
-         })
-
-providers: [ ProductService, {
-        provide: HTTP_INTERCEPTORS,
-        useClass: MsalInterceptor,
-        multi: true
+  declarations: [
+    // ...
+  ],
+  imports: [
+    // ...
+    MsalModule.forRoot({
+      auth: {
+        clientId: 'Enter_the_Application_Id_Here',
+      }
+    },
+    {
+      popUp: !isIE,
+      consentScopes: [
+        'user.read',
+        'openid',
+        'profile',
+      ],
+      protectedResourceMap: [
+        ['https://graph.microsoft.com/v1.0/me', ['user.read']]
+      ]
+    })
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true
     }
-   ],
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 ```
 
-成功与失败的无提示令牌获取，MSAL Angular 提供您可以订阅的回调。 它是还需要记住取消订阅。
+以无提示方式获取令牌时，不管是成功还是失败，MSAL Angular 都会提供回叫，可进行订阅。 此外还要记住取消订阅。
 
 ```javascript
 // In app.component.ts
@@ -104,23 +119,25 @@ providers: [ ProductService, {
 
 ngOnDestroy() {
    this.broadcastService.getMSALSubject().next(1);
-   if(this.subscription) {
+   if (this.subscription) {
      this.subscription.unsubscribe();
    }
  }
 ```
 
-或者，你可以显式获取令牌核心 MSAL.js 库中所述使用获取令牌方法。
+另外，也可通过显式方式使用获取令牌方法来获取令牌，如核心 MSAL.js 库中所述。
 
-## <a name="acquire-token-with-redirect"></a>获取令牌的重定向
+---
 
-### <a name="javascript"></a>JavaScript
+## <a name="acquire-a-token-with-a-redirect"></a>通过重定向获取令牌
 
-模式是为上述但若要以交互方式获取令牌的重定向方法所示。 请注意，你将需要注册重定向回叫，上文所述。
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+以下模式如前文所述，但显示的是如何使用重定向方法以交互方式获取令牌。 你需注册重定向回叫，如前文所述。
 
 ```javascript
 function authCallback(error, response) {
-    //handle redirect response
+    // Handle redirect response
 }
 
 userAgentApplication.handleRedirectCallback(authCallback);
@@ -131,10 +148,10 @@ const accessTokenRequest: AuthenticationParameters = {
 
 userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(accessTokenResponse) {
     // Acquire token silent success
-    // call API with token
+    // Call API with token
     let accessToken = accessTokenResponse.accessToken;
 }).catch(function (error) {
-    //Acquire token silent failure, send an interactive request.
+    //Acquire token silent failure, and send an interactive request
     console.log(error);
     if (error.errorMessage.indexOf("interaction_required") !== -1) {
         userAgentApplication.acquireTokenRedirect(accessTokenRequest);
@@ -142,9 +159,41 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
-### <a name="angular"></a>Angular
+## <a name="request-optional-claims"></a>请求可选声明
 
-这是与上面所述相同。
+可以使用可选声明来实现以下目的：
+
+- 在应用程序的令牌中包括其他声明。
+- 更改 Azure AD 在令牌中返回的某些声明的行为。
+- 添加和访问应用程序的自定义声明。
+
+若要请求 `IdToken` 中的可选声明，可以将一个字符串化声明对象发送到 `AuthenticationParameters.ts` 类的 `claimsRequest` 字段。
+
+```javascript
+"optionalClaims":
+   {
+      "idToken": [
+            {
+                  "name": "auth_time",
+                  "essential": true
+             }
+      ],
+
+var request = {
+    scopes: ["user.read"],
+    claimsRequest: JSON.stringify(claims)
+};
+
+myMSALObj.acquireTokenPopup(request);
+```
+
+如需了解详细信息，请参阅[可选声明](active-directory-optional-claims.md)。
+
+# <a name="angular"></a>[Angular](#tab/angular)
+
+此代码与前文所述相同。
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

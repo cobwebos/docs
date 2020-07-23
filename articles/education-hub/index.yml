@@ -1,0 +1,47 @@
+### YamlMime:Landing
+title: Azure 教育中心文档
+summary: 使用教育中心快速轻松地为学生提供要精通云所需的所有必需的软件、学习和 Azure 服务。
+metadata:
+  title: Azure 教育中心文档
+  description: 使用教育中心快速轻松地为学生提供要精通云所需的所有必需的软件、学习和 Azure 服务。
+  ms.service: azure-education .
+  ms.subservice: education-hub
+  ms.topic: landing-page
+  author: tfosmark
+  ms.author: rymend
+  ms.date: 07/14/2020
+  ms.openlocfilehash: be96b241c3ca784043ac3203fd1cb100b05178b8
+  ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 07/20/2020
+  ms.locfileid: "86540395"
+landingContent:
+- title: 教育中心
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 关于教育中心
+      url: about-education-hub.md
+  - linkListType: quickstart
+    links:
+    - text: 使用教育中心
+      url: access-education-hub.md
+- title: Azure Dev Tools for Teaching
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Dev Tools for Teaching？
+      url: ./azure-dev-tools-teaching/about-program.md
+  - linkListType: tutorial
+    links:
+    - text: 注册 Azure Dev Tools for Teaching
+      url: ./azure-dev-tools-teaching/enroll-renew-subscription.md
+    - text: 设置访问权限
+      url: ./azure-dev-tools-teaching/set-up-access.md
+  - linkListType: how-to-guide
+    links:
+    - text: 如何管理学生
+      url: ./azure-dev-tools-teaching/manage-students.md
+    - text: 如何下载软件
+      url: ./azure-dev-tools-teaching/download-software.md

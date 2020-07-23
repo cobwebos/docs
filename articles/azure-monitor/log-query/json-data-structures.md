@@ -1,29 +1,21 @@
 ---
 title: 在 Azure Monitor 日志查询中使用字符串 | Microsoft Docs
-description: 本文提供有关在 Azure 门户中使用 Azure 监视器 Log Analytics 查询和分析 Azure Monitor 中的日志数据的教程。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+description: 本文提供了有关在 Azure 门户中使用 Azure Monitor Log Analytics 对 Azure Monitor 中的日志数据进行查询和分析的教程。
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 718b12c8a66d66a75796f88ef31b5f0f62abbbc4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 08/16/2018
+ms.openlocfilehash: f792820b7b0dff20e647031410ba87ac26c2495a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60519679"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80672973"
 ---
 # <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用 JSON 和数据结构
 
 > [!NOTE]
-> 应完成[开始使用 Azure 监视器 Log Analytics](get-started-portal.md)并[开始使用 Azure Monitor 日志查询](get-started-queries.md)之前完成本课程中。
+> 在完成本课之前，应当先完成 [Azure Monitor 日志分析入门](get-started-portal.md)和 [Azure Monitor 日志查询入门](get-started-queries.md)。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -55,13 +47,13 @@ print hosts_report
 如果只有一个元素，则只能使用圆点表示法：
 
 ```Kusto
-let hosts_report='{"location":"North_DC", "status":"running", "rate":5}';
+let hosts_report=dynamic({"location":"North_DC", "status":"running", "rate":5});
 print hosts_report 
 | extend status = hosts_report.status
 ```
 
 
-## <a name="working-with-objects"></a>结合使用对象
+## <a name="working-with-objects"></a>使用对象
 
 ### <a name="parsejson"></a>parsejson
 要访问 json 结构中的多个元素，将其作为动态对象进行访问更为简单。 使用 `parsejson` 将文本数据强制转换为动态对象。 转换为动态类型后，即可使用其他功能来分析数据。

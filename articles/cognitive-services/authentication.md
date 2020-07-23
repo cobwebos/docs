@@ -1,48 +1,48 @@
 ---
-title: Authentication
-titleSuffix: Cognitive Services - Azure
+title: 身份验证
+titleSuffix: Azure Cognitive Services
 description: 有三种方法可以对 Azure 认知服务资源的请求进行身份验证：订阅密钥、持有者令牌或多服务订阅。 本文介绍每种方法以及如何发出请求。
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: 90bc2bf4c207f3bb2727d76c2e6b4fd5597539b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4fab0be90e6941d1a6b8f137ae574223b0d7a9d1
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60336758"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232740"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>对 Azure 认知服务的请求进行身份验证
 
 对 Azure 认知服务的每个请求都必须包含身份验证标头。 此标头传递订阅密钥或访问令牌，用于验证服务或服务组订阅。 本文介绍三种对请求进行身份验证的方法以及每种方法的要求。
 
-* [使用单服务订阅密钥进行身份验证](#authenticate-with-a-single-service-subscription-key)
-* [使用多服务订阅密钥进行身份验证](#authenticate-with-a-multi-service-subscription-key)
-* [使用令牌进行身份验证](#authenticate-with-an-authentication-token)
+* 使用[单个服务](#authenticate-with-a-single-service-subscription-key)或[多服务](#authenticate-with-a-multi-service-subscription-key)订阅密钥进行身份验证
+* 使用[令牌](#authenticate-with-an-authentication-token)进行身份验证
+* [ (AAD) Azure Active Directory](#authenticate-with-azure-active-directory)进行身份验证
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在发出请求之前，需要具有 Azure 帐户和 Azure 认知服务订阅。 如果已有帐户，请继续并跳到下一节。 如果还没有帐户，我们会提供指南，可在几分钟内完成设置：[创建 Azure 认知服务帐户](cognitive-services-apis-create-account.md)。
 
-可以获取订阅密钥从[Azure 门户](cognitive-services-apis-create-account.md#access-your-resource)创建你的帐户，或激活之后[免费试用版](https://azure.microsoft.com/try/cognitive-services/my-apis)。
- 
+[创建帐户](https://azure.microsoft.com/free/cognitive-services/)后，可以从[Azure 门户](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)获取订阅密钥。
+
 ## <a name="authentication-headers"></a>身份验证标头
 
 让我们快速查看可用于 Azure 认知服务的身份验证标头。
 
-| 标头 | 描述 |
+| 标头 | 说明 |
 |--------|-------------|
 | Ocp-Apim-Subscription-Key | 使用此标头通过特定服务订阅密钥或多服务订阅密钥进行身份验证。 |
-| Ocp-Apim-Subscription-Region | 只有在使用具有[文本翻译 API](./Translator/reference/v3-0-reference.md) 的多服务订阅密钥时才需要此标头。 使用此标头指定订阅区域。 |
+| Ocp-Apim-Subscription-Region | 只有在使用具有 [Translator 服务](./Translator/reference/v3-0-reference.md)的多服务订阅密钥时才需要此标头。 使用此标头指定订阅区域。 |
 | 授权 | 如果使用的是身份验证令牌，则使用此标头。 以下各节详细介绍了执行令牌交换的步骤。 提供的值遵循以下格式：`Bearer <TOKEN>`。 |
 
 ## <a name="authenticate-with-a-single-service-subscription-key"></a>使用单服务订阅密钥进行身份验证
 
-第一个选项是使用特定服务的订阅密钥对请求进行身份验证，例如文本翻译。 Azure 门户中的密钥可用于已创建的每个资源。 要使用订阅密钥对请求进行身份验证，必须将其作为 `Ocp-Apim-Subscription-Key` 标头传递。
+第一个选项是使用特定服务（如 Translator）的订阅密钥对请求进行身份验证。 Azure 门户中的密钥可用于已创建的每个资源。 要使用订阅密钥对请求进行身份验证，必须将其作为 `Ocp-Apim-Subscription-Key` 标头传递。
 
 这些示例请求演示了如何使用 `Ocp-Apim-Subscription-Key` 标头。 请记住，使用此示例时，需要包括有效的订阅密钥。
 
@@ -52,7 +52,7 @@ curl -X GET 'https://api.cognitive.microsoft.com/bing/v7.0/search?q=Welsch%20Pem
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' | json_pp
 ```
 
-这是对文本翻译 API 的调用示例：
+这是对 Translator 服务的示例调用：
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' \
@@ -65,30 +65,37 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>使用多服务订阅密钥进行身份验证
 
 >[!WARNING]
-> 目前，以下服务不支持多服务密钥：QnA Maker、语音服务和自定义视觉。
+> 目前，以下服务**** 不支持多服务密钥：QnA Maker、语音服务、自定义视觉和异常检测器。
 
 此选项仍使用订阅密钥对请求进行身份验证。 主要区别在于订阅密钥未绑定到特定服务，而单个密钥可用于对多个认知服务的请求进行身份验证。 有关区域可用性、支持的功能和定价的信息，请参阅[认知服务定价](https://azure.microsoft.com/pricing/details/cognitive-services/)。
 
 订阅密钥在每个请求中作为 `Ocp-Apim-Subscription-Key` 标头提供。
 
-[![认知服务的多服务订阅密钥演示](./media/index/single-key-demonstration-video.png)](https://www.youtube.com/watch?v=psHtA1p7Cas&feature=youtu.be)
+[![针对认知服务的多服务订阅密钥演示](./media/index/single-key-demonstration-video.png)](https://www.youtube.com/watch?v=psHtA1p7Cas&feature=youtu.be)
 
 ### <a name="supported-regions"></a>支持的区域
 
 使用多服务订阅密钥向 `api.cognitive.microsoft.com` 发出请求时，必须在 URL 中包含该区域。 例如：`westus.api.cognitive.microsoft.com`。
 
-将多服务订阅密钥与文本翻译 API 一起使用时，必须使用 `Ocp-Apim-Subscription-Region` 标头指定订阅区域。
+将多服务订阅密钥与 Translator 服务配合使用时，必须使用 `Ocp-Apim-Subscription-Region` 标头指定订阅区域。
 
 以下区域支持多服务身份验证：
 
-| | | |
-|-|-|-|
-| `australiaeast` | `brazilsouth` | `canadacentral` |
-| `centralindia` | `eastasia` | `eastus` |
-| `japaneast` | `northeurope` | `southcentralus` |
-| `southeastasia` | `uksouth` | `westcentralus` |
-| `westeurope` | `westus` | `westus2` |
-
+- `australiaeast`
+- `brazilsouth`
+- `canadacentral`
+- `centralindia`
+- `eastasia`
+- `eastus`
+- `japaneast`
+- `northeurope`
+- `southcentralus`
+- `southeastasia`
+- `uksouth`
+- `westcentralus`
+- `westeurope`
+- `westus`
+- `westus2`
 
 ### <a name="sample-requests"></a>示例请求
 
@@ -99,7 +106,7 @@ curl -X GET 'https://YOUR-REGION.api.cognitive.microsoft.com/bing/v7.0/search?q=
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' | json_pp
 ```
 
-这是对文本翻译 API 的调用示例：
+这是对 Translator 服务的示例调用：
 
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
@@ -118,7 +125,7 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 * 语音服务：文本转语音 REST API
 
 >[!NOTE]
-> QnA Maker 也使用授权标头，但需要终结点密钥。 有关详细信息，请参阅 [QnA Maker：从知识库中获取答案](./qnamaker/quickstarts/get-answer-from-kb-using-curl.md)。
+> QnA Maker 也使用授权标头，但需要终结点密钥。 有关详细信息，请参阅[QnA Maker：从知识库获取答案](./qnamaker/quickstarts/get-answer-from-knowledge-base-using-url-tool.md)。
 
 >[!WARNING]
 > 支持身份验证令牌的服务可能会随时间而变化，请在使用此身份验证方法之前检查服务的 API 参考。
@@ -141,15 +148,23 @@ curl -v -X POST \
 
 以下多服务区域支持令牌交换：
 
-| | | |
-|-|-|-|
-| `australiaeast` | `brazilsouth` | `canadacentral` |
-| `centralindia` | `eastasia` | `eastus` |
-| `japaneast` | `northeurope` | `southcentralus` |
-| `southeastasia` | `uksouth` | `westcentralus` |
-| `westeurope` | `westus` | `westus2` |
+- `australiaeast`
+- `brazilsouth`
+- `canadacentral`
+- `centralindia`
+- `eastasia`
+- `eastus`
+- `japaneast`
+- `northeurope`
+- `southcentralus`
+- `southeastasia`
+- `uksouth`
+- `westcentralus`
+- `westeurope`
+- `westus`
+- `westus2`
 
-获得身份验证令牌后，需要在每个请求中将其作为 `Authorization` 标头传递。 这是对文本翻译 API 的调用示例：
+获得身份验证令牌后，需要在每个请求中将其作为 `Authorization` 标头传递。 这是对 Translator 服务的示例调用：
 
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
@@ -158,8 +173,10 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
+[!INCLUDE [](../../includes/cognitive-services-azure-active-directory-authentication.md)]
+
 ## <a name="see-also"></a>另请参阅
 
 * [什么是认知服务？](welcome.md)
 * [认知服务定价](https://azure.microsoft.com/pricing/details/cognitive-services/)
-* [创建帐户](cognitive-services-apis-create-account.md)
+* [自定义子域](cognitive-services-custom-subdomains.md)

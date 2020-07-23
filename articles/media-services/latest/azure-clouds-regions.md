@@ -1,22 +1,22 @@
 ---
-title: Azure 媒体服务 v3 可用的云和区域 | Microsoft Docs
+title: Azure 媒体服务 v3 可用的云和区域
 description: 本文讨论 Azure 媒体服务 v3 可用的 Azure 云和区域。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/07/2019
-ms.author: juliako
-ms.openlocfilehash: 7b2691f543cf38a56eefb1e8521169aeccbf3221
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
-ms.translationtype: MT
+ms.date: 5/28/2020
+ms.author: inhenkel
+ms.custom: references_regions
+ms.openlocfilehash: cefd366e29fe1c6f68ec38816247f78bb53cd6e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409290"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84196240"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>存在 Azure 媒体服务 v3 的云和区域
 
@@ -24,7 +24,7 @@ Azure 媒体服务 v3 可通过 Azure资源管理器清单在全球 Azure、Azur
 
 ## <a name="feature-availability-in-azure-clouds"></a>Azure 云中的功能可用性
 
-| Feature|全球 Azure 区域 | Azure 政府|Azure 德国|Azure 中国世纪互联|
+| 功能|全球 Azure 区域 | Azure Government|Azure 德国|Azure 中国世纪互联|
 | --- | --- | --- | --- | --- |
 | [Azure EventGrid](reacting-to-media-services-events.md) | 可用 | 不可用 | 不可用 | 不可用 |
 | [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  可用 | 不可用 | 不可用 | 不可用 |
@@ -33,15 +33,28 @@ Azure 媒体服务 v3 可通过 Azure资源管理器清单在全球 Azure、Azur
 | [LiveEvents](live-streaming-overview.md) | 可用 | 可用 | 可用 | 可用 |
 | [StreamingEndpoints](streaming-endpoint-concept.md) | 可用 | 可用 | 可用 | 可用 |
 
+## <a name="feature-availability-in-preview"></a>预览版中的功能可用性
+
+[LiveTranscription](live-transcription.md)在以下区域中提供：
+
+- 东南亚
+- 西欧
+- 北欧
+- 美国东部
+- 美国中部
+- 美国中南部
+- 美国西部 2
+- 巴西南部
+
 ## <a name="regionsgeographieslocations"></a>区域/地域/位置
 
-[在其中部署 Azure 媒体服务服务的区域](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
+[部署 Azure 媒体服务的区域](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
 
-### <a name="region-code-name"></a>区域代码名 
+### <a name="region-code-name"></a>区域代码名
 
 如果需要提供**位置**参数，则需要提供区域代码名称作为**位置**值。 若要获取你的帐户所在的并且应当将你的调用路由到的区域的代码名称，可以在 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 中运行以下命令行
 
-```bash
+```azurecli-interactive
 az account list-locations
 ```
 
@@ -64,36 +77,36 @@ az account list-locations
 
 从不同的区域 Azure 云连接到媒体服务帐户时，应记住以下终结点。
 
-### <a name="global-azure"></a>全局 Azure
-
-|终结点 ||
-| --- | --- | 
-| Azure 资源管理器 |  `https://management.azure.com/` |
-| Authentication | `https://login.microsoftonline.com/` | 
-| 令牌受众 | `https://management.core.windows.net/` |
-
-### <a name="azure-government"></a>Azure 政府
+### <a name="global-azure"></a>全球 Azure
 
 |终结点||
-| --- | --- | 
-| Azure 资源管理器 |  `https://management.usgovcloudapi.net/` |
-| Authentication | `https://login.microsoftonline.us/` | 
+| --- | --- |
+| Azure Resource Manager |  `https://management.azure.com/` |
+| 身份验证 | `https://login.microsoftonline.com/` |
+| 令牌受众 | `https://management.core.windows.net/` |
+
+### <a name="azure-government"></a>Azure Government
+
+|终结点||
+| --- | --- |
+| Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
+| 身份验证 | `https://login.microsoftonline.us/` |
 | 令牌受众 | `https://management.core.usgovcloudapi.net/` |
 
 ### <a name="azure-germany"></a>Azure 德国
 
 | 终结点 ||
 | --- | --- |  
-| Azure 资源管理器 | `https://management.cloudapi.de/` |
-| Authentication | `https://login.microsoftonline.de/` |
+| Azure Resource Manager | `https://management.cloudapi.de/` |
+| 身份验证 | `https://login.microsoftonline.de/` |
 | 令牌受众 | `https://management.core.cloudapi.de/`|
 
 ### <a name="azure-china-21vianet"></a>Azure 中国世纪互联
 
 |终结点||
-| --- | --- | 
-| Azure 资源管理器 | `https://management.chinacloudapi.cn/` |
-| Authentication | `https://login.chinacloudapi.cn/` |
+| --- | --- |
+| Azure Resource Manager | `https://management.chinacloudapi.cn/` |
+| 身份验证 | `https://login.chinacloudapi.cn/` |
 | 令牌受众 |  `https://management.core.chinacloudapi.cn/` |
 
 ## <a name="see-also"></a>另请参阅

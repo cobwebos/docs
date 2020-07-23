@@ -8,26 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: b732f65227c7449b45f2e656abcc90a42411ad5e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 355a450cbdcf44d79cf73904e3b932afb62b7f55
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60010613"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987254"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-java-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 Java 生成缩略图
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-java"></a>快速入门：使用计算机视觉 REST API 和 Java 生成缩略图
 
-在本快速入门中，你将使用计算机视觉的 REST API 基于图像生成缩略图。 可以指定高度和宽度，可以与输入图像的纵横比不同。 计算机视觉使用智能裁剪来智能识别感兴趣的区域并基于该区域生成裁剪坐标。
-
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services)。
+本快速入门将使用计算机视觉 REST API 基于图像生成缩略图。 可以指定高度和宽度，可以与输入图像的纵横比不同。 计算机视觉使用智能裁剪来智能识别感兴趣的区域并基于该区域生成裁剪坐标。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 必须已安装 [Java&trade; Platform 标准版开发工具包 7 或 8](https://aka.ms/azure-jdks)（JDK 7 或 8）。
-- 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* [Java&trade; Platform 标准版开发工具包 7 或 8](https://aka.ms/azure-jdks)（JDK 7 或 8）
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="创建计算机视觉资源"  target="_blank">创建计算机视觉资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到计算机视觉服务。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
+* 为密钥和终结点 URL [创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别将其命名为 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`。
 
 ## <a name="create-and-run-the-sample-application"></a>创建和运行示例应用程序
 
@@ -35,64 +37,61 @@ ms.locfileid: "60010613"
 
 1. 在最喜爱的 IDE 或编辑器中新建一个 Java 项目。 如果此选项可用，请从命令行应用程序模板创建 Java 项目。
 1. 将以下库导入到你的 Java 项目中。 如果使用 Maven，则为每个库提供 Maven 坐标。
-   - [Apache HTTP 客户端](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpclient:4.5.5)
-   - [Apache HTTP 核心](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpcore:4.4.9)
+   - [Apache HTTP 客户端](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpclient:4.5.X)
+   - [Apache HTTP 核心](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpcore:4.4.X)
    - [JSON 库](https://github.com/stleary/JSON-java) (org.json:json:20180130)
-1. 将以下 `import` 语句添加到包含你的项目的 `Main` 公共类的文件。  
+1. 向主类中添加以下 `import` 声明： 
 
    ```java
-   import java.awt.*;
-   import javax.swing.*;
-   import java.net.URI;
-   import java.io.InputStream;
-   import javax.imageio.ImageIO;
-   import java.awt.image.BufferedImage;
-   import org.apache.http.HttpEntity;
-   import org.apache.http.HttpResponse;
-   import org.apache.http.client.methods.HttpPost;
-   import org.apache.http.entity.StringEntity;
-   import org.apache.http.client.utils.URIBuilder;
-   import org.apache.http.impl.client.CloseableHttpClient;
-   import org.apache.http.impl.client.HttpClientBuilder;
-   import org.apache.http.util.EntityUtils;
-   import org.json.JSONObject;
+    import java.awt.*;
+    import javax.swing.*;
+    import java.net.URI;
+    import java.io.InputStream;
+    import javax.imageio.ImageIO;
+    import java.awt.image.BufferedImage;
+    import org.apache.http.HttpEntity;
+    import org.apache.http.HttpResponse;
+    import org.apache.http.client.methods.HttpPost;
+    import org.apache.http.entity.StringEntity;
+    import org.apache.http.client.utils.URIBuilder;
+    import org.apache.http.impl.client.CloseableHttpClient;
+    import org.apache.http.impl.client.HttpClientBuilder;
+    import org.apache.http.util.EntityUtils;
+    import org.json.JSONObject;
    ```
 
-1. 将 `Main` 公共类替换为以下代码，然后根据需要在代码中进行以下更改：
-   1. 将 `subscriptionKey` 的值替换为你的订阅密钥。
-   1. 如果需要，将 `uriBase` 的值替换为你在其中获取了订阅密钥的 Azure 区域中的[获取缩略图](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)方法的终结点 URL。
-   1. （可选）将 `imageToAnalyze` 的值替换为你要为其生成缩略图的另一图像的 URL。
+1. 将下面示例代码的其余部分添加到导入的内容下（如有必要，请更改为自己的类名）。
+1. 将计算机视觉订阅密钥和终结点添加到环境变量。
+1. （可选）将 `imageToAnalyze` 的值替换为自己的图像的 URL。
 1. 保存，然后生成 Java 项目。
-1. 如果使用的是 IDE，请运行 `Main`。 否则，请打开一个命令提示窗口，然后使用 `java` 命令运行已编译的类。 例如，`java Main`。
+1. 如果使用的是 IDE，请运行 `GenerateThumbnail`。 否则，请从命令行运行（下面的命令）。
 
 ```java
-// This sample uses the following libraries:
-//  - Apache HTTP client (org.apache.httpcomponents:httpclient:4.5.5)
-//  - Apache HTTP core (org.apache.httpcomponents:httpccore:4.4.9)
-//  - JSON library (org.json:json:20180130).
+/**
+ * This sample uses the following libraries (create a "lib" folder to place them in): 
+ * Apache HTTP client:
+ * org.apache.httpcomponents:httpclient:4.5.X 
+ * Apache HTTP core:
+ * org.apache.httpcomponents:httpccore:4.4.X 
+ * JSON library:
+ * org.json:json:20180130
+ *
+ * To build/run from the command line: 
+ *     javac GenerateThumbnail.java -cp .;lib\*
+ *     java -cp .;lib\* GenerateThumbnail
+ */
 
+public class GenerateThumbnail {
 
-public class Main {
-    // **********************************************
-    // *** Update or verify the following values. ***
-    // **********************************************
-
-    // Replace <Subscription Key> with your valid subscription key.
-    private static final String subscriptionKey = "<Subscription Key>";
-
-    // You must use the same Azure region in your REST API method as you used to
-    // get your subscription keys. For example, if you got your subscription keys
-    // from the West US region, replace "westcentralus" in the URL
-    // below with "westus".
-    //
-    // Free trial subscription keys are generated in the "westus" region.
-    // If you use a free trial subscription key, you shouldn't need to change
-    // this region.
-    private static final String uriBase =
-        "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/generateThumbnail";
-
-    private static final String imageToAnalyze =
-        "https://upload.wikimedia.org/wikipedia/commons/9/94/Bloodhound_Puppy.jpg";
+    // Add your Computer Vision subscription key and endpoint to your environment
+    // variables. Then, close and then re-open your command shell or project for the
+    // changes to take effect.
+    private static String subscriptionKey = System.getenv("COMPUTER_VISION_SUBSCRIPTION_KEY");
+    private static String endpoint = System.getenv("COMPUTER_VISION_ENDPOINT");
+    // The endpoint path
+    private static final String uriBase = endpoint + "vision/v3.0/generateThumbnail";
+    // It's optional if you'd like to use your own image instead of this one.
+    private static final String imageToAnalyze = "https://upload.wikimedia.org/wikipedia/commons/9/94/Bloodhound_Puppy.jpg";
 
     public static void main(String[] args) {
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
@@ -114,13 +113,14 @@ public class Main {
             request.setHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
 
             // Request body.
-            StringEntity requestEntity =
-                    new StringEntity("{\"url\":\"" + imageToAnalyze + "\"}");
+            StringEntity requestEntity = new StringEntity("{\"url\":\"" + imageToAnalyze + "\"}");
             request.setEntity(requestEntity);
 
             // Call the REST API method and get the response entity.
             HttpResponse response = httpClient.execute(request);
             HttpEntity entity = response.getEntity();
+
+            System.out.println("status" + response.getStatusLine().getStatusCode());
 
             // Check for success.
             if (response.getStatusLine().getStatusCode() == 200) {
@@ -136,11 +136,12 @@ public class Main {
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 
     // Displays the given input stream as an image.
-    private static void displayImage(InputStream inputStream) {
+    public static void displayImage(InputStream inputStream) {
         try {
             BufferedImage bufferedImage = ImageIO.read(inputStream);
 
@@ -169,7 +170,9 @@ public class Main {
 
 ## <a name="next-steps"></a>后续步骤
 
-浏览一款 Java Swing 应用程序，该应用程序使用计算机视觉执行光学字符识别 (OCR)、创建智能裁剪缩略图，并对图像中的视觉特征（包括人脸）进行检测、分类、标记和描述。 要快速体验计算机视觉 API，请尝试使用 [Open API 测试控制台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)。
+了解一款使用计算机视觉执行光学字符识别 (OCR) 功能的 Java Swing 应用程序；创建智能裁剪缩略图；对图像中的视觉特征进行检测、分类、标记和说明。
 
 > [!div class="nextstepaction"]
 > [计算机视觉 API Java 教程](../Tutorials/java-tutorial.md)
+
+* 要快速体验计算机视觉 API，请尝试使用 [Open API 测试控制台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)。

@@ -1,48 +1,46 @@
 ---
-title: Azure 站点恢复-使用 Azure PowerShell 的 Azure 虚拟机的复制期间排除磁盘 |Microsoft Docs
-description: 了解如何使用 Azure PowerShell 在 Azure 站点恢复过程中排除磁盘的 Azure 虚拟机。
-services: site-recovery
-author: asgang
+title: 使用 Azure Site Recovery 和 Azure PowerShell 复制时排除 Azure VM 磁盘
+description: 了解如何使用 Azure PowerShell 在 Azure Site Recovery 过程中排除 Azure 虚拟机的磁盘。
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/18/2019
-ms.author: asgang
-ms.openlocfilehash: 54a32d7f7aa4bcab73f5828da3e7eba9d25276be
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a21460279420c46b11c43615ae5ecc7bfa81de4d
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66160306"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135808"
 ---
-# <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>从 PowerShell 的 Azure Vm 的复制中排除磁盘
+# <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>对 Azure VM 进行 PowerShell 复制时排除磁盘
 
-本文介绍如何排除磁盘，Azure Vm 复制时。 你可以排除磁盘，以优化消耗的复制带宽或这些磁盘使用的目标端资源。 目前，此功能目前仅通过 Azure PowerShell。
+本文介绍如何在复制 Azure VM 时排除磁盘。 可以通过排除磁盘来优化消耗的复制带宽，或者优化此类磁盘使用的目标端资源。 目前，仅通过 Azure PowerShell 提供此功能。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 开始之前：
 
-- 请确保您了解[灾难恢复体系结构和组件](azure-to-azure-architecture.md)。
+- 请确保了解[灾难恢复体系结构和组件](azure-to-azure-architecture.md)。
 - 查看所有组件的[支持要求](azure-to-azure-support-matrix.md)。
-- 请确保您具有"Az"的 AzureRm PowerShell 模块。 若要安装或更新 PowerShell，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
-- 请确保你已创建恢复服务保管库并受保护的虚拟机至少一次。 如果尚未执行这些操作，请按照在进程[设置为使用 Azure PowerShell 的 Azure 虚拟机的灾难恢复](azure-to-azure-powershell.md)。
+- 确保有 AzureRm PowerShell 的“Az”模块。 若要安装或更新 PowerShell，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
+- 确保已经创建恢复服务保管库并对虚拟机进行了至少一次保护。 如果尚未做这些事，请按[使用 Azure PowerShell 为 Azure 虚拟机设置灾难恢复](azure-to-azure-powershell.md)中介绍的过程操作。
+- 若要查找有关将磁盘添加到已启用复制的 Azure VM 的信息，请[查看此文](azure-to-azure-enable-replication-added-disk.md)。
 
-## <a name="why-exclude-disks-from-replication"></a>为什么从复制中排除磁盘
-您可能需要从复制中排除磁盘，因为：
+## <a name="why-exclude-disks-from-replication"></a>为什么要从复制中排除磁盘
+需要从复制中排除磁盘可能是因为：
 
-- 已达到你的虚拟机[Azure Site Recovery 限制复制的数据更改率](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)。
+- 虚拟机已达到 [Azure Site Recovery 对数据更改复制速率的限制](./azure-to-azure-support-matrix.md)。
 
-- 排除的磁盘改动的数据并不重要或不需要复制。
+- 在排除的磁盘上改动的数据不重要或不需要复制。
 
-- 你想要保存，因此不复制数据的存储和网络资源。
+- 需要节省存储和网络资源，因此不复制此数据。
 
 ## <a name="how-to-exclude-disks-from-replication"></a>如何从复制中排除磁盘
 
-在本示例中，我们将复制具有一个操作系统的虚拟机和美国东部区域为美国西部 2 区域中的三个数据磁盘。 虚拟机的名称是*AzureDemoVM*。 我们排除磁盘 1 并保留磁盘 2 和 3。
+在本示例中，我们将包含一个操作系统的虚拟机和美国东部地区的三个数据磁盘复制到美国西部2区域。 虚拟机的名称为“AzureDemoVM”  。 我们排除磁盘 1，保留磁盘 2 和 3。
 
 ## <a name="get-details-of-the-virtual-machines-to-replicate"></a>获取要复制的虚拟机的详细信息
 
@@ -69,7 +67,7 @@ ProvisioningState  : Succeeded
 StorageProfile     : {ImageReference, OsDisk, DataDisks}
 ```
 
-获取有关虚拟机的磁盘的详细信息。 当您开始复制的 VM，将更高版本使用此信息。
+获取虚拟机的磁盘的详细信息。 此信息会在以后启动 VM 复制时用到。
 
 ```azurepowershell
 $OSDiskVhdURI = $VM.StorageProfile.OsDisk.Vhd
@@ -78,9 +76,9 @@ $DataDisk1VhdURI = $VM.StorageProfile.DataDisks[0].Vhd
 
 ## <a name="replicate-an-azure-virtual-machine"></a>复制 Azure 虚拟机
 
-下面的示例中，我们假定您已经有一个缓存存储帐户、 复制策略和映射。 如果没有这些内容，请按照在进程[设置为使用 Azure PowerShell 的 Azure 虚拟机的灾难恢复](azure-to-azure-powershell.md)。
+对于以下示例，我们假设你已有缓存存储帐户、复制策略和映射。 如果没有这些项目，请按[使用 Azure PowerShell 为 Azure 虚拟机设置灾难恢复](azure-to-azure-powershell.md)中介绍的过程操作。
 
-复制 Azure 虚拟机*托管磁盘*。
+复制包含*托管磁盘*的 Azure 虚拟机。
 
 ```azurepowershell
 
@@ -98,7 +96,7 @@ $OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationC
          -DiskId $OSdiskId -RecoveryResourceGroupId  $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
          -RecoveryTargetDiskAccountType $RecoveryOSDiskAccountType
 
-# Data Disk 1 i.e StorageProfile.DataDisks[0] is excluded, so we will provide it during the time of replication. 
+# Data Disk 1 i.e StorageProfile.DataDisks[0] is excluded, so we will provide it during the time of replication.
 
 # Data disk 2
 $datadiskId2  = $vm.StorageProfile.DataDisks[1].ManagedDisk.id
@@ -128,14 +126,14 @@ $diskconfigs += $OSDiskReplicationConfig, $DataDisk2ReplicationConfig, $DataDisk
 $TempASRJob = New-ASRReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId
 ```
 
-开始复制操作成功后，VM 数据复制到恢复区域中。
+启动复制操作成功后，VM 数据将复制到恢复区域。
 
-可以转到 Azure 门户，请参阅复制的 Vm，在"复制的项"。
+转到 Azure 门户即可看到复制的 VM 位于“复制的项”下。
 
-复制过程首先会种子设定在恢复区域中的虚拟机的复制磁盘的副本。 此阶段调用的初始复制阶段。
+复制过程首先在恢复区域中植入虚拟机复制磁盘的副本。 此阶段中称为初始复制阶段。
 
-初始复制完成后，复制移动到差异同步阶段。 此时，虚拟机受到保护。 选择受保护的虚拟机，如果排除的任何磁盘。
+初始复制完成后，复制过程进入差异同步阶段。 此时，虚拟机受到保护。 选择受保护的虚拟机，看是否排除了任何磁盘。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[运行测试故障转移](site-recovery-test-failover-to-azure.md)。
+了解如何[运行测试性故障转移](site-recovery-test-failover-to-azure.md)。

@@ -1,109 +1,125 @@
 ---
-title: 快速入门 - 使用 Azure 应用程序网关配置端到端 SSL 加密 - Azure 门户 | Microsoft Docs
-description: 了解如何使用 Azure 门户创建启用端到端 SSL 加密的 Azure 应用程序网关。
+title: 使用门户配置端到端 TLS 加密
+titleSuffix: Azure Application Gateway
+description: 了解如何使用 Azure 门户创建启用端到端 TLS 加密的应用程序网关。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 4/30/2019
+ms.topic: how-to
+ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: bd165f81b45e3ae0c121fb8876ed88e68d493195
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: 33240d1f44d2f26569791f72a3d5fc3a6656a757
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64946803"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808036"
 ---
-# <a name="configure-end-to-end-ssl-by-using-application-gateway-with-the-portal"></a>在门户中使用应用程序网关配置端到端 SSL
+# <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>在门户中使用应用程序网关配置端到端 TLS
 
-本文介绍如何在 Azure 门户中使用应用程序网关 v1 SKU 配置端到端 SSL 加密。  
+本文介绍如何使用 Azure 门户通过 Azure 应用程序网关 v1 SKU 配置端到端传输层安全性 (TLS) 加密（以前称为安全套接字层 (SSL) 加密）。
 
 > [!NOTE]
-> 应用程序网关 v2 SKU 需要启用端到端配置的受信任的根证书。 门户支持添加受信任的根证书尚不可用。 因此，如果 v2 SKU 看到[配置使用 PowerShell 的端到端 SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)。
+> 应用程序网关 v2 SKU 需要受信任的根证书才能启用端到端配置。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="before-you-begin"></a>开始之前
 
-若要对应用程序网关配置端到端 SSL，需要网关证书和后端服务器证书。 网关证书用于根据 SSL 协议规范派生对称密钥。 然后，可以使用该对称密钥来加密和解密发送到网关的流量。 若要加密端到端 SSL，后端必须已加入应用程序网关的允许列表。 为此，请将后端服务器的公共证书（也称为身份验证证书）上传到应用程序网关。 添加证书后，可确保应用程序网关仅与已知后端实例通信。 从而进一步保护端到端通信。
+若要使用应用程序网关配置端到端 TLS，首先获取网关的证书。 后端服务器也需要证书。 网关证书用来根据 TLS 协议规范派生对称密钥。 然后，可以使用该对称密钥来加密和解密发送到网关的流量。 
 
-有关详细信息，请参阅 [SSL 终止和端到端 SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview)。
+对于端到端 TLS 加密，必须在应用程序网关中允许适当的后端服务器。 若要允许这种访问，请将后端服务器的公共证书（也称为“身份验证证书”(v1) 或“受信任的根证书”(v2)）上传到应用程序网关。 添加证书后，可确保应用程序网关仅与已知后端实例通信。 此配置可进一步保护端到端通信。
 
-## <a name="create-a-new-application-gateway-with-end-to-end-ssl"></a>创建启用端到端 SSL 的新应用程序网关
+若要了解详细信息，请参阅 [TLS 终止和应用程序网关的端到端 TLS 概述](https://docs.microsoft.com/azure/application-gateway/ssl-overview)。
 
-若要创建新的应用程序网关使用端到端 SSL 加密，将需要首先启用时创建新的应用程序网关的 SSL 终止。 这会针对客户端与应用程序网关之间的通信启用 SSL 加密。 然后，将需要列入允许列表作为后端 HTTP 设置中的服务器证书启用应用程序网关和后端服务器，完成端到端 SSL 加密之间的通信的 SSL 加密。
+## <a name="create-a-new-application-gateway-with-end-to-end-tls"></a>创建启用端到端 TLS 的新应用程序网关
 
-### <a name="enable-ssl-termination-while-creating-a-new-application-gateway"></a>创建新应用程序网关时启用 SSL 终止
+若要创建启用端到端 TLS 加密的新应用程序网关，首先需要在创建新应用程序网关时启用 TLS 终止。 此操作会针对客户端与应用程序网关之间的通信启用 TLS 加密。 然后，需要在 HTTP 设置中，将后端服务器的证书放入“安全接收方”列表。 此配置将为应用程序网关与后端服务器之间的通信启用 TLS 加密。 这可以实现端到端的 TLS 加密。
 
-请参阅有关如何[在创建新应用程序网关时启用 SSL 终止](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)的文章。
+### <a name="enable-tls-termination-while-creating-a-new-application-gateway"></a>创建新应用程序网关时启用 TLS 终止
 
-### <a name="whitelist-certificates-for-backend-servers"></a>将后端服务器的证书加入白名单
+有关详细信息，请参阅[创建新应用程序网关时启用 TLS 终止](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)。
 
-1. 选择“所有资源”，然后选择“myAppGateway”。
+### <a name="add-authenticationroot-certificates-of-back-end-servers"></a>添加后端服务器的身份验证/根证书
 
-2. 在左侧菜单中选择“HTTP 设置”。 当你创建应用程序网关时，Azure 自动创建了默认 HTTP 设置 **appGatewayBackendHttpSettings**。 
+1. 选择“所有资源”，然后选择“myAppGateway”。  
 
-3. 选择“appGatewayBackendHttpSettings”。
+2. 在左侧菜单中选择“HTTP 设置”。  当你创建应用程序网关时，Azure 自动创建了默认 HTTP 设置 **appGatewayBackendHttpSettings**。 
 
-4. 在“协议”下，选择“HTTPS”。 随后会显示“后端身份验证证书”窗格。 
+3. 选择“appGatewayBackendHttpSettings”。 
 
-5. 在“后端身份验证证书”下，选择“新建”。
+4. 在“协议”下，选择“HTTPS”。   随后会显示“后端身份验证证书”或“受信任的根证书”窗格。 
 
-6. 输入适当的**名称**。
+5. 选择“新建”。 
 
-7. 使用“上传 CER 证书”框上传证书。![addcert](./media/end-to-end-ssl-portal/addcert.png)
+6. 在“名称”字段中输入适当的名称。 
 
-   > [!NOTE]
-   > 此步骤中提供的证书应该是后端中存在的 .pfx 证书的公钥。 以索赔、证据和推理 (CER) 格式导出后端服务器上安装的证书（不是根证书），将其用在此步骤。 此步骤会将后端加入应用程序网关的允许列表。
+7. 在“上传 CER 证书”框中选择证书文件。 
 
-8. 选择“保存”。
+   对于 Standard 和 WAF (v1) 应用程序网关，应以 .cer 格式上传后端服务器证书的公钥。
 
-## <a name="enable-end-to-end-ssl-for-existing-application-gateway"></a>为现有的应用程序网关启用端到端 SSL
+   ![添加证书](./media/end-to-end-ssl-portal/addcert.png)
 
-若要使用的端到端 SSL 加密配置现有的应用程序网关，将需要在侦听器中的第一个启用 SSL 终止。 这会针对客户端与应用程序网关之间的通信启用 SSL 加密。 然后，将需要列入允许列表作为后端 HTTP 设置中的服务器证书启用应用程序网关和后端服务器，完成端到端 SSL 加密之间的通信的 SSL 加密。
+   对于 Standard_v2 和 WAF_v2 应用程序网关，应以 .cer 格式上传后端服务器证书的根证书。 如果后端证书由已知的证书颁发机构 (CA) 颁发，则你可以选中“使用已知的 CA 证书”复选框，而无需上传证书。 
 
-你将需要使用 HTTPS 协议和证书用于启用 SSL 终止的侦听器。 不能更改现有侦听器的协议。 因此，您可以选择使用现有侦听器使用 HTTPS 协议和证书，或创建一个新的侦听器。 如果选择前一种做法，则可以忽略下面所述的“在现有应用程序网关中启用 SSL 终止”步骤，并直接转到“将后端服务器的证书加入白名单”部分。 如果您选择后者，使用以下步骤。
+   ![添加受信任的根证书](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
 
-### <a name="enable-ssl-termination-in-existing-application-gateway"></a>在现有应用程序网关中启用 SSL 终止
+   ![根证书](./media/end-to-end-ssl-portal/trustedrootcert.png)
 
-1. 选择“所有资源”，然后选择“myAppGateway”。
+8. 选择“保存”。 
 
-2. 在左侧菜单中选择“侦听器”。
+## <a name="enable-end-to-end-tls-for-an-existing-application-gateway"></a>为现有的应用程序网关启用端到端 TLS
 
-3. 根据要求选择“基本”侦听器或“多站点”侦听器。
+若要为现有的应用程序网关配置端到端 TLS 加密，首先必须在侦听器中启用 TLS 终止。 此操作会针对客户端与应用程序网关之间的通信启用 TLS 加密。 然后，将后端服务器的这些证书放入 HTTP 设置中的“安全接收方”列表内。 此配置将为应用程序网关与后端服务器之间的通信启用 TLS 加密。 这可以实现端到端的 TLS 加密。
 
-4. 在“协议”下，选择“HTTPS”。 随后会显示“证书”窗格。
+需要使用一个具有 HTTPS 协议和证书的侦听器来启用 TLS 终止。 可以使用符合这些条件的现有侦听器，或者创建新的侦听器。 如果选择前一个选项，则可以忽略以下“在现有应用程序网关中启用 TLS 终止”部分，并直接转到“添加后端服务器的身份验证/受信任的根证书”部分。
 
-5. 上传 PFX 证书用于在客户端与应用程序网关之间实现 SSL 终止。
+如果选择后一个选项，请应用以下过程中的步骤。
+### <a name="enable-tls-termination-in-an-existing-application-gateway"></a>在现有应用程序网关中启用 TLS 终止
 
-   > [!NOTE]
-   > 对于测试，可以使用自签名的证书。 不应将自签名证书用于生产工作负荷。 了解如何[创建自签名证书](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal#create-a-self-signed-certificate)。
+1. 选择“所有资源”，然后选择“myAppGateway”。  
 
-6. 根据要求添加“侦听器”的其他所需设置。
+2. 在左侧菜单中选择“侦听器”。 
 
-7. 选择“确定”进行保存。
+3. 根据要求选择“基本”或“多站点”侦听器。  
 
-### <a name="whitelist-certificates-for-backend-servers"></a>将后端服务器的证书加入白名单
+4. 在“协议”下，选择“HTTPS”。   随后会显示“证书”窗格。 
 
-1. 选择“所有资源”，然后选择“myAppGateway”。
-
-2. 在左侧菜单中选择“HTTP 设置”。 可将现有后端 HTTP 设置中的证书加入白名单，或创建新的 HTTP 设置。 以下步骤将默认 HTTP 设置 **appGatewayBackendHttpSettings** 的证书加入白名单。
-
-3. 选择“appGatewayBackendHttpSettings”。
-
-4. 在“协议”下，选择“HTTPS”。 随后会显示“后端身份验证证书”窗格。 
-
-5. 在“后端身份验证证书”下，选择“新建”。
-
-6. 输入适当的**名称**。
-
-7. 使用“上传 CER 证书”框上传证书。![addcert](./media/end-to-end-ssl-portal/addcert.png)
+5. 上传 PFX 证书用于在客户端与应用程序网关之间实现 TLS 终止。
 
    > [!NOTE]
-   > 此步骤中提供的证书应该是后端中存在的 .pfx 证书的公钥。 以索赔、证据和推理 (CER) 格式导出后端服务器上安装的证书（不是根证书），将其用在此步骤。 此步骤会将后端加入应用程序网关的允许列表。
+   > 对于测试，可以使用自签名的证书。 不过，不建议对生产工作负荷使用自签名证书，因为这些证书难以管理，且不完全安全。 有关详细信息，请参阅[创建自签名证书](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal#create-a-self-signed-certificate)。
 
-8. 选择“保存”。
+6. 根据要求添加“侦听器”的其他所需设置。 
+
+7. 选择“确定”进行保存。 
+
+### <a name="add-authenticationtrusted-root-certificates-of-back-end-servers"></a>添加后端服务器的身份验证/受信任的根证书
+
+1. 选择“所有资源”，然后选择“myAppGateway”。  
+
+2. 在左侧菜单中选择“HTTP 设置”。  可将证书放入现有后端 HTTP 设置中的“安全接收方”列表内，或创建新的 HTTP 设置。 （在下一步骤，默认 HTTP 设置 **appGatewayBackendHttpSettings** 的证书将添加到“安全接收方”列表中。）
+
+3. 选择“appGatewayBackendHttpSettings”。 
+
+4. 在“协议”下，选择“HTTPS”。   随后会显示“后端身份验证证书”或“受信任的根证书”窗格。  
+
+5. 选择“新建”。 
+
+6. 在“名称”字段中输入适当的名称。 
+
+7. 在“上传 CER 证书”框中选择证书文件。 
+
+   对于 Standard 和 WAF (v1) 应用程序网关，应以 .cer 格式上传后端服务器证书的公钥。
+
+   ![添加证书](./media/end-to-end-ssl-portal/addcert.png)
+
+   对于 Standard_v2 和 WAF_v2 应用程序网关，应以 .cer 格式上传后端服务器证书的根证书。 如果后端证书由已知的 CA 颁发，则你可以选中“使用已知的 CA 证书”复选框，而无需上传证书。 
+
+   ![添加受信任的根证书](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
+
+8. 选择“保存”。 
 
 ## <a name="next-steps"></a>后续步骤
 

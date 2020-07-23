@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d74cc1665867568032bb1343e4f2c26c50fe15a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c4b235426a7029abb9bb79ba56e582cccc3b14a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65770187"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "68944445"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>教程：Azure Active Directory 与 HubSpot 的集成
 
@@ -55,7 +55,7 @@ HubSpot 支持以下功能：
 
 若要将 HubSpot 与 Azure AD 集成，必须将 HubSpot 添加到托管 SaaS 应用列表中。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在左侧菜单中，选择“Azure Active Directory”  。
 
@@ -161,7 +161,7 @@ HubSpot 支持以下功能：
 
     1. 在 HubSpot 的“标识提供者单一登录 URL”框中，粘贴在 Azure 门户中复制的“登录 URL”值   。
 
-    1. 在 Windows 记事本中，打开下载的“证书(Base64)”文件。 选择并复制文件的内容。 然后在 HubSpot 中将其粘贴到“X.509 证书”框中 **** 。
+    1. 在 Windows 记事本中，打开下载的“证书(Base64)”文件。 选择并复制文件的内容。 然后在 HubSpot 中将其粘贴到“X.509 证书”框中  。
 
     1. 选择“验证”  。
 

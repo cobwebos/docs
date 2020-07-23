@@ -1,25 +1,17 @@
 ---
-title: Durable Functions 中的灾难恢复和异地分发 - Azure
+title: Azure Durable Functions 中的灾难恢复和异地分布
 description: 了解 Durable Functions 中的灾难恢复和异地分发
-services: functions
 author: MS-Santi
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1363dd3c620789b9f3c8ce1dbe0892ee61d66051
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 7951f216143bef0d48a6b751beff3f8f4316b9bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60741325"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75433334"
 ---
-# <a name="disaster-recovery-and-geo-distribution"></a>灾难恢复和异地分发
-
-## <a name="overview"></a>概述
+# <a name="disaster-recovery-and-geo-distribution-in-azure-durable-functions"></a>Azure Durable Functions 中的灾难恢复和异地分布
 
 在 Durable Functions 中，所有状态保存在 Azure 存储中。 [任务中心](durable-functions-task-hubs.md)是用于业务流程的 Azure 存储资源的逻辑容器。 只有当业务流程协调程序函数与活动函数属于同一任务中心时，它们才能彼此进行交互。
 所述的方案会提议一些部署选项，以提高可用性，并在灾难恢复活动期间尽量减少停机时间。

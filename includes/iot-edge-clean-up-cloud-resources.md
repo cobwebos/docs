@@ -9,11 +9,11 @@ ms.date: 08/10/2018
 ms.author: kgremban
 ms.custom: include file
 ms.openlocfilehash: c1e5027b192f32b50af10a2bdfbadfeb123b39ce
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146668"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67173066"
 ---
 ### <a name="delete-azure-resources"></a>删除 Azure 资源 
 
@@ -21,8 +21,8 @@ ms.locfileid: "66146668"
 
 若要删除资源，请执行以下操作：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，然后选择“资源组”。
+1. 登录到 [Azure 门户](https://portal.azure.com)，然后选择“资源组”。 
 
 2. 选择包含 IoT Edge 测试资源的资源组的名称。 
 
-3. 查看包含在资源组中的资源的列表。 若要删除这一切，可以选择“删除资源组”。 如果只需删除部分内容，可以单击要单独删除的每个资源。 
+3. 查看包含在资源组中的资源的列表。 若要删除这一切，可以选择“删除资源组”。  如果只需删除部分内容，可以单击要单独删除的每个资源。 

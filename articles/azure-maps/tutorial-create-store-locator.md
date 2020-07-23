@@ -1,24 +1,24 @@
 ---
-title: 使用 Azure Maps 创建店铺定位器 | Microsoft Docs
-description: 使用 Azure Maps 创建店铺定位器。
-author: walsehgal
-ms.author: v-musehg
-ms.date: 11/15/2018
+title: 教程：使用 Azure Maps 创建店铺定位器应用程序 | Microsoft Azure Maps
+description: 本教程介绍如何使用 Microsoft Azure Maps Web SDK 创建店铺定位器 Web 应用程序。
+author: philmea
+ms.author: philmea
+ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1d3099da3d449e29d378e2f350fdc87ce5166f2e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5caeb9ff5c289343e1869a55808bde7fbe035479
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64574402"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517546"
 ---
-# <a name="create-a-store-locator-by-using-azure-maps"></a>使用 Azure Maps 创建店铺定位器
+# <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>教程：使用 Azure Maps 创建店铺定位器
 
-本教程引导你完成使用 Azure Maps 创建简单店铺定位器的过程。 店铺定位器的使用非常普遍。 此类应用程序中使用的许多概念同样适用于许多其他类型的应用程序。 大多数直销型的商家必须能够向客户提供店铺定位器。 本教程介绍如何执行下列操作：
+本教程引导你完成使用 Azure Maps 创建简单店铺定位器的过程。 店铺定位器的使用非常普遍。 此类应用程序中使用的许多概念同样适用于许多其他类型的应用程序。 大多数直销型的商家必须能够向客户提供店铺定位器。 在本教程中，你将了解如何执行以下操作：
     
 > [!div class="checklist"]
 > * 使用 Azure Map 控件 API 创建新网页。
@@ -35,25 +35,23 @@ ms.locfileid: "64574402"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本教程中的示例，首先需要[创建 Azure Maps 帐户](./tutorial-search-location.md#createaccount)并[获取帐户的订阅密钥](./tutorial-search-location.md#getkey)。
+若要完成本教程中的步骤，首先需要创建一个 Azure Maps 帐户并获取主密钥（订阅密钥）。 按照[创建帐户](quick-demo-map-app.md#create-an-azure-maps-account)中的说明使用 S1 定价层创建 Azure Maps 帐户订阅，并按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
 
 ## <a name="design"></a>设计
 
 在跳转到代码之前，最好是从某个设计开始。 店铺定位器可以十分简单，也可以非常复杂，具体视需求而定。 在本教程中，我们将创建一个简单的店铺定位器。 在整个过程中，我们会提供一些提示，以帮助你根据需要扩展某些功能。 我们将为一家名为 Contoso Coffee 的虚构公司创建店铺定位器。 下图显示了本教程中要生成的店铺定位器的常规布局框图：
 
-<br/>
 <center>
 
-![Contoso Coffee 咖啡店位置的店铺定位器框图](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
+![Contoso Coffee 店铺位置的店铺定位器应用程序框图](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
 
 为了最大程度地利用此店铺定位器，我们包含了一种响应式布局，当用户的屏幕宽度小于 700 像素时，该布局可以调整。 在移动设备等的小型屏幕上，响应式布局可让我们轻松使用店铺定位器。 下面是小屏幕布局的框图：  
 
-<br/>
 <center>
 
-![移动设备上的 Contoso Coffee 店铺定位器框图](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
+![移动设备上的 Contoso Coffee 店铺定位器应用程序框图](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
 
-框图中显示了一个相当简洁的应用程序。 该应用程序提供一个搜索框、附近店铺的列表、包含一些标记（符号）的地图，以及当用户选择某个标记时显示其他信息的弹出窗口。 下面是我们要在本教程所述的店铺定位器中生成的功能的更多详细信息：
+框图中显示了一个相当简洁的应用程序。 该应用程序包含一个搜索框、附近店铺的列表，以及包含一些标记（例如符号）的地图。 此外，它还包含一个弹出窗口，当用户选择某个标记时，该窗口会显示附加信息。 下面是我们要在本教程所述的店铺定位器中生成的功能的更多详细信息：
 
 * 将所导入的制表符分隔数据文件中的所有位置加载到地图上。
 * 用户可以平移和缩放地图、执行搜索，以及选择“我的位置”GPS 按钮。
@@ -73,7 +71,6 @@ ms.locfileid: "64574402"
 
 在开发店铺定位器应用程序之前，需要创建要在地图上显示的店铺的数据集。 在本教程中，我们将使用一家名为 Contoso Coffee 的虚构咖啡厅的数据集。 此简单店铺定位器的数据集在 Excel 工作簿中进行管理。 该数据集包含分布在 9 个国家/地区的 10,213 家 Contoso Coffee 咖啡厅位置：美国、加拿大、英国、法国、德国、意大利、荷兰、丹麦和西班牙。 下面是数据外观的屏幕截图：
 
-<br/>
 <center>
 
 ![Excel 工作簿中店铺定位器数据的屏幕截图](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
@@ -84,25 +81,23 @@ ms.locfileid: "64574402"
     
 * 位置信息是使用 **AddressLine**、**City**、**Municipality**（国家）、**AdminDivision**（州/省）、**PostCode**（邮政编码）和 **Country** 列存储的。  
 * **Latitude** 和 **Longitude** 列包含每个 Contoso Coffee 咖啡厅位置的坐标。 如果没有坐标信息，可以使用 Azure Maps 中的搜索服务来确定位置坐标。
-* 某些附加列包含咖啡厅相关的元数据：电话号码、有关是否提供 Wi-Fi 热点和轮椅通道的布尔值列，以及营业和停业时间（24 小时格式）。 可以创建自己的列来包含与位置数据更相关的元数据。
+* 某些附加列包含咖啡厅相关的元数据：电话号码、布尔值列，以及营业和停业时间（24 小时格式）。 布尔值列指示是否提供 Wi-Fi 和轮椅通道。 你可以创建自己的列来包含与位置数据更相关的元数据。
 
 > [!Note]
 > Azure Maps 在球面 Mercator 投影“EPSG:3857”中呈现数据，但在使用 WGS84 数据的“EPSG:4325”中读取数据。 
 
-可通过多种方法向应用程序公开数据集。 其中一种方法是将数据载入数据库并公开查询数据的 Web 服务，然后将结果发送到用户的浏览器。 这种做法非常适合大型数据集或经常更新的数据集。 但是，这种做法会大大增加开发工作量，并且成本较高。 
+可通过多种方法向应用程序公开数据集。 其中一种方法是将数据载入数据库并公开查询数据的 Web 服务。 然后可将结果发送到用户的浏览器。 这种做法非常适合大型数据集或经常更新的数据集。 但是，这种做法会增加开发工作量，并且成本较高。 
 
 另一种方法是将此数据集转换成浏览器可轻松分析的平面文本文件。 该文件本身可与应用程序的剩余部分托管在一起。 这种做法能够简化开发，但只适合小型数据集，因为用户需要下载所有数据。 由于数据文件大小小于 1 MB，因此我们对此数据集使用了平面文本文件。  
 
-若要将工作簿转换为平面文本文件，请将工作簿另存为制表符分隔的文件。 每个列由制表符分隔，因此可以方便地在代码中分析列。 可以使用逗号分隔值 (CSV) 格式，但这样做需要其他分析逻辑。 将两边带有逗号的任何字段括在引号中。 若要在 Excel 中以制表符分隔文件的格式导出此数据，请选择“另存为”。  在“保存类型”下拉列表中，选择“文本(制表符分隔)(*.txt)”。   将文件命名为 *ContosoCoffee.txt*。 
+若要将工作簿转换为平面文本文件，请将工作簿另存为制表符分隔的文件。 每个列由制表符分隔，因此可以方便地在代码中分析列。 可以使用逗号分隔值 (CSV) 格式，但这样做需要其他分析逻辑。 将两边带有逗号的任何字段括在引号中。 若要在 Excel 中以制表符分隔文件的格式导出此数据，请选择“另存为”。 在“保存类型”下拉列表中，选择“文本(制表符分隔)(*.txt)”。  将文件命名为 *ContosoCoffee.txt*。 
 
-<br/>
 <center>
 
 ![“另存为类型”对话框的屏幕截图](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
 
 如果在记事本中打开该文本文件，其外观如下图所示：
 
-<br/>
 <center>
 
 ![演示制表符分隔数据集的 Notepad 文件的屏幕截图](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
@@ -112,7 +107,6 @@ ms.locfileid: "64574402"
 
 若要创建项目，可以使用 [Visual Studio](https://visualstudio.microsoft.com) 或所选的代码编辑器。 在项目文件夹中创建三个文件：*index.html*、*index.css* 和 *index.js*。 这些文件定义应用程序的布局、样式和逻辑。 创建名为 *data* 的文件夹并将 *ContosoCoffee.txt* 添加到其中。 创建名为 *images* 的另一个文件夹。 我们将在此应用程序中使用 10 张图像作为地图上的图标、按钮和标记。 可以[下载这些图像](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)。 现在，项目文件夹应如下图所示：
 
-<br/>
 <center>
 
 ![简单店铺定位器项目文件夹的屏幕截图](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
@@ -121,7 +115,7 @@ ms.locfileid: "64574402"
 
 若要创建用户界面，请将代码添加到 *index.html*：
 
-1. 将以下 `meta` 标记添加到 *index.html* 的 `head`。 标记定义字符集 (UTF-8)，告知 Internet Explorer 和 Microsoft Edge 要使用最新的浏览器版本，并指定适用于响应式布局的视区。
+1. 将以下 `meta` 标记添加到 *index.html* 的 `head`。 `charset` 标记定义字符集 (UTF-8)。 `http-equiv` 的值告知 Internet Explorer 和 Microsoft Edge 要使用最新的浏览器版本。 最后一个 `meta` 标记指定适用于响应式布局的视区。
 
     ```HTML
     <meta charset="utf-8">
@@ -139,7 +133,7 @@ ms.locfileid: "64574402"
 1. 添加对 Azure Maps 服务模块的引用。 该模块是一个 JavaScript 库，用于包装 Azure Maps REST 服务，并使其可在 JavaScript 中方便使用。 该模块可用于增强搜索功能。
 
     ```HTML
-    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
+    <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
     ```
 
 1. 添加对 *index.js* 和 *index.css* 的引用：
@@ -381,13 +375,13 @@ ms.locfileid: "64574402"
     }
    ```
 
-如果现在就运行应用程序，则会看到标题、搜索框和搜索按钮，但看不到地图，因为它尚未加载。 如果尝试执行搜索，不会有任何反应。 我们需要设置下一部分所述的 JavaScript 逻辑才能访问店铺定位器的所有功能。
+现在运行应用程序，则会看到标题、搜索框和搜索按钮。 但看不到地图，因为它尚未加载。 如果尝试执行搜索，不会有任何反应。 我们需要设置下一部分所述的 JavaScript 逻辑。 此逻辑访问店铺定位器的所有功能。
 
 ## <a name="wire-the-application-with-javascript"></a>使用 JavaScript 统合应用程序
 
-此时，用户界面中的所有组件已设置妥当。 接下来，我们需要添加 JavaScript 来加载和分析数据，然后在地图上呈现数据。 若要开始，请打开 *index.js*，并按以下步骤中所述将代码添加到该文件。
+现已完成用户界面中的所有设置。 我们仍需添加 JavaScript 来加载和分析数据，然后在地图上呈现数据。 若要开始，请打开 *index.js*，并按以下步骤中所述将代码添加到该文件。
 
-1. 添加全局选项，以便更轻松地更新设置。 此外，请为地图、弹出窗口、数据源、图标层、显示搜索区域中心点的 HTML 标记以及 Azure Maps 搜索服务客户端的实例定义变量。
+1. 添加全局选项，以便更轻松地更新设置。 为地图、弹出窗口、数据源、图标层和 HTML 标记定义变量。 将 HTML 标记设置为表示搜索区域的中心。 定义 Azure Maps 搜索服务客户端的实例。
 
     ```JavaScript
     //The maximum zoom level to cluster data point data on the map.
@@ -401,11 +395,11 @@ ms.locfileid: "64574402"
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. 将代码添加到 *index.js*。 以下代码初始化地图，添加一个[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)（等到页面完成加载为止），统合事件以监视地图加载，并赋予搜索按钮和“我的位置”按钮的功能。
+1. 将代码添加到 *index.js*。 以下代码初始化地图。 我们添加了一个[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)，以等待页面加载完成。 然后，我们统合了事件以监视地图加载，并赋予搜索按钮和“我的位置”按钮的功能。
 
-   当用户选择搜索按钮，或者在搜索框中输入位置后按 Enter 时，会针对用户的查询启动模糊搜索。 在 `countrySet` 选项中传入国家/地区 ISO 2 值的数组可将搜索结果限制为这些国家/地区。 限制搜索的国家/地区有助于提高返回结果的准确性。 
+   当用户选择搜索按钮时，或者在搜索框中键入位置后按 Enter 时，系统会针对用户的查询启动模糊搜索。 在 `countrySet` 选项中传入国家/地区 ISO 2 值的数组可将搜索结果限制为这些国家/地区。 限制搜索的国家/地区有助于提高返回结果的准确性。 
   
-   完成搜索后，请提取第一个结果，并在该区域上方设置地图相机。 当用户选择“我的位置”按钮时，应用程序将使用浏览器中内置的 HTML5 地理位置 API 来检索用户的位置，并将地图的中心点置于用户所在位置上。  
+   搜索完成后，请提取第一个结果，并在该区域上方设置地图相机。 当用户选择“我的位置”按钮时，请使用 HTML5 地理位置 API 检索用户的位置。 此 API 内置到浏览器中。 然后，将地图置于其位置中心。  
 
    > [!Tip]
    > 使用弹出窗口时，最好是创建单个 `Popup` 实例，并通过更新该实例的内容和位置来重复使用它。 对于添加到代码中的每个 `Popup` 实例，会将多个 DOM 元素添加到页面。 页面上的 DOM 元素越多，浏览器要跟踪的信息就越多。 如果项数过多，浏览器可能会变慢。
@@ -417,7 +411,7 @@ ms.locfileid: "64574402"
             center: [-90, 40],
             zoom: 2,
 
-            //Add your Azure Maps subscription key to the map SDK.
+            //Add your Azure Maps primary subscription key to the map SDK.
             authOptions: {
                 authType: 'subscriptionKey',
                 subscriptionKey: '<Your Azure Maps Key>'
@@ -432,7 +426,7 @@ ms.locfileid: "64574402"
 
         //Use subscriptionKeyCredential to create a pipeline
         const pipeline = atlas.service.MapsURL.newPipeline(subscriptionKeyCredential, {
-            retryOptions: { maxTries: 4 }, // Retry options
+            retryOptions: { maxTries: 4 } // Retry options
         });
 
         //Create an instance of the SearchURL client.
@@ -459,7 +453,7 @@ ms.locfileid: "64574402"
         });
     }
 
-    //Create an array of country ISO 2 values to limit searches to. 
+    //Create an array of country/region ISO 2 values to limit searches to. 
     var countrySet = ['US', 'CA', 'GB', 'FR','DE','IT','ES','NL','DK'];
 
     function performSearch() {
@@ -467,7 +461,7 @@ ms.locfileid: "64574402"
 
         //Perform a fuzzy search on the users query.
         searchURL.searchFuzzy(atlas.service.Aborter.timeout(3000), query, {
-            //Pass in the array of country ISO2 for which we want to limit the search to.
+            //Pass in the array of country/region ISO2 for which we want to limit the search to.
             countrySet: countrySet
         }).then(results => {
             //Parse the response into GeoJSON so that the map can understand.
@@ -533,7 +527,7 @@ ms.locfileid: "64574402"
     map.markers.add(centerMarker);
     ```
 
-1. 在地图的 `ready` 事件侦听器中添加一个数据源。 然后，发出调用来加载和分析数据集。 对数据源启用聚集。 数据源聚集可将重叠的点组合到一个聚集中。 当用户放大地图时，聚集将分离成单独的点。 这使用户体验变得更流畅，并可改善性能。
+1. 在地图的 `ready` 事件侦听器中添加一个数据源。 然后，发出调用来加载和分析数据集。 对数据源启用聚集。 数据源聚集可将重叠的点组合到一个聚集中。 当用户放大地图时，聚集将分离成单独的点。 此行为提供了更好的用户体验，并提高了性能。
 
     ```JavaScript
     //Create a data source, add it to the map, and then enable clustering.
@@ -692,7 +686,7 @@ ms.locfileid: "64574402"
     }
     ```
 
-1. 更新列表面板时，系统会计算从地图中心点到当前地图视图中所有点特征的距离。 然后按距离将特征排序。 将生成 HTML 以在列表面板中显示每个位置。
+1. 更新列表面板时，会计算距离。 此距离是从地图中心点到当前地图视图中所有点特征的距离。 然后按距离将特征排序。 将生成 HTML 以在列表面板中显示每个位置。
 
     ```JavaScript
     var listItemTemplate = '<div class="listItem" onclick="itemSelected(\'{id}\')"><div class="listItem-title">{title}</div>{city}<br />Open until {closes}<br />{distance} miles away</div>';
@@ -706,21 +700,6 @@ ms.locfileid: "64574402"
         //Get the current camera and view information for the map.
         var camera = map.getCamera();
         var listPanel = document.getElementById('listPanel');
-
-        //Get all the shapes that have been rendered in the bubble layer.
-        var data = map.layers.getRenderedShapes(map.getCamera().bounds, [iconLayer]);
-
-        data.forEach(function(shape) {
-            if (shape instanceof atlas.Shape) {
-                //Calculate the distance from the center of the map to each shape, and then store the data in a distance property.  
-                shape.distance = atlas.math.getDistanceTo(camera.center, shape.getCoordinates(), 'miles');
-            }
-        });
-
-        //Sort the data by distance.
-        data.sort(function(x, y) {
-            return x.distance - y.distance;
-        });
 
         //Check to see whether the user is zoomed out a substantial distance. If they are, tell the user to zoom in and to perform a search or select the My Location button.
         if (camera.zoom < maxClusterZoomLevel) {
@@ -747,6 +726,25 @@ ms.locfileid: "64574402"
             </div>
             */
 
+            //Get all the shapes that have been rendered in the bubble layer. 
+            var data = map.layers.getRenderedShapes(map.getCamera().bounds, [iconLayer]);
+
+            //Create an index of the distances of each shape.
+            var distances = {};
+
+            data.forEach(function (shape) {
+                if (shape instanceof atlas.Shape) {
+
+                    //Calculate the distance from the center of the map to each shape and store in the index. Round to 2 decimals.
+                    distances[shape.getId()] = Math.round(atlas.math.getDistanceTo(camera.center, shape.getCoordinates(), 'miles') * 100) / 100;
+                }
+            });
+
+            //Sort the data by distance.
+            data.sort(function (x, y) {
+                return distances[x.getId()] - distances[y.getId()];
+            });
+
             data.forEach(function(shape) {
                 properties = shape.getProperties();
                 html.push('<div class="listItem" onclick="itemSelected(\'', shape.getId(), '\')"><div class="listItem-title">',
@@ -760,8 +758,8 @@ ms.locfileid: "64574402"
                 getOpenTillTime(properties),
                 '<br />',
 
-                //Route the distance to two decimal places.  
-                (Math.round(shape.distance * 100) / 100),
+                //Get the distance of the shape.
+                distances[shape.getId()],
                 ' miles away</div>');
             });
 
@@ -872,6 +870,9 @@ ms.locfileid: "64574402"
             </div>
         */
 
+         //Calculate the distance from the center of the map to the shape in miles, round to 2 decimals.
+        var distance = Math.round(atlas.math.getDistanceTo(map.getCamera().center, shape.getCoordinates(), 'miles') * 100)/100;
+
         var html = ['<div class="storePopup">'];
         html.push('<div class="popupTitle">',
             properties['AddressLine'],
@@ -882,8 +883,8 @@ ms.locfileid: "64574402"
             //Convert the closing time to a format that's easier to read.
             getOpenTillTime(properties),
 
-            //Route the distance to two decimal places.  
-            '<br/>', (Math.round(shape.distance * 100) / 100),
+            //Add the distance information.  
+            '<br/>', distance,
             ' miles away',
             '<br /><img src="images/PhoneIcon.png" title="Phone Icon"/><a href="tel:',
             properties['Phone'],
@@ -896,11 +897,11 @@ ms.locfileid: "64574402"
             html.push('<br/>Amenities: ');
 
             if (properties['IsWiFiHotSpot']) {
-                html.push('<img src="images/WiFiIcon.png" title="Wi-Fi Hotspot"/>')
+                html.push('<img src="images/WiFiIcon.png" title="Wi-Fi Hotspot"/>');
             }
 
             if (properties['IsWheelchairAccessible']) {
-                html.push('<img src="images/WheelChair-small.png" title="Wheelchair Accessible"/>')
+                html.push('<img src="images/WheelChair-small.png" title="Wheelchair Accessible"/>');
             }
         }
 
@@ -921,23 +922,20 @@ ms.locfileid: "64574402"
 
 现已创建一个完全正常运行的店铺定位器。 在 Web 浏览器中，打开该店铺定位器的 *index.html* 文件。 当聚集显示在地图上时，可以通过使用搜索框、选择“我的位置”按钮、选择聚集或放大地图来搜索位置，以查看各个位置。
 
-当用户首次选择“我的位置”按钮时，浏览器将显示安全警告，并请求提供访问用户位置的权限。 如果用户同意共享其位置，则地图将在用户位置放大，并显示附近的咖啡厅。 
+当用户首次选择“我的位置”按钮时，浏览器会显示一条安全警告，要求提供访问用户位置的权限。 如果用户同意共享其位置，则地图将在用户位置放大，并显示附近的咖啡厅。 
 
-<br/>
 <center>
 
 ![浏览器中请求访问用户位置的屏幕截图](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
 
-如果在包含咖啡厅位置的区域中将地图放到足够大，则聚集将分离成单独的位置。 在地图上选择某个图标或者在侧面板中选择一个项会显示一个弹出窗口，其中显示了该位置的信息。
+如果在包含咖啡厅位置的区域中将地图放到足够大，则聚集将分离成单独的位置。 在地图上选择某个图标或者在侧面板中选择一个项会显示一个弹出窗口。 此弹出窗口显示所选位置的信息。
 
-<br/>
 <center>
 
 ![成品店铺定位器的屏幕截图](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center>
 
 如果将浏览器窗口宽度调整为小于 700 像素或者在移动设备上打开该应用程序，则布局将会更改，更适合小屏幕。 
 
-<br/>
 <center>
 
 ![店铺定位器小屏幕版本的屏幕截图](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>

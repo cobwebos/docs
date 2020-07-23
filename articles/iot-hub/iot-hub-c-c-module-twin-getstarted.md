@@ -1,5 +1,5 @@
 ---
-title: Azure IoT 中心模块标识和模块孪生 (C) 入门 | Microsoft Docs
+title: Azure IoT 中心模块标识和模块孪生 (C) 入门
 description: 了解如何使用用于 C 的 IoT SDK 创建模块标识和更新模块孪生。
 author: chrissie926
 ms.service: iot-hub
@@ -8,17 +8,21 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
-ms.openlocfilehash: 2642d956d94a0a685d6586be1a7b0446e94f1042
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 3cd4277603b96dd1aa07682dd01a6d0e9c61bd82
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61327400"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81733461"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-c-backend-and-c-device"></a>使用 C 后端和 C 设备创建 IoT 中心模块标识和模块孪生入门
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>IoT 中心模块标识和模块孪生 (C) 入门
+
+[!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
-> [模块标识和模块孪生](iot-hub-devguide-module-twins.md)类似于 Azure IoT 中心设备标识和设备孪生，但提供更精细的粒度。 Azure IoT 中心设备标识和设备孪生允许后端应用程序配置设备并提供设备条件的可见性，而模块标识和模块孪生为设备的各个组件提供这些功能。 在支持多个组件的设备上（例如基于操作系统的设备或固件设备），它允许每个部件拥有独立的配置和条件。
+> [模块标识和模块孪生](iot-hub-devguide-module-twins.md)类似于 Azure IoT 中心设备标识和设备孪生，但提供更精细的粒度。 尽管 Azure IoT 中心设备标识和设备克隆使后端应用程序可以配置设备并提供设备条件的可见性，但模块标识和模块克隆为设备的单个组件提供这些功能。 在支持多个组件的设备上（例如基于操作系统的设备或固件设备），它允许每个部件拥有独立的配置和条件。
 
 在本教程结束时，会创建两个 C 应用：
 
@@ -29,13 +33,21 @@ ms.locfileid: "61327400"
 > [!NOTE]
 > 有关 Azure IoT SDK 的信息（可以使用这些 SDK 构建可在设备和解决方案后端上运行的应用程序），请参阅 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 
-要完成本教程，需要以下各项：
+## <a name="prerequisites"></a>先决条件
 
 * 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个 [Azure 免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
-* IoT 中心。
+
 * 最新 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)。
 
-现已创建 IoT 中心，因此已获得完成本教程的其余部分所需的主机名和 IoT 中心连接字符串。
+## <a name="create-an-iot-hub"></a>创建 IoT 中心
+
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+
+## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
+
+[!INCLUDE [iot-hub-howto-module-twin-shared-access-policy-text](../../includes/iot-hub-howto-module-twin-shared-access-policy-text.md)]
+
+[!INCLUDE [iot-hub-include-find-registryrw-connection-string](../../includes/iot-hub-include-find-registryrw-connection-string.md)]
 
 ## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>在 IoT 中心中创建设备标识和模块标识
 
@@ -167,7 +179,7 @@ int main(void)
 }
 ```
 
-此应用在设备“myFirstDevice”下创建 ID 为“myFirstDevice”的设备标识，以及 ID 为“myFirstModule”的模块标识。 （如果该模块 ID 已在标识注册表中，代码就只检索现有的模块信息。）然后，应用程序会显示该标识的主密钥。 在模拟模块应用中使用此密钥连接到 IoT 中心。
+此应用在设备“myFirstDevice”下创建 ID 为“myFirstDevice”的设备标识，以及 ID 为“myFirstModule”的模块标识  。 （如果该模块 ID 已在标识注册表中，代码就只检索现有的模块信息。）然后，应用程序会显示该标识的主密钥。 在模拟模块应用中使用此密钥连接到 IoT 中心。
 
 > [!NOTE]
 > IoT 中心标识注册表只存储设备和模块标识，以启用对 IoT 中心的安全访问。 标识注册表存储用作安全凭据的设备 ID 和密钥。 标识注册表还为每个设备存储启用/禁用标志，该标志可以用于禁用对该设备的访问。 如果应用程序需要存储其他特定于设备的元数据，则应使用特定于应用程序的存储。 没有针对模块标识的“已启用/已禁用”标记。 有关详细信息，请参阅 [IoT 中心开发人员指南](iot-hub-devguide-identity-registry.md)。
@@ -180,7 +192,9 @@ int main(void)
 
     ![Azure 门户模块详细信息](./media/iot-hub-c-c-module-twin-getstarted/module-detail.png)
 
-2. **创建 UpdateModuleTwinReportedProperties 应用** 在“Program.cs”文件顶部添加以下 `using` 语句：
+2. **创建 UpdateModuleTwinReportedProperties 应用**
+   
+   将以下内容添加到 C 文件：
 
     ```C
     #include <stdio.h>
@@ -289,7 +303,7 @@ static void deviceTwinCallback(DEVICE_TWIN_UPDATE_STATE update_state, const unsi
     (void)userContextCallback;
 
     printf("Device Twin update received (state=%s, size=%zu): %s\r\n", 
-        ENUM_TO_STRING(DEVICE_TWIN_UPDATE_STATE, update_state), size, payLoad);
+        MU_ENUM_TO_STRING(DEVICE_TWIN_UPDATE_STATE, update_state), size, payLoad);
 }
 
 static void reportedStateCallback(int status_code, void* userContextCallback)
@@ -341,7 +355,7 @@ void iothub_module_client_sample_device_twin_run(void)
 
             (void)IoTHubModuleClient_LL_SetOption(iotHubModuleClientHandle, OPTION_LOG_TRACE, &traceOn);
 
-            // Check the return of all API calls when developing your solution. Return checks ommited for sample simplification.
+            // Check the return of all API calls when developing your solution. Return checks omitted for sample simplification.
 
             (void)IoTHubModuleClient_LL_SetModuleTwinCallback(iotHubModuleClientHandle, deviceTwinCallback, iotHubModuleClientHandle);
             (void)IoTHubModuleClient_LL_SendReportedState(iotHubModuleClientHandle, (const unsigned char*)reportedState, reportedStateSize, reportedStateCallback, iotHubModuleClientHandle);

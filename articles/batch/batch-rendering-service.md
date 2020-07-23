@@ -1,24 +1,22 @@
 ---
-title: 渲染概述 - Azure Batch
+title: 渲染概述
 description: 介绍如何使用 Azure 进行渲染，并提供 Azure Batch 渲染功能的概述
-services: batch
-ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: d4423b22c4c8afea5afa9c7040e081665b17ba87
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.openlocfilehash: 850f4e3754af790e6b9bab5c68c9bd10849bba37
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60774023"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965274"
 ---
 # <a name="rendering-using-azure"></a>使用 Azure 进行渲染
 
 渲染是创建 3D 模型并将其转换为 2D 图像的过程。 在 Autodesk 3ds Max、Autodesk Maya 和 Blender 等应用程序中创作 3D 场景文件。  Autodesk Maya、Autodesk Arnold、Chaos Group V-Ray 和 Blender Cycles 等渲染应用程序可生成 2D 图像。  有时，可以从场景文件创建单一的图像。 但是，常见的操作是建模并渲染多个图像，然后将其组合成动画。
 
-传媒娱乐行业往往使用渲染工作负荷来生成特效 (VFX)。 广告、 零售、 石油和天然气、 和生产等许多其他行业也使用呈现。
+传媒娱乐行业往往使用渲染工作负荷来生成特效 (VFX)。 广告、零售、石油和天然气及制造等其他众多行业也会使用渲染。
 
 渲染过程属于计算密集型工作；要生成的帧/图像数可能很多，而渲染每个图像可能需要大量的时间。  因此，渲染是一个完美的批处理工作负荷，可以利用 Azure 和 Azure Batch 来并行运行多个渲染器。
 
@@ -50,7 +48,7 @@ ms.locfileid: "60774023"
 
 最常见的案例是，通过 PipelineFX Qube、Royal Render 或 Thinkbox Deadline 等渲染管理应用程序管理某个现有的本地渲染场。  要求是使用 Azure VM 扩展本地渲染场的容量。
 
-渲染管理软件原生支持 Azure，或者，我们可以提供用于添加 Azure 支持的插件。 有关支持的渲染管理器和功能的详细信息，请参阅有关[使用渲染管理器](https://docs.microsoft.com/azure/batch/batch-rendering-render-managers)的文章。
+渲染管理软件原生支持 Azure，或者，我们可以提供用于添加 Azure 支持的插件。 有关支持的渲染管理器和功能的详细信息，请参阅有关[使用渲染管理器](./batch-rendering-render-managers.md)的文章。
 
 ### <a name="custom-rendering-workflow"></a>自定义渲染工作流
 
@@ -79,9 +77,9 @@ Azure Batch 可用于许多工作负荷，但以下功能专门用于简化和�
 可通过多种方法使用 Azure Batch，所有这些方法同样适用于 Azure Batch 渲染。
 
 * API：
-  * 使用 [REST](https://docs.microsoft.com/rest/api/batchservice)、[.NET](https://docs.microsoft.com/dotnet/api/overview/azure/batch)、[Python](https://docs.microsoft.com/python/api/overview/azure/batch)、[Java](https://docs.microsoft.com/java/api/overview/azure/batch) 或其他支持的 API 编写代码。  开发人员可将 Azure Batch 功能集成到其现有应用程序或工作流（不管是在云中还是本地）中。  例如，[Autodesk Maya 插件](https://github.com/Azure/azure-batch-maya)利用 Batch Python API 来调用 Batch、创建和管理池、提交作业和任务，以及监视状态。
+  * 使用 [REST](/rest/api/batchservice)、[.NET](/dotnet/api/overview/azure/batch)、[Python](/python/api/overview/azure/batch)、[Java](/java/api/overview/azure/batch) 或其他支持的 API 编写代码。  开发人员可将 Azure Batch 功能集成到其现有应用程序或工作流（不管是在云中还是本地）中。  例如，[Autodesk Maya 插件](https://github.com/Azure/azure-batch-maya)利用 Batch Python API 来调用 Batch、创建和管理池、提交作业和任务，以及监视状态。
 * 命令行工具：
-  * 可以使用 [Azure 命令行](https://docs.microsoft.com/cli/azure/)或 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 来编写 Batch 脚本。
+  * 可以使用 [Azure 命令行](/cli/azure/)或 [Azure PowerShell](/powershell/azure/overview) 来编写 Batch 脚本。
   * 具体而言，Batch CLI 模板支持可以简化创建池和提交作业的操作。
 * UI：
   * [Batch Explorer](https://github.com/Azure/BatchExplorer) 是一个跨平台客户端工具，可在其中管理和监视 Batch 帐户。此外，与 Azure 门户 UI 相比，它提供的功能更丰富。  我们为每个支持的应用程序提供了一组定制的池和作业模板，用于轻松创建池和提交作业。
@@ -97,9 +95,9 @@ Azure Batch 可用于许多工作负荷，但以下功能专门用于简化和�
 
 请参阅以下简介教程来体验 Azure Batch 渲染：
 
-* [使用 Batch Explorer 渲染 Blender 场景](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
-* [使用 Batch CLI 渲染 Autodesk 3ds Max 场景](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
+* [使用 Batch Explorer 渲染 Blender 场景](./tutorial-rendering-batchexplorer-blender.md)
+* [使用 Batch CLI 渲染 Autodesk 3ds Max 场景](./tutorial-rendering-cli.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-在[此文](https://docs.microsoft.com/azure/batch/batch-rendering-applications)中查看 Azure 市场 VM 映像包含的渲染应用程序和版本列表。
+在[此文](./batch-rendering-applications.md)中查看 Azure 市场 VM 映像包含的渲染应用程序和版本列表。

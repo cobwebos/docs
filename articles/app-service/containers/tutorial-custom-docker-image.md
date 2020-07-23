@@ -1,33 +1,25 @@
 ---
-title: 为用于容器的 Web 应用生成自定义映像 - Azure 应用服务 | Microsoft Docs
-description: 如何对用于容器的 Web 应用使用自定义 Docker 映像。
+title: 教程：生成并运行自定义映像
+description: 了解如何生成可以在 Azure 应用服务上运行的自定义 Linux 映像，将其部署到 Azure 容器注册表，然后在应用服务中运行它。
 keywords: azure 应用服务、web 应用、linux、docker、容器
-services: app-service
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+author: msangapu-msft
 ms.assetid: b97bd4e6-dff0-4976-ac20-d5c109a559a8
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 8463ffcb9d9983ff435c01f75dd48f68bde31767
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.custom: mvc, seodec18, tracking-python
+ms.openlocfilehash: 88ca971986119b3612c79d0bee381d3a0fc9a977
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545596"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906830"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>教程：从专用注册表生成自定义映像并在应用服务中运行
 
-在 Linux 上，[应用服务](app-service-linux-intro.md)提供内置的 Docker 映像，并支持特定版本，例如 PHP 7.0 和 Node.js 4.5。 应用服务使用 Docker 容器技术，以“平台即服务”的方式同时托管内置映像和自定义映像。 本教程介绍如何生成自定义映像并在应用服务中运行它。 此模式适用于内置的映像不包括所选语言的情况，或者应用程序需要的特定配置未在内置映像中提供的情况。
+在 Linux 上，[应用服务](app-service-linux-intro.md)提供内置的 Docker 映像，并支持特定版本，例如 PHP 7.3 和 Node.js 10.14。 应用服务使用 Docker 容器技术，以“平台即服务”的方式同时托管内置映像和自定义映像。 本教程介绍如何生成自定义映像并在应用服务中运行它。 此模式适用于内置的映像不包括所选语言的情况，或者应用程序需要的特定配置未在内置映像中提供的情况。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 将自定义映像部署到专用容器注册表
@@ -57,7 +49,7 @@ cd docker-django-webapp-linux
 
 ## <a name="build-the-image-from-the-docker-file"></a>从 Docker 文件生成映像
 
-在 Git 存储库中查看 _Dockerfile_。 此文件描述了运行应用程序所需的 Python 环境。 此外，映像会设置一个 [SSH](https://www.ssh.com/ssh/protocol/) 服务器来实现容器和主机之间的安全通信。
+在 Git 存储库中查看 _Dockerfile_。 此文件描述了运行应用程序所需的 Python 环境。 此外，映像会设置一个 [SSH](https://www.ssh.com/ssh/protocol/) 服务器来实现容器和主机之间的安全通信。 _Dockerfile_ 中的最后一行 `ENTRYPOINT ["init.sh"]` 会调用 `init.sh` 以启动 SSH 服务和 Python 服务器。
 
 ```Dockerfile
 FROM python:3.4
@@ -81,6 +73,8 @@ COPY init.sh /usr/local/bin/
     
 RUN chmod u+x /usr/local/bin/init.sh
 EXPOSE 8000 2222
+
+#service SSH start
 #CMD ["python", "/code/manage.py", "runserver", "0.0.0.0:8000"]
 ENTRYPOINT ["init.sh"]
 ```
@@ -129,8 +123,8 @@ az acr credential show --name <azure-container-registry-name>
 
 此输出显示两个密码以及用户名。
 
-```json
-<
+<pre>
+{
   "passwords": [
     {
       "name": "password",
@@ -141,11 +135,11 @@ az acr credential show --name <azure-container-registry-name>
       "value": "{password}"
     }
   ],
-  "username": "<registry-username>"
+  "username": "&lt;registry-username&gt;"
 }
-```
+</pre>
 
-在本地终端窗口中，使用 `docker login` 命令登录到 Azure 容器注册表，如下面的示例中所示。 将 \<azure-container-registry-name> 和 \<registry-username> 替换为自己的注册表值。 出现提示时，键入在上一步骤中获取的某个密码。
+在本地终端窗口中，使用 `docker login` 命令登录到 Azure 容器注册表，如下面的示例中所示。 用注册表的值替换 \<azure-container-registry-name> 和 \<registry-username> 。 出现提示时，键入在上一步骤中获取的某个密码。
 
 ```bash
 docker login <azure-container-registry-name>.azurecr.io --username <registry-username>
@@ -174,11 +168,11 @@ az acr repository list -n <azure-container-registry-name>
 
 应该会看到以下输出。
 
-```json
+<pre>
 [
   "mydockerimage"
 ]
-```
+</pre>
 
 ### <a name="create-app-service-plan"></a>创建应用服务计划
 
@@ -186,7 +180,7 @@ az acr repository list -n <azure-container-registry-name>
 
 ### <a name="create-web-app"></a>创建 Web 应用
 
-在 Cloud Shell 中，使用 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 命令在 `myAppServicePlan` 应用服务计划中创建一个 [Web 应用](app-service-linux-intro.md)。 将 \<app-name> 替换为唯一的应用名称，并将 \<azure-container-registry-name> 替换为自己的注册表名称。
+在 Cloud Shell 中，使用 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 命令在 `myAppServicePlan` 应用服务计划中创建一个 [Web 应用](app-service-linux-intro.md)。 用唯一的应用名替换 \<app-name>，用注册表名替换 \<azure-container-registry-name> 。
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --deployment-container-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
@@ -194,7 +188,7 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
 
 创建 Web 应用后，Azure CLI 会显示类似于以下示例的输出：
 
-```json
+<pre>
 {
   "availabilityState": "Normal",
   "clientAffinityEnabled": true,
@@ -202,16 +196,16 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
   "cloningInfo": null,
   "containerSize": 0,
   "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app-name>.azurewebsites.net",
-  "deploymentLocalGitUrl": "https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git",
+  "defaultHostName": "&lt;app-name&gt;.azurewebsites.net",
+  "deploymentLocalGitUrl": "https://&lt;username&gt;@&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git",
   "enabled": true,
-  < JSON data removed for brevity. >
+  &lt; JSON data removed for brevity. &gt;
 }
-```
+</pre>
 
 ### <a name="configure-registry-credentials-in-web-app"></a>在 Web 应用中配置注册表凭据
 
-要让应用服务拉取专用映像，需要提供与注册表和映像有关的信息。 在 Cloud Shell 中，请使用 [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) 命令提供这些信息。 替换 \<app-name>、\<azure-container-registry-name>、\<registry-username> 和 \<password>。
+要让应用服务拉取专用映像，需要提供与注册表和映像有关的信息。 在 Cloud Shell 中，请使用 [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) 命令提供这些信息。 请替换 \<app-name>、\<azure-container-registry-name>、\<registry-username> 和 \<password>  。
 
 ```azurecli-interactive
 az webapp config container set --name <app-name> --resource-group myResourceGroup --docker-custom-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0 --docker-registry-server-url https://<azure-container-registry-name>.azurecr.io --docker-registry-server-user <registry-username> --docker-registry-server-password <password>
@@ -242,23 +236,33 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app-na
 
 ## <a name="change-web-app-and-redeploy"></a>更改 Web 应用并重新部署
 
-在本地 Git 存储库中打开 app/templates/app/index.html。 找到第一个 HTML 元素，将其更改为 。
+在本地 Git 存储库中打开 app/templates/app/index.html。 更改第一个 HTML 元素，使其与以下代码相匹配。
 
-```python
+```html
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Azure App Service - Updated Here!</a>
-      </div>
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Azure App Service - Updated Here!</a>
     </div>
-  </nav>
+  </div>
+</nav>
 ```
 
-当修改并保存 Python 文件后，必须重新生成并推送新的 Docker 映像。 为使更改生效，请重新启动 Web 应用。 使用先前在本教程中使用的命令。 可参阅[从 Docker 文件生成映像](#build-the-image-from-the-docker-file)和[向 Azure 容器注册表推送映像](#push-image-to-azure-container-registry)。 按照[测试 Web 应用](#test-the-web-app)中的说明测试 Web 应用
+保存更改后，请使用在本教程前面使用的相同命令重新生成并推送新的 Docker 映像。 可参阅[从 Docker 文件生成映像](#build-the-image-from-the-docker-file)和[向 Azure 容器注册表推送映像](#push-image-to-azure-container-registry)。
+
+推送新映像后，请使用以下命令重启 Web 应用以使所做的更改生效：
+
+```azurecli-interactive
+az webapp restart --name <app_name> --resource-group myResourceGroup
+```
+
+将 `<app_name>` 替换为之前使用的特定名称。
+
+重启应用后，请按照[测试 Web 应用](#test-the-web-app)中的说明对其进行测试。
 
 ## <a name="access-diagnostic-logs"></a>访问诊断日志
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="enable-ssh-connections"></a>启用 SSH 连接
 
@@ -278,7 +282,7 @@ SSH 实现容器和客户端之间的安全通信。 若要启用到容器的 SS
     > [!NOTE]
     > 此配置不允许从外部建立到容器的连接。 只能通过 Kudu/SCM 站点使用 SSH。 Kudu/SCM 站点使用 Azure 帐户进行身份验证。
 
-* [Dockerfile](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile#L18) 可将 [sshd_config](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/sshd_config file in the repository) 复制到“/etc/ssh/”存储库。
+* [Dockerfile](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile#L18) 将存储库中的 [sshd_config](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/sshd_config) 文件复制到 */etc/ssh/* 目录。
 
     ```Dockerfile
     COPY sshd_config /etc/ssh/
@@ -292,20 +296,20 @@ SSH 实现容器和客户端之间的安全通信。 若要启用到容器的 SS
 
 * [入口脚本](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/init.sh#L5)启动 SSH 服务器。
 
-      ```bash
-      #!/bin/bash
-      service ssh start
+    ```bash
+    #!/bin/bash
+    service ssh start
     ```
 
-### Open SSH connection to container
+### <a name="open-ssh-connection-to-container"></a>打开到容器的 SSH 连接
 
-SSH connection is available only through the Kudu site, which is accessible at `https://<app-name>.scm.azurewebsites.net`.
+只能通过 Kudu 站点（可以通过 `https://<app-name>.scm.azurewebsites.net` 访问）使用 SSH 连接。
 
-To connect, browse to `https://<app-name>.scm.azurewebsites.net/webssh/host` and sign in with your Azure account.
+若要进行连接，请浏览到 `https://<app-name>.scm.azurewebsites.net/webssh/host` 并使用 Azure 帐户登录。
 
-You are then redirected to a page displaying an interactive console.
+接着会被重定向到显示交互式控制台的页面。
 
-You may wish to verify that certain applications are running in the container. To inspect the container and verify running processes, issue the `top` command at the prompt.
+可能需要验证某些特定的应用程序正在容器中运行。 若要检查容器并验证正在运行的进程，请在系统提示时发出 `top` 命令。
 
 ```bash
 top

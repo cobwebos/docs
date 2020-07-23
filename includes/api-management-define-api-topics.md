@@ -4,15 +4,16 @@ ms.service: api-management
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: vlvinogr
-ms.openlocfilehash: 5224f11cba621da384be23d3ec402f17cb29f317
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: ace11adbaaeebd3101ac621f44408e27ba7d18ab
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238086"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "67849582"
 ---
 ## <a name="related-topics"></a>相关主题
 
+* [API 导入限制](../articles/api-management/api-management-api-import-restrictions.md)
 * [导入 OpenAPI 规范](../articles/api-management/import-api-from-oas.md)
 * [导入 SOAP API](../articles/api-management/import-soap-api.md)
 * [导入 SOAP API 并将其转换为 REST](../articles/api-management/restify-soap-api.md)

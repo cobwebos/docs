@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: d5de8efc62984b9738c9247b12225f35265309c5
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66131797"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "67172718"
 ---
 > [!TIP]
 >

@@ -1,31 +1,29 @@
 ---
-title: Web 服务参数 - Azure 机器学习工作室 | Microsoft Docs
+title: Web 服务参数
+titleSuffix: ML Studio (classic) - Azure
 description: 在 Web 服务受访问时，如何使用 Azure 机器学习 Web 服务参数修改模型行为。
 services: machine-learning
-documentationcenter: ''
-author: xiaoharper
-ms.custom: seodec18
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 editor: cgronlun
 ms.assetid: c49187db-b976-4731-89d6-11a0bf653db1
 ms.service: machine-learning
 ms.subservice: studio
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/12/2017
-ms.openlocfilehash: a236043d5622e5a2e1ffd572c887fb5ffac2174a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c274579e756b3c22920023d68501981d5b4a8b01
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60345411"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84705859"
 ---
-# <a name="use-azure-machine-learning-studio-web-service-parameters"></a>使用 Azure 机器学习工作室 Web 服务参数
+# <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>使用 Azure 机器学习工作室（经典）Web 服务参数
+
 发布包含可配置参数的模块的实验，创建 Azure 机器学习 Web 服务。 在某些情况下，当 Web 服务在运行时，可能会要更改模块行为。 *Web 服务参数*允许执行此任务。 
 
-常见示例为设置[导入数据][reader]模块，以便 Web 服务受访问时，已发布的 Web 服务的用户能够指定不同的数据源。 或配置[导出数据][writer]模块以指定其他目标。 其他一些示例包括为[特征哈希][feature-hashing]模块更改位数或为[基于筛选器的功能选择][filter-based-feature-selection]模块更改所需功能数。 
+一个常见的示例是设置[导入数据][reader]模块，以便在访问 Web 服务时，已发布 Web 服务的用户可以指定不同数据源。 或配置[导出数据][writer]模块，以便可以指定不同目标。 其他一些示例包括为[特征哈希][feature-hashing]模块更改位数或为[基于筛选器的特征选择][filter-based-feature-selection]模块更改所需特征数。 
 
 可设置 Web 服务参数并在实验中将它们与一个或多个模块参数关联，并且可以指定它们是必需项还是可选项。 然后在调用 Web 服务时，Web 服务的用户可提供这些参数的值。 
 
@@ -41,33 +39,33 @@ ms.locfileid: "60345411"
 Web 服务的 API 文档包括向 Web 服务用户提供的有关访问 Web 服务时如何以编程方式指定 Web 服务参数的信息。
 
 > [!NOTE]
-> 经典 Web 服务的 API 文档通过机器学习工作室 Web 服务“仪表板”中的 **API 帮助页**链接提供。 新 Web 服务的 API 文档通过 Web 服务“使用”和“Swagger API”页上的 [Azure 机器学习 Web 服务](https://services.azureml.net/Quickstart)门户提供。
+> 经典 Web 服务的 API 文档通过机器学习工作室（经典）的 Web 服务“仪表板”中的“API 帮助页”链接提供。 新 Web 服务的 API 文档通过 Web 服务“使用”和“Swagger API”页上的 [Azure 机器学习 Web 服务](https://services.azureml.net/Quickstart)门户提供。
 > 
 > 
 
 ## <a name="example"></a>示例
 例如，假设我们在做将信息发送到 Azure Blob 存储的[导出数据][writer]模块的实验。 我们将定义名为“Blob 路径”的 Web 服务参数，该参数允许 Web 服务用户在服务受访问时更改指向 Blob 存储的路径。
 
-1. 在机器学习工作室中，单击[导出数据][writer]模块，将其选中。 属性显示在实验画布右侧的“属性”窗格中。
+1. 在机器学习工作室（经典）中，单击[导出数据][writer]模块，将其选中。 属性显示在实验画布右侧的“属性”窗格中。
 2. 指定存储类型：
    
-   * 在“请指定数据目标”下，选择“Azure Blob 存储”。
-   * 在“请指定身份验证类型”下，选择“帐户”。
+   * 在“请指定数据目标”  下，选择“Azure Blob 存储”。
+   * 在“请指定身份验证类型”  下，选择“帐户”。
    * 输入 Azure Blob 存储的帐户信息。 
 
-3. 单击“指向以容器参数开头的 blob 的路径”右侧的图标。 如下所示：
+3. 单击“指向以容器参数开头的 blob 的路径”  右侧的图标。 如下所示：
    
    ![Web 服务参数图标](./media/web-service-parameters/icon.png)
    
    选择“设为 Web 服务参数”。
    
-   “属性”窗格底部的“Web 服务参数”下添加了名为“指向以容器参数开头的 blob 的路径”的条目。 这即是 Web 服务参数，此时已与此[导出数据][writer]模块参数关联。
-4. 要重命名 Web 服务参数，请单击名称、输入“Blob 路径”，并按“Enter”键。 
-5. 要提供 Web 服务参数的默认值，请单击名称右侧的图标、选择“提供默认值”、输入值（例如“container1/output1.csv”），并按“Enter”键。
+   “属性”窗格底部的“Web 服务参数”  下添加了名为“指向以容器参数开头的 blob 的路径”的条目。 这即是 Web 服务参数，此时已与此[导出数据][writer]模块参数关联。
+4. 要重命名 Web 服务参数，请单击名称、输入“Blob 路径”，并按“Enter”  键。 
+5. 要提供 Web 服务参数的默认值，请单击名称右侧的图标、选择“提供默认值”、输入值（例如“container1/output1.csv”），并按“Enter”  键。
    
    ![Web 服务参数](./media/web-service-parameters/parameter.png)
-6. 单击“运行”。 
-7. 单击“部署 Web 服务”时，并选择“部署 Web 服务[经典]”或“部署 Web 服务[新]”，部署 Web 服务。
+6. 单击 **“运行”** 。 
+7. 单击“部署 Web 服务”  时，并选择“部署 Web 服务[经典]”  或“部署 Web 服务[新]”  ，部署 Web 服务。
 
 > [!NOTE] 
 > 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)。 

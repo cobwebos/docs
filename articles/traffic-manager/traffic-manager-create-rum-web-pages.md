@@ -1,24 +1,23 @@
 ---
-title: 使用网页将实际用户度量发送到 Azure 流量管理器 | Microsoft Docs
-description: 设置网页将实际用户度量发送到流量管理器
+title: 真实用户度量网页-Azure 流量管理器
+description: 本文介绍如何设置网页以将真实用户度量发送到 Azure 流量管理器。
 services: traffic-manager
 documentationcenter: traffic-manager
-author: KumudD
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: kumud
+ms.author: rohink
 ms.custom: ''
-ms.openlocfilehash: d6b669f5baae13f9fb57c5c58060e70a8f871e17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: f297057549263cd62783778b363665bfb4368c91
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884067"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711640"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>如何使用网页将实际用户度量发送到 Azure 流量管理器
 
@@ -31,20 +30,20 @@ ms.locfileid: "60884067"
 若要使用 Azure 门户获取 RUM 密钥，请执行以下操作：
 1. 在浏览器中，登录 Azure 门户。 如果还没有帐户，可以注册免费一个月试用版。
 2. 在门户的搜索栏中，搜索要修改的流量管理器配置文件名称，并在显示的结果中单击该流量管理器配置文件。
-3. 在“流量管理器配置文件”边栏选项卡中，单击“设置”下的“实际用户度量”。
-4. 单击“生成密钥”新建 RUM 密钥。
+3. 在“流量管理器配置文件”边栏选项卡中，单击“设置”**** 下的“实际用户度量”****。
+4. 单击“生成密钥”**** 新建 RUM 密钥。
  
    ![生成实际用户度量密钥](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
-   图 1：生成真实用户度量密钥
+   **图 1：生成实际用户度量密钥**
 
 5. 该边栏选项卡现在显示生成的 RUM 密钥和需要嵌入到 HTML 页中的 JavaScript 代码片段。
  
     ![实际用户度量密钥的 Javascript 代码](./media/traffic-manager-create-rum-web-pages/rum-javascript-code.png)
 
-    图 2：真实用户度量密钥和度量 JavaScript
+    **图 2：实际用户度量密钥和度量 JavaScript**
  
-6. 单击“复制”按钮复制 JavaScript 代码。 
+6. 单击“复制”**** 按钮复制 JavaScript 代码。 
 
 >[!IMPORTANT]
 > 使用生成的 JavaScript 使“实际用户度量”功能正常工作。 对此脚本或“实际用户度量”使用的脚本进行任何更改可能会导致不可预知的行为。
@@ -58,7 +57,7 @@ ms.locfileid: "60884067"
  
     ![将 Javascript 代码嵌入到实际用户度量网页中](./media/traffic-manager-create-rum-web-pages/real-user-measurement-embed-script.png)  
 
-    图 3：嵌入真实用户度量 JavaScript 的简单 HTML
+    **图 3：嵌入实际用户度量 JavaScript 的简单 HTML**
 
 3.  保存 HTML 文件并将托管在连接到 Internet 的 Web 服务器上。 
 4. 下一次在 Web 浏览器中呈现此页时，将下载引用的 JavaScript，并且脚本将执行度量和报告操作。
@@ -66,7 +65,7 @@ ms.locfileid: "60884067"
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解[实际用户度量](traffic-manager-rum-overview.md)
-- 了解[流量管理器工作原理](traffic-manager-overview.md)
+- 了解[流量管理器的工作原理](traffic-manager-overview.md)
 - 详细了解流量管理器支持的[流量路由方法](traffic-manager-routing-methods.md)
 - 了解如何[创建流量管理器配置文件](traffic-manager-create-profile.md)
 

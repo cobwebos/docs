@@ -1,32 +1,25 @@
 ---
-title: 在 Azure Stack 中部署 OpenShift | Microsoft Docs
+title: 在 Azure Stack 中部署 OpenShift
 description: 在 Azure Stack 中部署 OpenShift。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: haroldwongms
 manager: joraio
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/23/2018
+ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 91b37753ae80596612eda9d3ccd34858691e35ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 51abfd1cbb438d0987554040867625f7fb71630b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60771543"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81758230"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>在 Azure Stack 中部署 OpenShift 容器平台或 OKD。
 
 可在 Azure Stack 中部署 OpenShift。 Azure 与 Azure Stack 之间存在一些重要的差异，因此，部署方法和功能会略有不同。
 
-目前，Azure 云提供程序无法在 Azure Stack 中运行。 出于此原因，无法使用附加的磁盘作为 Azure Stack 中的永久存储。 可以改为配置其他存储选项，例如 NFS、iSCSI、GlusterFS，等等。或者，可以启用 CNS 并使用 GlusterFS 作为永久存储。 如果启用了 CNS，将部署额外的三个节点和附加的存储供 GlusterFS 使用。
+目前，Azure 云提供程序无法在 Azure Stack 中运行。 出于此原因，无法使用附加的磁盘作为 Azure Stack 中的永久存储。 相反，你可以配置其他存储选项，例如 NFS、iSCSI、GlusterFS 等。作为替代方法，你可以启用 CN，并使用 GlusterFS 来实现持久存储。 如果启用了 CNS，将部署额外的三个节点和附加的存储供 GlusterFS 使用。
 
 可以使用多种方法之一在 Azure Stack 中部署 OpenShift 容器平台或 OKD：
 
@@ -67,9 +60,9 @@ ms.locfileid: "60771543"
 - OpenShift 群集详细信息，通过主机文件修改 (deployOpenShift.sh)
 - RHEL 映像引用（azuredeploy.json 中的变量）
 
-对于使用 Azure CLI 进行部署的步骤，请遵循 [OpenShift 容器平台](./openshift-container-platform.md)部分或 [OKD](./openshift-okd.md) 部分中的相应内容。
+对于使用 Azure CLI 进行部署的步骤，请遵循 [OpenShift 容器平台](./openshift-container-platform-3x.md)部分或 [OKD](./openshift-okd.md) 部分中的相应内容。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [部署后任务](./openshift-post-deployment.md)
-- [在 Azure 中排查 OpenShift 部署问题](./openshift-troubleshooting.md)
+- [部署后任务](./openshift-container-platform-3x-post-deployment.md)
+- [在 Azure 中排查 OpenShift 部署问题](./openshift-container-platform-3x-troubleshooting.md)

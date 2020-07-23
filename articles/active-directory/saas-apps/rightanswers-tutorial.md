@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: b45c88ddf3e4a5781e48641d26a9487e5861880c
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: b83c080b692802c4361165f5f60b45172969abaa
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65890031"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79475730"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightanswers"></a>教程：Azure Active Directory 与 RightAnswers 集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "65890031"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 RightAnswers 的集成，需备齐以下项：
 
@@ -80,7 +80,7 @@ ms.locfileid: "65890031"
 2. **[配置 RightAnswers 单一登录](#configure-rightanswers-single-sign-on)** - 在应用程序端配置单一登录。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 RightAnswers 测试用户](#create-rightanswers-test-user) - 在 RightAnswers 中创建一个与 Azure AD 中的 Britta Simon 相对应的关联用户  。
+5. **创建 RightAnswers 测试用户[ - 在 RightAnswers 中创建一个与 Azure AD 中的 Britta Simon 相对应的关联用户](#create-rightanswers-test-user)** 。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -105,12 +105,12 @@ ms.locfileid: "65890031"
 
     ![RightAnswers 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.rightanswers.com/portal/ss/` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.rightanswers.com/portal/ss/`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<subdomain>.rightanswers.com:<identifier>/portal` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<subdomain>.rightanswers.com:<identifier>/portal`
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [RightAnswers 客户端支持团队](https://www.rightanswers.com/contact-us/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [RightAnswers 客户端支持团队](https://uplandsoftware.com/rightanswers/contact/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -128,7 +128,7 @@ ms.locfileid: "65890031"
 
 ### <a name="configure-rightanswers-single-sign-on"></a>配置 RightAnswers 单一登录
 
-若要在 RightAnswers  端配置单一登录，需要将下载的“联合元数据 XML”  以及从 Azure 门户复制的相应 URL 发送给 [ 支持团队](https://www.rightanswers.com/contact-us/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 RightAnswers  端配置单一登录，需要将下载的“联合元数据 XML”  以及从 Azure 门户复制的相应 URL 发送给 [ 支持团队](https://uplandsoftware.com/rightanswers/contact/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!NOTE]
 > RightAnswers 支持团队需要执行实际的 SSO 配置。 在为订阅启用了 SSO 后，将收到通知。
@@ -151,7 +151,7 @@ ms.locfileid: "65890031"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 `brittasimon@yourcompanydomain.extension`   
+    b. 在“用户名”字段中，键入 `brittasimon@yourcompanydomain.extension`  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -174,7 +174,7 @@ ms.locfileid: "65890031"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -191,7 +191,7 @@ ms.locfileid: "65890031"
 如有必要，在第一次尝试单一登录时会自动创建用户。
 
 > [!NOTE]
-> 可以使用任何其他 Rally Software 用户帐户创建工具或 RightAnswers 提供的 API 来预配 AAD 用户帐户。
+> 可使用任何其他 Rally Software 用户帐户创建工具或 RightAnswers 提供的 API 来预配 Azure AD 用户帐户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

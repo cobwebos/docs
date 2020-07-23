@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: clemensv
 ms.custom: include file
-ms.openlocfilehash: 8d73a22473ffff358c7424249c7581f6af740718
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: ce29cd03de46e1d93d7f1f28f9f5184cd59a57e7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66116125"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79200247"
 ---
 ### <a name="create-a-console-application"></a>创建控制台应用程序
 
@@ -82,6 +82,7 @@ ms.locfileid: "66116125"
     using System.IO;
     using System.Threading;
     using System.Threading.Tasks;
+    using System.Net.Http;
     using Microsoft.Azure.Relay;
    
     namespace Client

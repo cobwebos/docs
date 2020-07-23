@@ -1,6 +1,6 @@
 ---
-title: 创建新应用
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 创建新应用 - LUIS
+titleSuffix: Azure Cognitive Services
 description: 在语言理解 (LUIS) 网页上创建和管理应用程序。
 services: cognitive-services
 author: diberry
@@ -8,85 +8,73 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 05/07/2019
+ms.topic: how-to
+ms.date: 05/18/2020
 ms.author: diberry
-ms.openlocfilehash: 9d650a17ddfac6461341e50c4693e4522d9628b3
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 304e76a2bf8bae3e6ee2120b892ef97d89c3decc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148202"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144395"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>在 LUIS 门户中创建新的 LUIS 应用
-可通过多种方法创建 LUIS 应用。 可以在 [LUIS](https://www.luis.ai) 门户中创建 LUIS 应用，也可以通过 LUIS 创作 [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) 创建。
+可通过多种方法创建 LUIS 应用。 可以在 LUIS 门户中创建 LUIS 应用，也可以通过 LUIS 创作 [API](developer-reference-resource.md) 进行创建。
 
 ## <a name="using-the-luis-portal"></a>使用 LUIS 门户
-可以通过以下几种方式在 LUIS 门户中创建新应用：
+
+可以通过以下几种方式在门户中创建新应用：
 
 * 从一个空应用开始，创建意向、表述和实体。
 * 从一个空应用开始，添加[预生成的域](luis-how-to-use-prebuilt-domains.md)。
-* 从已包含意向、表述和实体的 JSON 文件导入 LUIS 应用。
+* 从已包含意向、言语和实体的 `.lu` 或 `.json` 文件导入 LUIS 应用。
 
 ## <a name="using-the-authoring-apis"></a>使用创作 API
 可以通过以下几种方式使用创作 API 创建新应用：
 
-* [首先](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)创建一个空应用，然后创建意向、表述和实体。
-* 从预生成域[开始](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/59104e515aca2f0b48c76be5)。  
+* [添加应用程序](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c2f) - 从一个空应用开始，创建意向、言语和实体。
+* [添加预生成应用程序](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/59104e515aca2f0b48c76be5) - 从一个预生成域开始，包括意向、言语和实体。
 
 
 <a name="export-app"></a>
 <a name="import-new-app"></a>
 <a name="delete-app"></a>
- 
+
+
+[!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 ## <a name="create-new-app-in-luis"></a>在 LUIS 中创建新应用
 
-1. 在“我的应用”页，选择“创建新应用”。
+1. 在“我的应用”页上，依次选择“订阅”、“创作资源”和“+ 创建”。 
 
-    ![LUIS 应用列表](./media/luis-create-new-app/apps-list.png)
+> [!div class="mx-imgBorder"]
+> ![LUIS 应用列表](./media/create-app-in-portal.png)
 
+1. 在对话框中，输入应用程序的名称，例如“`Pizza Tutorial`”。
 
-2. 在对话框中，将应用程序命名为“TravelAgent”。
+    ![“创建新应用”对话框](./media/create-pizza-tutorial-app-in-portal.png)
 
-    ![“创建新应用”对话框](./media/luis-create-new-app/create-app.png)
-
-3. 选择应用程序区域性（对于 TravelAgent 应用，请选择英语），然后选择“完成”。 
+1. 选择应用程序区域性，然后选择“完成”。 此时，“说明”和“预测资源”是可选项。 以后随时可以在门户的“管理”部分进行设置。
 
     > [!NOTE]
-    > 创建应用程序后将无法更改区域性。 
+    > 创建应用程序后将无法更改区域性。
 
-## <a name="import-an-app-from-file"></a>从文件导入应用
+    创建应用后，LUIS 门户会显示“意向”列表，其中包含已为你创建的 `None` 意向。 现在，你已有一个空应用。
 
-1. 在“我的应用”页，选择“导入新应用”。
-1. 在弹出对话框中，选择一个有效的应用 JSON 文件，并选择**完成**。
+    > [!div class="mx-imgBorder"]
+    > ![意向列表，其中包含在没有示例言语的情况下创建的 None 意向。](media/pizza-tutorial-new-app-empty-intent-list.png)
 
-### <a name="import-errors"></a>导入错误
+## <a name="other-actions-available-on-my-apps-page"></a>“我的应用”页上提供的其他操作
 
-可能的错误为： 
+上下文工具栏提供其他操作：
 
-* 已存在具有该名称的应用。 重新导入应用程序中，并设置**可选名称**为新名称。 
-
-## <a name="export-app-for-backup"></a>导出应用备份
-
-1. 上**我的应用**页上，选择**导出**。
-1. 选择**导出为 JSON**。 在浏览器下载活动版本的应用。
-1. 将此文件添加到您的备份系统进行存档该模型。
-
-## <a name="export-app-for-containers"></a>导出用于容器的应用
-
-1. 上**我的应用**页上，选择**导出**。
-1. 选择**导出为容器**然后选择你想要导出的已发布的槽 （生产或阶段）。
-1. 使用此文件和你[LUIS 容器](luis-container-howto.md)。 
-
-    如果您感兴趣但不是导出一个训练的但要使用 LUIS 容器使用的已发布的模型，请转到**版本**页和从中导出。 
-
-## <a name="delete-app"></a>删除应用
-
-1. 在“我的应用”页，选中应用所在行末尾的三个点 (...)。
-1. 从菜单中选择“删除”。
-1. 在确认消息窗口中，选择“确定”。
+* 重命名应用
+* 使用 `.lu` 或 `.json` 从文件导入
+* 将应用导出为 `.lu`（适用于 [LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)）、`.json` 或 `.zip`（适用于 [LUIS 容器](luis-container-howto.md)）
+* 导入容器终结点日志以查看终结点言语
+* 将终结点日志导出为 `.csv` 以进行脱机分析
+* 删除应用
 
 ## <a name="next-steps"></a>后续步骤
 
-应用中的第一个任务是[添加意向](luis-how-to-add-intents.md)。
+如果应用设计包含意向检测，请[创建新意向](luis-how-to-add-intents.md)并添加示例言语。 如果应用设计仅是数据提取，则将示例言语添加到“None”意向，然后[创建实体](luis-how-to-add-example-utterances.md)，并使用这些实体标记示例言语。

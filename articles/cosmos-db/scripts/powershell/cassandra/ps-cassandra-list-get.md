@@ -1,19 +1,20 @@
 ---
-title: Azure PowerShell 脚本-Azure Cosmos DB 列表，并通过 Cassandra API 的操作
-description: Azure PowerShell 脚本-Azure Cosmos DB 列表，并通过 Cassandra API 的操作
+title: 用于列出和获取 Azure Cosmos DB Cassandra API 资源的 PowerShell 脚本
+description: Azure PowerShell 脚本 - Azure Cosmos DB 列出和获取操作 - Cassandra API
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
-ms.date: 05/18/2019
+ms.subservice: cosmosdb-cassandra
+ms.topic: sample
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: e275f0e1ca90a1d9385784bebcef9c70ffe6cdcf
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: cf29bae8b2aa011593e4d9acb45bad71a6ad0167
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247254"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365712"
 ---
-# <a name="list-and-get-keyspaces-and-tables-for-azure-cosmos-db---cassandra-api"></a>列表，并通过 Azure Cosmos DB 的 Cassandra API 的键空间和表
+# <a name="list-and-get-keyspaces-and-tables-for-azure-cosmos-db---cassandra-api"></a>列出和获取 Azure Cosmos DB 的密钥空间和表 - Cassandra API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -35,10 +36,12 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | 列出 Cosmos DB 帐户或获取指定的 Cosmos DB 帐户。 |
+| [Get-AzCosmosDBCassandraKeyspace](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandrakeyspace) | 列出帐户中的 Cosmos DB Cassandra API 密钥空间，或在帐户中获取指定的 Cosmos DB Cassandra API 密钥空间。 |
+| [Get-AzCosmosDBCassandraTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandratable) | 列出密钥空间中的 Cosmos DB Cassandra API 表，或在密钥空间中获取指定的 Cosmos DB Cassandra API 表。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||

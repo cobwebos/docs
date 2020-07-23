@@ -1,25 +1,19 @@
 ---
-title: 在 Azure 中使用 Windows 客户端映像 | Microsoft Docs
+title: 在 Azure 中使用 Windows 客户端映像
 description: 如何使用 Visual Studio 订阅权益，在 Azure 中针对开发/测试方案部署 Windows 7、Windows 8 或 Windows 10
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-ms.assetid: 91c3880a-cede-44f1-ae25-f8f9f5b6eaa4
+ms.subservice: imaging
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: f791b17f2729af3efd2dff5d7884a168f8377154
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 51e4862fe55428f112841ef7176cdb916653de0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61403047"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82083268"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>在 Azure 中使用 Windows 客户端实现开发/测试方案
 如果有相应的 Visual Studio（以前为 MSDN）订阅，可以在 Azure 中使用 Windows 7、Windows 8 或 Windows 10 企业版 (x64) 实施开发/测试方案。 本文概述在 Azure 中运行 Windows 7、Windows 8.1、Windows 10 企业版和使用以下 Azure 库映像所要满足的条件。
@@ -27,14 +21,14 @@ ms.locfileid: "61403047"
 ![Azure 门户中的映像详细信息](./media/client-images/windows-client-msdn-images.png) 
 
 > [!NOTE]
-> 有关 Azure 库中的 Windows 10 专业版和 Windows 10 专业版 N 映像，请参阅[如何使用多租户托管权限在 Azure 上部署 Windows 10](windows-desktop-multitenant-hosting-deployment.md)
->![Azure 门户中的专业版映像详细信息](./media/client-images/windows-client-pro-images.png) 
+> 有关 azure 库中的 windows 10 专业版和 windows 10 专业版 N 映像，请参阅[如何在 azure 上部署 windows 10，其中包含来自 Azure 门户的多租户托管权限](windows-desktop-multitenant-hosting-deployment.md) 
+> ![ Pro 映像详细信息](./media/client-images/windows-client-pro-images.png) 
 >
 
 ## <a name="subscription-eligibility"></a>订阅条件
 有效的 Visual Studio 订户（已获取 Visual Studio 订阅许可证的用户）可以使用 Windows 客户端进行开发和测试。 可以在自己的硬件上，以及在任何类型的 Azure 订阅中运行的 Azure 虚拟机上使用 Windows 客户端。 不能在 Azure 上针对一般生产目的部署或使用 Windows 客户端，不是有效 Visual Studio 订户的用户也不能使用 Windows 客户端。
 
-为方便起见，Azure 库的[符合条件的开发/测试产品](#eligible-offers)中提供了某些 Windows 10 映像。 属于任一产品类型的 Visual Studio 订户也可以[适当地准备和创建](prepare-for-upload-vhd-image.md) 64 位 Windows 7、Windows 8 或 Windows 10 映像，并[上载到 Azure](upload-generalized-managed.md)。 仅限有效的 Visual Studio 订户用于开发/测试目的。
+为方便起见，在 Azure 库的 [符合条件的开发/测试产品](#eligible-offers)中提供了某些 Windows 10 映像。 属于任一产品类型的 Visual Studio 订户也可以[适当地准备和创建](prepare-for-upload-vhd-image.md) 64 位 Windows 7、Windows 8 或 Windows 10 映像，并[上载到 Azure](upload-generalized-managed.md)。 仅限有效的 Visual Studio 订户用于开发/测试目的。
 
 ## <a name="eligible-offers"></a>符合条件的产品
 下表详细描述了可通过 Azure 库部署 Windows 10 的产品 ID。 只有在以下产品中才能看到 Windows 10 映像。 需要以其他产品类型运行 Windows 客户端的 Visual Studio 订户需要[适当地准备和创建](prepare-for-upload-vhd-image.md) 64 位 Windows 7、Windows 8 或 Windows 10 映像，[并上载到 Azure](upload-generalized-managed.md)。
@@ -53,13 +47,13 @@ ms.locfileid: "61403047"
 ## <a name="check-your-azure-subscription"></a>检查 Azure 订阅
 如果不知道自己的产品 ID，可以使用以下两种方式之一通过 Azure 门户获取：  
 
-- 在“订阅”窗口上：
+- 在“订阅”窗口中：
 
   ![Azure 门户中的产品 ID 详细信息](./media/client-images/offer-id-azure-portal.png) 
 
-- 或者，单击“计费”，并单击订阅 ID。 产品 ID 会显示在“计费”窗口中。
+- 或者，单击“计费”****，并单击订阅 ID。 产品 ID 会显示在“计费”** 窗口中。
 
-也可以从 Azure 帐户门户的 [订阅](https://account.windowsazure.com/Subscriptions) 选项卡查看产品 ID：
+也可以从 Azure 帐户门户的[“订阅”选项卡](https://account.windowsazure.com/Subscriptions)查看套餐 ID：
 
 ![Azure 帐户门户中的产品 ID 详细信息](./media/client-images/offer-id-azure-account-portal.png) 
 

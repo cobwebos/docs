@@ -12,27 +12,30 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/16/2019
+ms.date: 07/15/2020
 ms.author: b-juche
-ms.openlocfilehash: c2984e012ae83a8bc17d72ed4eac0c5c469c2694
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 0b150491fff953434062cc583566e1113947a679
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522868"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504897"
 ---
 # <a name="what-is-the-storage-hierarchy-of-azure-netapp-files"></a>Azure NetApp 文件的存储层次结构是怎样的
 
 在 Azure NetApp 文件中创建卷之前，必须为预配的容量购买和设置池。  若要设置容量池，必须具有 NetApp 帐户。 了解存储层次结构可以帮助你设置和管理 Azure NetApp 文件资源。
 
-## <a name="azure_netapp_files_account"></a>NetApp 帐户
+> [!IMPORTANT] 
+> Azure NetApp 文件目前不支持订阅间的资源迁移。
+
+## <a name="netapp-accounts"></a><a name="azure_netapp_files_account"></a>NetApp 帐户
 
 - NetApp 帐户用作成分容量池的管理组。  
 - NetApp 帐户不同于常规的 Azure 存储帐户。 
 - NetApp 帐户从作用域角度而言是区域性的。   
 - 在一个区域中可以有多个 NetApp 帐户，但每个 NetApp 帐户仅绑定到单个区域。
 
-## <a name="capacity_pools"></a>容量池
+## <a name="capacity-pools"></a><a name="capacity_pools"></a>容量池
 
 - 容量池是按其预配的容量度量的。  
 - 该容量预配为你购买的固定 SKU 数（例如 4-TiB 容量）。
@@ -42,16 +45,15 @@ ms.locfileid: "65522868"
   例如，在下面的[存储层次结构的概念图](#conceptual_diagram_of_storage_hierarchy)中，无法将容量池 1 从 NetApp 帐户 US East 移动到 NetApp 帐户 US West 2。  
 - 在容量池中的所有卷都被删除之前，无法删除容量池。
 
-## <a name="volumes"></a>卷
+## <a name="volumes"></a><a name="volumes"></a>卷
 
 - 卷按逻辑容量消耗进行度量，并且是可缩放的。 
 - 卷的容量消耗是依据其池的预配容量计数的。
 - 每个卷只属于一个池，但一个池可以包含多个卷。 
 - 不能在容量池之间移动卷。 <!--Within the same NetApp account, you can move a volume across pools.  -->   
   例如，在下面的[存储层次结构的概念图](#conceptual_diagram_of_storage_hierarchy)中，无法将卷从容量池 1 移动到容量池 2。
-- 在卷的所有快照都被删除之前，无法删除卷。
 
-## <a name="conceptual_diagram_of_storage_hierarchy"></a>存储层次结构的概念图 
+## <a name="conceptual-diagram-of-storage-hierarchy"></a><a name="conceptual_diagram_of_storage_hierarchy"></a>存储层次结构的概念图 
 下面的示例显示了 Azure 订阅、NetApp 帐户、容量池和卷之间的关系。   
 
 ![存储层次结构的概念图](../media/azure-netapp-files/azure-netapp-files-storage-hierarchy.png)

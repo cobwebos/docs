@@ -1,26 +1,19 @@
 ---
-title: 了解 Azure VM 规模集 VM 的实例 ID | Microsoft Docs
-description: 了解 Azure VM 规模集 VM 的实例 ID
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
+title: 了解 Azure VM 规模集 VM 的实例 ID
+description: 了解 Azure VM 规模集虚拟机的实例 ID 以及它们出现的各种方式。
+author: mimckitt
+ms.author: mimckitt
+ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: management
 ms.date: 02/22/2018
-ms.author: manayar
-ms.openlocfilehash: 6aeba722a0661979664f8d61efdb9b2bf47ad801
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 430c08fc318a89c4d11575eab90ee524b88a979a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60618485"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84607340"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>了解 Azure VM 规模集 VM 的实例 ID
 本文介绍规模集的实例 ID 和显示这些 ID 的各种方法。
@@ -29,7 +22,7 @@ ms.locfileid: "60618485"
 
 规模集中的每个 VM 均获得唯一标识它的实例 ID。 可在规模集 API 中使用此实例 ID 对规模集中的特定 VM 执行操作。 例如，使用重置映像 API 时，可以指定特定实例 ID 以重置映像：
 
-REST API：`POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage?api-version={apiVersion}`（有关详细信息，请参阅 [REST API 文档](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage)）
+REST API：`POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimage?api-version={apiVersion}`（有关详细信息，请参阅 [REST API 文档](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/reimage)）
 
 PowerShell：`Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage`（有关详细信息，请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm)）
 
@@ -47,8 +40,11 @@ CLI：`az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}`（有�
 
 下面是 CLI 的某个示例输出，但输出的具体呈现取决于提供给命令的选项：
 
+```azurecli
+az vmss show -g {resourceGroupName} -n {vmScaleSetName}
 ```
-$ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
+
+```output
 [
   {
     "instanceId": "85",
@@ -77,7 +73,7 @@ $ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
 
 如果从规模集 VM 中查询[实例元数据](../virtual-machines/windows/instance-metadata-service.md)，会在输出中看到“名称”：
 
-```
+```output
 {
   "compute": {
     "location": "westus",

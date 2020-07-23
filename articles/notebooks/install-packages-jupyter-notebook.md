@@ -1,26 +1,18 @@
 ---
-title: 在 Azure 上的 Jupyter 笔记本中安装包
-description: 如何从在 Azure 上运行的 Jupyter 笔记本内安装 Python、R 和 F# 包。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: douge
-ms.assetid: 6f089c12-128b-4dbd-96e3-1320d37eeba4
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+title: 在 Jupyter 笔记本中安装包-Azure Notebooks 预览
+description: '了解如何在 Azure 上运行的 Jupyter 笔记本中安装 Python、R 和 F # 包。'
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 504158f248cde3a399475cdec99de3e6a4ebfcc5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 43d38c9f3a4b0095967ab3e103ea729ec86ea2bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60598009"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831210"
 ---
-# <a name="install-packages-from-within-a-notebook"></a>从笔记本内安装包
+# <a name="install-packages-from-within-azure-notebooks-preview"></a>从 Azure Notebooks 预览中安装包
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 虽然可以在[项目级别为笔记本配置环境](configure-manage-azure-notebooks-projects.md#configure-the-project-environment)，但你可能希望直接在一个单独的笔记本内安装包。
 
@@ -66,12 +58,22 @@ install_github('<user>/<repo>')
 
 ```fsharp
 Paket.Package
-[ "MathNet.Numerics"
-"MathNet.Numerics.FSharp"
-]
+  [ "MathNet.Numerics"
+    "MathNet.Numerics.FSharp"
+  ]
+```
+
+然后加载 Paket 生成器：
+```fsharp
+#load "Paket.Generated.Refs.fsx"
+```
+
+打开库：
+```fsharp
+open MathNet.Numerics
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
 - [如何：配置和管理项目](configure-manage-azure-notebooks-projects.md)
-- [如何：演示幻灯片放映](present-jupyter-notebooks-slideshow.md)
+- [如何：显示幻灯片](present-jupyter-notebooks-slideshow.md)

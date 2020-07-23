@@ -1,18 +1,13 @@
 ---
-title: Azure 容器注册表中的映像存储
+title: 容器映像存储
 description: 详述如何在 Azure 容器注册表中存储 Docker 容器映像，包括安全性、冗余和容量。
-services: container-registry
-author: dlepow
-ms.service: container-registry
 ms.topic: article
-ms.date: 03/21/2018
-ms.author: danlep
-ms.openlocfilehash: 55c84907ab41f6da9d7a0989c68a1c1f90c5e424
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 06/18/2020
+ms.openlocfilehash: d51014e9e0769091aba42682cce3a6a01cfa19de
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60827266"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85214054"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Azure 容器注册表中的容器映像存储
 
@@ -20,7 +15,7 @@ ms.locfileid: "60827266"
 
 ## <a name="encryption-at-rest"></a>静态加密
 
-注册表中的所有容器映像均已进行静态加密。 Azure 在存储映像之前自动对其进行加密，当应用程序和服务请求映像时即时对其进行解密。
+注册表中的所有容器映像均已进行静态加密。 Azure 在存储映像之前自动对其进行加密，当应用程序和服务请求映像时即时对其进行解密。 （可选）使用[客户管理的密钥](container-registry-customer-managed-keys.md)应用其他加密层。
 
 ## <a name="geo-redundant-storage"></a>异地冗余存储
 
@@ -30,19 +25,11 @@ Azure 使用异地冗余存储方案来防止容器映像丢失。 Azure 容器�
 
 对于需要更高可用性保证的方案，请考虑使用高级注册表的[异地复制](container-registry-geo-replication.md)功能。 异地复制可帮助在全部区域失败（而不仅仅是一个存储失败）时，防止丢失对注册表的访问权限。 异地复制还提供了其他好处，如临近网络映像存储，以便在分布式开发或部署方案中实现更快地推送和拉取。
 
-## <a name="image-limits"></a>映像限制
+## <a name="scalable-storage"></a>可扩展存储
 
-下表介绍了针对 Azure 容器注册表设置的容器映像和存储限制。
+Azure 容器注册表允许你根据需要创建任意数量的存储库、映像、层或标记，直至[注册表存储限制](container-registry-skus.md#service-tier-features-and-limits)。 
 
-| 资源 | 限制 |
-| -------- | :---- |
-| 存储库 | 无限制 |
-| 映像 | 无限制 |
-| 层 | 无限制 |
-| 标记 | 无限制|
-| 存储 | 5 TB |
-
-大量的存储库和标记可能会影响注册表的性能。 作为注册表维护例程的一部分，定期删除未使用的存储库、标记和图像。 已删除的注册表资源（如存储库、映像和标记）在删除后*无法*恢复。 有关删除注册表资源的详细信息，请参阅[删除 Azure 容器注册表中的容器映像](container-registry-delete.md)。
+大量的存储库和标记可能会影响注册表的性能。 定期在注册表维护例程中删除未使用的存储库、标记和映像，并根据需要设置未标记的清单的[保留策略](container-registry-retention-policy.md)。 删除后，*无法*恢复已删除的注册表资源（例如存储库、映像和标记）。 有关删除注册表资源的详细信息，请参阅[删除 Azure 容器注册表中的容器映像](container-registry-delete.md)。
 
 ## <a name="storage-cost"></a>存储成本
 
@@ -50,7 +37,7 @@ Azure 使用异地冗余存储方案来防止容器映像丢失。 Azure 容器�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关不同 Azure 容器注册表 SKU（基本、标准和高级）的详细信息，请参阅 [Azure 容器注册表 SKU](container-registry-skus.md)。
+有关基本、标准和高级容器注册表的详细信息，请参阅 [Azure 容器注册表服务层级](container-registry-skus.md)。
 
 <!-- IMAGES -->
 

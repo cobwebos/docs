@@ -1,26 +1,25 @@
 ---
-title: Azure PowerShell 脚本示例 - 更新 RDP 用户名和密码 | Microsoft Docs
+title: 在 PowerShell 中更新 RDP 用户名和密码
 description: Azure PowerShell 脚本示例 - 更新特定节点类型的所有 Service Fabric 群集节点的 RDP 用户名和密码。
 services: service-fabric
 documentationcenter: ''
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
-ms.devlang: na
 ms.topic: sample
 ms.date: 03/19/2018
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 2ed7176dd9073c41604a94e1b42a549de9a8e03d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b7f229162ed745408121d898f5af516d22a0c039
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66159967"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984923"
 ---
 # <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>更新群集中 VM 的管理员用户名和密码
 
@@ -38,11 +37,15 @@ Service Fabric 群集中的每个[节点类型](../service-fabric-cluster-nodety
 
 此脚本使用以下命令：表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [Get-AzVmss](/powershell/module/az.compute/get-azvmss) | 获取群集节点类型（虚拟机规模集）的属性。   |
 | [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension)| 将扩展添加到虚拟机规模集。|
 | [Update-AzVmss](/powershell/module/az.compute/update-azvmss)|将虚拟机规模集的状态更新为 VMSS 对象的状态。|
+
+## <a name="duration"></a>Duration
+
+对于单节点类型，例如，如果有五个节点，那么更改用户名或密码的持续时间为 45 到 60 分钟。 
 
 ## <a name="next-steps"></a>后续步骤
 

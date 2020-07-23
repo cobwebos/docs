@@ -6,21 +6,35 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 04/16/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: f5c498fc3f3fe051070b3565041e506bc40fceda
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.localizationpriority: high
+ms.openlocfilehash: ff57a67d5e6d617d6d51c924161f586f90f92c3c
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925165"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231533"
 ---
+::: zone target="docs"
+
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>教程：将数据复制到 Azure Data Box Disk 并进行验证
+
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="copy-data-to-azure-data-box-disk-and-validate"></a>将数据复制到 Azure Data Box Disk 并进行验证
+
+连接并解锁磁盘后，可以将数据从源数据服务器复制到磁盘。 在数据复制完成后，应该验证数据以确保它将成功上传到 Azure。
+
+::: zone-end
+
+::: zone target="docs"
 
 本教程介绍如何从主机复制数据，然后生成校验和来验证数据完整性。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 将数据复制到 Data Box 磁盘
@@ -31,7 +45,7 @@ ms.locfileid: "64925165"
 在开始之前，请确保：
 - 已完成[教程：安装和配置 Azure Data Box Disk](data-box-disk-deploy-set-up.md)。
 - 磁盘已解锁，并且已连接到客户端计算机。
-- 用来将数据复制到磁盘的客户端计算机必须运行[受支持的操作系统](data-box-disk-system-requirements.md##supported-operating-systems-for-clients)。
+- 用来将数据复制到磁盘的客户端计算机必须运行[受支持的操作系统](data-box-disk-system-requirements.md#supported-operating-systems-for-clients)。
 - 请确保数据的预期存储类型与[支持的存储类型](data-box-disk-system-requirements.md#supported-storage-types-for-upload)匹配。
 - 查看 [Azure 对象大小限制中的托管磁盘限制](data-box-disk-limits.md#azure-object-size-limits)。
 
@@ -68,11 +82,11 @@ ms.locfileid: "64925165"
 
     ![磁盘驱动器的内容](media/data-box-disk-deploy-copy-data/data-box-disk-content.png)
  
-2. 将需要作为块 Blob 导入的数据复制到 BlockBlob 文件夹中  。 同样，将 VHD/VHDX 等数据复制到 PageBlob 文件夹并将数据复制到 AzureFile 文件夹   。
+2. 将需要作为块 Blob 导入的数据复制到 BlockBlob 文件夹中。 同样，将 VHD/VHDX 等数据复制到 PageBlob 文件夹并将数据复制到 AzureFile 文件夹 。
 
     在 Azure 存储帐户中，为 BlockBlob 和 PageBlob 文件夹下的每个子文件夹创建一个容器。 BlockBlob 和 PageBlob 文件夹下的所有文件将复制到 Azure 存储帐户下的默认容器 `$root` 中。 `$root` 容器中的所有文件始终作为块 Blob 上传。
 
-   将文件复制到“AzureFile”文件夹中的文件夹  。 AzureFile 文件夹中的子文件夹创建文件共享  。 直接复制到 AzureFile 文件夹的文件都会失败，会作为块 Blob 上传  。
+   将文件复制到“AzureFile”文件夹中的文件夹。 AzureFile 文件夹中的子文件夹创建文件共享。 直接复制到 AzureFile 文件夹的文件都会失败，会作为块 Blob 上传。
 
     如果根目录中存在文件和文件夹，则必须先将它们移到另一个文件夹，然后开始复制数据。
 
@@ -92,8 +106,8 @@ ms.locfileid: "64925165"
     |目标       | 指定目标目录的路径。        |
     |/E                  | 复制包括空目录的子目录。 |
     |/MT[:N]             | 使用 N 个线程创建多线程副本，其中 N 是介于 1 和 128 之间的整数。 <br>N 的默认值为 8。        |
-    |/R:\<N>             | 指定复制失败时的重试次数。 N 的默认值为 1,000,000（100 万次重试）。        |
-    |/W:\<N>             | 指定等待重试的间隔时间，以秒为单位。 N 的默认值为的 30（等待 30 秒）。        |
+    |/R: \<N>             | 指定复制失败时的重试次数。 N 的默认值为 1,000,000（100 万次重试）。        |
+    |/W: \<N>             | 指定等待重试的间隔时间，以秒为单位。 N 的默认值为的 30（等待 30 秒）。        |
     |/NFL                | 指定不记录文件名。        |
     |/NDL                | 指定不记录目录名。        |
     |/FFT                | 采用 FAT 文件时间（精度为两秒）。        |
@@ -223,7 +237,7 @@ ms.locfileid: "64925165"
  
 7. 打开命令提示符窗口。 
 
-8. 运行 `DataBoxDiskSplitCopy.exe`。 Type
+8. 运行 `DataBoxDiskSplitCopy.exe`。 类型
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 
@@ -250,6 +264,8 @@ ms.locfileid: "64925165"
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<configFile.json> /ResumeSession`
 
+如果使用拆分复制工具时看到错误，请转到如何[排查拆分复制工具错误](data-box-disk-troubleshoot-data-copy.md)。
+
 数据复制完成后，可以继续验证数据。 如果使用了拆分复制工具，请跳过验证（拆分复制工具也会验证）并继续学习下一教程。
 
 
@@ -257,7 +273,7 @@ ms.locfileid: "64925165"
 
 如果未使用拆分复制工具复制数据，则需要验证数据。 若要验证数据，请执行以下步骤。
 
-1. 运行 `DataBoxDiskValidation.cmd` 以在驱动器的 *DataBoxDiskImport* 文件夹中进行校验和验证。
+1. 运行 `DataBoxDiskValidation.cmd` 以在驱动器的 *DataBoxDiskImport* 文件夹中进行校验和验证。 此功能仅适用于 Windows 环境。 Linux 用户需要验证复制到磁盘的源数据是否符合[先决条件](https://docs.microsoft.com/azure/databox/data-box-disk-limits)。
     
     ![Data Box Disk 验证工具输出](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
@@ -271,6 +287,8 @@ ms.locfileid: "64925165"
 
 3. 如果使用了多个磁盘，请对每个磁盘运行该命令。
 
+如果在验证过程中看到错误，请参阅[排查验证错误](data-box-disk-troubleshoot.md)。
+
 ## <a name="next-steps"></a>后续步骤
 
 本教程介绍了有关 Azure Data Box 磁盘的主题，例如：
@@ -283,3 +301,40 @@ ms.locfileid: "64925165"
 
 > [!div class="nextstepaction"]
 > [将 Azure Data Box 寄回到 Microsoft](./data-box-disk-deploy-picked-up.md)
+
+::: zone-end
+
+::: zone target="chromeless"
+
+### <a name="copy-data-to-disks"></a>将数据复制到磁盘
+
+执行以下步骤，连接到计算机并将其上的数据复制到 Data Box Disk。
+
+1. 查看已解锁的驱动器的内容。 根据放置 Data Box Disk 顺序时选择的选项，驱动器中预先创建的文件夹和子文件夹的列表会有所不同。
+2. 将数据复制到与适当数据格式对应的文件夹中。 例如，将非结构化数据复制到 BlockBlob 文件夹，将 VHD 或 VHDX 数据复制到 PageBlob 文件夹，并将文件复制到 AzureFile 文件夹。 如果数据格式与相应的文件夹（存储类型）不匹配，则在后续步骤中，数据将无法上传到 Azure。
+
+    - 请确保所有容器、blob 和文件都符合 [Azure 命名约定](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)和 [Azure 对象大小限制](data-box-disk-limits.md#azure-object-size-limits)。 如果不遵循这些规则或限制，则无法将数据上传到 Azure。     
+    - 如果你的订单将托管磁盘作为存储目标之一，请参阅[托管磁盘](data-box-disk-limits.md#managed-disk-naming-conventions)的命名约定。
+    - 在 Azure 存储帐户中，为 BlockBlob 和 PageBlob 文件夹下的每个子文件夹创建一个容器。 BlockBlob 和 PageBlob 文件夹下的所有文件将复制到 Azure 存储帐户下的默认容器 $root 中。 $root 容器中的所有文件将始终作为块 blob 上传。
+    - 在 AzureFile 文件夹内创建子文件夹。 此子文件夹将映射到云中的文件共享。 将文件复制到子文件夹。 直接复制到 AzureFile 文件夹的文件都会失败，会作为块 Blob 上传。
+    - 如果根目录中存在文件和文件夹，则必须先将它们移到另一个文件夹，然后开始复制数据。
+
+3. 使用文件资源管理器或任何与 SMB 兼容的文件复制工具（如 Robocopy）通过拖放来复制数据。 可以使用以下命令启动多个复制作业：
+
+    ```
+    Robocopy <source> <destination>  * /MT:64 /E /R:1 /W:1 /NFL /NDL /FFT /Log:c:\RobocopyLog.txt
+    ```
+4. 打开目标文件夹，查看并验证复制的文件。 如果复制过程中遇到任何错误，请下载用于故障排除的日志文件。 日志文件位于 robocopy 命令中指定的位置。
+
+如果使用多个磁盘，并且需要拆分大型数据集并将其复制到所有磁盘中，请使用[拆分和复制](data-box-disk-deploy-copy-data.md#split-and-copy-data-to-disks)的可选过程。
+
+### <a name="validate-data"></a>验证数据
+
+执行以下步骤以验证数据。
+
+1. 运行 `DataBoxDiskValidation.cmd` 以在驱动器的 *DataBoxDiskImport* 文件夹中进行校验和验证。
+2. 使用选项 2 验证文件并生成校验和。 根据具体的数据大小，此步骤可能需要一段时间。 如果在验证和校验和生成过程中出现任何错误，则会向你发送通知并提供指向错误日志的链接。
+
+    有关数据验证的详细信息，请参阅[验证数据](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data)。 如果在验证过程中遇到错误，请参阅[排查验证错误](data-box-disk-troubleshoot.md)。
+
+::: zone-end

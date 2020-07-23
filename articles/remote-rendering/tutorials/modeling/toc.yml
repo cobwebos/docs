@@ -1,0 +1,4 @@
+- name: 在 Autodesk 3DSMax 中设置基于物理的渲染材料
+  href: maya-material-setup.md
+- name: 在 Autodesk 3DSMax 中设置基于物理的渲染材料
+  href: 3dsmax-material-setup.md

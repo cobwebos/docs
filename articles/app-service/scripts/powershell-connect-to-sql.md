@@ -1,31 +1,21 @@
 ---
-title: Azure PowerShell 脚本示例 - 将应用连接到 SQL 数据库 | Microsoft Docs
-description: Azure PowerShell 脚本示例 - 将应用服务应用连接到 SQL 数据库
-services: app-service\web
-documentationcenter: ''
-author: syntaxc4
-manager: erikre
-editor: ''
+title: PowerShell：连接到 SQL 数据库
+description: 了解如何使用 Azure PowerShell 自动部署和管理应用服务。 此示例演示如何将应用连接到 SQL 数据库。
 tags: azure-service-management
 ms.assetid: 055440a9-fff1-49b2-b964-9c95b364e533
-ms.service: app-service
-ms.devlang: multiple
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 03/20/2017
-ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: b008ef47ba530affd65e4d0e5e293312cfe74b69
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9086e00e4b6caf89ab249bbf25ca03a6f068ba49
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136524"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248269"
 ---
-# <a name="connect-an-app-service-app-to-a-sql-database"></a>将应用服务应用连接到 SQL 数据库
+# <a name="connect-an-app-service-app-to-sql-database"></a>将应用服务应用连接到 SQL 数据库
 
-在此方案中，将了解如何创建 Azure SQL 数据库和应用服务应用。 然后，将使用应用设置将 SQL 数据库链接到应用。
+在此方案中，将了解如何创建 Azure SQL 数据库中的数据库和应用服务应用。 然后，将使用应用设置将数据库链接到应用。
 
 必要时，请使用 [Azure PowerShell 指南](/powershell/azure/overview)中的说明安装 Azure PowerShell，并运行 `Connect-AzAccount` 创建与 Azure 的连接。
 
@@ -33,7 +23,7 @@ ms.locfileid: "66136524"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Connect an app to a SQL database")]
+[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Connect an app to SQL Database")]
 
 ## <a name="clean-up-deployment"></a>清理部署 
 
@@ -47,13 +37,13 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | 创建应用服务计划。 |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | 创建应用服务应用。 |
-| [New-AzSQLServer](/powershell/module/az.sql/new-azsqlserver) | 创建 SQL 数据库服务器。 |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | 为 SQL 数据库服务器创建防火墙规则。 |
+| [New-AzSQLServer](/powershell/module/az.sql/new-azsqlserver) | 创建服务器。 |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | 创建服务器级防火墙规则。 |
 | [New-AzSQLDatabase](/powershell/module/az.sql/new-azsqldatabase) | 创建数据库或弹性数据库。 |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | 修改应用服务应用的配置。 |
 

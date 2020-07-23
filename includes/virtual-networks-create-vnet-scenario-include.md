@@ -9,11 +9,11 @@ ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
 ms.openlocfilehash: 2b1f9990985951a4e6ef260954968c0e1466c298
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66116882"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172866"
 ---
 ## <a name="scenario"></a>场景
 

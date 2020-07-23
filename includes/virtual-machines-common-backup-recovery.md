@@ -9,11 +9,11 @@ ms.date: 03/09/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: be71b269e618d13a126e4005754b307e9c6517d7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66160054"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67172944"
 ---
 ## <a name="azure-backup"></a>Azure 备份
 

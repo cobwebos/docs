@@ -1,25 +1,26 @@
 ---
-title: 使用数据工厂向/从 Azure Cosmos DB 的用于 MongoDB 的 API 复制数据 | Microsoft Docs
+title: 从 Azure Cosmos DB 的 API for MongoDB 复制数据
 description: 了解如何使用数据工厂将数据从受支持的源数据存储复制到受支持的接收器存储或从 Azure Cosmos DB 的用于 MongoDB 的 API 复制到受支持的接收器存储。
 services: data-factory, cosmosdb
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: multiple
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
-ms.author: jingwang
-ms.openlocfilehash: 82418c03039219adedf45828d769d278a14499ff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: seo-lt-2019
+ms.date: 11/20/2019
+ms.openlocfilehash: 9b23f46a418f2663531cc121f00b83d00d84e48d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61259700"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81415443"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Cosmos DB 的用于 MongoDB 的 API 复制数据
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何使用 Azure 数据工厂中的复制活动从/向 Azure Cosmos DB 的用于 MongoDB 的 API 复制数据。 本文是根据总体概述复制活动的 [Azure 数据工厂中的复制活动](copy-activity-overview.md)编写的。
 
@@ -36,7 +37,7 @@ ms.locfileid: "61259700"
 - 以 **insert** 或 **upsert** 的形式写入 Azure Cosmos DB。
 - 按原样导入和导出 JSON 文档，或在表格数据集中复制或粘贴数据。 示例包括 SQL 数据库和 CSV 文件。 若要在 JSON 文件或另一个 Azure Cosmos DB 集合中按原样复制或粘贴文档，请参阅“导入或导出 JSON 文档”。
 
-## <a name="get-started"></a>开始使用
+## <a name="get-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -46,10 +47,10 @@ ms.locfileid: "61259700"
 
 Azure Cosmos DB 的用于 MongoDB 的 API 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | **type** 属性必须设置为 **CosmosDbMongoDbApi**。 | 是 |
-| connectionString |指定 Azure Cosmos DB 的用于 MongoDB 的 API 的连接字符串。 可以在 Azure 门户 -> Cosmos DB 边栏选项卡 -> 主要或辅助连接字符串中找到该字符串，其模式为 `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`。 <br/><br />将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 |是 |
+| connectionString |指定 Azure Cosmos DB 的用于 MongoDB 的 API 的连接字符串。 可以在 Azure 门户 -> Cosmos DB 边栏选项卡 -> 主要或辅助连接字符串中找到该字符串，其模式为 `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`。 <br/><br />还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取  `password`  配置。 有关更多详细信息，请参阅 [在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md) 。|是 |
 | database | 要访问的数据库的名称。 | 是 |
 | connectVia | 用于连接到数据存储的 [ Integration Runtime](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定此属性，则使用默认的 Azure Integration Runtime。 |否 |
 
@@ -61,10 +62,7 @@ Azure Cosmos DB 的用于 MongoDB 的 API 链接服务支持以下属性：
     "properties": {
         "type": "CosmosDbMongoDbApi",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"
-            },
+            "connectionString": "mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb",
             "database": "myDatabase"
         },
         "connectVia": {
@@ -79,7 +77,7 @@ Azure Cosmos DB 的用于 MongoDB 的 API 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。 Azure Cosmos DB 的用于 MongoDB 的 API 数据集支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 **type** 属性必须设置为 **CosmosDbMongoDbApiCollection**。 |是 |
 | collectionName |Azure Cosmos DB 集合的名称。 |是 |
@@ -91,12 +89,13 @@ Azure Cosmos DB 的用于 MongoDB 的 API 链接服务支持以下属性：
     "name": "CosmosDbMongoDBAPIDataset",
     "properties": {
         "type": "CosmosDbMongoDbApiCollection",
+        "typeProperties": {
+            "collectionName": "<collection name>"
+        },
+        "schema": [],
         "linkedServiceName":{
             "referenceName": "<Azure Cosmos DB's API for MongoDB linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "collectionName": "<collection name>"
         }
     }
 }
@@ -112,7 +111,7 @@ Azure Cosmos DB 的用于 MongoDB 的 API 链接服务支持以下属性：
 
 复制活动 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **CosmosDbMongoDbApiSource**。 |是 |
 | filter | 使用查询运算符指定选择筛选器。 若要返回集合中的所有文档，请省略此参数或传递空文档 ({})。 | 否 |
@@ -167,12 +166,15 @@ Azure Cosmos DB 的用于 MongoDB 的 API 链接服务支持以下属性：
 
 复制活动 **sink** 节支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 **type** 属性必须设置为 **CosmosDbMongoDbApiSink**。 |是 |
-| writeBehavior |描述如何将数据写入 Azure Cosmos DB。 允许的值为 **insert** 和 **upsert**。<br/><br/>**upsert** 的行为是，如果已存在具有相同 ID 的文档，则替换该文档；否则将插入该文档。<br /><br />**注意**：如果未在原始文档中指定 ID，或未通过列映射指定 ID，则数据工厂会自动为文档生成 ID。 这表示必须先确保文档有 ID，才能让 **upsert** 按预期工作。 |否<br />（默认值为 **insert**） |
+| writeBehavior |描述如何将数据写入 Azure Cosmos DB。 允许的值为 **insert** 和 **upsert**。<br/><br/>**upsert** 的行为是，如果已存在具有相同 `_id` 的文档，则替换该文档；否则将插入该文档。<br /><br />**注意**：如果未在原始文档中或通过列映射指定 `_id`，则数据工厂会自动为文档生成 `_id`。 这表示必须先确保文档有 ID，才能让 **upsert** 按预期工作。 |否<br />（默认值为 **insert**） |
 | writeBatchSize | **writeBatchSize** 属性控制每个批中可写入的文档大小。 可尝试增大 **writeBatchSize** 的值以提高性能，并在文档大小较大时减小该值。 |否<br />（默认值为 **10,000**） |
 | writeBatchTimeout | 超时前等待批插入操作完成的时间。允许的值为 timespan。 | 否<br/>（默认值为 **00:30:00** - 30 分钟） |
+
+>[!TIP]
+>若要按原样导入 JSON 文档，请参阅[导入或导出 JSON 文档](#import-and-export-json-documents)部分；若要从表格形数据复制，请参阅[架构映射](#schema-mapping)。
 
 **示例**
 
@@ -206,18 +208,18 @@ Azure Cosmos DB 的用于 MongoDB 的 API 链接服务支持以下属性：
 ]
 ```
 
->[!TIP]
->若要按原样导入 JSON 文档，请参阅[导入或导出 JSON 文档](#import-or-export-json-documents)部分；若要从表格形数据复制，请参阅[架构映射](#schema-mapping)。
-
-## <a name="import-or-export-json-documents"></a>导入或导出 JSON 文档
+## <a name="import-and-export-json-documents"></a>导入和导出 JSON 文档
 
 使用此 Azure Cosmos DB 连接器，可以轻松地：
 
-* 将各种源（包括 Azure Blob 存储、Azure Data Lake Store 或 Azure 数据工厂所支持的其他基于文件的存储）中的 JSON 文档导入 Azure Cosmos DB。
-* 将 JSON 文档从 Azure Cosmos DB 集合导出到各种基于文件的存储。
 * 在两个 Azure Cosmos DB 集合之间按原样复制文档。
+* 将各种源中的 JSON 文档导入到 Azure Cosmos DB，包括 MongoDB、Azure Blob 存储、Azure Data Lake Store 以及 Azure 数据工厂所支持的其他基于文件的存储。
+* 将 JSON 文档从 Azure Cosmos DB 集合导出到各种基于文件的存储。
 
-若要实现这种架构不可知的复制，请跳过数据集中的“结构”（也称为“架构”）节和复制活动中的架构映射。
+若要实现“架构不可知”复制，请执行以下操作：
+
+* 使用复制数据工具时，选择“原样导出到 JSON 文件或 Cosmos DB 集合”选项  。
+* 使用活动创作时，请为源或接收器选择相应文件存储的 JSON 格式。
 
 ## <a name="schema-mapping"></a>架构映射
 
@@ -237,4 +239,4 @@ Azure Cosmos DB 的用于 MongoDB 的 API 链接服务支持以下属性：
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure 数据工厂中复制活动支持用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

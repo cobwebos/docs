@@ -1,25 +1,15 @@
 ---
-title: Azure Service Fabric 事件 | Microsoft Docs
+title: Azure Service Fabric 事件
 description: 了解所提供的可直接用来帮助监视 Azure Service Fabric 群集的 Service Fabric 事件。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: b4270b9438a397ec09537c9d6343515ebc21af98
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 638b650e485ad3e83bd6021639a7e55b540d9cdc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60393021"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75451729"
 ---
 # <a name="service-fabric-events"></a>Service Fabric 事件 
 
@@ -27,14 +17,14 @@ Service Fabric 平台会为群集内发生的关键操作活动写入多个结�
 * 群集
 * 应用程序
 * 服务
-* Partition
+* 分区
 * 副本 
 * 容器
 
 若要查看平台公开的事件的完整列表，请参阅 [Service Fabric 事件列表](service-fabric-diagnostics-event-generation-operational.md)。
 
 下面是群集中你应会看到其事件的一些场景的示例。 
-* 节点生命周期事件：当节点启动、发生故障、缩小/扩大、重启、被激活/被停用时，这些事件将会公开以显示发生了什么情况，并帮助查明是计算机本身发生故障还是存在通过 SF 调用 API 来修改节点状态的 API。
+* 节点生命周期事件：当节点启动、发生故障、横向缩减/扩展、重启、被激活/被停用时，这些事件将会公开以显示发生了什么情况，并帮助查明是计算机本身发生故障还是存在通过 SF 调用 API 来修改节点状态的 API。
 * 群集升级：当群集升级时（SF 版本或配置更改），将会看到升级启动、滚动通过每个升级域以及完成（或回滚）。 
 * 应用程序升级：与群集升级类似，当升级滚动完成时会生成一套完整的事件。 这些事件可用来了解升级是何时计划的、升级的当前状态以及整个事件序列。 这有助于回看哪些升级已成功实施或是否触发了回滚。
 * 应用程序/服务部署/删除：针对创建或删除的每个应用程序、服务和容器都存在对应的事件，并且在缩小或扩大（例如，增加副本的数量）时非常有用
@@ -45,7 +35,7 @@ Service Fabric 平台会为群集内发生的关键操作活动写入多个结�
 ## <a name="how-to-access-events"></a>如何访问事件
 
 可以通过以下几种不同的方式访问 Service Fabric 事件：
-* 事件通过标准频道如 ETW/Windows 事件日志记录和可视化，方法是支持这些例如 Azure Monitor 日志的任何监视工具。 默认情况下，在门户中创建的群集已打开的诊断和具有 Windows Azure 诊断代理将事件发送到 Azure 表存储，但仍需要将此集成与 log analytics 资源。 详细了解如何配置[Azure 诊断代理](service-fabric-diagnostics-event-aggregation-wad.md)修改诊断配置的群集以获取更多日志或性能计数器和[Azure Monitor 日志集成](service-fabric-diagnostics-event-analysis-oms.md)
+* 事件通过标准通道（如 ETW/Windows 事件日志）进行记录，并且可由任何支持这些事件的监视工具（如 Azure Monitor 日志）进行可视化。 默认情况下，在门户中创建的群集已启用诊断并让 Windows Azure 诊断代理将事件发送到 Azure 表存储，但你仍需要将此群集与 Log Analytics 资源集成。 详细了解如何配置[Azure 诊断代理](service-fabric-diagnostics-event-aggregation-wad.md)来修改群集的诊断配置，以获取更多日志或性能计数器以及[Azure Monitor 日志集成](service-fabric-diagnostics-event-analysis-oms.md)
 * EventStore 服务的 Rest API 允许直接查询群集或通过 Service Fabric 客户端库进行查询。 请参阅[通过 EventStore API 查询群集事件](service-fabric-diagnostics-eventstore-query.md)。
 
 ## <a name="next-steps"></a>后续步骤

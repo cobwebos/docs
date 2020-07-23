@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34553c92f54992698a7e3930ac302ef970edd7c7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: f44324bbdd5af6675dfb4f5664cbbde2627edfec
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236731"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67098566"
 ---
 # <a name="tutorial-integrate-knowledge-anywhere-lms-with-azure-active-directory"></a>教程：将 Knowledge Anywhere LMS 与 Azure Active Directory 集成
 
@@ -156,7 +156,7 @@ ms.locfileid: "66236731"
 1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤  ：
    1. 在“名称”  字段中，输入 `B. Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
    1. 单击“创建”。 
 
@@ -170,12 +170,12 @@ ms.locfileid: "66236731"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
 1. 在“用户和组”对话框中，选择“用户”列表中的“B. Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-knowledge-anywhere-lms-test-user"></a>创建 Knowledge Anywhere LMS 测试用户

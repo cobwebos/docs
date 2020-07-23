@@ -1,12 +1,10 @@
 ---
-title: CLI 示例 - 区域中的负载均衡器 VM - Azure | Microsoft Docs
+title: 在区域内对 VM 进行负载均衡 - Azure CLI
 description: 此 Azure CLI 脚本示例演示如何在特定的可用性区域中对传入 VM 的流量进行负载均衡
 services: load-balancer
 documentationcenter: load-balancer
-author: KumudD
-manager: jeconnoc
-editor: tysonn
-tags: ''
+author: asudbring
+manager: kumudD
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines within a specific zone in a region.
 ms.assetid: ''
 ms.service: load-balancer
@@ -15,15 +13,15 @@ ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/14/2018
-ms.author: kumud
-ms.openlocfilehash: 121d3f941f3d00373bd2821534c3e601107e97e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 0ae159b57a89b4238d52d178d59cb79b452e0411
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60506954"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79214542"
 ---
-# <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Azure CLI 脚本示例：对传入 VM 的流量进行负载均衡以实现高可用性
+# <a name="azure-cli-script-example-load-balance-traffic-to-vms-within-a-specific-availability-zone"></a>Azure CLI 脚本示例：在特定的可用性区域中对传入 VM 的流量进行负载均衡
 
 此 Azure CLI 脚本示例在特定的可用性区域中创建运行多个 Ubuntu 虚拟机（使用高度可用且负载均衡的配置进行配置）所需的所有项。 运行脚本后，即可在某个区域的单个可用性区域中拥有可通过 Azure 标准负载均衡器访问的 3 个虚拟机。 
 
@@ -57,7 +55,7 @@ ms.locfileid: "60506954"
 
   # Create an Azure Load Balancer.
    az network lb create \
-    --resource-group myResourceGroupLB \
+    --resource-group myResourceGroup \
     --name myLoadBalancer \
     --public-ip-address myPublicIP \
     --frontend-ip-name myFrontEndPool \
@@ -168,7 +166,7 @@ az group delete --name myResourceGroup
 
 此脚本使用以下命令创建资源组、虚拟机、可用性集、负载均衡器和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) | 创建 Azure 虚拟网络和子网。 |

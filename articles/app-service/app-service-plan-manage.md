@@ -1,27 +1,16 @@
 ---
-title: 管理应用服务计划 - Azure | Microsoft Docs
-description: 了解如何执行不同的任务来管理应用服务计划。
+title: 管理应用服务计划
+description: 了解如何执行不同的任务来管理应用服务计划，如创建、移动、缩放和删除。
 keywords: 应用服务, azure 应用服务, 缩放, 应用服务计划, 更改, 创建, 管理
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
 ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2017
-ms.author: cephalin
+ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 936abe80a66c1dbe99e7d8a255fe8995a2df0803
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: d40f5db65ce9ca90ae978bac4491bdebccc2a328
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60852244"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80811715"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>在 Azure 中管理应用服务计划
 
@@ -34,23 +23,21 @@ ms.locfileid: "60852244"
 
 在创建应用时可以创建一个空的应用服务计划，也可以创建一个计划。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“新建” > “Web + 移动”，然后选择“Web 应用”或其他应用服务应用类型。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源”。
 
-2. 选择现有的应用服务计划，或者为新应用创建计划。
+   ![在 Azure 门户中创建资源。][createResource] 
 
-   ![在 Azure 门户中创建应用。][createWebApp]
+1. 选择“新建” > “Web 应用”或其他类型的应用服务应用。
 
-   若要创建计划，请执行以下操作：
+   ![在 Azure 门户中创建应用。][createWebApp] 
 
-   a. 选择“[+] 新建”。
+2. 在配置应用服务计划之前配置“实例详细信息”部分。 “发布”和“操作系统”之类的设置可以更改应用服务计划的可用定价层。  “区域”决定了在何处创建应用服务计划。 
+   
+3. 在“应用服务计划”部分选择一个现有的计划，或者通过选择“新建”创建一个计划。
 
-      ![创建应用服务计划。][createASP] 
+   ![创建应用服务计划。][createASP] 
 
-   b. 对于“应用服务计划”，输入计划的名称。
-
-   c. 对于“位置”，选择适当的位置。
-
-   d. 对于“定价层”，选择适当的服务定价层。 选择“全部查看”以查看其他定价选项，例如“免费”和“共享”。 选择定价层后，单击“选择”按钮。
+4. 创建计划时，可以选择新计划的定价层。 在“SKU 和大小”中选择“更改大小”，以便更改定价层。  
 
 <a name="move"></a>
 
@@ -61,43 +48,38 @@ ms.locfileid: "60852244"
 > [!NOTE]
 > Azure 会将每个新的应用服务计划部署到部署单元（在内部称为 Web 空间）中。 每个区域都可以有许多 Web 空间，但应用只能在相同 Web 空间中创建的计划之间移动。 应用服务环境是一个独立的 Web 空间，因此可以在相同应用服务环境中的计划之间移动应用，但无法在不同应用服务环境中的计划之间移动应用。
 >
-> 无法在创建计划时指定所需的 Web 空间，但这可确保计划创建于与现有计划相同的 Web 空间中。 简而言之，所有使用相同资源组和区域组合创建的计划都会部署到相同的 Web 空间中。 比方说，如果在资源组 A 和区域 B 中创建了计划，则后续在资源组 A 和区域 B 中创建的所有计划都会部署到相同的 Web 空间中。 请注意，计划创建之后便不能移动 Web 空间，所以无法通过将计划移至另一个资源组，将其移到与另一个计划“相同的 Web 空间”中。
+> 无法在创建计划时指定所需的 Web 空间，但这可确保计划创建于与现有计划相同的 Web 空间中。 简而言之，使用同一资源组和区域组合创建的所有计划都部署到同一 Web 空间中。 例如，如果你在资源组 A 和区域 B 中创建了一个计划，那么你随后在资源组 A 和区域 B 中创建的任何计划都将部署到同一 Web 空间中。 请注意，计划创建之后便不能移动 Web 空间，所以无法通过将计划移至另一个资源组，将其移到与另一个计划“相同的 Web 空间”中。
 > 
 
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览到要移动的应用。
+1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“应用服务”，然后选择要移动的应用。
 
-1. 在菜单上，查找“应用服务计划”部分。
+2. 从左菜单中选择“更改应用服务计划”。
 
-1. 选择“更改应用服务计划”以打开“应用服务计划”选择器。
+3. 在“应用服务计划”下拉列表中，选择要将应用移到其中的现有计划。 下拉列表仅显示与当前应用服务计划位于同一资源组和地理区域的计划。 如果不存在此类计划，则默认情况下，你可以创建一个计划。 也可选择“新建”，以手动方式创建新计划。
 
+4. 如果创建一项计划，则可选择新计划的定价层。 在“定价层”中选择现有层，对其进行更改。 
+   
+   > [!IMPORTANT]
+   > 若要将应用从高层计划移到低层计划（例如，从 **D1** 移到 **F1**），应用可能会在目标计划中丢失某些功能。 例如，如果应用使用 TLS/SSL 证书，可能会出现以下错误消息：
+   >
+   > `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
+
+5. 完成后，选择“确定”。
+   
    ![应用服务计划选择器。][change] 
-
-1. 在“应用服务计划”选择器中，选择要将此应用移到的现有计划。   
-
-“选择应用服务计划”页仅显示与当前应用的应用服务计划位于同一资源组和地理区域的计划。
-
-每个计划都有自己的定价层。 例如，将站点从“免费”层移到“标准”层时，分配给站点的所有应用都可使用“标准”层的功能和资源。 但是，将应用从更高的分层计划移到更低的分层计划意味着不再有权访问某些功能。 如果应用使用的功能在目标计划中不可用，则会出现错误，指出哪个正在使用的功能不可用。 
-
-例如，如果其中一个应用使用 SSL 证书，你可能会看到此错误消息：
-
-`Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
-
-在这种情况下，在将应用移到目标计划之前，需要执行以下任一操作：
-- 将目标计划的定价层向上扩展到**基本**或更高层。
-- 删除应用的所有 SSL 连接。
 
 ## <a name="move-an-app-to-a-different-region"></a>将应用移到不同的区域
 
-运行应用的区域是该应用的应用服务计划所在的区域。 但是，无法更改应用服务计划的区域。 如果想要在不同的区域中运行应用，替代方法是使用应用克隆。 不管位于什么区域，克隆都会在新的或现有的应用服务计划中复制应用。
+运行应用的区域是该应用的应用服务计划所在的区域。 但是，无法更改应用服务计划的区域。 如果想要在不同的区域中运行应用，替代方法是使用应用克隆。 克隆可以复制任何区域的新的或现有的应用服务计划中的应用。
 
-可以在菜单的“开发工具”部分中找到“克隆应用”。
+可以在菜单的“开发工具”部分找到“克隆应用”。 
 
 > [!IMPORTANT]
 > 克隆具有一些限制。 可以在 [Azure 应用服务应用克隆](app-service-web-app-cloning.md)中查看相关信息。
 
 ## <a name="scale-an-app-service-plan"></a>缩放应用服务计划
 
-若要纵向扩展应用服务计划的定价层，请参阅[在 Azure 中纵向扩展应用](web-sites-scale.md)。
+若要提高应用服务计划的定价层，请参阅[在 Azure 中纵向扩展应用](manage-scale-up.md)。
 
 若要增加应用的实例计数，请参阅[手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md)。
 
@@ -113,8 +95,9 @@ ms.locfileid: "60852244"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [纵向扩展 Azure 中的应用](web-sites-scale.md)
+> [纵向扩展 Azure 中的应用](manage-scale-up.md)
 
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png
 [createWebApp]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-web-app.png
+[createResource]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-a-resource.png

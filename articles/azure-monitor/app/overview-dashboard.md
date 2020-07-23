@@ -1,23 +1,13 @@
 ---
 title: Azure Application Insights 概览仪表板 | Microsoft 文档
 description: 使用 Azure Application Insights 概览仪表板功能来监控应用程序。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.author: mbullwin
-ms.openlocfilehash: d1823779f8a8070149811e2349fc9f4281072d38
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
-ms.translationtype: MT
+ms.openlocfilehash: e5188972d9058b85a9765c7d33f6209b37245d7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497153"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77669890"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights 概述仪表板
 
@@ -35,7 +25,7 @@ Application Insights 一直都有一个总览窗格，可让用户快速、直�
 
 ![时间范围](./media/overview-dashboard/app-insights-overview-dashboard-03.png)
 
-总体性能已大大提高。 只需单击一次即可访问常用功能，例如**搜索**和**分析**。 每个默认动态更新的 KPI 磁贴都可让你深入了解相应的 Application Insights 功能。 若要了解有关失败请求的详细信息，请在“调查”  标题下选择“失败”  ：
+总体性能已大大提高。 只需单击一次即可访问常用功能，例如**搜索**和**分析**。 每个默认动态更新的 KPI 磁贴都可让你深入了解相应的 Application Insights 功能。 若要了解有关失败请求的详细信息，请在“调查”标题下选择“失败”：
 
 ![失败数](./media/overview-dashboard/app-insights-overview-dashboard-04.png)
 
@@ -62,7 +52,7 @@ Application Insights 一直都有一个总览窗格，可让用户快速、直�
 
 ## <a name="troubleshooting"></a>故障排除
 
-如果选择**配置磁贴设置**并且设置自定义时间范围超出你的仪表板将不会显示超过 31 天的数据，即使使用 90 天的默认数据保留期的前 31 天。 目前尚无解决方法的行为。
+如果选择“配置磁贴设置”  并将自定义时间范围设置为超过 31 天，则即使默认数据保留期为 90 天，仪表板也不会显示超过 31 天的数据。 目前没有针对此行为的解决方法。
 
 ## <a name="next-steps"></a>后续步骤
 

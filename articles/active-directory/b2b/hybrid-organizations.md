@@ -1,5 +1,5 @@
 ---
-title: 适用于混合组织的 B2B 协作 - Azure Active Directory | Microsoft Docs
+title: 适用于混合组织的 B2B 协作 - Azure AD
 description: 使用 Azure AD B2B 协作授予合作伙伴对本地资源和云资源的访问权限。
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,11 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b30e9c14863f67d28203eac916606e8786101e3b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: MT
+ms.openlocfilehash: 427f7ad4d6a1b9839b1197ef9f7ca15400ea0f59
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65768286"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74272475"
 ---
 # <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>适用于混合组织的 Azure Active Directory B2B 协作
 

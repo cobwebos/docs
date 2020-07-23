@@ -1,24 +1,21 @@
 ---
-title: 预付 Azure 虚拟机以节省资金 | Microsoft Docs
+title: 预付 Azure 虚拟机以节省资金
 description: 了解如何购买 Azure 预订虚拟机实例以节省计算成本。
-services: virtual-machines-linux
-documentationcenter: ''
 author: vikramdesai01
 manager: vikramdesai01
-editor: ''
-ms.service: virtual-machines-linux
-ms.devlang: na
+ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: conceptual
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/30/2017
 ms.author: vikdesai
-ms.openlocfilehash: 15083905820d0ff91c4986843d9c40b9a4f00f29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68bd8ffab1c9b5992c8d608cbb00f2134796df3c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61473716"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502040"
 ---
+# <a name="save-costs-with-azure-reserved-vm-instances-linux"></a>通过 Azure 保留 VM 实例（Linux）节省成本
 [!INCLUDE [virtual-machines-buy-compute-reservations](../../../includes/virtual-machines-common-prepay-reserved-vm-instances.md)]
 

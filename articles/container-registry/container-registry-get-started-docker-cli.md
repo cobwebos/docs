@@ -1,20 +1,14 @@
 ---
-title: 将 Docker 映像推送到专用 Azure 容器注册表
+title: 推送 & 拉取 Docker 映像
 description: 使用 Docker CLI 在 Azure 的专用容器注册表中推送和拉取 Docker 映像
-services: container-registry
-author: dlepow
-manager: jeconnoc
-ms.service: container-registry
 ms.topic: article
 ms.date: 01/23/2019
-ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 2cb401dfd68075ff0867ae3f89eee3474000b5de
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 6751a04c3c1bfe826334161704c20c1ba2e5a6d2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60828745"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74456352"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>使用 Docker CLI 将第一个映像推送到专用 Docker 容器注册表
 
@@ -22,7 +16,7 @@ Azure 容器注册表存储和管理专用 [Docker](https://hub.docker.com) 容�
 
 以下步骤从公共 Docker 中心注册表下载正式的 [Nginx 映像](https://store.docker.com/images/nginx)，为专用 Azure 容器注册表标记该映像，将其推入到注册表，然后从注册表提取。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * **Azure 容器注册表** - 在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
 * **Docker CLI** - 还必须在本地安装 Docker。 Docker 提供的包可在任何 [macOS][docker-mac]、[Windows][docker-windows] 或 [Linux][docker-linux] 系统上轻松配置 Docker。

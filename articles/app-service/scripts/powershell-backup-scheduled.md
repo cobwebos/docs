@@ -1,26 +1,19 @@
 ---
-title: Azure PowerShell 脚本示例 - 为 Web 应用创建计划备份 | Microsoft Docs
-description: Azure PowerShell 脚本示例 - 为 Web 应用创建计划备份
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: PowerShell：创建计划的备份
+description: 了解如何使用 Azure PowerShell 自动部署和管理应用服务。 此示例演示如何为应用创建计划的备份。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: a2a27d94-d378-4c17-a6a9-ae1e69dc4a72
-ms.service: app-service-web
-ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: acb17386a2c2e0b2a89f46c607befb56eadaee48
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 24723d442cdc684e109dee3270cdfbc217fd4f4c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136583"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044610"
 ---
 # <a name="create-a-scheduled-backup-for-a-web-app-using-powershell"></a>使用 PowerShell 为 Web 应用创建计划备份
 
@@ -46,7 +39,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | 创建存储帐户。 |

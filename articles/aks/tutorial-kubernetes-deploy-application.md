@@ -2,18 +2,15 @@
 title: Azure 上的 Kubernetes 教程 - 部署应用程序
 description: 在本 Azure Kubernetes 服务 (AKS) 教程中，请使用存储在 Azure 容器注册表中的自定义映像将多容器应用程序部署到群集。
 services: container-service
-author: tylermsft
-ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: c579aed1acb555a82d5a04308ab4e68f4bfecb8c
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 3b614fcb6692f35884af2fc4e19210267ab8ab04
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305273"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "77593268"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中运行应用程序
 
@@ -32,7 +29,7 @@ Kubernetes 为容器化应用程序提供一个分布式平台。 你生成自�
 
 在前面的教程中，我们已将应用程度打包到容器映像中，将此映像上传到 Azure 容器注册表，并创建了 Kubernetes 群集。
 
-必须先预创建 `azure-vote-all-in-one-redis.yaml` Kubernetes 清单文件，然后才能完成本教程。 此文件是在上一教程中与应用程序源代码一同下载。 验证是否已克隆存储库，并且是否已将目录更改为克隆的存储库。 如果尚未完成这些步骤，并且想要逐一完成，请开始参阅[教程 1 – 创建容器映像][aks-tutorial-prepare-app]。
+必须先预创建 `azure-vote-all-in-one-redis.yaml` Kubernetes 清单文件，然后才能完成本教程。 此文件是在上一教程中与应用程序源代码一同下载。 验证是否已克隆存储库，并且是否已将目录更改为克隆的存储库。 如果尚未完成这些步骤，并且想要逐一完成，请先阅读[教程 1 – 创建容器映像][aks-tutorial-prepare-app]。
 
 此教程需要运行 Azure CLI 2.0.53 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
@@ -102,24 +99,24 @@ kubectl get service azure-vote-front --watch
 最初，*azure-vote-front* 服务的 *EXTERNAL-IP* 显示为 *pending*：
 
 ```
-azure-vote-front   10.0.34.242   <pending>     80:30676/TCP   7s
+azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
 ```
 
 当 *EXTERNAL-IP* 地址从 *pending* 更改为实际公共 IP 地址时，请使用 `CTRL-C` 停止 `kubectl` 监视进程。 以下示例输出显示向服务分配了有效的公共 IP 地址：
 
 ```
-azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
+azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s
 ```
 
 若要查看应用程序的实际效果，请打开 Web 浏览器，以转到服务的外部 IP 地址：
 
 ![Azure 上的 Kubernetes 群集映像](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-如果应用程序未加载，可能是因为映像注册表存在授权问题。 若要查看容器的状态，请使用 `kubectl get pods` 命令。 如果无法拉取容器映像，请参阅[允许使用 Kubernetes 机密访问容器注册表](https://docs.microsoft.com/azure/container-registry/container-registry-auth-aks#access-with-kubernetes-secret)。
+如果应用程序未加载，可能是因为映像注册表存在授权问题。 若要查看容器的状态，请使用 `kubectl get pods` 命令。 如果无法拉取容器映像，请参阅[使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证](cluster-container-registry-integration.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已将示例 Azure 投票应用程序部署到 AKS 中的 Kubernetes 群集。 你已了解如何：
+在本教程中，已将示例 Azure 投票应用程序部署到 AKS 中的 Kubernetes 群集。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 更新 Kubernetes 清单文件

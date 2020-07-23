@@ -1,22 +1,17 @@
 ---
-title: 从 Azure 逻辑应用连接到 Yammer | Microsoft Docs
+title: 从 Azure 逻辑应用连接到 Yammer
 description: 使用 Azure 逻辑应用自动执行任务和工作流，用以在 Yammer 中监视、发布和管理消息、源及其他内容
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: b5ae0827-fbb3-45ec-8f45-ad1cc2e7eccc
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: ca2d28f3438fd166fa282488206662c95777bf3b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+tags: connectors
+ms.openlocfilehash: 3023aa72d713dc25351a6e509319e1c4c0ed609a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62104725"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829658"
 ---
 # <a name="monitor-and-manage-your-yammer-account-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 Yammer 帐户
 
@@ -28,9 +23,9 @@ ms.locfileid: "62104725"
 
 可以使用触发器从 Yammer 帐户获取响应，并使输出可用于其他操作。 可以使用通过 Yammer 帐户执行任务的操作。 还可以让其他操作使用来自 Yammer 操作的输出。 例如，当有新消息出现在源或组中时，你可以使用 Slack 连接器共享这些消息。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
 * Yammer 帐户和用户凭据
 
@@ -44,7 +39,7 @@ ms.locfileid: "62104725"
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. 登录到 [Azure门户](https://portal.azure.com)，然后在逻辑应用设计器中打开你的逻辑应用（如果尚未打开）。
+1. 登录到 [Azure 门户](https://portal.azure.com)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
 1. 选择一个路径： 
 
@@ -60,12 +55,12 @@ ms.locfileid: "62104725"
        -或-
 
      * 在要在其中添加操作的两个步骤之间，将鼠标指针移到步骤之间的箭头上。 
-     选择出现的加号 (**+**)，然后选择“添加操作”。
+     选择出现的加号 ( **+** )，然后选择“添加操作”。
      
        在搜索框中，输入“yammer”作为筛选器。 
        在操作列表下，选择所需的操作。
 
-1. 如果提示你登录到 Yammer，请立即登录以便你可以允许访问。
+1. 如果提示你登录到 Yammer，请立即登录，以便可允许访问。
 
 1. 为所选触发器或操作提供所需的详细信息，然后继续生成逻辑应用的工作流。
 
@@ -75,7 +70,7 @@ ms.locfileid: "62104725"
 
 ## <a name="get-support"></a>获取支持
 
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 * 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,38 +1,29 @@
 ---
-title: 在 Linux 上将 Node.js (MEAN.js) 与 MongoDB 配合使用 - Azure 应用服务 | Microsoft Docs
-description: 了解如何使在 Node.js 应用在 Linux 上的 Azure 应用服务中运行，并使用 MongoDB 连接字符串连接到 Cosmos DB 数据库。 本教程中使用 MEAN.js。
-services: app-service\web
-documentationcenter: nodejs
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 教程：将 Linux Node.js 应用与 MongoDB 配合使用
+description: 了解如何在 Azure 应用服务中运行 Linux Node.js 应用，同时使其连接到 Azure 中的 MongoDB 数据库 (Cosmos DB)。 本教程使用 MEAN.js。
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 3a5f6b5b1f66542a534c9016c5d9d60a1273975f
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 3729e0e0831319b42615c11db1ea9ba20f0a0e74
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544787"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207254"
 ---
-# <a name="build-a-nodejs-and-mongodb-web-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中构建 Node.js 和 MongoDB Web 应用
+# <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中生成 Node.js 和 MongoDB 应用
 
 > [!NOTE]
-> 本文将应用部署到基于 Linux 的应用服务。 若要部署到基于 _Windows_ 的应用服务，请参阅[在 Azure 中构建 Node.js 和 MongoDB Web 应用](../app-service-web-tutorial-nodejs-mongodb-app.md)。
+> 本文将应用部署到基于 Linux 的应用服务。 若要部署到基于 _Windows_ 的应用服务，请参阅[在 Azure 中生成 Node.js 和 MongoDB 应用](../app-service-web-tutorial-nodejs-mongodb-app.md)。
 >
 
 [Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本教程展示了如何创建一个 Node.js 应用，在本地将其连接到 MongoDB 数据库，然后将其部署到 Azure Cosmos DB 的用于 MongoDB 的 API 中的一个数据库。 完成操作后，将拥有一个在 Linux 应用服务中运行的 MEAN 应用程序（MongoDB、Express、AngularJS 和 Node.js）。 为简单起见，示例应用程序使用了 [MEAN.js Web 框架](https://meanjs.org/)。
 
 ![在 Azure 应用服务中运行的 MEAN.js 应用](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建数据库
@@ -46,7 +37,7 @@ ms.locfileid: "59544787"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
 1. [安装 Git](https://git-scm.com/)
 2. [安装 Node.js v6.0 或以上版本及 NPM](https://nodejs.org/)
@@ -131,7 +122,7 @@ MEAN.js 示例应用程序将用户数据存储在数据库中。 如果创建�
 
 在 Cloud Shell 中，使用 [`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-create) 命令创建 Cosmos DB 帐户。
 
-在下面的命令中，用唯一 Cosmos DB 名称替换 *\<cosmosdb-name>* 占位符。 此名称用作 Cosmos DB 终结点 `https://<cosmosdb-name>.documents.azure.com/` 的一部分，因此需要在 Azure 中的所有 Cosmos DB 帐户中具有唯一性。 它只能包含小写字母、数字及连字符(-)，长度必须为 3 到 50 个字符。
+在下面的命令中，用唯一 Cosmos DB 名称替换 \<cosmosdb-name> 占位符。 此名称用作 Cosmos DB 终结点 `https://<cosmosdb-name>.documents.azure.com/` 的一部分，因此需要在 Azure 中的所有 Cosmos DB 帐户中具有唯一性。 它只能包含小写字母、数字及连字符(-)，长度必须为 3 到 50 个字符。
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
@@ -141,7 +132,7 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 
 创建 Cosmos DB 帐户后，Azure CLI 会显示类似于以下示例的信息：
 
-```json
+<pre>
 {
   "consistencyPolicy":
   {
@@ -150,12 +141,12 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
     "maxStalenessPrefix": 100
   },
   "databaseAccountOfferType": "Standard",
-  "documentEndpoint": "https://<cosmosdb-name>.documents.azure.com:443/",
+  "documentEndpoint": "https://&lt;cosmosdb-name&gt;.documents.azure.com:443/",
   "failoverPolicies":
   ...
-  < Output truncated for readability >
+  &lt; Output truncated for readability &gt;
 }
-```
+</pre>
 
 ## <a name="connect-app-to-production-configured-with-azure-cosmos-dbs-api-for-mongodb"></a>将应用连接到使用 Azure Cosmos DB 的用于 MongoDB 的 API 配置的生产环境
 
@@ -171,14 +162,14 @@ az cosmosdb list-keys --name <cosmosdb-name> --resource-group myResourceGroup
 
 Azure CLI 显示类似于以下示例的信息：
 
-```json
+<pre>
 {
   "primaryMasterKey": "RS4CmUwzGRASJPMoc0kiEvdnKmxyRILC9BWisAYh3Hq4zBYKr0XQiSE4pqx3UchBeO4QRCzUt1i7w0rOkitoJw==",
   "primaryReadonlyMasterKey": "HvitsjIYz8TwRmIuPEUAALRwqgKOzJUjW22wPL2U8zoMVhGvregBkBk9LdMTxqBgDETSq7obbwZtdeFY7hElTg==",
   "secondaryMasterKey": "Lu9aeZTiXU4PjuuyGBbvS1N9IRG3oegIrIh95U6VOstf9bJiiIpw3IfwSUgQWSEYM3VeEyrhHJ4rn3Ci0vuFqA==",
   "secondaryReadonlyMasterKey": "LpsCicpVZqHRy7qbMgrzbRKjbYCwCKPQRl0QpgReAOxMcggTvxJFA94fTi0oQ7xtxpftTJcXkjTirQ0pT7QFrQ=="
 }
-```
+</pre>
 
 复制 `primaryMasterKey` 的值。 下一步需要用到此信息。
 
@@ -188,7 +179,7 @@ Azure CLI 显示类似于以下示例的信息：
 
 在本地 MEAN.js 存储库的 _config/env/_ 文件夹中，创建名为 _local-production.js_ 的文件。 配置 _.gitignore_，以确保此文件位于存储库之外。
 
-将以下代码复制到该文件中。 请确保将两个 *\<cosmosdb-name>* 占位符替换为 Cosmos DB 数据库名称，将 *\<primary-master-key>* 占位符替换为在先前步骤中复制的键。
+将以下代码复制到该文件中。 请确保将两个 \<cosmosdb-name> 占位符替换为 Cosmos DB 数据库名称，将 \<primary-master-key> 占位符替换为在先前步骤中复制的键。
 
 ```javascript
 module.exports = {
@@ -259,13 +250,13 @@ MEAN.JS version: 0.5.0
 
 若要设置应用设置，请在 Cloud Shell 中使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令。
 
-以下示例在 Azure 应用中配置 `MONGODB_URI` 应用设置。 替换 *\<app-name>*、*\<cosmosdb-name>* 和 *\<primary-master-key>* 占位符。
+以下示例在 Azure 应用中配置 `MONGODB_URI` 应用设置。 替换占位符 \<app-name>、\<cosmosdb-name> 和 \<primary-master-key>。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb-name>:<primary-master-key>@<cosmosdb-name>.documents.azure.com:10250/mean?ssl=true"
 ```
 
-在 Node.js 代码中，使用 `process.env.MONGODB_URI` [访问此应用设置](configure-language-nodejs.md#access-environment-variables)，如同访问任何环境变量那样。
+在 Node.js 代码中，使用 `process.env.MONGODB_URI`[访问此应用设置](configure-language-nodejs.md#access-environment-variables)，如同访问任何环境变量那样。
 
 在本地 MEAN.js 存储库中，打开具有特定于生产环境的配置的 _config/env/production.js_（而不是 _config/env/local-production.js_）。 默认 MEAN.js 应用已配置为使用你所创建的 `MONGODB_URI` 环境变量。
 
@@ -280,7 +271,7 @@ db: {
 
 [!INCLUDE [app-service-plan-no-h](../../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
-```bash
+<pre>
 Counting objects: 5, done.
 Delta compression using up to 4 threads.
 Compressing objects: 100% (5/5), done.
@@ -296,9 +287,9 @@ remote: Handling node.js deployment.
 .
 .
 remote: Deployment successful.
-To https://<app-name>.scm.azurewebsites.net/<app-name>.git
- * [new branch]      master -> master
-```
+To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
+ * [new branch]      master -> master
+</pre>
 
 你可能会注意到，部署进程将在运行 `npm install` 之后运行 [Gulp](https://gulpjs.com/)。 应用服务在部署期间不会运行 Gulp 或 Grunt 任务，因此该示例存储库的根目录中有两个额外文件用于启用它：
 
@@ -307,9 +298,9 @@ To https://<app-name>.scm.azurewebsites.net/<app-name>.git
 
 可以通过此方法向基于 Git 的部署添加任意步骤。 如果重启 Azure 应用（无论何时），应用服务都不会重新运行这些自动化任务。 有关详细信息，请参阅[运行 Grunt/Bower/Gulp](configure-language-nodejs.md#run-gruntbowergulp)。
 
-### <a name="browse-to-the-azure-app"></a>浏览到 Azure 应用
+### <a name="browse-to-the-azure-app"></a>转到 Azure 应用
 
-使用 Web 浏览器浏览到已部署的应用。
+使用 Web 浏览器转到已部署的应用。
 
 ```bash
 http://<app-name>.azurewebsites.net
@@ -376,7 +367,7 @@ exports.update = function (req, res) {
 
 在 `</section>` 结尾标记正上方，添加下列行以显示 `comment` 和其余文章数据：
 
-```HTML
+```html
 <p class="lead" ng-bind="vm.article.comment"></p>
 ```
 
@@ -384,7 +375,7 @@ exports.update = function (req, res) {
 
 在 `</a>` 结尾标记正上方，添加下列行以显示 `comment` 和其余文章数据：
 
-```HTML
+```html
 <p class="list-group-item-text" ng-bind="article.comment"></p>
 ```
 
@@ -392,7 +383,7 @@ exports.update = function (req, res) {
 
 在 `<div class="list-group">` 元素内，以及 `</a>` 结尾标记正上方，添加下列行以显示 `comment` 和其余文章数据：
 
-```HTML
+```html
 <p class="list-group-item-text" data-ng-bind="article.comment"></p>
 ```
 
@@ -400,7 +391,7 @@ exports.update = function (req, res) {
 
 查找包含提交按钮的 `<div class="form-group">` 元素，如下所示：
 
-```HTML
+```html
 <div class="form-group">
   <button type="submit" class="btn btn-default">{{vm.article._id ? 'Update' : 'Create'}}</button>
 </div>
@@ -408,7 +399,7 @@ exports.update = function (req, res) {
 
 在此标记的正上方，添加另一个 `<div class="form-group">` 元素，它允许人们编辑 `comment` 字段。 新元素应如下所示：
 
-```HTML
+```html
 <div class="form-group">
   <label class="control-label" for="comment">Comment</label>
   <textarea name="comment" data-ng-model="vm.article.comment" id="comment" class="form-control" cols="30" rows="10" placeholder="Comment"></textarea>
@@ -453,7 +444,7 @@ git push azure master
 
 ## <a name="stream-diagnostic-logs"></a>流式传输诊断日志
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="manage-your-azure-app"></a>管理 Azure 应用
 

@@ -1,18 +1,14 @@
 ---
-title: 示例 - ISO 27001 共享服务蓝图 - 概述
-description: ISO 27001 共享服务蓝图示例的概述和体系结构。
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 03/14/2019
+title: ISO 27001 共享服务蓝图示例概述
+description: ISO 27001 共享服务蓝图示例的概述和体系结构。 此蓝图示例可帮助客户评估特定 ISO 27001 控制要求。
+ms.date: 04/15/2020
 ms.topic: sample
-ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: c54d8aedb9464364f93a087de4bdb00c693a96ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5a18af942e1d1088b681712f7035f57d354ecb19
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60875141"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81458448"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共享服务蓝图示例的概述
 
@@ -25,7 +21,7 @@ ISO 27001 共享服务蓝图示例提供了一组符合标准的基础结构模�
 ISO 27001 共享服务蓝图示例在 Azure 中部署一个基础结构，该基础结构可供组织用来基于虚拟数据中心 (VDC) 方法托管多个工作负荷。
 VDC 是一套行之有效的参考体系结构、自动化工具和参与模型，由 Microsoft 用于其最大的企业客户。 共享服务蓝图示例基于下面所示的完全原生 Azure VDC 环境。
 
-![ISO 27001 共享服务蓝图示例设计](../../media/sample-iso27001-shared/iso27001-shared-services-blueprint-sample-design.png)
+:::image type="content" source="../../media/sample-iso27001-shared/iso27001-shared-services-blueprint-sample-design.png" alt-text="ISO 27001 共享服务蓝图示例设计" border="false":::
 
 此环境包括多项 Azure 服务，这些服务用于根据 ISO 27001 标准提供安全的、全面受监视的、面向企业的共享服务基础结构。 此环境包括：
 
@@ -38,7 +34,7 @@ VDC 是一套行之有效的参考体系结构、自动化工具和参与模型�
   - 一个用于管理目的的 Jumpbox 或堡垒主机，只能通过入口堆叠子网中部署的 [Azure 防火墙](../../../../firewall/overview.md)访问
   - 两个运行 Active Directory 域服务 (ADDS) 和 DNS 的虚拟机，只能通过 Jumpbox 访问，可以配置为仅通过 VPN 或 [ExpressRoute](../../../../expressroute/expressroute-introduction.md) 连接来复制 AD（不按蓝图部署）
   - 使用 [Azure 网络观察程序](../../../../network-watcher/network-watcher-monitoring-overview.md)和标准 DDoS 保护
-- 一个 [Azure Key Vault](../../../../key-vault/key-vault-whatis.md) 实例，用于托管对共享服务环境中部署的 VM 使用的机密
+- 一个 [Azure Key Vault](../../../../key-vault/general/overview.md) 实例，用于托管对共享服务环境中部署的 VM 使用的机密
 
 所有这些元素遵守 [Azure 体系结构中心 - 参考体系结构](/azure/architecture/reference-architectures/)中发布的行之有效的做法。
 
@@ -57,7 +53,7 @@ VDC 是一套行之有效的参考体系结构、自动化工具和参与模型�
 > [ISO 27001 共享服务蓝图 - 控制映射](./control-mapping.md)
 > [ISO 27001 共享服务蓝图 - 部署步骤](./deploy.md)
 
-有关蓝图和如何使用这些蓝图的更多文章：
+有关蓝图及其使用方式的更多文章：
 
 - 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。

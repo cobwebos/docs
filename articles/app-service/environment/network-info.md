@@ -1,36 +1,29 @@
 ---
-title: 应用服务环境的网络注意事项 - Azure
-description: 介绍 ASE 网络流量，以及如何在 ASE 中设置 NSG 和 UDR
-services: app-service
-documentationcenter: na
+title: 网络注意事项
+description: 了解 ASE 网络流量以及如何通过 ASE 设置网络安全组和用户定义的路由。
 author: ccompy
-manager: stefsch
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 06/29/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: b29dec76fb6b1f9883c5c594d4719c9f3032089e
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 10cb1149880c70d991dd5ab49acceab3283372a7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514624"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517847"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
 
 ## <a name="overview"></a>概述 ##
 
- Azure [应用服务环境][Intro]是指将 Azure App Service 部署到 Azure 虚拟网络 (VNet) 的子网中。 应用服务环境 (ASE) 具有两种部署类型：
+ Azure [应用服务环境][Intro]是指将 Azure 应用服务部署到 Azure 虚拟网络 (VNet) 的子网中。 应用服务环境 (ASE) 具有两种部署类型：
 
 - **外部 ASE**：在 Internet 可访问的 IP 地址上公开 ASE 托管的应用。 有关详细信息，请参阅[创建外部 ASE][MakeExternalASE]。
 - **ILB ASE**：在 VNet 中的 IP 地址上公开 ASE 托管的应用。 内部终结点是一个内部负载均衡器 (ILB)，因此该类部署被称为 ILB ASE。 有关详细信息，请参阅[创建和使用 ILB ASE][MakeILBASE]。
 
-所有 Ase、 外部信任和 ILB，都具有公共 VIP 用于入站的管理流量以及作为发件人地址时进行调用从 ASE 到 internet。 转到 internet 从 ase 发出的调用将保留通过 VIP 分配给 ASE 的 VNet。 此 VIP 的公共 IP 将成为从 ASE 发出的、转到 Internet 的所有调用的源 IP。 如果 ASE 中的应用调用了 VNet 中的资源或通过 VNet 发出调用，则源 IP 是 ASE 使用的子网中的某个 IP。 由于 ASE 在 VNet 中，因此也可以访问 VNet 中的资源，而不需要进行任何额外配置。 如果 VNet 连接到本地网络，则 ASE 中的应用也可访问此处的资源，不需其他配置。
+所有 ASE、外部组件和 ILB 都有一个公共 VIP，该 VIP 用于入站管理流量，从 ASE 对 Internet 发出调用时，它还用作来源地址。 从 ASE 发出的、转到 Internet 的所有调用将通过分配给 ASE 的 VIP 离开 VNet。 此 VIP 的公共 IP 将成为从 ASE 发出的、转到 Internet 的所有调用的源 IP。 如果 ASE 中的应用调用了 VNet 中的资源或通过 VNet 发出调用，则源 IP 是 ASE 使用的子网中的某个 IP。 由于 ASE 在 VNet 中，因此也可以访问 VNet 中的资源，而不需要进行任何额外配置。 如果 VNet 连接到本地网络，则 ASE 中的应用也可访问此处的资源，不需其他配置。
 
 ![外部 ASE][1] 
 
@@ -43,61 +36,69 @@ ms.locfileid: "66514624"
 
 ![ILB ASE][2]
 
-如果拥有 ILB ASE，ILB 地址的地址是 HTTP/S、 FTP/S、 web 部署和远程调试的终结点。
+如果你有一个 ILB ASE，则 ILB 的地址是用于 HTTP/S、FTP/S、Web 部署和远程调试的终结点。
 
 ## <a name="ase-subnet-size"></a>ASE 子网大小 ##
 
-用于托管 ASE 的子网的大小在部署 ASE 后不能更改。  ASE 使用每个基础结构角色以及每个独立应用服务计划实例的地址。  此外，还有五个的每个子网创建所使用的 Azure 网络的地址。  在创建应用前，根本不带应用服务计划的 ASE 将使用 12 个地址。  如果它是 ILB ASE，它将在该 ASE 中创建应用程序之前使用 13 个地址。 横向扩展 ASE 时，基础结构角色按应用服务计划实例的 15 和 20 的倍数添加。
+用于托管 ASE 的子网的大小在部署 ASE 后不能更改。  ASE 使用每个基础结构角色以及每个独立应用服务计划实例的地址。  此外，还有创建的每个子网的 Azure 网络使用的 5 个地址。  在创建应用前，根本不带应用服务计划的 ASE 将使用 12 个地址。  如果它是 ILB ASE，则在该 ASE 中创建应用前将使用 13 个地址。 横向扩展 ASE 时，基础结构角色按应用服务计划实例的 15 和 20 的倍数添加。
 
    > [!NOTE]
    > 子网中仅可具有 ASE。 请务必选择一个容许将来扩展的地址空间。 以后无法更改此设置。 建议使用包含 256 个地址的大小 `/24`。
 
-纵向扩展或缩减时，将会添加具有相应大小的新角色，然后将工作负荷从当前大小迁移到目标大小。 原始仅迁移工作负荷后删除 Vm。 如果有 100 个 ASP 实例使用的 ASE 时，会有一段需要双倍的 Vm 数。  出于这个原因，建议使用“/24”来应对可能需要进行的任何更改。  
+纵向扩展或缩减时，将会添加具有相应大小的新角色，然后将工作负荷从当前大小迁移到目标大小。 只有在迁移工作负荷之后才会删除原始 VM。 如果你的 ASE 有 100 个 ASP 实例，则在一段时间你需要双倍数目的 VM。  出于这个原因，建议使用“/24”来应对可能需要进行的任何更改。  
 
 ## <a name="ase-dependencies"></a>ASE 依赖项 ##
 
 ### <a name="ase-inbound-dependencies"></a>ASE 入站依赖项 ###
 
-ASE 入站访问依赖项如下：
+仅仅是为了让 ASE 保持正常运行，ASE 就需要打开以下端口：
 
-| 用途 | 源 | 目标 |
+| 用途 | 从 | 如果 |
 |-----|------|----|
 | 管理 | 应用服务管理地址 | ASE 子网：454、455 |
 |  ASE 内部通信 | ASE 子网：所有端口 | ASE 子网：所有端口
-|  允许 Azure 负载均衡器入站流量 | Azure 负载均衡器 | ASE 子网：所有端口
-|  应用分配的 IP 地址 | 应用分配的地址 | ASE 子网：所有端口
+|  允许 Azure 负载均衡器入站流量 | Azure 负载均衡器 | ASE 子网：16001
 
-除系统监视以外，入站管理流量还提供对 ASE 的指挥与控制。 [ASE 管理地址][ASEManagement]文档中列出了此流量的源地址。 网络安全配置需要允许通过端口 454 和 455 上的所有 IP 进行访问。 如果阻止从这些地址进行访问，则 ASE 会变得不正常，然后变成暂停状态。
+执行端口扫描时，还有其他 2 个端口可能显示为打开状态：7654 和 1221。 它们的回复中包含 IP 地址，此外不会包含任何其他信息。 可按需阻止这些端口。 
 
-在 ASE 子网时，有许多用于内部组件通信的端口，可以进行更改。 这要求 ASE 子网中的所有端口均可从 ASE 子网访问。 
+除系统监视以外，入站管理流量还提供对 ASE 的指挥与控制。 [ASE 管理地址][ASEManagement]文档中列出了此流量的源地址。 网络安全配置需要允许从端口 454 和 455 上的 ASE 管理地址进行访问。 如果阻止从这些地址进行访问，则 ASE 会变得不正常，然后变成暂停状态。 从端口 454 和 455 进来的 TCP 流量必须从同一 VIP 回去，否则会出现非对称路由问题。 
 
-对于 Azure 负载均衡器和 ASE 子网间的通信，需要开放的最小端口是 454、455 和 16001。 端口 16001 用于使负载均衡器和 ASE 之间的流量保持活动状态。 如果使用 ILB ASE，则您可以流量锁定为仅 454、 455 和 16001 端口。  如果使用外部 ASE，然后您需要考虑常规应用访问端口。  如果将应用分配的地址，您需要打开所有端口。  如果地址分配给特定应用，则负载均衡器将使用未知的端口提前向 ASE 发送 HTTP 和 HTTPS 流量。
+在 ASE 子网内，有多个用于内部组件通信的端口，并且可以更改。 这要求 ASE 子网中的所有端口均可从 ASE 子网访问。 
 
-如果将应用分配的 IP 地址，你需要允许来自 Ip 分配给你的应用到 ASE 子网的流量。
+对于 Azure 负载均衡器和 ASE 子网间的通信，需要开放的最小端口是 454、455 和 16001。 端口 16001 用于使负载均衡器和 ASE 之间的流量保持活动状态。 如果使用 ILB ASE，则可将流量锁定为仅 454、455 和 16001 端口。  如果使用外部 ASE，则需要考虑常规的应用访问端口。  
 
-从端口 454 和 455 进来的 TCP 流量必须从同一 VIP 回去，否则会出现非对称路由问题。 
+需要自行考虑的其他端口是应用程序端口：
+
+| 用途 | 端口 |
+|----------|-------------|
+|  HTTP/HTTPS  | 80、443 |
+|  FTP/FTPS    | 21, 990, 10001-10020 |
+|  Visual Studio 远程调试  |  4020, 4022, 4024 |
+|  Web 部署服务 | 8172 |
+
+如果阻止应用程序端口，ASE 仍可正常工作，但应用可能无法正常运行。  如果对外部 ASE 使用应用分配的 IP 地址，则需要允许分配给应用的 IP 发出的流量进入 ASE 门户上的“IP 地址”页中显示的端口上的 ASE 子网。
 
 ### <a name="ase-outbound-dependencies"></a>ASE 出站依赖项 ###
 
 对于出站访问，ASE 依赖于多个外部系统。 在这些系统依赖项中，许多是使用 DNS 名称定义的，不会映射到一组固定的 IP 地址。 因此，ASE 需要从 ASE 子网跨各种端口对所有外部 IP 进行出站访问。 
 
-ASE 出到以下端口上的 internet 可访问地址进行通信：
+ASE 在以下端口上与可通过 Internet 访问的地址通信：
 
-| Port | 使用 |
+| 使用 | 端口 |
 |-----|------|
-| 53 | DNS |
-| 123 | NTP |
-| 80/443 | CRL，Windows 更新、 Linux 依赖项、 Azure 服务 |
-| 1433 | Azure SQL | 
-| 12000 | 监视 |
+| DNS | 53 |
+| NTP | 123 |
+| CRL，Windows 更新，Linux 依赖项，Azure 服务 | 80/443 |
+| Azure SQL | 1433 | 
+| 监视 | 12000 |
 
-出站依赖项的完整列表在介绍如何[锁定应用服务环境出站流量](./firewall-integration.md)的文档中列出。 如果失去其依赖项的访问权限，ASE 就会停止工作。 如果长时间发生此情况，将暂停 ASE。 
+出站依赖项已在介绍如何[锁定应用服务环境出站流量](./firewall-integration.md)的文档中列出。 如果失去其依赖项的访问权限，ASE 就会停止工作。 如果长时间发生此情况，将暂停 ASE。 
 
 ### <a name="customer-dns"></a>客户 DNS ###
 
-如果在 VNet 中配置了客户定义的 DNS 服务器，则租户工作负荷将使用该服务器。 ASE 出于管理目的，使用 Azure DNS。 如果在 VNet 中使用客户选择的 DNS 服务器配置，必须可从包含 ASE 的子网访问 DNS 服务器。
+如果在 VNet 中配置了客户定义的 DNS 服务器，则租户工作负荷将使用该服务器。 ASE 使用 Azure DNS 进行管理。 如果在 VNet 中配置了客户所选的 DNS 服务器，则必须可从包含 ASE 的子网访问 DNS 服务器。
 
-若要测试从你的 web 应用的 DNS 解析，可以使用控制台命令*nameresolver*。 转到应用的 scm 站点的调试窗口，或者在门户中转到应用，然后选择控制台。 可以在 shell 提示符下发出命令*nameresolver*以及你想要查找的 DNS 名称。 你取回的结果与应用进行同一查找时获取的结果相同。 如果使用 nslookup，您将执行改为使用 Azure DNS 查找。
+若要从 Web 应用测试 DNS 解析，可以使用控制台命令 *nameresolver*。 转到应用的 scm 站点的调试窗口，或者在门户中转到应用，然后选择控制台。 在 shell 提示符下，可以结合要查找的 DNS 名称发出命令 *nameresolver*。 你取回的结果与应用进行同一查找时获取的结果相同。 如果使用 nslookup，则会改用 Azure DNS 进行查找。
 
 如果更改 ASE 所在的 VNet 的 DNS 设置，则需重启 ASE。 为了避免重启 ASE，强烈建议在创建 ASE 之前配置 VNet 的 DNS 设置。  
 
@@ -115,20 +116,20 @@ ASE 出到以下端口上的 internet 可访问地址进行通信：
 -   进程资源管理器
 -   控制台
 
-当使用 ILB ASE 时，不从 VNet 外部访问 SCM 站点。 某些功能将无法从应用门户因为它们需要访问的应用的 SCM 站点的权限。 你可以连接到 SCM 站点，而要使用门户。 
+使用 ILB ASE 时，无法从 VNet 外部访问 SCM 站点。 某些功能无法从应用门户运行，因为它们需要访问应用的 SCM 站点。 可以直接连接到 SCM 站点，而不使用门户。 
 
-如果在 ILB ASE 的域名*contoso.appserviceenvironnment.net* ，应用程序名称为*testapp*，该应用程序达到在*testapp.contoso.appserviceenvironment.net*. 在达到其随附的 SCM 站点*testapp.scm.contoso.appserviceenvironment.net*。
+如果 ILB ASE 是域名*contoso.appserviceenvironment.net* ，而你的应用名称为*testapp*，则会在*testapp.contoso.appserviceenvironment.net*上访问应用。 在*testapp.scm.contoso.appserviceenvironment.net*上访问了与之配合的 SCM 站点。
 
 ## <a name="ase-ip-addresses"></a>ASE IP 地址 ##
 
-ASE 具有一些需要注意的 IP 地址。 它们是：
+ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 
 - **公共入站 IP 地址**：用于外部 ASE 中的应用流量，以及外部 ASE 和 ILB ASE 中的管理流量。
 - **出站公共 IP**：用作 ASE 发出、离开 VNet 且不经过 VPN 的出站连接的“来源”IP。
-- **ILB IP 地址**：在 ILB ASE 中仅存在 ILB IP 地址。
+- **ILB IP 地址**：ILB IP 地址仅在 ILB ASE 中存在。
 - **应用分配的基于 IP 的 SSL 地址**：仅当配置了基于 IP 的 SSL 时在外部 ASE 上使用。
 
-所有这些 IP 地址将显示在 Azure 门户从 ASE UI。 若使用 ILB ASE，将列出 ILB 的 IP。
+所有这些 IP 地址会显示在 Azure 门户上的 ASE UI 中。 若使用 ILB ASE，将列出 ILB 的 IP。
 
    > [!NOTE]
    > 只要 ASE 处于启动和运行状态，这些 IP 地址就不会更改。  如果 ASE 变成暂停和还原状态，ASE 所使用的地址就会更改。 ASE 变成暂停状态的通常原因是阻止了入站管理访问或阻止了对 ASE 依赖项的访问。 
@@ -137,7 +138,7 @@ ASE 具有一些需要注意的 IP 地址。 它们是：
 
 ### <a name="app-assigned-ip-addresses"></a>应用分配的 IP 地址 ###
 
-使用外部 ASE 时，可将 IP 地址分配到各个应用。 无法使用 ILB ASE 实现这一点。 若要深入了解如何将应用配置为自备 IP 地址，请参阅[将现有的自定义 SSL 证书绑定到 Azure 应用服务](../app-service-web-tutorial-custom-ssl.md)。
+使用外部 ASE 时，可将 IP 地址分配到各个应用。 无法使用 ILB ASE 实现这一点。 若要详细了解如何将应用配置为具有其自己的 IP 地址，请参阅[在 Azure App Service 中使用 TLS/SSL 绑定保护自定义 DNS 名称](../configure-ssl-bindings.md)。
 
 当应用使用其自身的基于 IP 的 SSL 地址时，ASE 将保留两个映射到该 IP 地址的端口。 它们分别用于 HTTP 流量和 HTTPS 流量。 这些端口列在 ASE UI 上的“ IP 地址”部分中。 流量必须能够从 VIP 抵达这些端口，否则无法访问应用。 配置网络安全组 (NSG) 时，请务必牢记此要求。
 
@@ -149,36 +150,38 @@ ASE 具有一些需要注意的 IP 地址。 它们是：
 
 可通过 Azure 门户或 PowerShell 配置 NSG。 此处仅介绍了 Azure 门户中的操作。 在门户中的“网络”下面创建和管理 NSG 顶级资源。 
 
-针对为函数，ASE 的 NSG 中的所需的条目是允许的流量：
+要使 ASE 正常运行，必须在 NSG 中添加允许流量的条目：
 
 **入站**
-* 从 IP 服务标记上端口 454,455 AppServiceManagement
-* 从负载均衡器端口 16001 上
-* 从 ASE 子网的所有端口上的 ASE 子网
+* 端口454455上的 IP 服务标记 AppServiceManagement 中的 TCP
+* 端口16001上的负载均衡器中的 TCP
+* 在所有端口上允许不同 ASE 子网之间发送的流量
 
 **Outbound**
-* 对所有 Ip 端口 123 上
-* 对端口 80、 443 上的所有 Ip
-* 到 IP 服务标记 AzureSQL 端口 1433年上
-* 对所有 Ip 端口 12000 上
-* ASE 子网的所有端口上
+* UDP 到端口123上的所有 Ip
+* TCP 到端口80、443上的所有 Ip
+* TCP 到 IP 服务标记 AzureSQL 上的端口1433
+* TCP 到端口12000上的所有 Ip
+* 在所有端口上允许发往 ASE 子网的流量
 
-添加到 DNS 的流量不受 NSG 规则不会不需要 DNS 端口。 这些端口不包含您的应用程序需要有关成功使用的端口。 常规应用访问端口为：
+这些端口不包括成功使用应用所需的端口。 例如，你的应用程序可能需要在端口3306上调用 MySQL 服务器。在 DNS 端口上，不需要将端口53作为流量添加到 DNS 不受 NSG 规则的影响。 端口123上的网络时间协议（NTP）是操作系统使用的时间同步协议。 NTP 终结点并不特定于应用服务，可能因操作系统而异，并且不是定义完善的地址列表。 若要防止时间同步问题，则需要允许 UDP 流量发送到端口123上的所有地址。 发往端口12000流量的出站 TCP 适用于系统支持和分析。 终结点是动态的，并且不是定义完善的地址集。
 
-| 用途 | 源 | 目标 |
-|----------|---------|-------------|
-|  HTTP/HTTPS  | 用户可配置 |  80、443 |
-|  FTP/FTPS    | 用户可配置 |  21, 990, 10001-10020 |
-|  Visual Studio 远程调试  |  用户可配置 |  4020, 4022, 4024 |
-|  Web 部署服务 | 用户可配置 | 8172 |
+常规应用访问端口为：
+
+| 用途 | 端口 |
+|----------|-------------|
+|  HTTP/HTTPS  | 80、443 |
+|  FTP/FTPS    | 21, 990, 10001-10020 |
+|  Visual Studio 远程调试  |  4020, 4022, 4024 |
+|  Web 部署服务 | 8172 |
 
 若要考虑到入站和出站要求，NSG 应与本例中所示的 NSG 相似。 
 
 ![入站安全规则][4]
 
-默认规则允许 VNet 中的 IP 与 ASE 子网对话。 另一条默认规则允许负载均衡器（亦称为公共 VIP）与 ASE 通信。 选择“添加”图标旁边的“默认规则”即可查看此规则。   如果将拒绝其他任何默认规则之前，您会阻止 VIP 与 ASE 之间的流量。 要阻止来自 Vnet 内部的流量，请自行添加规则以允许入站。 使用等效于 AzureLoadBalancer 的源，其目标为“任何”，端口范围为 \*。   由于 ASE 子网将应用 NSG 规则，因此无需指定具体的目标。
+默认规则允许 VNet 中的 IP 与 ASE 子网对话。 另一条默认规则允许负载均衡器（亦称为公共 VIP）与 ASE 通信。 选择“添加”图标旁边的“默认规则”即可查看此规则。******** 如果在默认规则的前面放置一条拒绝其他任何流量的规则，则会阻止 VIP 与 ASE 之间的流量。 要阻止来自 Vnet 内部的流量，请自行添加规则以允许入站。 使用等效于 AzureLoadBalancer 的源，其目标为“任何”，端口范围为 \*。******** 由于 ASE 子网将应用 NSG 规则，因此无需指定具体的目标。
 
-若向应用分配了 IP 地址，请确保端口保持打开。 可在“应用服务环境” > “IP 地址”中查看端口。    
+若向应用分配了 IP 地址，请确保端口保持打开。 若要查看端口，请选择 "**应用服务环境**  >  **IP 地址**"。  
 
 下列出站规则中显示的所有项均是必需项，最后一项除外。 使用这些端口可以通过网络访问本文前面所述的 ASE 依赖项。 阻止其中的任意一个，ASE 都将停止工作。 列表中的最后一项可让 ASE 与 VNet 中的其他资源通信。
 
@@ -188,18 +191,18 @@ ASE 具有一些需要注意的 IP 地址。 它们是：
 
 ## <a name="routes"></a>路由 ##
 
-强制隧道是指，在 VNet 中设置路由时，使出站流量不直接前往 Internet，而是前往诸如 ExpressRoute 网关或虚拟设备的其他位置。  如果需要以这种方式配置 ASE，请阅读文档上[使用强制隧道配置应用服务环境][forcedtunnel]。  该文档将介绍可用于 ExpressRoute 和强制隧道的选项。
+强制隧道是指，在 VNet 中设置路由时，使出站流量不直接前往 Internet，而是前往诸如 ExpressRoute 网关或虚拟设备的其他位置。  如果需要以这种方式配置 ASE，请阅读有关[使用强制隧道配置应用服务环境][forcedtunnel]的文档。  该文档将介绍可用于 ExpressRoute 和强制隧道的选项。
 
 在门户中创建 ASE 时，我们还在随 ASE 创建的子网上创建一组路由表。  这些路由只是指示将出站流量直接发送到 Internet。  
 若要手动创建同样的路由，请执行以下步骤：
 
-1. 转到 Azure 门户。 选择“网络” > “路由表”。  
+1. 转到 Azure 门户。 选择 "**网络**  >  **路由表**"。
 
 2. 在 Vnet 所在的位置新建一个路由表。
 
-3. 在路由表 UI 中选择“路由” > “添加”。  
+3. 在路由表 UI 中选择 "**路由**" "  >  **添加**"。
 
-4. 将“下一跃点类型”设置为 Internet，将“地址前缀”设置为 0.0.0.0/0。     选择“保存”。 
+4. 将“下一跃点类型”设置为 Internet，将“地址前缀”设置为 0.0.0.0/0。**************** 选择“保存”。
 
     然后将看到如下内容：
 
@@ -211,11 +214,11 @@ ASE 具有一些需要注意的 IP 地址。 它们是：
 
 ## <a name="service-endpoints"></a>服务终结点 ##
 
-可以通过服务终结点将多租户服务的访问权限限制给一组 Azure 虚拟网络和子网。 若要详细了解服务终结点，可参阅[虚拟网络服务终结点][serviceendpoints]文档。 
+可以通过服务终结点将多租户服务的访问权限限制给一组 Azure 虚拟网络和子网。 若要详细了解服务终结点，请参阅[虚拟网络服务终结点][serviceendpoints]文档。 
 
-在资源上启用服务终结点时，有些已创建路由的优先级高于所有其他路由。 如果任何 Azure 服务，使用强制隧道 ASE 时，使用服务终结点发送到这些服务的流量不会被强制隧道。 
+在资源上启用服务终结点时，有些已创建路由的优先级高于所有其他路由。 如果在包含强制隧道 ASE 的任意 Azure 服务中使用服务终结点，则不会对发往这些服务的流量应用强制隧道。 
 
-在包含 Azure SQL 实例的子网上启用服务终结点时，所有与该子网有连接的 Azure SQL 实例必定会启用服务终结点。 如果需要从同一子网访问多个 Azure SQL 实例，则不能在一个 Azure SQL 实例上启用服务终结点，而在另一个实例上不启用。 没有任何其他 Azure 服务的行为类似于与服务终结点相关的 Azure SQL。 对 Azure 存储启用服务终结点时，可以锁定从子网对该资源进行的访问，但仍可访问其他 Azure 存储帐户，即使这些帐户未启用服务终结点。  
+在包含 Azure SQL 实例的子网上启用服务终结点时，所有与该子网有连接的 Azure SQL 实例必定会启用服务终结点。 如果需要从同一子网访问多个 Azure SQL 实例，则不能在一个 Azure SQL 实例上启用服务终结点，而在另一个实例上不启用。 对于服务终结点，任何其他 Azure 服务的行为都不类似于 Azure SQL。 对 Azure 存储启用服务终结点时，可以锁定从子网对该资源进行的访问，但仍可访问其他 Azure 存储帐户，即使这些帐户未启用服务终结点。  
 
 ![服务终结点][8]
 
@@ -243,8 +246,8 @@ ASE 具有一些需要注意的 IP 地址。 它们是：
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
-[ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
+[ConfigureSSL]: ../configure-ss-cert.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md

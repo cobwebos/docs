@@ -1,21 +1,20 @@
 ---
 title: 数据评估
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) - Azure
 description: 数据可用于数据科学需要满足的四个条件。 本视频提供具体示例，帮助了解基本数据评估。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: sdgilley
-ms.author: sgilleye
+ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: d38a5066304a11ff2cd53a0168e51a0d74fda555
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 8eb9c5a182c17815d4efcf171cc99b1e9f5bc89e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60751425"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82930159"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>数据是否可用于数据科研？
 ## <a name="video-2-data-science-for-beginners-series"></a>视频 2：适合初学者的数据科学系列
@@ -29,16 +28,16 @@ ms.locfileid: "60751425"
 >
 
 ## <a name="other-videos-in-this-series"></a>本系列中的其他视频
-“适合初学者的数据科学”对数据科学进行简要介绍，共五个短视频。
+“适合初学者的数据科学”  对数据科学进行简要介绍，共五个短视频。
 
-* 视频 1：[数据科学可解答的 5 个问题](data-science-for-beginners-the-5-questions-data-science-answers.md)（5 分 14 秒）
+* 视频 1：[数据科学可解答的 5 个问题](data-science-for-beginners-the-5-questions-data-science-answers.md)（5 分 14 秒） 
 * 视频 2：数据是否可用于数据科研？
-* 视频 3：[提出可用数据回答的问题](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)（4 分钟 17 秒）
-* 视频 4：[使用简单的模型预测答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md)（7 分 42 秒）
-* 视频 5：[复制他人的工作以执行数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)（3 分 18 秒）
+* 视频 3：[提出可用数据回答的问题](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)（4 分钟 17 秒） 
+* 视频 4：[使用简单的模型预测答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md)（7 分 42 秒） 
+* 视频 5：[复制他人的工作以执行数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)（3 分 18 秒） 
 
 ## <a name="transcript-is-your-data-ready-for-data-science"></a>脚本：数据是否可用于数据科研？
-欢迎观看“数据是否可用于数据科学？” “适合初学者的数据科学”系列中的第二个视频。  
+欢迎观看“数据是否可用于数据科学？” “适合初学者的数据科学”  系列中的第二个视频。  
 
 必须先提供一些优质原材料供数据科学分析，它才能提供你所需的答案。 就像做披萨一样，开始制作前准备的原料越好，最终的产品越好。 
 
@@ -46,7 +45,7 @@ ms.locfileid: "60751425"
 在数据科学中，有一些需要汇总的要素，包括：
 
 * 相关
-* 连续
+* 已连接
 * 准确
 * 足够使用
 
@@ -100,8 +99,8 @@ ms.locfileid: "60751425"
 
 有了相关、连续、准确且充足的数据，就有了进行优质数据科学分析所需的全部要素。
 
-务必观看 Microsoft Azure 机器学习工作室“适合初学者的数据科学”中的其他四个视频。
+请务必观看 Microsoft Azure 机器学习工作室（经典）提供的“适合初学者的数据科学”中的其他四个视频  。
 
 ## <a name="next-steps"></a>后续步骤
-* [使用机器学习工作室尝试第一个数据科学实验](create-experiment.md)
-* [在 Microsoft Azure 上获取机器学习简介](/azure/machine-learning/preview/overview-what-is-azure-ml)
+* [使用机器学习工作室（经典）尝试第一个数据科学试验](create-experiment.md)
+* [在 Microsoft Azure 上获取机器学习简介](/azure/machine-learning/overview-what-is-azure-ml)

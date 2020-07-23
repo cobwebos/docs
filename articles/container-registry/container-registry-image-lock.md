@@ -1,30 +1,32 @@
 ---
-title: 锁定 Azure 容器注册表中的映像
+title: 锁定图像
 description: 设置容器映像或存储库的属性，使之不会在 Azure 容器注册表中遭到删除或覆盖。
-services: container-registry
-author: dlepow
-ms.service: container-registry
 ms.topic: article
-ms.date: 02/19/2019
-ms.author: danlep
-ms.openlocfilehash: ebbfaba158e7ddb669111f097eb1adde2373aa6c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 09/30/2019
+ms.openlocfilehash: da84767523bb6d948b71b1c1ad2ddaffb628354a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60828641"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77659690"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>锁定 Azure 容器注册表中的容器映像
 
 在 Azure 容器注册表中，可以锁定某个映像版本或存储库，使之不会被删除或更新。 若要锁定映像或存储库，可使用 Azure CLI 命令 [az acr repository update][az-acr-repository-update] 更新其属性。 
 
-本文要求运行 Azure CLI 在 Azure Cloud Shell 中或本地 (版本 2.0.55 或建议使用更高版本)。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
+本文要求在 Azure Cloud Shell 或本地运行 Azure CLI （建议使用版本2.0.55 或更高版本）。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
+
+> [!IMPORTANT]
+> 本文不适用于锁定整个注册表，例如，在 Azure 门户中使用“设置”>“锁定”  ，或在 Azure CLI 中使用 `az lock` 命令。 锁定注册表资源不会阻止你在存储库中创建、更新或删除数据。 锁定注册表只会影响管理操作，如添加或删除复制，或删除注册表本身。 有关详细信息，请参阅[锁定资源以防止意外更改](../azure-resource-manager/management/lock-resources.md)。
 
 ## <a name="scenarios"></a>方案
 
-默认情况下，Azure 容器注册表中带标记的映像是可变的，因此，如果具有相应的权限，你可以反复更新带有相同标记的映像并将其推送到注册表。 还可以根据需要[删除](container-registry-delete.md)容器映像。 开发映像并需要保持注册表的大小时，此行为很有用。
+默认情况下，Azure 容器注册表中带标记的映像是可变的，因此，如果具有相应的权限，你可以反复更新带有相同标记的映像并将其推送到注册表。  还可以根据需要[删除](container-registry-delete.md)容器映像。 开发映像并需要保持注册表的大小时，此行为很有用。
 
-但是，将容器映像部署到生产环境时，可能需要不可变的容器映像。 不可变的映像是指不能意外删除或覆盖的映像。 使用 [az acr repository update][az-acr-repository-update] 命令设置存储库属性，以便可以：
+但是，将容器映像部署到生产环境时，可能需要不可变的容器映像。  不可变的映像是指不能意外删除或覆盖的映像。
+
+有关对注册表中的映像进行标记和版本控制的策略，请参阅[有关对容器映像进行标记和版本控制的建议](container-registry-image-tag-version.md)。
+
+使用 [az acr repository update][az-acr-repository-update] 命令设置存储库属性，以便可以：
 
 * 锁定某个映像版本或整个存储库
 
@@ -32,21 +34,21 @@ ms.locfileid: "60828641"
 
 * 防止针对某个映像版本或整个存储库执行读取（提取）操作
 
-有关示例，请参阅以下部分。
+有关示例，请参阅以下部分。 
 
 ## <a name="lock-an-image-or-repository"></a>锁定映像或存储库 
 
 ### <a name="show-the-current-repository-attributes"></a>显示当前存储库属性
-若要查看存储库的当前属性，请使用下面的 [az acr repository show][az-acr-repository-show] 命令：
+若要查看存储库的当前属性，请运行以下 [az acr repository show][az-acr-repository-show] 命令：
 
 ```azurecli
 az acr repository show \
-    --name myregistry --repository myrepo
+    --name myregistry --repository myrepo \
     --output jsonc
 ```
 
 ### <a name="show-the-current-image-attributes"></a>显示当前映像属性
-若要查看标记的当前属性，请使用下面的 [az acr repository show][az-acr-repository-show] 命令：
+若要查看标记的当前属性，请运行以下 [az acr repository show][az-acr-repository-show] 命令：
 
 ```azurecli
 az acr repository show \

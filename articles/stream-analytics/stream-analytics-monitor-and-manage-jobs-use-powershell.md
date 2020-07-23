@@ -1,20 +1,18 @@
 ---
 title: 使用 PowerShell 监视和管理 Azure 流分析作业
 description: 本文说明如何使用 Azure PowerShell 和 cmdlet 监视和管理 Azure 流分析作业。
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: b7e6201d75556908cc16d97734d1c074efd0a587
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 74d3f154f9965e44c9fba42ec094b9240972b40d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66148417"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044339"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>使用 Azure PowerShell cmdlet 监视和管理流分析作业
 了解如何使用可执行基本流分析任务的 Azure PowerShell cmdlet 和 PowerShell 脚本来监视和管理流分析资源。
@@ -43,7 +41,7 @@ Azure PowerShell 1.0：
 # Log in to your Azure account
 Connect-AzAccount
 # Select the Azure subscription you want to use to create the resource group.
-Get-AzSubscription –SubscriptionName "your sub" | Select-AzSubscription
+Get-AzSubscription -SubscriptionName "your sub" | Select-AzSubscription
 # If Stream Analytics has not been registered to the subscription, remove remark symbol below (#)to run the Register-AzureProvider cmdlet to register the provider namespace.
 #Register-AzResourceProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
 # Create an Azure resource group
@@ -58,7 +56,7 @@ New-AzResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 
 ## <a name="azure-powershell-cmdlets-for-stream-analytics"></a>适用于流分析的 Azure PowerShell cmdlet
 下面的 Azure PowerShell cmdlet 可用于监视和管理 Azure 流分析作业。 请注意，Azure PowerShell 具有不同版本。 
-**在所列示例中，第一个命令用于 Azure PowerShell 0.9.8，第二个命令用于 Azure PowerShell 1.0。** Azure PowerShell 1.0 命令将在命令中始终包含"Az"。
+**在所列示例中，第一个命令用于 Azure PowerShell 0.9.8，第二个命令用于 Azure PowerShell 1.0。** Azure PowerShell 1.0 命令会在命令中始终包含“Az”。
 
 ### <a name="get-azurestreamanalyticsjob--get-azstreamanalyticsjob"></a>Get-AzureStreamAnalyticsJob | Get-AzStreamAnalyticsJob
 列出所有在 Azure 订阅或指定资源组中定义的流分析作业，或者获取有关某个资源组中特定作业的作业信息。
@@ -135,13 +133,13 @@ Get-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US
 Azure PowerShell 0.9.8：  
 
 ```powershell
-Get-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –Name EntryStream
+Get-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name EntryStream
 ```
 
 Azure PowerShell 1.0：  
 
 ```powershell
-Get-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –Name EntryStream
+Get-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name EntryStream
 ```
 
 此 PowerShell 命令返回在作业 StreamingJob 中定义的名为 EntryStream 的输入的相关信息。
@@ -170,13 +168,13 @@ Get-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-U
 Azure PowerShell 0.9.8：  
 
 ```powershell
-Get-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –Name Output
+Get-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name Output
 ```
 
 Azure PowerShell 1.0：  
 
 ```powershell
-Get-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –Name Output
+Get-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name Output
 ```
 
 此 PowerShell 命令返回在作业 StreamingJob 中定义的名为 Output 的输出的相关信息。
@@ -189,13 +187,13 @@ Get-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-U
 Azure PowerShell 0.9.8：  
 
 ```powershell
-Get-AzureStreamAnalyticsQuota –Location "Central US" 
+Get-AzureStreamAnalyticsQuota -Location "Central US" 
 ```
 
 Azure PowerShell 1.0：  
 
 ```powershell
-Get-AzStreamAnalyticsQuota –Location "Central US" 
+Get-AzStreamAnalyticsQuota -Location "Central US" 
 ```
 
 此 PowerShell 命令返回有关美中地区配额和流式处理单位使用情况的信息。
@@ -208,13 +206,13 @@ Get-AzStreamAnalyticsQuota –Location "Central US"
 Azure PowerShell 0.9.8：  
 
 ```powershell
-Get-AzureStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –Name StreamingJob
+Get-AzureStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name StreamingJob
 ```
 
 Azure PowerShell 1.0：  
 
 ```powershell
-Get-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –Name StreamingJob
+Get-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name StreamingJob
 ```
 
 此 PowerShell 命令返回作业 StreamingJob 中名为 StreamingJob 的转换的相关信息。
@@ -224,7 +222,7 @@ Get-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-C
 
 输入的名称可以在 .json 文件中指定，也可以在命令行中指定。 如果在两处同时指定，则命令行的名称必须与文件中的名称相同。
 
-如果所指定的输入已存在，而且并未指定 -Force 参数，则该 cmdlet 会询问是否要替换现有输入。
+如果所指定的输入已存在，而且你并未指定 -Force 参数，则该 cmdlet 会询问你是否替换现有输入。
 
 如果指定了 -Force 参数，同时又指定了一个现有的输入名称，则会在不进行确认的情况下替换该输入。
 
@@ -235,13 +233,13 @@ Get-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-C
 Azure PowerShell 0.9.8：  
 
 ```powershell
-New-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –File "C:\Input.json" 
+New-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -File "C:\Input.json" 
 ```
 
 Azure PowerShell 1.0：  
 
 ```powershell
-New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –File "C:\Input.json" 
+New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -File "C:\Input.json" 
 ```
 
 此 PowerShell 命令从文件 Input.json 创建新的输入。 如果已定义了现有的输入，在输入定义文件中指定了名称，则该 cmdlet 会询问是否替换该输入。
@@ -251,13 +249,13 @@ New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US
 Azure PowerShell 0.9.8：  
 
 ```powershell
-New-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –File "C:\Input.json" –Name EntryStream
+New-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -File "C:\Input.json" -Name EntryStream
 ```
 
 Azure PowerShell 1.0：  
 
 ```powershell
-New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –File "C:\Input.json" –Name EntryStream
+New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -File "C:\Input.json" -Name EntryStream
 ```
 
 此 PowerShell 命令在名为 EntryStream 的作业中创建新的输入。 如果已定义了使用此名称的现有输入，则该 cmdlet 会询问是否替换该输入。
@@ -267,13 +265,13 @@ New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US
 Azure PowerShell 0.9.8：  
 
 ```powershell
-New-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –File "C:\Input.json" –Name EntryStream -Force
+New-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -File "C:\Input.json" -Name EntryStream -Force
 ```
 
 Azure PowerShell 1.0：  
 
 ```powershell
-New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob –File "C:\Input.json" –Name EntryStream -Force
+New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -File "C:\Input.json" -Name EntryStream -Force
 ```
 
 此 PowerShell 命令会使用文件中的定义来替换名为 EntryStream 的现有输入源的定义。
@@ -283,7 +281,7 @@ New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US
 
 作业的名称可以在 .json 文件中指定，也可以在命令行中指定。 如果在两处同时指定，则命令行的名称必须与文件中的名称相同。
 
-如果所指定的作业名称已存在，而且并未指定 -Force 参数，则该 cmdlet 会询问是否要替换现有作业。
+如果所指定的作业名称已存在，而且你并未指定 -Force 参数，则该 cmdlet 会询问你是否替换现有作业。
 
 如果指定了 -Force 参数，同时又指定了一个现有的作业名称，则会在不进行确认的情况下替换作业定义。
 
@@ -294,13 +292,13 @@ New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US
 Azure PowerShell 0.9.8：  
 
 ```powershell
-New-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\JobDefinition.json" 
+New-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\JobDefinition.json" 
 ```
 
 Azure PowerShell 1.0：  
 
 ```powershell
-New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\JobDefinition.json" 
+New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\JobDefinition.json" 
 ```
 
 此 PowerShell 命令在 JobDefinition.json 的定义中创建新的作业。 如果已定义了现有的作业，在作业定义文件中指定了名称，则该 cmdlet 会询问是否替换该作业。
@@ -310,13 +308,13 @@ New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �
 Azure PowerShell 0.9.8：  
 
 ```powershell
-New-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\JobDefinition.json" –Name StreamingJob -Force
+New-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\JobDefinition.json" -Name StreamingJob -Force
 ```
 
 Azure PowerShell 1.0：  
 
 ```powershell
-New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\JobDefinition.json" –Name StreamingJob -Force
+New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\JobDefinition.json" -Name StreamingJob -Force
 ```
 
 此 PowerShell 命令替换 StreamingJob 的作业定义。
@@ -326,7 +324,7 @@ New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �
 
 输出的名称可以在 .json 文件中指定，也可以在命令行中指定。 如果在两处同时指定，则命令行的名称必须与文件中的名称相同。
 
-如果所指定的输出已存在，而且未指定 -Force 参数，则该 cmdlet 会询问是否要替换现有输出。
+如果所指定的输出已存在，而且你并未指定 -Force 参数，则该 cmdlet 会询问你是否替换现有输出。
 
 如果指定了 -Force 参数，同时又指定了一个现有的输出名称，则会在不进行确认的情况下替换该输出。
 
@@ -337,13 +335,13 @@ New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US �
 Azure PowerShell 0.9.8：  
 
 ```powershell
-New-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\Output.json" –JobName StreamingJob –Name output
+New-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\Output.json" -JobName StreamingJob -Name output
 ```
 
 Azure PowerShell 1.0：  
 
 ```powershell
-New-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\Output.json" –JobName StreamingJob –Name output
+New-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\Output.json" -JobName StreamingJob -Name output
 ```
 
 此 PowerShell 命令在 StreamingJob 作业中创建新的名为“output”的输出。 如果已定义了使用此名称的现有输出，则该 cmdlet 会询问是否替换该输出。
@@ -353,13 +351,13 @@ New-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-U
 Azure PowerShell 0.9.8：  
 
 ```powershell
-New-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\Output.json" –JobName StreamingJob –Name output -Force
+New-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\Output.json" -JobName StreamingJob -Name output -Force
 ```
 
 Azure PowerShell 1.0：  
 
 ```powershell
-New-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\Output.json" –JobName StreamingJob –Name output -Force
+New-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\Output.json" -JobName StreamingJob -Name output -Force
 ```
 
 此 PowerShell 命令替换作业 StreamingJob 中“output”的定义。
@@ -369,7 +367,7 @@ New-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-U
 
 转换的名称可以在 .json 文件中指定，也可以在命令行中指定。 如果在两处同时指定，则命令行的名称必须与文件中的名称相同。
 
-如果所指定的转换已存在，而且未指定 -Force 参数，则该 cmdlet 会询问是否要替换现有转换。
+如果所指定的转换已存在，而且你并未指定 -Force 参数，则该 cmdlet 会询问你是否替换现有转换。
 
 如果指定了 -Force 参数，同时又指定了一个现有的转换名称，则会在不进行确认的情况下替换转换。
 
@@ -380,13 +378,13 @@ New-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-U
 Azure PowerShell 0.9.8：  
 
 ```powershell
-New-AzureStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\Transformation.json" –JobName StreamingJob –Name StreamingJobTransform
+New-AzureStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\Transformation.json" -JobName StreamingJob -Name StreamingJobTransform
 ```
 
 Azure PowerShell 1.0：  
 
 ```powershell
-New-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\Transformation.json" –JobName StreamingJob –Name StreamingJobTransform
+New-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\Transformation.json" -JobName StreamingJob -Name StreamingJobTransform
 ```
 
 此 PowerShell 命令在作业 StreamingJob 中创建名为 StreamingJobTransform 的新转换。 如果已定义了使用此名称的现有转换，则该 cmdlet 会询问是否替换该转换。
@@ -396,13 +394,13 @@ New-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-C
 Azure PowerShell 0.9.8：  
 
 ```powershell
-New-AzureStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\Transformation.json" –JobName StreamingJob –Name StreamingJobTransform -Force
+New-AzureStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\Transformation.json" -JobName StreamingJob -Name StreamingJobTransform -Force
 ```
 
 Azure PowerShell 1.0：  
 
 ```powershell
-New-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US –File "C:\Transformation.json" –JobName StreamingJob –Name StreamingJobTransform -Force
+New-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\Transformation.json" -JobName StreamingJob -Name StreamingJobTransform -Force
 ```
 
  此 PowerShell 命令替换作业 StreamingJob 中 StreamingJobTransform 的定义。
@@ -416,13 +414,13 @@ New-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-C
 Azure PowerShell 0.9.8：  
 
 ```powershell
-Remove-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US –JobName StreamingJob –Name EventStream
+Remove-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name EventStream
 ```
 
 Azure PowerShell 1.0：  
 
 ```powershell
-Remove-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US –JobName StreamingJob –Name EventStream
+Remove-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name EventStream
 ```
 
 此 PowerShell 命令删除作业 StreamingJob 中的输入 EventStream。  
@@ -436,13 +434,13 @@ Remove-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central
 Azure PowerShell 0.9.8：  
 
 ```powershell
-Remove-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US –Name StreamingJob 
+Remove-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -Name StreamingJob 
 ```
 
 Azure PowerShell 1.0：  
 
 ```powershell
-Remove-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US –Name StreamingJob 
+Remove-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -Name StreamingJob 
 ```
 
 此 PowerShell 命令删除作业 StreamingJob。  
@@ -456,13 +454,13 @@ Remove-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-U
 Azure PowerShell 0.9.8：  
 
 ```powershell
-Remove-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US –JobName StreamingJob –Name Output
+Remove-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name Output
 ```
 
 Azure PowerShell 1.0：  
 
 ```powershell
-Remove-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US –JobName StreamingJob –Name Output
+Remove-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name Output
 ```
 
 此 PowerShell 命令删除作业 StreamingJob 中的输出 Output。  
@@ -494,13 +492,13 @@ Start-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US
 Azure PowerShell 0.9.8：  
 
 ```powershell
-Stop-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US –Name StreamingJob 
+Stop-AzureStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -Name StreamingJob 
 ```
 
 Azure PowerShell 1.0：  
 
 ```powershell
-Stop-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US –Name StreamingJob 
+Stop-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -Name StreamingJob 
 ```
 
 此 PowerShell 命令停止作业 StreamingJob。  
@@ -513,13 +511,13 @@ Stop-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US 
 Azure PowerShell 0.9.8：  
 
 ```powershell
-Test-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US –JobName StreamingJob –Name EntryStream
+Test-AzureStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name EntryStream
 ```
 
 Azure PowerShell 1.0：  
 
 ```powershell
-Test-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US –JobName StreamingJob –Name EntryStream
+Test-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name EntryStream
 ```
 
 此 PowerShell 命令测试 StreamingJob 中输入 EntryStream 的连接状态。  
@@ -532,25 +530,25 @@ Test-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-U
 Azure PowerShell 0.9.8：  
 
 ```powershell
-Test-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US –JobName StreamingJob –Name Output
+Test-AzureStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name Output
 ```
 
 Azure PowerShell 1.0：  
 
 ```powershell
-Test-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US –JobName StreamingJob –Name Output
+Test-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -Name Output
 ```
 
 此 PowerShell 命令测试 StreamingJob 中输出 Output 的连接状态。  
 
 ## <a name="get-support"></a>获取支持
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。 
+若要获得进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答问题页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。 
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)
 * [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
-* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 [msdn-switch-azuremode]: https://msdn.microsoft.com/library/dn722470.aspx

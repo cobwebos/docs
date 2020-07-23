@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用 C# 调用必应自定义搜索终结点 | Microsoft Docs
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 参考本快速入门开始从必应自定义搜索实例请求 C# 搜索结果。
 services: cognitive-services
 author: aahill
@@ -8,36 +8,42 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 05/07/2018
-ms.author: maheshb
-ms.openlocfilehash: 267b50e15d39fc5a0df763cea2e2b79f9b23d151
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.date: 05/08/2020
+ms.author: aahi
+ms.openlocfilehash: e1084c1962db3c04b951245361da80bee098329a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595802"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199819"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>快速入门：使用 C# 调用必应自定义搜索终结点 
 
-参考本快速入门开始从必应自定义搜索实例请求搜索结果。 虽然此应用程序是以 C# 编写的，但必应自定义搜索 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs) 上找到此示例的源代码。
+使用此快速入门了解如何从必应自定义搜索实例请求搜索结果。 虽然此应用程序是以 C# 编写的，但必应自定义搜索 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs) 上获得。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 必应自定义搜索实例。 请参阅[快速入门：创建第一个必应自定义搜索实例](quick-start.md)，了解详细信息。
-- Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
-- 任何版本的 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/downloads/)
+- 必应自定义搜索实例。 有关详细信息，请参阅[快速入门：创建首个必应自定义搜索实例](quick-start.md)。
+- [Microsoft .NET Core](https://www.microsoft.com/net/download/core)。
+- 任何版本的 [Visual Studio 2019 或更高版本](https://www.visualstudio.com/downloads/)。
 - 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
-- 已安装 [NuGet 自定义搜索](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0)包。 
-    - 在 Visual Studio 中的**解决方案资源管理器**内，右键单击你的项目，并从菜单中选择“管理 NuGet 包”。  安装 `Microsoft.Azure.CognitiveServices.Search.CustomSearch` 包。 安装 NuGet 自定义搜索包还会安装以下程序集：
-        - Microsoft.Rest.ClientRuntime
-        - Microsoft.Rest.ClientRuntime.Azure
-        - Newtonsoft.Json
+- [必应自定义搜索](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/2.0.0) NuGet 包。 
+
+   若要在 Visual Studio 中安装此包，请执行以下操作： 
+     1. 在解决方案资源管理器中右键单击项目，然后选择“管理 NuGet 包” 。 
+     2. 搜索并选择“Microsoft.Azure.CognitiveServices.Search.CustomSearch”，然后安装该包。
+
+   当你安装必应自定义搜索 NuGet 包时，Visual Studio 还将安装以下包：
+     - Microsoft.Rest.ClientRuntime
+     - Microsoft.Rest.ClientRuntime.Azure
+     - **Newtonsoft.Json**
+
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 
-1. 在 Visual Studio 中创建新的 C# 控制台应用程序。 然后，将以下包添加到项目。
+1. 在 Visual Studio 中创建新的 C# 控制台应用程序。 然后，将以下包添加到项目：
 
     ```csharp
     using System;
@@ -46,7 +52,7 @@ ms.locfileid: "65595802"
     using Newtonsoft.Json;
     ```
 
-2. 创建以下类用于存储必应自定义搜索 API 返回的搜索结果。
+2. 创建以下类，用于存储必应自定义搜索 API 返回的搜索结果：
 
     ```csharp
     public class BingCustomSearchResponse {        
@@ -70,7 +76,7 @@ ms.locfileid: "65595802"
     }
     ```
 
-3. 在项目的 main 方法中，为必应自定义搜索 API 订阅密钥、搜索实例的自定义配置 ID 和搜索词创建变量。
+3. 在项目的 main 方法中，为必应自定义搜索 API 订阅密钥、搜索实例的自定义配置 ID 和搜索词创建以下变量：
 
     ```csharp
     var subscriptionKey = "YOUR-SUBSCRIPTION-KEY";
@@ -78,7 +84,7 @@ ms.locfileid: "65595802"
     var searchTerm = args.Length > 0 ? args[0]:"microsoft";
     ```
 
-4. 通过将搜索词追加​​到 `q=` 查询参数后面，并将搜索实例的自定义配置 ID 追加​​到 `customconfig=` 后面来构造请求 URL。 使用 `&` 字符分隔参数。 
+4. 构造请求 URL，方法是：将搜索词追加​​到 `q=` 查询参数后面，并将搜索实例的自定义配置 ID 追加​​到 `customconfig=` 参数后面。 使用与号 (`&`) 分隔参数。 对于 `url` 变量值，可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```csharp
     var url = "https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?" +
@@ -102,9 +108,9 @@ ms.locfileid: "65595802"
     var responseContent = httpResponseMessage.Content.ReadAsStringAsync().Result;
     BingCustomSearchResponse response = JsonConvert.DeserializeObject<BingCustomSearchResponse>(responseContent);
     ```
-   ## <a name="process-and-view-the-results"></a>处理和查看结果
+## <a name="process-and-view-the-results"></a>处理和查看结果
 
-1. 循环访问响应对象以显示有关每条搜索结果的信息，包括其名称、URL 和上次网页爬网的日期。
+- 循环访问响应对象以显示有关每条搜索结果的信息，包括其名称、URL 和上次网页爬网的日期。
 
     ```csharp
     for(int i = 0; i < response.webPages.value.Length; i++) {                

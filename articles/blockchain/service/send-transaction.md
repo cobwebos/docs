@@ -1,463 +1,112 @@
 ---
-title: 使用 Azure 区块链服务发送事务
-description: 有关如何使用 Azure 区块链服务部署智能合同和发送私人事务的教程。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/29/2019
+title: 创建、生成和部署智能合同教程 - Azure 区块链服务
+description: 此教程介绍如何在 Visual Studio Code 中使用适用于 Ethereum 的 Azure 区块链开发工具包扩展，在 Azure 区块链服务上创建、生成和部署智能合同。
+ms.date: 04/22/2020
 ms.topic: tutorial
-ms.service: azure-blockchain
-ms.reviewer: jackyhsu
-manager: femila
-ms.openlocfilehash: 9037c7b5498a5e0a37b05e5ee09891bf8066393d
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.reviewer: caleteet
+ms.openlocfilehash: dc23c680dfb2ed33cae2a251af16e1b1f25c6ac7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417483"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82086651"
 ---
-# <a name="tutorial-send-transactions-using-azure-blockchain-service"></a>教程：使用 Azure 区块链服务发送事务
+# <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>教程：在 Azure 区块链服务中创建、生成和部署智能合同
 
-在本教程中，你将创建事务节点来测试合同和事务的隐私性。  你将使用 Truffle 创建本地开发环境，部署智能合同并发送私人事务。
+此教程介绍如何在 Visual Studio Code 中使用适用于 Ethereum 的 Azure 区块链开发工具包扩展，在 Azure 区块链服务上创建、生成和部署智能合同。 还可以使用开发工具包通过事务执行智能合同函数。
 
-将了解如何执行以下操作：
+你将使用适用于 Ethereum 的 Azure 区块链开发工具包执行以下操作：
 
 > [!div class="checklist"]
-> * 添加事务节点
-> * 使用 Truffle 部署智能合同
-> * 发送事务
-> * 验证事务隐私性
+> * 创建智能合同
+> * 部署智能合同
+> * 通过事务执行智能合同函数
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
-* 完成[使用 Azure 门户创建区块链成员](create-member.md)
-* 完整[快速入门：使用 Truffle 连接到联盟网络](connect-truffle.md)
-* 安装 [Truffle](https://github.com/trufflesuite/truffle)。 Truffle 要求安装多个工具，包括 [Node.js](https://nodejs.org)、[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)。
-* 安装 [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)。 Web3 需要 Python。
-* 安装 [Visual Studio Code](https://code.visualstudio.com/Download)
-* 安装 [Visual Studio Code Solidity 扩展](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity)
+* 完整[快速入门：使用 Visual Studio Code 连接到 Azure 区块链服务联盟网络](connect-vscode.md)
+* [Visual Studio Code](https://code.visualstudio.com/Download)
+* [适用于 Ethereum 的 Azure 区块链开发工具包扩展](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
+* [Node.js 10.15.x 或更高版本](https://nodejs.org/download)
+* [Git 2.10.x 或更高版本](https://git-scm.com)
+* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) 将 python.exe 添加到路径中。 Azure 区块链开发工具包需要路径中的 Python 版本 2.7.15。
+* [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
+* [Ganache CLI 6.0.0](https://github.com/trufflesuite/ganache-cli)
 
-## <a name="create-transaction-nodes"></a>创建事务节点
+在 Windows 上，node-gyp 模块需要使用已安装的 C++ 编译器。 可以使用 MSBuild 工具：
 
-默认情况下，系统已提供一个事务节点。 我们将额外添加两个节点。 其中一个节点参与私人事务。 另一个节点不包括在私人事务中。
+* 如果安装了 Visual Studio 2017，则将 npm 配置为通过命令 `npm config set msvs_version 2017 -g` 使用 MSBuild 工具
+* 如果安装了 Visual Studio 2019，则为 npm 设置 MSBuild 工具路径。 例如： `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
+* 如果都不是，则在提升的*以管理员身份运行*命令外壳中，使用 `npm install --global windows-build-tools` 安装独立的 VS Build 工具。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 导航到你的 Azure 区块链成员，并选择“事务节点”>“添加”。 
-1. 完成名为 `alpha` 的新事务节点的设置。
+有关 node-gyp 的详细信息，请参阅 [GitHub 上的 node-gyp 存储库](https://github.com/nodejs/node-gyp)。
 
-    ![创建事务节点](./media/send-transaction/create-node.png)
+## <a name="create-a-smart-contract"></a>创建智能合同
 
-    | 设置 | 值 | 说明 |
-    |---------|-------|-------------|
-    | 名称 | `alpha` | 事务节点名称。 该名称用于创建事务节点终结点的 DNS 地址。 例如，`alpha-mymanagedledger.blockchain.azure.com`。 |
-    | 密码 | 强密码 | 该密码用于通过基本身份验证访问事务节点终结点。
+适用于 Ethereum 的 Azure 区块链开发工具包使用项目模板和 Truffle 工具来帮助搭建、生成和部署合同。 在开始之前，请完成先决条件[快速入门：使用 Visual Studio Code 连接到 Azure 区块链服务联盟网络](connect-vscode.md)。 此快速入门介绍了如何安装和配置适用于 Ethereum 的 Azure 区块链开发工具包。
 
-1. 选择“创建”  。
+1. 在 VS Code 命令面板中选择“Azure 区块链:  新建 Solidity 项目”。
+1. 选择“创建基本项目”。 
+1. 创建名为 `HelloBlockchain` 的新文件夹，然后选择“创建新的项目路径”。 
 
-    预配新的事务节点大约需要 10 分钟时间。
+Azure 区块链开发工具包将为你创建并初始化一个新的 Solidity 项目。 基本项目包含一个示例 **HelloBlockchain** 智能合同，以及要生成并部署到 Azure 区块链服务中联盟成员的所有必要文件。 创建该项目可能需要几分钟时间。 可以选择 Azure 区块链的输出来监视 VS Code 终端面板中的进度。
 
-1. 重复步骤 2 至 4，添加名为 `beta` 的事务节点。
+项目结构类似于以下示例：
 
-可以一边预配节点，一边学习本教程。 预配完成后，将有三个事务节点。
+   ![Solidity 项目](./media/send-transaction/solidity-project.png)
 
-## <a name="open-truffle-console"></a>打开 Truffle 控制台
+## <a name="build-a-smart-contract"></a>生成智能合同
 
-1. 打开 Node.js 命令提示符或 shell。
-1. 将路径更改为以下文档的“先决条件”中所述的 Truffle 项目目录：[快速入门：使用 Truffle 连接到联盟网络](connect-truffle.md)。 例如，
+智能合同位于项目的 **contracts** 目录中。 需要先编译智能合同，然后才能将其部署到区块链。 使用“生成合同”命令编译项目中的所有智能合同。 
 
-    ```bash
-    cd truffledemo
-    ```
+1. 在 VS Code 资源管理器侧栏中，展开项目中的“contracts”文件夹。 
+1. 右键单击“HelloBlockchain.sol”并从菜单中选择“生成合同”。  
 
-1. 启动 Truffle 的交互式开发控制台。
+    ![选择“生成合同”菜单 ](./media/send-transaction/build-contracts.png)
 
-    ``` bash
-    truffle develop
-    ```
+Azure 区块链开发工具包使用 Truffle 来编译智能合同。
 
-    Truffle 会创建一个本地开发区块链，并提供一个交互式控制台。
+![Truffle 编译器输出](./media/send-transaction/compile-output.png)
 
-## <a name="create-ethereum-account"></a>创建 Ethereum 帐户
+## <a name="deploy-a-smart-contract"></a>部署智能合同
 
-使用 Web3 连接到默认事务节点并创建一个 Ethereum 帐户。 可以从 Azure 门户获取 Web3 连接字符串。
+Truffle 使用迁移脚本将合同部署到 Ethereum 网络。 迁移是项目的 **migrations** 目录中的 JavaScript 文件。
 
-1. 在 Azure 门户中，导航到默认事务节点并选择“事务节点”>“示例代码”>“Web3”。 
-1. 复制“HTTPS(访问密钥 1)”中的 JavaScript ![Web3 示例代码](./media/send-transaction/web3-code.png) 
+1. 若要部署智能合同，请右键单击“HelloBlockchain.sol”并从菜单中选择“部署合同”。  
+1. 在命令面板中选择 Azure 区块链联盟网络。 在创建项目时，该联盟区块链网络已添加到项目的 Truffle 配置文件中。
+1. 选择“生成助记键”。  选择文件名，并将助记键文件保存到项目文件夹中。 例如，`myblockchainmember.env` 。 助记键文件用于为区块链成员生成 Ethereum 私钥。
 
-1. 将默认事务节点的 Web3 JavaScript 代码粘贴到 Truffle 交互式开发控制台中。 该代码将创建连接到你的 Azure 区块链服务事务节点的 Web3 对象。
+Azure 区块链开发工具包使用 Truffle 执行迁移脚本，以将合同部署到区块链。
 
-    ```bash
-    truffle(develop)> var Web3 = require("Web3");
-    truffle(develop)> var provider = new Web3.providers.HttpProvider("https://myblockchainmember.blockchain.azure.com:3200/hy5FMu5TaPR0Zg8GxiPwned");
-    truffle(develop)> var web3 = new Web3(provider);
-    ```
+![已成功部署合同](./media/send-transaction/deploy-contract.png)
 
-    可以调用该 Web3 对象中的方法来与事务节点进行交互。
+## <a name="call-a-contract-function"></a>调用合同函数
 
-1. 在默认事务节点上创建新帐户。 将 password 参数替换为你自己的强密码。
+**HelloBlockchain** 合同的 **SendRequest** 函数将更改 **RequestMessage** 状态变量。 可通过事务更改区块链网络的状态。 可以使用 Azure 区块链开发工具包智能合同交互页通过事务调用 **SendRequest** 函数。
 
-    ```bash
-    web3.eth.personal.newAccount("1@myStrongPassword");
-    ```
-
-    请记下返回的帐户地址和密码。 在下一部分中，需要 Ethereum 帐户地址和密码。
-
-1. 退出 Truffle 开发环境。
-
-    ```bash
-    .exit
-    ```
-
-## <a name="configure-truffle-project"></a>配置 Truffle 项目
-
-若要配置 Truffle 项目，需要从 Azure 门户获取一些事务节点信息。
-
-### <a name="transaction-node-public-key"></a>事务节点公钥
-
-每个事务节点都有一个公钥。 使用公钥可将私人事务发送到节点。 若要将默认事务节点中的事务发送到 *alpha* 事务节点，需要获取 *alpha* 事务节点的公钥。
-
-从事务节点列表中可以获取该公钥。 复制 alpha 节点的公钥并保存其值，以便稍后在本教程中使用。
-
-![事务节点列表](./media/send-transaction/node-list.png)
-
-### <a name="transaction-node-endpoint-addresses"></a>事务节点终结点地址
-
-1. 在 Azure 门户中，导航到每个事务节点并选择“事务节点”>“连接字符串”。 
-1. 复制并保存每个事务节点的“HTTPS (访问密钥 1)”中的终结点 URL  。 稍后在本教程中，需要在智能合同配置文件中提供终结点地址。
-
-    ![事务终结点地址](./media/send-transaction/endpoint.png)
-
-### <a name="edit-configuration-file"></a>编辑配置文件
-
-1. 启动 Visual Studio Code，使用“文件”>“打开文件夹”菜单打开 Truffle 项目目录文件夹。 
-1. 打开 Truffle 配置文件 `truffle-config.js`。
-1. 将该文件的内容替换为以下配置信息。 添加包含终结点地址和帐户信息的变量。 将带尖括号的节替换为在前面部分中收集的值。
-
-    ``` javascript
-    var defaultnode = "<default transaction node connection string>";
-    var alpha = "<alpha transaction node connection string>";
-    var beta = "<beta transaction node connection string>";
-    
-    var myAccount = "<Ethereum account address>";
-    var myPassword = "<Ethereum account password>";
-    
-    var Web3 = require("web3");
-    
-    module.exports = {
-      networks: {
-        defaultnode: {
-          provider:(() =>  {
-          const AzureBlockchainProvider = new Web3.providers.HttpProvider(defaultnode);
-    
-          const web3 = new Web3(AzureBlockchainProvider);
-          web3.eth.personal.unlockAccount(myAccount, myPassword);
-    
-          return AzureBlockchainProvider;
-          })(),
-    
-          network_id: "*",
-          gas: 0,
-          gasPrice: 0,
-          from: myAccount
-        },
-        alpha: {
-          provider: new Web3.providers.HttpProvider(alpha),
-          network_id: "*",
-          gas: 0,
-          gasPrice: 0
-        },
-        beta: {
-          provider: new Web3.providers.HttpProvider(beta),
-          network_id: "*",
-          gas: 0,
-          gasPrice: 0
-        }
-      }
-    }
-    ```
-
-1. 保存对 `truffle-config.js` 的更改。
-
-## <a name="create-smart-contract"></a>创建智能合同
-
-1. 在 **contracts** 文件夹中，创建名为 `SimpleStorage.sol` 的新文件。 添加以下代码。
-
-    ```solidity
-    pragma solidity >=0.4.21 <0.6.0;
-    
-    contract SimpleStorage {
-        string public storedData;
-    
-        constructor(string memory initVal) public {
-            storedData = initVal;
-        }
-    
-        function set(string memory x) public {
-            storedData = x;
-        }
-    
-        function get() view public returns (string memory retVal) {
-            return storedData;
-        }
-    }
-    ```
-    
-1. 在 **migrations** 文件夹中，创建名为 `2_deploy_simplestorage.js` 的新文件。 添加以下代码。
-
-    ```solidity
-    var SimpleStorage = artifacts.require("SimpleStorage.sol");
-    
-    module.exports = function(deployer) {
-    
-      // Pass 42 to the contract as the first constructor parameter
-      deployer.deploy(SimpleStorage, "42", {privateFor: ["<alpha node public key>"], from:"<Ethereum account address>"})  
-    };
-    ```
-
-1. 替换尖括号中的值。
-
-    | 值 | 说明
-    |-------|-------------
-    | \<alpha node public key\> | alpha 节点的公钥
-    | \<Ethereum 帐户地址\> | 在默认事务节点中创建的 Ethereum 帐户地址
-
-    在此示例中，**storeData** 的初始值设置为 42。
-
-    **privateFor** 定义合同适用的节点。 在此示例中，默认事务节点的帐户可将私人事务投射到 **alpha** 节点。 为所有私人事务参与者添加公钥。 如果不包含 **privateFor:** 和 **from:** ，则智能合同事务将是公开的，所有联盟成员都可以看到它们。
-
-1. 选择“文件”>“全部保存”以保存所有文件。 
-
-## <a name="deploy-smart-contract"></a>部署智能合同
-
-使用 Truffle 将 `SimpleStorage.sol` 部署到默认事务节点网络。
-
-```bash
-truffle migrate --network defaultnode
-```
-
-Truffle 会依次编译和部署 **SimpleStorage** 智能合同。
-
-示例输出：
-
-```
-admin@desktop:/mnt/c/truffledemo$ truffle migrate --network defaultnode
-
-2_deploy_simplestorage.js
-=========================
-
-   Deploying 'SimpleStorage'
-   -------------------------
-   > transaction hash:    0x3f695ff225e7d11a0239ffcaaab0d5f72adb545912693a77fbfc11c0dbe7ba72
-   > Blocks: 2            Seconds: 12
-   > contract address:    0x0b15c15C739c1F3C1e041ef70E0011e641C9D763
-   > account:             0x1a0B9683B449A8FcAd294A01E881c90c734735C3
-   > balance:             0
-   > gas used:            0
-   > gas price:           0 gwei
-   > value sent:          0 ETH
-   > total cost:          0 ETH
-
-
-   > Saving migration to chain.
-   > Saving artifacts
-   -------------------------------------
-   > Total cost:                   0 ETH
-
-
-Summary
-=======
-> Total deployments:   2
-> Final cost:          0 ETH
-```
-
-## <a name="validate-contract-privacy"></a>验证合同隐私性
-
-由于合同隐私性，只能从 **privateFor** 中声明的节点查询合同值。 在此示例中，我们可以查询默认事务节点，因为该节点中存在帐户。 
-
-1. 使用 Truffle 控制台连接到默认事务节点。
-
-    ```bash
-    truffle console --network defaultnode
-    ```
-
-1. 在 Truffle 控制台中，执行返回合同实例值的代码。
-
-    ```bash
-    SimpleStorage.deployed().then(function(instance){return instance.get();})
-    ```
-
-    如果查询默认事务节点成功，则会返回值 42。 例如：
-
-    ```
-    admin@desktop:/mnt/c/truffledemo$ truffle console --network defaultnode
-    truffle(defaultnode)> SimpleStorage.deployed().then(function(instance){return instance.get();})
-    '42'
-    ```
-
-1. 退出 Truffle 控制台。
-
-    ```bash
-    .exit
-    ```
-
-由于我们在 **privateFor** 中声明了 **alpha** 节点的公钥，因此可以查询 **alpha** 节点。
-
-1. 使用 Truffle 控制台连接到 **alpha** 节点。
-
-    ```bash
-    truffle console --network alpha
-    ```
-
-1. 在 Truffle 控制台中，执行返回合同实例值的代码。
-
-    ```bash
-    SimpleStorage.deployed().then(function(instance){return instance.get();})
-    ```
-
-    如果查询 **alpha** 节点成功，则会返回值 42。 例如：
-
-    ```
-    admin@desktop:/mnt/c/truffledemo$ truffle console --network alpha
-    truffle(alpha)> SimpleStorage.deployed().then(function(instance){return instance.get();})
-    '42'
-    ```
-
-1. 退出 Truffle 控制台。
-
-    ```bash
-    .exit
-    ```
-
-由于我们未在 **privateFor** 中声明 **beta** 节点的公钥，出于合同隐私性，我们无法查询 **beta** 节点。
-
-1. 使用 Truffle 控制台连接到 **beta** 节点。
-
-    ```bash
-    truffle console --network beta
-    ```
-
-1. 执行返回合同实例值的代码。
-
-    ```bash
-    SimpleStorage.deployed().then(function(instance){return instance.get();})
-    ```
-
-1. 由于合同是隐私的，因此查询 **beta** 节点失败。 例如：
-
-    ```
-    admin@desktop:/mnt/c/truffledemo$ truffle console --network beta
-    truffle(beta)> SimpleStorage.deployed().then(function(instance){return instance.get();})
-    Thrown:
-    Error: Returned values aren't valid, did it run Out of Gas?
-        at XMLHttpRequest._onHttpResponseEnd (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request.ts:345:8)
-        at XMLHttpRequest._setReadyState (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request.ts:219:8)
-        at XMLHttpRequestEventTarget.dispatchEvent (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request-event-target.ts:44:13)
-        at XMLHttpRequest.request.onreadystatechange (/mnt/c/truffledemo/node_modules/web3-providers-http/src/index.js:96:13)
-    ```
-
-1. 退出 Truffle 控制台。
-
-    ```bash
-    .exit
-    ```
-    
-## <a name="send-a-transaction"></a>发送事务
-
-1. 创建名为 `sampletx.js` 的文件。 将此文件保存到项目的根目录中。
-1. 以下脚本将合同的 **storedData** 变量值设置为 65。 将代码添加到新文件。
-
-    ```javascript
-    var SimpleStorage = artifacts.require("SimpleStorage");
-    
-    module.exports = function(done) {
-      console.log("Getting deployed version of SimpleStorage...")
-      SimpleStorage.deployed().then(function(instance) {
-        console.log("Setting value to 65...");
-        return instance.set("65", {privateFor: ["<alpha node public key>"], from:"<Ethereum account address>"});
-      }).then(function(result) {
-        console.log("Transaction:", result.tx);
-        console.log("Finished!");
-        done();
-      }).catch(function(e) {
-        console.log(e);
-        done();
-      });
-    };
-    ```
-
-    替换尖括号中的值，然后保存文件。
-
-    | 值 | 说明
-    |-------|-------------
-    | \<alpha node public key\> | alpha 节点的公钥
-    | \<Ethereum 帐户地址\> | 在默认事务节点中创建的 Ethereum 帐户地址。
-
-    **privateFor** 定义事务适用的节点。 在此示例中，默认事务节点的帐户可将私人事务投射到 **alpha** 节点。 需要添加所有私人事务参与者的公钥。
-
-1. 使用 Truffle 针对默认事务节点执行脚本。
-
-    ```bash
-    truffle exec sampletx.js --network defaultnode
-    ```
-
-1. 在 Truffle 控制台中，执行返回合同实例值的代码。
-
-    ```bash
-    SimpleStorage.deployed().then(function(instance){return instance.get();})
-    ```
-
-    如果事务成功，则会返回值 65。 例如：
-    
-    ```
-    Getting deployed version of SimpleStorage...
-    Setting value to 65...
-    Transaction: 0x864e67744c2502ce75ef6e5e09d1bfeb5cdfb7b880428fceca84bc8fd44e6ce0
-    Finished!
-    ```
-
-1. 退出 Truffle 控制台。
-
-    ```bash
-    .exit
-    ```
-    
-## <a name="validate-transaction-privacy"></a>验证事务隐私性
-
-由于事务隐私性，只能在 **privateFor** 中声明的节点上执行事务。 在此示例中，我们可以执行事务，因为我们在 **privateFor** 中声明了 **alpha** 节点的公钥。 
-
-1. 使用 Truffle 在 **alpha** 节点上执行事务。
-
-    ```bash
-    truffle exec sampletx.js --network alpha
-    ```
-    
-1. 执行返回合同实例值的代码。
-
-    ```bash
-    SimpleStorage.deployed().then(function(instance){return instance.get();})
-    ```
-    
-    如果事务成功，则会返回值 65。 例如：
-
-    ```
-    Getting deployed version of SimpleStorage...
-    Setting value to 65...
-    Transaction: 0x864e67744c2502ce75ef6e5e09d1bfeb5cdfb7b880428fceca84bc8fd44e6ce0
-    Finished!
-    ```
-    
-1. 退出 Truffle 控制台。
-
-    ```bash
-    .exit
-    ```
+1. 若要与智能合同交互，请右键单击“HelloBlockchain.sol”，并从菜单中选择“显示智能合同交互页”。  
+
+    ![从菜单中选择“显示智能合同交互页”](./media/send-transaction/contract-interaction.png)
+
+1. 在交互页中可以选择已部署的合同版本、调用函数、查看当前状态和查看元数据。
+
+    ![示例智能合同交互页](./media/send-transaction/interaction-page.png)
+
+1. 若要调用智能合同函数，请选择合同操作并传递参数。 选择 **SendRequest** 合同操作，并为 **requestMessage** 参数 并输入 **Hello, Blockchain!** 。 选择“执行”以通过事务调用 **SendRequest** 函数。 
+
+    ![执行 SendRequest 操作](./media/send-transaction/sendrequest-action.png)
+
+处理该事务后，interaction 节会反映状态更改。
+
+![合同状态更改](./media/send-transaction/contract-state.png)
+
+SendRequest 函数设置 **RequestMessage** 和 **State** 字段。 **RequestMessage** 的当前状态是传递的参数 **Hello, Blockchain**。 **State** 字段值保留为 **Request**。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要本教程中创建的资源时，可以通过删除 Azure 区块链服务创建的 `myResourceGroup` 资源组来删除这些资源。
+如果不再需要，可以通过删除*创建区块链成员*先决条件快速入门中创建的 `myResourceGroup` 资源组来删除资源。
 
 若要删除资源组，请执行以下操作：
 
@@ -466,7 +115,7 @@ Summary
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已添加两个事务节点来演示合同和事务的隐私性。 你已使用默认节点来部署私人智能合同。 你已通过查询合同值并在区块链中执行事务来测试隐私性。
+在本教程中，你已使用 Azure 区块链开发工具包创建了一个示例 Solidity 项目。 你生成并部署了一个智能合同，然后通过托管在 Azure 区块链服务中的区块链联盟网络上的事务调用了一个函数。
 
 > [!div class="nextstepaction"]
 > [使用 Azure 区块链服务开发区块链应用程序](develop.md)

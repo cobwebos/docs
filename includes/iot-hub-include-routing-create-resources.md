@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 710bb8cba7fbbe4bc9b9fdc52b0767c96f97fe72
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 5680bd1c3fadab8edcde1634c708ca8683c0e99c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66162640"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "76021230"
 ---
 ## <a name="create-base-resources"></a>创建基础资源
 
-在配置消息路由之前，需创建 IoT 中心、存储帐户和服务总线队列。 可以参阅适用于本教程第 1 部分的四篇文章中的一篇来创建这些资源：Azure CLI、Azure PowerShell、Azure 门户或 Azure 资源管理器模板。
+在配置消息路由之前，需创建 IoT 中心、存储帐户和服务总线队列。 可以参阅适用于本教程第 1 部分的四篇文章中的一篇来创建这些资源：Azure门户、Azure 资源管理器模板、Azure CLI 或 Azure PowerShell。
 
 为所有资源使用相同的资源组和位置。 在本教程结束后，可以通过删除资源组一次性删除所有资源。
 
-以下部分介绍要执行的步骤。
+下面是将在以下部分中执行的步骤摘要： 
 
-1. 创建[资源组](../articles/azure-resource-manager/resource-group-overview.md)。
+1. 创建[资源组](../articles/azure-resource-manager/management/overview.md)。
 
 2. 在 S1 层级中创建 IoT 中心。 将使用者组添加到 IoT 中心。 检索数据时，Azure 流分析使用使用者组。
 

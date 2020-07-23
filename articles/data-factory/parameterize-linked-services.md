@@ -1,26 +1,25 @@
 ---
-title: 参数化 Azure 数据工厂中的链接服务 | Microsoft Docs
+title: 参数化 Azure 数据工厂中的链接服务
 description: 了解如何参数化 Azure 数据工厂中的链接服务，并在运行时传递动态值。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/18/2018
-author: gauravmalhot
-ms.author: gamal
-manager: craigg
-ms.openlocfilehash: 0239c53f98fba201b6d70e1e2212eea36134e30d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 06/18/2020
+author: djpmsft
+ms.author: daperlov
+manager: anandsub
+ms.openlocfilehash: 85689661e7f0d170cd88edde8985f46285e679c6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60635514"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987785"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>参数化 Azure 数据工厂中的链接服务
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-现在可以参数化链接服务并在运行时传递动态值。 例如，如果要连接到同一 Azure SQL 数据库服务器上的不同数据库，则现在可以在链接服务定义中参数化数据库名称。 这可以避免必须为 Azure SQL 数据库服务器上的每个数据库创建链接服务。 也可以参数化链接服务定义中的其他属性 - 例如，用户名。
+现在可以参数化链接服务并在运行时传递动态值。 例如，如果要连接到同一逻辑 SQL Server 上的不同数据库，则现在可以在链接服务定义中参数化数据库名称。 这样就不需为逻辑 SQL Server 上的每个数据库创建链接服务。 也可以参数化链接服务定义中的其他属性 - 例如，用户名。
 
 可以使用 Azure 门户中的数据工厂 UI 或编程接口来参数化链接服务。
 
@@ -33,15 +32,16 @@ ms.locfileid: "60635514"
 
 ## <a name="supported-data-stores"></a>支持的数据存储
 
-目前，Azure 门户中的数据工厂 UI 支持以下数据存储的链接服务参数化。 对于所有其他数据存储，可以通过选择“连接”选项卡上的**代码**图标并使用 JSON 编辑器来参数化链接的服务。
-- Azure SQL 数据库
-- Azure SQL 数据仓库
-- SQL Server
-- Oracle
-- Cosmos DB
+目前，以下数据存储的数据工厂 UI 支持链接服务参数化。 对于所有其他数据存储，可以通过选择“连接”选项卡上的**代码**图标并使用 JSON 编辑器来参数化链接的服务。
+
 - Amazon Redshift
-- MySQL
+- Azure Cosmos DB （SQL API）
 - Azure Database for MySQL
+- Azure SQL Database
+- Azure Synapse Analytics（以前称为 SQL DW）
+- MySQL
+- Oracle
+- SQL Server
 
 ## <a name="data-factory-ui"></a>数据工厂 UI
 
@@ -57,10 +57,7 @@ ms.locfileid: "60635514"
     "properties": {
         "type": "AzureSqlDatabase",
         "typeProperties": {
-            "connectionString": {
-                "value": "Server=tcp:myserver.database.windows.net,1433;Database=@{linkedService().DBName};User ID=user;Password=fake;Trusted_Connection=False;Encrypt=True;Connection Timeout=30",
-                "type": "SecureString"
-            }
+            "connectionString": "Server=tcp:myserver.database.windows.net,1433;Database=@{linkedService().DBName};User ID=user;Password=fake;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
         },
         "connectVia": null,
         "parameters": {

@@ -3,20 +3,19 @@ title: Team Data Science Process 的数据采集和理解
 description: 你的数据科学项目数据采集和理解阶段的目标、任务和可交付结果
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e29f36897dd52fcb09456768a799209a385d74fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 85d7159edb1bc8608165264578d77519bf09efc2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60303498"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195069"
 ---
 # <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Team Data Science Process 的数据采集和理解阶段
 
@@ -52,12 +51,12 @@ ms.locfileid: "60303498"
 
 TDSP 提供名为 [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) 的自动化实用工具，以帮助实现数据的可视化并准备数据摘要报表。 建议首先从 IDEAR 开始浏览数据，这样有助于以交互方式开始了解数据，而无需进行编码。 然后即可编写用于数据浏览和可视化的自定义代码。 有关清理数据的指南，请参阅[用于准备数据以增强机器学习的任务](prepare-data.md)。  
 
-对清理后数据的质量感到满意后，下一步是更好地理解数据中固有的模式。 这有助于为目标选择并开发合适的预测模型。 查找表明数据与目标的连接情况的证据。 然后确定在进行后续建模步骤时是否有足够的数据可用。 同样，此过程通常是迭代的。 可能需要查找包含更准确或更相关数据的新数据源，以增加在上一阶段中最初标识的数据集。 
+对清理后数据的质量感到满意后，下一步是更好地理解数据中固有的模式。 此数据分析有助于为目标选择和开发适当的预测模型。 查找表明数据与目标的连接情况的证据。 然后确定在进行后续建模步骤时是否有足够的数据可用。 同样，此过程通常是迭代的。 可能需要查找包含更准确或更相关数据的新数据源，以增加在上一阶段中最初标识的数据集。 
 
 ### <a name="set-up-a-data-pipeline"></a>设置数据管道
-除了初始引入和清理数据以外，作为持续学习过程的一部分，通常还需设置对新数据进行评分或定期刷新数据的过程。 可通过设置数据管道或工作流来实现上述目的。 [使用 Azure 数据工厂将数据从本地 SQL Server 实例移动到 Azure SQL 数据库](move-sql-azure-adf.md)一文提供了如何使用 [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/)来设置管道的示例。 
+除了初始引入和清理数据以外，作为持续学习过程的一部分，通常还需设置对新数据进行评分或定期刷新数据的过程。 可以使用数据管道或工作流来完成评分。 [使用 Azure 数据工厂将数据从 SQL Server 实例移到 AZURE SQL 数据库](move-sql-azure-adf.md)一文提供了有关如何使用[azure 数据工厂](https://azure.microsoft.com/services/data-factory/)设置管道的示例。 
 
-此阶段会开发数据管道的一个解决方案体系结构。 在数据科学项目的下一阶段，同时开发管道。 根据业务需求以及集成有此解决方案的现有系统的约束，管道可以是以下任一类型： 
+此阶段会开发数据管道的一个解决方案体系结构。 在数据科学项目的下一阶段，同时开发管道。 根据你的业务需求以及此解决方案所集成到的现有系统的约束，管道可以是以下选项之一： 
 
    * 基于批处理的管道
    * 流式处理管道或实时管道 
@@ -68,7 +67,7 @@ TDSP 提供名为 [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/mas
 
    * [数据质量报表](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md)：此报表包含数据摘要、每个属性和目标之间的关系、变量排名等。 作为 TDSP 一部分提供的 [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) 工具可在任何表格数据集（例如，CSV 文件或关系表）上快速生成此报表。 
    * **解决方案体系结构**：解决方案体系结构可以是生成模型后数据管道的关系图或说明，该数据管道用于对新数据进行评分或预测。 它还包含要基于新数据重新定型模型的管道。 使用 TDSP 目录结构模板时，将此文档存储到[项目](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project)目录中。
-   * **检查点决策**：开始完整的功能设计和建模前，您可以重新评估项目，以确定预期值是否足以继续追求它。 例如，用户可能已准备好继续进行项目，但需要收集更多数据或由于没有数据可以回答问题而放弃项目。
+   * **检查点决策**：开始完整的功能设计和建模前，可以重新评估项目，以确定预期值是否足以继续投入资金。 例如，用户可能已准备好继续进行项目，但需要收集更多数据或由于没有数据可以回答问题而放弃项目。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -80,6 +79,6 @@ TDSP 提供名为 [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/mas
    4. [部署](lifecycle-deployment.md)
    5. [客户验收](lifecycle-acceptance.md)
 
-我们还提供了完整的演练，演示特定方案过程中的所有步骤。 [示例演练](walkthroughs.md)一文提供了包含链接和缩略图描述的方案列表。 该演练演示如何将云、本地工具以及服务结合到一个工作流或管道中，以创建智能应用程序。 
+我们提供了完整的演练，演示特定方案在过程中的所有步骤。 [示例演练](walkthroughs.md)一文提供了包含链接和缩略图描述的方案列表。 该演练演示如何将云、本地工具以及服务结合到一个工作流或管道中，以创建智能应用程序。 
 
 有关如何在使用 Azure 机器学习工作室的 TDSP 中执行步骤的示例，请参阅[通过 Azure 机器学习使用 TDSP](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle-data)。

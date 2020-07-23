@@ -1,210 +1,486 @@
 ---
-title: 使用 Azure Application Insights 进行 OpenCensus Python 跟踪 | Microsoft Docs
-description: 提供的说明介绍如何将 OpenCensus Python 跟踪与本地转发器和 Application Insights 集成
-services: application-insights
-keywords: ''
-author: mrbullwinkle
-ms.author: mbullwin
-ms.date: 09/18/2018
-ms.service: application-insights
+title: 使用 Azure Monitor（预览版）监视 Python 应用程序 | Microsoft Docs
+description: 提供有关使用 Azure Monitor 连接 OpenCensus Python 的说明
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: ae9db483e15197e6cdaaaa5981410630184cc6ca
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+author: lzchen
+ms.author: lechen
+ms.date: 10/11/2019
+ms.reviewer: mbullwin
+ms.custom: tracking-python
+ms.openlocfilehash: e1a866799a62c457c2734524c58bb848b8f067e6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957243"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107438"
 ---
-# <a name="collect-distributed-traces-from-python-preview"></a>从 Python（预览版）收集分布式跟踪
+# <a name="set-up-azure-monitor-for-your-python-application"></a>为 Python 应用程序设置 Azure Monitor
 
-Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) 和我们新的[本地转发器](./../../azure-monitor/app/opencensus-local-forwarder.md)集成来对 Python 应用程序进行分布式跟踪。 本文将逐步介绍设置 OpenCensus for Python 并将跟踪数据提供给 Application Insights 的过程。
+通过与 [OpenCensus](https://opencensus.io) 集成，Azure Monitor 支持对 Python 应用程序进行分布式跟踪、指标收集和日志记录。 本文将指导你完成为 Python 设置 OpenCensus 并将监视数据发送到 Azure Monitor 的过程。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-- 需要一个 Azure 订阅。
-- 应该安装 Python。本文使用 [Python 3.7.0](https://www.python.org/downloads/)，不过更早的版本在进行微调后也可能适用。
-- 按照说明安装 [Windows 服务形式的本地转发器](./../../azure-monitor/app/opencensus-local-forwarder.md)
+- Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+- Python 安装。 本文使用[Python 3.7.0](https://www.python.org/downloads/release/python-370/)，但其他版本可能会使用细微的更改。 SDK 仅支持 Python 版本2.7 和 v2.0 3.7。
+- 创建 Application Insights [资源](./create-new-resource.md)。 你将为你的资源分配自己的检测密钥（ikey）。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>检测适用于 Azure Monitor 的 OpenCensus Python SDK
 
-## <a name="sign-in-to-the-azure-portal"></a>登录 Azure 门户
+安装 OpenCensus Azure Monitor 导出程序：
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+```console
+python -m pip install opencensus-ext-azure
+```
 
-## <a name="create-application-insights-resource"></a>创建 Application Insights 资源
+有关包和集成的完整列表，请参阅 [OpenCensus 包](https://docs.microsoft.com/azure/azure-monitor/app/nuget#common-packages-for-python-using-opencensus)。
 
-首先需创建一个 Application Insights 资源，该资源将生成一个检测密钥 (ikey)。 然后使用 ikey 配置本地转发器，将 OpenCensus 检测应用程序中的分布式跟踪发送到 Application Insights。   
+> [!NOTE]
+> `python -m pip install opencensus-ext-azure` 命令假定你已为 Python 安装设置了 `PATH` 环境变量。 如果尚未配置此变量，则需要提供 Python 可执行文件所在位置的完整目录路径。 结果为如下所示的命令：`C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure`。
 
-1. 选择“创建资源” > “开发人员工具” > “Application Insights”。
+SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测发送到 Azure Monitor。 它们是跟踪、指标和日志。 有关这些遥测类型的详细信息，请参阅[数据平台概述](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform)。 按照以下说明通过三个导出程序发送这些遥测类型。
 
-   ![添加 Application Insights 资源](./media/opencensus-python/0001-create-resource.png)
+## <a name="telemetry-type-mappings"></a>遥测类型映射
 
-   此时会显示配置对话框，请使用下表填写输入字段。
+OpenCensus 提供的导出程序映射到 Azure Monitor 中看到的遥测类型。
 
-    | 设置        | 值           | 说明  |
-   | ------------- |:-------------|:-----|
-   | **名称**      | 全局唯一值 | 标识所监视的应用的名称 |
-   | **应用程序类型** | 常规 | 所监视的应用的类型 |
-   | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组的名称 |
-   | **位置** | 美国东部 | 选择离你近的位置或离托管应用的位置近的位置 |
+| 可观察性的支柱 | Azure Monitor 中的遥测类型    | 说明                                         |
+|-------------------------|------------------------------------|-----------------------------------------------------|
+| 日志                    | 跟踪，异常，customEvents   | 日志遥测，异常遥测，事件遥测 |
+| 指标                 | customMetrics、performanceCounters | 自定义指标性能计数器                |
+| 跟踪                 | 请求依赖项             | 传入请求，传出请求                |
 
-2. 单击**创建**。
+### <a name="logs"></a>日志
 
-## <a name="configure-local-forwarder"></a>配置本地转发器
+1. 首先，让我们生成一些本地日志数据。
 
-1. 选择“概述” > “概要”> 复制应用程序的**检测密钥**。
+    ```python
+    import logging
 
-   ![检测密钥的屏幕截图](./media/opencensus-python/0003-instrumentation-key.png)
+    logger = logging.getLogger(__name__)
 
-2. 编辑 `LocalForwarder.config` 文件并添加检测密钥。 如果已按照[先决条件](./../../azure-monitor/app/opencensus-local-forwarder.md)中的说明操作，则该文件位于 `C:\LF-WindowsServiceHost`
+    def valuePrompt():
+        line = input("Enter a value: ")
+        logger.warning(line)
 
-    ```xml
-      <OpenCensusToApplicationInsights>
-        <!--
-          Instrumentation key to track telemetry to.
-          -->
-        <InstrumentationKey>{enter-instrumentation-key}</InstrumentationKey>
-      </OpenCensusToApplicationInsights>
-    
-      <!-- Describes aspects of processing Application Insights telemetry-->
-      <ApplicationInsights>
-        <LiveMetricsStreamInstrumentationKey>{enter-instrumentation-key}</LiveMetricsStreamInstrumentationKey>
-      </ApplicationInsights>
-    </LocalForwarderConfiguration>
+    def main():
+        while True:
+            valuePrompt()
+
+    if __name__ == "__main__":
+        main()
     ```
 
-3. 重启应用程序**本地转发器**服务。
+1. 代码持续要求输入值。 对于输入的每个值，将发出一个日志条目。
 
-## <a name="opencensus-python-package"></a>OpenCensus Python 包
-
-1. 安装适用于 Python 和 pip 或从命令行 pipenv 导出程序打开人口普查包：
-
-    ```console
-    python -m pip install opencensus
-    python -m pip install opencensus-ext-ocagent
-
-    # pip env install opencensus
+    ```output
+    Enter a value: 24
+    24
+    Enter a value: 55
+    55
+    Enter a value: 123
+    123
+    Enter a value: 90
+    90
     ```
+
+1. 尽管输入值有助于演示，但最终我们希望向 Azure Monitor 发出日志数据。 将连接字符串直接传递到导出程序。 或者，可以在环境变量中指定它 `APPLICATIONINSIGHTS_CONNECTION_STRING` 。 根据以下代码示例，修改上一步中的代码：
+
+    ```python
+    import logging
+    from opencensus.ext.azure.log_exporter import AzureLogHandler
+
+    logger = logging.getLogger(__name__)
+
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    logger.addHandler(AzureLogHandler(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+    )
+
+    def valuePrompt():
+        line = input("Enter a value: ")
+        logger.warning(line)
+
+    def main():
+        while True:
+            valuePrompt()
+
+    if __name__ == "__main__":
+        main()
+    ```
+
+1. 导出程序会将日志数据发送到 Azure Monitor。 可在 `traces` 下找到数据。 
 
     > [!NOTE]
-    > `python -m pip install opencensus` 假定你已为 Python 安装设置了一个 PATH 环境变量。 如果尚未对此进行配置，则需提供完整的目录路径，以便放置 Python 可执行文件，生成的命令类似于：`C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus`。
+    > 在此上下文中， `traces` 与不同 `tracing` 。 此处， `traces` 是指在使用时将在 Azure Monitor 中看到的遥测类型 `AzureLogHandler` 。 但 `tracing` 涉及到 OpenCensus 中的概念，并与[分布式跟踪](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)相关。
 
-2. 首先，让我们在本地生成一些跟踪数据。 在 Python IDLE 或所选编辑器中，输入以下代码：
+    > [!NOTE]
+    > 根记录器配置了警告级别。 这意味着，将忽略发送的严重性较低的任何日志，而不会将其发送到 Azure Monitor。 有关详细信息，请参阅这篇[文档](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel)。
+
+1. 还可以通过使用 "custom_dimensions" 字段，将自定义属性添加到*额外*关键字参数中的日志消息。 这些属性在 Azure Monitor 中显示为中的键值对 `customDimensions` 。
+    > [!NOTE]
+    > 若要使此功能正常运行，需要将字典传递给 custom_dimensions 字段。 如果传递任何其他类型的参数，记录器会将其忽略。
 
     ```python
+    import logging
+
+    from opencensus.ext.azure.log_exporter import AzureLogHandler
+
+    logger = logging.getLogger(__name__)
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    logger.addHandler(AzureLogHandler(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+    )
+
+    properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
+
+    # Use properties in logging statements
+    logger.warning('action', extra=properties)
+    ```
+
+#### <a name="configure-logging-for-django-applications"></a>为 Django 应用程序配置日志记录
+
+你可以在应用程序代码中对 Django 应用程序进行显式配置日志记录，也可以在 Django 的日志记录配置中指定。 此代码可以进入用于 Django 设置配置的任何文件。 有关如何配置 Django 设置的详细说明，请参阅[Django 设置](https://docs.djangoproject.com/en/3.0/topics/settings/)。 有关配置日志记录的详细信息，请参阅[Django 日志记录](https://docs.djangoproject.com/en/3.0/topics/logging/)。
+
+```json
+LOGGING = {
+    "handlers": {
+        "azure": {
+            "level": "DEBUG",
+        "class": "opencensus.ext.azure.log_exporter.AzureLogHandler",
+            "instrumentation_key": "<your-ikey-here>",
+         },
+        "console": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
+            "stream": sys.stdout,
+         },
+      },
+    "loggers": {
+        "logger_name": {"handlers": ["azure", "console"]},
+    },
+}
+```
+
+请确保使用的记录器的名称与配置中指定的相同。
+
+```python
+import logging
+
+logger = logging.getLogger("logger_name")
+logger.warning("this will be tracked")
+```
+
+#### <a name="send-exceptions"></a>发送异常
+
+OpenCensus Python 不会自动跟踪和发送 `exception` 遥测数据。 通过 `AzureLogHandler` Python 日志记录库通过使用异常来发送。 可以像使用普通日志记录时一样添加自定义属性。
+
+```python
+import logging
+
+from opencensus.ext.azure.log_exporter import AzureLogHandler
+
+logger = logging.getLogger(__name__)
+# TODO: replace the all-zero GUID with your instrumentation key.
+logger.addHandler(AzureLogHandler(
+    connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+)
+
+properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
+
+# Use properties in exception logs
+try:
+    result = 1 / 0  # generate a ZeroDivisionError
+except Exception:
+    logger.exception('Captured an exception.', extra=properties)
+```
+因为你必须显式记录异常，所以用户需要如何记录未经处理的异常。 OpenCensus 不会对用户希望执行此操作的方式施加限制，只要它们显式记录异常遥测。
+
+#### <a name="send-events"></a>发送事件
+
+可以采用与 `customEvent` 发送遥测数据完全相同的方式发送遥测数据， `trace` `AzureEventHandler` 而不是使用。
+
+```python
+import logging
+
+from opencensus.ext.azure.log_exporter import AzureEventHandler
+
+logger = logging.getLogger(__name__)
+logger.addHandler(AzureEventHandler(connection_string='InstrumentationKey=<your-instrumentation_key-here>'))
+logger.setLevel(logging.INFO)
+logger.info('Hello, World!')
+```
+
+#### <a name="sampling"></a>采样
+
+有关在 OpenCensus 中采样的信息，请查看 [OpenCensus 中的采样](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)。
+
+#### <a name="log-correlation"></a>日志关联
+
+有关如何使用跟踪上下文数据扩充日志的详细信息，请参阅 OpenCensus Python [日志集成](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation)。
+
+#### <a name="modify-telemetry"></a>修改遥测
+
+有关如何在将跟踪的遥测发送到 Azure Monitor 之前修改它们的详细信息，请参阅 OpenCensus Python[遥测处理器](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
+
+
+### <a name="metrics"></a>指标
+
+1. 首先，让我们生成一些本地指标数据。 我们将创建一个简单的度量值，用于跟踪用户选择**Enter**键的次数。
+
+    ```python
+    from datetime import datetime
+    from opencensus.stats import aggregation as aggregation_module
+    from opencensus.stats import measure as measure_module
+    from opencensus.stats import stats as stats_module
+    from opencensus.stats import view as view_module
+    from opencensus.tags import tag_map as tag_map_module
+
+    stats = stats_module.stats
+    view_manager = stats.view_manager
+    stats_recorder = stats.stats_recorder
+
+    prompt_measure = measure_module.MeasureInt("prompts",
+                                               "number of prompts",
+                                               "prompts")
+    prompt_view = view_module.View("prompt view",
+                                   "number of prompts",
+                                   [],
+                                   prompt_measure,
+                                   aggregation_module.CountAggregation())
+    view_manager.register_view(prompt_view)
+    mmap = stats_recorder.new_measurement_map()
+    tmap = tag_map_module.TagMap()
+
+    def prompt():
+        input("Press enter.")
+        mmap.measure_int_put(prompt_measure, 1)
+        mmap.record(tmap)
+        metrics = list(mmap.measure_to_view_map.get_metrics(datetime.utcnow()))
+        print(metrics[0].time_series[0].points[0])
+
+    def main():
+        while True:
+            prompt()
+
+    if __name__ == "__main__":
+        main()
+    ```
+1. 重复运行代码会提示你选择**Enter**。 将创建一个度量值，以跟踪选择**输入**的次数。 对于每个条目，该值会递增，指标信息将显示在控制台中。 该信息包括指标更新时的当前值和当前时间戳。
+
+    ```output
+    Press enter.
+    Point(value=ValueLong(5), timestamp=2019-10-09 20:58:04.930426)
+    Press enter.
+    Point(value=ValueLong(6), timestamp=2019-10-09 20:58:06.570167)
+    Press enter.
+    Point(value=ValueLong(7), timestamp=2019-10-09 20:58:07.138614)
+    ```
+
+1. 尽管输入值有助于演示，但最终我们希望向 Azure Monitor 发出指标数据。 将连接字符串直接传递到导出程序。 或者，可以在环境变量中指定它 `APPLICATIONINSIGHTS_CONNECTION_STRING` 。 根据以下代码示例，修改上一步中的代码：
+
+    ```python
+    from datetime import datetime
+    from opencensus.ext.azure import metrics_exporter
+    from opencensus.stats import aggregation as aggregation_module
+    from opencensus.stats import measure as measure_module
+    from opencensus.stats import stats as stats_module
+    from opencensus.stats import view as view_module
+    from opencensus.tags import tag_map as tag_map_module
+
+    stats = stats_module.stats
+    view_manager = stats.view_manager
+    stats_recorder = stats.stats_recorder
+
+    prompt_measure = measure_module.MeasureInt("prompts",
+                                               "number of prompts",
+                                               "prompts")
+    prompt_view = view_module.View("prompt view",
+                                   "number of prompts",
+                                   [],
+                                   prompt_measure,
+                                   aggregation_module.CountAggregation())
+    view_manager.register_view(prompt_view)
+    mmap = stats_recorder.new_measurement_map()
+    tmap = tag_map_module.TagMap()
+
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    exporter = metrics_exporter.new_metrics_exporter(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+
+    view_manager.register_exporter(exporter)
+
+    def prompt():
+        input("Press enter.")
+        mmap.measure_int_put(prompt_measure, 1)
+        mmap.record(tmap)
+        metrics = list(mmap.measure_to_view_map.get_metrics(datetime.utcnow()))
+        print(metrics[0].time_series[0].points[0])
+
+    def main():
+        while True:
+            prompt()
+
+    if __name__ == "__main__":
+        main()
+    ```
+
+1. 导出程序会按固定的时间间隔将指标数据发送到 Azure Monitor。 默认值为每 15 秒。 我们正在跟踪单个度量值，因此，每个间隔将发送此指标数据，其中包含其包含的任何值和时间戳。 可在 `customMetrics` 下找到数据。
+
+#### <a name="performance-counters"></a>性能计数器
+
+默认情况下，度量值导出程序会将一组性能计数器发送到 Azure Monitor。 可通过在指标导出程序的构造函数中将 `enable_standard_metrics` 标志设置为 `False` 来禁用此设置。
+
+```python
+...
+exporter = metrics_exporter.new_metrics_exporter(
+  enable_standard_metrics=False,
+  connection_string='InstrumentationKey=<your-instrumentation-key-here>')
+...
+```
+
+当前已发送这些性能计数器：
+
+- 可用内存（字节）
+- CPU 处理器时间（百分比）
+- 传入请求速率（每秒）
+- 传入请求平均执行时间（毫秒）
+- 进程 CPU 使用率（百分比）
+- 进程专用字节数（字节）
+
+你应该能够在 `performanceCounters` 中看到这些指标。 有关详细信息，请参阅[性能计时器](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters)。
+
+#### <a name="modify-telemetry"></a>修改遥测
+
+有关如何在将跟踪的遥测发送到 Azure Monitor 之前修改它们的信息，请参阅 OpenCensus Python[遥测处理器](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
+
+### <a name="tracing"></a>跟踪
+
+> [!NOTE]
+> 在 OpenCensus 中， `tracing` 是指[分布式跟踪](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)。 `AzureExporter` 将 `requests` 和 `dependency` 遥测发送到 Azure Monitor。
+
+1. 首先，让我们在本地生成一些跟踪数据。 在 Python IDLE 或所选编辑器中，输入以下代码：
+
+    ```python
+    from opencensus.trace.samplers import ProbabilitySampler
     from opencensus.trace.tracer import Tracer
+
+    tracer = Tracer(sampler=ProbabilitySampler(1.0))
+
+    def valuePrompt():
+        with tracer.span(name="test") as span:
+            line = input("Enter a value: ")
+            print(line)
 
     def main():
         while True:
             valuePrompt()
 
-    def valuePrompt():
-        tracer = Tracer()
-        with tracer.span(name="test") as span:
-            line = input("Enter a value: ")
-            print(line)
-
     if __name__ == "__main__":
         main()
-
     ```
 
-3. 运行代码时，系统会重复提示你输入一个值。 每次输入时，值都会输出到 shell，并会由 OpenCensus Python 模块生成相应的 **SpanData** 块。 OpenCensus 项目将[_跟踪定义为 span 树_](https://opencensus.io/core-concepts/tracing/)。
+1. 重复运行代码会提示输入值。 对于每个条目，将值输出到 shell。 OpenCensus Python 模块将生成相应的部分 `SpanData` 。 OpenCensus 项目[将跟踪定义为 span 树](https://opencensus.io/core-concepts/tracing/)。
     
-    ```python
+    ```output
     Enter a value: 4
     4
-    [SpanData(name='test', context=SpanContext(trace_id=1f07f062ac394c50925f2ae61e635e14, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='5c17a4ad6ba14299', parent_span_id=None, attributes={}, start_time='2018-09-15T20:42:15.847292Z', end_time='2018-09-15T20:42:17.615664Z', child_span_count=0, stack_trace=None, time_events=[], links=[], status=None, same_process_as_parent_span=None, span_kind=0)]
+    [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='15ac5123ac1f6847', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:22.805429Z', end_time='2019-06-27T18:21:44.933405Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
     Enter a value: 25
     25
-    [SpanData(name='test', context=SpanContext(trace_id=c71b4e88a22a495da61df52ce3eee3e1, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='51547c0af5f046eb', parent_span_id=None, attributes={}, start_time='2018-09-15T20:42:17.615664Z', end_time='2018-09-15T20:48:11.160314Z', child_span_count=0, stack_trace=None, time_events=[], links=[], status=None, same_process_as_parent_span=None, span_kind=0)]
+    [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='2e512f846ba342de', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:44.933405Z', end_time='2019-06-27T18:21:46.156787Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
     Enter a value: 100
     100
-    [SpanData(name='test', context=SpanContext(trace_id=b4cdcc9e6df44a8fbb6e8ddeccc1351c, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='f2caacf7892744d1', parent_span_id=None, attributes={}, start_time='2018-09-15T20:48:11.175931Z', end_time='2018-09-15T20:48:12.629178Z', child_span_count=0, stack_trace=None, time_events=[], links=[], status=None, same_process_as_parent_span=None, span_kind=0)]
+    [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='f3f9f9ee6db4740a', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:46.157732Z', end_time='2019-06-27T18:21:47.269583Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
     ```
 
-4. 虽然这适用于演示目的，但最终我们希望以适当的方式发出 SpanData，以便它能够被**本地转发器服务**拾取并发送到 Application Insights。 将上一步的代码修改如下：
+1. 尽管输入值有助于演示，但最终我们想要 `SpanData` Azure Monitor。 将连接字符串直接传递到导出程序。 或者，可以在环境变量中指定它 `APPLICATIONINSIGHTS_CONNECTION_STRING` 。 根据以下代码示例，修改上一步中的代码：
 
     ```python
+    from opencensus.ext.azure.trace_exporter import AzureExporter
+    from opencensus.trace.samplers import ProbabilitySampler
     from opencensus.trace.tracer import Tracer
-    from opencensus.trace import config_integration
-    from opencensus.ext.ocagent.trace_exporter import TraceExporter
-    from opencensus.trace import tracer as tracer_module
 
-    import os
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    tracer = Tracer(
+        exporter=AzureExporter(
+            connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000'),
+        sampler=ProbabilitySampler(1.0),
+    )
+
+    def valuePrompt():
+        with tracer.span(name="test") as span:
+            line = input("Enter a value: ")
+            print(line)
 
     def main():
         while True:
             valuePrompt()
 
-    def valuePrompt():
-        export_LocalForwarder = TraceExporter(
-        service_name=os.getenv('SERVICE_NAME', 'python-service'),
-        endpoint=os.getenv('OCAGENT_TRACE_EXPORTER_ENDPOINT'))
-
-        tracer = Tracer(exporter=export_LocalForwarder)
-        with tracer.span(name="test") as span:
-            line = input("Enter a value: ")
-            print(line)
-
     if __name__ == "__main__":
         main()
-
     ```
 
-5. 如果保存上述模块并尝试运行它，可能会收到针对 `grpc` 的 `ModuleNotFoundError`。 如果发生这种情况，请运行以下命令，以便用其安装 [grpcio 包](https://pypi.org/project/grpcio/)：
+1. 现在，当你运行 Python 脚本时，系统仍会提示你输入值，但只有该值输出到 shell 中。 创建的 `SpanData` 将发送到 Azure Monitor。 可在 `dependencies` 下找到发出的 span 数据。 有关传出请求的详细信息，请参阅 OpenCensus Python[依赖项](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-dependency)。
+有关传入请求的详细信息，请参阅 OpenCensus Python[请求](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request)。
 
-    ```console
-    python -m pip install grpcio
-    ```
+#### <a name="sampling"></a>采样
 
-6. 现在当你运行上述 Python 脚本时，系统仍会提示你输入值，但现在只有此值输出到 shell 中。
+有关在 OpenCensus 中采样的信息，请查看 [OpenCensus 中的采样](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)。
 
-7. 若要确认**本地转发器**是否正在拾取跟踪，请检查 `LocalForwarder.config` 文件。 如果已按照[先决条件](https://docs.microsoft.com/azure/application-insights/local-forwarder)中的步骤执行了操作，它将位于 `C:\LF-WindowsServiceHost` 中。
+#### <a name="trace-correlation"></a>跟踪关联
 
-    在下面的日志文件图像中，可以看到在运行第二个脚本（已在其中添加了导出程序）之前，`OpenCensus input BatchesReceived` 为 0。 开始运行更新的脚本以后，`BatchesReceived` 根据我们输入的值的数目递增：
-    
-    ![“新建 App Insights 资源”窗体](./media/opencensus-python/0004-batches-received.png)
+有关跟踪数据中遥测关联的详细信息，请参阅 OpenCensus Python[遥测关联](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)。
 
-## <a name="start-monitoring-in-the-azure-portal"></a>开始在 Azure 门户中监视
+#### <a name="modify-telemetry"></a>修改遥测
 
-1. 现在可以在 Azure 门户中重新打开 Application Insights“概览”页，查看当前正在运行的应用程序的详细信息。 选择“实时指标流”。
+有关如何在将跟踪的遥测发送到 Azure Monitor 之前修改它们的详细信息，请参阅 OpenCensus Python[遥测处理器](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
 
-   ![概览窗格的屏幕截图，其中的实时指标流在红框中呈选中状态。](./media/opencensus-python/0005-overview-live-metrics-stream.png)
+## <a name="configure-azure-monitor-exporters"></a>配置 Azure Monitor 导出程序
 
-2. 如果再次运行第二个 Python 脚本并开始输入值，则当实时跟踪数据从本地转发器服务到达 Application Insights 时，你会看到它们。
+如图所示，有三种不同的 Azure Monitor 导出程序支持 OpenCensus。 每种类型都将不同类型的遥测发送到 Azure Monitor。 若要查看每个导出程序发送的遥测类型，请参阅下表。
 
-   ![实时指标流的屏幕截图，其中显示了性能数据](./media/opencensus-python/0006-stream.png)
+每个导出程序都接受与通过构造函数传递的配置相同的参数。 可在此处查看每个相关的详细信息：
 
-3. 导航回“概览”页，选择“应用程序映射”以获取应用程序组件之间依赖关系和调用时间的可视布局。
+- `connection_string`：用于连接到 Azure Monitor 资源的连接字符串。 优先于 `instrumentation_key` 。
+- `enable_standard_metrics`：用于 `AzureMetricsExporter` 。 通知导出程序将[性能计数器](https://docs.microsoft.com/azure/azure-monitor/platform/app-insights-metrics#performance-counters)度量值自动发送到 Azure Monitor。 默认为 `True`。
+- `export_interval`：用于指定导出频率（以秒为单位）。
+- `instrumentation_key`：用于连接到 Azure Monitor 资源的检测密钥。
+- `logging_sampling_rate`：用于 `AzureLogHandler` 。 提供用于导出日志的采样率 [0，1.0]。 默认值为1.0。
+- `max_batch_size`：指定一次导出的最大遥测大小。
+- `proxies`：指定用于将数据发送到 Azure Monitor 的代理的序列。 有关详细信息，请参阅[代理](https://requests.readthedocs.io/en/master/user/advanced/#proxies)。
+- `storage_path`：本地存储文件夹所在位置的路径（未发送的遥测）。 `opencensus-ext-azure`从 v 1.0.3，默认路径是 OS temp 目录 + `opencensus-python`  +  `your-ikey` 。 在 v 1.0.3 之前，默认路径为 $USER + `.opencensus`  +  `.azure`  +  `python-file-name` 。
 
-    ![基本应用程序映射的屏幕截图](./media/opencensus-python/0007-application-map.png)
+## <a name="view-your-data-with-queries"></a>使用查询查看数据
 
-    由于我们只跟踪一个方法调用，因此应用程序映射的信息不多。 但是，应用程序映射可以通过缩放将多得多的分布式应用程序可视化：
+可以通过“日志(分析)”选项卡查看从应用程序发送的遥测数据。
 
-   ![应用程序地图](media/opencensus-python/application-map.png)
+![红色框中选定“日志(分析)”的概述窗格的屏幕截图](./media/opencensus-python/0010-logs-query.png)
 
-4. 选择“调查性能”，执行详细的性能分析并确定性能减慢的根本原因。
+在“活动”下的列表中：
 
-    ![性能窗格的屏幕截图](./media/opencensus-python/0008-performance.png)
+- 对于使用 Azure Monitor 跟踪导出程序发送的遥测，传入请求在 `requests` 下显示。 传出或进程内请求在 `dependencies` 下显示。
+- 对于使用 Azure Monitor 指标导出程序发送的遥测，发送的指标在 `customMetrics` 下显示。
+- 对于使用 Azure Monitor 日志导出程序发送的遥测，日志在 `traces` 下显示。 异常在 `exceptions` 下显示。
 
-5. 选择“示例”，然后单击显示在右窗格中的任意示例，这将启动端到端事务详细信息体验。 虽然我们的示例应用只会显示单个事件，但更复杂的应用程序会让你在探索端到端事务时，可以深入到单个事件的调用堆栈级别。
+有关如何使用查询和日志的更多详细信息，请参阅 [Azure Monitor 中的日志](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs)。
 
-     ![端到端事务界面的屏幕截图](./media/opencensus-python/0009-end-to-end-transaction.png)
+## <a name="learn-more-about-opencensus-for-python"></a>了解有关 OpenCensus for Python 的详细信息
 
-## <a name="opencensus-trace-for-python"></a>适用于 Python 的 OpenCensus 跟踪
+* [GitHub 上的 OpenCensus Python](https://github.com/census-instrumentation/opencensus-python)
+* [自定义](https://github.com/census-instrumentation/opencensus-python/blob/master/README.rst#customization)
+* [GitHub 上的 Azure Monitor 导出程序](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
+* [OpenCensus 集成](https://github.com/census-instrumentation/opencensus-python#extensions)
+* [Azure Monitor 示例应用程序](https://github.com/Azure-Samples/azure-monitor-opencensus-python)
 
-我们只简单介绍了如何将适用于 Python 的 OpenCensus 与本地转发器和 Application Insights 集成。 正式的使用指南会介绍更高级的主题，例如：
-
-* [取样器](https://opencensus.io/api/python/trace/usage.html#samplers)
-* [Flask 集成](https://opencensus.io/api/python/trace/usage.html#flask)
-* [Django 集成](https://opencensus.io/api/python/trace/usage.html#django)
-* [MySQL 集成](https://opencensus.io/api/python/trace/usage.html#service-integration)
-* [PostgreSQL](https://opencensus.io/api/python/trace/usage.html#postgresql)
-  
 ## <a name="next-steps"></a>后续步骤
 
-* [OpenCensus Python 使用指南](https://opencensus.io/api/python/trace/usage.html)
+* [跟踪传入请求](./../../azure-monitor/app/opencensus-python-dependency.md)
+* [跟踪传出请求](./../../azure-monitor/app/opencensus-python-request.md)
 * [应用程序映射](./../../azure-monitor/app/app-map.md)
 * [端到端性能监视](./../../azure-monitor/learn/tutorial-performance.md)
+
+### <a name="alerts"></a>警报
+
+* [可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)：创建测试来确保站点在 Web 上可见。
+* [智能诊断](../../azure-monitor/app/proactive-diagnostics.md)：这些测试可自动运行，因此不需要进行任何设置。 它们会告诉你应用是否具有异常的失败请求速率。
+* [指标警报](../../azure-monitor/platform/alerts-log.md)：设置警报以在某个指标超过阈值时发出警告。 可以在编码到应用中的自定义指标中设置它们。

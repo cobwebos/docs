@@ -1,82 +1,141 @@
 ---
-title: 管理双重验证设置 - Azure Active Directory | Microsoft Docs
-description: 管理 Azure 多重身份验证的使用方式包括更改联系信息或配置设备。
+title: 更改双重验证方法和设置 - Azure Active Directory
+description: 了解如何在其他安全性验证页中更改工作或学校帐户的安全验证方法和设置。
 services: active-directory
-keywords: 多重身份验证客户端, 身份验证问题, 相关性 ID
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: richagi
 ms.assetid: d3372d9a-9ad1-4609-bdcf-2c4ca9679a3b
 ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
-ms.topic: conceptual
-ms.date: 05/23/2017
-ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 433c2d712ca4867a5ec59f86c333511070b6d507
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: end-user-help
+ms.date: 07/06/2020
+ms.author: curtand
+ms.openlocfilehash: 259468d0d3b04b354e782529cefa2149974c9ca0
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60334452"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983299"
 ---
-# <a name="manage-your-settings-for-two-step-verification"></a>管理双重验证设置
-本文解答了有关如何更新双重验证或多重身份验证设置的问题。 如果在登录帐户时遇到问题，请参阅[使用双重验证时遇到问题](multi-factor-authentication-end-user-troubleshoot.md)获取疑难解答帮助。
+# <a name="change-your-two-factor-verification-method-and-settings"></a>更改双重验证方法和设置
 
-## <a name="where-to-find-the-settings-page"></a>设置页位置
-根据公司设置多重身份验证的方式，可以在多个位置更改电话号码等设置。
+设置工作或学校帐户的安全验证方法后，可以更新任何相关的详细信息，包括：
 
-如果公司支持人员发出特定 URL 或管理双重验证的步骤，请按照这些说明操作。 否则，可按照以下适用于所有用户的说明操作。 如果执行以下步骤，但看到的选项不同，则表示公司或学校已自定义门户。 通过管理员获取 Azure 多重身份验证门户的链接。
+- 默认安全验证方法
 
-**转到“其他安全性验证”页**
+- 安全验证方法详细信息，如电话号码
 
-- 转到  https://aka.ms/MFASetup 。
+- 验证器应用设置或从验证器应用删除设备
 
-    ![验证](./media/multi-factor-authentication-end-user-manage-settings/proofup.png)
+## <a name="using-the-additional-security-verification-page"></a>使用其他安全性验证页
 
-如果单击该链接对你无效，还可以按照以下步骤访问“其他安全性验证”页：
+如果你的组织提供了有关如何启用和管理双重验证的特定步骤，你应该首先遵循这些说明。 否则，你可以在[其他安全性验证](https://docs.microsoft.com/azure/active-directory/user-help/multi-factor-authentication-end-user-first-time)页访问你的安全验证方法设置。
 
-1. 登录到 [https://myapps.microsoft.com](https://myapps.microsoft.com)  
+>[!Note]
+>如果屏幕上显示的内容与本文所述不符，则意味着管理员已启用“我的个人资料”（预览版）体验或者你的组织提供了你的自定义门户。 如需有关新安全信息体验的详细信息，请参阅[安全信息（预览版）概述](user-help-security-info-overview.md)。 若要详细了解组织的自定义门户，必须与组织的技术支持部门联系。
 
-2. 在右上方选择帐户名称，并选择“配置文件”。
+### <a name="to-get-to-the-additional-security-verification-page"></a>转到“其他安全验证”页
 
-3. 选择“其他安全性验证”。  
+点击此链接转到[其他安全性验证](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1)页。
 
-    ![Myapps](./media/multi-factor-authentication-end-user-manage-settings/myapps1.png)
+![“其他安全验证”页，其中包含可用的安全验证方法详细信息](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
 
-4. “其他安全性验证”页将加载设置。
+还可按以下步骤访问“其他安全验证”页：
 
-    ![验证](./media/multi-factor-authentication-end-user-manage-settings/proofup.png)
+1. 登录到 [https://myapps.microsoft.com](https://myapps.microsoft.com)。
 
-## <a name="i-want-to-change-my-phone-number-or-add-a-secondary-number"></a>我要更改电话号码，或添加辅助号码
-必须配置辅助身份验证电话号码。  因为你的主电话号码和移动应用程序可能是同一手机上，辅助电话号码是您将能够取回到你的帐户，如果你的电话丢失或被盗时的最快方法。
+1. 在右上方选择帐户名称，并选择“配置文件”。
 
-> [!NOTE]
-> 如果无权使用主电话号码，并需要获得进入帐户的帮助，请参阅[使用双重验证时遇到问题](multi-factor-authentication-end-user-troubleshoot.md)一文以获得更多帮助。  
+1. 选择“其他安全性验证”。  
 
-**若要更改主电话号码，请执行以下步骤：**  
+    ![“我的应用”链接到“其他安全验证”页](./media/multi-factor-authentication-end-user-manage-settings/mfa-myapps-link.png)
 
-1. 在“其他安全性验证”页上，选择当前电话号码的文本框，并使用新电话号码编辑。  
-2. 选择“保存”。  
-3. 如果此电话号码是用于首选验证选项的号码，必须在保存之前验证新号码。  
+>[!Note]
+>有关使用“其他安全验证”页的“应用密码”部分的信息 ，请参阅[管理双重验证的应用密码](multi-factor-authentication-end-user-app-passwords.md)。 应用密码应仅用于不支持双重验证的应用。
 
-**若要添加辅助电话号码，请执行以下操作：**  
+## <a name="change-your-default-security-verification-method"></a>更改默认的安全验证方法
 
-1. 在“其他安全性验证”页上，单击“备用身份验证电话”旁的复选框。  
-2. 在文本框中输入辅助电话号码。  
-3. 选择“保存”，完成更改。  
+使用用户名和密码登录到工作或学校帐户后，你将自动看到所选的安全验证方法。 取决于组织的需求，这可能是通过验证器应用、短信或电话呼叫发出的通知或验证码。
 
-## <a name="require-two-step-verification-again-on-a-device-youve-marked-as-trusted"></a>需要在已标记为受信任的设备上重新进行双重验证
+如果你决定要更改所使用的默认安全验证方法，请参考以下步骤。
 
-在浏览器中执行双重验证时，根据组织设置，可能会有一个复选框显示“**X** 天不再询问”。 如果选中了此复选框，并且丢失了设备或认为帐户受到安全威胁，则应将双重验证还原到所有设备。
+### <a name="to-change-your-default-security-verification-method"></a>更改默认的安全验证方法
 
-1. 在“其他安全验证”页中，选择“在以前受信任的设备上还原多重身份验证”。
-2. 下次登录任何设备时，会提示执行双重验证。
+1. 在“其他安全验证”页上，从“你的首选选项”列表中选择要使用的方法。 你将看到所有选项，但只能选择组织允许你使用的选项。
 
-## <a name="how-do-i-clean-up-microsoft-authenticator-from-my-old-device-and-move-to-a-new-one"></a>如何从旧设备清除 Microsoft Authenticator 并将其迁移到新设备？
-从设备上卸载该应用或重置设备时，不会删除应用在后端的激活。 有关详细信息，请参阅 [Microsoft Authenticator](user-help-auth-app-download-install.md)。
+    - 通过应用通知我：你会通过验证器应用收到通知，提示你有一个待解决的验证提示。
+
+    - 呼叫我的身份验证电话：你会通过移动设备收到电话呼叫，要求你验证信息。
+
+    - 向身份验证电话发送验证码：会以短信的形式向你的移动设备发送验证码。 你必须在工作或学校帐户的验证提示中输入此验证码。
+
+    - 拨打我的办公电话：你会通过办公电话收到电话呼叫，要求你验证信息。
+
+    - 使用来自应用的验证码：你将使用验证器应用获取验证码，然后在工作或学校帐户的验证提示中输入它。
+
+2. 选择“保存”。
+
+## <a name="add-or-change-your-phone-number"></a>添加或更改电话号码
+
+你可以在“其他安全验证”页上添加新电话号码或更新现有号码。
+
+>[!Important]
+>强烈建议添加备用电话号码，以帮助防止在下列情况下无法登录帐户：主电话丢失或被盗，或者更换新电话后不再使用原来的主电话号码。
+
+### <a name="to-change-your-phone-numbers"></a>更改电话号码
+
+1. 在“其他安全验证”页的“你希望如何响应?”部分 ，更新“身份验证电话”（你的主要移动设备）和“办公电话”的电话号码信息 。
+
+1. 选中 "**备用身份验证电话**" 选项旁边的框，然后键入一个辅助电话号码，如果无法访问主要设备，则可以在该号码接收电话呼叫。
+
+1. 选择“保存”。
+
+## <a name="add-a-new-account-to-the-microsoft-authenticator-app"></a>向 Microsoft 验证器应用添加新帐户
+
+你可以在适用于 [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) 或 [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458) 的 Microsoft Authenticator 应用中设置工作或学校帐户。
+
+如果你已经在 Microsoft Authenticator 应用中设置了工作或学校帐户，则无需再次执行此操作。
+
+1. 在“其他安全验证”页的“你希望如何响应?”部分 ，选择“设置 Authenticator 应用”。
+
+    ![在 Microsoft Authenticator 应用中设置工作或学校帐户](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page-auth-app.png)
+
+1. 按照屏幕上的说明操作，包括使用移动设备扫描 QR 码，然后选择“下一步”。
+
+    你需要通过 Microsoft Authenticator 应用同意通知，以验证你的信息。
+
+1. 选择“保存”。
+
+## <a name="delete-your-account-or-device-from-the-microsoft-authenticator-app"></a>从 Microsoft Authenticator 应用删除帐户或设备
+
+你可以从 Microsoft Authenticator 应用删除帐户，以及从工作或学校帐户删除设备。 通常，删除设备是为了从帐户永久删除丢失、被盗或旧的设备，删除帐户是为了尝试解决某些连接问题或解决帐户更改问题，例如新用户名。
+
+### <a name="to-delete-your-device-from-your-work-or-school-account"></a>从工作或学校帐户删除设备
+
+1. 在“其他安全验证”页的“你希望如何响应?”部分，选择“设置 Authenticator 应用”按钮。
+
+1. 选择“保存”。
+
+### <a name="to-delete-your-account-from-the-microsoft-authenticator-app"></a>从 Microsoft Authenticator 应用删除帐户
+
+在 Microsoft Authenticator 应用中，选择要删除的设备旁边的“删除”按钮。
+
+## <a name="turn-on-two-factor-verification-prompts-on-a-trusted-device"></a>在受信任的设备上打开双重验证提示
+
+在浏览器中执行双重验证时，根据组织设置，可能会有一个复选框显示“X 天不再询问”。 如果已选择此选项以停止双重验证提示，然后丢失设备，或者设备可能收到威胁，则应重新打开双重验证提示，以帮助保护你的帐户。 你必须同时为所有设备启用提示。 不幸的是，你不能只为特定设备启用提示。
+
+### <a name="to-turn-two-factor-verification-prompts-back-on-for-your-devices"></a>为设备重新启用双重验证提示
+
+在[“其他安全验证”页](#to-get-to-the-additional-security-verification-page)中，选择“在以前受信任的设备上还原多重身份验证”。 下次登录任何设备时，会提示执行双重验证。
 
 ## <a name="next-steps"></a>后续步骤
-* 在[使用双重验证时遇到问题](multi-factor-authentication-end-user-troubleshoot.md)中获得疑难解答提示和帮助
-* 为不支持双重验证的任何应用设置[应用密码](multi-factor-authentication-end-user-app-passwords.md)。
+
+添加或更新双重验证设置后，你可以管理应用密码、登录，或获得一些常见双重验证相关问题的帮助。
+
+- 为不支持双重验证的任何应用[管理双重验证的应用密码](multi-factor-authentication-end-user-app-passwords.md)。
+
+- [如何使用双重验证登录](multi-factor-authentication-end-user-signin.md)
+
+- [解决双重验证的常见问题](multi-factor-authentication-end-user-troubleshoot.md)

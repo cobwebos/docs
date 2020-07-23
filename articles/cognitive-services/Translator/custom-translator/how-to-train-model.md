@@ -2,19 +2,19 @@
 title: 训练模型 - 自定义翻译
 titleSuffix: Azure Cognitive Services
 description: 生成翻译模型时，对模型进行训练是一个重要步骤。 训练将根据你选择用于训练的文档进行。
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
-ms.author: v-pawal
+ms.date: 05/26/2020
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 2d9c6a9636629d3ad05d50320e00ed4c4d7f0b83
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: c29a0b8b429705bb0315c37fc6fe63eb8d77511f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389278"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996697"
 ---
 # <a name="train-a-model"></a>训练模型
 
@@ -26,7 +26,7 @@ ms.locfileid: "66389278"
 
 2.  项目的“数据”选项卡将显示项目语言对的所有相关文档。 手动选择要用来训练模型的文档。 可以从此屏幕选择训练、优化和测试文档。 另外，你只需要选择训练集并让自定义翻译为你创建优化和测试集。
 
-    -  文档名：文档的名称。
+    -  文档名称：文档的名称。
 
     -  配对：如果此文档是一个并行或多语言文档。 通常不支持使用多语言文档进行训练。
 
@@ -34,11 +34,11 @@ ms.locfileid: "66389278"
 
     -  语言对：这显示项目的源和目标语言。
 
-    -  源语句：显示从源文件中提取的语句的数量。
+    -  源句子：显示从源文件中提取的句子数。
 
-    -  目标语句：显示从目标文件中提取的语句的数量。
+    -  目标句子：显示从目标文件中提取的句子数。
 
-    ![训练模型](media/how-to/how-to-train-model.png)
+    ![定型模型](media/how-to/how-to-train-model.png)
 
 3.  单击“训练”按钮。
 
@@ -53,7 +53,7 @@ ms.locfileid: "66389278"
     ![“训练模型”页面](media/how-to/how-to-train-model-3.png)
 
 >[!Note]
->自定义转换器支持时间中的任何位置工作区中的 10 个并发培训。
+>自定义转换器在某个时间点在工作区中支持10个并发培训。
 
 
 ## <a name="edit-a-model"></a>编辑模型
@@ -66,7 +66,7 @@ ms.locfileid: "66389278"
 
 2.  在对话框中，更改
 
-    1.  模型名称（必需）：为模型提供一个有意义的名称。
+    1.  模型名称（必需）：为你的模型提供一个有意义的名称。
 
         ![“编辑模型”对话框](media/how-to/how-to-edit-model-dialog.png)
 

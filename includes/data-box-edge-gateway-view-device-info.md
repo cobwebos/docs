@@ -4,17 +4,17 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/04/2019
 ms.author: alkohli
-ms.openlocfilehash: d5af557a62f4bd35c242d334c28a38c3d632f7cf
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 3312d1ec7c2535e103cf8959599c0d4c3014f520
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66161189"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218068"
 ---
-1. [连接到 PowerShell 界面](#connect-to-the-powershell-interface)。
-2. 使用`Get-HcsApplianceInfo`若要获取你的设备的信息。
+1. [连接到 PowerShell 接口](#connect-to-the-powershell-interface)。
+2. 使用 `Get-HcsApplianceInfo` 获取设备的信息。
 
-    下面的示例显示了此 cmdlet 的用法：
+    以下示例显示了此 cmdlet 的用法：
 
     ```
     [10.100.10.10]: PS>Get-HcsApplianceInfo
@@ -43,16 +43,16 @@ ms.locfileid: "66161189"
     IsRegistered                  : False
     ```
 
-    以下是表汇总一些重要的设备信息：
-    
-    | 参数                             | 描述                                                                                                                                                  |   |
-    |--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-    | FriendlyName                   | 部署设备期间通过本地 web UI 配置的设备友好名称。 默认的友好名称为设备序列号。  |   |
-    | 序列号                   | 设备序列号是出厂分配的唯一编号。                                                                             |   |
-    | 模型                          | 数据框的边缘或数据框网关设备的模型。 该模型是数据框网关的虚拟和物理数据框的边缘。                   |   |
-    | FriendlySoftwareVersion        | 对应于设备软件版本的友好字符串。 对于运行预览版的系统，友好的软件版本为数据框边缘 1902年。 |   |
-    | HcsVersion                     | 设备上运行的 HCS 软件版本。 例如，对应于数据框边缘 1902年的 HCS 软件版本是 1.4.771.324。            |   |
-    | LocalCapacityInMb              | 单位为兆位的设备的本地总容量。                                                                                                        |   |
-    | IsRegistered                   | 此值指示是否与服务激活你的设备。                                                                                         |   |
+    下面是汇总一些重要设备信息的表：
+
+    | 参数 | 说明 |
+    |-----------|-------------|
+    | FriendlyName                   | 设备部署过程中通过本地 web UI 配置的设备的友好名称。 默认的友好名称为设备序列号。  |
+    | SerialNumber                   | 设备序列号是在工厂中分配的唯一编号。                                                                             |
+    | 型号                          | Azure Stack 边缘或 Data Box Gateway 设备的模型。 模型是 Azure Stack 边缘的物理，Data Box Gateway 的虚拟。                   |
+    | FriendlySoftwareVersion        | 对应于设备软件版本的友好字符串。 对于运行预览版的系统，友好软件版本将为 1902 Data Box Edge。 |
+    | HcsVersion                     | 设备上运行的 HCS 软件版本。 例如，与 Data Box Edge 1902 对应的 HCS 软件版本为1.4.771.324。            |
+    | LocalCapacityInMb              | 设备的总本地容量（以 Mb 为单位）。                                                                                                        |
+    | IsRegistered                   | 此值用于指示是否将设备与服务一起激活。                                                                                         |
 
 

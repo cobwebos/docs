@@ -1,25 +1,16 @@
 ---
-title: 在 Azure 中使用 cloud-init 设置 Linux VM 的主机名 | Microsoft Docs
+title: 使用 cloud init 设置 Linux VM 的主机名
 description: 如何通过 Azure CLI 使用 cloud-init 在创建期间自定义 Linux VM
-services: virtual-machines-linux
-documentationcenter: ''
 author: rickstercdn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: da20c4b30e2708bf7754d025cfbd2c269c3b5c7c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 631b8ef83d5fbf10ec401df7432b23238f2ae2e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60648935"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78969173"
 ---
 # <a name="use-cloud-init-to-set-hostname-for-a-linux-vm-in-azure"></a>在 Azure 中使用 cloud-init 设置 Linux VM 的主机名
 本文演示如何在 Azure 中使用 [cloud-init](https://cloudinit.readthedocs.io) 在预配时间配置虚拟机 (VM) 或虚拟机规模集 (VMSS) 上特定的主机名。 Azure 预配资源后，这些 cloud-init 脚本即会在第一次启动时运行。 有关 cloud-init 如何在 Azure 以及受支持的 Linux 发行版中本机工作的详细信息，请参阅 [cloud-init 概述](using-cloud-init.md)
@@ -27,7 +18,7 @@ ms.locfileid: "60648935"
 ## <a name="set-the-hostname-with-cloud-init"></a>使用 cloud-init 设置主机名称
 默认情况下，在 Azure 中创建新的虚拟机时，主机名和 VM 名称相同。  如果希望在 Azure 中使用 [az vm create](/cli/azure/vm) 创建 VM 时通过运行 cloud-init 脚本来更改默认主机名，请通过 `--custom-data` 开关指定 cloud-init 文件。  
 
-要查看操作中的升级进程，请在当前 shell 中创建一个名为“cloud_init_hostname.txt”的文件并粘贴下面的配置。 对于此示例，请在不处于本地计算机上的 Cloud Shell 中创建文件。 可使用任何想要使用的编辑器。 输入 `sensible-editor cloud_init_hostname.txt` 以创建文件并查看可用编辑器的列表。 选择 #1 以使用 nano 编辑器。 请确保已正确复制整个 cloud-init 文件，尤其是第一行。  
+要查看操作中的升级进程，请在当前 shell 中创建一个名为“cloud_init_hostname.txt”的文件并粘贴下面的配置  。 对于此示例，请在不处于本地计算机上的 Cloud Shell 中创建文件。 可使用任何想要使用的编辑器。 输入 `sensible-editor cloud_init_hostname.txt` 以创建文件并查看可用编辑器的列表。 选择 #1 以使用 nano 编辑器  。 请确保已正确复制整个 cloud-init 文件，尤其是第一行。  
 
 ```yaml
 #cloud-config

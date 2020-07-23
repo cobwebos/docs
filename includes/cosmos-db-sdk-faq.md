@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: sngun
 ms.openlocfilehash: 99dddd86c9348c9791d3012b382298bb020e63c9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66154574"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67172701"
 ---
 **1.如何向客户通知即将停用的 SDK？**
 
@@ -21,9 +21,9 @@ Microsoft 会在即将停用的 SDK 的支持结束之前提前 12 个月进行�
 
 **3.在 12 个月通知期之后，客户是否可以使用已停用的 Azure Cosmos DB SDK 创建和修改应用程序？**
 
-在 12 个月通知期之后，SDK 将停用。 Azure Cosmos DB 平台不允许使用已停用 SDK 的应用程序对 Azure Cosmos DB 进行任何访问。 此外，Microsoft 不会对已停用的 SDK 提供客户支持。
+在 12 个月通知期之后，SDK 会停用。 Azure Cosmos DB 平台不允许使用已停用 SDK 的应用程序对 Azure Cosmos DB 进行任何访问。 此外，Microsoft 不会对已停用的 SDK 提供客户支持。
 
-**4.如果客户运行使用不支持的 Azure Cosmos DB SDK 版本的应用程序，会发生什么情况？**
+**4. 使用不受支持的 Azure Cosmos DB SDK 版本的客户正在运行的应用程序会发生什么情况？**
 
 任何使用已停用 SDK 版本连接 Azure Cosmos DB 服务的尝试都会被拒绝。 
 

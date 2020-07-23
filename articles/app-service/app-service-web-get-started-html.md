@@ -1,30 +1,22 @@
 ---
-title: 创建静态 HTML Web 应用 - Azure 应用服务 | Microsoft Docs
-description: 了解如何通过部署静态 HTML 示例应用，在 Azure 应用服务中运行 Web 应用。
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 快速入门：创建静态 HTML Web 应用
+description: 在数分钟内将第一个 HTML Hello World 部署到 Azure 应用服务。 我们使用 Git 进行部署，这是部署到应用服务时使用的多种方法中的一种。
+author: msangapu-msft
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 11/20/2018
+ms.date: 08/23/2019
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 064466b73e03e9648b78c32b7e6ffcd83defd607
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 04cd28db52630e9de26e30ef4bf35db983f48b50
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66139411"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086056"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>在 Azure 中创建静态 HTML Web 应用
 
-[Azure 应用服务](overview.md)提供高度可缩放、自修补的 Web 托管服务。 本快速入门演示如何将基本 HTML+CSS 站点部署到 Azure 应用服务。 你将在 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 中完成本快速入门，但是也可以使用 [Azure CLI](/cli/azure/install-azure-cli) 在本地运行这些命令。
+[Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。 本快速入门演示如何将基本 HTML+CSS 站点部署到 Azure 应用服务。 你将在 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 中完成本快速入门，但是也可以使用 [Azure CLI](/cli/azure/install-azure-cli) 在本地运行这些命令。
 
 ![示例应用主页](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
@@ -50,14 +42,12 @@ git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
 
-切换到包含示例代码的目录并运行 `az webapp up` 命令。
-
-在以下示例中，请将 <app_name> 替换为一个唯一的应用名称。
+切换到包含示例代码的目录并运行 `az webapp up` 命令。 在以下示例中，请将 <app_name> 替换为一个唯一的应用名称。 静态内容由 `--html` 标志予以指示。
 
 ```bash
 cd html-docs-hello-world
 
-az webapp up --location westeurope --name <app_name>
+az webapp up --location westeurope --name <app_name> --html
 ```
 
 `az webapp up` 命令执行以下操作：
@@ -72,19 +62,19 @@ az webapp up --location westeurope --name <app_name>
 
 此命令可能需要花费几分钟时间运行。 运行时，该命令会显示类似于以下示例的信息：
 
-```json
+<pre>
 {
-  "app_url": "https://<app_name>.azurewebsites.net",
+  "app_url": "https://&lt;app_name&gt;.azurewebsites.net",
   "location": "westeurope",
-  "name": "<app_name>",
+  "name": "&lt;app_name&gt;",
   "os": "Windows",
   "resourcegroup": "appsvc_rg_Windows_westeurope",
   "serverfarm": "appsvc_asp_Windows_westeurope",
   "sku": "FREE",
-  "src_path": "/home/<username>/quickstart/html-docs-hello-world ",
-  < JSON data removed for brevity. >
+  "src_path": "/home/&lt;username&gt;/quickstart/html-docs-hello-world ",
+  &lt; JSON data removed for brevity. &gt;
 }
-```
+</pre>
 
 记下 `resourceGroup` 值。 需要在[清理资源](#clean-up-resources)部分使用它。
 
@@ -96,7 +86,7 @@ az webapp up --location westeurope --name <app_name>
 
 ![示例应用主页](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
-祝贺你！ 现已将第一个 HTML 应用部署到应用服务。
+祝贺你！  现已将第一个 HTML 应用部署到应用服务。
 
 ## <a name="update-and-redeploy-the-app"></a>更新并重新部署应用
 
@@ -109,7 +99,7 @@ az webapp up --location westeurope --name <app_name>
 现在，需使用同一 `az webapp up` 命令重新部署应用。
 
 ```bash
-az webapp up --location westeurope --name <app_name>
+az webapp up --location westeurope --name <app_name> --html
 ```
 
 完成部署后，切换回**浏览到应用**步骤中打开的浏览器窗口，然后刷新页面。
@@ -118,9 +108,11 @@ az webapp up --location westeurope --name <app_name>
 
 ## <a name="manage-your-new-azure-app"></a>管理新的 Azure 应用
 
-转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理创建的 Web 应用。
+若要管理所创建的 Web 应用，请在 [Azure 门户](https://portal.azure.com)中，搜索并选择“应用服务”  "。 
 
-在左侧菜单中单击“应用程序服务”，然后单击 Azure 应用的名称。
+![在 Azure 门户中选择应用服务](./media/app-service-web-get-started-html/portal0.png)
+
+在“应用服务”页上，选择 Azure 应用的名称  。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-get-started-html/portal1.png)
 
@@ -138,7 +130,7 @@ az webapp up --location westeurope --name <app_name>
 az group delete --name appsvc_rg_Windows_westeurope
 ```
 
-此命令可能需要花费一分钟时间运行。
+此命令可能需要花费一点时间运行。
 
 ## <a name="next-steps"></a>后续步骤
 

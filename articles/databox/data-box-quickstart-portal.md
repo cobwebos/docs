@@ -6,21 +6,34 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: bd591ff30755fd68bb2dc673899d0ac993215e68
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.localizationpriority: high
+ms.openlocfilehash: dd429dadcbe67f0ac91da19d6606626b39f34ef5
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834710"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201094"
 ---
-# <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Data Box
+# <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>开始使用 Azure Data Box 将数据导入 Azure
 
-本快速入门介绍如何使用 Azure 门户部署 Azure Data Box。 步骤包括如何对 Data Box 进行布线、配置和数据复制操作，以便将数据上传到 Azure。 快速入门在 Azure 门户以及设备的本地 Web UI 中完成。
+::: zone target="docs"
+
+本快速入门介绍如何使用 Azure 门户部署 Azure Data Box 以执行导入订单。 步骤包括如何对 Data Box 进行布线、配置和数据复制操作，以便将数据上传到 Azure。 快速入门步骤在 Azure 门户以及设备的本地 Web UI 中完成。
 
 有关详细的分步部署和跟踪说明，请转到[教程：订购 Azure Data Box](data-box-deploy-ordered.md)
 
+::: zone-end 
+
+::: zone target="chromeless"
+
+本指南介绍如何使用 Azure 门户部署 Azure Data Box 以执行导入。 这些步骤包括检查先决条件、为设备连接电缆和连接设备，以及将数据复制到设备，以便将其上传到 Azure。
+
+::: zone-end
+
+::: zone target="docs"
+ 
 ## <a name="prerequisites"></a>先决条件
 
 开始之前：
@@ -41,11 +54,32 @@ ms.locfileid: "57834710"
     - 一根 RJ-45 CAT 6 网线（用于 MGMT 网络接口）
     - 一根 RJ-45 CAT 6A 网线或一根 RJ-45 CAT 6 网线（用于 DATA 3 网络接口，分别配置为 10 Gbps 或 1 Gbps）
 
+::: zone-end 
+
+::: zone target="chromeless"
+
+## <a name="prerequisites"></a>先决条件
+
+在开始之前，请确保：
+
+1. 已完成[教程：订购 Azure Data Box](data-box-deploy-ordered.md)。
+2. 已收到 Data Box，并且门户中的订单状态为“已送达”。 
+3. 已查看 [Data Box 安全准则](data-box-safety.md)。
+4. 已收到一根接地电源线，可以将该线用于 100 TB 存储设备。
+5. 可以访问具有要复制到 Data Box 的数据的主计算机。 该主机必须
+    - 运行[支持的操作系统](data-box-system-requirements.md)。
+    - 连接到高速网络。 强烈建议你至少建立一个 10-GbE 连接。 如果 10-GbE 连接不可用，则可使用 1-GbE 数据链路，但复制速度会受影响。 
+6. 访问平面以放置 Data Box。 若要将设备平放或直立放置在标准机架中，机架中需要有一个 7U 插槽。
+
+::: zone-end
+
+::: zone target="docs"
+
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
-## <a name="order"></a>顺序
+## <a name="order"></a>订单
 
 此步骤大约需要 5 分钟。
 
@@ -55,6 +89,8 @@ ms.locfileid: "57834710"
 4. 输入订单详细信息和发货信息。 如果该服务在你所在的区域中可用，请提供通知电子邮件地址、查看摘要，然后创建订单。
 
 创建订单后，Microsoft 会准备需发货的设备。
+
+
 
 ## <a name="cable"></a>电缆 
 
@@ -122,9 +158,9 @@ ms.locfileid: "57834710"
 
 此步骤需要 2-3 分钟才能完成。
 
-- 在订单尚未处理的情况下，可以在 Azure 门户中取消 Data Box 订单。 订单处理后，无法取消订单。 订单处理会不断进行，直到完成。 若要取消订单，请转到“概况”，然后在命令栏中单击“取消”。
+- 在订单尚未处理的情况下，可以在 Azure 门户中取消 Data Box 订单。 订单处理后，无法取消订单。 订单处理会不断进行，直到完成。 若要取消订单，请转到“概况”，然后在命令栏中单击“取消”。 
 
-- 在 Azure 门户中的状态显示为“已完成”或“已取消”后，即可删除订单。 若要删除订单，请转到“概况”，然后在命令栏中单击“删除”。
+- 在 Azure 门户中的状态显示为“已完成”或“已取消”后，即可删除订单。  若要删除订单，请转到“概况”，然后在命令栏中单击“删除”。 
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -132,5 +168,7 @@ ms.locfileid: "57834710"
 
 > [!div class="nextstepaction"]
 > [使用 Azure 门户管理 Data Box](data-box-portal-admin.md)
+
+::: zone-end
 
 

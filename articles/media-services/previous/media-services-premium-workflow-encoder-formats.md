@@ -12,19 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
-ms.author: juliako;anilmur
-ms.openlocfilehash: 25f32750b612bb66f23eb19c378f7935689f3a73
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: juliako
+ms.reviewer: anilmur
+ms.openlocfilehash: 87cd7c63939331190530a46071a6b4c40480562f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61463083"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84705094"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>媒体编码器高级工作流格式和编解码器
 
 > [!NOTE]
-> 有关高级编码器的问题，请发送电子邮件到 mepd@microsoft.com。
-> 
 > 本主题中所述的媒体编码器高级工作流媒体处理器在中国不可用。 
 
 本文档包含受**媒体编码器高级工作流**公开预览版编码器支持的输入和输出文件格式及编解码器列表。
@@ -35,7 +34,7 @@ Media Encoder Premium Workflow 输出格式和编解码器
 
 **媒体编码器高级工作流**支持[此](#closed_captioning)部分中所述的隐藏字幕。 
 
-## <a id="input_formats"></a>媒体编码器高级工作流输入格式和编解码器
+## <a name="media-encoder-premium-workflow-input-formats-and-codecs"></a><a id="input_formats"></a>Media Encoder Premium Workflow 输入格式和编解码器
 
 以下部分列出了此媒体处理器支持的作为输入的编解码器和文件格式。
 
@@ -72,7 +71,7 @@ Media Encoder Premium Workflow 输出格式和编解码器
 * Windows Media 音频
 * WAV/PCM
 
-## <a id="output_format"></a>媒体编码器高级工作流输出格式和编解码器
+## <a name="media-encoder-premium-workflow-output-formats-and-codecs"></a><a id="output_format"></a>Media Encoder Premium Workflow 输出格式和编解码器
 
 以下部分列出了支持作为此媒体处理器输入的编解码器和文件格式。
 
@@ -99,8 +98,6 @@ Media Encoder Premium Workflow 输出格式和编解码器
 * JPEG 缩图创建
 * HEVC（H.265；8 位和 10 位，Main 和 Main 10 Profile）
 
-  在某些情况下可获得对 HDR 10 的支持，有关详细信息，请联系 mepd@microsoft.com
-
 
 ### <a name="output-audio-codecs"></a>输出音频编解码器
 
@@ -115,7 +112,7 @@ Media Encoder Premium Workflow 输出格式和编解码器
 >[!NOTE]
 >如果编码为 Dolby® Digital (AC3)，则只能将输出写入到 ISO MP4 文件。
 
-## <a id="closed_captioning"></a>支持隐藏式字幕
+## <a name="support-for-closed-captioning"></a><a id="closed_captioning"></a>支持隐藏式字幕
 
 引入时，**媒体编码器高级工作流**支持：
 
@@ -140,6 +137,9 @@ Media Encoder Premium Workflow 输出格式和编解码器
 
 如果输入视频不包含隐藏式字幕，输出资产仍将包含一个空的 TTML 文件。 
 
+## <a name="need-help"></a>需要帮助？
+
+可以通过导航到[新建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来开具支持票证
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

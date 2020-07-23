@@ -1,32 +1,30 @@
 ---
-title: 适用于 B2B 来宾用户的一次性密码身份验证 - Azure Active Directory | Microsoft Docs
+title: 适用于 B2B 来宾用户的一次性密码身份验证 - Azure AD
 description: 本文介绍如何在不使用 Microsoft 帐户的情况下，使用电子邮件一次性密码对 B2B 来宾用户进行身份验证。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 04/08/2019
+ms.topic: how-to
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13808871d67bb47dce82c5a3493fd89b0dfe1dcd
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 714e4484c71b995bee186a2d94dc45c7ff82c50d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65952857"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551312"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>电子邮件一次性密码身份验证（预览）
 
-|     |
-| --- |
-| 电子邮件一次性密码是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
-|     |
+> [!NOTE]
+> 电子邮件一次性密码是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-本文介绍如何启用 B2B 来宾用户的电子邮件的一次性密码身份验证。 在无法通过 Azure AD、Microsoft 帐户 (MSA) 或 Google 联合身份验证等其他方式对 B2B 来宾用户进行身份验证时，可以使用电子邮件一次性密码功能对其进行身份验证。 使用一次性密码身份验证时，无需创建 Microsoft 帐户。 当来宾用户兑换邀请或访问共享资源时，他们可以请求临时代码，该代码会发送到他们的电子邮件地址。 他们输入此代码后，可以继续登录。
+本文介绍了如何启用适用于 B2B 来宾用户的电子邮件一次性密码身份验证。 在无法通过 Azure AD、Microsoft 帐户 (MSA) 或 Google 联合身份验证等其他方式对 B2B 来宾用户进行身份验证时，可以使用电子邮件一次性密码功能对其进行身份验证。 使用一次性密码身份验证时，无需创建 Microsoft 帐户。 当来宾用户兑换邀请或访问共享资源时，他们可以请求临时代码，该代码会发送到他们的电子邮件地址。 他们输入此代码后，可以继续登录。
 
 此功能目前处于预览状态（请参阅下面的[选择加入预览](#opting-in-to-the-preview)）。 预览后，会为所有租户默认启用此功能。
 
@@ -36,11 +34,11 @@ ms.locfileid: "65952857"
 ## <a name="user-experience-for-one-time-passcode-guest-users"></a>一次性密码来宾用户的用户体验
 借助一次性密码身份验证，来宾用户可以通过单击直接链接或使用邀请电子邮件来兑换邀请。 在任一情况下，浏览器中的消息都指示代码将发送到来宾用户的电子邮件地址。 来宾用户选择“发送代码”：
  
-   ![显示发送代码按钮的屏幕截图](media/one-time-passcode/otp-send-code.png)
+   ![显示“发送代码”按钮的屏幕截图](media/one-time-passcode/otp-send-code.png)
  
 密码将发送到用户的电子邮件地址。 用户从电子邮件检索密码，并在浏览器窗口中输入该密码：
  
-   ![显示输入的代码页的屏幕截图](media/one-time-passcode/otp-enter-code.png)
+   ![显示“输入代码”页的屏幕截图](media/one-time-passcode/otp-enter-code.png)
  
 来宾用户现在已通过身份验证，他们可以查看共享资源或继续登录。 
 
@@ -56,15 +54,15 @@ ms.locfileid: "65952857"
 
 在邀请时，没有迹象表明你邀请的用户将使用一次性密码身份验证。 但是当来宾用户登录时，如果不能使用其他身份验证方法，则可以使用一次性密码身份验证作为应变方法。 
 
-通过转到“Azure Active Directory” > “组织关系” > “来自其他组织的用户”，在 Azure 门户中查看通过一次性密码进行身份验证的来宾用户。
+通过依次转到“Azure Active Directory” > “用户”，可以在 Azure 门户中查看通过一次性密码进行身份验证的来宾用户。
 
-![显示具有源的 OTP 值的一次性密码用户的屏幕截图](media/one-time-passcode/otp-users.png)
+![显示具有 OTP 源值的一次性密码用户的屏幕截图](media/one-time-passcode/otp-users.png)
 
 > [!NOTE]
 > 在用户兑换一次性密码并稍后获得 MSA、Azure AD 帐户或其他联合帐户的情况下，他们将继续使用一次性密码进行身份验证。 如果要更新用户的身份验证方法，可以删除其来宾用户帐户并重新邀请用户。
 
 ### <a name="example"></a>示例
-邀请来宾用户 alexdoe@gmail.com 加入 Fabrikam，后者未设置 Google 联合身份验证。 Alex 没有 Microsoft 帐户。 会收到一次性密码进行身份验证。
+邀请来宾用户 alexdoe@gmail.com 加入 Fabrikam，后者未设置 Google 联合身份验证。 Alex 没有 Microsoft 帐户。 他将收到用于身份验证的一次性密码。
 
 ## <a name="opting-in-to-the-preview"></a>选择加入预览 
 选择加入的操作可能需要几分钟的时间才能生效。 之后，只有符合上述条件的新受邀用户才能使用一次性密码身份验证。 之前已兑换邀请的来宾用户将继续使用同一身份验证方法。
@@ -72,8 +70,7 @@ ms.locfileid: "65952857"
 ### <a name="to-opt-in-using-the-azure-ad-portal"></a>使用 Azure AD 门户选择加入
 1.  以 Azure AD 全局管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
 2.  在导航窗格中选择“Azure Active Directory”。
-3.  在“管理”下，选择“组织关系”。
-4.  选择“设置”。
+3.  依次选择“外部标识” > “外部协作设置”。
 5.  在“为来宾启用电子邮件一次性密码(预览)”下，选择“是”。
  
 ### <a name="to-opt-in-using-powershell"></a>使用 PowerShell 选择加入
@@ -139,8 +136,7 @@ $currentpolicy -ne $null
 ### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>使用 Azure AD 门户禁用预览
 1.  以 Azure AD 全局管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
 2.  在导航窗格中选择“Azure Active Directory”。
-3.  在“管理”下，选择“组织关系”。
-4.  选择“设置”。
+3.  依次选择“外部标识” > “外部协作设置”。
 5.  在“为来宾启用电子邮件一次性密码(预览)”下，选择“否”。
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>使用 PowerShell 禁用预览

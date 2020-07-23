@@ -1,26 +1,25 @@
 ---
-title: 教程：使用 Apache Hive on Azure HDInsight 执行提取、转换、加载 (ETL) 操作
+title: 教程：使用 Azure HDInsight 提取、转换和加载数据
 description: 本教程介绍如何从原始 CSV 数据集提取数据，使用 Apache Hive on Azure HDInsight 将其转换，然后使用 Sqoop 将已转换的数据加载到 Azure SQL 数据库。
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 02/21/2019
+ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: be7ce4d96b7c1bd17853447448f06070637c7855
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: b247a72b5d7db9892c6a2a763b7b71dc5f972d95
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939195"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045291"
 ---
-# <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>教程：使用 Apache Hive on Azure HDInsight 提取、转换和加载数据
+# <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>教程：使用 Azure HDInsight 提取、转换和加载数据
 
 本教程执行 ETL 操作：提取、转换和加载数据。 有了原始 CSV 数据文件以后，将其导入 Azure HDInsight 群集，使用 Apache Hive 对其进行转换，然后使用 Apache Sqoop 将其加载到 Azure SQL 数据库。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 提取数据并将其上传到 HDInsight 群集。
@@ -39,14 +38,11 @@ ms.locfileid: "64939195"
 
     请参阅[快速入门：通过 Azure 门户在 Azure HDInsight 中开始使用 Apache Hadoop 和 Apache Hive](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal)。
 
-* **Azure SQL 数据库**：使用 Azure SQL 数据库作为目标数据存储。 如果没有 SQL 数据库，请参阅[在 Azure 门户中创建 Azure SQL 数据库](../../sql-database/sql-database-get-started.md)。
+* **Azure SQL 数据库**：使用 Azure SQL 数据库作为目标数据存储。 如果 Azure SQL 数据库中没有数据库，请参阅[通过 Azure 门户在 Azure SQL 数据库中创建数据库](../../sql-database/sql-database-get-started.md)。
 
 * **Azure CLI**：如果尚未安装 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 * **安全外壳 (SSH) 客户端**：有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Hadoop)](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)。
-
-> [!IMPORTANT]
-> 本文中的步骤需要一个使用 Linux 的 HDInsight 群集。 Linux 是 Azure HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../../hdinsight/hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 ## <a name="download-the-flight-data"></a>下载航班数据
 
@@ -96,26 +92,26 @@ ms.locfileid: "64939195"
 
    此命令会提取 **.csv** 文件。
 
-4. 使用以下命令创建 Data Lake Storage Gen2 文件系统。
+4. 使用以下命令创建 Data Lake Storage Gen2 容器。
 
    ```bash
-   hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/
+   hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
    ```
 
-   将 `<file-system-name>` 占位符替换为你要为文件系统提供的名称。
+   将 `<container-name>` 占位符替换为你要为容器指定的名称。
 
    将 `<storage-account-name>` 占位符替换为存储帐户的名称。
 
 5. 使用以下命令创建目录。
 
    ```bash
-   hdfs dfs -mkdir -p abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data
+   hdfs dfs -mkdir -p abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data
    ```
 
 6. 使用以下命令将 *.csv* 文件复制到目录：
 
    ```bash
-   hdfs dfs -put "<file-name>.csv" abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data/
+   hdfs dfs -put "<file-name>.csv" abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data/
    ```
 
    如果文件名包含空格或特殊字符，请对文件名使用引号。
@@ -132,7 +128,7 @@ ms.locfileid: "64939195"
    nano flightdelays.hql
    ```
 
-2. 修改以下文本，将 `<file-system-name>` 和 `<storage-account-name>` 占位符值替换为文件系统名称和存储帐户名称。 然后将文本复制并粘贴到 nano 控制台中，方法是同时按 SHIFT 键和鼠标右键单击按钮。
+2. 修改以下文本，将 `<container-name>` 和 `<storage-account-name>` 占位符替换为容器和存储帐户名称。 然后将文本复制并粘贴到 nano 控制台中，方法是同时按 SHIFT 键和鼠标右键单击按钮。
 
     ```hiveql
     DROP TABLE delays_raw;
@@ -164,14 +160,14 @@ ms.locfileid: "64939195"
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     STORED AS TEXTFILE
-    LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data';
+    LOCATION 'abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data';
 
     -- Drop the delays table if it exists
     DROP TABLE delays;
     -- Create the delays table and populate it with data
     -- pulled in from the CSV file (via the external table defined previously)
     CREATE TABLE delays
-    LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/processed'
+    LOCATION 'abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/processed'
     AS
     SELECT YEAR AS year,
         FL_DATE AS flight_date,
@@ -222,7 +218,7 @@ ms.locfileid: "64939195"
     GROUP BY origin_city_name;
     ```
 
-   此查询会检索遇到天气延迟的城市的列表以及平均延迟时间，并将其保存到 `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` 中。 稍后，Sqoop 会从该位置读取数据并将其导出到 Azure SQL 数据库。
+   此查询会检索遇到天气延迟的城市的列表以及平均延迟时间，并将其保存到 `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` 中。 稍后，Sqoop 会从该位置读取数据并将其导出到 Azure SQL 数据库。
 
 7. 若要退出 Beeline，请在提示符处输入 `!quit`。
 
@@ -238,9 +234,9 @@ ms.locfileid: "64939195"
 
 4. 针对要使用的数据库的名称进行筛选。 服务器名称在“服务器名称”列中列出。
 
-    ![获取 Azure SQL 服务器的详细信息](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "获取 Azure SQL 服务器的详细信息")
+    ![获取 Azure SQL 服务器详细信息](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "获取 Azure SQL 服务器详细信息")
 
-    有多种方法可连接到 SQL 数据库并创建表。 以下步骤从 HDInsight 群集中使用 [FreeTDS](http://www.freetds.org/)。
+    有多种方法可连接到 SQL 数据库并创建表。 以下步骤从 HDInsight 群集中使用 [FreeTDS](https://www.freetds.org/)。
 
 5. 若要安装 FreeTDS，请使用以下命令从 SSH 连接到群集：
 
@@ -248,12 +244,12 @@ ms.locfileid: "64939195"
    sudo apt-get --assume-yes install freetds-dev freetds-bin
    ```
 
-6. 安装完成后，使用以下命令连接到 SQL 数据库服务器。
+6. 安装完成后，使用以下命令连接到 SQL 数据库。
 
    ```bash
    TDSVER=8.0 tsql -H '<server-name>.database.windows.net' -U '<admin-login>' -p 1433 -D '<database-name>'
     ```
-   * 将 `<server-name>` 占位符替换为 SQL 数据库服务器名称。
+   * 将 `<server-name>` 占位符替换为逻辑 SQL 服务器名称。
 
    * 使用 SQL 数据库的管理员登录名替换 `<admin-login>` 占位符。
 
@@ -304,7 +300,7 @@ ms.locfileid: "64939195"
 
 ## <a name="export-and-load-the-data"></a>导出和加载数据
 
-在前面的部分中，已经在 `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` 位置复制了转换后的数据。 本部分使用 Sqoop 将数据从 `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` 导出到在 Azure SQL 数据库中创建的表。
+在前面的部分中，已经在 `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` 位置复制了转换后的数据。 本部分使用 Sqoop 将数据从 `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` 导出到在 Azure SQL 数据库中创建的表。
 
 1. 使用以下命令验证 Sqoop 是否可以查看 SQL 数据库：
 
@@ -317,7 +313,7 @@ ms.locfileid: "64939195"
 2. 使用以下命令将 **hivesampletable** 表中的数据导出到 **delays** 表：
 
    ```bash
-   sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<file-system-name>@.dfs.core.windows.net/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
+   sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<container-name>@.dfs.core.windows.net/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
    ```
 
    Sqoop 连接到包含 **delays** 表的数据库，并将数据从 `/tutorials/flightdelays/output` 目录导出到 **delays** 表。

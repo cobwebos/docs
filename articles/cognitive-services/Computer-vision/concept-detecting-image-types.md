@@ -1,5 +1,5 @@
 ---
-title: 检测图像类型 - 计算机视觉
+title: 映像类型检测-计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 与计算机视觉 API 的图像类型检测功能相关的概念。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 37cdac16a51a30bdaf1ba0266bab7fdd1f2990f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4e6c2db5333962d7ae43534998ffc1c48b0dba45
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60368273"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80244556"
 ---
 # <a name="detecting-image-types-with-computer-vision"></a>使用计算机视觉检测图像类型
 
@@ -26,7 +26,7 @@ ms.locfileid: "60368273"
 
 计算机视觉可分析图像，并通过 0-3 的量表对图像为剪贴画的可能性进行评级，如下表中所示。
 
-| Value | 含义 |
+| 值 | 含义 |
 |-------|---------|
 | 0 | 非剪贴画 |
 | 1 | 不明确 |
@@ -113,6 +113,9 @@ ms.locfileid: "60368273"
 }
 ```
 
-## <a name="next-steps"></a>后续步骤
+## <a name="use-the-api"></a>使用 API
 
-请参阅[分析图像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)参考文档，了解如何检测图像类型。
+映像类型检测功能是[分析映像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API 的一部分。 可以通过本机 SDK 或 REST 调用来调用此 API。 将 `ImageType` 包括在 **visualFeatures** 查询参数中。 然后，在获取完整 JSON 响应时，就只需分析 `"imageType"` 部分内容的字符串。
+
+* [快速入门：计算机视觉 .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [快速入门：分析图像（REST API）](./quickstarts/csharp-analyze.md)

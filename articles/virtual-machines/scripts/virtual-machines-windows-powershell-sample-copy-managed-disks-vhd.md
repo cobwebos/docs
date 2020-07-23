@@ -1,26 +1,24 @@
 ---
-title: Azure PowerShell 脚本示例 - 将托管磁盘的 VHD 导出/复制到不同区域中的存储帐户 | Microsoft Docs
+title: 将托管磁盘的 VHD 导出/复制到不同区域中的存储帐户 - PowerShell 示例
 description: Azure PowerShell 脚本示例 - 将托管磁盘的 VHD 导出/复制到相同或不同区域中的存储帐户
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
 manager: kavithag
-editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/17/2018
 ms.author: ramankum
-ms.openlocfilehash: 1bb116f2a2153515f3b61c050f0c952523c13528
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 8388863bb88e3e97d16ad7c80aad6387cf9e03b9
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55976622"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459366"
 ---
 # <a name="exportcopy-the-vhd-of-a-managed-disk-to-a-storage-account-in-different-region-with-powershell"></a>使用 PowerShell 将托管磁盘的 VHD 导出/复制到不同区域中的存储帐户
 
@@ -30,7 +28,7 @@ ms.locfileid: "55976622"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+ 
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -41,7 +39,7 @@ ms.locfileid: "55976622"
 
 此脚本使用以下命令生成托管磁盘的 SAS URI，然后使用该 SAS URI 将基础 VHD 复制到存储帐户。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [Grant-AzDiskAccess](https://docs.microsoft.com/powershell/module/az.compute/grant-azdiskaccess) | 为托管磁盘生成 SAS URI，该 SAS URI 用于将基础 VHD 复制到存储帐户。 |
 | [New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/New-AzureStorageContext) | 使用帐户名称和密钥创建存储帐户上下文。 可以使用此上下文对存储帐户执行读取/写入操作。 |

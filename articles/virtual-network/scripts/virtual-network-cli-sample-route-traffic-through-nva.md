@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本示例 - 通过网络虚拟设备路由流量 | Microsoft Docs
+title: 通过防火墙网络虚拟设备路由流量 - Azure CLI 脚本示例
 description: Azure CLI 脚本示例 - 通过防火墙网络虚拟设备路由流量。
 services: virtual-network
 documentationcenter: virtual-network
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 2e5ec39e2d8fe1636018ac59dba372bd0faf31f4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d8704c34d59a8f735d060a7c7ca6463034883714
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716072"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74083821"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance-script-sample"></a>通过网络虚拟设备脚本示例路由流量
 
@@ -47,7 +47,7 @@ az group delete --name MyResourceGroup --yes
 
 此脚本使用以下命令创建资源组、虚拟网络和网络安全组。 下表中的每条命令均链接到特定于命令的文档：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/azure/group) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](/cli/azure/network/vnet) | 创建 Azure 虚拟网络和前端子网。 |

@@ -1,26 +1,18 @@
 ---
-title: 在 Azure 中防御推理执行的指南 | Microsoft Docs
+title: 在 Azure 中防御推理执行的指南
 description: 有关在 Azure 中防御推理执行旁道漏洞的指南。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 keywords: 幽灵,崩溃,鬼魂
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
-ms.date: 06/04/2019
+ms.topic: conceptual
+ms.date: 11/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 0302b29103fbe993589ee4d3f44b8a5fff5bd77c
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
-ms.translationtype: MT
+ms.openlocfilehash: 9477b23b0d9ce42fb6c860f003ee80681354cef3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735231"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81865684"
 ---
 # <a name="guidance-for-mitigating-speculative-execution-side-channel-vulnerabilities-in-azure"></a>有关在 Azure 中防御推理执行旁道漏洞的指南
 

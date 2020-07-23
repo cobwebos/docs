@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: e5d32d1bc3bd704b03e58c62251a323ed3f4662c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61229044"
 ---
 # <a name="generate-a-thumbnail-sprite"></a>生成缩略图子画面  
@@ -33,7 +33,7 @@ ms.locfileid: "61229044"
 
     1. 若将 SpriteColumn 设置为 M > = 1，输出图像则是带有 M 列的矩形。 若通过 #2 生成的缩略图数量不是 M 的精确倍数，则最后一行将不完整且留有黑色像素。  
 
-下面是一个示例：
+以下是示例：
 
 ```json
 {

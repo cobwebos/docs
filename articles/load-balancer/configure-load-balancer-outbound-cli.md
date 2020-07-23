@@ -1,24 +1,23 @@
 ---
 title: 使用 Azure CLI 配置负载均衡和出站规则
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: 本文介绍如何使用 Azure CLI 在标准负载均衡器中配置负载均衡和出站规则。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
-ms.author: kumud
-ms.openlocfilehash: f28088a1a0586964092a0b5f86ce8bf0f95402cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: allensu
+ms.openlocfilehash: 2b326c6c58b4685b6e73d0f9a641a2f90807d705
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66122443"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84803750"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-using-azure-cli"></a>使用 Azure CLI 在标准负载均衡器中配置负载均衡和出站规则
 
@@ -28,13 +27,13 @@ ms.locfileid: "66122443"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.28 版或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.28 版或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-resource-group"></a>创建资源组
 
 使用 [az group create](https://docs.microsoft.com/cli/azure/group) 创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-以下示例在“eastus2”位置创建名为“myresourcegroupoutbound”的资源组：
+以下示例在“eastus2”** 位置创建名为“myresourcegroupoutbound”的资源组**：
 
 ```azurecli-interactive
   az group create \
@@ -49,7 +48,7 @@ ms.locfileid: "66122443"
     --resource-group myresourcegroupoutbound \
     --name myvnetoutbound \
     --address-prefix 192.168.0.0/16 \
-    --subnet-name mysubnetoutbound
+    --subnet-name mysubnetoutbound \
     --subnet-prefix 192.168.0.0/24
 ```
 
@@ -169,7 +168,7 @@ az network lb outbound-rule create \
 
 如果你不想要使用独立的出站池，可以更改上述命令中的地址池参数，以指定 *bepoolinbound*。  我们建议使用独立的池，以提高灵活性，并方便阅读最终的配置。
 
-此时，可以使用 [az network nic ip-config address-pool add](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest)，通过更新相应 NIC 资源的 IP 配置来继续将 VM 添加到后端池 *bepoolinbound* __和__ *bepooloutbound*。
+此时，可以使用 *az network nic ip-config address-pool add*，通过更新相应 NIC 资源的 IP 配置来继续将 VM 添加到后端池 __bepoolinbound__ *和* [bepooloutbound](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

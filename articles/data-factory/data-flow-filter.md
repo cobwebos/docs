@@ -1,37 +1,62 @@
 ---
-title: Azure 数据工厂映射数据流筛选器转换
-description: Azure 数据工厂映射数据流筛选器转换
+title: 映射数据流中的筛选转换
+description: 使用 Azure 数据工厂映射数据流中的筛选器转换筛选出行
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/03/2019
-ms.openlocfilehash: e0b41850c149ff7095333cf77b780dec1f03b882
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.custom: seo-lt-2019
+ms.date: 05/26/2020
+ms.openlocfilehash: 8189228d6707812fb943e9925dc2bbf1b6da4972
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234413"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84112811"
 ---
-# <a name="azure-data-factory-filter-transformation"></a>Azure 数据工厂筛选器转换
+# <a name="filter-transformation-in-mapping-data-flow"></a>映射数据流中的筛选转换
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-筛选器转换提供行筛选功能。 生成定义筛选器条件的表达式。 单击文本框，启动表达式生成器。 在表达式生成器中，生成筛选器表达式，控制当前数据流中允许传递（筛选）到下一转换的行。 将 SQL 语句的 WHERE 子句的筛选器转换。
+筛选器转换允许基于条件进行行筛选。 输出流包括与筛选条件匹配的所有行。 筛选器转换类似于 SQL 中的 WHERE 子句。
 
-## <a name="filter-on-loanstatus-column"></a>对 loan_status 列进行筛选：
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4xnxN]
+
+## <a name="configuration"></a>配置
+
+使用 "数据流表达式生成器" 输入筛选条件的表达式。 若要打开 "表达式生成器"，请单击蓝色框。 筛选条件的类型必须为布尔值。 有关如何创建表达式的详细信息，请参阅[表达式生成器](concepts-data-flow-expression-builder.md)文档。
+
+![筛选转换](media/data-flow/filter1.png "筛选转换")
+
+## <a name="data-flow-script"></a>数据流脚本
+
+### <a name="syntax"></a>语法
 
 ```
-in([‘Default’, ‘Charged Off’, ‘Fully Paid’], loan_status).
+<incomingStream>
+    filter(
+        <conditionalExpression>
+    ) ~> <filterTransformationName>
 ```
 
-“电影”演示的“年份”列中的筛选器：
+### <a name="example"></a>示例
+
+下面的示例是一个名为的筛选器转换 `FilterBefore1960` ，它采用传入流 `CleanData` 。 筛选条件是表达式 `year <= 1960` 。
+
+在数据工厂 UX 中，此转换如下图所示：
+
+![筛选转换](media/data-flow/filter1.png "筛选转换")
+
+此转换的数据流脚本位于下面的代码片段中：
 
 ```
-year > 1980
+CleanData
+    filter(
+        year <= 1960
+    ) ~> FilterBefore1960
+
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-请尝试筛选转换，一个列[选择转换](data-flow-select.md)
+用[select 转换](data-flow-select.md)筛选出列

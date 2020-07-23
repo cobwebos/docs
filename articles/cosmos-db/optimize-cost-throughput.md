@@ -1,17 +1,17 @@
 ---
 title: 在 Azure Cosmos DB 中优化吞吐量成本
 description: 本文介绍如何优化 Azure Cosmos DB 中存储的数据的吞吐量成本。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: ddbec882675dba4724406ad1ea8079df377c34fc
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.date: 02/07/2020
+ms.openlocfilehash: 548faa6c702c599ed766c7f03123dd02fb43684d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967302"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610721"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中优化预配的吞吐量成本
 
@@ -29,7 +29,7 @@ ms.locfileid: "65967302"
 
 下面是确定预配吞吐量策略时可以参考的一些指导原则：
 
-**对于以下情况，考虑针对 Azure Cosmos DB 数据库（包含一组容器）预配吞吐量**：
+**对于以下情况，考虑针对 Azure Cosmos 数据库（包含一组容器）预配吞吐量**：
 
 1. 有几十个 Azure Cosmos 容器，并想要在部分或所有容器之间共享吞吐量。 
 
@@ -58,14 +58,14 @@ ms.locfileid: "65967302"
 |SQL API|数据库|容器|
 |Azure Cosmos DB 的用于 MongoDB 的 API|数据库|集合|
 |Cassandra API|密钥空间|表|
-|Gremlin API|数据库帐户|图形|
+|Gremlin API|数据库帐户|Graph|
 |表 API|数据库帐户|表|
 
 在不同的级别预配吞吐量可以根据工作负荷特征优化成本。 如前所述，随时能够以编程方式针对单个容器或者同时针对一组容器增加或减少预配的吞吐量。 根据工作负荷的变化弹性缩放吞吐量，只需为配置的吞吐量付费。 如果单个容器或一组容器分布在多个区域之间，则所有区域都能保证提供针对这些容器配置的吞吐量。
 
 ## <a name="optimize-with-rate-limiting-your-requests"></a>使用请求的速率限制进行优化
 
-对于不易受延迟影响的工作负荷，可以预配更低的吞吐量，并在实际吞吐量超过预配的吞吐量时，让应用程序处理速率限制。 服务器将抢先结束出现 RequestRateTooLarge（HTTP 状态代码 429）的请求并返回 `x-ms-retry-after-ms` 标头，该标头指示重试请求之前用户必须等待的时间长短（以毫秒为单位）。 
+对于不易受延迟影响的工作负荷，可以预配更低的吞吐量，并在实际吞吐量超过预配的吞吐量时，让应用程序处理速率限制。 服务器将抢先结束出现 `RequestRateTooLarge`（HTTP 状态代码 429）的请求并返回 `x-ms-retry-after-ms` 标头，该标头指示重试请求之前用户必须等待的时间长度（以毫秒为单位）。 
 
 ```html
 HTTP Status 429, 
@@ -77,15 +77,13 @@ HTTP Status 429,
 
 本机 SDK（.NET/.NET Core、Java、Node.js 和 Python）隐式捕获此响应，遵循服务器指定的 retry-after 标头，并重试请求。 除非多个客户端同时访问你的帐户，否则下次重试将会成功。
 
-如果累计有多个客户端一贯在超过请求速率的情况下运行，则当前设置为 9 的默认重试计数可能并不足够。 在这种情况下，客户端会向应用程序引发 `DocumentClientException` 并返回状态代码 429。 可以通过在 ConnectionPolicy 实例上设置 `RetryOptions` 来更改默认重试计数。 默认情况下，如果请求继续以高于请求速率的方式运行，则在 30 秒的累积等待时间后将返回 DocumentClientException 和状态代码 429。 即使当前的重试计数小于最大重试计数（默认值 9 或用户定义的值），也会发生这种情况。 
+如果累计有多个客户端一贯在超过请求速率的情况下运行，则当前设置为 9 的默认重试计数可能并不足够。 在这种情况下，客户端会向应用程序引发 `RequestRateTooLargeException` 并返回状态代码 429。 可以通过在 ConnectionPolicy 实例上设置 `RetryOptions` 来更改默认重试计数。 默认情况下，如果请求继续以高于请求速率的方式运行，则在 30 秒的累积等待时间后返回状态代码为 429 的 `RequestRateTooLargeException`。 即使当前的重试计数小于最大重试计数（默认值 9 或用户定义的值），也会发生这种情况。 
 
-[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) 设置为 3，因此，在这种情况下，如果请求操作由于超过集合的预留吞吐量而受到速率限制，则请求操作将重试三次，然后向应用程序引发异常。 [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) 设置为 60，因此，在这种情况下，如果自首次请求以来，累积重试等待时间（以秒为单位）超过 60 秒，则会引发异常。
+[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) 设置为 3，因此在这种情况下，如果请求操作因超出容器的保留吞吐量而受到速率限制，则请求操作会重试三次，然后再向应用程序引发异常。 [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) 设置为 60，因此在这种情况下，如果自第一次请求以来的累积重试等待时间（以秒为单位）超过 60 秒，则会引发异常。
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
-
 connectionPolicy.RetryOptions.MaxRetryAttemptsOnThrottledRequests = 3; 
-
 connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 ```
 
@@ -119,13 +117,13 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 可以在 Azure 门户中监视预配的 RU 总数、受速率限制的请求数，以及已消耗的 RU 数。 下图显示了示例用量指标：
 
-![在 Azure 门户中监视请求单位数](./media/optimize-cost-throughput/monitoring.png)
+:::image type="content" source="./media/optimize-cost-throughput/monitoring.png" alt-text="在 Azure 门户中监视请求单位数":::
 
 还可以设置警报，以检查受速率限制的请求数是否超过了特定阈值。 有关更多详细信息，请参阅[如何监视 Azure Cosmos DB](use-metrics.md) 一文。 这些警报可以向帐户管理员发送电子邮件，或者调用自定义 HTTP Webhook 或 Azure 函数来自动增加预配的吞吐量。 
 
 ## <a name="scale-your-throughput-elastically-and-on-demand"></a>按需弹性缩放吞吐量 
 
-由于你需要为预配的吞吐量付费，因此，使预配的吞吐量符合需要有助于避免未使用的吞吐量产生费用。 随时可以按需扩展或缩减预配的吞吐量。  
+由于你需要为预配的吞吐量付费，因此，使预配的吞吐量符合需要有助于避免未使用的吞吐量产生费用。 随时可以按需扩展或缩减预配的吞吐量。 如果吞吐量需求非常可预测，则可以通过 Azure Functions 使用计时器触发器来[按计划增加或减少吞吐量](scale-on-schedule.md)。 
 
 * 监视 RU 消耗量以及受速率限制的请求比率可以发现，在整个一天或一周中，并不需要保持恒定的预配吞吐量。 在晚上或周末，收到的流量可能更少。 使用 Azure 门户或者 Azure Cosmos DB 本机 SDK 或 REST API 可以随时缩放预配的吞吐量。 Azure Cosmos DB REST API 提供终结点用于以编程方式更新容器的性能级别，以及根据日期时间或者星期日期直接在代码中调整吞吐量。 执行此操作不会造成任何停机，通常在一分钟内就能产生效果。 
 
@@ -157,7 +155,7 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 1. 如果容器和数据库明显超过预配的吞吐量，应该检查预配的 RU 和消耗的 RU，并微调工作负荷。  
 
-2. 有一种方法可以估算应用程序所需的预留吞吐量：在针对应用程序所用的代表性 Azure Cosmos 容器或数据库运行典型操作时，记录与之相关的请求单位 (RU) 费用，然后估算预计每秒会执行的操作数目。 同时请务必测量并包含典型查询及其用量。 若要了解如何以编程方式或使用门户估算查询的 RU 成本，请参阅[优化查询成本](online-backup-and-restore.md)。 
+2. 有一种方法可以估算应用程序所需的预留吞吐量：在针对应用程序所用的代表性 Azure Cosmos 容器或数据库运行典型操作时，记录与之相关的请求单位 (RU) 费用，然后估算预计每秒会执行的操作数目。 同时请务必测量并包含典型查询及其用量。 若要了解如何以编程方式或使用门户估算查询的 RU 成本，请参阅[优化查询成本](optimize-cost-queries.md)。 
 
 3. 获取操作及其 RU 成本的另一种方法是启用 Azure Monitor 日志，它会提供操作/持续时间的细目以及请求费用。 Azure Cosmos DB 提供每个操作的请求费用，因此，可以存储响应中的每笔操作费用，然后将其用于分析。 
 
@@ -180,7 +178,7 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 接下来，可通过以下文章详细了解 Azure Cosmos DB 中的成本优化：
 
 * 详细了解[开发和测试优化](optimize-dev-test.md)
-* 详细了解 [Azure Cosmos DB 帐单](understand-your-bill.md)
+* 详细了解[了解 Azure Cosmos DB 帐单](understand-your-bill.md)
 * 详细了解如何[优化存储成本](optimize-cost-storage.md)
 * 详细了解如何[优化读取和写入成本](optimize-cost-reads-writes.md)
 * 详细了解如何[优化查询成本](optimize-cost-queries.md)

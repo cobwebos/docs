@@ -1,26 +1,19 @@
 ---
-title: Azure PowerShell 脚本示例 - 将自定义域分配到 Web 应用 | Microsoft 文档
-description: Azure PowerShell 脚本示例 - 将自定义域分配到 Web 应用
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: PowerShell：分配自定义域
+description: 了解如何使用 Azure PowerShell 自动部署和管理应用服务。 此示例演示如何将自定义域分配到应用。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 356f5af9-f62e-411c-8b24-deba05214103
-ms.service: app-service-web
-ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 03/20/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 2d8c79d34d4fae26b203ccd76ecc1bf745472bb6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 4629157142c17122c0aa6c74c1918c1d01d796c0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136571"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044725"
 ---
 # <a name="assign-a-custom-domain-to-a-web-app-using-powershell"></a>使用 PowerShell 将自定义域分配到 Web 应用
 
@@ -46,7 +39,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | 创建应用服务计划。 |

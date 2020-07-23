@@ -1,44 +1,35 @@
 ---
-title: Azure Service Fabric 编程缩放 | Microsoft Docs
+title: Azure Service Fabric 编程缩放
 description: 根据自定义触发器以编程方式缩减或扩展 Azure Service Fabric 群集
-services: service-fabric
-documentationcenter: .net
 author: mjrousos
-manager: jonjung
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: 128f28d2a8b97feb3d20c34b7468b60c446a78a6
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 19f773fa781c51f64412039201842a7af4c29052
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306935"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261120"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>以编程方式缩放 Service Fabric 群集 
 
-在 Azure 中运行的 Service Fabric 群集在虚拟机规模集的基础上构建。  [群集缩放](./service-fabric-cluster-scale-up-down.md)介绍如何手动缩放或使用自动缩放规则缩放 Service Fabric 群集。 本文介绍如何使用 fluent Azure 计算 SDK（更高级的方案）管理凭据和缩小或扩大群集。 有关概述，请阅读[以编程方式协调 Azure 缩放操作](service-fabric-cluster-scaling.md#programmatic-scaling)。 
+在 Azure 中运行的 Service Fabric 群集在虚拟机规模集的基础上构建。  [群集缩放](./service-fabric-cluster-scale-in-out.md)介绍如何手动缩放或使用自动缩放规则缩放 Service Fabric 群集。 本文介绍如何使用 fluent Azure 计算 SDK（更高级的方案）管理凭据和缩小或扩大群集。 有关概述，请阅读[以编程方式协调 Azure 缩放操作](service-fabric-cluster-scaling.md#programmatic-scaling)。 
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="manage-credentials"></a>管理凭据
-编写服务来处理缩放的难题之一是，该服务必须能够在无需交互式登录的情况下访问虚拟机规模集资源。 如果缩放服务可修改自身的 Service Fabric 应用程序，则访问 Service Fabric 群集的过程就很轻松，但访问规模集则需要提供凭据。 若要登录，可以使用[服务主体](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)附带[Azure CLI](https://github.com/azure/azure-cli)。
+编写服务来处理缩放的难题之一是，该服务必须能够在无需交互式登录的情况下访问虚拟机规模集资源。 如果缩放服务可修改自身的 Service Fabric 应用程序，则访问 Service Fabric 群集的过程就很轻松，但访问规模集则需要提供凭据。 若要登录，可以使用在 [Azure CLI](https://github.com/azure/azure-cli) 中创建的[服务主体](/cli/azure/create-an-azure-service-principal-azure-cli)。
 
 可以使用以下步骤创建服务主体：
 
-1. 登录到 Azure CLI (`az login`) 作为用户有权访问虚拟机规模集
+1. 以有权访问虚拟机规模集的用户身份登录到 Azure CLI (`az login`)
 2. 使用 `az ad sp create-for-rbac` 创建服务主体
     1. 记下 appId（在某些文档中称为“客户端 ID”）、名称、密码和租户供稍后使用。
     2. 还需要准备好订阅 ID（可使用 `az account list` 查看）
 
-Fluent 计算库可以按如下所示使用这些凭据登录 (请注意，核心 fluent Azure 类型类似于`IAzure`位于[Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/)包):
+Fluent 计算库可以使用这些凭据进行登录，如下所示（请注意，`IAzure` 等核心 Fluent Azure 类型位于 [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) 包中）：
 
 ```csharp
 var credentials = new AzureCredentials(new ServicePrincipalLoginInformation {
@@ -68,7 +59,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-也可以使用 PowerShell cmdlet 管理虚拟机规模集大小。 [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) 可以检索虚拟机规模集对象。 当前容量可通过 `.sku.capacity` 属性获得。 将容量更改为相应值后，可以使用 [`Update-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) 命令更新 Azure 中的虚拟机规模集。
+也可以使用 PowerShell cmdlet 管理虚拟机规模集大小。 [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) 可以检索虚拟机规模集对象。 当前容量可通过 `.sku.capacity` 属性获得。 将容量更改为相应值后，可以使用 [`Update-AzVmss`](/powershell/module/az.compute/update-azvmss) 命令更新 Azure 中的虚拟机规模集。
 
 手动添加节点时，添加规模集实例应该就能启动新的 Service Fabric 节点，因为规模集模板包含相应的扩展，可将新实例自动加入 Service Fabric 群集。 
 
@@ -128,6 +119,6 @@ await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 
 要开始实现自己的自动缩放逻辑，请先熟悉以下概念和有用的 API：
 
-- [手动或使用自动缩放规则缩放](./service-fabric-cluster-scale-up-down.md)
+- [手动或使用自动缩放规则缩放](./service-fabric-cluster-scale-in-out.md)
 - [用于 .NET 的 Fluent Azure 管理库](https://github.com/Azure/azure-sdk-for-net/tree/Fluent)（与 Service Fabric 群集的底层虚拟机规模集交互时非常有用）
-- [System.Fabric.FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient)（与 Service Fabric 群集及其节点交互时非常有用）
+- [System.Fabric.FabricClient](/dotnet/api/system.fabric.fabricclient)（与 Service Fabric 群集及其节点交互时非常有用）

@@ -1,26 +1,18 @@
 ---
-title: 验证 VPN 网关连接 | Microsoft 文档
+title: Azure VPN 网关：验证网关连接
 description: 本文介绍如何验证虚拟网络 VPN 网关连接。
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-service-management,azure-resource-manager
-ms.assetid: 7e3d1043-caa9-4472-96d3-832f4e2c91ee
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+ms.topic: how-to
 ms.date: 05/16/2017
 ms.author: cherylmc
-ms.openlocfilehash: bcece64a85a69c705b0f7f915dafe29123a2cd4a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 93a7c0bb15c17b6939d6d53018e4fed84b1ae020
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128358"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84984564"
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>验证 VPN 网关连接
 

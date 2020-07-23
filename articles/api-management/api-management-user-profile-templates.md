@@ -10,16 +10,15 @@ ms.assetid: 2e3b73ef-d223-44fe-9280-c3af3fd4a030
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 9d74cd3bd466578c61f8f12bf9b6e862c046e9bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1aef238ec0b947dda1417b567b343ae9d92754d9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61074810"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249506"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Azure API 管理中的用户配置文件模板
 通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页面的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](api-management-template-resources.md#strings)、[字形资源](api-management-template-resources.md#glyphs)和[页面控件](api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
@@ -35,14 +34,16 @@ ms.locfileid: "61074810"
 -   [更新帐户信息](#UpdateAccountInfo)  
   
 > [!NOTE]
->  示例默认模板包含在后续文档中，但是会因持续改进而有所更改。 通过导航到所需单个模板，可在开发人员门户中查看实时的默认模板。 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
+>  示例默认模板包含在后续文档中，但是会因持续改进而有所更改。 通过导航到所需单个模板，可在开发人员门户中查看实时的默认模板。 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](./api-management-developer-portal-templates.md)。  
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="Profile"></a> 配置文件  
+##  <a name="profile"></a><a name="Profile"></a> 配置文件  
  **配置文件**模板用于自定义开发人员门户中用户配置文件页的用户配置文件部分。  
   
- ![用户配置文件页](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "APIM 用户配置文件页")  
+ ![“用户配置文件”页](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "“APIM 用户配置文件”页")  
   
 ### <a name="default-template"></a>默认模板  
   
@@ -104,17 +105,17 @@ ms.locfileid: "61074810"
 > [!NOTE]
 >  [配置文件](#Profile)、[应用程序](#Applications)和[订阅](#Subscriptions)模板共享相同的数据模型，并接收相同的模板数据。  
   
-|属性|Type|描述|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
-|`firstName`|string|当前用户的名字。|  
-|`lastName`|string|当前用户的姓氏。|  
-|`companyName`|string|当前用户所在公司的名称。|  
-|`addresserEmail`|string|当前用户的电子邮件地址。|  
-|`developersUsageStatisticsLink`|string|相对 URL，用于查看当前用户的分析。|  
+|`firstName`|字符串|当前用户的名字。|  
+|`lastName`|字符串|当前用户的姓氏。|  
+|`companyName`|字符串|当前用户所在公司的名称。|  
+|`addresserEmail`|字符串|当前用户的电子邮件地址。|  
+|`developersUsageStatisticsLink`|字符串|相对 URL，用于查看当前用户的分析。|  
 |`subscriptions`|[订阅](api-management-template-data-model-reference.md#Subscription)实体的集合。|当前用户的订阅。|  
 |`applications`|[应用程序](api-management-template-data-model-reference.md#Application)实体的集合。|当前用户的应用程序。|  
-|`changePasswordUrl`|string|相对 URL，用于更改当前用户的密码。|  
-|`changeNameOrEmailUrl`|string|相对 URL，用于更改当前用户的名称和电子邮件。|  
+|`changePasswordUrl`|字符串|相对 URL，用于更改当前用户的密码。|  
+|`changeNameOrEmailUrl`|字符串|相对 URL，用于更改当前用户的名称和电子邮件。|  
 |`canChangePassword`|boolean|当前用户是否可更改其密码。|  
 |`isSystemUser`|boolean|当前用户是否为某个内置[组](api-management-key-concepts.md#groups)的成员。|  
   
@@ -184,10 +185,10 @@ ms.locfileid: "61074810"
 }  
 ```  
   
-##  <a name="Subscriptions"></a> 订阅  
+##  <a name="subscriptions"></a><a name="Subscriptions"></a> 订阅  
  **订阅**模板用于自定义开发人员门户中用户配置文件页的订阅部分。  
   
- ![用户订阅页](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "APIM 用户订阅页")  
+ ![“用户订阅”页](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "“APIM 用户订阅”页")  
   
 ### <a name="default-template"></a>默认模板  
   
@@ -325,17 +326,17 @@ ms.locfileid: "61074810"
 > [!NOTE]
 >  [配置文件](#Profile)、[应用程序](#Applications)和[订阅](#Subscriptions)模板共享相同的数据模型，并接收相同的模板数据。  
   
-|属性|Type|描述|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
-|`firstName`|string|当前用户的名字。|  
-|`lastName`|string|当前用户的姓氏。|  
-|`companyName`|string|当前用户所在公司的名称。|  
-|`addresserEmail`|string|当前用户的电子邮件地址。|  
-|`developersUsageStatisticsLink`|string|相对 URL，用于查看当前用户的分析。|  
+|`firstName`|字符串|当前用户的名字。|  
+|`lastName`|字符串|当前用户的姓氏。|  
+|`companyName`|字符串|当前用户所在公司的名称。|  
+|`addresserEmail`|字符串|当前用户的电子邮件地址。|  
+|`developersUsageStatisticsLink`|字符串|相对 URL，用于查看当前用户的分析。|  
 |`subscriptions`|[订阅](api-management-template-data-model-reference.md#Subscription)实体的集合。|当前用户的订阅。|  
 |`applications`|[应用程序](api-management-template-data-model-reference.md#Application)实体的集合。|当前用户的应用程序。|  
-|`changePasswordUrl`|string|相对 URL，用于更改当前用户的密码。|  
-|`changeNameOrEmailUrl`|string|相对 URL，用于更改当前用户的名称和电子邮件。|  
+|`changePasswordUrl`|字符串|相对 URL，用于更改当前用户的密码。|  
+|`changeNameOrEmailUrl`|字符串|相对 URL，用于更改当前用户的名称和电子邮件。|  
 |`canChangePassword`|boolean|当前用户是否可更改其密码。|  
 |`isSystemUser`|boolean|当前用户是否为某个内置[组](api-management-key-concepts.md#groups)的成员。|  
   
@@ -405,10 +406,10 @@ ms.locfileid: "61074810"
 }  
 ```  
   
-##  <a name="Applications"></a> 应用程序  
+##  <a name="applications"></a><a name="Applications"></a> 应用程序  
  **应用程序**模板用于自定义开发人员门户中用户配置文件页的订阅部分。  
   
- ![用户帐户应用程序页](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "APIM 用户帐户应用程序页")  
+ ![“用户帐户应用程序”页](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "“APIM 用户帐户应用程序”页")  
   
 ### <a name="default-template"></a>默认模板  
   
@@ -488,17 +489,17 @@ ms.locfileid: "61074810"
 > [!NOTE]
 >  [配置文件](#Profile)、[应用程序](#Applications)和[订阅](#Subscriptions)模板共享相同的数据模型，并接收相同的模板数据。  
   
-|属性|Type|描述|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
-|`firstName`|string|当前用户的名字。|  
-|`lastName`|string|当前用户的姓氏。|  
-|`companyName`|string|当前用户所在公司的名称。|  
-|`addresserEmail`|string|当前用户的电子邮件地址。|  
-|`developersUsageStatisticsLink`|string|相对 URL，用于查看当前用户的分析。|  
+|`firstName`|字符串|当前用户的名字。|  
+|`lastName`|字符串|当前用户的姓氏。|  
+|`companyName`|字符串|当前用户所在公司的名称。|  
+|`addresserEmail`|字符串|当前用户的电子邮件地址。|  
+|`developersUsageStatisticsLink`|字符串|相对 URL，用于查看当前用户的分析。|  
 |`subscriptions`|[订阅](api-management-template-data-model-reference.md#Subscription)实体的集合。|当前用户的订阅。|  
 |`applications`|[应用程序](api-management-template-data-model-reference.md#Application)实体的集合。|当前用户的应用程序。|  
-|`changePasswordUrl`|string|相对 URL，用于更改当前用户的密码。|  
-|`changeNameOrEmailUrl`|string|相对 URL，用于更改当前用户的名称和电子邮件。|  
+|`changePasswordUrl`|字符串|相对 URL，用于更改当前用户的密码。|  
+|`changeNameOrEmailUrl`|字符串|相对 URL，用于更改当前用户的名称和电子邮件。|  
 |`canChangePassword`|boolean|当前用户是否可更改其密码。|  
 |`isSystemUser`|boolean|当前用户是否为某个内置[组](api-management-key-concepts.md#groups)的成员。|  
   
@@ -568,10 +569,10 @@ ms.locfileid: "61074810"
 }  
 ```  
   
-##  <a name="UpdateAccountInfo"></a> 更新帐户信息  
- “更新帐户信息”模板用于自定义开发人员门户中的“更新帐户信息”页。  
+##  <a name="update-account-info"></a><a name="UpdateAccountInfo"></a> 更新帐户信息  
+ “更新帐户信息”模板用于自定义开发人员门户中的“更新帐户信息”页。    
   
- ![用户帐户信息页开发人员门户模板](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "APIM 用户帐户信息页开发人员门户模板")  
+ ![“用户帐户信息”页开发人员门户模板](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "“APIM 用户帐户信息”页开发人员门户模板")  
   
 ### <a name="default-template"></a>默认模板  
   

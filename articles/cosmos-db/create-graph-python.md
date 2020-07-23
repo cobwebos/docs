@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: lbosq
-ms.openlocfilehash: 18f54e64498c7809e662ceb71d1e497a0f275ad6
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.custom: tracking-python
+ms.openlocfilehash: 0f96cbd86921428a85aa69f3561252aeb7fd67b5
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480446"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118213"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>快速入门：在 Azure Cosmos DB 中使用 Python 和 Azure 门户创建图形数据库
 
@@ -26,22 +27,16 @@ ms.locfileid: "66480446"
 > * [PHP](create-graph-php.md)
 >  
 
-本快速入门介绍如何使用 Python 和 Azure Cosmos DB [Gremlin API](graph-introduction.md)，通过克隆 GitHub 中的示例来生成控制台应用。 此外，本快速入门还逐步讲解了如何使用基于 Web 的 Azure 门户创建 Azure Cosmos DB 帐户。   
+在本快速入门中，你将通过 Azure 门户创建和管理 Azure Cosmos DB Gremlin（图形）API 帐户，并使用从 GitHub 克隆的 Python 应用来添加数据。 Azure Cosmos DB 是一种多模型数据库服务，它通过全局分布和水平缩放功能让你快速创建和查询文档、表、键/值和图形数据库。
 
-Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可快速创建和查询文档、表、键/值和图形数据库，它们都受益于 Azure Cosmos DB 核心的全球分布和横向缩放功能。  
+## <a name="prerequisites"></a>先决条件
+- 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 或者[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 而无需 Azure 订阅。
+- [Python 3.5+](https://www.python.org/downloads/)，包括 [pip](https://pip.pypa.io/en/stable/installing/) 程序包安装程序。
+- [适用于 Gremlin 的 Python 驱动程序](https://github.com/apache/tinkerpop/tree/master/gremlin-python)。
+- [Git](https://git-scm.com/downloads)。
 
 > [!NOTE]
 > 本快速入门需要 2017 年 12 月 20 日之后创建的图形数据库帐户。 迁移至正式发布版后，现有帐户将支持 Python。
-
-## <a name="prerequisites"></a>先决条件
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]或者，无需 Azure 订阅即可[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，也无需缴纳费用或承诺金。
-
-此外：
-* [Python](https://www.python.org/downloads/) v3.5 或更高版本
-* [pip 包管理器](https://pip.pypa.io/en/stable/installing/)
-* [Git](https://git-scm.com/)
-* [Gremlin 的 Python 驱动程序](https://github.com/apache/tinkerpop/tree/master/gremlin-python)
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
@@ -77,9 +72,9 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 ## <a name="review-the-code"></a>查看代码
 
-此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看以下代码片段。 这些代码片段全部摘自 C:\git-samples\azure-cosmos-db-graph-python-getting-started\ 文件夹中的 connect.py 文件。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-information)。 
+此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看以下代码片段。 这些代码片段全部摘自 *C:\git-samples\azure-cosmos-db-graph-python-getting-started\\* 文件夹中的 *connect.py* 文件。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-information)。 
 
-* 在 `connect.py` 中的第 104 行对 Gremlin `client` 进行初始化：
+* Gremlin `client` 是在 *connect.py* 中的第 104 行初始化的：
 
     ```python
     ...
@@ -89,7 +84,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     ...
     ```
 
-* 在 `connect.py` 文件的开头声明一系列 Gremlin 步骤。 然后它们将通过 `client.submitAsync()` 方法执行：
+* *connect.py* 文件的开头声明了一系列 Gremlin 步骤。 然后它们将通过 `client.submitAsync()` 方法执行：
 
     ```python
     client.submitAsync(_gremlin_cleanup_graph)
@@ -99,13 +94,13 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 现在，返回到 Azure 门户，获取连接信息，并将信息复制到应用程序中。 借助这些设置，应用程序可以与托管的数据库进行通信。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，单击“密钥”  。 
+1. 在 [Azure 门户](https://portal.azure.com/)中，在你的 Azure Cosmos DB 帐户中，选择“密钥”。 
 
     复制 URI 值的第一部分。
 
-    ![在 Azure 门户的“密钥”页中，查看并复制访问密钥](./media/create-graph-python/keys.png)
+    :::image type="content" source="./media/create-graph-python/keys.png" alt-text="在 Azure 门户的“密钥”页中，查看并复制访问密钥":::
 
-2. 打开 connect.py 文件，并将 URI 值粘贴至第 104 行的 `<YOUR_ENDPOINT>` 位置：
+2. 打开 *connect.py* 文件，并将 URI 值粘贴至第 104 行的 `<YOUR_ENDPOINT>` 位置：
 
     ```python
     client = client.Client('wss://<YOUR_ENDPOINT>.gremlin.cosmosdb.azure.com:443/','g', 
@@ -133,7 +128,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
         password="<YOUR_PASSWORD>")
     ```
 
-4. 在 Azure 门户中，使用“复制”按钮复制主密钥，并将它粘贴到 `password=<YOUR_PASSWORD>` 参数中的 `<YOUR_PASSWORD>` 位置。
+4. 在“密钥”页上，使用“复制”按钮复制主密钥，并将它粘贴到 `password=<YOUR_PASSWORD>` 参数中的 `<YOUR_PASSWORD>` 位置。
 
     整个 `client` 对象定义现在应类似以下代码：
     ```python
@@ -142,7 +137,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
         password="asdb13Fadsf14FASc22Ggkr662ifxz2Mg==")
     ```
 
-6. 保存 `connect.py` 文件。
+6. 保存 *connect.py* 文件。
 
 ## <a name="run-the-console-app"></a>运行控制台应用
 
@@ -173,26 +168,27 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 <a id="add-sample-data"></a>
 ## <a name="review-and-add-sample-data"></a>查看并添加示例数据
 
-现在可以回到数据资源管理器，查看添加到图形的顶点，并添加其他数据点。
+插入顶点和边后，现在可以返回数据资源管理器，查看添加到图中的顶点，并添加其他数据点。
 
-1. 单击“数据资源管理器”  ，展开“sample-graph”  ，再依次单击“图形”  和“应用筛选器”  。 
+1. 在 Azure 门户中，在你的 Azure Cosmos DB 帐户中，选择“数据资源管理器”，展开“sample-graph”，再依次选择“图形”和“应用筛选器”。 
 
-   ![在 Azure 门户的数据资源管理器中创建新文档](./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png)
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png" alt-text="在 Azure 门户的数据资源管理器中创建新文档":::
 
-2. 在“结果”列表中，请注意添加到图形的新用户。  选择“ben”。请注意，他们已连接到 robin。  可以通过拖放操作来移动顶点，也可以通过滚动鼠标滚轮进行缩放，并能用双箭头放大图形。 
+2. 在“结果”列表中，请注意，图中添加了三个新用户。 可以通过拖放操作来移动顶点，也可以通过滚动鼠标滚轮进行缩放，并能用双箭头放大图形。 
 
-   ![在 Azure 门户数据资源管理器的图形中的新顶点](./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png)
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png" alt-text="在 Azure 门户数据资源管理器的图形中的新顶点":::
 
-3. 接下来，添加几个新用户。 单击“新建顶点”按钮，向图形添加数据。 
+3. 接下来，添加几个新用户。 选择“新建顶点”按钮，向图形中添加数据。
 
-   ![在 Azure 门户的数据资源管理器中创建新文档](./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png)
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="在 Azure 门户的数据资源管理器中创建新文档":::
 
-4. 输入标签“人员”  。
+4. 输入标签“人员”。
 
-5. 单击“添加属性”  ，添加下列所有属性。 注意，可以在图形中为每个人创建唯一属性。 仅 id 键是必需的。
+5. 选择“添加属性”，以添加下列每个属性。 注意，可以在图形中为每个人创建唯一属性。 仅 id 键是必需的。
 
     key|值|说明
     ----|----|----
+    pk|/pk| 
     id|ashley|顶点的唯一标识符。 如果未指定 id，将为你生成一个。
     gender|女| 
     技术 | java | 
@@ -200,39 +196,40 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     > [!NOTE]
     > 在本快速入门中创建未分区的集合。 但是，如果在创建集合过程中通过指定分区键创建了分区的集合，则需在每个新顶点中包括该分区键作为键。 
 
-6. 单击“确定”。  可能需要展开屏幕才能在屏幕底部看到“确定”。 
+6. 选择“确定”。 可能需要展开屏幕才能在屏幕底部看到“确定”。
 
-7. 再次单击“新建顶点”，添加其他新用户。  
+7. 再次选择“新建顶点”，添加其他新用户。 
 
-8. 输入标签“人员”  。
+8. 输入标签“人员”。
 
-9. 单击“添加属性”  ，添加下列所有属性：
+9. 选择“添加属性”，以添加下列每个属性：
 
     key|值|说明
     ----|----|----
+    pk|/pk| 
     id|rakesh|顶点的唯一标识符。 如果未指定 id，将为你生成一个。
     gender|男| 
     学校|MIT| 
 
-10. 单击“确定”。  
+10. 选择“确定”。 
 
-11. 单击“应用筛选器”  按钮（默认 `g.V()` 筛选器），显示图形中的所有值。 所有用户此时会显示在“结果”列表中。  
+11. 选择“应用筛选器”按钮（默认为 `g.V()` 筛选器），在图形中显示所有值。 所有用户此时会显示在“结果”列表中。 
 
-    添加更多数据时，可以使用筛选器来限制结果。 默认情况下，数据资源管理器使用 `g.V()` 检索图形中的所有顶点。 可以更改为其他[图形查询](tutorial-query-graph.md)（如 `g.V().count()`），以 JSON 格式返回图形中所有 顶点的计数。 如果更改了筛选器，请将筛选器更改回 `g.V()`，并单击“应用筛选器”  ，再次显示所有结果。
+    添加更多数据时，可以使用筛选器来限制结果。 默认情况下，数据资源管理器使用 `g.V()` 检索图形中的所有顶点。 可以更改为其他[图形查询](tutorial-query-graph.md)（如 `g.V().count()`），以 JSON 格式返回图形中所有 顶点的计数。 如果更改了筛选器，请将筛选器更改回 `g.V()`，并选择“应用筛选器”，再次显示所有结果。
 
-12. 现在可以连接 rakesh 与 ashley。 确保“ashley”  在“结果”  列表中为选中状态，然后单击右下侧“目标”  旁边的编辑按钮。 可能需要扩大窗口才能看到“属性”区域。 
+12. 现在可以连接 rakesh 与 ashley。 确保在“结果”列表中选中“ashley”，然后选择右下侧“目标”旁边的编辑按钮。 可能需要扩大窗口才能看到“属性”区域。
 
-    ![更改图形中某个顶点的目标。](./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png)
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png" alt-text="更改图形中某个顶点的目标":::
 
-13. 在“目标”  框中键入“rakesh”  ，在“Edge 标签”  框中键入“认识”  ，再选中复选框。
+13. 在“目标”框中键入“rakesh”，在“Edge 标签”框中键入“认识”，再选中复选框。
 
-    ![通过数据资源管理器在 ashley 和 rakesh 之间添加连接](./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png)
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png" alt-text="通过数据资源管理器在 ashley 和 rakesh 之间添加连接":::
 
-14. 现在，从结果列表中选择“rakesh”即可看到  ashley 和 rakesh 已连接。 
+14. 现在，从结果列表中选择“rakesh”即可看到 ashley 和 rakesh 已连接。 
 
-    ![在数据资源管理器中连接的两个顶点](./media/create-graph-python/azure-cosmosdb-graph-explorer.png)
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer.png" alt-text="在数据资源管理器中连接的两个顶点":::
 
-    这就完成了本教程的资源创建部分。 可以继续向图形添加顶点、修改现有顶点，也可以更改查询。 现在，回顾一下 Azure Cosmos DB 提供的指标，然后清理资源。 
+这就完成了本教程的资源创建部分。 可以继续向图形添加顶点、修改现有顶点，也可以更改查询。 现在，回顾一下 Azure Cosmos DB 提供的指标，然后清理资源。 
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 
@@ -244,7 +241,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门教程中，已了解如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建图形和运行应用。 现在可以使用 Gremlin 构建更复杂的查询，实现功能强大的图形遍历逻辑。 
+在本快速入门中，你已了解了如何创建 Azure Cosmos DB 帐户，使用数据资源管理器创建图形，以及运行 Python 应用来向图形添加数据。 现在可以使用 Gremlin 构建更复杂的查询，实现功能强大的图形遍历逻辑。 
 
 > [!div class="nextstepaction"]
 > [使用 Gremlin 查询](tutorial-query-graph.md)

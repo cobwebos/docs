@@ -1,26 +1,24 @@
 ---
 title: include 文件
 description: include 文件
-services: functions
 author: ggailey777
-manager: jeconnoc
 ms.service: azure-functions
 ms.topic: include
 ms.date: 10/20/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 26789a12053fa6275b09836e706c391e181c8efd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 21b7226bc82aa8041db6bbd29b4874814e2a47d0
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66132169"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279465"
 ---
 ## <a name="create-a-function"></a>创建函数
 
 以下命令创建一个名为 `MyHttpTrigger` 的 HTTP 触发的函数。
 
-```bash
+```command
 func new --name MyHttpTrigger --template "HttpTrigger"
 ```
 

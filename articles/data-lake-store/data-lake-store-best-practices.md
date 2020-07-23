@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 50d0ed644b5afa744e8bce478199079fd4fb7432
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2daa88d258e0bf761d9afce48b94e6cd6ff2fb95
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60878940"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981429"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>使用 Azure Data Lake Storage Gen1 的最佳做法
 
@@ -33,7 +33,7 @@ Azure Data Lake Storage Gen1 为 Azure Active Directory (Azure AD) 用户、组�
 
 在 Data Lake Storage Gen1 中处理大数据时，大多数情况下会使用服务主体，以便使用 Azure HDInsight 之类的服务来处理数据。 但是，在某些情况下，单个用户也需要访问数据。 在这种情况下，必须使用 Azure Active Directory [安全组](data-lake-store-secure-data.md#create-security-groups-in-azure-active-directory)，而不是将单个用户分配给文件夹和文件。
 
-为安全组分配权限以后，在组中添加或删除用户就不需要对 Data Lake Storage Gen1 进行任何更新。 这还有助于确保不超出 [32 访问和默认 ACL](../azure-subscription-service-limits.md#data-lake-store-limits)（这包括始终与每个文件和文件夹关联的四个 POSIX 样式的 ACL：[负责人用户](data-lake-store-access-control.md#the-owning-user)、[负责人组](data-lake-store-access-control.md#the-owning-group)、[掩码](data-lake-store-access-control.md#the-mask)和其他）。
+为安全组分配权限以后，在组中添加或删除用户就不需要对 Data Lake Storage Gen1 进行任何更新。 这还有助于确保不超出 [32 访问和默认 ACL](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits)（这包括始终与每个文件和文件夹关联的四个 POSIX 样式的 ACL：[负责人用户](data-lake-store-access-control.md#the-owning-user)、[负责人组](data-lake-store-access-control.md#the-owning-group)、[掩码](data-lake-store-access-control.md#the-mask)和其他）。
 
 ### <a name="security-for-groups"></a>组的安全性
 
@@ -45,7 +45,7 @@ Azure Active Directory 服务主体通常可供 Azure HDInsight 之类的服务�
 
 ### <a name="enable-the-data-lake-storage-gen1-firewall-with-azure-service-access"></a>启用 Data Lake Storage Gen1 防火墙，允许 Azure 服务访问
 
-Data Lake Storage Gen1 支持启用防火墙并仅限 Azure 服务进行访问的选项。如果需要减少来自外部入侵者的攻击途径，建议使用这一选项。 可以通过“防火墙” > “启用防火墙(启用)” > “允许 Azure 服务访问”选项在 Azure 门户的 Data Lake Storage Gen1 帐户上启用防火墙。
+Data Lake Storage Gen1 支持启用防火墙并仅限 Azure 服务进行访问的选项。如果需要减少来自外部入侵者的攻击途径，建议使用这一选项。 可以通过**防火墙**  >  **Enable firewall （on）**  >  **允许访问 Azure 服务**选项，在 Azure 门户中的 Data Lake Storage Gen1 帐户上启用防火墙。
 
 ![Data Lake Storage Gen1 中的防火墙设置](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "Data Lake Storage Gen1 中的防火墙设置")
 
@@ -86,7 +86,7 @@ Azure Data Lake Storage Gen1 去除了对 Blob 存储帐户的硬性 IO 限制�
 
 ## <a name="resiliency-considerations"></a>复原注意事项
 
-通过 Data Lake Storage Gen1 或任何云服务构建系统时，必须考虑到可用性要求以及如何响应可能出现的服务中断情况。 问题可能局限于特定的实例，也可能是区域性的，因此必须对二者都有计划。 可以选择较激进或不太激进的策略来确保高可用性和灾难恢复，具体取决于工作负荷的**恢复时间目标**和**恢复点目标** SLA。
+通过 Data Lake Storage Gen1 或任何云服务构建系统时，必须考虑到可用性要求以及如何响应可能出现的服务中断情况。 问题可能局限于特定的实例，也可能是区域性的，因此必须对二者都有计划。 根据工作负荷的**恢复时间目标**和**恢复点目标**sla，你可以为高可用性和灾难恢复选择更多或更低的策略。
 
 ### <a name="high-availability-and-disaster-recovery"></a>高可用性和灾难恢复
 
@@ -114,7 +114,7 @@ Distcp 是 distributed copy（分布式复制）的简称，是 Hadoop 随附的
 
 ### <a name="use-azure-data-factory-to-schedule-copy-jobs"></a>使用 Azure 数据工厂来计划复制作业
 
-Azure 数据工厂还可以用来通过**复制活动**对复制作业进行计划，甚至可以通过**复制向导**设置一个频率。 请记住，Azure 数据工厂的云数据移动单位 (DMU) 有限，因此最终会对大数据工作负荷的吞吐量/计算进行限制。 另外，Azure 数据工厂目前不提供在 Data Lake Storage Gen1 帐户之间进行增量更新的功能，因此 Hive 表之类的文件夹需要获得完整的副本才能进行复制。 请参阅[复制活动优化指南](../data-factory/copy-activity-performance.md)，详细了解如何使用数据工厂进行复制。
+Azure 数据工厂还可用于使用**复制活动**来计划复制作业，甚至可以通过**复制向导**来设置复制作业。 请记住，Azure 数据工厂的云数据移动单位 (DMU) 有限，因此最终会对大数据工作负荷的吞吐量/计算进行限制。 另外，Azure 数据工厂目前不提供在 Data Lake Storage Gen1 帐户之间进行增量更新的功能，因此 Hive 表之类的文件夹需要获得完整的副本才能进行复制。 请参阅[复制活动优化指南](../data-factory/copy-activity-performance.md)，详细了解如何使用数据工厂进行复制。
 
 ### <a name="adlcopy"></a>AdlCopy
 
@@ -126,21 +126,23 @@ AdlCopy 是一项 Windows 命令行工具，用于在两个 Data Lake Storage Ge
 
 Data Lake Storage Gen1 提供详细的诊断日志和审核。 Data Lake Storage Gen1 提供了一些基本的指标。这些指标可以在 Azure 门户的 Data Lake Storage Gen1 帐户中使用，也可以在 Azure Monitor 中使用。 Data Lake Storage Gen1 的可用性显示在 Azure 门户中。 但是，此指标每七分钟刷新一次，不能通过公开 API 进行查询。 若要获取 Data Lake Storage Gen1 帐户的最新可用性，必须运行你自己的综合性测试来验证可用性。 其他指标（例如总存储使用率、读/写请求数、入口/出口）可能需要长达 24 小时的时间进行刷新。 因此，其他更新指标必须通过 Hadoop 命令行工具手动进行计算，或者通过聚合日志信息来计算。 若要获取最新的存储使用率，最快速的方法是从 Hadoop 群集节点（例如，头节点）运行以下 HDFS 命令：
 
-    hdfs dfs -du -s -h adl://<adlsg1_account_name>.azuredatalakestore.net:443/
+```console
+hdfs dfs -du -s -h adl://<adlsg1_account_name>.azuredatalakestore.net:443/
+```
 
 ### <a name="export-data-lake-storage-gen1-diagnostics"></a>导出 Data Lake Storage Gen1 诊断
 
-若要从 Data Lake Storage Gen1 访问可搜索的日志，最快速的一个方法是在 Data Lake Storage Gen1 帐户的“诊断”边栏选项卡下启用到 **Log Analytics** 的日志传送。 这样就可以使用时间和内容筛选器立即访问传入日志，并且可以使用在 15 分钟时间间隔内触发的警报选项（电子邮件/Webhook）。 有关说明，请参阅[访问 Azure Data Lake Storage Gen1 的诊断日志](data-lake-store-diagnostic-logs.md)。
+若要从 Data Lake Storage Gen1 访问可搜索的日志，最快速的一个方法是在 Data Lake Storage Gen1 帐户的“诊断”边栏选项卡下启用向 **Log Analytics** 传送日志。**** 这样就可以使用时间和内容筛选器立即访问传入日志，并且可以使用在 15 分钟时间间隔内触发的警报选项（电子邮件/Webhook）。 有关说明，请参阅[访问 Azure Data Lake Storage Gen1 的诊断日志](data-lake-store-diagnostic-logs.md)。
 
-如需日志放置位置的更多实时警报并对放置位置进行更多的控制，可以考虑将日志导出到 Azure EventHub，以便对内容单独进行分析或按时间窗口进行分析，这样就可以向队列提交实时通知。 然后可以通过单独的应用程序（例如[逻辑应用](../connectors/connectors-create-api-azure-event-hubs.md)）使用这些警报并将其传送到适当的通道，以及向监视工具（例如 NewRelic、Datadog 或 AppDynamics）提交指标。 或者，如果使用的是 ElasticSearch 之类的第三方工具，则可将日志导出到 Blob 存储，然后通过 [Azure Logstash 插件](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob)将数据用到 Elasticsearch、Kibana 和 Logstash (ELK) 堆栈中。
+如果希望更近于实时发送警报或希望对日志放置位置有更多的控制，可以考虑将日志导出到 Azure 事件中心，以便对内容单独进行分析或按时间窗口进行分析，这样就可以向队列提交实时通知。 然后可以通过单独的应用程序（例如[逻辑应用](../connectors/connectors-create-api-azure-event-hubs.md)）使用这些警报并将其传送到适当的通道，以及向监视工具（例如 NewRelic、Datadog 或 AppDynamics）提交指标。 或者，如果使用的是 ElasticSearch 之类的第三方工具，则可将日志导出到 Blob 存储，然后通过 [Azure Logstash 插件](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob)将数据用到 Elasticsearch、Kibana 和 Logstash (ELK) 堆栈中。
 
 ### <a name="turn-on-debug-level-logging-in-hdinsight"></a>在 HDInsight 中启用调试级日志记录
 
-如果 Data Lake Storage Gen1 日志传送未启用，Azure HDInsight 还会提供一种启用 [Data Lake Storage Gen1 客户端日志记录](data-lake-store-performance-tuning-mapreduce.md)的方式，即 log4j。 必须在“Ambari” > “YARN” > “配置” > “高级 yarn-log4j 配置”中设置以下属性：
+如果 Data Lake Storage Gen1 日志传送未启用，Azure HDInsight 还会提供一种启用 [Data Lake Storage Gen1 客户端日志记录](data-lake-store-performance-tuning-mapreduce.md)的方式，即 log4j。 必须在**Ambari**  >  **YARN**  >  **Config**  >  **Advanced YARN-log4j 配置**中设置以下属性：
 
-    log4j.logger.com.microsoft.azure.datalake.store=DEBUG
+`log4j.logger.com.microsoft.azure.datalake.store=DEBUG`
 
-设置属性并重启节点后，Data Lake Storage Gen1 诊断即会写入到节点上的 YARN 日志 (/tmp/\<user\>/yarn.log)，然后就可以监视各种重要的详细信息，例如错误或限制（HTTP 429 错误代码）。 此外可以在 Azure Monitor 日志或日志传送到处于任何位置监视此相同的信息[诊断](data-lake-store-diagnostic-logs.md)数据湖存储 Gen1 帐户边栏选项卡。 若要启用操作可见性并方便调试，建议至少启用 Data Lake Storage Gen1 的客户端日志记录或利用其日志传送选项。
+设置属性且节点重启后，Data Lake Storage Gen1 诊断就会写入到节点上的 YARN 日志 (/tmp/\<user\>/yarn.log)，然后就可以监视各种重要的详细信息，例如错误或限制（HTTP 429 错误代码）。 也可以在 Data Lake Storage Gen1 帐户的 "[诊断](data-lake-store-diagnostic-logs.md)" 边栏选项卡中 Azure Monitor 日志或日志传送到的任何位置监视相同的信息。 若要启用操作可见性并方便调试，建议至少启用 Data Lake Storage Gen1 的客户端日志记录或利用其日志传送选项。
 
 ### <a name="run-synthetic-transactions"></a>运行综合事务
 
@@ -154,11 +156,15 @@ Data Lake Storage Gen1 提供详细的诊断日志和审核。 Data Lake Storage
 
 在 IoT 工作负荷的数据存储中，可能会放置大量来自多个产品、设备、组织和客户的数据。 必须预先规划目录布局，以便对下游使用者的数据进行组织，确保其安全性并提高处理效率。 考虑使用的常规模板可能是以下布局：
 
-    {Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/
+```console
+{Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/
+```
 
 例如，在英国，飞机引擎的着陆遥测数据可能看起来像以下结构：
 
-    UK/Planes/BA1293/Engine1/2017/08/11/12/
+```console
+UK/Planes/BA1293/Engine1/2017/08/11/12/
+```
 
 将日期置于文件夹结构的末尾有一个重要原因。 如果需要将特定区域或主题限定给特定用户/组访问，可以使用 POSIX 权限轻松完成该操作。 否则，在只能允许特定的安全组查看英国的数据或特定飞机的情况下，如果将日期结构置于前面，则需要针对每个小时文件夹下的很多文件夹设置单独的权限。 另外，如果将日期结构前置，则随着时间的推移，文件夹的数目会呈指数增长。
 
@@ -168,14 +174,18 @@ Data Lake Storage Gen1 提供详细的诊断日志和审核。 Data Lake Storage
 
 有时候，数据损坏或格式异常会导致文件处理失败。 在这种情况下，可以将这些文件移到 **/bad** 文件夹中进一步进行检查，这样的目录结构更有效。 还可以通过批处理作业将这些损坏的文件报告或通知给相关人员，要求其进行人工干预。 请考虑以下模板结构：
 
-    {Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/
+```console
+{Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
+{Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/
+{Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/
+```
 
 例如，一家市场营销公司每天从其北美的客户端提取客户更新数据。 该数据在处理前和处理后可能看起来像以下片段：
 
-    NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
-    NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
+```console
+NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
+NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
+```
 
 在最常见的情况下，批量数据在处理后会直接进入 Hive 之类的数据库或传统的 SQL 数据库，不需要 **/in** 或 **/out** 文件夹，因为输出已经进入一个适用于 Hive 表或外部数据库的单独文件夹中。 例如，每日从客户处提取的数据会置于各自的文件夹中。在经过 Azure 数据工厂、Apache Oozie 或 Apache Airflow 之类工具的协调后，会触发一个每日 Hive 作业或 Spark 作业来处理数据，然后将数据写入 Hive 表中。
 

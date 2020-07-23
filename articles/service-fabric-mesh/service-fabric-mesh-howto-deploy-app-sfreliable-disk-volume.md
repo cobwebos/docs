@@ -1,26 +1,16 @@
 ---
-title: 在网格的 Azure Service Fabric 应用程序中使用高度可用 Service Fabric 可靠磁盘卷 |Microsoft Docs
+title: Service Fabric 具有 Service Fabric 网格的可靠磁盘卷
 description: 了解如何使用 Azure CLI，通过将基于 Service Fabric Reliable Disk 的卷装载到容器，在 Azure Service Fabric 网格应用程序中存储状态。
-services: service-fabric-mesh
-documentationcenter: .net
 author: ashishnegi
-manager: raunakpandya
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: azure-cli
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 9f760e7e693334475fb61ba9e5d44df019e78604
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: MT
+ms.openlocfilehash: f26fe70afe7d9e2872f06ac6da7143556278b1b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147476"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75497968"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>在 Service Fabric 网格应用程序中装载高度可用的基于 Service Fabric Reliable Disk 的卷 
 使用容器应用保存状态的常用方法是使用远程存储，例如 Azure 文件存储或 Azure Cosmos DB 等数据库。 这会对远程存储造成长时间读取和写入网络延迟。
@@ -32,7 +22,7 @@ Service Fabric Reliable Disk 为 Service Fabric 群集中复制的本地读取�
 
 `counterService` 定期从文件读取计数器值，使该值递增并重新写入文件。 文件存储在由 Service Fabric Reliable Disk 备份的卷上装载的文件夹中。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 可以使用 Azure Cloud Shell 或 Azure CLI 的本地安装完成此任务。 若要在本文中使用 Azure CLI，请确保 `az --version` 至少返回 `azure-cli (2.0.43)`。  遵照这些[说明](service-fabric-mesh-howto-setup-cli.md)安装（或更新）Azure Service Fabric 网格 CLI 扩展模块。
 

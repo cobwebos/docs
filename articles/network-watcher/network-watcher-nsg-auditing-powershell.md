@@ -1,25 +1,23 @@
 ---
-title: 使用 Azure 网络观察程序安全组视图自动进行 NSG 审核 | Microsoft 文档
+title: 自动执行 NSG 审核 - 安全组视图
+titleSuffix: Azure Network Watcher
 description: 本页说明如何配置网络安全组的审核
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 78a01bcf-74fe-402a-9812-285f3501f877
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 016d68de90088314250fef1fcfdb57d7f155ef79
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: 10abd1065fe47556109ed69d36493c165dec1418
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707161"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738203"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>使用 Azure 网络观察程序安全组视图自动进行 NSG 审核
 
@@ -34,13 +32,13 @@ ms.locfileid: "64707161"
 
 本方案将已知合理的基准与针对虚拟机返回的安全组视图结果进行比较。
 
-此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。 此外，本方案假设要使用一个包含有效虚拟机的资源组。
+此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。 此方案还假定要使用的包含有效虚拟机的资源组已存在。
 
 ## <a name="scenario"></a>场景
 
 本文所述的方案将获取虚拟机的安全组视图。
 
-本方案中的操作：
+在此方案中，将：
 
 - 检索已知合理的规则集
 - 使用 REST API 检索虚拟机
@@ -129,8 +127,7 @@ $nsgbaserules = Get-Content -Path C:\temp\testvm1-nsg.json | ConvertFrom-Json
 下一步是检索网络观察程序实例。 将 `$networkWatcher` 变量传递给 `AzNetworkWatcherSecurityGroupView` cmdlet。
 
 ```powershell
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
-$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
+$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 ```
 
 ## <a name="get-a-vm"></a>获取 VM

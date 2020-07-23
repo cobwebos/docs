@@ -1,26 +1,26 @@
 ---
 title: 使用必应图像搜索 API 搜索 .gif 图像
 titleSuffix: Azure Cognitive Services
-description: 使用必应图像搜索 API 在 Web 中搜索 GIF 图像。
+description: 借助必应图像搜索 API，还可以在整个 Web 上搜索最相关的 .gif 图像。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 0a2040424aa70f30831e214ce0b05d21414ff45c
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 862a7f6c31df7395fe225cf89ad83425e917394e
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389392"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169978"
 ---
 # <a name="search-for-gif-images"></a>搜索 .gif 图像 
 
-借助必应图像搜索 API，还可以在整个 Web 上搜索最相关的 .gif 图像。  开发人员可以在各种会话场景中集成动人的 GIF。 
+借助必应图像搜索 API，还可以在整个 Web 上搜索最相关的 .gif 图像。开发人员可以在各种会话场景中集成动人的 GIF。 
 
 以下 URL 是对动态 .gif 图像的查询。
 ```
@@ -46,7 +46,7 @@ https://www.bing.com/images/search?q=interesting&qft=%20filterui%3Aphoto-animate
 - 有关支持的语言和位置的完整列表，请参阅 [mkt](supported-countries-markets.md)。
 - *AnimatedGifHttps* 仅返回来自 https 地址的动态 gif 图像。 为了安全起见，许多应用程序需要通过 https 连接到外部 Web 链接。 例如，Apple App Store 需要通过 HTTPS 连接到 Web 服务，以便在传输过程中安全地加密用户数据。
 
-<a name="gifExample" />
+<a name="gifExample"></a>
 
 ## <a name="example-search-for-animated-gif-using-java"></a>使用 Java 搜索动态 gif 的示例
 
@@ -208,5 +208,5 @@ class SearchResults{
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- [C# 快速入门](quickstarts/csharp.md)
+- [C # 快速入门](quickstarts/csharp.md)
 - [教程：图像搜索单页应用程序](tutorial-bing-image-search-single-page-app.md)

@@ -1,38 +1,38 @@
 ---
-title: 为 Azure 表存储中的内容编制索引，以便进行全文搜索 - Azure 搜索
-description: 了解如何使用 Azure 搜索索引器为 Azure 表存储中存储的数据编制索引。
-ms.date: 05/02/2019
+title: 对 Azure 表存储内容进行搜索
+titleSuffix: Azure Cognitive Search
+description: 了解如何使用 Azure 认知搜索索引器为 Azure 表存储中存储的数据编制索引。
+manager: nitinme
 author: mgottein
-manager: cgronlun
 ms.author: magottei
-services: search
-ms.service: search
 ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: bca7c1b9ffe7ac0ab82f4287bba201a78fbf726a
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.date: 07/11/2020
+ms.openlocfilehash: a57232853284dad6f363797c009b1c38738d5b37
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66755084"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519773"
 ---
-# <a name="index-azure-table-storage-with-azure-search"></a>使用 Azure 搜索编制 Azure 表存储的索引
-本文介绍如何使用 Azure 搜索对 Azure 表存储中存储的数据编制索引。
+# <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>如何使用 Azure 认知搜索从 Azure 表存储索引表
+
+本文介绍如何使用 Azure 认知搜索对 Azure 表存储中存储的数据编制索引。
 
 ## <a name="set-up-azure-table-storage-indexing"></a>设置 Azure 表存储索引
 
 可以使用以下资源设置 Azure 表存储索引器：
 
 * [Azure 门户](https://ms.portal.azure.com)
-* Azure 搜索 [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
-* Azure 搜索 [.NET SDK](https://aka.ms/search-sdk)
+* Azure 认知搜索 [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
+* Azure 认知搜索 [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 
 在这里，我们使用 REST API 演示流。 
 
 ### <a name="step-1-create-a-datasource"></a>步骤 1：创建数据源
 
-数据源指定要索引的数据、访问数据所需的凭据和支持 Azure 搜索有效标识数据更改的策略。
+数据源指定要索引的数据、访问数据所需的凭据和支持 Azure 认知搜索有效标识数据更改的策略。
 
 若要为表编制索引，数据源必须具有以下属性：
 
@@ -49,7 +49,8 @@ ms.locfileid: "66755084"
 
 若要创建数据源，请执行以下操作：
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+```http
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -59,6 +60,7 @@ ms.locfileid: "66755084"
         "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-table", "query" : "PartitionKey eq '123'" }
     }   
+```
 
 有关创建数据源 API 的详细信息，请参阅[创建数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)。
 
@@ -81,7 +83,8 @@ ms.locfileid: "66755084"
 
 若要创建索引，请执行以下操作：
 
-    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+```http
+    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -92,6 +95,7 @@ ms.locfileid: "66755084"
             { "name": "SomeColumnInMyTable", "type": "Edm.String", "searchable": true }
           ]
     }
+```
 
 有关创建索引的详细信息，请参阅[创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)。
 
@@ -100,7 +104,8 @@ ms.locfileid: "66755084"
 
 创建索引和数据源后，可以创建索引器：
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+```http
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -110,20 +115,21 @@ ms.locfileid: "66755084"
       "targetIndexName" : "my-target-index",
       "schedule" : { "interval" : "PT2H" }
     }
+```
 
 此索引器每两小时运行一次。 （已将计划间隔设置为“PT2H”）。若要每隔 30 分钟运行一次索引器，可将间隔设置为“PT30M”。 支持的最短间隔为 5 分钟。 计划是可选的；如果省略，则索引器在创建后只运行一次。 但是，可以随时根据需要运行索引器。   
 
 有关创建索引器 API 的详细信息，请参阅[创建索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
 
-有关定义索引器计划的详细信息请参阅[如何安排 Azure 搜索索引器](search-howto-schedule-indexers.md)。
+若要详细了解如何定义索引器计划，请参阅[如何为 Azure 认知搜索计划索引器](search-howto-schedule-indexers.md)。
 
 ## <a name="deal-with-different-field-names"></a>处理不同的字段名称
-有时，现有索引中的字段名称会不同于表中的属性名称。 可以使用字段映射将表中的属性名称映射到搜索索引中的字段名称。 若要详细了解字段映射，请参阅 [Azure 搜索索引器字段映射弥补数据源和搜索索引之间的差异](search-indexer-field-mappings.md)。
+有时，现有索引中的字段名称会不同于表中的属性名称。 可以使用字段映射将表中的属性名称映射到搜索索引中的字段名称。 若要详细了解字段映射，请参阅 [Azure 认知搜索索引器字段映射弥补数据源和搜索索引之间的差异](search-indexer-field-mappings.md)。
 
 ## <a name="handle-document-keys"></a>处理文档键
-在 Azure 搜索中，文档键唯一标识某个文档。 每个搜索索引必须只有一个类型为 `Edm.String` 的键字段。 键字段对于要添加到索引的每个文档必不可少。 （事实上，它是唯一的必填字段。）
+在 Azure 认知搜索中，文档键唯一标识某个文档。 每个搜索索引必须只有一个类型为 `Edm.String` 的键字段。 键字段对于要添加到索引的每个文档必不可少。 （事实上，它是唯一的必填字段。）
 
-由于表行具有复合键，因此 Azure 搜索会生成一个名为 `Key` 的合成字段，该字段是分区键值和行键值的串接。 例如，如果行的 PartitionKey 为 `PK1`、RowKey 为 `RK1`，那么 `Key` 字段的值为 `PK1RK1`。
+由于表行具有复合键，因此 Azure 认知搜索会生成一个名为 `Key` 的合成字段，该字段是分区键值和行键值的串接。 例如，如果行的 PartitionKey 为 `PK1`、RowKey 为 `RK1`，那么 `Key` 字段的值为 `PK1RK1`。
 
 > [!NOTE]
 > `Key` 值中可能含有文档键中无效的字符（如短划线）。 可以通过使用 `base64Encode` [字段映射函数](search-indexer-field-mappings.md#base64EncodeFunction)处理无效字符。 如果执行此操作，在 API 调用（如 Lookup）中传递文档键时，还请记得使用 URL-safe Base64 编码。
@@ -135,7 +141,8 @@ ms.locfileid: "66755084"
 
 若要指示必须从索引中删除某些文档，可使用软删除策略。 不删除行，而是添加一个属性来指示删除行，并对数据源设置软删除检测策略。 例如，如果某行具有值为 `"true"` 的属性 `IsDeleted`，以下策略会将该行视为已删除：
 
-    PUT https://[service name].search.windows.net/datasources?api-version=2019-05-06
+```http
+    PUT https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -146,11 +153,12 @@ ms.locfileid: "66755084"
         "container" : { "name" : "table name", "query" : "<query>" },
         "dataDeletionDetectionPolicy" : { "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy", "softDeleteColumnName" : "IsDeleted", "softDeleteMarkerValue" : "true" }
     }   
+```
 
 <a name="Performance"></a>
 ## <a name="performance-considerations"></a>性能注意事项
 
-默认情况下，Azure 搜索使用以下查询筛选器：`Timestamp >= HighWaterMarkValue`。 由于 Azure 表在 `Timestamp` 字段上没有辅助索引，因此该类型的查询需要执行全表扫描，导致大型表查询速度慢。
+默认情况下，Azure 认知搜索使用以下查询筛选器：`Timestamp >= HighWaterMarkValue`。 由于 Azure 表在 `Timestamp` 字段上没有辅助索引，因此该类型的查询需要执行全表扫描，导致大型表查询速度慢。
 
 
 下面是两种可能提高表索引性能的方法。 这两种方法都依赖于使用表分区： 
@@ -166,5 +174,5 @@ ms.locfileid: "66755084"
     - 借助此方法，如果需要触发完整的索引重编制，除了重置索引器外还需要重置数据源查询。 
 
 
-## <a name="help-us-make-azure-search-better"></a>帮助我们改进 Azure 搜索
+## <a name="help-us-make-azure-cognitive-search-better"></a>帮助我们改善 Azure 认知搜索
 如果有功能请求或改进建议，请在我们的 [UserVoice 站点](https://feedback.azure.com/forums/263029-azure-search/)上提交。

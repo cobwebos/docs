@@ -11,29 +11,29 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 02/15/2019
+ms.topic: how-to
+ms.date: 03/03/2020
 ms.author: b-juche
-ms.openlocfilehash: 01387d0c219c86f33762b9c3fbf9f81cf04b4455
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ed13c61646bd2a6672b613964507d291a69a6821
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61086791"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483595"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>使用 Azure NetApp 文件管理快照
 
-可以使用 Azure NetApp 文件为卷创建按需快照，或从快照还原到新卷。
+可以使用 Azure NetApp 文件手动为卷创建按需快照或从快照还原到新卷。 Azure NetApp 文件服务不会自动创建卷快照。  
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>为卷创建按需快照
 
 可以仅按需创建快照。 目前不支持快照策略。
 
-1.  在“卷”边栏选项卡中，单击“快照”。
+1.  在“卷”边栏选项卡中，单击“快照”****。
 
     ![导航到快照](../media/azure-netapp-files/azure-netapp-files-navigate-to-snapshots.png)
 
-2.  单击“+ 添加快照”，为卷创建按需快照。
+2.  单击“+ 添加快照”，为卷创建按需快照****。
 
     ![添加快照](../media/azure-netapp-files/azure-netapp-files-add-snapshot.png)
 
@@ -46,9 +46,9 @@ ms.locfileid: "61086791"
 ## <a name="restore-a-snapshot-to-a-new-volume"></a>将快照还原到新卷
 
 目前，只能将快照还原到新卷。 
-1. 从“卷”边栏选项卡转到“管理快照”边栏选项卡以显示快照列表。 
+1. 从“卷”边栏选项卡转到“管理快照”**** 边栏选项卡以显示快照列表。 
 2. 选择要还原的快照。  
-3. 右键单击快照名称，然后从菜单选项中选择“还原到新卷”。  
+3. 右键单击快照名称，然后从菜单选项中选择“还原到新卷”****。  
 
     ![将快照还原到新卷](../media/azure-netapp-files/azure-netapp-files-snapshot-restore-to-new-volume.png)
 
@@ -72,11 +72,11 @@ ms.locfileid: "61086791"
 
     *   **虚拟网络**  
         指定要从中访问卷的 Azure 虚拟网络 (Vnet)。  
-        你指定的 Vnet 必须已将子网委托给 Azure NetApp 文件。 只能从同一 Vnet 或者从与卷位于同一区域的 Vnet 通过 Vnet 对等互连来访问 Azure NetApp 文件。 从本地网络通过 Express Route，可以访问该卷。 
+        你指定的 Vnet 必须已将子网委托给 Azure NetApp 文件。 只能从同一 Vnet 或者从与卷位于同一区域的 Vnet 通过 Vnet 对等互连来访问 Azure NetApp 文件。 可以通过 Express Route 从本地网络访问该卷。 
 
     * **子网**  
         指定要用于卷的子网。  
-        你指定的子网必须已委托给 Azure NetApp 文件服务。 可以通过选择“子网”字段下的“新建”来创建新子网。  
+        你指定的子网必须已委托给 Azure NetApp 文件服务。 可以通过选择“子网”字段下的“新建”**** 来创建新子网。  
    <!--
     ![Restored new volume](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
    -->

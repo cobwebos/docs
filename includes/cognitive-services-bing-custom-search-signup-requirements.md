@@ -3,12 +3,22 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 12/13/2018
-ms.openlocfilehash: a36415b10111787ad3e6b3302703bfa97d2294dd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 05/08/2020
+ms.openlocfilehash: f4c59cb24f0bbc131ace8a56d8530e7894ecfecf
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66124919"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85805458"
 ---
-必须有可以访问必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有 Azure 订阅，可以免费[创建一个帐户](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)。 在继续操作之前，需使用激活免费试用版后提供的访问密钥，或使用 Azure 仪表板中的付费订阅密钥。
+## <a name="create-an-azure-resource"></a>创建 Azure 资源
+
+通过创建以下 Azure 资源之一开始使用必应自定义搜索 API。
+
+### <a name="bing-custom-search-resource"></a>[必应自定义搜索资源](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch)
+   * 在删除资源前，可通过 Azure 门户使用。
+   * 使用免费定价层试用该服务，稍后升级到用于生产的付费层。
+
+### <a name="multi-service-resource"></a>[多服务资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)
+   * 在删除资源前，可通过 Azure 门户使用。  
+   * 在多个认知服务中对应用程序使用相同的密钥和终结点。

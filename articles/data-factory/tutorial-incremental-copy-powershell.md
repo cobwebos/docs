@@ -1,58 +1,60 @@
 ---
-title: 使用 Azure 数据工厂以增量方式复制表 | Microsoft Docs
+title: 使用 PowerShell 以增量方式复制表
 description: 在本教程中，我们将创建一个 Azure 数据工厂管道，它能够以增量方式将 Azure SQL 数据库中的数据复制到 Azure Blob 存储。
 services: data-factory
-documentationcenter: ''
 author: dearandyxu
-manager: craigg
+ms.author: yexu
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
+ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.author: yexu
-ms.openlocfilehash: 568b00007f2c95a5a63c236863f0c599c6b6f86f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3bd2744c651544fc7dfe41b350168a7f387c0928
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66161741"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254440"
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
-在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从 Azure SQL 数据库中的表加载到 Azure Blob 存储。 
+# <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-powershell"></a>使用 PowerShell 以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
+在本教程中，创建一个带管道的 Azure 数据工厂，将增量数据从 Azure SQL 数据库中的表加载到 Azure Blob 存储。
 
 在本教程中执行以下步骤：
 
 > [!div class="checklist"]
 > * 准备用于存储水印值的数据存储。
 > * 创建数据工厂。
-> * 创建链接服务。 
+> * 创建链接服务。
 > * 创建源、接收器和水印数据集。
 > * 创建管道。
 > * 运行管道。
-> * 监视管道运行。 
+> * 监视管道运行。
 
 ## <a name="overview"></a>概述
-下面是高级解决方案示意图： 
+下面是高级解决方案示意图：
 
 ![以增量方式加载数据](media/tutorial-Incrementally-copy-powershell/incrementally-load.png)
 
-下面是创建此解决方案所要执行的重要步骤： 
+下面是创建此解决方案所要执行的重要步骤：
 
 1. **选择水印列**。
     在源数据存储中选择一个列，该列可用于将每个运行的新记录或已更新记录切片。 通常，在创建或更新行时，此选定列中的数据（例如 last_modify_time 或 ID）会不断递增。 此列中的最大值用作水印。
 
 2. **准备用于存储水印值的数据存储**。   
     本教程在 SQL 数据库中存储水印值。
-    
-3. **创建采用以下工作流的管道**： 
-    
+
+3. **创建采用以下工作流的管道**：
+
     此解决方案中的管道具有以下活动：
-  
-    * 创建两个 Lookup 活动。 使用第一个 Lookup 活动检索上一个水印值。 使用第二个 Lookup 活动检索新的水印值。 这些水印值会传递到 Copy 活动。 
-    * 创建 Copy 活动，用于复制源数据存储中其水印列值大于旧水印值但小于新水印值的行。 然后，该活动将源数据存储中的增量数据作为新文件复制到 Blob 存储。 
-    * 创建 StoredProcedure 活动，用于更新下一次运行的管道的水印值。 
+
+    * 创建两个 Lookup 活动。 使用第一个 Lookup 活动检索上一个水印值。 使用第二个 Lookup 活动检索新的水印值。 这些水印值会传递到 Copy 活动。
+    * 创建 Copy 活动，用于复制源数据存储中其水印列值大于旧水印值但小于新水印值的行。 然后，该活动将源数据存储中的增量数据作为新文件复制到 Blob 存储。
+    * 创建 StoredProcedure 活动，用于更新下一次运行的管道的水印值。
 
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
@@ -61,15 +63,15 @@ ms.locfileid: "66161741"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Azure SQL 数据库**。 将数据库用作源数据存储。 如果没有 SQL 数据库，请参阅[创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)，了解创建该数据库的步骤。
-* **Azure 存储**。 将 Blob 存储用作接收器数据存储。 如果没有存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)以获取创建步骤。 创建名为 adftutorial 的容器。 
+* **Azure SQL 数据库**。 将数据库用作源数据存储。 如果没有 Azure SQL 数据库，请参阅[创建 Azure SQL 数据库中的数据库](../azure-sql/database/single-database-create-quickstart.md)，了解创建数据库的步骤。
+* **Azure 存储**。 将 Blob 存储用作接收器数据存储。 如果没有存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)以获取创建步骤。 创建名为 adftutorial 的容器。 
 * **Azure PowerShell**。 遵循[安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps) 中的说明。
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>在 SQL 数据库中创建数据源表
 1. 打开 SQL Server Management Studio。 在“服务器资源管理器”中，右键单击数据库，然后选择“新建查询”。
 
-2. 针对 SQL 数据库运行以下 SQL 命令，创建名为 `data_source_table` 的表作为数据源存储： 
-    
+2. 针对 SQL 数据库运行以下 SQL 命令，创建名为 `data_source_table` 的表作为数据源存储：
+
     ```sql
     create table data_source_table
     (
@@ -101,11 +103,11 @@ ms.locfileid: "66161741"
 
 ### <a name="create-another-table-in-your-sql-database-to-store-the-high-watermark-value"></a>在 SQL 数据库中创建另一个表，用于存储高水印值
 1. 针对 SQL 数据库运行以下 SQL 命令，创建名为 `watermarktable` 的表，用于存储水印值：  
-    
+
     ```sql
     create table watermarktable
     (
-    
+
     TableName varchar(255),
     WatermarkValue datetime,
     );
@@ -117,11 +119,11 @@ ms.locfileid: "66161741"
     VALUES ('data_source_table','1/1/2010 12:00:00 AM')    
     ```
 3. 查看 `watermarktable` 表中的数据。
-    
+
     ```sql
     Select * from watermarktable
     ```
-    输出： 
+    输出：
 
     ```
     TableName  | WatermarkValue
@@ -129,7 +131,7 @@ ms.locfileid: "66161741"
     data_source_table | 2010-01-01 00:00:00.000
     ```
 
-### <a name="create-a-stored-procedure-in-your-sql-database"></a>在 SQL 数据库中创建存储过程 
+### <a name="create-a-stored-procedure-in-your-sql-database"></a>在 SQL 数据库中创建存储过程
 
 运行以下命令，在 SQL 数据库中创建存储过程：
 
@@ -138,16 +140,16 @@ CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varc
 AS
 
 BEGIN
-    
+
     UPDATE watermarktable
-    SET [WatermarkValue] = @LastModifiedtime 
+    SET [WatermarkValue] = @LastModifiedtime
 WHERE [TableName] = @TableName
-    
+
 END
 ```
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
-1. 为资源组名称定义一个变量，稍后会在 PowerShell 命令中使用该变量。 将以下命令文本复制到 PowerShell，在双引号中指定 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称，然后运行命令。 例如 `"adfrg"`。 
+1. 为资源组名称定义一个变量，稍后会在 PowerShell 命令中使用该变量。 将以下命令文本复制到 PowerShell，在双引号中指定 [Azure 资源组](../azure-resource-manager/management/overview.md)的名称，然后运行命令。 示例为 `"adfrg"`。 
    
      ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
@@ -155,30 +157,30 @@ END
 
     如果该资源组已存在，请勿覆盖它。 为 `$resourceGroupName` 变量分配另一个值，然后再次运行命令
 
-2. 定义一个用于数据工厂位置的变量。 
+2. 定义一个用于数据工厂位置的变量。
 
     ```powershell
     $location = "East US"
     ```
-3. 若要创建 Azure 资源组，请运行以下命令： 
+3. 若要创建 Azure 资源组，请运行以下命令：
 
     ```powershell
     New-AzResourceGroup $resourceGroupName $location
-    ``` 
+    ```
     如果该资源组已存在，请勿覆盖它。 为 `$resourceGroupName` 变量分配另一个值，然后再次运行命令
 
-4. 定义一个用于数据工厂名称的变量。 
+4. 定义一个用于数据工厂名称的变量。
 
     > [!IMPORTANT]
-    >  更新数据工厂名称，使之全局唯一。 例如 ADFTutorialFactorySP1127。 
+    >  更新数据工厂名称，使之全局唯一。 例如 ADFTutorialFactorySP1127。
 
     ```powershell
     $dataFactoryName = "ADFIncCopyTutorialFactory";
     ```
-5. 要创建数据工厂，请运行以下 **Set-AzDataFactoryV2** cmdlet： 
-    
+5. 要创建数据工厂，请运行以下 **Set-AzDataFactoryV2** cmdlet：
+
     ```powershell       
-    Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName 
+    Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName
     ```
 
 请注意以下几点：
@@ -190,11 +192,11 @@ END
     ```
 
 * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。
-* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（存储、SQL 数据库等）和计算资源（Azure HDInsight 等）可以位于其他区域中。
+* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、SQL 数据库、Azure SQL 托管实例等）和计算资源（Azure HDInsight 等）可以位于其他区域中。
 
 
 ## <a name="create-linked-services"></a>创建链接服务
-可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本部分中，请创建存储帐户和 SQL 数据库的链接服务。 
+可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本部分中，创建到存储帐户和 SQL 数据库的链接服务。
 
 ### <a name="create-a-storage-linked-service"></a>创建存储链接服务
 1. 在 C:\ADF 文件夹中，创建包含以下内容的名为 AzureStorageLinkedService.json 的 JSON 文件。 （如果文件夹 ADF 不存在，请创建。）将 `<accountName>` 和 `<accountKey>` 替换为存储帐户的名称和密钥，然后保存文件。
@@ -205,17 +207,14 @@ END
         "properties": {
             "type": "AzureStorage",
             "typeProperties": {
-                "connectionString": {
-                    "value": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>",
-                    "type": "SecureString"
-                }
+                "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>"
             }
         }
     }
     ```
 2. 在 PowerShell 中切换到 ADF 文件夹。
 
-3. 运行 **Set-AzDataFactoryV2LinkedService** cmdlet 以创建链接服务 AzureStorageLinkedService。 在以下示例中，传递 *ResourceGroupName* 和 *DataFactoryName* 参数的值： 
+3. 运行 **Set-AzDataFactoryV2LinkedService** cmdlet 以创建链接服务 AzureStorageLinkedService。 在以下示例中，传递 *ResourceGroupName* 和 *DataFactoryName* 参数的值：
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -231,7 +230,7 @@ END
     ```
 
 ### <a name="create-a-sql-database-linked-service"></a>创建 SQL 数据库链接服务
-1. 在 C:\ADF 文件夹中，创建包含以下内容的名为 AzureSQLDatabaseLinkedService.json 的 JSON 文件。 （如果文件夹 ADF 不存在，请创建。）将 &lt;server&gt;、&lt;database&gt;、&lt;user id&gt; 和 &lt;password&gt; 分别替换为自己的服务器名称、数据库、用户 ID 和密码，然后保存文件。 
+1. 在 C:\ADF 文件夹中，创建包含以下内容的名为 AzureSQLDatabaseLinkedService.json 的 JSON 文件。 （如果文件夹 ADF 不存在，请创建。）将 &lt;server&gt;、&lt;database&gt;、&lt;user id&gt; 和 &lt;password&gt; 分别替换为自己的服务器名称、数据库、用户 ID 和密码，然后保存文件。
 
     ```json
     {
@@ -239,17 +238,14 @@ END
         "properties": {
             "type": "AzureSqlDatabase",
             "typeProperties": {
-                "connectionString": {
-                    "value": "Server = tcp:<server>.database.windows.net,1433;Initial Catalog=<database>; Persist Security Info=False; User ID=<user> ; Password=<password>; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;",
-                    "type": "SecureString"
-                }
+                "connectionString": "Server = tcp:<server>.database.windows.net,1433;Initial Catalog=<database>; Persist Security Info=False; User ID=<user> ; Password=<password>; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;"
             }
         }
     }
     ```
 2. 在 PowerShell 中切换到 ADF 文件夹。
 
-3. 运行 **Set-AzDataFactoryV2LinkedService** cmdlet 以创建链接服务 AzureSQLDatabaseLinkedService。 
+3. 运行 **Set-AzDataFactoryV2LinkedService** cmdlet 以创建链接服务 AzureSQLDatabaseLinkedService。
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
@@ -266,11 +262,11 @@ END
     ```
 
 ## <a name="create-datasets"></a>创建数据集
-在此步骤中，创建表示源和接收器数据的数据集。 
+在此步骤中，创建表示源和接收器数据的数据集。
 
 ### <a name="create-a-source-dataset"></a>创建源数据集
 
-1. 在同一文件夹中，创建包含以下内容的名为 SourceDataset.json 的 JSON 文件： 
+1. 在同一文件夹中，创建包含以下内容的名为 SourceDataset.json 的 JSON 文件：
 
     ```json
     {
@@ -286,18 +282,18 @@ END
             }
         }
     }
-   
+
     ```
     本教程使用表名 data_source_table。 如果使用其他名称的表，请替换名称。
 
 2. 运行 **Set-AzDataFactoryV2Dataset** cmdlet 以创建数据集 SourceDataset。
-    
+
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
     ```
 
     下面是该 cmdlet 的示例输出：
-    
+
     ```json
     DatasetName       : SourceDataset
     ResourceGroupName : ADF
@@ -308,7 +304,7 @@ END
 
 ### <a name="create-a-sink-dataset"></a>创建接收器数据集
 
-1. 在同一文件夹中，创建包含以下内容的名为 SinkDataset.json 的 JSON 文件： 
+1. 在同一文件夹中，创建包含以下内容的名为 SinkDataset.json 的 JSON 文件：
 
     ```json
     {
@@ -317,7 +313,7 @@ END
             "type": "AzureBlob",
             "typeProperties": {
                 "folderPath": "adftutorial/incrementalcopy",
-                "fileName": "@CONCAT('Incremental-', pipeline().RunId, '.txt')", 
+                "fileName": "@CONCAT('Incremental-', pipeline().RunId, '.txt')",
                 "format": {
                     "type": "TextFormat"
                 }
@@ -334,13 +330,13 @@ END
     > 此代码片段假设 Blob 存储中有一个名为 adftutorial 的 Blob 容器。 创建容器（如果不存在），或者将容器设置为现有容器的名称。 会自动创建输出文件夹 `incrementalcopy`（如果容器中不存在）。 在本教程中，文件名是使用表达式 `@CONCAT('Incremental-', pipeline().RunId, '.txt')` 动态生成的。
 
 2. 运行 **Set-AzDataFactoryV2Dataset** cmdlet 以创建数据集 SinkDataset。
-    
+
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
     ```
 
     下面是该 cmdlet 的示例输出：
-    
+
     ```json
     DatasetName       : SinkDataset
     ResourceGroupName : ADF
@@ -350,9 +346,9 @@ END
     ```
 
 ## <a name="create-a-dataset-for-a-watermark"></a>为水印创建数据集
-在此步骤中，创建用于存储高水印值的数据集。 
+在此步骤中，创建用于存储高水印值的数据集。
 
-1. 在同一文件夹中，创建包含以下内容的名为 WatermarkDataset.json 的 JSON 文件： 
+1. 在同一文件夹中，创建包含以下内容的名为 WatermarkDataset.json 的 JSON 文件：
 
     ```json
     {
@@ -370,13 +366,13 @@ END
     }    
     ```
 2.  运行 **Set-AzDataFactoryV2Dataset** cmdlet 以创建数据集 WatermarkDataset。
-    
+
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "WatermarkDataset" -File ".\WatermarkDataset.json"
     ```
 
     下面是该 cmdlet 的示例输出：
-    
+
     ```json
     DatasetName       : WatermarkDataset
     ResourceGroupName : ADF
@@ -386,10 +382,10 @@ END
     ```
 
 ## <a name="create-a-pipeline"></a>创建管道
-本教程创建包含两个 Lookup 活动、一个 Copy 活动和一个 StoredProcedure 活动的管道，这些活动链接在一个管道中。 
+本教程创建包含两个 Lookup 活动、一个 Copy 活动和一个 StoredProcedure 活动的管道，这些活动链接在一个管道中。
 
 
-1. 在同一文件夹中，创建包含以下内容的 JSON 文件 IncrementalCopyPipeline.json： 
+1. 在同一文件夹中，创建包含以下内容的 JSON 文件 IncrementalCopyPipeline.json：
 
     ```json
     {
@@ -404,7 +400,7 @@ END
                         "type": "SqlSource",
                         "sqlReaderQuery": "select * from watermarktable"
                         },
-    
+
                         "dataset": {
                         "referenceName": "WatermarkDataset",
                         "type": "DatasetReference"
@@ -419,14 +415,14 @@ END
                             "type": "SqlSource",
                             "sqlReaderQuery": "select MAX(LastModifytime) as NewWatermarkvalue from data_source_table"
                         },
-    
+
                         "dataset": {
                         "referenceName": "SourceDataset",
                         "type": "DatasetReference"
                         }
                     }
                 },
-                
+
                 {
                     "name": "IncrementalCopyActivity",
                     "type": "Copy",
@@ -453,7 +449,7 @@ END
                             ]
                         }
                     ],
-    
+
                     "inputs": [
                         {
                             "referenceName": "SourceDataset",
@@ -467,24 +463,24 @@ END
                         }
                     ]
                 },
-    
+
                 {
                     "name": "StoredProceduretoWriteWatermarkActivity",
                     "type": "SqlServerStoredProcedure",
                     "typeProperties": {
-    
+
                         "storedProcedureName": "usp_write_watermark",
                         "storedProcedureParameters": {
                             "LastModifiedtime": {"value": "@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}", "type": "datetime" },
                             "TableName":  { "value":"@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}", "type":"String"}
                         }
                     },
-    
+
                     "linkedServiceName": {
                         "referenceName": "AzureSQLDatabaseLinkedService",
                         "type": "LinkedServiceReference"
                     },
-    
+
                     "dependsOn": [
                         {
                             "activity": "IncrementalCopyActivity",
@@ -495,19 +491,19 @@ END
                     ]
                 }
             ]
-            
+
         }
     }
     ```
-    
+
 
 2. 运行 **Set-AzDataFactoryV2Pipeline** cmdlet 以创建管道 IncrementalCopyPipeline。
-    
+
    ```powershell
    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
-   ``` 
+   ```
 
-   下面是示例输出： 
+   下面是示例输出：
 
    ```json
     PipelineName      : IncrementalCopyPipeline
@@ -516,22 +512,22 @@ END
     Activities        : {LookupOldWaterMarkActivity, LookupNewWaterMarkActivity, IncrementalCopyActivity, StoredProceduretoWriteWatermarkActivity}
     Parameters        :
    ```
- 
+
 ## <a name="run-the-pipeline"></a>运行管道
 
-1. 通过使用 **Invoke-AzDataFactoryV2Pipeline** cmdlet 运行管道 IncrementalCopyPipeline。 将占位符替换为自己的资源组和数据工厂名称。
+1. 使用 **Invoke-AzDataFactoryV2Pipeline** cmdlet 运行管道 IncrementalCopyPipeline。 将占位符替换为自己的资源组和数据工厂名称。
 
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
-    ``` 
-2. 运行 **Get-AzDataFactoryV2ActivityRun** cmdlet 检查管道的状态，直到看到所有活动成功运行的消息。 将占位符替换为针对 *RunStartedAfter* 和 *RunStartedBefore* 参数指定的自己的适当时间。 本教程使用 *-RunStartedAfter "2017/09/14"* 和 *-RunStartedBefore "2017/09/15"*。
+    ```
+2. 运行 **Get-AzDataFactoryV2ActivityRun** cmdlet 检查管道的状态，直到看到所有活动成功运行的消息。 将占位符替换为针对 *RunStartedAfter* 和 *RunStartedBefore* 参数指定的自己的适当时间。 本教程使用 *-RunStartedAfter "2017/09/14"* 和 *-RunStartedBefore "2017/09/15"* 。
 
     ```powershell
     Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"
     ```
 
     下面是示例输出：
- 
+
     ```json
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
@@ -546,7 +542,7 @@ END
     DurationInMs      : 7777
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-    
+
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : LookupOldWaterMarkActivity
@@ -560,7 +556,7 @@ END
     DurationInMs      : 25437
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-    
+
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : IncrementalCopyActivity
@@ -574,7 +570,7 @@ END
     DurationInMs      : 19769
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-    
+
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : StoredProceduretoWriteWatermarkActivity
@@ -601,15 +597,15 @@ END
     3,cccc,2017-09-03 02:36:00.0000000
     4,dddd,2017-09-04 03:21:00.0000000
     5,eeee,2017-09-05 08:06:00.0000000
-    ``` 
+    ```
 2. 在 `watermarktable` 中查看最新值。 可看到水印值已更新。
 
     ```sql
     Select * from watermarktable
     ```
-    
+
     下面是示例输出：
- 
+
     TableName | WatermarkValue
     --------- | --------------
     data_source_table | 2017-09-05  8:06:00.000
@@ -621,10 +617,10 @@ END
     ```sql
     INSERT INTO data_source_table
     VALUES (6, 'newdata','9/6/2017 2:23:00 AM')
-    
+
     INSERT INTO data_source_table
     VALUES (7, 'newdata','9/7/2017 9:01:00 AM')
-    ``` 
+    ```
 
     SQL 数据库中的更新数据为：
 
@@ -644,14 +640,14 @@ END
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
     ```
-3. 运行 **Get-AzDataFactoryV2ActivityRun** cmdlet 检查管道的状态，直到看到所有活动成功运行的消息。 将占位符替换为针对 *RunStartedAfter* 和 *RunStartedBefore* 参数指定的自己的适当时间。 本教程使用 *-RunStartedAfter "2017/09/14"* 和 *-RunStartedBefore "2017/09/15"*。
+3. 运行 **Get-AzDataFactoryV2ActivityRun** cmdlet 检查管道的状态，直到看到所有活动成功运行的消息。 将占位符替换为针对 *RunStartedAfter* 和 *RunStartedBefore* 参数指定的自己的适当时间。 本教程使用 *-RunStartedAfter "2017/09/14"* 和 *-RunStartedBefore "2017/09/15"* 。
 
     ```powershell
     Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"
     ```
 
     下面是示例输出：
- 
+
     ```json
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
@@ -666,7 +662,7 @@ END
     DurationInMs      : 31758
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-    
+
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : LookupOldWaterMarkActivity
@@ -680,7 +676,7 @@ END
     DurationInMs      : 25497
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-    
+
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : IncrementalCopyActivity
@@ -694,7 +690,7 @@ END
     DurationInMs      : 20194
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-    
+
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : StoredProceduretoWriteWatermarkActivity
@@ -717,29 +713,26 @@ END
     ```sql
     Select * from watermarktable
     ```
-    示例输出： 
-    
+    示例输出：
+
     TableName | WatermarkValue
     --------- | ---------------
     data_source_table | 2017-09-07 09:01:00.000
 
-     
+
 ## <a name="next-steps"></a>后续步骤
-已在本教程中执行了以下步骤： 
+已在本教程中执行了以下步骤：
 
 > [!div class="checklist"]
-> * 准备用于存储水印值的数据存储。 
+> * 准备用于存储水印值的数据存储。
 > * 创建数据工厂。
-> * 创建链接服务。 
+> * 创建链接服务。
 > * 创建源、接收器和水印数据集。
 > * 创建管道。
 > * 运行管道。
-> * 监视管道运行。 
+> * 监视管道运行。
 
-在本教程中，管道将数据从 SQL 数据库中的单个表复制到了 Blob 存储。 转到下面的教程，了解如何将数据从本地 SQL Server 数据库中的多个表复制到 SQL 数据库。 
+在本教程中，管道将数据从 Azure SQL 数据库中的单个表复制到 Blob 存储。 转到下面的教程，了解如何将数据从 SQL Server 数据库中的多个表复制到 SQL 数据库。
 
 > [!div class="nextstepaction"]
 >[以增量方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库](tutorial-incremental-copy-multiple-tables-powershell.md)
-
-
-

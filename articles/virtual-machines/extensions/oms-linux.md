@@ -1,79 +1,52 @@
 ---
-title: 适用于 Linux 的 azure 监视虚拟机扩展 |Microsoft Docs
+title: 适用于 Linux 的 Log Analytics 虚拟机扩展
 description: 使用虚拟机扩展在 Linux 虚拟机上部署 Log Analytics 代理。
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: c7bbf210-7d71-4a37-ba47-9c74567a9ea6
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/06/2019
-ms.author: roiyz
-ms.openlocfilehash: 8b24af016349db0fcfb4106a1e69da395e3d0150
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.date: 02/18/2020
+ms.author: akjosh
+ms.openlocfilehash: 905a42c5a9bc297e2c27408a58a5b3019755fdef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66755155"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736647"
 ---
-# <a name="azure-monitor-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Azure Monitor 虚拟机扩展
+# <a name="log-analytics-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Log Analytics 虚拟机扩展
 
 ## <a name="overview"></a>概述
 
-Azure Monitor 日志提供跨云和本地资产的监视、警报和警报修正功能。 适用于 Linux 的 Log Analytics 代理虚拟机扩展由 Microsoft 发布和提供支持。 该扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Log Analytics 工作区中。 本文档详细介绍适用于 Linux 的 Azure Monitor 虚拟机扩展支持的平台、配置和部署选项。
+Azure Monitor 日志提供跨云和本地资产的监视、警报和警报修正功能。 适用于 Linux 的 Log Analytics 虚拟机扩展由 Microsoft 发布和提供支持。 该扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Log Analytics 工作区中。 本文档详细介绍适用于 Linux 的 Log Analytics 虚拟机扩展支持的平台、配置和部署选项。
 
 >[!NOTE]
 >从 Microsoft Operations Management Suite (OMS) 过渡到 Azure Monitor 期间，Windows 或 Linux 的 OMS 代理称为 Windows 或 Linux 的 Log Analytics 代理。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
 
-Log Analytics 代理扩展可以针对这些 Linux 发行版运行。
-
-| 分发 | Version |
-|---|---|
-| CentOS Linux | 6 (x86/x64) 和 7 (x64) |
-| Amazon Linux | 2017.09 (x64) | 
-| Oracle Linux | 6 和 7 (x86/x64) |
-| Red Hat Enterprise Linux Server | 6 (x86/x64) 和 7 (x64) |
-| Debian GNU/Linux | 8 和 9 (x86/x64) |
-| Ubuntu | 14.04 LTS (x86/x64)、16.04 LTS (x86/x64) 和 18.04 LTS (x64) |
-| SUSE Linux Enterprise Server | 12 (x64) |
-
->[!NOTE]
->任何平台都不支持低于版本 1.x 的 OpenSSL，并且仅在 x86_64 平台（64 位）上支持版本 1.10。  
->
-
-### <a name="agent-prerequisites"></a>代理先决条件
-
-下表列出了在安装代理的受支持 Linux 发行版的所需的包。
-
-|所需的包 |描述 |最低版本 |
-|-----------------|------------|----------------|
-|Glibc |    GNU C 库 | 2.5-12 
-|Openssl    | OpenSSL 库 | 1.0.x 或 1.1.x |
-|Curl | cURL Web 客户端 | 7.15.5 |
-|Python-ctype | | 
-|PAM | 可插入验证模块 | | 
-
->[!NOTE]
->收集 Syslog 消息时需要 rsyslog 或 syslog ng。 不支持将 Red Hat Enterprise Linux 版本 5、CentOS 和 Oracle Linux 版本 (sysklog) 上的默认 syslog 守护程序用于 syslog 事件收集。 要从这些发行版的此版本中收集 syslog 数据，应安装并配置 rsyslog 守护程序以替换 sysklog。
+有关受支持的 Linux 发行版的详细信息，请参阅 [Log Analytics 代理概述](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)一文。
 
 ### <a name="agent-and-vm-extension-version"></a>代理和 VM 扩展版本
-下表提供每次发布的 Azure Monitor VM 扩展和 Log Analytics 代理捆绑包的版本映射。 并附有 Log Analytics 代理捆绑包版本的发行说明链接。 发行说明包括有关可用于给定代理版本的 bug 修补程序和新功能的详细信息。  
+下表提供每次发布的 Log Analytics VM 扩展和 Log Analytics 代理捆绑包的版本映射。 并附有 Log Analytics 代理捆绑包版本的发行说明链接。 发行说明包括有关可用于给定代理版本的 bug 修补程序和新功能的详细信息。  
 
-| Azure Monitor Linux VM 扩展版本 | Log Analytics 代理捆绑包版本 | 
+| Log Analytics Linux VM 扩展版本 | Log Analytics 代理捆绑包版本 | 
 |--------------------------------|--------------------------|
-|1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
+| 1.13.13 | [1.13.7-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.7-0) |
+| 1.12.25 | [1.12.15-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
+| 1.11.15 | [1.11.0-9](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-9) |
+| 1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
 | 1.9.1 | [1.9.0-0](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.9.0-0) |
 | 1.8.11 | [1.8.1-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.8.1.256)| 
 | 1.8.0 | [1.8.0-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/1.8.0-256)| 
@@ -114,7 +87,7 @@ Azure 安全中心自动预配 Log Analytics 代理并将其连接到 Azure 订�
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.7",
+    "typeHandlerVersion": "1.13",
     "autoUpgradeMinorVersion": true,
     "settings": {
       "workspaceId": "myWorkspaceId"
@@ -128,7 +101,6 @@ Azure 安全中心自动预配 Log Analytics 代理并将其连接到 Azure 订�
 
 >[!NOTE]
 >上面的架构假定，将其放置在模板的根级别。 如果将其放在模板的虚拟机资源中，则应更改 `type` 和 `name` 属性，如[后文](#template-deployment)所述。
->
 
 ### <a name="property-values"></a>属性值
 
@@ -146,7 +118,7 @@ Azure 安全中心自动预配 Log Analytics 代理并将其连接到 Azure 订�
 
 可使用 Azure 资源管理器模板部署 Azure VM 扩展。 部署需要部署后配置（例如，载入 Azure Monitor 日志）的一个或多个虚拟机时，模板是理想选择。 包含 Log Analytics 代理 VM 扩展的示例资源管理器模板可以在 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm)中找到。 
 
-虚拟机扩展的 JSON 配置可以嵌套在虚拟机资源内，或放置在资源管理器 JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources)。 
+虚拟机扩展的 JSON 配置可以嵌套在虚拟机资源内，或放置在资源管理器 JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/templates/child-resource-name-type.md)。 
 
 以下示例假定 VM 扩展嵌套在虚拟机资源内。 嵌套扩展资源时，JSON 放置在虚拟机的 `"resources": []` 对象中。
 
@@ -200,7 +172,7 @@ Azure 安全中心自动预配 Log Analytics 代理并将其连接到 Azure 订�
 
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
 
-可以使用 Azure CLI 将 Log Analytics 代理 VM 扩展部署到现有的虚拟机。 将 workspaceId 和 workspaceKey 替换为 Log Analytics 工作区中的对应项   。 
+可以使用 Azure CLI 将 Log Analytics 代理 VM 扩展部署到现有的虚拟机。 将以下 myWorkspaceKey 值替换为你的工作区密钥，将 myWorkspaceId 值替换为你的工作区 ID。  这些值可在 Azure 门户的“高级设置”下的 Log Analytics 工作区中找到。 
 
 ```azurecli
 az vm extension set \
@@ -208,13 +180,13 @@ az vm extension set \
   --vm-name myVM \
   --name OmsAgentForLinux \
   --publisher Microsoft.EnterpriseCloud.Monitoring \
-  --version 1.7 --protected-settings '{"workspaceKey": "omskey"}' \
-  --settings '{"workspaceId": "omsid"}'
+  --version 1.10.1 --protected-settings '{"workspaceKey":"myWorkspaceKey"}' \
+  --settings '{"workspaceId":"myWorkspaceId"}'
 ```
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure CLI 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure CLI 运行以下命令。
 

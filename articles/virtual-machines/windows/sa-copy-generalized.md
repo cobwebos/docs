@@ -1,27 +1,19 @@
 ---
-title: 在 Azure 中创建通用化 VM 的非托管映像 | Microsoft Docs
+title: 在 Azure 中创建通用化 VM 的非托管映像
 description: 创建通用化 Windows VM 的非托管映像，从而在 Azure 中创建多个 VM 的副本。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: e1ed419892412c1fb9334fed74b82c53154723ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom: storage-accounts
+ms.openlocfilehash: 31b8200b63780388fb53db588c418951c500ac19
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60252426"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84232910"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>如何从 Azure VM 创建非托管 VM 映像
 
@@ -29,7 +21,7 @@ ms.locfileid: "60252426"
 
 本文介绍如何通过 Azure PowerShell 使用存储帐户创建通用化 Azure VM 的映像。 然后可以使用该映像创建另一个 VM。 该映像包含 OS 磁盘和附加到虚拟机的数据磁盘。 该映像不包含虚拟网络资源，因此，创建新 VM 时需要设置这些资源。 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="generalize-the-vm"></a>一般化 VM 
 本部分说明如何通用化可用作映像的 Windows 虚拟机。 通用化 VM 将删除所有个人帐户信息及其他某些数据，并准备好要用作映像的计算机。 有关 Sysprep 的详细信息，请参阅[如何使用 Sysprep：简介](https://technet.microsoft.com/library/bb457073.aspx)。
@@ -46,7 +38,7 @@ ms.locfileid: "60252426"
 
 1. 登录到 Windows 虚拟机。
 2. 以管理员身份打开“命令提示符”窗口。 将目录切换到 **%windir%\system32\sysprep**，然后运行 `sysprep.exe`。
-3. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。
+3. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。  
 4. 在“关机选项”中选择“关机”。
 5. 单击“确定”。
    
@@ -89,13 +81,13 @@ ms.locfileid: "60252426"
     Stop-AzVM -ResourceGroupName <resourceGroup> -Name <vmName>
     ```
    
-    Azure 门户中该 VM 的“状态”将从“已停止”更改为“已停止(已解除分配)”。
+    Azure 门户中该 VM 的“状态”将从“已停止”更改为“已停止(已解除分配)”。 
 2. 将虚拟机的状态设置为“通用化”。 
    
     ```powershell
     Set-AzVm -ResourceGroupName <resourceGroup> -Name <vmName> -Generalized
     ```
-3. 检查 VM 的状态。 VM 的“OSState/通用化”部分中的“DisplayStatus”应设置为“VM 已通用化”。  
+3. 检查 VM 的状态。 VM 的“OSState/通用化”部分中的“DisplayStatus”应设置为“VM 已通用化”  。  
    
     ```powershell
     $vm = Get-AzVM -ResourceGroupName <resourceGroup> -Name <vmName> -Status
@@ -104,7 +96,7 @@ ms.locfileid: "60252426"
 
 ## <a name="create-the-image"></a>创建映像
 
-使用此命令在目标存储容器中创建非托管虚拟机映像。 该映像在创建时所在的存储帐户与原始虚拟机的相同。 `-Path` 参数将源 VM 的 JSON 模板的副本保存到本地计算机。 `-DestinationContainerName` 参数是要在其中保存映像的容器的名称。 如果该容器不存在，系统自动创建。
+使用此命令在目标存储容器中创建非托管虚拟机映像。 该映像在创建时所在的存储帐户与原始虚拟机的相同。 `-Path` 参数将源 VM 的 JSON 模板的副本保存到本地计算机。 `-DestinationContainerName` 参数是要在其中保存映像的容器的名称。 如果该容器不存在，系统会自动创建。
    
 ```powershell
 Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
@@ -112,7 +104,7 @@ Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
     -Path <C:\local\Filepath\Filename.json>
 ```
    
-可以从 JSON 文件模板获取映像的 URL。 转到“资源” > “storageProfile” > “osDisk” > “映像” > “URI”部分即可查找映像的完整路径。 映像的 URL 如下所示：`https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`。
+可以从 JSON 文件模板获取映像的 URL。 转到“资源” > “storageProfile” > “osDisk” > “映像” > “URI”部分即可查找映像的完整路径    。 映像的 URL 如下所示：`https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`。
    
 也可以在门户中验证 URI。 映像将复制到存储帐户中名为 **system** 的容器中。 
 
@@ -149,7 +141,7 @@ $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vh
     ```    
 
 ### <a name="create-a-public-ip-address-and-network-interface"></a>创建公共 IP 地址和网络接口
-若要与虚拟网络中的虚拟机通信，需要一个 [公共 IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) 和网络接口。
+若要与虚拟网络中的虚拟机通信，需要一个 [公共 IP 地址](../../virtual-network/public-ip-addresses.md) 和网络接口。
 
 1. 创建公共 IP 地址。 此示例创建名为 **myPip** 的公共 IP 地址。 
    
@@ -250,7 +242,7 @@ $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>验证是否已创建 VM
-完成后，应会在 [Azure 门户](https://portal.azure.com)的“浏览” > “虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM：
+完成后，应会在 [Azure 门户](https://portal.azure.com)的“浏览” > “虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM： 
 
 ```powershell
     $vmList = Get-AzVM -ResourceGroupName $rgName

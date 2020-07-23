@@ -1,20 +1,16 @@
 ---
 title: Azure 管理概述 - Azure 治理
 description: Azure 应用程序和资源管理领域概述及 Azure 管理工具上内容的链接。
-author: DCtheGeek
-manager: carmonm
-ms.service: governance
-ms.topic: article
-ms.date: 12/06/2018
-ms.author: dacoulte
-ms.openlocfilehash: f94cec7919edc6cf6ebb6618d38b8591feb1278b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 07/06/2020
+ms.topic: overview
+ms.openlocfilehash: 81d655db706a7330fc541724d490a4885cc2fe8b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60683220"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041908"
 ---
-# <a name="overview-of-management-services-in-azure"></a>Azure 中的管理服务概述
+# <a name="what-are-the-azure-management-areas"></a>什么是 Azure 管理区域？
 
 Azure 中的监管是 Azure 管理的一个方面。 本文介绍了在 Azure 中部署和维护资源的不同管理领域。
 
@@ -22,7 +18,7 @@ Azure 中的监管是 Azure 管理的一个方面。 本文介绍了在 Azure �
 
 下图说明了维护任何应用程序或资源所需的不同管理方面。 可将这些不同的区域视为一个生命周期。 每个区域都需要在资源的整个生存期内保持连续。 此资源生命周期始于其初始部署，贯穿其持续操作，在其停用时结束。
 
-![Azure 中的管理规则](../monitoring/media/management-overview/management-capabilities.png)
+:::image type="content" source="../monitoring/media/management-overview/management-capabilities.png" alt-text="Azure 中的管理原则" border="false":::
 
 没有一个 Azure 服务完全满足特定管理区域的要求。 但搭配多个服务就能实现这一点。 某些服务（如 Application Insight）可为 Web 应用程序提供有针对性的监视功能。 其他服务（例如 Azure Monitor 日志）可为其他服务存储管理数据。 可使用此功能分析由不同服务收集的不同类型的数据。
 
@@ -30,7 +26,7 @@ Azure 中的监管是 Azure 管理的一个方面。 本文介绍了在 Azure �
 
 ## <a name="monitor"></a>监视
 
-监视是一种数据收集和分析操作，用于审核资源的性能、运行状况及可用性。 有效的监视策略有助于了解组件的运行情况，并通过通知延长正常运行时间。 请阅读监视概述，了解[监视 Azure 应用程序和资源](../monitoring/monitoring-overview.md)中使用的不同服务。
+监视是一种数据收集和分析操作，用于审核资源的性能、运行状况及可用性。 有效的监视策略有助于了解组件的运行情况，并通过通知延长正常运行时间。 请阅读监视概述，了解[监视 Azure 应用程序和资源](../azure-monitor/overview.md)中使用的不同服务。
 
 ## <a name="configure"></a>配置
 
@@ -40,17 +36,26 @@ Azure 中的监管是 Azure 管理的一个方面。 本文介绍了在 Azure �
 ## <a name="govern"></a>治理
 
 “治理”提供了机制和流程来保持对 Azure 中的应用程序和资源的控制。 它涉及规划计划和设置战略优先级。
-Azure 中的治理主要是通过两个服务实现的。 [Azure 策略](./policy/overview.md)允许你创建、分配和管理策略定义，以强制执行资源规则。 此功能可使这些资源符合企业标准。 [Cloudyn 提供的 Azure 成本管理](../cost-management/overview.md)可用于跟踪 Azure 资源和其他云提供商的云使用情况和开支。
+Azure 中的治理主要是通过两个服务实现的。 [Azure Policy ](./policy/overview.md)允许你创建、分配和管理策略定义，以强制执行资源规则。
+此功能可使这些资源符合企业标准。
+[Azure 成本管理](../cost-management-billing/cost-management-billing-overview.md)可用于跟踪 Azure 资源和其他云提供商的云使用情况和开支。
 
 ## <a name="secure"></a>安全
 
-管理资源和数据的安全性。 安全计划涉及评估威胁、收集和分析数据以及应用程序和资源的符合性。 安全监视和威胁分析由 [Azure 安全中心](../security-center/security-center-intro.md)提供，该中心包括跨混合云工作负荷的统一安全管理和高级威胁防护。 请参阅 [Azure 安全性简介](../security/azure-security.md)的全面信息，以及有关保护 Azure 资源的指南。
+管理资源和数据的安全性。 安全计划涉及评估威胁、收集和分析数据以及应用程序和资源的符合性。 安全监视和威胁分析由 [Azure 安全中心](../security-center/security-center-intro.md)提供，该中心包括跨混合云工作负荷的统一安全管理和高级威胁防护。 请参阅 [Azure 安全性简介](../security/fundamentals/overview.md)的全面信息，以及有关保护 Azure 资源的指南。
 
 ## <a name="protect"></a>保护
 
-保护是指保持应用程序和数据可用，即使是超出控制范围的中断也是如此。 Azure 中的保护由两个服务提供。 [Azure 备份](../backup/backup-introduction-to-azure-backup.md)提供数据备份和恢复（在云中或本地）。 [Azure Site Recovery](../site-recovery/site-recovery-overview.md) 可在发生灾难期间提供业务连续性和即时恢复。
+保护是指保持应用程序和数据可用，即使是超出控制范围的中断也是如此。 Azure 中的保护由两个服务提供。 [Azure 备份](../backup/backup-overview.md)提供数据备份和恢复（在云中或本地）。 [Azure Site Recovery](../site-recovery/site-recovery-overview.md) 可在发生灾难期间提供业务连续性和即时恢复。
 
 ## <a name="migrate"></a>迁移
 
 迁移指的是将当前在本地运行的工作负荷转换到 Azure 云中。
-[Azure Migrate](../migrate/migrate-overview.md) 是一项服务，可帮助评估本地虚拟机到 Azure 的迁移适用性。 Azure Site Recovery [从本地](../site-recovery/migrate-tutorial-on-premises-azure.md)或[从 Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md) 迁移虚拟机。 [Azure 数据库迁移](../dms/dms-overview.md)会帮助你将数据库源迁移到 Azure 数据平台。
+[Azure Migrate](../migrate/migrate-services-overview.md) 是一项服务，可帮助评估本地虚拟机到 Azure 的迁移适用性。 Azure Site Recovery [从本地](../site-recovery/migrate-tutorial-on-premises-azure.md)或[从 Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md) 迁移虚拟机。 [Azure 数据库迁移](../dms/dms-overview.md)会帮助你将数据库源迁移到 Azure 数据平台。
+
+## <a name="next-steps"></a>后续步骤
+
+若要了解有关 Azure 治理的详细信息，请参阅以下文章：
+
+- 请参阅 [Azure 治理中心](./index.yml)。
+- 请参阅[适用于 Azure 的云采用框架中的治理](/azure/cloud-adoption-framework/govern/)

@@ -1,13 +1,10 @@
 ---
-title: Azure PowerShell 脚本示例 - 通过网络虚拟设备路由流量 | Microsoft Docs
+title: 通过 NVA 路由流量 - Azure PowerShell 脚本示例
 description: Azure PowerShell 脚本示例 - 通过防火墙网络虚拟设备路由流量。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
-tags: ''
-ms.assetid: ''
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: powershell
 ms.topic: sample
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 21ee52f0a9c3b5a6cc64bdaf92c05db4a18903ca
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9a94249f75fc5b01663268fc4fa8cec016bc96bf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717534"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74091286"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance-script-sample"></a>通过网络虚拟设备脚本示例路由流量
 
@@ -48,7 +45,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 此脚本使用以下命令创建资源组、虚拟网络和网络安全组。 下表中的每条命令均链接到特定于命令的文档：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)  | 创建用于存储所有资源的资源组。 |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 创建 Azure 虚拟网络和前端子网。 |

@@ -1,23 +1,22 @@
 ---
-title: PowerShell 脚本：创建 Azure 通知中心 | Microsoft Docs
-description: 此 PowerShell 脚本可创建 Azure 通知中心。
-services: notification-hubs
+title: 使用 PowerShell 创建 Azure 通知中心 |Microsoft Docs
+description: 了解如何使用 PowerShell 脚本创建 Azure 通知中心。
 author: dimazaid
-manager: kpiteira
-editor: spelluru
+manager: femila
+services: notification-hubs
+editor: sethmanheim
 ms.service: notification-hubs
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2018
+ms.date: 01/14/2020
 ms.author: dimazaid
-ms.openlocfilehash: 93c5118962fed1bfda4d32afba942a6600664e5d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 01749e1ae5c29a7e77b2143939e25cf1ccd1aec2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66172153"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76263961"
 ---
 # <a name="use-powershell-to-create-an-azure-notification-hub"></a>使用 PowerShell 创建 Azure 通知中心
 
@@ -27,13 +26,13 @@ ms.locfileid: "66172153"
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
+
 * **Azure 订阅** - 如果没有 Azure 订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="sample-script"></a>示例脚本
 
 [!code-powershell[main](../../../powershell_scripts/notification-hubs/create-notification-hub/create-notification-hub.ps1 "Create a notification hub")]
-
 
 ## <a name="clean-up-deployment"></a>清理部署
 
@@ -45,9 +44,9 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令： 
+此脚本使用以下命令：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzNotificationHubsNamespace](/powershell/module/az.notificationhubs/new-aznotificationhubsnamespace) | 为通知中心创建命名空间。 |

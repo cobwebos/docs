@@ -11,11 +11,11 @@ ms.custom: include file
 ms.date: 11/12/2018
 ms.author: diberry
 ms.openlocfilehash: fd6a4a4e2d779047d252fdc5e3eae8e3fba8b507
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145585"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "67173250"
 ---
 ## <a name="request-and-response-json"></a>请求和响应 JSON
 

@@ -1,28 +1,20 @@
 ---
-title: 如何在应用服务环境中缩放应用 - Azure
-description: 在应用服务环境中缩放 Web 应用
-services: app-service
-documentationcenter: ''
+title: 缩放 ASE v1 中的应用
+description: 在应用服务环境中缩放应用。 本文档仅供使用旧版 v1 ASE 的用户使用。
 author: ccompy
-manager: stefsch
-editor: jimbe
 ms.assetid: 78eb1e49-4fcd-49e7-b3c7-f1906f0f22e3
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6e683eb07b690d7d5680b7a4d429d1150f22f67e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0e665ec27da0a898e754817f946b965ac7360fda
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60767667"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220552"
 ---
-# <a name="scaling-apps-in-an-app-service-environment"></a>在应用服务环境中缩放应用
+# <a name="scaling-apps-in-an-app-service-environment-v1"></a>缩放应用服务环境 v1 中的应用
 在 Azure 应用服务中，通常有三项内容可以扩展：
 
 * 定价计划
@@ -38,7 +30,7 @@ ms.locfileid: "60767667"
 
 对任一项目的更改均通过针对 ASE 托管的应用服务计划中显示的 UI 进行。  
 
-![][1]
+![显示缩放服务计划和辅助池服务计划的详细信息的屏幕截图。][1]
 
 无法将 ASP 扩展到超出 ASP 所在辅助角色池中可用的计算资源数。  如果需要该辅助池中的计算资源，需让 ASE 管理员进行添加。  有关重新配置 ASE 的信息，请阅读此处的信息：[如何配置应用服务环境][HowtoConfigureASE]。  还可以利用 ASE 自动缩放功能来根据计划或指标增加容量。  若要获取有关配置 ASE 环境本身自动缩放的更多详细信息，请参阅[如何配置应用服务环境的自动缩放][ASEAutoscale]。
 
@@ -47,16 +39,16 @@ ms.locfileid: "60767667"
 ### <a name="scaling-the-number-of-instances"></a>扩展实例数
 首次在应用服务环境中创建 Web 应用时，它会从 1 个实例开始。  可以再扩大至其他实例，为应用提供额外的计算资源。   
 
-如果 ASE 具有足够的容量，那么此步骤非常简单。  转到包含你想要扩展的站点的应用服务计划，并选择“扩展”。  这会打开 UI，可以在其中为 ASP 手动设置缩放或设置自动缩放规则。  要手动缩放应用，只需将“缩放依据”设置为“手动输入的实例计数”。  从此处将滑块拖到所需的数量，或者在滑块旁边的框中输入所需的数量。  
+如果 ASE 具有足够的容量，那么此步骤非常简单。  转到包含你想要扩展的站点的应用服务计划，并选择“扩展”。  这会打开 UI，可以在其中为 ASP 手动设置缩放或设置自动缩放规则。  要手动缩放应用，只需将“缩放依据”****** 设置为“手动输入的实例计数”******。  从此处将滑块拖到所需的数量，或者在滑块旁边的框中输入所需的数量。  
 
-![][2] 
+![屏幕截图显示了可为 asp 设置规模的位置，或为 ASP 配置自动缩放规则。][2] 
 
-ASE 中的 ASP 自动缩放规则与一般运行方式相同。  可以选择“缩放依据”下面的“CPU 百分比”，根据 CPU 百分比创建 ASP 的自动缩放规则，或使用“计划和性能规则”创建更复杂的规则。  若要查看有关配置自动缩放的更完整详细信息，请参阅此处的指南：[在 Azure 应用服务中缩放应用][AppScale]。 
+ASE 中的 ASP 自动缩放规则与一般运行方式相同。  可以选择“缩放依据”****** 下面的“CPU 百分比”******，根据 CPU 百分比创建 ASP 的自动缩放规则，或使用“计划和性能规则”****** 创建更复杂的规则。  若要查看有关配置自动缩放的更完整详细信息，请参阅此处的指南：[在 Azure 应用服务中缩放应用][AppScale]。 
 
 ### <a name="worker-pool-selection"></a>辅助池选择项
 如前所述，辅助角色池选项需通过 ASP UI 访问。  打开想要缩放的 ASP 边栏选项卡，并选择辅助角色池。  将显示已在应用服务环境中配置的所有辅助池。  如果只有一个辅助池，则将仅列出该池。  要更改 ASP 所在的辅助角色池，只需选择希望将应用服务计划移动到的目标辅助角色池即可。  
 
-![][3]
+![屏幕截图显示你可以在何处更改 ASP 所在的辅助角色池。][3]
 
 将 ASP 从一个辅助角色池移到另一个池之前，请确保有足够的容量可以容纳该 ASP。  辅助池列表中不仅列出了辅助池名，还显示了该辅助池中的可用辅助角色数。  请确保具有足够的可用实例来容纳应用服务计划。  如果想移动到的目标辅助池需要更多计算资源，请让 ASE 管理员进行添加。  
 
@@ -75,12 +67,12 @@ ASE 中的 ASP 自动缩放规则与一般运行方式相同。  可以选择“
 
 <!--Links-->
 [WhatisASE]: app-service-app-service-environment-intro.md
-[ScaleWebapp]: ../web-sites-scale.md
+[ScaleWebapp]: ../manage-scale-up.md
 [HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md
 [CreateWebappinASE]: app-service-web-how-to-create-a-web-app-in-an-ase.md
 [Appserviceplans]: ../overview-hosting-plans.md
 [AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/ 
 [ASEAutoscale]: app-service-environment-auto-scale.md
-[AppScale]: ../web-sites-scale.md
+[AppScale]: ../manage-scale-up.md
 [AppWarmup]: https://ruslany.net/2015/09/how-to-warm-up-azure-web-app-during-deployment-slots-swap/

@@ -1,6 +1,6 @@
 ---
 title: Azure 媒体服务概述 | Microsoft Docs
-description: 本部分提供 Azure 媒体服务的概述
+description: Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发人员能够生成可缩放的媒体管理和传送应用程序。 本文提供了 Azure 媒体服务的概述。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,27 +13,35 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
-ms.openlocfilehash: 7f0a071012685ee192d4f866396a5953d0a4508c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
-ms.translationtype: MT
+ms.openlocfilehash: 1c2d6287a89c7816c30cf26978859c07dba0251d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937257"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78197498"
 ---
 # <a name="azure-media-services-overview"></a>Azure 媒体服务概述 
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="选择所使用的媒体服务版本："]
 > * [第 3 版](../latest/media-services-overview.md)
 > * [第 2 版](media-services-overview.md)
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 媒体服务 v2 中未添加新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
-Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使开发人员能够生成可缩放的媒体管理和传送应用程序。 媒体服务基于 REST API，你可以使用这些 API 安全地上传、存储、编码和打包视频或音频内容，以供点播以及以实时流形式传送到各种客户端（例如，电视、电脑和移动设备）。
+Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使开发人员能够生成可缩放的媒体管理和传送应用程序。 媒体服务基于 REST API，使用这些 API 可以安全地上传、存储、编码和打包视频或音频内容，以供点播以及以实时传送视频流的形式传送到各种客户端（例如，电视、电脑和移动设备）。
 
 可以完全使用媒体服务构建端到端工作流。 也可以选择使用第三方组件来构建工作流的某些组成部分。 例如，使用第三方编码器进行编码。 然后，使用媒体服务进行上传、保护、打包和传送。 可以选择实时流式播放你的内容，或者根据点播情况交付内容。 
 
-## <a name="prerequisites"></a>必备组件
+
+## <a name="compliance-privacy-and-security"></a>符合性、隐私和安全性
+
+需要重点提醒的是，在使用 Azure 媒体服务时，你必须遵守所有适用法律，不得以侵犯他人权利或可能对他人有害的方式使用媒体服务或任何 Azure 服务。
+
+在将任何视频/图像上传到媒体服务之前，必须拥有该视频/图像的适当使用权限，包括根据法律的要求，获得视频/图像中的个人（如果有）授予的，在媒体服务和 Azure 中使用、处理和存储其数据的所有必要许可。 某些司法辖区可能会对收集、在线处理和存储某些类别的数据（例如生物识别数据）施加特殊的法律要求。 在根据特殊法律要求使用媒体服务和 Azure 处理与存储任何数据之前，必须确保符合可能适用于你的任何法律要求。
+
+若要了解媒体服务中的合规性、隐私性和安全性，请访问 Microsoft[信任中心](https://www.microsoft.com/trust-center/?rtc=1)。 有关 Microsoft 的隐私义务、数据处理和保留实践（包括如何删除数据），请查看 Microsoft[隐私声明](https://privacy.microsoft.com/PrivacyStatement)、[在线服务条款](https://www.microsoft.com/licensing/product-licensing/products?rtc=1)（"OST"）和[数据处理补充](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)条款（"DPA"）。 使用媒体服务即表示你同意遵守 OST、DPA 和隐私声明。
+ 
+## <a name="prerequisites"></a>先决条件
 
 若要开始使用 Azure 媒体服务，应该具备以下条件：
 
@@ -46,15 +54,15 @@ Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使
 
 ## <a name="sdks-and-tools"></a>SDK 和工具
 
-若要构建媒体服务解决方案，可以使用：
+要构建媒体服务解决方案，可以使用：
 
 * [媒体服务 REST API](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
 * 可用的客户端 SDK 之一：
-    * Azure 媒体服务 SDK for.NET
+    * 适用于 .NET 的 Azure 媒体服务 SDK
     
         * [NuGet 包](https://www.nuget.org/packages/windowsazure.mediaservices/)
-        * [Github 源代码](https://github.com/Azure/azure-sdk-for-media-services)
-    * [Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)，
+        * [GitHub 源代码](https://github.com/Azure/azure-sdk-for-media-services)
+    * [适用于 Java 的 AZURE SDK](https://github.com/Azure/azure-sdk-for-java)，
     * [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php)，
     * [适用于 Node.js 的 Azure 媒体服务](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) （这是 Node.js SDK 的非 Microsoft 版本。 它由社区维护，当前未包括所有的 AMS API）。
 * 现有工具：
@@ -67,7 +75,7 @@ Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使
 
 ## <a name="code-samples"></a>代码示例
 
-在“Azure 代码示例”库中查找多个代码示例：[Azure 媒体服务代码示例](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0)。
+在****“Azure 代码示例”库中查找多个代码示例：[Azure 媒体服务代码示例](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0)。
 
 ## <a name="concepts"></a>概念
 

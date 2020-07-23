@@ -4,31 +4,29 @@ description: Avere vFXT 代码演示教程的链接
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: 42a2055b9a49d6d9f8f4930cb3704fe581f41724
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 12/19/2019
+ms.author: rohogue
+ms.openlocfilehash: b01bcb743e4ffc110f0182e50630baea288f16d2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60409985"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76153694"
 ---
 # <a name="avere-vfxt-demo-projects"></a>Avere vFXT 演示项目
 
-[GitHub](https://github.com/Azure/Avere) 上提供了示例教程。 这些小型项目演示了 Avere vFXT for Azure 的主要功能和用例。 
+[GitHub](https://github.com/Azure/Avere) 上提供了示例教程。 这些小型项目演示了 Avere vFXT for Azure 的主要功能和用例。
 
 ## <a name="video-rendering"></a>视频渲染
 
-* [使用 Azure Batch 和 Avere vFXT 进行渲染](https://github.com/Azure/Avere/blob/master/docs/maya_azure_batch_avere_vfxt_demo.md) - 60 分钟的演示，演示如何使用 Autodesk Maya、Azure Batch 以及 Avere vFXT 群集来生成动画电影
+* [使用 Azure Batch 和 Avere vFXT 进行呈现](https://github.com/Azure/Avere/blob/master/docs/maya_azure_batch_avere_vfxt_demo.md)-一种60分钟项目，该项目演示如何使用 Azure Batch 和 Avere vFXT 群集的 Autodesk Maya 生成动画影片
 
-* [为何要使用 Avere vFXT 来进行渲染？](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md) - 用于比较使用和不使用 Avere vFXT 群集的 NAS 的渲染时间的演示 
-
+* [为何要使用 Avere vFXT 来进行渲染？](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md) -一种演示，该演示使用和不使用 Avere vFXT 群集来比较网络附加存储中的呈现时间
 
 ## <a name="high-performance-computing"></a>高性能计算
 
-* [缩短 Azure 虚拟机 (VM) 启动时间的最佳做法](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md) - 测试在快速启动数千个计算客户端时使用 Avere vFXT for Azure 缩短启动时间的重现测试
+* [改进 Azure 虚拟机（VM）启动时间的最佳实践](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md)-一种可重复的测试，该测试使用 Avere VFXT for Azure 来改善在快速启动成千上万个计算客户端时的启动时间
 
-## <a name="vfxt-performance"></a>vFXT 性能 
+## <a name="vfxt-performance"></a>vFXT 性能
 
 * [使用 vdbench 测量 vFXT 性能](https://github.com/Azure/Avere/blob/master/docs/vdbench.md) - 用于生成中小型工作负载以测试 vFXT 内存和磁盘子系统的基本测试设置
 

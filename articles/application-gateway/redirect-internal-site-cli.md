@@ -1,23 +1,19 @@
 ---
-title: 创建支持内部重定向的应用程序网关 - Azure CLI | Microsoft Docs
+title: 使用 CLI 进行内部重定向
+titleSuffix: Azure Application Gateway
 description: 了解如何创建应用程序网关，将内部 web 流量重定向到相应的池中使用 Azure CLI。
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.topic: how-to
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: e44beed592e013a089011c2a774b7300f2b3f854
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d889d0c13c911e02d73bb1de76b7c3d1aa240027
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66133752"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806802"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>使用 Azure CLI 创建支持内部重定向的应用程序网关
 
@@ -42,7 +38,7 @@ ms.locfileid: "66133752"
 
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/azure/group) 创建资源组。
 
-以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组。
+以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组****。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -213,15 +209,15 @@ az network public-ip show \
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-在浏览器的地址栏中输入域名。 例如 http://www.contoso.com 。
+在浏览器的地址栏中输入域名。 例如，http:\//www.contoso.com。
 
 ![在应用程序网关中测试 contoso 站点](./media/redirect-internal-site-cli/application-gateway-nginxtest.png)
 
-将地址更改为其他域（例如 http://www.contoso.org ），应会看到流量已被重定向回 www\.contoso.com 的侦听器。
+将地址更改为其他域（例如 http:\//www.contoso.org），应会看到流量已被重定向回 www\.contoso.com 的侦听器。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你将了解：
+在本教程中，你了解了如何执行以下操作：
 
 > * 设置网络
 > * 创建应用程序网关

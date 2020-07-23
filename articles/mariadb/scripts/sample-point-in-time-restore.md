@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本 - 还原 Azure Database for MariaDB 服务器
+title: CLI 脚本 - 还原服务器 - Azure Database for MariaDB
 description: 此示例 Azure CLI 脚本演示如何将 Azure Database for MariaDB 服务器及其数据库还原到前一个时间点。
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 11/28/2018
-ms.openlocfilehash: 2d294f5b43ba3fb7587ca1d03903e39d75291754
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/02/2019
+ms.openlocfilehash: d7591c4f88026644ee2453150cfa226a155ab32d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171355"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74771685"
 ---
 # <a name="restore-an-azure-database-for-mariadb-server-using-azure-cli"></a>使用 Azure CLI 还原 Azure Database for MariaDB 服务器
 此示例 CLI 脚本可将单个 Azure Database for MariaDB 服务器还原到前一个时间点。
@@ -41,5 +41,5 @@ ms.locfileid: "66171355"
 | [az group delete](/cli/azure/group#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
-- 阅读有关 Azure CLI 的更多信息：[Azure CLI 文档](/cli/azure)。
-- 请尝试其他脚本：[Azure Database for MariaDB 的 Azure CLI 示例](../sample-scripts-azure-cli.md)
+- 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。
+- 尝试其他脚本：[Azure Database for MariaDB 的 Azure CLI 示例](../sample-scripts-azure-cli.md)

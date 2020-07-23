@@ -1,25 +1,20 @@
 ---
-title: Azure CLI 脚本示例 - 从备份恢复 Web 应用 | Microsoft Docs
-description: Azure CLI 脚本示例 - 从备份恢复 web 应用
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI：从备份中还原应用
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 此示例演示如何从备份还原应用。
+author: msangapu-msft
 tags: azure-service-management
-ms.service: app-service-web
-ms.workload: web
-ms.devlang: na
+ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/07/2017
-ms.author: msangapu;cephalin
-ms.custom: seodec18
-ms.openlocfilehash: affdf22a3c4cb496983da557b415773f4274db48
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: msangapu
+ms.reviewer: cephalin
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 8c3c0f4f57d21e5c07867a2c43ce3c3114f79a9b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136930"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80058858"
 ---
 # <a name="restore-a-web-app-from-a-backup-using-cli"></a>使用 CLI 从备份中还原 Web 应用
 
@@ -41,7 +36,7 @@ ms.locfileid: "66136930"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-list) | 获取 Web 应用的备份列表。 |
 | [`az webapp config backup restore`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-restore) | 从备份中恢复 web 应用。 |

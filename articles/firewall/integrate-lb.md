@@ -1,24 +1,24 @@
 ---
 title: 将 Azure 防火墙与 Azure 标准负载均衡器相集成
-description: 了解如何将 Azure 防火墙与 Azure 标准负载均衡器相集成
+description: 可将 Azure 防火墙集成到使用 Azure 标准负载均衡器（公共或内部）的虚拟网络中。
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
-ms.date: 4/1/2019
+ms.topic: how-to
+ms.date: 02/28/2020
 ms.author: victorh
-ms.openlocfilehash: 7ee92a7508918635849caafab4632bbba81ee628
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 008274c86944b06b168bf52ca501c655bbe78434
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60193745"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610619"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>将 Azure 防火墙与 Azure 标准负载均衡器相集成
 
 可将 Azure 防火墙集成到使用 Azure 标准负载均衡器（公共或内部）的虚拟网络中。 
 
-首选的设计是将内部负载均衡器集成与 Azure 防火墙中，因为这是要简单得多的设计。 如果已经有了一个部署，并且你想要将它保存在位置，可以使用公共负载均衡器。 但需要注意，非对称路由问题可能会破坏公共负载均衡器方案的功能。
+首选设计是将内部负载均衡器与 Azure 防火墙集成，因为这是一个简单得多的设计。 如果已部署了一个公共负载均衡器，并且想要将其保留，则可以使用该负载均衡器。 但需要注意，非对称路由问题可能会破坏公共负载均衡器方案的功能。
 
 有关 Azure 负载均衡器的详细信息，请参阅[什么是 Azure 负载均衡器？](../load-balancer/load-balancer-overview.md)
 
@@ -39,9 +39,23 @@ ms.locfileid: "60193745"
 
 ![非对称路由](media/integrate-lb/Firewall-LB-asymmetric.png)
 
-例如，以下路由适用于公共 IP 地址为 13.86.122.41、专用 IP 地址为 10.3.1.4 的防火墙。
+### <a name="route-table-example"></a>路由表示例
 
-![路由表](media/integrate-lb/route-table.png)
+例如，以下路由适用于公共 IP 地址为 20.185.97.136、专用 IP 地址为 10.0.1.4 的防火墙。
+
+> [!div class="mx-imgBorder"]
+> ![路由表](media/integrate-lb/route-table.png)
+
+### <a name="nat-rule-example"></a>NAT 规则示例
+
+在下面的示例中，NAT 规则会对 RDP 流量进行网络地址转换，使之在到达防火墙 (20.185.97.136) 后再发往负载均衡器 (20.42.98.220)：
+
+> [!div class="mx-imgBorder"]
+> ![NAT 规则](media/integrate-lb/nat-rule-02.png)
+
+### <a name="health-probes"></a>运行状况探测
+
+请记住，如果你对端口 80 使用 TCP 运行状况探测，或者使用 HTTP/HTTPS 探测，则需要在负载均衡器池中的主机上运行 Web 服务。
 
 ## <a name="internal-load-balancer"></a>内部负载均衡器
 
@@ -56,6 +70,8 @@ ms.locfileid: "60193745"
 若要进一步增强负载均衡方案的安全性，可以使用网络安全组 (NSG)。
 
 例如，可以在负载均衡虚拟机所在的后端子网中创建 NSG。 允许源自防火墙 IP 地址/端口的传入流量。
+
+![网络安全组](media/integrate-lb/nsg-01.png)
 
 有关 NSG 的详细信息，请参阅[安全组](../virtual-network/security-overview.md)。
 

@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: c46aa523-b58c-4a95-a800-db2e5e01c542
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4beac0ab739d62eb7acb00e6b2db717b5f43e15
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 1017eb02783e2d0d970804fc1a20fd2bdb525637
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65987960"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "73158783"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boxcryptor"></a>教程：Azure Active Directory 与 Boxcryptor 集成
 
@@ -90,7 +91,7 @@ ms.locfileid: "65987960"
 
 若要配置 Boxcryptor 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/) Boxcryptor 应用程序集成页上，选择“单一登录”   。
+1. 在 [Azure 门户](https://portal.azure.com/) Boxcryptor 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -106,9 +107,9 @@ ms.locfileid: "65987960"
 
     ![Boxcryptor 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，键入 URL：`https://www.boxcryptor.com/app` 
+    a. 在“登录 URL”文本框中，键入 URL：`https://www.boxcryptor.com/app`
 
-    b. 在“标识符(实体 ID)”文本框中，键入值：`boxcryptor` 
+    b. 在“标识符(实体 ID)”文本框中，键入值：`boxcryptor`
 
 5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
@@ -126,7 +127,7 @@ ms.locfileid: "65987960"
 
 ### <a name="configure-boxcryptor-single-sign-on"></a>配置 Boxcryptor 单一登录
 
-若要在 **Boxcryptor** 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Boxcryptor 支持团队](mailto:support@boxcryptor.com)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Boxcryptor** 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Boxcryptor 支持团队](mailto:support@boxcryptor.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -146,7 +147,7 @@ ms.locfileid: "65987960"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -169,7 +170,7 @@ ms.locfileid: "65987960"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

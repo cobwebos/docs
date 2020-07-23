@@ -1,6 +1,6 @@
 ---
 title: Azure 媒体服务错误代码 | Microsoft Docs
-description: 本主题概述 Azure 媒体服务错误代码。
+description: 你可能会收到来自服务的 HTTP 错误代码，具体取决于身份验证令牌过期到媒体服务中不支持的操作。 本文概述了 Azure 媒体服务 v2 API 错误代码。
 author: Juliako
 manager: femila
 editor: ''
@@ -14,17 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f3c362730e7908e88b363659b7fa580b6f2cddf1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: f5a2dd68d86a7a38fc7f2942351c42c84742d104
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61217146"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74887061"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure 媒体服务错误代码
 使用 Microsoft Azure 媒体服务时，可能会收到来自服务的 HTTP 错误代码，这取决于具体的问题，例如身份验证令牌对于媒体服务不支持的操作过期。 以下是媒体服务可能返回的 **HTTP 错误代码**及可能的错误原因的列表。  
 
-## <a name="400-bad-request"></a>400 错误请求
+## <a name="400-bad-request"></a>400 错误的请求
 请求包含无效信息，并因以下可能的原因之一被拒绝：
 
 * 指定了不支持的 API 版本。 有关最新版本，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。
@@ -35,7 +34,7 @@ ms.locfileid: "61217146"
   > 
   > 
 * 指定了未定义的属性。 错误消息中给出了该属性名。 仅能指定是给定实体的成员的属性。 有关实体及其属性的列表，请参阅 [Azure 媒体服务 REST API 参考](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)。
-* 指定了一个无效的属性值。 错误消息中提供属性名称。 有关有效属性类型及其值的信息，请访问之前的链接。
+* 指定了一个无效的属性值。 错误消息中给出了该属性名。 有关有效属性类型及其值的信息，请访问之前的链接。
 * 缺少或需要属性值。
 * 指定的部分 URL 包含错误值。
 * 曾尝试更新 WriteOnce 属性。
@@ -75,31 +74,31 @@ ms.locfileid: "61217146"
 * 曾尝试指定未与媒体服务帐户关联的存储帐户。  
 
 ## <a name="409-conflict"></a>409 冲突
-出于以下原因之一，未允许该请求：
+出于以下原因之一，不允许该请求：
 
 * 资产内的多个 AssetFile 具有指定名称。
 * 曾尝试在资产中创建第二个主 AssetFile。
 * 曾尝试使用已用过的指定 ID 创建 ContentKey。
 * 曾尝试使用已用过的指定 ID 创建定位符。
 * IngestManifest 内多个 IngestManifestFile 具有指定名称。
-* 尝试将第二个存储加密 ContentKey 链接到存储加密资产。
-* 尝试将同一 ContentKey 链接到资产。
+* 曾尝试将第二个存储加密 ContentKey 链接到加密了存储的资产。
+* 曾尝试将同一 ContentKey 链接到资产。
 * 曾尝试向存储容器缺失或不再与资产关联的资产创建定位符。
 * 曾尝试向已使用 5 个定位符的资产创建定位符。 （Azure 存储强制执行对一个存储容器只能使用五个共享访问策略这一限制。）
 * 将资产的存储帐户链接到 IngestManifestAsset 与父 IngestManifest 所使用的存储帐户的情况不同。  
 
 ## <a name="500-internal-server-error"></a>500 内部服务器错误
-在处理请求期间，媒体服务遇到了某种错误，从而阻止继续处理请求。 这可能是以下原因之一造成的：
+在处理请求期间，媒体服务会遇到一些阻止处理继续执行的错误。 这可能是以下原因之一造成的：
 
 * 创建资产或作业失败，因为媒体服务帐户的服务配额信息暂不可用。
 * 创建资产或 IngestManifest blob 存储容器失败，因为帐户的存储帐户信息暂不可用。
 * 其他意外错误。
 
 ## <a name="503-service-unavailable"></a>503 服务不可用
-服务器当前无法接收请求。 服务请求过多可能引发此错误。 媒体服务限制机制会限制那些发出过多服务请求的应用程序的资源使用情况。
+服务器当前无法接收请求。 导致此错误的可能原因是向服务发出了过多的请求。 对于发出过多服务请求的应用程序，媒体服务限制机制将限制其资源使用量。
 
 > [!NOTE]
-> 检查错误消息和错误代码字符串以获取有关收到 503 错误的原因的更多详细信息。 此错误并不始终意味着限制。
+> 查看错误消息和错误代码字符串，获取收到 503 错误的原因的更多详细信息。 此错误并不始终意味着限制。
 > 
 > 
 

@@ -1,175 +1,166 @@
 ---
-title: 什么是 Azure AD 授权管理？ （预览版）-Azure Active Directory
-description: 获取 Azure Active Directory 权利管理以及如何使用它来管理内部和外部用户的组、 应用程序和 SharePoint Online 网站的访问权限的概述。
+title: 权利管理是什么？ - Azure AD
+description: 大致了解 Azure Active Directory 权利管理，以及如何使用它来管理内部和外部用户对组、应用程序和 SharePoint Online 站点的访问权限。
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: barclayn
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.subservice: compliance
-ms.date: 05/30/2019
-ms.author: rolyon
-ms.reviewer: mwahl
+ms.date: 06/18/2020
+ms.author: barclayn
+ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efd3ff8a6e7ddf2aa6242cc322d8a6536a6bd26b
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
-ms.translationtype: MT
+ms.openlocfilehash: 2f05fa9f9f31011f04aee0d2bedbcd4c4dad5d39
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474065"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85338196"
 ---
-# <a name="what-is-azure-ad-entitlement-management-preview"></a>什么是 Azure AD 授权管理？ （预览版）
+# <a name="what-is-azure-ad-entitlement-management"></a>Azure AD 权利管理是什么？
 
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) 权利管理目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+Azure Active Directory (Azure AD) 权利管理是一种[标识治理](identity-governance-overview.md)功能，通过自动执行访问请求工作流、访问分配、审核和过期，使组织能够大规模管理标识和访问生命周期。
 
-在组织中的员工需要访问各种组、 应用程序和站点来开展其工作。 管理此访问权限是一个挑战。 在大多数情况下，没有组织的用户需要在项目的所有资源的列表。 项目管理器具有所需的资源，涉及，以及多长的个人项目将持续更好地理解。 但是，项目经理通常没有权限来批准或授予对其他人访问权限。 当你尝试使用外部个人或公司时，这种情况下变得更为复杂。
+组织中的员工需要访问各种组、应用程序和站点以执行其作业。 由于要求发生了更改（添加了新应用程序或用户需要额外的访问权限），因此管理此访问具有难度。  在与外部组织协作时，此场景更为复杂 - 你可能不知道另一组织中的谁需要访问你组织的资源，并且他们不知道你的组织正在使用哪些应用程序、组或站点。
 
-Azure Active Directory (Azure AD) 授权管理可以帮助您管理的内部用户以及你的组织外部的用户组、 应用程序和 SharePoint Online 网站的访问权限。
+Azure AD 权利管理可帮助你更加高效地管理内部用户及需要访问这些资源的组织外部的用户对组、应用程序和 SharePoint Online 站点的访问权限。
 
-## <a name="why-use-entitlement-management"></a>为什么要使用授权管理？
+## <a name="why-use-entitlement-management"></a>为什么要使用权利管理？
 
-企业组织通常面临着挑战，如管理资源的访问权限时：
+企业组织在管理员工对资源的访问权限时经常会遇到困难，比如：
 
-- 用户可能不知道它们应具有什么访问权限
-- 用户很难找到适当的人员或适当的资源
-- 一旦用户查找和接收对资源的访问，可能保留时间超过是业务所需的访问
+- 用户可能不知道他们应该具有哪些访问权限，即使知道，他们也可能很难找到相应的人员来审批他们的访问权限
+- 用户设法获得对某一资源的所需访问权限后，他们可能会将该访问权限保留很长一段时间，从而超出业务目的所需的时长
 
-这些问题会更加复杂的用户需要从另一个目录，例如来自供应链组织或其他业务合作伙伴的外部用户的访问。 例如：
+对于需要从其他组织进行访问的用户（例如来自供应链组织或其他业务合作伙伴的外部用户）而言，问题会变得更加复杂。 例如：
 
-- 组织可能不知道所有其他目录中的特定个体可以邀请
-- 即使组织能够邀请这些用户，可能不记得组织一致地管理所有用户的访问权限
+- 没有人能够知晓其他组织目录中的所有特定个人，因此有可能无法邀请到他们
+- 即使他们能够邀请这些用户，但该组织中可能没有人会记得以一致地方式管理用户的全部访问权限
 
-Azure AD 授权管理可帮助解决这些难题。
+Azure AD 权利管理可以帮助解决这些难题。  若要了解有关客户如何使用 Azure AD 权利管理的详细信息，可以参阅 [Avanade 案例研究](https://customers.microsoft.com/story/avanade-professional-services-azure-canada)和 [Centrica 案例研究](https://customers.microsoft.com/story/757467-centrica-energy-azure)。  此视频概述了权利管理及其价值：
 
-## <a name="what-can-i-do-with-entitlement-management"></a>使用授权管理可以做什么？
+>[!VIDEO https://www.youtube.com/embed/_Lss6bFrnQ8]
 
-下面是一些的权利管理功能：
+## <a name="what-can-i-do-with-entitlement-management"></a>可以使用权利管理做什么？
 
-- 创建用户可以请求的相关资源的包
-- 请求资源和访问的到期时定义的规则
-- 管理内部和外部用户的访问权限的生命周期
-- 委托管理的资源
-- 指定审批者批准请求
-- 创建报表来跟踪历史记录
+以下是权利管理的一些功能：
 
-有关标识监管和权利管理的概述，请观看以下视频来自 Ignite 2018 大会：
+- 将创建访问包的功能委托给非管理员。 这些访问包包含用户可以请求的资源，并且接受委托的访问包管理员可以使用用户可以请求的规则来定义策略、谁必须审批其访问权限以及访问权限到期时间。
+- 选择哪些已连接的组织的用户可以请求访问权限。  当一个不属于你目录的用户请求了访问权限并获得批准后，系统将自动邀请他们进入你的目录并为其分配访问权限。  当他们的访问权限到期时，如果他们没有收到其他访问包分配，可以自动删除他们在你的目录中的 B2B 帐户。
 
->[!VIDEO https://www.youtube.com/embed/aY7A0Br8u5M]
+可以开始使用我们的[教程创建你的第一个访问包](entitlement-management-access-package-first.md)。 还可以阅读[常见方案](entitlement-management-scenarios.md)或观看视频，包括
 
-## <a name="what-resources-can-i-manage"></a>可以管理哪些资源？
+- [如何在组织中部署 Azure AD 权利管理](https://www.youtube.com/watch?v=zaaKvaaYwI4)
+- [如何监视和缩放 Azure AD 权利管理的使用](https://www.youtube.com/watch?v=omtNJ7ySjS0)
+- [如何在权利管理中委托](https://www.youtube.com/watch?v=Fmp1eBxzrqw)
 
-下面是可以管理的权利管理到访问的资源的类型：
+## <a name="what-are-access-packages-and-what-resources-can-i-manage-with-them"></a>什么是访问包，可使用它们管理哪些资源？
 
-- Azure AD 安全组
-- Office 365 组
-- Azure AD 企业应用程序，包括 SaaS 应用程序和自定义集成的应用程序支持联合身份验证或预配
-- SharePoint Online 站点集合和站点
+权利管理向 Azure AD 引入了“访问包”概念。 访问包是包含用户在处理项目或执行其任务时所需的访问权限的所有资源的捆绑包。 访问包用于管理内部员工以及组织外部用户的访问权限。
 
-此外可以控制依赖于 Azure AD 安全组或 Office 365 组的其他资源的访问权限。  例如：
+ 以下是可以使用权利管理来管理用户对其访问权限的资源类型：
 
-- 可以通过访问包中使用的 Azure AD 安全组和配置 Microsoft Office 365 提供的用户许可证[基于组的许可](../users-groups-roles/licensing-groups-assign.md)该组
-- 可通过访问包中使用的 Azure AD 安全组和创建管理 Azure 资源的访问权限授予用户[Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)该组
+- Azure AD 安全组的成员身份
+- Microsoft 365 组和团队的成员身份
+- 分配到 Azure AD 企业应用程序的分配内容，包括 SaaS 应用程序和支持联合/单一登录和/或预配的自定义集成应用程序
+- SharePoint Online 站点的成员身份
 
-## <a name="what-are-access-packages-and-policies"></a>访问包和策略是什么？
+你还可以控制对依赖于 Azure AD 安全组或 Microsoft 365 组的其他资源的访问权限。  例如：
 
-权利管理引入的概念*访问包*。 访问包是一个用户需要在处理项目或执行其作业的所有资源的捆绑包。 这些资源包括组、 应用程序，或站点的访问权限。 访问包用于在内部员工，以及你的组织外部的用户控制的访问。 在名为 *catalogs* 的容器中定义访问包。
+- 你可以通过在访问包中使用 Azure AD 安全组，并为该组配置[基于组的许可](../users-groups-roles/licensing-groups-assign.md)，为用户提供 Microsoft 365 许可证。
+- 可以通过在访问包中使用 Azure AD 安全组，并为该组创建 [Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)，为用户提供管理 Azure 资源的权限
 
-访问包还包括一个或多个*策略*。 策略定义的规则或 guardrails 访问包具有访问权限。 如果启用策略强制实施正确的用户被授予访问权限，到适当的资源，以及适当数量的时间。
+## <a name="how-do-i-control-who-gets-access"></a>如何控制谁获得访问权限？
+
+使用访问包时，管理员或受委托的访问包管理员会列出资源（组、应用和站点）以及用户需要用于这些资源的角色。
+
+访问包还包括一个或多个策略。 策略定义有关访问包分配的规则或准则。 每个策略都可用于确保只有适当的用户才能请求访问权限、有审批者审批他们的请求，并且他们对这些资源的访问权限受时间限制（如果不续订，将会过期）。
 
 ![访问包和策略](./media/entitlement-management-overview/elm-overview-access-package.png)
 
-访问包和其策略，访问包管理器定义：
+在每个策略中，管理员或访问包管理员会定义
 
-- 资源
-- 角色的用户需要的资源
-- 内部用户和外部用户有资格请求的访问权限
-- 审批过程和用户可以批准或拒绝访问
-- 用户的访问权限的持续时间
+- 已有的用户（通常为员工或已邀请的来宾）或可以请求访问权限的来自合作伙伴组织的外部用户
+- 审批流程以及可以批准或拒绝访问的用户
+- 用户的访问权限分配在获得批准后、分配到期之前的持续时间
 
-下图显示在授权管理中的不同元素的示例。 它显示了两个示例访问包。
+下图显示了权利管理中不同元素的示例。 其中显示了一个包含两个示例访问包的目录。
 
-- **访问包 1**包含作为资源的单个组。 访问使用允许用户在目录中请求访问一组的策略定义。
-- **访问包 2**作为资源包括一个组、 应用程序和 SharePoint Online 站点。 使用两个不同的策略定义访问权限。 第一个策略启用的目录中用户请求访问一组。 第二个策略允许外部目录中的用户请求的访问权限。
+- 访问包 1 中只有一个组，并充当资源。 它通过一个策略定义访问权限，该策略允许目录中的一组用户请求访问权限。
+- 访问包 2 包含组、应用程序和 SharePoint Online 站点作为资源。 它通过两个不同策略定义访问权限。 第一个策略允许目录中的一组用户请求访问权限。 第二个策略允许外部目录中的用户请求访问权限。
 
-![授权管理概述](./media/entitlement-management-overview/elm-overview.png)
+![权利管理概述](./media/entitlement-management-overview/elm-overview.png)
 
-## <a name="external-users"></a>外部用户
+## <a name="when-should-i-use-access-packages"></a>应在何时使用访问包？
 
-使用时[Azure AD 企业到企业 (B2B)](../b2b/what-is-b2b.md)邀请的经验，您必须已经知道你想要将引入资源目录，并使用外部来宾用户的电子邮件地址。 此方法效果非常好，当您在处理较小或短期项目和您已经知道所有参与者，但这很难管理如果有大量你想要使用的用户或参与者随时间而变化。  例如，你可能会使用另一个组织并具有与该组织的联系点，但随着时间的推移该组织中的其他用户还需要访问权限。
+访问包并不替代其他访问权限分配机制。  它们最适用于以下情况：
 
-借助授权管理，可以定义允许您指定的组织也使用 Azure AD 中，可以请求访问包中的用户的策略。 您可以指定是否将需要批准和访问的到期日期。 如果需要审批，还可以指定为审批者你以前受邀-因为它们可能知道其组织的外部用户需要访问外部组织中的一个或多个用户。 配置访问包后，可以将链接到访问包发送到外部组织联系人。 该联系人可以与其他用户共享在外部组织中，并且它们可以使用此链接来请求访问包。  从该组织已邀请到你的目录的用户还可以使用该链接。
+- 员工需要用于特定任务的受时间限制的访问权限。  例如，你可以使用基于组的许可和动态组来确保所有员工都有 Exchange Online 邮箱，然后在员工需要其他访问权限的情况（例如从其他部门读取部门资源）下使用访问包。
+- 访问权限需要由员工的经理或其他指定的个人进行批准。
+- 部门希望自己管理自己的资源访问策略，不希望 IT 参与。  
+- 两个或多个组织在一个项目上进行协作，因此，需要通过 Azure AD B2B 引入一个组织中的多个用户，使其能够访问其他组织的资源。
 
-在请求得到批准，权利管理将所需的访问，其中可能包括邀请用户，如果它们尚不在目录中与用户预配。 Azure AD 会自动为其创建 B2B 帐户。  请注意，管理员可能具有以前限制哪些组织进行协作、 允许通过设置[B2B 允许或拒绝列表](../b2b/allow-deny-list.md)允许或阻止邀请到其他组织。  如果用户不允许通过允许或阻止列表，然后它们将不能邀请。
+## <a name="how-do-i-delegate-access"></a>如何委托访问权限？
 
-由于不希望外部用户的访问权限会永远持续存在，因此在策略中，如 180 天指定过期日期。 180 天后，如果不续订他们的访问权限，则授权管理将删除与该访问包相关联的所有访问。  如果权利管理通过已邀请的用户不具有任何其他访问权限的包分配，然后时，他们会失去其最后一个分配，其 B2B 帐户将被阻止登录的 30 天，并且随后删除。  这可以防止不必要的帐户的发展壮大。  
+ 在名为 *catalogs* 的容器中定义访问包。  可以为所有访问包使用单个目录，也可以指定某些个人来创建并拥有其自己的目录。 管理员可以将资源添加到任何目录，但非管理员只能将他们拥有的资源添加到目录。 目录所有者可以将其他用户添加为目录共同所有者或访问包管理员。  可通过 [Azure AD 权利管理中的委托和角色](entitlement-management-delegate.md)一文进一步了解这些场景。
 
-## <a name="terminology"></a>术语
+## <a name="summary-of-terminology"></a>术语摘要
 
-若要更好地了解授权管理和其文档，应查看以下术语。
+为了更好地理解权利管理及其文档，可以参考以下术语列表。
 
-| 术语或概念 | 描述 |
+| 术语 | 说明 |
 | --- | --- |
-| 权利管理 | 服务分配，撤消，并且管理访问包。 |
-| 访问包 | 权限和策略，以便用户可以请求的资源的集合。 访问包始终包含在目录中。 |
-| 访问请求 | 访问访问包的请求。 请求通常可以顺利工作流。 |
-| policy | 定义访问生命周期，如用户如何获取访问权限、 谁可以批准和多长时间，用户可以访问的规则集。 示例策略包括员工和外部访问权限。 |
-| catalog | 相关的资源和访问包的容器。 |
-| 常规目录 | 始终是可用的内置目录。 若要将资源添加到常规的目录中，需要特定权限。 |
-| resource | 资产或用户可以被授予访问权限的服务 （例如组、 应用程序或站点）。 |
-| 资源类型 | 资源，其中包括组、 应用程序和 SharePoint Online 网站的类型。 |
-| 资源角色 | 与资源关联的权限集合。 |
-| 资源目录 | 具有一个或多个资源共享的目录。 |
-| 已分配的用户 | 向用户或组访问包的工作分配。 |
-| enable | 用户可以请求提供访问包的过程。 |
+| 访问包 | 团队或项目所需的且受策略约束的资源的捆绑包。 访问包始终包含在目录中。 对于用户需要请求访问权限的场景，需要创建一个新的访问包。  |
+| 访问请求 | 请求访问访问包中的资源的请求。 通常会为请求执行审批工作流。  如果获得批准，请求的用户将收到访问包分配。 |
+| 分配 | 向用户分配访问包可确保该用户具有该访问包的所有资源角色。  访问包分配通常具有时间限制，也即会过期。 |
+| 目录 | 相关资源和访问包的容器。  目录用于委托，以便非管理员可以创建自己的访问包。 目录所有者可以将其拥有的资源添加到目录。 |
+| 目录创建者 | 有权创建新目录的用户的集合。  当已获授权成为目录创建者的非管理员用户创建新目录时，他们将自动成为该目录的所有者。 |
+| 连接的组织 | 你与之有关联的外部 Azure AD 目录或域。 可以在策略中将连接的组织中的用户指定为有权请求访问权限。 |
+| policy | 定义访问生命周期的一组规则，例如用户获取访问权限的方式、可以审批的人员以及用户通过分配具有的访问权限时长。 策略会链接到访问包。 例如，访问包可以有两个策略，一个用于员工请求访问权限，另一个用于外部用户请求访问权限。 |
+| resource | 一种资产（例如 Office 组、安全组、应用程序或 SharePoint Online 站点），包含可向用户授予（相应角色权限）的角色。 |
+| 资源目录 | 包含一个或多个可共享的资源的目录。 |
+| 资源角色 | 与资源关联并由资源定义的权限的集合。 组具有两种角色 - 成员和所有者。 SharePoint 站点通常具有 3 种角色，但也可能具有其他自定义角色。 应用程序可以具有自定义角色。 |
 
-## <a name="roles-and-permissions"></a>角色和权限
-
-授权管理具有不同的角色根据作业函数。
-
-| 角色 | 描述 |
-| --- | --- |
-| [用户管理员](../users-groups-roles/directory-assign-admin-roles.md#user-administrator) | 管理授权管理的所有方面。<br/>创建用户和组。 |
-| 目录创建者 | 创建和管理目录。 通常的 IT 管理员或资源所有者。 自动创建一个目录的人员将成为目录的第一个目录所有者。 |
-| 目录所有者 | 编辑和管理现有目录。 通常的 IT 管理员或资源所有者。 |
-| 访问包管理器 | 编辑和管理目录中的所有现有访问包。 |
-| 审批者 | 批准请求，以访问包。 |
-| 请求者 | 请求访问包。 |
-
-下表列出了每个角色的权限。
-
-| 任务 | 用户管理员 | 目录创建者 | 目录所有者 | 访问包管理器 | 审批者 |
-| --- | :---: | :---: | :---: | :---: | :---: |
-| [常规目录中创建新的访问包](entitlement-management-access-package-create.md) | :heavy_check_mark: |  :heavy_check_mark: |  |  |  |
-| [在目录中创建新的访问包](entitlement-management-access-package-create.md) | :heavy_check_mark: |   | :heavy_check_mark: |  |  |
-| [添加/删除从中访问包的资源角色](entitlement-management-access-package-edit.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [指定谁可以请求访问包](entitlement-management-access-package-edit.md#add-a-new-policy) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [直接向用户分配访问包](entitlement-management-access-package-edit.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [查看具有访问包到赋值](entitlement-management-access-package-edit.md#view-who-has-an-assignment) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [查看访问包的请求](entitlement-management-access-package-edit.md#view-requests) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [查看请求的传递错误](entitlement-management-access-package-edit.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [取消挂起的请求](entitlement-management-access-package-edit.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [隐藏访问包](entitlement-management-access-package-edit.md#change-the-hidden-setting) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [删除访问包](entitlement-management-access-package-edit.md#delete) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [批准访问请求](entitlement-management-request-approve.md) |  |  |  |  | :heavy_check_mark: |
-| [创建目录](entitlement-management-catalog-create.md) | :heavy_check_mark: | :heavy_check_mark: |  |  |  |
-| [添加/删除到/从常规目录资源](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  |  |  |  |
-| [添加/删除对目录资源](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
-| [添加目录所有者或访问包管理器](entitlement-management-catalog-create.md#add-catalog-owners-or-access-package-managers) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
-| [编辑/删除目录](entitlement-management-catalog-create.md#edit-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
 
 ## <a name="license-requirements"></a>许可要求
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-专用的云，例如 Azure 政府、 Azure Germany 和 Azure 中国 21Vianet 不是当前可在此预览版中使用。
+专用云（例如 Azure 德国和 Azure 中国世纪互联）当前不可用。
+
+### <a name="how-many-licenses-must-you-have"></a>必须拥有多少个许可证？
+
+请确保目录中至少具有与以下项数量相同的 Azure AD Premium P2 许可证：
+
+- 可以请求访问包的成员用户数。
+- 请求访问包的成员和来宾用户数。
+- 审批访问包请求的成员和来宾用户数。
+- 具有直接访问包分配的成员和来宾用户数。
+
+以下任务无需 Azure AD Premium P2 许可证：
+
+- 设置初始目录、访问包和策略并将管理任务委托给其他用户的、具有全局管理员角色的用户无需任何许可证。
+- 被委托了管理任务的用户（例如目录创建者、目录所有者和访问包管理员）无需任何许可证。
+- 有权请求访问包但并不请求访问包的来宾无需任何许可证 。
+
+对于为成员用户（员工）购买的每个付费 Azure AD Premium P2 许可证，你可以使用 Azure AD B2B 邀请至多 5 位来宾用户。 这些来宾用户也可以使用 Azure AD Premium P2 功能。 有关详细信息，请参阅 [Azure AD B2B 协作许可指南](../b2b/licensing-guidance.md)。
+
+有关许可证的详细信息，请参阅[使用 Azure Active Directory 门户分配或删除许可证](../fundamentals/license-users-groups.md)。
+
+### <a name="example-license-scenarios"></a>许可证场景示例
+
+下面是一些许可证场景示例，可帮助你确定必须拥有的许可证数量。
+
+| 场景 | 计算 | 许可证数量 |
+| --- | --- | --- |
+| Woodgrove Bank 的全局管理员创建了初始目录，并将管理任务委托给了 6 个其他用户。 其中一个策略指定，所有员工（2000 名员工）都可以请求一组特定的访问包。 150 名员工请求了访问包。 | 可以请求访问包的 2000 名员工 | 2,000 |
+| Woodgrove Bank 的全局管理员创建了初始目录，并将管理任务委托给了 6 个其他用户。 其中一个策略指定，所有员工（2000 名员工）都可以请求一组特定的访问包。 另一个策略指定，来自“合作伙伴 Contoso 用户”（来宾）的某些用户可以经批准请求相同的访问包。 Contoso 有 30000 名用户。 150 名员工请求访问包，来自 Contoso 的 10500 名用户请求访问权限。 | 2000 名员工 + 比率超过 1:5 的来自 Contoso 的 500 名来宾用户 (10,500 - (2,000 * 5)) | 2,500 |
 
 ## <a name="next-steps"></a>后续步骤
 

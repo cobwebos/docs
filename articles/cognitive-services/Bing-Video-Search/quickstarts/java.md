@@ -1,6 +1,6 @@
 ---
-title: 快速入门：使用必应视频搜索 REST API 和 Java 来搜索视频
-titlesuffix: Azure Cognitive Services
+title: 快速入门：使用 REST API 和 Java 搜索视频 - 必应视频搜索
+titleSuffix: Azure Cognitive Services
 description: 参考本快速入门使用 Java 向必应视频搜索 REST API 发送视频搜索请求
 services: cognitive-services
 author: aahill
@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 3b0060b189dd941a8705d7e9815f69db8ea035e8
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0728aa84447573bd8d335daf84c01138c627ecb5
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863306"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848649"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-java"></a>快速入门：使用必应视频搜索 REST API 和 Java 来搜索视频
 
-参考本快速入门首次调用必应视频搜索 API 并查看 JSON 响应中的搜索结果。 这个简单的 Java 应用程序会向该 API 发送一个 HTTP 视频搜索查询并显示响应。 虽然此应用程序是使用 Java 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingVideoSearchv7.java) 上提供了此示例的源代码以及更多的错误处理、功能和代码注释。
+根据此快速入门中的说明对必应视频搜索 API 进行第一次调用。 这个简单的 Java 应用程序会向该 API 发送一个 HTTP 视频搜索查询并显示 JSON 响应。 虽然此应用程序是使用 Java 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 
+
+[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingVideoSearchv7.java) 上提供了此示例的源代码以及更多的错误处理、功能和代码注释。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,7 +34,7 @@ ms.locfileid: "55863306"
 
 ## <a name="create-and-initialize-a-project"></a>创建并初始化项目
 
-1. 在你最喜欢的 IDE 或编辑器中新建一个 Java 项目，并导入以下库。
+1. 在你最喜欢的 IDE 或编辑器中新建一个 Java 项目，并导入以下库：
 
     ```java
     import java.net.*;
@@ -59,7 +61,7 @@ ms.locfileid: "55863306"
     }
     ```
 
-3. 创建名为的 `SearchVideos()` 新方法，其中包含 API 终结点主机和路径、订阅密钥与搜索词的变量。 此方法返回 `SearchResults` 对象。 
+3. 创建名为的 `SearchVideos()` 新方法，其中包含 API 终结点主机和路径、订阅密钥与搜索词的变量。 此方法将返回 `SearchResults` 对象。 对于 `host` 值，可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```java
     public static SearchResults SearchVideos (String searchQuery) throws Exception {
@@ -72,66 +74,66 @@ ms.locfileid: "55863306"
 
 ## <a name="construct-and-send-the-search-request"></a>构造并发送搜索请求
 
-1. 在 `SearchVideos()` 中执行以下步骤：
+在 `SearchVideos()` 方法中，执行以下步骤：
 
-    1. 通过组合 API 主机、路径并编码搜索查询来构造请求的 URL。 然后使用 `openConnection()` 创建连接，并将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头。
+1. 通过组合 API 主机、路径以及已编码的搜索查询来构造请求的 URL。 使用 `openConnection()` 创建连接，然后将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头。
 
-        ```java
-        URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8"));
-        HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-        ```
+     ```java
+     URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8"));
+     HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
+     connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
+     ```
 
-    2. 获取 API 的响应，并存储 JSON 字符串。
+2. 获取 API 的响应，并存储 JSON 字符串。
 
-        ```java
-        InputStream stream = connection.getInputStream();
-        String response = new Scanner(stream).useDelimiter("\\A").next();
-        ```
+     ```java
+     InputStream stream = connection.getInputStream();
+     String response = new Scanner(stream).useDelimiter("\\A").next();
+     ```
 
-    3. 使用 `getHeaderFields();` 提取响应中的 HTTP 标头，并在 `results` 对象中存储必应相关的标头。 然后关闭流并返回结果。
+ 3. 使用 `getHeaderFields()` 提取响应中的 HTTP 标头，并在 `results` 对象中存储必应相关的标头。 然后关闭流并返回结果。
 
-        ```java
-        // extract Bing-related HTTP headers
-        Map<String, List<String>> headers = connection.getHeaderFields();
-        for (String header : headers.keySet()) {
-            if (header == null) continue;      // may have null key
-            if (header.startsWith("BingAPIs-") || header.startsWith("X-MSEdge-")) {
-                results.relevantHeaders.put(header, headers.get(header).get(0));
-            }
-        }
-        stream.close();
-        return results;
-        ```
+     ```java
+     // extract Bing-related HTTP headers
+     Map<String, List<String>> headers = connection.getHeaderFields();
+     for (String header : headers.keySet()) {
+         if (header == null) continue;      // may have null key
+         if (header.startsWith("BingAPIs-") || header.startsWith("X-MSEdge-")) {
+             results.relevantHeaders.put(header, headers.get(header).get(0));
+         }
+     }
+     stream.close();
+     return results;
+     ```
 
 ## <a name="format-the-response"></a>设置响应的格式
 
-1. 创建名为 `prettify()` 的方法，用于设置必应视频 API 返回的响应的格式。 使用 Gson 库的 `JsonParser` 提取 JSON 字符串，并将其转换为对象。 然后，使用 `GsonBuilder()` 和 `toJson()` 创建带格式的字符串。 
+创建名为 `prettify()` 的方法，用于设置必应视频 API 返回的响应的格式。 使用 Gson 库的 `JsonParser` 将 JSON 字符串转换为对象。 然后，使用 `GsonBuilder()` 和 `toJson()` 创建带格式的字符串。
 
-    ```java
-    // pretty-printer for JSON; uses GSON parser to parse and re-serialize
-    public static String prettify(String json_text) {
-        JsonParser parser = new JsonParser();
-        JsonObject json = parser.parse(json_text).getAsJsonObject();
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(json);
-    }
-    ```
+```java
+// pretty-printer for JSON; uses GSON parser to parse and re-serialize
+public static String prettify(String json_text) {
+    JsonParser parser = new JsonParser();
+    JsonObject json = parser.parse(json_text).getAsJsonObject();
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    return gson.toJson(json);
+}
+```
 
 ## <a name="send-the-request-and-print-the-response"></a>发送请求并列显响应
 
-1. 在应用程序的 main 方法中，结合搜索词调用 `SearchVideos`。 然后可以列显响应中存储的 HTTP 标头，以及 API 返回的 JSON 字符串。
+在应用程序的 main 方法中，结合搜索词调用 `SearchVideos`。 然后，列显响应中存储的 HTTP 标头以及 API 返回的 JSON 字符串。
 
-    ```java
-    public static void main (String[] args) {
+ ```java
+ public static void main (String[] args) {
 
-        SearchResults result = SearchVideos(searchTerm);
-        //print the Relevant HTTP Headers
-        for (String header : result.relevantHeaders.keySet())
-            System.out.println(header + ": " + result.relevantHeaders.get(header));
-        System.out.println(prettify(result.jsonResponse));
-    }
-    ```
+     SearchResults result = SearchVideos(searchTerm);
+     //print the Relevant HTTP Headers
+     for (String header : result.relevantHeaders.keySet())
+         System.out.println(header + ": " + result.relevantHeaders.get(header));
+     System.out.println(prettify(result.jsonResponse));
+ }
+ ```
 
 ## <a name="json-response"></a>JSON 响应
 

@@ -1,23 +1,23 @@
 ---
 title: 在 Azure 数据目录中注册数据资产
-description: 如何在 Azure 数据目录中注册数据资产
+description: 本教程介绍如何在 Azure 数据目录中注册数据资产。
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
-ms.date: 04/08/2019
-ms.openlocfilehash: 91f7967915fd19ae47ca207913f979aa56fcd27f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 08/01/2019
+ms.openlocfilehash: 10733dc59d7b143657c67e24d45d4a7c920cbd03
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011690"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255188"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>教程：在 Azure 数据目录中注册数据资产
 
-本教程介绍如何使用注册工具将 Azure SQL 数据库示例中的数据资产注册到目录。 注册是从数据源及其包含的资产中提取关键结构元数据（例如名称、类型和位置），并将该元数据复制到目录的过程。 数据源与数据资产保留在原地，但目录使用元数据，使数据源及其数据更容易发现和识别。
+本教程介绍如何使用注册工具将数据库示例中的数据资产注册到目录。 注册是从数据源及其包含的资产中提取关键结构元数据（例如名称、类型和位置），并将该元数据复制到目录的过程。 数据源与数据资产保留在原地，但目录使用元数据，使数据源及其数据更容易发现和识别。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 注册数据资产 
 > * 搜索数据资产
@@ -39,11 +39,11 @@ ms.locfileid: "60011690"
 
 ### <a name="register-a-data-source"></a>注册数据源
 
-你将注册 [Azure SQL 数据库示例](../sql-database/sql-database-single-database-get-started.md)中的数据资产（表），但如果想要使用熟悉且与角色相关的数据，也可以使用任何支持的数据源。 有关支持的数据源列表，请参阅 [Supported data sources](data-catalog-dsr.md)（支持的数据源）。
+可以注册 Azure SQL 数据库的[数据库示例](../azure-sql/database/single-database-create-quickstart.md)中的数据资产（表），但如果想要使用熟悉且与自己的角色相关的数据，也可以使用任何支持的数据源。 有关支持的数据源列表，请参阅 [Supported data sources](data-catalog-dsr.md)（支持的数据源）。
 
-本教程使用的 Azure SQL 数据库名称为 *RLSTest*。
+本教程使用的数据库名称为 RLSTest。
 
-现在，可以使用 Azure 数据目录来注册 Azure SQL 数据库示例中的数据资产。
+现在，可以使用 Azure 数据目录来注册数据库示例中的数据资产。
 
 1. 转到 [Azure 数据目录主页](http://azuredatacatalog.com)，选择“发布数据”。
 
@@ -53,25 +53,25 @@ ms.locfileid: "60011690"
 
    ![Azure 数据目录 -“启动”按钮](media/register-data-assets-tutorial/data-catalog-launch-application.png)
 
-3. 在“欢迎”页上，选择“登录”并输入凭据。
+3. 在“欢迎”页上，选择“登录”并输入凭据。 
 
     ![Azure 数据目录 -“欢迎”页](media/register-data-assets-tutorial/data-catalog-welcome-dialog.png)
 
-4. 在“Microsoft Azure 数据目录”页上，依次选择“SQL Server”、“下一步”。
+4. 在“Microsoft Azure 数据目录”页上，依次选择“SQL Server”、“下一步”。  
 
     ![Azure 数据目录 - 数据源](media/register-data-assets-tutorial/data-catalog-data-sources.png)
 
-5. 输入 Azure SQL 数据库示例的 SQL Server 连接属性，然后选择“连接”。
+5. 输入 Azure SQL 数据库中数据库示例的 SQL Server 连接属性，然后选择“连接”。
 
    ![Azure 数据目录 - SQL Server 连接设置](media/register-data-assets-tutorial/data-catalog-sql-server-connection.png)
 
-6. 注册数据资产的元数据。 本示例将注册 Azure SQL 数据库示例命名空间中的 **Product** 对象：
+6. 注册数据资产的元数据。 本示例将注册示例命名空间中的 Product 对象：
 
-    1. 在“服务器层次结构”树中，展开 Azure SQL 数据库示例并选择“SalesLT”。
+    1. 在“服务器层次结构”树中，展开数据库示例并选择“SalesLT” 。
 
-    2. 在按住 Ctrl 键的同时，选择“Product”、“ProductCategory”、“ProductDescription”和“ProductModel”。
+    2. 在按住 Ctrl 键的同时，选择“Product”、“ProductCategory”、“ProductDescription”和“ProductModel”。   
 
-    3. 选择**向右箭头** (**>**)。 此操作将所有选定的对象移到“要注册的对象”列表中。
+    3. 选择**向右箭头** ( **>** )。 此操作将所有选定的对象移到“要注册的对象”列表中。
 
           ![Azure 数据目录教程 - 浏览和选择对象](media/register-data-assets-tutorial/data-catalog-server-hierarchy.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "60011690"
 
           ![Azure 数据目录教程 - 要注册的对象](media/register-data-assets-tutorial/data-catalog-objects-register.png)
 
-    8. 选择“注册”。 Azure 数据目录将注册选定的对象。 本练习将注册 Azure SQL 数据库示例中的选定对象。 注册工具从数据资产提取元数据，将该数据复制到 Azure 数据目录服务。 数据将保留在其当前所处位置。 数据仍受原始系统的管理员和策略的控制。
+    8. 选择“注册”。 Azure 数据目录将注册选定的对象。 本练习将注册数据库示例中的选定对象。 注册工具从数据资产提取元数据，将该数据复制到 Azure 数据目录服务。 数据将保留在其当前所处位置。 数据仍受原始系统的管理员和策略的控制。
 
           ![Azure 数据目录 - 已注册的对象](media/register-data-assets-tutorial/data-catalog-registered-objects.png)
 
@@ -93,7 +93,7 @@ ms.locfileid: "60011690"
 
         ![Azure 数据目录门户中的对象](media/register-data-assets-tutorial/data-catalog-view-portal.png)
 
-本练习已注册 Azure SQL 数据库示例中的对象，使整个组织中的用户可以轻松找到它们。
+本练习已注册 Azure SQL 数据库的数据库示例中的对象，使整个组织中的用户可以轻松找到它们。
 
 下一个练习介绍如何发现已注册的数据资产。
 
@@ -121,13 +121,13 @@ Azure 数据目录中的发现使用两个主要机制：搜索和筛选。
 
     ![Azure 数据目录 - 基本文本搜索](media/register-data-assets-tutorial/data-catalog-basic-text-search.png)
 
-3. 确认是否在结果中看到了所有四个表和数据库。 可以选择工具栏上的按钮在**网格视图**与**列表视图**之间切换，如下图所示。 请注意，由于“突出显示”选项为“打开”，因此搜索结果中突出显示了搜索关键字。 **每页显示的结果数** 。
+3. 确认是否在结果中看到了所有四个表和数据库。 可以选择工具栏上的按钮在**网格视图**与**列表视图**之间切换，如下图所示。 请注意，由于“突出显示”选项为“打开”，因此搜索结果中突出显示了搜索关键字。  **每页显示的结果数** 。
 
     ![Azure 数据目录 - 基本文本搜索结果](media/register-data-assets-tutorial/data-catalog-basic-text-search-results.png)
 
-    “搜索”面板位于左侧，“属性”面板位于右侧。 在“搜索”面板中，可以更改搜索条件和筛选结果。 “属性”面板显示网格或列表中所选对象的属性。
+    “搜索”面板位于左侧，“属性”面板位于右侧。  在“搜索”面板中，可以更改搜索条件和筛选结果。 “属性”面板显示网格或列表中所选对象的属性。
 
-4. 在搜索结果中选择“Product”。 选择“预览”、“列”、“数据配置文件”和“文档”选项卡，或选择箭头展开底部窗格。  
+4. 在搜索结果中选择“Product”。 选择“预览”、“列”、“数据配置文件”和“文档”选项卡，或选择箭头展开底部窗格。     
 
     ![Azure 数据目录 - 底部窗格](media/register-data-assets-tutorial/data-catalog-data-asset-preview.png)
 
@@ -140,7 +140,7 @@ Azure 数据目录中的发现使用两个主要机制：搜索和筛选。
 
 属性范围可帮助发现搜索词符合指定属性的数据资产。
 
-1. 清除“筛选器”中“对象类型”下面的“表”筛选器。  
+1. 清除“筛选器”中“对象类型”下面的“表”筛选器。    
 
 2. 在搜索框中输入 `tags:product` ，并按 **ENTER**。 有关可用于搜索数据目录的所有属性，请参阅 [Data Catalog Search syntax reference](/rest/api/datacatalog/#search-syntax-reference) （数据目录搜索语法参考）。
 
@@ -150,13 +150,13 @@ Azure 数据目录中的发现使用两个主要机制：搜索和筛选。
 
 ### <a name="save-the-search"></a>保存搜索
 
-1. 在“当前搜索”部分的“搜索”窗格中，输入搜索的名称并选择“保存”。
+1. 在“当前搜索”部分的“搜索”窗格中，输入搜索的名称并选择“保存”。  
 
     ![Azure 数据目录 - 保存搜索](media/register-data-assets-tutorial/data-catalog-save-search.png)
 
 2. 确认已保存的搜索显示在“已保存的搜索”下面。
 
-3. 选择可对已保存的搜索执行的操作（“重命名”、“删除”、“设为默认值”搜索）。
+3. 选择可对已保存的搜索执行的操作（“重命名”、“删除”、“设为默认值”搜索）。  
 
 ### <a name="grouping-with-parentheses"></a>使用括号分组
 
@@ -174,11 +174,11 @@ Azure 数据目录中的发现使用两个主要机制：搜索和筛选。
 
 1. 在搜索框中输入 `lastRegisteredTime:>"06/09/2016"`。
 
-2. 清除“对象类型”下面的“表”筛选器。
+2. 清除“对象类型”下面的“表”筛选器。 
 
-3. 按 **ENTER**。
+3. 按 **Enter**。
 
-4. 确认搜索结果中显示了注册的 **Product**、**ProductCategory**、**ProductDescription** 表以及 Azure SQL 数据库。
+4. 确认搜索结果中显示了注册的 Product、ProductCategory、ProductDescription 表以及 SQL 数据库  。
 
     ![Azure 数据目录 - 比较搜索结果](media/register-data-assets-tutorial/data-catalog-comparison-operator-results.png)
 
@@ -194,7 +194,7 @@ Azure 数据目录中的发现使用两个主要机制：搜索和筛选。
 
 2. 在搜索结果中选择“ProductModel”。  
 
-3. 在“友好名称”中输入“产品图像”，在“描述”中输入“市场营销材料的产品照片”。
+3. 在“友好名称”中输入“产品图像”，在“描述”中输入“市场营销材料的产品照片”。   
 
     ![Azure 数据目录 - ProductPhoto 描述](media/register-data-assets-tutorial/data-catalog-productmodel-description.png)
 
@@ -202,11 +202,11 @@ Azure 数据目录中的发现使用两个主要机制：搜索和筛选。
 
 还可以在此页上执行以下步骤：
 
-* 添加数据资产的专家。 在“专家”区域中选择“添加”。
+* 添加数据资产的专家。 在“专家”区域中选择“添加”。 
 
-* 添加数据集级别的标记。 在“标记”区域中选择“添加”。 标记可以是用户标记或词汇标记。 标准版的数据目录包包含帮助目录管理员定义中心业务分类的业务词汇。 然后，目录用户即可使用术语表术语对数据资产进行批注。 有关详细信息，请参阅 [How to set up the Business Glossary for Governed Tagging](data-catalog-how-to-business-glossary.md)
+* 添加数据集级别的标记。 在“标记”区域中选择“添加”。  标记可以是用户标记或词汇标记。 标准版的数据目录包包含帮助目录管理员定义中心业务分类的业务词汇。 然后，目录用户即可使用术语表术语对数据资产进行批注。 有关详细信息，请参阅 [How to set up the Business Glossary for Governed Tagging](data-catalog-how-to-business-glossary.md)
 
-* 添加列级别的标记。 针对想要批注的列，选择“标记”下面的“添加”。
+* 添加列级别的标记。 针对想要批注的列，选择“标记”下面的“添加”。 
 
 * 添加列级别的描述。 输入列的 **描述** 。 还可以查看从数据源提取的描述元数据。
 
@@ -231,17 +231,17 @@ Azure 数据目录支持众包批注方式。 任何数据目录用户都可以�
 
 ### <a name="connect-to-a-data-asset-from-excel"></a>从 Excel 连接到数据资产
 
-1. 在搜索结果中选择“Product”。 选择工具栏上的“打开方式”，然后选择“Excel”。
+1. 在搜索结果中选择“Product”。 选择工具栏上的“打开方式”，然后选择“Excel”。 
 
     ![Azure 数据目录 - 连接到数据资产](media/register-data-assets-tutorial/data-catalog-connect1.png)
 
 2. 在下载弹出窗口中选择“打开”。 这种体验根据浏览器而有所不同。
 
-3. 在“Microsoft Excel 安全声明”窗口中，选择“启用”。
+3. 在“Microsoft Excel 安全声明”窗口中，选择“启用”。 
 
     ![Azure 数据目录 - Excel 安全声明弹出窗口](media/register-data-assets-tutorial/data-catalog-excel-security-popup.png)
 
-4. 保留“导入数据”对话框中的默认值，然后选择“确定”。
+4. 保留“导入数据”对话框中的默认值，然后选择“确定”。 
 
     ![Azure 数据目录 - Excel 导入数据](media/register-data-assets-tutorial/data-catalog-excel-import-data.png)
 
@@ -253,9 +253,9 @@ Azure 数据目录支持众包批注方式。 任何数据目录用户都可以�
 
 在本练习中，已连接到使用 Azure 数据目录发现的数据资产。 在 Azure 数据目录门户中，可以使用已集成到“打开方式”菜单中的客户端应用程序来直接建立连接。 也可以使用资产元数据中包含的连接位置信息来与选择的任何应用程序建立连接。 例如，可以使用 SQL Server Management Studio 连接到 Azure SQL 数据库，以访问本教程中注册的数据资产中的数据。
 
-1. 打开 **SQL Server Management Studio**。
+1. 打开 SQL Server Management Studio。
 
-2. 在“连接到服务器”对话框中，输入 Azure 数据目录门户的“属性”窗格中显示的服务器名称。
+2. 在“连接到服务器”对话框中，输入 Azure 数据目录门户的“属性”窗格中显示的服务器名称。 
 
 3. 使用适当的身份验证和凭据访问数据资产。 如果没有访问权限，请使用“请求访问”字段中的信息来获取访问权限。
 
@@ -279,11 +279,11 @@ Azure 数据目录支持众包批注方式。 任何数据目录用户都可以�
 
 2. 在结果列表中选择某个项，然后选择工具栏上的“取得所有权”。
 
-3. 在“属性”面板的“管理”部分中，选择“取得所有权”。
+3. 在“属性”面板的“管理”部分中，选择“取得所有权”。  
 
     ![Azure 数据目录 - 取得所有权](media/register-data-assets-tutorial/data-catalog-take-ownership.png)
 
-4. 若要限制可见性，请选择“可见性”部分的“所有者和这些用户”，然后选择“添加”。 **ENTER**。
+4. 若要限制可见性，请选择“可见性”部分的“所有者和这些用户”，然后选择“添加”。   **ENTER**。
 
     ![Azure 数据目录 - 限制访问](media/register-data-assets-tutorial/data-catalog-ownership.png)
 
@@ -312,7 +312,7 @@ Azure 数据目录支持众包批注方式。 任何数据目录用户都可以�
 > [!NOTE]
 > 目录的默认行为是允许任何用户注册任何数据源，允许任何用户删除任何已注册的数据资产。 标准版 Azure 数据目录中包含的管理功能提供其他选项，用于取得资产所有权、限制谁可以发现资产，以及谁可以删除资产。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 本教程介绍了 Azure 数据目录的基本功能，包括注册、批注、发现和管理企业数据资产。 完成本教程后，便可以开始使用此产品了。 一开始，可以注册自己和团队依赖的数据源，并邀请同事使用目录。
 

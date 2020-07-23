@@ -9,11 +9,11 @@ ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
 ms.openlocfilehash: e2c045501b54b5536ebe7440030676c965a52849
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150876"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67172860"
 ---
 > [!div class="op_single_selector"]
 > * [Azure 门户](../articles/virtual-network/virtual-networks-static-private-ip-arm-pportal.md)

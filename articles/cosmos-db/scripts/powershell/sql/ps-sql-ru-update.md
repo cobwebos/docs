@@ -1,19 +1,20 @@
 ---
-title: Azure PowerShell 脚本-Azure Cosmos DB Update RU/s SQL （核心） API
-description: Azure PowerShell 脚本-Azure Cosmos DB Update RU/s SQL （核心） API
+title: PowerShell 脚本：更新 Azure Cosmos DB SQL API 数据库或容器的吞吐量（RU/秒）
+description: PowerShell 脚本：更新 Azure Cosmos DB SQL API 数据库或容器的吞吐量（RU/秒）
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
-ms.date: 05/18/2019
+ms.subservice: cosmosdb-sql
+ms.topic: sample
+ms.date: 05/01/2020
 ms.author: mjbrown
-ms.openlocfilehash: 9558579fbdbd2185f6de650547863361ff2b80a4
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: 19b13db83b2c2533e963a503dc8ea3e362b5b5ed
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247329"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652966"
 ---
-# <a name="update-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>Azure Cosmos DB-SQL （核心） API 的更新的数据库或容器的 RU/秒
+# <a name="update-throughput-rus-for-an-azure-cosmos-db-sql-api-database-or-container"></a>更新 Azure Cosmos DB SQL API 数据库或容器的吞吐量（RU/秒）
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -21,7 +22,7 @@ ms.locfileid: "66247329"
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-ru-update.ps1 "Update throughput on a database or container for SQL (Core) API")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-ru-update.ps1 "Update throughput (RU/s) for an Azure Cosmos DB SQL API Database or Container")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 
@@ -35,10 +36,11 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBSqlContainerThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainerthroughput) | 获取 SQL 容器的吞吐量值。 |
+| [Update-AzCosmosDBSqlContainerThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainer) | 更新 SQL 容器的吞吐量值。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 984498a2b9d4d72ee6bb6b9f0a9e62636bf870bf
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: e0a1538f640bb4722eca1d4f3a80125837593bab
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66226435"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67085749"
 ---
 # <a name="tutorial-integrate-zscaler-private-access-zpa-with-azure-active-directory"></a>教程：将 Zscaler Private Access (ZPA) 与 Azure Active Directory 集成
 
@@ -137,7 +137,7 @@ ms.locfileid: "66226435"
 1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤  ：
    1. 在“名称”  字段中，输入 `Britta Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
    1. 单击“创建”。 
 
@@ -151,12 +151,12 @@ ms.locfileid: "66226435"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
 1. 在“用户和组”对话框中，从“用户”列表中选择“Britta Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-zscaler-private-access-zpa-test-user"></a>创建 Zscaler Private Access (ZPA) 测试用户

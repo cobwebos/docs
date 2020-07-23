@@ -1,6 +1,6 @@
 ---
-title: Azure 媒体服务中的 LiveEvent 延迟 | Microsoft Docs
-description: 本主题概述了 LiveEvent 延迟，并展示了如何设置较低的延迟。
+title: Azure 媒体服务中的 LiveEvent 低延迟设置 | Microsoft Docs
+description: 本主题概述 LiveEvent 低延迟设置，并说明如何设置低延迟。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,21 +13,21 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: juliako
-ms.openlocfilehash: 393b87aeed759950b946ccb45a008da9af4b7ebe
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 720931cf9f955f63075e3881b6b9f2e884bd3a76
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702788"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232451"
 ---
-# <a name="live-event-latency-in-media-services"></a>媒体服务中的实时事件延迟
+# <a name="live-event-low-latency-settings"></a>直播活动低延迟设置
 
-本文展示了如何在[实时事件](https://docs.microsoft.com/rest/api/media/liveevents)上设置较低的延迟。 它还讨论了在各种播放器中使用低延迟设置时看到的典型结果。 结果因 CDN 和网络延迟而异。
+本文展示了如何在[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)上设置较低的延迟。 它还讨论了在各种播放器中使用低延迟设置时看到的典型结果。 结果因 CDN 和网络延迟而异。
 
 若要使用新的 **LowLatency** 功能，请在 **LiveEvent** 上将 **StreamOptionsFlag** 设置为 **LowLatency**。 为 HLS 播放创建 [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) 时，将 [LiveOutput.Hls.fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) 设置为 1。 流启动并运行后，可以使用 [Azure Media Player](https://ampdemo.azureedge.net/)（AMP 演示页），并设置播放选项以使用“低延迟启发式配置文件”。
 
 > [!NOTE]
-> 目前，Azure Media Player 中 LowLatency HeuristicProfile 专为播放 MPEG DASH 协议，CSF 或 CMAF 格式中的流 (例如，`format=mdp-time-csf`或`format=mdp-time-cmaf`)。 
+> 目前，Azure Media Player 中的“低延迟启发式配置文件”设计用于在 MPEG-DASH 协议中播放采用 CSF 或 CMAF 格式（例如，`format=mdp-time-csf` 或 `format=mdp-time-cmaf`）的流。 
 
 以下 .NET 示例展示了如何在 **LiveEvent** 上设置 **LowLatency**：
 
@@ -52,9 +52,9 @@ LiveEvent liveEvent = new LiveEvent(
         );
 ```                
 
-查看完整示例：[MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126)。
+参阅完整示例：[MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126)。
 
-## <a name="live-events-latency"></a>实时事件延迟
+## <a name="live-events-latency"></a>直播活动延迟
 
 下表显示了媒体服务中的延迟的典型结果（当启用了 LowLatency 标志时），延迟指的是从贡献源到达服务之时到查看者看到播放器上的回放之时之间的时间。 若要以最佳方式使用低延迟，应将编码器设置下调至 1 秒“图片组”(GOP) 长度。 当使用较高的 GOP 长度时，可以在相同帧速率下最小化带宽消耗并降低比特率。 在动作较少的视频中特别有用。
 
@@ -62,15 +62,15 @@ LiveEvent liveEvent = new LiveEvent(
 
 ||启用 2 秒 GOP 低延迟|启用 1 秒 GOP 低延迟|
 |---|---|---|
-|AMP 中的 DASH|10 秒|8 秒|
-|本机 iOS 播放器上的 HLS|14 秒|10 秒|
+|**AMP 中的 DASH**|10 秒|8 秒|
+|**本机 iOS 播放器上的 HLS**|14 秒|10 秒|
 
 ### <a name="live-encoding"></a>实时编码
 
 ||启用 2 秒 GOP 低延迟|启用 1 秒 GOP 低延迟|
 |---|---|---|
-|AMP 中的 DASH|14 秒|10 秒|
-|本机 iOS 播放器上的 HLS|18 秒|13 秒|
+|**AMP 中的 DASH**|14 秒|10 秒|
+|**本机 iOS 播放器上的 HLS**|18 秒|13 秒|
 
 > [!NOTE]
 > 根据本地网络状况以及是否引入了 CDN 缓存层，端到端延迟可能有所不同。 应当测试你的确切配置。

@@ -1,24 +1,13 @@
 ---
 title: Azure 服务总线消息、有效负载和序列化 | Microsoft Docs
-description: 概述了服务总线消息有效负载
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+description: 本文概述了 Azure 服务总线消息、有效负载、消息路由和序列化。
 ms.topic: article
-ms.date: 09/26/2018
-ms.author: aschhab
-ms.openlocfilehash: 3158f0255810c66605d28856133112181c2916db
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: d426489776dff652cbf72d640f3e74b1bc8e30d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61315633"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341684"
 ---
 # <a name="messages-payloads-and-serialization"></a>消息、有效负载和序列化
 
@@ -32,7 +21,7 @@ Microsoft Azure 服务总线负责处理消息。 消息传递键值对属性形
  
 括号内列出的是在 AMQP 协议一级使用的等效名称。 
 
-| 属性名称                         | 描述                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| 属性名称                         | 说明                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |  [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) (content-type)           | 视需要描述消息的有效负载，采用符合 RFC2045 第 5 部分格式的描述符；例如，`application/json`。                                                                                                                                                                                                                                                                                             |
 |  [CorrelationId](/dotnet/api/microsoft.azure.servicebus.message.correlationid#Microsoft_Azure_ServiceBus_Message_CorrelationId) (correlation-id)       | 使应用程序可出于关联目的指定消息的上下文。例如，反映正在答复的消息的 MessageId。                                                                                                                                                                                                                                                                  |
@@ -77,7 +66,7 @@ Microsoft Azure 服务总线负责处理消息。 消息传递键值对属性形
 
 与 Java 或 .NET Standard 变体不同，服务总线 API 的 .NET Framework 版本支持将任意 .NET 对象传递到构造函数，创建 BrokeredMessage 实例。 
 
-如果使用的是旧版 SBMP 协议，这些对象使用默认二进制序列化程序，或使用外部提供的序列化程序进行序列化。 如果使用的是 AMQP 协议，对象会被序列化为 AMQP 对象。 接受器可使用 [GetBody<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) 方法检索这些对象，并提供预期类型。 使用 AMQP，对象都被序列化为 ArrayList 和 IDictionary<string,object> 对象的 AMQP 图，任何 AMQP 客户端都可以将其解码。 
+如果使用的是旧版 SBMP 协议，这些对象使用默认二进制序列化程序，或使用外部提供的序列化程序进行序列化。 如果使用的是 AMQP 协议，对象会被序列化为 AMQP 对象。 接受器可使用 [GetBody\<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) 方法检索这些对象，并提供预期类型。 使用 AMQP，对象都被序列化为 ArrayList 和 IDictionary<string,object> 对象的 AMQP 图，任何 AMQP 客户端都可以将其解码。 
 
 尽管这种隐藏序列化的神奇操作十分方便，但应用程序应明确控制对象序列化，并先将对象图转为流，再将它们添加到消息中（在接收程序端，操作执行顺序相反）。 这样生产的是交互结果。 还应指出，尽管 AMQP 有功能强大的二进制编码模型，但它与 AMQP 消息生态系统关联，导致 HTTP 客户端无法解码此类有效负载。 
 

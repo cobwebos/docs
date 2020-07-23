@@ -1,31 +1,23 @@
 ---
 title: Azure Monitor 日志查询示例 | Microsoft Docs
 description: 使用 Kusto 查询语言在 Azure Monitor 中进行日志查询的示例。
-services: log-analytics
-documentationcenter: ''
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 10/03/2018
 ms.author: bwren
-ms.openlocfilehash: 2c35bc4026c81cbc8b95225e688a3922bc320554
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 03/16/2020
+ms.openlocfilehash: 18cd74ac9298b7dd058de2b224f677ec0d8f2d64
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60759905"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79480277"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Monitor 日志查询示例
 本文包含使用 [Kusto 查询语言](/azure/kusto/query/)从 Azure Monitor 中检索不同类型的日志数据的各种[查询](log-query-overview.md)示例。 其中使用了不同的方法来合并和分析数据，因此，你可以使用这些示例来识别符合自身要求的不同策略。  
 
 有关这些示例中使用的不同关键字的详细信息，请参阅 [Kusto 语言参考](https://docs.microsoft.com/azure/kusto/query/)。 如果你是初次接触 Azure Monitor，请仔细阅读[有关创建查询的课程](get-started-queries.md)。
 
-## <a name="events"></a>活动
+## <a name="events"></a>事件
 
 ### <a name="search-application-level-events-described-as-cryptographic"></a>搜索描述为“加密”的应用程序级事件
 此示例在 **Events** 表中搜索 **EventLog** 为 _Application_ 并且 **RenderedDescription** 包含 _cryptographic_ 的记录。 包括过去 24 小时的记录。
@@ -34,11 +26,11 @@ ms.locfileid: "60759905"
 Event
 | where EventLog == "Application" 
 | where TimeGenerated > ago(24h) 
-| where RenderedDescription == "cryptographic"
+| where RenderedDescription contains "cryptographic"
 ```
 
 ### <a name="search-events-related-to-unmarshaling"></a>搜索拆收相关的事件
-在 Event 和 SecurityEvents 表中搜索提到了 unmashaling 的记录。
+在 Event 和 SecurityEvents 表中搜索提到了 unmashaling 的记录    。
 
 ```Kusto
 search in (Event, SecurityEvent) "unmarshaling"
@@ -120,7 +112,7 @@ union withsource=sourceTable *
 ```
 
 ### <a name="count-all-logs-collected-over-the-last-hour-by-type"></a>按类型统计过去一小时收集的所有日志
-以下示例搜索过去一小时内报告的任何内容，并按“类型”统计每个表的记录数。 结果将在条形图中显示。
+以下示例搜索过去一小时内报告的任何内容，并按“类型”统计每个表的记录数。  结果将在条形图中显示。
 
 ```Kusto
 search *
@@ -181,7 +173,6 @@ let EndTime = now()-4d;
 Perf
 | where CounterName == "% Processor Time"  
 | where TimeGenerated > StartTime and TimeGenerated < EndTime
-and TimeGenerated < EndTime
 | project TimeGenerated, Computer, cpu=CounterValue 
 | join kind= inner (
    Perf
@@ -237,7 +228,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>按活动 ID 统计安全事件数
 
 
-此示例依赖于 **Activity** 列的固定结构：\<ID\>-\<名称\>。
+此示例依赖于**活动**列的固定结构： \<ID\> - \<Name\> 。
 它将 **Activity** 值分析为两个新列，并统计每个 **activityID** 的出现次数。
 
 ```Kusto
@@ -278,7 +269,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>分析活动名称和 ID
-以下两个示例依赖于 **Activity** 列的固定结构：\<ID\>-\<名称\>。 第一个示例使用 **parse** 运算符将值分配给两个新列：**activityID** 和 **activityDesc**。
+下面的两个示例依赖于**活动**列的固定结构： \<ID\> - \<Name\> 。 第一个示例使用 **parse** 运算符将值分配给两个新列：**activityID** 和 **activityDesc**。
 
 ```Kusto
 SecurityEvent
@@ -383,40 +374,47 @@ suspicious_users_that_later_logged_in
 
 ## <a name="usage"></a>使用情况
 
-### <a name="calculate-the-average-size-of-perf-usage-reports-per-computer"></a>计算每台计算机的 perf 使用率报告的平均大小
+`Usage`数据类型可用于按解决方案或数据类型跟踪引入数据量。 还有其他方法可以按[计算机](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-computer)或[Azure 订阅、资源组或资源](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-azure-resource-resource-group-or-subscription)来研究引入数据量。
 
-此示例计算过去 3 小时内每台计算机的 perf 使用率报告的平均大小。
-结果将显示在条形图中。
-```Kusto
+#### <a name="data-volume-by-solution"></a>按解决方案统计的数据量
+
+用于按解决方案查看上个月（不包括最后不完整的一天）的计费数据量的查询是：
+
+```kusto
 Usage 
-| where TimeGenerated > ago(3h)
-| where DataType == "Perf" 
-| where QuantityUnit == "MBytes" 
-| summarize avg(Quantity) by Computer
-| sort by avg_Quantity desc nulls last
-| render barchart
+| where TimeGenerated > ago(32d)
+| where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
 ```
 
-### <a name="timechart-latency-percentiles-50-and-95"></a>时间表延迟第 50 和 95 百分位
+请注意，子句 `where IsBillable = true` 从某些解决方案中筛选掉没有引入费用的数据类型。  和的子句 `TimeGenerated` 仅用于确保 Azure 门户中的查询体验在默认的24小时内将会恢复。 使用“使用情况”数据类型时，`StartTime` 和 `EndTime` 表示显示结果的时间存储桶。 
 
-此示例计算过去 24 小时内每小时报告的 **avgLatency** 的第 50 和 95 百分位并绘制图表。
+#### <a name="data-volume-by-type"></a>按类型的数据量
 
-```Kusto
-Usage
-| where TimeGenerated > ago(24h)
-| summarize percentiles(AvgLatencyInSeconds, 50, 95) by bin(TimeGenerated, 1h) 
-| render timechart
+可以进一步钻取，按数据类型查看数据趋势：
+
+```kusto
+Usage 
+| where TimeGenerated > ago(32d)
+| where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType | render barchart
 ```
 
-### <a name="usage-of-specific-computers-today"></a>当天特定计算机的使用情况
-此示例包含字符串 _ContosoFile_ 的计算机名在过去一天的**使用情况**数据。 结果将按 **TimeGenerated** 排序。
+或者按解决方案和类型查看上个月的表，
 
-```Kusto
-Usage
-| where TimeGenerated > ago(1d)
-| where  Computer contains "ContosoFile" 
-| sort by TimeGenerated desc nulls last
+```kusto
+Usage 
+| where TimeGenerated > ago(32d)
+| where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by Solution, DataType
+| sort by Solution asc, DataType asc
 ```
+
+> [!NOTE]
+> 使用情况数据类型的某些字段虽然仍在架构中，但已弃用，其值将不再填充。 这些是**计算机**以及与引入相关的字段（**TotalBatches**、**BatchesWithinSla**、**BatchesOutsideSla**、**BatchesCapped** 和 **AverageProcessingTimeMs**）。
 
 ## <a name="updates"></a>更新
 
@@ -425,13 +423,12 @@ Usage
 
 ```Kusto
 let ComputersMissingUpdates3DaysAgo = Update
-| where TimeGenerated between (ago(3d)..ago(2d))
-| where  Classification == "Critical Updates" and UpdateState != "Not needed" and UpdateState != "NotNeeded"
+| where TimeGenerated between (ago(30d)..ago(1h))
+| where Classification !has "Critical" and UpdateState =~ "Needed"
 | summarize makeset(Computer);
-
 Update
 | where TimeGenerated > ago(1d)
-| where  Classification == "Critical Updates" and UpdateState != "Not needed" and UpdateState != "NotNeeded"
+| where Classification has "Critical" and UpdateState =~ "Needed"
 | where Computer in (ComputersMissingUpdates3DaysAgo)
 | summarize UniqueUpdatesCount = dcount(Product) by Computer, OSType
 ```

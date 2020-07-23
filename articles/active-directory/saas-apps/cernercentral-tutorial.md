@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3595a946d930ca83b5d2f1f3d82b775bf8eb4855
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4690269775d68b23fd7b7d8c14b94c6188832934
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712683"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799222"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a>教程：Azure Active Directory 与 Cerner Central 的集成
 
@@ -109,17 +109,17 @@ ms.locfileid: "64712683"
 
     a. 在“标识符”文本框中，使用以下模式键入 URL： 
 
-    | |
-    |--|
-    | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata` |
-    | `https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/metadata` |
+    ```http
+    https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata
+    https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/metadata
+    ```
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
 
-    | |
-    |--|
-    | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/sso` |
-    | `https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/sso` |
+    ```http
+    https://<instancename>.cernercentral.com/session-api/protocol/saml2/sso
+    https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/sso
+    ```
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 要获取这些值，请联系 [Central 客户端支持团队](mailto:SISupport@cbre.com)。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -130,7 +130,7 @@ ms.locfileid: "64712683"
 
 ### <a name="configure-cerner-central-single-sign-on"></a>配置 Cerner Central 单一登录
 
-要在“Cerner Central”端配置单一登录，需要将“应用联合元数据 URL”发送给 [Cerner Central 支持团队](mailto:SISupport@cbre.com)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+要在“Cerner Central”端配置单一登录，需要将“应用联合元数据 URL”发送给 [Cerner Central 支持团队](mailto:SISupport@cbre.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -150,7 +150,7 @@ ms.locfileid: "64712683"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -160,7 +160,7 @@ ms.locfileid: "64712683"
 
 在本部分中，将通过向 Britta Simon 授予对 Cerner Centra 的访问权限使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Cerner Central”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Cerner Central”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -172,7 +172,7 @@ ms.locfileid: "64712683"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

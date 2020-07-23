@@ -1,30 +1,23 @@
 ---
-title: 快速入门 - 通过 Azure CLI 创建虚拟机规模集 | Microsoft Docs
-description: 了解如何使用 Azure CLI 快速创建虚拟机规模集。
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: ''
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
+title: 快速入门 - 使用 Azure CLI 创建虚拟机规模集
+description: 通过了解如何使用 Azure CLI 快速创建虚拟机规模集来开始部署。
+author: ju-shim
+ms.author: jushiman
 ms.topic: quickstart
-ms.custom: mvc
+ms.service: virtual-machine-scale-sets
+ms.subservice: cli
 ms.date: 03/27/2018
-ms.author: cynthn
-ms.openlocfilehash: 414ed5ea34c6f59a980e57ae0056782760b2e87b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 5c7621915d9393adce373f68363f6c57b70d9907
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66149246"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027267"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建虚拟机规模集
-利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据资源使用情况（如 CPU 使用率、内存需求或网络流量）进行自动缩放。 然后，Azure 负载均衡器会将流量分配到规模集中的 VM 实例。 在本快速入门中，我们将使用 Azure CLI 创建虚拟机规模集并部署一个示例应用程序。
+利用虚拟机规模集，可以部署和管理一组自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据资源使用情况（如 CPU 使用率、内存需求或网络流量）进行自动缩放。 然后，Azure 负载均衡器会将流量分配到规模集中的 VM 实例。 在本快速入门中，我们将使用 Azure CLI 创建虚拟机规模集并部署一个示例应用程序。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -34,7 +27,7 @@ ms.locfileid: "66149246"
 
 
 ## <a name="create-a-scale-set"></a>创建规模集
-使用 [az group create](/cli/azure/group) 创建资源组，才能创建规模集。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+使用 [az group create](/cli/azure/group) 创建资源组，才能创建规模集。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus

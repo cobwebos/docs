@@ -1,35 +1,26 @@
 ---
-title: 如何通过 Java 使用 Azure 服务总线主题 | Microsoft Docs
-description: 在 Azure 中使用服务总线主题和订阅。
-services: service-bus-messaging
-documentationcenter: java
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 63d6c8bd-8a22-4292-befc-545ffb52e8eb
-ms.service: service-bus-messaging
-ms.workload: tbd
-ms.tgt_pltfrm: na
+title: 通过 Java 使用 Azure 服务总线主题和订阅
+description: 在本快速入门中，先编写 Java 代码，将消息发送到某个 Azure 服务总线主题，然后从该主题的订阅中接收消息。
 ms.devlang: Java
-ms.topic: article
-ms.date: 04/15/2019
-ms.author: aschhab
-ms.openlocfilehash: 578fd0caa8986c48b3fd50a7890bb66b14bee2f4
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
-ms.translationtype: MT
+ms.topic: quickstart
+ms.date: 06/23/2020
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: fb8e5196077e60c20d9354459cafe85302ad0e45
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991726"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341421"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>如何通过 Java 使用服务总线主题和订阅
+# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>快速入门：通过 Java 使用服务总线主题和订阅
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-在本快速入门中，先编写 Java 代码，将消息发送到某个服务总线主题，然后从该主题的订阅中接收消息。 
+在本快速入门中，先编写 Java 代码，将消息发送到某个 Azure 服务总线主题，然后从该主题的订阅中接收消息。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以[激活 Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或者注册[免费试用帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 2. 按照[快速入门：使用 Azure 门户创建服务总线主题和主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来执行以下任务：
     1. 创建一个服务总线**命名空间**。
     2. 获取**连接字符串**。
@@ -38,9 +29,9 @@ ms.locfileid: "65991726"
 3. [Azure SDK for Java][Azure SDK for Java]。
 
 ## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用服务总线
-在生成本示例之前，请确保已安装 [Azure SDK for Java][Azure SDK for Java]。 如果使用 Eclipse，则可以安装包含 Azure SDK for Java 的[用于 Eclipse 的 Azure 工具包][Azure Toolkit for Eclipse]。 然后，可将 Microsoft Azure Libraries for Java 添加到项目：
+在生成本示例之前，请确保已安装 [Azure SDK for Java][Azure SDK for Java] 。 如果使用了 Eclipse，则可以安装包含 Azure SDK for Java 的 [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] 。 然后，可将 Microsoft Azure Libraries for Java 添加到项目  ：
 
-![Eclipse 生成路径中的库](media/service-bus-java-how-to-use-topics-subscriptions/eclipselibs.png)
+![将适用于 Java 的 Microsoft Azure 库添加到 Eclipse 项目](media/service-bus-java-how-to-use-topics-subscriptions/eclipse-azure-libraries-java.png)
 
 还需要将以下 JAR 添加到 Java 生成路径中：
 
@@ -122,7 +113,7 @@ public class MyServiceBusTopicClient {
 }
 ```
 
-服务总线主题在[标准层](service-bus-premium-messaging.md)中支持的最大消息容量为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 一个主题中包含的消息数量不受限制，但消息的总大小受限制。 此主题大小是在创建时定义的，上限为 5 GB。
+服务总线主题在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 一个主题中包含的消息数量不受限制，但消息的总大小受限制。 此主题大小是在创建时定义的，上限为 5 GB。
 
 ## <a name="how-to-receive-messages-from-a-subscription"></a>如何从订阅接收消息
 更新 **main** 方法来为三个订阅创建三个 **SubscriptionClient** 对象，并调用一个帮助程序方法来以异步方式从服务总线主题接收消息。 示例代码假定你创建了名为 **BasicTopic** 的主题，并且三个订阅分别名为 **Subscription1**、**Subscription2** 和 **Subscription3**。 如果你为它们使用了不同的名称，请在测试代码之前更新代码。 
@@ -181,7 +172,7 @@ public class MyServiceBusTopicClient {
         receiveClient.registerMessageHandler(
                     messageHandler,
                     // callback invoked when the message handler has an exception to report
-                // 1 concurrent call, messages are auto-completed, auto-renew duration
+                // 1 concurrent call, messages aren't auto-completed, auto-renew duration
                 new MessageHandlerOptions(1, false, Duration.ofMinutes(1)));
 
     }
@@ -455,13 +446,13 @@ Message sending: Id = 9
 ```
 
 > [!NOTE]
-> 你可以管理与服务总线资源[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)。 服务总线资源管理器允许用户连接到服务总线命名空间并轻松管理消息实体。 该工具提供高级的功能，如导入/导出功能或测试主题、 队列、 订阅、 中继服务、 通知中心和事件中心的功能。 
+> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅[服务总线队列、主题和订阅][Service Bus queues, topics, and subscriptions]。
 
 [Azure SDK for Java]: https://docs.microsoft.com/java/api/overview/azure/
-[Azure Toolkit for Eclipse]: https://docs.microsoft.com/java/azure/eclipse/azure-toolkit-for-eclipse
+[Azure Toolkit for Eclipse]: https://docs.microsoft.com/azure/developer/java/toolkit-for-eclipse/installation
 [Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /dotnet/api/microsoft.azure.servicebus.sqlfilter
 [SqlFilter.SqlExpression]: /dotnet/api/microsoft.azure.servicebus.sqlfilter.sqlexpression

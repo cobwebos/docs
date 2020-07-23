@@ -1,21 +1,21 @@
 ---
-title: 向必应视频搜索 API 发送搜索请求
-titlesuffix: Azure Cognitive Services
-description: 了解如何向必应视频搜索 API 发送搜索查询。
+title: 使用必应视频搜索 API 搜索视频
+titleSuffix: Azure Cognitive Services
+description: 必应视频搜索 APIfinds 并返回 web 上的相关视频，它提供了多种功能，可用于 web 上的智能和集中视频检索。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
-ms.topic: overview
-ms.date: 01/31/2019
+ms.topic: conceptual
+ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 2eaefcf9af6188867bfd692fad891a70fcadb076
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
-ms.translationtype: HT
+ms.openlocfilehash: 5add9597924aa77ede875d0056e83eceb4f99598
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66386505"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "79220299"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>使用必应视频搜索 API 来搜索视频
 
@@ -98,7 +98,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghi
 
 ## <a name="video-thumbnails"></a>视频缩略图
 
-可以显示必应视频搜索 API 返回的所有或部分视频缩略图。 如果显示一部分缩略图，请为用户提供查看剩余视频的选项。 作为必应 API 的[使用和显示要求](../UseAndDisplayRequirements.md)的一部分，你必须按照响应中提供的顺序来显示视频。 若要了解如何重设缩略图的大小，请参阅[重设缩略图的大小并对其进行裁剪](../resize-and-crop-thumbnails.md)。 
+可以显示必应视频搜索 API 返回的所有或部分视频缩略图。 如果显示一部分缩略图，请为用户提供查看剩余视频的选项。 作为必应 API 的[使用和显示要求](../UseAndDisplayRequirements.md)的一部分，你必须按照响应中提供的顺序来显示视频。 若要了解如何重设缩略图的大小，请参阅[重设缩略图的大小并对其进行裁剪](../../bing-web-search/resize-and-crop-thumbnails.md)。 
 
 当用户将鼠标悬停在缩略图上时，你可以使用 [motionThumbnailUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-motionthumbnailurl) 来播放视频的缩略图版本。 显示运动缩略图时，必须显示其属性。
 
@@ -120,10 +120,10 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghi
 
 默认情况下，视频搜索 API 返回与查询相关的所有视频。 如果只需免费视频或者时长不到五分钟的视频，请使用以下筛选器查询参数：
 
-- [pricing](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing)&mdash;按定价来筛选视频（例如，免费的视频或必须付费的视频）
-- [resolution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution)&mdash;按分辨率来筛选视频（例如，分辨率为 720p 或更高的视频）
-- [videoLength](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength)&mdash;按视频长度来筛选视频（例如，长度不到五分钟的视频）
-- [freshness](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness)&mdash;按时间来筛选视频（例如，必应在过去一周发现的视频）
+- [定价](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing)&mdash;筛选器视频（如免费的或需要支付的视频）
+- [分辨率](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution)&mdash;按解决方案筛选视频（例如，使用720p 或更高分辨率的视频）
+- [videoLength](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength)&mdash;按视频长度（例如，长度不到五分钟的视频）筛选视频
+- [新鲜度](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness)&mdash;按 age 筛选视频（例如，过去一周内必应发现的视频）
 
 若要从特定域获取视频，请在查询字符串中包含 [site:](https://msdn.microsoft.com/library/ff795613.aspx) 查询运算符。
 

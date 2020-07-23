@@ -1,25 +1,14 @@
 ---
-title: 管理 Azure Service Fabric 应用程序机密 | Microsoft Docs
+title: 管理 Azure Service Fabric 应用程序机密
 description: 了解如何保护 Service Fabric 应用程序中的机密值（与平台无关）。
-services: service-fabric
-documentationcenter: .net
-author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 94a67e45-7094-4fbd-9c88-51f4fc3c523a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/04/2019
-ms.author: vturecek
-ms.openlocfilehash: d151dbf20e68a2152e9d886a74e51786bb8fbfa6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: af82a55d41c48eebcbcbd1581ec5096a89c49bea
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60614486"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248112"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>管理 Service Fabric 应用程序中的已加密机密
 本指南逐步讲解管理 Service Fabric 应用程序中的机密的步骤。 机密可以是任何敏感信息，例如存储连接字符串、密码或其他不应以明文形式处理的值。
@@ -56,7 +45,23 @@ ms.locfileid: "60614486"
 </CodePackage>
 ```
 
-### <a name="inject-application-secrets-into-application-instances"></a>将应用程序机密插入应用程序实例
+机密也应包括在 Service Fabric 应用程序中，只需在应用程序清单中指定证书即可。 将 **SecretsCertificate** 元素添加到 **ApplicationManifest.xml**，并包括所需证书的指纹。
+
+```xml
+<ApplicationManifest … >
+  ...
+  <Certificates>
+    <SecretsCertificate Name="MyCert" X509FindType="FindByThumbprint" X509FindValue="[YourCertThumbrint]"/>
+  </Certificates>
+</ApplicationManifest>
+```
+> [!NOTE]
+> 激活可指定 SecretsCertificate 的应用程序后，Service Fabric 将查找匹配的的证书，并向该证书的私钥授予应用程序在完全权限下运行的标识。 Service Fabric 还会监视证书的更改，并重新应用相应的权限。 若要检测由公用名称声明的证书更改，Service Fabric 会运行定期任务，该任务查找所有匹配的证书，并将其与缓存的指纹列表进行对比。 如果检测到新指纹，表示该主题的证书已续订。 该任务每分钟在群集的每个节点上运行一次。
+>
+> 尽管 SecretsCertificate 确实允许使用基于主题的声明，但请注意，加密的设置会绑定到用于对客户端上的设置进行加密的密钥对。 需要确保原始加密证书（或等效证书）与基于主题的声明相匹配，并确保在可承载应用程序的群集的每个节点上安装该证书（包括其相应的私钥）。 与基于主题的声明匹配的且是通过与原始加密证书相同的密钥对生成的所有时间有效的证书均视为等效证书。
+>
+
+### <a name="inject-application-secrets-into-application-instances"></a>将应用程序机密注入应用程序实例
 理想情况下，部署到不同环境的过程应尽可能自动化。 这可以通过在生成环境中执行机密加密，并在创建应用程序实例时提供加密机密作为参数来实现。
 
 #### <a name="use-overridable-parameters-in-settingsxml"></a>在 Settings.xml 中使用可重写参数
@@ -94,13 +99,13 @@ Settings.xml 配置文件允许使用可在创建应用程序时提供的可重�
 
 现在，可以在创建应用程序实例时将值指定为*应用程序参数* 。 可以使用 PowerShell 或 C# 编写用于创建应用程序实例的脚本，方便在生成过程中轻松集成。
 
-使用 PowerShell 时，参数将以[哈希表](https://technet.microsoft.com/library/ee692803.aspx)的形式提供给 `New-ServiceFabricApplication`：
+使用 PowerShell 时，参数将以[哈希表](/previous-versions/windows/it-pro/windows-powershell-1.0/ee692803(v=technet.10))的形式提供给 `New-ServiceFabricApplication`：
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}
 ```
 
-使用 C# 时，应用程序参数以 `NameValueCollection` 的形式在 `ApplicationDescription` 中指定：
+使用 C# 时，应用程序参数将以 `NameValueCollection` 的形式在 `ApplicationDescription` 中指定：
 
 ```csharp
 FabricClient fabricClient = new FabricClient();
@@ -136,10 +141,12 @@ string MyEnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
 ```
 
 ## <a name="next-steps"></a>后续步骤
-深入了解[应用程序和服务安全性](service-fabric-application-and-service-security.md)
+* Service Fabric [机密存储](service-fabric-application-secret-store.md) 
+* 深入了解[应用程序和服务安全性](service-fabric-application-and-service-security.md)
 
 <!-- Links -->
 [parameters-link]:service-fabric-how-to-parameterize-configuration-files.md
 [environment-variables-link]: service-fabric-how-to-specify-environment-variables.md
 [secret-management-windows-specific-link]: service-fabric-application-secret-management-windows.md
 [secret-management-linux-specific-link]: service-fabric-application-secret-management-linux.md
+[service fabric secrets store]: service-fabric-application-secret-store.md

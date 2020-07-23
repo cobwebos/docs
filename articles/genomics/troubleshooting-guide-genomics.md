@@ -1,36 +1,35 @@
 ---
-title: Microsoft 基因组学：故障排除指南 | Microsoft Docs
-titleSuffix: Azure
-description: 详细了解故障排除策略
+title: 故障排除指南
+titleSuffix: Microsoft Genomics
+description: 了解有关使用 Microsoft 基因组学的故障排除策略，包括错误消息以及如何解决这些问题。
 keywords: 故障排除, 错误, 调试
-services: microsoft-genomics
+services: genomics
 author: ruchir
-editor: jasonwhowell
 ms.author: ruchir
 ms.service: genomics
 ms.workload: genomics
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 10/29/2018
-ms.openlocfilehash: 78084e6beac7b390b1ea1afe888030c5224856b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60790498"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82100900"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
 下面提供了当你使用 Microsoft 基因组学服务 (MSGEN) 时可能会遇到的一些常见问题的故障排除提示。
 
  如需与故障排除无关的常见问题解答，请参阅[常见问题](frequently-asked-questions-genomics.md)。
-## <a name="step-1-locate-error-codes-associated-with-the-workflow"></a>步骤 1：找到与工作流关联的错误代码
+## <a name="step-1-locate-error-codes-associated-with-the-workflow"></a>步骤 1：查找与工作流关联的错误代码
 
 可通过以下方式查找与工作流关联的错误消息：
 
 1. 使用命令行并键入 `msgen status`
 2. 检查 standardoutput.txt 的内容。
 
-### <a name="1-using-the-command-line-msgen-status"></a>1.使用命令行 `msgen status`
+### <a name="1-using-the-command-line-msgen-status"></a>1. 使用命令行`msgen status`
 
 ```bash
 msgen status -u URL -k KEY -w ID 
@@ -43,7 +42,7 @@ msgen status -u URL -k KEY -w ID
 
 * URL - API 的基本 URI
 * 密钥 - 基因组学帐户的访问密钥
-    * 若要查找 URL 和密钥，请转到 Azure 门户并打开 Microsoft 基因组学帐户页。 在“管理”标题下方，选择“访问密钥”。 可在此处找到 API URL 和访问密钥。
+    * 若要查找 URL 和密钥，请转到 Azure 门户并打开 Microsoft 基因组学帐户页。 在“管理”标题下方，选择“访问密钥”********。 可在此处找到 API URL 和访问密钥。
 
   
 * ID - 工作流 ID
@@ -82,7 +81,7 @@ msgen status -u URL -k KEY -w ID
 msgen status -w 1001 -f "config.txt"
 ```
 
-### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2.检查 standardoutput.txt 的内容 
+### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. 检查 standardoutput.txt 的内容 
 查找有问题的工作流的输出容器。 每次执行工作流后，MSGEN 会创建一个 `[workflowfilename].logs.zip` 文件夹。 请解压缩该文件夹以查看其内容：
 
 * outputFileList.txt - 工作流运行期间生成的输出文件列表
@@ -93,30 +92,30 @@ msgen status -w 1001 -f "config.txt"
 若要进行故障排除，请检查 standardoutput.txt 的内容，并记下出现的任何错误消息。
 
 
-## <a name="step-2-try-recommended-steps-for-common-errors"></a>步骤 2：提供常见错误的建议步骤的重试
+## <a name="step-2-try-recommended-steps-for-common-errors"></a>步骤 2：尝试执行解决常见错误的建议步骤
 
 本部分简要描述 Microsoft 基因组学服务 (msgen) 输出的常见错误，以及可用于解决这些错误的策略。 
 
 Microsoft 基因组学服务 (msgen) 可能引发以下两种类型的错误：
 
-1. 内部服务错误：通过修复参数或输入的文件可能未解析的服务的内部错误。 有时，重新提交工作流可能会解决这些错误。
-2. 输入的错误：通过使用正确的参数或修复文件格式，可以解决的错误。
+1. 内部服务错误：服务内部的错误，无法通过修复参数或输入文件来解决。 有时，重新提交工作流可能会解决这些错误。
+2. 输入错误：使用正确的参数或修复文件格式可以解决的错误。
 
-### <a name="1-internal-service-errors"></a>1.内部服务错误
+### <a name="1-internal-service-errors"></a>1. 内部服务错误
 
 内部服务错误不可由用户处理。 可以重新提交工作流，但如果这样做也解决不了问题，请联系 Microsoft 基因组学支持人员
 
 | 错误消息                                                                                                                            | 建议的故障排除步骤                                                                                                                                   |
 |------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 发生了内部错误。 请尝试重新提交工作流。 如果再次看到此错误，请联系 Microsoft 基因组学支持人员以获得帮助 | 重新提交工作流。 如果问题持续出现，请通过创建支持[票证](file-support-ticket-genomics.md )来联系 Microsoft 基因组学支持人员，以获得帮助。 |
+| 发生内部错误。 请尝试重新提交工作流。 如果再次看到此错误，请联系 Microsoft 基因组学支持人员以获得帮助 | 重新提交工作流。 如果问题持续出现，请通过创建支持[票证](file-support-ticket-genomics.md )来联系 Microsoft 基因组学支持人员，以获得帮助。 |
 
-### <a name="2-input-errors"></a>2.输入错误
+### <a name="2-input-errors"></a>2. 输入错误
 
 这些错误可由用户处理。 根据文件类型和错误代码，Microsoft 基因组学服务会输出不同的错误代码。 请遵循下面列出的建议故障排除步骤。
 
 | 文件类型 | 错误代码 | 错误消息                                                                           | 建议的故障排除步骤                                                                                         |
 |--------------|------------|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| 任意          | 701        | 读取操作 [readId] 具有 [numberOfBases] 个基，但限制为 [maxReadLength]           | 出现此错误的最常见原因是文件损坏，导致串联了两个读取操作。 请检查输入文件。 |
+| Any          | 701        | 读取操作 [readId] 具有 [numberOfBases] 个基，但限制为 [maxReadLength]           | 出现此错误的最常见原因是文件损坏，导致串联了两个读取操作。 请检查输入文件。 |
 | BAM          | 200        |   无法读取文件“[yourFileName]”。                                                                                       | 请检查 BAM 文件的格式。 使用格式正确的文件重新提交工作流。                                                                           |
 | BAM          | 201        |  无法读取 BAM 文件 [File_name]。                                                                                      |请检查 BAM 文件的格式。  使用格式正确的文件提交工作流。                                                                            |
 | BAM          | 202        | 无法读取 BAM 文件 [File_name]。 文件太小，且缺少标头。                                                                                        | 请检查 BAM 文件的格式。  使用格式正确的文件提交工作流。                                                                            |
@@ -137,7 +136,7 @@ Microsoft 基因组学服务 (msgen) 可能引发以下两种类型的错误：
 | FASTQ        | 308        |  FASTQ 读取错误。 两端的读取以不同的方式做出了响应。 是否选择了正确的 FASTQ 文件?                                                                                       | 请更正 FASTQ 文件的格式，然后重新提交工作流。                                                                         |
 |        |       |                                                                                        |                                                                           |
 
-## <a name="step-3-contact-microsoft-genomics-support"></a>步骤 3：请联系 Microsoft 基因组学支持人员
+## <a name="step-3-contact-microsoft-genomics-support"></a>步骤 3：联系 Microsoft 基因组学支持人员
 
 如果作业继续失败或有任何其他疑问，请通过 Azure 门户与 Microsoft 基因组学支持人员联系。 可从[此处](file-support-ticket-genomics.md)找到有关如何提交支持请求的更多信息。
 

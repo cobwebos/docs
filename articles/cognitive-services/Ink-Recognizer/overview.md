@@ -1,28 +1,28 @@
 ---
 title: 什么是墨迹识别器？ - 墨迹识别器 API
-titlesuffix: Azure Cognitive Services
-description: 将墨迹识别器集成到应用程序、网站、工具和其他解决方案中，以提供...
+titleSuffix: Azure Cognitive Services
+description: 将墨迹识别器集成到你的应用程序、网站、工具和其他解决方案中，以允许识别墨迹笔划数据并将其用作输入。
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
-ms.topic: tutorial
-ms.date: 05/02/2019
-ms.author: erhopf
-ms.openlocfilehash: 0ed1a72a5dc61458200b72c768ad722656b820d8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.topic: overview
+ms.date: 12/17/2019
+ms.author: aahi
+ms.openlocfilehash: 2d00a489af35f5960aaeb1dda7add5337d48d57d
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65025603"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75448147"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>什么是墨迹识别器 API？
 
 
 墨迹识别器认知服务提供基于云的 REST API 用于分析和识别数字墨迹内容。 与使用光学字符识别 (OCR) 的服务不同，该 API 需要使用数字墨迹笔划数据作为输入。 数字墨迹笔划是 2D 点（X,Y 坐标，表示数字手写笔或手指的动作）的时序集。 然后，墨迹识别器会识别输入中的形状和手写内容，并返回包含所有已识别实体的 JSON 响应。
 
-![描绘如何将墨迹笔划输入发送到 API 的流程图](media/ink-recognizer-pen-graph.png)
+![描绘如何将墨迹笔划输入发送到 API 的流程图](media/ink-recognizer-pen-graph.svg)
 
 ## <a name="features"></a>功能
 
@@ -52,7 +52,7 @@ ms.locfileid: "65025603"
 请尝试学习以下语言的快速入门，以开始调用墨迹识别器 API。
 * [C#](quickstarts/csharp.md)
 * [Java](quickstarts/java.md)
-* [JavaScript](quickstarts/csharp.md)
+* [JavaScript](quickstarts/javascript.md)
 
 若要了解墨迹识别 API 在数字墨迹应用中的工作原理，请查看 GitHub 上的以下示例应用程序：
 * [C# 和通用 Windows 平台 (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  

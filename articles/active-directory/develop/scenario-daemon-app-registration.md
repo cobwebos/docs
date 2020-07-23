@@ -1,56 +1,53 @@
 ---
-title: 守护程序应用程序调用 web Api （应用程序注册）-Microsoft 标识平台
-description: 了解如何构建守护程序调用 web Api-应用注册
+title: 注册调用 Web API 的守护程序应用 - Microsoft 标识平台 | Azure
+description: 了解如何构建调用 Web API 的守护程序应用 - 应用注册
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79a355ab226e56a3dde1df5369deda5142d47848
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: MT
+ms.openlocfilehash: 508101ad615dd96559b1c68a61be7c08772545db
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65076235"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80885474"
 ---
-# <a name="daemon-app-that-calls-web-apis---app-registration"></a>守护程序应用程序调用 web Api 的应用注册
+# <a name="daemon-app-that-calls-web-apis---app-registration"></a>调用 Web API 的守护程序应用 - 应用注册
 
-守护程序应用程序中，下面是您需要了解时注册该应用。
+对于守护程序应用程序，在注册该应用时需了解下面这些内容。
 
 ## <a name="supported-account-types"></a>支持的帐户类型
 
-考虑到守护程序应用程序仅有意义 Azure AD 租户中创建应用程序时，需要进行选择：
+守护程序应用程序只能在 Azure AD 租户中使用。 因此，在创建应用程序时，需要选择以下选项之一：
 
-- 任一**此组织目录中的帐户**。 选择此选项是最常见的情况，如守护程序应用程序通常由业务线 (LOB) 开发人员编写。
-- 或**任何组织的目录中的帐户**。 如果你是 ISV 为客户提供的实用程序工具，你将使此选项。 你将需要客户的租户管理员的批准。
+- **仅此组织目录中的帐户**。 此选择是最常见的，因为守护程序应用程序通常是由业务线 (LOB) 开发人员编写的。
+- **任何组织目录中的帐户**。 如果你是 ISV，需向客户提供实用程序工具，则可进行此选择。 需要获得客户的租户管理员批准。
 
-## <a name="authentication---no-reply-uri-needed"></a>身份验证-没有所需的回复 URI
+## <a name="authentication---no-reply-uri-needed"></a>身份验证 - 不需回复 URI
 
-在其中机密客户端应用程序使用的情况下**仅**客户端凭据流，回复 URL 无需进行注册。 它不需要为应用程序配置/构造。 客户端凭据流不会使用它。
+如果机密客户端应用程序仅  使用客户端凭据流，则不需注册回复 URI。 应用程序配置或构造不需要它。 客户端凭据流不使用它。
 
-## <a name="api-permissions---app-permissions-and-admin-consent"></a>API 权限的应用权限和管理员同意
+## <a name="api-permissions---app-permissions-and-admin-consent"></a>API 权限 - 应用权限和管理员许可
 
-后台应用程序只能请求对 Api （非委派权限） 的应用程序权限。 在**API 的权限**后所选的应用程序注册页**添加权限**，然后选择 API 系列，选择**应用程序权限**，然后选择你的权限
+守护程序应用程序只能请求针对 API 的应用程序权限（非委托权限）。 在应用程序注册的“API 权限”页上，  在选择“添加权限”并选择  API 系列以后，请在选择“应用程序权限”后再选择权限  。
 
-![应用权限和管理员同意](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
+![应用权限和管理员许可](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
 
-守护程序应用程序需要具有租户管理员预先同意调用 web API 的应用程序。 在同一个提供此许可**API 的权限**页上，通过租户管理员选择**授予管理员同意*我们的组织***
+> [!NOTE]
+> 要调用的 Web API 需要定义*应用程序权限（应用角色）* ，而不是委托的权限。 有关如何公开此类 API 的详细信息，请参阅[受保护的 Web API：应用注册 - 当守护程序应用调用 Web API 时](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)。
 
-如果你是 ISV 构建多租户应用程序，你想要检查[部署的用例的多租户守护程序应用](scenario-daemon-production.md#deployment---case-of-multi-tenant-daemon-apps)段落。
+守护程序应用程序需要获得租户管理员的预先许可，然后该应用程序才能调用 Web API。 租户管理员在同一“API 权限”页中提供此许可，  只需选择“向我们的组织授予管理员许可”即可 
+
+如果你是构建多租户应用程序的 ISV，则应阅读[部署 - 多租户守护程序应用的示例](scenario-daemon-production.md#deployment---multitenant-daemon-apps)部分。
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-registration-client-secrets.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [守护程序应用-应用程序代码配置](./scenario-daemon-app-configuration.md)
+> [守护程序应用 - 应用代码配置](./scenario-daemon-app-configuration.md)

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: a5c367402bd1e61485095fd1d565a8582acc3a9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5a6da7e65a9a3e962a2df37b062792fbb990d04d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60824879"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73159697"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Azure Kubernetes 网络策略概述
 
@@ -32,7 +32,7 @@ ms.locfileid: "60824879"
 Azure 网络策略可以与为容器提供 VNet 集成的 Azure CNI 配合使用。 目前仅 Linux 节点支持它。 这些实现根据定义的策略来配置 Linux IP 表规则，以便强制流量筛选。
 
 ## <a name="planning-security-for-your-kubernetes-cluster"></a>规划 Kubernetes 群集的安全性
-为群集实现安全性时，请使用网络安全组 (NSG) 来筛选南-北流量（即出入群集子网的流量），并使用 Kubernetes 网络策略来筛选东-西流量（即 群集中 Pod 之间的流量）。
+为群集实现安全性时，使用网络安全组 (NSG) 来筛选南北流量（即，进出群集子网的流量），并使用 Kubernetes 网络策略来筛选东西流量（即，群集中 Pod 之间的流量）。
 
 ## <a name="using-azure-kubernetes-network-policies"></a>使用 Azure Kubernetes 网络策略
 Azure 网络策略可以通过下述方式来使用，以便为 Pod 提供微分段。
@@ -42,7 +42,7 @@ ACS-Engine 是一项工具，可以生成 Azure 资源管理器模板，以便�
 
 若要在使用 acs-engine 部署的群集上启用策略，请在群集定义文件中将 networkPolicy 设置的值指定为“azure”。
 
-#### <a name="example-configuration"></a>示例配置
+#### <a name="example-configuration"></a>配置示例
 
 下面的 JSON 示例配置使用 Azure CNI 创建了一个新的虚拟网络和子网，并在其中部署了 Kubernetes 群集。 建议使用“记事本”来编辑此 JSON 文件。 
 ```json
@@ -51,7 +51,7 @@ ACS-Engine 是一项工具，可以生成 Azure 资源管理器模板，以便�
   "properties": {
     "orchestratorProfile": {
       "orchestratorType": "Kubernetes",
-      “kubernetesConfig”: {
+      "kubernetesConfig": {
          "networkPolicy": "azure"
        }
     },

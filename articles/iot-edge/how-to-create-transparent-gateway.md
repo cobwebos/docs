@@ -4,307 +4,157 @@ description: 将 Azure IoT Edge 用作可处理来自下游设备的消息的透
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/23/2019
+ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 722ee6197b467454818026c960e1ce0e5b39efb4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 0155294777e1d732e5ff3874102b90049d9a123d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717193"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84782579"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>将 IoT Edge 设备配置为充当透明网关
 
-本文详细说明如何将 IoT Edge 设备配置为充当透明网关，供其他设备用来与 IoT 中心通信。 在本文中，术语“IoT Edge 网关”是指用作透明网关的 IoT Edge 设备。 有关详细信息，请参阅[如何将 IoT Edge 设备用作网关](./iot-edge-as-gateway.md)。
+本文详细说明如何将 IoT Edge 设备配置为充当透明网关，供其他设备用来与 IoT 中心通信。 本文使用术语 *IoT Edge 网关*来指代配置为透明网关的 IoT Edge 设备。 有关详细信息，请参阅[如何将 IoT Edge 设备用作网关](./iot-edge-as-gateway.md)。
 
 >[!NOTE]
 >当前：
-> * 如果网关与 IoT 中心断开连接，则下游设备无法通过网关进行身份验证。
-> * 支持 Edge 的设备无法连接到 IoT Edge 网关。 
+>
+> * 支持 Edge 的设备无法连接到 IoT Edge 网关。
 > * 下游设备不能使用文件上传。
 
-充当网关的设备必须能够安全连接到下游设备。 Azure IoT Edge 允许使用公钥基础结构 (PKI) 在设备之间建立安全连接。 在这种情况下，我们可以将下游设备连接到充当透明网关的 IoT Edge 设备。 若要保持合理的安全性，下游设备应确认 IoT Edge 设备的标识。 你想连接到仅在网关，没有任何潜在的恶意的网关设备。
+成功设置透明网关连接需要完成三个常规步骤。 本文介绍其中的第一个步骤：
 
-下游设备可以是包含通过 [Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub)云服务创建的标识的任何应用程序或平台。 在许多情况下，这些应用程序使用 [Azure IoT 设备 SDK](../iot-hub/iot-hub-devguide-sdks.md)。 在各种实际用途中，下游设备甚至可以是 IoT Edge 网关设备本身上运行的应用程序。 
+1. **将网关设备配置为服务器，以便下游设备能够安全地连接到该设备。设置网关以从下游设备接收消息，并将其路由到适当的目标。**
+2. 为下游设备创建设备标识，使其能够使用 IoT 中心进行身份验证。 配置下游设备，使其通过网关设备发送消息。 有关详细信息，请参阅[在 Azure IoT 中心对下游设备进行身份验证](how-to-authenticate-downstream-device.md)。
+3. 将下游设备连接到网关设备并开始发送消息。 有关详细信息，请参阅[将下游设备连接到 Azure IoT Edge 网关](how-to-connect-downstream-device.md)。
 
-可以创建任何启用设备网关拓扑所需的信任的证书基础结构。 在本文中，我们假定此证书的安装程序要用来启用[X.509 CA 安全性](../iot-hub/iot-hub-x509ca-overview.md)在 IoT 中心，涉及到特定的 IoT 中心 （IoT 中心所有者 CA） 和一系列的证书相关联的 X.509 CA 证书，使用此 CA 和 CA 签名的 IoT Edge 设备。
+对于作为网关的设备，需要安全地连接到其下游设备。 Azure IoT Edge 允许使用公钥基础结构 (PKI) 在设备之间建立安全连接。 在这种情况下，我们可以将下游设备连接到充当透明网关的 IoT Edge 设备。 要维持合理的安全性，下游设备应确认网关设备的标识。 此标识检查可防止设备连接到潜在的恶意网关。
+
+下游设备可以是包含通过 [Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub)云服务创建的标识的任何应用程序或平台。 这些应用程序通常使用[Azure IoT 设备 SDK](../iot-hub/iot-hub-devguide-sdks.md)。 下游设备甚至可以是 IoT Edge 网关设备本身上运行的应用程序。 但是，IoT Edge 设备不能位于 IoT Edge 网关的下游。
+
+可以创建任何启用设备网关拓扑所需的信任的证书基础结构。 在本文中，我们假设使用相同的证书设置来启用 IoT 中心的 [X.509 CA 安全性](../iot-hub/iot-hub-x509ca-overview.md)，其中涉及与特定 IoT 中心（IoT 中心根 CA）关联的 X.509 CA 证书，以及通过此 CA 签名的一系列证书和 IoT Edge 设备的 CA。
+
+>[!NOTE]
+>在这些文章中使用的术语 "*根 CA 证书*" 是指 PKI 证书链的最顶层颁发机构公共证书，不一定是联合证书颁发机构的证书根目录。 在许多情况下，它实际上是中间 CA 公共证书。
+
+以下步骤将演示创建证书并将它们安装在网关上的正确位置的过程。 可以使用任一计算机生成证书，然后将其复制到 IoT Edge 设备。
+
+## <a name="prerequisites"></a>先决条件
+
+安装了 IoT Edge 的 Linux 或 Windows 设备。
+
+## <a name="set-up-the-device-ca-certificate"></a>设置设备 CA 证书
+
+所有 IoT Edge 的网关都需要在其上安装设备 CA 证书。 IoT Edge 安全守护程序使用 IoT Edge 设备 CA 证书为工作负载 CA 证书签名，而工作负载 CA 证书又为 IoT Edge 中心的服务器证书签名。 在连接启动期间，网关将其服务器证书提供给下游设备。 下游设备将进行检查，确保服务器证书是汇总到根 CA 证书的证书链的一部分。 此过程允许下游设备确认网关是否来自受信任的源。 有关详细信息，请参阅[了解 Azure IoT Edge 如何使用证书](iot-edge-certs.md)。
 
 ![网关证书设置](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
-网关连接的初始化期间显示其 IoT Edge 设备到下游设备的 CA 证书。 下游设备检查以确保 IoT Edge 设备 CA 证书由所有者 CA 证书签名。 此过程允许下游设备确认网关是否来自受信任的源。
+根 CA 证书和设备 CA 证书（及其私钥）必须位于 IoT Edge 网关设备上，并在 IoT Edge yaml 文件中配置。 请记住，在这种情况下，*根 CA 证书*表示此 IoT Edge 方案的最顶层证书颁发机构。 网关设备 CA 证书和下游设备证书需要汇总到相同的根 CA 证书。
 
-以下步骤将演示创建证书并将它们安装在正确位置的过程。
+>[!TIP]
+>在[IoT Edge 设备上管理证书](how-to-manage-device-certificates.md)中更详细地介绍了在 IoT Edge 设备上安装根 ca 证书和设备 CA 证书的过程。
 
-## <a name="prerequisites"></a>必备组件
+准备好以下文件：
 
-要配置为网关的 Azure IoT Edge 设备。 对于以下操作系统中使用 IoT Edge 安装步骤：
-* [Windows](./how-to-install-iot-edge-windows.md)
-* [Linux x64](./how-to-install-iot-edge-linux.md)
-* [Linux ARM32](./how-to-install-iot-edge-linux-arm.md)
+* 根 CA 证书
+* 设备 CA 证书
+* 设备 CA 私钥
 
-可以使用任一计算机生成证书，然后将其复制到 IoT Edge 设备。
+对于生产方案，你应该用自己的证书颁发机构生成这些文件。 对于开发和测试方案，可以使用演示证书。
 
->[!NOTE]
->在此说明中用于创建证书的“网关名称”必须与 IoT Edge 的 config.yaml 文件中用作主机名的名称以及在下游设备的连接字符串中用作 GatewayHostName 的名称相同。 “网关名称”必须能够解析成 IP 地址，不管是使用 DNS 还是主机文件条目。 必须能够在下游设备和透明 IoT Edge 之间进行基于所使用协议 (MQTTS:8883/AMQPS:5671/HTTPS:433) 的通信。 如果中间有防火墙，则需打开相应的端口。
+1. 如果使用的是演示证书，请使用以下一组步骤来创建文件：
+   1. [创建根 CA 证书](how-to-create-test-certificates.md#create-root-ca-certificate)。 在这些说明结束时，你将拥有一个根 CA 证书文件：
+      * `<path>/certs/azure-iot-test-only.root.ca.cert.pem`.
 
-## <a name="generate-certificates-with-windows"></a>在 Windows 中生成证书
+   2. [创建 IoT Edge 设备 CA 证书](how-to-create-test-certificates.md#create-iot-edge-device-ca-certificates)。 在这些说明结束时，你将拥有两个文件：一个设备 CA 证书及其私钥：
+      * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem`与
+      * `<path>/private/iot-edge-device-<cert name>.key.pem`
 
-使用本部分中的步骤在 Windows 设备上生成测试证书。 这些步骤可用于生成 Windows IoT Edge 设备上的证书。 或者，可以在 Windows 开发计算机上生成的证书，然后将它们复制到任何 IoT Edge 设备。 
+2. 如果在其他计算机上创建了这些文件，请将它们复制到 IoT Edge 设备上。
 
-在本部分中生成的证书仅用于测试目的。 
-
-### <a name="install-openssl"></a>安装 OpenSSL
-
-在用于生成证书的计算机上安装 OpenSSL for Windows。 可通过多种方法安装 OpenSSL：
-
-   >[!NOTE]
-   >如果已在 Windows 设备上安装 OpenSSL，则可以跳过此步骤，但请确保 PATH 环境变量中包含 openssl.exe。
-
-* **更轻松：** 下载并安装任何[第三方 OpenSSL 二进制文件](https://wiki.openssl.org/index.php/Binaries)，例如从 [SourceForge 上的此项目](https://sourceforge.net/projects/openssl/)下载并安装。 将 openssl.exe 的完整路径添加到 PATH 环境变量。 
-   
-* **推荐：** 在计算机上下载 OpenSSL 源代码并自行生成二进制文件，或者通过 [vcpkg](https://github.com/Microsoft/vcpkg) 生成。 下面列出的说明使用 vcpkg 下载源代码，并在 Windows 计算机上编译和安装 OpenSSL，所用的步骤都很简单。
-
-   1. 导航到要安装 vcpkg 的目录。 我们将此目录称作 *\<VCPKGDIR>*。 按照说明下载并安装 [vcpkg](https://github.com/Microsoft/vcpkg)。
-   
-   2. 安装 vcpkg 后，在 powershell 提示符下运行以下命令以安装适用于 Windows x64 的 OpenSSL 包。 此安装通常需要大约 5 分钟才能完成。
-
-      ```powershell
-      .\vcpkg install openssl:x64-windows
-      ```
-   3. 将 `<VCPKGDIR>\installed\x64-windows\tools\openssl` 添加到 PATH 环境变量，以便可以调用 openssl.exe 文件。
-
-### <a name="prepare-creation-scripts"></a>准备创建脚本
-
-适用于 C 的 Azure IoT 设备 SDK 包含可用于生成测试证书的脚本。 在本部分，我们将克隆该 SDK 并配置 PowerShell。
-
-1. 在管理员模式下打开 PowerShell 窗口。 
-
-2. 克隆包含用于生成非生产证书的脚本的 git 存储库。 这些脚本可帮助创建必要的证书来设置透明网关。 使用 `git clone` 命令或[下载 ZIP](https://github.com/Azure/azure-iot-sdk-c/archive/master.zip)。 
-
-   ```powershell
-   git clone https://github.com/Azure/azure-iot-sdk-c.git
-   ```
-
-3. 导航到要在其中工作的目录。 我们将此目录称作 *\<WRKDIR>*。  所有文件都将在此目录中创建。
-
-4. 将配置文件和脚本文件复制到工作目录中。 
-
-   ```powershell
-   copy <path>\azure-iot-sdk-c\tools\CACertificates\*.cnf .
-   copy <path>\azure-iot-sdk-c\tools\CACertificates\ca-certs.ps1 .
-   ```
-
-   如果下载了 ZIP 格式的 SDK，则文件夹名称为 `azure-iot-sdk-c-master`，路径的剩余部分相同。 
-
-5. 将环境变量 OPENSSL_CONF 设置为使用 openssl_root_ca.cnf 配置文件。
-
-    ```powershell
-    $env:OPENSSL_CONF = "$PWD\openssl_root_ca.cnf"
-    ```
-
-6. 启用 PowerShell 以运行脚本。
-
-   ```powershell
-   Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
-   ```
-
-7. 将脚本使用的函数放入 PowerShell 全局命名空间中。
-   
-   ```powershell
-   . .\ca-certs.ps1
-   ```
-
-8. 验证 OpenSSL 是否已正确安装，并确保现有的证书不会发生名称冲突。 如果出现问题，脚本应说明如何在系统上修复这些问题。
-
-   ```powershell
-   Test-CACertsPrerequisites
-   ```
-
-### <a name="create-certificates"></a>创建证书
-
-在本部分，我们将创建三个证书，然后将它们连接起来以形成一个链。 将证书放入链文件可在 IoT Edge 网关设备和任何下游设备上轻松安装这些证书。  
-
-1. 创建所有者 CA 证书，并使用它来签署一个中间证书。 所有证书都位于 *\<WRKDIR>* 中。
-
-      ```powershell
-      New-CACertsCertChain rsa
-      ```
-
-2. 使用以下命令创建 IoT Edge 设备的 CA 证书和私钥。 提供网关设备的名称，在生成证书期间，此名称将用来为文件命名。 
-
-   ```powershell
-   New-CACertsEdgeDevice "<gateway name>"
-   ```
-
-3. 从所有者 CA 证书、 中间证书和 IoT Edge 设备 CA 证书，使用以下命令创建证书链。 
-
-   ```powershell
-   Write-CACertsCertificatesForEdgeDevice "<gateway name>"
-   ```
-
-   该脚本创建以下证书和密钥：
-   * `<WRKDIR>\certs\new-edge-device.*`
-   * `<WRKDIR>\private\new-edge-device.key.pem`
-   * `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
-
-## <a name="generate-certificates-with-linux"></a>在 Linux 中生成证书
-
-使用本部分中的步骤在 Linux 设备上生成测试证书。 可以在 IoT Edge 设备本身上生成证书，或使用独立的计算机，并将最终的证书复制到运行任何受支持操作系统的任何 IoT Edge 设备。 
-
-### <a name="prepare-creation-scripts"></a>准备创建脚本
-
-1. 克隆包含用于生成非生产证书的脚本的 git 存储库。 这些脚本可帮助创建必要的证书来设置透明网关。 
-
-   ```bash
-   git clone https://github.com/Azure/azure-iot-sdk-c.git
-   ```
-
-2. 导航到要在其中工作的目录。 我们将此目录称作 *\<WRKDIR>*。  所有文件都将在此目录中创建。
-  
-3. 将配置文件和脚本文件复制到工作目录中。
-
-   ```bash
-   cp <path>/azure-iot-sdk-c/tools/CACertificates/*.cnf .
-   cp <path>/azure-iot-sdk-c/tools/CACertificates/certGen.sh .
-   ```
-
-4. 将 OpenSSL 配置为使用提供的脚本生成证书。 
-
-   ```bash
-   chmod 700 certGen.sh 
-   ```
-
-### <a name="create-certificates"></a>创建证书
-
-在本部分，我们将创建三个证书，然后将它们连接起来以形成一个链。 将证书放入链文件可在 IoT Edge 网关设备和任何下游设备上轻松安装这些证书。  
-
-1. 创建所有者 CA 证书和一个中间证书。 这些证书位于 *\<WRKDIR>* 中。
-
-   ```bash
-   ./certGen.sh create_root_and_intermediate
-   ```
-
-   该脚本创建以下证书和密钥：
-   * `<WRKDIR>/certs/azure-iot-test-only.root.ca.cert.pem`
-   * `<WRKDIR>/certs/azure-iot-test-only.intermediate.cert.pem`
-   * `<WRKDIR>/private/azure-iot-test-only.root.ca.key.pem`
-   * `<WRKDIR>/private/azure-iot-test-only.intermediate.key.pem`
-
-2. 使用以下命令创建 IoT Edge 设备的 CA 证书和私钥。 提供网关设备的名称，在生成证书期间，此名称将用来为文件命名。 
-
-   ```bash
-   ./certGen.sh create_edge_device_certificate "<gateway name>"
-   ```
-
-   该脚本创建以下证书和密钥：
-   * `<WRKDIR>/certs/new-edge-device.*`
-   * `<WRKDIR>/private/new-edge-device.key.pem`
-
-3. 创建名为的证书链**新的 edge 的设备的完整-chain.cert.pem**从所有者 CA 证书、 中间证书和 IoT Edge 设备 CA 证书。
-
-   ```bash
-   cat ./certs/new-edge-device.cert.pem ./certs/azure-iot-test-only.intermediate.cert.pem ./certs/azure-iot-test-only.root.ca.cert.pem > ./certs/new-edge-device-full-chain.cert.pem
-   ```
-
-## <a name="install-certificates-on-the-gateway"></a>在网关上安装证书
-
-创建证书链后，需要在 IoT Edge 网关设备上安装它，并将 IoT Edge 运行时配置为引用新证书。 
-
-1. 复制 *\<WRKDIR>* 中的以下文件。 将其保存在 IoT Edge 设备上的任意位置。 我们将 IoT Edge 设备上的目标目录称作 *\<CERTDIR>*。 
-
-   如果生成 IoT Edge 设备本身上的证书，则可以跳过此步骤并使用工作目录的路径。
-
-   * 设备 CA 证书 - `<WRKDIR>\certs\new-edge-device-full-chain.cert.pem`
-   * 设备 CA 私钥 - `<WRKDIR>\private\new-edge-device.key.pem`
-   * 所有者 CA - `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
-
-2. 打开 IoT Edge 安全守护程序配置文件。 
-
+3. 在 IoT Edge 设备上，打开安全守护程序配置文件。
    * Windows：`C:\ProgramData\iotedge\config.yaml`
    * Linux：`/etc/iotedge/config.yaml`
 
-3. 将 config.yaml 文件中的 **certificate** 属性设置为 IoT Edge 设备上放置证书和密钥文件的路径。
+4. 查找文件的 "**证书**" 部分，并将三个文件的文件 uri 作为以下属性的值提供：
+   * **device_ca_cert**：设备 ca 证书
+   * **device_ca_pk**：设备 ca 私钥
+   * **trusted_ca_certs**：根 ca 证书
 
-   * Windows:
+5. 保存并关闭该文件。
 
-      ```yaml
-      certificates:
-        device_ca_cert: "<CERTDIR>\\certs\\new-edge-device-full-chain.cert.pem"
-        device_ca_pk: "<CERTDIR>\\private\\new-edge-device.key.pem"
-        trusted_ca_certs: "<CERTDIR>\\certs\\azure-iot-test-only.root.ca.cert.pem"
-      ```
-   
-   * Linux： 
-      ```yaml
-      certificates:
-        device_ca_cert: "<CERTDIR>/certs/new-edge-device-full-chain.cert.pem"
-        device_ca_pk: "<CERTDIR>/private/new-edge-device.key.pem"
-        trusted_ca_certs: "<CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem"
-      ```
+6. 重新启动 IoT Edge。
+   * Windows：`Restart-Service iotedge`
+   * Linux：`sudo systemctl restart iotedge`
 
-4. 在 Linux 设备，请确保用户**iotedge**已读取将证书保存目录的权限。 
+## <a name="deploy-edgehub-to-the-gateway"></a>将 edgeHub 部署到网关
 
-## <a name="deploy-edgehub-to-the-gateway"></a>将 EdgeHub 部署到网关
+首次在设备上安装 IoT Edge 时，只会自动启动一个系统模块，即 IoT Edge 代理。 为设备创建第一个部署后，还会启动第二个系统模块 IoT Edge 集线器。
 
-首次在设备上安装 IoT Edge，只有一个系统模块会自动启动： IoT Edge 代理。 要使设备充当网关，需要两个系统模块。 如果你尚未部署到网关设备之前的所有模块，创建你的设备以开始第二个系统模块的 IoT Edge 中心的部署。 该部署看上去是空的，因为尚未在向导中添加任何模块，但它会部署这两个系统模块。 
+IoT Edge 中心负责接收来自下游设备的传入消息，并将它们路由到下一个目标。 如果 **edgeHub** 模块未在设备上运行，请为设备创建一个初始部署。 该部署看上去是空的，因为尚未添加任何模块，但它会确保运行这两个系统模块。
 
-可以使用 `iotedge list` 命令检查哪些模块正在设备上运行。
+可通过以下方式检查设备上正在运行的模块：在 Azure 门户中检查设备详细信息，在 Visual Studio 或 Visual Studio Code 中查看设备状态，或在该设备上运行命令 `iotedge list`。
+
+如果 **edgeAgent** 模块在没有 **edgeHub** 模块的情况下运行，请执行以下步骤：
 
 1. 在 Azure 门户中导航到 IoT 中心。
 
-2. 转到“IoT Edge”并选择要用作网关的 IoT Edge 设备。
+2. 转到“IoT Edge”并选择要用作网关的 IoT Edge 设备  。
 
-3. 选择“设置模块”。
+3. 选择“设置模块”  。
 
-4. 选择“**下一步**”。
+4. 选择 "**下一步：路由**"。
 
-5. 在“指定路由”页中，应有一个默认路由可将来自所有模块的所有消息发送到 IoT 中心。 如果没有，请添加以下代码，然后选择“下一步”。
+5. 在 "**路由**" 页上，应该有一个默认路由，该路由将所有消息从模块或下游设备发送到 IoT 中心。 否则，请使用以下值添加新的路由，然后选择 "**查看 + 创建**"：
+   * **名称**：`route`
+   * **值**：`FROM /messages/* INTO $upstream`
 
-   ```JSON
-   {
-       "routes": {
-           "route": "FROM /* INTO $upstream"
-       }
-   }
-   ```
+6. 在 "**查看**" 和 "创建" 页上，选择 "**创建**"。
 
-6. 在“审阅模板”页中选择“提交”。
+## <a name="open-ports-on-gateway-device"></a>在网关设备上打开端口
 
-## <a name="open-ports-on-gateway-device"></a>网关设备上打开端口
+标准 IoT Edge 设备不需要任何入站连接便可工作，因为与 IoT 中心之间的所有通信都是通过出站连接执行的。 网关设备则不同，因为它们需要从其下游设备接收消息。 如果下游设备与网关设备之间有防火墙，则也需要能够通过防火墙进行通信。
 
-标准的 IoT Edge 设备不需要任何入站的连接到函数，因为与 IoT 中心的所有通信均都通过出站连接。 但是，网关设备则不同，因为它们需要能够从其下游设备接收消息。
+要使网关方案能够正常工作，必须为来自下游设备的入站流量打开 IoT Edge 中心的至少一个受支持协议。 受支持的协议包括 MQTT、AMQP、HTTPS、基于 WebSocket 的 MQTT 和基于 Websocket 的 AMQP。
 
-若要运行的网关方案，在至少一个 IoT Edge 中心支持的协议必须打开从下游设备的入站流量。 支持的协议为 MQTT、 AMQP 和 HTTPS。
-
-| 端口 | Protocol |
+| 端口 | 协议 |
 | ---- | -------- |
 | 8883 | MQTT |
 | 5671 | AMQP |
-| 443 | HTTPS <br> MQTT+WS <br> AMQP+WS | 
+| 443 | HTTPS <br> MQTT+WS <br> AMQP+WS |
 
 ## <a name="route-messages-from-downstream-devices"></a>路由来自下游设备的消息
-IoT Edge 运行时可以像模块发送的消息一样路由从下游设备发送的消息。 此功能，可将任何数据发送到云之前在网关上运行模块中执行分析。 
 
-目前，对由下游设备发送的消息进行路由的方式是将它们与由模块发送的消息区分开来。 由模块发送的消息全都包含名为“connectionModuleId”的系统属性，但由下游设备发送的消息则不包含此属性。 可以使用路由的 WHERE 子句以排除包含该系统属性的任何消息。 
+IoT Edge 运行时可以像模块发送的消息一样路由从下游设备发送的消息。 使用此功能可将任何数据发送到云之前在网关上运行的模块中执行分析。
 
-以下路由将用于将消息从任何下游设备发送到模块名称 `ai_insights`。
+目前，对由下游设备发送的消息进行路由的方式是将它们与由模块发送的消息区分开来。 由模块发送的消息全都包含名为“connectionModuleId”的系统属性，但由下游设备发送的消息则不包含此属性。  可以使用路由的 WHERE 子句以排除包含该系统属性的任何消息。
+
+以下示例路由可将消息从任何下游设备发送到名为 `ai_insights` 的模块，然后从 `ai_insights` 发送到 IoT 中心。
 
 ```json
 {
     "routes":{
-        "sensorToAIInsightsInput1":"FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO BrokeredEndpoint(\"/modules/ai_insights/inputs/input1\")", 
-        "AIInsightsToIoTHub":"FROM /messages/modules/ai_insights/outputs/output1 INTO $upstream" 
-    } 
+        "sensorToAIInsightsInput1":"FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO BrokeredEndpoint(\"/modules/ai_insights/inputs/input1\")",
+        "AIInsightsToIoTHub":"FROM /messages/modules/ai_insights/outputs/output1 INTO $upstream"
+    }
 }
 ```
 
 有关消息路由的详细信息，请参阅[部署模块和建立路由](./module-composition.md#declare-routes)。
 
-[!INCLUDE [iot-edge-extended-ofline-preview](../../includes/iot-edge-extended-offline-preview.md)]
+## <a name="enable-extended-offline-operation"></a>启用扩展脱机操作
+
+从 IoT Edge 运行时的[1.0.4 版本](https://github.com/Azure/azure-iotedge/releases/tag/1.0.4)开始，可以为连接到它的网关设备和下游设备配置扩展脱机操作。
+
+借助此功能，本地模块或下游设备可根据需要向 IoT Edge 设备重新进行身份验证，即使与 IoT 中心断开连接也可使用消息和方法相互进行通信。 有关详细信息，请参阅[了解 IoT Edge 设备、模块和子设备的扩展脱机功能](offline-capabilities.md)。
+
+若要启用扩展脱机功能，请在 IoT Edge 网关设备和要与之连接的下游设备之间建立父子关系。 本系列的下一篇文章中详细介绍了这些步骤，并对[Azure IoT 中心的下游设备进行身份验证](how-to-authenticate-downstream-device.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置一个充当透明网关的 IoT Edge 设备后，需将下游设备配置为信任该网关，并向其发送消息。 有关详细信息，请参阅[将下游设备连接到 Azure IoT Edge 网关](how-to-connect-downstream-device.md)。
+现在，你已将 IoT Edge 设备设置为透明网关，你需要将下游设备配置为信任该网关，并向其发送消息。 继续[在 Azure IoT 中心内对下游设备进行身份验证](how-to-authenticate-downstream-device.md)，以进行设置透明网关方案的后续步骤。

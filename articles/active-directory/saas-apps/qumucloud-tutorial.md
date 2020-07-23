@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 760aef6931cdd283382d72ae6de5e0865c95284c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2a772dfb1fb30e9de93afa91bd0485147029d88e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716176"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67093221"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qumu-cloud"></a>教程：Azure Active Directory 与 Qumu Cloud 集成
 
@@ -104,7 +104,7 @@ ms.locfileid: "64716176"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
 
     ![Qumu Cloud 域和 URL 单一登录信息](common/idp-intiated.png)
 
@@ -112,7 +112,7 @@ ms.locfileid: "64716176"
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<subdomain>.qumucloud.com/saml/SSO`
 
-5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
+5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     ![Qumu Cloud 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
@@ -121,11 +121,11 @@ ms.locfileid: "64716176"
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Qumu Cloud 客户端支持团队](mailto:support@qumu.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-6. Qumu Cloud 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框   。
+6. Qumu Cloud 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框。  
 
     ![image](common/edit-attribute.png)
 
-7. 除上述属性以外，Qumu Cloud 应用程序还要求在 SAML 响应中传回其他几个属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
+7. 除上述属性以外，Qumu Cloud 应用程序还要求在 SAML 响应中传回其他几个属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
     | 名称 | 源属性|
     | ---------------| --------------- |    
@@ -134,11 +134,11 @@ ms.locfileid: "64716176"
     | urn:oid:0.9.2342.19200300.100.1.3 | user.mail |
     | urn:oid:0.9.2342.19200300.100.1.1 | user.userprincipalname |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”  以打开“管理用户声明”  对话框。
+    a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![图像](common/new-save-attribute.png)
+    ![image](common/new-save-attribute.png)
 
-    ![图像](common/new-attribute-details.png)
+    ![image](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
@@ -166,7 +166,7 @@ ms.locfileid: "64716176"
 
 ### <a name="configure-qumu-cloud-single-sign-on"></a>配置 Qumu Cloud 单一登录
 
-若要在 **Qumu Cloud** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Qumu Cloud 支持团队](mailto:support@qumu.com)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Qumu Cloud** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Qumu Cloud 支持团队](mailto:support@qumu.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -186,7 +186,7 @@ ms.locfileid: "64716176"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -208,7 +208,7 @@ ms.locfileid: "64716176"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

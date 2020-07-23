@@ -1,5 +1,5 @@
 ---
-title: 如何在 Azure VM 上将 Azure 资源的托管标识与 Azure SDK 配合使用
+title: 使用 Azure Sdk 通过 Azure VM 使用托管标识-Azure AD
 description: 将 Azure SDK 与具有 Azure 资源的托管标识的 Azure VM 配合使用的代码示例。
 services: active-directory
 documentationcenter: ''
@@ -9,25 +9,24 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00c86562e0fdb4e6d62d44088b7aba08e45e22a4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 8edcf144aceb96092bd92690533e1bdd03450896
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60293228"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608426"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-with-azure-sdks"></a>如何在 Azure VM 上将 Azure 资源的托管标识与 Azure SDK 配合使用 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
 本文提供了 SDK 示例的列表，这些示例演示了如何使用其各自 Azure SDK 对 Azure 资源的托管标识的支持。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -42,7 +41,7 @@ ms.locfileid: "60293228"
 | .NET Core       | [使用 Azure 资源的托管标识从 Linux VM 调用 Azure 服务](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/) |
 | Node.js         | [使用 Azure 资源的托管标识管理资源](https://azure.microsoft.com/resources/samples/resources-node-manage-resources-with-msi/) |
 | Python          | [使用 Azure 资源的托管标识简单从 VM 内部进行身份验证](https://azure.microsoft.com/resources/samples/resource-manager-python-manage-resources-with-msi/) |
-| Ruby            | [从启用了 Azure 资源的托管标识的 VM 中管理资源](https://azure.microsoft.com/resources/samples/resources-ruby-manage-resources-with-msi/) |
+| Ruby            | [从启用了 Azure 资源的托管标识的 VM 中管理资源](https://github.com/Azure-Samples/resources-ruby-manage-resources-with-msi/) |
 
 ## <a name="next-steps"></a>后续步骤
 

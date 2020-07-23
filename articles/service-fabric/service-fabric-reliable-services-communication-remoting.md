@@ -1,25 +1,16 @@
 ---
-title: 在 Service Fabric 中使用 C# 进行服务远程处理 | Microsoft Docs
+title: 在 Service Fabric 中使用 C# 进行服务远程处理
 description: Service Fabric 远程处理允许客户端和服务使用远程过程调用来与 C# 服务进行通信。
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: BharatNarasimman
-ms.assetid: abfaf430-fea0-4974-afba-cfc9f9f2354b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: f9cd6e2fee738d2d42c790b4eb7b9a876a44b01d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a3f19d1240c2dcf1e62d5723c40b4f7c8b2154f0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60772969"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253280"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>通过 Reliable Services 使用 C# 进行服务远程处理
 
@@ -29,14 +20,14 @@ ms.locfileid: "60772969"
 >
 >
 
-对于不依赖于特定的通信协议或堆栈的服务，如 Web API、Windows Communication Foundation 或其他服务，Reliable Services 框架提供一种远程处理机制，以便快速而轻松地为这些服务设置远程过程调用。 本文讨论了如何为使用 C# 编写的服务设置远程过程调用。
+对于不依赖于特定通信协议或堆栈的服务，如 Web API、Windows Communication Foundation 或其他服务，Reliable Services 框架提供一种远程处理机制，用于快速而轻松地为服务设置远程过程调用。 本文讨论了如何为使用 C# 编写的服务设置远程过程调用。
 
 ## <a name="set-up-remoting-on-a-service"></a>为服务设置远程处理
 
-可通过两个简单步骤为服务设置远程处理：
+可以通过两个简单的步骤为服务设置远程处理：
 
-1. 为服务创建要实现的接口。 此接口定义可供服务的远程过程调用使用的方法。 这些方法必须是返回任务的异步方法。 此接口必须实现 `Microsoft.ServiceFabric.Services.Remoting.IService` 以表明此服务具有远程处理接口。
-2. 在服务中使用远程处理侦听器。 远程侦听器是提供远程处理功能的 `ICommunicationListener` 实现。 `Microsoft.ServiceFabric.Services.Remoting.Runtime` 命名空间包含一个同时适用于无状态服务和有状态服务的扩展方法 `CreateServiceRemotingListener`，可用于创建使用默认远程处理传输协议的远程处理侦听器。
+1. 为服务创建要实现的接口。 此接口定义可供服务的远程过程调用使用的方法。 这些方法必须是返回任务的异步方法。 接口必须实现 `Microsoft.ServiceFabric.Services.Remoting.IService` 以表明此服务具有远程处理接口。
+2. 在服务中使用远程处理侦听器。 远程处理侦听器是可以提供远程处理功能的 `ICommunicationListener` 实现。 `Microsoft.ServiceFabric.Services.Remoting.Runtime` 命名空间包含一个同时适用于无状态服务和有状态服务的扩展方法 `CreateServiceRemotingInstanceListeners`，可用于创建使用默认远程处理传输协议的远程处理侦听器。
 
 >[!NOTE]
 >`Remoting` 命名空间可用作名为 `Microsoft.ServiceFabric.Services.Remoting` 的单独 NuGet 包。
@@ -74,7 +65,7 @@ class MyService : StatelessService, IMyService
 ```
 
 > [!NOTE]
-> 服务接口中的参数和返回类型可以是任何简单、复杂或自定义的类型，但它们必须能够由 .NET [DataContractSerializer](https://msdn.microsoft.com/library/ms731923.aspx) 序列化。
+> 服务接口中的参数和返回类型可以是任何简单、复杂或自定义的类型，但它们必须是可以通过 .NET [DataContractSerializer](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer) 序列化的类型。
 >
 >
 
@@ -94,31 +85,31 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ## <a name="service-proxy-lifetime"></a>服务代理生存期
 
-由于服务代理创建是轻量型操作，因此可根据需求随意创建，数目不限。 如有需要，可重复使用服务代理实例。 如果远程过程调用引发了异常，仍可以重复使用相同的代理实例。 每个服务代理包含用于通过线路发送消息的通信客户端。 进行远程调用时，会在内部执行检查，以确认通信客户端是否有效。 根据这些检查的结果，将创建通信客户端（如有必要）。 因此，如果发生异常，无需重新创建 `ServiceProxy`。
+由于创建服务代理是轻量型操作，因此可根据需求随意创建，数目不限。 如有需要，可重复使用服务代理实例。 如果远程过程调用引发了异常，仍可以重复使用相同的代理实例。 每个服务代理都包含用于通过线路发送消息的通信客户端。 进行远程调用时，会在内部执行检查，以确认通信客户端是否有效。 可以根据这些检查的结果，视需要重新创建通信客户端。 因此，如果发生异常，无需重新创建 `ServiceProxy`。
 
 ### <a name="service-proxy-factory-lifetime"></a>服务代理工厂生存期
 
-[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) 是为不同远程接口创建代理实例的工厂。 如果使用 API `ServiceProxyFactory.CreateServiceProxy` 创建代理，则框架将创建单一实例服务代理。
-在需要替代 [IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) 属性时，手动创建一个 ServiceProxyFactory 是有用的。
+[ServiceProxyFactory](/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) 是为不同远程接口创建代理实例的工厂。 如果使用 API `ServiceProxyFactory.CreateServiceProxy` 来创建代理，则框架会创建单一实例服务代理。
+在需要替代 [IServiceRemotingClientFactory](/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) 属性时，手动创建一个 ServiceProxyFactory 是有用的。
 工厂创建是一项代价高昂的操作。 服务代理工厂维护通信客户端的内部缓存。
 最佳做法是尽可能久地缓存服务代理工厂。
 
 ## <a name="remoting-exception-handling"></a>远程异常处理
 
-服务 API 引发的所有远程异常都将作为 AggregateException 发送回客户端。 远程异常应该可由 DataContract 序列化。 否则，代理 API 将引发 [ServiceException](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.communication.serviceexception) 并在其中返回序列化错误。
+服务 API 引发的所有远程异常都将作为 AggregateException 发送回客户端。 远程异常应该可以通过 DataContract 来序列化。 否则，代理 API 会引发 [ServiceException](/dotnet/api/microsoft.servicefabric.services.communication.serviceexception)，其中包含序列化错误。
 
-服务代理对为其创建的服务分区，处理所有故障转移异常。 如果存在故障转移异常（非暂时异常），它将重新解析终结点，并通过正确的终结点重试调用。 故障转移异常的重试次数无限。
+对于创建服务代理时所使用的服务分区，服务代理会处理其所有的故障转移异常。 如果存在故障转移异常（非暂时异常），它将重新解析终结点，并通过正确的终结点重试调用。 故障转移异常的重试次数无限。
 如果发生暂时性异常，代理会重试调用。
 
-默认重试参数由 [OperationRetrySettings](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings) 提供。
+默认重试参数由 [OperationRetrySettings](/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings) 提供。
 
 用户可以通过将 OperationRetrySettings 对象传递给 ServiceProxyFactory 构造函数来配置这些值。
 
 ## <a name="use-the-remoting-v2-stack"></a>使用远程处理 V2 堆栈
 
-从 NuGet 远程处理包版本 2.8 开始，可以通过相应的选项来使用远程处理 V2 堆栈。 远程处理 V2 堆栈的性能更好。 它还提供自定义序列化等功能和其他可插入的 API。
+从 NuGet 远程处理包版本 2.8 开始，可以通过相应的选项来使用远程处理 V2 堆栈。 远程处理 V2 堆栈性能更好， 并提供自定义序列化等功能和更多的可插入 API。
 模板代码使用的仍然是远程处理 V1 堆栈。
-远程处理 V2 与 V1（旧式远程处理堆栈）不兼容。 请遵照[从 V1 升级到 V2](#upgrade-from-remoting-v1-to-remoting-v2) 一文中的说明来避免对服务可用性的影响。
+远程处理 V2 与 V1（以前的远程处理堆栈）不兼容， 请按[从 V1 升级到 V2](#upgrade-from-remoting-v1-to-remoting-v2) 一文中的说明操作，避免影响服务可用性。
 
 以下方法可用来启用 V2 堆栈。
 
@@ -145,18 +136,18 @@ string message = await helloWorldClient.HelloWorldAsync();
     }
    ```
 
-3. 使用 `FabricTransportServiceRemotingProvider` 属性标记包含远程处理接口的程序集。
+3. 使用 `FabricTransportServiceRemotingProvider` 属性来标记包含远程处理接口的程序集。
 
    ```csharp
    [assembly: FabricTransportServiceRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2, RemotingClientVersion = RemotingClientVersion.V2)]
    ```
 
 不需要在客户端项目中更改代码。
-使用接口程序集生成客户端程序集，以确保使用上面显示的程序集属性。
+使用接口程序集生成客户端程序集，以确保使用前面显示的程序集属性。
 
-### <a name="use-explicit-v2-classes-to-use-the-v2-stack"></a>通过显式 V2 类使用 V2 堆栈
+### <a name="use-explicit-v2-classes-to-use-the-v2-stack"></a>通过显式 V2 类来使用 V2 堆栈
 
-作为使用程序集属性的替代方法，还可以通过使用显式 V2 类来启用 V2 堆栈。
+若要启用 V2 堆栈，还可以使用显式 V2 类，作为程序集属性的替代方法。
 
 以下步骤使用显式 V2 类将模板代码更改为使用 V2 堆栈。
 
@@ -170,7 +161,7 @@ string message = await helloWorldClient.HelloWorldAsync();
    </Resources>
    ```
 
-2. 在 `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` 命名空间中使用 [FabricTransportServiceRemotingListener](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotingListener?view=azure-dotnet)。
+2. 使用 `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` 命名空间中的 [FabricTransportServiceRemotingListener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet)。
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -186,7 +177,7 @@ string message = await helloWorldClient.HelloWorldAsync();
     }
    ```
 
-3. 在 `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` 命名空间中使用 [FabricTransportServiceRemotingClientFactory ](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) 创建客户端。
+3. 使用 `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` 命名空间中的 [FabricTransportServiceRemotingClientFactory ](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) 创建客户端。
 
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
@@ -197,7 +188,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ## <a name="upgrade-from-remoting-v1-to-remoting-v2"></a>从远程处理 V1 升级到远程处理 V2
 
-若要从 V1 升级到 V2，必须执行双步升级。 请按顺序执行以下步骤。
+若要从 V1 升级到 V2，必须执行双步升级。 请按以下顺序执行步骤。
 
 1. 使用以下属性将 V1 服务升级到 V2 服务。
 此项更改可确保服务在 V1 和 V2 侦听器上侦听。
@@ -220,13 +211,13 @@ string message = await helloWorldClient.HelloWorldAsync();
     }
     ```
 
-    c. 在远程处理接口上添加程序集属性，以使用 V1、V2 侦听器和 V2 客户端。
+    c. 在远程处理接口上添加程序集属性，以使用 V1 和 V2 侦听器以及 V2 客户端。
     ```csharp
     [assembly: FabricTransportServiceRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2|RemotingListenerVersion.V1, RemotingClientVersion = RemotingClientVersion.V2)]
 
       ```
 2. 使用 V2 客户端属性将 V1 客户端升级到 V2 客户端。
-此步骤可确保客户端使用 V2 堆栈。
+此步骤确保客户端使用 V2 堆栈。
 不需要在客户端项目/服务中进行更改。 使用更新的接口程序集生成客户端项目便已足够。
 
 3. 此步骤是可选的。 使用 V2 侦听器属性，然后升级 V2 服务。
@@ -237,14 +228,14 @@ string message = await helloWorldClient.HelloWorldAsync();
     ```
 
 
-## <a name="use-the-remoting-v2-interface-compatible-stack"></a>使用远程处理 V2（接口兼容）堆栈
+## <a name="use-the-remoting-v2-interface-compatible-stack"></a>使用远程处理 V2（与接口兼容）堆栈
 
- 远程处理 V2（接口兼容，称为 V2_1）堆栈具有 V2 远程处理堆栈的所有功能。 其接口堆栈与远程处理 V1 堆栈兼容，但不与 V2 和 V1 向后兼容。 若要从 V1 升级到 V2_1 且不影响服务可用性，请遵循“从 V1 升级到 V2（接口兼容）”一文中的步骤。
+ 远程处理 V2（与接口兼容，又称 V2_1）堆栈具有 V2 远程处理堆栈的所有功能。 其接口堆栈与远程处理 V1 堆栈兼容，但不后向兼容 V2 和 V1。 若要从 V1 升级到 V2_1 且不影响服务可用性，请遵循“从 V1 升级到 V2（接口兼容）”一文中的步骤。
 
 
-### <a name="use-an-assembly-attribute-to-use-the-remoting-v2-interface-compatible-stack"></a>通过程序集属性使用远程处理 V2（接口兼容）堆栈
+### <a name="use-an-assembly-attribute-to-use-the-remoting-v2-interface-compatible-stack"></a>通过程序集属性使用远程处理 V2（与接口兼容）堆栈
 
-执行以下步骤来改用 V2_1 堆栈。
+按照以下步骤更改到 V2_1 堆栈。
 
 1. 在服务清单中添加名为“ServiceEndpointV2_1”的终结点资源。
 
@@ -265,7 +256,7 @@ string message = await helloWorldClient.HelloWorldAsync();
     }
    ```
 
-3. 在远程处理接口上添加一个[程序集属性](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet)。
+3. 在远程处理接口上添加[程序集属性](/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet)。
 
    ```csharp
     [assembly:  FabricTransportServiceRemotingProvider(RemotingListenerVersion=  RemotingListenerVersion.V2_1, RemotingClientVersion= RemotingClientVersion.V2_1)]
@@ -273,11 +264,11 @@ string message = await helloWorldClient.HelloWorldAsync();
    ```
 
 不需要在客户端项目中进行更改。
-使用接口程序集生成客户端程序集，以确保使用上述程序集属性。
+使用接口程序集生成客户端程序集，以确保使用的是以前的程序集属性。
 
-### <a name="use-explicit-remoting-classes-to-create-a-listenerclient-factory-for-the-v2-interface-compatible-version"></a>使用显式远程处理类为 V2（接口兼容）版本创建侦听器/客户端工厂。
+### <a name="use-explicit-remoting-classes-to-create-a-listenerclient-factory-for-the-v2-interface-compatible-version"></a>使用显式远程处理类为 V2（与接口兼容）版本创建侦听器/客户端工厂
 
-执行以下步骤:
+执行以下步骤：
 
 1. 在服务清单中添加名为“ServiceEndpointV2_1”的终结点资源。
 
@@ -289,7 +280,7 @@ string message = await helloWorldClient.HelloWorldAsync();
    </Resources>
    ```
 
-2. 使用[远程处理 V2 侦听器](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet)。 使用的默认服务终结点资源名称为“ServiceEndpointV2_1”。 必须在服务清单中定义此名称。
+2. 使用[远程处理 V2 侦听器](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet)。 使用的默认服务终结点资源名称为“ServiceEndpointV2_1”。 必须在服务清单中定义该名称。
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -307,7 +298,7 @@ string message = await helloWorldClient.HelloWorldAsync();
     }
    ```
 
-3. 使用 V2 [客户端工厂](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet)。
+3. 使用 V2 [客户端工厂](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet)。
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
           {
@@ -317,9 +308,14 @@ string message = await helloWorldClient.HelloWorldAsync();
           });
    ```
 
-## <a name="upgrade-from-remoting-v1-to-remoting-v2-interface-compatible"></a>从远程处理 V1 升级到远程处理 V2（接口兼容）
+## <a name="upgrade-from-remoting-v1-to-remoting-v2-interface-compatible"></a>从远程处理 V1 升级到远程处理 V2（与接口兼容）。
 
-若要从 V1 升级到 V2（接口兼容，称为 V2_1），必须执行双步升级。 请按顺序执行以下步骤。
+若要从 V1 升级到 V2（与接口兼容，称为 V2_1），必须执行双步升级。 请按以下顺序执行步骤。
+
+> [!NOTE]
+> 从 V1 升级到 V2 时，请确保更新 `Remoting` 命名空间以使用 V2。 示例：'Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client`
+>
+>
 
 1. 使用以下属性将 V1 服务升级到 V2_1 服务。
 此项更改可确保服务在 V1 和 V2_1 侦听器上侦听。
@@ -360,11 +356,11 @@ string message = await helloWorldClient.HelloWorldAsync();
   
 ### <a name="use-custom-serialization-with-a-remoting-wrapped-message"></a>在远程处理包装消息中使用自定义序列化
 
-对于远程处理包装消息，我们将创建一个包装对象，并将所有参数作为其中的一个字段。
-执行以下步骤:
+对于远程处理包装消息，我们会创建一个包装对象，并将所有参数作为其中的一个字段。
+执行以下步骤：
 
 1. 实现 `IServiceRemotingMessageSerializationProvider` 接口，以提供自定义序列化的实现。
-    此代码片段演示该实现的大致形式。
+    以下代码片段演示了具体如何实现。
 
       ```csharp
       public class ServiceRemotingJsonSerializationProvider : IServiceRemotingMessageSerializationProvider
@@ -525,7 +521,7 @@ string message = await helloWorldClient.HelloWorldAsync();
     }
     ```
 
-2. 使用远程处理侦听器的 `JsonSerializationProvider` 重写默认序列化提供程序。
+2. 使用远程处理侦听器的 `JsonSerializationProvider` 重写默认的序列化提供程序。
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -541,7 +537,7 @@ string message = await helloWorldClient.HelloWorldAsync();
    }
    ```
 
-3. 使用远程处理客户端工厂的 `JsonSerializationProvider` 重写默认序列化提供程序。
+3. 使用远程处理客户端工厂的 `JsonSerializationProvider` 重写默认的序列化提供程序。
 
     ```csharp
     var proxyFactory = new ServiceProxyFactory((c) =>
@@ -553,6 +549,6 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Reliable Services 中使用 OWIN 的 Web API](service-fabric-reliable-services-communication-webapi.md)
-* [Reliable Services 的 Windows Communication Foundation 通信](service-fabric-reliable-services-communication-wcf.md)
+* [Reliable Services 中使用 OWIN 的 Web API](./service-fabric-reliable-services-communication-aspnetcore.md)
+* [通过 Reliable Services 进行 Windows Communication Foundation 通信](service-fabric-reliable-services-communication-wcf.md)
 * [确保 Reliable Services 的通信安全](service-fabric-reliable-services-secure-communication.md)

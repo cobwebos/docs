@@ -3,22 +3,19 @@ title: Azure 数据工厂 - 常见问题解答
 description: 有关 Azure 数据工厂的常见问题解答。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 532dec5a-7261-4770-8f54-bfe527918058
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 518e3fa842c5283dc20a6111773bd55451f026b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 1b042c0279e458cf83bd5c81147f4b1f25d7687d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60486820"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75645134"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure 数据工厂 - 常见问题解答
 > [!NOTE]
@@ -39,30 +36,29 @@ ms.locfileid: "60486820"
 
 ### <a name="how-do-i-get-started-with-azure-data-factory"></a>如何使用 Azure 数据工厂？
 * 有关 Azure 数据工厂的概述，请参阅 [Azure 数据工厂简介](data-factory-introduction.md)。
-* 有关如何使用复制活动“复制/移动数据”的教程，请参阅[将数据从 Azure Blob 存储复制到 Azure SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
-* 有关如何使用 HDInsight Hive 活动“转换数据”的教程。 请参阅[通过在 Hadoop 群集上运行 Hive 脚本处理数据](data-factory-build-your-first-pipeline.md)
+* 有关如何使用复制活动“复制/移动数据”**** 的教程，请参阅[将数据从 Azure Blob 存储复制到 Azure SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+* 有关如何使用 HDInsight Hive 活动“转换数据”**** 的教程。 请参阅[通过在 Hadoop 群集上运行 Hive 脚本处理数据](data-factory-build-your-first-pipeline.md)
 
 ### <a name="what-is-the-data-factorys-region-availability"></a>数据工厂的区域可用性是什么？
 数据工厂可在**美国西部**和**北欧**使用。 数据工厂使用的计算和存储服务可以位于其他区域。 请参阅[支持的区域](data-factory-introduction.md#supported-regions)。
 
 ### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>数据工厂/管道/活动/数据集的数量限制有哪些？
-请参阅 [Azure 订阅和服务限制、配额与约束条件](../../azure-subscription-service-limits.md#data-factory-limits)一文的 **Azure 数据工厂限制**部分。
+请参阅 [Azure 订阅和服务限制、配额与约束条件](../../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits)一文的 **Azure 数据工厂限制**部分。
 
 ### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>Azure 数据工厂服务的创作/开发人员体验是什么？
 可以使用下列工具/SDK 之一创作/创建数据工厂：
 
-* **Azure 门户**：Azure 门户中的“数据工厂”边栏选项卡提供丰富的用户界面体验，可方便用户创建数据工厂和链接服务。 “数据工厂编辑器”也是该门户的一部分，可用于创建链接服务、表、数据集和管道并且操作简单，通过指定这些项目的 JSON 定义即可实现。 有关使用门户/编辑器创建和部署数据工厂的示例，请参阅[使用 Azure 门户构建第一个数据管道](data-factory-build-your-first-pipeline-using-editor.md)。
 * **Visual Studio**：可以使用 Visual Studio 创建 Azure 数据工厂。 有关详细信息，请参阅[使用 Visual Studio 构建第一个数据管道](data-factory-build-your-first-pipeline-using-vs.md)。
-* **Azure PowerShell**：有关使用 PowerShell 创建数据工厂的教程/演练，请参阅[使用 Azure PowerShell 创建和监视 Azure 数据工厂](data-factory-build-your-first-pipeline-using-powershell.md)。 有关数据工厂 cmdlet 的综合文档，请参阅 MSDN 库上的[数据工厂 Cmdlet 参考][adf-powershell-reference]内容。
+* **Azure PowerShell**有关使用 PowerShell 创建数据工厂的教程/演练，请参阅[使用 Azure PowerShell 创建和监视 Azure 数据工厂](data-factory-build-your-first-pipeline-using-powershell.md)。 有关数据工厂 cmdlet 的综合文档，请参阅 MSDN 库上的[数据工厂 Cmdlet 参考][adf-powershell-reference]内容。
 * **.NET 类库**：可以使用数据工厂 .NET SDK 以编程方式创建数据工厂。 有关使用 .NET SDK 创建数据工厂的演练，请参阅[使用 .NET SDK 创建、监视和管理数据工厂](data-factory-create-data-factories-programmatically.md)。 有关数据工厂 .NET SDK 的综合文档，请参阅[数据工厂类库参考][msdn-class-library-reference]。
 * **REST API**：还可以使用 Azure 数据工厂服务公开的 REST API 创建和部署数据工厂。 有关数据工厂 REST API 的综合文档，请参阅[数据工厂 REST API 参考][msdn-rest-api-reference]。
-* **Azure 资源管理器模板** 有关详细信息，请参阅[教程：使用 Azure 资源管理器模板构建第一个 Azure 数据工厂](data-factory-build-your-first-pipeline-using-arm.md)。
+* **Azure 资源管理器模板**：有关详细信息，请参阅[教程：使用 Azure 资源管理器模板构建第一个 Azure 数据工厂](data-factory-build-your-first-pipeline-using-arm.md)。
 
 ### <a name="can-i-rename-a-data-factory"></a>是否可以重命名数据工厂？
-不。 和其他 Azure 资源一样，不可以更改 Azure 数据工厂的名称。
+不能。 和其他 Azure 资源一样，不可以更改 Azure 数据工厂的名称。
 
 ### <a name="can-i-move-a-data-factory-from-one-azure-subscription-to-another"></a>是否可以将数据工厂从一个 Azure 订阅移动到另一个？
-可以。 使用数据工厂边栏选项卡上的“移动”按钮，如下面的关系图所示：
+是的。 使用 "数据工厂" 边栏选项卡上的 "**移动**" 按钮，如下图所示：
 
 ![移动数据工厂](media/data-factory-faq/move-data-factory.png)
 
@@ -78,7 +74,7 @@ ms.locfileid: "60486820"
 | [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service)、[Azure SQL 数据仓库](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service)、[SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[存储过程](data-factory-stored-proc-activity.md) |
 
 ### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Azure 数据工厂与 SQL Server Integration Services (SSIS) 相比如何？ 
-请参阅 [Azure 数据工厂与 SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) 演示文稿，来自我们的 MVP（最有价值的专家）之一 Reza Rad。 幻灯片中可能未列出数据工厂中的一些最新更改。 我们将不断向 Azure 数据工厂添加更多的功能。 我们将不断向 Azure 数据工厂添加更多的功能。 我们会在今年晚些时候，将这些更新纳入 Microsoft 的数据集成技术的比较中。   
+请参阅我们的一位 Mvp （最有价值专家）中的[Azure 数据工厂与 SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS)表示形式： Reza Rad。 幻灯片中可能未列出数据工厂中的一些最新更改。 我们将不断向 Azure 数据工厂添加更多的功能。 我们将不断向 Azure 数据工厂添加更多的功能。 我们会在今年晚些时候，将这些更新纳入 Microsoft 的数据集成技术的比较中。   
 
 ## <a name="activities---faq"></a>活动 - 常见问题解答
 ### <a name="what-are-the-different-types-of-activities-you-can-use-in-a-data-factory-pipeline"></a>在数据工厂管道中可以使用哪些不同的活动类型？
@@ -86,7 +82,7 @@ ms.locfileid: "60486820"
 * 用于处理/转换数据的[数据转换活动](data-factory-data-transformation-activities.md)。
 
 ### <a name="when-does-an-activity-run"></a>活动何时运行？
-运行活动的时间由输出数据表中的“可用性”配置设置确定。 如果指定了输入数据集，则在开始运行之前，活动会检查是否满足所有输入数据依赖项（即**就绪**状态）。
+运行活动的时间由输出数据表中的“可用性”**** 配置设置确定。 如果指定了输入数据集，则在开始运行之前，活动会检查是否满足所有输入数据依赖项（即**就绪**状态）。
 
 ## <a name="copy-activity---faq"></a>复制活动 - 常见问题解答
 ### <a name="is-it-better-to-have-a-pipeline-with-multiple-activities-or-a-separate-pipeline-for-each-activity"></a>一个管道具有多个活动好还是每个活动都有单独的管道好？
@@ -142,9 +138,9 @@ ms.locfileid: "60486820"
 
 ## <a name="slices---faq"></a>切片 - 常见问题解答
 ### <a name="why-are-my-input-slices-not-in-ready-state"></a>为何我的输入切片不是处于“就绪”状态？
-一个常见错误是，当输入数据是数据工厂的外部数据（不是由数据工厂生成）时，未将输入数据集上的“external”属性设置为 **true**。
+一个常见错误是，当输入数据是数据工厂的外部数据（不是由数据工厂生成）时，未将输入数据集上的“external”**** 属性设置为 **true**。
 
-在下面的示例中，只需在 **dataset1** 上将“外部”属性设置为 true。  
+在下面的示例中，只需在 **dataset1** 上将“外部”**** 属性设置为 true。  
 
 **DataFactory1** Pipeline 1: dataset1 -> activity1 -> dataset2 -> activity2 -> dataset3 Pipeline 2: dataset3-> activity3 -> dataset4
 
@@ -156,7 +152,7 @@ Pipeline 1: dataset4->activity4->dataset5
 如果 external 属性设置正确，请验证输入数据是否存在于输入数据集定义中指定的位置。
 
 ### <a name="how-to-run-a-slice-at-another-time-than-midnight-when-the-slice-is-being-produced-daily"></a>当每天生成切片时，如何在午夜以外的其他时间运行切片？
-请使用“offset”属性来指定要生成切片的时间。 如需此属性的详细信息，请参阅[数据集可用性](data-factory-create-datasets.md#dataset-availability)部分。 下面是一个简短的示例：
+请使用“offset”**** 属性来指定要生成切片的时间。 如需此属性的详细信息，请参阅[数据集可用性](data-factory-create-datasets.md#dataset-availability)部分。 下面是一个简短的示例：
 
 ```json
 "availability":
@@ -172,28 +168,28 @@ Pipeline 1: dataset4->activity4->dataset5
 可通过以下方式之一重新运行切片：
 
 * 使用“监视和管理应用”重新运行活动窗口或切片。 有关说明，请参阅[重新运行所选活动窗口](data-factory-monitor-manage-app.md#perform-batch-actions)。   
-* 在 Azure 门户中，在切片的“数据切片”边栏选项卡上，单击命令栏中的“运行”。
-* 运行**集 AzDataFactorySliceStatus** cmdlet 与状态设置为**等待**的切片。   
+* 在 Azure 门户中，在切片的“数据切片”**** 边栏选项卡上，单击命令栏中的“运行”****。
+* 运行**AzDataFactorySliceStatus** cmdlet，并将状态设置为 "**等待**切片"。   
 
     ```powershell
     Set-AzDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
     ```
-  请参阅[集 AzDataFactorySliceStatus] [ set-azure-datafactory-slice-status]有关该 cmdlet 的详细信息。
+  有关 cmdlet 的详细信息，请参阅[AzDataFactorySliceStatus][set-azure-datafactory-slice-status] 。
 
 ### <a name="how-long-did-it-take-to-process-a-slice"></a>处理一个切片需要多长时间？
 请使用“监视和管理应用”中的活动窗口资源管理器来了解处理数据切片所花费的时间。 有关详细信息，请参阅[活动窗口资源管理器](data-factory-monitor-manage-app.md#activity-window-explorer)。
 
 在 Azure 门户中，还可以执行以下操作：  
 
-1. 在数据工厂的“数据工厂”边栏选项卡中，单击“数据集”磁贴。
-2. 在“数据集”边栏选项卡上，单击特定数据集。
-3. 在“表”边栏选项卡上的“最新切片”列表中，选择你感兴趣的切片。
-4. 在“数据切片”边栏选项卡上的“活动运行”列表中，单击运行的活动。
-5. 在“活动运行详细信息”边栏选项卡上，单击“属性”磁贴。
-6. 应该会看到“持续时间”字段包含一个值。 该值就是处理切片所花费的时间。   
+1. 在数据工厂的“数据工厂”**** 边栏选项卡中，单击“数据集”**** 磁贴。
+2. 在“数据集”**** 边栏选项卡上，单击特定数据集。
+3. 在“表”**** 边栏选项卡上的“最新切片”**** 列表中，选择你感兴趣的切片。
+4. 在“数据切片”**** 边栏选项卡上的“活动运行”**** 列表中，单击运行的活动。
+5. 在“活动运行详细信息”**** 边栏选项卡上，单击“属性”**** 磁贴。
+6. 应该会看到“持续时间”**** 字段包含一个值。 该值就是处理切片所花费的时间。   
 
 ### <a name="how-to-stop-a-running-slice"></a>如何停止正在运行的切片？
-如果你需要停止执行管道，则可以使用[挂起 AzDataFactoryPipeline](/powershell/module/az.datafactory/suspend-azdatafactorypipeline) cmdlet。 目前，挂起管道不会停止正在进行中的切片执行。 一旦完成正在进行中的执行，就不会再选取任何额外的切片。
+如果需要停止执行管道，可以使用[AzDataFactoryPipeline](/powershell/module/az.datafactory/suspend-azdatafactorypipeline) cmdlet。 目前，挂起管道不会停止正在进行中的切片执行。 一旦完成正在进行中的执行，就不会再选取任何额外的切片。
 
 如果确实想要立即停止所有执行，唯一的方法就是删除管道，再重新创建。 如果选择删除管道，“不”需要删除该管道所使用的表和链接服务。
 

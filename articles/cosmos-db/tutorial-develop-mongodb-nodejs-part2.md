@@ -1,6 +1,5 @@
 ---
-title: 使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建 Angular 应用 - 创建 Node.js Express 应用
-titleSuffix: Azure Cosmos DB
+title: 使用 Azure Cosmos DB 的 API for MongoDB 创建 Node.js Express 应用（第 2 部分）
 description: 本教程系列的第 2 部分，介绍如何通过 Angular 和 Node 在 Azure Cosmos DB 上创建 MongoDB 应用，所使用的 API 与用于 MongoDB 的 API 完全相同。
 author: johnpapa
 ms.service: cosmos-db
@@ -11,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 8dd725bed6364979a9388d5741bf17f667bda0b7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f9ce90a64ca038c99fe4ba63e66f7e5abbd196f6
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435263"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119165"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建 Angular 应用 - 创建 Node.js Express 应用
 
@@ -82,9 +81,9 @@ ms.locfileid: "57435263"
 
 ## <a name="build-the-app-using-the-express-framework"></a>使用 Express 框架生成应用
 
-1. 在 Visual Studio Code 的“资源管理器”窗格中，右键单击 src 文件夹，单击“新建文件夹”，然后将新文件夹命名为“server”。
+1. 在 Visual Studio Code 的“资源管理器”窗格中，右键单击 src 文件夹，单击“新建文件夹”，然后将新文件夹命名为“server”。  
 
-2. 在“资源管理器”窗格中，右键单击“server”文件夹，单击“新建文件”，然后将新文件命名为“index.js”。
+2. 在“资源管理器”窗格中，右键单击“server”文件夹，单击“新建文件”，然后将新文件命名为“index.js”。  
 
 3. 回到命令提示符处，使用以下命令安装正文分析器。 这有助于应用分析通过 API 传入的 JSON 数据。
 
@@ -126,7 +125,7 @@ ms.locfileid: "57435263"
    app.listen(port, () => console.log(`API running on localhost:${port}`));
    ```
 
-5. 在 Visual Studio Code 的“资源管理器”窗格中，右键单击 server 文件夹，然后单击“新建文件”。 将新文件命名为 routes.js。 
+5. 在 Visual Studio Code 的“资源管理器”窗格中，右键单击 server 文件夹，然后单击“新建文件”。   将新文件命名为 routes.js。 
 
 6. 将以下代码复制到 routes.js 中。 此代码：
    * 引用 Express 路由器
@@ -152,7 +151,7 @@ ms.locfileid: "57435263"
 
 8. 在 launch.json 文件的第 11 行将 `"${workspaceFolder}\\server"` 更改为 `"program": "${workspaceRoot}/src/server/index.js"`，然后保存文件。
 
-9. 单击“开始调试”按钮 ![Visual Studio Code 中的“开始调试”图标](./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png)，运行应用。
+9. 单击“开始调试”按钮![Visual Studio Code 中的“开始调试”图标](./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png)，运行应用。
 
     应用应该正常运行。
 
@@ -164,7 +163,7 @@ ms.locfileid: "57435263"
 
     该响应显示应用在本地启动并运行。 
 
-    ![Postman，显示请求和响应](./media/tutorial-develop-mongodb-nodejs-part2/azure-cosmos-db-postman.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part2/azure-cosmos-db-postman.png" alt-text="显示请求和响应的 Postman":::
 
 
 ## <a name="next-steps"></a>后续步骤

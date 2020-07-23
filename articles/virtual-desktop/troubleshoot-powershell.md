@@ -1,95 +1,88 @@
 ---
 title: Windows 虚拟桌面 PowerShell-Azure
-description: 如何对 PowerShell 的问题进行故障排除时设置的 Windows 虚拟桌面租户环境。
+description: 如何在设置 Windows 虚拟桌面环境时排查 PowerShell 问题。
 services: virtual-desktop
-author: ChJenk
+author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: troubleshoot
-ms.date: 04/08/2019
-ms.author: v-chjenk
-ms.openlocfilehash: ad32f7ff883812830dbcf2ed900c4034bd90abfc
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
-ms.translationtype: MT
+ms.topic: troubleshooting
+ms.date: 06/05/2020
+ms.author: helohr
+manager: lizross
+ms.openlocfilehash: 6e4459eea07f60d90dad692d6625dd45c5038093
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64927502"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84456957"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows 虚拟桌面 PowerShell
 
-使用此文章使用 PowerShell 管理 Windows 虚拟桌面时解决错误和问题。 远程桌面服务 PowerShell 的详细信息，请参阅[Windows 虚拟桌面 Powershell](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/)。
+>[!IMPORTANT]
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面 2019 秋季版，请参阅[此文](./virtual-desktop-fall-2019/troubleshoot-powershell-2019.md)。
+>
+> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+本文介绍了在 Windows 虚拟桌面中使用 PowerShell 时的错误和问题。 有关远程桌面服务 PowerShell 的详细信息，请参阅[Windows 虚拟桌面 PowerShell](/powershell/module/windowsvirtualdesktop/)。
 
 ## <a name="provide-feedback"></a>提供反馈
 
-目前我们不会受理 Windows 虚拟桌面预览版的支持案例。 请访问 [Windows 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)，与产品团队和活跃的社区成员共同探讨 Windows 虚拟桌面服务。
+请访问 [Windows 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)，与产品团队和活跃的社区成员共同探讨 Windows 虚拟桌面服务。
 
 ## <a name="powershell-commands-used-during-windows-virtual-desktop-setup"></a>Windows 虚拟桌面安装过程中使用的 PowerShell 命令
 
-本部分列出了 PowerShell 命令，通常用于设置 Windows 虚拟桌面时，并提供方法来解决在使用它们时可能出现的问题。
+本部分列出了在设置 Windows 虚拟桌面时通常使用的 PowerShell 命令，并提供解决使用这些命令时可能发生的问题的方法。
 
-### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-is-already-assigned-to-a-remoteapp-app-group-in-the-specified-host-pool"></a>错误：添加 RdsAppGroupUser 命令-指定的 UserPrincipalName 已分配到 RemoteApp 应用程序组中指定的主机池
+### <a name="error-new-azroleassignment-the-provided-information-does-not-map-to-an-ad-object-id"></a>错误： AzRoleAssignment：提供的信息未映射到 AD 对象 ID
 
-```Powershell
-Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName 'Desktop Application Group' -UserPrincipalName <UserName>
+```powershell
+New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
 ```
 
-原因：使用的用户名具有已分配给不同类型的应用程序组。 无法将用户分配到同一个会话主机池下的远程桌面和远程应用程序组。
+**原因：** 在绑定到 Windows 虚拟桌面环境的 Azure Active Directory 中找不到由 *-SignInName*参数指定的用户。 
 
-**解决方法：** 如果用户需要远程应用和远程桌面时，创建不同的主机池或授予对远程桌面会话主机 VM 将允许使用任何应用程序的用户访问权限。
+**修复：** 请确保以下各项。
 
-### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-doesnt-exist-in-the-azure-active-directory-associated-with-the-remote-desktop-tenant"></a>错误：添加 RdsAppGroupUser 命令-指定的 UserPrincipalName 与远程桌面的 tenant 关联的 Azure Active Directory 中不存在
+- 应将用户同步到 Azure Active Directory。
+- 该用户不应与企业到消费者（B2C）或企业对企业（B2B）的商业客户联系。
+- Windows 虚拟桌面环境应绑定到正确的 Azure Active Directory。
 
-```PowerShell
-Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName “Desktop Application Group” -UserPrincipalName <UserPrincipalName>
+### <a name="error-new-azroleassignment-the-client-with-object-id-does-not-have-authorization-to-perform-action-over-scope-code-authorizationfailed"></a>错误： AzRoleAssignment： "具有对象 id 的客户端无权对作用域执行操作（代码： AuthorizationFailed）"
+
+**原因1：** 正在使用的帐户不具有对订阅的所有者权限。 
+
+**修复1：** 具有所有者权限的用户需要执行角色分配。 或者，需要将用户分配到 "用户访问管理员" 角色，以将用户分配到应用程序组。
+
+**原因2：** 使用的帐户具有 "所有者" 权限，但不是环境的 Azure Active Directory 的一部分，或者不具有查询用户所在 Azure Active Directory 的权限。
+
+**修复2：** 具有 Active Directory 权限的用户需要执行该角色分配。
+
+### <a name="error-new-azwvdhostpool----the-location-is-not-available-for-resource-type"></a>错误： AzWvdHostPool--位置不可用于资源类型
+
+```powershell
+New-AzWvdHostPool_CreateExpanded: The provided location 'southeastasia' is not available for resource type 'Microsoft.DesktopVirtualization/hostpools'. List of available regions for the resource type is 'eastus,eastus2,westus,westus2,northcentralus,southcentralus,westcentralus,centralus'. 
 ```
 
-原因：绑定到 Windows 虚拟桌面租户在 Azure Active Directory 中找不到指定的 UserPrincipalName 的用户。
+原因： Windows 虚拟桌面支持选择主机池、应用程序组和工作区的位置，以将服务元数据存储在某些位置。 你的选项仅限于此功能可用的位置。 此错误表示该功能在所选位置中不可用。
 
-**解决方法：** 确认以下列表中的项。
+修复：在错误消息中，将发布受支持区域的列表。 改为使用受支持的区域之一。
 
-- 用户同步到 Azure Active Directory 中。
-- 用户不能局限于企业对消费者 (B2C) 或企业到企业 (B2B) 商务。
-- Windows 虚拟桌面租户被绑定到正确的 Azure Active Directory。
+### <a name="error-new-azwvdapplicationgroup-must-be-in-same-location-as-host-pool"></a>错误： AzWvdApplicationGroup 必须与主机池位于同一位置
 
-### <a name="error-get-rdsdiagnosticactivities----user-isnt-authorized-to-query-the-management-service"></a>错误：Get-RdsDiagnosticActivities-用户不是有权查询管理服务
-
-```PowerShell
-Get-RdsDiagnosticActivities -ActivityId <ActivityId>
+```powershell
+New-AzWvdApplicationGroup_CreateExpanded: ActivityId: e5fe6c1d-5f2c-4db9-817d-e423b8b7d168 Error: ApplicationGroup must be in same location as associated HostPool
 ```
 
-**原因：** -TenantName 参数
+**原因：** 位置不匹配。 所有主机池、应用程序组和工作区都有一个存储服务元数据的位置。 你创建的与彼此关联的任何对象都必须位于同一位置。 例如，如果主机池处于中，则 `eastus` 还需要在中创建应用程序组 `eastus` 。 如果创建工作区以便将这些应用程序组注册到，则该工作区也需要位于中 `eastus` 。
 
-**解决方法：** 发出 Get RdsDiagnosticActivities 与-TenantName <TenantName>。
-
-### <a name="error-get-rdsdiagnosticactivities----the-user-isnt-authorized-to-query-the-management-service"></a>错误：Get-RdsDiagnosticActivities-用户不是有权查询管理服务
-
-```PowerShell
-Get-RdsDiagnosticActivities -Deployment -username <username>
-```
-
-原因：使用-部署开关。
-
-**修复：** -部署开关可仅由部署管理员。 这些管理员通常是远程桌面服务/Windows 虚拟桌面团队的成员。 替换为与-TenantName-部署开关<TenantName>。
-
-### <a name="error-new-rdsroleassignment----the-user-isnt-authorized-to-query-the-management-service"></a>错误：新 RdsRoleAssignment-用户不是有权查询管理服务
-
-**原因 1：** 所使用的帐户没有远程桌面服务所有者权限的租户。
-
-**修复 1:** 具有远程桌面服务所有者权限的用户需要执行的角色分配。
-
-**原因 2：** 所使用的帐户具有远程桌面服务的所有者权限，但不是租户的 Azure Active Directory 的一部分或没有权限来查询 Azure Active Directory 用户所在的位置。
-
-**修复 2:** 具有 Active Directory 权限的用户需要执行的角色分配。
-
->[!Note]
->新 RdsRoleAssignment 无法向不存在 Azure Active Directory (AD) 中的用户授予权限。
+**修复：** 检索创建主机池的位置，然后将创建的应用程序组分配到该位置。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关故障排除 Windows 虚拟桌面，升级进行跟踪的概述，请参阅[故障排除概述、 反馈和支持](troubleshoot-set-up-overview.md)。
-- 若要在 Windows 虚拟桌面环境中创建的租户和主机池时排查问题，请参阅[租户以及主机池创建](troubleshoot-set-up-issues.md)。
-- 若要在 Windows 虚拟机中配置虚拟机 (VM) 时解决问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration.md)。
-- 若要对 Windows 虚拟桌面客户端连接的问题进行故障排除，请参阅[远程桌面客户端连接](troubleshoot-client-connection.md)。
-- 若要了解有关预览服务的详细信息，请参阅[Windows Desktop 预览环境](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)。
-- 若要完成故障排除教程，请参阅[教程：对资源管理器模板部署进行故障排除](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)。
-- 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)。
-- 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations)。
+- 如需简要了解如何排查 Windows 虚拟桌面问题和跟踪升级，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview.md)。
+- 若要解决设置 Windows 虚拟桌面环境和主机池时遇到的问题，请参阅[环境和主机池创建](troubleshoot-set-up-issues.md)。
+- 若要排查在 Windows 虚拟桌面中配置虚拟机 (VM) 时遇到的问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration.md)。
+- 若要解决 Windows 虚拟桌面客户端连接问题，请参阅[Windows 虚拟桌面服务连接](troubleshoot-service-connection.md)。
+- 若要解决远程桌面客户端的问题，请参阅[排查远程桌面客户端](troubleshoot-client.md)问题
+- 若要了解有关该服务的详细信息，请参阅[Windows 虚拟桌面环境](environment-setup.md)。
+- 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../azure-resource-manager/management/view-activity-logs.md)。
+- 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](../azure-resource-manager/templates/deployment-history.md)。

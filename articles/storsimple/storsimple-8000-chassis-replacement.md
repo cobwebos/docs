@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
-ms.openlocfilehash: 7dfc39f4d08c8a49d1564a0a5bd7e3ef4156e3fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: de0f6299f35f9d76fdade976bf70456426e5ec51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61312439"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513432"
 ---
 # <a name="replace-the-chassis-on-your-storsimple-device"></a>更换 StorSimple 设备上的底盘
 ## <a name="overview"></a>概述

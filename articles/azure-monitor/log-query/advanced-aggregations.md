@@ -1,24 +1,16 @@
 ---
 title: Azure Monitor 日志查询中的高级聚合 | Microsoft Docs
 description: 介绍一些适用于 Azure Monitor 日志查询的较高级聚合选项。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 56e87da0353a41504035a070d4c10bab0dda2279
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 08/16/2018
+ms.openlocfilehash: e5dc290a40342e0797001dde6cab90e12dd5cf39
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60551747"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77662172"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的高级聚合
 
@@ -47,7 +39,7 @@ Event
 
 `makelist` 根据数据的传入顺序生成列表。 若要以最旧到最新的顺序排序事件，请在 order 语句中使用 `asc`，而不要使用 `desc`。 
 
-创建只包含非重复值的列表也很有用。 此列表称为“集”，它是使用 `makeset` 生成的：
+创建只包含非重复值的列表也很有用。 此列表称为“集”，它是使用 `makeset` 生成的： 
 
 ```Kusto
 Event
@@ -65,7 +57,7 @@ Event
 与 `makelist` 一样，`makeset` 也能处理有序数据，并可基于行的传入顺序生成数组。
 
 ## <a name="expanding-lists"></a>展开列表
-`makelist` 或 `makeset` 的反向操作是 `mvexpand`，该操作将值列表展开为单独的行。 它可以展开任意数目的动态列（包括 JSON 和数组）。 例如，可以在“检测信号”表中检查在过去一小时发送了检测信号的计算机中发送数据的解决方案：
+`makelist` 或 `makeset` 的反向操作是 `mvexpand`，该操作将值列表展开为单独的行。 它可以展开任意数目的动态列（包括 JSON 和数组）。 例如，可以在“检测信号”表中检查在过去一小时发送了检测信号的计算机中发送数据的解决方案： 
 
 ```Kusto
 Heartbeat
@@ -128,7 +120,7 @@ Heartbeat
 | summarize count() by Category, bin(TimeGenerated, 1h)
 ```
 
-| 类别 | TimeGenerated | count_ |
+| Category | TimeGenerated | count_ |
 |--------------|----------------------|--------|
 | 直接代理 | 2017-06-06T17:00:00Z | 15 |
 | 直接代理 | 2017-06-06T18:00:00Z | 60 |
@@ -144,7 +136,7 @@ Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 ```
 
-| 类别 | count_ | TimeGenerated |
+| Category | count_ | TimeGenerated |
 |---|---|---|
 | 直接代理 | [15,60,0,55,60,57,60,...] | ["2017-06-06T17:00:00.0000000Z","2017-06-06T18:00:00.0000000Z","2017-06-06T19:00:00.0000000Z","2017-06-06T20:00:00.0000000Z","2017-06-06T21:00:00.0000000Z",...] |
 | ... | ... | ... |
@@ -158,7 +150,7 @@ Heartbeat
 | project Category, TimeGenerated, count_
 ```
 
-| 类别 | TimeGenerated | count_ |
+| Category | TimeGenerated | count_ |
 |--------------|----------------------|--------|
 | 直接代理 | 2017-06-06T17:00:00Z | 15 |
 | 直接代理 | 2017-06-06T18:00:00Z | 60 |

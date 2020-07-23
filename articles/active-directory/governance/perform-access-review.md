@@ -1,115 +1,208 @@
 ---
-title: 评审访问权限给组或访问评审的 Azure Active Directory 中的应用程序 |Microsoft Docs
-description: 了解如何查看组成员的访问或应用程序访问 Azure Active Directory 访问评审中。
+title: 在访问评审中评审对组和应用程序的访问权限 - Azure AD
+description: 了解如何在 Azure Active Directory 访问评审中评审组成员的访问权限或应用程序访问权限。
 services: active-directory
-author: rolyon
-manager: mtillman
+author: barclayn
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 05/21/2019
-ms.author: rolyon
+ms.date: 06/17/2020
+ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd5bbba681acaa0c32e681f7cb4809142fe11f9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: MT
+ms.openlocfilehash: 5b672cca97e70c97a5dccb1ca54daccd6c171932
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113240"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85077972"
 ---
-# <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>查看对组的访问或 Azure AD 中的应用程序访问评审
+# <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中评审对组和应用程序的访问权限
 
-Azure Active Directory (Azure AD) 简化了企业在 Azure AD 中管理访问组和应用程序和名为 Azure AD 访问的功能与其他 Microsoft Online Services 评审的方式。
+Azure Active Directory (Azure AD) 借助称为“Azure AD 访问评审”的功能，简化了企业对 Azure AD 及其他 Microsoft Online Services 中的组和应用程序访问权限的管理方式。 本文介绍指定的审阅者如何对有权访问应用程序的组成员或用户执行访问评审。 如果你想要查看，请访问包的访问权限[Azure AD 授权管理中的访问包的](entitlement-management-access-reviews-review-access.md)访问权限
 
-本文介绍如何指定审阅者成员的组或用户有权访问应用程序的执行访问评审。
+## <a name="perform-access-review-using-my-apps"></a>使用“我的应用”执行访问评审
 
-## <a name="prerequisites"></a>必备组件
+可以从通知电子邮件开始访问评审过程，也可以直接转到站点来开始。
 
-- Azure AD Premium P2
+- **电子邮件**：
 
-有关详细信息，请参阅[哪些用户必须具有许可证？](access-reviews-overview.md#which-users-must-have-licenses)。
+>[!IMPORTANT]
+> 接收电子邮件可能存在延迟，在某些情况下，可能需要长达 24 小时来接收。 将 azure-noreply@microsoft.com 加入允许列表可确保收到所有电子邮件。
 
-## <a name="open-the-access-review"></a>打开访问评审
+1. 查找要求你执行访问评审的 Microsoft 电子邮件。 以下示例电子邮件要求评审对某个组的访问权限。
 
-若要执行访问评审的第一步是查找和打开访问评审。
+    ![要求评审对某个组的访问权限的 Microsoft 示例电子邮件](./media/perform-access-review/access-review-email.png)
 
-1. 查找从会要求你评审访问权限的 Microsoft 的电子邮件。 下面是示例电子邮件以查看组的访问权限。
+1. 单击“开始评审”链接打开访问评审。
 
-    ![评审访问权限电子邮件](./media/perform-access-review/access-review-email.png)
+- 如果未收到该电子邮件，可按照以下步骤找到待处理的访问评审。
 
-1. 单击**启动评审**链接以打开访问评审。
+    1. 登录到“我的应用”门户 ([https://myapps.microsoft.com](https://myapps.microsoft.com))。
 
-如果没有电子邮件，可以查找未完成的访问评审通过执行以下步骤。
+        ![“我的应用”门户，其中列出了你有权访问的应用](./media/perform-access-review/myapps-access-panel.png)
 
-1. 登录到 MyApps 门户[ https://myapps.microsoft.com ](https://myapps.microsoft.com)。
+    1. 在页面右上角，单击你的名称和默认组织旁边的用户。 如果列出多个组织，请选择已请求访问评审的组织。
 
-    ![MyApps 门户](./media/perform-access-review/myapps-access-panel.png)
+    1. 单击“访问评审”磁贴，查看待处理的访问评审列表。
 
-1. 在页面右上角，单击用户符号，其中显示了你的姓名和默认组织。 如果列出多个组织，请选择已请求访问评审的组织。
+        > [!NOTE]
+        > 如果“访问评审”磁贴不可见，则表明该组织没有要执行的访问评审，此时不需要执行任何操作。
 
-1. 单击**访问评审**磁贴以查看未完成的访问评审的列表。
+        ![应用和组的待处理访问评审列表](./media/perform-access-review/access-reviews-list.png)
 
-    如果该磁贴不可见，则该组织没有要执行的访问评审，此时不需要执行任何操作。
+    1. 单击你要执行的访问评审对应的“开始评审”链接。
 
-    ![访问评审列表](./media/perform-access-review/access-reviews-list.png)
+打开访问评审后，你会看到需要访问评审的用户的名称。
 
-1. 单击**开始评审**你想要执行访问评审的链接。
+如果请求是评审你自己的访问权限，则页面内容会有所不同。 有关详细信息，请参阅[评审自己对组或应用程序的访问权限](review-your-access.md)。
 
-## <a name="perform-the-access-review"></a>执行访问评审
+![打开访问评审，其中会列出要评审的用户](./media/perform-access-review/perform-access-review.png)
 
-打开访问评审之后, 您将看到需要评审的用户的名称。
+可通过两种方式批准或拒绝访问权限：
 
-如果请求是要评审你自己的访问权限，页上将看起来不同。 有关详细信息，请参阅[评审自己的访问权限，对组或应用程序](review-your-access.md)。
-
-![执行访问评审](./media/perform-access-review/perform-access-review.png)
-
-有两种方法可以批准或拒绝访问：
-
-- 可以批准或拒绝一个或多个用户的访问权限或
-- 你可以接受的系统建议，这是最简单且最快速的方法。
+- 可以针对每个用户请求选择适当的操作，通过这种方式“手动”批准或拒绝一个或多个用户的访问。
+- 可以接受系统建议。
 
 ### <a name="approve-or-deny-access-for-one-or-more-users"></a>批准或拒绝一个或多个用户的访问权限
 
-1. 查看要决定是否批准或拒绝其持续访问权限的用户列表。
+1. 评审用户列表并确定是批准还是拒绝其继续访问。
 
-1. 若要批准或拒绝单个用户的访问权限，请单击要打开一个窗口来指定要执行的操作的行。 若要批准或拒绝多个用户的访问权限，添加的用户旁边的复选标记，然后单击**评审 X 个用户**按钮以打开一个窗口来指定要执行的操作。
+    - 若要批准或拒绝单个用户的访问权限，请单击相应的行打开一个窗口，以指定要执行的操作。 
+    - 若要批准或拒绝多个用户的访问权限，请勾选这些用户，然后单击“评审 X 个用户”按钮打开一个窗口，以指定要执行的操作。
 
-1. 单击**批准**或**拒绝**。 如果您不确定，则可以单击**不知道**。 执行此操作将导致用户维护其访问权限，但所选内容将反映在审核日志。
+1. 单击“批准”或“拒绝”。  
 
-    ![执行访问评审](./media/perform-access-review/approve-deny.png)
+    ![包括“批准”、“拒绝”和“不知道”选项的操作窗口](./media/perform-access-review/approve-deny.png)
+    >[!NOTE]
+    > 如果不确定，可以单击“不知道”。 用户可以保留其访问权限，而你的选择将记录在审核日志中。
 
-1. 如有必要，输入在原因**原因**框。
+1. 访问评审的管理员可能会要求你在“原因”框中提供做出决定的理由。 即使不需要提供理由， 你也可以为决策提供理由，而你提供的信息将可供其他审阅者使用。
 
-    访问评审的管理员可能要求你提供批准持续访问权限或组成员身份的原因。
+1. 指定要执行的操作后，单击“保存”。
 
-1. 指定要执行的操作后，单击**保存**。
+    >[!NOTE]
+    > 在访问评审结束之前，随时可以更改响应。 若要更改响应，请选择相应的行并更新响应。 例如，可以批准以前已拒绝的用户，或者拒绝以前已批准的用户。
 
-    如果你想要更改您的响应，选择的行和更新的响应。 例如，可以批准之前拒绝的用户，或拒绝之前批准的用户。 可以在任何时间访问评审已结束之前更改您的响应。
+    >[!IMPORTANT]
+    > - 如果拒绝了某个用户的访问权限，不会立即删除该用户。 如果已启用[自动应用](complete-access-review.md#apply-the-changes)，则在评审期结束或管理员停止评审时，这些用户将被删除。
+    > - 如果有多个评审者，将记录最后提交的响应。 假设有一个管理员指定两个审阅者（Alice 和 Bob）的示例。 Alice 首先打开访问评审并批准了用户的访问请求。 在评审期结束之前，Bob 打开访问评审，拒绝了 Alice 之前批准的同一请求中的访问权限。 最后决定（即拒绝访问）是系统记录的响应。
 
-    如果有多个审阅者，记录上一次提交的响应。 请考虑在管理员指定两个审阅者 – Alice 和 Bob 的示例。 Alice 先打开访问评审和批准访问权限。 审阅结束之前，Bob 将打开访问评审，并拒绝访问。 最后一个拒绝响应是什么记录。
+### <a name="approve-or-deny-access-based-on-recommendations"></a>根据建议批准或拒绝访问权限
+
+为了让你更轻松、更快捷地评审访问权限，我们还会提供建议，单击一下鼠标就能接受这些建议。 建议是根据用户的登录活动生成的。
+
+1. 在页面底部的蓝色栏中，单击“接受建议”。
+
+    ![打开访问评审列表，其中会显示“接受建议”按钮](./media/perform-access-review/accept-recommendations.png)
+
+    你将看到建议操作的摘要。
+
+    ![显示建议操作摘要的窗口](./media/perform-access-review/accept-recommendations-summary.png)
+
+1. 单击“确定”接受建议。
+
+## <a name="perform-access-review-using-my-access-new"></a>使用 "我的访问权限" 执行访问评审（新）
+
+可以通过以下几种不同的方式，通过 "我的 Access" 中更新的用户界面获得新的审阅者体验：
+
+### <a name="my-apps-portal"></a>我的应用门户
+
+1. 登录到 "我的应用" [https://myapps.microsoft.com](https://myapps.microsoft.com) 。
+
+    ![“我的应用”门户，其中列出了你有权访问的应用](./media/perform-access-review/myapps-access-panel.png)
+
+2. 单击“访问评审”磁贴，查看待处理的访问评审列表。
 
     > [!NOTE]
-    > 如果用户被拒绝访问，它们不会立即删除。 评审已结束或管理员停止评审时，会删除它们。
+    > 如果“访问评审”磁贴不可见，则表明该组织没有要执行的访问评审，此时不需要执行任何操作。
 
-### <a name="approve-or-deny-access-based-on-recommendations"></a>批准或拒绝访问根据建议
+![在预览期间显示有新的可用体验横幅的应用和组的挂起访问审阅列表](./media/perform-access-review/banner.png)
 
-若要为你更轻松、 更快地使访问评审，我们还提供可接受的建议单击一次。 基于用户的登录活动生成建议。
+3. 单击 "**试用"！** 在页面顶部的横幅中。 这会将你转到新的 "我的访问" 体验。
+  
+### <a name="email"></a>电子邮件
 
-1. 在页面底部的蓝色条形，单击**接受建议**。
+  >[!IMPORTANT]
+> 接收电子邮件可能存在延迟，在某些情况下，可能需要长达 24 小时来接收。 将 azure-noreply@microsoft.com 加入允许列表可确保收到所有电子邮件。
 
-    ![接受建议](./media/perform-access-review/accept-recommendations.png)
+   1. 查找要求你执行访问评审的 Microsoft 电子邮件。 你可以在下面看到一个示例电子邮件：
 
-    请参阅建议的操作的摘要。
+   ![要求评审对某个组的访问权限的 Microsoft 示例电子邮件](./media/perform-access-review/access-review-email-preview.png)
 
-    ![接受建议摘要](./media/perform-access-review/accept-recommendations-summary.png)
+   2. 单击“开始评审”链接打开访问评审。
 
-1. 单击**确定**以接受这些建议。
+>[!NOTE]
+>如果单击 "开始审阅"，则会将你转到 **"我的应用**"，然后按照上面标题为 **"我的应用门户**" 部分列出
+
+### <a name="navigate-to-my-access-directly"></a>直接导航到 "我的访问"
+
+还可以通过使用浏览器打开 "我的访问" 来查看待定的访问评审。
+
+1. 在上登录到 "我的访问"https://myaccess.microsoft.com/
+
+2. 从左侧栏上的菜单中选择 "**访问评审**"，查看分配给你的待定访问评审的列表。
+
+   ![菜单中的访问评审](./media/perform-access-review/access-review-menu.png)
+
+### <a name="approve-or-deny-access-for-one-or-more-users"></a>批准或拒绝一个或多个用户的访问权限
+
+在 "组和应用" 下打开 "访问" 后，可以看到：
+
+- **名称**访问评审的名称。
+- **截止日期**评审的截止日期。 在此日期后，可以从正在查看的组或应用中删除用户。
+- **资源**要查看的资源的名称。
+- **进度**在此访问评审的总用户数量中审阅的用户数。
+
+单击 "访问评审" 的名称即可开始使用。
+
+![应用和组的待处理访问评审列表](./media/perform-access-review/access-reviews-list-preview.png)
+
+一旦打开，你将在访问评审范围内看到用户列表。 如果请求是评审你自己的访问权限，则页面内容会有所不同。 有关详细信息，请参阅[评审自己对组或应用程序的访问权限](review-your-access.md)。
+
+可通过两种方式批准或拒绝访问权限：
+
+- 可以手动批准或拒绝一个或多个用户的访问权限。
+- 可以接受系统建议。
+
+#### <a name="manually-approve-or-deny-access-for-one-or-more-users"></a>手动批准或拒绝一个或多个用户的访问权限
+
+1. 评审用户列表并确定是批准还是拒绝其继续访问。
+2. 通过单击其名称旁边的圆圈选择一个或多个用户。
+3. 在上面的栏中选择 "**批准**" 或 "**拒绝**"。
+    - 如果不确定，可以单击“不知道”。 用户需要保持其访问权限，并且你的选择将记录在审核日志中。 请务必记住，你提供的任何信息都将提供给其他审阅者。 他们可以阅读你的注释，并在评审请求时将其考虑在内。
+
+    ![打开访问评审列出了需要查看的用户](./media/perform-access-review/user-list-preview.png)
+
+4. 访问评审的管理员可能会要求你在“原因”框中提供做出决定的理由。 即使不需要提供理由， 你仍可以为你的决策提供原因，而你包含的信息将可供其他审批者查看。
+
+5. 单击“提交”。
+    - 在访问评审结束之前，随时可以更改响应。 若要更改响应，请选择相应的行并更新响应。 例如，可以批准以前已拒绝的用户，或者拒绝以前已批准的用户。
+
+ >[!IMPORTANT]
+ > - 如果拒绝了某个用户的访问权限，不会立即删除该用户。 当审核时间结束或管理员停止评审时，它们会被删除。 
+ > - 如果有多个评审者，将记录最后提交的响应。 假设有一个管理员指定两个审阅者（Alice 和 Bob）的示例。 Alice 首先打开访问评审并批准了用户的访问请求。 在评审期结束之前，Bob 打开访问评审，拒绝了 Alice 之前批准的同一请求中的访问权限。 最后决定（即拒绝访问）是系统记录的响应。
+
+#### <a name="approve-or-deny-access-based-on-recommendations"></a>根据建议批准或拒绝访问权限
+
+为了让你更轻松、更快捷地评审访问权限，我们还会提供建议，单击一下鼠标就能接受这些建议。 建议是根据用户的登录活动生成的。
+
+1. 选择一个或多个用户，然后单击 "**接受建议**"。
+
+    ![打开访问评审列表，其中会显示“接受建议”按钮](./media/perform-access-review/accept-recommendations-preview.png)
+
+1. 单击 "**提交**" 以接受建议。
+
+若要接受所有用户的建议，请确保未选择任何人，并单击顶部栏上的 "**接受建议**" 按钮。
+
+>[!NOTE]
+>接受建议后，将不会更改以前的决策。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [完成访问评审的组或应用程序](complete-access-review.md)
+- [完成组或应用程序的访问评审](complete-access-review.md)
+

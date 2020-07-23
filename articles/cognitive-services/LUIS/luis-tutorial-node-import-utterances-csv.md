@@ -1,6 +1,6 @@
 ---
-title: 使用 Node.js 导入陈述
-titleSuffix: Azure
+title: 使用 Node.js 导入话语 - LUIS
+titleSuffix: Azure Cognitive Services
 description: 了解如何使用 LUIS Authoring API 以编程方式从 CSV 格式的预先存在数据生成 LUIS 应用。
 services: cognitive-services
 author: diberry
@@ -8,46 +8,59 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 01/30/2019
+ms.topic: how-to
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 314d121e8964ba1cdbb457260826d85bf8505fbc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 69eb6c5e5d0139049e252b0a22fefad747429068
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60494862"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057732"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>使用 Node.js 以编程方式生成 LUIS 应用
 
-LUIS 提供与 [LUIS](luis-reference-regions.md) 网站功能相同的编程 API。 如果有预先存在的数据，这样可以节省时间，而且以编程方式创建 LUIS 应用比手动输入信息快。 
+LUIS 提供与 [LUIS](luis-reference-regions.md) 网站功能相同的编程 API。 如果有预先存在的数据，这样可以节省时间，而且以编程方式创建 LUIS 应用比手动输入信息快。
 
-## <a name="prerequisites"></a>必备组件
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
-* 登录 [LUIS](luis-reference-regions.md) 网站，并在“帐户设置”中找到[创作密钥](luis-concept-keys.md#authoring-key)。 使用此密钥调用 Authoring API。
+## <a name="prerequisites"></a>必备条件
+
+* 登录 [LUIS](luis-reference-regions.md) 网站，并在“帐户设置”中找到[创作密钥](luis-how-to-azure-subscription.md#authoring-key)。 使用此密钥调用 Authoring API。
 * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 本教程从用户请求的一家虚拟公司的 CSV 格式日志文件开始。 可从[此处](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv)下载。
+* 本文从用户请求的一家虚拟公司的 CSV 格式日志文件开始。 可从[此处](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv)下载。
 * 使用 NPM 安装最新的 Node.js。 从[此处](https://nodejs.org/en/download/)下载它。
 * **[建议]** 用于 IntelliSense 和调试的 Visual Studio Code 可从[此处](https://code.visualstudio.com/)免费下载。
+
+本文中的所有代码都在[Azure 示例语言理解 GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv)中提供。
 
 ## <a name="map-preexisting-data-to-intents-and-entities"></a>将预先存在的数据映射到意向和实体
 即使系统在创建时未考虑使用 LUIS，如果它包含映射到用户不同操作的文本数据，也许能够从现有用户输入类别映射到 LUIS 中的意向。 如果可标识用户所说的重要单词或短语，这些单词可能会映射到实体。
 
-打开 `IoT.csv` 文件。 它包含对虚构家庭自动化服务的用户查询日志，包括分类方式、用户所说的内容以及一些包含有用信息的列。 
+打开 [`IoT.csv`](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv) 文件。 它包含对虚构家庭自动化服务的用户查询日志，包括分类方式、用户所说的内容以及一些包含有用信息的列。
 
-![预先存在数据的 CSV 文件](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
+![预先存在数据的 CSV 文件](./media/luis-tutorial-node-import-utterances-csv/csv.png)
 
-可以看到“RequestType”列可能是意向，“Request”列显示了一个示例陈述。 如果其他字段出现在陈述中，则可能是实体。 由于有意向、实体和示例陈述，因此需要一个简单的示例应用。
+可以看到“RequestType”列可能是意向，“Request”列显示了一个示例陈述********。 如果其他字段出现在陈述中，则可能是实体。 由于有意向、实体和示例陈述，因此需要一个简单的示例应用。
 
 ## <a name="steps-to-generate-a-luis-app-from-non-luis-data"></a>从非 LUIS 数据生成 LUIS 应用的步骤
-若要从源文件生成新的 LUIS 应用，首先分析 CSV 文件中的数据并将此数据转换为可以使用 Authoring API 将其上传到 LUIS 的格式。 从已分析的数据，收集存在的意向和实体的信息。 然后进行 API 调用，以创建应用，并添加从已分析的数据收集的意向和实体。 创建 LUIS 应用后，可以从已分析的数据中添加示例陈述。 可以在下面的代码的最后一部分看到此流程。 复制或[下载](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/index.js)此代码并将其保存在 `index.js`。
+从 CSV 文件生成新的 LUIS 应用：
+
+* 分析 CSV 文件中的数据：
+    * 转换为可以使用创作 API 上传到 LUIS 的格式。
+    * 从已分析的数据收集有关意向和实体的信息。
+* 调用创作 API 以执行以下操作：
+    * 创建应用。
+    * 添加从已分析数据中收集的意向和实体。
+    * 创建 LUIS 应用后，可以从已分析的数据中添加示例陈述。
+
+可以在 `index.js` 文件的最后一部分中看到此程序流。 复制或[下载](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/index.js)此代码并将其保存在 `index.js`。
 
    [!code-javascript[Node.js code for calling the steps to build a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/index.js)]
 
 
 ## <a name="parse-the-csv"></a>分析 CSV
 
-包含 CSV 中的陈述的列条目必须被分析为 LUIS 可以理解的 JSON 格式。 此 JSON 格式必须包含一个 `intentName` 字段，该字段标识陈述的意向。 它还必须包含一个 `entityLabels` 字段，如果陈述中没有实体，该字段可以是空的。 
+包含 CSV 中的陈述的列条目必须被分析为 LUIS 可以理解的 JSON 格式。 此 JSON 格式必须包含一个 `intentName` 字段，该字段标识陈述的意向。 它还必须包含一个 `entityLabels` 字段，如果陈述中没有实体，该字段可以是空的。
 
 例如，“打开灯”条目映射到此 JSON：
 
@@ -70,7 +83,7 @@ LUIS 提供与 [LUIS](luis-reference-regions.md) 网站功能相同的编程 API
         }
 ```
 
-在此示例中，`intentName` 来自 CSV 文件中“Request”列标题下的用户请求，`entityName` 来自具有密钥信息的其他列。 例如，如果有“操作”或“设备”条目，并且该字符串也出现在实际请求中，则可将其标记为实体。 下面的代码演示此分析过程。 可以复制或[下载](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_parse.js)它并将其保存在 `_parse.js`。
+在此示例中，`intentName` 来自 CSV 文件中“Request”列标题下的用户请求，`entityName` 来自具有密钥信息的其他列****。 例如，如果有“操作”或“设备”条目，并且该字符串也出现在实际请求中，则可将其标记为实体********。 下面的代码演示此分析过程。 可以复制或[下载](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_parse.js)它并将其保存在 `_parse.js`。
 
    [!code-javascript[Node.js code for parsing a CSV file to extract intents, entities, and labeled utterances](~/samples-luis/examples/build-app-programmatically-csv/_parse.js)]
 
@@ -92,7 +105,7 @@ LUIS 提供与 [LUIS](luis-reference-regions.md) 网站功能相同的编程 API
 以下代码向 LUIS 应用添加实体。 复制或[下载](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_entities.js)它，并将其保存到 `_entities.js`。
 
    [!code-javascript[Node.js code for creating entities](~/samples-luis/examples/build-app-programmatically-csv/_entities.js)]
-   
+
 
 
 ## <a name="add-utterances"></a>添加表达
@@ -119,9 +132,9 @@ LUIS 应用中定义了实体和意向后，可以添加陈述。 下面的代�
 
 ```javascript
 // Change these values
-const LUIS_programmaticKey = "YOUR_PROGRAMMATIC_KEY";
+const LUIS_programmaticKey = "YOUR_AUTHORING_KEY";
 const LUIS_appName = "Sample App";
-const LUIS_appCulture = "en-us"; 
+const LUIS_appCulture = "en-us";
 const LUIS_versionId = "0.1";
 ```
 
@@ -167,7 +180,7 @@ upload done
 
 
 ## <a name="open-the-luis-app"></a>打开 LUIS 应用
-该脚本完成后，可以登录 [LUIS](luis-reference-regions.md)，查看“我的应用”下创建的 LUIS 应用。 应该能够看到在 TurnOn、TurnOff 和 None 意向下添加的陈述。
+该脚本完成后，可以登录 [LUIS](luis-reference-regions.md)，查看“我的应用”下创建的 LUIS 应用****。 应该能够看到在 TurnOn、TurnOff 和 None 意向下添加的陈述************。
 
 ![TurnOn 意向](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
 
@@ -182,5 +195,5 @@ upload done
 此示例应用程序使用以下 LUIS API：
 - [创建应用](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)
 - [添加意向](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0c)
-- [添加实体](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0e) 
-- [添加陈述](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09)
+- [添加实体](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0e)
+- [添加最谈话](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09)

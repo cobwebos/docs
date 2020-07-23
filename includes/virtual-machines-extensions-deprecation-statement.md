@@ -2,18 +2,18 @@
 title: include 文件
 description: include 文件
 services: virtual-machines-linux
-author: RicksterCDN
+author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: include file
 ms.date: 04/20/2018
-ms.author: rclaus
+ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: ed68d9d2a0e983fbe753360d9f539f5d89a2187f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 70dc2913365d41bf751b62bc4c55f94c97d8d9dc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66152316"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "71168790"
 ---
 > [!IMPORTANT]
 > 此扩展已被弃用，列在此处仅供参考。 不建议在部署中继续使用此扩展。 

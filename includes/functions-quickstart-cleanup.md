@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: a1bedf97f5ae7c48e5bcb47880a25ee1219b917b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: e5213a20036385ff25373252e6670d8bd86a4b07
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66131643"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80056570"
 ---
 本教程系列中的其他快速入门教程是在本文的基础上制作的。 如果打算使用后续的快速入门、教程或者在本快速入门中创建的任何服务，请勿清理这些资源。
 
@@ -19,7 +19,7 @@ Azure 中的资源是指函数应用、函数、存储帐户等。 这些资源�
 
 1. 在 Azure 门户中转到“资源组”页。 
 
-   若要从函数应用页转到该页，请选择“概览”选项卡，然后选择“资源组”下的链接。
+   若要从函数应用页转到该页，请选择“概览”选项卡，然后选择“资源组”下的链接。 
 
    ![从函数应用页选择要删除的资源组。](./media/functions-quickstart-cleanup/functions-app-delete-resource-group.png)
 

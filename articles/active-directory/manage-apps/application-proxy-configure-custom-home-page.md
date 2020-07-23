@@ -1,81 +1,80 @@
 ---
-title: 使用 Azure AD 应用程序代理为发布的应用设置自定义主页 | Microsoft 文档
+title: 已发布应用的自定义主页-Azure AD 应用程序代理
 description: 介绍有关 Azure AD 应用程序代理连接器的基础知识
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f4e71bd7fd7e0ed9a220619995ba108fdccabe4
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: 4e7e3a6666d467045b733b5401476fd83c93be19
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66233749"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764870"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理为发布的应用设置自定义主页
 
-本文介绍如何配置应用以将用户引向自定义主页。 当发布具有应用程序代理的应用时，设置内部 URL，但有时候这不是用户应首先看到的页面。 设置自定义主页，以便用户在访问应用程序时获取正确的页面。 用户将看到自定义主页设置，而不考虑是否从 Azure Active Directory 访问面板或 Office 365 应用启动器访问应用。
+本文介绍如何将应用程序配置为将用户定向到自定义主页。 当你使用应用程序代理发布应用时，你可以设置内部 URL，但有时不是用户首先应该看到的页面。 设置自定义主页，以便用户在访问应用时获得正确的页面。 用户将看到您设置的自定义主页，无论他们是从 Azure Active Directory 访问面板还是 Office 365 应用程序启动器访问应用程序。
 
-当用户启动应用时，他们会定向到已发布的应用的根域 URL 默认情况下。 登陆页通常设置为主页 URL。 使用 Azure AD PowerShell 模块来定义自定义主页 URL 时要应用用户登录到应用程序中的特定页面。
+用户启动应用程序时，默认情况下，这些应用程序会定向到已发布应用的根域 URL。 登陆页通常设置为主页 URL。 如果希望应用用户在应用中的特定页面上居住，请使用 Azure AD PowerShell 模块定义自定义主页 URL。
 
-下面是一种方案，说明为何你的公司将自定义主页：
+下面是一个说明你的公司为何要设置自定义主页的方案：
 
-- 在公司网络，用户将转到`https://ExpenseApp/login/login.aspx`登录并访问你的应用。
-- 由于你有其他资产 （如图像） 的应用程序代理需要访问的文件夹结构的顶层，发布应用程序与`https://ExpenseApp`作为内部 URL。
-- 默认外部 URL 是`https://ExpenseApp-contoso.msappproxy.net`，不会将外部用户到登录页。
-- 你想要设置`https://ExpenseApp-contoso.msappproxy.net/login/login.aspx`为主页 URL 相反，因此外部用户会看到登录页第一次。
+- 在公司网络内部，用户可以转到 `https://ExpenseApp/login/login.aspx` 登录并访问你的应用程序。
+- 由于应用程序代理需要在文件夹结构的顶层访问其他资产（如图像），因此可以使用 `https://ExpenseApp` 作为内部 URL 发布应用。
+- 默认外部 URL 是 `https://ExpenseApp-contoso.msappproxy.net` ，这不会将外部用户转到登录页。
+- 您希望改为将设置 `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` 为主页 URL，以便外部用户首先看到登录页。
 
->[!NOTE]
->向用户提供对已发布应用的访问权限时，会在 [Azure AD 访问面板](../user-help/my-apps-portal-end-user-access.md)和 [Office 365 应用启动器](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/)中显示这些应用。
+> [!NOTE]
+> 向用户提供对已发布应用的访问权限时，会在 [Azure AD 访问面板](../user-help/my-apps-portal-end-user-access.md)和 [Office 365 应用启动器](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/)中显示这些应用。
 
 ## <a name="before-you-start"></a>开始之前
 
 在设置主页 URL 之前，请注意以下要求：
 
-- 您指定的路径必须是根域 URL 的子域路径。
+- 指定的路径必须是根域 URL 的子域路径。
 
-  例如，如果根域 URL 为`https://apps.contoso.com/app1/`，你配置的主页 URL 必须以与`https://apps.contoso.com/app1/`。
+  例如，如果根域 URL 为 `https://apps.contoso.com/app1/` ，则配置的主页 url 必须以开头 `https://apps.contoso.com/app1/` 。
 
 - 如果对发布的应用做了更改，这种更改可能会重置主页 URL 的值。 将来更新应用时，应该重新检查并根据需要更新主页 URL。
 
-您可以设置主页 URL 通过 Azure 门户或使用 PowerShell。
+可以通过 Azure 门户或 PowerShell 设置主页 URL。
 
 ## <a name="change-the-home-page-in-the-azure-portal"></a>更改 Azure 门户的主页
 
-若要更改你的应用通过 Azure AD 门户的主页 URL，请按照下列步骤：
+若要通过 Azure AD 门户更改应用的主页 URL，请执行以下步骤：
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
-2. 选择**Azure Active Directory**，然后**应用注册**。 显示已注册应用的列表。
-3. 从列表中选择您的应用程序。 将显示一个页面，显示已注册的应用的详细信息。
-4. 下**管理**，选择**品牌**。
-5. 更新**主页 URL**使用新路径。
+1. 选择 " **Azure Active Directory**"，然后**应用注册**"。 此时将显示已注册应用的列表。
+1. 从列表中选择应用。 此时将显示一个页面，其中显示已注册应用的详细信息。
+1. 在 "**管理**" 下，选择 "**品牌**"。
+1. 用新路径更新**主页 URL** 。
 
-   ![显示主页 URL 字段的已注册应用程序的品牌页](media/application-proxy-configure-custom-home-page/app-proxy-app-branding.png)
- 
-6. 选择“保存”。 
+   ![显示 "主页 URL" 字段的已注册应用的品牌页面](media/application-proxy-configure-custom-home-page/app-proxy-app-branding.png)
+
+1. 选择“保存”。
 
 ## <a name="change-the-home-page-with-powershell"></a>使用 PowerShell 更改主页
 
-若要配置的应用程序使用 PowerShell 主页上，需要：
+若要使用 PowerShell 配置应用的主页，需执行以下操作：
 
 1. 安装 Azure AD PowerShell 模块。
-2. 查找应用的 ObjectId 值。
-3. 更新应用程序的主页 URL 使用 PowerShell 命令。
+1. 查找应用的 ObjectId 值。
+1. 使用 PowerShell 命令更新应用的主页 URL。
 
 ### <a name="install-the-azure-ad-powershell-module"></a>安装 Azure AD PowerShell 模块
 
-在使用 PowerShell 定义自定义主页 URL 之前，请安装 Azure AD PowerShell 模块。 可以从 [PowerShell 库](https://www.powershellgallery.com/packages/AzureAD/2.0.2.16)下载使用图形 API 终结点的包。
+在使用 PowerShell 定义自定义主页 URL 之前，请安装 Azure AD PowerShell 模块。可以从 [PowerShell 库](https://www.powershellgallery.com/packages/AzureAD/2.0.2.16)下载使用图形 API 终结点的包。
 
 若要安装包，请执行以下步骤：
 
@@ -87,11 +86,11 @@ ms.locfileid: "66233749"
 
     如果以非管理员身份运行该命令，请使用 `-scope currentuser` 选项。
 
-2. 在安装期间，请选择“Y”安装来自 Nuget.org 的两个包。  这两个包是必需的。
+1. 在安装过程中，选择 " **Y** " 以从 Nuget.org 安装两个包。这两个包都是必需的。
 
 ### <a name="find-the-objectid-of-the-app"></a>查找应用的 ObjectId
 
-通过搜索应用程序的显示名称或主页上获取应用的 ObjectId。
+通过使用应用程序的显示名称或主页搜索应用程序来获取应用程序的 ObjectId。
 
 1. 在同一 PowerShell 窗口中，导入 Azure AD 模块。
 
@@ -99,19 +98,19 @@ ms.locfileid: "66233749"
    Import-Module AzureAD
    ```
 
-2. 以租户管理员身份登录到 Azure AD 模块。
+1. 以租户管理员身份登录到 Azure AD 模块。
 
    ```powershell
    Connect-AzureAD
    ```
 
-3. 查找应用。 此示例使用 PowerShell 通过使用显示名称的应用的搜索查找 ObjectId `SharePoint`。
+1. 查找应用。 此示例使用 PowerShell 通过搜索显示名称为的应用来查找 ObjectId `SharePoint` 。
 
    ```powershell
    Get-AzureADApplication | Where-Object { $_.DisplayName -eq "SharePoint" } | Format-List DisplayName, Homepage, ObjectId
    ```
 
-   随后应会返回如下所示的结果。 复制 ObjectId GUID，以便在下一节中使用。
+   随后应会返回如下所示的结果。 复制 ObjectId GUID，以便在下一部分中使用。
 
    ```console
    DisplayName : SharePoint
@@ -119,7 +118,7 @@ ms.locfileid: "66233749"
    ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
    ```
 
-   或者，您可能只需拉取所有应用的列表、 使用特定的显示名称或主页上，应用的列表中搜索和复制应用的 ObjectId 后找到该应用。
+   或者，你可以只请求所有应用的列表，在列表中搜索具有特定显示名称或主页的应用，并在找到应用后复制应用的 ObjectId。
 
    ```powershell
    Get-AzureADApplication | Format-List DisplayName, Homepage, ObjectId
@@ -127,45 +126,45 @@ ms.locfileid: "66233749"
 
 ### <a name="update-the-home-page-url"></a>更新主页 URL
 
-创建主页 URL，并更新您的应用程序具有此值。 继续使用相同的 PowerShell 窗口中，或如果你使用新的 PowerShell 窗口，登录到 Azure AD 模块，然后再次使用`Connect-AzureAD`。 然后执行以下步骤：
+创建主页 URL，并将应用程序更新为该值。 继续使用同一 PowerShell 窗口，如果使用的是新的 PowerShell 窗口，请使用再次登录到 Azure AD 模块 `Connect-AzureAD` 。 然后执行以下步骤：
 
-1. 创建一个变量来保存上一节中复制的 ObjectId 值。 （将为你的应用的 ObjectId 值此 SharePoint 示例中使用的 ObjectId 值。）
+1. 创建一个变量，用于保存在上一部分中复制的 ObjectId 值。 （将此 SharePoint 示例中用于的 ObjectId 值替换为应用的 ObjectId 值。）
 
    ```powershell
    $objguid = "8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4"
    ```
 
-2. 确认你有正确的应用程序通过运行以下命令。 输出应该与在上一节中看到的输出完全一致 ([查找应用的 ObjectId](#find-the-objectid-of-the-app))。
+1. 通过运行以下命令来确认你拥有正确的应用程序。 输出应与您在上一节中看到的输出相同（[查找应用的 ObjectId](#find-the-objectid-of-the-app)）。
 
    ```powershell
    Get-AzureADApplication -ObjectId $objguid | Format-List DisplayName, Homepage, ObjectId
    ```
 
-3. 创建一个空白应用程序对象用于保存想要做出的更改。
+1. 创建一个空白应用程序对象用于保存想要做出的更改。
 
    ```powershell
    $appnew = New-Object "Microsoft.Open.AzureAD.Model.Application"
    ```
 
-4. 将主页 URL 设置为所需的值。 该值必须是已发布应用的子域路径。 例如，如果将主页 URL 从 `https://sharepoint-iddemo.msappproxy.net/` 更改为 `https://sharepoint-iddemo.msappproxy.net/hybrid/`，则应用用户将直接转到自定义主页。
+1. 将主页 URL 设置为所需的值。 该值必须是已发布应用的子域路径。 例如，如果将主页 URL 从 `https://sharepoint-iddemo.msappproxy.net/` 更改为 `https://sharepoint-iddemo.msappproxy.net/hybrid/`，则应用用户将直接转到自定义主页。
 
    ```powershell
    $homepage = "https://sharepoint-iddemo.msappproxy.net/hybrid/"
    ```
 
-5. 请在主页的更新。
+1. 对主页进行更新。
 
    ```powershell
    Set-AzureADApplication -ObjectId $objguid -Homepage $homepage
    ```
 
-6. 若要确认更改成功，再次请从步骤 2 中运行以下命令。
+1. 若要确认更改是否成功，请再次运行步骤2中的以下命令。
 
    ```powershell
    Get-AzureADApplication -ObjectId $objguid | Format-List DisplayName, Homepage, ObjectId
    ```
 
-   对于我们的示例的输出应现在出现，如下所示：
+   对于我们的示例，输出现在应如下所示：
 
    ```console
    DisplayName : SharePoint
@@ -173,12 +172,12 @@ ms.locfileid: "66233749"
    ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
    ```
 
-7. 重新启动应用以确认主页上显示为第一个屏幕上，按预期方式。
+1. 重新启动应用以确认主页显示为第一个屏幕（如预期）。
 
->[!NOTE]
->对应用进行任何更改都可能会重置主页 URL。 如果主页网址重置，请重复执行此部分中的步骤，重置主页网址。
+> [!NOTE]
+> 对应用进行任何更改都可能会重置主页 URL。 如果主页网址重置，请重复执行此部分中的步骤，重置主页网址。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure AD 应用程序代理启用对 SharePoint 的远程访问](application-proxy-integrate-with-sharepoint-server.md)
-- [教程：在 Azure Active Directory 中添加用于通过应用程序代理远程访问的本地应用程序](application-proxy-add-on-premises-application.md)
+- [通过 Azure AD 应用程序代理启用对 SharePoint 的远程访问](application-proxy-integrate-with-sharepoint-server.md)
+- [教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问](application-proxy-add-on-premises-application.md)

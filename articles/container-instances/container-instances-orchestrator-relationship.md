@@ -1,19 +1,14 @@
 ---
-title: Azure 容器实例和容器业务流程
+title: 容器实例和容器业务流程
 description: 了解 Azure 容器实例如何与容器业务流程协调程序交互。
-services: container-instances
-author: dlepow
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: df9c3ecbec6dccd9ba8db2b375cfab3276005098
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: f3f8693d1a9a12e7c35d126ab3e3ca53448e5e40
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65072987"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74533658"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure 容器实例和容器协调器
 
@@ -71,6 +66,6 @@ Azure 容器实例支持分层的协调方法，提供全部所需的调度和�
 <!-- IMAGES -->
 
 <!-- LINKS -->
-[aci-connector-k8s]: https://github.com/virtual-kubelet/virtual-kubelet/tree/master/providers/azure
+[aci-connector-k8s]: https://github.com/virtual-kubelet/azure-aci
 [kubelet-doc]: https://kubernetes.io/docs/admin/kubelet/
 [pod-doc]: https://kubernetes.io/docs/concepts/workloads/pods/pod/

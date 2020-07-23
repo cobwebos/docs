@@ -1,20 +1,20 @@
 ---
 title: 什么是 BLEU 分数？ - 自定义翻译
 titleSuffix: Azure Cognitive Services
-description: BLEU 用于度量同一源语句的自动翻译与一个或多个人工创建的参考翻译之间的差异。 BLEU 算法将自动翻译的连续短语与它在参考翻译中找到的连续短语进行比较，并以加权方式对匹配项数进行计数。
-author: rajdeep-in
-manager: christw
+description: BLEU 是对计算机翻译和相同源句子的人工创建引用翻译之间的差异的度量。
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.author: v-pawal
-ms.openlocfilehash: 08be79dde62a1d624fa59816cf855e702245b622
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.date: 05/26/2020
+ms.author: swmachan
+ms.openlocfilehash: b35dce5a2b572e5a3f11601d5e67efb2da02cdec
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66385170"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83997054"
 ---
 # <a name="what-is-a-bleu-score"></a>什么是 BLEU 分数？
 
@@ -26,7 +26,7 @@ BLEU 算法将自动翻译的连续短语与它在参考翻译中找到的连续
 
 ## <a name="how-bleu-works"></a>BLEU 如何工作？
 
-BLEU 的优势在于，它可以根据测试语料库对各个语句判断错误进行平均来与人为判断建立密切关联，而不试图为每个语句建议确切的人为判断。
+BLEU 的优点是，它通过对测试语料库的单个句子判断错误进行求和，而不是尝试为每个句子设计确切的人工判断，从而与人工判断非常关联。
 
 [此处](https://youtu.be/-UqDljMymMg)更详细地讨论了 BLEU 分数。
 

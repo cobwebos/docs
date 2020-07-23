@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：使用 SAML 2.0 标识提供者进行的 Azure 上的单一登录
+title: Azure AD Connect：将 SAML 2.0 标识提供者用于单一登录 - Azure
 description: 本文档介绍使用符合 SAML 2.0 的 Idp 进行单一登录。
 services: active-directory
 author: billmath
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e25060152577e7947a78aa0e8d78c85cc7fd2fad
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c8559ba3bf78b6adc8e6ca3d3c628cd3c0b9fec0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138344"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85359698"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>使用 SAML 2.0 标识提供者 (IdP) 进行单一登录
 
@@ -41,7 +41,7 @@ Microsoft 提供此登录体验，支持将 Microsoft 云服务（例如 Office 
 >     - Windows 8 邮件客户端和 Windows 8.1 邮件客户端
 >     - Windows 10 邮件客户端
 
-其他所有客户端都不可在这种采用 SAML 2.0 标识提供者的登录方案中使用。 例如，Lync 2010 桌面客户端不能登录到该服务与 SAML 2.0 标识提供者配置为单一登录。
+其他所有客户端都不可在这种采用 SAML 2.0 标识提供者的登录方案中使用。 例如，Lync 2010 桌面客户端无法登录到配置了 SAML 2.0 标识提供者的单一登录服务中。
 
 ## <a name="azure-ad-saml-20-protocol-requirements"></a>Azure AD SAML 2.0 协议需求
 本文档介绍有关 SAML 2.0 标识提供者联合 Azure AD 以启用登录到一个或多个 Microsoft 云服务（例如 Office 365）必须实现的协议和消息格式的详细需求。 此方案中所使用的 Microsoft 云服务的 SAML 2.0 信赖方 (SP-STS) 为 Azure AD。
@@ -71,13 +71,13 @@ Microsoft 提供此登录体验，支持将 Microsoft 云服务（例如 Office 
 绑定是所需的传输相关通信参数。 以下需求适用于绑定
 
 1. HTTPS 是所需的传输。
-2.  Azure AD 将登录期间提交令牌需要 HTTP POST。
-3.  Azure AD 将使用 HTTP POST 消息到标识提供者登录到标识提供程序和重定向的身份验证请求。
+2.  登录期间，Azure AD 需要 HTTP POST 进行令牌提交。
+3.  Azure AD 将使用 HTTP POST 来处理发送给标识提供者的身份验证请求，并使用 REDIRECT 来处理发送给标识提供者的注销消息。
 
 ## <a name="required-attributes"></a>必需属性
 此表显示了 SAML 2.0 消息中特定属性的需求。
  
-|属性|描述|
+|Attribute|说明|
 | ----- | ----- |
 |NameID|此断言的值必须与 Azure AD 用户的 ImmutableID 一样。 它最多可由 64 个字母数字字符组成。 任何非 html 安全型字符都必须进行编码，例如，“+”字符显示为“.2B”。|
 |IDPEmail|用户主体名称 (UPN) 将以名为 IDPEmail 的元素的形式列入 SAML 响应中，这是用户在 Azure AD/Office 365 中的 UserPrincipalName (UPN)。 UPN 采用电子邮件地址格式。 Windows Office 365 (Azure Active Directory) 中的 UPN 值。|
@@ -90,14 +90,23 @@ Microsoft 提供此登录体验，支持将 Microsoft 云服务（例如 Office 
 将显示请求和响应消息对，以用于登录消息交换。
 以下是从 Azure AD 发送到示例 SAML 2.0 标识提供者的示例请求消息。 示例 SAML 2.0 标识提供者是配置以使用 SAML-P 协议的 Active Directory 联合身份验证服务 (AD FS)。 其他 SAML 2.0 标识提供者的互操作性测试也已经完成。
 
-    `<samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" ID="_7171b0b2-19f2-4ba2-8f94-24b5e56b7f1e" IssueInstant="2014-01-30T16:18:35Z" Version="2.0" AssertionConsumerServiceIndex="0" >
-    <saml:Issuer>urn:federation:MicrosoftOnline</saml:Issuer>
-    <samlp:NameIDPolicy Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"/>
-    </samlp:AuthnRequest>`
+```xml
+    <samlp:AuthnRequest 
+        xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" 
+        xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" 
+        ID="_7171b0b2-19f2-4ba2-8f94-24b5e56b7f1e" 
+        IssueInstant="2014-01-30T16:18:35Z" 
+        Version="2.0" 
+        AssertionConsumerServiceIndex="0" >
+            <saml:Issuer>urn:federation:MicrosoftOnline</saml:Issuer>
+            <samlp:NameIDPolicy Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"/>
+    </samlp:AuthnRequest>
+```
 
 以下是从示例符合 SAML 2.0 的标识提供者发送到 Azure AD/Office 365 的示例响应消息。
 
-    `<samlp:Response ID="_592c022f-e85e-4d23-b55b-9141c95cd2a5" Version="2.0" IssueInstant="2014-01-31T15:36:31.357Z" Destination="https://login.microsoftonline.com/login.srf" Consent="urn:oasis:names:tc:SAML:2.0:consent:unspecified" InResponseTo="_049917a6-1183-42fd-a190-1d2cbaf9b144" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
+```xml
+    <samlp:Response ID="_592c022f-e85e-4d23-b55b-9141c95cd2a5" Version="2.0" IssueInstant="2014-01-31T15:36:31.357Z" Destination="https://login.microsoftonline.com/login.srf" Consent="urn:oasis:names:tc:SAML:2.0:consent:unspecified" InResponseTo="_049917a6-1183-42fd-a190-1d2cbaf9b144" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
     <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">http://WS2012R2-0.contoso.com/adfs/services/trust</Issuer>
     <samlp:Status>
     <samlp:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success" />
@@ -146,7 +155,8 @@ Microsoft 提供此登录体验，支持将 Microsoft 云服务（例如 Office 
       </AuthnContext>
     </AuthnStatement>
     </Assertion>
-    </samlp:Response>`
+    </samlp:Response>
+```
 
 ## <a name="configure-your-saml-20-compliant-identity-provider"></a>配置符合 SAML 2.0 的标识提供者
 本部分介绍有关如何配置 SAML 2.0 标识提供者以联合 Azure AD，从而使用 SAML 2.0 协议启用单一登录访问一个或多个 Microsoft 云服务（例如 Office 365）的指南。 此方案中所使用的 Microsoft 云服务的 SAML 2.0 信赖方为 Azure AD。
@@ -184,17 +194,54 @@ SAML 2.0 标识提供者需要遵循有关 Azure AD 信赖方的信息。 Azure 
 ## <a name="configuring-a-domain-in-your-azure-ad-directory-for-federation"></a>在 Azure AD Directory 中配置联合域以进行联合
 
 
-1. 以租户管理员身份连接到 Azure AD Directory：Connect-MsolService。
-2.  通过 SAML 2.0 将所需的 Office 365 域配置为使用联合：`$dom = "contoso.com" $BrandName - "Sample SAML 2.0 IDP" $LogOnUrl = "https://WS2012R2-0.contoso.com/passiveLogon" $LogOffUrl = "https://WS2012R2-0.contoso.com/passiveLogOff" $ecpUrl = "https://WS2012R2-0.contoso.com/PAOS" $MyURI = "urn:uri:MySamlp2IDP" $MySigningCert = @" MIIC7jCCAdagAwIBAgIQRrjsbFPaXIlOG3GTv50fkjANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyh BREZTIFNpZ25pbmcgLSBXUzIwMTJSMi0wLnN3aW5mb3JtZXIuY29tMB4XDTE0MDEyMDE1MTY0MFoXDT E1MDEyMDE1MTY0MFowMzExMC8GA1UEAxMoQURGUyBTaWduaW5nIC0gV1MyMDEyUjItMC5zd2luZm9yb WVyLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKe+rLVmXy1QwCwZwqgbbp1/kupQ VcjKuKLitVDbssFyqbDTjP7WRjlVMWAHBI3kgNT7oE362Gf2WMJFf1b0HcrsgLin7daRXpq4Qi6OA57 sW1YFMj3sqyuTP0eZV3S4+ZbDVob6amsZIdIwxaLP9Zfywg2bLsGnVldB0+XKedZwDbCLCVg+3ZWxd9 T/jV0hpLIIWr+LCOHqq8n8beJvlivgLmDJo8f+EITnAxWcsJUvVai/35AhHCUq9tc9sqMp5PWtabAEM b2AU72/QlX/72D2/NbGQq1BWYbqUpgpCZ2nSgvlWDHlCiUo//UGsvfox01kjTFlmqQInsJVfRxF5AcC AwEAATANBgkqhkiG9w0BAQsFAAOCAQEAi8c6C4zaTEc7aQiUgvnGQgCbMZbhUXXLGRpjvFLKaQzkwa9 eq7WLJibcSNyGXBa/SfT5wJgsm3TPKgSehGAOTirhcqHheZyvBObAScY7GOT+u9pVYp6raFrc7ez3c+ CGHeV/tNvy1hJNs12FYH4X+ZCNFIT9tprieR25NCdi5SWUbPZL0tVzJsHc1y92b2M2FxqRDohxQgJvy JOpcg2mSBzZZIkvDg7gfPSUXHVS1MQs0RHSbwq/XdQocUUhl9/e/YWCbNNxlM84BxFsBUok1dH/gzBy Sx+Fc8zYi7cOq9yaBT3RLT6cGmFGVYZJW4FyhPZOCLVNsLlnPQcX3dDg9A==" "@ $uri = "http://WS2012R2-0.contoso.com/adfs/services/trust" $Protocol = "SAMLP" Set-MsolDomainAuthentication -DomainName $dom -FederationBrandName $dom -Authentication Federated -PassiveLogOnUri $MyURI -ActiveLogOnUri $ecpUrl -SigningCertificate $MySigningCert -IssuerUri $uri -LogOffUri $url -PreferredAuthenticationProtocol $Protocol` 
+1. 以租户管理员身份连接到 Azure AD Directory：
+
+    ```powershell
+    Connect-MsolService
+    ```
+    
+2. 通过 SAML 2.0 将所需的 Office 365 域配置为使用联合：
+
+    ```powershell
+    $dom = "contoso.com" 
+    $BrandName - "Sample SAML 2.0 IDP" 
+    $LogOnUrl = "https://WS2012R2-0.contoso.com/passiveLogon" 
+    $LogOffUrl = "https://WS2012R2-0.contoso.com/passiveLogOff" 
+    $ecpUrl = "https://WS2012R2-0.contoso.com/PAOS" 
+    $MyURI = "urn:uri:MySamlp2IDP" 
+    $MySigningCert = "MIIC7jCCAdagAwIBAgIQRrjsbFPaXIlOG3GTv50fkjANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyh BREZTIFNpZ25pbmcgLSBXUzIwMTJSMi0wLnN3aW5mb3JtZXIuY29tMB4XDTE0MDEyMDE1MTY0MFoXDT E1MDEyMDE1MTY0MFowMzExMC8GA1UEAxMoQURGUyBTaWduaW5nIC0gV1MyMDEyUjItMC5zd2luZm9yb WVyLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKe+rLVmXy1QwCwZwqgbbp1/kupQ VcjKuKLitVDbssFyqbDTjP7WRjlVMWAHBI3kgNT7oE362Gf2WMJFf1b0HcrsgLin7daRXpq4Qi6OA57 sW1YFMj3sqyuTP0eZV3S4+ZbDVob6amsZIdIwxaLP9Zfywg2bLsGnVldB0+XKedZwDbCLCVg+3ZWxd9 T/jV0hpLIIWr+LCOHqq8n8beJvlivgLmDJo8f+EITnAxWcsJUvVai/35AhHCUq9tc9sqMp5PWtabAEM b2AU72/QlX/72D2/NbGQq1BWYbqUpgpCZ2nSgvlWDHlCiUo//UGsvfox01kjTFlmqQInsJVfRxF5AcC AwEAATANBgkqhkiG9w0BAQsFAAOCAQEAi8c6C4zaTEc7aQiUgvnGQgCbMZbhUXXLGRpjvFLKaQzkwa9 eq7WLJibcSNyGXBa/SfT5wJgsm3TPKgSehGAOTirhcqHheZyvBObAScY7GOT+u9pVYp6raFrc7ez3c+ CGHeV/tNvy1hJNs12FYH4X+ZCNFIT9tprieR25NCdi5SWUbPZL0tVzJsHc1y92b2M2FxqRDohxQgJvy JOpcg2mSBzZZIkvDg7gfPSUXHVS1MQs0RHSbwq/XdQocUUhl9/e/YWCbNNxlM84BxFsBUok1dH/gzBy Sx+Fc8zYi7cOq9yaBT3RLT6cGmFGVYZJW4FyhPZOCLVNsLlnPQcX3dDg9A==" 
+    $uri = "http://WS2012R2-0.contoso.com/adfs/services/trust" 
+    $Protocol = "SAMLP" 
+    Set-MsolDomainAuthentication `
+        -DomainName $dom `
+        -FederationBrandName $BrandName `
+        -Authentication Federated `
+        -PassiveLogOnUri $LogOnUrl `
+        -ActiveLogOnUri $ecpUrl `
+        -SigningCertificate $MySigningCert `
+        -IssuerUri $MyURI `
+        -LogOffUri $LogOffUrl `
+        -PreferredAuthenticationProtocol $Protocol
+    ``` 
 
 3.  可以从 IDP 元数据文件中获取采用 base64 编码的签名证书字符串。 现已提供此位置的示例，但根据实现的不同可能会有细微的差别。
 
-    `<IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"> <KeyDescriptor use="signing"> <KeyInfo xmlns="https://www.w3.org/2000/09/xmldsig#"> <X509Data> <X509Certificate>MIIC5jCCAc6gAwIBAgIQLnaxUPzay6ZJsC8HVv/QfTANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwHhcNMTMxMTA0MTgxMzMyWhcNMTQxMTA0MTgxMzMyWjAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCwMdVLTr5YTSRp+ccbSpuuFeXMfABD9mVCi2wtkRwC30TIyPdORz642MkurdxdPCWjwgJ0HW6TvXwcO9afH3OC5V//wEGDoNcI8PV4enCzTYFe/h//w51uqyv48Fbb3lEXs+aVl8155OAj2sO9IX64OJWKey82GQWK3g7LfhWWpp17j5bKpSd9DBH5pvrV+Q1ESU3mx71TEOvikHGCZYitEPywNeVMLRKrevdWI3FAhFjcCSO6nWDiMqCqiTDYOURXIcHVYTSof1YotkJ4tG6mP5Kpjzd4VQvnR7Pjb47nhIYG6iZ3mR1F85Ns9+hBWukQWNN2hcD/uGdPXhpdMVpBAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAK7h7jF7wPzhZ1dPl4e+XMAr8I7TNbhgEU3+oxKyW/IioQbvZVw1mYVCbGq9Rsw4KE06eSMybqHln3w5EeBbLS0MEkApqHY+p68iRpguqa+W7UHKXXQVgPMCpqxMFKonX6VlSQOR64FgpBme2uG+LJ8reTgypEKspQIN0WvtPWmiq4zAwBp08hAacgv868c0MM4WbOYU0rzMIR6Q+ceGVRImlCwZ5b7XKp4mJZ9hlaRjeuyVrDuzBkzROSurX1OXoci08yJvhbtiBJLf3uPOJHrhjKRwIt2TnzS9ElgFZlJiDIA26Athe73n43CT0af2IG6yC7e6sK4L3NEXJrwwUZk=</X509Certificate> </X509Data> </KeyInfo> </KeyDescriptor>` 
+    ```xml
+    <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+        <KeyDescriptor use="signing">
+          <KeyInfo xmlns="https://www.w3.org/2000/09/xmldsig#">
+             <X509Data>
+                 <X509Certificate> MIIC5jCCAc6gAwIBAgIQLnaxUPzay6ZJsC8HVv/QfTANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwHhcNMTMxMTA0MTgxMzMyWhcNMTQxMTA0MTgxMzMyWjAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCwMdVLTr5YTSRp+ccbSpuuFeXMfABD9mVCi2wtkRwC30TIyPdORz642MkurdxdPCWjwgJ0HW6TvXwcO9afH3OC5V//wEGDoNcI8PV4enCzTYFe/h//w51uqyv48Fbb3lEXs+aVl8155OAj2sO9IX64OJWKey82GQWK3g7LfhWWpp17j5bKpSd9DBH5pvrV+Q1ESU3mx71TEOvikHGCZYitEPywNeVMLRKrevdWI3FAhFjcCSO6nWDiMqCqiTDYOURXIcHVYTSof1YotkJ4tG6mP5Kpjzd4VQvnR7Pjb47nhIYG6iZ3mR1F85Ns9+hBWukQWNN2hcD/uGdPXhpdMVpBAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAK7h7jF7wPzhZ1dPl4e+XMAr8I7TNbhgEU3+oxKyW/IioQbvZVw1mYVCbGq9Rsw4KE06eSMybqHln3w5EeBbLS0MEkApqHY+p68iRpguqa+W7UHKXXQVgPMCpqxMFKonX6VlSQOR64FgpBme2uG+LJ8reTgypEKspQIN0WvtPWmiq4zAwBp08hAacgv868c0MM4WbOYU0rzMIR6Q+ceGVRImlCwZ5b7XKp4mJZ9hlaRjeuyVrDuzBkzROSurX1OXoci08yJvhbtiBJLf3uPOJHrhjKRwIt2TnzS9ElgFZlJiDIA26Athe73n43CT0af2IG6yC7e6sK4L3NEXJrwwUZk=</X509Certificate>
+              </X509Data>
+            </KeyInfo>
+        </KeyDescriptor>
+    </IDPSSODescriptor>
+    ``` 
 
 有关“Set-MsolDomainAuthentication”的详细信息，请参阅：[https://technet.microsoft.com/library/dn194112.aspx](https://technet.microsoft.com/library/dn194112.aspx)。
 
 >[!NOTE]
->仅当为标识提供者设置了 ECP 扩展时，才必须使用 `$ecpUrl = "https://WS2012R2-0.contoso.com/PAOS"` 来运行。 Exchange Online 客户端（不包括 Outlook Web 应用程序 (OWA)）依赖于基于 POST 的活动终结点。 如果 SAML 2.0 STS 实现的活动终结点类似于 Shibboleth 的 ECP 实现的活动终结点，这些富客户端则有可能与 Exchange Online 服务进行交互。
+>仅当为标识提供者设置了 ECP 扩展时，才必须使用 `$ecpUrl = "https://WS2012R2-0.contoso.com/PAOS"`。 Exchange Online 客户端（不包括 Outlook Web 应用程序 (OWA)）依赖于基于 POST 的活动终结点。 如果 SAML 2.0 STS 实现的活动终结点类似于 Shibboleth 的 ECP 实现的活动终结点，这些富客户端则有可能与 Exchange Online 服务进行交互。
 
 配置联合后，可切换回“非联合”（或“托管”），但是此更改最长需要两个小时才能完成，并且需要为每个用户分配新的随机密码以用于基于云的登录。 某些情况下，可能需要切换回“托管”以重置设置中的错误。 有关域转换的详细信息，请参阅：[https://msdn.microsoft.com/library/windowsazure/dn194122.aspx](https://msdn.microsoft.com/library/windowsazure/dn194122.aspx)。
 
@@ -209,16 +256,17 @@ SAML 2.0 标识提供者需要遵循有关 Azure AD 信赖方的信息。 Azure 
 
 
 1. 以租户管理员身份连接到 Azure AD Directory：Connect-MsolService。
-2.  创建新用户主体：
+2. 创建新用户主体：
+
     ```powershell
-    New-MsolUser
-      -UserPrincipalName elwoodf1@contoso.com
-      -ImmutableId ABCDEFG1234567890
-      -DisplayName "Elwood Folk"
-      -FirstName Elwood 
-      -LastName Folk 
-      -AlternateEmailAddresses "Elwood.Folk@contoso.com" 
-      -LicenseAssignment "samlp2test:ENTERPRISEPACK" 
+    New-MsolUser `
+      -UserPrincipalName elwoodf1@contoso.com `
+      -ImmutableId ABCDEFG1234567890 `
+      -DisplayName "Elwood Folk" `
+      -FirstName Elwood `
+      -LastName Folk `
+      -AlternateEmailAddresses "Elwood.Folk@contoso.com" `
+      -LicenseAssignment "samlp2test:ENTERPRISEPACK" `
       -UsageLocation "US" 
     ```
 
@@ -258,7 +306,7 @@ Microsoft 提供了一种工具，可用于测试基于 SAML 2.0 的标识提供
 2.  单击“立即安装”开始下载并安装该工具。
 3.  选择“我无法设置与 Office 365、Azure 或其他使用 Azure Active Directory 的服务的联合”。
 4.  下载并运行该工具后，你将看到“连接性诊断”窗口。 该工具将逐步引导你测试联合连接。
-5.  Connectivity Analyzer 将打开 SAML 2.0 IDP，以便在登录、 用户主体正在测试输入的凭据：![SAML](./media/how-to-connect-fed-saml-idp/saml1.png)
+5.  Connectivity Analyzer 将开启 SAML 2.0 IDP 以便你登录，请输入进行测试的用户主体凭据：![SAML](./media/how-to-connect-fed-saml-idp/saml1.png)
 6.  在联合测试登录窗口，应为配置为与 SAML 2.0 标识提供者联合的 Azure AD 租户输入帐户名和密码。 该工具会尝试使用这些凭据进行登录，并提供登录尝试期间所执行的测试的详细结果作为输出。
 ![SAML](./media/how-to-connect-fed-saml-idp/saml2.png)
 7. 此窗口显示了测试失败的结果。 单击“查看详细结果”将显示执行的每个测试的结果信息。 还可以将结果保存到磁盘以便共享。
@@ -271,7 +319,7 @@ Microsoft 提供了一种工具，可用于测试基于 SAML 2.0 的标识提供
 若要验证是否已正确设置单一登录，请完成以下步骤：
 
 
-1. 在已加入域的计算机上，登录到云服务使用的相同登录名称用于公司凭据。
+1. 在已加入域的计算机上，使用企业凭据所用的相同登录名称登录到云服务。
 2.  在密码框内单击。 如果设置了单一登录，密码框将会灰显，并且你将看到以下消息：“你现在需要登录 &lt;your company&gt;。”
 3.  单击&lt;你的公司&gt;链接中的登录。 如果能够登录，则已设置好单一登录。
 

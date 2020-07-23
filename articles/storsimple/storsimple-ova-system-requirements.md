@@ -1,34 +1,31 @@
 ---
-title: Microsoft Azure StorSimple 虚拟阵列系统要求 | Microsoft Docs
+title: Microsoft Azure StorSimple 虚拟阵列系统要求
 description: 了解有关 StorSimple Virtual Array 的软件和网络要求的详细信息
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: ea1d3bca-e71b-453d-aa82-440d2638f5e3
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 01/11/2019
+ms.topic: conceptual
+ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: a6bea2b5447435930cb0e1f80073a11007e80415
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 020208a8b67d248c02fc659d4dc48fa22d333839
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60629299"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80298812"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple 虚拟阵列系统要求
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
+
 ## <a name="overview"></a>概述
+
 本文介绍了 Microsoft Azure StorSimple 虚拟阵列和访问阵列的存储客户端的重要系统要求。 建议在部署 StorSimple 系统之前仔细查看信息，并且在进行部署和后续操作过程中按需重新参阅。
 
-系统要求包括：
+系统需求包括：
 
 * **存储客户端的软件要求** - 介绍受支持的虚拟化平台、Web 浏览器、iSCSI 发起程序、SMB 客户端、最低虚拟设备要求，以及这些操作系统的任何其他要求。
-* **StorSimple 设备的网络要求** - 提供有关需要在防火墙中打开以允许 iSCSI、云和管理流量的端口的信息。
+* **StorSimple 设备的网络要求** 提供有关需要在防火墙中打开的端口的信息，以便允许传输 iSCSI、云或管理流量。
 
 本文中发布的 StorSimple 系统要求信息仅适用于 StorSimple Virtual Arrays。
 
@@ -39,7 +36,7 @@ ms.locfileid: "60629299"
 软件要求包括有关受支持的 Web 浏览器、SMB 版本、虚拟化平台和最低虚拟设备要求的信息。
 
 ### <a name="supported-virtualization-platforms"></a>受支持的虚拟化平台
-| **虚拟机监控程序** | **版本** |
+| **虚拟机监控程序** | **Version** |
 | --- | --- |
 | Hyper-V |Windows Server 2008 R2 SP1 和更高版本 |
 | VMware ESXi |5.0、5.5、6.0 和 6.5。 |
@@ -48,7 +45,7 @@ ms.locfileid: "60629299"
 > 不要将 VMware 工具安装在 StorSimple 虚拟阵列上，这将导致不支持的配置。
 
 ### <a name="virtual-device-requirements"></a>虚拟设备要求
-| 组件 | 要求 |
+| **组件** | **要求** |
 | --- | --- |
 | 虚拟处理器的最小数目（核） |4 |
 | 最小内存 (RAM) |8 GB <br> 对于文件服务器，小于 200 万个文件时为 8 GB，200 万 - 400 万个文件时为 16 GB|
@@ -61,7 +58,7 @@ ms.locfileid: "60629299"
 <sup>2</sup> - 网络要求可能会根据每日数据更改频率而有所不同。 例如，如果设备在一天中需要备份 10 GB 或更多更改，则通过 5 Mbps 连接进行的每日备份可能耗时长达 4.25 小时（如果无法压缩数据或删除重复数据）。
 
 ### <a name="supported-web-browsers"></a>受支持的 Web 浏览器
-| 组件 | **版本** | **其他要求/说明** |
+| 组件 | **Version** | **其他要求/说明** |
 | --- | --- | --- |
 | Microsoft Edge |最新版本 | |
 | Internet Explorer |最新版本 |使用 Internet Explorer 11 测试 |
@@ -90,29 +87,29 @@ ms.locfileid: "60629299"
 仅支持 Azure 块 blob 存储。 页 blob 不受支持。 请查阅[有关块 blob 和页 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 的更多信息。
 
 ## <a name="networking-requirements"></a>网络要求
-下表列出了需要在防火墙中打开以允许 iSCSI、SMB、云或管理流量的端口。 在此表中，*入*或*入站*指传入客户端请求访问设备的方向。 *出*或*出站*指 StorSimple 设备越过部署向外部发送数据的方向：例如，到 Internet 的出站。
+下表列出了需要在防火墙中打开以允许 iSCSI、SMB、云或管理流量的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 *出*或*出站*表示 StorSimple 设备从外部（超出部署范围）发送数据的方向：例如，到 Internet 的出站。
 
-| **端口号<sup>1</sup>** | **入或出** | **端口范围** | **必需** | **说明** |
+| **端口号<sup>1</sup>** | **入或出** | **端口范围** | **必需** | **备注** |
 | --- | --- | --- | --- | --- |
 | TCP 80 (HTTP) |出 |WAN |否 |出站端口用于 Internet 访问以检索更新。 <br></br>出站 Web 代理可由用户配置。 |
-| TCP 443 (HTTPS) |出 |WAN |是 |出站端口用于访问云中的数据。 <br></br>用户可配置出站 Web 代理。 |
+| TCP 443 (HTTPS) |出 |WAN |是 |出站端口用于访问云中的数据。 <br></br>出站 Web 代理可由用户配置。 |
 | UDP 53 (DNS) |出 |WAN |在某些情况下；请参阅说明。 |仅当使用基于 Internet 的 DNS 服务器时，才需要此端口。 <br></br> 注意，如果部署文件服务器，建议使用本地 DNS 服务器。 |
 | UDP 123 (NTP) |出 |WAN |在某些情况下；请参阅说明。 |仅当使用基于 Internet 的 NTP 服务器时，才需要此端口。<br></br> 注意，如果部署文件服务器，建议与 Active Directory 域控制器同步时间。 |
-| TCP 80 (HTTP) |In |LAN |是 |这是 StorSimple 设备上用于本地管理的本地 UI 的入站端口。 <br></br> 注意，通过 HTTP 访问本地 UI 会自动重定向到 HTTPS。 |
-| TCP 443 (HTTPS) |In |LAN |是 |这是 StorSimple 设备上用于本地管理的本地 UI 的入站端口。 |
-| TCP 3260 (iSCSI) |In |LAN |否 |此端口用于通过 iSCSI 访问数据。 |
+| TCP 80 (HTTP) |在 |LAN |是 |这是 StorSimple 设备上用于本地管理的本地 UI 的入站端口。 <br></br> 注意，通过 HTTP 访问本地 UI 会自动重定向到 HTTPS。 |
+| TCP 443 (HTTPS) |在 |LAN |是 |这是 StorSimple 设备上用于本地管理的本地 UI 的入站端口。 |
+| TCP 3260 (iSCSI) |在 |LAN |否 |此端口用于通过 iSCSI 访问数据。 |
 
 <sup>1</sup> 无需在公共 Internet 上打开任何入站端口。
 
 > [!IMPORTANT]
-> 请确保防火墙不会修改或解密 StorSimple 设备和 Azure 之间的任何 SSL 流量。
+> 请确保防火墙不会修改或解密 StorSimple 设备和 Azure 之间的任何 TLS 通信。
 > 
 > 
 
 ### <a name="url-patterns-for-firewall-rules"></a>防火墙规则的 URL 模式
 通常，网络管理员可以基于 URL 模式配置高级防火墙规则，以筛选入站和出站流量。 虚拟阵列和 StorSimple Device Manager 服务依赖于其他的 Microsoft 应用程序，如 Azure 服务总线、Azure Active Directory 访问控制、存储帐户和 Microsoft 更新服务器。 与这些应用程序相关联的 URL 模式可用于配置防火墙规则。 请务必了解可以更改与这些应用程序相关联的 URL 模式。 反之，这会要求网络管理员在需要时为 StorSimple 监视和更新防火墙规则。 
 
-绝大多数情况下，建议基于 StorSimple 固定 IP 地址为出站流量设置防火墙规则。 但是，也可以使用以下信息设置创建安全环境所需的高级防火墙规则。
+绝大多数情况下，建议基于 StorSimple 固定 IP 地址为出站流量设置防火墙规则。 但是，下面的信息可用于设置创建安全环境所需的高级防火墙规则。
 
 > [!NOTE]
 > 

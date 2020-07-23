@@ -8,16 +8,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
-ms.openlocfilehash: b6cde8402c699a7477cd0efc79a44b3f5e150ad0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: ab07da38c01b052a4220274fb059683a22950a3f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66146307"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75750696"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>将 IoT 中心从操作监视迁移到诊断设置
 
-使用[操作监视](iot-hub-operations-monitoring.md)跟踪 IoT 中心内的操作状态的客户可以将该工作流迁移到 [Azure 诊断设置](../azure-monitor/platform/diagnostic-logs-overview.md)（Azure Monitor 的一项功能）。 诊断设置针对许多 Azure 服务提供了资源级诊断信息。
+使用[操作监视](iot-hub-operations-monitoring.md)跟踪 IoT 中心内的操作状态的客户可以将该工作流迁移到 [Azure 诊断设置](../azure-monitor/platform/platform-logs-overview.md)（Azure Monitor 的一项功能）。 诊断设置针对许多 Azure 服务提供了资源级诊断信息。
 
 **IoT 中心的操作监视功能已弃用**，已从门户中删除。 本文提供了将工作负荷从操作监视移动到诊断设置的步骤。 若要详细了解弃用日程表，请参阅[利用 Azure Monitor 和 Azure 资源运行状况监视 Azure IoT 解决方案](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/)。
 
@@ -34,9 +33,9 @@ ms.locfileid: "66146307"
 
 在工作流中测试新的诊断设置后，可以关闭操作监视功能。 
 
-1. 在 IoT 中心菜单中，选择“操作监视”。
+1. 在 IoT 中心菜单中，选择“操作监视”。 
 
-2. 在每个监视类别下，选择“无”。
+2. 在每个监视类别下，选择“无”。 
 
 3. 保存操作监视更改。
 
@@ -56,7 +55,7 @@ ms.locfileid: "66146307"
 
 ## <a name="monitoring-device-connect-and-disconnect-events-with-low-latency"></a>以低延迟监视设备连接和断开连接事件
 
-若要监视设备连接和断开连接事件在生产环境中的，我们建议订阅[**断开连接的设备**事件](iot-hub-event-grid.md#event-types)事件网格，以获取警报和监视设备连接状态上。 使用此[教程](iot-hub-how-to-order-connection-state-events.md)了解如何在 IoT 解决方案中集成 IoT 中心的设备已连接和设备已断开连接事件。
+若要监视生产环境中的设备连接和断开连接事件，我们建议订阅事件网格上的[“设备已断开连接”  事件](iot-hub-event-grid.md#event-types)以获取警报并监视设备连接状态。 使用此[教程](iot-hub-how-to-order-connection-state-events.md)了解如何在 IoT 解决方案中集成 IoT 中心的设备已连接和设备已断开连接事件。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
 title: 通过添加编码单元缩放媒体处理 - Azure | Microsoft 文档
-description: 了解如何使用 .NET 添加编码单元
+description: 本文演示如何使用 Azure 媒体服务 .NET 添加编码单元。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: juliako;milangada;
-ms.openlocfilehash: 65b647a375ecbe70f7f29af5b09827f1c34dcd6f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: juliako
+ms.reviewer: milangada
+ms.openlocfilehash: dd2a94a1d10e4c8078e5437959bf7e101b3c6dd7
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61217141"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964764"
 ---
 # <a name="how-to-scale-encoding-with-net-sdk"></a>如何使用 .NET SDK 缩放编码
 > [!div class="op_single_selector"]
@@ -39,15 +40,17 @@ ms.locfileid: "61217141"
 
 若要使用 .NET SDK 更改预留单位类型和编码预留单位数目，请执行以下操作：
 
-    IEncodingReservedUnit encodingS1ReservedUnit = _context.EncodingReservedUnits.FirstOrDefault();
-    encodingS1ReservedUnit.ReservedUnitType = ReservedUnitType.Basic; // Corresponds to S1
-    encodingS1ReservedUnit.Update();
-    Console.WriteLine("Reserved Unit Type: {0}", encodingS1ReservedUnit.ReservedUnitType);
+```csharp
+IEncodingReservedUnit encodingS1ReservedUnit = _context.EncodingReservedUnits.FirstOrDefault();
+encodingS1ReservedUnit.ReservedUnitType = ReservedUnitType.Basic; // Corresponds to S1
+encodingS1ReservedUnit.Update();
+Console.WriteLine("Reserved Unit Type: {0}", encodingS1ReservedUnit.ReservedUnitType);
 
-    encodingS1ReservedUnit.CurrentReservedUnits = 2;
-    encodingS1ReservedUnit.Update();
+encodingS1ReservedUnit.CurrentReservedUnits = 2;
+encodingS1ReservedUnit.Update();
 
-    Console.WriteLine("Number of reserved units: {0}", encodingS1ReservedUnit.CurrentReservedUnits);
+Console.WriteLine("Number of reserved units: {0}", encodingS1ReservedUnit.CurrentReservedUnits);
+```
 
 ## <a name="opening-a-support-ticket"></a>创建支持票证
 

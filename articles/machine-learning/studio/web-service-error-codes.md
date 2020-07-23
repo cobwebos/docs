@@ -1,37 +1,32 @@
 ---
-title: REST API 错误代码 - Azure 机器学习工作室 | Microsoft Docs
+title: REST API 错误代码
+titleSuffix: ML Studio (classic) - Azure
 description: 在 Azure 机器学习 Web 服务中执行操作时，可能会返回这些错误代码。
 keywords: ''
 services: machine-learning
-documentationcenter: ''
-author: xiaoharper
-ms.custom: seodec18
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 editor: cgronlun
 ms.assetid: 0923074b-3728-439d-a1b8-8a7245e39be4
 ms.service: machine-learning
 ms.subservice: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: 8e91d0cd68997dee9bb00cceeaa6b697f6644ee5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 8030e44e85958495714f441303461722b6b96bf4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736558"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84115437"
 ---
-# <a name="azure-machine-learning-studio-rest-api-error-codes"></a>Azure 机器学习工作室 REST API 错误代码
- 
-在 Azure 机器学习工作室 Web 服务中执行操作时，可能会返回以下错误代码。
+# <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure 机器学习工作室（经典）REST API 错误代码
+
+在 Azure 机器学习工作室（经典）Web 服务中执行操作时，可能会返回以下错误代码。
  
 ## <a name="badargument-http-status-code-400"></a>BadArgument（HTTP 状态代码 400）
  
 提供的参数无效。
  
-出现此类错误表示某处提供的参数无效。 这可能是某个对象传递给 Web 服务的凭据或 Azure 存储位置。 请查看“details”节中的错误“code”字段，诊断是哪个具体的参数无效。
+出现此类错误表示某处提供的参数无效。 这可能是某个对象传递给 Web 服务的凭据或 Azure 存储位置。 请查看“details”节中的错误“code”字段，诊断是哪个具体参数无效。
  
 | 错误代码 | 用户消息 |
 | ---------- |--------------|

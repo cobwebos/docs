@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: celested
 ms.assetid: 4d049778-3c7b-46c0-92a4-f2633a32334b
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/20/2019
+ms.date: 06/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 61173d21c52d061f0d02ab02eb2f1083507983c2
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 60fdd9b0a8fb272da885df97e39804a98e48de67
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991676"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478865"
 ---
 # <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>教程：将 MyWorkDrive 与 Azure Active Directory 集成
 
@@ -91,7 +92,7 @@ ms.locfileid: "65991676"
     > 
     > 登录 URL：`https://yourserver.yourdomain.com/Account/Login-saml`
     > 
-    > 如果不确定如何设置自己的主机名和 SSL 证书，请联系 [MyWorkDrive 支持团队](mailto:support@myworkdrive.com)获取这些值。
+    > 如果不确定如何设置自己的主机名和 TLS/SSL 证书，请联系 [MyWorkDrive 支持团队](mailto:support@myworkdrive.com)获取这些值。
 
 1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，将“应用联合元数据 URL”复制到剪贴板    。
 
@@ -99,9 +100,17 @@ ms.locfileid: "65991676"
 
 ### <a name="configure-myworkdrive-sso"></a>配置 MyWorkDrive SSO
 
-1. 在另一个 Web 浏览器窗口中，以安全管理员身份登录到 MyWorkDrive。
+1. 若要在 MyWorkDrive 中自动执行配置，需要安装“我的应用安全登录浏览器扩展”，方法是单击“安装扩展”   。
 
-2. 在管理面板中的“MyWorkDrive 服务器”上，单击 **ENTERPRISE** 并执行以下步骤：
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+1. 将扩展添加到浏览器后，单击“安装 MyWorkDrive”，此时会将你定向到 MyWorkDrive 应用程序  。 在此处，请提供管理员凭据以登录到 MyWorkDrive。 浏览器扩展会自动配置应用程序，并自动执行步骤 3-4。
+
+    ![设置配置](common/setup-sso.png)
+
+1. 若要手动设置 MyWorkDrive，请在另一个 Web 浏览器窗口中，以安全管理员身份登录到 MyWorkDrive。
+
+1. 在管理面板中的“MyWorkDrive 服务器”上，单击 **ENTERPRISE** 并执行以下步骤：
 
     ![管理](./media/myworkdrive-tutorial/tutorial_myworkdrive_admin.png)
 
@@ -124,7 +133,7 @@ ms.locfileid: "65991676"
 1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤  ：
    1. 在“名称”  字段中，输入 `Britta Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
    1. 单击“创建”。 
 
@@ -138,12 +147,12 @@ ms.locfileid: "65991676"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
 1. 在“用户和组”对话框中，从“用户”列表中选择“Britta Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-myworkdrive-test-user"></a>创建 MyWorkDrive 测试用户

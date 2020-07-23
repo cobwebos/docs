@@ -1,33 +1,26 @@
 ---
-title: 在 Azure 规模集模板中引用自定义映像 | Microsoft Docs
+title: 在 Azure 规模集模板中引用自定义映像
 description: 了解如何向现有 Azure 虚拟机规模集模板添加自定义映像
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: drewm
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
+author: cynthn
+ms.author: cynthn
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: imaging
 ms.date: 04/26/2018
-ms.author: manayar
-ms.openlocfilehash: 2415d0dc2b9a2c4229d9910b42eb8ec9309ac7a7
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
-ms.translationtype: MT
+ms.reviewer: akjosh
+ms.custom: akjosh
+ms.openlocfilehash: 5ed9ee79dde73e738417031b928a675ea913179c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869112"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124901"
 ---
 # <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>向 Azure 规模集模板添加自定义映像
 
-本文介绍如何修改[基本的规模集模板](virtual-machine-scale-sets-mvss-start.md)从自定义映像部署。
+本文介绍如何修改[基本规模集模板](virtual-machine-scale-sets-mvss-start.md)以通过自定义映像进行部署。
 
 ## <a name="change-the-template-definition"></a>更改模板定义
-在中[前一篇文章](virtual-machine-scale-sets-mvss-start.md)我们创建了基本的规模集模板。 我们现在将使用前面的模板并修改它来创建可部署的规模集从自定义映像的模板。  
+在[前面的文章](virtual-machine-scale-sets-mvss-start.md)中，我们创建了一个基本规模集模板。 现在，我们将使用前面的模板并对其进行修改，以创建一个模板，该模板通过自定义映像部署规模集。  
 
 ### <a name="creating-a-managed-disk-image"></a>创建托管磁盘映像
 
@@ -97,15 +90,11 @@ ms.locfileid: "64869112"
 
 在规模集 `storageProfile` 的 `imageReference` 中，请勿指定平台映像的发布者、产品/服务、SKU 和版本，而是指定 `Microsoft.Compute/images` 资源的 `id`：
 
-```diff
+```json
          "virtualMachineProfile": {
            "storageProfile": {
              "imageReference": {
--              "publisher": "Canonical",
--              "offer": "UbuntuServer",
--              "sku": "16.04-LTS",
--              "version": "latest"
-+              "id": "[resourceId('Microsoft.Compute/images', 'myCustomImage')]"
+              "id": "[resourceId('Microsoft.Compute/images', 'myCustomImage')]"
              }
            },
            "osProfile": {

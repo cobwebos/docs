@@ -1,104 +1,129 @@
 ---
 title: 关于语音 SDK - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 使用语音软件开发工具包 (SDK)，应用程序可以本机访问语音服务的功能，这使得软件开发工作更为容易。 本文提供了有关适用于 Windows、Linux 和 Android 的 SDK 的其他详细信息。
+description: 语音软件开发工具包 (SDK) 公开了许多语音服务功能，这使得开发支持语音的应用程序更为容易。
 services: cognitive-services
-author: erhopf
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/08/2019
-ms.author: wolfma
-ms.openlocfilehash: 2bfe111cbe1e352c16c9cbdd6d2ecc999bbe444f
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.date: 04/03/2020
+ms.author: trbye
+ms.openlocfilehash: 5dc0a7fc9797948e834b8b3cb802bb92fce0eb59
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003010"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610755"
 ---
 # <a name="about-the-speech-sdk"></a>关于语音 SDK
 
-语音软件开发工具包 (SDK) 为您的应用程序的访问权限提供功能的语音服务，使其更轻松地开发支持语音的软件。 目前，Sdk 提供访问权限**语音到文本**，**文本到语音转换**，**语音翻译**，以及**意图识别**。 可以在文档上找到有关功能和支持的平台的常规概述[入口页](https://aka.ms/csspeech)。
+语音软件开发工具包 (SDK) 公开了许多语音服务功能，这使得你能够开发支持语音的应用程序。 语音 SDK 可以在许多编程语言中和所有平台中使用。
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
-[!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+## <a name="scenario-capabilities"></a>方案功能
 
-## <a name="get-the-sdk"></a>获取 SDK
+语音 SDK 公开了语音服务中的许多功能，但未公开全部功能。 语音 SDK 的功能通常与方案相关联。 语音 SDK 同时适用于实时和非实时方案，使用本地设备、文件、Azure Blob 存储甚至输入和输出流。 如果无法通过语音 SDK 实现某个方案，请寻求使用 REST API 替代方法。
 
-### <a name="windows"></a>Windows
+### <a name="speech-to-text"></a>语音转文本
 
-对于 Windows，我们支持以下语言：
+[语音转文本](speech-to-text.md)（也称为“语音识别”**）可将音频流听录为应用程序、工具或设备可以使用或显示的文本。 结合[语言理解 (LUIS)](../luis/index.yml) 使用语音转文本可以从听录的语音中派生用户意向，以及处理语音命令。 使用[语音翻译](speech-translation.md)通过单个调用将语音输入翻译为另一种语言。 有关详细信息，请参阅[语音转文本基础知识](speech-to-text-basics.md)。
 
-* C#（UWP 和 .NET）、C++：可以引用和使用语音 SDK NuGet 包的最新版本。 此包包括 32 位和 64 位客户端库，以及托管 (.NET) 库。 可以使用 NuGet 在 Visual Studio 中安装该 SDK。 搜索 Microsoft.CognitiveServices.Speech NuGet。
+### <a name="text-to-speech"></a>文本转语音
 
-* Java:可以引用和使用语音 SDK Maven 包的最新版本，该包仅支持 Windows x64。 在 Maven 项目中，将 `https://csspeechstorage.blob.core.windows.net/maven/` 添加为附加存储库，并将 `com.microsoft.cognitiveservices.speech:client-sdk:1.5.1` 引用为一个依赖项。
+[文本转语音](text-to-speech.md)（也称为“语音合成”**）将文本转换为类似人类语言的合成语音。 输入文本是字符串文字或使用[语音合成标记语言 (SSML)](speech-synthesis-markup.md)。 有关标准语音或神经语音的详细信息，请参阅[文本转语音语言和语音支持](language-support.md#text-to-speech)。
 
-### <a name="linux"></a>Linux
+### <a name="voice-assistants"></a>语音助手
 
-> [!NOTE]
-> 目前，在 PC 上支持 Ubuntu 16.04、 Ubuntu 18.04 和 Debian 9 (x86 或 x64 的C++开发和 x64 的.NET Core、 Java 和 Python)。
+使用语音 SDK 的[语音助手](voice-assistants.md)使开发人员可以为其应用程序和体验创建自然、人为的对话接口。 语音助手服务在设备和助手之间提供快速、可靠的交互。 实现使用机器人框架的直接连线语音通道或集成自定义命令（预览版）服务来完成任务。 此外，语音助手可以使用在[自定义语音门户](https://aka.ms/customvoice)中创建的自定义语音来添加独特的语音输出体验。
 
-请确保已通过运行以下 shell 命令来安装所需的库：
+#### <a name="keyword-spotting"></a>关键字发现
 
-在 Ubuntu 上：
+语音 SDK 支持[关键字发现](speech-devices-sdk-create-kws.md)的概念。 关键字发现是在语音中标识关键字的操作，后跟一个对关键字的操作。 例如，"你好 Cortana" 会激活 Cortana 助手。
 
-```sh
-sudo apt-get update
-sudo apt-get install libssl1.0.0 libasound2
-```
+### <a name="meeting-scenarios"></a>会议方案
 
-在 Debian 9 上：
+无论是通过单个设备还是多设备会话，语音 SDK 都适用于转录 meeting 方案。
 
-```sh
-sudo apt-get update
-sudo apt-get install libssl1.0.2 libasound2
-```
+#### <a name="conversation-transcription"></a>对话听录
 
-* C#：可以引用和使用语音 SDK NuGet 包的最新版本。 若要引用该 SDK，请向你的项目中添加以下包引用：
+[会话](conversation-transcription.md)脚本为每个扬声器（也称为*diarization*）启用实时（和异步）语音识别、发言人识别和句子归属。 它非常适合用于听录能够区分说话人的面对面会谈场景。
 
-  ```xml
-  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.5.1" />
-  ```
+#### <a name="multi-device-conversation"></a>多设备对话
 
-* Java:可以引用和使用语音 SDK Maven 包的最新版本。 在 Maven 项目中，将 `https://csspeechstorage.blob.core.windows.net/maven/` 添加为附加存储库，并将 `com.microsoft.cognitiveservices.speech:client-sdk:1.5.1` 引用为一个依赖项。
+通过[多设备会话](multi-device-conversation.md)，连接会话中的多个设备或客户端，以发送基于语音的消息或基于文本的消息，并对脚本和翻译提供简单支持。
 
-* C++：将 SDK 下载为 [.tar 包](https://aka.ms/csspeech/linuxbinary)，并将文件解压缩到所选的一个目录中。 下表显示了 SDK 文件夹结构：
+### <a name="custom--agent-scenarios"></a>自定义/代理方案
 
-  |路径|描述|
-  |-|-|
-  |`license.md`|许可证|
-  |`ThirdPartyNotices.md`|第三方声明|
-  |`include`|用于 C 和 C++ 的头文件|
-  |`lib/x64`|用于与应用程序链接的本机 x64 库|
-  |`lib/x86`|用于与应用程序链接的本机 x86 库|
+语音 SDK 可用于转录呼叫中心方案，其中生成了电话服务数据。
 
-  要创建应用程序，请将必需的二进制文件（以及库）复制到开发环境中。 在生成过程中根据需要添加它们。
+#### <a name="call-center-transcription"></a>呼叫中心听录
 
-### <a name="android"></a>Android
+[呼叫中心](call-center-transcription.md)脚本是一种常见的语音到文本转录，适用于来自各种系统（如互动语音响应（IVR））的大量电话服务数据。 来自语音服务 excel 的最新语音识别模型转录此电话数据，即使在数据难以理解的情况下也是如此。
 
-将适用于 Android 的 Java SDK 打包为 [AAR（Android 库）](https://developer.android.com/studio/projects/android-library)，其内附必要的库以及所需的 Android 权限。 它作为包 `com.microsoft.cognitiveservices.speech:client-sdk:1.5.1` 托管在 `https://csspeechstorage.blob.core.windows.net/maven/` 的 Maven 存储库中。
+### <a name="codec-compressed-audio-input"></a>编解码器压缩的音频输入
 
-若要从你的 Android Studio 项目中使用该包，请进行以下更改：
+一些语音 SDK 编程语言支持编解码器压缩的音频输入流。 有关详细信息，请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">使用压缩的音频输入格式 <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
-* 在项目级 build.gradle 文件中，向 `repository` 部分添加以下内容：
+## <a name="rest-api"></a>REST API
 
-  ```gradle
-  maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
-  ```
+虽然语音 SDK 涵盖了语音服务的许多功能，但对于某些方案，你可能需要使用 REST API。
 
-* 在模块级 build.gradle 文件中，向 `dependencies` 部分添加以下内容：
+### <a name="batch-transcription"></a>批量听录
 
-  ```gradle
-  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.5.1'
-  ```
+使用[批量听录](batch-transcription.md)能够以异步方式对大量的数据进行语音转文本听录。 只能通过 REST API 使用批量听录。 除了将语音音频转换为文本，批量语音转文本还允许进行分割聚类和情感分析。
 
-Java SDK 也是[语音设备 SDK](speech-devices-sdk.md) 的一部分。
+## <a name="customization"></a>自定义
 
-[!INCLUDE [Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+语音服务在语音转文本、文本转语音和语音翻译方面提供了强大的功能和默认模型。 有时，你可能希望提高基线性能，以便更好地处理你的独特用例。 语音服务有各种各样的无代码自定义工具，这些工具使上述事项变得简单，并使你能够使用基于你自己的数据的自定义模型获得竞争优势。 这些模型将仅供你和你的组织使用。
+
+### <a name="custom-speech-to-text"></a>自定义语音转文本
+
+使用语音转文本在独特的环境中进行识别和听录时，可以创建并训练自定义的声学、语言和发音模型，以解决环境干扰或行业特定的词汇的问题。 可通过[自定义语音识别门户](https://aka.ms/customspeech)来创建和管理无代码自定义语音识别模型。 自定义语音识别模型在发布后可以由语音 SDK 使用。
+
+### <a name="custom-text-to-speech"></a>自定义文本到语音转换
+
+自定义文本到语音功能（也称为自定义语音）是一组联机工具，可用于为品牌创建可识别的一种类型的声音。 可以通过[自定义语音门户](https://aka.ms/customvoice)来创建和管理无代码自定义语音模型。 自定义语音模型发布后，它可以由语音 SDK 使用。
+
+## <a name="get-the-speech-sdk"></a>获取语音 SDK
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-windows.md)]
+
+# <a name="linux"></a>[Linux](#tab/linux)
+
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-linux.md)]
+
+# <a name="ios"></a>[iOS](#tab/ios)
+
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-ios.md)]
+
+# <a name="macos"></a>[macOS](#tab/macos)
+
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-macos.md)]
+
+# <a name="android"></a>[Android](#tab/android)
+
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-android.md)]
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+[!INCLUDE [Get the Node.js Speech SDK](includes/get-speech-sdk-nodejs.md)]
+
+# <a name="browser"></a>[浏览器](#tab/browser)
+
+[!INCLUDE [Get the Browser Speech SDK](includes/get-speech-sdk-browser.md)]
+
+---
+
+[!INCLUDE [License notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+
+[!INCLUDE [Sample source code](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
 * [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
-* [了解如何在 C# 中识别语音](quickstart-csharp-dotnet-windows.md)
+* [了解如何在 C# 中识别语音](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

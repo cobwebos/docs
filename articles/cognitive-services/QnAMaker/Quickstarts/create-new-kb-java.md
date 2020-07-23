@@ -1,27 +1,35 @@
 ---
 title: 快速入门：创建知识库 - REST、Java - QnA Maker
-titlesuffix: Azure Cognitive Services
 description: 此 Java 基于 REST 的快速入门详细介绍如何以编程方式创建一个示例 QnA Maker 知识库，该知识库会显示在认知服务 API 帐户的 Azure 仪表板中。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
-ms.topic: quickstart
-ms.date: 02/04/2019
-ms.author: diberry
-ms.openlocfilehash: 85d5fa1cc036737497e276413985e0828e3b51f6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.date: 12/16/2019
+ROBOTS: NOINDEX,NOFOLLOW
+ms.custom: RESTCURL2020FEB27
+ms.topic: how-to
+ms.openlocfilehash: 5f1e1d8a8d2ac9ca3d14af09618cb0a2cc0cbb5f
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788721"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84341246"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>快速入门：在 QnA Maker 中使用 Java 创建知识库
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>快速入门：通过 Java 在 QnA Maker 中创建知识库
 
-本快速入门将指导你完成以编程方式创建示例 QnA Maker 知识库的过程。 QnA Maker 自动从[数据源](../Concepts/data-sources-supported.md)中从半结构化内容（例如常见问题解答）中自动提取问题和解答。 用于知识库的模型是在 API 请求的正文中发送的 JSON 中定义的。
+本快速入门将指导你完成以编程方式创建示例 QnA Maker 知识库的过程。 QnA Maker 自动从[数据源](../Concepts/knowledge-base.md)中从半结构化内容（例如常见问题解答）中自动提取问题和解答。 用于知识库的模型是在 API 请求的正文中发送的 JSON 中定义的。
 
-[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
+本快速入门调用了 QnA Maker API：
+* [创建知识库](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
+* [获取操作详细信息](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
+
+[参考文档](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  | [Java 示例](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java)
+
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
+## <a name="prerequisites"></a>先决条件
+
+* [Go 1.10.1](https://golang.org/dl/)
+* 您必须具有[QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥和终结点（包括资源名称），请在 Azure 门户中为资源选择“快速入门”****。
+
+[示例代码](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java)可在使用 Java 的 QnA Maker 的 GitHub 存储库上获得。
 
 ## <a name="create-a-knowledge-base-file"></a>创建知识库文件
 
@@ -34,7 +42,16 @@ ms.locfileid: "65788721"
 [!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=1-5 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>添加必需的常量
-在上述必需的依赖项后，向 `CreateKB` 类添加访问 QnA Maker 所必需的常量。 将 `subscriptionKey` 变量的值替换为你自己的 QnA Maker 密钥。 不需要添加最后的大括号来结束该类；它位于本快速入门末尾的最终代码片段中。
+在上述必需的依赖项后，向 `CreateKB` 类添加访问 QnA Maker 所必需的常量。
+
+您必须具有[QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥和资源名称，请在 Azure 门户中为 QNA Maker 资源选择**快速入门**。
+
+设置以下值：
+
+* `<your-qna-maker-subscription-key>` - **密钥**是一个 32 字符的字符串，可以在“快速入门”页的 QnA Maker 资源上的 Azure 门户中使用。 这与预测终结点密钥不同。
+* `<your-resource-name>` - **资源名称**用于构造用于创作的创作终结点 URL，其格式为 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`。 这与用于查询预测终结点的 URL 不同。
+
+不需要添加最后的大括号来结束该类；它位于本快速入门末尾的最终代码片段中。
 
 [!code-java[Add the required constants](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=26-34 "Add the required constants")]
 
@@ -100,7 +117,7 @@ ms.locfileid: "65788721"
 ```
 
 ## <a name="add-a-main-method"></a>添加 main 方法
-main 方法创建知识库，然后轮询状态。 _create_ **Operation ID** 在 POST 响应标头字段 **Location** 中返回，然后在 GET 请求中用作路由的一部分。 **`while` 循环重试获取状态（如果该操作未完成）。
+main 方法创建知识库，然后轮询状态。 操作 ID 在 POST 响应标头字段 **Location** 中返回，然后在 GET 请求中用作路由的一部分。 `while` 循环重试获取状态（如果该操作未完成）。
 
 [!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
 
@@ -114,7 +131,7 @@ main 方法创建知识库，然后轮询状态。 _create_ **Operation ID** 在
 
 2. 在命令行中输入以下命令以运行程序。 它向 QnA Maker API 发送创建知识库的请求，然后每隔 30 秒轮询一次结果。 每个响应都将输出到控制台窗口中。
 
-    ```base
+    ```bash
     java -cp ",;libs/*" CreateKB
     ```
 

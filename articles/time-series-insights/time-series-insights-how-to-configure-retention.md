@@ -1,54 +1,61 @@
 ---
-title: 如何在 Azure 时序见解环境中配置保留期 | Microsoft Docs
-description: 本文介绍如何在 Azure 时序见解环境中配置保留期。
+title: 如何在环境中配置保留期 - Azure 时序见解 | Microsoft Docs
+description: 了解如何在 Azure Azure 时序见解环境中配置保留期。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
-manager: cshankar
-ms.reviewer: jasonh, kfile, anshan
+manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: f5f34983d1818679450249aa40bbb325e743cc57
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9ee06501134515d9369e98e724e55a66f040fffa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239003"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495119"
 ---
-# <a name="configuring-retention-in-time-series-insights"></a>在时序见解中配置保留期
+# <a name="configuring-retention-in-azure-time-series-insights-gen1"></a>在 Azure 时序见解 Gen1 中配置保留期
 
 本文介绍如何在 Azure 时序见解中配置**数据保留时间**和**超出存储限制时的行为**。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
-每个时序见解 (TSI) 环境都有用于配置**数据保留时间**的设置。 该值的范围为 1 到 400 天。 将根据环境存储容量或保留期限 (1-400) 删除数据，以先达到的条件为准。
+每个 Azure 时序见解环境都有用于配置**数据保留时间**的设置。 该值的范围为 1 到 400 天。 将根据环境存储容量或保留期限 (1-400) 删除数据，以先达到的条件为准。
 
-每个 TSI 环境都有一项附加设置：“超出存储限制时的行为”。  此设置控制达到环境最大容量时的传入和清除行为。 可以从两种行为中进行选择：
+每个 Azure 时序见解环境都有一个额外的 "**存储限制超出" 行为**。 此设置控制达到环境最大容量时的传入和清除行为。 可以从两种行为中进行选择：
 
 -  清除旧数据（默认行为）
-- **暂停传入**
+- 暂停传入 
 
-有关有助于更好地了解这些设置的详细信息，请参阅[了解时序见解中的保留期](time-series-insights-concepts-retention.md)。  
+若要详细了解这些设置，请参阅[了解 Azure 时序见解中的保留期](time-series-insights-concepts-retention.md)。  
 
 ## <a name="configure-data-retention"></a>配置数据保留
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
-1. 查找现有时序见解环境。 在 Azure 门户左侧的菜单中，选择“所有资源”  。 选择时序见解环境。
+1. 查找现有的 Azure 时序见解环境。 在 Azure 门户左侧的菜单中，选择“所有资源”  。 选择 Azure 时序见解环境。
 
-1. 在“设置”标题下，选择“配置”   。
+1. 在“设置”标题下，选择“存储配置”   。
 
-1. 选择“数据保留时间”  ，以通过使用滚动条或在文本框中键入数字来配置保留期。
+    [![在“设置”下，选择“存储配置”](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
+
+1. 选择“数据保留时间(天)”  ，以通过使用滚动条或在文本框中键入数字来配置保留期。
 
 1. 请注意“容量”  设置，因为此配置会影响数据事件的最大数量和用于存储数据的总存储容量。
 
 1. 切换“超出存储限制时的行为”  设置。 选择“清除旧数据”  或“暂停传入”  行为。
 
-1. 选择“保存”  以配置更改。
+    [![暂停传入 - 接受并保存。](media/data-retention/pause-ingress-accept-and-save.png)](media/data-retention/pause-ingress-accept-and-save.png#lightbox)
+
+1. 查看文档以了解丢失数据的潜在风险。 选择“保存”  以配置更改。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关详细信息，请参阅[了解时序见解中的保留期](time-series-insights-concepts-retention.md)。
+- 有关详细信息，请参阅[了解 Azure 时序见解中的保留期](time-series-insights-concepts-retention.md)。
+
+- 了解[如何缩放 Azure 时序见解环境](time-series-insights-how-to-scale-your-environment.md)。
+
+- 了解如何[规划环境](time-series-insights-environment-planning.md)。

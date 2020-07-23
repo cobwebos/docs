@@ -8,16 +8,18 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 02/22/2019
-ms.openlocfilehash: f339d2e3e329ae40ca8bb8bf651d698c73482a7d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.custom:
+- mvc
+- mqtt
+ms.date: 06/01/2020
+ms.openlocfilehash: 2efd2c982fcd4c799a6c9daa1d89fde25e7f2c64
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59049262"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307602"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用后端应用程序读取该数据 (C#)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用后端应用程序 (.NET) 读取该数据
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
@@ -27,11 +29,11 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
-本快速入门中运行的两个示例应用程序是使用 C# 编写的。 开发计算机上需要有 .NET Core SDK 2.1.0 或更高版本。
+本快速入门中运行的两个示例应用程序是使用 C# 编写的。 开发计算机上需要有 .NET Core SDK 3.0 或更高版本。
 
 可以从 [.NET](https://www.microsoft.com/net/download/all) 为多个平台下载 .NET Core SDK。
 
@@ -41,13 +43,20 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 dotnet --version
 ```
 
-运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IOT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
+> [!NOTE]
+> 在此快速入门中，建议使用 .NET Core SDK 3.0 或更高版本来编译用于读取遥测的事件中心服务代码。 如果你按照[从中心读取遥测](#read-the-telemetry-from-your-hub)一节中所述，将服务代码的语言版本设置为预览，则可使用 .NET Core SDK 2.1。
+
+运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
 
 ```azurecli-interactive
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 ```
 
-从 https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip 下载示例 C# 项目并提取 ZIP 存档。
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
+
+从 [https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) 下载 Azure IoT C# 示例，并提取 ZIP 存档。
+
+确保已在防火墙中打开端口 8883。 本快速入门中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -61,10 +70,10 @@ az extension add --name azure-cli-iot-ext
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
-   **MyDotnetDevice**：所注册的设备的名称。 请按显示的方法使用 MyDotnetDevice。 如果为设备选择其他名称，则需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
+   **MyDotnetDevice**：这是所注册的设备的名称。 建议使用 **MyDotnetDevice**，如图所示。 如果为设备选择不同名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDotnetDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDotnetDevice
     ```
 
 2. 在 Azure Cloud Shell 中运行以下命令，以获取刚注册设备的_设备连接字符串_：
@@ -72,25 +81,25 @@ az extension add --name azure-cli-iot-ext
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDotnetDevice --output table
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDotnetDevice --output table
     ```
 
     记下如下所示的设备连接字符串：
 
-   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
+   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDotnetDevice;SharedAccessKey={YourSharedAccessKey}`
 
     稍后会在快速入门中用到此值。
 
-3. 还需要来自 IoT 中心的与事件中心兼容的终结点、与事件中心兼容的路径和 iothubowner 主键，确保后端应用程序能连接到 IoT 中心并检索消息。 以下命令可检索 IoT 中心的这些值：
+3. 还需要使用来自 IoT 中心的与事件中心兼容的终结点、与事件中心兼容的路径和服务主密钥，确保后端应用程序能连接到 IoT 中心并检索消息  。 以下命令可检索 IoT 中心的这些值：
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
     ```azurecli-interactive
-    az iot hub show --query properties.eventHubEndpoints.events.endpoint --name YourIoTHubName
+    az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}
 
-    az iot hub show --query properties.eventHubEndpoints.events.path --name YourIoTHubName
+    az iot hub show --query properties.eventHubEndpoints.events.path --name {YourIoTHubName}
 
-    az iot hub policy show --name iothubowner --query primaryKey --hub-name YourIoTHubName
+    az iot hub policy show --name service --query primaryKey --hub-name {YourIoTHubName}
     ```
 
     记下这三个值，稍后会在快速入门中用到这些值。
@@ -103,7 +112,7 @@ az extension add --name azure-cli-iot-ext
 
 2. 在所选文本编辑器中打开 SimulatedDevice.cs 文件。
 
-    将 `s_connectionString` 变量的值替换为之前记下的设备连接字符串。 然后将更改保存到 SimulatedDevice.cs 文件。
+    将 `s_connectionString` 变量的值替换为之前记下的设备连接字符串。 然后将更改保存到 **SimulatedDevice.cs**。
 
 3. 在本地终端窗口中，运行以下命令以安装模拟设备应用程序所需的包：
 
@@ -119,7 +128,7 @@ az extension add --name azure-cli-iot-ext
 
     以下屏幕截图显示了模拟设备应用程序将遥测数据发送到 IoT 中心后的输出：
 
-    ![运行模拟设备](media/quickstart-send-telemetry-dotnet/SimulatedDevice.png)
+    ![运行模拟设备](media/quickstart-send-telemetry-dotnet/simulated-device.png)
 
 ## <a name="read-the-telemetry-from-your-hub"></a>从中心读取遥测数据
 
@@ -131,9 +140,12 @@ az extension add --name azure-cli-iot-ext
 
     | 变量 | 值 |
     | -------- | ----------- |
-    | `s_eventHubsCompatibleEndpoint` | 将变量的值替换为之前记下的与事件中心兼容的终结点。 |
-    | `s_eventHubsCompatiblePath`     | 将变量的值替换为之前记下的与事件中心兼容的路径。 |
-    | `s_iotHubSasKey`                | 将变量的值替换为之前记下的 iothubowner 主键。 |
+    | `EventHubsCompatibleEndpoint` | 将变量的值替换为之前记下的与事件中心兼容的终结点。 |
+    | `EventHubName`                | 将变量的值替换为之前记下的与事件中心兼容的路径。 |
+    | `IotHubSasKey`                | 将变量的值替换为之前记下的服务主密钥。 |
+
+    > [!NOTE]
+    > 如果你使用 .NET Core SDK 2.1，则必须将语言版本设置为预览以编译代码。 为此，请打开 read-d2c-messages.csproj 文件，并将 `<LangVersion>` 元素的值设置为 `preview`。
 
 3. 在本地终端窗口中，运行以下命令，安装后端应用程序所需的库：
 
@@ -149,7 +161,7 @@ az extension add --name azure-cli-iot-ext
 
     以下屏幕截图显示了后端应用程序接收模拟设备发送到 IoT 中心的遥测数据后的输出：
 
-    ![运行后端应用程序](media/quickstart-send-telemetry-dotnet/ReadDeviceToCloud.png)
+    ![运行后端应用程序](media/quickstart-send-telemetry-dotnet/read-device-to-cloud.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -1,23 +1,19 @@
 ---
-title: 使用 Azure Dev Spaces 在 Kubernetes 上进行团队开发
-titleSuffix: Azure Dev Spaces
-author: zr-msft
+title: 在 Kubernetes 上进行团队开发
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
-ms.date: 04/25/2019
+ms.date: 01/22/2020
 ms.topic: quickstart
-description: 在 Azure 中使用容器和微服务进行 Kubernetes 团队开发
+description: 本快速入门介绍如何使用 Azure Dev Spaces 对容器和微服务进行团队 Kubernetes 开发
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-manager: jeconnoc
-ms.openlocfilehash: e9f9198f8e086bee6c6b02b67ae7dd9cf523416c
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+manager: gwallace
+ms.openlocfilehash: 0fe177db420913e5d68807dd803df791653c0914
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480359"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "78244942"
 ---
-# <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>快速入门：使用 Azure Dev Spaces 在 Kubernetes 上进行团队开发
+# <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>快速入门：在 Kubernetes 上进行团队开发 - Azure Dev Spaces
 
 本指南介绍如何：
 
@@ -31,24 +27,25 @@ ms.locfileid: "66480359"
 
 - Azure 订阅。 如果没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free)。
 - [已安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
-- [已安装 Helm 2.13 或更高版本](https://github.com/helm/helm/blob/master/docs/install.md)。
+- [已安装 Helm 3][helm-installed]。
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>创建 Azure Kubernetes 服务群集
 
 必须在[支持的区域][supported-regions]中创建 AKS 群集。 以下命令创建名为 *MyResourceGroup* 的资源组，以及名为 *MyAKS* 的 AKS 群集。
 
-```cmd
+```azurecli
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --node-vm-size Standard_DS2_v2 --node-count 1 --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
-
-此外，还会创建包含一个节点的 *MyAKS* 群集，该节点使用 *Standard_DS2_v2* 大小并禁用了 RBAC。
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>在 AKS 群集上启用 Azure Dev Spaces
 
 使用 `use-dev-spaces` 命令在 AKS 群集上启用 Dev Spaces，然后按提示操作。 以下命令在 *MyResourceGroup* 组中的 *MyAKS* 群集上启用 Dev Spaces，并创建名为 *dev* 的开发空间。
 
-```cmd
+> [!NOTE]
+> `use-dev-spaces` 命令还将安装 Azure Dev Spaces CLI（如果尚未安装）。 无法在 Azure Cloud Shell 中安装 Azure Dev Spaces CLI。
+
+```azurecli
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS --space dev --yes
 ```
 
@@ -85,39 +82,14 @@ MyAKS               MyResourceGroup   dev       fedcab0987.eus.azds.io
 
 在群集中运行某个应用程序后，无论使用哪种工具部署该应用程序，都可以使用 Azure Dev Spaces 进行团队开发。
 
-使用 `helm init` 和 `helm install` 命令在群集上设置和安装示例应用程序。
+使用 `helm install` 命令在群集上设置和安装示例应用程序。
 
 ```cmd
 cd charts/
-helm init --wait
-helm install -n bikesharing . --dep-up --namespace dev --atomic --wait
-```
-> [!Note]
-> **如果你使用的是启用 RBAC 的群集**，请务必[为 Tiller 配置服务帐户](https://helm.sh/docs/using_helm/#role-based-access-control)。 否则 `helm` 命令将失败。
-
-`helm install` 命令可能需要几分钟才能完成。 完成后，该命令的输出将显示由它部署到群集的所有服务的状态：
-
-```cmd
-$ cd charts/
-$ helm init --wait
-...
-Happy Helming!
-
-$ helm install -n bikesharing . --dep-up --namespace dev --atomic --wait
-
-Hang tight while we grab the latest from your chart repositories...
-...
-NAME               READY  UP-TO-DATE  AVAILABLE  AGE
-bikes              1/1    1           1          4m32s
-bikesharingweb     1/1    1           1          4m32s
-billing            1/1    1           1          4m32s
-gateway            1/1    1           1          4m32s
-reservation        1/1    1           1          4m32s
-reservationengine  1/1    1           1          4m32s
-users              1/1    1           1          4m32s
+helm install bikesharingsampleappsampleapp . --dependency-update --namespace dev --atomic
 ```
 
-在群集上安装示例应用程序后，由于已在群集上启用了 Dev Spaces，因此请使用 `azds list-uris` 命令来显示该示例应用程序在当前已选择的 *dev* 中的 URL。
+`helm install` 命令可能需要几分钟才能完成。 在群集上安装示例应用程序后，由于已在群集上启用了 Dev Spaces，因此请使用 `azds list-uris` 命令来显示该示例应用程序在当前已选择的 *dev* 中的 URL。
 
 ```cmd
 $ azds list-uris
@@ -140,18 +112,18 @@ azds space select -n dev/azureuser1 -y
 azds space select -n dev/azureuser2 -y
 ```
 
-以上命令将在 *dev* 下创建名为 *azureuser1* 和 *azureuser2* 的两个子空间。 这些两个子空间表示开发人员 *azureuser1* 和 *azureuser2* 的不同开发空间，用于对示例应用程序进行更改。
+以上命令将在 *dev* 下创建名为 *azureuser1* 和 *azureuser2* 的两个子空间。 这两个子空间表示开发人员 azureuser1  和 azureuser2  的不同开发空间，用于对示例应用程序进行更改。
 
 使用 `azds space list` 命令列出所有开发空间，并确认 *dev/azureuser2* 是否已选中。
 
 ```cmd
 $ azds space list
-Name            Selected
---------------  --------
-default         False
-dev             False
-dev/azureuser1  False
-dev/azureuser2  True
+   Name            DevSpacesEnabled
+-  --------------  ----------------
+   default         False
+   dev             True
+   dev/azureuser1  True
+*  dev/azureuser2  True
 ```
 
 使用 `azds list-uris` 显示该示例应用程序在当前所选空间（即 *dev/azureuser2*）中的 URL。
@@ -202,6 +174,9 @@ Service 'bikesharingweb' port 80 (http) is available at http://localhost:54256
 
 ![Azure Dev Spaces 单车共享示例应用程序已更新](media/quickstart-team-development/bikeshare-update.png)
 
+> [!NOTE]
+> 在运行 `azds up` 时导航到服务时，HTTP 请求跟踪也会显示在 `azds up` 命令的输出中。 这些跟踪有助于对服务进行故障排除和调试。 可以在运行 `azds up` 时使用 `--disable-http-traces` 来禁用这些跟踪。
+
 ## <a name="verify-other-dev-spaces-are-unchanged"></a>检查其他开发空间是否未更改
 
 如果 `azds up` 命令仍在运行，请按 *Ctrl+C*。
@@ -224,7 +199,7 @@ http://dev.gateway.fedcab0987.eus.azds.io/                      Available
 
 ## <a name="clean-up-your-azure-resources"></a>清理 Azure 资源
 
-```cmd
+```azurecli
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
@@ -235,5 +210,5 @@ az group delete --name MyResourceGroup --yes --no-wait
 > [!div class="nextstepaction"]
 > [使用多个容器和团队开发](multi-service-nodejs.md)
 
-
-[supported-regions]: about.md#supported-regions-and-configurations
+[helm-installed]: https://helm.sh/docs/intro/install/
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

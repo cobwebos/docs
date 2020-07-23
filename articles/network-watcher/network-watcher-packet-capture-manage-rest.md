@@ -3,23 +3,19 @@ title: 使用 Azure 网络观察程序管理数据包捕获 - REST API | Microso
 description: 此页说明如何使用 Azure REST API 管理网络观察程序的数据包捕获功能
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 53fe0324-835f-4005-afc8-145eeb314aeb
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: d2e87ac1b425e92a624cc2f664a6673a05fbfb44
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.author: damendo
+ms.openlocfilehash: 38d55c14690a838e853c873a066eae6534d49c6f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64727678"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84725046"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>通过 Azure REST API 使用 Azure 网络观察程序管理数据包捕获
 
@@ -47,7 +43,7 @@ ms.locfileid: "64727678"
 
 本方案通过调用网络观察程序 Rest API 来运行“IP 流验证”。 通过 PowerShell 调用 REST API 时，使用的是 ARMclient。 根据 [Chocolatey 上的 ARMClient](https://chocolatey.org/packages/ARMClient) 中所述在 chocolatey 上找到 ARMClient
 
-本方案假设已根据[创建网络观察程序](network-watcher-create.md)中的步骤创建了网络观察程序。
+此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
 
 > 数据包捕获需要虚拟机扩展 `AzureNetworkWatcherExtension`。 有关在 Windows VM 上安装扩展的信息，请访问[适用于 Windows 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/windows/extensions-nwa.md)；有关 Linux VM 的信息，请访问[适用于 Linux 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/linux/extensions-nwa.md)。
 
@@ -59,11 +55,11 @@ armclient login
 
 ## <a name="retrieve-a-virtual-machine"></a>检索虚拟机
 
-运行以下脚本以返回虚拟机。 以下信息是启动数据包捕获所必需的。
+运行以下脚本返回虚拟机。 以下信息是启动数据包捕获所必需的。
 
 以下代码需要以下变量：
 
-- **subscriptionId** -也可以使用检索的订阅 id **Get AzSubscription** cmdlet。
+- **subscriptionId** - 还可以使用 **Get-AzSubscription** cmdlet 检索订阅 ID。
 - **resourceGroupName** - 包含虚拟机的资源组的名称。
 
 ```powershell
@@ -242,8 +238,8 @@ $remoteIP = ""
 $remotePort = "" # Examples are: 80, or 80-120
 $protocol = "" # Valid values are TCP, UDP and Any.
 $targetUri = "" # Example: /subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.compute/virtualMachine/$vmName
-$storageId = "" # Example: "https://mytestaccountname.blob.core.windows.net/capture/vm1Capture.cap"
-$storagePath = ""
+$storageId = "" #Example "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoExampleRG/providers/Microsoft.Storage/storageAccounts/contosoexamplergdiag374"
+$storagePath = "" # Example: "https://mytestaccountname.blob.core.windows.net/capture/vm1Capture.cap"
 $localFilePath = "c:\\temp\\packetcapture.cap" # Example: "d:\capture\vm1Capture.cap"
 
 $requestBody = @"

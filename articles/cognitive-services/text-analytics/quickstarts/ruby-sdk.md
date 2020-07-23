@@ -1,136 +1,132 @@
 ---
-title: 快速入门：使用 Ruby SDK 调用文本分析认知服务
+title: 快速入门：适用于 Ruby 的文本分析客户端库 | Microsoft Docs
 titleSuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以便快速完成 Azure 认知服务中的文本分析 API 的使用入门。
+description: 在本快速入门中，使用 Azure 认知服务的 Ruby 文本分析客户端库来检测语言。
 services: cognitive-services
-author: raymondl
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 05/08/2019
-ms.author: tasharm
-ms.openlocfilehash: 688887826fa803b616ca737bc8558aa17ed80e37
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.date: 02/26/2020
+ms.author: aahi
+ms.openlocfilehash: 039a52c9ab0bfc460116e48086c854f4d7e8efb4
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66297776"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996969"
 ---
-# <a name="quickstart-call-the-text-analytics-service-using-the-ruby-sdk"></a>快速入门：使用 Ruby SDK 调用文本分析服务
+# <a name="quickstart-use-the-text-analytics-client-library-for-ruby"></a>快速入门：使用适用于 Ruby 的文本分析客户端库
+
+从文本分析客户端库开始操作。 请按照以下步骤安装程序包并试用基本任务的示例代码。
+
+使用文本分析客户端库执行：
+
+* 情绪分析
+* 语言检测
+* 实体识别
+* 关键短语提取
+
+> [!NOTE]
+> 本快速入门仅适用于文本分析 2.1 版。 目前，适用于 Ruby 的 v3 客户端库不可用。
+
+[库源代码](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics) | [包 (RubyGems)](https://rubygems.org/gems/azure_cognitiveservices_textanalytics) | [示例](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
 <a name="HOLTop"></a>
 
-
-根据本快速入门中的说明，开始使用用于 Ruby 的文本分析 SDK 来分析语言。 虽然[文本分析](//go.microsoft.com/fwlink/?LinkID=759711) REST API 与大多数编程语言兼容，但该 SDK 提供了一种简单方法来将服务集成到应用程序中。 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-ruby-sdk-samples/blob/master/samples/text_analytics.rb) 上找到此示例的源代码。
-
-有关 API 的技术文档，请参阅 [API 定义](//go.microsoft.com/fwlink/?LinkID=759346)。
-
 ## <a name="prerequisites"></a>先决条件
 
-* [Ruby 2.5.5 或更高版本](https://www.ruby-lang.org/)
-* 文本分析 [SDK for Ruby](https://rubygems.org/gems/azure_cognitiveservices_textanalytics)
- 
-[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
+* 最新版本的 [Ruby](https://www.ruby-lang.org/)
+* 你有了 Azure 订阅后，<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="创建文本分析资源"  target="_blank">将在 Azure 门户中创建文本分析资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，以获取你的密钥和终结点。 
+    * 你需要从创建的资源获取密钥和终结点，以便将应用程序连接到文本分析 API。 稍后会在本快速入门中执行此操作。
+    * 可以使用免费定价层试用该服务，然后再升级到付费层进行生产。
 
-还必须拥有在注册期间生成的[终结点和访问密钥](../How-tos/text-analytics-how-to-access-key.md)。 
+## <a name="setting-up"></a>设置
 
-<a name="RubyProject"></a>
+### <a name="create-a-new-ruby-application"></a>创建新的 Ruby 应用程序
 
-## <a name="create-a-ruby-project-and-install-the-sdk"></a>创建 Ruby 项目并安装 SDK
+在控制台窗口（例如 cmd、PowerShell 或 Bash）中，为应用创建一个新目录并导航到该目录。 然后，创建名为 `GemFile` 的文件，并为你的代码创建一个 Ruby 文件。
 
-1. 创建新的 Ruby 项目并添加名为 `Gemfile` 的新文件
-2. 向项目添加文本分析 SDK，方法是将以下代码添加到 `Gemfile`。
+```console
+mkdir myapp && cd myapp
+```
 
-    ```ruby
-    source 'https://rubygems.org'
-    gem 'azure_cognitiveservices_textanalytics', '~>0.17.3'
-    ```
+在 `GemFile` 中，添加以下行以将客户端库添加为依赖项。
 
-## <a name="create-a-text-analytics-client"></a>创建文本分析客户端
+```ruby
+source 'https://rubygems.org'
+gem 'azure_cognitiveservices_textanalytics', '~>0.17.3'
+```
 
-1. 在最喜爱的编辑器或 IDE 中，创建名为 `TextAnalyticsExamples.rb` 的新文件。 导入文本分析 SDK。
+在 Ruby 文件中，导入以下包。
 
-2. 文本分析客户端将使用凭据对象。 使用 `CognitiveServicesCredentials.new()` 创建它并传递订阅密钥。
+[!code-ruby[Import statements](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=includeStatement)]
 
-3. 使用正确的文本分析终结点创建此客户端。
+为资源的 Azure 终结点和密钥创建变量。 
 
-    ```ruby
-    require 'azure_cognitiveservices_textanalytics'
-    
-    include Azure::CognitiveServices::TextAnalytics::V2_1::Models
-    
-    credentials =
-        MsRestAzure::CognitiveServicesCredentials.new("enter key here")
-    # Replace 'westus' with the correct region for your Text Analytics subscription
-    endpoint = String.new("https://westus.api.cognitive.microsoft.com/")
-    
-    textAnalyticsClient =
-        Azure::TextAnalytics::Profiles::Latest::Client.new({
-            credentials: credentials
-        })
-    textAnalyticsClient.endpoint = endpoint
-    ```
+[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
+
+```ruby
+const subscription_key = '<paste-your-text-analytics-key-here>'
+const endpoint = `<paste-your-text-analytics-endpoint-here>`
+```
+
+## <a name="object-model"></a>对象模型 
+
+文本分析客户端使用你的密钥向 Azure 进行身份验证。 该客户端提供了几种方法来分析文本，文本可以是单个字符串，也可以是批处理。 
+
+文本将以 `documents` 的列表的形式发送到 API，该项是包含 `id`、`text` 和 `language` 属性的组合的 `dictionary` 对象，具体取决于所用的方法。 `text` 属性存储要以源 `language` 分析的文本，而 `id` 则可以是任何值。 
+
+响应对象是一个列表，其中包含每个文档的分析信息。 
+
+## <a name="code-examples"></a>代码示例
+
+这些代码片段演示如何使用适用于 Ruby 的文本分析客户端库执行以下操作：
+
+* [对客户端进行身份验证](#authenticate-the-client)
+* [情绪分析](#sentiment-analysis)
+* [语言检测](#language-detection)
+* [实体识别](#entity-recognition)
+* [关键短语提取](#key-phrase-extraction)
+
+## <a name="authenticate-the-client"></a>验证客户端
+
+创建名为的 `TextAnalyticsClient` 的类。 
+
+```ruby
+class TextAnalyticsClient
+  @textAnalyticsClient
+  #...
+end
+```
+
+在此类中，创建名为 `initialize` 的函数以使用密钥和终结点对客户端进行身份验证。 
+
+[!code-ruby[initialize function for authentication](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=initialize)]
+
+在类的外部，使用客户端的 `new()` 函数对其进行实例化。
+
+[!code-ruby[client creation](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=clientCreation)] 
 
 <a name="SentimentAnalysis"></a>
 
 ## <a name="sentiment-analysis"></a>情绪分析
 
-使用文本分析 SDK 或 API 时，可以针对一组文本记录执行情绪分析。 以下示例显示了多个文档的情绪分数。
+在客户端对象中，创建名为 `AnalyzeSentiment()` 的函数，该函数采用稍后将创建的输入文档的列表。 调用客户端的 `sentiment()` 函数并获取结果。 然后循环访问结果，输出每个文档的 ID 和情绪分数。 评分接近 0 表示消极情绪，评分接近 1 表示积极情绪。
 
-1. 创建名为 `SentimentAnalysisExample()` 的新函数，该函数将上面创建的文本分析客户端用作参数。
+[!code-ruby[client method for sentiment analysis](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=analyzeSentiment)] 
 
-2. 定义一组需要分析的 `MultiLanguageInput` 对象。 为每个对象添加语言和文本。 此 ID 可以是任意值。
+在客户端函数外部，创建名为 `SentimentAnalysisExample()` 的新函数，该函数使用以前创建的 `TextAnalyticsClient` 对象。 创建 `MultiLanguageInput` 对象的列表，其中包含需分析的文档。 每个对象会包含 `id`、`Language` 和 `text` 属性。 `text` 属性存储要分析的文本，`language` 是文档的语言，`id` 则可以是任何值。 然后调用客户端的 `AnalyzeSentiment()` 函数。
 
-    ```ruby
-    def SentimentAnalysisExample(client)
-      # The documents to be analyzed. Add the language of the document. The ID can be any value.
-      input_1 = MultiLanguageInput.new
-      input_1.id = '1'
-      input_1.language = 'en'
-      input_1.text = 'I had the best day of my life.'
-    
-      input_2 = MultiLanguageInput.new
-      input_2.id = '2'
-      input_2.language = 'en'
-      input_2.text = 'This was a waste of my time. The speaker put me to sleep.'
-    
-      input_3 = MultiLanguageInput.new
-      input_3.id = '3'
-      input_3.language = 'es'
-      input_3.text = 'No tengo dinero ni nada que dar...'
-    
-      input_4 = MultiLanguageInput.new
-      input_4.id = '4'
-      input_4.language = 'it'
-      input_4.text = "L'hotel veneziano era meraviglioso. È un bellissimo pezzo di architettura."
-    ```
+[!code-ruby[sentiment analysis document creation and call](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=sentimentCall)] 
 
-3. 在同一函数中，将文档组合到一个列表中。 将它添加到 `MultiLanguageBatchInput` 对象的 `documents` 字段。 
+调用 `SentimentAnalysisExample()` 函数。
 
-4. 调用客户端的 `sentiment()` 函数，使用 `MultiLanguageBatchInput` 对象作为参数来发送文档。 如果返回了任何结果，请将其输出。
-    ```ruby
-      input_documents =  MultiLanguageBatchInput.new
-      input_documents.documents = [input_1, input_2, input_3, input_4]
-    
-      result = client.sentiment(
-          multi_language_batch_input: input_documents
-      )
-      
-      if (!result.nil? && !result.documents.nil? && result.documents.length > 0)
-        puts '===== SENTIMENT ANALYSIS ====='
-        result.documents.each do |document|
-          puts "Document Id: #{document.id}: Sentiment Score: #{document.score}"
-        end
-      end
-    end
-    ```
-
-5. 调用 `SentimentAnalysisExample()` 函数。
-
-    ```ruby
-    SentimentAnalysisExample(textAnalyticsClient)
-    ```
+```ruby
+SentimentAnalysisExample(textAnalyticsClient)
+```
 
 ### <a name="output"></a>输出
 
@@ -146,56 +142,19 @@ Document ID: 4 , Sentiment Score: 1.00
 
 ## <a name="language-detection"></a>语言检测
 
-文本分析服务可以从大量的语言和区域设置中检测出文本文档的语言。 以下示例显示多个文档撰写时使用的语言。
+在客户端对象中，创建名为 `DetectLanguage()` 的函数，该函数采用稍后将创建的输入文档的列表。 调用客户端的 `detect_language()` 函数并获取结果。 然后循环访问结果，输出每个文档的 ID 和检测到的语言。
 
-1. 创建名为 `DetectLanguageExample()` 的新函数，该函数将上面创建的文本分析客户端用作参数。 
+[!code-ruby[client method for language detection](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=detectLanguage)] 
 
-2. 定义一组需要分析的 `LanguageInput` 对象。 为每个对象添加语言和文本。 此 ID 可以是任意值。
+在客户端函数外部，创建名为 `DetectLanguageExample()` 的新函数，该函数使用以前创建的 `TextAnalyticsClient` 对象。 创建 `LanguageInput` 对象的列表，其中包含需分析的文档。 每个对象会包含 `id` 和 `text` 属性。 `text` 属性存储要分析的文本，而 `id` 则可以是任何值。 然后调用客户端的 `DetectLanguage()` 函数。
 
-    ```ruby
-    def DetectLanguageExample(client)
-       # The documents to be analyzed.
-       language_input_1 = LanguageInput.new
-       language_input_1.id = '1'
-       language_input_1.text = 'This is a document written in English.'
-    
-       language_input_2 = LanguageInput.new
-       language_input_2.id = '2'
-       language_input_2.text = 'Este es un document escrito en Español..'
-    
-       language_input_3 = LanguageInput.new
-       language_input_3.id = '3'
-       language_input_3.text = '这是一个用中文写的文件'
-    ```
+[!code-ruby[language detection document creation and call](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=detectLanguageCall)] 
 
-3. 在同一函数中，将文档组合到一个列表中。 将它添加到 `LanguageBatchInput` 对象的 `documents` 字段。 
+调用 `DetectLanguageExample()` 函数。
 
-4. 调用客户端的 `detect_language()` 函数，使用 `LanguageBatchInput` 对象作为参数来发送文档。 如果返回了任何结果，请将其输出。
-    ```ruby
-       input_documents = LanguageBatchInput.new
-       input_documents.documents = [language_input_1, language_input_2, language_input_3]
-    
-    
-       result = client.detect_language(
-           language_batch_input: input_documents
-       )
-    
-       if (!result.nil? && !result.documents.nil? && result.documents.length > 0)
-         puts '===== LANGUAGE DETECTION ====='
-         result.documents.each do |document|
-           puts "Document ID: #{document.id} , Language: #{document.detected_languages[0].name}"
-         end
-       else
-         puts 'No results data..'
-       end
-     end
-    ```
-
-5. 调用 `DetectLanguageExample` 函数
-
-    ```ruby
-    DetectLanguageExample(textAnalyticsClient)
-    ```
+```ruby
+DetectLanguageExample(textAnalyticsClient)
+```
 
 ### <a name="output"></a>输出
 
@@ -210,60 +169,19 @@ Document ID: 3 , Language: Chinese_Simplified
 
 ## <a name="entity-recognition"></a>实体识别
 
-文本分析服务可以区分并提取文本文档中的不同实体（人物、位置和事物）。 以下示例显示了在多个示例文档中发现的实体。
+在客户端对象中，创建名为 `RecognizeEntities()` 的函数，该函数采用稍后将创建的输入文档的列表。 调用客户端的 `entities()` 函数并获取结果。 然后循环访问结果，输出每个文档的 ID 和识别的实体。
 
-1. 创建名为 `Recognize_Entities()` 的新函数，该函数将上面创建的文本分析客户端用作参数。
+[!code-ruby[client method for entity recognition](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=recognizeEntities)]
 
-2. 定义一组需要分析的 `MultiLanguageInput` 对象。 为每个对象添加语言和文本。 此 ID 可以是任意值。
+在客户端函数外部，创建名为 `RecognizeEntitiesExample()` 的新函数，该函数使用以前创建的 `TextAnalyticsClient` 对象。 创建 `MultiLanguageInput` 对象的列表，其中包含需分析的文档。 每个对象会包含 `id`、`language` 和 `text` 属性。 `text` 属性存储要分析的文本，`language` 是文本的语言，`id` 则可以是任何值。 然后调用客户端的 `RecognizeEntities()` 函数。
 
-    ```ruby
-      def RecognizeEntitiesExample(client)
-        # The documents to be analyzed.
-        input_1 = MultiLanguageInput.new
-        input_1.id = '1'
-        input_1.language = 'en'
-        input_1.text = 'Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800.'
-    
-        input_2 = MultiLanguageInput.new
-        input_2.id = '2'
-        input_2.language = 'es'
-        input_2.text = 'La sede principal de Microsoft se encuentra en la ciudad de Redmond, a 21 kilómetros de Seattle.'
-    ```
+[!code-ruby[entity recognition documents and method call](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=recognizeEntitiesCall)] 
 
-3. 在同一函数中，将文档组合到一个列表中。 将它添加到 `MultiLanguageBatchInput` 对象的 `documents` 字段。 
+调用 `RecognizeEntitiesExample()` 函数。
 
-4. 调用客户端的 `entities()` 函数，使用 `MultiLanguageBatchInput` 对象作为参数来发送文档。 如果返回了任何结果，请将其输出。
-
-    ```ruby
-        input_documents =  MultiLanguageBatchInput.new
-        input_documents.documents = [input_1, input_2]
-    
-        result = client.entities(
-            multi_language_batch_input: input_documents
-        )
-    
-        if (!result.nil? && !result.documents.nil? && result.documents.length > 0)
-          puts '===== ENTITY RECOGNITION ====='
-          result.documents.each do |document|
-            puts "Document ID: #{document.id}"
-              document.entities.each do |entity|
-                puts "\tName: #{entity.name}, \tType: #{entity.type == nil ? "N/A": entity.type},\tSub-Type: #{entity.sub_type == nil ? "N/A": entity.sub_type}"
-                entity.matches.each do |match|
-                  puts "\tOffset: #{match.offset}, \Length: #{match.length},\tScore: #{match.entity_type_score}"
-                end
-                puts
-              end
-          end
-        else
-          puts 'No results data..'
-        end
-      end
-    ```
-
-5. 调用 `RecognizeEntitiesExample` 函数
-    ```ruby
-    RecognizeEntitiesExample(textAnalyticsClient)
-    ```
+```ruby
+RecognizeEntitiesExample(textAnalyticsClient)
+```
 
 ### <a name="output"></a>输出
 
@@ -309,67 +227,20 @@ Document ID: 2
 
 ## <a name="key-phrase-extraction"></a>关键短语提取
 
-文本分析服务可以提取句子中的关键短语。 以下示例显示了在多个采用多种语言的示例文档中发现的实体。
+在客户端对象中，创建名为 `ExtractKeyPhrases()` 的函数，该函数采用稍后将创建的输入文档的列表。 调用客户端的 `key_phrases()` 函数并获取结果。 然后循环访问结果，输出每个文档的 ID 以及提取的密钥短语。
 
-1. 创建名为 `KeyPhraseExtractionExample()` 的新函数，该函数将上面创建的文本分析客户端用作参数。
+[!code-ruby[key phrase extraction client method](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=extractKeyPhrases)] 
 
-2. 定义一组需要分析的 `MultiLanguageInput` 对象。 为每个对象添加语言和文本。 此 ID 可以是任意值。
+在客户端函数外部，创建名为 `KeyPhraseExtractionExample()` 的新函数，该函数使用以前创建的 `TextAnalyticsClient` 对象。 创建 `MultiLanguageInput` 对象的列表，其中包含需分析的文档。 每个对象会包含 `id`、`language` 和 `text` 属性。 `text` 属性存储要分析的文本，`language` 是文本的语言，`id` 则可以是任何值。 然后调用客户端的 `ExtractKeyPhrases()` 函数。
 
-    ```ruby
-    def KeyPhraseExtractionExample(client)
-      # The documents to be analyzed.
-      input_1 = MultiLanguageInput.new
-      input_1.id = '1'
-      input_1.language = 'ja'
-      input_1.text = '猫は幸せ'
-  
-      input_2 = MultiLanguageInput.new
-      input_2.id = '2'
-      input_2.language = 'de'
-      input_2.text = 'Fahrt nach Stuttgart und dann zum Hotel zu Fu.'
-  
-      input_3 = MultiLanguageInput.new
-      input_3.id = '3'
-      input_3.language = 'en'
-      input_3.text = 'My cat is stiff as a rock.'
-  
-      input_4 = MultiLanguageInput.new
-      input_4.id = '4'
-      input_4.language = 'es'
-      input_4.text = 'A mi me encanta el fútbol!'
-      ```
+[!code-ruby[key phrase document creation and call](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=keyPhrasesCall)]
 
-3. 在同一函数中，将文档组合到一个列表中。 将它添加到 `MultiLanguageBatchInput` 对象的 `documents` 字段。 
 
-4. 调用客户端的 `key_phrases()` 函数，使用 `MultiLanguageBatchInput` 对象作为参数来发送文档。 如果返回了任何结果，请将其输出。
+调用 `KeyPhraseExtractionExample()` 函数。
 
-    ```ruby
-      input_documents =  MultiLanguageBatchInput.new
-      input_documents.documents = [input_1, input_2, input_3, input_4]
-    
-      result = client.key_phrases(
-          multi_language_batch_input: input_documents
-      )
-    
-      if (!result.nil? && !result.documents.nil? && result.documents.length > 0)
-        result.documents.each do |document|
-          puts "Document Id: #{document.id}"
-          puts '  Key Phrases'
-          document.key_phrases.each do |key_phrase|
-            puts "    #{key_phrase}"
-          end
-        end
-      else
-        puts 'No results data..'
-      end
-    end
-    ```
-
-5. 调用 `KeyPhraseExtractionExample` 函数
-
-    ```ruby
-    KeyPhraseExtractionExample(textAnalyticsClient)
-    ```
+```ruby
+KeyPhraseExtractionExample(textAnalyticsClient)
+```
 
 ### <a name="output"></a>输出
 
@@ -391,13 +262,3 @@ Document ID: 4
          Key phrases:
                 fútbol
 ```
-
-## <a name="next-steps"></a>后续步骤
-
-> [!div class="nextstepaction"]
-> [使用 Power BI 进行文本分析](../tutorials/tutorial-power-bi-key-phrases.md)
-
-## <a name="see-also"></a>另请参阅
-
- [文本分析概述](../overview.md)  
- [常见问题解答 (FAQ)](../text-analytics-resource-faq.md)

@@ -1,25 +1,14 @@
 ---
-title: OS 和运行时修补频率 - Azure 应用服务 | Microsoft Docs
-description: 介绍 Azure 应用服务如何更新 OS 和运行时，以及如何获取更新公告。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: OS 和运行时修补频率
+description: 了解 Azure 应用服务如何更新 OS 和运行时、你的应用具有哪些运行时和修补程序级别，以及如何获取更新公告。
 ms.topic: article
 ms.date: 02/02/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 086f5773a8ae4085a8e5bc0637bdebe5f2df4fb0
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
-ms.translationtype: MT
+ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203337"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78273633"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure 应用服务中的 OS 和运行时修补
 
@@ -41,7 +30,7 @@ Azure 管理两个级别的 OS 修补：运行应用服务资源的物理服务�
 
 ## <a name="how-does-azure-deal-with-significant-vulnerabilities"></a>Azure 如何处理重大漏洞？
 
-严重的漏洞（例如[零日漏洞](https://wikipedia.org/wiki/Zero-day_(computing))）需要立即修补，将会根据案例以高优先级处理更新。
+当严重漏洞需要立即修补（如[零天漏洞](https://wikipedia.org/wiki/Zero-day_(computing))）时，将根据具体情况来处理高优先级更新。
 
 访问 [Azure 安全博客](https://azure.microsoft.com/blog/topics/security/)，及时了解 Azure 中的关键安全公告。 
 
@@ -61,7 +50,7 @@ Azure 管理两个级别的 OS 修补：运行应用服务资源的物理服务�
 
 ### <a name="new-patch-updates"></a>新的修补更新
 
-对 .NET、PHP、Java SDK 或 Tomcat/Jetty 版本所做的修补更新会通过将现有版本覆盖为新版本来自动应用。 Node.js 修补更新将与现有版本一并安装（类似于下一部分中的主要版本和次要版本）。 可以通过[站点扩展](https://www.siteextensions.net/packages?q=Tags%3A%22python%22)，与内置的 Python 安装一并手动安装新的 Python 修补版本。
+对 .NET、PHP、Java SDK 或 Tomcat/Jetty 版本所做的修补更新会通过将现有版本覆盖为新版本来自动应用。 Node.js 修补更新将与现有版本一并安装（类似于下一部分中的主要版本和次要版本）。 新的 Python 修补程序版本可以通过[站点扩展](https://azure.microsoft.com/blog/azure-web-sites-extensions/)，与内置的 Python 安装一起手动安装。
 
 ### <a name="new-major-and-minor-versions"></a>新的主要版本和次要版本
 
@@ -93,6 +82,7 @@ az webapp config set --java-version 1.8 --java-container Tomcat --java-container
 | PHP 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br> `php --version` |
 | 默认的 Node.js 版本 | 在 [Cloud Shell](../cloud-shell/overview.md) 中运行以下命令： <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
 | Python 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br> `python --version` |  
+| Java 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br> `java -version` |  
 
 > [!NOTE]  
 > 访问注册表位置 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`，其中存储了有关[“KB”修补](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins)的信息。该位置已被锁定。

@@ -1,95 +1,101 @@
 ---
-title: 桌面应用程序调用 web Api （代码配置）-Microsoft 标识平台
-description: 了解如何构建桌面应用调用 web Api （应用程序的代码配置）
+title: 配置调用 Web API 的桌面应用 - Microsoft 标识平台 | Azure
+description: 了解如何配置调用 Web API 的桌面应用的代码
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc0042d6392891e8282c563afea2212031a0f49a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: MT
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: f197dd5063f8584968277d8d55298c03d9d71ea6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121881"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84558850"
 ---
-# <a name="desktop-app-that-calls-web-apis---code-configuration"></a>桌面应用程序调用 web Api 的代码配置
+# <a name="desktop-app-that-calls-web-apis-code-configuration"></a>调用 Web API 的桌面应用：代码配置
 
-现在，已创建你的应用程序，您将了解如何配置应用程序的坐标的代码。
+创建应用程序以后，即可了解如何使用应用程序的坐标来配置代码。
 
-## <a name="msal-libraries"></a>MSAL 库
+## <a name="microsoft-authentication-libraries"></a>Microsoft 身份验证库
 
-唯一的 MSAL 库现在支持桌面应用程序是 MSAL.NET
+以下 Microsoft 身份验证库 (MSAL) 支持桌面应用程序。
+
+  Microsoft 身份验证库 | 说明
+  ------------ | ----------
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 支持在多个平台中（例如 Linux、Windows 和 macOS）构建桌面应用程序。
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | 支持在多个平台中构建桌面应用程序。
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | 支持在多个平台中构建桌面应用程序。
+  ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | 仅支持在 macOS 上运行的桌面应用程序。
 
 ## <a name="public-client-application"></a>公共客户端应用程序
 
-代码的角度来看，从桌面应用程序是公共客户端应用程序，而这正是将生成并处理 MSAL.NET `IPublicClientApplication`。 再次操作将稍有不同您使用交互式身份验证。
+从代码的角度看，桌面应用程序是公共客户端应用程序。 根据是否使用交互式身份验证，配置将略有不同。
+
+# <a name="net"></a>[.NET](#tab/dotnet)
+
+需要生成并操作 MSAL.NET `IPublicClientApplication`。
 
 ![IPublicClientApplication](media/scenarios/public-client-application.png)
 
-### <a name="exclusively-by-code"></a>以独占方式通过代码
+### <a name="exclusively-by-code"></a>以独占方式通过代码来完成
 
-下面的代码实例化的公共客户端应用程序中，在 Microsoft Azure 公有云，与工作和学校帐户或个人 Microsoft 帐户登录用户。
+下面的代码实例化公用客户端应用程序，并使用工作或学校帐户或个人 Microsoft 帐户 Microsoft Azure 公有云中的用户登录。
 
-```CSharp
+```csharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
-如果你想要使用交互式身份验证，如上图所示，你想要使用`.WithRedirectUri`修饰符：
+如果打算使用交互式身份验证或设备代码流，如上所示，请使用 `.WithRedirectUri` 修饰符。
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
-        .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
+        .WithDefaultRedirectUri()
         .Build();
 ```
 
-### <a name="using-configuration-files"></a>使用配置文件
+### <a name="use-configuration-files"></a>使用配置文件
 
-下面的代码实例化来自配置对象，这可能是已填写的以编程方式或从配置文件中读取的公共客户端应用程序
+以下代码通过一个配置对象实例化公共客户端应用程序，该对象可以通过编程方式进行填充，也可以从配置文件读取。
 
-```CSharp
+```csharp
 PublicClientApplicationOptions options = GetOptions(); // your own method
 IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicationOptions(options)
-        .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
+        .WithDefaultRedirectUri()
         .Build();
 ```
 
 ### <a name="more-elaborated-configuration"></a>更详细的配置
 
-可以详细阐述通过添加多个修饰符的构建的应用程序。 例如，如果你希望应用程序是国家/地区云 （此处美国政府版） 中的多租户应用程序，您可以编写：
+可以通过添加多个修饰符来详细阐述应用程序的构建。 例如，如果希望应用程序成为国家/地区云（例如此处显示的美国政府）中的多租户应用程序，可以编写：
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
-        .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
+        .WithDefaultRedirectUri()
         .WithAadAuthority(AzureCloudInstance.AzureUsGovernment,
                          AadAuthorityAudience.AzureAdMultipleOrgs)
         .Build();
 ```
 
-MSAL.NET 还包含有关 ADFS 2019 修饰符：
+MSAL.NET 还包含 Active Directory 联合身份验证服务 2019 的修饰符：
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
         .WithAdfsAuthority("https://consoso.com/adfs")
         .Build();
 ```
 
-最后，如果你想要获取的令牌，为 Azure AD B2C 租户，可以指定你的租户，如下面的代码段中所示：
+最后，如果要获取 Azure Active Directory (Azure AD) B2C 租户的令牌，请指定你的租户，如以下代码片段所示：
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
         .WithB2CAuthority("https://fabrikamb2c.b2clogin.com/tfp/{tenant}/{PolicySignInSignUp}")
@@ -98,16 +104,16 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 ### <a name="learn-more"></a>了解详细信息
 
-若要了解如何配置 MSAL.NET 桌面应用程序的详细信息：
+若要详细了解如何配置 MSAL.NET 桌面应用程序，请执行以下操作：
 
-- 有关所有修饰符上可用的列表`PublicClientApplicationBuilder`，请参阅参考文档[PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)
-- 有关在中公开的所有选项的说明`PublicClientApplicationOptions`请参阅[PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)中的参考文档
+- 如需 `PublicClientApplicationBuilder` 上提供的所有修饰符的列表，请参阅参考文档 [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)。
+- 如需 `PublicClientApplicationOptions` 中公开的所有选项的说明，请参阅参考文档中的 [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)。
 
-## <a name="complete-example-with-configuration-options"></a>使用配置选项的完整示例
+### <a name="complete-example-with-configuration-options"></a>包含配置选项的完整示例
 
-假设具有以下的.NET Core 控制台应用程序`appsettings.json`配置文件：
+假设有一个 .NET Core 控制台应用程序，其中包含以下 `appsettings.json` 配置文件：
 
-```JSon
+```json
 {
   "Authentication": {
     "AzureCloudInstance": "AzurePublic",
@@ -121,9 +127,9 @@ app = PublicClientApplicationBuilder.Create(clientId)
 }
 ```
 
-有一些代码来读取此文件使用.NET 提供配置框架;
+使用 .NET 提供的配置框架时，此文件中只有少量代码可以读取：
 
-```CSharp
+```csharp
 public class SampleConfiguration
 {
  /// <summary>
@@ -132,13 +138,13 @@ public class SampleConfiguration
  public PublicClientApplicationOptions PublicClientApplicationOptions { get; set; }
 
  /// <summary>
- /// Base URL for Microsoft Graph (it varies depending on whether the application is ran
- /// in Microsoft Azure public clouds or national / sovereign clouds
+ /// Base URL for Microsoft Graph (it varies depending on whether the application runs
+ /// in Microsoft Azure public clouds or national or sovereign clouds)
  /// </summary>
  public string MicrosoftGraphBaseEndpoint { get; set; }
 
  /// <summary>
- /// Reads the configuration from a json file
+ /// Reads the configuration from a JSON file
  /// </summary>
  /// <param name="path">Path to the configuration json file</param>
  /// <returns>SampleConfiguration as read from the json file</returns>
@@ -151,7 +157,7 @@ public class SampleConfiguration
                     .AddJsonFile(path);
   Configuration = builder.Build();
 
-  // Read the auth and graph endpoint config
+  // Read the auth and graph endpoint configuration
   SampleConfiguration config = new SampleConfiguration()
   {
    PublicClientApplicationOptions = new PublicClientApplicationOptions()
@@ -164,18 +170,95 @@ public class SampleConfiguration
 }
 ```
 
-现在，若要创建你的应用程序，您将只需编写以下代码：
+现在，若要创建你的应用程序，请编写以下代码：
 
-```CSharp
+```csharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");
 var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.PublicClientApplicationOptions)
-           .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
+           .WithDefaultRedirectUri()
            .Build();
 ```
 
-和之前调用`.Build()`方法，您可以重写您的配置对调用进行`.WithXXX`方法之前所示。
+在调用 `.Build()` 方法之前，可以通过调用 `.WithXXX` 方法来重写配置，如前所示。
+
+# <a name="java"></a>[Java](#tab/java)
+
+下面是 MSAL Java 开发示例中用于配置示例的类：[TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)。
+
+```Java
+PublicClientApplication pca = PublicClientApplication.builder(CLIENT_ID)
+        .authority(AUTHORITY)
+        .build();
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+config = json.load(open(sys.argv[1]))
+
+app = msal.PublicClientApplication(
+    config["client_id"], authority=config["authority"],
+    # token_cache=...  # Default cache is in memory only.
+                       # You can learn how to use SerializableTokenCache from
+                       # https://msal-python.rtfd.io/en/latest/#msal.SerializableTokenCache
+    )
+```
+
+# <a name="macos"></a>[MacOS](#tab/macOS)
+
+下面的代码实例化公用客户端应用程序，并使用工作或学校帐户或个人 Microsoft 帐户 Microsoft Azure 公有云中的用户登录。
+
+### <a name="quick-configuration"></a>快速配置
+
+Objective-C：
+
+```objc
+NSError *msalError = nil;
+
+MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"];
+MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&msalError];
+```
+
+Swift：
+```swift
+let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>")
+if let application = try? MSALPublicClientApplication(configuration: config){ /* Use application */}
+```
+
+### <a name="more-elaborated-configuration"></a>更详细的配置
+
+可以通过添加多个修饰符来详细阐述应用程序的构建。 例如，如果希望应用程序成为国家/地区云（例如此处显示的美国政府）中的多租户应用程序，可以编写：
+
+Objective-C：
+
+```objc
+MSALAADAuthority *aadAuthority =
+                [[MSALAADAuthority alloc] initWithCloudInstance:MSALAzureUsGovernmentCloudInstance
+                                                   audienceType:MSALAzureADMultipleOrgsAudience
+                                                      rawTenant:nil
+                                                          error:nil];
+
+MSALPublicClientApplicationConfig *config =
+                [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"
+                                                                redirectUri:@"<your-redirect-uri-here>"
+                                                                  authority:aadAuthority];
+
+NSError *applicationError = nil;
+MSALPublicClientApplication *application =
+                [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&applicationError];
+```
+
+Swift：
+
+```swift
+let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)
+
+let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>", redirectUri: "<your-redirect-uri-here>", authority: authority)
+if let application = try? MSALPublicClientApplication(configuration: config) { /* Use application */}
+```
+---
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [获取令牌的桌面应用程序](scenario-desktop-acquire-token.md)
+> [获取桌面应用的令牌](scenario-desktop-acquire-token.md)

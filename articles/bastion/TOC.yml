@@ -1,0 +1,72 @@
+- name: Bastion 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于 Azure Bastion
+      href: bastion-overview.md
+- name: 快速入门
+  items:
+    - name: 通过 VM 设置创建 Bastion 主机
+      href: quickstart-host-portal.md
+- name: 概念
+  items:
+    - name: 远程工作支持
+      href: ../networking/working-remotely-support.md?toc=%2fazure%2fbastion%2ftoc.json
+    - name: 利用 Bastion 进行远程工作
+      href: work-remotely-support.md
+- name: 操作指南
+  items:
+    - name: 创建 Bastion 主机
+      items:
+        - name: Azure 门户
+          href: bastion-create-host-portal.md
+        - name: Azure PowerShell
+          href: bastion-create-host-powershell.md
+        - name: Azure CLI
+          href: create-host-cli.md
+    - name: 连接到虚拟机
+      items:
+        - name: SSH (Linux)
+          href: bastion-connect-vm-ssh.md
+        - name: RDP (Windows)
+          href: bastion-connect-vm-rdp.md
+    - name: 连接到虚拟机规模集
+      href: bastion-connect-vm-scale-set.md
+    - name: 连接到开发测试实验室虚拟机
+      href: ../devtest-labs/enable-browser-connection-lab-virtual-machines.md?toc=%2fazure%2fbastion%2ftoc.json
+    - name: 用于虚拟机会话
+      items:
+        - name: 复制和粘贴
+          href: bastion-vm-copy-paste.md
+        - name: 全屏视图
+          href: bastion-vm-full-screen.md
+    - name: 使用 NSG
+      href: bastion-nsg.md
+    - name: 配置和访问诊断日志
+      href: diagnostic-logs.md
+    - name: 监视和管理会话
+      href: session-monitoring.md
+    - name: 疑难解答
+      href: troubleshoot.md
+- name: 参考
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.network
+    - name: REST
+      href: /rest/api/virtualnetwork/bastionhosts
+    - name: Azure CLI
+      href: /cli/azure/network/bastion
+- name: 资源
+  items:
+    - name: Bastion 常见问题解答
+      href: bastion-faq.md
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: 博客
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/en-us/answers/topics/azure-virtual-network.html'
+    - name: 预览版 SLA
+      href: 'https://azure.microsoft.com/support/legal/preview-supplemental-terms'
+    - name: SLA
+      href: 'https://azure.microsoft.com/support/legal/sla'

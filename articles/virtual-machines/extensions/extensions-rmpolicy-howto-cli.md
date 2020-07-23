@@ -1,28 +1,28 @@
 ---
-title: 使用 Azure Policy 限制 VM 扩展安装 | Microsoft Docs
+title: 使用 Azure 策略限制 VM 扩展安装
 description: 使用 Azure Policy 限制 VM 扩展部署。
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
-ms.author: roiyz;cynthn
-ms.openlocfilehash: 1f71276c25e3ec1e5791d9b35f89aa95190c6afd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: akjosh
+ms.reviewer: cynthn
+ms.openlocfilehash: 2f9713c0ce2df2533a49086c6c4a95aeaa24c48e
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60543251"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919818"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>使用 Azure Policy 限制 Linux VM 上的扩展安装
 
-如果想要阻止在 Linux VM 上使用或安装某些扩展，可以使用 CLI 创建 Azure Policy 以限制资源组中的 VM 扩展。 
+如果要阻止在 Linux Vm 上使用或安装某些扩展，可以使用 CLI 创建 Azure 策略定义，以限制资源组中 Vm 的扩展。 
 
 本教程在 Azure Cloud Shell 中使用 CLI，后者已不断更新到最新版本。 如果要在本地运行 Azure CLI，则需要安装版本 2.0.26 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
@@ -34,7 +34,7 @@ ms.locfileid: "60543251"
 
 在 [bash Cloud Shell](https://shell.azure.com/bash) 中，键入：
 
-```azurecli-interactive 
+```bash
 vim ~/clouddrive/azurepolicy.rules.json
 ```
 
@@ -75,7 +75,7 @@ vim ~/clouddrive/azurepolicy.rules.json
 
 在 [bash Cloud Shell](https://shell.azure.com/bash) 中，键入：
 
-```azurecli-interactive
+```bash
 vim ~/clouddrive/azurepolicy.parameters.json
 ```
 
@@ -87,7 +87,6 @@ vim ~/clouddrive/azurepolicy.parameters.json
         "type": "Array",
         "metadata": {
             "description": "The list of extensions that will be denied. Example: CustomScriptForLinux, VMAccessForLinux etc.",
-            "strongType": "type",
             "displayName": "Denied extension"
         }
     }

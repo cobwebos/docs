@@ -1,6 +1,6 @@
 ---
-title: Azure Database for PostgreSQL - Hyperscale (Citus)（预览版）快速入门
-description: 有关在 Azure Database for PostgreSQL Hyperscale (Citus)（预览版）中创建和查询分布式表的快速入门。
+title: 创建分布式表 - 超大规模 (Citus) - Azure Database for PostgreSQL
+description: 本快速入门介绍如何在 Azure Database for PostgreSQL 超大规模 (Citus) 中创建和查询分布式表。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,16 +8,16 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/14/2019
-ms.openlocfilehash: efc3801ab03f739761a41bec754f975fe43dcd8e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 02e009e6fff2e717693d1579d409199ab179d941
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792006"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290325"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure Database for PostgreSQL - Hyperscale (Citus)（预览版）
+# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure Database for PostgreSQL - 超大规模 (Citus)
 
-用于 PostgreSQL 的 Azure 数据库是一种托管服务，可用于在云中运行、管理和缩放具有高可用性的 PostgreSQL 数据库。 本快速入门介绍如何使用 Azure 门户创建 Azure Database for PostgreSQL - Hyperscale (Citus)（预览版）服务器组。 你将探究分布式数据：在节点之间将表分片、引入示例数据，以及运行在多个节点上执行的查询。
+用于 PostgreSQL 的 Azure 数据库是一种托管服务，可用于在云中运行、管理和缩放具有高可用性的 PostgreSQL 数据库。 本快速入门介绍如何使用 Azure 门户创建 Azure Database for PostgreSQL - 超大规模 (Citus) 服务器组。 你将探究分布式数据：在节点之间将表分片、引入示例数据，以及运行在多个节点上执行的查询。
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
@@ -88,6 +88,8 @@ SELECT create_distributed_table('github_users', 'user_id');
 接下来，将数据从文件加载到分布式表中：
 
 ```sql
+SET CLIENT_ENCODING TO 'utf8';
+
 \copy github_events from 'events.csv' WITH CSV
 \copy github_users from 'users.csv' WITH CSV
 ```
@@ -116,14 +118,14 @@ ORDER BY hour;
 如果在 `user_id` 上联接，则 Hyperscale 可将联接执行下推到分片中，以便在工作器节点上并行执行。 例如，让我们查找创建了最多存储库的用户：
 
 ```sql
-SELECT login, count(*)
-FROM github_events ge
-JOIN github_users gu
-ON ge.user_id = gu.user_id
-WHERE event_type = 'CreateEvent' AND
-      payload @> '{"ref_type": "repository"}'
-GROUP BY login
-ORDER BY count(*) DESC;
+SELECT gu.login, count(*)
+  FROM github_events ge
+  JOIN github_users gu
+    ON ge.user_id = gu.user_id
+ WHERE ge.event_type = 'CreateEvent'
+   AND ge.payload @> '{"ref_type": "repository"}'
+ GROUP BY gu.login
+ ORDER BY count(*) DESC;
 ```
 
 ## <a name="clean-up-resources"></a>清理资源

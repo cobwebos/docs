@@ -1,26 +1,30 @@
 ---
-title: Azure 数据工厂中的 Web 活动 | Microsoft Docs
+title: Azure 数据工厂中的 Web 活动
 description: 了解如何使用 Web 活动（数据工厂支持的控制流活动之一）从管道调用 REST 终结点。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.author: shlo
-ms.openlocfilehash: 7edaa4c673c2cb94dc5bd0245ce66c9fe6a7dd3c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 150ee15adb042841f74ffbf3b75338b2dd569333
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60764282"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84017641"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Web 活动
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+
 Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可以传递数据集和链接服务以供活动使用和访问。
+
+> [!NOTE]
+> Web 活动只能调用公开显示的 URL。 专用虚拟网络中承载的 Url 不支持此方法。
 
 ## <a name="syntax"></a>语法
 
@@ -61,9 +65,9 @@ Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 需要
+属性 | 说明 | 允许的值 | 必须
 -------- | ----------- | -------------- | --------
-名称 | Web 活动的名称 | String | 是
+name | Web 活动的名称 | String | 是
 type | 必须设置为 **WebActivity**。 | String | 是
 method | 目标终结点的 Rest API 方法。 | 字符串。 <br/><br/>支持的类型：“GET”、“POST”、“PUT” | 是
 url | 目标终结点和路径 | 字符串（或带有 resultType 字符串的表达式）。 如果活动在 1 分钟内未收到终结点的响应，则会超时并显示错误。 | 是
@@ -86,12 +90,16 @@ linkedServices | 传递给终结点的链接服务列表。 | 链接服务引用
 | 非 JSON 类型 | 不支持 | 不支持 |
 ||||
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
+
+下面是 Web 活动中支持的身份验证类型。
 
 ### <a name="none"></a>无
+
 如果不需要身份验证，请排除“身份验证”属性。
 
 ### <a name="basic"></a>基本
+
 指定用户名和密码以用于基本身份验证。
 
 ```json
@@ -103,6 +111,7 @@ linkedServices | 传递给终结点的链接服务列表。 | 链接服务引用
 ```
 
 ### <a name="client-certificate"></a>客户端证书
+
 指定 base64 编码的 PFX 文件内容和密码。
 
 ```json
@@ -123,6 +132,9 @@ linkedServices | 传递给终结点的链接服务列表。 | 链接服务引用
     "resource": "https://management.azure.com/"
 }
 ```
+
+> [!NOTE]
+> 如果你的数据工厂配置了 git 存储库，则必须将你的凭据存储在 Azure Key Vault 中，才能使用基本身份验证或客户端证书身份验证。 Azure 数据工厂不会在 git 中存储密码。
 
 ## <a name="request-payload-schema"></a>请求有效负载架构
 当使用 POST/PUT 方法时，正文属性表示发送到终结点的有效负载。 可以将链接服务和数据集作为有效负载的一部分进行传递。 下面是有效负载的架构：
@@ -148,7 +160,7 @@ linkedServices | 传递给终结点的链接服务列表。 | 链接服务引用
 ```
 
 ## <a name="example"></a>示例
-在此示例中，管道中的 Web 活动调用了 REST 终结点。 它将 Azure SQL 链接服务和 Azure SQL 数据集传递到该终结点。 REST 终结点使用 Azure SQL 连接字符串连接到 Azure SQL Server，并返回 SQL Server 实例的名称。
+在此示例中，管道中的 Web 活动调用了 REST 终结点。 它将 Azure SQL 链接服务和 Azure SQL 数据集传递到该终结点。 REST 终结点使用 Azure SQL 连接字符串连接到逻辑 SQL Server，并返回 SQL Server 实例的名称。
 
 ### <a name="pipeline-definition"></a>管道定义
 

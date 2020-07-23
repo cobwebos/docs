@@ -1,18 +1,18 @@
 ---
-title: 教程：使用 Azure 门户设计 Azure Database for MariaDB
+title: 教程：设计 Azure Database for MariaDB - Azure 门户
 description: 本教程介绍如何使用 Azure 门户创建和管理 Azure Database for MariaDB 服务器和数据库。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: tutorial
-ms.date: 04/15/2019
+ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 1938a84d3e9c0ba8c84cbdbd2eee5b7ca448554d
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 974b6a1e980119582d4fedb5f8b4e73685290de3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515661"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80063786"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>教程：使用 Azure 门户设计 Azure Database for MariaDB 数据库
 
@@ -42,14 +42,14 @@ Azure Database for MariaDB 是一种托管服务，可用于在云中运行、�
 1. 选择门户左上角的“创建资源”按钮 (+)  。
 
 2. 选择“数据库” > “Azure Database for MariaDB”   。 还可以在搜索框中键入“MariaDB”以查找该服务  。
-   
+
    ![转到 MySQL](./media/tutorial-design-database-using-portal/1-Navigate-to-mariadb.png)
 
-3. 选择“Azure Database for MariaDB”  磁贴，然后选择“创建”  。 输入或选择所需信息。
-   
+3. 选择“Azure Database for MariaDB”  磁贴。 输入或选择所需信息。
+
    ![创建窗体](./media/tutorial-design-database-using-portal/2-create-form.png)
 
-    设置 | 建议的值 | 字段说明 
+    设置 | 建议的值 | 字段说明
     ---|---|---
     服务器名称 |  唯一的服务器名称 | 选择用于标识 Azure Database for MariaDB 服务器的唯一名称。 例如，**mydemoserver**。 域名 *.mariadb.database.azure.com* 将追加到所输入的服务器名称后面。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 它必须包含 3 到 63 个字符。
     订阅 | *用户的订阅* | 选择要用于服务器的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的订阅。
@@ -67,14 +67,14 @@ Azure Database for MariaDB 是一种托管服务，可用于在云中运行、�
    > [!TIP]
    > 启用“自动增长”  后，当接近分配的限制时，服务器会增加存储空间，而不会影响工作负荷。
 
-4. 选择“创建”  。 一两分钟后，新的 Azure Database for MariaDB 服务器将在云中运行。 若要监视部署过程，请在工具栏上选择“通知”。 
+4. 单击“查看 + 创建”  。 可单击工具栏上的“通知”  按钮以监视部署过程。 部署最多可能需要 20 分钟。
 
 ## <a name="configure-the-firewall"></a>配置防火墙
 
 Azure Database for MariaDB 受防火墙保护。 默认情况下，将拒绝与服务器和服务器内数据库的所有连接。 首次连接到 Azure Database for MariaDB 之前，请配置防火墙以添加客户端计算机的公共网络 IP 地址（或 IP 地址范围）。
 
 1. 选择新创建的服务器，然后选择“连接安全性”  。
-   
+
    ![连接安全性](./media/tutorial-design-database-using-portal/1-Connection-security.png)
 2. 可以选择“添加我的 IP”  或在此处配置防火墙规则。 创建规则后请记得选择“保存”  。
 
@@ -85,7 +85,7 @@ Azure Database for MariaDB 受防火墙保护。 默认情况下，将拒绝与�
 
 ## <a name="get-connection-information"></a>获取连接信息
 
-从 Azure 门户获取 Azure Database for MariaDB 服务器的“服务器名称”（完全限定）和“服务器管理员登录名”   。 使用 mysql 命令行工具通过完全限定的服务器名称连接到服务器。 
+从 Azure 门户获取 Azure Database for MariaDB 服务器的“服务器名称”（完全限定）和“服务器管理员登录名”   。 使用 mysql 命令行工具通过完全限定的服务器名称连接到服务器。
 
 1. 在 [Azure 门户](https://portal.azure.com/)的左侧菜单中，选择“所有资源”。  输入服务器名称，搜索 Azure Database for MariaDB 服务器。 选择服务器名称以查看服务器详细信息。
 
@@ -93,15 +93,15 @@ Azure Database for MariaDB 受防火墙保护。 默认情况下，将拒绝与�
 
    ![服务器属性](./media/tutorial-design-database-using-portal/2-server-properties.png)
 
-在我们的示例中，服务器名称是 mydemoserver.mariadb.database.azure.com  ，服务器管理员登录名是 myadmin\@mydemoserver  。
+在我们的示例中，服务器名称是 mydemoserver.mariadb.database.azure.com，服务器管理员登录名是 myadmin\@mydemoserver   。
 
 ## <a name="connect-to-the-server-by-using-mysql"></a>通过 mysql 连接到服务器
 
-使用 [mysql 命令行工具](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)建立与 Azure Database for MariaDB 服务器的连接。 可以通过 Azure Cloud Shell 在浏览器中运行 mysql 命令行工具，也可以使用本地安装的 mysql 工具在计算机上运行。 若要打开 Azure Cloud Shell，请选择本文中代码块上的“试用”按钮，或访问 Azure 门户并单击右上角工具栏中的 **>_** 图标。  
+使用 [mysql 命令行工具](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)建立与 Azure Database for MariaDB 服务器的连接。 可以通过 Azure Cloud Shell 在浏览器中运行 mysql 命令行工具，也可以使用本地安装的 mysql 工具在计算机上运行。 若要打开 Azure Cloud Shell，请选择本文中代码块上的“试用”按钮，或访问 Azure 门户并单击右上角工具栏中的 **>_** 图标。 
 
 输入进行连接的命令：
 
-```azurecli-interactive
+```bash
 mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
 ```
 
@@ -171,7 +171,7 @@ SELECT * FROM inventory;
    ![还原数据库](./media/tutorial-design-database-using-portal/1-restore-a-db.png)
 
 2. 在“还原”页上，输入或选择以下信息： 
-   
+
    ![“还原”窗体](./media/tutorial-design-database-using-portal/2-restore-form.png)
    
    - **还原点**：在列出的时间范围内选择要还原到的时间点。 请确保将本地时区转换为 UTC。

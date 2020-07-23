@@ -1,21 +1,21 @@
 ---
-title: 关于使用 Azure Site Recovery 进行 Azure 到 Azure 灾难恢复的网络 | Microsoft Docs
+title: 关于如何使用 Azure Site Recovery 在 Azure VM 灾难恢复中联网
 description: 概述了使用 Azure Site Recovery 复制 Azure 虚拟机的网络。
 services: site-recovery
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 3/29/2019
-ms.author: sujayt
-ms.openlocfilehash: a6c9c690efe8b75cd1a939de1c68cf4e5bd40d70
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 3/13/2020
+ms.author: sutalasi
+ms.openlocfilehash: f9e2d82130ae188d269847d0e0236ea0e33d00dc
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60789732"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131390"
 ---
-# <a name="about-networking-in-azure-to-azure-replication"></a>关于 Azure 到 Azure 复制的网络
+# <a name="about-networking-in-azure-vm-disaster-recovery"></a>关于如何在 Azure VM 灾难恢复中联网
 
 
 
@@ -29,11 +29,11 @@ ms.locfileid: "60789732"
 
 下图描绘了 Azure VM 上运行的应用程序的典型 Azure 环境：
 
-![customer-environment](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
+![客户环境](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
 
 如果使用 Azure ExpressRoute 或从本地网络到 Azure 的 VPN 连接，则环境如下：
 
-![customer-environment](./media/site-recovery-azure-to-azure-architecture/source-environment-expressroute.png)
+![客户环境](./media/site-recovery-azure-to-azure-architecture/source-environment-expressroute.png)
 
 通常，网络使用防火墙和网络安全组 (NSG) 进行保护。 防火墙使用基于 URL 或 IP 的允许列表来控制网络连接。 NSG 提供使用 IP 地址范围控制网络连接的规则。
 
@@ -46,69 +46,29 @@ ms.locfileid: "60789732"
 如果使用基于 URL 的防火墙代理来控制出站连接，请允许以下 Site Recovery URL：
 
 
-**URL** | **详细信息**  
+**URL** | **详细信息**
 --- | ---
-* .blob.core.windows.net | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果您知道所有缓存存储帐户的 Vm，则可以加入允许列表的特定存储帐户 Url (例如： cache1.blob.core.windows.net 和 cache2.blob.core.windows.net) 而不是 *。 blob.core.windows.net
-login.microsoftonline.com | 必需，用于向 Site Recovery 服务 URL 进行授权和身份验证。
-*.hypervrecoverymanager.windowsazure.com | 必需，以便从 VM 进行 Site Recovery 服务通信。 如果您的防火墙代理服务器支持的 Ip，可以使用相应的 Site Recovery IP。
-* .servicebus.windows.net | 必需，以便从 VM 写入 Site Recovery 监视和诊断数据。 如果您的防火墙代理服务器支持的 Ip，可以使用相应 Site Recovery 监视 IP。
+*.blob.core.windows.net | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果你知道 Vm 的所有缓存存储帐户，则可以允许访问特定的存储帐户 Url （例如： cache1.blob.core.windows.net 和 cache2.blob.core.windows.net），而不是 blob.core.windows.net。
+login.microsoftonline.com | 对于 Site Recovery 服务 URL 的授权和身份验证而言是必需的。
+*.hypervrecoverymanager.windowsazure.com | 必需，以便从 VM 进行 Site Recovery 服务通信。
+*.servicebus.windows.net | 必需，以便从 VM 写入 Site Recovery 监视和诊断数据。
+*.vault.azure.net | 允许访问，以便通过门户为支持 ADE 的虚拟机启用复制
+*.automation.ext.azure.com | 允许通过门户为复制项启用移动代理自动升级
 
-## <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 地址范围的出站连接
+## <a name="outbound-connectivity-using-service-tags"></a>使用服务标记的出站连接
 
-如果使用基于 IP 的防火墙代理或 NSG 规则来控制出站连接，需要允许这些 IP 地址范围。
+如果使用 NSG 来控制出站连接，则需要允许这些服务标记。
 
-- 对应于源区域中存储帐户的所有 IP 地址范围
+- 对于源区域中的存储帐户：
     - 为源区域创建基于[存储服务标记](../virtual-network/security-overview.md#service-tags)的 NSG 规则。
     - 允许这些地址，才能从 VM 将数据写入到缓存存储帐户。
 - 创建一个基于 [Azure Active Directory (AAD) 服务标记](../virtual-network/security-overview.md#service-tags)的 NSG 规则以允许访问与 AAD 对应的所有 IP 地址
-    - 如果将来要向 Azure Active Directory (AAD) 添加新地址，则需要创建新的 NSG 规则。
-- Site Recovery 服务终结点 IP 地址（[以 XML 文件形式提供](https://aka.ms/site-recovery-public-ips)，具体取决于目标位置）。
+- 为目标区域创建基于 EventsHub 服务标记的 NSG 规则，这样就可以访问 Site Recovery 监视功能。
+- 创建基于 AzureSiteRecovery 服务标记的 NSG 规则，以允许访问任何区域中的 Site Recovery 服务。
+- 创建基于 AzureKeyVault 服务标记的 NSG 规则。 仅在通过门户为支持 ADE 的虚拟机启用复制时才需要这样做。
+- 创建基于 GuestAndHybridManagement 服务标记的 NSG 规则。 仅在通过门户为复制项启用移动代理自动升级时才需要这样做。
 - 在生产 NSG 中创建所需的 NSG 规则之前，建议先在测试 NSG 中创建这些规则，并确保没有任何问题。
 
-
-Site Recovery IP 地址范围如下：
-
-   **目标** | **Site Recovery IP** |  **Site Recovery 监视 IP**
-   --- | --- | ---
-   东亚 | 52.175.17.132 | 13.94.47.61
-   东南亚 | 52.187.58.193 | 13.76.179.223
-   印度中部 | 52.172.187.37 | 104.211.98.185
-   印度南部 | 52.172.46.220 | 104.211.224.190
-   美国中北部 | 23.96.195.247 | 168.62.249.226
-   北欧 | 40.69.212.238 | 52.169.18.8
-   西欧 | 52.166.13.64 | 40.68.93.145
-   美国东部 | 13.82.88.226 | 104.45.147.24
-   美国西部 | 40.83.179.48 | 104.40.26.199
-   美国中南部 | 13.84.148.14 | 104.210.146.250
-   美国中部 | 40.69.144.231 | 52.165.34.144
-   美国东部 2 | 52.184.158.163 | 40.79.44.59
-   日本东部 | 52.185.150.140 | 138.91.1.105
-   日本西部 | 52.175.146.69 | 138.91.17.38
-   巴西南部 | 191.234.185.172 | 23.97.97.36
-   澳大利亚东部 | 104.210.113.114 | 191.239.64.144
-   澳大利亚东南部 | 13.70.159.158 | 191.239.160.45
-   加拿大中部 | 52.228.36.192 | 40.85.226.62
-   加拿大东部 | 52.229.125.98 | 40.86.225.142
-   美国中西部 | 52.161.20.168 | 13.78.149.209
-   美国西部 2 | 52.183.45.166 | 13.66.228.204
-   英国西部 | 51.141.3.203 | 51.141.14.113
-   英国南部 | 51.140.43.158 | 51.140.189.52
-   英国南部 2 | 13.87.37.4| 13.87.34.139
-   英国北部 | 51.142.209.167 | 13.87.102.68
-   韩国中部 | 52.231.28.253 | 52.231.32.85
-   韩国南部 | 52.231.198.185 | 52.231.200.144
-   法国中部 | 52.143.138.106 | 52.143.136.55
-   法国南部 | 52.136.139.227 |52.136.136.62
-   澳大利亚中部| 20.36.34.70 | 20.36.46.142
-   澳大利亚中部 2| 20.36.69.62 | 20.36.74.130
-   南非西部 | 102.133.72.51 | 102.133.26.128
-   南非北部 | 102.133.160.44 | 102.133.154.128
-   美国政府弗吉尼亚州 | 52.227.178.114 | 23.97.0.197
-   US Gov 爱荷华州 | 13.72.184.23 | 23.97.16.186
-   美国亚利桑那州政府 | 52.244.205.45 | 52.244.48.85
-   美国德克萨斯州政府 | 52.238.119.218 | 52.238.116.60
-   美国 DoD 东部 | 52.181.164.103 | 52.181.162.129
-   美国 DoD 中部 | 52.182.95.237 | 52.182.90.133
 ## <a name="example-nsg-configuration"></a>NSG 配置示例
 
 此示例演示如何为要复制的 VM 配置 NSG 规则。
@@ -126,11 +86,9 @@ Site Recovery IP 地址范围如下：
 
       ![aad-tag](./media/azure-to-azure-about-networking/aad-tag.png)
 
-3. 为对应于目标位置的 Site Recovery IP 创建出站 HTTPS (443) 规则：
+3. 与上述安全规则类似，为 NSG 上的 "CentralUS" 创建出站 HTTPS （443）安全规则，该规则对应于目标位置。 这样就可以访问 Site Recovery 监视功能。
 
-   **位置** | **Site Recovery IP 地址** |  **Site Recovery 监视 IP 地址**
-    --- | --- | ---
-   美国中部 | 40.69.144.231 | 52.165.34.144
+4. 为 NSG 上的 "AzureSiteRecovery" 创建出站 HTTPS （443）安全规则。 这允许访问任何区域中的 Site Recovery 服务。
 
 ### <a name="nsg-rules---central-us"></a>NSG 规则 - 美国中部
 
@@ -140,11 +98,9 @@ Site Recovery IP 地址范围如下：
 
 2. 基于 NSG 规则为“AzureActiveDirectory”创建出站 HTTPS (443) 安全规则。
 
-3. 为对应于源位置的 Site Recovery IP 创建出站 HTTPS (443) 规则：
+3. 与上述安全规则类似，为 NSG 上的 "EastUS" 创建出站 HTTPS （443）安全规则，该规则对应于源位置。 这样就可以访问 Site Recovery 监视功能。
 
-   **位置** | **Site Recovery IP 地址** |  **Site Recovery 监视 IP 地址**
-    --- | --- | ---
-   美国中部 | 13.82.88.226 | 104.45.147.24
+4. 为 NSG 上的 "AzureSiteRecovery" 创建出站 HTTPS （443）安全规则。 这允许访问任何区域中的 Site Recovery 服务。
 
 ## <a name="network-virtual-appliance-configuration"></a>网络虚拟设备配置
 
@@ -168,6 +124,6 @@ Site Recovery IP 地址范围如下：
 对 0.0.0.0/0 地址前缀，可将 Azure 默认系统路由重写为[自定义路由](../virtual-network/virtual-networks-udr-overview.md#custom-routes)，并将 VM 流量转换为本地网络虚拟设备 (NVA)，但不建议对 Site Recovery 复制使用此配置。 如果使用自定义路由，则应在虚拟网络中为“存储”[创建一个虚拟网络服务终结点](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage)，这样复制流量就不会离开 Azure 边界。
 
 ## <a name="next-steps"></a>后续步骤
-- [复制 Azure 虚拟机](site-recovery-azure-to-azure.md)，开始对工作负荷进行保护。
+- [复制 Azure 虚拟机](./azure-to-azure-quickstart.md)，开始对工作负荷进行保护。
 - 详细了解为 Azure 虚拟机故障转移[保留 IP 地址](site-recovery-retain-ip-azure-vm-failover.md)。
-- 了解有关灾难恢复的详细信息[使用 ExpressRoute 的 Azure 虚拟机](azure-vm-disaster-recovery-with-expressroute.md)。
+- 详细了解[使用 ExpressRoute 的 Azure 虚拟机](azure-vm-disaster-recovery-with-expressroute.md)的灾难恢复。

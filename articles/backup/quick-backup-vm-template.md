@@ -1,35 +1,49 @@
 ---
-title: Azure 快速入门 - 使用资源管理器模板备份 VM
+title: 快速入门 - 资源管理器模板 VM 备份
 description: 了解如何使用 Azure 资源管理器模板备份虚拟机
-services: backup
-author: rayne-wiselman
-manager: carmonm
-ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/14/2019
-ms.author: raynew
-ms.custom: mvc
-ms.openlocfilehash: b144d7509562b8ca0bca6299caee4a7ce292f4a6
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.custom: mvc,subject-armqs
+ms.openlocfilehash: 4e54ca6452a219dedca56885bda28ed43991ad37
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481088"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248928"
 ---
-# <a name="back-up-a-virtual-machine-in-azure-with-resource-manager-template"></a>使用资源管理器模板在 Azure 中备份虚拟机
+# <a name="quickstart-back-up-a-virtual-machine-in-azure-with-an-arm-template"></a>快速入门：使用 ARM 模板在 Azure 中备份虚拟机
 
-[Azure 备份](backup-overview.md)可备份本地计算机和应用以及 Azure VM。 本文介绍如何使用资源管理器模板和 Azure PowerShell 备份 Azure VM。 本快速入门重点介绍部署资源管理器模板以创建恢复服务保管库的过程。 有关开发资源管理器模板的详细信息，请参阅[资源管理器文档](/azure/azure-resource-manager/)和[模板参考](/azure/templates/microsoft.recoveryservices/allversions)。
+[Azure 备份](backup-overview.md)可备份本地计算机和应用以及 Azure VM。 本文介绍如何使用 Azure 资源管理器模板（ARM 模板）和 Azure PowerShell 备份 Azure VM。 本快速入门重点介绍部署 ARM 模板以创建恢复服务保管库的过程。 有关开发 ARM 模板的详细信息，请参阅 [Azure 资源管理器文档](/azure/azure-resource-manager/)和[模板参考](/azure/templates/microsoft.recoveryservices/allversions)。
 
-或者，可以使用 [Azure PowerShell](./quick-backup-vm-powershell.md)、[Azure CLI](quick-backup-vm-cli.md) 或在 [Azure 门户](quick-backup-vm-portal.md)中备份 VM。
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="create-a-vm-and-recovery-services-vault"></a>创建 VM 和恢复服务保管库
+[恢复服务保管库](backup-azure-recovery-services-vault-overview.md)是一个逻辑容器，用于存储受保护资源（例如 Azure VM）的备份数据。 运行备份作业时，该作业会在恢复服务保管库中创建一个恢复点。 然后，可以使用其中一个恢复点将数据还原到给定的时间点。 或者，可以使用 [Azure PowerShell](./quick-backup-vm-powershell.md)、[Azure CLI](quick-backup-vm-cli.md) 或在 [Azure 门户](quick-backup-vm-portal.md)中备份 VM。
 
-[恢复服务保管库](backup-azure-recovery-services-vault-overview.md)是一个逻辑容器，用于存储受保护资源（例如 Azure VM）的备份数据。 运行备份作业时，该作业会在恢复服务保管库中创建一个恢复点。 然后，可以使用其中一个恢复点将数据还原到给定的时间点。
+如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
+
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-create-vm-and-configure-backup%2Fazuredeploy.json)
+
+## <a name="review-the-template"></a>查看模板
 
 本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/)。 此模板允许你部署使用 DefaultPolicy for Protection 配置的简单 Windows VM 和恢复服务保管库。
 
-若要部署模板，请选择“试一试”，打开 Azure Cloud shell，然后将以下 PowerShell 脚本粘贴到 shell 窗口中  。 若要粘贴代码，请右键单击 shell 窗口并选择“粘贴”  。
+:::code language="json" source="~/quickstart-templates/101-recovery-services-create-vm-and-configure-backup/azuredeploy.json" range="1-247" highlight="221-245":::
+
+该模板中定义了以下资源：
+
+- [**Microsoft.Storage/storageAccounts**](/azure/templates/microsoft.storage/storageaccounts)
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
+- [**Microsoft.Compute/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines)
+- [**Microsoft.RecoveryServices/vaults**](/azure/templates/microsoft.recoveryservices/2016-06-01/vaults)
+- [**Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems**](/azure/templates/microsoft.recoveryservices/vaults/backupfabrics/protectioncontainers/protecteditems)
+
+## <a name="deploy-the-template"></a>部署模板
+
+若要部署模板，请选择“试一试”以打开 Azure Cloud Shell，然后将以下 PowerShell 脚本粘贴到 shell 窗口中。 若要粘贴代码，请右键单击 shell 窗口并选择“粘贴”。
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name (limited to eight characters) that is used to generate Azure resource names"
@@ -45,17 +59,19 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -projectName $projectName -adminUsername $adminUsername -adminPassword $adminPassword -dnsLabelPrefix $dnsPrefix
 ```
 
-在本快速入门中，使用 Azure PowerShell 来部署资源管理器模板。 [Azure 门户](../azure-resource-manager/resource-group-template-deploy-portal.md)、[Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) 和 [Rest API](../azure-resource-manager/resource-group-template-deploy-rest.md) 也可用于部署模板。
+在本快速入门中，使用 Azure PowerShell 来部署 ARM 模板。 [Azure 门户](../azure-resource-manager/templates/deploy-portal.md)、[Azure CLI](../azure-resource-manager/templates/deploy-cli.md) 和 [Rest API](../azure-resource-manager/templates/deploy-rest.md) 也可用于部署模板。
 
-## <a name="start-a-backup-job"></a>启动备份作业
+## <a name="validate-the-deployment"></a>验证部署
+
+### <a name="start-a-backup-job"></a>启动备份作业
 
 模板创建一个 VM，并在该 VM 上启用备份。 部署模板后，需要启动备份作业。 有关详细信息，请参阅[启动备份作业](./quick-backup-vm-powershell.md#start-a-backup-job)。
 
-## <a name="monitor-the-backup-job"></a>监视备份作业
+### <a name="monitor-the-backup-job"></a>监视备份作业
 
 若要监视备份作业，请参阅[监视备份作业](./quick-backup-vm-powershell.md#monitor-the-backup-job)。
 
-## <a name="clean-up-the-deployment"></a>清理部署
+## <a name="clean-up-resources"></a>清理资源
 
 如果不再需要备份 VM，则可以清理它。
 
@@ -77,3 +93,4 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 - [了解如何](tutorial-backup-vm-at-scale.md)在 Azure 门户中备份 VM。
 - [了解如何](tutorial-restore-disk.md)快速还原 VM
+- [了解如何](../azure-resource-manager/templates/template-tutorial-create-first-template.md)创建 ARM 模板。

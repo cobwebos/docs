@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: juliako;cenkdin
-ms.openlocfilehash: 05b899658b5c58e15b2f30ab759eb49319979fee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: juliako
+ms.reviewer: cenkdin
+ms.openlocfilehash: b2099283bc3af19f7d23e5007377b8baac0066d8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61465552"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964815"
 ---
 # <a name="creating-filters-with-media-services-net-sdk"></a>使用媒体服务 .NET SDK 创建筛选器 
 > [!div class="op_single_selector"]
@@ -37,7 +38,7 @@ ms.locfileid: "61465552"
 请注意，如果更新筛选器，则流式处理终结点需要两分钟的时间来刷新规则。 如果内容是通过使用此筛选器提供的（并在代理和 CDN 缓存中缓存），则更新此筛选器会导致播放器失败。 请始终在更新筛选器之后清除缓存。 如果此选项不可用，请考虑使用其他筛选器。 
 
 ## <a name="types-used-to-create-filters"></a>用于创建筛选器的类型
-创建筛选器时使用以下类型： 
+创建筛选器时会使用以下类型： 
 
 * **IStreamingFilter**。  此类型基于以下 REST API [Filter](https://docs.microsoft.com/rest/api/media/operations/filter)
 * **IStreamingAssetFilter**。 此类型基于以下 REST API [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
@@ -113,19 +114,19 @@ ms.locfileid: "61465552"
 
 **MPEG DASH** 
 
-    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf, filter=MyFilter)
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf, filter=MyFilter)`
 
 **Apple HTTP Live Streaming (HLS) V4**
 
-    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=MyFilter)
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=MyFilter)`
 
 **Apple HTTP Live Streaming (HLS) V3**
 
-    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=MyFilter)
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=MyFilter)`
 
 **平滑流式处理**
 
-    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)`
 
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径

@@ -1,25 +1,26 @@
 ---
-title: 为 Azure-SSIS 集成运行时安装许可的组件 | Microsoft Docs
+title: 为 Azure-SSIS 集成运行时安装许可的组件
 description: 了解 ISV 如何为 Azure-SSIS 集成运行时开发和安装付费或许可的自定义组件
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.topic: conceptual
-ms.date: 04/13/2018
 author: swinarko
 ms.author: sawinark
+manager: mflasko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 80d4fff03422beacccd3aff3cdd8cb1047d5f5af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: conceptual
+ms.custom: seo-lt-2019
+ms.date: 07/09/2020
+ms.openlocfilehash: 77eedbfc65b54ce128e1adbd93375bc624ef38cd
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61344630"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187603"
 ---
 # <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>为 Azure-SSIS 集成运行时安装付费或许可的自定义组件
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文介绍 ISV 如何为 Azure-SSIS 集成运行时的 Azure 中运行的 SQL Server Integration Services (SSIS) 包开发和安装付费或许可的自定义组件。
 
@@ -33,7 +34,7 @@ Azure-SSIS 集成运行时的性质带来了多种挑战，使得在本地安装
 
 ## <a name="the-solution"></a>解决方案
 
-由于上一部分中介绍的传统许可方法的局限性，Azure-SSIS IR 提供了一种新的解决方案。 此解决方案使用 Windows 环境变量和 SSIS 系统变量来绑定许可证和验证第三方组件。 ISV 可以使用这些变量来获取 Azure-SSIS IR 的唯一和持久信息，例如群集 ID 和群集节点计数。 有了此信息，ISV 就可以将其组件的许可证*作为群集*绑定到 Azure-SSIS IR。 此绑定使用的 ID 不会在客户启动或停止、增加或减少、缩小或扩大或以任何方式重新配置 Azure-SSIS IR 时发生变化。
+由于上一部分中介绍的传统许可方法的局限性，Azure-SSIS IR 提供了一种新的解决方案。 此解决方案使用 Windows 环境变量和 SSIS 系统变量来绑定许可证和验证第三方组件。 ISV 可以使用这些变量来获取 Azure-SSIS IR 的唯一和持久信息，例如群集 ID 和群集节点计数。 有了此信息，ISV 就可以将其组件的许可证*作为群集*绑定到 Azure-SSIS IR。 此绑定使用的 ID 不会在客户启动或停止、纵向扩展或缩减、横向缩减或扩展，或者以任何方式重新配置 Azure-SSIS IR 时发生变化。
 
 下图显示了使用这些新变量对第三方组件执行的典型安装、激活和许可证绑定以及验证流：
 
@@ -76,7 +77,7 @@ Azure-SSIS 集成运行时的性质带来了多种挑战，使得在本地安装
 
 ## <a name="isv-partners"></a>ISV 合作伙伴
 
-可以在此博客文章 [ADF 中 SSIS 的企业版、自定义安装和第三方扩展性](https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/)末尾找到已为 Azure-SSIS IR 改编了组件和扩展的 ISV 合作伙伴列表。
+可以在此博客文章 [ADF 中 SSIS 的企业版、自定义安装和第三方扩展性](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Enterprise-Edition-Custom-Setup-and-3rd-Party-Extensibility-for/ba-p/388360)末尾找到已为 Azure-SSIS IR 改编了组件和扩展的 ISV 合作伙伴列表。
 
 ## <a name="next-steps"></a>后续步骤
 

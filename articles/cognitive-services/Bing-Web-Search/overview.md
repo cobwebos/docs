@@ -1,22 +1,22 @@
 ---
 title: 什么是必应 Web 搜索 API？
 titleSuffix: Azure Cognitive Services
-description: 必应 Web 搜索 API 是一项 RESTful 服务，可以针对用户查询提供即时应答。 搜索结果可以轻松地进行配置，可以包括网页、图像、视频、新闻、翻译等。 结果以 JSON 形式提供，并取决于搜索相关性和必应 Web 搜索订阅。
+description: 必应 Web 搜索 API 是一项 RESTful 服务，可以针对 Web 搜索查询提供即时答案。 配置结果，使之包括网页、图像、视频、新闻等。 结果以 JSON 形式提供，并取决于搜索相关性和必应 Web 搜索订阅。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: overview
-ms.date: 03/12/2019
+ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 65e28b557a3708c155bf80f21a784374c4497783
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 4cbf79abaf915e7f6e055f5bcb0d8f09de026ad5
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383042"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85604856"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>什么是必应 Web 搜索 API？
 
@@ -40,15 +40,15 @@ ms.locfileid: "66383042"
 
 ## <a name="workflow"></a>工作流
 
-可以轻松地通过任何编程语言调用必应 Web 搜索 API，只要该语言能够发出 HTTP 请求和分析 JSON 响应即可。 此服务可以通过 [REST API](quickstarts/python.md) 或[必应 Web 搜索 SDK](web-sdk-python-quickstart.md) 进行访问。
+可以轻松地通过任何编程语言调用必应 Web 搜索 API，只要该语言能够发出 HTTP 请求和分析 JSON 响应即可。 此服务可以通过 [REST API](quickstarts/python.md) 或[必应 Web 搜索客户端库](./quickstarts/client-libraries.md)进行访问。
 
-1. 创建可以访问必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有 Azure 订阅，可以[创建一个免费帐户](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)。  
+1. 为必应搜索 API [创建 Azure 资源](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有 Azure 订阅，可以[创建一个免费帐户](https://azure.microsoft.com/free/cognitive-services/)。  
 2. [向必应 Web 搜索 API 发送请求](quickstarts/python.md)。
 3. 分析 JSON 响应。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 根据 [Python 快速入门](quickstarts/python.md)中的说明对必应 Web 搜索 API 进行第一次调用。  
+* 根据 [Python 快速入门](./quickstarts/client-libraries.md?pivots=programming-language-python)中的说明对必应 Web 搜索 API 进行第一次调用。  
 * [生成单页 Web 应用](tutorial-bing-web-search-single-page-app.md)。
 * 查看 [Web 搜索 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)文档。  
 * 详细了解必应 Web 搜索的[使用和显示要求](UseAndDisplayRequirements.md)。  

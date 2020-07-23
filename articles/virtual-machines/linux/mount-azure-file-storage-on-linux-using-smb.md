@@ -1,25 +1,17 @@
 ---
-title: 使用 SMB 在 Linux VM 上装载 Azure 文件存储 | Microsoft Docs
+title: 使用 SMB 在 Linux VM 上装载 Azure 文件存储
 description: 如何通过 Azure CLI 使用 SMB 在 Linux VM 上装载 Azure 文件存储
-services: virtual-machines-linux
-documentationcenter: virtual-machines-linux
 author: cynthn
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 4b3bba1da5238655ca749f6464c539e53ca48f27
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 7ab798ccbbbfc9cfc11ae85fd698ecedcb5e8e73
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60542775"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84658158"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>使用 SMB 在 Linux VM 上装载 Azure 文件存储
 
@@ -34,17 +26,17 @@ ms.locfileid: "60542775"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-在“美国东部”位置创建一个名为“myResourceGroup”的资源组。
+在“美国东部”** 位置创建一个名为“myResourceGroup”** 的资源组。
 
-```bash
+```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-使用 [az storage account create](/cli/azure/storage/account) 在创建的资源组中创建一个新存储帐户。 此示例创建一个名为存储帐户*mySTORAGEACCT\<随机数字 >* 并将该存储帐户的名称放入变量**STORAGEACCT**。 存储帐户名称必须唯一，请使用 `$RANDOM` 将一个数字追加到名称末尾，使之变得唯一。
+使用 [az storage account create](/cli/azure/storage/account) 在创建的资源组中创建一个新存储帐户。 此示例创建名为 *mySTORAGEACCT\<random number>* 的存储帐户，然后将该存储帐户的名称置于变量 **STORAGEACCT** 中。 存储帐户名称必须唯一，请使用 `$RANDOM` 将一个数字追加到名称末尾，使之变得唯一。
 
-```bash
+```azurecli
 STORAGEACCT=$(az storage account create \
     --resource-group "myResourceGroup" \
     --name "mystorageacct$RANDOM" \
@@ -59,7 +51,7 @@ STORAGEACCT=$(az storage account create \
 
 使用 [az storage account keys list](/cli/azure/storage/account/keys) 查看存储帐户密钥。 此示例将密钥 1 的值存储在 **STORAGEKEY** 变量中。
 
-```bash
+```azurecli
 STORAGEKEY=$(az storage account keys list \
     --resource-group "myResourceGroup" \
     --account-name $STORAGEACCT \
@@ -74,7 +66,7 @@ STORAGEKEY=$(az storage account keys list \
 
 此示例创建名为 *myshare* 且具有 10-GiB 配额的共享。 
 
-```bash
+```azurecli
 az storage share create --name myshare \
     --quota 10 \
     --account-name $STORAGEACCT \
@@ -110,11 +102,12 @@ sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFile
 ```bash
 //myaccountname.file.core.windows.net/mystorageshare /mnt/mymountpoint cifs vers=3.0,username=mystorageaccount,password=myStorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
 ```
+
 为了提高生产环境的安全性，应将凭据存储在 fstab 之外。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [在创建期间使用 cloud-init 自定义 Linux VM](using-cloud-init.md)
 - [将磁盘添加到 Linux VM](add-disk.md)
-- [使用 Azure CLI 加密 Linux VM 上的磁盘](encrypt-disks.md)
+- [适用于 Linux VM 的 Azure 磁盘加密](disk-encryption-overview.md)
 

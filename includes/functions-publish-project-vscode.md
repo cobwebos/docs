@@ -1,55 +1,58 @@
 ---
-title: include 文件
-description: include 文件
-services: functions
 author: ggailey777
-manager: jeconnoc
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
-ms.date: 04/16/2019
+ms.date: 01/12/2020
 ms.author: glenga
-ms.custom: include file
-ms.openlocfilehash: ec0425ff2188ecf1816d5f5841394c8e32f301d2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 41dfb809cdab00f4f9bee335d92522f37a438c68
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66132229"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82109887"
 ---
 ## <a name="publish-the-project-to-azure"></a>将项目发布到 Azure
 
-使用 Visual Studio Code 可以将函数项目直接发布到 Azure。 在此过程中，将在 Azure 订阅中创建函数应用和相关的资源。 函数应用为函数提供了执行上下文。 该项目将打包并部署到 Azure 订阅中的新函数应用。
-
-本文假定你要创建新的函数应用。 
+在本部分，你将在 Azure 订阅中创建一个函数应用和相关资源，然后部署代码。 
 
 > [!IMPORTANT]
-> 发布到现有函数应用将覆盖该应用在 Azure 中的内容。
+> 发布到现有函数应用将覆盖该应用在 Azure 中的内容。 
 
-1. 在“Azure：函数”  区域中，选择“部署到函数应用”图标。
 
-    ![函数应用设置](./media/functions-publish-project-vscode/function-app-publish-project.png)
+1. 在活动栏中选择“Azure”图标，然后在“Azure:  函数”区域中，选择“部署到函数应用...”按钮。 
 
-1. 如果未登录，则系统会提示你**登录到 Azure**。 还可以**创建免费 Azure 帐户**。 在成功从浏览器登录后，返回到 Visual Studio Code。 
+    ![将项目发布到 Azure](media/functions-publish-project-vscode/function-app-publish-project.png)
 
-1. 如果你有多个订阅，请为函数应用**选择一个订阅**，然后选择“+ 在 Azure 中创建新的函数应用”  。
+1. 根据提示提供以下信息：
 
-1. 键入用于标识函数应用的全局唯一名称，然后按 Enter。 函数应用名称的有效字符包括 `a-z`、`0-9` 和 `-`。
+    + **选择文件夹**：从工作区中选择一个文件夹，或浏览到包含函数应用的文件夹。 如果已打开有效的函数应用，则不会看到此信息。
 
-1. 选择“+ 创建新的资源组”  ，键入资源组名称（如 `myResourceGroup`），然后按 Enter。 也可以使用现有资源组。
+    + **选择订阅**：选择要使用的订阅。 如果只有一个订阅，则不会看到此项。
 
-1. 选择“+ 新建存储帐户”  ，键入函数应用使用的新存储帐户的全局唯一名称，然后按 Enter。 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。 也可以使用现有帐户。
+    + **在 Azure 中选择函数应用**：选择`+ Create new Function App`。 （请不要选择本文中未介绍的 `Advanced` 选项。）
+      
+    + **输入函数应用的全局唯一名称**：键入在 URL 路径中有效的名称。 将对你键入的名称进行验证，以确保其在 Azure Functions 中是唯一的。 
+    
+    ::: zone pivot="programming-language-python"
+    + **选择运行时**：选择你一直在本地运行的 Python 版本。 可以使用 `python --version` 命令来检查你的版本。
+    ::: zone-end
 
-1. 选择离你近或离函数访问的其他服务近的[区域](https://azure.microsoft.com/regions/)中的位置。
+    ::: zone pivot="programming-language-javascript,programming-language-typescript"
+    + **选择运行时**：选择你一直在本地运行的 Node.js 版本。 可以使用 `node --version` 命令来检查你的版本。
+    ::: zone-end
 
-    按 Enter 时，将在你的订阅中创建以下 Azure 资源：
+    + **选择新资源的位置**：为了获得更好的性能，请选择你附近的[区域](https://azure.microsoft.com/regions/)。 
+    
+1.  完成后，将使用基于函数应用名称的名称在订阅中创建以下 Azure 资源：
+    
+    + 一个资源组：相关资源的逻辑容器。
+    + 一个标准 Azure 存储帐户：用于维护项目的状态和其他信息。
+    + 一个消耗计划：用于定义无服务器函数应用的基础主机。 
+    + 一个函数应用：提供用于执行函数代码的环境。 可以通过函数应用将函数分组为逻辑单元，以便在同一托管计划中更轻松地管理、部署和共享资源。
+    + 一个连接到函数应用的 Application Insights 实例：用于跟踪无服务器函数的使用情况。
 
-    * **[资源组](../articles/azure-resource-manager/resource-group-overview.md)** ：包含创建的所有 Azure 资源。 名称基于你的函数应用名称。
-    * **[存储帐户](../articles/storage/common/storage-quickstart-create-account.md)** ：将使用基于你的函数应用名称的唯一名称创建一个标准存储帐户。
-    * **[托管计划](../articles/azure-functions/functions-scale.md)** ：将在美国西部区域中创建一个消耗计划来托管你的无服务器函数应用。
-    * **函数应用**：你的项目将部署到此新的函数应用并在其中运行。
+    创建函数应用并应用了部署包之后，会显示一个通知。 
+    
+1. 在此通知中选择“查看输出”  以查看创建和部署结果，其中包括你创建的 Azure 资源。 如果错过了通知，请选择右下角的响铃图标以再次查看。
 
-    创建函数应用并应用了部署包之后，会显示一个通知。 在此通知中选择“查看输出”  以查看创建和部署结果，其中包括你创建的 Azure 资源。
-
-1. 返回到“Azure：函数”  区域，在你的订阅下展开新的函数应用。 展开“函数”  ，右键单击“HttpTrigger”  ，然后选择“复制函数 URL”  。
-
-    ![复制新的 HTTP 触发器的函数 URL](./media/functions-publish-project-vscode/function-copy-endpoint-url.png)
+    ![创建完成通知](media/functions-publish-project-vscode/function-create-notifications.png)

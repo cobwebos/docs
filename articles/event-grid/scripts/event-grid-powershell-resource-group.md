@@ -1,23 +1,15 @@
 ---
 title: Azure PowerShell 脚本示例 - 订阅资源组 | Microsoft Docs
-description: Azure PowerShell 脚本示例 - 订阅资源组
-services: event-grid
-documentationcenter: na
-author: tfitzmac
-manager: timlt
-ms.service: event-grid
+description: 本文提供了一个示例 Azure PowerShell 脚本，演示如何订阅资源组的事件网格事件。
 ms.devlang: powershell
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/10/2018
-ms.author: tomfitz
-ms.openlocfilehash: db4be11286825a8a990918a80c687f86c2294c6d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 07/08/2020
+ms.openlocfilehash: 82f40b9971d89d96500887e2927a7b86246ce74d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66117191"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171187"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-with-powershell"></a>使用 PowerShell 订阅资源组的事件
 
@@ -43,7 +35,7 @@ ms.locfileid: "66117191"
 
 此脚本使用以下命令创建事件订阅。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | 创建事件网格订阅。 |
 

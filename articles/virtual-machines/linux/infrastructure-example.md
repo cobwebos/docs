@@ -1,30 +1,20 @@
 ---
-title: Azure 示例基础结构演练 | Microsoft Docs
+title: 示例 Azure 基础结构演练
 description: 了解用于在 Azure 中部署示例基础结构的关键设计和实施准则。
-documentationcenter: ''
-services: virtual-machines-linux
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 281fc2c0-b533-45fa-81a3-728c0049c73d
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 00357641f51be703d2e5c52c5b9cc6187ce05ff6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 6040bf8862131f5a8a5564cd2f5d845fa0490a95
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60543034"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78944908"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>适用于 Linux VM 的 Azure 示例基础结构演练
-本文将逐步讲述如何构建示例应用程序基础结构。 我们详细介绍如何设计简单在线商店的基础结构，此在线商店可将关于命名约定、可用性集、虚拟网络及负载均衡器的所有准则和决策聚集在一起；以及如何实际部署你的虚拟机 (VM)。
+本文逐步讲述如何构建示例应用程序基础结构。 我们将详细介绍如何设计简单在线商店的基础结构，此在线商店可将关于命名约定、可用性集、虚拟网络及负载均衡器的所有准则和决策聚集在一起；以及如何实际部署虚拟机 (VM)。
 
 ## <a name="example-workload"></a>示例工作负荷
 Adventure Works Cycles 想要在 Azure 中生成一个在线商店应用程序，该应用程序将包含：
@@ -50,7 +40,7 @@ Adventure Works Cycles 想要在 Azure 中生成一个在线商店应用程序�
 * 具有类似角色的 VM 的可用性集
 * 虚拟机
 
-以上各项都将遵循以下命名约定：
+以上各项都会遵循以下命名约定：
 
 * Adventure Works Cycles 使用 **[IT 工作负荷]-[位置]-[Azure 资源]** 作为前缀
   * 在本示例中，IT 工作负荷名为 **azos** (Azure On-line Store)，位置为 **use**（美国东部 2）
@@ -72,7 +62,7 @@ Adventure Works Cycles 确定其应使用 Azure 托管磁盘。 创建 VM 时，
 
 他们通过 Azure 门户使用以下设置创建了仅限云的虚拟网络：
 
-* 姓名：AZOS-USE-VN01
+* 名称：AZOS-USE-VN01
 * 位置：美国东部 2
 * 虚拟网络地址空间：10.0.0.0/8
 * 第一个子网：

@@ -3,24 +3,22 @@ title: 使用 Azure HDInsight 对 Hive 进行故障排除
 description: 获取有关使用 Apache Hive 和 Azure HDInsight 的常见问题的解答。
 keywords: Azure HDInsight, Hive, 常见问题解答, 故障排除指南, 常见问题
 ms.service: hdinsight
-author: dharmeshkakadia
-ms.author: dharmeshkakadia
-ms.topic: conceptual
-ms.date: 11/2/2017
-ms.openlocfilehash: 43886a132f2f3cf75f0ec7a0b2dc0680a0f69589
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
+ms.topic: troubleshooting
+ms.date: 08/15/2019
+ms.openlocfilehash: 02247adb9852a72b386feb2ef0924b0f1b3d6277
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712482"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75895237"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Hive 进行故障排除
 
 了解处理 Apache Ambari 中的 Apache Hive 有效负载时的最常见问题及其解决方法。
 
-
 ## <a name="how-do-i-export-a-hive-metastore-and-import-it-on-another-cluster"></a>如何导出 Hive 元存储并将其导入另一个群集？
-
 
 ### <a name="resolution-steps"></a>解决步骤
 
@@ -36,16 +34,15 @@ ms.locfileid: "64712482"
 
 3. 将 alltables.sql 文件复制到新的 HDInsight 群集，并运行以下命令：
 
-   ```apache
-   hive -f alltables.sql
-   ```
+    ```apache
+    hive -f alltables.sql
+    ```
 
-解决方法步骤中的代码假设新群集上的数据路径与旧群集上的相同。 如果数据路径不同，可以手动编辑生成的 alltables.sql 文件以反映任何更改。
+解决方法步骤中的代码假设新群集上的数据路径与旧群集上的相同。 如果数据路径不同，则可以手动编辑生成的 `alltables.sql` 文件以反映任何更改。
 
 ### <a name="additional-reading"></a>其他阅读材料
 
 - [使用 SSH 连接到 HDInsight 群集](hdinsight-hadoop-linux-use-ssh-unix.md)
-
 
 ## <a name="how-do-i-locate-hive-logs-on-a-cluster"></a>如何在群集上查找 Hive 日志？
 
@@ -56,25 +53,24 @@ ms.locfileid: "64712482"
 2. 若要查看 Hive 客户端日志，请使用以下命令：
 
    ```apache
-   /tmp/<username>/hive.log 
+   /tmp/<username>/hive.log
    ```
 
 3. 若要查看 Hive 元存储日志，请使用以下命令：
 
    ```apache
-   /var/log/hive/hivemetastore.log 
+   /var/log/hive/hivemetastore.log
    ```
 
-4. 若要查看 Hiveserver 日志，请使用以下命令：
+4. 若要查看 Hive 服务器日志，请使用以下命令：
 
    ```apache
-   /var/log/hive/hiveserver2.log 
+   /var/log/hive/hiveserver2.log
    ```
 
 ### <a name="additional-reading"></a>其他阅读材料
 
 - [使用 SSH 连接到 HDInsight 群集](hdinsight-hadoop-linux-use-ssh-unix.md)
-
 
 ## <a name="how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster"></a>如何在群集上使用特定配置启动 Hive shell？
 
@@ -83,7 +79,7 @@ ms.locfileid: "64712482"
 1. 启动 Hive shell 时，请指定配置键值对。 有关详细信息，请参阅[其他阅读材料](#additional-reading-end)。
 
    ```apache
-   hive -hiveconf a=b 
+   hive -hiveconf a=b
    ```
 
 2. 若要在 Hive shell 中列出所有有效配置，请使用以下命令：
@@ -95,23 +91,21 @@ ms.locfileid: "64712482"
    例如，在控制台上使用以下命令启动已启用调试日志记录的 Hive shell：
 
    ```apache
-   hive -hiveconf hive.root.logger=ALL,console 
+   hive -hiveconf hive.root.logger=ALL,console
    ```
 
 ### <a name="additional-reading"></a>其他阅读材料
 
 - [Hive 配置属性](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
 
-
-## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>如何在群集关键路径上分析 Apache Tez DAG 数据？
-
+## <a name="how-do-i-analyze-apache-tez-dag-data-on-a-cluster-critical-path"></a><a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>如何在群集关键路径上分析 Apache Tez DAG 数据？
 
 ### <a name="resolution-steps"></a>解决步骤
- 
+
 1. 若要在群集关键图中分析 Apache Tez 有向无环图 (DAG)，请使用 SSH 连接到 HDInsight 群集。 有关详细信息，请参阅[其他阅读材料](#additional-reading-end)。
 
 2. 请在命令提示符处运行以下命令：
-   
+
    ```apache
    hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar CriticalPath --saveResults --dagId <DagId> --eventFileName <DagData.zip> 
    ```
@@ -135,44 +129,43 @@ ms.locfileid: "64712482"
     - **SlowestVertexAnalyzer**：列显 DAG 中的最慢顶点详细信息
     - **SpillAnalyzer**：列显 DAG 中的溢出详细信息
     - **TaskConcurrencyAnalyzer**：列显 DAG 中的任务并发性详细信息
-    - **VertexLevelCriticalPathAnalyzer**：在 DAG 中查找顶点级别的关键路径
-
+    - **VertexLevelCriticalPathAnalyzer**：查找 DAG 中顶点级别的关键路径
 
 ### <a name="additional-reading"></a>其他阅读材料
 
 - [使用 SSH 连接到 HDInsight 群集](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-
 ## <a name="how-do-i-download-tez-dag-data-from-a-cluster"></a>如何从群集下载 Tez DAG 数据？
-
 
 #### <a name="resolution-steps"></a>解决步骤
 
 可使用两种方法收集 Tez DAG 数据：
 
 - 通过命令行：
- 
+
     使用 SSH 连接到 HDInsight 群集。 在命令提示符下运行以下命令：
 
   ```apache
-  hadoop jar /usr/hdp/current/tez-client/tez-history-parser-*.jar org.apache.tez.history.ATSImportTool -downloadDir . -dagId <DagId> 
+  hadoop jar /usr/hdp/current/tez-client/tez-history-parser-*.jar org.apache.tez.history.ATSImportTool -downloadDir . -dagId <DagId>
   ```
 
 - 使用 Ambari Tez 视图：
-   
-  1. 转到 Ambari。 
-  2. 转到 Tez 视图（隐藏在右上角的磁贴图标下面）。 
-  3. 选择想要查看的 DAG。
-  4. 选择“下载数据”。
 
-### <a name="additional-reading-end"></a>其他阅读材料
+  1. 转到 Ambari。
+  2. 转到 Tez 视图（隐藏在右上角的磁贴图标下面）。
+  3. 选择想要查看的 DAG。
+  4. 选择“下载数据”  。
+
+### <a name="additional-reading"></a><a name="additional-reading-end"></a>其他阅读材料
 
 [使用 SSH 连接到 HDInsight 群集](hdinsight-hadoop-linux-use-ssh-unix.md)
 
+## <a name="next-steps"></a>后续步骤
 
-### <a name="see-also"></a>另请参阅
-[使用 Azure HDInsight 进行故障排除](hdinsight-troubleshoot-guide.md)
+如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
+- 通过 [Azure 社区支持](https://azure.microsoft.com/support/community/)获取 Azure 专家的解答。
 
+- 联系 [@AzureSupport](https://twitter.com/azuresupport)，这是用于改进客户体验的官方 Microsoft Azure 帐户。 它可以将 Azure 社区成员连接到适当的资源，为他们提供解答、支持和专家建议。
 
-
+- 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”****，或打开“帮助 + 支持”**** 中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅包含对订阅管理和计费支持的访问权限，并且通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。

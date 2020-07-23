@@ -24,7 +24,7 @@
       href: data-catalog-prerequisites.md
     - name: 常见问题解答
       href: data-catalog-frequently-asked-questions.md
-- name: 如何
+- name: 操作方式
   items:
     - name: 注册数据源
       href: data-catalog-how-to-register.md
@@ -32,7 +32,7 @@
       href: data-catalog-how-to-discover.md
     - name: 批注数据源
       href: data-catalog-how-to-annotate.md
-    - name: 阐述数据源
+    - name: 记录数据源
       href: data-catalog-how-to-documentation.md
     - name: 连接到数据源
       href: data-catalog-how-to-connect.md
@@ -50,16 +50,14 @@
       href: data-catalog-how-to-secure-catalog.md
     - name: 查看相关数据资产
       href: data-catalog-how-to-view-related-data-assets.md
-    - name: 故障排除
+    - name: 疑难解答
       href: troubleshoot-policy-configuration.md
-- name: 引用
+- name: 参考
   items:
     - name: 代码示例
-      href: 'https://azure.microsoft.com/resources/samples/?service=data-catalog'
+      href: data-catalog-samples.md
     - name: REST
       href: /rest/api/datacatalog/
-    - name: 资源管理器模板
-      href: /azure/templates/microsoft.datacatalog/catalogs
     - name: 搜索语法参考
       href: /rest/api/datacatalog/data-catalog-search-syntax-reference
     - name: 开发人员概念
@@ -70,15 +68,15 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 适用于 Azure 数据目录的键盘快捷方式
       href: data-catalog-keyboard-shortcuts.md
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog'
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-data-catalog.html'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/data-catalog/'
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=data-catalog'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-catalog'
     - name: 术语
       href: data-catalog-terminology.md

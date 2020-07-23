@@ -1,20 +1,20 @@
 ---
 title: 如何上传文档 - 自定义翻译
 titleSuffix: Azure Cognitive Services
-description: 使用文档上传功能可以上传用于训练的并行文档。 并行文档是配对的文档，其中的一个文档是另一个文档的翻译。 该对中的一个文档包含采用源语言的句子，另一个文档包含这些句子的目标语言翻译。
-author: rajdeep-in
-manager: christw
+description: 文档上传功能将并行文档（两个文档（其中一个是源，另一个是转换）上载到服务中。
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
-ms.author: v-pawal
+ms.date: 05/26/2020
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 1fa786bee960f71e4109041d935757a0d1edd75e
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: aaebf849cc69db7c85d1472f4d71774bc599be11
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66386930"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994297"
 ---
 # <a name="upload-a-document"></a>上传文档
 
@@ -24,7 +24,7 @@ ms.locfileid: "66386930"
 
 ## <a name="how-to-upload-document"></a>如何上传文档？
 
-在[自定义翻译](https://portal.customtranslator.azure.ai)门户中，单击“文档”选项卡转到文档页。
+在[自定义转换器](https://portal.customtranslator.azure.ai)门户中，单击 "文档" 选项卡以打开 "文档" 页。
 
 ![文档上传链接](media/how-to/how-to-upload-1.png)
 
@@ -41,7 +41,7 @@ ms.locfileid: "66386930"
     -  优化：这些文档将用于优化集。
     -  测试：这些文档将用于测试集。
     -  短语字典：这些文档将用于短语字典。
-    -  句子字典：这些文档将用于句子字典
+    -  句子字典：这些文档将用于句子字典。
 
     b.  语言对
 
@@ -52,7 +52,7 @@ ms.locfileid: "66386930"
     -  并行数据：
         -  源文件：从本地计算机中选择源语言文件。
         -  目标文件：从本地计算机中选择目标语言文件。
-        -  文档名：仅当上传并行文件时才使用。
+        -  文档名称：仅当上传并行文件时才使用。
 
     - 组合数据：
         -  组合文件：从本地计算机中选择组合文件。 组合文件同时包含源语言句子和目标语言句子。 [命名约定](document-formats-naming-convention.md)对于组合文件而言非常重要。
@@ -61,11 +61,11 @@ ms.locfileid: "66386930"
 
     ![上传文档的对话框](media/how-to/how-to-upload-dialog.png)
 
-3.  目前，我们正在处理你的文档并尝试提取句子。 你可以单击“查看上传进度”来查看文档的处理状态。
+3.  目前，我们正在处理你的文档并尝试提取句子。 你可以单击 "查看上载进度" 来检查文档处理时的状态。
 
     ![显示正在处理上传文档的对话框](media/how-to/how-to-upload-processing-dialog.png)
 
-4.  此页将显示上传的每个文件的处理状态以及任何错误。 随时可以单击“上传历史记录”选项卡查看以往的上传状态。
+4.  此页将显示上传的每个文件的处理状态以及任何错误。 你可以随时通过单击 "上传历史记录" 选项卡查看过去的上载状态。
 
     ![上传文档历史记录对话框](media/how-to/how-to-upload-document-history.png)
 

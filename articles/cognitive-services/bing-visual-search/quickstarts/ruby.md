@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用必应视觉搜索 REST API 和 Ruby 获取图像见解
+title: 快速入门：使用 REST API 和 Ruby 获取图像见解 - 必应视觉搜索
 titleSuffix: Azure Cognitive Services
 description: 了解如何将图像上传到必应视觉搜索 API 并获取其相关见解。
 services: cognitive-services
@@ -8,45 +8,47 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 4/02/2019
-ms.author: rosh
-ms.openlocfilehash: 563c0d39eb5c057aef9b9c7cdcba798dc6ee4cbb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.date: 05/22/2020
+ms.author: aahi
+ms.openlocfilehash: 20c5ef930af8cc279f63432e9e3a14a0767ca592
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796515"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870367"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>快速入门：使用必应视觉搜索 REST API 和 Ruby 获取图像见解
 
-本快速入门使用 Ruby 编程语言调用必应视觉搜索并显示结果。 POST 请求可将图像上传到 API 终结点。 结果包含 URL 以及与已上传图像类似的图像的相关描述信息。
+使用本快速入门来使用 Ruby 编程语言首次调用必应视觉搜索 API。 POST 请求可将图像上传到 API 终结点。 结果包含 URL 以及与已上传图像类似的图像的相关描述信息。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要运行本快速入门：
+* 请安装 [Ruby 2.4 或更高版本](https://www.ruby-lang.org/en/downloads/)。
+* 获取订阅密钥。
 
-* 请安装 [Ruby 2.4 或更高版本](https://www.ruby-lang.org/en/downloads/)
-* 获取订阅密钥：
-
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
+[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="project-and-required-modules"></a>项目和所需的模块
 
-在 IDE 或编辑器中新建一个 Ruby 项目。 导入 `net/http`、`uri` 和 `json` 以处理结果中的 JSON 文本。 `base64` 库用于编码文件名字符串： 
+在 IDE 或编辑器中新建一个 Ruby 项目。 导入 `net/http`、`uri` 和 `json` 以处理结果中的 JSON 文本。 导入用于对文件名字符串进行编码的 `base64` 库。 
 
-```
+```ruby
 require 'net/https'
 require 'uri'
 require 'json'
 require 'base64'
-
 ```
 
 ## <a name="define-variables"></a>定义变量
 
-以下代码分配所需的变量。 确认终结点正确，并将 `accessKey` 值替换为你的 Azure 帐户中的订阅密钥。  `batchNumber` 是 POST 数据的前导和尾随边界所需的 GUID。  `fileName` 变量标识 POST 的图像文件。  `if` 块测试订阅密钥是否有效。
+以下代码声明主函数并指定必需的变量： 
 
-```
+1. 确认终结点正确并将 `accessKey` 值替换为来自你的 Azure 帐户的有效订阅密钥。 
+2. 对于 `batchNumber`，请分配 POST 数据的前导和尾随边界所需的 GUID。 
+3. 对于 `fileName`，请分配要用于 POST 的映像文件。 
+4. 使用 `if` 块测试订阅密钥是否有效。
+
+```ruby
 accessKey = "ACCESS-KEY"
 uri  = "https://api.cognitive.microsoft.com"
 path = "/bing/v7.0/images/visualsearch"
@@ -63,40 +65,40 @@ end
 
 ## <a name="form-data-for-post-request"></a>构成 POST 请求的数据
 
-POST 的图像数据由前导和尾随边界封装。 以下函数设置边界：
+1. 通过前导和尾随边界，将 POST 的图像数据封装。 以下函数设置边界：
 
-```
-def BuildFormDataStart(batNum, fileName)
-    startBoundary = "--batch_" + batNum
-    return startBoundary + "\r\n" + "Content-Disposition: form-data; name=\"image\"; filename=" + "\"" + fileName + "\"" + "\r\n\r\n"   
-end
+   ```ruby
+   def BuildFormDataStart(batNum, fileName)
+       startBoundary = "--batch_" + batNum
+       return startBoundary + "\r\n" + "Content-Disposition: form-data; name=\"image\"; filename=" + "\"" + fileName + "\"" + "\r\n\r\n"    
+   end
 
-def BuildFormDataEnd(batNum)
-    return "\r\n\r\n" + "--batch_" + batNum + "--" + "\r\n"
-end
-```
+   def BuildFormDataEnd(batNum)
+       return "\r\n\r\n" + "--batch_" + batNum + "--" + "\r\n"
+   end
+   ```
 
-接下来构造终结点 URI，并构造一个数组用于包含 POST 正文。  使用上面的函数将起始边界载入该数组。 将图像文件读入该数组。 然后，将结束边界读入该数组：
+2. 构造终结点 URI，并构造一个数组以包含 POST 正文。 使用上面的函数将起始边界载入该数组。 将图像文件读入数组，然后将结束边界读入数组。
 
-```
-uri = URI(uri + path)
-print uri
-print "\r\n\r\n"
+   ```ruby
+   uri = URI(uri + path)
+   print uri
+   print "\r\n\r\n"
 
-post_body = []
+   post_body = []
 
-post_body << BuildFormDataStart(batchNumber, fileName)
+   post_body << BuildFormDataStart(batchNumber, fileName)
 
-post_body << File.read(fileName) #Base64.encode64(File.read(fileName))
+   post_body << File.read(fileName) #Base64.encode64(File.read(fileName))
 
-post_body << BuildFormDataEnd(batchNumber)
-```
+   post_body << BuildFormDataEnd(batchNumber)
+   ```
 
 ## <a name="create-the-http-request"></a>创建 HTTP 请求
 
-设置 `Ocp-Apim-Subscription-Key` 标头。  创建请求。 然后分配标头和内容类型。 将前面创建的 POST 正文加入到请求：
+设置 `Ocp-Apim-Subscription-Key` 标头。 创建请求，然后分配标头和内容类型。 将前面创建的 POST 正文加入到请求。
 
-```
+```ruby
 header = {'Ocp-Apim-Subscription-Key': accessKey}
 request = Net::HTTP::Post.new(uri)  # , 'ImageKnowledge' => 'ImageKnowledge'
 
@@ -108,9 +110,9 @@ request.body = post_body.join
 
 ## <a name="request-and-response"></a>请求和响应
 
-Ruby 使用以下代码行发送请求并获取响应：
+Ruby 使用以下代码发送请求并获取响应：
 
-```
+```ruby
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
    http.request(request)
 end
@@ -121,7 +123,7 @@ end
 
 输出响应的标头，并使用 JSON 库设置输出格式：
 
-```
+```ruby
 puts "\nRelevant Headers:\n\n"
 response.each_header do |key, value|
     if key.start_with?("bingapis-") or key.start_with?("x-msedge-") then
@@ -134,11 +136,11 @@ puts JSON::pretty_generate(JSON(response.body))
 
 ```
 
-## <a name="results"></a>结果
+## <a name="json-response"></a>JSON 响应
 
 以下 JSON 是输出的片段：
 
-```
+```JSON
 Relevant Headers:
 
 bingapis-traceid: 6E19E78D4FEC4A61AB4F85977EEDB8E6
@@ -284,5 +286,5 @@ JSON Response:
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [必应视觉搜索概述](../overview.md)
-> [生成视觉搜索单页 Web 应用](../tutorial-bing-visual-search-single-page-app.md)
+> [什么是必应视觉搜索 API？](../overview.md)
+> [构建视觉搜索单页 Web 应用](../tutorial-bing-visual-search-single-page-app.md)

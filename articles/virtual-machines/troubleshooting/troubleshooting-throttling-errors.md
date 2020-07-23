@@ -4,35 +4,34 @@ description: Azure 计算中的限制错误、重试和回退。
 services: virtual-machines
 documentationcenter: ''
 author: changov
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines
-ms.devlang: na
 ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
-ms.author: vashan, rajraj, changov
-ms.openlocfilehash: efa10f5beae64105857b00b186683d491edb00f5
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
-ms.translationtype: MT
+ms.author: changov
+ms.reviewer: vashan, rajraj
+ms.openlocfilehash: f5fbd80fc9a8e519cf8f49ab16d7e747c6a8171b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233779"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76045358"
 ---
-# <a name="troubleshooting-api-throttling-errors"></a>排查 API 限制错误 
+# <a name="troubleshooting-api-throttling-errors"></a>故障排除 API 限制错误 
 
 Azure 计算请求可能会根据订阅和区域进行限制，以便优化服务的总体性能。 我们会确保对 Azure 计算资源提供程序（CRP，用于管理 Microsoft.Compute 命名空间中的资源）的所有调用不超出允许的最大 API 请求速率。 本文档介绍 API 限制、有关如何排查限制问题的详细信息，以及如何避免受限的最佳做法。  
 
 ## <a name="throttling-by-azure-resource-manager-vs-resource-providers"></a>Azure 资源管理器限制与资源提供程序限制  
 
-作为 Azure 的“前门”，Azure 资源管理器会对所有传入的 API 请求进行身份验证、第一级验证和限制。 [此处](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-request-limits)介绍了 Azure 资源管理器调用速率限制和相关的诊断响应 HTTP 标头。
+作为 Azure 的“前门”，Azure 资源管理器会对所有传入的 API 请求进行身份验证、第一级验证和限制。 [此处](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling)介绍了 Azure 资源管理器调用速率限制和相关的诊断响应 HTTP 标头。
  
 当 Azure API 客户端收到限制错误时，HTTP 状态为“429 请求过多”。 若要了解请求限制是由 Azure 资源管理器施加的还是由基础资源提供程序（例如 CRP）施加的，请检查 `x-ms-ratelimit-remaining-subscription-reads`（针对 GET 请求）和 `x-ms-ratelimit-remaining-subscription-writes` 响应标头（针对非 GET 请求）。 如果剩余调用计数接近 0，则表明已达到订阅的常规调用限制（由 Azure 资源管理器定义）。 所有订阅客户端的活动会一起计数。 否则，限制由目标资源提供程序（请求 URL 的 `/providers/<RP>` 段所指的提供程序）施加。 
 
 ## <a name="call-rate-informational-response-headers"></a>调用速率信息响应标头 
 
-| 页眉                            | 值格式                           | 示例                               | 描述                                                                                                                                                                                               |
+| 标头                            | 值格式                           | 示例                               | 说明                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | x-ms-ratelimit-remaining-resource |```<source RP>/<policy or bucket>;<count>```| Microsoft.Compute/HighCostGet3Min;159 | 限制策略（涵盖资源 Bucket 或操作组，包括此请求的目标）的剩余 API 调用计数                                                                   |
 | x-ms-request-charge               | ```<count>```                             | 1                                     | 针对此 HTTP 请求进行的调用计数计入相应策略的限制。 这通常为 1。 针对特殊情况（例如针对虚拟机规模集的缩放）的批请求可以有多个计数。 |

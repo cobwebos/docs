@@ -2,21 +2,18 @@
 title: 适用于 Azure Kubernetes 服务 (AKS) 的服务主体
 description: 在 Azure Kubernetes 服务 (AKS) 中为群集创建和管理 Azure Active Directory 服务主体
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: conceptual
-ms.date: 04/25/2019
-ms.author: iainfou
-ms.openlocfilehash: d8a8a2f005a92988158b3f9c36ce24936fb020b4
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.date: 06/16/2020
+ms.openlocfilehash: 7f62c7dc7aacf9be4a59498aa5c556e9991ad578
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475629"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298542"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 的服务主体
 
-AKS 群集需要 [Azure Active Directory (AD) 服务主体][aad-service-principal]才能与 Azure API 交互。 需要服务主体才能动态创建和管理其他 Azure 资源，例如 Azure 负载均衡器或容器注册表 (ACR)。
+要与 Azure Api 交互，AKS 群集需要[Azure Active Directory （AD）服务主体][aad-service-principal]或[托管标识](use-managed-identity.md)。 动态创建和管理其他 Azure 资源（例如 Azure 负载均衡器或容器注册表（ACR））需要服务主体或托管标识。
 
 本文介绍如何创建和使用适用于 AKS 群集的服务主体。
 
@@ -24,7 +21,7 @@ AKS 群集需要 [Azure Active Directory (AD) 服务主体][aad-service-principa
 
 若要创建 Azure AD 服务主体，必须具有相应的权限，能够向 Azure AD 租户注册应用程序，并将应用程序分配到订阅中的角色。 如果没有必需的权限，可能需要请求 Azure AD 或订阅管理员来分配必需的权限，或者预先创建一个可以与 AKS 群集配合使用的服务主体。
 
-如果使用服务主体从不同的 Azure AD 租户，有一些其他注意事项围绕权限可用，在部署群集时。 您可能没有适当的权限来读取和写入目录信息。 有关详细信息，请参阅[Azure Active Directory 中的默认用户权限是什么？][azure-ad-permissions]
+如果使用来自另一 Azure AD 租户的服务主体，则还需围绕部署群集时可用的权限进行更多的考虑。 你可能没有读取和写入目录信息的适当权限。 有关详细信息，请参阅 [Azure Active Directory 中的默认用户权限是什么？][azure-ad-permissions]
 
 还需安装并配置 Azure CLI 2.0.59 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
@@ -43,7 +40,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup
 若要通过 Azure CLI 手动创建服务主体，请使用 [az ad sp create-for-rbac][az-ad-sp-create] 命令。 在以下示例中，`--skip-assignment` 参数阻止系统分配更多的默认分配。
 
 ```azurecli-interactive
-az ad sp create-for-rbac --skip-assignment
+az ad sp create-for-rbac --skip-assignment --name myAKSClusterServicePrincipal
 ```
 
 输出类似于以下示例。 记下你自己的 `appId`和 `password`。 在下一部分创建 AKS 群集时，会使用这些值。
@@ -51,8 +48,8 @@ az ad sp create-for-rbac --skip-assignment
 ```json
 {
   "appId": "559513bd-0c19-4c1a-87cd-851a26afd5fc",
-  "displayName": "azure-cli-2019-03-04-21-35-28",
-  "name": "http://azure-cli-2019-03-04-21-35-28",
+  "displayName": "myAKSClusterServicePrincipal",
+  "name": "http://myAKSClusterServicePrincipal",
   "password": "e763725a-5eee-40e8-a466-dc88d980f415",
   "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db48"
 }
@@ -69,6 +66,9 @@ az aks create \
     --service-principal <appId> \
     --client-secret <password>
 ```
+
+> [!NOTE]
+> 如果使用的是具有自定义机密的现有服务主体，请确保该机密不超过 190 字节。
 
 如果使用 Azure 门户来部署 AKS 群集，请在“创建 Kubernetes 群集”对话框的“身份验证”页上选择“配置服务主体”。    选择“使用现有”并指定以下值： 
 
@@ -87,13 +87,16 @@ AKS 群集的服务主体可以用来访问其他资源。 例如，如果希望
 az role assignment create --assignee <appId> --scope <resourceScope> --role Contributor
 ```
 
-资源的 `--scope` 需要是完整的资源 ID，例如 */subscriptions/\<guid\>/resourceGroups/myResourceGroup* 或 */subscriptions/\<guid\>/resourceGroups/myResourceGroupVnet/providers/Microsoft.Network/virtualNetworks/myVnet*
+`--scope`资源的需要是完整的资源 ID，如 */subscriptions/ \<guid\> /ResourceGroups/myResourceGroup*或 */subscriptions/ \<guid\> /resourceGroups/myResourceGroupVnet/providers/Microsoft.Network/virtualNetworks/myVnet*
+
+> [!NOTE]
+> 如果已从节点资源组中删除了 "参与者" 角色分配，以下操作可能会失败。  
 
 以下各部分详述了可能需要使用的常见委托。
 
 ### <a name="azure-container-registry"></a>Azure 容器注册表
 
-如果使用 Azure 容器注册表 (ACR) 作为容器映像存储，则需授予 AKS 群集读取和拉取映像的权限。 必须向 AKS 群集的服务主体委托注册表的“读者”角色。  有关详细步骤，请参阅[向 AKS 授予对 ACR 的访问权限][aks-to-acr]。
+如果使用 Azure 容器注册表 (ACR) 作为容器映像存储，则需要向 AKS 群集的服务主体授予读取和拉取映像的权限。 目前，建议的配置是使用 [az aks create][az-aks-create] 或 [az aks update][az-aks-update] 命令与注册表集成，并为服务主体分配适当的角色。 有关详细步骤，请参阅[通过 Azure Kubernetes 服务向 Azure 容器注册表进行身份验证][aks-to-acr]。
 
 ### <a name="networking"></a>网络
 
@@ -102,9 +105,13 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 - 创建一个[自定义角色][rbac-custom-role]，并定义以下角色权限：
   - *Microsoft.Network/virtualNetworks/subnets/join/action*
   - *Microsoft.Network/virtualNetworks/subnets/read*
+  - *Microsoft.Network/virtualNetworks/subnets/write*
+  - *Microsoft.Network/publicIPAddresses/join/action*
   - *Microsoft.Network/publicIPAddresses/read*
   - *Microsoft.Network/publicIPAddresses/write*
-  - *Microsoft.Network/publicIPAddresses/join/action*
+  - 如果[在 Kubenet 群集上使用自定义路由表](configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet)，请添加以下附加权限：
+    - *Microsoft.Network/routeTables/write*
+    - *Microsoft.Network/routeTables/read*
 - 或者，在虚拟网络的子网上分配[网络参与者][rbac-network-contributor]内置角色
 
 ### <a name="storage"></a>存储
@@ -118,18 +125,20 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 
 ### <a name="azure-container-instances"></a>Azure 容器实例
 
-如果使用虚拟 Kubelet 与 AKS 集成并选择在与 AKS 群集分开的资源组中运行 Azure 容器实例 (ACI)，则必须在 ACI 资源组上授予 AKS 服务主体“参与者”  权限。
+如果使用虚拟 Kubelet 与 AKS 集成并选择在与 AKS 群集分开的资源组中运行 Azure 容器实例 (ACI)，则必须在 ACI 资源组上授予 AKS 服务主体“参与者”** 权限。
 
 ## <a name="additional-considerations"></a>其他注意事项
 
 使用 AKS 和 Azure AD 服务主体时，请牢记以下注意事项。
 
 - Kubernetes 的服务主体是群集配置的一部分。 但是，请勿使用标识来部署群集。
-- 默认情况下，服务主体凭据的有效期为一年。 你随时可以[更新或轮换服务主体凭据][update-credentials]。
-- 每个服务主体都与一个 Azure AD 应用程序相关联。 Kubernetes 群集的服务主体可以与任何有效的 Azure AD 应用程序名称（例如 *https://www.contoso.org/example* ）相关联。 应用程序的 URL 不一定是实际的终结点。
+- 默认情况下，服务主体凭据的有效期为一年。 可以随时[更新或轮换服务主体凭据][update-credentials]。
+- 每个服务主体都与一个 Azure AD 应用程序相关联。 Kubernetes 群集的服务主体可以与任何有效的 Azure AD 应用程序名称关联（例如： *https://www.contoso.org/example* ）。 应用程序的 URL 不一定是实际的终结点。
 - 指定服务主体**客户端 ID** 时，请使用 `appId` 的值。
 - 在 Kubernetes 群集的代理节点 VM 中，服务主体凭据存储在 `/etc/kubernetes/azure.json` 文件中
 - 使用 [az aks create][az-aks-create] 命令自动生成服务主体时，会将服务主体凭据写入用于运行命令的计算机上的 `~/.azure/aksServicePrincipal.json` 文件中。
+- 如果没有在其他 AKS CLI 命令中明确传递服务主体，则将使用位于 `~/.azure/aksServicePrincipal.json` 的默认服务主体。  
+- 也可以选择删除 aksServicePrincipal.json 文件，AKS 将创建新的服务主体。
 - 删除通过 [az aks create][az-aks-create] 创建的 AKS 群集时，不会删除自动创建的服务主体。
     - 若要删除服务主体，请查询群集 *servicePrincipalProfile.clientId*，然后使用 [az ad app delete][az-ad-app-delete] 进行删除。 将以下资源组和群集名称替换为你自己的值：
 
@@ -137,9 +146,9 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
         ```
 
-## <a name="troubleshoot"></a>故障排除
+## <a name="troubleshoot"></a>疑难解答
 
-AKS 群集的服务主体凭据缓存的 Azure CLI。 如果这些凭据已过期，你会遇到部署 AKS 群集时出错。 运行时，以下错误消息[az aks 创建][ az-aks-create]可能表示缓存的服务主体凭据存在问题：
+AKS 群集的服务主体凭据由 Azure CLI 缓存。 如果这些凭据已过期，则会在部署 AKS 群集时遇到错误。 运行 [az aks create][az-aks-create] 时，如果出现以下错误消息，则可能表示缓存的服务主体凭据出现问题：
 
 ```console
 Operation failed with status: 'Bad Request'.
@@ -147,17 +156,17 @@ Details: The credentials in ServicePrincipalProfile were invalid. Please see htt
 (Details: adal: Refresh request failed. Status Code = '401'.
 ```
 
-请使用以下命令的凭据文件保留时间：
+请使用以下命令检查凭据文件的存在时间：
 
 ```console
 ls -la $HOME/.azure/aksServicePrincipal.json
 ```
 
-服务主体凭据的默认到期时间为一年。 如果你*aksServicePrincipal.json*文件是早于一年前，删除该文件并尝试再次部署 AKS 群集。
+服务主体凭据的默认过期时间为一年后。 如果 *aksServicePrincipal.json* 文件的存在时间已超出一年，请删除该文件，然后尝试再次部署 AKS 群集。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 Azure Active Directory 服务主体，请参阅[应用程序和服务主体对象][service-principal]。
+有关 Azure Active Directory 服务主体的详细信息，请参阅[应用程序对象和服务主体对象][service-principal]。
 
 有关如何更新凭据的信息，请参阅[为 AKS 中的服务主体更新或轮换凭据][update-credentials]。
 
@@ -172,10 +181,11 @@ ls -la $HOME/.azure/aksServicePrincipal.json
 [az-ad-app-list]: /cli/azure/ad/app#az-ad-app-list
 [az-ad-app-delete]: /cli/azure/ad/app#az-ad-app-delete
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-update]: /cli/azure/aks#az-aks-update
 [rbac-network-contributor]: ../role-based-access-control/built-in-roles.md#network-contributor
 [rbac-custom-role]: ../role-based-access-control/custom-roles.md
 [rbac-storage-contributor]: ../role-based-access-control/built-in-roles.md#storage-account-contributor
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
-[aks-to-acr]: ../container-registry/container-registry-auth-aks.md?toc=%2fazure%2faks%2ftoc.json#grant-aks-access-to-acr
+[aks-to-acr]: cluster-container-registry-integration.md
 [update-credentials]: update-credentials.md
 [azure-ad-permissions]: ../active-directory/fundamentals/users-default-permissions.md

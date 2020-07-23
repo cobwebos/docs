@@ -1,25 +1,18 @@
 ---
-title: 排查 Azure 站点到站点 VPN 连接无法建立连接的问题 | Microsoft Docs
+title: 排查无法连接 titleSuffix 的 Azure 站点到站点 VPN 连接问题： Azure VPN 网关
 description: 了解如何排查站点到站点 VPN 连接突然停止工作，不能重新建立连接的问题。
 services: vpn-gateway
-documentationcenter: na
 author: chadmath
-manager: cshepard
-editor: ''
-tags: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/30/2018
+ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 01729971169011002fa4231f043f82f105f81cdc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 09056846ee3e531724f597ee35f92d812ce2c335
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60458148"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037828"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>故障排除：Azure 站点到站点 VPN 连接无法建立连接并停止工作
 
@@ -37,7 +30,7 @@ ms.locfileid: "60458148"
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
 
-2. 有关类型信息，请查看 VPN 网关的“概述”页。
+2. 有关类型信息，请查看 VPN 网关的“概述”页。 
     
     ![网关概述](media/vpn-gateway-troubleshoot-site-to-site-cannot-connect/gatewayoverview.png)
 
@@ -57,7 +50,7 @@ ms.locfileid: "60458148"
 
 1. 转到创建的 VPN 网关站点到站点连接。
 
-2. 在“设置”部分中，单击“共享密钥”。
+2. 在“设置”部分中，单击“共享密钥”。  
     
     ![共享密钥](media/vpn-gateway-troubleshoot-site-to-site-cannot-connect/sharedkey.png)
 
@@ -67,15 +60,19 @@ ms.locfileid: "60458148"
 
 对于 Azure 资源管理器部署模型：
 
-    Get-AzVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group name>
+```azurepowershell
+Get-AzVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group name>
+```
 
 对于经典部署模型：
 
-    Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
+```azurepowershell
+Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
+```
 
 ### <a name="step-3-verify-the-vpn-peer-ips"></a>步骤 3. 验证 VPN 对等 IP
 
--   Azure 的“本地网络网关”对象中的 IP 定义应与本地设备的 IP 相匹配。
+-   Azure 的“本地网络网关”对象中的 IP 定义应与本地设备的 IP 相匹配。 
 -   在本地设备中设置的 Azure 网关 IP 定义应与 Azure 网关 IP 匹配。
 
 ### <a name="step-4-check-udr-and-nsgs-on-the-gateway-subnet"></a>步骤 4. 检查网关子网上的 UDR 和 NSG
@@ -84,14 +81,14 @@ ms.locfileid: "60458148"
 
 ### <a name="step-5-check-the-on-premises-vpn-device-external-interface-address"></a>步骤 5。 检查本地 VPN 设备的外部接口地址
 
-- 如果 VPN 设备面向 Internet 的 IP 地址包含在 Azure 的“本地网络”定义中，可能会出现偶发的断开连接。
+- 如果 VPN 设备面向 Internet 的 IP 地址包含在 Azure 的“本地网络”定义中，可能会出现偶发的断开连接。 
 - 设备的外部接口必须直接在 Internet 上。 在 Internet 和设备之间应该没有网络地址转换或防火墙。
 - 若要将防火墙群集配置为具有虚拟 IP，必须中断群集并直接向可以与网关连接的公共接口公开 VPN 设备。
 
 ### <a name="step-6-verify-that-the-subnets-match-exactly-azure-policy-based-gateways"></a>步骤 6. 验证子网是否完全匹配（基于 Azure Policy 的网关）
 
 -   验证虚拟网络地址空间与 Azure 虚拟网络和本地定义之间的子网是否完全匹配。
--   验证“本地网络网关”与本地网络本地定义之间的子网是否完全匹配。
+-   验证“本地网络网关”与本地网络本地定义之间的子网是否完全匹配。 
 
 ### <a name="step-7-verify-the-azure-gateway-health-probe"></a>步骤 7. 验证 Azure 网关的运行状况探测
 
@@ -102,7 +99,10 @@ ms.locfileid: "60458148"
 2. 单击证书警告。
 3. 如果收到响应，则可认为 VPN 网关正常。 如果未收到响应，则可能表示网关不正常，或者网关子网上的某个 NSG 导致出现问题。 以下文本是示例响应：
 
-    &lt;?xml version="1.0"?>  <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">Primary Instance:GatewayTenantWorker_IN_1 GatewayTenantVersion:14.7.24.6</string&gt;
+    ```xml
+    <?xml version="1.0"?>
+    <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">Primary Instance: GatewayTenantWorker_IN_1 GatewayTenantVersion: 14.7.24.6</string>
+    ```
 
 ### <a name="step-8-check-whether-the-on-premises-vpn-device-has-the-perfect-forward-secrecy-feature-enabled"></a>步骤 8。 检查本地 VPN 设备是否已启用完全向前保密功能
 

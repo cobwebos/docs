@@ -4,27 +4,24 @@ description: 了解如何排查启动时收到蓝屏错误的问题 | Microsoft 
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
-ms.openlocfilehash: 26306489b11e24ab50f0ae893f11137d279c6127
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 30b4386c223240217096550330c0920ad9ab6871
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719800"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132910"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Windows 在启动 Azure VM 时显示蓝屏错误
 本文介绍在 Microsoft Azure 中启动 Windows 虚拟机 (VM) 时可能出现的蓝屏错误。 本文提供用于收集支持票证数据的步骤。 
 
-> [!NOTE] 
-> Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用 Resource Manager 部署模型。建议对新部署使用该模型，而不是经典部署模型。
 
 ## <a name="symptom"></a>症状 
 
@@ -56,7 +53,7 @@ Windows VM 不启动。 检查[启动诊断](./boot-diagnostics.md)中的启动�
 ### <a name="locate-dump-file-and-submit-a-support-ticket"></a>找到转储文件并提交支持票证
 
 1. 在恢复 VM 上，转到附加的 OS 磁盘中的 Windows 文件夹。 如果分配给附加 OS 磁盘的驱动器号为 F，则需转到 F:\Windows。
-2. 找到 memory.dmp 文件，然后[提交支持票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)使用转储文件。 
+2. 找到 memory.dmp 文件，然后使用该转储文件[提交支持票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。 
 
 如果找不到转储文件，请转到下一步以启用转储日志和串行控制台。
 
@@ -94,12 +91,14 @@ Windows VM 不启动。 检查[启动诊断](./boot-diagnostics.md)中的启动�
     1. 请确保磁盘上有足够的空间来分配与 RAM 一样多的内存，具体取决于为此 VM 选择的大小。
     2. 如果没有足够的空间，或者这是大型 VM（G、GS 或 E 系列），则可随后更改创建此文件时所在的位置，将该位置指向任何其他附加到 VM 的数据磁盘。 为此，需更改以下密钥：
 
-            reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
+    ```config-reg
+    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
 
-            REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
-            REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
 
-            reg unload HKLM\BROKENSYSTEM
+    reg unload HKLM\BROKENSYSTEM
+    ```
 
 3. [分离 OS 磁盘，然后将 OS 磁盘重新附加到受影响的 VM](../windows/troubleshoot-recovery-disks-portal.md)。
 4. 启动 VM 以重现问题，然后就会生成转储文件。

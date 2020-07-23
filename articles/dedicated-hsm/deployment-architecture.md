@@ -2,22 +2,21 @@
 title: 部署体系结构 - Azure 专用 HSM | Microsoft Docs
 description: 将 Azure 专用 HSM 用作应用程序体系结构的一部分时的基本设计注意事项
 services: dedicated-hsm
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/27/2019
-ms.author: barclayn
-ms.openlocfilehash: f078df7677e771d131f15056ac4a54a58a3134bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 02/05/2020
+ms.author: mbaldwin
+ms.openlocfilehash: 89e3bf95a6b048e5e97cfb151ef9302b70eac1c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60912251"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77048555"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Azure 专用 HSM 部署体系结构
 
@@ -35,6 +34,10 @@ HSM 分布于 Microsoft 数据中心，并可以作为高度可用解决方案�
 * 美国中南部
 * 东南亚
 * 东亚
+* 印度中部
+* 印度南部
+* 日本东部
+* 日本西部
 * 北欧
 * 西欧
 * 英国南部
@@ -69,4 +72,4 @@ HSM 设备最佳位置是最接近执行加密操作的应用程序的位置。 
 * [物理安全性](physical-security.md)
 * [网络](networking.md)
 * [可支持性](supportability.md)
-* [监视](monitoring.md)
+* [Monitoring](monitoring.md)

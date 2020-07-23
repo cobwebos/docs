@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e56d4d94e38e5095ef2223d0cc2875cbf1dcd46
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 73d4239dd34f2a64aa7b3edbf88bad4348e01291
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919125"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356196"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步排查对象同步问题
 本文按步骤介绍了如何使用故障排除任务来排查对象同步问题。 若要了解如何在 Azure Active Directory (Azure AD) Connect 中对工作进行故障排除，请观看[此简短视频](https://aka.ms/AADCTSVideo)。
@@ -41,8 +41,8 @@ ms.locfileid: "64919125"
 
 ### <a name="troubleshooting-input-parameters"></a>排查输入参数问题
 以下输入参数是故障排除任务所需的：
-1.  **对象可分辨名称** – 这是需要进行故障排除的对象的可分辨名称
-2.  **AD 连接器名称** – 这是上述对象所驻留的 AD 林的名称。
+1.  **对象可分辨名称**–这是需要进行故障排除的对象的可分辨名称
+2.  **Ad 连接器名称**–这是上述对象所驻留的 AD 林的名称。
 3.  Azure AD 租户全局管理员凭据![全局管理员凭据](media/tshoot-connect-objectsync/objsynch1.png)
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>了解故障排除任务的结果
@@ -60,12 +60,7 @@ ms.locfileid: "64919125"
 ### <a name="upn-suffix-is-not-verified-with-azure-ad-tenant"></a>使用 Azure AD 租户时，不验证 UPN 后缀
 如果没有通过 Azure AD 租户对 UserPrincipalName (UPN)/备用登录 ID 后缀进行验证，Azure Active Directory 会将 UPN 后缀替换为默认的域名“onmicrosoft.com”。
 
-![Azure AD 将替换 UPN](media/tshoot-connect-objectsync/objsynch2.png)
-
-### <a name="changing-upn-suffix-from-one-federated-domain-to-another-federated-domain"></a>将 UPN 后缀从一个联合域更改到另一个联合域
-Azure Active Directory 不允许将 UserPrincipalName (UPN)/备用登录 ID 后缀的更改从一个联合域同步到另一个联合域。 这适用于通过 Azure AD 租户进行验证且“身份验证类型”为“联合身份验证”的域。
-
-![从一个联合域之间没有 UPN 同步](media/tshoot-connect-objectsync/objsynch3.png) 
+![Azure AD 替换 UPN](media/tshoot-connect-objectsync/objsynch2.png)
 
 ### <a name="azure-ad-tenant-dirsync-feature-synchronizeupnformanagedusers-is-disabled"></a>Azure AD 租户 DirSync 功能“SynchronizeUpnForManagedUsers”已禁用
 对于使用托管身份验证的许可用户帐户，禁用 Azure AD 租户 DirSync 功能“SynchronizeUpnForManagedUsers”后，Azure Active Directory 不允许将更新同步到 UserPrincipalName/备用登录 ID。

@@ -1,34 +1,30 @@
 ---
-title: 通过使用适用于.NET 的 Azure Microsoft 身份验证库清除令牌缓存
-description: 了解如何清除令牌缓存使用 Microsoft 身份验证库.NET (MSAL.NET)。
+title: 清除令牌缓存（MSAL.NET） |Microsoft
+titleSuffix: Microsoft identity platform
+description: 了解如何使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 清除令牌缓存。
 services: active-directory
-documentationcenter: dev-center-name
-author: rwike77
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
 ms.date: 05/07/2019
-ms.author: ryanwi
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6763c6b2b1f9b4de7d8669a50a4979a7aac00c7
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 83c1dd43235dc7bccb322a484362b08544d54d11
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544116"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85477509"
 ---
-# <a name="clear-the-token-cache-using-msalnet"></a>清除令牌缓存使用 MSAL.NET
+# <a name="clear-the-token-cache-using-msalnet"></a>使用 MSAL.NET 清除令牌缓存
 
-当您[获取访问令牌](msal-acquire-cache-tokens.md)使用 Microsoft 身份验证库.NET (MSAL.NET)，缓存令牌。 当应用程序需要令牌时，应首先调用`AcquireTokenSilent`方法，若要验证的可接受的令牌是否在缓存中。 
+使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) [获取访问令牌](msal-acquire-cache-tokens.md)时，将缓存该令牌。 应用程序需要令牌时，应该首先调用 `AcquireTokenSilent` 方法来验证缓存中是否有可接受的令牌。 
 
-清除缓存通过从缓存中删除帐户。 不过，这不会删除浏览器中的会话 Cookie。  下面的示例实例化的公共客户端应用程序、 应用程序，可以获取帐户并删除帐户。
+通过从缓存中删除帐户来实现清除缓存。 不过，这不会删除浏览器中的会话 Cookie。  以下示例实例化公共客户端应用程序，获取应用程序的帐户，并删除帐户。
 
 ```csharp
 private readonly IPublicClientApplication _app;
@@ -50,4 +46,4 @@ while (accounts.Any())
 
 ```
 
-若要了解有关获取和缓存令牌的详细信息，请阅读[获取访问令牌](msal-acquire-cache-tokens.md)。
+若要详细了解如何获取和缓存令牌，请阅读[获取访问令牌](msal-acquire-cache-tokens.md)。

@@ -3,23 +3,18 @@ title: 上传 Azure Service Management 证书 | Microsoft Docs
 description: 了解如何为 Azure 门户上传 Service Management 证书。
 services: cloud-services
 documentationcenter: .net
-author: jpconnock
-manager: timlt
-editor: ''
+author: georgewallace
+manager: carmonm
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
 ms.service: api-management
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 014a26c2500959502eeb1c50d3f311584c1ad84e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: gwallace
+ms.openlocfilehash: 4b49a9b391eeca2d2e249b171d99f231bda6fdff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60742903"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78329113"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>上传 Azure Service Management 证书
 管理证书使你可以使用 Azure 提供的经典部署模型进行身份验证。 许多程序和工具（如 Visual Studio 或 Azure SDK）会使用这些证书来自动配置和部署各种 Azure 服务。 
@@ -33,7 +28,7 @@ ms.locfileid: "60742903"
 
 还可以使用 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) 对客户端代码进行身份验证，以用于自动化目的。
 
-**注意：** 必须是订阅的共同管理员来管理证书下执行任何操作。 [了解](https://go.microsoft.com/fwlink/?linkid=849300)有关如何在新的 Azure 门户中添加或删除共同管理员 
+**注意：** 必须是订阅的共同管理员，才能在“管理证书”下执行任何操作。 [了解](https://go.microsoft.com/fwlink/?linkid=849300)有关如何在新的 Azure 门户中添加或删除共同管理员 
 
 ## <a name="upload-a-management-certificate"></a>上传管理证书
 创建管理证书后（仅使用公钥的 .cer 文件），可将其上传到门户。 当该证书在门户中可用时，任何拥有匹配证书（私钥）的人都可通过 Management API 连接并访问与订阅相关联的资源。
@@ -48,12 +43,12 @@ ms.locfileid: "60742903"
 
     ![设置](./media/azure-api-management-certs/mgmtcerts_menu.png)
 
-5. 点按“上传”按钮。
+5. 点按“上传”  按钮。
 
     ![在“证书”页上传](./media/azure-api-management-certs/certificates_page.png)
-6. 填写对话框信息并点按“上传”。
+6. 填写对话框信息并点按“上传”  。
 
     ![设置](./media/azure-api-management-certs/certificate_details.png)
 
 ## <a name="next-steps"></a>后续步骤
-将管理证书与订阅关联之后，（在本地安装匹配的证书后）可以编程的方式连接到[经典部署模型 REST API](/azure/#pivot=sdkstools) 并自动执行各种与该订阅关联的 Azure 资源。
+将管理证书与订阅关联之后，（在本地安装匹配的证书后）可以编程的方式连接到[经典部署模型 REST API](/azure/?pivot=sdkstools) 并自动执行各种与该订阅关联的 Azure 资源。

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure PowerShell 为 Azure 资源创建自定义角色 | Microsoft Docs
-description: 了解如何使用 Azure PowerShell 为 Azure 资源使用基于角色的访问控制 (RBAC) 创建自定义角色。 这包括如何列出、创建、更新和删除自定义角色。
+title: 使用 Azure PowerShell 创建或更新 Azure 自定义角色 - Azure RBAC
+description: 了解如何使用 Azure PowerShell 和 Azure 基于角色的访问控制 (Azure RBAC) 列出、创建、更新或删除自定义角色。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -8,28 +8,33 @@ manager: mtillman
 ms.assetid: 9e225dba-9044-4b13-b573-2f30d77925a9
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/20/2019
+ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ad1185cab2b2bd2d0fea10f21b7859fd9ab1339f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 540da4103c3f7800521407441d645070e1e3e7ca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158452"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84790205"
 ---
-# <a name="create-custom-roles-for-azure-resources-using-azure-powershell"></a>使用 Azure PowerShell 为 Azure 资源创建自定义角色
+# <a name="create-or-update-azure-custom-roles-using-azure-powershell"></a>使用 Azure PowerShell 创建或更新 Azure 自定义角色
 
-如果 [Azure 资源的内置角色](built-in-roles.md)不能满足组织的特定需求，则可以创建自定义角色。 本文介绍如何使用 Azure PowerShell 创建和管理自定义角色。
+> [!IMPORTANT]
+> 将管理组添加到 `AssignableScopes` 的功能目前为预览版。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-有关如何创建自定义角色的分步教程，请参阅[教程：使用 Azure PowerShell 为 Azure 资源创建自定义角色](tutorial-custom-role-powershell.md)。
+如果 [Azure 内置角色](built-in-roles.md)不满足组织的特定需求，你可以创建自己的自定义角色。 本文介绍如何使用 Azure PowerShell 列出、创建、更新或删除自定义角色。
+
+有关如何创建自定义角色的分步教程，请参阅[教程：使用 Azure PowerShell 创建 Azure 自定义角色](tutorial-custom-role-powershell.md)。
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要创建自定义角色，需要具备以下条件：
 
@@ -74,7 +79,7 @@ Virtual Machine Operator     True
 若要列出自定义角色定义，请使用 [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition)。 这与用于内置角色的命令相同。
 
 ```azurepowershell
-Get-AzRoleDefinition <role name> | ConvertTo-Json
+Get-AzRoleDefinition <role_name> | ConvertTo-Json
 ```
 
 ```Example
@@ -109,7 +114,7 @@ PS C:\> Get-AzRoleDefinition "Virtual Machine Operator" | ConvertTo-Json
 以下示例仅列出了角色的操作：
 
 ```azurepowershell
-(Get-AzRoleDefinition <role name>).Actions
+(Get-AzRoleDefinition <role_name>).Actions
 ```
 
 ```Example
@@ -158,7 +163,7 @@ Start Virtual Machine                          Microsoft.Compute/virtualMachines
 
 使用 PowerShell 创建自定义角色时，可以使用某个[内置角色](built-in-roles.md)作为起点，也可以从头开始。 本部分中的第一个示例以内置角色开始，并为它自定义更多的权限。 编辑属性以添加所需的 `Actions`、`NotActions` 或 `AssignableScopes`，然后将这些更改保存为新角色。
 
-以下示例从[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)内置角色开始，使用该角色创建名为“虚拟机操作员”的自定义角色。 该新角色授权访问 *Microsoft.Compute*、*Microsoft.Storage* 和 *Microsoft.Network* 资源提供程序的所有读取操作，并授权访问启动、重新启动和监视虚拟机。 该自定义角色可以在两个订阅中使用。
+以下示例从[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)内置角色开始，使用该角色创建名为“虚拟机操作员”的自定义角色。 该新角色授权访问 Microsoft.Compute、Microsoft.Storage 和 Microsoft.Network 资源提供程序的所有读取操作，并授权访问启动、重新启动和监视操作  。 该自定义角色可以在两个订阅中使用。
 
 ```azurepowershell
 $role = Get-AzRoleDefinition "Virtual Machine Contributor"
@@ -204,7 +209,7 @@ New-AzRoleDefinition -Role $role
 
 ### <a name="create-a-custom-role-with-json-template"></a>使用 JSON 模板创建自定义角色
 
-JSON 模板可用作自定义角色的源定义。 下面的示例创建一个有权读取存储和计算资源以及有权访问支持的自定义角色，并将该角色添加到两个订阅。 创建包含以下示例的新文件 `C:\CustomRoles\customrole1.json`。 创建初始角色时，应将 ID 设置为 `null`，因为会自动生成新的 ID。 
+JSON 模板可以用作自定义角色的源定义。 以下示例创建一个可以对存储和计算资源进行读取访问以及获取支持的自定义角色，并将该角色添加到两个订阅。 创建包含以下示例的新文件 `C:\CustomRoles\customrole1.json`。 创建初始角色时，应将 ID 设置为 `null`，因为会自动生成新的 ID。 
 
 ```json
 {
@@ -237,9 +242,9 @@ New-AzRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
 
 ### <a name="update-a-custom-role-with-the-psroledefinition-object"></a>使用 PSRoleDefinition 对象更新自定义角色
 
-若要修改自定义角色，请先使用 [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) 命令检索角色定义。 然后，对该角色定义作出所需更改。 最后，使用 [Set-AzRoleDefinition](/powershell/module/az.resources/set-azroledefinition) 命令保存修改后的角色定义。
+若要修改自定义角色，请先使用 [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) 命令检索角色定义。 然后，对角色定义做出所需更改。 最后，使用 [Set-AzRoleDefinition](/powershell/module/az.resources/set-azroledefinition) 命令保存修改后的角色定义。
 
-以下示例将 `Microsoft.Insights/diagnosticSettings/*` 操作添加到*虚拟机操作员*自定义角色。
+以下示例将 `Microsoft.Insights/diagnosticSettings/*` 操作添加到“虚拟机操作员”自定义角色。
 
 ```azurepowershell
 $role = Get-AzRoleDefinition "Virtual Machine Operator"
@@ -263,7 +268,7 @@ AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
                    /subscriptions/11111111-1111-1111-1111-111111111111}
 ```
 
-以下示例将 Azure 订阅添加到*虚拟机操作员*自定义角色的可分配范围。
+以下示例将 Azure 订阅添加到“虚拟机操作员”自定义角色的可分配范围。
 
 ```azurepowershell
 Get-AzSubscription -SubscriptionName Production3
@@ -297,9 +302,45 @@ AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
                    /subscriptions/22222222-2222-2222-2222-222222222222}
 ```
 
+以下示例将管理组添加到“虚拟机操作员”自定义角色的 `AssignableScopes`。 将管理组添加到 `AssignableScopes` 的功能目前处于预览状态。
+
+```azurepowershell
+Get-AzManagementGroup
+
+$role = Get-AzRoleDefinition "Virtual Machine Operator"
+$role.AssignableScopes.Add("/providers/Microsoft.Management/managementGroups/{groupId1}")
+Set-AzRoleDefinition -Role $role
+```
+
+```Example
+PS C:\> Get-AzManagementGroup
+
+Id          : /providers/Microsoft.Management/managementGroups/marketing-group
+Type        : /providers/Microsoft.Management/managementGroups
+Name        : marketing-group
+TenantId    : 99999999-9999-9999-9999-999999999999
+DisplayName : Marketing group
+
+PS C:\> $role = Get-AzRoleDefinition "Virtual Machine Operator"
+PS C:\> $role.AssignableScopes.Add("/providers/Microsoft.Management/managementGroups/marketing-group")
+PS C:\> Set-AzRoleDefinition -Role $role
+
+Name             : Virtual Machine Operator
+Id               : 88888888-8888-8888-8888-888888888888
+IsCustom         : True
+Description      : Can monitor and restart virtual machines.
+Actions          : {Microsoft.Storage/*/read, Microsoft.Network/*/read, Microsoft.Compute/*/read,
+                   Microsoft.Compute/virtualMachines/start/action...}
+NotActions       : {}
+AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
+                   /subscriptions/11111111-1111-1111-1111-111111111111,
+                   /subscriptions/22222222-2222-2222-2222-222222222222,
+                   /providers/Microsoft.Management/managementGroups/marketing-group}
+```
+
 ### <a name="update-a-custom-role-with-a-json-template"></a>使用 JSON 模板更新自定义角色
 
-使用前面的 JSON 模板，可轻松修改现有自定义角色，以添加或删除操作。 更新 JSON 模板并添加读取网络操作，如以下示例中所示。 模板中列出的定义并不累积应用于现有定义，这意味着角色与模板中指定的完全一样。 还需要将 ID 字段更新为角色的 ID。 如果不确定此值是什么，可以使用 [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) cmdlet 来获取该信息。
+使用以前的 JSON 模板可以轻松修改现有的自定义角色，以便添加或删除 Actions。 更新 JSON 模板，为网络添加读取操作，如以下示例所示。 模板中列出的定义不是以累积方式应用到现有定义的，这意味着角色的显示方式完全符合模板中的指定。 还需使用角色的 ID 更新“ID”字段。 如果不确定此值是什么，可以使用 [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) cmdlet 来获取该信息。
 
 ```json
 {
@@ -331,7 +372,7 @@ Set-AzRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
 
 若要删除自定义角色，请使用 [Remove-AzRoleDefinition](/powershell/module/az.resources/remove-azroledefinition) 命令。
 
-以下示例删除了*虚拟机操作员*自定义角色。
+以下示例删除了 *虚拟机操作员* 自定义角色。
 
 ```azurepowershell
 Get-AzRoleDefinition "Virtual Machine Operator"
@@ -360,6 +401,6 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 
 ## <a name="next-steps"></a>后续步骤
 
-- [教程：使用 Azure PowerShell 为 Azure 资源创建自定义角色](tutorial-custom-role-powershell.md)
-- [Azure 资源的自定义角色](custom-roles.md)
+- [教程：使用 Azure PowerShell 创建 Azure 自定义角色](tutorial-custom-role-powershell.md)
+- [Azure 自定义角色](custom-roles.md)
 - [Azure 资源管理器资源提供程序操作](resource-provider-operations.md)

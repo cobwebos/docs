@@ -1,25 +1,18 @@
 ---
-title: 在应用服务环境中创建内部负载均衡器 - Azure
-description: 有关如何创建和使用与 Internet 隔离的 Azure 应用服务环境的详细信息
-services: app-service
-documentationcenter: na
+title: 使用 ARM 创建 ILB ASE
+description: 了解如何使用 Azure 资源管理器模板创建带内部负载均衡器 (ILB ASE) 的应用服务环境。 将应用与 Internet 完全隔离。
 author: ccompy
-manager: stefsch
 ms.assetid: 0f4c1fa4-e344-46e7-8d24-a25e247ae138
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 05/28/2019
+ms.date: 08/05/2019
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 6f571342b02084ceb8d67fbb889e030194663489
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.custom: mvc, seodec18
+ms.openlocfilehash: b7fa447e8564fcbf77702f1d3d474cceb48705c5
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66493848"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114635"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>创建和使用内部负载均衡器应用服务环境 
 
@@ -32,7 +25,7 @@ Azure 应用服务环境是指将 Azure 应用服务部署到 Azure 虚拟网络
 
 ## <a name="overview"></a>概述 
 
-可以使用可访问 Internet 的终结点或 VNet 中的 IP 地址部署 ASE。 若要将 IP 地址设置为 VNet 地址，必须为 ASE 部署 ILB。 为 ASE 部署 ILB 时，必须提供 ASE 的名称。 该 ASE 名称将在 ASE 内的应用的域后缀中使用。  ILB ASE 的域后缀是 &lt;ASE 名称&gt;.appservicewebsites.net。 在 ILB ASE 中创建的应用不会被放入公共 DNS 中。 
+可以使用可访问 Internet 的终结点或 VNet 中的 IP 地址部署 ASE。 若要将 IP 地址设置为 VNet 地址，必须为 ASE 部署 ILB。 为 ASE 部署 ILB 时，必须提供 ASE 的名称。 该 ASE 名称将在 ASE 内的应用的域后缀中使用。  ILB ASE 的域后缀是 &lt;ASE 名称&gt;.appserviceenvironment.net。 在 ILB ASE 中创建的应用不会被放入公共 DNS 中。 
 
 早期版本的 ILB ASE 要求提供一个域后缀和一个用于建立 HTTPS 连接的默认证书。 创建 ILB ASE 时不再收集域后缀，且不再收集默认证书。 现在，在创建 ILB ASE 时，默认证书将由 Microsoft 提供，并受浏览器的信任。 仍可以在 ASE 中的应用上设置自定义域名，并在这些自定义域名中设置证书。 
 
@@ -67,6 +60,9 @@ Azure 应用服务环境是指将 Azure 应用服务部署到 Azure 虚拟网络
 
     ![ASE 创建](media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase.png)
 
+> [!NOTE]
+> 应用服务环境名称长度不能超过 37 个字符。
+
 6. 选择“网络”
 
 7. 选择或创建虚拟网络。 如果在此处创建新的 VNet，将使用 192.168.250.0/23 地址范围定义该 VNet。 若要使用不同的地址范围或者在除 ASE 以外的另一个资源组中创建 VNet，请使用 Azure 虚拟网络创建门户。 
@@ -76,6 +72,7 @@ Azure 应用服务环境是指将 Azure 应用服务部署到 Azure 虚拟网络
     ![ASE 网络][1]
 
 7. 依次选择“查看并创建”、“创建”。  
+
 
 ## <a name="create-an-app-in-an-ilb-ase"></a>在 ILB ASE 中创建应用 ##
 
@@ -108,15 +105,16 @@ ILB ASE 上同时支持函数和 Web 作业，但对于与其配合使用的门�
 若要配置 DNS：
 
 - 为 *&lt;ASE 名称&gt;.appserviceenvironment.net* 创建一个区域
-- 在该区域中创建一条指向* ILB IP 地址的 A 记录 
+- 在该区域中创建一条指向* ILB IP 地址的 A 记录
+- 在该区域中创建一条指向 @ ILB IP 地址的 A 记录
 - 在 *&lt;ASE 名称&gt;.appserviceenvironment.net* 中创建名为 scm 的区域
-- 在 scm 区域中创建一条指向 ILB IP 地址的 A 记录
+- 在 scm 区域中创建一条指向 * ILB IP 地址的 A 记录
 
 ## <a name="publish-with-an-ilb-ase"></a>使用 ILB ASE 发布
 
 创建的每个应用都有两个终结点。 ILB ASE 中包含 *&lt;应用名称&gt;.&lt;ILB ASE 域&gt;* 和 *&lt;应用名称&gt;.scm.&lt;ILB ASE 域&gt;* 。 
 
-SCM 站点名称能将用户带到 Kudu 控制台，在 Azure 门户中称为**高级门户**。 Kudu 控制台允许查看环境变量、浏览磁盘、使用控制台等等。 有关详细信息，请参阅[用于 Azure 应用服务的 Kudu 控制台][Kudu]。 
+SCM 站点名称能将用户带到 Kudu 控制台，在 Azure 门户中称为**高级门户**。 Kudu 控制台允许查看环境变量、浏览磁盘、使用控制台等等。 有关详细信息，请参阅 [Azure 应用服务的 Kudu 控制台][Kudu]。 
 
 如果生成代理可访问 Internet 并与 ILB ASE 在同一网络上，则基于 Internet 的 CI 系统（例如 GitHub 和 Azure DevOps）仍将使用 ILB ASE。 因此，如果在 ILB ASE 所在的 VNET 上（不同的子网属正常情况）创建生成代理，Azure DevOps 将能从 Azure DevOps git 中拉取代码并部署到 ILB ASE。 如果不想创建自己的生成代理，则需要使用利用拉取模型的 CI 系统，如 Dropbox。
 
@@ -156,8 +154,8 @@ ILB ASE 中应用的发布终结点使用创建该 ILB ASE 所用的域。 此�
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
-[ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
+[ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md

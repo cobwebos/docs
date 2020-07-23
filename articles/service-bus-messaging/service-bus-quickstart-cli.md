@@ -1,20 +1,17 @@
 ---
 title: 快速入门 - 使用 Azure CLI 创建服务总线队列 | Microsoft Docs
 description: 在本快速入门中，你将了解如何使用 Azure CLI 创建服务总线队列。 然后，你将使用示例 Java 应用程序向队列发送消息以及从中接收消息。
-services: service-bus-messaging
 author: spelluru
-manager: timlt
-ms.service: service-bus-messaging
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 04/10/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: e34599b12b8b0c487c6813038951b051d1eaf425
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: ed09a72fd5eed72e7a07fefed53bf010a543b658
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400263"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337404"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>快速入门：使用 Azure CLI 创建服务总线队列
 本快速入门介绍了如何使用 Azure CLI 和服务总线 Java 库通过服务总线来发送和接收消息。 最后，如果对更多的技术细节感兴趣，可以[阅读说明](#understand-the-sample-code)，了解示例代码的重要元素。
@@ -22,12 +19,12 @@ ms.locfileid: "66400263"
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
 ## <a name="prerequisites"></a>先决条件
-如果没有 Azure 订阅，可以在开始前创建一个[免费帐户][free account]。
+如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户][free account]。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
-如果使用“试用”按钮来启动 Cloud Shell，请使用凭据登录到 Azure。  
+如果使用“试用”按钮来启动 Cloud Shell，请使用凭据登录到 Azure。 
 
 如果在 Web 浏览器中启动 Cloud Shell，不管是直接这样做还是在 Azure 门户中这样做，则请在 Cloud Shell 左上角看到 **PowerShell** 时切换到 **Bash**。 
 
@@ -372,7 +369,7 @@ void registerReceiver(QueueClient queueClient, ExecutorService executorService) 
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何创建一个服务总线命名空间并从队列发送和接收消息所需的其他资源。 若要详细了解如何编写收发消息的代码，请继续阅读教程的“发送和接收消息”部分  。 
+本文介绍了如何创建一个服务总线命名空间并从队列发送和接收消息所需的其他资源。 若要详细了解如何编写收发消息的代码，请继续阅读教程的“发送和接收消息”部分。 
 
 > [!div class="nextstepaction"]
 > [发送和接收消息](service-bus-dotnet-get-started-with-queues.md)

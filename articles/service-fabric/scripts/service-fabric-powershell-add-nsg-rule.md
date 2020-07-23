@@ -1,30 +1,29 @@
 ---
-title: Azure PowerShell 脚本示例 - 添加网络安全组规则 | Microsoft Docs
+title: 在Powershell 中添加网络安全组规则
 description: Azure PowerShell 脚本示例 - 添加网络安全组以允许特定端口上的入站流量。
 services: service-fabric
 documentationcenter: ''
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
-ms.devlang: na
 ms.topic: sample
 ms.date: 11/28/2017
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 92efd6c4e63959b6098829892c5cbbaeeabe9f83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 33ee8028031bf94d69d11b08c347f84db94494a3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66159977"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75610414"
 ---
 # <a name="add-an-inbound-network-security-group-rule"></a>添加入站网络安全组规则
 
-本示例脚本创建网络安全组规则，以允许端口 8081 上的入站流量。  该脚本获取群集所在的 `Microsoft.Network/networkSecurityGroups` 资源，创建新的网络安全配置规则，并更新网络安全组。 根据需要自定义参数。
+本示例脚本创建网络安全组规则，以允许端口 8081 上的入站流量。  该脚本获取网络安全组、创建新的网络安全配置规则，并更新网络安全组。 根据需要自定义参数。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -38,7 +37,7 @@ ms.locfileid: "66159977"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | 获取 `Microsoft.Network/networkSecurityGroups` 资源。 |
 |[Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup)| 按名称获取网络安全组。|

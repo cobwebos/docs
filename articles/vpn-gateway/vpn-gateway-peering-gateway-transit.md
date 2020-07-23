@@ -1,26 +1,20 @@
 ---
-title: 针对虚拟网络对等互连配置 VPN 网关传输：Azure 资源管理器 | Microsoft Docs
+title: 针对虚拟网络对等互连配置 VPN 网关传输
 description: 针对虚拟网络对等互连配置 VPN 网关传输。
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: yushwang
-manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: d5e62bf1838c8f07068208019d28d7273c28bd63
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 05df14005bb52d67aed0f616854c7b6b55e6e35d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60457349"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84982886"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>针对虚拟网络对等互连配置 VPN 网关传输
 
@@ -37,9 +31,14 @@ ms.locfileid: "60457349"
 1. 两种虚拟网络都使用资源管理器部署模型
 2. 辐射虚拟网络为经典部署模型，带网关的中心虚拟网络为资源管理器部署模型
 
+
+>[!NOTE]
+> 如果更改网络拓扑并且具有 VPN 客户端，必须再次下载和安装 Windows 客户端的 VPN 客户端包，以使更改应用于客户端。
+>
+
 ## <a name="requirements"></a>要求
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 本文档中的示例要求创建以下资源：
 
@@ -54,14 +53,14 @@ ms.locfileid: "60457349"
 2. [使用相同的部署模型创建虚拟网络对等互连](../virtual-network/tutorial-connect-virtual-networks-portal.md)
 3. [使用不同的部署模型创建虚拟网络对等互连](../virtual-network/create-peering-different-deployment-models.md)
 
-## <a name="permissions"></a>权限
+## <a name="permissions"></a><a name="permissions"></a>Permissions
 
 用于创建虚拟网络对等互连的帐户必须具有所需的角色或权限。 在以下示例中，若要将两个名为 Hub-RM 和 Spoke-Classic 的虚拟网络进行对等互连，帐户必须具有适用于每个虚拟网络的以下角色或权限：
     
 |虚拟网络|部署模型|角色|权限|
 |---|---|---|---|
 |Hub-RM|资源管理器|[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
-| |经典|[经典网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|不适用|
+| |经典|[经典网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|空值|
 |Spoke-Classic|资源管理器|[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
 ||经典|[经典网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
 
@@ -162,4 +161,4 @@ Add-AzVirtualNetworkPeering `
 ## <a name="next-steps"></a>后续步骤
 
 * 在为生产用途创建虚拟网络对等互连之前，请详细了解[虚拟网络对等互连约束和行为](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)和[虚拟网络对等互连设置](../virtual-network/virtual-network-manage-peering.md#create-a-peering)。
-* 了解如何使用虚拟网络对等互连和网关传输[创建中心辐射型网络拓扑](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering)。
+* 了解如何使用虚拟网络对等互连和网关传输[创建中心辐射型网络拓扑](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering)。

@@ -1,5 +1,5 @@
 ---
-title: 快速入门：搜索图像 - 必应图像搜索 REST API 和 Python
+title: 快速入门：使用必应图像搜索 REST API 和 Python 搜索图像
 titleSuffix: Azure Cognitive Services
 description: 使用本快速入门，通过 Python 将图像搜索请求发送到必应图像搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 02/06/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 59c7a85ae564981029163bf99a8e44e72237f709
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.custom: seodec2018, tracking-python
+ms.openlocfilehash: f818030f5fa7c562b4041543cb702d9673648dee
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383659"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603326"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>快速入门：使用必应图像搜索 REST API 和 Python 搜索图像
 
-使用本快速入门开始向必应图像搜索 API 发送搜索请求。 此 Python 应用程序会向 API 发送搜索查询，并在结果中显示第一个图像的 URL。 虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
+使用此快速入门了解如何将搜索请求发送到必应图像搜索 API。 此 Python 应用程序会向 API 发送搜索查询，并在结果中显示第一个图像的 URL。 虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
-可以通过单击启动活页夹锁屏提醒，在 [MyBinder](https://mybinder.org) 上将此示例作为 Jupyter Notebook 运行：
+若要在 [MyBinder](https://mybinder.org) 上将此示例作为 Jupyter 笔记本运行，请选择“启动活页夹”锁屏提醒：
 
 [![活页夹](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingImageSearchAPI.ipynb)
 
@@ -40,7 +40,7 @@ ms.locfileid: "66383659"
 
 ## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 
-1. 在你最喜欢使用的 IDE 或编辑器中新建一个 Python 文件，并导入以下模块。 为你的订阅密钥、搜索终结点和搜索词创建变量。
+1. 在你最喜欢使用的 IDE 或编辑器中新建一个 Python 文件，并导入以下模块。 为你的订阅密钥、搜索终结点和搜索词创建变量。 对于 `search_url`，你可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```python
     import requests
@@ -61,18 +61,19 @@ ms.locfileid: "66383659"
 
 ## <a name="create-and-send-a-search-request"></a>创建并发送搜索请求
 
-1. 为搜索请求的参数创建字典。 向 `q` 参数添加搜索词。 将 "public" 用于 `license` 参数，以便在公共域中搜索图像。 将 "photo" 用于 `imageType`，仅搜索照片。
+1. 为搜索请求的参数创建字典。 向 `q` 参数添加搜索词。 将 `license` 参数设置为 `public` 以便在公共域中搜索图像。 将 `imageType` 设置为 `photo` 以仅搜索照片。
 
     ```python
     params  = {"q": search_term, "license": "public", "imageType": "photo"}
     ```
 
-2. 使用 `requests` 库调用必应图像搜索 API。 向请求添加标头和参数，并以 JSON 对象形式返回响应。 
+2. 使用 `requests` 库调用必应图像搜索 API。 向请求添加标头和参数，并以 JSON 对象形式返回响应。 从响应的 `thumbnailUrl` 字段获取几个缩略图图像的 URL。
 
     ```python
     response = requests.get(search_url, headers=headers, params=params)
     response.raise_for_status()
     search_results = response.json()
+    thumbnail_urls = [img["thumbnailUrl"] for img in search_results["value"][:16]]
     ```
 
 ## <a name="view-the-response"></a>查看响应
@@ -80,6 +81,8 @@ ms.locfileid: "66383659"
 1. 使用 matplotlib 库创建包含四个列和四个行的新图。 
 
 2. 循环访问该图的行和列，并使用 PIL 库的 `Image.open()` 方法将图像的缩略图添加到每个空间。 
+
+3. 使用 `plt.show()` 来绘制该图并显示图像。
 
     ```python
     f, axes = plt.subplots(4, 4)
@@ -90,9 +93,9 @@ ms.locfileid: "66383659"
             image = Image.open(BytesIO(image_data.content))        
             axes[i][j].imshow(image)
             axes[i][j].axis("off")
+    plt.show()
     ```
 
-3. 使用 `plt.show()` 来绘制该图并显示图像。
 
 ## <a name="example-json-response"></a>示例 JSON 响应
 
@@ -148,7 +151,6 @@ ms.locfileid: "66383659"
 > [必应图像搜索单页应用教程](../tutorial-bing-image-search-single-page-app.md)
 
 * [什么是必应图像搜索 API？](../overview.md)  
-* 必应搜索 API 的[定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
-* [获取免费的认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [必应搜索 API 的定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) 
 * [Azure 认知服务文档](https://docs.microsoft.com/azure/cognitive-services)
 * [必应图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

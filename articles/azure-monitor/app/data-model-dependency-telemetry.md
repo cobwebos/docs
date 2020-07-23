@@ -1,23 +1,14 @@
 ---
-title: Azure Application Insights 遥测数据模型 - 依赖项遥测 | Microsoft Docs
+title: Azure Monitor Application Insights 依赖关系数据模型
 description: 适用于依赖项遥测的 Application Insights 数据模型
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 3e3d6b8fdc9ac8dd28f73fecd6231e97a5645407
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: ba0d848904d1ba885dc53e2941953d8dfb4864cf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60901016"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77671913"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>依赖项遥测：Application Insights 数据模型
 
@@ -31,15 +22,15 @@ ms.locfileid: "60901016"
 
 依赖项调用实例的标识符。 用于与此依赖项调用所对应的请求遥测项关联。 有关详细信息，请参阅[关联](../../azure-monitor/app/correlation.md)页。
 
-## <a name="data"></a>数据
+## <a name="data"></a>data
 
 此依赖项调用启动的命令。 示例包括使用所有查询参数的 SQL 语句和 HTTP URL。
 
-## <a name="type"></a>Type
+## <a name="type"></a>类型
 
 依赖项类型名称。 低基数值，用于对依赖项进行逻辑分组和解释 commandName 和 resultCode 等其他字段。 示例包括 SQL、Azure 表和 HTTP。
 
-## <a name="target"></a>确定目标
+## <a name="target"></a>目标
 
 依赖项调用的目标站点。 示例包括服务器名称、主机地址。 有关详细信息，请参阅[关联](../../azure-monitor/app/correlation.md)页。
 

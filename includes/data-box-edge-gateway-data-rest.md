@@ -2,19 +2,18 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 04/16/2019
+ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 8a6ceee0f7db4b7b368dce1a28c8edc0b2b11180
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: eb55d993ad8960f821c2b72f0a53602166b7cc7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60754236"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "69900618"
 ---
 对于静态数据：
 
-- 使用 BitLocker XTS AES 256 位加密来保护本地数据。
-- 只有权访问共享中存储的数据。
+- 对共享中存储的数据的访问受到限制。
 
-    - 访问共享数据的 SMB 客户端需要与共享相关联的用户凭据。 创建共享时定义这些凭据。
-    - 需要时创建了共享添加访问共享的 NFS 客户端的 IP 地址。
+    - 访问共享数据的 SMB 客户端需要与共享关联的用户凭据。 这些凭据是在创建共享时定义的。
+    - 需要在创建共享时添加访问共享的 NFS 客户端的 IP 地址。

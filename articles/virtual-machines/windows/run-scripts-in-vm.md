@@ -1,33 +1,33 @@
 ---
 title: 在 Azure Windows VM 中运行脚本
-description: 本主题介绍了如何在 Windows 虚拟机中运行脚本
+description: 本主题介绍如何在 Windows 虚拟机中运行脚本
 services: automation
-ms.service: automation
-author: georgewallace
-ms.author: gwallace
+ms.service: virtual-machines
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/02/2018
-ms.topic: article
+ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: ec34ff874eae9bbdd53470f135bcf0c182d5daed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bd65f33663dea3663f14fb4167448e39b9b7d0b7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60251056"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82099761"
 ---
 # <a name="run-scripts-in-your-windows-vm"></a>在 Windows VM 中运行脚本
 
-若要自动执行任务或解决问题，可能需要在 VM 中运行命令。 以下文章简要概述了可用于在 VM 中运行脚本和命令的功能。
+可能需要在 VM 中运行命令来自动完成任务或排查问题。 下文概述了可以用来在 VM 中运行脚本和命令的功能。
 
 ## <a name="custom-script-extension"></a>自定义脚本扩展
 
-[自定义脚本扩展](../extensions/custom-script-windows.md)主要用于发布部署配置和软件安装。
+[自定义脚本扩展](../extensions/custom-script-windows.md)主要用于部署后配置和软件安装。
 
 * 在 Azure 虚拟机中下载并运行脚本。
-* 可以使用 Azure 资源管理器模板、Azure CLI、REST API、PowerShell 或 Azure 门户运行。
-* 脚本文件可以从 Azure 存储或 GitHub 下载，或者在从 Azure 门户运行时从电脑提供。
+* 可以使用 Azure 资源管理器模板、Azure CLI、REST API、PowerShell 或 Azure 门户来运行。
+* 脚本文件可以从 Azure 存储或 GitHub 下载，也可以从电脑获取（通过 Azure 门户运行时）。
 * 在 Windows 计算机中运行 PowerShell 脚本，在 Linux 计算机中运行 Bash 脚本。
-* 适用于部署后配置、软件安装和其他配置或管理任务。
+* 适用于部署后配置、软件安装以及其他配置或管理任务。
 
 ## <a name="run-command"></a>运行命令
 
@@ -66,7 +66,7 @@ ms.locfileid: "60251056"
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解可用于在 VM 中运行脚本和命令的不同功能。
+详细了解可以用来在 VM 中运行脚本和命令的不同功能。
 
 * [自定义脚本扩展](../extensions/custom-script-windows.md)
 * [运行命令](run-command.md)

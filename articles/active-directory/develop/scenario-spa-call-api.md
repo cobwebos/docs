@@ -1,36 +1,31 @@
 ---
-title: 单页面应用程序 （调用 web API）-Microsoft 标识平台
-description: 了解如何生成单页面应用程序 （调用 web API）
+title: 生成调用 Web API 的单页应用 - Microsoft 标识平台 | Azure
+description: 了解如何生成调用 Web API 的单页应用程序
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77a4ed01ac55a1153a62c672b33056a543b912ed
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
-ms.translationtype: MT
+ms.openlocfilehash: 5b70b109f43e80fc3ec68f52aef2dba6823033bb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545607"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80882125"
 ---
-# <a name="single-page-application---call-a-web-api"></a>单页面应用程序的一个 web API 的调用
+# <a name="single-page-application-call-a-web-api"></a>单页应用程序：调用 Web API
 
-我们建议您调用`acquireTokenSilent`方法获取，或调用 web API 之前续订访问令牌。 一旦您有一个令牌，就可以调用受保护的 web API。
+我们建议你在调用 Web API 之前调用 `acquireTokenSilent` 方法获取或续订访问令牌。 有了令牌后，就可以调用受保护的 Web API 了。
 
 ## <a name="call-a-web-api"></a>调用 Web API
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-使用作为持有者 HTTP 请求中获取的访问令牌调用 Microsoft 图形 API 等任何 web API。 例如：
+在 HTTP 请求中使用获得的访问令牌作为持有者令牌来调用任何 Web API，例如 Microsoft Graph API。 例如：
 
 ```javascript
     var headers = new Headers();
@@ -48,11 +43,13 @@ ms.locfileid: "65545607"
         }
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angular"></a>[Angular](#tab/angular)
 
-如中所述[获取令牌部分](scenario-spa-acquire-token.md)，MSAL Angular 包装器利用 HTTP 侦听器，以便自动以无提示方式获取访问令牌并将它们附加到 Api 收到的 HTTP 请求。
+MSAL Angular 包装器器利用 HTTP 拦截器自动以无提示方式获取访问令牌并将其附加到对 API 的 HTTP 请求中。 有关详细信息，请参阅[获取令牌以调用 API](scenario-spa-acquire-token.md)。
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [迁移到生产环境](scenario-spa-production.md)
+> [转移到生产环境](scenario-spa-production.md)

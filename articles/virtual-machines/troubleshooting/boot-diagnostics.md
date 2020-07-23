@@ -3,29 +3,29 @@ title: Azure 中 VM 的启动诊断功能 | Microsoft Docs
 description: Azure 中虚拟机的两个调试功能的概述
 services: virtual-machines
 author: Deland-Han
-manager: jeconnoc
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: 59602977c1b7f6dd0524c6535d8458d3eb1a3f26
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 092d3893c3cc5473debf8f7d51f393751cfd82bf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60505848"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526812"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>如何使用启动诊断功能来排查 Azure 中虚拟机的问题
 
-虚拟机进入非可启动状态的原因可能有很多。 若要解决使用资源管理器部署模型创建的虚拟机存在的问题，可以使用下面的调试功能：对 Azure 虚拟机的控制台输出和屏幕截图支持。 
+虚拟机进入非可启动状态的原因可能有很多。 若要解决使用资源管理器部署模型创建的虚拟机的问题，可以使用以下调试功能：控制台输出和屏幕截图对 Azure 虚拟机的支持。 
 
-对于 Linux 虚拟机，可以在门户中查看控制台日志的输出。 对于 Windows 和 Linux 虚拟机，Azure 允许你通过虚拟机监控程序查看 VM 的屏幕截图。 所有区域中的 Azure 虚拟机都支持这两项功能。 请注意，屏幕截图和输出可能需要长达 10 分钟的时间才能显示在存储帐户中。
+对于 Linux 虚拟机，可以在门户中查看控制台日志的输出。 对于 Windows 和 Linux 虚拟机，Azure 允许你通过虚拟机监控程序查看 VM 的屏幕截图。 所有区域中的 Azure 虚拟机都支持这两项功能。 请注意，屏幕截图和输出可能需要长达10分钟的时间才能显示在存储帐户中。
 
-可以选择“启动诊断”选项以查看日志和屏幕截图。
+可以选择“启动诊断”  选项以查看日志和屏幕截图。
 
-![资源管理器](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
+![Resource Manager](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
 
 ## <a name="common-boot-errors"></a>常见的启动错误
 
@@ -47,7 +47,7 @@ ms.locfileid: "60505848"
 
 以下过程适用于使用资源管理器部署模型创建的虚拟机。
 
-在“管理”选项卡上的“监视”部分中，确保“启动诊断”处于打开状态。 从“诊断存储帐户”下拉列表中，选择要将诊断文件放入到的存储帐户。
+在“管理”选项卡上的“监视”部分中   ，确保“启动诊断”处于打开状态  。 从“诊断存储帐户”下拉列表中  ，选择要将诊断文件放入到的存储帐户。
  
 ![创建 VM](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
 
@@ -79,15 +79,15 @@ ms.locfileid: "60505848"
 }
 ```
 
-有关使用模板部署资源的详细信息，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)。
+有关使用模板部署资源的详细信息，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 
 ## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>在现有的虚拟机上启用启动诊断 
 
 若要在现有的虚拟机上启用启动诊断，请执行以下步骤：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，然后选择虚拟机。
-2. 在“支持 + 故障排除”部分中选择“启动诊断”，然后选择“设置”选项卡。
-3. 在“启动诊断”设置中，将状态更改为“开”，然后从“存储帐户”下拉列表中选择所需的存储帐户。 
+2. 在“支持 + 故障排除”部分中选择“启动诊断”，然后选择“设置”选项卡    。
+3. 在“启动诊断”设置中  ，将状态更改为“开”  ，然后从“存储帐户”下拉列表中选择所需的存储帐户  。 
 4. 保存更改。
 
     ![更新现有 VM](./media/virtual-machines-common-boot-diagnostics/enable-for-existing-vm.png)
@@ -96,5 +96,4 @@ ms.locfileid: "60505848"
 
 ### <a name="enable-boot-diagnostics-using-the-azure-cli"></a>使用 Azure CLI 启用启动诊断
 
-可以在现有的 Azure 虚拟机上使用 Azure CLI 启用启动诊断。 有关详细信息，请参阅 [az vm boot-diagnostics](
-https://docs.microsoft.com/cli/azure/vm/boot-diagnostics?view=azure-cli-latest)。
+可以在现有的 Azure 虚拟机上使用 Azure CLI 启用启动诊断。 有关详细信息，请参阅 [az vm boot-diagnostics](/cli/azure/vm/boot-diagnostics?view=azure-cli-latest)。

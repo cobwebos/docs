@@ -1,18 +1,14 @@
 ---
-title: 创建自定义策略定义
-description: 创建 Azure Policy 的自定义策略定义以强制实施自定义业务规则。
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 04/23/2019
+title: 教程：创建自定义策略定义
+description: 本教程介绍如何创建 Azure Policy 的自定义策略定义以在 Azure 资源上强制实施自定义业务规则。
+ms.date: 06/16/2020
 ms.topic: tutorial
-ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: e38eb1315cde3400b70925059d4dd50475a47835
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 5eee969257f5cf640ce82fbda9877974207c87af
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979673"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044611"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>教程：创建自定义策略定义
 
@@ -35,6 +31,8 @@ ms.locfileid: "65979673"
 > - 确定要使用的效果
 > - 撰写策略定义
 
+## <a name="prerequisites"></a>先决条件
+
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="identify-requirements"></a>确定要求
@@ -54,23 +52,28 @@ ms.locfileid: "65979673"
 
 可通过多种方式确定 Azure 资源的属性。 本教程将介绍其中的每种方式：
 
-- 资源管理器模板
+- 适用于 VS Code 的 Azure Policy 扩展
+- Azure 资源管理器模板（ARM 模板）
   - 导出现有资源
   - 创建体验
   - 快速入门模板 (GitHub)
   - 模板参考文档
 - Azure 资源浏览器
 
-### <a name="resource-manager-templates"></a>资源管理器模板
+### <a name="view-resources-in-vs-code-extension"></a>查看 VS Code 扩展中的资源
 
-可通过多种方式查找包含所要管理的属性的[资源管理器模板](../../../azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md)。
+[VS Code 扩展](../how-to/extension-for-vscode.md#search-for-and-view-resources)可用于浏览环境中的资源和查看每个资源上的资源管理器属性。
+
+### <a name="arm-templates"></a>ARM 模板
+
+可通过多种方式查找包含所要管理的属性的[资源管理器模板](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md)。
 
 #### <a name="existing-resource-in-the-portal"></a>门户中的现有资源
 
 查找属性的最简单方法是查找相同类型的现有资源。 已使用所要强制实施的设置配置的资源也会提供用于比较的值。
-在 Azure 门户中，找到该特定资源的“导出模板”页（在“设置”下）   。
+在 Azure 门户中，找到该特定资源的“导出模板”页（在“设置”下） 。
 
-![现有资源上的“导出模板”页](../media/create-custom-policy-definition/export-template.png)
+:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="现有资源上的“导出模板”页" border="false":::
 
 针对存储帐户执行此操作会显示以下示例所示的模板：
 
@@ -116,13 +119,13 @@ ms.locfileid: "65979673"
 ...
 ```
 
-“属性”下面提供了名为 **supportsHttpsTrafficOnly**、设置为 **false** 的值。  此属性似乎是我们所要查找的属性。 此外，该资源的**类型**为 **Microsoft.Storage/storageAccounts**。 该类型告知我们，要将策略限定于此类型的资源。
+“属性”下面提供了名为 **supportsHttpsTrafficOnly**、设置为 **false** 的值。 此属性似乎是我们所要查找的属性。 此外，该资源的**类型**为 **Microsoft.Storage/storageAccounts**。 该类型告知我们，要将策略限定于此类型的资源。
 
 #### <a name="create-a-resource-in-the-portal"></a>在门户中创建资源
 
-另一种方式是通过门户中的资源创建体验。 通过门户创建存储帐户时，“高级”选项卡下会提供“需要安全传输”选项。   此属性具有“已禁用”和“已启用”选项。   信息图标包含附加文本，确认此选项可能是我们所需的属性。 但是，门户不会在此屏幕上显示属性名称。
+另一种方式是通过门户中的资源创建体验。 通过门户创建存储帐户时，“高级”选项卡下会提供“需要安全传输”选项。  此属性具有“已禁用”和“已启用”选项。  信息图标包含附加文本，确认此选项可能是我们所需的属性。 但是，门户不会在此屏幕上显示属性名称。
 
-在“查看 + 创建”选项卡上，页面底部提供了“下载自动化模板”链接。   选择该链接会打开用于创建所配置的资源的模板。 在这种情况下，我们会看到两段重要信息：
+在“查看 + 创建”选项卡上，页面底部提供了“下载自动化模板”链接。  选择该链接会打开用于创建所配置的资源的模板。 在这种情况下，我们会看到两段重要信息：
 
 ```json
 ...
@@ -141,18 +144,17 @@ ms.locfileid: "65979673"
 
 #### <a name="quickstart-templates-on-github"></a>GitHub 上的快速入门模板
 
-GitHub 上的 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates)包含数百个针对不同资源生成的资源管理器模板。 使用这些模板能够十分方便地查找所需的资源属性。 某些属性似乎是我们所要查找的属性，但它们控制了其他某个对象。
+GitHub 上的 [Azure 快速启动模板](https://github.com/Azure/azure-quickstart-templates)包含数百个针对不同资源生成的 ARM 模板。 使用这些模板能够十分方便地查找所需的资源属性。 某些属性似乎是我们所要查找的属性，但它们控制了其他某个对象。
 
 #### <a name="resource-reference-docs"></a>资源参考文档
 
-若要验证 **supportsHttpsTrafficOnly** 是否为正确的属性，请在存储提供商网站上查看[存储帐户资源](/azure/templates/microsoft.storage/2018-07-01/storageaccounts)的资源管理器模板参考。
-属性对象包含有效参数的列表。 选择 [StorageAccountPropertiesCreateParameters-object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) 链接会显示可接受的属性表。 若要满足业务要求，**supportsHttpsTrafficOnly** 必须存在，并且说明必须与所要查找的内容相匹配。
+若要验证 supportsHttpsTrafficOnly 是否为正确的属性，请在存储提供商网站上查看[存储帐户资源](/azure/templates/microsoft.storage/2018-07-01/storageaccounts)的 ARM 模板参考。 属性对象包含有效参数的列表。 选择 [StorageAccountPropertiesCreateParameters-object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) 链接会显示可接受的属性表。 若要满足业务要求，**supportsHttpsTrafficOnly** 必须存在，并且说明必须与所要查找的内容相匹配。
 
 ### <a name="azure-resource-explorer"></a>Azure 资源浏览器
 
 浏览 Azure 资源的另一种方式是使用 [Azure 资源浏览器](https://resources.azure.com)（预览版）。 此工具使用订阅的上下文，因此，你需要在网站中使用 Azure 凭据进行身份验证。 完成身份验证后，可按提供程序、订阅、资源组和资源进行浏览。
 
-找到存储帐户资源并查看属性。 在此处还可以查看 **supportsHttpsTrafficOnly** 属性。 选择“文档”选项卡，可以看到，属性说明与我们在前面的参考文档中找到的信息相匹配。 
+找到存储帐户资源并查看属性。 在此处还可以查看 **supportsHttpsTrafficOnly** 属性。 选择“文档”选项卡，可以看到，属性说明与我们在前面的参考文档中找到的信息相匹配。
 
 ## <a name="find-the-property-alias"></a>查找属性别名
 
@@ -160,9 +162,17 @@ GitHub 上的 [Azure 快速入门模板](https://github.com/Azure/azure-quicksta
 
 可通过多种方式确定 Azure 资源的别名。 本教程将介绍其中的每种方式：
 
+- 适用于 VS Code 的 Azure Policy 扩展
 - Azure CLI
 - Azure PowerShell
 - Azure Resource Graph
+
+### <a name="get-aliases-in-vs-code-extension"></a>在 VS Code 扩展中获取别名
+
+利用适用于 VS Code 扩展的 Azure Policy 扩展，可轻松浏览资源并[发现别名](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties)。
+
+> [!NOTE]
+> VS Code 扩展只公开资源管理器模式属性，不会显示任何[资源提供程序模式](../concepts/definition-structure.md#mode)属性。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -192,35 +202,37 @@ az provider show --namespace Microsoft.Storage --expand "resourceTypes/aliases" 
 
 ### <a name="azure-resource-graph"></a>Azure Resource Graph
 
-[Azure Resource Graph](../../resource-graph/overview.md) 是一个新的预览版服务。 它是用于查找 Azure 资源属性的另一种方法。 下面是使用 Resource Graph 查找单个存储帐户的示例查询：
+[Azure Resource Graph](../../resource-graph/overview.md) 是一项服务，它提供了另一种方法来查找 Azure 资源的属性。 下面是使用 Resource Graph 查找单个存储帐户的示例查询：
 
 ```kusto
-where type=~'microsoft.storage/storageaccounts'
+Resources
+| where type=~'microsoft.storage/storageaccounts'
 | limit 1
 ```
 
 ```azurecli-interactive
-az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1"
+az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1"
+Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-结果类似于在资源管理器模板中和通过 Azure 资源浏览器查找后获得的结果。 但是，Azure Resource Graph 结果还可通过_投影_ _别名_数组来包含[别名](../concepts/definition-structure.md#aliases)详细信息：
+结果类似于在 ARM 模板中和通过 Azure 资源浏览器查找后获得的结果。 但是，Azure Resource Graph 结果还可通过_投影_ _别名_数组来包含[别名](../concepts/definition-structure.md#aliases)详细信息：
 
 ```kusto
-where type=~'microsoft.storage/storageaccounts'
+Resources
+| where type=~'microsoft.storage/storageaccounts'
 | limit 1
 | project aliases
 ```
 
 ```azurecli-interactive
-az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
 ```
 
 下面是存储帐户别名的示例输出：
@@ -305,12 +317,11 @@ Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1
 }
 ```
 
-可以通过 [Cloud Shell](https://shell.azure.com) 使用 Azure Resource Graph（预览版），快速轻松地浏览资源的属性。
+可以通过 [Cloud Shell](https://shell.azure.com) 使用 Azure Resource Graph，快速轻松地浏览资源的属性。
 
 ## <a name="determine-the-effect-to-use"></a>确定要使用的效果
 
-确定如何处理不合规的资源几乎与确定最初要评估的项一样重要。 针对不合规资源做出的每种可能响应称为[效果](../concepts/effects.md)。
-效果控制是否要记录、阻止不合规的资源、在其中追加数据，或者将一个部署关联到其中，使该资源恢复合规状态。
+确定如何处理不合规的资源几乎与确定最初要评估的项一样重要。 针对不合规资源做出的每种可能响应称为[效果](../concepts/effects.md)。 效果控制是否要记录、阻止不合规的资源、在其中追加数据，或者将一个部署关联到其中，使该资源恢复合规状态。
 
 在本示例中，“拒绝”是所需的效果，因为我们不希望在 Azure 环境中创建不合规的资源。 “审核”是策略效果的第一个合理选项，它确定策略在设置为“拒绝”之前的影响。 使更改每个分配的效果变得更轻松的方法之一是将效果参数化。 有关详细信息，请参阅下面的[参数](#parameters)。
 
@@ -349,7 +360,7 @@ Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1
 "mode": "all",
 ```
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 尽管我们未使用参数来更改评估，但确实需要使用一个参数来允许更改**效果**以进行故障排除。 定义 **effectType** 参数，并将其值限制为 **Deny** 和 **Disabled**。 这两个选项与我们的业务要求相符。 完成的参数块如以下示例所示：
 
@@ -443,6 +454,16 @@ Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1
 ```
 
 完成的定义可用于创建新策略。 门户和每个 SDK（Azure CLI、Azure PowerShell 和 REST API）以不同的方式接受定义，因此，请检查各自的命令，以验证用法是否正确。 然后使用参数化的效果将定义分配到相应的资源，以管理存储帐户的安全性。
+
+## <a name="clean-up-resources"></a>清理资源
+
+如果今后不再使用本教程中的资源，请使用以下步骤删除前面创建的所有分配或定义：
+
+1. 在“Azure Policy”页左侧的“创作”下选择“定义”（如果尝试删除分配，则选择“分配”）  。
+
+1. 搜索要删除的新计划或策略定义（或分配）。
+
+1. 右键单击定义（或分配）对应的行或选择其末尾的省略号，然后选择“删除定义”（或“删除分配”）。 
 
 ## <a name="review"></a>审阅
 

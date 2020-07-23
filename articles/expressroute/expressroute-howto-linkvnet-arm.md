@@ -1,30 +1,30 @@
 ---
-title: 将虚拟网络链接到 ExpressRoute 线路：PowerShell：Azure | Microsoft Docs
+title: ExpressRoute：将 VNet 链接到线路： Azure PowerShell
 description: 本文档概述如何使用 Resource Manager 部署模型和 PowerShell 将虚拟网络 (VNet) 链接到 ExpressRoute 线路。
 services: expressroute
-author: ganesr
+author: charwen
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/20/2018
-ms.author: ganesr
+ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 620eff5468d7d3b4bf8ddeea62fa67b39609fce6
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: c8fd3bc4a2efd90857d0696491102790b069d5e1
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65950368"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984143"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>将虚拟网络连接到 ExpressRoute 线路
 > [!div class="op_single_selector"]
 > * [Azure 门户](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
-> * [视频 - Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
-> * [PowerShell（经典）](expressroute-howto-linkvnet-classic.md)
+> * [视频-Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
+> * [PowerShell （经典）](expressroute-howto-linkvnet-classic.md)
 >
 
-本文有助于使用资源管理器部署模型和 PowerShell 将虚拟网络 (VNet) 链接到 Azure ExpressRoute 线路。 虚拟网络可以在同一个订阅中，也可以属于另一个订阅。 本文还介绍如何更新虚拟网络链接。
+本文将帮助你使用 Resource Manager 部署模型和 PowerShell 将虚拟网络 (VNet) 链接到 Azure ExpressRoute 线路。 虚拟网络可以在同一个订阅中，也可以属于另一个订阅。 本文还介绍如何更新虚拟网络链接。
 
 * 最多可以将 10 个虚拟网络链接到一条标准 ExpressRoute 线路。 使用标准 ExpressRoute 线路时，所有虚拟网络必须都位于同一地缘政治区域。 
 
@@ -39,13 +39,13 @@ ms.locfileid: "65950368"
 
 * 必须有一个活动的 ExpressRoute 线路。 
   * 请按说明[创建 ExpressRoute 线路](expressroute-howto-circuit-arm.md)，并通过连接提供商启用该线路。 
-  * 确保为线路配置 Azure 专用对等互连。 有关路由说明，请参阅[配置路由](expressroute-howto-routing-arm.md)一文。 
+  * 请确保为线路配置 Azure 专用对等互连。 有关路由说明，请参阅[配置路由](expressroute-howto-routing-arm.md)一文。 
   * 确保配置 Azure 专用对等互连并运行网络和 Microsoft 之间的 BGP 对等互连，以便启用端到端连接。
   * 确保已创建并完全预配一个虚拟网络和一个虚拟网络网关。 按照说明[创建 ExpressRoute 的虚拟网络网关](expressroute-howto-add-gateway-resource-manager.md)。 ExpressRoute 虚拟网络网关使用的 GatewayType 是“ExpressRoute”而非 VPN。
 
 ### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
@@ -61,7 +61,7 @@ $connection = New-AzVirtualNetworkGatewayConnection -Name "ERConnection" -Resour
 ## <a name="connect-a-virtual-network-in-a-different-subscription-to-a-circuit"></a>将另一订阅中的虚拟网络连接到线路
 用户可以在多个订阅之间共享 ExpressRoute 线路。 下图是在多个订阅之间共享 ExpressRoute 线路的简单示意图。
 
-大型云中的每个较小云用于表示属于组织中不同部门的订阅。 组织内的每个部门可以使用自己的订阅部署其服务，但可以共享单个 ExpressRoute 线路以连接回本地网络。 一个部门（此示例中为：IT 部门）可以拥有 ExpressRoute 线路。 组织内的其他订阅可以使用 ExpressRoute 线路。
+大型云中的每个较小云用于表示属于组织中不同部门的订阅。 组织内的每个部门可以使用自己的订阅部署其服务，但可以共享单个 ExpressRoute 线路以连接回本地网络。 单个部门（在此示例中为 IT 部门）可以拥有 ExpressRoute 线路。 组织内的其他订阅可以使用 ExpressRoute 线路。
 
 > [!NOTE]
 > 订阅所有者需要缴纳 ExpressRoute 线路的连接和带宽费用。 所有虚拟网络共享相同的带宽。
@@ -73,7 +73,7 @@ $connection = New-AzVirtualNetworkGatewayConnection -Name "ERConnection" -Resour
 
 ### <a name="administration---circuit-owners-and-circuit-users"></a>管理 - 线路所有者和线路用户
 
-“线路所有者”是 ExpressRoute 线路资源的已授权超级用户。 线路所有者可以创建可供“线路用户”兑换的授权。 线路用户是虚拟网络网关的所有者（这些网关与 ExpressRoute 线路位于不同的订阅中）。 线路用户可以兑现授权（每个虚拟网络需要一个授权）。
+“线路所有者”是 ExpressRoute 线路资源的已授权超级用户。 线路所有者可以创建可由线路用户兑换的授权。 线路用户是虚拟网络网关的所有者（这些网关与 ExpressRoute 线路位于不同的订阅中）。 线路用户可以兑现授权（每个虚拟网络需要一个授权）。
 
 线路所有者有权随时修改和撤消授权。 撤消授权将导致从撤消了访问权限的订阅中删除所有链路连接。
 
@@ -97,16 +97,18 @@ $auth1 = Get-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -N
 
 对此操作的响应将包含授权密钥和状态：
 
-    Name                   : MyAuthorization1
-    Id                     : /subscriptions/&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&/resourceGroups/ERCrossSubTestRG/providers/Microsoft.Network/expressRouteCircuits/CrossSubTest/authorizations/MyAuthorization1
-    Etag                   : &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& 
-    AuthorizationKey       : ####################################
-    AuthorizationUseStatus : Available
-    ProvisioningState      : Succeeded
+```azurepowershell
+Name                   : MyAuthorization1
+Id                     : /subscriptions/&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&/resourceGroups/ERCrossSubTestRG/providers/Microsoft.Network/expressRouteCircuits/CrossSubTest/authorizations/MyAuthorization1
+Etag                   : &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& 
+AuthorizationKey       : ####################################
+AuthorizationUseStatus : Available
+ProvisioningState      : Succeeded
+```
 
 
 
-**查看授权**
+**若要查看授权**
 
 线路所有者可以通过运行以下 cmdlet 来查看针对特定线路发出的所有授权：
 
@@ -147,7 +149,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit
 Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 ```
 
-**兑换连接授权**
+**若要兑换连接授权**
 
 线路用户可以通过运行以下 cmdlet 来兑现链接授权：
 
@@ -166,7 +168,7 @@ $connection = New-AzVirtualNetworkGatewayConnection -Name "ERConnection" -Resour
 
 **若要更新连接权重**
 
-虚拟网络可以连接到多条 ExpressRoute 线路。 可以从多条 ExpressRoute 线路收到相同的前缀。 若要选择使用哪个连接发送目标为此前缀的流量，可以更改连接的 *RoutingWeight*。 会在具有最高 *RoutingWeight* 的连接上发送流量。
+虚拟网络可以连接到多条 ExpressRoute 线路。 可以从多条 ExpressRoute 线路收到相同的前缀。 若要选择使用哪个连接发送目标为此前缀的流量，可以更改连接的 *RoutingWeight*。 将在具有最高 *RoutingWeight* 的连接上发送流量。
 
 ```azurepowershell-interactive
 $connection = Get-AzVirtualNetworkGatewayConnection -Name "MyVirtualNetworkConnection" -ResourceGroupName "MyRG"
@@ -176,18 +178,23 @@ Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connecti
 
 *RoutingWeight* 的范围是 0 到 32000。 默认值为 0。
 
-## <a name="configure-expressroute-fastpath"></a>配置 ExpressRoute 快速 
-可以让[ExpressRoute 快速](expressroute-about-virtual-network-gateways.md)如果你的 ExpressRoute 线路位于[ExpressRoute 直接](expressroute-erdirect-about.md)和虚拟网络网关是超高性能或 ErGw3AZ。 快速提高了数据路径性能，如每秒数据包数和每秒的本地网络与虚拟网络之间的连接。 
+## <a name="configure-expressroute-fastpath"></a>配置 ExpressRoute FastPath 
+如果虚拟网络网关为超高性能或 ErGw3AZ，则可以启用[ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) 。 FastPath 可提高数据路径性能，如每秒数据包数，以及本地网络与虚拟网络之间每秒的连接数。 
 
-> [!NOTE] 
-> 如果你已有的虚拟网络连接，但尚未为其启用快速需要删除虚拟网络连接，然后创建一个新。 
-> 
->  
+**在新连接上配置 FastPath**
 
 ```azurepowershell-interactive 
 $circuit = Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG" 
 $gw = Get-AzVirtualNetworkGateway -Name "MyGateway" -ResourceGroupName "MyRG" 
 $connection = New-AzVirtualNetworkGatewayConnection -Name "MyConnection" -ResourceGroupName "MyRG" -ExpressRouteGatewayBypass -VirtualNetworkGateway1 $gw -PeerId $circuit.Id -ConnectionType ExpressRoute -Location "MyLocation" 
+``` 
+
+**更新现有连接以启用 FastPath**
+
+```azurepowershell-interactive 
+$connection = Get-AzVirtualNetworkGatewayConnection -Name "MyConnection" -ResourceGroupName "MyRG" 
+$connection.ExpressRouteGatewayBypass = $True
+Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection
 ``` 
 
 ## <a name="next-steps"></a>后续步骤

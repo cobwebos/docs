@@ -1,30 +1,25 @@
 ---
-title: 创建 Azure Active Directory 租户 | Microsoft Docs
+title: 创建一个 Azure Active Directory 租户
 description: 了解如何创建用于注册和生成应用程序的 Azure AD 租户。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-ms.assetid: 1f4b24eb-ab4d-4baa-a717-2a0e5b8d27cd
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 02/05/2019
+ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d7ff28d65c68c25613d1f61c00a6132ae93fdf6
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.custom: aaddev, identityplatformtop40, fasttrack-edit
+ms.openlocfilehash: 19c94a4807b8958fa8b1ec46ccae660c7cbe92de
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962502"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256690"
 ---
-# <a name="quickstart-set-up-a-dev-environment"></a>快速入门：设置开发环境
+# <a name="quickstart-set-up-a-tenant"></a>快速入门：设置租户
 
 Microsoft 标识平台可让开发人员生成面向各种自定义 Microsoft 365 环境和标识的应用程序。 要开始使用 Microsoft 标识平台，你将需要访问环境（也称为 Azure AD 租户），该环境可以注册和管理应用、可以访问 Microsoft 365 数据并部署自定义条件访问和租户限制。
 
@@ -34,12 +29,12 @@ Microsoft 标识平台可让开发人员生成面向各种自定义 Microsoft 36
 
 ## <a name="determining-environment-type"></a>确定环境类型
 
-有两种可以创建的环境类型。 确定所需的内容仅基于你的应用将进行身份验证的用户类型。
+有两种可以创建的环境类型。 确定所需的环境类型仅基于你的应用将进行身份验证的用户类型。
 
 * 工作和学校（Azure AD 帐户）或 Microsoft 帐户（如 outlook.com 和 live.com）
 * 社交和本地帐户（Azure AD B2C）
 
-本快速入门分为两种方案，具体取决于所要生成的应用类型。 如需获取更多针对标识类型的帮助，请参阅[关于 Microsoft 标识平台](about-microsoft-identity-platform.md)
+本快速入门分为两种方案，具体取决于所要生成的应用类型。
 
 ## <a name="work-and-school-accounts-or-personal-microsoft-accounts"></a>工作和学校帐户或个人 Microsoft 帐户
 
@@ -49,7 +44,7 @@ Microsoft 标识平台可让开发人员生成面向各种自定义 Microsoft 36
 
 1. 要检查租户，请使用要用于管理应用程序的帐户登录 [Azure 门户](https://portal.azure.com)。
 1. 查看右上角。 如果你有一个租户，则会自动登录到该租户，并且帐户名的正下方会显示租户名称。
-   * 将鼠标指针悬停在 Azure 门户右上角的帐户名上，可以查看你的姓名、电子邮件、目录和租户 ID (GUID) 以及域。
+   * 将鼠标指针悬停在 Azure 门户右上角的帐户名上，可以查看你的姓名、电子邮件、目录/租户 ID (GUID) 以及域。
    * 如果帐户与多个租户相关联，则可以选择帐户名打开一个菜单，并在其中切换租户。 每个租户都有自己的唯一租户 ID。
 
 > [!TIP]
@@ -61,7 +56,7 @@ Microsoft 标识平台可让开发人员生成面向各种自定义 Microsoft 36
 
 ### <a name="create-a-new-azure-ad-tenant"></a>创建新的 Azure AD 租户
 
-如果还没有 Azure AD 租户或想要为开发创建新租户，请遵循[目录创建体验](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)。 必须提供以下信息才能创建新租户：
+如果还没有 Azure AD 租户或想要创建用于开发的新租户，请参阅[快速入门](../fundamentals/active-directory-access-create-new-tenant.md)，或者只需按照[目录创建体验](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)进行操作。 必须提供以下信息才能创建新租户：
 
 - 组织名称
 - **初始域** - 这将包括在 *.onmicrosoft.com 中。 稍后你可以更详细地自定义域。
@@ -76,6 +71,6 @@ Microsoft 标识平台可让开发人员生成面向各种自定义 Microsoft 36
 
 ## <a name="next-steps"></a>后续步骤
 
-* 尝试编写快速入门代码并开始对用户进行身份验证。 
-* 有关更多深入的代码示例，请参阅文档的“教程”部分。
-* 想要将应用部署到云？ 请查看[将容器部署到 Azure](https://docs.microsoft.com/azure/index#pivot=products&panel=containers)。 
+* [注册应用](quickstart-register-app.md)并与 Microsoft 标识平台集成。 
+* 了解[身份验证的基础知识](authentication-scenarios.md)。
+* 若要详细了解订阅和 Azure AD 租户之间的关系，请参阅[将 Azure 订阅关联或添加到 Azure Active Directory 租户](../fundamentals/active-directory-how-subscriptions-associated-directory.md)。

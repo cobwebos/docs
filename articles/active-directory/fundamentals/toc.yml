@@ -5,32 +5,74 @@
   items:
     - name: 什么是 Azure Active Directory？
       href: active-directory-whatis.md
+    - name: 将 Azure AD 与 ADDS 进行比较
+      href: active-directory-compare-azure-ad-to-ad.md
     - name: Azure Active Directory 中的新增功能
       href: whats-new.md
+    - name: Microsoft 365 政府版中的新增功能
+      href: whats-new-microsoft-365-government.md
+    - name: Azure AD 中的新增功能存档
+      href: whats-new-archive.md
 - name: 快速入门
+  expanded: true
   items:
     - name: 访问门户并创建租户
       href: active-directory-access-create-new-tenant.md
     - name: 查看包含已分配成员的组
       href: active-directory-groups-view-azure-portal.md
 - name: 概念
+  expanded: true
   items:
-    - name: 标识安全分数
-      href: identity-secure-score.md
-    - name: 组和访问管理
-      href: active-directory-manage-groups.md
-    - name: 基于组的许可
-      href: active-directory-licensing-whatis-azure-portal.md
-    - name: Azure AD 体系结构
-      href: active-directory-architecture.md
-    - name: 默认用户权限
-      href: users-default-permissions.md
-    - name: 部署 30 天、90 天及之后的时间
-      href: active-directory-deployment-checklist-p2.md
-    - name: 用于欧盟的标识数据存储
-      href: active-directory-data-storage-eu.md
-    - name: Microsoft 365 政府版中的新增功能
-      href: whats-new-microsoft-365-government.md
+    - name: 安全性
+      items:
+        - name: 启用 MFA
+          href: concept-fundamentals-mfa-get-started.md
+        - name: 安全默认值
+          href: concept-fundamentals-security-defaults.md
+        - name: 阻止传统身份验证
+          href: concept-fundamentals-block-legacy-authentication.md
+        - name: 标识安全分数
+          href: identity-secure-score.md
+        - name: 保护远程辅助角色
+          href: concept-secure-remote-workers.md
+        - name: 连续访问评估
+          href: concept-fundamentals-continuous-access-evaluation.md
+    - name: 组和用户
+      items:
+        - name: 组和访问管理
+          href: active-directory-manage-groups.md
+        - name: 基于组的许可
+          href: active-directory-licensing-whatis-azure-portal.md
+        - name: 默认用户权限
+          href: users-default-permissions.md
+    - name: 体系结构
+      items:
+        - name: Azure AD 体系结构
+          href: active-directory-architecture.md
+    - name: 部署指南
+      items:
+        - name: 部署 30 天、90 天及之后的时间
+          href: active-directory-deployment-checklist-p2.md
+        - name: Azure Active Directory 部署计划
+          href: active-directory-deployment-plans.md
+    - name: 数据存储
+      items:
+        - name: 用于欧洲的标识数据存储
+          href: active-directory-data-storage-eu.md
+        - name: 用于澳大利亚和新西兰的标识数据存储
+          href: active-directory-data-storage-australia-newzealand.md
+    - name: Azure AD 操作参考
+      items:
+        - name: 简介
+          href: active-directory-ops-guide-intro.md
+        - name: 标识和访问管理
+          href: active-directory-ops-guide-iam.md
+        - name: 身份验证管理
+          href: active-directory-ops-guide-auth.md
+        - name: 标识治理
+          href: active-directory-ops-guide-govern.md
+        - name: 操作
+          href: active-directory-ops-guide-ops.md
 - name: 操作指南
   expanded: true
   items:
@@ -44,6 +86,8 @@
           href: add-custom-domain.md
         - name: 添加公司品牌
           href: customize-branding.md
+        - name: 配置“保持登录状态?”
+          href: keep-me-signed-in.md
         - name: 关联 Azure 订阅
           href: active-directory-how-subscriptions-associated-directory.md
         - name: 添加隐私信息
@@ -62,6 +106,8 @@
           href: active-directory-groups-settings-azure-portal.md
         - name: 添加或删除组所有者
           href: active-directory-accessmanagement-managing-group-owners.md
+        - name: 使用组管理对资源的访问
+          href: active-directory-manage-groups.md
     - name: 用户
       items:
         - name: 添加或删除新用户
@@ -76,13 +122,10 @@
           href: license-users-groups.md
         - name: 还原已删除的用户
           href: active-directory-users-restore.md
-- name: 资源
+- name: 疑难解答
+  expanded: true
   items:
     - name: 获取对 Azure Active Directory 的支持
       href: active-directory-troubleshooting-support-howto.md
     - name: Azure Active Directory 常见问题
       href: active-directory-faq.md
-    - name: Azure Active Directory 部署计划
-      href: active-directory-deployment-plans.md
-    - name: Azure AD 中的新增功能存档
-      href: whats-new-archive.md

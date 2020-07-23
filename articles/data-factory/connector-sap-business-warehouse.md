@@ -1,47 +1,56 @@
 ---
-title: 使用 Azure 数据工厂从 SAP BW 复制数据 | Microsoft Docs
+title: 从 SAP BW 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 SAP Business Warehouse 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/07/2018
-ms.author: jingwang
-ms.openlocfilehash: 9a0abcd70b4aeb2369604bafa924136122206e0a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: seo-lt-2019
+ms.date: 09/04/2019
+ms.openlocfilehash: 2f8406038be10ba3bdc207bf447fecb86a376fe8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60309107"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81418059"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 复制数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-sap-business-warehouse-connector.md)
 > * [当前版本](connector-sap-business-warehouse.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 SAP Business Warehouse (BW) 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
+>[!TIP]
+>若要了解 ADF 对 SAP 数据集成方案的总体支持，请参阅[使用 Azure 数据工厂进行 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中包含详细介绍、比较和指导。
+
 ## <a name="supported-capabilities"></a>支持的功能
+
+以下活动支持此 SAP Business Warehouse 连接器：
+
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 SAP Business Warehouse 复制到任何受支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 具体而言，此 SAP Business Warehouse 连接器支持：
 
-- SAP Business Warehouse 版本 7.x。
-- 使用 MDX 查询从 InfoCubes 和 QueryCubes（包括 BEx 查询）复制数据。
+- SAP Business Warehouse 版本 7.x  。
+- 使用 MDX 查询从 InfoCubes 和 QueryCubes  （包括 BEx 查询）复制数据。
 - 使用基本身份验证复制数据。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要使用此 SAP Business Warehouse 连接器，需要：
 
-- 设置自承载集成运行时。 有关详细信息，请参阅[自我托管集成运行时](create-self-hosted-integration-runtime.md)一文。
-- 在集成运行时计算机上安装 SAP NetWeaver 库。 可以从 SAP 管理员处或直接从 [SAP 软件下载中心](https://support.sap.com/swdc)获取 SAP Netweaver 库。 搜索“SAP Note #1025361”获取最新版本的下载位置。 请确保选取与集成运行时安装匹配的 64 位 SAP NetWeaver 库。 然后，按照 SAP 说明安装 SAP NetWeaver RFC SDK 中包含的所有文件。 SAP NetWeaver 库也包括在 SAP 客户端工具安装中。
+- 设置自承载集成运行时。 有关详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。
+- 在集成运行时计算机上安装 SAP NetWeaver 库  。 可以从 SAP 管理员处或直接从 [SAP 软件下载中心](https://support.sap.com/swdc)获取 SAP Netweaver 库。 搜索“SAP Note #1025361”  获取最新版本的下载位置。 请确保选取与集成运行时安装匹配的 64 位 SAP NetWeaver 库  。 然后，按照 SAP 说明安装 SAP NetWeaver RFC SDK 中包含的所有文件。 SAP NetWeaver 库也包括在 SAP 客户端工具安装中。
 
 >[!TIP]
 >要解决 SAP BW 的连接问题，请确保：
@@ -58,7 +67,7 @@ ms.locfileid: "60309107"
 
 SAP Business Warehouse (BW) 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapBw** | 是 |
 | server | SAP BW 实例所驻留的服务器的名称。 | 是 |
@@ -95,9 +104,9 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 SAP BW 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 SAP BW 数据集支持的属性列表。
 
-要从 SAP BW 复制数据，请将数据集的 type 属性设置为“RelationalTable”。 RelationalTable 类型的 SAP BW 数据集不支持任何类型特定的属性。
+要从 SAP BW 复制数据，请将数据集的 type 属性设置为“SapBwCube”  。 RelationalTable 类型的 SAP BW 数据集不支持任何类型特定的属性。
 
 **示例：**
 
@@ -105,15 +114,18 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 {
     "name": "SAPBWDataset",
     "properties": {
-        "type": "RelationalTable",
+        "type": "SapBwCube",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<SAP BW linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
+
+如果使用 `RelationalTable` 类型数据集，该数据集仍按原样受支持，但我们建议今后使用新数据集。
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
@@ -121,12 +133,12 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 
 ### <a name="sap-bw-as-source"></a>SAP BW 作为源
 
-要从 SAP BW 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动源部分支持以下属性：
+若要从 SAP BW 复制数据，复制活动的 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**RelationalSource** | 是 |
-| query | 指定要从 SAP BW 实例读取数据的 MDX 查询。 | 是 |
+| type | 复制活动 source 的 type 属性必须设置为：**SapBwSource** | 是 |
+| 查询 | 指定要从 SAP BW 实例读取数据的 MDX 查询。 | 是 |
 
 **示例：**
 
@@ -149,7 +161,7 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "SapBwSource",
                 "query": "<MDX query for SAP BW>"
             },
             "sink": {
@@ -160,27 +172,29 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 ]
 ```
 
+如果使用 `RelationalSource` 类型源，该源仍按原样受支持，但我们建议今后使用新源。
+
 ## <a name="data-type-mapping-for-sap-bw"></a>SAP BW 的数据类型映射
 
 从 SAP BW 复制数据时，以下映射用于从 SAP BW 数据类型映射到 Azure 数据工厂临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
 
 | SAP BW 数据类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
-| ACCP | Int |
-| CHAR | String |
+| ACCP | int |
+| CHAR | 字符串 |
 | CLNT | String |
-| CURR | Decimal |
+| CURR | 小数 |
 | CUKY | String |
-| DEC | Decimal |
+| DEC | 小数 |
 | FLTP | Double |
 | INT1 | Byte |
 | INT2 | Int16 |
-| INT4 | Int |
+| INT4 | int |
 | LANG | String |
 | LCHR | String |
 | LRAW | Byte[] |
 | PREC | Int16 |
-| QUAN | Decimal |
+| QUAN | 小数 |
 | RAW | Byte[] |
 | RAWSTRING | Byte[] |
 | STRING | String |
@@ -188,6 +202,11 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 | DATS | String |
 | NUMC | String |
 | TIMS | String |
+
+
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

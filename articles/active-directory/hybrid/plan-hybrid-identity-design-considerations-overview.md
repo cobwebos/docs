@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7f8dd49f3668b8f68753681123a04d21edac46c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60381444"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Azure Active Directory 混合标识设计注意事项
@@ -50,7 +50,7 @@ Microsoft 的标识解决方案跨越本地和基于云的功能，创建单一�
 
 本指南将提供一系列可以遵循的步骤和任务，用于设计满足组织独特要求的混合标识解决方案。 在这些步骤和任务之中，该指南始终会向你提供可用的相关技术和功能选项，以满足组织的功能和服务质量级别要求。
 
-**假设**：有使用 Windows Server、Active Directory 域服务和 Azure Active Directory 的一些经验。 在本文档中，我们假设你正在寻找这些解决方案如何才能满足业务需求：基于自身还是通过集成的解决方案。
+**** 假设：有使用 Windows Server、Active Directory 域服务和 Azure Active Directory 的一些经验。 在本文档中，我们假设你正在寻找这些解决方案如何才能满足业务需求：基于自身还是通过集成的解决方案。
 
 ## <a name="design-considerations-overview"></a>设计注意事项概述
 本文档将提供一组可以遵循的步骤和任务，用于设计最符合你需求的混合标识解决方案。 将按顺序提供这些步骤。 后续步骤中学习的设计注意事项可能会要求更改之前步骤中所做的决策，只是因为与设计选择冲突。 在整个文档中，我们会尽可能地提醒你潜在的设计冲突。 

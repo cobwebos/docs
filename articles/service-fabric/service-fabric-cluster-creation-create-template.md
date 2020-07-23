@@ -1,25 +1,14 @@
 ---
-title: 创建 Azure Service Fabric 群集模板 | Microsoft Docs
+title: 创建 Azure Service Fabric 群集模板
 description: 了解如何为 Service Fabric 群集创建资源管理器模板。 为客户端身份验证配置安全性、Azure Key Vault 和 Azure Active Directory (Azure AD)。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: chackdan
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/16/2018
-ms.author: aljo
-ms.openlocfilehash: 2fdea1f088dd6eabdf7d72342c837d976133a1bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b028b5c1f32733146c071e50b24202e5bad945c0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60386869"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260494"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>创建 Service Fabric 群集 Resource Manager 模板
 
@@ -95,7 +84,7 @@ ms.locfileid: "60386869"
       "extensionProfile": {
         "extensions": [
           {
-            "name": "[concat('ServiceFabricNodeVmExt','_vmNodeType0Name')]",
+            "name": "[concat('ServiceFabricNodeVmExt_',variables('vmNodeType0Name'))]",
             "properties": {
               ...
               "settings": {
@@ -146,7 +135,7 @@ ms.locfileid: "60386869"
 通过引用包含证书密钥的密钥保管库，将 Azure AD 配置添加到群集资源管理器模板。 在资源管理器模板参数文件 (*azuredeploy.parameters.json*) 中添加这些 Azure AD 参数和值。 
 
 > [!NOTE]
-> 在创建群集之前，必须先创建 Azure AD 租户和用户。  有关详细信息，请阅读[设置 Azure AD 来对客户端进行身份验证](service-fabric-cluster-creation-setup-aad.md)。
+> 在 Linux 上，创建群集之前必须先创建 Azure AD 租户和用户。  有关详细信息，请阅读[设置 Azure AD 来对客户端进行身份验证](service-fabric-cluster-creation-setup-aad.md)。
 
 ```json
 {
@@ -273,7 +262,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFil
 <!-- Links -->
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [service-fabric-secure-cluster-5-node-1-nodetype]: https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure
-[resource-group-template-deploy]: https://azure.microsoft.com/documentation/articles/resource-group-template-deploy/
+[resource-group-template-deploy]: ../azure-resource-manager/templates/deploy-powershell.md
 
 <!-- Images -->
 [cluster-security-arm-dependency-map]: ./media/service-fabric-cluster-creation-create-template/cluster-security-arm-dependency-map.png

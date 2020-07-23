@@ -1,19 +1,19 @@
 ---
-title: 使用 .NET 和 Azure Cosmos DB 的用于 MongoDB 的 API 构建 Xamarin.Forms 应用
+title: 使用 .NET 和 Azure Cosmos DB 的 API for MongoDB 构建 Xamarin 应用
 description: 演示一个 Xamarin 代码示例，可以参考该示例使用 Azure Cosmos DB 的用于 MongoDB 的 API 进行连接和查询
 author: codemillmatt
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/20/2018
+ms.date: 03/16/2020
 ms.author: masoucou
-ms.openlocfilehash: a0612ea06c71b2a93e6fb76f5d82516cfbad8657
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: db28455c47541b49b38ddbbc4d5e83ae20e2279d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65860345"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659165"
 ---
 # <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：使用 .NET SDK 和 Azure Cosmos DB 的用于 MongoDB 的 API 构建 Xamarin.Forms 应用
 
@@ -23,10 +23,10 @@ ms.locfileid: "65860345"
 > * [Node.js](create-mongodb-nodejs.md)
 > * [Python](create-mongodb-flask.md)
 > * [Xamarin](create-mongodb-xamarin.md)
-> * [Golang](create-mongodb-golang.md)
+> * [Golang](create-mongodb-go.md)
 >  
 
-Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。
+Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。
 
 本快速入门教程演示如何使用 Azure 门户创建 [使用 Azure Cosmos DB 的用于 MongoDB 的 API 配置的 Cosmos 帐户](mongodb-introduction.md) 、文档数据库和集合。 然后，使用 [MongoDB .NET 驱动程序](https://docs.mongodb.com/ecosystem/drivers/csharp/)生成 Xamarin.Forms 待办事项应用。
 
@@ -52,10 +52,18 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 首先，从 GitHub 下载示例应用。 这会实施一个包含 MongoDB 文档存储模型的待办事项应用。
 
-1. 打开命令提示符，新建一个名为“git-samples”的文件夹，然后关闭命令提示符。
+
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+1. 在 Windows 上打开命令提示符，或在 Mac 上打开终端，创建名为 git-samples 的新文件夹，然后关闭窗口。
+
+    ```batch
+    md "C:\git-samples"
+    ```
 
     ```bash
-    md "C:\git-samples"
+    mkdir '$home\git-samples\
     ```
 
 2. 打开诸如 git bash 之类的 git 终端窗口，并使用 `cd` 命令更改为要安装示例应用的新文件夹。
@@ -86,6 +94,8 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
     settings.SslSettings =
         new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+
+    settings.RetryWrites = false;
 
     MongoClient mongoClient = new MongoClient(settings);
     ```
@@ -159,6 +169,11 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 2. 打开 **TaskList.Core** 项目的 **Helpers** 目录中的 **APIKeys.cs** 文件。
 
 3. 从门户复制“主连接字符串”值（使用复制按钮），并将其设置为 **APIKeys.cs** 文件中 **ConnectionString** 字段的值。 
+
+4. 从连接字符串中删除 `&replicaSet=globaldb`。 如果不从查询字符串中删除该值，则会出现运行时错误。
+
+> [!IMPORTANT]
+> 必须从连接字符串的查询字符串中删除 `&replicaSet=globaldb` 键值对，避免运行时错误。
 
 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。
 

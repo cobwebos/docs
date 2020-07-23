@@ -1,32 +1,21 @@
 ---
-title: 删除 Azure 中的 Service Fabric 群集 | Microsoft Docs
+title: 删除 Azure 中的 Service Fabric 群集
 description: 在本教程中，你将了解如何删除 Azure 托管的 Service Fabric 群集及其所有资源。 可以删除包含群集的资源组，也可以有选择地删除资源。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 09/26/2018
-ms.author: aljo
+ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 0e5137a8183f378ee5960846e281222c6ecaaa47
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 38ddc7173f54a34d68c41ce1180c8dbeaf3d7962
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158073"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244955"
 ---
 # <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>教程：删除在 Azure 中运行的 Service Fabric 群集
 
 本教程是一个系列的第五部分，介绍了如何删除在 Azure 中运行的 Service Fabric 群集。 若要彻底删除 Service Fabric 群集，还需要删除该群集使用的所有资源。 可使用两种方法：删除该群集所在的资源组（此操作将删除群集资源以及该资源组中的所有其他资源），或特定删除群集资源及其关联资源（而不删除资源组中的其他资源）。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 删除资源组及其所有资源
@@ -43,12 +32,12 @@ ms.locfileid: "66158073"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
 * 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* 安装 [Azure Powershell](https://docs.microsoft.com/powershell/azure//install-Az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
+* 安装 [Azure Powershell](/powershell/azure//install-az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
 * 在 Azure 上创建安全 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 
 ## <a name="delete-the-resource-group-containing-the-service-fabric-cluster"></a>删除包含 Service Fabric 群集的资源组
@@ -111,7 +100,7 @@ az resource delete --name "<name of the Resource>" --resource-type "Microsoft.Se
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 删除资源组及其所有资源

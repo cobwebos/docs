@@ -3,23 +3,23 @@ title: 通过 Azure CDN 优化大型文件下载
 description: 本文介绍如何优化大型文件下载。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/01/2018
-ms.author: magattus
-ms.openlocfilehash: 9793348b47763e6de10992b9a8a4606fc532cc4d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 0fb136b6c37c8ef14f85455431fea80099088936
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60636721"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206717"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>通过 Azure CDN 优化大型文件下载
 
@@ -83,11 +83,11 @@ CDN 会在收到区块后进行缓存。 无需在 CDN 缓存上缓存整个文�
 
 可以配置 **Akamai 推出的 Azure CDN 标准版**终结点，以优化通过 Azure 门户进行的大型文件的分发。 也可以使用 REST API 或任意客户端 SDK 执行此操作。 下面的步骤演示了通过 Azure 门户进行的 **Akamai 推出的 Azure CDN 标准版**配置文件的分发过程：
 
-1. 若要添加新的终结点，请在 Akamai“CDN 配置文件”页上选择“终结点”。
+1. 若要添加新的终结点，请在 Akamai“CDN 配置文件”**** 页上选择“终结点”****。
 
     ![新建终结点](./media/cdn-large-file-optimization/cdn-new-akamai-endpoint.png)    
  
-2. 在“针对以下项优化”下拉列表中，选择“大型文件下载”。
+2. 在“针对以下项优化”**** 下拉列表中，选择“大型文件下载”****。
 
     ![选择的“大型文件优化”](./media/cdn-large-file-optimization/cdn-large-file-select.png)
 
@@ -104,11 +104,10 @@ CDN 会在收到区块后进行缓存。 无需在 CDN 缓存上缓存整个文�
 
 CDN 会在收到区块后进行缓存。 无需在 CDN 缓存上缓存整个文件。 文件或字节范围的后续请求将从 CDN 缓存提供。 如果未在 CDN 上缓存所有区块，将使用预提取从源请求区块。 此优化取决于源服务器能否支持字节范围请求；如果源服务器不支持字节范围请求，则此优化无效。
 
-### <a name="caching"></a>正在缓存
+### <a name="caching"></a>Caching
 大型文件优化使用与常规 Web 交付不同的默认缓存过期时间。 它可根据 HTTP 响应代码区分正缓存和负缓存。 如果源服务器通过响应中的 Cache-Control 或 Expires 标头指定了过期时间，则 CDN 将遵循该值。 如果源未指定此时间，并且该文件与此优化类型的类型和文件条件相符，则 CDN 会针对大型文件优化使用默认值。 否则，CDN 会使用常规 Web 交付的默认值。
 
-
-|    | 常规 Web | 大型文件优化 
+| Caching  | 常规 Web | 大型文件优化 
 --- | --- | --- 
 缓存：正 <br> HTTP 200、203、300、 <br> 301、302 和 410 | 7 天 |1 天  
 缓存：负 <br> HTTP 204、305、404 <br> 和 405 | 无 | 1 秒 

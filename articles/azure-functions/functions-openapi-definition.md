@@ -1,30 +1,24 @@
 ---
-title: 使用 Azure API 管理为函数创建 OpenAPI 定义
+title: 使用 Azure API 管理向 OpenAPI 公开函数
 description: 创建一个 OpenAPI 定义，使其他应用和服务可以在 Azure 中调用函数。
-services: functions
-keywords: OpenAPI, Swagger, 云服务, 云应用,
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
 ms.topic: tutorial
-ms.date: 05/08/2019
-ms.author: glenga
+ms.date: 04/21/2020
 ms.reviewer: sunayv
-ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: fc724e241849f4519a0e353cb6789d3f83eaf4b9
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.custom: mvc, cc996988-fb4f-47, references_regions
+ms.openlocfilehash: 87f7b47354d3d76d5185b1bf956fd0c422c092bd
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510451"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197023"
 ---
-# <a name="create-an-openapi-definition-for-a-function-with-azure-api-management"></a>使用 Azure API 管理为函数创建 OpenAPI 定义
+# <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>使用 Azure API 管理为无服务器 API 创建 OpenAPI 定义
 
 通常使用 OpenAPI 定义描述 REST API。 此定义中包含的信息涉及 API 中哪些操作可用，以及 API 的请求和响应数据应采用怎样的结构。
 
 本教程将创建确定风力涡轮机上的紧急修复是否经济高效的函数。 然后使用 [Azure API 管理](../api-management/api-management-key-concepts.md)为该函数应用创建一个 OpenAPI 定义，使该函数可使用其他应用和服务进行调用。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建一个函数
@@ -45,17 +39,19 @@ ms.locfileid: "65510451"
 * 预计进行涡轮机修复的时间，以小时为单位。
 * 涡轮机的容量，以千瓦为单位。 
 
-然后函数计算修复的费用和涡轮机 24 小时可以产生的收入。 在 [Azure 门户](https://portal.azure.com)中创建 HTTP 触发的函数。
+然后函数计算修复的费用和涡轮机 24 小时可以产生的收入。 要在 [Azure 门户](https://portal.azure.com)中创建 HTTP 触发的函数，请执行以下步骤：
 
-1. 展开 Function App，选择“Functions”旁边的 + 按钮。 选择“门户中” > “继续”。
+1. 从函数应用的左侧菜单中选择“函数”，然后从顶部菜单中选择“添加”。
 
-1. 选择“更多模板...”，然后选择“完成并查看模板”
+1. 在“新建函数”窗口中，选择“Http 触发器”。
 
-1. 选择 HTTP 触发器，键入 `TurbineRepair` 作为函数**名称**，选择 `Function` 作为[身份验证级别](functions-bindings-http-webhook.md#http-auth)，然后选择“创建”。  
+1. 对于“新函数”，请输入 `TurbineRepair`。 
 
-    ![创建用于 OpenAPI 的 HTTP 函数](media/functions-openapi-definition/select-http-trigger-openapi.png)
+1. 从[授权级别](functions-bindings-http-webhook-trigger.md#http-auth)下拉列表中选择“函数”，然后选择“创建函数”。
 
-1. 将 run.csx C# 脚本文件的内容替换为以下代码，然后选择“保存”：
+    :::image type="content" source="media/functions-openapi-definition/select-http-trigger-openapi.png" alt-text="创建用于 OpenAPI 的 HTTP 函数":::
+
+1. 选择“代码 + 测试”，然后从下拉列表中选择“run.csx”。 将 run.csx C# 脚本文件的内容替换为以下代码，然后选择“保存”：
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -108,9 +104,9 @@ ms.locfileid: "65510451"
     }
     ```
 
-    此函数代码返回 `Yes` 或 `No` 的消息，指示紧急修复是否经济高效以及涡轮机产生的收入机会和修复涡轮机的费用。
+    此函数代码会返回 `Yes` 或 `No` 消息，指示紧急修复是否具有成本效益。 它还返回涡轮机所代表的收入机会和修复涡轮机的成本。
 
-1. 若要测试该函数，请单击最右边的“测试”展开“测试”选项卡。在“请求正文”中输入以下值，然后单击“运行”。
+1. 若要测试此函数，请选择“测试”，接着选择“输入”选项卡，输入以下输入作为“正文”，然后选择“运行”：
 
     ```json
     {
@@ -119,9 +115,9 @@ ms.locfileid: "65510451"
     }
     ```
 
-    ![在 Azure 门户中测试函数](media/functions-openapi-definition/test-function.png)
+    :::image type="content" source="media/functions-openapi-definition/test-function.png" alt-text="在 Azure 门户中测试函数":::
 
-    响应正文中将返回以下值。
+    “输出”选项卡中会返回以下输出：
 
     ```json
     {"message":"Yes","revenueOpportunity":"$7200","costToFix":"$1600"}
@@ -131,47 +127,48 @@ ms.locfileid: "65510451"
 
 ## <a name="generate-the-openapi-definition"></a>生成 OpenAPI 定义
 
-现在即可生成 OpenAPI 定义。
+若要生成 OpenAPI 定义，请执行以下操作：
 
-1. 选择函数应用，在“平台功能”中选择“API 管理”，然后选择“API 管理”下的“新建”。
+1. 选择该函数应用，从左侧菜单中选择“API 管理”，然后在“API 管理”下选择“新建”。
 
-    ![在“平台功能”中选择“API 管理”](media/functions-openapi-definition/select-all-settings-openapi.png)
+    :::image type="content" source="media/functions-openapi-definition/select-all-settings-openapi.png" alt-text="选择“API 管理”":::
 
-1. 使用图像下的表中指定的 API 管理设置。
 
-    ![创建新的 API 管理服务](media/functions-openapi-definition/new-apim-service-openapi.png)
+1. 使用下表中指定的“API 管理”设置：
 
     | 设置      | 建议的值  | 说明                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **名称** | 全局唯一名称 | 根据函数应用的名称生成一个名称。 |
     | **订阅** | 订阅 | 在其下创建此新资源的订阅。 |  
-    | [资源组](../azure-resource-manager/resource-group-overview.md) |  myResourceGroup | 与函数应用相同的资源，系统会为你设置。 |
+    | **[资源组](../azure-resource-manager/management/overview.md)** |  myResourceGroup | 与函数应用相同的资源，系统会为你设置。 |
     | **位置** | 美国西部 | 选择“美国西部”位置。 |
     | 组织名称 | Contoso | 在开发人员门户中使用的组织名称，也用于电子邮件通知。 |
     | **管理员电子邮件** | 你的电子邮件 | 从 API 管理接收了系统通知的电子邮件。 |
-    | **定价层** | 消耗（预览） | 消耗层目前为预览版，并非可在所有区域中使用。 如需完整的定价详细信息，请参阅 [API 管理定价页](https://azure.microsoft.com/pricing/details/api-management/) |
+    | **定价层** | 消耗 | 消耗层并非在所有区域中均可用。 如需完整的定价详细信息，请参阅 [API 管理定价页](https://azure.microsoft.com/pricing/details/api-management/) |
+
+    ![创建新的 API 管理服务](media/functions-openapi-definition/new-apim-service-openapi.png)
 
 1. 选择“创建”以创建 API 管理实例，这可能需要几分钟的时间。
 
-1. 选择“启用 Application Insights”，将日志发送到函数应用所在的位置，然后接受余下的默认设置并选择“链接 API”。
+1. Azure 创建该实例后，它会在页面上启用“启用 Application Insights”选项。 选择该选项以将日志发送到函数应用程序所在的位置，然后选择“链接 API”。
 
-1. 此时会打开“导入 Azure Functions”，其中突出显示了“TurbineRepair”函数。 选择“选择”，继续操作。
+1. 此时会打开“导入 Azure Functions”，其中突出显示了“TurbineRepair”函数。  选择“选择”，继续操作。
 
     ![将 Azure Functions 导入 API 管理](media/functions-openapi-definition/import-function-openapi.png)
 
-1. 在“从 Function App 创建”页中接受默认设置，然后选择“创建”
+1. 在“从函数应用创建”页中接受默认值，然后选择“创建”。
 
-    ![从 Function App 创建](media/functions-openapi-definition/create-function-openapi.png)
+    :::image type="content" source="media/functions-openapi-definition/create-function-openapi.png" alt-text="从函数应用创建":::
 
-现已为函数创建 API。
+    Azure 会创建用于该函数的 API。
 
 ## <a name="test-the-api"></a>测试 API
 
 在使用 OpenAPI 定义之前，应验证 API 是否可以正常工作。
 
-1. 在函数的“测试”选项卡上，选择 **POST** 操作。
+1. 在函数应用页上，依次选择“API 管理”、“测试”选项卡和“POST TurbineRepair”。 
 
-1. 输入“小时”和“容量”的值
+1. 在“请求正文”中输入以下代码：
 
     ```json
     {
@@ -180,9 +177,9 @@ ms.locfileid: "65510451"
     }
     ```
 
-1. 单击“发送”，然后查看 HTTP 响应。
+1. 选择“发送”，然后查看“HTTP 响应”。
 
-    ![测试函数 API](media/functions-openapi-definition/test-function-api-openapi.png)
+    :::image type="content" source="media/functions-openapi-definition/test-function-api-openapi.png" alt-text="测试函数 API":::
 
 ## <a name="download-the-openapi-definition"></a>下载 OpenAPI 定义
 
@@ -192,7 +189,7 @@ ms.locfileid: "65510451"
    
    ![下载 OpenAPI 定义](media/functions-openapi-definition/download-definition.png)
 
-2. 打开下载的 JSON 文件并查看定义。
+2. 保存下载的 JSON 文件，然后将其打开。 查看定义。
 
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 

@@ -1,25 +1,23 @@
 ---
-title: 使用 Azure 网络观察程序管理网络安全组流日志 - REST API | Microsoft Docs
+title: 管理 NSG 流日志 - Azure REST API
+titleSuffix: Azure Network Watcher
 description: 此页说明如何在 Azure 网络观察程序中使用 REST API 管理网络安全组流日志
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 2ab25379-0fd3-4bfe-9d82-425dfc7ad6bb
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: ab4b283449ec6c0174f380b0231dd2e78dea419d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: 936501674fcf1d428de936174575440edad71de2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688044"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738509"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>使用 REST API 配置网络安全组流日志
 
@@ -209,7 +207,7 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 
 ## <a name="download-a-flow-log"></a>下载流日志
 
-流日志的存储位置是在创建时定义的。 用于访问这些保存到存储帐户的流日志的便利工具是 Microsoft Azure 存储资源管理器，下载地址为： https://storageexplorer.com/
+流日志的存储位置是在创建时定义的。 用于访问这些保存到存储帐户的流日志的便利工具是 Microsoft Azure 存储资源管理器，下载地址为：https://storageexplorer.com/
 
 如果指定了存储帐户，则数据包捕获文件将保存到以下位置的存储帐户：
 

@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: b857d1780e9734ce891ce2c0ce4bedf50dfe13e9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e525029ae8eab086d11126a4e18958423e207aa1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60859488"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "70067506"
 ---
 # <a name="add-a-forwarded-header"></a>添加 Forwarded 标头
 
@@ -26,7 +25,7 @@ ms.locfileid: "60859488"
 
 ## <a name="code"></a>代码
 
-将代码粘贴到“入站”块中。
+将代码粘贴到“入站”块中  。
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Forward gateway hostname to backend for generating correct urls in responses.policy.xml)]
 

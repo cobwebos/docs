@@ -1,56 +1,62 @@
 ---
-title: 将 Office 365 数据连接到 Azure Sentinel 预览版 |Microsoft Docs
-description: 了解如何将 Office 365 数据连接到 Azure Sentinel。
+title: 将 Office 365 日志连接到 Azure Sentinel |Microsoft Docs
+description: 了解如何使用 Office 365 日志连接器引入有关 Exchange 和 SharePoint 中正在进行的用户和管理活动（包括 OneDrive）的信息。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
-ms.assetid: ff7c862e-2e23-4a28-bd18-f2924a30899d
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
-ms.author: rkarlin
-ms.openlocfilehash: 6b1e167d26b5848238dd51bf9792f8316c33a385
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 05/21/2020
+ms.author: yelevin
+ms.openlocfilehash: 180b25f80bd27caea20b1c17cd84fda38c172e0f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205578"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559337"
 ---
-# <a name="connect-data-from-office-365-logs"></a>从 Office 365 日志连接数据
+# <a name="connect-office-365-logs-to-azure-sentinel"></a>将 Office 365 日志连接到 Azure Sentinel
+
+[Office 365](https://docs.microsoft.com/office/)日志连接器提供有关**Exchange**和**SharePoint**中正在进行的用户和管理活动（包括**OneDrive**）的 Azure Sentinel 信息。 此信息包括操作的详细信息，例如文件下载、发送的访问请求、对组事件的更改和邮箱操作，以及执行操作的用户的详细信息。 通过将 Office 365 日志连接到 Azure Sentinel，你可以查看和分析工作簿中的此数据，查询该数据以创建自定义警报，并将其结合起来以改进调查过程，从而更深入了解 Office 365 安全性。
+
+## <a name="prerequisites"></a>先决条件
+
+- 您必须对 Azure Sentinel 工作区具有读取和写入权限。
+
+- 你必须是你租户上的全局管理员或安全管理员。
+
+- Office 365 部署必须与 Azure Sentinel 工作区在同一租户中。
 
 > [!IMPORTANT]
-> Azure Sentinel 当前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> - 为了使连接器能够通过 Office 365 管理活动 API 访问数据，你必须在 Office 365 部署上启用**统一审核日志记录**。 根据你所具有的 Office 365/Microsoft 365 许可证的类型，默认情况下可能会启用或。 请参阅[Office 365 安全与合规中心](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center)，根据许可证类型检查统一审核日志记录的状态。
+> - 你还可以手动启用、禁用和检查 Office 365 统一审核日志记录的当前状态。 有关说明，请参阅[打开或关闭 Office 365 审核日志搜索](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off)。
+> - 有关详细信息，请参阅[Office 365 管理活动 API 参考](https://docs.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference)。
 
-您可以从审核日志流式传输[Office 365](https://docs.microsoft.com/office365/admin/admin-home?view=o365-worldwide)到 Azure Sentinel 单击一次。 您可以流式传输到单个工作区中 Azure Sentinel 来自多个租户的审核日志。 Office 365 活动日志连接器提供了深入了解正在进行的用户活动。 将从 Office 365 来获取有关各种用户、 管理员、 系统和策略的操作和事件信息。 通过 Office 365 日志连接到 Azure Sentinel 可以使用此数据以查看仪表板、 创建自定义警报，并改进调查过程。
 
+   > [!NOTE]
+   > 如上所述，在 "**数据类型**" 下的 "连接器" 页上，Azure Sentinel Office 365 连接器目前仅支持从 Microsoft Exchange 和 SharePoint （包括 OneDrive）引入审核日志。 但是，如果你有兴趣将[数据从团队](https://techcommunity.microsoft.com/t5/azure-sentinel/protecting-your-teams-with-azure-sentinel/ba-p/1265761)或[其他 Office 数据](https://techcommunity.microsoft.com/t5/azure-sentinel/ingesting-office-365-alerts-with-graph-security-api/ba-p/984888)引入 Azure Sentinel，则有一些外部解决方案。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="enable-the-office-365-log-connector"></a>启用 Office 365 日志连接器
 
-- 您必须是全局管理员或安全管理员在你的租户
-- 你在计算机上，从中你登录到 Azure Sentinel 以创建连接，确保端口 4433 对 web 流量开放。
+1. 在 Azure Sentinel 导航菜单中，选择 "**数据连接器**"。
 
-## <a name="connect-to-office-365"></a>连接到 Office 365
+1. 从 "**数据连接器**" 列表中，单击 " **Office 365**"，然后单击右下角的 "**打开连接器页**" 按钮。
 
-1. 在 Azure Sentinel，选择**数据连接器**，然后单击**Office 365**磁贴。
+1. 在标记为 "**配置**" 的部分下，标记要连接到 Azure Sentinel 的 Office 365 活动日志的复选框，然后单击 "**应用更改**"。 
 
-2. 如果你尚未启用，在**连接**使用**启用**按钮以启用 Office 365 解决方案。 如果已启用，那么将为已启用了连接屏幕中进行标识。
-1. Office 365 使你能够对数据进行流式传输到 Azure Sentinel 的多个租户。 你想要连接到每个的租户，将添加在租户**将租户连接到 Azure Sentinel**。 
-1. Active Directory 屏幕将打开。 系统会提示使用上你想要连接到 Azure Sentinel，并提供到 Azure Sentinel 读取其日志的权限的每个租户的全局管理员用户进行身份验证。 
-5. 在 Stream Office 365 活动日志，请单击**选择**选择你想要流式传输到 Azure Sentinel 哪些日志类型。 目前，Azure Sentinel 支持 Exchange 和 SharePoint。
+   > [!NOTE]
+   > 如果以前已将多个租户连接到 Azure Sentinel，使用受支持的旧版 Office 365 连接器，则可以查看和修改从每个租户收集的日志。 无法添加其他租户，但是可以删除以前添加的租户。
 
-4. 单击**将更改应用**。
-
-3. 若要使用 Log Analytics 中的 Office 365 日志相关的架构，搜索**OfficeActivity**。
-
+1. 若要在 Log Analytics 中查询 Office 365 日志数据，请 `OfficeActivity` 在 "查询" 窗口的第一行中键入。
 
 ## <a name="next-steps"></a>后续步骤
-在本文档中，您学习了如何将 Office 365 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[来了解一下你的数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[检测威胁 Azure Sentinel](tutorial-detect-threats.md)。
+本文档介绍了如何将 Office 365 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
+- 了解如何了解[你的数据和潜在威胁](quickstart-get-visibility.md)。
+- 使用[内置](tutorial-detect-threats-built-in.md)或[自定义](tutorial-detect-threats-custom.md)规则开始使用 Azure Sentinel 检测威胁。
 

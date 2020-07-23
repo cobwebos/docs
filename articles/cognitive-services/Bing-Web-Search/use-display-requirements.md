@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
 ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60499879"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>必应搜索 API 使用和显示要求
@@ -34,7 +34,7 @@ ms.locfileid: "60499879"
 ## <a name="definitions"></a>定义
 
 
-|术语  |描述  |
+|术语  |说明  |
 |---------|---------|
 |Answer     | 响应中返回的一类结果。 例如，从必应 Web 搜索 API 返回的响应可能包括网页结果、图片、视频、视觉对象和新闻类别的答复。 |
 |响应     | 在响应针对搜索 API 的单个调用时收到的任何答复和关联的数据。 |
@@ -99,7 +99,7 @@ ms.locfileid: "60499879"
 ### <a name="notices-and-branding"></a>通知和品牌推广 
 请：
 
-- 在每个用户体验 (UX) 点（用户可输入搜索查询）附近，以醒目方式添加 [Microsoft 隐私声明](https://go.microsoft.com/fwlink/?LinkId=521839)功能性超链接。 将该超链接标记为 Microsoft 隐私声明。
+- 在每个用户体验 (UX) 点（用户可输入搜索查询）附近，以醒目方式添加 [Microsoft 隐私声明](https://go.microsoft.com/fwlink/?LinkId=521839)功能性超链接。 将该超链接标记为 Microsoft 隐私声明****。
 
 - 在每个用户体验点（用户可输入搜索查询）附近，以醒目方式显示必应品牌推广（应符合[必应商标使用准则](https://go.microsoft.com/fwlink/?linkid=833278)要求）。 此类品牌推广必须向用户明确表明 Microsoft 为该 Internet 搜索体验提供支持。
 
@@ -134,7 +134,7 @@ ms.locfileid: "60499879"
 - 让用户在特定条件下（例如服务中断时）在该设备上访问以前返回给该用户的结果。
 - 在根据用户的信号预期到该用户的需求的情况下（例如，预期服务会中断时），存储针对个性化主动查询返回的结果。
 
-#### <a name="server"></a>服务器
+#### <a name="server"></a>Server (服务器)
 
 只能针对以下目的，在所控制的服务器上安全地保留特定于单个用户的结果，并且显示保留的结果：
 

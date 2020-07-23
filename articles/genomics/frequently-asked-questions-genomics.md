@@ -1,42 +1,30 @@
 ---
-title: Microsoft 基因组学：常见问题-常见问题 |Microsoft Docs
-titleSuffix: Azure
-description: 有关 Microsoft 基因组学的用户常见问题解答。
+title: 常见问题-常见问题
+titleSuffix: Microsoft Genomics
+description: 获取与使用 Microsoft 基因组学 service 相关的常见问题的解答，包括技术信息、SLA 和计费。
 services: genomics
 author: grhuynh
 manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 12/07/2017
-ms.openlocfilehash: 2bcbf9d145d9b8b5a3c42893235906d24516405c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: MT
+ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792622"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76986030"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft 基因组学：常见问题
 
 本文列出了用户可能会遇到的与 Microsoft 基因组学相关的几大疑问。 有关 Microsoft 基因组学服务的详细信息，请参阅[什么是 Microsoft 基因组学？](overview-what-is-genomics.md)。 有关故障排除的详细信息，请参阅我们的[故障排除指南](troubleshooting-guide-genomics.md)。 
 
-## <a name="what-is-the-microsoft-genomics-service-gatk-4-promotion"></a>什么是 Microsoft 基因组学服务 GATK 4 促销版？
-直到 2019 年 6 月 30 日，Microsoft 基因组学服务将提供使用 GATK4 免费的 20 WGS 运行。 若要参与此产品/服务，请在[此处](https://aka.ms/msgatk4)注册。 
 
-### <a name="what-are-the-common-issues-i-might-encounter-while-running-the-microsoft-genomics-service-gatk4-promotion"></a>运行 Microsoft 基因组学服务 GATK4 促销版时可能会遇到的常见问题
-下面是可能会遇到的常见错误及其建议的解决方法列表：
+## <a name="how-do-i-run-gatk4-workflows-on-microsoft-genomics"></a>如何实现在 Microsoft 基因组学上运行 GATK4 工作流？
+在 Microsoft 基因组学服务的 config.txt 文件中，指定 process_name `gatk4` 。 请注意，将按定期计费费率计费。
 
-| **消息**                                                                                                                                                                                    | **原因**                                                                                                    | **解决方法**                                                                                                                                                                                                       |
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 未为帐户启用 `gatk4-promo`。 有关详细信息，请参阅 https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics                               | 你正在尝试使用未激活的 Microsoft 基因组学服务运行 GATK4 工作流。       | 请访问[此网页](https://aka.ms/msgatk4)激活帐户。 请注意在试用版过期 2019 年 6 月 30 日。 在此日期之后，无法激活促销版运行的帐户。 |
-| 感谢你试用 `gatk4-promo`。试用期已结束。 有关详细信息，请参阅 https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics                  | GATK4 试用版已在日历年底过期，而你正在尝试调用 `gatk4-promo` process_name。  | 请将 process_name 参数切换为 `gatk4` 而不是 `gatk4-promo`。 这是官方的 gatk4 版本，如果使用此参数，则需要为工作流付费。                                         |
-| 感谢你试用 `gatk4-promo`。你已用完所有分配的运行。 有关详细信息，请参阅 https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics | 已成功提交 GATK4 的所有 20 个促销版运行。                               | 请在将 process_name 参数设置为 `gatk4`（而不是 `gatk4-promo`）后提交任何新的 gatk4 运行。 使用此参数时，需要为工作流付费。                                                          |        
-
-
-## <a name="can-i-run-gatk4-workflows-on-microsoft-genomics-without-signing-up-for-the-gatk4-promotion"></a>是否可以在不注册 GATK4 促销版的情况下针对 Microsoft 基因组学运行 GATK4 工作流？
-可以。在 Microsoft 基因组学服务的 config.txt 文件中将 process_name 指定为 `gatk4` 即可。 请注意，你需要按一般费率付费，20 个免费运行不适用于你的 Microsoft 基因组学帐户。
-
-
+## <a name="how-do-i-enable-output-compression"></a>如何实现启用输出压缩？
+可以使用可选的输出压缩参数压缩输出的 .vcf 或 gvcf。 这等效于 `-bgzip` `-tabix` 在 .vcf 或 gvcf 输出上运行并使用，以生成 `.gz` （bgzip 输出）和 `.tbi` （tabix 输出）文件。 `bgzip`压缩 .vcf 或 gvcf 文件，并 `tabix` 为压缩文件创建索引。 参数是一个布尔值，默认情况下，此值设置为，默认情况下为 `false` " `true` gcvf 输出"。 若要在命令行上使用，请将 `-bz` 或指定 `--bgzip-output` 为 `true` （运行 bgzip 和 tabix）或 `false` 。 若要在 config.txt 文件中使用此参数，请将 `bgzip_output: true` 或添加 `bgzip_output: false` 到文件中。
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>什么是 Microsoft 基因组学的 SLA？
 我们保证 Microsoft 基因组学服务 99.9% 的时间均可用于接收工作流 API 请求。 有关详细信息，请参阅 [SLA](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/)。
@@ -59,10 +47,10 @@ Microsoft 基因组学将按每个工作流处理的千兆碱基数计费。 有
  |`cancel`             |发送请求来取消由 `--workflow-id` 指定的工作流进程。 另请参阅 `msgen help cancel`。 |
 
 ## <a name="where-do-i-get-the-value-for---api-url-base"></a>在何处获取 `--api-url-base` 的值？
-请转到 Azure 门户并打开基因组学帐户页。 在“管理”标题下方，选择“访问密钥”。 可在此处找到 API URL 和访问密钥。
+请转到 Azure 门户并打开基因组学帐户页。 在“管理”标题下方，选择“访问密钥”********。 可在此处找到 API URL 和访问密钥。
 
 ## <a name="where-do-i-get-the-value-for---access-key"></a>在何处获取 `--access-key` 的值？
-请转到 Azure 门户并打开基因组学帐户页。 在“管理”标题下方，选择“访问密钥”。 可在此处找到 API URL 和访问密钥。
+请转到 Azure 门户并打开基因组学帐户页。 在“管理”标题下方，选择“访问密钥”********。 可在此处找到 API URL 和访问密钥。
 
 ## <a name="why-do-i-need-two-access-keys"></a>为什么需要两个访问密钥？
 如果想更新（重新生成）密钥而不中断对服务的使用，则需要两个访问密钥。 例如，若要更新第一个密钥，则应该让所有新工作流使用第二个密钥。 等待使用第一个密钥的所有工作流完成，然后再更新第一个密钥。
@@ -74,7 +62,7 @@ Microsoft 基因组学将按每个工作流处理的千兆碱基数计费。 有
 
 支持以下这些引用：
 
- |引用              | `-pa/--process-args` 的值 |
+ |参考              | `-pa/--process-args` 的值 |
  |:-------------         |:-------------                 |
  |b37                    | `R=b37m1`                     |
  |hg38                   | `R=hg38m1`                    |      
@@ -91,13 +79,13 @@ msgen 可识别采用以下格式的配置文件：
 
   |命令行参数            | 配置文件行 |
   |:-------------                   |:-------------                 |
-  |`-u/--api-url-base https://url`  | api_url_base:https://url    |
-  |`-k/--access-key KEY`            | access_key:KEY              |      
-  |`-pa/--process-args R=B37m1`     | process_args:R-b37m1        |  
+  |`-u/--api-url-base https://url`  | api_url_base:https://url**    |
+  |`-k/--access-key KEY`            | access_key:KEY**              |      
+  |`-pa/--process-args R=B37m1`     | process_args:R-b37m1**        |  
 
 ## <a name="next-steps"></a>后续步骤
 
 使用以下资源进行 Microsoft 基因组学入门：
 - 通过 Microsoft 基因组学服务开始运行第一个工作流。 [通过 Microsoft 基因组学服务运行工作流](quickstart-run-genomics-workflow-portal.md)
-- 提交自己的数据并通过以下 Microsoft 基因组学服务进行处理：[配对 FASTQ](quickstart-input-pair-FASTQ.md) | [BAM ](quickstart-input-BAM.md) | [多个 FASTQ 或 BAM](quickstart-input-multiple.md) 
+- 提交你自己的数据以供 Microsoft 基因组学服务进行处理：[配对的 FASTQ](quickstart-input-pair-FASTQ.md)  |  [BAM](quickstart-input-BAM.md)  |  [多个 FASTQ 或 bam](quickstart-input-multiple.md) 
 

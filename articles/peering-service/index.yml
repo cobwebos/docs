@@ -1,0 +1,52 @@
+### YamlMime:Landing
+title: Azure 对等互连服务
+summary: 了解 Azure 对等互连服务
+metadata:
+  title: Azure 对等互连服务文档
+  description: 了解如何管理和部署对等互连服务连接
+  services: peering-service
+  ms.service: peering-service
+  ms.subservice: peering-service
+  ms.topic: landing-page
+  author: ypitsch
+  ms.author: ypitsch
+  ms.date: 05/18/2020
+  ms.openlocfilehash: 182f9dbb72f39a0489bb908d8ab315bdecaec7ec
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83586059"
+landingContent:
+- title: 关于对等互连服务
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是对等互连服务？
+      url: about.md
+  - linkListType: concept
+    links:
+    - text: 位置与合作伙伴
+      url: location-partners.md
+    - text: 连接
+      url: connection.md
+    - text: 连接遥测
+      url: connection-telemetry.md
+    - text: 载入模型
+      url: onboarding-model.md
+- title: 入门
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 注册对等互连服务 - Azure 门户
+      url: azure-portal.md
+- title: 遥测
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 连接遥测
+      url: connection-telemetry.md
+  - linkListType: how-to-guide
+    links:
+    - text: 度量连接遥测
+      url: measure-connection-telemetry.md

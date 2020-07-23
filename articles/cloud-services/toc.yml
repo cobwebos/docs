@@ -1,5 +1,5 @@
 - name: 云服务文档
-  href: index.md
+  href: index.yml
 - name: 概述
   items:
     - name: 什么是云服务？
@@ -12,7 +12,7 @@
       href: cloud-services-dotnet-get-started.md
     - name: Visual Studio 云服务的 Python 示例
       href: cloud-services-python-ptvs.md
-- name: 如何
+- name: 操作方式
   items:
     - name: 计划
       items:
@@ -122,10 +122,10 @@
             - name: Visual Studio
               href: /visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?toc=/azure/cloud-services/toc.json
         - name: 在 Azure 存储中存储和查看诊断数据
-          href: ../azure-monitor/platform/diagnostics-extension-to-storage.md?toc=%2fazure%2fcloud-services%2ftoc.json
+          href: diagnostics-extension-to-storage.md
         - name: 使用诊断跟踪云服务
           href: cloud-services-dotnet-diagnostics-trace-flow.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 调试
           items:
@@ -139,6 +139,8 @@
           href: cloud-services-allocation-failures.md
         - name: 云服务角色回收的常见原因
           href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
+        - name: 应用程序不支持 TLS 1.2
+          href: applications-dont-support-tls-1-2.md
         - name: TEMP 文件夹的默认大小太小，不能用于角色
           href: cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md
         - name: 常见部署问题
@@ -159,7 +161,7 @@
               href: cloud-services-connectivity-and-networking-faq.md
             - name: 部署常见问题解答
               href: cloud-services-deployment-faq.md
-- name: 引用
+- name: 参考
   items:
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?service=cloud-services'
@@ -188,9 +190,9 @@
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: 学习路径
-      href: 'https://azure.microsoft.com/documentation/learning-paths/cloud-services/'
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment'
+      href: /learn/paths/azure-fundamentals/
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-cloud-services.html'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
     - name: 定价计算器

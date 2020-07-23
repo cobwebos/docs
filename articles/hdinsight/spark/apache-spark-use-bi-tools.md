@@ -1,25 +1,25 @@
 ---
-title: '教程：使用 Power BI 在 Azure HDInsight 中分析 Apache Spark 数据 '
-description: 使用 Microsoft Power BI 来可视化存储在 HDInsight 群集中的 Apache Spark 数据
+title: 教程：使用 Power BI 分析 Azure HDInsight Apache Spark 数据
+description: 教程 - 使用 Microsoft Power BI 直观显示存储在 HDInsight 群集中的 Apache Spark 数据
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 05/16/2019
-ms.openlocfilehash: bf70abd2b3119a97af5ad1d4c56274f8e575fd3e
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.custom: hdinsightactive,mvc,seoapr2020
+ms.date: 04/21/2020
+ms.openlocfilehash: 4eb10298ac683c991835f86582d82fb952b314b2
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65860971"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82195105"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>教程：使用 Power BI 在 HDInsight 中分析 Apache Spark 数据
 
-在本教程中，了解如何使用 [Microsoft Power BI](https://powerbi.microsoft.com/) 在 Azure HDInsight 中可视化 [Apache Spark](https://azure.microsoft.com/services/hdinsight/) 群集中的数据。
+在本教程中，了解如何使用 Microsoft Power BI 在 Azure HDInsight 中直观显示 Apache Spark 群集中的数据。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 使用 Power BI 可视化 Spark 数据
 
@@ -46,7 +46,7 @@ ms.locfileid: "65860971"
 
     输出如下所示：
 
-    ![在 Spark 中显示表](./media/apache-spark-use-bi-tools/show-tables.png)
+    ![在 Spark 中显示表](./media/apache-spark-use-bi-tools/apache-spark-show-tables.png)
 
     如果在开始本教程之前关闭笔记本，这会清除 `hvactemptable`，使其不包含在输出中。  只有元存储中存储的 Hive 表（由“isTemporary”列下的“False”表示）可从 BI 工具中进行访问   。 在本教程中，将连接到创建的 hvac 表  。
 
@@ -59,7 +59,7 @@ ms.locfileid: "65860971"
 
     输出如下所示：
 
-    ![在 Spark 中显示 hvac 表中的行](./media/apache-spark-use-bi-tools/select-limit.png)
+    ![在 Spark 中显示 hvac 表中的行](./media/apache-spark-use-bi-tools/apache-spark-select-limit.png)
 
 3. 请在 Notebook 的“文件”菜单中选择“关闭并停止”   。 关闭笔记本以释放资源。
 
@@ -71,18 +71,15 @@ ms.locfileid: "65860971"
 
 使用 Spark 的前几步是连接到 Power BI Desktop 中的集群，从集群中加载数据，并根据此数据创建基本的可视化效果。
 
-> [!NOTE]  
-> 本文中所示的连接器当前处于预览状态。 通过 [Power BI 社区](https://community.powerbi.com/)站点或 [Power BI Ideas](https://ideas.powerbi.com/forums/265200-power-bi-ideas)（Power BI 想法）提供反馈。
-
 1. 打开 Power BI Desktop。 关闭启动初始屏幕（如果已打开）。
 
 2. 从“主页”  选项卡，导航到“获取数据”   > “更多...”  。
 
-    ![从 HDInsight Apache Spark 中获取数据到 Power BI Desktop](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "从 Apache Spark BI 中获取数据到 Power BI")
+    ![从 HDInsight Apache Spark 将数据导入 Power BI Desktop](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "从 Apache Spark BI 将数据导入 Power BI")
 
 3. 在搜索框中输入 `Spark`，选择 Azure HDInsight Spark，然后选择“连接”   。
 
-    ![从 Apache Spark BI 中获取数据到 Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "从 Apache Spark BI 中获取数据到 Power BI")
+    ![从 Apache Spark BI 将数据导入 Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "从 Apache Spark BI 将数据导入 Power BI")
 
 4. 在“服务器”  文本框中输入群集 URL（形式为 `mysparkcluster.azurehdinsight.net`）。
 
@@ -104,70 +101,71 @@ ms.locfileid: "65860971"
 
     2. 将“BuildingID”字段拖到“轴”，并将“ActualTemp”和“TargetTemp”字段拖至“值”      。
 
-        ![使用 Apache Spark BI 创建 Spark 数据可视化](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "使用 Apache Spark BI 创建 Spark 数据可视化")
+        ![添加值列](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "添加值列")
 
         关系图如下所示：
 
-        ![使用 Apache Spark BI 创建 Spark 数据可视化](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "使用 Apache Spark BI 创建 Spark 数据可视化")
+        ![面积图总和](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "面积图总和")
 
         默认情况下，视觉效果会显示 **ActualTemp** 和 **TargetTemp** 的总和。 选择“可视化效果”窗格中 ActualTemp 和 TragetTemp 旁边的向下键，可看到已选中“总和”    。
 
     3. 选择“可视化效果”窗格中 ActualTemp 和 TragetTemp 旁边的向下键，选择“平均值”以获得每栋建筑物的实际温度与目标温度的平均值    。
 
-        ![使用 Apache Spark BI 创建 Spark 数据可视化](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "使用 Apache Spark BI 创建 Spark 数据可视化")
+        ![值的平均值](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "值的平均值")
 
         数据可视化效果应与屏幕截图中类似。 在视觉效果上移动光标可获取相关数据的工具提示。
 
-        ![使用 Apache Spark BI 创建 Spark 数据可视化](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "使用 Apache Spark BI 创建 Spark 数据可视化")
+        ![面积图](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "面积图")
 
 9. 导航到“文件”   > “保存”  ，为文件输入名称 `BuildingTemperature`，然后选择“保存”  。
 
 ### <a name="publish-the-report-to-the-power-bi-service-optional"></a>将报表发布到 Power BI 服务（可选）
 
-Power BI 服务允许在整个组织中共享报表和仪表板。 在本部分，首先发布数据集和报表。 然后，将报表固定到仪表板。 仪表板通常用于重点处理报表中的数据子集；此报表中只有一个可视化效果，但仍可用于完成此步骤。
+Power BI 服务允许在整个组织中共享报表和仪表板。 在本部分，首先发布数据集和报表。 然后，将报表固定到仪表板。 仪表板通常用于关注报表中的数据子集。 报表中只有一个可视化效果，但完成这些步骤仍然很有用。
 
 1. 打开 Power BI Desktop。
-2. 在“开始”选项卡上，单击“发布”   。
+
+1. 在“主页”选项卡上，选择“发布”   。
 
     ![从 Power BI Desktop 发布](./media/apache-spark-use-bi-tools/apache-spark-bi-publish.png "从 Power BI Desktop 发布")
 
-2. 选择要将数据集发布和报告到的工作区，然后单击“选择”  。 在下图中，默认选择“我的工作区”  。
+1. 选择要将数据集和报表发布到的工作区，然后选择“选择”  。 在下图中，默认选择“我的工作区”  。
 
-    ![选择要将数据集发布和报告到的工作区](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "选择要将数据集发布和报告到的工作区") 
+    ![选择要将数据集和报表发布到的工作区](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "选择要将数据集和报表发布到的工作区")
 
-3. 发布成功后，单击“在 Power BI 中打开 BuildingTemperature.pbix”  。
+1. 发布成功后，选择“在 Power BI 中打开 BuildingTemperature.pbix”  。
 
-    ![发布成功，请单击输入凭据](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "发布成功，请单击输入凭据") 
+    ![发布成功，请单击以输入凭据](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "发布成功，请单击以输入凭据")
 
-4. 在 Power BI 服务中，单击“输入凭据”  。
+1. 在 Power BI 服务中，选择“输入凭据”  。
 
     ![在 Power BI 服务中输入凭据](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "在 Power BI 服务中输入凭据")
 
-5. 单击“编辑凭据”  。
+1. 选择“编辑凭据”  。
 
     ![在 Power BI 服务中编辑凭据](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "在 Power BI 服务中编辑凭据")
 
-6. 输入 HDInsight 登录帐户信息，然后单击“登录”  。 默认帐户名为 admin  。
+1. 输入 HDInsight 登录帐户信息，然后选择“登录”  。 默认帐户名为 admin  。
 
-    ![登录 Spark 群集](./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png "登录 Spark 群集")
+    ![登录到 Spark 群集](./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png "登录到 Spark 群集")
 
-7. 在左窗格中，转到“工作区” > “我的工作区” > “报表”，然后单击 BuildingTemperature     。
+1. 在左侧窗格中，转到“工作区” > “我的工作区” > “报表”，然后选择“BuildingTemperature”     。
 
-    ![报表位于左窗格的报表下](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "报表位于左窗格的报表下")
+    ![左侧窗格中报表下列出的报表](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "左侧窗格中报表下列出的报表")
 
     还可在左窗格中的“数据集”下找到 BuildingTemperature   。
 
-    现可在 Power BI 服务中使用 Power BI Desktop 中创建的视觉对象。 
+    现可在 Power BI 服务中使用 Power BI Desktop 中创建的视觉对象。
 
-8. 将游标悬停在可视化效果上，然后单击右上角的固定图标。
+1. 将光标悬停在可视化效果上，然后选择右上角的“固定”图标。
 
     ![Power BI 服务中的报表](./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png "Power BI 服务中的报表")
 
-9. 选择“新的仪表板”，输入名称 `Building temperature`，再单击“固定”  。
+1. 选择“新建仪表板”，输入名称 `Building temperature`，再选择“固定”  。
 
-    ![固定到新的仪表板](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "固定到新仪表板")
+    ![固定到新仪表板](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "固定到新仪表板")
 
-10. 在报表中，单击“转到仪表板”  。 
+1. 在报表中，选择“转到仪表板”  。
 
 视觉对象已固定到仪表板 - 可在报表中添加其他视觉对象，并将其固定在同一仪表板上。 有关报表和仪表板的详细信息，请参阅 [Power BI 中的报表](https://powerbi.microsoft.com/documentation/powerbi-service-reports/)和 [Power BI 中的仪表板](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/)。
 
@@ -179,7 +177,7 @@ Power BI 服务允许在整个组织中共享报表和仪表板。 在本部分�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，了解了如何使用 [Microsoft Power BI](https://powerbi.microsoft.com/) 在 Azure HDInsight 中可视化 [Apache Spark](https://azure.microsoft.com/services/hdinsight/) 群集中的数据。 请前进到下一篇文章，了解如何将在 Spark 中注册的数据拉取到 Power BI 等 BI 分析工具中。
+在本教程中，你已了解了如何使用 Microsoft Power BI 在 Azure HDInsight 中直观显示 Apache Spark 群集中的数据。 请继续学习下一篇文章，试着创建一个机器学习应用程序。
 
 > [!div class="nextstepaction"]
-> [运行 Apache Spark 流式处理作业](apache-spark-eventhub-streaming.md)
+> [创建机器学习应用程序](./apache-spark-ipython-notebook-machine-learning.md)

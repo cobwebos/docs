@@ -1,31 +1,29 @@
 ---
-title: 适用于 Azure VM 的 Chef 扩展 | Microsoft Docs
+title: 适用于 Azure Vm 的 Chef 扩展
 description: 使用 Chef VM 扩展将 Chef 客户端部署到虚拟机。
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
-ms.author: roiyz
-ms.openlocfilehash: 6bd3ea4e664523fe8014be40c51d573ed5158ecf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: akjosh
+ms.openlocfilehash: a21b8f2fea7433e9f65fd790321a28ea47a38c79
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60800269"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76544712"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>适用于 Linux 和 Windows 的 Chef VM 扩展
 
 Chef Software 为 Linux 和 Windows 提供了一个 DevOps 自动化平台，用于管理物理服务器配置和虚拟服务器配置。 Chef VM 扩展是一个用于在虚拟机上启用 Chef 的扩展。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
 
@@ -51,7 +49,7 @@ Chef VM 扩展要求目标虚拟机连接到 Internet 以便从内容分发网�
   "properties": {
     "publisher": "Chef.Bootstrap.WindowsAzure",
     "type": "[parameters('chef_vm_extension_type')]",
-    "typeHandlerVersion": "1210.12",
+    "typeHandlerVersion": "1210.13",
     "settings": {
       "bootstrap_options": {
         "chef_server_url": "[parameters('chef_server_url')]",
@@ -69,25 +67,25 @@ Chef VM 扩展要求目标虚拟机连接到 Internet 以便从内容分发网�
 ### <a name="core-property-values"></a>核心属性值
 
 | 名称 | 值/示例 | 数据类型
-| ---- | ---- | ---- 
+| ---- | ---- | ----
 | apiVersion | `2017-12-01` | 字符串（日期） |
-| 发布者 | `Chef.Bootstrap.WindowsAzure` | string |
+| publisher | `Chef.Bootstrap.WindowsAzure` | 字符串 |
 | type | `LinuxChefClient` (Linux)、`ChefClient` (Windows) | string |
-| typeHandlerVersion | `1210.12` | 字符串（双精度） |
+| typeHandlerVersion | `1210.13` | 字符串（双精度） |
 
 ### <a name="settings"></a>设置
 
 | 名称 | 值/示例 | 数据类型 | 必需？
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | 字符串 (url) | Y |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | string | Y |
-| settings/runlist | `recipe[mycookbook::default]` | string | Y |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | 字符串 | Y |
+| settings/runlist | `recipe[mycookbook::default]` | 字符串 | Y |
 
 ### <a name="protected-settings"></a>受保护的设置
 
-| 名称 | 示例 | 数据类型 | 必需？
+| “属性” | 示例 | 数据类型 | 必需？
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | Y |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | 字符串 | Y |
 
 <!--
 ### Linux-specific settings
@@ -103,9 +101,9 @@ Chef VM 扩展要求目标虚拟机连接到 Internet 以便从内容分发网�
 
 ## <a name="template-deployment"></a>模板部署
 
-可使用 Azure 资源管理器模板部署 Azure VM 扩展。 可以使用模板部署一台或多台虚拟机，安装 Chef 客户端，连接到 Chef 服务器并根据 [Run-list](https://docs.chef.io/run_lists.html) 定义的内容在服务器上执行初始配置。
+可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 可以使用模板部署一台或多台虚拟机，安装 Chef 客户端，连接到 Chef 服务器并根据 [Run-list](https://docs.chef.io/run_lists.html) 定义的内容在服务器上执行初始配置。
 
-可以在 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm)中找到包含 Chef VM 扩展的示例资源管理器模板。
+可以在[Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm)中找到包含 Chef VM 扩展的示例资源管理器模板。
 
 虚拟机扩展的 JSON 配置可以嵌套在虚拟机资源内，或放置在资源管理器 JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/resource-manager-template-child-resource.md)。
 
@@ -119,7 +117,7 @@ az vm extension set \
   --vm-name myExistingVM \
   --name LinuxChefClient \
   --publisher Chef.Bootstrap.WindowsAzure \
-  --version 1210.12 --protected-settings '{"validation_key": "<validation_key>"}' \
+  --version 1210.13 --protected-settings '{"validation_key": "<validation_key>"}' \
   --settings '{ "bootstrap_options": { "chef_server_url": "<chef_server_url>", "validation_client_name": "<validation_client_name>" }, "runlist": "<run_list>" }'
 ```
 
@@ -152,6 +150,9 @@ C:\Packages\Plugins\Chef.Bootstrap.WindowsAzure.ChefClient\
 | 51 | VM 的操作系统不支持此扩展 | |
 
 可以在 [Chef VM 扩展自述文件](https://github.com/chef-partners/azure-chef-extension)中找到更多故障排除信息。
+
+> [!NOTE]
+> 对于直接与 Chef 相关的任何其他内容，请联系[Chef 支持](https://www.chef.io/support/)。
 
 ## <a name="next-steps"></a>后续步骤
 

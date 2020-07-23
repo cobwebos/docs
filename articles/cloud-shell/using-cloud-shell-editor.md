@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: 7f597bb5cba1a12bdb93325fe2b877ffc644e3e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60199184"
 ---
 # <a name="using-the-azure-cloud-shell-editor"></a>使用 Azure Cloud Shell 编辑器
@@ -52,5 +52,5 @@ Azure Cloud Shell 包括从开源 [Monaco 编辑器](https://github.com/Microsof
 通过 [Monaco 编辑器](https://github.com/Microsoft/monaco-editor)使用 Monarch 语法定义中的上游功能支持 Cloud Shell 编辑器中的语言突出显示支持。 若要了解如何做出贡献，请阅读 [Monaco 参与者指南](https://github.com/Microsoft/monaco-editor/blob/master/CONTRIBUTING.md)。
 
 ## <a name="next-steps"></a>后续步骤
-[尝试 Cloud Shell 中的 Bash 快速入门](quickstart.md)
-[查看集成 Cloud Shell 工具的完整列表](features.md)
+[试用 Cloud Shell](quickstart.md) 
+ 上的 Bash 快速入门[查看集成 Cloud Shell 工具的完整列表](features.md)

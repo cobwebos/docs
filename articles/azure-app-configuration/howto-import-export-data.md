@@ -1,73 +1,68 @@
 ---
-title: 导入或导出数据与 Azure 应用程序配置 |Microsoft Docs
-description: 了解如何导入或导出数据到或从 Azure 应用程序配置
+title: 通过 Azure 应用配置导入或导出数据
+description: 了解如何在 Azure 应用配置中导入或导出数据
 services: azure-app-configuration
-documentationcenter: ''
-author: yegu-ms
-manager: balans
-editor: ''
-ms.assetid: ''
+author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 02/24/2019
-ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: 377c5088d39821e87412c517540b3190b0a14a00
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.date: 02/25/2020
+ms.author: lcozzens
+ms.openlocfilehash: 5b3d6d0561d7d6d6b23cb4f579b0988850da9771
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393275"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80056868"
 ---
 # <a name="import-or-export-configuration-data"></a>导入或导出配置数据
 
-Azure 应用程序配置支持的数据导入和导出操作。 使用这些操作可以使用你的应用程序配置存储区和代码之间的大容量和交换数据中的配置数据项目。 例如，您可以设置用于测试的一个应用配置存储区和另一个用于生产。 因此，无需两次输入数据，然后可以复制它们通过的文件之间的应用程序设置。
+Azure 应用配置支持数据导入和导出操作。 使用这些操作可以在应用配置存储和代码项目之间批量处理配置数据和交换数据。 例如，可以设置一个应用配置存储用于测试，另一个用于生产。 可以在它们之间复制应用程序设置，这样就无需两次输入数据。
 
-本文提供导入和导出数据与应用程序配置的指南。
+本文提供了有关使用应用配置导入和导出数据的指南。 如果要设置与 GitHub 存储库的持续同步，请参阅[Github 操作](https://aka.ms/azconfig-gha1)。
 
 ## <a name="import-data"></a>导入数据
 
-导入提供的配置从现有源，而不是手动输入存储在应用程序配置数据。 使用导入函数将数据迁移到应用程序配置存储区或从多个源聚合数据。 应用配置支持从 JSON、 YAML 或属性文件导入。
+"导入" 会将配置数据引入现有源的应用配置存储中。 使用 import 函数将数据迁移到应用配置存储，或聚合多个源中的数据。 应用配置支持从 JSON、YAML 或属性文件导入。
 
-通过使用导入数据[Azure 门户](https://portal.azure.com)或[Azure CLI](./scripts/cli-import.md)。 在 Azure 门户中执行以下步骤：
+使用[Azure 门户](https://portal.azure.com)或[Azure CLI](./scripts/cli-import.md)导入数据。 在 Azure 门户中执行以下步骤：
 
-1. 浏览到您的应用程序的配置存储区，然后选择**导入/导出**。
+1. 浏览到应用配置存储，并从 "**操作**" 菜单中选择 "**导入/导出**"。
 
-2. 上**导入**选项卡上，选择**源服务** > **配置文件**。
+1. 在 "**导入**" 选项卡上，选择 "**源服务**  >  **配置文件**"。
 
-3. 选择**语言** > **文件类型**。
+1. 选择 "语言" 并选择所需**的**输入类型。
 
-4. 选择**文件夹**图标，并浏览到要导入的文件。
+1. 选择**文件夹**图标，并浏览到要导入的文件。
 
     ![导入文件](./media/import-file.png)
 
-5. 选择**分隔符**，并根据需要输入**前缀**要用于导入的密钥名称。
+1. 选择一个**分隔符**，并根据需要输入用于导入密钥名称的**前缀**。
 
-6. （可选） 选择**标签**。
+1. 还可以选择一个**标签**。
 
-7. 选择**应用**来完成导入。
+1. 选择 "**应用**" 以完成导入。
 
-    ![完成导入文件](./media/import-file-complete.png)
+    ![导入文件已完成](./media/import-file-complete.png)
 
 ## <a name="export-data"></a>导出数据
 
-导出将写入到另一个目标应用程序配置中存储的配置数据。 例如，使用导出函数，以将数据保存到使用应用程序代码嵌入在部署过程中的文件的应用程序配置存储区中。
+导出将存储在应用配置中的配置数据写入另一个目标。 例如，使用导出功能将应用配置存储中的数据保存到在部署期间嵌入到应用程序代码中的文件。
 
-通过使用导出数据[Azure 门户](https://portal.azure.com)或[Azure CLI](./scripts/cli-export.md)。 在 Azure 门户中执行以下步骤：
+使用[Azure 门户](https://portal.azure.com)或[Azure CLI](./scripts/cli-export.md)导出数据。 在 Azure 门户中执行以下步骤：
 
-1. 浏览到您的应用程序的配置存储区，然后选择**导入/导出**。
+1. 浏览到应用配置存储，并选择 "**导入/导出**"。
 
-2. 上**导出**选项卡上，选择**服务为目标** > **配置文件**。
+1. 在 "**导出**" 选项卡上，选择 "**目标服务**  >  **配置文件**"。
 
-3. （可选） 输入**前缀**，然后选择**标签**和中的时间点要导出的密钥。
+1. 根据需要输入**前缀**，并选择要导出的密钥的**标签**和时间点。
 
-4. 选择**文件类型** > **分隔符**。
+1. 选择**文件类型**  >  **分隔符**。
 
-5. 选择**应用**完成导出。
+1. 选择 "**应用**" 以完成导出。
 
     ![导出文件已完成](./media/export-file-complete.png)
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [创建一个 ASP.NET Core Web 应用](./quickstart-aspnet-core-app.md)  
+> [创建 ASP.NET Core Web 应用](./quickstart-aspnet-core-app.md)  

@@ -1,27 +1,17 @@
 ---
-title: Azure PowerShell 脚本示例 - 使用流量管理器在全球范围内缩放应用 | Microsoft Docs
-description: Azure PowerShell 脚本示例 - 缩放具有高可用性体系结构的全球 Web 应用
-services: app-service\web
-documentationcenter: ''
-author: syntaxc4
-manager: erikre
-editor: ''
+title: PowerShell：使用流量管理器进行缩放
+description: 了解如何使用 Azure PowerShell 自动部署和管理应用服务。 本示例演示如何使用流量管理器在全球范围内缩放应用。
 tags: azure-service-management
 ms.assetid: 470f0129-1efe-462c-a029-5c66e04158a8
-ms.service: app-service
-ms.devlang: multiple
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 03/20/2017
-ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 1591cf379c21c660df429dc7abb27ecd828a2ea9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6ffcf22b640d6393ed48d803f6f52bac5334d4b7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136384"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74684326"
 ---
 # <a name="scale-a-web-app-worldwide-with-a-high-availability-architecture"></a>缩放具有高可用性体系结构的全球 Web 应用
 
@@ -47,7 +37,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/new-aztrafficmanagerprofile) | 创建流量管理器配置文件。 |

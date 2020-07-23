@@ -1,36 +1,33 @@
 ---
 title: 快速入门：创建知识库 - REST、Python - QnA Maker
-titlesuffix: Azure Cognitive Services
 description: 此 Python 基于 REST 的快速入门详细介绍如何以编程方式创建一个示例 QnA Maker 知识库，该知识库会显示在认知服务 API 帐户的 Azure 仪表板中。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
-ms.topic: quickstart
-ms.date: 01/24/2019
-ms.author: diberry
-ms.openlocfilehash: 9aa5b85a00de495478897ec70393f6c22ee20fc5
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.date: 12/16/2019
+ROBOTS: NOINDEX,NOFOLLOW
+ms.custom: RESTCURL2020FEB27, tracking-python
+ms.topic: how-to
+ms.openlocfilehash: 5facd58553a1a66d2c7986a0b7629f8a36b5c972
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788751"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608513"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>快速入门：在 QnA Maker 中使用 Python 创建知识库
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>快速入门：通过 Python 在 QnA Maker 中创建知识库
 
-本快速入门将指导你完成以编程方式创建和发布示例 QnA Maker 知识库的过程。 QnA Maker 自动从[数据源](../Concepts/data-sources-supported.md)中从半结构化内容（例如常见问题解答）中自动提取问题和解答。 用于知识库的模型是在 API 请求的正文中发送的 JSON 中定义的。 
+本快速入门将指导你完成以编程方式创建和发布示例 QnA Maker 知识库的过程。 QnA Maker 自动从[数据源](../Concepts/knowledge-base.md)中从半结构化内容（例如常见问题解答）中自动提取问题和解答。 用于知识库的模型是在 API 请求的正文中发送的 JSON 中定义的。
 
 本快速入门调用了 QnA Maker API：
-* [创建知识库](https://go.microsoft.com/fwlink/?linkid=2092179)
+* [创建知识库](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [获取操作详细信息](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
+
+[参考文档](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  | [Python 示例](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py)
+
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Python 3.7](https://www.python.org/downloads/)
-* 必须已有一个 QnA Maker 服务。 若要检索密钥，请在仪表板的“资源管理”下选择“密钥”。
-
-[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
+* [Python 3。7](https://www.python.org/downloads/)
+* 您必须具有[QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥和终结点（包括资源名称），请在 Azure 门户中为资源选择“快速入门”****。
 
 ## <a name="create-a-knowledge-base-python-file"></a>创建知识库 Python 文件
 
@@ -43,7 +40,14 @@ ms.locfileid: "65788751"
 [!code-python[Add the required dependencies](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=1-1 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>添加必需的常量
-在上述必需的依赖项后，添加访问 QnA Maker 所必需的常量。 将 `subscriptionKey` 变量的值替换为你自己的 QnA Maker 密钥。
+在上述必需的依赖项后，添加访问 QnA Maker 所必需的常量。 将 `<your-qna-maker-subscription-key>` 和 `<your-resource-name>` 的值替换为你自己的 QnA Maker 密钥和资源名称。
+
+在 Program 类的顶部，添加必需的常量来访问 QnA Maker。
+
+设置以下值：
+
+* `<your-qna-maker-subscription-key>` - **密钥**是一个 32 字符的字符串，可以在“快速入门”页的 QnA Maker 资源上的 Azure 门户中使用。 这与预测终结点密钥不同。
+* `<your-resource-name>` - **资源名称**用于构造用于创作的创作终结点 URL，其格式为 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`。 这与用于查询预测终结点的 URL 不同。
 
 [!code-python[Add the required constants](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=5-13 "Add the required constants")]
 
@@ -61,11 +65,12 @@ ms.locfileid: "65788751"
 
 ## <a name="add-function-to-create-kb"></a>添加函数以创建知识库
 
-添加以下函数，以发出用于创建知识库的 HTTP POST 请求。 此 API 调用将在标头字段 **Location** 中返回包括操作 ID 的 JSON 响应。 使用操作 ID 来确定知识库是否已成功创建。 `Ocp-Apim-Subscription-Key` 是用于身份验证的 QnA Maker 服务密钥。 
+添加以下函数，以发出用于创建知识库的 HTTP POST 请求。
+此 API 调用将在标头字段 **Location** 中返回包括操作 ID 的 JSON 响应。 使用操作 ID 来确定知识库是否已成功创建。 `Ocp-Apim-Subscription-Key` 是用于身份验证的 QnA Maker 服务密钥。
 
 [!code-python[Add function to create KB](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=48-59 "Add function to create KB")]
 
-此 API 调用将返回包括操作 ID 的 JSON 响应。 使用操作 ID 来确定知识库是否已成功创建。 
+此 API 调用将返回包括操作 ID 的 JSON 响应。 使用操作 ID 来确定知识库是否已成功创建。
 
 ```JSON
 {
@@ -83,7 +88,7 @@ ms.locfileid: "65788751"
 
 [!code-python[Add function to check creation status](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=61-67 "Add function to check creation status")]
 
-此 API 调用返回包含操作状态的 JSON 响应： 
+此 API 调用返回包含操作状态的 JSON 响应：
 
 ```JSON
 {
@@ -95,7 +100,7 @@ ms.locfileid: "65788751"
 }
 ```
 
-重复调用，直到成功或失败： 
+重复调用，直到成功或失败：
 
 ```JSON
 {
@@ -109,7 +114,7 @@ ms.locfileid: "65788751"
 ```
 
 ## <a name="add-main-code-block"></a>添加主代码块
-以下循环定期轮询创建操作状态，直到该操作完成。 
+以下循环定期轮询创建操作状态，直到该操作完成。
 
 [!code-python[Add main code block](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=70-96 "Add main code block")]
 
@@ -123,7 +128,7 @@ python create-new-knowledge-base-3x.py
 
 创建知识库以后，即可在 QnA Maker 门户 - [My knowledge bases](https://www.qnamaker.ai/Home/MyServices)（我的知识库）页中查看它。 选择要查看的知识库名称，例如“QnA Maker 常见问题解答”。
 
-[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

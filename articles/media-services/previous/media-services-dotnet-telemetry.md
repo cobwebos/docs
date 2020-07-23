@@ -1,6 +1,6 @@
 ---
 title: 使用 .NET 配置 Azure 媒体服务遥测 | Microsoft 文档
-description: 本文说明了如何通过 .NET SDK 使用 Azure 媒体服务遥测。
+description: 本文说明如何通过 .NET SDK 使用 Azure 媒体服务遥测。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 1ffaefc51121aeb7421d6e49a3c0e58c76d4391e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61464940"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-net"></a>使用 .NET 配置 Azure 媒体服务遥测 
@@ -34,14 +34,14 @@ ms.locfileid: "61464940"
 
 或
 
-- 使用媒体服务 .NET SDK 中支持的内容来读取存储数据。 本文说明了如何为指定的 AMS 帐户启用遥测，以及如何使用 Azure 媒体服务 .NET SDK 查询指标。  
+- 使用媒体服务 .NET SDK 中支持的内容来读取存储数据。 本文说明了如何为指定的 AMS 帐户启用遥测，以及如何使用 Azure 媒体服务 .NET SDK 查询度量值。  
 
 ## <a name="configuring-telemetry-for-a-media-services-account"></a>为媒体服务帐户配置遥测
 
 启用遥测需要执行以下步骤：
 
 - 获取已附加到媒体服务帐户的存储帐户的凭据。 
-- 创建一个通知终结点，将其 **EndPointType** 设置为 **AzureTable**，并使 endPontAddress 指向存储表。
+- 创建一个通知终结点，将其 EndPointType 设置为 AzureTable，并使 endPontAddress 指向存储表   。
 
 ```csharp
         INotificationEndPoint notificationEndPoint = 
@@ -63,11 +63,11 @@ ms.locfileid: "61464940"
 
 ## <a name="consuming-telemetry-information"></a>使用遥测信息
 
-有关使用遥测信息的信息，请参阅[这篇文章](media-services-telemetry-overview.md)。
+有关使用遥测信息的信息，请参阅[此](media-services-telemetry-overview.md)文章。
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-1. 设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
+1. 设置开发环境，并在 app.config 文件中填充连接信息，如[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
 
 2. 将以下元素添加到 app.config 文件中定义的 **appSettings**：
 
@@ -77,7 +77,7 @@ ms.locfileid: "61464940"
  
 ## <a name="example"></a>示例  
     
-以下示例说明了如何为指定的 AMS 帐户启用遥测，以及如何使用 Azure 媒体服务 .NET SDK 查询指标。  
+以下示例说明如何为指定的 AMS 帐户启用遥测，以及如何使用 Azure 媒体服务 .NET SDK 查询度量值。  
 
 ```csharp
 using System;

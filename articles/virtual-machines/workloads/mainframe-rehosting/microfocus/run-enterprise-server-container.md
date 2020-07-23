@@ -1,174 +1,176 @@
 ---
-title: Azure 虚拟机上的 Docker 容器中运行微焦点 Enterprise Server 4.0
-description: 通过 Azure 虚拟机上的 Docker 容器中运行微焦点企业服务器在重新托管在 IBM z/OS 大型机工作负荷。
+title: 在 Azure 上的 Docker 容器中运行微聚焦企业服务器 5.0 |Microsoft Docs
+description: 使用 Azure 虚拟机（Vm）上的微焦点开发和测试环境 Rehost IBM z/OS 大型机工作负荷。
 services: virtual-machines-linux
 documentationcenter: ''
-author: njray
-ms.author: sread
-ms.date: 04/02/2019
-ms.topic: article
+author: maggsl
+ms.author: edprice
+manager: edprice
+editor: edprice
+ms.topic: conceptual
+ms.date: 06/29/2020
+tags: ''
+keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 30d99c3f4767eb50361f7074c0d508fcf309faca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3cc561a7f7f6f58c439a70315eba857e63def09d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61488272"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85561240"
 ---
-# <a name="run-micro-focus-enterprise-server-40-in-a-docker-container-on-azure"></a>在 Azure 上的 Docker 容器中运行微焦点 Enterprise Server 4.0
+# <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>在 Azure 上的 Docker 容器中运行微聚焦企业服务器5。0
 
-在 Azure 上，可以在 Docker 容器中运行微焦点 Enterprise Server 4.0。 本教程演示如何。 它使用 Windows CICS （客户信息控制系统） acctdemo 演示企业服务器。
+可以在 Azure 上的 Docker 容器中运行微聚焦企业服务器5.0。 本教程将向您介绍如何操作。 它使用适用于企业服务器的 Windows CICS （客户信息控制系统） acctdemo 演示。
 
-Docker 将添加到应用程序的可移植性和隔离。 例如，可以导出的 Docker 映像从一个 Windows VM 运行在另一个，或从存储库复制到使用 Docker 的 Windows 服务器。 在具有相同配置的新位置中运行的 Docker 映像，而无需安装企业服务器。 它的映像的一部分。 许可注意事项仍适用。
+Docker 增加了应用程序的可移植性和隔离性。 例如，可以从一个 Windows 虚拟机（VM）导出一个 Docker 映像，使其在另一个 Windows 虚拟机（VM）上运行，或者从存储库导出到使用 Docker 的 Windows server。 Docker 映像在具有相同配置的新位置运行，无需安装企业服务器。 它是映像的一部分。 许可注意事项仍适用。
 
-本教程会安装**Windows 2016 数据中心与容器**从 Azure Marketplace 虚拟机 (VM)。 此 VM 包括**Docker 18.09.0**。 下面的步骤说明如何将容器部署，运行它，以及与 3270 仿真程序，然后连接到它。
+本教程通过 Azure Marketplace 安装**带有容器 VM 的 Windows 2016 Datacenter** 。 此 VM 包含**Docker 18.09.0**。 下面的步骤演示了如何部署容器，运行它，然后使用3270模拟器连接到该容器。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-开始之前，请查看这些系统必备组件：
+在开始之前，请先查看以下先决条件：
 
-- Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+-   Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-- Micro Focus 软件和有效的许可证 （或试用版许可证）。 如果你是现有的 Micro Focus 客户，请联系 Micro Focus 代表。 否则为[请求试用版](https://www.microfocus.com/products/enterprise-suite/enterprise-server/trial/)。
+-   微聚焦软件和有效许可证（或试用许可证）。 如果你是现有的微聚焦客户，请联系你的微侧重点代表。 否则，[请求试用](https://www.microfocus.com/products/enterprise-suite/enterprise-server/trial/)。
 
-     > [!NOTE]
-     > Enterprise Server 4.0 包含 Docker 演示文件。 本教程使用 ent\_服务器\_dockerfile\_4.0\_windows.zip。 访问从同一个位置访问企业服务器安装文件，或转至*Micro Focus*若要开始。
+    > [!Note] 
+    > Docker 演示文件包含在企业服务器5.0 中。 本教程使用 ent \_ server \_ dockerfile \_ 5.0 \_windows.zip。 从访问企业服务器安装文件的同一位置访问它，或转到 "*微*" 以开始使用。
 
-- 文档[企业服务器和企业开发人员](https://www.microfocus.com/documentation/enterprise-developer/#")。
+-   [企业服务器和企业开发人员](https://www.microfocus.com/documentation/enterprise-developer/#%22)的文档。
 
 ## <a name="create-a-vm"></a>创建 VM
 
-1. 从客户端保护媒体\_服务器\_dockerfile\_4.0\_windows.zip 文件。 保护 ES Docker Prod XXXXXXXX.mflic 许可文件 （若要生成 Docker 映像的必需）。
+1.  保护 ent \_ server \_ dockerfile \_ 5.0 \_windows.zip 文件中的媒体。 保护 mflic 授权文件（构建 Docker 映像所需的文件）。
 
-2. 创建 VM。 若要执行此操作，请打开 Azure 门户中，选择**创建资源**从左上方，并按筛选*windows server*。 在结果中，选择**Windows Server 2016 Datacenter – 与容器**。
+2.  创建 VM。 为此，请打开 Azure 门户，从左上方菜单中选择 "**创建资源**"，并按 " *windows server 操作系统*" 进行筛选。 在结果中，选择 " **Windows Server"。** 在下一屏幕中，选择 " **Windows Server 2016 Datacenter – With 容器**"。
 
-     ![Azure 门户的搜索结果](media/01-portal.png)
+    ![Azure 门户搜索结果的屏幕截图](./media/run-image-1.png)
 
-3. 若要配置的 VM 的属性，选择实例详细信息：
+3.  若要配置 VM 的属性，请选择 "实例详细信息"：
 
-    1. 选择 VM 大小。 对于本教程中，请考虑使用**标准 DS2\_v2**具有 2 个 Vcpu 和 7 GB 内存的 VM。
+    1.  选择 VM 大小。 对于本教程，请考虑使用**标准 DS2 \_ v3** VM，其中包含2个个 VCPU 和 16 GB 的内存。
 
-    2. 选择**地区**并**资源组**你想要将部署到。
+    2.  选择要部署到的**区域**和**资源组**。
 
-    3. 有关**可用性选项**，使用默认设置。
+    3.  对于**可用性选项**，请使用默认设置。
 
-    4. 有关**用户名**，键入你想要使用的管理员帐户和密码。
+    4.  对于 "**用户名**"，请键入要使用的管理员帐户和密码。
 
-    5. 请确保**端口 3389 RDP**处于打开状态。 仅需要此端口向公众公开，以便你可以登录到 VM。 接受所有默认值，然后单击**查看 + 创建**。
+    5.  请确保已打开**端口 3389 RDP** 。 只需公开此端口，即可登录到 VM。 然后，接受所有默认值，然后单击 "**查看 + 创建**"。
 
-     ![创建虚拟机窗格](media/container-02.png)
+    !["创建虚拟机" 窗格的屏幕截图](./media/run-image-2.png)
 
-4. 等待部署完成 （需要花费几分钟）。 消息，指明已创建你的 VM。
+4.  等待部署完成（几分钟）。 将出现一条消息，指出已创建你的 VM。
 
-5. 单击**转到资源**若要转到**概述**在 VM 边栏选项卡。
+5.  选择 "**中转到资源**" 以前往 VM 的 "**概述**" 边栏选项卡。
 
-6. 在右侧，单击**Connect**按钮。 **连接到虚拟机**选项显示在右侧。
+6.  在右侧，选择 "**连接**"。 右侧将显示 "**连接到虚拟机**" 选项。
 
-7. 单击**下载 RDP 文件**按钮以下载 RDP 文件，可用于将附加到 VM。
+7.  选择 "**下载 RDP 文件**" 按钮，下载允许附加到 VM 的远程桌面协议（RDP）文件。
 
-8. 文件下载完毕后，打开它并键入用户名和密码为 VM 创建中。
+8.  文件下载完成后，打开它，键入为 VM 创建的用户名和密码。
 
-     > [!NOTE]
-     > 不使用公司凭据登录。 （您可能想要使用这些假设 RDP 客户端。 不这样做。）
+    > [!Note]    
+    > 不要使用企业凭据登录。 （RDP 客户端假设你可能想要使用它们。 不会。）
 
-9.  选择**其他选择**，然后选择你的虚拟机凭据。
+9.  选择 "**更多**选择"，然后选择 VM 凭据。
 
-在此情况下，VM 正在运行且通过 RDP 连接。 你的登录中并可供下一步。
+此时，VM 正在运行，并通过 RDP 连接。 你已登录并准备好进行下一步。
 
-## <a name="create-a-sandbox-directory-and-upload-the-zip-file"></a>创建一个沙盒目录并上传 zip 文件
+## <a name="create-a-sandbox-directory-and-upload-the-zip-file"></a>创建沙盒目录并上传 zip 文件
 
-1.  用于上传的演示和许可证文件在 VM 上创建一个目录。 例如， **c:\\沙盒**。
+1.  在 VM 上创建一个目录，你可以在其中上载演示和许可证文件。 例如， **C： \\ 沙盒**。
 
-2.  上传**ent\_服务器\_dockerfile\_4.0\_windows.zip**并**ES Docker Prod XXXXXXXX.mflic**为你创建的目录的文件。
+2.  将**ent \_ server \_ dockerfile \_ 5.0 \_windows.zip**和**mflic**文件上传到所创建的目录。
 
-3.  提取到该 zip 文件的内容**ent\_服务器\_dockerfile\_4.0\_windows**提取过程创建目录。 此目录包含自述文件 （如.html 和.txt 文件） 和两个子目录**EnterpriseServer**并**示例**。
+3.  将 zip 文件的内容提取到提取过程创建的**ent \_ server \_ dockerfile \_ 5.0 \_ windows**目录中。 此目录包含一个自述文件（如 .html 和 .txt 文件）和两个子目录（ **EnterpriseServer**和**示例**）。
 
-4.  复制**ES Docker Prod XXXXXXXX.mflic**到 c:\\沙盒\\ent\_server\_dockerfile\_4.0\_windows\\EnterpriseServer 和 c:\\沙盒\\ent\_服务器\_dockerfile\_4.0\_windows\\示例\\CICS 目录。
+4.  将**mflic**复制到 C： \\ 沙盒 \\ ent \_ server \_ dockerfile \_ 5.0 \_ windows \\ EnterpriseServer 和 c： \\ 沙盒 \\ ent \_ server \_ dockerfile \_ 5.0 \_ windows \\ 示例 \\ CICS 目录。  
+      
+    > [!Note]
+    > 请确保将许可文件复制到这两个目录。 它们对于 Docker build 步骤是必需的，以确保映像获得正确许可。
 
-> [!NOTE]
-> 请确保将授权文件复制到这两个目录。 它们所需的 Docker 生成步骤，以确保映像正确获得许可。
+## <a name="check-docker-version-and-create-base-image"></a>检查 Docker 版本并创建基础映像
 
-## <a name="check-docker-version-and-create-base-image"></a>检查 Docker 版本，并创建基本映像
+> [!Important]  
+> 创建相应的 Docker 映像的过程分为两个步骤。 首先，创建企业服务器5.0 基础映像。 然后为 x64 平台创建另一个映像。 尽管可以创建 x86 （32位）映像，但请使用64位映像。
 
-> [!IMPORTANT]
-> 创建适当的 Docker 映像是一个两步过程。 首先，创建企业 Server 4.0 基本映像。 然后，创建另一个映像针对 x64 平台。 虽然您可以创建 x86 （32 位） 映像，使用 64 位映像。
+1.  打开命令提示符。
 
-1. 打开命令提示符。
+2.  检查是否已安装 Docker。 在命令提示符下，键入： **docker 版本**  
+    例如，当编写此版本时，将18.09.0 版本。
 
-2. 检查安装了 Docker。 在命令提示符处，键入：
+3.  若要更改目录，请键入：  
+    **cd \\沙盒 \\ ent \_ server \_ dockerfile \_ 5.0 \_ windows \\ EnterpriseServer**。
 
-    ```
-        docker version
-    ```
+4.  键入**bld.bat IacceptEULA** ，开始初始基本映像的生成过程。 等待几分钟以便运行此进程。 在结果中，请注意创建了两个映像：一个用于 x64，一个用于 x86：
 
-     例如，版本是 18.09.0 时写入。
+    ![显示图像的命令窗口](./media/run-image-3.png)
 
-3. 若要更改目录，键入**cd \Sandbox\ent_server_dockerfiles_4.0_windows\EnterpriseServer**。
+5.  若要为 CICS 演示创建最终映像，请通过键入**cd \\ 沙箱 \\ ent \_ server \_ dockerfile \_ 5.0 \_ windows \\ 示例 \\ cics**切换到 cics 目录。
 
-4. 类型**bld.bat IacceptEULA**开始初始基本映像的生成过程。 等待几分钟时间来运行此过程。 在结果中，已创建的两个映像，请注意，一个用于 x64 和 x86:
+6.  若要创建映像，请键入**bld.bat x64**。 请等待几分钟，让进程运行，并显示一条消息，指出已创建该映像。
 
-     ![命令窗口，其中显示图像](media/container-04.png)
+7.  键入**docker 映像**以显示 VM 上安装的所有 docker 映像的列表。 请确保**microfocus/acctdemo**是其中之一。
 
-5. 若要创建此最终图像可查看 CICS 演示，请切换到 CICS 目录通过键入**cd\\沙盒\\ent\_server\_dockerfile\_4.0\_windows\\示例\\CICS**。
+    ![显示 acctdemo 映像的命令窗口](./media/run-image-4.png)
 
-6. 若要创建映像，请键入**bld.bat x64**。 等待几分钟时间运行的进程和条消息，指出已创建映像。
+## <a name="run-the-image"></a>运行映像
 
-7. 类型**docker 映像**以显示所有安装在 VM 上的 Docker 映像的列表。 请确保**microfocus/es acctdemo**是其中之一。
+1.  若要启动企业服务器5.0 和 acctdemo 应用程序，请在命令提示符下键入：
 
-     ![命令窗口，其中显示 es acctdemo 图像](media/container-05.png)
+    ~~~
+    **docker run -p 16002:86/tcp -p 16002:86/udp -p 9040-9050:9040-9050 -p 9000-9010:9000-9010 -ti --network="nat" --rm microfocus/es-acctdemo:win\_5.0\_x64
+    ~~~
 
-## <a name="run-the-image"></a>运行映像 
+1.  安装3270终端模拟器（如[x3270](http://x3270.bgp.nu/) ），并使用它将端口9040附加到运行的映像。
 
-1.  若要启动企业 Server 4.0 和 acctdemo 应用程序，在命令提示符下键入：
+2.  获取 acctdemo 容器的 IP 地址，以便 Docker 可充当它所管理的容器的动态主机配置协议（DHCP）服务器：
 
-    ```
-         docker run -p 16002:86/tcp -p 16002:86/udp -p 9040-9050:9040-9050 -p 9000-9010:9000-9010 -ti --network="nat" --rm microfocus/es-acctdemo:win_4.0_x64
-    ```
-
-2.  安装 3270 终端仿真程序，如[x3270](http://x3270.bgp.nu/)并使用它来附加，通过端口 9040，到正在运行的映像。
-
-3.  获取 acctdemo 容器的 IP 地址，以便 Docker 可以充当容器的 DHCP 服务器管理：
-
-    1.  获取正在运行的容器的 ID。 类型**Docker ps**在命令提示符并记下 ID (**22a0fe3159d0**在此示例中)。 将其保存供下一步。
+    1.  获取正在运行的容器的 ID。 在命令提示符下键入**Docker ps** ，并记下 ID （在本示例中为**22a0fe3159d0** ）。 将其保存到下一步。
 
     2.  若要获取 acctdemo 容器的 IP 地址，请使用上一步中的容器 ID，如下所示：
 
-    ```
-       docker inspect <containerID> --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
-    ```
+    ~~~
+    docker inspect \<containerID\> --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
+    ~~~
 
-       例如：
+    例如：
 
-    ```   
-        docker inspect 22a0fe3159d0 --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
-    ```
-4. 请注意 acctdemo 图像的 IP 地址。 例如，下面的输出中的地址是 172.19.202.52。
+    ~~~
+    docker inspect 22a0fe3159d0 --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
+    ~~~
 
-     ![命令窗口中显示的 IP 地址](media/container-06.png)
+4. 请注意 acctdemo 映像的 IP 地址。 例如，以下输出中的地址为172.19.202.52。
 
-5. 装载映像使用仿真程序。 配置模拟器以使用 acctdemo 映像和端口 9040 的地址。 在这里，它具有**172.19.202.52:9040**。 将会类似。 **登录到 CICS**屏幕随即打开。
+    ![显示 IP 地址的命令窗口屏幕截图](./media/run-image-5.png)
 
-    ![登录到 CICS 屏幕](media/container-07.png)
+5. 使用模拟器装载映像。 将仿真程序配置为使用 acctdemo 映像和端口9040的地址。 下面是**172.19.202.52： 9040**。 你的情况将类似。 "**登录到 CICS** " 屏幕将打开。
 
-6. 通过输入登录到 CICS 区域**SYSAD**有关**USERID**并**SYSAD**有关**密码**。
+    ![登录到 CICS 的屏幕截图](./media/run-image-6.png)
 
-7. 清除屏幕上，使用仿真程序的键映射。 对于 x3270，选择**键映射**菜单选项。
+6. 输入**用户 id**的**SYSAD**和**SYSAD**作为**密码**，以登录到 CICS 区域。
 
-8. 若要启动 acctdemo 应用程序，请键入**ACCT**。 显示应用程序的初始屏幕。
+7. 使用仿真程序的快捷键映射清除屏幕。 对于 x3270，请选择 "**快捷键映射**" 菜单选项。
 
-     ![帐户演示屏幕](media/container-08.png)
+8. 若要启动 acctdemo 应用程序，请键入 "**帐户**"。 将显示应用程序的初始屏幕。
 
-9. 尝试显示帐户类型。 例如，键入**D**请求并**11111**有关**帐户**。 若要尝试其他帐户数字是 22222、 33333，等等。
+     ![帐户演示的屏幕截图](./media/run-image-7.png)
 
-     ![帐户演示屏幕](media/container-09.png)
+9. 试用显示帐户类型。 例如，键入**D**作为请求，将**11111**键入**帐户**。 要尝试的其他帐号为22222、33333等。
 
-10. 若要显示在 Enterprise Server 管理控制台，请转到命令提示符并键入**启动 http:172.19.202.52:86**
+    ![帐户演示的屏幕截图](./media/run-image-8.png)
 
-     ![企业服务器管理控制台](media/container-010.png)
+10. 若要显示 Enterprise Server 管理控制台，请打开命令提示符，然后键入**start http：172.19.202.52： 86**。
 
-就这么简单！ 现在你正在运行和管理 Docker 容器中的 CICS 应用程序。
+    ![企业服务器管理控制台](media/run-image-9.png)
+
+就这么简单！ 现在正在运行并在 Docker 容器中管理 CICS 应用程序。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 Azure 上安装微焦点 Enterprise Server 4.0 和企业级开发版 4.0](./set-up-micro-focus-azure.md)
-- [大型机应用程序迁移](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)
+-   [在 Azure 上安装微聚焦企业服务器5.0 和企业开发人员5。0](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/set-up-micro-focus-azure)
+
+-   [大型机应用程序迁移](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)

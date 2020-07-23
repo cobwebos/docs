@@ -1,50 +1,47 @@
 ---
 title: 获取资源更改
-description: 了解如何查找资源已更改时，并获取更改的属性的列表。
-services: resource-graph
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 05/10/2019
-ms.topic: conceptual
-ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: b6ef57a3f39c82be30d92aef72c1bbe03b653768
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+description: 了解如何查找资源的更改时间，获取已更改属性的列表以及评估差异。
+ms.date: 05/20/2020
+ms.topic: how-to
+ms.openlocfilehash: 3d65b5d7e968fda17f80d790ae3171398e2cb73b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236509"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135538"
 ---
 # <a name="get-resource-changes"></a>获取资源更改
 
-资源获取通过每日使用、 重新配置，以及甚至重新部署的更改。
-更改可以来自个人或通过自动化过程。 大多数更改是设计使然，但有时不是。 与过去 14 天的更改历史记录，Azure 资源图形，可以：
+在日常使用、重新配置甚至是重新部署的过程中，资源都会发生更改。
+更改可能是个人或者自动化过程做出的。 大部分更改是依设计做出的，但有时并非如此。 Azure Resource Graph 提供过去 14 天的更改历史记录，可让你：
 
-- 查找在 Azure 资源管理器属性上检测到更改的时间。
-- 了解在更改事件中已更改的属性。
+- 查找在 Azure 资源管理器属性中检测到更改的时间
+- 对于每个资源更改，请参阅属性更改详细信息
+- 查看检测到的更改之前和之后的资源的完整比较
 
-更改检测和详细信息很有价值的以下示例方案：
+对于以下示例场景，更改检测和详细信息很有用：
 
-- 在了解事件管理过程_可能_相关更改。 更改事件的时间在特定时段内查询并评估更改详细信息。
-- 保持配置管理数据库，称为 CMDB，保持最新状态。 而不是刷新所有资源和其完整的属性组的计划的频率，只能获取更改的内容。
-- 了解哪些其他属性可能已更改时某个资源更改符合性状态。 这些附加属性的计算可以深入了解可能需要管理通过 Azure 策略定义其他属性。
+- 在事件管理期间了解可能相关的更改。 查询特定时段内的更改事件，并评估更改详细信息。
+- 使配置管理数据库（称为 CMDB）保持最新。 无需按计划的频率刷新所有资源及其完整的属性集，只获取更改的内容。
+- 了解当某个资源更改了符合性状态时可能已更改的其他属性。 评估这些附加属性可以洞察可能需要通过 Azure Policy 定义进行管理的其他属性。
 
-本文介绍如何收集此信息通过资源关系图的 SDK。 若要查看此信息在 Azure 门户中的，请参阅 Azure 策略[更改历史记录](../../policy/how-to/determine-non-compliance.md#change-history-preview)或 Azure 活动日志[更改历史记录](../../../azure-monitor/platform/activity-log-view.md#azure-portal)。
+本文介绍如何通过 Resource Graph 的 SDK 收集此信息。 若要在 Azure 门户中查看此信息，请参阅 Azure Policy 的[更改历史记录](../../policy/how-to/determine-non-compliance.md#change-history)或 Azure 活动日志[更改历史记录](../../../azure-monitor/platform/activity-log.md#view-the-activity-log)。 有关从基础结构层对应用程序所做的更改的详细信息，请参阅 Azure Monitor 中的[使用应用程序更改分析（预览版）](../../../azure-monitor/app/change-analysis.md)。
 
 > [!NOTE]
-> 在资源图表中的更改详细信息适用于资源管理器属性。 有关跟踪虚拟机内部的更改，请参阅 Azure 自动化[更改跟踪](../../../automation/automation-change-tracking.md)或 Azure 策略[Vm 的来宾配置](../../policy/concepts/guest-configuration.md)。
+> Resource Graph 中的更改详细信息适用于资源管理器属性。 若要跟踪虚拟机内的更改，请参阅 Azure 自动化的[更改跟踪](../../../automation/change-tracking.md)或 Azure Policy 的 [VM 来宾配置](../../policy/concepts/guest-configuration.md)。
 
 > [!IMPORTANT]
-> 在 Azure 资源图表中的更改历史记录处于公共预览状态。
+> Azure Resource Graph 中的更改历史记录目前以公共预览版提供。
 
-## <a name="find-when-changes-were-detected"></a>查找时检测到更改
+## <a name="find-detected-change-events-and-view-change-details"></a>查找检测到的更改事件并查看更改详细信息
 
-查看资源更改的内容的第一步是时间的要查找与该资源的时间段内相关的更改事件。 通过完成此步骤**resourceChanges** REST 终结点。
+查看资源发生的更改的第一步是查找某个时段内与该资源相关的更改事件。 每个更改事件还包含有关资源的哪些信息发生更改的详细信息。 此步骤通过 resourceChanges REST 终结点完成。
 
-**ResourceChanges**终结点需要在请求正文中的两个参数：
+resourceChanges 终结点接受请求正文中的以下参数：
 
-- **resourceId**:要查找的更改的 Azure 资源。
-- **间隔**:具有的属性_启动_并_最终_针对何时检查更改事件使用的日期**Zulu 时区 (Z)** 。
+- resourceId \[必需\]：要在其上查找更改的 Azure 资源。
+- interval \[必需\]：具有使用“祖鲁语时区 (Z)”检查更改事件的 start 和 end 日期的属性。
+- fetchPropertyChanges（可选）：一个布尔值属性，设置响应对象是否包括属性更改。
 
 示例请求正文：
 
@@ -52,72 +49,135 @@ ms.locfileid: "66236509"
 {
     "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount",
     "interval": {
-        "start": "2019-03-28T00:00:00.000Z",
-        "end": "2019-03-31T00:00:00.000Z"
-    }
+        "start": "2019-09-28T00:00:00.000Z",
+        "end": "2019-09-29T00:00:00.000Z"
+    },
+    "fetchPropertyChanges": true
 }
 ```
 
-使用上面的请求正文的 REST API URI **resourceChanges**是：
+对于上述请求正文，resourceChanges 的 REST API URI 为：
 
 ```http
 POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChanges?api-version=2018-09-01-preview
 ```
 
-响应类似于以下示例：
+响应如以下示例所示：
 
 ```json
 {
-    "changes": [{
-            "changeId": "{\"beforeId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-09T00:00:00.000Z\",\"afterId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-10T00:00:00.000Z\"}",
+    "changes": [
+        {
+            "changeId": "{\"beforeId\":\"3262e382-9f73-4866-a2e9-9d9dbee6a796\",\"beforeTime\":\"2019-09-28T00:45:35.012Z\",\"afterId\":\"6178968e-981e-4dac-ac37-340ee73eb577\",\"afterTime\":\"2019-09-28T00:52:53.371Z\"}",
             "beforeSnapshot": {
-                "timestamp": "2019-03-29T01:32:05.993Z"
+                "snapshotId": "3262e382-9f73-4866-a2e9-9d9dbee6a796",
+                "timestamp": "2019-09-28T00:45:35.012Z"
             },
             "afterSnapshot": {
-                "timestamp": "2019-03-29T01:54:24.42Z"
-            }
+                "snapshotId": "6178968e-981e-4dac-ac37-340ee73eb577",
+                "timestamp": "2019-09-28T00:52:53.371Z"
+            },
+            "changeType": "Create"
         },
         {
-            "changeId": "9dc352cb-b7c1-4198-9eda-e5e3ed66aec8",
+            "changeId": "{\"beforeId\":\"a00f5dac-86a1-4d86-a1c5-a9f7c8147b7c\",\"beforeTime\":\"2019-09-28T00:43:38.366Z\",\"afterId\":\"3262e382-9f73-4866-a2e9-9d9dbee6a796\",\"afterTime\":\"2019-09-28T00:45:35.012Z\"}",
             "beforeSnapshot": {
-                "timestamp": "2019-03-28T10:30:19.68Z"
+                "snapshotId": "a00f5dac-86a1-4d86-a1c5-a9f7c8147b7c",
+                "timestamp": "2019-09-28T00:43:38.366Z"
             },
             "afterSnapshot": {
-                "timestamp": "2019-03-28T21:12:31.337Z"
-            }
+                "snapshotId": "3262e382-9f73-4866-a2e9-9d9dbee6a796",
+                "timestamp": "2019-09-28T00:45:35.012Z"
+            },
+            "changeType": "Delete"
+        },
+        {
+            "changeId": "{\"beforeId\":\"b37a90d1-7ebf-41cd-8766-eb95e7ee4f1c\",\"beforeTime\":\"2019-09-28T00:43:15.518Z\",\"afterId\":\"a00f5dac-86a1-4d86-a1c5-a9f7c8147b7c\",\"afterTime\":\"2019-09-28T00:43:38.366Z\"}",
+            "beforeSnapshot": {
+                "snapshotId": "b37a90d1-7ebf-41cd-8766-eb95e7ee4f1c",
+                "timestamp": "2019-09-28T00:43:15.518Z"
+            },
+            "afterSnapshot": {
+                "snapshotId": "a00f5dac-86a1-4d86-a1c5-a9f7c8147b7c",
+                "timestamp": "2019-09-28T00:43:38.366Z"
+            },
+            "propertyChanges": [
+                {
+                    "propertyName": "tags.org",
+                    "afterValue": "compute",
+                    "changeCategory": "User",
+                    "changeType": "Insert"
+                },
+                {
+                    "propertyName": "tags.team",
+                    "afterValue": "ARG",
+                    "changeCategory": "User",
+                    "changeType": "Insert"
+                }
+            ],
+            "changeType": "Update"
+        },
+        {
+            "changeId": "{\"beforeId\":\"19d12ab1-6ac6-4cd7-a2fe-d453a8e5b268\",\"beforeTime\":\"2019-09-28T00:42:46.839Z\",\"afterId\":\"b37a90d1-7ebf-41cd-8766-eb95e7ee4f1c\",\"afterTime\":\"2019-09-28T00:43:15.518Z\"}",
+            "beforeSnapshot": {
+                "snapshotId": "19d12ab1-6ac6-4cd7-a2fe-d453a8e5b268",
+                "timestamp": "2019-09-28T00:42:46.839Z"
+            },
+            "afterSnapshot": {
+                "snapshotId": "b37a90d1-7ebf-41cd-8766-eb95e7ee4f1c",
+                "timestamp": "2019-09-28T00:43:15.518Z"
+            },
+            "propertyChanges": [{
+                "propertyName": "tags.cgtest",
+                "afterValue": "hello",
+                "changeCategory": "User",
+                "changeType": "Insert"
+            }],
+            "changeType": "Update"
         }
     ]
 }
 ```
 
-每个检测到更改事件**resourceId**已**changeId** ，仅适用于该资源。 虽然**changeId**字符串有时可能包含其他属性，它只保证是唯一的。 更改记录都包括时间的之前和之后未拍摄快照。
-在此窗口中的某个时间点发生了更改事件。
+resourceId 的每个检测到的更改事件都具有以下属性：
 
-## <a name="see-what-properties-changed"></a>查看属性的更改
+- changeId - 此值对于该资源是唯一的。 changeId 字符串有时可能包含其他属性，但只能保证它是唯一的。
+- beforeSnapshot - 包含检测到更改之前创建的资源快照的 snapshotId 和 timestamp。
+- afterSnapshot - 包含检测到更改之后创建的资源快照的 snapshotId 和 timestamp。
+- changeType - 描述已针对 beforeSnapshot 和 afterSnapshot 之间的完整更改记录检测到的更改的类型。 值为：Create、Update 和 Delete。   仅当 changeType 为 Update 时，才包括 propertyChanges 属性数组。
+- propertyChanges - 此属性数组提供了 beforeSnapshot 和 afterSnapshot 之间已更新的所有资源属性的详细信息：
+  - propertyName - 已更改的资源属性的名称。
+  - changeCategory - 描述更改者类别。 值为：System 和 User。
+  - changeType - 描述已为单个资源属性检测到的更改的类型。
+    值为：Insert、Update、Remove。  
+  - beforeValue - beforeSnapshot 中资源属性的值。 当 changeType 为 Insert 时，不会显示。
+  - afterValue - afterSnapshot 中资源属性的值。 当 changeType 为 Remove 时，不会显示。
 
-与**changeId**从**resourceChanges**终结点， **resourceChangeDetails** REST 终结点，然后用于获取更改事件的详细信息。
+## <a name="compare-resource-changes"></a>比较资源更改
 
-**ResourceChangeDetails**终结点需要在请求正文中的两个参数：
+有了来自 resourceChanges 终结点的 changeId 后，就可以使用 resourceChangeDetails REST 终结点获取资源更改之前和之后的快照。  
 
-- **resourceId**:要查找的更改的 Azure 资源。
-- **changeId**:唯一更改事件**resourceId**从收集**resourceChanges**。
+resourceChangeDetails 终结点要求在请求正文中使用两个参数：
+
+- resourceId：要比较其更改的 Azure 资源。
+- changeId：从 resourceChanges 收集的 resourceId 的唯一更改事件。 
 
 示例请求正文：
 
 ```json
 {
     "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount",
-    "changeId": "{\"beforeId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-09T00:00:00.000Z\",\"afterId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-10T00:00:00.000Z\"}"
+    "changeId": "{\"beforeId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-09T00:00:00.000Z\",\"afterId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"afterTime\":'2019-05-10T00:00:00.000Z\"}"
 }
 ```
 
-使用上面的请求正文的 REST API URI **resourceChangeDetails**是：
+对于上述请求正文，resourceChangeDetails 的 REST API URI 是：
 
 ```http
 POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChangeDetails?api-version=2018-09-01-preview
 ```
 
-响应类似于以下示例：
+响应如以下示例所示：
 
 ```json
 {
@@ -219,12 +279,13 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 }
 ```
 
-**beforeSnapshot**并**afterSnapshot**每人给拍摄快照时的时间和属性在该时间。 这些快照之间的某些点处发生的更改。 看一下上面的示例中，我们可以看到已更改的属性已**supportsHttpsTrafficOnly**。
+beforeSnapshot 和 afterSnapshot 分别提供快照创建时间以及当时的属性。 更改是在这些快照之间的某个时间点发生的。 在以上示例中我们可以看到，更改的属性是 supportsHttpsTrafficOnly。
 
-若要以编程方式的结果进行比较，比较**内容**的每个快照，以确定的不同部分。 如果将整个快照进行比较**时间戳**始终显示为尽管所预期的差异。
+若要对结果进行比较，请使用 resourceChanges 中的 changes 属性，或评估 resourceChangeDetails 中每个快照的 content 部分，以确定差异。    如果对快照进行比较，timestamp 始终会显示为差异，不过这符合预期。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅在中使用的语言[初学者查询](../samples/starter.md)。
-- 使用中的高级，请参阅[高级查询](../samples/advanced.md)。
-- 了解如何[浏览资源](../concepts/explore-resources.md)。
+- 请参阅[初学者查询](../samples/starter.md)中使用的语言。
+- 请参阅[高级查询](../samples/advanced.md)中的高级用法。
+- 详细了解如何[浏览资源](../concepts/explore-resources.md)。
+- 若要了解如何频繁地执行查询，请参阅[针对受限制请求的指南](../concepts/guidance-for-throttled-requests.md)。

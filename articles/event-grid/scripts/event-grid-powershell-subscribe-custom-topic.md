@@ -1,23 +1,15 @@
 ---
 title: Azure PowerShell 脚本示例 - 订阅自定义主题 | Microsoft Docs
-description: Azure PowerShell 脚本示例 - 订阅自定义主题
-services: event-grid
-documentationcenter: na
-author: tfitzmac
-manager: timlt
-ms.service: event-grid
+description: 本文提供了一个示例 Azure PowerShell 脚本，演示如何订阅自定义主题的事件网格事件。
 ms.devlang: powershell
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/10/2018
-ms.author: tomfitz
-ms.openlocfilehash: f16a02cd110397b1ef6bb3aa00ea12c44e4b9563
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 07/08/2020
+ms.openlocfilehash: 89917554da3d5b338ae17332ea8847d6313ca534
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66117141"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171170"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-powershell"></a>使用 PowerShell 订阅自定义主题的事件
 
@@ -43,7 +35,7 @@ ms.locfileid: "66117141"
 
 此脚本使用以下命令创建事件订阅。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | 创建事件网格订阅。 |
 

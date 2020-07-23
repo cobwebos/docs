@@ -1,27 +1,19 @@
 ---
-title: Azure PowerShell 脚本示例 - 手动缩放 Web 应用 | Microsoft 文档
-description: Azure PowerShell 脚本示例 - 手动缩放 Web 应用
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: PowerShell：手动缩放 Web 应用
+description: 了解如何使用 Azure PowerShell 自动部署和管理应用服务。 此示例演示如何手动缩放应用。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: de5d4285-9c7d-4735-a695-288264047375
-ms.service: app-service
-ms.devlang: multiple
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 03/20/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 44bc78ee0e9d3fddf91aaeb677c53716c2ce2597
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: mvc, seodec18
+ms.openlocfilehash: cb0af65f938baf24b2af574b21e09e099b70ba85
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136365"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80060287"
 ---
 # <a name="scale-a-web-app-manually-using-powershell"></a>使用 PowerShell 手动缩放 Web 应用
 
@@ -47,7 +39,7 @@ Remove-AzResourceGroup -Name $ResourceGroupName -Force
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | 创建应用服务计划。 |

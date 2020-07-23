@@ -1,32 +1,23 @@
 ---
-title: 在 Azure 中监视 Service Fabric 群集 | Microsoft Docs
+title: 在 Azure 中监视 Service Fabric 群集
 description: 在本教程中，你将学习如何通过查看 Service Fabric 事件、查询 EventStore API、监视 perf 计数器以及查看运行状况报告来监视群集。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 03/13/2019
+ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc
-ms.openlocfilehash: 9838c6e31e3bb7031d98e615fd96049f22dd8d30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5cde4967e85dbdab0b2d7177f9c09836a2082db2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158069"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244950"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>教程：在 Azure 中监视 Service Fabric 群集
 
 在任何云环境中开发、测试和部署工作负荷时，监视和诊断至关重要。 本教程是一个系列的第二部分，介绍如何使用事件、性能计数器和运行状况报告来监视和诊断 Service Fabric 群集。   有关更多信息，请阅读有关[群集监视](service-fabric-diagnostics-overview.md#platform-cluster-monitoring)和[基础结构监视](service-fabric-diagnostics-overview.md#infrastructure-performance-monitoring)的概述。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 查看 Service Fabric 事件
@@ -50,7 +41,7 @@ ms.locfileid: "66158069"
 在开始学习本教程之前：
 
 * 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* 安装 [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
+* 安装 [Azure PowerShell](/powershell/azure/install-az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
 * 创建安全的 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md) 
 * 为群集设置[诊断集合](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configurediagnostics_anchor)
 * 在群集中启用 [EventStore 服务](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configureeventstore_anchor)
@@ -133,7 +124,7 @@ ServiceFabricOperationalEvent
 | project EventId, EventName = 'NodeUpOperational', TaskName, Computer, EventMessage, TimeGenerated
 | sort by TimeGenerated 
 ``` 
- 
+
 使用 HealthState == 3（错误）返回运行状况报告，并从 EventMessage 字段中提取其他属性：
 
 ```kusto
@@ -200,7 +191,7 @@ ServiceFabricReliableServiceEvent
 | sort by TimeGenerated desc
 ```
 
-可以看到服务 runasync 在启动和完成（通常发生在部署和升级时）时的不同事件。
+可以看到服务 `runasync` 在启动和完成时（通常发生在部署和升级时）的不同事件。
 
 ![Service Fabric 解决方案 Reliable Services](media/service-fabric-tutorial-monitor-cluster/oms-reliable-services-events-selection.png)
 
@@ -236,11 +227,11 @@ ServiceFabricReliableActorEvent
 ## <a name="view-performance-counters-with-azure-monitor-logs"></a>使用 Azure Monitor 日志查看性能计数器
 要查看性能计数器，请转至 [Azure 门户](https://portal.azure.com)以及你在其中创建 Service Fabric 分析解决方案的资源组。 
 
-选择资源“ServiceFabric (mysfomsworkspace)”，并选择“Log Analytics 工作区”，然后选择“高级设置”。
+选择资源“ServiceFabric (mysfomsworkspace)”，并选择“Log Analytics 工作区”，然后选择“高级设置”  。
 
-单击“数据”，然后单击“Windows 性能计数器”。 此时会显示一个可以选择的默认计数器列表，此外还可以设置收集间隔。 还可以添加要收集的[其他性能计数器](service-fabric-diagnostics-event-generation-perf.md)。 此[参考文章](/windows/desktop/PerfCtrs/specifying-a-counter-path)中介绍了正确的格式。 单击“保存”，然后单击“确定”。
+单击“数据”，然后单击“Windows 性能计数器”。 此时会显示一个可以选择的默认计数器列表，此外还可以设置收集间隔。 还可以添加要收集的[其他性能计数器](service-fabric-diagnostics-event-generation-perf.md)。 此[参考文章](/windows/desktop/PerfCtrs/specifying-a-counter-path)中介绍了正确的格式。 单击“保存”，然后单击“确定” 。
 
-关闭“高级设置”边栏选项卡，然后在“常规”标题下选择“工作区摘要”。 对于启用的每个解决方案，都有一个图形磁贴，包括 Service Fabric 的磁贴。 单击 **Service Fabric** 图形以转到 Service Fabric 分析解决方案。
+关闭“高级设置”边栏选项卡，然后在“常规”标题下选择“工作区摘要” 。 对于启用的每个解决方案，都有一个图形磁贴，包括 Service Fabric 的磁贴。 单击 **Service Fabric** 图形以转到 Service Fabric 分析解决方案。
 
 操作通道和 Reliable Services 事件也有图形磁贴。 已选择计数器的流入数据的图形表示形式将会显示在“节点指标”下。 
 
@@ -484,7 +475,7 @@ Get-ServiceFabricService -ApplicationName fabric:/System | Get-ServiceFabricServ
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 查看 Service Fabric 事件
@@ -496,5 +487,5 @@ Get-ServiceFabricService -ApplicationName fabric:/System | Get-ServiceFabricServ
 > [!div class="nextstepaction"]
 > [缩放群集](service-fabric-tutorial-scale-cluster.md)
 
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
 [template]: https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json

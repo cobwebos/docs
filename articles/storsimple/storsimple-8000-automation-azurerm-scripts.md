@@ -1,25 +1,16 @@
 ---
-title: 使用 Azure 资源管理器脚本管理 StorSimple 设备 | Microsoft Docs
+title: 使用 AzureRM PowerShell 脚本管理 StorSimple 设备
 description: 了解如何使用 Azure 资源管理器脚本自动执行 StorSimple 作业
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: how-to
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 646b862733e8727c9c8729f1ac038fa88cfa0580
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 009e8c7e1cb59d68f3d3aa15de32ec47083095f9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60726411"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513100"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>使用基于 Azure 资源管理器 SDK 的脚本管理 StorSimple 设备
 
@@ -57,7 +48,7 @@ ms.locfileid: "60726411"
 
 此部分通过示例脚本详细介绍了运行脚本时需要执行的各种步骤。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保具备以下条件：
 
@@ -77,7 +68,7 @@ ms.locfileid: "60726411"
         mkdir C:\scripts\StorSimpleSDKTools
         cd C:\scripts\StorSimpleSDKTools
     ```    
-2. [将 NuGet CLI 下载](https://www.nuget.org/downloads)到上一步中创建的文件夹下。 nuget.exe 的版本有很多种。 选择与 SDK 对应的版本。 每个下载链接都直接指向 .exe 文件。 请务必右键单击文件，并将它保存到计算机，而不是在浏览器中运行它。
+2. [将 NuGet CLI 下载](https://www.nuget.org/downloads)到上一步中创建的文件夹下。 nuget.exe__ 的版本有很多种。 选择与 SDK 对应的版本。 每个下载链接都直接指向 .exe__ 文件。 请务必右键单击文件，并将它保存到计算机，而不是在浏览器中运行它。
 
     也可以运行下面的命令，将此脚本下载并存储到先前创建的同一个文件夹中。
     

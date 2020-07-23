@@ -1,32 +1,24 @@
 ---
-title: 适用于 Windows Server 的 Service Fabric 独立包 | Microsoft Docs
-description: 适用于 Windows Server 的 Azure Service Fabric 独立包的说明和内容。
-services: service-fabric
-documentationcenter: .net
+title: 适用于 Windows Server 的 Azure Service Fabric 独立包
+description: 适用于 Windows Server 的 Azure{1}{2}Service Fabric 独立包的说明和内容。
 author: maburlik
-manager: chackdan
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/10/2017
 ms.author: maburlik
-ms.openlocfilehash: facdcd162826e6f77ace098391459cba00061c4f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fb9a52510788a275bdeea67cd5c1fdd2e894738d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60711078"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261012"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>适用于 Windows Server 的 Service Fabric 独立包的内容
-在 [已下载](https://go.microsoft.com/fwlink/?LinkId=730690) 的 Service Fabric 独立包中，找到以下文件：
+在[下载的](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric 独立包中，可找到以下文件：
 
 | **文件名** | **简短说明** |
 | --- | --- |
 | CreateServiceFabricCluster.ps1 |PowerShell 脚本，用于通过 ClusterConfig.json 中的设置创建群集。 |
-| RemoveServiceFabricCluster.ps1 |一个 PowerShell 脚本，它可以使用 ClusterConfig.json 中的设置删除群集。 |
+| RemoveServiceFabricCluster.ps1 |PowerShell 脚本，用于通过 ClusterConfig.json 中的设置删除群集。 |
 | AddNode.ps1 |PowerShell 脚本，用于在当前计算机上将节点添加到现有的部署群集。 |
 | RemoveNode.ps1 |PowerShell 脚本，用于在当前计算机上将节点从现有的部署群集中删除。 |
 | CleanFabric.ps1 |PowerShell 脚本，用于从当前计算机中清除独立 Service Fabric 安装。 应使用以前的 MSI 安装的自身关联卸载程序来删除以前的安装。 |
@@ -45,14 +37,14 @@ ms.locfileid: "60711078"
 | --- | --- |
 | ClusterConfig.Unsecure.DevCluster.json |群集配置示例文件，其中包含非安全型三节点式单计算机（或虚拟机）开发群集的设置，这些设置包括群集中每个节点的信息。 |
 | ClusterConfig.Unsecure.MultiMachine.json |群集配置示例文件，其中包含非安全型多计算机（或虚拟机）群集的设置，这些设置包括群集中每个计算机的信息。 |
-| ClusterConfig.Windows.DevCluster.json |群集配置示例文件，其中包含安全型三节点式单计算机（或虚拟机）开发群集的所有设置，这些设置包括群集中每个节点的信息。 此群集使用 [Windows 标识](https://msdn.microsoft.com/library/ff649396.aspx)进行保护。 |
-| ClusterConfig.Windows.MultiMachine.json |群集配置示例文件，其中包含使用 Windows 安全性措施的安全型多计算机（或虚拟机）群集的所有设置，这些设置包括安全群集中每个计算机的信息。 此群集使用 [Windows 标识](https://msdn.microsoft.com/library/ff649396.aspx)进行保护。 |
+| ClusterConfig.Windows.DevCluster.json |群集配置示例文件，其中包含安全型三节点式单计算机（或虚拟机）开发群集的所有设置，这些设置包括群集中每个节点的信息。 此群集使用 [Windows 标识](/previous-versions/msp-n-p/ff649396(v=pandp.10))进行保护。 |
+| ClusterConfig.Windows.MultiMachine.json |群集配置示例文件，其中包含使用 Windows 安全性措施的安全型多计算机（或虚拟机）群集的所有设置，这些设置包括安全群集中每个计算机的信息。 此群集使用 [Windows 标识](/previous-versions/msp-n-p/ff649396(v=pandp.10))进行保护。 |
 | ClusterConfig.x509.DevCluster.json |群集配置示例文件，其中包含安全型三节点式单计算机（或虚拟机）开发群集的所有设置，这些设置包括群集中每个节点的信息。 此群集使用 x509 证书进行保护。 |
 | ClusterConfig.x509.MultiMachine.json |群集配置示例文件，其中包含安全型多计算机（或虚拟机）群集的所有设置，这些设置包括安全群集中每个节点的信息。 此群集使用 x509 证书进行保护。 |
-| ClusterConfig.gMSA.Windows.MultiMachine.json |群集配置示例文件，其中包含安全型多计算机（或虚拟机）群集的所有设置，这些设置包括安全群集中每个节点的信息。 使用[组托管服务帐户](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx)保护该群集。 |
+| ClusterConfig.gMSA.Windows.MultiMachine.json |群集配置示例文件，其中包含安全型多计算机（或虚拟机）群集的所有设置，这些设置包括安全群集中每个节点的信息。 使用[组托管服务帐户](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11))保护该群集。 |
 
 ## <a name="cluster-configuration-samples"></a>群集配置示例
-可在以下 GitHub 页中找到最新版本的群集配置模板：[独立群集配置示例](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)。
+可在以下 GitHub 页面找到最新版本的群集配置模板：[独立群集配置示例](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)。
 
 ## <a name="independent-runtime-package"></a>独立运行时包
 在从[下载链接 - Service Fabric 运行时 - Windows Server](https://go.microsoft.com/fwlink/?linkid=839354) 部署群集的过程中，会自动下载最新的运行时包。

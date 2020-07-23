@@ -4,28 +4,25 @@ description: 了解因为 NIC 在 Azure VM 中被禁用而导致 RDP 失败时�
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 742026a8ff35f318f58674ebc2fb5c03e45161a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6bce1616ce0c7f7e42810a551acb2f02165ccf93
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60318997"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078623"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>无法通过远程桌面连接到 VM，因为网络接口被禁用
 
 本文介绍如何解决在禁用网络接口时无法与 Azure Windows 虚拟机 (VM) 建立远程桌面连接的问题。
 
-> [!NOTE]
-> Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用资源管理器部署模型。建议对新部署使用该模型，而不要使用经典部署模型。
 
 ## <a name="symptoms"></a>症状
 
@@ -35,7 +32,7 @@ ms.locfileid: "60318997"
 
 在执行这些步骤之前，请创建受影响 VM 的 OS 磁盘的快照作为备份。 有关详细信息，请参阅[拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
 
-若要为 VM 启用该接口，请使用串行控制台为 VM [重置网络接口](##reset-network-interface)。
+若要为 VM 启用该接口，请使用串行控制台为 VM [重置网络接口](#reset-network-interface)。
 
 ### <a name="use-serial-control"></a>使用串行控制台
 
@@ -43,22 +40,29 @@ ms.locfileid: "60318997"
 )。 如果未在 VM 上启用串行控制台，请参阅[重置网络接口](#reset-network-interface)。
 2. 检查网络接口的状态：
 
-        netsh interface show interface
+    ```console
+    netsh interface show interface
+    ```
 
     记下被禁用的网络接口的名称。
 
 3. 启用网络接口：
 
-        netsh interface set interface name="interface Name" admin=enabled
+    ```console
+    netsh interface set interface name="interface Name" admin=enabled
+    ```
 
     例如，如果网络接口名为“以太网 2”，请运行以下命令：
 
-        netsh interface set interface name=""Ethernet 2" admin=enabled
-
+    ```console
+    netsh interface set interface name="Ethernet 2" admin=enabled
+    ```
 
 4.  再次检查该网络接口的状态以确保该网络接口已启用。
 
-        netsh interface show interface
+    ```console
+    netsh interface show interface
+    ```
 
     此时无需重启 VM。 VM 将恢复为可访问的。
 

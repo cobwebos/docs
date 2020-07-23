@@ -1,85 +1,93 @@
 ---
-title: 获取我的应用门户-Azure Active Directory 的帮助 |Microsoft Docs
-description: 获取与登录到我的应用门户中执行常见任务的帮助。
+title: 获取“我的应用”门户的相关帮助 - Azure Active Directory | Microsoft Docs
+description: 获得有关在“我的应用”门户中登录和执行常见任务的帮助。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 03/21/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6e87ae0a8adf28176d9a97cbf1b78943179884a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: ed1f06e4747492c43d19a00c1091b2b4d7f7050f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60475021"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741886"
 ---
-# <a name="troubleshoot-problems-with-the-my-apps-portal"></a>我的应用门户的疑难解答
-如果遇到登录或使用的问题**我的应用**门户中，请尝试以下故障排除提示之前联系支持人员或管理员获取帮助。
+# <a name="troubleshoot-problems-with-the-my-apps-portal"></a>排查“我的应用”门户的相关问题
 
-## <a name="im-having-trouble-installing-the-my-apps-secure-sign-in-extension"></a>我遇到安装我的应用安全登录扩展
-如果遇到安装我的应用安全登录扩展时出现问题：
+如果在登录或使用“我的应用”门户时遇到问题，请尝试运用以下故障排除提示，然后再向支持人员或管理员求助。
 
-- 请确保使用支持的浏览器，其中包括：
+## <a name="im-having-trouble-installing-the-my-apps-secure-sign-in-extension"></a>安装“我的应用安全登录扩展”时遇到问题
 
-    - **Microsoft Edge.** 运行 Windows 10 周年纪念版或更高版本。
-    - **Google Chrome。** 运行 Windows 7 或更高版本，并在 Mac OS X 或更高版本。
-    - **Mozilla Firefox 26.0 或更高版本。** 运行 Windows XP SP2 或更高版本，并在 Mac OS X 10.6 或更高版本。
-    - **Internet Explorer 11。** Windows 7 或更高版本 （有限的支持） 上运行。
+如果在安装“我的应用安全登录扩展”时遇到问题：
 
-- 请确保打开浏览器扩展设置。
+- 确保使用的是支持的浏览器，其中包括：
 
-- 请尝试重新启动你的浏览器和登录到**我的应用**再次门户。
+    - Microsoft Edge： 在 Windows 10 周年纪念版或更高版本上运行。
 
-- 请尝试清除浏览器 cookie，然后重新启动并登录到**我的应用**再次门户。
+    - Google Chrome： 在 Windows 7 或更高版本，以及 Mac OS X 或更高版本上运行。
 
-## <a name="i-cant-sign-in-to-the-my-apps-portal"></a>我无法登录到**我的应用**门户
-如果你遇到登录问题**我的应用**门户中，可以尝试以下：
+    - Mozilla Firefox 26.0 或更高版本： 在 Windows XP SP2 或更高版本，以及 Mac OS X 10.6 或更高版本上运行。
 
-- 请确保使用正确的 URL。 它应该 https://myapps.microsoft.com或自定义的页面为你的组织，例如 https://myapps.microsoft.com/contoso.com。
+    - Internet Explorer 11： 在 Windows 7 或更高版本（支持受限）上运行。
 
-- 请确保你的密码正确无误并且尚未过期。 有关详细信息，请参阅[重置工作或学校密码](active-directory-passwords-update-your-own-password.md)。
+- 确保已打开浏览器扩展设置。
 
-- 请确保你的验证信息是最新且准确。 有关详细信息，请参阅[什么 Azure 多重身份验证对我而言用途？](multi-factor-authentication-end-user.md)或[更改您的安全信息的方法和信息](security-info-add-update-methods-overview.md)。
+- 尝试重启浏览器，然后重新登录到“我的应用”门户。
 
-- 添加**My App**门户 URL**互联 > 安全 > 受信任的站点**设置。
+- 尝试清除浏览器 Cookie，然后重新登录到“我的应用”门户。
 
-- 清除浏览器的缓存，然后尝试再次登录。
+## <a name="i-cant-sign-in-to-the-my-apps-portal"></a>我无法登录到“我的应用”门户
 
-## <a name="my-password-isnt-working"></a>我的密码不能正常工作
-如果你忘记了密码，永远不会收到一个来自你的组织、 锁定你的帐户，或者想要更改你的密码，请参阅[帮助，我忘记了 Azure AD 密码](active-directory-passwords-update-your-own-password.md)。
+如果在登录“我的应用”门户时遇到问题，可以尝试以下操作：
 
-## <a name="i-want-to-be-able-to-reset-my-own-password"></a>我想要能够重置我自己的密码
-要能够重置自己的密码，你的管理员必须首先打开功能为你的组织，，然后你必须更新并验证所需的验证方法。 有关如何更新您的验证方法的详细信息，请参阅[注册自助服务密码重置](active-directory-passwords-reset-register.md)。
+- 确保使用正确的 URL。 它应该为 https://myapps.microsoft.com 或组织的自定义页面，如 https://myapps.microsoft.com/contoso.com 。
 
-## <a name="im-getting-an-access-denied-message-when-i-start-an-app"></a>我收到启动应用时拒绝访问消息
-如果您收到了**访问被拒绝**消息后启动应用程序从**My App**门户中，可以尝试以下：
+- 确保密码正确且尚未过期。 有关详细信息，请参阅[重置工作或学校密码](active-directory-passwords-update-your-own-password.md)。
 
-- 请确保已安装[我的应用安全登录扩展](my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)和你正在使用[支持的浏览器](my-apps-portal-end-user-access.md#supported-browsers)。
+- 确保验证信息是最新的，且准确无误。 有关详细信息，请参阅 [Azure 多重身份验证对我而言有什么用途？](multi-factor-authentication-end-user.md)或[更改安全信息方法和信息](security-info-add-update-methods-overview.md)。
 
-- 请确保为应用程序中，使用正确的 URL 和 URL 位于你**互联 > 安全 > 受信任的站点**列表。
+- 将“我的应用”门户 URL 添加“Internet 属性”>“安全”>“受信任的站点”设置 。
 
-- 请确保你的密码正确无误并且尚未过期。 有关详细信息，请参阅[重置工作或学校密码](active-directory-passwords-update-your-own-password.md)。
+- 清除浏览器缓存，然后重新尝试登录。
 
-- 请确保你的验证信息是最新且准确。 有关详细信息，请参阅[什么 Azure 多重身份验证对我而言用途？](multi-factor-authentication-end-user.md)或[更改您的安全信息的方法和信息](security-info-add-update-methods-overview.md)。
+## <a name="my-password-isnt-working"></a>我的密码无法使用
 
-- 清除浏览器的缓存，然后尝试再次登录。
+如果忘记了密码、从来没有从组织处收到过密码、帐户被锁定，或者需要更改密码，请参阅[请为我提供帮助，我忘记了 Azure AD 密码](active-directory-passwords-update-your-own-password.md)。
 
-如果尝试这些操作后仍无法访问您的应用程序，必须与你组织的技术支持联系以获得帮助。
+## <a name="i-want-to-be-able-to-reset-my-own-password"></a>我想能够重置自己的密码
+
+为了能够重置你自己的密码，管理员必须先为你的组织启用此功能，然后你自己必须更新并验证所需的验证方法。 要详细了解如何更新验证方法，请参阅[注册自助式密码重置](active-directory-passwords-reset-register.md)。
+
+## <a name="im-getting-an-access-denied-message-when-i-start-an-app"></a>启动应用时，我收到“拒绝访问”消息
+
+如果是在从“我的应用”门户启动应用后收到“拒绝访问”消息，则可以尝试以下操作 ：
+
+- 确保已安装[我的应用安全登录扩展](my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)并使用[支持的浏览器](my-apps-portal-end-user-access.md#supported-browsers)。
+
+- 确保使用的是正确的应用 URL，且 URL 在“Internet 属性”>“安全”>“受信任的站点”列表中。
+
+- 确保密码正确且尚未过期。 有关详细信息，请参阅[重置工作或学校密码](active-directory-passwords-update-your-own-password.md)。
+
+- 确保验证信息是最新的，且准确无误。 有关详细信息，请参阅 [Azure 多重身份验证对我而言有什么用途？](multi-factor-authentication-end-user.md)或[更改安全信息方法和信息](security-info-add-update-methods-overview.md)。
+
+- 清除浏览器缓存，然后重新尝试登录。
+
+如果尝试这些操作后仍无法访问应用，则必须与组织的支持人员联系以获得帮助。
 
 ## <a name="next-steps"></a>后续步骤
-登录到后**我的应用**门户中，您还可以更新你的配置文件和帐户信息、 组信息和访问查看的信息 （如果您具有权限）。
 
-- [访问和我的应用门户上使用应用](my-apps-portal-end-user-access.md)。
+登录到“我的应用”门户后，还可以更新配置文件和帐户信息、组信息以及访问评审信息（如有权限）。
+
+- [访问并使用“我的应用”门户上的应用](my-apps-portal-end-user-access.md)。
 
 - [更改个人资料信息](my-apps-portal-end-user-update-profile.md)。
 
-- [查看和更新你与组相关的信息](my-apps-portal-end-user-groups.md)。
+- [查看和更新与组相关的信息](my-apps-portal-end-user-groups.md)。
 
-- [执行你自己的访问评审](my-apps-portal-end-user-access-reviews.md)。
+- [执行自己的访问评审](my-apps-portal-end-user-access-reviews.md)。

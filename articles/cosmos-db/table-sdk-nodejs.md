@@ -6,19 +6,18 @@ ms.subservice: cosmosdb-table
 ms.devlang: nodejs
 ms.topic: reference
 ms.date: 11/20/2018
-author: wmengmsft
-ms.author: wmeng
-ms.openlocfilehash: b849db465bb9a30456e9f93f9439c53cb26c9e52
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
-ms.translationtype: MT
+author: sakash279
+ms.author: akshanka
+ms.openlocfilehash: 52aebf5a4f2e5ea7b3b09ae105c9ea632416c27e
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480177"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167972"
 ---
 # <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>用于 Node.js 的 Azure Cosmos DB 表 API：发行说明和资源
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
-> * [.NET 标准](table-sdk-dotnet-standard.md)
+> * [.NET Standard](table-sdk-dotnet-standard.md)
 > * [Java](table-sdk-java.md)
 > * [Node.js](table-sdk-nodejs.md)
 > * [Python](table-sdk-python.md)
@@ -36,7 +35,7 @@ ms.locfileid: "66480177"
 
 ## <a name="release-notes"></a>发行说明
 
-### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 * 正式发布版
 
 ## <a name="release-and-retirement-dates"></a>发布日期和停用日期
@@ -44,7 +43,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新的 SDK 版本。 
 
-| Version | 发布日期 | 停用日期 |
+| 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |2017 年 11 月 15 日 |--- |
 

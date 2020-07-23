@@ -1,18 +1,18 @@
 ---
-title: 关于 Azure 点到站点路由 | Microsoft Docs
+title: Azure VPN 网关：关于 P2S 路由
 description: 本文介绍点到站点 VPN 路由的工作原理。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 03/24/2020
 ms.author: anzaman
-ms.openlocfilehash: 486a910226db5dc7b36aaf873e7bb8115eb78805
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4821f2eb694a36cf0570008b3e62ce39999c58d1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60653453"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80239749"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>关于点到站点 VPN 路由
 
@@ -24,15 +24,15 @@ Azure 当前支持两种远程访问协议：IKEv2 和 SSTP。 IKEv2 可用于�
 > 本文仅适用于 IKEv2。
 >
 
-## <a name="diagrams"></a>关于关系图
+## <a name="about-the-diagrams"></a><a name="diagrams"></a>关于关系图
 
 本文包含大量不同的关系图。 每节都介绍了不同的拓扑或配置。 考虑到本文的目的，站点到站点 (S2S) 和 VNet 到 VNet 连接的工作原理都相同，因为两者都是 IPsec 隧道。 本文中的所有 VPN 网关都基于路由。
 
-## <a name="isolatedvnet"></a>独立 VNet
+## <a name="one-isolated-vnet"></a><a name="isolatedvnet"></a>独立 VNet
 
-本示例中的点到站点 VPN 网关连接适用于未连接或未与其他任何虚拟网络 (VNet1) 对等互连的 VNet。 在此示例中，使用 SSTP 或 IKEv2 的客户端可以访问 VNet1。
+本示例中的点到站点 VPN 网关连接适用于未连接或未与其他任何虚拟网络 (VNet1) 对等互连的 VNet。 在此示例中，客户端可以访问 VNet1。
 
-![独立 VNet 路由](./media/vpn-gateway-about-point-to-site-routing/1.jpg "isolated VNet routing")
+![独立 VNet 路由](./media/vpn-gateway-about-point-to-site-routing/1.jpg "独立 VNet 路由")
 
 ### <a name="address-space"></a>地址空间
 
@@ -50,13 +50,13 @@ Azure 当前支持两种远程访问协议：IKEv2 和 SSTP。 IKEv2 可用于�
 
 * 非 Windows 客户端可以访问 VNet1
 
-## <a name="multipeered"></a>多个对等互连 VNet
+## <a name="multiple-peered-vnets"></a><a name="multipeered"></a>多个对等互连 VNet
 
-在此示例中，点到站点 VPN 网关连接适用于 VNet1。 VNet1 与 VNet2 对等互连。 VNet2 与 VNet3 对等互连。 VNet1 与 VNet4 对等互连。 VNet1 不与 VNet3 直接对等互连。 VNet1 已启用“允许网关传输”，VNet2 已启用“使用远程网关”。
+在此示例中，点到站点 VPN 网关连接适用于 VNet1。 VNet1 与 VNet2 对等互连。 VNet2 与 VNet3 对等互连。 VNet1 与 VNet4 对等互连。 VNet1 不与 VNet3 直接对等互连。 VNet1 已启用 "允许网关传输"，VNet2 和 VNet4 已启用 "使用远程网关"。
 
 使用 Windows 的客户端可以直接访问对等互连 VNet，但如果 VNet 对等互连或网络拓扑发生任何更改，必须重新下载 VPN 客户端。 非 Windows 客户端可直接访问对等互连 VNet。 访问不可传递，且仅限直接对等互连的 VNet。
 
-![多个对等互连 VNet](./media/vpn-gateway-about-point-to-site-routing/2.jpg "multiple peered VNets")
+![多个对等互连 VNet](./media/vpn-gateway-about-point-to-site-routing/2.jpg "多个对等互连 VNet")
 
 ### <a name="address-space"></a>地址空间：
 
@@ -80,13 +80,13 @@ Azure 当前支持两种远程访问协议：IKEv2 和 SSTP。 IKEv2 可用于�
 
 * 非 Windows 客户端可以访问 VNet1、VNet2 和 VNet4
 
-## <a name="multis2s"></a>使用 S2S VPN 连接的多个 VNet
+## <a name="multiple-vnets-connected-using-an-s2s-vpn"></a><a name="multis2s"></a>使用 S2S VPN 连接的多个 VNet
 
 在此示例中，点到站点 VPN 网关连接适用于 VNet1。 VNet1 使用站点到站点 VPN 连接连接到 VNet2。 VNet2 使用站点到站点 VPN 连接连接到 VNet3。 VNet1 和 VNet3 之间没有直接的对等互连或站点到站点 VPN 连接。 所有站点到站点连接均未针对路由运行 BGP。
 
 使用 Windows 或其他受支持 OS 的客户端只能访问 VNet1。 若要访问其他 VNet，必须使用 BGP。
 
-![多个 VNet 和 S2S](./media/vpn-gateway-about-point-to-site-routing/3.jpg "multiple VNets and S2S")
+![多个 VNet 和 S2S](./media/vpn-gateway-about-point-to-site-routing/3.jpg "多个 VNet 和 S2S")
 
 ### <a name="address-space"></a>地址空间
 
@@ -108,13 +108,13 @@ Azure 当前支持两种远程访问协议：IKEv2 和 SSTP。 IKEv2 可用于�
 
 * 非 Windows 客户端只能访问 VNet1
 
-## <a name="multis2sbgp"></a>使用 S2S VPN 的多个 VNet (BGP)
+## <a name="multiple-vnets-connected-using-an-s2s-vpn-bgp"></a><a name="multis2sbgp"></a>使用 S2S VPN 的多个 VNet (BGP)
 
 在此示例中，点到站点 VPN 网关连接适用于 VNet1。 VNet1 使用站点到站点 VPN 连接连接到 VNet2。 VNet2 使用站点到站点 VPN 连接连接到 VNet3。 VNet1 和 VNet3 之间没有直接的对等互连或站点到站点 VPN 连接。 所有站点到站点连接均针对路由运行 BGP。
 
 使用 Windows 或其他受支持的 OS 的客户端可以访问使用站点到站点 VPN 连接连接的所有 VNet，但必须将到已连接 VNet 的路由手动添加到 Windows 客户端。
 
-![多个 VNet 和 S2S (BGP)](./media/vpn-gateway-about-point-to-site-routing/4.jpg "multiple VNets and S2S BGP")
+![多个 VNet 和 S2S (BGP)](./media/vpn-gateway-about-point-to-site-routing/4.jpg "多个 VNet 和 S2S BGP")
 
 ### <a name="address-space"></a>地址空间
 
@@ -136,13 +136,13 @@ Azure 当前支持两种远程访问协议：IKEv2 和 SSTP。 IKEv2 可用于�
 
 * 非 Windows 客户端可以访问 VNet1、VNet2 和 VNet3
 
-## <a name="vnetbranch"></a>一个 VNet 和一个分支机构
+## <a name="one-vnet-and-a-branch-office"></a><a name="vnetbranch"></a>一个 VNet 和一个分支机构
 
 在此示例中，点到站点 VPN 网关连接适用于 VNet1。 VNet1 不与其他任何虚拟网络连接/对等互连，但通过未运行 BGP 的站点到站点 VPN 连接连接到本地站点。
 
 Windows 客户端和非 Windows 客户端只能访问 VNet1。
 
-![VNet 和分支机构的路由](./media/vpn-gateway-about-point-to-site-routing/5.jpg "routing with a VNet and a branch office")
+![使用 VNet 和分支机构进行路由](./media/vpn-gateway-about-point-to-site-routing/5.jpg "使用 VNet 和分支机构进行路由")
 
 ### <a name="address-space"></a>地址空间
 
@@ -162,13 +162,13 @@ Windows 客户端和非 Windows 客户端只能访问 VNet1。
 
 * 非 Windows 客户端只能访问 VNet1
 
-## <a name="vnetbranchbgp"></a>一个 VNet 和一个分支机构 (BGP)
+## <a name="one-vnet-and-a-branch-office-bgp"></a><a name="vnetbranchbgp"></a>一个 VNet 和一个分支机构 (BGP)
 
 在此示例中，点到站点 VPN 网关连接适用于 VNet1。 VNet1 不与其他任何虚拟网络连接/对等互连，但通过运行 BGP 的站点到站点 VPN 连接连接到本地站点 (Site1)。
 
 Windows 客户端可以访问 VNet 和其他分支机构 (Site1)，但必须将到 Site1 的路由手动添加到客户端。 非 Windows 客户端可以访问 VNet 以及本地分支机构。
 
-![一个 VNet 和一个分支机构 (BGP)](./media/vpn-gateway-about-point-to-site-routing/6.jpg "one VNet and a branch office")
+![一个 VNet 和一个分支机构 (BGP)](./media/vpn-gateway-about-point-to-site-routing/6.jpg "一个 VNet 和一个分支机构")
 
 ### <a name="address-space"></a>地址空间
 
@@ -189,13 +189,13 @@ Windows 客户端可以访问 VNet 和其他分支机构 (Site1)，但必须将�
 * 非 Windows 客户端可以访问 VNet1 和 Site1。
 
 
-## <a name="multivnets2sbranch"></a>使用 S2S 和分支机构连接的多个 VNet
+## <a name="multiple-vnets-connected-using-s2s-and-a-branch-office"></a><a name="multivnets2sbranch"></a>使用 S2S 和分支机构连接的多个 VNet
 
 在此示例中，点到站点 VPN 网关连接适用于 VNet1。 VNet1 使用站点到站点 VPN 连接连接到 VNet2。 VNet2 使用站点到站点 VPN 连接连接到 VNet3。 VNet1 和 VNet3 网络之间没有直接的对等互连或站点到站点 VPN 隧道。 VNet3 使用站点到站点 VPN 连接连接到分支机构 (Site1)。 所有 VPN 连接均未运行 BGP。
 
 所有客户端都只能访问 VNet1。
 
-![多 VNet S2S 和分支机构](./media/vpn-gateway-about-point-to-site-routing/7.jpg "multi-VNet S2S and branch office")
+![多个 VNet S2S 和分支机构](./media/vpn-gateway-about-point-to-site-routing/7.jpg "多个 VNet S2S 和分支机构")
 
 ### <a name="address-space"></a>地址空间
 
@@ -209,7 +209,7 @@ Windows 客户端可以访问 VNet 和其他分支机构 (Site1)，但必须将�
 
 ### <a name="routes-added"></a>已添加的路由
 
-* 已添加路由的客户端：10.1.0.0/16、192.168.0.0/24
+* 已添加到 Windows 客户端的路由：10.1.0.0/16、192.168.0.0/24
 
 * 已添加到非 Windows 客户端的路由：10.1.0.0/16、10.2.0.0/16、10.3.0.0/16、10.101.0.0/16、192.168.0.0/24
 
@@ -219,13 +219,13 @@ Windows 客户端可以访问 VNet 和其他分支机构 (Site1)，但必须将�
 
 * 非 Windows 客户端只能访问 VNet1
 
-## <a name="multivnets2sbranchbgp"></a>使用 S2S 和分支机构连接的多个 VNet (BGP)
+## <a name="multiple-vnets-connected-using-s2s-and-a-branch-office-bgp"></a><a name="multivnets2sbranchbgp"></a>使用 S2S 和分支机构连接的多个 VNet (BGP)
 
 在此示例中，点到站点 VPN 网关连接适用于 VNet1。 VNet1 使用站点到站点 VPN 连接连接到 VNet2。 VNet2 使用站点到站点 VPN 连接连接到 VNet3。 VNet1 和 VNet3 网络之间没有直接的对等互连或站点到站点 VPN 隧道。 VNet3 使用站点到站点 VPN 连接连接到分支机构 (Site1)。 所有 VPN 连接均运行 BGP。
 
 使用 Windows 的客户端可以访问使用站点到站点 VPN 连接连接的 VNet 和站点，但必须将到 VNet2、VNet3 和 Site1 的路由手动添加到该客户端。 非 Windows 客户端可以访问使用站点到站点 VPN 连接连接的 VNet 和站点，而无需任何手动干预。 访问权限是可传递的，并且客户端可访问所有已连接 VNet 和站点（本地）中的资源。
 
-![多 VNet S2S 和分支机构](./media/vpn-gateway-about-point-to-site-routing/8.jpg "multi-VNet S2S and branch office")
+![多个 VNet S2S 和分支机构](./media/vpn-gateway-about-point-to-site-routing/8.jpg "多个 VNet S2S 和分支机构")
 
 ### <a name="address-space"></a>地址空间
 
@@ -239,7 +239,7 @@ Windows 客户端可以访问 VNet 和其他分支机构 (Site1)，但必须将�
 
 ### <a name="routes-added"></a>已添加的路由
 
-* 已添加路由的客户端：10.1.0.0/16、192.168.0.0/24
+* 已添加到 Windows 客户端的路由：10.1.0.0/16、192.168.0.0/24
 
 * 已添加到非 Windows 客户端的路由：10.1.0.0/16、10.2.0.0/16、10.3.0.0/16、10.101.0.0/16、192.168.0.0/24
 

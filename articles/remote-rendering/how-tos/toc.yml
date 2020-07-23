@@ -1,0 +1,16 @@
+- name: 创建“Azure 远程渲染”帐户
+  href: create-an-account.md
+- name: 获取服务访问令牌
+  href: tokens.md
+- name: 配置身份验证
+  href: authentication.md
+- name: 使用 Azure 前端 API 进行身份验证
+  href: frontend-apis.md
+- name: 使用会话管理 REST API
+  href: session-rest-api.md
+- name: 转换模型
+  href: conversion/toc.yml
+- name: 通过 Unity 进行远程渲染
+  href: unity/toc.yml
+- name: 创建客户端性能跟踪
+  href: performance-tracing.md

@@ -1,19 +1,18 @@
 ---
 title: 机器学习概述 - Azure HDInsight
-description: 介绍 HDInsight 中的机器学习选项。
+description: Azure HDInsight 中群集的大数据机器学习选项概述。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.author: hrasheed
-ms.openlocfilehash: ca69424ecbddc068fdaf8bb5839a647701ee27fe
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: 6c7f50e4ba3803b5cb929b75f5ad1127f7f063d9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64686590"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75931685"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight 中的机器学习
 
@@ -29,9 +28,9 @@ ms.locfileid: "64686590"
 
 [R](https://www.r-project.org/) 目前是世界上最常用的统计编程语言。 它是一种开源数据可视化工具，其社区的用户超过 250 万，并且仍在增长。 R 拥有蓬勃增长的用户群，其用户贡献的程序包超过 8,000 个，是许多需要机器学习的公司的极佳选择。 可以使用 ML Services 创建随时可与大型数据集和模型配合使用的 HDInsight 群集。 这项功能为数据科学家和统计学家提供了可通过 HDInsight 按需缩放的熟悉 R 界面，并消除了群集设置和维护方面的开销。
 
-![通过 R Server 进行预测训练](./media/hdinsight-machine-learning-overview/r-training.png)
+![通过 R Server 进行预测训练](./media/hdinsight-machine-learning-overview/training-for-prediction.png)
 
-群集的边缘节点为连接到群集和运行 R 脚本提供了便捷的位置。  还可以选择跨群集的各个节点运行 R 脚本，只需使用 ScaleR 的 Hadoop Map Reduce 或 Spark 计算上下文即可。
+群集的边缘节点为连接到群集和运行 R 脚本提供了便捷的位置。  还可以使用 ScaleR 的 Hadoop Map Reduce 或 Spark 计算上下文跨群集的节点运行 R 脚本。
 
 在带 Spark 的 HDInsight 上使用 ML Services 时，可以使用 Spark 计算上下文跨群集的节点进行并行训练。 可以根据需要直接在边缘节点上运行 R 脚本，并行使用所有可用的核心。 也可以在边缘节点中运行代码，开始执行分布在群集的所有节点上的处理任务。 使用带 Spark 的 HDInsight 上的 ML Services，还可以根据需要并行执行开源 R 包中的函数。
 
@@ -39,9 +38,9 @@ ms.locfileid: "64686590"
 
 Azure 机器学习不仅提供预测分析建模工具，还提供完全托管的服务，可以通过此服务将预测模型部署为随时可用的 Web 服务。 Azure 机器学习是云中的完整预测分析解决方案，可以用来创建、测试、操作和管理预测模型。 可以从大型算法库中进行选择、使用基于 Web 的工作室来构建模型，然后将模型轻松部署为 Web 服务。
 
-![通过 Microsoft Azure 机器学习使高级分析可供 Hadoop 访问](./media/hdinsight-machine-learning-overview/hadoop-azure-ml.png)
+![Microsoft Azure 机器学习概述](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
 
-使用 [Hive 查询](../machine-learning/team-data-science-process/create-features-hive.md)，在 HDInsight Hadoop 群集中创建数据特征。 *特征工程*尝试通过从原始数据创建特征，简化学习过程，从而增加学习算法的预测能力。 可以使用[“导入数据”模块](../machine-learning/studio/import-data.md)从 Azure 机器学习工作室运行 HiveQL 查询，以及访问在 Hive 中处理和在 Blob 存储中存储的数据。
+使用 [Hive 查询](../machine-learning/team-data-science-process/create-features-hive.md)，在 HDInsight Hadoop 群集中创建数据特征。 *特征工程*尝试通过从原始数据创建特征，简化学习过程，从而增加学习算法的预测能力。 可以使用[“导入数据”模块](../machine-learning/studio/import-data.md)从 Azure 机器学习工作室（经典）运行 HiveQL 查询，以及访问在 Hive 中处理和在 Blob 存储中存储的数据。
 
 ## <a name="microsoft-cognitive-toolkit"></a>Microsoft 认知工具包
 
@@ -53,8 +52,8 @@ Azure 机器学习不仅提供预测分析建模工具，还提供完全托管�
 
 ### <a name="scenarios"></a>方案
 
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 来通过 HVAC 数据分析建筑物温度](spark/apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检验结果](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 结合 HVAC 数据分析建筑物温度](spark/apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](spark/apache-spark-machine-learning-mllib-ipython.md)
 * [使用 Apache Mahout 生成影片推荐](hadoop/apache-hadoop-mahout-linux-mac.md)
 * [Apache Hive 和 Azure 机器学习](../machine-learning/team-data-science-process/create-features-hive.md)
 * [Apache Hive 和 Azure 机器学习端到端教程](../machine-learning/team-data-science-process/hive-walkthrough.md)
@@ -62,6 +61,5 @@ Azure 机器学习不仅提供预测分析建模工具，还提供完全托管�
 
 ### <a name="deep-learning-resources"></a>深度学习资源
 
-* [使用 Microsoft 认知工具包深入学习模型与 Azure HDInsight Spark 群集](spark/apache-spark-microsoft-cognitive-toolkit.md)
-* [使用 Caffe on Azure HDInsight Spark 进行分布式深度学习](spark/apache-spark-deep-learning-caffe.md)
-* [数据科学虚拟机 (DSVM) 上的深度学习和人工智能框架](../machine-learning/data-science-virtual-machine/dsvm-deep-learning-ai-frameworks.md)
+* [将 Microsoft 认知工具包深度学习模型与 Azure HDInsight Spark 群集配合使用](spark/apache-spark-microsoft-cognitive-toolkit.md)
+* [Data Science Virtual Machine (DSVM) 上的深度学习和人工智能框架](../machine-learning/data-science-virtual-machine/dsvm-tools-deep-learning-frameworks.md)

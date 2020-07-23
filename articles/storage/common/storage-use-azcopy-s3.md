@@ -1,136 +1,159 @@
 ---
-title: 数据传输到 Azure 存储从 Amazon S3 存储桶使用 AzCopy v10 |Microsoft Docs
-description: 使用 AzCopy 和 Amazon S3 存储桶传输数据
+title: 使用 AzCopy 将数据从 Amazon S3 复制到 Azure 存储 | Microsoft Docs
+description: 使用 AzCopy 和 Amazon S3 桶传输数据
 services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
-ms.date: 04/23/2019
+ms.topic: how-to
+ms.date: 01/13/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: b18c4c039b615c7c88268b6e668df9f7fec9fabf
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: e917c261392da6044391efc98a81c8f90b619514
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66687922"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513762"
 ---
-# <a name="copy-data-from-amazon-s3-buckets-by-using-azcopy"></a>使用 AzCopy 将数据复制从 Amazon S3 存储桶
+# <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>使用 AzCopy 将数据从 Amazon S3 复制到 Azure 存储
 
-AzCopy 是一个命令行实用工具，可用于向 / 从存储帐户复制 blob 或文件。 本文可帮助你对象、 目录和存储桶将从 Amazon Web Services (AWS) S3 复制到 Azure blob 存储使用 AzCopy。
+AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 或文件。 本文介绍如何使用 AzCopy 将对象、目录和桶从 Amazon Web Services (AWS) S3 复制到 Azure Blob 存储。
 
-## <a name="choose-how-youll-provide-authorization-credentials"></a>选择将提供授权凭据的方式
+## <a name="choose-how-youll-provide-authorization-credentials"></a>选择如何提供授权凭据
 
-* 若要使用 Azure 存储的授权，请使用 Azure Active Directory (AD) 或共享访问签名 (SAS) 令牌。
+* 若要对 Azure 存储授权，请使用 Azure Active Directory (AD) 或共享访问签名 (SAS) 令牌。
 
-* 若要使用 AWS S3 授权，请使用 AWS 访问密钥和机密访问密钥。
+* 若要对 AWS S3 授权，请使用 AWS 访问密钥和机密访问密钥。
 
-### <a name="authorize-with-azure-storage"></a>Azure 存储使用授权
+### <a name="authorize-with-azure-storage"></a>对 Azure 存储授权
 
-请参阅[开始使用 AzCopy](storage-use-azcopy-v10.md)文章下载 AzCopy，并选择将提供到存储服务的授权凭据的方式。
+请参阅 [AzCopy 入门](storage-use-azcopy-v10.md)一文下载 AzCopy，并选择如何提供存储服务的授权凭据。
 
 > [!NOTE]
-> 这篇文章中的示例假定你已通过你的身份使用身份验证`AzCopy login`命令。 AzCopy 然后使用你的 Azure AD 帐户授予对 Blob 存储中的数据访问权限。
+> 本文中的示例假设你已使用 `AzCopy login` 命令验证自己的身份。 然后，AzCopy 会使用你的 Azure AD 帐户来授权访问 Blob 存储中的数据。
 >
-> 如果你将使用 SAS 令牌来授予对 blob 数据的访问权限，可以将该令牌附加到每个 AzCopy 命令中的资源 URL。
+> 如果你希望使用 SAS 令牌来授权访问 Blob 数据，可将该令牌追加到每个 AzCopy 命令中的资源 URL。
 >
 > 例如：`https://mystorageaccount.blob.core.windows.net/mycontainer?<SAS-token>`。
 
-### <a name="authorize-with-aws-s3"></a>与 AWS S3 授权
+### <a name="authorize-with-aws-s3"></a>对 AWS S3 授权
 
-收集你的 AWS 访问密钥和机密访问密钥，然后设置这些环境变量：
+收集 AWS 访问密钥和机密访问密钥，然后设置以下环境变量：
 
-| 操作系统 | 命令  |
+| 操作系统 | Command  |
 |--------|-----------|
 | **Windows** | `set AWS_ACCESS_KEY_ID=<access-key>`<br>`set AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
 | **Linux** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
 | **MacOS** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>`|
 
-## <a name="copy-objects-directories-and-buckets"></a>复制对象、 目录和存储桶
+## <a name="copy-objects-directories-and-buckets"></a>复制对象、目录和桶
 
-AzCopy 将使用[放置块从 URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API，因此直接 AWS S3 和存储服务器之间复制数据。 这些复制操作不使用您的计算机的网络带宽。
+AzCopy 使用[从 URL 放置块](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API，因此数据将在 AWS S3 与存储服务器之间直接复制。 这些复制操作不会占用计算机的网络带宽。
+
+> [!IMPORTANT]
+> 此功能目前处于预览状态。 如果你决定在完成复制操作后从 S3 桶中删除数据，请务必在删除数据之前，确认是否已将数据正确复制到存储帐户。
+
+> [!TIP]
+> 本部分中的示例将路径参数括在单引号 ('') 中。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
+
+ 这些示例也适用于具有分层命名空间的帐户。 [Data Lake Storage 上的多协议访问](../blobs/data-lake-storage-multi-protocol-access.md)使你可以在这些帐户上使用相同的 URL 语法 (`blob.core.windows.net`)。 
 
 ### <a name="copy-an-object"></a>复制对象
 
+对具有分层命名空间的帐户使用相同的 URL 语法 (`blob.core.windows.net`)。
+
 |    |     |
 |--------|-----------|
-| **语法** | `azcopy cp "https://s3.amazonaws.com/<bucket-name>/<object-name>" "https://<storage-account-name>.blob.core.windows.net/<container-name>/<blob-name>"` |
-| **示例** | `azcopy cp "https://s3.amazonaws.com/mybucket/myobject" "https://mystorageaccount.blob.core.windows.net/mycontainer/myblob"` |
+| **语法** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<object-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<blob-name>'` |
+| **示例** | `azcopy copy 'https://s3.amazonaws.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
+| **示例**（分层命名空间） | `azcopy copy 'https://s3.amazonaws.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
 
 > [!NOTE]
-> 在本文中的示例使用 AWS S3 存储桶路径样式 Url (例如： `http://s3.amazonaws.com/<bucket-name>`)。 
+> 本文中的示例对 AWS S3 桶使用路径样式的 URL（例如：`http://s3.amazonaws.com/<bucket-name>`）。 
 >
-> 此外可以使用虚拟托管式 Url (例如： `http://bucket.s3.amazonaws.com`)。 
+> 也可以使用虚拟托管样式的 URL（例如：`http://bucket.s3.amazonaws.com`）。 
 >
-> 若要了解有关虚拟托管的存储桶的详细信息，请参阅 [虚拟托管的存储桶]] (https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html)。
+> 若要详细了解桶的虚拟托管，请参阅 [桶的虚拟托管]](https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html) 。
 
 ### <a name="copy-a-directory"></a>复制目录
 
-|    |     |
-|--------|-----------|
-| **语法** | `azcopy cp "https://s3.amazonaws.com/<bucket-name>/<directory-name>" "https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>" --recursive=true` |
-| **示例** | `azcopy cp "https://s3.amazonaws.com/mybucket/mydirectory" "https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory" --recursive=true` |
-
-### <a name="copy-a-bucket"></a>复制存储桶
+对具有分层命名空间的帐户使用相同的 URL 语法 (`blob.core.windows.net`)。
 
 |    |     |
 |--------|-----------|
-| **语法** | `azcopy cp "https://s3.amazonaws.com/<bucket-name>" "https://<storage-account-name>.blob.core.windows.net/<container-name>" --recursive=true` |
-| **示例** | `azcopy cp "https://s3.amazonaws.com/mybucket" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive=true` |
+| **语法** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
+| **示例** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+| **示例**（分层命名空间）| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
-### <a name="copy-all-buckets-in-all-regions"></a>在所有区域中复制所有存储桶
+### <a name="copy-a-bucket"></a>复制桶
 
-|    |     |
-|--------|-----------|
-| **语法** | `azcopy cp "https://s3.amazonaws.com/" "https://<storage-account-name>.blob.core.windows.net" --recursive=true` |
-| **示例** | `azcopy cp "https://s3.amazonaws.com" "https://mystorageaccount.blob.core.windows.net" --recursive=true` |
-
-### <a name="copy-all-buckets-in-a-specific-s3-region"></a>在特定的 S3 区域复制所有存储桶
+对具有分层命名空间的帐户使用相同的 URL 语法 (`blob.core.windows.net`)。
 
 |    |     |
 |--------|-----------|
-| **语法** | `azcopy cp "https://s3-<region-name>.amazonaws.com/" "https://<storage-account-name>.blob.core.windows.net" --recursive=true` |
-| **示例** | `azcopy cp "https://s3-rds.eu-north-1.amazonaws.com" "https://mystorageaccount.blob.core.windows.net" --recursive=true` |
+| **语法** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive=true` |
+| **示例** | `azcopy copy 'https://s3.amazonaws.com/mybucket' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive=true` |
+| **示例**（分层命名空间）| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
-## <a name="handle-differences-in-object-naming-rules"></a>处理对象命名规则之间的差异
+### <a name="copy-all-buckets-in-all-regions"></a>复制所有区域中的所有桶
 
-AWS S3 具有一组不同的存储桶名称相比 Azure blob 容器的命名约定。 你可以阅读它们[此处](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules)。 如果您选择将存储桶中的组复制到 Azure 存储帐户，复制操作可能会由于命名差异失败。
+对具有分层命名空间的帐户使用相同的 URL 语法 (`blob.core.windows.net`)。
 
-AzCopy 处理两个最常见的问题可能会出现;包含时间段和包含连续的连字符存储桶的存储桶。 AWS S3 存储桶名称包含句点和连续的连字符，但不能在 Azure 中的容器。 AzCopy 会替换句点连字符和一个数字，表示连续的连字符数与连续的连字符 (例如： 名为的存储桶`my----bucket`变得`my-4-bucket`。 
-
-此外，AzCopy 将复制的文件，因为它检查的命名冲突，并尝试解决这些问题。 例如，如果有同名的存储桶`bucket-name`并`bucket.name`，AzCopy 解析命名的存储桶`bucket.name`到第一个`bucket-name`然后`bucket-name-2`。
-
-## <a name="handle-differences-in-object-metadata"></a>处理对象元数据中的差异
-
-AWS S3 和 Azure 的对象键名称中允许不同的字符。 您可以阅读有关字符，使用 AWS S3[此处](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)。 在 Azure 端，blob 的对象键遵循的命名规则[C#标识符](https://docs.microsoft.com/dotnet/csharp/language-reference/)。
-
-AzCopy 的一部分`copy`命令时，可以提供一个值可选`s2s-invalid-metadata-handle`标志，指定你希望如何处理其中的文件的元数据包含不兼容的键名称的文件。 下表描述了每个标志值。
-
-| 标记值 | 描述  |
+|    |     |
 |--------|-----------|
-| **ExcludeIfInvalid** | （默认选项）元数据不包括在传输的对象。 AzCopy 记录警告。 |
-| **FailIfInvalid** | 不会复制对象。 AzCopy 记录一个错误，并在传输摘要中显示的失败计数中包含该错误。  |
-| **RenameIfInvalid**  | AzCopy 解析无效的元数据密钥，并将对象复制到 Azure 中使用已解析的元数据键/值对。 若要了解确切步骤 AzCopy 所需重命名的对象键，请参阅[如何 AzCopy 重命名的对象键](#rename-logic)下面一节。 如果 AzCopy 不能重命名项，不会复制的对象。 |
+| **语法** | `azcopy copy 'https://s3.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
+| **示例** | `azcopy copy 'https://s3.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
+| **示例**（分层命名空间）| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
-<a id="rename-logic" />
+### <a name="copy-all-buckets-in-a-specific-s3-region"></a>复制特定 S3 区域中的所有桶
 
-### <a name="how-azcopy-renames-object-keys"></a>AzCopy 如何重命名的对象键
+对具有分层命名空间的帐户使用相同的 URL 语法 (`blob.core.windows.net`)。
 
-AzCopy 会执行以下步骤：
+|    |     |
+|--------|-----------|
+| **语法** | `azcopy copy 'https://s3-<region-name>.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
+| **示例** | `azcopy copy 'https://s3-rds.eu-north-1.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
+| **示例**（分层命名空间）| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
-1. 替换无效字符 _。
+## <a name="handle-differences-in-object-naming-rules"></a>处理对象命名规则的差异
 
-2. 将字符串添加`rename_`到新的有效密钥的开头。
+相比 Azure Blob 容器，AWS S3 对桶的名称实施一组不同的命名约定。 可在[此处](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules)了解相关信息。 如果选择将一组桶复制到 Azure 存储帐户，复制操作可能因命名差异而失败。
 
-   此密钥将用于保存的原始元数据**值**。
+AzCopy 会处理可能出现的两个最常见问题：包含句点的桶，以及包含连续连字符的桶。 AWS S3 桶名称可以包含句点和连续的连字符，但 Azure 中的容器则不可以。 AzCopy 会将句点替换为连字符，并将连续的连字符替换为表示连续连字符数目的数字（例如：名为 `my----bucket` 的桶将变成 `my-4-bucket`）。 
 
-3. 将字符串添加`rename_key_`到新的有效密钥的开头。
-   此密钥将用于保存原始的元数据无效**密钥**。
-   可以使用此密钥以尝试并恢复中 Azure 端的元数据，因为元数据密钥保留为 Blob 存储服务上的值。
+此外，在 AzCopy 复制文件时，它会检查并尝试解决命名冲突。 例如，如果存在名为 `bucket-name` 和 `bucket.name` 的桶，则 AzCopy 会将名为 `bucket.name` 的桶解析为 `bucket-name`，再将后者解析为 `bucket-name-2`。
+
+## <a name="handle-differences-in-object-metadata"></a>处理对象元数据的差异
+
+AWS S3 和 Azure 允许在对象键名称中使用不同的字符集。 可在[此处](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)了解 AWS S3 使用的字符。 在 Azure 端，Blob 对象键遵守 [C# 标识符](https://docs.microsoft.com/dotnet/csharp/language-reference/)的命名规则。
+
+在 AzCopy `copy` 命令中，可为 `s2s-invalid-metadata-handle` 可选标志提供一个值，用于指定如何处理其中的元数据包含不兼容键名称的文件。 下表描述了每个标志值。
+
+| 标志值 | 说明  |
+|--------|-----------|
+| **ExcludeIfInvalid** | （默认选项）不在传输的对象中包含元数据。 AzCopy 将记录警告。 |
+| **FailIfInvalid** | 不复制对象。 AzCopy 将记录错误，并将该错误包含到传输摘要显示的失败计数中。  |
+| **RenameIfInvalid**  | AzCopy 将解析无效的元数据键，并使用已解析的元数据键值对将对象复制到 Azure。 若要确切地了解 AzCopy 采取哪些步骤来重命名对象键，请参阅下面的 [AzCopy 如何重命名对象键](#rename-logic)部分。 如果 AzCopy 无法重命名该键，则不会复制该对象。 |
+
+<a id="rename-logic"></a>
+
+### <a name="how-azcopy-renames-object-keys"></a>AzCopy 如何重命名对象键
+
+AzCopy 执行以下步骤：
+
+1. 将无效字符替换为“_”。
+
+2. 将字符串 `rename_` 添加到新的有效键的开头。
+
+   此键将用于保存原始元数据的**值**。
+
+3. 将字符串 `rename_key_` 添加到新的有效键的开头。
+   此键将用于保存原始元数据的无效**键**。
+   可以使用此键在 Azure 端尝试恢复元数据，因为元数据键作为值保留在 Blob 存储服务中。
 
 ## <a name="next-steps"></a>后续步骤
 
-在以下这些文章中找到更多示例：
+在以下文章中查找更多示例：
 
 - [AzCopy 入门](storage-use-azcopy-v10.md)
 

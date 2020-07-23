@@ -1,32 +1,28 @@
 ---
-title: Web 服务中的“导入/导出数据”- Azure 机器学习工作室 | Microsoft Docs
+title: 导入/导出 Web 服务中的数据
+titleSuffix: ML Studio (classic) - Azure
 description: 了解如何使用导入数据和导出数据模块从 Web 服务发送和接收数据。
 services: machine-learning
-documentationcenter: ''
-author: xiaoharper
-ms.custom: seodec18
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 editor: cgronlun
 ms.assetid: 3a7ac351-ebd3-43a1-8c5d-18223903d08e
 ms.service: machine-learning
 ms.subservice: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: 28d16bce6dbb5063c085e8c4393777ee9d152768
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b844a18a5acbd7a631bfe3b650dfa155d0e064ba
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60345105"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076651"
 ---
-# <a name="deploy-azure-machine-learning-studio-web-services-that-use-data-import-and-data-export-modules"></a>部署使用数据导入和数据导出模块的 Azure 机器学习工作室 Web 服务
+# <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>部署使用数据导入和数据导出模块的 Azure 机器学习工作室（经典）Web 服务
 
 创建预测性实验时，通常添加 Web 服务输入和输出。 部署实验时，使用者可通过输入和输出从 Web 服务发送和接收数据。 对于某些应用程序，使用者的数据可能从数据源提供或已经驻留在外部数据源（如 Azure Blob 存储）中。 在这些情况下，它们不需要使用 Web 服务输入和输出读取和写入数据。 它们可以改为使用批处理执行服务 (BES)，使用导入数据模块从数据源读取数据，使用导出数据模块将评分结果写入不同的数据位置。
 
-导入数据和导出数据模块可在各个数据位置（如通过 HTTP 的 Web URL、Hive 查询、Azure SQL 数据库、Azure 表存储、Azure Blob 存储、数据源提供或本地 SQL 数据库）中读取和写入数据。
+导入数据和导出数据模块可在各个数据位置（如通过 HTTP 的 Web URL、Hive 查询、Azure SQL 数据库中的数据库、Azure 表存储、Azure Blob 存储、数据源提供或 SQL Server 数据库）进行读取和写入。
 
 本主题使用“示例 5：二元分类的训练、测试、评估：成人数据集”示例并假设数据集已加载到名为 censusdata 的 Azure SQL 表中。
 
@@ -45,8 +41,8 @@ ms.locfileid: "60345105"
 6. 在“数据库服务器名称”、“数据库名称”、“用户名”和“密码”字段中，输入数据库的相应信息。
 7. 在“数据库查询”字段中，输入以下查询。
 
+    ```tsql
      select [age],
-
         [workclass],
         [fnlwgt],
         [education],
@@ -62,6 +58,7 @@ ms.locfileid: "60345105"
         [native-country],
         [income]
      from dbo.censusdata;
+    ```
 8. 在实验画布的底部，单击“**运行**”。
 
 ## <a name="create-the-predictive-experiment"></a>创建预测性实验
@@ -103,19 +100,21 @@ ms.locfileid: "60345105"
 2. 当运行已完成时，单击“部署 Web 服务”，并选择“部署 Web 服务 [经典]”。
 3. 在 Web 服务仪表板上，找到 API 密钥。 复制并保存它以供以后使用。
 4. 在“默认终结点”表中，单击“批处理执行”链接打开 API 帮助页。
-5. 在 Visual Studio 中，创建 C# 控制台应用程序：“新建” > “项目” > “Visual C#” > “Windows 经典桌面” > “控制台应用 (.NET Framework)”。
+5. 在 Visual Studio 中，创建 C# 控制台应用程序：“新建” > “项目” > “Visual C#” > “Windows 经典桌面” > “控制台应用(.NET Framework)”    。
 6. 在 API 帮助页上，找到页面底部的“示例代码”部分。
 7. 将 C# 示例代码复制并粘贴到 Program.cs 文件中，并删除对 blob 存储的所有引用。
 8. 使用之前保存的 API 密钥更新 *apiKey* 变量的值。
 9. 找到请求声明并更新传递到*导入数据*和*导出数据*模块的值。 在此示例中，将使用原始查询，但定义新的表名。
 
-        var request = new BatchExecutionRequest()
-        {
-            GlobalParameters = new Dictionary<string, string>() {
-                { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
-                { "Table", "dbo.ScoredTable2" },
-            }
-        };
+    ```csharp
+    var request = new BatchExecutionRequest()
+    {
+        GlobalParameters = new Dictionary<string, string>() {
+            { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
+            { "Table", "dbo.ScoredTable2" },
+        }
+    };
+    ```
 10. 运行应用程序。
 
 完成运行时，将新表添加到包含评分结果的数据库。
@@ -132,20 +131,22 @@ ms.locfileid: "60345105"
 3. 在“部署实验”页上，输入 Web 服务的名称并选择定价计划，并单击“部署”。
 4. 在“快速启动”页上，单击“使用”。
 5. 在“示例代码”部分中，单击“批处理”。
-6. 在 Visual Studio 中，创建 C# 控制台应用程序：“新建” > “项目” > “Visual C#” > “Windows 经典桌面” > “控制台应用 (.NET Framework)”。
+6. 在 Visual Studio 中，创建 C# 控制台应用程序：“新建” > “项目” > “Visual C#” > “Windows 经典桌面” > “控制台应用(.NET Framework)”    。
 7. 将 C# 示例代码复制并粘贴到 Program.cs 文件中。
 8. 使用位于“基本使用信息”部分中的**主键**替换 *apiKey* 变量的值。
 9. 找到 *scoreRequest* 声明并更新传递到*导入数据*和*导出数据*模块的值。 在此示例中，将使用原始查询，但定义新的表名。
 
-        var scoreRequest = new
+    ```csharp
+    var scoreRequest = new
+    {
+        Inputs = new Dictionary<string, StringTable>()
         {
-            Inputs = new Dictionary<string, StringTable>()
-            {
-            },
-            GlobalParameters = new Dictionary<string, string>() {
-                { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
-                { "Table", "dbo.ScoredTable3" },
-            }
-        };
+        },
+        GlobalParameters = new Dictionary<string, string>() {
+            { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
+            { "Table", "dbo.ScoredTable3" },
+        }
+    };
+    ```
 10. 运行应用程序。
 

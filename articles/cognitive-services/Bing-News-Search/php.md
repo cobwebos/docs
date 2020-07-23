@@ -1,6 +1,6 @@
 ---
-title: 快速入门：使用 PHP 执行新闻搜索 - 必应新闻搜索 REST API
-titlesuffix: Azure Cognitive Services
+title: 快速入门：使用 PHP 和必应新闻搜索 REST API 执行新闻搜索
+titleSuffix: Azure Cognitive Services
 description: 使用本快速入门，通过 PHP 将请求发送到必应新闻搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 1/10/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: fa253f95c01e35505e154d9709ca88033735fa52
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: ecdcfc7d90f61443cc6947680df9bbf9d9b9514e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390468"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873232"
 ---
 # <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>快速入门：使用 PHP 和必应新闻搜索 REST API 执行新闻搜索
 
-使用本快速入门进行你的第一次必应图像搜索 API 调用并接收 JSON 响应。 这个简单的 JavaScript 应用程序会向 API 发送一个搜索查询并显示原始结果。
+根据此快速入门中的说明对必应资讯搜索 API 进行第一次调用。 这个简单的 PHP 应用程序会向该 API 发送一个搜索查询并显示 JSON 响应。
 
 虽然此应用程序是使用 PHP 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
@@ -30,17 +30,18 @@ ms.locfileid: "66390468"
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+有关详细信息，请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 ## <a name="run-the-application"></a>运行应用程序
 
-[必应新闻搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) 从必应搜索引擎返回新闻结果。
+若要运行此应用程序，请执行以下步骤：
 
-1. 请确保在 `php.ini` 中启用安全 HTTP 支持，如代码注释中所述。
-2. 在你喜欢使用的 IDE 或编辑器中新建一个 PHP 项目。
-3. 添加下面提供的代码。
+1. 通过取消注释 `;extension=php_openssl.dll` 行，在 `php.ini` 文件中启用安全 HTTP 支持，如代码注释中所述。
+2. 在喜欢使用的 IDE 或编辑器中新建一个 PHP 项目。
+3. 添加以下提供的代码。
 4. 使用对订阅有效的访问密钥替换 `accessKey` 值。
-5. 运行该程序。
+5. 你可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
+6. 运行该程序。
 
 ```php
 <?php
@@ -102,7 +103,7 @@ echo json_encode(json_decode($json), JSON_PRETTY_PRINT);
 ?>
 ```
 
-**响应**
+## <a name="example-json-response"></a>示例 JSON 响应
 
 在 JSON 中返回成功的响应，如以下示例所示： 
 

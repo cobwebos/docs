@@ -1,27 +1,25 @@
 ---
-title: 使用 U-SQL 脚本转换数据 - Azure | Microsoft Docs
+title: 使用 U-SQL 脚本转换数据-Azure
 description: 了解如何通过在 Azure Data Lake Analytics 计算服务上运行 U-SQL 脚本来处理或转换数据。
 services: data-factory
 documentationcenter: ''
 ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/01/2017
 author: nabhishek
 ms.author: abnarain
-manager: craigg
+manager: anandsub
 robots: noindex
-ms.openlocfilehash: 5835c37363c7e9d2dd3253c08ab97f17852725f5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: c6d3510dfdd02bf2eb07d656c706c44d895c582d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61248141"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74927907"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>通过在 Azure Data Lake Analytics 上运行 U-SQL 脚本来转换数据 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-usql-activity.md)
 > * [版本 2（当前版本）](../transform-data-using-data-lake-analytics.md)
 
@@ -32,7 +30,7 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 
 在使用 Data Lake Analytics U-SQL 活动创建管道之前，先创建 Azure Data Lake Analytics 帐户。 若要了解 Azure Data Lake Analytics，请参阅 [Azure Data Lake Analytics 入门](../../data-lake-analytics/data-lake-analytics-get-started-portal.md)。
 
-查看[生成首个管道教程](data-factory-build-your-first-pipeline.md)获取详细步骤，以便创建数据工厂、链接的服务、数据集和管道。 通过数据工厂编辑器或 Visual Studio 或 Azure PowerShell 使用 JSON 代码段创建数据工厂实体。
+查看[生成首个管道教程](data-factory-build-your-first-pipeline.md)，了解创建数据工厂、链接服务、数据集和管道的详细步骤。 通过数据工厂编辑器或 Visual Studio 或 Azure PowerShell 使用 JSON 代码段创建数据工厂实体。
 
 ## <a name="supported-authentication-types"></a>支持的身份验证类型
 U-SQL 活动支持对 Data Lake Analytics 进行以下类型的身份验证：
@@ -46,7 +44,7 @@ U-SQL 活动支持对 Data Lake Analytics 进行以下类型的身份验证：
 
 下表介绍了 JSON 定义中使用的一般属性。 可以进一步选择服务主体身份验证，还是用户凭据身份验证。
 
-| 属性 | 说明 | 需要 |
+| Property | 描述 | 必须 |
 | --- | --- | --- |
 | type |类型属性应设置为：AzureDataLakeAnalytics。 |是 |
 | **accountName** |Azure Data Lake Analytics 帐户名。 |是 |
@@ -62,7 +60,7 @@ U-SQL 活动支持对 Data Lake Analytics 进行以下类型的身份验证：
 
 通过指定以下属性使用服务主体身份验证：
 
-| 属性 | 说明 | 需要 |
+| properties | 描述 | 必需 |
 |:--- |:--- |:--- |
 | **servicePrincipalId** | 指定应用程序的客户端 ID。 | 是 |
 | **servicePrincipalKey** | 指定应用程序的密钥。 | 是 |
@@ -90,12 +88,12 @@ U-SQL 活动支持对 Data Lake Analytics 进行以下类型的身份验证：
 ### <a name="user-credential-authentication"></a>用户凭据身份验证
 也可以指定下列属性，对 Data Lake Analytics 使用用户凭据身份验证：
 
-| 属性 | 说明 | 需要 |
+| Property | 描述 | 必需 |
 |:--- |:--- |:--- |
-| **authorization** | 单击数据工厂编辑器中的“授权”按钮，并输入凭据以会自动生成的授权 URL 分配给此属性。 | 是 |
+| **授权** | 单击数据工厂编辑器中的“授权”**** 按钮，并输入凭据以会自动生成的授权 URL 分配给此属性。 | 是 |
 | **sessionId** | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时会自动生成此设置。 | 是 |
 
-示例：**用户凭据身份验证**
+**示例：用户凭据身份验证**
 ```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",
@@ -114,14 +112,14 @@ U-SQL 活动支持对 Data Lake Analytics 进行以下类型的身份验证：
 ```
 
 #### <a name="token-expiration"></a>令牌过期
-使用“授权”按钮生成的授权代码在一段时间后便会过期。 请参阅下表，了解不同类型用户帐户的过期时间。 身份验证**令牌过期**时，可能会看到以下错误消息：凭据操作错误：invalid_grant - AADSTS70002：验证凭据时出错。 AADSTS70008：提供的访问权限已过期或已被吊销。 跟踪 ID：d18629e8-af88-43c5-88e3-d8419eb1fca1 相关 ID：fac30a0c-6be6-4e02-8d69-a776d2ffefd7 时间戳：2015-12-15 21:09:31Z
+使用“授权”**** 按钮生成的授权代码在一段时间后便会过期。 请参阅下表，了解不同类型用户帐户的过期时间。 身份验证**令牌过期**时，可能会看到以下错误消息：凭据操作错误： INVALID_GRANT-AADSTS70002：验证凭据时出错。 AADSTS70008：提供的访问权限已过期或已被吊销。 跟踪 ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 相关 ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 时间戳: 2015-12-15 21:09:31Z
 
 | 用户类型 | 过期时间 |
 |:--- |:--- |
 | 不由 Azure Active Directory 管理的用户帐户（@hotmail.com、@live.com，等等） |12 小时 |
 | 由 Azure Active Directory (AAD) 管理的用户帐户 |最后一次运行切片后的 14 天。 <br/><br/>如果以基于 OAuth 的链接服务为基础的切片每 14 天至少运行一次，则为 90 天。 |
 
-若要避免/解决此错误，**令牌过期**时，使用“授权”按钮重新授权，并重新部署链接服务。 还可以使用下列代码，以编程方式生成 sessionId 和 authorization 属性值：
+若要避免/解决此错误，**令牌过期**时，使用“授权”**** 按钮重新授权，并重新部署链接服务。 还可以使用下列代码，以编程方式生成 sessionId**** 和 authorization**** 属性值：
 
 ```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||
@@ -148,7 +146,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-请参阅 [AzureDataLakeStoreLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)、[AzureDataLakeAnalyticsLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)和 [AuthorizationSessionGetResponse 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)主题，了解关于代码中使用的数据工厂类的详细信息。 对于 WindowsFormsWebAuthenticationDialog 类，请添加对以下项的引用：Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll。 
+请参阅 [AzureDataLakeStoreLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)、[AzureDataLakeAnalyticsLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)和 [AuthorizationSessionGetResponse 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)主题，了解关于代码中使用的数据工厂类的详细信息。 针对 WindowsFormsWebAuthenticationDialog 类向 Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll 添加引用。 
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL 活动
 以下 JSON 代码段定义了具有 Data Lake Analytics U-SQL 活动的管道。 活动定义具有对之前创建的 Azure Data Lake Analytics 链接服务的引用。   
@@ -206,18 +204,18 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 下表描述了此活动特有的属性的名称和描述。 
 
-| 属性            | 说明                              | 必选                                 |
+| properties            | 描述                              | 必需                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
 | type                | type 属性必须设置为 **DataLakeAnalyticsU SQL**。 | 是                                      |
 | linkedServiceName   | 引用在数据工厂中注册为链接服务的 Azure Data Lake Analytics | 是                                      |
 | scriptPath          | 包含 U-SQL 脚本的文件夹路径。 文件的名称区分大小写。 | 否（如果使用脚本）                   |
 | scriptLinkedService | 将包含脚本的存储链接到数据工厂的链接服务 | 否（如果使用脚本）                   |
-| 脚本              | 指定内联脚本，而不是指定 scriptPath 和 scriptLinkedService。 例如： `"script": "CREATE DATABASE test"`。 | 否（如果使用 scriptPath 和 scriptLinkedService） |
+| 脚本              | 指定内联脚本，而不是指定 scriptPath 和 scriptLinkedService。 例如：`"script": "CREATE DATABASE test"`。 | 否（如果使用 scriptPath 和 scriptLinkedService） |
 | degreeOfParallelism | 同时用于运行作业的最大节点数。 | 否                                       |
 | priority            | 确定应在所有排队的作业中选择哪些作业首先运行。 编号越低，优先级越高。 | 否                                       |
 | parameters          | U-SQL 脚本的参数          | 否                                       |
 | runtimeVersion      | 要使用的 U-SQL 引擎的运行时版本 | 否                                       |
-| compilationMode     | <p>U-SQL 编译模式。 必须是这些值之一：</p> <ul><li>**Semantic：** 只执行语义检查和必要的健全性检查。</li><li>**Full：** 执行完整编译，包括语法检查、优化、代码生成等。</li><li>**SingleBox：** 执行完整编译，且 TargetType 设置为 SingleBox。</li></ul><p>如果该属性未指定值，则服务器将确定最佳编译模式。 </p> | 否                                       |
+| compilationMode     | <p>U-SQL 编译模式。 必须是这些值之一：</p> <ul><li>Semantic：只执行语义检查和必要的健全性检查。****</li><li>Full：执行完整编译，包括语法检查、优化、代码生成等。****</li><li>SingleBox：执行完整编译，且 TargetType 设置为 SingleBox。****</li></ul><p>如果该属性未指定值，则服务器将确定最佳编译模式。 </p> | 否                                       |
 
 请参阅 [SearchLogProcessing.txt 脚本定义](#sample-u-sql-script)了解有关脚本定义的信息。 
 
@@ -317,7 +315,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-值**\@中**并**\@出**参数在 U-SQL 脚本中的使用动态传递 adf parameters 部分。 请参阅管道定义中的“parameters”部分。
+使用 "parameters" 节，ADF 使用 "parameters" 部分动态传递 U 脚本中** \@ in**和** \@ out**参数的值。 请参阅管道定义中的“parameters”部分。
 
 也可在 Azure Data Lake Analytics 服务上运行的作业的管道定义中指定其他属性，如 degreeOfParallelism 和 priority。
 

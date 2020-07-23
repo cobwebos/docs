@@ -1,28 +1,30 @@
 ---
-title: IIS 身份验证和 Azure MFA 服务器-Azure Active Directory
+title: IIS 身份验证和 Azure MFA 服务器 - Azure Active Directory
 description: 部署 IIS 身份验证和 Azure 多重身份验证服务器。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a019aaec270fe1beb3914e7ab388fce9a701bcc
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
-ms.translationtype: MT
+ms.openlocfilehash: 2377ca4b929200ecd0a3a7de01dd3a58be6b7863
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988611"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845434"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>配置适用于 IIS Web 应用的 Azure 多重身份验证服务器
 
 使用 Azure 多重身份验证 (MFA) 服务器的 IIS 身份验证部分来启用并配置 IIS 身份验证，以便与 Microsoft IIS Web 应用程序集成。 Azure MFA 服务器将安装一个插件，该插件可以筛选向 IIS Web 服务器发出的用于添加 Azure 多重身份验证的请求。 IIS 插件支持基于窗体的身份验证和集成式 Windows HTTP 身份验证。 还可以配置受信任的 IP，使内部 IP 地址免于进行双因素身份验证。
 
-![在 MFA 服务器的 IIS 身份验证](./media/howto-mfaserver-iis/iis.png)
+> [!IMPORTANT]
+> 从 2019 年 7 月 1 日开始，Microsoft 将不再为新部署提供 MFA 服务器。 希望用户执行多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在 7 月 1 日之前激活了 MFA 服务器的现有客户可以像平时一样下载最新版本、将来的更新以及生成激活凭据。 使用基于云的 Azure 多重身份验证时，你只能选择 Azure 多重身份验证 (MFA) 服务器提供的 IIS 插件。 你可改用采用了 Active Directory 联合身份验证服务 (AD FS) 的 Web 应用程序代理 (WAP) 或 Azure Active Directory 的应用程序代理。
+
+![MFA 服务器中的 IIS 身份验证](./media/howto-mfaserver-iis/iis.png)
 
 ## <a name="using-form-based-iis-authentication-with-azure-multi-factor-authentication-server"></a>将基于窗体的 IIS 身份验证用于 Azure 多重身份验证服务器
 
@@ -31,7 +33,7 @@ ms.locfileid: "65988611"
 1. 在 Azure 多重身份验证服务器中，单击左侧菜单中的 IIS 身份验证图标。
 2. 单击“基于表单”选项卡。
 3. 单击“添加”。
-4. 若要自动检测用户名、 密码和域变量，请输入登录 URL (如`https://localhost/contoso/auth/login.aspx`) 中配置基于窗体网站对话框中，单击**确定**。
+4. 若要自动检测用户名、密码和域变量，请在“自动配置基于窗体的网站”对话框内输入登录 URL（例如 `https://localhost/contoso/auth/login.aspx`），并单击“确定”。
 5. 如果所有用户均已导入或将导入到该服务器并接受多重身份验证，请选中“需要多重身份验证用户匹配”框。 如果大量用户尚未导入到该服务器并且/或者将免除 Multi-Factor Authentication，请使该框处于未选中状态。
 6. 如果无法自动检测到页变量，请单击“自动配置基于窗体的网站”对话框中的“手动指定”。
 7. 在“添加基于窗体的网站”对话框中，将登录页的 URL 输入到“提交 URL”字段中并输入应用程序名称（可选）。 应用程序名称将出现在 Azure 多重身份验证报告中，并可能会显示在短信或移动应用身份验证消息中。
@@ -55,7 +57,7 @@ ms.locfileid: "65988611"
 1. 在 Azure 多重身份验证服务器中，单击左侧菜单中的 IIS 身份验证图标。
 2. 单击“HTTP”选项卡。
 3. 单击“添加”。
-4. 在添加基 URL 对话框中，输入执行 HTTP 身份验证的网站的 URL (如<http://localhost/owa>)，并提供应用程序名称 （可选）。 应用程序名称将出现在 Azure 多重身份验证报告中，并可能会显示在短信或移动应用身份验证消息中。
+4. 在“添加基 URL”对话框中，输入执行 HTTP 身份验证的网站的 URL（例如 <http://localhost/owa>）并提供应用程序名称（可选）。 应用程序名称将出现在 Azure 多重身份验证报告中，并可能会显示在短信或移动应用身份验证消息中。
 5. 调整空闲超时和会话时间上限（如果默认值不够）。
 6. 如果所有用户均已导入或将导入到该服务器并接受多重身份验证，请选中“需要多重身份验证用户匹配”框。 如果大量用户尚未导入到该服务器并且/或者将免除 Multi-Factor Authentication，请使该框处于未选中状态。
 7. 如果需要，请选中“Cookie 缓存”框。
@@ -76,4 +78,4 @@ ms.locfileid: "65988611"
 1. 在“IIS 身份验证”部分中，单击“受信任的 IP”选项卡。
 2. 单击“添加”。
 3. 显示“添加受信任 IP”对话框时，选择“单个 IP”、“IP 范围”或“子网”单选按钮。
-4. 输入 IP 地址、 IP 地址范围或应允许的子网。 如果输入子网，请选择适当的网络掩码，并单击“确定”。
+4. 输入应允许使用的 IP 地址、IP 地址范围或子网。 如果输入子网，请选择适当的网络掩码，并单击“确定”。

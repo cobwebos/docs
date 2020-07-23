@@ -1,5 +1,5 @@
 ---
-title: 在本地部署远程监视解决方案 - Docker - Azure | Microsoft Docs
+title: 在本地部署远程监视解决方案-Docker-Azure |Microsoft Docs
 description: 本操作指南展示了如何使用 Docker 将远程监视解决方案加速器部署到本地计算机，以用于测试和开发。
 author: avneet723
 manager: hegate
@@ -8,26 +8,25 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: db934725fe91a142c43ba66701919e9d5a70a4b2
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
-ms.translationtype: MT
+ms.openlocfilehash: 32b47d9d6d45ff471961f55f8159dbe85eae2dce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967542"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73888836"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>在本地部署远程监视解决方案加速器 - Docker
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-本文展示了如何将远程监视解决方案加速器部署到本地计算机，用于测试和开发。 了解如何将微服务部署到本地 Docker 容器。 本地微服务部署使用以下云服务：云中的 IoT Hub、Cosmos DB、Azure 流分析和 Azure 时序见解服务。
+本文展示了如何将远程监视解决方案加速器部署到本地计算机，用于测试和开发。 了解如何将微服务部署到本地 Docker 容器。 本地微服务部署使用以下云服务：IoT 中心、Cosmos DB、Azure 流分析，以及云中的 Azure 时序见解服务。
 
 若要在本地计算机上的 IDE 中运行远程监视解决方案加速器，请参阅[在本地部署远程监视解决方案加速器 - Visual Studio](iot-accelerators-remote-monitoring-deploy-local.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要部署远程监视解决方案加速器使用的 Azure 服务，需要一个有效的 Azure 订阅。
 
-如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 
 ### <a name="machine-setup"></a>计算机设置
 
@@ -91,14 +90,14 @@ docker rmi <list_of_images>
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
 1. 导航到为解决方案创建的**资源组**。 该资源组的名称是在运行 **start.cmd** 脚本时为解决方案选择的名称。
-1. 在资源列表中单击“流分析作业”。
-1. 在流分析作业的“概述”页上，单击“启动”按钮。 然后单击“启动”以立即启动该作业。
+1. 在资源列表中单击“流分析作业”。****
+1. 在流分析作业的“概述”页上，单击“启动”按钮。******** 然后单击“启动”以立即启动该作业****。
 
 ### <a name="connect-to-the-dashboard"></a>连接到仪表板
 
-若要访问远程监视解决方案仪表板，导航到`http://localhost:8080`在浏览器中。 现在可以使用 Web UI 和本地微服务。
+若要访问远程监视解决方案仪表板，请在浏览器中导航到 `http://localhost:8080`。 现在可以使用 Web UI 和本地微服务。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 为避免产生不必要的费用，在完成测试后，请从 Azure 订阅中删除云服务。 若要删除这些服务，请导航到 [Azure 门户](https://ms.portal.azure.com)，并删除 **start.cmd** 脚本创建的资源组。
 

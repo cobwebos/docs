@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc60cb221b167f6157dbc767e780cd912cbfd7d8
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 147ce4c898d29f08593019073d69bba78edb75b7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481903"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67106872"
 ---
 # <a name="tutorial-integrate-anaqua-with-azure-active-directory"></a>教程：将 ANAQUA 与 Azure Active Directory 集成
 
@@ -84,7 +84,7 @@ ms.locfileid: "66481903"
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.anaqua.com/anaqua/Public/login.aspx`
 
-1. 如果要在 SP  发起的模式下配置应用程序，请点击“设置其他 URL”  ，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.anaqua.com/anaqua/Public/login.aspx`
 
@@ -111,7 +111,7 @@ ms.locfileid: "66481903"
 1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤  ：
    1. 在“名称”  字段中，输入 `B. Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
    1. 单击“创建”。 
 
@@ -125,12 +125,12 @@ ms.locfileid: "66481903"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
 1. 在“用户和组”对话框中，选择“用户”列表中的“B. Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-anaqua-test-user"></a>创建 ANAQUA 测试用户

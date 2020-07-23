@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: tamram
 ms.openlocfilehash: c118ba581aa23bd1647e4dce26c035e6591d07dc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66123252"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67172847"
 ---
 现在，已了解有关 Azure 队列存储的基础知识，可单击下面的链接来了解更复杂的存储任务。
 

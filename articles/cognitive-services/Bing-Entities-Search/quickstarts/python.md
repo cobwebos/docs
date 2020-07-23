@@ -1,6 +1,6 @@
 ---
-title: 快速入门：使用 Python 向必应实体搜索 REST API 发送搜索请求
-titlesuffix: Azure Cognitive Services
+title: 快速入门：使用 Python 向 REST API 发送搜索请求 - 必应实体搜索
+titleSuffix: Azure Cognitive Services
 description: 使用本快速入门，通过 Python 向必应实体搜索 REST API 发送请求，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
@@ -8,18 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 43f01b39ed01e94fe21283997b5981e7fa49bde5
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.custom: tracking-python
+ms.openlocfilehash: c535683323428dadedeaefd5f76f4387569f9427
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384528"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604127"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>快速入门：使用 Python 向必应实体搜索 REST API 发送搜索请求
 
-使用本快速入门对必应实体搜索 API 进行你的第一次调用并查看 JSON 响应。 这个简单的 Python 应用程序会向该 API 发送一个新闻搜索查询并显示响应。 该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py) 上获得。
+参考本快速入门对必应实体搜索 API 进行第一次调用并查看 JSON 响应。 这个简单的 Python 应用程序会向该 API 发送一个新闻搜索查询并显示响应。 该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py) 上获得。
 
 虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
@@ -31,7 +32,7 @@ ms.locfileid: "66384528"
 
 ## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 
-1. 在你喜欢使用的 IDE 或编辑器中创建一个新的 Python 文件，然后添加以下 import 语句。 为你的订阅密钥、终结点、市场和搜索查询创建变量。 可以在 Azure 仪表板中找到你的终结点。
+1. 在你喜欢使用的 IDE 或编辑器中创建一个新的 Python 文件，然后添加以下 import 语句。 为你的订阅密钥、终结点、市场和搜索查询创建变量。 你可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```python
     import http.client, urllib.parse
@@ -44,7 +45,7 @@ ms.locfileid: "66384528"
     query = 'italian restaurants near me'
     ```
 
-2. 通过将市场变量追加到 `?mkt=` 参数来创建请求 URL。 对你的查询进行 URL 编码并将其追加到 `&q=` 参数。 
+2. 通过将市场变量追加到 `?mkt=` 参数来创建请求 URL。 对查询进行 URL 编码并将其追加到 `&q=` 参数。 
     
     ```python
     params = '?mkt=' + mkt + '&q=' + urllib.parse.quote (query)
@@ -52,21 +53,24 @@ ms.locfileid: "66384528"
 
 ## <a name="send-a-request-and-get-a-response"></a>发送请求并获取响应
 
-1. 创建一个名为 `get_suggestions()` 的函数。 然后，执行以下步骤。
-   1. 将你的订阅密钥添加到一个字典中，使用 `Ocp-Apim-Subscription-Key` 作为键。
-   2. 使用 `http.client.HTTPSConnection()` 创建一个 HTTPS 客户端对象。 使用 `request()` 以及你的路径、参数和标头信息发送 `GET` 请求。
-   3. 通过 `getresponse()` 存储响应，并返回 `response.read()`。
+1. 创建一个名为 `get_suggestions()` 的函数。 
 
-      ```python
-      def get_suggestions ():
-       headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
-       conn = http.client.HTTPSConnection (host)
-       conn.request ("GET", path + params, None, headers)
-       response = conn.getresponse ()
-       return response.read()
-      ```
+2. 在此函数中，将你的订阅密钥添加到一个字典中，使用 `Ocp-Apim-Subscription-Key` 作为键。
 
-2. 调用 `get_suggestions()` 并输出 JSON 响应。
+3. 使用 `http.client.HTTPSConnection()` 创建一个 HTTPS 客户端对象。 使用 `request()` 以及你的路径、参数和标头信息发送 `GET` 请求。
+
+4. 通过 `getresponse()` 存储响应，并返回 `response.read()`。
+
+   ```python
+   def get_suggestions ():
+    headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
+    conn = http.client.HTTPSConnection (host)
+    conn.request ("GET", path + params, None, headers)
+    response = conn.getresponse ()
+    return response.read()
+   ```
+
+5. 调用 `get_suggestions()` 并输出 JSON 响应。
 
     ```python
     result = get_suggestions ()
@@ -143,5 +147,5 @@ ms.locfileid: "66384528"
 > [!div class="nextstepaction"]
 > [构建单页 Web 应用](../tutorial-bing-entities-search-single-page-app.md)
 
-* [什么是必应实体搜索 API](../search-the-web.md)
-* [必应实体搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [什么是必应实体搜索 API？](../search-the-web.md)
+* [必应实体搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)。

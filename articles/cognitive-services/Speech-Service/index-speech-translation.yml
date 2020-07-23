@@ -1,0 +1,58 @@
+### YamlMime:Landing
+title: 语音翻译文档
+summary: 使用语音服务提供的语音翻译，可以对音频流进行实时多语言语音转语音和语音转文本翻译
+metadata:
+  title: 语音翻译文档 - 教程和 API 参考 - Azure 认知服务 | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: trevorbye
+  manager: nitinme
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 04/13/2020
+  ms.author: trbye
+  ms.openlocfilehash: 8fa1b62b193fff2a0ca8f4825ece228f156e5318
+  ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+  ms.translationtype: MT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/22/2020
+  ms.locfileid: "83800843"
+landingContent:
+- title: 关于语音翻译
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是语音翻译？
+      url: speech-translation.md
+    - text: 语音翻译基础知识
+      url: speech-translation-basics.md
+    - text: 使用语音 CLI 翻译无代码的语音
+      url: spx-overview.md
+  - linkListType: quickstart
+    links:
+    - text: 将语音翻译为文本
+      url: quickstarts/translate-speech-to-text.md
+    - text: 将语音翻译为多种目标语言
+      url: quickstarts/translate-speech-to-text-multiple-languages.md
+    - text: 将语音翻译为语音
+      url: quickstarts/translate-speech-to-speech.md
+- title: 使用语音翻译进行开发
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 实时翻译语音
+      url: https://docs.microsoft.com/learn/modules/convert-speech-to-text
+  - linkListType: tutorial
+    links:
+    - text: 使用 REST API 翻译和合成文本
+      url: ../translator/tutorial-build-flask-app-translation-synthesis.md
+- title: 参考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 语言支持
+      url: language-support.md#speech-translation
+    - text: 语音翻译常见问题解答
+      url: https://www.microsoft.com/translator/business/faq/
+    - text: 语音翻译定价
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/

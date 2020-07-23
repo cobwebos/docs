@@ -5,20 +5,20 @@ services: app-service
 author: cephalin
 ms.service: app-service
 ms.topic: include
-ms.date: 06/08/2018
+ms.date: 01/07/2020
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 8709956adee06e4e783ac5a7b317b2c4dec43e73
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: feed8b21833d4244d027d64d5e6547b94e4fa66f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66137124"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75945160"
 ---
 ## <a name="what-happens-to-my-app-during-deployment"></a>部署期间我的应用会发生什么情况？
 
-所有官方支持的部署方法均具有一个共同点：它们会更改应用的 `/home/site/wwwroot` 文件夹中的文件。 这些文件与生产中运行的文件相同。 因此，部署可能由于存在锁定文件而失败，或者由于并非所有文件同时更新，生产中的应用在部署期间可能出现不可预测的行为。 可通过多种不同方式避免这些问题：
+所有官方支持的部署方法都会更改应用的 `/home/site/wwwroot` 文件夹中的文件。 这些文件用于运行你的应用。 因此，部署可能会因为文件锁定而失败。 应用在部署期间的行为也可能无法预测，因为并非所有文件都同时更新。 这对于面向客户的应用来说是不合需要的。 可通过多种不同方式避免这些问题：
 
-- 部署期间停止应用或对应用启用脱机模式。 有关详细信息，请参阅 [Dealing with locked files during deployment](https://github.com/projectkudu/kudu/wiki/Dealing-with-locked-files-during-deployment)（处理部署过程中锁定的文件）。
+- [直接从 ZIP 包运行应用](../articles/app-service/deploy-run-package.md)，而不将其解压缩。
+- 部署期间停止应用或对应用启用脱机模式。 有关详细信息，请参阅[处理部署过程中锁定的文件](https://github.com/projectkudu/kudu/wiki/Dealing-with-locked-files-during-deployment)。
 - 部署到[过渡槽](../articles/app-service/deploy-staging-slots.md)且启用了[自动交换](../articles/app-service/deploy-staging-slots.md#configure-auto-swap)。 
-- 改为使用[从程序包运行](https://github.com/Azure/app-service-announcements/issues/84)。

@@ -3,23 +3,22 @@ title: 分析 Azure CDN 使用模式 |Microsoft Docs
 description: 本文介绍适用于 Azure CDN 产品的不同类型的分析报告。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: 95e18b3c-b987-46c2-baa8-a27a029e3076
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
-ms.author: magattus
-ms.openlocfilehash: ef713c954d6eab05259547a277db12a1e9036bcf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: allensu
+ms.openlocfilehash: c78dff9f5258023d90100c70bd244e8e0d016d6f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60636190"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81253605"
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>分析 Azure CDN 使用模式
 
@@ -27,15 +26,15 @@ ms.locfileid: "60636190"
 
 ## <a name="core-analytics-via-azure-diagnostic-logs"></a>通过 Azure 诊断日志进行核心分析
 
-核心分析可用于所有定价层的 CDN 终结点。 Azure 诊断日志使核心分析导出到 Azure 存储中，事件中心或 Azure Monitor 日志。 Azure Monitor 日志提供了图形的用户配置和自定义解决方案。 有关 Azure 诊断日志的详细信息，请参阅 [Azure 诊断日志](cdn-azure-diagnostic-logs.md)。
+核心分析可用于所有定价层的 CDN 终结点。 Azure 诊断日志允许将核心分析导出到 Azure 存储、事件中心或 Azure Monitor 日志。 Azure Monitor 日志提供了一个具有用户可配置和可自定义的图形的解决方案。 有关 Azure 诊断日志的详细信息，请参阅 [Azure 诊断日志](cdn-azure-diagnostic-logs.md)。
 
 ## <a name="verizon-core-reports"></a>Verizon 核心报表
 
-作为具有 **Verizon 提供的标准 Azure CDN** 或 **Verizon 提供的高级 Azure CDN** 配置文件的 Azure CDN 用户，可以在 Verizon 补充门户中查看 Verizon 核心报告。 可通过 Azure 门户的“管理”选项访问 Verizon 核心报表，其中提供了各种各样的图和视图。 有关详细信息，请参阅 [Verizon 中的核心报表](cdn-analyze-usage-patterns.md)。
+作为具有 **Verizon 提供的标准 Azure CDN** 或 **Verizon 提供的高级 Azure CDN** 配置文件的 Azure CDN 用户，可以在 Verizon 补充门户中查看 Verizon 核心报告。 可以通过 Azure 门户中的 "**管理**" 选项访问 Verizon 核心报表，并提供各种关系图和视图。 有关详细信息，请参阅 [Verizon 中的核心报表](cdn-analyze-usage-patterns.md)。
 
 ## <a name="verizon-custom-reports"></a>Verizon 自定义报表
 
-作为具有 **Verizon 提供的标准 Azure CDN** 或 **Verizon 提供的高级 Azure CDN** 配置文件的 Azure CDN 用户，可以在 Verizon 补充门户中查看 Verizon 自定义报告。 可通过 Azure 门户的“管理”选项访问 Verizon 自定义报表。 Verizon 自定义报表页显示属于 Azure CDN 配置文件的各个边缘 CName 的点击量或传输数据。 可以按照任意时间段内的 HTTP 响应代码或缓存状态将数据分组。 有关详细信息，请参阅 [Verizon 中的自定义报表](cdn-verizon-custom-reports.md)。
+作为具有 **Verizon 提供的标准 Azure CDN** 或 **Verizon 提供的高级 Azure CDN** 配置文件的 Azure CDN 用户，可以在 Verizon 补充门户中查看 Verizon 自定义报告。 可以通过 Azure 门户中的 "**管理**" 选项访问 Verizon 自定义报表。 Verizon 自定义报表页显示属于 Azure CDN 配置文件的各个边缘 CName 的点击量或传输数据。 可以按照任意时间段内的 HTTP 响应代码或缓存状态将数据分组。 有关详细信息，请参阅 [Verizon 中的自定义报表](cdn-verizon-custom-reports.md)。
 
 ## <a name="azure-cdn-premium-from-verizon-reports"></a>来自 Verizon 的高级 Azure CDN 报告
 

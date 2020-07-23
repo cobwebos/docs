@@ -1,17 +1,17 @@
 ---
-title: 使用 Azure 门户重启 Azure Database for MariaDB 服务器
+title: 重新启动服务器-Azure 门户-Azure Database for MariaDB
 description: 本文介绍了如何使用 Azure 门户重启 Azure Database for MariaDB 服务器。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
-ms.date: 2/7/2019
-ms.openlocfilehash: 232037562c4a84ee9217e2e89a0da2ffdc37d560
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.topic: how-to
+ms.date: 3/18/2020
+ms.openlocfilehash: 369d19d98946f8309c7f2053f4453e09a7ed902f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "60745725"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121055"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-azure-portal"></a>使用 Azure 门户重启 Azure Database for MariaDB 服务器
 本主题介绍了如何重启 Azure Database for MariaDB 服务器。 出于维护原因，可能需要重启服务器，这会在服务器执行操作时导致短暂中断。
@@ -20,7 +20,7 @@ ms.locfileid: "60745725"
 
 完成重启所需的时间取决于 MariaDB 恢复过程。 若要减少重启时间，建议在重启之前尽量减少服务器上发生的活动量。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 若要完成本操作指南，需要：
 - [Azure Database for MariaDB 服务器](./quickstart-create-mariadb-server-database-using-azure-portal.md)
 
@@ -30,11 +30,11 @@ ms.locfileid: "60745725"
 
 1. 在 Azure 门户中，选择 Azure Database for MariaDB 服务器。
 
-2. 在服务器“概述”页的工具栏中，单击“重启”。
+2. 在服务器“概述”页的工具栏中，单击“重启”   。
 
    ![Azure Database for MariaDB - 概述 -“重启”按钮](./media/howto-restart-server-portal/2-server.png)
 
-3. 单击“是”以确认重启服务器。
+3. 单击“是”以确认重启服务器  。
 
    ![Azure Database for MariaDB - 重启确认](./media/howto-restart-server-portal/3-restart-confirm.png)
 

@@ -1,5 +1,5 @@
 ---
-title: 快速入门：搜索图像 - 必应图像搜索 REST API 和 PHP
+title: 快速入门：使用必应图像搜索 REST API 和 PHP 来搜索图像
 titleSuffix: Azure Cognitive Services
 description: 使用本快速入门，通过 PHP 将图像搜索请求发送到必应图像搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
@@ -9,15 +9,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 2/12/2019
+ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 8def6336dd35b8eac1ae357cb32df35d1b7baa2c
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: aad804179739a77010446a146d32cd51ac6e6757
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383753"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603360"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>快速入门：使用必应图像搜索 REST API 和 PHP 来搜索图像
 
@@ -25,23 +25,23 @@ ms.locfileid: "66383753"
 
 虽然此应用程序是用 PHP 编写的，但 API 是一种 RESTful Web 服务，与任何可以发出 HTTP 请求并分析 JSON 的编程语言兼容。
 
-该示例的源代码可[在 GitHub 上]https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/php/Search/BingWebSearchv7.php)获得。
+该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/php/Search/BingWebSearchv7.php) 上获得。
 
 ## <a name="prerequisites"></a>先决条件
 
-* [PHP 5.6.x 或更高版本](https://php.net/downloads.php)。
+* [PHP 5.6.x 或更高版本](https://php.net/downloads.php)
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+有关详细信息，请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 ## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 
-要运行此应用程序，请执行以下步骤。
+若要运行此应用程序，请执行以下步骤：
 
-1. 确保在 `php.ini` 文件中启用安全 HTTP 支持。 在 Windows 上，此文件位于 `C:\windows` 中。
+1. 确保在 `php.ini` 文件中启用安全 HTTP 支持。 对于 Windows，此文件位于 C:\windows。
 2. 在喜欢使用的 IDE 或编辑器中新建一个 PHP 项目。
-3. 定义 API 终结点、订阅密钥和搜索词。
+3. 定义 API 终结点、订阅密钥和搜索词。 终结点可以是以下代码中的全局终结点，或者是在资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```php
     $endpoint = 'https://api.cognitive.microsoft.com/bing/v7.0/images/search';
@@ -49,7 +49,8 @@ ms.locfileid: "66383753"
     $accessKey = 'enter key here';
     $term = 'tropical ocean';
     ```
-   ## <a name="construct-and-perform-an-http-request"></a>构造并执行 HTTP 请求
+
+## <a name="construct-and-perform-an-http-request"></a>构造并执行 HTTP 请求
 
 1. 使用上一步中的变量来为图像搜索 API 准备 HTTP 请求。
 
@@ -59,6 +60,7 @@ ms.locfileid: "66383753"
                             'header' => $headers,
                             'method' => 'GET' ));
     ```
+
 2. 发送 Web 请求并获取 JSON 响应。
 
     ```php
@@ -70,16 +72,16 @@ ms.locfileid: "66383753"
 
 处理并打印返回的 JSON 响应。
 
-    ```php
-    $headers = array();
-        foreach ($http_response_header as $k => $v) {
-            $h = explode(":", $v, 2);
-            if (isset($h[1]))
-                if (preg_match("/^BingAPIs-/", $h[0]) || preg_match("/^X-MSEdge-/", $h[0]))
-                    $headers[trim($h[0])] = trim($h[1]);
-        }
-        return array($headers, $result);
-    ```
+```php
+$headers = array();
+    foreach ($http_response_header as $k => $v) {
+        $h = explode(":", $v, 2);
+        if (isset($h[1]))
+            if (preg_match("/^BingAPIs-/", $h[0]) || preg_match("/^X-MSEdge-/", $h[0]))
+                $headers[trim($h[0])] = trim($h[1]);
+    }
+    return array($headers, $result);
+```
 
 ## <a name="example-json-response"></a>示例 JSON 响应
 
@@ -136,9 +138,8 @@ ms.locfileid: "66383753"
 
 ## <a name="see-also"></a>另请参阅
 
-* [什么是必应图像搜索？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [什么是必应图像搜索 API？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
 * [尝试在线互动演示](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
-* 必应搜索 API 的[定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
-* [获取免费的认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [必应搜索 API 的定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) 
 * [Azure 认知服务文档](https://docs.microsoft.com/azure/cognitive-services)
 * [必应图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

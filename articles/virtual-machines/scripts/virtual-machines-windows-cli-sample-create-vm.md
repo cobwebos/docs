@@ -1,11 +1,10 @@
 ---
-title: Azure CLI 脚本示例 - 创建 Windows Server VM | Microsoft 文档
+title: Azure CLI 脚本示例 - 创建 Windows Server VM
 description: Azure CLI 脚本示例 - 创建 Windows Server VM
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rickstercdn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -15,12 +14,12 @@ ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
-ms.openlocfilehash: 0d1fcc081cd19a141df4a10a4be7a1073f5b39e8
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 1ed4c3c632f832638a63efa4c673db74a62b137b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673711"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459417"
 ---
 # <a name="create-a-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 创建虚拟机
 
@@ -46,7 +45,7 @@ az group delete --name myResourceGroup --yes
 
 此脚本使用以下命令创建资源组、虚拟机和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | 创建 Azure 虚拟网络和子网。 |

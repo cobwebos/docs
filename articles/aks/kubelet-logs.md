@@ -2,18 +2,13 @@
 title: 在 Azure Kubernetes 服务 (AKS) 中查看 kubelet 日志
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 节点的 kubelet 日志中查看故障排除信息
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: article
-origin.date: 03/05/2019
-ms.date: 04/08/2019
-ms.author: v-yeche
-ms.openlocfilehash: b381145fef7e6fb399fac3387ab01fdc9a51b154
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 03/05/2019
+ms.openlocfilehash: b7a74803af916f9e9de72dd528273007ce37832f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60465013"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77595376"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>从 Azure Kubernetes 服务 (AKS) 群集节点获取 kubelet 日志
 

@@ -14,19 +14,21 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: alkohli
-ms.openlocfilehash: 4f093251ce3c711cc060369abb27770157024d91
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fbbb298dd9e5b568e6a1dc2c4ef731b8521f8308
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61488546"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556031"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>在政府门户中部署本地 StorSimple 设备
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>概述
 欢迎使用 Microsoft Azure StorSimple 设备部署。 这些部署教程适用于在 Azure 政府门户中运行 Update 3 软件或更高版本的 StorSimple 8000 系列。 本系列教程包括 StorSimple 设备的配置清单、配置先决条件列表，以及详细配置步骤。
 
-这些教程中的信息均假定已阅读安全预防措施，并已打开 StorSimple 设备包、装入机架，并连接好电缆。 如果仍然需要执行这些任务，请从阅读 [安全预防措施](storsimple-safety.md)开始。 按照设备具体说明，将设备解包、装入机架并连接好电缆。
+这些教程中的信息均假定已阅读安全预防措施，并已打开 StorSimple 设备包、装入机架，并连接好电缆。 如果仍然需要执行这些任务，请从阅读 [安全预防措施](storsimple-8000-safety.md)开始。 按照设备具体说明，将设备解包、装入机架并连接好电缆。
 
 * [解包、装载机架，并将电缆接到 8100](storsimple-8100-hardware-installation.md)
 * [解包、安装机架，将电缆连接到 8600](storsimple-8600-hardware-installation.md)
@@ -34,30 +36,30 @@ ms.locfileid: "61488546"
 需要有管理员权限才能完成安装和配置过程。 建议在开始之前查看配置清单。 部署和配置过程可能需要一些时间才能完成。
 
 > [!NOTE]
-> Microsoft Azure 网站上发布的 StorSimple 部署信息仅适用于 StorSimple 8000 系列设备。 如需 7000 系列设备的完整信息，请转到：[http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com)。 如需 7000 系列的部署信息，请参阅 [StorSimple 系统快速入门指南](http://onlinehelp.storsimple.com/111_Appliance/)。
+> Microsoft Azure 网站上发布的 StorSimple 部署信息仅适用于 StorSimple 8000 系列设备。 有关7000系列设备的完整信息，请参阅： [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com) 。 如需 7000 系列的部署信息，请参阅 [StorSimple 系统快速入门指南](http://onlinehelp.storsimple.com/111_Appliance/)。
 
 
 ## <a name="deployment-steps"></a>部署步骤
 执行这些必需的步骤来配置 StorSimple 设备，并将其连接到 StorSimple Device Manager 服务。 除了这些所需的步骤外，在部署过程中可能还需要完成一些可选步骤和过程。 逐步部署说明将指示何时应执行每个可选步骤。
 
-| 步骤 | 描述 |
+| 步骤 | 说明 |
 | --- | --- |
 | **先决条件** |这些是针对即将进行的部署需要做好准备。 |
 | [部署配置清单](#deployment-configuration-checklist) |使用此清单来收集和记录部署之前或期间的信息。 |
 | [部署先决条件](#deployment-prerequisites) |这些项会验证环境是否已做好部署准备。 |
 |  | |
-| **逐步部署** |需要完成这些步骤，以在生产中部署 StorSimple 设备。 |
-| [步骤 1：创建新的服务](#step-1-create-a-new-service) |设置 StorSimple 设备的云管理和存储。 *如果其他 StorSimple 设备有现有服务，请跳过此步骤*。 |
+| **分步部署** |需要完成这些步骤，以在生产中部署 StorSimple 设备。 |
+| [步骤 1：创建新服务](#step-1-create-a-new-service) |设置 StorSimple 设备的云管理和存储。 *如果其他 StorSimple 设备有现有服务，请跳过此步骤*。 |
 | [步骤 2：获取服务注册密钥](#step-2-get-the-service-registration-key) |使用此密钥注册 StorSimple 设备，并将其连接到管理服务。 |
-| [步骤 3：配置设备通过 Windows PowerShell for StorSimple 和注册](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |使用管理服务将设备连接到网络，并通过 Azure 注册以完成安装。 |
+| [步骤3：通过用于 StorSimple 的 Windows PowerShell 配置和注册设备](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |使用管理服务将设备连接到网络，并通过 Azure 注册以完成安装。 |
 | [步骤 4：完成最低要求的设备设置](#step-4-complete-minimum-device-setup) </br>可选：更新 StorSimple 设备。 |使用管理服务来完成设备安装，并启用以使其能够提供存储。 |
 | [步骤 5：创建卷容器](#step-5-create-a-volume-container) |创建容以预配卷。 卷容器具有其中所包含的所有卷的存储帐户、带宽和加密设置。 |
 | [步骤 6：创建卷](#step-6-create-a-volume) |在服务器的 StorSimple 设备上预配存储卷。 |
-| [步骤 8：装载、初始化和格式化卷](#step-7-mount-initialize-and-format-a-volume) </br>可选：配置 MPIO。 |将服务器连接到设备提供的 iSCSI 存储。 根据情况配置 MPIO，确保服务器可以容许链接、网络和接口故障。 |
+| [步骤 7：装载、初始化和格式化卷](#step-7-mount-initialize-and-format-a-volume) </br>可选：配置 MPIO。 |将服务器连接到设备提供的 iSCSI 存储。 根据情况配置 MPIO，确保服务器可以容许链接、网络和接口故障。 |
 | [步骤 8：执行备份](#step-8-take-a-backup) |设置备份策略以保护数据 |
 |  | |
 | **其他过程** |在部署解决方案时可能需要参阅这些过程。 |
-| [针对服务配置新的存储帐户](#configure-a-new-storage-account-for-the-service) | |
+| [为服务配置新的存储帐户](#configure-a-new-storage-account-for-the-service) | |
 | [使用 PuTTY 连接到设备串行控制台](#use-putty-to-connect-to-the-device-serial-console) | |
 | [扫描并应用更新](#scan-for-and-apply-updates) | |
 | [获取 Windows Server 主机的 IQN](#get-the-iqn-of-a-windows-server-host) | |
@@ -115,12 +117,12 @@ StorSimple Device Manager 服务可以管理多个 StorSimple 设备。 执行�
 
 [!INCLUDE [storsimple-8000-get-service-registration-key](../../includes/storsimple-8000-get-service-registration-key.md)]
 
-## <a name="step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple"></a>步骤 3：配置设备通过 Windows PowerShell for StorSimple 和注册
+## <a name="step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple"></a>步骤 3：通过 Windows PowerShell for StorSimple 配置和注册设备
 使用 Windows PowerShell for StorSimple 来完成 StorSimple 设备的初始设置，如以下过程所述。 需要使用终端模拟软件来完成此步骤。 有关详细信息，请参阅 [使用 PuTTY 连接到设备串行控制台](#use-putty-to-connect-to-the-device-serial-console)。
 
 [!INCLUDE [storsimple-8000-configure-and-register-device-gov](../../includes/storsimple-8000-configure-and-register-device-gov-u2.md)]
 
-## <a name="step-4-complete-minimum-device-setup"></a>步骤 4：完成最低要求的设备设置
+## <a name="step-4-complete-minimum-device-setup"></a>步骤 4：完成最低版本的设备安装
 若要完成 StorSimple 设备的最起码设备配置，需要：
 
 * 为设备提供一个友好名称。
@@ -159,7 +161,7 @@ StorSimple Device Manager 服务可以管理多个 StorSimple 设备。 执行�
 [!INCLUDE [storsimple-mount-initialize-format-volume](../../includes/storsimple-mount-initialize-format-volume.md)]
 
 ## <a name="step-8-take-a-backup"></a>步骤 8：执行备份
-备份可提供卷的时间点保护，并可提高可恢复性，同时最大限度地减少恢复时间。 可以在 StorSimple 设备上执行两种类型的备份：本地快照和云快照。 上述每种备份类型都可以是**计划**或**手动**的。
+备份可提供卷的时间点保护，并可提高可恢复性，同时最大限度地减少恢复时间。 可以在 StorSimple 设备上执行两种类型的备份：本地快照和云快照。 其中的每个备份类型可以是“已计划”或“手动”********。
 
 在政府门户中执行以下步骤，创建计划的备份。
 
@@ -172,7 +174,7 @@ StorSimple Device Manager 服务可以管理多个 StorSimple 设备。 执行�
 
 如果需要在不同的区域创建 Azure 存储帐户，请参阅 [关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md) 了解逐步说明。
 
-在政府门户的“StorSimple Device Manager 服务”页中执行以下步骤。
+在政府门户的“StorSimple Device Manager 服务”页中执行以下步骤。****
 
 [!INCLUDE [storsimple-configure-new-storage-account-u1](../../includes/storsimple-8000-configure-new-storage-account-u2.md)]
 
@@ -196,5 +198,5 @@ StorSimple Device Manager 服务可以管理多个 StorSimple 设备。 执行�
 
 ## <a name="next-steps"></a>后续步骤
 * 配置 [虚拟设备](storsimple-8000-cloud-appliance-u2.md)。
-* 使用 [StorSimple Device Manager 服务](storsimple-8000-manager-service-administration.md)管理 StorSimple 设备。
+* 使用[storsimple 设备管理器服务](storsimple-8000-manager-service-administration.md)管理 StorSimple 设备。
 

@@ -3,24 +3,19 @@ title: Azure CLI 脚本示例 - 筛选 VM 网络流量 | Microsoft Docs
 description: Azure CLI 脚本示例 - 筛选入站和出站 VM 网络流量。
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: KumudD
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
-ms.author: jdial
-ms.openlocfilehash: 6045cabdc97dad72a54e28a6f4fbee3126056d2e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: kumud
+ms.openlocfilehash: e91e59e8e8acbf76ed35cff6b2f654103bb763b5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60624031"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73888556"
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic"></a>筛选入站和出站 VM 网络流量
 
@@ -47,7 +42,7 @@ az group delete --name MyResourceGroup --yes
 
 此脚本使用以下命令创建资源组、虚拟网络和网络安全组。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/azure/group) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](/cli/azure/network/vnet) | 创建 Azure 虚拟网络和前端子网。 |

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: scottwhi
 ms.openlocfilehash: 5fa71c62969e0f1ff7e98f374eca63efa051c041
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "66390330"
 ---
 # <a name="get-images-from-your-custom-view"></a>从自定义视图获取图像

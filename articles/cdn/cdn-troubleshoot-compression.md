@@ -3,28 +3,28 @@ title: 排查 Azure CDN 中的文件压缩问题 | Microsoft Docs
 description: 排查 Azure CDN 文件压缩的问题。
 services: cdn
 documentationcenter: ''
-author: zhangmanling
-manager: erikre
+author: sohamnc
+manager: danielgi
 editor: ''
 ms.assetid: a6624e65-1a77-4486-b473-8d720ce28f8b
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 4df8e5d4560a813c47319833a8cd91726abcb8e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5c56564ee6f07c5d208ea5d3089a2c96fd8bbc33
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60323735"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888692"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>排查 CDN 文件压缩问题
 本文将帮助你排查 [CDN 文件压缩](cdn-improve-performance.md)问题。
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并单击“**获取支持**”。
+如果在本文中有任何需要协助的地方，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并单击“获取支持”。****
 
 ## <a name="symptom"></a>症状
 已经为终结点启用了压缩，但返回的文件没有压缩。
@@ -42,6 +42,7 @@ ms.locfileid: "60323735"
 * 所请求的内容不适合压缩。
 * 请求的文件类型未启用压缩。
 * HTTP 请求没有包含请求有效压缩类型的标头。
+* 源正在发送分块内容。
 
 ## <a name="troubleshooting-steps"></a>疑难解答步骤
 > [!TIP]
@@ -52,7 +53,7 @@ ms.locfileid: "60323735"
 ### <a name="verify-the-request"></a>验证请求
 首先，应该对请求进行一次快速的完整性检查。  可以使用浏览器的[开发人员工具](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)来查看正在提出的请求。
 
-* 验证请求是发送到终结点 URL `<endpointname>.azureedge.net`，而不是源。
+* 验证是否将请求发送到终结点 URL，`<endpointname>.azureedge.net`，而不是源。
 * 验证该请求包含 **Accept-encoding** 标头，并且该标头的值包含 **gzip**、**deflate** 或 **bzip2**。
 
 > [!NOTE]
@@ -116,6 +117,6 @@ ms.locfileid: "60323735"
 ### <a name="check-the-request-at-the-origin-server-for-a-via-header"></a>在源服务器上检查请求是否包含 **Via** 标头
 **Via** HTTP 标头指明了由代理服务器正在将请求传递到的 web 服务器。  默认情况下，当请求包含 **Via** 标头时，Microsoft IIS Web 服务器不会压缩响应。  要覆盖此行为，请执行以下操作：
 
-* **IIS 6**:[设置 HcNoCompressionForProxies ="FALSE"，在 IIS 元数据库属性](/previous-versions/iis/6.0-sdk/ms525390(v=vs.90))
-* **IIS 7 及更高版本**:[同时设置**noCompressionForHttp10**并**noCompressionForProxies**为 False 的服务器配置中](https://www.iis.net/configreference/system.webserver/httpcompression)
+* **IIS 6**：[在 IIS 元数据库属性中设置 HcNoCompressionForProxies ="FALSE"](/previous-versions/iis/6.0-sdk/ms525390(v=vs.90))
+* **IIS 7 及更高版本**：[在服务器配置中将 **noCompressionForHttp10** 和 **noCompressionForProxies** 设置为 False ](https://www.iis.net/configreference/system.webserver/httpcompression)
 

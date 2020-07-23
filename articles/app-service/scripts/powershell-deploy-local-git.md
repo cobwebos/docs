@@ -1,26 +1,17 @@
 ---
-title: Azure PowerShell 脚本示例 - 从本地 Git 存储库创建应用并进行部署 | Microsoft Docs
-description: Azure PowerShell 脚本示例 - 从本地 Git 存储库创建 Web 应用并部署代码
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: PowerShell：从本地 Git 存储库进行部署
+description: 了解如何使用 Azure PowerShell 自动部署和管理应用服务。 此示例演示如何从本地 Git 存储库部署代码。
 tags: azure-service-management
 ms.assetid: 5a927f23-8e70-45fd-9aae-980d4e7a007d
-ms.service: app-service-web
-ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 03/20/2017
-ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 80d1b295db7d1eb1e0ea0dda9522aa3875ea882d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7355f2730cc54ca027e20c48e989e9f28dac7487
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136442"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74684845"
 ---
 # <a name="create-a-web-app-and-deploy-code-from-a-local-git-repository"></a>从本地 Git 存储库创建 Web 应用并部署代码
 
@@ -46,7 +37,7 @@ Remove-AzResourceGroup -Name $webappname -Force
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | 使用所需的资源组和应用服务组创建 Web 应用。 如果当前目录包含 Git 存储库，则还要添加 `azure` 远程控制。 |
 

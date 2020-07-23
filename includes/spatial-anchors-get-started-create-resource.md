@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 12/13/2018
 ms.author: crtreasu
-ms.openlocfilehash: 32f4545a45eda8acddd7c93cc4917dbadca9ad4d
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: b2b3ca886359a0b4c906b89ed76f57486fc2c368
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58632957"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83639002"
 ---
 ## <a name="create-a-spatial-anchors-resource"></a>创建空间定位点资源
 
@@ -27,7 +27,7 @@ ms.locfileid: "58632957"
 
 - 使用常规字母数字字符输入唯一的资源名称。
 - 选择想要将资源附加到的订阅。
-- 选择“新建”可创建资源组。 将其命名为 myResourceGroup 并选择“确定”。
+- 选择“新建”可创建资源组。 将其命名为 myResourceGroup 并选择“确定” 。
       [!INCLUDE [resource group intro text](resource-group.md)]
 - 选择可在其中放置资源的位置（区域）。
 - 选择“新建”开始创建资源。
@@ -42,6 +42,10 @@ ms.locfileid: "58632957"
 
    ![资源属性](./media/spatial-anchors-get-started-create-resource/view-resource-properties.png)
 
-在“设置”下，选择“密钥”。 将“主键”值复制到文本编辑器中。 此值为 `Account Key`。 稍后需要用到此信息。
+另外将资源的“帐户域”值复制到文本编辑器，因为稍后需要用它。
+
+   ![帐户域](./media/spatial-anchors-get-started-create-resource/view-resource-domain.png)
+
+在“设置”下，选择“密钥” 。 将“主键”值复制到文本编辑器中。 此值为 `Account Key`。 稍后需要用到此信息。
 
    ![帐户密钥](./media/spatial-anchors-get-started-create-resource/view-account-key.png)

@@ -1,6 +1,6 @@
 ---
 title: 什么是必应新闻搜索 API？
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何使用必应新闻搜索 API 在 Web 上搜索多个类别的当前标题，包括标题和热门主题。
 services: cognitive-services
 author: swhite-msft
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: overview
-ms.date: 01/10/2019
+ms.date: 12/18/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: e02f81ef6bdf8bf4dc39b70cb7a2d9330660d1d6
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: d44fe58eb17e7f11dc64ee1426df7f356cb91aef
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390293"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85602748"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>什么是必应新闻搜索 API？
 
@@ -40,10 +40,8 @@ ms.locfileid: "66390293"
 
 必应新闻搜索 API 是一项 RESTful Web 服务，可以轻松地通过任何编程语言调用，只要该语言能够发出 HTTP 请求和分析 JSON 即可。 可以通过 REST API 或 SDK 使用此服务。
 
-1. 创建可以访问必应搜索 API 的认知服务 API 帐户。 如果没有 Azure 订阅，可以[免费创建一个帐户](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-news-api)。
-
+1. 创建可以访问必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有 Azure 订阅，可以免费[创建一个帐户](https://azure.microsoft.com/free/cognitive-services/)。
 2. 使用有效的搜索查询向 API 发送请求。
-
 3. 通过分析返回的 JSON 消息处理 API 响应。
 
 ## <a name="next-steps"></a>后续步骤
@@ -55,5 +53,5 @@ ms.locfileid: "66390293"
 ## <a name="see-also"></a>另请参阅
 
 * [必应新闻搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) 参考部分包含有关终结点、标头、API 响应和查询参数的定义和信息，这些都可以用来请求基于图像的搜索结果。
-
 * [必应使用和显示要求](./useanddisplayrequirements.md)指定了允许用户如何使用通过必应搜索 API 获得的内容和信息。
+* 请访问[必应搜索 API 中心页](../bing-web-search/search-the-web.md)，浏览其他可用的 API。

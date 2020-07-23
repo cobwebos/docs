@@ -1,29 +1,22 @@
 ---
-title: 以编程方式创建策略和查看符合性数据
-description: 本文逐步讲解如何以编程方式创建和管理适用于 Azure Policy 的策略。
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 01/31/2019
-ms.topic: conceptual
-ms.service: azure-policy
-manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: c4bb06bd4c75dfeb164341d8cc5084030d3a08a7
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+title: 以编程方式创建策略
+description: 本文逐步讲解如何使用 Azure CLI、Azure PowerShell 和 REST API 以编程方式创建和管理适用于 Azure Policy 的策略。
+ms.date: 05/20/2020
+ms.topic: how-to
+ms.openlocfilehash: 3f785556dd86aa8b02f5aa0af09190266b8c509f
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979311"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969883"
 ---
-# <a name="programmatically-create-policies-and-view-compliance-data"></a>以编程方式创建策略和查看符合性数据
+# <a name="programmatically-create-policies"></a>以编程方式创建策略
 
-本文逐步讲解如何以编程方式创建和管理策略。 Azure 策略定义不同的规则和效果对资源强制实施。 强制实施可确保资源始终符合企业标准和服务级别协议。
+本文逐步讲解如何以编程方式创建和管理策略。 Azure Policy 定义对资源强制实施不同的规则和效果。 强制实施可确保资源始终符合企业标准和服务级别协议。
 
-有关符合性的信息，请参阅[获取符合性数据](getting-compliance-data.md)。
+有关符合性的信息，请参阅[获取符合性数据](get-compliance-data.md)。
 
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
-
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保满足以下先决条件：
 
@@ -31,13 +24,13 @@ ms.locfileid: "65979311"
 
 1. 将 Azure PowerShell 模块更新到最新版本。 有关详细信息，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 有关最新版本的详细信息，请参阅 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)。
 
-1. 注册 Azure 策略见解资源提供程序使用 Azure PowerShell 来验证你的订阅，适用于资源提供程序。 若要注册资源提供程序，必须具有为资源提供程序运行注册操作所需的权限。 此操作包含在“参与者”和“所有者”角色中。 运行以下命令，注册资源提供程序：
+1. 使用 Azure PowerShell 注册 Azure Policy Insights 资源提供程序，以确认订阅可使用资源提供程序正常工作。 若要注册资源提供程序，必须具有为资源提供程序运行注册操作所需的权限。 此操作包含在“参与者”和“所有者”角色中。 运行以下命令，注册资源提供程序：
 
    ```azurepowershell-interactive
    Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
    ```
 
-   有关注册和查看资源提供程序的详细信息，请参阅[资源提供程序和类型](../../../azure-resource-manager/resource-manager-supported-services.md)。
+   有关注册和查看资源提供程序的详细信息，请参阅[资源提供程序和类型](../../../azure-resource-manager/management/resource-providers-and-types.md)。
 
 1. 安装 Azure CLI（如果尚未安装）。 可以通过[在 Windows 上安装 Azure CLI](/cli/azure/install-azure-cli-windows) 获取最新版本。
 
@@ -94,7 +87,7 @@ ms.locfileid: "65979311"
 
    将 _ContosoRG_ 替换为所需资源组的名称。
 
-   `New-AzPolicyAssignment` 的 **scope** 参数适用于管理组、订阅、资源组或单个资源。 该参数使用完整资源路径，它将返回 `Get-AzResourceGroup` 的 **ResourceId** 属性。 每个容器的**范围**模式如下所示。 将 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分别替换为你的资源名称、资源组名称、订阅 ID 和管理组名称。
+   `New-AzPolicyAssignment` 的 Scope 参数适用于管理组、订阅、资源组或单个资源。 该参数使用完整资源路径，它将返回 `Get-AzResourceGroup` 的 **ResourceId** 属性。 每个容器的**范围**模式如下所示。 将 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分别替换为你的资源名称、资源组名称、订阅 ID 和管理组名称。
    `{rType}` 将替换为资源的**资源类型**，例如 VM 的 `Microsoft.Compute/virtualMachines`。
 
    - 资源 - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
@@ -102,7 +95,7 @@ ms.locfileid: "65979311"
    - 订阅 - `/subscriptions/{subId}/`
    - 管理组 - `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-有关使用 Azure 资源管理器 PowerShell 模块管理资源策略的详细信息，请参阅 [Az.Resources](/powershell/module/az.resources/#policies)。
+有关使用资源管理器 PowerShell 模块管理资源策略的详细信息，请参阅[Az. 资源](/powershell/module/az.resources/#policies)。
 
 ### <a name="create-and-assign-a-policy-definition-using-armclient"></a>使用 ARMClient 创建并分配策略定义
 
@@ -140,15 +133,15 @@ ms.locfileid: "65979311"
 
    ```console
    # For defining a policy in a subscription
-   armclient PUT "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
+   armclient PUT "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2019-09-01" @<path to policy definition JSON file>
 
    # For defining a policy in a management group
-   armclient PUT "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
+   armclient PUT "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2019-09-01" @<path to policy definition JSON file>
    ```
 
    将前面的 {subscriptionId} 替换为你的订阅的 ID，或将 {managementGroupId} 替换为你的[管理组](../../management-groups/overview.md)的 ID。
 
-   有关查询的结构的详细信息，请参阅[Azure 策略定义 – 创建或更新](/rest/api/resources/policydefinitions/createorupdate)和[策略定义 – 创建或更新在管理组](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)
+   有关查询结构的详细信息，请参阅 [Azure Policy 定义 - 创建或更新](/rest/api/resources/policydefinitions/createorupdate)和[策略定义 - 在管理组中创建或更新](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)
 
 使用以下过程创建策略分配，并在资源组级别分配策略定义。
 
@@ -169,7 +162,7 @@ ms.locfileid: "65979311"
 1. 使用以下调用创建策略分配：
 
    ```console
-   armclient PUT "/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Authorization/policyAssignments/Audit Storage Accounts Open to Public Networks?api-version=2017-06-01-preview" @<path to Assignment JSON file>
+   armclient PUT "/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Authorization/policyAssignments/Audit Storage Accounts Open to Public Networks?api-version=2019-09-01" @<path to Assignment JSON file>
    ```
 
    请将 &lt;&gt; 符号中的示例信息替换为自己的值。
@@ -214,8 +207,8 @@ ms.locfileid: "65979311"
 
    在没有位置参数的情况下调用时，`az policy definition creation` 默认将策略定义保存在会话上下文的选定订阅中。 若要将定义保存到其他位置，请使用以下参数：
 
-   - **--subscription** - 保存到其他订阅。 订阅 ID 需要 _GUID_ 值，订阅名称需要_字符串_值。
-   - **--management-group** - 保存到管理组。 需要_字符串_值。
+   - subscription - 保存到其他订阅。 订阅 ID 需要 _GUID_ 值，订阅名称需要_字符串_值。
+   - management-group - 保存到管理组。 需要_字符串_值。
 
 1. 使用以下命令创建策略分配。 请将 &lt;&gt; 符号中的示例信息替换为自己的值。
 
@@ -223,14 +216,14 @@ ms.locfileid: "65979311"
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   `az policy assignment create` 的 **--scope** 参数适用于管理组、订阅、资源组或单个资源。 该参数使用完整资源路径。 每个容器的 **--scope** 模式如下所示。 将 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分别替换为你的资源名称、资源组名称、订阅 ID 和管理组名称。 `{rType}` 将替换为资源的**资源类型**，例如 VM 的 `Microsoft.Compute/virtualMachines`。
+   `az policy assignment create` 的 scope 参数适用于管理组、订阅、资源组或单个资源。 该参数使用完整资源路径。 每个容器的 scope 模式如下所示。 将 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分别替换为你的资源名称、资源组名称、订阅 ID 和管理组名称。 `{rType}` 将替换为资源的**资源类型**，例如 VM 的 `Microsoft.Compute/virtualMachines`。
 
    - 资源 - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - 资源组 - `/subscriptions/{subID}/resourceGroups/{rgName}`
    - 订阅 - `/subscriptions/{subID}`
    - 管理组 - `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-可以使用以下命令使用 PowerShell 获取 Azure 策略定义 ID:
+可以在 PowerShell 中使用以下命令获取 Azure Policy 定义 ID：
 
 ```azurecli-interactive
 az policy definition show --name 'Audit Storage Accounts with Open Public Networks'
@@ -251,5 +244,5 @@ az policy definition show --name 'Audit Storage Accounts with Open Public Networ
 - [Azure REST API 资源](/rest/api/resources/)
 - [Azure PowerShell 模块](/powershell/module/az.resources/#policies)
 - [Azure CLI 策略命令](/cli/azure/policy?view=azure-cli-latest)
-- [Azure 策略见解资源提供程序 REST API 参考](/rest/api/policy-insights)
-- [使用 Azure 管理组组织资源](../../management-groups/overview.md)。
+- [Azure Policy Insights 资源提供程序 REST API 参考](/rest/api/policy-insights)
+- [使用 Azure 管理组来组织资源](../../management-groups/overview.md)。

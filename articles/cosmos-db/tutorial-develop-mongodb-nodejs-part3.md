@@ -1,6 +1,5 @@
 ---
-title: 使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建 Angular 应用 - 使用 Angular 生成 UI
-titleSuffix: Azure Cosmos DB
+title: 使用 Azure Cosmos DB 的 API for MongoDB 创建 Angular 应用 UI（第 3 部分）
 description: 本教程系列的第 3 部分，介绍如何通过 Angular 和 Node 在 Azure Cosmos DB 上创建 MongoDB 应用，所使用的 API 与用于 MongoDB 的 API 完全相同。
 author: johnpapa
 ms.service: cosmos-db
@@ -11,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 286ccfe84f511ffccdc8919b2e717cd21f124c2b
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 64085c55376ec85e20244abb452c2e365aa0aeec
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158697"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114378"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建 Angular 应用 - 使用 Angular 生成 UI
 
@@ -38,7 +37,7 @@ ms.locfileid: "54158697"
 开始教程的此部分之前，请确保已完成教程[第 2 部分](tutorial-develop-mongodb-nodejs-part2.md)的步骤。
 
 > [!TIP]
-> 本教程介绍分步生成应用程序的步骤。 若要下载完成的项目，可从 GitHub 上的 [angular-cosmosdb 存储库](https://github.com/Azure-Samples/angular-cosmosdb)获取完成的应用程序。
+> 本教程介绍生成应用程序的各个步骤。 若要下载完成的项目，可从 GitHub 上的 [angular-cosmosdb 存储库](https://github.com/Azure-Samples/angular-cosmosdb)获取完成的应用程序。
 
 ## <a name="build-the-ui"></a>生成 UI
 
@@ -52,7 +51,7 @@ ms.locfileid: "54158697"
 
     Terminal 窗口显示新组件的确认信息。
 
-    ![安装 hero 组件](./media/tutorial-develop-mongodb-nodejs-part3/install-heros-component.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/install-heros-component.png" alt-text="安装 hero 组件":::
 
     请看看已创建和更新的文件。 
 
@@ -63,7 +62,7 @@ ms.locfileid: "54158697"
 
 4. 在同一文件夹中打开 app.module.ts 文件。请注意，该文件在第 5 行向声明添加了 `HeroesComponent`，并在第 10 行对其进行了导入操作。
 
-    ![打开 app-module.ts 文件](./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="打开 app-module.ts 文件":::
 
 5. 返回到 heroes.component.html 文件，将此代码复制到其中。 `<div>` 是整个页面的容器。 容器内有一个需创建的 hero 的列表。创建这些组件后，在 UI 中单击其中一个组件即可将其选定进行编辑或删除操作。 然后就会在 HTML 中显示某种样式，可以据此判断选择了哪个组件。 此外还有编辑区域，用于添加新的 hero 或编辑现有的 hero。 
 
@@ -395,7 +394,7 @@ ms.locfileid: "54158697"
 
 5. 左键单击 `Hero` 一词，Visual Studio 会在代码块左侧显示一个灯泡图标。 
 
-    ![Visual Studio Code 中的灯泡](./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="Visual Studio Code 中的灯泡":::
 
 6. 单击灯泡，然后单击“从 ‘/app/hero’ 导入 Hero”。 或“从 "./hero" 导入 Hero”。 （此消息因设置而异）
 
@@ -487,11 +486,11 @@ ms.locfileid: "54158697"
 
     现在运行该应用。
 
-2. 在 Visual Studio Code 中，单击左侧的“调试”按钮 ![Visual Studio Code 中的“调试”图标](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png)，然后单击“开始调试”按钮 ![Visual Studio Code 中的“开始调试”图标](./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png)。
+2. 在 Visual Studio Code 中，单击左侧的“调试”按钮![Visual Studio Code 中的“调试”图标](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png)，然后单击“开始调试”按钮![Visual Studio Code 中的“开始调试”图标](./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png)。
 
 3. 现在请打开 Internet 浏览器，导航到 localhost:3000，然后就会看到该应用在本地运行。
 
-     ![在本地运行的 Hero 应用程序](./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png)
+     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="在本地运行的 Hero 应用程序":::
 
 ## <a name="next-steps"></a>后续步骤
 

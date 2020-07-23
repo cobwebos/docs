@@ -1,6 +1,6 @@
 ---
 title: 将必应视频搜索 API v5 升级到 v7
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 发现需要更新为使用版本 7 的应用部分。
 services: cognitive-services
 author: swhite-msft
@@ -10,22 +10,22 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 32dc928147af8fbb3c84bdb76e50cee4fdabe17d
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 5dc4c870ae8dbe9f082456d738836aced1271732
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66386652"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "68500731"
 ---
 # <a name="video-search-api-upgrade-guide"></a>视频搜索 API 升级指南
 
 本升级指南确定了必应视频搜索 API 版本 5 与版本 7 的不同之处。 本指南有助于发现需要更新为使用版本 7 的应用部分。
 
-## <a name="breaking-changes"></a>重大变化
+## <a name="breaking-changes"></a>中断性变更
 
 ### <a name="endpoints"></a>终结点
 
-- 终结点的版本号已从 v5 更改为 v7。 例如，`https://api.cognitive.microsoft.com/bing/v7.0/videos/search`。
+- 终结点的版本号已从 v5 更改为 v7。 例如，`https://api.cognitive.microsoft.com/bing/v7.0/videos/search` 。
 
 ### <a name="error-response-objects-and-error-codes"></a>错误响应对象和错误代码
 
@@ -38,7 +38,7 @@ ms.locfileid: "66386652"
 
 - 已将 v5 错误代码替换为以下可取的 `code` 和 `subCode` 值。
 
-|代码|SubCode|描述
+|代码|SubCode|说明
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|只要出现任何子代码条件，必应就会返回 ServerError。 如果 HTTP 状态代码为 500，响应就会包含这些错误。
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>已阻止|只要请求的任何部分无效，必应就会返回 InvalidRequest。 例如，缺少必需参数或参数值无效。<br/><br/>如果错误是 ParameterMissing 或 ParameterInvalidValue，HTTP 状态代码为 400。<br/><br/>如果错误是 HttpNotAllowed，则 HTTP 状态代码为 410。
@@ -55,7 +55,7 @@ RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
 ResourceAccessDenied|InsufficientAuthorization
 ExceededVolume|RateLimitExceeded
 ExceededQpsLimit|RateLimitExceeded
-已禁用|InsufficientAuthorization.AuthorizationDisabled
+禁用|InsufficientAuthorization.AuthorizationDisabled
 UnexpectedError|ServerError.UnexpectedError
 DataSourceErrors|ServerError.ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing

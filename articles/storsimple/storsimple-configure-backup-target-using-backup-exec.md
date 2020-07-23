@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
-ms.author: hkanna
-ms.openlocfilehash: e11d541f0450c0de4ba6d60f889fc7471b1fa1aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: matd
+ms.openlocfilehash: 699df6ab44a08645c9f46e95cd2ad279de75ea70
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60724192"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509653"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>用作备份目标的 StorSimple 与 Backup Exec 的集成
 
@@ -37,7 +37,7 @@ Azure StorSimple 是 Microsoft 提供的一种混合云存储解决方案。 Sto
 
 ## <a name="supported-versions"></a>支持的版本
 
--   [Backup Execc 16 和更高版本](http://backupexec.com/compatibility)
+-   [Backup Execc 16 和更高版本](https://www.veritas.com/content/support/en_US/article.100040087)
 -   [StorSimple Update 3 和更高版本](storsimple-overview.md#storsimple-workload-summary)
 
 
@@ -55,8 +55,8 @@ StorSimple 是极佳的备份目标，原因如下：
 
 StorSimple 旨在为处理妥善定义的工作数据集（热数据）的应用程序提供存储。 在此模型中，工作数据集存储在本地层中，剩余的非工作/冷/存档数据集在云中分层。 下图演示了此模型。 平坦的绿线表示存储在 StorSimple 设备本地层中的数据。 红线表示 StorSimple 解决方案的所有层中存储的总数据量。 平坦绿线与呈指数级升高的红色曲线之间的空间表示存储在云中的总数据量。
 
-**StorSimple 分层**
-![StorSimple 分层示意图](./media/storsimple-configure-backup-target-using-backup-exec/image1.jpg)
+**StorSimple 分层** 
+ ![StorSimple 分层示意图](./media/storsimple-configure-backup-target-using-backup-exec/image1.jpg)
 
 知道这种体系结构后，会发现 StorSimple 非常适合用作备份目标。 使用 StorSimple 可以：
 -   通过本地工作数据集执行最常见的还原。
@@ -187,7 +187,7 @@ StorSimple 提供以下优势：
 | 部署本地 StorSimple 设备。 | 支持的版本：Update 3 和更高版本。 |
 | 打开备份目标。 | 使用以下命令打开或关闭备份目标模式并获取状态。 有关详细信息，请参阅[远程连接到 StorSimple 设备](storsimple-remote-connect.md)。</br> 打开备份模式：`Set-HCSBackupApplianceMode -enable`。 </br> 关闭备份模式：`Set-HCSBackupApplianceMode -disable`。 </br> 获取备份模式设置的当前状态：`Get-HCSBackupApplianceMode`。 |
 | 为存储备份数据的卷创建通用卷容器。 卷容器中的所有数据都已删除重复数据。 | StorSimple 卷容器定义重复数据删除域。  |
-| 创建 StorSimple 卷。 | 创建大小尽量接近预期用量的卷，因为卷大小会影响云快照持续时间。 有关如何调整卷大小的信息，请阅读[保留策略](#retention-policies)。</br> </br> 使用 StorSimple 分层卷，并选中“将此卷用于不常访问的存档数据”复选框。 </br> 不能只使用本地固定卷。 |
+| 创建 StorSimple 卷。 | 创建大小尽量接近预期用量的卷，因为卷大小会影响云快照持续时间。 有关如何调整卷大小的信息，请阅读[保留策略](#retention-policies)。</br> </br> 使用 StorSimple 分层卷，并选中“将此卷用于不常访问的存档数据”复选框。**** </br> 不能只使用本地固定卷。 |
 | 为所有备份目标卷创建唯一的 StorSimple 备份策略。 | StorSimple 备份策略定义卷一致性组。 |
 | 快照过期时禁用计划。 | 快照将作为后处理操作触发。 |
 
@@ -205,7 +205,7 @@ StorSimple 提供以下优势：
 
 根据以下部分中的指导原则设置解决方案。
 
-### <a name="operating-system-best-practices"></a>操作系统最佳实践
+### <a name="operating-system-best-practices"></a>操作系统最佳做法
 
 - 在 NTFS 文件系统中禁用 Windows Server 加密和重复数据删除。
 - 在 StorSimple 卷上禁用 Windows Server 碎片整理。
@@ -233,7 +233,7 @@ StorSimple 提供以下优势：
 -   StorSimple 支持 Backup Exec 完整和增量备份。 建议不要使用合成备份和差异备份。
 -   备份数据文件应只包含特定作业的数据。 例如，不允许跨不同的作业附加媒体。
 -   禁用作业验证。 如果需要，应在最新的备份作业之后计划验证。 必须知道，此作业会影响备份持续时间。
--   选择“存储” > “磁盘” > “详细信息” > “属性”。 关闭“预分配磁盘空间”。
+-   选择 "**存储**  >  **磁盘**  >  **详细信息**"  >  **属性**。 关闭“预分配磁盘空间”。****
 
 有关最新的 Backup Exec 设置以及如何满足这些要求的最佳实践，请参阅 [Veritas 网站](https://www.veritas.com)。
 
@@ -254,10 +254,10 @@ StorSimple 提供以下优势：
 
 | 每种备份类型的保留期 | 大小 (TiB) | GFS 乘数\* | 总容量 (TiB)  |
 |---|---|---|---|
-| 每周完整备份 | 第 | 4  | 4 |
+| 每周完整备份 | 1 | 4  | 4 |
 | 每日增量备份 | 0.5 | 20（周期等于每月周数） | 12（使用 2 个以提高配额） |
-| 每月完整备份 | 第 | 12 | 12 |
-| 每年完整备份 | 第  | 10 | 10 |
+| 每月完整备份 | 1 | 12 | 12 |
+| 每年完整备份 | 1  | 10 | 10 |
 | GFS 要求 |   | 38 |   |
 | 提高的配额  | 4  |   | 总共 42，满足 GFS 要求  |
 
@@ -267,27 +267,27 @@ StorSimple 提供以下优势：
 
 ### <a name="to-set-up-backup-exec-storage"></a>设置 Backup Exec 存储
 
-1.  在 Backup Exec 管理控制台中，选择“存储” > “配置存储” > “基于磁盘的存储” > “下一步”。
+1.  在 Backup Exec 管理控制台中，选择 "**存储**" "  >  **Configure Storage**  >  **Disk-Based Storage**  >  **下一步**"。
 
     ![Backup Exec 管理控制台，配置存储页](./media/storsimple-configure-backup-target-using-backup-exec/image4.png)
 
-2.  选择“磁盘存储”，并选择“下一步”。
+2.  选择“磁盘存储”，并选择“下一步”。********
 
     ![Backup Exec 管理控制台，选择存储页](./media/storsimple-configure-backup-target-using-backup-exec/image5.png)
 
-3.  输入有代表性的名称（例如“星期六完整备份”）和说明。 选择“**下一步**”。
+3.  输入有代表性的名称（例如“星期六完整备份”）和说明。**** 选择“下一步”。
 
     ![Backup Exec 管理控制台，名称和说明页](./media/storsimple-configure-backup-target-using-backup-exec/image7.png)
 
-4.  选择要在其中创建磁盘存储设备的磁盘，并选择“下一步”。
+4.  选择要在其中创建磁盘存储设备的磁盘，并选择“下一步”。****
 
     ![Backup Exec 管理控制台，存储磁盘选择页](./media/storsimple-configure-backup-target-using-backup-exec/image9.png)
 
-5.  将写入操作数目增大到 **16**，然后选择“下一步”。
+5.  将写入操作数目增大到 **16**，然后选择“下一步”。****
 
     ![Backup Exec 管理控制台，并发写入操作设置页](./media/storsimple-configure-backup-target-using-backup-exec/image10.png)
 
-6.  检查设置，并选择“完成”。
+6.  检查设置，并选择“完成”。****
 
     ![Backup Exec 管理控制台，存储配置摘要页](./media/storsimple-configure-backup-target-using-backup-exec/image11.png)
 
@@ -323,33 +323,33 @@ StorSimple 提供以下优势：
 
 #### <a name="to-assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>将 StorSimple 卷分配到 Backup Exec 备份作业
 
-1.  在 Backup Exec 管理控制台中，选择“主机” > “备份” > “备份到磁盘”。
+1.  在 Backup Exec 管理控制台中 **，选择 "**  >  **Backup**  >  **将备份备份到磁盘**"。
 
     ![Backup Exec 管理控制台，选择“主机”、“备份”、“备份到磁盘”](./media/storsimple-configure-backup-target-using-backup-exec/image14.png)
 
-2.  在“备份定义属性”对话框中的“备份”下面，选择“编辑”。
+2.  在“备份定义属性”对话框中的“备份”下面，选择“编辑”。************
 
     ![Backup Exec 管理控制台，“备份定义属性”对话框](./media/storsimple-configure-backup-target-using-backup-exec/image15.png)
 
 3.  设置完整和增量备份，使其符合 RPO 和 RTO 要求以及 Veritas 最佳实践。
 
-4.  在“备份选项”对话框中，选择“存储”。
+4.  在“备份选项”对话框中，选择“存储”。********
 
     ![Backup Exec 管理控制台，“备份选项”对话框中的“存储”](./media/storsimple-configure-backup-target-using-backup-exec/image16.png)
 
 5.  将相应的 StorSimple 卷分配到备份计划。
 
     > [!NOTE]
-    > 将“压缩”和“加密类型”设置为“无”。
+    > 将“压缩”和“加密类型”设置为“无”。************
 
-6.  在“验证”下面，选中“不要验证此作业的数据”复选框。 使用此选项可能会影响 StorSimple 分层。
+6.  在“验证”下面，选中“不要验证此作业的数据”复选框。******** 使用此选项可能会影响 StorSimple 分层。
 
     > [!NOTE]
     > 碎片整理、索引编制和后台验证会给 StorSimple 分层造成负面影响。
 
     ![Backup Exec 管理控制台，备份选项 - 验证设置](./media/storsimple-configure-backup-target-using-backup-exec/image17.png)
 
-7.  根据要求设置剩余的备份选项后，请选择“确定”完成设置。
+7.  根据要求设置剩余的备份选项后，请选择“确定”完成设置。****
 
 ## <a name="set-up-storsimple-as-a-secondary-backup-target"></a>将 StorSimple 设置为辅助备份目标
 
@@ -370,18 +370,18 @@ StorSimple 提供以下优势：
 
 | 备份类型和保留期 | 配置的存储 | 大小 (TiB) | GFS 乘数 | 总容量\* (TiB) |
 |---|---|---|---|---|
-| 第 1 周（完整和增量） |本地磁盘（短期）| 1 | 1 | 第 |
-| StorSimple（第 2-4 周） |StorSimple 磁盘（长期） | 第 | 4 | 4 |
+| 第 1 周（完整和增量） |本地磁盘（短期）| 1 | 1 | 1 |
+| StorSimple（第 2-4 周） |StorSimple 磁盘（长期） | 1 | 4 | 4 |
 | 每月完整备份 |StorSimple 磁盘（长期） | 1 | 12 | 12 |
-| 每年完整备份 |StorSimple 磁盘（长期） | 第 | 1 | 1 |
+| 每年完整备份 |StorSimple 磁盘（长期） | 1 | 1 | 1 |
 |GFS 卷大小要求 |  |  |  | 18*|
 
 \* 总容量包括 17 TiB 的 StorSimple 磁盘和 1 TiB 的本地 RAID 卷。
 
 
-### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS 示例计划：每周、每月和每年 GFS 轮转计划
+### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GSF 示例计划：每周、每月和每年 GFS 轮转计划
 
-| 周次 | 完整 | 第 1 天增量备份 | 第 2 天增量备份 | 第 3 天增量备份 | 第 4 天增量备份 | 第 5 天增量备份 |
+| 周 | 完整 | 第 1 天增量备份 | 第 2 天增量备份 | 第 3 天增量备份 | 第 4 天增量备份 | 第 5 天增量备份 |
 |---|---|---|---|---|---|---|
 | 第 1 周 | 本地 RAID 卷  | 本地 RAID 卷 | 本地 RAID 卷 | 本地 RAID 卷 | 本地 RAID 卷 | 本地 RAID 卷 |
 | 第 2 周 | StorSimple（第 2-4 周） |   |   |   |   |   |
@@ -395,23 +395,23 @@ StorSimple 提供以下优势：
 
 #### <a name="to-assign-storsimple-volumes-to-a-backup-exec-archive-and-duplication-job"></a>将 StorSimple 卷分配到 Backup Exec 存档和复制作业
 
-1.  在 Backup Exec 管理控制台中，右键单击要存档到 StorSimple 卷的作业，并选择“备份定义属性” > “编辑”。
+1.  在 Backup Exec 管理控制台中，右键单击要存档到 StorSimple 卷的作业，然后选择 "**备份定义属性**" "  >  **编辑**"。
 
     ![Backup Exec 管理控制台，“备份定义属性”选项卡](./media/storsimple-configure-backup-target-using-backup-exec/image19.png)
 
-2.  选择“添加阶段” > “复制到磁盘” > “编辑”。
+2.  选择 "**将阶段**  >  **复制到磁盘**  >  **编辑**"。
 
     ![Backup Exec 管理控制台，添加阶段](./media/storsimple-configure-backup-target-using-backup-exec/image20.png)
 
-3.  在“复制选项”对话框中，选择要对“源”和“计划”使用的值。
+3.  在“复制选项”对话框中，选择要对“源”和“计划”使用的值。************
 
     ![Backup Exec 管理控制台，备份定义属性和复制选项](./media/storsimple-configure-backup-target-using-backup-exec/image21.png)
 
-4.  在“存储”下拉列表中选择存档作业要将数据存储到的 StorSimple 卷。
+4.  在“存储”下拉列表中选择存档作业要将数据存储到的 StorSimple 卷。****
 
     ![Backup Exec 管理控制台，备份定义属性和复制选项](./media/storsimple-configure-backup-target-using-backup-exec/image22.png)
 
-5.  选择“验证”，并选中“不要验证此作业的数据”复选框。
+5.  选择“验证”，并选中“不要验证此作业的数据”复选框。********
 
     ![Backup Exec 管理控制台，备份定义属性和复制选项](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
 
@@ -419,7 +419,7 @@ StorSimple 提供以下优势：
 
     ![Backup Exec 管理控制台，备份定义属性和复制选项](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
 
-7.  在“备份”列中添加一个新阶段。 对于源，请使用“增量”。 对于目标，请选择增量备份作业要存档到的 StorSimple 卷。 重复步骤 1-6。
+7.  在“备份”列中添加一个新阶段。**** 对于源，请使用“增量”。**** 对于目标，请选择增量备份作业要存档到的 StorSimple 卷。 重复步骤 1-6。
 
 ## <a name="storsimple-cloud-snapshots"></a>StorSimple 云快照
 
@@ -472,7 +472,7 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 
 灾难的发生可能会出于多种因素。 下表列出了常见的灾难恢复方案。
 
-| 场景 | 影响 | 如何恢复 | 说明 |
+| 方案 | 影响 | 如何恢复 | 说明 |
 |---|---|---|---|
 | StorSimple 设备故障 | 备份和还原操作会中断。 | 更换有故障的设备，并执行 [StorSimple 故障转移和灾难恢复](storsimple-device-failover-disaster-recovery.md)。 | 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层，因此可能非常耗时。 |
 | Backup Exec 服务器故障 | 备份和还原操作会中断。 | 根据 [How to do a manual Backup and Restore of Backup Exec (BEDB) database](http://www.veritas.com/docs/000041083)（如何对 Backup Exec (BEDB) 数据库执行手动备份和还原）中所述，重新构建备份服务器并执行数据库还原。 | 必须在灾难恢复站点重建或还原 Backup Exec 服务器。 将数据库还原到最近的时间点。 如果还原的 Backup Exec 数据库未与最新的备份作业同步，则需要编制索引和目录。 这种索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层。 这会进一步消耗时间。 |
@@ -483,7 +483,7 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 本文参考了以下文档：
 
 - [StorSimple multipath I/O setup](storsimple-configure-mpio-windows-server.md)（StorSimple 多路径 I/O 设置）
-- [存储方案：精简预配](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [Storage scenarios: Thin provisioning](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)（存储方案：精简预配）
 - [Using GPT drives](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)（使用 GPT 驱动器）
 - [Set up shadow copies for shared folders](https://technet.microsoft.com/library/cc771893.aspx)（设置共享文件夹的卷影副本）
 

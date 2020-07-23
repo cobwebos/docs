@@ -1,75 +1,96 @@
 ---
-title: 示例：标识图像中的人脸 - 人脸 API
+title: 示例：识别图像中的人脸 - 人脸
 titleSuffix: Azure Cognitive Services
-description: 使用人脸 API 标识图像中的人脸。
+description: 本指南演示如何使用事先根据已知人员创建的 PersonGroup 对象来识别未知的人脸。
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: sample
-ms.date: 04/10/2019
+ms.date: 07/02/2020
 ms.author: sbowles
-ms.openlocfilehash: c22230545ccbe1ef1b4bfa35a33f0302197463b1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 607f67258c5d069590f934891c09ccada780c977
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66124526"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918743"
 ---
 # <a name="example-identify-faces-in-images"></a>示例：在图像中识别人脸
 
-本指南演示如何使用事先根据已知人员创建的 PersonGroup 对象来识别未知的人脸。 这些示例是使用 Azure 认知服务人脸 API 客户端库以 C# 编写的。
-
-## <a name="preparation"></a>准备工作
+本指南演示如何使用事先根据已知人员创建的 PersonGroup 对象来识别未知的人脸。 这些示例是使用 Azure 认知服务人脸客户端库以 C# 编写的。
 
 此示例演示：
 
 - 如何创建 PersonGroup。 此 PersonGroup 包含已知人员的列表。
 - 如何为每个人员分配人脸。 这些人脸用作识别人员的基线。 我们建议使用清晰的人脸正面照， 例如证件照。 合适的照片包含姿势不同、衣服颜色不同或发型不同的同一个人的人脸。
 
-若要执行本示例，请准备好：
+## <a name="prerequisites"></a>先决条件
+* [.NET Core](https://dotnet.microsoft.com/download/dotnet-core) 的当前版本。
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="创建人脸资源"  target="_blank">创建人脸资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”，然后复制密钥。
+* 几张包含已识别人员面部的照片。 [下载](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data) Anna、Bill 和 Clare 的示例照片。
+* 一系列测试照片。 照片可以包含或不包含已识别人员的面部。 使用示例照片链接中的一些图像。
 
-- 一些包含人脸的照片。 [下载](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data) Anna、Bill 和 Clare 的示例照片。
-- 一系列测试照片。 照片可以包含或不包含 Anna、Bill 或 Clare 的人脸。 它们用于测试识别功能。 另外，请通过前面的链接选择一些示例图像。
+## <a name="setting-up"></a>设置
+
+### <a name="create-a-new-c-application"></a>新建 C# 应用程序
+
+在首选编辑器或 IDE 中创建新的 .NET Core 应用程序。 
+
+在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 `face-identify` 的新控制台应用。 此命令将创建包含单个源文件的简单“Hello World”C# 项目：*Program.cs*。 
+
+```dotnetcli
+dotnet new console -n face-quickstart
+```
+
+将目录更改为新创建的应用文件夹。 可使用以下代码生成应用程序：
+
+```dotnetcli
+dotnet build
+```
+
+生成输出不应包含警告或错误。 
+
+```output
+...
+Build succeeded.
+ 0 Warning(s)
+ 0 Error(s)
+...
+```
 
 ## <a name="step-1-authorize-the-api-call"></a>步骤 1：授权 API 调用
 
-每次调用人脸 API 都需要订阅密钥。 此密钥可以通过查询字符串参数传递，或在请求标头中指定。 若要通过查询字符串传递订阅密钥，请参阅 [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) 的请求 URL 示例：
-```
-https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes]
-&subscription-key=<Subscription key>
-```
-
-作为替代方法，也可以在 HTTP 请求标头 **ocp-apim-subscription-key:&lt;订阅密钥&gt;** 中指定订阅密钥。
-使用客户端库时，订阅密钥通过 FaceServiceClient 类的构造函数传入。 例如：
+每次调用人脸 API 都需要订阅密钥。 此密钥可以通过查询字符串参数传递，或在请求标头中指定。 使用客户端库时，订阅密钥是通过 FaceClient 类的构造函数传入的。 将以下代码添加到 Program.cs 文件的 Main 方法。
  
-```CSharp 
-faceServiceClient = new FaceServiceClient("<Subscription Key>");
+```csharp 
+private readonly IFaceClient faceClient = new FaceClient(
+    new ApiKeyServiceClientCredentials("<subscription key>"),
+    new System.Net.Http.DelegatingHandler[] { });
 ```
- 
-若要获取订阅密钥，请从 Azure 门户转到 Azure 市场。 有关详细信息，请参阅[订阅](https://azure.microsoft.com/try/cognitive-services/)。
 
 ## <a name="step-2-create-the-persongroup"></a>步骤 2：创建 PersonGroup
 
-在此步骤中，名为“MyFriends”的 PersonGroup 包含 Anna、Bill 和 Clare。 每个人都注册了多个人脸。 必须在图像中检测这些人脸。 执行所有这些步骤以后，就有了一个 PersonGroup，如下图所示：
+在此步骤中，名为“MyFriends”的 PersonGroup 包含 Anna、Bill 和 Clare。 每个人都注册了多个人脸。 必须在图像中检测这些人脸。 执行所有这些步骤后，就有了一个 PersonGroup，如下图所示：
 
 ![MyFriends](../Images/group.image.1.jpg)
 
 ### <a name="step-21-define-people-for-the-persongroup"></a>步骤 2.1：定义 PersonGroup 的人员
-人是标识的基本单元。 一个人可以注册一个或多个已知人脸。 PersonGroup 是人员的集合。 每个人在特定的 PersonGroup 中定义。 识别是针对 PersonGroup 进行的。 任务是先创建一个 PersonGroup，然后在其中创建人员，例如 Anna、Bill、Clare。
+人是标识的基本单元。 一个人可以注册一个或多个已知人脸。 PersonGroup 是人员的集合。 每个人是在特定 PersonGroup 中定义的。 识别是针对 PersonGroup 进行的。 任务是先创建一个 PersonGroup，然后在其中创建人员，例如 Anna、Bill、Clare。
 
-首先，使用 [PersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) API 创建新的 PersonGroup。 相应的客户端库 API 是 FaceServiceClient 类的 CreatePersonGroupAsync 方法。 指定的用于创建组的组 ID 对于每个订阅都是唯一的。 还可以使用其他 PersonGroup API 来获取、更新或删除 PersonGroup。 
+首先，使用 [PersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) API 创建新的 PersonGroup。 相应的客户端库 API 是 FaceClient 类的 CreatePersonGroupAsync 方法 。 指定的用于创建组的组 ID 对于每个订阅都是唯一的。 还可以使用其他 PersonGroup API 来获取、更新或删除 PersonGroup 。 
 
 定义组之后，可以使用 [PersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) API 在该组中定义人员。 客户端库方法是 CreatePersonAsync。 可以在创建每个人之后向其添加人脸。
 
-```CSharp 
+```csharp 
 // Create an empty PersonGroup
 string personGroupId = "myfriends";
-await faceServiceClient.CreatePersonGroupAsync(personGroupId, "My Friends");
+await faceClient.PersonGroup.CreateAsync(personGroupId, "My Friends");
  
 // Define Anna
-CreatePersonResult friend1 = await faceServiceClient.CreatePersonAsync(
+CreatePersonResult friend1 = await faceClient.PersonGroupPerson.CreateAsync(
     // Id of the PersonGroup that the person belonged to
     personGroupId,    
     // Name of the person
@@ -78,13 +99,14 @@ CreatePersonResult friend1 = await faceServiceClient.CreatePersonAsync(
  
 // Define Bill and Clare in the same way
 ```
-### <a name="step2-2"></a>步骤 2.2：检测人脸并将其注册到正确的人
-进行检测时，会向[人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API 发送“POST”Web 请求，将图像文件置于 HTTP 请求正文中。 使用客户端库时，人脸检测是通过 FaceServiceClient 类的 DetectAsync 方法执行的。
+### <a name="step-22-detect-faces-and-register-them-to-the-correct-person"></a><a name="step2-2"></a>步骤 2.2：检测人脸并将其注册到正确的人
+进行检测时，会向[人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API 发送“POST”Web 请求，将图像文件置于 HTTP 请求正文中。 使用客户端库时，人脸检测是通过 FaceClient 类的 Detect..Async 方法之一完成的。
 
 对于检测到的每个人脸，调用 [PersonGroup Person – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) 将其添加到正确的人。
 
 以下代码演示了在图像中检测人脸并将其添加到人这一过程：
-```CSharp 
+
+```csharp 
 // Directory contains image files of Anna
 const string friend1ImageDir = @"D:\Pictures\MyFriends\Anna\";
  
@@ -93,7 +115,7 @@ foreach (string imagePath in Directory.GetFiles(friend1ImageDir, "*.jpg"))
     using (Stream s = File.OpenRead(imagePath))
     {
         // Detect faces in the image and add to Anna
-        await faceServiceClient.AddPersonFaceAsync(
+        await faceClient.PersonGroupPerson.AddFaceFromStreamAsync(
             personGroupId, friend1.PersonId, s);
     }
 }
@@ -103,21 +125,21 @@ foreach (string imagePath in Directory.GetFiles(friend1ImageDir, "*.jpg"))
 
 ## <a name="step-3-train-the-persongroup"></a>步骤 3：训练 PersonGroup
 
-必须先训练 PersonGroup，然后才能使用它来进行识别。 在添加或删除任何人或者编辑某人的已注册人脸后，必须重新训练 PersonGroup。 训练由 [PersonGroup - 训练](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249) API 完成。 使用客户端库时，会调用 TrainPersonGroupAsync 方法：
+必须先训练 PersonGroup，然后才能使用它来进行识别。 在添加或删除任何人或者在编辑某人的已注册人脸后，必须重新训练 PersonGroup。 训练由 [PersonGroup - 训练](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249) API 完成。 使用客户端库时，会调用 TrainPersonGroupAsync 方法：
  
-```CSharp 
-await faceServiceClient.TrainPersonGroupAsync(personGroupId);
+```csharp 
+await faceClient.PersonGroup.TrainAsync(personGroupId);
 ```
  
 训练是一个异步过程。 即使 TrainPersonGroupAsync 方法已经返回，它也可能还未完成。 可能需要查询训练状态。 使用 [PersonGroup - Get Training Status](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395247) API 或客户端库的 GetPersonGroupTrainingStatusAsync 方法。 以下代码演示了一个等待 PersonGroup 训练完成的简单逻辑：
  
-```CSharp 
+```csharp 
 TrainingStatus trainingStatus = null;
 while(true)
 {
-    trainingStatus = await faceServiceClient.GetPersonGroupTrainingStatusAsync(personGroupId);
+    trainingStatus = await faceClient.PersonGroup.GetTrainingStatusAsync(personGroupId);
  
-    if (trainingStatus.Status != Status.Running)
+    if (trainingStatus.Status != TrainingStatusType.Running)
     {
         break;
     }
@@ -128,21 +150,21 @@ while(true)
 
 ## <a name="step-4-identify-a-face-against-a-defined-persongroup"></a>步骤 4：根据定义的 PersonGroup 标识人脸
 
-当人脸 API 执行识别时，它会计算某个测试人脸与组中所有人脸的相似性。 它将返回与该测试人脸最有可比性的人。 此过程是通过 [Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) API 或客户端库的 IdentifyAsync 方法完成的。
+当人脸服务执行识别时，它会计算某个测试人脸与组中所有人脸的相似性。 它将返回与该测试人脸最有可比性的人。 此过程是通过 [Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) API 或客户端库的 IdentifyAsync 方法完成的。
 
 必须使用前面的步骤检测测试人脸。 然后将人脸 ID 作为另一个参数传递给识别 API。 可以一次性识别多个人脸 ID。 结果包含所有识别到的结果。 默认情况下，识别过程仅返回与测试人脸最匹配的一个人。 可根据需要指定可选参数 maxNumOfCandidatesReturned，让识别过程返回更多候选项。
 
 以下代码演示识别过程：
 
-```CSharp 
+```csharp 
 string testImageFile = @"D:\Pictures\test_img1.jpg";
 
 using (Stream s = File.OpenRead(testImageFile))
 {
-    var faces = await faceServiceClient.DetectAsync(s);
-    var faceIds = faces.Select(face => face.FaceId).ToArray();
+    var faces = await faceClient.Face.DetectWithStreamAsync(s);
+    var faceIds = faces.Select(face => face.FaceId.Value).ToArray();
  
-    var results = await faceServiceClient.IdentifyAsync(personGroupId, faceIds);
+    var results = await faceClient.Face.IdentifyAsync(faceIds, personGroupId);
     foreach (var identifyResult in results)
     {
         Console.WriteLine("Result of face: {0}", identifyResult.FaceId);
@@ -154,7 +176,7 @@ using (Stream s = File.OpenRead(testImageFile))
         {
             // Get top 1 among all candidates returned
             var candidateId = identifyResult.Candidates[0].PersonId;
-            var person = await faceServiceClient.GetPersonAsync(personGroupId, candidateId);
+            var person = await faceClient.PersonGroupPerson.GetAsync(personGroupId, candidateId);
             Console.WriteLine("Identified as {0}", person.Name);
         }
     }
@@ -167,10 +189,9 @@ using (Stream s = File.OpenRead(testImageFile))
 
 ## <a name="step-5-request-for-large-scale"></a>步骤 5：大规模请求
 
-根据以往的设计限制，一个 PersonGroup 最多可以包含 10,000 个人。
-若要详细了解高达百万人规模的方案，请参阅[如何使用大规模功能](how-to-use-large-scale.md)。
+根据以往的设计限制，一个 PersonGroup 最多可以包含 10,000 个人。 若要详细了解高达百万人规模的方案，请参阅[如何使用大规模功能](how-to-use-large-scale.md)。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 本指南介绍了如何创建 PersonGroup 并识别某个人。 其中解释并演示了以下功能：
 
@@ -183,6 +204,6 @@ using (Stream s = File.OpenRead(testImageFile))
 ## <a name="related-topics"></a>相关主题
 
 - [人脸识别的概念](../concepts/face-recognition.md)
-- [在图像中检测人脸](HowtoDetectFacesinImage.md)
+- [检测图像中的人脸](HowtoDetectFacesinImage.md)
 - [添加人脸](how-to-add-faces.md)
 - [使用大规模功能](how-to-use-large-scale.md)

@@ -1,27 +1,20 @@
 ---
-title: 教程 - 使用 Azure 模板在规模集中安装应用程序 | Microsoft Docs
+title: 教程 - 使用 Azure 模板在规模集中安装应用
 description: 了解如何使用自定义脚本扩展通过 Azure 资源管理器模板将应用程序安装到虚拟机规模集中
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ju-shim
+ms.author: jushiman
 ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: template
 ms.date: 03/27/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 176cf31d7a87b08755ee2acb94aea23684647213
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: a497b8c6e237f2476ecce9422a6328725b22eeb6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66170466"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197488"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>教程：使用 Azure 模板在虚拟机规模集中安装应用程序
 若要在规模集中的虚拟机 (VM) 实例上运行应用程序，首先需要安装应用程序组件和所需文件。 前一篇教程介绍了如何创建自定义 VM 映像并使用它来部署 VM 实例。 使用此自定义映像可以手动安装和配置应用程序。 也可以在部署每个 VM 实例之后，将应用程序自动安装到规模集，或者更新已在规模集中运行的应用程序。 本教程介绍如何执行下列操作：
@@ -77,7 +70,7 @@ ms.locfileid: "66170466"
 
 
 ## <a name="create-a-scale-set"></a>创建规模集
-让我们使用示例模板创建一个规模集并应用自定义脚本扩展。 首先，使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+让我们使用示例模板创建一个规模集并应用自定义脚本扩展。 首先，使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -115,7 +108,7 @@ az network public-ip show \
 
 
 ## <a name="update-app-deployment"></a>更新应用部署
-在规模集的整个生命周期内，都可能需要部署应用程序的更新版本。 使用自定义脚本扩展可以引用更新的部署脚本，然后将扩展重新应用到规模集。 在上一步骤中创建规模集时，upgradePolicy 已设置为 Automatic。 此设置可让规模集中的 VM 实例自动更新应用程序并应用其最新版本。
+在规模集的整个生命周期内，都可能需要部署应用程序的更新版本。 使用自定义脚本扩展可以引用更新的部署脚本，然后将扩展重新应用到规模集。 在上一步骤中创建规模集时，upgradePolicy 已设置为 Automatic 。 此设置可让规模集中的 VM 实例自动更新应用程序并应用其最新版本。
 
 若要更新自定义脚本扩展定义，请编辑模板以引用新的安装脚本。 必须对自定义脚本扩展使用新文件名，以识别更改。 自定义脚本扩展不会通过检查脚本的内容来确定是否发生了任何更改。 以下定义使用更新的安装脚本，该脚本的名称后面追加了 *_v2*：
 

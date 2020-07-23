@@ -1,28 +1,27 @@
 ---
-title: 在 Azure 中创建 SAP 多 SID 配置 | Microsoft 文档
+title: 在 Azure 中创建 SAP 高可用性多 SID 配置
 description: Windows 虚拟机上的高可用性 SAP NetWeaver 多 SID 配置指南
 services: virtual-machines-windows, virtual-network, storage
 documentationcenter: saponazure
-author: goraco
-manager: jeconnoc
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 0b89b4f8-6d6c-45d7-8d20-fe93430217ca
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/09/2016
-ms.author: goraco
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1b27ea761d19eb494895daceff699b2b604eccea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6e2055d194e1836ebc0b2e1181ca49794bc4a3b6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66153854"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507992"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>创建 SAP NetWeaver 多 SID 配置
 
@@ -78,8 +77,8 @@ ms.locfileid: "66153854"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 [dbms-guide-2.1]:../../virtual-machines-windows-sap-dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f
@@ -366,9 +365,9 @@ ms.locfileid: "66153854"
 
 [powershell-install-configure]:https://docs.microsoft.com/powershell/azureps-cmdlets-docs
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
-[networking-limits-azure-resource-manager]:../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
+[networking-limits-azure-resource-manager]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
 [sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
@@ -381,15 +380,15 @@ ms.locfileid: "66153854"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
 [templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image
 [virtual-machines-linux-attach-disk-portal]:../../linux/attach-disk-portal.md
 [virtual-machines-windows-attach-disk-portal]:../../virtual-machines-windows-attach-disk-portal.md
-[virtual-machines-azure-resource-manager-architecture]:../../../azure-resource-manager/resource-group-overview.md
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture]:../../../azure-resource-manager/management/overview.md
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 [virtual-machines-Az-versus-azuresm]:virtual-machines-windows-compare-deployment-models.md
 [virtual-machines-windows-classic-configure-oracle-data-guard]:../../virtual-machines-windows-classic-configure-oracle-data-guard.md
 [virtual-machines-linux-cli-deploy-templates]:../../linux/cli-deploy-templates.md 
@@ -415,10 +414,10 @@ ms.locfileid: "66153854"
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
 [virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]:./../../windows/sql/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md
-[virtual-machines-windows-portal-sql-alwayson-int-listener]:./../../windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[virtual-machines-sql-server-infrastructure-services]:./../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
+[virtual-machines-windows-portal-sql-alwayson-int-listener]:../../../azure-sql/virtual-machines/windows/availability-group-load-balancer-portal-configure.md
+[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+[virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+[virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
@@ -445,18 +444,18 @@ ms.locfileid: "66153854"
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 
 
-2016 年 9 月，Microsoft 发布了一项功能，让用户可通过 [Azure 内部负载均衡器][load-balancer-multivip-overview]管理多个虚拟 IP 地址。 Azure 外部负载均衡器中已存在此功能。
+2016 年 9 月，Microsoft 推出了一项功能，可用于通过 [Azure 内部负载均衡器][load-balancer-multivip-overview]管理多个虚拟 IP 地址。 Azure 外部负载均衡器已包含此功能。
 
 在 SAP 部署中，可以根据 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]中所述，使用内部负载均衡器创建 SAP ASCS/SCS 的 Windows 群集配置。
 
 本文重点介绍如何通过在现有 Windows Server 故障转移群集 (WSFC) 中安装附加的 SAP ASCS/SCS 群集实例，从单一 ASCS/SCS 安装转移到 SAP 多 SID 配置。 完成此过程后，即已配置一个 SAP 多 SID 群集。
 
 > [!NOTE]
-> 此功能仅在 Azure Resource Manager 部署模型中可用。
+> 此功能仅在 Azure 资源管理器部署模型中可用。
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 已根据 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]中的介绍和下图所示，配置了用于一个 SAP ASCS/SCS 实例的 WSFC 群集。
 
 ![高可用性 SAP ASCS/SCS 实例][sap-ha-guide-figure-6001]
@@ -473,7 +472,7 @@ ms.locfileid: "66153854"
 >一个 WSFC 群集中的最大 SAP ASCS/SCS 实例数等于每个 Azure 内部负载均衡器的最大专用前端 IP 数。
 >
 
-若要详细了解负载均衡器限制，请参阅[网络限制：Azure 资源管理器][networking-limits-azure-resource-manager]中的“每个负载均衡器的专用前端 IP”。
+若要详细了解负载均衡器限制，请参阅[网络限制：Azure 资源管理器][networking-limits-azure-resource-manager]。
 
 包含两个高可用性 SAP 系统的完整布局如下所示：
 
@@ -520,7 +519,7 @@ ms.locfileid: "66153854"
 
 新主机名和 IP 地址显示在 DNS 管理器中，如以下屏幕截图所示：
 
-![DNS 管理器列表，突出显示新 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址的已定义 DNS 项][sap-ha-guide-figure-6004]
+![DNS 管理器列表，其中突出显示了新 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址的已定义 DNS 项][sap-ha-guide-figure-6004]
 
 有关 DNS 项的详细创建过程，请参阅主要文档 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide-9.1.1]。
 
@@ -531,7 +530,7 @@ ms.locfileid: "66153854"
 
 ### <a name="add-an-ip-address-to-an-existing-azure-internal-load-balancer-by-using-powershell"></a>使用 PowerShell 将 IP 地址添加到现有 Azure 内部负载均衡器
 
-要在同一个 WSFC 群集中创建多个 SAP ASCS/SCS 实例，请使用 PowerShell 将 IP 地址添加到现有 Azure 内部负载均衡器。 每个 IP 地址需有自身的负载均衡规则、探测端口、前端 IP 池和后端池。
+要在同一个 WSFC 群集中创建多个 SAP ASCS/SCS 实例，请使用 PowerShell 将 IP 地址添加到现有的 Azure 内部负载均衡器。 每个 IP 地址需有自身的负载均衡规则、探测端口、前端 IP 池和后端池。
 
 以下脚本将新的 IP 地址添加到现有负载均衡器。 更新环境的 PowerShell 变量。 该脚本将为所有 SAP ASCS/SCS 端口创建全部所需的负载均衡规则。
 
@@ -621,7 +620,7 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 必须为每个附加的 SAP ASCS/SCS 实例添加一个新的群集共享磁盘。 在 Windows Server 2012 R2 中，目前使用的 WSFC 群集共享磁盘是 SIOS DataKeeper 软件解决方案。
 
 请执行以下操作：
-1. 将相同大小的一个或多个附加磁盘（需要条带化）添加到每个群集节点，并将其格式化。
+1. 将一个或多个相同大小的附加磁盘（需要条带化）添加到每个群集节点，然后将其格式化。
 2. 使用 SIOS DataKeeper 配置存储复制。
 
 此过程假设已在 WSFC 群集计算机上安装 SIOS DataKeeper。 如果已安装，现在必须配置计算机之间的复制。 有关此过程的详细信息，请参阅主要文档 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide-8.12.3.3]。  
@@ -640,9 +639,9 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 
 有关第二个 SAP SID2 系统的完整安装过程，请参阅主要文档 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide-9]。
 
-高级过程如下所示：
+概要过程如下所述：
 
-1. [安装 SAP 第一个群集节点][sap-ha-guide-9.1.2]。  
+1. [安装 SAP 的第一个群集节点][sap-ha-guide-9.1.2]。  
  此步骤在**现有 WSFC 群集节点 1** 上安装包含高可用性 ASCS/SCS 实例的 SAP 系统。
 
 2. [修改 ASCS/SCS 实例的 SAP 配置文件][sap-ha-guide-9.1.3]。
@@ -654,11 +653,11 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
  此步骤在专用 WSFC 群集上安装 DBMS。
 
 5. [安装第二个群集节点][sap-ha-guide-9.3]。  
- 此步骤在现有 WSFC 群集节点 2 上安装包含高可用性 ASCS/SCS 实例的 SAP。
+ 此步骤在现有 WSFC 群集节点 2 上安装包含高可用性 ASCS/SCS 实例的 SAP 系统。
 
 6. 打开 SAP ASCS/SCS 实例的 Windows 防火墙端口和探测端口。  
  在用于 SAP ASCS/SCS 实例的两个群集节点上，打开 SAP ASCS/SCS 使用的所有 Windows 防火墙端口。 有关这些端口，请参阅 [Windows VM 上的高可用性的 SAP NetWeaver 指南][sap-ha-guide-8.8]。  
- 此外，打开 Azure 内部负载均衡器探测端口，在本方案中为 62350。
+ 此外，打开 Azure 内部负载均衡器探测端口，在本例中为 62350。
 
 7. [更改 SAP ERS Windows 服务实例的启动类型][sap-ha-guide-9.4]。
 

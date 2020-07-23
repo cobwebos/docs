@@ -1,26 +1,25 @@
 ---
-title: Service Fabric CLI 脚本示例 - 列出群集上的应用程序
+title: 列出 sfctl 中群集上的应用程序
 description: Service Fabric CLI 脚本示例 - 列出 Service Fabric 群集上预配的应用程序。
 services: service-fabric
 documentationcenter: ''
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 tags: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
-ms.devlang: na
 ms.topic: sample
 ms.date: 04/13/2018
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: ''
-ms.openlocfilehash: 8fd83190f3cf92ef0f88ff0fb2a807e03199a5c1
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 41685e53eb0915f54bdc2d678191e5b767990dde
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670279"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75610261"
 ---
 # <a name="list-applications-running-in-a-service-fabric-cluster"></a>列出在 Service Fabric 群集中运行的应用程序
 

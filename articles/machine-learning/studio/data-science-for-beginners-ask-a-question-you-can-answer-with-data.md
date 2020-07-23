@@ -1,6 +1,6 @@
 ---
 title: 提出数据可解答的问题
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) - Azure
 description: 通过学习“适合初学者的数据科学”视频 3，了解如何将棘手的数据科学问题公式化。 包括分类和回归问题的比较。
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,11 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: 7343692e8484e50a02963b4528889a35cc1fcaa6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: 3f0a92b86a2c18863052249d401e70fa36e17a12
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239077"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82930244"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>提出数据方面的可解答问题
 ## <a name="video-3-data-science-for-beginners-series"></a>视频 3：适合初学者的数据科学系列
@@ -48,7 +47,7 @@ ms.locfileid: "66239077"
 
 模糊问题不必用名称或数字来回答。 必须是清晰具体的问题。
 
-想象一下，发现了一盏神灯，里面的精灵会如实地回答你问的任何问题。 但它是一淘气盏神灯，将尝试使他们的答案尽可能含糊不清和令人困惑，因为它们可以侥幸应付。 你想要固定它们，它们不能帮助但告诉你想要知道，因此醒目的问题。
+想象一下，发现了一盏神灯，里面的精灵会如实地回答你问的任何问题。 但这个精灵非常淘气，它会试图给出模糊混淆的回答，以免受错误的惩罚。 需要提出一个无懈可击的问题，阻止它的上述行为，迫使它只能告诉你想要知道的答案。
 
 如果问它一个模糊的问题，比如“我的股票接下来如何？”，精灵可能会回答，“价格会改变”。 这是一个真实的答案，但不是非常有帮助。
 
@@ -88,8 +87,8 @@ ms.locfileid: "66239077"
 
 我们已经探讨了一些有关如何提出可用数据回答的问题的基本原则。
 
-务必观看 Microsoft Azure 机器学习工作室“适合初学者的数据科学”中的其他视频。
+务必观看 Microsoft Azure 机器学习工作室（经典）“适合初学者的数据科学”中的其他视频。
 
 ## <a name="next-steps"></a>后续步骤
-* [使用机器学习工作室尝试第一个数据科学实验](create-experiment.md)
-* [在 Microsoft Azure 上获取机器学习简介](/azure/machine-learning/preview/overview-what-is-azure-ml)
+* [使用机器学习工作室（经典）尝试第一个数据科学试验](create-experiment.md)
+* [在 Microsoft Azure 上获取机器学习简介](/azure/machine-learning/overview-what-is-azure-ml)

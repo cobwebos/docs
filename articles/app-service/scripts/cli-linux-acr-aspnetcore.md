@@ -1,27 +1,20 @@
 ---
-title: Azure CLI 脚本示例 - 在 Azure 容器注册表中创建 ASP.NET Core 应用 | Microsoft Docs
-description: Azure CLI 脚本示例 - 在应用服务的 Docker 容器中通过 Azure 容器注册表创建 ASP.NET Core 应用
-services: appservice
-documentationcenter: appservice
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI：从 ACR 创建 ASP.NET Core 应用
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 此示例演示了如何从 ACR 创建 Linux ASP.NET Core 应用。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 3a2d1983-ff7b-476a-ac44-49ec2aabb31a
-ms.service: app-service
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 12/13/2018
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: c05572d4962eca042a807be3eec94462d0830e1b
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 64177d00b302f9df8a0b28067031bd7cc1b3a156
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653367"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80057773"
 ---
 # <a name="create-an-aspnet-core-app-in-a-docker-container-in-app-service-from-azure-container-registry"></a>在应用服务的 Docker 容器中通过 Azure 容器注册表创建 ASP.NET Core 应用
 
@@ -42,7 +35,7 @@ ms.locfileid: "53653367"
 
 此脚本使用以下命令创建资源组、应用服务应用和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 创建应用服务计划。 |

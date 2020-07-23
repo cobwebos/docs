@@ -1,120 +1,117 @@
 ---
-title: 用于 B2B 企业集成的 AS2 消息 - Azure 逻辑应用
-description: 交换 Azure 逻辑应用使用 Enterprise Integration Pack 中的 AS2 消息
+title: 发送和接收针对 B2B 的 AS2 消息
+description: 将 Azure 逻辑应用与 Enterprise Integration Pack 配合使用，以便交换针对 B2B 企业集成方案的 AS2 消息
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 04/22/2019
-ms.openlocfilehash: b494f6524e5105a95bc8a24a6fa2521abcca3f7b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 02/27/2020
+ms.openlocfilehash: 545c1720ef379ec74bd2e7c0bc68f6a2fcbba789
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64729396"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82115493"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 AS2 消息以实现 B2B 企业集成
 
-若要使用 Azure 逻辑应用中的 AS2 消息，可以使用 AS2 连接器、 提供触发器和操作用于管理 AS2 通信。 例如，若要传递消息时建立安全性和可靠性，可以使用这些操作：
+> [!IMPORTANT]
+> 原始 AS2 连接器正被弃用，因此务必改用 **AS2 (v2)** 连接器。 此版本提供与原始版本相同的功能，是逻辑应用运行时的本机版本，在吞吐量和消息大小方面提供显著的性能改进。 另外，本机 v2 连接器不要求与集成帐户建立连接， 但要求执行先决条件中所述的操作，确保将集成帐户关联到你计划在其中使用连接器的逻辑应用。
 
-* [**编码为 AS2 消息**操作](#encode)提供加密、 数字签名和确认通过消息处置通知 (MDN)，帮助的支持不可否认性。 例如，此操作应用 AS2/HTTP 标头，并执行这些任务时配置：
+若要在 Azure 逻辑应用中使用 AS2 消息，可以使用 AS2 连接器，它提供用于管理 AS2 通信的触发器和操作。 例如，若要在传输消息时确保安全性和可靠性，可以使用以下操作：
+
+* [**AS2 编码**操作](#encode)：可以通过消息处置通知 (MDN) 提供加密、数字签名和确认功能，这有助于为不可否认性提供支持。 例如，此操作会应用 AS2/HTTP 标头并执行以下任务（在配置好以后）：
 
   * 对传出消息进行签名。
-  * 对传出消息进行加密。
+  * 加密传出消息。
   * 压缩消息。
-  * 传输的 MIME 标头中的文件名称。
+  * 在 MIME 标头中传输文件名。
 
-* [**解码 AS2 消息**操作](#decode)用于提供解密、 数字签名和确认通过消息处置通知 (MDN)。 例如，此操作执行以下任务： 
+* [**AS2 解码**操作](#decode)：可以通过消息处置通知 (MDN) 提供解密、数字签名和确认功能。 例如，该操作执行以下任务：
 
   * 处理 AS2/HTTP 标头。
-  * 协调与原始的出站消息的接收的 Mdn。
-  * 更新并关联不可否认数据库中的记录。
+  * 协调收到的 MDN 和原始的出站消息。
+  * 更新并关联不可否认性数据库中的记录。
   * 写入 AS2 状态报告的记录。
-  * 输出有效负载内容作为 base64 编码。
-  * 确定是否需要 Mdn。 根据 AS2 协议，确定应是同步或异步 Mdn。
-  * 生成基于 AS2 协议的同步或异步 Mdn。
-  * 在 Mdn 上设置的相关标记和属性。
+  * 输出 base64 编码的有效负载内容。
+  * 确定是否需要 MDN。 根据 AS2 协议，确定 MDN 应该是同步还是异步。
+  * 根据 AS2 协议生成同步或异步 MDN。
+  * 在 MDN 上设置关联令牌和属性。
 
-  此操作还执行以下任务时配置：
+  此操作还会在进行了配置的情况下执行以下任务：
 
   * 验证签名。
   * 对消息进行解密。
-  * 消息进行解压缩。 
-  * 检查并不允许消息 ID 重复项。
+  * 解压缩消息。
+  * 检查并禁止消息 ID 重复。
 
-本文介绍如何添加 AS2 编码和解码操作到现有逻辑应用。
+本文介绍如何向现有的逻辑应用添加 AS2 编码和解码操作。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* 从你想要使用 AS2 连接器和触发器启动逻辑应用的工作流逻辑应用。 AS2 连接器提供仅操作，不包含触发器。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+* 要从其使用 AS2 连接器的逻辑应用，以及用于启动逻辑应用工作流的触发器。 AS2 连接器只提供操作，不提供触发器。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-* [集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，具有与你的 Azure 订阅相关联并链接到计划要使用 AS2 连接器的逻辑应用。 在逻辑应用和集成帐户必须位于同一位置或 Azure 区域。
+* 一个[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，该帐户与 Azure 订阅相关联，并已关联到你计划在其中使用 AS2 连接器的逻辑应用。 逻辑应用和集成帐户必须位于同一位置或 Azure 区域。
 
-* 在至少两台[贸易合作伙伴](../logic-apps/logic-apps-enterprise-integration-partners.md)，已经定义了集成帐户中使用 AS2 标识限定符。
+* 至少两个使用 AS2 标识限定符在集成帐户中定义的[贸易合作伙伴](../logic-apps/logic-apps-enterprise-integration-partners.md)。
 
-* 可以使用 AS2 连接器之前，必须创建 AS2[协议](../logic-apps/logic-apps-enterprise-integration-agreements.md)贸易合作伙伴和存储之间的集成帐户中该协议。
+* 在使用 AS2 连接器之前，必须在贸易合作伙伴之间制定 AS2 [协议](../logic-apps/logic-apps-enterprise-integration-agreements.md)，并将该协议存储在集成帐户中。
 
-* 如果您使用[Azure 密钥保管库](../key-vault/key-vault-overview.md)证书管理，请检查你的保管库密钥，允许**Encrypt**并**解密**操作。 否则，编码和解码操作失败。
+* 如果使用 [Azure Key Vault](../key-vault/general/overview.md) 进行证书管理，请检查保管库密钥是否允许“加密”  和“解密”  操作。 否则，编码和解码操作会失败。
 
-  在 Azure 门户中，转到密钥保管库，查看你的保管库密钥**允许的操作**，并确认**Encrypt**并**解密**选择操作。
+  在 Azure 门户中，转到密钥保管库中的密钥，查看密钥的“允许的操作”  ，确认已选择“加密”  和“解密”  操作，例如：
 
-  ![检查保管库密钥操作](media/logic-apps-enterprise-integration-as2/vault-key-permitted-operations.png)
+  ![检查保管库密钥操作](media/logic-apps-enterprise-integration-as2/key-vault-permitted-operations.png)
 
 <a name="encode"></a>
 
 ## <a name="encode-as2-messages"></a>为 AS2 消息编码
 
-1. 如果你尚未准备好，在[Azure 门户](https://portal.azure.com)，在逻辑应用设计器中打开逻辑应用。
+1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
-1. 在设计器中，将添加到逻辑应用的新的操作。 
+1. 在设计器中，将新操作添加到逻辑应用。
 
-1. 下**选择操作**和搜索框中，选择**所有**。 在搜索框中，输入"编码 as2"，然后选择以下操作：**编码为 AS2 消息**。
+1. 在“选择操作”和搜索框下，选择“全部”   。 在搜索框中输入“as2 编码”，确保选择 AS2 (v2) 操作：**AS2 编码**
 
-   ![选择"编码为 AS2 消息"](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
+   ![选择“AS2 编码”](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
 
-1. 如果没有现有连接到集成帐户，系统会提示要现在创建该连接。 命名你的连接，选择你想要连接，并选择集成帐户**创建**。
+1. 现在提供以下属性的信息：
 
-   ![创建连接到集成帐户](./media/logic-apps-enterprise-integration-as2/as2-create-connection.png)  
- 
-1. 现在提供这些属性的信息：
-
-   | 属性 | 描述 |
+   | 属性 | 说明 |
    |----------|-------------|
-   | **AS2-From** | 指定 AS2 协议的消息发送方标识符 |
-   | **AS2-To** | 指定 AS2 协议的消息接收方标识符 |
-   | **body** | 消息负载 |
+   | **要编码的消息** | 消息有效负载 |
+   | **AS2 发件人** | AS2 协议指定的消息发送方的标识符 |
+   | **AS2 收件人** | AS2 协议指定的消息接收方的标识符 |
    |||
 
    例如：
 
    ![消息编码属性](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 
+> [!TIP]
+> 如果在发送已签名或加密的消息时遇到问题，请考虑尝试不同的 SHA256 算法格式。 AS2 规范不提供有关 SHA256 格式的任何信息，因此每个提供者都使用其自己的实现或格式。
+
 <a name="decode"></a>
 
 ## <a name="decode-as2-messages"></a>为 AS2 消息解码
 
-1. 如果你尚未准备好，在[Azure 门户](https://portal.azure.com)，在逻辑应用设计器中打开逻辑应用。
+1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
-1. 在设计器中，将添加到逻辑应用的新的操作。 
+1. 在设计器中，将新操作添加到逻辑应用。
 
-1. 下**选择操作**和搜索框中，选择**所有**。 在搜索框中，输入"解码 as2"，然后选择以下操作：**解码 AS2 消息**
+1. 在“选择操作”和搜索框下，选择“全部”   。 在搜索框中输入“as2 解码”，确保选择 AS2 (v2) 操作：**AS2 解码**
 
-   ![选择"解码 AS2 消息"](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
+   ![选择“AS2 解码”](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
 
-1. 如果没有现有连接到集成帐户，系统会提示要现在创建该连接。 命名你的连接，选择你想要连接，并选择集成帐户**创建**。
+1. 对于“要编码的消息”和“消息标头”属性，   ，请从以前的触发器或操作输出中选择以下值。
 
-   ![创建连接到集成帐户](./media/logic-apps-enterprise-integration-as2/as2-create-connection.png)  
+   例如，假定逻辑应用通过“请求”触发器接收消息。 可以选择该触发器的输出。
 
-1. 有关**正文**并**标头**，从以前的触发器或操作输出中选择这些值。
-
-   例如，假设逻辑应用接收的消息通过请求触发器。 从该触发器，可以选择输出。
-
-   ![从请求输出中选择正文和标头](media/logic-apps-enterprise-integration-as2/as2-message-decoding-details.png) 
+   ![从请求输出中选择正文和标头](media/logic-apps-enterprise-integration-as2/as2-message-decoding-details.png)
 
 ## <a name="sample"></a>示例
 
@@ -122,8 +119,11 @@ ms.locfileid: "64729396"
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关技术详细信息，如触发器、 操作和限制，如所述的连接器的 OpenAPI (以前称为 Swagger) 文件，请参阅[连接器的参考页](/connectors/as2/)。
+有关此连接器的更多技术方面的详细信息，例如操作和限制（如此连接器的 Swagger 文件所述），请参阅[连接器的参考页](https://docs.microsoft.com/connectors/as2/)。 
+
+> [!NOTE]
+> 对于[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中的逻辑应用，此连接器的 ISE 标记版本使用 [ISE 的 B2B 消息限制](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)。
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解[Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)
+* 了解其他[逻辑应用连接器](../connectors/apis-list.md)

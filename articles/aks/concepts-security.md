@@ -2,49 +2,62 @@
 title: 概念 - Azure Kubernetes 服务 (AKS) 安全性
 description: 了解 Azure Kubernetes 服务 (AKS) 安全性，包括 master 和节点通信、网络策略和 Kubernetes 机密。
 services: container-service
-author: iainfoulds
-ms.service: container-service
+author: mlearned
 ms.topic: conceptual
-ms.date: 03/01/2019
-ms.author: iainfou
-ms.openlocfilehash: 2e655627267546d88f76a2487817bca3153ee91d
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 07/01/2020
+ms.author: mlearned
+ms.openlocfilehash: b3ad8fdce873b31c8ea6b1c8176ed41587b4b298
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074022"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507091"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序和群集的安全性相关概念
 
-在 Azure Kubernetes 服务 (AKS) 中运行应用程序工作负荷的过程中，若要保护客户数据，关键是要确保群集的安全性。 Kubernetes 包括安全组件，如网络策略和机密。 Azure 会添加组件，例如网络安全组和协调群集升级。 这些安全组件共同确保 AKS 群集运行最新的 OS 安全更新和 Kubernetes 版本，并确保安全的 pod 流量和对敏感凭据的安全访问。
+在 Azure Kubernetes 服务 (AKS) 中运行应用程序工作负荷的过程中，若要保护客户数据，关键是要确保群集的安全性。 Kubernetes 包括安全组件，如网络策略和机密 。 Azure 会添加组件，例如网络安全组和协调群集升级。 这些安全组件共同确保 AKS 群集运行最新的 OS 安全更新和 Kubernetes 版本，并确保安全的 pod 流量和对敏感凭据的安全访问。
 
 本文介绍用于保护 AKS 中应用程序的核心概念：
 
-- [主组件安全性](#master-security)
-- [节点安全性](#node-security)
-- [群集升级](#cluster-upgrades)
-- [网络安全](#network-security)
-- [Kubernetes 机密](#kubernetes-secrets)
+- [Azure Kubernetes Service (AKS) 中的应用程序和群集的安全性概念](#security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks)
+  - [主组件安全](#master-security)
+  - [节点安全性](#node-security)
+    - [计算隔离](#compute-isolation)
+  - [群集升级](#cluster-upgrades)
+    - [隔离和排空](#cordon-and-drain)
+  - [网络安全](#network-security)
+    - [Azure 网络安全组](#azure-network-security-groups)
+  - [Kubernetes 机密](#kubernetes-secrets)
+  - [后续步骤](#next-steps)
 
 ## <a name="master-security"></a>主组件安全
 
-在 AKS 中，Kubernetes 主组件是 Microsoft 提供的托管服务的一部分。 每个 AKS 群集都有其自己的专用单租户 Kubernetes 主组件，用于提供 API 服务器、计划程序等。此主管理并由 Microsoft 维护。
+在 AKS 中，Kubernetes 主组件是 Microsoft 提供的托管服务的一部分。 每个 AKS 群集都有其自己的租户专用 Kubernetes 主机，用于提供 API 服务器、计划程序等。此主机由 Microsoft 管理和维护。
 
-默认情况下，Kubernetes API 服务器使用公共 IP 地址，并具有完全限定的域名 (FQDN)。 可使用 Kubernetes 基于角色的访问控制和 Azure Active Directory 控制对 API 服务器的访问。 有关详细信息，请参阅 [Azure AD 与 AKS 集成][aks-aad]。
+默认情况下，Kubernetes API 服务器使用公共 IP 地址和完全限定域名 (FQDN)。 可以使用[经授权的 IP 范围][authorized-ip-ranges]将访问范围限制为 API 服务器终结点。 你还可以创建完全[专用群集][private-clusters]，限制 API 服务器对虚拟网络的访问。
+
+可使用 Kubernetes 基于角色的访问控制和 Azure Active Directory 控制对 API 服务器的访问。 有关详细信息，请参阅 [Azure AD 与 AKS 集成][aks-aad]。
 
 ## <a name="node-security"></a>节点安全性
 
-AKS 节点是由你管理和维护的 Azure 虚拟机。 运行使用小鲸鱼容器运行时优化的 Ubuntu 分发版的 Linux 节点。 Windows 服务器节点 （目前以预览版在 AKS 中） 运行优化的 Windows Server 2019 发布，也使用小鲸鱼容器运行时。 创建或纵向扩展了 AKS 群集时，会自动使用最新的 OS 安全更新和配置来部署节点。
+AKS 节点是由你管理和维护的 Azure 虚拟机。 Linux 节点通过 Moby 容器运行时运行经过优化的 Ubuntu 发行版。 Windows Server 节点运行已优化的 Windows Server 2019 版本，并使用 Moby 容器运行时。 创建或纵向扩展了 AKS 群集时，会自动使用最新的 OS 安全更新和配置来部署节点。
 
-Azure 平台会自动适用于 Linux 节点上每晚的 OS 安全修补程序。 如果 Linux OS 安全更新要求重新启动主机，不会自动执行了重新启动。 可以手动重新启动 Linux 节点，或一种常见方法是使用[Kured][kured]，一个适用于 Kubernetes 的开放源代码重启守护程序。 Kured 作为 [DaemonSet][aks-daemonsets] 运行并监视每个节点，用于确定指示需要重启的文件是否存在。 通过使用相同的 [cordon 和 drain 进程](#cordon-and-drain)作为群集升级，来跨群集管理重启。
+Azure 平台会在夜间自动将 OS 安全修补程序应用于 Linux 节点。 如果 Linux OS 安全更新需要重启主机，系统不会自动执行重启操作。 可以手动重启 Linux 节点，或使用常用的方法，即使用 [Kured][kured]，这是一个适用于 Kubernetes 的开源重启守护程序。 Kured 作为 [DaemonSet][aks-daemonsets] 运行并监视每个节点，用于确定指示需要重启的文件是否存在。 通过使用相同的 [cordon 和 drain 进程](#cordon-and-drain)作为群集升级，来跨群集管理重启。
 
-Windows Server 中的节点 （当前在 AKS 中的预览版），Windows 更新不会不会自动运行，并应用最新的更新。 有关在 Windows 更新发布周期和验证过程按定期计划，应在 AKS 群集中执行 Windows Server 节点池上的升级。 此升级过程创建节点运行的最新的 Windows Server 映像和修补程序，然后删除旧节点。 此过程的详细信息，请参阅[升级在 AKS 中的节点池][nodepool-upgrade]。
+对于 Windows Server 节点，Windows 更新不会自动运行和应用最新的更新。 在 Windows 更新发布周期和你自己的验证过程的定期计划中，你应在 AKS 群集中的 Windows Server 节点池上进行升级。 此升级过程会创建运行最新 Windows Server 映像和修补程序的节点，然后删除旧节点。 有关此过程的详细信息，请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
 
 系统将节点部署到专用虚拟网络子网中，且不分配公共 IP 地址。 出于故障排除和管理的目的，会默认启用 SSH。 只能使用内部 IP 地址访问此 SSH。
 
 为提供存储，节点使用 Azure 托管磁盘。 这些是由高性能固态硬盘支持的高级磁盘，适用于大多数规模的 VM 节点。 托管磁盘上存储的数据在 Azure 平台内会自动静态加密。 为提高冗余，还会在 Azure 数据中心内安全复制这些磁盘。
 
-目前，在恶意的多租户使用情况下，AKS 或其他位置中的 Kubernetes 环境并不完全安全。 用于节点的其他安全功能（例如 *Pod 安全策略*或更细粒度的基于角色的访问控制 (RBAC)）可增加攻击的难度。 但是，为了在运行恶意多租户工作负荷时获得真正的安全性，虚拟机监控程序应是你唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。 有关如何隔离工作负荷的详细信息，请参阅 [AKS 中的群集隔离最佳做法][cluster-isolation]，
+目前，在恶意的多租户使用情况下，AKS 或其他位置中的 Kubernetes 环境并不完全安全。 用于节点的其他安全功能（例如 *Pod 安全策略*或更细粒度的基于角色的访问控制 (RBAC)）可增加攻击的难度。 但是，为了在运行恶意多租户工作负荷时获得真正的安全性，虚拟机监控程序应是你唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。 有关隔离工作负荷的方法的详细信息，请参阅[AKS 中群集隔离的最佳实践][cluster-isolation]。
+
+### <a name="compute-isolation"></a>计算隔离
+
+ 由于符合性或法规要求，某些工作负荷可能需要与其他客户工作负荷进行高程度的隔离。 对于这些工作负荷，Azure 提供[隔离的虚拟机，这些虚拟机](../virtual-machines/isolation.md)可用作 AKS 群集中的代理节点。 这些隔离的虚拟机隔离到特定的硬件类型，并专用于单个客户。 
+
+ 若要将这些独立的虚拟机与 AKS 群集配合使用，请在创建 AKS 群集或添加节点池时选择[此处](../virtual-machines/isolation.md)所列的隔离虚拟机大小之一作为**节点大小**。
+
 
 ## <a name="cluster-upgrades"></a>群集升级
 
@@ -52,16 +65,16 @@ Windows Server 中的节点 （当前在 AKS 中的预览版），Windows 更新
 
 ### <a name="cordon-and-drain"></a>隔离和排空
 
-在升级过程中，AKS 节点是单独封锁从群集，因此它们不会计划新的 pod。 然后将节点排空并进行升级，操作如下：
+在升级过程中，AKS 节点会单独从群集中隔离出来，以便系统不会在其上计划新 Pod。 然后将节点排空并进行升级，操作如下：
 
-- 一个新的节点会部署到的节点池。 此节点都运行最新 OS 映像和修补程序。
-- 升级已标识一个现有节点。 此节点上 pod 是正常终止并安排在节点池中的其他节点上。
+- 将新节点部署到节点池中。 此节点运行最新的 OS 映像和修补程序。
+- 其中一个现有的节点已确定要升级。 妥善终止此节点上的 Pod 并在节点池中的其他节点上对其进行安排。
 - 从 AKS 群集中删除此现有节点。
-- 在群集中的下一个节点封锁和排除使用相同的过程，直到所有节点成功都替换作为升级过程的一部分。
+- 使用相同的过程隔离和排空群集中的下一个节点，直到在升级过程中成功替换所有节点。
 
 有关详细信息，请参阅[升级 AKS 群集][aks-upgrade-cluster]。
 
-## <a name="network-security"></a>网络安全
+## <a name="network-security"></a>网络安全性
 
 如需实现本地网络的连接和安全性，可将 AKS 群集部署到现有 Azure 虚拟网络子网。 这些虚拟网络可具有指向本地网络的 Azure 站点到站点 VPN 或 Express Route 连接。 可以使用专用的内部 IP 地址定义 Kubernetes 入口控制器，以便只能通过此内部网络连接访问服务。
 
@@ -69,17 +82,25 @@ Windows Server 中的节点 （当前在 AKS 中的预览版），Windows 更新
 
 为筛选虚拟网络中的通信流量，Azure 使用网络安全组规则。 这些规则定义要允许或拒绝哪些源和目标 IP 范围、端口和协议访问资源。 会创建默认规则以允许 TLS 流量流向 Kubernetes API 服务器。 在使用负载均衡器、端口映射或入口路由创建服务时，AKS 会自动修改网络安全组，以便流量流向正确的方向。
 
+如果你为 AKS 群集提供自己的子网，并且想要修改流量流，请不要修改由 AKS 管理的子网级别网络安全组。 你可以创建更多子网级别的网络安全组来修改流量，只要它们不干扰管理群集所需的流量，例如负载平衡器访问、与控制平面的通信以及[出口][aks-limit-egress-traffic]。
+
+### <a name="kubernetes-network-policy"></a>Kubernetes 网络策略
+
+为了限制群集中 Pod 之间的网络流量，AKS 提供了对 [Kubernetes 网络策略][network-policy]的支持。 使用网络策略，可以选择基于命名空间和标签选择器来允许或拒绝群集中的特定网络路径。
+
 ## <a name="kubernetes-secrets"></a>Kubernetes 机密
 
 Kubernetes *机密*用于将敏感数据注入到 pod，例如访问凭据或密钥。 首先使用 Kubernetes API 创建机密。 在定义 pod 或部署时，可以请求特定机密。 机密仅提供给所计划的 pod 需要该机密的节点，且机密存储在 *tmpfs* 中，不写入磁盘。 当节点上最后一个需要该机密的 pod 被删除后，将从该节点的 tmpfs 中删除该机密。 机密存储在给定的命名空间中，只有同一命名空间中的 pod 能访问该机密。
 
-使用机密会减少 pod 或服务 YAML 清单中定义的敏感信息。 可以请求存储在 Kubernetes API 服务器中的机密，作为 YAML 清单的一部分。 此方法仅为 pod 提供特定的机密访问权限。
+使用机密会减少 pod 或服务 YAML 清单中定义的敏感信息。 可以请求存储在 Kubernetes API 服务器中的机密，作为 YAML 清单的一部分。 此方法仅为 pod 提供特定的机密访问权限。 请注意：原始机密清单文件包含 base64 格式的机密数据（如需更多详细信息，请参阅[官方文档][secret-risks]）。 因此，此文件应被视为敏感信息，不应提交给源代码管理。
+
+Kubernetes 机密存储在分布式密钥-值存储 etcd 中。 Etcd 存储由 AKS 完全托管，并且[数据在 Azure 平台中静态加密][encryption-atrest]。 
 
 ## <a name="next-steps"></a>后续步骤
 
 若要开始为 AKS 群集提供保护，请参阅[升级 AKS 群集][aks-upgrade-cluster]。
 
-如需相关的最佳做法，请参阅 [AKS 中群集安全性和升级的最佳做法][operator-best-practices-cluster-security]。
+如需相关的最佳做法，请参阅 [AKS 中群集安全性和升级的最佳做法][operator-best-practices-cluster-security]和 [AKS 中的 Pod 安全的最佳做法][developer-best-practices-pod-security]。
 
 有关核心 Kubernetes 和 AKS 概念的详细信息，请参阅以下文章：
 
@@ -92,16 +113,23 @@ Kubernetes *机密*用于将敏感数据注入到 pod，例如访问凭据或密
 <!-- LINKS - External -->
 [kured]: https://github.com/weaveworks/kured
 [kubernetes-network-policies]: https://kubernetes.io/docs/concepts/services-networking/network-policies/
+[secret-risks]: https://kubernetes.io/docs/concepts/configuration/secret/#risks
+[encryption-atrest]: ../security/fundamentals/encryption-atrest.md
 
 <!-- LINKS - Internal -->
 [aks-daemonsets]: concepts-clusters-workloads.md#daemonsets
 [aks-upgrade-cluster]: upgrade-cluster.md
-[aks-aad]: azure-ad-integration.md
+[aks-aad]: ./azure-ad-integration-cli.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
 [aks-concepts-identity]: concepts-identity.md
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
+[aks-limit-egress-traffic]: limit-egress-traffic.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
+[developer-best-practices-pod-security]:developer-best-practices-pod-security.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[authorized-ip-ranges]: api-server-authorized-ip-ranges.md
+[private-clusters]: private-clusters.md
+[network-policy]: use-network-policies.md

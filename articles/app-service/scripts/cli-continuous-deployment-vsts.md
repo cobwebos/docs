@@ -1,27 +1,20 @@
 ---
-title: Azure CLI 脚本示例 - 从 Azure 存储库创建应用并持续部署 | Microsoft Docs
-description: Azure CLI 脚本示例 - 从 Azure 存储库使用持续部署创建应用
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 从 Azure Repos 进行的持续部署
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 此示例演示如何从 Azure Repos 设置 CI/CD。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 389d3bd3-cd8e-4715-a3a1-031ec061d385
-ms.service: app-service-web
-ms.workload: web
 ms.devlang: azurecli
-ms.tgt_pltfrm: na
 ms.topic: sample
 ms.date: 12/11/2017
-ms.author: jeconnoc
-ms.custom: seodec18
-ms.openlocfilehash: 67e4f99046820aa21392ff1238318e1b48bb5354
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: msangapu
+ms.custom: mvc, seodec18
+ms.openlocfilehash: c0e9db3825de9c8c1429bec1edcc6bbb65588fcd
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136801"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80058047"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-using-azure-cli"></a>使用 Azure CLI 通过持续部署创建应用服务应用
 
@@ -47,7 +40,7 @@ ms.locfileid: "66136801"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 创建应用服务计划。 |

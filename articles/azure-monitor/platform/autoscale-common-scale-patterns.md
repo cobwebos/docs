@@ -1,19 +1,14 @@
 ---
 title: 常见自动缩放模式的概述
 description: 了解一些可在 Azure 中自动缩放资源的常见模式。
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/07/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 8356a8c8c31a043197485b4913b4a67d7d719778
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: a77cf1704c20abb77d432eab16569071208f6da8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60534184"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75396097"
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>常见自动缩放模式的概述
 本文介绍一些常见模式，这些模式可在 Azure 中缩放资源。
@@ -28,7 +23,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 
 拥有 Web 应用（/VMSS/云服务角色）并且
 
-- 要基于 CPU 进行扩大/缩小。
+- 要基于 CPU 进行横向扩展/横向缩减。
 - 此外，你希望确保实例数最小。
 - 同时，希望确保为可以扩展到的实例数设置最大限制。
 
@@ -39,7 +34,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 拥有 Web 应用（/VMSS/云服务角色）并且
 
 - 默认情况下想要 3 个实例（在工作日）
-- 不希望在周末有流量，因此希望在周末减少到 1 个实例。
+- 不希望在周末有流量，因此希望在周末纵向缩减到 1 个实例。
 
 ![在工作日与周末以不同方式缩放][3]
 
@@ -54,9 +49,9 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 
 ## <a name="scale-based-on-custom-metric"></a>基于自定义指标进行缩放
 
-你具有 web 前端和后端进行通信的 API 层。
+有一个 Web 前端和一个可与后端通信的 API 层。
 
-- 想要基于前端中的自定义事件缩放 API 层（示例：想要基于购物车中的项目数缩放结帐进程）
+- 想要基于前端中的自定义事件缩放 API 层（示例：想要基于购物车中的项目数缩放结账进程）
 
 ![基于自定义指标进行缩放][5]
 

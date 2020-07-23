@@ -4,14 +4,14 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 781087023bf9783bc3a153578b60b4941dc75c0e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 797ca4b76c62c62676772da3df21d26e096f0995
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66114766"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75392319"
 ---
-| Resource | 确定目标 |
+| 资源 | 目标 |
 |----------|---------------|
 | 单个队列的最大大小 | 500 TiB |
 | 队列中消息的最大大小 | 64 KiB |

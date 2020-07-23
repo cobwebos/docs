@@ -1,130 +1,147 @@
 ---
-title: 在 Azure AD 授权管理 （预览版）-Azure Active Directory 中创建新的访问包
-description: 了解如何创建你想要在 Azure Active Directory 权利管理 （预览版） 中共享的资源的新访问包。
+title: 在授权管理中创建新的访问包-Azure AD
+description: 了解如何创建要在 Azure Active Directory 授权管理中共享的新资源访问包。
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 05/16/2019
-ms.author: rolyon
+ms.date: 06/18/2020
+ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 312658bd653d94f3e1a32204b3c5ae4ae290558e
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
-ms.translationtype: MT
+ms.openlocfilehash: 1d54c4e5980383c721629143910eafbd5ae6a527
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65832797"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85078945"
 ---
-# <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>在 Azure AD 授权管理 （预览版） 中创建新的访问包
+# <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权限管理中创建新的访问包
 
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) 授权管理当前处于公共预览状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-访问包便可以执行一次性的安装程序的资源和策略自动管理生命周期内访问包的访问权限。 本文介绍如何创建新的访问包。
+使用访问包可以一次性设置好用于在访问包的生命周期内自动管理访问权限的资源和策略。 本文介绍如何创建新的访问包。
 
 ## <a name="overview"></a>概述
 
-所有访问包必须都置于名为目录的容器。 目录定义可以向您访问包添加哪些资源。 如果未指定目录，则访问包将放入常规目录。 目前，不能将现有访问包移到不同的目录。
+所有访问包必须放入称作“目录”的容器中。 目录定义可将哪些资源添加到访问包。 如果未指定目录，则访问包将会放入常规目录。 目前，无法将现有的访问包移到其他目录。
 
-所有访问包都必须至少一个策略。 策略指定谁可以请求访问包以及批准和过期时间设置。 创建新的访问包时，可以在目录中，为不在目录中，仅管理员直接分配的用户创建初始策略为用户或您可以选择更高版本创建的策略。
+如果你是访问包管理器，则无法向目录中添加你拥有的资源。 您只能使用目录中提供的资源。 如果需要将资源添加到目录，则可以询问目录所有者。
 
-下图显示了以创建新的访问包的高级别过程。
+所有访问包都必须至少有一个策略。 策略指定谁可以请求访问包以及审批和生命周期设置。 创建新访问包时，可为目录中的用户、不在目录中的用户以及（仅限）管理员直接分配创建一个初始策略，或者，可以选择在以后创建策略。
 
-![创建访问包过程](./media/entitlement-management-access-package-create/access-package-process.png)
+![创建访问包](./media/entitlement-management-access-package-create/access-package-create.png)
+
+下面是创建新访问包的概要步骤。
+
+1. 在标识管理中，启动创建新访问包的过程。
+
+1. 选择要在其中创建访问包的目录。
+
+1. 将目录中的资源添加到 access 包。
+
+1. 为每个资源分配资源角色。
+
+1. 指定可请求访问的用户。
+
+1. 指定任何审批设置。
+
+1. 指定生命周期设置。
 
 ## <a name="start-new-access-package"></a>启动新访问包
 
-**必备角色：** 用户管理员或目录所有者
+**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 单击**Azure Active Directory** ，然后单击**标识监管**。
+1. 依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中，单击**访问包**。
+1. 在左侧菜单中，单击“访问包”。 
 
-    ![在 Azure 门户中的权利管理](./media/entitlement-management-shared/elm-access-packages.png)
+1. 单击“新建访问包”。 
+   
+    ![Azure 门户中的权利管理](./media/entitlement-management-shared/access-packages-list.png)
 
-1. 单击**新访问包**。
+## <a name="basics"></a>基础
 
-## <a name="basics"></a>基本
+在“基本信息”选项卡上指定访问包的名称，并指定要在哪个目录中创建该访问包。****
 
-上**基础知识**选项卡上，为访问包提供一个名称并指定哪些目录创建在访问包。
+1. 输入访问包的显示名称和说明。 当用户提交访问包请求时，会看到此信息。
 
-1. 输入的显示名称和访问包的说明。 在提交的请求访问包时，用户将看到此信息。
+1. 在“目录”下拉列表中，选择要在其中创建访问包的目录。**** 例如，你的某个目录所有者需要管理所有可请求的营销资源。 在这种情况下，你可以选择营销目录。
 
-1. 在中**目录**下拉列表中，选择你想要创建访问该目录包中。 例如，可以管理所有可以请求的市场营销资源的目录所有者。 在这种情况下，可以选择市场营销的目录。
+    你只会看到你有权在中创建访问包的目录。 若要在现有目录中创建访问包，你必须是全局管理员或用户管理员，或者必须是该目录中的目录所有者或访问包管理器。
 
-    您将只看到目录有权创建访问包中的。 若要在现有的目录中创建访问包，您必须至少为一个用户管理员、 目录所有者或访问包管理器。
+    ![访问包 - 基本信息](./media/entitlement-management-access-package-create/basics.png)
 
-    ![访问包的基础知识](./media/entitlement-management-access-package-create/basics.png)
+    如果你是全局管理员、用户管理员或目录创建者，并且你想要在未列出的新目录中创建你的访问包，请单击 "**创建新目录**"。 输入目录的名称和说明，然后单击“创建”。****
 
-    如果你想要访问包创建新目录中，单击**新建**。 输入目录名称和描述，然后单击**创建**。
+    正在创建的访问包及其包含的所有资源将添加到新目录中。 也可以稍后添加其他目录所有者。
 
-    你要创建访问包，并且包括在其中的任何资源将添加到新目录。 此外，你将自动成为目录的第一个所有者。 您可以添加其他目录所有者。
-
-    若要创建一个新的目录，您必须至少是用户管理员或目录创建者。
-
-1. 单击“下一步”。
+1. 单击“下一步” 。
 
 ## <a name="resource-roles"></a>资源角色
 
-上**资源角色**选项卡上，选择要包含在访问包中的资源。
+在“资源角色”选项卡上，选择要包含在访问包中的资源。**** 请求并接收访问包的用户将接收访问包中的所有资源角色。
 
-1. 单击你想要添加的资源类型 (**组**，**应用程序**，或**SharePoint 站点**)。
+1. 单击要添加的资源类型（**组和团队**、**应用程序**或**SharePoint 站点**）。
 
-1. 在选择窗格中显示，从列表中选择一个或多个资源。
+1. 在出现的“选择”窗格中，从列表中选择一个或多个资源。
 
-    ![访问包-资源角色](./media/entitlement-management-access-package-create/resource-roles.png)
+    ![访问包 - 资源角色](./media/entitlement-management-access-package-create/resource-roles.png)
 
-    如果要在常规目录或一个新的目录中创建访问包，您将能够读取你拥有的目录中的任何资源。 您必须是至少一个用户管理员或目录创建者。
+    如果在常规目录或新目录中创建访问包，则可以从你拥有的目录中选择任何资源。 至少必须是全局管理员、用户管理员或目录创建者。
 
-    如果要在现有的目录中创建访问包，可以选择任何资源，而无需拥有它已在目录中。
+    如果在现有目录中创建访问包，则可以选择该目录中现有的任何资源，而无需拥有该目录。
 
-    如果您是用户管理员或目录的所有者，必须选择目录中尚未包括的资源所拥有其他的选项。 如果所选目录中的当前未选择资源，这些资源还将添加到其他目录管理员可以生成具有访问包目录中。 如果只想要选择当前在所选的目录中，检查的资源**只会看到**选择平移顶部的复选框。
+    如果你是全局管理员、用户管理员或目录所有者，你可以选择其他选项来选择你拥有但尚未包含在目录中的资源。 如果选择当前不在所选目录中的资源，则这些资源也会添加到该目录，供其他目录管理员用来生成访问包。 如果只想选择当前在所选目录中的资源，请选中 "仅在选择窗格顶部**显示**" 复选框。
 
-1. 在选择资源之后,**角色**列表中，选择想要分配的用户资源的角色。
+1. 选择资源后，在“角色”列表中选择要将用户分配到的资源角色。****
 
-    ![访问包-资源角色选择](./media/entitlement-management-access-package-create/resource-roles-role.png)
+    ![访问包 - 资源角色选择](./media/entitlement-management-access-package-create/resource-roles-role.png)
 
-1. 单击“下一步”。
+1. 单击“下一步” 。
 
-## <a name="policy"></a>策略
+## <a name="requests"></a>Requests
 
-上**策略**选项卡上，创建第一个策略指定谁可以请求访问包以及批准和过期时间设置。 更高版本，可以创建多个策略，以允许用户使用其自己的审批和过期设置请求访问包的其他组。 您还可以选择更高版本创建策略。
+在 "**请求**" 选项卡上，可以创建第一个策略来指定谁可以请求访问包和审批设置。 稍后，你可以创建更多的请求策略，以允许其他用户组使用其自己的审批设置来请求访问包。
 
-1. 设置**创建第一个策略**切换到**现在**或**更高版本**。
+![访问包-请求选项卡](./media/entitlement-management-access-package-create/requests.png)
 
-    ![访问包的策略](./media/entitlement-management-access-package-create/policy.png)
+根据你希望能够请求此访问包的人员，请执行以下部分之一中的步骤。
 
-1. 如果选择**更高版本**，向下跳过[查看 + 创建](#review--create)部分，以创建访问包。
+[!INCLUDE [Entitlement management request policy](../../../includes/active-directory-entitlement-management-request-policy.md)]
 
-1. 如果选择**现在**，执行下列策略部分之一中的步骤。
-
-[!INCLUDE [Entitlement management policy](../../../includes/active-directory-entitlement-management-policy.md)]
+[!INCLUDE [Entitlement management lifecycle policy](../../../includes/active-directory-entitlement-management-lifecycle-policy.md)]
 
 ## <a name="review--create"></a>查看 + 创建
 
-上**查看 + 创建**选项卡上，你可以查看您的设置和检查是否有任何验证错误。
+在“查看 + 创建”选项卡上，可以查看设置并检查是否存在任何验证错误。****
 
 1. 查看访问包的设置
 
-    ![访问包的支持策略的策略设置](./media/entitlement-management-access-package-create/review-create.png)
+    ![访问包 - 策略 - 启用策略设置](./media/entitlement-management-access-package-create/review-create.png)
 
-1. 单击**创建**创建访问包。
+1. 单击“创建”以创建访问包。****
 
-    访问包的列表中将显示新的访问包。
+    新访问包将显示在访问包列表中。
+
+## <a name="creating-an-access-package-programmatically"></a>以编程方式创建访问包
+
+你还可以使用 Microsoft Graph 创建访问包。  具有委托权限的应用程序的相应角色中的用户 `EntitlementManagement.ReadWrite.All` 可以调用 API 来
+
+1. [列出目录中的 accessPackageResources](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta) ，并为未在目录中的任何资源[创建 accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta) 。
+1. [列出](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta)accessPackageCatalog 中每个 AccessPackageResource 的 accessPackageResourceRoles。 然后，在创建 accessPackageResourceRoleScope 时，此角色列表将用于选择角色。
+1. [创建 accessPackage](https://docs.microsoft.com/graph/api/accesspackage-post?view=graph-rest-beta)。
+1. [创建 accessPackageAssignmentPolicy](https://docs.microsoft.com/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta)。
+1. 为访问包中所需的每个资源角色[创建一个 accessPackageResourceRoleScope](https://docs.microsoft.com/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta) 。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [编辑和管理现有访问包](entitlement-management-access-package-edit.md)
-- [创建和管理目录](entitlement-management-catalog-create.md)
+- [共享用于请求访问包的链接](entitlement-management-access-package-settings.md)
+- [更改访问包的资源角色](entitlement-management-access-package-resources.md)
+- [直接将用户分配到访问包](entitlement-management-access-package-assignments.md)

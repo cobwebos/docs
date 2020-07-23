@@ -1,30 +1,24 @@
 ---
-title: 'Azure Functions F # 开发人员参考 | Microsoft Docs'
+title: Azure Functions F# 开发人员参考
 description: 了解如何使用 F# 脚本开发 Azure Functions。
-services: functions
-documentationcenter: fsharp
 author: sylvanc
-manager: jbronsk
-keywords: Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务器体系结构, F#
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
-ms.service: azure-functions
-ms.devlang: fsharp
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: fbc5a149e59bff1897d3949185272e9ca664f989
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 005cb0044cb4d225c8b94602fb907fee09fb00b2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717822"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249183"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 开发人员参考
 
 Azure Functions F# 是用于在云中轻松运行小段代码或“函数”的一个解决方案。 数据通过函数参数流入 F # 函数。 在 `function.json`指定参数名称，没有访问函数记录器和取消令牌等的预定义的名称。 
 
 >[!IMPORTANT]
->仅 Azure Functions 运行时的[版本 1.x](functions-versions.md#creating-1x-apps) 支持 F# 脚本 (.fsx)。 如果要将 F# 与版本 2.x 运行时结合使用，必须使用预编译的 F# 类库项目 (.fs)。 就像 [C# 类库项目](functions-dotnet-class-library.md)那样，使用 Visual Studio 创建、管理和发布 F# 类库项目。 有关 Functions 版本的详细信息，请参阅 [Azure Functions 运行时版本概述](functions-versions.md)。
+>仅 Azure Functions 运行时的[版本 1.x](functions-versions.md#creating-1x-apps) 支持 F# 脚本 (.fsx)。 若要将 F# 与版本 2.x 及更高版本运行时结合使用，必须使用预编译的 F# 类库项目 (.fs)。 就像 [C# 类库项目](functions-dotnet-class-library.md)那样，使用 Visual Studio 创建、管理和发布 F# 类库项目。 有关 Functions 版本的详细信息，请参阅 [Azure Functions 运行时版本概述](functions-versions.md)。
 
 本文假定已阅读 [Azure Functions 开发人员参考](functions-reference.md)。
 
@@ -54,7 +48,7 @@ FunctionsProject
 
 存在共享的 [host.json](functions-host-json.md) 文件，可用于配置函数应用。 每个函数都有自己的代码文件 (.fsx) 和绑定配置文件 (function.json)。
 
-[2.x 版](functions-versions.md) Functions 运行时中所需的绑定扩展在 `extensions.csproj` 文件中定义，实际库文件位于 `bin` 文件夹中。 本地开发时，必须[注册绑定扩展](./functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
+[2.x 版及更高版本](functions-versions.md)的 Functions 运行时中所需的绑定扩展在 `extensions.csproj` 文件中定义，实际库文件位于 `bin` 文件夹中。 本地开发时，必须[注册绑定扩展](./functions-bindings-register.md#extension-bundles)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
 
 ## <a name="binding-to-arguments"></a>绑定到参数
 对于每个绑定支持某些参数，请参阅 [Azure 函数触发器和绑定开发人员参考](functions-triggers-bindings.md)。 例如，blob 触发器支持的其中一个参数绑定是 POCO，可以使用 F # 记录来表示。 例如：
@@ -147,7 +141,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `System.Net.Http`
 * `System.Threading.Tasks`
 * `Microsoft.Azure.WebJobs`
-* `Microsoft.Azure.WebJobs.Host`。
+* `Microsoft.Azure.WebJobs.Host` 列中的一个值匹配。
 
 ## <a name="referencing-external-assemblies"></a>引用外部程序集
 与此类似，可以使用 `#r "AssemblyName"` 指令添加框架程序集引用。
@@ -166,7 +160,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 
 由 Azure 函数主机环境自动添加以下程序集：
 
-* `mscorlib`,
+* `mscorlib`、
 * `System`
 * `System.Core`
 * `System.Xml`
@@ -175,7 +169,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `Microsoft.Azure.WebJobs.Host`
 * `Microsoft.Azure.WebJobs.Extensions`
 * `System.Web.Http`
-* `System.Net.Http.Formatting`。
+* `System.Net.Http.Formatting` 列中的一个值匹配。
 
 此外，以下程序集比较特殊，可能由 simplename 引用 (例如 `#r "AssemblyName"`)：
 
@@ -183,7 +177,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `Microsoft.WindowsAzure.Storage`
 * `Microsoft.ServiceBus`
 * `Microsoft.AspNet.WebHooks.Receivers`
-* `Microsoft.AspNEt.WebHooks.Common`。
+* `Microsoft.AspNEt.WebHooks.Common` 列中的一个值匹配。
 
 如果需要引用私有程序集，可以将程序集文件上传到  `bin` 与功能相关的文件，并通过使用文件名（例如`#r "MyAssembly.dll"`）来引用它. 有关如何将文件上传到函数文件夹的信息，请参阅下一部分中有关程序包管理的信息。
 
@@ -231,7 +225,7 @@ Azure 函数执行代码时，它可以处理带有 `COMPILED` 定义的源，�
 
 ### <a name="how-to-add-a-projectjson-file-to-your-azure-function"></a>如何添加 `project.json` 文件到 Azure 函数
 1. 首先，确保函数应用程序正在运行，可以通过在 Azure 门户中打开函数来执行此操作。 通过此操作，还可以访问将要显示程序包安装输出位置的流式传输日志。
-2. 若要上传 `project.json` 文件，请使用如何更新函数应用程序文件 中描述的其中一[种方法](functions-reference.md#fileupdate)。 如果使用 [ Azure 函数的连续部署](functions-continuous-deployment.md) ，可以添加 `project.json` 文件到临时分支，以便添加到部署的分支文件对其进行测试。
+2. 若要上传  `project.json`文件，请使用如何更新函数应用程序文件 中描述的其中一[种方法](functions-reference.md#fileupdate)。 如果使用 [ Azure 函数的连续部署](functions-continuous-deployment.md) ，可以添加 `project.json` 文件到临时分支，以便添加到部署的分支文件对其进行测试。
 3. 添加 `project.json` 文件后，将看到类似于函数流式日志中的实例的输出：
 
 ```
@@ -293,7 +287,7 @@ let mylog(log: ILogger, text: string) =
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅以下资源：
 
-* [F # 指南](/dotnet/articles/fsharp/index)
+* [F# 指南](/dotnet/articles/fsharp/index)
 * [Azure Functions 最佳实践](functions-best-practices.md)
 * [Azure Functions 开发人员参考](functions-reference.md)
 * [Azure Functions 触发器和绑定](functions-triggers-bindings.md)

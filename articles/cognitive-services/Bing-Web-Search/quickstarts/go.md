@@ -8,30 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
-ms.openlocfilehash: b7bf73c2948b302ec8294b7dc2ff2dc8f220c91b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3ea8375d1ed999d4b617a9d2a78ec53ad22543ac
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57843877"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85602172"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>快速入门：使用必应 Web 搜索 REST API 和 Go 搜索网页
 
-使用本快速入门进行你的第一次必应 Web 搜索 API 并接收 JSON 响应。 这个 Go 应用程序会向该 API 发送一个搜索请求并显示响应。 虽然此应用程序是使用 Go 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
+根据此快速入门中的说明对必应 Web 搜索 API 进行第一次调用。 这个 Go 应用程序会向该 API 发送一个搜索请求并显示 JSON 响应。 尽管此应用程序是使用 Go 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
-另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+ 本快速入门种的代码示例只需要核心库，无外部依赖项。  
 
 ## <a name="prerequisites"></a>先决条件
 下面是在开始本快速入门之前需要准备好的项目：
 
 * [Go 二进制文件](https://golang.org/dl/)
 * 订阅密钥
-
-本快速入门仅需要**核心**库，不需要外部依赖项。  
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]  
 
@@ -113,7 +111,13 @@ type BingAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>声明主函数并定义变量  
 
-以下代码声明了主函数，并设置了必需的变量。 确认终结点正确并将 `token` 值替换为来自你的 Azure 帐户的有效订阅密钥。 可以通过替换 `searchTerm` 的值随意自定义搜索查询。
+以下代码声明了主函数，并设置了必需的变量： 
+
+1. 对于 `endpoint` 值，可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。 
+
+2. 确认终结点正确并将 `token` 值替换为来自你的 Azure 帐户的有效订阅密钥。 
+ 
+3. （可选）通过替换 `searchTerm` 的值自定义搜索查询。
 
 ```go
 // Declare the main function. This is required for all Go programs.
@@ -172,7 +176,7 @@ if err != nil {
 
 ## <a name="handle-the-response"></a>处理响应
 
-还记得我们之前创建的结构吗？ 我们将使用它来格式化响应并输出搜索结果。
+使用我们之前创建的结构来设置响应的格式，并输出搜索结果。
 
 ```go
 // Create a new answer.  
@@ -189,7 +193,7 @@ for _, result := range ans.WebPages.Value {
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-最后一步是验证代码并运行它！ 如果希望将你的代码与我们的进行比较，下面是完整的程序：
+最后一步是验证代码并运行它。 如果希望将你的代码与我们的进行比较，下面是完整的程序：
 
 ```go
 package main
@@ -307,14 +311,13 @@ func main() {
 }
 ```
 
-## <a name="sample-response"></a>示例响应  
+## <a name="example-json-response"></a>示例 JSON 响应
 
 来自必应 Web 搜索 API 的响应以 JSON 形式返回。 此示例响应已使用 `BingAnswer` 结构进行了格式设置并显示了 `result.Name` 和 `result.URL`。
 
 ```go
 Microsoft Cognitive Services || https://www.microsoft.com/cognitive-services
 Cognitive Services | Microsoft Azure || https://azure.microsoft.com/services/cognitive-services/
-Cognitive Service Try experience | Microsoft Azure || https://azure.microsoft.com/try/cognitive-services/
 What is Microsoft Cognitive Services? | Microsoft Docs || https://docs.microsoft.com/azure/cognitive-services/Welcome
 Microsoft Cognitive Toolkit || https://www.microsoft.com/en-us/cognitive-toolkit/
 Microsoft Customers || https://customers.microsoft.com/en-us/search?sq=%22Microsoft%20Cognitive%20Services%22&ff=&p=0&so=story_publish_date%20desc
@@ -326,6 +329,6 @@ Cognitive Services - msdn.microsoft.com || https://msdn.microsoft.com/magazine/m
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [必应 Web 搜索单页应用教程](../tutorial-bing-web-search-single-page-app.md)
+> [必应 Web 搜索 API 单页应用教程](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

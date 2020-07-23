@@ -1,95 +1,90 @@
 ---
-title: 配置设置
-titleSuffix: Azure Cognitive Services
+title: 配置个性化体验创建服务
 description: 服务配置包括服务处理奖励的方式、服务的探索频率、重新训练模型的频率，以及存储的数据量。
-services: cognitive-services
-author: edjez
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: personalizer
-ms.topic: overview
-ms.date: 05/07/2019
-ms.author: edjez
-ms.openlocfilehash: 976830232453eee0993e64ac445c2e6a2f7e20ef
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
-ms.translationtype: HT
+ms.topic: how-to
+ms.date: 04/29/2020
+ms.openlocfilehash: 4c0cbf35a37f6b3eb134992b34b23fd9d7be47ed
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66478573"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344333"
 ---
-# <a name="personalizer-settings"></a>个性化体验创建服务设置
+# <a name="configure-personalizer-learning-loop"></a>配置 Personalizer 学习循环
 
 服务配置包括服务处理奖励的方式、服务的探索频率、重新训练模型的频率，以及存储的数据量。
 
-## <a name="create-personalizer-resource"></a>创建个性化体验创建服务资源
+在 "**配置**" 页上的 "Personalizer" 资源的 Azure 门户中配置学习循环。
 
-为每个反馈循环创建一个个性化体验创建服务资源。 
+<a name="configure-service-settings-in-the-azure-portal"></a>
+<a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>
 
-1. 登录到 [Azure 门户](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)。 前面的链接会将你带到个性化体验创建服务的“创建”页。  
-1. 输入服务名称，选择订阅、位置、定价层和资源组。
-1. 选择确认，然后选择“创建”  。
+## <a name="planning-configuration-changes"></a>规划配置更改
 
-## <a name="configure-service-settings-in-the-azure-portal"></a>在 Azure 门户中配置服务设置
+由于某些配置更改会[重置模型](#settings-that-include-resetting-the-model)，因此应计划配置更改。
 
-1. 登录到 [Azure 门户](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)。
-1. 找到你的个性化体验创建服务资源。 
-1. 在“资源管理”部分选择“设置”。  
+如果计划使用[Apprentice 模式](concept-apprentice-mode.md)，请确保在切换到 Apprentice 模式之前查看 Personalizer 配置。
 
-    在离开 Azure 门户之前，请从“密钥”页复制某个资源密钥。  需要该密钥才能使用[个性化体验创建服务 SDK](https://go.microsoft.com/fwlink/?linkid=2092353)。
+<a name="clear-data-for-your-learning-loop"></a>
 
-### <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>根据用例配置反馈循环的奖励设置
+## <a name="settings-that-include-resetting-the-model"></a>包括重置模型的设置
 
-配置服务的设置，使反馈循环使用奖励。 更改以下设置会重置当前个性化体验创建服务模型，并使用过去 2 天的数据重新训练模型：
+以下操作使用最多过去2天可用的数据触发模型的重新训练。
 
-![配置反馈循环的奖励设置](media/settings/configure-model-reward-settings.png)
+* 回报
+* 浏览
 
-|设置|目的|
+若要[清除](how-to-manage-model.md)所有数据，请使用 "**模型和学习设置**" 页。
+
+## <a name="configure-rewards-for-the-feedback-loop"></a>配置反馈循环的奖励
+
+将服务配置为学习循环使用奖励。 对以下值所做的更改将重置当前 Personalizer 模型，并在过去2天的数据中重新训练该模型。
+
+> [!div class="mx-imgBorder"]
+> ![配置反馈循环的奖励值](media/settings/configure-model-reward-settings.png)
+
+|值|目的|
 |--|--|
-|奖励等待时间|设置个性化体验创建服务收集排名调用奖励值的时间长短，从发生排名调用的那一刻开始算起。 此值是通过提出以下问题设置的：“个性化体验创建服务要等待奖励调用多长时间？” 在此时间范围后抵达的任何奖励将被记录，但不用于学习。|
-|默认奖励|如果个性化体验创建服务在“奖励等待时间”范围内未收到与排名调用关联的奖励调用，则个性化体验创建服务会分配默认奖励。 默认情况下（并且是大多数情况下），默认奖励为零。|
-|奖励聚合|如果收到了同一排名 API 调用的多个奖励，则会使用此聚合方法：**sum** 或 **earliest**。 Earliest 拾取收到的最早评分，丢弃剩余的评分。 如果你希望在可能重复的调用之间保持唯一的奖励，则此方法很有用。 |
+|奖励等待时间|设置个性化体验创建服务收集排名调用奖励值的时间长短，从发生排名调用的那一刻开始算起。 此值的设置方法是： "应 Personalizer 等待回报调用的时间长度？" 在此时间范围后抵达的任何奖励将被记录，但不用于学习。|
+|默认奖励|如果个性化体验创建服务在“奖励等待时间”范围内未收到与排名调用关联的奖励调用，则个性化体验创建服务会分配默认奖励。 默认情况下，在大多数情况下，默认值为零（0）。|
+|奖励聚合|如果收到了同一排名 API 调用的多个奖励，则会使用此聚合方法：**sum** 或 **earliest**。 Earliest 拾取收到的最早评分，丢弃剩余的评分。 如果需要在可能重复的调用中使用唯一奖励，这会很有用。 |
 
-更改这些设置后，请务必选择“保存”。 
+更改这些值后，请确保选择 "**保存**"。
 
-### <a name="exploration-setting"></a>探索设置 
+## <a name="configure-exploration-to-allow-the-learning-loop-to-adapt"></a>配置探索以允许学习循环适应
 
-个性化功能可以发现新的模式，并通过探索备选项来不断适应用户的行为变化。 “探索”设置确定要使用探索应答的排名调用百分比。  
+个性化可通过浏览备选方法（而不是使用定型模型的预测）来发现新模式并适应用户行为更改。 **探索**值决定了通过浏览应答的排名调用的百分比。
 
-更改此设置会重置当前个性化体验创建服务模型，并使用过去 2 天的数据重新训练模型。
+对此值所做的更改将重置当前 Personalizer 模型，并在过去2天的数据中重新训练该模型。
 
-![探索设置确定要使用探索应答的排名调用百分比](media/settings/configure-exploration-setting.png)
+![探索值决定了通过探索回答了多少排名调用百分比](media/settings/configure-exploration-setting.png)
 
-更改此设置后，请务必选择“保存”。 
+更改此值后，请确保选择 "**保存**"。
 
-### <a name="model-update-frequency"></a>模型更新频率
+<a name="model-update-frequency"></a>
 
-从每个活动事件的奖励 API 调用训练得来的最新模型不会被个性化体验创建服务排名调用自动使用。 **模型更新频率**设置排名调用所使用的模型的更新频率。 
+## <a name="configure-model-update-frequency-for-model-training"></a>配置模型训练的模型更新频率
 
-如果你希望密切跟踪用户行为变化，则高模型更新频率非常有用。 例如，涉及实时新闻、病毒内容或实时产品投标的站点。 在这些情况下，可以使用 15 分钟的频率。 对于大多数用例，更低的更新频率是有效的。 在使用个性化体验创建服务调试应用程序代码、进行演示或以交互方式测试机器学习方面时，一分钟的更新频率非常有用。
+**模型更新频率**用于设置对模型进行定型的频率。
 
-![“模型更新频率”设置重新训练新个性化体验创建服务模型的频率。](media/settings/configure-model-update-frequency-settings.png)
+|频率设置|目的|
+|--|--|
+|1 分钟|使用 Personalizer**调试**应用程序的代码、执行演示或以交互方式测试机器学习方面时，一分钟的更新频率很有用。|
+|15 分钟|如果希望**密切跟踪**用户行为的更改，则高模型更新频率非常有用。 例如，涉及实时新闻、病毒内容或实时产品投标的站点。 在这些情况下，可以使用 15 分钟的频率。 |
+|1 小时|对于大多数用例，更低的更新频率是有效的。|
 
-更改此设置后，请务必选择“保存”。 
+![“模型更新频率”设置重新训练新个性化体验创建服务模型的频率。](media/settings/configure-model-update-frequency-settings-15-minutes.png)
 
-### <a name="data-retention"></a>数据保留
+更改此值后，请确保选择 "**保存**"。
 
-“数据保留期”设置个性化体验创建服务要将数据日志保留多少天。  需要使用以往的数据日志来执行[脱机评估](concepts-offline-evaluation.md)。这些评估可以衡量个性化体验创建服务的有效性以及优化学习策略。
+## <a name="data-retention"></a>数据保留
 
-更改此设置后，请务必选择“保存”。 
+“数据保留期”设置个性化体验创建服务要将数据日志保留多少天。**** 需要使用以往的数据日志来执行[脱机评估](concepts-offline-evaluation.md)。这些评估可以衡量个性化体验创建服务的有效性以及优化学习策略。
 
-## <a name="export-the-personalizer-model"></a>导出个性化体验创建服务模型
+更改此值后，请确保选择 "**保存**"。
 
-在“模型和策略”的“资源管理”部分，查看模型创建日期和上次更新日期，然后导出当前模型。  可以使用 Azure 门户或个性化体验创建服务 API 导出模型文件以进行存档。 
 
-![导出当前个性化体验创建服务模型](media/settings/export-current-personalizer-model.png)
-
-## <a name="import-and-export-learning-policy"></a>导入和导出学习策略
-
-在“模型和策略”的“资源管理”部分，导入新的学习策略或导出当前学习策略。 
 
 ## <a name="next-steps"></a>后续步骤
 
-<!--
-[How to use the Personalizer container](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)
--->
-[了解适用地区](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
+[了解如何管理模型](how-to-manage-model.md)

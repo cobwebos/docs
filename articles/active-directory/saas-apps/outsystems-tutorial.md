@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ff4f8f45bee86013b3f3603ba12fc121de9d7ce
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 7f631a641ab63d33d27d1e4520a000b4b01132be
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475688"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "68478571"
 ---
 # <a name="tutorial-integrate-outsystems-azure-ad-with-azure-active-directory"></a>教程：将 OutSystems Azure AD 与 Azure Active Directory 集成
 
@@ -84,7 +84,7 @@ ms.locfileid: "66475688"
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<YOURBASEURL>/IdP/SSO.aspx`
 
-1. 如果要在 SP  发起的模式下配置应用程序，请点击“设置其他 URL”  ，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<YOURBASEURL>`
 
@@ -101,7 +101,7 @@ ms.locfileid: "66475688"
 
 ### <a name="configure-outsystems-azure-ad"></a>配置 OutSystems Azure AD
 
-若要在 **OutSystems** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [OutSystems 支持团队](mailto:support@outsystems.com)  。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 OutSystems 端配置单一登录，需要下载 [IdP forge](https://www.outsystems.com/forge/component-overview/599/idp) 组件，并按照[说明](https://success.outsystems.com/Documentation/Development_FAQs/How_to_configure_OutSystems_to_use_identity_providers_using_SAML#Configure_your_application_to_use_IdP_connector)中所述对其进行配置。 安装该组件并进行必要的代码更改后，按照以下[说明](https://success.outsystems.com/Documentation/Development_FAQs/How_to_configure_OutSystems_to_use_identity_providers_using_SAML#Azure_AD_.2F_ADFS)，通过从 Azure 门户下载联合元数据 XML 并通过 OutSystems IDP 组件上传来配置 Azure AD。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -111,7 +111,7 @@ ms.locfileid: "66475688"
 1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤  ：
    1. 在“名称”  字段中，输入 `B. Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
    1. 单击“创建”。 
 
@@ -125,17 +125,17 @@ ms.locfileid: "66475688"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
 1. 在“用户和组”对话框中，选择“用户”列表中的“B. Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-outsystems-azure-ad-test-user"></a>创建 OutSystems Azure AD 测试用户
 
-在本部分中，将在 OutSystems 中创建一个名为 Britta Simon 的用户。 OutSystems 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 OutSystems 中尚不存在用户，则会在身份验证后创建一个新用户。
+在本部分中，将在 OutSystems 中创建一个名为 B.Simon 的用户。 OutSystems 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 OutSystems 中尚不存在用户，则会在身份验证后创建一个新用户。
 
 ### <a name="test-sso"></a>测试 SSO
 

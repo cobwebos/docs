@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell 脚本示例 - 筛选 VM 网络流量 | Microsoft Docs
+title: 筛选 VM 网络流量 - Azure PowerShell 脚本示例
 description: Azure PowerShell 脚本示例 - 筛选入站和出站 VM 网络流量。
 services: virtual-network
 documentationcenter: virtual-network
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 1bebb81670b4e8cac5fb6f9ea1b60ef1cc6b60fe
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c11a2249b66d56706783c865a77c14a276d870ed
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717869"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74091366"
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic-script-sample"></a>筛选入站和出站 VM 网络流量脚本示例
 
@@ -48,7 +48,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 此脚本使用以下命令创建资源组、虚拟网络和网络安全组。 下表中的每条命令均链接到特定于命令的文档：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | 创建子网配置对象 |

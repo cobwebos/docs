@@ -1,24 +1,22 @@
 ---
-title: 教程 - 为 Azure Front Door 服务配置地区筛选 Web 应用程序防火墙策略
-description: 本教程介绍如何创建简单的地区筛选策略并将该策略与现有的 Front Door 前端主机相关联
+title: 教程 - 配置地区筛选 WAF 策略 - Azure Front Door
+description: 本教程介绍如何创建地区筛选策略并将该策略与现有的 Front Door 前端主机相关联
 services: frontdoor
 documentationcenter: ''
-author: KumudD
-manager: twooley
-editor: ''
+author: teresayao
 ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
-ms.author: kumud;tyao
-ms.openlocfilehash: f2b5a2bc3248c9f2ee0eb49e993fd55c7714367a
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.author: tyao
+ms.openlocfilehash: 10f8bd3682b442dd55e195c6dc1855fae07a155c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389157"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744098"
 ---
 # <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>如何为 Front Door 设置地区筛选 WAF 策略
 本教程介绍如何使用 Azure PowerShell 创建简单的地区筛选策略并将该策略与现有的 Front Door 前端主机相关联。 此示例地区筛选策略会阻止除美国之外的所有其他国家/地区的请求。
@@ -34,8 +32,8 @@ Azure PowerShell 提供一组可以使用 [Azure 资源管理器](https://docs.m
 
 #### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>使用交互式登录对话框连接到 Azure
 ```
-Connect-AzAccount
 Install-Module -Name Az
+Connect-AzAccount
 ```
 确保已安装 PowerShellGet 最新版本。 运行下面的命令，重新打开 PowerShell。
 
@@ -77,7 +75,7 @@ $nonUSBlockRule = New-AzFrontDoorWafCustomRuleObject `
 ```
 
 ## <a name="add-rules-to-a-policy"></a>将规则添加到策略
-使用 `Get-AzResourceGroup` 找到包含该 Front Door 配置文件的资源组的名称。 接下来，在包含该 Front Door 配置文件的指定资源组中，使用 [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) 创建包含 `nonUSBlockRule` 的 `geoPolicy` 策略对象。 必须为地区策略提供唯一名称。 
+使用 `Get-AzResourceGroup` 找到包含该 Front Door 配置文件的资源组的名称。 接下来，在包含该 Front Door 配置文件的指定资源组中，使用 [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) 创建包含 `nonUSBlockRule` 的 `geoPolicy` 策略对象。 必须为地区筛选策略提供唯一名称。 
 
 以下示例使用资源组名称 *myResourceGroupFD1*，并假设已遵照以下文章中的说明创建了 Front Door 配置文件：[快速入门：创建 Front Door](quickstart-create-front-door.md)。 在下面的示例中，请将策略名称 *geoPolicyAllowUSOnly* 替换为唯一的策略名称。
 

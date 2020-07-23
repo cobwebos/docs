@@ -1,49 +1,48 @@
 ---
-title: 从 Office 365 使用 Azure 数据工厂复制数据 |Microsoft Docs
+title: 使用 Azure 数据工厂从 Office 365 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Office 365 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 10/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 1a8d622aa280794d9a4d6fe7320ddcc21ac044f4
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
-ms.translationtype: MT
+ms.openlocfilehash: dda761e12abe7ec866ad9426982563b6f629f6b2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475668"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513290"
 ---
-# <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>将数据从 Office 365 复制到 Azure 中使用 Azure 数据工厂
+# <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Office 365 复制到 Azure
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-与 azure 数据工厂集成[Microsoft Graph 数据连接](https://docs.microsoft.com/graph/data-connect-concept-overview)，使您能够将 Office 365 中的组织数据到 Azure 租户中可缩放的方式，并生成分析应用程序的丰富并提取见解基于这些有价值的数据资产。 与 Privileged Access Management 的集成为 Office 365 中组织有序的有价值的数据提供安全访问控制。  请参阅[此链接](https://docs.microsoft.com/graph/data-connect-concept-overview)有关 Microsoft Graph 数据的概述连接，并参考[此链接](https://docs.microsoft.com/graph/data-connect-policies#licensing)有关许可信息。
+Azure 数据工厂与 [Microsoft Graph 数据连接](https://docs.microsoft.com/graph/data-connect-concept-overview)相集成，允许你以可缩放的方式将 Office 365 租户中的丰富组织数据引入 Azure，并生成分析应用程序和基于这些有价值的数据资产提取见解。 与 Privileged Access Management 的集成为 Office 365 中组织有序的有价值的数据提供安全访问控制。  有关 Microsoft Graph 数据连接的概述，请参阅[此链接](https://docs.microsoft.com/graph/data-connect-concept-overview)，有关许可信息，请参阅[此链接](https://docs.microsoft.com/graph/data-connect-policies#licensing)。
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Office 365 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 ## <a name="supported-capabilities"></a>支持的功能
-ADF Office 365 连接器和 Microsoft Graph 数据连接在不同类型的数据集的规模引入时启用从 Exchange 电子邮件已启用邮箱，包括通讯簿联系人、 日历事件、 电子邮件消息、 用户信息、 邮箱设置和等等。  请参阅[此处](https://docs.microsoft.com/graph/data-connect-datasets)若要查看可用的数据集的完整列表。
+使用 ADF Office 365 连接器和 Microsoft Graph 数据连接可以从已启用 Exchange 电子邮件的邮箱中大规模地引入不同类型的数据集，包括通讯簿联系人、示例事件、电子邮件、用户信息和邮箱设置等。  请参阅[此处](https://docs.microsoft.com/graph/data-connect-datasets)以查看可用数据集的完整列表。
 
-现在，在单次复制活动可以只**将数据复制到 Office 365 [Azure Blob 存储](connector-azure-blob-storage.md)， [Azure 数据湖存储 Gen1](connector-azure-data-lake-store.md)，并[Azure 数据湖存储第 2 代](connector-azure-data-lake-storage.md)采用 JSON 格式**（键入 setOfObjects）。 如果要将 Office 365 加载到其他类型的或其他格式的数据存储，可以将第一个副本活动与后续复制活动链接在一起，以进一步将数据加载到任何[支持的 ADF 目标存储](copy-activity-overview.md#supported-data-stores-and-formats)（请参阅“支持的数据存储和格式”表中的“作为接收器支持”列）。
+目前，在单个复制活动中，只能**将 Office 365 中的数据复制到[Azure Blob 存储](connector-azure-blob-storage.md)、 [AZURE DATA LAKE STORAGE GEN1](connector-azure-data-lake-store.md)，并以 JSON 格式[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) ** （键入 setOfObjects）。 如果要将 Office 365 加载到其他类型的或其他格式的数据存储，可以将第一个副本活动与后续复制活动链接在一起，以进一步将数据加载到任何[支持的 ADF 目标存储](copy-activity-overview.md#supported-data-stores-and-formats)（请参阅“支持的数据存储和格式”表中的“作为接收器支持”列）。
 
 >[!IMPORTANT]
 >- 包含数据工厂和接收器数据存储的 Azure 订阅必须位于与 Office 365 租户相同的 Azure Active Directory (Azure AD) 租户下。
 >- 确保用于复制活动的 Azure Integration Runtime 区域以及目标在 Office 365 租户用户邮箱所在的同一区域中。 若要了解如何确定 Azure IR 位置，请参阅[此处](concepts-integration-runtime.md#integration-runtime-location)。 有关受支持的 Office 区域和对应的 Azure 区域列表，请参阅[此处的表](https://docs.microsoft.com/graph/data-connect-datasets#regions)。
->- 服务主体身份验证是 Azure Blob 存储、 Azure 数据湖存储 Gen1 和 Azure 数据湖存储第 2 代作为目标存储区支持的唯一身份验证机制。
+>- 服务主体身份验证是唯一支持的身份验证机制，Azure Blob 存储、Azure Data Lake Storage Gen1 和 Azure Data Lake Storage Gen2 作为目标存储。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要将数据从 Office 365 复制到 Azure，需要完成下列必备步骤：
 
 - Office 365 租户管理员必须完成载入操作，如[此处](https://docs.microsoft.com/graph/data-connect-get-started)所述。
-- 在 Azure Active Directory 中创建和配置 Azure AD Web 应用程序。  有关说明，请参阅[创建 Azure AD 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)。
+- 在 Azure Active Directory 中创建和配置 Azure AD Web 应用程序。  有关说明，请参阅[创建 Azure AD 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。
 - 记下下面的值，这些值将用于定义 Office 365 的链接服务：
-    - 租户 ID。 有关说明，请参阅[获取租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)。
-    - 应用程序 ID 和身份验证密钥。  有关说明，请参阅[获取应用程序 ID 和身份验证密钥](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)。
+    - 租户 ID。 有关说明，请参阅[获取租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。
+    - 应用程序 ID 和身份验证密钥。  有关说明，请参阅[获取应用程序 ID 和身份验证密钥](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。
 - 添加用户标识，将作为 Azure AD Web 应用程序的所有者发出数据访问请求（从 Azure AD Web 应用程序>设置>所有者>添加所有者）。 
     - 用户标识必须位于你从中获取数据的 Office 365 组织中，并且不能是来宾用户。
 
@@ -77,7 +76,7 @@ ADF Office 365 连接器和 Microsoft Graph 数据连接在不同类型的数据
 
 Office 365 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Office365** | 是 |
 | office365TenantId | Office 365 帐户所属的 Azure 租户 ID。 | 是 |
@@ -117,15 +116,12 @@ Office 365 链接服务支持以下属性：
 
 若要从 Office 365 复制数据，支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**Office365Table** | 是 |
 | tableName | 要从 Office 365 中提取的数据集的名称。 有关支持提取的 Office 365 数据集列表，请参阅[此处](https://docs.microsoft.com/graph/data-connect-datasets#datasets)。 | 是 |
-| allowedGroups | 组选择谓词。  使用此属性以选择将为其检索数据的最多 10 个用户组。  如果未不指定任何组，则将为整个组织返回的数据。 | 否 |
-| userScopeFilterUri | 当`allowedGroups`属性未指定，则可以使用应用于整个租户来筛选要从 Office 365 中提取的特定行的谓词表达式。 谓词的格式应与 Microsoft Graph Api，则查询格式例如匹配`https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`。 | 否 |
-| dateFilterColumn | 日期时间筛选器列的名称。 使用此属性来限制哪些 Office 365 的提取数据的时间范围。 | Yes，如果数据集有一个或多个日期时间列。 请参阅[此处](https://docs.microsoft.com/graph/data-connect-filtering#filtering)有关的数据集需要此日期时间筛选器的列表。 |
-| startTime | 启动要作为筛选依据的日期时间值。 | 是如果`dateFilterColumn`指定 |
-| endTime | 结束日期时间值进行筛选。 | 是如果`dateFilterColumn`指定 |
+
+如果在数据集中设置了 `dateFilterColumn`、`startTime`、`endTime` 和 `userScopeFilterUri`，则仍按原样支持该数据集，但建议你以后在活动源中使用新模型。
 
 **示例**
 
@@ -138,189 +134,9 @@ Office 365 链接服务支持以下属性：
             "referenceName": "<Office 365 linked service name>",
             "type": "LinkedServiceReference"
         },
-        "structure": [
-            {
-                "name": "Id",
-                "type": "String",
-                "description": "The unique identifier of the event."
-            },
-            {
-                "name": "CreatedDateTime",
-                "type": "DateTime",
-                "description": "The date and time that the event was created."
-            },
-            {
-                "name": "LastModifiedDateTime",
-                "type": "DateTime",
-                "description": "The date and time that the event was last modified."
-            },
-            {
-                "name": "ChangeKey",
-                "type": "String",
-                "description": "Identifies the version of the event object. Every time the event is changed, ChangeKey changes as well. This allows Exchange to apply changes to the correct version of the object."
-            },
-            {
-                "name": "Categories",
-                "type": "String",
-                "description": "The categories associated with the event. Format: ARRAY<STRING>"
-            },
-            {
-                "name": "OriginalStartTimeZone",
-                "type": "String",
-                "description": "The start time zone that was set when the event was created. See DateTimeTimeZone for a list of valid time zones."
-            },
-            {
-                "name": "OriginalEndTimeZone",
-                "type": "String",
-                "description": "The end time zone that was set when the event was created. See DateTimeTimeZone for a list of valid time zones."
-            },
-            {
-                "name": "ResponseStatus",
-                "type": "String",
-                "description": "Indicates the type of response sent in response to an event message. Format: STRUCT<Response: STRING, Time: STRING>"
-            },
-            {
-                "name": "iCalUId",
-                "type": "String",
-                "description": "A unique identifier that is shared by all instances of an event across different calendars."
-            },
-            {
-                "name": "ReminderMinutesBeforeStart",
-                "type": "Int32",
-                "description": "The number of minutes before the event start time that the reminder alert occurs."
-            },
-            {
-                "name": "IsReminderOn",
-                "type": "Boolean",
-                "description": "Set to true if an alert is set to remind the user of the event."
-            },
-            {
-                "name": "HasAttachments",
-                "type": "Boolean",
-                "description": "Set to true if the event has attachments."
-            },
-            {
-                "name": "Subject",
-                "type": "String",
-                "description": "The text of the event's subject line."
-            },
-            {
-                "name": "Body",
-                "type": "String",
-                "description": "The body of the message associated with the event.Format: STRUCT<ContentType: STRING, Content: STRING>"
-            },
-            {
-                "name": "Importance",
-                "type": "String",
-                "description": "The importance of the event: Low, Normal, High."
-            },
-            {
-                "name": "Sensitivity",
-                "type": "String",
-                "description": "Indicates the level of privacy for the event: Normal, Personal, Private, Confidential."
-            },
-            {
-                "name": "Start",
-                "type": "String",
-                "description": "The start time of the event. Format: STRUCT<DateTime: STRING, TimeZone: STRING>"
-            },
-            {
-                "name": "End",
-                "type": "String",
-                "description": "The date and time that the event ends. Format: STRUCT<DateTime: STRING, TimeZone: STRING>"
-            },
-            {
-                "name": "Location",
-                "type": "String",
-                "description": "Location information of the event. Format: STRUCT<DisplayName: STRING, Address: STRUCT<Street: STRING, City: STRING, State: STRING, CountryOrRegion: STRING, PostalCode: STRING>, Coordinates: STRUCT<Altitude: DOUBLE, Latitude: DOUBLE, Longitude: DOUBLE, Accuracy: DOUBLE, AltitudeAccuracy: DOUBLE>>"
-            },
-            {
-                "name": "IsAllDay",
-                "type": "Boolean",
-                "description": "Set to true if the event lasts all day. Adjusting this property requires adjusting the Start and End properties of the event as well."
-            },
-            {
-                "name": "IsCancelled",
-                "type": "Boolean",
-                "description": "Set to true if the event has been canceled."
-            },
-            {
-                "name": "IsOrganizer",
-                "type": "Boolean",
-                "description": "Set to true if the message sender is also the organizer."
-            },
-            {
-                "name": "Recurrence",
-                "type": "String",
-                "description": "The recurrence pattern for the event. Format: STRUCT<Pattern: STRUCT<Type: STRING, `Interval`: INT, Month: INT, DayOfMonth: INT, DaysOfWeek: ARRAY<STRING>, FirstDayOfWeek: STRING, Index: STRING>, `Range`: STRUCT<Type: STRING, StartDate: STRING, EndDate: STRING, RecurrenceTimeZone: STRING, NumberOfOccurrences: INT>>"
-            },
-            {
-                "name": "ResponseRequested",
-                "type": "Boolean",
-                "description": "Set to true if the sender would like a response when the event is accepted or declined."
-            },
-            {
-                "name": "ShowAs",
-                "type": "String",
-                "description": "The status to show: Free, Tentative, Busy, Oof, WorkingElsewhere, Unknown."
-            },
-            {
-                "name": "Type",
-                "type": "String",
-                "description": "The event type: SingleInstance, Occurrence, Exception, SeriesMaster."
-            },
-            {
-                "name": "Attendees",
-                "type": "String",
-                "description": "The collection of attendees for the event. Format: ARRAY<STRUCT<EmailAddress: STRUCT<Name: STRING, Address: STRING>, Status: STRUCT<Response: STRING, Time: STRING>, Type: STRING>>"
-            },
-            {
-                "name": "Organizer",
-                "type": "String",
-                "description": "The organizer of the event. Format: STRUCT<EmailAddress: STRUCT<Name: STRING, Address: STRING>>"
-            },
-            {
-                "name": "WebLink",
-                "type": "String",
-                "description": "The URL to open the event in Outlook Web App."
-            },
-            {
-                "name": "Attachments",
-                "type": "String",
-                "description": "The FileAttachment and ItemAttachment attachments for the message. Navigation property. Format: ARRAY<STRUCT<LastModifiedDateTime: STRING, Name: STRING, ContentType: STRING, Size: INT, IsInline: BOOLEAN, Id: STRING>>"
-            },
-            {
-                "name": "BodyPreview",
-                "type": "String",
-                "description": "The preview of the message associated with the event. It is in text format."
-            },
-            {
-                "name": "Locations",
-                "type": "String",
-                "description": "The locations where the event is held or attended from. The location and locations properties always correspond with each other. Format:  ARRAY<STRUCT<DisplayName: STRING, Address: STRUCT<Street: STRING, City: STRING, State: STRING, CountryOrRegion: STRING, PostalCode: STRING>, Coordinates: STRUCT<Altitude: DOUBLE, Latitude: DOUBLE, Longitude: DOUBLE, Accuracy: DOUBLE, AltitudeAccuracy: DOUBLE>, LocationEmailAddress: STRING, LocationUri: STRING, LocationType: STRING, UniqueId: STRING, UniqueIdType: STRING>>"
-            },
-            {
-                "name": "OnlineMeetingUrl",
-                "type": "String",
-                "description": "A URL for an online meeting. The property is set only when an organizer specifies an event as an online meeting such as a Skype meeting"
-            },
-            {
-                "name": "OriginalStart",
-                "type": "DateTime",
-                "description": "The start time that was set when the event was created in UTC time."
-            },
-            {
-                "name": "SeriesMasterId",
-                "type": "String",
-                "description": "The ID for the recurring series master item, if this event is part of a recurring series."
-            }
-        ],
+        "schema": [],
         "typeProperties": {
-            "tableName": "BasicDataSet_v0.Event_v1",
-            "dateFilterColumn": "CreatedDateTime",
-            "startTime": "2019-04-28T16:00:00.000Z",
-            "endTime": "2019-05-05T16:00:00.000Z",
-            "userScopeFilterUri": "https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'"
+            "tableName": "BasicDataSet_v0.Event_v1"
         }
     }
 }
@@ -332,7 +148,17 @@ Office 365 链接服务支持以下属性：
 
 ### <a name="office-365-as-source"></a>Office 365 即源
 
-要从 Office 365 复制数据，请将复制活动中的源类型设置为“Office365Source”  。 复制活动源  部分不支持其他属性。
+为了从 Office 365 复制数据，复制活动的 **source** 节支持以下属性：
+
+| 属性 | 说明 | 必须 |
+|:--- |:--- |:--- |
+| type | 复制活动 source 的 type 属性必须设置为：**Office365Source** | 是 |
+| allowedGroups | 组选择谓词。  可以使用此属性选择最多 10 个将为其检索数据的用户组。  如果未指定任何组，则会为整个组织返回数据。 | 否 |
+| userScopeFilterUri | 未指定 `allowedGroups` 属性时，可以使用在整个租户上应用的谓词表达式来筛选要从 Office 365 中提取的特定行。 谓词格式应当与 Microsoft Graph API 的查询格式匹配，例如 `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`。 | 否 |
+| dateFilterColumn | 日期/时间筛选器列的名称。 可以使用此属性限制要提取 Office 365 数据的时间范围。 | 如果数据集有一个或多个日期/时间列，则为必需的。 有关需要此日期/时间筛选器的数据集的列表，请参阅[此处](https://docs.microsoft.com/graph/data-connect-filtering#filtering)。 |
+| startTime | 筛选时所依据的开始日期/时间值。 | 如果指定了 `dateFilterColumn`，则为必需的 |
+| endTime | 筛选时所依据的结束日期/时间值。 | 如果指定了 `dateFilterColumn`，则为必需的 |
+| outputColumns | 要复制到接收器的列的数组。 | 否 |
 
 **示例：**
 
@@ -355,7 +181,118 @@ Office 365 链接服务支持以下属性：
         ],
         "typeProperties": {
             "source": {
-                "type": "Office365Source"
+                "type": "Office365Source",
+                "dateFilterColumn": "CreatedDateTime",
+                "startTime": "2019-04-28T16:00:00.000Z",
+                "endTime": "2019-05-05T16:00:00.000Z",
+                "userScopeFilterUri": "https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'",
+                "outputColumns": [
+                    {
+                        "name": "Id"
+                    },
+                    {
+                        "name": "CreatedDateTime"
+                    },
+                    {
+                        "name": "LastModifiedDateTime"
+                    },
+                    {
+                        "name": "ChangeKey"
+                    },
+                    {
+                        "name": "Categories"
+                    },
+                    {
+                        "name": "OriginalStartTimeZone"
+                    },
+                    {
+                        "name": "OriginalEndTimeZone"
+                    },
+                    {
+                        "name": "ResponseStatus"
+                    },
+                    {
+                        "name": "iCalUId"
+                    },
+                    {
+                        "name": "ReminderMinutesBeforeStart"
+                    },
+                    {
+                        "name": "IsReminderOn"
+                    },
+                    {
+                        "name": "HasAttachments"
+                    },
+                    {
+                        "name": "Subject"
+                    },
+                    {
+                        "name": "Body"
+                    },
+                    {
+                        "name": "Importance"
+                    },
+                    {
+                        "name": "Sensitivity"
+                    },
+                    {
+                        "name": "Start"
+                    },
+                    {
+                        "name": "End"
+                    },
+                    {
+                        "name": "Location"
+                    },
+                    {
+                        "name": "IsAllDay"
+                    },
+                    {
+                        "name": "IsCancelled"
+                    },
+                    {
+                        "name": "IsOrganizer"
+                    },
+                    {
+                        "name": "Recurrence"
+                    },
+                    {
+                        "name": "ResponseRequested"
+                    },
+                    {
+                        "name": "ShowAs"
+                    },
+                    {
+                        "name": "Type"
+                    },
+                    {
+                        "name": "Attendees"
+                    },
+                    {
+                        "name": "Organizer"
+                    },
+                    {
+                        "name": "WebLink"
+                    },
+                    {
+                        "name": "Attachments"
+                    },
+                    {
+                        "name": "BodyPreview"
+                    },
+                    {
+                        "name": "Locations"
+                    },
+                    {
+                        "name": "OnlineMeetingUrl"
+                    },
+                    {
+                        "name": "OriginalStart"
+                    },
+                    {
+                        "name": "SeriesMasterId"
+                    }
+                ]
             },
             "sink": {
                 "type": "BlobSink"

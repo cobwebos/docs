@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: a971e48b330af771afc6166da8b02b5a7d7e7524
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66159800"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67173016"
 ---
 > [!div class="op_single_selector"]
 > * [.NET](../articles/storage/queues/storage-dotnet-how-to-use-queues.md)

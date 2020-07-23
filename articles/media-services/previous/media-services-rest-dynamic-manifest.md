@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: juliako;cenkdin
-ms.openlocfilehash: 5b023a152cf93ec6ff688674e991ad55db215965
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: juliako
+ms.reviewr: cenkdin
+ms.openlocfilehash: 8166a85d1c3421d95ac2b818e51b6b60e7663165
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60767806"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170660"
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>使用 Azure 媒体服务 REST API 创建筛选器 
 > [!div class="op_single_selector"]
@@ -57,52 +58,58 @@ ms.locfileid: "60767806"
 #### <a name="http-request"></a>HTTP 请求
 请求标头
 
-    POST https://media.windows.net/API/Filters HTTP/1.1 
-    DataServiceVersion:3.0 
-    MaxDataServiceVersion: 3.0 
-    Content-Type: application/json 
-    Accept: application/json 
-    Accept-Charset: UTF-8 
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
-    x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
-    Host:media.windows.net 
+```console
+POST https://media.windows.net/API/Filters HTTP/1.1 
+DataServiceVersion:3.0 
+MaxDataServiceVersion: 3.0 
+Content-Type: application/json 
+Accept: application/json 
+Accept-Charset: UTF-8 
+Authorization: Bearer <ENCODED JWT TOKEN> 
+x-ms-version: 2.19 
+x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
+Host:media.windows.net 
+```
 
 请求正文 
 
-    {  
-       "Name":"GlobalFilter",
-       "PresentationTimeRange":{  
-          "StartTimestamp":"0",
-          "EndTimestamp":"9223372036854775807",
-          "PresentationWindowDuration":"12000000000",
-          "LiveBackoffDuration":"0",
-          "Timescale":"10000000"
-       },
-       "Tracks":[  
-          {  
-             "PropertyConditions":
-                  [  
-                {  
-                   "Property":"Type",
-                   "Value":"audio",
-                   "Operator":"Equal"
-                },
-                {  
-                   "Property":"Bitrate",
-                   "Value":"0-2147483647",
-                   "Operator":"Equal"
-                }
-             ]
-          }
-       ]
-    }
-
+```console
+{  
+   "Name":"GlobalFilter",
+   "PresentationTimeRange":{  
+      "StartTimestamp":"0",
+      "EndTimestamp":"9223372036854775807",
+      "PresentationWindowDuration":"12000000000",
+      "LiveBackoffDuration":"0",
+      "Timescale":"10000000"
+   },
+   "Tracks":[  
+      {  
+         "PropertyConditions":
+              [  
+            {  
+               "Property":"Type",
+               "Value":"audio",
+               "Operator":"Equal"
+            },
+            {  
+               "Property":"Bitrate",
+               "Value":"0-2147483647",
+               "Operator":"Equal"
+            }
+         ]
+      }
+   ]
+}
+```
 
 
 
 #### <a name="http-response"></a>HTTP 响应
-    HTTP/1.1 201 Created 
+
+```console
+HTTP/1.1 201 Created 
+```
 
 ### <a name="create-local-assetfilters"></a>创建本地 AssetFilter
 若要创建本地 AssetFilter，请使用以下 HTTP 请求：  
@@ -110,89 +117,104 @@ ms.locfileid: "60767806"
 #### <a name="http-request"></a>HTTP 请求
 请求标头
 
-    POST https://media.windows.net/API/AssetFilters HTTP/1.1 
-    DataServiceVersion: 3.0 
-    MaxDataServiceVersion: 3.0 
-    Content-Type: application/json 
-    Accept: application/json 
-    Accept-Charset: UTF-8 
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
-    x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
-    Host: media.windows.net  
+```console
+POST https://media.windows.net/API/AssetFilters HTTP/1.1 
+DataServiceVersion: 3.0 
+MaxDataServiceVersion: 3.0 
+Content-Type: application/json 
+Accept: application/json 
+Accept-Charset: UTF-8 
+Authorization: Bearer <ENCODED JWT TOKEN> 
+x-ms-version: 2.19 
+x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
+Host: media.windows.net  
+```
 
 请求正文 
 
-    {   
-       "Name":"AssetFilter", 
-       "ParentAssetId":"nb:cid:UUID:536e555d-1500-80c3-92dc-f1e4fdc6c592", 
-       "PresentationTimeRange":{   
-          "StartTimestamp":"0", 
-          "EndTimestamp":"9223372036854775807", 
-          "PresentationWindowDuration":"12000000000", 
-          "LiveBackoffDuration":"0", 
-          "Timescale":"10000000" 
-       }, 
-       "Tracks":[   
-          {   
-             "PropertyConditions": 
-                  [   
-                {   
-                   "Property":"Type", 
-                   "Value":"audio", 
-                   "Operator":"Equal" 
-                }, 
-                {   
-                   "Property":"Bitrate", 
-                   "Value":"0-2147483647", 
-                   "Operator":"Equal" 
-                } 
-             ] 
-          } 
-       ] 
-    } 
+```console
+{   
+   "Name":"AssetFilter", 
+   "ParentAssetId":"nb:cid:UUID:536e555d-1500-80c3-92dc-f1e4fdc6c592", 
+   "PresentationTimeRange":{   
+      "StartTimestamp":"0", 
+      "EndTimestamp":"9223372036854775807", 
+      "PresentationWindowDuration":"12000000000", 
+      "LiveBackoffDuration":"0", 
+      "Timescale":"10000000" 
+   }, 
+   "Tracks":[   
+      {   
+         "PropertyConditions": 
+              [   
+            {   
+               "Property":"Type", 
+               "Value":"audio", 
+               "Operator":"Equal" 
+            }, 
+            {   
+               "Property":"Bitrate", 
+               "Value":"0-2147483647", 
+               "Operator":"Equal" 
+            } 
+         ] 
+      } 
+   ] 
+} 
+```
 
 #### <a name="http-response"></a>HTTP 响应
-    HTTP/1.1 201 Created 
-    . . . 
+
+```console
+HTTP/1.1 201 Created 
+. . . 
+```
 
 ## <a name="list-filters"></a>列出筛选器
 ### <a name="get-all-global-filters-in-the-ams-account"></a>获取 AMS 帐户中的所有全局**筛选器**
 若要列出筛选器，请使用以下 HTTP 请求： 
 
 #### <a name="http-request"></a>HTTP 请求
-    GET https://media.windows.net/API/Filters HTTP/1.1 
-    DataServiceVersion:3.0 
-    MaxDataServiceVersion: 3.0 
-    Accept: application/json 
-    Accept-Charset: UTF-8 
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
-    Host: media.windows.net 
+
+```console
+GET https://media.windows.net/API/Filters HTTP/1.1 
+DataServiceVersion:3.0 
+MaxDataServiceVersion: 3.0 
+Accept: application/json 
+Accept-Charset: UTF-8 
+Authorization: Bearer <ENCODED JWT TOKEN> 
+x-ms-version: 2.19 
+Host: media.windows.net 
+```
 
 ### <a name="get-assetfilters-associated-with-an-asset"></a>获取与资产关联的 **AssetFilter**
 #### <a name="http-request"></a>HTTP 请求
-    GET https://media.windows.net/API/Assets('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592')/AssetFilters HTTP/1.1 
-    DataServiceVersion: 3.0 
-    MaxDataServiceVersion: 3.0 
-    Accept: application/json 
-    Accept-Charset: UTF-8 
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
-    x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
-    Host: media.windows.net 
+
+```console
+GET https://media.windows.net/API/Assets('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592')/AssetFilters HTTP/1.1 
+DataServiceVersion: 3.0 
+MaxDataServiceVersion: 3.0 
+Accept: application/json 
+Accept-Charset: UTF-8 
+Authorization: Bearer <ENCODED JWT TOKEN> 
+x-ms-version: 2.19 
+x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
+Host: media.windows.net 
+```
 
 ### <a name="get-an-assetfilter-based-on-its-id"></a>基于 ID 获取 **AssetFilter**
 #### <a name="http-request"></a>HTTP 请求
-    GET https://media.windows.net/API/AssetFilters('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592__%23%23%23__TestFilter') HTTP/1.1 
-    DataServiceVersion: 3.0 
-    MaxDataServiceVersion: 3.0 
-    Accept: application/json 
-    Accept-Charset: UTF-8 
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
-    x-ms-client-request-id: 00000000
 
+```console
+GET https://media.windows.net/API/AssetFilters('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592__%23%23%23__TestFilter') HTTP/1.1 
+DataServiceVersion: 3.0 
+MaxDataServiceVersion: 3.0 
+Accept: application/json 
+Accept-Charset: UTF-8 
+Authorization: Bearer <ENCODED JWT TOKEN> 
+x-ms-version: 2.19 
+x-ms-client-request-id: 00000000
+```
 
 ## <a name="update-filters"></a>更新筛选器
 使用 PATCH、PUT 或 MERGE 并结合新的属性值来更新筛选器。  有关这些操作的详细信息，请参阅 [PATCH、PUT、MERGE](https://msdn.microsoft.com/library/dd541276.aspx)。
@@ -205,39 +227,43 @@ ms.locfileid: "60767806"
 #### <a name="http-request"></a>HTTP 请求
 请求标头： 
 
-    MERGE https://media.windows.net/API/Filters('filterName') HTTP/1.1 
-    DataServiceVersion:3.0 
-    MaxDataServiceVersion: 3.0 
-    Content-Type: application/json 
-    Accept: application/json 
-    Accept-Charset: UTF-8 
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
-    x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
-    Host: media.windows.net 
-    Content-Length: 384
+```console
+MERGE https://media.windows.net/API/Filters('filterName') HTTP/1.1 
+DataServiceVersion:3.0 
+MaxDataServiceVersion: 3.0 
+Content-Type: application/json 
+Accept: application/json 
+Accept-Charset: UTF-8 
+Authorization: Bearer <ENCODED JWT TOKEN> 
+x-ms-version: 2.19 
+x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
+Host: media.windows.net 
+Content-Length: 384
+```
 
 请求正文： 
 
-    { 
-       "Tracks":[   
-          {   
-             "PropertyConditions": 
-             [   
-                {   
-                   "Property":"Type", 
-                   "Value":"audio", 
-                   "Operator":"Equal" 
-                }, 
-                {   
-                   "Property":"Bitrate", 
-                   "Value":"0-2147483647", 
-                   "Operator":"Equal" 
-                } 
-             ] 
-          } 
-       ] 
-    } 
+```console
+{ 
+   "Tracks":[   
+      {   
+         "PropertyConditions": 
+         [   
+            {   
+               "Property":"Type", 
+               "Value":"audio", 
+               "Operator":"Equal" 
+            }, 
+            {   
+               "Property":"Bitrate", 
+               "Value":"0-2147483647", 
+               "Operator":"Equal" 
+            } 
+         ] 
+      } 
+   ] 
+} 
+```
 
 ### <a name="update-local-assetfilters"></a>更新本地 AssetFilter
 若要更新本地筛选器，请使用以下 HTTP 请求： 
@@ -245,67 +271,75 @@ ms.locfileid: "60767806"
 #### <a name="http-request"></a>HTTP 请求
 请求标头： 
 
-    MERGE https://media.windows.net/API/AssetFilters('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592__%23%23%23__TestFilter')  HTTP/1.1 
-    DataServiceVersion: 3.0 
-    MaxDataServiceVersion: 3.0 
-    Content-Type: application/json 
-    Accept: application/json 
-    Accept-Charset: UTF-8 
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
-    x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
-    Host: media.windows.net 
+```console
+MERGE https://media.windows.net/API/AssetFilters('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592__%23%23%23__TestFilter')  HTTP/1.1 
+DataServiceVersion: 3.0 
+MaxDataServiceVersion: 3.0 
+Content-Type: application/json 
+Accept: application/json 
+Accept-Charset: UTF-8 
+Authorization: Bearer <ENCODED JWT TOKEN> 
+x-ms-version: 2.19 
+x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
+Host: media.windows.net 
+```
 
 请求正文： 
 
-    { 
-       "Tracks":[   
-          {   
-             "PropertyConditions": 
-             [   
-                {   
-                   "Property":"Type", 
-                   "Value":"audio", 
-                   "Operator":"Equal" 
-                }, 
-                {   
-                   "Property":"Bitrate", 
-                   "Value":"0-2147483647", 
-                   "Operator":"Equal" 
-                } 
-             ] 
-          } 
-       ] 
-    } 
-
+```console
+{ 
+   "Tracks":[   
+      {   
+         "PropertyConditions": 
+         [   
+            {   
+               "Property":"Type", 
+               "Value":"audio", 
+               "Operator":"Equal" 
+            }, 
+            {   
+               "Property":"Bitrate", 
+               "Value":"0-2147483647", 
+               "Operator":"Equal" 
+            } 
+         ] 
+      } 
+   ] 
+} 
+```
 
 ## <a name="delete-filters"></a>删除筛选器
 ### <a name="delete-global-filters"></a>删除全局筛选器
 若要删除全局筛选器，请使用以下 HTTP 请求：
 
 #### <a name="http-request"></a>HTTP 请求
-    DELETE https://media.windows.net/api/Filters('GlobalFilter') HTTP/1.1 
-    DataServiceVersion:3.0 
-    MaxDataServiceVersion: 3.0 
-    Accept: application/json 
-    Accept-Charset: UTF-8 
-    Authorization: Bearer <ENCODED JWT TOKEN>  
-    x-ms-version: 2.17 
-    Host: media.windows.net 
 
+```console
+DELETE https://media.windows.net/api/Filters('GlobalFilter') HTTP/1.1 
+DataServiceVersion:3.0 
+MaxDataServiceVersion: 3.0 
+Accept: application/json 
+Accept-Charset: UTF-8 
+Authorization: Bearer <ENCODED JWT TOKEN>  
+x-ms-version: 2.19 
+Host: media.windows.net 
+```
 
 ### <a name="delete-local-assetfilters"></a>删除本地 AssetFilter
 若要删除本地 AssetFilter，请使用以下 HTTP 请求：
 
 #### <a name="http-request"></a>HTTP 请求
-    DELETE https://media.windows.net/API/AssetFilters('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592__%23%23%23__LocalFilter') HTTP/1.1 
-    DataServiceVersion: 3.0 
-    MaxDataServiceVersion: 3.0 
-    Accept: application/json 
-    Accept-Charset: UTF-8 
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
-    Host: media.windows.net 
+
+```console
+DELETE https://media.windows.net/API/AssetFilters('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592__%23%23%23__LocalFilter') HTTP/1.1 
+DataServiceVersion: 3.0 
+MaxDataServiceVersion: 3.0 
+Accept: application/json 
+Accept-Charset: UTF-8 
+Authorization: Bearer <ENCODED JWT TOKEN> 
+x-ms-version: 2.19 
+Host: media.windows.net 
+```
 
 ## <a name="build-streaming-urls-that-use-filters"></a>生成使用筛选器的流 URL
 有关如何发布和传送资产的信息，请参阅[将内容传送到客户概述](media-services-deliver-content-overview.md)。
@@ -314,19 +348,19 @@ ms.locfileid: "60767806"
 
 **MPEG DASH** 
 
-    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf, filter=MyFilter)
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf, filter=MyFilter)`
 
 **Apple HTTP Live Streaming (HLS) V4**
 
-    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=MyFilter)
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=MyFilter)`
 
 **Apple HTTP Live Streaming (HLS) V3**
 
-    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=MyFilter)
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=MyFilter)`
 
 **平滑流式处理**
 
-    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)
+`http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)`
 
     
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径

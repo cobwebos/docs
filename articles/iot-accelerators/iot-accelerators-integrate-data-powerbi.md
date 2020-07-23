@@ -1,34 +1,33 @@
 ---
 title: 使用 Power BI 可视化远程监视数据 - Azure | Microsoft Docs
-description: 本教程使用 Power BI Desktop 和 Cosmos DB 将来自远程监视解决方案的数据集成到自定义的可视化效果。 这样，用户便可以生成其自己的自定义仪表板，并将其与解决方案外部的用户共享。
-author: asdonald
+description: 本教程使用 Power BI Desktop 和 Cosmos DB 将远程监视解决方案中的数据集成到自定义可视化效果中。 这样，用户便可以生成其自己的自定义仪表板，并将其与解决方案外部的用户共享。
+author: dominicbetts
 manager: hegate
-ms.author: asdonald
+ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3398c6d318e0e3c51d3f6cfe8af651a6e3f55c9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 8b0f395936c8628ff7b8dab601168538f97ccdb7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61448010"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74184244"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>使用 Power BI 可视化远程监视数据
 
 本教程逐步介绍如何将来自 CosmosDB 的远程监视解决方案数据插入 Power BI。 建立此连接后，可以创建自己的自定义仪表板，并将其添加回到远程监视解决方案仪表板。 此工作流程可用于创建更专业的图形，此外还提供现成的图形。 然后，可以使用本教程来集成其他数据流，或生成可在外部远程监视解决方案外部使用的自定义仪表板。 在 Power BI 中生成仪表板意味着，在选择特定的部件时，还能让面板彼此交互。 例如，可以使用一个筛选器来仅显示有关模拟卡车的信息，仪表板的每个部件将会交互，以仅显示模拟卡车的信息。 如果想要使用 Power BI 以外的工具，则还可以扩展这些步骤，以使用所选的可视化工具并挂接到 Cosmos 数据库或自定义数据库（如果已设置）。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 当前必须有一个远程监视解决方案正在运行
-- 必须对 [Azure 门户](https://portal.azure.com)以及运行 IoT 中心和解决方案的订阅拥有访问权限
+- 你必须有权访问在其上运行 IoT 中心和解决方案的[Azure 门户](https://portal.azure.com)和订阅
 - 必须安装 [Power BI Desktop](https://powerbi.microsoft.com)（任何版本都可以）
 
 
-## <a name="information-needed-from-azure-portal"></a>Azure 门户中的所需信息
+## <a name="information-needed-from-azure-portal"></a>Azure 门户所需的信息
 
-1. 导航到 [Azure 门户](https://portal.azure.com)并根据需要登录
+1. 导航到[Azure 门户](https://portal.azure.com)并根据需要登录
 
 2. 在左侧面板中单击“资源组”
 

@@ -1,26 +1,21 @@
 ---
 title: 使用 Application Insights 监视 SharePoint site 站点
 description: 开始使用新检测密钥监视新应用程序
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 2bfe5910-d673-4cf6-a5c1-4c115eae1be0
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: mbullwin
-ms.openlocfilehash: 027d5485b29deb434953470023d8a290cc0af58a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a545a24b5a9af883200f25cc83486e3c5621bd78
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60784529"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516883"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>使用 Application Insights 监视 SharePoint site 站点
+
 Azure Application Insights 监视应用的可用性、性能和使用情况。 下面介绍如何为 SharePoint 站点设置它。
+
+> [!NOTE]
+> 出于安全方面的考虑，不能将本文中所述的脚本直接添加到 SharePoint 新式 UX 中的网页。 作为替代方法，可以使用[Sharepoint Framework （SPFx）](/sharepoint/dev/spfx/extensions/overview-extensions)生成可用于在 SharePoint 站点上安装 Application Insights 的自定义扩展插件。 若要了解详细信息，请参阅[如何从头开始创建 SPFx extension 解决方案](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO#how-to-create-a-spfx-extension-solution-with-appinsights-installed-from-scratch)，或[查看示例](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO/AppInsightsExtensionSolutionSample)。 
 
 ## <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 在 [Azure 门户](https://portal.azure.com)中，创建新的 Application Insights 资源。 选择 ASP.NET 作为应用程序类型。
@@ -40,17 +35,15 @@ and before any other scripts. Your first data will appear
 automatically in just a few seconds.
 -->
 <script type="text/javascript">
-var appInsights=window.appInsights||function(a){
-  function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
-  }({
-      instrumentationKey:"<your instrumentation key>"
-  });
-  
-window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
+var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(n){var o={config:n,initialize:!0},t=document,e=window,i="script";setTimeout(function(){var e=t.createElement(i);e.src=n.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",t.getElementsByTagName(i)[0].parentNode.appendChild(e)});try{o.cookie=t.cookie}catch(e){}function a(n){o[n]=function(){var e=arguments;o.queue.push(function(){o[n].apply(o,e)})}}o.queue=[],o.version=2;for(var s=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];s.length;)a("track"+s.pop());var r="Track",c=r+"Page";a("start"+c),a("stop"+c);var u=r+"Event";if(a("start"+u),a("stop"+u),a("addTelemetryInitializer"),a("setAuthenticatedUserContext"),a("clearAuthenticatedUserContext"),a("flush"),o.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4},!(!0===n.disableExceptionTracking||n.extensionConfig&&n.extensionConfig.ApplicationInsightsAnalytics&&!0===n.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){a("_"+(s="onerror"));var p=e[s];e[s]=function(e,n,t,i,a){var r=p&&p(e,n,t,i,a);return!0!==r&&o["_"+s]({message:e,url:n,lineNumber:t,columnNumber:i,error:a}),r},n.autoExceptionInstrumented=!0}return o}(
+{
+  instrumentationKey:"INSTRUMENTATION_KEY"
+}
+);(window[aiName]=aisdk).queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
 </script>
 ```
 
-在要跟踪的每个页面的 &lt;/head&gt; 标记之前插入脚本。如果网站有母版页，可以在那里插入脚本。 例如，在 ASP.NET MVC 项目中，将其放置在 View\Shared\_Layout.cshtml 中
+在 &lt; &gt; 要跟踪的每一页的/头标记之前插入脚本。如果你的网站有母版页，你可以将该脚本放在此处。 例如，在 ASP.NET MVC 项目中，将其放置在 View\Shared\_Layout.cshtml 中
 
 该脚本包含将遥测定向到 Application Insights 资源的检测密钥。
 
@@ -60,18 +53,18 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 
 签出母版页并使用 SharePoint Designer 或任何其他编辑器编辑它。
 
-![](./media/sharepoint/03-master.png)
+![显示如何使用 Sharepoing 设计器或其他编辑器编辑母版页的屏幕截图。](./media/sharepoint/03-master.png)
 
-在 </head> 标记之前添加代码。 
+将代码添加到 </head> 符. 
 
-![](./media/sharepoint/04-code.png)
+![屏幕截图，显示要将代码添加到网站页的位置。](./media/sharepoint/04-code.png)
 
 #### <a name="or-on-individual-pages"></a>或在个别页面上
 要监视一组有限的页面，请将脚本分别添加到每个页面。 
 
 插入 Web 部分并在其中嵌入代码片段。
 
-![](./media/sharepoint/05-page.png)
+![屏幕截图，显示如何添加脚本来监视一组有限的页面。](./media/sharepoint/05-page.png)
 
 ## <a name="view-data-about-your-app"></a>查看关于应用的数据
 重新部署应用。
@@ -80,7 +73,7 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 
 第一批事件会显示在“搜索”中。 
 
-![](./media/sharepoint/09-search.png)
+![显示您可以在应用程序中查看的新数据的屏幕截图。](./media/sharepoint/09-search.png)
 
 如果需要更多数据，在几秒后单击“刷新”。
 
@@ -89,7 +82,7 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 
 1. 从 Application Insights 中的 Essentials 下拉列表中复制应用的检测密钥。 
 
-    ![](./media/sharepoint/02-props.png)
+    ![屏幕截图显示了从 Application Insights 中的 Essentials 下拉列表复制应用程序的检测。](./media/sharepoint/02-props.png)
 
 1. 在下面代码片段中将“XXXX”替换为检测密钥。 
 2. 将脚本嵌入 SharePoint 应用，而不是从门户获取的代码片段。
@@ -148,5 +141,3 @@ function onRequestFail(sender, args) {
 * 适用于其他应用类型的 [Application Insights](../../azure-monitor/app/app-insights-overview.md)。
 
 <!--Link references-->
-
-

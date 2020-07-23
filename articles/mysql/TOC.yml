@@ -4,22 +4,31 @@
   items:
     - name: 什么是用于 MySQL 的 Azure DB？
       href: overview.md
+    - name: 我应选择哪个 MySQL 选项？
+      href: select-right-deployment-type.md
 - name: 快速入门
   expanded: true
   items:
-    - name: 创建 DB - 门户
-      href: quickstart-create-mysql-server-database-using-azure-portal.md
-    - name: 创建 DB - Azure CLI
-      href: quickstart-create-mysql-server-database-using-azure-cli.md
-    - name: 创建 DB - Azure CLI up 命令
-      href: quickstart-create-server-up-azure-cli.md
+    - name: 创建 DB
+      items:
+        - name: 创建 DB - 门户
+          href: quickstart-create-mysql-server-database-using-azure-portal.md
+        - name: 创建 DB - Azure CLI
+          href: quickstart-create-mysql-server-database-using-azure-cli.md
+        - name: 创建 DB - Azure CLI up 命令
+          href: quickstart-create-server-up-azure-cli.md
+        - name: 创建 DB - Azure PowerShell
+          href: quickstart-create-mysql-server-database-using-azure-powershell.md
+        - name: 创建 DB - ARM 模板
+          href: quickstart-create-mysql-server-database-using-arm-template.md
+          displayName: deploy azure resource manager template
     - name: 连接和查询
       items:
         - name: PHP
           href: connect-php.md
         - name: Java
           href: connect-java.md
-        - name: .Net
+        - name: .NET
           href: connect-csharp.md
         - name: Python
           href: connect-python.md
@@ -41,6 +50,8 @@
           href: tutorial-design-database-using-portal.md
         - name: Azure CLI
           href: tutorial-design-database-using-cli.md
+        - name: Azure PowerShell
+          href: tutorial-design-database-using-powershell.md
         - name: Azure 资源管理器模板
           href: tutorial-provision-mysql-server-using-Azure-Resource-Manager-templates.md
     - name: 2 - 创建 Web 应用
@@ -55,6 +66,11 @@
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
+    - name: Java 连接池
+      href: sample-scripts-java-connection-pooling.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 数据库和服务器
@@ -69,32 +85,57 @@
       items:
         - name: 定价层
           href: concepts-pricing-tiers.md
+        - name: 为预留容量预付费
+          href: concept-reserved-pricing.md
         - name: 限制
           href: concepts-limits.md
     - name: 数据访问和安全性
       items:
-        - name: 防火墙规则
-          href: concepts-firewall-rules.md
+        - name: 安全概述
+          href: concepts-security.md
         - name: 配置 SSL
           href: concepts-ssl-connection-security.md
-        - name: 高级威胁防护
-          href: concepts-data-access-and-security-threat-protection.md
-        - name: VNet
-          href: concepts-data-access-and-security-vnet.md
         - name: 连接体系结构
           href: concepts-connectivity-architecture.md
+        - name: 防火墙规则
+          href: concepts-firewall-rules.md
+        - name: 虚拟网络
+          href: concepts-data-access-and-security-vnet.md
+        - name: 高级威胁防护
+          href: concepts-data-access-and-security-threat-protection.md
+        - name: 专用链接
+          href: concepts-data-access-security-private-link.md
+        - name: 数据加密
+          href: concepts-data-encryption-mysql.md
+        - name: Azure AD 身份验证
+          href: concepts-azure-ad-authentication.md
+        - name: 基础结构双重加密
+          href: concepts-infrastructure-double-encryption.md
+        - name: 安全基线
+          href: security-baseline.md
     - name: 业务连续性
       items:
-        - name: 概述
+        - name: 业务连续性简介
+          displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
           href: concepts-business-continuity.md
         - name: 备份和还原
           href: concepts-backup.md
-    - name: 监视
+    - name: 监视和优化
       items:
-        - name: 监视
+        - name: 监视和优化
           href: concepts-monitoring.md
-        - name: 服务器日志
+        - name: 慢查询日志
           href: concepts-server-logs.md
+        - name: 审核日志
+          href: concepts-audit-logs.md
+        - name: 查询存储
+          href: concepts-query-store.md
+        - name: 查询性能见解
+          href: concepts-query-performance-insight.md
+        - name: 性能建议
+          href: concepts-performance-recommendations.md
+        - name: 服务器参数
+          href: concepts-server-parameters.md
     - name: 开发
       items:
         - name: 驱动程序和工具兼容性
@@ -135,6 +176,8 @@
           href: howto-restore-server-portal.md
         - name: Azure CLI
           href: howto-restore-server-cli.md
+        - name: Azure PowerShell
+          href: howto-restore-server-powershell.md
     - name: 迁移数据库
       items:
         - name: 转储和还原
@@ -151,24 +194,42 @@
           href: howto-connection-string.md
         - name: 配置 SSL
           href: howto-configure-ssl.md
+        - name: 配置 TLS
+          href: howto-tls-configurations.md
         - name: Web 应用
           href: howto-connect-webapp.md
+        - name: 通过重定向进行连接
+          href: howto-redirection.md
     - name: 配置服务器参数
       items:
         - name: Azure 门户
           href: howto-server-parameters.md
         - name: Azure CLI
           href: howto-configure-server-parameters-using-cli.md
+        - name: Azure PowerShell
+          href: howto-configure-server-parameters-using-powershell.md
     - name: 自动增长存储
       items:
         - name: Azure 门户
           href: howto-auto-grow-storage-portal.md
+        - name: Azure CLI
+          href: howto-auto-grow-storage-cli.md
+        - name: Azure PowerShell
+          href: howto-auto-grow-storage-powershell.md
     - name: 访问服务器日志
       items:
-        - name: Azure 门户
-          href: howto-configure-server-logs-in-portal.md
-        - name: Azure CLI
-          href: howto-configure-server-logs-in-cli.md
+        - name: 慢查询日志
+          items:
+            - name: Azure 门户
+              href: howto-configure-server-logs-in-portal.md
+            - name: Azure CLI
+              href: howto-configure-server-logs-in-cli.md
+        - name: 审核日志
+          items:
+            - name: Azure 门户
+              href: howto-configure-audit-logs-portal.md
+            - name: Azure CLI
+              href: howto-configure-audit-logs-cli.md
     - name: 监视
       items:
         - name: 针对指标创建警报
@@ -179,9 +240,11 @@
           href: howto-data-in-replication.md
         - name: 创建只读副本 Azure 门户
           href: howto-read-replicas-portal.md
-        - name: 创建只读副本 Azure CLI
+        - name: 使用 Azure CLI、REST API 创建只读副本
           href: howto-read-replicas-cli.md
-    - name: 故障排除
+        - name: 创建只读副本 - Azure PowerShell
+          href: howto-read-replicas-powershell.md
+    - name: 疑难解答
       items:
         - name: 排查连接错误
           href: howto-troubleshoot-common-connection-issues.md
@@ -189,6 +252,8 @@
           href: howto-troubleshoot-query-performance.md
         - name: 如何使用 sys 架构中的视图
           href: howto-troubleshoot-sys-schema.md
+        - name: 排查数据加密问题
+          href: howto-data-encryption-troubleshoot.md
     - name: 高级威胁防护
       items:
         - name: Azure 门户
@@ -199,13 +264,47 @@
           href: howto-manage-vnet-using-portal.md
         - name: Azure CLI
           href: howto-manage-vnet-using-cli.md
+    - name: 专用链接
+      items:
+        - name: Azure 门户
+          href: howto-configure-privatelink-portal.md
+        - name: Azure CLI
+          href: howto-configure-privatelink-cli.md
+    - name: 数据加密
+      items:
+        - name: Azure 门户
+          href: howto-data-encryption-portal.md
+        - name: Azure CLI
+          href: howto-data-encryption-cli.md
+        - name: 数据加密验证
+          href: howto-data-encryption-validation.md
+    - name: 基础结构双重加密
+      items:
+        - name: 配置基础结构双加密
+          href: howto-double-encryption.md
+    - name: Azure AD 集成
+      items:
+        - name: 配置 Azure AD 集成
+          href: howto-configure-sign-in-azure-ad-authentication.md
+        - name: 与托管标识连接
+          href: howto-connect-with-managed-identity.md
+    - name: 拒绝公用网络访问
+      items:
+        - name: Azure 门户
+          href: howto-deny-public-network-access.md
     - name: 重新启动服务器
       items:
         - name: Azure 门户
           href: howto-restart-server-portal.md
         - name: Azure CLI
           href: howto-restart-server-cli.md
-- name: 引用
+        - name: Azure PowerShell
+          href: howto-restart-server-powershell.md
+    - name: 在区域之间移动
+      items:
+        - name: Azure 门户
+          href: howto-move-regions-portal.md
+- name: 参考
   items:
     - name: Azure CLI
       href: /cli/azure/mysql
@@ -213,8 +312,8 @@
       href: /rest/api/mysql
     - name: 资源管理器模板
       href: /azure/templates/microsoft.dbformysql/allversions
-    - name: 复制中数据存储过程
-      href: reference-data-in-stored-procedures.md
+    - name: 管理存储过程
+      href: reference-stored-procedures.md
 - name: 资源
   items:
     - name: 部署模板
@@ -223,9 +322,9 @@
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/mysql/'
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL'
-    - name: 堆栈溢出
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-database-mysql.html'
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-mysql'
     - name: 视频
       items:

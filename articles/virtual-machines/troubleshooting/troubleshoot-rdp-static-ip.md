@@ -4,28 +4,25 @@ description: 了解如何对由 Microsoft Azure 中的静态 IP 导致的 RDP �
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/08/2018
 ms.author: genli
-ms.openlocfilehash: 81a3064290e0aa720a4fe6b0fa0d8eb13cfe6903
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 49f3f44c7de8c700d0093c5eb6f166a1dffb34a4
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60318912"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087242"
 ---
 #  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>由于静态 IP 而无法通过远程桌面连接到 Azure 虚拟机
 
 本文介绍了在 VM 中配置静态 IP 后无法通过远程桌面连接到 Azure Windows 虚拟机 (VM) 的问题。
 
-> [!NOTE]
-> Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用资源管理器部署模型。建议对新部署使用该模型，而不要使用经典部署模型。
 
 ## <a name="symptoms"></a>症状
 
@@ -59,18 +56,27 @@ VM 具有一个在 Windows 中的网络接口上定义的静态 IP 地址。 此
 )。 如果未在 VM 上启用串行控制台，请参阅[重置网络接口](reset-network-interface.md)。
 2. 在网络接口上检查是否禁用了 DHCP：
 
-        netsh interface ip show config
+    ```console
+    netsh interface ip show config
+    ```
+
 3. 如果禁用了 DHCP，请将你的网络接口的配置恢复为使用 DHCP：
 
-        netsh interface ip set address name="<NIC Name>" source=dhc
+    ```console
+    netsh interface ip set address name="<NIC Name>" source=dhc
+    ```
 
     例如，如果网络接口名为“Ethernet 2”，请运行以下命令：
 
-        netsh interface ip set address name="Ethernet 2" source=dhc
+    ```console
+    netsh interface ip set address name="Ethernet 2" source=dhc
+    ```
 
 4. 再次查询 IP 配置以确保网络接口现在已正确设置。 新 IP 地址应当与 Azure 提供的地址相同。
 
-        netsh interface ip show config
+    ```console
+    netsh interface ip show config
+    ```
 
     此时无需重启 VM。 VM 将恢复为可访问的。
 

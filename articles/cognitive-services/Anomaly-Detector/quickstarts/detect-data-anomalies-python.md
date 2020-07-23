@@ -1,152 +1,106 @@
 ---
-title: 快速入门：检测异常作为批处理使用异常检测器 REST API 和 Python |Microsoft Docs
-description: 使用异常检测器 API 来检测异常数据系列中，作为一个批或针对流式处理数据。
+title: 快速入门：使用异常检测器 REST API 和 Python 以批的形式检测异常
+titleSuffix: Azure Cognitive Services
+description: 参考本快速入门使用异常检测器 API 以批处理形式或在流式处理数据时检测数据系列中的异常。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
-ms.topic: article
-ms.date: 03/26/2019
+ms.topic: quickstart
+ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: 6b4ddcadfe63f74d115c155354a276e45c6b53f9
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 81145dd6409bf93195f6b805ed260d945e7738f2
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544494"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982027"
 ---
-# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>快速入门：使用异常检测器 REST API 和 Python 时序数据中检测异常
+# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>快速入门：使用异常检测器 REST API 和 Python 检测时序数据的异常
 
-使用本快速入门教程开始使用异常检测器 API 的两种检测模式来检测异常的时序数据。 此 Python 应用程序发送包含 JSON 格式的时间序列数据的两个 API 请求，并获取响应。
+参考本快速入门可以开始使用异常检测器 API 的两种检测模式来检测时序数据的异常。 此 Python 应用程序发送两个包含 JSON 格式的时序数据的 API 请求，并获取响应。
 
 | API 请求                                        | 应用程序输出                                                                                                                         |
 |----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| 作为一批中检测异常                        | JSON 响应包含用于时间序列数据和任何检测到的异常的位置中的每个数据点异常状态 （和其他数据）。 |
-| 检测到异常情况状态的最新的数据点 | JSON 响应包含用于时间序列数据的最新数据点的异常状态 （和其他数据）。                                                                                                                                         |
+| 以批的形式检测异常                        | JSON 响应包含时序数据中每个数据点的异常状态（和其他数据），以及检测到的任何异常所在的位置。 |
+| 检测最新数据点的异常状态 | JSON 响应包含时序数据中最新数据点的异常状态（和其他数据）。                                                                                                                                         |
 
- 虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
+ 虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 可在 [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/python-detect-anomalies.py) 上找到本快速入门的源代码。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
+- Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
+- 拥有 Azure 订阅后，可在 Azure 门户中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="创建异常检测器资源"  target="_blank">创建异常检测器资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。 等待其部署并单击“转到资源”按钮。
+    - 需要从创建的资源获取密钥和终结点，以便将应用程序连接到异常检测器 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 - [Python 2.x 或 3.x](https://www.python.org/downloads/)
+- Python 的[请求库](https://pypi.org/project/requests/)
 
-- [请求库](http://docs.python-requests.org)适用于 python
+- 包含时序数据点的 JSON 文件。 可在 [GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json) 上找到本快速入门的示例数据。
 
-- JSON 文件包含时间序列数据点。 本快速入门教程的示例数据，可[GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json)。
-
-[!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
-
-[!INCLUDE [cognitive-services-anomaly-detector-signup-requirements](../../../../includes/cognitive-services-anomaly-detector-signup-requirements.md)]
-
+[!INCLUDE [anomaly-detector-environment-variables](../includes/environment-variables.md)]
 
 ## <a name="create-a-new-application"></a>创建新应用程序
 
-1. 在最喜欢的文本编辑器或 IDE 中，创建新的 python 文件。 添加以下导入。
+1. 创建新的 python 文件并添加以下导入。
 
-    ```python
-    import requests
-    import json
-    ```
+    [!code-python[import statements](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=imports)]
 
-2. 为你的订阅密钥和你的终结点创建变量。 下面是可用于异常情况检测的 Uri。 这些将追加到你的服务终结点更高版本才能创建 API 请求 Url。
+2. 为订阅密钥和终结点创建变量。 下面是可用于异常检测的 URI。 稍后会将这些 URL 追加到服务终结点，以创建 API 请求 URL。
 
     |检测方法  |URI  |
     |---------|---------|
-    |批处理检测    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
-    |最新的数据点上的检测     | `/anomalydetector/v1.0/timeseries/last/detect`        |
+    |批量检测    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
+    |对最新数据点进行检测     | `/anomalydetector/v1.0/timeseries/last/detect`        |
 
-    ```python
-    batch_detection_url = "/anomalydetector/v1.0/timeseries/entire/detect"
-    latest_point_detection_url = "/anomalydetector/v1.0/timeseries/last/detect"
+    [!code-python[initial endpoint and key variables](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=vars)]
 
-    endpoint = "[YOUR_ENDPOINT_URL]"
-    subscription_key = "[YOUR_SUBSCRIPTION_KEY]"
-    data_location = "[PATH_TO_TIME_SERIES_DATA]"
-    ```
+3. 打开 JSON 数据文件，并使用 `json.load()` 读入该文件。
 
-3. 打开它，并使用 JSON 数据文件中读取`json.load()`。
+    [!code-python[Open JSON file and read in the data](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=fileLoad)]
 
-    ```python
-    file_handler = open(data_location)
-    json_data = json.load(file_handler)
-    ```
+## <a name="create-a-function-to-send-requests"></a>创建用于发送请求的函数
 
-## <a name="create-a-function-to-send-requests"></a>创建一个函数来发送请求
+1. 创建名为 `send_request()` 的新函数，该函数使用上面创建的变量。 然后，执行以下步骤。
 
-1. 创建一个名为的新函数`send_request()`采用上面创建的变量。 然后，执行以下步骤。
+2. 创建请求标头的字典。 将 `Content-Type` 设置为 `application/json`，并将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头。
 
-2. 创建的请求标头的字典。 设置`Content-Type`到`application/json`，并添加你的订阅密钥的`Ocp-Apim-Subscription-Key`标头。
+3. 使用 `requests.post()` 发送请求。 合并终结点和异常检测 URL 以构成完整的请求 URL，并包含标头和 JSON 请求数据。 然后返回响应。
 
-3. 发送请求使用`requests.post()`。 合并你的终结点和完整的异常情况检测 URL 请求的 URL，并包括标头和 json 请求数据。 然后返回响应。
+    [!code-python[request method](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=request)]
 
-```python
-def send_request(endpoint, url, subscription_key, request_data):
-    headers = {'Content-Type': 'application/json', 'Ocp-Apim-Subscription-Key': subscription_key}
-    response = requests.post(endpoint+url, data=json.dumps(request_data), headers=headers)
-    return json.loads(response.content.decode("utf-8"))
-```
+## <a name="detect-anomalies-as-a-batch"></a>以批的形式检测异常
 
-## <a name="detect-anomalies-as-a-batch"></a>作为一批中检测异常
+1. 创建名为 `detect_batch()` 的方法，以批的形式检测整个数据中的异常。 调用在上面使用终结点、URL、订阅密钥和 JSON 数据创建的 `send_request()` 方法。
 
-1. 创建一个名为方法`detect_batch()`来检测异常在整个数据作为一个批。 调用`send_request()`上面创建的终结点、 url、 订阅密钥和 json 数据的方法。
+2. 针对结果调用 `json.dumps()` 以设置其格式，然后将结果输出到控制台。
 
-2. 调用`json.dumps()`上要设置其格式，并将其打印到控制台的结果。
+3. 如果响应包含 `code` 字段，请输出错误代码和错误消息。
 
-3. 如果响应包含`code`字段中，打印的错误代码和错误消息。
+4. 否则，请查找异常在数据集中的位置。 响应的 `isAnomaly` 字段包含一个布尔值，该值与给定的数据点是否为异常相关。 循环访问该列表，并输出任何 `True` 值的索引。 如果找到任何此类值，这些值对应于异常数据点的索引。
 
-4. 否则，在数据集中发现的异常的位置。 响应的`isAnomaly`字段包含与给定的数据点是否异常的布尔值。 循环访问列表中，并打印的任何索引`True`值。 如果任何发现，这些值对应于异常的数据点的索引。
+    [!code-python[detection as a batch](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectBatch)]
 
-```python
-def detect_batch(request_data):
-    print("Detecting anomalies as a batch")
-    result = send_request(endpoint, batch_detection_url, subscription_key, request_data)
-    print(json.dumps(result, indent=4))
+## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>检测最新数据点的异常状态
 
-    if result.get('code') != None:
-        print("Detection failed. ErrorCode:{}, ErrorMessage:{}".format(result['code'], result['message']))
-    else:
-        # Find and display the positions of anomalies in the data set
-        anomalies = result["isAnomaly"]
-        print("Anomalies detected in the following data positions:")
-        for x in range(len(anomalies)):
-            if anomalies[x] == True:
-                print (x)
-```
+1. 创建名为 `detect_latest()` 的方法，以确定时序中的最新数据点是否为异常。 结合终结点、URL、订阅密钥和 JSON 数据调用上述 `send_request()` 方法。 
 
-## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>检测到异常情况状态的最新的数据点
+2. 针对结果调用 `json.dumps()` 以设置其格式，然后将结果输出到控制台。
 
-1. 创建一个名为方法`detect_latest()`确定时间序列中的最新数据点是否异常。 调用`send_request()`上述使用您终结点、 url、 订阅密钥和 json 数据的方法。 
+    [!code-python[Latest point detection](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectLatest)]
 
-2. 调用`json.dumps()`上要设置其格式，并将其打印到控制台的结果。
+## <a name="send-the-request"></a>发送请求
 
-```python
-def detect_latest(request_data):
-    print("Determining if latest data point is an anomaly")
-    # send the request, and print the JSON result
-    result = send_request(endpoint, latest_point_detection_url, subscription_key, request_data)
-    print(json.dumps(result, indent=4))
-```
+调用上面创建的异常检测方法。
 
-## <a name="load-your-time-series-data-and-send-the-request"></a>加载时间系列数据并发送请求
-
-1. 将 JSON 时间系列数据打开文件处理程序，并使用加载`json.load()`上它。 然后，调用异常上面创建的检测方法。
-
-```python
-file_handler = open(data_location)
-json_data = json.load(file_handler)
-
-detect_batch(json_data)
-detect_latest(json_data)
-```
+[!code-python[Method calls](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=methodCalls)]
 
 ### <a name="example-response"></a>示例响应
 
-JSON 格式返回成功的响应。 单击以下链接，查看 GitHub 上的 JSON 响应：
-* [示例批处理检测响应](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
-* [示例最新点检测响应](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
+成功的响应以 JSON 格式返回。 单击以下链接在 GitHub 上查看 JSON 响应：
+* [批量检测响应示例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
+* [最新数据点检测响应示例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
 
-## <a name="next-steps"></a>后续步骤
-
-> [!div class="nextstepaction"]
-> [REST API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect)
+[!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

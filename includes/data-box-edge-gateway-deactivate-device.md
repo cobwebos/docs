@@ -4,28 +4,31 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
-ms.openlocfilehash: aebb82690a7a49aba071ed64349d37d516208cca
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 21c19027d21a87e199d74644cfc5c8f3cd52ba4c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57556759"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79129496"
 ---
-若要重置你的设备，你需要安全地擦除数据磁盘，并且你的设备的启动磁盘上的所有数据。 
+若要重置设备，需要安全地擦除数据磁盘和设备的启动磁盘上的所有数据。 
 
-使用`Reset-HcsAppliance`cmdlet 来擦除数据磁盘并启动磁盘或只是数据磁盘。 `ClearData`和`BootDisk`开关可用于分别擦除数据磁盘和启动磁盘。
+使用 `Reset-HcsAppliance` cmdlet 擦除数据磁盘和启动磁盘，或者只擦除数据磁盘。 `ClearData`和 `BootDisk` 交换机允许你分别擦除数据磁盘和启动磁盘。
 
-如果使用本地 web UI 中重置的设备，仅数据磁盘被安全地擦除，但启动磁盘保持不变。 启动磁盘包含设备配置。
+此 `BootDisk` 开关将擦除启动磁盘并使设备不可用。 仅当需要将设备返回到 Microsoft 时，才应使用此方法。 有关详细信息，请参阅将[设备返回到 Microsoft](https://docs.microsoft.com/azure/databox-online/data-box-edge-return-device)。
 
-1. [连接到 PowerShell 界面](#connect-to-the-powershell-interface)。
+如果在本地 web UI 中使用设备重置，则只会安全地擦除数据磁盘，但启动磁盘会保持不变。 启动磁盘包含设备配置。
+
+1. [连接到 PowerShell 接口](#connect-to-the-powershell-interface)。
 2. 在命令提示符处，键入：
 
     `Reset-HcsAppliance -ClearData -BootDisk`
 
-    下面的示例演示如何使用此 cmdlet:
-    ```
+    下面的示例演示如何使用此 cmdlet：
+
+    ```powershell
     [10.128.24.33]: PS>Reset-HcsAppliance -ClearData -BootDisk
-    
+
     Confirm
     Are you sure you want to perform this action?
     Performing the operation "Reset-HcsAppliance" on target "ShouldProcess appliance".

@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1cf8babe1e769382ba86a2cfa8c570ae2d1e5c62
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66149400"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67172783"
 ---
 > [!NOTE]
 > 本文为经典部署模型而写。 如果不熟悉 Azure，建议改用资源管理器部署模型。 资源管理器部署模型是最新的部署模型，提供比经典部署模型更多的选项和更强的功能兼容性。 有关部署模型的详细信息，请参阅[了解部署模型](../articles/resource-manager-deployment-model.md)。

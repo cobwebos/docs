@@ -1,6 +1,6 @@
 ---
-title: 教程：使用资源管理器模板创建管道 | Microsoft Docs
-description: 本教程使用 Azure 资源管理器模板创建 Azure 数据工厂管道。 该管道将 Azure Blob 存储中的数据复制到 Azure SQL 数据库。
+title: '教程：使用资源管理器模板创建管道 '
+description: 本教程使用 Azure 资源管理器模板创建 Azure 数据工厂管道。 该管道将从 Azure Blob 存储中复制数据到 Azure SQL 数据库。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,26 +9,24 @@ editor: ''
 ms.assetid: 1274e11a-e004-4df5-af07-850b2de7c15e
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f3ed7f64b817be64a332ebd65a94e588c836ae38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 549c85f92434504b931f0325959beb17ae92afba
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66163802"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254882"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>教程：使用 Azure 资源管理器模板创建复制数据的数据工厂管道 
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [复制向导](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-> * [Azure 资源管理器模板](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+> * [Azure Resource Manager 模板](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 > 
@@ -51,7 +49,7 @@ ms.locfileid: "66163802"
 
 * 通读[教程概述和先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)，完成**先决条件**步骤。
 * 遵循 [How to install and configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装最新版本的 Azure PowerShell。 本教程使用 PowerShell 部署数据工厂实体。 
-* （可选）若要了解 Azure 资源管理器模板，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)。
+* （可选）若要了解 Azure 资源管理器模板，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)。
 
 ## <a name="in-this-tutorial"></a>本教程的内容
 本教程创建包含以下数据工厂实体的数据工厂：
@@ -59,10 +57,10 @@ ms.locfileid: "66163802"
 | 实体 | 说明 |
 | --- | --- |
 | Azure 存储链接服务 |将 Azure 存储帐户链接到数据工厂。 在本教程中，Azure 存储和 Azure SQL 数据库分别是复制活动的源数据存储和接收器数据存储。 该服务指定包含复制活动输入数据的存储帐户。 |
-| Azure SQL 数据库链接服务 |将 Azure SQL 数据库链接到数据工厂。 该服务指定保存复制活动输出数据的 Azure SQL 数据库。 |
+| Azure SQL 数据库链接服务 |将 Azure SQL 数据库中我们的数据库链接到数据工厂。 该服务指定保存复制活动输出数据的数据库。 |
 | Azure Blob 输入数据集 |引用 Azure 存储链接服务。 链接服务引用 Azure 存储帐户，Azure Blob 数据集指定用于保存输入数据的存储中的容器、文件夹和文件名。 |
-| Azure SQL 输出数据集 |引用 Azure SQL 链接服务。 Azure SQL 链接服务引用 Azure SQL 服务器，Azure SQL 数据集指定保存输出数据的表的名称。 |
-| 数据管道 |管道包含一个“复制”类型的活动，该活动使用 Azure Blob 数据集作为输入，使用 Azure SQL 数据集作为输出。 复制活动将数据从 Azure Blob 复制到 Azure SQL 数据库中的表。 |
+| Azure SQL 输出数据集 |引用 Azure SQL 链接服务。 Azure SQL 链接服务引用逻辑 SQL Server，Azure SQL 数据集指定保存输出数据的表的名称。 |
+| 数据管道 |管道包含一个“复制”类型的活动，该活动使用 Azure Blob 数据集作为输入，使用 Azure SQL 数据集作为输出。 复制活动将从 Azure Blob 复制数据到 Azure SQL 数据库中的表。 |
 
 数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 有两种类型的活动：[数据移动活动](data-factory-data-movement-activities.md)和[数据转换活动](data-factory-data-transformation-activities.md)。 本教程会创建包含一个活动（复制活动）的管道。
 
@@ -108,9 +106,9 @@ ms.locfileid: "66163802"
       "storageAccountKey": { "type": "securestring", "metadata": { "description": "Key for the Azure storage account." } },
       "sourceBlobContainer": { "type": "string", "metadata": { "description": "Name of the blob container in the Azure Storage account." } },
       "sourceBlobName": { "type": "string", "metadata": { "description": "Name of the blob in the container that has the data to be copied to Azure SQL Database table" } },
-      "sqlServerName": { "type": "string", "metadata": { "description": "Name of the Azure SQL Server that will hold the output/copied data." } },
-      "databaseName": { "type": "string", "metadata": { "description": "Name of the Azure SQL Database in the Azure SQL server." } },
-      "sqlServerUserName": { "type": "string", "metadata": { "description": "Name of the user that has access to the Azure SQL server." } },
+      "sqlServerName": { "type": "string", "metadata": { "description": "Name of the logical SQL server that will hold the output/copied data." } },
+      "databaseName": { "type": "string", "metadata": { "description": "Name of the Azure SQL Database in the logical SQL server." } },
+      "sqlServerUserName": { "type": "string", "metadata": { "description": "Name of the user that has access to the logical SQL server." } },
       "sqlServerPassword": { "type": "securestring", "metadata": { "description": "Password for the user." } },
       "targetSQLTable": { "type": "string", "metadata": { "description": "Table in the Azure SQL Database that will hold the copied data." } 
       } 
@@ -290,7 +288,7 @@ ms.locfileid: "66163802"
 > [!IMPORTANT]
 > 为 storageAccountName 和 storageAccountKey 参数指定 Azure 存储帐户的名称和密钥。  
 > 
-> 指定 Azure SQL Server、数据库、用户、sqlServerName 的密码、databaseName、sqlServerUserName 和 sqlServerPassword 参数。  
+> 指定逻辑 SQL Server、数据库、用户、sqlServerName 的密码、databaseName、sqlServerUserName 和 sqlServerPassword 参数。  
 
 ```json
 {
@@ -303,9 +301,9 @@ ms.locfileid: "66163802"
         },
         "sourceBlobContainer": { "value": "adftutorial" },
         "sourceBlobName": { "value": "emp.txt" },
-        "sqlServerName": { "value": "<Name of the Azure SQL server>" },
-        "databaseName": { "value": "<Name of the Azure SQL database>" },
-        "sqlServerUserName": { "value": "<Name of the user who has access to the Azure SQL database>" },
+        "sqlServerName": { "value": "<Name of the logical SQL server>" },
+        "databaseName": { "value": "<Name of the database>" },
+        "sqlServerUserName": { "value": "<Name of the user who has access to the database>" },
         "sqlServerPassword": { "value": "<password for the user>" },
         "targetSQLTable": { "value": "emp" }
     }
@@ -343,7 +341,7 @@ ms.locfileid: "66163802"
 ## <a name="monitor-pipeline"></a>监视管道
 
 1. 使用 Azure 帐户登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧菜单中单击“数据工厂”；或者单击“所有服务”，然后单击“智能 + 分析”类别下面的“数据工厂”。
+2. 在左侧菜单中单击“数据工厂”；或者单击“所有服务”，然后单击“智能 + 分析”类别下面的“数据工厂”。   
    
     ![数据工厂菜单](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factories-menu.png)
 3. 在“数据工厂”页中，搜索并查找数据工厂 (AzureBlobToAzureSQLDatabaseDF)。 
@@ -352,8 +350,8 @@ ms.locfileid: "66163802"
 4. 单击 Azure 数据工厂。 随后会显示该数据工厂的主页。
    
     ![数据工厂主页](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factory-home-page.png)  
-6. 按照[监视数据集和管道](data-factory-copy-activity-tutorial-using-azure-portal.md#monitor-pipeline)中的说明，监视在本教程中创建的管道和数据集。 目前，Visual Studio 不支持对数据工厂管道进行监视。
-7. 切片处于“就绪”状态后，验证数据是否已复制到 Azure SQL 数据库中的 emp 表。
+6. 按照[监视数据集和管道](data-factory-monitor-manage-pipelines.md)中的说明，监视在本教程中创建的管道和数据集。 目前，Visual Studio 不支持对数据工厂管道进行监视。
+7. 切片处于“就绪”状态后，验证数据是否已复制到 Azure SQL 数据库中的 emp 表。 
 
 
 若要详细了解如何使用 Azure 门户边栏选项卡监视本教程中创建的管道和数据集，请参阅[监视数据集和管道](data-factory-monitor-manage-pipelines.md)。
@@ -415,7 +413,7 @@ AzureStorageLinkedService 链接将 Azure 存储帐户链接到数据工厂。 �
 connectionString 使用 storageAccountName 和 storageAccountKey 参数。 可以使用配置文件传递这些参数的值。 该定义还使用了模板中定义的变量 azureStorageLinkedService 和 dataFactoryName。 
 
 #### <a name="azure-sql-database-linked-service"></a>Azure SQL 数据库链接服务
-AzureSqlLinkedService 将 Azure SQL 数据库链接到数据工厂。 从 Blob 存储复制的数据存储在该数据库中。 根据[先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)在该数据库中创建了 emp 表。 在本部分中指定 Azure SQL 服务器名称、数据库名称、用户名和用户密码。 有关用于定义 Azure SQL 链接服务的 JSON 属性的详细信息。请参阅 [Azure SQL linked service](data-factory-azure-sql-connector.md#linked-service-properties)（Azure SQL 链接服务）。  
+AzureSqlLinkedService 将 Azure SQL 数据库中你的数据库链接到数据工厂。 从 Blob 存储复制的数据存储在该数据库中。 根据[先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)在该数据库中创建了 emp 表。 在本部分中指定逻辑 SQL Server 名称、数据库名称、用户名和用户密码。 有关用于定义 Azure SQL 链接服务的 JSON 属性的详细信息。请参阅 [Azure SQL linked service](data-factory-azure-sql-connector.md#linked-service-properties)（Azure SQL 链接服务）。  
 
 ```json
 {
@@ -480,7 +478,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 ```
 
 #### <a name="azure-sql-dataset"></a>Azure SQL 数据集
-指定 Azure SQL 数据库中用于保存从 Azure Blob 存储复制的数据的表的名称。 有关用于定义 Azure SQL 数据集的 JSON 属性的详细信息，请参阅 [Azure SQL dataset properties](data-factory-azure-sql-connector.md#dataset-properties)（Azure SQL 数据集属性）。 
+指定 Azure SQL 数据库中表（用于保存来自 Azure Blob 存储的复制数据）的名称。 有关用于定义 Azure SQL 数据集的 JSON 属性的详细信息，请参阅 [Azure SQL dataset properties](data-factory-azure-sql-connector.md#dataset-properties)（Azure SQL 数据集属性）。 
 
 ```json
 {
@@ -574,7 +572,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 ```
 
 ## <a name="reuse-the-template"></a>重复使用模板
-本教程创建了一个用于定义数据工厂实体的模板，以及一个用于传递参数值的模板。 管道将数据从 Azure 存储帐户复制到通过参数指定的 Azure SQL 数据库。 要使用同一个模板将数据工厂实体部署到不同的环境，可为每个环境创建一个参数文件，并在部署到该环境时使用该文件。     
+本教程创建了一个用于定义数据工厂实体的模板，以及一个用于传递参数值的模板。 该管道将从 Azure 存储帐户复制数据到通过参数指定的 Azure SQL 数据库。 要使用同一个模板将数据工厂实体部署到不同的环境，可为每个环境创建一个参数文件，并在部署到该环境时使用该文件。     
 
 示例：  
 
@@ -593,7 +591,7 @@ New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutori
 可以重复使用该模板来执行重复的任务。 例如，需要创建许多数据工厂，其中包含用于实现相同逻辑的一个或多个管道，但每个数据工厂使用不同的存储和 SQL 数据库帐户。 在这种情况下，可以在同一个环境（开发、测试或生产）中使用包含不同参数文件的同一个模板来创建数据工厂。   
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，在复制操作中使用了 Azure Blob 存储作为源数据存储，使用了 Azure SQL 数据库作为目标数据存储。 下表列出了复制活动支持的充当源和目标的数据存储： 
+在本教程中，使用 Azure Blob 存储和 Azure SQL 数据库分别作为复制操作的源数据存储和目标数据存储。 下表列出了复制活动支持的充当源和目标的数据存储： 
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 

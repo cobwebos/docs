@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: sewatson
 ms.openlocfilehash: 6282acaf165d2f31a1a1ac525dad75ebc64a2a7c
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "62113946"
 ---
 # <a name="azure-database-for-postgresql-documentation"></a>用于 PostgreSQL 的 Azure 数据库文档
@@ -28,7 +28,7 @@ ms.locfileid: "62113946"
 
 ## <a name="step-by-step-tutorials"></a>分步教程
 
-了解如何：
+了解如何操作：
 
 - 设计数据库：[Azure 门户](/azure/postgresql/tutorial-design-database-using-azure-portal) |  [Azure CLI](/azure/postgresql/tutorial-design-database-using-azure-cli)
 - [使用 Python 和 CLI 生成 Web 应用](/azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json)

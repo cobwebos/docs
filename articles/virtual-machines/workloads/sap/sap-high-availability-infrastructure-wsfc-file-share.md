@@ -1,28 +1,26 @@
 ---
-title: 针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构 | Microsoft Docs
+title: 使用 WSFC 和文件共享实现 SAP ASCS/SCS HA 的 Azure 基础结构 | Microsoft Docs
 description: 针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: jeconnoc
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 2ce38add-1078-4bb9-a1da-6f407a9bc910
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e1c6b1d55a4fbc673980908a981a9a96c869bee9
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
-ms.translationtype: MT
+ms.openlocfilehash: 2ccaf662488203e346065cfee082018128f37d95
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409601"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201670"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构
 
@@ -40,8 +38,8 @@ ms.locfileid: "65409601"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -204,7 +202,7 @@ ms.locfileid: "65409601"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -214,7 +212,7 @@ ms.locfileid: "65409601"
 
 在开始安装之前，请查看以下文章：
 
-* [体系结构指南：通过使用文件共享在 Windows 故障转移群集的群集 SAP ASCS/SCS 实例][sap-high-availability-guide-wsfc-file-share]
+* [体系结构指南：使用文件共享在 Windows 故障转移群集上组建 SAP ASCS/SCS 实例的群集][sap-high-availability-guide-wsfc-file-share]
 
 
 ## <a name="host-names-and-ip-addresses"></a>主机名和 IP 地址
@@ -227,13 +225,13 @@ ms.locfileid: "65409601"
 | SAP PR1 ASCS 群集网络名称 |pr1-ascs | 10.0.6.7 | 不适用 |
 
 
-**表 1**:ASCS/SCS 群集
+**表 1**：ASCS/SCS 群集
 
 | SAP \<SID> | SAP ASCS/SCS 实例编号 |
 | --- | --- |
-| PR1 | 0 |
+| PR1 | 00 |
 
-**表 2**:SAP ASCS/SCS 实例详细信息
+**表 2**：SAP ASCS/SCS 实例详细信息
 
 
 | 虚拟主机名角色 | 虚拟主机名 | 静态 IP 地址 | 可用性集 |
@@ -244,14 +242,14 @@ ms.locfileid: "65409601"
 | 群集网络名称 | sofs-cl | 10.0.6.13 | 不适用 |
 | SAP 全局主机名 | sapglobal | 使用所有群集节点的 IP | 不适用 |
 
-**表 3**:横向扩展文件服务器群集
+**表 3**：横向扩展文件服务器群集
 
 
 ## <a name="deploy-vms-for-an-sap-ascsscs-cluster-a-database-management-system-dbms-cluster-and-sap-application-server-instances"></a>为 SAP ASCS/SCS 群集、数据库管理系统 (DBMS) 群集和 SAP 应用程序服务器实例部署 VM
 
 若要准备 Azure 基础结构，请完成以下操作：
 
-* [准备体系结构模板 1、2 和 3 的基础结构][sap-high-availability-infrastructure-wsfc-shared-disk]。
+* [准备体系结构模板 1、2、3 的基础结构][sap-high-availability-infrastructure-wsfc-shared-disk]。
 
 * [创建 Azure 虚拟网络][sap-high-availability-infrastructure-wsfc-shared-disk-azure-network]。
 
@@ -269,7 +267,7 @@ ms.locfileid: "65409601"
 
 * [在 SAP ASCS/SCS 实例的两个群集节点上添加注册表项][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain]。
 
-* 使用 Windows Server 2016 时，我们建议配置 [Azure 云见证][deploy-cloud-witness]。
+* 使用 Windows Server 2016 时，建议你配置 [Azure 云见证][deploy-cloud-witness]。
 
 
 ## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>手动部署横向扩展文件服务器群集 
@@ -317,15 +315,15 @@ Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 > 在横向扩展文件服务器资源管理器模板 UI 中，必须指定 VM 计数。
 >
 
-### <a name="use-managed-disks"></a>使用托管的磁盘
+### <a name="use-managed-disks"></a>使用托管磁盘
 
-[GitHub][arm-sofs-s2d-managed-disks] 上提供了用于部署使用存储空间直通和 Azure 托管磁盘的横向扩展文件服务器的 Azure 资源管理器模板。
+[GitHub][arm-sofs-s2d-managed-disks] 上提供了 Azure 资源管理器模板，用于部署使用存储空间直通和 Azure 托管磁盘的横向扩展文件服务器。
 
 我们建议使用托管磁盘。
 
-![图 1：使用托管磁盘的横向扩展文件服务器资源管理器模板的 UI 屏幕][sap-ha-guide-figure-8010]
+![图 1：带托管磁盘的横向扩展文件服务器资源管理器模板的 UI 屏幕][sap-ha-guide-figure-8010]
 
-_**图 1**:使用托管磁盘的横向扩展文件服务器资源管理器模板的 UI 屏幕_
+_**图 1**：带托管磁盘的横向扩展文件服务器资源管理器模板的 UI 屏幕_
 
 在模板中，执行以下操作：
 1. 在“Vm 计数”框中，输入最小计数 **2**。
@@ -335,23 +333,23 @@ _**图 1**:使用托管磁盘的横向扩展文件服务器资源管理器模板
 
 ### <a name="use-unmanaged-disks"></a>使用非托管磁盘
 
-[GitHub][arm-sofs-s2d-non-managed-disks] 上提供了用于部署使用存储空间直通和 Azure 非托管磁盘的横向扩展文件服务器的 Azure 资源管理器模板。
+[GitHub][arm-sofs-s2d-non-managed-disks] 上提供了 Azure 资源管理器模板，用于部署使用存储空间直通和 Azure 非托管磁盘的横向扩展文件服务器。
 
 ![图 2：不带托管磁盘的横向扩展文件服务器 Azure 资源管理器模板的 UI 屏幕][sap-ha-guide-figure-8011]
 
-_**图 2**:不带托管磁盘的横向扩展文件服务器 Azure 资源管理器模板的 UI 屏幕_
+_**图 2**：不带托管磁盘的横向扩展文件服务器 Azure 资源管理器模板的 UI 屏幕_
 
 在“存储帐户类型”框中，选择“高级存储”。 其他所有设置与托管磁盘的设置相同。
 
 ## <a name="adjust-cluster-timeout-settings"></a>调整群集超时设置
 
-已成功安装 Windows 横向扩展文件服务器群集后，调整故障转移到 Azure 中的情况的检测的超时阈值。 博客文章 [Tuning failover cluster network thresholds][tuning-failover-cluster-network-thresholds]（调整故障转移群集网络阈值）中阐述了要更改的参数。 假定您的群集的 Vm 位于同一子网，请对这些值更改以下参数：
+成功安装 Windows 横向扩展文件服务器群集后，请根据 Azure 中的条件调整故障转移检测的超时阈值。 [调整故障转移群集网络阈值][tuning-failover-cluster-network-thresholds]中记录了要更改的参数。 假设群集的 VM 位于同一子网中，请将以下参数更改为以下值：
 
 - SameSubNetDelay = 2000
 - SameSubNetThreshold = 15
-- RoutingHistoryLength = 30
+- RouteHistoryLength = 30
 
-这些设置已经过客户测试，可以提供合理的折衷。 它们具有足够的弹性，但它们还提供快速足够中实际出错情况或 VM 失败的故障转移。
+这些设置已经过客户测试，可以提供合理的折衷。 它们具有足够的弹性，但在实际出错情况下或发生 VM 故障时也提供足够快的故障转移。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,22 +1,21 @@
 ---
 title: 将数据移入和移出 Azure Blob 存储 - Team Data Science Process
-description: 将数据移入和移出 Azure Blob 存储
+description: 使用 Azure 存储资源管理器、AzCopy、Python 和 SSIS 将数据移入或移出 Azure Blob 存储。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ca5a75ec61a0f75b3a008762561fed8231fce33d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: fc58651bcb3b266b981fb953fd7341427d47fb2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60811585"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76717575"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage"></a>将数据移入和移出 Azure Blob 存储
 
@@ -27,7 +26,7 @@ ms.locfileid: "60811585"
 以下文章介绍了如何使用不同技术将数据移入和移出 Azure Blob 存储。
 
 * [Azure 存储资源管理器](move-data-to-azure-blob-using-azure-storage-explorer.md)
-* [AzCopy](move-data-to-azure-blob-using-azcopy.md)
+* [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
 * [Python](move-data-to-azure-blob-using-python.md)
 * [SSIS](move-data-to-azure-blob-using-ssis.md)
 
@@ -49,9 +48,9 @@ ms.locfileid: "60811585"
 
 有关详细信息，请参阅[使用 Azure 数据工厂和 Azure 机器学习创建预测管道](../../data-factory/transform-data-using-machine-learning.md)。
 
-## <a name="prerequisites"></a>必备组件
-本文假定已有 Azure 订阅、存储帐户，以及该帐户对应的存储密钥。 上传/下载数据之前，必须知道 Azure 存储帐户名和帐户密钥。
+## <a name="prerequisites"></a>必备条件
+本文假定已有 Azure 订阅、存储帐户，以及该帐户对应的存储密钥。 在上传/下载数据之前，必须知道 Azure 存储帐户名称和帐户密钥。
 
 * 若要设置 Azure 订阅，请参阅[免费试用一个月版](https://azure.microsoft.com/pricing/free-trial/)。
-* 有关创建存储帐户的说明和有关获取帐户和密钥的信息，请参阅[关于 Azure 存储帐户](../../storage/common/storage-create-storage-account.md)。
+* 有关创建存储帐户以及获取帐户和密钥信息的说明，请参阅[关于 Azure 存储帐户](../../storage/common/storage-create-storage-account.md)。
 

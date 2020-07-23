@@ -1,25 +1,23 @@
 ---
 title: Azure 流分析中的输出错误策略
 description: 了解 Azure 流分析中提供的输出错误处理策略。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: b31530966d2c5ca9a3f82f3e74ba349e66053a83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 22112272bb302769e5969cf6995d486438deb41f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61478908"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75431612"
 ---
 # <a name="azure-stream-analytics-output-error-policy"></a>Azure 流分析的输出错误策略
 本文介绍可在 Azure 流分析中配置的输出数据错误处理策略。
 
-输出数据错误处理策略仅适用于当流分析作业生成的输出事件不符合目标接收器的架构时发生的数据转换错误。 可以选择“重试”或“丢弃”来配置此策略。 在 Azure 门户上的流分析作业中的“配置”下选择“错误策略”。
+输出数据错误处理策略仅适用于当流分析作业生成的输出事件不符合目标接收器的架构时发生的数据转换错误。 可以选择“重试”或“丢弃”来配置此策略。   在 Azure 门户上的流分析作业中的“配置”下选择“错误策略”。  
 
 ![Azure 流分析的输出错误策略位置](./media/stream-analytics-output-error-policy/stream-analytics-error-policy-locate.png)
 

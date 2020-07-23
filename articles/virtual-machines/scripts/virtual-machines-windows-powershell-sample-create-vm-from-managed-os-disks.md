@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell 脚本示例 - 通过将托管磁盘附加为 OS 磁盘来创建 VM | Microsoft Docs
+title: 通过将托管磁盘附加为 OS 磁盘来创建 VM - PowerShell 示例
 description: Azure PowerShell 脚本示例 - 通过将托管磁盘附加为 OS 磁盘来创建 VM
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -9,19 +9,18 @@ editor: ramankum
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: a608db9d806f9b0ed69eec3ce4dfb69adc5a5ea3
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 4514940918f33ee28fc4195b821018df54252e13
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449080"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "75368481"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-powershell"></a>通过将现有托管 OS 磁盘与 PowerShell 配合使用来创建虚拟机
 
@@ -32,7 +31,7 @@ ms.locfileid: "58449080"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+ 
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -50,7 +49,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 此脚本使用以下命令获取托管磁盘属性，将托管磁盘附加到新 VM 并创建 VM。 表中的每一项均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/Get-AzDisk) | 基于磁盘的名称和资源组获取磁盘对象。 返回的磁盘对象的 ID 属性用于将磁盘附加到新 VM |
 | [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) | 创建 VM 配置。 此配置包括 VM 名称、操作系统和管理凭据等信息。 在创建 VM 期间将使用此配置。 |

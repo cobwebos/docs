@@ -1,27 +1,21 @@
 ---
-title: CLI 示例 - 跨可用性区域的负载均衡器 VM - Azure | Microsoft Docs
+title: 跨可用性区域对 VM 进行负载均衡 - Azure CLI - Azure 负载均衡器
 description: 此 Azure CLI 脚本示例演示如何跨可用性区域对传入 VM 的流量进行负载均衡
-services: load-balancer
 documentationcenter: load-balancer
-author: KumudD
-manager: jeconnoc
-editor: tysonn
-tags: ''
+author: asudbring
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines across availability zones in a region.
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/14/2018
-ms.author: kumud
-ms.openlocfilehash: fff34f6a36f9c01b1f28b6b1f13189537d8c9060
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 3e0c86fdf97ec2882858a0a92e22e020001816cd
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61320696"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79218342"
 ---
 # <a name="azure-cli-script-example-load-balance-vms-across-availability-zones"></a>Azure CLI 脚本示例：跨可用性区域对 VM 进行负载均衡
 
@@ -56,7 +50,7 @@ ms.locfileid: "61320696"
 
   # Create an Azure Load Balancer.
    az network lb create \
-    --resource-group myResourceGroupLB \
+    --resource-group myResourceGroup \
     --name myLoadBalancer \
     --public-ip-address myPublicIP \
     --frontend-ip-name myFrontEndPool \
@@ -167,7 +161,7 @@ az group delete --name myResourceGroup
 
 此脚本使用以下命令创建资源组、虚拟机、可用性集、负载均衡器和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) | 创建 Azure 虚拟网络和子网。 |

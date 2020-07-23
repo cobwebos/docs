@@ -1,38 +1,28 @@
 ---
-title: 更改 Azure Service Fabric 执行组件中的 FabricTransport 设置 | Microsoft Docs
-description: 了解如何配置 Azure Service Fabric 执行组件通信设置。
-services: Service-Fabric
-documentationcenter: .net
+title: 更改 FabricTransport 设置
+description: 了解如何为不同执行组件配置配置 Azure Service Fabric 执行组件通信设置。
 author: suchiagicha
-manager: chackdan
-editor: ''
-ms.assetid: dbed72f4-dda5-4287-bd56-da492710cd96
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/20/2017
-ms.author: suchiagicha
-ms.openlocfilehash: b6cff24e5a7812a88673d80476819e51e6f5da35
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.author: pepogors
+ms.openlocfilehash: d5f6d3502662d48cf6ff750c9a695fadfeac97c2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125062"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256228"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>配置 Reliable Actors 的 FabricTransport 设置
 
 以下为用户可以配置的设置：
-- C#：[FabricTransportRemotingSettings](
-https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
-- Java:[FabricTransportRemotingSettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
+- C#: [FabricTransportRemotingSettings](/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
+- Java：[FabricTransportRemotingSettings](/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
 
 可以通过以下方式修改 FabricTransport 的默认配置。
 
 ## <a name="assembly-attribute"></a>程序集属性
 
-需要在执行组件客户端和执行组件服务程序集上应用 [FabricTransportActorRemotingProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN) 属性。
+需要在执行组件客户端和执行组件服务程序集上应用 [FabricTransportActorRemotingProvider](/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute) 属性。
 
 以下示例演示如何更改 FabricTransport OperationTimeout 设置的默认值：
 

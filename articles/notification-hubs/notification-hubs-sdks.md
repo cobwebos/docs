@@ -3,21 +3,23 @@ title: Azure 通知中心 SDK
 description: 可用的 Azure 通知中心 SDK 列表
 services: notification-hubs
 documentationcenter: ''
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 91188310-307a-11e9-b210-d663bd873d93
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
-ms.author: jowargo
 ms.date: 02/14/2019
-ms.openlocfilehash: 9ed69ac3526098cd5426c966952de97c948322b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 02/14/2019
+ms.openlocfilehash: 8a4b05c0ee76aca07fd740a16a76a634727504e9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60559936"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "71213027"
 ---
 # <a name="azure-notification-hubs-sdks"></a>Azure 通知中心 SDK
 

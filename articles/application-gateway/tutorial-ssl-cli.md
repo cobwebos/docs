@@ -1,25 +1,23 @@
 ---
-title: 使用 SSL 终端创建应用程序网关 - Azure CLI
-description: 了解如何使用 Azure CLI 创建应用程序网关并为 SSL 终端添加证书。
+title: 通过 CLI 使用 TLS 终端 - Azure 应用程序网关
+description: 了解如何使用 Azure CLI 创建应用程序网关并为 TLS 终端添加证书。
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 5/20/2019
+ms.topic: how-to
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: d9007b3f1d4eee436452a3fa75b2880b9e5be461
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
-ms.translationtype: HT
+ms.openlocfilehash: 16ad8d7fd0f46381f2e2e7076015af65bd4bddcd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955696"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806149"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>通过 Azure CLI 使用 SSL 终端创建应用程序网关
+# <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>通过 Azure CLI 使用 TLS 终端创建应用程序网关
 
-可通过 Azure CLI 使用 [SSL 终端](ssl-overview.md)的证书创建使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)作为后端服务器的[应用程序网关](overview.md)。 在此示例中，规模集包含两个添加到应用程序网关的默认后端池的虚拟机实例。
+可以通过 Azure CLI 使用 [TLS 终端](ssl-overview.md)的证书创建[应用程序网关](overview.md)。 对于后端服务器，可以使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。 在此示例中，规模集包含两个添加到应用程序网关的默认后端池的虚拟机实例。
 
 在本文中，学习如何：
 
@@ -35,19 +33,19 @@ ms.locfileid: "65955696"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-根据本文的要求，如果选择在本地安装并使用 CLI，则需要运行 Azure CLI 2.0.4 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+根据本文的要求，如果选择在本地安装并使用 CLI，则需要运行 Azure CLI 2.0.4 或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 
 为供生产使用，应导入由受信任的提供程序签名的有效证书。 对于本文中的情况，请使用 openssl 命令创建自签名证书和 pfx 文件。
 
-```azurecli-interactive
+```console
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
 ```
 
 输入对证书有意义的值。 可接受默认值。
 
-```azurecli-interactive
+```console
 openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.crt
 ```
 
@@ -57,7 +55,7 @@ openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.cr
 
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/azure/group) 创建资源组。
 
-以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组   。
+以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组****。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -84,7 +82,9 @@ az network vnet subnet create \
 
 az network public-ip create \
   --resource-group myResourceGroupAG \
-  --name myAGPublicIPAddress
+  --name myAGPublicIPAddress \
+  --allocation-method Static \
+  --sku Standard
 ```
 
 ## <a name="create-the-application-gateway"></a>创建应用程序网关
@@ -101,7 +101,7 @@ az network application-gateway create \
   --vnet-name myVNet \
   --subnet myAGsubnet \
   --capacity 2 \
-  --sku Standard_Medium \
+  --sku Standard_v2 \
   --http-settings-cookie-based-affinity Disabled \
   --frontend-port 443 \
   --http-settings-port 80 \
@@ -183,4 +183,4 @@ az group delete --name myResourceGroupAG --location eastus
 
 ## <a name="next-steps"></a>后续步骤
 
-* [创建托管多个网站的应用程序网关](./tutorial-multiple-sites-cli.md)
+[创建托管多个网站的应用程序网关](./tutorial-multiple-sites-cli.md)

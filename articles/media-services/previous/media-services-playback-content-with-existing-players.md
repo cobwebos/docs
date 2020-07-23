@@ -1,6 +1,6 @@
 ---
 title: 使用现有播放器播放内容 - Azure | Microsoft 文档
-description: 本主题列出了可以用来播放内容的现有播放器。
+description: 本文列出了可以用来播放内容的现有播放器。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: c96710d6dcca9f5ef99b3a02a0bc875d433f814d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 2d3c22e17c37bc46c16a9cc80eb3cf4b9ec93ecf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61463321"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81686926"
 ---
 # <a name="playing-your-content-with-existing-players"></a>使用现有播放器播放内容
 Azure 媒体服务支持多种常用的流式处理格式，如平滑流、HTTP 实时流和 MPEG-Dash。 本主题列出了可用于测试流的现有播放器。
 
 ### <a name="the-azure-portal-media-services-content-player"></a>Azure 门户媒体服务内容播放器
-**Azure** 门户提供可用于测试视频的内容播放器。
+**Azure** 门户提供了可用于测试视频的内容播放器。
 
 单击所需的视频（确保它[已发布](media-services-portal-publish.md)），并单击门户底部的“播放”按钮。
 
 请注意以下事项：
 
-* **媒体服务内容播放器**从默认的流式处理终结点播放。 如果要从非默认流式处理终结点播放，请使用其他播放器。 例如 [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html)。
+* **媒体服务内容播放器** 从默认的流式处理终结点播放。 如果要从非默认流式处理终结点播放，请使用其他播放器。 例如 [Azure Media Player](https://aka.ms/azuremediaplayer)。
 
 ![AMSPlayer][AMSPlayer]
 
 ### <a name="azure-media-player"></a>Azure Media Player
-使用 [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html)按以下列任意格式播放内容（清除或受保护）：
+
+使用 [Azure Media Player](https://aka.ms/azuremediaplayer)按以下列任意格式播放内容（清除或受保护）：
 
 * 平滑流
 * MPEG DASH
@@ -44,15 +44,13 @@ Azure 媒体服务支持多种常用的流式处理格式，如平滑流、HTTP 
 * 渐进式 MP4
 
 ### <a name="flash-player"></a>Flash Player
-#### <a name="aes-encrypted-with-token"></a>带令牌的 AES 加密
-[https://aestoken.azurewebsites.net](https://aestoken.azurewebsites.net)
-
-### <a name="silverlight-players"></a>Silverlight 播放器
 
 #### <a name="playready-with-token"></a>带令牌的 PlayReady
+
 [https://sltoken.azurewebsites.net](https://sltoken.azurewebsites.net)
 
 ### <a name="dash-players"></a>DASH 播放器
+
 [https://dashplayer.azurewebsites.net](https://dashplayer.azurewebsites.net)
 
 [https://dashif.org](https://dashif.org)
@@ -60,11 +58,8 @@ Azure 媒体服务支持多种常用的流式处理格式，如平滑流、HTTP 
 ### <a name="other"></a>其他
 若要测试 HLS URL，还可以使用：
 
-* iOS 设备上的“Safari”或
-* Windows 上的“3ivx HLS 播放器”。
-
-## <a name="developing-video-players"></a>开发视频播放器
-有关如何开发自己的播放器的信息，请参阅[开发视频播放器](media-services-develop-video-players.md)
+*  或
+*  。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

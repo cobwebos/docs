@@ -3,23 +3,21 @@ title: 创建 Azure 网络观察程序实例 | Microsoft 文档
 description: 了解如何在 Azure 区域中启用网络观察程序。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: b1314119-0b87-4f4d-b44c-2c4d0547fb76
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: c97f6dff17896b8a58c17aed9063e0b2b5733503
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: 6b7453a0100233896e3d01769897ed224a0b2618
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681580"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737540"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>创建 Azure 网络观察程序实例
 
@@ -103,6 +101,26 @@ $requestBody = @"
 armclient put "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}?api-version=${api-version}" $requestBody
 ```
 
+## <a name="delete-a-network-watcher-in-the-portal"></a>在门户中删除网络观察程序
+
+导航到“所有服务” > “网络” > “网络观察程序”。
+
+选择“概述”选项卡（如果尚未在该选项卡上）。 使用下拉列表选择要在其中禁用网络观察程序的订阅。
+通过单击箭头，展开所选订阅的区域列表。 对于任何给定区域，使用右侧的 3 个点访问上下文菜单。
+单击“禁用网络观察程序”以开始禁用。 系统会要求你确认此步骤。 单击“是”以继续。
+在门户上，你必须对每个订阅中的每个区域分别执行此操作。
+
+
+## <a name="delete-a-network-watcher-with-powershell"></a>使用 PowerShell 删除网络观察程序
+
+若要删除网络观察程序的实例，请运行以下示例：
+
+```powershell
+New-AzResourceGroup -Name NetworkWatcherRG -Location westcentralus
+New-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG -Location westcentralus
+Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG
+```
+
 ## <a name="next-steps"></a>后续步骤
 
 现在，已有网络观察程序实例，请了解可用功能：
@@ -114,5 +132,3 @@ armclient put "https://management.azure.com/subscriptions/${subscriptionId}/reso
 * [安全组视图](network-watcher-security-group-view-overview.md)
 * [NSG 流日志记录](network-watcher-nsg-flow-logging-overview.md)
 * [虚拟网络网关故障排除](network-watcher-troubleshoot-overview.md)
-
-创建网络观察程序实例后，可以在虚拟机内启用数据包捕获。 若要了解如何操作，请参阅[创建警报触发的数据包捕获](network-watcher-alert-triggered-packet-capture.md)

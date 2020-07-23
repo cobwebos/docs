@@ -1,7 +1,6 @@
 ---
-title: 通过 Azure PowerShell 开始使用 Azure Data Lake Analytics
+title: 创建 & 查询 Azure Data Lake Analytics-PowerShell
 description: 使用 Azure PowerShell 创建 Azure Data Lake Analytics 帐户，并提交 U-SQL 作业。
-services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -9,26 +8,26 @@ ms.reviewer: jasonwhowell
 ms.assetid: 8a4e901e-9656-4a60-90d0-d78ff2f00656
 ms.topic: conceptual
 ms.date: 05/04/2017
-ms.openlocfilehash: ad0a8ea4d06b5085179d4fd3c162114c00518ce1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f59a8df1031affb7cd3ca3c64ad67514e91f1c9d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66156441"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564811"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>通过 Azure PowerShell 开始使用 Azure Data Lake Analytics
 
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-了解如何使用 Azure PowerShell 创建 Azure Data Lake Analytics 帐户，并提交并运行 U-SQL 作业。 有关 Data Lake Analytics 的详细信息，请参阅 [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)。
+了解如何使用 Azure PowerShell 创建 Azure Data Lake Analytics 帐户，并提交并运行 U-SQL 作业。 有关 Data Lake Analytics 的详细信息，请参阅[Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 开始学习本教程之前，必须做好以下准备：
 
-* **一个 Azure Data Lake Analytics 帐户**。 请参阅 [Data Lake Analytics 入门](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal)。
+* **Azure Data Lake Analytics 帐户**。 请参阅 [Data Lake Analytics 入门](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal)。
 * **配备 Azure PowerShell 的工作站**。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
@@ -49,7 +48,7 @@ Connect-AzAccount -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
 如果成功，此命令的输出将类似于以下文本：
 
-```
+```text
 Environment           : AzureCloud
 Account               : joe@contoso.com
 TenantId              : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -127,7 +126,7 @@ Wait-AdlJob -Account $adla -JobId $job.JobId
 Export-AdlStoreItem -Account $adls -Path "/data.csv" -Destination "C:\data.csv"
 ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * 若要了解使用其他工具来完成此教程，请单击页面顶部的选项卡选择器。
 * 若要了解 U-SQL，请参阅 [Azure Data Lake Analytics U-SQL 语言入门](data-lake-analytics-u-sql-get-started.md)。

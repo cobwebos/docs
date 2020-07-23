@@ -1,32 +1,26 @@
 ---
-title: 在 Azure 中部署 OKD | Microsoft Docs
+title: 在 Azure 中部署 OKD
 description: 在 Azure 中部署 OKD。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: haroldwongms
 manager: joraio
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/02/2019
+ms.date: 10/15/2019
 ms.author: haroldw
-ms.openlocfilehash: 7db50007dd32c84a360eaec25bf860709272437b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dbd67903223bf4c8c2117f5356bc987665217362
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60542503"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527024"
 ---
 # <a name="deploy-okd-in-azure"></a>在 Azure 中部署 OKD
 
 可使用两种方式之一在 Azure 中部署 OKD（以前称为 OpenShift Origin）：
 
-- 可以手动部署所有必要的 Azure 基础结构组件，然后按照 [OKD 文档](https://docs.okd.io)进行操作。
+- 可以手动部署所有必要的 Azure 基础结构组件，然后按照[OKD 文档](https://docs.okd.io)进行操作。
 - 也可使用现有的[资源管理器模板](https://github.com/Microsoft/openshift-origin)，该模板可简化 OKD 群集的部署。
 
 ## <a name="deploy-using-the-okd-template"></a>使用 OKD 模板进行部署
@@ -117,7 +111,7 @@ ms.locfileid: "60542503"
 }
 ```
 
-将参数替换为你的特定信息。
+请将参数替换为你的特定信息。
 
 不同的版本可能具有不同的参数，因此，请验证你使用的分支的必需参数。
 
@@ -125,7 +119,7 @@ ms.locfileid: "60542503"
 
 
 > [!NOTE] 
-> 以下命令需要 Azure CLI 2.0.8 或更高版本。 可以使用 `az --version` 命令检查 CLI 版本。 若要更新 CLI 版本，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+> 以下命令需要 Azure CLI 2.0.8 或更高版本。 可以使用 `az --version` 命令检查 CLI 版本。 若要更新 CLI 版本，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 以下示例使用名为 myOpenShiftCluster 的部署将 OKD 群集和所有相关资源部署到名为 openshiftrg 的资源组中。 它直接从 GitHub 存储库引用模板，同时使用名为 azuredeploy.parameters.json 的本地参数文件。
 
@@ -144,7 +138,7 @@ az group deployment create -g openshiftrg --name myOpenShiftCluster \
 }
 ```
 
-如果不想在命令行上呆着等待部署完成，请将 `--no-wait` 添加为组部署的选项之一。 可以在 Azure 门户中资源组的部署部分检索部署的输出。
+如果不想在命令行上等着部署完成，请将 `--no-wait` 添加为组部署的选项之一。 可以在 Azure 门户中资源组的部署部分检索部署的输出。
 
 ## <a name="connect-to-the-okd-cluster"></a>连接至 OKD 群集
 
@@ -164,6 +158,6 @@ az group delete --name openshiftrg
 
 ## <a name="next-steps"></a>后续步骤
 
-- [部署后任务](./openshift-post-deployment.md)
-- [OpenShift 部署故障排除](./openshift-troubleshooting.md)
+- [部署后任务](./openshift-container-platform-3x-post-deployment.md)
+- [OpenShift 部署故障排除](./openshift-container-platform-3x-troubleshooting.md)
 - [OKD 入门](https://docs.okd.io)

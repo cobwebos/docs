@@ -1,37 +1,36 @@
 ---
-title: Azure 单一登录 SAML 协议 | Microsoft Docs
-description: 本文介绍 Azure Active Directory 中的单一登录 SAML 协议
+title: Azure 单一登录 SAML 协议
+titleSuffix: Microsoft identity platform
+description: 本文介绍 Azure Active Directory 中的单一登录 (SSO) SAML 协议
 services: active-directory
 documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: ad8437f5-b887-41ff-bd77-779ddafc33fb
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 07/19/2017
+ms.topic: conceptual
+ms.date: 05/18/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 593f07b27fec16c3df90a073479effb130bc5721
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: a68c0248ce364be486610c406388586b69cbb3f4
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545280"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076940"
 ---
 # <a name="single-sign-on-saml-protocol"></a>单一登录 SAML 协议
 
-本文介绍了 Azure Active Directory (Azure AD) 针对单一登录支持的 SAML 2.0 身份验证请求和响应。
+本文介绍了 Azure Active Directory (Azure AD) 针对单一登录 (SSO) 支持的 SAML 2.0 身份验证请求和响应。
 
 下面的协议流程图描述了单一登录序列。 云服务（服务提供者）使用 HTTP 重定向绑定将 `AuthnRequest`（身份验证请求）元素传递给 Azure AD（标识提供者）。 然后，Azure AD 使用 HTTP POST 绑定将 `Response` 元素发布到云服务。
 
-![单一登录工作流](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
+![单一登录 (SSO) 工作流](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
+
+> [!NOTE]
+> 本文介绍如何使用 SAML 进行单一登录。 有关处理单一登录的其他方法的详细信息（例如，通过使用 OpenID Connect 或集成 Windows 身份验证），请参阅[单一登录到 Azure Active Directory 中的应用程序](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="authnrequest"></a>AuthnRequest
 
@@ -47,11 +46,11 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 </samlp:AuthnRequest>
 ```
 
-| 参数 |  | 描述 |
+| 参数 | 类型 | 说明 |
 | --- | --- | --- |
-| ID | 需要 | Azure AD 使用此属性来填充返回的响应的 `InResponseTo` 属性。 ID 的开头不能是数字，因此常见的策略是在 GUID 的字符串表示法前面加上类似于“id”的字符串。 例如，`id6c1c178c166d486687be4aaf5e482730` 是有效的 ID。 |
-| Version | 需要 | 此参数应设置为 **2.0**。 |
-| IssueInstant | 需要 | 这是具有 UTC 值和[往返格式（“o”）](https://msdn.microsoft.com/library/az4se3k1.aspx)的日期时间字符串。 Azure AD 需要这种类型的日期时间值，但不评估或使用该值。 |
+| ID | 必需 | Azure AD 使用此属性来填充返回的响应的 `InResponseTo` 属性。 ID 的开头不能是数字，因此常见的策略是在 GUID 的字符串表示法前面加上类似于“id”的字符串。 例如，`id6c1c178c166d486687be4aaf5e482730` 是有效的 ID。 |
+| 版本 | 必需 | 此参数应设置为 **2.0**。 |
+| IssueInstant | 必选 | 这是具有 UTC 值和[往返格式（“o”）](https://msdn.microsoft.com/library/az4se3k1.aspx)的日期时间字符串。 Azure AD 需要这种类型的日期时间值，但不评估或使用该值。 |
 | AssertionConsumerServiceUrl | 可选 | 如果提供，此参数必须与 Azure AD 中云服务的 `RedirectUri` 匹配。 |
 | ForceAuthn | 可选 | 一个布尔值。 如果为 true，意味着用户会被强制重新验证，即使他们具有与 Azure AD 之间的有效会话。 |
 | IsPassive | 可选 | 一个布尔值，指定 Azure AD 是否应该在没有用户交互的情况下使用会话 cookie（如果存在）以无提示方式验证用户。 如果为 true，Azure AD 会尝试使用会话 cookie 验证用户。 |
@@ -87,10 +86,12 @@ Azure AD 还会忽略 `AuthnRequest` 中的 `Conditions` 元素。
 * `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`：此值允许 Azure Active Directory 选择声明格式。 Azure Active Directory 以成对标识符形式发出 NameID。
 * `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`：Azure Active Directory 以随机生成的值形式发出 NameID 声明，该值对当前的 SSO 操作是唯一的。 这意味着该值是临时的，且不能用于标识正在进行身份验证的用户。
 
+如果 `SPNameQualifier` 指定了，Azure AD 将 `SPNameQualifier` 在响应中包含相同的。
+
 Azure AD 将忽略 `AllowCreate` 属性。
 
 ### <a name="requestauthncontext"></a>RequestAuthnContext
-`RequestedAuthnContext` 元素指定所需的身份验证方法。 在发送到 Azure AD 的 `AuthnRequest` 元素中是可选的。 Azure AD 支持`AuthnContextClassRef`值如`urn:oasis:names:tc:SAML:2.0:ac:classes:Password`。
+`RequestedAuthnContext` 元素指定所需的身份验证方法。 在发送到 Azure AD 的 `AuthnRequest` 元素中是可选的。 Azure AD 支持 `AuthnContextClassRef` 值（如 `urn:oasis:names:tc:SAML:2.0:ac:classes:Password`）。
 
 ### <a name="scoping"></a>Scoping
 包含标识提供者列表的 `Scoping` 元素在发送到 Azure AD 的 `AuthnRequest` 元素中是可选的。
@@ -98,10 +99,10 @@ Azure AD 将忽略 `AllowCreate` 属性。
 如果提供，请不要包含 `ProxyCount` 属性、`IDPListOption` 或 `RequesterID` 元素，因为它们不受支持。
 
 ### <a name="signature"></a>签名
-请不要在 `AuthnRequest` 元素中包含 `Signature` 元素，因为 Azure AD 不支持签名的身份验证请求。
+`Signature`元素中的元素 `AuthnRequest` 是可选的。 如果存在签名，Azure AD 不会验证签名的身份验证请求。 仅通过响应已注册的断言使用者服务 URL 来提供请求者验证。
 
-### <a name="subject"></a>Subject
-Azure AD 将忽略 `AuthnRequest` 元素的 `Subject` 元素。
+### <a name="subject"></a>使用者
+请勿包含 `Subject` 元素。 Azure AD 不支持为请求指定主题，如果提供主题，则将返回错误。
 
 ## <a name="response"></a>响应
 当请求的登录成功完成时，Azure AD 会将响应发布到云服务。 对成功登录尝试的响应如以下示例所示：
@@ -158,12 +159,12 @@ Azure AD 将忽略 `AuthnRequest` 元素的 `Subject` 元素。
 
 ### <a name="issuer"></a>颁发者
 
-Azure AD 集`Issuer`元素`https://login.microsoftonline.com/<TenantIDGUID>/`其中\<TenantIDGUID > 是 Azure AD 租户的租户 ID。
+Azure AD 将 `Issuer` 元素设置为 `https://sts.windows.net/<TenantIDGUID>/`，其中，\<TenantIDGUID> 是 Azure AD 租户的租户 ID。
 
 例如，具有 Issuer 元素的响应如以下示例所示：
 
 ```
-<Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
+<Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://sts.windows.net/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
 ### <a name="status"></a>状态
@@ -193,10 +194,10 @@ Timestamp: 2013-03-18 08:49:24Z</samlp:StatusMessage>
 
 #### <a name="issuer"></a>颁发者
 
-此值设置为`https://sts.windows.net/<TenantIDGUID>/`其中\<TenantIDGUID > 是 Azure AD 租户的租户 ID。
+此元素设置为 `https://sts.windows.net/<TenantIDGUID>/`，其中，\<TenantIDGUID> 是 Azure AD 租户的租户 ID。
 
 ```
-<Issuer>https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
+<Issuer>https://sts.windows.net/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
 #### <a name="signature"></a>签名
@@ -211,7 +212,7 @@ Azure AD 为断言签名以响应成功登录。 `Signature` 元素包含数字�
     </ds:Signature>
 ```
 
-#### <a name="subject"></a>Subject
+#### <a name="subject"></a>主题
 
 指定断言中语句主题的主体。 它包含 `NameID` 元素，用于表示经过身份验证的用户。 `NameID` 值是一个目标标识符，它只定向到作为令牌受众的服务提供者。 它是持久性的 - 可吊销，但永远不可重新分配。 它也是不透明的，因为它不会透露有关用户的信息，也不能用作属性查询的标识符。
 
@@ -243,7 +244,7 @@ Azure AD 为断言签名以响应成功登录。 `Signature` 元素包含数字�
 * `NotBefore` 属性值等于或略晚于（不到一秒）`Assertion` 元素的 `IssueInstant` 属性值。 Azure AD 不考虑自身与云服务（服务提供者）之间的任何时间差，并且不对此时间添加任何缓冲。
 * `NotOnOrAfter` 属性值比 `NotBefore` 属性值晚 70 分钟。
 
-#### <a name="audience"></a>目标受众
+#### <a name="audience"></a>读者
 
 包含用于标识目标受众的 URI。 Azure AD 将此元素的值设置为发起登录的 `AuthnRequest` 的 `Issuer` 元素值。 若要评估 `Audience` 值，请使用应用程序注册期间指定的 `App ID URI` 值。
 

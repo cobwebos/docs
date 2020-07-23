@@ -1,26 +1,34 @@
 ---
-author: sptramer
-ms.service: azure
 ms.topic: include
-ms.date: 05/31/2019
-ms.author: sttramer
-ms.openlocfilehash: 8eafa0a07f760c64c45aeaec8876a485ab95d5d7
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
-ms.translationtype: HT
+ms.date: 06/13/2019
+author: dbradish-microsoft
+ms.author: dbradish
+manager: barbkess
+ms.openlocfilehash: 40f243ce0044b8e1172fb03a1366f37314a0c550
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66726758"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367796"
 ---
-## <a name="open-azure-cloud-shell"></a>打开 Azure Cloud Shell
+## <a name="use-azure-cloud-shell"></a>使用 Azure Cloud Shell
 
-Azure Cloud Shell 是一个托管在 Azure 中的交互式 shell 环境，可通过浏览器使用。 Azure Cloud Shell 允许你使用 `bash` 或 `PowerShell` shell 运行各种工具来使用 Azure 服务。 Azure Cloud Shell 预安装了一些命令，允许你运行本文的内容，而不必在本地环境中安装任何内容。
+Azure 托管 Azure Cloud Shell（一个可通过浏览器使用的交互式 shell 环境）。 可以将 Bash 或 PowerShell 与 Cloud Shell 配合使用来使用 Azure 服务。 可以使用 Azure Cloud Shell 预安装的命令来运行本文中的代码，而不必在本地环境中安装任何内容。
 
-若要在 Azure Cloud Shell 上运行本文中包含的任何代码，请打开 Cloud Shell 会话，对代码块使用“复制”  按钮以复制代码，然后使用 __Ctrl+Shift+V__（在 Windows 和 Linux 上）或 __Cmd+Shift+V__（在 macOS 上）将其粘贴到 Cloud Shell 会话中。 粘贴的文本不会自动执行，因此请按 **Enter** 运行代码。
+若要启动 Azure Cloud Shell，请执行以下操作：
 
-可以通过以下方式启动 Azure Cloud Shell：
-
-|  |   |
+| 选项 | 示例/链接 |
 |-----------------------------------------------|---|
-| 选择代码块右上角的“试用”。  这__不__会自动将文本复制到 Cloud Shell。 | ![Azure Cloud Shell 的“试用”示例](./media/cloud-shell-try-it/cli-try-it.png) |
-| 在浏览器中打开 [shell.azure.com](https://shell.azure.com)。 | [![“启动 Azure Cloud Shell”按钮](./media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com) |
-| 选择 [Azure 门户](https://portal.azure.com)右上角菜单上的“Cloud Shell”  按钮。 | ![Azure 门户中的“Cloud Shell”按钮](./media/cloud-shell-try-it/cloud-shell-menu.png) |
+| 选择代码块右上角的“试用”。 选择“试用”不会自动将代码复制到 Cloud Shell。 | ![Azure Cloud Shell 的“试用”示例](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
+| 转到 [https://shell.azure.com](https://shell.azure.com) 或选择“启动 Cloud Shell”按钮可在浏览器中打开 Cloud Shell。 | [![在新窗口中启动 Cloud Shell](media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
+| 选择 [Azure 门户](https://portal.azure.com)右上角菜单栏上的 **Cloud Shell** 按钮。 | ![Azure 门户中的“Cloud Shell”按钮](./media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
+
+若要在 Azure Cloud Shell 中运行本文中的代码，请执行以下操作：
+
+1. 启动 Cloud Shell。
+
+1. 选择代码块上的“复制”按钮以复制代码。
+
+1. 在 Windows 和 Linux 上选择 **Ctrl**+**Shift**+**V** 将代码粘贴到 Cloud Shell 会话中，或在 macOS 上选择 **Cmd**+**Shift**+**V** 将代码粘贴到 Cloud Shell 会话中。
+
+1. 选择 **Enter** 运行此代码。

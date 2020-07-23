@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: c1b35e6a28948cf952c61ec700cbd2ba764674ab
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 757d0b09c652e97e9dddc924c4c700819e333409
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65896006"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67086466"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yardione"></a>教程：Azure Active Directory 与 YardiOne 集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "65896006"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 YardiOne 的集成，需要以下项：
 
@@ -107,9 +107,9 @@ ms.locfileid: "65896006"
 
     ![YardiOne 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<y1-subdomain>.yardione.com` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<y1-subdomain>.yardione.com`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`http://<y1-subdomain>.yardione.com/yAuth2/trust` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`http://<y1-subdomain>.yardione.com/yAuth2/trust`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [YardiOne 客户端支持团队](https://clientcentral.yardi.com/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -140,7 +140,7 @@ ms.locfileid: "65896006"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -162,7 +162,7 @@ ms.locfileid: "65896006"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

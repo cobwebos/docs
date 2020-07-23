@@ -1,35 +1,30 @@
 ---
-title: Azure 虚拟机规模集的网络 | Microsoft Docs
-description: Azure 虚拟机规模集的配置网络属性。
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
+title: Azure 虚拟机规模集的网络
+description: 如何为 Azure 虚拟机规模集配置一些更高级的网络属性。
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 07/17/2017
-ms.author: manayar
-ms.openlocfilehash: a9141adfb1dd05efd73061379be89ddf27ab3832
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.subservice: networking
+ms.date: 06/25/2020
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 0f8075af53752da0e0abc2dec7ab49c28af2e3ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60803058"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374723"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的网络
 
 通过门户部署 Azure 虚拟机规模集时，某些网络属性（例如带入站 NAT 规则的 Azure 负载均衡器）是默认设置的。 本文介绍如何使用部分较高级的可以对规模集配置的网络功能。
 
-可以使用 Azure 资源管理器模板配置本文介绍的所有功能。 此外，还为选定功能提供了 Azure CLI 和 PowerShell 示例。
+可以使用 Azure Resource Manager 模板配置本文介绍的所有功能。 此外，还为选定功能提供了 Azure CLI 和 PowerShell 示例。
 
 ## <a name="accelerated-networking"></a>加速网络
 Azure 加速网络可以实现对虚拟机的单根 I/O 虚拟化 (SR-IOV)，从而提升网络性能。 若要详细了解如何使用加速网络，请查看适用于 [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) 或 [Linux](../virtual-network/create-vm-accelerated-networking-cli.md) 虚拟机的加速网络。 若要对规模集使用加速网络，请在规模集的 networkInterfaceConfigurations 设置中将 enableAcceleratedNetworking 设置为 true。 例如：
+
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -47,33 +42,33 @@ Azure 加速网络可以实现对虚拟机的单根 I/O 虚拟化 (SR-IOV)，从
 }
 ```
 
-## <a name="create-a-scale-set-that-references-an-existing-azure-load-balancer"></a>创建引用现有 Azure 负载均衡器的规模集
-使用 Azure 门户创建规模集后，就大多数配置选项来说，都会创建新的负载均衡器。 如果创建需引用现有负载均衡器的规模集，可以使用 CLI。 以下示例脚本先创建负载均衡器，然后创建规模集来引用该均衡器：
-```bash
-az network lb create \
-    -g lbtest \
-    -n mylb \
-    --vnet-name myvnet \
-    --subnet mysubnet \
-    --public-ip-address-allocation Static \
-    --backend-pool-name mybackendpool
+## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>带 Azure 负载均衡器的 Azure 虚拟机规模集
 
-az vmss create \
-    -g lbtest \
-    -n myvmss \
-    --image Canonical:UbuntuServer:16.04-LTS:latest \
-    --admin-username negat \
-    --ssh-key-value /home/myuser/.ssh/id_rsa.pub \
-    --upgrade-policy-mode Automatic \
-    --instance-count 3 \
-    --vnet-name myvnet \
-    --subnet mysubnet \
-    --lb mylb \
-    --backend-pool-name mybackendpool
-```
+使用虚拟机规模集和负载均衡器时，应考虑以下各项：
+
+* **多个虚拟机规模集不能使用同一负载均衡器**。
+* **端口转发和入站 NAT 规则**：
+  * 每个虚拟机规模集必须有一个入站 NAT 规则。
+  * 创建规模集后，无法为负载均衡器的运行状况探测所用的负载均衡规则修改后端端口。 为了更改端口，可以通过更新 Azure 虚拟机规模集来删除运行状况探测，更新端口，然后重新配置运行状况探测。
+  * 在负载均衡器的后端池中使用虚拟机规模集时，会自动创建默认的入站 NAT 规则。
+* **入站 NAT 池**：
+  * 入站 NAT 池是入站 NAT 规则的集合。 一个入站 NAT 池不能支持多个虚拟机规模集。
+* **负载均衡规则**：
+  * 在负载均衡器的后端池中使用虚拟机规模集时，会自动创建默认的负载均衡规则。
+* **出站规则**：
+  *  若要为已被负载均衡规则引用的后端池创建出站规则，需要先在创建入站负载均衡规则时在门户中将“创建隐式出站规则”标记为“否”。  
+
+  :::image type="content" source="./media/vmsslb.png" alt-text="创建负载均衡规则" border="true":::
+
+可以使用以下方法部署一个包含现有 Azure 负载均衡器的虚拟机规模集。
+
+* [使用 Azure 门户配置包含现有 Azure 负载均衡器的虚拟机规模集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-portal)。
+* [使用 Azure PowerShell 配置包含现有 Azure 负载均衡器的虚拟机规模集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-powershell)。
+* [使用 Azure CLI 配置包含现有 Azure 负载均衡器的虚拟机规模集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-cli)。
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>创建引用应用程序网关的规模集
 若要创建使用应用程序网关的规模集，请在规模集的 ipConfigurations 节中引用应用程序网关的后端地址池，如此 ARM 模板配置所示：
+
 ```json
 "ipConfigurations": [{
   "name": "{config-name}",
@@ -92,14 +87,17 @@ az vmss create \
 
 
 ## <a name="configurable-dns-settings"></a>可配置的 DNS 设置
-默认情况下，规模集采用其创建时所在的 VNET 和子网的特定 DNS 设置。 但是，你可以直接配置规模集的 DNS 设置。
+默认情况下，规模集采用其创建时所在的 VNET 和子网的特定 DNS 设置。 但是，可以直接配置规模集的 DNS 设置。
 
 ### <a name="creating-a-scale-set-with-configurable-dns-servers"></a>通过可配置的 DNS 服务器创建规模集
-若要通过 Azure CLI 使用自定义 DNS 配置创建规模集，请将 --dns-servers 参数添加到 vmss create 命令中，后接空格分隔的服务器 IP 地址。 例如：
+若要通过 Azure CLI 使用自定义 DNS 配置创建规模集，请将 --dns-servers 参数添加到 vmss create 命令中，后接空格分隔的服务器 IP 地址 。 例如：
+
 ```bash
 --dns-servers 10.0.0.6 10.0.0.5
 ```
+
 若要在 Azure 模板中配置自定义 DNS 服务器，请将 dnsSettings 属性添加到规模集的 networkInterfaceConfigurations 节。 例如：
+
 ```json
 "dnsSettings":{
     "dnsServers":["10.0.0.6", "10.0.0.5"]
@@ -117,7 +115,7 @@ az vmss create \
     {
     "name": "nic1",
     "properties": {
-      "primary": "true",
+      "primary": true,
       "ipConfigurations": [
       {
         "name": "ip1",
@@ -141,8 +139,9 @@ az vmss create \
 }
 ```
 
-单个虚拟机 DNS 名称的输出将采用以下形式： 
-```
+单个虚拟机 DNS 名称的输出将采用以下形式：
+
+```output
 <vm><vmindex>.<specifiedVmssDomainNameLabel>
 ```
 
@@ -152,7 +151,7 @@ az vmss create \
 但某些情况下，确实需要规模集虚拟机拥有自己的公共 IP 地址。 例如，玩游戏时，主机需直接连接到云虚拟机进行游戏的物理处理。 再举例来说，虚拟机有时需在分布式数据库中跨区域进行外部互连。
 
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>使用公共 IP 为每个虚拟机创建规模集
-若要通过 CLI 创建向每个虚拟机分配公共 IP 地址的规模集，请将 --public-ip-per-vm 参数添加到 vmss create 命令中。 
+若要通过 CLI 创建向每个虚拟机分配公共 IP 地址的规模集，请将 --public-ip-per-vm 参数添加到 vmss create 命令中 。 
 
 若要使用 Azure 模板创建规模集，请确保 Microsoft.Compute/virtualMachineScaleSets 资源的 API 版本至少为 **2017-03-30**，并将 **publicIpAddressConfiguration** JSON 属性添加到规模集的 ipConfigurations 节。 例如：
 
@@ -164,34 +163,37 @@ az vmss create \
     }
 }
 ```
+
 示例模板：[201-vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-public-ip-linux)
 
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>在规模集中查询虚拟机的公共 IP 地址
 若要通过 CLI 列出分配到规模集虚拟机的公共 IP 地址，请使用 az vmss list-instance-public-ips 命令。
 
 若要使用 PowerShell 列出规模集的公共 IP 地址，请使用_Get-AzPublicIpAddress_ 命令。 例如：
+
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
 ```
 
 也可以通过直接引用公共 IP 地址配置的资源 ID 来查询公共 IP 地址。 例如：
+
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 ```
 
-也可通过查询 [Azure 资源浏览器](https://resources.azure.com)或者 Azure REST API 2017-03-30 或更高版本来显示分配到规模集虚拟机的公共 IP 地址。
+也可通过查询 [Azure 资源浏览器](https://resources.azure.com)或者 Azure REST API **** 2017-03-30 或更高版本来显示分配到规模集虚拟机的公共 IP 地址。
 
 若要查询 [Azure 资源浏览器](https://resources.azure.com)，请执行以下操作：
 
 1. 在 Web 浏览器中打开 [Azure 资源浏览器](https://resources.azure.com)。
-1. 展开左侧的“订阅”，方法是单击其旁边的 *+*。 如果在“订阅”下只有一个项，则“订阅”可能已展开。
+1. 展开左侧的“订阅”，方法是单击其旁边的 *+*。** 如果在“订阅”下只有一个项，则“订阅”可能已展开。**
 1. 展开订阅。
 1. 展开资源组。
-1. 展开提供程序。
+1. 展开提供程序。**
 1. 展开 *Microsoft.Compute*。
 1. 展开 *virtualMachineScaleSets*。
 1. 展开规模集。
-1. 单击“publicipaddresses”。
+1. 单击“publicipaddresses”。**
 
 若要查询 Azure REST API，请执行以下操作：
 
@@ -200,6 +202,7 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
 ```
 
 [Azure 资源浏览器](https://resources.azure.com)和 Azure REST API 的示例输出：
+
 ```json
 {
   "value": [
@@ -238,7 +241,7 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
 ```
 
 ## <a name="multiple-ip-addresses-per-nic"></a>每个 NIC 多个 IP 地址
-在规模集中，附加到 VM 的每个 NIC 可以有一个或多个关联的 IP 配置。 每个配置分配有一个专用 IP 地址。 每个配置还可以有一个关联的公共 IP 地址资源。 若要了解可以为一个 NIC 分配多少个 IP 地址，以及可以在一个 Azure 订阅中使用多少个公共 IP 地址，请参阅 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
+在规模集中，附加到 VM 的每个 NIC 可以有一个或多个关联的 IP 配置。 每个配置分配有一个专用 IP 地址。 每个配置还可以有一个关联的公共 IP 地址资源。 若要了解可以为一个 NIC 分配多少个 IP 地址，以及可以在一个 Azure 订阅中使用多少个公共 IP 地址，请参阅 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 
 ## <a name="multiple-nics-per-virtual-machine"></a>每个虚拟机多个 NIC
 每个虚拟机最多可以有 8 个 NIC，具体取决于虚拟机大小。 若要了解每个虚拟机的最大 NIC 数，请参阅 [VM 大小](../virtual-machines/windows/sizes.md)一文。 连接到 VM 实例的所有 NIC 都必须连接到同一虚拟网络。 NIC 可以连接到不同子网，但所有子网都必须属于同一虚拟网络。
@@ -251,7 +254,7 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
         {
         "name": "nic1",
         "properties": {
-            "primary": "true",
+            "primary": true,
             "ipConfigurations": [
             {
                 "name": "ip1",
@@ -283,7 +286,7 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
         {
         "name": "nic2",
         "properties": {
-            "primary": "false",
+            "primary": false,
             "ipConfigurations": [
             {
                 "name": "ip1",
@@ -323,14 +326,15 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
 
 也可以直接为规模集指定应用程序安全组，只需将引用添加到规模集虚拟机属性的网络接口 IP 配置节即可。
 
-例如： 
+例如：
+
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
         {
             "name": "nic1",
             "properties": {
-                "primary": "true",
+                "primary": true,
                 "ipConfigurations": [
                     {
                         "name": "ip1",
@@ -367,7 +371,7 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
 
 若要验证网络安全组是否与规模集相关联，请使用 `az vmss show` 命令。 下面的示例使用 `--query` 来筛选结果，只显示输出的相关部分。
 
-```bash
+```azurecli
 az vmss show \
     -g myResourceGroup \
     -n myScaleSet \
@@ -383,7 +387,7 @@ az vmss show \
 
 若要验证应用程序安全组是否与规模集相关联，请使用 `az vmss show` 命令。 下面的示例使用 `--query` 来筛选结果，只显示输出的相关部分。
 
-```bash
+```azurecli
 az vmss show \
     -g myResourceGroup \
     -n myScaleSet \

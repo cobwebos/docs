@@ -1,31 +1,22 @@
 ---
-title: 设置 Windows 上的 Azure Service Fabric Linux 群集 | Microsoft Docs
+title: 在 Windows 上设置 Azure Service Fabric Linux 群集
 description: 本文介绍如何设置在 Windows 开发计算机上运行的 Service Fabric Linux 群集。 这对于跨平台开发尤其有用。
-services: service-fabric
-documentationcenter: .net
 author: suhuruli
-manager: mfussell
-editor: ''
-ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: e700250a6ebcdb82f99c1b460a510811d7ceb96c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 91d055a480748ef012120aac4d329d474491e2c5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60719934"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258586"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>设置 Windows 开发人员计算机上的 Linux Service Fabric 群集
 
 本文档介绍如何在 Windows 开发计算机上设置本地 Linux Service Fabric。 设置本地 Linux 群集有助于快速测试在 Windows 计算机上开发的面向 Linux 群集的应用程序。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 基于 Linux 的 Service Fabric 群集不在 Windows 本机上运行。 为了运行本地 Service Fabric 群集，我们提供了预配置的 Docker 容器映像。 准备事项：
 
 * 至少 4 GB RAM
@@ -54,7 +45,7 @@ ms.locfileid: "60719934"
 2. 在新目录中创建名为 `Dockerfile` 的文件，以生成 Service Fabric 映像：
 
     ```Dockerfile
-    FROM microsoft/service-fabric-onebox
+    FROM mcr.microsoft.com/service-fabric/onebox:latest
     WORKDIR /home/ClusterDeployer
     RUN ./setup.sh
     #Generate the local
@@ -95,10 +86,10 @@ ms.locfileid: "60719934"
     >
     >如果应用程序正在侦听特定端口，则必须使用附加的 `-p` 标记指定这些端口。 例如，如果应用程序正在侦听端口 8080，请添加下面的 `-p` 标记：
     >
-    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
+    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
     >
 
-5. 群集需要一小段时间来启动，可以使用以下命令查看日志，或者通过 [http://localhost:19080](http://localhost:19080) 跳转到仪表板来查看群集运行状况：
+5. 群集需要一小段时间来启动，可以使用以下命令查看日志，或者通过 `http://localhost:19080` 跳转到仪表板来查看群集运行状况：
 
     ```powershell 
     docker logs sftestcluster
@@ -122,7 +113,7 @@ ms.locfileid: "60719934"
  * DNS 服务无法运行且不受支持 [问题 #132](https://github.com/Microsoft/service-fabric/issues/132)
 
 ## <a name="next-steps"></a>后续步骤
-* [Eclipse](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-eclipse) 入门
+* [Eclipse](./service-fabric-get-started-eclipse.md) 入门
 * 查看其他 [Java 示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 

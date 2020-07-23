@@ -1,70 +1,67 @@
 ---
-title: 创建持续集成 Azure 管道 - Team Data Science Process
-description: 人工智能 (AI) 应用程序的 DevOps：使用 Docker 和 Kubernetes 在 Azure 上创建持续集成管道
+title: 使用 Azure Pipelines 创建 CI/CD 管道 - Team Data Science Process
+description: 使用 Docker 和 Kubernetes 为人工智能 (AI) 应用程序创建持续集成和持续交付管道。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 05/22/2018
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
-ms.openlocfilehash: d99149f8112c19a07208523a1ee26ba1c36e5362
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: 42433ec419ac9e02077cd0359e18b5114206f27d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62103528"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76721823"
 ---
-# <a name="creating-continuous-integration-pipeline-on-azure-using-docker-kubernetes-and-python-flask-application"></a>使用 Docker、Kubernetes 和 Python Flask 应用程序在 Azure 上创建持续集成管道
-对于 AI 应用程序，通常有两个工作流：数据科学家构建机器学习模型，应用开发人员构建应用程序并将其公开给最终用户供使用。 在本文中，我们演示了如何为 AI 应用程序实现持续集成 (CI)/持续交付 (CD) 管道。 AI 应用程序是嵌入在预先训练的机器学习 (ML) 模型中的应用程序代码的组合。 在本文中，我们将从一个专用 Azure blob 存储帐户中提取预先训练的模型，它也可以是 AWS S3 帐户。 对于本文，我们将使用一个简单的 python flask Web 应用程序。
+# <a name="create-cicd-pipelines-for-ai-apps-using-azure-pipelines-docker-and-kubernetes"></a>使用 Azure Pipelines、Docker 和 Kubernetes 为 AI 应用创建 CI/CD 管道
+
+人工智能 (AI) 应用程序是嵌入在预先训练的机器学习 (ML) 模型中的应用程序代码的组合。 AI 应用程序始终有两个工作流：数据科学家构建 ML 模型，应用开发人员构建应用并将其公开给最终用户使用。 本文介绍如何为将在应用源代码嵌入了 ML 模型的 AI 应用程序实现持续集成和持续交付 (CI/CD) 管道。 示例代码和教程使用 Python Flask web 应用程序，并从专用 Azure blob 存储帐户提取预先训练模型。 也可以使用 AWS S3 存储帐户。
 
 > [!NOTE]
-> 这是可以执行 CI/CD 的几种方式之一。 下文提到了一些替代工具和其他先决条件。 随着我们开发的内容越来越多，我们将发布那些内容。
->
->
+> 以下过程是执行 CI/CD 的几种方法之一。 除了此工具和先决条件之外，还有其他选择。
 
-## <a name="github-repository-with-document-and-code"></a>包含文档和代码的 GitHub 存储库
-可以从 [GitHub](https://github.com/Azure/DevOps-For-AI-Apps) 下载源代码。 还提供了一个[详细教程](https://github.com/Azure/DevOps-For-AI-Apps/blob/master/Tutorial.md)。
+## <a name="source-code-tutorial-and-prerequisites"></a>源代码、教程和先决条件
 
-## <a name="pre-requisites"></a>先决条件
-下面是实现下文介绍的 CI/CD 管道的先决条件：
-* [Azure DevOps 组织](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-* [运行 Kubernetes 的 Azure 容器服务 (AKS) 群集](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
-* [Azure 容器注册表 (ACR) 帐户](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal)
-* [安装 Kubectl 以针对 Kubernetes 群集运行命令。](https://kubernetes.io/docs/tasks/tools/install-kubectl/) 我们将需要使用此工具从 ACS 群集提取配置。 
-* 将存储库分叉到 GitHub 帐户。
+可以从 GitHub 下载[源代码](https://github.com/Azure/DevOps-For-AI-Apps)和[详细教程](https://github.com/Azure/DevOps-For-AI-Apps/blob/master/Tutorial.md)。 按照教程步骤为自己的应用程序实现 CI/CD 管道。
 
-## <a name="description-of-the-cicd-pipeline"></a>CI/CD 管道的说明
-该管道将针对每个新提交启动，然后运行测试套件，如果测试通过，则会获取最新版本并将其打包到 Docker 容器中。 然后将使用 Azure 容器服务 (ACS) 部署容器，映像将安全地存储到 Azure 容器注册表 (ACR) 中。 ACS 运行 Kubernetes 来管理容器群集，但你可以选择 使用 Docker Swarm 或 Mesos。
+若要使用下载的源代码和教程，需满足以下先决条件： 
 
-应用程序安全地从 Azure 存储帐户拉取最新模型并将其打包为应用程序的一部分。 已部署的应用程序将应用代码和 ML 模型打包为单个容器。 这将应用开发人员与数据科学家分离开来，以确保他们的生产应用始终运行最新的代码和最新的 ML 模型。
+- [源代码存储库](https://github.com/Azure/DevOps-For-AI-Apps)分叉到 GitHub 帐户
+- [Azure DevOps 组织](/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
+- [Azure CLI](/cli/azure/install-azure-cli)
+- [适用于 Kubernetes 的 Azure 容器服务 (AKS) 群集](/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
+- 用于运行命令并从 AKS 群集中提取配置的 [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) 
+- [Azure 容器注册表 (ACR) 帐户](/azure/container-registry/container-registry-get-started-portal)
 
-下面给出了管道体系结构。 
+## <a name="cicd-pipeline-summary"></a>CI/CD 管道摘要
 
-![体系结构](./media/ci-cd-flask/Architecture.PNG?raw=true)
+每个新的 Git 提交都会启动生成管道。 生成从 blob 存储帐户安全提取最新 ML 模型，并将其与应用代码打包到单个容器中。 应用程序开发和数据科学工作流的这种分离，可确保生产应用始终使用最新的 ML 模型运行最新的代码。 如果应用通过测试，管道会将生成映像安全存储在 ACR 中的 Docker 容器内。 然后，发布管道将使用 AKS 部署容器。 
 
-## <a name="steps-of-the-cicd-pipeline"></a>CI/CD 管道的步骤
+## <a name="cicd-pipeline-steps"></a>CI/CD 管道步骤
+
+下面的关系图和步骤介绍了 CI/CD 管道体系结构：
+
+![CI/CD 管道体系结构](./media/ci-cd-flask/architecture.png)
+
 1. 开发人员使用自己选择的 IDE 编写应用程序代码。
-2. 他们将代码提交到他们选择的源代码管理工具（Azure DevOps 能够很好地支持各种源代码管理工具）
-3. 另一边，数据科学家在开发模型。
-4. 对模型感到满意后，他们将模型发布到一个模型存储库，在本例中我们使用的是 blob 存储帐户。 
-5. 生成过程根据 GitHub 中的提交在 Azure DevOps 中启动。
-6. Azure DevOps 生成管道从 Blob 容器中拉取最新的模型，并创建一个容器。
-7. Azure DevOps 将映像推送到 Azure 容器注册表中的一个专用映像存储库
-8. 发布管道按设定的计划（每夜）启动。
-9. 拉取 ACR 中的最新映像并将其部署到 ACS 上的 Kubernetes 群集中。
-10. 用户向应用发出的请求经过 DNS 服务器。
-11. DNS 服务器将请求传递到负载平衡器，并向用户发送响应。
+2. 开发人员将代码提交到 Azure Repos、GitHub 或其他 Git 源代码管理平台。 
+3. 另一边，数据科学家在开发 ML 模型。
+4. 数据科学家将完成的模型发布到模型存储库，在本例中为 blob 存储帐户。 
+5. Azure Pipelines 基于 Git 提交启动生成。
+6. 生成管道从 blob 存储中拉取最新的 ML 模型并创建容器。
+7. 管道将生成映像推送到 ACR 中的专用映像存储库。
+8. 发布管道基于成功的生成启动。
+9. 管道从 ACR 中拉取最新的映像，并将其部署在 AKS 上的 Kubernetes 群集中。
+10. 用户对应用的请求将通过 DNS 服务器。
+11. DNS 服务器将请求传递给负载均衡器，并将响应发送回用户。
 
-## <a name="next-steps"></a>后续步骤
-* 参阅[教程](https://github.com/Azure/DevOps-For-AI-Apps/blob/master/Tutorial.md)来理解细节并为应用程序实现你自己的 CI/CD 管道。
+## <a name="see-also"></a>另请参阅
 
-## <a name="references"></a>参考
-* [Team Data Science Process (TDSP)](https://aka.ms/tdsp)
-* [Azure 机器学习 (AML)](https://docs.microsoft.com/azure/machine-learning/service/)
-* [Azure DevOps](https://www.visualstudio.com/vso/)
-* [Azure Kubernetes 服务 (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+- [Team Data Science Process (TDSP)](/azure/machine-learning/team-data-science-process/)
+- [Azure 机器学习 (AML)](/azure/machine-learning/)
+- [Azure DevOps](https://azure.microsoft.com/services/devops/)
+- [Azure Kubernetes 服务 (AKS)](/azure/aks/intro-kubernetes)

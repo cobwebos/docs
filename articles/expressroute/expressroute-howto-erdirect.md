@@ -1,34 +1,39 @@
 ---
-title: 配置 ExpressRoute Direct - Azure | Microsoft Docs
-description: 此页可帮助你配置 ExpressRoute 直接。
+title: Azure ExpressRoute：配置 ExpressRoute 直接
+description: 此页可帮助你配置 ExpressRoute Direct。
 services: expressroute
 author: jaredr80
 ms.service: expressroute
-ms.topic: conceptual
-ms.date: 05/20/2019
+ms.topic: how-to
+ms.date: 01/22/2020
 ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: 0fec7234d18659051c61fda593b1ba0fb846c220
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 8d028baef8898ce8d45fa8e2e142a58a1ae3300c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65964264"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736248"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>如何配置 ExpressRoute 直接
 
-使用 ExpressRoute Direct，可以直接连接到 Microsoft 战略性分布在全球的对等互连位置的的全球网络。 有关详细信息，请参阅[关于 ExpressRoute Direct Connect](expressroute-erdirect-about.md)。
+使用 ExpressRoute Direct，可以直接连接到 Microsoft 战略性分布在全球的对等互连位置的的全球网络。 有关详细信息，请参阅[关于 ExpressRoute Direct](expressroute-erdirect-about.md)。
 
-## <a name="resources"></a>创建资源
+## <a name="create-the-resource"></a><a name="resources"></a>创建资源
 
 1. 登录到 Azure 并选择订阅。 ExpressRoute Direct 资源和 ExpressRoute 线路必须位于同一订阅中。
 
    ```powershell
    Connect-AzAccount 
 
-   Select-AzSubscription -Subscription “<SubscriptionID or SubscriptionName>”
+   Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
    ```
-2. 列出支持 ExpressRoute Direct 的所有位置。
+   
+2. 将你的订阅重新注册到 Microsoft 以访问 expressrouteportslocation 和 expressrouteport Api。
+
+   ```powershell
+   Register-AzResourceProvider -ProviderNameSpace "Microsoft.Network"
+   ```   
+3. 列出支持 ExpressRoute Direct 的所有位置。
   
    ```powershell
    Get-AzExpressRoutePortsLocation
@@ -61,7 +66,7 @@ ms.locfileid: "65964264"
    Contact             : support@equinix.com
    AvailableBandwidths : []
    ```
-3. 确定上面列出的某个位置是否有可用的带宽
+4. 确定上面列出的某个位置是否有可用的带宽
 
    ```powershell
    Get-AzExpressRoutePortsLocation -LocationName "Equinix-San-Jose-SV1"
@@ -83,7 +88,7 @@ ms.locfileid: "65964264"
                           }
                         ]
    ```
-4. 根据上面选择的位置创建 ExpressRoute Direct 资源
+5. 根据上面选择的位置创建 ExpressRoute Direct 资源
 
    ExpressRoute Direct 同时支持 QinQ 和 Dot1Q 封装。 如果选择了 QinQ，则会动态为每个 ExpressRoute 线路分配一个 S-Tag，并且每个线路在整个 ExpressRoute Direct 资源中将是唯一的。 线路上的每个 C-Tag 在该线路上必须是唯一的，但在整个 ExpressRoute Direct 中不必唯一。  
 
@@ -150,7 +155,7 @@ ms.locfileid: "65964264"
    Circuits                   : []
    ```
 
-## <a name="state"></a>更改链路的管理状态
+## <a name="change-admin-state-of-links"></a><a name="state"></a>更改链路的管理状态
 
   应当使用此过程执行第 1 层测试，以确保每个交叉连接都已针对主端口和辅助端口正确设置到每台路由器中。
 1. 获取 ExpressRoute Direct 详细信息。
@@ -163,10 +168,10 @@ ms.locfileid: "65964264"
    Links[0] 是主端口，Links[1] 是辅助端口。
 
    ```powershell
-   $ERDirect.Links[0].AdminState = “Enabled”
+   $ERDirect.Links[0].AdminState = "Enabled"
    Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
    $ERDirect = Get-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
-   $ERDirect.Links[1].AdminState = “Enabled”
+   $ERDirect.Links[1].AdminState = "Enabled"
    Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
    ```
    **示例输出：**
@@ -218,17 +223,17 @@ ms.locfileid: "65964264"
    Circuits                   : []
    ```
 
-   使用相同的过程和 `AdminState = “Disabled”` 设置可关闭端口。
+   使用相同的过程和 `AdminState = "Disabled"` 设置可关闭端口。
 
-## <a name="circuit"></a>创建线路
+## <a name="create-a-circuit"></a><a name="circuit"></a>创建线路
 
 默认情况下，可以在 ExpressRoute Direct 资源所在的订阅中创建 10 条线路。 可以联系支持人员来提高此限额。 你负责跟踪预配的和已利用的带宽。 预配的带宽是 ExpressRoute Direct 资源上所有线路的带宽总和，已利用的带宽是基础物理接口的物理利用率。
 
-有额外的线路带宽可以在 ExpressRoute Direct 上使用，仅用于支持上面概述的场景。 其中包括：40Gbps 和 100Gbps。
+有额外的线路带宽可以在 ExpressRoute Direct 上使用，仅用于支持上面概述的场景。 它们是：40Gbps 和 100Gbps。
 
-**SkuTier**可以是本地、 标准或高级。
+**SkuTier**可以是本地、标准或高级。
 
-**SkuFamily**必须以无限制模式为 MeteredData ExpressRoute 直接上不支持。
+**SkuFamily**必须是 MeteredData，因为 ExpressRoute 直接不支持。
 
 在 ExpressRoute Direct 资源上创建一个线路。
 

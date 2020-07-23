@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure 导入/导出服务 REST API | Microsoft Docs
 description: 了解可在何处查找使用 Azure 导入/导出服务 REST API 的资源，包括操作说明和参考材料。
-author: muralikk
+author: twooley
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/15/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 1e8b60f37cefb81fbbbbb7823be7752dd1188dc3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ae80c00fd81d0966167d2adf00764a0b1089c163
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60320272"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514119"
 ---
 # <a name="using-the-azure-importexport-service-rest-api"></a>使用 Azure 导入/导出服务 REST API
 

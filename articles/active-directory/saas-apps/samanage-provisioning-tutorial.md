@@ -1,11 +1,11 @@
 ---
 title: 教程：使用 Azure Active Directory 为 Samanage 配置自动用户预配 | Microsoft Docs
-description: 了解如何配置 Azure Active Directory 自动预配和取消预配到 Samanage 的用户帐户。
+description: 了解如何自动将用户 Azure AD 帐户预配到 Samanage 以及取消其预配。
 services: active-directory
 documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd-msft
+manager: beatrizd
 ms.assetid: 62d0392f-37d4-436e-9aff-22f4e5b83623
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -13,165 +13,153 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2019
-ms.author: v-wingf-msft
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d474d9bfd6016885eaa21afcea5d44d39c624084
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.date: 01/13/2020
+ms.author: Zhchia
+ms.openlocfilehash: 182d314b24ce082d996cb692e2a7bb35265abcfe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62104623"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82628025"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>教程：为 Samanage 配置自动用户预配
+本教程介绍了需要在 Samanage 和 Azure Active Directory （Azure AD）中执行的步骤，以配置自动用户预配。 配置后，Azure AD 使用 Azure AD 预配服务自动设置用户和组并取消其预配到[Samanage](https://www.samanage.com/pricing/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。
 
-本教程演示了在 Samanage 和 Azure Active Directory (Azure AD) 配置 Azure AD 自动预配和取消预配用户和组到 Samanage 中执行的步骤。
+## <a name="migrate-to-the-new-samange-application"></a>迁移到新的 Samange 应用程序
 
-> [!NOTE]
-> 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的作用，它的工作原理，以及常见问题的信息，请参阅[自动用户预配和取消预配到软件作为-服务 (SaaS) 应用程序与 Azure Active Directory](../manage-apps/user-provisioning.md)。
+如果已有与 Samanage 的集成，请参阅以下部分，了解即将发生的更改。 如果是第一次设置 Samanage，可以跳过本部分并转到**支持的功能**。
 
-## <a name="prerequisites"></a>必备组件
+#### <a name="whats-changing"></a>有什么变化？
+* Azure AD 端的更改：在 Samange 中预配用户的授权方法一直以来都是**基本身份验证**。不久，你会看到授权方法已更改为**长生存期机密令牌**。
 
-在本教程中所述的方案假定你拥有：
 
-* Azure AD 租户。
-* 一个[Samanage 租户](https://www.samanage.com/pricing/)与专业的包。
-* 在 Samanage 中具有管理员权限的用户帐户。
+#### <a name="what-do-i-need-to-do-to-migrate-my-existing-custom-integration-to-the-new-application"></a>将现有自定义集成迁移到新应用程序需要执行哪些操作？
+如果现有的 Samanage 集成具有有效的管理员凭据，则**无需执行任何操作**。 我们会自动将客户迁移到新应用程序。 此过程完全在幕后完成。 如果现有凭据过期，或者如果需要再次授权访问应用程序，则需要生成一个长期机密令牌。 若要生成新令牌，请参阅本文的步骤2。
 
-> [!NOTE]
-> Azure AD 预配集成依赖于[Samanage Rest API](https://www.samanage.com/api/)。 此 API 可供 Samanage 开发人员专业程序包使用的帐户。
 
-## <a name="add-samanage-from-the-azure-marketplace"></a>从 Azure Marketplace 中添加 Samanage
+#### <a name="how-can-i-tell-if-my-application-has-been-migrated"></a>如何判断应用程序是否已迁移？ 
+迁移你的应用程序后，在 "**管理员凭据**" 部分中，"**管理员用户名**" 和 "**管理员密码**" 字段将替换为 "单个**机密令牌**" 字段。
 
-为 Samanage 配置自动用户预配与 Azure AD 之前，将从 Azure Marketplace 添加 Samanage 到托管 SaaS 应用程序的列表。
+## <a name="capabilities-supported"></a>支持的功能
+> [!div class="checklist"]
+> * 在 Samanage 中创建用户
+> * 当用户不再需要访问权限时，删除 Samanage 中的用户
+> * 使用户属性在 Azure AD 和 Samanage 之间保持同步
+> * 在 Samanage 中预配组和组成员身份
+> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/samanage-tutorial)到 Samanage （推荐）
 
-若要从 Marketplace 中添加 Samanage，请执行以下步骤。
+## <a name="prerequisites"></a>先决条件
 
-1. 在中[Azure 门户](https://portal.azure.com)，在左侧导航窗格中，选择**Azure Active Directory**。
+本教程中概述的方案假定你已具有以下先决条件：
 
-    ![Azure Active Directory 图标](common/select-azuread.png)
+* [Azure AD 租户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* 具有配置预配[权限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。 
+* 具有专业包的[Samanage 租户](https://www.samanage.com/pricing/)。
+* Samanage 中具有管理员权限的用户帐户。
 
-2. 转到“企业应用程序”，并选择“所有应用程序”。
+## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
+1. 了解[预配服务的工作原理](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
+2. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)中。
+3. 确定要[在 Azure AD 与 Samanage 之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
+
+## <a name="step-2-configure-samanage-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 Samanage 以支持 Azure AD 的预配
+
+若要生成用于身份验证的机密令牌，请参阅[此](https://help.samanage.com/s/article/Tutorial-Tokens-Authentication-for-API-Integration-1536721557657)。
+
+## <a name="step-3-add-samanage-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 Samanage
+
+从 Azure AD 应用程序库中添加 Samanage，开始管理预配到 Samanage。 如果以前为 SSO 设置了 Samanage，则可以使用相同的应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)详细了解如何从库中添加应用程序。 
+
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁在预配范围中 
+
+使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的范围筛选器。 
+
+* 将用户和组分配到 Samanage 时，必须选择 "**默认" 访问权限**以外的其他角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
+
+* 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
+
+
+## <a name="step-5-configure-automatic-user-provisioning-to-samanage"></a>步骤 5。 配置 Samanage 的自动用户预配 
+
+本部分介绍了如何配置 Azure AD 预配服务以基于 Azure AD 中的用户和/或组分配在 TestApp 中创建、更新和禁用用户和/或组。
+
+### <a name="to-configure-automatic-user-provisioning-for-samanage-in-azure-ad"></a>若要在 Azure AD 中为 Samanage 配置自动用户预配，请执行以下操作：
+
+1. 登录 [Azure 门户](https://portal.azure.com)。 依次选择“企业应用程序”、“所有应用程序” 。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请在对话框顶部选择“新建应用程序”。
-
-    ![“新增应用程序”按钮](common/add-new-app.png)
-
-4. 在搜索框中，输入**Samanage** ，然后选择**Samanage**结果面板中。 若要添加该应用程序，请选择**添加**。
-
-    ![结果列表中的 Samanage](common/search-new-app.png)
-
-## <a name="assign-users-to-samanage"></a>将用户分配到 Samanage
-
-Azure Active Directory 使用称为的概念*分配*来确定哪些用户应收到对所选应用的访问。 在自动用户预配的上下文中，同步的用户或组分配给 Azure AD 中的应用程序。
-
-配置和启用自动用户预配之前，确定哪些用户或 Azure AD 中的组需要访问 Samanage。 若要将这些用户或组分配到 Samanage，请按照中的说明[向企业应用分配用户或组](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)。
-
-### <a name="important-tips-for-assigning-users-to-samanage"></a>将用户分配到 Samanage 的重要提示
-
-*    今天，Samanage 角色自动进行动态填充 Azure 门户 UI 中。 将 Samanage 角色分配给用户之前，请确保针对 Samanage 来检索你的 Samanage 租户中的最新角色完成初始同步。
-
-*    我们建议将分配一个 Azure AD 用户到 Samanage 来测试初始进行自动用户预配配置。 您可以分配其他用户和组更高版本后的测试都成功。
-
-*    当将用户分配到 Samanage 时，请选择任何有效的特定于应用程序的角色，如果可用，在分配对话框中。 具有“默认访问权限”角色的用户排除在预配之外。
-
-## <a name="configure-automatic-user-provisioning-to-samanage"></a>配置自动用户预配到 Samanage
-
-本部分将指导您完成配置 Azure AD 预配服务的步骤。 使用它来创建、 更新和禁用用户或组在 Samanage 中根据 Azure AD 中的用户或组分配。
-
-> [!TIP]
-> 此外可以启用基于 SAML 的单一登录为 Samanage。 按照中的说明[Samanage 单一登录教程](samanage-tutorial.md)。 单一登录可以独立于配置自动用户预配，尽管这两个功能互相补充。
-
-### <a name="configure-automatic-user-provisioning-for-samanage-in-azure-ad"></a>配置自动用户在 Azure AD 中预配为 Samanage
-
-1. 登录到 [Azure 门户](https://portal.azure.com)。 选择**企业应用程序** > **的所有应用程序** > **Samanage**。
-
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
-
-2. 在应用程序列表中，选择“Samanage”。
+2. 在应用程序列表中，选择“Samanage”****。
 
     ![应用程序列表中的 Samanage 链接](common/all-applications.png)
 
 3. 选择“预配”选项卡。
 
-    ![Samanage 预配](./media/samanage-provisioning-tutorial/ProvisioningTab.png)
+    ![预配选项卡](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![Samanage 预配模式](./media/samanage-provisioning-tutorial/ProvisioningCredentials.png)
+    ![“预配”选项卡](common/provisioning-automatic.png)
 
-5. 下**管理员凭据**部分中，输入管理员用户名和 Samanage 帐户的管理员密码。 这些值的示例如下：
+5. 在 "**管理员凭据**" 部分中，输入 " `https://api.samanage.com` **租户 URL**"。  在“机密令牌”中，输入之前检索到的机密令牌值。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 Samanage。 如果连接失败，请确保 Samanage 帐户具有管理员权限，然后重试
 
-   * 在中**管理员用户名**框中，填入 Samanage 租户的管理员帐户的用户名。 例如 admin@contoso.com。
+    ![预配](./media/samanage-provisioning-tutorial/provisioning.png)
 
-   * 在中**管理员密码**框中，填入管理员用户名所对应的管理员帐户的密码。
+6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送电子邮件通知”复选框 。
 
-6. 步骤 5 中所示的框中填充后，选择**测试连接**，请确保 Azure AD 可以连接到 Samanage。 如果连接失败，请确保 Samanage 帐户具有管理员权限，然后重试。
+    ![通知电子邮件](common/provisioning-notification-email.png)
 
-    ![Samanage 测试连接](./media/samanage-provisioning-tutorial/TestConnection.png)
+7. 选择“保存”。
 
-7. 在中**通知电子邮件**框中，输入用户的电子邮件地址或组以接收预配错误通知。 选择**发生故障时发送电子邮件通知**复选框。
+8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 Samanage**"。
 
-    ![Samanage 通知电子邮件](./media/samanage-provisioning-tutorial/EmailNotification.png)
+9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Samanage 的用户属性。 选为“匹配”属性的特性用于匹配 Samanage 中的用户帐户以执行更新操作****。 如果选择更改[匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保 Samanage API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
-8. 选择“保存”。
+      ![Samange 用户映射](./media/samanage-provisioning-tutorial/user-attributes.png)
 
-9. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Samanage”。
+10. 在“映射”部分下，选择“将 Azure Active Directory 组同步到 Samanage”********。
 
-    ![Samanage 用户同步](./media/samanage-provisioning-tutorial/UserMappings.png)
+11. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Samanage 的组属性。 选为“匹配”**** 属性的特性用于匹配 Samanage 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-10. 在“属性映射”部分中，查看从 Azure AD 同步到 Samanage 的用户属性。 选为“匹配”属性的特性用于匹配 Samanage 中的用户帐户以执行更新操作。 若要保存任何更改，请选择**保存**。
+      ![Samange 组映射](./media/samanage-provisioning-tutorial/group-attributes.png)
 
-    ![Samanage 匹配用户属性](./media/samanage-provisioning-tutorial/UserAttributeMapping.png)
+12. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
-11. 若要启用组映射，在“映射”部分下，选择“将 Azure Active Directory 组同步到 Samanage”。
+13. 若要为 Samanage 启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
 
-    ![Samanage 组同步](./media/samanage-provisioning-tutorial/GroupMappings.png)
+    ![预配状态已打开](common/provisioning-toggle-on.png)
 
-12. 将“启用”设置为“是”将同步组。 在“属性映射”部分中，查看从 Azure AD 同步到 Samanage 的组属性。 选为“匹配”属性的特性用于匹配 Samanage 中的用户帐户以执行更新操作。 若要保存任何更改，请选择**保存**。
+14. 通过在“设置”部分的“范围”中选择所需的值，定义要预配到 Samanage 的用户和/或组********。
 
-    ![Samanage 匹配组属性](./media/samanage-provisioning-tutorial/GroupAttributeMapping.png)
+    ![预配范围](common/provisioning-scope.png)
 
-13. 若要配置范围筛选器，按照中的说明[作用域筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)。
+15. 已准备好预配时，单击“保存”。
 
-14. 若要启用 Azure AD 中预配服务为 Samanage，**设置**部分中，更改**预配状态**到**上**。
+    ![保存预配配置](common/provisioning-configuration-save.png)
 
-    ![Samanage 预配状态](./media/samanage-provisioning-tutorial/ProvisioningStatus.png)
+此操作会对“设置”部分的“范围”中定义的所有用户和组启动初始同步周期 。 初始周期执行的时间比后续周期长，只要 Azure AD 预配服务正在运行，后续周期大约每隔 40 分钟就会进行一次。 
 
-15. 定义的用户或组所需预配到 Samanage。 在中**设置**部分中，选择在所需的值**作用域**。 当选择**同步所有用户和组**选项，请在"连接器限制。"下一节中所述，请考虑限制
+## <a name="step-6-monitor-your-deployment"></a>步骤 6. 监视部署
+配置预配后，请使用以下资源来监视部署：
 
-    ![Samanage 作用域](./media/samanage-provisioning-tutorial/ScopeSync.png)
-
-16. 准备好预配后，选择**保存**。
-
-    ![Samanage 保存](./media/samanage-provisioning-tutorial/SaveProvisioning.png)
-
-
-此操作会启动初始同步所有用户或组中定义**作用域**中**设置**部分。 初始同步长，若要执行的时间比更高版本的同步。 只要 Azure AD 预配服务运行，它们会大约每隔 40 分钟。 
-
-可以使用**同步详细信息**部分监视进度并跟踪指向预配活动报告。 报告描述了 Azure AD 预配服务对 Samanage 执行的所有操作。
-
-若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
+1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
+2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
+3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。
 
 ## <a name="connector-limitations"></a>连接器限制
 
-如果选择**同步所有用户和组**选项，并为 Samanage 配置了值**角色**属性下的值**默认值，如果为 null （是可选的）** 框必须采用以下格式表示：
+如果选择 "**同步所有用户和组**" 选项并为 "Samanage **roles** " 属性配置值，则必须用以下格式表示**默认值 "如果为 null （可选）** " 框下的值：
 
-- {"displayName":"角色"}，其中，角色是所需的默认值。
+- {"displayName"： "role"}，其中 role 是所需的默认值。
+
+## <a name="change-log"></a>更改日志
+
+* 04/22/2020-更新了从基本身份验证到长生存期机密令牌的授权方法。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
-
 
 ## <a name="next-steps"></a>后续步骤
 
 * [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)
-
-<!--Image references-->
-[1]: ./media/samanage-provisioning-tutorial/tutorial_general_01.png
-[2]: ./media/samanage-provisioning-tutorial/tutorial_general_02.png
-[3]: ./media/samanage-provisioning-tutorial/tutorial_general_03.png

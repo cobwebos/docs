@@ -1,6 +1,6 @@
 ---
 title: 混合标识设计 - 采用策略 Azure | Microsoft Docs
-description: 借助条件性访问控制，Azure Active Directory 会在验证用户身份时先检查选取的特定条件，然后才允许访问应用程序。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。
+description: 使用条件性访问控制时，Azure Active Directory 会检查在对用户进行身份验证时以及允许访问应用程序之前选取的特定条件。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c55dc0cbc175542d0b208bbe72566a0adb55a371
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 7263d6a73a78b4b804cddd77f979898008ebadd6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496725"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555375"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>定义混合标识采用策略
 在此任务中，你将根据所述的业务要求，为混合标识解决方案定义混合标识采用策略：
@@ -55,7 +55,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 | 策略 | 优点 | 缺点 |
 | --- | --- | --- |
 | **云标识** |在小型组织中易于管理。 <br> 没有要本地安装的内容。 无需其他任何硬件<br>用户离职时轻松禁用其帐户 |用户访问云中的工作负荷时需要登录 <br> 云和本地标识的密码可以相同，也可以不同 |
-| **同步** |本地密码用于针对本地和云目录进行身份验证 <br>在小型、中型或大型组织中更易于管理 <br>用户可针对某些资源执行单一登录 (SSO) <br> 用于同步的 Microsoft 首选方法 <br> 更易于管理 |由于公司的特定策略，某些客户可能不愿意将目录与云同步 |
+| **得到** |本地密码用于针对本地和云目录进行身份验证 <br>在小型、中型或大型组织中更易于管理 <br>用户可针对某些资源执行单一登录 (SSO) <br> 用于同步的 Microsoft 首选方法 <br> 更易于管理 |由于公司的特定策略，某些客户可能不愿意将目录与云同步 |
 | **联合** |用户可以执行单一登录 (SSO) <br>如果用户被辞退或离职，可以立即禁用其帐户并吊销其访问权限。<br> 支持同步所不能实现的高级方案 |设置和配置步骤较多 <br> 更多的维护工作 <br> 可能需要额外的硬件来部署 STS 服务器。 <br> 可能需要额外的硬件来安装联合服务器。 如果使用 AD FS，则需要额外的软件 <br> 需要进行大量的设置才能使用 SSO <br> 严重的缺点是，联合身份验证服务器关闭时用户无法进行身份验证 |
 
 ### <a name="client-experience"></a>客户端体验
@@ -63,7 +63,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 
 **已加入域的应用程序和专用网络应用程序**：
 
-|  | 同步标识 | 联合标识 |
+| 应用程序 | 同步标识 | 联合身份 |
 | --- | --- | --- |
 | Web 浏览器 |基于表单的身份验证 |单一登录，有时需要提供组织 ID |
 | Outlook |提示输入凭据 |提示输入凭据 |
@@ -73,7 +73,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 
 **外部或不受信任源**：
 
-|  | 同步标识 | 联合标识 |
+| 应用程序 | 同步标识 | 联合身份 |
 | --- | --- | --- |
 | Web 浏览器 |基于表单的身份验证 |基于表单的身份验证 |
 | Outlook、Skype for Business (Lync)、OneDrive for Business、Office 订阅 |提示输入凭据 |提示输入凭据 |
@@ -111,7 +111,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 ### <a name="supported-topologies"></a>支持的拓扑
 定义同步策略时，必须确定使用的拓扑。 可以根据步骤 2 中已确定的信息，确定适合使用的拓扑。 单林单 Azure AD 拓扑最常见，它由单个 Active Directory 林和单个 Azure AD 实例组成。  这会用于大多数方案，也是在使用 Azure AD Connect Express 安装时预期的拓扑，如下图所示。
 
-![支持的拓扑](./media/plan-hybrid-identity-design-considerations/single-forest.png)单一林方案中很常见的大型组织甚至小型组织，拥有多个林，如图 5 中所示。
+![支持的拓扑 ](./media/plan-hybrid-identity-design-considerations/single-forest.png) 单林方案通常，大型组织甚至小型组织具有多个林，如图5所示。
 
 > [!NOTE]
 > 有关不同的本地和 Azure AD 拓扑与 Azure AD Connect 同步的详细信息，请参阅 [Azure AD Connect 的拓扑](plan-connect-topologies.md)一文。
@@ -140,7 +140,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 
 如果有多个活动帐户或多个邮箱，Azure AD Connect 将选择其中一个并忽略其他的帐户或邮箱。  如果有链接的邮箱但没有其他帐户，则这些帐户不会导出到 Azure AD，并且用户将不是任何组的成员。  这不同以往在 DirSync 中的情况，主要是为了更充分支持这些多林方案。 下图显示了多林方案。
 
-![多个 Azure AD 租户](./media/plan-hybrid-identity-design-considerations/multiforest-multipleAzureAD.png) 
+![多 Azure AD 租户](./media/plan-hybrid-identity-design-considerations/multiforest-multipleAzureAD.png) 
 
 **多林多 Azure AD 方案**
 
@@ -148,7 +148,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 
 可以且支持将一个 Active Directory 本地实例连接到多个 Azure AD 目录，如下图所示：
 
-![单林筛选](./media/plan-hybrid-identity-design-considerations/single-forest-flitering.png) 
+![单个林筛选](./media/plan-hybrid-identity-design-considerations/single-forest-flitering.png) 
 
 **单林筛选方案**
 
@@ -193,9 +193,9 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 | 用户位置 | 首选设计选项 |
 | --- | --- |
 | Azure Active Directory |云中的多重身份验证 |
-| Azure AD 和使用 AD FS 联合身份验证的本地 AD |两者 |
-| Azure AD 和使用 Azure AD Connect 的本地 AD - 没有密码同步 |两者 |
-| Azure AD 和使用 Azure AD Connect 的本地 AD - 有密码同步 |两者 |
+| Azure AD 和使用 AD FS 联合身份验证的本地 AD |推送、请求和匿名 |
+| Azure AD 和使用 Azure AD Connect 的本地 AD - 没有密码同步 |推送、请求和匿名 |
+| Azure AD 和使用 Azure AD Connect 的本地 AD - 有密码同步 |推送、请求和匿名 |
 | 本地 AD |多重身份验证服务器 |
 
 > [!NOTE]

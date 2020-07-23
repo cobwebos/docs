@@ -1,10 +1,11 @@
 ---
-title: 使用.NET SDK 在 Azure DNS 中创建 DNS 区域和记录集 | Microsoft Docs
-description: 如何使用 .NET SDK 在 Azure DNS 中创建 DNS 区域和记录集。
+title: 使用 .NET SDK 创建 DNS 区域和记录集
+titleSuffix: Azure DNS
+description: 在此学习路径中，开始使用 .NET SDK 在 Azure DNS 中创建 DNS 区域和记录集。
 services: dns
 documentationcenter: na
-author: vhorne
-manager: jeconnoc
+author: rohinkoul
+manager: kumudD
 ms.assetid: eed99b87-f4d4-4fbf-a926-263f7e30b884
 ms.service: dns
 ms.devlang: na
@@ -12,13 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2016
-ms.author: victorh
-ms.openlocfilehash: a06d629087e853c2578e6d35a2ea90c5a8eff840
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: rohink
+ms.openlocfilehash: c497209e456ff838786edaa19e46ebc5c1858d5f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60308937"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76938858"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>使用 .NET SDK 创建 DNS 区域和记录集
 
@@ -29,7 +29,7 @@ ms.locfileid: "60308937"
 通常情况下，通过专用帐户（而不是自己的用户凭据）授予对 Azure 资源的编程访问权限。 将这些专用帐户称为“服务主体”帐户。 若要使用 Azure DNS SDK 示例项目，首先需要创建一个服务主体帐户并为其分配正确的权限。
 
 1. 请按照[这些说明](../active-directory/develop/howto-authenticate-service-principal-powershell.md)创建服务主体帐户（Azure DNS SDK 示例项目采用基于密码的身份验证。）
-2. 创建资源组（[此处提供了方法](../azure-resource-manager/resource-group-template-deploy-portal.md)）。
+2. 创建资源组（[此处提供了方法](../azure-resource-manager/templates/deploy-portal.md)）。
 3. 使用 Azure RBAC 将服务主体帐户的“DNS 区域参与者”权限授予资源组（[此处提供了方法](../role-based-access-control/role-assignments-portal.md)）。
 4. 如果使用 Azure DNS SDK 示例项目，请如下所示编辑 program.cs 文件：
 
@@ -42,8 +42,8 @@ ms.locfileid: "60308937"
 若要使用 Azure DNS .NET SDK，需要安装 **Azure DNS 管理库** NuGet 包和其他所需的 Azure 包。
 
 1. 在 **Visual Studio** 中，打开项目或新的项目。
-2. 转到“**工具**”**>**“**NuGet 包管理器**”**>“** **管理解决方案的 NuGet 包...**”。
-3. 单击“浏览”，启用“包括预发行版”复选框，并在搜索框中键入 **Microsoft.Azure.Management.Dns**。
+2. 转到“工具” **>** “NuGet 包管理器” **>** “管理解决方案的 NuGet 包...”    。
+3. 单击“浏览”  ，启用“包括预发行版”  复选框，并在搜索框中键入 **Microsoft.Azure.Management.Dns**。
 4. 选择此包，然后单击“**安装**”将其添加到 Visual Studio 项目中。
 5. 重复以上过程，还能安装以下包：**Microsoft.Rest.ClientRuntime.Azure.Authentication** 和 **Microsoft.Azure.Management.ResourceManager**。
 

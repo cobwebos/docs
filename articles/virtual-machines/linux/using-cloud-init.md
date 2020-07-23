@@ -1,55 +1,120 @@
 ---
-title: cloud-init 对 Azure 中 Linux 虚拟机的支持的概述 | Microsoft Docs
-description: Microsoft Azure 中的 cloud-init 功能的概述
-services: virtual-machines-linux
-documentationcenter: ''
-author: rickstercdn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 195c22cd-4629-4582-9ee3-9749493f1d72
+title: Azure 中 Linux VM 的 cloud-init 支持概述
+description: 在 Azure 中预配时用于配置 VM 的 cloud-init 功能概述。
+author: danielsollondon
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
-ms.topic: article
-ms.date: 11/29/2017
-ms.author: rclaus
-ms.openlocfilehash: 6dd1dd0ce2395e2b06d80385ffd299835a280526
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 06/15/2020
+ms.author: danis
+ms.openlocfilehash: e303b713adf2925af8bc012a5b858c6f5740fccf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60614044"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510066"
 ---
-# <a name="cloud-init-support-for-virtual-machines-in-azure"></a>cloud-init 对 Azure 中虚拟机的支持
-本文介绍了在 Azure 中使用 [cloud-init](https://cloudinit.readthedocs.io) 在预配时间配置虚拟机 (VM) 或虚拟机缩放集 (VMSS) 的现有支持。 Azure 预配资源后，这些 cloud-init 脚本即会在第一次启动时运行。  
+# <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure 中虚拟机的 cloud-init 支持
+本文介绍在 Azure 中预配时用于配置虚拟机 (VM) 或虚拟机规模集的 [cloud-init](https://cloudinit.readthedocs.io) 的现有支持。 Azure 预配资源后，这些 cloud-init 配置即会在首次启动时运行。  
 
-## <a name="cloud-init-overview"></a>Cloud-init 概述
-[Cloud-init](https://cloudinit.readthedocs.io) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 安装程序包和写入文件，或者配置用户和安全。 由于是在初始启动过程中调用 cloud-init，因此无需额外的步骤且无需代理来应用配置。  有关如何正确设置 `#cloud-config` 文件格式的详细信息，请参阅 [cloud-init 文档站点](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)。  `#cloud-config` 文件是采用 base64 编码的文本文件。
+VM 预配是指 Azure 向下传递“VM 创建”参数值（例如主机名、用户名、密码等），并在 VM 启动时向其提供这些值的过程。 “预配代理”将使用这些值，配置 VM，并在完成后返回报告。 
 
-Cloud-init 还支持不同的分发。 例如，不要使用 apt-get 安装或 yum 安装来安装包。 可定义要安装的程序包的列表。 Cloud-init 将为所选发行版自动使用本机包管理工具。
+Azure 支持两个预配代理：[cloud-init](https://cloudinit.readthedocs.io) 和 [Azure Linux 代理 (WALA)](../extensions/agent-linux.md)。
 
- 我们正在积极地与我们认可的 Linux 发行版合作伙伴合作，以便在 Azure 市场中提供已启用 cloud-init 的映像。 这些映像可使 cloud-init 部署和配置无缝地应用于 VM 和 VM 规模集 (VMSS)。 下表概述了当前启用了 cloud-init 的映像在 Azure 平台上的可用性：
+## <a name="cloud-init-overview"></a>cloud-init 概述
+[cloud-init](https://cloudinit.readthedocs.io) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 安装程序包和写入文件，或者配置用户和安全。 由于是在初始启动过程中调用 cloud-init，因此无需额外的步骤且无需代理来应用配置。  有关如何正确设置 `#cloud-config` 文件或其他输入的格式的详细信息，请参阅 [cloud-init 文档站点](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)。  `#cloud-config` 文件是采用 base64 编码的文本文件。
 
-| 发布者 | 产品/服务 | SKU | Version | cloud-init 就绪 |
-|:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |18.04-LTS |最新 |是 | 
-|Canonical |UbuntuServer |17.1 |最新 |是 | 
-|Canonical |UbuntuServer |16.04-LTS |最新 |是 | 
-|Canonical |UbuntuServer |14.04.5-LTS |最新 |是 |
-|CoreOS |CoreOS |Stable |最新 |是 |
-|OpenLogic |CentOS |7-CI |最新 |预览 |
-|RedHat |RHEL |7-RAW-CI |最新 |预览 |
+cloud-init 还支持不同的发行版。 例如，不要使用 apt-get 安装或 yum 安装来安装包。 可定义要安装的程序包的列表。 cloud-init 将对你选择的发行版自动使用本机包管理工具。
 
-目前，Azure Stack 不支持使用 cloud-init 预配 RHEL 7.4 和 CentOS 7.4。
+我们正在积极地与经认可的 Linux 发行版合作伙伴合作，以便在 Azure Marketplace 中提供启用了云初始化的映像。 这些映像可使 cloud-init 部署和配置无缝地应用于 VM 和虚拟机规模集。 最初，我们与认可的 Linux 发行版合作伙伴和上游协作，确保 cloud-init 可以配合 Azure 上的 OS 正常运行，然后更新了包，并在发行版包的存储库中公开提供了这些包。 
+
+若要使 cloud-init 可供 Azure 上认可的 Linux 发行版 OS 使用，需要经历两个阶段 - 包支持，然后是映像支持：
+* “Azure 上的 cloud-init 包支持”阐述了哪些 cloud-init 包即将受支持或以预览版提供，因此你可以将这些包与自定义映像中的 OS 配合使用。
+* “映像 cloud-init 准备就绪”阐述了映像是否已配置为使用 cloud-init。
+
+
+### <a name="canonical"></a>Canonical
+| 发布者/版本| 产品/服务 | SKU | 版本 | 映像 cloud-init 准备就绪 | Azure 上的 cloud-init 包支持|
+|:--- |:--- |:--- |:--- |:--- |:--- |
+|Canonical 20.04 |UbuntuServer |18.04-LTS |最新 |是 | 是 |
+|Canonical 18.04 |UbuntuServer |18.04-LTS |最新 |是 | 是 |
+|Canonical 16.04|UbuntuServer |16.04-LTS |最新 |是 | 是 |
+|Canonical 14.04|UbuntuServer |14.04.5-LTS |最新 |是 | 是 |
+
+### <a name="rhel"></a>RHEL
+| 发布者/版本 | 产品/服务 | SKU | 版本 | 映像 cloud-init 准备就绪 | Azure 上的 cloud-init 包支持|
+|:--- |:--- |:--- |:--- |:--- |:--- |
+|RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |是 | 是 - 通过包版本支持：*18.2-1.el7_6.2*|
+|RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 | 是（注意：这是预览图像 **，不能再使用**，此操作将在 9 2020 月1日之前删除） | 不可用 |
+|RedHat 7.7 (Gen1)|RHEL |7.7 | 7.7.2020051912 | yes | 是 - 通过包版本支持：*18.5-6.el7*|
+|RedHat 7.7 (Gen2)|RHEL | 77-gen2 | 7.7.2020051913 | yes | 是 - 通过包版本支持：*18.5-6.el7*|
+|RedHat 7.7 (Gen1)|RHEL |7-LVM | 7.7.2020051921 | yes | 是 - 通过包版本支持：*18.5-6.el7*|
+|RedHat 7.7 (Gen2)|RHEL | 7lvm-gen2 | 7.7.2020051922  | yes | 是 - 通过包版本支持：*18.5-6.el7*|
+|RedHat 7.7 (Gen1) |rhel-byos | rhel-lvm77 | 7.7.20200416 | yes  | 是 - 通过包版本支持：*18.5-6.el7*|
+|RedHat 8.1 (Gen1) |RHEL |8.1-ci |8.1.2020042511 | 是（注意：这是预览图像，一旦所有 RHEL 8.1 映像支持云初始化，此操作将在 8 2020 月1日之前删除） | 否，完整支持的 ETA 为 2020 年 6 月|
+|RedHat 8.1 (Gen2) |RHEL |81-ci-gen2 |8.1.2020042524 | 是（注意：这是预览图像，一旦所有 RHEL 8.1 映像支持云初始化，此操作将在 8 2020 月1日之前删除） | 否，完整支持的 ETA 为 2020 年 6 月 |
+
+* 使用 cloud init 预配所有 RedHat： RHEL 7.8 和8.2 （Gen1 和 Gen2）映像。
+
+### <a name="centos"></a>CentOS
+
+| 发布者/版本 | 产品/服务 | SKU | 版本 | 映像 cloud-init 准备就绪 | Azure 上的 cloud-init 包支持|
+|:--- |:--- |:--- |:--- |:--- |:--- |
+|OpenLogic 7.7 |CentOS |7-CI |7.7.20190920 |是（注意：这是预览图像 **，不能再使用**，此操作将在 9 2020 月1日之前删除） | 不可用 |
+|OpenLogic 7.7 |CentOS | 7.7 |7.7.2020062400 |yes | 是-包版本支持：`18.5-6.el7.centos.5`|
+|OpenLogic 7.7 （Gen2） |CentOS | 7_7-gen2 |7.7.2020062401 |yes | 是-包版本支持：`18.5-6.el7.centos.5`|
+|OpenLogic 7.7 |CentOS-HPC | 7.7 |7.6.2020062600 |yes | 是-包版本支持：`18.5-6.el7.centos.5`|
+|OpenLogic 7.7 （Gen2） |CentOS-HPC | 7_7-gen2 |7.6.2020062601 |yes | 是-包版本支持：`18.5-6.el7.centos.5`|
+|OpenLogic 8。1 |CentOS | 8_1 |8.1.2020062400 |yes | 是-包版本支持：`18.5-7.el8_1.1`|
+|OpenLogic 8.1 （Gen2） |CentOS | 8_1-gen2 |8.1.2020062401 |yes | 是-包版本支持：`18.5-7.el8_1.1`|
+|OpenLogic 8。1 |CentOS-HPC | 8_1 |8.1.2020062400 |yes | 是-包版本支持：`18.5-7.el8_1.1`|
+|OpenLogic 8.1 （Gen2） |CentOS-HPC： 8_1-gen2 | 8_1-gen2 |8.1.2020062401 |yes | 是-包版本支持：`18.5-7.el8_1.1`|
+
+* 使用 cloud init 预配所有 OpenLogic： CentOS 7.8 和8.2 （Gen1 和 Gen2）映像。
+
+### <a name="oracle"></a>Oracle
+
+| 发布者/版本 | 产品/服务 | SKU | 版本 | 映像 cloud-init 准备就绪 | Azure 上的 cloud-init 包支持|
+|:--- |:--- |:--- |:--- |:--- |:--- |
+|Oracle 7.7 |Oracle-Linux |77-ci |7.7.01| 预览图像（请注意：这是一个预览图像，在所有 Oracle 7.7 映像都支持云初始化之后，这将会被2020删除，但会提供通知） | 否，在预览版中，包为：*18.5-3.0.1.el7*
+
+### <a name="suse-sles"></a>SUSE SLES
+这些 SLES 映像已更新为使用云初始化进行预配，Gen2 映像变体也已经更新。
+* suse： sles-15-sp1-{basic/byos/hpc/hpc-byos/chost-byos}： gen1：2020.06.10
+* suse： sles-sap-15-sp1： gen1：2020.06.10
+* suse： sles-sap-15-sp1-byos： gen1：2020.06.10
+* suse：管理器-byos： gen1：2020.06.10
+* suse：管理器-byos： gen1：2020.06.10
+* suse： sles-{byos/sap/sap-byos}：15：2020.06.10
+* suse： sles-12-sp5： gen1：2020.06.10
+* suse： sles-12-sp5 {-byos/basic/hpc-byos/hpc}： gen1：2020.06.10
+* suse： sles-{byos/sap/sap-byos}： 12-sp4：2020.06.10
+* suse： sles-{byos/sap/sap-byos}： 12-sp3：2020.06.10
+* suse： sles-{byos/sap/sap-byos}： 12-sp2：2020.06.10
+
+
+### <a name="debian"></a>Debian
+| 发布者/版本 | 产品/服务 | SKU | 版本 | 映像 cloud-init 准备就绪 | Azure 上的 cloud-init 包支持|
+|:--- |:--- |:--- |:--- |:--- |:--- |
+| debian （Gen1） |debian-10 | 10-cloudinit |cloud-init-preview| 是（仅限预览） | 否，以预览版提供。 |
+| debian （Gen2） |debian-10 | cloudinit-gen2 |cloud-init-preview| 是（仅限预览） | 否，以预览版提供。 |
+
+
+
+
+目前 Azure Stack 将支持预配启用了 cloud-init 的映像。
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>cloud-init 和 Linux 代理 (WALA) 之间的区别是什么？
-WALA 是一种特定于 Azure 平台的代理，用于预配和配置 VM 并处理 Azure 扩展。 我们正在优化配置 VM 的任务以使用 cloud-init 代替 Linux 代理，目的是让现有 cloud-init 客户可以使用他们当前的 cloud-init 脚本。  如果当前已使用 cloud-init 脚本来配置 Linux 系统，则不需要任何额外的设置就可以启用它们。 
+WALA 是一种特定于 Azure 平台的代理，用于预配和配置 VM 并处理 [Azure 扩展](../extensions/features-linux.md)。 
 
-如果在预配时未提供 Azure CLI `--custom-data` 开关，WALA 将采用所需的最小 VM 预配参数来预配 VM 并使用默认值完成部署。  如果引用 cloud-init `--custom-data` 开关，自定义数据中包含的任何内容（单个设置或完整脚本）都将替代 WALA 默认值。 
+我们正在增强将 VM 配置为使用 cloud-init 而不是 Linux 代理的任务，使现有的 cloud-init 客户能够使用其当前 cloud-init 脚本，或者使新客户能够利用丰富的 cloud-init 配置功能。 如果已使用过 cloud-init 脚本来配置 Linux 系统，那么，**不需要进行额外的设置**就能让 cloud-init 处理这些任务。 
 
-VM 的 WALA 配置的时限为最大 VM 预配时间。  cloud-init 配置应用于 VM 时没有时限，也不会因为超时导致部署失败。 
+cloud-init 无法处理 Azure 扩展，因此，仍需在映像中包含 WALA 才能处理扩展，不过，需要禁用其预配代码。要转换为由 cloud-init 预配的已认可 Linux 发行版映像将会正确安装并设置 WALA。
+
+创建 VM 时，如果在预配时未包括 Azure CLI `--custom-data` 开关，cloud-init 或 WALA 将采用所需的最小 VM 预配参数来预配 VM 并使用默认值完成部署。  如果使用 `--custom-data` 开关引用 cloud-init 配置，在 VM 启动时，自定义数据中包含的任何内容均可用于 cloud-init。
+
+应用于 VM 的 cloud-init 配置没有时限，也不会因为超时导致部署失败。对于 WALA，这一点并不适用。如果更改 WALA 默认值来处理自定义数据，则用于处理自定义数据的时间不能超过 VM 预配总时间限制（40 分钟），否则 VM 创建操作将会失败。
 
 ## <a name="deploying-a-cloud-init-enabled-virtual-machine"></a>部署已启用 cloud-init 的虚拟机
 部署已启用 cloud-init 的虚拟机就和在部署期间引用已启用 cloud-init 的分发一样简单。  Linux 分发 Maintainer 需要选择启用 cloud-init，并将 cloud-init 集成到其基本 Azure 已发布映像中。 确认想要部署的映像已启用 cloud-init 之后，就可以使用 AzureCLI 部署映像。 
@@ -61,6 +126,7 @@ VM 的 WALA 配置的时限为最大 VM 预配时间。  cloud-init 配置应用
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
+
 下一步是在当前 shell 中创建名为 cloud-init.txt 的文件并粘贴以下配置。 对于此示例，请在不处于本地计算机上的 Cloud Shell 中创建文件。 可使用任何想要使用的编辑器。 输入 `sensible-editor cloud-init.txt` 以创建文件并查看可用编辑器的列表。 选择 #1 以使用 nano 编辑器。 请确保已正确复制整个 cloud-init 文件，尤其是第一行：
 
 ```yaml
@@ -73,13 +139,13 @@ packages:
 
 最后一步是使用 [az vm create](/cli/azure/vm) 命令创建 VM。 
 
-以下示例创建一个名为 centos74 的 VM，并且在默认密钥位置中不存在 SSH 密钥时创建这些密钥。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。  使用 `--custom-data` 参数传递到 cloud-init 配置文件中。 如果未将 cloud-init.txt 配置文件保存在现有工作目录中，请提供该文件的完整路径。 以下示例创建一个名为 centos74 的 VM：
+以下示例创建一个名为 centos74 的 VM，并且在默认密钥位置中不存在 SSH 密钥时创建这些密钥。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。  使用 `--custom-data` 参数传递到 cloud-init 配置文件中。 如果未将 cloud-init.txt 配置文件保存在现有工作目录中，请提供该文件的完整路径。 
 
 ```azurecli-interactive 
 az vm create \
   --resource-group myResourceGroup \
   --name centos74 \
-  --image OpenLogic:CentOS:7-CI:latest \
+  --image OpenLogic:CentOS-CI:7-CI:latest \
   --custom-data cloud-init.txt \
   --generate-ssh-keys 
 ```
@@ -95,9 +161,14 @@ VM 预配完成后，会在 `--custom-data` 中定义的所有模块和脚本上
 有关 cloud-init 日志的更多详细信息，请参阅 [cloud-init 文档](https://cloudinit.readthedocs.io/en/latest/topics/logging.html) 
 
 ## <a name="next-steps"></a>后续步骤
+
+[排查云初始化问题](cloud-init-troubleshooting.md)。
+
+
 有关配置更改的 cloud-init 示例，请参阅以下文档：
  
 - [向 VM 添加其他 Linux 用户](cloudinit-add-user.md)
 - [运行包管理器以在首次启动时更新现有包](cloudinit-update-vm.md)
 - [更改 VM 本地主机名](cloudinit-update-vm-hostname.md) 
 - [安装应用程序包、更新配置文件和注入密钥](tutorial-automate-vm-deployment.md)
+ 

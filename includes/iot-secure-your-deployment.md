@@ -8,24 +8,22 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: e5acb8e0f8805da7f14bbce58b4bfd2acdc24f23
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66166318"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76748928"
 ---
-# <a name="secure-your-internet-of-things-iot-deployment"></a>保护物联网 (IoT) 部署
-
 本文提供保护基于 Azure IoT 的物联网 (IoT) 基础结构的进一步详细信息。 它链接到配置和部署每个组件的实现级别详细信息。 还提供多种竞争方式间的比较和选择。
 
 保护 Azure IoT 部署可分为以下三个安全区域：
 
-* **设备安全**:在现实部署时，请保护 IoT 设备。
+* **设备安全**：在现实中部署 IoT 设备时，保护 IoT 设备安全。
 
-* **连接安全性**:确保 IoT 设备与 IoT 中心之间传输的所有数据是机密和篡改。
+* **连接安全**：确保 IoT 设备和 IoT 中心之间传输的所有数据的机密性和防篡改性。
 
-* **云安全**:提供一种方法来保护数据，而它移动或存储在云中。
+* **云安全**：数据移动或存储在云中时，提供一种数据保护方式。
 
 ![三个安全区域](./media/iot-secure-your-deployment/overview.png)
 
@@ -53,11 +51,11 @@ IoT 中心使用安全令牌对设备和服务进行身份验证，以避免在�
 
 [IoT 中心支持 MQTT、AMQP 和 HTTP 等协议](../articles//iot-hub/iot-hub-devguide-security.md)。 每个协议使用 IoT 设备到 IoT 中心的安全令牌的方式不同：
 
-* AMQP：SASL PLAIN 和基于 AMQP 声明的安全性 (`{policyName}@sas.root.{iothubName}`与 IoT 中心级别令牌;`{deviceId}`与设备范围令牌)。
+* AMQP：基于 SASL PLAIN 和 AMQP 声明的安全性（若是 IoT 中心级别令牌，则为 `{policyName}@sas.root.{iothubName}`；若是设备范围令牌，则为 `{deviceId}`）。
 
-* MQTT：使用连接数据包`{deviceId}`作为`{ClientId}`，`{IoThubhostname}/{deviceId}`中**用户名**字段和一个 SAS 令牌中**密码**字段。
+* MQTT：CONNECT 数据包使用 `{deviceId}` 作为 `{ClientId}`、“用户名”**** 字段中的 `{IoThubhostname}/{deviceId}` 以及“密码”**** 字段中的 SAS 令牌。
 
-* HTTP:有效令牌位于授权请求标头。
+* HTTP：有效令牌位于授权请求标头中。
 
 IoT 中心标识注册表可用于配置每个设备的安全凭据和访问控制。 但是，如果 IoT 解决方案已大幅投资于[自定义设备标识注册表和/或身份验证方案](../articles/iot-hub/iot-hub-devguide-security.md#custom-device-and-module-authentication)，则可通过创建令牌服务，将该解决方案集成到具有 IoT 中心的现有基础结构中。
 
@@ -79,7 +77,7 @@ IoT 中心标识注册表可用于配置每个设备的安全凭据和访问控�
 
 ## <a name="securing-the-connection"></a>保护连接安全
 
-使用传输层安全性 (TLS) 标准来保护 IoT 设备和 IoT 中心之间的 Internet 连接安全。 Azure IoT 支持 [TLS 1.2](https://tools.ietf.org/html/rfc5246)、TLS 1.1 和 TLS 1.0（按此顺序）。 对 TLS 1.0 的支持仅为向后兼容性提供。 如果可能，请使用 TLS 1.2，因为它可提供最大安全性。
+使用传输层安全性 (TLS) 标准来保护 IoT 设备和 IoT 中心之间的 Internet 连接安全。 Azure IoT 按此顺序支持[tls 1.2](https://tools.ietf.org/html/rfc5246)、tls 1.1 和 tls 1.0。 对 TLS 1.0 的支持仅为向后兼容性提供。 请[在 IoT 中心内检查 TLS 支持](../articles/iot-hub/iot-hub-tls-support.md)，了解如何将集线器配置为使用 TLS 1.2，因为它提供了最高的安全性。
 
 ## <a name="securing-the-cloud"></a>保护云的安全
 
@@ -101,15 +99,15 @@ Azure IoT 中心和其他可能是解决方案的一部分的服务允许使用 
 
 Azure IoT 中心引入的数据可供多种服务（例如 Azure 流分析、Azure Blob 存储等）使用。 这些服务允许管理访问权限。 了解有关这些服务和可用选项的详细信息：
 
-* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)：适用于半结构化数据的可缩放且已完全编制索引的数据库服务，可管理预配的设备的元数据，例如，属性、配置和安全属性。 Azure Cosmos DB 提供高性能和高吞吐量处理、与架构无关的数据索引，以及丰富的 SQL 查询接口。
+* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)：已完全编制索引的可缩放数据库服务，适用于半结构化数据，可管理预配的设备元数据，例如属性、配置和安全属性。 Azure Cosmos DB 提供高性能和高吞吐量处理、与架构无关的数据索引，以及丰富的 SQL 查询接口。
 
-* [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/):通过云中处理的实时流可以快速开发和部署低成本分析解决方案，以便从设备、传感器、基础结构和应用程序实时获取深入了解。 来自这种完全托管服务的数据可缩放为任何数量，同时保持高吞吐量、低延迟和复原能力。
+* Azure 流分析[](https://azure.microsoft.com/services/stream-analytics/)：云中的实时流处理，可让用户快速开发和部署低成本分析解决方案，以便从设备、传感器、基础结构和应用程序实时获取深入见解。 来自这种完全托管服务的数据可缩放为任何数量，同时保持高吞吐量、低延迟和复原能力。
 
-* [在 azure 应用服务](https://azure.microsoft.com/services/app-service/):一个云平台，用以构建能够连接到任何地方（在云中或本地）的数据的强大 Web 和移动应用。 构建具有吸引力的 iOS、Android 和 Windows 移动应用。 与软件即服务 (SaaS) 和企业应用程序相集成，这些应用程序一经使用便可直接连接到数十种基于云的服务和企业应用程序。 使用偏好的语言和 IDE（.NET、Node.js、PHP、Python 或 Java）进行编码，比以往更快地构建 Web 应用和 API。
+* [Azure 应用服务](https://azure.microsoft.com/services/app-service/)：一个云平台，用以构建能够连接到任何地方（在云中或本地）的数据的强大 Web 和移动应用。 构建具有吸引力的 iOS、Android 和 Windows 移动应用。 与软件即服务 (SaaS) 和企业应用程序相集成，这些应用程序一经使用便可直接连接到数十种基于云的服务和企业应用程序。 使用偏好的语言和 IDE（.NET、Node.js、PHP、Python 或 Java）进行编码，比以往更快地构建 Web 应用和 API。
 
-* [逻辑应用](https://azure.microsoft.com/services/app-service/logic/):Azure 应用服务的逻辑应用功能可帮助用户将 IoT 解决方案集成到现有业务线系统并自动执行工作流程。 逻辑应用可让开发人员设计从触发过程开始，并运行一系列步骤的工作流 — 使用功能强大的连接器来与业务过程集成的规则和操作。 Logic Apps 提供与 SaaS、基于云和本地应用程序的广泛生态系统的实时连接。
+* [Logic Apps](https://azure.microsoft.com/services/app-service/logic/)：Azure 应用服务的逻辑应用功能可帮助用户将 IoT 解决方案集成到现有业务线系统并自动执行工作流程。 逻辑应用可让开发人员设计从触发过程开始，并运行一系列步骤的工作流 — 使用功能强大的连接器来与业务过程集成的规则和操作。 Logic Apps 提供与 SaaS、基于云和本地应用程序的广泛生态系统的实时连接。
 
-* [Azure Blob 存储](https://azure.microsoft.com/services/storage/):可靠且符合经济效益的云存储，适用于设备要发送到云的数据。
+* [Azure Blob 存储](https://azure.microsoft.com/services/storage/)：可靠且经济实惠的云存储，适用于设备发送到云的数据。
 
 ## <a name="conclusion"></a>结束语
 

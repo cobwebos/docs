@@ -2,26 +2,22 @@
 title: Azure 上的 Kubernetes 教程 - 部署群集
 description: 此 Azure Kubernetes 服务 (AKS) 教程介绍如何创建 AKS 群集并使用 kubectl 连接到 Kubernetes 主节点。
 services: container-service
-author: tylermsft
-ms.service: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
-ms.author: twhitney
+ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 020b5935595506732c1c1425179741c45f8326d7
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 609ac66ca27d5cad7dd2fb295c3a2a721a1cda16
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304473"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392695"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>教程：部署 Azure Kubernetes 服务 (AKS) 群集
 
 Kubernetes 为容器化应用程序提供一个分布式平台。 使用 AKS 可以快速创建生产就绪的 Kubernetes 群集。 在本教程的第 3 部分（共 7 部分）中，在 AKS 中部署了 Kubernetes 群集。 学习如何：
 
 > [!div class="checklist"]
-> * 创建用于资源交互的服务主体
-> * 部署一个 Kubernetes AKS 群集
+> * 部署可对 Azure 容器注册表进行身份验证的 Kubernetes AKS 群集
 > * 安装 Kubernetes CLI (kubectl)
 > * 配置 kubectl，以便连接到 AKS 群集
 
@@ -29,67 +25,31 @@ Kubernetes 为容器化应用程序提供一个分布式平台。 使用 AKS 可
 
 ## <a name="before-you-begin"></a>开始之前
 
-在以前的教程中，已创建容器映像并上传到 Azure 容器注册表实例。 如果尚未完成这些步骤，并且想要逐一完成，请开始参阅[教程 1 - 创建容器映像][aks-tutorial-prepare-app]。
+在以前的教程中，已创建容器映像并上传到 Azure 容器注册表实例。 如果尚未完成这些步骤，并且想要逐一完成，请先阅读[教程 1 - 创建容器映像][aks-tutorial-prepare-app]。
 
 此教程需要运行 Azure CLI 2.0.53 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
-
-## <a name="create-a-service-principal"></a>创建服务主体
-
-若要允许 AKS 群集与其他 Azure 资源交互，请使用 Azure Active Directory 服务主体。 可以通过 Azure CLI 或门户自动创建此服务主体，也可以预先创建一个服务主体并分配其他权限。 在本教程中，你将创建一个服务主体，授予对上一教程中创建的 Azure 容器注册表 (ACR) 实例的访问权限，然后创建 AKS 群集。
-
-使用 [az ad sp create-for-rbac][] 命令创建服务主体。 `--skip-assignment` 参数限制分配任何其他权限。 默认情况下，此服务主体的有效期为一年。
-
-```azurecli
-az ad sp create-for-rbac --skip-assignment
-```
-
-输出类似于以下示例：
-
-```
-{
-  "appId": "e7596ae3-6864-4cb8-94fc-20164b1588a9",
-  "displayName": "azure-cli-2018-06-29-19-14-37",
-  "name": "http://azure-cli-2018-06-29-19-14-37",
-  "password": "52c95f25-bd1e-4314-bd31-d8112b293521",
-  "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db48"
-}
-```
-
-记下 *appId* 和 *password*。 后续步骤会用到这些值。
-
-## <a name="configure-acr-authentication"></a>配置 ACR 身份验证
-
-若要访问 ACR 中存储的映像，必须授予 AKS 服务主体从 ACR 提取映像的适当权限。
-
-首先，使用 [az acr show][] 获取 ACR 资源 ID。 将 `<acrName>` 注册表名称更新为 ACR 实例和 ACR 实例所在的资源组的名称。
-
-```azurecli
-az acr show --resource-group myResourceGroup --name <acrName> --query "id" --output tsv
-```
-
-若要为 AKS 群集授予正确的访问权限来拉取 ACR 中存储的映像，请使用 [az role assignment create][] 命令分配 `AcrPull` 角色。 将 `<appId`> 和 `<acrId>` 替换为在前两个步骤中收集的值。
-
-```azurecli
-az role assignment create --assignee <appId> --scope <acrId> --role acrpull
-```
 
 ## <a name="create-a-kubernetes-cluster"></a>创建 Kubernetes 群集
 
 AKS 群集可以使用 Kubernetes 基于角色的访问控制 (RBAC)。 可以使用这些控制根据分配给用户的角色定义资源访问权限。 权限可以组合（如果为用户分配了多个角色），可以局限于单个命名空间，也可以涵盖整个群集。 默认情况下，Azure CLI 会在你创建 AKS 群集时自动启用 RBAC。
 
-使用 [az aks create][] 创建 AKS 群集。 以下示例在名为 *myResourceGroup* 的资源组中创建名为 *myAKSCluster* 的群集。 此资源组是在[上一教程][aks-tutorial-prepare-acr]中创建的。 提供前面在创建服务主体时指定的 `<appId>` 和 `<password>`。
+使用 [az aks create][] 创建 AKS 群集。 以下示例在名为 *myResourceGroup* 的资源组中创建名为 *myAKSCluster* 的群集。 此资源组是在[上一教程][aks-tutorial-prepare-acr]中创建的。 为了允许 AKS 群集与其他 Azure 资源进行交互，将自动创建一个 Azure Active Directory 服务主体，因为未指定该主体。 在这里，此服务主体[被授予从上一教程中创建的 Azure 容器注册表 (ACR) 实例中拉取映像][container-registry-integration]的权限。 请注意，可以使用[托管标识](use-managed-identity.md)而不是服务主体，以便更轻松地进行管理。
 
 ```azurecli
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --node-count 1 \
-    --service-principal <appId> \
-    --client-secret <password> \
-    --generate-ssh-keys
+    --node-count 2 \
+    --generate-ssh-keys \
+    --attach-acr <acrName>
 ```
 
+还可以手动将服务主体配置为从 ACR 中拉取映像。 有关详细信息，请参阅[使用服务主体进行 ACR 身份验证](../container-registry/container-registry-auth-service-principal.md)或[使用请求密码从 Kubernetes 进行身份验证](../container-registry/container-registry-auth-kubernetes.md)。
+
 几分钟后，部署完成并返回有关 AKS 部署的 JSON 格式信息。
+
+> [!NOTE]
+> 若要确保群集能够可靠运行，应至少运行 2（两个）节点。
 
 ## <a name="install-the-kubernetes-cli"></a>安装 Kubernetes CLI
 
@@ -109,22 +69,21 @@ az aks install-cli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-若要验证与群集之间的连接，请运行 [kubectl get nodes][kubectl-get] 命令：
+若要验证与群集的连接，请运行 [kubectl get nodes][kubectl-get] 命令以返回群集节点列表：
 
 ```
 $ kubectl get nodes
 
-NAME                       STATUS   ROLES   AGE     VERSION
-aks-nodepool1-28993262-0   Ready    agent   3m18s   v1.9.11
+NAME                       STATUS   ROLES   AGE   VERSION
+aks-nodepool1-12345678-0   Ready    agent   32m   v1.14.8
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程在 AKS 中部署了一个 Kubernetes 群集并将 `kubectl` 配置为连接到该群集。 你已了解如何：
+本教程在 AKS 中部署了一个 Kubernetes 群集并将 `kubectl` 配置为连接到该群集。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 创建用于资源交互的服务主体
-> * 部署一个 Kubernetes AKS 群集
+> * 部署可对 Azure 容器注册表进行身份验证的 Kubernetes AKS 群集
 > * 安装 Kubernetes CLI (kubectl)
 > * 配置 kubectl，以便连接到 AKS 群集
 
@@ -148,3 +107,4 @@ aks-nodepool1-28993262-0   Ready    agent   3m18s   v1.9.11
 [az aks install-cli]: /cli/azure/aks#az-aks-install-cli
 [az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [azure-cli-install]: /cli/azure/install-azure-cli
+[container-registry-integration]: ./cluster-container-registry-integration.md

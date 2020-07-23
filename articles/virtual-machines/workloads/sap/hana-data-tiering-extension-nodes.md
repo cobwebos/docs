@@ -3,28 +3,26 @@ title: Azure SAP HANA（大型实例）的数据分层和扩展节点 | Microsof
 description: Azure SAP HANA（大型实例）的数据分层和扩展节点。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: jeconnoc
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b5868aaf29d6b57ea608763840a08f1991a982e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: c3553ac9704ac26d0bdaae0f93b89f41a87ac716
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60628585"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77617162"
 ---
 # <a name="use-sap-hana-data-tiering-and-extension-nodes"></a>使用 SAP HANA 数据分层和扩展节点
 
 SAP 支持面向不同 SAP NetWeaver 版本和 SAP BW/4HANA 的 SAP BW 的数据分层模型。 有关数据分层模型的详细信息，请参阅 SAP 文档 [具有 SAP HANA 扩展节点的 SAP BW/4HANA and SAP BW on HANA](https://www.sap.com/documents/2017/05/ac051285-bc7c-0010-82c7-eda71af511fa.html#)。
-利用 HANA 大型实例，可以使用 SAP HANA 扩展节点的选项 1 配置（本常见问题解答和 SAP 博客文档中提供详细介绍）。 可以使用以下 HANA 大型实例 Sku 设置选项 2 配置：S72m、 S192、 S192m、 S384 和 S384m。 
+利用 HANA 大型实例，可以使用 SAP HANA 扩展节点的选项 1 配置（本常见问题解答和 SAP 博客文档中提供详细介绍）。 可使用以下 HANA 大型实例 SKU 配置选项 2 配置：S72m、S192、S192m、S384 和 S384m。 
 
 阅读文档时，可能不会立刻发现此方法的优点。 但如果深入研究 SAP 大小调整准则，便可能发现使用选项 1 和选项 2 SAP HANA 扩展节点的优点。 下面是一些示例：
 

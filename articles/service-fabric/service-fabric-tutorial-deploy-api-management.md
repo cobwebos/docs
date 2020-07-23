@@ -1,26 +1,15 @@
 ---
-title: 在 Azure 中将 API 管理与 Service Fabric 集成 |Microsoft Docs
+title: 在 Azure 中将 API 管理与 Service Fabric 集成
 description: 了解如何快速开始使用 Azure API 管理以及在 Service Fabric 中将流量路由到后端服务。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 9/26/2018
-ms.author: aljo
+ms.date: 07/10/2019
 ms.custom: mvc
-ms.openlocfilehash: fc2c23d93a1800232b81c5eb2f861e8b71c3e437
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 40f8c53394292a85f6fd032e445d79ed82e2d4e9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428070"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260261"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>在 Azure 中将 API 管理与 Service Fabric 集成
 
@@ -36,12 +25,12 @@ ms.locfileid: "66428070"
 > [!IMPORTANT]
 > 由于所需的虚拟网络支持，此功能在 API 管理的**高级**和**开发人员**层中可用。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 开始之前：
 
 * 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* 安装 [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
+* 安装 [Azure Powershell](/powershell/azure/install-az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
 * 在网络安全组中创建一个安全的 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)。
 * 如果部署 Windows 群集，请设置 Windows 开发环境。 安装 [Visual Studio 2019](https://www.visualstudio.com) 和 **Azure 开发**、**ASP.NET 和 Web 开发**以及 **.NET Core 跨平台开发**工作负荷。  然后设置 [.NET 开发环境](service-fabric-get-started.md)。
 
@@ -77,7 +66,7 @@ az account set --subscription <guid>
  1. 在 Visual Studio 中，选择“文件”->“新建项目”。
  2. 选择“云”下的 Service Fabric 应用程序模板并将其命名为“ApiApplication”  。
  3. 选择无状态 ASP.NET Core 服务模板并将项目命名为“WebApiService”  。
- 4. 选择 Web API ASP.NET Core 2.0 项目模板。
+ 4. 选择 Web API ASP.NET Core 2.1 项目模板。
  5. 创建项目后，打开 `PackageRoot\ServiceManifest.xml` 并从终结点资源配置中删除 `Port` 属性：
 
     ```xml
@@ -88,7 +77,7 @@ az account set --subscription <guid>
     </Resources>
     ```
 
-    删除端口允许 Service Fabric，若要指定从应用程序端口范围，通过网络安全组在群集 Resource Manager 模板中，从而允许流量从 API 管理流向打开动态端口。
+    通过删除该端口，Service Fabric 可以从应用程序端口范围动态指定一个端口，该范围通过群集资源管理器模板中的网络安全组打开，允许流量从 API 管理流向该端口。
 
  6. 可在本地于 Visual Studio 中按下 F5 来验证 Web API。
 
@@ -145,7 +134,7 @@ az account set --subscription <guid>
 
 * “displayName”可以是 API 的任意名称  。 对于本文，请使用“Service Fabric App”。
 * “name”为 API 提供一个唯一且有描述性的名称，例如“service-fabric-app”  。 它显示在开发人员和发布者门户中。
-* “serviceUrl”引用实现 API 的 HTTP 服务  。 API 管理将请求转发到此地址。 对于 Service Fabric 后端，不使用此 URL 值。 你可以在此处设置任何值。 对于本文，例如"http:\//servicefabric"。
+* “serviceUrl”引用实现 API 的 HTTP 服务  。 API 管理将请求转发到此地址。 对于 Service Fabric 后端，不使用此 URL 值。 你可以在此处设置任何值。 对于本文，例如“http:\//servicefabric”。
 * “path”附加到 API 管理服务的基础 URL  。 基础 URL 是常见的由 API 管理服务实例托管的所有 API。 API 管理通过其后缀区分 API，因此后缀对给定发布者上的每个 API 必须唯一。
 * “protocols”确定可用于访问 API 的协议  。 对于本文，列出 **http** 和 **https**。
 * “path”是 API 的后缀  。 对于本文，请使用“myapp”。
@@ -162,9 +151,9 @@ az account set --subscription <guid>
 
 ### <a name="microsoftapimanagementserviceapispolicies"></a>Microsoft.ApiManagement/service/apis/policies
 
-[Microsoft.ApiManagement/service/apis/policies](/azure/templates/microsoft.apimanagement/service/apis/policies) 创建将所有内容联系在一起的后端策略。 你可以在其中配置将请求路由到的后端 Service Fabric 服务。 可以将此策略应用到任何 API 操作。  有关详细信息，请参阅[策略概述](/azure/api-management/api-management-howto-policies)。
+[Microsoft.ApiManagement/service/apis/policies](/azure/templates/microsoft.apimanagement/service/apis/policies) 创建将所有内容联系在一起的后端策略。 你可以在其中配置将请求路由到的后端 Service Fabric 服务。 可以将此策略应用到任何 API 操作。  有关详细信息，请参阅[策略概述](../api-management/api-management-howto-policies.md)。
 
-[Service Fabric 的后端配置](/azure/api-management/api-management-transformation-policies#SetBackendService)提供以下请求路由控件：
+[Service Fabric 的后端配置](../api-management/api-management-transformation-policies.md#SetBackendService)提供以下请求路由控件：
 
 * 服务实例选择，方法是指定硬编码的（例如，`"fabric:/myapp/myservice"`）或从 HTTP 请求中生成的（例如，`"fabric:/myapp/users/" + context.Request.MatchedParameters["name"]`）Service Fabric 服务实例名称。
 * 分区解析，方法是使用任何 Service Fabric 分区方案生成分区键。
@@ -191,7 +180,7 @@ az account set --subscription <guid>
 </policies>
 ```
 
-有关完整的 Service Fabric 后端策略属性，请参阅 [API 管理后端文档](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#SetBackendService)
+有关完整的 Service Fabric 后端策略属性，请参阅 [API 管理后端文档](../api-management/api-management-transformation-policies.md#SetBackendService)
 
 ## <a name="set-parameters-and-deploy-api-management"></a>设置参数和部署 API 管理
 
@@ -207,7 +196,7 @@ az account set --subscription <guid>
 |serviceFabricCertificateThumbprint|C4C1E541AD512B8065280292A8BA6079C3F26F10 |
 |serviceFabricCertificate|&lt;base-64 编码字符串&gt;|
 |url_path|/api/values|
-|clusterHttpManagementEndpoint|https://mysfcluster.southcentralus.cloudapp.azure.com:19080|
+|clusterHttpManagementEndpoint|`https://mysfcluster.southcentralus.cloudapp.azure.com:19080`|
 |inbound_policy|&lt;XML 字符串&gt;|
 
 “certificatePassword”和“serviceFabricCertificateThumbprint”必须与用于设置群集的群集证书匹配   。
@@ -288,7 +277,7 @@ az group deployment create --name ApiMgmtDeployment --resource-group $ResourceGr
 
 群集由群集资源本身以及其他 Azure 资源组成。 若要删除群集及其占用的所有资源，最简单的方式是删除资源组。
 
-登录到 Azure，选择要删除群集的订阅 ID。  可通过登录到 [Azure 门户](https://portal.azure.com)查找订阅 ID。 删除资源组和使用的所有群集资源[删除 AzResourceGroup cmdlet](/en-us/powershell/module/az.resources/remove-azresourcegroup)。
+登录到 Azure，选择要删除群集的订阅 ID。  可通过登录到 [Azure 门户](https://portal.azure.com)查找订阅 ID。 使用 [Remove-AzResourceGroup cmdlet](/en-us/powershell/module/az.resources/remove-azresourcegroup) 删除资源组和所有群集资源。
 
 ```powershell
 $ResourceGroupName = "sfclustertutorialgroup"
@@ -302,9 +291,9 @@ az group delete --name $ResourceGroupName
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解如何使用 [API 管理](/azure/api-management/import-and-publish)。
+详细了解如何使用 [API 管理](../api-management/import-and-publish.md)。
 
-[azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[azure-powershell]: /powershell/azure/
 
 [apim-arm]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/service-integration/apim.json
 [apim-parameters-arm]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/service-integration/apim.parameters.json
@@ -314,7 +303,7 @@ az group delete --name $ResourceGroupName
 
 <!-- pics -->
 [sf-apim-topology-overview]: ./media/service-fabric-tutorial-deploy-api-management/sf-apim-topology-overview.png
-vice-fabric-scripts-and-templates/blob/master/templates/service-integration/network-apim.parameters.jsonn
+副结构脚本和模板/blob/主/模板/服务集成/network-apim.parameters.jsn
 
 <!-- pics -->
 [sf-apim-topology-overview]: ./media/service-fabric-tutorial-deploy-api-management/sf-apim-topology-overview.png

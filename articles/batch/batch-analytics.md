@@ -1,28 +1,18 @@
 ---
-title: Azure Batch 分析 | Microsoft Docs
-description: Azure Batch 分析参考。
-services: batch
-author: laurenhughes
-manager: jeconnoc
-ms.assetid: ''
-ms.service: batch
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
+title: Azure Batch 分析
+description: 批处理分析中的主题包含可用于批处理服务资源的事件和警报的参考信息。
+ms.topic: reference
 ms.date: 04/20/2017
-ms.author: lahugh
-ms.openlocfilehash: 999c3037196044250b8a12d6b6b380553e58c6ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 9d0e5c90c7bade82d76c7dbdfd4276e9671c961c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60721549"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958100"
 ---
 # <a name="batch-analytics"></a>批处理分析
 批处理分析中的主题包含可用于批处理服务资源的事件和警报的参考信息。
 
-有关启用和使用批处理诊断日志的详细信息，请参阅 [Azure Batch 诊断日志记录](https://azure.microsoft.com/documentation/articles/batch-diagnostics/)。
+有关启用和使用批处理诊断日志的详细信息，请参阅 [Azure Batch 诊断日志记录](./batch-diagnostics.md)。
 
 ## <a name="diagnostic-logs"></a>诊断日志
 

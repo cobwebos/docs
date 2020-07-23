@@ -1,5 +1,5 @@
 ---
-title: 使用 Linux VM 系统分配的托管标识访问 Azure 存储
+title: 教程`:`使用托管标识访问 Azure 存储 - Linux - Azure AD
 description: 本教程将指导你完成使用 Linux VM 系统分配的托管标识访问 Azure 存储的过程。
 services: active-directory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/09/2018
+ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb7de72a435faf100d6992815ef8d5ec00cb3581
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b11df2e1a6140d251801a3243f3eaa9458b77d29
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66236170"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "75971918"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>教程：使用 Linux VM 系统分配的托管标识访问 Azure 存储 
 
@@ -37,7 +37,7 @@ ms.locfileid: "66236170"
 > [!NOTE]
 > 适用于 Azure 存储的 Azure Active Directory 身份验证当前处于公共预览版。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 

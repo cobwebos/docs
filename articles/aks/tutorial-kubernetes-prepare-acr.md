@@ -2,18 +2,15 @@
 title: Azure 上的 Kubernetes 教程 - 创建容器注册表
 description: 在本 Azure Kubernetes 服务 (AKS) 教程中，请创建 Azure 容器注册表实例并上传示例应用程序容器映像。
 services: container-service
-author: tylermsft
-ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: 1bd41dc464c251a2e7dab3087f3feffb15db785f
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 991123b4373332503eff242315e1596a091473c1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304412"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243658"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>教程：部署并使用 Azure 容器注册表
 
@@ -37,13 +34,13 @@ Azure 容器注册表 (ACR) 是容器映像的专用注册表。 可以通过专
 
 若要创建 Azure 容器注册表，首先需要一个资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-使用 [az group create][az-group-create] 命令创建资源组。 以下示例在 *eastus* 区域创建名为 *myResourceGroup* 的资源组：
+使用“[az group create][az-group-create]”命令创建资源组。 以下示例在 *eastus* 区域创建名为 *myResourceGroup* 的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az acr create][az-acr-create] 命令创建 Azure 容器注册表实例，并提供你自己的注册表名称。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 在本教程的剩余部分，请使用 `<acrName>` 作为容器注册表名称的占位符。 提供自己的唯一注册表名称。 “基本”SKU 是一个针对成本优化的入口点，适用于可以对存储和吞吐量进行均衡考虑的开发目的。 
+使用 [az acr create][az-acr-create] 命令创建 Azure 容器注册表实例，并提供你自己的注册表名称。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 在本教程的剩余部分，请使用 `<acrName>` 作为容器注册表名称的占位符。 提供自己的唯一注册表名称。 “基本”SKU 是一个针对成本优化的入口点，适用于可以对存储和吞吐量进行均衡考虑的开发目的。
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -57,7 +54,7 @@ az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 az acr login --name <acrName>
 ```
 
-完成后，该命令会返回“登录成功”  消息。
+完成后，该命令会返回“登录成功”消息。
 
 ## <a name="tag-a-container-image"></a>标记容器映像
 
@@ -80,7 +77,7 @@ tiangolo/uwsgi-nginx-flask   flask               788ca94b2313        9 months ag
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-现在，请使用容器注册表的 *acrloginServer* 地址标记本地 *azure-vote-front* 映像。 若要指示映像版本，请将 *:v1* 添加到映像名称的末尾：
+现在，请使用容器注册表的 acrLoginServer 地址标记本地 azure-vote-front 映像。 若要指示映像版本，请将 *:v1* 添加到映像名称的末尾：
 
 ```console
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
@@ -142,7 +139,7 @@ v1
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你创建了一个 Azure 容器注册表并推送了可以在 AKS 群集中使用的映像。 你已了解如何：
+在本教程中，你创建了一个 Azure 容器注册表并推送了可以在 AKS 群集中使用的映像。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Azure 容器注册表 (ACR) 实例
@@ -162,8 +159,8 @@ v1
 <!-- LINKS - internal -->
 [az-acr-create]: /cli/azure/acr
 [az-acr-list]: /cli/azure/acr
-[az-acr-login]: https://docs.microsoft.com/cli/azure/acr#az-acr-login
-[az-acr-list]: https://docs.microsoft.com/cli/azure/acr#az-acr-list
+[az-acr-login]: /cli/azure/acr#az-acr-login
+[az-acr-list]: /cli/azure/acr#az-acr-list
 [az-acr-repository-list]: /cli/azure/acr/repository
 [az-acr-repository-show-tags]: /cli/azure/acr/repository
 [az-group-create]: /cli/azure/group#az-group-create

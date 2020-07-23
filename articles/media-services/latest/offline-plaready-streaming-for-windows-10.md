@@ -1,5 +1,5 @@
 ---
-title: 配置帐户以对受 PlayReady 保护的内容进行脱机流式处理 - Azure
+title: 使用 Azure 媒体服务 v3 配置脱机 PlayReady 流式处理
 description: 本文介绍如何配置 Azure 媒体服务帐户，以便对适用于 Windows 10 的 PlayReady 进行脱机流式处理。
 services: media-services
 keywords: DASH, DRM, Widevine 脱机模式, ExoPlayer, Android
@@ -14,34 +14,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: d3ff97dc86ea6932ba51a4a30e53edf1082d5305
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 63b835d5d6c442f19f6d1fbe1710547ab96e1b40
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937470"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82160233"
 ---
-# <a name="offline-playready-streaming-for-windows-10"></a>适用于 Windows 10 的 PlayReady 脱机流式处理
+# <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>使用媒体服务 v3 进行适用于 Windows 10 的 PlayReady 脱机流式处理
 
 Azure 媒体服务支持带 DRM 保护的脱机下载/播放。 本文涵盖用于 Windows 10/PlayReady 客户端的对 Azure 媒体服务的脱机支持。 可以通过以下文章了解对 iOS/FairPlay 和 Android/Widevine 设备的脱机模式支持：
 
 - [适用于 iOS 的 FairPlay 脱机流式处理](offline-fairplay-for-ios.md)
-- [适用于 Android 的 Widevine 脱机流式处理](offline-widevine-for-android.md)
+- [适用于 Android 的脱机 Widevine 流式处理](offline-widevine-for-android.md)
+
+> [!NOTE]
+> 下载内容时，脱机 DRM 仅针对发出单个许可证请求进行计费。 任何错误都不收费。
 
 ## <a name="overview"></a>概述
 
 本节介绍有关脱机模式播放的一些背景，特别是以下问题的原因：
 
-* 在某些国家/地区，Internet 可用性和/或带宽是仍然受到限制。 为获得满意的观看体验，用户可能选择首先下载以便能够观看高分辨率的内容。 在此情况下，通常问题不在于网络可用性，而在于受限的网络宽带。 此时，OTT/OVP 提供程序就会请求提供脱机模式支持。
+* 在某些国家/地区，Internet 可用性和/或宽带仍然受到限制。 为获得满意的观看体验，用户可能选择首先下载以便能够观看高分辨率的内容。 在此情况下，通常问题不在于网络可用性，而在于受限的网络宽带。 此时，OTT/OVP 提供程序就会请求提供脱机模式支持。
 * 在 Netflix 2016 年第 3 季度股东大会上，Netflix 首席执行官 Reed Hastings 表示，下载内容是“经常请求的功能”，“我们对此持开放态度”。
-* 某些内容提供程序可能会禁止国家/地区的边界之外的 DRM 许可证传送。 如果用户想在国外旅行期间查看内容，需要脱机下载。
+* 某些内容提供程序可能不允许在某个国家/地区的边界之外进行 DRM 许可证传送。 如果用户想在国外旅行期间查看内容，需要脱机下载。
  
 实现脱机模式所面临的挑战如下：
 
 * 许多播放器、编码器工具都支持 MP4，但 MP4 容器和 DRM 之间不存在绑定；
 * 从长远来看，具有 CENC 的 CFF 是趋势。 然而，目前工具/播放机支持生态系统尚未出现。 现在需要一个解决方案。
  
-其理念为：具有 H264/AAC 的平滑流式处理 ([PIFF](https://go.microsoft.com/?linkid=9682897)) 文件格式与 PlayReady (AES-128 CTR) 存在绑定。 平滑流式处理 .ismv 文件（假设音频混合在视频中）本身就是 fMP4，可以用于播放。 如果平滑流式处理内容经过 PlayReady 加密，则每个 .ismv 文件会变成受 PlayReady 保护的片段 MP4。 我们可以选择具有首选比特率的 .ismv 文件，并将其重命名为 .mp4 以便下载。
+其理念为：具有 H264/AAC 的平滑流式处理 ([PIFF](https://docs.microsoft.com/iis/media/smooth-streaming/protected-interoperable-file-format)) 文件格式与 PlayReady (AES-128 CTR) 存在绑定。 平滑流式处理 .ismv 文件（假设音频混合在视频中）本身就是 fMP4，可以用于播放。 如果平滑流式处理内容经过 PlayReady 加密，则每个 .ismv 文件会变成受 PlayReady 保护的片段 MP4。 我们可以选择具有首选比特率的 .ismv 文件，并将其重命名为 .mp4 以便下载。
 
 有以下两种方式用于承载 PlayReady 保护的 MP4，以便进行渐进式下载：
 
@@ -57,13 +60,13 @@ Azure 媒体服务支持带 DRM 保护的脱机下载/播放。 本文涵盖用�
 
 资产 #1：
 
-* 渐进式下载 URL：[https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4")
-* PlayReady LA_URL (AMS)：[https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/](https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/)
+* 渐进式下载 URL：[https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
+* PlayReady LA_URL (AMS)：`https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/`
 
 资产 #2：
 
 * 渐进式下载 URL：[https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
-* PlayReady LA_URL （本地）： [https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
+* PlayReady LA_URL （本地）：`https://willzhan12.cloudapp.net/playready/rightsmanager.asmx`
 
 对于播放测试，我们在 Windows 10 上使用了通用 Windows 应用程序。 在 [Windows 10 通用示例](https://github.com/Microsoft/Windows-universal-samples)中，有一个名为 [Adaptive Streaming Sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming)（自适应流式处理示例）的基础播放器示例。 我们只需要添加代码，选择下载的视频并将其用作源，而不是用作自适应流式处理源。 按钮单击事件处理程序中的更改：
 
@@ -109,7 +112,6 @@ private async void LoadUri_Click(object sender, RoutedEventArgs e)
 ```
 
 ![脱机模式下播放受 PlayReady 保护的 fMP4](./media/offline-playready-for-windows/offline-playready1.jpg)
-
 
 由于视频受 PlayReady 保护，屏幕截图将不能包含该视频。
 

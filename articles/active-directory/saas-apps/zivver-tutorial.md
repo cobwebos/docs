@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 ZIVVER 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 ZIVVER 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 ZIVVER 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 51db52d5a5bfef6ef5a34fa9a0877516d5786236
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 02b292c5db3d20f56d7b8291ea31d8da9863809b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66143191"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74233242"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zivver"></a>教程：Azure Active Directory 与 ZIVVER 集成
+# <a name="tutorial-azure-active-directory-integration-with-zivver"></a>教程：Azure Active Directory 与 ZIVVER 的集成
 
 本教程介绍了如何将 ZIVVER 与 Azure Active Directory (Azure AD) 进行集成。
 将 ZIVVER 与 Azure AD 集成可提供以下优势：
@@ -34,7 +34,7 @@ ms.locfileid: "66143191"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 ZIVVER 的集成，需要具有以下项：
 
@@ -107,24 +107,24 @@ ms.locfileid: "66143191"
 
     在“标识符”  文本框中，键入一个 URL：`https://app.zivver.com/SAML/Zivver`
 
-5. ZIVVER 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的  **nameidentifier** 与  **user.userprincipalname** 进行映射。 ZIVVER 应用程序要求将  **nameidentifier** 与  **user.mail** 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射 ****  。
+5. ZIVVER 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 ZIVVER 应用程序要求通过 **user.mail** 对 **nameidentifier** 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射。
 
     ![image](common/edit-attribute.png)
 
-6. 除了上述属性，ZIVVER 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
+6. 除了上述属性，ZIVVER 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
     | 名称 | 命名空间 | 源属性|
     | ---------------| --------------- |
     | ZivverAccountKey | https:\//zivver.com/SAML/Attributes | user.objectid |
 
     >[!NOTE]
-    >如果使用由本地 Active Directory 和 Azure AD Connect 工具组成的混合设置，值应设置为 `user.objectGUID`
+    >如果使用由本地 Active Directory 和 Azure AD Connect 工具组成的混合设置，“值”应设置为 `user.objectGUID`
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![图像](common/new-save-attribute.png)
+    ![image](common/new-save-attribute.png)
 
-    ![图像](common/new-attribute-details.png)
+    ![image](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
@@ -134,7 +134,7 @@ ms.locfileid: "66143191"
 
     e. 在“源属性”  列表中，键入为该行显示的属性值。
 
-    f. 单击“ **保存**”。
+    f. 单击“保存”  。
 
 7. 在“设置 SAML 单一登录”页上的“SAML 签名证书”部分中，单击“下载”以下载“联合元数据 XML”，单击“复制”图标以根据要求从给定选项中复制“应用联合元数据 URL”并将其保存在计算机上       。
 
@@ -184,7 +184,7 @@ ms.locfileid: "66143191"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -206,7 +206,7 @@ ms.locfileid: "66143191"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -218,7 +218,7 @@ ms.locfileid: "66143191"
 
 ### <a name="create-zivver-test-user"></a>创建 ZIVVER 测试用户
 
-在本部分中，将在 ZIVVER 中创建一个名为 Britta Simon 的用户。 请与  [ZIVVER 支持团队](https://support.zivver.com/)协作，将用户添加到 ZIVVER 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 ZIVVER 中创建一个名为 Britta Simon 的用户。 请与 [ZIVVER 支持团队](https://support.zivver.com/)协作来在 ZIVVER 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

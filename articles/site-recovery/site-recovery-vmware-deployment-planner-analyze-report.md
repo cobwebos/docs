@@ -1,20 +1,19 @@
 ---
-title: 分析 Azure Site Recovery 部署规划器报告，以便从 VMware 灾难恢复到 Azure | Microsoft Docs
-description: 本文介绍如何分析 Azure Site Recovery 部署规划器生成的报告，以便从 VMware 灾难恢复到 Azure。
+title: 分析部署规划器报表以使用 Azure Site Recovery 进行 VMware 灾难恢复
+description: 本文介绍如何分析 Azure Site Recovery 部署规划器生成的报表，以使用 Azure Site Recovery 从 VMware 灾难恢复到 Azure。
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 3/20/2019
+ms.date: 11/4/2019
 ms.author: mayg
-ms.openlocfilehash: cbea6785239c70a3cdb229d0811497f051224238
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 4dad11e8331064a9df1b1aed561e00b9a9b24017
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61472406"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84699186"
 ---
-# <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>分析 Azure Site Recovery 部署规划器报告，以便从 VMware 灾难恢复到 Azure
+# <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>分析部署规划器报表以从 VMware 灾难恢复到 Azure
 
 生成的 Microsoft Excel 报表包含以下工作表：
 ## <a name="on-premises-summary"></a>本地摘要
@@ -32,51 +31,48 @@ ms.locfileid: "61472406"
 
 **每个兼容虚拟机的平均磁盘数**：根据所有兼容 VM 计算出的平均磁盘数。
 
-**平均磁盘大小(GB)**：根据所有兼容 VM 计算出的平均磁盘大小。
+**平均磁盘大小(GB)** ：根据所有兼容 VM 计算出的平均磁盘大小。
 
 **所需 RPO (分钟)**：默认恢复点目标，或者在生成报告时为了估算所需带宽为“DesiredRPO”参数传递的值。
 
 **所需带宽(Mbps)**：在生成报告时为了估算可实现 RPO 为“Bandwidth”参数传递的值。
 
-**每日观察到的典型数据变动量(GB)**：在所有分析日期观察到的平均数据变动量。 此数字用作输入之一，确定要在部署中使用的配置服务器和附加进程服务器的数目。
+**每日观察到的典型数据变动量(GB)** ：在所有分析日期观察到的平均数据变动量。 此数字用作输入之一，确定要在部署中使用的配置服务器和附加进程服务器的数目。
 
 ## <a name="recommendations"></a>建议
-
->[!Note]
->当复制直接到托管磁盘时，忽略对存储帐户数的建议。
 
 VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细信息：
 
 ![适用于 VMware 到 Azure 报表的建议](media/site-recovery-vmware-deployment-planner-analyze-report/Recommendations-v2a.png)
 
 ### <a name="profiled-data"></a>分析的数据
-![Deployment Planner 中的分析数据视图](media/site-recovery-vmware-deployment-planner-analyze-report/profiled-data-v2a.png)
+![Deployment Planner 中的已分析数据视图](media/site-recovery-vmware-deployment-planner-analyze-report/profiled-data-v2a.png)
 
 **数据分析期**：在此期间运行了分析。 默认情况下，该工具使用所有分析数据进行计算，除非在生成报告期间使用 StartDate 和 EndDate 选项生成特定时间段的报告。
 
 **服务器名称**：为其生成 VM 报告的 VMware vCenter 或 ESXi 主机的名称或 IP 地址。
 
-**所需 RPO**：部署的恢复点目标。 默认情况下，所需网络带宽是根据 RPO 值为 15、30 和 60 分钟计算的。 根据所做的选择，受影响的值会在工作表中更新。 如果生成报告时使用了 *DesiredRPOinMin* 参数，该值会显示在“所需 RPO”结果中。
+**所需 RPO**：部署的恢复点目标。 默认情况下，所需网络带宽是根据 RPO 值为 15、30 和 60 分钟计算的。 根据所做的选择，受影响的值会在工作表中更新。 如果生成报告时使用了  DesiredRPOinMin 参数，该值会显示在“所需 RPO”结果中。
 
 ### <a name="profiling-overview"></a>分析概述
 
 ![Deployment Planner 中的分析结果](media/site-recovery-vmware-deployment-planner-analyze-report/profiling-overview-v2a.png)
 
-**分析的虚拟机总数**：提供了分析数据的 VM 的总数。 如果 VMListFile 中包含未分析的任何 VM 的名称，则生成报告时不会考虑这些 VM，会将其从分析的 VM 总数中排除。
+**分析的虚拟机总数**：提供了其分析数据的 VM 总数。 如果 VMListFile 中包含未分析的任何 VM 的名称，则生成报告时不会考虑这些 VM，会将其从分析的 VM 总数中排除。
 
-**兼容的虚拟机数**：可以使用 Site Recovery 在 Azure 中保护的 VM 数。 它是计算了所需网络带宽、存储帐户数、Azure 核心数以及配置服务器与附加进程服务器数的兼容 VM 总数。 “兼容的 VM”部分提供了每个兼容的 VM 的详细信息。
+**兼容的虚拟机数**：可以使用Site Recovery 在 Azure 中保护的 VM 数。 它是计算了所需网络带宽、存储帐户数、Azure 核心数以及配置服务器与附加进程服务器数的兼容 VM 总数。 “兼容的 VM”部分提供了每个兼容的 VM 的详细信息。
 
-**不兼容的虚拟机**：在保护方面与 Site Recovery 不兼容的已分析 VM 数。 “不兼容的 VM”部分说明了不兼容的原因。 如果 VMListFile 包含任何未分析 VM 的名称，则这些 VM 不计入不兼容 VM 的数目。 在“不兼容的 VM”部分的末尾，这些 VM 作为“找不到数据”类型列出。
+**不兼容的虚拟机数**：在保护方面与 Site Recovery 不兼容的已分析 VM 数。 “不兼容的 VM”部分说明了不兼容的原因。 如果 VMListFile 包含任何未分析 VM 的名称，则这些 VM 不计入不兼容 VM 的数目。 在“不兼容的 VM”部分的末尾，这些 VM 作为“找不到数据”类型列出。
 
-**所需 RPO**：以分钟为单位的所需恢复点目标。 针对以下三个 RPO 值生成报告：15 分钟（默认值）、30 分钟、60 分钟。 会根据你在工作表右上方“所需 RPO”下拉列表中所做的选择来更改报告中的带宽建议。 如果结合某个自定义值使用“-DesiredRPO”参数生成了报告，此自定义值会在“所需 RPO”下拉列表中显示为默认值。
+**所需 RPO**：以分钟为单位的所需恢复点目标。 针对以下三个 RPO 值生成报告：15 分钟（默认值）、30 分钟和 60 分钟。 会根据你在工作表右上方“所需 RPO”下拉列表中所做的选择来更改报告中的带宽建议。 如果结合某个自定义值使用“-DesiredRPO”参数生成了报告，此自定义值会在“所需 RPO”下拉列表中显示为默认值。 
 
 ### <a name="required-network-bandwidth-mbps"></a>所需的网络带宽 (Mbps)
 
-![Deployment Planner 中的所需网络带宽](media/site-recovery-vmware-deployment-planner-analyze-report/required-network-bandwidth-v2a.png)
+![Deployment Planner 中所需的网络带宽](media/site-recovery-vmware-deployment-planner-analyze-report/required-network-bandwidth-v2a.png)
 
-**为了满足 100% 时间的 RPO：** 分配建议的以 Mbps 为单位的带宽，以便满足 100% 时间的所需 RPO。 这种带宽量必须专用于所有兼容 VM 的稳态增量复制，避免任何 RPO 违规。
+**为了满足 100% 时间 RPO**：分配建议的以 Mbps 为单位的带宽，以便满足 100% 时间的所需 RPO。 这种带宽量必须专用于所有兼容 VM 的稳态增量复制，避免任何 RPO 违规。
 
-**为了满足 90% 时间的 RPO：** 如果由于宽带价格或任何其他原因而无法设置所需的带宽来满足 100% 时间的所需 RPO，则可选择规格较低但仍可满足 90% 时间的所需 RPO 的带宽设置。 为了帮助用户理解设置这种规格较低的带宽所造成的影响，报告中会根据预期发生的 RPO 违规的数目和持续时间提供一项模拟分析。
+**为了满足 90% 时间的 RPO**：如果由于宽带价格或任何其他原因而无法设置所需的带宽来满足 100% 时间的所需 RPO，可以选择规格较低但仍可满足 90% 时间的所需 RPO 的带宽设置。 为了帮助理解设置这种规格较低的带宽所造成的影响，报告中会根据预期发生的 RPO 违规的数目和持续时间提供一项假设 (what-if) 分析。
 
 **实现的吞吐量：** 从运行 GetThroughput 命令的服务器到存储帐户所在的 Microsoft Azure 区域的吞吐量。 此吞吐量数字表示在配置服务器或进程服务器的存储和网络特征与运行该工具的服务器保持相同的前提下，使用 Site Recovery 保护兼容的 VM 时可实现的大致吞吐量水平。
 
@@ -95,28 +91,28 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 对于所有企业型 Site Recovery 部署，建议使用 [ExpressRoute](https://aka.ms/expressroute)。
 
 ### <a name="required-storage-accounts"></a>所需的存储帐户
-下图显示了保护所有兼容 VM 所需的存储帐户（标准和高级）总数。 若要了解适用于每个 VM 的存储帐户，请参阅“VM-存储位置”部分。
+下图显示了保护所有兼容 VM 所需的存储帐户（标准和高级）总数。 若要了解适用于每个 VM 的存储帐户，请参阅“VM-存储位置”部分。 如果使用的是部署规划器 v2.5，则此建议仅显示复制所需的标准缓存存储帐户数，因为数据会直接写入到托管磁盘。
 
-![Deployment Planner 中的所需存储帐户](media/site-recovery-vmware-deployment-planner-analyze-report/required-storage-accounts-v2a.png)
+![Deployment Planner 中所需的存储帐户](media/site-recovery-vmware-deployment-planner-analyze-report/required-storage-accounts-v2a.png)
 
 ### <a name="required-number-of-azure-cores"></a>所需的 Azure 核心数
 此结果是在对所有兼容的 VM 进行故障转移或测试性故障转移之前需要设置的核心总数。 如果订阅中能够使用的核心太少，在执行测试性故障转移或故障转移时，Site Recovery 无法创建 VM。
 
-![Deployment Planner 中的所需 Azure 核心数](media/site-recovery-vmware-deployment-planner-analyze-report/required-cores-v2a.png)
+![Deployment Planner 中所需的 Azure 核心数](media/site-recovery-vmware-deployment-planner-analyze-report/required-cores-v2a.png)
 
 ### <a name="required-on-premises-infrastructure"></a>所需的本地基础结构
 下图是要配置的配置服务器和附加进程服务器的总数，该数目足以保护所有兼容 VM。 根据所支持的[配置服务器大小建议](https://aka.ms/asr-v2a-on-prem-components)，该工具可能会建议使用更多的服务器。 该建议取决于每日变动量和受保护 VM（假定每个 VM 平均有三个磁盘）的最大数目哪个更大，即在配置服务器或附加进程服务器上哪个最先达到。 在“本地摘要”部分可以找到每天总变动量和受保护磁盘总数的详细信息。
 
-![Deployment Planner 中的所需本地基础结构](media/site-recovery-vmware-deployment-planner-analyze-report/required-on-premises-components-v2a.png)
+![Deployment Planner 中所需的本地基础结构](media/site-recovery-vmware-deployment-planner-analyze-report/required-on-premises-components-v2a.png)
 
-### <a name="what-if-analysis"></a>模拟分析
+### <a name="what-if-analysis"></a>假设分析
 此项分析概述了如果设置较低的带宽，导致只能在 90% 的时间内满足所需 RPO，则在分析期间可能会发生多少项违规。 在任何给定的日期可能会发生一项或多项 RPO 违规。 下图显示了一天的峰值 RPO。
 基于此分析，可以确定在使用指定的较低带宽的条件下，是否可以接受所有日期的 RPO 违规数以及每天的峰值 RPO。 如果可以接受，则可为复制分配较低的带宽，否则，应根据建议分配更高的带宽来满足 100% 时间的所需 RPO。
 
-![Deployment Planner 中的模拟分析](media/site-recovery-vmware-deployment-planner-analyze-report/what-if-analysis-v2a.png)
+![Deployment Planner 中的假设分析](media/site-recovery-vmware-deployment-planner-analyze-report/what-if-analysis-v2a.png)
 
 ### <a name="recommended-vm-batch-size-for-initial-replication"></a>用于初始复制的建议 VM 批大小
-在本部分，我们提供了可以进行并行保护的 VM 数的建议，目的是在 72 小时内使用建议的带宽完成初始复制，该带宽满足所设置的 100% 时间的所需 RPO。 此值是可以配置的值。 若要在生成报告时对其进行更改，请使用“GoalToCompleteIR”参数。
+在本部分，我们提供了可以进行并行保护的 VM 数的建议，目的是在 72 小时内使用建议的带宽完成初始复制，该带宽满足所设置的 100% 时间的所需 RPO。 此值是可以配置的值。 若要在生成报告时对其进行更改，请使用“GoalToCompleteIR”  参数。
 
 下图显示了一系列带宽值和计算出的 VM 批大小计数，用于根据所有兼容 VM 上检测到的平均 VM 大小，在 72 小时内完成初始复制。
 
@@ -133,11 +129,11 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 
 可以按月或按年查看成本。 详细了解[支持的目标区域](./site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions)和[支持的货币](./site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies)。
 
-**按组件成本**：总 DR 成本分为四个部分：计算成本、存储成本、网络成本和 Site Recovery 许可证成本。 成本计算基于在复制时和 DR 演练时上述四个部分（计算、存储（高级和标准）、在本地站点和 Azure 之间配置的 ExpressRoute/VPN，以及 Azure Site Recovery 许可证）所对应的使用量。
+**按组件成本**：总 DR 成本分为四个部分：计算成本、存储成本、网络成本和 Azure Site Recovery 许可证成本。 成本计算基于在复制时和 DR 演练时上述四个部分（计算、存储（高级和标准）、在本地站点和 Azure 之间配置的 ExpressRoute/VPN，以及 Azure Site Recovery 许可证）所对应的使用量。
 
 **按状态成本**：总灾难恢复 (DR) 成本按两种不同的状态（“复制”和“DR 演练”）分类。
 
-**复制成本**：复制期间产生的成本。 涵盖存储成本、网络成本、Azure Site Recovery 许可证成本。
+**复制成本**：复制期间产生的成本， 涵盖存储成本、网络成本、Azure Site Recovery 许可证成本。
 
 **DR 演练成本**：测试性故障转移期间产生的成本。 Azure Site Recovery 会在测试性故障转移期间启动 VM。 DR 演练成本涵盖正在运行的 VM 的计算和存储成本。
 
@@ -160,21 +156,19 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 ## <a name="vm-storage-placement"></a>VM-存储位置
 
 >[!Note]
->当复制直接到托管磁盘时，您不必担心存储帐户数。 对于存储，在存储类型 （标准或高级） 上使用仅建议。 适用于托管磁盘相同的类型。
+>部署规划器 v2.5 及更高版本建议将直接复制到托管磁盘的计算机的存储位置。
 
 ![VM-存储位置](media/site-recovery-vmware-deployment-planner-analyze-report/vm-storage-placement-v2a.png)
 
-**磁盘存储类型**：标准或高级存储帐户，用于复制“要放置的 VM”列中所述的所有相应 VM。
+**复制存储类型**：标准或高级托管磁盘，用于复制要**放置的 vm**中提到的所有相应 vm。
 
-**建议的前缀**：建议的三字符前缀，可用于存储帐户的命名。 可以使用自己的前缀，而该工具的建议则遵循[存储帐户的分区命名约定](https://aka.ms/storage-performance-checklist)。
+**日志存储帐户类型**：所有复制日志存储在标准存储帐户中。
 
-**建议的帐户名称**：在使用建议的前缀后出现的存储帐户名称。 将尖括号（< 和 >）中的名称替换为自定义输入。
+**建议的存储帐户前缀**：建议的三字符前缀，可用于命名缓存存储帐户。 可以使用自己的前缀，而该工具的建议则遵循[存储帐户的分区命名约定](https://aka.ms/storage-performance-checklist)。
 
-**日志存储帐户**：所有复制日志存储在标准存储帐户中。 对于复制到高级存储帐户的 VM，请设置一个附加的标准存储帐户来进行日志存储。 单个标准日志存储帐户可由多个高级复制存储帐户使用。 复制到标准存储帐户的 VM 为日志使用相同的存储帐户。
+**建议的日志帐户名称**：包含建议的前缀后的存储帐户名称。 将尖括号（< 和 >）中的名称替换为自定义输入。
 
-**建议的日志帐户名称**：在使用建议的前缀后出现的存储日志帐户名称。 将尖括号（< 和 >）中的名称替换为自定义输入。
-
-**位置摘要**：执行复制和测试故障转移或故障转移时，存储帐户中 VM 总负载的摘要。 其中包括映射到存储帐户的 VM 总数、放置在此存储帐户中的所有 VM 上发生的读/写 IOPS 总数、写入（复制）IOPS 总数、所有磁盘的总设置大小，以及磁盘总数。
+**放置摘要**：按存储类型保护的 vm 所需的磁盘摘要。 它包括 VM 总数、所有磁盘上预配的总大小，以及磁盘总数。
 
 **要放置的虚拟机**：列出了为优化性能和使用而应放置在给定存储帐户中的所有 VM。
 
@@ -183,7 +177,7 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 
 **VM 名称**：VM 名称或 IP 地址，生成报告时在 VMListFile 中使用。 此列还列出附加到 VM 的磁盘 (VMDK)。 为了区分使用重复名称或 IP 地址的 vCenter VM，这些名称包含 ESXi 主机名称。 列出的 ESXi 主机是在其中放置了 VM 的主机，该 VM 是在分析期间通过工具发现后放置的。
 
-**VM 兼容性**：值为“是”和“是\*”。 “是\*”针对 VM 适用于[高级 SSD](../virtual-machines/windows/disks-types.md) 的情况。 在这里，所分析的高变动量或 IOPS 磁盘适合 P20 或 P30 类别，但考虑到磁盘大小，因此将其归入较低的 P10 或 P20 类别。 存储帐户决定了根据大小对磁盘分类时，可将磁盘归入哪种高级存储磁盘类型。 例如：
+**VM 兼容性**：值为 **"是"** 和 **"是 \* **"。 **是** \*适用于 VM 适合[高级 ssd](../virtual-machines/windows/disks-types.md)的实例。 在这里，所分析的高变动量或 IOPS 磁盘适合 P20 或 P30 类别，但考虑到磁盘大小，因此将其归入较低的 P10 或 P20 类别。 存储帐户决定了根据大小对磁盘分类时，可将磁盘归入哪种高级存储磁盘类型。 例如：
 * <128 GB 为 P10。
 * 128 GB 到 256 GB 为 P15
 * 256 GB 到 512 GB 为 P20。
@@ -191,17 +185,15 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 * 1025 GB 到 2048 GB 为 P40。
 * 2049 GB 到 4095 GB 为 P50。
 
-例如，如果某个磁盘按工作负荷特征应归入 P20 或 P30 类别，但按大小应归入较低的高级存储磁盘类型，则此工具会将该 VM 标记为“是\*”。 该工具还建议根据建议的高级存储磁盘类型更改源磁盘大小，或者在故障转移后更改目标磁盘类型。
+例如，如果某个磁盘的工作负荷特征将其放入 P20 或 P30 类别，但其大小将映射到较低的高级存储磁盘类型，则该工具会将该 VM 标记为 **"是"** \* 。 该工具还建议根据建议的高级存储磁盘类型更改源磁盘大小，或者在故障转移后更改目标磁盘类型。
 
 **存储类型**：标准或高级。
 
-**建议的前缀**：由三个字符构成的存储帐户前缀。
+**为复制创建的 Asrseeddisk （托管磁盘）**：启用复制时创建的磁盘的名称。 它将数据及其快照存储在 Azure 中。
 
-**存储帐户**：此名称使用建议的存储帐户前缀。
+**峰值读/写 IOPS (包括增长系数)**：磁盘上的峰值工作负荷读/写 IOPS（默认为第 95 百分位），包括将来的增长系数（默认为 30%）。 请注意，VM 的读/写 IOPS 总数并非总是该 VM 各个磁盘的读/写 IOPS 之和，因为在分析期间，该 VM 每分钟的读/写 IOPS 峰值是其各个磁盘的读/写 IOPS 之和的峰值。
 
-**峰值读/写 IOPS (包括增长系数)**：磁盘上的峰值工作负荷读/写 IOPS（默认为第 95 百分位），其中包括将来的增长系数（默认为 30%）。 请注意，VM 的读/写 IOPS 总数并非总是该 VM 各个磁盘的读/写 IOPS 之和，因为在分析期间，该 VM 每分钟的读/写 IOPS 峰值是其各个磁盘的读/写 IOPS 之和的峰值。
-
-**峰值数据变动量(Mbps，包括增长系数)**：磁盘上的峰值变动率（默认为第 95 百分位），其中包括将来的增长系数（默认为 30%）。 请注意，VM 的总数据变动量并非总是 VM 各个磁盘的数据变动量之和，因为 VM 的峰值数据变动量是该 VM 在分析期间每分钟的各个磁盘变动量之和的峰值。
+**以 Mbps 为单位的峰值数据变动量(包括增长系数)**：磁盘上的峰值变动率（默认为第 95 百分位），包括将来的增长系数（默认为 30%）。 请注意，VM 的总数据变动量并非总是 VM 各个磁盘的数据变动量之和，因为 VM 的峰值数据变动量是该 VM 在分析期间每分钟的各个磁盘变动量之和的峰值。
 
 **Azure VM 大小**：适用于此本地 VM 的映射 Azure 云服务虚拟机大小。 映射取决于本地 VM 的内存、磁盘/核心/NIC 数以及读/写 IOPS。 建议在符合所有本地 VM 特征的情况下，始终使用最小的 Azure VM 大小。
 
@@ -217,7 +209,7 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 
 **启动类型**：VM 的启动类型。 它可以是 BIOS 或 EFI。  目前，Azure Site Recovery 支持 Windows Server EFI VM（Windows Server 2012、2012 R2 和 2016），前提是启动盘中的分区数小于 4，引导扇区大小为 512 字节。 Azure Site Recovery 移动服务的版本最低必须为 9.13 才能保护 EFI VM。 EFI VM 仅支持故障转移。 不支持故障回复。  
 
-**OS 类型**：它是 VM 的 OS 类型。 可以是 Windows、Linux 或其他，具体取决于创建 VM 时从 VMware vSphere 中选择的模板。  
+**OS 类型**：即 VM 的 OS 类型。 可以是 Windows、Linux 或其他，具体取决于创建 VM 时从 VMware vSphere 中选择的模板。  
 
 ## <a name="incompatible-vms"></a>不兼容的 VM
 
@@ -228,19 +220,14 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 
 **VM 兼容性**：指示给定的 VM 为何无法与 Site Recovery 兼容使用。 会针对 VM 的每个不兼容磁盘说明原因，而根据已发布的[存储限制](https://aka.ms/azure-storage-scalbility-performance)，这些原因不外乎：
 
-* 磁盘大小超出 4095 GB。 Azure 存储目前不支持大于 4095 GB 的数据磁盘大小。
-
-* OS 磁盘大于 2048 GB。 Azure 存储目前不支持大于 2048 GB 的 OS 磁盘大小。
-
+* 数据磁盘大小错误或 OS 磁盘大小错误。 [查看](vmware-physical-azure-support-matrix.md#azure-vm-requirements)支持限制。 
 * VM 总大小（复制 + TFO）超出系统支持的存储帐户大小限制 (35 TB)。 当 VM 中的单个磁盘的性能特征超出系统支持的适用于标准存储的 Azure 或 Site Recovery 最大限制时，通常会表现出这种不兼容性。 如果出现这种情况，则必须将 VM 置于高级存储区域。 但是，高级存储帐户支持的最大大小为 35 TB，并且无法跨多个存储帐户保护单个需要保护的 VM。 另请注意，在受保护 VM 上执行测试性故障转移时，该故障转移运行时所使用的存储帐户与进行复制时所使用的存储帐户相同。 在这种情况下，可以在设置时会磁盘大小加倍，既可进行复制，又可成功地进行测试性故障转移。
 
 * 源 IOPS 超出了每个磁盘支持的存储 IOPS 限制，即 7500。
 
 * 源 IOPS 超出了每个 VM 支持的存储 IOPS 限制，即 80,000。
 
-* 平均数据变动量超出了磁盘支持的 Site Recovery 数据变动量限制：平均 I/O 大小不能超过 10 MB/秒。
-
-* 平均数据变动量超出了 VM 支持的 Site Recovery 数据变动量限制（所有磁盘变动量之和）：平均 I/O 大小不能超过 25 MB/秒。
+* 平均数据变动量超出了磁盘支持的 Site Recovery 数据变动量限制：平均 I/O 大小不能超过 20 MB/秒。
 
 * VM 中所有磁盘的峰值数据变动量超出了每个 VM 支持的最大 Site Recovery 峰值数据变动量限制，即 54 MB/秒。
 
@@ -251,9 +238,9 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 * 每日总数据变动量超出了进程服务器支持的每日变动量限制，即 2 TB。
 
 
-**峰值读/写 IOPS (包括增长系数)**：磁盘上的峰值工作负荷 IOPS（默认为第 95 百分位），其中包括将来的增长系数（默认为 30%）。 请注意，VM 的读/写 IOPS 总数并非总是该 VM 各个磁盘的读/写 IOPS 之和，因为在分析期间，该 VM 每分钟的读/写 IOPS 峰值是其各个磁盘的读/写 IOPS 之和的峰值。
+**峰值读/写 IOPS (包括增长系数)**：磁盘上的峰值工作负荷 IOPS（默认为第 95 百分位），包括将来的增长系数（默认为 30%）。 请注意，VM 的读/写 IOPS 总数并非总是该 VM 各个磁盘的读/写 IOPS 之和，因为在分析期间，该 VM 每分钟的读/写 IOPS 峰值是其各个磁盘的读/写 IOPS 之和的峰值。
 
-**峰值数据变动量(Mbps，包括增长系数)**：磁盘上的峰值变动率 IOPS（默认为第 95 百分位），其中包括将来的增长系数（默认为 30%）。 请注意，VM 的总数据变动量并非总是 VM 各个磁盘的数据变动量之和，因为 VM 的峰值数据变动量是该 VM 在分析期间每分钟的各个磁盘变动量之和的峰值。
+**以 Mbps 为单位的峰值数据变动量(包括增长系数)**：磁盘上的峰值变动率（默认为第 95 百分位），包括将来的增长系数（默认为 30%）。 请注意，VM 的总数据变动量并非总是 VM 各个磁盘的数据变动量之和，因为 VM 的峰值数据变动量是该 VM 在分析期间每分钟的各个磁盘变动量之和的峰值。
 
 **磁盘数**：VM 上的 VMDK 总数。
 
@@ -267,12 +254,12 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 
 **启动类型**：VM 的启动类型。 它可以是 BIOS 或 EFI。  目前，Azure Site Recovery 支持 Windows Server EFI VM（Windows Server 2012、2012 R2 和 2016），前提是启动盘中的分区数小于 4，引导扇区大小为 512 字节。 Azure Site Recovery 移动服务的版本最低必须为 9.13 才能保护 EFI VM。 EFI VM 仅支持故障转移。 不支持故障回复。
 
-**OS 类型**：它是 VM 的 OS 类型。 可以是 Windows、Linux 或其他，具体取决于创建 VM 时从 VMware vSphere 中选择的模板。
+**Os 类型**： VM 的 os 类型。 可以是 Windows、Linux 或其他，具体取决于创建 VM 时从 VMware vSphere 中选择的模板。
 
 ## <a name="azure-site-recovery-limits"></a>Azure Site Recovery 限制
 下表提供了 Azure Site Recovery 限制。 这些限制基于我们的测试，但无法涵盖所有可能的应用程序 I/O 组合。 实际结果可能因应用程序 I/O 组合而异。 为获得最佳结果，我们始终建议通过测试性故障转移执行广泛的应用程序测试，获取应用程序的真实性能视图，即使在规划部署后，也应如此。
 
-**复制存储目标** | **平均源磁盘 I/O 大小** |**平均源磁盘数据变动量** | **每天的总源磁盘数据变动量**
+**复限制复制存储目标** | **平均源磁盘 I/O 大小** |**平均源磁盘数据变动量** | **每天的总源磁盘数据变动量**
 ---|---|---|---
 标准存储 | 8 KB | 2 MB/秒 | 每个磁盘 168 GB
 高级 P10 或 P15 磁盘 | 8 KB  | 2 MB/秒 | 每个磁盘 168 GB
@@ -283,7 +270,6 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 
 **源数据变动量** | **最大限制**
 ---|---
-每个 VM 的平均数据变动量| 25 MB/秒
 VM 上所有磁盘的峰值数据变动量 | 54 MB/秒
 进程服务器支持的每日最大数据变动量 | 2 TB
 

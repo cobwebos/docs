@@ -1,23 +1,19 @@
 ---
-title: 快速入门 - 在 Azure 中创建专用 Docker 注册表 - Azure CLI
+title: 快速入门 - 创建注册表 - Azure CLI
 description: 快速了解如何使用 Azure CLI 创建专用 Docker 容器注册表。
-services: container-registry
-author: dlepow
-ms.service: container-registry
 ms.topic: quickstart
-ms.date: 01/22/2019
-ms.author: danlep
+ms.date: 06/12/2020
 ms.custom: seodec18, H1Hack27Feb2017, mvc
-ms.openlocfilehash: 24bdd52673c65d039166dc28f9f0a0a784569a1a
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 31e917fa306330ca579266e21560d7d42c7f2bc7
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678694"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752465"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建专用容器注册表
 
-Azure 容器注册表是托管的 Docker 容器注册表服务，用于存储专用的 Docker 容器映像。 本指南详述了如何使用 Azure CLI 创建 Azure 容器注册表实例。 然后，使用 Docker 命令将容器映像推送到注册表中，最终从注册表拉取并运行该映像。
+Azure 容器注册表是托管的 Docker 容器注册表服务，用于存储专用的 Docker 容器映像。 本指南详述了如何使用 Azure CLI 创建 Azure 容器注册表实例。 然后，使用 Docker 命令将容器映像推送到注册表中，最终从注册表提取并运行该映像。
 
 本快速入门需要运行 Azure CLI（建议运行 2.0.55 或更高版本）。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
@@ -27,7 +23,7 @@ Azure 容器注册表是托管的 Docker 容器注册表服务，用于存储专
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create][az-group-create] 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
+使用“[az group create][az-group-create]”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
@@ -37,12 +33,13 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
-在本快速入门中，请创建一个基本注册表。该注册表已优化过成本，是供开发者了解 Azure 容器注册表的选项。 有关可用服务层级的详细信息，请参阅[容器注册表 SKU][container-registry-skus]。
+本快速入门将创建一个“基本”注册表。该注册表已针对成本进行优化，是可供开发人员了解 Azure 容器注册表的选项。 有关可用服务层级的详细信息，请参阅[容器注册表服务层级][container-registry-skus]。
 
 使用 [az acr create][az-acr-create] 命令创建 ACR 实例。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 以下示例使用 myContainerRegistry007。 将其更新为唯一值。
 
 ```azurecli
-az acr create --resource-group myResourceGroup --name myContainerRegistry007 --sku Basic
+az acr create --resource-group myResourceGroup \
+  --name myContainerRegistry007 --sku Basic
 ```
 
 创建注册表时，输出与下面类似：
@@ -68,14 +65,14 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry007 --s
 }
 ```
 
-记下输出中的 `loginServer`，这是完全限定的注册表名称（全部小写）。 在本快速入门的剩余部分，`<acrName>` 是容器注册表名称的占位符。
+记下输出中的 `loginServer`，这是完全限定的注册表名称（全部小写）。 在本快速入门的剩余部分，`<registry-name>` 是容器注册表名称的占位符，`<login-server>` 是注册表的登录服务器名称的占位符。
 
 ## <a name="log-in-to-registry"></a>登录到注册表
 
 在推送和拉取容器映像之前，必须登录到注册表。 为此，请使用 [az acr login][az-acr-login] 命令。
 
 ```azurecli
-az acr login --name <acrName>
+az acr login --name <registry-name>
 ```
 
 该命令在完成后会返回消息 `Login Succeeded`。
@@ -87,7 +84,7 @@ az acr login --name <acrName>
 以下示例列出了注册表中的存储库：
 
 ```azurecli
-az acr repository list --name <acrName> --output table
+az acr repository list --name <registry-name> --output table
 ```
 
 输出：
@@ -101,7 +98,7 @@ hello-world
 以下示例列出了 hello-world 存储库中的标记。
 
 ```azurecli
-az acr repository show-tags --name <acrName> --repository hello-world --output table
+az acr repository show-tags --name <registry-name> --repository hello-world --output table
 ```
 
 输出：
@@ -124,10 +121,13 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门介绍了如何使用 Azure CLI 创建 Azure 容器注册表，如何将容器映像推送到注册表，以及如何拉取并运行注册表中的映像。 若要加深对 ACR 的了解，请继续阅读 Azure 容器注册表教程。
+本快速入门介绍了如何使用 Azure CLI 创建 Azure 容器注册表，如何将容器映像推送到注册表，以及如何拉取并运行注册表中的映像。 请继续阅读 Azure 容器注册表教程，以更深入地了解 ACR。
 
 > [!div class="nextstepaction"]
-> [Azure 容器注册表教程][container-registry-tutorial-quick-task]
+> [Azure 容器注册表教程][container-registry-tutorial-prepare-registry]
+
+> [!div class="nextstepaction"]
+> [Azure 容器注册表任务教程][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
@@ -147,3 +147,4 @@ az group delete --name myResourceGroup
 [azure-cli]: /cli/azure/install-azure-cli
 [container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
+[container-registry-tutorial-prepare-registry]: container-registry-tutorial-prepare-registry.md

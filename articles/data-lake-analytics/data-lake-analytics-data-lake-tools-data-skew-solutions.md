@@ -1,19 +1,19 @@
 ---
-title: 通过用于 Visual Studio 的 Azure Data Lake 工具解决数据倾斜问题
+title: 解决数据歪斜-针对 Visual Studio 的 Azure Data Lake 工具
 description: 通过用于 Visual Studio 的 Azure Data Lake 工具排查潜在解决方案的数据倾斜问题。
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/16/2016
-ms.openlocfilehash: 611439802c200b30586b73b82d0a4bbbc857e114
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: ee77045bfb1023c27a3f831279c109a74b7ed309
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606713"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120222"
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>通过用于 Visual Studio 的 Azure Data Lake 工具解决数据倾斜问题
 
@@ -28,25 +28,25 @@ ms.locfileid: "65606713"
 
 用于 Visual Studio 的 Azure Data Lake 工具可以帮助检测作业中是否存在数据倾斜问题。 如果存在问题，可以尝试用本部分的解决方案来解决。
 
-## <a name="solution-1-improve-table-partitioning"></a>解决方法 1:改善表分区
+## <a name="solution-1-improve-table-partitioning"></a>解决方法 1：改善表分区
 
 ### <a name="option-1-filter-the-skewed-key-value-in-advance"></a>选项 1：提前筛选偏斜的键值
 
 如果不影响业务逻辑的话，可以提前筛选高频值。 例如，如果在 GUID 列中有大量的 000-000-000，则可能不需要聚合该值。 在聚合之前，可以编写“WHERE GUID != “000-000-000””来筛选高频值。
 
-### <a name="option-2-pick-a-different-partition-or-distribution-key"></a>选项 2：选择一个不同的分区或分布键
+### <a name="option-2-pick-a-different-partition-or-distribution-key"></a>选项 2：选择不同的分区或分布键
 
-在前面的示例中，如果只想检查整个国家/地区的税务审核工作负荷，可以提高数据分布通过选择 ID 号作为你的密钥。 有时，选择不同的分区或分布键可以更均衡地分配数据，但需确保该选择不会影响业务逻辑。 例如，若要计算每个州的税收总额，则可能需指定 _State_ 作为分区键。 如果仍遇到此问题，请尝试使用选项 3。
+在上述示例中，如果只想要检查整个国家/地区的税务审核工作负荷，则可以通过选择 ID 号作为密钥来改善数据分布。 有时，选择不同的分区或分布键可以更均衡地分配数据，但需确保该选择不会影响业务逻辑。 例如，若要计算每个州的税收总额，则可能需指定 _State_ 作为分区键。 如果仍遇到此问题，请尝试使用选项 3。
 
-### <a name="option-3-add-more-partition-or-distribution-keys"></a>选项 3：添加更多的分区或分布键
+### <a name="option-3-add-more-partition-or-distribution-keys"></a>选项 3：添加更多的分区键或分布键
 
 可以使用多个键进行分区，而不是仅使用 _State_ 作为分区键。 例如，可以考虑添加 _ZIP Code_ 作为额外的分区键，减小数据分区大小，使数据分布更均衡。
 
 ### <a name="option-4-use-round-robin-distribution"></a>选项 4：使用轮循机制分布
 
-如果找不到适当的分区和分布键，可以尝试使用轮循机制分布。 轮循机制分布可以均匀处理所有行，并将其随机放入相应的桶中。 数据将均匀分布，但会丢失位置信息，因此也会在某些操作中降低作业性能，这是其缺点。 此外，如果仍要对倾斜的键执行聚合，则还会出现数据倾斜问题。 若要了解有关轮循机制分布的详细信息，请参阅中的 U-SQL 表分布部分[CREATE TABLE (U-SQL):使用架构创建表](/u-sql/ddl/tables/create/managed/create-table-u-sql-creating-a-table-with-schema#dis_sch)。
+如果找不到适当的分区和分布键，可以尝试使用轮循机制分布。 轮循机制分布可以均匀处理所有行，并将其随机放入相应的桶中。 数据将均匀分布，但会丢失位置信息，因此也会在某些操作中降低作业性能，这是其缺点。 此外，如果仍要对倾斜的键执行聚合，则还会出现数据倾斜问题。 若要详细了解轮循机制分布，请参阅 [CREATE TABLE (U-SQL): Creating a Table with Schema](/u-sql/ddl/tables/create/managed/create-table-u-sql-creating-a-table-with-schema#dis_sch)（CREATE TABLE (U-SQL)：使用架构创建表）的“U-SQL Table Distributions”（U-SQL 表分布）部分。
 
-## <a name="solution-2-improve-the-query-plan"></a>解决方案 2:改进查询计划
+## <a name="solution-2-improve-the-query-plan"></a>解决方案 2：改进查询计划
 
 ### <a name="option-1-use-the-create-statistics-statement"></a>选项 1：使用 CREATE STATISTICS 语句
 
@@ -54,7 +54,9 @@ U-SQL 提供针对表的 CREATE STATISTICS 语句。 此语句为查询优化器
 
 代码示例：
 
-    CREATE STATISTICS IF NOT EXISTS stats_SampleTable_date ON SampleDB.dbo.SampleTable(date) WITH FULLSCAN;
+```usql
+CREATE STATISTICS IF NOT EXISTS stats_SampleTable_date ON SampleDB.dbo.SampleTable(date) WITH FULLSCAN;
+```
 
 >[!NOTE]
 >统计信息不会自动更新。 如果在不重新创建统计信息的情况下更新表中的数据，查询性能可能会降低。
@@ -65,68 +67,72 @@ U-SQL 提供针对表的 CREATE STATISTICS 语句。 此语句为查询优化器
 
 通常可将参数设置为 0.5 和 1。0.5 表示倾斜不严重，1 表示严重倾斜。 由于提示会影响当前语句以及所有下游语句的执行计划优化，因此请确保在执行可能有倾斜的键范围聚合之前添加提示。
 
-    SKEWFACTOR (columns) = x
+```usql
+SKEWFACTOR (columns) = x
+```
 
-    Provides a hint that the given columns have a skew factor x from 0 (no skew) through 1 (very heavy skew).
+提供一个提示，指出给定列的偏差因子为 x，从0（不倾斜）到1（非常繁重的扭曲）。
 
 代码示例：
 
-    //Add a SKEWFACTOR hint.
-    @Impressions =
-        SELECT * FROM
-        searchDM.SML.PageView(@start, @end) AS PageView
-        OPTION(SKEWFACTOR(Query)=0.5)
-        ;
+```usql
+//Add a SKEWFACTOR hint.
+@Impressions =
+    SELECT * FROM
+    searchDM.SML.PageView(@start, @end) AS PageView
+    OPTION(SKEWFACTOR(Query)=0.5)
+    ;
+//Query 1 for key: Query, ClientId
+@Sessions =
+    SELECT
+        ClientId,
+        Query,
+        SUM(PageClicks) AS Clicks
+    FROM
+        @Impressions
+    GROUP BY
+        Query, ClientId
+    ;
+//Query 2 for Key: Query
+@Display =
+    SELECT * FROM @Sessions
+        INNER JOIN @Campaigns
+            ON @Sessions.Query == @Campaigns.Query
+    ;
+```
 
-    //Query 1 for key: Query, ClientId
-    @Sessions =
-        SELECT
-            ClientId,
-            Query,
-            SUM(PageClicks) AS Clicks
-        FROM
-            @Impressions
-        GROUP BY
-            Query, ClientId
-        ;
-
-    //Query 2 for Key: Query
-    @Display =
-        SELECT * FROM @Sessions
-            INNER JOIN @Campaigns
-                ON @Sessions.Query == @Campaigns.Query
-        ;   
-
-### <a name="option-3-use-rowcount"></a>选项 3：使用行计数  
+### <a name="option-3-use-rowcount"></a>选项 3：使用 ROWCOUNT
 如果知道其他联接的行集较小，则除了添加适用于特定倾斜键联接案例的 SKEWFACTOR，还可以在 U-SQL 语句中将 ROWCOUNT 提示添加到 JOIN 之前，以便告知优化器这一点。 这样一来，优化器就可以选择广播联接策略，以便改进性能。 请注意，ROWCOUNT 并不解决数据倾斜问题，但可提供一些额外的帮助。
 
-    OPTION(ROWCOUNT = n)
+```usql
+OPTION(ROWCOUNT = n)
+```
 
-    Identify a small row set before JOIN by providing an estimated integer row count.
+通过提供估计的整数行计数，在联接前标识一小行集。
 
 代码示例：
 
-    //Unstructured (24-hour daily log impressions)
-    @Huge   = EXTRACT ClientId int, ...
-                FROM @"wasb://ads@wcentralus/2015/10/30/{*}.nif"
-                ;
+```usql
+//Unstructured (24-hour daily log impressions)
+@Huge   = EXTRACT ClientId int, ...
+            FROM @"wasb://ads@wcentralus/2015/10/30/{*}.nif"
+            ;
+//Small subset (that is, ForgetMe opt out)
+@Small  = SELECT * FROM @Huge
+            WHERE Bing.ForgetMe(x,y,z)
+            OPTION(ROWCOUNT=500)
+            ;
+//Result (not enough information to determine simple broadcast JOIN)
+@Remove = SELECT * FROM Bing.Sessions
+            INNER JOIN @Small ON Sessions.Client == @Small.Client
+            ;
+```
 
-    //Small subset (that is, ForgetMe opt out)
-    @Small  = SELECT * FROM @Huge
-                WHERE Bing.ForgetMe(x,y,z)
-                OPTION(ROWCOUNT=500)
-                ;
-
-    //Result (not enough information to determine simple broadcast JOIN)
-    @Remove = SELECT * FROM Bing.Sessions
-                INNER JOIN @Small ON Sessions.Client == @Small.Client
-                ;
-
-## <a name="solution-3-improve-the-user-defined-reducer-and-combiner"></a>解决方案 3:改进的用户定义的化简器和组合器
+## <a name="solution-3-improve-the-user-defined-reducer-and-combiner"></a>解决方案 3：改进用户定义的化简器和组合器
 
 有时，可以编写用户定义的运算符来处理复杂的过程逻辑，精心编写的化简器和组合器在某些情况下可以缓解数据倾斜问题。
 
-### <a name="option-1-use-a-recursive-reducer-if-possible"></a>选项 1：如有可能使用递归化简器
+### <a name="option-1-use-a-recursive-reducer-if-possible"></a>选项 1：在可能的情况下使用递归化简器
 
 默认情况下，用户定义的化简器以非递归模式运行，这意味着，键的化简工作将分布到单个顶点。 但如果数据倾斜，则巨型数据集可能会在单个顶点中处理并长时间运行。
 
@@ -136,21 +142,25 @@ U-SQL 提供针对表的 CREATE STATISTICS 语句。 此语句为查询优化器
 
 递归化简器的属性：
 
-    [SqlUserDefinedReducer(IsRecursive = true)]
+```usql
+[SqlUserDefinedReducer(IsRecursive = true)]
+```
 
 代码示例：
 
-    [SqlUserDefinedReducer(IsRecursive = true)]
-    public class TopNReducer : IReducer
+```usql
+[SqlUserDefinedReducer(IsRecursive = true)]
+public class TopNReducer : IReducer
+{
+    public override IEnumerable<IRow>
+        Reduce(IRowset input, IUpdatableRow output)
     {
-        public override IEnumerable<IRow>
-            Reduce(IRowset input, IUpdatableRow output)
-        {
-            //Your reducer code goes here.
-        }
+        //Your reducer code goes here.
     }
+}
+```
 
-### <a name="option-2-use-row-level-combiner-mode-if-possible"></a>选项 2：如有可能使用行级组合器模式
+### <a name="option-2-use-row-level-combiner-mode-if-possible"></a>选项 2：在可能的情况下使用行级组合器模式
 
 类似于特定倾斜键联接案例中的 ROWCOUNT 提示，组合器模式会尝试将巨型倾斜键值集分配到多个顶点，使工作可以并发执行。 组合器模式不能解决数据倾斜问题，而只能针对巨型倾斜键值集提供一定的辅助。
 
@@ -165,22 +175,24 @@ U-SQL 提供针对表的 CREATE STATISTICS 语句。 此语句为查询优化器
 
 组合器模式的属性：
 
-- [SqlUserDefinedCombiner(Mode=CombinerMode.Full)]: Every output row potentially depends on all the input rows from left and right with the same key value.
+- SqlUserDefinedCombiner （Mode = CombinerMode）：每个输出行可能依赖于左侧和右侧具有相同密钥值的所有输入行。
 
-- SqlUserDefinedCombiner(Mode=CombinerMode.Left):每个输出行依赖于左侧 （和可能于右侧具有相同键值的所有行） 的单个输入行。
+- SqlUserDefinedCombiner(Mode=CombinerMode.Left)：每个输出行依赖于左侧的单个输入行（还可能依赖于右侧包含相同键值的所有行）。
 
-- qlUserDefinedCombiner(Mode=CombinerMode.Right):每个输出行依赖于右侧 （和可能于左侧具有相同键值的所有行） 的单个输入行。
+- qlUserDefinedCombiner(Mode=CombinerMode.Right)：每个输出行依赖于右侧的单个输入行（还可能依赖于左侧包含相同键值的所有行）。
 
-- SqlUserDefinedCombiner(Mode=CombinerMode.Inner):每个输出行依赖于左侧和右侧具有相同值的单个输入行。
+- SqlUserDefinedCombiner(Mode=CombinerMode.Inner)：每个输出行依赖于左侧和右侧包含相同值的单个输入行。
 
 代码示例：
 
-    [SqlUserDefinedCombiner(Mode = CombinerMode.Right)]
-    public class WatsonDedupCombiner : ICombiner
+```usql
+[SqlUserDefinedCombiner(Mode = CombinerMode.Right)]
+public class WatsonDedupCombiner : ICombiner
+{
+    public override IEnumerable<IRow>
+        Combine(IRowset left, IRowset right, IUpdatableRow output)
     {
-        public override IEnumerable<IRow>
-            Combine(IRowset left, IRowset right, IUpdatableRow output)
-        {
-        //Your combiner code goes here.
-        }
+    //Your combiner code goes here.
     }
+}
+```

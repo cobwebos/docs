@@ -1,25 +1,14 @@
 ---
-title: Azure CLI 脚本示例 - 创建 Batch 帐户 - Batch 服务 | Microsoft Docs
-description: Azure CLI 脚本示例 - 在 Batch 服务模式下创建 Batch 帐户
-services: batch
-documentationcenter: ''
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.devlang: azurecli
+title: Azure CLI 脚本示例 - 创建 Batch 帐户 - Batch 服务
+description: 此脚本在 Batch 服务模式下创建 Azure Batch 帐户，并演示如何查询或更新该帐户的各个属性。
 ms.topic: sample
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 01/29/2018
-ms.author: lahugh
-ms.openlocfilehash: 67504d9597eb68faceb67a3e5a1d4d7abc7079c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5fce745340c583b902c98716678a9b7afcfc002c
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66127414"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681927"
 ---
 # <a name="cli-example-create-a-batch-account-in-batch-service-mode"></a>CLI 示例：在 Batch 服务模式下创建 Batch 帐户
 
@@ -45,7 +34,7 @@ az group delete --name myResourceGroup
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az batch account create](/cli/azure/batch/account#az-batch-account-create) | 创建批处理帐户。 |

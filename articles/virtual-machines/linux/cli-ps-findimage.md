@@ -1,27 +1,17 @@
 ---
-title: 使用 Azure CLI 选择 Linux VM 映像 | Microsoft Docs
+title: 使用 Azure CLI 选择 Linux VM 映像
 description: 了解如何使用 Azure CLI 确定发布服务器、产品/服务、SKU 和市场 VM 映像的版本。
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 7a858e38-4f17-4e8e-a28a-c7f801101721
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 453628dca04fbc3c48564f15b6cf61802165b0cf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0026c70a3a1a6b5e635e6b43e74b557d4218e6d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60880534"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711589"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>使用 Azure CLI 在 Azure 市场中查找 Linux VM 映像
 
@@ -41,7 +31,7 @@ ms.locfileid: "60880534"
 az vm image list --output table
 ```
 
-输出包括映像 URN（Urn 列中的值）。 使用其中一个常用市场映像创建 VM 时，可选择指定 *UrnAlias*（一种简短格式，如 *UbuntuLTS*）。
+输出包括映像 URN（Urn 列中的值）  。 使用其中一个常用市场映像创建 VM 时，可选择指定 *UrnAlias*（一种简短格式，如 *UbuntuLTS*）。
 
 ```
 You are viewing an offline list of images, use --all to retrieve an up-to-date list
@@ -108,7 +98,7 @@ Debian             credativ     8                    credativ:Debian:8:8.0.20190
 ...
 ```
 
-通过 `--location`、`--publisher` 和 `--sku` 选项应用类似的筛选器。 可以在筛选器上执行部分匹配，如搜索 `--offer Deb` 可查找所有 Debian 映像。
+通过 `--location`、`--publisher` 和 `--sku` 选项应用类似的筛选器。 可以在筛选器上执行部分匹配，如搜索 `--offer Deb` 以查找所有 Debian 映像。
 
 如果没有使用 `--location` 选项指定一个特定位置，则将返回默认位置的值。 （通过运行 `az configure --defaults location=<location>` 设置不同默认位置。）
 
@@ -213,7 +203,7 @@ westus      UbunturollingSnappy
 westus      UbuntuServer
 westus      Ubuntu_Core
 ```
-你将看到在美国西部区域中，Canonical 在 Azure 上发布 UbuntuServer 产品。 但是，有哪些 SKU 呢？ 要获取这些值，请运行 `azure vm image list-skus`，并对找到的位置、发布者和产品/服务进行设置：
+你将看到在美国西部区域中，Canonical 在 Azure 上发布 UbuntuServer ** 产品。 但是，有哪些 SKU 呢？ 要获取这些值，请运行 `azure vm image list-skus`，并对找到的位置、发布者和产品/服务进行设置：
 
 ```azurecli
 az vm image list-skus --location westus --publisher Canonical --offer UbuntuServer --output table
@@ -244,7 +234,7 @@ westus      18.10-DAILY
 westus      19.04-DAILY
 ```
 
-最后，使用 `az vm image list` 命令查找所需的特定版本的 SKU，例如，18.04-LTS：
+最后，使用 `az vm image list` 命令查找所需的特定版本的 SKU，例如，18.04-LTS  ：
 
 ```azurecli
 az vm image list --location westus --publisher Canonical --offer UbuntuServer --sku 18.04-LTS --all --output table
@@ -310,7 +300,7 @@ az vm image show --location westus --urn Canonical:UbuntuServer:18.04-LTS:latest
 }
 ```
 
-对 Bitnami 映像认证的 RabbitMQ 运行类似的命令显示以下 `plan` 属性：`name`、`product` 和 `publisher`。 （某些映像还具有 `promotion code` 属性。）若要部署此映像，请参阅以下部分，以接受条款并启用编程部署。
+对 Bitnami 映像认证的 RabbitMQ 运行类似的命令显示以下 `plan` 属性：`name`、`product` 和 `publisher`。 （某些映像还具有 `promotion code` 属性。）若要部署此映像，请参阅以下部分以接受条款并启用编程部署。
 
 ```azurecli
 az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest

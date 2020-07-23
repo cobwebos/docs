@@ -1,27 +1,14 @@
 ---
 title: Azure CLI (az) 和 Azure Service Fabric CLI (sfctl) 示例
-description: Azure CLI (az) 和 Azure Service Fabric CLI (sfctl) 示例
-services: service-fabric
-documentationcenter: service-fabric
-author: athinanthny
-manager: chackdan
-editor: ''
-tags: ''
-ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
-ms.service: service-fabric
-ms.devlang: na
+description: 关于管理群集、应用程序和服务的 Azure CLI (az) 和 Azure Service Fabric CLI (sfctl) 示例。
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: service-fabric
 ms.date: 04/09/2018
-ms.author: atsenthi
-ms.custom: mvc
-ms.openlocfilehash: ef24e6313682aaf6bc88a63e404690168435f926
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: b54efcf6ca6ef66beb655c423283ea1ad0a59d72
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664890"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86182808"
 ---
 # <a name="azure-cli-az-and-azure-service-fabric-cli-sfctl-samples"></a>Azure CLI (az) 和 Azure Service Fabric CLI (sfctl) 示例
 
@@ -29,7 +16,7 @@ ms.locfileid: "58664890"
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
-| | |
+| 示例 | 说明 |
 |-|-|
 | **创建群集**（使用 Azure CLI）||
 | [创建安全 Linux 群集](./scripts/cli-create-cluster.md)| 创建 Azure Service Fabric 群集。 |

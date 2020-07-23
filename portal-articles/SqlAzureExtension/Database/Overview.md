@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: article
 ms.date: 04/09/2019
 ms.author: ninarn
-ms.openlocfilehash: 99f19971eafaa1ddad1f96b187e18b79810560a2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 6d4f0c50f57661576f97ddd3772d78b9fa293153
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "61244453"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040514"
 ---
 # <a name="sql-database-documentation"></a>SQL 数据库文档
 
@@ -29,7 +29,7 @@ Azure SQL 数据库是基于最新稳定版 Microsoft SQL Server 数据库引擎
 
 ## <a name="step-by-step-tutorials"></a>分步教程
 
-了解如何使用 SQL DB 创建、管理和迁移数据库。
+了解如何使用 SQL 数据库创建、管理和迁移数据库。
 
 - 借助我们的快速入门指南，开始使用[单一数据库](/azure/sql-database/sql-database-single-database-quickstart-guide)
 - 使用 [SSMS](/azure/sql-database/sql-database-design-first-database) 或 [.NET](/azure/sql-database/sql-database-design-first-database-csharp) 创建和设计新单一数据库的架构

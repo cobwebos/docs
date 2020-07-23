@@ -1,6 +1,6 @@
 ---
-title: 快速入门：使用 Ruby 执行新闻搜索 - 必应新闻搜索 REST API
-titlesuffix: Azure Cognitive Services
+title: 快速入门：使用 Ruby 和必应新闻搜索 REST API 执行新闻搜索
+titleSuffix: Azure Cognitive Services
 description: 使用本快速入门，通过 Ruby 将请求发送到必应新闻搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
@@ -8,21 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 1/10/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9ed658c6613d270ab3de67a8800263d677d70bac
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ad52116e11f9d89bf55a23692ae4e27f53b51319
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867012"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873420"
 ---
 # <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>快速入门：使用 Ruby 和必应新闻搜索 REST API 执行新闻搜索
 
-使用本快速入门对必应新闻搜索 API 进行你的第一次调用并接收 JSON 响应。 这个简单的 JavaScript 应用程序会向 API 发送一个搜索查询并处理结果。
+根据此快速入门中的说明对必应资讯搜索 API 进行第一次调用。 这个简单的 Ruby 应用程序会向 API 发送一个搜索查询并处理 JSON 响应。
 
-虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb) 上获得。
+虽然此应用程序是使用 Ruby 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 
+
+该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb) 上获得。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -30,11 +32,9 @@ ms.locfileid: "55867012"
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
-
 ## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 
-1. 将以下包导入代码文件。
+1. 将以下包导入代码文件：
 
     ```ruby
     require 'net/https'
@@ -42,7 +42,7 @@ ms.locfileid: "55867012"
     require 'json'
     ```
 
-2. 为 API 终结点、新闻搜索 URL、订阅密钥和搜索词创建变量。
+2. 为 API 终结点、新闻搜索 URL、订阅密钥和搜索词创建变量。 你可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```ruby
     accessKey = "enter key here"
@@ -53,7 +53,7 @@ ms.locfileid: "55867012"
 
 ## <a name="format-and-make-an-api-request"></a>设置 API 请求的格式并将其发出
 
-使用上一个步骤中的变量来设置 API 请求的搜索 URL 的格式。 然后发送请求。
+使用前一个步骤中的变量来设置 API 请求的搜索 URL 的格式。 然后发送请求。
 
 ```ruby
 uri = URI(uri + path + "?q=" + URI.escape(term))
@@ -66,7 +66,7 @@ end
 
 ## <a name="process-and-print-the-json-response"></a>处理并打印 JSON 响应
 
-收到响应后，你可以分析 JSON，并打印响应正文及其标头：
+收到响应后，分析 JSON，然后打印响应正文及其标头。
 
 ```ruby
 puts "\nRelevant Headers:\n\n"
@@ -80,7 +80,7 @@ puts "\nJSON Response:\n\n"
 puts JSON::pretty_generate(JSON(response.body))
 ```
 
-## <a name="json-response"></a>JSON 响应
+## <a name="example-json-response"></a>示例 JSON 响应
 
 在 JSON 中返回成功的响应，如以下示例所示：
 
@@ -179,4 +179,4 @@ puts JSON::pretty_generate(JSON(response.body))
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [创建单页面应用](tutorial-bing-news-search-single-page-app.md)
+> [创建单页 Web 应用](tutorial-bing-news-search-single-page-app.md)

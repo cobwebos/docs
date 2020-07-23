@@ -1,31 +1,20 @@
 ---
 title: 适用于 Azure 云服务的 Application Insights | Microsoft Docs
 description: 使用 Application Insights 有效监视 Web 角色和辅助角色
-services: application-insights
-documentationcenter: ''
-keywords: WAD2AI, Azure 诊断
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 5c7a5b34-329e-42b7-9330-9dcbb9ff1f88
-ms.service: application-insights
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.workload: tbd
 ms.date: 09/05/2018
-ms.author: mbullwin
-ms.openlocfilehash: eb7cbb80be12498242363eb8141a468e08cba73a
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
-ms.translationtype: MT
+ms.openlocfilehash: 17813d17a1c40caac5587e37e279be6376992b90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66478323"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81537587"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>适用于 Azure 云服务的 Application Insights
 [Application Insights][start] 可以通过将 Application Insights SDK 提供的数据与云服务提供的 [Azure 诊断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)数据合并，来监视 [Azure 云服务应用](https://azure.microsoft.com/services/cloud-services/)的可用性、性能、故障和使用情况。 通过收到的有关应用在现实中的性能和有效性的反馈，可以针对每个开发生命周期确定合理的设计方向。
 
 ![“概述”仪表板](./media/cloudservices/overview-graphs.png)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 开始前，需要具备：
 
 * 一个 [Azure](https://azure.com) 订阅。 使用 Windows、XBox Live 或其他 Microsoft 云服务的 Microsoft 帐户登录。 
@@ -41,7 +30,7 @@ ms.locfileid: "66478323"
 
 如果只需此选项，则操作到此完成。 
 
-在接下来[查看您的应用程序中的指标](../../azure-monitor/app/metrics-explorer.md)，[查询您的数据与分析](../../azure-monitor/app/analytics.md)。 
+后续步骤是[通过应用查看指标](../../azure-monitor/platform/metrics-charts.md)、[使用 Analytics 查询数据](../../azure-monitor/app/analytics.md)。 
 
 若要在浏览器中监视性能，还可能需要设置[可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)并[将代码添加到网页](../../azure-monitor/app/javascript.md)。
 
@@ -58,12 +47,12 @@ ms.locfileid: "66478323"
 ## <a name="plan-resources-and-resource-groups"></a>规划资源和资源组
 应用中的遥测数据在 Application Insights 类型的 Azure 资源中进行存储、分析和显示。 
 
-每个资源属于一个资源组。 资源组用于管理成本、向团队成员授予访问权限，以及在单个协调式事务中部署更新。 例如，可以[编写一个脚本](../../azure-resource-manager/resource-group-template-deploy.md)，以通过一个操作部署 Azure 云服务及其 Application Insights 监视资源。
+每个资源属于一个资源组。 资源组用于管理成本、向团队成员授予访问权限，以及在单个协调式事务中部署更新。 例如，可以[编写一个脚本](../../azure-resource-manager/templates/deploy-powershell.md)，以通过一个操作部署 Azure 云服务及其 Application Insights 监视资源。
 
 ### <a name="resources-for-components"></a>组件的资源
 我们建议为应用的每个组件单独创建一个资源。 即，为每个 Web 角色和辅助角色创建一个资源。 可以单独分析每个组件，但也可以创建一个[仪表板](../../azure-monitor/app/overview-dashboard.md)，用于将所有组件中的关键图表汇总到一起，以便可以在一个视图中比较和监视资源。 
 
-备选方法是将多个角色中的遥测数据发送到同一个资源，但[将维度属性添加到标识其源角色的每个遥测项](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer)。 在此方法中，异常等指标图表通常显示不同角色的计数汇总，但你可根据需要按角色标识符将图表分段。 还可以按同一个维度筛选搜索结果。 使用这种备选方法可以方便一次性查看所有信息，但同时可能导致在角色之间产生一定的混淆。
+备选方法是将多个角色中的遥测数据发送到同一个资源，但[将维度属性添加到标识其源角色的每个遥测项](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)。 在此方法中，异常等指标图表通常显示不同角色的计数汇总，但你可根据需要按角色标识符将图表分段。 还可以按同一个维度筛选搜索结果。 使用这种备选方法可以方便一次性查看所有信息，但同时可能导致在角色之间产生一定的混淆。
 
 浏览器遥测数据通常包含在与服务器端 Web 角色相同的资源中。
 
@@ -80,20 +69,21 @@ ms.locfileid: "66478323"
 
 如果你决定为每个角色单独创建资源（也许是为每个生成配置单独创建资源集），最简单的方法是在 Application Insights 门户中创建这些资源。 若要创建大量的资源，可[将创建过程自动化](../../azure-monitor/app/powershell.md)。
 
-1. 在 [Azure 门户][portal]中，选择“新建” > “开发人员服务” > “Application Insights”。     
+1. 在 [Azure 门户][portal]中，选择“新建” > “开发人员服务” > “Application Insights”。    
 
     ![“Application Insights”窗格](./media/cloudservices/01-new.png)
 
-1. 在“应用程序类型”下拉列表中，选择“ASP.NET Web 应用程序”   。  
-    每个资源由检测密钥标识。 以后若要手动配置或验证 SDK 的配置，可能需要使用此密钥。
+1. 在“应用程序类型”下拉列表中，选择“ASP.NET Web 应用程序” 。
+
+每个资源由检测密钥标识。 以后若要手动配置或验证 SDK 的配置，可能需要使用此密钥。
 
 
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>为每个角色设置 Azure 诊断
 设置此选项可以使用 Application Insights 监视应用。 对于 Web 角色，此选项可提供性能监视、警报、诊断以及使用情况分析。 对于其他角色，可以搜索和监视 Azure 诊断信息，例如重启、性能计数器和对 System.Diagnostics.Trace 的调用。 
 
-1. 在 Visual Studio 解决方案资源管理器中的“\<YourCloudService>” > “角色”下面，打开每个角色的属性。  
+1. 在 Visual Studio 解决方案资源管理器中的“\<YourCloudService>” > “角色”下面，打开每个角色的属性。 
 
-1. 在“配置”中，选中“将诊断数据发送到 Application Insights”复选框，然后选择前面创建的 Application Insights 资源。  
+1. 在“配置”中，选中“将诊断数据发送到 Application Insights”复选框，然后选择前面创建的 Application Insights 资源。 
 
 如果决定对每个生成配置使用不同的 Application Insights 资源，请先选择该配置。
 
@@ -103,16 +93,16 @@ ms.locfileid: "66478323"
 
 若要改变发送到 Application Insights 的诊断信息级别，可以[直接编辑 *.cscfg* 文件](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)。
 
-## <a name="sdk"></a>在每个项目中安装 SDK
+## <a name="install-the-sdk-in-each-project"></a><a name="sdk"></a>在每个项目中安装 SDK
 使用此选项可将自定义的业务遥测添加到任何角色。 使用该选项可以更细致地分析应用的用法和性能。
 
 在 Visual Studio 中，为每个云应用项目配置 Application Insights SDK。
 
-1. 若要配置 Web 角色，请右键单击项目，并选择“配置 Application Insights”或“添加”>“Application Insights 遥测”    。
+1. 若要配置 Web 角色，请右键单击项目，并选择“配置 Application Insights”或“添加”>“Application Insights 遥测”  。
 
 1. 配置**辅助角色**： 
 
-    a. 右键单击项目，并选择“管理 NuGet 包”  。
+    a. 右键单击项目，并选择“管理 NuGet 包”。
 
     b. 添加[适用于 Windows Server 的 Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)。
 
@@ -133,23 +123,58 @@ ms.locfileid: "66478323"
     * [辅助角色](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
     * [对于网页](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
 
-1. 将 *ApplicationInsights.config* 文件设置为始终复制到输出目录。  
-    *.config* 文件中的消息会询问是否要将检测密钥放在该处。 但是，对于云应用，最好是通过 *.cscfg* 文件设置检测密钥。 此方法可确保在门户中正确识别角色。
+1. 将 *ApplicationInsights.config* 文件设置为始终复制到输出目录。
 
-#### <a name="run-and-publish-the-app"></a>运行并发布应用
+   *.config* 文件中的消息会询问是否要将检测密钥放在该处。 但是，对于云应用，最好是通过 *.cscfg* 文件设置检测密钥。 此方法可确保在门户中正确识别角色。
+
+## <a name="set-up-status-monitor-to-collect-full-sql-queries-optional"></a>设置状态监视器以收集完整的 SQL 查询（可选）
+
+仅当你希望在 .NET Framework 上捕获完整的 SQL 查询时，才需要此步骤。 
+
+1. 在 `\*.csdef` 文件中为每个角色添加[启动任务](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)，如下所示 
+
+    ```xml
+    <Startup>
+      <Task commandLine="AppInsightsAgent\InstallAgent.bat" executionContext="elevated" taskType="simple">
+        <Environment>
+          <Variable name="ApplicationInsightsAgent.DownloadLink" value="http://go.microsoft.com/fwlink/?LinkID=522371" />
+          <Variable name="RoleEnvironment.IsEmulated">
+            <RoleInstanceValue xpath="/RoleEnvironment/Deployment/@emulated" />
+          </Variable>
+        </Environment>
+      </Task>
+    </Startup>
+    ```
+    
+2. 下载 [InstallAgent.bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) 和 [InstallAgent.ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1)，将它们放入每个角色项目的 `AppInsightsAgent` 文件夹中。 确保通过 Visual Studio 文件属性或生成脚本将它们复制到输出目录。
+
+3. 在所有辅助角色上添加环境变量： 
+
+    ```xml
+      <Environment>
+        <Variable name="COR_ENABLE_PROFILING" value="1" />
+        <Variable name="COR_PROFILER" value="{324F817A-7420-4E6D-B3C1-143FBED6D855}" />
+        <Variable name="MicrosoftInstrumentationEngine_Host" value="{CA487940-57D2-10BF-11B2-A3AD5A13CBC0}" />
+      </Environment>
+    ```
+    
+## <a name="run-and-publish-the-app"></a>运行并发布应用
 
 1. 运行应用并登录到 Azure。 
 
-1. 打开前面创建的 Application Insights 资源。  
-    [搜索](../../azure-monitor/app/diagnostic-search.md)中会显示每个数据点，[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)中会显示聚合数据。 
+1. 打开前面创建的 Application Insights 资源。
+
+   [搜索][diagnostic]中会显示每个数据点，[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)中会显示聚合数据。
 
 1. 添加更多遥测数据（请参阅以下部分），然后发布应用以获取实时诊断和使用情况反馈。 
 
 如果没有数据，请执行以下操作：
+
 1. 若要查看各个事件，请打开[搜索][diagnostic]磁贴。
 1. 在应用中打开各个页面，以生成一些遥测数据。
-1. 等待几秒，然后单击“刷新”。   
-    有关详细信息，请参阅[故障排除][qna]。
+1. 等待几秒，然后单击“刷新”。  
+
+有关详细信息，请参阅 [故障排除][qna]。
 
 ## <a name="view-azure-diagnostics-events"></a>查看 Azure 诊断事件
 可以在 Application Insights 中的以下位置找到 [Azure 诊断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)信息：
@@ -158,7 +183,7 @@ ms.locfileid: "66478323"
 * Windows 事件日志显示为跟踪和自定义事件。
 * 应用程序日志、ETW 日志和所有诊断基础结构日志均显示为跟踪。
 
-若要查看性能计数器和事件计数，请打开[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)并添加以下图表：
+若要查看性能计数器和事件计数，请打开[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)并添加以下图表：
 
 ![Azure 诊断数据](./media/cloudservices/23-wad.png)
 
@@ -178,7 +203,7 @@ ms.locfileid: "66478323"
 * [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA)
 * [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
 
-## <a name="exceptions"></a>例外
+## <a name="exceptions"></a>异常
 有关如何从不同的 Web 应用类型收集未经处理的异常的信息，请参阅[在 Application Insights 中监视异常](../../azure-monitor/app/asp-net-exceptions.md)。
 
 该示例 Web 角色包含 MVC5 和 Web API 2 控制器。 可使用以下处理程序捕获这两个控制器的未经处理的异常：
@@ -207,7 +232,7 @@ ms.locfileid: "66478323"
 * \ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time
 * \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue
 
-可[按此示例所示](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14)，通过编辑 *ApplicationInsights.config* 来指定其他自定义性能计数器或 Windows 性能计数器。
+可[按此示例所示](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14)，通过编辑 ApplicationInsights.config 来指定其他自定义性能计数器或其他 Windows 性能计数器。
 
   ![性能计数器](./media/cloudservices/002-servers.png)
 

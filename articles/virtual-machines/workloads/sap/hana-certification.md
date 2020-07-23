@@ -3,29 +3,27 @@ title: Azure SAP HANA（大型实例）的认证 | Microsoft Docs
 description: Azure SAP HANA（大型实例）的认证。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: jeconnoc
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15de566d756d6b0f7719eabf74ee9c7ac66659d6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 2a02f0e1b05b9de8105126d1c9e4e3f79057285f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60794007"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77617228"
 ---
 # <a name="certification"></a>认证
 
 除了 NetWeaver 认证以外，SAP 还要求通过 SAP HANA 的特殊认证，以便在某些基础结构（如 Azure IaaS）上支持 SAP HANA。
 
-是的核心 SAP 说明有关 NetWeaver 和程度的 SAP HANA 认证[SAP 说明 #1928533 – Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型](https://launchpad.support.sap.com/#/notes/1928533)。
+[SAP 说明 #1928533 - Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型](https://launchpad.support.sap.com/#/notes/1928533)是有关 NetWeaver 的核心 SAP 说明，对 SAP HANA 认证做了某种程度的阐述。
 
 在 [经 SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)站点中可找到 Azure 上 SAP HANA（大型实例）单元的认证记录。 
 

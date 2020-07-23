@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
-ms.openlocfilehash: fdb2bed76a8e23a6034a57b3a5f1358c26e9e990
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom: mqtt
+ms.openlocfilehash: 76692c7d923e261d1e3beefa0e2ea76b94282a46
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61450259"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81683978"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>将设备连接到远程监视解决方案加速器 (Node.js)
 

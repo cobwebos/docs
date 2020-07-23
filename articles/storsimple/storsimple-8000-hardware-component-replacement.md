@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 12ab5a9598cc0222f5a3e64985be2e2ea9e7e2fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60321679"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564286"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>更换 StorSimple 8000 系列设备上的硬件组件
 
@@ -28,18 +28,18 @@ ms.locfileid: "60321679"
 此硬件组件更换教程介绍 Microsoft Azure StorSimple 8000 系列设备的硬件组件，以及移除和更换这些组件所需的步骤。 本文介绍安全图标、提供指向详细教程的链接，并列出可更换的组件。
 
 > [!IMPORTANT]
-> 尝试移除或更换任何 StorSimple 组件之前，请确保查看[安全图标约定](#safety-icon-conventions)以及其他[安全注意事项](storsimple-safety.md)。
-
+> 尝试移除或更换任何 StorSimple 组件之前，请确保查看[安全图标约定](#safety-icon-conventions)以及其他[安全注意事项](storsimple-8000-safety.md)。
 
 ### <a name="safety-icon-conventions"></a>安全图标约定
+
 下表描述这些教程中使用的安全图标。 执行移除和替换设备组件的步骤时，请特别注意这些安全图标。
 
 | 图标 | Text | 其他信息 |
 |:--- |:--- |:--- |
 | ![警告图标](./media/storsimple-hardware-component-replacement/Warning.png) |**危险!** |指示如果未能避免危险情况，将导致死亡或重伤。 此警示语仅限于最为极端的情况。 |
-| ![警告图标](./media/storsimple-hardware-component-replacement/Warning.png) |**警告!** |指示如果未能避免危险情况，可能导致死亡或重伤。 |
-| ![提醒图标](./media/storsimple-hardware-component-replacement/Caution.png) |**小心!** |指示如果未能避免危险情况，可能导致轻伤或重伤。 |
-| ![注意图标](./media/storsimple-hardware-component-replacement/NoticeIcon.png) |**注意:** |指示应该给予重视但不涉及危险情况的信息。 |
+| ![警告图标](./media/storsimple-hardware-component-replacement/Warning.png) |**出现!** |指示如果未能避免危险情况，可能导致死亡或重伤。 |
+| ![提醒图标](./media/storsimple-hardware-component-replacement/Caution.png) |**警告!** |指示如果未能避免危险情况，可能导致轻伤或重伤。 |
+| ![注意图标](./media/storsimple-hardware-component-replacement/NoticeIcon.png) |**通知** |指示应该给予重视但不涉及危险情况的信息。 |
 | ![电击图标](./media/storsimple-hardware-component-replacement/Electric.png) |**点击危险** |指示高压电。 |
 | ![重物图标](./media/storsimple-hardware-component-replacement/Weight.png) |**重物** | |
 | ![无用户可维修部件图标](./media/storsimple-hardware-component-replacement/NoUserServiceableParts.png) |**无用户可维修部件** |除非经过适当的培训，否则请勿访问。 |
@@ -47,7 +47,8 @@ ms.locfileid: "60321679"
 | ![倾覆风险图标](./media/storsimple-hardware-component-replacement/TipHazard.png) |**倾覆风险** | |
 
 ### <a name="before-you-begin"></a>开始之前
-自行熟悉本教程中使用的设备和安全图标的安全信息。 如需完整的信息，请转到[安全地安装和运行 StorSimple 设备](storsimple-safety.md)。 在接触 StorSimple 设备之前，请务必查看[安全注意事项](storsimple-safety.md#handling-precautions)。
+
+自行熟悉本教程中使用的设备和安全图标的安全信息。 如需完整的信息，请转到[安全地安装和运行 StorSimple 设备](storsimple-8000-safety.md)。 在接触 StorSimple 设备之前，请务必查看[安全注意事项](storsimple-8000-safety.md#handling-precautions)。
 
 在尝试更换组件之前，请考虑以下信息。
 
@@ -61,9 +62,10 @@ ms.locfileid: "60321679"
 替换某个模块时，**千万不要将空托架留在机箱后部**。 在移除问题部件之前，先获得更换模块或空模块。
 
 ## <a name="hardware-component-replacement-procedures"></a>硬件组件更换过程
+
 StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模块。 8100 采用单个主机箱，而 8600 是配有主机箱和 EBOD 机箱的双机箱设备。
 
-下表总结了设备中的主要硬件组件。 单击“更换过程”栏中的链接即可转到关联的教程。
+下表总结了设备中的主要硬件组件。 单击“更换过程”栏中的链接即可转到关联的教程。****
 
 | 组件 | # 存在 | 插件模块？ | 更换过程 |
 |:--- |:--- |:--- |:--- |
@@ -88,11 +90,11 @@ StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模
 
 以下正面图和背面图突出显示了设备上的插件模块。 在需要更换插件模块时，这些图可用于确定各种插件模块的位置。 EBOD 机箱和主机箱的正面图显示磁盘驱动器，背面图显示插件模块。
 
-![具有磁盘驱动器的设备的前面板](./media/storsimple-hardware-component-replacement/IC741028.png)
+![带有磁盘驱动器的设备的前面板](./media/storsimple-hardware-component-replacement/IC741028.png)
 
 **图 1** 设备的前面
 
-| Label | 描述 |
+| Label | 说明 |
 |:--- |:--- |
 | 0 - 11 |磁盘驱动器（总数为 12） |
 
@@ -102,7 +104,7 @@ StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模
 
 **图 2** 主机箱的背面
 
-| Label | 描述 |
+| Label | 说明 |
 |:--- |:--- |
 | 1 |PCM 0 |
 | 2 |PCM 1 |
@@ -113,7 +115,7 @@ StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模
 
 **图 3** EBOD 机箱的背面
 
-| Label | 描述 |
+| Label | 说明 |
 |:--- |:--- |
 | 1 |PCM 0 |
 | 2 |PCM 1 |
@@ -121,6 +123,7 @@ StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模
 | 4 |EBOD 控制器 1 |
 
 ## <a name="field-replaceable-units"></a>现场可更换部件
+
 以下现场可更换部件 (FRU) 适用于 StorSimple 设备：
 
 * 底盘（包括集成的操作面板）
@@ -132,8 +135,8 @@ StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模
 * 备用电池模块
 * 机架安装导轨套件
 
-若要订阅任何此类更换部件，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。
+如需订阅任何此类更换部件，请[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)。
 
 ## <a name="next-steps"></a>后续步骤
-在尝试更换 StorSimple 硬件组件之前，请查看所有[安全信息](storsimple-safety.md)。
 
+在尝试更换 StorSimple 硬件组件之前，请查看所有[安全信息](storsimple-8000-safety.md)。

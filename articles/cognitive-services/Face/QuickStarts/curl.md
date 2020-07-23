@@ -8,31 +8,34 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/06/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 212b935e8986731940effe79ec80f52c0d7b64c4
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: a0ec14448df91aa49e7140e608c65e216773c57d
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56308922"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987030"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>快速入门：使用人脸 REST API 和 cURL 检测图像中的人脸
 
-在本快速入门中，请使用 Azure 人脸 REST API 和 cURL 检测图像中的人脸。
+本快速入门将通过 cURL 使用 Azure 人脸 REST API 来检测图像中的人脸。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
 ## <a name="prerequisites"></a>先决条件
 
-- 人脸 API 订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=face-api)获取免费试用的订阅密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸 API 服务并获取密钥。
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="创建人脸资源"  target="_blank">创建人脸资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到人脸 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 
 ## <a name="write-the-command"></a>编写命令
  
 将使用如下所示的命令来调用人脸 API 并获取图像中的人脸属性数据。 首先，将代码复制到文本编辑器中&mdash;在运行它之前，需对命令的某些部分进行更改。
 
 ```shell
-curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise" -H "Content-Type: application/json" --data-ascii "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}"
+curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" "https://<My Endpoint String>.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise" -H "Content-Type: application/json" --data-ascii "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}"
 ```
 
 ### <a name="subscription-key"></a>订阅密钥
@@ -40,7 +43,9 @@ curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" "https://westcentralus.a
 
 ### <a name="face-endpoint-url"></a>人脸终结点 URL
 
-URL `https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect` 指示要查询的 Azure 人脸终结点。 可能需更改此 URL 的第一部分，使之与订阅密钥的相应区域匹配（如需包含所有区域终结点的列表，请参阅[人脸 API 文档](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)）。
+URL `https://<My Endpoint String>.com/face/v1.0/detect` 指示要查询的 Azure 人脸终结点。 可能需更改此 URL 的第一部分，使之与订阅密钥的相应终结点匹配。
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ### <a name="url-query-string"></a>URL 查询字符串
 
@@ -155,7 +160,7 @@ https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你编写了一个 cURL 命令，该命令调用 Azure 人脸 API，以便检测图像中的人脸并返回其属性。 接下来，请浏览人脸 API 参考文档，以便进行详细的了解。
+在本快速入门中，你编写了一个 cURL 命令，该命令调用 Azure 人脸服务检测图像中的人脸并返回其属性。 接下来，请浏览人脸 API 参考文档，以便进行详细的了解。
 
 > [!div class="nextstepaction"]
 > [人脸 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

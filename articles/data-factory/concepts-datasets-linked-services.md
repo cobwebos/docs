@@ -1,39 +1,41 @@
 ---
-title: Azure 数据工厂中的数据集 |Microsoft Docs
-description: 了解有关数据工厂中的数据集。 数据集表示输入/输出数据。
+title: 数据集
+description: 了解数据工厂中的数据集。 数据集表示输入/输出数据。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 04/25/2019
-ms.author: shlo
-ms.openlocfilehash: 6b74f217d296b5de8886f608b1bc92e908b5d8b4
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
-ms.translationtype: MT
+ms.openlocfilehash: 122725bff616a49d27981b88f465e04418db9526
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866474"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826105"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure 数据工厂中的数据集
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-create-datasets.md)
 > * [当前版本](concepts-datasets-linked-services.md)
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 
 本文介绍了数据集的涵义，采用 JSON 格式定义数据集的方式以及数据集在 Azure 数据工厂管道中的用法。
 
 如果对数据工厂不熟悉，请参阅 [Azure 数据工厂简介](introduction.md)了解相关概述。
 
 ## <a name="overview"></a>概述
-数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 管道中的活动定义对数据执行的操作。 现在，数据集这一名称的意义已经变为看待数据的一种方式，就是以输入和输出的形式指向或引用活动中要使用的数据。 数据集可识别不同数据存储（如表、文件、文件夹和文档）中的数据。 例如，Azure Blob 数据集可在 Blob 存储中指定供活动读取数据的 Blob 容器和文件夹。
+数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 管道中的活动定义对数据执行的操作。 现在，数据集这一名称的意义已经变为看待数据的一种方式，就是以输入和输出的形式指向或引用活动中要使用的数据 。 数据集可识别不同数据存储（如表、文件、文件夹和文档）中的数据。 例如，Azure Blob 数据集可在 Blob 存储中指定供活动读取数据的 Blob 容器和文件夹。
 
-创建数据集之前，必须创建[**链接服务**](concepts-linked-services.md)若要将数据存储链接到数据工厂。 链接的服务类似于连接字符串，它定义数据工厂连接到外部资源时所需的连接信息。 不妨这样考虑：数据集代表链接的数据存储中的数据结构，而链接服务则定义到数据源的连接。 例如，Azure 存储链接服务可将存储帐户链接到数据工厂。 Azure Blob 数据集表示 blob 容器以及包含要处理的输入 blob 的 Azure 存储帐户的文件夹。
+创建数据集之前，必须创建[链接服务](concepts-linked-services.md)，将数据存储链接到数据工厂。 链接的服务类似于连接字符串，它定义数据工厂连接到外部资源时所需的连接信息。 不妨这样考虑：数据集代表链接的数据存储中的数据结构，而链接服务则定义到数据源的连接。 例如，Azure 存储链接服务可将存储帐户链接到数据工厂。 Azure Blob 数据集表示 Blob 容器以及 Azure 存储帐户中包含要处理的输入 Blob 的文件夹。
 
-下面是一个示例方案。 要将数据从 Blob 存储复制到 SQL 数据库，请创建以下两个链接服务：Azure 存储和 Azure SQL 数据库。 然后创建两个数据集：Azure Blob 数据集（即 Azure 存储链接服务）和 Azure SQL 表数据集（即 Azure SQL 数据库链接服务）。 Azure 存储和 Azure SQL 数据库链接服务分别包含数据工厂在运行时用于连接到 Azure 存储和 Azure SQL 数据库的连接字符串。 Azure Blob 数据集指定 blob 容器和 blob 文件夹，该文件夹包含 Blob 存储中的输入 blob。 Azure SQL 表数据集指定要向其复制数据的 SQL 数据库中的 SQL 表。
+下面是一个示例方案。 若要将数据从 Blob 存储复制到 SQL 数据库，请创建以下两个链接服务：Azure 存储和 Azure SQL 数据库。 然后创建两个数据集：Azure Blob 数据集（即 Azure 存储链接服务）和 Azure SQL 表数据集（即 Azure SQL 数据库链接服务）。 Azure 存储和 Azure SQL 数据库链接服务分别包含数据工厂在运行时用于连接到 Azure 存储和 Azure SQL 数据库的连接字符串。 Azure Blob 数据集指定 blob 容器和 blob 文件夹，该文件夹包含 Blob 存储中的输入 blob。 Azure SQL 表数据集指定要向其复制数据的 SQL 数据库中的 SQL 表。
 
 下图显示了数据工厂中管道、活动、数据集和链接服务之间的关系：
 
@@ -67,24 +69,24 @@ ms.locfileid: "64866474"
 ```
 下表描述了上述 JSON 中的属性：
 
-属性 | 说明 | 需要 |
+properties | 说明 | 必选 |
 -------- | ----------- | -------- |
-名称 | 数据集名称。 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 |  是 |
+name | 数据集名称。 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 |  是 |
 type | 数据集的类型。 指定数据工厂支持的类型之一（例如：AzureBlob、AzureSqlTable）。 <br/><br/>有关详细信息，请参阅[数据集类型](#dataset-type)。 | 是 |
 structure | 数据集的架构。 有关详细信息，请参阅[数据集架构](#dataset-structure-or-schema)。 | 否 |
 typeProperties | 每种类型的类型属性各不相同（例如：Azure Blob、Azure SQL 表）。 若要详细了解受支持的类型及其属性，请参阅[数据集类型](#dataset-type)。 | 是 |
 
 ### <a name="data-flow-compatible-dataset"></a>数据流兼容的数据集
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-请参阅[支持的数据集类型](#dataset-type)有关的数据集类型的列表[数据流](concepts-data-flow-overview.md)兼容。 兼容的数据流动的数据集需要精细的数据集定义的转换。 因此，JSON 定义是略有不同。 而不是_结构_属性，将数据流兼容的数据集可以_架构_属性。
 
-在数据流中，在源和接收器的转换中使用数据集。 数据集定义的基本数据架构。 如果数据不包括任何架构，您可以为源和接收器使用架构偏差。 在数据集中的架构表示的物理数据类型和形状。
+有关[数据流](concepts-data-flow-overview.md)兼容的数据集类型的列表，请参阅[支持的数据集类型](#dataset-type)。 数据流兼容的数据集需要细化的数据集定义，以便进行转换。 因此，JSON 定义略有不同。 数据流兼容的数据集具有 schema 属性，而不是 structure 属性。
 
-通过定义从数据集的架构，将从关联的链接服务中获取相关的数据类型、 数据格式、 文件位置和连接信息。 从数据集的元数据源转换为源中显示*投影*。 在源转换投影表示使用定义的名称和类型的数据流数据。
+在数据流中，数据集用于源和接收器转换。 数据集定义基本数据架构。 如果数据没有架构，则可以对源和接收器使用架构偏差。 数据集中的架构表示物理数据类型和形状。
 
-导入的数据流动的数据集架构时，选择**导入架构**按钮，然后选择要导入源中或从本地文件。 在大多数情况下，您将架构直接从源导入。 但如果已有本地架构文件 （Parquet 文件或带有标头的 CSV），您可以指示该文件上的架构所基于的数据工厂。
+通过从数据集定义架构，将从关联的链接服务中获取相关的数据类型、数据格式、文件位置和连接信息。 来自数据集的元数据在源转换中显示为源投影。 源转换中的投影表示定义了名称和类型的数据流数据。
+
+导入数据流数据集的架构时，选择“导入架构”按钮，然后选择从源或本地文件中导入。 在大多数情况下，将直接从源导入架构。 但是，如果已有本地架构文件（Parquet 文件或带标头的 CSV），则可以指示数据工厂根据该文件定义架构。
 
 
 ```json
@@ -112,11 +114,11 @@ typeProperties | 每种类型的类型属性各不相同（例如：Azure Blob�
 
 下表描述了上述 JSON 中的属性：
 
-属性 | 说明 | 需要 |
+properties | 说明 | 必选 |
 -------- | ----------- | -------- |
-名称 | 数据集名称。 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 |  是 |
+name | 数据集名称。 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 |  是 |
 type | 数据集的类型。 指定数据工厂支持的类型之一（例如：AzureBlob、AzureSqlTable）。 <br/><br/>有关详细信息，请参阅[数据集类型](#dataset-type)。 | 是 |
-schema | 数据集的架构。 有关详细信息，请参阅[Data Flow 兼容的数据集](#dataset-type)。 | 否 |
+架构 | 数据集的架构。 有关详细信息，请参阅[数据流兼容的数据集](#dataset-type)。 | 否 |
 typeProperties | 每种类型的类型属性各不相同（例如：Azure Blob、Azure SQL 表）。 若要详细了解受支持的类型及其属性，请参阅[数据集类型](#dataset-type)。 | 是 |
 
 
@@ -147,9 +149,7 @@ typeProperties | 每种类型的类型属性各不相同（例如：Azure Blob�
 - linkedServiceName 引用 AzureSqlDatabase 类型的链接服务，该类型在下一 JSON 片段中定义。
 
 ## <a name="dataset-type"></a>数据集类型
-数据集的类型很多，具体取决于使用的数据存储。 请参阅下表，获取数据工厂支持的数据存储的列表。 单击数据存储，了解如何创建链接服务和该数据存储的数据集。
-
-[!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-dataflow.md)]
+数据集的类型很多，具体取决于使用的数据存储。 可以从[连接器概述](connector-overview.md)一文中找到数据工厂支持的数据存储列表。 单击数据存储，了解如何创建链接服务和该数据存储的数据集。
 
 在上一节中的示例中，数据集的类型设置为 AzureSqlTable。 同样，对于 Azure Blob 数据集，数据集的类型设置为 AzureBlob，如以下 JSON 中所示：
 
@@ -176,16 +176,16 @@ typeProperties | 每种类型的类型属性各不相同（例如：Azure Blob�
 ```
 
 ## <a name="dataset-structure-or-schema"></a>数据集结构或架构
-**结构**部分或**架构**(Data Flow 兼容) 的部分数据集是可选的。 它通过包含列的名称和数据类型的集合来定义数据集架构。 使用结构部分提供用于隐藏类型以及将列从源映射到目标的类型信息。
+structure 部分或 schema（数据流兼容）部分数据集是可选的。 它通过包含列的名称和数据类型的集合来定义数据集架构。 使用结构部分提供用于隐藏类型以及将列从源映射到目标的类型信息。
 
 结构中的每个列都包含以下属性：
 
-属性 | 说明 | 需要
+properties | 说明 | 必选
 -------- | ----------- | --------
-名称 | 列的名称。 | 是
+name | 列的名称。 | 是
 type | 列的数据类型。 数据工厂支持以下临时数据类型作为允许的值：**Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Boolean、String、Guid、Datetime、Datetimeoffset 和 Timespan** | 否
 culture | 类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的基于 .NET 的区域性。 默认为 `en-us`。 | 否
-格式 | 类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 请参阅[自定义日期和时间格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)，了解如何设置日期时间格式。 | 否
+format | 类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 请参阅[自定义日期和时间格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)，了解如何设置日期时间格式。 | 否
 
 ### <a name="example"></a>示例
 在下面的示例中，假设源 Blob 数据采用 CSV 格式，并且包含三列： userid、name 和 lastlogindate。 它们的类型分别为 Int64、String 和 Datetime，并采用使用星期几的缩写法语名称的自定义日期时间格式。
@@ -206,7 +206,7 @@ culture | 类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的�
 若要了解何时加入结构信息以及在结构部分包含哪些信息，请参阅以下指南。 详细了解数据工厂如何通过[架构和类型映射](copy-activity-schema-and-type-mapping.md)将源数据映射到接收器，以及何时指定结构信息。
 
 - **对于强架构数据源**，仅当要将源列映射到接收器列且其名称不同时，才指定“结构”部分。 此类结构化的数据源将存储数据架构和类型信息，以及数据本身。 结构化的数据源的示例包括 SQL Server、Oracle 和 Azure SQL 数据库。<br/><br/>由于类型信息已可用于结构化数据源，因此包含结构部分时不应包含类型信息。
-- **对于无/弱架构数据源（例如 blob 存储中的文本文件）**，当数据集是复制活动的输入且应将源数据集的数据类型转换为接收器的本机类型时，请加入结构。 另外，当需要将源列映射到接收器列时，请加入结构。
+- **对于无/弱架构数据源（例如 blob 存储中的文本文件）** ，当数据集是复制活动的输入且应将源数据集的数据类型转换为接收器的本机类型时，请加入结构。 另外，当需要将源列映射到接收器列时，请加入结构
 
 ## <a name="create-datasets"></a>创建数据集
 可以使用以下任一工具或 SDK 创建数据集：[.NET API](quickstart-create-data-factory-dot-net.md)、[PowerShell](quickstart-create-data-factory-powershell.md)、[REST API](quickstart-create-data-factory-rest-api.md)、Azure 资源管理器模板和 Azure 门户
@@ -225,4 +225,4 @@ culture | 类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的�
 - [快速入门：使用 .NET 创建数据工厂](quickstart-create-data-factory-dot-net.md)
 - [快速入门：使用 PowerShell 创建数据工厂](quickstart-create-data-factory-powershell.md)
 - [快速入门：使用 REST API 创建数据工厂](quickstart-create-data-factory-rest-api.md)
-- [快速入门： 创建数据工厂使用 Azure 门户](quickstart-create-data-factory-portal.md)
+- [快速入门：使用 Azure 门户创建数据工厂](quickstart-create-data-factory-portal.md)

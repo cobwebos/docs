@@ -1,38 +1,34 @@
 ---
-title: 将多租户应用程序添加到 Azure AD 应用程序库 | Microsoft Docs
+title: 将多租户应用添加到 Azure AD 应用程序库
 description: 说明如何在 Azure AD 应用程序库中列出自定义开发的多租户应用程序。
 services: active-directory
 documentationCenter: na
 author: rwike77
 manager: CelesteDG
-ms.assetid: 92c1651a-675d-42c8-b337-f78e7dbcc40d
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0434ec889a791079e2019bcb1d04f5ce0fceb731
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
-ms.translationtype: MT
+ms.openlocfilehash: b8d998d40b9920ccbdaf0079c32a0feb84bba87b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545561"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680263"
 ---
 # <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>将多租户应用程序添加到 Azure AD 应用程序库
 
 ## <a name="what-is-the-azure-ad-application-gallery"></a>什么是 Azure AD 应用程序库？
 
-Azure Active Directory (Azure AD) 是一种基于云的标识服务。 [Azure AD 应用程序库](https://azure.microsoft.com/marketplace/active-directory/all/)位于 Azure 市场中，所有应用程序连接器都发布在其中以用于实现单一登录和用户预配。 使用 Azure AD 作为标识提供者的客户可以查找发布在这里的各种 SaaS 应用程序连接器。 IT 管理员从应用库中添加连接器，然后对连接器进行配置并将其用于单一登录和预配。 Azure AD 支持使用所有主要的联合身份验证协议（包括 SAML 2.0、OpenID Connect、OAuth 和 WS-Fed）进行单一登录。 
+Azure Active Directory (Azure AD) 是一种基于云的标识服务。 [Azure AD 应用程序库](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)位于 Azure 市场中，所有应用程序连接器都发布在其中以用于实现单一登录和用户预配。 使用 Azure AD 作为标识提供者的客户可以查找发布在这里的各种 SaaS 应用程序连接器。 IT 管理员从应用库中添加连接器，然后对连接器进行配置并将其用于单一登录和预配。 Azure AD 支持使用所有主要的联合身份验证协议（包括 SAML 2.0、OpenID Connect、OAuth 和 WS-Fed）进行单一登录。 
 
 ## <a name="if-your-application-supports-saml-or-openidconnect"></a>如果应用程序支持 SAML 或 OpenIDConnect
 如果想要将某个多租户应用程序在 Azure AD 应用程序库中列出，首先必须确保该应用程序支持以下单一登录技术之一：
 
-- **OpenID Connect**：若要将应用列出，请在 Azure AD 中创建多租户应用程序并为应用程序实现 [Azure AD 许可框架](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)。 将登录请求发送到公用终结点，以便任何客户都可以向应用程序提供许可。 可以根据在令牌中收到的租户 ID 和用户 UPN 来控制用户的访问。 使用[在 Azure Active Directory 应用程序库中列出你的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)中所述的过程提交应用程序。
+- **OpenID Connect**：若要将应用列出，请在 Azure AD 中创建多租户应用程序并为应用程序实现 [Azure AD 许可框架](https://docs.microsoft.com/azure/active-directory/develop/consent-framework)。 将登录请求发送到公用终结点，以便任何客户都可以向应用程序提供许可。 可以根据在令牌中收到的租户 ID 和用户 UPN 来控制用户的访问。 使用[在 Azure Active Directory 应用程序库中列出你的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)中所述的过程提交应用程序。
 
 - **SAML**：如果应用程序支持 SAML 2.0，则可以在该库中列出。 按照[在 Azure Active Directory 应用程序库中列出你的应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)中的说明进行操作。
 

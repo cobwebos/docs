@@ -1,20 +1,17 @@
 ---
 title: Azure 流分析作业的纵向扩展和横向扩展
 description: 本文介绍如何通过分布输入数据、优化查询以及设置作业流单元来缩放流分析作业。
-services: stream-analytics
 author: JSeb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: f4307da2e74846507cafb9f767a6ccae855e42a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: d982cc94a9ab0517d6453a30371635c1e3100676
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60816810"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835591"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>扩展 Azure 流分析作业以增加吞吐量
 本文介绍如何优化流分析查询，增加流分析作业的吞吐量。 可以使用以下指南来扩展作业，以便处理较高负载并充分利用更多的系统资源（如更多带宽、更多 CPU 资源、更多内存）。
@@ -25,7 +22,7 @@ ms.locfileid: "60816810"
 ## <a name="case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions"></a>案例 1 – 在各个输入分区中，查询本质上是完全可并行的
 如果在各个输入分区中，查询本质上是完全可并行的，则可以按照以下步骤操作：
 1.  通过使用 PARTITION BY 关键字来创作查询使之易并行。 请参阅[此页](stream-analytics-parallelization.md)易并行作业部分中的更多详细信息。
-2.  根据查询中使用的输出类型，某些输出可能是不可并行的，或者需要进一步配置来实现易并行。 例如，SQL、SQL DW 和 PowerBI 输出都是不可并行的。 请始终先合并输出，然后再将其发送到输出接收器。 Blob、表、ADLS、服务总线和 Azure Function 会自动并行化。 CosmosDB 和事件中心都需要设置 PartitionKey 配置来匹配 PARTITION BY 字段（通常是 PartitionId）。 对于事件中心，还要格外注意匹配所有输入和所有输出的分区数量，以避免分区之间的交叉。 
+2.  根据查询中使用的输出类型，某些输出可能是不可并行的，或者需要进一步配置来实现易并行。 例如，PowerBI 输出不可并行。 请始终先合并输出，然后再将其发送到输出接收器。 Blob、表、ADLS、服务总线和 Azure Function 会自动并行化。 SQL 和 SQL DW 输出具有并行化选项。 事件中心需要将 PartitionKey 配置设置为与 PARTITION BY 字段（通常是 PartitionId）匹配。 对于事件中心，还要格外注意匹配所有输入和所有输出的分区数量，以避免分区之间的交叉。 
 3.  使用 6 SU（即单个计算节点的全部容量）来运行查询，以度量最大可实现的吞吐量，如果你使用的是 GROUP BY，则度量作业能处理的组数（基数）。 达到系统资源限制的作业，一般症状将如下所示。
     - SU 利用率指标超过 80%。 该指示内存使用率较高。 [此处](stream-analytics-streaming-unit-consumption.md)描述了导致此指标增加的因素。 
     -   输出时间戳滞后于时钟时间。 根据查询逻辑，输出时间戳可能与时钟时间之间存在一个逻辑偏差。 但是，它们应该以大致相同的速度增进。 如果输出时间戳进一步滞后，则指示系统工作时间过长。 它可能是由于下游输出接收器限制，或高 CPU 利用率所致。 我们目前没有提供 CPU 利用率指标，因此很难区分两者。
@@ -80,12 +77,12 @@ ms.locfileid: "60816810"
 
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+若要获得进一步的帮助，可前往 [Azure 流分析的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)
 * [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
-* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 <!--Image references-->

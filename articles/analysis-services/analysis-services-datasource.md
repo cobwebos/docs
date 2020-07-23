@@ -1,109 +1,113 @@
 ---
 title: Azure Analysis Services 中支持的数据源 | Microsoft Docs
-description: 介绍 Azure Analysis Services 中数据模型支持的数据源。
+description: 介绍 Azure Analysis Services 中表格 1200 及更高版本数据模型支持的数据源和连接器。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7abd0ac3d95825594dffe385bccc1672d0f71c5f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: dc25c853a37de5c310d37e7ee64c6f762283cb0a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66142561"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077433"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
 
-对于 Azure Analysis Services 和 SQL Server Analysis Services，Visual Studio 中的“获取数据”或“导入向导”中显示的数据源和连接器都会显示。 但是，并非显示的所有数据源和连接器在 Azure Analysis Services 中都受支持。 你可以连接到的数据源的类型取决于许多因素，例如模型兼容性级别、可用的数据连接器、身份验证类型、提供程序和本地数据网关支持。 
+对于 Azure Analysis Services 和 SQL Server Analysis Services，使用 Analysis Services 项目的 Visual Studio 中的“获取数据”或“表导入向导”中显示的数据源和连接器都会显示。 但是，并非显示的所有数据源和连接器在 Azure Analysis Services 中都受支持。 你可以连接到的数据源的类型取决于许多因素，例如模型兼容性级别、可用的数据连接器、身份验证类型和本地数据网关支持。 下表描述了 Azure Analysis Services 支持的数据源。
 
 ## <a name="azure-data-sources"></a>Azure 数据源
 
-|数据源  |内存中  |DirectQuery  |
-|---------|---------|---------|
-|Azure SQL 数据库<sup>[2](#azsqlmanaged)</sup>     |   “是”      |    “是”      |
-|Azure SQL 数据仓库     |   “是”      |   “是”       |
-|Azure Blob 存储<sup>[1](#tab1400a)</sup>     |   “是”       |    “否”      |
-|Azure 表存储<sup>[1](#tab1400a)</sup>    |   “是”       |    “否”      |
-|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  “是”        |  “否”        |
-|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup>[4](#gen2)</sup>      |   “是”       |    “否”      |
-|Azure HDInsight HDFS<sup>[1](#tab1400a)</sup>     |     “是”     |   “否”       |
-|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup>[3](#databricks)</sup>     |   “是”       |   “否”       |
+|数据源  |内存中  |DirectQuery  |说明 |
+|---------|---------|---------|---------|
+|Azure SQL Database      |   是      |    是      |<sup>[2](#azprovider)</sup>，<sup>[3](#azsqlmanaged)</sup>|
+|Azure Synapse Analytics (SQL DW)      |   是      |   是       |<sup>[2](#azprovider)</sup>|
+|Azure Blob 存储      |   是       |    否      | <sup>[1](#tab1400a)</sup> |
+|Azure 表存储     |   是       |    否      | <sup>[1](#tab1400a)</sup>|
+|Azure Cosmos DB     |  是        |  否        |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Store Gen1      |   是       |    否      |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Store Gen2       |   是       |    否      |<sup>[1](#tab1400a)</sup>，<sup>[5](#gen2)</sup>|
+|Azure HDInsight HDFS    |     是     |   否       |<sup>[1](#tab1400a)</sup> |
+|Azure HDInsight Spark     |   是       |   否       |<sup>[1](#tab1400a)</sup><sup>[4](#databricks)</sup>|
 ||||
 
-<a name="tab1400a">1</a> - 仅限表格 1400 和更高模型。   
-<a name="azsqlmanaged">2</a> - 支持 Azure SQL 数据库托管实例。 由于托管实例在 Azure VNet 中使用专用 IP 地址运行，因此需要本地数据网关。 目前不支持 azure SQL 数据库托管实例与公共终结点。   
-<a name="databricks">3</a> - 目前不支持使用 Spark 连接器的 Azure Databricks。   
-<a name="gen2">4</a> - 目前不支持 ADLS Gen2。
+注意：
 
+<a name="tab1400a">1</a> - 仅限表格 1400 和更高模型。  
+<a name="azprovider">2</a> - 在表格 1200 和更高版本的模型中将其指定为提供程序数据源时，内存中和 DirectQuery 模型都需要 Microsoft OLE DB Driver for SQL Server MSOLEDBSQL（推荐）、SQL Server Native Client 11.0 或 .NET Framework Data Provider for SQL Server。  
+<a name="azsqlmanaged">3</a> -支持 Azure SQL 托管实例。 由于 SQL 托管实例在具有专用 IP 地址的 Azure VNet 中运行，因此必须在实例上启用公共终结点。 如果未启用，则[本地数据网关](analysis-services-gateway.md)是必需的。  
+<a name="databricks">4</a> - 目前不支持使用 Spark 连接器的 Azure Databricks。  
+<a name="gen2">5</a> - 目前不支持 ADLS Gen2 连接器，但是，Azure Blob 存储连接器可以与 ADLS Gen2 数据源一起使用。
 
-**提供程序**   
-连接到 Azure 数据源的内存中和 DirectQuery 模型使用用于 SQL Server 的 .NET Framework 数据提供程序。
+## <a name="other-data-sources"></a>其他数据源
 
-## <a name="on-premises-data-sources"></a>本地数据源
-
-从 Azure AS 服务器连接到本地数据源需要使用本地网关。 使用网关时，需要 64 位提供程序。
-
-### <a name="in-memory-and-directquery"></a>内存中和 DirectQuery
-
-|数据源 | 内存中提供程序 | DirectQuery 提供程序 |
-|  --- | --- | --- |
-| SQL Server |SQL Server Native Client 11.0、用于 SQL Server 的 Microsoft OLE DB 提供程序、用于 SQL Server 的 .NET Framework 数据提供程序 | 用于 SQL Server 的 .NET Framework 数据提供程序 |
-| SQL Server 数据仓库 |SQL Server Native Client 11.0、用于 SQL Server 的 Microsoft OLE DB 提供程序、用于 SQL Server 的 .NET Framework 数据提供程序 | 用于 SQL Server 的 .NET Framework 数据提供程序 |
-| Oracle | OLE DB Provider for Oracle，适用于.NET 的 Oracle 数据提供程序 |用于 .Net 的 Oracle 数据提供程序 |
-| Teradata |用于 Teradata 的 OLE DB 提供程序、用于 .NET 的 Teradata 数据提供程序 |用于 .Net 的 Teradata 数据提供程序 |
+|数据源 | 内存中 | DirectQuery |说明   |
+|  --- | --- | --- | --- |
+|Access 数据库     |  是 | 否 |  |
+|Active Directory     |  是 | 否 | <sup>[6](#tab1400b)</sup>  |
+|Analysis Services     |  是 | 否 |  |
+|分析平台系统     |  是 | 否 |  |
+|CSV 文件  |是 | 否 |  |
+|Dynamics 365     |  是 | 否 | <sup>[6](#tab1400b)</sup> |
+|Excel 工作簿     |  是 | 否 |  |
+|Exchange      |  是 | 否 | <sup>[6](#tab1400b)</sup> |
+|Folder      |是 | 否 | <sup>[6](#tab1400b)</sup> |
+|IBM Informix  |是 | 否 |  |
+|JSON 文档      |  是 | 否 | <sup>[6](#tab1400b)</sup> |
+|二进制文件中的行      | 是 | 否 | <sup>[6](#tab1400b)</sup> |
+|MySQL 数据库     | 是 | 否 |  |
+|OData 源      |  是 | 否 | <sup>[6](#tab1400b)</sup> |
+|ODBC 查询     | 是 | 否 |  |
+|OLE DB     |   是 | 否 |  |
+|Oracle  | 是  |是  | <sup>[9](#oracle)</sup> |
+|PostgreSQL 数据库   | 是 | 否 | <sup>[6](#tab1400b)</sup> |
+|Salesforce 对象|  是 | 否 | <sup>[6](#tab1400b)</sup> |
+|Salesforce 报表 |是 | 否 | <sup>[6](#tab1400b)</sup> |
+|SAP HANA     |  是 | 否 |  |
+|SAP Business Warehouse    |  是 | 否 | <sup>[6](#tab1400b)</sup> |
+|SharePoint 列表      |   是 | 否 | <sup>[6](#tab1400b)</sup>，<sup>[11](#filesSP)</sup> |
+|SQL Server |是   | 是  | <sup>[7](#sqlim)</sup>，<sup>[8](#instgw)</sup> |
+|SQL Server 数据仓库 |是   | 是  | <sup>[7](#sqlim)</sup>，<sup>[8](#instgw)</sup> |
+|Sybase 数据库     |  是 | 否 |  |
+|Teradata | 是  | 是  | <sup>[10](#teradata)</sup> |
+|TXT 文件  |是 | 否 |  |
+|XML 表    |  是 | 否 | <sup>[6](#tab1400b)</sup> |
 | | | |
 
-### <a name="in-memory-only"></a>仅限内存中
+注意：  
+<a name="tab1400b">6</a> - 仅限表格 1400 和更高模型。  
+<a name="sqlim">7</a> - 在表格 1200 和更高版本的模型中将其指定为提供程序数据源时，指定 Microsoft OLE DB Driver for SQL Server MSOLEDBSQL（推荐）、SQL Server Native Client 11.0 或 .NET Framework Data Provider for SQL Server。  
+<a name="instgw">8</a> - 如果指定 MSOLEDBSQL 作为数据提供程序，则可能需要在与本地数据网关相同的计算机上下载并安装 [Microsoft OLE DB Driver for SQL Server](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server)。  
+<a name="oracle">9</a> - 对于表格 1200 模型，或作为表格 1400+ 模型中的提供程序数据源，为 .NET 指定 Oracle 数据提供程序。  
+<a name="teradata">10</a> - 对于表格 1200 模型，或作为表格 1400+ 模型中的提供程序数据源，为 .NET 指定 Teradata 数据提供程序。  
+<a name="filesSP">11</a> - 不支持本地 SharePoint 中的文件。
 
-|数据源  |  
-|---------|
-|Access 数据库     |  
-|Active Directory<sup>[1](#tab1400b)</sup>     |  
-|Analysis Services     |  
-|分析平台系统     |  
-|CSV 文件  |
-|Dynamics CRM<sup>[1](#tab1400b)</sup>     |  
-|Excel 工作簿     |  
-|Exchange<sup>[1](#tab1400b)</sup>     |  
-|文件夹<sup>[1](#tab1400b)</sup>     |
-|IBM Informix<sup>[1](#tab1400b)</sup>（beta 版本） |
-|JSON 文档<sup>[1](#tab1400b)</sup>     |  
-|二进制文件中的行<sup>[1](#tab1400b)</sup>     | 
-|MySQL 数据库     | 
-|OData 源<sup>[1](#tab1400b)</sup>     |  
-|ODBC 查询     | 
-|OLE DB     |   
-|Postgre SQL 数据库<sup>[1](#tab1400b)</sup>    | 
-|Salesforce 对象<sup>[1](#tab1400b)</sup> |  
-|Salesforce 报表<sup>[1](#tab1400b)</sup> |
-|SAP HANA<sup>[1](#tab1400b)</sup>    |  
-|SAP Business Warehouse<sup>[1](#tab1400b)</sup>    |  
-|SharePoint 列表<sup>[1](#tab1400b)</sup>， <sup> [2](#filesSP)</sup>     |   
-|Sybase 数据库     |  
-|TXT 文件  |
-|XML 表<sup>[1](#tab1400b)</sup>    |  
-||
- 
-<a name="tab1400b">1</a> - 仅限表格 1400 和更高模型。   
-<a name="filesSP">2</a> -不支持在本地 SharePoint 中的文件。
+从 Azure Analysis Services 服务器连接到本地数据源需要使用[本地网关](analysis-services-gateway.md)。 使用网关时，需要 64 位提供程序。
 
-## <a name="specifying-a-different-provider"></a>指定不同的提供程序
+## <a name="understanding-providers"></a>了解提供程序
 
-连接到某些数据源时，Azure Analysis Services 中的数据模型可能需要不同的数据提供程序。 在某些情况下，使用本机提供程序（如 SQL Server Native Client (SQLNCLI11)）连接到数据源的表格模型可能返回错误。 如果使用 SQLOLEDB 之外的本机提供程序，可能会看到错误消息：**未注册提供程序“SQLNCLI11.1”**。 或者，在某个 DirectQuery 模型连接到本地数据源时，如果使用了本机提供程序，则可能会看到错误消息：**创建 OLE DB 行集时出错。“LIMIT”附近的语法不正确**。
+在 Visual Studio 中创建表格 1400 及更高版本的模型项目时，在使用“获取数据”连接到数据源时，默认情况下不指定数据提供程序。 表格 1400 及更高版本的模型使用 [Power Query](/power-query/power-query-what-is-power-query) 连接器来管理数据源和 Analysis Services 之间的连接、数据查询和糅合。 这些连接有时称为结构化数据源连接，因为连接属性设置是为你设置的。 但是，你可以在 Visual Studio 中为模型项目启用旧数据源。 启用后，可以使用表导入向导连接到表格 1200 和更低版本模型中传统上受支持的某些数据源，如旧版数据源或提供程序数据源 。 指定为提供程序数据源时，可以指定特定的数据提供程序和其他高级连接属性。 例如，可以连接到 SQL Server 数据仓库实例，甚至可以连接到 Azure SQL 数据库作为旧数据源。 然后，可以为 SQL Server MSOLEDBSQL 数据提供程序选择 OLE DB 驱动程序。 在这种情况下，选择 OLE DB 数据提供程序可以比 Power Query 连接器获得更好的性能。 
 
-将本地 SQL Server Analysis Services 表格模型迁移到 Azure Analysis Services 时，可能需要更改提供程序。
+在 Visual Studio 中使用表导入向导时，与任何数据源的连接都需要一个数据提供程序。 已为你选择默认数据提供程序。 如果需要，可以更改数据提供程序。 选择的提供程序类型取决于性能、模型是否正在使用内存中存储或 DirectQuery，以及将模型部署到哪个 Analysis Services 平台。
 
-**指定提供程序**
+### <a name="specify-provider-data-sources-in-tabular-1400-and-higher-model-projects"></a>在表格 1400 及更高版本的模型项目中指定提供程序数据源
 
-1. 在 SSDT >“表格模型浏览器” > “数据源”中，右键单击数据源连接，并单击“编辑数据源”。
-2. 在“编辑连接”中，单击“高级”，打开“高级属性”窗口。
-3. 在“设置高级属性” > “提供程序”中，选择适当的提供程序。
+若要启用提供程序数据源，请在 Visual Studio 中单击“工具” > “选项” > “Analysis Services 表格” > “数据导入”，选择“启用旧数据源”    。
+
+![启用旧数据源](media/analysis-services-datasource/aas-enable-legacy-datasources.png)
+
+启用旧数据源后，在“表格模型资源管理器”中，右键单击“数据源” > “从数据源(旧)导入”  。
+
+![表格模型资源管理器中的旧数据源](media/analysis-services-datasource/aas-import-legacy-datasources.png)
+
+与表格 1200 模型项目一样，使用表导入向导连接到数据源。 在“连接”页上，单击“高级”。 在“设置高级属性”中指定数据提供程序和其他连接设置。
+
+![旧数据源高级属性](media/analysis-services-datasource/aas-import-legacy-advanced.png)
 
 ## <a name="impersonation"></a>模拟
-某些情况下可能需要指定其他模拟帐户。 可在 Visual Studio (SSDT) 或 SSMS 中指定模拟帐户。
+某些情况下可能需要指定其他模拟帐户。 可以在 Visual Studio 或 SQL Server Management Studio (SSMS) 中指定模拟帐户。
 
 对于本地数据源：
 
@@ -114,7 +118,13 @@ ms.locfileid: "66142561"
 
 * 如果使用 SQL 身份验证，则模拟应为服务帐户。
 
-## <a name="next-steps"></a>后续步骤
-[本地网关](analysis-services-gateway.md)   
-[管理服务器](analysis-services-manage.md)   
+## <a name="oauth-credentials"></a>OAuth 凭据
 
+对于1400和更高兼容级别的表格模型，使用内存中模式，Azure SQL Database，Azure Synapse （以前称为 SQL 数据仓库），Dynamics 365，SharePoint 列表支持 OAuth 凭据。 Azure Analysis Services 管理 OAuth 数据源的令牌刷新，以避免长时间运行的刷新操作超时。 若要生成有效的令牌，请使用 SSMS 设置凭据。
+
+OAuth 凭据不支持直接查询模式。
+
+## <a name="next-steps"></a>后续步骤
+
+* [本地网关](analysis-services-gateway.md)
+* [管理服务器](analysis-services-manage.md)

@@ -1,11 +1,10 @@
 ---
-title: Azure CLI 脚本示例 - 使用 DSC 创建具有 IIS 的 Windows Server 2016 VM | Microsoft 文档
+title: Azure CLI 脚本示例 - 使用 DSC 创建具有 IIS 的 Windows Server 2016 VM
 description: Azure CLI 脚本示例 - 使用 DSC 创建具有 IIS 的 Windows Server 2016 VM
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: rickstercdn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -16,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc
-ms.openlocfilehash: 3c818a7459a54b01cfdaa7315aff8e4194d3849c
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: ac0c895f471a6d201c51e2c75ba938dc3b15c3a8
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670665"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459549"
 ---
 # <a name="create-a-vm-with-iis-using-dsc"></a>使用 DSC 创建具有 IIS 的 VM
 
@@ -47,7 +46,7 @@ az group delete --name myResourceGroup --yes
 
 此脚本使用以下命令创建资源组、虚拟机和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | 创建用于存储所有资源的资源组。 |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和 NSG。 此命令还指定要使用的虚拟机映像和管理凭据。  |

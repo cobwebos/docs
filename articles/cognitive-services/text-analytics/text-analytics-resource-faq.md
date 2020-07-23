@@ -1,7 +1,7 @@
 ---
 title: 有关文本分析 API 的常见问题解答
 titleSuffix: Azure Cognitive Services
-description: 获取有关文本分析 API 的常见问题解答。
+description: 查找与 Azure 认知服务的文本分析 API 有关的概念、代码和方案相关的常见问题解答。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: a85fa543a6b26a5ea6452ce99fb91dc1ce465db7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aca3b0bea65923cee1bae25020058666c973922c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60827946"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "73837125"
 ---
 # <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>有关文本分析认知服务的常见问题解答 (FAQ)
 
@@ -51,7 +51,7 @@ ms.locfileid: "60827946"
 
 问题是否与缺少功能相关？ 请考虑在我们的 [UserVoice 网站](https://cognitive.uservoice.com/forums/555922-text-analytics)上为其发起请求或投票。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
  [StackOverflow：文本分析 API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
  [StackOverflow：认知服务](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

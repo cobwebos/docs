@@ -1,19 +1,19 @@
 ---
-title: Azure 市场和 AppSource 推荐的解决方案
-description: 市场中推荐的解决方案以及入选理由概述
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
+title: Azure Marketplace 和 AppSource 首选解决方案-Microsoft 商业市场
+description: Marketplace 中的首选解决方案及其选择方式
 ms.service: marketplace
-ms.topic: article
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 06/27/2018
-ms.author: ellacroi
-ms.openlocfilehash: 225ed171599e3f822fc869c97a1c7d91f9107b1d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 7574406037bdfb2e9b2c76a3c38293a065028ed2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779799"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121021"
 ---
-# <a name="preferred-solutions-in-azure-marketplace-and-appsource"></a>Azure 市场和 AppSource 中推荐的解决方案
+# <a name="preferred-solutions-in-microsoft-appsource-and-azure-marketplace"></a>Microsoft AppSource 和 Azure Marketplace 中的首选解决方案
 
-Microsoft 推荐的解决方案是一个云应用程序，入选理由是它具备在某一特定垂直行业或解决方案领域中满足客户需求的质量、性能和功能。 Microsoft 专家小组验证从具有特定经过验证的能力和功能的合作伙伴解决方案。 在我们的云应用商店店面、 Azure Marketplace 和 AppSource，以及在 Azure 门户中突出显示这些解决方案。 可以通过垂直行业发现在 AppSource 上的首选的解决方案。 跨水平解决方案类别，可以发现在 Azure Marketplace 和 Azure 门户上的首选的解决方案。
+Microsoft 推荐的解决方案是一个云应用程序，入选理由是它具备在某一特定垂直行业或解决方案领域中满足客户需求的质量、性能和功能。 Microsoft 专家团队使用特定经验证的能力和功能来验证合作伙伴提供的解决方案。 这些解决方案在我们的云 marketplace 商店商店、Azure Marketplace 和 AppSource 以及 Azure 门户中提供。 AppSource 上的首选解决方案可以通过行业纵向来发现。 可以在水平解决方案类别中发现 Azure Marketplace 和 Azure 门户的首选解决方案。

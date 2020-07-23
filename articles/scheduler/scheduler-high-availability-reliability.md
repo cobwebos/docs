@@ -1,27 +1,27 @@
 ---
-title: 高可用性和可靠性 - Azure 计划程序
+title: 高可用性和可靠性
 description: 了解 Azure 计划程序中的高可用性和可靠性
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 5ec78e60-a9b9-405a-91a8-f010f3872d50
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/16/2016
-ms.openlocfilehash: 50ab6cfefe4a7df9d671e7fd1287aa16b803f260
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 20c2054e168a9b17d9b4ab159cfefbf607ab6d11
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60533348"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78898563"
 ---
 # <a name="high-availability-and-reliability-for-azure-scheduler"></a>Azure 计划程序的高可用性和可靠性
 
 > [!IMPORTANT]
-> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替换即将停用的 Azure 计划程序。 若要计划作业，请[改为试用 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替代[即将停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+>
+> 计划程序在 Azure 门户中不再可用，但 [REST API](/rest/api/scheduler) 和 [Azure 计划程序 PowerShell cmdlet](scheduler-powershell-reference.md) 目前仍可用，以便你可以管理作业和作业集合。
 
-Azure 计划程序为作业提供了[高可用性](https://docs.microsoft.com/azure/architecture/guide/pillars#availability)和可靠性。 有关详细信息，请参阅 [SLA 计划程序](https://azure.microsoft.com/support/legal/sla/scheduler)。
+Azure 计划程序为作业提供了[高可用性](https://docs.microsoft.com/azure/architecture/framework/#resiliency)和可靠性。 有关详细信息，请参阅 [SLA 计划程序](https://azure.microsoft.com/support/legal/sla/scheduler)。
 
 ## <a name="high-availability"></a>高可用性
 
@@ -29,7 +29,7 @@ Azure 计划程序[高度可用]，并使用地域冗余服务部署和地理区
 
 ### <a name="geo-redundant-service-deployment"></a>异地冗余的服务部署
 
-Azure 计划程序在 Azure 门户中提供，几乎适用于[目前 Azure 支持的每个地理区域](https://azure.microsoft.com/global-infrastructure/regions/#services)。 因此，如果托管区域中的 Azure 数据中心变得不可用，仍可以使用 Azure 计划程序，因为该服务的故障转移功能使计划程序可在另一个数据中心提供。
+Azure 计划程序在[azure 目前支持的几乎每个地理区域](https://azure.microsoft.com/global-infrastructure/regions/#services)都可用。 因此，如果托管区域中的 Azure 数据中心变得不可用，仍可以使用 Azure 计划程序，因为该服务的故障转移功能使计划程序可在另一个数据中心提供。
 
 ### <a name="geo-regional-job-replication"></a>地理区域作业复制
 
@@ -70,9 +70,9 @@ Azure 计划程序允许你设置重试策略。 如果作业失败，默认情�
 
 若要了解如何设置备用终结点，请参阅 [errorAction](scheduler-concepts-terms.md#error-action)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
-* [什么是 Azure 计划程序？](scheduler-intro.md)
 * [概念、术语和实体层次结构](scheduler-concepts-terms.md)
-* [构建复杂的计划和高级重复周期](scheduler-advanced-complexity.md)
+* [Azure 计划程序 REST API 参考](/rest/api/scheduler)
+* [Azure 计划程序 PowerShell cmdlet 参考](scheduler-powershell-reference.md)
 * [限制、配额、默认值和错误代码](scheduler-limits-defaults-errors.md)

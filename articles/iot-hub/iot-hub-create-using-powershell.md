@@ -1,19 +1,17 @@
 ---
 title: 使用 PowerShell cmdlet 创建 Azure IoT 中心 | Microsoft Docs
-description: 如何使用 PowerShell cmdlet 创建 IoT 中心。
+description: 了解如何使用 PowerShell cmdlet 创建资源组，然后在资源组中创建 IoT 中心。 还了解如何删除中心。
 author: robinsh
-manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: robinsh
-ms.openlocfilehash: fd376728a1ebdf769c7f2ae76d61a60703e13711
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 9c49f7ac744ee516aefc1571d50264132035ba8a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66146615"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73890604"
 ---
 # <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>使用 New-AzIotHub cmdlet 创建 IoT 中心
 
@@ -42,7 +40,7 @@ Login-AzAccount
 
 需要一个资源组来部署 IoT 中心。 可以使用现有资源组，也可以创建新组。
 
-若要为 IoT 中心创建资源组，请使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/New-azResourceGroup) 命令。 此示例在“美国东部”区域中创建名为 **MyIoTRG1** 的资源组：
+若要为 IoT 中心创建资源组，请使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/New-azResourceGroup) 命令。 此示例在“美国东部”**** 区域中创建名为 **MyIoTRG1** 的资源组：
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name MyIoTRG1 -Location "East US"
@@ -50,7 +48,7 @@ New-AzResourceGroup -Name MyIoTRG1 -Location "East US"
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
-若要在上一步创建的资源组中创建 IoT 中心，请使用 [New-AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/New-azIotHub) 命令。 此示例在“美国东部”区域中创建名为 **MyTestIoTHub** 的 **S1** 中心：
+若要在上一步创建的资源组中创建 IoT 中心，请使用 [New-AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/New-azIotHub) 命令。 此示例在“美国东部”**** 区域中创建名为 **MyTestIoTHub** 的 **S1** 中心：
 
 ```azurepowershell-interactive
 New-AzIotHub `
@@ -80,7 +78,7 @@ Remove-AzIotHub `
     -Name MyTestIoTHub
 ```
 
-或者，可以删除资源组和所有资源，它都包含使用[删除 AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/Remove-azResourceGroup)命令：
+或者，可以使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/Remove-azResourceGroup) 命令删除资源组及其包含的所有资源：
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyIoTRG1

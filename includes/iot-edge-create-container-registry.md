@@ -2,14 +2,14 @@
 author: kgremban
 ms.service: iot-edge
 ms.topic: include
-ms.date: 04/25/2019
+ms.date: 12/30/2019
 ms.author: kgremban
-ms.openlocfilehash: 485a76cb91e5146f59e6be592ffd9cbba68e585a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: f63510771e4bd71a3ab6cf048bc5fb5296042a4d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146677"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75564791"
 ---
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
@@ -32,10 +32,10 @@ ms.locfileid: "66146677"
    | 管理员用户 | 设置为“启用”。  |
    | SKU | 选择“基本”。  |
 
-5. 选择“创建”  。
+3. 选择“创建”  。
 
-6. 创建容器注册表后，请浏览到其中，然后选择“访问密钥”。 
+4. 创建容器注册表后，浏览到它，然后从左窗格中，选择“设置”下菜单中的“访问密钥”   。
 
-7. 复制“登录服务器”、“用户名”和“密码”的值，并将其保存在方便的位置    。 本教程将使用这些值来访问容器注册表。
+5. 复制“登录服务器”、“用户名”和“密码”的值，并将其保存在方便的位置    。 本教程将使用这些值来访问容器注册表。
 
    ![复制容器注册表的登录服务器、用户名和密码](./media/iot-edge-create-container-registry/registry-access-key.png)

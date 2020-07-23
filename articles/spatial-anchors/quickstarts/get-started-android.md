@@ -1,19 +1,19 @@
 ---
-title: 快速入门：使用 Azure 空间定位点创建 Android 应用 | Microsoft Docs
+title: 快速入门：创建 Android 应用
 description: 在此快速入门中，将了解如何使用空间定位点生成 Android 应用。
 author: craigktreasure
-manager: aliemami
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 03589745e6e9b40b937c49162e99035ce6c81423
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 3f794d1c70baee07b9ff3ed5d8299cf8ad3bf983
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800049"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652497"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Android 应用
 
@@ -32,46 +32,63 @@ ms.locfileid: "65800049"
 
 若要完成本快速入门，请确保具备以下项：
 
-- 具有 <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3 +</a> 的 Windows 或 macOS 计算机。
-  - 如果在 Windows 上运行，则还需要 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a>。
-  - 如果在 macOS 上运行，请通过 HomeBrew 安装 Git。 在终端的一行中输入以下命令：`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`。 然后运行 `brew install git`。
-  - 若要生成 NDK 示例，还需要在 Android Studio 中安装 NDK 和 CMake 3.6 SDK Tools。
+- 具有 <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4+</a> 的 Windows 或 macOS 计算机。
+  - 如果在 Windows 上运行，则还需要 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> 和 <a href="https://git-lfs.github.com/">Git LFS</a>。
+  - 如果在 macOS 上运行，请通过 HomeBrew 安装 Git。 在终端的一行中输入以下命令：`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`。 然后，运行 `brew install git` 和 `brew install git-lfs`。
+  - 若要生成 NDK 示例，还需要在 Android Studio 中安装 NDK 和 CMake 3.6 或更高版本的 SDK Tools。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">支持开发人员</a>和 <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 功能</a>的 Android 设备。
-- 你的应用必须以 ARCore 1.7 为目标。
+  - 你的计算机可能需要其他设备驱动程序才能与 Android 设备通信。 有关其他信息和说明，请参阅[此处](https://developer.android.com/studio/run/device.html)。
+- 你的应用必须以 ARCore **1.11.0** 为目标。
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
 ## <a name="open-the-sample-project"></a>打开示例项目
 
+# <a name="java"></a>[Java](#tab/openproject-java)
+
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-如果正在构建 Android NDK 示例，则需要从[此处](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.7.0/libraries/include/arcore_c_api.h)下载 `arcore_c_api.h` 并将其放在 `Android\NDK\libraries\include` 中。
+# <a name="ndk"></a>[NDK](#tab/openproject-ndk)
+
+[!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
+
+从[此处](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.11.0/libraries/include/arcore_c_api.h)下载 `arcore_c_api.h` 并将其置于 `Android\NDK\libraries\include` 中。
+
+在新克隆的存储库中，通过运行以下命令初始化子模块：
+
+```console
+git submodule update --init --recursive
+```
+
+---
 
 打开 Android Studio。
 
-# <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
+# <a name="java"></a>[Java](#tab/openproject-java)
 
 选择“打开现有 Android Studio 项目”，然后选择位于 `Android/Java/` 的项目。
 
-# <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
+# <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
 选择“打开现有 Android Studio 项目”，然后选择位于 `Android/NDK/` 的项目。
 
-***
+---
 
 ## <a name="configure-account-identifier-and-key"></a>配置帐户标识符和密钥
 
-下一步是将应用配置为使用帐户标识符和帐户密钥。 在[设置空间定位点资源](#create-a-spatial-anchors-resource)时，将它们复制到文本编辑器中。
+下一步是将应用程序配置为使用帐户标识符和帐户密钥。 在[设置空间定位点资源](#create-a-spatial-anchors-resource)时，将它们复制到文本编辑器中。
 
-# <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
+# <a name="java"></a>[Java](#tab/openproject-java)
 
-打开 `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsActivity.java`。
+打开 `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`。
 
 找到 `SpatialAnchorsAccountKey` 字段并将 `Set me` 替换为帐户密钥。
 
 找到 `SpatialAnchorsAccountId` 字段并将 `Set me` 替换为帐户标识符。
 
-# <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
+找到 `public AzureSpatialAnchorsManager(Session arCoreSession)` 并添加以下行，替换之前的帐户域：`spatialAnchorsSession.getConfiguration().setAccountDomain("MyAccountDomain");`。
+
+# <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
 打开 `Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`。
 
@@ -79,7 +96,9 @@ ms.locfileid: "65800049"
 
 找到 `SpatialAnchorsAccountId` 字段并将 `Set me` 替换为帐户标识符。
 
-***
+找到 `AzureSpatialAnchorsApplication::StartCloudSession()` 并添加以下行，替换之前的帐户域：`m_cloudSession->Configuration()->AccountDomain("MyAccountDomain");`。
+
+---
 
 ## <a name="deploy-the-app-to-your-android-device"></a>将应用部署到 Android 设备
 
@@ -89,7 +108,7 @@ ms.locfileid: "65800049"
 
 ![Android Studio 部署和运行](./media/get-started-android/android-studio-deploy-run.png)
 
-在“选择部署目标”对话框中选择 Android 设备，然后选择“确定”以在 Android 设备上运行应用。
+在“选择部署目标”对话框中选择 Android 设备，然后选择“确定”以在 Android 设备上运行应用 。
 
 按照应用中的说明，放置并重新调用定位点。
 

@@ -1,27 +1,26 @@
 ---
-title: 使用 Azure 数据工厂从 Sybase 移动数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 Sybase 移动数据
 description: 了解如何使用 Azure 数据工厂从 Sybase 数据库移动数据。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: b379ee10-0ff5-4974-8c87-c95f82f1c5c6
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0de8d4145ff41b498149774af8ed74c56375dea9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cefa0c15dd50f95780034dcb63f888a2e1c6b65e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60605190"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707355"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>使用 Azure 数据工厂从 Sybase 移动数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-onprem-sybase-connector.md)
 > * [版本 2（当前版本）](../connector-sybase.md)
 
@@ -32,7 +31,7 @@ ms.locfileid: "60605190"
 
 可以将数据从本地 Sybase 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 Sybase 数据存储移至其他数据存储，而不支持将数据从其他数据存储移至 Sybase 数据存储。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 数据工厂服务支持通过数据管理网关连接到本地 Sybase 源。 请参阅[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文，了解数据管理网关和设置网关的分步说明。
 
 即使 Sybase 数据库托管在 Azure IaaS VM 中，仍需要网关。 可在与数据存储相同的 IaaS VM 上或不同的 VM 上安装网关，只要网关能连接数据库即可。
@@ -48,14 +47,14 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 
 
-- 创建管道的最简单方法是使用复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
-- 还可以使用以下工具来创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+- 创建管道的最简单方法是使用**** 复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
+- 你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API**和**REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
-1. 创建链接服务可将输入和输出数据存储链接到数据工厂。
-2. 创建数据集以表示复制操作的输入和输出数据。 
-3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。 
+1. 创建**链接服务**以将输入和输出数据存储链接到数据工厂。
+2. 创建用于表示复制操作的输入和输出数据的**数据集**。 
+3. 创建包含复制活动的**管道**，该活动将数据集作为输入，并将数据集作为输出。 
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于从本地 Sybase 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 Sybase 复制到 Azure Blob](#json-example-copy-data-from-sybase-to-azure-blob) 部分。 
 
@@ -64,23 +63,23 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供了有关 Sybase 链接服务专属 JSON 元素的描述。
 
-| 属性 | 说明 | 必选 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
-| type |type 属性必须设置为：**OnPremisesSybase** |是 |
+| type |“type”属性必须设置为：**OnPremisesSybase** |是 |
 | server |Sybase 服务器的名称。 |是 |
 | database |Sybase 数据库的名称。 |是 |
-| schema |数据库中架构的名称。 |否 |
-| authenticationType |用于连接 Sybase 数据库的身份验证类型。 可能的值包括：Anonymous、Basic 和 Windows。 |是 |
+| 架构 |数据库中架构的名称。 |否 |
+| authenticationType |用于连接 Sybase 数据库的身份验证类型。 可能的值为：Anonymous、Basic 和 Windows。 |是 |
 | username |如果使用基本或 Windows 身份验证，请指定用户名。 |否 |
 | password |指定为用户名指定的用户帐户的密码。 |否 |
 | gatewayName |网关的名称 - 数据工厂服务应使用此网关连接到本地 Sybase 数据库。 |是 |
 
 ## <a name="dataset-properties"></a>数据集属性
-有关可用于定义数据集的节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 结构、可用性和数据集 JSON 的策略等部分与所有数据集类型（Azure SQL、Azure blob、Azure 表等）类似。
+有关可用于定义数据集的节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
 
 每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable**类型数据集（包括 Sybase 数据集）的 **typeProperties** 部分具有以下属性：
 
-| 属性 | 说明 | 需要 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | tableName |链接服务指代的 Sybase 数据库实例中表的名称。 |否（如果指定了 **RelationalSource** 的**query**） |
 
@@ -91,21 +90,21 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 
 当源属于 **RelationalSource** 类型（包括 Sybase）时，以下属性可在 **typeProperties** 节中使用：
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| Property | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如：从 MyTable 中选择 *。 |否（如果指定了**数据集**的 **tableName**） |
+| 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如：select * from MyTable。 |否（如果指定了**数据集**的 **tableName**） |
 
 
 ## <a name="json-example-copy-data-from-sybase-to-azure-blob"></a>JSON 示例：将数据从 Sybase 复制到 Azure Blob
-以下示例提供示例 JSON 定义，可使用该定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它们演示如何将数据从 Sybase 数据库复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。   
+下面的示例提供示例 JSON 定义，可用于通过使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 它们演示如何将数据从 Sybase 数据库复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。   
 
 此示例具有以下数据工厂实体：
 
 1. [OnPremisesSybase](data-factory-onprem-sybase-connector.md#linked-service-properties) 类型的链接服务。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
 3. [RelationalTable](data-factory-onprem-sybase-connector.md#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
-5. [管道](data-factory-create-pipelines.md)，具有使用 [RelationalSource](data-factory-onprem-sybase-connector.md#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 的复制活动。
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)类型的输出[数据集](data-factory-create-datasets.md)。
+5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [RelationalSource](data-factory-onprem-sybase-connector.md#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
 此示例将数据从 Sybase 数据库中的查询结果复制到 blob，每小时进行一次。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
@@ -176,7 +175,7 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 
 **Azure Blob 输出数据集：**
 
-数据将写入到新 blob，每隔一小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
+数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```JSON
 {
@@ -234,9 +233,9 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 }
 ```
 
-**包含复制活动的管道：**
+**复制活动的管道：**
 
-管道包含配置为使用输入和输出数据集，且计划每小时运行一次的复制活动。 在管道 JSON 定义中，“源”类型设置为 **RelationalSource**，“接收器”类型设置为 **BlobSink**。 为**查询**属性指定的 SQL 查询从数据库中 DBA.Orders 表中选择数据。
+管道包含配置为使用输入和输出数据集，且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将 **source** 类型设置为 **RelationalSource**，将 **sink** 类型设置为 **BlobSink**。 为**查询**属性指定的 SQL 查询从数据库中 DBA.Orders 表中选择数据。
 
 ```JSON
 {

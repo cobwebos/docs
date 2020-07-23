@@ -1,19 +1,17 @@
 ---
 title: 使用 C++ 针对 Azure 文件进行开发 | Microsoft Docs
 description: 了解如何开发使用 Azure 文件来存储文件数据的 C++ 应用程序和服务。
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 424db4435c569475f9463894b5364fc22190689a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 6b201565ae2bcadccf55cee78ade0e011e603a15
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717919"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515389"
 ---
 # <a name="develop-for-azure-files-with-c"></a>使用 C++ 针对 Azure 文件进行开发
 
@@ -42,7 +40,7 @@ ms.locfileid: "64717919"
 若要安装用于 C++ 的 Azure 存储客户端 2.4.0，可以使用以下方法之一：
 
 * **Linux：** 按照[适用于 C++ 的 Azure 存储客户端库自述文件](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)页中提供的说明操作。
-* **Windows**：在 Visual Studio 中，单击“工具”&gt;“NuGet 包管理器”&gt;“包管理器控制台”。 在 [NuGet 包管理器控制台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)中，键入以下命令，并按 **ENTER**。
+* **Windows：** 在 Visual Studio 中，单击“工具”&gt;“NuGet 包管理器”&gt;“程序包管理器控制台”。 在 [NuGet 包管理器控制台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)中，键入以下命令，并按 **ENTER**。
   
 
 ```powershell
@@ -80,7 +78,7 @@ azure::storage::cloud_storage_account storage_account =
 
 ## <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
 
-Azure 文件共享中的所有文件和目录都位于名为 Share 的容器内。 存储帐户可以拥有无数的共享，只要帐户容量允许。 要获得共享及其内容的访问权限，需要使用 Azure 文件客户端。
+Azure 文件共享中的所有文件和目录都位于名为 Share  的容器内。 存储帐户可以拥有无数的共享，只要帐户容量允许。 要获得共享及其内容的访问权限，需要使用 Azure 文件客户端。
 
 ```cpp
 // Create the Azure Files client.
@@ -197,7 +195,7 @@ Azure 文件共享至少包含文件可以驻留的根目录。 在本部分，�
 azure::storage::cloud_file_directory root_dir = share.get_root_directory_reference();
 ```
 
-现在，已经有了共享所在根目录的引用，因此可以将文件上传到其中。 此示例从文件、文本和流上传。
+现在，已经拥有共享所在的根目录的引用，因此可以将文件上传到其中。 此示例从文件、文本和流上传。
 
 ```cpp
 // Upload a file from a stream.
@@ -221,7 +219,7 @@ file4.upload_from_file(_XPLATSTR("DataFile.txt"));
 
 ## <a name="download-a-file"></a>下载文件
 
-如果要下载文件，请先检索文件引用，然后调用 **download_to_stream** 方法，将文件内容传输到流对象，随后可将该流对象保存到本地本件。 也可使用 **download_to_file** 方法将文件的内容下载到本地文件。 可使用 **download_text** 方法，以文本字符串形式下载文件的内容。
+要下载文件，请先检索文件引用，然后调用 **download_to_stream** 方法，将文件内容传输到流对象，随后可将该流对象保存到本地本件。 也可使用 **download_to_file** 方法将文件的内容下载到本地文件。 可使用 **download_text** 方法，以文本字符串形式下载文件的内容。
 
 下面的示例使用 **download_to_stream** 和 **download_text** 方法，演示如何下载之前部分中创建的文件。
 
@@ -267,7 +265,7 @@ file.delete_file_if_exists();
 
 可以使用 GB 作为单位设置文件的配额（或最大大小）。 还可以查看共享当前存储了多少数据。
 
-通过设置一个共享的配额，可以限制在该共享上存储的文件的总大小。 如果共享上文件的总大小超过在共享上设定的配额，则客户端不能增加现有文件的大小或创建新文件，除非这些文件是空的。
+通过设置一个共享的配额，可以限制在该共享上存储的文件的总大小。 如果共享上文件的总大小超过在共享上设定的配额，则客户端将不能增加现有文件的大小或创建新文件，除非这些文件是空的。
 
 下面的示例演示如何检查共享的当前使用情况，以及如何设置共享的配额。
 
@@ -370,5 +368,5 @@ if (share.exists())
 
 * [适用于 C++ 的存储客户端库](https://github.com/Azure/azure-storage-cpp)
 * [C++ 的 Azure 存储文件服务示例](https://github.com/Azure-Samples/storage-file-cpp-getting-started)
-* [Azure 存储资源管理器](https://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
+* [Azure 存储浏览器](https://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
 * [Azure 存储文档](https://azure.microsoft.com/documentation/services/storage/)

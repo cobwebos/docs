@@ -1,29 +1,18 @@
 ---
-title: Azure CLI 脚本示例 - Batch 中的 Linux 池 | Microsoft Docs
-description: Azure CLI 脚本示例 - 在 Batch 中创建和管理 Linux 池
-services: batch
-documentationcenter: ''
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.devlang: azurecli
+title: Azure CLI 脚本示例 - Batch 中的 Linux 池
+description: 此脚本演示了 Azure CLI 中一些可用于在 Azure Batch 中创建和管理 Linux 计算节点池的命令。
 ms.topic: sample
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 01/29/2018
-ms.author: lahugh
-ms.openlocfilehash: 0ebda53db852a613c2ad6f0e223c25b3946b7116
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 21236ef2f314cb1306adc7346e620b80db540034
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66127476"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964033"
 ---
 # <a name="cli-example-create-and-manage-a-linux-pool-in-azure-batch"></a>CLI 示例：在 Azure Batch 中创建和管理 Linux 池
 
-这些脚本演示了 Azure Batch 中一些可用于在 Azure CLI 中创建和管理 Linux 计算节点池的命令。
+此脚本演示了 Azure CLI 中一些可用于在 Azure Batch 中创建和管理 Linux 计算节点池的命令。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -45,20 +34,20 @@ az group delete --name myResourceGroup
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az batch account create](/cli/azure/batch/account#az-batch-account-create) | 创建批处理帐户。 |
 | [az batch account login](/cli/azure/batch/account#az-batch-account-login) | 针对指定的批处理帐户进行身份验证，以便进一步进行 CLI 交互。  |
-| [az batch pool node-agent-skus list](https://docs.microsoft.com/cli/azure/batch/pool/node-agent-skus#az-batch-pool-node-agent-skus-list) | 列出可用节点代理 SKU 和映像信息。  |
-| [az batch pool create](https://docs.microsoft.com/cli/azure/batch/pool#az-batch-pool-create) | 创建计算节点池。  |
-| [az batch pool resize](https://docs.microsoft.com/cli/azure/batch/pool#az-batch-pool-resize) | 调整指定池中正在运行的 VM 数目。  |
-| [az batch pool show](https://docs.microsoft.com/cli/azure/batch/pool#az-batch-pool-show) | 显示池的属性。  |
-| [az batch node list](https://docs.microsoft.com/cli/azure/batch/node#az-batch-node-list) | 列出指定池中的所有计算节点。  |
-| [az batch node reboot](https://docs.microsoft.com/cli/azure/batch/node#az-batch-node-reboot) | 重新启动指定的计算节点。  |
-| [az batch node delete](https://docs.microsoft.com/cli/azure/batch/node#az-batch-node-delete) | 从指定的池中删除列出的节点。  |
+| [az batch pool node-agent-skus list](../batch-linux-nodes.md#list-of-virtual-machine-images) | 列出可用节点代理 SKU 和映像信息。  |
+| [az batch pool create](/cli/azure/batch/pool#az-batch-pool-create) | 创建计算节点池。  |
+| [az batch pool resize](/cli/azure/batch/pool#az-batch-pool-resize) | 调整指定池中正在运行的 VM 数目。  |
+| [az batch pool show](/cli/azure/batch/pool#az-batch-pool-show) | 显示池的属性。  |
+| [az batch node list](/cli/azure/batch/node#az-batch-node-list) | 列出指定池中的所有计算节点。  |
+| [az batch node reboot](/cli/azure/batch/node#az-batch-node-reboot) | 重新启动指定的计算节点。  |
+| [az batch node delete](/cli/azure/batch/node#az-batch-node-delete) | 从指定的池中删除列出的节点。  |
 | [az group delete](/cli/azure/group#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。

@@ -1,23 +1,18 @@
 ---
 title: 排查常见错误
-description: 了解如何排查创建、分配和删除蓝图时出现的问题。
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 12/11/2018
+description: 了解如何排查创建、分配和删除蓝图等问题，例如，策略违规和蓝图参数函数。
+ms.date: 06/29/2020
 ms.topic: troubleshooting
-ms.service: blueprints
-manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 42fdd6645a7a0e7cd9a2f0a7bc969e8eee62758c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d1dcd88fd6f7a9ab5035a5977ab5d50f3e6caf54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60874954"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557510"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>排查使用 Azure 蓝图时出现的错误
 
-创建或分配蓝图时可能会出现问题。 本文描述可能会发生的各种错误及其解决方法。
+创建、分配或删除蓝图时可能会遇到错误。 本文描述可能会发生的各种错误及其解决方法。
 
 ## <a name="finding-error-details"></a>查找错误详细信息
 
@@ -25,17 +20,17 @@ ms.locfileid: "60874954"
 
 1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
-1. 选择**分配蓝图**的页面上的左侧和使用的搜索框进行筛选以查找失败的分配的蓝图分配。 还可以按“预配状态”列对分配表进行排序，集中查看失败的分配项。
+1. 从左侧页面中选择 "**分配的蓝图**"，然后使用 "搜索" 框筛选蓝图分配，查找失败的分配。 还可以按“预配状态”列对分配表进行排序，集中查看失败的分配项****。
 
-1. 左键单击与蓝图_失败_状态或右键单击并选择**查看分配的详细信息**。
+1. 左键单击状态为 "_失败_" 的蓝图，或右键单击并选择 "**查看分配详细信息**"。
 
 1. 蓝图分配页面顶部有一个红色横幅警告，指出此分配已失败。 单击横幅任意位置可获取更多详细信息。
 
-错误通常是由某个项目导致的，而不是由蓝图整体导致的。 如果某个项目创建密钥保管库但是 Azure 策略阻止密钥保管库创建，则整个分配将失败。
+错误通常是由某个项目导致的，而不是由蓝图整体导致的。 如果某个项目创建密钥保管库但是 Azure Policy 阻止密钥保管库创建，则整个分配将失败。
 
 ## <a name="general-errors"></a>常规错误
 
-### <a name="policy-violation"></a>场景：策略冲突
+### <a name="scenario-policy-violation"></a><a name="policy-violation"></a>场景：策略冲突
 
 #### <a name="issue"></a>问题
 
@@ -52,7 +47,7 @@ ms.locfileid: "60874954"
 
 更改蓝图，使其不与错误详细信息中的策略冲突。 如果无法进行此更改，替代方法是更改策略分配的作用域，以使蓝图不再与策略冲突。
 
-### <a name="escape-function-parameter"></a>场景：蓝图参数是一个函数
+### <a name="scenario-blueprint-parameter-is-a-function"></a><a name="escape-function-parameter"></a>方案：蓝图参数是一个函数
 
 #### <a name="issue"></a>问题
 
@@ -64,12 +59,28 @@ ms.locfileid: "60874954"
 
 #### <a name="resolution"></a>解决方法
 
-若要将函数作为参数传递，请使用 `[` 转义整个字符串，使蓝图参数如 `[[resourceGroup().tags.myTag]`。 转义字符会导致蓝图在处理蓝图时将值视为字符串。 然后，蓝图将该函数放置在项目中，使其按预期动态化。 有关详细信息，请参阅[模板文件结构-语法](../../../azure-resource-manager/resource-group-authoring-templates.md#syntax)。
+若要将函数作为参数传递，请使用 `[` 转义整个字符串，使蓝图参数如 `[[resourceGroup().tags.myTag]`。 转义字符会导致蓝图在处理蓝图时将值视为字符串。 然后，蓝图将该函数放置在项目中，使其按预期动态化。 有关详细信息，请参阅[Azure 资源管理器模板中的语法和表达式](../../../azure-resource-manager/templates/template-expressions.md)。
+
+## <a name="delete-errors"></a>删除错误
+
+### <a name="scenario-assignment-deletion-timeout"></a><a name="assign-delete-timeout"></a>方案：分配删除超时
+
+#### <a name="issue"></a>问题
+
+无法完成蓝图分配的删除。
+
+#### <a name="cause"></a>原因
+
+删除时，蓝图分配可能会停滞为非终止状态。 如果蓝图分配创建的资源仍处于挂起状态，或者不会将状态代码返回到 Azure 蓝图，则会导致此状态。
+
+#### <a name="resolution"></a>解决方法
+
+在_6 小时_超时后，非终端状态的蓝图分配自动标记为 "**失败**"。 超时调整了蓝图分配的状态后，可以重试删除。
 
 ## <a name="next-steps"></a>后续步骤
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
-- 从通过 Azure 专家那里获得答案[Azure 论坛](https://azure.microsoft.com/support/forums/)。
+- 请通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答。
 - 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-- 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
+- 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。

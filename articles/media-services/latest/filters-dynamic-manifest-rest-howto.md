@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒体服务 REST API 创建筛选器 | Microsoft Docs
+title: 通过 Azure 媒体服务 v3 REST API 创建筛选器
 description: 本主题介绍如何创建筛选器，以便客户端能够使用它们来流式传输流的特定部分。 媒体服务将创建动态清单来存档此选择性流。
 services: media-services
 documentationcenter: ''
@@ -11,27 +11,26 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 01c1711fb70d31fe84c7e20272de0eb7ce82c879
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
-ms.translationtype: MT
+ms.openlocfilehash: f9134dd3bc926e6e2f454e5187e03365e91ed22a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66494231"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75780328"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>使用媒体服务 REST API 创建筛选器
 
-将内容传送到客户（直播流事件或点播视频）时，客户端所需的灵活性可能比默认资产的清单文件中描述的灵活性更高。 使用 Azure 媒体服务可为内容定义帐户筛选器和资产筛选器。 
+将内容传送到客户（直播流活动或点播视频）时，客户端所需的灵活性可能比默认资产的清单文件中描述的灵活性更高。 使用 Azure 媒体服务可为内容定义帐户筛选器和资产筛选器。 
 
-有关此功能和使用该方案的详细说明，请参阅[动态清单](filters-dynamic-manifest-overview.md)并[筛选器](filters-concept.md)。
+有关此功能及其使用方案的详细说明，请参阅[动态清单](filters-dynamic-manifest-overview.md)和[筛选器](filters-concept.md)。
 
 本主题展示了如何为点播视频资产定义筛选器，以及如何使用 REST API 创建[帐户筛选器](https://docs.microsoft.com/rest/api/media/accountfilters)和[资产筛选器](https://docs.microsoft.com/rest/api/media/assetfilters)。 
 
 > [!NOTE]
-> 请确保查看[presentationTimeRange](filters-concept.md#presentationtimerange)。
+> 请确保查看 [presentationTimeRange](filters-concept.md#presentationtimerange)。
 
-## <a name="prerequisites"></a>必备组件 
+## <a name="prerequisites"></a>必备条件 
 
 若要完成本主题中所述的步骤，必须：
 
@@ -83,7 +82,7 @@ ms.locfileid: "66494231"
 
 ## <a name="create-account-filters"></a>创建帐户筛选器
 
-在你下载的 Postman 的集合中，选择“帐户筛选器”->“创建或更新帐户筛选器”。  
+在你下载的 Postman 的集合中，选择“帐户筛选器”->“创建或更新帐户筛选器”。
 
 **PUT** HTTP 请求方法类似于：
 
@@ -97,7 +96,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 筛选器已创建。
 
-有关详细信息，请参阅[创建或更新](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate)。 此外，请参阅[筛选器的 JSON 示例](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create_an_account_filter)。
+有关详细信息，请参阅[创建或更新](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate)。 此外，请参阅[筛选器的 JSON 示例](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter)。
 
 ## <a name="create-asset-filters"></a>创建资产筛选器  
 
@@ -115,7 +114,25 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 资产筛选器已创建。
 
-有关如何创建或更新资产筛选器的详细信息，请参阅[创建或更新](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate)。 此外，请参阅[筛选器的 JSON 示例](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create_an_asset_filter)。 
+有关如何创建或更新资产筛选器的详细信息，请参阅[创建或更新](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate)。 此外，请参阅[筛选器的 JSON 示例](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter)。 
+
+## <a name="associate-filters-with-streaming-locator"></a>将筛选器与流定位器关联
+
+可以指定资产或帐户筛选器的列表，这些筛选器将应用于流定位器。 [动态打包程序（流式处理终结点）](dynamic-packaging-overview.md)将此筛选器列表与客户端在 URL 中指定的筛选器一起应用。 此组合将生成[动态清单](filters-dynamic-manifest-overview.md)，该清单基于你在流定位器上指定的“URL + 筛选器”中的筛选器。 如果要应用筛选器，但不希望在 URL 中公开筛选器名称，建议使用此功能。
+
+若要使用 REST 创建筛选器并将其与流定位器关联，请使用[流定位器 - 创建](https://docs.microsoft.com/rest/api/media/streaminglocators/create) API并在[请求正文](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)中指定 `properties.filters`。
+                                
+## <a name="stream-using-filters"></a>使用筛选器的流
+
+定义筛选器后，客户端可以在流式 URL 中使用它们。 筛选器可应用到自适应比特率流式处理协议：Apple HTTP Live Streaming (HLS)、MPEG-DASH 和平滑流式处理。
+
+下表显示了一些包含筛选器的 URL 示例：
+
+|协议|示例|
+|---|---|
+|HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
+|MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
+|平滑流|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
 
 ## <a name="next-steps"></a>后续步骤
 

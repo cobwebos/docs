@@ -1,7 +1,7 @@
 ---
 title: 如何筛选搜索结果 - 必应 Web 搜索 API
 titleSuffix: Azure Cognitive Services
-description: 了解如何筛选和显示必应 Web 搜索 API 中的搜索结果。
+description: 您可以使用 "responseFilter" 查询参数筛选必应包含在响应中的答案类型（例如图像、视频和新闻）。
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -9,14 +9,14 @@ ms.assetid: 8B837DC2-70F1-41C7-9496-11EDFD1A888D
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 07/08/2019
 ms.author: scottwhi
-ms.openlocfilehash: 8d8fd03d9c3d912788e9893377bbab3efac86f8a
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383840"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696705"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>筛选搜索响应包含的结果  
 
@@ -44,14 +44,20 @@ ms.locfileid: "66383840"
     }
 }    
 ```
-可以使用 [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) 查询参数筛选你将收到的内容类型（例如图像、视频和新闻）。 如果必应找到了指定结果的相关内容，则会返回该内容。 响应筛选器是以逗号分隔的检索结果列表。 
 
-若要从响应中排除特定类型的内容（例如图像），可以在 `responseFilter` 值的开头添加一个 `-` 字符。 可以使用逗号 (`,`) 来分隔排除的类型。 例如：
+## <a name="query-parameters"></a>查询参数
+
+若要筛选 Bing 返回的答案，请在调用 API 时使用以下查询参数。  
+
+### <a name="responsefilter"></a>ResponseFilter
+
+可以通过使用[responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter)查询参数（以逗号分隔的答案列表）筛选必应包括在响应中的答案类型（例如，图像、视频和新闻）。 如果 Bing 为其查找相关内容，则响应将包含在响应中。 
+
+若要从响应中排除特定的答案（如图像），请 `-` 在答案类型前面追加一个字符。 例如：
 
 ```
 &responseFilter=-images,-videos
 ```
-
 
 下面展示如何使用 `responseFilter` 来请求“航行小艇”的图像、视频和新闻。 对查询字符串进行编码时，逗号会更改为 %2C。  
 
@@ -94,7 +100,9 @@ Host: api.cognitive.microsoft.com
 
 不建议使用 `responseFilter` 从单个 API 获取结果。 如果需要来自单个必应 API 的内容，可直接调用该 API。 例如，如果希望只接收图像，可向图像搜索 API 终结点 `https://api.cognitive.microsoft.com/bing/v7.0/images/search` 或其他[图像](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#endpoints)终结点发送请求。 调用单个 API 非常重要，这不仅是出于性能原因，还因为特定于内容的 API 可提供更丰富的结果。 例如，可使用不适用于 Web 搜索 API 的筛选器来筛选结果。  
 
-若要从特定域获取搜索结果，请在查询字符串中包含 `site:` 查询运算符。  
+### <a name="site"></a>站点
+
+若要从特定域获取搜索结果，请 `site:` 在查询字符串中包含查询参数。  
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us
@@ -103,9 +111,27 @@ https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:con
 > [!NOTE]
 > 如果使用 `site:` 查询运算符，则不管 [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) 设置如何，仍有可能出现响应中包含成人内容的情况，具体取决于查询。 只有在知道网站内容且方案允许使用成人内容的情况下，才应使用 `site:`。
 
+### <a name="freshness"></a>刷新
+
+若要将 web 答案结果限制在特定时间段内必应发现的网页，请将[新鲜度](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#freshness)查询参数设置为以下不区分大小写的值之一：
+
+* `Day`-返回最近24小时内必应发现的网页
+* `Week`-返回在过去7天内必应发现的网页
+* `Month`-返回在过去30天内发现的网页
+
+你还可以将此参数设置为格式为的自定义日期范围 `YYYY-MM-DD..YYYY-MM-DD` 。 
+
+`https://<host>/bing/v7.0/search?q=ipad+updates&freshness=2019-02-01..2019-05-30`
+
+若要将结果限制为单个日期，请将新鲜度参数设置为特定日期：
+
+`https://<host>/bing/v7.0/search?q=ipad+updates&freshness=2019-02-04`
+
+如果必应与您的筛选条件匹配的网页数少于您请求的网页数（或必应返回的默认数字），则结果可能包括在指定时间段以外的网页。
+
 ## <a name="limiting-the-number-of-answers-in-the-response"></a>限制响应中的检索结果数
 
-必应会基于检索结果的排名在响应中包含相应结果。 例如，如果查询“航行+小船”，则必应会返回 `webpages`、`images`、`videos` 和 `relatedSearches`  。
+必应在 JSON 响应中返回多个答案类型。 例如，如果查询*航海 + dinghies*，必应返回、、 `webpages` `images` `videos` 和 `relatedSearches` 。
 
 ```json
 {

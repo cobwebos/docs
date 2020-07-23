@@ -1,42 +1,53 @@
 ---
 title: 策略示例索引
-description: Azure Policy 的示例索引。 类别包括命名、标记、Key Vault、网络、存储，等等。
-author: DCtheGeek
-manager: carmonm
-ms.service: azure-policy
+description: Azure Policy 的内置项的索引。 类别标记、法规符合性、Key Vault、Kubernetes、来宾配置等。
+ms.date: 06/10/2020
 ms.topic: sample
-ms.date: 03/19/2019
-ms.author: dacoulte
-ms.openlocfilehash: 140429cef7f63219a0d5cf82c6ebfb3731b0072b
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 7528a22ad09db1e06aabf84ad946ef7af36a8430
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979646"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736775"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy 示例
 
-下表包含 Azure Policy 的示例链接。 这些示例也位于 [Azure Policy 示例存储库](https://github.com/Azure/azure-policy)。
+此页是 Azure Policy 内置策略定义和语言使用模式的索引。
 
-[!INCLUDE [azure-policy-samples-general](../../../../includes/azure-policy-samples-general.md)]
+## <a name="built-ins"></a>内置操作
 
-[!INCLUDE [azure-policy-samples-compute](../../../../includes/azure-policy-samples-compute.md)]
+- [策略](./built-in-policies.md)
+- [计划](./built-in-initiatives.md)
 
-[!INCLUDE [azure-policy-samples-datalake](../../../../includes/azure-policy-samples-datalake.md)]
+## <a name="patterns"></a>模式
 
-[!INCLUDE [azure-policy-samples-guest-configuration](../../../../includes/azure-policy-samples-guest-configuration.md)]
+下面是使用 Azure Policy 中的语言和运算符的不同模式的示例：
 
-[!INCLUDE [azure-policy-samples-keyvault](../../../../includes/azure-policy-samples-keyvault.md)]
+- [逻辑运算符](./pattern-logical-operators.md)
+- [Fields](./pattern-fields.md)
+- [参数](./pattern-parameters.md)
+- [效果详细信息](./pattern-effect-details.md)
+- [使用标记](./pattern-effect-details.md)
+- [Value 运算符](./pattern-value-operator.md)
+- [Count 运算符](./pattern-count-operator.md)
+- [对计划中的策略定义进行分组](./pattern-group-with-initiative.md)
+- [使用 deployIfNotExists 部署资源](./pattern-deploy-resources.md)
 
-[!INCLUDE [azure-policy-samples-monitoring](../../../../includes/azure-policy-samples-monitoring.md)]
+## <a name="regulatory-compliance"></a>合规性
 
-[!INCLUDE [azure-policy-samples-network](../../../../includes/azure-policy-samples-network.md)]
+下面是[法规符合性](../concepts/regulatory-compliance.md)内置项：
 
-[!INCLUDE [azure-policy-samples-sql](../../../../includes/azure-policy-samples-sql.md)]
+- [Azure 安全基准检验](./azure-security-benchmark.md)
+- [CIS Microsoft Azure 基础基准检验 v1.1.0](./cis-azure-1-1-0.md)
+- [NIST SP 800-53 R4](./nist-sp-800-53-r4.md)
+- [NIST SP 800-171 R2](./nist-sp-800-171-r2.md)
 
-[!INCLUDE [azure-policy-samples-storage](../../../../includes/azure-policy-samples-storage.md)]
+## <a name="other-samples"></a>其他示例
+
+- [GitHub - 社区策略存储库](https://github.com/Azure/Community-Policy)
 
 ## <a name="next-steps"></a>后续步骤
 
+- 在 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)中查看这些内置项。
 - 查看 [Azure Policy 定义结构](../concepts/definition-structure.md)。
 - 查看[了解策略效果](../concepts/effects.md)。

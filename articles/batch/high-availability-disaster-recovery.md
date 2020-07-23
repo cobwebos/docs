@@ -1,25 +1,13 @@
 ---
-title: 高可用性和灾难恢复 - Azure Batch | Microsoft Docs
-description: 了解如何针对区域性中断问题设计 Batch 应用程序
-services: batch
-documentationcenter: ''
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.workload: ''
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+title: 高可用性和灾难恢复
+description: 了解如何针对区域性中断问题设计 Batch 应用程序。
+ms.topic: how-to
 ms.date: 01/29/2019
-ms.author: lahugh
-ms.openlocfilehash: b863785575263fedd144b3d599962a8e1559e0a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 1e22cb19aba1dcedc4ece7ddc2d1de0ab3233238
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60549746"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725731"
 ---
 # <a name="design-your-application-for-high-availability"></a>针对高可用性设计应用程序
 
@@ -50,5 +38,5 @@ Azure Batch 是一项区域性服务。 Batch 在所有 Azure 区域提供，但
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解如何通过 [Azure 门户](batch-account-create-portal.md)、[Azure CLI](cli-samples.md)、[Powershell](batch-powershell-cmdlets-get-started.md) 或 [Batch 管理 API](batch-management-dotnet.md) 创建 Batch 帐户。
+- 详细了解如何通过 [Azure 门户](batch-account-create-portal.md)、[Azure CLI](cli-samples.md)、[PowerShell](batch-powershell-cmdlets-get-started.md) 或 [Batch 管理 API](batch-management-dotnet.md) 创建 Batch 帐户。
 - 默认配额与某个 Batch 帐户相关联；[此文](batch-quota-limit.md)详述了默认配额值并介绍了如何才能提高配额。

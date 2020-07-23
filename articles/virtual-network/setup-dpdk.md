@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/27/2018
+ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: c5cb840035c5d0d5694982324c7237c58001e689
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: ec117172a367d014f634106b5d2405892b80ffa7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60731594"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689259"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>在 Linux 虚拟机中设置 DPDK
 
@@ -33,20 +32,20 @@ DPDK 可以在支持多个操作系统分发版的 Azure 虚拟机中运行。 D
 
 ## <a name="benefit"></a>优势
 
-**提高每秒包数 (PPS)**：绕过内核并控制用户空间中的包可消除上下文切换，从而减少周期计数。 同时，这还会提高 Azure Linux 虚拟机中每秒处理的包比率。
+**提高每秒包数 (PPS)** ：绕过内核并控制用户空间中的包可消除上下文切换，从而减少周期计数。 同时，这还会提高 Azure Linux 虚拟机中每秒处理的包比率。
 
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
-支持 Azure 库中的以下分发版：
+支持 Azure 市场中的以下分发版：
 
-| Linux OS     | 内核版本        |
-|--------------|----------------       |
-| Ubuntu 16.04 | 4.15.0-1015-azure     |
-| Ubuntu 18.04 | 4.15.0-1015-azure     |
-| SLES 15      | 4.12.14-5.5-azure     |
-| RHEL 7.5     | 3.10.0-862.9.1.el7    |
-| CentOS 7.5   | 3.10.0-862.3.3.el7    |
+| Linux OS     | 内核版本               | 
+|--------------|---------------------------   |
+| Ubuntu 16.04 | 4.15.0-1014-azure+           | 
+| Ubuntu 18.04 | 4.15.0-1014-azure+           |
+| SLES 15 SP1  | 4.12.14-8.27-azure+          | 
+| RHEL 7.5     | 3.10.0-862.11.6.el7.x86_64+  | 
+| CentOS 7.5   | 3.10.0-862.11.6.el7.x86_64+  | 
 
 **自定义内核支持**
 
@@ -56,7 +55,7 @@ DPDK 可以在支持多个操作系统分发版的 Azure 虚拟机中运行。 D
 
 所有 Azure 区域都支持 DPDK。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 必须在 Linux 虚拟机上启用加速网络。 虚拟机应至少有两个网络接口，其中一个接口用于管理。 了解如何[创建启用加速网络的 Linux 虚拟机](create-vm-accelerated-networking-cli.md)。
 
@@ -73,6 +72,7 @@ sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev lib
 ### <a name="ubuntu-1804"></a>Ubuntu 18.04
 
 ```bash
+sudo add-apt-repository ppa:canonical-server/dpdk-azure -y
 sudo apt-get update
 sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev libmnl-dev
 ```
@@ -85,7 +85,7 @@ sudo dracut --add-drivers "mlx4_en mlx4_ib mlx5_ib" -f
 yum install -y gcc kernel-devel-`uname -r` numactl-devel.x86_64 librdmacm-devel libmnl-devel
 ```
 
-### <a name="sles-15"></a>SLES 15
+### <a name="sles-15-sp1"></a>SLES 15 SP1
 
 **Azure 内核**
 
@@ -107,7 +107,7 @@ zypper \
 
 ## <a name="set-up-the-virtual-machine-environment-once"></a>设置虚拟机环境（一次性操作）
 
-1. [下载最新的 DPDK](https://core.dpdk.org/download)。 Azure 需要 18.02 或更高版本。
+1. [下载最新的 DPDK](https://core.dpdk.org/download)。 Azure 需要 18.11 版 LTS 或 19.11 版 LTS。
 2. 运行 `make config T=x86_64-native-linuxapp-gcc` 生成默认配置。
 3. 使用 `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config` 在生成的配置中启用 Mellanox PMDs。
 4. 使用 `make` 进行编译。
@@ -119,26 +119,24 @@ zypper \
 
 1. 巨页
 
-   * 针对所有 numa 节点运行以下命令一次，以配置巨页：
+   * 针对每个 numa 节点运行以下命令一次，以配置巨页：
 
      ```bash
-     echo 1024 | sudo tee
-     /sys/devices/system/node/node*/hugepages/hugepages-2048kB/nr_hugepages
+     echo 1024 | sudo tee /sys/devices/system/node/node*/hugepages/hugepages-2048kB/nr_hugepages
      ```
 
    * 使用 `mkdir /mnt/huge` 创建用于装载的目录。
    * 使用 `mount -t hugetlbfs nodev /mnt/huge` 装载巨页。
    * 运行 `grep Huge /proc/meminfo` 检查巨页是否已保留。
 
-     > [!NOTE]
-     > 可以将 grub 文件修改为，在启动时保留巨页，具体是按照适用于 DPDK 的[说明](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment)操作。 页面底部提供了这些说明。 如果使用的是 Azure Linux 虚拟机，请改为将 /etc/config/grub.d 下的文件修改为跨重启保留巨页。
+     > [注意] 可以将 grub 文件修改为，在启动时保留巨页，具体是按照适用于 DPDK 的[说明](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment)操作。 页面底部提供了这些说明。 如果使用的是 Azure Linux 虚拟机，请改为将 /etc/config/grub.d 下的文件修改为跨重启保留巨页。
 
-2. MAC 和 IP 地址：使用 `ifconfig –a` 查看网络接口的 MAC 和 IP 地址。 *VF* 网络接口和 *NETVSC* 网络接口具有相同的 MAC 地址，但只有 *NETVSC* 网络接口具有 IP 地址。 VF 接口以 NETVSC 接口的从属接口形式运行。
+2. MAC 和 IP 地址：使用 `ifconfig –a` 查看网络接口的 MAC 和 IP 地址。 *VF* 网络接口和 *NETVSC* 网络接口具有相同的 MAC 地址，但只有 *NETVSC* 网络接口具有 IP 地址。 VF 接口以 NETVSC 接口的从属接口形式运行 。
 
 3. PCI 地址
 
    * 运行 `ethtool -i <vf interface name>` 确定对 VF 使用哪个 PCI 地址。
-   * 如果 eth0 已启用加速网络，请确保 testpmd 不会意外接管 eth0 的 VF PCI 设备。 如果 DPDK 应用程序意外接管管理网络接口，并导致 SSH 连接断开，请使用串行控制台来停止 DPDK 应用程序。 串行控制台还可用于停止或启动虚拟机。
+   * 如果 eth0 已启用加速网络，请确保 testpmd 不会意外接管 eth0 的 VF PCI 设备  。 如果 DPDK 应用程序意外接管管理网络接口，并导致 SSH 连接断开，请使用串行控制台来停止 DPDK 应用程序。 串行控制台还可用于停止或启动虚拟机。
 
 4. 每次重新启动后，使用 `modprobe -a ib_uverbs` 加载 *ibuverbs*。 （仅适用于 SLES 15）另外，使用 `modprobe -a mlx4_ib` 加载 *mlx4_ib*。
 

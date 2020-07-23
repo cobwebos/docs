@@ -1,27 +1,27 @@
 ---
 title: Azure AD Connect 同步：技术概念 | Microsoft Docs
-description: 介绍 Azure AD Connect 同步的技术概念
+description: 介绍 Azure AD Connect 同步的技术概念。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 731cfeb3-beaf-4d02-aef4-b02a8f99fd11
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-origin.date: 01/15/2018
-ms.date: 11/12/2018
-ms.component: hybrid
-ms.author: v-junlch
-ms.openlocfilehash: b8ec4a6100cfbb4419d7e30f4b97589113b88939
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 01/15/2018
+ms.subservice: hybrid
+ms.author: billmath
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 251d156afbd367e83945397760a6afe98a1cfb98
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60347562"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356927"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Azure AD Connect 同步：技术概念
 本文是[了解体系结构](how-to-connect-sync-technical-concepts.md)主题的总结。
@@ -34,11 +34,11 @@ Azure Active Directory 同步服务基于 MIIS、ILM 和 FIM 进行构建，它�
 
 以下各部分提供有关 FIM 同步服务的以下方面的更多详细信息：
 
-- 连接器
-- 属性流
-- 连接器空间
-- Metaverse
-- 设置
+* 连接器
+* 属性流
+* 连接器空间
+* Metaverse
+* 设置
 
 ## <a name="connector"></a>连接器
 用于与连接的目录进行通信的代码模块称为连接器（以前称为管理代理 (MA)）。
@@ -47,7 +47,7 @@ Azure Active Directory 同步服务基于 MIIS、ILM 和 FIM 进行构建，它�
 
 如上图所示，连接器与连接器空间同义，但包含与外部系统的所有通信。
 
-连接器负责到系统的所有导入和导出功能，并且当使用声明性设置自定义数据转换时，使开发人员无需了解如何通过本机连接到每个系统。
+连接器负责到系统的所有导入和导出功能，并且当使用声明性设置自定义数据转换时，使开发人员无需了解如何以本机方式连接到每个系统。
 
 导入和导出仅在计划时发生，由于更改不会自动传播到已连接数据源，因此使得能够进一步避免更改发生在系统中。 此外，开发人员还可以创建他们自己的连接器，以便用于连接到几乎任何数据源。
 
@@ -59,13 +59,13 @@ metaverse 是相邻连接器空间中的所有已联接标识的合并视图。 
 属性流仅在运行这些同步时发生。 属性流在同步规则中进行定义。 这些属性流可以是入站（上图所示 ISR）或出站（上图所示 OSR）。
 
 ## <a name="connected-system"></a>连接的系统
-连接的系统（也称为连接的目录）是指已连接 Azure AD Connect 同步且来回读写标识数据的远程系统。
+连接的系统（也称为连接的目录）是指 Azure AD Connect 同步已连接到且从中读取或向其写入标识数据的远程系统。
 
 ## <a name="connector-space"></a>连接器空间
 每个已连接数据源都表示为连接器空间中对象和属性的已筛选子集。
 此特点允许同步服务在本地工作，并且当同步对象时，不需要联系远程系统，此外还将交互限制为仅导入和导出。
 
-当数据源和连接器具有提供更改列表（增量导入）的功能时，则操作效率作为仅有的更改会显著增加，因为最后一个轮询周期进行了交换。 连接器空间通过要求连接器计划导入和导出保护已连接数据源免于进行自动传播的更改。 当测试、预览或确认下一次更新时，此添加的保护让你高枕无忧。
+当数据源和连接器具有提供更改列表（增量导入）的功能时，则操作效率作为仅有的更改会显著增加，因为最后一个轮询周期进行了交换。 连接器空间通过要求连接器计划导入和导出保护已连接数据源免于进行自动传播的更改。 当测试、预览或确认下一次更新时，此添加的保护可让你高枕无忧。
 
 ## <a name="metaverse"></a>Metaverse
 metaverse 是相邻连接器空间中的所有已联接标识的合并视图。
@@ -87,9 +87,8 @@ metaverse 是相邻连接器空间中的所有已联接标识的合并视图。
 每当某条规则确定需要创建新的连接器空间对象时，它都称为设置。 但是，因为此操作只在连接器空间内发生，所以它不会延续到已连接数据源，直到执行导出。
 
 ## <a name="additional-resources"></a>其他资源
-- [Azure AD Connect 同步：自定义同步选项](how-to-connect-sync-whatis.md)
-- [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
+* [Azure AD Connect 同步：自定义同步选项](how-to-connect-sync-whatis.md)
+* [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-aadsync-technical-concepts/ic750598.png
-

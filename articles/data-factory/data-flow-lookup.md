@@ -1,49 +1,102 @@
 ---
-title: Azure 数据工厂映射数据流查找转换
-description: Azure 数据工厂映射数据流查找转换
+title: 映射数据流中的查找转换
+description: 使用映射数据流中的查找转换从另一个源引用数据。
 author: kromerm
+ms.reviewer: daperlov
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/03/2019
-ms.openlocfilehash: 197f5ba9d6921f4a9921b7074b9e05162d3e37b8
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
-ms.translationtype: MT
+ms.custom: seo-lt-2019
+ms.date: 05/28/2020
+ms.openlocfilehash: a4fcdad0efda1ab2a43be65865e3aac59f7ef3e3
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64868127"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84187609"
 ---
-# <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure 数据工厂映射数据流查找转换
+# <a name="lookup-transformation-in-mapping-data-flow"></a>映射数据流中的查找转换
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-使用“查找”将其他源的参考数据添加到数据流中。 查找转换需要一个定义的源，它指向你的引用表并匹配关键字段。
+使用查找转换引用数据流中另一个源的数据。 查找转换会将匹配数据中的列追加到源数据中。
+
+查找转换类似于左外部联接。 主流中的所有行都将存在于包含查找流中其他列的输出流中。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4xsVT]
+
+## <a name="configuration"></a>配置
 
 ![查找转换](media/data-flow/lookup1.png "查找")
 
-选择要在传入流字段和参考源字段之间匹配的关键字段。 必须先在数据流设计画布上创建一个新源，以在右侧用于查找。
+**主流：** 传入的数据流。 此流等效于联接的左侧。
 
-找到匹配项后，参考源中生成的行和列将添加到数据流中。 可以在数据流的末尾选择要包含在接收器中的感兴趣的字段。
+**查找流：** 追加到主流的数据。 查找条件确定要添加的数据。 此流等效于联接的右侧。
 
-## <a name="match--no-match"></a>匹配 / 没有匹配项
+**匹配多个行：** 如果启用，则主流中具有多个匹配的行将返回多个行。 否则，将根据“匹配”条件仅返回单个行。
 
-之后在查找转换，可用于后续转换使用表达式函数检查每个匹配行的结果`isMatch()`根据是否在查找导致行匹配或不在逻辑中进一步进行选择。
+**匹配：** 仅当未选择“匹配多个行”时可见。 选择是否匹配任意行、首次匹配或最后匹配。 建议匹配任意行，因为它执行速度最快。 如果选择了首行或末行，则需要指定排序条件。
 
-## <a name="optimizations"></a>优化
+**查找条件：** 选择要匹配的列。 如果满足相等条件，则将这些行视为匹配项。 悬停鼠标并选择“计算列”，以使用[数据流表达式语言](data-flow-expression-functions.md)提取值。
 
-在数据工厂中的数据流中执行向外扩展 Spark 环境。 如果你的数据集可以放入辅助角色节点的内存空间中，我们可以优化查找性能。
+查找转换只支持相等匹配。 若要自定义查找表达式以包含其他运算符（例如大于），建议使用[联接转换中的交叉联接](data-flow-join.md#custom-cross-join)。 交叉联接将避免执行时可能出现的笛卡尔积错误。
+
+输出数据中包含两个流中的所有列。 若要删除重复列或不需要的列，请在查找转换后添加[选择转换](data-flow-select.md)。 还可以在接收器转换中删除或重命名列。
+
+### <a name="non-equi-joins"></a>非等值联接
+
+若要在查找条件中使用条件运算符，例如不等于 (!=) 或大于 (>)，请在两列之间更改运算符下拉菜单。 非等值联接要求使用“优化”选项卡中的“固定”广播来广播两个流中的至少一个流 。
+
+![非等值查找](media/data-flow/non-equi-lookup.png "非等值查找")
+
+## <a name="analyzing-matched-rows"></a>分析匹配的行
+
+查找转换后，可以使用函数 `isMatch()` 来查看查找是否匹配单个行。
+
+![查找模式](media/data-flow/lookup111.png "查找模式")
+
+此模式的一个示例是使用有条件拆分转换来拆分 `isMatch()` 函数。 在上面的示例中，匹配行经过最顶部的流，而不匹配的行则流过 ```NoMatch``` 流。
+
+## <a name="testing-lookup-conditions"></a>测试查找条件
+
+在调试模式下使用数据预览测试查找转换时，请使用一小组已知数据。 对大型数据集中的行进行采样时，无法预测将读取哪些行和键进行测试。 结果是非确定性的，这意味着你的联接条件可能不会返回任何匹配项。
+
+## <a name="broadcast-optimization"></a>广播优化
 
 ![广播联接](media/data-flow/broadcast.png "广播联接")
 
-### <a name="broadcast-join"></a>广播的联接
+在联接、查找和存在转换中，如果工作器节点内存可容纳一个数据流或同时容纳两个数据流，则可以通过启用“广播”来优化性能。 默认情况下，Spark 引擎将自动决定是否广播一侧。 若要手动选择要广播的一侧，请选择“固定”。
 
-选择左侧和/或右侧广播联接请求 ADF 从查找关系的任何一侧的整个数据集推送到内存中。
+建议不要通过“关闭”选项来禁用广播，除非联接遇到超时错误。
 
-### <a name="data-partitioning"></a>数据分区
+## <a name="data-flow-script"></a>数据流脚本
 
-此外可以指定通过选择"设置分区"优化选项卡上的查找转换来创建可以更好地适合于每个辅助角色的内存的数据集的分区的数据。
+### <a name="syntax"></a>语法
 
-## <a name="next-steps"></a>后续步骤
+```
+<leftStream>, <rightStream>
+    lookup(
+        <lookupConditionExpression>,
+        multiple: { true | false },
+        pickup: { 'first' | 'last' | 'any' },  ## Only required if false is selected for multiple
+        { desc | asc }( <sortColumn>, { true | false }), ## Only required if 'first' or 'last' is selected. true/false determines whether to put nulls first
+        broadcast: { 'auto' | 'left' | 'right' | 'both' | 'off' }
+    ) ~> <lookupTransformationName>
+```
+### <a name="example"></a>示例
 
-[加入](data-flow-join.md)并[Exists](data-flow-exists.md)转换 ADF 映射数据流中执行类似的任务。 看一看这些转换下一步。
+![查找转换](media/data-flow/lookup-dsl-example.png "查找")
+
+以上查找配置的数据流脚本位于下面的代码片段中。
+
+```
+SQLProducts, DimProd lookup(ProductID == ProductKey,
+    multiple: false,
+    pickup: 'first',
+    asc(ProductKey, true),
+    broadcast: 'auto')~> LookupKeys
+```
+## 
+后续步骤
+
+* [联接](data-flow-join.md)和[存在](data-flow-exists.md)转换都采用多个流输入
+* 使用带有 ```isMatch()``` 的[有条件拆分转换](data-flow-conditional-split.md)来拆分匹配和不匹配值的行

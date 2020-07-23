@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: a1d1488840ca2b17c83f380af4fa24105bb36202
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a6e9bea5d600771a7754142a4df4c0af503ccf5d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64729478"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075478"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>将基于 Windows 的 HDInsight 的 .NET 解决方案迁移到基于 Linux 的 HDInsight
 
@@ -38,11 +38,11 @@ HDInsight 版本 3.6 附带了 Mono 版本 4.2.1。 有关包含在 HDInsight �
 
     ![在分析器设置的 Mono 部分选中了 4.5](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png)
 
-    选择“确定”以保存配置。
+    选择“确定”  以保存配置。
 
-3. 依次选择“分析” > “分析程序集可移植性”。 选择包含解决方案的程序集，并选择“打开”以开始分析。
+3. 依次选择“分析”   > “分析程序集可移植性”  。 选择包含解决方案的程序集，并选择“打开”  以开始分析。
 
-4. 分析完成后，依次选择“分析” > “查看分析报表”。 在“可移植性分析结果”中，选择“打开报表”以打开某个报表。
+4. 分析完成后，依次选择“分析”   > “查看分析报表”  。 在“可移植性分析结果”  中，选择“打开报表”  以打开某个报表。
 
     ![可移植性分析器结果对话框](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
 

@@ -3,20 +3,19 @@ title: 在 Azure HDInsight 上使用 Spark 的数据科学 - Team Data Science P
 description: Spark MLlib 工具包向分布式 HDInsight 环境引入了大量机器学习建模功能。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 932587afcffcb3b1a259a02a98c648e938e99931
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 3aa33efa9aa416ad1dfefd2fe957ce04b2b14432
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60256433"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027454"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>有关在 Azure HDInsight 上使用 Spark 展开数据科研的概述
 
@@ -41,9 +40,9 @@ ms.locfileid: "60256433"
 ### <a name="spark-20-notebooks"></a>Spark 2.0 笔记本
 这些笔记本将要在 Jupyter 笔记本服务器的 pySpark3 内核中运行。
 
-- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：此文件提供有关如何在 Spark 2.0 群集中使用[此处](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)所述的 NYC 出租车行程和费用数据集执行数据探索、建模和评分的信息。 对于快速浏览我们为 Spark 2.0 提供的代码而言，此笔记本可能是一个很好的起点。 如需用于分析 NYC 出租车数据的更详细笔记本，请参阅此列表中的下一个笔记本。 请参阅此列表后面比较这些笔记本的说明。
+- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：此文件提供有关如何在 Spark 2.0 群集中使用[此处](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)所述的 NYC 出租车行程和费用数据集执行数据探索、建模和评分的信息。 对于快速浏览我们为 Spark 2.0 提供的代码而言，此笔记本可能是一个很好的起点。 如需用于分析 NYC 出租车数据的更详细笔记本，请参阅此列表中的下一个笔记本。 请参阅此列表中对这些笔记本进行比较的注释。
 - [Spark2.0 pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb)：此文件说明如何使用[此处](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)所述的纽约市出租车里程与收费数据集执行数据整理（Spark SQL 和数据帧操作）、探索、建模和评分。
-- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb)：此文件说明如何使用 2011 到 2012 年的已知航班准时出发数据集执行数据整理（Spark SQL 和数据帧操作）、探索、建模和评分。 我们已在建模之前将航班数据集与机场天气数据（例如风速、温度、海拔等）相集成，因此可在模型中包含这些天气特征。
+- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb)：此文件说明如何使用 2011 到 2012 年的已知航班准时出发数据集执行数据整理（Spark SQL 和数据帧操作）、探索、建模和评分。 在建模之前，我们将航空公司数据集与机场天气数据（例如，windspeed、温度、海拔等）集成，因此这些天气功能可以包含在模型中。
 
 <!-- -->
 
@@ -63,15 +62,15 @@ ms.locfileid: "60256433"
 
 <!-- -->
 
-有关 Spark 2.0 模型的实施以及使用模型进行评分的指南，请参阅 [Spark 1.6 document on consumption](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb)（有关使用 Spark 1.6 的文档）中的示例，其中概述了所要执行的步骤。 要在 Spark 2.0 中使用此功能，将请 Python 代码文件替换为[此文件](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)。
+有关 Spark 2.0 模型的实施以及使用模型进行评分的指南，请参阅 [Spark 1.6 document on consumption](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb)（有关使用 Spark 1.6 的文档）中的示例，其中概述了所要执行的步骤。 若要在 Spark 2.0 上使用此示例，请将 Python 代码文件替换为[此文件](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 以下过程与 Spark 1.6 相关。 对于 Spark 2.0 版本，请使用前面所述和链接到的笔记本。
 
 1. 必须拥有 Azure 订阅。 如果还没有 Azure 订阅，请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
-2. 需要使用 Spark 1.6 群集完成本演练。 若要创建群集，请参阅[入门：在 Azure HDInsight 上创建 Apache Spark](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md) 中提供的说明。 从“选择群集类型”菜单中指定群集类型和版本。
+2. 需要使用 Spark 1.6 群集完成本演练。 若要创建群集，请参阅[入门：在 Azure HDInsight 上创建 Apache Spark](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md) 中提供的说明。 从“选择群集类型”**** 菜单中指定群集类型和版本。
 
 ![配置群集](./media/spark-overview/spark-cluster-on-portal.png)
 
@@ -89,24 +88,35 @@ ms.locfileid: "60256433"
 >
 
 ## <a name="the-nyc-2013-taxi-data"></a>NYC 2013 年出租车数据
-NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩逗号分隔值 (CSV) 文件，其中包含超过 1.73 亿个单独行程及每个行程支付的费用。 每个行程记录都包括上车和下车的位置和时间、匿名的出租车司机驾驶证编号和牌照（出租车的唯一 ID）编号。 数据涵盖  2013 年的所有行程，并在每个月的以下两个数据集中提供：
+NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩逗号分隔值 (CSV) 文件，其中包含超过 1.73 亿个单独行程及每个行程支付的费用。 每个行程记录都包括上车和下车的位置和时间、匿名的出租车司机驾驶证编号和徽章（出租车的唯一 ID）编号。 数据涵盖  2013 年的所有行程，并在每个月的以下两个数据集中提供：
 
 1. “trip_data”CSV 文件包含行程的详细信息，例如乘客数、上车和下车地点、行程持续时间和行程距离。 下面是一些示例记录：
 
-        medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
-        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
+   `medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude`
+
+   `89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171`
+
+   `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066`
+
+   `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002`
+
+   `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388`
+
+   `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868`
+
 2. “trip_fare”CSV 文件包含每个行程支付费用的详细信息，例如付款类型、费用金额、附加费和税金、小费和通行费以及支付的总金额。 下面是一些示例记录：
 
-        medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
-        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-05 18:49:41,CSH,5.5,1,0.5,0,0,7
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
+   `medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount`
+
+   `89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7`
+
+   `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7`
+
+   `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-05 18:49:41,CSH,5.5,1,0.5,0,0,7`
+
+   `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6`
+
+   `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5`
 
 我们已对这些文件进行 0.1% 采样，并将 trip\_data 和 trip\_fare CVS 文件联接到单个数据集中，以用作本演练的输入数据集。 联接 trip\_data 和 trip\_fare 的唯一键由以下字段组成：medallion、hack\_licence 和 pickup\_datetime。 每个数据集记录包含以下属性，用于表示 NYC 出租车行程：
 
@@ -129,11 +139,11 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 | pickup_latitude |上车纬度 |
 | dropoff_longitude |下车经度 |
 | dropoff_latitude |下车纬度 |
-| direct_distance |上车位置和下车位置之间的直线距离 |
-| payment_type |付款类型 （现金、 信用卡等） |
+| direct_distance |拾取和下车位置之间的直接距离 |
+| payment_type |付款类型（现金、信用卡等） |
 | fare_amount |费用金额 |
 | surcharge |附加费 |
-| mta_tax |MTA 税金 |
+| mta_tax |MTA 地铁交通税 |
 | tip_amount |小费金额 |
 | tolls_amount |通行费金额 |
 | total_amount |总金额 |
@@ -141,22 +151,22 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 | tip_class |小费等级（0：0 美元，1：0-5 美元，2：6-10 美元，3：11-20 美元，4：大于 20 美元） |
 
 ## <a name="execute-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>从 Spark 群集上的 Jupyter 笔记本执行代码
-可以从 Azure 门户启动 Jupyter 笔记本。 在仪表板上找到 Spark 群集，并单击进入群集管理页面。 若要打开与 Spark 群集相关联的笔记本，请依次单击“群集仪表板” -> “Jupyter 笔记本”。
+可以从 Azure 门户启动 Jupyter 笔记本。 在仪表板上找到 Spark 群集，并单击进入群集管理页面。 若要打开与 Spark 群集关联的笔记本，请单击 "**群集仪表板**"  ->  **Jupyter Notebook**。
 
 ![群集仪表板](./media/spark-overview/spark-jupyter-on-portal.png)
 
-还可以浏览到 https://CLUSTERNAME.azurehdinsight.net/jupyter访问 Jupyter 笔记本。 将此 URL 的 CLUSTERNAME 部分替换成自己的群集名称。 需要使用管理员帐户密码才能访问笔记本。
+还可以浏览到 `https://CLUSTERNAME.azurehdinsight.net/jupyter` 访问 Jupyter 笔记本******。 将此 URL 的 CLUSTERNAME 部分替换成自己的群集名称。 需要使用管理员帐户密码才能访问笔记本。
 
 ![浏览 Jupyter 笔记本](./media/spark-overview/spark-jupyter-notebook.png)
 
-选择 PySpark 可查看包含几个使用 PySpark API 的预打包笔记本示例的目录。包含这一系列 Spark 主题的代码示例的笔记本可在 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) 上获取
+选择 PySpark 可以查看包含使用 PySpark API 的预打包笔记本示例的目录。 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark)中提供了包含此 Spark 主题的代码示例的笔记本
 
-可将笔记本直接从 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) 上传到 Spark 群集上的 Jupyter 笔记本服务器。 在 Jupyter 的主页上，单击屏幕右侧的“上传”按钮。 它将打开文件资源管理器。 可以在此处粘贴笔记本的 GitHub（原始内容）URL，并单击“打开”。
+可将笔记本直接从 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) 上传到 Spark 群集上的 Jupyter 笔记本服务器。 在 Jupyter 的主页上，单击屏幕右侧的“上传”**** 按钮。 它将打开文件资源管理器。 可以在此处粘贴笔记本的 GitHub（原始内容）URL，并单击“打开”****。
 
-将再次看到文件名显示在 Jupyter 文件列表上，并带有“上传”按钮。 单击此“上传”按钮。 现在已导入笔记本。 重复上述步骤，上传本演练中的其他笔记本。
+将再次看到文件名显示在 Jupyter 文件列表上，并带有“上传”**** 按钮。 单击此“上传”按钮****。 现在已导入笔记本。 重复上述步骤，上传本演练中的其他笔记本。
 
 > [!TIP]
-> 可以右键单击浏览器上的链接，并选择“复制链接”获取 GitHub 原始内容 URL。 可将此 URL 粘贴到“Jupyter 上传文件资源管理器”对话框中。
+> 可以右键单击浏览器上的链接，并选择“复制链接”获取 GitHub 原始内容 URL****。 可将此 URL 粘贴到“Jupyter 上传文件资源管理器”对话框中。
 > 
 > 
 
@@ -164,11 +174,11 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 * 通过单击笔记本查看代码。
 * 通过按 **SHIFT-ENTER** 执行每个单元格。
-* 通过依次单击“单元格” -> “运行”运行整个笔记本。
+* 通过依次单击“单元格”**** -> “运行”**** 运行整个笔记本。
 * 使用查询的自动可视化。
 
 > [!TIP]
-> PySpark 内核自动将 SQL (HiveQL) 查询的输出可视化。 可通过使用笔记本中的“类型”菜单按钮从多个不同类型的可视化（表、饼图、行、区域或栏）中选择：
+> PySpark 内核自动将 SQL (HiveQL) 查询的输出可视化。 可通过使用笔记本中的“类型”**** 菜单按钮从多个不同类型的可视化（表、饼图、行、区域或栏）中选择：
 >
 >
 

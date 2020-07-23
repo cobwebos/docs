@@ -1,41 +1,35 @@
 ---
-title: 使用 Apache Mahout 和 HDInsight (SSH) 生成推荐 - Azure
-description: 了解如何使用 Apache Mahout 机器学习库通过 HDInsight (Hadoop) 生成电影推荐。
+title: 在 Azure HDInsight 中使用 Apache Mahout 生成推荐
+description: 了解如何使用 Apache Mahout 机器学习库通过 HDInsight 生成电影推荐。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 04/24/2019
-ms.openlocfilehash: d566b57ae12520b9eee26334a67d2e10c05f8040
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.topic: how-to
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 05/14/2020
+ms.openlocfilehash: a4e4a45519526dd0eeb938a3b83e737d82589c1e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64709084"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207663"
 ---
-# <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-apache-hadoop-in-hdinsight-ssh"></a>通过 HDInsight (SSH) 中基于 Linux 的 Apache Hadoop 使用 Apache Mahout 生成电影推荐
-
-[!INCLUDE [mahout-selector](../../../includes/hdinsight-selector-mahout.md)]
+# <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Apache Mahout 生成推荐
 
 了解如何使用 [Apache Mahout](https://mahout.apache.org) 机器学习库通过 Azure HDInsight 生成电影推荐。
 
-Mahout 是[机器学习](https://en.wikipedia.org/wiki/Machine_learning)适用于 Apache Hadoop 的库。 Mahout 包含用于处理数据的算法，例如筛选、分类和群集。 在本文中，用户使用推荐引擎根据好友看过的电影生成电影推荐。
-
-## <a name="prerequisites"></a>必备组件
-
-* HDInsight 上的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
-
-* SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
-
-## <a name="apache-mahout-versioning"></a>Apache Mahout 版本控制
+Mahout 是适用于 Apache Hadoop 的[计算机学习](https://en.wikipedia.org/wiki/Machine_learning)库。 Mahout 包含用于处理数据的算法，例如筛选、分类和群集。 在本文中，用户使用推荐引擎根据好友看过的电影生成电影推荐。
 
 若要深入了解 HDInsight 中的 Mahout 版本，请参阅 [HDInsight 版本和 Apache Hadoop 组件](../hdinsight-component-versioning.md)。
 
-## <a name="recommendations"></a>了解建议
+## <a name="prerequisites"></a>先决条件
 
-由 Mahout 提供的功能之一是推荐引擎。 此引擎接受 `userID`、`itemId` 和 `prefValue` 格式（项的首选项）的数据。 然后，Mahout 将执行共现分析以确定：偏好某个项的用户也偏好其他类似项。 Mahout 然后确定拥有类似项首选项的用户，这些首选项可用于做出推荐。
+HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
+
+## <a name="understanding-recommendations"></a>了解建议
+
+由 Mahout 提供的功能之一是推荐引擎。 此引擎接受 `userID`、`itemId` 和 `prefValue` 格式（项的首选项）的数据。 然后，Mahout 将执行共现分析，以确定： *偏好某个项的用户也偏好其他类似项*。 随后，Mahout 确定拥有类似项偏好的用户，这些偏好可用于推荐。
 
 下面的工作流是使用电影数据的简化示例：
 
@@ -43,29 +37,37 @@ Mahout 是[机器学习](https://en.wikipedia.org/wiki/Machine_learning)适用�
 
 * **共现**：Bob 和 Alice 还喜欢电影《幽灵的威胁》、《克隆人的进攻》和《西斯的复仇》。 Mahout 可确定喜欢前面三部电影的用户也喜欢这三部电影。
 
-* **类似性推荐**：由于 Joe 喜欢前三部电影，Mahout 会查看具有类似偏好的其他人已喜欢但 Joe 还未观看过（已喜欢/已评价）的电影。 在这种情况下，Mahout 推荐《幽灵的威胁》、《克隆人的进攻》和《西斯的复仇》。
+* **类似性推荐**：由于 Joe 喜欢前三部电影，Mahout 会查看具有类似偏好的其他人已喜欢但 Joe 还未观看过（已点赞/已评价）的电影。 在这种情况下，Mahout 推荐《幽灵的威胁》、《克隆人的进攻》和《西斯的复仇》。
 
 ### <a name="understanding-the-data"></a>了解数据
 
-为方便起见， [GroupLens 研究](https://grouplens.org/datasets/movielens/)提供兼容 Mahout 的格式的电影的评价数据。 此数据在 `/HdiSamples/HdiSamples/MahoutMovieData` 中群集的默认存储中可用。
+为方便起见，[GroupLens 研究](https://grouplens.org/datasets/movielens/)以兼容 Mahout 的格式提供电影的评价数据。 此数据在 `/HdiSamples/HdiSamples/MahoutMovieData` 中群集的默认存储中可用。
 
 有两个文件，即 `moviedb.txt` 和 `user-ratings.txt`。 `user-ratings.txt` 文件在分析期间使用。 `moviedb.txt` 用于在查看结果时提供用户友好的文本信息。
 
-user-ratings.txt 中包含的数据具有 `userID`、`movieID`、`userRating` 和 `timestamp` 结构，指示每个用户对电影评级的情况。 下面是数据的示例：
+`user-ratings.txt` 中包含的数据具有 `userID`、`movieID`、`userRating` 和 `timestamp` 的结构，指示每个用户对电影评级的情况。 下面是数据的示例：
 
+```output
     196    242    3    881250949
     186    302    3    891717742
     22     377    1    878887116
     244    51     2    880606923
     166    346    1    886397596
+```
 
 ## <a name="run-the-analysis"></a>运行分析
 
-与群集建立 SSH 连接后，使用以下命令运行推荐作业：
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令（将 CLUSTERNAME 替换为群集的名称），然后输入该命令：
 
-```bash
-mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/MahoutMovieData/user-ratings.txt -o /example/data/mahoutout --tempDir /temp/mahouttemp
-```
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
+
+1. 使用以下命令来运行推荐作业：
+
+    ```bash
+    mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/MahoutMovieData/user-ratings.txt -o /example/data/mahoutout --tempDir /temp/mahouttemp
+    ```
 
 > [!NOTE]  
 > 该作业可能需要几分钟才能完成，并可能运行多个 MapReduce 作业。
@@ -78,12 +80,14 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
     hdfs dfs -text /example/data/mahoutout/part-r-00000
     ```
 
-    输出如下所示：
+    输出将如下所示：
 
-        1    [234:5.0,347:5.0,237:5.0,47:5.0,282:5.0,275:5.0,88:5.0,515:5.0,514:5.0,121:5.0]
-        2    [282:5.0,210:5.0,237:5.0,234:5.0,347:5.0,121:5.0,258:5.0,515:5.0,462:5.0,79:5.0]
-        3    [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
-        4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
+    ```output
+    1    [234:5.0,347:5.0,237:5.0,47:5.0,282:5.0,275:5.0,88:5.0,515:5.0,514:5.0,121:5.0]
+    2    [282:5.0,210:5.0,237:5.0,234:5.0,347:5.0,121:5.0,258:5.0,515:5.0,462:5.0,79:5.0]
+    3    [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
+    4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
+    ```
 
     第一列是 `userID`。 “[”和“]”中包含的值为 `movieId`:`recommendationScore`。
 
@@ -94,9 +98,9 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
     hdfs dfs -get /HdiSamples/HdiSamples/MahoutMovieData/* .
     ```
 
-    此命令会将输出数据复制到当前目录中名为 **recommendations.txt** 的文件以及电影数据文件。
+    此命令会将输出数据以及电影数据文件复制到当前目录中名为 **recommendations.txt** 的文件。
 
-3. 使用以下命令创建 Python 脚本，该脚本在推荐输出中查找数据的电影名称：
+3. 使用如下命令创建 Python 脚本，该脚本查找电影名称中是否存在建议输出中的数据：
 
     ```bash
     nano show_recommendations.py
@@ -164,9 +168,9 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
     python show_recommendations.py 4 user-ratings.txt moviedb.txt recommendations.txt
     ```
 
-    此命令将查看为用户 ID 4 生成的建议。
+    此命令查看为用户 ID 4 生成的建议。
 
-   * **user-ratings.txt** 文件用于检索评价过的电影。
+   * **user-ratings.txt** 文件用于检索已被评价过的电影。
 
    * **moviedb.txt** 文件用于检索电影的名称。
 
@@ -174,7 +178,17 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
      此命令的输出类似于以下文本：
 
-       西藏七年 (1997)，评分=5.0   夺宝奇兵 3 之圣战骑兵 (1989)，评分=5.0   大白鲨 (1975)，评分=5.0   理智与情感 (1995)，评分=5.0   独立日(ID4) (1996)，评分=5.0   我最好朋友的婚礼 (1997)，评分=5.0   甜心先生 (1996)，评分=5.0   惊声尖叫 2 (1997)，评分=5.0   杀戮时刻 (1996)，评分=5.0
+        ```output
+        Seven Years in Tibet (1997), score=5.0
+        Indiana Jones and the Last Crusade (1989), score=5.0
+        Jaws (1975), score=5.0
+        Sense and Sensibility (1995), score=5.0
+        Independence Day (ID4) (1996), score=5.0
+        My Best Friend's Wedding (1997), score=5.0
+        Jerry Maguire (1996), score=5.0
+        Scream 2 (1997), score=5.0
+        Time to Kill, A (1996), score=5.0
+        ```
 
 ## <a name="delete-temporary-data"></a>删除临时数据
 
@@ -185,15 +199,13 @@ hdfs dfs -rm -f -r /temp/mahouttemp
 ```
 
 > [!WARNING]  
-> 若要再次运行此命令，则必须删除输出目录。 使用以下命令删除此目录：
+> 如需再次运行此命令，则还必须删除输出目录。 使用以下命令删除此目录：
 >
 > `hdfs dfs -rm -f -r /example/data/mahoutout`
-
 
 ## <a name="next-steps"></a>后续步骤
 
 现在，已经学习了如何使用 Mahout，因此可以探索通过其他方式来使用 HDInsight 上的数据：
 
 * [将 Apache Hive 和 HDInsight 配合使用](hdinsight-use-hive.md)
-* [将 Apache Pig 和 HDInsight 配合使用](hdinsight-use-pig.md)
 * [MapReduce 和 HDInsight 配合使用](hdinsight-use-mapreduce.md)

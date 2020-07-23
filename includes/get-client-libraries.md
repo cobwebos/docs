@@ -4,12 +4,12 @@ ms.service: service-bus-messaging
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: spelluru
-ms.openlocfilehash: b6e0e57881154f5885e9f518363eda3c5b1169a0
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: MT
+ms.openlocfilehash: 9e9057073c8a661e2f3382333abc7ac2778c4ee3
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66171270"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84680289"
 ---
 ### <a name="install-via-composer"></a>通过 Composer 安装
 1. 在项目的根目录中创建名为 **composer.json** 的文件并向其添加以下代码：
@@ -17,20 +17,18 @@ ms.locfileid: "66171270"
     ```json
     {
       "require": {
-        "microsoft/azure-storage": "*"
+        "microsoft/windowsazure": "*"
       }
     }
     ```
-2. 将 [composer.phar][composer-phar] 下载到项目根目录中。
+2. 将 **[composer.phar][composer-phar]** 下载到项目根目录中。
 3. 打开命令提示符并在项目根目录中执行以下命令
    
     ```
     php composer.phar install
     ```
 
-或者转到 GitHub 上的 [Azure 存储 PHP 客户端库][php-sdk-github]，然后克隆源代码。
-
 [php-sdk-github]: https://github.com/Azure/azure-storage-php
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
-[download-SDK-PHP]: ../articles/php-download-sdk.md
+[download-SDK-PHP]: https://github.com/Azure/azure-sdk-for-php
 [composer-phar]: http://getcomposer.org/composer.phar

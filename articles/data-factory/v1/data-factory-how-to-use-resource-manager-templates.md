@@ -1,25 +1,21 @@
 ---
-title: 在数据工厂中使用 Resource Manager 模板 | Microsoft Docs
+title: 在数据工厂中使用资源管理器模板
 description: 了解如何创建和使用 Azure 资源管理器模板来创建数据工厂实体。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
-ms.assetid: 37724021-f55f-4e85-9206-6d4a48bda3d8
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: ca8b3930b9d9f708d83dc760be3ee89737b074dc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: e94445a6cb16eacb496daedbec21379928a4dafd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60583360"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84194455"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>使用模板来创建 Azure 数据工厂实体
 > [!NOTE]
@@ -28,14 +24,14 @@ ms.locfileid: "60583360"
 ## <a name="overview"></a>概述
 使用 Azure 数据工厂实现数据集成需求时，可能发现自己在不同环境中重复使用同一模式，或在同一解决方案内重复执行相同任务。 使用模板可轻松实现和管理这些方案。 Azure 数据工厂中的模板非常适合于涉及可重用性和重复的情况。
 
-请考虑此情况：某组织在世界各地拥有 10 个制造工厂。 每个工厂的日志均存储在单独的本地 SQL Server 数据库中。 该公司希望生成一个数据仓库在云中为即席分析。 还希望开发、测试和生产环境具有相同逻辑但具有不同配置。
+请考虑此情况：某组织在世界各地拥有 10 个制造工厂。 每个工厂的日志存储在单独的 SQL Server 数据库中。 公司希望在云中构建单个数据仓库用于即席分析。 还希望开发、测试和生产环境具有相同逻辑但具有不同配置。
 
 在此情况下，需在相同环境中重复同一任务，但 10 个制造工厂的每个数据工厂具有不同值。 总之，存在**重复**。 模板化允许将此泛型流抽象化（即，管道在每个数据工厂中具有相同活动），但对每个制造工厂使用单独的参数文件。
 
 此外，鉴于该组织希望在不同环境内多次部署这 10 个数据工厂，因此模板可通过利用开发、测试和生产环境的单独参数文件来使用此**可重用性**。
 
 ## <a name="templating-with-azure-resource-manager"></a>通过 Azure 资源管理器实现模板化
-[Azure 资源管理器模板](../../azure-resource-manager/resource-group-overview.md#template-deployment)是实现 Azure 数据工厂模板化的好办法。 Resource Manager 模板通过 JSON 文件定义 Azure 解决方案的基础结构和配置。 由于 Azure 资源管理器模板适用于所有/多数 Azure 服务，因此可广泛用于轻松管理 Azure 资产的所有资源。 若要深入了解常用的资源管理器模板，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)。
+[Azure 资源管理器模板](../../azure-resource-manager/templates/overview.md)是实现 Azure 数据工厂模板化的好办法。 Resource Manager 模板通过 JSON 文件定义 Azure 解决方案的基础结构和配置。 由于 Azure 资源管理器模板适用于所有/多数 Azure 服务，因此可广泛用于轻松管理 Azure 资产的所有资源。 若要深入了解常用的资源管理器模板，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)。
 
 ## <a name="tutorials"></a>教程
 请参阅以下教程，获取使用 Resource Manager 模板创建数据工厂实体的分步说明：
@@ -44,14 +40,14 @@ ms.locfileid: "60583360"
 * [教程：使用 Azure 资源管理器模板创建处理数据的管道](data-factory-build-your-first-pipeline.md)
 
 ## <a name="data-factory-templates-on-github"></a>GitHub 上的数据工厂模板
-请查看 GitHub 上的以下 Azure 快速入门模板：
+查看 GitHub 上的以下 Azure 快速入门模板：
 
 * [创建数据工厂，将数据从 Azure Blob 存储复制到 Azure SQL 数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy)
 * [创建包含 Azure HDInsight 群集上的 Hive 活动的数据工厂](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation)
 * [创建数据工厂，将数据从 Salesforce 复制到 Azure Blob](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy)
 * [创建可链接活动的数据工厂：将数据从 FTP 服务器复制到 Azure Blob，调用按需 HDInsight 群集上的 Hive 脚本来转换数据，并将结果复制到 Azure SQL 数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-data-factory-ftp-hive-blob)
 
-随意共享 [Azure 快速启动](https://azure.microsoft.com/documentation/templates/)处的 Azure 数据工厂模板。 开发可通过此存储库共享的模板时，请参考 [contribution guide](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE)（贡献指南）。
+可以在[azure 快速入门](https://azure.microsoft.com/documentation/templates/)中随意共享 Azure 数据工厂模板。 开发可通过此存储库共享的模板时，请参考 [contribution guide](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE)（贡献指南）。
 
 下面部分详细介绍了如何定义 Resource Manager 模板中的数据工厂资源。
 
@@ -236,7 +232,7 @@ dataFactoryName 在“变量”中定义为：
 * 设置因环境（如：开发、测试和生产）而异
 * 机密（如密码）
 
-使用模板部署 Azure 数据工厂实体时，如需从 [Azure 密钥保管库](../../key-vault/key-vault-overview.md)拉取密钥，请指定**密钥保管库**和**密钥名称**，如下例所示：
+使用模板部署 Azure 数据工厂实体时，如需从 [Azure 密钥保管库](../../key-vault/general/overview.md)拉取密钥，请指定**密钥保管库**和**密钥名称**，如下例所示：
 
 ```JSON
 "parameters": {

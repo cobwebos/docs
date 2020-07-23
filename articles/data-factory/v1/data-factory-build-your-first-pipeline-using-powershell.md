@@ -1,36 +1,30 @@
 ---
-title: 构建第一个数据工厂 (PowerShell) | Microsoft Docs
+title: 构建第一个数据工厂 (PowerShell)
 description: 本教程使用 Azure PowerShell 创建一个示例 Azure 数据工厂管道。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: ''
-editor: ''
-ms.assetid: 22ec1236-ea86-4eb7-b903-0e79a58b90c7
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 9d273886b3add43818af80915e42b4aa7ca69a89
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1857d3ee8b607d91b6fdd13b4499518d06fb9913
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66146887"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834537"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>教程：使用 Azure PowerShell 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-build-your-first-pipeline.md)
-> * [Azure 门户](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
-> * [Resource Manager 模板](data-factory-build-your-first-pipeline-using-arm.md)
+> * [资源管理器模板](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
->
->
 
 
 > [!NOTE]
@@ -82,10 +76,10 @@ ms.locfileid: "66146887"
     ```
    请注意以下几点：
 
-* Azure 数据工厂的名称必须全局唯一。 如果收到错误：“数据工厂名称 ‘FirstDataFactoryPSH’ 不可用”，请更改名称（例如 yournameFirstDataFactoryPSH）。  执行本教程中的步骤时，请使用此名称取代 ADFTutorialFactoryPSH。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
+* Azure 数据工厂的名称必须全局唯一。 如果收到错误：“数据工厂名称 ‘FirstDataFactoryPSH’ 不可用”，请更改名称（例如 yournameFirstDataFactoryPSH）。 执行本教程中的步骤时，请使用此名称取代 ADFTutorialFactoryPSH。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
 * 只有 Azure 订阅的参与者/管理员才可以创建数据工厂实例
 * 数据工厂名称可能在将来被注册为 DNS 名称，因此将公开可见。
-* 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”  ，请执行下列操作之一，再尝试重新发布：
+* 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”，请执行下列操作之一，再尝试重新发布：
 
   * 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。
 
@@ -121,7 +115,7 @@ ms.locfileid: "66146887"
         }
     }
     ```
-    将**帐户名**替换为 Azure 存储帐户名，将**帐户密钥**替换为 Azure 存储帐户的访问密钥。 要了解如何获取存储访问密钥，请在[管理存储帐户](../../storage/common/storage-account-manage.md#access-keys)中查看有关如何查看、复制和重新生成存储访问密钥的信息。
+    将帐户名替换为 Azure 存储帐户名，将帐户密钥替换为 Azure 存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
 2. 在 Azure PowerShell 中，切换到 ADFGetStarted 文件夹。
 3. 可以使用 **New-AzDataFactoryLinkedService** cmdlet 创建链接服务。 此 cmdlet 以及本教程中使用的其他数据工厂 cmdlet 要求传递 *ResourceGroupName* 和 *DataFactoryName* 参数的值。 或者，可以使用 **Get-AzDataFactory** 获取 **DataFactory** 对象并传递该对象，这样就不需要在每次运行 cmdlet 时键入 *ResourceGroupName* 和 *DataFactoryName*。 运行以下命令，将 **Get-AzDataFactory** cmdlet 的输出分配给 **$df** 变量。
 
@@ -162,10 +156,10 @@ ms.locfileid: "66146887"
     ```
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-   | 属性 | 说明 |
+   | properties | 说明 |
    |:--- |:--- |
-   | ClusterSize |指定 HDInsight 群集的大小。 |
-   | TimeToLive |指定 HDInsight 群集在被删除之前的空闲时间。 |
+   | clusterSize |指定 HDInsight 群集的大小。 |
+   | timeToLive |指定 HDInsight 群集在被删除之前的空闲时间。 |
    | linkedServiceName |指定用于存储 HDInsight 生成的日志的存储帐户 |
 
     请注意以下几点：
@@ -216,7 +210,7 @@ ms.locfileid: "66146887"
 
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-   | 属性 | 说明 |
+   | properties | 说明 |
    |:--- |:--- |
    | type |type 属性设置为 AzureBlob，因为数据位于 Azure Blob 存储中。 |
    | linkedServiceName |引用前面创建的 StorageLinkedService。 |
@@ -319,7 +313,7 @@ ms.locfileid: "66146887"
     ```
     在 JSON 代码片段中创建一个管道，其中包括在 HDInsight 群集上使用 Hive 处理数据的单个活动。
 
-    Hive 脚本文件 **partitionweblogs.hql** 存储在 Azure 存储帐户（由 scriptLinkedService 指定，名为 **StorageLinkedService**）中，以及 **adfgetstarted** 容器的 **script** 文件夹中。
+    Hive 脚本文件 partitionweblogs.hql 存储在 Azure 存储帐户（由 scriptLinkedService 指定，名为 StorageLinkedService）中，以及 adfgetstarted 容器的 script 文件夹中。
 
     **defines** 节用于指定运行时设置，这些设置将作为 Hive 配置值（例如 ${hiveconf:inputtable}、${hiveconf:partitionedtable}）传递到 Hive 脚本。
 
@@ -391,7 +385,7 @@ ms.locfileid: "66146887"
     PipelineName        : MyFirstPipeline
     Type                : Script
     ```
-    可以继续运行此 cmdlet，直到切片进入“就绪”状态或“失败”状态。   当切片处于“就绪”状态时，检查 Blob 存储中 **adfgetstarted** 容器内 **partitioneddata** 文件夹的输出数据。  创建按需 HDInsight 群集通常需要一段时间。
+    可以继续运行此 cmdlet，直到切片进入“就绪”状态或“失败”状态。  当切片处于“就绪”状态时，检查 Blob 存储中 **adfgetstarted** 容器内 **partitioneddata** 文件夹的输出数据。  创建按需 HDInsight 群集通常需要一段时间。
 
     ![输出数据](./media/data-factory-build-your-first-pipeline-using-powershell/three-ouptut-files.png)
 
@@ -402,7 +396,7 @@ ms.locfileid: "66146887"
 >
 >
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 本教程通过在 HDInsight hadoop 群集上运行 Hive 脚本，创建了一个 Azure 数据工厂来处理数据。 在 Azure 门户中使用数据工厂编辑器执行了以下步骤：
 
 1. 创建了 Azure **数据工厂**。

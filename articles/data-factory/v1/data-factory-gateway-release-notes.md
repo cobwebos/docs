@@ -1,23 +1,21 @@
 ---
-title: 数据管理网关的发行说明 | Microsoft Docs
+title: 数据管理网关的发行说明
 description: 数据管理网关发行说明
 services: data-factory
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: 14762e82-76d9-41c4-ba9f-14a54da29c36
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 865bfdae199bca7ebee888be527db239d34511d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 405beb5cb8c2e74951aa54ba371be04d290ad3a2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60486458"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84194473"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>数据管理网关的发行说明
 > [!NOTE]
@@ -41,7 +39,7 @@ ms.locfileid: "60486458"
 ## <a name="21063477"></a>2.10.6347.7
 ### <a name="enhancements-"></a>增强功能
 - 可将 DNS 条目添加到允许列表服务总线，而不是将防火墙中的所有 Azure IP 地址列入允许列表（如果需要）。 可以在 Azure 门户中找到相应的 DNS 条目（“数据工厂”->“创作和部署”->“网关”->“serviceUrls”（采用 JSON））
-- HDFS 连接器现在允许跳过 SSL 验证，支持自签名的公用证书。
+- HDFS 连接器现在支持自签名的公共证书，方法是允许你跳过 TLS 验证。
 - 已修复：更新期间发生的网关脱机问题（由于时钟偏差）
 
 
@@ -50,8 +48,8 @@ ms.locfileid: "60486458"
 -   可将 DNS 条目添加到允许列表服务总线，而不是将防火墙中的所有 Azure IP 地址列入允许列表（如果需要）。 在此处了解更多详情。
 -   现在可以向/从最大 4.75 TB（这是块 Blob 支持的最大大小）的单块 Blob 复制数据。 （早期的限制为 195 GB）。
 -   已修复：在复制活动期间解压缩多个小文件时出现的内存不足问题。
--   已修复：使用幂等性功能从 Document DB 复制到本地 SQL Server 时发生的索引超出范围问题。
--   已修复：SQL 清理脚本对“复制向导”中的本地 SQL Server 不起作用。
+-   已修复：从 Document DB 复制到 SQL Server 时，索引超出范围问题。
+-   已修复： SQL 清理脚本不适用于从复制向导 SQL Server。
 -   已修复：末尾有空格的列名称在复制活动中不起作用。
 
 ## <a name="28662833"></a>2.8.66283.3
@@ -103,7 +101,7 @@ ms.locfileid: "60486458"
 *  支持使用网关配置管理器设置网管的 HTTP 代理。 配置后，可通过 HTTP 代理访问 Azure Blob、Azure 表、Azure Data Lake 和 Document DB。
 *  在从/向 Azure Blob、Azure Data Lake Store、本地文件系统和本地 HDFS 复制数据时，支持对 TextFormat 进行标头处理。
 *  支持从追加 Blob、页 Blob 以及现已支持的块 Blob 复制数据。
-*  引入了一种新的网关状态“在线(受限)”，其指示网关主要功能正常工作，但对复制向导的交互操作支持例外。
+*  引入了一种新的网关状态“在线(受限)”****，其指示网关主要功能正常工作，但对复制向导的交互操作支持例外。
 *  增强了使用注册密钥注册网关的可靠性。
 
 ## <a name="216040"></a>2.1.6040.
@@ -112,7 +110,7 @@ ms.locfileid: "60486458"
 *  DB2 现支持 z/OS、DB2 for i (AS/400) 以及已支持的平台（Linux、Unix 和 Windows）。
 *  支持使用 Azure Cosmos DB 作为本地数据存储的源或目标
 *  支持从/向冷/热 Blob 存储以及已支持的通用存储帐户复制数据。
-*  允许通过具有远程登录权限的网关连接到本地 SQL Server。  
+*  允许通过远程登录权限通过网关连接到 SQL Server。  
 
 ## <a name="2060131"></a>2.0.6013.1
 
@@ -127,9 +125,9 @@ ms.locfileid: "60486458"
     *  已重新组织和简化控件。
 
     *  可使用[无代码复制工具](data-factory-copy-data-wizard-tutorial.md)从存储中复制数据。 有关此功能的大体详细信息，请参阅[暂存复制](data-factory-copy-activity-performance.md#staged-copy)。
-*  可使用数据管理网关将数据从本地 SQL Server 数据库直接传入 Azure 机器学习。
+*  您可以使用数据管理网关直接将数据从 SQL Server 数据库传入 Azure 机器学习中。
 
-*  性能提升
+*  性能改进
 
     * 针对无代码复制工具中的 SQL Server 提升查看架构/预览的性能。
 
@@ -145,7 +143,7 @@ ms.locfileid: "60486458"
 
 *  如果自动更新失败，网关安装程序最多重试三次自动更新。
 
-*  性能提升
+*  性能改进
 
     * 在无代码复制情况下，提升了从本地服务器加载大型表的性能。
 
@@ -153,7 +151,7 @@ ms.locfileid: "60486458"
 
 ## <a name="11058921"></a>1.10.5892.1
 
-*  性能提升
+*  性能改进
 
 *  Bug 修复
 
@@ -165,34 +163,34 @@ ms.locfileid: "60486458"
 *  设置更新计划时间的功能
 *  用于切换开/关自动更新的 PowerShell 脚本
 *  支持 JSON 格式  
-*  性能提升
+*  性能改进
 *  Bug 修复
 
 ## <a name="1858221"></a>1.8.5822.1
 
 *  提升故障排除体验
-*  性能提升
+*  性能改进
 *  Bug 修复
 
 ### <a name="1757951"></a>1.7.5795.1
 
-*  性能提升
+*  性能改进
 *  Bug 修复
 
 ### <a name="1757641"></a>1.7.5764.1
 
-*  性能提升
+*  性能改进
 *  Bug 修复
 
 ### <a name="1657351"></a>1.6.5735.1
 
 *  支持本地 HDFS 源/接收器
-*  性能提升
+*  性能改进
 *  Bug 修复
 
 ### <a name="1656961"></a>1.6.5696.1
 
-*  性能提升
+*  性能改进
 *  Bug 修复
 
 ### <a name="1656761"></a>1.6.5676.1
@@ -209,7 +207,7 @@ ms.locfileid: "60486458"
 ### <a name="1656721"></a>1.6.5672.1
 
 *  支持用于 Azure 数据工厂的 ODBC 数据源的表名称
-*  性能提升
+*  性能改进
 *  Bug 修复
 
 ### <a name="1656581"></a>1.6.5658.1
@@ -230,13 +228,13 @@ ms.locfileid: "60486458"
 
 *  支持用于 Azure 数据工厂的 5 个关系数据库（MySQL、PostgreSQL、DB2、Teradata 和 Sybase）
 *  压缩支持（Gzip 和 Deflate）
-*  性能提升
+*  性能改进
 *  Bug 修复
 
 ### <a name="1455491"></a>1.4.5549.1
 
 *  增加了对 Azure 数据工厂的 Oracle 数据源支持
-*  性能提升
+*  性能改进
 *  Bug 修复
 
 ### <a name="1454921"></a>1.4.5492.1

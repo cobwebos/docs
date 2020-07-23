@@ -1,0 +1,69 @@
+### YamlMime:Landing
+title: Azure 队列存储文档
+summary: Azure 队列存储是一个可存储大量消息的服务。 可以通过 HTTP 或 HTTPS 从全球任何位置访问消息。
+metadata:
+  title: Azure 队列存储文档
+  description: Azure 队列存储是一个可存储大量消息的服务。 可以通过 HTTP 或 HTTPS 从全球任何位置访问消息。
+  services: storage
+  ms.service: storage
+  ms.subservice: queues
+  ms.topic: landing-page
+  ms.collection: collection
+  author: mhopkins-msft
+  ms.author: mhopkins
+  ms.date: 08/27/2019
+  ms.openlocfilehash: 871447957b905157625ab487269b9ce1ca105935
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "75457286"
+landingContent:
+- title: 关于 Azure 队列
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 队列？
+      url: storage-queues-introduction.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 Azure 门户创建队列并添加消息
+      url: storage-quickstart-queues-portal.md
+- title: 使用队列进行开发
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 用于 .NET 的 Azure 队列存储
+      url: storage-quickstart-queues-dotnet.md
+    - text: 用于 Java 的 Azure 队列存储
+      url: storage-quickstart-queues-java.md
+    - text: 用于 Python 的 Azure 队列存储
+      url: storage-quickstart-queues-python.md
+    - text: 用于 JavaScript 的 Azure 队列存储
+      url: storage-quickstart-queues-nodejs.md
+  - linkListType: how-to-guide
+    links:
+    - text: 通过 .NET 开始使用 Azure 队列存储
+      url: storage-dotnet-how-to-use-queues.md
+    - text: 如何通过 Java 使用队列存储
+      url: storage-java-how-to-use-queue-storage.md
+    - text: 如何通过 Node.js 使用队列存储
+      url: storage-nodejs-how-to-use-queues.md
+    - text: 如何通过 C++ 使用队列存储
+      url: storage-c-plus-plus-how-to-use-queues.md
+    - text: 如何通过 Python 使用队列存储
+      url: storage-python-how-to-use-queue-storage.md
+- title: 管理队列
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Azure PowerShell 执行 Azure 队列存储操作
+      url: storage-powershell-how-to-use-queues.md
+- title: 教程
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 使用 Azure 存储队列 (.NET)
+      url: storage-tutorial-queues.md

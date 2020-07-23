@@ -1,26 +1,15 @@
 ---
-title: 应用服务中的操作系统功能 - Azure
-description: 了解可供 Azure 应用服务上的 Web 应用、移动应用后端和 API 应用使用的 OS 功能
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: mollybos
+title: 操作系统功能
+description: 了解 Windows 上 Azure 应用服务中的 OS 功能。 了解你的应用可以访问哪些类型的文件、网络和注册表。
 ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e5ab6651503766844b2aeef1849bffff9cf4d7bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: ed84cb2b0cb8d98b12fe787e49c400ba47e4e38a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60835492"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74671610"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure 应用服务上的操作系统功能
 本文介绍了可供在 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)上运行的所有 Windows 应用使用的常见基准操作系统功能。 这些功能包括文件、网络和注册表访问以及诊断日志和事件。 
@@ -32,7 +21,7 @@ ms.locfileid: "60835492"
 <a id="tiers"></a>
 
 ## <a name="app-service-plan-tiers"></a>应用服务计划层
-应用服务在多租户托管环境中运行客户应用。 部署在“免费”和“共享”层中的应用在共享虚拟机上的辅助进程中运行，而部署在“标准”和“高级”层中的应用在专用于与单个客户关联的应用的虚拟机上运行。
+应用服务在多租户托管环境中运行客户应用。 部署在“免费”和“共享”层中的应用在共享虚拟机上的辅助进程中运行，而部署在“标准”和“高级”层中的应用在专用于与单个客户关联的应用的虚拟机上运行。****************
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -65,7 +54,7 @@ ms.locfileid: "60835492"
 
 - 应用可能会引发错误，指示磁盘上没有足够的空间。
 - 浏览到 Kudu 控制台时，可能会看到磁盘错误。
-- 从 VSTS 或 Visual Studio 进行部署可能会失败并显示 `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`。
+- 从 Azure DevOps 或 Visual Studio 进行部署可能会失败并显示 `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`。
 - 你的应用可能会出现性能下降。
 
 <a id="NetworkDrives"></a>
@@ -75,7 +64,7 @@ ms.locfileid: "60835492"
 
 在应用服务内，每个数据中心都创建了许多 UNC 共享。 在每个数据中心针对所有客户的某个百分比的用户内容将分配给各 UNC 共享。 此外，单个客户的订阅的所有文件内容将始终置于相同的 UNC 共享中。 
 
-由于 Azure 服务的工作方式，负责承载 UNC 共享的特定虚拟机将随着时间而更改。 应确保由不同虚拟机装入 UNC 共享，因为在正常 Azure 操作过程中它们会启动和关闭。 因此，应用应该永远不会作出这样的硬编码的假定，即 UNC 文件路径中的计算机信息会在一段时间后保持不变。 相反，它们应使用应用服务提供的方便的 faux 绝对路径 D:\home\site。 此 faux 绝对路径为引用自己的网站提供可移植的应用到用户未知方法。 通过使用 D:\home\site，可以在应用之间传输共享文件，而不必为每次传输都配置新的绝对路径。
+由于 Azure 服务的工作方式，负责承载 UNC 共享的特定虚拟机将随着时间而更改。 应确保由不同虚拟机装入 UNC 共享，因为在正常 Azure 操作过程中它们会启动和关闭。 因此，应用应该永远不会作出这样的硬编码的假定，即 UNC 文件路径中的计算机信息会在一段时间后保持不变。 相反，它们应使用应用服务提供的方便的 faux 绝对路径 D:\home\site******。 此 faux 绝对路径为引用自己的网站提供可移植的应用到用户未知方法。 通过使用 D:\home\site，可以在应用之间传输共享文件，而不必为每次传输都配置新的绝对路径****。
 
 <a id="TypesOfFileAccess"></a>
 
@@ -86,7 +75,7 @@ ms.locfileid: "60835492"
 
 说明应用服务如何使用临时本地存储的两个示例是针对临时 ASP.NET 文件的目录和针对 IIS 压缩文件的目录。 ASP.NET 编译系统使用“临时 ASP.NET 文件”目录作为临时编译缓存位置。 IIS 使用“IIS 临时压缩文件”目录存储压缩的响应输出。 在应用服务中，这两种类型的文件使用（以及其他使用）都重新映射到按应用临时本地存储。 此重新映射确保该功能按预期延续。
 
-应用服务中的每个应用作为随机的唯一低权限辅助进程标识运行，该标识名为“应用程序池标识”，以下网页做了进一步的介绍：[https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities)。 应用程序代码将此标识由于对操作系统驱动器（D:\ 驱动器）的基本的只读访问。 这意味着应用程序代码可以列出公共目录结构并且读取操作系统驱动器上的公共文件。 尽管这可能看上去就好像是一种较为广泛的访问级别，但在 Azure 托管服务中设置某一辅助角色并且读取驱动器内容时，相同的目录和文件是可访问的。 
+应用服务中的每个应用作为随机的唯一低权限辅助进程标识运行，该标识名为 "应用程序池标识"，此处对此进行了进一步说明： [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities) 。 应用程序代码将此标识由于对操作系统驱动器（D:\ 驱动器）的基本的只读访问。 这意味着应用程序代码可以列出公共目录结构并且读取操作系统驱动器上的公共文件。 尽管这可能看上去就好像是一种较为广泛的访问级别，但在 Azure 托管服务中设置某一辅助角色并且读取驱动器内容时，相同的目录和文件是可访问的。 
 
 <a name="multipleinstances"></a>
 
@@ -96,7 +85,7 @@ ms.locfileid: "60835492"
 <a id="NetworkAccess"></a>
 
 ## <a name="network-access"></a>网络访问
-应用程序代码可以使用基于 TCP/IP 和 UDP 的协议建立与公开外部服务的 Internet 可访问终结点的出站网络连接。 应用可以使用这些相同协议连接到 Azure 内的服务&#151;例如，建立与 SQL 数据库的 HTTPS 连接即可实现此目的。
+应用程序代码可以使用基于 TCP/IP 和 UDP 的协议建立与公开外部服务的 Internet 可访问终结点的出站网络连接。 应用可以使用这些相同协议连接到 Azure 中的服务；例如，建立与 SQL 数据库的 HTTPS 连接即是如此。
 
 还有有限容量以便为应用建立一个本地环回连接，并且让应用侦听该本地环回套接字。 此功能存在主要是为了实现作为其功能的一部分侦听本地环回套接字的应用。 每个应用监视一个“专用”环回连接。 应用“A”无法侦听应用“B”创建的本地环回套接字。
 

@@ -1,22 +1,20 @@
 ---
-title: 使用渲染应用程序 - Azure Batch
-description: 如何配合 Azure Batch 使用渲染应用程序
-services: batch
-ms.service: batch
+title: 使用渲染应用程序
+description: 如何配合 Azure Batch 使用渲染应用程序。 本文简要介绍如何运行每个渲染应用程序。
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: 4c93abdfb5c523d48ce115ed7d3251a346937f5f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.openlocfilehash: ace3fe7aee6b9ffc7226448b455bcfea1f931458
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775383"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964866"
 ---
 # <a name="rendering-applications"></a>渲染应用程序
 
-可通过创建 Batch 作业和任务来使用渲染应用程序。 任务命令行属性指定相应的命令行和参数。  创建作业任务的最简单方法是使用[此文](https://docs.microsoft.com/azure/batch/batch-rendering-using#using-batch-explorer)中所述的 Batch Explorer 模板。  可以查看这些模板，并根据需要修改创建的版本。
+可通过创建 Batch 作业和任务来使用渲染应用程序。 任务命令行属性指定相应的命令行和参数。  创建作业任务的最简单方法是使用[此文](./batch-rendering-using.md#using-batch-explorer)中所述的 Batch Explorer 模板。  可以查看这些模板，并根据需要修改创建的版本。
 
 本文简要介绍如何运行每个渲染应用程序。
 

@@ -1,23 +1,22 @@
 ---
-title: Azure 中的反向 DNS 概述 | Microsoft Docs
-description: 了解反向 DNS 如何工作以及如何在 Azure 中使用
+title: Azure 中的反向 DNS 概述 - Azure DNS
+description: 在此学习路径中，开始学习反向 DNS 的工作原理以及如何在 Azure 中使用它
 services: dns
 documentationcenter: na
-author: vhorne
-manager: jeconnoc
+author: rohinkoul
+manager: KumuD
 ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: victorh
-ms.openlocfilehash: 9d3a62ec1c9ede1f25f2b53f800642a792b3aa28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: rohink
+ms.openlocfilehash: bf3da62e989f0e029efdc8e9c70f5f45e0ddd765
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60192976"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76932298"
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>反向 DNS 和 Azure 支持概述
 
@@ -35,7 +34,7 @@ ms.locfileid: "60192976"
 
 例如，DNS 记录“www.contoso.com”是使用区域“contoso.com”中名称为“www”的 DNS“A”记录实现的。  此 A 记录指向相应的 IP 地址，在本例中为 64.4.6.100。  反向查找是单独使用区域“6.4.64.in-addr.arpa”（请注意 ARPA 区域中的 IP 地址是反向的）中名为“100”的“PTR”记录实现的。如果配置正确，此 PTR 记录将指向名称“www.contoso.com”。
 
-如果组织被分配了 IP 地址块，则还有权管理相应的 ARPA 区域。 对应于 Azure 使用的 IP 地址块的 ARPA 区域由 Microsoft 托管和管理。 ISP 可以代你托管你自己的 IP 地址的 ARPA 区域，或者允许在所选的 DNS 服务（例如 Azure DNS）中托管 ARPA 区域。
+如果组织被分配了 IP 地址块，则还有权管理相应的 ARPA 区域。 对应于 Azure 使用的 IP 地址块的 ARPA 区域由 Microsoft 托管和管理。 ISP 可以代你托管自己的 IP 地址的 ARPA 区域，或者允许在所选的 DNS 服务（例如 Azure DNS）中托管 ARPA 区域。
 
 > [!NOTE]
 > 正向 DNS 查找和反向 DNS 查找是在独立的并行 DNS 层次结构中实现的。 “www.contoso.com”的反向查找**不是**托管在区域“contoso.com”中，而是托管在相应 IP 地址块的 ARPA 区域中。 独立区域用于 IPv4 和 IPv6 地址块。
@@ -102,10 +101,10 @@ IPv6 反向查找区域的名称应采用以下格式：`<IPv6 network prefix in
 
 在反向 DNS 方面，Azure 支持两种不同的方案：
 
-托管对应于 IP 地址块的反向查找区域。
+托管对应于 IP 地址块的反向查找区域。 
 对于 IPv4 和 IPv6，都可使用 Azure DNS [托管反向查找区域和管理每个反向 DNS 查找的 PTR 记录](dns-reverse-dns-hosting.md)。  创建反向查找 (ARPA) 区域、设置委托和配置 PTR 记录的过程与常规 DNS 区域相同。  唯一的差别在于，必须通过 ISP 而不是 DNS 注册机构配置委托，并且只能 PTR 记录类型。
 
-为分配给 Azure 服务的 IP 地址配置反向 DNS 记录。 可使用 Azure [为分配给 Azure 服务的 IP 地址配置反向查找](dns-reverse-dns-for-azure-services.md)。  Azure 将这种反向查找配置为相应 ARPA 区域中的 PTR 记录。  这些对应于 Azure 使用的所有 IP 范围的 ARPA 区域由 Microsoft 托管
+为分配给 Azure 服务的 IP 地址配置反向 DNS 记录。  可使用 Azure [为分配给 Azure 服务的 IP 地址配置反向查找](dns-reverse-dns-for-azure-services.md)。  Azure 将这种反向查找配置为相应 ARPA 区域中的 PTR 记录。  这些对应于 Azure 使用的所有 IP 范围的 ARPA 区域由 Microsoft 托管
 
 ## <a name="next-steps"></a>后续步骤
 

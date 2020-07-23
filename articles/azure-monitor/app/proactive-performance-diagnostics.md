@@ -1,30 +1,20 @@
 ---
 title: 智能检测 - 性能异常 | Microsoft 文档
 description: Application Insights 执行应用遥测的智能分析，并在有潜在问题时发出警告。 此功能不需要任何设置。
-services: application-insights
-documentationcenter: windows
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 6acd41b9-fbf0-45b8-b83b-117e19062dd2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.author: mbullwin
-ms.openlocfilehash: b1a3b04427839736359c88f8ad6a8db5eedf8488
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 22c1eeb00372b9b3c67d6a87f2300225a071438e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61294029"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84016842"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智能检测 - 性能异常
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 可自动分析 Web 应用程序的性能，并在出现潜在问题时发出警告。 我们会通过邮件将智能检测通知发送给你。
 
-不需要对此功能进行任何特殊设置，只需在应用中配置 Application Insights 即可（在 [ASP.NET](../../azure-monitor/app/asp-net.md)、[Java](../../azure-monitor/app/java-get-started.md) 或 [Node.js](../../azure-monitor/app/nodejs.md) 和[网页代码](../../azure-monitor/app/javascript.md)中）。 在应用生成足够多的遥测数据后，此功能会激活。
+除为你[支持的语言](../../azure-monitor/app/platforms.md)配置 Application Insights 应用外，此功能不需要特殊设置。 在应用生成足够多的遥测数据后，此功能会激活。
 
 ## <a name="when-would-i-get-a-smart-detection-notification"></a>我何时会收到智能检测通知？
 
@@ -58,7 +48,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 
 ## <a name="configure-email-notifications"></a>配置电子邮件通知
 
-智能检测通知默认已启用，将发送到[对 Application Insights 资源拥有所有者、参与者和读取者访问权限](../../azure-monitor/app/resources-roles-access-control.md)的用户。 若要更改此配置，请在电子邮件通知中单击“配置”，或者在 Application Insights 中打开“智能检测”设置。 
+智能检测通知默认已启用，将发送给对 Application Insights 资源所在的订阅具有[监视读取者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)和[监视参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)访问权限的用户。 若要更改此配置，请在电子邮件通知中单击“配置”，或者在 Application Insights 中打开“智能检测”设置。 
   
   ![智能检测设置](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   
@@ -69,7 +59,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 ## <a name="faq"></a>常见问题解答
 
 * *那么，Microsoft 员工会查看我的数据？*
-  * 不。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](../../azure-monitor/app/data-retention-privacy.md)数据。
+  * 不是。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](../../azure-monitor/app/data-retention-privacy.md)数据。
 * *是否分析由 Application Insights 收集的所有数据？*
   * 目前不会。 目前，我们分析请求响应时间、依赖项响应时间和页面加载时间。 其他指标的分析功能正在规划中，今后有望推出。
 
@@ -79,13 +69,13 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 * *是否可以创建自己的异常检测规则或自定义现有的规则？*
 
   * 目前不可以，但可以：
-    * [设置警报](../../azure-monitor/app/alerts.md)，以便在指标超出阈值时告知用户。
-    * [将遥测导出到](../../azure-monitor/app/export-telemetry.md)[数据库](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)或 [PowerBI](../../azure-monitor/app/export-power-bi.md )，可自行在其中进行分析。
+    * [设置警报](/azure/azure-monitor/platform/alerts-log)，以便在指标超出阈值时告知用户。
+    * [将遥测导出](../../azure-monitor/app/export-telemetry.md)到[数据库](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)或 [Power BI](../../azure-monitor/app/export-power-bi.md )，可自行在其中进行分析。
 * *执行分析的频率是多少？*
 
   * 我们每天针对前一天（UTC 时区整天）的遥测数据运行分析。
-* *那么这是否会替换[指标警报](../../azure-monitor/app/alerts.md)？*
-  * 不。  我们不确定检测用户视为异常的每个行为。
+* *那么这是否会替换[指标警报](/azure/azure-monitor/platform/alerts-log)？*
+  * 不是。  我们不确定检测用户视为异常的每个行为。
 
 
 * *如果不执行任何操作来响应通知，是否会收到提醒？*
@@ -138,7 +128,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 
 ## <a name="dependency-duration-degradation"></a>依赖项持续时间延长
 
-新型应用程序越来越多地采用微服务设计方案，在许多情况下这会导致严重依赖于外部服务。 例如，如果应用程序依赖于某个数据平台，或者，即使机器人服务是由自己构建的，它也可能会依赖于某个认知服务提供程序来使机器人能够以更加类似于人类的方式交互，并依赖于某个数据存储服务来让机器人提取解答。  
+新型应用程序越来越多地采用微服务设计方案，在许多情况下这会导致对外部服务的严重依赖。 例如，如果应用程序依赖于某个数据平台，或者，即使机器人服务是由自己构建的，它也可能会依赖于某个认知服务提供程序来使机器人能够以更加类似于人类的方式交互，并依赖于某个数据存储服务来让机器人提取解答。  
 
 依赖项降级通知的示例：
 
@@ -189,5 +179,5 @@ Application Insights 可以找到只会影响一部分用户，或者只会在�
 
 智能检测是完全自动执行的。 但是或许你想要设置更多的警报？
 
-* [手动配置的指标警报](../../azure-monitor/app/alerts.md)
+* [手动配置的指标警报](/azure/azure-monitor/platform/alerts-log)
 * [可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)

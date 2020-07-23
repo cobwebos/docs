@@ -4,16 +4,17 @@ ms.service: container-instances
 ms.topic: include
 ms.date: 02/13/2019
 ms.author: danlep
-ms.openlocfilehash: f8821060b98ebfc954a6e59abad60350e6779b76
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 33a82a55b03cde79d2d80826041ee6d43565476a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146249"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80334818"
 ---
-| 资源 | 默认限制 |
+| 资源 | 限制 |
 | --- | :--- |
-| 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的容器组数 | 100<sup>1</sup> |
+| 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)每个区域的标准 sku 容器组 | 100<sup>1</sup> |
+| 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)每个区域的专用 sku 容器组 | 0<sup>1</sup> |
 | 每个容器组的容器数 | 60 |
 | 每个容器组的卷数 | 20 |
 | 每个 IP 的端口数 | 5 |

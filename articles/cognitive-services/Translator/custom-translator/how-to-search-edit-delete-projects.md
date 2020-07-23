@@ -2,19 +2,19 @@
 title: 如何搜索、编辑和删除项目 - 自定义翻译
 titleSuffix: Azure Cognitive Services
 description: 自定义翻译提供了各种方法来高效地管理你的项目。 你可以创建多个项目，根据条件进行搜索，以及编辑项目。 还可以在自定义翻译中删除项目。
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
-ms.author: v-pawal
+ms.date: 05/26/2020
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 0e3397151d2f88e0e55b9526b3c41de19c019a6b
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 40a0429c4296426042e5baa58c9575ddb195cd7c
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66382548"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996731"
 ---
 # <a name="search-edit-and-delete-projects"></a>搜索、编辑和删除项目
 
@@ -34,12 +34,12 @@ ms.locfileid: "66382548"
 
     ![搜索项目筛选器选项](media/how-to/how-to-search-project-filters.png)
 
-3.  通过点击“清除”来清除筛选器以查看所有项目。
+3.  通过点击 "清除" 来清除筛选器以查看所有项目。
 
 
 ## <a name="edit-a-project"></a>编辑项目
 
-自定义转换器可编辑的名称和描述项目的功能。 编辑起来类别、 源代码语言和目标语言不是可用于其他项目元数据。 以下步骤说明如何编辑项目。
+自定义转换器使你能够编辑项目的名称和描述。 其他项目元数据（如类别、源语言和目标语言）不可用于编辑。 下面的步骤介绍如何编辑项目。
 
 1.  单击将鼠标指针悬停在项目上时出现的铅笔图标。
 

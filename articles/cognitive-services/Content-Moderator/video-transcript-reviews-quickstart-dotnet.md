@@ -1,33 +1,33 @@
 ---
 title: 使用 .NET 创建视频脚本评审 - 内容审查器
-titlesuffix: Azure Cognitive Services
-description: 使用用于 .NET 的内容审查器 SDK 创建视频脚本评审
+titleSuffix: Azure Cognitive Services
+description: 了解如何使用 Azure 认知服务内容审查器 SDK for .NET 创建视频脚本评论。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
-ms.date: 03/19/2019
-ms.author: sajagtap
-ms.openlocfilehash: fa782f687979f1d32cdf1c18bd08f6672e39adfe
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.topic: conceptual
+ms.date: 10/24/2019
+ms.author: pafarley
+ms.openlocfilehash: b2d763454b86570b57a16fb9ae2107a2a2bcd23d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64868589"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "73744392"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>使用 .NET 创建视频脚本评论
 
-本文提供了信息和代码示例，帮助你快速开始结合使用[内容审查器 SDK 和 C#](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 来执行以下操作：
+本文提供信息和代码示例来帮助你快速开始使用[内容审查器 SDK 和 c #](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) ：
 
 - 为人工审查器创建视频评论
 - 向评论中添加已审查的脚本
 - 发布评论
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-- 登录或在内容审查器上创建一个帐户[审阅工具](https://contentmoderator.cognitive.microsoft.com/)如果尚未这样做已经。
+- 如果尚未这样做，请登录或在内容审查器[审核工具](https://contentmoderator.cognitive.microsoft.com/)站点上创建帐户。
 - 本文假定你已[审查视频](video-moderation-api.md)，并在评论工具中[创建了视频评论](video-reviews-quickstart-dotnet.md)以便进行人工决策。 你现在想要在评论工具中添加已审查的视频脚本。
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-job-creation"></a>确保 API 密钥可以调用评审 API（创建作业）
@@ -48,9 +48,9 @@ ms.locfileid: "64868589"
 
 ## <a name="create-your-visual-studio-project"></a>创建 Visual Studio 项目
 
-1. 向解决方案添加新的“控制台应用(.NET Framework)”项目。
+1. 向解决方案添加新的“控制台应用(.NET Framework)”**** 项目。
 
-1. 将项目命名为“VideoTranscriptReviews”。
+1. 将项目命名为“VideoTranscriptReviews”****。
 
 1. 将此项目选为解决方案的单一启动项目。
 
@@ -74,30 +74,26 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 ```
 
 ### <a name="add-private-properties"></a>添加私有属性
 
-将以下私有属性添加到 VideoTranscriptReviews 命名空间中的 Program 类。
-
-如果需要，可替换这些属性的示例值。
+将以下私有属性添加到命名空间**VideoTranscriptReviews**，类**程序**。 将`AzureEndpoint`和`CMSubscriptionKey`字段更新为你的终结点 URL 和订阅密钥的值。 可以在 Azure 门户的资源的 "**快速启动**" 选项卡中找到这些项。
 
 ```csharp
 namespace VideoReviews
 {
     class Program
     {
-        // NOTE: Replace this example location with the location for your Content Moderator account.
+        // NOTE: Enter a valid endpoint URL
         /// <summary>
-        /// The region/location for your Content Moderator account, 
-        /// for example, westus.
+        /// The endpoint URL of your subscription
         /// </summary>
-        private static readonly string AzureRegion = "YOUR CONTENT MODERATOR REGION";
+        private static readonly string AzureEndpoint = "YOUR ENDPOINT URL";
 
-        // NOTE: Replace this example key with a valid subscription key.
+        // NOTE: Enter a valid subscription key.
         /// <summary>
         /// Your Content Moderator subscription key.
         /// </summary>
@@ -112,12 +108,6 @@ namespace VideoReviews
         /// the Content Moderator web site. Your team name is the Id associated 
         /// with your subscription.</remarks>
         private const string TeamName = "YOUR CONTENT MODERATOR TEAM ID";
-
-        /// <summary>
-        /// The base URL fragment for Content Moderator calls.
-        /// </summary>
-        private static readonly string AzureBaseURL =
-            $"{AzureRegion}.api.cognitive.microsoft.com";
 
         /// <summary>
         /// The minimum amount of time, in milliseconds, to wait between calls
@@ -142,7 +132,7 @@ public static ContentModeratorClient NewClient()
 {
     return new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey))
     {
-        Endpoint = AzureBaseURL
+        Endpoint = AzureEndpoint
     };
 }
 ```
@@ -154,15 +144,15 @@ public static ContentModeratorClient NewClient()
 **CreateVideoReviews** 具有以下必需参数：
 1. 一个字符串，包含应为“application/json”的 MIME 类型。 
 1. 内容审查器团队名称。
-1. **IList\<CreateVideoReviewsBodyItem >** 对象。 每个 CreateVideoReviewsBodyItem  对象表示一次视频审查。 本快速入门一次创建一条评论。
+1. **\<IList CreateVideoReviewsBodyItem>** 对象。 每个 CreateVideoReviewsBodyItem **** 对象表示一次视频审查。 本快速入门一次创建一条评论。
 
 **CreateVideoReviewsBodyItem** 具有多个属性。 至少应设置以下属性：
-- Content。 要评论的视频的 URL。
-- ContentId。 要分配给视频评论的 ID。
-- Status。 将该值设置为“未发布”。 如果未进行设置，则默认为“挂起”，这意味着视频评论已发布并且正在等待人工评论。 视频评论发布后，就无法再向其中添加视频帧、脚本或脚本审查结果。
+- **内容**。 要评论的视频的 URL。
+- **Id 为**。 要分配给视频评论的 ID。
+- **状态**。 将该值设置为“未发布”。 如果未进行设置，则默认为“挂起”，这意味着视频评论已发布并且正在等待人工评论。 视频评论发布后，就无法再向其中添加视频帧、脚本或脚本审查结果。
 
 > [!NOTE]
-> **CreateVideoReviews**返回 IList\<字符串 >。 这些字符串中的每一个都包含视频评论 ID。 这些 ID 是 GUID，与 **ContentId** 属性的值不同。
+> **CreateVideoReviews**返回> 的\<IList 字符串。 这些字符串中的每一个都包含视频评论 ID。 这些 ID 是 GUID，与 **ContentId** 属性的值不同。
 
 将以下方法定义添加到 VideoReviews 命名空间中的 Program 类。
 
@@ -211,7 +201,7 @@ private static string CreateReview(ContentModeratorClient client, string id, str
 1. **CreateVideoReviews** 返回的视频评论 ID。
 1. 包含脚本的 **Stream** 对象。
 
-脚本必须采用 WebVTT 格式。 有关更多信息，请参阅 [WebVTT：Web 视频文本轨道格式](https://www.w3.org/TR/webvtt1/)。
+脚本必须采用 WebVTT 格式。 有关详细信息，请参阅 [WebVTT: The Web Video Text Tracks Format](https://www.w3.org/TR/webvtt1/)（WebVTT：Web 视频文本轨道格式）。
 
 > [!NOTE]
 > 该程序使用 VTT 格式的示例脚本。 在实际解决方案中，可使用 Azure Media Indexer 服务根据视频[生成脚本](https://docs.microsoft.com/azure/media-services/media-services-index-content)。
@@ -244,15 +234,15 @@ static void AddTranscript(ContentModeratorClient client, string review_id, strin
 1. 一个字符串，包含应为“application/json”的 MIME 类型。 
 1. 内容审查器团队名称。
 1. **CreateVideoReviews** 返回的视频评论 ID。
-1. IList\<TranscriptModerationBodyItem >。 **TranscriptModerationBodyItem** 具有以下属性：
-1. **Terms**。 IList\<TranscriptModerationBodyItemTermsItem >。 **TranscriptModerationBodyItemTermsItem** 具有以下属性：
-1. **Index**。 该词语从零开始的索引。
-1. **Term**。 一个包含该词语的字符串。
+1. IList\<TranscriptModerationBodyItem>。 **TranscriptModerationBodyItem** 具有以下属性：
+1. **术语**。 IList\<TranscriptModerationBodyItemTermsItem>。 **TranscriptModerationBodyItemTermsItem** 具有以下属性：
+1. **索引**。 该词语从零开始的索引。
+1. **字词**。 一个包含该词语的字符串。
 1. **Timestamp**。 一个字符串，包含在脚本中找到词语的时间（以秒为单位）。
 
-脚本必须采用 WebVTT 格式。 有关更多信息，请参阅 [WebVTT：Web 视频文本轨道格式](https://www.w3.org/TR/webvtt1/)。
+脚本必须采用 WebVTT 格式。 有关详细信息，请参阅 [WebVTT: The Web Video Text Tracks Format](https://www.w3.org/TR/webvtt1/)（WebVTT：Web 视频文本轨道格式）。
 
-将以下方法定义添加到 VideoTranscriptReviews 命名空间中的 Program 类。 此方法将脚本提交到 **ContentModeratorClient.TextModeration.ScreenText** 方法。 它还将结果转换到 IList\<TranscriptModerationBodyItem >，并将提交给**AddVideoTranscriptModerationResult**。
+将以下方法定义添加到 VideoTranscriptReviews 命名空间中的 Program 类。 此方法将脚本提交到 **ContentModeratorClient.TextModeration.ScreenText** 方法。 它还将结果转换为 IList\<TranscriptModerationBodyItem>，并将其提交给**AddVideoTranscriptModerationResult**。
 
 ```csharp
 /// <summary>
@@ -361,7 +351,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="run-the-program-and-review-the-output"></a>运行程序并检查输出
+## <a name="run-the-program-and-review-the-output"></a>运行程序并查看输出
 
 运行应用程序时，将显示以下行中的输出：
 
@@ -376,7 +366,7 @@ Press any key to close the application.
 
 ## <a name="navigate-to-your-video-transcript-review"></a>导航到视频脚本评论
 
-转到“评论”>“视频”>“视频”屏幕上内容审查器评论工具中的的视频脚本评论。
+请在 "**查看**>**视频**>**" 屏幕上**的内容审查器查看 "工具中，切换到视频脚本评审。
 
 你会看到以下功能：
 - 你添加的两行脚本

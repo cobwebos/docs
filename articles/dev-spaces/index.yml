@@ -1,48 +1,70 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Dev Spaces
+### YamlMime:Landing
+title: Azure Dev Spaces 文档
+summary: Azure Dev Spaces 是对 AKS 的扩展，可用于在大型应用程序的上下文中轻松运行和调试代码。 你可以对代码进行端到端测试，命中群集中运行的代码的断点，并在团队成员之间共享开发群集，而不会造成干扰。
 metadata:
-  title: Azure Dev Spaces 文档 - 快速入门
-  meta.description: Rapid Kubernetes development with containers and microservices on Azure.
+  title: Azure Dev Spaces 文档
+  description: Azure Dev Spaces 是对 AKS 的扩展，可用于在大型应用程序的上下文中轻松运行和调试代码。 你可以对代码进行端到端测试，命中群集中运行的代码的断点，并在团队成员之间共享开发群集，而不会造成干扰。
   services: azure-dev-spaces
-  author: zr-msft
   ms.service: azure-dev-spaces
   ms.topic: landing-page
-  ms.date: 04/29/2019
+  author: zr-msft
   ms.author: zarhoads
-  manager: jeconnoc
-abstract:
-  description: 使用 Azure Dev Spaces，可以测试并以迭代方式开发在 Azure Kubernetes 服务 (AKS) 中运行的整个微服务应用程序，而无需复制或模拟依赖项。 Azure Dev Spaces 减少了在共享 Azure Kubernetes 服务 (AKS) 群集中与你的团队协作以及直接在 AKS 中运行和调试容器的负担，并降低了这些工作的复杂度。 了解如何利用这些快速入门使用 Azure Dev Spaces。
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 了解如何将 Azure Dev Spaces 用于 AKS 中的团队协作：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: 使用 Azure CLI 进行团队开发
-            href: quickstart-team-development.md
-      - type: paragraph
-        text: 了解如何使用 Azure Dev Spaces 直接在 AKS 中以迭代方式进行开发和调试：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_java.svg'
-            text: 使用 Java 进行开发
-            href: quickstart-java.md
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
-            text: 使用 .NET 和 VS Code 进行开发
-            href: quickstart-netcore.md
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
-            text: 使用 .NET 和 Visual Studio 进行开发
-            href: quickstart-netcore-visualstudio.md
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_nodejs.svg'
-            text: 使用 Node.js 进行开发
-            href: quickstart-nodejs.md
+  manager: gwallace
+  ms.date: 09/30/2019
+  ms.openlocfilehash: ea9865d35b25b5691f702b91c6255f0f703c3e90
+  ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/03/2020
+  ms.locfileid: "84310030"
+landingContent:
+- title: 关于 Azure Dev Spaces
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Dev Spaces 是什么？
+      url: about.md
+  - linkListType: concept
+    links:
+    - text: Azure Dev Spaces 工作原理
+      url: how-dev-spaces-works.md
+  - linkListType: how-to-guide
+    links:
+    - text: 安装 Azure Dev Spaces
+      url: how-to/install-dev-spaces.md
+- title: 开发和测试微服务
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 运行和调试微服务
+      url: quickstart-netcore.md
+    - text: 针对一组微服务与团队进行协作
+      url: quickstart-team-development.md
+  - linkListType: how-to-guide
+    links:
+    - text: 将 Dev Spaces 集成到 CI/CD 管道中，以便更好地进行端到端测试
+      url: how-to/setup-cicd.md
+- title: 高级方案
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用自定义 NuGet 源
+      url: how-to/use-custom-nuget-feed.md
+    - text: 使用私有 Helm 存储库
+      url: how-to/use-private-helm-repo.md
+    - text: 与 Windows 容器交互
+      url: how-to/run-dev-spaces-windows-containers.md
+    - text: 将 traefik 用于自定义入口和 HTTPS
+      url: how-to/ingress-https-traefik.md
+    - text: 将 NGINX 用于自定义入口和 HTTPS
+      url: how-to/ingress-https-nginx.md
+- title: 预览功能
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 将 GitHub 操作与 Azure Dev Spaces 配合使用
+      url: how-to/github-actions.md
+    - text: 在 Visual Studio Code 中使用 Local Process with Kubernetes
+      url: how-to/local-process-kubernetes-vs-code.md
+    - text: 在 Visual Studio 中使用 Local Process with Kubernetes
+      url: how-to/local-process-kubernetes-visual-studio.md

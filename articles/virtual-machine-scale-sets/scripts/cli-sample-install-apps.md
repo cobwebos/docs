@@ -1,27 +1,20 @@
 ---
-title: Azure CLI 示例 - 安装应用 | Microsoft Docs
-description: Azure CLI 示例
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.devlang: azurecli
+title: Azure CLI 示例 - 安装应用
+description: 此脚本创建运行 Ubuntu 的虚拟机规模集，并使用自定义脚本扩展安装一个基本 Web 应用程序。
+author: mimckitt
+ms.author: mimckitt
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: virtual-machine-scale-sets
+ms.subservice: cli
 ms.date: 03/27/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 00e1823ab87048857267456f8e7d295d725a194d
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 2e284032cfc6723fb56454376edafa6d99ae7e0a
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55890495"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699709"
 ---
 # <a name="install-applications-into-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 将应用程序安装到虚拟机规模集中
 此脚本创建运行 Ubuntu 的虚拟机规模集，并使用自定义脚本扩展安装一个基本 Web 应用程序。 运行脚本后，可以通过 Web 浏览器访问该 Web 应用。
@@ -43,7 +36,7 @@ az group delete --name myResourceGroup
 ## <a name="script-explanation"></a>脚本说明
 此脚本使用以下命令创建资源组、虚拟机规模集和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/azure/ad/group) | 创建用于存储所有资源的资源组。 |
 | [az vmss create](/cli/azure/vmss) | 创建虚拟机规模集并将其连接到虚拟网络、子网和网络安全组。 负载均衡器也会被创建，以将流量分配到多个 VM 实例。 此命令还指定要使用的 VM 映像和管理凭据。  |
@@ -54,5 +47,3 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/overview)。
-
-可以在 [Azure 虚拟机规模集文档](../cli-samples.md)中找到其他虚拟机规模集 Azure CLI 脚本示例。

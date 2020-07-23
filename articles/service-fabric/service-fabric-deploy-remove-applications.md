@@ -1,30 +1,18 @@
 ---
-title: Azure Service Fabric 应用程序部署 | Microsoft Docs
-description: 如何在 Service Fabric 中使用 PowerShell 部署和删除应用程序。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: b120ffbf-f1e3-4b26-a492-347c29f8f66b
-ms.service: service-fabric
-ms.devlang: dotnet
+title: 使用 PowerShell 进行 Azure Service Fabric 部署
+description: 了解如何在 Azure Service Fabric 中删除和部署应用程序以及如何在 Powershell 中执行这些操作。
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/19/2018
-ms.author: aljo
-ms.openlocfilehash: f0f66cd32721e277cbd6e4578b0e58bb201ee966
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: e3fdd194f2949f1246e991968e02b3278f33f7db
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60393264"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84699832"
 ---
-# <a name="deploy-and-remove-applications-using-powershell"></a>部署和删除使用 PowerShell 的应用程序
+# <a name="deploy-and-remove-applications-using-powershell"></a>使用 PowerShell 部署和删除应用程序
 
 > [!div class="op_single_selector"]
-> * [资源管理器](service-fabric-application-arm-resource.md)
+> * [Resource Manager](service-fabric-application-arm-resource.md)
 > * [PowerShell](service-fabric-deploy-remove-applications.md)
 > * [Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md)
 > * [FabricClient API](service-fabric-deploy-remove-applications-fabricclient.md)
@@ -75,7 +63,7 @@ Connect-ServiceFabricCluster
 
 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 命令用来将应用程序包上传到群集映像存储。
 
-假设在 Visual Studio 2015 中生成并打包名为 *MyApplication* 的应用程序。 默认情况下，ApplicationManifest.xml 中列出的应用程序类型名称为“MyApplicationType”。  应用程序包（其中包含必需的应用程序清单、服务清单以及代码/配置/数据包）位于 *C:\Users\<username\>\Documents\Visual Studio 2015\Projects\MyApplication\MyApplication\pkg\Debug* 中。 
+假设在 Visual Studio 2015 中生成并打包名为 *MyApplication* 的应用程序。 默认情况下，ApplicationManifest.xml 中列出的应用程序类型名称为“MyApplicationType”。  应用程序包（其中包含必需的应用程序清单、服务清单以及代码/配置/数据包）位于*C:\Users \<username\> \Documents\Visual Studio 2015 \ Projects\MyApplication\MyApplication\pkg\Debug*中。 
 
 以下命令列出应用程序包的内容：
 
@@ -149,7 +137,7 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
 对包进行压缩后，便可根据需要将其上传到一个或多个 Service Fabric 群集。 压缩包和未压缩包的部署机制相同。 压缩包同样存储在群集映像存储区中。 运行应用程序之前，包在节点上未压缩。
 
 
-以下示例将包上传到映像存储中名为“MyApplicationV1”的文件夹中：
+以下示例将包上传到映像存储区中名为“MyApplicationV1”的文件夹中：
 
 ```powershell
 Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -ApplicationPackagePathInImageStore MyApplicationV1 -TimeoutSec 1800
@@ -158,7 +146,7 @@ Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -ApplicationP
 如果未指定 *-ApplicationPackagePathInImageStore* 参数，则应用程序包将复制到映像存储中的“Debug”文件夹。
 
 >[!NOTE]
->如果 PowerShell 会话已连接到 Service Fabric 群集，Copy-ServiceFabricApplicationPackage 会自动检测相应的映像存储区连接字符串。 对于版本低于 5.6 的 Service Fabric，必须显式提供 -ImageStoreConnectionString 参数。
+>如果 PowerShell 会话已连接到 Service Fabric 群集，Copy-ServiceFabricApplicationPackage  会自动检测相应的映像存储区连接字符串。 对于版本低于 5.6 的 Service Fabric，必须显式提供 -ImageStoreConnectionString  参数。
 >
 >```powershell
 >PS C:\> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -ApplicationPackagePathInImageStore MyApplicationV1 -ImageStoreConnectionString (Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)) -TimeoutSec 1800
@@ -182,7 +170,7 @@ Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -ApplicationP
 
 ## <a name="register-the-application-package"></a>注册应用程序包
 
-应用程序清单中声明的应用程序类型和版本会在注册应用程序包时可供使用。 系统将读取上一步中上传的程序包，验证此包，处理包的内容，并将已处理的包复制到内部系统位置。  
+应用程序清单中声明的应用程序类型和版本会在注册应用程序包时可供使用。 系统会读取上一步中上传的程序包，验证此包，处理包的内容，并将已处理的包复制到内部系统位置。  
 
 运行 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) cmdlet 以在群集中注册应用程序类型并使其可用于部署：
 
@@ -208,7 +196,7 @@ Register application type succeeded
 Register-ServiceFabricApplicationType -ApplicationPackageDownloadUri "https://sftestresources.blob.core.windows.net:443/sfpkgholder/MyAppPackage.sfpkg" -ApplicationTypeName MyApp -ApplicationTypeVersion V1 -Async
 ```
 
-[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 命令只有在系统成功注册应用程序包后才会返回。 注册花费的时间取决于应用程序包的大小和内容。 如果需要，**-TimeoutSec** 参数可用于提供更长的超时（默认超时为 60 秒）。
+[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 命令只有在系统成功注册应用程序包后才会返回。 注册花费的时间取决于应用程序包的大小和内容。 如果需要， **-TimeoutSec** 参数可用于提供更长的超时（默认超时为 60 秒）。
 
 如果在处理大型应用程序包，或者遇到超时，请使用 **-Async** 参数。 该命令会在群集接受注册命令时返回。 注册操作会根据需要继续。
 [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) 命令将列出应用程序类型版本及其注册状态。 此命令可用于确定注册的完成时间。
@@ -234,7 +222,7 @@ Remove-ServiceFabricApplicationPackage -ApplicationPackagePathInImageStore MyApp
 
 ## <a name="create-the-application"></a>创建应用程序
 
-可以使用 [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) cmdlet 通过已成功注册的任何应用程序类型版本来实例化应用程序。 每个应用程序的名称必须以“fabric:”方案开头，并且必须对每个应用程序实例是唯一的。 还会创建目标应用程序类型的应用程序清单中定义的任何默认服务。
+可以使用 [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) cmdlet 通过已成功注册的任何应用程序类型版本来实例化应用程序。 每个应用程序的名称必须以“fabric:”  方案开头，并且必须对每个应用程序实例是唯一的。 还会创建目标应用程序类型的应用程序清单中定义的任何默认服务。
 
 ```powershell
 New-ServiceFabricApplication fabric:/MyApp MyApplicationType 1.0.0
@@ -247,7 +235,7 @@ ApplicationTypeVersion : 1.0.0
 ApplicationParameters  : {}
 ```
 
-可以为已注册应用程序类型的任何给定版本创建多个应用程序实例。 每个应用程序实例都将隔离运行，具有其自己的工作目录和进程。
+可以为已注册应用程序类型的任何给定版本创建多个应用程序实例。 每个应用程序实例都会隔离运行，具有其自己的工作目录和进程。
 
 若要查看有哪些已命名应用和服务正在群集中运行，请运行 [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication) 和 [Get-ServiceFabricService](/powershell/module/servicefabric/get-servicefabricservice?view=azureservicefabricps) cmdlet：
 
@@ -280,7 +268,7 @@ HealthState            : Ok
 
 ## <a name="remove-an-application"></a>删除应用程序
 
-当不再需要某个应用程序实例时，可以使用 [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) cmdlet 通过指定其名称将其删除。 [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) 还将自动删除属于该应用程序的所有服务，永久删除所有服务状态。 
+当不再需要某个应用程序实例时，可以使用 [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) cmdlet 按名称将其永久删除。 [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) 还将自动删除属于该应用程序的所有服务，永久删除所有服务状态。 
 
 > [!WARNING]
 > 此操作无法撤消，并且无法恢复应用程序状态。
@@ -327,7 +315,7 @@ Unregister-ServiceFabricApplicationType MyApplicationType 1.0.0
 
 ### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage 请求 ImageStoreConnectionString
 
-Service Fabric SDK 环境应该已经设置了正确的默认设置。 若有需要，所有命令的 ImageStoreConnectionString 都应匹配 Service Fabric 群集正在使用的值。 可以在使用 [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) 和 Get-ImageStoreConnectionStringFromClusterManifest 命令检索到的群集清单中找到 ImageStoreConnectionString：
+Service Fabric SDK 环境应已默认设置正确。 若有需要，所有命令的 ImageStoreConnectionString 都应匹配 Service Fabric 群集正在使用的值。 可以在使用 [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) 和 Get-ImageStoreConnectionStringFromClusterManifest 命令检索到的群集清单中找到 ImageStoreConnectionString：
 
 ```powershell
 Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)
@@ -357,18 +345,18 @@ ImageStoreConnectionString 可在群集清单中找到：
 
 ### <a name="deploy-large-application-package"></a>部署大型应用程序包
 
-问题：[Copy-servicefabricapplicationpackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps)对于大型应用程序包 （几 GB） 将超时。
+问题：大型应用程序包（GB 级别）的 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 超时。
 请尝试：
 - 通过 `TimeoutSec` 参数为 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 命令指定更长的超时。 此超时默认为 30 分钟。
 - 检查源计算机和群集之间的网络连接。 如果连接缓慢，请考虑使用一台网络连接状况更好的计算机。
 如果客户端计算机位于另一个区域，而不在此群集中，请考虑使用此群集的邻近区域或同区域中的客户端计算机。
-- 检查是否已达到外部限制。 例如，将映像存储配置为使用 Azure 存储时，可能会限制上传。
+- 检查是否已达到外部限制。 例如，将映像存储区配置为使用 Azure 存储时，可能会限制上传。
 
-问题：上传包已成功完成，但[Register-servicefabricapplicationtype](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)超时。请尝试：
+问题：已成功完成上传包，但 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 超时。请尝试：
 - 复制到映像存储之前[对包进行压缩](service-fabric-package-apps.md#compress-a-package)。
 压缩可减小文件大小，减少文件数量，这反过来会减少通信流量和 Service Fabric 必须执行的工作量。 上传操作可能会变慢（尤其是包括压缩时间时），但注册和注销应用程序类型会加快。
 - 通过 `TimeoutSec` 参数为 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 指定更长的超时。
-- 为 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 指定 `Async` 切换。 当群集接受命令并且应用程序类型的注册以异步方式继续时，该命令将返回。 因此，在此情况下，无需指定较长的超时。 [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) 命令将列出已成功注册的所有应用程序类型版本及其注册状态。 此命令可用于确定注册的完成时间。
+- 为 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 指定 `Async` 开关。 当群集接受命令并且应用程序类型的注册以异步方式继续时，该命令将返回。 因此，在此情况下，无需指定较长的超时。 [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) 命令列出已成功注册的所有应用程序类型版本及其注册状态。 此命令可用于确定注册的完成时间。
 
 ```powershell
 Get-ServiceFabricApplicationType
@@ -383,12 +371,12 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 
 ### <a name="deploy-application-package-with-many-files"></a>部署包含多个文件的应用程序包
 
-问题：[Register-servicefabricapplicationtype](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)具有多个文件 （上千个） 的应用程序包会超时。
+问题：对于包含多个文件（上千个）的应用程序包，[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 超时。
 请尝试：
 - 复制到映像存储之前[对包进行压缩](service-fabric-package-apps.md#compress-a-package)。 压缩可以减少文件数量。
 - 通过 `TimeoutSec` 参数为 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 指定更长的超时。
-- 为 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 指定 `Async` 切换。 当群集接受命令并且应用程序类型的注册以异步方式继续时，该命令将返回。
-因此，在此情况下，无需指定较长的超时。 [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) 命令将列出已成功注册的所有应用程序类型版本及其注册状态。 此命令可用于确定注册的完成时间。
+- 为 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 指定 `Async` 开关。 当群集接受命令并且应用程序类型的注册以异步方式继续时，该命令将返回。
+因此，在此情况下，无需指定较长的超时。 [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) 命令列出已成功注册的所有应用程序类型版本及其注册状态。 此命令可用于确定注册的完成时间。
 
 ```powershell
 Get-ServiceFabricApplicationType

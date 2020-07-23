@@ -4,23 +4,22 @@ description: 本文列出 Azure AD Connect 和 Azure AD Sync 的所有版本
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 10/28/2018
-ms.date: 12/05/2018
-ms.component: hybrid
-ms.author: v-junlch
-ms.openlocfilehash: ff4e170f8f5d8e30004b94bbcfdb0ca3e8c3e04d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 10/28/2018
+ms.subservice: hybrid
+ms.author: billmath
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9ff5c75785622b43e66b808009c4674d4b2f2b50
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60386255"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78300842"
 ---
 # <a name="tls-12-enforcement-for-azure-ad-connect"></a>强制 Azure AD Connect 执行 TLS 1.2
 
@@ -34,12 +33,20 @@ ms.locfileid: "60386255"
 
 
 ### <a name="enable-tls-12"></a>启用 TLS 1.2
-- [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319] "SystemDefaultTlsVersions"=dword:00000001 "SchUseStrongCrypto"=dword:0000001
-- [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319] "SystemDefaultTlsVersions"=dword:00000001 "SchUseStrongCrypto"=dword:00000001
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "Enabled"=dword:00000001
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "DisabledByDefault"=dword:00000000 
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "Enabled"=dword:00000001
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000
+- [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\.NETFramework\v4.0.30319]
+  - "SystemDefaultTlsVersions"=dword:00000001
+  - "SchUseStrongCrypto"=dword:0000001
+- [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\.NETFramework\v4.0.30319]
+  - "SystemDefaultTlsVersions"=dword:00000001
+  - "SchUseStrongCrypto"=dword:00000001
+- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server]
+  - "Enabled"=dword:00000001
+- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server]
+  - "DisabledByDefault"=dword:00000000 
+- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client]
+  - "Enabled"=dword:00000001
+- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client]
+  - "DisabledByDefault"=dword:00000000
 
 ### <a name="powershell-script-to-enable-tls-12"></a>用于启用 TLS 1.2 的 PowerShell 脚本
 可使用以下 PowerShell 脚本在 Azure AD Connect 服务器上启用 TLS 1.2。
@@ -72,12 +79,20 @@ ms.locfileid: "60386255"
 ```
 
 ### <a name="disable-tls-12"></a>禁用 TLS 1.2
-- [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319] "SystemDefaultTlsVersions"=dword:00000000 "SchUseStrongCrypto"=dword:0000000
-- [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319] "SystemDefaultTlsVersions"=dword:00000000 "SchUseStrongCrypto"=dword:00000000
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "Enabled"=dword:00000000
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "DisabledByDefault"=dword:00000001
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "Enabled"=dword:00000000
-- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000001 
+- [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\.NETFramework\v4.0.30319]
+  - "SystemDefaultTlsVersions"=dword:00000000
+  - "SchUseStrongCrypto"=dword:0000000
+- [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\.NETFramework\v4.0.30319]
+  - "SystemDefaultTlsVersions"=dword:00000000
+  - "SchUseStrongCrypto"=dword:00000000
+- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server]
+  - "Enabled"=dword:00000000
+- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server]
+  - "DisabledByDefault"=dword:00000001
+- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client]
+  - "Enabled"=dword:00000000
+- [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client]
+  - "DisabledByDefault"=dword:00000001 
 
 ### <a name="powershell-script-to-disable-tls-12"></a>用于禁用 TLS 1.2 的 PowerShell 脚本
 可使用以下 PowerShell 脚本在 Azure AD Connect 服务器上禁用 TLS 1.2。\
@@ -110,5 +125,4 @@ ms.locfileid: "60386255"
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
-
+* [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)

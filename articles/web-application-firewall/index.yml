@@ -1,0 +1,59 @@
+### YamlMime:Landing
+title: Web 应用程序防火墙文档
+summary: Web 应用程序防火墙 (WAF) 为 Web 应用程序提供集中保护，使其免受常见攻击和漏洞的侵害。 可以在 Azure 应用程序网关上部署 WAF，或者在 Azure Front Door 服务上部署 WAF。
+metadata:
+  title: Web 应用程序防火墙文档
+  description: 了解可以通过应用程序网关和 Front Door 部署的 Web 应用程序防火墙
+  services: web-application-firewall
+  ms.service: web-application-firewall
+  ms.topic: landing-page
+  author: vhorne
+  ms.author: victorh
+  ms.date: 03/27/2020
+  ms.openlocfilehash: 023755687ccee87a3e08cb3a089ad56f196bcbff
+  ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81536550"
+landingContent:
+- title: 概述
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Web 应用程序防火墙？
+      url: overview.md
+    - text: 应用程序网关上的 Web 应用程序防火墙
+      url: ./ag/ag-overview.md
+    - text: Front Door 上的 Web 应用程序防火墙
+      url: ./afds/afds-overview.md
+    - text: Azure CDN 上的 Web 应用程序防火墙
+      url: ./cdn/cdn-overview.md
+- title: 入门
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 应用程序网关上的 Web 应用程序防火墙
+      url: ./ag/application-gateway-web-application-firewall-portal.md
+    - text: Front Door 上的 Web 应用程序防火墙
+      url: ./afds/waf-front-door-create-portal.md
+    - text: Azure CDN 上的 WAF 策略
+      url: ./cdn/waf-cdn-create-portal.md
+- title: 管理应用程序网关上的 WAF 规则
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 自定义 Azure 应用程序网关上的 Web 应用程序防火墙规则
+      url: ./ag/application-gateway-customize-waf-rules-portal.md
+  - linkListType: overview
+    links:
+    - text: Web 应用程序防火墙 CRS 规则组和规则
+      url: ./ag/application-gateway-crs-rulegroups-rules.md
+- title: 配置 Front Door 上的 WAF
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 配置机器人防护
+      url: ./afds/waf-front-door-policy-configure-bot-protection.md
+    - text: 配置自定义响应
+      url: ./afds/waf-front-door-configure-custom-response-code.md

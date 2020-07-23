@@ -1,26 +1,26 @@
 ---
-title: 创建托管多个网站的应用程序网关 - Azure PowerShell
+title: 使用 PowerShell 托管多个网站
+titleSuffix: Azure Application Gateway
 description: 了解如何使用 Azure Powershell 创建托管多个网站的应用程序网关。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 7/13/2018
+ms.topic: how-to
+ms.date: 07/20/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 9309778ad173e0c2588fa8814b16c7026e9ae7ba
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
-ms.translationtype: HT
+ms.openlocfilehash: f6c6dd18ba57d83aa235f66285e7cb2ed42c1703
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729559"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524952"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>使用 Azure PowerShell 创建托管多个网站的应用程序网关
 
-创建[应用程序网关](overview.md)时，可以使用 Azure Powershell 配置[多个网站的托管](multiple-site-overview.md)。 本教程使用虚拟机规模集定义后端地址池。 然后，基于所拥有的域配置侦听器和规则，以确保 Web 流量可到达池中的相应服务器。 本教程假定你拥有多个域，并使用示例 *www.contoso.com* 和 *www.fabrikam.com* 。
+创建[应用程序网关](overview.md)时，可以使用 Azure Powershell 配置[多个网站的托管](multiple-site-overview.md)。 本文使用虚拟机规模集定义后端地址池。 然后，基于所拥有的域配置侦听器和规则，以确保 Web 流量可到达池中的相应服务器。 本文假定你拥有多个域，使用示例 www.contoso.com 和 www.fabrikam.com   。
 
-本教程介绍如何执行下列操作：
+在本文中，学习如何：
 
 > [!div class="checklist"]
 > * 设置网络
@@ -30,7 +30,7 @@ ms.locfileid: "66729559"
 > * 使用后端池创建虚拟机规模集
 > * 在域中创建 CNAME 记录
 
-![多站点路由示例](./media/tutorial-multiple-sites-powershell/scenario.png)
+:::image type="content" source="./media/tutorial-multiple-sites-powershell/scenario.png" alt-text="多站点应用程序网关":::
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -38,7 +38,7 @@ ms.locfileid: "66729559"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块版本 1.0.0 或更高版本。 若要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 来创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 若要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -122,9 +122,13 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-listeners-and-rules"></a>创建侦听器和规则
 
-应用程序网关需要侦听器才能适当地将流量路由到后端地址池。 在本教程中，将为两个域创建两个侦听器。 在此示例中，将为域 *www.contoso.com* 和 *www.fabrikam.com* 创建侦听器。
+应用程序网关需要侦听器才能适当地将流量路由到后端地址池。 在本文中，将为两个域创建两个侦听器。 侦听器是为 contoso.com  和 fabrikam.com  域创建的。
 
 使用 [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) 以及前面创建的前端配置和前端端口创建第一个侦听器。 侦听器需要使用规则来了解哪个后端池使用传入流量。 使用 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) 创建一个名为 *contosoRule* 的基本规则。
+
+>[!NOTE]
+> 使用应用程序网关或 WAF v2 SKU，你还可以为每个侦听器配置最多5个主机名，并且可以在主机名中使用通配符。 有关详细信息，请参阅[侦听器中的通配符主机名](multiple-site-overview.md#wildcard-host-names-in-listener-preview)。
+>若要使用 Azure PowerShell 在侦听器中使用多个主机名和通配符，则必须使用 `-HostNames` 而不是 `-HostName` 。 利用主机名，可以将最多5个主机名称视为逗号分隔值。 例如： `-HostNames "*.contoso.com,*.fabrikam.com"`
 
 ```azurepowershell-interactive
 $contosolistener = New-AzApplicationGatewayHttpListener `
@@ -227,7 +231,7 @@ for ($i=1; $i -le 2; $i++)
     -ImageReferencePublisher MicrosoftWindowsServer `
     -ImageReferenceOffer WindowsServer `
     -ImageReferenceSku 2016-Datacenter `
-    -ImageReferenceVersion latest
+    -ImageReferenceVersion latest `
     -OsDiskCreateOption FromImage
 
   Set-AzVmssOsProfile $vmssConfig `
@@ -276,7 +280,7 @@ for ($i=1; $i -le 2; $i++)
 
 ## <a name="create-cname-record-in-your-domain"></a>在域中创建 CNAME 记录
 
-使用其公共 IP 地址创建应用程序网关后，可以获取 DNS 地址并使用它在域中创建 CNAME 记录。 可以使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 获取应用程序网关的 DNS 地址。 复制 DNSSettings 的 *fqdn* 值并使用它作为所创建的 CNAME 记录的值。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
+使用其公共 IP 地址创建应用程序网关后，可以获取 DNS 地址并使用它在域中创建 CNAME 记录。 可以使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 获取应用程序网关的 DNS 地址。 复制 DNSSettings 的 *fqdn* 值并使用它作为所创建的 CNAME 记录的值。 不建议使用-记录，因为在 V1 SKU 中重新启动应用程序网关时，VIP 可能会发生变化。
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -284,7 +288,7 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-在浏览器的地址栏中输入域名。 例如 [http://40.121.222.19](http://www.contoso.com)。
+在浏览器的地址栏中输入域名。 例如，http:\//www.contoso.com。
 
 ![在应用程序网关中测试 contoso 站点](./media/tutorial-multiple-sites-powershell/application-gateway-iistest.png)
 
@@ -302,15 +306,4 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
-
-> [!div class="checklist"]
-> * 设置网络
-> * 创建应用程序网关
-> * 创建后端侦听器
-> * 创建路由规则
-> * 使用后端池创建虚拟机规模集
-> * 在域中创建 CNAME 记录
-
-> [!div class="nextstepaction"]
-> [使用基于 URL 路径的路由规则创建应用程序网关](./tutorial-url-route-powershell.md)
+[使用基于 URL 路径的路由规则创建应用程序网关](./tutorial-url-route-powershell.md)

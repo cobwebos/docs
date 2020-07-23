@@ -1,11 +1,11 @@
 ---
-title: 使用 Azure 通知中心向特定的 Android 应用程序用户推送通知 | Microsoft Docs
+title: 使用 Azure 通知中心向特定的 Android 应用发送推送通知
 description: 了解如何使用 Azure 通知中心向特定用户推送通知。
 documentationcenter: android
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: ae0e17a8-9d2b-496e-afd2-baa151370c25
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/01/2019
-ms.author: jowargo
-ms.openlocfilehash: 86a2cd824d1896211efd40bb8aa1d007149ef2db
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 09/11/2019
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 09/11/2019
+ms.openlocfilehash: 16191dfd33d5211fbd082bc1f7e458a238bb2138
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203581"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224207"
 ---
-# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定的 Android 应用程序用户推送通知
+# <a name="tutorial-send-push-notifications-to-specific-android-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定的 Android 应用发送推送通知
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
@@ -149,7 +151,7 @@ ms.locfileid: "65203581"
 
     `main_activity.xml` 的图形布局现在应如下图所示：
 
-    ![][A1]
+    ![显示主活动 XML 图形布局外观的仿真器的屏幕截图。][A1]
 3. 在 `MainActivity` 类所在的包中创建一个名为 `RegisterClient` 的新类。 将以下代码用于新的类文件。
 
     ```java
@@ -276,7 +278,7 @@ ms.locfileid: "65203581"
         super.onCreate(savedInstanceState);
 
         mainActivity = this;
-        MyHandler.createChannelAndHandleNotifications(getApplicationContext());
+        FirebaseService.createChannelAndHandleNotifications(getApplicationContext());
         fcm = FirebaseInstanceId.getInstance();
         registerClient = new RegisterClient(this, BACKEND_ENDPOINT);
         setContentView(R.layout.activity_main);
@@ -470,7 +472,14 @@ ms.locfileid: "65203581"
     ```java
     useLibrary 'org.apache.http.legacy'
     ```
-13. 生成项目。
+13. 如果你的应用面向 API 级别 28 (Android 9.0) 或更高版本，请在 `AndroidManifest.xml` 的 `<application>` 元素中包含以下声明。
+
+    ```xml
+    <uses-library
+        android:name="org.apache.http.legacy"
+        android:required="false" />
+    ```
+14. 生成项目。
 
 ## <a name="test-the-app"></a>测试应用程序
 
@@ -478,7 +487,7 @@ ms.locfileid: "65203581"
 2. 在 Android 应用中，输入用户名和密码。 它们必须都是相同的字符串值，并且不能包含空格或特殊字符。
 3. 在 Android 应用中，单击“登录”。 等待指示“已登录并已注册”的 toast 消息。 它启用“发送通知”按钮。
 
-    ![][A2]
+    ![仿真器的屏幕截图，显示登录后 NotificationHubsNotifyUsers 应用的外观。][A2]
 4. 单击切换按钮，以启用已在其中运行该应用并已注册用户的所有平台。
 5. 输入接收通知消息的用户的名称。 必须已在目标设备上为通知注册该用户。
 6. 为用户输入要接收为推送通知的消息。

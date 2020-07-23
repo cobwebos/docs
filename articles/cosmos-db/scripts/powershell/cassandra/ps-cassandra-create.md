@@ -1,19 +1,20 @@
 ---
-title: Azure PowerShell 脚本-Azure Cosmos DB 创建 Cassandra API 密钥空间和表
-description: Azure PowerShell 脚本-Azure Cosmos DB 创建 Cassandra API 密钥空间和表
+title: PowerShell 脚本：创建 Azure Cosmos DB Cassandra API 密钥空间和表
+description: Azure PowerShell 脚本 - Azure Cosmos DB 创建 Cassandra API 密钥空间和表
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
-ms.date: 05/18/2019
+ms.subservice: cosmosdb-cassandra
+ms.topic: sample
+ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: ab654699fb040b5e3f966b3514f97436c27ca6e2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: fd9b1c7da5a4fbfa2bbe94bf8cceca39392ab5af
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247014"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659762"
 ---
-# <a name="create-a-keyspace-and-table-for-azure-cosmos-db---cassandra-api"></a>适用于 Azure Cosmos DB 的 Cassandra API 创建的密钥空间和表
+# <a name="create-a-keyspace-and-table-for-azure-cosmos-db---cassandra-api"></a>创建 Azure Cosmos DB 的密钥空间和表 - Cassandra API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -35,10 +36,15 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
+|**Azure Cosmos DB**| |
+| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | 创建 Cosmos DB 帐户。 |
+| [New-AzCosmosDBCassandraKeyspace](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandrakeyspace) | 创建 Cosmos DB Cassandra API 密钥空间。 |
+| [New-AzCosmosDBCassandraClusterKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraclusterkey) | 创建 Cosmos DB Cassandra API 群集密钥。 |
+| [New-AzCosmosDBCassandraColumn](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandracolumn) | 创建 Cosmos DB Cassandra API 列。 |
+| [New-AzCosmosDBCassandraSchema](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandraschema) | 创建 Cosmos DB Cassandra API 架构。 |
+| [New-AzCosmosDBCassandraTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbcassandratable) | 创建 Cosmos DB Cassandra API 表。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||

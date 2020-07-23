@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure Cosmos DB 的用于 MongoDB 的 API 查询数据
-description: 了解如何使用 Azure Cosmos DB 的用于 MongoDB 的 API 查询数据。
-author: rimman
-ms.author: rimman
+description: 了解如何使用 MongoDB shell 命令从 Azure Cosmos DB 的 API for MongoDB 查询数据
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
-ms.date: 12/26/2018
+ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 8bdd88652019ceb48cfd9f05d1009271f5b7a8c7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 5283916194d407cebd30ef072907c56ded1c6cb0
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042982"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848938"
 ---
 # <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 查询数据
 
@@ -58,17 +58,20 @@ ms.locfileid: "54042982"
   "isRegistered": false
 }
 ```
-## <a id="examplequery1"></a>示例查询 1 
+## <a name="example-query-1"></a><a id="examplequery1"></a>示例查询 1 
 
 在上述家庭示例文档中，以下查询返回其 ID 字段匹配 `WakefieldFamily` 的文档。
 
 **查询**
-    
-    db.families.find({ id: "WakefieldFamily"})
+
+```bash
+db.families.find({ id: "WakefieldFamily"})
+```
 
 **结果**
 
-    {
+```json
+{
     "_id": "ObjectId(\"58f65e1198f3a12c7090e68c\")",
     "id": "WakefieldFamily",
     "parents": [
@@ -106,19 +109,23 @@ ms.locfileid: "54042982"
     },
     "creationDate": 1431620462,
     "isRegistered": false
-    }
+}
+```
 
-## <a id="examplequery2"></a>示例查询 2 
+## <a name="example-query-2"></a><a id="examplequery2"></a>示例查询 2 
 
 下一个查询返回该家庭中的所有子女。 
 
 **查询**
-    
-    db.families.find( { id: "WakefieldFamily" }, { children: true } )
+
+```bash 
+db.families.find( { id: "WakefieldFamily" }, { children: true } )
+``` 
 
 **结果**
 
-    {
+```json
+{
     "_id": "ObjectId("58f65e1198f3a12c7090e68c")",
     "children": [
       {
@@ -138,28 +145,37 @@ ms.locfileid: "54042982"
         "grade": 8
       }
     ]
-    }
+}
+```
 
-
-## <a id="examplequery3"></a>示例查询 3 
+## <a name="example-query-3"></a><a id="examplequery3"></a>示例查询 3 
 
 下一个查询返回所有已注册的家庭。 
 
 **查询**
-    
-    db.families.find( { "isRegistered" : true })
-**结果**不返回任何文档。 
 
-## <a id="examplequery4"></a>示例查询 4
+```bash
+db.families.find( { "isRegistered" : true })
+``` 
+
+**结果**
+
+不返回任何文档。 
+
+## <a name="example-query-4"></a><a id="examplequery4"></a>示例查询 4
 
 下一个查询返回所有未注册的家庭。 
 
 **查询**
-    
-    db.families.find( { "isRegistered" : false })
+
+```bash
+db.families.find( { "isRegistered" : false })
+``` 
+
 **结果**
 
-     {
+```json
+{
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
     "id": "WakefieldFamily",
     "parents": [{
@@ -193,18 +209,22 @@ ms.locfileid: "54042982"
     "creationDate": 1431620462,
     "isRegistered": false
 }
+```
 
-## <a id="examplequery5"></a>示例查询 5
+## <a name="example-query-5"></a><a id="examplequery5"></a>示例查询 5
 
 下一个查询返回所有未注册且所在州为纽约 (NY) 的家庭。 
 
 **查询**
-    
-     db.families.find( { "isRegistered" : false, "address.state" : "NY" })
+
+```bash
+db.families.find( { "isRegistered" : false, "address.state" : "NY" })
+``` 
 
 **结果**
 
-     {
+```json
+{
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
     "id": "WakefieldFamily",
     "parents": [{
@@ -238,19 +258,22 @@ ms.locfileid: "54042982"
     "creationDate": 1431620462,
     "isRegistered": false
 }
+```
 
-
-## <a id="examplequery6"></a>示例查询 6
+## <a name="example-query-6"></a><a id="examplequery6"></a>示例查询 6
 
 下一个查询返回子女读 8 年级的所有家庭。
 
 **查询**
-  
-     db.families.find( { children : { $elemMatch: { grade : 8 }} } )
+
+```bash
+db.families.find( { children : { $elemMatch: { grade : 8 }} } )
+```
 
 **结果**
 
-     {
+```json
+{
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
     "id": "WakefieldFamily",
     "parents": [{
@@ -284,14 +307,17 @@ ms.locfileid: "54042982"
     "creationDate": 1431620462,
     "isRegistered": false
 }
+```
 
-## <a id="examplequery7"></a>示例查询 7
+## <a name="example-query-7"></a><a id="examplequery7"></a>示例查询 7
 
 下一个查询返回有 3 个子女的家庭。
 
 **查询**
-  
-      db.Family.find( {children: { $size:3} } )
+
+```bash
+db.Family.find( {children: { $size:3} } )
+```
 
 **结果**
 

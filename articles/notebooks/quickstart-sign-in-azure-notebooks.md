@@ -1,26 +1,18 @@
 ---
-title: 登录到 Azure Notebooks
-description: 快速登录到 Azure Notebooks 并设置用户 ID，这使你能够访问已保存的项目并与他人共享笔记本。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: douge
-ms.assetid: fb8c94b1-6d0a-4b77-8d14-ae6efcdd99f4
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: 登录到 Azure Notebooks 预览版
+description: 快速登录到 Azure Notebooks 预览版并设置用户 ID，你将能够访问已保存的项目并与他人共享笔记本。
 ms.topic: quickstart
 ms.date: 04/15/2019
-ms.author: kraigb
-ms.openlocfilehash: a9ba6fcc0c8b74664f5c4b32e54530fb4aaa2881
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 8a2d9836cd005ab11106c569929a6776d605da50
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66751728"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85830411"
 ---
-# <a name="quickstart-sign-in-and-set-a-user-id"></a>快速入门：登录并设置用户 ID
+# <a name="quickstart-sign-in-and-set-a-user-id-for-azure-notebooks-preview"></a>快速入门：登录 Azure Notebooks 预览版并设置用户 ID
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 虽然始终都可以在未登录的情况下查看 Azure Notebooks，但必须登录才能运行笔记本、访问保存的项目和笔记本以及与他人共享笔记本。
 

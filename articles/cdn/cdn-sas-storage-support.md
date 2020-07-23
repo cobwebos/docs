@@ -3,23 +3,23 @@ title: 将 Azure CDN 与 SAS 一起使用 | Microsoft Docs
 description: Azure CDN 支持使用共享访问签名 (SAS) 授予受限制的私有存储容器访问权限。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/21/2018
-ms.author: magattus
-ms.openlocfilehash: 7edf0a9f8d4eb4c01b6d80fd82a1061b6cbb1e35
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: c1deffe36df081908294d3c7fe58a17c8a454687
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60324074"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887041"
 ---
 # <a name="using-azure-cdn-with-sas"></a>将 Azure CDN 与 SAS 一起使用
 
@@ -32,7 +32,7 @@ ms.locfileid: "60324074"
 ## <a name="setting-up-azure-cdn-to-work-with-storage-sas"></a>设置 Azure CDN 以用于存储 SAS
 对于将 SAS 与 Azure CDN 一起使用，建议使用以下三个选项。 所有选项都假设已创建了一个有效的 SAS（请参阅先决条件）。 
  
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 首先创建存储帐户，然后为资产生成 SAS。 可以生成两种类型的存储访问签名：服务 SAS 或帐户 SAS。 有关详细信息，请参阅[共享访问签名的类型](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1#types-of-shared-access-signatures)。
 
 生成 SAS 令牌后，可将 `?sv=<SAS token>` 追加到 URL，访问 blob 存储文件。 此 URL 格式如下： 
@@ -44,15 +44,15 @@ ms.locfileid: "60324074"
 https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&ss=b&srt=co&sp=r&se=2038-01-02T21:30:49Z&st=2018-01-02T13:30:49Z&spr=https&sig=QehoetQFWUEd1lhU5iOMGrHBmE727xYAbKJl5ohSiWI%3D
 ```
 
-有关设置参数的详细信息，请参阅 [SAS 参数注意事项](#sas-parameter-considerations)和[共享访问签名参数](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1#shared-access-signature-parameters)。
+有关设置参数的详细信息，请参阅 [SAS 参数注意事项](#sas-parameter-considerations)和[共享访问签名参数](https://docs.microsoft.com/azure/storage/common/storage-sas-overview#how-a-shared-access-signature-works)。
 
 ![CDN SAS 设置](./media/cdn-sas-storage-support/cdn-sas-settings.png)
 
-### <a name="option-1-using-sas-with-pass-through-to-blob-storage-from-azure-cdn"></a>选项 1：使用 SAS 传递到 blob 存储从 Azure CDN
+### <a name="option-1-using-sas-with-pass-through-to-blob-storage-from-azure-cdn"></a>选项 1：使用从 Azure CDN 传递到 blob 存储的 SAS
 
 此选项最为简单，并且仅使用从 Azure CDN 传递到源服务器的单个 SAS 令牌。
  
-1. 选择一个终结点，选择“缓存规则”，然后从“查询字符串缓存”列表中选择“缓存每个唯一的 URL”。
+1. 选择一个终结点，选择“缓存规则”，然后从“查询字符串缓存”列表中选择“缓存每个唯一的 URL”  。
 
     ![CDN 缓存规则](./media/cdn-sas-storage-support/cdn-caching-rules.png)
 
@@ -97,7 +97,7 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
 
 3. 使用缓存规则或在源服务器处添加 `Cache-Control` 标头来微调缓存持续时间。 由于 Azure CDN 将 SAS 令牌视为普通查询字符串，因此，最佳做法是应该设置在 SAS 到期时或到期之前到期的缓存持续时间。 否则，如果文件的缓存持续时间长于 SAS 的有效时间，在 SAS 到期之后，则可从 Azure CDN 源服务器访问此文件。 如果出现这种情况，并且你需要使缓存文件不可访问，则必须对文件执行清除操作以将其从缓存中清除。 有关对 Azure CDN 设置缓存持续时间的信息，请参阅[使用缓存规则控制 Azure CDN 缓存行为](cdn-caching-rules.md)。
 
-### <a name="option-3-using-cdn-security-token-authentication-with-a-rewrite-rule"></a>选项 3：与重写规则使用 CDN 安全令牌身份验证
+### <a name="option-3-using-cdn-security-token-authentication-with-a-rewrite-rule"></a>选项 3：通过重写规则使用 CDN 安全令牌身份验证
 
 若要使用 Azure CDN 安全令牌身份验证，必须具有来自 Verizon 的 Azure CDN Premium 配置文件。 此选项最为安全且可进行自定义。 客户端访问基于安全令牌上设置的安全参数。 创建并设置安全令牌以后，所有 CDN 终结点 URL 上都需要该令牌。 不过，由于 URL 重写规则的缘故，CDN 终结点上不需要 SAS 令牌。 如果 SAS 令牌稍后变为无效，Azure CDN 将再也不能通过源服务器来重新验证内容。
 
@@ -133,7 +133,7 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
 
 由于 SAS 参数对 Azure CDN 不可见，因此，Azure CDN 无法根据这些参数更改其交付行为。 定义的参数限制仅适用于 Azure CDN 对源服务器发出的请求，不适用于从客户端到 Azure CDN 的请求。 在设置 SAS 参数时务必要考虑到此区别。 如果需要这些高级功能并且正在使用[选项 3](#option-3-using-cdn-security-token-authentication-with-a-rewrite-rule)，请对 Azure CDN 安全令牌设置适当的限制。
 
-| SAS 参数名称 | 描述 |
+| SAS 参数名称 | 说明 |
 | --- | --- |
 | 开始 | Azure CDN 可以开始访问 blob 文件的时间。 由于存在时钟偏差 （当时钟信号在不同时间到达不同组件时），因此，如果希望资产立即可用，请选择一个提早 15 分钟的时间。 |
 | 结束 | Azure CDN 不可再访问 blob 文件的时间。 之前缓存在 Azure CDN 上的文件仍可访问。 若要控制文件到期时间，请在 Azure CDN 安全令牌上设置适当的到期时间或清除资产。 |

@@ -10,16 +10,15 @@ ms.assetid: 5189f3d8-2a4c-4dc8-ab19-11c7df0114d4
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 11/19/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 0f339984a9db1a337f97e6db24571004cc34f679
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9bbb7ef46fbde881c8968128870d24a03b046c23
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60657639"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73176790"
 ---
 # <a name="developer-portal-templates"></a>开发人员门户模板
 
@@ -27,14 +26,16 @@ ms.locfileid: "60657639"
   
 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](api-management-developer-portal-templates.md)。  
 
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
+
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-##  <a name="DeveloperPortalTemplates"></a> 开发人员门户模板  
+##  <a name="developer-portal-templates"></a><a name="DeveloperPortalTemplates"></a> 开发人员门户模板  
   
 -   [API](api-management-api-templates.md)  
     -   [API 列表](api-management-api-templates.md#APIList)  
     -   [操作](api-management-api-templates.md#Product)  
-    -   [代码示例](api-management-api-templates.md#CodeSamples)  
+    -   [示例代码](api-management-api-templates.md#CodeSamples)  
         -   [Curl](api-management-api-templates.md#Curl)  
         -   [C#](api-management-api-templates.md#CSharp)  
         -   [Java](api-management-api-templates.md#Stub)  
@@ -45,7 +46,7 @@ ms.locfileid: "60657639"
         -   [Ruby](api-management-api-templates.md#Ruby)  
 -   [产品](api-management-product-templates.md)  
     -   [产品列表](api-management-product-templates.md#ProductList)  
-    -   [产品](api-management-product-templates.md#Product)  
+    -   [Product](api-management-product-templates.md#Product)  
 -   [应用程序](api-management-application-templates.md)  
     -   [应用程序列表](api-management-application-templates.md#ProductList)  
     -   [应用程序](api-management-application-templates.md#Application)  

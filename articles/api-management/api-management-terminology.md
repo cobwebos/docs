@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 10/11/2017
 ms.author: apimpm
 ms.openlocfilehash: b99ca444532799d21850058eae0e3f40ed871135
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61074048"
 ---
 # <a name="terminology"></a>术语

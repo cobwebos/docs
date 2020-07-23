@@ -1,5 +1,5 @@
 ---
-title: 管理 StorSimple 8000 系列设备上的 StorSimple 卷容器 | Microsoft Docs
+title: 管理 StorSimple 8000 系列设备的卷容器
 description: 介绍如何使用“StorSimple Device Manager 服务卷容器”页添加、修改或删除卷容器。
 services: storsimple
 documentationcenter: NA
@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 7e1a5ac2c2b734c77fc3dbe788206f8c75044953
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5a6cd904d7baa71c8b383022523909ca30000ce8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60724554"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514999"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-volume-containers"></a>使用 StorSimple Device Manager 服务管理 StorSimple 卷容器
 
@@ -31,11 +31,11 @@ Microsoft Azure StorSimple 设备中的卷容器包含一个或多个卷，这�
 卷容器具有以下属性：
 
 * **卷** – 卷容器中包含的分层的或本地固定 StorSimple 卷。 
-* **加密** – 可以为每个卷容器定义的加密密钥。 此密钥用于对从 StorSimple 设备发送到云的数据进行加密。 军用级 AES 256 位密钥与用户输入的密钥配合使用。 为保护数据安全，建议始终启用云存储加密。
+* **加密** – 加密密钥，每个卷容器均可定义一个。 此密钥用于对从 StorSimple 设备发送到云的数据进行加密。 军用级 AES 256 位密钥与用户输入的密钥配合使用。 为保护数据安全，建议始终启用云存储加密。
 * **存储帐户** - 用于存储数据的 Azure 存储帐户。 同一卷容器中的所有卷都共享此存储帐户。 可以从现有列表中选择一个存储帐户，也可以在创建卷容器时创建一个新帐户，并为该帐户指定访问凭据。
-* **云带宽** – 从设备向云发送数据时设备使用的带宽。 创建此容器时，可以通过指定一个介于 1 Mbps 和 1,000 Mbps 之间的值来强制实施带宽控制。 如果想要设备使用所有可用带宽，请将此字段设置为“无限制”。 还可以创建并应用一个带宽模板以基于计划分配带宽。
+* **云带宽** – 将数据从设备发送到云中时设备所使用的带宽。 创建此容器时，可以通过指定一个介于 1 Mbps 和 1,000 Mbps 之间的值来强制实施带宽控制。 如果你希望设备使用所有可用带宽，请将此字段设置为 **“无限制”**。 还可以创建并应用一个带宽模板以基于计划分配带宽。
 
-以下过程介绍了如何使用 StorSimple“卷容器”边栏选项卡完成以下常见操作：
+以下过程介绍了如何使用 StorSimple“卷容器”**** 边栏选项卡完成以下常见操作：
 
 * 添加卷容器
 * 修改卷容器
@@ -58,5 +58,5 @@ Microsoft Azure StorSimple 设备中的卷容器包含一个或多个卷，这�
 
 ## <a name="next-steps"></a>后续步骤
 * 详细了解[管理 StorSimple 卷](storsimple-8000-manage-volumes-u2.md)。 
-* 了解有关如何[使用 StorSimple Device Manager 服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)的详细信息。
+* 了解有关如何[使用 StorSimple 设备管理器服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)的详细信息。
 

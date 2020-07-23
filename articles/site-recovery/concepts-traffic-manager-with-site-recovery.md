@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 6c77cd43231d4596535c11564313a0fe90633cdb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bb112e0b2d1c64e65ecaf6749a25707d8632c0cb
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60947712"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134960"
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>将 Azure 流量管理器与 Azure Site Recovery 配合使用
 
@@ -30,7 +30,7 @@ ms.locfileid: "60947712"
 **公司 A** 使用公共终结点运行应用程序，希望在发生灾难时能够无缝将流量重定向到 Azure。 公司 A 可以使用 Azure 流量管理器中的[优先级](../traffic-manager/traffic-manager-configure-priority-routing-method.md)流量路由方法来轻松实现此故障转移模式。
 
 设置如下：
-- **公司 A** 创建[流量管理器配置文件](../traffic-manager/traffic-manager-create-profile.md)。
+- **公司 A** 创建[流量管理器配置文件](../traffic-manager/quickstart-create-traffic-manager-profile.md)。
 - **公司 A** 利用**优先级**路由方法创建两个终结点 – 针对本地的**主要**终结点，针对 Azure 的**故障转移**终结点。 为**主要**终结点分配优先级 1，为**故障转移**终结点分配优先级 2。
 - 由于**主要**终结点托管在 Azure 外部，因此该终结点创建为[外部](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)终结点。
 - 使用 Azure Site Recovery 时，Azure 站点在故障转移之前不会运行任何虚拟机或应用程序。 因此，**故障转移**终结点也创建为**外部**终结点。
@@ -65,7 +65,7 @@ Azure 流量管理器的[加权](../traffic-manager/traffic-manager-configure-we
 **公司 C** 使用公共终结点运行应用程序，希望在发生灾难时能够无缝将流量重定向到不同的 Azure 区域。 **公司 C** 客户可以通过[优先级](../traffic-manager/traffic-manager-configure-priority-routing-method.md)流量路由方法来轻松实现此故障转移模式。
 
 设置如下：
-- **公司 C** 创建[流量管理器配置文件](../traffic-manager/traffic-manager-create-profile.md)。
+- **公司 C** 创建[流量管理器配置文件](../traffic-manager/quickstart-create-traffic-manager-profile.md)。
 - **公司 C** 利用**优先级**路由方法创建两个终结点 – 针对源区域（Azure 东亚）的**主要**终结点，以及针对恢复区域（Azure 东南亚）的**故障转移**终结点。 为**主要**终结点分配优先级 1，为**故障转移**终结点分配优先级 2。
 - 由于**主要**终结点托管于 Azure 中，因此它可以用作 [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) 终结点。
 - 使用 Azure Site Recovery 时，Azure 恢复站点在故障转移之前不会运行任何虚拟机或应用程序。 因此，**故障转移**终结点可创建为[外部](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)终结点。

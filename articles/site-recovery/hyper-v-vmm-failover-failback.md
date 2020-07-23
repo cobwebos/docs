@@ -1,19 +1,18 @@
 ---
-title: 在灾难恢复期间使用 Azure Site Recovery 故障转移并故障回复复制到辅助数据中心的 Hyper-V VM | Microsoft Docs
+title: 使用 Azure Site Recovery 设置故障转移/故障回复到辅助 Hyper-v 站点
 description: 了解如何在灾难恢复期间使用 Azure Site Recovery 将 Hyper-V VM 故障转移到辅助本地站点以及故障回复到主站点。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 39b2e4f37abe77439410fa4a83e06a0ca7941787
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
-ms.translationtype: MT
+ms.openlocfilehash: d31355bcb0ce42874c19988738ba06138c7a0b7c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66398000"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74082599"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>对复制到辅助本地站点的 Hyper-V VM 进行故障转移和故障回复
 
@@ -35,7 +34,7 @@ ms.locfileid: "66398000"
 3. 在计划的故障转移之后，可以选择再次开始从主站点复制到辅助站点。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - 确保已完成[灾难恢复演练](hyper-v-vmm-test-failover.md)，检查所有内容是否都按预期工作。
 - 若要完成故障回复，请确保主和辅助 VMM 服务器已连接到 Site Recovery。
@@ -52,13 +51,13 @@ ms.locfileid: "66398000"
   本过程介绍如何运行常规故障转移。
 
 
-1. 在“设置” > “复制的项”中，单击“VM”>“故障转移”    。
+1. 在 "**设置**"  >  "**复制的项**" 中，单击 VM >**故障转移**。
 1. 如果希望 Site Recovery 在触发故障转移之前尝试关闭源 VM，请选择“在开始故障转移前关闭计算机”  。 在触发故障转移前，Site Recovery 还会尝试同步尚未发送到辅助站点的本地数据。 请注意：即使关机失败，故障转移也仍会继续。 可以在“作业”页上跟踪故障转移进度。 
 2. 你现在应能够在辅助 VMM 云中看到 VM。
 3. 验证 VM 后，“提交”  故障转移。 这会删除所有可用的恢复点。
 
 > [!WARNING]
-> **不会取消正在进行的故障转移**：在故障转移开始前，VM 复制已停止。 如果取消正在进行的故障转移，故障转移会停止，但 VM 将不再进行复制。  
+> **请勿取消正在进行的故障转移**：在故障转移开始前，停止 VM 复制。 如果取消正在进行的故障转移，故障转移会停止，但 VM 将不再进行复制。  
 
 
 ## <a name="reverse-replicate-and-failover"></a>反向复制和故障转移

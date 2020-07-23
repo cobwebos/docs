@@ -1,21 +1,18 @@
 ---
 title: 使用 Azure Application Insights 监视 ASP.NET Web 应用 | Microsoft Docs
 description: 提供有关快速安装 ASP.NET Web 应用以使用 Application Insights 进行监视的说明
-services: application-insights
-keywords: ''
+ms.subservice: application-insights
+ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 04/01/2019
-ms.service: application-insights
+ms.date: 06/26/2019
 ms.custom: mvc
-ms.topic: quickstart
-manager: carmonm
-ms.openlocfilehash: 08745c3ef3d4996340ec40af496f8f0a5e0201c3
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 074010a2f3b1f4f4a58b3c4727bf4eed28402e0a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595736"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82142619"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>开始监视 ASP.NET Web 应用程序
 
@@ -23,10 +20,10 @@ ms.locfileid: "65595736"
 
 本快速入门演示如何将 Application Insights 添加到现有 ASP.NET Web 应用程序并开始分析实时统计信息，这只是可用来分析应用程序的各种方法之一。 如果没有 ASP.NET Web 应用程序，则可以按照[创建 ASP.NET Web 应用快速入门](../../app-service/app-service-web-get-started-dotnet-framework.md)创建一个。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 完成本快速入门教程需要：
 
-- 使用以下工作负荷安装 [Visual Studio 2019](https://www.visualstudio.com/downloads/)：
+- 使用以下工作负荷安装 [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)：
     - ASP.NET 和 Web 开发
     - Azure 开发
 
@@ -47,7 +44,9 @@ ms.locfileid: "65595736"
 
 4. 选择订阅并单击“注册”  。
 
-5. 通过从“调试”  菜单中选择“启动调试”  或通过按 F5 键来运行应用程序。
+5. 选择“项目” > “管理 NuGet 包” > “包源: nuget.org” > “更新”，将 Application Insights SDK 包更新到最新稳定版本。
+
+6. 通过从“调试”菜单中选择“启动调试”或通过按 F5 键来运行应用程序。
 
 ## <a name="confirm-app-configuration"></a>确认应用配置
 
@@ -63,15 +62,15 @@ Application Insights 收集应用程序的遥测数据，而不考虑应用程�
 
 1. 在解决方案资源管理器中展开“连接的服务”文件夹  （云和插头图标），然后右键单击 **Application Insights** 文件夹，单击“打开 Application Insights 门户”。   可以看到有关应用程序的一些信息和各种选项。
 
-    ![应用程序地图](media/quick-monitor-portal/4overview.png)
+    ![应用程序地图](media/quick-monitor-portal/04-overview.png)
 
 2. 单击“应用程序映射”  以获取应用程序组件之间依赖关系的可视布局。  每个组件均显示 KPI，如负载、性能、失败和警报。
 
-    ![应用程序地图](media/quick-monitor-portal/5appmap.png)
+    ![应用程序地图](media/quick-monitor-portal/05-appmap.png)
 
-3. 单击应用程序组件之一上的“应用分析”  图标 ![应用程序映射](media/quick-monitor-portal/app-analytics-icon.png) **在 Analytics 中查看**。 这将打开“Application Insights Analytics”  ，该软件提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。  在本示例中，将生成以图表形式呈现请求计数的查询。 可以编写自己的查询来分析其他数据。
+3. 单击其中一个应用程序组件上的“应用分析”  图标 ![应用程序映射](media/quick-monitor-portal/app-viewinlogs-icon.png)“在日志(分析)中查看”  。 这将打开“日志(分析)”  ，该软件提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。 在本示例中，将生成以图表形式呈现请求计数的查询。 可以编写自己的查询来分析其他数据。
 
-    ![分析](media/quick-monitor-portal/6viewanalytics.png)
+    ![Analytics](media/quick-monitor-portal/6viewanalytics.png)
 
 4. 在“调查”下，单击左侧的“实时指标流”。  这将显示有关正在运行的应用程序的实时统计信息。 这包括传入请求数、这些请求的持续时间和发生的任何故障等信息。 还可以检查处理器和内存等关键性能指标。
 
@@ -101,10 +100,6 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 ```
 
 若要了解详细信息，请访问适用于[开源 JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS) 的 GitHub 存储库。
-
-## <a name="video"></a>视频
-
-* 有关[从头开始使用 .NET 应用程序配置 Application Insights](https://www.youtube.com/watch?v=blnGAVgMAfA) 的外部分步说明视频。
 
 ## <a name="clean-up-resources"></a>清理资源
 完成测试后，即可删除资源组和所有相关的资源。 为此，请执行以下步骤。

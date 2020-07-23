@@ -1,44 +1,41 @@
 ---
-title: 使用 FTP/S 部署内容 - Azure 应用服务 | Microsoft Docs
-description: 了解如何使用 FTP 或 FTPS 将应用部署到 Azure 应用服务。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: 使用 FTP/S 部署内容
+description: 了解如何使用 FTP 或 FTPS 将应用部署到 Azure 应用服务。 通过禁用未加密的 FTP 来提高网站安全性。
 ms.assetid: ae78b410-1bc0-4d72-8fc4-ac69801247ae
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2018
-ms.author: cephalin;dariac
+ms.date: 09/18/2019
+ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: db8445ec2b3dd8bdefa661d7f186e720c6fada09
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: fcc7c5b8fa182cace6e3dae0b1cae4cd41c5dcb9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130103"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81532575"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>使用 FTP/S 将应用部署到 Azure 应用服务
 
 本文介绍了如何使用 FTP 或 FTPS 将 Web 应用、移动应用后端或 API 应用部署到 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)。
 
-应用的 FTP / S 终结点已处于活动状态。 无需配置即可启用 FTP / S 部署。
+应用的 FTP/S 终结点已处于活动状态。 启用 FTP/S 部署不需要进行任何配置。
 
 ## <a name="open-ftp-dashboard"></a>打开 FTP 仪表板
 
-在 [Azure 门户](https://portal.azure.com)中，打开应用的[资源页](../azure-resource-manager/manage-resources-portal.md#manage-resources)。
+1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“应用服务”。
 
-若要打开 FTP 仪表板，请单击“部署中心” > “FTP” > “仪表板”。
+    ![搜索应用服务。](media/app-service-continuous-deployment/search-for-app-services.png)
 
-![打开 FTP 仪表板](./media/app-service-deploy-ftp/open-dashboard.png)
+2. 选择要部署的 Web 应用。
+
+    ![选择应用。](media/app-service-continuous-deployment/select-your-app.png)
+
+3. 选择“部署中心” > “FTP” > “仪表板”。
+
+    ![打开 FTP 仪表板](./media/app-service-deploy-ftp/open-dashboard.png)
 
 ## <a name="get-ftp-connection-information"></a>获取 FTP 连接信息
 
-在 FTP 仪表板中，单击“复制”以复制 FTPS 终结点和应用凭据。
+在 FTP 仪表板中，选择“复制”以复制 FTPS 终结点和应用凭据。
 
 ![复制 FTP 信息](./media/app-service-deploy-ftp/ftp-dashboard.png)
 
@@ -55,30 +52,30 @@ ms.locfileid: "62130103"
 ## <a name="deploy-files-to-azure"></a>将文件部署到 Azure
 
 1. 从 FTP 客户端（例如 [Visual Studio](https://www.visualstudio.com/vs/community/)、[Cyberduck](https://cyberduck.io/) 或 [WinSCP](https://winscp.net/index.php)），使用收集到的连接信息连接到应用。
-2. 将文件及其各自的目录结构复制到 Azure 中的 [**/site/wwwroot** 目录](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure)（对于 Web 作业，复制到 **/site/wwwroot/App_Data/Jobs/** 目录）。
+2. 将文件及其各自的目录结构复制到 Azure 中的 [/site/wwwroot 目录](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure)（对于 Web 作业，复制到 /site/wwwroot/App_Data/Jobs/ 目录） 。
 3. 浏览到应用的 URL，以验证该应用是否正在正常运行。 
 
 > [!NOTE] 
-> 与[基于Git的部署](deploy-local-git.md)不同，FTP 部署不支持以下部署自动化： 
+> 与[基于 Git 的部署](deploy-local-git.md)不同，FTP 部署不支持以下部署自动化： 
 >
 > - 还原依赖项（如 NuGet、NPM、PIP 和 Composer 自动化）
 > - 编译 .NET 二进制文件
-> - 生成 web.config（此处有一个 [Node.js 示例](https://github.com/projectkudu/kudu/wiki/Using-a-custom-web.config-for-Node-apps)）
+> - 生成 web.config（以下提供一个 [Node.js 示例](https://github.com/projectkudu/kudu/wiki/Using-a-custom-web.config-for-Node-apps)）
 > 
 > 在本地计算机上手动生成这些必要的文件，并将它们与应用一起部署。
 >
 
 ## <a name="enforce-ftps"></a>强制实施 FTPS
 
-为了增强安全性，只应启用基于 SSL 的 FTP。 如果不使用 FTP 部署，也可禁用 FTP 和 FTPS。
+为了增强安全性，只应允许基于 TLS/SSL 的 FTP。 如果不使用 FTP 部署，也可禁用 FTP 和 FTPS。
 
-如果应用的资源页位于 [Azure 门户](https://portal.azure.com)中，请在左侧导航中选择“应用设置”。
+在 [Azure 门户](https://portal.azure.com)的应用资源页中，从左侧导航中选择“配置” > “常规设置”。
 
-若要禁用未加密的 FTP，请选择“仅 FTPS”。 若要将 FTP 和 FTPS 都禁用，请选择“禁用”。 完成后，单击“保存”。 如果使用“仅 FTPS”，则必须通过导航到 Web 应用的“SSL 设置”边栏选项卡来强制实施 TLS 1.2 或更高版本。 TLS 1.0 和 1.1 不支持“仅 FTPS”。
+若要禁用未加密的 FTP，请在“FTP 状态”中选择“仅 FTPS”。 若要完全禁用 FTP 和 FTPS，请选择“禁用”。 完成后，单击“保存”。 如果使用“仅 FTPS”，则必须通过导航到 Web 应用的“TLS/SSL 设置”边栏选项卡来强制实施 TLS 1.2 或更高版本。 TLS 1.0 和 1.1 不支持“仅 FTPS”。
 
 ![禁用 FTP/S](./media/app-service-deploy-ftp/disable-ftp.png)
 
-## <a name="automate-with-scripts"></a>使用脚本自动化
+## <a name="automate-with-scripts"></a>使用脚本自动执行
 
 若要使用 [Azure CLI](/cli/azure) 进行 FTP 部署，请参阅[创建 Web 应用并使用 FTP (Azure CLI) 部署文件](./scripts/cli-deploy-ftp.md)。
 
@@ -113,8 +110,8 @@ Azure 应用服务支持通过“主动”模式和“被动”模式进行连�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更高级的部署方案，请参阅[使用 Git 部署到 Azure](deploy-local-git.md)。 使用 Git 部署到 Azure 支持版本控制、包还原、MSBuild 等。
+有关更高级的部署方案，请参阅[使用 Git 部署到 Azure](deploy-local-git.md)。 通过基于 Git 的 Azure 部署可实现版本控制、包还原、MSBuild 等功能。
 
 ## <a name="more-resources"></a>更多资源
 
-* [Azure 应用服务部署凭据](deploy-configure-credentials.md)
+* [ 部署凭据](deploy-configure-credentials.md)

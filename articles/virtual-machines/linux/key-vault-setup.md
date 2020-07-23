@@ -1,30 +1,23 @@
 ---
-title: 为 Linux VM 设置 Azure Key Vault | Microsoft 文档
+title: 为 Linux Vm 设置 Azure Key Vault
 description: 如何使用 Azure CLI 设置用于 Azure 资源管理器虚拟机的 Key Vault。
-services: virtual-machines-linux
-documentationcenter: ''
-author: singhkays
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: bccdd5ab-5ccf-4760-9039-92c6eafb15bd
+author: mimckitt
+manager: vashan
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/24/2017
-ms.author: kasing
-ms.openlocfilehash: 61be027cd1c919897ff62dd8b1beec4c7fb9b420
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.author: mimckitt
+ms.openlocfilehash: 9ae486ee522982b116af58cfb7cbfbca66a7ef4a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65966213"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81458737"
 ---
 # <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli"></a>如何使用 Azure CLI 为虚拟机设置 Key Vault
 
-在 Azure 资源管理器堆栈中，密码/证书被建模为 Key Vault 所提供的资源。 若要了解有关 Azure 密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](../../key-vault/key-vault-whatis.md) 为了让 Key Vault 能与 Azure 资源管理器 VM 搭配使用，必须将 Key Vault 上的 *EnabledForDeployment* 属性设置为 true。 本文说明如何通过 Azure CLI 设置用于 Azure 虚拟机 (VM) 的 Key Vault。 
+在 Azure Resource Manager 堆栈中，密码/证书被建模为 Key Vault 所提供的资源。 若要了解有关 Azure 密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](../../key-vault/general/overview.md) 为了让 Key Vault 能与 Azure Resource Manager VM 搭配使用，必须将 Key Vault 上的 *EnabledForDeployment* 属性设置为 true。 本文说明如何通过 Azure CLI 设置用于 Azure 虚拟机 (VM) 的 Key Vault。 
 
 若要执行这些步骤，需要安装最新的 [Azure CLI](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户。
 

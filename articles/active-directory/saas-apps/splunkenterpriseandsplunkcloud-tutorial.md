@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: b3e2b4a9-749c-4895-813d-db46f8dfdbf8
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28b98a5001d5b02c61fab1bc6ce06a8f08eaf0e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d64307c4f91839c466b5f3f495cad8d7410ed364
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65866893"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81867312"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>教程：Azure Active Directory 与 Splunk Enterprise and Splunk Cloud 集成
 
@@ -57,7 +58,7 @@ ms.locfileid: "65866893"
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项 。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -65,7 +66,7 @@ ms.locfileid: "65866893"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入 Splunk Enterprise and Splunk Cloud ，从结果面板中选择“Splunk Enterprise and Splunk Cloud”，然后单击“添加”按钮以添加该应用程序。
+4. 在搜索框中，键入 Splunk Enterprise and Splunk Cloud ，从结果面板中选择“Splunk Enterprise and Splunk Cloud”，然后单击“添加”按钮以添加该应用程序  。
 
      ![结果列表中的 Splunk Enterprise and Splunk Cloud](common/search-new-app.png)
 
@@ -89,7 +90,7 @@ ms.locfileid: "65866893"
 
 若要配置 Splunk Enterprise and Splunk Cloud 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 Splunk Enterprise and Splunk Cloud 应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的 Splunk Enterprise and Splunk Cloud 应用程序集成页上，选择“单一登录” 。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,7 +98,7 @@ ms.locfileid: "65866893"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框  。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -112,15 +113,15 @@ ms.locfileid: "65866893"
     c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<splunkserver>/saml/acs`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Splunk Enterprise and Splunk Cloud 客户端支持团队](https://www.splunk.com/about-us/contact.html#tabs/customer-support)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Splunk Enterprise and Splunk Cloud 客户端支持团队](https://www.splunk.com/en_us/about-splunk/contact-us.html)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上   。
 
     ![证书下载链接](common/metadataxml.png)
 
 ### <a name="configure-splunk-enterprise-and-splunk-cloud-single-sign-on"></a>配置 Splunk Enterprise and Splunk Cloud 单一登录
 
-若要在 Splunk Enterprise and Splunk Cloud 端配置单一登录，需要将已下载的联合元数据 XML 和相应已复制的 URL 从 Azure 门户发送到 [Splunk Enterprise and Splunk Cloud 支持团队](https://www.splunk.com/about-us/contact.html#tabs/customer-support)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Splunk Enterprise and Splunk Cloud 端配置单一登录，需要将已下载的联合元数据 XML 和相应已复制的 URL 从 Azure 门户发送到 [Splunk Enterprise and Splunk Cloud 支持团队](https://www.splunk.com/en_us/about-splunk/contact-us.html) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -140,7 +141,7 @@ ms.locfileid: "65866893"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension   
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -151,7 +152,7 @@ ms.locfileid: "65866893"
 
 在本部分中，通过授予 Britta Simon 访问 Splunk Enterprise and Splunk Cloud 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Splunk Enterprise and Splunk Cloud”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Splunk Enterprise and Splunk Cloud”  。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -171,11 +172,11 @@ ms.locfileid: "65866893"
 
 6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。 
 
 ### <a name="create-splunk-enterprise-and-splunk-cloud-test-user"></a>创建 Splunk Enterprise and Splunk Cloud 测试用户
 
-在本部分中，会在 Splunk Enterprise and Splunk Cloud 中创建一个名为“Britta Simon”的用户。 协助  [Splunk Enterprise and Splunk Cloud 支持团队](https://www.splunk.com/about-us/contact.html#tabs/customer-support)，将用户添加到 Splunk Enterprise and Splunk Cloud 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，会在 Splunk Enterprise and Splunk Cloud 中创建一个名为“Britta Simon”的用户。 协助  [Splunk Enterprise and Splunk Cloud 支持团队](https://www.splunk.com/en_us/about-splunk/contact-us.html)，将用户添加到 Splunk Enterprise and Splunk Cloud 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

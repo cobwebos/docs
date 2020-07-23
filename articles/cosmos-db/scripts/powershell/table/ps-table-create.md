@@ -1,19 +1,20 @@
 ---
-title: Azure PowerShell 脚本-Azure Cosmos DB 创建表 API 表
-description: Azure PowerShell 脚本-Azure Cosmos DB 创建表 API 表
+title: 用于创建表的 PowerShell 脚本 - Azure Cosmos DB 表 API
+description: 了解如何使用 PowerShell 脚本更新 Azure Cosmos DB 表 API 中数据库或容器的吞吐量
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
-ms.date: 05/18/2019
+ms.subservice: cosmosdb-table
+ms.topic: sample
+ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: d159ea7c4b48f7b028ed2c3774713fc1d1384153
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: ba5a9561242219652d3f72300f0b0559cfb867b3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247314"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659947"
 ---
-# <a name="create-a-table-for-azure-cosmos-db---table-api"></a>适用于 Azure Cosmos DB-表 API 创建表
+# <a name="create-a-table-for-azure-cosmos-db---table-api"></a>为 Azure Cosmos DB 创建表 - 表 API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -35,10 +36,11 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
+|**Azure Cosmos DB**| |
+| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | 创建 Cosmos DB 帐户。 |
+| [New-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbtable) | 创建表 API 表。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||

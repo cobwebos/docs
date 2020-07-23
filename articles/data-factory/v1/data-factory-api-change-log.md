@@ -1,25 +1,22 @@
 ---
-title: 数据工厂 - .NET API 更改日志 | Microsoft Docs
-description: 描述 Azure 数据工厂的 .NET API 的特定版本中的重大更改、新增功能、Bug 修复等。
+title: 数据工厂-.NET API 更改日志
+description: 介绍适用于 Azure 数据工厂的 .NET API 的特定版本中的重大更改、功能添加、bug 修复等。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
-ms.assetid: 8208271b-7f4c-4214-b665-d2ff503c4470
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/22/2018
-ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 863f3500c84eeab1c3dac19141cd334fc6961694
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 01/22/2018
+ms.openlocfilehash: dbbbdebdcf1db7afe485166f5744f2291b757d50
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60567242"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74978996"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure 数据工厂 - .NET API 更改日志
 > [!NOTE]
@@ -118,7 +115,7 @@ ms.locfileid: "60567242"
 
 ## <a name="version-420"></a>版本 4.2.0
 ### <a name="feature-additions"></a>新增功能
-* 已添加以下新活动类型：[AzureMLUpdateResourceActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity.aspx)。 有关活动的详细信息，请参阅[使用更新资源活动更新 Azure ML 模型](data-factory-azure-ml-batch-execution-activity.md)。
+* 已添加以下新的活动类型：[AzureMLUpdateResourceActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity.aspx)。 有关活动的详细信息，请参阅[使用更新资源活动更新 Azure ML 模型](data-factory-azure-ml-batch-execution-activity.md)。
 * 一个新的可选属性 [updateResourceEndpoint](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.updateresourceendpoint.aspx) 已被添加到 [AzureMLLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.aspx)。
 * [LongRunningOperationInitialTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationinitialtimeout.aspx) 和 [LongRunningOperationRetryTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationretrytimeout.aspx) 属性已被添加到 [DataFactoryManagementClient](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.aspx) 类。
 * 允许对数据工厂服务的客户端调用配置超时。
@@ -137,7 +134,7 @@ ms.locfileid: "60567242"
   * [AzureDataLakeStoreSink](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoresink.aspx)
 
 ## <a name="version-401"></a>版本 4.0.1
-### <a name="breaking-changes"></a>重大变化
+### <a name="breaking-changes"></a>重大更改
 已重命名下面的类。 新名称是 4.0.0 版之前的类的原始名称。
 
 | 4.0.0 版中的名称 | 4.0.1 版中的名称 |
@@ -150,13 +147,13 @@ ms.locfileid: "60567242"
 | SqlServerDataset |[SqlServerTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.sqlservertabledataset.aspx) |
 
 ## <a name="version-400"></a>版本 4.0.0
-### <a name="breaking-changes"></a>重大变化
+### <a name="breaking-changes"></a>重大更改
 * 已重命名下面的类/接口。
 
 | 旧名称 | 新名称 |
 |:--- |:--- |
 | ITableOperations |[IDatasetOperations](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.idatasetoperations.aspx) |
-| 表 |[Dataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.dataset.aspx) |
+| 表 |数据集 |
 | TableProperties |[DatasetProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetproperties.aspx) |
 | TableTypeProprerties |[DatasetTypeProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasettypeproperties.aspx) |
 | TableCreateOrUpdateParameters |[DatasetCreateOrUpdateParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdateparameters.aspx) |
@@ -165,7 +162,7 @@ ms.locfileid: "60567242"
 | TableListResponse |[DatasetListResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetlistresponse.aspx) |
 | CreateOrUpdateWithRawJsonContentParameters |[DatasetCreateOrUpdateWithRawJsonContentParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdatewithrawjsoncontentparameters.aspx) |
 
-* **列表**方法现在返回分页的结果。 如果响应中包含非空 **NextLink** 属性，则客户端应用程序需要继续提取下一页直到返回所有页。  下面是一个示例：
+* **列表**方法现在返回分页的结果。 如果响应中包含非空 **NextLink** 属性，则客户端应用程序需要继续提取下一页直到返回所有页。  以下是示例：
 
     ```csharp
     PipelineListResponse response = client.Pipelines.List("ResourceGroupName", "DataFactoryName");

@@ -1,11 +1,10 @@
 ---
-title: Azure CLI 示例 - 将快照复制到另一个区域中的存储帐户 | Microsoft Docs
+title: 将快照复制到另一个区域中的存储帐户 - CLI 示例
 description: Azure CLI 脚本示例 - 将快照作为 VHD 导出/复制到相同或不同区域中的存储帐户。
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
 manager: kavithag
-editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -16,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc,seodec18
-ms.openlocfilehash: 2ca70eae4a7ab14be9eba82324d41f9e5a24bcff
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 42a516f3c52d7548d08f72687e9f233620a39287
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727666"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458605"
 ---
 # <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>使用 CLI 将快照导出/复制到不同区域中的存储帐户
 
@@ -41,7 +40,7 @@ ms.locfileid: "55727666"
 
 此脚本使用以下命令生成托管快照的 SAS URI 并使用该 SAS URI 将快照复制到一个存储帐户。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az snapshot grant-access](https://docs.microsoft.com/cli/azure/snapshot) | 生成只读 SAS，使用该 SAS 可以将基础 VHD 文件复制到存储帐户或将其下载到本地  |
 | [az storage blob copy start](https://docs.microsoft.com/cli/azure/storage/blob/copy) | 将 blob 从一个存储帐户异步复制到另一个存储帐户 |

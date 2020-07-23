@@ -1,36 +1,44 @@
 ---
-title: 使用 Azure 数据工厂从 MariaDB 复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 MariaDB 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 MariaDB 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: linda33wj
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 02/01/2019
-ms.date: 04/22/2019
-ms.author: v-jay
-ms.openlocfilehash: f99a96f1b886f9f426c5dac64ac852368544475a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 08/12/2019
+ms.author: jingwang
+ms.openlocfilehash: c2c036cc8538fbceb21da7c5166df52b3a04e12e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61401240"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81414983"
 ---
 # <a name="copy-data-from-mariadb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MariaDB 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 MariaDB 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 ## <a name="supported-capabilities"></a>支持的功能
+
+以下活动支持此 MariaDB 连接器：
+
+- 包含[支持的源/接收器矩阵](copy-activity-overview.md)的 [Copy 活动](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 MariaDB 复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需使用此连接器手动安装任何驱动程序。
 
 此连接器当前支持版本 10.0 到 10.2 的 MariaDB。
+
+## <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="getting-started"></a>入门
 
@@ -42,11 +50,11 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 MariaDB 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**MariaDB** | 是 |
-| connectionString | 用于连接到 MariaDB 的 ODBC 连接字符串。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `pwd` 配置。 有关更多详细信息，请参阅以下示例和[将凭据存储在 Azure 密钥保管库中](store-credentials-in-key-vault.md)一文。 | 是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure Integration Runtime 时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+| connectionString | 用于连接到 MariaDB 的 ODBC 连接字符串。 <br/>还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `pwd` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 若要了解详细信息，请参阅[先决条件](#prerequisites)部分。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例：**
 
@@ -56,10 +64,7 @@ MariaDB 链接服务支持以下属性：
     "properties": {
         "type": "MariaDB",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<host>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
-            }
+            "connectionString": "Server=<host>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -77,10 +82,7 @@ MariaDB 链接服务支持以下属性：
     "properties": {
         "type": "MariaDB",
         "typeProperties": {
-            "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server=<host>;Port=<port>;Database=<database>;UID=<user name>;"
-            },
+            "connectionString": "Server=<host>;Port=<port>;Database=<database>;UID=<user name>;",
             "pwd": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -111,11 +113,12 @@ MariaDB 链接服务支持以下属性：
     "name": "MariaDBDataset",
     "properties": {
         "type": "MariaDBTable",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<MariaDB linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -128,7 +131,7 @@ MariaDB 链接服务支持以下属性：
 
 要从 MariaDB 复制数据，请将复制活动中的源类型设置为“MariaDBSource”。 复制活动源部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**MariaDBSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
@@ -164,6 +167,11 @@ MariaDB 链接服务支持以下属性：
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>“查找”活动属性
+
+若要详细了解这些属性，请查看[“查找”活动](control-flow-lookup-activity.md)。
+
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

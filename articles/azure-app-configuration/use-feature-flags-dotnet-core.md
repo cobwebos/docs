@@ -3,7 +3,7 @@ title: 有关在 .NET Core 应用中使用功能标志的教程 | Microsoft Docs
 description: 本教程介绍如何在 .NET Core 应用中实施功能标志。
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
+author: lisaguthrie
 manager: maiye
 editor: ''
 ms.assetid: ''
@@ -12,16 +12,16 @@ ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 04/19/2019
-ms.author: yegu
+ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: fc5215f71af45d3273da437fc796bf0d396ba3f9
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 3182961f928a9befc5a55fb6d58e22c74ba81089
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393514"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79473432"
 ---
-# <a name="tutorial-use-feature-flags-in-a-net-core-app"></a>教程：在 .NET Core 应用中使用功能标志
+# <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用功能标志
 
 .NET Core 功能管理库能够顺畅地支持在 .NET 或 ASP.NET Core 应用程序中实施功能标志。 使用这些库能够以声明方式将功能标志添加到代码中，因此不需要手动编写这些功能标志的所有 `if` 语句。
 
@@ -29,7 +29,7 @@ ms.locfileid: "66393514"
 
 [将功能标志添加到 ASP.NET Core 应用快速入门](./quickstart-feature-flag-aspnet-core.md)介绍了在 ASP.NET Core 应用程序中添加功能标志的多种方法。 本教程将更详细地介绍这些方法。 有关完整参考信息，请参阅 [ASP.NET Core 功能管理文档](https://go.microsoft.com/fwlink/?linkid=2091410)。
 
-在本教程中，将了解如何：
+在本教程中，您将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在应用程序的关键组件中添加功能标志，以控制功能可用性。
@@ -37,6 +37,8 @@ ms.locfileid: "66393514"
 
 ## <a name="set-up-feature-management"></a>设置功能管理
 
+添加对 `Microsoft.FeatureManagement` NuGet 包的引用以利用 .NET Core 功能管理器。
+    
 .NET Core 功能管理器 `IFeatureManager` 从框架的本机配置系统获取功能标志。 因此，可以使用 .NET Core 支持的任何配置源（包括本地 *appsettings.json* 文件或环境变量）来定义应用程序的功能标志。 `IFeatureManager` 依赖于 .NET Core 依赖项注入。 可以使用标准约定来注册功能管理服务。
 
 ```csharp
@@ -86,30 +88,42 @@ public class Startup
 
 我们建议将功能标志保留在应用程序的外部，并单独对其进行管理。 这样便可以随时修改标志状态，并使这些更改在应用程序中立即生效。 应用程序配置提供一个中心位置用于通过专用门户 UI 来组织和控制所有功能标志。 应用程序配置还直接通过其 .NET Core 客户端库将标志传送到应用程序。
 
-将 ASP.NET Core 应用程序连接到应用程序配置的最简单方法是使用配置提供程序 `Microsoft.Extensions.Configuration.AzureAppConfiguration`。 若要使用此 NuGet 包，请将以下代码添加到 *Program.cs* 文件：
+将 ASP.NET Core 应用程序连接到应用程序配置的最简单方法是使用配置提供程序 `Microsoft.Azure.AppConfiguration.AspNetCore`。 按照以下步骤使用此 NuGet 包。
 
-```csharp
-using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+1. 打开 *Program.cs* 文件，并添加以下代码。
 
-public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-    WebHost.CreateDefaultBuilder(args)
-           .ConfigureAppConfiguration((hostingContext, config) => {
-               var settings = config.Build();
-               config.AddAzureAppConfiguration(options => {
-                   options.Connect(settings["ConnectionStrings:AppConfig"])
-                          .UseFeatureFlags();
-                });
-           })
-           .UseStartup<Startup>();
-```
+   ```csharp
+   using Microsoft.Extensions.Configuration.AzureAppConfiguration;
 
-功能标志值预期会不断变化。 默认情况下，功能管理器每隔 30 秒刷新功能标志值。 以下代码演示如何在 `options.UseFeatureFlags()` 调用中将轮询间隔更改为 5 秒：
+   public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+       WebHost.CreateDefaultBuilder(args)
+              .ConfigureAppConfiguration((hostingContext, config) => {
+                  var settings = config.Build();
+                  config.AddAzureAppConfiguration(options => {
+                      options.Connect(settings["ConnectionStrings:AppConfig"])
+                             .UseFeatureFlags();
+                   });
+              })
+              .UseStartup<Startup>();
+   ```
+
+2. 打开 *Startup.cs*，并更新 `Configure` 方法以添加中间件，从而允许在 ASP.NET Core Web 应用继续接收请求的同时，功能标志值以重复的时间间隔进行刷新。
+
+   ```csharp
+   public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+   {
+       app.UseAzureAppConfiguration();
+       app.UseMvc();
+   }
+   ```
+
+功能标志值预期会不断变化。 默认情况下，功能标志值缓存 30 秒，因此，在中间件收到请求时触发的刷新操作不会更新该值，直到缓存值过期为止。 以下代码演示如何在 `options.UseFeatureFlags()` 调用中将缓存过期时间或轮询间隔更改为 5 分钟。
 
 ```csharp
 config.AddAzureAppConfiguration(options => {
     options.Connect(settings["ConnectionStrings:AppConfig"])
            .UseFeatureFlags(featureFlagOptions => {
-                featureFlagOptions.PollInterval = TimeSpan.FromSeconds(5);
+                featureFlagOptions.CacheExpirationTime = TimeSpan.FromMinutes(5);
            });
 });
 ```
@@ -165,7 +179,7 @@ public enum MyFeatureFlags
 ```csharp
 IFeatureManager featureManager;
 ...
-if (featureManager.IsEnabled(nameof(MyFeatureFlags.FeatureA)))
+if (await featureManager.IsEnabledAsync(nameof(MyFeatureFlags.FeatureA)))
 {
     // Run the following code
 }
@@ -189,10 +203,10 @@ public class HomeController : Controller
 
 ## <a name="controller-actions"></a>控制器操作
 
-在 MVC 控制器中，使用 `Feature` 属性控制是要启用整个控制器类还是特定的操作。 以下 `HomeController` 控制器要求 `FeatureA` 状态为“打开”，才能执行控制器类包含的任何操作： 
+在 MVC 控制器中，使用 `FeatureGate` 属性控制是要启用整个控制器类还是特定的操作。 以下 `HomeController` 控制器要求 `FeatureA` 状态为“打开”，才能执行控制器类包含的任何操作： 
 
 ```csharp
-[Feature(MyFeatureFlags.FeatureA)]
+[FeatureGate(MyFeatureFlags.FeatureA)]
 public class HomeController : Controller
 {
     ...
@@ -202,7 +216,7 @@ public class HomeController : Controller
 以下 `Index` 操作要求 `FeatureA` 状态为“打开”才能运行该操作： 
 
 ```csharp
-[Feature(MyFeatureFlags.FeatureA)]
+[FeatureGate(MyFeatureFlags.FeatureA)]
 public IActionResult Index()
 {
     return View();
@@ -221,9 +235,28 @@ public IActionResult Index()
 </feature>
 ```
 
+要在不满足要求时显示替代内容，可以使用 `negate` 属性。
+
+```html
+<feature name="FeatureA" negate="true">
+    <p>This will be shown if 'FeatureA' is disabled.</p>
+</feature>
+```
+
+如果启用了列表中的任何或所有功能，还可以使用 `<feature>` 功能标记显示内容。
+
+```html
+<feature name="FeatureA, FeatureB" requirement="All">
+    <p>This can only be seen if 'FeatureA' and 'FeatureB' are enabled.</p>
+</feature>
+<feature name="FeatureA, FeatureB" requirement="Any">
+    <p>This can be seen if 'FeatureA', 'FeatureB', or both are enabled.</p>
+</feature>
+```
+
 ## <a name="mvc-filters"></a>MVC 筛选器
 
-可以设置 MVC 筛选器，以根据功能标志的状态激活这些筛选器。 以下代码添加名为 `SomeMvcFilter` 的 MVC 筛选器。 仅当已启用 `FeatureA` 时，才会在 MVC 管道内部触发此筛选器。
+可以设置 MVC 筛选器，以根据功能标志的状态激活这些筛选器。 以下代码添加名为 `SomeMvcFilter` 的 MVC 筛选器。 仅当已启用 `FeatureA` 时，才会在 MVC 管道内部触发此筛选器。 此功能仅限于 `IAsyncActionFilter`。 
 
 ```csharp
 using Microsoft.FeatureManagement.FeatureFilters;
@@ -236,16 +269,6 @@ public void ConfigureServices(IServiceCollection services)
         options.Filters.AddForFeature<SomeMvcFilter>(nameof(MyFeatureFlags.FeatureA));
     });
 }
-```
-
-## <a name="routes"></a>路由
-
-可以使用功能标志来动态公开路由。 以下代码添加一个路由，仅当已启用 `FeatureA` 时，此路由才将 `Beta` 设置为默认控制器。
-
-```csharp
-app.UseMvc(routes => {
-    routes.MapRouteForFeature(nameof(MyFeatureFlags.FeatureA), "betaDefault", "{controller=Beta}/{action=Index}/{id?}");
-});
 ```
 
 ## <a name="middleware"></a>中间件

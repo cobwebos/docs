@@ -11,26 +11,26 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
-ms.openlocfilehash: a813c77e81e51bfe13e75ed6c8d0e24b4d0fa645
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 9c80056fd62173ff1e5a6ed3979adba71b7706cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66392926"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80582758"
 ---
 # <a name="streaming-policies"></a>流式处理策略
 
-在 Azure 媒体服务 v3 中，使用[流式处理策略](https://docs.microsoft.com/rest/api/media/streamingpolicies)可为[流式处理定位符](streaming-locators-concept.md)定义流式处理协议和加密选项。 媒体服务 v3 提供一些预定义流式处理策略，以便可以将其直接用于试用版或生产环境。 
+在 Azure 媒体服务 v3 中，使用[流式处理策略](https://docs.microsoft.com/rest/api/media/streamingpolicies)可为[流式处理定位符](streaming-locators-concept.md)定义流式处理协议和加密选项。 媒体服务 v3 提供了一些预定义的流式处理策略，以便可以将它们直接用于试用版或生产版。 
 
-当前可用的预定义流式处理策略：<br/>
-* Predefined_DownloadOnly
-* Predefined_ClearStreamingOnly
-* Predefined_DownloadAndClearStreaming
-* Predefined_ClearKey
-* Predefined_MultiDrmCencStreaming 
-* Predefined_MultiDrmStreaming
+目前可用的预定义流式处理策略：<br/>
+* 'Predefined_DownloadOnly'
+* 'Predefined_ClearStreamingOnly'
+* 'Predefined_DownloadAndClearStreaming'
+* 'Predefined_ClearKey'
+* 'Predefined_MultiDrmCencStreaming' 
+* 'Predefined_MultiDrmStreaming'
 
-下面的"决策树"可帮助你选择用于你的方案的预定义流式处理策略。
+以下“决策树”可帮助你为方案选择预定义的流式处理策略。
 
 > [!IMPORTANT]
 > * 属于日期时间类型的**流式处理策略**的属性始终采用 UTC 格式。
@@ -38,17 +38,17 @@ ms.locfileid: "66392926"
 
 ## <a name="decision-tree"></a>决策树
 
-单击图像可查看其完整大小。  
+单击图像查看其完整大小。  
 
 <a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/large.png"></a> 
 
-如果加密你的内容，则需要创建[内容密钥策略](content-key-policy-concept.md)，则**内容密钥策略**不需要明确的流式处理或下载。 
+如果要加密内容，则需要创建[内容密钥策略](content-key-policy-concept.md)，明文流式处理或下载不需要**内容密钥策略**。 
 
-如果你有特殊需求 （例如，如果你想要指定不同的协议，需要使用自定义密钥传送服务，或需要使用清除音频轨迹），则可以[创建](https://docs.microsoft.com/rest/api/media/streamingpolicies/create)自定义流式处理策略。 
+如果有特殊要求（例如，如果想要指定不同的协议，需要使用自定义密钥传送服务，或者需要使用明文音频轨道），则可以[创建](https://docs.microsoft.com/rest/api/media/streamingpolicies/create)自定义流式处理策略。 
 
 ## <a name="get-a-streaming-policy-definition"></a>获取流式处理策略定义  
 
-如果你想要看到的流式处理的策略定义，使用[获取](https://docs.microsoft.com/rest/api/media/streamingpolicies/get)并指定策略名称。 例如：
+若要查看流式处理策略的定义，请使用 [Get](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) 并指定策略名称。 例如：
 
 ### <a name="rest"></a>REST
 

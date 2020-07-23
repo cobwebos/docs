@@ -1,19 +1,13 @@
 ---
-title: 在 Azure Batch 池中配置节点终结点 | Microsoft Docs
+title: 在 Azure Batch 池中配置节点终结点
 description: 如何在 Azure Batch 池中的计算节点上配置或禁用对 SSH 或 RDP 端口的访问。
-services: batch
-author: laurenhughes
-manager: jeconnoc
-ms.service: batch
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/13/2018
-ms.author: lahugh
-ms.openlocfilehash: a6c2c343b13b77048c772cb1e5c2ba06cf8add50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 1713637a9aba937525e64e1c4146589fca443461
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60616851"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780288"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>配置或禁用对 Azure Batch 池中计算节点的远程访问
 
@@ -27,7 +21,7 @@ ms.locfileid: "60616851"
 每个 NAT 池配置包括一个或多个[网络安全组 (NSG) 规则](/rest/api/batchservice/pool/add#networksecuritygrouprule)。 每个 NSG 规则允许或拒绝特定的网络流量流向终结点。 可以选择允许或拒绝所有流量、由[服务标记](../virtual-network/security-overview.md#service-tags)（例如“Internet”）标识的流量，或者来自特定 IP 地址或子网的流量。
 
 ### <a name="considerations"></a>注意事项
-* 池终结点配置是池的[网络配置](/rest/api/batchservice/pool/add#NetworkConfiguration)的一部分。 网络配置可以选择性地包含用于将池加入 [Azure 虚拟网络](batch-virtual-network.md)的设置。 如果在虚拟网络中设置池，可以创建使用虚拟网络中的地址设置的 NSG 规则。
+* 池终结点配置是池的[网络配置](/rest/api/batchservice/pool/add#networkconfiguration)的一部分。 网络配置可以选择性地包含用于将池加入 [Azure 虚拟网络](batch-virtual-network.md)的设置。 如果在虚拟网络中设置池，可以创建使用虚拟网络中的地址设置的 NSG 规则。
 * 配置 NAT 池时，可以配置多个 NSG 规则。 将按优先顺序检查规则。 一旦应用某个规则，不再检查其他规则的匹配情况。
 
 
@@ -53,7 +47,7 @@ pool.NetworkConfiguration = new NetworkConfiguration
 以下 Python 代码片段演示如何在 Linux 池中的计算节点上配置 SSH 终结点，用于拒绝所有 Internet 流量。 该终结点使用 *4000 - 4100* 范围内的端口的前端池。 
 
 ```python
-pool.network_configuration=batchmodels.NetworkConfiguration(
+pool.network_configuration = batchmodels.NetworkConfiguration(
     endpoint_configuration=batchmodels.PoolEndpointConfiguration(
         inbound_nat_pools=[batchmodels.InboundNATPool(
             name='SSH',
@@ -63,14 +57,14 @@ pool.network_configuration=batchmodels.NetworkConfiguration(
             frontend_port_range_end=4100,
             network_security_group_rules=[
                 batchmodels.NetworkSecurityGroupRule(
-                priority=170,
-                access=batchmodels.NetworkSecurityGroupRuleAccess.deny,
-                source_address_prefix='Internet'
+                    priority=170,
+                    access=batchmodels.NetworkSecurityGroupRuleAccess.deny,
+                    source_address_prefix='Internet'
                 )
             ]
         )
         ]
-    ) 
+    )
 )
 ```
 
@@ -97,7 +91,7 @@ pool.NetworkConfiguration = new NetworkConfiguration
 以下 Python 代码片段演示如何在 Linux 池中的计算节点上配置 SSH 终结点，以便仅允许来自子网 *192.168.1.0/24* 的访问。 第二条 NSG 规则拒绝与该子网不匹配的流量。
 
 ```python
-pool.network_configuration=batchmodels.NetworkConfiguration(
+pool.network_configuration = batchmodels.NetworkConfiguration(
     endpoint_configuration=batchmodels.PoolEndpointConfiguration(
         inbound_nat_pools=[batchmodels.InboundNATPool(
             name='SSH',
@@ -107,14 +101,14 @@ pool.network_configuration=batchmodels.NetworkConfiguration(
             frontend_port_range_end=4100,
             network_security_group_rules=[
                 batchmodels.NetworkSecurityGroupRule(
-                priority=170,
-                access='allow',
-                source_address_prefix='192.168.1.0/24'
+                    priority=170,
+                    access='allow',
+                    source_address_prefix='192.168.1.0/24'
                 ),
                 batchmodels.NetworkSecurityGroupRule(
-                priority=175,
-                access='deny',
-                source_address_prefix='*'
+                    priority=175,
+                    access='deny',
+                    source_address_prefix='*'
                 )
             ]
         )
@@ -125,7 +119,5 @@ pool.network_configuration=batchmodels.NetworkConfiguration(
 
 ## <a name="next-steps"></a>后续步骤
 
+- 了解 [Batch 服务工作流和主要资源](batch-service-workflow-features.md)，例如池、节点、作业和任务。
 - 有关 Azure 中 NSG 规则的详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/security-overview.md)。
-
-- 有关 Batch 深入概述的信息，请参阅[使用 Batch 开发大规模并行计算解决方案](batch-api-basics.md)。
-

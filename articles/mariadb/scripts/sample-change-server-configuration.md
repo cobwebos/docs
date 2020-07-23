@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本 - 更改服务器配置
+title: CLI 脚本 - 更改服务器参数 - Azure Database for MariaDB
 description: 此示例 CLI 脚本列出了所有可用服务器配置，并更新了 innodb_lock_wait_timeout 的值。
 author: ajlam
 ms.author: andrela
@@ -7,16 +7,16 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 11/28/2018
-ms.openlocfilehash: 514f2fe7e8c2b94e175bc6f6fb0cec8ea3d0c9c6
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 12/02/2019
+ms.openlocfilehash: 515eb7523c5a08d52ad5eb4f7bd261f3f4e03fc4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547416"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74771775"
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-mariadb-server-using-azure-cli"></a>使用 Azure CLI 列出和更新 Azure Database for MariaDB 服务器的配置
-此示例 CLI 脚本列出了 Azure Database for MariaDB 服务器的可用配置参数及其允许的值，并将 innodb_lock_wait_timeout 设置为默认值以外的值。
+此示例 CLI 脚本列出了 Azure Database for MariaDB 服务器的可用配置参数及其允许的值，并将 innodb_lock_wait_timeout  设置为默认值以外的值。
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
@@ -43,6 +43,6 @@ ms.locfileid: "53547416"
 | [az group delete](/cli/azure/group#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
-- 阅读有关 Azure CLI 的更多信息：[Azure CLI 文档](/cli/azure)。
-- 请尝试其他脚本：[Azure Database for MariaDB 的 Azure CLI 示例](../sample-scripts-azure-cli.md)
+- 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。
+- 尝试其他脚本：[Azure Database for MariaDB 的 Azure CLI 示例](../sample-scripts-azure-cli.md)
 - 有关服务器参数的详细信息，请参阅[如何在 Azure Database for MariaDB 中配置服务器参数](../howto-server-parameters.md)。

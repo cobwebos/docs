@@ -1,28 +1,22 @@
 ---
 title: Azure Functions C# 脚本开发人员参考
 description: '了解如何使用 C # 脚本开发 Azure Functions。'
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构
-ms.service: azure-functions
-ms.devlang: dotnet
-ms.topic: reference
+author: craigshoemaker
+ms.topic: conceptual
 ms.date: 12/12/2017
-ms.author: glenga
-ms.openlocfilehash: 44a9368f82e95641d3df893ba0958c6bf8cf696f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: cshoe
+ms.openlocfilehash: 177e9fcd872c594fbfb5f29077235113c6342860
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724960"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506139"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# 脚本 (.csx) 开发人员参考
 
 <!-- When updating this article, make corresponding changes to any duplicate content in functions-dotnet-class-library.md -->
 
-本文介绍了如何使用 C# 脚本 (*.csx*) 开发 Azure Functions。
+本文介绍了如何使用 C# 脚本 ( *.csx*) 开发 Azure Functions。
 
 Azure Functions 支持 C# 和 C# 脚本编程语言。 如需[在 Visual Studio 类库项目中使用 C#](functions-develop-vs.md) 方面的指南，请参阅 [C# 开发人员参考](functions-dotnet-class-library.md)。
 
@@ -57,7 +51,7 @@ FunctionsProject
 
 存在共享的 [host.json](functions-host-json.md) 文件，可用于配置函数应用。 每个函数都具有自己的代码文件 (.csx) 和绑定配置文件 (function.json)。
 
-[2.x 版](functions-versions.md) Functions 运行时中所需的绑定扩展在 `extensions.csproj` 文件中定义，实际库文件位于 `bin` 文件夹中。 本地开发时，必须[注册绑定扩展](./functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
+[2.x 及更高版本](functions-versions.md)的 Functions 运行时中所需的绑定扩展在 `extensions.csproj` 文件中定义，实际库文件位于 `bin` 文件夹中。 本地开发时，必须[注册绑定扩展](./functions-bindings-register.md#extension-bundles)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
 
 ## <a name="binding-to-arguments"></a>绑定到参数
 
@@ -95,7 +89,7 @@ public static void Run(CloudQueueMessage myQueueItem, ILogger log)
 
 ## <a name="supported-types-for-bindings"></a>绑定支持的类型
 
-每个绑定都具有其自己支持的类型；例如，Blob 触发器可以与字符串参数、POCO 参数、`CloudBlockBlob` 参数或任何其他几种受支持类型之一配合使用。 [适用于 Blob 绑定的绑定参考文章](functions-bindings-storage-blob.md#trigger---usage)列出了适用于 Blob 触发器的所有受支持参数类型。 有关详细信息，请参阅[触发器和绑定](functions-triggers-bindings.md)与[每个绑定类型的绑定参考文档](functions-triggers-bindings.md#next-steps)。
+每个绑定都具有其自己支持的类型；例如，Blob 触发器可以与字符串参数、POCO 参数、`CloudBlockBlob` 参数或任何其他几种受支持类型之一配合使用。 [适用于 Blob 绑定的绑定参考文章](functions-bindings-storage-blob-trigger.md#usage)列出了适用于 Blob 触发器的所有受支持参数类型。 有关详细信息，请参阅[触发器和绑定](functions-triggers-bindings.md)与[每个绑定类型的绑定参考文档](functions-triggers-bindings.md#next-steps)。
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
@@ -206,10 +200,10 @@ public class Order
     public override String ToString()
     {
         return "\n{\n\torderId : " + orderId +
-                  "\n\tcustName : " + custName +             
-                  "\n\tcustAddress : " + custAddress +             
-                  "\n\tcustEmail : " + custEmail +             
-                  "\n\tcartId : " + cartId + "\n}";             
+                  "\n\tcustName : " + custName +
+                  "\n\tcustAddress : " + custAddress +
+                  "\n\tcustEmail : " + custEmail +
+                  "\n\tcartId : " + cartId + "\n}";
     }
 }
 ```
@@ -244,7 +238,7 @@ public static void Run(ICollector<string> myQueue, ILogger log)
 
 ## <a name="logging"></a>日志记录
 
-若要使用 C# 将输出记录到流式传输日志中，请包括 [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 类型的参数。 建议将其命名为 `log`。 避免在 Azure Functions 中使用 `Console.Write`。
+若要使用 C# 将输出记录到流式传输日志中，请包括 [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) 类型的参数。 建议将其命名为 `log`。 避免在 Azure Functions 中使用 `Console.Write`。
 
 ```csharp
 public static void Run(string myBlob, ILogger log)
@@ -258,7 +252,7 @@ public static void Run(string myBlob, ILogger log)
 
 ## <a name="async"></a>异步
 
-要使函数[异步](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)，请使用 `async` 关键字并返回 `Task` 对象。
+要使函数[异步](/dotnet/csharp/programming-guide/concepts/async/)，请使用 `async` 关键字并返回 `Task` 对象。
 
 ```csharp
 public async static Task ProcessQueueMessageAsync(
@@ -363,7 +357,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 
 ## <a name="referencing-custom-assemblies"></a>引用自定义程序集
 
-若要引用自定义程序集，可使用共享程序集或私有程序集：
+若要引用自定义程序集，可使用共享程序集或私有程序集 ：
 
 * 共享程序集在函数应用内的所有函数中共享。 若要引用自定义程序集，请将程序集上传到[函数应用根文件夹`bin` (wwwroot) 中名为 ](functions-reference.md#folder-structure) 的文件夹。
 
@@ -376,26 +370,26 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 自动监视包含函数脚本文件的目录的程序集更改。 若要监视其他目录中的程序集更改，请将其添加到 [host.json](functions-host-json.md) 中的 `watchDirectories` 列表中。
 
 ## <a name="using-nuget-packages"></a>使用 NuGet 包
-若要在 2.x C# 函数中使用 NuGet 包，请将 *function.proj* 文件上传到函数应用的文件系统中的函数文件夹。 下面是示例 *function.proj* 文件，它添加了对 Microsoft.ProjectOxford.Face 1.1.0 版的引用：
+若要在 2.x 及更高版本的 C# 函数中使用 NuGet 包，请将 function.proj 文件上传到函数应用的文件系统中的函数文件夹。 下面是示例 *function.proj* 文件，它添加了对 Microsoft.ProjectOxford.Face 1.1.0 版的引用 ：
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
-    
+
     <ItemGroup>
         <PackageReference Include="Microsoft.ProjectOxford.Face" Version="1.1.0" />
     </ItemGroup>
 </Project>
 ```
 
-若要使用自定义 NuGet 源，请在 Function App 根中指定“Nuget.Config”文件中的源。 有关详细信息，请参阅[配置 NuGet 行为](/nuget/consume-packages/configuring-nuget-behavior)。 
+若要使用自定义 NuGet 源，请在 Function App 根中指定“Nuget.Config”文件中的源。 有关详细信息，请参阅[配置 NuGet 行为](/nuget/consume-packages/configuring-nuget-behavior)。
 
 > [!NOTE]
-> 在 1.x C# 函数中，NuGet 包是通过 *project.json* 文件而非 *function.proj* 文件引用的。
+> 在 1.x C# 函数中，NuGet 包是通过 project.json 文件而非 function.proj 文件引用的。
 
-对于 1.x 函数，请改用 *project.json* 文件。 下面是 *project.json* 文件示例： 
+对于 1.x 函数，请改用 project.json 文件。 下面是 project.json 文件示例：
 
 ```json
 {
@@ -412,8 +406,8 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 ### <a name="using-a-functionproj-file"></a>使用 function.proj 文件
 
 1. 在 Azure 门户中打开函数。 日志选项卡显示包安装输出。
-2. 若要上传 *function.proj* 文件，请使用 Azure Functions 开发人员参考主题中[如何更新函数应用文件](functions-reference.md#fileupdate)部分描述的方法之一。
-3. 上传完 *function.proj* 文件后，将在函数的流日志中看到类似以下示例的输出：
+2. 若要上传 function.proj 文件，请使用 Azure Functions 开发人员参考主题中[如何更新函数应用文件](functions-reference.md#fileupdate)描述的方法之一。
+3. 上传完 function.proj 文件后，将在函数的流式传输日志中看到类似以下示例的输出：
 
 ```
 2018-12-14T22:00:48.658 [Information] Restoring packages.
@@ -446,7 +440,7 @@ public static string GetEnvironmentVariable(string name)
 }
 ```
 
-<a name="imperative-bindings"></a> 
+<a name="imperative-bindings"></a>
 
 ## <a name="binding-at-runtime"></a>在运行时绑定
 
@@ -465,11 +459,11 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-`BindingTypeAttribute` 是定义了绑定的 .NET 属性，`T` 是该绑定类型所支持的输入或输出类型。 `T` 不能是 `out` 参数类型（例如 `out JObject`）。 例如，移动应用表输出绑定支持 [6 种输出类型](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)，但对于 `T`，可仅使用 [ICollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) 或 [IAsyncCollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)。
+`BindingTypeAttribute` 是定义了绑定的 .NET 属性，`T` 是该绑定类型所支持的输入或输出类型。 `T` 不能是 `out` 参数类型（例如 `out JObject`）。 例如，移动应用表输出绑定支持 [6 种输出类型](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)，但对于 `T`，只能使用 [ICollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) 或 [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)。
 
 ### <a name="single-attribute-example"></a>单属性示例
 
-下面的示例代码使用在运行时定义的 blob 路径创建[存储 blob 输出绑定](functions-bindings-storage-blob.md#output)，然后将字符串写入此 blob。
+下面的示例代码使用在运行时定义的 blob 路径创建[存储 blob 输出绑定](functions-bindings-storage-blob-output.md)，然后将字符串写入此 blob。
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -484,7 +478,7 @@ public static async Task Run(string input, Binder binder)
 }
 ```
 
-[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) 定义[存储 blob](functions-bindings-storage-blob.md) 输入或输出绑定，[TextWriter](/dotnet/api/system.io.textwriter) 是支持的输出绑定类型。
+[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs) 定义[存储 blob](functions-bindings-storage-blob.md) 输入或输出绑定，[TextWriter](/dotnet/api/system.io.textwriter) 是支持的输出绑定类型。
 
 ### <a name="multiple-attribute-example"></a>多属性示例
 
@@ -497,7 +491,7 @@ using Microsoft.Azure.WebJobs.Host.Bindings.Runtime;
 public static async Task Run(string input, Binder binder)
 {
     var attributes = new Attribute[]
-    {    
+    {
         new BlobAttribute("samples-output/path"),
         new StorageAccountAttribute("MyStorageAccount")
     };
@@ -512,16 +506,16 @@ public static async Task Run(string input, Binder binder)
 下表列出了每种绑定类型的 .NET 属性及其定义所在的包。
 
 > [!div class="mx-codeBreakAll"]
-> | 绑定 | 属性 | 添加引用 |
+> | 绑定 | Attribute | 添加引用 |
 > |------|------|------|
 > | Cosmos DB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.CosmosDB"` |
-> | 事件中心 | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |
+> | 事件中心 | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/b798412ad74ba97cf2d85487ae8479f277bdd85c/test/Microsoft.Azure.WebJobs.ServiceBus.UnitTests/ServiceBusAccountTests.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |
 > | 移动应用 | [`Microsoft.Azure.WebJobs.MobileTableAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.MobileApps"` |
 > | 通知中心 | [`Microsoft.Azure.WebJobs.NotificationHubAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.NotificationHubs"` |
-> | 服务总线 | [`Microsoft.Azure.WebJobs.ServiceBusAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.WebJobs.ServiceBus"` |
-> | 存储队列 | [`Microsoft.Azure.WebJobs.QueueAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
-> | 存储 blob | [`Microsoft.Azure.WebJobs.BlobAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
-> | 存储表 | [`Microsoft.Azure.WebJobs.TableAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
+> | 服务总线 | [`Microsoft.Azure.WebJobs.ServiceBusAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/b798412ad74ba97cf2d85487ae8479f277bdd85c/test/Microsoft.Azure.WebJobs.ServiceBus.UnitTests/ServiceBusAttributeTests.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/b798412ad74ba97cf2d85487ae8479f277bdd85c/test/Microsoft.Azure.WebJobs.ServiceBus.UnitTests/ServiceBusAccountTests.cs) | `#r "Microsoft.Azure.WebJobs.ServiceBus"` |
+> | 存储队列 | [`Microsoft.Azure.WebJobs.QueueAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
+> | 存储 blob | [`Microsoft.Azure.WebJobs.BlobAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
+> | 存储表 | [`Microsoft.Azure.WebJobs.TableAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 > | Twilio | [`Microsoft.Azure.WebJobs.TwilioSmsAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.Twilio"` |
 
 ## <a name="next-steps"></a>后续步骤

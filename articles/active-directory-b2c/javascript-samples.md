@@ -1,43 +1,56 @@
 ---
-title: JavaScript 示例-Azure Active Directory B2C |Microsoft Docs
+title: JavaScript 示例
+titleSuffix: Azure AD B2C
 description: 了解如何在 Azure Active Directory B2C 中使用 JavaScript。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 04/25/2019
-ms.author: marsma
+ms.topic: how-to
+ms.date: 02/10/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9e19df7c50ca9d2c57ab385a567f4911b200c5e2
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: a92810841ee5d656b23105d6f40c763847971c4f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66510885"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387790"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>用于 Azure Active Directory B2C 中的 JavaScript 示例
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-可以向 Azure Active Directory (Azure AD) B2C 应用程序添加自己的 JavaScript 客户端代码。 若要为应用程序中启用 JavaScript，您必须将元素添加到您[自定义策略](active-directory-b2c-overview-custom.md)，选择[页面协定](page-contract.md)，并使用[b2clogin.com](b2clogin.md)在请求中。 本文介绍如何更改你的自定义策略以启用脚本执行。
+可以向 Azure Active Directory B2C (Azure AD B2C) 应用程序添加自己的 JavaScript 客户端代码。
+
+若要为应用程序启用 JavaScript，请执行以下操作：
+
+* 向[自定义策略](custom-policy-overview.md)添加一个元素
+* 选择[页面布局](page-layout.md)
+* 在请求中使用[b2clogin.com](b2clogin.md)
+
+本文介绍如何更改自定义策略以启用脚本执行。
 
 > [!NOTE]
-> 如果你想要为用户流中启用 JavaScript，请参阅[JavaScript 和页协定版本在 Azure Active Directory B2C](user-flow-javascript-overview.md)。
+> 如果要为用户流启用 JavaScript，请参阅 [Azure Active Directory B2C 中的 JavaScript 和页面布局版本](user-flow-javascript-overview.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-选择你的应用程序的用户界面元素的页协定。 如果打算使用 JavaScript，需要为自定义策略中所有的内容定义定义一个页协定版本。
+### <a name="select-a-page-layout"></a>选择页面布局
+
+* 为应用程序的用户界面元素选择[页面布局](contentdefinitions.md#select-a-page-layout)。
+
+    如果打算使用 JavaScript，则需要为自定义策略中的所有内容定义[定义页面布局版本](contentdefinitions.md#migrating-to-page-layout)和页面`contract`版本  。
 
 ## <a name="add-the-scriptexecution-element"></a>添加 ScriptExecution 元素
 
-通过向 [RelyingParty](relyingparty.md)元素添加 ScriptExecution 元素来启用脚本执行  。
+通过向 [RelyingParty](relyingparty.md)元素添加 ScriptExecution 元素来启用脚本执行。
 
 1. 打开自定义策略文件。 例如，SignUpOrSignin.xml  。
 2. 向 RelyingParty 的 UserJourneyBehaviors 元素添加 ScriptExecution 元素    ：
 
-    ```XML
+    ```xml
     <RelyingParty>
       <DefaultUserJourney ReferenceId="B2CSignUpOrSignInWithPassword" />
       <UserJourneyBehaviors>
@@ -48,25 +61,7 @@ ms.locfileid: "66510885"
     ```
 3. 保存并上传文件。
 
-## <a name="guidelines-for-using-javascript"></a>JavaScript 的使用准则
-
-按照以下准则，使用 JavaScript 自定义应用程序的界面：
-
-- 不对 `<a>` HTML 元素绑定单击事件。
-- 不依赖 Azure AD B2C 代码或注释。
-- 不更改 Azure AD B2C HTML 元素的顺序或层次结构。 使用 Azure AD B2C 策略控制 UI 元素的顺序。
-- 在调用 RESTful 服务时考虑到以下事项：
-    - 可能需要设置 RESTful 服务 CORS 才能实现客户端 HTTP 调用。
-    - 确保 RESTful 服务安全，且它仅使用 HTTPS 协议。
-    - 不直接使用 JavaScript 来调用Azure AD B2C 终结点。
-- 可以嵌入 JavaScript，也可以链接到外部 JavaScript 文件。 如果是使用外部 JavaScript 文件，请确保使用 绝对 URL，而不是相对 URL。
-- JavaScript 框架：
-    - Azure AD B2C 使用 jQuery 的特定版本。 不包括 jQuery 的其他版本。 在同一页面上使用多个版本会造成问题。
-    - 不支持使用 RequireJS。
-    - Azure AD B2C 不支持大多数 JavaScript 框架。
-- 可通过调用 `window.SETTINGS`、`window.CONTENT` 对象读取 Azure AD B2C 设置，例如当前的 UI 语言。 勿更改这些对象的值。
-- 若要自定义 Azure AD B2C 错误消息，请在策略中使用本地化。
-- 如果可以通过策略实现一切操作，建议这样做。
+[!INCLUDE [active-directory-b2c-javascript-guidelines](../../includes/active-directory-b2c-javascript-guidelines.md)]
 
 ## <a name="javascript-samples"></a>JavaScript 示例
 
@@ -143,8 +138,8 @@ function addTermsOfUseLink() {
 }
 ```
 
-在代码中，将 `termsOfUseUrl` 替换使用条款协议的链接。 对于你的目录，创建名为的新用户属性**termsOfUse** ，然后包括**termsOfUse**为用户属性。
+在代码中，将 `termsOfUseUrl` 替换使用条款协议的链接。 对于你的目录，创建一个名为 **termsOfUse** 的新用户属性，然后包括 **termsOfUse** 作为用户属性。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何自定义应用程序用户界面的详细信息，请参阅[在 Azure Active Directory B2C 中使用自定义策略自定义应用程序的用户界面](active-directory-b2c-ui-customization-custom.md)。
+有关如何自定义应用程序用户界面的详细信息，请参阅[在 Azure Active Directory B2C 中使用自定义策略自定义应用程序的用户界面](custom-policy-ui-customization.md)。

@@ -1,0 +1,22 @@
+- name: Azure
+  tocHref: /sql/
+  topicHref: /azure/index
+  items:
+    - name: SQL 托管实例
+      tocHref: /sql/
+      topicHref: /azure/azure-sql/managed-instance
+      items:
+        - name: 机器学习
+          tocHref: /sql/machine-learning/
+          topicHref: /azure/azure-sql/managed-instance/machine-learning-services-overview
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: SQL 托管实例
+      tocHref: /azure/azure-sql-edge/
+      topicHref: /azure/azure-sql/managed-instance
+      items:
+        - name: 机器学习
+          tocHref: /azure/azure-sql-edge/
+          topicHref: /azure/azure-sql/managed-instance/machine-learning-services-overview

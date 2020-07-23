@@ -1,6 +1,6 @@
 ---
-title: Azure 媒体服务诊断日志架构-Azure
-description: 本文介绍 Azure 媒体服务诊断日志架构。
+title: Azure 媒体服务诊断日志架构 - Azure
+description: 本文演示 Azure 媒体服务诊断日志架构。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,42 +13,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
-ms.openlocfilehash: 394370738bc7996a221300540e68404986d91310
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 37baed076ca074c1d558af36649e90959a0034c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322244"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75750873"
 ---
 # <a name="diagnostic-logs-schemas"></a>诊断日志架构
 
-[Azure 监视器](../../azure-monitor/overview.md)允许你监视指标和诊断日志，帮助您理解如何执行你的应用程序。 您可以监视媒体服务诊断日志，并创建警报和通知收集的指标和日志。 您可以将日志发送到[Azure 存储](https://azure.microsoft.com/services/storage/)，流式传输到[Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，并将其导出到[Log Analytics](https://azure.microsoft.com/services/log-analytics/)，或使用第三方服务。
+[Azure Monitor](../../azure-monitor/overview.md)使你能够监视指标和诊断日志，以帮助你了解应用程序的执行情况。 可以监视媒体服务诊断日志，并针对收集的指标和日志创建警报与通知。 可以将日志发送到[Azure 存储](https://azure.microsoft.com/services/storage/)，将日志流式传输到[azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，然后将其导出到[Log Analytics](https://azure.microsoft.com/services/log-analytics/)或使用第三方服务。
 
-有关详细信息，请参阅[Azure Monitor 指标](../../azure-monitor/platform/data-platform.md)并[Azure Monitor 诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)。
+有关详细信息，请参阅[Azure Monitor 度量值](../../azure-monitor/platform/data-platform.md)和[Azure Monitor 诊断日志](../../azure-monitor/platform/platform-logs-overview.md)。
 
-本文介绍媒体服务诊断日志架构。
+本文介绍 Media Services 诊断日志架构。
 
 ## <a name="top-level-diagnostic-logs-schema"></a>顶级诊断日志架构
 
-顶级的诊断日志架构的详细说明，请参阅[支持的 Azure 诊断日志服务、 架构和类别](../../azure-monitor/platform/tutorial-dashboards.md)。
+有关顶层诊断日志架构的详细说明，请参阅[Azure 诊断日志支持的服务、架构和类别](../../azure-monitor/platform/tutorial-dashboards.md)。
 
 ## <a name="key-delivery-log-schema"></a>密钥传送日志架构
 
 ### <a name="properties"></a>属性
 
-这些属性是特定于密钥传送日志架构。
+这些属性特定于密钥传送日志架构。
 
-|Name|描述|
+|“属性”|描述|
 |---|---|
-|keyId|请求的项的 ID。|
-|keyType|可以是以下值之一："清除"（不加密）、"FairPlay"、"PlayReady"或者"Widevine"。|
-|policyName|Azure 资源管理器策略的名称。|
-|tokenType|令牌类型。|
+|keyId|请求的密钥的 ID。|
+|keyType|可以是以下值之一： "Clear" （无加密）、"FairPlay"、"PlayReady" 或 "Widevine"。|
+|policyName|策略的 Azure 资源管理器名称。|
+|tokenType|标记类型。|
 |statusMessage|状态消息。|
 
 ### <a name="examples"></a>示例
 
-密钥传送请求架构的属性。
+密钥传递请求架构的属性。
 
 ```json
 {
@@ -107,6 +106,10 @@ ms.locfileid: "60322244"
     }
 } 
 ```
+
+## <a name="additional-notes"></a>附加说明
+
+* Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
 ## <a name="next-steps"></a>后续步骤
 

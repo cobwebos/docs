@@ -1,33 +1,24 @@
 ---
-title: 使用 cloud-init 将用户添加到 Azure 上的 Linux VM | Microsoft Docs
+title: 使用 cloud init 将用户添加到 Azure 上的 Linux VM
 description: 如何通过 Azure CLI 使用 cloud-init 在创建期间将用户添加到 Linux VM
-services: virtual-machines-linux
-documentationcenter: ''
 author: rickstercdn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 51de92eb64e9879b769baf7e574ee1dca9355040
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: f1782bfe0c14e3b44703f89ec7f78590c1bb74c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60650346"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78969242"
 ---
 # <a name="use-cloud-init-to-add-a-user-to-a-linux-vm-in-azure"></a>使用 cloud-init 将用户添加到 Azure 中的 Linux VM
 本文介绍如何在 Azure 中使用 [cloud-init](https://cloudinit.readthedocs.io) 在预配时将用户添加到 Linux 虚拟机 (VM) 或虚拟机规模集 (VMSS)。 Azure 预配资源后，此 cloud-init 脚本将在首次启动时运行。 有关 cloud-init 如何在 Azure 以及受支持的 Linux 发行版中本机工作的详细信息，请参阅 [cloud-init 概述](using-cloud-init.md)。
 
 ## <a name="add-a-user-to-a-vm-with-cloud-init"></a>使用 cloud-init 向 VM 添加用户
-任何新 Linux VM 的首要任务之一就是，自行添加附加的用户以避免使用 *root*。 SSH 密钥是安全性和可用性的最佳做法。 使用此 cloud-init 脚本将密钥添加到“~/.ssh/authorized_keys”文件。
+任何新 Linux VM 的首要任务之一就是，自行添加附加的用户以避免使用 *root*。 SSH 密钥是安全性和可用性的最佳做法。 使用此 cloud-init 脚本将密钥添加到“~/.ssh/authorized_keys”  文件。
 
-若要将用户添加到 Linux VM，请在当前 shell 中创建名为 *cloud_init_add_user.txt* 的文件并粘贴以下配置。 对于此示例，请在不处于本地计算机上的 Cloud Shell 中创建文件。 可使用任何想要使用的编辑器。 输入 `sensible-editor cloud_init_add_user.txt` 以创建文件并查看可用编辑器的列表。 选择 #1 以使用 nano 编辑器。 请确保已正确复制整个 cloud-init 文件，尤其是第一行。  需要提供自己的公钥（例如 *~/.ssh/id_rsa.pub* 的内容）作为 `ssh-authorized-keys:` 的值 - 为简化示例，此处已缩短。
+若要将用户添加到 Linux VM，请在当前 shell 中创建名为 *cloud_init_add_user.txt* 的文件并粘贴以下配置。 对于此示例，请在不处于本地计算机上的 Cloud Shell 中创建文件。 可使用任何想要使用的编辑器。 输入 `sensible-editor cloud_init_add_user.txt` 以创建文件并查看可用编辑器的列表。 选择 #1 以使用 nano 编辑器  。 请确保已正确复制整个 cloud-init 文件，尤其是第一行。  需要提供自己的公钥（例如 *~/.ssh/id_rsa.pub* 的内容）作为 `ssh-authorized-keys:` 的值 - 为简化示例，此处已缩短。
 
 ```yaml
 #cloud-config
@@ -66,13 +57,13 @@ az vm create \
 ssh <publicIpAddress>
 ```
 
-若要确认已将用户添加到 VM 和指定的组，请查看“/etc/group”文件的内容，如下所示：
+若要确认已将用户添加到 VM 和指定的组，请查看“/etc/group”  文件的内容，如下所示：
 
 ```bash
 cat /etc/group
 ```
 
-以下示例输出显示“cloud_init_add_user.txt”文件中的用户已被添加至 VM 和相应群组：
+以下示例输出显示“cloud_init_add_user.txt”  文件中的用户已被添加至 VM 和相应群组：
 
 ```bash
 root:x:0:

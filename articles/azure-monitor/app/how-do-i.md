@@ -1,23 +1,14 @@
 ---
 title: 如何在 Azure Application Insights 中执行... | Microsoft Docs
 description: 有关 Application Insights 的常见问题解答。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 48b2b644-92e4-44c3-bc14-068f1bbedd22
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.author: mbullwin
-ms.openlocfilehash: 5e22a3f3b362811fd87460ec41b61a990f4d83fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bda0091fe06c93150d5b3cae27f278f3fd9a91ea
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60902010"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224462"
 ---
 # <a name="how-do-i--in-application-insights"></a>如何在 Application Insights 中执行...？
 ## <a name="get-an-email-when-"></a>... 时收到电子邮件
@@ -25,9 +16,9 @@ ms.locfileid: "60902010"
 设置[可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)。
 
 ### <a name="email-if-my-site-is-overloaded"></a>站点过载时发送电子邮件
-针对“服务器响应时间”设置[警报](../../azure-monitor/app/alerts.md)。 介于 1 和 2 秒之间的阈值应可解决问题。
+针对“服务器响应时间”设置[警报](../../azure-monitor/platform/alerts-log.md)。 介于 1 和 2 秒之间的阈值应可解决问题。
 
-![](./media/how-do-i/030-server.png)
+![显示如何设置服务器响应时间警报的屏幕截图。](./media/how-do-i/030-server.png)
 
 应用还可能通过返回失败代码来表明资源紧张的迹象。 针对“失败的请求”设置警报。
 
@@ -35,32 +26,38 @@ ms.locfileid: "60902010"
 
 ### <a name="email-on-exceptions"></a>发生异常时发送电子邮件
 1. [设置异常监视](../../azure-monitor/app/asp-net-exceptions.md)
-2. 针对异常计数指标[设置警报](../../azure-monitor/app/alerts.md)
+2. 针对异常计数指标[设置警报](../../azure-monitor/platform/alerts-log.md)
 
 ### <a name="email-on-an-event-in-my-app"></a>应用中发生某个事件时发送电子邮件
-假设希望在发生特定的事件时收到电子邮件。 Application Insights 不直接提供此功能，但可以[在指标超过某个阈值时发送警报](../../azure-monitor/app/alerts.md)。
+假设希望在发生特定的事件时收到电子邮件。 Application Insights 不直接提供此功能，但可以[在指标超过某个阈值时发送警报](../../azure-monitor/platform/alerts-log.md)。
 
 可以针对[自定义指标](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric)设置警报，但不能针对自定义事件设置警报。 编写一些代码，以便在发生事件时增大指标：
 
-    telemetry.TrackMetric("Alarm", 10);
+```csharp
+telemetry.TrackMetric("Alarm", 10);
+```
 
-或：
+或者：
 
-    var measurements = new Dictionary<string,double>();
-    measurements ["Alarm"] = 10;
-    telemetry.TrackEvent("status", null, measurements);
+```csharp
+var measurements = new Dictionary<string,double>();
+measurements ["Alarm"] = 10;
+telemetry.TrackEvent("status", null, measurements);
+```
 
 由于警报有两种状态，因此需要设置一个较小值，以便将警报视为已结束：
 
-    telemetry.TrackMetric("Alarm", 0.5);
+```csharp
+telemetry.TrackMetric("Alarm", 0.5);
+```
 
-在[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)中创建一个图表来查看警报：
+在[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)中创建一个图表来查看警报：
 
-![](./media/how-do-i/010-alarm.png)
+![屏幕截图显示了如何在指标资源管理器中创建图表来查看警报。](./media/how-do-i/010-alarm.png)
 
 现在，将警报设置为在指标超过中间值有一段时间时激发：
 
-![](./media/how-do-i/020-threshold.png)
+![屏幕截图，显示如何设置一个警报，以便在指标超过中间值时触发。](./media/how-do-i/020-threshold.png)
 
 将平均期限设置为最小值。
 
@@ -74,11 +71,11 @@ ms.locfileid: "60902010"
 * 由于状态为“警报”和“正常”时都会发送电子邮件，因此可能要以两个状态的条件来仔细考虑单次发生的事件。 例如，不要采用“作业已完成”事件，而是采用“作业正在进行”条件，这样就可以在作业开始和结束时收到电子邮件。
 
 ### <a name="set-up-alerts-automatically"></a>自动设置警报
-[使用 PowerShell 创建新警报](../../azure-monitor/app/alerts.md#automation)
+[使用 PowerShell 创建新警报](../../azure-monitor/platform/alerts-log.md)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>使用 PowerShell 管理 Application Insights
-* [创建新资源](../../azure-monitor/app/powershell-script-create-resource.md)
-* [创建新警报](../../azure-monitor/app/alerts.md#automation)
+* [创建新资源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
+* [创建新警报](../../azure-monitor/platform/alerts-log.md)
 
 ## <a name="separate-telemetry-from-different-versions"></a>不同版本中的单独遥测
 
@@ -91,7 +88,7 @@ ms.locfileid: "60902010"
 
 ## <a name="visualize-data"></a>可视化数据
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>包含来自多个应用的指标的仪表板
-* 在 [指标资源管理器](../../azure-monitor/app/metrics-explorer.md) 中，自定义图表并将它保存到收藏夹。 将图表固定到 Azure 仪表板。
+* 在 [指标资源管理器](../../azure-monitor/platform/metrics-charts.md) 中，自定义图表并将它保存到收藏夹。 将图表固定到 Azure 仪表板。
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>包含来自其他源和 Application Insights 的数据的仪表板
 * [将遥测数据导出到 Power BI](../../azure-monitor/app/export-power-bi.md )。
@@ -103,17 +100,17 @@ ms.locfileid: "60902010"
 <a name="search-specific-users"></a>
 
 ### <a name="filter-out-anonymous-or-authenticated-users"></a>筛选出匿名用户或经过身份验证的用户
-如果用户要登录，可以设置[经过身份验证的用户 ID](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)。（不会自动设置此 ID。）
+如果用户要登录，可以设置[经过身份验证的用户 ID](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)。 （不会自动设置此 ID。）
 
 然后，可以：
 
 * 按特定的用户 ID 搜索
 
-![](./media/how-do-i/110-search.png)
+![显示针对特定用户 Id 的 searchin 选项的屏幕截图。](./media/how-do-i/110-search.png)
 
 * 筛选匿名用户或经过身份验证的用户的指标
 
-![](./media/how-do-i/115-metrics.png)
+![显示筛选 metrixs 到匿名用户或经过身份验证的用户的屏幕截图。](./media/how-do-i/115-metrics.png)
 
 ## <a name="modify-property-names-or-values"></a>修改属性名称或值
 创建[筛选器](../../azure-monitor/app/api-filtering-sampling.md#filtering)。 这样，便可以先修改或筛选遥测数据，然后将它从应用程序发送到 Application Insights。
@@ -137,16 +134,25 @@ ms.locfileid: "60902010"
 ## <a name="disable-telemetry"></a>禁用遥测
 **动态停止和启动**从服务器收集与传输遥测数据：
 
+### <a name="aspnet-classic-applications"></a>ASP.NET 经典应用程序
+
+```csharp
+using  Microsoft.ApplicationInsights.Extensibility;
+
+TelemetryConfiguration.Active.DisableTelemetry = true;
 ```
 
-    using  Microsoft.ApplicationInsights.Extensibility;
+### <a name="other-applications"></a>其他应用程序
+不建议在控制台上或 ASP.NET Core 应用程序中使用 `TelemetryConfiguration.Active` 单一实例。
+如果自行创建 `TelemetryConfiguration` 实例 - 将 `DisableTelemetry` 设置为 `true`。
 
-    TelemetryConfiguration.Active.DisableTelemetry = true;
-```
+对于 ASP.NET Core 应用程序，你可以使用 [ASP.NET Core 依赖关系注入](/aspnet/core/fundamentals/dependency-injection/)访问 `TelemetryConfiguration` 实例。 可在 [ASP.NET Core 应用程序的 ApplicationInsights](../../azure-monitor/app/asp-net-core.md) 一文中找到更多详细信息。
 
+## <a name="disable-selected-standard-collectors"></a>禁用选定的标准收集器
+可以禁用标准收集器（例如，性能计数器、HTTP 请求或依赖项）
 
-
-若要**禁用选定的标准收集器**（例如性能计数器、HTTP 请求或依赖项），请删除或注释掉 [ApplicationInsights.config](../../azure-monitor/app/api-custom-events-metrics.md) 中的相关行。例如，如果想要发送自己的 TrackRequest 数据，则可以这样做。
+* ASP.NET 应用程序 - 删除或注释掉 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 中的相关行
+* ASP.NET Core 应用程序 - 遵循 [ApplicationInsights ASP.NET Core](../../azure-monitor/app/asp-net-core.md#configuring-or-removing-default-telemetrymodules) 中的遥测模块配置选项
 
 ## <a name="view-system-performance-counters"></a>查看系统性能计数器
 可以在指标资源管理器中显示的指标信息是一组系统性能计数器。 有一个标题为“服务器”的预定义边栏选项卡显示了其中的多个计数器。
@@ -159,5 +165,5 @@ ms.locfileid: "60902010"
 * **Unix 服务器** - [安装 collectd](../../azure-monitor/app/java-collectd.md)
 
 ### <a name="to-display-more-performance-counters"></a>显示更多性能计数器
-* 首先[添加一个新图表](../../azure-monitor/app/metrics-explorer.md)，然后查看计数器是否出现在提供的基本集内。
+* 首先[添加一个新图表](../../azure-monitor/platform/metrics-charts.md)，然后查看计数器是否出现在提供的基本集内。
 * 如果没有，请[将计数器添加到性能计数器模块收集的集内](../../azure-monitor/app/performance-counters.md)。

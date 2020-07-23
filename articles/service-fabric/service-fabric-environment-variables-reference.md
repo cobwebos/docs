@@ -1,29 +1,21 @@
 ---
-title: Azure Service Fabric 环境变量 | Microsoft Docs
-description: Service Fabric 环境变量的参考文档
-documentationcenter: .net
+title: Azure Service Fabric 环境变量
+description: 了解 Azure Service Fabric 中的环境变量。 包含变量及其用法的完整列表的引用。
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: reference
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/07/2017
 ms.author: mikhegn
-ms.openlocfilehash: 1c8400898dba59f312ba9d994ee711a5e241973a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: b13522b1d9f2acd2aa3f7923c1b623fab696056d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60946716"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75645678"
 ---
 # <a name="service-fabric-environment-variables"></a>Service Fabric 环境变量
 
 Service Fabric 为每个服务实例提供了内置环境变量集。 下面是环境变量的完整列表：
 
-| 环境变量                         | 描述                                                            | 示例                                                              |
+| 环境变量                         | 说明                                                            | 示例                                                              |
 |----------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------------|
 | Fabric_ApplicationName                       | 应用程序的 fabric uri 名称                                 | fabric:/MyApplication                                                |
 | Fabric_CodePackageName                       | 进程所属的代码包的名称              | 代码                                                                 |

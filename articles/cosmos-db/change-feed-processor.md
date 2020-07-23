@@ -1,78 +1,112 @@
 ---
-title: 使用 Azure Cosmos DB 中的更改源处理器库
-description: 使用 Azure Cosmos DB 更改源处理器库。
-author: rimman
+title: Azure Cosmos DB 更改源处理器
+description: 了解如何使用 Azure Cosmos DB 更改源处理器读取更改源（更改源处理器的组件）
+author: timsander1
+ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/21/2019
-ms.author: rimman
+ms.date: 05/13/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 9cf9e1aabc0898ef025c7c2f517e631a812e67d7
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 4325f75ac8181e088d64e53d3f65e085a09c0224
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969020"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85119403"
 ---
-# <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 更改源处理器 
+# <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 更改源处理器
 
-借助 [Azure Cosmos DB 更改源处理器库](sql-api-sdk-dotnet-changefeed.md)，可以在多个使用者之间分配事件处理负载。 此库简化了跨分区的以及并行工作的多个线程中的更改的读取。
+更改源处理器是 [Azure Cosmos DB SDK V3](https://github.com/Azure/azure-cosmos-dotnet-v3) 的一部分。 它简化了读取更改源的过程，可有效地在多个使用者之间分布事件处理。
 
-更改源处理器库的主要优势在于，无需管理每个分区和继续标记，也无需手动轮询每个容器。
+更改源处理器库的主要优点是其容错行为，可保证更改源中的所有事件交付“至少一次”。
 
-更改源处理器库简化了跨分区的以及并行工作的多个线程中的更改的读取。 它使用租约机制自动管理跨分区的更改读取。 如下图中所示，如果启动两个使用更改源处理器库的客户端，它们会在彼此之间划分工作。 如果不断增加客户端的数目，它们仍会在彼此之间划分工作。
+## <a name="components-of-the-change-feed-processor"></a>更改源处理器的组件
 
-![使用 Azure Cosmos DB 更改源处理器库](./media/change-feed-processor/change-feed-output.png)
+实现更改源处理器需要四个主要组件：
 
-左侧的客户端先启动并开始监视所有分区，然后第二个客户端启动，随后，第一个客户端让某些租约转移到第二个客户端。 这是在不同的计算机和客户端之间分配工作的有效方法。
+1. **监视的容器：** 监视的容器是用于生成更改源的数据。 对受监视的容器的任何插入和更新都会反映在容器的更改源中。
 
-如果有两个无服务器 Azure 函数正在监视同一个容器并使用相同的租约，则根据处理器库决定处理分区的方式，这两个函数可能会收到不同的文档。
+1. **租约容器：** 租用容器充当状态存储并协调处理跨多个辅助角色的更改源。 租用容器可以与受监视的容器存储在同一帐户中，也可以存储在单独的帐户中。
 
-## <a name="implementing-the-change-feed-processor-library"></a>实施更改源处理器库
+1. 主机：主机是使用更改源处理器侦听更改的应用程序实例。 具有相同租用配置的多个实例可以并行运行，但是每个实例应具有不同的实例名称。
 
-实施更改源处理器库需要四个主要组件： 
+1. 委托：委托是用于定义开发人员要对更改源处理器读取的每一批更改执行何种操作的代码。 
 
-1. **监视的容器：** 监视的容器是用于生成更改源的数据。 对监视容器的任何插入和更改都会反映在容器的更改源中。
+若要进一步了解更改源处理器的四个元素是如何协同工作的，请看下图中的一个示例。 受监视的容器会存储文档，并将“City”用作分区键。 我们发现分区键值分布在包含项的范围内。 有两个主机实例，更改源处理器向每个实例分配不同范围的分区键值，以最大程度地提高计算分布率。 每个范围都是并行读取的，其进程的维护独立于租用容器中的其他范围。
 
-1. **租约容器：** 租约容器协调处理跨多个辅助角色的更改源。 单独的容器用于存储租约，一个分区一个租约。 最好将此租约容器存储在不同的帐户（写入区域更靠近更改源处理器运行位置）。 租用对象有以下属性：
+:::image type="content" source="./media/change-feed-processor/changefeedprocessor.png" alt-text="更改源处理器示例" border="false":::
 
-   * 所有者：指定拥有租约的主机。
+## <a name="implementing-the-change-feed-processor"></a>实现更改源处理器
 
-   * 继续：为特殊分区指定更改源中的位置（继续标记）。
+入口点始终是被监视的容器，来自你调用 `GetChangeFeedProcessorBuilder` 的 `Container` 实例：
 
-   * 时间戳：租约最近更新时间；时间戳可用于检查租约是否到期。
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
 
-1. **处理器主机：** 每个主机根据具有活动租用的其他主机实例数目，确定要处理的分区数目。
+其中，第一个参数是描述此处理器的目标的唯一名称，第二个参数是要处理更改的委托实现。 
 
-   * 主机启动时，将获取租用，以在所有主机中均衡工作负荷。 主机定期续订租用，使租用保持活动状态。
+委托示例如下：
 
-   * 主机为每次读取检查其租用的最近继续标记。 为确保并发安全，主机会检查 ETag 的每次租用更新。 此外还支持其他检查点策略。
 
-   * 关闭后，主机会释放所有租用，但保留继续信息，以便稍后从存储检查点继续读取。
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=Delegate)]
 
-   目前，主机数量不能大于分区（租约）数量。
+最后，使用 `WithInstanceName` 定义此处理器实例的名称，它是用于维护具有 `WithLeaseContainer` 的租用状态的容器。
 
-1. **使用者：** 使用者或辅助角色是执行每个主机启动的更改源处理的线程。 每个处理器主机可以有多个使用者。 每个使用者从分配给其的分区上读取更改源，并就更改和过期的租用通知主机。
+调用 `Build` 可让你获得可通过调用 `StartAsync` 启动的处理器实例。
 
-若要进一步了解更改源处理器的四个元素是如何协同工作的，请看下图中的一个示例。 监视的集合存储文档，并将“City”用作分区键。 可以看到蓝色分区包含“A - E”中的“City”字段的文档。 有两个主机，每个主机有两个从四个并行分区读取的使用者。 箭头显示的是从更改源中特定位置读取的使用者。 在第一个分区中，深蓝色表示更改源上未读取的更改，而浅蓝色表示更改源上已读取的更改。 主机使用租用集合来存储“继续”值，跟踪每个使用者的当前读取位置。
+## <a name="processing-life-cycle"></a>处理生命周期
 
-![更改源处理器示例](./media/change-feed-processor/changefeedprocessor.png)
+主机实例的正常生命周期为：
 
-### <a name="change-feed-and-provisioned-throughput"></a>更改源和预配吞吐量
+1. 读取更改源。
+1. 如果没有发生更改，请在一段预定义的时间内保持睡眠状态（可在 Builder 中使用 `WithPollInterval` 进行自定义），然后转到 #1。
+1. 如果发生了更改，请将其发送给委托。
+1. 委托成功地处理更改后，以最新的处理时间点更新租用存储，然后转到 #1。
+
+## <a name="error-handling"></a>错误处理。
+
+更改源处理器可在发生用户代码错误后复原。 这意味着，如果委托实现具有未经处理的异常（步骤 #4），则将停止处理特定更改批次的线程，并将创建一个新线程。 新线程将检查租赁存储在该分区键值范围内的最新时间点，并从该时间点重启，从而有效地向委托发送同一批更改。 此行为一直持续到委托能正确处理更改为止，这也是更改源处理器能够提供“至少一次”保证的原因，因为如果委托代码引发异常，它将重试该批次。
+
+若要防止更改源处理器不断地重试同一批更改，应在委托代码中添加逻辑，以便在出现异常时将文档写入死信队列。 此设计可确保你可以跟踪未处理的更改，同时仍然能够继续处理将来的更改。 死信队列可能只是另一个 Cosmos 容器。 确切的数据存储并不重要，只是未处理的更改会被保留。
+
+此外，还可以使用[更改源估算器](how-to-use-change-feed-estimator.md)在更改源处理器实例读取更改源时监视其进度。 除了监视更改源处理器是否“卡在”持续重试同一批更改外，还可了解更改源处理器是否因可用资源（如 CPU、内存和网络带宽）而滞后。
+
+## <a name="deployment-unit"></a>部署单元
+
+单个更改源处理器部署单元由一个或多个具有相同 `processorName` 和租用容器配置的实例组成。 可以有多个部署单元，其中每个单元可以具有不同的更改业务流，且每个部署单元可由一个或多个实例组成。 
+
+例如，你可能有一个部署单元，只要容器发生更改，该部署单元就会触发外部 API。 另一个部署单元可能会在每次发生更改时实时移动数据。 当被监视的容器中发生更改时，所有部署单元都会收到通知。
+
+## <a name="dynamic-scaling"></a>动态缩放
+
+如前所述，部署单元中可以有一个或多个实例。 若要充分利用部署单元内的计算分布，只需满足以下关键要求：
+
+1. 所有实例应具有相同的租用容器配置。
+1. 所有实例都应具有相同的 `processorName`。
+1. 每个实例都需要具有不同的实例名称 (`WithInstanceName`)。
+
+如果符合这三个条件，更改源处理器将使用均等分布算法，将租用容器中的所有租约分布到所有正在运行的实例，并将计算并行化。 在给定的时间，一个租约只能归一个实例所有，因此，最大实例数等于租约数。
+
+实例数可以增加和减少，更改源处理器会通过相应地重新分配来动态调整负载。
+
+而且，由于吞吐量或存储增加，更改源处理器还可以动态调整到容器规模。 当容器增多时，更改源处理器会以透明方式应对这种情况，方法是动态增加租约并将新的租约分布到现有实例。
+
+## <a name="change-feed-and-provisioned-throughput"></a>更改源和预配吞吐量
 
 消耗的 RU 会产生费用，将数据移入和移出 Cosmos 容器始终会消耗 RU。 租约容器消耗的 RU 也会产生费用。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [Azure Cosmos DB 更改源处理器库](sql-api-sdk-dotnet-changefeed.md)
-* [NugGet 包](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)
-* [GitHub 上的其他示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedProcessor)
+* [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
+* [GitHub 上的用法示例](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
+* [GitHub 上的其他示例](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
 ## <a name="next-steps"></a>后续步骤
 
-接下来，请通过以下文章继续详细了解更改源：
+现在，可以通过以下文章继续详细了解更改源处理器：
 
 * [更改源概述](change-feed.md)
-* [读取更改源的方式](read-change-feed.md)
-* [将更改源与 Azure Functions 配合使用](change-feed-functions.md)
+* [更改源请求模型](change-feed-pull-model.md)
+* [如何从更改源处理器库迁移](how-to-migrate-from-change-feed-library.md)
+* [使用更改源估算器](how-to-use-change-feed-estimator.md)
+* [更改源处理器开始时间](how-to-configure-change-feed-start-time.md)

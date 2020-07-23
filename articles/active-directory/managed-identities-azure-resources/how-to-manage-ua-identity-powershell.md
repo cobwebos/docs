@@ -1,6 +1,6 @@
 ---
-title: 如何使用 Azure PowerShell 创建、列出和删除用户分配托管标识
-description: 分步说明如何使用 Azure PowerShell 创建、列出和删除用户分配托管标识。
+title: 使用 Azure PowerShell 创建、列出和删除用户分配的托管标识 - Azure AD
+description: 分步说明如何使用 Azure PowerShell 创建、列出和删除用户分配的托管标识。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -9,37 +9,37 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 886b56de194f38fbb4b94f96b92bff11f2288b37
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 675c9a795a75f2a37e107ab9e8129a761581cde0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60293502"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608443"
 ---
-# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-azure-powershell"></a>使用 Azure PowerShell 创建、列出和删除用户分配托管标识
+# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-azure-powershell"></a>使用 Azure PowerShell 创建、列出或删除用户分配的托管标识
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供了一个托管标识。 此标识可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中输入凭据了。 
+Azure 资源的托管标识为 Azure 服务提供了 Azure Active Directory 中的托管标识。 此标识可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中输入凭据了。 
 
-本文将介绍如何使用 Azure PowerShell 创建、列出和删除用户分配托管标识。
+本文介绍如何使用 Azure PowerShell 创建、列出和删除用户分配的托管标识。
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-it-work)。
+- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#managed-identity-types)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
 - 安装[最新版本的 Azure PowerShell](/powershell/azure/install-az-ps)（如果尚未安装）。
 - 如果在本地运行 PowerShell，则还需要： 
     - 运行 `Connect-AzAccount`，创建与 Azure 的连接。
-    - 安装[最新版本的 PowerShellGet](/powershell/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget)。
+    - 安装[最新版本的 PowerShellGet](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget)。
     - 运行 `Install-Module -Name PowerShellGet -AllowPrerelease` 以获得 `PowerShellGet` 模块的预发布版本（运行此命令安装 `Az.ManagedServiceIdentity` 模块后，可能需要从当前 PowerShell 会话中退出`Exit`）。
     - 运行 `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` 来安装 `Az.ManagedServiceIdentity` 模块的预发布版本，以执行本文中用户分配托管标识操作。
 

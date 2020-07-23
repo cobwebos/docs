@@ -1,34 +1,31 @@
 ---
 title: 使用 Azure Kubernetes 服务 (AKS) 运行 Apache Spark 作业
-description: 使用 Azure Kubernetes 服务 (AKS) 运行 Apache Spark 作业
-services: container-service
-author: rockboyfor
-manager: digimobile
-ms.service: container-service
-ms.topic: article
-origin.date: 03/15/2018
-ms.date: 03/04/2019
-ms.author: v-yeche
+description: 使用 Azure Kubernetes 服务 (AKS) 创建并运行 Apache Spark 作业来进行大规模数据处理。
+author: lenadroid
+ms.topic: conceptual
+ms.date: 10/18/2019
+ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: ddaff590fd493b430a72c30dd35cb1b891b80d84
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 074e3db3234794aa891d5452b0c19060193c6d0c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62104935"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243964"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>在 AKS 中运行 Apache Spark 作业
 
-[Apache Spark][apache-spark] 是用于大规模数据处理的高速引擎。 从 [Spark 2.3.0 版][spark-latest-release]开始，Apache Spark 原生支持与 Kubernetes 群集集成。 Azure Kubernetes 服务 (AKS) 是 Azure 中运行的托管 Kubernetes 环境。 本文档详细说明如何在 Azure Kubernetes 服务 (AKS) 群集上准备和运行 Apache Spark 作业。
+[Apache Spark][apache-spark] 是用于大规模数据处理的高速引擎。 从 [Spark 2.3.0 版][spark-kubernetes-earliest-version]开始，Apache Spark 原生支持与 Kubernetes 群集集成。 Azure Kubernetes 服务 (AKS) 是 Azure 中运行的托管 Kubernetes 环境。 本文档详细说明如何在 Azure Kubernetes 服务 (AKS) 群集上准备和运行 Apache Spark 作业。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 为了完成本文中的步骤，需要具备以下各项。
 
 * 基本了解 Kubernetes 和 [Apache Spark][spark-quickstart]。
-* [Docker 中心][docker-hub]帐户，或 [Azure 容器注册表][acr-create]。
+* [Docker Hub][docker-hub] 帐户，或 [Azure 容器注册表][acr-create]。
 * 已在开发系统上[安装][azure-cli] Azure CLI。
 * 已在系统上安装 [JDK 8][java-install]。
+* 已在系统上安装[Apache Maven][maven-install] 。
 * 已在系统上安装 SBT（[Scala 生成工具][sbt-install]）。
 * 已在系统上安装 Git 命令行工具。
 
@@ -41,13 +38,19 @@ Spark 用于大规模数据处理，要求根据 Spark 资源的要求调整 Kub
 为群集创建资源组。
 
 ```azurecli
-az group create --name mySparkCluster --location chinaeast2
+az group create --name mySparkCluster --location eastus
 ```
 
-创建 AKS 群集，其中包含大小为 `Standard_D3_v2` 的节点。
+创建群集的服务主体。 创建后，下一条命令将需要服务主体 appId 和密码。
 
 ```azurecli
-az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2
+az ad sp create-for-rbac --name SparkSP
+```
+
+使用大小为 `Standard_D3_v2` 的节点以及作为服务主体和客户端密码参数传递的 appId 和密码值创建 AKS 群集。
+
+```azurecli
+az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2 --generate-ssh-keys --service-principal <APPID> --client-secret <PASSWORD>
 ```
 
 连接到 AKS 群集。
@@ -65,7 +68,7 @@ az aks get-credentials --resource-group mySparkCluster --name mySparkCluster
 将 Spark 项目存储库克隆到开发系统。
 
 ```bash
-git clone -b branch-2.3 https://github.com/apache/spark
+git clone -b branch-2.4 https://github.com/apache/spark
 ```
 
 切换到克隆的存储库所在的目录，并将 Spark 源的路径保存到某个变量。
@@ -137,7 +140,7 @@ cd sparkpi
 
 ```bash
 touch project/assembly.sbt
-echo 'addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.6")' >> project/assembly.sbt
+echo 'addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.10")' >> project/assembly.sbt
 ```
 
 运行以下命令，将示例代码复制到新建的项目，并添加全部所需的依赖项。
@@ -152,7 +155,7 @@ cat <<EOT >> build.sbt
 libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.3.0" % "provided"
 EOT
 
-sed -ie 's/scalaVersion.*/scalaVersion := "2.11.11",/' build.sbt
+sed -ie 's/scalaVersion.*/scalaVersion := "2.11.11"/' build.sbt
 sed -ie 's/name.*/name := "SparkPi",/' build.sbt
 ```
 
@@ -177,14 +180,14 @@ sbt assembly
 ```azurecli
 RESOURCE_GROUP=sparkdemo
 STORAGE_ACCT=sparkdemo$RANDOM
-az group create --name $RESOURCE_GROUP --location chinaeast2
+az group create --name $RESOURCE_GROUP --location eastus
 az storage account create --resource-group $RESOURCE_GROUP --name $STORAGE_ACCT --sku Standard_LRS
 export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-string --resource-group $RESOURCE_GROUP --name $STORAGE_ACCT -o tsv`
 ```
 
 使用以下命令将 jar 文件上传到 Azure 存储帐户。
 
-```bash
+```azurecli
 CONTAINER_NAME=jars
 BLOB_NAME=SparkPi-assembly-0.1.0-SNAPSHOT.jar
 FILE_TO_UPLOAD=target/scala-2.11/SparkPi-assembly-0.1.0-SNAPSHOT.jar
@@ -215,6 +218,13 @@ kubectl proxy
 cd $sparkdir
 ```
 
+创建具有足够权限的服务帐户来运行作业。
+
+```bash
+kubectl create serviceaccount spark
+kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount=default:spark --namespace=default
+```
+
 使用 `spark-submit` 提交作业。
 
 ```bash
@@ -224,6 +234,7 @@ cd $sparkdir
   --name spark-pi \
   --class org.apache.spark.examples.SparkPi \
   --conf spark.executor.instances=3 \
+  --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
   --conf spark.kubernetes.container.image=$REGISTRY_NAME/spark:$REGISTRY_TAG \
   $jarUrl
 ```
@@ -231,8 +242,10 @@ cd $sparkdir
 此操作会启动 Spark 作业，该作业将作业状态流式传输到 shell 会话。 运行作业时，可以使用 kubectl get pods 命令查看 Spark 驱动程序 pod 和执行器 pod。 打开另一个终端会话以运行这些命令。
 
 ```console
-$ kubectl get pods
+kubectl get pods
+```
 
+```output
 NAME                                               READY     STATUS     RESTARTS   AGE
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   1/1       Running    0          16s
 spark-pi-2232778d0f663768ab27edc35cb73040-exec-1   0/1       Init:0/1   0          4s
@@ -260,7 +273,7 @@ kubectl get pods --show-all
 
 输出：
 
-```bash
+```output
 NAME                                               READY     STATUS      RESTARTS   AGE
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   0/1       Completed   0          1m
 ```
@@ -273,7 +286,7 @@ kubectl logs spark-pi-2232778d0f663768ab27edc35cb73040-driver
 
 在这些日志中，可以看到 Spark 作业的结果，即 Pi 的值。
 
-```bash
+```output
 Pi is roughly 3.152155760778804
 ```
 
@@ -309,6 +322,7 @@ ENTRYPOINT [ "/opt/entrypoint.sh" ]
     --name spark-pi \
     --class org.apache.spark.examples.SparkPi \
     --conf spark.executor.instances=3 \
+    --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
     --conf spark.kubernetes.container.image=<spark-image> \
     local:///opt/spark/work-dir/<your-jar-name>.jar
 ```
@@ -326,15 +340,17 @@ ENTRYPOINT [ "/opt/entrypoint.sh" ]
 <!-- LINKS - external -->
 [apache-spark]: https://spark.apache.org/
 [docker-hub]: https://docs.docker.com/docker-hub/
-[java-install]: https://docs.azure.cn/zh-cn/java/java-supported-jdk-runtime?view=azure-java-stable
+[java-install]: https://aka.ms/azure-jdks
+[maven-install]: https://maven.apache.org/install.html
 [sbt-install]: https://www.scala-sbt.org/1.0/docs/Setup.html
 [spark-docs]: https://spark.apache.org/docs/latest/running-on-kubernetes.html
-[spark-latest-release]: https://spark.apache.org/releases/spark-release-2-3-0.html
+[spark-kubernetes-earliest-version]: https://spark.apache.org/releases/spark-release-2-3-0.html
 [spark-quickstart]: https://spark.apache.org/docs/latest/quick-start.html
 
+
 <!-- LINKS - internal -->
-[acr-aks]: /container-registry/container-registry-auth-aks
-[acr-create]: /container-registry/container-registry-get-started-azure-cli
-[aks-quickstart]: /aks/
-[azure-cli]: https://docs.azure.cn/zh-cn/cli/?view=azure-cli-latest?view=azure-cli-latest
-[storage-account]: /storage/common/storage-azure-cli
+[acr-aks]: cluster-container-registry-integration.md
+[acr-create]: ../container-registry/container-registry-get-started-azure-cli.md
+[aks-quickstart]: ./index.yml
+[azure-cli]: /cli/azure/?view=azure-cli-latest
+[storage-account]: ../storage/blobs/storage-quickstart-blobs-cli.md

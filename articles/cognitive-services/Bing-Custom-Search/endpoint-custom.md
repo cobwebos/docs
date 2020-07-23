@@ -1,7 +1,7 @@
 ---
 title: 必应自定义搜索终结点
-titlesuffix: Azure Cognitive Services
-description: 总结了必应自定义搜索 API 终结点。
+titleSuffix: Azure Cognitive Services
+description: 为您关注的主题创建定制的搜索体验。 用户会看到针对他们关心的内容量身定制的搜索结果。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: bc33d65972e12591130389e0c3cb8697898d1da9
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 03ec22caedd4e317b9e1fe781dc3d983febc7a6d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390347"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74072785"
 ---
 # <a name="custom-search"></a>自定义搜索
 借助必应自定义搜索，可以为关注的主题创建定制的搜索体验。 用户会看到根据他们关注的内容定制的搜索结果，无需浏览包含无关内容的搜索结果。
@@ -58,7 +58,7 @@ https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/images/search
 有关配置自定义搜索实例的信息，请参阅[配置自定义搜索体验](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/define-your-custom-view)。
 
 ## <a name="next-steps"></a>后续步骤
-必应  API 支持根据其类型返回结果的搜索操作。 所有搜索终结点均将结果作为 JSON 响应对象返回。  所有终结点支持后列查询：按经度、纬度和搜索半径返回特定语言和/或位置的查询。
+必应**** API 支持根据其类型返回结果的搜索操作。所有搜索终结点均将结果作为 JSON 响应对象返回。 所有终结点支持后列查询：按经度、纬度和搜索半径返回特定语言和/或位置的查询。
 
 若要完整了解每个终结点支持的参数，请参阅每种类型对应的参考页面。
 有关使用自定义搜索 API 的基本请求的示例，请参阅[自定义搜索快速入门](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/)

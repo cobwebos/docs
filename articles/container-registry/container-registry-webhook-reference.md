@@ -1,18 +1,13 @@
 ---
-title: Azure 容器注册表 Webhook 架构参考
-description: Azure 容器注册表的 Webhook 请求 JSON 有效负载参考。
-services: container-registry
-author: dlepow
-ms.service: container-registry
+title: 注册表 Webhook 架构参考
+description: Azure 容器注册表中 Webhook 请求的 JSON 有效负载参考，这些有效负载是在为项目推送或删除事件启用 Webhook 时生成的
 ms.topic: article
 ms.date: 03/05/2019
-ms.author: danlep
-ms.openlocfilehash: 4c0845b9cf5194ecbd0ab813997e17e070840f44
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 8354ef9db24d5825238155ac567d5d829f9b0d7f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61331335"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74455974"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Azure 容器注册表 Webhook 参考
 
@@ -40,7 +35,7 @@ ms.locfileid: "61331335"
 
 ### <a name="push-event-payload"></a>Push 事件负载
 
-|元素|Type|描述|
+|元素|类型|说明|
 |-------------|----------|-----------|
 |`id`|String|Webhook 事件的 ID。|
 |`timestamp`|DateTime|触发 Webhook 事件的时间。|
@@ -48,9 +43,9 @@ ms.locfileid: "61331335"
 |[目标](#target)|复杂类型|触发 Webhook 事件的事件目标。|
 |[请求](#request)|复杂类型|生成 Webhook 事件的请求。|
 
-### <a name="target"></a>target
+### <a name="target"></a><a name="target"></a>靶
 
-|元素|Type|描述|
+|元素|类型|说明|
 |------------------|----------|-----------|
 |`mediaType`|String|引用对象的 MIME 类型。|
 |`size`|Int32|内容的字节数。 与 Length 字段相同。|
@@ -59,9 +54,9 @@ ms.locfileid: "61331335"
 |`repository`|String|存储库名称。|
 |`tag`|String|映像标记名称。|
 
-### <a name="request"></a>request
+### <a name="request"></a><a name="request"></a>需要
 
-|元素|Type|描述|
+|元素|类型|说明|
 |------------------|----------|-----------|
 |`id`|String|启动事件的请求 ID。|
 |`host`|String|注册表实例的外部可访问主机名，由传入请求中的 HTTP 主机标头指定。|
@@ -104,16 +99,16 @@ docker push myregistry.azurecr.io/hello-world:v1
 
 ### <a name="chart-push-event-payload"></a>图表推送事件有效负载
 
-|元素|Type|描述|
+|元素|类型|说明|
 |-------------|----------|-----------|
 |`id`|String|Webhook 事件的 ID。|
 |`timestamp`|DateTime|触发 Webhook 事件的时间。|
 |`action`|String|触发 Webhook 事件的操作。|
 |[目标](#helm_target)|复杂类型|触发 Webhook 事件的事件目标。|
 
-### <a name="helm_target"></a>target
+### <a name="target"></a><a name="helm_target"></a>靶
 
-|元素|Type|描述|
+|元素|类型|说明|
 |------------------|----------|-----------|
 |`mediaType`|String|引用对象的 MIME 类型。|
 |`size`|Int32|内容的字节数。|
@@ -148,13 +143,13 @@ docker push myregistry.azurecr.io/hello-world:v1
 az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 ```
 
-## <a name="delete-event"></a>删除事件
+## <a name="delete-event"></a>删除活动
 
 删除映像存储库或清单时触发的 Webhook。 删除标记时不会触发 Webhook。
 
 ### <a name="delete-event-payload"></a>Delete 事件负载
 
-|元素|Type|描述|
+|元素|类型|说明|
 |-------------|----------|-----------|
 |`id`|String|Webhook 事件的 ID。|
 |`timestamp`|DateTime|触发 Webhook 事件的时间。|
@@ -162,17 +157,17 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 |[目标](#delete_target)|复杂类型|触发 Webhook 事件的事件目标。|
 |[请求](#delete_request)|复杂类型|生成 Webhook 事件的请求。|
 
-### <a name="delete_target"></a> 目标
+### <a name="target"></a><a name="delete_target"></a>靶
 
-|元素|Type|描述|
+|元素|类型|说明|
 |------------------|----------|-----------|
 |`mediaType`|String|引用对象的 MIME 类型。|
 |`digest`|String|内容摘要，由注册表 V2 HTTP API 规范定义。|
 |`repository`|String|存储库名称。|
 
-### <a name="delete_request"></a> 请求
+### <a name="request"></a><a name="delete_request"></a>需要
 
-|元素|Type|描述|
+|元素|类型|说明|
 |------------------|----------|-----------|
 |`id`|String|启动事件的请求 ID。|
 |`host`|String|注册表实例的外部可访问主机名，由传入请求中的 HTTP 主机标头指定。|
@@ -216,16 +211,16 @@ az acr repository delete --name MyRegistry --image MyRepository:MyTag
 
 ### <a name="chart-delete-event-payload"></a>图表删除事件有效负载
 
-|元素|Type|描述|
+|元素|类型|说明|
 |-------------|----------|-----------|
 |`id`|String|Webhook 事件的 ID。|
 |`timestamp`|DateTime|触发 Webhook 事件的时间。|
 |`action`|String|触发 Webhook 事件的操作。|
 |[目标](#chart_delete_target)|复杂类型|触发 Webhook 事件的事件目标。|
 
-### <a name="chart_delete_target"></a> 目标
+### <a name="target"></a><a name="chart_delete_target"></a>靶
 
-|元素|Type|描述|
+|元素|类型|说明|
 |------------------|----------|-----------|
 |`mediaType`|String|引用对象的 MIME 类型。|
 |`size`|Int32|内容的字节数。|

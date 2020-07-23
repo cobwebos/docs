@@ -1,26 +1,24 @@
 ---
 title: Azure 快速入门 - 使用 Ruby 在对象存储中创建 blob | Microsoft Docs
 description: 本快速入门将在对象 (Blob) 存储中创建存储帐户和容器。 然后，使用适用于 Ruby 的存储客户端库将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
-services: storage
 author: mhopkins-msft
-ms.custom: mvc
-ms.service: storage
-ms.topic: quickstart
-ms.date: 11/14/2018
 ms.author: mhopkins
-ms.reviewer: seguler
-ms.openlocfilehash: 77e8e3dd8c32545b24230512ded00e335108d802
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 11/14/2018
+ms.service: storage
+ms.subservice: blobs
+ms.topic: quickstart
+ms.openlocfilehash: 8c24c5f043d17b5f0e54ca1c2c6cf41a0d3fe9bc
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150435"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "68726355"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>快速入门：使用 Ruby 上传、下载和列出 Blob
 
 本快速入门介绍如何使用 Ruby 上传、下载和列出 Azure Blob 存储的容器中的块 Blob。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -47,7 +45,7 @@ git clone https://github.com/Azure-Samples/storage-blobs-ruby-quickstart.git
 [!INCLUDE [storage-copy-account-key-portal](../../../includes/storage-copy-account-key-portal.md)]
 
 ## <a name="configure-your-storage-connection-string"></a>配置存储连接字符串
-在应用程序中，必须提供存储帐户名称和帐户密钥，以创建应用程序的 `BlobService` 实例。 从 IDE 中的解决方案资源管理器打开 `example.rb` 文件。 将 accountname 和 accountkey 值分别替换为帐户名称和密钥。 
+在应用程序中，必须提供存储帐户名称和帐户密钥，以创建应用程序的 `BlobService` 实例。 从 IDE 中的解决方案资源管理器打开 `example.rb` 文件。 将 accountname  和 accountkey  值分别替换为帐户名称和密钥。 
 
 ```ruby 
 blob_client = Azure::Storage::Blob::BlobService.create(
@@ -59,7 +57,7 @@ blob_client = Azure::Storage::Blob::BlobService.create(
 ## <a name="run-the-sample"></a>运行示例
 此示例将在“文档”文件夹中创建一个测试文件。 示例程序会将该测试文件上传到 Blob 存储，列出容器中的 blob，并使用新名称下载此文件。 
 
-运行示例。 以下输出是运行应用程序时返回的输出的示例：
+运行该示例。 以下输出是运行应用程序时返回的输出的示例：
   
 ```
 Creating a container: quickstartblobs7b278be3-a0dd-438b-b9cc-473401f0c0e8
@@ -94,7 +92,7 @@ Downloading blob to C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-9
 > [!IMPORTANT]
 > 容器名称必须为小写。 有关容器名称和 blob 名称的详细信息，请参阅[命名和引用容器、Blob 和元数据](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
 
-此部分设置 Azure 存储客户端的实例，实例化 Blob 服务对象，创建新的容器，然后设置容器的权限，使 Blob 公开。 容器名称为 quickstartblobs。 
+此部分设置 Azure 存储客户端的实例，实例化 Blob 服务对象，创建新的容器，然后设置容器的权限，使 Blob 公开。 容器名称为 quickstartblobs  。 
 
 ```ruby 
 # Create a BlobService object
@@ -117,7 +115,7 @@ Blob 存储支持块 blob、追加 blob 和页 blob。 块 blob 是最常用的 
 
 若要将文件上传到 blob，请通过将本地驱动器上的目录名称和文件名称联接在一起来获取文件的完整路径。 然后可以使用 **create\_block\_blob()** 方法将文件上传到指定的路径。 
 
-示例代码将创建一个本地文件，以供上传和下载，并将要上传的此文件存储为 file\_path\_to\_file，将 blob 的名称存储为 local\_file\_name。 以下示例将文件上传到名为“quickstartblobs”的容器。
+示例代码将创建一个本地文件，以供上传和下载，并将要上传的此文件存储为 file\_path\_to\_file，将 blob 的名称存储为 local\_file\_name。 以下示例将文件上传到名为“quickstartblobs”的容器  。
 
 ```ruby
 # Create a file in Documents to test the upload and download.

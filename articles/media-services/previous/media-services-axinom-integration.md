@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: willzhan;Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 6714beae690e23c686fc08b88e93044ae3901c89
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: willzhan
+ms.reviewer: Mingfeiy;rajputam;Juliako
+ms.openlocfilehash: 147fecdd9777e06ce078e4ed1531d6d0a0da749c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61245016"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954615"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>使用 Axinom 将 Widevine 许可证传送到 Azure 媒体服务 
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "61245016"
 ## <a name="overview"></a>概述
 Azure 媒体服务 (AMS) 已添加 Google Widevine 动态保护（有关详细信息，请参阅 [Mingfei 的博客](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)）。 此外，Azure 媒体播放器 (AMP) 还添加了 Widevine 支持（有关详细信息，请参阅 [AMP 文档](https://amp.azure.net/libs/amp/latest/docs/)）。 这是在配备了 MSE 和 EME 的现代浏览器上流式处理受 CENC 保护的 DASH 内容方面的一项重要成就，该保护是通过 multi-native-DRM（PlayReady 和 Widevine）来完成的。
 
-从媒体服务 .NET SDK 版本 3.5.2 开始，媒体服务允许配置 Widevine 许可证模板并获取 Widevine 许可证。 还可以通过以下 AMS 合作伙伴来帮助交付 Widevine 许可证：[Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](https://ezdrm.com/)、[castLabs](https://castlabs.com/company/partners/azure/)。
+从媒体服务 .NET SDK 版本 3.5.2 开始，媒体服务允许配置 Widevine 许可证模板并获取 Widevine 许可证。 还可以通过以下 AMS 合作伙伴来交付 Widevine 许可证：[Axinom](https://www.axinom.com)、[EZDRM](https://ezdrm.com/)、[castLabs](https://castlabs.com/company/partners/azure/)。
 
 本文介绍如何集成和测试由 Axinom 管理的 Widevine 许可证服务器。 具体而言，本文涵盖：  
 
@@ -44,7 +44,7 @@ Azure 媒体服务 (AMS) 已添加 Google Widevine 动态保护（有关详细�
 ![DASH 和 CENC](./media/media-services-axinom-integration/media-services-axinom1.png)
 
 ## <a name="content-protection"></a>内容保护
-有关动态保护和密钥交付策略的配置，请参阅 Mingfei 的博客：[How to configure Widevine packaging with Azure Media Services](https://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)（如何使用 Azure 媒体服务配置 Widevine 打包）。
+若要了解如何配置动态保护和密钥传递策略，请查看 Mingfei 的博客：[如何通过 Azure 媒体服务配置 Widevine 打包](https://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)。
 
 可以通过 multi-DRM 配置动态 CENC 保护，因为 DASH 流式处理具有下述两项特点：
 
@@ -55,14 +55,16 @@ Azure 媒体服务 (AMS) 已添加 Google Widevine 动态保护（有关详细�
 
 ### <a name="considerations"></a>注意事项
 1. 必须使用 Axinom 指定的密钥种子 (8888000000000000000000000000000000000000) 以及自己生成或选择的密钥 ID 来生成内容密钥，以便配置密钥传递服务。 Axinom 许可证服务器会颁发所有包含内容密钥的许可证，这些内容密钥基于同一密钥种子，而该种子可同时用于测试和生产。
-2. 用于测试的 Widevine 许可证获取 URL：[https://drm-widevine-licensing.axtest.net/AcquireLicense](https://drm-widevine-licensing.axtest.net/AcquireLicense)。 HTTP 和 HTTS 都是允许的。
+2. 用于测试的 Widevine 许可证获取 URL： [https://drm-widevine-licensing.axtest.net/AcquireLicense](https://drm-widevine-licensing.axtest.net/AcquireLicense) 。 HTTP 和 HTTS 都是允许的。
 
 ## <a name="azure-media-player-preparation"></a>Azure Media Player 准备
 AMP v1.4.0 支持播放使用 PlayReady 和 Widevine DRM 进行动态打包的 AMS 内容。
 如果 Widevine 许可证服务器不需要令牌身份验证，则不需执行任何其他操作即可测试受 Widevine 保护的 DASH 内容。 例如，AMP 团队提供简单的[示例](https://amp.azure.net/libs/amp/latest/samples/dynamic_multiDRM_PlayReadyWidevineFairPlay_notoken.html)，在该示例中可以看到它在使用 PlayReady 的 Microsoft Edge 和 IE11 中以及使用 Widevine 的 Chrome 中运行。
 Axinom 提供的 Widevine 许可证服务器要求 JWT 令牌身份验证。 需要通过 HTTP 标头“X-AxDRM-Message”提交带许可证请求的 JWT 令牌。 为此，需要在设置源之前在承载 AMP 的 Web 页中添加以下 javascript：
 
-    <script>AzureHtml5JS.KeySystem.WidevineCustomAuthorizationHeader = "X-AxDRM-Message"</script>
+```html
+<script>AzureHtml5JS.KeySystem.WidevineCustomAuthorizationHeader = "X-AxDRM-Message"</script>
+```
 
 AMP 代码的其余部分为标准 AMP API，如[此处](https://amp.azure.net/libs/amp/latest/docs/)的 AMP 文档所述。
 
@@ -77,63 +79,67 @@ John Sheehan 的 [JWT NuGet 包](https://www.nuget.org/packages/JWT)符合要求
 
 下面是通过所需声明生成 JWT 令牌的代码，这些声明是 Axinom Widevine 许可证进行测试所需的：
 
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
-    using System.IdentityModel.Tokens;
-    using System.IdentityModel.Protocols.WSTrust;
-    using System.Security.Claims;
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.IdentityModel.Tokens;
+using System.IdentityModel.Protocols.WSTrust;
+using System.Security.Claims;
 
-    namespace OpenIdConnectWeb.Utils
+namespace OpenIdConnectWeb.Utils
+{
+    public class JwtUtils
     {
-        public class JwtUtils
+        //using John Sheehan's NuGet JWT library: https://www.nuget.org/packages/JWT/
+        public static string CreateJwtSheehan(string symmetricKeyHex, string key_id)
         {
-            //using John Sheehan's NuGet JWT library: https://www.nuget.org/packages/JWT/
-            public static string CreateJwtSheehan(string symmetricKeyHex, string key_id)
+            byte[] symmetricKey = ConvertHexStringToByteArray(symmetricKeyHex);  //hex string to byte[] Note: Note that the key is a hex string, however it must be treated as a series of bytes not a string when encoding.
+
+            var payload = new Dictionary<string, object>()
             {
-                byte[] symmetricKey = ConvertHexStringToByteArray(symmetricKeyHex);  //hex string to byte[] Note: Note that the key is a hex string, however it must be treated as a series of bytes not a string when encoding.
+                { "version", 1 },
+                { "com_key_id", System.Configuration.ConfigurationManager.AppSettings["ax:com_key_id"] },
+                { "message", new { type = "entitlement_message", key_ids = new string[] { key_id } }  }
+            };
 
-                var payload = new Dictionary<string, object>()
-                             {
-                                 { "version", 1 },
-                                 { "com_key_id", System.Configuration.ConfigurationManager.AppSettings["ax:com_key_id"] },
-                                 { "message", new { type = "entitlement_message", key_ids = new string[] { key_id } }  }
-                             };
+            string token = JWT.JsonWebToken.Encode(payload, symmetricKey, JWT.JwtHashAlgorithm.HS256);
 
-                string token = JWT.JsonWebToken.Encode(payload, symmetricKey, JWT.JwtHashAlgorithm.HS256);
+            return token;
+        }
 
-                return token;
+        //convert hex string to byte[]
+        public static byte[] ConvertHexStringToByteArray(string hexString)
+        {
+            if (hexString.Length % 2 != 0)
+            {
+                throw new ArgumentException(String.Format(System.Globalization.CultureInfo.InvariantCulture, "The binary key cannot have an odd number of digits: {0}", hexString));
             }
 
-            //convert hex string to byte[]
-            public static byte[] ConvertHexStringToByteArray(string hexString)
+            byte[] HexAsBytes = new byte[hexString.Length / 2];
+            for (int index = 0; index < HexAsBytes.Length; index++)
             {
-                if (hexString.Length % 2 != 0)
-                {
-                    throw new ArgumentException(String.Format(System.Globalization.CultureInfo.InvariantCulture, "The binary key cannot have an odd number of digits: {0}", hexString));
-                }
-
-                byte[] HexAsBytes = new byte[hexString.Length / 2];
-                for (int index = 0; index < HexAsBytes.Length; index++)
-                {
-                    string byteValue = hexString.Substring(index * 2, 2);
-                    HexAsBytes[index] = byte.Parse(byteValue, System.Globalization.NumberStyles.HexNumber, System.Globalization.CultureInfo.InvariantCulture);
-                }
-
-                return HexAsBytes;
+                string byteValue = hexString.Substring(index * 2, 2);
+                HexAsBytes[index] = byte.Parse(byteValue, System.Globalization.NumberStyles.HexNumber, System.Globalization.CultureInfo.InvariantCulture);
             }
 
-        }  
+            return HexAsBytes;
+        }
 
     }  
 
+}  
+```
+
 Axinom Widevine 许可证服务器
 
-    <add key="ax:laurl" value="https://drm-widevine-licensing.axtest.net/AcquireLicense" />
-    <add key="ax:com_key_id" value="69e54088-e9e0-4530-8c1a-1eb6dcd0d14e" />
-    <add key="ax:com_key" value="4861292d027e269791093327e62ceefdbea489a4c7e5a4974cc904b840fd7c0f" />
-    <add key="ax:keyseed" value="8888000000000000000000000000000000000000" />
+```xml
+<add key="ax:laurl" value="https://drm-widevine-licensing.axtest.net/AcquireLicense" />
+<add key="ax:com_key_id" value="69e54088-e9e0-4530-8c1a-1eb6dcd0d14e" />
+<add key="ax:com_key" value="4861292d027e269791093327e62ceefdbea489a4c7e5a4974cc904b840fd7c0f" />
+<add key="ax:keyseed" value="8888000000000000000000000000000000000000" />
+```
 
 ### <a name="considerations"></a>注意事项
 1. 虽然 AMS PlayReady 许可证交付服务要求使用“Bearer=”作为身份验证令牌的前缀，但 Axinom Widevine 许可证服务器不使用它。
@@ -144,38 +150,41 @@ Axinom Widevine 许可证服务器
 
 当然，可以通过多种方式来获取密钥 ID。 例如，可以将密钥 ID 与内容元数据一起存储在数据库中。 也可以从 DASH MPD（媒体演示文稿说明）文件检索密钥 ID。 下面的代码是针对后一种方式。
 
-    //get key_id from DASH MPD
-    public static string GetKeyID(string dashUrl)
+```csharp
+//get key_id from DASH MPD
+public static string GetKeyID(string dashUrl)
+{
+    if (!dashUrl.EndsWith("(format=mpd-time-csf)"))
     {
-        if (!dashUrl.EndsWith("(format=mpd-time-csf)"))
-        {
-            dashUrl += "(format=mpd-time-csf)";
-        }
-
-        XPathDocument objXPathDocument = new XPathDocument(dashUrl);
-        XPathNavigator objXPathNavigator = objXPathDocument.CreateNavigator();
-        XmlNamespaceManager objXmlNamespaceManager = new XmlNamespaceManager(objXPathNavigator.NameTable);
-        objXmlNamespaceManager.AddNamespace("",     "urn:mpeg:dash:schema:mpd:2011");
-        objXmlNamespaceManager.AddNamespace("ns1",  "urn:mpeg:dash:schema:mpd:2011");
-        objXmlNamespaceManager.AddNamespace("cenc", "urn:mpeg:cenc:2013");
-        objXmlNamespaceManager.AddNamespace("ms",   "urn:microsoft");
-        objXmlNamespaceManager.AddNamespace("mspr", "urn:microsoft:playready");
-        objXmlNamespaceManager.AddNamespace("xsi",  "https://www.w3.org/2001/XMLSchema-instance");
-        objXmlNamespaceManager.PushScope();
-
-        XPathNodeIterator objXPathNodeIterator;
-        objXPathNodeIterator = objXPathNavigator.Select("//ns1:MPD/ns1:Period/ns1:AdaptationSet/ns1:ContentProtection[@value='cenc']", objXmlNamespaceManager);
-
-        string key_id = string.Empty;
-        if (objXPathNodeIterator.MoveNext())
-        {
-            key_id = objXPathNodeIterator.Current.GetAttribute("default_KID", "urn:mpeg:cenc:2013");
-        }
-
-        return key_id;
+        dashUrl += "(format=mpd-time-csf)";
     }
 
-## <a name="summary"></a>摘要
+    XPathDocument objXPathDocument = new XPathDocument(dashUrl);
+    XPathNavigator objXPathNavigator = objXPathDocument.CreateNavigator();
+    XmlNamespaceManager objXmlNamespaceManager = new XmlNamespaceManager(objXPathNavigator.NameTable);
+    objXmlNamespaceManager.AddNamespace("",     "urn:mpeg:dash:schema:mpd:2011");
+    objXmlNamespaceManager.AddNamespace("ns1",  "urn:mpeg:dash:schema:mpd:2011");
+    objXmlNamespaceManager.AddNamespace("cenc", "urn:mpeg:cenc:2013");
+    objXmlNamespaceManager.AddNamespace("ms",   "urn:microsoft");
+    objXmlNamespaceManager.AddNamespace("mspr", "urn:microsoft:playready");
+    objXmlNamespaceManager.AddNamespace("xsi",  "https://www.w3.org/2001/XMLSchema-instance");
+    objXmlNamespaceManager.PushScope();
+
+    XPathNodeIterator objXPathNodeIterator;
+    objXPathNodeIterator = objXPathNavigator.Select("//ns1:MPD/ns1:Period/ns1:AdaptationSet/ns1:ContentProtection[@value='cenc']", objXmlNamespaceManager);
+
+    string key_id = string.Empty;
+    if (objXPathNodeIterator.MoveNext())
+    {
+        key_id = objXPathNodeIterator.Current.GetAttribute("default_KID", "urn:mpeg:cenc:2013");
+    }
+
+    return key_id;
+}
+```
+
+## <a name="summary"></a>总结
+
 由于最近在 Azure 媒体服务内容保护和 Azure Media Player 中增加了 Widevine 支持，因此我们能够实现对 DASH + Multi-native-DRM (PlayReady + Widevine) 的流式处理，这既适用于 AMS 中的 PlayReady 许可证服务，也适用于 Axinom 提供的 Widevine 许可证服务器，面向以下现代浏览器：
 
 * Chrome
@@ -193,12 +202,16 @@ Axinom Widevine 许可证服务器
 | Widevine 许可证获取 URL |必须用于配置资产传送策略，以便进行 DASH 流式处理（参见[此](media-services-axinom-integration.md#content-protection)部分）。 |
 | 内容密钥 ID |必须包括，作为 JWT 令牌的授权消息声明值的一部分（参见[此](media-services-axinom-integration.md#jwt-token-generation)部分）。 |
 
+## <a name="additional-notes"></a>附加说明
+
+* Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
+
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-### <a name="acknowledgments"></a>致谢
-我们诚挚地向以下人员表达谢意，是他们协助完成了本文档的写作工作：Kristjan Jõgi（来自 Axinom）、Mingfei Yan、和 Amit Rajput。
+### <a name="acknowledgments"></a>鸣谢
+我们诚挚地向以下人员表达谢意，是他们协助完成了本文档的写作工作：Kristjan Jõgi of Axinom、Mingfei Yan 和 Amit Rajput。
 

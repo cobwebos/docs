@@ -1,37 +1,27 @@
 ---
-title: 在 Linux 上创建 Azure Service Fabric 容器应用程序 | Microsoft Docs
+title: 在 Linux 上创建 Azure Service Fabric 容器应用程序
 description: 在 Azure Service Fabric 上创建第一个 Linux 容器应用程序。 生成包含应用程序的 Docker 映像，将该映像推送到容器注册表，然后生成并部署 Service Fabric 容器应用程序。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 1/4/2019
-ms.author: aljo
-ms.openlocfilehash: 58af752d8b7fcec5c681e2b8975d109a0f731878
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.custom: tracking-python
+ms.openlocfilehash: 783f6a06d57a447998710e2c8ff349b23ef751c5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66302274"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256405"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>在 Linux 上创建第一个 Service Fabric 容器应用程序
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-在 Service Fabric 群集上运行 Linux 容器中的现有应用程序不需要对应用程序进行任何更改。 本文逐步讲解如何创建包含 Python [Flask](http://flask.pocoo.org/) Web 应用程序的 Docker 映像并将其部署到 Service Fabric 群集。 此外，将通过 [Azure 容器注册表](/azure/container-registry/)共享容器化的应用程序。 本文假定读者对 Docker 有一个基本的了解。 阅读 [Docker Overview](https://docs.docker.com/engine/understanding-docker/)（Docker 概述）即可了解 Docker。
+在 Service Fabric 群集上运行 Linux 容器中的现有应用程序不需要对应用程序进行任何更改。 本文逐步讲解如何创建包含 Python [Flask](http://flask.pocoo.org/) Web 应用程序的 Docker 映像并将其部署到 Service Fabric 群集。 此外，将通过 [Azure 容器注册表](../container-registry/index.yml)共享容器化的应用程序。 本文假定读者对 Docker 有一个基本的了解。 阅读 [Docker Overview](https://docs.docker.com/engine/understanding-docker/)（Docker 概述）即可了解 Docker。
 
 > [!NOTE]
 > 本文适用于 Linux 开发环境。  Service Fabric 群集运行时和 Docker 运行时必须在同一 OS 上运行。  不能在 Windows 群集上运行 Linux 容器。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 * 一台运行以下软件的开发计算机：
   * [Service Fabric SDK 和工具](service-fabric-get-started-linux.md)。
   * [适用于 Linux 的 Docker CE](https://docs.docker.com/engine/installation/#prior-releases)。 
@@ -84,10 +74,12 @@ from flask import Flask
 
 app = Flask(__name__)
 
+
 @app.route("/")
 def hello():
-    
+
     return 'Hello World!'
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
@@ -122,7 +114,7 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 name 用于为运行的容器（而不是容器 ID）命名。 
 
-连接到正在运行的容器。 打开 web 浏览器的 IP 地址指向端口 4000 上返回，例如"http:\//localhost:4000"。 此时会看到标题“Hello World!” 显示在浏览器中。
+连接到正在运行的容器。 打开 Web 浏览器并指向端口 4000 上返回的 IP 地址，例如“http:\//localhost:4000”。 此时会看到标题“Hello World!” 显示在浏览器中。
 
 ![Hello World!][hello-world]
 
@@ -141,9 +133,9 @@ docker rm my-web-site
 ## <a name="push-the-image-to-the-container-registry"></a>将映像推送到容器注册表
 确认应用程序在 Docker 中运行后，请将映像推送到 Azure 容器注册表中的注册表。
 
-运行`docker login`登录到容器注册表与你[注册表凭据](../container-registry/container-registry-authentication.md)。
+运行 `docker login`，以使用[注册表凭据](../container-registry/container-registry-authentication.md)登录到容器注册表。
 
-以下示例传递了 Azure Active Directory [服务主体](../active-directory/develop/app-objects-and-service-principals.md)的 ID 和密码。 例如，你可能在自动化方案中向注册表分配了服务主体。 或者，你可以使用注册表用户名和密码登录。
+以下示例传递了 Azure Active Directory [服务主体](../active-directory/develop/app-objects-and-service-principals.md)的 ID 和密码。 例如，你可能在自动化方案中向注册表分配了服务主体。 或者，可以使用注册表用户名和密码登录。
 
 ```bash
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -179,28 +171,11 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 ![适用于容器的 Service Fabric Yeoman 生成器][sf-yeoman]
 
 ## <a name="configure-container-repository-authentication"></a>配置容器存储库身份验证
- 如果容器需要通过专用存储库进行身份验证，则添加 `RepositoryCredentials`。 在本文中，请为 myregistry.azurecr.io 容器注册表添加帐户名和密码。 确保将策略添加到对应于适当服务包的“ServiceManifestImport”标记下面。
 
-```xml
-   <ServiceManifestImport>
-      <ServiceManifestRef ServiceManifestName="MyServicePkg" ServiceManifestVersion="1.0.0" />
-    <Policies>
-        <ContainerHostPolicies CodePackageRef="Code">
-        <RepositoryCredentials AccountName="myregistry" Password="=P==/==/=8=/=+u4lyOB=+=nWzEeRfF=" PasswordEncrypted="false"/>
-        <PortBinding ContainerPort="80" EndpointRef="myServiceTypeEndpoint"/>
-        </ContainerHostPolicies>
-    </Policies>
-   </ServiceManifestImport>
-``` 
-
-我们建议加密存储库密码。 有关说明，请参阅[在 Service Fabric 应用程序中管理加密机密](service-fabric-application-secret-management.md)。
-
-### <a name="configure-cluster-wide-credentials"></a>配置群集级凭据
-请参阅[此文档](
-service-fabric-get-started-containers.md#configure-cluster-wide-credentials)
+若要了解如何为容器映像下载配置不同类型的身份验证，请参阅[容器存储库身份验证](configure-container-repository-credentials.md)。
 
 ## <a name="configure-isolation-mode"></a>配置隔离模式
-使用 6.3 运行时版本时，Linux 容器支持 VM 隔离，从而支持两种容器隔离模式：process 和 hyperv。 使用 hyperv 隔离模式时，内核将在每个容器与容器主机之间隔离。 使用 [Clear Containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker) 实现 hyperv 隔离。 在应用程序清单文件中的 `ServicePackageContainerPolicy` 元素内，为 Linux 群集指定了隔离模式。 可以指定的隔离模式为 `process`、`hyperv` 和 `default`。 默认为 process 隔离模式。 以下代码片段演示如何在应用程序清单文件中指定隔离模式。
+使用 6.3 运行时版本时，Linux 容器支持 VM 隔离，从而支持两种容器隔离模式：process 和 Hyper-V。 使用 Hyper-V 隔离模式时，内核将在每个容器与容器主机之间隔离。 Hyper-v 隔离是使用 "[清除容器](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker)" 实现的。 在应用程序清单文件中的 `ServicePackageContainerPolicy` 元素内，为 Linux 群集指定了隔离模式。 可以指定的隔离模式为 `process`、`hyperv` 和 `default`。 默认为 process 隔离模式。 以下代码片段演示如何在应用程序清单文件中指定隔离模式。
 
 ```xml
 <ServiceManifestImport>
@@ -215,7 +190,7 @@ service-fabric-get-started-containers.md#configure-cluster-wide-credentials)
 
 
 ## <a name="configure-resource-governance"></a>配置资源调控
-[资源调控](service-fabric-resource-governance.md)限制容器能够在主机上使用的资源。 在应用程序清单中指定的 `ResourceGovernancePolicy` 元素用于声明服务代码包的资源限制。 可以为以下资源设置资源限制：内存、MemorySwap、CpuShares（CPU 相对权重）、MemoryReservationInMB、BlkioWeight（BlockIO 相对权重）。 在此示例中，服务包 Guest1Pkg 在放置它的群集节点上获得一个核心。 内存限制是绝对的，所以此代码包限制为 1024 MB 内存（和相同的软保证保留）。 代码包（容器或进程）无法分配超出此限制的内存，尝试执行此操作会引发内存不足异常。 若要强制执行资源限制，服务包中的所有代码包均应指定内存限制。
+[资源调控](service-fabric-resource-governance.md)限制容器能够在主机上使用的资源。 在应用程序清单中指定的 `ResourceGovernancePolicy` 元素用于声明服务代码包的资源限制。 可为以下资源设置资源限制：内存、MemorySwap、CpuShares（CPU 相对权重）、MemoryReservationInMB、BlkioWeight（BlockIO 相对权重）。 在此示例中，服务包 Guest1Pkg 在放置它的群集节点上获得一个核心。 内存限制是绝对的，所以此代码包限制为 1024 MB 内存（和相同的软保证预留）。 代码包（容器或进程）无法分配超出此限制的内存，尝试执行此操作会引发内存不足异常。 若要强制执行资源限制，服务包中的所有代码包均应指定内存限制。
 
 ```xml
 <ServiceManifestImport>
@@ -232,9 +207,9 @@ service-fabric-get-started-containers.md#configure-cluster-wide-credentials)
 
 ## <a name="configure-docker-healthcheck"></a>配置 docker HEALTHCHECK 
 
-从 v6.1 开始，Service Fabric 自动将 [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) 事件集成到其系统运行状况报告。 这意味着，如果容器启用了 **HEALTHCHECK**，则只要容器的运行状况状态如 Docker 所报告的那样更改，Service Fabric 就会报告运行状况。  当 *health_status* 为“正常”  时，会在 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 中显示运行状况报告“正常”；  当 *health_status* 为“不正常”时，  会显示“警告”。 
+从 v6.1 开始，Service Fabric 自动将 [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) 事件集成到其系统运行状况报告。 这意味着，如果容器启用了 **HEALTHCHECK**，则只要容器的运行状况状态如 Docker 所报告的那样更改，Service Fabric 就会报告运行状况。 **** 当 *health_status* 为“正常”** 时，会在 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 中显示运行状况报告“正常”；**** 当 *health_status* 为“不正常”时，** 会显示“警告”。 
 
-从 v6.4 的最新的刷新版开始，可以选择指定 docker HEALTHCHECK 评估应作为错误进行报告。 如果启用此选项，**确定**时，将显示运行状况报告*health_status*是*正常*并**错误**将出现*health_status*是*不正常*。
+从 v6.4 的最新更新版开始，可以选择指定应将 Docker HEALTHCHECK 评估报告为错误。 如果此选项已启用，当 *health_status* 为“正常”时，将显示“正常”运行状况报告；当 *health_status* 为“不正常”时，将显示“错误”运行状况报告************。
 
 生成容器映像时使用的 Dockerfile 中必须存在 **HEALTHCHECK** 指令，该指令指向监视容器运行状况时执行的实际检查。
 
@@ -258,11 +233,11 @@ service-fabric-get-started-containers.md#configure-cluster-wide-credentials)
     </Policies>
 </ServiceManifestImport>
 ```
-默认情况下*IncludeDockerHealthStatusInSystemHealthReport*设置为**true**， *RestartContainerOnUnhealthyDockerHealthStatus*设置为**false**，并*TreatContainerUnhealthyStatusAsError*设置为**false**。 
+默认情况下，*IncludeDockerHealthStatusInSystemHealthReport* 设置为 **true**，*RestartContainerOnUnhealthyDockerHealthStatus* 设置为 **false**，而 *TreatContainerUnhealthyStatusAsError* 设置为 **false**。 
 
 如果 *RestartContainerOnUnhealthyDockerHealthStatus* 设置为 **true**，则会重启（可能在其他节点上进行）反复报告“不正常”的容器。
 
-如果*TreatContainerUnhealthyStatusAsError*设置为**true**，**错误**时，将显示运行状况报告容器的*health_status*是*不正常*。
+如果 *TreatContainerUnhealthyStatusAsError* 设置为 **true**，当容器的 *health_status* 为“运行不正常”时，将显示“错误”运行状况报告******。
 
 若要禁用整个 Service Fabric 群集的 **HEALTHCHECK** 集成，则需将 [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) 设置为 **false**。
 
@@ -282,9 +257,9 @@ sfctl cluster select --endpoint http://localhost:19080
 ./install.sh
 ```
 
-打开浏览器并导航到 Service Fabric 资源管理器在 http:\//localhost:19080 / 资源管理器 (如果在 Mac OS X 上使用 Vagrant 在 VM 的专用 IP 替换 localhost)。 展开应用程序节点，注意现在有一个条目是用于应用程序类型，另一个条目用于该类型的第一个实例。
+打开浏览器并导航到位于 http:\//localhost:19080/Explorer 的 Service Fabric Explorer（如果在 Mac OS X 上使用 Vagrant，则使用 VM 的专用 IP 替换 localhost）。 展开应用程序节点，注意现在有一个条目是用于应用程序类型，另一个条目用于该类型的第一个实例。
 
-连接到正在运行的容器。 打开 web 浏览器的 IP 地址指向端口 4000 上返回，例如"http:\//localhost:4000"。 此时会看到标题“Hello World!” 显示在浏览器中。
+连接到正在运行的容器。 打开 Web 浏览器并指向端口 4000 上返回的 IP 地址，例如“http:\//localhost:4000”。 此时会看到标题“Hello World!” 显示在浏览器中。
 
 ![Hello World!][hello-world]
 
@@ -395,7 +370,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 
 若要将其他容器服务添加到使用 yeoman 创建的应用程序，请执行以下步骤：
 
-1. 将目录更改为现有应用程序的根目录。 例如，如果 `MyApplication` 是 Yeoman 创建的应用程序，则使用 `cd ~/YeomanSamples/MyApplication`。
+1. 将目录更改为现有应用程序的根目录。 例如 `cd ~/YeomanSamples/MyApplication`（如果 `MyApplication` 是 Yeoman 创建的应用程序）。
 2. 运行 `yo azuresfcontainer:AddService`
 
 <a id="manually"></a>
@@ -465,13 +440,13 @@ Service Fabric 运行时为下载和解压缩容器映像分配了 20 分钟的�
 
 ## <a name="set-container-retention-policy"></a>设置容器保留策略
 
-为了帮助诊断容器启动故障，Service Fabric（6.1 或更高版本）支持保留终止的或无法启动的容器。 此策略可以在  ApplicationManifest.xml 文件中设置，如以下代码片段所示：
+为了帮助诊断容器启动故障，Service Fabric（6.1 或更高版本）支持保留终止的或无法启动的容器。 此策略可以在 **** ApplicationManifest.xml 文件中设置，如以下代码片段所示：
 
 ```xml
  <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
 ```
 
- ContainersRetentionCount 设置指定在容器故障时需保留的容器数。 如果指定一个负值，则会保留所有故障容器。 如果不指定 **ContainersRetentionCount** 属性，则不会保留任何容器。  ContainersRetentionCount 属性还支持应用程序参数，因此用户可以为测试性群集和生产群集指定不同的值。 使用此功能时可使用放置约束，将容器服务的目标设置为特定的节点，防止将容器服务移至其他节点。 使用此功能保留的容器必须手动删除。
+**** ContainersRetentionCount 设置指定在容器故障时需保留的容器数。 如果指定一个负值，则会保留所有故障容器。 如果未指定**ContainersRetentionCount**属性，则不会保留任何容器。 **** ContainersRetentionCount 属性还支持应用程序参数，因此用户可以为测试性群集和生产群集指定不同的值。 使用此功能时可使用放置约束，将容器服务的目标设置为特定的节点，防止将容器服务移至其他节点。 使用此功能保留的容器必须手动删除。
 
 ## <a name="start-the-docker-daemon-with-custom-arguments"></a>使用自定义参数启动 Docker 守护程序
 

@@ -1,6 +1,6 @@
 ---
-title: 配置 Postman 以便进行 Azure 媒体服务 REST API 调用
-description: 了解如何为媒体服务 REST API 调用配置 Postman。
+title: 配置 Postman 以进行 Azure 媒体服务 v3 REST API 调用
+description: 本文演示如何配置 Postman，以便可以使用它调用 Azure 媒体服务 (AMS) REST API。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,28 +11,30 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2019
+ms.date: 12/05/2019
 ms.author: juliako
-ms.openlocfilehash: a2171ff8a4354a59ec2f790f9bf38b7a687419ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 872dad95fc5b536c51e251612f40439da020a059
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322543"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75779631"
 ---
-# <a name="configure-postman-for-media-services-rest-api-calls"></a>配置 Postman 以便进行媒体服务 REST API 调用
+# <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>配置 Postman 以进行媒体服务 v3 REST API 调用
 
 本文演示如何配置 **Postman**，以便可以使用它调用 Azure 媒体服务 (AMS) REST API。 本文说明如何将环境和集合文件导入到 **Postman**。 集合包含调用 Azure 媒体服务 (AMS) REST API 的 HTTP 请求的分组定义。 环境文件包含集合使用的变量。
 
-开始开发之前，请查看[使用媒体服务 v3 Api 进行开发](media-services-apis-overview.md)。
+开始开发之前，请查看[使用媒体服务 v3 API 进行开发](media-services-apis-overview.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - [创建媒体服务帐户](create-account-cli-how-to.md)。 请务必记住资源组名称和媒体服务帐户名称。 
 - 获取[访问 API](access-api-cli-how-to.md) 所需的信息
 - 安装 [Postman](https://www.getpostman.com/) REST 客户端，以便执行一些 AMS REST 教程中所示的 REST API。 
 
-    我们使用的是 **Postman**，但任何 REST 工具都适用。 其他替代工具包括：带有 REST 插件的 **Visual Studio Code** 或 **Telerik Fiddler**。 
+    我们使用的是 **Postman**，但任何 REST 工具都适用。 其他适用的工具有：具有 REST 插件的 Visual Studio Code 或 Telerik Fiddler   。 
+
+> [!IMPORTANT]
+> 查看[命名约定](media-services-apis-overview.md#naming-conventions)。
 
 ## <a name="download-postman-files"></a>下载 Postman 文件
 
@@ -44,11 +46,9 @@ ms.locfileid: "60322543"
 
 ## <a name="configure-postman"></a>配置 Postman
 
-此部分配置 Postman。
-
 ### <a name="configure-the-environment"></a>配置环境 
 
-1. 打开 **Postman**。
+1. 打开 **Postman** 应用。
 2. 在屏幕的右侧，选择“管理环境”选项。
 
     ![管理环境](./media/develop-with-postman/postman-import-env.png)
@@ -67,7 +67,7 @@ ms.locfileid: "60322543"
    
 ### <a name="configure-the-collection"></a>配置集合
 
-1. 单击“导入”导入该集合文件。
+1. 单击“导入”  导入该集合文件。
 1. 浏览到克隆 `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` 时下载的 `Media Services v3.postman_collection.json` 文件
 3. 选择 **Media Services v3.postman_collection.json** 文件。
 
@@ -77,7 +77,7 @@ ms.locfileid: "60322543"
 
 在开始操作 AMS v3 资源之前，需要获取并设置 Azure AD 令牌，以用于服务主体身份验证。
 
-1. 在 Postman 的左窗口中，选择“步骤 1: 获取 AAD 身份验证令牌”。
+1. 在 Postman 应用的左窗口中，选择“步骤 1: 获取 AAD 身份验证令牌”。
 2. 然后，选择“获取适用于服务主体身份验证的 Azure AD 令牌”。
 3. 按“发送”。
 
@@ -91,7 +91,12 @@ ms.locfileid: "60322543"
 
     ![获取 AAD 令牌](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
-## <a name="see-also"></a>另请参阅
+## <a name="troubleshooting"></a>疑难解答 
+
+* 如果你的应用程序失败并显示 "HTTP 504： Gateway Timeout"，请确保位置变量未显式设置为媒体服务帐户预期位置之外的值。 
+* 如果收到“找不到帐户”错误，还请检查以确保将正文 JSON 消息中的 location 属性设置为媒体服务帐户所在的位置。 
+
+## <a name="see-also"></a>请参阅
 
 - [将文件上传到媒体服务帐户 - REST](upload-files-rest-how-to.md)
 - [使用媒体服务创建筛选器 - REST](filters-dynamic-manifest-rest-howto.md)

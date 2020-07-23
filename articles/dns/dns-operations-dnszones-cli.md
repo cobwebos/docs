@@ -3,27 +3,24 @@ title: 在 Azure DNS 中管理 DNS 区域 - Azure CLI | Microsoft Docs
 description: 可以使用 Azure CLI 管理 DNS 区域。 本文介绍如何在 Azure DNS 上更新、删除和创建 DNS 区域。
 services: dns
 documentationcenter: na
-author: vhorne
-manager: timlt
-ms.assetid: 8ab63bc4-5135-4ed8-8c0b-5f0712b9afed
+author: rohinkoul
 ms.service: dns
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
-ms.author: victorh
-ms.openlocfilehash: df741b34e1268c547723af87401760197d395780
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: rohink
+ms.openlocfilehash: 30b0d6ab3ff9fa96e33154907e329c28b7ae7e63
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61293823"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84709073"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>如何使用 Azure CLI 管理 Azure DNS 中的 DNS 区域
 
 > [!div class="op_single_selector"]
-> * [门户](dns-operations-dnszones-portal.md)
+> * [Portal](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
 > * [Azure CLI](dns-operations-dnszones-cli.md)
 
@@ -38,7 +35,7 @@ ms.locfileid: "61293823"
 
 ## <a name="set-up-azure-cli-for-azure-dns"></a>设置适用于 Azure DNS 的 Azure CLI
 
-### <a name="before-you-begin"></a>开始之前
+### <a name="before-you-begin"></a>准备阶段
 
 在开始配置之前，请确保具备以下各项。
 
@@ -68,15 +65,15 @@ az account list
 az account set --subscription "subscription name"
 ```
 
-### <a name="optional-to-installuse-azure-dns-private-zones-feature-public-preview"></a>可选：安装/使用 Azure DNS 专用区域功能（公共预览版）
-通过 Azure CLI 的扩展发布 Azure DNS 专用区域功能的公共预览版。 安装“dns”Azure CLI 扩展 
+### <a name="optional-to-installuse-azure-dns-private-zones-feature"></a>可选：安装/使用 Azure DNS 专用区域功能
+可通过 Azure CLI 的扩展使用 Azure DNS 专用区域功能。 安装“dns”Azure CLI 扩展 
 ```
 az extension add --name dns
 ``` 
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-Azure 资源管理器要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 但是，由于所有 DNS 资源都是全局性而非区域性的，因此资源组位置的选择不会影响 Azure DNS。
+Azure Resource Manager 要求所有资源组指定一个位置。 此位置用作该资源组中的资源的默认位置。 但是，由于所有 DNS 资源都是全局性而非区域性的，因此资源组位置的选择不会影响 Azure DNS。
 
 如果使用现有资源组，可跳过此步骤。
 
@@ -106,7 +103,7 @@ az network dns zone create --resource-group MyResourceGroup --name contoso.com
 
 ### <a name="to-create-a-dns-zone-with-tags"></a>使用标记创建 DNS 区域
 
-下面的示例演示如何通过 `--tags` 参数（缩写形式 `-t`）使用两个 [Azure 资源管理器标记](dns-zones-records.md#tags)、project = demo 和 env = test创建 DNS 区域：
+下面的示例演示如何通过 `--tags` 参数（缩写形式 `-t`）使用两个 [Azure 资源管理器标记](dns-zones-records.md#tags)、project = demo  和 env = test  创建 DNS 区域：
 
 ```azurecli
 az network dns zone create --resource-group MyResourceGroup --name contoso.com --tags "project=demo" "env=test"
@@ -180,7 +177,7 @@ az network dns zone update --resource-group myresourcegroup --name contoso.com -
 可以使用 `az network dns zone delete` 删除 DNS 区域。 有关帮助，请参阅 `az network dns zone delete --help`。
 
 > [!NOTE]
-> 删除 DNS 区域也会删除该区域中的所有 DNS 记录。 此操作不可撤消。 如果 DNS 区域在使用中，则使用该区域的服务在区域删除后将无效。
+> 删除 DNS 区域也会删除该区域中的所有 DNS 记录。 无法撤消此操作。 如果 DNS 区域在使用中，则使用该区域的服务在区域删除后将无效。
 >
 >若要防止意外删除区域，请参阅[如何保护 DNS 区域和记录](dns-protect-zones-recordsets.md)。
 

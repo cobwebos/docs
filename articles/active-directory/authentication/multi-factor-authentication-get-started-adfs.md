@@ -1,22 +1,21 @@
 ---
-title: 双重验证 Azure MFA 和 AD FS 的 Azure Active Directory
+title: 双重验证 Azure MFA 和 ADFS-Azure Active Directory
 description: 这是与 Azure Multi-Factor Authentication 相关的页面，介绍如何将 Azure MFA 与 AD FS 配合使用。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.date: 11/21/2019
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58cfac56af9074e065431f6adbd44496adc7c7a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 1fbbba49ddf2252e22cb32a0b8adc6fa2070e999
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414496"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74847127"
 ---
 # <a name="getting-started-with-azure-multi-factor-authentication-and-active-directory-federation-services"></a>Azure 多重身份验证服务器和 Active Directory 联合身份验证服务入门
 
@@ -45,6 +44,6 @@ ms.locfileid: "60414496"
 
 有关设置 Azure 多重身份验证或具有 AD FS 的 Azure 多重身份验证服务器的信息，请参阅以下文章：
 
-* [使用 Azure 多重身份验证和 AD FS 保护云资源](howto-mfa-adfs.md)
+* [使用 Azure 多重身份验证和 Azure AD 保护云资源](howto-mfa-adfs.md)
 * [将 Azure 多重身份验证服务器与 Windows Server 2012 R2 AD FS 配合使用来保护云和本地资源](howto-mfaserver-adfs-2012.md)
 * [将 Azure 多重身份验证服务器与 AD FS 2.0 配合使用来保护云和本地资源](howto-mfaserver-adfs-2.md)

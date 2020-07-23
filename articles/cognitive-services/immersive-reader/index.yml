@@ -1,0 +1,81 @@
+### YamlMime:Landing
+title: 沉浸式阅读器文档
+summary: 沉浸式阅读器是一种工具，它实现了可靠的技术来提高萌发期读者、语言学习者和具有学习差异的人士的阅读理解力。 通过使用沉浸式阅读器 SDK，可以在 Web 应用程序中使用沉浸式阅读器。
+metadata:
+  title: 沉浸式阅读器文档
+  description: 沉浸式阅读器是一种工具，它实现了可靠的技术来提高萌发期读者、语言学习者和具有学习差异的人士的阅读理解力。 通过使用沉浸式阅读器 SDK，可以在 Web 应用程序中使用沉浸式阅读器。
+  services: service
+  ms.service: cognitive-services
+  ms.subservice: immersive-reader
+  ms.topic: landing-page
+  ms.collection: collection
+  author: IEvangelist
+  ms.author: dapine
+  ms.date: 01/23/2020
+  ms.openlocfilehash: 9f0ed5265bc4371169097d2fedcbfcddb62d3bff
+  ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 07/07/2020
+  ms.locfileid: "86045427"
+landingContent:
+- title: 关于沉浸式阅读器
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是沉浸式阅读器？
+      url: overview.md
+  - linkListType: video
+    links:
+    - text: 入门 - 简短工程视频
+      url: https://aka.ms/ImmersiveReaderSDKVideos
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 C# (ASP.NET Core)
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-csharp
+    - text: 使用 Node.js
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-nodejs
+    - text: 使用 Java (Android)
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-java-android
+    - text: 使用 Kotlin (Android)
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-kotlin
+    - text: 使用 Swift (iOS)
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-swift
+  - linkListType: tutorial
+    links:
+    - text: Android
+      url: tutorial-android.md
+    - text: iOS
+      url: tutorial-ios.md
+    - text: Python
+      url: tutorial-python.md
+    - text: 使用多个沉浸式阅读器资源
+      url: tutorial-multiple-resources.md
+- title: 探索沉浸式阅读器
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 创建沉浸式阅读器资源
+      url: how-to-create-immersive-reader.md
+    - text: 设置 Cookie 策略
+      url: how-to/set-cookie-policy.md
+    - text: 显示数学内容
+      url: how-to/display-math.md
+    - text: 启动沉浸式阅读器以显示 HTML 内容
+      url: how-to-launch-with-html.md
+    - text: 自定义沉浸式阅读器按钮
+      url: how-to-customize-launch-button.md
+    - text: 缓存身份验证令牌
+      url: how-to-cache-token.md
+    - text: 配置大声朗读
+      url: how-to-configure-read-aloud.md
+    - text: 配置翻译
+      url: how-to-configure-translation.md
+    - text: 存储用户首选项
+      url: how-to-store-user-preferences.md
+  - linkListType: reference
+    links:
+    - text: JavaScript SDK
+      url: reference.md

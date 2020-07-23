@@ -1,31 +1,31 @@
 ---
-title: PowerShell cmdlet 参考 - Azure 计划程序
+title: PowerShell cmdlet 参考
 description: 了解 Azure 计划程序 PowerShell cmdlet
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 9a26c457-d7a1-4e4a-bc79-f26592155218
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 53b68a5dc72277c9fd44b36d346e5b5c91b53a93
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 577e2128cf7e4e9f914ec5504917053acb3c19d5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344370"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78898488"
 ---
 # <a name="powershell-cmdlets-reference-for-azure-scheduler"></a>Azure 计划程序 PowerShell cmdlet 参考
 
 > [!IMPORTANT]
-> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)正在替换即将停用的 Azure 计划程序。 若要计划作业，请[改用 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替代[即将停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+>
+> 计划程序在 Azure 门户中不再可用，但 [REST API](/rest/api/scheduler) 和 [Azure 计划程序 PowerShell cmdlet](scheduler-powershell-reference.md) 目前仍可用，以便你可以管理作业和作业集合。
+
+若要编写脚本以创建和管理计划程序作业和作业集合，可以使用 PowerShell cmdlet。 本文列出了主要 Azure 计划程序 PowerShell cmdlet，以及指向其参考文章的链接。 要为 Azure 订阅安装 Azure PowerShell，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 有关 [Azure 资源管理器 cmdlet](/powershell/azure/overview) 的详细信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../powershell-azure-resource-manager.md)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-若要编写脚本以创建和管理计划程序作业和作业集合，可以使用 PowerShell cmdlet。 本文列出了包含指向其参考文章 Azure 计划程序的主要 PowerShell cmdlet。 要为 Azure 订阅安装 Azure PowerShell，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 有关 [Azure 资源管理器 cmdlet](/powershell/azure/overview) 的详细信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../powershell-azure-resource-manager.md)。
-
-| Cmdlet | 描述 |
+| Cmdlet | 说明 |
 |--------|-------------|
 | [Disable-AzSchedulerJobCollection](/powershell/module/azurerm.scheduler/disable-azurermschedulerjobcollection) |禁用某一作业集合。 |
 | [Enable-AzureRmSchedulerJobCollection](/powershell/module/azurerm.scheduler/enable-azurermschedulerjobcollection) |启用某一作业集合。 |
@@ -48,15 +48,14 @@ ms.locfileid: "60344370"
 
 有关详细信息，可以运行以下任何 cmdlet： 
 
-```
+```text
 Get-Help <cmdlet name> -Detailed
 Get-Help <cmdlet name> -Examples
 Get-Help <cmdlet name> -Full
 ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
-* [什么是 Azure 计划程序？](scheduler-intro.md)
-* [概念、术语和实体层次结构](scheduler-concepts-terms.md)
-* [创建和计划第一个作业 - Azure 门户](scheduler-get-started-portal.md)
-* [Azure 计划程序 REST API 参考](https://msdn.microsoft.com/library/mt629143)
+* [Azure 计划程序的概念、术语和实体层次结构](scheduler-concepts-terms.md)
+* [Azure 计划程序的限制、默认值和错误代码](scheduler-limits-defaults-errors.md)
+* [Azure 计划程序 REST API 参考](/rest/api/scheduler)

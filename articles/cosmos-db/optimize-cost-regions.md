@@ -1,17 +1,17 @@
 ---
 title: 在 Azure Cosmos DB 中优化多区域部署的成本
 description: 本文说明如何在 Azure Cosmos DB 中管理多区域部署的成本。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: 478714f48782adb138f1ed803d53c81ec48f2efd
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.date: 07/31/2019
+ms.openlocfilehash: e0a24b52c12bce6a8e016a926dfa64a1e36a7cc6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967294"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "72753323"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中优化多区域成本
 
@@ -25,19 +25,19 @@ ms.locfileid: "65967294"
 
 ## <a name="costs-for-multiple-write-regions"></a>多个写入区域的成本
 
-在多主数据库系统中，可用于写入操作的净 RU 会增加 `N` 倍，其中 `N` 是写入区域数。 与单区域写入不同，每个区域都可写，应支持冲突解决。 编写器的工作负载量会增加。 从规划角度来看，若要执行的成本`M`RU/秒的写入全球范围内的价值，您将需要设置 M`RUs`容器或数据库级别。 随后可以添加任意多个区域并将它们用于写入以在全球范围执行 `M` RU 写入。 
+在多主数据库系统中，可用于写入操作的净 RU 会增加 `N` 倍，其中 `N` 是写入区域数。 与单区域写入不同，每个区域都可写，应支持冲突解决。 编写器的工作负载量会增加。 从成本规划的角度来看，若要在 `M` 全球范围内执行 RU/秒的写入，则需要 `RUs` 在容器或数据库级别预配 M。 随后可以添加任意多个区域并将它们用于写入以在全球范围执行 `M` RU 写入。 
 
 ### <a name="example"></a>示例
 
 请考虑在美国西部有一个容器，该容器这个月预配的吞吐量为 10K RU/s，且存储了 1 TB 数据。 假定添加了三个区域 - 美国东部、北欧和东亚，每个区域的存储和吞吐量相同，并且希望能够通过自己的全球分布式应用对所有四个区域中的容器进行写入。 一个月的总月度帐单（假定为 31 天）如下所示：
 
-|**Item**|**使用情况（每月）**|**费率**|**每月成本**|
+|**项**|**使用情况（每月）**|**费率**|**每月成本**|
 |----|----|----|----|
 |美国西部容器的吞吐量帐单（多个写入区域） |10K RU/秒 * 24 * 31 |每小时每 100 RU/s 为 0.016 美元 |1,190.40 美元 |
 |3 个其他区域（美国东部、北欧和东亚）的吞吐量帐单（多个写入区域） |(3 + 1) * 10K RU/秒 * 24 * 31 |每小时每 100 RU/s 为 0.016 美元 |4,761.60 美元 |
-|美国西部容器的存储帐单 |100 GB |0.25 美元/GB |25 美元 |
-|3 个其他区域（美国东部、北欧和东亚）的存储帐单 |3 * 1 TB |0.25 美元/GB |75 美元 |
-|**总计**|||**6,052 美元** |
+|美国西部容器的存储帐单 |1 TB（或 1,024 GB） |0\.25 美元/GB |$256 |
+|3 个其他区域（美国东部、北欧和东亚）的存储帐单 |3 * 1 TB（或 3,072 GB） |0\.25 美元/GB |$768 |
+|**总计**|||**$6976** |
 
 ## <a name="improve-throughput-utilization-on-a-per-region-basis"></a>按每个区域提高吞吐量利用率
 

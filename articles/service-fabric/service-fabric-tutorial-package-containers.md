@@ -1,27 +1,17 @@
 ---
-title: 在 Azure 中将容器打包并部署为 Service Fabric 应用 |Microsoft Docs
+title: 打包和部署容器
 description: 本教程介绍如何使用 Yeoman 生成 Azure Service Fabric 应用程序定义并将应用程序打包。
-services: service-fabric
-documentationcenter: ''
 author: suhuruli
-manager: chackdan
-editor: suhuruli
-tags: servicefabric
-keywords: Docker, 容器, 微服务, Service Fabric, Azure
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/31/2019
+ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: a54ec7349317fdd8621fecec57cb06ad98f4660b
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306739"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "78252743"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>教程：使用 Yeoman 将容器打包并部署为 Service Fabric 应用程序
 
@@ -35,7 +25,7 @@ ms.locfileid: "66306739"
 > * 部署并运行应用程序
 > * 清理应用程序
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 会使用已推送至在本教程系列[第 1 部分](service-fabric-tutorial-create-container-images.md)中所创建的 Azure 容器注册表的容器映像。
 * 会[设置](service-fabric-tutorial-create-container-images.md) Linux 开发环境。
@@ -93,7 +83,7 @@ Service Fabric 提供基架工具，有助于使用 Yeoman 模板生成器从终
 若要将其他容器服务添加到已使用 Yeoman 创建的应用程序，请执行以下步骤：
 
 1. 将一级目录更改到 **TestContainer** 目录，例如， *./TestContainer*
-2. 运行 `yo azuresfcontainer:AddService`
+2. `yo azuresfcontainer:AddService`运行 {2}
 3. 将服务命名为“azurevoteback”
 4. 为 Redis 提供容器映像路径 - 'alpine:redis'
 5. 按 Enter 以使“命令”部分为空
@@ -124,7 +114,7 @@ ApplicationManifest.xml azurevotefrontPkg azurevotebackPkg
 
 登录到 ACR 实例。 使用 **az acr login** 命令完成此操作。 请提供创建容器注册表时所使用的唯一名称。
 
-```bash
+```azurecli
 az acr login --name <acrName>
 ```
 
@@ -132,11 +122,11 @@ az acr login --name <acrName>
 
 接下来，运行以下命令以获取容器注册表的密码。 此密码供 Service Fabric 用于对 ACR 进行验证以提取容器映像。
 
-```bash
+```azurecli
 az acr credential show -n <acrName> --query passwords[0].value
 ```
 
-在“ApplicationManifest.xml”  中，会在前端服务的“ServiceManifestImport”  元素下添加代码片段。 为“AccountName”  字段插入 **acrName**，从上一命令返回的密码将用于“密码”  字段。 本文档末尾提供完整的“ApplicationManifest.xml”  。
+在“ApplicationManifest.xml”  中，会在前端服务的“ServiceManifestImport”  元素下添加代码片段。 为“AccountName”字段插入 **acrName**，从上一命令返回的密码将用于“密码”字段。 本文档末尾提供完整的“ApplicationManifest.xml”  。
 
 ```xml
 <Policies>
@@ -181,7 +171,7 @@ az acr credential show -n <acrName> --query passwords[0].value
 
 ### <a name="map-container-ports-to-a-service"></a>将容器端口映射到服务
 
-为了公开群集中的容器，我们还需要在“ApplicationManifest.xml”中创建一个端口绑定。 “PortBinding”  策略引用了我们在“ServiceManifest.xml”  文件中定义的“终结点”  。 对这些终结点的传入请求将映射到此处打开和绑定的容器端口。 在“ApplicationManifest.xml”  件中，添加以下代码以将端口 80 和 6379 绑定到终结点。 本文档末尾提供完整的“ApplicationManifest.xml”  。
+为了公开群集中的容器，我们还需要在“ApplicationManifest.xml”中创建一个端口绑定。 “PortBinding”策略引用了我们在“ServiceManifest.xml”文件中定义的“终结点”。 对这些终结点的传入请求将映射到此处打开和绑定的容器端口。 在“ApplicationManifest.xml”  件中，添加以下代码以将端口 80 和 6379 绑定到终结点。 本文档末尾提供完整的“ApplicationManifest.xml”  。
 
 ```xml
 <ContainerHostPolicies CodePackageRef="Code">
@@ -209,7 +199,7 @@ az acr credential show -n <acrName> --query passwords[0].value
 
 前端服务读取环境变量以了解 Redis 实例的 DNS 名称。 用于生成 Docker 映像的 Dockerfile 中已定义了此环境变量，因此此处不需要执行任何操作。
 
-```Dockerfile
+```dockerfile
 ENV REDIS redisbackend.testapp
 ```
 
@@ -290,7 +280,7 @@ sfctl cluster select --endpoint https://containertestcluster.eastus.cloudapp.azu
 
 ![votingapp][votingapp]
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 使用模板中提供的卸载脚本从群集中删除应用程序实例并取消注册应用程序类型。 此命令会花费一段时间来清理实例，完成此脚本后不能立即运行“install.sh”命令。
 

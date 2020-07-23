@@ -1,27 +1,27 @@
 ---
 title: 快速入门：尝试在 Web 上使用内容审查器 - 内容审查器
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 本快速入门将使用联机内容审查器评审工具来测试内容审查器的基本功能，且无需编写任何代码。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: conceptual
-ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: d1c65b590fd68f68fdaeb110c0fd00e0c5a6649a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.topic: quickstart
+ms.date: 06/29/2020
+ms.author: pafarley
+ms.openlocfilehash: 550cec535343d48ad74dd35e6886af78bdd15701
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127648"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563280"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>快速入门：尝试在 Web 上使用内容审查器
 
 本快速入门将使用联机内容审查器评审工具来测试内容审查器的基本功能，且无需编写任何代码。 若要更快速地将此服务集成到应用中，请参阅[后续步骤](#next-steps)部分中的其他快速入门。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - Web 浏览器
 
@@ -32,13 +32,27 @@ ms.locfileid: "62127648"
 
 ## <a name="create-a-review-team"></a>创建评审团队
 
-接下来创建评审团队。 在工作方案中，这是将要手动评审服务审查决策的人员组。 暂时只需创建团队名称。 若要邀请同事加入团队，可在此处输入他们的电子邮件地址。
+接下来创建评审团队。 在工作场景中，这是要手动评审服务审查决策的一组人员。 若要创建团队，需要选择一个区域，并提供团队名称和团队 ID  。 若要邀请同事加入团队，可在此处输入他们的电子邮件地址。
 
-![邀请团队成员](images/QuickStart-2-small.png)
+> [!NOTE]
+> 团队名称是评审团队的易记名称。 此名称将显示在 Azure 门户中。 团队 ID 用于程序化标识评审团队。
+
+> [!div class="mx-imgBorder"]
+> ![邀请团队成员](images/create-team.png)
+
+如果选择使用客户管理的密钥 (CMK) 加密数据，系统将提示你输入 E0 定价层中内容审查器资源的资源 ID。 你提供的资源必须是新的。 
+
+> [!div class="mx-imgBorder"]
+> ![使用 CMK 邀请团队成员](images/create-team-cmk.png)
+
+如果尝试重用内容审查器资源，将看到此警告： 
+
+> [!div class="mx-imgBorder"]
+> ![CMK 失败](images/create-team-cmk-fail.png)
 
 ## <a name="upload-sample-content"></a>上传示例内容
 
-现在，可以上传示例内容。 选择“尝试 > 图像”、“尝试 > 文本”或“尝试 > 视频”。
+现在，可以上传示例内容。 选择“尝试 > 图像”、“尝试 > 文本”或“尝试 > 视频”。  
 
 ![请尝试图像或文本审核](images/tryimagesortext.png)
 
@@ -68,6 +82,6 @@ ms.locfileid: "62127648"
 ## <a name="next-steps"></a>后续步骤
 
 了解如何在应用中单独使用审查 API。
-- 实施图像审查。 使用 [API 控制台](try-image-api.md)或 [C# 快速入门](image-moderation-quickstart-dotnet.md)，根据标记、置信度评分和提取的其他信息扫描图像并检测潜在的成人和猥亵内容。
-- 实施文本审查。 使用[API 控制台](try-text-api.md)或使用[C#快速入门](text-moderation-quickstart-dotnet.md)扫描潜在的猥亵词语，计算机辅助不需要的文本分类 （预览版） 和个人数据的文本内容。
+- 实施图像审查。 使用 [API 控制台](try-image-api.md)或按照 [.NET SDK 快速入门](dotnet-sdk-quickstart.md)使用标记、置信度分数和其他提取的信息扫描图像并检测潜在的成人和不雅内容。
+- 实施文本审查。 使用 [API 控制台](try-text-api.md)或使用 [.NET SDK 快速入门](dotnet-sdk-quickstart.md)扫描文本内容以查找潜在的不雅内容、机器辅助的不需要的文本分类（预览）和个人数据。
 - 实施视频审查。 请按照[适用于 C# 的视频审核操作指南](video-moderation-api.md)扫描视频并检测潜在的成人和猥亵内容。 

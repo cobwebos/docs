@@ -1,19 +1,18 @@
 ---
-title: 配置线路的对等互连 - ExpressRoute：Azure：经典 | Microsoft Docs
+title: Azure ExpressRoute：配置对等互连：经典
 description: 本文指导完成创建和预配 ExpressRoute 线路的专用、公共和 Microsoft 对等互连的步骤。 本文还介绍了如何检查状态，以及如何更新或删除线路的对等互连。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
-ms.date: 04/24/2019
+ms.topic: how-to
+ms.date: 12/06/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: d1662d17f37e668e989103989df9de49036bab6a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9cad8a157121c0ccb53674301572b02410e030cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64726213"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736231"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>创建和修改 ExpressRoute 线路的对等互连（经典）
 > [!div class="op_single_selector"]
@@ -23,7 +22,7 @@ ms.locfileid: "64726213"
 > * [视频 - 专用对等互连](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
 > * [视频 - 公共对等互连](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
 > * [视频 - Microsoft 对等互连](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
-> * [PowerShell（经典）](expressroute-howto-routing-classic.md)
+> * [PowerShell （经典）](expressroute-howto-routing-classic.md)
 > 
 
 本文指导执行相关步骤，以便使用 PowerShell 和经典部署模型创建和管理 ExpressRoute 线路的对等互连/路由配置。 下面的步骤还将说明如何查看状态，以及如何更新、删除和取消预配 ExpressRoute 线路的对等互连。 可以为 ExpressRoute 线路配置一到三个对等互连（Azure 专用、Azure 公共和 Microsoft）。 可以按照所选的任意顺序配置对等互连。 但是，必须确保一次只完成一个对等互连的配置。 
@@ -36,9 +35,6 @@ ms.locfileid: "64726213"
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="configuration-prerequisites"></a>配置先决条件
 
 * 在开始配置之前，请务必查看[先决条件](expressroute-prerequisites.md)页、[路由要求](expressroute-routing.md)页和[工作流](expressroute-workflows.md)页。
@@ -46,40 +42,7 @@ ms.locfileid: "64726213"
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>下载最新的 PowerShell cmdlet
 
-安装最新版本的 Azure 服务管理 (SM) PowerShell 模块和 ExpressRoute 模块。 使用以下示例时，请注意，当更新版本的 cmdlet 发布时，版本号（在此示例中为 5.1.1）将更改。
-
-```powershell
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
-```
-
-有关详细信息，请参阅 [Azure PowerShell cmdlet 入门](/powershell/azure/overview)，其中提供了有关如何配置计算机以使用 Azure PowerShell 模块的分步指导。
-
-### <a name="sign-in"></a>登录
-
-若要登录到 Azure 帐户，请使用以下示例：
-
-1. 使用提升的权限打开 PowerShell 控制台，并连接到帐户。
-
-   ```powershell
-   Connect-AzAccount
-   ```
-2. 检查该帐户的订阅。
-
-   ```powershell
-   Get-AzSubscription
-   ```
-3. 如果有多个订阅，请选择要使用的订阅。
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-4. 接下来，使用以下 cmdlet 将 Azure 订阅添加到经典部署模型的 PowerShell。
-
-   ```powershell
-   Add-AzureAccount
-   ```
+[!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
 ## <a name="azure-private-peering"></a>Azure 专用对等互连
 
@@ -189,14 +152,14 @@ Remove-AzureBGPPeering -AccessType Private -ServiceKey "************************
 本部分说明如何为 ExpressRoute 线路创建、获取、更新和删除 Azure 公共对等互连配置。
 
 > [!NOTE]
-> Azure 公共对等互连不推荐使用适用于新线路。
+> 新线路不推荐使用 Azure 公共对等互连。
 >
 
 ### <a name="to-create-azure-public-peering"></a>创建 Azure 公共对等互连
 
 1. **创建 ExpressRoute 线路**
 
-   请按说明创建 [ExpressRoute 线路](expressroute-howto-circuit-classic.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 公共对等互连。 在这种情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不管理路由，请在创建线路之后遵循以下说明。
+   请按说明创建 [ExpressRoute 线路](expressroute-howto-circuit-classic.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 公共对等互连。 在此情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不管理路由，请在创建线路之后遵循以下说明。
 2. **检查 ExpressRoute 线路以确认它已预配**
 
    首先必须检查 ExpressRoute 线路是否已预配并已启用。
@@ -224,7 +187,7 @@ Remove-AzureBGPPeering -AccessType Private -ServiceKey "************************
    ServiceProviderProvisioningState : Provisioned
    Status                           : Enabled
    ```
-4. **配置线路的 Azure 公共对等互连**
+4. **为线路配置 Azure 公共对等互连**
    
    在继续下一步之前，请确保已准备好以下信息：
    
@@ -328,7 +291,7 @@ Remove-AzureBGPPeering -AccessType Public -ServiceKey "*************************
    ServiceProviderProvisioningState : Provisioned
    Status                           : Enabled
    ```
-3. **配置线路的 Microsoft 对等互连**
+3. **为线路配置 Microsoft 对等互连**
    
     在继续下一步之前，请确保已准备好以下信息。
    

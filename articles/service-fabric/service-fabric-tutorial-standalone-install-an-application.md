@@ -1,26 +1,17 @@
 ---
-title: 教程：在独立 Service Fabric 群集上安装应用程序 - Azure Service Fabric | Microsoft Docs
+title: 在独立群集上安装应用
 description: 本教程介绍如何将应用程序安装到独立 Service Fabric 群集中。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 05/11/2018
+ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 5bc326bbc16ef93d484425f26b6f8226150c77c6
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 8dd47d27f928cb33e5a2bbc3ba9a6ab2bc044852
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66302424"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245375"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>教程：在 Service Fabric 独立群集上部署应用程序
 
@@ -34,7 +25,7 @@ Service Fabric 独立群集为你提供选择自己的环境的选项，并创�
 > * 下载示例应用
 > * 部署到群集
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
@@ -61,7 +52,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 4. 在解决方案资源管理器中右键单击 `Voting` 应用程序项目，选择“发布” 
 
-5. 选择**连接终结点**的下拉列表，并输入群集中某个节点的公共 DNS 名称。  例如： `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`
+5. 选择**连接终结点**的下拉列表，并输入群集中某个节点的公共 DNS 名称。  例如，`ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000` 。 请注意，在 Azure 中，不会自动提供完全限定的域名 (FQDN)，但可以[在“VM 概述”页中轻松设置](../virtual-machines/linux/portal-create-fqdn.md)。
 
 6. 打开首选浏览器并键入群集地址（连接终结点，此应用在端口 8080 上部署 - 例如，ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080）。
 

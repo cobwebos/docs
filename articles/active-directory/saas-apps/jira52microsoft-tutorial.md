@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 JIRA SAML SSO by Microsoft (V5.2) 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 JIRA SAML SSO by Microsoft (V5.2) 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 JIRA SAML SSO by Microsoft (V5.2) 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 003666d5bb3c309e501bcf76a15beb47340f9150
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d3b304bb35ea69906fc9576f45733134387be1b9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708736"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67099519"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>教程：Azure Active Directory 与 JIRA SAML SSO by Microsoft (V5.2) 的集成
+# <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>教程：Azure Active Directory 与 JIRA SAML SSO by Microsoft (V5.2) 集成
 
 本教程介绍如何将 JIRA SAML SSO by Microsoft (V5.2) 与 Azure Active Directory (Azure AD) 集成。
 将 JIRA SAML SSO by Microsoft (V5.2) 与 Azure AD 集成提供以下优势：
@@ -39,7 +39,7 @@ ms.locfileid: "64708736"
 
 在 Atlassian JIRA 服务器上使用 Microsoft Azure Active Directory 帐户启用单一登录。 这样，所有组织用户便可使用 Azure AD 凭据登录到 JIRA 应用程序。 此插件使用 SAML 2.0 进行联合身份验证。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 JIRA SAML SSO by Microsoft (V5.2) 的集成，需要以下项：
 
@@ -58,7 +58,7 @@ ms.locfileid: "64708736"
 测试本教程中的步骤应遵循以下建议：
 
 - 除非必要，请勿使用生产环境。
-- 如果没有 Azure AD 试用环境，可以在此处获取一个月的试用版：[试用版产品/服务](https://azure.microsoft.com/pricing/free-trial/)。
+- 如果没有 Azure AD 试用环境，可在此处获取一个月的试用版：[试用产品/服务](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="supported-versions-of-jira"></a>支持的 JIRA 版本
 
@@ -134,7 +134,7 @@ ms.locfileid: "64708736"
 
     a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<domain:port>/plugins/servlet/saml/auth`。
 
-    b. 在“标识符”框中，使用以下模式键入 URL：`https://<domain:port>/` 
+    b. 在“标识符”框中，使用以下模式键入 URL：`https://<domain:port>/`
 
     c. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<domain:port>/plugins/servlet/saml/auth`
 
@@ -172,7 +172,7 @@ ms.locfileid: "64708736"
     > [!TIP]
     > 请确保一个应用仅映射一个证书，以免在解析元数据时出错。 如果有多个证书，则管理员会在解析元数据时收到错误。
 
-    a. 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**值，然后单击“解析”按钮。   它将读取 IdP 元数据 URL，并填充所有字段信息。
+    a. 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**值，然后单击“解析”按钮。 它将读取 IdP 元数据 URL，并填充所有字段信息。
 
     b. 复制“标识符”、“回复 URL”和“登录 URL”值，并将其分别粘贴到 Azure 门户中“基本 SAML 配置”部分下的“标识符”、“回复 URL”和“登录 URL”文本框中    。
 
@@ -214,7 +214,7 @@ ms.locfileid: "64708736"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon\@yourcompanydomain.extension`。  例如，BrittaSimon@contoso.com。
+    b. 在“用户名”字段中键入 `brittasimon\@yourcompanydomain.extension`。 例如，BrittaSimon@contoso.com 。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -236,7 +236,7 @@ ms.locfileid: "64708736"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -270,11 +270,11 @@ ms.locfileid: "64708736"
 
     ![添加员工](./media/jira52microsoft-tutorial/user4.png)
 
-    a. 在“电子邮件地址”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。 
+    a. 在“电子邮件地址”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
     b. 在“全名”文本框中，键入用户（例如 Britta Simon）的全名。 
 
-    c. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。 
+    c. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
     d. 在“密码”文本框中，键入用户的密码。 
 

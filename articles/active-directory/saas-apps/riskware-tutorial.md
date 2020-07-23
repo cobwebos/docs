@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Riskware 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Riskware 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Riskware 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 08db463c92e4ee34819f446c3827ed8dfddc02d7
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 6eaa1be81d3ac0733c0829bc45e1b62f8aae5755
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65903935"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "72027117"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-riskware"></a>教程：Azure Active Directory 与 Riskware 集成
+# <a name="tutorial-azure-active-directory-integration-with-riskware"></a>教程：Azure Active Directory 与 Riskware 的集成
 
 本教程介绍如何将 Riskware 与 Azure Active Directory (Azure AD) 集成。
 将 Riskware 与 Azure AD 集成提供以下优势：
@@ -34,7 +34,7 @@ ms.locfileid: "65903935"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Riskware 的集成，需要以下项：
 
@@ -170,7 +170,7 @@ ms.locfileid: "65903935"
 
     g. 在“XML 标识标记名称”文本框中键入属性，其中包含 SAML 响应中的唯一标识符（如 NameID）。 
 
-    h. 在记事本中打开从 Azure 门户下载的 **元数据 XML** ，复制元数据文件中的证书，并将其粘贴到“证书”文本框中 
+    h. 在记事本中打开从 Azure 门户下载的**元数据 XML**，复制元数据文件中的证书，并将其粘贴到“证书”文本框中 
 
     i. 在“使用者 URL”文本框中，粘贴从支持团队获取的“回复 URL”值。  
 
@@ -183,7 +183,7 @@ ms.locfileid: "65903935"
 
     l. 选中“使用 SAML 请求”  复选框。
 
-    m. 单击“ **保存**”。
+    m. 单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -203,7 +203,7 @@ ms.locfileid: "65903935"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 `brittasimon@yourcompanydomain.extension`   
+    b. 在“用户名”字段中，键入 `brittasimon@yourcompanydomain.extension`  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -226,7 +226,7 @@ ms.locfileid: "65903935"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -268,7 +268,7 @@ ms.locfileid: "65903935"
 
     a. 在“身份验证”部分下，选择设置的“身份验证”模式（例如“AZURE Configuration for SSO”）。  
 
-    b. 在“登录详细信息”部分下的“用户 ID”文本框中，输入类似于 `brittasimon@contoso.com` 的用户电子邮件   。
+    b. 在“登录详细信息”部分下的“用户 ID”文本框中，输入类似于 `brittasimon@contoso.com` 的用户电子邮件。
 
     c. 在“密码”文本框中，输入用户的密码。 
 
@@ -282,7 +282,7 @@ ms.locfileid: "65903935"
 
     c. 在“员工”部分下，选择“员工状态”，例如“休假”。  
 
-    d. 单击“ **保存**”。
+    d. 单击“保存”  。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

@@ -9,11 +9,11 @@ ms.date: 09/12/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: ec6cbcbc93fe87634c87caeb0041b75ec916a22f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66154776"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "67172920"
 ---
 通过在子网或 VM 网络接口上创建网络筛选器可为 Azure 中的虚拟机 (VM) 打开端口或创建终结点。 将这些筛选器（控制入站和出站流量）置于附加到接收流量的资源的网络安全组中。
 
@@ -29,7 +29,7 @@ ms.locfileid: "66154776"
 
    - **源端口范围**：*（允许任何源端口）
 
-   - **优先级值**:输入的值小于 65500 和默认全方位的优先级高于拒绝入站的规则。
+   - **优先级值**：输入小于 65,500 但高于默认 catch-all 拒绝入站规则的优先级值。
 
 3. 将网络安全组与 VM 网络接口或子网相关联。
 

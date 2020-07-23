@@ -13,21 +13,27 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: milanga;juliako;
-ms.openlocfilehash: 0fcacf68f4b41ed8945a6a40d7da125aef499947
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: juliako
+ms.reviewer: milanga
+ms.openlocfilehash: 1b85cffe497ad0b374edb18a1089412da839cdf8
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60825517"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231839"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>使用 Azure 媒体视频缩略图创建视频摘要  
+
+> [!NOTE]
+> Azure Media Video Thumbnails  媒体处理器将停用。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。
+
 ## <a name="overview"></a>概述
+
 通过 **Azure Media Video Thumbnails** 媒体处理器 (MP)，可创建视频摘要，这对于要预览长视频摘要的客户来说很有用。 例如，当客户将鼠标悬停在缩略图上时，他们可能希望看到一小段“摘要视频”。 通过配置预设值稍稍调整 **Azure Media Video Thumbnails** 的参数，即可使用 MP 的强大快照检测和串联技术，以算法形式生成描述性子剪辑。  
 
 **Azure Media Video Thumbnail** MP 目前以预览版提供。
 
-本文详细介绍 Azure Media Video Thumbnail，并演示如何将它与用于 .NET 的媒体服务 SDK 配合使用。
+本文详细介绍 Azure Media Video Thumbnail，并演示如何将它与用于 .NET 的媒体服务 SDK 配合使用  。
 
 ## <a name="limitations"></a>限制
 
@@ -53,18 +59,18 @@ ms.locfileid: "60825517"
 
 当前你可更改以下参数：
 
-| Param | 描述 |
+| Param | 说明 |
 | --- | --- |
-| outputAudio |指定生成的视频是否包含音频。 <br/>允许值包括：True 或 False。 默认值为 True。 |
-| fadeInFadeOut |指定单独动态缩略图之间是否使用淡入淡出转换。  <br/>允许值包括：True 或 False。  默认值为 True。 |
+| outputAudio |指定生成的视频是否包含音频。 <br/>允许的值为：True 或 False。 默认值为 True。 |
+| fadeInFadeOut |指定单独动态缩略图之间是否使用淡入淡出转换。  <br/>允许的值为：True 或 False。  默认值为 True。 |
 | maxMotionThumbnailDurationInSecs |指定生成的整个视频的时长的整数。  默认值取决于原始视频的持续时间。 |
 
 下表描述了未使用 **maxMotionThumbnailInSecs** 时的默认持续时间。
 
-|  |  |  |
+|  | Small | 范围 |
 | --- | --- | --- |
-| 视频持续时间 |d < 3 分钟 |3 分钟 < d < 15 分钟 |
-| 缩略图持续时间 |15 秒（2-3 个场景） |30 秒（3-5 个场景） |
+| **视频持续时间** |d < 3 分钟 |3 分钟 < d < 15 分钟 |
+| **缩略图持续时间** |15 秒（2-3 个场景） |30 秒（3-5 个场景） |
 
 下面的 JSON 设置可用的参数。
 
@@ -101,7 +107,7 @@ ms.locfileid: "60825517"
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
+设置开发环境，并在 app.config 文件中填充连接信息，如[通过 .net 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
 
 #### <a name="example"></a>示例
 

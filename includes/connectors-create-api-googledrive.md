@@ -1,17 +1,18 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: fe726986b3f93ab3bb447b8973727a658ac1c706
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 11/03/2016
+ms.openlocfilehash: 96943405f3fce02b8a07158f797dd204eb4bb8e2
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66149306"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789712"
 ---
-### <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备组件
+
 * 一个 [GoogleDrive](https://www.google.com/drive/) 帐户  
 
 可以在逻辑应用中使用 GoogleDrive 帐户之前，必须先授权该逻辑应用可以连接到 GoogleDrive 帐户。好在，可以从 Azure 门户中的逻辑应用内轻松地执行此操作。  

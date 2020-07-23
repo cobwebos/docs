@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 176e0c80b4b1c70c3f49a35ae04d6233bc080f43
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 63d7b6af8ff76c890b98c29ded0e8bdc637b45dd
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687822"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67092850"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>教程：Azure Active Directory 与 RFPIO 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "64687822"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 RFPIO 的集成，需要以下项目：
 
@@ -114,7 +114,7 @@ ms.locfileid: "64687822"
 
     ![RFPIO 域和 URL 单一登录信息](common/idp-preintegrated-relay.png)
 
-5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
+5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     ![image](common/both-preintegrated-signon.png)
 
@@ -166,7 +166,7 @@ ms.locfileid: "64687822"
     > [!NOTE]
     >要复制下载的联合元数据 XML 的内容，请使用“Notepad++”或“XML 编辑器”    。
 
-    b. 单击“验证”。 
+    b. 单击 **“验证”** 。
 
     c. 单击“验证”后，将“SAML(启用)”改为“开启”   。
 
@@ -190,7 +190,7 @@ ms.locfileid: "64687822"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -212,7 +212,7 @@ ms.locfileid: "64687822"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

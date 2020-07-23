@@ -1,17 +1,17 @@
 ---
-title: 将 Azure Kubernetes 服务 (AKS) 与 Azure Database for MySQL 连接
+title: 连接到 Azure Kubernetes 服务 - Azure Database for MySQL
 description: 了解如何将 Azure Kubernetes 服务与 Azure Database for MySQL 连接
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/28/2018
-ms.openlocfilehash: d9f2e26a2bc89329ca9038c666c0d960289e2670
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 07/14/2020
+ms.openlocfilehash: 712bf702ba355ec3b2ca6184c33da8489f8a178e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60790515"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519858"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>连接 Azure Kubernetes 服务和 Azure Database for MySQL
 
@@ -29,7 +29,7 @@ Azure Kubernetes 服务 (AKS) 提供可在 Azure 中使用的托管 Kubernetes �
 3. 复制**基础结构资源组**的名称。
 4. 使用门户搜索栏找到并打开基础结构资源组。
 5. 在该资源组中选择一个 VM。
-6. 转到 VM 的“网络”选项卡。
+6. 转到 VM 的“网络”  选项卡。
 7. 确认是否已启用**加速网络**。
 
 也可以通过 Azure CLI 使用以下两个命令：
@@ -40,12 +40,6 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query "nodeRe
 ```azurecli
 az network nic list --resource-group nodeResourceGroup -o table
 ```
-
-## <a name="open-service-broker-for-azure"></a>打开 Service Broker for Azure 
-[Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) 允许你直接从 Kubernetes 或 Cloud Foundry 预配 Azure 服务。 它是适用于 Azure 的 [Open Service Broker API](https://www.openservicebrokerapi.org/) 实现。
-
-通过 OSBA，可以使用 Kubernetes 的本机语言创建 Azure Database for MySQL 服务器并将其绑定到 AKS 群集。 在 [OSBA GitHub 页](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/mysql.md)上了解如何将 OSBA 和 Azure Database for MySQL 一起使用。 
-
 
 
 ## <a name="next-steps"></a>后续步骤

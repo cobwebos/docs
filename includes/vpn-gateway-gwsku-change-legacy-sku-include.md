@@ -9,11 +9,11 @@ ms.date: 03/15/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4c232e1ce183c6935d625b5bc9987a4981865ae4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66159215"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67172830"
 ---
 如果使用的是资源管理器部署模型，则可更改到新式网关 SKU。 当从旧式网关 SKU 更改到新式 SKU 时，需删除现有 VPN 网关并创建新的 VPN 网关。
 
@@ -32,4 +32,4 @@ ms.locfileid: "66159215"
 * 若要更改到新式 SKU，VPN 网关必须处于资源管理器部署模型中。
 * 如果有经典的 VPN 网关，必须对该网关继续使用早期的旧式 SKU，但可以在旧式 SKU 之间重设网关大小。 不能更改为新式 SKU。
 * 当从旧式 SKU 更改到新式 SKU 时，连接将中断。
-* 更改为新网关 SKU 时，VPN 网关的公有 IP 地址将更改。 即使指定以前使用的同一公共 IP 地址对象，也会出现这种情况。
+* 更改为新网关 SKU 时，VPN 网关的公共 IP 地址将更改。 即使指定以前使用的同一公共 IP 地址对象，也会出现这种情况。

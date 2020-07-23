@@ -9,13 +9,13 @@ ms.date: 09/12/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: a5563d0bab76d11af895165a28fc0544864cfcd1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150816"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172857"
 ---
-在“广域网(WAN)”页上，选择你创建的 WAN。 从左侧菜单中选择“开始使用”页。 此页显示应创建虚拟 WAN 资源的顺序。 你需要完成步骤 1-4 才能创建功能 WAN。 你可以按任意顺序创建站点和中心，因为它们不相互依赖。 但是，你必须在关联站点和中心之前已创建它们。
+在“广域网(WAN)”  页上，选择你创建的 WAN。 从左侧菜单中选择“开始使用”  页。 此页显示应创建虚拟 WAN 资源的顺序。 你需要完成步骤 1-4 才能创建功能 WAN。 你可以按任意顺序创建站点和中心，因为它们不相互依赖。 但是，你必须在关联站点和中心之前已创建它们。
 
 步骤如下： 
 

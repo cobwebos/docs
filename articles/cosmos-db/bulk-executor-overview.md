@@ -1,18 +1,18 @@
 ---
-title: 使用批量执行程序库在 Azure Cosmos DB 中批量导入和更新数据
+title: Azure Cosmos DB 批量执行程序库概述
 description: 通过批量执行程序库提供的批量导入和批量更新 API 功能，在 Azure Cosmos DB 中执行批量操作。
 author: tknandu
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: e4357007ec1cfac2cf6a10d339c6b3aa3ae41488
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: b2ebe07f5ae2846f48bc5762a49ad018610af73a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257102"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260604"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB 批量执行程序库概述
  
@@ -36,13 +36,13 @@ Azure Cosmos DB 是一种快速且灵活的全局分布式数据库服务，旨�
  
 * 它可以通过横向扩展体系结构在一小时内批量导入 1 TB 以上的数据。  
 
-* 它可以作为修补程序批量更新 Azure Cosmos DB 容器中的现有数据。 
+* 它可以作为修补程序批量更新 Azure Cosmos 容器中的现有数据。 
  
 ## <a name="how-does-the-bulk-executor-operate"></a>批量执行程序如何进行操作？ 
 
 对一批实体触发用于导入或更新文档的批量操作时，这些实体一开始会随机分布到与其 Azure Cosmos DB 分区键范围相对应的 Bucket 中。 在每个与分区键范围相对应的 Bucket 中，这些实体会细分成迷你批，每个迷你批充当一个可以在服务器端提交的有效负载。 批量执行程序库在分区键范围的内外对并发执行这些迷你批进行了内置的优化。 下图演示了批量执行程序如何将数据按批分成不同的分区键：  
 
-![批量执行程序体系结构](./media/bulk-executor-overview/bulk-executor-architecture.png)
+:::image type="content" source="./media/bulk-executor-overview/bulk-executor-architecture.png" alt-text="批量执行程序体系结构" :::
 
 批量执行程序库可确保最大程度地利用分配给集合的吞吐量。 它使用适用于每个 Azure Cosmos DB 分区键范围的  [AIMD 样式拥塞控制机制](https://tools.ietf.org/html/rfc5681)，可以有效地处理速率限制和超时。 
 
@@ -51,4 +51,4 @@ Azure Cosmos DB 是一种快速且灵活的全局分布式数据库服务，旨�
 * 若要进行详细了解，请试用那些在 [.NET](bulk-executor-dot-net.md) 和 [Java](bulk-executor-java.md) 中使用批量执行程序库的示例应用程序。  
 * 在 [.NET](sql-api-sdk-bulk-executor-dot-net.md) 和 [Java](sql-api-sdk-bulk-executor-java.md) 中查看批量执行程序 SDK 信息和发行说明。
 * 批量执行程序库已集成到 Cosmos DB Spark 连接器中。若要进行详细的了解，请参阅 [Azure Cosmos DB Spark 连接器](spark-connector.md)一文。  
-* 批量执行程序库也已集成到新版 [Azure Cosmos DB 连接器](https://aka.ms/bulkexecutor-adf-v2)中，可供 Azure 数据工厂复制数据。
+* 批量执行程序库也已集成到新版 [Azure Cosmos DB 连接器](../data-factory/connector-azure-cosmos-db.md)中，可供 Azure 数据工厂复制数据。

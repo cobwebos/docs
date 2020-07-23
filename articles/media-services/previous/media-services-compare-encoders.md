@@ -1,5 +1,5 @@
 ---
-title: Azure 点播媒体编码器之间的对比 | Microsoft Docs
+title: Azure 点播媒体编码器之间的对比 | Microsoft 文档
 description: 本主题对 **Media Encoder Standard** 和**媒体编码器高级工作流**的编码功能进行了比较。
 services: media-services
 documentationcenter: ''
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: juliako;anilmur
-ms.openlocfilehash: bb827b80f79a53f30074b9230efe3e2049471051
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: juliako
+ms.reviewer: anilmur
+ms.openlocfilehash: ca17ffdc2a54b25bbfd855834a366ed381a54678
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61465705"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530382"
 ---
 # <a name="comparison-of-azure-on-demand-media-encoders"></a>Azure 点播媒体编码器之间的对比  
 
@@ -33,7 +34,7 @@ ms.locfileid: "61465705"
 |---|---|---|
 |在编码时应用条件逻辑<br/>（例如，如果输入是 HD，执行 5.1 音频编码）|否|是|
 |隐藏式字幕|否|[是](media-services-premium-workflow-encoder-formats.md#closed_captioning)|
-|[Dolby® 专业响度校正](https://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> （使用 Dialogue Intelligence™）|否|是|
+|[杜比 &reg; 专业响度更正](https://professional.dolby.com/product/broadcast/vm600/)<br/> 带有对话智能&trade;|否|是|
 |反交错、反转电视电影|基本|广播质量|
 |检测和删除黑色边框 <br/>（左右黑边、上下黑边）|否|是|
 |生成缩略图|[是](media-services-dotnet-generate-thumbnail-with-mes.md)|[是](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)|
@@ -42,16 +43,16 @@ ms.locfileid: "61465705"
 |图形叠加层|来自图像源|来自图像和文本源|
 |多语言音轨|受限制|[是](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-2--multiple-audio-language-encoding)|
 
-## <a id="billing"></a>每个编码器使用的计费表
+## <a name="billing-meter-used-by-each-encoder"></a><a id="billing"></a>每个编码器使用的计费表
 | 媒体处理器名称 | 适用定价 | 说明 |
 | --- | --- | --- |
-| **Media Encoder Standard** |编码器 |编码任务根据 ENCODER 列下作为输出生成的所有媒体文件的总持续时间（分钟）计费，费率已在[此处][1]指定。 |
-| **媒体编码器高级工作流** |高级编码器 |将基于作为输出生成的所有媒体文件的总持续时间（以分钟为单位）对编码任务进行收费，按照“高级编码器”列下[此处][1]指定的费率。 |
+| **Media Encoder Standard** |编码器 |编码任务会根据 ENCODER 列下作为输出生成的所有媒体文件的总持续时间（分钟）计费，费率已在[此处][1]指定。 |
+| **媒体编码器高级工作流** |高级编码器 |编码任务会根据 PREMIUM ENCODER 列下作为输出生成的所有媒体文件的总持续时间（分钟）计费，费率已在[此处][1]指定。 |
 
 ## <a name="input-containerfile-formats"></a>输入容器/文件格式
 | 输入容器/文件格式 | 媒体编码器标准版 | 媒体编码器高级工作流 |
 | --- | --- | --- |
-| Adobe® Flash® F4V |是 |是 |
+| Adobe &reg; Flash &reg; F4V |是 |是 |
 | MXF/SMPTE 377M |是 |是 |
 | GXF |是 |是 |
 | Mpeg-2 传输流 |是 |是 |
@@ -72,7 +73,7 @@ ms.locfileid: "61465705"
 | Avid DNxHD（MXF 格式） |是 |是 |
 | DVCPro/DVCProHD（MXF 格式） |是 |是 |
 | JPEG2000 |是 |是 |
-| Mpeg-2（最高支持 422 Profile 和 High Level；包括 XDCAM、XDCAM HD、XDCAM IMX、CableLabs® 和 D10 等变体） |最高支持 422 Profile |是 |
+| MPEG-2 （最多422个配置文件和高级别，包括 XDCAM、XDCAM HD、XDCAM IMX、CableLabs 和 D10 等变体 &reg; ） |最高支持 422 Profile |是 |
 | MPEG-1 |是 |是 |
 | Windows Media 视频/VC-1 |是 |是 |
 | Canopus HQ/HQX |否 |否 |
@@ -90,9 +91,9 @@ ms.locfileid: "61465705"
 | 输入音频编解码器 | 媒体编码器标准版 | 媒体编码器高级工作流 |
 | --- | --- | --- |
 | AES（SMPTE 331M 和 302M、AES3-2003） |否 |是 |
-| Dolby® E |否 |是 |
-| Dolby® Digital (AC3) |否 |是 |
-| Dolby® Digital Plus (E-AC3) |否 |是 |
+| 杜比 &reg; E |否 |是 |
+| 杜比 &reg; 数字（e-ac3） |否 |是 |
+| 杜比 &reg; 数字加（E-e-ac3） |否 |是 |
 | AAC(AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1） |是 |是 |
 | MPEG Layer 2 |是 |是 |
 | MP3 (MPEG-1 Audio Layer 3) |是 |是 |
@@ -103,9 +104,9 @@ ms.locfileid: "61465705"
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |是 |否 |
 
 ## <a name="output-containerfile-formats"></a>输出容器/文件格式
-| 输出容器/文件格式 | Media Encoder Standard | 媒体编码器高级工作流 |
+| 输出容器/文件格式 | 媒体编码器标准版 | 媒体编码器高级工作流 |
 | --- | --- | --- |
-| Adobe® Flash® F4V |否 |是 |
+| Adobe &reg; Flash &reg; F4V |否 |是 |
 | MXF（OP1a、XDCAM 和 AS02） |否 |是 |
 | DPP（包括 AS11） |否 |是 |
 | GXF |否 |是 |
@@ -121,7 +122,7 @@ ms.locfileid: "61465705"
 | AVC（H.264；8 位；最高支持 High Profile、Level 5.2；4K Ultra HD；AVC Intra） |仅限 8 位 4:2:0 |是 |
 | HEVC（H.265；8 位和 10 位；）  |否 |是 |
 | Avid DNxHD（MXF 格式） |否 |是 |
-| Mpeg-2（最高支持 422 Profile 和 High Level；包括 XDCAM、XDCAM HD、XDCAM IMX、CableLabs® 和 D10 等变体） |否 |是 |
+| MPEG-2 （最多422个配置文件和高级别，包括 XDCAM、XDCAM HD、XDCAM IMX、CableLabs 和 D10 等变体 &reg; ） |否 |是 |
 | MPEG-1 |否 |是 |
 | Windows Media 视频/VC-1 |否 |是 |
 | JPEG 缩图创建 |是 |是 |
@@ -132,15 +133,15 @@ ms.locfileid: "61465705"
 | 输出音频编解码器 | 媒体编码器标准版 | 媒体编码器高级工作流 |
 | --- | --- | --- |
 | AES（SMPTE 331M 和 302M、AES3-2003） |否 |是 |
-| Dolby® Digital (AC3) |否 |是 |
-| Dolby® Digital Plus (E-AC3)，最高支持 7.1 |否 |是 |
+| 杜比 &reg; 数字（e-ac3） |否 |是 |
+| &reg;最高7.1 的杜比数字加（E-e-ac3） |否 |是 |
 | AAC(AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1） |是 |是 |
 | MPEG Layer 2 |否 |是 |
 | MP3 (MPEG-1 Audio Layer 3) |否 |是 |
 | Windows Media 音频 |否 |是 |
 
 >[!NOTE]
->如果编码为 Dolby® Digital (AC3)，则只能将输出写入到 ISO MP4 文件。
+>如果编码为 "杜比 &reg; 数字（e-ac3）"，则只能将输出写入 ISO 标准文件中。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -1,7 +1,7 @@
 ---
-title: 示例：将人脸添加到 PersonGroup - 人脸 API
+title: 示例：将人脸添加到 PersonGroup - 人脸
 titleSuffix: Azure Cognitive Services
-description: 使用人脸 API 添加图像中的人脸。
+description: 本指南演示了如何使用 Azure 认知服务人脸服务将大量人员和人脸添加到 PersonGroup 对象。
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 83aef90702e4a4cc4fd9bdfda486841f9b2a63a4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 240905d538afc5c0f4b7f0e0bf400fac23c3183f
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66124496"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "76169829"
 ---
 # <a name="add-faces-to-a-persongroup"></a>将人脸添加到 PersonGroup
 
-本指南演示了如何将大量人员和人脸添加到 PersonGroup 对象。 此同一策略还适用于 LargePersonGroup、FaceList 和 LargeFaceList 对象。 此示例是通过 C# 使用 Azure 认知服务人脸 API .NET 客户端库编写的。
+本指南演示了如何将大量人员和人脸添加到 PersonGroup 对象。 此同一策略还适用于 LargePersonGroup、FaceList 和 LargeFaceList 对象。 此示例是通过 C# 使用 Azure 认知服务人脸 .NET 客户端库编写的。
 
 ## <a name="step-1-initialization"></a>步骤 1：初始化
 
@@ -60,10 +60,12 @@ static async Task WaitCallLimitPerSecondAsync()
 
 ## <a name="step-2-authorize-the-api-call"></a>步骤 2：授权 API 调用
 
-使用客户端库时，必须将你的订阅密钥传递给 FaceServiceClient 类的构造函数。 例如：
+使用客户端库时，必须将订阅密钥传递给 **FaceClient** 类的构造函数。 例如：
 
 ```csharp
-FaceServiceClient faceServiceClient = new FaceServiceClient("<Subscription Key>");
+private readonly IFaceClient faceClient = new FaceClient(
+    new ApiKeyServiceClientCredentials("<SubscriptionKey>"),
+    new System.Net.Http.DelegatingHandler[] { });
 ```
 
 若要获取订阅密钥，请从 Azure 门户转到 Azure 市场。 有关详细信息，请参阅[订阅](https://www.microsoft.com/cognitive-services/sign-up)。
@@ -77,7 +79,7 @@ FaceServiceClient faceServiceClient = new FaceServiceClient("<Subscription Key>"
 const string personGroupId = "mypersongroupid";
 const string personGroupName = "MyPersonGroup";
 _timeStampQueue.Enqueue(DateTime.UtcNow);
-await faceServiceClient.CreatePersonGroupAsync(personGroupId, personGroupName);
+await faceClient.LargePersonGroup.CreateAsync(personGroupId, personGroupName);
 ```
 
 ## <a name="step-4-create-the-persons-for-the-persongroup"></a>步骤 4：为 PersonGroup 创建人员
@@ -85,13 +87,13 @@ await faceServiceClient.CreatePersonGroupAsync(personGroupId, personGroupName);
 可同时创建所有人员，为避免超出调用限制，还会应用 `await WaitCallLimitPerSecondAsync()`。
 
 ```csharp
-CreatePersonResult[] persons = new CreatePersonResult[PersonCount];
+Person[] persons = new Person[PersonCount];
 Parallel.For(0, PersonCount, async i =>
 {
     await WaitCallLimitPerSecondAsync();
 
     string personName = $"PersonName#{i}";
-    persons[i] = await faceServiceClient.CreatePersonAsync(personGroupId, personName);
+    persons[i] = await faceClient.PersonGroupPerson.CreateAsync(personGroupId, personName);
 });
 ```
 
@@ -112,13 +114,13 @@ Parallel.For(0, PersonCount, async i =>
 
         using (Stream stream = File.OpenRead(imagePath))
         {
-            await faceServiceClient.AddPersonFaceAsync(personGroupId, personId, stream);
+            await faceClient.PersonGroupPerson.AddFaceFromStreamAsync(personGroupId, personId, stream);
         }
     }
 });
 ```
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 在本指南中，你已学习了如何创建包含大量人员和人脸的 PersonGroup。 请注意以下几点：
 

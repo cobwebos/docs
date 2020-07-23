@@ -1,25 +1,17 @@
 ---
-title: Azure CLI 的 Azure Redis 缓存示例 | Microsoft Docs
-description: Azure CLI 的 Azure Redis 缓存示例。
-services: cache
-documentationcenter: ''
+title: Redis 示例的 Azure Cache Azure CLI
+description: 适用于 Redis 的 Azure Cache Azure CLI 示例：创建缓存、删除缓存、获取缓存详细信息、主机名、端口和密钥，以及连接 web 应用。
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 8d2de145-50c0-4f76-bf8f-fdf679f03698
-ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: azurecli
-ms.topic: article
-ms.date: 04/14/2017
 ms.author: yegu
-ms.openlocfilehash: eea74e8f1291901fea3c77b70ba3c636f40bd132
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.service: cache
+ms.devlang: azurecli
+ms.topic: conceptual
+ms.date: 04/14/2017
+ms.openlocfilehash: c43e23b4bf46258cc91b06a0912d03e85a5c7a14
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829746"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75411346"
 ---
 # <a name="azure-cli-samples-for-azure-cache-for-redis"></a>Azure CLI 的 Azure Redis 缓存示例
 

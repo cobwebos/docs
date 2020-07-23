@@ -1,5 +1,5 @@
 ---
-title: Azure 后端连接功能中的互操作性：控制平面分析 | Microsoft Docs
+title: Azure 中的互操作性：控制平面分析
 description: 本文提供了可用于分析 Azure 中 ExpressRoute、站点到站点 VPN 和虚拟网络对等互连之间互操作性的测试设置的控制平面分析。
 documentationcenter: na
 services: networking
@@ -10,16 +10,16 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 28ce4cfd0c62586510a6f7dfdeca8b552fe9638e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5e41bc86533815c394077bf5276d930fe958cd19
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60425557"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80518271"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-control-plane-analysis"></a>Azure 后端连接功能中的互操作性：控制平面分析
+# <a name="interoperability-in-azure--control-plane-analysis"></a>Azure 中的互操作性：控制平面分析
 
-本文介绍了[测试设置][Setup]的控制分析。 你也可以查看测试设置的[测试设置配置][Configuration]和[数据分析][Data-Analysis]。
+本文介绍了[测试设置][Setup]的控制平面分析。 你也可以查看测试设置的[测试设置配置][Configuration]和[数据平面分析][Data-Analysis]。
 
 从本质上讲，控制平面分析的作用是检查拓扑中网络之间交换的路由。 控制平面分析有助于了解不同网络如何查看拓扑。
 
@@ -27,33 +27,33 @@ ms.locfileid: "60425557"
 
 下图说明了中心虚拟网络 (VNet) 和辐射 VNet（以蓝色突出显示）中的网络。 该图还显示了不同网络的自治系统编号 (ASN)，以及在不同网络之间交换的路由： 
 
-[![1]][1]
+![1][1]
 
-VNet 的 ExpressRoute 网关的 ASN 不同于 Microsoft Enterprise Edge 路由器 (MSEE) 的 ASN。 ExpressRoute 网关使用专用 ASN（值为 65515），而 MSEE 全局使用公共 ASN（值为 12076）。 配置 ExpressRoute 对等互连时，由于 MSEE 是对等方，因此，需要将 12076 用作对等 ASN。 在 Azure 端，MSEE 与 ExpressRoute 网关建立 eBGP 对等互连。 MSEE 为每个 ExpressRoute 对等互连建立的双重 eBGP 对等互连在控制平面级别是透明的。 因此，在查看 ExpressRoute 路由表时，会看到 VNet 的 ExpressRoute 网关 ASN 是 VNet 的前缀。 
+VNet 的 ExpressRoute 网关的 ASN 不同于 Microsoft Enterprise Edge 路由器 (MSEE) 的 ASN。 ExpressRoute 网关使用专用 ASN（值为 65515），而 MSEE 全局使用公共 ASN（值为 12076）   。 配置 ExpressRoute 对等互连时，由于 MSEE 是对等方，因此，需要将 12076 用作对等 ASN  。 在 Azure 端，MSEE 与 ExpressRoute 网关建立 eBGP 对等互连。 MSEE 为每个 ExpressRoute 对等互连建立的双重 eBGP 对等互连在控制平面级别是透明的。 因此，在查看 ExpressRoute 路由表时，会看到 VNet 的 ExpressRoute 网关 ASN 是 VNet 的前缀。 
 
 下图显示了 ExpressRoute 路由表示例： 
 
-[![5]][5]
+![5][5]
 
-在 Azure 中，仅从对等互连角度来看，ASN 才有意义。 默认情况下，Azure VPN 网关中 ExpressRoute 网关和 VPN 网关的 ASN 均为 65515。
+在 Azure 中，仅从对等互连角度来看，ASN 才有意义。 默认情况下，Azure VPN 网关中 ExpressRoute 网关和 VPN 网关的 ASN 均为 65515  。
 
 ## <a name="on-premises-location-1-and-the-remote-vnet-perspective-via-expressroute-1"></a>本地位置 1 和远程 VNet 透视图（通过 ExpressRoute 1 建立连接）
 
 本地位置 1 和远程 VNet 都通过 ExpressRoute 1 连接到中心 VNet。 它们共享同一个拓扑透视图，如下图所示：
 
-[![2]][2]
+![2][2]
 
 ## <a name="on-premises-location-1-and-the-branch-vnet-perspective-via-a-site-to-site-vpn"></a>本地位置 1 和分支 VNet 通过站点到站点 VPN 建立连接的透视图
 
 本地位置 1 和分支 VNet 都通过站点到站点 VPN 连接连接到中心 VNet 的 VPN 网关。 它们共享同一个拓扑透视图，如下图所示：
 
-[![3]][3]
+![3][3]
 
 ## <a name="on-premises-location-2-perspective"></a>本地位置 2 透视图
 
 本地位置 2 通过 ExpressRoute 2 的专用对等互连连接到中心 VNet： 
 
-[![4]][4]
+![4][4]
 
 ## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>串联 ExpressRoute 和站点到站点 VPN 连接
 
@@ -95,8 +95,8 @@ ExpressRoute 充当冗余的线路对，可确保高可用性。 可在不同的
 
 <!--Image References-->
 [1]: ./media/backend-interoperability/HubView.png "拓扑的中心和辐射 VNet 透视图"
-[2]: ./media/backend-interoperability/Loc1ExRView.png "拓扑的本地位置 1 和远程 VNet 透视图（通过 ExpressRoute 1 建立连接）"
-[3]: ./media/backend-interoperability/Loc1VPNView.png "拓扑的本地位置 1 和分支 VNet 透视图（通过站点到站点 VPN 建立连接）"
+[2]: ./media/backend-interoperability/Loc1ExRView.png "拓扑的位置 1 和远程 VNet 透视图（通过 ExpressRoute 1 建立连接）"
+[3]: ./media/backend-interoperability/Loc1VPNView.png "拓扑的位置 1 和分支 VNet 透视图（通过站点到站点 VPN 建立连接）"
 [4]: ./media/backend-interoperability/Loc2View.png "拓扑的位置 2 透视图"
 [5]: ./media/backend-interoperability/ExR1-RouteTable.png "ExpressRoute 1 路由表"
 

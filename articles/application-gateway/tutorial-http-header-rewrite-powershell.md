@@ -1,18 +1,18 @@
 ---
-title: 在 Azure 应用程序网关中重写 HTTP 标头
+title: 创建 Azure 应用程序网关 & 重写 HTTP 标头
 description: 本文介绍如何使用 Azure PowerShell 创建 Azure 应用程序网关和重写 HTTP 标头
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 4/30/2019
+ms.topic: how-to
+ms.date: 11/19/2019
 ms.author: absha
-ms.openlocfilehash: ba74bb8970949a15425a66f7cd4475749fd183df
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: f8aec788e5370bd0c6f0e2f1b6ff032ca68cac87
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947086"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806442"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>创建应用程序网关和重写 HTTP 标头
 
@@ -32,9 +32,9 @@ ms.locfileid: "64947086"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
-本文需要在本地运行 Azure PowerShell。 必须安装 Az 模块 1.0.0 或更高版本。 依次运行 `Import-Module Az` 和 `Get-Module Az` 以查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 验证 PowerShell 版本以后，请运行 `Login-AzAccount`，以便创建与 Azure 的连接。
+本文要求在本地运行 Azure PowerShell。 必须安装 Az 模块 1.0.0 或更高版本。 依次运行 `Import-Module Az` 和 `Get-Module Az` 以查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 验证 PowerShell 版本以后，请运行 `Login-AzAccount`，以便创建与 Azure 的连接。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -68,7 +68,7 @@ $vnet = New-AzvirtualNetwork -Name "AutoscaleVNet" -ResourceGroupName $rg `
 
 ## <a name="create-a-reserved-public-ip"></a>创建保留的公共 IP
 
-将 PublicIPAddress 的分配方法指定为 Static。 自动缩放应用程序网关 VIP 只能为静态。 不支持动态 IP。 只支持标准 PublicIpAddress SKU。
+将 PublicIPAddress 的分配方法指定为 Static  。 自动缩放应用程序网关 VIP 只能为静态。 不支持动态 IP。 只支持标准 PublicIpAddress SKU。
 
 ```azurepowershell
 #Create static public IP
@@ -112,8 +112,8 @@ $setting = New-AzApplicationGatewayBackendHttpSettings -Name "BackendHttpSetting
 - **RequestHeaderConfiguration**：此对象用于指定要重写的请求标头字段以及需要重写的原始标头的新值。
 - **ResponseHeaderConfiguration**：此对象用于指定要重写的响应标头字段以及需要重写的原始标头的新值。
 - **ActionSet**：此对象包含上面指定的请求和响应标头的配置。 
-- **RewriteRule**：此对象包含上面指定的所有“actionSets”。 
-- **RewriteRuleSet** - 此对象包含所有 rewriteRules，并且需要附加到（基本或基于路径的）请求路由规则。
+- **RewriteRule**：此对象包含上面指定的所有“actionSets”  。 
+- **RewriteRuleSet** - 此对象包含所有 rewriteRules，并且需要附加到（基本或基于路径的）请求路由规则  。
 
    ```azurepowershell
    $requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-isThroughProxy" -HeaderValue "True"

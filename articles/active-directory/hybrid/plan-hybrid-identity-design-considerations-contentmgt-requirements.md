@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0d970fd133f8c43319e7f1fdb6b3a50c3c05f687
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "64918438"
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的内容管理要求

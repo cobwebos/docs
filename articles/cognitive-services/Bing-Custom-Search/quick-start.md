@@ -1,21 +1,21 @@
 ---
-title: 快速入门：创建第一个必应自定义搜索实例 | Microsoft Docs
-titlesuffix: Azure Cognitive Services
-description: 参考本文创建一个可以搜索所定义的域和网页的自定义必应实例。
+title: 快速入门：创建首个必应自定义搜索实例
+titleSuffix: Azure Cognitive Services
+description: 参考本快速入门创建一个可以搜索所定义的域和网页的自定义必应实例。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: d7a0c29ad3386fcdf85292b6e2852842a971c076
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: b8287250df4e278d4904e31121ed7d2df208e1c9
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56231903"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80238854"
 ---
 # <a name="quickstart-create-your-first-bing-custom-search-instance"></a>快速入门：创建首个必应自定义搜索实例
 
@@ -46,7 +46,7 @@ ms.locfileid: "56231903"
 
 5. 单击“发布”将更改发布到生产环境，并更新实例的终结点。
 
-6.  单击“生产”选项卡，在“终结点”下复制“自定义配置 ID”。 调用自定义搜索 API 时，需将此 ID 追加到调用中的 `customconfig=` 查询参数。
+6.  单击“终结点”下的“生产”选项卡，并复制**自定义配置 ID**。 调用自定义搜索 API 时，需将此 ID 追加到调用中的 `customconfig=` 查询参数。
 
 
 ## <a name="next-steps"></a>后续步骤

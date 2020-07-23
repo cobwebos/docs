@@ -1,25 +1,24 @@
 ---
-title: 配置 ExpressRoute Direct - Azure CLI | Microsoft Docs
-description: 本文可帮助你使用 Azure CLI 配置 ExpressRoute 直接
+title: Azure ExpressRoute：配置 ExpressRoute Direct： CLI
+description: 本文将帮助你使用 Azure CLI
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/20/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: ebfe3db43de87e67ad05ed8cb9f5812b5ded04e0
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 343b63f960ccc458b1b1603f924b890366982477
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65965907"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736265"
 ---
-# <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 配置 ExpressRoute 直接
+# <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 配置 ExpressRoute Direct
 
 可以使用 Azure ExpressRoute Direct 连接到位于全球战略分布的对等互连位置的 Microsoft 全球网络。 有关详细信息，请参阅[关于 ExpressRoute Direct Connect](expressroute-erdirect-about.md)。
 
-## <a name="resources"></a>创建资源
+## <a name="create-the-resource"></a><a name="resources"></a>创建资源
 
 1. 登录到 Azure 并选择包含 ExpressRoute 的订阅。 ExpressRoute Direct 资源和 ExpressRoute 线路必须位于同一订阅中。 在 Azure CLI 中，请运行下列命令：
 
@@ -39,7 +38,12 @@ ms.locfileid: "65965907"
    az account set --subscription "<subscription ID>"
    ```
 
-2. 列出支持 ExpressRoute Direct 的所有位置：
+2. 将你的订阅重新注册到 Microsoft 以访问 expressrouteportslocation 和 expressrouteport Api
+
+   ```azurecli
+   az provider register --namespace Microsoft.Network
+   ```
+3. 列出支持 ExpressRoute Direct 的所有位置：
     
    ```azurecli
    az network express-route port location list
@@ -47,7 +51,7 @@ ms.locfileid: "65965907"
 
    **示例输出**
   
-   ```azurecli
+   ```output
    [
    {
     "address": "21715 Filigree Court, DC2, Building F, Ashburn, VA 20147",
@@ -106,7 +110,7 @@ ms.locfileid: "65965907"
    }
    ]
    ```
-3. 确定上一步骤中列出的某个位置是否具有可用带宽：
+4. 确定上一步骤中列出的某个位置是否具有可用带宽：
 
    ```azurecli
    az network express-route port location show -l "Equinix-Ashburn-DC2"
@@ -114,7 +118,7 @@ ms.locfileid: "65965907"
 
    **示例输出**
 
-   ```azurecli
+   ```output
    {
    "address": "21715 Filigree Court, DC2, Building F, Ashburn, VA 20147",
    "availableBandwidths": [
@@ -132,7 +136,7 @@ ms.locfileid: "65965907"
    "type": "Microsoft.Network/expressRoutePortsLocations"
    }
    ```
-4. 创建 ExpressRoute Direct 资源，该资源基于在上一步骤中所选择的位置。
+5. 创建 ExpressRoute Direct 资源，该资源基于在上一步骤中所选择的位置。
 
    ExpressRoute Direct 同时支持 QinQ 和 Dot1Q 封装。 如果选择了 QinQ，则会为每个 ExpressRoute 线路动态分配 S-Tag，并且每个线路在整个 ExpressRoute Direct 资源中将是唯一的。 线路上的每个 C-Tag 在该线路上必须是唯一的，但在整个 ExpressRoute Direct 资源中不必唯一。  
 
@@ -147,12 +151,12 @@ ms.locfileid: "65965907"
    ```
 
    > [!NOTE]
-   > 还可以将“封装”属性设置为“Dot1Q”。 
+   > 还可以将“封装”属性设置为“Dot1Q”********。 
    >
 
    **示例输出**
 
-   ```azurecli
+   ```output
    {
    "allocationDate": "Wednesday, October 17, 2018",
    "bandwidthInGbps": 100,
@@ -204,11 +208,11 @@ ms.locfileid: "65965907"
    }  
    ```
 
-## <a name="state"></a> 更改链接的 AdminState
+## <a name="change-adminstate-for-links"></a><a name="state"></a> 更改链接的 AdminState
 
 使用此过程来执行第 1 层测试。 请确保每个交叉连接在主端口和辅助端口的每个路由器上都有正确的补丁。
 
-1. 将链接设置为“启用”。 重复此步骤以将每个链接设置为“启用”。
+1. 将链接设置为“启用”****。 重复此步骤以将每个链接设置为“启用”****。
 
    Links[0] 是主端口，Links[1] 是辅助端口。
 
@@ -220,7 +224,7 @@ ms.locfileid: "65965907"
    ```
    **示例输出**
 
-   ```azurecli
+   ```output
    {
    "allocationDate": "Wednesday, October 17, 2018",
    "bandwidthInGbps": 100,
@@ -272,17 +276,17 @@ ms.locfileid: "65965907"
    }
    ```
 
-   使用相同的过程来关闭端口，方法是使用 `AdminState = “Disabled”`。
+   使用相同的过程来关闭端口，方法是使用 `AdminState = "Disabled"`。
 
-## <a name="circuit"></a>创建线路
+## <a name="create-a-circuit"></a><a name="circuit"></a>创建线路
 
 默认情况下，可以在包含 ExpressRoute Direct 资源的订阅中创建 10 条线路。 Microsoft 支持部门可以增加默认限制。 你负责跟踪预配的和已使用的带宽。 预配带宽是 ExpressRoute Direct 资源上所有线路的带宽总和。 利用带宽是基础物理接口的物理用法。
 
 只能在 ExpressRoute Direct 上使用其他线路带宽来支持上面概述的场景。 带宽为 40 Gbps 和 100 Gbps。
 
-**SkuTier**可以是本地、 标准或高级。
+**SkuTier**可以是本地、标准或高级。
 
-**SkuFamily**必须以无限制模式为 MeteredData ExpressRoute 直接上不支持。
+**SkuFamily**必须是 MeteredData，因为 ExpressRoute 直接不支持。
 在 ExpressRoute Direct 资源上创建线路：
 
   ```azurecli
@@ -293,7 +297,7 @@ ms.locfileid: "65965907"
 
   **示例输出**
 
-  ```azurecli
+  ```output
   {
   "allowClassicOperations": false,
   "allowGlobalReach": false,

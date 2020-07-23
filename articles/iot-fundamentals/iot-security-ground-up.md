@@ -7,13 +7,15 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: 5d4034aa3ea2ceb3a3c294e05952461d46835895
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7072e2c0bfa054a670ac3fb09590378d3ef055a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60626448"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "72789732"
 ---
+# <a name="security-for-internet-of-things-iot-from-the-ground-up"></a>从头开始讲解物联网 (IoT) 的安全性
+
 [!INCLUDE [iot-security-ground-up](../../includes/iot-security-ground-up.md)]
 
 ## <a name="next-steps"></a>后续步骤

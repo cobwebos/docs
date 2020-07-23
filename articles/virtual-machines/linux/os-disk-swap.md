@@ -1,31 +1,23 @@
 ---
-title: 使用 CLI 交换 Azure VM 的 OS 磁盘 | Microsoft 文档
+title: 使用 CLI 在 OS 磁盘之间交换
 description: 使用 CLI 更改由 Azure 虚拟机使用的操作系统磁盘。
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: disks
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: b17647a09c88491e2486046b1ca99ee277f0cc28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: a8c879ae56eb22d9817841667d33e37109a4f63d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61473869"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81759407"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>使用 CLI 更改由 Azure VM 使用的 OS 磁盘
 
 
-如果有现有 VM，但希望将磁盘交换为备份磁盘或其他 OS 磁盘，则可使用 Azure CLI 交换 OS 磁盘。 你无需删除和重新创建 VM。 甚至可在另一资源组中使用托管磁盘，只要该磁盘尚未使用。
+如果有现有 VM，但希望将磁盘交换为备份磁盘或其他 OS 磁盘，则可使用 Azure CLI 交换 OS 磁盘。 无需删除和重新创建 VM。 甚至可在另一资源组中使用托管磁盘，只要该磁盘尚未使用。
 
 需要停止/取消分配 VM，然后才可将该托管磁盘的资源 ID 替换为其他托管磁盘的资源 ID。 
 

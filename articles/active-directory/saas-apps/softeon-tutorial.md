@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 4f14e7e4a5699d00e9d94c1796e02e97a7a2441e
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: ff01d9bc07408fa825fa933966d583b3d6ff7f56
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901800"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67089962"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-softeon-wms"></a>教程：Azure Active Directory 与 Softeon WMS 集成
 
@@ -106,9 +106,9 @@ ms.locfileid: "65901800"
 
     ![Softeon WMS 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.softeon.com/<instancename>` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.softeon.com/<instancename>`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.softeon.com/sp` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.softeon.com/sp`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Softeon WMS 客户端支持团队](mailto:contact@softeon.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -129,7 +129,7 @@ ms.locfileid: "65901800"
 
 ### <a name="configure-softeon-wms-single-sign-on"></a>配置 Softeon WMS 单一登录
 
-若要在 Softeon WMS  端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Softeon WMS 支持团队](mailto:contact@softeon.com)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Softeon WMS 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Softeon WMS 支持团队](mailto:contact@softeon.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -149,7 +149,7 @@ ms.locfileid: "65901800"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon@yourcompanydomain.extension   
+    b. 在“用户名”字段中，键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -172,7 +172,7 @@ ms.locfileid: "65901800"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

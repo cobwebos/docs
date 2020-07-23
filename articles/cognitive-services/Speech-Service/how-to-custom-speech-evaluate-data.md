@@ -1,74 +1,75 @@
 ---
-title: 对自定义语音的语音服务评估准确性
-titlesuffix: Azure Cognitive Services
-description: 在本文档将学习如何衡量标准测量 Microsoft 的语音到文本模型或自定义模型的质量。 需要音频 + 人标记为脚本数据以测试准确性，并应提供 5 个小时的具有代表性的音频的 30 分钟。
+title: 评估自定义语音识别的准确度 - 语音服务
+titleSuffix: Azure Cognitive Services
+description: 本文档介绍如何以定量方式度量我们的语音转文本模型或你的自定义模型的质量。 需要使用音频 + 人为标记的听录数据来测试准确度，并应提供 30 分钟到 5 小时的代表性音频。
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 7c1b3602b09c1a129923180c4b1d4a5f8293de2c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: cadbe79bbe0af2b5cebacb3d0c7c4e910fc7dbb8
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025905"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856829"
 ---
-# <a name="evaluate-custom-speech-accuracy"></a>评估自定义语音准确性
+# <a name="evaluate-custom-speech-accuracy"></a>评估自定义语音识别准确度
 
-在本文档中，将学习如何衡量标准测量 Microsoft 的语音到文本模型或自定义模型的质量。 需要音频 + 人标记为脚本数据以测试准确性，并应提供 5 个小时的具有代表性的音频的 30 分钟。
+本文档介绍如何以定量方式度量 Microsoft 的语音转文本模型或你的自定义模型的质量。 需要使用音频 + 人为标记的听录数据来测试准确度，并应提供 30 分钟到 5 小时的代表性音频。
 
-## <a name="what-is-word-error-rate-wer"></a>什么是 Word 错误速率 (WER)？
+## <a name="what-is-word-error-rate-wer"></a>什么是误字率 (WER)？
 
-是行业标准来度量模型准确性*Word 错误率*(WER)。 WER 的不正确识别过程标识的单词进行计数，然后除以总人标记为脚本中提供的单词数。 最后，该数字乘以 100%来计算 WER。
+用于度量模型准确度的行业标准是误字率  (WER)。 WER 计算在识别期间标识的错误单词数，然后除以用户标记的脚本中提供的字数（如下所示）。 最后将该数字乘以 100%。
 
 ![WER 公式](./media/custom-speech/custom-speech-wer-formula.png)
 
-错误地标识单词归为三个类别：
+错误标识的单词分为三个类别：
 
-* 插入 (I):错误地添加假设脚本中的单词
-* 删除 (D):假设脚本中未检测到的单词
-* 替换 (S):引用和假设之间会被替换的单词
+* 插入 (I)：在假设脚本中错误添加的单词
+* 删除 (D)：在假设脚本中未检测到的单词
+* 替换 (S)：在引用和假设之间替换的单词
 
 下面是一个示例：
 
-![未正确识别单词的示例](./media/custom-speech/custom-speech-dis-words.png)
+![错误标识的单词的示例](./media/custom-speech/custom-speech-dis-words.png)
 
-## <a name="resolve-errors-and-improve-wer"></a>解决错误并提高 WER
+## <a name="resolve-errors-and-improve-wer"></a>解决错误并降低 WER
 
-从计算机识别结果 WER 可用于评估的模型将用于应用程序、 工具或产品的质量。 WER 的 5%-10%被认为是高质量，并可供使用。 20%的 WER 为可接受的但可能需要额外的培训。 WER 30%或更多的信号质量不佳，并且需要自定义和培训。
+可以使用机器识别结果中的 WER 来评估与应用、工具或产品配合使用的模型的质量。 WER 为 5%-10% 表明质量好，可以使用。 WER 为 20% 可以接受，但可能需要考虑进行更多的训练。 WER 为 30% 或以上表明质量差，需要自定义和训练。
 
-这些错误如何分布很重要。 当遇到许多删除错误时，通常是由于弱音频信号强度。 若要解决此问题，您需要收集到源的音频数据更接近。 插入错误意味着在嘈杂的环境中记录音频和串音可能存在，导致识别问题。 已提供为人标记为转录或相关的特定于域的术语的足够示例时经常遇到替换错误文本。
+错误的分布情况很重要。 如果遇到许多删除错误，通常是因为音频信号强度弱。 若要解决此问题，需要在收集音频数据时更靠近源。 插入错误意味着音频是在嘈杂环境中记录的，并且可能存在串音，导致识别问题。 如果以人为标记的听录或相关文本形式提供特定于领域的术语样本不足，则通常会遇到替换错误。
 
-通过分析单独的文件，可以确定哪种类型的错误存在，以及哪些错误是唯一的特定文件。 在文件级别的了解问题将帮助你为目标的改进。
+可以通过分析单个文件来确定存在的错误的类型，以及哪些错误是特定文件独有的。 在文件级别了解问题将有助于你确定改进目标。
 
 ## <a name="create-a-test"></a>创建测试
 
-如果你想要测试 Microsoft 的语音到文本基线模型或已训练的自定义模型的质量，可以比较两个模型并排比较以评估准确性。 比较内容包括 WER 和识别结果。 通常情况下，自定义模型与 Microsoft 的基准模型进行比较。
+若要测试 Microsoft 的语音转文本基线模型或你训练的自定义模型的质量，可以将两个模型并排比较一下，评估准确度。 此比较包括 WER 和识别结果。 通常情况下，自定义模型会与 Microsoft 的基线模型比较。
 
-若要评估模型并排显示：
+若要并排评估模型，请执行以下操作：
 
-1. 导航到**语音到文本 > 自定义语音 > 测试**。
-2. 单击**添加测试**。
-3. 选择**评估准确性**。 为测试提供名称、 说明，然后选择音频 + 人标记为脚本数据集。
-4. 选择你想要测试的最多两个模型。
-5. 单击**创建**。
+1. 登录到[自定义语音识别门户](https://speech.microsoft.com/customspeech)。
+2. 导航到 "**语音到文本" > 自定义语音 > [项目名称] > 测试**。
+3. 单击“添加测试”。 
+4. 选择“评估准确度”。  为测试提供名称和说明，然后选择你的音频和人为标记的听录数据集。
+5. 选择最多两个要测试的模型。
+6. 单击**创建**。
 
-已成功创建你的测试后，您可以比较结果并排显示。
+成功创建测试后，可以并排比较结果。
 
-## <a name="side-by-side-comparison"></a>通过并行比较
+## <a name="side-by-side-comparison"></a>并排比较
 
-测试完成后，由状态更改为*Succeeded*，您可以在测试中包含两种模型找到 WER 编号。 单击测试名称以查看测试详细信息页。 此详细信息页列出了在你的数据集，指示识别结果的两个模型以及从提交的数据集脚本中的所有语音样本。 若要帮助检查-并排比较，可以切换包括插入、 删除和替换各种错误类型。 通过收听音频和比较每个列，显示用户标记为脚本中的识别结果和两个语音到文本模型的结果，您可以决定哪种模型满足你的需求和额外的培训和改进的必填。
+测试完成（状态更改为“成功”即表明完成）后，就可以找到测试中包括的两个模型的 WER 值。  单击测试名称可查看测试详细信息页。 该详细信息页会列出数据集中的所有言语，指示两个模型的识别结果以及提供的数据集中的听录。 可以通过切换各种错误类型（包括插入、删除和替换）来查看并排比较的结果。 通过听音频并比较每个列（显示人为标记的听录和两个语音转文本模型的结果）中的识别结果，你可以确定哪个模型符合自己的需求，以及需要在哪些方面进行更多的训练和改进。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [训练模型](how-to-custom-speech-train-model.md)
-* [将模型部署](how-to-custom-speech-deploy-model.md)
+* [部署模型](how-to-custom-speech-deploy-model.md)
 
 ## <a name="additional-resources"></a>其他资源
 
-* [准备和测试你的数据](how-to-custom-speech-test-data.md)
-* [检查你的数据](how-to-custom-speech-inspect-data.md)
+* [准备和测试数据](how-to-custom-speech-test-data.md)
+* [检查数据](how-to-custom-speech-inspect-data.md)

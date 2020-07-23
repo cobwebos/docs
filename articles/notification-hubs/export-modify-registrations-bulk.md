@@ -1,23 +1,25 @@
 ---
-title: 导出和导入大容量中的 Azure 通知中心注册 |Microsoft Docs
+title: 批量导出和导入 Azure 通知中心注册 |Microsoft Docs
 description: 了解如何使用通知中心批量操作支持针对通知中心执行大量操作或导出所有注册。
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: jowargo
-ms.openlocfilehash: d7e38e8eca58c06fc6896887522b320a797fc42e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/18/2019
+ms.openlocfilehash: 8eb03a42f38c0cc7fe82eda6a81d1c8c1213ec74
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575295"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "71212395"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>批量导出和导入 Azure 通知中心注册
 在某些情况下，我们需要在通知中心创建或修改大量的注册。 其中的某些情况是先进行标记更新，再进行批量计算，或者迁移现有的推送实施方案以使用通知中心。
@@ -27,14 +29,14 @@ ms.locfileid: "64575295"
 ## <a name="high-level-flow"></a>概要工作流
 批处理支持旨在支持涉及到数百万个注册的长时间运行的作业。 为了实现这种规模，批处理支持使用 Azure 存储来存储作业详细信息和输出。 执行批量更新操作时，用户需要在 Blob 容器中创建一个文件，其内容是注册更新操作的列表。 启动该作业时，用户需提供输入 Blob 的 URL，以及输出目录（也在 Blob 容器中）的 URL。 启动该作业后，用户可以通过查询启动作业时提供的 URL 位置来检查状态。 特定的作业只能执行特定类型的操作（创建、更新或删除）。 导出操作以类似的方式执行。
 
-## <a name="import"></a>导入
+## <a name="import"></a>Import
 
 ### <a name="set-up"></a>设置
 本部分假设存在以下实体：
 
 - 一个预配的通知中心。
 - 一个 Azure 存储 Blob 容器。
-- 对引用[Azure 存储 NuGet 包](https://www.nuget.org/packages/windowsazure.storage/)并[通知中心 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
+- 对 [Azure 存储 NuGet 包](https://www.nuget.org/packages/windowsazure.storage/)和[通知中心 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)的引用。
 
 ### <a name="create-input-file-and-store-it-in-a-blob"></a>创建输入文件并将其存储在 Blob 中
 输入文件包含以 XML 格式序列化的注册列表，每行包含一个注册。 以下代码示例演示如何使用 Azure SDK 序列化注册并将其上传到 Blob 容器。
@@ -259,7 +261,7 @@ namespace ConsoleApplication1
 }
 ```
 
-## <a name="export"></a>导出
+## <a name="export"></a>Export
 导出注册的过程类似于导入，但存在以下差别：
 
 - 只需提供输出 URL。

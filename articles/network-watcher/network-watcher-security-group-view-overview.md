@@ -3,31 +3,27 @@ title: Azure 网络观察程序中的安全组视图简介 | Microsoft 文档
 description: 此页概述了网络观察程序安全视图功能
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: ad27ab85-9d84-4759-b2b9-e861ef8ea8d8
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
-ms.author: kumud
-ms.openlocfilehash: ed0ad244a758b92f5ccba5785184190b030c306c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.author: damendo
+ms.openlocfilehash: 18619cc0f7a21a39d0802575c484c68c5fa1a624
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722591"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76840751"
 ---
-# <a name="introduction-to-network-security-group-view-in-azure-network-watcher"></a>Azure 网络观察程序中的网络安全组视图简介 | Microsoft 文档
+# <a name="introduction-to-effective-security-rules-view-in-azure-network-watcher"></a>Azure 网络观察程序中的有效安全规则视图简介
 
-网络安全组可以在子网级别或 NIC 级别关联。 在子网级别关联时，网络安全组将应用于子网中的所有 VM 实例。 网络安全组视图针对虚拟机返回在 NIC 和子网级别关联的所有已配置 NSG 和规则，以供深入了解配置。 此外，VM 中的每个 NIC 将返回有效的安全规则。 使用网络安全组视图，可以评估网络漏洞的 VM，如打开端口。 还可以基于[已配置安全规则和已批准安全规则之间的比较](network-watcher-nsg-auditing-powershell.md)，验证网络安全组是否按预期方式工作。
+网络安全组可以在子网级别或 NIC 级别关联。 在子网级别关联时，网络安全组将应用于子网中的所有 VM 实例。 有效安全规则视图针对虚拟机返回在 NIC 和子网级别关联的所有已配置 NSG 和规则，以供深入了解配置。 此外，VM 中的每个 NIC 将返回有效的安全规则。 使用有效安全规则视图，可以评估网络漏洞的 VM，如打开端口。 还可以基于[已配置安全规则和已批准安全规则之间的比较](network-watcher-nsg-auditing-powershell.md)，验证网络安全组是否按预期方式工作。
 
 更多扩展用例在安全合规性和审核方面。 在组织中可以定义一组规范性安全规则作为安全监管模型。 通过将规范性规则与网络中每个 VM 的有效规则相比较，可以编程方式实现定期合规性审核。
 
-在门户中，规则按生效时间、子网、网络接口和默认值划分。 这会提供一个应用于虚拟机的规则的简单视图。 无论哪个标签页，提供的下载按钮均可将所有安全规则轻松地转换为 CSV 文件。
+在门户中，会为每个网络接口显示规则，并按入站和出站对规则分组。 这会提供一个应用于虚拟机的规则的简单视图。 无论哪个标签页，提供的下载按钮均可将所有安全规则轻松地转换为 CSV 文件。
 
 ![安全组视图][1]
 

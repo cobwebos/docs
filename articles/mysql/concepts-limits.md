@@ -1,42 +1,28 @@
 ---
-title: Azure Database for MySQL 中的限制
+title: 限制 - Azure Database for MySQL
 description: 本文介绍了 Azure Database for MySQL 中的限制，例如连接数和存储引擎选项。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/6/2018
-ms.openlocfilehash: 9088e9ad98633b46dc3a7f0ee9002a0dd9fc5a55
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
-ms.translationtype: MT
+ms.date: 6/25/2020
+ms.openlocfilehash: c562b8a82ef21e78eccad2c2ed6159251056f4fc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551881"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392686"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的限制
 以下各部分介绍了数据库服务中的容量、存储引擎支持、特权支持、数据操作语句支持和功能限制。 另请参阅适用于 MySQL 数据库引擎的[常规限制](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)。
 
-## <a name="maximum-connections"></a>最大连接数
-每个定价层的最大连接数和 vCore 数如下所示： 
+## <a name="server-parameters"></a>服务器参数
 
-|**定价层**|**vCore(s)**| 最大连接数|
-|---|---|---|
-|基本| 第| 50|
-|基本| 2| 100|
-|常规用途| 2| 300|
-|常规用途| 4| 625|
-|常规用途| 8| 1250|
-|常规用途| 16| 2500|
-|常规用途| 32| 5000|
-|常规用途| 64| 10000|
-|内存优化| 2| 600|
-|内存优化| 4| 1250|
-|内存优化| 8| 2500|
-|内存优化| 16| 5000|
-|内存优化| 32| 10000|
+> [!NOTE]
+> 如果正在查找服务器参数（如和）的最小/最大值 `max_connections` `innodb_buffer_pool_size` ，则此信息已移至 "**[服务器参数](./concepts-server-parameters.md)**" 一文。
 
-当连接数超出限制时，可能会收到以下错误：
-> 错误 1040 (08004)：连接过多
+Azure Database for MySQL 支持优化服务器参数的值。 某些参数的最小值和最大值（例如 `max_connections`、 `join_buffer_size` 、 `query_cache_size` ）由服务器的定价层和 vcore 确定。 有关这些限制的详细信息，请参阅[服务器参数](./concepts-server-parameters.md)。
+
+初始部署时，Azure for MySQL 服务器包含时区信息的系统表，但不填充这些表。 可以通过从 MySQL 命令行或 MySQL Workbench 等工具调用 `mysql.az_load_timezone` 存储过程来填充时区表。 有关如何调用存储过程并设置全局时区或会话级时区，请参阅文章 [Azure 门户](howto-server-parameters.md#working-with-the-time-zone-parameter)或 [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter)。
 
 ## <a name="storage-engine-support"></a>存储引擎支持
 
@@ -56,6 +42,7 @@ ms.locfileid: "65551881"
 - DBA 角色：许多服务器参数和设置可能会无意中导致服务器性能下降或使 DBMS 的 ACID 属性无效。 因此，为了维护产品级别的服务完整性和 SLA，此服务不公开 DBA 角色。 默认用户帐户（在创建新的数据库实例时构造）允许该用户执行托管数据库实例中的大部分 DDL 和 DML 语句。 
 - SUPER 特权：[SUPER 特权](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super)同样也受到限制。
 - DEFINER：需要创建并限制超级权限。 如果使用备份导入数据，请在执行 mysqldump 时手动删除或使用 `--skip-definer` 命令删除 `CREATE DEFINER` 命令。
+
 
 ## <a name="data-manipulation-statement-support"></a>数据操作语句支持
 
@@ -82,7 +69,7 @@ ms.locfileid: "65551881"
 - 只有常规用途和内存优化服务器才支持 VNet 服务终结点。
 
 ### <a name="storage-size"></a>存储大小
-- 请参阅[定价层](concepts-pricing-tiers.md)为每个定价层的存储大小限制。
+- 有关每个定价层的存储大小限制，请参阅[定价层](concepts-pricing-tiers.md)。
 
 ## <a name="current-known-issues"></a>当前已知的问题
 - 建立连接后，MySQL 服务器实例显示错误的服务器版本。 若要获取正确的服务器实例引擎版本，请使用 `select version();` 命令。

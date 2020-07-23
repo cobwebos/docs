@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 8a4012d204b6dafa1233e4ce3d878590120be47d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60640219"
 ---
 # <a name="scale-aspnet-core-signalr-applications-with-azure-signalr-service"></a>使用 Azure SignalR Service 缩放 ASP.NET Core SignalR 应用程序
 
 ## <a name="developing-signalr-apps"></a>开发 SignalR 应用
 
-目前，可以在 Web 应用程序中使用[两个版本](https://docs.microsoft.com/aspnet/core/signalr/version-differences)的 SignalR：SignalR for ASP.NET 和 ASP.NET Core SignalR，后者是最新版本。 Azure SignalR 服务是在 ASP.NET Core SignalR 上构建的 Azure 托管服务。
+目前，可在 Web 应用程序中使用[两个版本](https://docs.microsoft.com/aspnet/core/signalr/version-differences) 的 SignalR：SignalR for ASP.NET 和 ASP.NET Core SignalR（此为最新版）。 Azure SignalR 服务是在 ASP.NET Core SignalR 上构建的 Azure 托管服务。
 
 ASP.NET Core SignalR 是以前版本的重写。 因此，ASP.NET Core SignalR 不与早期的 SignalR 版本后向兼容。 API 和行为不同。 ASP.NET Core SignalR SDK 面向 .NET Standard，因此仍可在 .NET Framework 中使用。 但是，必须改用新的 API（而不是旧的 API）。 如果正在使用 SignalR 并且想要迁移到 ASP.NET Core SignalR 或 Azure SignalR 服务，那么需要更改代码来处理 API 差异。
 
@@ -31,7 +31,7 @@ ASP.NET Core SignalR 是以前版本的重写。 因此，ASP.NET Core SignalR �
 
 使用 Azure SignalR 服务的关键原因之一是其简便性。 借助 Azure SignalR 服务，无需处理性能、可伸缩性、可用性等问题。 已通过 99.9% 服务级别协议解决了这些问题。
 
-此外，通常情况下，WebSocket 是支持实时内容更新的首选技术。 但是，缩放时，负载均衡大量持久性 WebSocket 连接是要解决的复杂问题。 常见解决方案利用：DNS 负载均衡、硬件负载均衡器和软件负载均衡。 Azure SignalR 服务为用户解决此问题。
+此外，通常情况下，WebSocket 是支持实时内容更新的首选技术。 但是，缩放时，负载均衡大量持久性 WebSocket 连接是要解决的复杂问题。 常见解决方案通常利用：DNS 负载均衡、硬件负载均衡器和软件负载均衡。 Azure SignalR 服务为用户解决此问题。
 
 使用它的另一原因可能是因为完全不需要实际托管一个 Web 应用程序。 Web 应用程序的逻辑可利用[无服务器计算](https://azure.microsoft.com/overview/serverless-computing/)。 例如，可能仅通过 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) 触发器按需托管和执行代码。 这种情况可能会很棘手，因为代码仅按需运行，并且不会与客户端维持长久连接。 Azure SignalR 服务可以处理这种情况，因为该服务已为用户管理连接。 有关详细信息，请参阅[如何结合使用 SignalR Service 和 Azure Functions 的概述](signalr-concept-azure-functions.md)。
 

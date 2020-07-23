@@ -1,53 +1,64 @@
 ---
-title: 将 Windows 防火墙数据连接到 Azure Sentinel 预览版 |Microsoft Docs
-description: 了解如何将 Windows 防火墙数据连接到 Azure Sentinel。
+title: 将 Windows 防火墙数据连接到 Azure Sentinel |Microsoft Docs
+description: 启用 Azure Sentinel 中的 Windows 防火墙连接器，以便从安装了 Log Analytics 代理的 Windows 计算机轻松地流式传输防火墙事件。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: 0e41f896-8521-49b8-a244-71c78d469bc3
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
-ms.author: rkarlin
-ms.openlocfilehash: 9388e267c52ef53b59aacad844e964d3cfeb13d7
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.date: 09/23/2019
+ms.author: yelevin
+ms.openlocfilehash: d33ba0dbb62cd7206829ed9ae580ea2aa3334bcf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233813"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559482"
 ---
 # <a name="connect-windows-firewall"></a>连接 Windows 防火墙
 
-> [!IMPORTANT]
-> Azure Sentinel 当前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-Windows 防火墙连接器，可轻松地连接 Windows 防火墙日志，如果连接到 Azure Sentinel 工作区。 此连接可以查看仪表板、 创建自定义警报和改进的调查。 这为您提供了更详细地了解您组织的网络，并提高你的安全操作功能。  
+
+Windows 防火墙连接器可让你轻松连接到你的 Windows 防火墙日志（如果它们已连接到 Azure Sentinel 工作区）。 此连接使你可以查看仪表板、创建自定义警报和改进调查。 这样，你就可以更深入地了解组织的网络并改善安全操作功能。 解决方案从安装了 Log Analytics 代理的 Windows 计算机中收集 Windows 防火墙事件。 
 
 
 > [!NOTE]
-> 数据将存储在其运行 Azure Sentinel 的工作区的地理位置。
+> - 数据将存储在运行 Azure Sentinel 的工作区的地理位置。
+> - 如果将 Azure Sentinel 和 Azure 安全中心收集到相同的工作区，则无需通过此连接器启用 Windows 防火墙解决方案。 如果仍启用此功能，则不会导致重复的数据。 
 
 ## <a name="enable-the-connector"></a>启用连接器 
 
-1. 在 Azure Sentinel 门户中，选择**数据连接器**，然后单击**Windows 防火墙**磁贴。 
-1. 选择你想要流式传输的数据类型。
-1. 单击“安装”。
-6. 若要使用 Log Analytics 中的 Windows 防火墙相关的架构，搜索**SecurityEvent**。
+1. 在 Azure Sentinel 门户中，选择 "**数据连接器**"，然后单击 " **Windows 防火墙**" 磁贴。 
+1.  如果 Windows 计算机位于 Azure 中：
+    1. 单击 "**在 Azure Windows 虚拟机上安装代理"**。
+    1. 在 "**虚拟机**" 列表中，选择要流式传输到 Azure Sentinel 的 Windows 计算机。 请确保这是一个 Windows VM。
+    1. 在为该 VM 打开的窗口中，单击 "**连接**"。  
+    1. 单击 " **Windows 防火墙连接器**" 窗口中的 "**启用**"。 
+
+2. 如果 Windows 计算机不是 Azure VM：
+    1. 单击 "**在非 Azure 计算机上安装代理"**。
+    1. 在 "**直接代理**" 窗口中，选择 "**下载 windows 代理（64位）** " 或 "**下载 windows 代理（32位）**"。
+    1. 在 Windows 计算机上安装代理。 复制**工作区 ID**、**主密钥**和**辅助密钥**，并在安装过程中出现提示时使用它们。
+
+4. 选择要流式传输的数据类型。
+5. 单击 "**安装解决方案**"。
+6. 若要在 Windows 防火墙 Log Analytics 中使用相关架构，请搜索**SecurityEvent**。
 
 ## <a name="validate-connectivity"></a>验证连接
 
-它可能需要 1-2 20 分钟，直到你的日志开始在 Log Analytics 中显示。 
+可能需要长达20分钟的时间，日志才会开始出现在 Log Analytics 中。 
 
 
 
 ## <a name="next-steps"></a>后续步骤
-在本文档中，您学习了如何将 Windows 防火墙连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[来了解一下你的数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[检测威胁 Azure Sentinel](tutorial-detect-threats.md)。
+本文档介绍了如何将 Windows 防火墙连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
+- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
 

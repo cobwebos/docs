@@ -1,26 +1,25 @@
 ---
-title: SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性| Microsoft Docs
+title: SLES 上 Azure Vm 中的 NFS 的高可用性 |Microsoft Docs
 description: SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: jeconnoc
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/15/2019
-ms.author: sedusch
-ms.openlocfilehash: ed92be0c1968d8f8a931d59d2dadefbbb12f2100
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.date: 03/26/2020
+ms.author: radeltch
+ms.openlocfilehash: 4dce0a675f5841591da00a322b72718964d382ac
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925742"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80348872"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性
 
@@ -95,7 +94,7 @@ NFS 服务器为使用此 NFS 服务器的每个 SAP 系统使用专用的虚拟
 * 探测端口
   * NW1 的端口 61000
   * NW2 的端口 61001
-* 负载均衡规则
+* 负载均衡规则（如果使用基本负载均衡器）
   * NW1 的 2049 TCP
   * NW1 的 2049 UDP
   * NW2 的 2049 TCP
@@ -108,20 +107,20 @@ NFS 服务器为使用此 NFS 服务器的每个 SAP 系统使用专用的虚拟
 ### <a name="deploy-linux-via-azure-template"></a>通过 Azure 模板部署 Linux
 
 Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications 12 的映像，可以用于部署新的虚拟机。
-可以使用 GitHub 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集，等等。请遵照以下步骤部署模板：
+可以使用 GitHub 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集等。按照以下步骤部署模板：
 
 1. 在 Azure 门户中打开 [SAP 文件服务器模板][template-file-server]   
 1. 输入以下参数
    1. 资源前缀  
       输入想要使用的前缀。 此值将用作所要部署的资源的前缀。
    2. SAP 系统计数  
-      输入将使用此文件服务器的 SAP 系统的数目。 这将部署所需数量的前端配置、负载均衡规则、探测端口、磁盘，等等。
+      输入将使用此文件服务器的 SAP 系统的数目。 这将部署所需数量的前端配置、负载均衡规则、探测端口、磁盘等。
    3. OS 类型  
       选择一个 Linux 发行版。 对于本示例，请选择“SLES 12”
    4. 管理员用户名和管理员密码  
       创建可用于登录计算机的新用户。
    5. 子网 ID  
-      如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/&lt;订阅 ID&gt;/resourceGroups/&lt;资源组名称&gt;/providers/Microsoft.Network/virtualNetworks/&lt;虚拟网络名称&gt;/subnets/&lt;子网名称&gt;
+      如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常类似于/subscriptions/** &lt; 订阅 ID &gt; **/ResourceGroups/** &lt; 资源组名称 &gt; **/providers/Microsoft.Network/virtualNetworks/** &lt; 虚拟网络名称 &gt; **/subnets/** &lt; 子网名称 &gt; **
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>通过 Azure 门户手动部署 Linux
 
@@ -137,51 +136,87 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    SLES For SAP Applications 12 SP3 (BYOS)  
    选择前面创建的可用性集  
 1. 向两台虚拟机中为每个 SAP 系统添加一个数据磁盘。
-1. 创建负载均衡器（内部）  
-   1. 创建前端 IP 地址
-      1. NW1 的 IP 地址 10.0.0.4
-         1. 打开负载均衡器，选择前端 IP 池，并单击“添加”
-         1. 输入新前端 IP 池的名称（例如 **nw1-frontend**）
-         1. 将“分配”设置为“静态”并输入 IP 地址（例如 **10.0.0.4**）
-         1. 单击“确定”
-      1. NW2 的 IP 地址 10.0.0.5
-         * 为 NW2 重复上述步骤
-   1. 创建后端池
-      1. 连接到应当作为 NW1 的 NFS 群集的一部分的所有虚拟机的主网络接口
-         1. 打开负载均衡器，单击后端池，并单击“添加”
-         1. 输入新后端池的名称（例如 **nw1-backend**）
-         1. 单击“添加虚拟机”
-         1. 选择前面创建的可用性集
-         1. 选择 NFS 群集的虚拟机
-         1. 单击“确定”
-      1. 连接到应当作为 NW2 的 NFS 群集的一部分的所有虚拟机的主网络接口
-         * 重复上述步骤来为 NW2 创建后端池
-   1. 创建运行状况探测
-      1. NW1 的端口 61000
-         1. 打开负载均衡器，选择运行状况探测，并单击“添加”
-         1. 输入新运行状况探测的名称（例如 **nw1-hp**）
-         1. 选择 TCP 作为协议，选择端口 610**00**，将“间隔”保留为 5，将“不正常阈值”保留为 2
-         1. 单击“确定”
-      1. NW2 的端口 61001
-         * 重复上述步骤来为 NW2 创建运行状况探测
-   1. 负载均衡规则
-      1. NW1 的 2049 TCP
-         1. 打开负载均衡器，选择负载均衡规则，并单击“添加”
-         1. 输入新的负载均衡器规则的名称（例如 **nw1-lb-2049**）
-         1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 **nw1-frontend**）
-         1. 将协议保留为“TCP”，输入端口 **2049**
+1. 创建负载均衡器（内部）。 建议使用[标准负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。  
+   1. 按照以下说明创建标准负载均衡器：
+      1. 创建前端 IP 地址
+         1. NW1 的 IP 地址 10.0.0.4
+            1. 打开负载均衡器，选择前端 IP 池，并单击“添加”
+            1. 输入新前端 IP 池的名称（例如 **nw1-frontend**）
+            1. 将“分配”设置为“静态”并输入 IP 地址（例如 **10.0.0.4**）
+            1. 单击“确定”
+         1. NW2 的 IP 地址 10.0.0.5
+            * 为 NW2 重复上述步骤
+      1. 创建后端池
+         1. 连接到所有虚拟机（这些虚拟机应为 NFS 群集的一部分）的主网络接口
+            1. 打开负载均衡器，单击后端池，并单击“添加”
+            1. 输入新后端池的名称（例如**nw-后端**）
+            1. 选择虚拟网络
+            1. 单击“添加虚拟机”
+            1. 选择 NFS 群集的虚拟机及其 IP 地址。
+            1. 单击“添加”。
+      1. 创建运行状况探测
+         1. NW1 的端口 61000
+            1. 打开负载均衡器，选择运行状况探测，并单击“添加”
+            1. 输入新运行状况探测的名称（例如 **nw1-hp**）
+            1. 选择 TCP 作为协议，选择端口 610**00**，将“间隔”保留为 5，将“不正常阈值”保留为 2
+            1. 单击“确定”
+         1. NW2 的端口 61001
+            * 重复上述步骤来为 NW2 创建运行状况探测
+      1. 负载均衡规则
+         1. 打开负载均衡器，选择 "负载均衡规则"，并单击 "添加"
+         1. 输入新负载均衡器规则的名称（例如**nw1**）
+         1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如**nw1）**。 **nw-后端**和**nw1**）
+         1. 选择“HA 端口”。
          1. 将空闲超时增大到 30 分钟
          1. **确保启用浮动 IP**
          1. 单击“确定”
-      1. NW1 的 2049 UDP
-         * 为 NW1 针对端口 2049 和 UDP 重复上述步骤
-      1. NW2 的 2049 TCP
-         * 为 NW2 针对端口 2049 和 TCP 重复上述步骤
-      1. NW2 的 2049 UDP
-         * 为 NW2 针对端口 2049 和 UDP 重复上述步骤
+         * 重复上述步骤来为 NW2 创建负载均衡规则
+   1. 或者，如果方案需要基本的负载均衡器，请按照以下说明进行操作：
+      1. 创建前端 IP 地址
+         1. NW1 的 IP 地址 10.0.0.4
+            1. 打开负载均衡器，选择前端 IP 池，并单击“添加”
+            1. 输入新前端 IP 池的名称（例如 **nw1-frontend**）
+            1. 将“分配”设置为“静态”并输入 IP 地址（例如 **10.0.0.4**）
+            1. 单击“确定”
+         1. NW2 的 IP 地址 10.0.0.5
+            * 为 NW2 重复上述步骤
+      1. 创建后端池
+         1. 连接到所有虚拟机（这些虚拟机应为 NFS 群集的一部分）的主网络接口
+            1. 打开负载均衡器，单击后端池，并单击“添加”
+            1. 输入新后端池的名称（例如**nw-后端**）
+            1. 单击“添加虚拟机”
+            1. 选择前面创建的可用性集
+            1. 选择 NFS 群集的虚拟机
+            1. 单击“确定”
+      1. 创建运行状况探测
+         1. NW1 的端口 61000
+            1. 打开负载均衡器，选择运行状况探测，并单击“添加”
+            1. 输入新运行状况探测的名称（例如 **nw1-hp**）
+            1. 选择 TCP 作为协议，选择端口 610**00**，将“间隔”保留为 5，将“不正常阈值”保留为 2
+            1. 单击“确定”
+         1. NW2 的端口 61001
+            * 重复上述步骤来为 NW2 创建运行状况探测
+      1. 负载均衡规则
+         1. NW1 的 2049 TCP
+            1. 打开负载均衡器，选择负载均衡规则，并单击“添加”
+            1. 输入新的负载均衡器规则的名称（例如 **nw1-lb-2049**）
+            1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 **nw1-frontend**）
+            1. 将协议保留为“TCP”****，输入端口 **2049**
+            1. 将空闲超时增大到 30 分钟
+            1. **确保启用浮动 IP**
+            1. 单击“确定”
+         1. NW1 的 2049 UDP
+            * 为 NW1 针对端口 2049 和 UDP 重复上述步骤
+         1. NW2 的 2049 TCP
+            * 为 NW2 针对端口 2049 和 TCP 重复上述步骤
+         1. NW2 的 2049 UDP
+            * 为 NW2 针对端口 2049 和 UDP 重复上述步骤
+
+> [!Note]
+> 如果没有公共 IP 地址的 VM 被放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，就不会有出站 Internet 连接，除非执行额外的配置来允许路由到公共终结点。 有关如何实现出站连接的详细信息，请参阅 [SAP 高可用性方案中使用 Azure 标准负载均衡器的虚拟机的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)。  
 
 > [!IMPORTANT]
-> 不要启用 TCP 放置在 Azure 负载均衡器之后的 Azure Vm 上的时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数设置**net.ipv4.tcp_timestamps**到**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
+> 请勿在放置于 Azure 负载均衡器之后的 Azure VM 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数“net.ipv4.tcp_timestamps”设置为“0”。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
 
 ### <a name="create-pacemaker-cluster"></a>创建 Pacemaker 群集
 
@@ -189,7 +224,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 ### <a name="configure-nfs-server"></a>配置 NFS 服务器
 
-以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2。
+以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2  。
 
 1. [A] 设置主机名称解析
 
@@ -215,7 +250,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    sudo mkdir /srv/nfs/
    </code></pre>
 
-1. [A] 安装 drbd 组件
+1. [A] 安装 drbd 组件****
 
    <pre><code>sudo zypper install drbd drbd-kmp-default drbd-utils
    </code></pre>
@@ -239,7 +274,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    sudo sh -c 'echo -e "n\n\n\n\n\nw\n" | fdisk /dev/disk/azure/scsi1/lun1'
    </code></pre>
 
-1. [A] 创建 LVM 配置
+1. [A] 创建 LVM 配置****
 
    列出所有可用的分区
 
@@ -378,25 +413,25 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    sudo drbdadm up <b>NW2</b>-nfs
    </code></pre>
 
-1. [1] 跳过初始同步
+1. [1] 跳过初始同步****
 
    <pre><code>sudo drbdadm new-current-uuid --clear-bitmap <b>NW1</b>-nfs
    sudo drbdadm new-current-uuid --clear-bitmap <b>NW2</b>-nfs
    </code></pre>
 
-1. [1] 设置主节点
+1. [1] 设置主节点****
 
    <pre><code>sudo drbdadm primary --force <b>NW1</b>-nfs
    sudo drbdadm primary --force <b>NW2</b>-nfs
    </code></pre>
 
-1. [1] 等待新的 drbd 设备完成同步
+1. [1] 等待新的 drbd 设备完成同步****
 
    <pre><code>sudo drbdsetup wait-sync-resource NW1-nfs
    sudo drbdsetup wait-sync-resource NW2-nfs
    </code></pre>
 
-1. [1] 在 drbd 设备上创建文件系统
+1. [1] 在 drbd 设备上创建文件系统****
 
    <pre><code>sudo mkfs.xfs /dev/drbd0
    sudo mkdir /srv/nfs/NW1
@@ -427,15 +462,24 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 1. **[A]** 设置 drbd 裂脑检测
 
-   当使用 drbd 将数据从一台主机同步到另一台主机时，可能会发生所谓的裂脑。 裂脑是指两个群集节点都将 drbd 设备提升为主设备并且失去同步的一种情况。虽然它可能很少见，但你仍然希望尽快处理并解决裂脑情况。 因此，在发生裂脑时收到通知非常重要。
+   当使用 drbd 将数据从一台主机同步到另一台主机时，可能会发生所谓的裂脑。 裂脑是这样一种方案：两个群集节点都将 drbd 设备升级为主设备，并使其失去同步。这可能是一种罕见的情况，但仍需要尽快处理和解决拆分大脑。 因此，在发生裂脑时收到通知非常重要。
 
-   请阅读[正式的 drbd 文档](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-split-brain-notification)来了解如何设置裂脑通知。
+   请阅读[正式的 drbd 文档](https://www.linbit.com/drbd-user-guide/users-guide-drbd-8-4/#s-split-brain-notification)来了解如何设置裂脑通知。
 
-   还可以自动从裂脑情况恢复。 有关详细信息，请阅读[裂脑自动恢复策略](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-automatic-split-brain-recovery-configuration)
+   还可以自动从裂脑情况恢复。 有关详细信息，请阅读[裂脑自动恢复策略](https://www.linbit.com/drbd-user-guide/users-guide-drbd-8-4/#s-automatic-split-brain-recovery-configuration)
    
 ### <a name="configure-cluster-framework"></a>配置群集框架
 
 1. **[1]** 为 SAP 系统 NW1 向群集配置中添加 NFS drbd 设备
+
+   > [!IMPORTANT]
+   > 最近的测试表明，由于积压工作 (backlog) 及其仅处理一个连接的限制，netcat 停止响应请求。 netcat 资源停止侦听 Azure 负载均衡器请求，并且浮动 IP 变为不可用。  
+   > 对于现有 Pacemaker 群集，我们过去建议将 netcat 替换为 socat。 当前，我们建议使用 azure-lb 资源代理，它是包 resource-agents 的一部分，具有以下包版本要求：
+   > - 对于 SLES 12 SP4/SP5，版本必须至少为 resource-agents-4.3.018.a7fb5035-3.30.1。  
+   > - 对于 SLES 15/15 SP1，版本必须至少为 resource-agents-4.3.0184.6ee15eb2-4.13.1。  
+   >
+   > 请注意，更改将需要短暂的停机时间。  
+   > 对于现有的 Pacemaker 群集，如果已经按照 [Azure 负载平衡器检测强化](https://www.suse.com/support/kb/doc/?id=7024128)中所述将配置更改为使用 socat，则无需立即切换到 azure-lb 资源代理。
 
    <pre><code>sudo crm configure rsc_defaults resource-stickiness="200"
 
@@ -472,9 +516,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
      IPaddr2 \
      params ip=<b>10.0.0.4</b> cidr_netmask=<b>24</b> op monitor interval=10 timeout=20
    
-   sudo crm configure primitive nc_<b>NW1</b>_nfs \
-     anything \
-     params binfile="/usr/bin/nc" cmdline_options="-l -k <b>61000</b>" op monitor timeout=20s interval=10 depth=0
+   sudo crm configure primitive nc_<b>NW1</b>_nfs azure-lb port=<b>61000</b>
    
    sudo crm configure group g-<b>NW1</b>_nfs \
      fs_<b>NW1</b>_sapmnt exportfs_<b>NW1</b> nc_<b>NW1</b>_nfs vip_<b>NW1</b>_nfs
@@ -511,15 +553,13 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    sudo crm configure primitive exportfs_<b>NW2</b> \
      ocf:heartbeat:exportfs \
      params directory="/srv/nfs/<b>NW2</b>" \
-     options="rw,no_root_squash" clientspec="*" fsid=2 wait_for_leasetime_on_stop=true op monitor interval="30s"
+     options="rw,no_root_squash,crossmnt" clientspec="*" fsid=2 wait_for_leasetime_on_stop=true op monitor interval="30s"
    
    sudo crm configure primitive vip_<b>NW2</b>_nfs \
      IPaddr2 \
      params ip=<b>10.0.0.5</b> cidr_netmask=<b>24</b> op monitor interval=10 timeout=20
    
-   sudo crm configure primitive nc_<b>NW2</b>_nfs \
-     anything \
-     params binfile="/usr/bin/nc" cmdline_options="-l -k <b>61001</b>" op monitor timeout=20s interval=10 depth=0
+   sudo crm configure primitive nc_<b>NW2</b>_nfs azure-lb port=<b>61001</b>
    
    sudo crm configure group g-<b>NW2</b>_nfs \
      fs_<b>NW2</b>_sapmnt exportfs_<b>NW2</b> nc_<b>NW2</b>_nfs vip_<b>NW2</b>_nfs
@@ -530,6 +570,8 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    sudo crm configure colocation col-<b>NW2</b>_nfs_on_drbd inf: \
      g-<b>NW2</b>_nfs ms-drbd_<b>NW2</b>_nfs:Master
    </code></pre>
+
+   `crossmnt`群集资源中的选项在 `exportfs` 文档中提供，以便与较旧的 SLES 版本向后兼容。  
 
 1. **[1]** 禁用维护模式
    
@@ -542,5 +584,4 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 * [适用于 SAP 的 Azure 虚拟机规划和实施][planning-guide]
 * [适用于 SAP 的 Azure 虚拟机部署][deployment-guide]
 * [适用于 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
-* 若要了解如何建立高可用性以及针对 Azure 上的 SAP HANA（大型实例）规划灾难恢复，请参阅 [Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md)。
 * 若要了解如何在 Azure VM 上建立 SAP HANA 高可用性以及规划灾难恢复，请参阅 [Azure 虚拟机 (VM) 上的 SAP HANA 高可用性][sap-hana-ha]

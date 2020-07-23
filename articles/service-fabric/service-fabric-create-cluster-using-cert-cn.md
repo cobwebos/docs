@@ -1,25 +1,14 @@
 ---
-title: 创建使用证书公用名称的 Azure Service Fabric 群集 | Microsoft Docs
+title: 使用证书公用名称创建群集
 description: 了解如何基于模板创建使用证书公用名称的 Service Fabric 群集。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 04/24/2018
-ms.author: aljo
-ms.openlocfilehash: bf28ddf7facbc742a107f67f3d7e81eca5a5c950
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/06/2019
+ms.openlocfilehash: c852b40d35f936753d3c16420159676da239b6c6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60394262"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246429"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>部署使用证书公用名称而非指纹的 Service Fabric 群集
 两个证书不能具有相同的指纹，具有相同的指纹会使群集证书滚动更新或管理变得困难。 但是，多个证书可以具有相同的公用名称或使用者。  使用证书公用名称会使群集的证书管理更加简单。 本文介绍了如何部署 Service Fabric 群集来使用证书公用名称而非证书指纹。
@@ -28,7 +17,7 @@ ms.locfileid: "60394262"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-a-certificate"></a>获取证书
-首先，从[证书颁发机构 (CA)](https://wikipedia.org/wiki/Certificate_authority) 获取证书。  证书的公用名称应该是你拥有的自定义域，并从域注册机构购买。 例如，“azureservicefabricbestpractices.com”；非 Microsoft 员工无法为 MS 域预配证书，因此不能将 LB 或流量管理器的 DNS 名称用作证书的公用名称，如果要使自定义域可在 Azure 中解析，则需要预配 [Azure DNS 区域](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)。 如果希望门户反映群集的自定义域别名，还需要将自己的自定义域声明为群集的“managementEndpoint”。
+首先，从[证书颁发机构 (CA)](https://wikipedia.org/wiki/Certificate_authority) 获取证书。  证书的公用名称应该是你拥有的自定义域，并从域注册机构购买。 例如，“azureservicefabricbestpractices.com”；非 Microsoft 员工无法为 MS 域预配证书，因此不能将 LB 或流量管理器的 DNS 名称用作证书的公用名称，如果要使自定义域可在 Azure 中解析，则需要预配 [Azure DNS 区域](../dns/dns-delegate-domain-azure-dns.md)。 如果希望门户反映群集的自定义域别名，还需要将自己的自定义域声明为群集的“managementEndpoint”。
 
 对于测试用途，可以从免费或开放的证书颁发机构获取由 CA 签名的证书。
 
@@ -62,7 +51,7 @@ $resourceId = $newKeyVault.ResourceId
 
 # Add the certificate to the key vault.
 $PasswordSec = ConvertTo-SecureString -String $Password -AsPlainText -Force
-$KVSecret = Import-AzureKeyVaultCertificate -VaultName $vaultName -Name $certName  -FilePath $certFilename -Password $PasswordSec
+$KVSecret = Import-AzKeyVaultCertificate -VaultName $vaultName -Name $certName  -FilePath $certFilename -Password $PasswordSec
 
 $CertificateThumbprint = $KVSecret.Thumbprint
 $CertificateURL = $KVSecret.SecretId
@@ -84,12 +73,18 @@ Write-Host "Common Name              :"  $CommName
 "certificateCommonName": {
     "value": "myclustername.southcentralus.cloudapp.azure.com"
 },
+"certificateIssuerThumbprint": {
+    "value": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+},
 ```
 
 接下来，将 *certificateCommonName*、*sourceVaultValue* 和 *certificateUrlValue* 参数值设置为前面的脚本返回的值：
 ```json
 "certificateCommonName": {
     "value": "myclustername.southcentralus.cloudapp.azure.com"
+},
+"certificateIssuerThumbprint": {
+    "value": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 },
 "sourceVaultValue": {
   "value": "/subscriptions/<subscription>/resourceGroups/testvaultgroup/providers/Microsoft.KeyVault/vaults/testvault"
@@ -110,6 +105,12 @@ Write-Host "Common Name              :"  $CommName
         "description": "Certificate Commonname"
       }
     },
+    "certificateIssuerThumbprint": {
+      "type": "string",
+      "metadata": {
+        "description": "Certificate Authority Issuer Thumpbrint for Commonname cert"
+      }
+    },
     ```
 
     另请考虑删除 *certificateThumbprint*，可能不再需要此项。
@@ -119,7 +120,7 @@ Write-Host "Common Name              :"  $CommName
     "sfrpApiVersion": "2018-02-01",
     ```
 
-3. 在 **Microsoft.Compute/virtualMachineScaleSets** 资源中，更新虚拟机扩展以在证书设置中使用公用名称而非指纹。  在“virtualMachineProfile”->“extensionProfile”->“扩展”->“属性”->“设置”->“证书”中，添加 
+3. 在 **Microsoft.Compute/virtualMachineScaleSets** 资源中，更新虚拟机扩展以在证书设置中使用公用名称而非指纹。  在**virtualMachineProfile** -> **extensionProfile** -> **扩展** -> **属性** -> **设置** -> **证书**中，添加 
     ```json
        "commonNames": [
         "[parameters('certificateCommonName')]"
@@ -215,8 +216,5 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -TemplateParameterFi
 * 了解如何[滚动更新群集证书](service-fabric-cluster-rollover-cert-cn.md)
 * [更新和管理群集证书](service-fabric-cluster-security-update-certs-azure.md)
 * 通过[将群集从证书指纹更改为通用名称](service-fabric-cluster-change-cert-thumbprint-to-cn.md)来简化证书管理
-
-[image1]: .\media\service-fabric-cluster-change-cert-thumbprint-to-cn\PortalViewTemplates.png
-ic-cluster-change-cert-thumbprint-to-cn.md))
 
 [image1]: .\media\service-fabric-cluster-change-cert-thumbprint-to-cn\PortalViewTemplates.png

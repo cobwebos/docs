@@ -1,20 +1,16 @@
 ---
 title: 教程 - 通过 Azure PowerShell 使用发布/订阅频道和主题筛选器更新零售库存分类 | Microsoft Docs
 description: 在本教程中，你将了解如何从主题和订阅发送和接收消息，以及如何使用 Azure PowerShell 添加和使用筛选器规则
-services: service-bus-messaging
 author: spelluru
-manager: timlt
 ms.author: spelluru
-ms.date: 09/22/2018
+ms.date: 06/23/2020
 ms.topic: tutorial
-ms.service: service-bus-messaging
-ms.custom: mvc
-ms.openlocfilehash: 3d1e1491ad045eba88ca7bbe54a1acb38199f7d7
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: b1c6390d66d01bbe91500fc3878ad138eea208cc
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65987920"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341615"
 ---
 # <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>教程：使用 PowerShell 和主题/订阅更新库存
 
@@ -22,7 +18,7 @@ Microsoft Azure 服务总线是一种多租户云消息传送服务，可以在�
 
 本教程展示了如何使用 PowerShell 创建消息命名空间并在该命名空间中创建队列，以及如何获取该命名空间上的授权凭据，以便将消息发送到服务总线队列及从中接收消息。 然后该过程展示了如何使用 [.NET Standard 库](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)从此队列发送和接收消息。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 使用 Azure PowerShell 创建一个服务总线主题和一个或多个对该主题的订阅
 > * 使用 PowerShell 添加主题筛选器
@@ -95,7 +91,7 @@ Get-AzServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-nam
 
 ## <a name="send-and-receive-messages"></a>发送和接收消息
 
-创建命名空间和队列并且拥有所需的凭据后，便可以发送和接收消息。 可以观察[此 GitHub 示例文件夹](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveQuickStart)中的代码。
+创建命名空间和队列并且拥有所需的凭据后，便可以发送和接收消息。 可以在[此 GitHub 示例文件夹](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveQuickStart)中检查代码。
 
 若要运行此代码，请执行以下操作：
 
@@ -275,7 +271,7 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已使用 Azure PowerShell 预配了资源，然后从服务总线主题及其订阅发送并接收了消息。 你已了解如何：
+在本教程中，你已使用 Azure PowerShell 预配了资源，然后从服务总线主题及其订阅发送并接收了消息。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 Azure 门户创建一个服务总线主题和一个或多个对该主题的订阅

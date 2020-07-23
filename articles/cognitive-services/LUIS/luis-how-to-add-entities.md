@@ -1,197 +1,221 @@
 ---
-title: 添加实体
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: 创建实体来从用户语言理解 (LUIS) 应用中的查询文本中提取关键数据。
+title: 添加实体 - LUIS
+description: 创建实体，以便从语言理解 (LUIS) 应用的用户话语中提取关键数据。 提取的实体数据由客户端应用程序用来 fullfil 客户请求。
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 04/01/2019
+ms.topic: how-to
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 241e89ac7fa78184e7c55f9e8065e1534cea9143
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 61e53e6110e545d253dae81e94f8738ee17c4141
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148733"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344469"
 ---
-# <a name="create-entities-without-utterances"></a>创建不包含话语的实体
+# <a name="add-entities-to-extract-data"></a>添加实体以提取数据
 
-实体表示要提取的话语中的字词或短语。 实体表示包括一系列类似对象 （位置、 内容、 人员、 事件或概念） 的类。 实体描述与意向相关的信息，它们有时对于应用执行任务至关重要。 （之前或之后） 中添加查询文本转意向或间隔时，可以创建实体添加到意向的语音样本。
+创建实体，以便从语言理解 (LUIS) 应用的用户话语中提取关键数据。 你的客户端应用程序使用提取的实体数据来 fullfil 客户请求。
 
-可在 LUIS 应用中通过“实体”页上的“实体列表”来编辑或删除实体。 LUIS 提供两种主要的实体类型：[预生成实体](luis-reference-prebuilt-entities.md)和自己的[自定义实体](luis-concept-entity-types.md#types-of-entities)。
+实体表示要提取的话语中的字词或短语。 实体描述与意向相关的信息，它们有时对于应用执行任务至关重要。 在将示例查询文本添加到意向或从（之前或之后）将示例查询文本添加到目的时，可以创建实体。
 
-创建机器学习的内容的实体时，需要将标记该实体中的所有意图的所有示例查询文本中。
+## <a name="plan-entities-then-create-and-label"></a>规划实体，然后创建并标记
 
-<a name="add-prebuilt-entity"></a>
+可以从示例最谈话创建计算机学习实体，也可以从 "**实体**" 页创建。
 
-## <a name="add-a-prebuilt-entity-to-your-app"></a>将预生成的实体添加到您的应用程序
+通常，最佳做法是在门户中创建机器学习实体之前，花费时间规划实体。 然后，从示例查询文本创建机器学习实体，并在子实体中详细了解你当时所了解的功能。 [可以分解实体教程](tutorial-machine-learned-entity.md)演示了如何使用此方法。
 
-添加到应用程序的常见预生成实体为 number 和 datetimeV2。 
+在规划实体的过程中，您可能会知道您需要文本匹配实体（例如预生成实体、正则表达式实体或列表实体）。 你可以从 "**实体**" 页创建它们，然后将它们标记为示例最谈话。
 
-1. 在应用中，从“生成”部分的左侧面板中选择“实体”。
- 
-1. 在“实体”页上，选择“添加预生成实体”。
+标记时，可以标记各个实体，然后生成到父机器学习实体。 或者，您可以从父机器学习实体开始，分解为子实体。
 
-1. 在“添加预生成实体”对话框中，选择 **number** 和 **datetimeV2** 预生成实体。 然后选择“完成”。
+> [!TIP]
+>标记可能指示实体的所有单词，即使在客户端应用程序中提取的单词不会使用。
 
-    ![“添加预生成实体”对话框屏幕截图](./media/add-entities/list-of-prebuilt-entities.png)
+## <a name="when-to-create-an-entity"></a>何时创建实体
 
-<a name="add-simple-entities"></a>
+规划实体后，应创建机器学习实体和子实体。 这可能需要添加预先生成的实体或文本匹配实体，以便为你的机器学习实体提供功能。 这一切应在标记前完成。
 
-## <a name="add-simple-entities-for-single-concepts"></a>添加单个概念的简单实体
+开始标记示例最谈话后，可以创建计算机学习的实体或扩展列表实体。
 
-简单实体描述单一概念。 使用以下过程创建一个实体，用于提取“人力资源”或“运营”等公司部门名称。   
+使用下表来了解如何在应用中创建或添加每个实体类型。
 
-1. 在应用中选择“生成”部分，在左侧面板中选择“实体”，然后选择“创建新实体”。
+|实体类型|在 LUIS 门户中的何处创建实体|
+|--|--|
+|机器学习实体|实体或意向详细信息|
+|列表实体|实体或意向详细信息|
+|正则表达式实体|实体|
+|Pattern.any 实体|实体|
+|预生成实体|实体|
+|预生成的域实体|实体|
 
-1. 在弹出对话框中，在“实体名称”框中键入 `Location`，从“实体类型”列表选择“简单”，然后选择“完成”。
+您可以从 "**实体**" 页创建所有实体，也可以在 "**目的详细信息**" 页上的示例查询文本中，创建一些实体作为标签实体的一部分。 您只能在 "**目的详细信息**" 页的示例查询文本中_标记_实体。
 
-    创建此实体后，转到包含该实体的示例话语所在的所有意向。 选择示例话语中的文本，并将文本标记为实体。 
 
-    [短语列表](luis-concept-feature.md)通常用于提升简单实体的信号。
 
-<a name="add-regular-expression-entities"></a>
+## <a name="how-to-create-a-new-custom-entity"></a>如何创建新的自定义实体
 
-## <a name="add-regular-expression-entities-for-highly-structured-concepts"></a>添加高度结构化概念的正则表达式实体
+此过程适用于计算机学习的实体、列表实体和正则表达式实体。
 
-基于提供的正则表达式，正则表达式实体用来从话语中拉取数据。 
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
+1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
+1. 选择 "**实体**" 页。
+1. 选择 " **+ 创建**"，然后选择实体类型。
+1. 继续配置实体，并在完成后选择 "**创建**"。
 
-1. 在应用中，从左侧导航栏选择“实体”，然后选择“创建新实体”。
+## <a name="create-a-machine-learned-entity"></a>创建计算机学习实体
 
-1. 在弹出对话框中，在“实体名称”框中输入 `Human resources form name`，从“实体类型”列表中选择“正则表达式”，输入正则表达式 `hrf-[0-9]{6}`，然后选择“完成”。 
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
+1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
+1. 从 "**生成**" 部分的左侧面板中选择 "**实体**"，然后选择 " **+ 创建**"。
+1. 在 "**创建实体类型**" 对话框中，输入实体的名称并选择 "**计算机**"，然后选择。 若要添加子实体，请选择 "**添加结构**"。 选择“创建”。
 
-    此正则表达式匹配的原义字符`hrf-`，然后使用 6 位数来表示窗体号人力资源窗体。
+    > [!div class="mx-imgBorder"]
+    > ![创建计算机学习实体的屏幕截图。](media/add-entities/machine-learned-entity-with-structure.png)
 
-<a name="add-composite-entities"></a>
+1. 在 "**添加子实体**" 中，通过选择 "父实体" 行中的来添加子实体 **+** 。
 
-## <a name="add-composite-entities-to-group-into-a-parent-child-relationship"></a>添加复合实体分组到父-子关系
+    > [!div class="mx-imgBorder"]
+    > ![添加子实体的屏幕截图。](media/add-entities/machine-learned-entity-with-subentities.png)
 
-可以通过创建复合实体定义不同类型的实体之间的关系。 在以下示例中，实体包含正则表达式和预生成的名称实体。  
+1. 选择 "**创建**" 以完成创建进程。
 
-在话语 `Send hrf-123456 to John Smith` 中，文本 `hrf-123456` 将与人力资源[正则表达式](#add-regular-expression-entities)匹配，并提取包含预生成实体 personName 的 `John Smith`。 每个实体是更大父实体的一部分。 
+## <a name="add-a-feature-to-a-machine-learned-entity"></a>向计算机学习的实体添加功能
 
-1. 在应用中，从“生成”部分的左侧导航栏中选择“实体”，然后选择“添加预生成实体”。
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
+1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
+1. 从 "**生成**" 部分的左侧面板中选择 "**实体**"，然后选择 "已学习的计算机" 实体。
+1. 通过在实体或子实体行上选择 " **+ 添加功能**" 来添加功能。
+1. 从现有实体和短语列表中进行选择。
+1. 如果在找到该功能的情况下只应提取实体，请 `*` 为该功能选择星号。
 
-1. 添加预生成实体 **PersonName**。 有关说明，请参阅[添加预生成实体](#add-prebuilt-entity)。 
+    > [!div class="mx-imgBorder"]
+    > ![向实体添加功能的屏幕截图。](media/add-entities/machine-learned-entity-schema-with-features.png)
 
-1. 从左侧导航栏选择“实体”，然后选择“创建新实体”。
+## <a name="create-a-regular-expression-entity"></a>创建正则表达式实体
 
-1. 在弹出对话框的“实体名称”框中输入 `SendHrForm`，然后从“实体类型”列表选择“复合”。
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
+1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
+1. 从 "**生成**" 部分的左侧面板中选择 "**实体**"，然后选择 " **+ 创建**"。
 
-1. 选择“添加子级”，添加新的子级。
+1. 在 "**创建实体类型**" 对话框中，输入实体的名称**并选择 "正则**表达式"，在 " **regex** " 字段中输入正则表达式，然后选择 "**创建**"。
 
-1. 在“子级 #1”中，从列表选择实体 number。
+    > [!div class="mx-imgBorder"]
+    > ![创建正则表达式实体的屏幕截图。](media/add-entities/add-regular-expression-entity.png)
 
-1. 在“子级 #2”中，从列表中选择实体“人力资源表单名称”。 
-
-1. 选择“完成”。
-
-<a name="add-pattern-any-entities"></a>
-
-## <a name="add-patternany-entities-to-capture-free-form-entities"></a>添加 Pattern.any 捕获自由格式的实体的实体
-
-[Pattern.any](luis-concept-entity-types.md) 实体仅在[模式](luis-how-to-model-intent-pattern.md)中有效，在意向中无效。 此类实体有助于 LUIS 查找不同长度和字词选择的实体结尾。 由于此实体会在模式中使用，因此，LUIS 可识别实体末尾在话语模板中的位置。
-
-如果应用包含 `FindHumanResourcesForm` 意向，则提取的表单标题可能会干扰意向预测。 若要澄清表单标题中的字词，请在模式中使用 Pattern.any。 LUIS 预测会从话语开始。 首先，针对实体检查话语并进行匹配，找到实体时，接着检查和匹配模式。 
-
-在话语 `Where is Request relocation from employee new to the company on the server?` 中，表单标题比较棘手，因为标题结束和其他话语开始的位置不是很明显。 标题可以是任意顺序的字词，包括单字、有标点的复杂短语和无意义排序的字词。 通过模式，可以在可提取完整、确切实体的位置创建实体。 找到标题后，预测 `FindHumanResourcesForm` 意向，因为这是模式的意向。
-
-1. 在“生成”部分的左侧面板中选择“实体”，然后选择“创建新实体”。
-
-1. 在“添加实体”对话框的“实体名称”框中输入 `HumanResourcesFormTitle`，然后选择“Pattern.any”作为“实体类型”。
-
-    若要使用 pattern.any 实体，请在“模式”页的“提升应用性能”部分中，通过正确的大括号语法（例如 `Where is **{HumanResourcesFormTitle}** on the server?`）添加模式。
-
-    如果发现模式在包含 Pattern.any 时错误提取实体，请使用[显式列表](luis-concept-patterns.md#explicit-lists)来更正此问题。 
-
-<a name="add-a-role-to-pattern-based-entity"></a>
-
-## <a name="add-a-role-to-distinguish-different-contexts"></a>添加角色来区分不同的上下文
-
-角色是基于上下文在命名子类型。 它现已推出包括预先生成和机器学习实体的所有实体。 
-
-为角色的语法是**`{Entityname:Rolename}`** 其中实体名称后跟一个冒号，则角色名称。 例如，`Move {personName} from {LocationUsingRoles:Origin} to {LocationUsingRoles:Destination}`。
-
-1. 在“生成”部分的左侧面板中选择“实体”。
-
-1. 选择“创建新实体”。 输入 `LocationUsingRoles` 名称。 选择类型“简单”，然后选择“完成”。 
-
-1. 在左侧面板中选择“实体”，然后选择在前一步骤中创建的新实体 **LocationUsingRoles**。
-
-1. 在“角色名称”文本框中，输入角色 `Origin` 的名称并按 Enter。 添加 `Destination` 的第二个角色名。 
-
-    ![将 Origin 角色添加到 Location 实体的屏幕截图](./media/add-entities/roles-enter-role-name-text.png)
 
 <a name="add-list-entities"></a>
 
-## <a name="add-list-entities-for-exact-matches"></a>添加列表实体的完全匹配项
+## <a name="create-a-list-entity"></a>创建列表实体
 
-列表实体表示一组固定、封闭的相关单词。 
+列表实体表示一组固定、封闭的相关单词。 当您作为作者，可以更改列表时，LUIS 不会扩大或缩小列表。 你还可以使用[列表的 json 格式](reference-entity-list.md#example-json-to-import-into-list-entity)导入到现有的列表实体。
 
-对于人力资源应用，可以创建所有部门以及任何部门同义词的列表。 创建实体时，不需了解所有值。 可以在查看真实的用户表述后使用同义词添加更多值。
+下面的列表演示规范名称和同义词。
 
-1. 在“生成”部分的左侧面板中选择“实体”，然后选择“创建新实体”。
+|颜色列表项名称|颜色-同义词|
+|--|--|
+|Red|crimson、血、apple、消防引擎|
+|蓝色|天空，钴|
+|绿色|王，酸橙色|
 
-1. 在“添加实体”对话框中，在“实体名称”框中键入 `Department`，然后选择“列表”作为“试题类型”。 选择“完成”。
-  
-1. 通过此列表实体页可以添加规范化名称。 在“值”文本中，输入列表中的某个部门名称（例如 `HumanResources`），然后按键盘上的 Enter。 
+使用过程来创建一个列表实体。 创建列表实体后，不需要在意向中标记示例最谈话。 使用精确文本匹配列表项和同义词。
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
+1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
+1. 从 "**生成**" 部分的左侧面板中选择 "**实体**"，然后选择 " **+ 创建**"。
 
-1. 在规范化值的右侧输入同义词，并在输入每个项后按键盘上的 Enter。
+1. 在 "**创建实体类型**" 对话框中，输入实体的名称，如 `Colors` 和 "选择**列表**"。
+1. 在 "**创建列表实体**" 对话框中的 "**添加新**子列表 ..." 中，输入列表项名称（如 `Green` ），然后添加同义词。
 
-1. 如果想要更多适用于此列表的规范化项，请选择“建议”，查看[语义字典](luis-glossary.md#semantic-dictionary)的选项。
+    > [!div class="mx-imgBorder"]
+    > ![在实体详细信息页中创建颜色列表作为列表实体。](media/how-to-add-entities/create-list-entity-of-colors.png)
 
-    ![选择推荐功能以查看选项的屏幕截图](./media/add-entities/hr-list-2.png)
+1. 添加完列表项和同义词后，选择 "**创建**"。
 
+    对应用进行一组更改后，请记住**训练**应用。 请不要在一次更改后对应用进行训练。
 
-1. 在建议列表中选择一项添加为规范化值，或者选择“全部添加”添加所有项。 
-    可使用以下 JSON 格式将值导入现有列表实体：
+    > [!NOTE]
+    > 此过程演示如何从 "**意向详细信息**" 页中的示例查询文本创建并标记列表实体。 你还可以从 "**实体**" 页创建相同的实体。
 
-    ```JSON
-    [
-        {
-            "canonicalForm": "Blue",
-            "list": [
-                "navy",
-                "royal",
-                "baby"
-            ]
-        },
-        {
-            "canonicalForm": "Green",
-            "list": [
-                "kelly",
-                "forest",
-                "avacado"
-            ]
-        }
-    ]  
-    ```
+## <a name="add-a-role-for-an-entity"></a>为实体添加角色
 
-<a name="change-entity-type"></a>
+角色是基于上下文的实体的命名子类型。
 
-## <a name="do-not-change-entity-type"></a>不能更改实体类型
+### <a name="add-a-role-to-distinguish-different-contexts"></a>添加角色以区分不同的上下文
 
-LUIS 不允许更改实体类型，因为它不知道构造该实体要添加或删除的内容。 若要更改类型，最好创建一个名称稍微不同的、类型正确的新实体。 实体创建后，在每句话语中，删除旧标记实体名称并添加新的实体名称。 重新标记所有话语后，即可删除旧实体。 
+在下面的查询文本中，有两个位置，每个位置都由围绕它的单词（例如和）在语义上指定 `to` `from` ：
 
+`Pick up the package from Seattle and deliver to New York City.`
+
+在此过程中，将 `origin` 和 `destination` 角色添加到预生成的 geographyV2 实体。
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
+1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
+1. 在“生成”部分的左侧面板中选择“实体”********。
+
+1. 选择 " **+ 添加预生成实体**"。 选择**geographyV2** ，然后选择 "**完成**"。 这会将预生成的实体添加到应用。
+
+    如果发现模式在包含 Pattern.any 时错误提取实体，请使用[显式列表](reference-pattern-syntax.md#explicit-lists)来更正此问题。
+
+1. 从实体的 "**实体**" 页列表中选择新添加的 "预生成的 geographyV2" 实体。
+1. 若要添加新的角色，请选择 " **+** 下一步"，**不添加任何角色**。
+1. 在 "**类型角色 ...** " 文本框中，输入角色的名称， `Origin` 然后输入。 添加第二个角色名称， `Destination` 然后输入。
+
+    > [!div class="mx-imgBorder"]
+    > ![将 Origin 角色添加到 Location 实体的屏幕截图](media/how-to-add-entities//add-role-to-prebuilt-geographyv2-entity.png)
+
+    该角色将添加到预生成的实体中，但不会添加到使用该实体的任何最谈话。
+
+### <a name="label-text-with-a-role-in-an-example-utterance"></a>使用查询文本中的角色标签文本
+
+> [!TIP]
+> 可以通过使用机器学习实体的子实体标记来替换角色。
+
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
+1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
+1. 请参阅意向详细信息页，其中包含使用角色的示例最谈话。
+1. 若要用角色标记，请选择示例查询文本中的实体标签（文本下的实线），然后从下拉列表中选择 "**在实体窗格中查看**"。
+
+    > [!div class="mx-imgBorder"]
+    > ![在实体调色板中选择视图的屏幕截图](media/add-entities/view-in-entity-pane.png)
+
+    将在右侧打开实体调色板。
+
+1. 选择实体，然后前往调色板底部，选择 "角色"。
+
+    > [!div class="mx-imgBorder"]
+    > ![在实体调色板中选择视图的屏幕截图](media/add-entities/select-role-in-entity-palette.png)
+
+<a name="add-pattern-any-entities"></a>
+<a name="add-a-patternany-entity"></a>
 <a name="create-a-pattern-from-an-utterance"></a>
 
-## <a name="create-a-pattern-from-an-example-utterance"></a>创建示例查询文本从一种模式
+## <a name="create-a-patternany-entity"></a>创建模式。任何实体
 
-请参阅[在意向或实体页上通过现有表述添加模式](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page)。
+**模式。任何**实体仅适用于[模式](luis-how-to-model-intent-pattern.md)。
 
-## <a name="train-your-app-after-changing-model-with-entities"></a>在对模型进行实体更改后对应用进行定型
 
-添加、编辑或删除实体后，请针对更改来[定型](luis-how-to-train.md)和[发布](luis-how-to-publish-app.md)应用以影响终结点查询。 
+## <a name="do-not-change-entity-type"></a>不要更改实体类型
+
+LUIS 不允许更改实体类型，因为它不知道构造该实体要添加或删除的内容。 若要更改类型，最好创建一个名称稍微不同的、类型正确的新实体。 实体创建后，在每句话语中，删除旧标记实体名称并添加新的实体名称。 重新标记所有话语后，即可删除旧实体。
+
 
 ## <a name="next-steps"></a>后续步骤
 
-有关预生成实体的详细信息，请参阅 [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) 项目。 
+> [!div class="nextstepaction"]
+> [使用预构建的模型](howto-add-prebuilt-models.md)
 
-有关实体在 JSON 终结点查询响应中的显示方式的信息，请参阅[数据提取](luis-concept-data-extraction.md)
+了解详细信息：
+* 如何[定型](luis-how-to-train.md)
+* 如何[测试](luis-interactive-test.md)
+* 如何[发布](luis-how-to-publish-app.md)
+* 模式
+    * [概念](luis-concept-patterns.md)
+    * [语法](reference-pattern-syntax.md)
+* [预建实体 GitHub 存储库](https://github.com/Microsoft/Recognizers-Text)
+* [数据提取概念](luis-concept-data-extraction.md)
 
-因为已添加意向、话语和实体，所以有了基本的 LUIS 应用。 了解如何[定型](luis-how-to-train.md)、[测试](luis-interactive-test.md)和[发布](luis-how-to-publish-app.md)应用。
- 
+
+

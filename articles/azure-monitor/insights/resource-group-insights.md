@@ -1,22 +1,17 @@
 ---
 title: Azure Monitor 资源组见解 |Microsoft Docs
 description: 通过 Azure Monitor 了解资源组级别的分布式应用程序和服务的运行状况和性能
-services: azure-monitor
-author: NumberByColors
-manager: carmonm
-ms.service: azure-monitor
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.subservice: ''
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.author: daviste
-ms.openlocfilehash: d5c07e0d4aca8bda42ea9f78a1475ea7bb5861f0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: 06bdedf1dac92a2010718ffd3eb5c6e43bb51e6c
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62119410"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798120"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>使用 Azure Monitor（预览版）监视资源组
 
@@ -59,13 +54,13 @@ ms.locfileid: "62119410"
 
 如果发现应用程序运行缓慢或用户报告了错误，该怎么办？ 搜索所有资源以隔离问题是非常耗时的。
 
-“性能”和“故障”选项卡通过结合使用许多常见资源类型的性能和故障诊断视图，简化了此过程。
+“性能”和“故障”选项卡通过结合使用许多常见资源类型的性能和故障诊断视图，简化了此过程 。
 
 大多数资源类型将打开 Azure Monitor 工作簿模板库。 可以自定义、保存、与团队共享创建的每个工作簿，并在将来重新用于诊断类似问题。
 
 ### <a name="investigate-failures"></a>调查故障
 
-若要测试“故障”选项卡，选择左侧菜单中“调查”下的“故障”。
+若要测试“故障”选项卡，选择左侧菜单中“调查”下的“故障” 。
 
 选择完成后，左侧菜单栏会发生更改，提供新选项。
 
@@ -109,7 +104,7 @@ ms.locfileid: "62119410"
 
  ![Azure Metrics 的性能视图的屏幕截图](./media/resource-group-insights/0012-performance-metrics.png)
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 ### <a name="enabling-access-to-alerts"></a>启用对警报的访问
 
@@ -121,6 +116,6 @@ ms.locfileid: "62119410"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Monitor 工作簿](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
+- [Azure Monitor 工作簿](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
 - [Azure 资源运行状况](https://docs.microsoft.com/azure/service-health/resource-health-overview)
 - [Azure Monitor 警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)

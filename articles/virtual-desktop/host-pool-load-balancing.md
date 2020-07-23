@@ -1,41 +1,48 @@
 ---
-title: Windows 虚拟桌面预览主机池负载平衡方法-Azure
-description: 主机池负载平衡方法为 Windows 虚拟桌面预览环境的。
+title: Windows 虚拟桌面主机池负载平衡-Azure
+description: Windows 虚拟桌面环境的主机池负载平衡方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 8b18224339654c067d8ab9b543fa49a9c7d55ddd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+manager: lizross
+ms.openlocfilehash: 15d50033a1316601dd8c36bd5748c659f4397d66
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60870517"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82612038"
 ---
 # <a name="host-pool-load-balancing-methods"></a>主机池负载均衡方法
 
-Windows 虚拟桌面预览支持两种负载平衡方法。 每个方法确定哪些会话主机将承载当它们连接到资源池中主机的用户的会话。
+>[!IMPORTANT]
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面 2019 秋季版，请参阅[此文](./virtual-desktop-fall-2019/host-pool-load-balancing-2019.md)。
+>
+> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-Windows 虚拟桌面中提供了以下负载平衡方法：
+Windows 虚拟桌面支持两种负载平衡方法。 每个方法都确定在连接到主机池中的资源时，哪些会话主机将承载用户会话。
 
-- 广度优先的负载平衡，可在池中主机会话主机中均匀分配用户会话。
-- 深度优先前负载平衡，可使会话主机与用户会话饱和主机池中。 一旦第一个会话到达其会话的限制阈值，负载均衡器将定向到下一步会话主机上的主机池的任何新用户连接，直到它达到其限制，等等。
+Windows 虚拟桌面提供以下负载平衡方法：
 
-每个主机池只能配置一种类型的负载平衡特定于它。 但是，无论其下面的行为托管池这两个负载平衡方法共享它们中：
+- 广度优先负载平衡允许您在主机池中的会话主机之间均匀分布用户会话。
+- 深度优先负载平衡使你能够在主机池中使用用户会话对会话主机进行饱和。 第一个会话达到其会话限制阈值后，负载均衡器会将与主机池中的下一个会话主机的任何新用户连接定向到该主机，直到它达到其限制等。
 
-- 如果用户已在主机池有会话并重新连接到该会话，负载均衡器将已成功重定向其到其现有会话的会话主机。 即使该会话主机的 AllowNewConnections 属性设置为 False，此行为也适用。
-- 如果用户还没有一个会话中的主机池，则负载均衡器不会考虑会话主机负载平衡期间将其 AllowNewConnections 属性设置为 False。
+每个主机池只能配置特定于其的一种负载平衡。 但是，无论它们位于哪个主机池，这两种负载平衡方法均共享以下行为：
 
-## <a name="breadth-first-load-balancing-method"></a>广度优先的负载平衡方法
+- 如果用户已在主机池中有会话，并重新连接到该会话，则负载均衡器会将其成功地重定向到其现有会话的会话主机。 即使会话主机的 AllowNewConnections 属性设置为 False，此行为也适用。
+- 如果用户还没有在主机池中建立会话，则负载均衡器不会将其 AllowNewConnections 属性设置为 False 的会话主机视为负载平衡。
 
-广度优先的负载平衡方法，可将针对此方案进行优化的用户连接分配。 此方法非常适用于想要为连接到其共用虚拟桌面环境的用户提供最佳体验的组织。
+## <a name="breadth-first-load-balancing-method"></a>广度优先负载平衡方法
 
-广度优先的方法首先查询允许新的连接的会话主机。 方法然后选择具有最小会话主机的会话数。 如果存在等同，该方法在查询中选择第一个会话主机。
+通过广度优先的负载平衡方法，您可以分发用户连接以便针对此方案进行优化。 此方法非常适用于想要为连接到其共用虚拟桌面环境的用户提供最佳体验的组织。
 
-## <a name="depth-first-load-balancing-method"></a>深度优先前负载平衡方法
+广度优先方法首先查询允许新连接的会话主机。 然后，方法选择会话数最少的会话主机。 如果存在关联，则该方法将选择查询中的第一个会话主机。
 
-深度优先前负载平衡方法，可使一个会话主机饱和每次针对此方案进行优化。 此方法非常适合于节约成本的统一组织希望更精细地控制他们已为一个主机池分配的虚拟机的数量。
+## <a name="depth-first-load-balancing-method"></a>深度优先负载平衡方法
 
-深度优先方法首先查询中允许新的连接，并且还未得到超过其最大会话限制会话主机。 该方法则会选择具有会话的最大数目的会话主机。 如果存在等同，该方法在查询中选择第一个会话主机。
+深度优先的负载平衡方法可让你一次为一个会话主机提供饱和，以便针对此方案进行优化。 此方法非常适合需要更精细地控制其为主机池分配的虚拟机数量的注重成本的组织。
+
+深度优先方法首先查询允许新连接的会话主机，而不会超出其最大会话限制。 然后，方法选择具有最多会话的会话主机。 如果存在关联，则该方法将选择查询中的第一个会话主机。

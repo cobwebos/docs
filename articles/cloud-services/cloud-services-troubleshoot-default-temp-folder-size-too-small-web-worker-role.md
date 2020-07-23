@@ -4,31 +4,30 @@ description: 云服务角色的 TEMP 文件夹的空间有限。 本文针对如
 services: cloud-services
 documentationcenter: ''
 author: simonxjx
-manager: felixwu
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 9f2af8dd-2012-4b36-9dd5-19bf6a67e47d
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 7862e4d5c4dd603dacf5784df6c4194392ebc351
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bea9e163e9dde6c42de87048379d663222cb56e9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60652175"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82734614"
 ---
 # <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>云服务 Web 角色/辅助角色的默认 TEMP 文件夹大小太小
-云服务辅助角色或 Web 角色的默认临时目录的最大大小为 100 MB，可能会导致该目录在某个时候被填满。 本文介绍如何避免临时目录空间不足。
+云服务辅助角色或 Web 角色的默认临时目录的最大大小为 100 MB，该目录可能会在某个时候被填满。 本文介绍如何避免临时目录空间不足的问题。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="why-do-i-run-out-of-space"></a>为什么空间会不足？
-标准 Windows 环境变量 TEMP 和 TMP 可供在应用程序中运行的代码使用。 TEMP 和 TMP 都指向一个最大大小为 100 MB 的目录。 此目录中存储的任何数据都不会在云服务的整个生命周期中持久保存；如果云服务中的角色实例被回收，则会清除此目录。
+标准 Windows 环境变量 TEMP 和 TMP 可供应用程序中运行的代码使用。 TEMP 和 TMP 都指向一个最大大小为 100 MB 的目录。 此目录中存储的任何数据都不会在云服务的整个生命周期中持久保存；如果云服务中的角色实例被回收，则会清除此目录。
 
 ## <a name="suggestion-to-fix-the-problem"></a>解决此问题的建议
 实现以下备选方案之一：
@@ -71,8 +70,8 @@ namespace WorkerRole1
 ```
 
 ## <a name="next-steps"></a>后续步骤
-阅读介绍[如何增加 Azure Web 角色 ASP.NET 临时文件夹大小](https://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx)的博客。
+阅读说明 [如何增加 Azure Web 角色 ASP.NET 临时文件夹大小](https://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx)的博客。
 
-查看更多针对云服务的 [故障排除文章](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/vs-azure-tools-debugging-cloud-services-overview.md) 。
+查看更多针对云服务的 [故障排除文章](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-debugging-cloud-services-overview) 。
 
 若要了解如何使用 Azure PaaS 计算机诊断数据对云服务角色问题进行故障排除，请查看 [Kevin Williamson 博客系列](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)。

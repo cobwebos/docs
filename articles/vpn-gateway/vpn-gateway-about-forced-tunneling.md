@@ -1,38 +1,29 @@
 ---
-title: 为 Azure 站点到站点连接配置强制隧道：经典 | Microsoft Docs
+title: Azure VPN 网关：配置强制隧道 - 站点到站点连接：经典
 description: 如何重定向或“强制”所有 Internet 绑定的流量路由回本地位置。
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-service-management
-ms.assetid: 5c0177f1-540c-4474-9b80-f541fa44240b
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 08/01/2017
 ms.author: cherylmc
-ms.openlocfilehash: 0955d95ebfd9e1f72ed1da577bf3520a70b71624
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: fe06257127ff352f68fb27d3507cee0229e31498
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60505999"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77201571"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>使用经典部署模型配置强制隧道
 
-借助强制隧道，可以通过站点到站点 VPN 隧道，将全部 Internet 绑定流量重定向或“强制”返回到本地位置，以进行检查和审核。 这是很多企业 IT 策略的关键安全要求。 没有强制隧道，来自 Azure 中虚拟机的 Internet 绑定流量会始终通过 Azure 网络基础设施直接连接到 Internet。如果没有该选项，则无法对流量进行检查或审核。 未经授权的 Internet 访问可能会导致信息泄漏或其他类型的安全漏洞。
+借助强制隧道，可以通过站点到站点 VPN 隧道，将全部 Internet 绑定流量重定向或“强制”返回到本地位置，以进行检查和审核。 这是很多企业 IT 策略的关键安全要求。 如果没有强制隧道，来自 Azure 中 VM 的 Internet 绑定流量会始终通过 Azure 网络基础设施直接连接到 Internet，而无法选择对流量进行检查或审核。 未经授权的 Internet 访问可能会导致信息泄漏或其他类型的安全漏洞。
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-本文将逐步演示如何配置虚拟网络（使用经典部署模型创建）的强制隧道。 强制隧道可以使用 PowerShell（不通过门户）来配置。 如果想要配置用于资源管理器部署模型的强制隧道，请从下面的下拉列表中选择与资源管理器模型相关的文章：
+本文逐步演示如何配置虚拟网络（使用经典部署模型创建）的强制隧道。 强制隧道可以使用 PowerShell（不通过门户）来配置。 如果想要配置用于资源管理器部署模型的强制隧道，请从下面的下拉列表中选择与资源管理器模型相关的文章：
 
 > [!div class="op_single_selector"]
 > * [PowerShell - 经典](vpn-gateway-about-forced-tunneling.md)
-> * [PowerShell - 资源管理器](vpn-gateway-forced-tunneling-rm.md)
+> * [PowerShell - Resource Manager](vpn-gateway-forced-tunneling-rm.md)
 > 
 > 
 
@@ -46,22 +37,35 @@ ms.locfileid: "60505999"
   * **默认路由：** 直接路由到 Internet。 如果要将数据包发送到不包含在前面两个路由中的专用 IP 地址，数据包会被删除。
 * 随着用户定义路由的发布，可以创建路由表来添加默认路由，然后将路由表关联到 VNet 子网，在这些子网启用强制隧道。
 * 需要在连接到虚拟网络的跨界本地站点中，设置一个“默认站点”。
-* 强制隧道必须关联到具有动态路由 VPN 网关的 VNet，不能是静态网关。
+* 强制隧道必须关联到具有动态路由 VPN 网关（而非静态网关）的 VNet。
 * ExpressRoute 强制隧道不是通过此机制配置的，而是通过 ExpressRoute BGP 对等会话播发默认路由来启用的。 有关详细信息，请参阅 [ExpressRoute 文档](https://azure.microsoft.com/documentation/services/expressroute/)。
 
 ## <a name="configuration-overview"></a>配置概述
-在以下示例中，前端子网没有使用强制隧道。 前端子网中的工作负载可以继续直接接受并响应来自 Internet 的客户请求。 中间层和后端子网会使用强制隧道。 任何从这两个子网到 Internet 的出站连接将通过一个 S2S VPN 隧道重定向或强制返回到本地站点。
+在以下示例中，前端子网没有使用强制隧道。 前端子网中的工作负载可以继续直接接受并响应来自 Internet 的客户请求。 中间层和后端子网会使用强制隧道。 任何从这两个子网到 Internet 的出站连接都会通过一个 S2S VPN 隧道重定向或强制返回到本地站点。
 
 这样，在继续支持所需的多层服务体系结构的同时，可以限制并检查来自虚拟机或 Azure 云服务的 Internet 访问。 如果在虚拟网络中没有面向 Internet 的工作负荷，也能选择对整个虚拟网络应用强制隧道连接。
 
 ![强制隧道](./media/vpn-gateway-about-forced-tunneling/forced-tunnel.png)
 
-## <a name="before-you-begin"></a>开始之前
-在开始配置之前，请确认具有以下各项。
+## <a name="before-you-begin"></a>准备阶段
+在开始配置之前，请确认具有以下各项：
 
 * Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 * 已配置虚拟网络。 
-* 最新版本的 Azure PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview) 。
+* [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
+
+### <a name="to-sign-in"></a>登录
+
+1. 使用提升的权限打开 PowerShell 控制台。 若要切换到服务管理，请使用以下命令：
+
+   ```powershell
+   azure config mode asm
+   ```
+2. 连接到帐户。 使用下面的示例来帮助连接：
+
+   ```powershell
+   Add-AzureAccount
+   ```
 
 ## <a name="configure-forced-tunneling"></a>配置强制隧道
 以下过程帮助您为虚拟网络指定强制隧道。 配置步骤与 VNet 网络配置文件相对应。
@@ -104,7 +108,7 @@ ms.locfileid: "60505999"
     </VirtualNetworkSite>
 ```
 
-在此示例中，虚拟网络“Multitier-VNet”具有三个子网：“Frontend”、“Midtier”和“Backend”子网，具有四个跨界连接：“DefaultSiteHQ”和三个分支。 
+在此示例中，虚拟网络“MultiTier-VNet”具有三个子网：“Frontend”、“Midtier”和“Backend”子网，并具有四个跨界连接：“DefaultSiteHQ”和三个分支。 
 
 以下步骤将“DefaultSiteHQ”设置为使用强制隧道的默认站点连接，并将中间层和后端子网配置为使用强制隧道。
 

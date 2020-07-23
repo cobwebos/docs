@@ -1,26 +1,19 @@
 ---
-title: Azure CLI 脚本示例 - 创建应用并使用 FTP 部署文件 | Microsoft Docs
-description: Azure CLI 脚本示例 - 创建应用服务应用并使用 FTP 部署文件
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI：使用 FTP 部署应用文件
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 此示例演示如何使用 FTP 创建应用和部署文件。
+author: msangapu-msft
 tags: azure-service-management
-ms.service: app-service-web
-ms.workload: web
 ms.devlang: azurecli
-ms.tgt_pltfrm: sample
 ms.topic: sample
 ms.date: 12/12/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 7bca306911dc72a2f8ec31d2ac80f99b4925c9fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: mvc, seodec18
+ms.openlocfilehash: ccef4443661f9227163b2bbe9cd8a6475f856caa
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136810"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044878"
 ---
 # <a name="create-an-app-service-app-and-deploy-files-with-ftp-using-azure-cli"></a>使用 Azure CLI 创建应用服务应用并通过 FTP 部署文件
 
@@ -42,7 +35,7 @@ ms.locfileid: "66136810"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 创建应用服务计划。 |

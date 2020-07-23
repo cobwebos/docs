@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 05/15/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 1203947efadf4fed328655c9cfb839f666a80b0c
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 085bfd51ae6eabfc26201897a124a6272e0221fa
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390050"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603581"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>教程：使用必应 Web 搜索 API 创建单页应用
 
@@ -30,16 +30,16 @@ ms.locfileid: "66390050"
 > * 管理订阅密钥
 > * 处理错误
 
-要使用此应用，需具备带必应搜索 API 的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)获取订阅密钥。
+要使用此应用，需具备带必应搜索 API 的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。
 
 ## <a name="prerequisites"></a>先决条件
 
 需具备以下几项才可运行应用：
 
-* Node.js 8 或更高版本
-* 订阅密钥
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="创建必应搜索资源"  target="_blank">创建必应搜索资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。 部署后，单击“转到资源”。
 
-## <a name="get-the-source-code-and-install-dependencies"></a>获取源代码并安装依赖项
+* Node.js 8 或更高版本
 
 首先是使用示例应用的源代码克隆存储库。
 
@@ -105,7 +105,7 @@ function bingSearchOptions(form) {
     // Where option.
     options.push("mkt=" + form.where.value);
     // SafeSearch option.
-    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "off"));
+    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "moderate"));
     // Freshness option.
     if (form.when.value.length) options.push("freshness=" + form.when.value);
     var what = [];
@@ -128,11 +128,11 @@ function bingSearchOptions(form) {
 }
 ```
 
-可将 `SafeSearch` 设置为 `strict`、`moderate` 或 `off`，其中 `moderate` 是必应 Web 搜索的默认值。 此表单使用一个具有两个状态的复选框。 在此片段中，将安全搜索设置为 `strict` 或 `off`，且不使用 `moderate`。
+可将 `SafeSearch` 设置为 `strict`、`moderate` 或 `off`，其中 `moderate` 是必应 Web 搜索的默认值。 此表单使用一个复选框，它有两种状态：`strict` 或 `moderate`。
 
-如果选择任一“提升”复选框，则向查询添加 `answerCount` 参数  。 使用 `promote` 参数时，`answerCount` 是必需的。 在此片段中，将值设置为 `9`，以返回所有可用的结果类型。
+如果选择任一“提升”复选框，则向查询添加 `answerCount` 参数。 使用 `promote` 参数时，`answerCount` 是必需的。 在此片段中，将值设置为 `9`，以返回所有可用的结果类型。
 > [!NOTE]
-> 提升结果类型后，该类型不一定会包含在搜索结果中  。 不过，提升可以提高此类结果的排名（相对于其通常的排名而言）。 若要将搜索限制为特定类型的结果，请使用 `responseFilter` 查询参数，或者调用更具体的终结点，例如必应图像搜索或必应新闻搜索。
+> 提升结果类型后，该类型不一定会包含在搜索结果中。 不过，提升可以提高此类结果的排名（相对于其通常的排名而言）。 若要将搜索限制为特定类型的结果，请使用 `responseFilter` 查询参数，或者调用更具体的终结点，例如必应图像搜索或必应新闻搜索。
 
 将 `textDecoration` 和 `textFormat` 查询参数硬编码到脚本中，这两个参数可使搜索词在搜索结果中显示为粗体。 这些参数并非必需。
 
@@ -283,7 +283,7 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> HTTP 请求成功并不表示搜索本身会成功  。 如果搜索操作中出现错误，必应 Web 搜索 API 将返回非 200 HTTP 状态代码并将错误信息包含在 JSON 响应中。 如果请求速率受到限制，该 API 会返回空响应。
+> HTTP 请求成功并不表示搜索本身会成功。 如果搜索操作中出现错误，必应 Web 搜索 API 将返回非 200 HTTP 状态代码并将错误信息包含在 JSON 响应中。 如果请求速率受到限制，该 API 会返回空响应。
 
 上面两个函数中的很多代码专用于错误处理。 以下阶段可能会出现错误：
 
@@ -437,7 +437,7 @@ searchItemRenderers = {
 
 如果提供 `X-MSEdge-ClientID` 标头，则必应 API 可关联用户的搜索项。 首先，它允许必应搜索引擎将过去的上下文应用于搜索，从而查找能更好地满足请求的结果。 例如，如果用户以前搜索过与航海相关的词汇，则稍后搜索“节”时，系统可能会优先返回在航海中使用的节的信息。 其次，在新功能广泛应用之前，必应可能会随机选择用户体验该功能。 为每个请求提供相同的客户端 ID 可确保获准查看某项功能的用户将始终看到此功能。 如果没有客户端 ID，用户可能会看到功能在其搜索结果中随机出现和消失。
 
-浏览器安全策略（例如跨源资源共享 (CORS)）可能阻止示例应用访问 `X-MSEdge-ClientID` 标头。 当搜索响应的域不同于请求搜索的页面时，会出现此限制。 在生产环境中，应该托管一个服务器端脚本，以便在网页所在的域进行 API 调用，这样就可以解决此策略的问题。 由于脚本与网页的域相同，因此 `X-MSEdge-ClientID` 标头可供 JavaScript 使用。
+浏览器安全策略（例如跨源资源共享 (CORS)）可能阻止示例应用访问 `X-MSEdge-ClientID` 标头。 当搜索响应的域不同于请求搜索的页面时，会出现此限制。 在生产环境中，应该托管一个服务器端脚本，以便在网页所在的域进行 API 调用，这样就可以解决此策略的问题。 由于脚本具有与网页相同的来源，因此会将 `X-MSEdge-ClientID` 标头提供给 JavaScript。
 
 > [!NOTE]
 > 在生产型 Web 应用程序中，无论如何都应在服务器端执行请求。 否则，必应搜索 API 订阅密钥必须包含在网页中，该网页可供查看来源的任何人使用。 收费取决于 API 订阅密钥下的所有使用量（即使请求是由未经授权的用户发出的，也是如此），因此请确保不要公开你的密钥。

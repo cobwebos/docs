@@ -1,26 +1,17 @@
 ---
-title: 在 Visual Studio 中使用 Azure Application Insights 调试应用程序 | Microsoft Docs
+title: 在 Visual Studio 中使用 Azure Application Insights 进行调试
 description: 调试期间和生产环境中的 Web 应用性能分析和诊断。
-services: application-insights
-documentationcenter: .net
-author: NumberByColors
-manager: carmonm
-ms.assetid: 2059802b-1131-477e-a7b4-5f70fb53f974
-ms.service: application-insights
-ms.custom: vs-azure
-ms.workload: azure-vs
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/07/2017
-ms.pm_owner: daviste;NumberByColors
-ms.reviewer: mbullwin
+author: NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 1b2f429129c0bb9098f4f5029cb07ce06bc5db13
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
-ms.translationtype: MT
+ms.date: 07/07/2017
+ms.reviewer: mbullwin
+ms.custom: vs-azure
+ms.openlocfilehash: 8905222214d58eeba24ecf50da768ffa1d65c39d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66255121"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77670876"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>在 Visual Studio 中使用 Azure Application Insights 调试应用程序
 在 Visual Studio（2015 和更高版本）中，可以使用来自 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 的遥测，在调试和生产环境中分析 ASP.NET Web 应用中的性能和诊断问题。
@@ -29,7 +20,7 @@ ms.locfileid: "66255121"
 
 若要在应用处于实时生产环境中时对其进行监视，通常可以在 [Azure 门户](https://portal.azure.com)中查看 Application Insights 遥测，可以在该门户中设置警报并应用强大的监视工具。 但是对于调试，也可在 Visual Studio 中搜索和分析遥测。 可使用 Visual Studio 来分析遥测，不管是从生产站点还是从开发计算机上的调试运行均可执行该操作。 如果是后一种情况，则可分析调试运行，即使尚未将 SDK 配置为将遥测发送到 Azure 门户。 
 
-## <a name="run"></a>调试项目
+## <a name="debug-your-project"></a><a name="run"></a>调试项目
 使用 F5 在本地调试模式下运行 Web 应用。 打开不同的页以生成一些遥测数据。
 
 在 Visual Studio 中会看到事件计数，这些事件是由项目中的 Application Insights 模块记录的。

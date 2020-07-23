@@ -1,24 +1,14 @@
 ---
 title: 使用 Azure 诊断与 Azure Application Insights 的集成针对 Azure 云服务中的问题发出警报 | Microsoft Docs
 description: 使用 Azure Application Insights 监视 Azure 云服务中的问题，例如启动故障、崩溃和角色回收循环
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.reviewer: harelbr
-ms.author: mbullwin
-ms.openlocfilehash: 219ba632d7688f1a428378309828b689698d2fe5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 997c5e063c4181a597520e60e2a7669401b9677d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60409468"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77669737"
 ---
 # <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>使用 Azure 诊断与 Azure Application Insights 的集成针对 Azure 云服务中的问题发出警报
 
@@ -89,32 +79,32 @@ EventLogs
 
 ## <a name="create-an-alert"></a>创建警报
 
-在 Application Insights 资源的导航菜单中，转到“警报”，然后选择“新建警报规则”。
+在 Application Insights 资源的导航菜单中，转到“警报”  ，然后选择“新建警报规则”。 
 
 ![创建规则时的屏幕截图](./media/proactive-cloud-services/001.png)
 
-在“创建规则”窗口中，在“定义警报条件”部分下，单击“添加条件”，然后选择“自定义日志搜索”。
+在“创建规则”  窗口中，在“定义警报条件”  部分下，单击“添加条件”  ，然后选择“自定义日志搜索”  。
 
 ![为警报定义条件时的屏幕截图](./media/proactive-cloud-services/002.png)
 
-在“搜索查询”框中，粘贴你在前面的步骤中编制的组合查询。
+在“搜索查询”  框中，粘贴你在前面的步骤中编制的组合查询。
 
-然后，前进到“阈值”框并将其值设置为 0。 还可以调整“期间”和“频率”字段。
-单击“完成”。
+然后，前进到“阈值”  框并将其值设置为 0。 还可以调整“期间”  和“频率”  字段。
+单击“完成”  。
 
 ![配置信号逻辑查询的屏幕截图](./media/proactive-cloud-services/003.png)
 
-在“定义警报详细信息”部分下，为警报规则提供**名称**和**说明**，并设置其**严重性**。
-另外，请确保将“创建后启用规则”按钮设置为“是”。
+在“定义警报详细信息”  部分下，为警报规则提供**名称**和**说明**，并设置其**严重性**。
+另外，请确保将“创建后启用规则”  按钮设置为“是”  。
 
 ![警报详细信息屏幕截图](./media/proactive-cloud-services/004.png)
 
-在“定义操作组”部分下，可以选择一个现有**操作组**，也可以新建一个。
+在“定义操作组”  部分下，可以选择一个现有**操作组**，也可以新建一个。
 可以选择让操作组包含各种类型的多个操作。
 
 ![操作组屏幕截图](./media/proactive-cloud-services/005.png)
 
-定义操作组后，确认更改并单击“创建警报规则”。
+定义操作组后，确认更改并单击“创建警报规则”  。
 
 ## <a name="next-steps"></a>后续步骤
 

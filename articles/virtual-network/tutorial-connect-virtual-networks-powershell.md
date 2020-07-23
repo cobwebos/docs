@@ -1,28 +1,25 @@
 ---
-title: 使用虚拟网络对等互连连接虚拟网络 - PowerShell | Microsoft Docs
+title: 使用 VNet 对等互连连接虚拟网络 - Azure PowerShell
 description: 在本文中，你将学习如何使用 Azure PowerShell 通过虚拟网络对等互连来连接虚拟网络。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
 tags: azure-resource-manager
 Customer intent: I want to connect two virtual networks so that virtual machines in one virtual network can communicate with virtual machines in the other virtual network.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: f5c90b7d79b31c321b00869c90b0261c0b4730d3
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
-ms.translationtype: MT
+ms.openlocfilehash: e040938cd0bde127d3ae36819b978ad4e56ded4a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66727756"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84703428"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>通过 PowerShell 使用虚拟网络对等互连连接虚拟网络
 
@@ -39,11 +36,11 @@ ms.locfileid: "66727756"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装和使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+如果选择在本地安装和使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 ## <a name="create-virtual-networks"></a>创建虚拟网络
 
-创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
+创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
@@ -114,7 +111,7 @@ Add-AzVirtualNetworkPeering `
   -RemoteVirtualNetworkId $virtualNetwork1.Id
 ```
 
-在上一个命令执行后返回的输出中，可以看到 **peeringState** 为 *Connected*。 Azure 还将 *myVirtualNetwork1-myVirtualNetwork2* 对等互连的对等互连状态更改为 *Connected*。 使用 [Get-AzVirtualNetworkPeering](/powershell/module/az.network/get-azvirtualnetworkpeering) 确认 myVirtualNetwork1-myVirtualNetwork2  对等互连的对等互连状态是否已更改为“Connected”  。
+在上一个命令执行后返回的输出中，可以看到 **peeringState** 为 *Connected*。 Azure 还将 *myVirtualNetwork1-myVirtualNetwork2* 对等互连的对等互连状态更改为 *Connected*。 使用 [Get-AzVirtualNetworkPeering](/powershell/module/az.network/get-azvirtualnetworkpeering) 确认 myVirtualNetwork1-myVirtualNetwork2 对等互连的对等互连状态是否已更改为“Connected”。
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkPeering `
@@ -160,7 +157,7 @@ New-AzVm `
 
 ## <a name="communicate-between-vms"></a>VM 之间进行通信
 
-可以从 Internet 连接到 VM 的公用 IP 地址。 使用 [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) 返回 VM 的公共 IP 地址。 以下示例返回 myVm1 VM 的公共 IP 地址  ：
+可以从 Internet 连接到 VM 的公共 IP 地址。 使用 [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) 返回 VM 的公共 IP 地址。 以下示例返回 myVm1 VM 的公共 IP 地址  ：
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress `
@@ -179,7 +176,7 @@ mstsc /v:<publicIpAddress>
 在 *myVm1* VM 上，允许 Internet 控制消息协议 (ICMP) 通过 Windows 防火墙，以便在稍后的步骤中使用 PowerShell 从 *myVm2* ping 此 VM：
 
 ```powershell
-New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
 ```
 
 虽然本文中使用 ping 在 VM 之间进行通信，但在进行生产部署时，不建议允许 ICMP 通过 Windows 防火墙。
@@ -208,6 +205,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你已学习了如何使用虚拟网络对等互连来连接同一 Azure 区域中的两个网络。 还可以将不同[受支持的区域](virtual-network-manage-peering.md#cross-region)、[不同 Azure 订阅](create-peering-different-subscriptions.md#powershell)中的虚拟网络对等互连，并且可以使用对等互连创建[中心辐射型网络设计](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering)。 若要详细了解虚拟网络对等互连，请参阅[虚拟网络对等互连概述](virtual-network-peering-overview.md)和[管理虚拟网络对等互连](virtual-network-manage-peering.md)。
+在本文中，你已学习了如何使用虚拟网络对等互连来连接同一 Azure 区域中的两个网络。 还可以将不同[受支持的区域](virtual-network-manage-peering.md#cross-region)、[不同 Azure 订阅](create-peering-different-subscriptions.md#powershell)中的虚拟网络对等互连，并且可以使用对等互连创建[中心辐射型网络设计](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering)。 若要详细了解虚拟网络对等互连，请参阅[虚拟网络对等互连概述](virtual-network-peering-overview.md)和[管理虚拟网络对等互连](virtual-network-manage-peering.md)。
 
 可以通过 VPN [将自己的计算机连接到虚拟网络](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，并可与虚拟网络或对等虚拟网络中的资源进行交互。 有关用来完成虚拟网络文章中涉及的许多任务的可重用脚本，请参阅[脚本示例](powershell-samples.md)。

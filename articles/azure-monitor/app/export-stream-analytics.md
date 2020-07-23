@@ -1,23 +1,14 @@
 ---
 title: 使用流分析从 Azure Application Insights 进行导出 | Microsoft Docs
 description: 流分析可以持续转换、筛选和路由从 Application Insights 导出的数据。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 31594221-17bd-4e5e-9534-950f3b022209
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/04/2018
-ms.author: mbullwin
-ms.openlocfilehash: 58eaec32fee149c845dc77a83763f2fcd8133a06
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 01/08/2019
+ms.openlocfilehash: 70f952dcd6f8d942ac272afed58a7fe0f47d8a6e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60901189"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539952"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>使用流分析处理从 Application Insights 导出的数据
 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)是用于处理[从 Application Insights 导出](export-telemetry.md)的数据的理想工具。 流分析可以从各种源提取数据。 它可以转换和筛选数据，然后将其路由到各种接收器。
@@ -64,12 +55,12 @@ ms.locfileid: "60901189"
 
     ![选择事件类型](./media/export-stream-analytics/080.png)
 
-1. 让我们累积一些数据。 请休息一下，让其他人先使用该应用程序一段时间。 应用程序中会逐渐传入遥测数据，[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)中会显示统计图表，[诊断搜索](../../azure-monitor/app/diagnostic-search.md)中会显示各个事件。 
+1. 让我们累积一些数据。 请休息一下，让其他人先使用该应用程序一段时间。 应用程序中会逐渐传入遥测数据，[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)中会显示统计图表，[诊断搜索](../../azure-monitor/app/diagnostic-search.md)中会显示各个事件。 
    
     此外，数据将导出到存储。 
 2. 检查导出的数据 在 Visual Studio 中，请选择“查看”>“Cloud Explorer”，并打开“Azure”>“存储”。 （如果没有此菜单选项，则需要安装 Azure SDK：打开“新建项目”对话框，打开 Visual C# /云/获取用于 .NET 的 Microsoft Azure SDK。）
    
-    ![](./media/export-stream-analytics/04-data.png)
+    ![显示如何设置要查看的事件类型的屏幕截图。](./media/export-stream-analytics/04-data.png)
    
     记下派生自应用程序名称和检测密钥的路径名称的共同部分。 
 
@@ -78,21 +69,21 @@ ms.locfileid: "60901189"
 ## <a name="create-an-azure-stream-analytics-instance"></a>创建 Azure 流分析实例
 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 流分析服务，并创建新的流分析作业：
 
-![](./media/export-stream-analytics/SA001.png)
+![屏幕截图，显示在 Azure 门户中创建流分析作业的主页。](./media/export-stream-analytics/SA001.png)
 
-![](./media/export-stream-analytics/SA002.png)
+![显示创建新的流分析作业时所需的详细信息的屏幕截图。](./media/export-stream-analytics/SA002.png)
 
 创建新作业后，选择“转到资源”。
 
-![](./media/export-stream-analytics/SA003.png)
+![显示新的流分析作业部署成功时接收的消息的屏幕截图。](./media/export-stream-analytics/SA003.png)
 
 ### <a name="add-a-new-input"></a>添加新输入
 
-![](./media/export-stream-analytics/SA004.png)
+![显示如何向流分析作业添加输入的屏幕截图。](./media/export-stream-analytics/SA004.png)
 
 将此位置设置为从连续导出 Blob 接收输入：
 
-![](./media/export-stream-analytics/SA0005.png)
+![屏幕截图，显示如何配置流分析作业以从连续导出 blob 中获取输入。](./media/export-stream-analytics/SA0005.png)
 
 现在需要使用存储帐户的主访问密钥（前面已记下此密钥）。 将此密钥设置为存储帐户密钥。
 
@@ -102,7 +93,7 @@ ms.locfileid: "60901189"
 
 “路径前缀模式”指定流分析在存储中的哪个位置查找输入文件。 需要将它设置为与连续导出存储数据的方式相对应。 设置如下：
 
-    webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
+`webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}`
 
 在本示例中：
 
@@ -118,7 +109,7 @@ ms.locfileid: "60901189"
 ## <a name="add-new-output"></a>添加新输出
 现在选择作业 >“输出” > “添加”。
 
-![](./media/export-stream-analytics/SA006.png)
+![显示选择流分析作业以添加新输出的屏幕截图。](./media/export-stream-analytics/SA006.png)
 
 
 ![选择新通道，并依次单击“输出”、“添加”、“Power BI”](./media/export-stream-analytics/SA010.png)
@@ -134,57 +125,54 @@ ms.locfileid: "60901189"
 粘贴以下查询：
 
 ```SQL
-
-    SELECT
-      flat.ArrayValue.name,
-      count(*)
-    INTO
-      [pbi-output]
-    FROM
-      [export-input] A
-    OUTER APPLY GetElements(A.[event]) as flat
-    GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
+SELECT
+  flat.ArrayValue.name,
+  count(*)
+INTO
+  [pbi-output]
+FROM
+  [export-input] A
+OUTER APPLY GetElements(A.[event]) as flat
+GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
 ```
 
 * export-input 是为流输入指定的别名
 * pbi-output 是定义的输出别名
-* 之所以使用 [OUTER APPLY GetElements](https://msdn.microsoft.com/library/azure/dn706229.aspx)，是因为事件名称在嵌套的 JSON 数组中。 然后，使用“选择”来选择事件名称，以及在相应时间段内使用该名称的实例计数。 [Group By](https://msdn.microsoft.com/library/azure/dn835023.aspx) 子句将元素分组成以 1 分钟为单位的时间段。
+* 之所以使用 [OUTER APPLY GetElements](/stream-analytics-query/apply-azure-stream-analytics)，是因为事件名称在嵌套的 JSON 数组中。 然后，使用“选择”来选择事件名称，以及在相应时间段内使用该名称的实例计数。 [Group By](/stream-analytics-query/group-by-azure-stream-analytics) 子句将元素分组成以 1 分钟为单位的时间段。
 
 ### <a name="query-to-display-metric-values"></a>用于显示指标值的查询
+
 ```SQL
-
-    SELECT
-      A.context.data.eventtime,
-      avg(CASE WHEN flat.arrayvalue.myMetric.value IS NULL THEN 0 ELSE  flat.arrayvalue.myMetric.value END) as myValue
-    INTO
-      [pbi-output]
-    FROM
-      [export-input] A
-    OUTER APPLY GetElements(A.context.custom.metrics) as flat
-    GROUP BY TumblingWindow(minute, 1), A.context.data.eventtime
-
-``` 
+SELECT
+  A.context.data.eventtime,
+  avg(CASE WHEN flat.arrayvalue.myMetric.value IS NULL THEN 0 ELSE  flat.arrayvalue.myMetric.value END) as myValue
+INTO
+  [pbi-output]
+FROM
+  [export-input] A
+OUTER APPLY GetElements(A.context.custom.metrics) as flat
+GROUP BY TumblingWindow(minute, 1), A.context.data.eventtime
+```
 
 * 此查询将钻取指标遥测数据，获取事件时间和指标值。 指标值在数组内部，因此我们使用了 OUTER APPLY GetElements 模式来提取行。 在本例中，“myMetric”是指标的名称。 
 
 ### <a name="query-to-include-values-of-dimension-properties"></a>用于包含维度属性值的查询
+
 ```SQL
-
-    WITH flat AS (
-    SELECT
-      MySource.context.data.eventTime as eventTime,
-      InstanceId = MyDimension.ArrayValue.InstanceId.value,
-      BusinessUnitId = MyDimension.ArrayValue.BusinessUnitId.value
-    FROM MySource
-    OUTER APPLY GetArrayElements(MySource.context.custom.dimensions) MyDimension
-    )
-    SELECT
-     eventTime,
-     InstanceId,
-     BusinessUnitId
-    INTO AIOutput
-    FROM flat
-
+WITH flat AS (
+SELECT
+  MySource.context.data.eventTime as eventTime,
+  InstanceId = MyDimension.ArrayValue.InstanceId.value,
+  BusinessUnitId = MyDimension.ArrayValue.BusinessUnitId.value
+FROM MySource
+OUTER APPLY GetArrayElements(MySource.context.custom.dimensions) MyDimension
+)
+SELECT
+  eventTime,
+  InstanceId,
+  BusinessUnitId
+INTO AIOutput
+FROM flat
 ```
 
 * 此查询包含不依赖于特定维度的维度属性的值，该维度位于维度数组中某个固定的索引处。
@@ -224,4 +212,3 @@ Noam Ben Zeev 演示如何使用流分析处理导出的数据。
 * [连续导出](export-telemetry.md)
 * [属性类型和值的详细数据模型参考。](export-data-model.md)
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md)
-

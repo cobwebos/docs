@@ -1,6 +1,6 @@
 ---
 title: 教程：审查 Facebook 内容 - 内容审查器
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 在本教程中，你将了解如何使用基于机器学习的内容审查器帮助审查 Facebook 帖子和评论。
 services: cognitive-services
 author: PatrickFarley
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 01/18/2019
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 5d31285ca305ba7fefdf31b4a97e3183f58b3e3b
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: a9a5fe2eed0c0e6cf990183d321a71a7fabfbbee
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233809"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118637"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>教程：使用 Azure 内容审查器审查 Facebook 帖子和评论
 
@@ -35,7 +35,7 @@ ms.locfileid: "65233809"
 ![通过“FBListener”从 Facebook 接收信息，并通过“CMListener”发送信息的内容审查器示意图](images/tutorial-facebook-moderation.png)
 
 > [!IMPORTANT]
-> 2018 年，Facebook 对 Facebook 应用进行了更为严格的审查。 如果 Facebook 评审团队尚未评审并批准你的应用，你将无法完成本教程的步骤。
+> 2018 年，Facebook 针对 Facebook 应用实施了更严格的审查策略。 如果 Facebook 评审团队尚未评审并批准你的应用，你将无法完成本教程的步骤。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -44,15 +44,15 @@ ms.locfileid: "65233809"
 
 ## <a name="create-a-review-team"></a>创建评审团队
 
-请参阅[在 Web 上试用内容审查器](quick-start.md)快速入门，获取有关如何注册[内容审查器评审工具](https://contentmoderator.cognitive.microsoft.com/)和创建评审团队的说明。 记下“凭据”页上的“团队 ID”值。
+请参阅[在 Web 上试用内容审查器](quick-start.md)快速入门，获取有关如何注册[内容审查器评审工具](https://contentmoderator.cognitive.microsoft.com/)和创建评审团队的说明。 记下“凭据”页上的“团队 ID”值。 
 
 ## <a name="configure-image-moderation-workflow"></a>配置图像审查工作流
 
-请参阅[定义、测试和使用工作流](review-tool-user-guide/workflows.md)指南，以创建自定义图像工作流。 这样，内容审查器便可以自动检查 Facebook 上的图像，并将其中的某些图像发送到评审工具。 记下工作流的**名称**。
+请参阅[定义、测试和使用工作流](review-tool-user-guide/workflows.md)指南，以创建自定义图像工作流。 内容审查器将使用此工作流自动检查 Facebook 上的图像，并将一些图像发送到评审工具。 记下工作流的**名称**。
 
 ## <a name="configure-text-moderation-workflow"></a>配置文本审查工作流
 
-同样请参阅[定义、测试和使用工作流](review-tool-user-guide/workflows.md)指南；这一次需创建自定义文本工作流。 这样，内容审查器便可以自动检查文本内容。 记下工作流的**名称**。
+同样请参阅[定义、测试和使用工作流](review-tool-user-guide/workflows.md)指南；这一次将创建自定义文本工作流。 内容审查器将使用此工作流自动检查文本内容。 记下工作流的**名称**。
 
 ![配置文本工作流](images/text-workflow-configure.PNG)
 
@@ -66,27 +66,27 @@ ms.locfileid: "65233809"
 
 1. 按照 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal) 页面所示，创建 Azure Function App。
 1. 打开新建的函数应用。
-1. 在该应用中，转到“平台功能”选项卡并选择“配置”。 在下一页的“应用程序设置”部分中，选择“新的应用程序设置”来添加以下键/值对：
+1. 在该应用中，转到“平台功能”选项卡并选择“配置” 。 在下一页的“应用程序设置”部分中，选择“新的应用程序设置”来添加以下键/值对 ：
     
     | 应用设置名称 | 值   | 
     | -------------------- |-------------|
-    | cm:TeamId   | 内容审查器 TeamId  | 
-    | cm:SubscriptionKey | 内容审查器的订阅密钥 - 请参阅[凭据](review-tool-user-guide/credentials.md) |
-    | cm:Region | 内容审查器的区域名称，不含空格。 |
-    | cm:ImageWorkflow | 对图像运行的工作流的名称 |
-    | cm:TextWorkflow | 对文本运行的工作流的名称 |
-    | cm:CallbackEndpoint | 将在本指南稍后部分创建的 CMListener Function App 的 URL |
-    | fb:VerificationToken | 你创建的机密令牌，用于订阅 Facebook 源事件 |
-    | fb:PageAccessToken | Facebook 图形 API 访问令牌不会过期，并允许函数代表你隐藏/删除帖子。 你将在之后的步骤中获取此令牌。 |
+    | `cm:TeamId`   | 内容审查器 TeamId  | 
+    | `cm:SubscriptionKey` | 内容审查器的订阅密钥 - 请参阅[凭据](review-tool-user-guide/credentials.md) |
+    | `cm:Region` | 内容审查器的区域名称，不含空格。 可以在 Azure 资源“概述”选项卡的“位置”字段中找到此名称 。|
+    | `cm:ImageWorkflow` | 对图像运行的工作流的名称 |
+    | `cm:TextWorkflow` | 对文本运行的工作流的名称 |
+    | `cm:CallbackEndpoint` | 将在本指南稍后部分创建的 CMListener Function App 的 URL |
+    | `fb:VerificationToken` | 你创建的机密令牌，用于订阅 Facebook 源事件 |
+    | `fb:PageAccessToken` | Facebook 图形 API 访问令牌不会过期，并允许函数代表你隐藏/删除帖子。 你将在之后的步骤中获取此令牌。 |
 
     单击页面顶部的“保存”按钮。
 
-1. 返回到“平台功能”选项卡。使用左窗格上的“+”按钮打开“新建函数”窗格。 你即将创建的函数将通过 Facebook 接收事件。
+1. 返回到“平台功能”选项卡。使用左窗格上的“+”按钮打开“新建函数”窗格 。 你即将创建的函数将通过 Facebook 接收事件。
 
     ![Azure Functions 窗格，其中已突出显示“添加函数”按钮。](images/new-function.png)
 
     1. 单击显示了“HTTP 触发器”的磁贴。
-    1. 输入名称 FBListener。 “授权级别”字段应设置为“函数”。
+    1. 输入名称 FBListener。 “授权级别”字段应设置为“函数” 。
     1. 单击“创建”。
     1. 将 **run.csx** 的内容替换为 **FbListener/run.csx** 中的内容。
 
@@ -109,10 +109,10 @@ ms.locfileid: "65233809"
     1. 添加新应用。
     1. 为应用命名
     1. 选择“Webhook”->“设置”
-    1. 在下拉菜单中选择“页面”，然后选择“订阅此对象”
-    1. 提供 FBListener URL 作为回叫 URL，并在“Function App 设置”下提供配置的“验证令牌”
+    1. 在下拉菜单中选择“页面”，然后选择“订阅此对象” 
+    1. 提供 FBListener URL 作为回叫 URL，并在“Function App 设置”下提供配置的“验证令牌”  
     1. 订阅后，向下滚动到源，然后选择“订阅”。
-    1. 单击“源”行的“测试”按钮，将测试消息发送到 FBListener Azure 函数，然后点击“发送到我的服务器”按钮。 FBListener 上应会显示收到的请求。
+    1. 单击“源”行的“测试”按钮，将测试消息发送到 FBListener Azure 函数，然后点击“发送到我的服务器”按钮  。 FBListener 上应会显示收到的请求。
 
 1. 创建 Facebook 页面。
 
@@ -123,9 +123,9 @@ ms.locfileid: "65233809"
     1. 执行以下步骤以允许 Facebook 应用访问此页面：
         1. 导航到[图形 API 资源管理器](https://developers.facebook.com/tools/explorer/)。
         1. 选择“应用程序”。
-        1. 选择“页面访问令牌”，发送 Get 请求。
+        1. 选择“页面访问令牌”，发送 Get 请求 。
         1. 单击响应中的“页面 ID”。
-        1. 现在，将 /subscribed_apps 追加到 URL 并发送 Get（空响应）请求。
+        1. 现在，将 /subscribed_apps 追加到 URL 并发送 Get（空响应）请求 。
         1. 提交 Post 请求。 获取 success: true 形式的响应。
 
 3. 创建不会过期的图形 API 访问令牌。
@@ -133,7 +133,7 @@ ms.locfileid: "65233809"
     1. 导航到[图形 API 资源管理器](https://developers.facebook.com/tools/explorer/)。
     2. 选择“应用程序”选项。
     3. 选择“获取用户访问令牌”选项。
-    4. 在“选择权限”下，选择“manage_pages”和“publish_pages”选项。
+    4. 在“选择权限”下，选择“manage_pages”和“publish_pages”选项  。
     5. 我们将在下一步使用访问令牌（短期令牌）。
 
 4. 下面几个步骤将使用 Postman。
@@ -150,10 +150,10 @@ ms.locfileid: "65233809"
         | appSecret | 在此处插入 Facebook 应用的机密 | 
         | short_lived_token | 插入在上一步中生成的短期用户访问令牌 |
     4. 现在，运行集合中列出的 3 个 API： 
-        1. 选择“生成长期访问令牌”并单击“发送”。
-        2. 选择“获取用户 ID”并单击“发送”。
-        3. 选择“获取永久页面访问令牌”并单击“发送”。
-    5. 复制响应中的 access_token 值并将其分配给应用设置，fb:PageAccessToken。
+        1. 选择“生成长期访问令牌”并单击“发送” 。
+        2. 选择“获取用户 ID”并单击“发送” 。
+        3. 选择“获取永久页面访问令牌”并单击“发送” 。
+    5. 复制响应中的 access_token 值并将其分配给应用设置，fb:PageAccessToken 。
 
 解决方案将向内容审查器发送 Facebook 页上发布的所有图像和文本。 然后会调用前面配置的工作流。 不符合工作流中所定义条件的内容将传入评审工具进行评审。 剩余的内容会自动发布。
 

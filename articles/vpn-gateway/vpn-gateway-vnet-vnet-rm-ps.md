@@ -1,18 +1,18 @@
 ---
-title: 使用 VNet 到 VNet 连接将 Azure 虚拟网络连接到另一 VNet：PowerShell | Microsoft Docs
+title: 使用 Azure VPN 网关 VNet 到 VNet 连接将一个 VNet 连接到另一个 VNet：PowerShell
 description: 使用 VNet 到 VNet 连接和 PowerShell 将虚拟网络连接起来。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6ea919a4c9554584e0da79739d3465586ae43227
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5477eea12ee41bae42365555e38aa95ca0faeb3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60456324"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987107"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>使用 PowerShell 配置 VNet 到 VNet VPN 网关连接
 
@@ -28,7 +28,7 @@ ms.locfileid: "60456324"
 > * [连接不同的部署模型 - Azure 门户](vpn-gateway-connect-different-deployment-models-portal.md)
 > * [连接不同的部署模型 - PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 
-## <a name="about"></a>关于连接 VNet
+## <a name="about-connecting-vnets"></a><a name="about"></a>关于连接 VNet
 
 可通过多种方式来连接 VNet。 以下各节介绍了如何通过不同方式来连接虚拟网络。
 
@@ -44,7 +44,7 @@ ms.locfileid: "60456324"
 
 可以考虑使用 VNet 对等互连来连接 VNet。 VNet 对等互连不使用 VPN 网关，并且有不同的约束。 另外，[VNet 对等互连定价](https://azure.microsoft.com/pricing/details/virtual-network)的计算不同于 [VNet 到 VNet VPN 网关定价](https://azure.microsoft.com/pricing/details/vpn-gateway)的计算。 有关详细信息，请参阅 [VNet 对等互连](../virtual-network/virtual-network-peering-overview.md)。
 
-## <a name="why"></a>为何创建 VNet 到 VNet 连接？
+## <a name="why-create-a-vnet-to-vnet-connection"></a><a name="why"></a>为何创建 VNet 到 VNet 连接？
 
 你可能会出于以下原因而使用 VNet 到 VNet 连接来连接虚拟网络：
 
@@ -58,22 +58,22 @@ ms.locfileid: "60456324"
 
 可以将 VNet 到 VNet 通信与多站点配置组合使用。 这样，便可以建立将跨界连接与虚拟网络间连接相结合的网络拓扑。
 
-## <a name="steps"></a>应使用哪些 VNet 到 VNet 步骤？
+## <a name="which-vnet-to-vnet-steps-should-i-use"></a><a name="steps"></a>应使用哪些 VNet 到 VNet 步骤？
 
 在本文中，可以看到两组不同的步骤。 一组步骤适用于[驻留在同一订阅中的 VNet](#samesub)，另一组适用于[驻留在不同订阅中的 VNet](#difsub)。
 两组的主要差异是，配置位于不同订阅中的 VNet 的连接时，必须使用单独的 PowerShell 会话。 
 
 就本练习来说，可以将配置组合起来，也可以只是选择要使用的配置。 所有配置使用 VNet 到 VNet 连接类型。 网络流量在彼此直接连接的 VNet 之间流动。 在此练习中，流量不从 TestVNet4 路由到 TestVNet5。
 
-* [位于同一订阅中的 VNet](#samesub)：此配置的步骤使用 TestVNet1 和 TestVNet4。
+* [驻留在同一订阅中的 VNet](#samesub)：此配置的步骤使用 TestVNet1 和 TestVNet4。
 
   ![v2v 示意图](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
-* [位于不同订阅中的 VNet](#difsub)：此配置的步骤使用 TestVNet1 和 TestVNet5。
+* [驻留在不同订阅中的 VNet](#difsub)：此配置的步骤使用 TestVNet1 和 TestVNet5。
 
   ![v2v 示意图](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
-## <a name="samesub"></a>如何连接同一订阅中的 VNet
+## <a name="how-to-connect-vnets-that-are-in-the-same-subscription"></a><a name="samesub"></a>如何连接同一订阅中的 VNet
 
 ### <a name="before-you-begin"></a>开始之前
 
@@ -83,11 +83,11 @@ ms.locfileid: "60456324"
 
 * 如果更想本地安装最新版本的 Azure PowerShell 模块，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
-### <a name="Step1"></a>步骤 1 - 规划 IP 地址范围
+### <a name="step-1---plan-your-ip-address-ranges"></a><a name="Step1"></a>步骤 1 - 规划 IP 地址范围
 
 以下步骤将创建两个虚拟网络，以及它们各自的网关子网和配置。 然后在两个 VNet 之间创建 VPN 连接。 必须计划用于网络配置的 IP 地址范围。 请记住，必须确保没有任何 VNet 范围或本地网络范围存在任何形式的重叠。 在这些示例中，我们没有包括 DNS 服务器。 如果需要虚拟网络的名称解析，请参阅[名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
 
-示例中使用了以下值：
+示例中使用以下值：
 
 **TestVNet1 的值：**
 
@@ -102,8 +102,8 @@ ms.locfileid: "60456324"
 * 公共 IP：VNet1GWIP
 * VPNType：RouteBased
 * Connection(1to4)：VNet1toVNet4
-* Connection(1to5)：VNet1 到 VNet5（适用于不同订阅中的 VNet）
-* 连接类型：VNet2VNet
+* Connection(1to5)：VNet1toVNet5（适用于不同订阅中的 VNet）
+* ConnectionType：VNet2VNet
 
 **TestVNet4 的值：**
 
@@ -117,11 +117,11 @@ ms.locfileid: "60456324"
 * GatewayName：VNet4GW
 * 公共 IP：VNet4GWIP
 * VPNType：RouteBased
-* 连接：VNet4 到 VNet1
-* 连接类型：VNet2VNet
+* 连接：VNet4toVNet1
+* ConnectionType：VNet2VNet
 
 
-### <a name="Step2"></a>步骤 2 - 创建并配置 TestVNet1
+### <a name="step-2---create-and-configure-testvnet1"></a><a name="Step2"></a>步骤 2 - 创建并配置 TestVNet1
 
 1. 验证订阅设置。
 
@@ -142,7 +142,7 @@ ms.locfileid: "60456324"
    ```azurepowershell-interactive
    Select-AzSubscription -SubscriptionName nameofsubscription
    ```
-2. 声明变量。 本示例使用此练习中的值来声明变量。 在大多数情况下，应将这些值替换为自己的值。 但是，如果执行这些步骤的目的是熟悉这种类型的配置，可以直接使用这些变量。 根据需要修改变量，然后将变量复制并粘贴到 PowerShell 控制台中。
+2. 声明变量。 本示例使用此练习中的值来声明变量。 在大多数情况下，应将这些值替换为自己的值。 但是，如果执行这些步骤的目的是熟悉这种类型的配置，可以直接使用这些变量。 根据需要修改变量，并将其复制并粘贴到 PowerShell 控制台中。
 
    ```azurepowershell-interactive
    $RG1 = "TestRG1"
@@ -150,7 +150,6 @@ ms.locfileid: "60456324"
    $VNetName1 = "TestVNet1"
    $FESubName1 = "FrontEnd"
    $BESubName1 = "Backend"
-   $GWSubName1 = "GatewaySubnet"
    $VNetPrefix11 = "10.11.0.0/16"
    $VNetPrefix12 = "10.12.0.0/16"
    $FESubPrefix1 = "10.11.0.0/24"
@@ -167,14 +166,14 @@ ms.locfileid: "60456324"
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $RG1 -Location $Location1
    ```
-4. 创建 TestVNet1 的子网配置。 本示例创建一个名为 TestVNet1 的虚拟网络和三个子网，这三个子网分别名为 GatewaySubnet、FrontEnd 和 Backend。 替换值时，请务必始终将网关子网特意命名为 GatewaySubnet。 如果命名为其他名称，网关创建会失败。
+4. 创建 TestVNet1 的子网配置。 本示例创建一个名为 TestVNet1 的虚拟网络和三个子网，这三个子网分别名为 GatewaySubnet、FrontEnd 和 Backend。 替换值时，请务必始终将网关子网特意命名为 GatewaySubnet。 如果命名为其他名称，网关创建会失败。 因此，名称不是通过下面的变量分配的。
 
    下面的示例使用先前设置的变量。 在本示例中，网关子网使用 /27。 尽管创建的网关子网最小可为 /29，但建议至少选择 /28 或 /27，创建包含更多地址的更大子网。 这样便可以留出足够多的地址，满足将来可能需要使用的其他配置。
 
    ```azurepowershell-interactive
    $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
    $besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
-   $gwsub1 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWSubPrefix1
+   $gwsub1 = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix $GWSubPrefix1
    ```
 5. 创建 TestVNet1。
 
@@ -182,7 +181,7 @@ ms.locfileid: "60456324"
    New-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 `
    -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
    ```
-6. 请求一个公共 IP 地址，以分配给要为 VNet 创建的网关。 注意，AllocationMethod 是动态的。 无法指定要使用的 IP 地址。 它动态分配到网关。 
+6. 请求一个公共 IP 地址，以分配给要为 VNet 创建的网关。 注意，AllocationMethod 是动态的。 无法指定要使用的 IP 地址。 它会动态分配到网关。 
 
    ```azurepowershell-interactive
    $gwpip1 = New-AzPublicIpAddress -Name $GWIPName1 -ResourceGroupName $RG1 `
@@ -210,7 +209,7 @@ ms.locfileid: "60456324"
 
 配置 TestVNet1 后，即可创建 TestVNet4。 遵循以下步骤，并根据需要替换为自己的值。
 
-1. 连接并声明变量。 请务必将值替换为用于配置的值。
+1. 连接并声明变量。 请务必将值替换为要用于配置的值。
 
    ```azurepowershell-interactive
    $RG4 = "TestRG4"
@@ -218,7 +217,6 @@ ms.locfileid: "60456324"
    $VnetName4 = "TestVNet4"
    $FESubName4 = "FrontEnd"
    $BESubName4 = "Backend"
-   $GWSubName4 = "GatewaySubnet"
    $VnetPrefix41 = "10.41.0.0/16"
    $VnetPrefix42 = "10.42.0.0/16"
    $FESubPrefix4 = "10.41.0.0/24"
@@ -239,7 +237,7 @@ ms.locfileid: "60456324"
    ```azurepowershell-interactive
    $fesub4 = New-AzVirtualNetworkSubnetConfig -Name $FESubName4 -AddressPrefix $FESubPrefix4
    $besub4 = New-AzVirtualNetworkSubnetConfig -Name $BESubName4 -AddressPrefix $BESubPrefix4
-   $gwsub4 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName4 -AddressPrefix $GWSubPrefix4
+   $gwsub4 = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix $GWSubPrefix4
    ```
 4. 创建 TestVNet4。
 
@@ -294,7 +292,7 @@ ms.locfileid: "60456324"
    ```
 4. 验证连接。 请参阅 [如何验证连接](#verify)部分。
 
-## <a name="difsub"></a>如何连接不同订阅中的 VNet
+## <a name="how-to-connect-vnets-that-are-in-different-subscriptions"></a><a name="difsub"></a>如何连接不同订阅中的 VNet
 
 在此方案中，连接 TestVNet1 和 TestVNet5。 TestVNet1 和 TestVNet5 驻留在不同订阅中。 订阅不需要与相同的 Active Directory 租户相关联。
 
@@ -304,7 +302,7 @@ ms.locfileid: "60456324"
 
 ### <a name="step-5---create-and-configure-testvnet1"></a>步骤 5 - 创建并配置 TestVNet1
 
-必须完成前述部分的[步骤 1](#Step1) 和[步骤 2](#Step2)，才能创建并配置 TestVNet1 及其 VPN 网关。 就此配置来说，不需创建前一部分中的 TestVNet4，虽然创建后不会与这些步骤冲突。 完成步骤 1 和步骤 2 后，继续执行步骤 6，创建 TestVNet5。
+必须完成前述部分的[步骤 1](#Step1) 和[步骤 2](#Step2)，才能创建并配置 TestVNet1 及其 VPN 网关。 就此配置来说，不需创建前一部分的 TestVNet4，虽然创建后不会与这些步骤冲突。 完成步骤 1 和步骤 2 后，继续执行步骤 6，创建 TestVNet5。
 
 ### <a name="step-6---verify-the-ip-address-ranges"></a>步骤 6 - 验证 IP 地址范围
 
@@ -327,9 +325,9 @@ ms.locfileid: "60456324"
 
 ### <a name="step-7---create-and-configure-testvnet5"></a>步骤 7 - 创建并配置 TestVNet5
 
-必须在新订阅的上下文中完成此步骤。 此部分可能由拥有订阅的不同组织的管理员执行。
+必须在新订阅环境中完成此步骤。 此部分可能由拥有订阅的不同组织的管理员执行。
 
-1. 声明变量。 请务必将值替换为用于配置的值。
+1. 声明变量。 请务必将值替换为要用于配置的值。
 
    ```azurepowershell-interactive
    $Sub5 = "Replace_With_the_New_Subscription_Name"
@@ -349,7 +347,7 @@ ms.locfileid: "60456324"
    $GWIPconfName5 = "gwipconf5"
    $Connection51 = "VNet5toVNet1"
    ```
-2. 连接到订阅 5。 打开 PowerShell 控制台并连接到帐户。 使用下面的示例来帮助你连接：
+2. 连接到订阅 5。 打开 PowerShell 控制台并连接到帐户。 使用下面的示例来帮助连接：
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -473,13 +471,13 @@ ms.locfileid: "60456324"
    New-AzVirtualNetworkGatewayConnection -Name $Connection51 -ResourceGroupName $RG5 -VirtualNetworkGateway1 $vnet5gw -VirtualNetworkGateway2 $vnet1gw -Location $Location5 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
    ```
 
-## <a name="verify"></a>如何验证连接
+## <a name="how-to-verify-a-connection"></a><a name="verify"></a>如何验证连接
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
 [!INCLUDE [verify connections powershell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
-## <a name="faq"></a>VNet 到 VNet 常见问题解答
+## <a name="vnet-to-vnet-faq"></a><a name="faq"></a>VNet 到 VNet 常见问题解答
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 

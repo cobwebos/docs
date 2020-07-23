@@ -1,27 +1,17 @@
 ---
-title: Azure PowerShell 脚本示例 - 将应用连接到存储帐户 | Microsoft Docs
-description: Azure PowerShell 脚本示例 - 将应用服务应用连接到存储帐户
-services: app-service\web
-documentationcenter: ''
-author: syntaxc4
-manager: erikre
-editor: ''
+title: PowerShell：连接到存储帐户
+description: 了解如何使用 Azure PowerShell 自动部署和管理应用服务。 此示例演示如何将应用连接到存储帐户。
 tags: azure-service-management
 ms.assetid: e4831bdc-2068-4883-9474-0b34c2e3e255
-ms.service: app-service
-ms.devlang: multiple
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 03/20/2017
-ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: a4c0e2b5cfb73613ab349b827e429062c6237681
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d1c8951445c0be6a3d4b9c4763d719fc7d79d2d5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136497"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74685332"
 ---
 # <a name="connect-an-app-service-app-to-a-storage-account"></a>将应用服务应用连接到存储帐户
 
@@ -47,7 +37,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | 创建应用服务计划。 |

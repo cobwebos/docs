@@ -1,20 +1,26 @@
 ---
-title: 在 Azure Database for MariaDB 服务器中创建用户
+title: 创建用户 - Azure Database for MariaDB
 description: 本文介绍如何创建新的用户帐户，以与 Azure Database for MariaDB 服务器进行交互。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: ed373cfa0ac755d56e7bc2601c65e0e6482ff6d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 4/2/2020
+ms.openlocfilehash: 34fcb8d28ae8deda88a6ce91261301ab5d08a743
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61038865"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104548"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中创建用户 
 本文介绍如何在 Azure Database for MariaDB 中创建用户。
+
+> [!NOTE]
+> 无偏差通信
+>
+> Microsoft 支持多样化的包容性环境。 本文包含对单词 slave 的引用。 Microsoft 的[无偏差通信风格指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)将其视为排他性单词。 本文使用该单词旨在保持一致性，因为目前软件中使用的是该单词。 如果软件更新后删除了该单词，则本文也将更新以保持一致。
+>
 
 首次创建 Azure Database for MariaDB 时，需要提供服务器管理员登录用户名和密码。 有关详细信息，可以参考[快速入门](quickstart-create-mariadb-server-database-using-azure-portal.md)。 你可以从 Azure 门户中找到你的服务器管理员登录用户名。
 
@@ -22,14 +28,17 @@ ms.locfileid: "61038865"
 
 创建 Azure Database for MariaDB 服务器后，可以使用第一个服务器管理员用户帐户来创建其他用户，并授予这些用户管理员访问权限。 此外，服务器管理员帐户还可以用于创建只能访问各个数据库架构的权限较低的用户。
 
+> [!NOTE]
+> 不支持 SUPER 权限和 DBA 角色。 请在“限制”一文中查看[权限](concepts-limits.md#privilege-support)，以了解服务中不支持的权限。
+
 ## <a name="create-additional-admin-users"></a>创建其他管理员用户
 1. 获取连接信息和管理员用户名。
-   若要连接到数据库服务器，需提供完整的服务器名称和管理员登录凭据。 你可以在 Azure 门户的服务器“概述”页或“属性”页中轻松找到服务器名称和登录信息。 
+   若要连接到数据库服务器，需提供完整的服务器名称和管理员登录凭据。 你可以在 Azure 门户的服务器“概述”页或“属性”页中轻松找到服务器名称和登录信息。   
 
 2. 使用管理员帐户和密码连接到你的数据库服务器。 使用你的首选客户端工具，如 MySQL Workbench、mysql.exe、HeidiSQL 或其他工具。 
    如果你不确定如何连接，请参阅[使用 MySQL Workbench 连接和查询数据](./connect-workbench.md)
 
-3. 编辑并运行下面的 SQL 代码。 将占位符值 `new_master_user` 替换为你的新用户名。 此语法会将所有数据库架构 (*.*) 上列出的权限授予该用户名（本示例中的 new_master_user）。 
+3. 编辑并运行下面的 SQL 代码。 将占位符值 `new_master_user` 替换为你的新用户名。 此语法会将所有数据库架构 ( *.* ) 上列出的权限授予该用户名（本示例中的 new_master_user）。 
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';
@@ -49,7 +58,7 @@ ms.locfileid: "61038865"
 ## <a name="create-database-users"></a>创建数据库用户
 
 1. 获取连接信息和管理员用户名。
-   若要连接到数据库服务器，需提供完整的服务器名称和管理员登录凭据。 你可以在 Azure 门户的服务器“概述”页或“属性”页中轻松找到服务器名称和登录信息。 
+   若要连接到数据库服务器，需提供完整的服务器名称和管理员登录凭据。 你可以在 Azure 门户的服务器“概述”页或“属性”页中轻松找到服务器名称和登录信息。   
 
 2. 使用管理员帐户和密码连接到你的数据库服务器。 使用你的首选客户端工具，如 MySQL Workbench、mysql.exe、HeidiSQL 或其他工具。 
    如果你不确定如何连接，请参阅[使用 MySQL Workbench 连接和查询数据](./connect-workbench.md)

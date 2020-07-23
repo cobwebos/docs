@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: c18604a9f4b95f4b586efaf3201dd0a679d8d316
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60342604"
 ---
 # <a name="azure-database-for-mysql-videos"></a>Azure Database for MySQL 视频

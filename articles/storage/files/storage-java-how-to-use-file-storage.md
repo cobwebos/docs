@@ -1,20 +1,18 @@
 ---
 title: 使用 Java 针对 Azure 文件进行开发 | Microsoft Docs
 description: 了解如何开发使用 Azure 文件来存储文件数据的 Java 应用程序和服务。
-services: storage
 author: roygara
 ms.service: storage
-ms.devlang: Java
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 238e5971e79b192e0ef422dcd452859ff7566580
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 54f545c2d4f897f85ab3e5fd10d07666e93e4f41
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721663"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509670"
 ---
 # <a name="develop-for-azure-files-with-java"></a>使用 Java 针对 Azure 文件进行开发
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -61,7 +59,7 @@ public static final String storageConnectionString =
 > 
 
 ## <a name="connecting-to-an-azure-storage-account"></a>连接到 Azure 存储帐户
-若要连接到存储帐户，需要使用 CloudStorageAccount 对象，将连接字符串传递到其 parse 方法。
+要连接到存储帐户，则需要使用 **CloudStorageAccount** 对象，以便将连接字符串传递到 **parse** 方法。
 
 ```java
 // Use the CloudStorageAccount object to connect to your storage account
@@ -75,7 +73,7 @@ try {
 **CloudStorageAccount.parse** 会引发 InvalidKeyException，因此需将其置于 try/catch 块内。
 
 ## <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
-Azure 文件中的所有文件和目录都位于名为 Share 的容器内。 存储帐户可以拥有无数的共享，只要帐户容量允许。 要获得共享及其内容的访问权限，需要使用 Azure 文件客户端。
+Azure 文件中的所有文件和目录都位于名为 Share 的容器内  。 存储帐户可以拥有无数的共享，只要帐户容量允许。 要获得共享及其内容的访问权限，需要使用 Azure 文件客户端。
 
 ```java
 // Create the Azure Files client.
@@ -156,7 +154,7 @@ if ( containerDir.deleteIfExists() ) {
 ```
 
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>枚举 Azure 文件共享中的文件和目录
-可以轻松获取共享中文件和目录的列表，只需针对 CloudFileDirectory 引用调用 **listFilesAndDirectories** 即可。 该方法会返回可以对其进行循环访问的 ListFileItem 对象的列表。 例如，下面的代码将列出根目录中的文件和目录。
+可以轻松获取共享中文件和目录的列表，只需针对 CloudFileDirectory 引用调用 **listFilesAndDirectories** 即可。 该方法将返回可以对其进行循环访问的 ListFileItem 对象的列表。 例如，下面的代码将列出根目录中的文件和目录。
 
 ```java
 //Get a reference to the root directory for the share.
@@ -226,11 +224,11 @@ if ( file.deleteIfExists() ) {
 ## <a name="next-steps"></a>后续步骤
 如果还想更多地了解其他 Azure 存储 API，请点击以下链接。
 
-* [面向 Java 开发人员的 Azure](/java/azure)
+* [面向 Java 开发人员的 Azure](/java/azure)/）
 * [用于 Java 的 Azure 存储 SDK](https://github.com/azure/azure-storage-java)
 * [用于 Android 的 Azure 存储 SDK](https://github.com/azure/azure-storage-android)
-* [Azure 存储客户端 SDK 参考](http://dl.windowsazure.com/storage/javadoc/)
-* [Azure 存储服务 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
+* [Azure 存储客户端 SDK 参考](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
+* [Azure 存储空间服务 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure 存储团队博客](https://blogs.msdn.com/b/windowsazurestorage/)
 * [使用 AzCopy 命令行实用工具传输数据](../common/storage-use-azcopy.md)
 * [排查 Azure 文件问题 - Windows](storage-troubleshoot-windows-file-connection-problems.md)

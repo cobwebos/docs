@@ -1,5 +1,5 @@
 ---
-title: 使用 Linux VM 系统分配的托管标识通过 SAS 凭据访问 Azure 存储
+title: 教程：使用 SAS 凭据访问 Azure 存储 - Linux - Azure AD
 description: 本教程介绍了如何使用 Linux VM 系统分配的托管标识通过 SAS 凭据（而不是存储帐户访问密钥）访问 Azure 存储。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06fa483a34efa3a9486e04d894a3139d17b157b4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6a173fe36c20e9f13f1b1c1f27efc36821c8264a
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273951"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266298"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>教程：使用 Linux VM 系统分配的标识通过 SAS 凭据访问 Azure 存储
 
@@ -51,8 +51,8 @@ ms.locfileid: "59273951"
 1. 单击 Azure 门户左上角的“+/创建新服务”按钮。
 2. 依次单击“存储”、“存储帐户”，并将显示新的“创建存储帐户”面板。
 3. 输入存储帐户的**名称**，稍后将使用该名称。  
-4. “部署模型”和“帐户类型”应分别设置为“资源管理器”和“通用”。 
-5. 确保“订阅”和“资源组”与上一步中创建 VM 时指定的名称匹配。
+4. **部署模型**和**帐户类型**应分别设置为“资源管理器”和“通用”。 
+5. 确保“订阅”和“资源组”与上一步中创建 VM 时指定的名称匹配。 
 6. 单击“创建”。
 
     ![新建存储帐户](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
@@ -77,8 +77,8 @@ Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用 VM �
 3. 单击页面顶部的“+ 添加角色分配”，为 VM 添加新的角色分配
 4. 在页面左侧，将“角色”设置为“存储帐户参与者”。 
 5. 在下一个下拉列表中，把“将访问权限分配给”设置为资源“虚拟机”。  
-6. 接下来，确保“订阅”下拉列表中列出了正确的订阅，然后将“资源组”设置为“所有资源组”。  
-7. 最后，在“选择”下，从下拉列表中选择你的 Linux 虚拟机，然后单击“保存”。  
+6. 接下来，确保“订阅”下拉列表中列出了正确的订阅，然后将“资源组”设置为“所有资源组”。   
+7. 最后，在“选择”下，从下拉列表中选择你的 Linux 虚拟机，然后单击“保存”。   
 
     ![Alt 图像文本](./media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
 
@@ -131,7 +131,7 @@ Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用 VM �
 
 这些参数包括在针对 SAS 凭据的请求的 POST 正文中。 有关用于创建 SAS 凭据的参数的详细信息，请参阅 [List Service SAS REST reference](/rest/api/storagerp/storageaccounts/listservicesas)（列出服务 SAS REST 参考）。
 
-使用以下 CURL 请求来获取 SAS 凭据。 请务必将 `<SUBSCRIPTION ID>`、`<RESOURCE GROUP>`、`<STORAGE ACCOUNT NAME>`、`<CONTAINER NAME>` 和 `<EXPIRATION TIME>` 参数值替换为你自己的值。 将 `<ACCESS TOKEN>` 值替换为前面检索的访问令牌：
+使用以下 CURL 请求来获取 SAS 凭据。 请务必将 `<SUBSCRIPTION ID>`、`<RESOURCE GROUP>`、`<STORAGE ACCOUNT NAME>`、`<CONTAINER NAME>` 和 `<EXPIRATION TIME>` 参数值替换为你自己的值。 将 `<ACCESS TOKEN>` 值替换为前面检索到的访问令牌：
 
 ```bash 
 curl https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>/listServiceSas/?api-version=2017-06-01 -X POST -d "{\"canonicalizedResource\":\"/blob/<STORAGE ACCOUNT NAME>/<CONTAINER NAME>\",\"signedResource\":\"c\",\"signedPermission\":\"rcw\",\"signedProtocol\":\"https\",\"signedExpiry\":\"<EXPIRATION TIME>\"}" -H "Authorization: Bearer <ACCESS TOKEN>"

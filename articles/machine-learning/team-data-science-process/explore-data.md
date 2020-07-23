@@ -3,20 +3,19 @@ title: 在 Team Data Science Process 中浏览数据
 description: 浏览通常用于 Team Data Science Process 的不同存储环境中的数据。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d4d2bc3292926144f13508780885e082f2b1fdc3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: ca993fd6a449b2655b13da337875fa3f9f27cade
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60303615"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76721262"
 ---
 # <a name="explore-data-in-the-team-data-science-process"></a>在 Team Data Science Process 中浏览数据
 
@@ -28,4 +27,4 @@ ms.locfileid: "60303615"
 * 使用 SQL 和编程语言（如 Python）浏览 [SQL Server](explore-data-sql-server.md) 数据。
 * 使用 Hive 查询浏览 [Hive 表](explore-data-hive-tables.md)数据。
 
-此外，视频[在 Azure 机器学习工作室中预处理数据](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/)介绍了 Azure 机器学习工作室中用于清除和转换数据的常用模块。
+此外，视频（ [Azure 机器学习 Studio 中的预处理数据](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/)）描述了用于清除和转换数据的常用模块。

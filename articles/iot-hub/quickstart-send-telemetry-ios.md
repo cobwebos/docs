@@ -7,14 +7,16 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom:
+- mvc
+- mqtt
 ms.date: 04/03/2019
-ms.openlocfilehash: a3f72c2a55acfc53d7d8a07bd10250c6ed6102ea
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: dd6ad0a3bc20821f51fcb4637dd4af18a6c3ec84
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006899"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769144"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>快速入门：将遥测数据从设备发送到 IoT 中心 (iOS)
 
@@ -26,18 +28,26 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
 - 从 [Azure 示例](https://github.com/Azure-Samples/azure-iot-samples-ios/archive/master.zip)下载代码示例
+
 - 最新版本的 [XCode](https://developer.apple.com/xcode/)，运行最新版本的 iOS SDK。 本快速入门已使用 XCode 10.2 和 iOS 12.2 测试过。
+
 - 最新版 [CocoaPods](https://guides.cocoapods.org/using/getting-started.html)。
-- 运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IOT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
+
+- 确保已在防火墙中打开端口 8883。 本快速入门中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+
+
+- 运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展会将特定于 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 的命令添加到 Azure CLI。
 
    ```azurecli-interactive
-   az extension add --name azure-cli-iot-ext
+   az extension add --name azure-iot
    ```
+
+   [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -51,21 +61,23 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
-   **myiOSdevice**：这是为注册的设备提供的名称。 请按显示的方法使用 myiOSdevice。 如果为设备选择不同名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
+   **myiOSdevice**：这是所注册的设备的名称。 建议使用 **myiOSdevice**，如图所示。 如果为设备选择不同名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
    ```azurecli-interactive
-   az iot hub device-identity create --hub-name YourIoTHubName --device-id myiOSdevice
+   az iot hub device-identity create --hub-name {YourIoTHubName} --device-id myiOSdevice
    ```
 
-1. 运行以下命令，获取刚注册设备的设备连接字符串：
+1. 在 Azure Cloud Shell 中运行以下命令，以获取刚注册设备的_设备连接字符串_：
+
+   **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
    ```azurecli-interactive
-   az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id myiOSdevice --output table
+   az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id myiOSdevice --output table
    ```
 
    记下如下所示的设备连接字符串：
 
-   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
+   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=myiOSdevice;SharedAccessKey={YourSharedAccessKey}`
 
     稍后会在快速入门中用到此值。
 
@@ -99,15 +111,15 @@ pod install
    open "MQTT Client Sample.xcworkspace"
    ```
 
-2. 展开“MQTT 客户端示例”项目，然后展开同一名称的文件夹。  
+2. 展开“MQTT 客户端示例”项目，然后展开同一名称的文件夹。   
 3. 打开 **ViewController.swift**，以便在 XCode 中进行编辑。 
 4. 搜索 **connectionString** 变量，并使用以前记下的设备连接字符串更新其值。
 5. 保存所做更改。 
-6. 使用“生成并运行”按钮或“Command + R”组合键在设备模拟器中运行项目。 
+6. 使用“生成并运行”按钮或“Command + R”组合键在设备模拟器中运行项目。   
 
    ![运行项目](media/quickstart-send-telemetry-ios/run-sample.png)
 
-7. 当模拟器打开后，在示例应用中选择“启动”。
+7. 当模拟器打开后，在示例应用中选择“启动”。 
 
 以下屏幕截图显示了在应用程序将模拟遥测数据发送到 IoT 中心后的一些示例输出：
 
@@ -120,7 +132,7 @@ pod install
 在 Azure Cloud Shell 中运行以下命令，并将 `YourIoTHubName` 替换为 IoT 中心的名称：
 
 ```azurecli-interactive
-az iot hub monitor-events --device-id myiOSdevice --hub-name YourIoTHubName
+az iot hub monitor-events --device-id myiOSdevice --hub-name {YourIoTHubName}
 ```
 
 以下屏幕截图显示了在扩展接收模拟设备发送到 IoT 中心的遥测数据后的输出：
@@ -135,15 +147,9 @@ az iot hub monitor-events --device-id myiOSdevice --hub-name YourIoTHubName
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你设置了 IoT 中心、注册了设备、将模拟遥测数据从 iOS 设备发送到了中心，并从中心读取了遥测数据。 
+在本快速入门中，你设置了 IoT 中心、注册了设备、将模拟遥测数据从 iOS 设备发送到了中心，并从中心读取了遥测数据。 
 
 若要了解如何从后端应用程序控制模拟设备，请继续阅读下一快速入门教程。
 
 > [!div class="nextstepaction"]
 > [快速入门：控制连接到 IoT 中心的设备](quickstart-control-device-node.md)
-
-<!-- Links -->
-[lnk-process-d2c-tutorial]: tutorial-routing.md
-[lnk-device-management]: iot-hub-node-node-device-management-get-started.md
-[lnk-iot-edge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-connect-device]: https://azure.microsoft.com/develop/iot/

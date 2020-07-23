@@ -1,26 +1,21 @@
 ---
-title: 用于 Azure 备份的 Azure 资源管理器模板
-description: Azure 备份 PowerShell 示例
-services: backup
-author: rayne-wiselman
-manager: carmonm
-ms.service: backup
+title: Azure 资源管理器模板
+description: 用于恢复服务保管库和 Azure 备份功能的 Azure 资源管理器模板
 ms.topic: sample
 ms.date: 01/31/2019
-ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: bed2c002cacdac1e47852e6fa3181885af6733d2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 09962a37f36621950189e9446099c349de9430bb
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236803"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170983"
 ---
 # <a name="azure-resource-manager-templates-for-azure-backup"></a>用于 Azure 备份的 Azure 资源管理器模板
 
 下表包含可以与恢复服务保管库和 Azure 备份功能配合使用的 Azure 资源管理器模板的链接。 若要了解 JSON 语法和属性，请参阅 [Microsoft.RecoveryServices 资源类型](/azure/templates/microsoft.recoveryservices/allversions)。
 
-|   |   |
+| 模板 | 说明 |
 |---|---|
 |**恢复服务保管库** | |
 | [创建恢复服务保管库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vault-create)| 创建恢复服务保管库。 此保管库可以用于 Azure 备份和 Azure Site Recovery。 |

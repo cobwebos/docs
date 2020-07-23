@@ -1,23 +1,23 @@
 ---
 title: Phoenix Query Server REST SDK - Azure HDInsight
 description: 在 Azure HDInsight 中安装并使用适用于 Phoenix Query Server 的 REST SDK。
-ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
+ms.service: hdinsight
+ms.topic: how-to
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 12/04/2017
-ms.openlocfilehash: 1f468cac29579d8748f61a47b548a67d36ff8279
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 01/01/2020
+ms.openlocfilehash: 93136286dc14a5c7c69fe8c17829eddabddbfacf
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695956"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080051"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix 查询服务器 REST SDK
 
-[Apache Phoenix](https://phoenix.apache.org/) 是一个以 [Apache HBase](apache-hbase-overview.md) 为基础的开源大规模并行关系数据库层。 Phoenix 允许通过 [SQLLine](apache-hbase-phoenix-squirrel-linux.md) 之类的 SSH 工具将类 SQL 查询与 HBase 配合使用。 Phoenix 也提供名为“Phoenix 查询服务器 (PQS)”的 HTTP 服务器，这是一个瘦客户端，支持两种用于客户端通信的传输机制：JSON 和协议缓冲区。 协议缓冲区是默认的机制，提供的通信比 JSON 更高效。
+[Apache Phoenix](https://phoenix.apache.org/) 是一个以 [Apache HBase](apache-hbase-overview.md) 为基础的开源大规模并行关系数据库层。 Phoenix 允许通过 [SQLLine](apache-hbase-query-with-phoenix.md) 之类的 SSH 工具将类 SQL 查询与 HBase 配合使用。 Phoenix 也提供名为“Phoenix 查询服务器 (PQS)”的 HTTP 服务器，这是一个瘦客户端，支持两种用于客户端通信的传输机制：JSON 和协议缓冲区。 协议缓冲区是默认的机制，提供的通信比 JSON 更高效。
 
 本文介绍如何使用 PQS REST SDK 创建表、逐个或成批 upsert 行，以及使用 SQL 语句选择数据。 示例使用[适用于 Apache Phoenix 查询服务器的 Microsoft .NET 驱动程序](https://www.nuget.org/packages/Microsoft.Phoenix.Client)。 此 SDK 在 [Apache Calcite 的 Avatica](https://calcite.apache.org/avatica/) API 基础上构建，该 API 将协议缓冲区专用于序列化格式。
 
@@ -27,7 +27,9 @@ ms.locfileid: "64695956"
 
 适用于 Apache Phoenix 查询服务器的 Microsoft .NET 驱动程序以 NuGet 包的形式提供，可以使用以下命令通过 Visual Studio **NuGet 包管理器控制台**进行安装：
 
-    Install-Package Microsoft.Phoenix.Client
+```console
+Install-Package Microsoft.Phoenix.Client
+```
 
 ## <a name="instantiate-new-phoenixclient-object"></a>实例化新的 PhoenixClient 对象
 
@@ -71,7 +73,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 下面是一些相关属性：
 
-| 属性 | 描述 |
+| 属性 | 说明 |
 | -- | -- |
 | AutoCommit | 一个布尔值，表示是否为 Phoenix 事务启用 `autoCommit`。 |
 | ReadOnly | 一个布尔值，表示连接是否为只读。 |
@@ -82,10 +84,10 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 下面是 `TransactionIsolation` 值：
 
-| 隔离值 | 描述 |
+| 隔离值 | 说明 |
 | -- | -- |
 | 0 | 事务不受支持。 |
-| 第 | 可能出现脏读、不可重复读和幻读。 |
+| 1 | 可能出现脏读、不可重复读和幻读。 |
 | 2 | 可以防止脏读，但会出现不可重复读和幻读。 |
 | 4 | 可以防止脏读和不可重复读，但会出现幻读。 |
 | 8 | 脏读、不可重复读和幻读都可以防止。 |
@@ -94,7 +96,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 HBase 与任何其他 RDBMS 一样，在表中存储数据。 Phoenix 使用标准的 SQL 查询来创建新表，同时定义主键和列类型。
 
-此示例和所有后续示例都按照[实例化新的 PhoenixClient 对象](#instantiate-new-phoenixclient-object)中的定义使用实例化的 `PhoenixClient` 对象。
+此示例和所有更高的示例使用实例化 `PhoenixClient` [新的 PhoenixClient 对象](#instantiate-new-phoenixclient-object)中定义的实例化对象。
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -170,7 +172,7 @@ finally
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
 ```
 
-表的 `StateProvince` 列值会用在后续的选择操作中。
+该表的 `StateProvince` 列值将在以后的选择操作中使用。
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -277,7 +279,7 @@ finally
 }
 ```
 
-执行插入语句的结构类似于创建新表。 请注意，在 `try` 块末尾，事务是显式提交的。 此示例重复插入事务 300 次。 以下示例演示更有效的批插入过程。
+执行插入语句的结构类似于创建新表。 在块的末尾 `try` ，将显式提交事务。 此示例重复插入事务 300 次。 以下示例演示更有效的批插入过程。
 
 ## <a name="batch-insert-data"></a>批插入数据
 
@@ -494,7 +496,7 @@ finally
 
 `select` 语句的输出应该是以下结果：
 
-```
+```output
 id0 first0
 id1 first1
 id10 first10
@@ -537,7 +539,7 @@ MH: 6
 FM: 5
 ```
 
-## <a name="next-steps"></a>后续步骤 
+## <a name="next-steps"></a>后续步骤
 
 * [HDInsight 中的 Apache Phoenix](../hdinsight-phoenix-in-hdinsight.md)
 * [使用 Apache HBase REST SDK](apache-hbase-rest-sdk.md)

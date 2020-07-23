@@ -9,22 +9,21 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 462f8dafdffa7ee01e6ccf7945a1abfdff90db42
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: dc23a0a68471b82c990d5d8a3086e2e71e88d0c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60506091"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513930"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>使用 StorSimple 设备管理器服务查看和管理作业（Update 3 和更高版本）
 
 ## <a name="overview"></a>概述
-“作业”边栏选项卡提供了一个中央门户，用于查看和管理在连接到 StorSimple 设备管理器服务的设备上启动的作业。 可以针对多个设备查看计划的、正在运行的、已完成的、已取消的和失败的作业。 结果以表格形式呈现。
+“作业”边栏选项卡提供了一个中央门户，用于查看和管理在连接到 StorSimple 设备管理器服务的设备上启动的作业。**** 可以针对多个设备查看计划的、正在运行的、已完成的、已取消的和失败的作业。 结果以表格形式呈现。
 
 ![“作业”边栏选项卡](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
 
@@ -41,7 +40,7 @@ ms.locfileid: "60506091"
 * **状态** – 正在运行、已完成、已取消、失败、正在取消或已完成但有错误。
 * **实体** – 作业可以与卷、备份策略或设备相关联。 例如，克隆作业与卷相关联，计划备份作业与备份策略相关联。 设备作业是在执行灾难恢复 (DR) 或还原操作后创建的。
 * **设备** – 在其上启动作业的设备的名称。
-* **启动时间** - 启动作业的时间。
+* **启动**时间–启动作业的时间。
 * **持续时间** – 完成作业所需的时间。
 
 作业列表每 30 秒刷新一次。
@@ -55,9 +54,9 @@ ms.locfileid: "60506091"
 执行以下步骤，查看任意作业的详细信息。
 
 #### <a name="to-view-job-details"></a>查看作业详细信息
-1. 转到 StorSimple 设备管理器服务，单击“作业”。
+1. 转到 StorSimple 设备管理器服务，单击“作业”。****
 
-2. 在“作业”边栏选项卡中，通过适当的筛选器运行查询，显示所需的作业。 可以搜索已完成的、正在运行的或已取消的作业。
+2. 在“作业”**** 边栏选项卡中，通过适当的筛选器运行查询，显示所需的作业。 可以搜索已完成的、正在运行的或已取消的作业。
 
     ![“作业”边栏选项卡](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
 
@@ -77,15 +76,15 @@ ms.locfileid: "60506091"
 
 
 ### <a name="to-cancel-a-job"></a>取消作业
-1. 在“作业”页上，通过适当的筛选器运行查询，显示要取消的正在运行的作业。 选择作业。
+1. 在 **“作业”** 页上，通过使用相应的筛选器运行查询，显示你要取消的正在运行的作业。 选择作业。
 
-2. 右键单击选定的作业调用上下文菜单，单击“取消”。
+2. 右键单击选定的作业调用上下文菜单，单击“取消”。****
 
     ![作业详细信息](./media/storsimple-8000-manage-jobs-u2/jobs2.png)
 
-3. 出现确认提示时，单击“是”。 现在已取消此作业。
+3. 当系统提示你进行确认时，单击 **“是”**。 现在已取消此作业。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[管理 StorSimple 备份策略](storsimple-8000-manage-backup-policies-u2.md)。
-* 了解如何[使用 StorSimple 设备管理器服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
+* 了解如何[使用 StorSimple Device Manager 服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
 

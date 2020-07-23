@@ -3,29 +3,29 @@ title: StorSimple Snapshot Manager 备份策略 | Microsoft Docs
 description: 介绍如何使用 StorSimple Snapshot Manager MMC 管理单元创建和管理控制计划备份的备份策略。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: 04415d0b-42f0-4737-8afa-257fb2dbe5d0
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: 7dac26b058b959011e38b4373369b8a1115d2705
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: twooley
+ms.openlocfilehash: 871f2313b8cd0e8b94a7daff00e5743ee5cdfd71
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60303193"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85511535"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>使用 StorSimple Snapshot Manager 创建和管理备份策略
 ## <a name="overview"></a>概述
-备份策略创建在本地或云中备份卷数据的计划。 当创建备份策略时，还可以指定保留策略。 （可以保留最多 64 张快照。）有关备份策略的详细信息，请参阅 [StorSimple 8000 系列：混合云解决方案](storsimple-overview.md)中的[备份类型](storsimple-what-is-snapshot-manager.md#backup-types-and-backup-policies)。
+备份策略创建在本地或云中备份卷数据的计划。 当创建备份策略时，还可以指定保留策略。 （最多可以保留64个快照。）有关备份策略的详细信息，请参阅 StorSimple 8000 系列中的[备份类型](storsimple-what-is-snapshot-manager.md#backup-types-and-backup-policies) [：混合云解决方案](storsimple-overview.md)。
 
-本教程介绍如何执行以下操作：
+本教程介绍了如何完成以下操作：
 
 * 创建备份策略
 * 编辑备份策略
@@ -36,58 +36,58 @@ ms.locfileid: "60303193"
 
 #### <a name="to-create-a-backup-policy"></a>创建备份策略
 1. 单击桌面图标启动 StorSimple Snapshot Manager。
-2. 在“**作用域**”窗格中，右键单击“**备份策略**”，并单击“**创建备份策略**”。
+2. 在 **“作用域”** 窗格中，右键单击 **“备份策略”**，然后单击 **“创建备份策略”**。
 
     ![创建备份策略](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_BU_policy.png)
 
-    此时会显示“**创建策略**”对话框。
+    此时会显示 **“创建策略”** 对话框。
 
     ![创建策略 -“常规”选项卡](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_general.png)
-3. 在“**常规**”选项卡上，填写以下信息：
+3. 在“常规”**** 选项卡上填写以下信息：
 
-   1. 在“**名称**”文本框中，键入策略的名称。
-   2. 在“**卷组**”文本框中，键入与该策略相关联的卷组名称。
-   3. 选择“**本地快照**”或“**云快照**”。
-   4. 选择要保留的快照数。 如果选择“**全部**”，则 64 张快照都会被保留（最大值）。
-4. 单击“**计划**”选项卡。
+   1. 在 **“名称”** 文本框中，键入策略名称。
+   2. 在 **“卷组”** 文本框中，键入与策略关联的卷组的名称。
+   3. 选择 **“本地快照”** 或 **“云快照”**。
+   4. 选择要保留的快照数。 如果选择 **“全部”**，则会保留 64 张快照（最大数目）。
+4. 单击 **“计划”** 选项卡。
 
     ![创建策略 -“计划”选项卡](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_schedule.png)
-5. 在“**计划**”选项卡上，填写以下信息：
+5. 在“计划”**** 选项卡上填写以下信息：
 
-   1. 单击“**启用**”复选框计划下一次备份。
-   2. 在“**设置**”下，选择“**一次**”、“**每日**”、“**每周**”或“**每月**”。
-   3. 在“**开始**”文本框中，单击日历图标并选择开始日期。
-   4. 在“**高级设置**”下，可以设置可选的重复计划和结束日期。
+   1. 单击 **“启用”** 复选框计划下一个备份。
+   2. 在 **“设置”** 下选择 **“一次性”**、**“每日”**、**“每周”** 或 **“每月”**。
+   3. 在 **“开始”** 文本框中，单击日历图标，然后选择一个开始日期。
+   4. 在 **“高级设置”** 下，你可以设置可选的重复计划和结束日期。
    5. 单击“确定”。
 
-创建备份策略后，以下信息会显示在“**结果**”窗格中：
+创建备份策略后，**“结果”** 窗格中会显示以下信息：
 
 * **名称** – 备份策略的名称。
 * **类型** – 本地快照或云快照。
 * **卷组** – 与策略关联的卷组。
-* **保留** – 保留的快照数目；最大值为 64。
+* **保留数目** – 保留的快照数目，最多为 64 张。
 * **创建日期** – 创建此策略的日期。
-* **启用**– 该策略当前是否生效：**True**指示它是有效;**False**指示它不起作用。
+* **已启用** – 该策略当前是否生效：**True** 表示已生效，**False** 表示未生效。
 
 ## <a name="edit-a-backup-policy"></a>编辑备份策略
 使用以下过程编辑现有的备份策略。
 
 #### <a name="to-edit-a-backup-policy"></a>编辑备份策略
 1. 单击桌面图标启动 StorSimple Snapshot Manager。
-2. 在“**作用域**”窗格中，单击“**备份策略**”节点。 所有备份策略会显示在“**结果**”窗格中。
-3. 右键单击要编辑的策略，并单击“**编辑**”。
+2. 在 **“作用域”** 窗格中，单击 **“备份策略”** 节点。 此时会在 **“结果”** 窗格中显示所有备份策略。
+3. 右键单击要编辑的策略，然后单击“编辑”****。
 
     ![编辑备份策略](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Edit_BU_policy.png)
-4. 当“**创建策略**”窗口出现时，输入更改，然后单击“**确定**”。
+4. 出现 **“创建策略”** 窗口时，请输入要做的更改，然后单击 **“确定”**。
 
 ## <a name="delete-a-backup-policy"></a>删除备份策略
 使用以下过程删除备份策略。
 
 #### <a name="to-delete-a-backup-policy"></a>删除备份策略
 1. 单击桌面图标启动 StorSimple Snapshot Manager。
-2. 在“**作用域**”窗格中，单击“**备份策略**”节点。 所有备份策略会显示在“**结果**”窗格中。
-3. 右键单击要删除的备份策略，并单击“**删除**”。
-4. 在出现的确认消息中单击“**是**”。
+2. 在 **“作用域”** 窗格中，单击 **“备份策略”** 节点。 此时会在 **“结果”** 窗格中显示所有备份策略。
+3. 右键单击要删除的备份策略，然后单击 **“删除”**。
+4. 出现确认消息时，单击 **“是”**。
 
     ![删除备份策略确认](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Delete_BU_policy.png)
 

@@ -1,24 +1,17 @@
 ---
 title: 关于 Azure Log Analytics 中存储的个人数据的指南 | Microsoft Docs
 description: 本文介绍如何管理存储在 Azure Log Analytics 中的个人数据以及识别和删除这些数据的方法。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 05/18/2018
-ms.author: magoedte
-ms.openlocfilehash: 0cf5a80e3eedbe7efb8463162b5b3ed489ac08c8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7d8998b450613e097230d7692a8ad1990830993b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61087218"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539323"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>存储在 Log Analytics 和 Application Insights 中的个人数据指南
 
@@ -74,8 +67,8 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
     | where timestamp > ago(1d)
     | project $table, timestamp, name, customDimensions 
     ```
-* *内存中和传输中数据*：Application Insights 会跟踪异常、请求、依赖项调用和跟踪。 私人数据通常可以在代码和 HTTP 调用级别收集。 查看异常、请求、依赖项和跟踪表中是否存在任何此类数据。 尽可能使用[遥测初始值设定项](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling)来混淆该数据。
-* *Snapshot Debugger 捕获*：使用 Application Insights 中的 [Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) 功能时，只要在应用程序的生产实例上捕获某个异常，就可以收集调试快照。 快照会公开导致异常的完整堆栈跟踪，以及堆栈中每一步的本地变量的值。 遗憾的是，此功能不允许选择性地删除吸附点，也不允许以编程方式访问快照中的数据。 因此，如果默认的快照保留率不满足符合性要求，建议关闭此功能。
+* *内存中和传输中数据*：Application Insights 会跟踪异常、请求、依赖项调用和跟踪。 私人数据通常可以在代码和 HTTP 调用级别收集。 查看异常、请求、依赖项和跟踪表中是否存在任何此类数据。 尽可能使用[遥测初始值设定项](../app/api-filtering-sampling.md)来混淆该数据。
+* *Snapshot Debugger 捕获*：使用 Application Insights 中的 [Snapshot Debugger](../app/snapshot-debugger.md) 功能时，只要在应用程序的生产实例上捕获某个异常，就可以收集调试快照。 快照会公开导致异常的完整堆栈跟踪，以及堆栈中每一步的本地变量的值。 遗憾的是，此功能不允许选择性地删除吸附点，也不允许以编程方式访问快照中的数据。 因此，如果默认的快照保留率不满足符合性要求，建议关闭此功能。
 
 ## <a name="how-to-export-and-delete-private-data"></a>如何导出和删除私人数据
 
@@ -88,7 +81,7 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
 对于查看和导出数据请求，应使用 [Log Analytics 查询 API](https://dev.loganalytics.io/) 或 [Application Insights 查询 API](https://dev.applicationinsights.io/quickstart)。 将数据形状转换为适当形状以提供给用户时，将由你实现相关逻辑。 [Azure Functions](https://azure.microsoft.com/services/functions/) 非常适合托管此类逻辑。
 
 > [!IMPORTANT]
->  虽然大多数的清除操作可能会比 SLA，更快的速度完成**形参在 30 天内设置的清除操作完成的 SLA**由于大量使用的数据平台影响。 这是一个自动化的过程;没有方法来请求更快地处理操作。
+>  虽然绝大多数清除操作完成起来会比 SLA 快得多，但由于其对所用数据平台造成的严重影响，因此**完成清除操作所需的正式 SLA 设置为 30 天**。 这是一个自动化过程；无法请求以更快的速度处理操作。
 
 ### <a name="delete"></a>删除
 
@@ -99,15 +92,20 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
 
 清除是一项高特权操作，如果未向 Azure 中的应用或用户显式授予 Azure 资源管理器中的某个角色，则任何应用或用户（甚至包括资源所有者）都无权执行该操作。 此角色为_数据清除程序_，由于可能会丢失数据，应谨慎委托。 
 
+> [!IMPORTANT]
+> 若要管理系统资源，清除请求被限制为每小时 50 个请求。 应该通过发送一条命令并在其谓词中包含所有需要清除的用户标识，批量执行清除请求。 使用 [in 运算符](/azure/kusto/query/inoperator)来指定多个标识。 在执行清除请求之前，应运行查询来验证结果是否符合预期。 
+
+
+
 一旦分配该 Azure 资源管理器角色，就有两个新的 API 路径可用： 
 
 #### <a name="log-data"></a>日志数据
 
-* [POST purge](https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge) - 使用一个对象来指定要删除的数据的参数，并返回引用 GUID 
+* [POST purge](/rest/api/loganalytics/workspacepurge/purge) - 使用一个对象来指定要删除的数据的参数，并返回引用 GUID 
 * GET purge status：POST purge 调用将返回“x-ms-status-location”标头，其中包含一个 URL，可以调用该 URL 来确定清除 API 的状态。 例如：
 
     ```
-    x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.OperatonalInsights/workspaces/[WorkspaceName]/operations/purge-[PurgeOperationId]?api-version=2015-03-20
+    x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.OperationalInsights/workspaces/[WorkspaceName]/operations/purge-[PurgeOperationId]?api-version=2015-03-20
     ```
 
 > [!IMPORTANT]
@@ -115,7 +113,7 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
 
 #### <a name="application-data"></a>应用程序数据
 
-* [POST purge](https://docs.microsoft.com/rest/api/application-insights/components/purge) - 使用一个对象来指定要删除的数据的参数，并返回引用 GUID
+* [POST purge](/rest/api/application-insights/components/purge) - 使用一个对象来指定要删除的数据的参数，并返回引用 GUID
 * GET purge status：POST purge 调用将返回“x-ms-status-location”标头，其中包含一个 URL，可以调用该 URL 来确定清除 API 的状态。 例如：
 
    ```

@@ -1,24 +1,21 @@
 ---
 title: 连接到 Azure AD 时对 MVC 项目所做的更改
 description: 描述一下，使用 Visual Studio 连接服务连接到 Azure AD 时，MVC 项目会发生什么情况
-services: active-directory
 author: ghogen
-manager: douge
-ms.assetid: 8b24adde-547e-4ffe-824a-2029ba210216
-ms.prod: visual-studio-dev15
+manager: jillfra
+ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e40a1fd72adf353d5c4d856544482cb7bd68f43
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: b6a364cbd29c3273466bee15b9a54e097497a8e5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413990"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85479107"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>我的 MVC 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况？
 
@@ -32,9 +29,9 @@ ms.locfileid: "65413990"
 
 ## <a name="added-references"></a>添加的引用
 
-影响项目文件 *.NET 引用和 `packages.config`（NuGet 引用）。
+影响项目文件（*.NET 引用）和 `packages.config`（NuGet 引用）。
 
-| Type | 参考 |
+| 类型 | 参考 |
 | --- | --- |
 | .NET; NuGet | Microsoft.IdentityModel.Protocol.Extensions |
 | .NET; NuGet | Microsoft.Owin |
@@ -49,7 +46,7 @@ ms.locfileid: "65413990"
 
 选择了“读取目录数据”选项时的其他引用：
 
-| Type | 参考 |
+| 类型 | 参考 |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer（仅限 Visual Studio 2015） |
@@ -63,7 +60,7 @@ ms.locfileid: "65413990"
 
 删除了以下引用（仅限 ASP.NET 4 项目，如 Visual Studio 2015 中所示）：
 
-| Type | 参考 |
+| 类型 | 参考 |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
@@ -166,4 +163,4 @@ ms.locfileid: "65413990"
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure Active Directory 的身份验证方案](authentication-scenarios.md)
-- [向 ASP.NET Web 应用添加 Microsoft 登录功能](quickstart-v1-aspnet-webapp.md)
+- [向 ASP.NET Web 应用添加 Microsoft 登录功能](quickstart-v2-aspnet-webapp.md)

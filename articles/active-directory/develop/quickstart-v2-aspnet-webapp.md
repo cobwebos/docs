@@ -1,36 +1,25 @@
 ---
-title: Microsoft 标识平台 ASP.NET Web 服务器快速入门 | Azure
+title: 向 ASP.NET Web 应用添加 Microsoft 标识平台登录功能 | Azure
 description: 了解如何使用 OpenID Connect 在 ASP.NET Web 应用上实现 Microsoft 登录。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.devlang: na
+ms.subservice: develop
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63ff648f89a231f0077363c88709a17d157ae8c
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
+ms.openlocfilehash: 6f4c18d0fb2a4414dc98100dcec85161fdda85f0
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190902"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554093"
 ---
-# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>快速入门：向 ASP.NET Web 应用添加 Microsoft 登录功能
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
-
-本快速入门介绍如何使用 ASP.NET Web 应用从任何 Azure Active Directory (Azure AD) 实例中登录个人帐户（hotmail.com、outlook.com 等）以及学校和工作帐户。
-
-![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
-
+# <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>快速入门：将 Microsoft 标识平台登录添加到 ASP.NET Web 应用
+在本快速入门中，你将通过代码示例了解 ASP.NET Web 应用如何从任何 Azure Active Directory (Azure AD) 实例登录个人帐户（hotmail.com、outlook.com 和其他）以及工作和学校帐户。  （有关说明，请参阅[示例工作原理](#how-the-sample-works)。）
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>注册并下载快速入门应用
 > 可以使用两个选项来启动快速入门应用程序：
@@ -52,10 +41,12 @@ ms.locfileid: "65190902"
 > 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
 > 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
 > 1. 选择“新注册”。
-> 1. 出现“注册应用程序”页后，请输入应用程序的注册信息：
+> 1. “注册应用程序”页出现后，请输入应用程序的注册信息：
 >      - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `ASPNET-Quickstart`。
 >      - 在“重定向 URI”中添加 `https://localhost:44368/`，然后单击“注册”。
-选择“身份验证”菜单，在“隐式授权”下设置“ID 令牌”，然后选择“保存”。
+>      - 在“管理”部分下的左侧导航窗格中，选择“身份验证”
+>          - 在“隐式授权”子部分下，选择“ID 令牌”。
+>          - 然后选择“保存”。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
@@ -68,35 +59,53 @@ ms.locfileid: "65190902"
 
 #### <a name="step-2-download-your-project"></a>步骤 2：下载项目
 
-[下载 Visual Studio 2019 解决方案](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
+> [!div renderon="docs"]
+> [下载 Visual Studio 2019 解决方案](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>步骤 3：配置 Visual Studio 项目
+> [!div renderon="portal"]
+> 使用 Visual Studio 2019 运行项目。
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [下载代码示例](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
+
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行
+> 我们已经为项目配置了应用属性的值。 
+
+> [!div renderon="docs"]
+> #### <a name="step-3-run-your-visual-studio-project"></a>步骤 3：运行 Visual Studio 项目
 
 1. 将 zip 文件提取到更靠近根文件夹的本地文件夹（例如，**C:\Azure-Samples**）
 1. 在 Visual Studio 中打开解决方案 (AppModelv2-WebApp-OpenIDConnect-DotNet.sln)
 1. 可能需要右键单击项目 `AppModelv2-WebApp-OpenIDConnect-DotNet` 和“还原 NuGet 包”，具体取决于 Visual Studio 的版本
 1. 打开包管理器控制台（“视图”->“其他 Windows”->“包管理器控制台”）并运行 `Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
-1. 编辑 **Web.config**，将参数 `ClientId` 和 `Tenant` 替换为：
-
-    ```xml
-    <add key="ClientId" value="Enter_the_Application_Id_here" />
-    <add key="Tenant" value="Enter_the_Tenant_Info_Here" />
-    ```
 
 > [!div renderon="docs"]
-> 其中：
+> 5. 编辑 **Web.config**，将参数 `ClientId` 和 `Tenant` 替换为：
+>    ```xml
+>    <add key="ClientId" value="Enter_the_Application_Id_here" />
+>    <add key="Tenant" value="Enter_the_Tenant_Info_Here" />
+>    ```
+>    其中：
 > - `Enter_the_Application_Id_here` - 是已注册应用程序的应用程序 ID。
 > - `Enter_the_Tenant_Info_Here` - 是下述选项之一：
->   - 如果应用程序支持“仅我的组织”，请将该值替换为**租户 ID** 或**租户名称**（例如 contoso.microsoft.com）
->   - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为 `organizations`
->   - 如果应用程序支持“所有 Microsoft 帐户用户”，请将该值替换为 `common`
+>   - 如果应用程序支持“仅我的组织”，请将该值替换为**租户 ID** 或**租户名称**（例如 contoso.onmicrosoft.com）
+>   - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为`organizations`
+>   - 如果应用程序支持“所有 Microsoft 帐户用户”，请将该值替换为`common`
 >
 > > [!TIP]
-> > 若要查找“应用程序 ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到“概览”页。
+> > - 若要查找“应用程序 ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到“概览”页。  
+> > - 确保 **Web.config** 中 `redirectUri` 的值与 Azure AD 中为应用注册定义的**重定向 URI** 相对应（如果不对应，请导航到应用注册的“身份验证”菜单，并更新**重定向 URI** 以匹配）
+
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > `Enter_the_Supported_Account_Info_Here`
 
 ## <a name="more-information"></a>详细信息
 
 本部分概述了登录用户所需的代码。 阅读本概述对于了解代码的工作原理、主要参数非常有用，如果你想要将登录功能添加到现有 ASP.NET 应用程序，阅读本概述也非常有用。
+
+### <a name="how-the-sample-works"></a>示例工作原理
+![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
 
 ### <a name="owin-middleware-nuget-packages"></a>OWIN 中间件 NuGet 包
 
@@ -147,7 +156,7 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |其中  |  |
+> |其中  | 说明 |
 > |---------|---------|
 > | `ClientId`     | Azure 门户中注册的应用程序的应用程序 ID |
 > | `Authority`    | 用户要进行身份验证的 STS 终结点。 对于公有云，通常为 <https://login.microsoftonline.com/{tenant}/v2.0>，其中 {tenant} 是租户名称、租户 ID 或者引用常用终结点（用于多租户应用程序）的 common |
@@ -160,7 +169,7 @@ public void Configuration(IAppBuilder app)
 
 
 > [!NOTE]
-> 对本快速入门来说，设置 `ValidateIssuer = false` 是一种简化。 在实际应用程序中，需验证颁发者。
+> 在本快速入门中，设置 `ValidateIssuer = false` 是一种简化操作。 在实际应用程序中，需验证颁发者。
 > 查看示例，了解如何执行该操作。
 
 ### <a name="initiate-an-authentication-challenge"></a>启动身份验证质询

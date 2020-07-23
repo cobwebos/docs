@@ -1,23 +1,23 @@
 ---
-title: 如何在 Azure Database for MariaDB 中配置服务器参数
+title: 配置服务器参数 - Azure 门户 - Azure Database for MariaDB
 description: 本文介绍如何使用 Azure 门户在 Azure Database for MariaDB 中配置 MariaDB 服务器参数。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: c618a4035e9ec9b1ca1986e898ea1060ac05712d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 6/11/2020
+ms.openlocfilehash: 53ba3c71679ebda1e8e2bf0a59a6ef69d051df4f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60922455"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120409"
 ---
-# <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MariaDB 中配置服务器参数
+# <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-portal"></a>使用 Azure 门户在 Azure Database for MariaDB 中配置服务器参数
 
 Azure Database for MariaDB 支持配置某些服务器参数。 本文介绍如何使用 Azure 门户配置这些参数。 并非所有服务器参数都可调整。
 
-## <a name="navigate-to-server-parameters-on-azure-portal"></a>在 Azure 门户中导航到“服务器参数”
+## <a name="configure-server-parameters"></a>配置服务器参数
 
 1. 登录到 Azure 门户，然后定位到 Azure Database for MariaDB 服务器。
 2. 在“设置”部分下，单击“服务器参数”，打开 Azure Database for MariaDB 服务器的“服务器参数”页。
@@ -29,54 +29,32 @@ Azure Database for MariaDB 支持配置某些服务器参数。 本文介绍如�
 5. 保存参数的新值后，随时可以通过选择“全部重置为默认设置”，将所有设置还原为默认值。
 ![全部重置为默认设置](./media/howto-server-parameters/5-reset_parameters.png)
 
-## <a name="list-of-configurable-server-parameters"></a>可配置的服务器参数列表
+## <a name="setting-parameters-not-listed"></a>未列出设置参数
 
-受支持服务器参数的列表还在不断增加。 在 Azure 门户中使用服务器参数选项卡，以根据应用程序要求获取定义并配置服务器参数。
+如果 Azure 门户中未列出您要更新的服务器参数，则可以选择使用在连接级别设置参数 `init_connect` 。 这会为每个连接到服务器的客户端设置服务器参数。 
 
-## <a name="non-configurable-server-parameters"></a>不可配置的服务器参数
+1. 在“设置”部分下，单击“服务器参数”，打开 Azure Database for MariaDB 服务器的“服务器参数”页。
+2. 搜索`init_connect`
+3. 按以下格式添加服务器参数： `SET parameter_name=YOUR_DESIRED_VALUE` 值列中的 "值"。
 
-InnoDB 缓冲池和最大连接数不可配置，因[定价层](concepts-pricing-tiers.md)而定。
-
-|**定价层**| **vCore(s)**|InnoDB 缓冲池 (MB)| 最大连接数|
-|---|---|---|---|
-|基本| 第| 1024| 50|
-|基本| 2| 2560| 100|
-|常规用途| 2| 3584| 300|
-|常规用途| 4| 7680| 625|
-|常规用途| 8| 15360| 1250|
-|常规用途| 16| 31232| 2500|
-|常规用途| 32| 62976| 5000|
-|常规用途| 64| 125952| 10000|
-|内存优化| 2| 7168| 600|
-|内存优化| 4| 15360| 1250|
-|内存优化| 8| 30720| 2500|
-|内存优化| 16| 62464| 5000|
-|内存优化| 32| 125952| 10000|
-
-以下附加服务器参数不可在系统中配置：
-
-|**Parameter**|**固定值**|
-| :------------------------ | :-------- |
-|基本层中的 innodb_file_per_table|OFF|
-|innodb_flush_log_at_trx_commit|第|
-|sync_binlog|第|
-|innodb_log_file_size|512MB|
-
-在 [MariaDB](https://mariadb.com/kb/en/library/xtradbinnodb-server-system-variables/) 中，上表中未列出的其他服务器参数将设置为其 MariaDB 现成默认值。
+    例如，你可以通过将设置为来更改服务器的字符集 `init_connect``SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`
+4. 单击“保存”以保存更改。
 
 ## <a name="working-with-the-time-zone-parameter"></a>使用时区参数
 
 ### <a name="populating-the-time-zone-tables"></a>填充时区表
 
-可以通过从 MySQL 命令行或 MySQL Workbench 等工具调用 `az_load_timezone` 存储过程，填充服务器上的时区表。
+可以通过从 MySQL 命令行或 MySQL Workbench 等工具调用 `mysql.az_load_timezone` 存储过程，填充服务器上的时区表。
 
 > [!NOTE]
-> 如果正在运行 MySQL Workbench 中的 `az_load_timezone` 命令，可能需要先使用 `SET SQL_SAFE_UPDATES=0;` 关闭安全更新模式。
+> 如果正在运行 MySQL Workbench 中的 `mysql.az_load_timezone` 命令，可能需要先使用 `SET SQL_SAFE_UPDATES=0;` 关闭安全更新模式。
 
 ```sql
 CALL mysql.az_load_timezone();
 ```
 
+> [!IMPORTANT]
+> 应重启服务器，确保正确填充时区表。 若要重启服务器，请使用 [Azure 门户](howto-restart-server-portal.md)或 [CLI](howto-restart-server-cli.md)。
 要查看可用的时区值，请运行以下命令：
 
 ```sql
@@ -99,8 +77,6 @@ SET time_zone = 'US/Pacific';
 
 若要了解[日期和时间函数](https://mariadb.com/kb/en/library/convert_tz/)，请参阅 MariaDB 文档。
 
-<!--
-## Next steps
+## <a name="next-steps"></a>后续步骤
 
-- [Connection libraries for Azure Database for MariaDB](concepts-connection-libraries.md).
--->
+- 了解有关[服务器参数](concepts-server-parameters.md)的详细信息

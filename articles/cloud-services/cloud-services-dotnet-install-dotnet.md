@@ -3,61 +3,56 @@ title: 在 Azure 云服务角色上安装 .NET | Microsoft Docs
 description: 本文介绍如何在云服务 Web 角色和辅助角色上手动安装 .NET Framework
 services: cloud-services
 documentationcenter: .net
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 8d1243dc-879c-4d1f-9ed0-eecd1f6a6653
+author: tgore03
+manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/22/2018
-ms.author: jeconnoc
-ms.openlocfilehash: bc861b6730e8bf9db6ba2ab005496914f7b9ed89
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.author: tagore
+ms.openlocfilehash: c830dc0ee38ad808579a62274e3db87d0696e099
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699684"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79214723"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>在 Azure 云服务角色上安装 .NET
 本文介绍如何安装不随 Azure 来宾 OS 一起提供的 .NET Framework 版本。 可使用来宾 OS 上的 .NET 配置云服务 web 角色和辅助角色。
 
-例如，可在来宾 OS 系列 4 上安装 .NET 4.6.2（它不随 .NET 4.6 的任何版本一起提供）。 （来宾 OS 系列 5 随 .NET 4.6 一起提供。）有关最新的 Azure 来宾 OS 版本信息，请参阅 [Azure 来宾 OS 发行动态](cloud-services-guestos-update-matrix.md)。 
+例如，可在来宾 OS 系列 4（它不随 .NET Framework 4.6 的任何版本一起提供）上安装 .NET Framework 4.6.2。 （来宾 OS 系列 5 随 .NET Framework 4.6 一起提供。）有关最新的 Azure 来宾 OS 版本信息，请参阅 [Azure 来宾 OS 发行动态](cloud-services-guestos-update-matrix.md)。 
 
 >[!IMPORTANT]
->Azure SDK 2.9 包含一个限制，限制将 .NET 4.6 部署到来宾 OS 系列 4 或更早版本。 有关此限制的修复方法可在 [Microsoft 文档](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9)站点上找到。
+>Azure SDK 2.9 包含对在来宾 OS 系列 4 或更早版本上部署 .NET Framework 4.6 的限制。 有关此限制的修复方法可在 [Microsoft 文档](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9)站点上找到。
 
 要在 web 角色和辅助角色上安装 .NET，可将 .NET web 安装程序包括为云服务项目的一部分。 将安装程序作为角色启动任务的一部分启动。 
 
 ## <a name="add-the-net-installer-to-your-project"></a>将 .NET 安装程序添加到项目
 若要下载 .NET Framework 的 Web 安装程序，请选择想要安装的版本：
 
-* [.NET 4.8 web 安装程序](https://dotnet.microsoft.com/download/thank-you/net48)
-* [.NET 4.7.2 Web 安装程序](https://go.microsoft.com/fwlink/?LinkId=863262)
-* [.NET 4.6.2 Web 安装程序](https://www.microsoft.com/download/details.aspx?id=53345)
+* [.NET Framework 4.8 Web 安装程序](https://dotnet.microsoft.com/download/thank-you/net48)
+* [.NET Framework 4.7.2 Web 安装程序](https://go.microsoft.com/fwlink/?LinkId=863262)
+* [.NET Framework 4.6.2 Web 安装程序](https://www.microsoft.com/download/details.aspx?id=53345)
 
-添加 web 角色的安装程序：
-  1. 在“解决方案资源管理器”中云服务项目中的“角色”下，右键单击 web 角色，然后选择“添加” > “新文件夹”。 创建一个名为 **bin** 的文件夹。
-  2. 右键单击 bin 文件夹，并选择“添加” > >“现有项”。 选择 .NET 安装程序，并将它添加到 bin 文件夹。
+添加 web  角色的安装程序：
+  1. 在“解决方案资源管理器”  中云服务项目中的“角色”  下，右键单击 web  角色，然后选择“添加”   > “新文件夹”  。 创建一个名为 **bin** 的文件夹。
+  2. 右键单击 bin 文件夹，并选择“添加”   > >“现有项”  。 选择 .NET 安装程序，并将它添加到 bin 文件夹。
   
-添加辅助角色的安装程序：
-* 右键单击辅助角色，然后选择“添加” > “现有项”。 选择 .NET 安装程序，并将它添加到角色。 
+添加辅助  角色的安装程序：
+* 右键单击辅助  角色，然后选择“添加”   > “现有项”  。 选择 .NET 安装程序，并将它添加到角色。 
 
 当以此方式将文件添加到角色内容文件夹时，会自动将其添加到云服务包。 然后会将文件部署到虚拟机上的一致位置。 对云服务中的每个 Web 和辅助角色重复此过程，以便所有角色都有安装程序的副本。
 
 > [!NOTE]
-> 即使应用程序面向 .NET 4.6，也应该在云服务角色上安装 .NET 4.6.2。 来宾 OS 包括知识库[更新 3098779](https://support.microsoft.com/kb/3098779)和[更新 3097997](https://support.microsoft.com/kb/3097997)。 如果在知识库更新上安装 .NET 4.6，运行 .NET 应用程序时可能会出现问题。 若要避免这些问题，请安装 .NET 4.6.2，而不是版本 4.6。 有关详细信息，请参阅[知识库文章 3118750](https://support.microsoft.com/kb/3118750) 和 [4340191](https://support.microsoft.com/kb/4340191)。
+> 即使应用程序面向 .NET Framework 4.6，也应该在云服务角色上安装 .NET Framework 4.6.2。 来宾 OS 包括知识库[更新 3098779](https://support.microsoft.com/kb/3098779)和[更新 3097997](https://support.microsoft.com/kb/3097997)。 如果在知识库更新的基础上安装了 .NET Framework 4.6，则运行 .NET 应用程序时可能会出现问题。 若要避免这些问题，请安装 .NET Framework 4.6.2，而不是版本 4.6。 有关详细信息，请参阅[知识库文章 3118750](https://support.microsoft.com/kb/3118750) 和 [4340191](https://support.microsoft.com/kb/4340191)。
 > 
 > 
 
 ![包含安装程序文件的角色内容][1]
 
 ## <a name="define-startup-tasks-for-your-roles"></a>为角色定义启动任务
-在角色启动之前，可以使用启动任务执行操作。 安装 .NET Framework 作为启动任务的一部分，可确保在运行任何应用程序代码之前已安装好 Framework。 有关启动任务的详细信息，请参阅[在 Azure 中运行启动任务](cloud-services-startup-tasks.md)。 
+角色启动之前，可以使用启动任务执行操作。 安装 .NET Framework 作为启动任务的一部分，可确保在运行任何应用程序代码之前已安装好 Framework。 有关启动任务的详细信息，请参阅[在 Azure 中运行启动任务](cloud-services-startup-tasks.md)。 
 
-1. 将以下内容添加到所有角色的“WebRole”或“WorkerRole”节点下的 ServiceDefinition.csdef 文件中：
+1. 将以下内容添加到所有角色的“WebRole”  或“WorkerRole”  节点下的 ServiceDefinition.csdef 文件中：
    
     ```xml
     <LocalResources>
@@ -77,16 +72,16 @@ ms.locfileid: "64699684"
     </Startup>
     ```
    
-    上述配置使用管理员特权来运行控制台命令 `install.cmd`，以安装 .NET Framework。 该配置还创建了一个名为“NETFXInstall”的“LocalStorage”元素。 启动脚本将临时文件夹设置为使用此本地存储资源。 
+    上述配置使用管理员特权来运行控制台命令 `install.cmd`，以安装 .NET Framework。 该配置还创建了一个名为“NETFXInstall”  的“LocalStorage”  元素。 启动脚本将临时文件夹设置为使用此本地存储资源。 
     
     > [!IMPORTANT]
     > 为确保能够正确安装框架，请将此资源的大小设置为至少 1,024 MB。
     
     有关启动任务的详细信息，请参阅[常见的 Azure 云服务启动任务](cloud-services-startup-tasks-common.md)。
 
-2. 创建名为“install.cmd”的文件并将以下安装脚本添加到该文件。
+2. 创建名为“install.cmd”  的文件并将以下安装脚本添加到该文件。
 
-   脚本将通过查询注册表来检查指定的 .NET Framework 版本是否已安装在计算机上。 如果未安装该 .NET 版本，则将打开 .Net Web 安装程序。 为帮助排查任何问题，该脚本会将所有活动记录到文件 startuptasklog-(current date and time).txt（存储在“InstallLogs”本地存储中）。
+   脚本将通过查询注册表来检查指定的 .NET Framework 版本是否已安装在计算机上。 如果未安装该 .NET Framework 版本，则将打开 .NET Framework Web 安装程序。 为帮助排查任何问题，该脚本会将所有活动记录到文件 startuptasklog-(current date and time).txt（存储在“InstallLogs”  本地存储中）。
    
    > [!IMPORTANT]
    > 使用 Windows 记事本等基本文本编辑器创建 install.cmd 文件。 如果使用 Visual Studio 创建文本文件并将扩展名更改为 .cmd，则文件可能仍包含 UTF-8 字节顺序标记。 运行该脚本的第一行时，此标记可能会导致错误。 为避免此错误，可将脚本第一行设为可被字节顺序处理过程跳过的 REM 语句。 
@@ -201,7 +196,7 @@ ms.locfileid: "64699684"
    EXIT /B 0
    ```
 
-3. 按本主题前面所述，通过使用“解决方案资源管理器”中的“添加” > “现有项”，将 install.cmd 文件添加到每个角色。 
+3. 按本主题前面所述，通过使用“解决方案资源管理器”  中的“添加”   > “现有项”  ，将 install.cmd 文件添加到每个角色。 
 
     完成此步骤后，所有角色应该都有 .NET 安装程序文件和 install.cmd 文件。
 
@@ -211,7 +206,7 @@ ms.locfileid: "64699684"
 为了方便排查安装问题，可以配置 Azure 诊断，将启动脚本或 .NET 安装程序生成的任何日志文件传输到 Azure Blob 存储。 使用这种方法，可通过从 blob 存储直接下载日志文件（而无需通过远程桌面访问角色）查看日志。
 
 
-若要配置诊断，请打开 diagnostics.wadcfgx 文件，并在“Directories”节点下添加以下内容： 
+若要配置诊断，请打开 diagnostics.wadcfgx 文件，并在“Directories”  节点下添加以下内容： 
 
 ```xml 
 <DataSources>
@@ -221,10 +216,10 @@ ms.locfileid: "64699684"
 </DataSources>
 ```
 
-此 XML 将诊断配置为将“NETFXInstall”资源中日志目录中的文件传输到“netfx-install” blob 容器中的诊断存储帐户上。
+此 XML 将诊断配置为将“NETFXInstall”  资源中日志目录中的文件传输到“netfx-install”  blob 容器中的诊断存储帐户上。
 
 ## <a name="deploy-your-cloud-service"></a>部署云服务
-部署云服务时，启动任务会安装 .NET Framework（如果尚未安装）。 框架安装过程中，云服务角色处于“忙碌”状态。 如果框架安装需要重启，可能同时会重启服务角色。 
+部署云服务时，启动任务会安装 .NET Framework（如果尚未安装）。 框架安装过程中，云服务角色处于“忙碌”  状态。 如果框架安装需要重启，可能同时会重启服务角色。 
 
 ## <a name="additional-resources"></a>其他资源
 * [安装 .NET Framework][Installing the .NET Framework]
@@ -238,3 +233,6 @@ ms.locfileid: "64699684"
 <!--Image references-->
 [1]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithinstallerfiles.png
 [2]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithallfiles.png
+
+
+

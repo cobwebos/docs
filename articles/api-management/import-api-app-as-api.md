@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 120fe358e5c8afe63e98038ad353d5ebc45a1937
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 28b055cb343b7f894a28eee5fbe452d037fd6b0e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636437"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249484"
 ---
 # <a name="import-an-api-app-as-an-api"></a>将 API 应用导入为 API
 
@@ -33,15 +32,15 @@ ms.locfileid: "51636437"
 
 ## <a name="prerequisites"></a>先决条件
 
-+ 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)
-+ 确保订阅中已有 API 应用。 有关详细信息，请参阅[应用服务文档](https://docs.microsoft.com/azure/app-service/)
++ 请完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)
++ 确保订阅中已有 API 应用。 有关详细信息，请参阅[应用服务文档](../app-service/index.yml)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>导入和发布后端 API
+## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>导入和发布后端 API
 
-1. 从“API 管理”下选择“API”。
-2. 从“添加新的 API”列表中选择“API 应用”。
+1. 在 Azure 门户中导航到 API 管理服务，然后从菜单中选择“API”。
+2. 从“添加新的 API”列表中选择“API 应用” 。
 
     ![API 应用](./media/import-api-app-as-api/api-app.png)
 3. 按“浏览”查看订阅中的 API 应用列表。
@@ -57,9 +56,10 @@ ms.locfileid: "51636437"
 
     * **入门**
     * **不受限制**   
-7. 选择“创建”。
+7. 输入其他 API 设置。 可以在创建过程中设置这些值，也可以稍后转到“设置”选项卡来配置这些值。在[导入和发布第一个 API](import-and-publish.md#-import-and-publish-a-backend-api) 教程中对这些设置进行了说明。
+8. 选择“创建”。
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>在 Azure 门户中测试新的 APIM API
+## <a name="test-the-new-api-in-the-azure-portal"></a>在 Azure 门户中测试新的 API
 
 可直接从 Azure 门户调用操作，这样可以方便地查看和测试 API 的操作。  
 
@@ -67,25 +67,10 @@ ms.locfileid: "51636437"
 2. 按“测试”选项卡。
 3. 选择某个操作。
 
-    该页将显示查询参数的字段和标头的字段。 其中一个标头是“Ocp-Apim-Subscription-Key”，适用于和此 API 关联的产品订阅密钥。 如果创建了 APIM 实例，那么你已是管理员，因此会自动填充该密钥。 
+    该页将显示查询参数的字段和标头的字段。 其中一个标头是“Ocp-Apim-Subscription-Key”，用于提供和此 API 关联的产品订阅密钥。 如果创建了 APIM 实例，那么你已是管理员，因此会自动填充该密钥。 
 1. 按“发送”。
 
     后端以“200 正常”和某些数据做出响应。
-
-## <a name="call-operation"> </a>从开发人员门户调用操作
-
-此外，也可从“开发人员门户”调用操作来测试 API。 
-
-1. 选择在“导入和发布后端 API”步骤中创建的 API。
-2. 按“开发人员门户”。
-
-    “开发人员门户”站点随即打开。
-3. 选择创建的 **API**。
-4. 单击要测试的操作。
-5. 按“试用”。
-6. 按“发送”。
-    
-    调用操作后，开发人员门户会显示**响应状态**、**响应标头**以及任何**响应内容**。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

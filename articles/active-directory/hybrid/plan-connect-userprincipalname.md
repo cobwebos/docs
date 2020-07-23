@@ -10,12 +10,11 @@ ms.workload: identity
 ms.service: active-directory
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c198b329f07c5c7459f25165b2dc0a3bfa032276
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 6c748df10e432e3bebbce0dc8cb39dd2101d52e2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60382019"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81680043"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD UserPrincipalName 填充
 
@@ -25,20 +24,20 @@ UserPrincipalName 属性值是用户帐户的 Azure AD 用户名。
 ## <a name="upn-terminology"></a>UPN 术语
 本文使用了以下术语：
 
-|术语|描述|
+|术语|说明|
 |-----|-----|
 |初始域|Azure AD 租户中的默认域 (onmicrosoft.com)。 例如 contoso.onmicrosoft.com。|
 |Microsoft 联机电子邮件路由地址 (MOERA)|Azure AD 基于 Azure AD MailNickName 属性和 &lt;MailNickName&gt;&#64;&lt;初始域&gt; 形式的 Azure AD 初始域计算 MOERA。|
 |本地 mailNickName 属性|Active Directory 中的一个属性，其值表示 Exchange 组织中某个用户的别名。|
 |本地 mail 属性|Active Directory 中的一个属性，其值表示某个用户的电子邮件地址|
-|主要 SMTP 地址|Exchange 收件人对象的主要电子邮件地址。 例如，SMTP:user\@contoso.com。|
+|主要 SMTP 地址|Exchange 收件人对象的主要电子邮件地址。 例如 SMTP:user\@contoso.com。|
 |备用登录 ID|除 UserPrincipalName 以外的本地属性，例如 mail 属性，用于登录。|
 
 ## <a name="what-is-userprincipalname"></a>什么是 UserPrincipalName？
 UserPrincipalName 是基于 Internet 标准 [RFC 822](https://www.ietf.org/rfc/rfc0822.txt) 的属性，表示某个用户的 Internet 样式登录名。 
 
 ### <a name="upn-format"></a>UPN 格式
-UPN 由 UPN 前缀（用户帐户名）和 UPN 后缀（DNS 域名）组成。 前缀与后缀以“\@”符号相联接。 例如，“someone\@example.com”。 UPN 必须在目录林中的所有安全主体对象之间保持唯一。 
+UPN 由 UPN 前缀（用户帐户名）和 UPN 后缀（DNS 域名）组成。 前缀与后缀以“\@”符号相联接。 例如“someone\@example.com”。 UPN 必须在目录林中的所有安全主体对象之间保持唯一。 
 
 ## <a name="upn-in-azure-ad"></a>Azure AD 中的 UPN 
 Azure AD 使用 UPN 让用户登录。  用户可以使用的 UPN 取决于域是否经过验证。  如果域已验证，则允许具有该后缀的用户名登录到 Azure AD。  
@@ -93,7 +92,7 @@ Azure AD 使用 UPN 让用户登录。  用户可以使用的 UPN 取决于域�
 - mailNickName：&lt;未设置&gt;
 - proxyAddresses：{SMTP:us1@contoso.com}
 - mail：us2@contoso.com
-- userPrincipalName：us3@contoso.com`
+- userPrincipalName：us3@contoso.com
 
 首次将用户对象同步到 Azure AD 租户
 - 将 Azure AD MailNickName 属性设置为主要 SMTP 地址前缀。
@@ -142,7 +141,7 @@ Azure AD 租户用户对象：
 - MailNickName：us4
 - UserPrincipalName：us4@contoso.onmicrosoft.com
 
-### <a name="scenario-4-non-verified-upn-suffix--update-primary-smtp-address-and-on-premises-mail-attribute"></a>情景 4：未验证的 UPN 后缀 – 更新主要 SMTP 地址和本地 mail 属性
+### <a name="scenario-4-non-verified-upn-suffix--update-primary-smtp-address-and-on-premises-mail-attribute"></a>方案 4：未验证的 UPN 后缀 – 更新主要 SMTP 地址和本地 mail 属性
 
 ![方案 4](./media/plan-connect-userprincipalname/example4.png)
 
@@ -159,7 +158,7 @@ Azure AD 租户用户对象：
 - MailNickName：us4
 - UserPrincipalName：us4@contoso.onmicrosoft.com
 
-### <a name="scenario-5-verified-upn-suffix--update-on-premises-userprincipalname-attribute-suffix"></a>情景 5：已验证的 UPN 后缀 – 更新本地 userPrincipalName 属性后缀
+### <a name="scenario-5-verified-upn-suffix--update-on-premises-userprincipalname-attribute-suffix"></a>方案 5：已验证的 UPN 后缀 – 更新本地 userPrincipalName 属性后缀
 
 ![方案 5](./media/plan-connect-userprincipalname/example5.png)
 

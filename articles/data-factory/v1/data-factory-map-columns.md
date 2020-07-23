@@ -1,23 +1,22 @@
 ---
-title: 映射 Azure 数据工厂中的数据集列 | Microsoft Docs
+title: 映射 Azure 数据工厂中的数据集列
 description: 了解如何将源列映射到目标列。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1b009ac2ca42e9804b88989b55b2e73524732550
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: af7a1e40f21b6c9af490abe6f58edcaf798818b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60238103"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318869"
 ---
 # <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>将源数据集列映射到目标数据集列
 > [!NOTE]
@@ -40,7 +39,7 @@ ms.locfileid: "60238103"
 > 以下示例适用于 Azure SQL 和 Azure Blob，但也适用于任何支持矩形数据集的数据存储。 调整示例中的数据集与链接服务定义，使其指向相关数据源中的数据。
 
 ## <a name="sample-1--column-mapping-from-azure-sql-to-azure-blob"></a>示例 1 – 从 Azure SQL 到 Azure Blob 的列映射
-在本示例中，输入表有一个结构，并指向 Azure SQL 数据库中的 SQL 表。
+在此示例中，输入表有一个结构，并指向 Azure SQL 数据库中的 SQL 表。
 
 ```json
 {

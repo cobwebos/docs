@@ -5,31 +5,32 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 54f6473954c73de6ec29602c3d1563579b3e8cc6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9688df6c27717cc74c874c75a9df0b47ffd24853
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60754379"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564009"
 ---
-# <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>排查 Azure Data Box Gateway 问题 
+# <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>排查 Azure Data Box Gateway 问题
 
-本文介绍如何排查 Azure Data Box Gateway 上的问题。 在本文中，学习如何：
+本文介绍如何排查 Azure Data Box Gateway 上的问题。
+在本文中，学习如何：
 
 > [!div class="checklist"]
+>
 > * 运行诊断
 > * 收集支持包
 > * 使用日志进行故障排除
-
 
 ## <a name="run-diagnostics"></a>运行诊断
 
 若要诊断和排查任何设备错误，可以运行诊断测试。 在设备的本地 Web UI 中执行以下步骤，以运行诊断测试。
 
-1. 在本地 Web UI 中，转到“故障排除”>“诊断测试”。 选择要运行的测试，然后单击“运行测试”。 这会运行测试来诊断网络、设备、Web 代理、时间或云设置可能存在的任何问题。 你将收到设备正在运行测试的通知。
+1. 在本地 Web UI 中，转到“故障排除”>“诊断测试”。**** 选择要运行的测试，然后单击“运行测试”。**** 这会运行测试来诊断网络、设备、Web 代理、时间或云设置可能存在的任何问题。 你将收到设备正在运行测试的通知。
 
     ![单击“添加用户”](media/data-box-gateway-troubleshoot/run-diag-1.png)
  
@@ -40,15 +41,15 @@ ms.locfileid: "60754379"
 
 ## <a name="collect-support-package"></a>收集支持包
 
-日志包由所有可帮助 Microsoft 支持部门排查任何设备问题的相关日志组成。 可以通过本地 Web UI 生成日志包。
+日志包由所有可帮助 Microsoft 支持部门排查任何设备问题的相关日志组成。 可以通过本地 Web UI 生成日志包。 
 
 执行以下步骤收集支持包。 
 
-1. 在本地 Web UI 中，转到“故障排除”>“支持”。 单击“创建支持包”。 系统随即开始收集支持包。 收集包可能需要几分钟时间。
+1. 在本地 Web UI 中，转到“故障排除”>“支持”。**** 单击“创建支持包”。**** 系统随即开始收集支持包。 收集包可能需要几分钟时间。
 
     ![单击“添加用户”](media/data-box-gateway-troubleshoot/collect-logs-1.png)
  
-2. 创建支持包后，单击“下载支持包”。 压缩包将下载到所选的路径。 可以将包解压缩。
+2. 创建支持包后，单击“下载支持包”。**** 压缩包将下载到所选的路径。 可以将包解压缩。
 
     ![单击“添加用户”](media/data-box-gateway-troubleshoot/collect-logs-2.png)
 
@@ -60,7 +61,7 @@ ms.locfileid: "60754379"
 
       ![单击“添加用户”](media/data-box-gateway-troubleshoot/troubleshoot-logs-1.png)
 
-2. 单击 Microsoft Data Box Gateway 文件夹。 此文件夹包含两个子文件夹：
+2. 单击 Microsoft Data Box Gateway 文件夹。__ 此文件夹包含两个子文件夹：
 
    - Upload 文件夹：包含上传错误的日志文件。
    - Refresh 文件夹：包含刷新期间发生的错误。

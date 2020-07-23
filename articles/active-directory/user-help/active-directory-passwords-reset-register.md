@@ -1,67 +1,71 @@
 ---
-title: 注册自助密码重置 - Azure Active Directory | Microsoft Docs
-description: 注册身份验证数据，以便进行 Azure AD 自助密码重置
+title: 注册身份验证信息以重置你自己的密码 - Azure AD
+description: 注册验证方法信息以实现 Azure AD 自助服务密码重置，以便在没有管理员帮助的情况下重置自己的密码。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 01/11/2018
-ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f113c42ff45811f31eb77a92873fb187dd51ea6b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.topic: end-user-help
+ms.date: 05/28/2020
+ms.author: curtand
+ms.openlocfilehash: 999b458985d8ab486e8dbd6bcaa48ddd9e02fc28
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60530893"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84266094"
 ---
-# <a name="register-for-self-service-password-reset"></a>注册自助密码重置
+# <a name="register-your-verification-method-info-to-reset-your-own-password"></a>注册验证方法信息以重置你自己的密码
 
-> [!IMPORTANT]
-> 你是因为无法登录而来到这里吗？ 如果是，请参阅[重置工作或学校帐户密码](active-directory-passwords-update-your-own-password.md)。
+如果忘记了工作或学校密码、从来没有从组织处得到过密码，或者帐户被锁定，则可使用安全信息和移动设备来重置工作或学校密码。
 
-最终用户可以使用 Azure Active Directory (Azure AD) 自助密码重置 (SSPR) 自行重置密码或解锁帐户。 在使用此功能之前，必须注册身份验证方法或确认管理员填充的预定义身份验证方法。
+你的管理员必须打开此功能，你才能注册你的信息并重置你的密码。 如果看不到“忘记密码”选项，则表明管理员尚未为你的组织打开此功能。 如果你认为这是错误，请联系支持人员以获取帮助。
 
-## <a name="register-or-confirm-authentication-data-with-sspr"></a>通过 SSPR 注册或确认身份验证数据
+>[!Important]
+>本文适用于尝试使用自助服务密码重置注册的用户。 这意味着你将能够重置自己的工作或学校密码（如 alain@contoso.com ），而无需管理员的帮助。 如果你是管理员，并且正在查找有关如何为员工或其他用户打开自助式密码重置的详细信息，请参阅[部署 Azure AD 自助式密码重置](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment)以及其他文章。
 
-1. 在设备上打开 Web 浏览器，并转到[密码重置注册页](https://aka.ms/ssprsetup)。
-2. 输入管理员提供的用户名和密码。
-3. 可以使用以下一个或多个选项进行配置和验证，具体取决于 IT 人员的配置。 如果管理员有权使用你的信息，则可以为你填充其中的某些信息。
-    * **办公电话**：仅管理员可设置此选项。
-    * **身份验证电话**：将此选项设置为你可以访问的其他电话号码。 例如，可以接收短信或呼叫的手机号码。
-    * **身份验证电子邮件**：将此选项设置为在不使用所要重置的密码的情况下可以访问的备用电子邮件地址。
-    * **安全性问题**：管理员已批准此问题列表供你回答。 不能多次使用同一问题或答案。
-4. 提供并验证管理员所需的信息。 如果有多个选项可用，我们建议注册多个方法。 这样，在某个方法不可用时，可以灵活使用其他方法。 例如，在旅行时无法使用办公电话的情况下。
+## <a name="set-up-your-password-reset-verification-method"></a>设置密码重置验证方法
 
-    ![注册身份验证方法并选择“完成”][Register]
+1. 在设备上打开 Web 浏览器，并转到[安全信息页](https://account.activedirectory.windowsazure.com/PasswordReset/Register.aspx?regref=ssprsetup)。
 
-5. 选择“完成”。 将来可根据需要使用 SSPR。
+2. 根据管理员对组织的设置，你可以将以下一个或多个选项设置为安全验证方法。 如果有多个选项可用，强烈建议使用多个安全验证方法，以防其中之一出现故障。
 
-输入“身份验证电话”或“身份验证电子邮件”的数据时，这些数据在全局目录中不可见。 只有你和管理员能够看到该数据。 只有你能够查看安全性问题的答案。
+    - **身份验证应用。** 选择使用 Microsoft Authenticator 应用或其他验证器应用作为安全验证方法。 有关设置应用的详细信息，请参阅[设置 Microsoft Authenticator 应用作为验证方法](security-info-setup-auth-app.md)。
 
-管理员可能会要求在一段时间过后确认身份验证方法，确保注册的方法仍然适用。
+    - **短信。** 选择将你自己的短信发送到移动设备。 有关设置短信的详细信息，请参阅[设置短信作为验证方法](security-info-setup-text-msg.md)。
+
+    - **电话呼叫。** 选择给已注册的电话号码打电话。 有关设置电话呼叫的详细信息，请参阅[设置电话号码作为验证方法](security-info-setup-phone-number.md)。
+
+    - **安全密钥。** 选择使用与 Microsoft 兼容的安全密钥。 有关详细信息，请参阅[设置安全密钥作为验证方法](security-info-setup-security-key.md)。
+
+    - **电子邮件地址。** 选择使用备用电子邮件地址，当你忘记或丢失密码时，不需要密码也可使用该地址。 这仅适用于密码重置，而不能用作安全验证方法。 有关设置电子邮件地址的详细信息，请参阅[设置电子邮件地址作为验证方法](security-info-setup-email.md)。
+
+    - **安全性问题。** 选择设置并回答管理员设置的预定义安全问题。 这仅适用于密码重置，而不能用作安全验证方法。 有关安全问题的详细信息，请参阅[设置安全问题作为验证方法](security-info-setup-questions.md)。
+
+3. 选择并设置方法后，选择“完成”以完成此过程。
+
+    > [!Note]
+    > 为你的电话号码或电子邮件地址添加的信息未与组织的全局目录共享。 只有你和管理员能够看到该信息。 只有你能够查看安全性问题的答案。
 
 ## <a name="common-problems-and-their-solutions"></a>常见问题及其解决方法
 
  以下是一些常见的错误案例及其解决方法：
 
-| 错误案例| 看到什么错误？| 解决方案 |
+| 错误消息 |  可能的解决方案 |
 | --- | --- | --- |
-| 在输入我的用户 ID 后，出现了“请联系管理员”页面 | 请与管理员联系。 <br> <br> 我们检测到用户帐户密码不受 Microsoft 管理。 因此，我们无法自动重置密码。 <br> <br> 请与 IT 人员联系以获得任何进一步的帮助。 | 之所以看到此消息，是因为 IT 人员在本地环境中管理密码，而不允许从“无法访问帐户链接”重置密码。 <br> <br> 若要重置密码，请直接与 IT 人员联系以获得帮助。 告诉他们你想要重置密码，让他们启用此功能。|
-| 在输入我的用户 ID 后，出现“帐户未启用密码重置”错误 | 帐户未启用密码重置。 <br> <br> 很抱歉，IT 人员尚未将帐户设置为可使用此服务。 <br> <br> 如果愿意，我们可以联系你所在组织的管理员重置密码。 | 之所以看到此消息，是因为 IT 人员未对组织启用从“无法访问帐户”链接重置密码的功能，或未授权你使用该功能。 <br> <br> 若要重置密码，请选择“联系管理员”链接。 随后会向公司 IT 人员发送一封电子邮件。 该电子邮件告诉他们你想要重置密码，让他们启用此功能。 |
-| 在输入我的用户 ID 后，出现了“我们无法验证帐户”错误 | 我们无法验证帐户。 <br> <br> 如果愿意，我们可以联系你所在组织的管理员重置密码。 | 之所以看到此消息，是因为已经启用了密码重置，但你并未注册使用此服务。 若要通过注册进行密码重置，请在重新获取帐户访问权限后转到[密码重置注册页](https://aka.ms/ssprsetup)。 <br> <br> 若要重置密码，请选择“联系管理员”链接以向公司 IT 人员发送电子邮件。 |
+| 请与管理员联系。<br>我们检测到用户帐户密码不受 Microsoft 管理。 因此，我们无法自动重置密码。<br>请与 IT 人员联系以获得任何进一步的帮助。| 如果在键入用户 ID 后收到此错误消息，则表示组织在内部管理你的密码，并且不希望你从“无法访问你的帐户”链接重置你的密码。 在这种情况下，若要重置密码，必须与组织的支持人员或管理员联系以获取帮助。 |
+| 帐户未启用密码重置。<br>很抱歉，IT 人员尚未将帐户设置为可使用此服务。<br>如果愿意，我们可以联系你所在组织的管理员重置密码。 | 如果在键入用户 ID 后收到此错误消息，则表示你的组织尚未启用密码重置功能，或者组织不允许你使用该功能。 在这种情况下，若要重置密码，必须选择“联系管理员”链接。 单击该链接后，会向组织的支持人员或管理员发送电子邮件，让他们知道你想重置密码。 |
+| 我们无法验证帐户。<br>如果愿意，我们可以联系你所在组织的管理员重置密码。 | 如果在键入用户 ID 后收到此错误消息，则表示你的组织已启用密码重置，并且你可以使用它，但你尚未注册该服务。 在这种情况下，必须与组织的支持人员或管理员联系以重置密码。 有关在返回到设备后注册密码重置的信息，请参阅本文上面部分的过程。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用自助密码重置更改密码](active-directory-passwords-update-your-own-password.md)
-* [密码重置注册页](https://aka.ms/ssprsetup)
-* [密码重置门户](https://passwordreset.microsoftonline.com/)
-* [无法登录 Microsoft 帐户](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)
+- [使用自助密码重置更改密码](active-directory-passwords-update-your-own-password.md)
 
-[Register]: ./media/active-directory-passwords-reset-register/register-2-methods.png "密码重置注册页，其中显示已注册的方法和“完成”按钮"
+- [安全信息页](https://mysignins.microsoft.com/security-info)
 
+- [密码重置门户](https://passwordreset.microsoftonline.com/)
+
+- [无法登录 Microsoft 帐户](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)

@@ -1,25 +1,25 @@
 ---
-title: 使用 Azure 视频索引器自定义品牌模型
-titlesuffix: Azure Media Services
-description: 本文介绍如何使用 Azure 视频索引器自定义品牌模型。
+title: 使用视频索引器 API 自定义品牌模型
+titleSuffix: Azure Media Services
+description: 了解如何使用视频索引器 API 自定义品牌模型。
 services: media-services
 author: anikaz
 manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 01/14/2020
 ms.author: anzaman
-ms.openlocfilehash: 8d0806bc0262cd45a49e4f97ea629683ac239aa8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 79c3a7934e9152a4908f895c20ee6fbdc0f360cf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799640"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80127994"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>使用视频索引器 API 自定义品牌模型
 
-在对视频和音频内容进行索引和重新索引的过程中，可以使用视频索引器从语音和视觉文本中检测品牌。 品牌检测功能可以确定内容中是否提到必应品牌数据库建议的产品、服务和公司。 例如，如果在某个视频或音频内容中提到了 Microsoft，或者 Microsoft 出现在视频的视觉文本中，则视频索引器会将其作为内容中的品牌检测到。 使用自定义品牌模型时，可以排除某些品牌，不让其检测到；还可以添加一些品牌，这些品牌应该在你的模型中，但可能不在必应的品牌数据库中。
+在对视频和音频内容进行索引和重新索引的过程中，可以使用视频索引器从语音和视觉文本中检测品牌。 品牌检测功能可以确定内容中是否提到必应品牌数据库建议的产品、服务和公司。 例如，如果 Microsoft 是在视频或音频内容中提到的，或者如果显示在视频的视频文本中，则视频索引器会将其作为内容中的品牌来检测。 使用自定义品牌模型时，可以排除某些品牌，不让其检测到；还可以添加一些品牌，这些品牌应该在你的模型中，但可能不在必应的品牌数据库中。
 
 如需详细的概述，请参阅[概述](customize-brands-model-overview.md)。
 
@@ -27,43 +27,15 @@ ms.locfileid: "65799640"
 
 ## <a name="create-a-brand"></a>创建品牌
 
-即创建新的自定义品牌，将其添加到指定帐户的自定义品牌模型中。
+[创建品牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand)API 会创建一个新的自定义品牌，并将其添加到指定帐户的自定义品牌模型中。
 
-### <a name="request-url"></a>请求 URL
+> [!NOTE]
+> 将 `enabled` （在正文中）设置为 true 可将视频索引器的 "*包含*列表" 中的品牌标记为 "检测"。 如果将设置 `enabled` 为 false，则会将该品牌置于*排除*列表中，因此，视频索引器不会检测到它。
 
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
-```
+可在正文中设置的一些其他参数：
 
-[请使用视频索引器开发人员门户查看必需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand)。
-
-### <a name="request-parameters"></a>请求参数
-
-|**名称**|类型|**必需**|**说明**|
-|---|---|---|---|
-|位置|string|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountId|string|是|帐户的全局唯一标识符|
-|accessToken|string|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
-
-### <a name="request-body"></a>请求正文
-
-除了这些参数，还必须按照以下示例的格式提供请求正文 JSON 对象，对新品牌进行介绍。
-
-```json
-{
-  "name": "Example",
-  "enabled": true,
-  "tags": ["Tag1", "Tag2"],
-  "description": "This is an example",
-  "referenceUrl": "https://en.wikipedia.org/wiki/Example"
-}
-```
-
-将 **enabled** 设置为 true 会将品牌置于供视频索引器检测的 *Include* 列表中。 将 **enabled** 设置为 false 会将品牌置于 *Exclude* 列表中，这样视频索引器就不会检测它。
-
-**referenceUrl** 值可以是品牌的任何引用网站，例如其维基百科页的链接。
-
-**tags** 值是品牌的标记的列表。 这会显示在品牌在视频索引器网站的“类别”字段中。 例如，品牌“Azure”可以标记或归类为“云”。
+* 此 `referenceUrl` 值可以是任何品牌的网站，如到其维基百科页面的链接。
+* `tags`值是品牌标记的列表。 此标记显示在视频索引器网站的品牌*类别*字段中。 例如，品牌“Azure”可以标记或归类为“云”。
 
 ### <a name="response"></a>响应
 
@@ -89,57 +61,15 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ## <a name="delete-a-brand"></a>删除品牌
 
-从指定帐户的自定义品牌模型中删除品牌。 帐户在 **accountId** 参数中指定。 成功调用以后，品牌将不再位于 *Include* 或 *Exclude* 品牌列表中。
-
-### <a name="request-url"></a>请求 URL
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands/{id}?accessToken={accessToken}
-```
-
-[请使用视频索引器开发人员门户查看必需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?)。
-
-### <a name="request-parameters"></a>请求参数
-
-|**名称**|类型|**必需**|**说明**|
-|---|---|---|---|
-|位置|string|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountId|string|是|帐户的全局唯一标识符|
-|id|integer|是|品牌 ID（在创建品牌时生成）|
-|accessToken|string|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
-
-### <a name="request-body"></a>请求正文
-
-此调用不需要更多的请求正文。
+"[删除品牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?)" API 会从指定帐户的自定义品牌模型中删除一种品牌。 该帐户在参数中指定 `accountId` 。 成功调用以后，品牌将不再位于 *Include* 或 *Exclude* 品牌列表中。
 
 ### <a name="response"></a>响应
 
-成功删除品牌后没有返回的内容。
+成功删除品牌后，不会返回任何内容。
 
 ## <a name="get-a-specific-brand"></a>获取特定的品牌
 
-可以使用品牌 ID 在指定帐户的自定义品牌模型中搜索品牌的详细信息。
-
-### <a name="request-url"></a>请求 URL
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
-```
-
-[请使用视频索引器开发人员门户查看必需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?)。
-
-### <a name="request-parameters"></a>请求参数
-
-|**名称**|类型|**必需**|**说明**|
-|---|---|---|---|
-|位置|string|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountId|string|是|帐户的全局唯一标识符|
-|id|integer|是|品牌 ID（在创建品牌时生成）|
-|accessToken|string|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
-
-### <a name="request-body"></a>请求正文
-
-此调用不需要更多的请求正文。
+使用 "[获取品牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?)" API，你可以使用品牌 ID 搜索指定帐户的自定义品牌模型中的品牌的详细信息。
 
 ### <a name="response"></a>响应
 
@@ -164,48 +94,11 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 ```
 
 > [!NOTE]
-> **enabled** 设置为 **true** 表示品牌在可供视频索引器检测的 *Include* 列表中，**enabled** 设置为 false 表示品牌在 *Exclude* 列表中，因此视频索引器不会检测它。
+> `enabled`如果设置为，则 `true` 表示该品牌位于视频索引器的*包含*列表中以进行检测，并且如果为 false，则 `enabled` 表示该品牌位于*排除*列表中，因此，视频索引器不会检测到它。
 
 ## <a name="update-a-specific-brand"></a>更新特定品牌
 
-可以使用品牌 ID 在指定帐户的自定义品牌模型中搜索品牌的详细信息。
-
-### <a name="request-url"></a>请求 URL
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands/{id}?accessToken={accessToken}
-```
-
-[请使用视频索引器开发人员门户查看必需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?)。
-
-### <a name="request-parameters"></a>请求参数
-
-|**名称**|类型|**必需**|**说明**|
-|---|---|---|---|
-|位置|string|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountId|string|是|帐户的全局唯一标识符|
-|id|integer|是|品牌 ID（在创建品牌时生成）|
-|accessToken|string|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
-
-### <a name="request-body"></a>请求正文
-
-除了这些参数，还必须按照以下示例的格式提供请求正文 JSON 对象，针对要更新的品牌提供更新的信息。
-
-```json
-{
-  "name": "Example",
-  "enabled": false,
-  "tags": ["Tag1", "NewTag2"],
-  "description": "This is an update example",
-  "referenceUrl": "https://en.wikipedia.org/wiki/Example",
-  "lastModifierUserName": "SampleUserName",
-  "created": "2018-04-25T14:59:52.7433333",
-  "lastModified": "2018-04-28T15:52:22.3413983",
-}
-```
-
-> [!NOTE]
-> 在此示例中，在“创建品牌”部分的示例请求正文中创建的品牌在此处使用新的标记和新的说明进行更新。 **enabled** 也已更改为 false，目的是将它置于 *Exclude* 列表中。
+通过[更新品牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?)API，你可以使用品牌 ID 搜索指定帐户的自定义品牌模型中的品牌的详细信息。
 
 ### <a name="response"></a>响应
 
@@ -231,27 +124,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ## <a name="get-all-of-the-brands"></a>获取所有品牌
 
-返回指定帐户的自定义品牌模型中的所有品牌，不管品牌是应该在 *Include* 品牌列表中还是应该在 *Exclude* 品牌列表中。
-
-### <a name="request-url"></a>请求 URL
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
-```
-
-[请使用视频索引器开发人员门户查看必需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?)。
-
-### <a name="request-parameters"></a>请求参数
-
-|**名称**|类型|**必需**|**说明**|
-|---|---|---|---|
-|位置|string|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountId|string|是|帐户的全局唯一标识符|
-|accessToken|string|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
-
-### <a name="request-body"></a>请求正文
-
-此调用不需要更多的请求正文。
+"[获取所有品牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?)" API 返回指定帐户的自定义品牌模型中的所有品牌，而不考虑品牌是否应位于 "*包括*或*排除*品牌" 列表中。
 
 ### <a name="response"></a>响应
 
@@ -287,31 +160,11 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 ```
 
 > [!NOTE]
-> 名为 *Example* 的品牌在可供视频索引器检测的 *Include* 列表中，名为 *Example2* 的品牌在 *Exclude* 列表中，因此视频索引器不会检测它。
+> 署名*示例*位于视频索引器的*包含*列表中以检测，名为*Example2*的品牌位于*排除*列表中，因此，视频索引器不会检测到它。
 
 ## <a name="get-brands-model-settings"></a>获取品牌模型设置
 
-返回指定帐户中的品牌模型设置。 品牌模型设置表示是否启用从必应品牌数据库进行检测的功能。 如果未启用必应品牌，则视频索引器仅从指定帐户的自定义品牌模型检测品牌。
-
-### <a name="request-url"></a>请求 URL
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
-```
-
-[请使用视频索引器开发人员门户查看必需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands)。
-
-### <a name="request-parameters"></a>请求参数
-
-|**名称**|类型|**必需**|**说明**|
-|---|---|---|---|
-|位置|string|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountId|string|是|帐户的全局唯一标识符|
-|accessToken|string|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
-
-### <a name="request-body"></a>请求正文
-
-此调用不需要更多的请求正文。
+[获取品牌设置](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands)API 返回指定帐户中的品牌模型设置。 品牌模型设置表示是否启用从必应品牌数据库进行检测的功能。 如果未启用 Bing 品牌，则视频索引器将仅检测指定帐户的自定义品牌模型的品牌。
 
 ### <a name="response"></a>响应
 
@@ -325,43 +178,17 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 ```
 
 > [!NOTE]
-> **useBuiltIn** 设置为 true 表示启用必应品牌。 如果 *useBuiltin* 为 false，则表示禁用必应品牌。 **state** 值可以忽略，因为它已弃用。
+> `useBuiltIn`如果设置为 true，则表示已启用 Bing 品牌。 如果 `useBuiltin` 为 false，则禁用必应品牌。 `state`该值可能会被忽略，因为它已被弃用。
 
 ## <a name="update-brands-model-settings"></a>更新品牌模型设置
 
-更新指定帐户中的品牌模型设置。 品牌模型设置表示是否启用从必应品牌数据库进行检测的功能。 如果未启用必应品牌，则视频索引器仅从指定帐户的自定义品牌模型检测品牌。
+[更新品牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?)API 更新指定帐户中的品牌模型设置。 品牌模型设置表示是否启用从必应品牌数据库进行检测的功能。 如果未启用 Bing 品牌，则视频索引器将仅检测指定帐户的自定义品牌模型的品牌。
 
-### <a name="request-url"></a>请求 URL：
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/BrandsModelSettings?accessToken={accessToken}
-```
-
-[请使用视频索引器开发人员门户查看必需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?)。
-
-### <a name="request-parameters"></a>请求参数
-
-|**名称**|类型|**必需**|**说明**|
-|---|---|---|---|
-|位置|string|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountId|string|是|帐户的全局唯一标识符|
-|accessToken|string|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
-
-### <a name="request-body"></a>请求正文
-
-除了这些参数，还必须按照以下示例的格式提供请求正文 JSON 对象，对新品牌进行介绍。
-
-```json
-{
-    "useBuiltIn":true
-}
-```
-
-> [!NOTE]
-> **useBuiltIn** 设置为 true 表示启用必应品牌。 如果 *useBuiltin* 为 false，则表示禁用必应品牌。
+`useBuiltIn`如果标志设置为 true，则表示已启用 Bing 品牌。 如果 `useBuiltin` 为 false，则禁用必应品牌。
 
 ### <a name="response"></a>响应
 
-成功更新品牌模型设置后没有返回的内容。
+成功更新品牌模型设置后，不会返回内容。
 
 ## <a name="next-steps"></a>后续步骤
 

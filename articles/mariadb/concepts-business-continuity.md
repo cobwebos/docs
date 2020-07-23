@@ -1,21 +1,21 @@
 ---
-title: 有关使用 Azure Database for MariaDB 确保业务连续性的概述
-description: 有关使用 Azure Database for MariaDB 确保业务连续性的概述。
+title: 业务连续性 - Azure Database for MariaDB
+description: 使用 Azure Database for MariaDB 服务时，了解业务连续性（时间点还原、数据中心服务中断、异地还原）。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 4c64f920bf56195ad53ac8acbf3f9199090f0a8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 7/7/2020
+ms.openlocfilehash: 183ece0d82431a8a961902d75d2fc24b013bc97b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61042991"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252260"
 ---
-# <a name="overview-of-business-continuity-with-azure-database-for-mariadb"></a>有关使用 Azure Database for MariaDB 确保业务连续性的概述
+# <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>了解 Azure Database for MariaDB 中的业务连续性
 
-本概述介绍了 Azure Database for MariaDB 针对业务连续性和灾难恢复所提供的功能。 了解在发生破坏性事件后用于进行恢复的选项，破坏性事件可能导致数据丢失或者数据库和应用程序无法使用。 了解对一些情况的处理方式，包括用户或应用程序错误影响数据完整性、Azure 区域服务中断，或者应用程序需要维护。
+本文介绍了 Azure Database for MariaDB 针对业务连续性和灾难恢复所提供的功能。 了解在发生破坏性事件后用于进行恢复的选项，破坏性事件可能导致数据丢失或者数据库和应用程序无法使用。 了解对一些情况的处理方式，包括用户或应用程序错误影响数据完整性、Azure 区域发生服务中断，或者应用程序需要维护。
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>可用来提供业务连续性的功能
 
@@ -48,11 +48,16 @@ Azure 数据中心会罕见地发生中断。 发生中断时，可能仅导致�
 > [!IMPORTANT]
 > 只有当为服务器预配了异地冗余备份存储时，异地还原才是可行的。
 
+## <a name="cross-region-read-replicas"></a>跨区域只读副本
+
+可以使用跨区域只读副本来增强业务连续性和灾难恢复规划。 使用 MariaDB 的二进制日志复制技术异步更新读取副本。 从[只读副本概念文章](concepts-read-replicas.md)详细了解有关只读副本、可用区域以及如何进行故障转移的信息。 
+
+## <a name="faq"></a>常见问题解答
+### <a name="where-does-azure-database-for-mariadb-store-customer-data"></a>Azure Database for MariaDB 将客户数据存储在何处？
+默认情况下，Azure Database for MariaDB 不会将客户数据从其部署到的区域中移出或存储。 但是，客户可以选择启用[异地冗余备份](concepts-backup.md#backup-redundancy-options)，或创建[跨区域读取副本](concepts-read-replicas.md#cross-region-replication)以便将数据存储在另一个区域中。
+
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解自动备份，请参阅 [Azure Database for MariaDB 中的备份](concepts-backup.md)。
-- 若要使用 Azure 门户还原到某个时间点，请参阅 [使用 Azure 门户将数据库还原到某个时间点](howto-restore-server-portal.md)。
-
-<!--
-- To restore to a point in time using Azure CLI, see [restore database to a point in time using CLI](howto-restore-server-cli.md). 
--->
+- 详细了解[Azure Database for MariaDB 中的自动备份](concepts-backup.md)。
+- 了解如何使用 [Azure 门户](howto-restore-server-portal.md)或 [Azure CLI](howto-restore-server-cli.md) 进行还原。
+- 了解[Azure Database for MariaDB 中的读取副本](concepts-read-replicas.md)。

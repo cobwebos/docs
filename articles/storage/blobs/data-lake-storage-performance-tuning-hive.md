@@ -1,32 +1,31 @@
 ---
-title: Azure Data Lake Storage Gen2 Hive 性能优化指南 | Microsoft Docs
-description: Azure Data Lake Storage Gen2 Hive 性能优化指南
-services: storage
+title: 调整性能：Hive、HDInsight 和 Azure Data Lake Storage Gen2 | Microsoft Docs
+description: Azure Data Lake Storage Gen2 Hive 性能优化指南。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
-ms.date: 12/06/2018
+ms.topic: how-to
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: b44c615396fbd526efb687977d303facd5d5d607
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 522f9215a0b66c5e6bec5abf41e45489efec19ac
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939431"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106305"
 ---
-# <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Hive on HDInsight 和 Azure Data Lake Storage Gen2 性能优化指南
+# <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>调整性能：Hive、HDInsight 和 Azure Data Lake Storage Gen2
 
 已设置默认设置，以便针对许多不同用例提供良好性能。  对于 I/O 密集型查询，可以优化 Hive 以获取更好的 Azure Data Lake Storage Gen2 性能。  
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Data Lake Storage Gen2 帐户**。 有关如何创建帐户的说明，请参阅[快速入门：创建 Azure Data Lake Storage Gen2 存储帐户](data-lake-storage-quickstart-create-account.md)
-* 具有 Data Lake Storage Gen2 帐户访问权限的 Azure HDInsight 群集。 请参阅[配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)
+* 具有 Data Lake Storage Gen2 帐户访问权限的 Azure HDInsight 群集  。 请参阅[配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)
 * **在 HDInsight 上运行 Hive**。  若要了解有关在 HDInsight 上运行 Hive 作业的信息，请参阅[在 HDInsight 上使用 Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
-* **Data Lake Storage Gen2 的性能优化指南**。  有关一般的性能概念，请参阅 [Data Lake Storage Gen2 性能优化指南](data-lake-storage-performance-tuning-guidance.md)
+* Data Lake Storage Gen2 的性能优化指南  。  有关一般的性能概念，请参阅 [Data Lake Storage Gen2 性能优化指南](data-lake-storage-performance-tuning-guidance.md)
 
 ## <a name="parameters"></a>parameters
 
@@ -58,17 +57,18 @@ ms.locfileid: "64939431"
 
 正在运行的并发任务数或平行度将受到总 YARN 内存量的限制。  YARN 容器数将决定可运行多少个并发任务。  若要查找每个节点的 YARN 内存量，可以转到 Ambari。  导航到 YARN 并查看“配置”选项卡。YARN 内存量会显示在此窗口中。  
 
-        Total YARN memory = nodes * YARN memory per node
-        # of YARN containers = Total YARN memory / Tez container size
+- Total YARN memory = node * 每个节点的 YARN 内存
+- \#YARN 容器 = Total YARN memory/Tez 容器 size
+
 提高使用 Data Lake Storage Gen2 的性能的关键是尽可能多地增加并发性。  Tez 会自动计算应创建的任务数，因此无需设置它。   
 
 ## <a name="example-calculation"></a>示例计算
 
 让我们假设你有一个由 8 个节点组成的 D14 群集。  
 
-    Total YARN memory = nodes * YARN memory per node
-    Total YARN memory = 8 nodes * 96GB = 768GB
-    # of YARN containers = 768GB / 3072MB = 256
+- Total YARN memory = node * 每个节点的 YARN 内存
+- Total YARN memory = 8 个节点 * 96 GB = 768GB
+- \#YARN 容器 = 768GB/3072MB = 256
 
 ## <a name="further-information-on-hive-tuning"></a>有关 Hive 优化的详细信息
 

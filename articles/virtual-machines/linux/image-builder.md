@@ -1,163 +1,224 @@
 ---
-title: 使用 Azure 映像生成器 （预览版） 创建 Linux VM
-description: 使用 Azure 映像生成器创建 Linux VM。
+title: 将 Azure 映像生成器用于 Linux VM 的映像库（预览）
+description: 使用 Azure 映像生成器和共享映像库创建 Linux 虚拟机映像。
 author: cynthn
 ms.author: cynthn
-ms.date: 05/02/2019
-ms.topic: article
+ms.date: 05/05/2019
+ms.topic: how-to
 ms.service: virtual-machines-linux
-manager: jeconnoc
-ms.openlocfilehash: 854645af95d780053d94668921e41ac189bbbfb7
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.subservice: imaging
+ms.reviewer: danis
+ms.openlocfilehash: b0df0fc43fcd125c6fc96fd2abbe3857d0d23afa
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159505"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141970"
 ---
-# <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>预览版：使用 Azure 映像生成器创建 Linux VM
+# <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>预览版：创建 Linux 映像并将其分发到共享映像库 
 
-本文演示了如何创建使用 Azure 映像生成器和 Azure CLI 的自定义的 Linux 映像。 这篇文章中的示例使用三个不同[定制员](image-builder-json.md#properties-customize)的自定义映像：
+本文介绍如何使用 Azure 映像生成器和 Azure CLI，在[共享映像库](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)中创建映像版本，然后全局分发此映像。 还可以使用 [Azure PowerShell](../windows/image-builder-gallery.md).来实现此目的。
 
-- Shell (ScriptUri)-下载和运行[shell 脚本](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript.sh)。
-- Shell （内联）-运行特定命令。 在此示例中，内联命令包括创建目录和更新操作系统。
-- 文件的副本[来自 GitHub 的文件](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html)到 VM 上的目录。
 
-我们将使用示例.json 模板要配置的映像。 下面是我们正在使用的.json 文件： [helloImageTemplateLinux.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json)。 
+我们将使用一个示例 .json 模板来配置映像。 我们将使用的 .json 文件位于：[helloImageTemplateforSIG.json](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json)。 
+
+此模板使用 [sharedImage](image-builder-json.md#distribute-sharedimage) 作为模板的 `distribute` 部分的值，以便将映像分发到共享映像库。
 
 > [!IMPORTANT]
-> Azure 映像生成器目前处于公共预览状态。
+> Azure 映像生成器目前提供公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="register-the-features"></a>注册功能
-若要在预览期间使用 Azure 映像生成器，您需要注册新的功能。
+若要在预览期间使用 Azure 映像生成器，需要注册新功能。
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
 ```
 
-检查功能注册状态。
+检查功能注册的状态。
 
 ```azurecli-interactive
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
 ```
 
-检查您的注册。
+检查注册。
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
-
+az provider show -n Microsoft.KeyVault | grep registrationState
+az provider show -n Microsoft.Compute | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-如果他们未说已注册，运行以下命令：
+如果未显示“已注册”，请运行以下命令：
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
-
+az provider register -n Microsoft.Compute
+az provider register -n Microsoft.KeyVault
 az provider register -n Microsoft.Storage
 ```
 
-## <a name="create-a-resource-group"></a>创建资源组
+## <a name="set-variables-and-permissions"></a>设置变量和访问权限 
 
-我们将使用一些部分信息重复，因此我们将创建一些变量来存储该信息。
+我们将重复使用某些信息，因此我们将创建一些变量来存储这些信息。
 
+对于预览，映像生成器仅支持在与源托管映像相同的资源组中创建自定义映像。 将此示例中的资源组名称更新为与源托管映像相同的资源组。
 
 ```azurecli-interactive
-# Resource group name - we are using myImageBuilderRG in this example
-imageResourceGroup=myImageBuilerRGLinux
+# Resource group name - we are using ibLinuxGalleryRG in this example
+sigResourceGroup=ibLinuxGalleryRG
 # Datacenter location - we are using West US 2 in this example
-location=WestUS2
-# Name for the image - we are using myBuilderImage in this example
-imageName=myBuilderImage
-# Run output name
-runOutputName=aibLinux
+location=westus2
+# Additional region to replicate the image to - we are using East US in this example
+additionalregion=eastus
+# name of the shared image gallery - in this example we are using myGallery
+sigName=myIbGallery
+# name of the image definition to be created - in this example we are using myImageDef
+imageDefName=myIbImageDef
+# image distribution metadata reference name
+runOutputName=aibLinuxSIG
 ```
 
-为订阅 id。 创建一个变量 可以获取此使用`az account show | grep id`。
+为你的订阅 ID 创建变量。 可使用 `az account show | grep id` 获取。
 
 ```azurecli-interactive
-subscriptionID=<Your subscription ID>
+subscriptionID=<Subscription ID>
 ```
 
 创建资源组。
 
 ```azurecli-interactive
-az group create -n $imageResourceGroup -l $location
+az group create -n $sigResourceGroup -l $location
 ```
 
+## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>创建用户分配的标识，并在资源组上设置权限
+映像生成器将使用提供的[用户标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)，来将映像注入到 Azure 共享映像库 (SIG)。 在此示例中，你将创建一个 Azure 角色定义，其中包含将映像分发到 SIG 的精细操作。 然后将此角色定义分配给用户标识。
 
-授予该资源组中创建资源的映像生成器权限。 `--assignee`值是图像生成器服务的应用程序注册 ID。 
+```bash
+# create user assigned identity for image builder to access the storage account where the script is located
+identityName=aibBuiUserId$(date +'%s')
+az identity create -g $sigResourceGroup -n $identityName
 
-```azurecli-interactive
+# get identity id
+imgBuilderCliId=$(az identity show -g $sigResourceGroup -n $identityName | grep "clientId" | cut -c16- | tr -d '",')
+
+# get the user identity URI, needed for the template
+imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$sigResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName
+
+# this command will download a Azure Role Definition template, and update the template with the parameters specified earlier.
+curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
+
+imageRoleDefName="Azure Image Builder Image Def"$(date +'%s')
+
+# update the definition
+sed -i -e "s/<subscriptionID>/$subscriptionID/g" aibRoleImageCreation.json
+sed -i -e "s/<rgName>/$sigResourceGroup/g" aibRoleImageCreation.json
+sed -i -e "s/Azure Image Builder Service Image Creation Role/$imageRoleDefName/g" aibRoleImageCreation.json
+
+# create role definitions
+az role definition create --role-definition ./aibRoleImageCreation.json
+
+# grant role definition to the user assigned identity
 az role assignment create \
-    --assignee cf32a0cc-373c-47c9-9156-0db11f6a6dfc \
-    --role Contributor \
-    --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
+    --assignee $imgBuilderCliId \
+    --role "$imageRoleDefName" \
+    --scope /subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup
 ```
 
-## <a name="download-the-json-example"></a>下载.json 示例
 
-下载示例.json 文件，并将其配置与你创建的变量。
+## <a name="create-an-image-definition-and-gallery"></a>创建映像定义和库
+
+若要将映像生成器用于共享映像库，需要具有现有的映像库和映像定义。 映像生成器无法创建映像库和映像定义。
+
+如果还没有可使用的库和映像定义，请先创建它们。 首先创建映像库。
 
 ```azurecli-interactive
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json -o helloImageTemplateLinux.json
-
-sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateLinux.json
-sed -i -e "s/<rgName>/$imageResourceGroup/g" helloImageTemplateLinux.json
-sed -i -e "s/<region>/$location/g" helloImageTemplateLinux.json
-sed -i -e "s/<imageName>/$imageName/g" helloImageTemplateLinux.json
-sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateLinux.json
+az sig create \
+    -g $sigResourceGroup \
+    --gallery-name $sigName
 ```
 
-## <a name="create-the-image"></a>创建映像
-映像的配置提交到的 VM 映像生成器服务
+然后，创建映像定义。
+
+```azurecli-interactive
+az sig image-definition create \
+   -g $sigResourceGroup \
+   --gallery-name $sigName \
+   --gallery-image-definition $imageDefName \
+   --publisher myIbPublisher \
+   --offer myOffer \
+   --sku 18.04-LTS \
+   --os-type Linux
+```
+
+
+## <a name="download-and-configure-the-json"></a>下载并配置 .json
+
+下载 .json 模板，并使用你的变量对它进行配置。
+
+```azurecli-interactive
+curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json -o helloImageTemplateforSIG.json
+sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateforSIG.json
+sed -i -e "s/<rgName>/$sigResourceGroup/g" helloImageTemplateforSIG.json
+sed -i -e "s/<imageDefName>/$imageDefName/g" helloImageTemplateforSIG.json
+sed -i -e "s/<sharedImageGalName>/$sigName/g" helloImageTemplateforSIG.json
+sed -i -e "s/<region1>/$location/g" helloImageTemplateforSIG.json
+sed -i -e "s/<region2>/$additionalregion/g" helloImageTemplateforSIG.json
+sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateforSIG.json
+sed -i -e "s%<imgBuilderId>%$imgBuilderId%g" helloImageTemplateforSIG.json
+```
+
+## <a name="create-the-image-version"></a>创建映像版本
+
+在接下来的部分中，将在库中创建映像版本。 
+
+将映像配置提交到 Azure 映像生成器服务。
 
 ```azurecli-interactive
 az resource create \
-    --resource-group $imageResourceGroup \
-    --properties @helloImageTemplateLinux.json \
+    --resource-group $sigResourceGroup \
+    --properties @helloImageTemplateforSIG.json \
     --is-full-object \
     --resource-type Microsoft.VirtualMachineImages/imageTemplates \
-    -n helloImageTemplateLinux01
+    -n helloImageTemplateforSIG01
 ```
 
-开始创建映像。
+启动映像生成。
 
 ```azurecli-interactive
 az resource invoke-action \
-     --resource-group $imageResourceGroup \
+     --resource-group $sigResourceGroup \
      --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
-     -n helloImageTemplateLinux01 \
+     -n helloImageTemplateforSIG01 \
      --action Run 
 ```
 
-等待生成完成。 这可能需要大约 15 分钟。
+创建映像并将其复制到这两个区域，这可能需要一段时间。 等待至此部分完成，然后再继续创建 VM。
 
 
 ## <a name="create-the-vm"></a>创建 VM
 
-创建使用你生成的映像的 VM。
+从 Azure 映像生成器创建的映像版本创建 VM。
 
 ```azurecli-interactive
 az vm create \
-  --resource-group $imageResourceGroup \
-  --name myVM \
-  --admin-username azureuser \
-  --image $imageName \
+  --resource-group $sigResourceGroup \
+  --name myAibGalleryVM \
+  --admin-username aibuser \
   --location $location \
+  --image "/subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup/providers/Microsoft.Compute/galleries/$sigName/images/$imageDefName/versions/latest" \
   --generate-ssh-keys
 ```
 
-创建 VM 的输出中获取的 IP 地址，并用它来通过 ssh 连接到 VM。
+通过 SSH 登录到 VM。
 
 ```azurecli-interactive
-ssh azureuser@<pubIp>
+ssh aibuser@<publicIpAddress>
 ```
 
-你应看到该映像在一天，一旦建立 SSH 连接的消息使用自定义 ！
+建立 SSH 连接后，应会立即看到映像已使用当天的一个消息进行了自定义！
 
 ```console
-
 *******************************************************
 **            This VM was built from the:            **
 **      !! AZURE VM IMAGE BUILDER Custom Image !!    **
@@ -165,32 +226,75 @@ ssh azureuser@<pubIp>
 *******************************************************
 ```
 
-类型`exit`完成以关闭 SSH 连接。
+## <a name="clean-up-resources"></a>清理资源
 
-## <a name="check-the-source"></a>请检查源
+如果现在想要尝试重新自定义映像版本，以创建同一映像的新版本，请跳过后续步骤，并继续学习[使用 Azure 映像生成器创建其他映像版本](image-builder-gallery-update-image-version.md)。
 
-在映像生成器模板，在属性中，你将看到源映像、 自定义对其编写脚本运行，并分发的位置。
 
-```azurecli-interactive
-cat helloImageTemplateLinux.json
-```
+这样会删除已创建的映像以及所有其他的资源文件。 删除这些资源前，请确保已完成此部署。
 
-有关更详细的有关该.json 文件的信息，请参阅[图像生成器模板参考](image-builder-json.md)
+删除映像库资源时，需要先删除所有版本的映像，然后才能删除用于创建它们的映像定义。 若要删除库，首先需要删除库中的所有映像定义。
 
-## <a name="clean-up"></a>清理
-
-完成后，删除的资源。
+删除映像生成器模板。
 
 ```azurecli-interactive
 az resource delete \
-    --resource-group $imageResourceGroup \
+    --resource-group $sigResourceGroup \
     --resource-type Microsoft.VirtualMachineImages/imageTemplates \
-    -n helloImageTemplateLinux01
-
-az group delete -n $imageResourceGroup
+    -n helloImageTemplateforSIG01
 ```
 
+删除权限分配、角色和标识
+```azurecli-interactive
+az role assignment delete \
+    --assignee $imgBuilderCliId \
+    --role "$imageRoleDefName" \
+    --scope /subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup
+
+az role definition delete --name "$imageRoleDefName"
+
+az identity delete --ids $imgBuilderId
+```
+
+获取由映像生成器创建的映像版本，该版本始终以 `0.` 开头，然后删除该映像版本
+
+```azurecli-interactive
+sigDefImgVersion=$(az sig image-version list \
+   -g $sigResourceGroup \
+   --gallery-name $sigName \
+   --gallery-image-definition $imageDefName \
+   --subscription $subscriptionID --query [].'name' -o json | grep 0. | tr -d '"')
+az sig image-version delete \
+   -g $sigResourceGroup \
+   --gallery-image-version $sigDefImgVersion \
+   --gallery-name $sigName \
+   --gallery-image-definition $imageDefName \
+   --subscription $subscriptionID
+```   
+
+
+删除映像定义。
+
+```azurecli-interactive
+az sig image-definition delete \
+   -g $sigResourceGroup \
+   --gallery-name $sigName \
+   --gallery-image-definition $imageDefName \
+   --subscription $subscriptionID
+```
+
+删除库。
+
+```azurecli-interactive
+az sig delete -r $sigName -g $sigResourceGroup
+```
+
+删除该资源组。
+
+```azurecli-interactive
+az group delete -n $sigResourceGroup -y
+```
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关本文中使用的.json 文件的组件的详细信息，请参阅[映像生成器模板引用](image-builder-json.md)。
+详细了解 [Azure 共享映像库](shared-image-galleries.md)。

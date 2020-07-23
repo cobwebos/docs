@@ -1,26 +1,19 @@
 ---
 title: 将 Apache Flink 用于 Apache Kafka - Azure事件中心 | Microsoft Docs
-description: 本文提供了有关如何将 Apache Flink 连接到已启用 Apache Kafka 的 Azure 事件中心的信息
-services: event-hubs
-documentationcenter: ''
-author: basilhariri
-manager: timlt
-ms.service: event-hubs
-ms.topic: article
-ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: bahariri
-ms.openlocfilehash: dc4a982dde62f62eb8f2d91a61fd70ba79fa13d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+description: 本文介绍如何将 Apache Flink 连接到 Azure 事件中心
+ms.topic: how-to
+ms.date: 06/23/2020
+ms.openlocfilehash: 43cbf99a6ba2c0384ceffc10b01916f6ad22b26a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60821430"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320132"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>将 Apache Flink 与适用于 Apache Kafka 的 Azure 事件中心配合使用
-本教程演示如何在不更改协议客户端或运行自己的群集的情况下，将 Apache Flink 连接到已启用 Kafka 的事件中心。 Azure 事件中心支持 [Apache Kafka 版本 1.0](https://kafka.apache.org/10/documentation.html)。
+本教程演示如何在不更改你的协议客户端或运行你自己的群集的情况下，将 Apache Flink 连接到事件中心。 Azure 事件中心支持 [Apache Kafka 版本 1.0](https://kafka.apache.org/10/documentation.html)。
 
-使用 Apache Kafka 的主要优势之一是它可连接的框架的生态系统。 已启用 Kafka 的事件中心将 Kafka 的灵活性与 Azure 生态系统的扩展性、一致性和支持结合在一起。
+使用 Apache Kafka 的主要优势之一是它可连接的框架的生态系统。 事件中心将 Kafka 的灵活性与 Azure 生态系统的可伸缩性、一致性和支持结合在一起。
 
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]
@@ -32,7 +25,7 @@ ms.locfileid: "60821430"
 > [!NOTE]
 > [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink) 上提供了此示例
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，请确保具备以下先决条件：
 
@@ -48,11 +41,11 @@ ms.locfileid: "60821430"
 
 ## <a name="create-an-event-hubs-namespace"></a>创建事件中心命名空间
 
-要从任何事件中心服务进行发送或接收，需要事件中心命名空间。 请参阅[创建已启用 Kafka 的事件中心](event-hubs-create-kafka-enabled.md)，了解有关获取事件中心 Kafka 终结点的信息。 请确保复制事件中心连接字符串，以供将来使用。
+要从任何事件中心服务进行发送或接收，需要事件中心命名空间。 有关创建命名空间和事件中心的说明，请参阅[创建事件中心](event-hubs-create.md)。 请确保复制事件中心连接字符串，以供将来使用。
 
 ## <a name="clone-the-example-project"></a>克隆示例项目
 
-获得已启用 Kafka 的事件中心连接字符串后，克隆适用于 Kafka 的 Azure 事件中心存储库并导航到 `flink` 子文件夹：
+获得事件中心连接字符串后，克隆适用于 Kafka 的 Azure 事件中心存储库并导航到 `flink` 子文件夹：
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
@@ -67,7 +60,7 @@ cd azure-event-hubs-for-kafka/tutorials/flink
 
 #### <a name="producerconfig"></a>producer.config
 
-更新 `producer/src/main/resources/producer.config` 中的 `bootstrap.servers` 和 `sasl.jaas.config` 值，以使用正确的身份验证将制造者定向到事件中心 Kafka 终结点。
+更新 `producer/src/main/resources/producer.config` 中的 `bootstrap.servers` 和 `sasl.jaas.config` 值，以使用正确的身份验证将生产者定向到事件中心 Kafka 终结点。
 
 ```xml
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
@@ -81,18 +74,18 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 
 ### <a name="run-producer-from-the-command-line"></a>通过命令行运行生产者
 
-若要通过命令行运行制造者，生成 JAR，然后在 Maven 内运行（或使用 Maven 生成 JAR，然后通过向 classpath 添加必要的 Kafka JAR 在 Java 中运行）：
+若要通过命令行运行生产者，生成 JAR，然后从 Maven 中运行（或使用 Maven 生成 JAR，然后通过向 classpath 添加必要的 Kafka JAR 在 Java 中运行）：
 
 ```shell
 mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestProducer"
 ```
 
-制造者现在将开始向主题 `test` 中已启用 Kafka 的事件中心发送事件，并将事件打印到 stdout。
+生产者现在将开始向主题 `test` 中的事件中心发送事件，并将事件输出到 stdout。
 
 ## <a name="run-flink-consumer"></a>运行 Flink 使用者
 
-使用提供的使用者示例，接收来自已启用 Kafka 的事件中心的消息。
+使用所提供的使用者示例，接收来自事件中心的消息。 
 
 ### <a name="provide-an-event-hubs-kafka-endpoint"></a>提供事件中心 Kafka 终结点
 
@@ -112,34 +105,23 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 
 ### <a name="run-consumer-from-the-command-line"></a>通过命令行运行使用者
 
-若要通过命令行运行使用者，生成 JAR，然后在 Maven 内运行（或使用 Maven 生成 JAR，然后通过向 classpath 添加必要的 Kafka JAR 在 Java 中运行）：
+若要通过命令行运行使用者，生成 JAR，然后从 Maven 中运行（或使用 Maven 生成 JAR，然后通过向 classpath 添加必要的 Kafka JAR 在 Java 中运行）：
 
 ```shell
 mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestConsumer"
 ```
 
-如果已启用 Kafka 的事件中心具有事件（例如，如果你的制造者也在运行），则使用者现在将开始接收来自主题 `test` 的事件。
+如果事件中心具有事件（例如，如果生产者也在运行），则使用者现在将开始接收来自主题 `test` 的事件。
 
 查看 [ Flink 的 Kafka 连接器指南](https://ci.apache.org/projects/flink/flink-docs-stable/dev/connectors/kafka.html)，了解有关将 Flink 连接到 Kafka 的更为详细的信息。
 
 ## <a name="next-steps"></a>后续步骤
-本教程介绍了如何在不更改协议客户端或运行自己的群集的情况下，将 Apache Flink 连接到已启用 Kafka 的事件中心。 已在本教程中执行了以下步骤： 
+若要详细了解适用于 Kafka 的事件中心，请参阅以下文章：  
 
-> [!div class="checklist"]
-> * 创建事件中心命名空间
-> * 克隆示例项目
-> * 运行 Flink 制造者 
-> * 运行 Flink 使用者
-
-若要详细了解事件中心和适用于 Kafka 的事件中心，请参阅以下主题：  
-
-- [了解事件中心](event-hubs-what-is-event-hubs.md)
-- [用于 Apache Kafka 的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
-- [如何创建启用 Kafka 的事件中心](event-hubs-create-kafka-enabled.md)
-- [从 Kafka 应用程序流式传输到事件中心](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [将 Kafka 代理镜像到已启用 Kafka 的事件中心](event-hubs-kafka-mirror-maker-tutorial.md)
-- [将 Apache Spark 连接到已启用 Kafka 的事件中心](event-hubs-kafka-spark-tutorial.md)
-- [将 Kafka Connect 与已启用 Kafka 的事件中心集成](event-hubs-kafka-connect-tutorial.md)
-- [将 Akka Streams 连接到已启用 Kafka 的事件中心](event-hubs-kafka-akka-streams-tutorial.md)
+- [在事件中心镜像 Kafka 中转站](event-hubs-kafka-mirror-maker-tutorial.md)
+- [将 Apache Spark 连接到事件中心](event-hubs-kafka-spark-tutorial.md)
+- [将 Kafka Connect 与事件中心集成](event-hubs-kafka-connect-tutorial.md)
 - [了解 GitHub 上的示例](https://github.com/Azure/azure-event-hubs-for-kafka)
+- [将 Akka Streams 连接到事件中心](event-hubs-kafka-akka-streams-tutorial.md)
+- [针对 Azure 事件中心的 Apache Kafka 开发人员指南](apache-kafka-developer-guide.md)

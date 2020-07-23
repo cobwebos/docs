@@ -1,25 +1,16 @@
 ---
-title: 为 Azure Service Fabric 创建混沌测试和故障转移测试 | Microsoft Docs
+title: 为 Azure Service Fabric 创建混沌测试和故障转移测试
 description: 使用 Service Fabric 混沌测试和故障转移测试方案来引发故障，并验证服务的可靠性。
-services: service-fabric
-documentationcenter: .net
 author: motanv
-manager: rsinha
-editor: toddabel
-ms.assetid: 8eee7e89-404a-4605-8f00-7e4d4fb17553
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 06/07/2017
+ms.date: 10/1/2019
 ms.author: motanv
-ms.openlocfilehash: d12c5097d4ba5e0ccfe0e2b2cbc8ccd758c32d98
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 336cd048704055e07de1a20f0694bd5816265a8a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60864997"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245562"
 ---
 # <a name="testability-scenarios"></a>可测试性方案
 大型分布式系统，例如云基础结构，在本质上都是不可靠的。 Azure Service Fabric 使开发人员能够编写出可以在不可靠基础结构上运行的服务。 若要编写高质量的服务，开发人员需要能够引入这种不可靠的基础结构来测试其服务的稳定性。
@@ -42,18 +33,18 @@ ms.locfileid: "60864997"
 * 移动主副本（可选）
 * 移动辅助副本（可选）
 
-混沌测试在指定时间段内运行故障和群集验证的多次循环。 让群集达到稳定状态以及验证成功所用的时间也是可配置的。 若在群集验证中遇到故障，则方案失败。
+混沌测试在指定时间段内运行故障和群集验证的多次循环。 让群集达到稳定状态以及验证成功所用的时间也是可配置的。 如果在验证群集时遇到一次故障，则方案失败。
 
-例如，考虑一个设置为运行上小时且最多三个并发故障的测试。 该测试将引入三个故障，并验证群集运行状况。 该测试将循环进行以上步骤，直到群集变得不正常或一小时的时间已过。 如果在任何一次迭代中群集变得不正常，即在配置的时间内不稳定，则测试会引发异常而失败。 此异常指出系统出现问题，并且需要进一步调查。
+例如，考虑一个设置为运行上小时且最多三个并发故障的测试。 该测试将引入三个故障，然后验证群集运行状况。 该测试将循环进行以上步骤，直到群集变得不正常或一小时的时间已过。 如果在任何一次迭代中群集变得不正常，即在配置的时间内不稳定，则测试将引发异常而失败。 此异常指出系统出现问题，并且需要进一步调查。
 
 当前，混沌测试故障生成引擎只引入安全故障。 这意味着在没有外部故障的情况下，绝对不会出现仲裁丢失或数据丢失。
 
 ### <a name="important-configuration-options"></a>重要的配置选项
-* **TimeToRun**：测试成功完成之前将要运行的总时间。 测试也可以提前完成来代替验证失败。
-* **MaxClusterStabilizationTimeout**：最长时间等待群集变得在测试失败之前正常运行。 执行的检查包括群集运行状况是否正常、服务运行状况是否正常、对于服务分区而言目标副本集是否达到设定的大小以及是否不存在 InBuild 副本。
-* **MaxConcurrentFaults**：每次迭代中引入并发故障的最大数量。 数字越大，测试越激进，从而导致故障转移和转换组合更复杂。 在没有外部故障的情况下，测试保证不管此配置有多大，都不会出现仲裁丢失或数据丢失。
-* **EnableMoveReplicaFaults**：启用或禁用导致主或辅助副本移动的错误。 默认情况下，这些故障处于禁用状态。
-* **WaitTimeBetweenIterations**：迭代，即在一轮故障和对应的验证之后之间等待的时间量。
+* **TimeToRun**：测试在成功完成之前将要运行的总时间。 测试也可以提前完成来代替验证失败。
+* **MaxClusterStabilizationTimeout**：在测试失败之前，等待群集变得正常的最长时间。 执行的检查包括群集运行状况是否正常、服务运行状况是否正常、对于服务分区而言目标副本集是否达到设定的大小以及是否不存在 InBuild 副本。
+* **MaxConcurrentFaults**：每次循环中并发故障的最大数量。 数字越大，测试越激进，从而导致故障转移和转换组合更复杂。 在没有外部故障的情况下，测试保证不管此配置有多大，都不会出现仲裁丢失或数据丢失。
+* **EnableMoveReplicaFaults**：启用或禁用导致主副本或辅助副本移动的故障。 默认情况下，这些故障处于禁用状态。
+* **WaitTimeBetweenIterations**：循环之间（即在一轮故障和对应的验证之后）等待的时间量。
 
 ### <a name="how-to-run-the-chaos-test"></a>如何运行混沌测试
 C# 示例
@@ -133,6 +124,8 @@ class Test
 
 PowerShell
 
+Service Fabric PowerShell 模块提供了两种方法来开始混沌测试。 `Invoke-ServiceFabricChaosTestScenario` 是基于客户端的，如果客户端计算机在测试期间关闭，则不会引入进一步的故障。 另外，还提供了一组命令，用于在计算机关闭的情况下使测试保持运行。 `Start-ServiceFabricChaos` 使用名为 FaultAnalysisService 的有状态且可靠的系统服务，确保在 TimeToRun 启动之前，将继续引入故障。 `Stop-ServiceFabricChaos` 可用于手动停止该测试，`Get-ServiceFabricChaosReport` 将用于获取报表。 有关详细信息，请参阅 [Azure Service Fabric Powershell 参考](/powershell/module/servicefabric/?view=azureservicefabricps)和[在 Service Fabric 群集中引入受控混沌](service-fabric-controlled-chaos.md)。
+
 ```powershell
 $connection = "localhost:19000"
 $timeToRun = 60
@@ -157,12 +150,12 @@ Invoke-ServiceFabricChaosTestScenario -TimeToRunMinute $timeToRun -MaxClusterSta
 * 移动辅助副本
 * 重新启动分区
 
-故障转移测试工作引入所选的故障，并在服务上运行验证以确保其稳定性。 与混沌测试中可能出现多个故障相比，故障转移测试一次仅引入一个故障。 如果在每次故障之后，服务分区在配置的等待时间内没有达到稳定，则测试失败。 测试只引入安全故障。 这意味着在没有外部故障的情况下，不会出现仲裁丢失或数据丢失。
+故障转移测试工作引入一个经过选择的故障，并在服务上运行验证以确保其稳定性。 与混沌测试中可能出现多个故障相比，故障转移测试一次仅引入一个故障。 如果在每次故障之后，服务分区在配置的等待时间内没有达到稳定，则测试失败。 测试只引入安全故障。 这意味着在没有外部故障的情况下，不会出现仲裁丢失或数据丢失。
 
 ### <a name="important-configuration-options"></a>重要的配置选项
-* **PartitionSelector**:指定需要作为目标的分区的选择器对象。
-* **TimeToRun**：测试完成之前将要运行的总时间。
-* **MaxServiceStabilizationTimeout**:最长时间等待群集变得在测试失败之前正常运行。 执行的检查包括服务运行状况是否正常、对于所有分区而言目标副本集是否达到设定的大小以及是否不存在 InBuild 副本。
+* **PartitionSelector**：选择器对象，指定需要作为目标的分区。
+* **TimeToRun**：测试在完成之前将要运行的总时间。
+* **MaxServiceStabilizationTimeout**：在测试失败之前，等待群集变得正常的最长时间。 执行的检查包括服务运行状况是否正常、对于所有分区而言目标副本集是否达到设定的大小以及是否不存在 InBuild 副本。
 * **WaitTimeBetweenFaults**：每次故障和验证循环之间等待的时间量。
 
 ### <a name="how-to-run-the-failover-test"></a>如何运行故障转移测试

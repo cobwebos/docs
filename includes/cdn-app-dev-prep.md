@@ -1,17 +1,17 @@
 ---
 author: zhangmanling
-ms.service: cdn
+ms.service: azure-cdn
 ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
-ms.openlocfilehash: 7f80c8f1773cfeb8ddfb222d068a5c6571c2e5c7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 41f2d4540f665137d34d262546cdc1a2edfbae3a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66126300"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "77608731"
 ---
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 在编写 CDN 管理代码之前，需要做一些准备工作，使代码能够与 Azure 资源管理器进行交互。 若要执行此准备工作，你需要：
 
 * 创建一个资源组，用来包含本教程中创建的 CDN 配置文件
@@ -27,12 +27,12 @@ ms.locfileid: "66126300"
 3. 将资源组命名为 *CdnConsoleTutorial*。  选择订阅，并选择离你最近的位置。  如果需要，可以单击“固定到仪表板”复选框，将资源组固定到门户中的仪表板。  这便于以后查找该资源组。  完成选择后，单击“创建”。
 
     ![为资源组命名](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
-4. 创建资源组之后，如果未将它固定到仪表板，可以依次单击“浏览”和“资源组”找到它。  要打开该资源组，请单击它。  记下**订阅 ID**。 稍后需要用到此信息。
+4. 创建资源组之后，如果未将它固定到仪表板，可以依次单击“浏览”和“资源组”找到它。   要打开该资源组，请单击它。  记下**订阅 ID**。 稍后需要用到此信息。
 
     ![为资源组命名](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
 
 ### <a name="creating-the-azure-ad-application-and-applying-permissions"></a>创建 Azure AD 应用程序并应用权限
-有两种方法可以使用 Azure Active Directory 应用身份验证：单个用户或服务主体。 服务主体类似于 Windows 中的服务帐户。  不是向特定用户授予与 CDN 配置文件进行交互的权限，权限将授予给服务主体。  服务主体通常用于自动化的非交互式流程。  尽管本教程涉及到编写交互式控制台应用，但重点介绍服务主体身份验证方式。
+可通过两种方法使用 Azure Active Directory 进行应用身份验证：单个用户或服务主体。 服务主体类似于 Windows 中的服务帐户。  不是向特定用户授予与 CDN 配置文件进行交互的权限，权限将授予给服务主体。  服务主体通常用于自动化的非交互式流程。  尽管本教程涉及到编写交互式控制台应用，但重点介绍服务主体身份验证方式。
 
 创建服务主体的过程由多个步骤构成，其中包括创建 Azure Active Directory 应用程序。  要创建它，请[遵循此教程](../articles/active-directory/develop/howto-create-service-principal-portal.md)。
 
@@ -41,11 +41,11 @@ ms.locfileid: "66126300"
 >
 > 执行“Configure multi-tenant application”（配置多租户应用程序）步骤时，请选择“No”（否）。
 >
-> 执行 [Assign the application to a role](../articles/active-directory/develop/howto-create-service-principal-portal.md#assign-the-application-to-a-role)（将应用程序分配到角色）步骤时，请使用前面创建的资源组 *CdnConsoleTutorial* 而不是“读者”角色来分配“CDN 配置文件参与者”角色。  在资源组中为应用程序分配“CDN 配置文件参与者”角色之后，请返回本教程。 
+> 执行 [Assign the application to a role](../articles/active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)（将应用程序分配到角色）步骤时，请使用前面创建的资源组 *CdnConsoleTutorial* 而不是“读者”角色来分配“CDN 配置文件参与者”角色。   在资源组中为应用程序分配“CDN 配置文件参与者”角色之后，请返回本教程。 
 >
 >
 
-创建服务主体并分配“CDN 配置文件参与者”角色之后，资源组的“用户”边栏选项卡看起来应类似于以下图像。
+创建服务主体并分配“CDN 配置文件参与者”角色之后，资源组的“用户”边栏选项卡看起来应类似于以下图像。 
 
 ![“用户”边栏选项卡](./media/cdn-app-dev-prep/cdn-service-principal-include.png)
 
@@ -57,7 +57,7 @@ ms.locfileid: "66126300"
 >
 >
 
-1. 创建应用程序时，请选择“本机应用程序”而不是“Web 应用程序”。
+1. 创建应用程序时，请选择“本机应用程序”而不是“Web 应用程序”。 
 
     ![本机应用程序](./media/cdn-app-dev-prep/cdn-native-application-include.png)
 2. 在下一页上，系统会提示输入**重定向 URI**。  系统不会验证 URI，但请记住输入的 URI。 稍后需要用到此信息。

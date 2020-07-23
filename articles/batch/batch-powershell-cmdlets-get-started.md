@@ -1,26 +1,14 @@
 ---
-title: PowerShell 入门 - Azure Batch | Microsoft Docs
+title: PowerShell 入门
 description: 快速介绍可用于管理 Batch 资源的 Azure PowerShell cmdlet。
-services: batch
-documentationcenter: ''
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.devlang: NA
-ms.topic: conceptual
-ms.tgt_pltfrm: powershell
-ms.workload: big-compute
+ms.topic: how-to
 ms.date: 01/15/2019
-ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 11028561cf6742cfd5e8c0c882de16ff35ebf0ef
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: 6108ac9c9f5f10de69369d7aed31cd0ce317044e
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62118878"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779612"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>使用 PowerShell cmdlet 管理 Batch 资源
 
@@ -30,7 +18,7 @@ ms.locfileid: "62118878"
 
 本文基于 Az Batch 模块 1.0.0 中的 cmdlet。 建议经常更新 Azure PowerShell 模块以利用服务更新和增强功能。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * [下载并配置 Azure PowerShell 模块](/powershell/azure/overview)。 若要安装特定的 Azure Batch 模块，例如预发行模块，请参阅 [PowerShell 库](https://www.powershellgallery.com/packages/Az.Batch/1.0.0)。
 
@@ -125,12 +113,12 @@ $context = Get-AzBatchAccount -AccountName <account_name>
 
 ### <a name="create-a-batch-pool"></a>创建 Batch 池
 
-创建或更新 Batch 池时，为计算节点上的操作系统选择云服务配置或虚拟机配置（请参阅 [Batch 功能概述](batch-api-basics.md#pool)）。 如果指定云服务配置，系统会使用一个 [Azure 来宾 OS 版本](../cloud-services/cloud-services-guestos-update-matrix.md#releases)为计算节点创建映像。 如果指定虚拟机配置，则可指定一个受支持的 Linux 或 Windows VM 映像（在 [Azure 虚拟机市场][vm_marketplace]中列出），或者提供已准备的自定义映像。
+创建或更新 Batch 池时，你需要为计算节点上的操作系统选择云服务配置或虚拟机配置（请参阅[节点和池](nodes-and-pools.md#configurations)）。 如果指定云服务配置，系统会使用一个 [Azure 来宾 OS 版本](../cloud-services/cloud-services-guestos-update-matrix.md#releases)为计算节点创建映像。 如果指定虚拟机配置，则可指定一个受支持的 Linux 或 Windows VM 映像（在 [Azure 虚拟机市场][vm_marketplace]中列出），或者提供已准备的自定义映像。
 
 运行 **New-AzBatchPool**时，传递 PSCloudServiceConfiguration 或 PSVirtualMachineConfiguration 对象中的操作系统设置。 例如，以下代码片段可以在虚拟机配置中创建包含 Standard_A1 大小计算节点的 Batch 池，这些节点包含 Ubuntu Server 18.04-LTS 映像。 在这里，**VirtualMachineConfiguration** 参数指定 *$configuration* 变量作为 PSVirtualMachineConfiguration 对象。 **BatchContext** 参数将先前定义的变量 *$context* 指定为 BatchAccountContext 对象。
 
 ```powershell
-$imageRef = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSImageReference" -ArgumentList @("UbuntuServer","Canonical","18.04.0-LTS")
+$imageRef = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSImageReference" -ArgumentList @("UbuntuServer","Canonical","18.04-LTS")
 
 $configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSVirtualMachineConfiguration" -ArgumentList @($imageRef, "batch.node.ubuntu 18.04")
 
@@ -242,7 +230,7 @@ Remove-AzBatchApplication -AccountName <account_name> -ResourceGroupName <res_gr
 ```
 
 > [!NOTE]
-> 在删除某个应用程序之前，必须删除该应用程序的所有应用程序包版本。 如果尝试删除的应用程序当前存在应用程序包，则会收到“冲突”错误。
+> 在删除某个应用程序之前，必须删除该应用程序的所有应用程序包版本。 如果尝试删除当前具有应用程序包的应用程序，会发生“冲突”错误。
 
 ### <a name="deploy-an-application-package"></a>部署应用程序包
 
@@ -258,9 +246,10 @@ $appPackageReference.ApplicationId = "MyBatchApplication"
 $appPackageReference.Version = "1.0"
 ```
 
-接下来，请创建池，并将包引用对象指定为 `ApplicationPackageReferences` 选项的参数：
+现在创建配置和池。 此示例将 **CloudServiceConfiguration** 参数与在 `$configuration` 中初始化的一个 `PSCloudServiceConfiguration` 类型的对象配合使用，对于“Windows Server 2019”，该参数将 **OSFamily** 设置为 `6`，并将 **OSVersion** 设置为 `*`。 将包引用对象指定为 `ApplicationPackageReferences` 选项的参数：
 
 ```powershell
+$configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration" -ArgumentList @(6,"*")  # 6 = OSFamily 'Windows Server 2019'
 New-AzBatchPool -Id "PoolWithAppPackage" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -BatchContext $context -ApplicationPackageReferences $appPackageReference
 ```
 
@@ -308,4 +297,4 @@ Get-AzBatchComputeNode -PoolId "PoolWithAppPackage" -BatchContext $context | Res
 * 有关详细的 cmdlet 语法和示例，请参阅 [Azure Batch cmdlet reference](/powershell/module/az.batch)（Azure Batch cmdlet 参考）。
 * 有关 Batch 中的应用程序和应用程序包的详细信息，请参阅[使用 Batch 应用程序包将应用程序部署到计算节点](batch-application-packages.md)。
 
-[vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
+[vm_marketplace]: https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1

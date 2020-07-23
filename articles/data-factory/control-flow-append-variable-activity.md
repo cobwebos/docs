@@ -1,32 +1,32 @@
 ---
-title: Azure 数据工厂中的追加变量活动 | Microsoft Docs
+title: Azure 数据工厂中的追加变量活动
 description: 了解如何设置“追加变量”活动以将值添加到数据工厂管道中定义的现有数组变量
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.date: 10/09/2018
-author: sharonlo101
-ms.author: shlo
-manager: craigg
-ms.openlocfilehash: a5efe946000eb00e65d314ae53d7136761e2109d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5d74cd0fcd524f00d79eb3fbab386c602a413766
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60557216"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81414212"
 ---
 # <a name="append-variable-activity-in-azure-data-factory"></a>Azure 数据工厂中的追加变量活动
-
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 使用“追加变量”活动将值添加到数据工厂管道中定义的现有数组变量。
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 需要
+属性 | 说明 | 必须
 -------- | ----------- | --------
-名称 | 管道中活动的名称 | 是
+name | 管道中活动的名称 | 是
 description | 描述活动用途的文本 | 否
 type | 活动类型为 AppendVariable | 是
 value | 用于追加到指定变量的字符串文本或表达式对象值 | 是

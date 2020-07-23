@@ -1,53 +1,70 @@
 ---
-title: Azure 指标资源管理器的高级的功能
-description: 了解有关 Azure Monitor 指标资源管理器的高级功能
-author: lingliw
+title: Azure 指标资源管理器的高级功能
+description: 了解 Azure Monitor 指标资源管理器的高级功能
+author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/12/19
-ms.author: v-lingwu
+ms.date: 01/22/2019
+ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 67e4281b24a7489cf202d82bdddbe99992aac095
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: e6ff33b6a23cb85649a8811a8bef27ab455ab9e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60256770"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82980892"
 ---
-# <a name="advanced-features-of-azure-metrics-explorer"></a>Azure 指标资源管理器的高级的功能
+# <a name="advanced-features-of-azure-metrics-explorer"></a>Azure 指标资源管理器的高级功能
 
 > [!NOTE]
-> 本文假定你熟悉的指标资源管理器的基本功能。 如果你是新用户并想要了解如何创建第一个度量值图表，请参阅[Azure 指标资源管理器入门](metrics-getting-started.md)。
+> 本文假定使用者熟悉指标资源管理器的基本功能。 如果你是新用户，希望了解如何创建第一个指标图表，请参阅 [Azure 指标资源管理器入门](metrics-getting-started.md)。
 
 ## <a name="metrics-in-azure"></a>Azure 中的指标
 
-[Azure Monitor 中的指标](data-platform-metrics.md)是随着时间的推移收集和存储的一系列测量值和计数。 有标准（或“平台”）指标和自定义指标。 标准指标由 Azure 平台本身提供。 标准指标反映 Azure 资源的运行状况和使用情况统计信息。 而由应用程序通过发送到 Azure 的自定义指标[自定义事件和指标的 Application Insights API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics)， [Windows Azure 诊断 (WAD) 扩展](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview)，或由[Azure监视 REST API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api)。
+[Azure Monitor 中的指标](data-platform-metrics.md)是随着时间的推移收集和存储的一系列测量值和计数。 有标准（或“平台”）指标和自定义指标。 标准指标由 Azure 平台本身提供。 标准指标反映 Azure 资源的运行状况和使用情况统计信息。 而自定义指标是由应用程序通过[用于自定义事件和指标的 Application Insights API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics)、[Windows Azure 诊断 (WAD) 扩展](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview)或 [Azure Monitor REST API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api) 发送给 Azure 的。
 
-## <a name="create-views-with-multiple-metrics-and-charts"></a>创建具有多个指标和图表视图
+## <a name="create-views-with-multiple-metrics-and-charts"></a>使用多个指标和图表创建视图
 
-你可以创建图表的绘制多个度量值行或同时显示多个指标的图表。 此功能可以：
+可以创建一次绘制多个指标行或显示多个指标图表的图表。 此功能用于：
 
-- 与另一个相关上相同的图形，以查看如何一个值相关联的相关度量值
-- 显示具有不同的邻近的度量单位的指标
-- 以可视方式聚合和比较来自多个资源的指标
+- 将同一图形中的相关指标关联到一起，看一个值如何与另一个值相关联。
+- 显示很临近但具有不同度量单位的指标
+- 以视觉方式聚合和比较来自多个源的指标
 
-例如，如果你有 5 个存储帐户，并且你想要知道它们之间使用总空间量，可以创建 （堆积） 面积图显示的个人和所有值的总和中特定点的时间。
+例如，你有 5 个存储帐户，想要知道在其中消耗了多少总空间，则可创建一个（堆积的）面积图表，以便显示特定时间点的各个值以及所有值的总计。
 
-### <a name="multiple-metrics-on-the-same-chart"></a>同一个图表上的多个指标
+### <a name="multiple-metrics-on-the-same-chart"></a>同一图表上的多个指标
 
-首先，[创建新图表](metrics-getting-started.md#create-your-first-metric-chart)。 单击**添加指标**，重复步骤以在同一图表中添加另一个度量值。
+首先，[创建新图表](metrics-getting-started.md#create-your-first-metric-chart)。 单击“添加指标”，然后通过同样的步骤在同一图表上添加另一指标。
 
    > [!NOTE]
    > 通常情况下，你不会想要在一个图表上拥有度量单位不同（即“毫秒”和“千字节”）或刻度差异显著的多个指标。 此时，可考虑使用多个图表。 单击“添加图表”按钮，即可在指标资源管理器中创建多个图表。
 
 ### <a name="multiple-charts"></a>多个图表
 
-单击**添加图表**，并使用不同的指标创建另一个图表。
+单击“添加图表”，使用另一指标创建另一图表。
 
-### <a name="order-or-delete-multiple-charts"></a>排序或删除多个图表
+### <a name="order-or-delete-multiple-charts"></a>将多个图表排序或将其删除
 
-若要排序或删除多个图表，请单击省略号 ( **...** ) 要打开图表菜单，然后选择相应的菜单项的符号**向上移动**，**向下移动**，或**删除**。
+若要将多个图表排序或将其删除，请单击省略号 ( **...** )，以便打开图表菜单并选择适当的菜单项：**向上移动**、**向下移动**或**删除**。
+
+## <a name="changing-aggregation"></a>更改聚合
+
+将指标添加到图表时，指标资源管理器会自动预先选择其默认聚合。 默认值在基本方案中适用，但可以使用不同的聚合来获得有关指标的其他见解。 查看图表上的不同聚合时需要了解指标资源管理器处理它们的方式。 
+
+指标是在一段时间内捕获的一系列度量（或“度量值”）。 绘制图表时，所选指标的值将基于时间粒度进行单独聚合。 [使用指标资源管理器时间选取器面板](metrics-getting-started.md#select-a-time-range)选择时间粒度的大小。 如果没有显式选择时间粒度，则会根据当前选择的时间范围自动选择时间粒度。 确定时间粒度后，在每个时间粒度间隔期间捕获的指标值将聚合并放置在图表上 - 每个时间粒度一个数据点。
+
+例如，假设图表针对“过去 24 小时”时间跨度使用“Average”聚合来显示“服务器响应时间”指标  ：
+
+- 如果时间粒度设置为 30 分钟，则从 48 个聚合数据点绘制图表（例如，折线图连接图表绘图区域中的 48 个点）。 即 24 小时 x 每小时 2 个数据点。 每个数据点表示在每个相关的 30 分钟时间段内发生的服务器请求的所有捕获响应时间的平均值。
+- 如果将时间粒度切换到 15 分钟，将获得 96 个聚合数据点。  即 24 小时 x 每小时 4 个数据点。
+
+指标资源管理器中提供了五种基本的统计信息聚合类型：Sum、Count、Min、Max 和 Average    。 “Sum”聚合有时称为“Total”聚合 。 对于许多指标，指标资源管理器将隐藏完全不相关且无法使用的聚合。
+
+- **Sum** –聚合间隔内捕获的所有值的总和
+- **Count** –通过聚合间隔捕获的度量值的数量。 请注意，在捕获的指标值始终为 1 的情况下，“Count”将等于“Sum” 。 当指标跟踪不同事件的计数，并且每个度量表示一个事件时（即每次新请求传入时，代码都会触发指标记录），这种情况很常见
+- **Average** –通过聚合间隔捕获的指标值的平均值
+- **Min** –聚合间隔内捕获的最小值
+- **Max** –聚合间隔内捕获的最大值
 
 ## <a name="apply-filters-to-charts"></a>向图表应用筛选器
 
@@ -63,7 +80,7 @@ ms.locfileid: "60256770"
 
 3. 选择想要在绘制图表时包含的维度值（此示例将显示筛选出了成功的存储事务）：
 
-   ![指标图](./media/metrics-charts/00007.png)
+   ![图表上的](./media/metrics-charts/00007.png)
 
 4. 选择筛选值后，在“筛选选择器”之外单击将其关闭。 现在图表将显示失败的存储事务数：
 
@@ -73,7 +90,7 @@ ms.locfileid: "60256770"
 
 
 
-## <a name="apply-splitting-to-a-chart"></a>将应用到图表拆分
+## <a name="apply-splitting-to-a-chart"></a>对图表应用拆分
 
 可以按维度拆分指标，以直观地显示指标不同部分之间的差异，并标识出某个维度的边远部分。
 
@@ -82,7 +99,7 @@ ms.locfileid: "60256770"
 1. 单击图表上方的“应用拆分”。
  
    > [!NOTE]
-   > 拆分不能用于具有多个指标的图表。 此外，可以有多个筛选器，但只有一个拆分维度应用于任何单个图表。
+   > 不能对包含多个指标的图表使用拆分。 另外，你可以有多个筛选器，但只能对任何单个图表应用一个拆分维度。
 
 2. 选择想要用于分割图表的维度：
 
@@ -111,6 +128,16 @@ ms.locfileid: "60256770"
 
 > [!WARNING]
 > 如果图表用于跟踪一段时间内的各种计数或合计（并因此使用计数、求和、最小值或最大值聚合），要锁定这类图表的 y 轴边界，通常需要指定一个固定的时间粒度，而不是依赖于自动默认值。 这是必要的，因为当用户通过调整浏览器窗口大小或者通过更改屏幕分辨率来自动修改时间粒度时，图表上的值也会发生更改。 时间粒度发生的更改会影响图表的外观，导致当前选择的 y 轴范围失效。
+
+## <a name="change-colors-of-chart-lines"></a>更改图表线条的颜色
+
+配置图表后，将从默认调色板自动为图表线条分配颜色。 可以更改这些颜色。
+
+若要更改图表线条的颜色，请单击与图表相对应的图例中的彩色条。 这将打开“颜色选取器”对话框。 使用颜色选取器配置线条的颜色。
+
+配置图表颜色后，将图表固定到仪表板时，它们将保持此配置。 以下部分说明如何固定图表。
+
+![图表上的](./media/metrics-charts/018.png)
 
 ## <a name="pin-charts-to-dashboards"></a>将图表固定到仪表板
 
@@ -149,3 +176,4 @@ ms.locfileid: "60256770"
 ## <a name="next-steps"></a>后续步骤
 
   请参阅[创建自定义 KPI 仪表板](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards)，了解使用指标创建可操作仪表板的最佳实践。
+

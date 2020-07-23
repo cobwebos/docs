@@ -5,13 +5,13 @@ author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: overview
-ms.date: 04/05/2019
-ms.openlocfilehash: 87c86ddeaa24693d393d250e1dc699b9a15ea84b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 08/01/2019
+ms.openlocfilehash: 9b7a5d5ca6cbad897839c8e28c9e3efd1eeabaf0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60861229"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "68736982"
 ---
 # <a name="what-is-azure-data-catalog"></a>什么是 Azure 数据目录？
 
@@ -66,7 +66,7 @@ Azure 数据目录是完全托管的云服务。 有了它，用户可以发现�
 * [How to work with big data](data-catalog-how-to-big-data.md)
 * [How to manage data assets](data-catalog-how-to-manage.md)
 * [How to set up the Business Glossary](data-catalog-how-to-business-glossary.md)
-* [常见问题](data-catalog-frequently-asked-questions.md)
+* [常见问题解答](data-catalog-frequently-asked-questions.md)
 
 ## <a name="next-steps"></a>后续步骤
 

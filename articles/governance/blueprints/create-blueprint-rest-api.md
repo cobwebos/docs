@@ -1,45 +1,35 @@
 ---
-title: 使用 REST API 创建蓝图
-description: 通过 REST API 使用 Azure 蓝图创建、定义和部署项目。
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 02/04/2019
+title: 快速入门：使用 REST API 创建蓝图
+description: 在本快速入门中，通过 REST API 使用 Azure 蓝图创建、定义和部署项目。
+ms.date: 06/29/2020
 ms.topic: quickstart
-ms.service: blueprints
-manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 83133629d92abb50d9fd7509cf182282503fc041
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e3cdf28cfe523e52aceefe20294042d28b98e1e2
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799211"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971192"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>快速入门：使用 REST API 定义和分配 Azure 蓝图
 
-了解如何创建和分配蓝图以后即可定义常见的模式，以便根据资源管理器模板、策略、安全性等方面的要求开发可重复使用和可快速部署的配置。 本教程介绍如何使用 Azure 蓝图来执行某些与在组织中创建、发布和分配蓝图相关的常见任务，例如：
+了解如何创建和分配蓝图来定义常见的模式，以便根据 Azure 资源管理器模板（ARM 模板）、策略、安全性等方面的要求开发可重复使用和可快速部署的配置。 本教程介绍如何使用 Azure 蓝图来执行某些与在组织中创建、发布和分配蓝图相关的常见任务，例如：
 
-> [!div class="checklist"]
-> - 新建蓝图并添加各种受支持的项目
-> - 对仍处于“草稿”状态的现有蓝图进行更改
-> - 使用“已发布”将蓝图标记为分配就绪
-> - 向现有订阅分配蓝图
-> - 检查已分配蓝图的状态和进度
-> - 删除已向订阅分配的蓝图
+## <a name="prerequisites"></a>先决条件
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
+- 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
+- 注册 `Microsoft.Blueprint` 资源提供程序。 有关用法说明，请参阅[资源提供程序和类型](../../azure-resource-manager/management/resource-providers-and-types.md)。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="getting-started-with-rest-api"></a>REST API 入门
 
 如果不熟悉 REST API，请首先查看 [Azure REST API 参考](/rest/api/azure/)，大致了解 REST API，尤其是请求 URI 和请求正文。 本文使用这些概念来提供有关如何使用 Azure 蓝图的说明，并假定具有相关的实践经验。 [ARMClient](https://github.com/projectkudu/ARMClient) 和其他工具可自动处理授权，建议初学者使用。
 
-有关蓝图规范，请参阅 [Azure 蓝图 REST API](/rest/api/blueprints/)。
+有关 Azure 蓝图规范，请参阅 [Azure 蓝图 REST API](/rest/api/blueprints/)。
 
 ### <a name="rest-api-and-powershell"></a>REST API 和 PowerShell
 
-如果尚无用于进行 REST API 调用的工具，请考虑使用 PowerShell 获取说明。 下面是使用 Azure 进行身份验证的示例标头。 生成身份验证标头，有时称为持有者令牌，然后向要连接到的 REST API URI 提供任何参数或请求正文：
+如果尚无用于进行 REST API 调用的工具，请考虑使用 PowerShell 获取说明。 下面是使用 Azure 进行身份验证的示例标头。 生成身份验证标头，有时称为持有者令牌，然后向要连接到的 REST API URI 提供任何参数或请求正文 ：
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if not using Cloud Shell
@@ -54,7 +44,7 @@ $authHeader = @{
 }
 
 # Invoke the REST API
-$restUri = 'https://management.azure.com/subscriptions/{subscriptionId}?api-version=2016-06-01'
+$restUri = 'https://management.azure.com/subscriptions/{subscriptionId}?api-version=2020-01-01'
 $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 ```
 
@@ -62,10 +52,10 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 
 ## <a name="create-a-blueprint"></a>创建蓝图
 
-定义符合性的标准模式的第一步是根据可用资源构建蓝图。 我们将创建名为“MyBlueprint”的蓝图，以配置订阅的角色和策略分配。 然后，我们将添加资源组、资源管理器模板，然后在资源组上添加角色分配。
+定义符合性的标准模式的第一步是根据可用资源构建蓝图。 我们将创建名为“MyBlueprint”的蓝图，以配置订阅的角色和策略分配。 然后，我们将添加资源组、ARM 模板，并在该资源组上添加角色分配。
 
 > [!NOTE]
-> 使用 REST API 时，首先创建 blueprint 对象。 对于每个要添加的具有参数的项目，需要在初始蓝图上提前定义该参数。
+> 使用 REST API 时，首先创建 blueprint 对象。 对于每个要添加的具有参数的项目，需要在初始蓝图上提前定义该参数 。
 
 在每个 REST API URI 中，包含替换为自己的值所使用的变量：
 
@@ -210,7 +200,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. 在资源组下添加模板。 资源管理器模板的请求正文包括模板的常规 JSON 组件，并使用 properties.resourceGroup 定义目标资源组。 系统会向模板一一传递 **storageAccountType**、**tagName** 和 **tagValue** 蓝图参数，让模板重复使用这些参数。 通过定义 properties.parameters 并置于键/值对用于插入值的模板 JSON 内，蓝图参数可供模板使用。 蓝图和模板参数名称可以相同，但对于如何分别从蓝图项目传入模板项目的说明有所区别。
+1. 在资源组下添加模板。 ARM 模板的请求正文包括模板的常规 JSON 组件，并使用 properties.resourceGroup 定义目标资源组 。 系统会向模板一一传递 **storageAccountType**、**tagName** 和 **tagValue** 蓝图参数，让模板重复使用这些参数。 通过定义 properties.parameters 并置于键/值对用于插入值的模板 JSON 内，蓝图参数可供模板使用。 蓝图和模板参数名称可以相同，但对于如何分别从蓝图项目传入模板项目的说明有所区别。
 
    - REST API URI
 
@@ -347,7 +337,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      GET https://graph.windows.net/{tenantId}/servicePrincipals?api-version=1.6&$filter=appId eq 'f71766dc-90d9-4b7d-bd9d-4499c4331c3f'
      ```
 
-1. 通过将蓝图部署分配到订阅，运行它。 由于“参与者”和“所有者”参数要求主体的 objectId 数组被授予角色分配，使用 [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) 来收集 objectId，以供自己的用户、组或服务主体用于请求正文中。
+1. 通过将蓝图部署分配到订阅，运行它。 由于“参与者”和“所有者”参数要求主体的 objectId 数组被授予角色分配，使用 [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) 来收集 objectId，以供自己的用户、组或服务主体用于请求正文中  。
 
    - REST API URI
 
@@ -400,7 +390,8 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 
    - 用户分配的托管标识
 
-     蓝图分配也可使用[用户分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 在此示例中，请求正文的 **identity** 部分更改如下：  将 `{yourRG}` 和 `{userIdentity}` 分别替换为资源组名称和用户分配托管标识的名称。
+     蓝图分配也可使用[用户分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
+     在此示例中，请求正文的 **identity** 部分更改如下： 将 `{yourRG}` 和 `{userIdentity}` 分别替换为资源组名称和用户分配托管标识的名称。
 
      ```json
      "identity": {
@@ -415,9 +406,11 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      **用户分配的托管标识**可以位于任何订阅和资源组中，只要分配蓝图的用户有权访问它即可。
 
      > [!IMPORTANT]
-     > 蓝图不管理用户分配的托管标识。 用户负责分配足够的角色和权限，否则蓝图分配会失败。
+     > Azure 蓝图不管理用户分配的托管标识。 用户负责分配足够的角色和权限，否则蓝图分配会失败。
 
-## <a name="unassign-a-blueprint"></a>取消分配蓝图
+## <a name="clean-up-resources"></a>清理资源
+
+### <a name="unassign-a-blueprint"></a>取消分配蓝图
 
 可以从订阅中删除蓝图。 通常会在不再需要项目资源时将其删除。 删除蓝图时，作为该蓝图的一部分分配的项目将保留。 若要删除蓝图分配，请使用以下 REST API 操作：
 
@@ -427,7 +420,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
   DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2018-11-01-preview
   ```
 
-## <a name="delete-a-blueprint"></a>删除蓝图
+### <a name="delete-a-blueprint"></a>删除蓝图
 
 若要删除蓝图本身，请使用以下 REST API 操作：
 
@@ -439,9 +432,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[蓝图生命周期](./concepts/lifecycle.md)。
-- 了解如何使用[静态和动态参数](./concepts/parameters.md)。
-- 了解如何自定义[蓝图排序顺序](./concepts/sequencing-order.md)。
-- 了解如何利用[蓝图资源锁定](./concepts/resource-locking.md)。
-- 了解如何[更新现有分配](./how-to/update-existing-assignments.md)。
-- 使用[一般故障排除](./troubleshoot/general.md)在蓝图的分配期间解决问题。
+在本快速入门中，你使用 REST API 创建、分配并删除了蓝图。 若要详细了解 Azure 蓝图，请继续学习蓝图生命周期文章。
+
+> [!div class="nextstepaction"]
+> [了解蓝图生命周期](./concepts/lifecycle.md)

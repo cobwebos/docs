@@ -1,33 +1,31 @@
 ---
-title: 使用双重验证进行 Azure MFA 登录 - Azure Active Directory | Microsoft Docs
-description: 本页将提供有关在何处查看 Azure MFA 支持的各种登录方法的指导。
-keywords: 用户身份验证, 登录体验, 使用手机登录, 使用办公电话登录
+title: 通过工作或学校帐户使用身份验证进行登录 - Azure AD
+description: 了解如何使用各种双重验证方法登录工作或学校帐户。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: b310b762-471b-4b26-887a-a321c9e81d46
 ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 04/02/2017
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1350b2d86e18f213d99f1c27d64e371451f5f9b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: daa2cfae4ed8371e245d12a9f805fe07f31a6d76
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60334386"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742954"
 ---
-# <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>使用 Azure 多重身份验证时的登录体验
+# <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>使用双重验证方法登录工作或学校帐户
+
 > [!NOTE]
 > 本文的目的是了解典型的登录体验。 有关登录的帮助或者要排查问题，请参阅[使用 Azure 多重身份验证时遇到问题](multi-factor-authentication-end-user-troubleshoot.md)。
 
 ## <a name="what-will-your-sign-in-experience-be"></a>登录体验是怎样的？
-根据所选择的第二重验证因素（拨打电话、身份验证应用或短信），你的登录体验有所不同。 请选择最适当地描述了活动的选项：
+根据所选择的第二重验证因素（拨打电话、身份验证应用或短信），登录体验将有所不同。 请选择最适当地描述了活动的选项：
 
 | 如何登录？ |
 | --- |
@@ -61,7 +59,7 @@ ms.locfileid: "60334386"
    ![Microsoft 发送通知](./media/multi-factor-authentication-end-user-signin/notify.png)
 
 3. 打开手机上的通知，选择“验证”键。 如果公司需要 PIN，请在此处输入。
-4. 现在，应该已登录。
+4. 现在你应已登录。
 
 ### <a name="to-sign-in-using-a-verification-code-with-the-microsoft-authenticator-app"></a>使用验证码通过 Microsoft Authenticator 应用登录
 

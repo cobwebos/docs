@@ -1,25 +1,15 @@
 ---
-title: 应用程序升级：数据序列化 | Microsoft 文档
+title: 应用程序升级：数据序列化
 description: 介绍有关数据序列化的最佳实践，以及数据序列化如何影响应用程序滚动升级。
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: a5f36366-a2ab-4ae3-bb08-bc2f9533bc5a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: 55cbd869e7434469ebddd7af493c91bfedafc594
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d502e74139c543d4183a75faa6bea1948d9f3e56
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60614451"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247976"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>数据序列化如何影响应用程序升级
 在[应用程序滚动升级](service-fabric-application-upgrade.md)过程中，升级应用于部分节点，一次一个升级域。 在此过程中，一些升级域位于较新版本的应用程序上，而一些升级域位于较旧版本的应用程序上。 在滚动更新期间，新版本的应用程序必须能够读取旧版本的数据，并且旧版本的应用程序必须能够读取新版本的数据。 如果数据格式不向前和向后兼容，则升级可能会失败（或更糟），甚至可能丢失数据。 本文介绍数据格式的构成，并提供确保数据向前和向后兼容的最佳实践。
@@ -36,7 +26,7 @@ ms.locfileid: "60614451"
 * 更改类名或命名空间
 
 ### <a name="data-contract-as-the-default-serializer"></a>用作默认序列化程序的数据约定
-序列化程序通常负责读取数据并将其反序列化到当前版本中，即使该数据位于较旧或*较新*版本中。 默认序列化程序是[数据协定序列化程序](https://msdn.microsoft.com/library/ms733127.aspx)，它具有定义完善的版本控制规则。 Reliable Collections 允许替代序列化程序，但 Reliable Actors 目前不允许。 数据序列化程序在启用滚动升级中扮演着重要的角色。 数据协定序列化程序是建议用于 Service Fabric 应用程序的序列化程序。
+序列化程序通常负责读取数据并将其反其序列化到当前版本中，即使该数据位于较旧或*较新*版本中。 默认序列化程序是[数据协定序列化程序](/dotnet/framework/wcf/feature-details/using-data-contracts)，它具有定义完善的版本控制规则。 Reliable Collections 允许替代序列化程序，但 Reliable Actors 目前不允许。 数据序列化程序在启用滚动升级中扮演着重要的角色。 数据协定序列化程序是建议用于 Service Fabric 应用程序的序列化程序。
 
 ## <a name="how-the-data-format-affects-a-rolling-upgrade"></a>数据格式如何影响滚动升级
 滚动升级期间，主要在两种情景下序列化程序可能会遇到较旧的数据版本或*较新*的数据版本：
@@ -51,7 +41,7 @@ ms.locfileid: "60614451"
 
 代码和数据格式的两个版本必须同时向前和向后兼容。 如果它们不兼容，则滚动升级可能失败，甚至可能丢失数据。 滚动升级可能失败，因为代码或序列化程序在遇到另一个版本时可能会引发异常或错误。 例如，如果添加了一个新属性，但旧的序列化程序在反序列化期间弃用了该新属性，则数据可能会丢失。
 
-数据协定是为确保数据兼容所建议的解决方案。 它具有定义完善的版本控制规则，可用于添加、删除和更改字段。 它还支持处理未知字段、挂接到序列化和反序列化过程以及类继承。 有关详细信息，请参阅[使用数据协定](https://msdn.microsoft.com/library/ms733127.aspx)。
+数据协定是为确保数据兼容所建议的解决方案。 它具有定义完善的版本控制规则，可用于添加、删除和更改字段。 它还支持处理未知字段、挂接到序列化和反序列化过程以及类继承。 有关详细信息，请参阅[使用数据协定](/dotnet/framework/wcf/feature-details/using-data-contracts)。
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Visual Studio 升级应用程序](service-fabric-application-upgrade-tutorial.md)逐步讲解了如何使用 Visual Studio 进行应用程序升级。
@@ -63,4 +53,3 @@ ms.locfileid: "60614451"
 参考[高级主题](service-fabric-application-upgrade-advanced.md)，了解如何在升级应用程序时使用高级功能。
 
 参考[对应用程序升级进行故障排除](service-fabric-application-upgrade-troubleshooting.md)中的步骤来解决应用程序升级时的常见问题。
-

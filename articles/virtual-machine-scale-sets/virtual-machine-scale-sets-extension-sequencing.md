@@ -1,26 +1,19 @@
 ---
-title: 结合使用扩展排序和 Azure 虚拟机规模集 | Microsoft Docs
+title: 将扩展排序用于 Azure 虚拟机规模集
 description: 了解如何在虚拟机规模集上部署多个扩展时对扩展预配进行排序。
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: drewm
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: extensions
 ms.date: 01/30/2019
-ms.author: manayar
-ms.openlocfilehash: 2e5dfda16c4828b3113fc50d4cffc79fe6ff19e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 3271041b9f4db100cd05588129c7d714d4478f10
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60620166"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121025"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>在虚拟机规模集中对扩展预配进行排序
 Azure 虚拟机扩展提供部署后配置和管理、监视、安全性等功能。 生产部署通常结合使用为 VM 实例配置的多个扩展来实现所需效果。
@@ -29,7 +22,7 @@ Azure 虚拟机扩展提供部署后配置和管理、监视、安全性等功�
 
 本文详细介绍了如何在虚拟机规模集中对要为 VM 实例配置的扩展进行排序。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 本文假定你熟悉以下内容：
 -   Azure 虚拟机[扩展](../virtual-machines/extensions/overview.md)
 -   [修改](virtual-machine-scale-sets-upgrade-scale-set.md)虚拟机规模集
@@ -245,7 +238,7 @@ az vmss extension set \
 ```
 
 
-## <a name="troubleshoot"></a>故障排除
+## <a name="troubleshoot"></a>疑难解答
 
 ### <a name="not-able-to-add-extension-with-dependencies"></a>无法添加有依赖项的扩展？
 1. 请确保 provisionAfterExtensions 中指定的扩展已在规模集模型中定义。

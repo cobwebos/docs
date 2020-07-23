@@ -1,77 +1,194 @@
 ---
-title: Azure 存储中的数据冗余 | Microsoft Docs
-description: 复制 Microsoft Azure 存储帐户中的数据以实现持久性和高可用性。 冗余选项包括本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和读取访问异地冗余存储 (RA-GRS)。
+title: 数据冗余
+titleSuffix: Azure Storage
+description: 复制 Microsoft Azure 存储帐户中的数据以实现持久性和高可用性。 冗余配置包括本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS)、读取访问异地冗余存储 (RA-GRS)、异地区域冗余存储 (GZRS) 和读取访问异地区域冗余存储 (RA-GZRS)。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 01/18/2019
+ms.topic: conceptual
+ms.date: 06/22/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 078c62913b903eafe9e0fcfcef4189f5ca735d0f
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 903560f5c0400a906918f0c17eafb2e1e09bdd30
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002822"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518498"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
-始终复制 Microsoft Azure 存储帐户中的数据以确保持久性和高可用性。 Azure 存储功能会复制数据，以防范各种计划内和计划外的事件，包括暂时性的硬件故障、网络中断或断电、大范围自然灾害等。 可以选择在同一数据中心中、跨同一区域中的局域数据中心或跨地理上隔离的区域复制数据。
+Azure 存储始终存储数据的多个副本，以防范各种计划内和计划外的事件，包括暂时性的硬件故障、网络中断或断电、大范围自然灾害等。 即使面临故障时，冗余也可确保存储帐户满足 [Azure 存储的服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/storage/) 的要求。
 
-即使面临故障时，复制也可确保存储帐户满足[存储的服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/storage/)的要求。 请参阅 SLA，了解有关 Azure 存储确保持续性和可用性的信息。
+在决定哪种冗余选项最适合你的方案时，请在降低成本与提高可用性和耐用性之间进行权衡。 在确定应选择哪些冗余选项时，请考虑以下因素：  
 
-Azure 存储定期验证使用循环冗余检查 (Crc) 存储的数据的完整性。 如果检测到数据损坏，修复使用冗余的数据。 Azure 存储还计算上所有网络流量以检测损坏的数据包时存储或检索数据的校验和。
+- 要如何在主要区域中复制数据
+- 是否要将你的数据复制到地理上距主要区域较远的另一个位置，以应对区域性灾难
+- 如果主区域因任何原因变得不可用，应用程序是否需要对次要区域中复制数据的读取访问
 
-## <a name="choosing-a-redundancy-option"></a>选择冗余选项
+## <a name="redundancy-in-the-primary-region"></a>主要区域中的冗余
 
-创建存储帐户时，可以选择以下冗余选项之一：
+Azure 存储帐户中的数据在主要区域中始终复制三次。 Azure 存储提供了两个有关如何在主要区域中复制数据的选项：
 
-* [本地冗余存储 (LRS)](storage-redundancy-lrs.md)
-* [区域冗余存储 (ZRS)](storage-redundancy-zrs.md)
-* [异地冗余存储 (GRS)](storage-redundancy-grs.md)
-* [读取访问异地冗余存储 (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage)
+- **本地冗余存储 (LRS)** 在主要区域中的单个物理位置同步复制数据三次。 LRS 是成本最低的复制选项，但不建议对需要高可用性的应用程序使用此选项。
+- **区域冗余存储 (ZRS)** 跨主要区域中的三个 Azure 可用性区域同步复制数据。 对于需要高可用性的应用程序，Microsoft 建议在主要区域中使用 ZRS，并复制到次要区域。
 
-下表简要概述了每种复制策略为给定类型的事件（或具有类似影响性的事件）提供的持久性和可用性范围。
+### <a name="locally-redundant-storage"></a>本地冗余存储
 
-| 场景                                                                                                 | LRS                             | ZRS                              | GRS                                  | RA-GRS                               |
+本地冗余存储 (LRS) 在主要区域的单个物理位置复制数据三次。 LRS 可在一年中提供至少 99.999999999%（11 个 9）的对象持久性。
+
+与其他选项相比，LRS 是成本最低的冗余选项，提供的持久性也最低。 LRS 可保护你的数据免受服务器机架和驱动器故障的影响。 但是，如果数据中心内发生火灾或洪水等灾难，使用 LRS 的存储帐户的所有副本可能会丢失或无法恢复。 若要缓解此风险，Microsoft 建议使用[区域冗余存储](#zone-redundant-storage) (ZRS)、[异地冗余存储](#geo-redundant-storage) (GRS) 或[异地区域冗余存储](#geo-zone-redundant-storage) (GZRS)。
+
+会同步发生一个针对使用 LRS 的存储帐户的写入请求。 写入操作仅在将数据写入所有三个副本后才能成功返回。
+
+LRS 对于以下方案是不错的选择：
+
+- 如果应用程序存储着在发生数据丢失时可轻松重构的数据，则可以选择 LRS。
+- 如果由于数据治理需要，某些应用程序被限制为只能在一个国家/地区内复制数据，则可以选择 LRS。 在某些情况下，进行异地复制数据的配对区域可能在另一个国家/地区。 有关配对区域的详细信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。
+
+### <a name="zone-redundant-storage"></a>区域冗余存储
+
+区域冗余存储 (ZRS) 在主区域中的三个 Azure 可用性区域同步复制 Azure 存储数据。 每个可用性区域都是一个独立的物理位置，具有独立的电源、冷却系统和网络。 ZRS 在一年中提供至少 99.9999999999%（12 个 9）的 Azure 存储数据对象持久性。
+
+通过使用 ZRS，即使某个区域变得不可用，也仍可访问你的数据进行读写操作。 如果某个区域变得不可用，则 Azure 会执行网络更新，例如 DNS 重新指向。 如果完成更新之前访问数据，这些更新可能会影响应用程序。 在设计用于 ZRS 的应用程序时，遵循暂时性故障的处理做法，包括结合指数退让实施重试策略。
+
+会同步发生一个针对使用 ZRS 的存储帐户的写入请求。 写入操作仅在将数据写入三个可用性区域中的所有副本后才能成功返回。
+
+对于需要一致性、耐用性和高可用性的方案，Microsoft 建议在主要区域中使用 ZRS。 如果数据变为暂时不可用，ZRS 可提供出色的性能、低延迟和数据复原能力。 但是，如果多个区域永久受到影响，在发生区域性的灾难时，ZRS 本身可能无法保护数据。 为了防御区域灾难，Microsoft 建议使用[地理区域冗余存储](#geo-zone-redundant-storage) (GZRS)，该存储在主要区域中使用 ZRS，并将数据异地复制到次要区域。
+
+下表显示了哪些类型的存储帐户支持哪些区域中的 ZRS：
+
+|    存储帐户类型    |    支持的区域    |    支持的服务    |
+|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+|    常规用途 v2<sup>1</sup>    | 亚洲东南部<br /> 澳大利亚东部<br /> 北欧<br />  西欧<br /> 法国中部<br /> 日本东部<br /> 南非北部<br /> 英国南部<br /> 美国中部<br /> 美国东部<br /> 美国东部 2<br /> 美国西部 2    |    块 Blob<br /> 页 Blob<sup>2</sup><br /> 文件共享（共享）<br /> 表<br /> 队列<br /> |
+|    BlockBlobStorage<sup>1</sup>    | 亚洲东南部<br /> 澳大利亚东部<br /> 西欧<br /> 美国东部    |    仅块 Blob    |
+|    FileStorage    | 亚洲东南部<br /> 澳大利亚东部<br /> 西欧<br /> 美国东部    |    仅 Azure 文件    |
+
+<sup>1</sup> ZRS 帐户当前不支持存档层。<br />
+<sup>2</sup> 包含虚拟机的 Azure 托管磁盘的存储帐户始终使用 LRS。 Azure 非托管磁盘还应使用 LRS。 可以为使用 GRS 的 Azure 非托管磁盘创建存储帐户，但由于异步异地复制可能存在一致性问题，因此不建议这样做。 托管磁盘和非托管磁盘都不支持 ZRS 或 GZRS。 有关托管磁盘的详细信息，请参阅 [Azure 托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)。
+
+若要详细了解哪些区域支持 ZRS，请参阅[什么是 Azure 可用性区域？](../../availability-zones/az-overview.md)中的“服务支持（按区域）”。
+
+## <a name="redundancy-in-a-secondary-region"></a>次要区域中的冗余
+
+对于需要高可用性的应用程序，你可以选择将存储帐户中的数据另外复制到距离主区域数百英里的次要区域。 如果存储帐户已复制到次要区域，则即使遇到区域完全停电或导致主区域不可恢复的灾难，数据也能持久保存。
+
+创建存储帐户时，可以为帐户选择主要区域。 配对的次要区域是根据主要区域确定的且无法更改。 有关 Azure 支持的区域的详细信息，请参阅 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)。
+
+Azure 存储提供了两种将数据复制到次要区域的选项：
+
+- **异地冗余存储 (GRS)** 使用 LRS 在主区域中的单个物理位置同步复制数据三次。 然后，它将数据异步复制到次要区域中的单个物理位置。
+- **异地区域冗余存储 (GZRS)** 使用 ZRS 在主区域中的三个 Azure 可用性区域同步复制数据。 然后，它会将数据异步复制到次要区域中的单个物理位置。
+
+GRS 和 GZRS 之间的主要区别是在主要区域中复制数据的方式。 在辅助位置内，始终使用 LRS 同步复制数据三次。 辅助区域中的 LRS 保护你的数据免受硬件故障的影响。
+
+使用 GRS 或 GZRS，不可对次要位置中的数据执行读取或写入访问，除非执行了到次要区域的故障转移。 若要对次要位置进行读取访问，请将存储帐户配置为使用读取访问异地冗余存储 (RA-GRS) 或读取访问地理区域冗余存储 (RA-GZRS)。 有关详细信息，请参阅[对次要区域中数据的读取访问权限](#read-access-to-data-in-the-secondary-region)。
+
+如果主要区域变得不可用，则可以选择故障转移到次要区域。 故障转移完成后，次要区域将成为主要区域，你便可以再次读取和写入数据。 有关灾难恢复的详细信息以及如何故障转移到次要区域，请参阅[灾难恢复和存储帐户故障转移](storage-disaster-recovery-guidance.md)。
+
+> [!IMPORTANT]
+> 由于数据以异步方式复制到次要区域，因此如果无法恢复主要区域，则影响主要区域的故障可能会导致数据丢失。 最近写入主要区域与最后写入次要区域之间的间隔称为恢复点目标 (RPO)。 RPO 指示可以将数据恢复到的时间点。 Azure 存储的 RPO 通常小于 15 分钟，但目前没有 SLA 规定将数据复制到次要区域所需的时间。
+
+### <a name="geo-redundant-storage"></a>异地冗余存储
+
+异地冗余存储 (GRS) 使用 LRS 在主区域中的单个物理位置同步复制数据三次。 然后，它将数据异步复制到距主区域数百英里以外的次要区域的单个物理位置。 GRS 在一年中提供至少 99.99999999999999%（16 个 9）的 Azure 存储数据对象持久性。
+
+首先将写入操作提交到主要位置，并使用 LRS 进行复制。 然后，以异步方式将更新复制到次要区域。 将数据写入次要位置后，还会使用 LRS 在该位置复制数据。
+
+### <a name="geo-zone-redundant-storage"></a>异地区域冗余存储
+
+地域区域冗余存储 (GZRS) 将冗余跨可用性区域提供的高可用性与异地复制提供的区域中断保护相结合。 将跨主要区域中的三个 [Azure 可用性区域](../../availability-zones/az-overview.md)复制 GZRS 存储帐户中的数据，并将其复制到次要地理区域，以防御区域灾难。 Microsoft 建议对需要最大程度的一致性、耐用性和可用性、卓越性能和灾难恢复复原能力的应用程序使用 GZRS。
+
+如果使用 GZRS 存储帐户，在可用性区域不可用或无法恢复的情况下，可以继续读取和写入数据。 此外，即使在遇到区域完全停电或导致主要区域不可恢复的灾难，数据也能持久保存。 GZRS 可在一年中提供至少 99.99999999999999%（16 个 9）的对象持久性。
+
+仅常规用途 v2 存储帐户支持 GZRS 和 RA-GZRS。 有关存储帐户类型的详细信息，请参阅 [Azure 存储帐户概述](storage-account-overview.md)。 GZRS 和 RA-GZRS 支持块 Blob、页 Blob（但无法用于 VHD 磁盘）、文件、表和队列。
+
+以下区域支持 GZRS 和 RA-GZRS：
+
+- 亚洲东南部
+- 北欧
+- 西欧
+- 日本东部
+- 英国南部
+- 美国中部
+- 美国东部
+- 美国东部 2
+- 美国西部 2
+
+若要详细了解定价，请参阅 [Blob](https://azure.microsoft.com/pricing/details/storage/blobs)、[文件](https://azure.microsoft.com/pricing/details/storage/files/)、[列队](https://azure.microsoft.com/pricing/details/storage/queues/)和[表](https://azure.microsoft.com/pricing/details/storage/tables/)的定价详细信息。
+
+## <a name="read-access-to-data-in-the-secondary-region"></a>对次要区域中数据的读取访问权限
+
+异地冗余存储（使用 GRS 或 GZRS）将数据复制到次要区域中的另一个物理位置，以防止区域中断。 但是，仅当客户或 Microsoft 启动了从主要区域到次要区域的故障转移时，才能读取该数据。 当你启用对辅助区域的读取访问权限时，你的数据将随时可供读取，其中包括在主要区域不可用的情况下。 若要对次要区域进行读取访问，可启用读取访问异地冗余存储 (RA-GRS) 或读取访问地理区域冗余存储 (RA-GZRS)。
+
+### <a name="design-your-applications-for-read-access-to-the-secondary"></a>设计应用程序以获取对次要区域的读取访问权限
+
+如果你的存储帐户配置了次要区域的读取访问，可以将应用程序设计为无缝切换为从次要区域读取数据（如果主要区域因任何原因不可用）。 
+
+启用 "GRS" 或 "GZRS" 后，辅助区域可用于读取访问权限，因此你可以提前测试应用程序，以确保在发生服务中断时，它将从辅助区域正确读取。 若要详细了解如何设计应用程序以实现高可用性，请参阅[使用异地冗余设计高度可用的应用程序](geo-redundant-design.md)。
+
+启用辅助数据库的读取访问权限后，可以从辅助终结点以及主终结点读取应用程序。 辅助终结点将后缀“–secondary”追加到帐户名称。 例如，如果 Blob 存储的主终结点是 `myaccount.blob.core.windows.net`，则辅助终结点是 `myaccount-secondary.blob.core.windows.net`。 存储帐户的帐户访问密钥对于主终结点和辅助终结点是相同的。
+
+### <a name="check-the-last-sync-time-property"></a>检查“上次同步时间”属性
+
+由于数据以异步方式复制到次要区域，因此次要区域的操作通常晚于主要区域。 如果主要区域发生故障，这时，对主要区域的写入很有可能尚未全部复制到次要区域。
+
+若要确定哪些写入操作已复制到次要区域，应用程序可以查看存储帐户的“上次同步时间”属性。 在上次同步时间之前写入主区域的所有写入操作已成功复制到次要区域，这意味着可从次要区域读取它们。 在上次同步时间之后写入主要区域的任何写入操作可能已复制到次要区域，也可能未复制到次要区域，这意味着可能不适合对它们执行读取操作。
+
+你可以使用 Azure PowerShell、Azure CLI 或 Azure 存储客户端库之一查询“上次同步时间”属性的值。 “上次同步时间”属性是 GMT 日期/时间值。 有关详细信息，请参阅[检查存储帐户的“上次同步时间”属性](last-sync-time-get.md)。
+
+## <a name="summary-of-redundancy-options"></a>冗余选项摘要
+
+以下各部分中的表总结了可用于 Azure 存储的冗余选项
+
+### <a name="durability-and-availability-parameters"></a>持久性和可用性参数
+
+下表描述了每个冗余选项的关键参数：
+
+| 参数                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| 数据中心内的节点不可用                                                                 | “是”                             | 是                              | 是                                  | “是”                                  |
-| 整个数据中心（区域性或非区域性）不可用                                           | “否”                              | 是                              | 是                                  | “是”                                  |
-| 区域范围的服务中断                                                                                     | “否”                              | 否                               | 是                                  | “是”                                  |
-| 整个区域不可用时对数据进行读取访问（远程异地复制区域中） | “否”                              | 否                               | 否                                   | “是”                                  |
-| 旨在给定年份为对象提供 \_\_ 的持续性                                          | 至少为 99.999999999% (11 9's) | 至少为 99.9999999999% (12 9's) | 至少为 99.99999999999999% (16 9's) | 至少为 99.99999999999999% (16 9's) |
-| 支持的存储帐户类型                                                                   | GPv2、GPv1、Blob                | GPv2                             | GPv2、GPv1、Blob                     | GPv2、GPv1、Blob                     |
-| 读取请求的可用性 SLA | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） | 至少为 99.99%（冷访问层为 99.9%） |
-| 写入请求的可用性 SLA | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） |
+| 给定年份内对象的持续性百分比<sup>1</sup>                                          | 至少为 99.999999999% (11 9's) | 至少为 99.9999999999% (12 9's) | 至少为 99.99999999999999% (16 9's) | 至少为 99.99999999999999% (16 9's) |
+| 读取请求的可用性 SLA<sup>1</sup>  | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） | 对于 GRS，至少为 99.9%（冷访问层为 99%）<br /><br />对于 RA-GRS，至少为 99.99%（冷访问层为 99.9%） | 对于 GZRS，至少为 99.9%（冷访问层为 99%）<br /><br />对于 RA-GZRS，至少为 99.99%（冷访问层为 99.9%） |
+| 写入请求的可用性 SLA<sup>1</sup>  | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） |
 
-有关每个冗余选项的定价信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。 
+<sup>1</sup> 有关 Azure 存储确保持续性和可用性的信息，请参阅 [Azure 存储 SLA](https://azure.microsoft.com/support/legal/sla/storage/)。
 
-有关 Azure 存储确保持续性和可用性的信息，请参阅 [Azure 存储 SLA](https://azure.microsoft.com/support/legal/sla/storage/)。
+### <a name="durability-and-availability-by-outage-scenario"></a>持久性和可用性（按中断方案）
+
+下表指示数据是否持久且在给定方案中可用，具体取决于对存储帐户启用的冗余类型：
+
+| 中断方案                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
+| :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
+| 数据中心内的节点变为不可用                                                                 | 是                             | 是                              | 是                                  | 是                                 |
+| 整个数据中心（区域性或非区域性）不可用                                           | 否                              | 是                              | 是<sup>1</sup>                                  | 是                                  |
+| 主要区域发生区域范围的服务中断                                                                                     | 否                              | 否                               | 是<sup>1</sup>                                  | 是<sup>1</sup>                                  |
+| 如果主区域变得不可用，可对次要区域进行读取访问 | 否                              | 否                               | 是（通过 RA-GRS）                                   | 是（通过 RA-GZRS）                                 |
+
+<sup>1</sup> 如果主要区域变为不可用，则需要执行帐户故障转移来恢复写入可用性。 有关详细信息，请参阅[灾难恢复和存储帐户故障转移](storage-disaster-recovery-guidance.md)。
+
+### <a name="supported-storage-account-types"></a>支持的存储帐户类型
+
+下表显示了每种存储帐户类型都支持哪些冗余选项。 有关存储帐户类型，请参阅[存储帐户概述](storage-account-overview.md)。
+
+| LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
+| :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
+| 常规用途 v2<br /> 常规用途 v1<br /> 块 Blob 存储<br /> Blob 存储<br /> 文件存储                | 常规用途 v2<br /> 块 Blob 存储<br /> 文件存储                             | 常规用途 v2<br /> 常规用途 v1<br /> Blob 存储                     | 常规用途 v2                     |
+
+所有存储帐户的所有数据的复制均基于存储帐户的冗余选项。 复制的对象包括块 Blob、追加 Blob、页 Blob、队列、表和文件。 复制所有层中的数据，包括存档层。 有关 Blob 层的详细信息，请参阅 [Azure Blob 存储：热访问层、冷访问层和存档访问层](../blobs/storage-blob-storage-tiers.md)。
+
+有关每个冗余选项的定价信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。
 
 > [!NOTE]
-> 高级存储仅支持本地冗余存储 (LRS)。
+> Azure 高级磁盘存储目前仅支持本地冗余存储 (LRS)。 块 Blob 存储帐户在本地支持特定区域中的本地冗余存储 (LRS) 和区域冗余存储 (ZRS)。
 
-## <a name="changing-replication-strategy"></a>更改复制策略
-可以使用来更改存储帐户的复制策略[Azure 门户](https://portal.azure.com/)， [Azure Powershell](storage-powershell-guide-full.md)， [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，或其中一个[Azure 客户端库](https://docs.microsoft.com/azure/index#pivot=sdkstools)。 更改存储帐户的复制类型不会导致停机。
+## <a name="data-integrity"></a>数据完整性
 
-   > [!NOTE]
-   > 目前，无法使用门户或 API 将帐户转换为 ZRS。 如果想要将帐户的复制转换为 ZRS，请参阅[区域冗余存储 (ZRS)](storage-redundancy-zrs.md) 以了解详细信息。
-    
-### <a name="are-there-any-costs-to-changing-my-accounts-replication-strategy"></a>更改帐户的复制策略是否产生任何费用？
-这取决于转换路径。 从最便宜到最昂贵的冗余产品/服务依次为 LRS、ZRS、GRS 和 RA-GRS。 例如，从 LRS 转移到其他任何存储会产生额外的费用，因为这是转移到更高级的冗余级别。 转移到 GRS 或 RA-GRS 会产生出口带宽费用，因为（主要区域中的）数据将复制到远程次要区域。 这是在初始设置期间收取的一次性费用。 复制数据后，无需进一步支付转换费用。 只有在复制任何新数据，或者复制现有数据的更新时才要付费。 有关带宽费用的详细信息，请参阅 [Azure 存储定价页面](https://azure.microsoft.com/pricing/details/storage/blobs/)。
-
-如果将存储帐户从 GRS 转换为 LRS，则不会产生额外的费用，但从次要位置复制的数据将被删除。
-
-如果将存储帐户从 RA-GRS 转换为 GRS 或 LRS，则会在完成转换 30 天后以 RA-GRS 方式对该帐户计费。
+Azure 存储使用循环冗余检查 (CRC) 定期验证存储的数据的完整性。 如果检测到数据损坏，则使用冗余数据进行修复。 Azure 存储还对所有网络流量计算校验和，以检测存储或检索数据时数据包损坏的情况。
 
 ## <a name="see-also"></a>另请参阅
 
-- [本地冗余存储 (LRS)：Azure 存储的低成本数据冗余](storage-redundancy-lrs.md)
-- [区域冗余存储 (ZRS)：高度可用的 Azure 存储应用程序](storage-redundancy-zrs.md)
-- [异地冗余存储 (GRS)：Azure 存储的跨区域复制](storage-redundancy-grs.md)
-- [Azure 存储可伸缩性和性能目标](storage-scalability-targets.md)
-- [使用 RA-GRS 存储设计高度可用的应用程序](../storage-designing-ha-apps-with-ragrs.md)
-- [Microsoft Azure 存储冗余选项和读取访问异地冗余存储](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
-- [SOSP 论文 - Azure 存储：具有高度一致性的高可用云存储服务](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+- [检查存储帐户的“上次同步时间”属性](last-sync-time-get.md)
+- [更改存储帐户的冗余选项](redundancy-migration.md)
+- [使用异地冗余设计高度可用的应用程序](geo-redundant-design.md)
+- [灾难恢复和存储帐户故障转移](storage-disaster-recovery-guidance.md)

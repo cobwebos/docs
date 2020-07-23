@@ -1,23 +1,16 @@
 ---
-title: 使用 Application Insights Profiler 探查在 Azure VM 上运行的 Web 应用 | Microsoft Docs
+title: 探查 Azure VM 上的 Web 应用 - Application Insights Profiler
 description: 使用 Application Insights Profiler 探查 Azure VM 上的 Web 应用。
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: ab30351bfff9c5bbf070a1e8a54a4919e4d2231a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.date: 11/08/2019
+ms.reviewer: mbullwin
+ms.openlocfilehash: 7c5dfe6ed08df01f78346c76fd5a35e7d64ab520
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66226272"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77671573"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>使用 Application Insights Profiler 探查在 Azure 虚拟机或虚拟机规模集上运行的 Web 应用
 
@@ -31,7 +24,7 @@ Azure Application Insights Profiler 也可以部署在以下服务上：
 ## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>在虚拟机或虚拟机规模集上部署 Profiler
 本文介绍如何在 Azure 虚拟机 (VM) 或 Azure 虚拟机规模集上运行 Application Insights Profiler。 Profiler 与适用于 VM 的 Azure 诊断扩展一同安装。 请将该扩展配置为运行 Profiler，并将 Application Insights SDK 内置到应用程序中。
 
-1. 添加 Application Insights SDK 为你[ASP.NET 应用程序](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net)。
+1. 将 Application Insights SDK 添加到 [ASP.NET 应用程序](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net)。
 
    若要查看请求的探查结果，必须将请求遥测数据发送到 Application Insights。
 
@@ -60,7 +53,7 @@ Azure Application Insights Profiler 也可以部署在以下服务上：
 
    应用修改通常涉及到完整的模板部署或者通过 PowerShell cmdlet 或 Visual Studio 进行的基于云服务的发布。  
 
-   以下 PowerShell 命令是另一种方法对于触摸仅 Azure 诊断扩展的现有虚拟机。 将先前提到的 ProfilerSink 添加到由 Get AzVMDiagnosticsExtension 命令返回的配置。 然后将更新的配置传递给集 AzVMDiagnosticsExtension 命令。
+   以下 PowerShell 命令是用于现有虚拟机的一种替代方法，该方法仅涉及 Azure 诊断扩展。 将前面提到的 ProfilerSink 添加到 Get-AzVMDiagnosticsExtension 命令返回的配置。 然后将更新后的配置传递给 Set-AzVMDiagnosticsExtension 命令。
 
     ```powershell
     $ConfigFilePath = [IO.Path]::GetTempFileName()
@@ -86,22 +79,22 @@ Azure Application Insights Profiler 也可以部署在以下服务上：
 
 1. 部署应用程序。
 
-## <a name="set-profiler-sink-using-azure-resource-explorer"></a>设置 Profiler 接收器使用 Azure 资源浏览器
-我们还没有从门户中设置 Application Insights Profiler 接收器的方法。 而不是使用 powershell 如上文所述，可以使用 Azure 资源浏览器设置接收器。 但请注意，如果重新部署 VM，接收器将丢失。 你将需要更新部署 VM 后，如果要保留这些设置时使用的配置。
+## <a name="set-profiler-sink-using-azure-resource-explorer"></a>使用 Azure 资源浏览器设置 Profiler 接收器
+目前无法从门户设置 Application Insights Profiler 接收器。 你可以使用 Azure 资源浏览器来设置接收器，而非如上所述使用 PowerShell。 但请注意，如果再次部署 VM，接收器将丢失。 部署 VM 时，你需要更新所使用的配置来保留此设置。
 
-1. 检查通过查看安装为虚拟机的扩展插件安装了 Windows Azure 诊断扩展。  
+1. 通过查看为你的虚拟机安装的扩展，检查是否安装了 Windows Azure 诊断扩展。  
 
     ![检查是否安装了 WAD 扩展][wadextension]
 
-1. VM 到 VM 诊断扩展。 展开你的资源组、 Microsoft.Compute virtualMachines、 虚拟机名称和扩展。  
+2. 查找你的 VM 的 VM 诊断扩展。 转到[https://resources.azure.com](https://resources.azure.com)。 展开你的资源组、Microsoft.Compute 虚拟机、虚拟机名称和扩展。  
 
-    ![导航到 Azure 资源浏览器中的 WAD 配置][azureresourceexplorer]
+    ![在 Azure 资源浏览器中导航到 WAD 配置][azureresourceexplorer]
 
-1. 将 Application Insights Profiler 接收器添加到下 WadCfg SinksConfig 节点。 如果还没有 SinksConfig 部分，您可能需要添加一个。 请务必在你的设置中指定正确的 Application Insights iKey。 你将需要在右上角中将资源管理器模式切换为读/写和按蓝色的编辑按钮。
+3. 将 Application Insights Profiler 接收器添加到 WadCfg 下的 SinksConfig 节点。 如果还没有 SinksConfig 部分，可能需要添加一个。 确保在设置中指定正确的 Application Insights iKey。 你需要在右上角将资源管理器模式切换为“读取/写入”，然后按蓝色的“编辑”按钮。
 
     ![添加 Application Insights Profiler 接收器][resourceexplorersinksconfig]
 
-1. 完成后编辑的配置来说，按 Put。 如果 put 操作成功，请将屏幕中间显示绿色复选标记。
+4. 编辑完配置后，按“Put”。 如果 put 操作成功，则屏幕中间会显示一个绿色的对号。
 
     ![发送 put 请求以应用更改][resourceexplorerput]
 

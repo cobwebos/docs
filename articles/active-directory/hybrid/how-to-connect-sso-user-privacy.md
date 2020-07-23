@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9311c1060b953e87f163cb482db14cdd43f50d3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 467b9b2e613e43b95007142a120d39be1272de93
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60242103"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357828"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>用户隐私和 Azure AD 无缝单一登录
 

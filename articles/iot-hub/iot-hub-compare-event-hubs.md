@@ -8,12 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 7a589ba80b61ea5ef9ea1c941e9a0218a1653c99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 7aa59f8181ad60b3d43846a3f4f1f471a050b238
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60735503"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81733443"
 ---
 # <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>将 IoT 设备连接到 Azure：IoT 中心和事件中心
 
@@ -29,13 +31,13 @@ Azure IoT 中心是连接 IoT 设备的云网关，它会收集数据并促成�
 
 | IoT 功能 | IoT 中心标准层 | IoT 中心基本层 | 事件中心 |
 | --- | --- | --- | --- |
-| 设备到云的消息传递 | ![勾选标记][checkmark] | ![勾选标记][checkmark] | ![勾选标记][checkmark] |
+| 设备到云的消息传送 | ![勾选标记][checkmark] | ![勾选标记][checkmark] | ![勾选标记][checkmark] |
 | 协议：HTTPS、AMQP、基于 WebSocket 的 AMQP | ![勾选标记][checkmark] | ![勾选标记][checkmark] | ![勾选标记][checkmark] |
 | 协议：MQTT、基于 WebSocket 的 MQTT | ![勾选标记][checkmark] | ![勾选标记][checkmark] |  |
 | 每设备标识 | ![勾选标记][checkmark] | ![勾选标记][checkmark] |  |
 | 从设备上传文件 | ![勾选标记][checkmark] | ![勾选标记][checkmark] |  |
 | 设备预配服务 | ![勾选标记][checkmark] | ![勾选标记][checkmark] |  |
-| 云到设备的消息传递 | ![勾选标记][checkmark] |  |  |
+| 云到设备的消息传送 | ![勾选标记][checkmark] |  |  |
 | 设备孪生和设备管理 | ![勾选标记][checkmark] |  |  |
 | 设备流（预览版） | ![勾选标记][checkmark] |  |  |
 | IoT Edge | ![勾选标记][checkmark] |  |  |

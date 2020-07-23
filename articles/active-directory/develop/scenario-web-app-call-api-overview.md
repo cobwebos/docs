@@ -1,64 +1,57 @@
 ---
-title: Web 应用调用 web Api （概述）-Microsoft 标识平台
-description: 了解如何构建 web 应用调用 web Api （概述）
+title: 构建调用 Web API 的 Web 应用 - Microsoft 标识平台 | Azure
+description: 了解如何构建调用 Web API 的 Web 应用（概述）
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce45f11a697b72ebdd0fe01166a70e7b47aa8e9f
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: MT
+ms.openlocfilehash: 5af9e34baf6115e801fbfe35e6e3895e48b360e7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65076295"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80881717"
 ---
-# <a name="scenario-web-app-that-calls-web-apis"></a>场景：调用 web Api 的 web 应用
+# <a name="scenario-a-web-app-that-calls-web-apis"></a>方案：调用 Web API 的 Web 应用
 
-了解如何在 Microsoft 标识平台上构建的 web 应用登录用户并调用 web Api 代表已登录用户。
+了解如何构建 Web 应用，使其可将用户在 Microsoft 标识平台上登录，然后代表已登录用户调用 Web API。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-[!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
+[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-此方案假设您已经历以下方案：
+此方案假设你已完成以下方案：
 
 > [!div class="nextstepaction"]
-> [登录用户的 web 应用](scenario-web-app-sign-user-overview.md)
+> [用于登录用户的 Web 应用](scenario-web-app-sign-user-overview.md)
 
 ## <a name="overview"></a>概述
 
-将身份验证添加到 Web 应用，因此可以在用户登录并调用 web API 代表已登录用户。
+向 Web 应用添加身份验证，以便该应用可以将用户登录并代表已登录用户调用 Web API。
 
-![调用 web Api 的 web 应用](./media/scenario-webapp/web-app.svg)
+![用于调用 Web API 的 Web 应用](./media/scenario-webapp/web-app.svg)
 
-Web 应用调用 web Api:
+调用 Web API 的 Web 应用是机密客户端应用程序。
+这是它们将机密（应用程序密码或证书）注册到 Azure Active Directory (Azure AD) 的原因。 该机密是在调用 Azure AD 以获取令牌的过程中传入的。
 
-- 是机密客户端应用程序。
-- 这就是为什么他们已注册到 Azure AD 机密 （应用程序密码或证书）。 此机密即传入过程调用 Azure AD，以获取令牌
-
-## <a name="specifics"></a>详细信息
+## <a name="specifics"></a>详情
 
 > [!NOTE]
-> 将登录添加到 Web 应用不使用 MSAL 库，因为这是如何保护 Web 应用。 保护库来实现名为中间件的库。 这是在前面的方案对象[登录到 Web 应用的用户](scenario-web-app-sign-user-overview.md)
+> 向 Web 应用添加登录信息是为了保护 Web 应用本身。 该保护是通过使用“中间件”  库来实现的，而不是使用 Microsoft 身份验证库 (MSAL)。 前面的方案[用于将用户登录的 Web 应用](scenario-web-app-sign-user-overview.md)中涵盖了该主题。
 >
-> 在从 Web 应用调用 web Api，需要为这些 web Api 获取访问令牌。 可以使用 MSAL 库来获取这些令牌。
+> 此方案涵盖了如何从 Web 应用调用 Web API。 你必须获取这些 Web API 的访问令牌。 使用 MSAL 库来获取这些令牌。
 
-因此，开发人员对此方案的端到端体验具有作为特定方面：
+此方案的开发涉及以下具体任务：
 
-- 期间[应用程序注册](scenario-web-app-call-api-app-registration.md)、 将需要提供一个或多个 （如果将应用部署到多个位置时） 回复 Uri 时，机密，或需要与 Azure AD 共享证书。
-- [应用程序配置](scenario-web-app-call-api-app-configuration.md)需要与 Azure AD 应用程序注册期间提供共享的客户端凭据
+- 在[应用程序注册](scenario-web-app-call-api-app-registration.md)过程中，必须提供要与 Azure AD 共享的回复 URI、机密或证书。 如果你将应用部署到多个位置，请为每个位置提供此信息。
+- [应用程序配置](scenario-web-app-call-api-app-configuration.md)必须提供已在注册应用程序期间与 Azure AD 共享的客户端凭据。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [应用注册](scenario-web-app-call-api-app-registration.md)
+> [调用 Web API 的 Web 应用：应用注册](scenario-web-app-call-api-app-registration.md)

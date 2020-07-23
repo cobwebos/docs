@@ -1,19 +1,19 @@
 ---
-title: 教程：使用 Azure CLI 设计 Azure Database for MySQL
+title: 教程：设计服务器 - Azure CLI - Azure Database for MySQL
 description: 本教程介绍如何使用 Azure CLI 从命令行创建和管理 Azure Database for MySQL 服务器和数据库。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 04/29/2019
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 00c2efacab72c08d33b0004650bece2c369c757b
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 080e4b119048f2c204e6617405c7c053c7f24cea
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935995"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80382828"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>教程：使用 Azure CLI 设计 Azure Database for MySQL
 
@@ -34,7 +34,7 @@ Azure Database for MySQL 是 Microsoft 云中基于 MySQL Community Edition 数�
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 Azure CLI，本文要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 如果有多个订阅，请选择资源所在的相应订阅或对资源进行计费的订阅。 使用 [az account set](/cli/azure/account#az-account-set) 命令选择帐户下的特定订阅 ID。
 ```azurecli-interactive
@@ -188,7 +188,7 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 | 设置 | 建议的值 | 说明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  源服务器所在的资源组。  |
-| 名称 | mydemoserver-restored | 通过还原命令创建的新服务器的名称。 |
+| name | mydemoserver-restored | 通过还原命令创建的新服务器的名称。 |
 | restore-point-in-time | 2017-04-13T13:59:00Z | 选择要还原到的时间点。 此日期和时间必须在源服务器的备份保留期限内。 使用 ISO8601 日期和时间格式。 例如，可使用自己的本地时区（如 `2017-04-13T05:59:00-08:00`），或使用 UTC Zulu 格式 `2017-04-13T13:59:00Z`。 |
 | source-server | mydemoserver | 要从其还原的源服务器的名称或 ID。 |
 

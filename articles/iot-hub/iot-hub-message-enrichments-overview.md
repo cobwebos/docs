@@ -1,6 +1,6 @@
 ---
-title: Azure IoT 中心消息正的概述
-description: Azure IoT 中心的消息的消息正的概述
+title: Azure IoT 中心消息扩充概述
+description: 本文介绍消息根据，它使 IoT 中心能够在消息发送到指定终结点之前，将消息标记为包含附加信息。
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -8,81 +8,95 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 13e35ab93fc37541548785c6355489eaf3a3efc2
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
-ms.translationtype: MT
+ms.openlocfilehash: c3dbd01faf61c164c88f09b0da03c07be4abd187
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754549"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75429125"
 ---
-# <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>消息正对设备到云的 IoT 中心消息 （预览版）
+# <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>用于设备到云的 IoT 中心消息的消息根据
 
-*消息正*是一种向 IoT 中心能力*戳*之前将消息发送到指定终结点的其他信息的消息。 使用消息正的一个原因是包含可用于简化下游处理的数据。 例如，丰富设备的遥测消息数与设备孪生标记可以减少对客户进行 API 调用获取此信息的设备孪生的负载。
+“消息扩充”是 IoT 中心在将消息发送到指定的终结点之前，使用附加的信息为消息添加戳记的功能。**** 使用消息扩充的原因之一是包含可用于简化下游处理的数据。 例如，使用设备孪生标记扩充设备遥测消息可以减少客户对此信息发出设备孪生 API 调用所造成的负载。
 
-![消息正流](./media/iot-hub-message-enrichments-overview/message-enrichments-flow.png)
+![消息扩充流](./media/iot-hub-message-enrichments-overview/message-enrichments-flow.png)
 
-消息扩充具有三个关键要素：
+消息扩充具有三个关键元素：
 
 * 扩充名称或键
 
-* 一个值
+* 值
 
-* 一个或多个[终结点](iot-hub-devguide-endpoints.md)有关应用扩充。
+* 要对其应用扩充的一个或多个[终结点](iot-hub-devguide-endpoints.md)。
 
-该密钥可以是任何字符串。
+**键**是一个字符串。 键只能包含字母数字字符或以下特殊字符：连字符 (`-`)、下划线 (`_`)和句点 (`.`)。
 
-值可以是任何下面的示例：
+**值**可以是以下任一示例：
 
-* 任何静态字符串。 不允许动态值，例如条件、 逻辑、 操作和函数。 例如，如果您开发的 SaaS 应用程序由多个客户，可将标识符分配给每个客户，并使该标识符在应用程序中可用。 运行程序时，IoT 中心将设备的遥测消息数使用标记客户的标识符，从而可以为每个客户以不同方式处理消息。
+* 任意静态字符串。 不允许条件、逻辑、操作和函数等动态值。 例如，如果你开发由多个客户使用的 SaaS 应用程序，可为每个客户分配一个标识符，并使该标识符在应用程序中可用。 当该应用程序运行时，IoT 中心会使用客户的标识符来戳记设备遥测消息，从而可为每个客户以不同的方式处理消息。
 
-* 从设备孪生，例如其路径的信息。 将示例 *$twin.tags.field*并 *$twin.tags.latitude*。
+* 发送消息的 IoT 中心的名称。 此值为 *$iothubname*。
 
-* IoT 中心发送消息的名称。 此值是 *$iothubname*。
+* 设备孪生中的信息，例如其路径。 示例包括 *$twin.tags.field* 和 *$twin.tags.latitude*。
 
-## <a name="applying-enrichments"></a>将应用到
+   > [!NOTE]
+   > 目前，只有 $iothubname、$twin.tags、$twin.properties.desired 和 $twin.properties.reported 是消息扩充支持的变量。
 
-消息可以来自支持的任何数据源[IoT 中心消息路由](iot-hub-devguide-messages-d2c.md)，包括下面的示例：
+消息扩充将作为应用程序属性添加到发送到所选终结点的消息中。  
+
+## <a name="applying-enrichments"></a>应用扩充
+
+消息可能来自 [IoT 中心消息路由](iot-hub-devguide-messages-d2c.md)支持的任何数据源，包括：
 
 * 设备遥测数据，例如温度或压力
-* 设备孪生更改通知-设备孪生中的更改
-* 设备生命周期事件，如创建或删除设备时
+* 设备孪生更改通知 - 设备孪生中发生的更改
+* 设备生命周期事件，例如创建或删除了设备时
 
-可以将正添加到要发送到 IoT 中心内置终结点的消息或被传送到自定义终结点，例如 Azure Blob 存储、 服务总线队列或服务总线主题的消息。
+可将扩充添加到正在发往 IoT 中心内置终结点的消息，或添加到正在路由到自定义终结点（例如 Azure Blob 存储、服务总线队列或服务总线主题）的消息。
 
-此外可以通过为事件网格中选择该终结点发布到事件网格的消息添加到。 有关详细信息，请参阅[Iot 中心和事件网格](iot-hub-event-grid.md)。
+通过选择终结点作为事件网格，可以将根据添加到要发布到事件网格中的消息。 我们基于事件网格订阅在 IoT 中心内创建到设备遥测的默认路由。 此单一路由可以处理你的所有事件网格订阅。 您可以在创建设备遥测的事件网格订阅后，为事件网格终结点配置根据。 有关详细信息，请参阅 [IoT 中心和事件网格](iot-hub-event-grid.md)。
 
-应用到每个终结点。 如果指定五个正以标记为特定终结点，请转到该终结点的所有消息都标记有相同的五个正。
+扩充是按终结点应用的。 如果指定要为特定终结点戳记五个扩充，则发往该终结点的所有消息都将使用五个相同的扩充进行戳记。
 
-若要了解如何试用消息到，请参阅[消息正教程](tutorial-message-enrichments.md)
+可以使用以下方法配置根据：
+
+| **方法** | **命令** |
+| ----- | -----| 
+| 门户 | [Azure 门户](https://portal.azure.com) | 请参阅[message 根据教程](tutorial-message-enrichments.md) | 
+| Azure CLI   | [az iot 中心消息-扩充](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
+| Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment?view=azps-2.8.0) |
+
+添加消息根据不会将延迟添加到消息路由。
+
+若要尝试消息根据，请参阅[message 根据教程](tutorial-message-enrichments.md)
 
 ## <a name="limitations"></a>限制
 
-* 您可以添加这些中心的每个 IoT 中心最多 10 个到标准或基本层中。 对于在免费层中的 IoT 中心，可以添加最多 2 个到。
+* 对于标准或基本层中的每个 IoT 中心，最多可以添加 10 个扩充。 对于免费层中的 IoT 中心，最多可以添加 2 个扩充。
 
-* 在某些情况下，如果应用扩充值设置为标记或在设备孪生中的属性值将标记作为字符串值。 例如，如果扩充值设置为 $twin.tags.field，消息将在而不是该字段的值从孪生与字符串"$twin.tags.field"标记。 在以下情况下发生这种情况：
+* 在某些情况下，如果你要使用设置为设备孪生中的标记或属性的值应用扩充，该值将戳记为字符串值。 例如，如果某个扩充值设置为 $twin.tags.field，则会使用字符串“$twin.tags.field”而不是孪生中该字段的值来戳记消息。 这适用于以下情况：
 
-   * IoT 中心是在基本层中。 基本层 IoT 中心不支持设备孪生。
+   * IoT 中心位于基本层中。 基本层 IoT 中心不支持设备孪生。
 
-   * IoT 中心是在标准层中，但发送消息的设备没有设备孪生。
+   * IoT 中心位于标准层中，但发送消息的设备没有设备孪生。
 
-   * IoT 中心是在标准层中，但扩充值所使用的设备孪生路径不存在。 例如，如果扩充值设置为 $twin.tags.location，并且设备孪生不具有标记下的位置属性，该消息均被标记为"$twin.tags.location"的字符串。 
+   * IoT 中心位于标准层中，扩充值使用的设备孪生路径不存在。 例如，如果扩充值设置为 $twin.tags.location，并且设备孪生在标记下没有位置属性，该会使用字符串“$twin.tags.location”戳记消息。 
 
-* 设备孪生的更新可能需要五分钟才会反映在相应的扩充值。
+* 对设备孪生所做的更新最长可能需要在五分钟后才反映在相应的扩充值中。
 
-* 总消息大小，包括到，不能超过 256 KB。 如果消息大小超出了 256 KB，IoT 中心将删除该消息。 可以使用[IoT 中心度量值](iot-hub-metrics.md)来识别和调试错误时将删除消息。 例如，你可以监视 d2c.telemetry.egress.invalid。
+* 总消息大小（包括扩充）不能超过 256 KB。 如果消息大小超过 256 KB，IoT 中心会丢弃消息。 如果丢弃了消息，可以使用 [IoT 中心指标](iot-hub-metrics.md)来识别和调试错误。 例如，可以监视 d2c.telemetry.egress.invalid。
+
+* 消息根据不适用于数字克隆更改事件（ [IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)的一部分）。
 
 ## <a name="pricing"></a>定价
 
-消息正都可用于无需额外付费。 目前，向你收费时将消息发送到 IoT 中心。 您只需支付一次该消息，即使消息将转到多个终结点。
-
-## <a name="availability"></a>可用性
-
-此功能目前以预览版提供，并在除美国东部、 美国西部、 欧洲西部的所有区域均提供[Azure 政府版](/azure/azure-government/documentation-government-welcome)， [Azure 中国 21Vianet](/azure/china)，和[Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/).
+使用消息扩充不会产生额外的费用。 目前，将消息发送到 IoT 中心需要付费。 即使消息要发往多个终结点，也只需支付该消息的费用一次。
 
 ## <a name="next-steps"></a>后续步骤
 
-请查看以下文章详细了解消息路由到 IoT 中心：
+请查看以下文章来详细了解如何将消息路由到 IoT 中心：
 
-* [使用 IoT 中心消息路由到不同的终结点发送设备到云的消息](iot-hub-devguide-messages-d2c.md)
+* [Message 根据教程](tutorial-message-enrichments.md)
 
-* [教程：路由的 IoT 中心](tutorial-routing.md)
+* [使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点](iot-hub-devguide-messages-d2c.md)
+
+* [教程： IoT 中心路由](tutorial-routing.md)

@@ -1,119 +1,119 @@
 ---
-title: Azure Monitor 指标图表故障排除
-description: 创建、 自定义，或解释指标图表的问题进行故障排除
+title: 排查 Azure Monitor 指标图表问题
+description: 排查创建、自定义或解释指标图表时出现的问题
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: cff1bbefc3c54f7f9c02c646bd9eef528fe28c73
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
-ms.translationtype: MT
+ms.openlocfilehash: e1ad4e53596b8228bdef5beb18aa250a9512c49f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939571"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77659656"
 ---
-# <a name="troubleshooting-metrics-charts"></a>度量值图表故障排除
+# <a name="troubleshooting-metrics-charts"></a>排查指标图表问题
 
-如果遇到与创建、 自定义，或解释 Azure 指标资源管理器中的图表的问题，请参考本文。 如果您不熟悉指标，了解如何[指标资源管理器入门](metrics-getting-started.md)并[指标资源管理器的高级功能](metrics-charts.md)。 你还可以看到[示例](metric-chart-samples.md)的已配置的指标图表。
+在 Azure 指标资源管理器中创建、自定义或解释图表时如果遇到问题，请参考本文。 如果你不熟悉指标，请参阅[指标资源管理器入门](metrics-getting-started.md)和[指标资源管理器的高级功能](metrics-charts.md)。 还可以查看配置的指标图表[示例](metric-chart-samples.md)。
 
-## <a name="cant-find-your-resource-to-select-it"></a>找不到你的资源以将其选中
+## <a name="cant-find-your-resource-to-select-it"></a>找不到要选择的资源
 
-在您单击过**选择一个资源**按钮，但看不到你在资源选取器对话框中的资源。
+你已单击“选择资源”按钮，但资源选取器对话框中未显示你的资源。 
 
-**解决方案：** 指标资源管理器要求您列出可用的资源之前，选择订阅和资源组。 如果看不到所需的资源：
+**解决方案：** 只有在选择订阅和资源组之后，指标资源管理器才会列出可用的资源。 如果看不到你的资源：
 
-1. 确保已选择正确的订阅中**订阅**下拉列表。 如果未列出你的订阅，请单击**目录 + 订阅设置**并添加具有所需的资源的订阅。
+1. 确保已在“订阅”下拉列表中选择正确的订阅。  如果你的订阅未列出，请单击“目录 + 订阅设置”，并添加包含资源的订阅。 
 
 1. 确保已选择正确的资源组。
     > [!WARNING]
-    > 为了获得最佳性能，当你首次打开指标资源管理器**资源组**下拉列表中具有任何预先选择的资源组。 可以看到任何资源之前，必须选择至少一个组。
+    > 为提供最佳性能，当你首次打开指标资源管理器时，“资源组”下拉列表中不会包含预先选择的资源组。  必须至少选择一个组才能看到任何资源。
 
-## <a name="chart-shows-no-data"></a>图表显示了任何数据
+## <a name="chart-shows-no-data"></a>图表未显示任何数据
 
-有时图表可能会选择正确的资源和度量值后显示任何数据。 此行为可能导致由几个原因如下：
+有时，在选择正确的资源和指标后，图表可能不会显示任何数据。 此行为可能是由以下多种原因造成的：
 
-### <a name="microsoftinsights-resource-provider-isnt-registered-for-your-subscription"></a>为你的订阅未注册 Microsoft.Insights 资源提供程序
+### <a name="microsoftinsights-resource-provider-isnt-registered-for-your-subscription"></a>未为你的订阅注册 Microsoft.Insights 资源提供程序
 
-浏览指标需要*Microsoft.Insights*中你的订阅注册资源提供程序。 在许多情况下，它是自动注册 （即之后配置警报规则、 自定义任何资源的诊断设置或配置自动缩放规则）。 如果未注册 Microsoft.Insights 资源提供程序，则必须手动注册它按照以下步骤中所述[Azure 资源提供程序和类型](../../azure-resource-manager/resource-manager-supported-services.md)。
+需要在订阅中注册 *Microsoft.Insights* 资源提供程序才能浏览指标。 在许多情况下，该资源提供程序会自动注册（即，配置警报规则、自定义任何资源的诊断设置或配置自动缩放规则之后）。 如果未注册 Microsoft.Insights 资源提供程序，必须遵循 [Azure 资源提供程序和类型](../../azure-resource-manager/management/resource-providers-and-types.md)中所述的步骤手动将其注册。
 
-**解决方案：** 打开**订阅**，**资源提供程序**选项卡，并验证*Microsoft.Insights*为订阅注册。
+**解决方案：** 打开“订阅”>“资源提供程序”选项卡，检查是否为订阅注册了 *Microsoft.Insights*。  
 
-### <a name="you-dont-have-sufficient-access-rights-to-your-resource"></a>你没有访问所需的资源的足够权限
+### <a name="you-dont-have-sufficient-access-rights-to-your-resource"></a>你对资源没有足够的访问权限
 
-在 Azure 中，对度量值的访问控制通过[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md)。 您必须是属于[监视读取者](../../role-based-access-control/built-in-roles.md#monitoring-reader)，[监视参与者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)，或[参与者](../../role-based-access-control/built-in-roles.md#contributor)浏览任何资源的指标。
+在 Azure 中，对指标的访问由[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 控制。 只有[监视读取者](../../role-based-access-control/built-in-roles.md#monitoring-reader)、[监视参与者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)或[参与者](../../role-based-access-control/built-in-roles.md#contributor)的成员才能浏览任何资源的指标。
 
-**解决方案：** 请确保有足够的权限来浏览度量值的资源。
+**解决方案：** 请确保你对要在其中浏览指标的资源拥有足够的权限。
 
-### <a name="your-resource-didnt-emit-metrics-during-the-selected-time-range"></a>所需的资源未在所选的时间范围内发出指标
+### <a name="your-resource-didnt-emit-metrics-during-the-selected-time-range"></a>资源在选定的时间范围内未发出指标
 
-某些资源不不断地发出其指标。 例如，Azure 不会收集已停止虚拟机的指标。 其他资源可能会发生某些条件时才发出其指标。 例如，显示事务的处理时间的指标需要至少一个事务。 如果没有在所选的时间范围内没有事务，图表将自然地为空。 此外，虽然大部分在 Azure 中的度量值收集每隔一分钟，但有一些不太频繁地收集的。 请参阅指标的文档以获取有关想要浏览的指标的更多详细信息。
+某些资源不会持续发出指标。 例如，Azure 不会收集已停止的虚拟机的指标。 其他资源可能只在发生某种情况时才发出指标。 例如，显示事务处理时间的指标至少需要有一个事务发生。 如果在选定的时间范围内未发生任何事务，图表自然是空的。 此外，尽管 Azure 中的大部分指标每隔一分钟收集一次，但有些指标的收集频率更低。 请参阅指标文档，了解有关你正在尝试浏览的指标的更多详细信息。
 
-**解决方案：** 将图表的时间更改为范围更广。 你可能会从"过去 30 天"开始使用较大的时间粒度 （或依赖于"自动时间粒度"选项）。
+**解决方案：** 将图表时间更改为更大的范围。 一开始可以使用较大的时间粒度“过去 30 天”（或依赖于“自动时间粒度”选项）。
 
-### <a name="you-picked-a-time-range-greater-than-30-days"></a>选取大于 30 天的时间范围
+### <a name="you-picked-a-time-range-greater-than-30-days"></a>选取的时间范围超过 30 天
 
-[在 Azure 中的大多数指标存储 93 天](data-platform-metrics.md#retention-of-metrics)。 但是，您可以仅查询不超过 30 天内接收所有的单个图表上的数据。 此限制不适用于[基于日志的指标](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)。
+[Azure 中的大多数指标将存储 93 天](data-platform-metrics.md#retention-of-metrics)。 但是，在任何单个图表中，只能查询不超过 30 天的数据。 此限制不适用于[基于日志的指标](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)。
 
-**解决方案：** 如果您将看到一个空白图表或图表仅显示指标数据的一部分，请验证之间开始的日期和结束的日期时间选取器中的差异不超过 30 天的间隔。
+**解决方案：** 如果你看到空白图表或者图表仅显示一部分指标数据，请确认时间选取器中的开始日期与结束日期之差是否不超过 30 天间隔。
 
-### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>锁定 y 轴范围之外的所有指标值
+### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>所有指标值超过了已锁定的 y 轴范围
 
-通过[锁定图表 y 轴的边界](metrics-charts.md#lock-boundaries-of-chart-y-axis)，可能无意中使不会显示图表线的图表显示区域。 例如，如果在 y 轴已锁定到介于 0%和 50%，并且该度量值的常量值为 100%，使图表显示为空白的可见区域之外始终呈现在行。
+[锁定图表 y 轴的边界](metrics-charts.md#lock-boundaries-of-chart-y-axis)时，你可能无意中造成图表显示区域不显示图表线条。 例如，如果 y 轴已锁定为 0% 到 50% 的范围，而指标包含 100% 的常量值，则线条始终会显示在可视区域的外部，使图表看上去是空白的。
 
-**解决方案：** 验证在图表的 y 轴边界不会被锁定的指标值的范围之外。 如果 y 轴边界处于锁定状态，你可能想要暂时重置密码，确保值不超出图表区域范围的指标。 锁定 y 轴范围不建议将具有与图表自动粒度**总和**， **min**，和**最大**聚合因为它们的值将更改与通过调整浏览器窗口或从一个屏幕分辨率转到另一个的粒度。 切换粒度可能会使图表为空的显示区域。
+**解决方案：** 确认图表的 y 轴边界是否未锁定在指标值的范围以外。 如果 y 轴边界已锁定，你可以暂时将其重置，以确保指标值不超过图表范围。 不建议使用 **sum**、**min** 和 **max** 聚合以自动粒度锁定图表的 y 轴范围，因为在调整浏览器窗口大小或者更改不同的屏幕分辨率时，图表值会随着粒度而变化。 切换粒度可能会使图表显示区域保持空白。
 
-### <a name="you-are-looking-at-a-guest-os-metric-but-didnt-enable-azure-diagnostic-extension"></a>您正在查看的来宾 OS 指标，但未启用 Azure 诊断扩展
+### <a name="you-are-looking-at-a-guest-os-metric-but-didnt-enable-azure-diagnostic-extension"></a>你正在查看来宾 OS 指标，但未启用 Azure 诊断扩展
 
-集合**来宾 OS**度量值都需要配置 Azure 诊断扩展或使其使用**诊断设置**面板的所需的资源。
+收集**来宾 OS** 指标需要配置 Azure 诊断扩展，或使用资源的“诊断设置”面板来启用该扩展。 
 
-**解决方案：** 如果已启用 Azure 诊断扩展但仍无法看到你的度量值，请按照中所述步骤[Azure 诊断扩展故障排除指南](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)。 另请参阅故障排除步骤[不能选择来宾 OS 命名空间和指标](metrics-troubleshoot.md#cannot-pick-guest-os-namespace-and-metrics)
+**解决方案：** 如果 Azure 诊断扩展已启用，但你仍然无法看到指标，请遵循 [Azure 诊断扩展故障排除指南](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)中所述的步骤。 另请参阅[无法选取来宾 OS 命名空间和指标](metrics-troubleshoot.md#cannot-pick-guest-os-namespace-and-metrics)的故障排除步骤
 
-## <a name="error-retrieving-data-message-on-dashboard"></a>在仪表板上的"检索数据时出错"消息
+## <a name="error-retrieving-data-message-on-dashboard"></a>仪表板上显示“检索数据时出错”消息
 
-创建你的仪表板的更高版本已弃用并从 Azure 中删除某个度量值时，此问题很常见。 若要验证它是这种情况，请打开**指标**资源和检查指标选取器中的可用指标的选项卡。 如果指标未显示，具有已从 Azure 中删除该度量值。 通常情况下，当某个指标已弃用，是更好地新的度量值，它提供类似的角度来看，资源运行状况。
+如果仪表板是使用后来已弃用并已从 Azure 中删除的某个指标创建的，则可能会发生此问题。 若要确认是否存在这种情况，请打开资源的“指标”选项卡，然后检查指标选取器中的可用指标。  如果该指标未显示，则表示它已从 Azure 中删除。 一般情况下，如果某个指标已弃用，会有一个更好的新指标可以提供有关资源运行状况的类似透视图。
 
-**解决方案：** 通过选择仪表板上图表的度量指标更新故障磁贴。 你可以[查看的 Azure 服务的可用指标列表](metrics-supported.md)。
+**解决方案：** 在仪表板上选取图表的备选指标来更新出错的磁贴。 可以[查看 Azure 服务的可用指标列表](metrics-supported.md)。
 
-## <a name="chart-shows-dashed-line"></a>图表显示了虚线
+## <a name="chart-shows-dashed-line"></a>图表显示虚线
 
-Azure 指标图表使用虚线样式以指示存在缺失值 （也称为"null 值"） 之间两个已知的时间粒度为数据点。 例如，如果在时间选择器中选择"1 分钟"时间粒度，但该度量值报告在 07:26，07:27，07:29 和 07:30 （请注意第二个和第三个数据点的分钟差异），然后 07:27 和 07:29，虚线将连接并将连接一条实线所有其他数据点。 减少到零时指标使用虚线下降**计数**并**总和**聚合。 有关**avg**， **min**或**最大**聚合，虚线连接两个最接近的已知的数据点。 此外，当数据在图表的最右侧或最左侧一侧上缺少时，虚线将扩展到丢失的数据点的方向。
-  ![图表上的](./media/metrics-troubleshoot/missing-data-point-line-chart.png)
+Azure 指标图表使用虚线样式来指示两个已知时间粒度数据点之间存在缺失值（也称为“null 值”）。 例如，如果你在时间选择器中选择了“1 分钟”时间粒度，但指标是在 07:26、07:27、07:29 和 07:30 报告的（请注意第二和第三个数据点之间的分钟间隔），则 07:27 和 07:29 数据点之间会以虚线连接，所有其他数据点之间以实线连接。 当指标使用 **count** 和 **sum** 聚合时，虚线将下降到零。 对于 **avg**、**min** 或 **max** 聚合，虚线将连接两个最接近的已知数据点。 此外，当图表最右侧或最左侧缺少数据时，虚线将朝缺失数据点的方向延长。
+  ![指标插图](./media/metrics-troubleshoot/missing-data-point-line-chart.png)
 
-**解决方案：** 这是设计的行为。 它可用于标识缺失的数据点。 折线图是首选用于可视化的高密度指标的趋势，但可能很难解释使用稀疏值的度量值，尤其是在 corelating 具有时间粒度值非常重要。 虚线使这些图表读取更容易，但如果您的图表仍不清楚，请考虑使用不同的图表类型查看你的度量值。 例如，在同一个指标的情况下的离散绘图图表清楚地显示由每个时间粒度仅可视化圆点，当一个值，并跳过数据点完全时缺少的值：![图表上的](./media/metrics-troubleshoot/missing-data-point-scatter-chart.png)
+**解决方案：** 此行为是设计使然。 这样可以识别缺失的数据点。 折线图能够出色地可视化高密度指标的趋势，但对于包含稀疏值的指标，可能很难解释，尤其是必须将值与时间粒度关联时。 虚线可以方便阅读这些图表，但如果图表仍不清晰，请考虑使用不同的图表类型查看指标。 例如，对同一个指标使用散点图可以清晰地显示每个时间粒度，因为它只会在某个值存在时才可视化某个点，并在该值缺失时统一跳过数据点：![指标插图](./media/metrics-troubleshoot/missing-data-point-scatter-chart.png)
 
    > [!NOTE]
-   > 如果您仍想用于指标的折线图，将鼠标移动图表上可能有助于评估通过突出显示鼠标指针位置的数据点的时间粒度。
+   > 如果你仍然偏向于使用折线图来查看指标，将鼠标移到图表上可在鼠标指针位置突出显示数据点，这可能有助于评估时间粒度。
 
-## <a name="chart-shows-unexpected-drop-in-values"></a>图表显示在值中意外的删除
+## <a name="chart-shows-unexpected-drop-in-values"></a>图表显示值出现意外的下降
 
-在许多情况下中的指标值的感知的下拉是错误地理解图表上显示的数据。 总和下降可能产生误导或对图表时显示的最新的分钟数，因为未收到最后一个指标数据点或尚未处理由 Azure 进行计数。 具体取决于该服务处理度量值的延迟可能是几分钟时间范围内。 为图表显示使用 1 或 5 分钟粒度的最新时间范围，过去的几分钟内值的下拉会变得更明显：![图表上的](./media/metrics-troubleshoot/drop-in-values.png)
+在许多情况下，指标值的明显下降是图表上显示的数据造成的一种错觉。 如果图表显示最近几分钟的数据，则总和或计数下降可能会给你造成误解，因为 Azure 此时尚未收到或处理最后的指标数据点。 指标处理延迟在几分钟范围内变化，具体取决于所用的服务。 对于显示最近 1 分钟或 5 分钟粒度时间范围的图表，过去几分钟的值的下降会更明显：![指标插图](./media/metrics-troubleshoot/drop-in-values.png)
 
-**解决方案：** 这是设计的行为。 我们认为，只要我们收到显示的数据是有益的数据时甚至*分部*或*不完整*。 这样，你可以进行更快地重要结论并开始立即调查。 例如，显示失败的次数的指标，看到的部分值 X 告诉您，没有至少 X 上给定分钟的故障。 可以开始，调查该问题，而不是等待以查看在此分钟，这可能不是那么重要上发生的失败的确切数目。 图表将更新后我们收到的整个组数据，但在该时间它可能还显示新的不完整的数据点，从较新的分钟。
+**解决方案：** 此行为是设计使然。 我们相信，即使数据是部分性的或者不完整的，在收到数据后立即显示数据比较有利。   这样，就可以更快地做出重要结论，并立即开始调查。 例如，对于显示失败次数的指标，查看部分值 X 可以判断，在给定的分钟内至少发生了 X 次失败。 然后可以立即开始调查问题，而不是等到图表中显示此分钟内发生的确切失败次数，确切的数字可能不如立即调查那么重要。 收到整个数据集后，图表将会更新，但此时，它可能还会显示更近时间内发生的新的不完整数据点。
 
-## <a name="cannot-pick-guest-os-namespace-and-metrics"></a>不能选择来宾 OS 命名空间和指标
+## <a name="cannot-pick-guest-os-namespace-and-metrics"></a>无法选取来宾 OS 命名空间和指标
 
-虚拟机和虚拟机规模集具有两个类别的度量值：**虚拟机主机**Azure 的托管环境中，通过收集的指标并**来宾 OS**收集的指标[监视代理](agents-overview.md)虚拟机上运行。 通过启用安装监视代理[Azure 诊断扩展](diagnostics-extension-overview.md)。
+虚拟机和虚拟机规模集有两种类别的指标：Azure 托管环境收集的虚拟机主机指标，以及虚拟机上运行的[监视代理](agents-overview.md)所收集的来宾 OS（经典）指标   。 启用 [Azure 诊断扩展](diagnostics-extension-overview.md)即可安装监视代理。
 
-默认情况下，来宾 OS 指标存储在 Azure 存储帐户，从选取**诊断设置**的所需的资源的选项卡。 如果不收集的来宾 OS 指标或指标资源管理器无法访问它们，您将只能看到**虚拟机主机**度量命名空间：
+默认情况下，来宾 OS 指标存储在 Azure 存储帐户中，可通过资源的“诊断设置”选项卡选取这些指标。  如果未收集来宾 OS 指标或者指标资源管理器无法访问这些指标，则你只会看到“虚拟机主机”指标命名空间： 
 
 ![图表上的](./media/metrics-troubleshoot/cannot-pick-guest-os-namespace.png)
 
-**解决方案：** 如果没有看到**来宾 OS**命名空间和指标资源管理器中的指标：
+**解决方案：** 如果在指标资源管理器中未看到“来宾 OS (经典)”命名空间和指标： 
 
-1. 确认[Azure 诊断扩展](diagnostics-extension-overview.md)已启用并配置为收集指标。
+1. 确认 [Azure 诊断扩展](diagnostics-extension-overview.md)已启用并配置为收集指标。
     > [!WARNING]
-    > 不能使用[Log Analytics 代理](agents-overview.md#log-analytics-agent)（也称为 Microsoft Monitoring Agent 或"MMA"） 发送**来宾 OS**到存储帐户。
+    > 无法使用 [Log Analytics 代理](agents-overview.md#log-analytics-agent)（也称为 Microsoft Monitoring Agent 或“MMA”）将“来宾 OS”指标发送到存储帐户。 
 
-1. 验证存储帐户不受防火墙保护。
+1. 请确保已[为订阅注册](metrics-troubleshoot.md#microsoftinsights-resource-provider-isnt-registered-for-your-subscription) Microsoft.Insights 资源提供程序  。
 
-1. 使用[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)验证度量值流入到存储帐户。 如果不收集度量值，请按照[Azure 诊断扩展故障排除指南](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)。
+1. 验证存储帐户是否不受防火墙的保护。 Azure 门户需要对存储帐户的访问权限才能检索指标数据和绘制图表。
+
+1. 使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)验证指标是否流入存储帐户。 如果未收集指标，请遵循 [Azure 诊断扩展故障排除指南](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解有关如何开始使用指标资源管理器](metrics-getting-started.md)
-* [了解有关指标资源管理器的高级功能](metrics-charts.md)
-* [请参阅 Azure 服务的可用指标的列表](metrics-supported.md)
-* [请参阅配置图表的示例](metric-chart-samples.md)
+* [了解如何开始使用指标资源管理器](metrics-getting-started.md)
+* [了解指标资源管理器的高级功能](metrics-charts.md)
+* [查看 Azure 服务的可用指标列表](metrics-supported.md)
+* [查看已配置图表的示例](metric-chart-samples.md)

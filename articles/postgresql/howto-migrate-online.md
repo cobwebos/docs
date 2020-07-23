@@ -1,19 +1,19 @@
 ---
-title: 最短停机时间迁移到 Azure Database for PostgreSQL-单个服务器
-description: 本文介绍如何执行停机时间最短的 PostgreSQL 数据库迁移到 Azure Database for PostgreSQL-通过使用 Azure 数据库迁移服务的单个服务器。
+title: 在最短的停机时间内迁移到 Azure Database for PostgreSQL（单一服务器）
+description: 本文介绍如何使用 Azure 数据库迁移服务，在最短的停机时间内将 PostgreSQL 数据库迁移到 Azure Database for PostgreSQL（单一服务器）。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 93cd390889c023adf1c30a8470e1c2298598439e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 0b7c6392fbd795a078e9ec8f61281d95cf6363bc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65067515"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112385"
 ---
-# <a name="minimal-downtime-migration-to-azure-database-for-postgresql---single-server"></a>最短停机时间迁移到 Azure Database for PostgreSQL-单个服务器
+# <a name="minimal-downtime-migration-to-azure-database-for-postgresql---single-server"></a>在最短的停机时间内迁移到 Azure Database for PostgreSQL（单一服务器）
 可以使用为 [Azure 数据库迁移服务](https://aka.ms/get-dms) (DMS) 新引入的**连续同步功能**以最短停机时间执行 PostgreSQL 到 Azure Database for PostgreSQL 的迁移。 此功能可限制应用程序引起的停机时间量。
 
 ## <a name="overview"></a>概述

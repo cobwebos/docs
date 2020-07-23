@@ -1,5 +1,5 @@
 ---
-title: 使用 Linux VM 系统分配的托管标识访问 Azure 存储
+title: 教程`:`使用托管标识通过访问密钥访问 Azure 存储 - Linux - Azure AD
 description: 本教程将指导你完成使用 Linux VM 系统分配的托管标识访问 Azure 存储的过程。
 services: active-directory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 03/04/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d53f625cec6aee980155711ddeb4d1e1761b91d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 86f875fa80f8bb8dd33a369a23f49833162cd417
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66236153"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "78273819"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>教程：使用 Linux VM 系统分配的托管标识通过访问密钥访问 Azure 存储
 
@@ -32,7 +32,7 @@ ms.locfileid: "66236153"
 > * 授予 VM 对资源管理器中存储帐户访问密钥的访问权限 
 > * 使用 VM 的标识获取一个访问令牌，并使用它从资源管理器检索存储访问密钥  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -43,7 +43,7 @@ ms.locfileid: "66236153"
 1. 单击 Azure 门户左上角的“+/创建新服务”按钮。 
 2. 依次单击“存储”  、“存储帐户”  ，并将显示新的“创建存储帐户”面板。
 3. 输入存储帐户的**名称**，稍后将使用该名称。  
-4. “部署模型”和“帐户类型”应分别设置为“资源管理器”和“通用”。   
+4. **部署模型**和**帐户类型**应分别设置为“资源管理器”和“通用”。 
 5. 确保“订阅”和“资源组”与上一步中创建 VM 时指定的名称匹配。  
 6. 单击“创建”。 
 
@@ -82,7 +82,7 @@ ms.locfileid: "66236153"
 
 1. 在 Azure 门户中，导航到“虚拟机”  ，转到 Linux 虚拟机，然后在“概述”  页中单击顶部的“连接”  。 复制用于连接到 VM 的字符串。 
 2. 使用 SSH 客户端连接到 VM。  
-3. 接下来，将提示你输入创建“Linux VM”  时添加的“密码”  。 然后应可以成功登录。  
+3. 接下来，将提示你输入创建“Linux VM”时添加的“密码”。 然后应可以成功登录。  
 4. 使用 CURL 获取 Azure 资源管理器的访问令牌。  
 
     下面是用于获取访问令牌的 CURL 请求和响应：

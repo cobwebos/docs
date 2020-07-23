@@ -1,6 +1,6 @@
 ---
-title: Azure 的 NetApp 文件 Sdk |Microsoft Docs
-description: 列出了 Azure NetApp 文件支持的 Sdk。
+title: Azure NetApp 文件 Sdk 和 CLI 工具 |Microsoft Docs
+description: 列出 Azure NetApp 文件支持的 Sdk 和命令行（CLI）工具。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,32 +12,44 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/17/2019
+ms.date: 07/06/2020
 ms.author: b-juche
-ms.openlocfilehash: 44cacc388b8cb9977bdf36d4d1a86f8d15211608
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: b0cb29d6db339a64a1d9b753acbfd2334364853a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957875"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045461"
 ---
-# <a name="azure-netapp-files-sdks"></a>Azure NetApp 文件 SDK
+# <a name="azure-netapp-files-sdks-and-cli-tools"></a>Azure NetApp 文件 SDK 和 CLI 工具
 
-本文列出了 Azure NetApp 文件支持的 Sdk。
+本文列出了 Azure NetApp 文件支持的 Sdk 和命令行（CLI）工具。
 
 ## <a name="supported-sdks"></a>支持的 SDK 
 
-下表列出了受支持的 Sdk。  您可以在 GitHub 中找到有关在其已发布的位置受支持的 Sdk 的详细信息。  
+下表列出了支持的 Sdk。  可在 GitHub 中的已发布位置找到有关受支持的 Sdk 的详细信息。  
 
-|    语言    |    SDK 发布位置    |
-|------------------|--------------------------------------------------------------------------------------------|
-|    [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/src/SDKs/)    |    `https://github.com/Azure/azure-sdk-for-net/tree/master/src/SDKs/NetApp`    |
-|    [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-mgmt-netapp)    |    `https://github.com/Azure/azure-sdk-for-python/tree/master/azure-mgmt-netapp`    |
-|    [Go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/netapp)    |    `https://github.com/Azure/azure-sdk-for-go/tree/master/services/netapp`       |
-|    [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/netapp/arm-netapp)    |    `https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/netapp/arm-netapp`    |
-|    [Ruby](https://github.com/Azure/azure-sdk-for-ruby/tree/master/management/azure_mgmt_netapp)    |    `https://github.com/Azure/azure-sdk-for-ruby/tree/master/management/azure_mgmt_netapp`    |
+|    语言    |    GitHub 中的 SDK 发布位置    |
+|------------------|--------------------------------------------------------------|
+|    .NET  |    [Azure/azure-适用于网络的 sdk](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/netapp)    |
+|    Python  |  [Azure/azure-适用于 python 的 sdk](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/netapp)    |
+|    Go    |    [Azure/azure-sdk-适用](https://github.com/Azure/azure-sdk-for-go/tree/master/services/netapp)       |
+|    Java |     [Azure/azure-适用于 java 的 sdk](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/netapp) |
+|    JavaScript    |    [Azure/azure-适用于 js 的 sdk](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/netapp/arm-netapp)    |
+|    Ruby   |    [Azure/azure-适用于 ruby 的 sdk](https://github.com/Azure/azure-sdk-for-ruby/tree/master/management/azure_mgmt_netapp)    |
 
-<!-- ## Command-line tools -->
+## <a name="cli-tools"></a>CLI 工具
+
+下表列出了支持的 CLI 工具及其命令参考。   
+
+|    工具    |    命令参考    |
+|------------------|--------------------------------------------|
+|    Azure CLI  |    [az netappfiles](https://docs.microsoft.com/cli/azure/netappfiles?view=azure-cli-latest)    |
+|    PowerShell   |    [Azure NetApp 文件的 Azure PowerShell](https://docs.microsoft.com/powershell/module/az.netappfiles/?view=azps-2.5.0#netapp_files)    |
+
+## <a name="code-samples"></a>代码示例
+
+请参阅[Azure NetApp 文件的代码示例](https://docs.microsoft.com/samples/browse/?filter-products=netapp&products=azure-netapp-files)。
 
 ## <a name="next-steps"></a>后续步骤   
  [下载 Azure Sdk](https://azure.microsoft.com/downloads/)

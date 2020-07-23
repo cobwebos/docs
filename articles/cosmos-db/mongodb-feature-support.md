@@ -1,30 +1,31 @@
 ---
-title: 使用 Azure Cosmos DB 的 MongoDB API 功能支持
-description: 了解 Azure Cosmos DB 的 MongoDB API 为 MongoDB 3.4 提供的功能支持。
+title: Azure Cosmos DB 的 API for MongoDB（3.2 版本）支持的功能和语法
+description: 了解 Azure Cosmos DB 的 API for MongoDB（3.2 版本）支持的功能和语法。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 05/21/2019
+ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 09d12c817e9e8678cf96c63c0bff623923f7074d
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 5d525824039c276d0bc8a63256b32afa9cb25445
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978840"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851818"
 ---
-# <a name="azure-cosmos-dbs-api-for-mongodb-supported-features-and-syntax"></a>Azure Cosmos DB 的用于 MongoDB 的 API：支持的功能和语法
+# <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>Azure Cosmos DB 的 API for MongoDB（3.2 版本）：支持的功能和语法
 
 Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可通过任何开源 MongoDB 客户端[驱动程序](https://docs.mongodb.org/ecosystem/drivers)与 Azure Cosmos DB 的 MongoDB API 进行通信。 可以按照 MongoDB [有线协议](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)规定，通过 Azure Cosmos DB 的 MongoDB API 来使用现有客户端驱动程序。
 
 通过使用 Azure Cosmos DB 的 MongoDB API，可以像以往一样从 MongoDB 中受益，并且可使用 Cosmos DB 提供的所有企业功能：[全局分发](distribute-data-globally.md)、[自动分片](partition-data.md)、可用性和延迟保证、自动编制每个字段的索引、静态加密和备份等。
 
+> [!NOTE]
+> 本文适用于 Azure Cosmos DB 的 API for MongoDB 3.2。 对于 MongoDB 3.6 版本，请参阅 [MongoDB 3.6 支持的功能和语法](mongodb-feature-support-36.md)。
+
 ## <a name="protocol-support"></a>协议支持
 
-默认情况下，Azure Cosmos DB 的 MongoDB API 兼容 MongoDB Server 版本 **3.2**。 支持的运算符以及限制或例外已列在下面。 在 MongoDB 版本 **3.4** 中添加的功能或查询运算符目前以预览版功能形式提供。 任何理解这些协议的客户端驱动程序应该都能够连接到 Azure Cosmos DB 的 MongoDB API。
-
-[MongoDB 聚合管道](#aggregation-pipeline)目前也以单独的预览版功能形式提供。
+Azure Cosmos DB 的 API for MongoDB 的所有新帐户都与 MongoDB 服务器版本 **3.6** 兼容。 本文介绍 MongoDB 版本 3.2。 支持的运算符以及限制或例外已列在下面。 任何理解这些协议的客户端驱动程序应该都能够连接到 Azure Cosmos DB 的 MongoDB API。
 
 ## <a name="query-language-support"></a>查询语言支持
 
@@ -35,8 +36,9 @@ Azure Cosmos DB 的 MongoDB API 全面支持 MongoDB 查询语言构造。 可�
 Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 ### <a name="query-and-write-operation-commands"></a>查询和写入操作命令
+
 - delete
-- 查找项
+- find
 - findAndModify
 - getLastError
 - getMore
@@ -44,11 +46,13 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 - update
 
 ### <a name="authentication-commands"></a>身份验证命令
+
 - logout
 - authenticate
 - getnonce
 
 ### <a name="administration-commands"></a>管理命令
+
 - dropDatabase
 - listCollections
 - drop
@@ -61,6 +65,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 - reIndex
 
 ### <a name="diagnostics-commands"></a>诊断命令
+
 - buildInfo
 - collStats
 - dbStats
@@ -68,18 +73,20 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 - listDatabases
 - whatsmyuri
 
-<a name="aggregation-pipeline"/>
+<a name="aggregation-pipeline"></a>
 
 ## <a name="aggregation-pipelinea"></a>聚合管道</a>
 
-在公共预览版中，Cosmos DB 支持聚合管道。 请参阅 [Azure 博客](https://aka.ms/mongodb-aggregation)，了解有关如何载入到公共预览版的说明。
+在公共预览版中，Cosmos DB 支持 MongoDB 3.2 的聚合管道。 请参阅 [Azure 博客](https://azure.microsoft.com/blog/azure-cosmosdb-extends-support-for-mongodb-aggregation-pipeline-unique-indexes-and-more/)，了解有关如何载入到公共预览版的说明。
 
 ### <a name="aggregation-commands"></a>聚合命令
+
 - aggregate
-- 计数
+- count
 - distinct
 
 ### <a name="aggregation-stages"></a>聚合阶段
+
 - $project
 - $match
 - $limit
@@ -96,11 +103,13 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 ### <a name="aggregation-expressions"></a>聚合表达式
 
 #### <a name="boolean-expressions"></a>布尔表达式
+
 - $and
 - $or
 - $not
 
 #### <a name="set-expressions"></a>集表达式
+
 - $setEquals
 - $setIntersection
 - $setUnion
@@ -110,6 +119,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 - $allElementsTrue
 
 #### <a name="comparison-expressions"></a>比较表达式
+
 - $cmp
 - $eq
 - $gt
@@ -119,6 +129,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 - $ne
 
 #### <a name="arithmetic-expressions"></a>算术表达式
+
 - $abs
 - $add
 - $ceil
@@ -136,6 +147,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 - $trunc
 
 #### <a name="string-expressions"></a>字符串表达式
+
 - $concat
 - $indexOfBytes
 - $indexOfCP
@@ -150,6 +162,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 - $toUpper
 
 #### <a name="array-expressions"></a>数组表达式
+
 - $arrayElemAt
 - $concatArrays
 - $filter
@@ -162,6 +175,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 - $in
 
 #### <a name="date-expressions"></a>日期表达式
+
 - $dayOfYear
 - $dayOfMonth
 - $dayOfWeek
@@ -176,10 +190,12 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 - $isoWeek
 
 #### <a name="conditional-expressions"></a>条件表达式
+
 - $cond
 - $ifNull
 
 ## <a name="aggregation-accumulators"></a>聚合累加器
+
 - $sum
 - $avg
 - $first
@@ -212,7 +228,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 }
 ```
 
-运算符 | 示例 |
+操作员 | 示例 |
 --- | --- |
 $eq | `{ "Volcano Name": { $eq: "Rainier" } }` |  | -
 $gt | `{ "Elevation": { $gt: 4000 } }` |  | -
@@ -234,12 +250,15 @@ $regex | `{ "Volcano Name": { $regex: "^Rain"} }`|  | -
 ### <a name="notes"></a>说明
 
 在 $regex 查询中，左定位表达式允许索引搜索。 但是，使用“i”修饰符（不区分大小写）和“m”修饰符（多行）会导致在所有表达式中进行回收集合扫描。
-当需要包含“$”或“|”时，最好创建两个（或更多）正则表达式查询。 例如，给定以下原始查询：```find({x:{$regex: /^abc$/})```，必须按如下所示进行修改：```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```。
-第一部分将使用索引将搜索限制为以 ^ abc 开头的文档，第二部分将匹配确切的条目。 竖条运算符“|”充当“or”函数 - 查询 ```find({x:{$regex: /^abc|^def/})``` 匹配字段“x”的值以“abc”或“def”开头的文档。 要使用索引，建议将查询分解为两个由 $or 运算符连接的不同查询：```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```。
+当需要包含“$”或“|”时，最好创建两个（或更多）正则表达式查询。
+例如，给定以下原始查询：```find({x:{$regex: /^abc$/})```，必须按如下所示进行修改：```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```。
+第一部分将使用索引将搜索限制为以 ^ abc 开头的文档，第二部分将匹配确切的条目。
+竖条运算符“|”充当“or”函数 - 查询 ```find({x:{$regex: /^abc|^def/})``` 匹配字段“x”的值以“abc”或“def”开头的文档。 要使用索引，建议将查询分解为两个由 $or 运算符连接的不同查询：```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```。
 
 ### <a name="update-operators"></a>更新运算符
 
 #### <a name="field-update-operators"></a>字段更新运算符
+
 - $inc
 - $mul
 - $rename
@@ -251,6 +270,7 @@ $regex | `{ "Volcano Name": { $regex: "^Rain"} }`|  | -
 - $currentDate
 
 #### <a name="array-update-operators"></a>数组更新运算符
+
 - $addToSet
 - $pop
 - $pullAll
@@ -263,11 +283,12 @@ $regex | `{ "Volcano Name": { $regex: "^Rain"} }`|  | -
 - $position
 
 #### <a name="bitwise-update-operator"></a>位更新运算符
+
 - $bit
 
 ### <a name="geospatial-operators"></a>地理空间运算符
 
-运算符 | 示例 | |
+操作员 | 示例 | 支持 |
 --- | --- | --- |
 $geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | 是 |
 $geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | 是 |
@@ -282,16 +303,17 @@ $box | ```{ "Location.coordinates": { $geoWithin: { $box:  [ [ 0, 0 ], [ -122, 4
 $polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | 是 |
 
 ## <a name="sort-operations"></a>排序操作
+
 使用 `findOneAndUpdate` 操作时，支持基于单个字段的排序操作，但不支持基于多个字段的排序操作。
 
 ## <a name="additional-operators"></a>其他运算符
 
-运算符 | 示例 | 说明 
+操作员 | 示例 | 说明
 --- | --- | --- |
-$all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` | 
-$elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |  
-$size | ```{ "Location.coordinates": { $size: 2 } }``` | 
-$comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` | 
+$all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` |
+$elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |
+$size | ```{ "Location.coordinates": { $size: 2 } }``` |
+$comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` |
 $text |  | 不支持。 改为使用 $regex。
 
 ## <a name="unsupported-operators"></a>不支持的运算符
@@ -304,13 +326,13 @@ $text |  | 不支持。 改为使用 $regex。
 
 #### <a name="cursor-methods"></a>游标方法
 
-方法 | 示例 | 说明 
+方法 | 示例 | 说明
 --- | --- | --- |
 cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | 不会返回没有排序键的文件
 
 ## <a name="unique-indexes"></a>唯一索引
 
-默认情况下，Cosmos DB 为写入数据库的文档中的每个字段编制索引。 唯一索引确保特定字段在一个集合的所有文档中都不会有重复值，类似于默认“_id”键保持唯一性的方式。 可以在 Cosmos DB 中使用 createIndex 命令（包括“唯一”约束）创建自定义索引。
+默认情况下，Cosmos DB 为写入数据库的文档中的每个字段编制索引。 唯一索引确保特定字段在一个集合的所有文档中都不会有重复值，类似于默认 `_id` 键保持唯一性的方式。 可以在 Cosmos DB 中使用 createIndex 命令（包括“唯一”约束）创建自定义索引。
 
 所有使用 Azure Cosmos DB 的 MongoDB API 的 Cosmos 帐户都能使用唯一索引。
 
@@ -332,7 +354,7 @@ Cosmos DB 支持在最低层进行自动本机复制。 此逻辑经过扩展，
 
 ## <a name="sharding"></a>分片
 
-Cosmos DB 支持服务器端自动分片。 不支持手动分片命令。
+Azure Cosmos DB 支持服务器端自动分片。 它自动管理分片的创建、放置和均衡。 Azure Cosmos DB 不支持手动分片命令，这意味着你不必调用 shardCollection、addShard、balancerStart、moveChunk 等命令。只需在创建容器或查询数据时指定分片键。
 
 ## <a name="next-steps"></a>后续步骤
 

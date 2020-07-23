@@ -1,0 +1,102 @@
+### YamlMime:Landing
+title: Azure Data Lake Storage Gen1 文档
+summary: 了解如何设置、管理和访问具有超高可伸缩性、与 Hadoop 兼容的 Data Lake 存储库，用于对任何大小、类型和引入速度的数据执行分析。 Azure Data Lake Storage Gen2 现已推出正式版。 我们建议你立即开始使用它。
+metadata:
+  title: Azure Data Lake Storage Gen1 文档
+  description: 了解如何设置、管理和访问具有超高可伸缩性、与 Hadoop 兼容的 Data Lake 存储库，用于对任何大小、类型和引入速度的数据执行分析。
+  ms.service: data-lake-store
+  ms.topic: landing-page
+  author: twooley
+  ms.author: twooley
+  ms.date: 03/11/2020
+  ms.openlocfilehash: bf688b1230c8fd4eecba08ce361e92b9030a241f
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79410085"
+landingContent:
+- title: 关于 Azure Data Lake Storage Gen1
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Data Lake Storage Gen1？
+      url: data-lake-store-overview.md
+    - text: 与 Azure 存储进行比较
+      url: data-lake-store-comparison-with-blob-storage.md
+    - text: 切换到 Data Lake Storage Gen2 文档
+      url: ../storage/data-lake-storage/introduction.md
+- title: 入门
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure 门户
+      url: data-lake-store-get-started-portal.md
+    - text: Azure PowerShell
+      url: data-lake-store-get-started-powershell.md
+    - text: Azure CLI
+      url: data-lake-store-get-started-cli-2.0.md
+- title: 加载和移动数据
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Azure 数据工厂
+      url: ../data-factory/load-azure-data-lake-store.md
+    - text: 使用存储资源管理器
+      url: data-lake-store-in-storage-explorer.md
+    - text: 使用 AdlCopy
+      url: data-lake-store-copy-data-azure-storage-blob.md
+    - text: 使用 DistCp
+      url: data-lake-store-copy-data-wasb-distcp.md
+    - text: 使用 Sqoop
+      url: data-lake-store-data-transfer-sql-sqoop.md
+- title: 保护数据
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 安全概述
+      url: data-lake-store-security-overview.md
+    - text: 访问控制
+      url: data-lake-store-access-control.md
+  - linkListType: how-to-guide
+    links:
+    - text: 保护存储的数据
+      url: data-lake-store-secure-data.md
+    - text: 加密
+      url: data-lake-store-encryption.md
+    - text: 虚拟网络集成
+      url: data-lake-store-network-security.md
+- title: 身份验证
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 身份验证选项
+      url: data-lakes-store-authentication-using-azure-active-directory.md
+  - linkListType: how-to-guide
+    links:
+    - text: 最终用户身份验证
+      url: data-lake-store-end-user-authenticate-using-active-directory.md
+    - text: 服务到服务身份验证
+      url: data-lake-store-service-to-service-authenticate-using-active-directory.md
+- title: 文件系统操作
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: .NET SDK
+      url: data-lake-store-data-operations-net-sdk.md
+    - text: Java SDK
+      url: data-lake-store-get-started-java-sdk.md
+    - text: REST API
+      url: data-lake-store-data-operations-rest-api.md
+    - text: Python
+      url: data-lake-store-data-operations-python.md
+- title: 帐户管理操作
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: .NET SDK
+      url: data-lake-store-get-started-net-sdk.md
+    - text: REST API
+      url: data-lake-store-get-started-rest-api.md
+    - text: Python
+      url: data-lake-store-get-started-python.md

@@ -1,30 +1,23 @@
 ---
-title: 使用 Azure Application Insights 为 Web 应用程序进行用户留存情况分析 | Microsoft docs
+title: 使用 Azure Application Insights 分析 Web 应用用户留存情况
 description: 有多少用户回归到应用？
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/03/2017
-ms.pm_owner: daviste;NumberByColors
-ms.reviewer: mbullwin
+author: NumberByColors
 ms.author: daviste
-ms.openlocfilehash: bda79520dd86cc14161f6f22cd24feb2e35849ab
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/03/2017
+ms.reviewer: mbullwin
+ms.openlocfilehash: 25d1cccdbd56db397fc444d1488c773515ad6553
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60372598"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499301"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>使用 Azure Application Insights 为 Web 应用程序进行用户留存情况分析
 
 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的“留存情况”功能可以帮助分析有多少用户回归到应用，以及他们以何频率执行特定的任务或达成目标。 例如，如果运行游戏网站，则可以会在输掉游戏后回归到网站的用户数与在获胜后回归的用户数进行比较。 此信息有助于改进用户体验和业务策略。
 
-## <a name="get-started"></a>开始使用
+## <a name="get-started"></a>入门
 
 如果在 Application Insights 门户的“留存情况”工具中没有看到数据，请[了解如何开始使用“使用情况”工具](usage-overview.md)。
 
@@ -65,12 +58,10 @@ ms.locfileid: "60372598"
 
 
 ## <a name="next-steps"></a>后续步骤
-- 若要启用使用体验，请首先发送[自定义事件](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent)或[页面视图](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)。
+- 若要启用使用体验，请首先发送[自定义事件](./api-custom-events-metrics.md#trackevent)或[页面视图](./api-custom-events-metrics.md#page-views)。
 - 如果已经发送自定义事件或页面视图，请浏览使用情况工具，了解用户如何使用服务。
     - [用户、会话、事件](usage-segmentation.md)
     - [漏斗图](usage-funnels.md)
     - [用户流](usage-flows.md)
-    - [工作簿](../../azure-monitor/app/usage-workbooks.md)
+    - [工作簿](../../azure-monitor/platform/workbooks-overview.md)
     - [添加用户上下文](usage-send-user-context.md)
-
-

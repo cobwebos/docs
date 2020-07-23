@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: c30a32466cbac795ef037a3295816e87995ad749
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 3ad06d0e37b7cf464c311e28e546e1b7f1ebd183
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64868392"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058242"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>使用 Apple FairPlay 或 Microsoft PlayReady 保护 HLS 内容
 
 > [!NOTE]
-> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。   > 无新特性或功能将被添加到媒体服务 v2。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。   > 未向 Media Services v2 添加新功能或功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 >
 
 使用 Azure 媒体服务，可使用以下格式动态加密 HTTP Live Streaming (HLS) 内容：  
 
 * **AES-128 信封明文密钥**
 
-    整个区块使用 **AES-128 CBC** 模式进行加密。 iOS 和 OS X 播放器本身支持解密流。 有关详细信息，请参阅[使用 AES-128 动态加密和密钥传递服务](media-services-protect-with-aes128.md)。
+    整个区块使用 **AES-128 CBC** 模式进行加密。 iOS 和 OS X 播放器本身支持解密流。 有关详细信息，请参阅[使用 AES-128 动态加密和密钥传送服务](media-services-protect-with-aes128.md)。
 * **Apple FairPlay**
 
     各视频和音频示例都使用 **AES-128 CBC** 模式进行加密。 **FairPlay 流式处理** (FPS) 集成到设备操作系统，iOS 和 Apple TV 本身支持这项功能。 OS X 上的 Safari 使用加密媒体扩展 (EME) 接口支持启用 FPS。
@@ -51,7 +51,7 @@ ms.locfileid: "64868392"
 
 在使用媒体服务传送通过 FairPlay 加密的 HLS 和传送 FairPlay 许可证时，需要以下各项：
 
-  * 一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。
+  * 一个 Azure 帐户。 有关详细信息，请参阅[Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。
   * 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[使用 Azure 门户创建 Azure 媒体服务帐户](media-services-portal-create-account.md)。
   * 注册 [Apple 开发计划](https://developer.apple.com/)。
   * Apple 要求内容所有者获取[部署包](https://developer.apple.com/contact/fps/)。 说明已使用媒体服务实现密钥安全模块 (KSM)，以及正在请求最终 FPS 包。 最终 FPS 包中有如何生成证书和获取应用程序密钥 (ASK) 的说明。 可使用 ASK 配置 FairPlay。
@@ -82,7 +82,7 @@ ms.locfileid: "64868392"
 
 以下事项必须通过 FPS 客户端来设置：
 
-  * **应用证书 (AC)**：这是一个包含公钥的 .cer/.der 文件，操作系统使用它来加密某些有效负载。 媒体服务需要了解它，因为播放器需要它。 密钥传送服务使用相应的私钥对其进行解密。
+  * **应用证书 (AC)**：这是一个包含公钥的 .cer/.der 文件，操作系统使用它来加密某些负载。 媒体服务需要了解它，因为播放器需要它。 密钥传送服务使用相应的私钥对其进行解密。
 
 要播放 FairPlay 加密的流，需要先获取实际 ASK，然后生成实际证书。 该过程将创建所有三个部分：
 
@@ -90,7 +90,7 @@ ms.locfileid: "64868392"
   * .pfx 文件
   * .pfx 的密码
 
-以下客户端支持使用 AES-128 CBC 加密的 HLS：OS X 上的 Safari、Apple TV、iOS。
+以下客户端支持使用 **AES-128 CBC** 加密的 HLS：OS X 上的 Safari、Apple TV、iOS。
 
 ## <a name="configure-fairplay-dynamic-encryption-and-license-delivery-services"></a>配置 FairPlay 动态加密和许可证传送服务
 下面是使用 FairPlay 保护资产的常规步骤，这些步骤使用媒体服务许可证传送服务，也使用动态加密。
@@ -98,7 +98,7 @@ ms.locfileid: "64868392"
 1. 创建资产并将文件上传到资产。
 2. 将包含文件的资产编码为自适应比特率 MP4 集。
 3. 创建内容密钥并将其与编码资产相关联。  
-4. 配置内容密钥授权策略。 指定以下项：
+4. 配置内容密钥授权策略。 指定下列各项：
 
    * 传送方法（在本例中为 FairPlay）。
    * FairPlay 策略选项配置。 有关如何配置 FairPlay 的详细信息，请参阅以下示例中的 **ConfigureFairPlayPolicyOptions()** 方法。
@@ -127,14 +127,14 @@ ms.locfileid: "64868392"
 ## <a name="use-fairplay-key-delivery-by-player-apps"></a>使用播放器应用执行的 FairPlay 密钥传送
 可以通过使用 iOS SDK 开发播放器应用。 若要能够播放 FairPlay 内容，必须实现许可证交换协议。 此协议不由 Apple 指定。 而是取决于每个应用发送密钥传送请求的方式。 媒体服务 FairPlay 密钥传送服务需要 SPC 为采用以下形式的 www-form-url 编码后消息：
 
-    spc=<Base64 encoded SPC>
+`spc=<Base64 encoded SPC>`
 
 > [!NOTE]
 > Azure Media Player 支持 FairPlay 播放。 请参阅 [Azure Media Player 文档](https://amp.azure.net/libs/amp/latest/docs/index.html)了解详细信息。
 >
 >
 
-## <a name="streaming-urls"></a>流 URL
+## <a name="streaming-urls"></a>流式处理 URL
 如果使用了多个 DRM 加密资产，则应在流式处理 URL 中使用加密标记：(format='m3u8-aapl', encryption='xxx')。
 
 请注意以下事项：
@@ -145,11 +145,11 @@ ms.locfileid: "64868392"
 * 可以指定以下加密类型：  
   * **cenc**：通用加密（PlayReady 或 Widevine）
   * **cbcs-aapl**：FairPlay
-  * **cbc**：AES 信封加密
+  * **cbc**： AES 信封加密
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-1. 设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
+1. 设置开发环境，并在 app.config 文件中填充连接信息，如[通过 .net 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
 2. 将以下元素添加到 app.config 文件中定义的 **appSettings**：
 
     ```xml
@@ -513,7 +513,7 @@ namespace DynamicEncryptionWithFairPlay
             // Get a reference to the streaming manifest file from the  
             // collection of files in the asset.
 
-            var assetFile = asset.AssetFiles.Where(f => f.Name.ToLower().
+            var assetFile = asset.AssetFiles.LoList().Where(f => f.Name.ToLower().
                          EndsWith(".ism")).
                          FirstOrDefault();
 
@@ -554,6 +554,10 @@ namespace DynamicEncryptionWithFairPlay
     }
 }
 ```
+
+## <a name="additional-notes"></a>附加说明
+
+* Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
 ## <a name="next-steps-media-services-learning-paths"></a>后续步骤：媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

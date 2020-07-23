@@ -6,25 +6,25 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 06/03/2019
+ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: d99b10598b9f16da2cf202330f0b5bac9219699f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 553d6f716bbb6e98aa64ef07cb80d2d6cba370b6
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476826"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561541"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>教程：准备部署 Azure Data Box Gateway
 
-
-本文是有关完全部署 Azure Data Box Gateway 的教程系列的第一篇教程。 本教程介绍如何在 Azure 门户中做好准备，以部署 Data Box Gateway 资源。 
+本文是有关完全部署 Azure Data Box Gateway 的教程系列的第一篇教程。 本教程介绍如何在 Azure 门户中做好准备，以部署 Data Box Gateway 资源。
 
 需要有管理员权限才能完成安装和配置过程。 门户准备只需不到 10 分钟的时间。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
+>
 > * 创建新资源
 > * 下载虚拟设备映像
 > * 获取激活密钥
@@ -50,13 +50,11 @@ ms.locfileid: "66476826"
 
 在开始之前，请确保：
 
-- Data Box Gateway 资源应该支持你的 Microsoft Azure 订阅。 不支持即用即付订阅。
-- 你在资源组级别拥有 Data Box Edge/Data Box Gateway、IoT 中心和 Azure 存储资源的所有者或参与者访问权限。
-
-    - 若要创建任何 Data Box Edge/Data Box Gateway 资源，你应该具有资源组级别范围内的参与者（或更高级别）权限。 你还需要确保已注册 `Microsoft.DataBoxEdge` 提供程序。 有关如何注册的信息，请转到[注册资源提供程序](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers)。
-    - 若要创建任何 IoT 中心资源，请确保已注册 Microsoft.Devices 提供程序。 有关如何注册的信息，请转到[注册资源提供程序](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers)。
+* 已为 Azure Stack Edge 资源启用 Microsoft Azure 订阅。 确保使用了受支持的订阅，例如 [Microsoft 企业协议 (EA)](https://azure.microsoft.com/overview/sales-number/)、[云解决方案提供商 (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp) 或 [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)。
+* 你在资源组级别拥有对 Azure Stack Edge/Data Box Gateway、IoT 中心和 Azure 存储资源的所有者或参与者访问权限。
+    - 若要创建任何 Azure Stack Edge/Data Box Gateway 资源，你应该在资源组级别范围内具有参与者（或更高级别）权限。 你还需要确保已注册 `Microsoft.DataBoxEdge` 提供程序。 有关如何注册的信息，请转到[注册资源提供程序](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers)。
     - 若要创建存储帐户资源，你同样需要资源组级别范围内的参与者或更高级别访问权限。 Azure 存储在默认情况下是已注册的资源提供程序。
-- 你拥有对 Azure Active Directory 图形 API 的管理员或用户访问权限。 有关详细信息，请参阅 [Azure Active Directory 图形 API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
+- 你对 Microsoft Graph API 有管理员或用户访问权限。 有关详细信息，请参阅 [Microsoft Graph 权限参考](https://docs.microsoft.com/graph/permissions-reference)。
 - 具有 Microsoft Azure 存储帐户和访问凭据。
 
 ### <a name="for-the-data-box-gateway-device"></a>对于 Data Box Gateway 设备
@@ -93,9 +91,8 @@ ms.locfileid: "66476826"
 
     - URL [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。
     - 或者，通过 URL [https://portal.azure.us](https://portal.azure.us) 登录到 Azure 政府版门户。 有关更多详细信息，请参阅[使用门户连接到 Azure 政府版](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)。
-
-2. 在左窗格中，选择“+ 创建资源”  。 搜索 **Data Box Edge/Data Box Gateway**。 选择“Data Box Edge/Data Box Gateway”。 选择“创建”  。
-3. 选择用于 Data Box Gateway 设备的订阅。 选择要将 Data Box Gateway 资源部署到的区域。 在此版本中，可以选择“美国东部”、“东南亚”和“西欧”。 选择离要部署设备的地理区域最近的位置。 在“Data Box Gateway”选项中，选择“创建”。  
+2. 在左窗格中，选择“+ 创建资源”  。 搜索“Azure Stack Edge/Data Box Gateway”  。 选择“Azure Stack Edge/Data Box Gateway”。 选择“创建”  。
+3. 选择用于 Data Box Gateway 设备的订阅。 选择要将 Data Box Gateway 资源部署到的区域。 有关可使用 Azure Stack Edge 资源的所有区域的列表，请参阅[可用的 Azure 产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 选择离要部署设备的地理区域最近的位置。 在“Data Box Gateway”选项中，选择“创建”。  
 
     ![搜索 Data Box Gateway 服务](media/data-box-gateway-deploy-prep/data-box-gateway-edge-sku.png)
 
@@ -104,14 +101,14 @@ ms.locfileid: "66476826"
     |设置  |值  |
     |---------|---------|
     |订阅    |系统会根据前面所做的选择自动填充此字段。 订阅将链接到你的计费帐户。 |
-    |资源组  |选择现有的组，或创建新组。<br>详细了解 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)。     |
+    |资源组  |选择现有的组，或创建新组。<br>详细了解 [Azure 资源组](../azure-resource-manager/management/overview.md)。     |
 
 5. 输入或选择以下“实例详细信息”。 
 
     |设置  |值  |
     |---------|---------|
     |名称   | 用于标识资源的友好名称。<br>该名称的长度必须介于 2 和 50 个字符之间，只能包含字母、数字和连字符。<br> 名称以字母或数字开头和结尾。        |   
-    |区域     |在此版本中，可以选择“美国东部”、“东南亚”和“西欧”来部署资源。 对于 Azure 政府版，可以选择 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中所列的所有政府区域。 <br> 选择离要部署设备的地理区域最近的位置。|
+    |区域     |有关可使用 Azure Stack Edge 资源的所有区域的列表，请参阅[可用的 Azure 产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 对于 Azure 政府版，可以选择 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中所列的所有政府区域。 <br> 选择离要部署设备的地理区域最近的位置。|
     
     ![创建 Data Box Gateway 资源](media/data-box-gateway-deploy-prep/data-box-gateway-resource.png)
     
@@ -178,7 +175,7 @@ ms.locfileid: "66476826"
 > [!div class="nextstepaction"]
 > [在 Hyper-V 中预配 Data Box Gateway](./data-box-gateway-deploy-provision-hyperv.md)
 
-或
+OR
 
 > [!div class="nextstepaction"]
 > [在 VMware 中预配 Data Box Gateway](./data-box-gateway-deploy-provision-vmware.md)

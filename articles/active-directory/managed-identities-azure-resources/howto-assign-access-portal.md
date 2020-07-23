@@ -1,5 +1,5 @@
 ---
-title: 如何使用 Azure 门户授予托管标识对 Azure 资源的访问权限
+title: 使用 Azure 门户授予托管标识对资源的访问权限 - Azure AD
 description: 分步说明如何使用 Azure 门户授予一个资源上的托管标识对另一个资源的访问权限。
 services: active-directory
 documentationcenter: ''
@@ -9,18 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 958b3d72a3a8df4a3b67f62e7db788d7142ca667
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: e2af718c3555176167eb154b0a718218c42e93dc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66112917"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608290"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>使用 Azure 门户授予托管标识对资源的访问权限
 
@@ -28,20 +27,20 @@ ms.locfileid: "66112917"
 
 为 Azure 资源配置托管标识后，便可以授予该托管标识对另一资源的访问权限，这一点与所有安全主体一样。 本文介绍如何使用 Azure 门户授予 Azure 虚拟机或虚拟机规模集的托管标识对 Azure 存储帐户的访问权限。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-it-work)。
+- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#managed-identity-types)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>使用 RBAC 授予托管标识对另一资源的访问权限
 
-在 Azure 资源（例如 [Azure VM](qs-configure-portal-windows-vm.md) 或 [Azure VMSS](qs-configure-portal-windows-vmss.md)）上启用托管标识后：
+在 Azure 资源（如[AZURE VM](qs-configure-portal-windows-vm.md)或[azure 虚拟机规模集](qs-configure-portal-windows-vmss.md)）上启用托管标识后：
 
 1. 使用帐户登录 [Azure 门户](https://portal.azure.com)，此帐户与已在其下配置托管标识的 Azure 订阅相关联。
 
 2. 转到要对其修改访问控制的相应资源。 此示例要授予 Azure 虚拟机对存储帐户的访问权限，所以导航到存储帐户。
 
-3. 选择资源的“访问控制(IAM)”页面，然后选择“+ 添加角色分配”。 然后依次指定“角色”、“将访问权限分配到”和相应的“订阅”。 在搜索条件区域下，应该会看到该资源。 选择该资源，并选择“保存”。 
+3. 选择资源的“访问控制(IAM)”页面，然后选择“+ 添加角色分配”   。 然后依次指定“角色”、“将访问权限分配到”和相应的“订阅”    。 在搜索条件区域下，应该会看到该资源。 选择该资源，并选择“保存”  。 
 
    ![“访问控制(IAM)”屏幕截图](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
      

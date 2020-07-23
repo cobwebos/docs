@@ -1,5 +1,5 @@
 ---
-title: 使用 Ruby 连接到 Azure Database for MySQL
+title: 使用 Ruby 进行连接 - Azure Database for MySQL
 description: 本快速入门提供多个 Ruby 代码示例，使用这些示例可连接到适用于 MySQL 的 Azure 数据库并查询其中的数据。
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: 5dbb2226e33928d9d79358a84192b57c44841de4
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.date: 5/26/2020
+ms.openlocfilehash: b069a9ba0e2c56ff027e351789177f8bfe0b2ff4
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351620"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869989"
 ---
 # <a name="azure-database-for-mysql-use-ruby-to-connect-and-query-data"></a>Azure Database for MySQL：使用 Ruby 连接和查询数据
 本快速入门演示如何在 Windows、Ubuntu Linux 和 Mac 平台中使用 [Ruby](https://www.ruby-lang.org) 应用程序和 [mysql2](https://rubygems.org/gems/mysql2) gem 连接到适用于 MySQL 的 Azure 数据库。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本主题假设你熟悉如何使用 Ruby 进行开发，但不太熟悉 Azure Database for MySQL 的用法。
@@ -22,6 +22,9 @@ ms.locfileid: "58351620"
 此快速入门使用以下任意指南中创建的资源作为起点：
 - [使用 Azure 门户创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [使用 Azure CLI 创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-cli.md)
+
+> [!IMPORTANT] 
+> 确保已使用 [Azure 门户](./howto-manage-firewall-using-portal.md)或 [Azure CLI](./howto-manage-firewall-using-cli.md) 将服务器的防火墙规则添加到连接的 IP 地址
 
 ## <a name="install-ruby"></a>安装 Ruby
 在自己的计算机上安装 Ruby、Gem 和 MySQL2 库。 
@@ -55,7 +58,7 @@ ms.locfileid: "58351620"
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在 Azure 门户的左侧菜单中，单击“所有资源”，然后搜索已创建的服务器（例如 mydemoserver）。
 3. 单击服务器名称。
-4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。 如果忘记了密码，也可通过此面板来重置密码。
+4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。   如果忘记了密码，也可通过此面板来重置密码。
  ![Azure Database for MySQL 服务器名称](./media/connect-ruby/1_server-overview-name-login.png)
 
 ## <a name="run-ruby-code"></a>运行 Ruby 代码 

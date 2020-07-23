@@ -1,38 +1,29 @@
 ---
-title: 详细步骤 - Azure Linux VM 的 SSH 密钥对 | Microsoft Docs
+title: 创建 SSH 密钥对的详细步骤
 description: 了解创建和管理适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对的详细步骤。
-services: virtual-machines-linux
-documentationcenter: ''
-author: dlepow
-manager: jeconnoc
-editor: ''
-tags: ''
-ms.assetid: ''
+author: cynthn
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
-ms.author: danlep
-ms.openlocfilehash: 3784dd701b3ac44971e134f1b160fcfe2de2d9b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/06/2019
+ms.author: cynthn
+ms.openlocfilehash: 8c826f5e0e36d693dd3ba98640bceae228ba34e8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60328661"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119202"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>详细步骤：创建和管理 Azure 中的 Linux VM 用于身份验证的 SSH 密钥 
 使用安全外壳 (SSH) 密钥对，可在 Azure 上创建默认使用 SSH 密钥进行身份验证的 Linux 虚拟机，从而无需密码即可登录。 使用 Azure 门户、Azure CLI、资源管理器模板或其他工具创建的 VM 可在部署中包含 SSH 公钥，为 SSH 连接设置 SSH 密钥身份验证。 
 
 本文提供创建和管理用于 SSH 客户端连接的 SSH RSA 公钥/私钥文件对的详细背景和步骤。 如果想要快捷命令，请参阅[如何创建适用于 Azure 中 Linux VM 的 SSH 公钥/私钥对](mac-create-ssh-keys.md)。
 
-有关在 Windows 计算机上生成和使用 SSH 密钥的其他方式，请参阅[如何在 Azure 上将 SSH 密钥与 Windows 配合使用](ssh-from-windows.md)。
+若要生成 SSH 密钥并使用它们从**windows**计算机连接到，请参阅[如何在 AZURE 上将 Ssh 密钥与 windows 配合使用](ssh-from-windows.md)。
 
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 
 ### <a name="private-key-passphrase"></a>私钥密码
-SSH 私钥应使用非常安全的密码来保护它。 此密码只用于访问 SSH 私钥文件，不是用户帐户密码。 向 SSH 密钥添加密码时，会使用 128 位 AES 加密私钥，因此在不能通过密码解密的情况下，私钥是没有用的。 如果攻击者窃取了私钥，并且该私钥没有密码，那么他们就能使用私钥登录到有相应公钥的任何服务器。 如果私钥受密码保护，攻击者就无法使用，从而为 Azure 基础结构提供一个额外的安全层。
+SSH 私钥应使用非常安全的密码来保护它。 此密码只用于访问 SSH 私钥文件，不是用户帐户密码**。 向 SSH 密钥添加密码时，会使用 128 位 AES 加密私钥，因此在不能通过密码解密的情况下，私钥是没有用的。 如果攻击者窃取了私钥，并且该私钥没有密码，那么他们就能使用私钥登录到有相应公钥的任何服务器。 如果私钥受密码保护，攻击者就无法使用，从而为 Azure 基础结构提供一个额外的安全层。
 
 [!INCLUDE [virtual-machines-common-ssh-support](../../../includes/virtual-machines-common-ssh-support.md)]
 
@@ -40,20 +31,20 @@ SSH 私钥应使用非常安全的密码来保护它。 此密码只用于访问
 
 通过指定公钥创建 Azure VM 时，Azure 将公钥（以 `.pub` 格式）复制到 VM 上的 `~/.ssh/authorized_keys` 文件夹。 `~/.ssh/authorized_keys` 中的 SSH 密钥用于在 SSH 连接时质询客户端以匹配相应的私钥。 在使用 SSH 密钥进行身份验证的 Azure Linux VM 中，Azure 会将 SSHD 服务器配置为不允许密码登录，仅允许 SSH 密钥登录。 因此，使用 SSH 密钥创建 Azure Linux VM 可确保 VM 部署的安全，不必进行通常在部署完后需要进行的配置步骤（即在 `sshd_config` 文件中禁用密码）。
 
-如果不希望使用 SSH 密钥，可以将 Linux VM 设置为使用密码身份验证。 如果 VM 不向 Internet 公开，使用密码可能已足够。 但是，仍需要管理每台 Linux VM 的密码和维护正常密码策略和做法（如最小密码长度）并定期进行更新。 使用 SSH 密钥可降低跨多台 VM 管理单个凭据的复杂性。
+如果不希望使用 SSH 密钥，可以将 Linux VM 设置为使用密码身份验证。 如果 VM 未向 Internet 公开，使用密码可能已足够。 但是，仍需要管理每台 Linux VM 的密码和维护正常密码策略和做法（如最小密码长度）并定期进行更新。 使用 SSH 密钥可降低跨多台 VM 管理单个凭据的复杂性。
 
 ## <a name="generate-keys-with-ssh-keygen"></a>使用 ssh-keygen 生成密钥
 
-若要创建密钥，首选命令是 `ssh-keygen`，它可与 Azure Cloud Shell、macOS 或 Linux 主机、[用于 Linux 的 Windows 子系统](https://docs.microsoft.com/windows/wsl/about)以及其他工具的 OpenSSH 实用程序配合使用。 `ssh-keygen` 会询问一系列问题，然后编写私钥和匹配的公钥。 
+若要创建密钥，首选命令是 `ssh-keygen`，它可与 Azure Cloud Shell、macOS 或 Linux 主机和 Windows 10 中的 OpenSSH 实用程序配合使用。 `ssh-keygen` 会询问一系列问题，然后编写私钥和匹配的公钥。 
 
 SSH 密钥默认保留在 `~/.ssh` 目录中。  如果没有 `~/.ssh` 目录，`ssh-keygen` 命令会使用正确的权限创建一个。
 
 ### <a name="basic-example"></a>基本示例
 
-以下 `ssh-keygen` 命令默认在 `~/.ssh` 目录中生成 2048 位 SSH RSA 公钥和私钥文件。 如果当前位置存在 SSH 密钥对，这些文件将被覆盖。
+以下 `ssh-keygen` 命令默认在目录中生成4096位 SSH RSA 公钥和私钥文件 `~/.ssh` 。 如果当前位置存在 SSH 密钥对，这些文件将被覆盖。
 
 ```bash
-ssh-keygen -t rsa -b 2048
+ssh-keygen -m PEM -t rsa -b 4096
 ```
 
 ### <a name="detailed-example"></a>详细示例
@@ -61,6 +52,7 @@ ssh-keygen -t rsa -b 2048
 
 ```bash
 ssh-keygen \
+    -m PEM \
     -t rsa \
     -b 4096 \
     -C "azureuser@myserver" \
@@ -72,6 +64,8 @@ ssh-keygen \
 
 `ssh-keygen` = 用于创建密钥的程序
 
+`-m PEM` = 将密钥的格式设为 PEM
+
 `-t rsa` = 要创建的密钥类型，本例中为 RSA 格式
 
 `-b 4096` = 密钥的位数，本例中为 4096
@@ -82,10 +76,10 @@ ssh-keygen \
 
 `-N mypassphrase` = 用于访问私钥文件的其他密码。 
 
-### <a name="example-of-ssh-keygen"></a>ssh-keygen 示例
+### <a name="example-of-ssh-keygen"></a>ssh-keygen 的示例
 
 ```bash
-ssh-keygen -t rsa -b 2048 -C "azureuser@myserver"
+ssh-keygen -t -m PEM rsa -b 4096 -C "azureuser@myserver"
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/azureuser/.ssh/id_rsa):
 Enter passphrase (empty for no passphrase):
@@ -93,19 +87,19 @@ Enter same passphrase again:
 Your identification has been saved in /home/azureuser/.ssh/id_rsa.
 Your public key has been saved in /home/azureuser/.ssh/id_rsa.pub.
 The key fingerprint is:
-14:a3:cb:3e:78:ad:25:cc:55:e9:0c:08:e5:d1:a9:08 azureuser@myserver
-The keys randomart image is:
-+--[ RSA 2048]----+
-|        o o. .   |
-|      E. = .o    |
-|      ..o...     |
-|     . o....     |
-|      o S =      |
-|     . + O       |
-|      + = =      |
-|       o +       |
-|        .        |
-+-----------------+
+SHA256:vFfHHrpSGQBd/oNdvNiX0sG9Vh+wROlZBktNZw9AUjA azureuser@myserver
+The key's randomart image is:
++---[RSA 4096]----+
+|        .oE=*B*+ |
+|          o+o.*++|
+|           .oo++*|
+|       .    .B+.O|
+|        S   o=BO.|
+|         . .o++o |
+|        . ... .  |
+|         ..  .   |
+|           ..    |
++----[SHA256]-----+
 ```
 
 #### <a name="saved-key-files"></a>保存的密钥文件
@@ -126,7 +120,7 @@ ls -al ~/.ssh
 
 `Enter passphrase (empty for no passphrase):`
 
-强烈建议为私钥添加密码。 如果不使用密码来保护密钥文件，任何人只要拥有该文件，就可以用它登录到拥有相应公钥的任何服务器。 添加密码可提升防护能力以防有人能够访问私钥文件，可让用户有时间更改密钥。
+强烈建议为私钥添加密码**。 如果不使用密码来保护密钥文件，任何人只要拥有该文件，就可以用它登录到拥有相应公钥的任何服务器。 添加密码可提升防护能力以防有人能够访问私钥文件，可让用户有时间更改密钥。
 
 ## <a name="generate-keys-automatically-during-deployment"></a>部署期间自动生成密钥
 
@@ -152,7 +146,7 @@ ssh-rsa XXXXXXXXXXc2EAAAADAXABAAABAXC5Am7+fGZ+5zXBGgXS6GUvmsXCLGc7tX7/rViXk3+eSh
 
 如果更愿意使用多行格式的公钥，则可基于之前创建的公钥在 pem 容器中生成 RFC4716 格式的密钥。
 
-若要基于现有的 SSH 公钥创建 RFC4716 格式的密钥，请执行以下操作：
+从现有的 SSH 公钥创建 RFC4716 格式的密钥：
 
 ```bash
 ssh-keygen \
@@ -162,7 +156,7 @@ ssh-keygen \
 ```
 
 ## <a name="ssh-to-your-vm-with-an-ssh-client"></a>使用 SSH 客户端将 SSH 连接到 VM
-凭借部署在 Azure VM 上的公钥和本地系统上的私钥，使用 VM 的 IP 地址或 DNS 名称通过 SSH 连接到 VM。 将以下命令中的 azureuser 和 myvm.westus.cloudapp.azure.com 替换为管理员用户名和完全限定的域名（或 IP 地址）：
+凭借部署在 Azure VM 上的公钥和本地系统上的私钥，使用 VM 的 IP 地址或 DNS 名称通过 SSH 连接到 VM。 将以下命令中的 azureuser 和 myvm.westus.cloudapp.azure.com 替换为管理员用户名和完全限定的域名（或 IP 地址） ：
 
 ```bash
 ssh azureuser@myvm.westus.cloudapp.azure.com
@@ -215,7 +209,7 @@ touch ~/.ssh/config
 vim ~/.ssh/config
 ```
 
-### <a name="example-configuration"></a>示例配置
+### <a name="example-configuration"></a>配置示例
 
 添加适用于主机 VM 的配置设置。
 

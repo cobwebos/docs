@@ -1,28 +1,30 @@
 ---
-title: 使用 Windows Server 的 Azure Active Directory 中的 AD FS 的 azure MFA 服务器
+title: 将 Azure MFA 服务器与 Windows Server 中的 AD FS 配合使用 - Azure Active Directory
 description: 本文介绍如何开始将 Azure 多重身份验证与 Windows Server 2012 R2 和 2016 中的 AD FS 配合使用。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5f37873b51d6257ffec3ada10be886995f7f5d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 2777675d915d99b8c0e3c2a123b24ab60d41f672
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358826"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80653353"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>将 Azure 多重身份验证服务器配置为与 Windows Server 中的 AD FS 配合使用
 
 如果使用 Active Directory 联合身份验证服务 (AD FS)，同时想要保护云或本地资源，则可以将 Azure 多重身份验证服务器配置为与 AD FS 配合使用。 此配置将为重要的终结点触发双重验证。
 
 本文介绍如何将 Azure 多重身份验证服务器与 Windows Server 2012 R2 或 Windows Server 2016 中的 AD FS 配合使用。 请阅读如何 [将 Azure 多重身份验证服务器与 AD FS 2.0 配合使用来保护云资源和本地资源](howto-mfaserver-adfs-2.md)，了解详细信息。
+
+> [!IMPORTANT]
+> 从 2019 年 7 月 1 日开始，Microsoft 将不再为新部署提供 MFA 服务器。 希望用户执行多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在 7 月 1 日之前激活了 MFA 服务器的现有客户可以像平时一样下载最新版本、将来的更新以及生成激活凭据。
 
 ## <a name="secure-windows-server-ad-fs-with-azure-multi-factor-authentication-server"></a>使用 Azure 多重身份验证服务器保护 Windows Server AD FS
 
@@ -42,14 +44,14 @@ ms.locfileid: "60358826"
 ### <a name="install-azure-multi-factor-authentication-server-locally-on-the-ad-fs-server"></a>在 AD FS 服务器上本地安装 Azure 多重身份验证服务器
 
 1. 在 AD FS 服务器上下载并安装 Azure 多重身份验证服务器。 请阅读 [Azure 多重身份验证服务器入门](howto-mfaserver-deploy.md)，了解详细信息。
-2. 在 Azure 多重身份验证服务器管理控制台中，单击“AD FS”图标。 选择选项“允许用户注册”和“允许用户选择方法”。
+2. 在 Azure 多重身份验证服务器管理控制台中，单击“AD FS”图标。 选择选项“允许用户注册”和“允许用户选择方法”。 
 3. 选择要为组织指定的其他任何选项。
 4. 单击“安装 AD FS 适配器”。
 
    ![从 MFA 服务器控制台安装 ADFS 适配器](./media/howto-mfaserver-adfs-2012/server.png)
 
-5. 如果显示“Active Directory”窗口，则表示两点。 计算机已加入域，但保护 AD FS 适配器与多重身份验证服务之间通信的 Active Directory 配置并未完成。 单击“下一步”自动完成此配置，或者选中“跳过自动 Active Directory 配置并手动配置设置”复选框。 单击“下一步”。
-6. 如果显示“本地组”窗口，则表示两点。 计算机尚未加入域，且保护 AD FS 适配器与多重身份验证服务之间通信的本地组配置未完成。 单击“下一步”自动完成此配置，或者选中“跳过自动本地组配置并手动配置设置”复选框。 单击“下一步”。
+5. 如果显示“Active Directory”窗口，则表示两点。 计算机已加入域，但保护 AD FS 适配器与多重身份验证服务之间通信的 Active Directory 配置并未完成。 单击“下一步”自动完成此配置，或者选中“跳过自动 Active Directory 配置并手动配置设置”复选框。  单击“下一步”。
+6. 如果显示“本地组”窗口，则表示两点。 计算机尚未加入域，且保护 AD FS 适配器与多重身份验证服务之间通信的本地组配置未完成。 单击“下一步”自动完成此配置，或者选中“跳过自动本地组配置并手动配置设置”复选框。  单击“下一步”。
 7. 在安装向导中单击“下一步”。 Azure 多重身份验证服务器将创建 PhoneFactor Admins 组，并将 AD FS 服务帐户添加到 PhoneFactor Admins 组。
 8. 在“启动安装程序”页中单击“下一步”。
 9. 在多重身份验证 AD FS 适配器安装程序中，单击“下一步”。
@@ -60,7 +62,7 @@ ms.locfileid: "60358826"
 
 12. 若要使用新注册的适配器，请在 AD FS 中编辑全局身份验证策略。 在 AD FS 管理控制台中，转到“身份验证策略”节点。 在“多重身份验证”部分中，单击“全局设置”部分旁边的“编辑”链接。 在“编辑全局身份验证策略”窗口中，选择“多重身份验证”作为其他身份验证方法，并单击“确定”。 适配器已注册为 WindowsAzureMultiFactorAuthentication。 重新启动 AD FS 服务使注册生效。
 
-![编辑全局身份验证策略](./media/howto-mfaserver-adfs-2012/global.png)
+![编辑全球身份验证策略](./media/howto-mfaserver-adfs-2012/global.png)
 
 现在，多重身份验证服务器已设置为与 AD FS 配合使用的附加身份验证提供程序。
 
@@ -81,7 +83,7 @@ ms.locfileid: "60358826"
 按照以下步骤编辑 MultiFactorAuthenticationAdfsAdapter.config 文件：
 
 1. 将“UseWebServiceSdk”节点设置为“true”。  
-2. 将“WebServiceSdkUrl”的值设置为多重身份验证 Web 服务 SDK 的 URL。 例如： *https:\/\/contoso.com/\<certificatename > /MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*，其中 *\<certificatename >* 是你的证书名称。  
+2. 将“WebServiceSdkUrl”的值设置为多重身份验证 Web 服务 SDK 的 URL。 例如：https:\/\/contoso.com/\<certificatename>/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx，其中 \<certificatename> 是证书的名称。  
 3. 编辑 Register-MultiFactorAuthenticationAdfsAdapter.ps1 脚本，将 `-ConfigurationFilePath &lt;path&gt;` 添加到 `Register-AdfsAuthenticationProvider` 命令的末尾，其中 *&lt;path&gt;* 是 MultiFactorAuthenticationAdfsAdapter.config 文件的完整路径。
 
 ### <a name="configure-the-web-service-sdk-with-a-username-and-password"></a>使用用户名和密码配置 Web 服务 SDK
@@ -105,7 +107,7 @@ ms.locfileid: "60358826"
 8. 将“已启用”更改为“true”。  
 9. 将 oneToOneCertificateMappingsEnabled 更改为“true”。  
 10. 单击 oneToOneMappings 旁的“...”按钮，并单击“添加”链接。  
-11. 打开之前导出的 Base64 .cer 文件。 删除 *-----BEGIN CERTIFICATE-----*、*-----END CERTIFICATE-----* 以及所有换行符。 复制生成的字符串。  
+11. 打开之前导出的 Base64 .cer 文件。 删除 *-----BEGIN CERTIFICATE-----* 、 *-----END CERTIFICATE-----* 以及所有换行符。 复制生成的字符串。  
 12. 将证书设置为在上一步中复制的字符串。  
 13. 将“已启用”更改为“true”。  
 14. 将 userName 设置为 PhoneFactor Admins 安全组成员的帐户。 使用 &lt;domain&gt;&#92;&lt;user name&gt; 格式。  
@@ -131,11 +133,11 @@ ms.locfileid: "60358826"
 2. 在左侧选择“信赖方信任”。
 3. 右键单击 **Microsoft Office 365 标识平台** ，并选择 **编辑声明规则...**
 
-   ![编辑声明规则在 ADFS 控制台](./media/howto-mfaserver-adfs-2012/trustedip1.png)
+   ![在 ADFS 控制台中编辑声明规则](./media/howto-mfaserver-adfs-2012/trustedip1.png)
 
 4. 在“颁发转换规则”上，单击 **添加规则**。
 
-   ![编辑在 ADFS 控制台中的转换规则](./media/howto-mfaserver-adfs-2012/trustedip2.png)
+   ![在 ADFS 控制台中编辑转换规则](./media/howto-mfaserver-adfs-2012/trustedip2.png)
 
 5. 在“添加转换声明规则向导”上，从下拉列表中选择“传递或筛选传入声明”，并单击“下一步”。
 

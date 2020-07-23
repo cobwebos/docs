@@ -5,16 +5,25 @@
     - name: 什么是 Azure 防火墙？
       href: overview.md
 - name: 教程
-  expanded: true
   items:
     - name: 部署和配置
       href: tutorial-firewall-deploy-portal.md
     - name: 在混合网络中部署
-      href: tutorial-hybrid-ps.md
+      href: tutorial-hybrid-portal.md
     - name: 使用 DNAT 筛选入站流量
       href: tutorial-firewall-dnat.md
-    - name: 监视诊断日志
-      href: tutorial-diagnostics.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 通过 IP 组进行部署 - ARM 模板
+      displayName: Resource Manager
+      href: quick-create-ipgroup-template.md
+    - name: 使用多个地址进行部署 - ARM 模板
+      displayName: Resource Manager
+      href: quick-create-multiple-ip-template.md
+    - name: 使用可用性区域进行部署 - ARM 模板
+      displayName: Resource Manager
+      href: deploy-template.md
 - name: 示例
   items:
     - name: Azure PowerShell
@@ -23,9 +32,11 @@
       href: log-analytics-samples.md
 - name: 概念
   items:
+    - name: Azure 防火墙功能
+      href: features.md
     - name: FQDN 标记
       href: fqdn-tags.md
-    - name: 基础设施 FQDN
+    - name: 基础结构 FQDN
       href: infrastructure-fqdns.md
     - name: 日志和指标
       href: logs-and-metrics.md
@@ -35,18 +46,50 @@
       href: rule-processing.md
     - name: 服务标记
       href: service-tags.md
+    - name: IP 组
+      href: ip-groups.md
+    - name: 强制隧道
+      href: forced-tunneling.md
+    - name: 认证
+      href: compliance-certifications.md
+    - name: 中央管理
+      href: central-management.md
+    - name: 远程工作支持
+      href: remote-work-support.md
+    - name: 网络规则中的 FQDN
+      href: fqdn-filtering-network-rules.md
 - name: 操作指南
   items:
     - name: 使用 Azure PowerShell 进行部署
       href: deploy-ps.md
-    - name: 使用模板进行部署
-      href: deploy-template.md
+    - name: 在混合网络中部署 - PowerShell
+      href: tutorial-hybrid-ps.md
+    - name: 使用 Azure CLI 进行部署
+      href: deploy-cli.md
+    - name: 使用多个公共 IP 进行部署
+      href: deploy-multi-public-ip-powershell.md
+    - name: 使用可用性区域进行部署
+      href: deploy-availability-zone-powershell.md
     - name: 与负载均衡器集成
       href: integrate-lb.md
-- name: 引用
+    - name: 带有 SQL FQDN 的应用程序规则
+      href: sql-fqdn-filtering.md
+    - name: SNAT 专用范围
+      href: snat-private-range.md
+    - name: 创建 IP 组
+      href: create-ip-group.md
+    - name: 保护 Windows 虚拟桌面
+      href: protect-windows-virtual-desktop.md
+    - name: 保护 Azure Kubernetes 服务 (AKS)
+      href: protect-azure-kubernetes-service.md
+    - name: DNS 设置
+      href: dns-settings.md
+    - name: 监视诊断日志
+      href: firewall-diagnostics.md
+- name: 参考
   items:
     - name: Azure CLI
-      href: /cli/azure/network
+      href: /cli/azure/ext/azure-firewall/network/firewall
     - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewall
     - name: .NET
@@ -60,13 +103,13 @@
     - name: REST
       href: /rest/api/firewall
     - name: Azure 资源管理器
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
 - name: 资源
   items:
     - name: 常见问题解答
       href: firewall-faq.md
     - name: 创作模板
-      href: ../azure-resource-manager/resource-group-authoring-templates.md
+      href: ../azure-resource-manager/templates/template-syntax.md
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 社区模板

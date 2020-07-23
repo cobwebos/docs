@@ -1,31 +1,31 @@
 ---
-title: 自定义 Azure HDInsight 群集配置使用 bootstrap
-description: 了解如何自定义 HDInsight 群集配置以编程方式使用.Net、 PowerShell 和 Resource Manager 模板。
+title: 使用 bootstrap 自定义 Azure HDInsight 群集配置
+description: 了解如何使用 .NET、PowerShell 和资源管理器模板以编程方式自定义 HDInsight 群集配置。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
+ms.topic: how-to
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 04/19/2019
-ms.openlocfilehash: 7f9100686eaab8c4c75e3d862026b18b6c46ed09
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 04/01/2020
+ms.openlocfilehash: be206b312394eab6367f179872c8c36b7f4f3d44
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203706"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083213"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>使用 Bootstrap 自定义 HDInsight 群集
 
-启动脚本允许你安装和以编程方式在 Azure HDInsight 中配置组件。 
+Bootstrap 脚本允许你以编程方式在 Azure HDInsight 中安装和配置组件。
 
-有三种方法来创建 HDInsight 群集设置配置文件设置：
+在创建 HDInsight 群集时，有三种方式可用来设置配置文件设置：
 
 * 使用 Azure PowerShell
 * 使用 .NET SDK
-* 使用 Azure 资源管理器模板
+* 使用 Azure Resource Manager 模板
 
-例如，使用这些编程方法，您可以配置选项在这些文件中：
+例如，使用这些编程方法，你可以在以下文件中配置选项：
 
 * clusterIdentity.xml
 * core-site.xml
@@ -44,23 +44,22 @@ ms.locfileid: "65203706"
 * yarn-site.xml
 * server.properties（kafka-broker 配置）
 
-有关在创建时在 HDInsight 群集上安装其他组件的信息，请参阅[自定义 HDInsight 群集使用脚本操作 (Linux)](hdinsight-hadoop-customize-cluster-linux.md)。
+有关在创建时在 HDInsight 群集上安装其他组件的信息，请参阅[使用脚本操作自定义 HDInsight 群集 (Linux)](hdinsight-hadoop-customize-cluster-linux.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* 如果使用 PowerShell，则需要[Az 模块](https://docs.microsoft.com/powershell/azure/overview)。
+* 如果使用 PowerShell，需要安装 [Az 模块](https://docs.microsoft.com/powershell/azure/overview)。
 
 ## <a name="use-azure-powershell"></a>使用 Azure PowerShell
 
 以下 PowerShell 代码将自定义 [Apache Hive](https://hive.apache.org/) 配置：
 
 > [!IMPORTANT]  
-> 将参数`Spark2Defaults`可能需要用于[添加 AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue)。 可以将空值传递给该参数，如下面的代码示例中所示。
-
+> 参数 `Spark2Defaults` 可能需要与 [Add-AzHDInsightConfigValues](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue) 一起使用。 你可以向参数传递空值，如以下代码示例中所示。
 
 ```powershell
 # hive-site.xml configuration
-$hiveConfigValues = @{ "hive.metastore.client.socket.timeout"="90" }
+$hiveConfigValues = @{ "hive.metastore.client.socket.timeout"="90s" }
 
 $config = New-AzHDInsightClusterConfig `
     | Set-AzHDInsightDefaultStorage `
@@ -84,19 +83,12 @@ New-AzHDInsightCluster `
 
 可在[附录](#appendix-powershell-sample)中找到完整的有效 PowerShell 脚本。
 
-**验证更改：**
+**若要验证更改，请执行以下操作：**
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 单击左侧菜单中的“HDInsight 群集”。 如果看不到该群集，请先单击“所有服务”。
-3. 单击刚使用 PowerShell 脚本创建的群集。
-4. 在边栏选项卡的顶部单击“仪表板”以打开 Ambari UI。
-5. 在左侧菜单中，单击“Hive”。
-6. 在“摘要”中单击“HiveServer2”。
-7. 单击“配置”选项卡。
-8. 在左侧菜单中，单击“Hive”。
-9. 单击“高级”选项卡。
-10. 向下滚动，并展开“高级 hive-site”。
-11. 在本部分中查找 **hive.metastore.client.socket.timeout**。
+1. 导航至 `https://CLUSTERNAME.azurehdinsight.net/`，其中 `CLUSTERNAME` 是群集的名称。
+1. 从左侧菜单中，导航到“Hive”**** > “配置”**** > “高级”****。
+1. 展开“高级 hive-site”****。
+1. 找到 **hive.metastore.client.socket.timeout** 并确认该值为 **90s**。
 
 下面是有关自定义其他配置文件的更多示例：
 
@@ -115,10 +107,12 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 ```
 
 ## <a name="use-net-sdk"></a>使用 .NET SDK
-请参阅[使用 .NET SDK 在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-bootstrap)。
+
+请参阅[用于 .NET 的 Azure HDInsight SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)。
 
 ## <a name="use-resource-manager-template"></a>使用 Resource Manager 模板
-可在 Resource Manager 模板中使用 Bootstrap：
+
+可以在 Resource Manager 模板中使用 bootstrap：
 
 ```json
 "configurations": {
@@ -130,47 +124,45 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 }
 ```
 
-![HDInsight Hadoop 自定义群集 Bootstrap Azure 资源管理器模板](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
+![Hadoop 自定义群集启动 Azure 资源管理器模板](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
+
+spark2-defaults 中用于切换配置的示例资源管理器模板代码片段会定期清除存储中的事件日志。  
+
+```json
+"configurations": {
+    "spark2-defaults": {
+        "spark.history.fs.cleaner.enabled": "true",
+        "spark.history.fs.cleaner.interval": "7d",
+        "spark.history.fs.cleaner.maxAge": "90d"
+    }
+}
+```
 
 ## <a name="see-also"></a>另请参阅
-* [在 HDInsight 中创建 Apache Hadoop 群集][hdinsight-provision-cluster]提供了有关如何使用其他自定义选项创建 HDInsight 群集的说明。
-* [为 HDInsight 开发脚本操作脚本][hdinsight-write-script]
-* [在 HDInsight 群集上安装并使用 Apache Spark][hdinsight-install-spark]
+
+* [在 HDInsight 中创建 Apache Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)提供了有关如何使用其他自定义选项创建 HDInsight 群集的说明。
+* [为 HDInsight 开发脚本操作脚本](hdinsight-hadoop-script-actions-linux.md)
+* [在 HDInsight 群集上安装并使用 Apache Spark](spark/apache-spark-jupyter-spark-sql-use-portal.md)
 * [在 HDInsight 群集上安装并使用 Apache Giraph](hdinsight-hadoop-giraph-install.md)。
-
-[hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
-[hdinsight-write-script]: hdinsight-hadoop-script-actions-linux.md
-[hdinsight-provision-cluster]: hdinsight-hadoop-provision-linux-clusters.md
-[powershell-install-configure]: /powershell/azureps-cmdlets-docs
-
-
-[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "群集创建过程中的阶段"
 
 ## <a name="appendix-powershell-sample"></a>附录：PowerShell 示例
 
-此 PowerShell 脚本创建的 HDInsight 群集，自定义 Hive 设置。 确保输入的值`$nameToken`， `$httpPassword`，和`$sshPassword`。
-
-> [!IMPORTANT]  
-> 值`DefaultStorageAccount`，并`DefaultStorageContainer`不会返回从[Get AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster)时[安全传输](../storage/common/storage-require-secure-transfer.md)的存储帐户上启用。
-
-> [!WARNING]  
-> 存储帐户类型`BlobStorage`不能用于 HDInsight 群集。
-
+此 PowerShell 脚本创建一个 HDInsight 群集并自定义 Hive 设置。 请确保为 `$nameToken`、`$httpPassword` 和 `$sshPassword` 输入值。
 
 ```powershell
 ####################################
 # Set these variables
 ####################################
 #region - used for creating Azure service names
-$nameToken = "<ENTER AN ALIAS>" 
+$nameToken = "<ENTER AN ALIAS>"
 #endregion
 
 #region - cluster user accounts
 $httpUserName = "admin"  #HDInsight cluster username
-$httpPassword = '<ENTER A PASSWORD>' 
+$httpPassword = '<ENTER A PASSWORD>'
 
 $sshUserName = "sshuser" #HDInsight ssh user name
-$sshPassword = '<ENTER A PASSWORD>' 
+$sshPassword = '<ENTER A PASSWORD>'
 #endregion
 
 ####################################
@@ -222,6 +214,8 @@ New-AzStorageAccount `
     -Kind StorageV2 `
     -EnableHttpsTrafficOnly 1
 
+# Note: Storage account kind BlobStorage cannot be used as primary storage.
+
 $defaultStorageAccountKey = (Get-AzStorageAccountKey `
                                 -ResourceGroupName $resourceGroupName `
                                 -Name $defaultStorageAccountName)[0].Value
@@ -237,7 +231,7 @@ New-AzStorageContainer `
 ####################################
 # Create a configuration object
 ####################################
-$hiveConfigValues = @{"hive.metastore.client.socket.timeout"="90"}
+$hiveConfigValues = @{"hive.metastore.client.socket.timeout"="90s"}
 
 $config = New-AzHDInsightClusterConfig `
     | Set-AzHDInsightDefaultStorage `

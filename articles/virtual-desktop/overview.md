@@ -1,27 +1,28 @@
 ---
-title: 什么是 Windows 虚拟桌面预览版？  - Azure
-description: Windows 虚拟桌面预览版的概述。
+title: 什么是 Windows 虚拟桌面？ - Azure
+description: Windows 虚拟桌面的概述。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 05/31/2019
+ms.date: 07/10/2020
 ms.author: helohr
-ms.openlocfilehash: 296ea271e88dfbbd91b901dc1b24d49fc31c139e
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+manager: lizross
+ms.openlocfilehash: 473e3d52b1757faebd60c14966b425e9390a2685
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476729"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248605"
 ---
-# <a name="what-is-windows-virtual-desktop-preview"></a>什么是 Windows 虚拟桌面预览版？ 
+# <a name="what-is-windows-virtual-desktop"></a>什么是 Windows 虚拟桌面？ 
 
-Windows 虚拟桌面现已推出公共预览版，它是一个在云中运行的桌面和应用虚拟化服务。
+Windows 虚拟桌面是在云中运行的桌面和应用虚拟化服务。
 
 下面是在 Azure 中运行 Windows 虚拟桌面时可以执行的操作：
 
 * 设置多会话 Windows 10 部署，使整个 Windows 10 操作系统获得可伸缩性
-* 虚拟化 Office 365 ProPlus，并将其优化为可在多用户虚拟方案中运行
+* 虚拟化 Microsoft 365 应用企业版，并对其进行优化，使其可在多用户虚拟场景中运行
 * 为 Windows 7 虚拟桌面提供免费的扩展安全更新
 * 将现有的远程桌面服务 (RDS) 和 Windows Server 桌面与应用迁移到任何计算机
 * 虚拟化桌面和应用
@@ -29,9 +30,11 @@ Windows 虚拟桌面现已推出公共预览版，它是一个在云中运行的
 
 ## <a name="introductory-video"></a>介绍性视频
 
-在以下视频中，Scott Manchester 演示了 Windows 虚拟桌面的一些功能：
+通过此视频了解 Windows 虚拟桌面、它的独特之处及其新增功能：
 
-<br></br><iframe src="https://www.youtube-nocookie.com/embed/30dOLcZ4_9U" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
+<br></br><iframe src="https://www.youtube.com/embed/NQFtI3JLtaU" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
+
+有关 Windows 虚拟桌面的更多视频，请参阅[我们的播放列表](https://www.youtube.com/watch?v=NQFtI3JLtaU&list=PLXtHYVsvn_b8KAKw44YUpghpD6lg-EHev)。
 
 ## <a name="key-capabilities"></a>关键功能
 
@@ -62,29 +65,31 @@ Windows 虚拟桌面现已推出公共预览版，它是一个在云中运行的
 
 我们计划添加对以下操作系统的支持，因此请确保根据所要部署的桌面和应用，为用户提供[相应的许可证](https://azure.microsoft.com/pricing/details/virtual-desktop/)：
 
-|操作系统|所需的许可证|
+|OS|所需的许可证|
 |---|---|
-|Windows 10 Enterprise 多会话或 Windows 10 Enterprise|Microsoft 365 E3、E5、A3、A5、F1、Business<br>Windows E3、E5、A3、A5|
-|Windows 7 Enterprise |Microsoft 365 E3、E5、A3、A5、F1、Business<br>Windows E3、E5、A3、A5|
+|Windows 10 Enterprise 多会话或 Windows 10 Enterprise|Microsoft 365 E3、E5、A3、A5、F3、商业高级版<br>Windows E3、E5、A3、A5|
+|Windows 7 Enterprise |Microsoft 365 E3、E5、A3、A5、F3、商业高级版<br>Windows E3、E5、A3、A5|
 |Windows Server 2012 R2、2016、2019|附带软件保障的 RDS 客户端访问许可证 (CAL)|
 
 基础结构需要满足以下要求才能支持 Windows 虚拟桌面：
 
-* 一个 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
-* 一个与 Azure Active Directory 同步的 Windows Server Active Directory。 可通过以下方式满足此要求：
-  * Azure AD Connect
-  * Azure AD 域服务
+* 一个 [Azure Active Directory](/azure/active-directory/)
+* 一个与 Azure Active Directory 同步的 Windows Server Active Directory。 可以通过以下方式之一对其进行配置：
+  * Azure AD Connect（适用于混合组织）
+  * Azure AD 域服务（适用于混合或云组织）
 * 一个包含虚拟网络的 Azure 订阅，该虚拟网络包含或已连接到 Windows Server Active Directory
   
 为 Windows 虚拟桌面创建的 Azure 虚拟机必须：
 
-* [已加入标准域](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison)，或[已加入混合 AD](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)。 虚拟机不能加入 Azure AD。
-* 运行以下[受支持的 OS 映像](#supported-virtual-machine-os-image)之一。
+* [已加入标准域](../active-directory-domain-services/active-directory-ds-comparison.md)，或[已加入混合 AD](../active-directory/devices/hybrid-azuread-join-plan.md)。 虚拟机不能加入 Azure AD。
+* 运行以下[受支持的 OS 映像](#supported-virtual-machine-os-images)之一。
 
 >[!NOTE]
 >如需 Azure 订阅，可以[注册一个月免费试用版](https://azure.microsoft.com/free/)。 如果使用免费试用版的 Azure，则应使用 Azure AD 域服务来使 Windows Server Active Directory 与 Azure Active Directory 保持同步。
 
-Windows 虚拟桌面包括交付给用户的 Windows 桌面和应用，以及由 Microsoft 作为服务托管在 Azure 上的管理解决方案。 在公共预览期，桌面和应用可以部署在任何 Azure 区域中的虚拟机 (VM) 上，这些 VM 的管理解决方案和数据将驻留在美国（美国东部 2 区域）。 因此，在公共预览期测试服务时，数据可能会传输到美国。 开始推出正式版后，我们即会将管理解决方案和数据的本地化工作扩展到所有 Azure 区域。
+有关应取消阻止以使 Windows 虚拟桌面部署按预期工作的 URL 列表，请参阅[安全 URL 列表](safe-url-list.md)。
+
+Windows 虚拟桌面包括交付给用户的 Windows 桌面和应用，以及由 Microsoft 作为服务托管在 Azure 上的管理解决方案。 桌面和应用可以部署在任何 Azure 区域中的虚拟机 (VM) 上，这些 VM 的管理解决方案和数据将驻留在美国。 这可能会导致将数据传输到美国。
 
 为获得最佳性能，请确保网络满足以下要求：
 
@@ -96,23 +101,51 @@ Windows 虚拟桌面包括交付给用户的 Windows 桌面和应用，以及由
 
 以下远程桌面客户端支持 Windows 虚拟桌面：
 
-* [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
-* [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
+* [Windows 桌面](connect-windows-7-10.md)
+* [Web](connect-web.md)
+* [macOS](connect-macos.md)
+* [iOS](connect-ios.md)
+* [Android（预览）](connect-android.md)
 
-## <a name="supported-virtual-machine-os-image"></a>受支持的虚拟机 OS 映像
+> [!IMPORTANT]
+> Windows 虚拟桌面不支持 RemoteApp 和桌面连接 (RADC) 客户端或远程桌面连接 (MSTSC) 客户端。
 
-Windows 虚拟桌面目前支持以下 OS 映像：
+> [!IMPORTANT]
+> Windows 虚拟桌面目前不支持 Windows 应用商店中的远程桌面客户端。 将来的版本会添加对此客户端的支持。
 
-* Windows 10 Enterprise 多会话
+若要详细了解必须取消阻止才能使用远程客户端的 URL，请参阅[安全 URL 列表](safe-url-list.md)。
+
+## <a name="supported-virtual-machine-os-images"></a>受支持的虚拟机 OS 映像
+
+Windows 虚拟桌面目前支持以下 x64 操作系统映像：
+
+* Windows 10 Enterprise 多会话版本 1809 或更高版本
+* Windows 10 Enterprise 版本 1809 或更高版本
+* Windows 7 Enterprise
+* Windows Server 2019
 * Windows Server 2016
+* Windows Server 2012 R2
 
-## <a name="provide-feedback"></a>提供反馈
+Windows 虚拟桌面不支持 x86（32 位）、Windows 10 企业版 N 或 Windows 10 企业版 KN 操作系统映像。 由于扇区大小限制，Windows 7 也不支持在托管 Azure 存储上托管的任何基于 VHD 或 VHDX 的配置文件解决方案。
 
-请访问 [Windows 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)，与产品团队和活跃的社区成员共同探讨 Windows 虚拟桌面服务。 目前我们不会受理 Windows 虚拟桌面预览版的支持案例。
+可用的自动化和部署选项取决于所选的 OS 和版本，如下表所示： 
+
+|操作系统|Azure 映像库|手动 VM 部署|Azure 资源管理器模板集成|在 Azure 市场中预配主机池|
+|--------------------------------------|:------:|:------:|:------:|:------:|
+|Windows 10 多会话版本 1903|是|是|是|是|
+|Windows 10 多会话版本 1809|是|是|否|否|
+|Windows 10 Enterprise 版本 1903|是|是|是|是|
+|Windows 10 Enterprise 版本 1809|是|是|否|否|
+|Windows 7 Enterprise|是|是|否|否|
+|Windows Server 2019|是|是|否|否|
+|Windows Server 2016|是|是|是|是|
+|Windows Server 2012 R2|是|是|否|否|
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始使用本服务，需要创建一个租户。 若要详细了解如何创建租户，请继续学习有关创建租户的教程。
+如果使用的是 Windows 虚拟桌面 2019 秋季版，则可从[在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)教程入门。
+
+如果使用的是 Windows 虚拟桌面 2020 春季版，则需要改为创建主机池。 若要开始学习，请访问下面的教程。
 
 > [!div class="nextstepaction"]
-> [在 Windows 虚拟桌面预览版中创建租户](tenant-setup-azure-active-directory.md)
+> [使用 Azure 门户创建主机池](create-host-pools-azure-marketplace.md)

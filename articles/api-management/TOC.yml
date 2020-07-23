@@ -6,6 +6,8 @@
       href: api-management-key-concepts.md
     - name: API 管理功能可用性
       href: api-management-features.md
+    - name: 管理在 AKS 中部署的微服务
+      href: api-management-kubernetes.md
 - name: 快速入门
   expanded: true
   items:
@@ -32,13 +34,15 @@
     - name: 8 - 添加多个版本
       href: api-management-get-started-publish-versions.md
     - name: 9 - 自定义开发人员门户
-      href: api-management-customize-styles.md
+      href: api-management-howto-developer-portal-customize.md
 - name: 示例
   items:
     - name: 策略
-      href: policy-samples.md
+      href: ./policies/index.md
     - name: Azure PowerShell
       href: powershell-samples.md
+    - name: Azure Policy 内置策略定义
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 术语
@@ -49,16 +53,28 @@
           href: api-management-howto-policies.md
         - name: 策略参考索引
           href: api-management-policies.md
-    - name: Subscriptions
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
+        - name: 内置安全控件
+          href: api-management-security-controls.md
+    - name: 订阅
       href: api-management-subscriptions.md
+    - name: 版本
+      href: api-management-versions.md
+    - name: 修订
+      href: api-management-revisions.md
     - name: 使用自动化进行管理
       href: automation-manage-api-management.md
     - name: 错误处理。
       href: api-management-error-handling-policies.md
     - name: API 导入限制
       href: api-management-api-import-restrictions.md
-    - name: Azure 的常见安全属性
-      href: api-management-security-attributes.md
+    - name: 自托管网关概述
+      href: self-hosted-gateway-overview.md
+    - name: 可观察性
+      href: observability.md
 - name: 操作指南
   items:
     - name: 定义 API
@@ -91,6 +107,18 @@
           href: api-management-howto-autoscale.md
         - name: 配置自定义域
           href: configure-custom-domain.md
+        - name: 部署到多个 Azure 区域
+          href: api-management-howto-deploy-multi-region.md
+        - name: 预配自托管网关
+          href: api-management-howto-provision-self-hosted-gateway.md
+        - name: 将自托管网关部署到 Azure Kubernetes 服务
+          href: how-to-deploy-self-hosted-gateway-azure-kubernetes-service.md
+        - name: 将自托管网关部署到 Kubernetes
+          href: how-to-deploy-self-hosted-gateway-kubernetes.md
+        - name: 将自托管网关部署到 Docker
+          href: how-to-deploy-self-hosted-gateway-docker.md
+        - name: 为自托管网关配置自定义域
+          href: api-management-howto-configure-custom-domain-gateway.md
     - name: 缓存
       items:
         - name: 添加缓存以提升性能
@@ -107,6 +135,8 @@
       items:
         - name: 使用 Azure AD 保护 API
           href: api-management-howto-protect-backend-with-aad.md
+        - name: 通过 Azure AD B2C 保护 SPA 后端 API
+          href: howto-protect-backend-frontend-azure-ad-b2c.md
         - name: 连接到虚拟网络
           href: api-management-using-with-vnet.md
         - name: 连接到内部虚拟网络
@@ -121,12 +151,8 @@
           href: api-management-howto-manage-protocols-ciphers.md
     - name: 自定义开发人员体验
       items:
-        - name: 访问和自定义新的开发人员门户
+        - name: 了解开发人员门户
           href: api-management-howto-developer-portal.md
-        - name: 修改页面内容和布局
-          href: api-management-modify-content-layout.md
-        - name: 使用模板自定义系统页面
-          href: api-management-developer-portal-templates.md
         - name: 使用 Azure AD 进行身份验证
           href: api-management-howto-aad.md
         - name: 使用 Azure AD B2C 进行身份验证
@@ -137,6 +163,34 @@
           href: api-management-howto-configure-notifications.md
         - name: 启动控制台 OAuth 支持
           href: api-management-howto-oauth2.md
+        - name: 旧门户 - 自定义门户
+          href: api-management-customize-styles.md
+        - name: 旧门户 - 修改页面和布局
+          href: api-management-modify-content-layout.md
+        - name: 旧门户 - 通过模板进行自定义
+          href: api-management-developer-portal-templates.md
+    - name: 旧门户模板
+      items:
+        - name: 数据模型参考
+          href: api-management-template-data-model-reference.md
+        - name: 页面控件
+          href: api-management-page-controls.md
+        - name: 模板
+          href: api-management-developer-portal-templates-reference.md
+        - name: API
+          href: api-management-api-templates.md
+        - name: Products
+          href: api-management-product-templates.md
+        - name: 应用程序
+          href: api-management-application-templates.md
+        - name: 问题
+          href: api-management-issue-templates.md
+        - name: 用户配置文件
+          href: api-management-user-profile-templates.md
+        - name: 页
+          href: api-management-page-templates.md
+        - name: 模板资源
+          href: api-management-template-resources.md
     - name: 定义策略
       items:
         - name: 设置或编辑策略
@@ -165,38 +219,22 @@
           href: api-management-cross-domain-policies.md
         - name: 转换策略
           href: api-management-transformation-policies.md
-    - name: 模板参考
-      items:
-        - name: 模板
-          href: api-management-developer-portal-templates-reference.md
-        - name: API
-          href: api-management-api-templates.md
-        - name: Products
-          href: api-management-product-templates.md
-        - name: 应用程序
-          href: api-management-application-templates.md
-        - name: 问题
-          href: api-management-issue-templates.md
-        - name: 用户配置文件
-          href: api-management-user-profile-templates.md
-        - name: 页
-          href: api-management-page-templates.md
-        - name: 模板资源
-          href: api-management-template-resources.md
-    - name: 数据模型参考
-      href: api-management-template-data-model-reference.md
-    - name: 页面控件
-      href: api-management-page-controls.md
     - name: 在生产环境中进行管理
       items:
+        - name: 将 API 导出到 Power Platform
+          href: export-api-power-platform.md
         - name: 管理组
           href: api-management-howto-create-groups.md
-        - name: 部署到多个 Azure 区域
-          href: api-management-howto-deploy-multi-region.md
+        - name: 检索 IP 地址
+          href: api-management-howto-ip-addresses.md
         - name: 将事件记录到 Azure 事件中心
           href: api-management-howto-log-event-hubs.md
         - name: 使用 Azure Application Insights 记录请求
           href: api-management-howto-app-insights.md
+        - name: 为自托管网关配置云指标和日志
+          href: how-to-configure-cloud-metrics-logs.md
+        - name: 为自托管网关配置本地指标和日志
+          href: how-to-configure-local-metrics-logs.md
         - name: 使用备份/还原设置灾难恢复
           href: api-management-howto-disaster-recovery-backup-restore.md
         - name: 管理用户帐户
@@ -205,6 +243,8 @@
           href: api-management-configuration-repository-git.md
         - name: 使用基于角色的访问控制
           href: api-management-role-based-access-control.md
+        - name: 迁移 API 管理实例
+          href: api-management-howto-migrate.md
         - name: 将托管标识用于 Azure 资源
           href: api-management-howto-use-managed-service-identity.md
         - name: 与 Service Fabric 集成
@@ -213,10 +253,10 @@
               href: ../service-fabric/service-fabric-api-management-overview.md
             - name: 教程
               href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure PowerShell
-      href: /powershell/azure/overview
+      href: /powershell/module/az.apimanagement/?view=azps-2.6.0
     - name: REST
       href: /rest/api/apimanagement/
     - name: REST（原始）
@@ -237,11 +277,13 @@
       href: 'https://aka.ms/apimwish'
     - name: 视频
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=api-management'
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt'
-    - name: 堆栈溢出
+    - name: Microsoft Q&A 问题页面
+      href: /answers/topics/azure-api-management.html
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-api-management'
     - name: API 设计指南
-      href: 'https://docs.microsoft.com/azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json'
+      href: /azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json
     - name: API 实现指南
-      href: 'https://docs.microsoft.com/azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json'
+      href: /azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json
+    - name: 排查“未能更新主机名”错误
+      href: api-management-troubleshoot-cannot-add-custom-domain.md

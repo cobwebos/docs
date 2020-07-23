@@ -1,27 +1,23 @@
 ---
-title: 使用数据工厂从 MongoDB 移动数据 | Microsoft Docs
+title: 从 MongoDB 移动数据
 description: 了解如何使用 Azure 数据工厂从 MongoDB 数据库移动数据。
 services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: craigg
-ms.assetid: 10ca7d9a-7715-4446-bf59-2d2876584550
+ms.author: jingwang
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/13/2018
-ms.author: jingwang
-robots: noindex
-ms.openlocfilehash: 433a8b2f9fb1f4c4599afbb807e9270992a98a52
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60824178"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79281335"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 移动数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-on-premises-mongodb-connector.md)
 > * [版本 2（当前版本）](../connector-mongodb.md)
 
@@ -33,10 +29,10 @@ ms.locfileid: "60824178"
 
 可以将数据从本地 MongoDB 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 MongoDB 数据存储移至其他数据存储，而不支持将数据从其他数据存储移至 MongoDB 数据存储。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 若要使 Azure 数据工厂服务能够连接到本地 MongoDB 数据库，必须安装以下组件：
 
-- 支持的 MongoDB 版本为：2.4、2.6、3.0、3.2、3.4 和 3.6。
+- 支持的 MongoDB 版本为：2.4、2.6、3.0、3.2、3.4 和3.6。
 - 在托管数据库的同一计算机上安装数据管理网关，或安装在不同计算机上，以避免与数据库争用资源。 数据管理网关是一种以安全和托管的方式将本地数据源连接到云服务的软件。 有关数据管理网关的详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。 有关设置网关以便数据管道移动数据的分步说明，请参阅[将数据从本地移到云](data-factory-move-data-between-onprem-and-cloud.md)一文。
 
     安装网关时，会自动安装用于连接到 MongoDB的 Microsoft MongoDB ODBC 驱动程序。
@@ -47,15 +43,15 @@ ms.locfileid: "60824178"
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 MongoDB 数据存储移动数据。
 
-创建管道的最简单方法是使用  复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+创建管道的最简单方法是使用**** 复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-还可以使用以下工具来创建管道：Azure 门户  、Visual Studio  、Azure PowerShell  、Azure 资源管理器模板  、.NET API  和 REST API  。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API**和**REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
-1. 创建链接服务可将输入和输出数据存储链接到数据工厂  。
-2. 创建数据集以表示复制操作的输入和输出数据  。
-3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出  。
+1. 创建**链接服务**以将输入和输出数据存储链接到数据工厂。
+2. 创建用于表示复制操作的输入和输出数据的**数据集**。
+3. 创建包含复制活动的**管道**，该活动将数据集作为输入，并将数据集作为输出。
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于从本地 MongoDB 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 MongoDB 复制到 Azure Blob](#json-example-copy-data-from-mongodb-to-azure-blob) 部分。
 
@@ -64,11 +60,11 @@ ms.locfileid: "60824178"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供 **OnPremisesMongoDB** 链接服务专属 JSON 元素的说明。
 
-| 属性 | 说明 | 必选 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | type |type 属性必须设置为：**OnPremisesMongoDb** |是 |
 | server |MongoDB 服务器的 IP 地址或主机名。 |是 |
-| port |MongoDB 服务器用于侦听客户端连接的 TCP 端口。 |可选，默认值：27017 |
+| port |MongoDB 服务器用于侦听客户端连接的 TCP 端口。 |（可选）默认值：27017 |
 | authenticationType |Basic 或 Anonymous。 |是 |
 | username |用于访问 MongoDB 的用户帐户。 |是（如果使用基本身份验证）。 |
 | password |用户密码。 |是（如果使用基本身份验证）。 |
@@ -80,34 +76,34 @@ ms.locfileid: "60824178"
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
 
-每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息  。 **MongoDbCollection** 数据集类型的 typeProperties 节具有以下属性：
+每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息****。 **MongoDbCollection** 数据集类型的 typeProperties 节具有以下属性：
 
-| 属性 | 说明 | 需要 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | collectionName |MongoDB 数据库中集合的名称。 |是 |
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 有关可用于定义活动的节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
 
-另一方面，可用于此活动的 **typeProperties** 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
+另一方面，活动的 " **typeProperties** " 部分中的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
 
 源为 **MongoDbSource** 类型时，可在 typeProperties 节使用以下属性：
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| Property | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| query |使用自定义查询读取数据。 |SQL-92 查询字符串。 例如，select * from MyTable。 |否（如果指定了**数据集**的 **collectionName**） |
+| 查询 |使用自定义查询读取数据。 |SQL-92 查询字符串。 例如：select * from MyTable。 |否（如果指定了**数据集**的 **collectionName**） |
 
 
 
 ## <a name="json-example-copy-data-from-mongodb-to-azure-blob"></a>JSON 示例：将数据从 MongoDB 复制到 Azure Blob
-此示例提供示例 JSON 定义，可使用这些定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它演示如何将数据从本地 MongoDB 复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
+此示例提供示例 JSON 定义，可用于通过使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 它演示如何将数据从本地 MongoDB 复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
 
 此示例具有以下数据工厂实体：
 
 1. [OnPremisesMongoDb](#linked-service-properties) 类型的链接服务。
-2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)类型的链接服务。
 3. [MongoDbCollection](#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)类型的输出[数据集](data-factory-create-datasets.md)。
 5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [MongoDbSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
 此示例每小时将数据从 MongoDB 数据库中的查询结果复制到 blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
@@ -151,7 +147,7 @@ ms.locfileid: "60824178"
 }
 ```
 
-**MongoDB 输入数据集：** 设置“external”：true 将告知数据工厂服务：表在数据工厂外部且不由数据工厂中的活动生成。
+**MongoDB 输入数据集：** 设置“external”: ”true”将告知数据工厂服务：表在数据工厂外部且不由数据工厂中的活动生成。
 
 ```json
 {
@@ -173,7 +169,7 @@ ms.locfileid: "60824178"
 
 **Azure Blob 输出数据集：**
 
-数据将写入到新 blob，每隔一小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
+数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```json
 {
@@ -295,21 +291,21 @@ Azure 数据工厂服务通过使用 MongoDB 集合中最新的 100 个文档来
 
 | MongoDB 类型 | .NET Framework 类型 |
 | --- | --- |
-| Binary |Byte[] |
-| Boolean |Boolean |
+| 二进制 |Byte[] |
+| 布尔 |布尔 |
 | Date |DateTime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |String |
-| String |String |
+| ObjectID |字符串 |
+| 字符串 |String |
 | UUID |Guid |
 | Object |重新标准化为平展列，以“_”作为嵌套分隔符 |
 
 > [!NOTE]
 > 若要了解对使用虚拟表的数组的支持，请参阅以下[支持使用虚拟表的复杂类型](#support-for-complex-types-using-virtual-tables)一节。
 
-目前不支持以下 MongoDB 数据类型：DBPointer、JavaScript、最大/最小键、正则表达式、符号、时间戳、未定义
+目前，不支持以下 MongoDB 数据类型：DBPointer、JavaScript、Max/Min key、Regular Expression、Symbol、Timestamp、Undefined
 
 ## <a name="support-for-complex-types-using-virtual-tables"></a>支持使用虚拟表的复杂类型
 Azure 数据工厂使用内置的 ODBC 驱动程序连接到 MongoDB 数据库，并从中复制数据。 对于数组或文档间不同类型的对象等复杂类型，该驱动程序会将数据重新标准化到相应虚拟表中。 具体而言，如果表中包含此类列，该驱动程序会生成以下虚拟表：
@@ -326,15 +322,15 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 MongoDB 数据库�
 
 | _id | 客户名称 | 发票 | 服务级别 | 评级 |
 | --- | --- | --- | --- | --- |
-| 1111 |ABC |[{invoice_id:”123”, item:”toaster”, price:”456”, discount:”0.2”}, {invoice_id:”124”, item:”oven”, price: ”1235”, discount: ”0.2”}] |银牌服务 |[5,6] |
-| 2222 |XYZ |[{invoice_id:”135”, item:”fridge”, price: ”12543”, discount: ”0.0”}] |金牌服务 |[1,2] |
+| 1111 |ABC |[{invoice_id:”123”, item:”toaster”, price:”456”, discount:”0.2”}, {invoice_id:”124”, item:”oven”, price: ”1235”, discount: ”0.2”}] |Silver |[5,6] |
+| 2222 |XYZ |[{invoice_id:”135”, item:”fridge”, price: ”12543”, discount: ”0.0”}] |Gold |[1,2] |
 
 该驱动程序会生成多个虚拟表来表示此单个表。 第一个虚拟表是名为“ExampleTable”的基表，如下所示。 基表包含原始表中的所有数据，但已省略数组中的数据，这些数据会在虚拟表中展开。
 
 | _id | 客户名称 | 服务级别 |
 | --- | --- | --- |
-| 1111 |ABC |银牌服务 |
-| 2222 |XYZ |金牌服务 |
+| 1111 |ABC |Silver |
+| 2222 |XYZ |Gold |
 
 下表显示在示例中表示原始数组的虚拟表。 这些表包含以下项：
 
@@ -355,9 +351,9 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 MongoDB 数据库�
 | _id | ExampleTable_Ratings_dim1_idx | ExampleTable_Ratings |
 | --- | --- | --- |
 | 1111 |0 |5 |
-| 1111 |第 |6 |
-| 2222 |0 |第 |
-| 2222 |第 |2 |
+| 1111 |1 |6 |
+| 2222 |0 |1 |
+| 2222 |1 |2 |
 
 ## <a name="map-source-to-sink-columns"></a>将源映射到接收器列
 要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。

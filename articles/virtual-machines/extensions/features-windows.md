@@ -1,49 +1,48 @@
 ---
-title: 适用于 Windows 的 Azure VM 扩展和功能 | Microsoft Docs
-description: 了解可为 Azure 虚拟机提供哪些扩展，这些虚拟机扩展按它们提供或改进的功能进行分组。
+title: 适用于 Windows 的 Azure VM 扩展和功能
+description: 了解可为 Azure 虚拟机提供的扩展，这些虚拟机扩展按它们提供或改进的功能进行分组。
 services: virtual-machines-windows
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 999d63ee-890e-432e-9391-25b3fc6cde28
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
-ms.author: roiyz
+ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ce13f053c2adee6a9a347a4162b60cc6d6b40eda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0ff4fb08b1e627184760bb0a33797b2a324d4c55
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66160270"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045903"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>适用于 Windows 的虚拟机扩展和功能
 
 Azure 虚拟机 (VM) 扩展是小型应用程序，可在 Azure VM 上提供部署后配置和自动化任务。 例如，如果某个虚拟机需要安装软件、防病毒保护或运行脚本，便可以使用 VM 扩展。 可以使用 Azure CLI、PowerShell、Azure 资源管理器模板和 Azure 门户运行 Azure VM 扩展。 扩展可与新 VM 部署捆绑在一起，也可以针对任何现有系统运行。
 
-本文提供 VM 扩展的概述、使用 Azure VM 扩展的先决条件，以及有关如何检测、管理和删除 VM 扩展的指导。 本文提供的是概况信息，因为有许多 VM 扩展可用，每个扩展可能具有独特的配置。 可以在各个扩展特定的各个文档中找到扩展特定的详细信息。
+本文提供 VM 扩展的概述、使用 Azure VM 扩展的先决条件，以及有关如何检测、管理和删除 VM 扩展的指导。 本文提供的是概况信息，因为有许多 VM 扩展可用，每个扩展可能具有独特的配置。 扩展特定的详细信息可在每个特定于单个扩展的文档中找到。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="use-cases-and-samples"></a>用例和示例
 
 有许多不同的 Azure VM 扩展可用，每个都有特定用例。 示例包括：
 
-- 使用适用于 Windows 的 DSC 扩展将 PowerShell 所需状态配置应用到 VM。 有关详细信息，请参阅 [Azure 所需状态配置扩展](dsc-overview.md)。
-- 使用 Microsoft Monitoring Agent VM 扩展配置 VM 监视功能。 有关详细信息，请参阅[将 Azure Vm 连接到 Azure Monitor 日志](../../log-analytics/log-analytics-azure-vm-extension.md)。
-- 使用 Chef 配置 Azure VM。 有关详细信息，请参阅[使用 Chef 自动执行 Azure VM 部署](../windows/chef-automation.md)。
+- 使用适用于 Windows 的 DSC 扩展将 PowerShell 所需状态配置应用到 VM。 有关详细信息，请参阅 [Azure Desired State configuration extension](dsc-overview.md)（Azure Desired State Configuration 扩展）。
+- 使用 Log Analytics 代理 VM 扩展配置 VM 监视功能。 有关详细信息，请参阅[将 Azure VM 连接到 Azure Monitor 日志](../../log-analytics/log-analytics-azure-vm-extension.md)。
+- 使用 Chef 配置 Azure VM。 有关详细信息，请参阅[使用 Chef 自动执行 Azure VM 部署](../../chef/chef-automation.md)。
 - 使用 Datadog 扩展配置 Azure 基础结构监视功能。 有关详细信息，请参阅 [Datadog 博客](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)。
 
 
-除了进程特定的扩展外，“自定义脚本”扩展也可用于 Windows 和 Linux 虚拟机。 适用于 Windows 的自定义脚本扩展允许在 VM 上运行任何 PowerShell 脚本。 在设计需要本机 Azure 工具无法提供的配置的 Azure 部署时，自定义脚本很有用。 有关详细信息，请参阅 [Windows VM 自定义脚本扩展](custom-script-windows.md)。
+除了进程特定的扩展外，自定义脚本扩展也可用于 Windows 和 Linux 虚拟机。 适用于 Windows 的自定义脚本扩展允许在 VM 上运行任何 PowerShell 脚本。 在设计需要本机 Azure 工具无法提供的配置的 Azure 部署时，自定义脚本很有用。 有关详细信息，请参阅 [Windows VM 自定义脚本扩展](custom-script-windows.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要处理 VM 上的扩展，需要安装 Azure Windows 代理。 有些单独的扩展附带先决条件，例如，有权访问资源或依赖项。
 
@@ -55,25 +54,25 @@ Azure VM 代理可管理 Azure VM 与 Azure 结构控制器之间的交互。 VM
 
 #### <a name="supported-agent-versions"></a>支持的代理版本
 
-为了尽量提供最佳体验，我们提供了精简版本的代理。 有关详细信息，请参阅[此文章](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。
+为了尽量提供最佳体验，我们提供了精简版本的代理。 有关详细信息，请参阅[此文章](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。
 
 #### <a name="supported-oses"></a>支持的 OS
 
-Windows 来宾代理在多个 OS 上运行，但是，扩展框架对扩展的 OS 施加限制。 有关详细信息，请参阅[此文章](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
+Windows 来宾代理在多个 OS 上运行，但是，扩展框架对扩展的 OS 施加限制。 有关详细信息，请参阅[此文章](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems
 )。
 
-某些扩展并非在所有 OS 上均受支持，可能会发出错误代码 51“不受支持的 OS”。 请查看相应的扩展文档来了解支持情况。
+某些扩展并非在所有 OS 上均受支持，可能会发出错误代码 51“不受支持的 OS”  。 请查看相应的扩展文档来了解支持情况。
 
 #### <a name="network-access"></a>网络访问
 
-从 Azure 存储扩展存储库下载扩展包，将扩展状态上传内容发布到 Azure 存储。 如果使用[受支持](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)版本的代理，则不需要允许对 VM 区域中 Azure 存储的访问，因为可以使用代理将通信重定向到 Azure 结构控制器，以进行代理通信。 如果使用不受支持的代理版本，则需要允许从 VM 对该区域中 Azure 存储的出站访问。
+从 Azure 存储扩展存储库下载扩展包，将扩展状态上传内容发布到 Azure 存储。 如果使用[受支持](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)版本的代理，则不需要允许访问 VM 区域中的 Azure 存储，因为可以使用代理将通信重定向到 Azure 结构控制器以进行代理通信（HostGAPlugin 功能通过专用 IP [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16) 上的特权通道工作）。 如果使用不受支持的代理版本，则需要允许从 VM 对该区域中 Azure 存储的出站访问。
 
 > [!IMPORTANT]
-> 如果已使用来宾防火墙阻止对 168.63.129.16 的访问，则不管采用上述哪种方法，扩展都会失败。
+> 如果已使用来宾防火墙或代理阻止对 168.63.129.16 的访问，则不管采用上述哪种方法，扩展都会失败  。 需要端口 80、443 和 32526。
 
-代理只可用于下载扩展包和报告状态。 例如，如果扩展安装需要从 GitHub 下载脚本（自定义脚本），或需要访问 Azure 存储（Azure 备份），则需要打开其他防火墙/网络安全组端口。 不同的扩展具有不同的要求，因为它们本身就是应用程序。 对于需要访问 Azure 存储的扩展，可以使用[存储](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)的 Azure NSG 服务标记来允许访问。
+代理只可用于下载扩展包和报告状态。 例如，如果扩展安装需要从 GitHub 下载脚本（自定义脚本），或需要访问 Azure 存储（Azure 备份），则需要打开其他防火墙/网络安全组端口。 不同的扩展具有不同的要求，因为它们本身就是应用程序。 对于需要访问 Azure 存储或 Azure Active Directory 的扩展，可以使用 [Azure NSG 服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)允许访问存储或 AzureActiveDirectory。
 
-Windows 来宾代理不提供用于重定向代理流量请求的代理服务器支持。
+Windows 来宾代理不支持通过代理服务器重定向代理流量请求，这意味着 Windows 来宾代理将依赖自定义代理（如果有）通过 IP 168.63.129.16 访问 Internet 或主机上的资源。
 
 ## <a name="discover-vm-extensions"></a>发现 VM 扩展
 
@@ -87,19 +86,19 @@ Get-AzVMExtensionImage | Select Type, Version
 
 ## <a name="run-vm-extensions"></a>运行 VM 扩展
 
-Azure VM 扩展在现有 VM 上运行，需要在已部署的 VM 上进行配置更改或恢复连接时，这很有用。 VM 扩展还可以与 Azure 资源管理器模板部署捆绑。 可将扩展与资源管理器模板配合使用来部署并配置 Azure VM，在部署后无需干预。
+Azure VM 扩展在现有 VM 上运行，需要在已部署的 VM 上进行配置更改或恢复连接时，这很有用。 VM 扩展还可以与 Azure Resource Manager 模板部署捆绑。 可将扩展与资源管理器模板配合使用来部署并配置 Azure VM，在部署后无需干预。
 
 可使用以下方法针对现有 VM 运行扩展。
 
 ### <a name="powershell"></a>PowerShell
 
-存在多个用于运行单个扩展的 PowerShell 命令。 若要查看列表，请使用 [Get-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-command) 并根据“扩展”筛选：
+存在多个用于运行单个扩展的 PowerShell 命令。 若要查看列表，请使用 [Get-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-command) 并根据“扩展”筛选： 
 
 ```powershell
 Get-Command Set-Az*Extension* -Module Az.Compute
 ```
 
-这会提供类似以下内容的输出：
+此命令的输出如下所示：
 
 ```powershell
 CommandType     Name                                          Version    Source
@@ -119,7 +118,7 @@ Cmdlet          Set-AzVMSqlServerExtension                    4.5.0      Az.Comp
 Cmdlet          Set-AzVmssDiskEncryptionExtension             4.5.0      Az.Compute
 ```
 
-以下示例使用自定义脚本扩展从 GitHub 存储库将脚本下载到目标虚拟机上，然后运行该脚本。 有关 VM 访问扩展的详细信息，请参阅[自定义脚本扩展概述](custom-script-windows.md)。
+以下示例使用自定义脚本扩展从 GitHub 存储库将脚本下载到目标虚拟机上，并运行该脚本。 有关自定义脚本扩展的详细信息，请参阅[自定义脚本扩展概述](custom-script-windows.md)。
 
 ```powershell
 Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
@@ -138,20 +137,20 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
     -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
 ```
 
-可以使用 `Set-AzVMExtension` 命令来启动任何 VM 扩展。 有关详细信息，请参阅 [Set-AzVMExtension 参考](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension)。
+`Set-AzVMExtension` 命令可用于启动任何 VM 扩展。 有关详细信息，请参阅 [Set-AzVMExtension 参考](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension)。
 
 
 ### <a name="azure-portal"></a>Azure 门户
 
-可通过 Azure 门户将 VM 扩展应用到现有 VM。 在门户中，依次选择该 VM、“扩展”、“添加”。 从可用扩展的列表中选择所需扩展，并按向导中的说明操作。
+可通过 Azure 门户将 VM 扩展应用到现有 VM。 在门户中，依次选择该 VM、“扩展”、“添加”   。 从可用扩展的列表中选择所需扩展，并按向导中的说明操作。
 
 以下示例演示如何从 Azure 门户安装 Microsoft 反恶意软件扩展。
 
 ![安装反恶意软件扩展](./media/features-windows/installantimalwareextension.png)
 
-### <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
+### <a name="azure-resource-manager-templates"></a>Azure Resource Manager 模板
 
-VM 扩展可添加到 Azure 资源管理器模板，并在部署模板的过程中执行。 使用模板部署扩展时，可以创建完全配置的 Azure 部署。 例如，以下 JSON 取自一个资源管理器模板，该模板会在每个 VM 上部署一组负载均衡的 VM、一个 Azure SQL 数据库，然后安装一个 .NET Core 应用程序。 VM 扩展负责安装软件。
+VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过程中执行。 使用模板部署扩展时，可以创建完全配置的 Azure 部署。 例如，以下 JSON 取自资源管理器模板，用于部署一组负载均衡的 Vm 和一个 Azure SQL 数据库，然后在每个 VM 上安装一个 .NET Core 应用程序。 VM 扩展负责安装软件。
 
 有关详细信息，请参阅完整的 [Resource Manager 模板](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)。
 
@@ -189,9 +188,9 @@ VM 扩展可添加到 Azure 资源管理器模板，并在部署模板的过程�
 
 ## <a name="secure-vm-extension-data"></a>保护 VM 扩展数据
 
-运行 VM 扩展时，可能需要包括敏感信息，例如凭据、存储帐户名称和存储帐户访问密钥。 许多 VM 扩展包括受保护的配置，该配置对数据进行加密并且仅在目标 VM 内才对数据进行解密。 每个扩展都有一个特定的受保护的配置架构，扩展特定的文档中详述了各个架构。
+运行 VM 扩展时，可能需要包括敏感信息，例如凭据、存储帐户名称和存储帐户访问密钥。 许多 VM 扩展包括受保护的配置，该配置对数据进行加密并且仅在目标 VM 内才对数据进行解密。 每个扩展都有特定的受保护配置架构，会在特定于扩展的文档中详细介绍每个配置架构。
 
-以下示例显示了适用于 Windows 的自定义脚本扩展的一个实例。 要执行的命令包含一组凭据。 在此示例中，不会加密要执行的命令：
+以下示例显示适用于 Windows 的自定义脚本扩展的实例。 要执行的命令包含一组凭据。 在此示例中，不会加密要执行的命令：
 
 ```json
 {
@@ -221,7 +220,7 @@ VM 扩展可添加到 Azure 资源管理器模板，并在部署模板的过程�
 }
 ```
 
-将“要执行的命令”属性移到“受保护的”配置可以保护执行字符串，如以下示例中所示：
+将“要执行的命令”属性移到“受保护的”配置可以保护执行字符串，如以下示例中所示   ：
 
 ```json
 {
@@ -253,6 +252,10 @@ VM 扩展可添加到 Azure 资源管理器模板，并在部署模板的过程�
 }
 ```
 
+在使用扩展的 Azure IaaS VM 上的证书平台中，可能会看到所有者为“Windows Azure CRP 证书生成器”  的证书。 在经典 RDFE VM 上，这些证书的使用者名称为 **_Windows Azure Service Management for Extensions_** 。
+
+这些证书保护了在传输扩展所使用的受保护设置（密码和其他凭据）期间 VM 与其主机之间的通信。 证书由 Azure 结构控制器生成并传递给 VM 代理。 如果每天都停止并启动 VM，则结构控制器可能会创建新证书。 此证书存储在计算机的“个人”证书存储中。 可以删除这些证书。 VM 代理会根据需要重新创建证书。
+
 ### <a name="how-do-agents-and-extensions-get-updated"></a>如何更新代理和扩展？
 
 代理和扩展使用相同的更新机制。 某些更新不需要附加的防火墙规则。
@@ -283,15 +286,15 @@ Microsoft.Compute     CustomScriptExtension                1.9
 
 #### <a name="agent-updates"></a>代理更新
 
-Windows 来宾代理仅包含扩展处理代码，Windows 预配代码需要单独获取。 可以卸载 Windows 来宾代理。 无法禁用 Windows 来宾代理自动更新。
+Windows 来宾代理仅包含扩展处理代码，Windows 预配代码需要单独获取。   可以卸载 Windows 来宾代理。 无法禁用 Windows 来宾代理自动更新。
 
-扩展处理代码负责与 Azure 结构通信，并处理各种 VM 扩展操作，例如安装、报告状态、更新单个扩展，以及删除扩展。 更新包含扩展处理代码的安全修复程序、bug 修复程序和增强功能。
+扩展处理代码负责与 Azure 结构通信，并处理各种 VM 扩展操作，例如安装、报告状态、更新单个扩展，以及删除扩展  。 更新包含扩展处理代码的安全修复程序、bug 修复程序和增强功能  。
 
 若要检查运行的是哪个版本，请参阅[检测安装的 Windows 来宾代理](agent-windows.md#detect-the-vm-agent)。
 
 #### <a name="extension-updates"></a>扩展更新
 
-有扩展更新可用时，Windows 来宾代理会下载并升级扩展。 自动扩展更新以次要版本或修补程序的形式提供。 预配扩展时，可以选择安装或不安装扩展的次要版本更新。 以下示例演示如何在资源管理器模板中使用 autoUpgradeMinorVersion": true,' 自动升级次要版本：
+有扩展更新可用时，Windows 来宾代理会下载并升级扩展。 自动扩展更新以次要版本或修补程序的形式提供   。 预配扩展时，可以选择安装或不安装扩展的次要版本更新  。 以下示例演示如何在资源管理器模板中使用 autoUpgradeMinorVersion": true,' 自动升级次要版本  ：
 
 ```json
     "properties": {
@@ -319,7 +322,7 @@ Windows 来宾代理仅包含扩展处理代码，Windows 预配代码需要单�
  $vm.Extensions
 ```
 
-以下示例输出显示 autoUpgradeMinorVersion 设置为 true：
+以下示例输出显示 autoUpgradeMinorVersion 设置为 true   ：
 
 ```powershell
 ForceUpdateTag              :
@@ -342,7 +345,7 @@ AutoUpgradeMinorVersion     : True
 
 ## <a name="agent-permissions"></a>代理权限
 
-若要执行任务，代理需要作为本地系统运行。
+若要执行任务，代理需要作为本地系统运行。 
 
 ## <a name="troubleshoot-vm-extensions"></a>排查 VM 扩展的问题
 
@@ -350,9 +353,9 @@ AutoUpgradeMinorVersion     : True
 
 以下故障排除步骤适用于所有 VM 扩展。
 
-1. 若要查看 Windows 来宾代理日志，请在预配扩展时查看 *C:\WindowsAzure\Logs\WaAppAgent.txt* 中的活动
+1. 若要检查 Windows 来宾代理日志，请在 C:\WindowsAzure\Logs\WaAppAgent.log  中查看预配扩展时的活动
 
-2. 查看 *C:\WindowsAzure\Logs\Plugins\<extensionName>* 中的实际扩展日志，以了解更多详细信息
+2. 有关*C:\WindowsAzure\Logs\Plugins \<extensionName> *中的详细信息，请查看实际的扩展日志
 
 3. 查看特定扩展文档中有关错误代码和已知问题等的故障排除部分。
 
@@ -368,7 +371,7 @@ AutoUpgradeMinorVersion     : True
 
 ### <a name="view-extension-status"></a>查看扩展状态
 
-针对 VM 运行 VM 扩展后，请使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 返回扩展状态。 *Substatuses[0]* 显示扩展预配成功，这意味着，该扩展已成功部署到 VM，但 VM 中的扩展执行失败 (*Substatuses[1]*)。
+针对 VM 运行 VM 扩展后，请使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 返回扩展状态。 *Substatuses[0]* 显示扩展预配成功，这意味着，该扩展已成功部署到 VM，但 VM 中的扩展执行失败 (*Substatuses[1]* )。
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status
@@ -400,11 +403,11 @@ Extensions[0]           :
     Message             : Finished executing command
 ```
 
-此外，还可以在 Azure 门户中找到扩展执行状态。 若要查看扩展的状态，请依次选择 VM、“扩展”、所需的扩展。
+此外，还可以在 Azure 门户中找到扩展执行状态。 若要查看扩展的状态，请依次选择 VM、“扩展”、所需的扩展  。
 
 ### <a name="rerun-vm-extensions"></a>重新运行 VM 扩展
 
-在某些情况下，可能需要重新运行 VM 扩展。 要重新运行扩展，可以先删除扩展，然后使用所选执行方法重新运行扩展。 若要删除扩展，请使用 [Remove-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/Remove-AzVMExtension)，如下所示：
+在某些情况下，可能需要重新运行 VM 扩展。 如果要重新运行扩展，可以先删除扩展，然后使用所选执行方法重新运行扩展。 若要删除扩展，请使用 [Remove-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/Remove-AzVMExtension)，如下所示：
 
 ```powershell
 Remove-AzVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myExtensionName"
@@ -413,15 +416,15 @@ Remove-AzVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "
 也可以在 Azure 门户中删除扩展，如下所示：
 
 1. 选择 VM。
-2. 选择“扩展”。
+2. 选择“扩展”  。
 3. 选择所需的扩展。
-4. 选择“卸载”。
+4. 选择“卸载”  。
 
 ## <a name="common-vm-extensions-reference"></a>常见 VM 扩展参考
-| 扩展名称 | 描述 | 详细信息 |
+| 扩展名称 | 说明 | 详细信息 |
 | --- | --- | --- |
 | 适用于 Windows 的自定义脚本扩展 |针对 Azure 虚拟机运行脚本 |[适用于 Windows 的自定义脚本扩展](custom-script-windows.md) |
-| 适用于 Windows 的 DSC 扩展 |PowerShell DSC（所需状态配置）扩展 |[适用于 Windows 的 DSC 扩展](dsc-overview.md) |
+| 适用于 Windows 的 DSC 扩展 |PowerShell DSC (Desired State Configuration) 扩展 |[适用于 Windows 的 DSC 扩展](dsc-overview.md) |
 | Azure 诊断扩展 |管理 Azure 诊断 |[Azure 诊断扩展](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Azure VM 访问扩展 |管理用户和凭据 |[适用于 Linux 的 VM 访问扩展](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 

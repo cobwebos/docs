@@ -1,26 +1,20 @@
 ---
-title: CLI 示例 - 使用 Azure CLI 对多个网站进行负载均衡 | Microsoft Docs
+title: 对多个网站进行负载均衡 - Azure CLI - Azure 负载均衡器
 description: 本 Azure CLI 脚本示例演示如何对指向同一虚拟机的多个网站进行负载均衡
-services: load-balancer
 documentationcenter: load-balancer
-author: KumudD
-manager: jeconnoc
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: asudbring
 ms.service: load-balancer
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
-ms.openlocfilehash: 41f8a403694eec897ba4a6eb147ab71757d5caa5
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.author: allensu
+ms.openlocfilehash: 80ec18ca722b9833307fc270c710abd93c6fb6f9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263928"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "76274618"
 ---
 # <a name="azure-cli-script-example-load-balance-multiple-websites"></a>Azure CLI 脚本示例：对多个网站进行负载均衡
 
@@ -47,7 +41,7 @@ az group delete --name myResourceGroup --yes
 
 此脚本使用以下命令创建资源组、虚拟网络、负载均衡器和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) | 创建 Azure 虚拟网络和子网。 |

@@ -1,109 +1,156 @@
 ---
-title: Azure Functions 的网络选项
-description: 在 Azure Functions 中可用的所有网络选项的概述
-services: functions
+title: Azure Functions 网络选项
+description: 在 Azure Functions 中可用的所有网络选项的概述。
 author: alexkarcher-msft
-manager: jeconnoc
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: f13e498859986d5ee697cbd67907fd344147ed0c
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 03402828720272851f9b74000d5bcb79405885a5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66492837"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117219"
 ---
-# <a name="azure-functions-networking-options"></a>Azure Functions 的网络选项
+# <a name="azure-functions-networking-options"></a>Azure Functions 网络选项
 
-本文介绍在 Azure Functions 的宿主选项可用的网络功能。 所有以下网络选项提供访问的资源，而无需使用 internet 路由的地址，或限制对 function app 的 internet 访问某些功能。 
+本文介绍了可在各种 Azure Functions 托管选项中使用的网络功能。 通过以下所有网络选项，你可以在不使用可通过 Internet 路由的地址的情况下访问资源，或限制对函数应用的 Internet 访问。
 
-托管模型具有不同的可用的网络隔离级别。 选择正确的订阅将帮助你满足网络隔离要求。
+托管模型具有不同的可用网络隔离级别。 选择正确模型有助于满足网络隔离要求。
 
-你可以托管两种方法中的函数应用：
+可按多种方式托管函数应用：
 
-* 还有一组具有不同级别的虚拟网络连接和缩放选项的多租户基础结构运行的计划选项：
-    * [消耗计划](functions-scale.md#consumption-plan)，其根据负载动态缩放，并提供了最少的网络隔离选项。
-    * [高级版计划](functions-scale.md#premium-plan-public-preview)，这还可以扩展动态，同时还提供更全面的网络隔离。
-    * Azure[应用服务计划](functions-scale.md#app-service-plan)，它在固定的比例进行操作，并提供了类似的网络隔离级别提高到高级版计划。
-* 您可以在运行函数[应用服务环境](../app-service/environment/intro.md)。 此方法将函数部署到你的虚拟网络，并提供完全的网络控制和隔离。
+* 可以从在多租户基础结构上运行的计划选项中进行选择，其中包含不同级别的虚拟网络连接和缩放选项：
+    * [消耗计划](functions-scale.md#consumption-plan)会动态缩放以响应负载，并提供最少的网络隔离选项。
+    * [高级计划](functions-scale.md#premium-plan)也可以动态缩放，并提供更全面的网络隔离。
+    * Azure [应用服务计划](functions-scale.md#app-service-plan)按固定规模运行，提供类似于高级计划的网络隔离。
+* 可以在[应用服务环境](../app-service/environment/intro.md)中运行函数。 此方法可以将函数部署到虚拟网络中，并且可以进行完全的网络控制和隔离。
 
 ## <a name="matrix-of-networking-features"></a>网络功能矩阵
 
-|                |[消耗计划](functions-scale.md#consumption-plan)|[高级计划 （预览版）](functions-scale.md#premium-plan-public-preview)|[应用服务计划](functions-scale.md#app-service-plan)|[应用服务环境](../app-service/environment/intro.md)|
-|----------------|-----------|----------------|---------|-----------------------|  
-|[入站的 IP 限制](#inbound-ip-restrictions)|✅是|✅是|✅是|✅是|
-|[出站 IP 限制](#private-site-access)|❌No| ❌No|❌No|✅是|
-|[虚拟网络集成](#virtual-network-integration)|❌No|❌No|✅是|✅是|
-|[预览 （Azure ExpressRoute 和出站的服务终结点） 的虚拟网络集成](#preview-version-of-virtual-network-integration)|❌No|✅是|✅是|✅是|
-|[混合连接](#hybrid-connections)|❌No|❌No|✅是|✅是|
-|[专用站点访问](#private-site-access)|❌No| ✅是|✅是|✅是|
+[!INCLUDE [functions-networking-features](../../includes/functions-networking-features.md)]
 
-## <a name="inbound-ip-restrictions"></a>入站的 IP 限制
+## <a name="inbound-ip-restrictions"></a>入站 IP 限制
 
-IP 限制可用于定义按优先级顺序排列的 IP 地址的允许/拒绝访问你的应用列表。 列表可包含 IPv4 和 IPv6 地址。 如果有一个或多个条目，隐式"全部拒绝"位于列表的末尾。 IP 限制适用于所有托管函数的选项。
+可以使用 IP 限制来定义被允许或拒绝访问应用的 IP 地址的优先级排序列表。 此列表可以包含 IPv4 和 IPv6 地址。 如果存在一个或多个条目，则列表末尾会存在一个隐式的“拒绝所有”。 IP 限制可与所有函数托管选项配合使用。
 
 > [!NOTE]
-> 若要使用 Azure 门户的编辑器，在门户必须能够直接访问正在运行的函数应用。 此外，你要用于访问门户的设备必须具有其 IP 加入允许列表。 使用现有的网络限制，你仍可以访问的任何功能上**平台功能**选项卡。
+> 如果进行了网络限制，则只能从虚拟网络内部使用门户编辑器，或者在已将用于访问 Azure 门户的计算机的 IP 地址加入安全收件人列表之后使用该编辑器。 但是，仍可以从任何计算机访问“平台功能”选项卡中的任何功能。****
 
-若要了解详细信息，请参阅[Azure App Service 静态访问限制](../app-service/app-service-ip-restrictions.md)。
-
-## <a name="outbound-ip-restrictions"></a>出站 IP 限制
-
-出站 IP 限制才适用于部署到应用服务环境的函数。 你可以配置为在其中部署应用服务环境的虚拟网络的出站限制。
-
-## <a name="virtual-network-integration"></a>虚拟网络集成
-
-虚拟网络集成，函数应用可以访问虚拟网络中的资源。 此功能是可用的高级计划和应用服务计划中。 如果应用是应用服务环境中，它已在虚拟网络，并且不需要使用虚拟网络集成访问同一虚拟网络中的资源。
-
-虚拟网络集成允许在函数应用访问的虚拟网络中的资源，但不允许[专用站点访问](#private-site-access)到函数应用从虚拟网络。
-
-可以使用虚拟网络集成以启用从应用到数据库和虚拟网络中运行的 web 服务的访问。 使用虚拟网络集成，不需要公开 VM 上的应用程序的公共终结点。 可以改为使用专用的非 internet 可路由地址。
-
-虚拟网络集成的已公开发布版本依赖于将函数应用连接到虚拟网络的 VPN 网关。 它现已推出应用服务计划中托管的函数。 若要了解如何配置此功能，请参阅[将应用与 Azure 虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md)。
-
-### <a name="preview-version-of-virtual-network-integration"></a>虚拟网络集成预览版本
-
-新版本的虚拟网络集成功能处于预览状态。 它不依赖于点到站点 VPN。 它支持通过 ExpressRoute 访问资源或服务终结点。 高级版计划中并且在应用服务计划缩放到高级 V2，它才可用。
-
-下面是此版本的一些特征：
-
-* 您不需要网关以使用它。
-* 可以通过 ExpressRoute 连接来访问资源，除了与连接 ExpressRoute 的虚拟网络集成以外，不需要任何其他配置。
-* 可以使用服务终结点保护运行函数的资源。 若要执行此操作，启用服务终结点上用于虚拟网络集成的子网。
-* 不能配置触发器，以使用服务终结点保护的资源。 
-* 函数应用和虚拟网络必须位于同一区域中。
-* 新功能都需要通过 Azure Resource Manager 部署的虚拟网络中的未使用子网。
-* 该功能处于预览状态时，不支持生产工作负荷。
-* 路由表和全局对等互连尚不可用的功能。
-* 一个地址用于函数应用的每个潜在实例。 由于分配后，不能更改子网大小，请使用可以轻松地支持你的最大缩放大小的子网。 例如，若要支持可以扩展到 80 实例的高级计划，我们建议`/25`提供 126 主机地址的子网。
-
-若要了解有关使用虚拟网络集成预览版本的详细信息，请参阅[将函数应用与 Azure 虚拟网络集成](functions-create-vnet.md)。
-
-## <a name="hybrid-connections"></a>混合连接
-
-[混合连接](../service-bus-relay/relay-hybrid-connections-protocol.md)是可用于访问其他网络中的应用程序资源的 Azure 中继的一项功能。 使用混合连接可以从应用访问应用程序终结点。 不能用于访问你的应用程序。 混合连接可供运行的函数[应用服务计划](functions-scale.md#app-service-plan)和一个[应用服务环境](../app-service/environment/intro.md)。
-
-在 Azure Functions 中使用，与单个 TCP 主机和端口组合相关联的每个混合连接。 这意味着混合连接终结点可以位于任何操作系统和任何应用程序，只要您正在访问 TCP 侦听端口。 混合连接功能不知道，也不关心应用程序协议是什么，或者你的访问。 它只是提供网络访问。
-
-若要了解详细信息，请参阅[混合连接的应用服务文档](../app-service/app-service-hybrid-connections.md)，它支持在应用服务计划中的函数。
+有关详细信息，请参阅 [Azure 应用服务静态访问限制](../app-service/app-service-ip-restrictions.md)。
 
 ## <a name="private-site-access"></a>专用站点访问
 
-专用站点访问指的是使您的应用程序只能从专用网络如从 Azure 虚拟网络中访问。 
-* 专用站点访问现已推出的高级和应用服务计划**服务终结点**配置。有关详细信息，请参阅[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)
-    * 请记住，与服务终结点，你的函数上仍有完整出站访问 internet，即使使用 VNET 集成配置。
-* 专用站点访问位于仅与应用服务环境配置具有内部负载均衡器 (ILB)。 有关详细信息，请参阅[创建和使用具有应用服务环境的内部负载均衡器](../app-service/environment/create-ilb-ase.md)。
+[!INCLUDE [functions-private-site-access](../../includes/functions-private-site-access.md)]
 
-有许多方法来访问其他托管选项中的虚拟网络资源。 但是，应用服务环境是允许通过虚拟网络的函数的触发器的唯一方法。
+## <a name="virtual-network-integration"></a>虚拟网络集成
+
+函数应用可以通过虚拟网络集成来访问虚拟网络内部的资源。
+Azure Functions 支持两种类型的虚拟网络集成：
+
+[!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-types.md)]
+
+Azure Functions 中的虚拟网络集成使用与应用服务 Web 应用共享的基础结构。 若要详细了解这两种类型的虚拟网络集成，请参阅：
+
+* [区域虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)
+* [需要网关的虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
+
+若要了解如何设置虚拟网络集成，请参阅[将函数应用与 Azure 虚拟网络集成](functions-create-vnet.md)。
+
+## <a name="regional-virtual-network-integration"></a>区域虚拟网络集成
+
+[!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-regional.md)]
+
+## <a name="connect-to-service-endpoint-secured-resources"></a>连接到服务终结点保护的资源
+
+为了提供更高级别的安全性，可以使用服务终结点将许多 Azure 服务限制在一个虚拟网络中。 然后，必须将函数应用与该虚拟网络集成，才能访问资源。 支持虚拟网络集成的所有计划都支持此配置。
+
+若要了解详细信息，请参阅[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。
+
+## <a name="restrict-your-storage-account-to-a-virtual-network"></a>将存储帐户限制到虚拟网络中
+
+创建函数应用时，必须创建或链接到支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。 目前不能对此帐户使用任何虚拟网络限制。 如果在用于函数应用的存储帐户上配置虚拟网络服务终结点，则该配置会中断应用。
+
+有关详细信息，请参阅[存储帐户要求](./functions-create-function-app-portal.md#storage-account-requirements)。
+
+## <a name="use-key-vault-references"></a>使用 Key Vault 引用
+
+可以在不需进行任何代码更改的情况下，通过 Azure Key Vault 引用在 Azure Functions 应用程序中使用 Azure Key Vault 中的机密。 Azure Key Vault 是一项服务，可以提供集中式机密管理，并且可以完全控制访问策略和审核历史记录。
+
+目前，如果密钥保管库使用服务终结点进行保护，则 [Key Vault 引用](../app-service/app-service-key-vault-references.md)不起作用。 若要使用虚拟网络集成连接到密钥保管库，需要在应用程序代码中调用 Key Vault。
+
+## <a name="virtual-network-triggers-non-http"></a>虚拟网络触发器（非 HTTP）
+
+目前，可以通过以下两种方式之一从虚拟网络内使用非 HTTP 触发器函数：
+
++ 在高级计划中运行函数应用，并启用虚拟网络触发器支持。
++ 在应用服务计划或应用服务环境中运行函数应用。
+
+### <a name="premium-plan-with-virtual-network-triggers"></a>具有虚拟网络触发器的高级计划
+
+运行高级计划时，可以将非 HTTP 触发器函数连接到在虚拟网络中运行的服务。 为此，必须为函数应用启用虚拟网络触发器支持。 虚拟网络触发器支持设置处于 [Azure 门户](https://portal.azure.com)中的“配置” > “函数运行时设置”下。
+
+:::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
+
+还可以使用以下 Azure CLI 命令启用虚拟网络触发器：
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.functionsRuntimeScaleMonitoringEnabled=1 --resource-type Microsoft.Web/sites
+```
+
+版本 2.x 和更高版本的 Functions 运行时支持虚拟网络触发器。 支持以下非 HTTP 触发器类型。
+
+| 分机 | 最低版本 |
+|-----------|---------| 
+|[Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 或更高版本 |
+|[Microsoft.Azure.WebJobs.Extensions.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 或更高版本|
+|[Microsoft.Azure.WebJobs.Extensions.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus)| 3.2.0 或更高版本|
+|[Microsoft.Azure.WebJobs.Extensions.CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB)| 3.0.5 或更高版本|
+|[Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)| 2.0.0 或更高版本|
+
+> [!IMPORTANT]
+> 启用虚拟网络触发器支持时，只有上表中显示的触发器类型才能随应用程序进行动态缩放。 仍可以使用不在该表中的触发器，但它们不会缩放到超出其预热实例计数。 有关触发器的完整列表，请参阅[触发器和绑定](./functions-triggers-bindings.md#supported-bindings)。
+
+### <a name="app-service-plan-and-app-service-environment-with-virtual-network-triggers"></a>具有虚拟网络触发器的应用服务计划和应用服务环境
+
+函数应用在应用服务计划或应用服务环境中运行时，可以使用非 HTTP 触发器函数。 为了正确触发函数，必须连接到可访问在触发器连接中定义的资源的虚拟网络。
+
+例如，假设要将 Azure Cosmos DB 配置为仅接受来自虚拟网络的流量。 在这种情况下，必须在应用服务计划中部署函数应用，该计划提供与该虚拟网络的虚拟网络集成。 集成使函数可以由该 Azure Cosmos DB 资源触发。
+
+## <a name="hybrid-connections"></a>混合连接
+
+[混合连接](../service-bus-relay/relay-hybrid-connections-protocol.md)是可用于访问其他网络中的应用程序资源的一项 Azure 中继功能。 使用混合连接可以从应用访问应用程序终结点。 不能使用混合连接来访问应用程序。 在除消耗计划之外的所有计划中，混合连接可用于 Windows 上运行的函数。
+
+在 Azure Functions 中使用时，每个混合连接与单个 TCP 主机和端口组合相关联。 这意味着，混合连接终结点可以位于任何操作系统和任何应用程序上，前提是你能够访问 TCP 侦听端口。 混合连接功能不知道也不关心应用程序协议或者要访问的内容是什么。 它只提供网络访问。
+
+有关详细信息，请参阅[应用服务文档中的“混合连接”](../app-service/app-service-hybrid-connections.md)。 Azure Functions 支持这些相同配置步骤。
+
+>[!IMPORTANT]
+> 只有 Windows 计划才支持混合连接。 不支持 Linux。
+
+## <a name="outbound-ip-restrictions"></a>出站 IP 限制
+
+高级计划、应用服务计划或应用服务环境中提供出站 IP 限制。 可以为部署应用服务环境的虚拟网络配置出站限制。
+
+将高级计划或应用服务计划中的函数应用与虚拟网络集成时，默认情况下，应用仍可对 Internet 进行出站呼叫。 通过添加应用程序设置 `WEBSITE_VNET_ROUTE_ALL=1`，可强制将所有出站流量发送到虚拟网络中，在其中可以使用网络安全组规则限制流量。
+
+## <a name="automation"></a>自动化
+以下 Api 允许你以编程方式管理区域虚拟网络集成：
+
++ **Azure CLI**：使用 [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) 命令添加、列出或删除区域虚拟网络集成。  
++ **ARM 模板**：可以通过使用 Azure 资源管理器模板来启用区域虚拟网络集成。 有关完整示例，请参阅[此函数快速入门模板](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/)。
+
+## <a name="troubleshooting"></a>疑难解答
+
+[!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
 
 ## <a name="next-steps"></a>后续步骤
-若要了解有关网络和 Azure 函数的详细信息： 
 
-* [遵循有关如何开始使用虚拟网络集成教程](./functions-create-vnet.md)
-* [读取网络常见问题函数](./functions-networking-faq.md)
-* [了解有关虚拟网络集成使用应用服务/功能的详细信息](../app-service/web-sites-integrate-with-vnet.md)
-* [了解有关 Azure 中的虚拟网络的详细信息](../virtual-network/virtual-networks-overview.md)
-* [启用网络功能和使用应用服务环境的控制](../app-service/environment/intro.md)
-* [使用混合连接连接到独立的本地资源，而无需防火墙更改](../app-service/app-service-hybrid-connections.md)
+若要详细了解网络和 Azure Functions：
+
+* [遵循有关虚拟网络集成入门的教程](./functions-create-vnet.md)
+* [阅读 Functions 网络常见问题解答](./functions-networking-faq.md)
+* [详细了解虚拟网络与应用服务/Functions 的集成](../app-service/web-sites-integrate-with-vnet.md)
+* [详细了解 Azure 中的虚拟网络](../virtual-network/virtual-networks-overview.md)
+* [在应用服务环境中允许更多的网络功能和控制](../app-service/environment/intro.md)
+* [在不更改防火墙的情况下使用混合连接连接到单个本地资源](../app-service/app-service-hybrid-connections.md)

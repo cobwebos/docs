@@ -3,27 +3,21 @@ title: 监视 Azure 云服务 | Microsoft Docs
 description: 介绍监视 Azure 云服务需要涉及到哪些操作，以及可以选择哪些选项。
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: ''
+author: tgore03
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
-ms.author: jeconnoc
-ms.openlocfilehash: 844fef9a87c1db06c6415c59d4be26caf928382b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: tagore
+ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61432887"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847243"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>云服务监视简介
 
-可以监视任何云服务的关键性能指标。 每个云服务角色都会收集最少的数据：CPU 使用率、网络使用量和磁盘利用率。 如果云服务已将 `Microsoft.Azure.Diagnostics` 扩展应用到某个角色，则该角色可以收集其他数据点。 本文介绍适用于云服务的 Azure 诊断。
+可以监视任何云服务的关键性能指标。 每个云服务角色收集极少量的数据：CPU 使用率、网络使用率和磁盘利用率。 如果云服务已将 `Microsoft.Azure.Diagnostics` 扩展应用到某个角色，则该角色可以收集其他数据点。 本文介绍适用于云服务的 Azure 诊断。
 
 使用基本监视时，默认情况下，将每隔 3 分钟从角色实例中采样和收集性能计数器数据。 此基本监视数据不会存储在存储帐户中，并且不会产生相关的额外费用。
 
@@ -58,9 +52,9 @@ ms.locfileid: "61432887"
 
 ## <a name="setup-diagnostics-extension"></a>设置诊断扩展
 
-首先，如果你没有**经典**存储帐户，请[创建一个](../storage/common/storage-quickstart-create-account.md)。 确保为创建的存储帐户指定**经典部署模型**。
+首先，如果你没有**经典**存储帐户，请[创建一个](../storage/common/storage-account-create.md)。 确保为创建的存储帐户指定**经典部署模型**。
 
-接下来，导航到“存储帐户(经典)”资源。 选择“设置” > “访问密钥”，并复制“主连接字符串”值。 云服务需要此值。 
+接下来，导航到“存储帐户(经典)”资源。  选择“设置” > “访问密钥”，并复制“主连接字符串”值。 云服务需要此值。 
 
 必须更改两个配置文件才能启用高级诊断：**ServiceDefinition.csdef** 和 **ServiceConfiguration.cscfg**。
 
@@ -102,4 +96,7 @@ ms.locfileid: "61432887"
 
 - [了解包含云服务的 Application Insights](../azure-monitor/app/cloudservices.md)
 - [设置性能计数器](diagnostics-performance-counters.md)
+
+
+
 

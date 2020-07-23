@@ -1,4 +1,4 @@
-- name: Azure Data Box 文档 - 联机传输
+- name: Azure Stack Edge 和 Data Box Gateway 文档
   href: /azure/databox-online/
   expanded: true
 - name: Data Box Gateway
@@ -31,6 +31,8 @@
           href: data-box-gateway-use-cases.md
     - name: 如何
       items:
+        - name: 更新
+          href: data-box-gateway-apply-updates.md
         - name: 管理
           items:
             - name: 共享
@@ -45,77 +47,101 @@
               href: data-box-gateway-connect-powershell-interface.md
         - name: 监视
           href: data-box-gateway-monitor.md
-        - name: 故障排除
+        - name: 疑难解答
           href: data-box-gateway-troubleshoot.md
+        - name: 请联系 Microsoft 支持部门
+          href: azure-stack-edge-contact-microsoft-support.md
     - name: 发行说明
       items:
-        - name: 正式版
+        - name: 2007 - 最新版
+          href: data-box-gateway-2007-release-notes.md
+        - name: 1911
+          href: data-box-gateway-1911-release-notes.md
+        - name: 1906
+          href: data-box-gateway-1906-release-notes.md
+        - name: 1905
+          href: data-box-gateway-1905-release-notes.md
+        - name: 正式发布版 (GA)
           href: data-box-gateway-release-notes.md
-- name: Data Box Edge
+- name: Azure Stack Edge
   items:
     - name: 概述
       items:
-        - name: 什么是 Azure Data Box Edge？
-          href: data-box-edge-overview.md
+        - name: 什么是 Azure Stack Edge？
+          href: azure-stack-edge-overview.md
     - name: 教程
       items:
         - name: 1 - 准备
-          href: data-box-edge-deploy-prep.md
+          href: azure-stack-edge-deploy-prep.md
         - name: 2 - 安装
-          href: data-box-edge-deploy-install.md
+          href: azure-stack-edge-deploy-install.md
         - name: 3 - 连接、设置、激活
-          href: data-box-edge-deploy-connect-setup-activate.md
+          href: azure-stack-edge-deploy-connect-setup-activate.md
         - name: 4 - 添加、连接到共享
-          href: data-box-edge-deploy-add-shares.md
+          href: azure-stack-edge-deploy-add-shares.md
         - name: 5A - 配置计算（简单）
-          href: data-box-edge-deploy-configure-compute.md
+          href: azure-stack-edge-deploy-configure-compute.md
         - name: 5B - 配置计算（高级）
-          href: data-box-edge-deploy-configure-compute-advanced.md
+          href: azure-stack-edge-deploy-configure-compute-advanced.md
     - name: 概念
       items:
         - name: 审查要求
-          href: data-box-edge-system-requirements.md
+          href: azure-stack-edge-system-requirements.md
         - name: 了解限制
-          href: data-box-edge-limits.md
+          href: azure-stack-edge-limits.md
         - name: 安全概述
-          href: data-box-edge-security.md
+          href: azure-stack-edge-security.md
         - name: 查看规范
-          href: data-box-edge-technical-specifications-compliance.md
+          items:
+            - name: 设备规格
+              href: azure-stack-edge-technical-specifications-compliance.md
+            - name: 电源线规格
+              href: azure-stack-edge-technical-specifications-power-cords-regional.md
     - name: 如何
       items:
-        - name: '开发 C# 模块'
-          href: data-box-edge-create-iot-edge-module.md
+        - name: 开发 C# 模块
+          href: azure-stack-edge-create-iot-edge-module.md
         - name: 管理
           items:
             - name: Edge 计算
-              href: data-box-edge-manage-compute.md
+              href: azure-stack-edge-manage-compute.md
             - name: Edge 计算网络
-              href: data-box-edge-extend-compute-access-modules.md
+              href: azure-stack-edge-extend-compute-access-modules.md
             - name: 共享
-              href: data-box-edge-manage-shares.md
+              href: azure-stack-edge-manage-shares.md
             - name: 用户
-              href: data-box-edge-manage-users.md
+              href: azure-stack-edge-manage-users.md
             - name: 带宽计划
-              href: data-box-edge-manage-bandwidth-schedules.md
+              href: azure-stack-edge-manage-bandwidth-schedules.md
             - name: 电源、访问权限和连接
-              href: data-box-edge-manage-access-power-connectivity-mode.md
+              href: azure-stack-edge-manage-access-power-connectivity-mode.md
             - name: 通过 PowerShell
-              href: data-box-edge-connect-powershell-interface.md
-        - name: 故障排除
-          href: data-box-edge-troubleshoot.md
+              href: azure-stack-edge-connect-powershell-interface.md
+        - name: 疑难解答
+          href: azure-stack-edge-troubleshoot.md
+        - name: 请联系 Microsoft 支持部门
+          href: azure-stack-edge-contact-microsoft-support.md
         - name: 监视
-          href: data-box-edge-monitor.md
-        - name: 退回设备
-          href: data-box-edge-return-device.md
+          href: azure-stack-edge-monitor.md
+        - name: 返回或替换设备
+          href: azure-stack-edge-return-device.md
     - name: 发行说明
       items:
-        - name: 正式版
+        - name: 2007 - 最新版
+          href: data-box-gateway-2007-release-notes.md
+        - name: 1911
+          href: data-box-gateway-1911-release-notes.md
+        - name: 1906
+          href: data-box-gateway-1906-release-notes.md
+        - name: 1905
+          href: data-box-gateway-1905-release-notes.md
+        - name: 正式发布版 (GA)
           href: data-box-gateway-release-notes.md
 - name: 资源
   items:
-    - name: 'Data Box Edge C# 模块示例 (.NET)'
+    - name: Azure Stack Edge C# 模块示例 (.NET)
       href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'
-    - name: Data Box Edge/Gateway 产品
+    - name: Azure Stack Edge/Data Box Gateway 产品
       href: 'https://azure.microsoft.com/services/storage/databox/edge/'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/storage/databox/edge/'

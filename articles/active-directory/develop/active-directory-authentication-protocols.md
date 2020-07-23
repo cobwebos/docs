@@ -1,44 +1,38 @@
 ---
-title: Azure Active Directory 身份验证协议 | Microsoft 文档
-description: 概述 Azure Active Directory (AD) 支持的身份验证协议
-documentationcenter: dev-center-name
-author: ryanwi
+title: Microsoft 标识平台身份验证协议
+description: Microsoft 标识平台支持的身份验证协议概述
+author: rwike77
 services: active-directory
 manager: CelesteDG
-editor: ''
-ms.assetid: 7a838ae2-c24c-4304-b6c0-e77fb888e6c0
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/27/2017
-ms.author: rwike77
+ms.date: 12/18/2019
+ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d36e4304c4775ac335c1cc405ee8c6a0208da52a
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
-ms.translationtype: MT
+ms.openlocfilehash: 41ea41b4d7c181dad9246653a68c329387ac5381
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546221"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80884675"
 ---
-# <a name="azure-active-directory-authentication-protocols"></a>Azure Active Directory 身份验证协议
-Azure Active Directory (Azure AD) 支持多个最广泛使用的身份验证和授权协议。 本部分中的主题介绍 Azure AD 中支持的协议及其实现。 这些主题包括支持的声明类型的回顾、联合元数据的使用简介、详细的 OAuth 2.0。 和 SAML 2.0 协议参考文档，以及故障排除部分。
+# <a name="microsoft-identity-platform-authentication-protocols"></a>Microsoft 标识平台身份验证协议
+
+Microsoft 标识平台支持多个最广泛使用的身份验证和授权协议。 本部分中的主题介绍 Microsoft 标识平台中支持的协议及其实现。 这些主题包括支持的声明类型的回顾、联合元数据的使用简介、详细的 OAuth 2.0。 和 SAML 2.0 协议参考文档，以及故障排除部分。
 
 ## <a name="authentication-protocols-articles-and-reference"></a>身份验证协议文章和参考
-* [有关 Azure AD 中签名密钥滚动更新的重要信息](active-directory-signing-key-rollover.md) - 了解 Azure AD 的签名密钥滚动更新频率、可以进行的自动更新密钥的更改，以及针对如何更新最常见的应用程序方案的讨论。
-* [支持的令牌和声明类型](v1-id-and-access-tokens.md) - 了解 Azure AD 颁发的令牌中的声明。
-* [联合元数据](azure-ad-federation-metadata.md) - 了解如何查找和解释 Azure AD 生成的元数据文档。
-* [Azure AD 中的 OAuth 2.0](v1-protocols-oauth-code.md) - 了解 OAuth 2.0 在 Azure AD 中的实现。
-* [OpenID Connect 1.0](v1-protocols-openid-connect-code.md) - 了解如何使用 OAuth 2.0（一种授权协议）进行身份验证。
-* [使用客户端凭据的服务间调用](v1-oauth2-client-creds-grant-flow.md) - 了解如何对服务到服务调用使用 OAuth 2.0 客户端凭据授权流。
-* [使用代理流的服务间调用](v1-oauth2-on-behalf-of-flow.md) - 了解如何对服务到服务调用使用 OAuth 2.0 代理流。
-* [SAML 协议参考](active-directory-saml-protocol-reference.md) - 了解 Azure AD 的单一登录和单一注销 SAML 配置文件。
 
-## <a name="see-also"></a>另请参阅
-[Azure Active Directory 开发人员指南](v1-overview.md)
+* [有关 microsoft 标识平台中的签名密钥滚动更新的重要信息](active-directory-signing-key-rollover.md)–了解 microsoft 标识平台的签名密钥滚动更新频率、自动更新密钥所需的更改，以及如何更新最常见的应用程序方案的讨论。
+* [支持的令牌和声明类型](id-tokens.md) - 了解 Microsoft 标识平台颁发的令牌中的声明。
+* [Microsoft 标识平台中的 OAuth 2.0](v2-oauth2-auth-code-flow.md) - 了解 Microsoft 标识平台中 OAuth 2.0 的实现。
+* [OpenID Connect 1.0](v2-protocols-oidc.md) - 了解如何使用 OAuth 2.0（一种授权协议）进行身份验证。
+* [使用客户端凭据的服务间调用](v2-oauth2-client-creds-grant-flow.md) - 了解如何对服务到服务调用使用 OAuth 2.0 客户端凭据授权流。
+* [使用代理流的服务间调用](v2-oauth2-on-behalf-of-flow.md) - 了解如何对服务到服务调用使用 OAuth 2.0 代理流。
+* [SAML 协议参考](active-directory-saml-protocol-reference.md)-了解 Microsoft 标识平台的单一登录和单一注销 SAML 配置文件。
 
-[Active Directory 代码示例](sample-v1-code.md)
+## <a name="see-also"></a>请参阅
+
+* [Microsoft 标识平台概述](v2-overview.md)
+* [Active Directory 代码示例](sample-v2-code.md)

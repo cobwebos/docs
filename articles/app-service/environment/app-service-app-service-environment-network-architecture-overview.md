@@ -1,29 +1,19 @@
 ---
-title: 应用服务环境的网络体系结构概述 - Azure
-description: 应用服务网络拓扑的体系结构概述。
-services: app-service
-documentationcenter: ''
+title: 网络体系结构 v1
+description: 应用服务环境的网络拓扑的体系结构概述。 本文档仅供使用旧版 v1 ASE 的用户使用。
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: 13d03a37-1fe2-4e3e-9d57-46dfb330ba52
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 0d7d4af46e54ad89e0d084cb15af13e56115e996
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60765253"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84701807"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>应用服务环境的网络体系结构概述
-## <a name="introduction"></a>简介
 应用服务环境始终创建于[虚拟网络][virtualnetwork]的子网内，在应用服务环境中运行的应用可与相同虚拟网络拓扑中的专用终结点通信。  由于客户可能锁定了其虚拟网络基础结构的组件，因此请务必了解与应用服务环境发生的网络通信流类型。
 
 ## <a name="general-network-flow"></a>常规网络流
@@ -73,7 +63,7 @@ ms.locfileid: "60765253"
 ## <a name="calls-between-app-service-environments"></a>在应用服务环境之间调用
 如果在相同的虚拟网络中部署多个应用服务环境，并从一个应用服务环境传出调用到另一个应用服务环境，则可能会出现更复杂的情景。  这些跨应用服务环境的调用也被视为“Internet”调用。
 
-下图显示了一个分层体系结构示例，其中应用在一个应用服务环境上（例如“前端”Web 应用）调用第二个应用服务环境上的应用（例如：内部后端 API 应用不需要可从 Internet 访问）。 
+下图显示了一个分层体系结构的示例，其中的应用程序在一台应用服务环境（例如，"前门" web 应用）调用另一个应用服务环境上的应用（例如，不打算从 Internet 访问的内部后端 API 应用）。 
 
 ![在应用服务环境之间调用][CallsBetweenAppServiceEnvironments] 
 

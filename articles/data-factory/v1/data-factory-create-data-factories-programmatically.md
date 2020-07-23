@@ -1,24 +1,22 @@
 ---
-title: 使用 Azure .NET SDK 创建数据管道 | Microsoft Docs
+title: 使用 Azure .NET SDK 创建数据管道
 description: 了解如何使用数据工厂 SDK 以编程方式创建、监视和管理 Azure 数据工厂。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: b0a357be-3040-4789-831e-0d0a32a0bda5
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: ea0094624727ca1395a1276e7968ac1c74b750e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7e8a70955b36f11727019fe430f62e84d4f0c93c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60487276"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85248275"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>使用 Azure 数据工厂 .NET SDK 创建、监视和管理 Azure 数据工厂
 > [!NOTE]
@@ -30,7 +28,7 @@ ms.locfileid: "60487276"
 > [!NOTE]
 > 本文不会介绍所有数据工厂 .NET API。 有关数据工厂 .NET API 的综合文档，请参阅 [Data Factory .NET API Reference](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1)（数据工厂 .NET API 参考）。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -112,8 +110,8 @@ ms.locfileid: "60487276"
 
 1. 使用 Visual Studio 2012/2013/2015 创建 C# .NET 控制台应用程序。
    1. 启动 **Visual Studio** 2012/2013/2015。
-   2. 单击“文件”，指向“新建”并单击“项目”。
-   3. 展开“模板”，并选择“Visual C#”。 本演练中使用的是 C#，但可以使用任何 .NET 语言。
+   2. 单击“文件”，指向“新建”并单击“项目”。  
+   3. 展开“模板”，并选择“Visual C#”。  本演练中使用的是 C#，但可以使用任何 .NET 语言。
    4. 从右侧项目类型列表中选择“控制台应用程序”。
    5. 在“名称”中输入 **DataFactoryAPITestApp** 。
    6. 在“位置”中选择“C:\ADFGetStarted”。
@@ -139,7 +137,7 @@ ms.locfileid: "60487276"
         </appSettings>
     </configuration>
     ```
-5. 在 App.Config 文件中，使用自己的值更新 **&lt;Application ID&gt;**、**&lt;Password&gt;**、**&lt;Subscription ID&gt;** 和 **&lt;tenant ID&gt;** 的值。
+5. 在 App.Config 文件中，更新 " ** &lt; 应用程序 ID &gt; **"、" ** &lt; 密码 &gt; **"、" ** &lt; 订阅 id &gt; **" 和 " ** &lt; 租户 id &gt; ** " 值，并将其作为自己的值。
 6. 将以下 **using** 语句添加到项目中的 **Program.cs** 文件。
 
     ```csharp
@@ -222,7 +220,7 @@ ms.locfileid: "60487276"
     ```
 9. 将以下用于创建**输入和输出数据集**的代码添加到 **Main** 方法。
 
-    输入 blob 的 **FolderPath** 设置为 **adftutorial/**，其中 **adftutorial** 是 Blob 存储中的容器名称。 如果 Azure Blob 存储中不包含此容器，请创建名为 **adftutorial** 的容器，并将文本文件上传到该容器。
+    输入 blob 的 **FolderPath** 设置为 **adftutorial/**，其中 **adftutorial** 是 Blob 存储中的容器名称。 如果 Azure Blob 存储中不包含此容器，请创建名为 **adftutorial** 的容器，然后将文本文件上传到该容器。
 
     输出 blob 的 FolderPath 设置为 **adftutorial/apifactoryoutput/{Slice}**，在此位置基于 **SliceStart** 的值（每个切片的开始日期时间）动态评估**切片**。
 
@@ -427,7 +425,7 @@ ms.locfileid: "60487276"
     Console.WriteLine("\nPress any key to exit.");
     Console.ReadKey();
     ```
-14. 将 **Main** 方法使用的以下帮助器方法添加到 **Program** 类。 此方法会弹出要求提供用于登录 Azure 门户的用户名和密码的对话框。
+14. 将 **Main** 方法使用的以下帮助器方法添加到 **Program** 类。 此方法会弹出要求提供用于登录 Azure 门户的用户名**** 和密码**** 的对话框。
 
     ```csharp
     public static async Task<string> GetAuthorizationHeader()
@@ -447,15 +445,15 @@ ms.locfileid: "60487276"
     }
     ```
 
-15. 在“解决方案资源管理器”中，展开项目：**DataFactoryAPITestApp**，右键单击“引用”，然后单击“添加引用”。 选择 `System.Configuration` 程序集的复选框，并单击“确定”。
-15. 生成控制台应用程序。 在菜单中单击“生成”，并单击“生成解决方案”。
-16. 确认 Azure Blob 存储中的 adftutorial 容器内至少有一个文件。 如果没有，请在记事本中创建包含以下内容的 Emp.txt 文件，并将其上传到 adftutorial 容器。
+15. 在解决方案资源管理器中，展开项目： **DataFactoryAPITestApp**，右键单击 "**引用**"，然后单击 "**添加引用**"。 选择 `System.Configuration` 程序集的复选框，并单击“确定”****。
+15. 生成控制台应用程序。 在菜单中单击“生成”，并单击“生成解决方案”。 
+16. 确认 Azure Blob 存储中的 adftutorial 容器内至少有一个文件。 如果没有，请在记事本中创建包含以下内容的 Emp.txt 文件，然后将其上传到 adftutorial 容器。
 
     ```
     John, Doe
     Jane, Doe
     ```
-17. 在菜单中单击“调试” -> “开始调试”运行示例。 看到“正在获取数据切片的运行详细信息”时，请等待几分钟，并按 **ENTER**。
+17. 在菜单中单击“调试” -> “开始调试”运行示例。  看到“正在获取数据切片的运行详细信息”时，请等待几分钟，并按 **ENTER**。
 18. 使用 Azure 门户验证是否创建了包含以下项目的数据工厂 **APITutorialFactory** ：
     * 链接服务：**AzureStorageLinkedService**
     * 数据集：**DatasetBlobSource** 和 **DatasetBlobDestination**。
@@ -502,6 +500,6 @@ while (response != null);
 ```
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下示例，该示例使用 .NET SDK 创建将数据从 Azure blob 存储复制到 Azure SQL 数据库的管道： 
+请参阅以下示例，了解如何使用将数据从 Azure blob 存储复制到 Azure SQL 数据库的 .NET SDK 创建管道： 
 
 - [创建用于将数据从 Blob 存储复制到 SQL 数据库的管道](data-factory-copy-activity-tutorial-using-dotnet-api.md)

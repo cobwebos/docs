@@ -1,22 +1,22 @@
 ---
-title: B2B 协作 API 和自定义-Azure Active Directory |Microsoft Docs
+title: B2B 协作 API 和自定义 - Azure Active Directory
 description: Azure Active Directory B2B 协作可让业务合作伙伴有选择性地访问本方的企业应用程序，为跨公司合作关系提供支持
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: reference
+ms.topic: how-to
 ms.date: 04/11/2017
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0369988bc6f6503f9940e6aabccb91ab843d63f5
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e9f62ece12732c45037bcad328eec162bebb4e6a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65811871"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387195"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B 协作 API 和自定义
 
@@ -91,7 +91,7 @@ ms.locfileid: "65811871"
 New-AzureADMSInvitation
 ```
 
-可以使用以下选项：
+您可以使用下列选项：
 
 * -InvitedUserDisplayName
 * -InvitedUserEmailAddress
@@ -100,12 +100,12 @@ New-AzureADMSInvitation
 
 ### <a name="invitation-status"></a>邀请状态
 
-向外部用户发送邀请后，可使用 Get-AzureADUser cmdlet 查看是否用户已接受该邀请。 向外部用户发送邀请时，将填充 Get-AzureADUser 的以下属性：
+向外部用户发送邀请后，可使用 Get-AzureADUser cmdlet 查看是否用户已接受该邀请  。 向外部用户发送邀请时，将填充 Get-AzureADUser 的以下属性：
 
-* **UserState** 指示邀请是“PendingAcceptance”还是“Accepted”。
-* **UserStateChangedOn** 显示 UserState 属性最新更改的时间戳。
+* **UserState** 指示邀请是“PendingAcceptance”还是“Accepted”   。
+* **UserStateChangedOn** 显示 UserState 属性最新更改的时间戳  。
 
-可使用“筛选器”选项按 UserState 筛选结果。 以下示例显示了如何筛选结果以仅显示具有待处理邀请的用户。 该示例还显示了 Format-List 选项，借助该选项可以指定要显示的属性。 
+可使用“筛选器”选项按 UserState 筛选结果   。 以下示例显示了如何筛选结果以仅显示具有待处理邀请的用户。 该示例还显示了 Format-List 选项，借助该选项可以指定要显示的属性  。 
  
 
 ```powershell

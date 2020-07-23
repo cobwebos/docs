@@ -1,38 +1,32 @@
 ---
-title: 在 Azure 中创建托管映像 | Microsoft Docs
+title: 在 Azure 中创建托管映像
 description: 在 Azure 中创建通用 VM 或 VHD 的托管映像。 映像可用于创建多个使用托管磁盘的 VM。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: imaging
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: aa1858a27d4df413deb562391251a523c28673ad
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.custom: legacy
+ms.openlocfilehash: 3aa4a7db9982d41cf32c1ddc4de6762bf1fdecf4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787929"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508791"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>在 Azure 中创建通用 VM 的托管映像
 
-可通过在存储帐户中存储为托管/非托管磁盘的通用虚拟机 (VM) 创建托管的映像资源。 随后，该映像可用于创建多个 VM。 有关托管映像如何计费的信息，请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)。 
+可通过在存储帐户中存储为托管/非托管磁盘的通用虚拟机 (VM) 创建托管的映像资源。 然后可以使用该映像创建多个 VM。 有关托管映像如何计费的信息，请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)。 
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+一个托管映像最多支持 20 个同时部署。 如果尝试从同一托管映像同时创建超过 20 个 VM，则可能会由于单个 VHD 的存储性能限制而导致预配超时。 若要同时创建 20 个以上的 VM，请使用为每 20 个并发 VM 部署配置 1 个副本的[共享映像库](shared-image-galleries.md)映像。
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>使用 Sysprep 通用化 Windows VM
 
-Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像的计算机。 有关 Sysprep 的信息，请参阅 [Sysprep 概述](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)。
+Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像的计算机。 有关 Sysprep 的信息，请参阅 [Sysprep 概述](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)。
 
-确保 Sysprep 支持计算机上运行的服务器角色。 有关详细信息，请参阅 [Sysprep 对服务器角色的支持](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)。
+确保 Sysprep 支持计算机上运行的服务器角色。 有关详细信息，请参阅 [Sysprep 对服务器角色的支持](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)和[不支持的方案](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios)。 Sysprep 要求在执行之前完全解密驱动器。 如果已在 VM 上启用加密，请在运行 Sysprep 之前禁用加密。
 
 > [!IMPORTANT]
 > 在 VM 上运行 Sysprep 后，该 VM 将被视为已通用化而无法重启。 通用化 VM 的过程是不可逆的。 如果需要保持原始 VM 正常运行，请创建 [VM 的副本](create-vm-specialized.md#option-3-copy-an-existing-azure-vm)并将其副本通用化。 
@@ -55,14 +49,25 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
    
     ![启动 Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
 
-6. Sysprep 在完成运行后会关闭 VM。 请勿重启 VM。
+6. Sysprep 在完成运行后会关闭 VM。 不要重新启动 VM。
 
+> [!TIP]
+> **可选** 使用 [DISM](/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options) 优化映像并减少 VM 的首次启动时间。
+>
+> 若要优化映像，请通过在 Windows 资源管理器中双击 VHD 来装载它，然后使用 `/optimize-image` 参数运行 DISM。
+>
+> ```cmd
+> DISM /image:D:\ /optimize-image /boot
+> ```
+> 其中 D：是装载的 VHD 的路径。
+>
+> 运行 `DISM /optimize-image` 应该是你对 VHD 所做的最后一次修改。 如果在部署之前对 VHD 进行了任何更改，则必须再次运行 `DISM /optimize-image`。
 
 ## <a name="create-a-managed-image-in-the-portal"></a>在门户中创建托管映像 
 
-1. 打开 [Azure 门户](https://portal.azure.com)。
+1. 转到 [Azure 门户](https://portal.azure.com)以管理 VM 映像。 搜索并选择“虚拟机”。
 
-2. 在左侧菜单中，选择“虚拟机”，然后从列表中选择 VM。
+2. 从列表中选择 VM。
 
 3. 在 VM 的“虚拟机”页面的上方菜单中，选择“捕获”。
 
@@ -70,7 +75,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
 4. 对于“名称”，可以使用预填充的名称或输入想要为映像使用的名称。
 
-5. 对于“资源组”，选择“新建”并输入名称，或选择“使用现有”并从下拉列表中选择要使用的资源组。
+5. 对于“资源组”，选择“新建”并输入名称，或者从下拉列表中选择要使用的资源组。
 
 6. 如果想要在创建映像后删除源 VM，选择“创建映像后自动删除此虚拟机”。
 
@@ -78,17 +83,17 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
 8. 选择“创建”以创建映像。
 
-9. 创建映像后，在资源组的资源列表中，你会看到它作为“映像”资源而出现。
+创建映像后，在资源组的资源列表中，你会看到它作为“映像”资源而出现。
 
 
 
 ## <a name="create-an-image-of-a-vm-using-powershell"></a>使用 PowerShell 创建 VM 映像
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 直接从 VM 创建映像，可确保映像包含所有与该 VM 关联的磁盘，包括 OS 磁盘和任何数据磁盘。 本示例演示如何从使用托管磁盘的 VM 创建托管映像。
 
-在开始之前，请确保你具有 Azure PowerShell 模块的最新版本。 若要查找版本，请在 PowerShell 中运行 `Get-Module -ListAvailable Az`。 如需升级，请参阅[使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+在开始之前，请确保有最新版本的 Azure PowerShell 模块。 若要查找版本，请在 PowerShell 中运行 `Get-Module -ListAvailable Az`。 如需升级，请参阅[使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 
 > [!NOTE]
@@ -96,7 +101,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
 若要创建 VM 映像，请遵循下列步骤：
 
-1. 创建若干变量。
+1. 创建一些变量。
 
     ```azurepowershell-interactive
     $vmName = "myVM"
@@ -138,7 +143,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 如果仅想创建 OS 磁盘的映像，则将托管磁盘 ID 指定为 OS 磁盘：
 
     
-1. 创建若干变量。 
+1. 创建一些变量。 
 
     ```azurepowershell-interactive
     $vmName = "myVM"
@@ -178,7 +183,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 通过执行以下步骤，可以从通用 VM 的快照创建托管映像：
 
     
-1. 创建若干变量。 
+1. 创建一些变量。 
 
     ```azurepowershell-interactive
     $rgName = "myResourceGroup"
@@ -206,12 +211,12 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
     ``` 
 
 
-## <a name="create-an-image-from-a-vhd-in-a-storage-account"></a>从存储帐户中的 VHD 创建映像
+## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>从使用存储帐户的 VM 创建映像
 
-从存储帐户中的通用 OS VHD 创建托管映像。 需要存储帐户中 VHD 的 URI，其格式如下： https://*mystorageaccount*.blob.core.windows.net/*vhdcontainer*/*vhdfilename.vhd*。 在本示例中，VHD 位于名为 vhdcontainer 的容器中的 mystorageaccount 中，且 VHD 文件名为 vhdfilename.vhd。
+若要从不使用托管磁盘的 VM 创建托管映像，需要存储帐户中 OS VHD 的 URI，其格式如下： https://mystorageaccount.blob.core.windows.net/vhdcontainer/vhdfilename.vhd。 在本示例中，VHD 位于名为 vhdcontainer 的容器中的 mystorageaccount 中，且 VHD 文件名为 vhdfilename.vhd。
 
 
-1.  创建若干变量。
+1.  创建一些变量。
 
     ```azurepowershell-interactive
     $vmName = "myVM"
@@ -226,7 +231,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
     Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
     ```
     
-3. 将 VM 标记为通用化。
+3. 将 VM 标记为通用。
 
     ```azurepowershell-interactive
     Set-AzVm -ResourceGroupName $rgName -Name $vmName -Generalized  
@@ -242,4 +247,3 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
     
 ## <a name="next-steps"></a>后续步骤
 - [从托管的映像创建 VM](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。    
-

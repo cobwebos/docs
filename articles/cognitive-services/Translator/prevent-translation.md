@@ -1,45 +1,49 @@
 ---
-title: 阻止翻译内容 - 文本翻译 API
-titlesuffix: Azure Cognitive Services
-description: 使用文本翻译 API 阻止翻译内容。
+title: 禁止内容翻译-转换器
+titleSuffix: Azure Cognitive Services
+description: 通过转换器防止内容翻译。 转换器允许对内容进行标记，使其不会被翻译。
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/04/2019
-ms.author: v-pawal
-ms.openlocfilehash: 32e5ddecc336175443fc5e8743b19b480de71c6b
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.date: 05/26/2020
+ms.author: swmachan
+ms.openlocfilehash: 37d2e4c0131569ab50ebf49ff73b6adf7a420713
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515264"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996170"
 ---
-# <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>如何使用文本翻译 API 阻止翻译内容
+# <a name="how-to-prevent-translation-of-content-with-the-translator"></a>如何防止翻译内容翻译
 
-通过文本翻译 API 可以标记内容，以便不对其进行翻译。 例如，你可能想要标记本地化后没有意义的代码、品牌名称或单词/短语。
+转换器允许对内容进行标记，使其不会被翻译。 例如，你可能想要标记本地化后没有意义的代码、品牌名称或单词/短语。
 
 ## <a name="methods-for-preventing-translation"></a>阻止翻译的方法
-1. 转义为 Twitter 标记 @somethingtopassthrough 或 #somethingtopassthrough。 翻译后取消转义。
 
-2. 使用 `notranslate` 标记内容。
+1. 使用 `notranslate` 标记内容。 根据设计，仅当输入 textType 设置为 HTML 时，这才起作用
 
    示例：
 
+   ```html
+   <span class="notranslate">This will not be translated.</span>
+   <span>This will be translated. </span>
+   ```
+   
    ```html
    <div class="notranslate">This will not be translated.</div>
    <div>This will be translated. </div>
    ```
 
-3. 使用[动态词典](dynamic-dictionary.md)给出特定翻译。
+2. 使用[动态词典](dynamic-dictionary.md)给出特定翻译。
 
-4. 不要将字符串传递到文本翻译 API 进行翻译。
+3. 不要将该字符串传递给翻译人员的翻译。
 
-5. 自定义翻译器：使用[自定义翻译器中的词典](custom-translator/what-is-dictionary.md)以 100% 的概率给出短语翻译。
+4. 自定义转换器：[在自定义转换器中使用字典](custom-translator/what-is-dictionary.md)，以规定短语的翻译的概率为100%。
 
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
-> [避免在 Translator API 调用中进行翻译](reference/v3-0-translate.md)
+> [避免翻译人员拜访](reference/v3-0-translate.md)

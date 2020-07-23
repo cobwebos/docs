@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell 脚本 - 更改 Azure Cosmos 帐户的故障转移优先级
-description: Azure PowerShell 脚本示例 - 更改 Azure Cosmos 帐户的故障转移优先级
+title: PowerShell 脚本：更改单主 Azure Cosmos 帐户的故障转移优先级
+description: Azure PowerShell 脚本示例 - 为 Azure Cosmos DB 单主帐户更改故障转移优先级或触发故障转移
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
-ms.date: 05/06/2019
+ms.topic: sample
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 2e6fefbbd3db23a41fc64021b19a412d7a12b322
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: a81938675e72d9ec3a18c920121951e38580b91e
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247884"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366122"
 ---
-# <a name="change-failover-priority-for-an-azure-cosmos-account-using-powershell"></a>使用 PowerShell 更改 Azure Cosmos 帐户的故障转移优先级
+# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-db-single-master-account-using-powershell"></a>使用 PowerShell 为 Azure Cosmos DB 单主帐户更改故障转移优先级或触发故障转移
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -21,7 +21,12 @@ ms.locfileid: "66247884"
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-failover-priority-update.ps1 "Update failover priority for an Azure Cosmos account")]
+> [!NOTE]
+> 对 `failoverPriority=0` 的区域进行的任何更改都会触发手动故障转移，并且只能对配置为手动故障转移的帐户进行更改。 对其他所有区域进行的更改只是更改了 Cosmos 帐户的故障转移优先级。
+> [!NOTE]
+> 此示例演示如何使用 SQL (Core) API 帐户。 若要将此示例用于其他 API，请复制相关属性，并将其应用于 API 特定的脚本
+
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-failover-priority-update.ps1 "Update failover priority for an Azure Cosmos account or trigger a manual failover")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 
@@ -35,10 +40,11 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction) | 针对资源调用操作。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | 列出 Cosmos DB 帐户或获取指定的 Cosmos DB 帐户。 |
+| [Update-AzCosmosDBAccountFailoverPriority](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccountfailoverpriority) | 更新 Cosmos DB 帐户区域的故障转移优先级顺序。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||

@@ -3,21 +3,19 @@ title: 排查语音 SDK 问题 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 本文提供的信息可帮助你解决在使用语音 SDK 时可能遇到的问题。
 services: cognitive-services
-author: wolfma61
+author: jhakulin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 12/06/2018
-ms.date: 04/01/2019
-ms.author: v-biyu
-ms.custom: seodec18
-ms.openlocfilehash: a3741cb351b11b8cfd7c5d38713bb71232cf010e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 07/23/2019
+ms.author: jhakulin
+ms.openlocfilehash: 421b9adf4ae5d2c641484e646bea096716d46cca
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60515436"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74815412"
 ---
 # <a name="troubleshoot-the-speech-sdk"></a>排查语音 SDK 问题
 
@@ -27,7 +25,7 @@ ms.locfileid: "60515436"
 
 你的区域或服务可能有错误的终结点。 请检查 URI 以确保它正确无误。
 
-此外，你的订阅密钥或授权令牌可能有问题。 有关详细信息，请参阅后续部分。
+此外，你的订阅密钥或授权令牌可能有问题。 有关详细信息，请参阅下一节。
 
 ## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>错误：HTTP 403 禁止访问或 HTTP 401 未授权
 

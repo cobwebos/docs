@@ -1,6 +1,6 @@
 ---
 title: 从本地文件创建 Azure 媒体服务作业输入 | Microsoft Docs
-description: 本主题介绍如何从本地文件创建作业输入。
+description: 本文演示如何从本地文件创建 Azure 媒体服务作业输入。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,28 +9,39 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/18/2019
+ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: 3eb16034cc6507944ca7bebb59893e0d72a6f4c9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aba987ba232a29ffc240f72039b1e24bb87a2ed4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322577"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80345910"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>从本地文件创建作业输入
 
 在媒体服务 v3 中提交作业来处理视频时，必须告知媒体服务查找输入视频的位置。 可将输入视频存储为媒体服务资产，这种情况下会基于文件（存储在本地或 Azure Blob 存储中）创建输入资产。 本主题介绍如何从本地文件创建作业输入。 有关完整示例，请参阅此 [GitHub 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs)。
+
+## <a name="prerequisites"></a>必备条件 
+
+* [创建媒体服务帐户](create-account-cli-how-to.md)。
+* 查看[管理资产](manage-asset-concept.md)。
 
 ## <a name="net-sample"></a>.NET 示例
 
 以下代码演示如何创建输入资产并将其用作作业的输入。 此 CreateInputAsset 函数执行以下操作：
 
 * 创建资产
-* 获取资产的[存储中容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=windows#upload-blobs-to-the-container)的可写 [SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
+* 获取资产的[存储中容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)的可写 [SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
 * 使用 SAS URL 将文件上传到存储中的容器中
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
+
+以下代码片段将创建一个输出资产（如果它尚不存在）：
+
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAsset)]
+
+以下代码片段将提交编码作业：
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#SubmitJob)]
 

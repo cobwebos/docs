@@ -1,103 +1,167 @@
 ---
-title: 教程：使用 Azure Active Directory 为 Dropbox 配置自动用户预配 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 和 Dropbox for Business 之间配置单一登录。
+title: 教程：通过 Azure Active Directory 为 Dropbox for Business 配置自动用户预配 |Microsoft Docs
+description: 了解如何配置 Azure Active Directory 以自动将用户帐户预配到 Dropbox for Business 并取消其预配。
 services: active-directory
-documentationCenter: na
-author: jeevansd
-manager: daveba
-ms.assetid: 0f3a42e4-6897-4234-af84-b47c148ec3e1
+documentationcenter: ''
+author: zchia
+writer: zchia
+manager: beatrizd
+ms.assetid: na
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 05/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d53d10b036a37489be0b7aae6208880044b766a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: a8aaa82a3913bcafbe8f86b85d63c39d44f08ac9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60279985"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84323716"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>教程：为 Dropbox for Business 配置自动用户预配
 
-本教程旨在说明从 Azure AD 自动将用户帐户预配到 Dropbox for Business 和取消其预配需要在 Dropbox for Business 和 Azure 中执行的步骤。
+本教程的目的是演示要在 Dropbox for Business 和 Azure Active Directory （Azure AD）中执行的步骤，以配置 Azure AD 自动将用户和/或组预配到 Dropbox for Business。
 
-## <a name="prerequisites"></a>必备组件
+> [!IMPORTANT]
+> Microsoft 和 Dropbox 将弃用旧 Dropbox 集成的有效04/01/2021。 为避免服务中断，我们建议迁移到支持组的新 Dropbox 集成。 若要迁移到新的 Dropbox 集成，请使用以下步骤在 Azure AD 租户中添加并配置 Dropbox 的新实例进行预配。 配置新的 Dropbox 集成后，请在旧 Dropbox 集成上禁用预配，以避免设置冲突。
 
-在本教程中概述的方案假定已有以下各项：
+> [!NOTE]
+> 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。
 
-*   Azure Active Directory 租户。
-*   已启用 Dropbox for Business 单一登录的订阅。
-*   Dropbox for Business 中具有团队管理员权限的用户帐户。
+## <a name="prerequisites"></a>先决条件
+
+本教程中概述的方案假定你已具有以下先决条件：
+
+* Azure AD 租户
+* [Dropbox for Business 租户](https://www.dropbox.com/business/pricing)
+* Dropbox for Business 中具有管理员权限的用户帐户。
+
+## <a name="add-dropbox-for-business-from-the-gallery"></a>从库中添加 Dropbox for Business
+
+为 Dropbox for Business 配置 Azure AD 的自动用户预配之前，需要将 Azure AD 应用程序库中的 Dropbox for Business 添加到托管的 SaaS 应用程序列表。
+
+**若要从 Azure AD 应用程序库中添加 Dropbox for Business，请执行以下步骤：**
+
+1. 在**[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，选择 " **Azure Active Directory**"。
+
+    ![“Azure Active Directory”按钮](common/select-azuread.png)
+
+2. 转到“企业应用程序”，并选择“所有应用程序”。 
+
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+
+3. 若要添加新应用程序，请选择窗格顶部的 "**新建应用程序**" 按钮。
+
+    ![“新增应用程序”按钮](common/add-new-app.png)
+
+4. 在搜索框中，输入**dropbox For business**，在结果面板中选择 " **dropbox for business** "，然后单击 "**添加**" 按钮添加该应用程序。
+
+    ![结果列表中的 Dropbox for Business](common/search-new-app.png)
 
 ## <a name="assigning-users-to-dropbox-for-business"></a>将用户分配到 Dropbox for Business
 
-Azure Active Directory 使用称为“分配”的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户帐户预配的上下文中，只同步已“分配”到 Azure AD 中的应用程序的用户和组。
+Azure Active Directory 使用称为分配的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户和/或组。
 
-在配置和启用预配服务之前，需要确定 Azure AD 中的哪些用户和/或组表示需要访问 Dropbox for Business 应用的用户。 确定后，可以按照此处的说明将这些用户分配到 Dropbox for Business 应用：
+在配置和启用自动用户预配之前，应决定 Azure AD 中哪些用户和/或组需要访问 Dropbox for Business。 确定后，可按照此处的说明将这些用户和/或组分配给 Dropbox for Business：
 
-[向企业应用分配用户或组](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+* [向企业应用分配用户或组](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-dropbox-for-business"></a>将用户分配到 Dropbox for Business 的重要提示
 
-*   建议将单个 Azure AD 用户分配到 Dropbox for Business 以测试预配配置。 其他用户和/或组可以稍后分配。
+* 建议将单个 Azure AD 用户分配到 Dropbox for Business，以便测试自动用户预配配置。 其他用户和/或组可以稍后分配。
 
-*   将用户分配到 Dropbox for Business 时，必须选择有效的用户角色。 “默认访问权限”角色不可用于预配。
+* 将用户分配到 Dropbox for Business 时，必须在分配对话框中选择任何特定于应用程序的有效角色（如果可用）。 具有“默认访问权限”角色的用户排除在预配之外。
 
-## <a name="enable-automated-user-provisioning"></a>启用自动化用户预配
+## <a name="configuring-automatic-user-provisioning-to-dropbox-for-business"></a>为 Dropbox for Business 配置自动用户预配 
 
-本部分指导完成将 Azure AD 连接到 Dropbox for Business 的用户帐户预配 API 并配置预配服务，以便在 Dropbox for Business 中根据 Azure AD 中的用户和组分配来创建、更新和禁用分配的用户帐户。
+本部分将指导你完成以下步骤：配置 Azure AD 预配服务，以便基于 Azure AD 中的用户和/或组分配在 Dropbox for Business 中创建、更新和禁用用户和/或组。
 
->[!Tip]
->还可选择按照 [Azure 门户](https://portal.azure.com)中提供的说明为 Dropbox for Business 启用基于 SAML 的单一登录。 可以独立于自动预配配置单一登录，尽管这两个功能互相补充。
+> [!TIP]
+> 你还可以选择根据[dropbox For business 单一登录教程](dropboxforbusiness-tutorial.md)中提供的说明为 Dropbox for business 启用基于 SAML 的单一登录。 可以独立于自动用户预配配置单一登录，尽管这两个功能互相补充。
 
-### <a name="to-configure-automatic-user-account-provisioning"></a>配置用户帐户自动预配：
+### <a name="to-configure-automatic-user-provisioning-for-dropbox-for-business-in-azure-ad"></a>若要为 Dropbox for Business 配置自动用户预配 Azure AD：
 
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分。
+1. 登录 [Azure 门户](https://portal.azure.com)。 依次选择“企业应用程序”、“所有应用程序” 。
 
-2. 如果已为 Dropbox for Business 配置单一登录，请使用搜索字段搜索 Dropbox for Business 实例。 否则，请选择“添加”并在应用程序库中搜索“Dropbox for Business”。 从搜索结果中选择 Dropbox for Business，并将其添加到应用程序列表。
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 选择 Dropbox for Business 实例，然后选择“预配”选项卡。
+2. 在应用程序列表中，选择“Dropbox for Business”****。
 
-4. 将“预配模式”设置为“自动”。 
+    ![应用程序列表中的“Dropbox for Business”链接](common/all-applications.png)
 
-    ![预配](./media/dropboxforbusiness-provisioning-tutorial/provisioning.png)
+3. 选择“预配”选项卡。
 
-5. 在“管理员凭据”部分下，单击“授权”。 随即将在新的浏览器窗口中打开 Dropbox for Business 登录对话框。
+    ![预配选项卡](common/provisioning.png)
 
-6. 在“登录 Dropbox 以链接 Azure AD”对话框中，登录到 Dropbox for Business 租户。
+4. 将“预配模式”设置为“自动”。
 
-     ![用户设置](./media/dropboxforbusiness-provisioning-tutorial/ic769518.png "用户设置")
+    ![“预配”选项卡](common/provisioning-automatic.png)
 
-7. 确认是否想要授予 Azure Active Directory 对 Dropbox for Business 租户进行更改的权限。 单击“允许”。
-    
-      ![用户设置](./media/dropboxforbusiness-provisioning-tutorial/ic769519.png "用户设置")
+5. 在“管理员凭据”**** 部分下，单击“授权”****。 随即将在新的浏览器窗口中打开 Dropbox for Business 登录对话框。
 
-8. 在 Azure 门户中，单击“测试连接”确保 Azure AD 可以连接到 Dropbox for Business 应用。 如果连接失败，请确保 Dropbox for Business 帐户具有团队管理员权限，并重试“授权”步骤。
+    ![设置 ](common/provisioning-oauth.png)
 
-9. 在“通知电子邮件”字段中输入应接收预配错误通知的人员或组的电子邮件地址，并选中复选框。
+6. 在 "**登录到 dropbox For business 以与 Azure AD 对话链接**" 对话框中，登录到 Dropbox for business 租户并验证身份。
 
-10. 单击“保存”。
+    ![Dropbox for Business 登录](media/dropboxforbusiness-provisioning-tutorial/dropbox01.png)
 
-11. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Dropbox for Business”。
+7. 完成步骤5和6后，单击 "**测试连接**" 以确保 Azure AD 可以连接到 Dropbox for Business。 如果连接失败，请确保你的 Dropbox for Business 帐户具有管理员权限，然后重试。
 
-12. 在“属性映射”部分中，查看从 Azure AD 同步到 Dropbox for Business 的用户属性。 选为“匹配”属性的特性用于匹配 Dropbox for Business 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
+    ![标记](common/provisioning-testconnection-oauth.png)
 
-13. 若要为 Dropbox for Business 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
+8. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”********。
 
-14. 单击“保存”。
+    ![通知电子邮件](common/provisioning-notification-email.png)
 
-这会开始“用户和组”部分中分配给 Dropbox for Business 的任何用户和/或组的初始同步。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 Dropbox for Business 应用执行的所有操作。
+9. 单击“保存” 。
 
-若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
+10. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 Dropbox**"。
 
+    ![Dropbox 用户映射](media/dropboxforbusiness-provisioning-tutorial/dropbox-user-mapping.png)
+
+11. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Dropbox 的用户属性。 选为 "**匹配**" 属性的属性用于匹配 Dropbox 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
+
+    ![Dropbox 用户属性](media/dropboxforbusiness-provisioning-tutorial/dropbox-user-attributes.png)
+
+12. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 组同步到 Dropbox**"。
+
+    ![Dropbox 组映射](media/dropboxforbusiness-provisioning-tutorial/dropbox-group-mapping.png)
+
+13. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Dropbox 的组属性。 选为 "**匹配**" 属性的属性用于匹配 Dropbox 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
+
+    ![Dropbox 组属性](media/dropboxforbusiness-provisioning-tutorial/dropbox-group-attributes.png)
+
+14. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
+
+15. 若要为 Dropbox 启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
+
+    ![预配状态已打开](common/provisioning-toggle-on.png)
+
+16. 通过在 "**设置**" 部分的 "**范围**" 中选择所需的值，定义要预配到 Dropbox 的用户和/或组。
+
+    ![预配范围](common/provisioning-scope.png)
+
+17. 已准备好预配时，单击“保存”。
+
+    ![保存预配配置](common/provisioning-configuration-save.png)
+
+此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步********。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 你可以使用 "**同步详细信息**" 部分监视进度并跟踪指向预配活动报告的链接，该报告描述了 Dropbox 上 Azure AD 预配服务执行的所有操作。
+
+若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
+
+## <a name="connector-limitations"></a>连接器限制
+ 
+* Dropbox 不支持挂起受邀用户。 如果已邀请的用户暂停，则将删除该用户。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户预配](tutorial-list.md)
+* [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
-* [配置单一登录](dropboxforbusiness-tutorial.md)
+
+## <a name="next-steps"></a>后续步骤
+
+* [了解如何查看日志并获取有关预配活动的报告](../app-provisioning/check-status-user-account-provisioning.md)
+

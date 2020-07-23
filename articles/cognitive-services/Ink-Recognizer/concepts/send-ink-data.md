@@ -1,27 +1,27 @@
 ---
 title: 将墨迹数据发送到墨迹识别器 API
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何针对不同的应用程序调用墨迹分析器 API
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 5a212c7332d085c15baabef8650572162c47903d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
-ms.translationtype: HT
+ms.openlocfilehash: 0ad961495d44f13522a3c02224a5612aaedaf076
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025451"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "79221102"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>将墨迹数据发送到墨迹识别器 API 
 
 数字墨迹是以数字形式表示手写和绘制等输入内容的技术。 此功能通常是使用一个数字化器实现的，该数字化器可以捕获输入设备（例如手写笔）的动作。 随着设备中不断推出丰富的数字墨迹书写体验，可以通过人工智能和机器学习来识别任意上下文中的书写形状和文本。 使用墨迹识别器 API 可以发送墨迹笔划及获取其详细信息。 
 
-## <a name="the-ink-recognizer-api-vs-ocr-services"></a>墨迹识别器 API 与OCR 服务
+## <a name="the-ink-recognizer-api-vs-ocr-services"></a>手写识别器 API 与 OCR 服务
 
 墨迹识别器 API 不使用光学字符识别 (OCR)。 OCR 服务通过处理图像中的像素数据来提供手写内容与文本的识别。 此功能有时称为脱机识别。 手写识别器 API 需要处理使用输入设备时捕获的数字墨迹笔划数据。 与 OCR 服务相比，以这种方式处理数字墨迹数据可以生成更准确的识别结果。 
 
@@ -82,7 +82,7 @@ ms.locfileid: "65025451"
 
 ## <a name="integrate-the-ink-recognizer-api-with-windows-ink"></a>将墨迹识别器 API 与 Windows Ink 集成
 
-[Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) 提供所需的工具和技术用于在多种不同的设备上实现数字墨迹体验。 可以将 Windows Ink 平台与墨迹识别 API 相结合，以创建可以显示和解释数字墨迹笔划的应用程序。
+[Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) 提供所需的工具和技术用于在多种不同的设备上实现数字墨迹体验。 可以将 Windows Ink 平台与 Ink 识别器 API 结合起来，以创建显示和解释数字墨笔划的应用程序。
 
 ## <a name="next-steps"></a>后续步骤
 

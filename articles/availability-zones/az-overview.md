@@ -1,93 +1,181 @@
 ---
-title: 什么是 Azure 可用性区域？ | Microsoft Docs
-description: 若要在 Azure 中创建具有高可用性和弹性的应用程序，可用性区域提供了可用于运行资源的物理独立位置。
-services: ''
-documentationcenter: ''
+title: Azure 中的区域和可用性区域
+description: 了解 Azure 中的区域和可用性区域，以满足你的技术和法规要求。
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: azure
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/30/2019
+ms.date: 04/28/2020
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: eefb5f3ea10d72cdf355fc810147414fe1714d67
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.custom: fasttrack-edit, mvc
+ms.openlocfilehash: 78f50abf68412d2edcb7a6504c8e5c1b788e5901
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417002"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85413155"
 ---
-# <a name="what-are-availability-zones-in-azure"></a>什么是 Azure 中的可用性区域？
-可用性区域是一个高可用性产品/服务，在数据中心发生故障时可以保护应用程序和数据。 可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的区域中必须至少有三个单独的区域。 区域中可用性区域的物理隔离可以在发生数据中心故障的情况下保护应用程序和数据。 区域冗余服务可跨可用性区域复制应用程序和数据，以防范单点故障。 Azure 凭借可用性区域提供一流的 99.99% VM 运行时间 SLA。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 说明了 Azure 作为整体的保证可用性。
+# <a name="regions-and-availability-zones-in-azure"></a>Azure 中的区域和可用性区域
 
-Azure 区域中的可用性区域是容错域和更新域的组合。 例如，如果在 Azure 区域的三个区域中创建三个或更多 VM，则 VM 将有效分布在三个容错域和三个更新域中。 Azure 平台会识别更新域上的此分布，以确保不同区域中的 VM 不会同时更新。
+Microsoft Azure 服务可在全球范围内实现云操作的最佳水平。 你可以根据技术和监管注意事项选择最适合你的需求区域：服务功能、数据常驻、合规性要求和延迟。
+
+## <a name="terminology"></a>术语
+
+为了更好地了解 Azure 中的区域和可用性区域，它有助于了解关键术语或概念。
+
+| 术语或概念 | 说明 |
+| --- | --- |
+| region | 在延迟定义的外围中部署的一组数据中心，并通过专用的区域低延迟网络进行连接。 |
+| geography | 世界上至少包含一个 Azure 区域的区域。 地理位置定义了一个保持数据驻留和符合性界限的离散市场。 地域允许具有特定数据驻留和符合性要求的客户保持他们的数据和应用程序相邻近。 地域具有容错能力，可通过其与专用的高容量网络基础结构的连接来经受完成区域故障。 |
+| 可用性区域 | 区域中的唯一物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 |
+| 推荐的区域 | 提供最广泛的服务功能的区域，旨在支持可用性区域现在或将来使用。 根据**建议**在 Azure 门户中指定这些项。 |
+| 备用（其他）区域 | 一种区域，它在 "数据驻留" 边界内扩展 Azure 占用量，其中还存在建议的区域。 备用区域有助于优化延迟，并为灾难恢复需要提供另一个区域。 它们不支持可用性区域（尽管 Azure 会定期评估这些区域，以确定是否应成为推荐的区域）。 它们在 Azure 门户中指定为 "**其他**"。 |
+| 基础服务 | 一种核心 Azure 服务，该服务在区域公开上市时在所有区域提供。 |
+| 主流服务 | 一项 Azure 服务，该服务在区域/服务的12个月内的所有推荐区域中提供，在备用区域中公开上市或要求驱动。 |
+| 专用服务 | 一项 Azure 服务，在自定义/专用硬件支持的各区域之间实现了要求驱动的可用性。 |
+| 区域服务 | 突破部署的 Azure 服务，可让客户指定要将服务部署到的区域。 有关完整列表，请参阅[可用产品（按区域](https://azure.microsoft.com/global-infrastructure/services/?products=all)）。 |
+| 非区域服务 | 一个 Azure 服务，它与特定的 Azure 区域没有任何依赖关系。 非区域服务部署到两个或多个区域，如果出现区域性故障，另一个区域中的服务实例将继续为客户提供服务。 有关完整列表，请参阅[可用产品（按区域](https://azure.microsoft.com/global-infrastructure/services/?products=all)）。 |
+
+## <a name="regions"></a>区域
+
+区域是在延迟定义的外围中部署的一组数据中心，通过专用的区域低延迟网络进行连接。 Azure 可让你灵活地部署需要的应用程序，包括跨多个区域，以提供跨区域复原能力。 有关详细信息，请参阅[复原支柱概述](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)。
+
+## <a name="availability-zones"></a>可用性区域
+
+可用性区域是一种高可用性产品，可保护应用程序和数据免受数据中心故障的影响。 可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的地区中都必须至少有三个单独的区域。 区域中可用性区域的物理隔离可以在发生数据中心故障的情况下保护应用程序和数据。 区域冗余服务可跨可用性区域复制应用程序和数据，以防范单点故障。 Azure 凭借可用性区域提供一流的 99.99% VM 运行时间 SLA。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 说明了 Azure 作为整体的保证可用性。
+
+Azure 区域中的可用性区域是容错域和更新域的组合。 例如，如果在 Azure 区域的三个区域中创建三个或更多 VM，则 VM 将有效分布在三个容错域和三个更新域中。 Azure 平台可识别更新域中的此分发，以确保不会计划同时更新不同区域中的 Vm。
 
 通过将计算、存储、网络和数据资源共置在一个区域并将其复制到其他区域，在应用程序体系结构中内置高可用性。 支持可用性区域的 Azure 服务划分为两类：
 
-- **区域服务** – 将资源（例如虚拟机、托管磁盘和 IP 地址）固定到特定的区域，或
-- **区域冗余服务** – 平台自动跨区域复制（例如区域冗余存储和 SQL 数据库）。
+- **区域性服务**–将资源固定到特定区域（例如虚拟机、托管磁盘、标准 IP 地址）或
+- **区域冗余服务**–当 Azure 平台跨区域自动复制时（例如，区域冗余存储、SQL 数据库）。
 
 若要在 Azure 上实现全面的业务连续性，可结合使用可用性区域和 Azure 区域对来构建应用程序体系结构。 可以使用 Azure 区域中的可用性区域以同步方式复制应用程序和数据以实现高可用性，并以异步方式跨 Azure 区域复制以实现灾难恢复保护。
  
 ![地区中发生故障的一个区域的概念视图](./media/az-overview/az-graphic-two.png)
 
-## <a name="services-support-by-region"></a>按区域的服务支持
+> [!IMPORTANT]
+> 可用性区域标识符（上图中的数字1、2和3）在逻辑上分别映射到每个订阅的实际物理区域。 这意味着，给定订阅中的可用性区域1可能引用不同订阅中不同于可用性区域1的物理区域。 因此，建议不要在虚拟机放置的不同订阅之间依赖于可用性区域 Id。
 
-Azure 服务和支持可用性区域的区域的组合是：
+## <a name="region-and-service-categories"></a>区域和服务类别
 
+Azure 上跨区域提供 Azure 服务可用性的最佳方法是通过表达在建议区域和备用区域中提供的服务来对其进行说明。
 
-|                                 |美洲 |              |           |           | 欧洲 |              |          |              | 亚太区 |                 |
-|----------------------------|----------|----------|---------|---------|--------------|------------|--------|----------|----------|-------------|
-|          |美国中部|美国东部|美国东部 2|美国西部 2|法国中部|北欧|英国南部|西欧|日本东部|东南亚|
-| **计算**                         |            |              |           |           |                |              |          |             |            |                |
-| Linux 虚拟机          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
-| Windows 虚拟机        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
-| 虚拟机规模集      | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
-| **存储**   |            |              |           |           |                |              |          |             |            |                |
-| 托管磁盘                   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
-| 区域冗余存储          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
-| **网络**                     |            |              |           |           |                |              |          |             |            |                |
-| 标准 IP 地址        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
-| 标准负载均衡器     | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
-| VPN 网关                     | &#10003;   |              | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    |            | &#10003;       |
-| ExpressRoute                    | &#10003;   |              | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    |            | &#10003;       |
-| 应用程序网关   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    | &#10003;       | &#10003;       |
-| **数据库**                     |            |              |           |           |                |              |          |             |            |                |
-| SQL 数据库                    | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    |            | &#10003;       |
-| Azure Cosmos DB                    |    |    |   |  |       |     | &#10003; |     |            | &#10003;       |
-| **分析**                       |            |              |           |           |                |              |          |             |            |                |
-| 事件中心                      | &#10003;   |              | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    |            | &#10003;       |
-| **集成**                     |            |              |           |           |                |              |          |             |            |                |
-| 服务总线（仅限高级层） | &#10003;   |              | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    |            | &#10003;       |
+- **推荐的区域**-一种提供范围最广的服务功能并设计为支持可用性区域现在或将来的服务的区域。 根据**建议**在 Azure 门户中指定这些项。
+- **备用（其他）区域**-在数据驻留边界内扩展 Azure 占用量的区域，该区域也存在建议的区域。 备用区域有助于优化延迟，并为灾难恢复需要提供另一个区域。 它们不支持可用性区域（尽管 Azure 会定期评估这些区域，以确定是否应成为推荐的区域）。 它们在 Azure 门户中指定为 "**其他**"。
 
+### <a name="comparing-region-types"></a>比较区域类型
 
+Azure 服务分为三个类别：基本、主流和专用服务。 将服务部署到任何给定区域的 Azure 一般策略主要由区域类型、服务类别和客户需求驱动：
 
-## <a name="services-resiliency"></a>服务复原能力
-所有 Azure 管理服务，旨在从免受区域级故障中复原。 范围的故障，在区域中的一个或多个可用性区域故障具有较小故障半径相比整个区域的故障。 从区域级故障的管理服务在区域中或从另一个 Azure 区域，azure 可以恢复。 Azure 中的区域，以避免影响客户资源在区域内跨可用性区域部署任何失败一次执行关键维护一个区域。
+- **基础**–当区域公开上市时，或在新的基础服务公开上市后的12个月内提供。
+- **主流**–在区域/服务正式发布后12个月内的所有推荐区域提供;备用区域中的按需驱动（多个已部署到备用区域的较大子集）。
+- **专门**面向行业的服务产品，通常由自定义/专用硬件集中或支持。 跨区域的按需驱动的可用性（很多已部署到建议区域的大型部分）。
 
-## <a name="pricing"></a>定价
+若要查看给定区域中部署了哪些服务，以及区域中服务的预览或公开服务的未来发展路线图，请参阅[按区域提供的产品](https://azure.microsoft.com/global-infrastructure/services/?products=all)。
+
+如果某个服务产品在特定区域中不可用，你可以通过联系 Microsoft 销售代表来分享你的兴趣。
+
+| 区域类型 | 非区域 | 基础 | 主要支持 | 专用 | 可用性区域 | 数据驻留 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 建议 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 需求驱动 | :heavy_check_mark: | :heavy_check_mark: |
+| 备用 | :heavy_check_mark: | :heavy_check_mark: | 需求驱动 | 需求驱动 | 不适用 | :heavy_check_mark: |
+
+### <a name="services-by-category"></a>按类别分类的服务
+
+如前所述，Azure 将服务分为三个类别：基础、主流和专用化。 服务类别在正式发布时分配。 通常，服务会将其生命周期作为专用服务启动，并按需求和利用率增加，从而提升为主流或基础。 下表列出了 "基本"、"主流" 或 "专用" 服务的类别。 应注意以下有关表的信息：
+
+- 某些服务不是区域。 有关非区域性服务的信息和列表，请参阅[可用产品（按区域](https://azure.microsoft.com/global-infrastructure/services/)）。
+- 不会列出较旧的代虚拟机。 有关详细信息，请参阅[之前代虚拟机大小的](../virtual-machines/sizes-previous-gen.md)文档。
+
+> [!div class="mx-tableFixed"]
+> | 基础 | 主要支持 | 专用 |
+> | --- | --- | --- |
+> | 帐户存储 | API 管理 | 适用于 FHIR 的 Azure API |
+> | 应用程序网关 | 应用配置 | Azure 区块链服务 |
+> | Azure 备份 | 应用服务 | Azure 蓝图 |
+> | Azure Cosmos DB | 自动化 | Azure Database for MariaDB |
+> | Azure Data Lake Storage Gen2 | Azure Active Directory 域服务 | Azure 专用 HSM |
+> | Azure ExpressRoute | Azure Analysis Services | Azure Dev Spaces |
+> | Azure SQL Database | Azure Bastion | Azure 数字孪生 |
+> | 云服务 | 用于 Redis 的 Azure 缓存 | Azure 实验室服务 |
+> | 云服务： Av2 系列 | Azure 认知搜索 | Azure NetApp 文件 |
+> | 云服务： Dv2 系列 | Azure 数据资源管理器 | Azure 量程 |
+> | 云服务： Dv3 系列 | Azure Data Share | Azure 时序见解 |
+> | 云服务： Ev3 系列 | Azure Database for MySQL | Azure VMware Solution by CloudSimple |
+> | 云服务：实例级别 Ip | Azure Database for PostgreSQL | 云服务： A8-A11 （计算密集型） |
+> | 云服务：保留 IP | Azure 数据库迁移服务 | 云服务： G 系列 |
+> | 磁盘存储 | Azure Databricks | 云服务： H 系列 |
+> | 事件中心 | Azure DDoS 防护 | 认知服务：异常探测器 |
+> | Key Vault | Azure 开发测试实验室 | 认知服务：自定义视觉 |
+> | 负载均衡器 | Azure 防火墙管理器 | 认知服务：演讲者识别 |
+> | 服务总线 | Azure 防火墙 | Data Box Heavy |
+> | Service Fabric | Azure Functions | 数据目录 |
+> | 虚拟机规模集 | Azure HPC 缓存 | 数据工厂：数据工厂 V1 |
+> | 虚拟机 | Azure IoT 中心 | Data Lake Analytics |
+> | 虚拟机： Av2 系列 | Azure Kubernetes 服务 (AKS) | 机器学习工作室 |
+> | 虚拟机： Bs.1770 系列 | Azure 机器学习 | Microsoft 基因组学 |
+> | 虚拟机： DSv2 系列 | Azure 专用链接 | 远程渲染 |
+> | 虚拟机： DSv3 系列 | Azure Red Hat OpenShift | 空间定位点 |
+> | 虚拟机： Dv2 系列 | Azure Site Recovery | StorSimple |
+> | 虚拟机： Dv3 系列 | Azure 春季云服务 | 视频索引器 |
+> | 虚拟机： ESv3 系列 | Azure Stack Hub | 虚拟机： A8-A11 （计算密集型） |
+> | 虚拟机： Ev3 系列 | Azure 流分析 | 虚拟机： DASv4 系列 |
+> | 虚拟机： F 系列 | Azure Synapse Analytics | 虚拟机： DAv4 系列 |
+> | 虚拟机： FS 系列 | Azure SignalR 服务 | 虚拟机： DCsv2 系列 |
+> | 虚拟机：实例级别 Ip | Batch | 虚拟机： EASv4 系列 |
+> | 虚拟机：保留 IP | 云服务： M 系列 | 虚拟机： EAv4 系列 |
+> | 虚拟网络 | 认知服务 | 虚拟机： G 系列 |
+> | VPN 网关 | 认知服务：计算机视觉 | 虚拟机： GS 系列 |
+> |  | 认知服务：内容审查器 | 虚拟机： HBv1 系列 |
+> |  | 认知服务：面部 | 虚拟机： HBv2 系列 |
+> |  | 认知服务：语言理解 | 虚拟机： HCv1 系列 |
+> |  | 认知服务：语音服务 | 虚拟机： H 系列 |
+> |  | 认知服务：QnA Maker | 虚拟机： LS 系列 |
+> |  | 容器实例 | 虚拟机： LSv2 系列 |
+> |  | 容器注册表 | 虚拟机： Mv2 系列 |
+> |  | 数据工厂 | 虚拟机： NC 系列 |
+> |  | 事件网格 | 虚拟机： NCv2 系列 |
+> |  | HDInsight | 虚拟机： NCv3 系列 |
+> |  | 逻辑应用 | 虚拟机： NDs 系列 |
+> |  | 媒体服务 | 虚拟机： NDv2 系列 |
+> |  | 网络观察程序 | 虚拟机： NV 系列 |
+> |  | 通知中心 | 虚拟机： NVv3 系列 |
+> |  | Power BI Embedded | 虚拟机： NVv4 系列 |
+> |  | 高级 Blob 存储 | 虚拟机： Azure SAP HANA 大型实例 |
+> |  | 高级文件存储 | Visual Studio App Center |
+> |  | 存储：存档存储 |  |
+> |  | Ultra 磁盘存储 |  |
+> |  | 虚拟机： Fsv2 系列 |  |
+> |  | 虚拟机： M 系列 |  |
+> |  | 虚拟 WAN |  |
+
+###  <a name="services-resiliency"></a>服务复原
+
+所有 Azure 管理服务都设计为可从区域级故障中复原。 在故障范围内，区域中的一个或多个可用性区域故障与整个区域发生故障相比具有更小的故障半径。 Azure 可以从区域内或其他 Azure 区域内的管理服务的区域级故障中恢复。 Azure 会在区域中一次执行关键维护，以防止任何影响在区域内的可用性区域部署的客户资源的故障。
+
+### <a name="pricing-for-vms-in-availability-zones"></a>可用性区域中 Vm 的定价
+
 在可用性区域中部署虚拟机不会产生额外的费用。 当两个或更多个 VM 部署在一个 Azure 区域中的两个或更多个可用性区域时，可获得 99.99% VM 运行时间 SLA。 会产生可用性区域间 VM 到 VM 的数据传输费用。 有关详细信息，请查看[带宽定价](https://azure.microsoft.com/pricing/details/bandwidth/)页。
 
+### <a name="get-started-with-availability-zones"></a>可用性区域入门
 
-## <a name="get-started-with-availability-zones"></a>可用性区域入门
 - [创建虚拟机](../virtual-machines/windows/create-portal-availability-zone.md)
 - [使用 PowerShell 添加托管磁盘](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 - [创建区域冗余的虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
 - [使用具有区域冗余前端的标准负载均衡器跨区域对 VM 进行负载均衡](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
 - [使用具有区域性前端的标准负载均衡器在区域内对 VM 进行负载均衡](../load-balancer/load-balancer-standard-public-zonal-cli.md)
 - [区域冗余存储](../storage/common/storage-redundancy-zrs.md)
-- [SQL 数据库](../sql-database/sql-database-high-availability.md#zone-redundant-configuration)
+- [SQL 数据库](../azure-sql/database/high-availability-sla.md#zone-redundant-configuration)
 - [事件中心异地灾难恢复](../event-hubs/event-hubs-geo-dr.md#availability-zones)
 - [服务总线异地灾难恢复](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)
 - [创建区域冗余的虚拟网关](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
-- [添加 Azure Cosmos DB 的区域冗余区域](../cosmos-db/high-availability.md#availability-zone-support)
-
+- [为 Azure Cosmos DB 添加区域冗余区域](../cosmos-db/high-availability.md#availability-zone-support)
+- [入门用于 Redis 的 Azure 缓存可用性区域](https://aka.ms/redis/az/getstarted)
+- [创建 Azure Active Directory 域服务实例](../active-directory-domain-services/tutorial-create-instance.md)
+- [创建使用可用性区域的 Azure Kubernetes 服务（AKS）群集](../aks/availability-zones.md)
 
 ## <a name="next-steps"></a>后续步骤
+
+- [支持在 Azure 中可用性区域的区域](az-region.md)
 - [快速入门模板](https://aka.ms/azqs)

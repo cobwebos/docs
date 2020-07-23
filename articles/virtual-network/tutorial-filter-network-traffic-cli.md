@@ -11,18 +11,17 @@ Customer intent: I want to filter network traffic to virtual machines that perfo
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: a1ade6e823201419c3a742a36c66a50a9dc09976
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: b593630d6702f66b1b877c15688b9aea0e227fca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728805"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84688222"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>在 Azure CLI 中使用网络安全组筛选网络流量
 
@@ -164,7 +163,7 @@ az vm create \
 
 创建 VM 需要几分钟时间。 创建 VM 后，将返回以下示例所示的输出： 
 
-```azurecli 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVmWeb",
@@ -177,7 +176,7 @@ az vm create \
 }
 ```
 
-记下 publicIpAddress。 在后面的步骤中会使用此地址通过 Internet 访问 VM。  创建充当管理服务器的 VM：
+记下 publicIpAddress。  在后面的步骤中会使用此地址通过 Internet 访问 VM。  创建充当管理服务器的 VM：
 
 ```azurecli-interactive
 az vm create \
@@ -196,7 +195,7 @@ az vm create \
 
 ## <a name="test-traffic-filters"></a>测试流量筛选器
 
-使用以下命令来与 *myVmMgmt* VM 建立 SSH 会话。 替换 *\<publicIpAddress >* VM 的公共 IP 地址。 在上面的示例中，IP 地址为 *13.90.242.231*。
+使用以下命令来与 *myVmMgmt* VM 建立 SSH 会话。 将替换 *\<publicIpAddress>* 为 VM 的公共 IP 地址。 在上面的示例中，IP 地址为 *13.90.242.231*。
 
 ```bash 
 ssh azureuser@<publicIpAddress>
@@ -236,7 +235,7 @@ curl myVmWeb
 
 如果不再需要资源组及其包含的所有资源，可以使用 [az group delete](/cli/azure/group) 将其删除。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup --yes
 ```
 

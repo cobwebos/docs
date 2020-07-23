@@ -9,15 +9,15 @@ ms.date: 12/13/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 70ac106995324c758bde942d12191a01e3457e6e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121304"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67172684"
 ---
 > [!NOTE]
 > 这些示例不适用于 S2S/ExpressRoute 共存配置。
-> 有关使用共存配置中的网关的详细信息，请参阅[配置共存连接](../articles/expressroute/expressroute-howto-coexist-classic.md#gw)。
+> 有关使用共存配置中的网关的详细信息，请参阅[配置共存连接。](../articles/expressroute/expressroute-howto-coexist-classic.md#gw)
 
 ## <a name="add-a-gateway"></a>添加网关
 

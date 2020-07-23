@@ -1,24 +1,15 @@
 ---
-title: 在 Azure Service Fabric 中通过 Java 保护服务远程处理通信 | Microsoft Docs
+title: 使用 Java 保护服务远程处理通信
 description: 了解如何保护 Azure Service Fabric 群集中运行的 Java 可靠服务的基于服务远程处理的通信。
-services: service-fabric
-documentationcenter: java
 author: PavanKunapareddyMSFT
-manager: chackdan
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: b465ab602a14285f8cf40b24ce1dfa9c763fecb8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: adefeadf939d398268624343d82c18cbf5ec87cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60773343"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75609632"
 ---
 # <a name="secure-service-remoting-communications-in-a-java-service"></a>保护 Java 服务的服务远程处理通信
 > [!div class="op_single_selector"]
@@ -88,7 +79,7 @@ ms.locfileid: "60773343"
         }
        ```
 
-        如果要在 settings.xml 中添加 `TransportSettings` 节而不添加任何前缀，`FabricTransportListenerSettings` 将默认加载此节中的所有设置。
+        如果将在 settings.xml 中添加 `TransportSettings` 节而不添加任何前缀，则 `FabricTransportListenerSettings` 将按默认加载此节中的所有设置。
 
         ```xml
         <!--"TransportSettings" section without any prefix.-->

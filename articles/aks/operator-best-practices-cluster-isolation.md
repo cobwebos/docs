@@ -1,19 +1,16 @@
 ---
-title: 操作员最佳做法 - Azure Kubernetes 服务 (AKS) 中的群集隔离
+title: 群集隔离的最佳做法
+titleSuffix: Azure Kubernetes Service
 description: 了解有关 Azure Kubernetes 服务 (AKS) 中的隔离的群集操作员最佳做法
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: conceptual
-origin.date: 11/26/2018
-ms.date: 03/04/2019
-ms.author: v-yeche
-ms.openlocfilehash: 94aaa72497a8a5f171d6b42f59a3c5b507c71492
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 11/26/2018
+ms.openlocfilehash: 12c65f3b4241d3e732c51acb6ffa95ff314efb50
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60465271"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077757"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的群集隔离的最佳做法
 
@@ -33,7 +30,7 @@ Kubernetes 提供所需的功能让你在同一个群集中逻辑隔离团队和
   * 更高级的计划程序功能包括排斥 (taint) 和容许 (toleration)、节点选择器，以及节点和 pod 关联与反关联。 有关这些功能的详细信息，请参阅[有关 AKS 中高级计划程序功能的最佳做法][aks-best-practices-advanced-scheduler]。
 * “网络”包括用于控制传入和传出 pod 的流量流的网络策略的用法。
 * “身份验证和授权”包括基于角色的访问控制 (RBAC) 和 Azure Active Directory (AD) 集成、pod 标识以及 Azure Key Vault 中的机密的用法。 有关这些功能的详细信息，请参阅[有关 AKS 中身份验证和授权的最佳做法][aks-best-practices-identity]。
-* “容器”包括 pod 安全策略、pod 安全上下文，以及扫描映像和运行时中的漏洞。 此外，还涉及到使用 App Armor 或 Seccomp（安全计算）来限制容器对基础节点的访问。
+* **容器**包括适用于 AKS 的 Azure 策略外接程序，用于强制执行 pod 安全性、使用 pod 安全上下文，以及扫描映像和运行时中的漏洞。 此外，还涉及到使用 App Armor 或 Seccomp（安全计算）来限制容器对基础节点的访问。
 
 ## <a name="logically-isolate-clusters"></a>逻辑隔离群集
 
@@ -45,7 +42,7 @@ Kubernetes 提供所需的功能让你在同一个群集中逻辑隔离团队和
 
 群集逻辑分隔提供的 pod 密度通常比物理隔离的群集更高。 群集中闲置的超额计算容量更少。 与 Kubernetes 群集自动缩放程序相结合，可根据需求增加或减少节点数目。 采用这种自动缩放最佳做法，可以只运行所需数目的节点并尽量降低成本。
 
-AKS 或其他位置中的 Kubernetes 环境并不完全安全，因为可能存在恶意的多租户使用情况。 增加面向节点的安全功能（如 *Pod 安全策略*或更细粒度的基于角色的访问控制 (RBAC)）可增加攻击的难度。 但是，如果想真正实现可抵御恶意多租户工作负荷的安全性，虚拟机监控程序是唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。
+AKS 或其他位置中的 Kubernetes 环境并不完全安全，因为可能存在恶意的多租户使用情况。 在多租户环境中，多个租户使用公共的共享基础设施。 因此，如果不能信任所有租户，则需要进行额外的规划，以避免一个租户影响另一个租户的安全和服务。 增加面向节点的安全功能（如 *Pod 安全策略*或更细粒度的基于角色的访问控制 (RBAC)）可增加攻击的难度。 但是，为了在运行恶意多租户工作负荷时获得真正的安全性，虚拟机监控程序应是你唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。
 
 ## <a name="physically-isolate-clusters"></a>物理隔离群集
 

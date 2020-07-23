@@ -1,32 +1,23 @@
 ---
-title: 将 Service Fabric 应用程序部署到 Azure 中的群集 | Microsoft Docs
-description: 了解如何将应用程序从 Visual Studio 部署到群集。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
+title: 将 Service Fabric 应用部署到 Azure 中的群集
+description: 了解如何从 Visual Studio 将现有应用程序部署到新创建的 Azure Service Fabric 群集。
+author: athinanthny
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 01/14/2019
-ms.author: aljo,mikhegn
+ms.date: 07/22/2019
+ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 4b3922ea97391a83d729bcf8b25c489a45119046
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 4cd21669b30b8ec83d6a0538c90d4cec5cafe32a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66302434"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244984"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>教程：将 Service Fabric 应用程序部署到 Azure 中的群集
 
 本教程是一个系列中的第二部分。 它介绍如何将 Azure Service Fabric 应用程序部署到 Azure 中的新群集。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 创建群集。
 > * 使用 Visual Studio 将应用程序部署到远程群集。
@@ -39,13 +30,16 @@ ms.locfileid: "66302434"
 > * [使用 Azure Pipelines 配置 CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)。
 > * [设置应用程序的监视和诊断](service-fabric-tutorial-monitoring-aspnet.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [安装 Visual Studio 2019](https://www.visualstudio.com/)，并安装 **Azure 开发**以及 **ASP.NET 和 Web 开发**工作负荷。
 * [安装 Service Fabric SDK](service-fabric-get-started.md)。
+
+> [!NOTE]
+> 免费帐户可能不满足创建虚拟机的要求。 这会阻止完成本教程。 此外，在与群集关联的密钥保管库上创建证书时，非工作或非学校帐户可能会遇到权限问题。 如果遇到与证书创建相关的错误，请改用门户来创建群集。 
 
 ## <a name="download-the-voting-sample-application"></a>下载投票示例应用程序
 
@@ -59,7 +53,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="create-a-cluster"></a>创建群集
 
-应用程序就绪以后，即可创建 Service Fabric 群集，然后将应用程序部署到群集。 [Service Fabric 群集](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-anywhere)是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。
+应用程序就绪以后，即可创建 Service Fabric 群集，然后将应用程序部署到群集。 [Service Fabric 群集](./service-fabric-deploy-anywhere.md)是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。
 
 在本教程中，请在 Visual Studio IDE 中创建一个新的三节点型测试群集，然后将应用程序发布到该群集。 请参阅[有关创建和管理群集的教程](service-fabric-tutorial-create-vnet-and-windows-cluster.md)，了解如何创建生产群集。 也可通过 [Azure 门户](https://portal.azure.com)、[PowerShel](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)、[Azure CLI](./scripts/cli-create-cluster.md) 脚本或 [Azure 资源管理器模板](service-fabric-tutorial-create-vnet-and-windows-cluster.md)将应用程序部署到此前已创建的现有群集。
 
@@ -109,7 +103,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 选择“发布”  。
 
-应用程序部署完以后，请打开浏览器并输入群集地址，后跟 **:8080**。 或者输入另一端口（如果已配置一个）。 例如 `http://mytestcluster.southcentral.cloudapp.azure.com:8080`。 会看到应用程序在 Azure 群集中运行。 在投票网页中，尝试添加和删除投票选项，并针对这些选项中的一个或多个进行投票。
+应用程序部署完以后，请打开浏览器并输入群集地址，后跟 **:8080**。 或者输入另一端口（如果已配置一个）。 示例为 `http://mytestcluster.southcentral.cloudapp.azure.com:8080`。 会看到应用程序在 Azure 群集中运行。 在投票网页中，尝试添加和删除投票选项，并针对这些选项中的一个或多个进行投票。
 
 ![Service Fabric 投票示例](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-screenshot-new-azure.png)
 

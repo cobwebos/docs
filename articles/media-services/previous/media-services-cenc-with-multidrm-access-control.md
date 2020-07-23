@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: 336552c142e504ae7296314512f00688e30d032e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: willzhan
+ms.reviewer: kilroyh;yanmf;juliako
+ms.openlocfilehash: 4b5a18f0dc5edc06e4800215e88b694e681b5bbb
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61466394"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960456"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>使用 Azure 媒体服务设计带访问控制的内容保护系统 
 
@@ -57,7 +57,7 @@ Microsoft 已成为 DASH 和 CENC 与其他一些主要行业播放器的积极�
 
 下表汇总了每个 DRM 支持的原生平台/原生应用和浏览器。
 
-| **客户端平台** | **原生 DRM 支持** | **浏览器/应用** | **流格式** |
+| **客户端平台** | **本机 DRM 支持** | **浏览器/应用** | **流式处理格式** |
 | --- | --- | --- | --- |
 | **智能电视、操作员 STB、OTT STB** |主要为 PlayReady，和/或 Widevine，和/或其他 DRM |Linux、Opera、WebKit 及其他 |各种格式 |
 | **Windows 10 设备（Windows 电脑、Windows 平板电脑、Windows Phone、Xbox）** |PlayReady |Microsoft Edge/IE11/EME<br/><br/><br/>通用 Windows 平台 |DASH（对于 HLS，不支持 PlayReady）<br/><br/>DASH、平滑流式处理（对于 HLS，不支持 PlayReady） |
@@ -117,7 +117,7 @@ DRM 子系统可能包含以下组件：
 
 以下部分介绍密钥管理的设计。
 
-| **ContentKey-to-asset** | **方案** |
+| **ContentKey** | **方案** |
 | --- | --- |
 | 一对一 |最简单的情况。 它提供最精细的控制。 但是，此排列方式通常产生最高的许可证传送成本。 每个受保护的资产需要至少一个许可证请求。 |
 | 一对多 |可以对多个资产使用相同的内容密钥。 例如，对于如流派或流派子集（或电影基因）的逻辑组中的所有资产，可以使用单个内容密钥。 |
@@ -130,11 +130,11 @@ DRM 子系统可能包含以下组件：
 
 如果针对许可证传送使用公有云，持久性和非持久性许可证对于许可证传送成本有直接影响。 下面演示了两种不同的设计方案：
 
-* 月度订阅：使用永久性许可证，以及一对多内容密钥到资产映射。 例如，对于所有儿童影片，使用单个内容密钥进行加密。 在这种情况下：
+* 每月订阅：使用永久性许可证，以及一对多内容密钥到资产映射。 例如，对于所有儿童影片，使用单个内容密钥进行加密。 在这种情况下：
 
     所有儿童影片/设备的许可证总数 = 1
 
-* 月度订阅：在内容密钥与资产之间使用非永久性许可证以及一对一映射。 在这种情况下：
+* 每月订阅：在内容密钥与资产之间使用非永久性许可证以及一对一映射。 在这种情况下：
 
     所有儿童影片/设备的许可证总数 = [观看影片数] x [会话数]
 
@@ -147,7 +147,7 @@ DRM 子系统可能包含以下组件：
 
 | **构建基块** | **技术** |
 | --- | --- |
-| **播放器** |[Azure 媒体播放器](https://azure.microsoft.com/services/media-services/media-player/) |
+| **播放器** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
 | **标识提供者 (IDP)** |Azure Active Directory (Azure AD) |
 | **安全令牌服务 (STS)** |Azure AD |
 | **DRM 保护工作流** |媒体服务动态保护 |
@@ -188,7 +188,7 @@ DRM 子系统可能包含以下组件：
 ### <a name="implementation-procedures"></a>实现过程
 实现包括下列步骤：
 
-1. 准备测试资产。 将测试视频编码/打包为媒体服务中的多比特率分段 MP4。 此资产不受 DRM 保护。 DRM 保护稍后由动态保护完成。
+1. 准备测试资产。 将测试视频编码/打包为媒体服务中的多比特率分段 MP4。 此资产*不*受 DRM 保护。 DRM 保护稍后由动态保护完成。
 
 2. 创建密钥 ID 和内容密钥（可以选择从密钥种子中获取）。 在此情况下，不需要密钥管理系统，因为只需要对一些测试资产使用单个密钥 ID 和内容密钥。
 
@@ -225,7 +225,7 @@ DRM 子系统可能包含以下组件：
 
 有关 Azure AD 的信息：
 
-* 可以在 [Azure Active Directory 开发人员指南](../../active-directory/develop/v1-overview.md)中找到面向开发人员的信息。
+* 可以在 [Azure Active Directory 开发人员指南](../../active-directory/azuread-dev/v1-overview.md)中找到面向开发人员的信息。
 * 可以在[管理 Azure AD 租户目录](../../active-directory/fundamentals/active-directory-administer.md)中找到面向管理员的信息。
 
 ### <a name="some-issues-in-implementation"></a>实现中的一些问题
@@ -233,34 +233,42 @@ DRM 子系统可能包含以下组件：
 
 * 颁发者 URL 必须以“/”结尾。 受众必须是播放器应用程序客户端 ID。 此外，必须在颁发者 URL 的末尾添加“/”。
 
-        <add key="ida:audience" value="[Application Client ID GUID]" />
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```xml
+    <add key="ida:audience" value="[Application Client ID GUID]" />
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```
 
     在 [JWT 解码器](http://jwt.calebb.net/)中，可以看到 JWT 中所示的 **aud** 和 **iss**：
 
     ![JWT](./media/media-services-cenc-with-multidrm-access-control/media-services-1st-gotcha.png)
 
-* 在应用程序的“配置”选项卡上，将权限添加到 Azure AD 中的应用程序。 对于本地版本和已部署的版本，需要提供每个应用程序的权限。
+* 在应用程序的“配置”选项卡上，将权限添加到 Azure AD 中的应用程序。**** 对于本地版本和已部署的版本，需要提供每个应用程序的权限。
 
     ![权限](./media/media-services-cenc-with-multidrm-access-control/media-services-perms-to-other-apps.png)
 
 * 设置动态 CENC 保护时，请使用正确的颁发者。
 
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```xml
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```
 
     以下代码无法运行：
 
-        <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```xml
+    <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```
 
-    GUID 是 Azure AD 租户 ID。 可以在 Azure 门户上的“终结点”弹出菜单中找到该 GUID。
+    GUID 是 Azure AD 租户 ID。 可以在 Azure 门户上的“终结点”弹出菜单中找到该 GUID。****
 
 * 授予组成员资格声明权限。 确保 Azure AD 应用程序清单文件中包含以下内容： 
 
-    "groupMembershipClaims":"All"   （默认值为 null）
+    "groupMembershipClaims": "All"（默认值为 null）
 
 * 创建限制要求时，请设置适当的 TokenType。
 
-        objTokenRestrictionTemplate.TokenType = TokenType.JWT;
+    ```csharp
+    objTokenRestrictionTemplate.TokenType = TokenType.JWT;
+    ```
 
     由于除了 JWT (ACS) 以外，还添加了对 SWT (Azure AD) 的支持，因此默认 TokenType 是 TokenType.JWT。 如果使用 SWT/ACS，则必须将令牌设置为 TokenType.SWT。
 
@@ -312,9 +320,9 @@ DRM 许可证传送服务始终会检查来自 Azure AD 的当前/有效公钥�
 由于密钥可能在任何时间滚动更新，联合元数据文档中始终有多个有效公钥可用。 媒体服务许可证传送可以使用文档中指定的任何密钥。 因为一个密钥可能很快就被轮换为另一个密钥。
 
 ### <a name="where-is-the-access-token"></a>访问令牌位于何处？
-如果在[带有 OAuth 2.0 客户端凭据授予的应用程序标识](../../active-directory/develop/web-api.md)下，Web 应用调用 API 应用，身份验证流如下：
+如果在[带有 OAuth 2.0 客户端凭据授予的应用程序标识](../../active-directory/azuread-dev/web-api.md)下，Web 应用调用 API 应用，身份验证流如下：
 
-* 用户在 Web 应用程序中登录到 Azure AD。 有关详细信息，请参阅 [Web 浏览器到 Web 应用程序](../../active-directory/develop/web-app.md)。
+* 用户在 Web 应用程序中登录到 Azure AD。 有关详细信息，请参阅 [Web 浏览器到 Web 应用程序](../../active-directory/azuread-dev/web-app.md)。
 * Azure AD 许可证终结点使用授权代码将用户代理重定向回到客户端应用程序。 用户代理将授权代码返回给客户端应用程序的重定向 URI。
 * Web 应用程序需要获取访问令牌，以便通过 Web API 进行身份验证并检索所需的资源。 它向 Azure AD 的令牌终结点发出一个请求，在其中提供凭据、客户端 ID 以及 Web API 的应用程序 ID URI。 它将提供授权代码来证明已获得用户许可。
 * Azure AD 对应用程序进行身份验证并返回用来调用 Web API 的 JWT 访问令牌。
@@ -335,9 +343,9 @@ DRM 许可证传送服务始终会检查来自 Azure AD 的当前/有效公钥�
 
 2. 为资源应用添加新的密钥。
 
-3. 更新应用程序清单文件，使 groupMembershipClaims 属性具有值 "groupMembershipClaims":"All"。
+3. 更新应用程序清单文件，使 groupMembershipClaims 属性具有值 "groupMembershipClaims": "All"。
 
-4. 在指向播放器 Web 应用的 Azure AD 应用中，在“对其他应用程序的权限”部分添加步骤 1 中添加的资源应用。 在“委派权限”下面选择“访问 [资源名称]”。 此选项可授予 Web 应用创建访问令牌的权限以访问资源应用。 如果使用 Visual Studio 和 Azure Web 应用进行开发，请对本地版本和已部署版本的 Web 应用执行此操作。
+4. 在指向播放器 Web 应用的 Azure AD 应用中，在“对其他应用程序的权限”部分添加步骤 1 中添加的资源应用。**** 在“委派权限”下面选择“访问 [资源名称]”。******** 此选项可授予 Web 应用创建访问令牌的权限以访问资源应用。 如果使用 Visual Studio 和 Azure Web 应用进行开发，请对本地版本和已部署版本的 Web 应用执行此操作。
 
 Azure AD 颁发的 JWT 是用于访问此指针资源的访问令牌。
 
@@ -373,7 +381,7 @@ Azure AD 颁发的 JWT 是用于访问此指针资源的访问令牌。
 > [!NOTE]
 > 如果使用 .NET Framework/C# 作为开发平台，用于非对称安全密钥的 X509 证书的密钥长度必须至少为 2048。 这是 .NET Framework 中 System.IdentityModel.Tokens.X509AsymmetricSecurityKey 类的要求。 否则，将引发以下异常：
 > 
-> IDX10630:用于签名的 'System.IdentityModel.Tokens.X509AsymmetricSecurityKey' 不能小于 '2048' 位。
+> IDX10630: 用于签名的 'System.IdentityModel.Tokens.X509AsymmetricSecurityKey' 不能小于 '2048' 位。
 
 ## <a name="the-completed-system-and-test"></a>完成的系统和测试
 本部分逐步讲解如何在完成的端到端系统中完成以下方案，让读者在获取登录帐户之前对该行为有个基本印象。
@@ -461,12 +469,17 @@ Widevine 不会阻止对受保护的视频进行屏幕截图。
 
 在上述两个方案中，用户身份验证相同。 身份验证是通过 Azure AD 发生的。 唯一的差别在于，JWT 由自定义 STS 而不是 Azure AD 颁发。 配置动态 CENC 保护时，许可证传送服务的限制将指定 JWT 的类型是对称还是非对称密钥。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
+
 本文档讨论了使用多重原生 DRM 的 CENC 以及通过令牌身份验证进行访问控制：它的设计和实现使用了 Azure、媒体服务和媒体播放器。
 
 * 文中提供了一个参考设计，其中包含 DRM/CENC 子系统中的所有必要组件。
 * 已提供 Azure、媒体服务和媒体播放器的参考实现。
 * 同时还讨论了直接涉及到设计和实现的某些主题。
+
+## <a name="additional-notes"></a>附加说明
+
+* Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -1,19 +1,18 @@
 ---
-title: 使用 Azure Site Recovery 服务在“Azure 政府”区域和“公用”区域之间移动 Azure IaaS VM | Microsoft Docs
-description: 使用 Azure Site Recovery 在“Azure 政府”区域和“公用”区域之间移动 Azure IaaS VM。
-services: site-recovery
+title: 使用 Azure Site Recovery 在政府和公用区域之间移动 Azure VM
+description: 使用 Azure Site Recovery 在政府和公用区域之间移动 Azure VM。
 author: rajani-janaki-ram
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: fe2620c7a07389b2a86d36420eadd2ef5883f5da
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: d99a5feb344f970b10925b596726520b9dba9464
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60012759"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134025"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>在“Azure 政府”区域和“公用”区域之间移动 Azure VM 
 
@@ -21,7 +20,7 @@ ms.locfileid: "60012759"
 
 除了使用 [Azure Site Recovery](site-recovery-overview.md) 服务管理和协调本地计算机和 Azure VM 的灾难恢复以实现业务连续性和灾难恢复 (BCDR) 外，还可以使用 Site Recovery 来管理以另一个区域为目的地的 Azure VM 移动。       
 
-本教程介绍如何使用 Azure Site Recovery 在“Azure 政府”区域和“公用”区域之间移动 Azure VM。 该方法同样可扩展用于在不属相同地理群集的区域对之间移动 VM。 本教程介绍如何执行下列操作：
+本教程介绍如何使用 Azure Site Recovery 在“Azure 政府”区域和“公用”区域之间移动 Azure VM。 该方法同样可扩展用于在不属相同地理群集的区域对之间移动 VM。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 验证先决条件
@@ -33,7 +32,7 @@ ms.locfileid: "60012759"
 > * 丢弃源区域中的资源
 
 > [!IMPORTANT]
-> 本教程介绍如何在“Azure 政府”区域和“公用”区域之间移动 Azure VM 或者在 Azure VM 的常规灾难恢复解决方案不支持的区域对之间移动 Azure VM。 如果源和目标区域对受[支持](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)，请参阅此[文档](azure-to-azure-tutorial-migrate.md)进行移动。 如果你的要求是通过将一个可用性集中的 VM 移动到另一区域中区域固定的 VM 来提高可用性，请参阅[此教程](move-azure-VMs-AVset-Azone.md)。
+> 本教程介绍如何在“Azure 政府”区域和“公用”区域之间移动 Azure VM 或者在 Azure VM 的常规灾难恢复解决方案不支持的区域对之间移动 Azure VM。 如果源和目标区域对受[支持](./azure-to-azure-support-matrix.md#region-support)，请参阅此[文档](azure-to-azure-tutorial-migrate.md)进行移动。 如果你的要求是通过将一个可用性集中的 VM 移动到另一区域中区域固定的 VM 来提高可用性，请参阅[此教程](move-azure-VMs-AVset-Azone.md)。
 
 > [!IMPORTANT]
 > 不建议使用此方法在不支持的区域对之间配置 DR，因为定义这些对时要考虑到数据延迟，这对于 DR 方案至关重要。
@@ -41,13 +40,13 @@ ms.locfileid: "60012759"
 ## <a name="verify-prerequisites"></a>验证先决条件
 
 > [!NOTE]
-> 请确保了解此方案的[体系结构和组件](physical-azure-architecture.md)。 通过将 VM 视为物理服务器，此体系结构将用于移动 Azure VM。
+> 请确保了解此方案的[体系结构和组件](physical-azure-architecture.md)。 通过将 VM 视为物理服务器，此体系结构将用于移动 Azure VM  。
 
 - 查看所有组件的[支持要求](vmware-physical-secondary-support-matrix.md)。
 - 请确保想要复制的服务器符合 [Azure VM 要求](vmware-physical-secondary-support-matrix.md#replicated-vm-support)。
 - 准备一个帐户用于在要复制的每个服务器上自动安装移动服务。
 
-- 请注意，在 Azure 中的目标区域失败后，无法直接执行故障恢复到源区域。 必须再次将复制设置回目标。
+- 请注意，故障转移到 Azure 中的目标区域后，无法直接执行故障回复到源区域。 必须再次将复制设置回目标。
 
 ### <a name="verify-azure-account-permissions"></a>验证 Azure 帐户权限
 
@@ -66,7 +65,7 @@ ms.locfileid: "60012759"
 
 ### <a name="set-up-an-azure-storage-account"></a>设置 Azure 存储帐户
 
-设置 [Azure 存储帐户](../storage/common/storage-quickstart-create-account.md)。
+设置 [Azure 存储帐户](../storage/common/storage-account-create.md)。
 
 - Site Recovery 将本地计算机复制到 Azure 存储。 发生故障转移后，将从存储中创建 Azure VM。
 - 存储帐户必须位于与恢复服务保管库相同的区域。
@@ -97,13 +96,13 @@ ms.locfileid: "60012759"
 
      请参阅以下文档，根据源 VM 配置创建最常用的相关网络资源。
 
-    - [网络安全组](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [负载均衡器](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
-    - [公共 IP](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+    - [网络安全组](../virtual-network/manage-network-security-group.md)
+    - [负载均衡器](../load-balancer/index.yml)
+    - [公共 IP](../virtual-network/virtual-network-public-ip-address.md)
     
-    对于其他任何网络组件，请参阅网络[文档](https://docs.microsoft.com/azure/#pivot=products&panel=network)。 
+    对于其他任何网络组件，请参阅网络[文档](../index.yml?pivot=products&panel=network)。
 
-4. 若要在最终转接到目标区域之前测试配置，请在目标区域中手动[创建非生产网络](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)。 这可以尽量减少对生产造成的干扰，也是建议的做法。
+4. 若要在最终转接到目标区域之前测试配置，请在目标区域中手动[创建非生产网络](../virtual-network/quick-create-portal.md)。 这可以尽量减少对生产造成的干扰，也是建议的做法。
 
 ## <a name="copy-data-to-the-target-region"></a>将数据复制到目标区域
 以下步骤引导你使用 Azure Site Recovery 将数据复制到目标区域。
@@ -112,7 +111,7 @@ ms.locfileid: "60012759"
 
 1. 登录到 [Azure 门户](https://portal.azure.com) > **恢复服务**。
 2. 单击“创建资源” > “管理工具” > “备份和 Site Recovery”。
-3. 在“名称”中，指定友好名称 **ContosoVMVault**。 如果有多个 订阅，请选择适当的订阅。
+3. 在“名称”  中，指定友好名称 **ContosoVMVault**。 如果有多个 订阅，请选择适当的订阅。
 4. 创建资源组 **ContosoRG**。
 5. 指定 Azure 区域。 若要查看受支持的区域，请参阅 [Azure Site Recovery 定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)中的“地域可用性”。
 6. 在“恢复服务保管库”中，单击“概述” > “ConsotoVMVault” > “+复制”
@@ -123,9 +122,9 @@ ms.locfileid: "60012759"
 
 设置配置服务器，将它注册到保管库中，并且发现 VM。
 
-1. 单击“Site Recovery” > “准备基础结构” > “源”。
-2. 如果没有配置服务器，请单击“+ 配置服务器”。
-3. 在“添加服务器”中，检查“配置服务器”是否已显示在“服务器类型”中。
+1. 单击“Site Recovery”   > “准备基础结构”   > “源”  。
+2. 如果没有配置服务器，请单击“+ 配置服务器”  。
+3. 在“添加服务器”中，检查“配置服务器”是否已显示在“服务器类型”中。   
 4. 下载站点恢复统一安装程序安装文件。
 5. 下载保管库注册密钥。 运行统一安装程序时需要用到此密钥。 生成的密钥有效期为 5 天。
 
@@ -137,7 +136,7 @@ ms.locfileid: "60012759"
 开始之前，请执行以下操作： 
 
 #### <a name="verify-time-accuracy"></a>验证时间准确性
-在配置服务器计算机上，确保将系统时钟与[时间服务器](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)进行同步。 它应与之匹配。 如果它提前或落后 15 分钟，安装程序可能会失败。
+在配置服务器计算机上，确保将系统时钟与[时间服务器](/windows-server/networking/windows-time-service/windows-time-service-top)进行同步。 它应与之匹配。 如果它提前或落后 15 分钟，安装程序可能会失败。
 
 #### <a name="verify-connectivity"></a>验证连接性
 确保计算机可以根据你的环境访问这些 URL： 
@@ -160,7 +159,7 @@ ms.locfileid: "60012759"
 
 选择并验证目标资源。
 
-1. 单击“准备基础结构” > “目标”，并选择要使用的 Azure 订阅。
+1. 单击“准备基础结构”   > “目标”  ，并选择要使用的 Azure 订阅。
 2. 指定目标部署模型。
 3. Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和网络。
 
@@ -169,16 +168,16 @@ ms.locfileid: "60012759"
 
 ### <a name="create-a-replication-policy"></a>创建复制策略
 
-1. 若要创建新的复制策略，请单击“Site Recovery 基础结构” > “复制策略” > “+ 复制策略”。
-2. 在“创建复制策略”中指定策略名称。
-3. 在“RPO 阈值”中，指定恢复点目标 (RPO) 限制。 此值指定创建数据恢复点的频率。 如果连续复制超出此限制，将生成警报。
-4. 在“恢复点保留期”中，指定每个恢复点的保留期时长（以小时为单位）。 可以将复制的虚拟机恢复到窗口中的任何点。 复制到高级存储的计算机最多支持 24 小时的保留期，复制到标准存储的计算机最多支持 72 小时的保留期。
-5. 在“应用一致性快照频率”中，指定创建包含应用程序一致性快照的恢复点的频率（以分钟为单位）。 单击“确定”创建该策略。
+1. 若要创建新的复制策略，请单击“Site Recovery 基础结构”   > “复制策略”   > “+ 复制策略”  。
+2. 在“创建复制策略”  中指定策略名称。
+3. 在“RPO 阈值”中，指定恢复点目标 (RPO) 限制  。 此值指定创建数据恢复点的频率。 如果连续复制超出此限制，将生成警报。
+4. 在“恢复点保留期”中，指定每个恢复点的保留期时长（以小时为单位）  。 可以将复制的虚拟机恢复到窗口中的任何点。 复制到高级存储的计算机最多支持 24 小时的保留期，复制到标准存储的计算机最多支持 72 小时的保留期。
+5. 在“应用一致性快照频率”中，指定创建包含应用程序一致性快照的恢复点的频率（以分钟为单位）。  单击“确定”创建该策略。 
 
     ![复制策略](./media/physical-azure-disaster-recovery/replication-policy.png)
 
 
-此策略自动与配置服务器关联。 默认情况下会自动创建一个匹配策略以用于故障回复。 例如，如果复制策略是 rep-policy，则创建故障回复策略 rep-policy-failback。 从 Azure 启动故障回复之前，不会使用此策略。
+此策略自动与配置服务器关联。 默认情况下会自动创建一个匹配策略以用于故障回复。 例如，如果复制策略是 rep-policy，则创建故障回复策略 rep-policy-failback   。 从 Azure 启动故障回复之前，不会使用此策略。
 
 ### <a name="enable-replication"></a>启用复制
 
@@ -186,32 +185,32 @@ ms.locfileid: "60012759"
 - 为服务器启用复制后，可能要等 15 分钟或更长时间，更改才会生效并显示在门户中。
 
 1. 单击“复制应用程序” > “源”。
-2. 在“源”中选择配置服务器。
-3. 在“计算机类型”中，选择“物理计算机”。
-4. 选择进程服务器（配置服务器）。 然后单击“确定”。
-5. 在“目标”中，选择故障转移后要在其中创建 Azure VM 的订阅和资源组。 选择要在 Azure 中使用的部署模型（经典或资源管理）。
+2. 在“源”中选择配置服务器。 
+3. 在“计算机类型”中，选择“物理计算机”   。
+4. 选择进程服务器（配置服务器）。 然后单击“确定”  。
+5. 在“目标”中，选择故障转移后要在其中创建 Azure VM 的订阅和资源组。  选择要在 Azure 中使用的部署模型（经典或资源管理）。
 6. 选择要用于复制数据的 Azure 存储帐户。 
 7. 选择 Azure VM 在故障转移后创建时所要连接的 Azure 网络和子网。
-8. 选择“立即为选定的计算机配置”，将网络设置应用到选择保护的所有计算机。 选择“稍后配置”以选择每个计算机的 Azure 网络。 
-9. 在“物理计算机”中，单击“+物理计算机”。 指定名称和 IP 地址。 选择要复制的计算机的操作系统。 发现和列出服务器需要几分钟的时间。 
+8. 选择“立即为选定的计算机配置”  ，将网络设置应用到选择保护的所有计算机。 选择“稍后配置”以选择每个计算机的 Azure 网络。  
+9. 在“物理计算机”中，单击“+物理计算机”   。 指定名称和 IP 地址。 选择要复制的计算机的操作系统。 发现和列出服务器需要几分钟的时间。 
 
    > [!WARNING]
    > 需要输入要移动的 Azure VM 的 IP 地址
 
 10. 在“属性” > “配置属性”中，选择进程服务器在计算机上自动安装移动服务时使用的帐户。
 11. 在“复制设置” > “配置复制设置”中，检查是否选择了正确的复制策略。 
-12. 单击“启用复制”。 可以在“设置” > “作业” > “Site Recovery 作业”中，跟踪“启用保护”作业的进度。 在“完成保护”作业运行之后，计算机就可以进行故障转移了。
+12. 单击“启用复制”。  可以在“设置” > “作业” > “Site Recovery 作业”中，跟踪“启用保护”作业的进度。 在“完成保护”作业运行之后，计算机就可以进行故障转移了。 
 
 
-若要监视添加的服务器，可在“配置服务器” > “上次联系位置”查看上次发现服务器的时间。 若要添加计算机而不想要等待计划的发现时间，请突出显示配置服务器（不要单击它），并单击“刷新”。
+若要监视添加的服务器，可在“配置服务器” > “上次联系位置”查看上次发现服务器的时间。 若要添加计算机而不想要等待计划的发现时间，请突出显示配置服务器（不要单击它），并单击“刷新”  。
 
 ## <a name="test-the-configuration"></a>测试配置
 
 
 1. 导航到保管库，在“设置” > “复制的项”中，单击要移到目标区域的虚拟机，然后单击“+测试故障转移”图标。
-2. 在“测试故障转移”中，选择要用于故障转移的恢复点：
+2. 在“测试故障转移”  中，选择要用于故障转移的恢复点：
 
-   - **最新处理**：将 VM 故障转移到由 Site Recovery 服务处理的最新恢复点。 将显示时间戳。 使用此选项时，无需费时处理数据，因此 RTO（恢复时间目标）会较低
+   - **最新处理**：将 VM 故障转移到由 Site Recovery 处理的最新恢复点。 将显示时间戳。 使用此选项时，无需费时处理数据，因此 RTO（恢复时间目标）会较低
    - **最新的应用一致**：此选项将所有 VM 故障转移到最新的应用一致恢复点。 将显示时间戳。
    - **自定义**：选择任何恢复点。
 
@@ -220,21 +219,21 @@ ms.locfileid: "60012759"
    > [!IMPORTANT]
    > 建议使用单独的 Azure VM 网络（而不要使用生产网络）进行测试故障转移，生产网络是 VM 最终驻留的目标位置，是在启用复制时设置的。
 
-4. 若要开始测试移动，请单击“确定”。 若要跟踪进度，请单击 VM 以打开其属性。 或者，可以在保管库名称 >“设置” > “作业” > “Site Recovery 作业”中单击“测试故障转移”作业。
-5. 故障转移完成后，副本 Azure VM 会显示在 Azure 门户 >“虚拟机”中。 请确保 VM 正在运行、大小适当并已连接到相应的网络。
-6. 若要删除测试移动期间创建的 VM，请在“复制的项”中单击“清理测试故障转移”。 在“说明”中，记录并保存与测试关联的任何观测结果。
+4. 若要开始测试移动，请单击“确定”。  若要跟踪进度，请单击 VM 以打开其属性。 或者，可以在保管库名称 >“设置” > “作业” > “Site Recovery 作业”中单击“测试故障转移”作业。
+5. 故障转移完成后，副本 Azure VM 会显示在 Azure 门户 >“虚拟机”中。  请确保 VM 正在运行、大小适当并已连接到相应的网络。
+6. 若要删除测试移动期间创建的 VM，请在“复制的项”中单击“清理测试故障转移”。  在“说明”中，记录并保存与测试关联的任何观测结果。 
 
 ## <a name="perform-the-move-to-the-target-region-and-confirm"></a>执行移到目标区域的操作并确认。
 
 1. 导航到保管库，在“设置” > “复制的项”中单击虚拟机，然后单击“故障转移”。
-2. 在“故障转移”中，选择“最新”。 
-3. 选择“在开始故障转移前关闭计算机”。 Site Recovery 在触发故障转移之前会尝试关闭源 VM。 即使关机失败，故障转移也仍会继续。 可以在“作业”页上跟踪故障转移进度。 
+2. 在“故障转移”  中，选择“最新”  。 
+3. 选择“在开始故障转移前关闭计算机”  。 Site Recovery 在触发故障转移之前会尝试关闭源 VM。 即使关机失败，故障转移也仍会继续。 可以在“作业”页上跟踪故障转移进度。  
 4. 作业完成后，检查 VM 是否按预期显示在目标 Azure 区域中。
-5. 在“复制的项”中，右键单击 VM >“提交”。 这会完成移到目标区域的过程。 请等待提交作业完成。
+5. 在“复制的项”  中，右键单击 VM >“提交”  。 这会完成移到目标区域的过程。 请等待提交作业完成。
 
 ## <a name="discard-the-resource-in-the-source-region"></a>丢弃源区域中的资源 
 
-- 导航到 VM。  单击“禁用复制”。  这会停止复制 VM 数据的过程。  
+- 导航到 VM。  单击“禁用复制”  。  这会停止复制 VM 数据的过程。  
 
    > [!IMPORTANT]
    > 只有执行此步骤才能避免 ASR 复制产生费用。

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: fa53213e577028628d48db91704578e23888f2a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 41546a449165951cd7b462d1db2b1b58ae74e407
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61411323"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508089"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>在 StorSimple Virtual Array 上安装 Update 1.0
 
@@ -30,7 +30,8 @@ ms.locfileid: "61411323"
 应用软件更新或修补程序，使 StorSimple Virtual Array 保持最新。 在应用更新之前，建议使卷或共享依次在主机和设备上脱机。 这能在最大程度上减少发生数据损坏的可能性。 在卷或共享离线后，还应手动备份设备。
 
 > [!IMPORTANT]
-> - Update 1.0 对应于设备上的 10.0.10296.0 软件版本。 有关此更新中新增功能的信息，请转到 [Update 1.0 发行说明](storsimple-virtual-array-update-1-release-notes.md)。
+>
+> - Update 1.0 对应于设备上的 10.0.10296.0 软件版本****。 有关此更新中新增功能的信息，请转到 [Update 1.0 发行说明](storsimple-virtual-array-update-1-release-notes.md)。
 >
 > - 请记住，安装更新或修补程序会重新启动设备。 假定 StorSimple Virtual Array 是单节点设备，任何正在进行的 I/O 都将中断，设备也会停机。
 >
@@ -46,7 +47,7 @@ ms.locfileid: "61411323"
 
 [!INCLUDE [storsimple-virtual-array-install-update-via-portal](../../includes/storsimple-virtual-array-install-update-via-portal-1.md)]
 
-完成安装后，转到 StorSimple Device Manager 服务。 选择“设备”，并选择并单击刚刚更新的设备。 转到“设置”>“管理”>“设备更新”。 显示的软件版本应为 10.0.10296.0。
+完成安装后，转到 StorSimple Device Manager 服务。 选择“设备”****，并选择并单击刚刚更新的设备。 转到“设置”>“管理”>“设备更新”****。 显示的软件版本应为 10.0.10296.0****。
 
 ![更新后的软件版本](./media/storsimple-virtual-array-install-update-1/azupdate17m1.png)
 
@@ -58,7 +59,7 @@ ms.locfileid: "61411323"
 * 安装更新或修补程序
 
 > [!IMPORTANT] 
-> 仅当运行 Update 0.6 (10.0.10293.0) 时才继续此更新。如果运行的是之前版本，请先在设备上[安装 Update 0.6](storsimple-virtual-array-install-update-06.md)，然后再应用 Update 1。**
+> **仅当你运行更新0.6 （10.0.10293.0）时，才继续执行此更新。如果你运行的是早期版本，请先在你的设备上[安装更新 0.6](storsimple-virtual-array-install-update-06.md) ，然后应用 update 1。**
 
 ### <a name="download-the-update-or-the-hotfix"></a>下载更新或修补程序
 
@@ -66,13 +67,13 @@ ms.locfileid: "61411323"
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>下载更新或修补程序
 
-1. 启动 Internet Explorer，并转到 [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)。
+1. 启动 Internet Explorer 并导航到 [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) 。
 
-2. 如果是首次在此计算机上使用 Microsoft 更新目录，请在系统提示是否安装 Microsoft 更新目录外接程序时单击“安装”。
+2. 如果是首次在此计算机上使用 Microsoft 更新目录，请在系统提示是否安装 Microsoft 更新目录外接程序时单击“安装”****。
 
-3. 在 Microsoft 更新目录的搜索框中，输入要下载的修补程序的知识库 (KB) 编号。 针对 Update 1.0 输入 4047203，并单击“搜索”。
+3. 在 Microsoft 更新目录的搜索框中，输入要下载的修补程序的知识库 (KB) 编号。 针对 Update 1.0 输入 4047203，并单击“搜索”********。
    
-    此时会显示修补程序列表（例如 StorSimple Virtual Array Update 1.0）。
+    此时会显示修补程序列表（例如 StorSimple Virtual Array Update 1.0）****。
    
     ![搜索目录](./media/storsimple-virtual-array-install-update-1/download1.png)
 
@@ -99,11 +100,11 @@ ms.locfileid: "61411323"
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>安装更新或修补程序
 
-1. 在本地 Web UI 中，转到“维护” > “软件更新”。 记下运行的软件版本。 仅当运行 Update 0.6 (10.0.10293.0) 时才继续此更新。如果运行的是之前版本，请先在设备上[安装 Update 0.6](storsimple-virtual-array-install-update-06.md)，然后再应用 Update 1。**
+1. 在本地 web UI 中，请参阅**维护**  >  **软件更新**。 记下运行的软件版本。 **仅当你运行更新0.6 （10.0.10293.0）时，才继续执行此更新。如果你运行的是早期版本，请先在你的设备上[安装更新 0.6](storsimple-virtual-array-install-update-06.md) ，然后应用 update 1。**
    
     ![更新设备](./media/storsimple-virtual-array-install-update-1/update1m.png)
 
-2. 在“更新文件路径”中，输入更新或修补程序的文件名。 也可以浏览到网络共享上的更新或修补程序安装文件。 单击“应用”。
+2. 在“更新文件路径”**** 中，输入更新或修补程序的文件名。 也可以浏览到网络共享上的更新或修补程序安装文件。 单击“应用”。
    
     ![更新设备](./media/storsimple-virtual-array-install-update-1/update2m.png)
 
@@ -115,10 +116,10 @@ ms.locfileid: "61411323"
    
     ![更新设备](./media/storsimple-virtual-array-install-update-1/update5m.png)
 
-5. 重新启动完成后，会转到“登录”页。 若要验证设备软件是否已更新，请在本地 Web UI 中，转到“维护” > “软件更新”。 Update 1.0 显示的软件版本应为 10.0.0.0.0.10296。
+5. 重新启动完成后，会转到“登录”**** 页。 若要验证是否已更新设备软件，请在本地 web UI 中，请参阅**维护**  >  **软件更新**。 Update 1.0 显示的软件版本应为 10.0.0.0.0.10296****。
    
    > [!NOTE]
-   > 我们在本地 Web UI 和 Azure 门户中报告的软件版本稍有不同。 例如，针对同一版本，本地 Web UI 报告 10.0.0.0.0.10296，而 Azure 门户则报告 10.0.10296.0。
+   > 我们在本地 Web UI 和 Azure 门户中报告的软件版本稍有不同。 例如，针对同一版本，本地 Web UI 报告 10.0.0.0.0.10296，而 Azure 门户则报告 10.0.10296.0********。
    
     ![更新设备](./media/storsimple-virtual-array-install-update-1/update6m.png)
 

@@ -1,19 +1,20 @@
 ---
-title: Azure PowerShell 脚本-Azure Cosmos DB 列表，并通过 SQL （核心） API 的操作
-description: Azure PowerShell 脚本-Azure Cosmos DB 列表，并通过 SQL （核心） API 的操作
+title: PowerShell 脚本：列出和获取 Azure Cosmos DB SQL API 资源
+description: Azure PowerShell 脚本 - Azure Cosmos DB 列出和获取操作 - SQL API
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
-ms.date: 05/18/2019
+ms.subservice: cosmosdb-sql
+ms.topic: sample
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: a2bcf8a123ffd19c84e2d39b38d0c9612ba43afb
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: 51880e12f5f422acc0df05fa40da5f40f0ede3d3
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247344"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365961"
 ---
-# <a name="list-and-get-databases-and-containers-for-azure-cosmos-db---sql-core-api"></a>列表，并通过 Azure Cosmos DB-SQL （核心） API 的数据库和容器
+# <a name="list-and-get-databases-and-containers-for-azure-cosmos-db---sql-core-api"></a>列出和获取 Azure Cosmos DB 的数据库和容器 - SQL (Core) API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -21,7 +22,7 @@ ms.locfileid: "66247344"
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-list-get.ps1 "List or get databases or containers for SQL (Core) API")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-list-get.ps1 "List and get databases and containers for SQL API")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 
@@ -35,10 +36,12 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | 列出 Cosmos DB 帐户或获取指定的 Cosmos DB 帐户。 |
+| [Get-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabase) | 列出帐户中的 Cosmos DB 数据库，或在帐户中获取指定的 Cosmos DB 数据库。 |
+| [Get-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainer) | 列出数据库中的 Cosmos DB 容器，或在数据库中获取指定的 Cosmos DB 容器。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||

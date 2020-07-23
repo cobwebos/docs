@@ -1,6 +1,6 @@
 ---
-title: 教程 - 使用 RBAC 和 Azure PowerShell 授予用户对 Azure 资源的访问权限 | Microsoft Docs
-description: 了解如何使用基于角色的访问控制 (RBAC) 和 Azure PowerShell 授予用户对 Azure 资源的访问权限。
+title: 教程：使用 Azure PowerShell 授予用户对 Azure 资源的访问权限 - Azure RBAC
+description: 本教程介绍如何使用 Azure PowerShell 和 Azure 基于角色的访问控制 (Azure RBAC) 授予用户对 Azure 资源的访问权限。
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: b9aefc8eae733d9f43d1f5399c1464b40367f09e
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 9c35c08889892e877ecfac20910607ddf85b2282
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343470"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735481"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-azure-powershell"></a>教程：使用 RBAC 和 Azure PowerShell 授予用户对 Azure 资源的访问权限
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-azure-powershell"></a>教程：使用 Azure PowerShell 授予用户对 Azure 资源的访问权限
 
-可以通过[基于角色的访问控制 (RBAC)](overview.md) 方式管理对 Azure 资源的访问权限。 在本教程中，请授予用户访问权限，以便通过 Azure PowerShell 查看订阅中的所有内容并管理资源组中的一切。
+可以通过 [Azure 基于角色的访问控制 (Azure RBAC)](overview.md) 管理对 Azure 资源的访问权限。 在本教程中，请授予用户访问权限，以便通过 Azure PowerShell 查看订阅中的所有内容并管理资源组中的一切。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在不同范围授予用户访问权限
@@ -37,14 +37,14 @@ ms.locfileid: "56343470"
 
 ## <a name="prerequisites"></a>先决条件
 
-要完成本教程，需要：
+若要完成本教程，需要：
 
 - 在 Azure Active Directory 中创建用户的权限（或者有现成的用户）
 - [Azure Cloud Shell](/azure/cloud-shell/quickstart-powershell)
 
 ## <a name="role-assignments"></a>角色分配
 
-在 RBAC 中，若要授予访问权限，请创建角色分配。 角色分配包含三个元素：安全主体、角色订阅、范围。 下面是两个将要在本教程中执行的角色分配：
+在 Azure RBAC 中，若要授予访问权限，请创建角色分配。 角色分配包含三个要素：安全主体、角色订阅和范围。 下面是两个将要在本教程中执行的角色分配：
 
 | 安全主体 | 角色定义 | 范围 |
 | --- | --- | --- |
@@ -224,11 +224,11 @@ ms.locfileid: "56343470"
 
 ## <a name="optional-list-access-using-the-azure-portal"></a>（可选）使用 Azure 门户列出访问权限
 
-1. 若要查看角色分配在 Azure 门户中的显示情况，请查看“访问控制(IAM)”边栏选项卡，以了解相关订阅。
+1. 若要查看角色分配在 Azure 门户中的显示情况，请查看“访问控制(IAM)”边栏选项卡，以了解相关订阅。 
 
     ![用户在订阅范围的角色分配](./media/tutorial-role-assignments-user-powershell/role-assignments-subscription-user.png)
 
-1. 查看“访问控制(IAM)”边栏选项卡，了解相关资源组。
+1. 查看“访问控制(IAM)”边栏选项卡，了解相关资源组。 
 
     ![用户在资源组范围的角色分配](./media/tutorial-role-assignments-user-powershell/role-assignments-resource-group-user.png)
 
@@ -268,7 +268,7 @@ ms.locfileid: "56343470"
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
     ```
     
-1. 系统要求确认时，请键入“Y”。只需数秒钟即可删除。
+1. 系统要求确认时，请键入“Y”  。只需数秒钟即可删除。
 
 1. 使用 [Remove-AzureADUser](/powershell/module/azuread/remove-azureaduser) 命令删除用户。
 
@@ -279,4 +279,4 @@ ms.locfileid: "56343470"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [使用 RBAC 和 Azure PowerShell 管理对 Azure 资源的访问权限](role-assignments-powershell.md)
+> [使用 Azure PowerShell 添加或删除 Azure 角色分配](role-assignments-powershell.md)

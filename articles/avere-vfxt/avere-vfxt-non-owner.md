@@ -3,15 +3,15 @@ title: Avere vFXT 非所有者解决方法 - Azure
 description: 允许不具备订阅所有者权限的用户部署适用于 Azure 的 Avere vFXT 的解决方法
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
-ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: e72e6d969649de09389ee38b94e874fad98ee08f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 12/19/2019
+ms.author: rohogue
+ms.openlocfilehash: 0d9b1060ee35af6cbc2e1b95b0f7813072c52d2e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60409203"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505369"
 ---
 # <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>授权非所有者部署 Avere vFXT
 
@@ -19,11 +19,11 @@ ms.locfileid: "60409203"
 
 （部署 Avere vFXT 系统的推荐方法是让拥有所有者权限的用户执行创建步骤，如[准备创建 Avere vFXT](avere-vfxt-prereqs.md) 中所述。）  
 
-解决方法涉及创建其他访问角色，为其用户提供足够的权限来安装群集。 该角色必须由订阅所有者创建，并且所有者必须将其分配给适当的用户。 
+解决方法涉及创建其他访问角色，为其用户提供足够的权限来安装群集。 该角色必须由订阅所有者创建，并且所有者必须将其分配给适当的用户。
 
-订阅所有者还必须[接受 Avere vFXT 市场映像的使用条款](avere-vfxt-prereqs.md)。 
+订阅所有者还必须[接受 Avere vFXT 市场映像的使用条款](avere-vfxt-prereqs.md)。
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > 所有这些不走必须由对用于群集的订阅具有所有者特权的用户执行。
 
 1. 复制这些行并将其保存在文件中（例如，`averecreatecluster.json`）。 在 `AssignableScopes` 语句中使用订阅 ID。
@@ -49,7 +49,7 @@ ms.locfileid: "60409203"
            "Microsoft.Network/routeTables/routes/delete",
            "Microsoft.Network/virtualNetworks/subnets/join/action",
            "Microsoft.Network/virtualNetworks/subnets/read",
-   
+
            "Microsoft.Resources/subscriptions/resourceGroups/read",
            "Microsoft.Resources/subscriptions/resourceGroups/resources/read",
            "Microsoft.Storage/*/read",
@@ -63,6 +63,7 @@ ms.locfileid: "60409203"
    `az role definition create --role-definition <PATH_TO_FILE>`
 
     示例：
+
     ```azurecli
     az role definition create --role-definition ./averecreatecluster.json
     ```
@@ -71,7 +72,7 @@ ms.locfileid: "60409203"
 
    `az role assignment create --assignee <USERNAME> --scope /subscriptions/<SUBSCRIPTION_ID> --role 'avere-create-cluster'`
 
-完成此过程后，分配了此角色的任何用户均对订阅有下列权限： 
+完成此过程后，该角色向任何用户分配了订阅的以下权限：
 
 * 创建和配置网络基础结构
 * 创建群集控制器

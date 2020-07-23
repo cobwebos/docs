@@ -2,28 +2,31 @@
 title: 连接到 Azure Analysis Services 服务器 | Microsoft Docs
 description: 了解如何连接到 Azure 中的 Analysis Services 服务器并从中获取数据。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 04/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9a8863189ee9cb63d86b157c0bbebb6fd16116b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: references_regions
+ms.openlocfilehash: 170cf0081e6671451ece6dc2924ae7e418f520a2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61027962"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506768"
 ---
 # <a name="connecting-to-servers"></a>连接到服务器
 
-本文介绍了如何通过使用数据建模和管理应用程序（如 SQL Server Management Studio (SSMS) 或 SQL Server Data Tools (SSDT)）连接到服务器。 或者通过使用客户端报表应用程序，如 Microsoft Excel、Power BI Desktop 或自定义应用程序。 使用 HTTPS 连接到 Azure Analysis Services。
+本文介绍如何通过将数据建模和管理应用程序（例如 SQL Server Management Studio (SSMS) 或 Visual Studio）与 Analysis Services 项目或客户端报告应用程序（例如Microsoft Excel、Power BI Desktop 或自定义应用程序）一起使用来连接服务器。 使用 HTTPS 连接到 Azure Analysis Services。
 
 ## <a name="client-libraries"></a>客户端库
 
-[获取最新的客户端库](analysis-services-data-providers.md)
+[获取最新的客户端库](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
 
-与服务器的所有连接（无论连接类型）都需要更新后的 AMO、ADOMD.NET 和 OLEDB 客户端库才能连接到 Analysis Services 服务器。 对于 SSMS、SSDT、Excel 2016 及更高版本和 Power BI，最新的客户端库会每月发布安装或更新。 但是在某些情况下，应用程序可能不是最新版本。 例如，当策略延迟更新或 Office 365 更新在延期频道上时。
+与服务器的所有连接（无论连接类型）都需要更新后的 AMO、ADOMD.NET 和 OLEDB 客户端库才能连接到 Analysis Services 服务器。 对于 SSMS、Visual Studio、Excel 2016 及更高版本和 Power BI，最新的客户端库会与每月发布一起安装或更新。 但是在某些情况下，应用程序可能不是最新版本。 例如，当策略延迟更新或 Office 365 更新在延期频道上时。
+
+> [!NOTE]
+> 客户端库无法通过需要用户名和密码的代理服务器连接到 Azure Analysis Services。 
 
 ## <a name="server-name"></a>服务器名称
 
@@ -41,7 +44,7 @@ ms.locfileid: "61027962"
 ![在 Azure 中获取服务器名称](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 
 > [!NOTE]
-> 协议为美国东部 2 区域**aspaaseastus2**。
+> 美国东部2地区的协议为**aspaaseastus2**。
 
 ## <a name="connection-string"></a>连接字符串
 

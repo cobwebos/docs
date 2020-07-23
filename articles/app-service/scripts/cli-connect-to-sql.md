@@ -1,31 +1,24 @@
 ---
-title: Azure CLI 脚本示例 - 将应用连接到 SQL 数据库 | Microsoft Docs
-description: Azure CLI 脚本示例 - 将应用连接到 SQL 数据库
-services: appservice
-documentationcenter: appservice
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI：将应用连接到 SQL 数据库
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 此示例演示如何将应用连接到 SQL 数据库。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 7c2efdd0-f553-4038-a77a-e953021b3f77
-ms.service: app-service
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: e23ef4a12182aaeb6db84615106ed4e8919938bf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 297ef15cbf2b8e261d38dabe3a91cb26f3b449d2
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136779"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250734"
 ---
-# <a name="connect-an-app-service-app-to-a-sql-database-using-cli"></a>使用 CLI 将应用服务应用连接到 SQL 数据库
+# <a name="connect-an-app-service-app-to-sql-database-using-cli"></a>使用 CLI 将应用服务应用连接到 SQL 数据库
 
-此示例脚本创建一个 Azure SQL 数据库和一个应用服务应用。 然后，它将使用应用设置将 SQL 数据库链接到应用。
+该示例脚本会创建一个应用服务应用，并在 Azure SQL 数据库中创建一个数据库。 然后，它使用应用设置将该数据库与该应用相链接。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -48,8 +41,8 @@ ms.locfileid: "66136779"
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 创建应用服务计划。 |
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | 创建应用服务应用。 |
-| [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) | 创建 SQL 数据库服务器。  |
-| [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create) | 使用 SQL 数据库服务器创建新的数据库。 |
+| [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) | 创建服务器。  |
+| [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create) | 创建新数据库。 |
 | [`az sql db show-connection-string`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-show-connection-string) | 生成数据库的连接字符串。 |
 | [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | 创建或更新应用服务应用的应用设置。 应用设置将作为应用的环境变量公开。 |
 

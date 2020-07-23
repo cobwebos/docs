@@ -1,10 +1,10 @@
 ---
-title: Azure 通知中心安全推送
+title: 适用于 Windows 的 Azure 通知中心安全推送
 description: 了解如何在 Azure 中发送安全推送通知。 代码示例是使用 .NET API 通过 C# 编写的。
 documentationcenter: windows
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 services: notification-hubs
 ms.assetid: 5aef50f4-80b3-460e-a9a7-7435001273bd
 ms.service: notification-hubs
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: cf23ef5df3bdcaad23841da111fa06cc36b4cd57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: f953b21a221967c2310b2fc70056d48863149821
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61459142"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220042"
 ---
 # <a name="securely-push-notifications-from-azure-notification-hubs"></a>从 Azure 通知中心安全地推送通知
 
@@ -49,7 +51,7 @@ ms.locfileid: "61459142"
 
 > [!NOTE]
 > 本教程假设已根据[通知中心入门（Windows 应用商店）](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)中所述创建并配置了通知中心。
-> 此外，请注意 Windows Phone 8.1 需要 Windows（而不是 Windows Phone）凭据，且后台任务无法在 Windows Phone 8.0 或 Silverlight 8.1 上正常运行。 对于 Windows 应用商店应用程序，您只能在应用锁屏界面启用（单击 Appmanifest 中的复选框）的情况下，通过运行后台任务来接收通知。
+> 此外，请注意 Windows Phone 8.1 需要 Windows（而不是 Windows Phone）凭据，且后台任务无法在 Windows Phone 8.0 或 Silverlight 8.1 上正常运行。 对于 Windows 应用商店应用程序，只能在应用锁屏界面启用（单击 Appmanifest 中的复选框）的情况下，通过运行后台任务来接收通知。
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
@@ -57,12 +59,12 @@ ms.locfileid: "61459142"
 
 1. 在 **NotifyUserWindowsPhone** 项目中，将以下代码添加到 App.xaml.cs 注册推送后台任务。 在 `OnLaunched()` 方法的末尾添加以下代码行：
 
-    ```c#
+    ```csharp
     RegisterBackgroundTask();
     ```
 2. 仍在 App.xaml.cs 中，紧跟 `OnLaunched()` 方法添加以下代码：
 
-    ```c#
+    ```csharp
     private async void RegisterBackgroundTask()
     {
         if (!Windows.ApplicationModel.Background.BackgroundTaskRegistration.AllTasks.Any(i => i.Value.Name == "PushBackgroundTask"))
@@ -79,20 +81,20 @@ ms.locfileid: "61459142"
     ```
 3. 在 App.xaml.cs 文件的顶部添加以下 `using` 语句：
 
-    ```c#
+    ```csharp
     using Windows.Networking.PushNotifications;
     using Windows.ApplicationModel.Background;
     ```
-4. 从 Visual Studio 的“文件”菜单中，单击“全部保存”。
+4. 从 Visual Studio 的“文件”**** 菜单中，单击“全部保存”****。
 
 ## <a name="create-the-push-background-component"></a>创建推送背景组件
 
 下一步是创建推送背景组件。
 
 1. 在“解决方案资源管理器”中，右键单击解决方案的顶层节点（在本例中为 **Solution SecurePush**），并依次单击“**添加**”和“**新建项目**”。
-2. 展开“**应用商店应用**，并依次单击“**Windows Phone 应用**”和“**Windows 运行时组件 (Windows Phone)**”。 将该项目命名为 PushBackgroundComponent，然后单击“确定”创建项目。
+2. 展开“**应用商店应用**，并依次单击“**Windows Phone 应用**”和“**Windows 运行时组件 (Windows Phone)**”。 将该项目命名为 **PushBackgroundComponent**，然后单击“**确定**”创建项目。
 
-    ![][12]
+    ![突出显示了 "添加新项目" 对话框的屏幕截图，其中 Windows 运行时组件 (Windows Phone) Visual c # 选项。][12]
 3. 在“解决方案资源管理器”中，右键单击“**PushBackgroundComponent (Windows Phone 8.1)**”项目，并依次单击“**添加**”和“**类**”。 将新类命名为 `PushBackgroundTask.cs`。 单击“**添加**”生成类。
 4. 将 `PushBackgroundComponent` 命名空间定义的整个内容替换为以下代码，将占位符 `{back-end endpoint}` 替换为部署后端时获取的后端终结点：
 
@@ -147,7 +149,7 @@ ms.locfileid: "61459142"
 9. 返回到 NuGet“**搜索**”框，键入 **Json.net**。 安装 **Json.NET** 包，并关闭“NuGet 包管理器”窗口。
 10. 在 `PushBackgroundTask.cs` 文件的顶部，添加以下 `using` 语句：
 
-    ```c#
+    ```csharp
     using Windows.ApplicationModel.Background;
     using Windows.Networking.PushNotifications;
     using System.Net.Http;
@@ -157,16 +159,16 @@ ms.locfileid: "61459142"
     using Windows.UI.Notifications;
     using Windows.Data.Xml.Dom;
     ```
-11. 在“解决方案资源管理器”的 **NotifyUserWindowsPhone (Windows Phone 8.1)** 项目中，右键单击“**引用**”，并单击“**添加引用...**”。在“引用管理器”对话框中，选中 **PushBackgroundComponent** 旁边的复选框，并单击“**确定**”。
-12. 在“解决方案资源管理器”中，双击 **NotifyUserWindowsPhone (Windows Phone 8.1)** 项目中的“**Package.appxmanifest**”。 在“通知”下，将“Toast Capable”设置为“是”。
+11. 在解决方案资源管理器的**NotifyUserWindowsPhone (Windows Phone 8.1) **项目中，右键单击 "**引用**"，然后单击 "**添加引用 ...**"。在 "引用管理器" 对话框中，选中 " **PushBackgroundComponent**" 旁边的框，然后单击 **"确定"**。
+12. 在“解决方案资源管理器”中，双击 **NotifyUserWindowsPhone (Windows Phone 8.1)** 项目中的“**Package.appxmanifest**”。 在“**通知**”下，将“****”设置为“****”。
 
-    ![][3]
+    ![解决方案资源管理器的窗口的屏幕截图，其中的 "支持 Toast" 选项设置为 "是"，以红色显示。][3]
 13. 仍在 **Package.appxmanifest** 中，单击顶部附近的“**声明**”菜单。 在“**可用声明**”下拉列表中，单击“**后台任务**”，并单击“**添加**”。
 14. 在“**属性**”下的 **Package.appxmanifest** 中选中“**推送通知**”。
 15. 在“**应用设置**”下的 **Package.appxmanifest** 中，在“**入口点**”字段中键入 **PushBackgroundComponent.PushBackgroundTask**。
 
-    ![][13]
-16. 在“**文件**”菜单中，单击“ **全部保存**”。
+    ![解决方案资源管理器窗口的屏幕截图，其中包含可用声明、支持的声明、推送通知和以红色列出的入口点选项。][13]
+16. 在 "**文件**" 菜单中，单击 "**全部保存**"。
 
 ## <a name="run-the-application"></a>运行应用程序
 
@@ -175,7 +177,7 @@ ms.locfileid: "61459142"
 1. 在 Visual Studio 中运行此 **AppBackend** Web API 应用程序。 将显示 ASP.NET 网页。
 2. 在 Visual Studio 中运行此 **NotifyUserWindowsPhone (Windows Phone 8.1)** Windows Phone 应用。 Windows Phone 模拟器会自动运行并加载应用程序。
 3. 在 **NotifyUserWindowsPhone** 应用 UI 中，输入用户名和密码。 这些信息可以是任意字符串，但必须是相同的值。
-4. 在 **NotifyUserWindowsPhone** 应用 UI 中，单击“**登录并注册**”。 然后单击“发送推送”。
+4. 在 **NotifyUserWindowsPhone** 应用 UI 中，单击“**登录并注册**”。 然后单击“发送推送”****。
 
 [3]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push3.png
 [12]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push12.png

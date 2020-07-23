@@ -1,10 +1,9 @@
 ---
-title: 监视网络通信 - 教程 - Azure 门户 | Microsoft Docs
-description: 了解如何使用 Azure 网络观察程序的连接监视器功能监视两个虚拟机之间的网络通信。
+title: 教程：使用 Azure 门户监视网络通信
+description: 此教程介绍如何使用 Azure 网络观察程序的连接监视器功能监视两个虚拟机之间的网络通信。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to monitor communication between a VM and another VM. If the communication fails, I need to know why, so that I can resolve the problem.
@@ -14,18 +13,18 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 5cac4a46fb35ef955903018028abbe7588c94dc7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: acdaf2318c3082db876ed9c69b704d3d00cd4c90
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66233886"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "76834648"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>教程：使用 Azure 门户监视两个虚拟机之间的网络通信
 
-在虚拟机 (VM) 和终结点（例如另一 VM）之间成功通信对于组织来说可能很重要。 有时候，引入配置更改可能会导致通信中断。 本教程介绍如何执行下列操作：
+在虚拟机 (VM) 和终结点（例如另一 VM）之间成功通信对于组织来说可能很重要。 有时候，引入配置更改可能会导致通信中断。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建两个 VM
@@ -37,7 +36,7 @@ ms.locfileid: "66233886"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="create-vms"></a>创建 VM
 
@@ -160,7 +159,7 @@ ms.locfileid: "66233886"
 
     可以看到在 **myvm2529** 网络接口的状态列中有一个红色感叹号。
 
-6. 若要了解状态变化的原因，请选择上图中的“10.0.0.5”。 连接监视器通知你通信失败的原因是：“由于以下网络安全组规则，通信被阻止：  UserRule_DenySshInbound”。
+6. 若要了解状态变化的原因，请选择上图中的“10.0.0.5”。 连接监视器指示通信故障的原因是：  流量被以下网络安全组规则阻止: UserRule_DenySshInbound。
 
     如果你并不知道某人已实施你在步骤 4 中创建的安全规则，则可以从连接监视器中了解到，该规则是引发通信问题的原因。 然后，你就可以更改、覆盖或删除该规则，以便还原 VM 之间的通信。
 
@@ -169,7 +168,7 @@ ms.locfileid: "66233886"
 不再需要资源组时，可将资源组及其包含的所有资源一并删除：
 
 1. 在门户顶部的“搜索”框中输入“myResourceGroup”   。 当在搜索结果中看到“myResourceGroup”时，将其选中。 
-2. 选择“删除资源组”。 
+2. 选择“删除资源组”  。
 3. 对于“键入资源组名称:”，输入“myResourceGroup”，然后选择“删除”。   
 
 ## <a name="next-steps"></a>后续步骤

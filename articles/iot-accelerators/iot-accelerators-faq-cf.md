@@ -1,6 +1,6 @@
 ---
 title: 连接的工厂解决方案常见问题解答 - Azure | Microsoft Docs
-description: 连接的工厂解决方案加速器的常见问题解答
+description: 本文解答了连接工厂解决方案加速器的常见问题。 它包括指向 GitHub 存储库的链接。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,12 +8,11 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: ed429d923cad2c715621990c146d4cf3a23e7bca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61447924"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82792371"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>连接的工厂解决方案加速器的常见问题解答
 
@@ -30,7 +29,7 @@ ms.locfileid: "61447924"
 OPC 统一体系结构 (UA) 发布于 2008 年，是一种独立于平台、以服务为导向的互操作性标准。 OPC UA 为工业电脑、PLC 和传感器等多种行业体系和设备所采用。 OPC UA 将 OPC 经典规范的功能集成到一种具有内置安全性的可扩展框架。 它是一种由 OPC 基金会倡导的标准。 [OPC 基金会](https://opcfoundation.org/)是一个拥有 440 多个成员的非营利性组织。 组织的目标是使用 OPC 规范通过以下方面促进多供应商、多平台的安全可靠互操作性：
 
 * 基础结构
-* 规范
+* 规格
 * 技术
 * 进程
 
@@ -44,7 +43,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 
 * 使用[存储库](https://github.com/Azure/azure-iot-connected-factory)中的 PowerShell 脚本 `Simulation/Factory/Add-SimulationPublicIp.ps1`。 传入部署名称作为参数。 对于本地部署，请使用 `<your username>ConnFactoryLocal`。 该脚本会列显 VM 的 IP 地址。
 
-* 在 Azure 门户中，找到部署的资源组。 资源组名称即为你指定为解决方案名称或部署名称的名称，本地部署除外。 对于使用 build 脚本的本地部署，资源组名称为 `<your username>ConnFactoryLocal`。 现在向资源组添加新的公共 IP 地址。
+* 在 Azure 门户中，找到部署的资源组。 资源组名称即为你指定为解决方案名称或部署名称的名称，本地部署除外。 对于使用 build 脚本的本地部署，资源组名称为 `<your username>ConnFactoryLocal`。 现在向资源组添加新的公共 IP 地址****。
 
 > [!NOTE]
 > 在任意情况下，请按照 [Ubuntu 网站](https://wiki.ubuntu.com/Security/Upgrades)上的说明保安装最新修补程序。 保持安装处于最新状态，确保可通过公共 IP 地址访问 VM。
@@ -55,7 +54,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 
 * 使用[存储库](https://github.com/Azure/azure-iot-connected-factory)的 PowerShell 脚本 Simulation/Factory/Remove-SimulationPublicIp.ps1。 传入部署名称作为参数。 对于本地部署，请使用 `<your username>ConnFactoryLocal`。 该脚本会列显 VM 的 IP 地址。
 
-* 在 Azure 门户中，找到部署的资源组。 资源组名称即为你指定为解决方案名称或部署名称的名称，本地部署除外。 对于使用 build 脚本的本地部署，资源组名称为 `<your username>ConnFactoryLocal`。 现将公共 IP 地址从资源组删除。
+* 在 Azure 门户中，找到部署的资源组。 资源组名称即为你指定为解决方案名称或部署名称的名称，本地部署除外。 对于使用 build 脚本的本地部署，资源组名称为 `<your username>ConnFactoryLocal`。 现将公共 IP 地址从资源组删除****。
 
 ### <a name="how-do-i-sign-in-to-the-simulation-vm"></a>如何登录到模拟 VM？
 
@@ -68,7 +67,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 1. 要使用的用户名是：`docker`。
 1. 要使用的密码取决于部署所用的版本：
     * 对于 2017 年 6 月 1 日前使用 build.ps1 脚本部署的解决方案，密码为：`Passw0rd`。
-    * 对于 2017 年 6 月 1 日之后使用 build.ps1 脚本部署的解决方案，密码为：`<name of your deployment>.config.user`。 此密码存储在 VmAdminPassword 设置中。 除非使用 `build.ps1` 脚本参数 `-VmAdminPassword` 指定密码，否则密码会在部署时随机生成。
+    * 对于 2017 年 6 月 1 日之后使用 build.ps1 脚本部署的解决方案，密码为：`<name of your deployment>.config.user`。 此密码存储在 VmAdminPassword 设置中****。 除非使用 `build.ps1` 脚本参数 `-VmAdminPassword` 指定密码，否则密码会在部署时随机生成。
 
 ### <a name="how-do-i-stop-and-start-all-docker-processes-in-the-simulation-vm"></a>如何在模拟 VM 中停止和启动所有 docker 进程？
 
@@ -76,7 +75,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 1. 若要查看处于活动状态的容器，请运行 `docker ps`。
 1. 若要停止所有模拟容器，请运行 `./stopsimulation`。
 1. 若要启动所有模拟容器：
-    * 导出名称为 IOTHUB_CONNECTIONSTRING 的 shell 变量。 使用 `<name of your deployment>.config.user` 文件中 IotHubOwnerConnectionString 设置的值。 例如：
+    * 导出名称为 IOTHUB_CONNECTIONSTRING 的 shell 变量****。 使用 `<name of your deployment>.config.user` 文件中 IotHubOwnerConnectionString 设置的值****。 例如：
 
         ```sh
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
@@ -90,7 +89,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 
 ### <a name="how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution"></a>如何查找解决方案所使用的 IoT 中心的连接字符串？
 
-如果已使用[存储库](https://github.com/Azure/azure-iot-connected-factory)中的 `build.ps1` 脚本部署解决方案，此连接字符串是 `<name of your deployment>.config.user` 文件中 IotHubOwnerConnectionString 的值。
+如果已使用[存储库](https://github.com/Azure/azure-iot-connected-factory)中的 `build.ps1` 脚本部署解决方案，此连接字符串是 `<name of your deployment>.config.user` 文件中 IotHubOwnerConnectionString 的值****。
 
 还可使用 Azure 门户查找此连接字符串。 在部署资源组中的 IoT 中心找到连接字符串设置。
 
@@ -111,7 +110,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 * publisher.rio.corp.contoso
 * publisher.seattle.corp.contoso
 
-使用 [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) 或[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)工具，可以查看解决方案当前所用的 IoT 中心中注册了哪些设备。 若要使用设备资源管理器，则部署中需要 IoT 中心的连接字符串。 若要使用适用于 Azure CLI 的 IoT 扩展，则需要 IoT 中心的名称。
+使用 [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/) 或[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)工具，可以查看解决方案当前所用的 IoT 中心中注册了哪些设备。 若要使用设备资源管理器，则部署中需要 IoT 中心的连接字符串。 若要使用适用于 Azure CLI 的 IoT 扩展，则需要 IoT 中心的名称。
 
 ### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>如何从模拟组件获取日志数据？
 
@@ -125,7 +124,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>如何检查模拟是否正向云发送数据？
 
-通过 [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) 或 [Azure IoT CLI 扩展 monitor-events](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-monitor-events) 命令可检查从特定设备发送到 IoT 中心的数据。 若要使用这些工具，需要知道部署中的 IoT 中心连接字符串。 请参阅[如何查找解决方案所使用的 IoT 中心的连接字符串？](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+通过[Azure Iot 浏览器](https://github.com/Azure/azure-iot-explorer)或 " [Azure iot CLI 扩展监视器-事件](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events)" 命令，你可以检查从特定设备发送到 IoT 中心的数据。 若要使用这些工具，需要知道部署中的 IoT 中心连接字符串。 请参阅[如何查找解决方案所使用的 IoT 中心的连接字符串？](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 检查由以下某个发布者设备发送的数据：
 
@@ -146,9 +145,9 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 
 在连接的工厂 GitHub 存储库中使用 `build.ps1` 脚本进行部署时，请将生成窗口中的环境变量 `$env:MapApiQueryKey` 设置为 [Azure Maps 帐户的密钥](../azure-maps/how-to-manage-account-keys.md)。 互动地图随后会自动启用。
 
-此外，还可以在部署后向解决方案加速器添加 Azure Maps 帐户密钥。 导航到 Azure 门户并访问连接的工厂部署中的应用服务资源。 导航到“应用程序设置”，在此处可以找到“应用程序设置”部分。 将 MapApiQueryKey 设置为 [Azure Maps 帐户的密钥](../azure-maps/how-to-manage-account-keys.md)。 保存设置，然后导航到“概述”并重新启动应用服务。
+此外，还可以在部署后向解决方案加速器添加 Azure Maps 帐户密钥。 导航到 Azure 门户并访问连接的工厂部署中的应用服务资源。 导航到“应用程序设置”，在此处可以找到“应用程序设置”部分********。 将 MapApiQueryKey 设置为 [Azure Maps 帐户的密钥](../azure-maps/how-to-manage-account-keys.md)****。 保存设置，然后导航到“概述”**** 并重新启动应用服务。
 
-### <a name="how-do-i-create-an-azure-maps-account"></a>如何创建 Azure Maps 帐户？
+### <a name="how-do-i-create-an-azure-maps-account"></a>如何实现创建 Azure Maps 帐户？
 
 请参阅[如何管理 Azure Maps 帐户和密钥](../azure-maps/how-to-manage-account-keys.md)。
 

@@ -1,24 +1,26 @@
 ---
-title: 以编程方式监视 Azure 数据工厂 | Microsoft Docs
+title: 以编程方式监视 Azure 数据工厂
 description: 了解如何使用不同的软件开发工具包 (SDK) 监视数据工厂中的管道。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
-author: gauravmalhot
-ms.author: gamal
-manager: craigg
-ms.openlocfilehash: 035e12da67d28e8e3fb46ac295717dd6b579922c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+author: djpmsft
+ms.author: daperlov
+manager: anandsub
+ms.custom: tracking-python
+ms.openlocfilehash: 983beb70ef1919dc3230d5daa6d29fb7209f69aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66167051"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84561220"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>以编程方式监视 Azure 数据工厂
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 本文介绍如何使用不同的软件开发工具包 (SDK) 监视数据工厂中的管道。 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -73,11 +75,13 @@ ms.locfileid: "66167051"
 要监视管道的运行，请添加以下代码：
 
 ```python
-#Monitor the pipeline run
+# Monitor the pipeline run
 time.sleep(30)
-pipeline_run = adf_client.pipeline_runs.get(rg_name, df_name, run_response.run_id)
+pipeline_run = adf_client.pipeline_runs.get(
+    rg_name, df_name, run_response.run_id)
 print("\n\tPipeline run status: {}".format(pipeline_run.status))
-activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(rg_name, df_name, pipeline_run.run_id, datetime.now() - timedelta(1),  datetime.now() + timedelta(1)))
+activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(
+    rg_name, df_name, pipeline_run.run_id, datetime.now() - timedelta(1),  datetime.now() + timedelta(1)))
 print_activity_run_details(activity_runs_paged[0])
 ```
 

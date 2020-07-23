@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: d4e8d99cd7c67136f359772664eb017c6207e6e4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66165521"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67172893"
 ---
 ### <a name="create-a-tcp-endpoint-for-the-virtual-machine"></a>为虚拟机创建 TCP 终结点
 要从 Internet 访问 SQL Server，虚拟机必须具有终结点以侦听传入的 TCP 通信。 此 Azure 配置步骤将传入 TCP 端口通信定向到虚拟机可以访问的 TCP 端口。
@@ -19,14 +19,14 @@ ms.locfileid: "66165521"
 > 
 > 
 
-1. 在 Azure 门户中，选择“虚拟机(经典)”。
+1. 在 Azure 门户中，选择“虚拟机(经典)”。 
 2. 然后选择 SQL Server 虚拟机。
-3. 选择“终结点”，并单击终结点边栏选项卡顶部的“添加”按钮。
+3. 选择“终结点”，并单击终结点边栏选项卡顶部的“添加”按钮。  
    
     ![用于创建终结点的门户步骤](./media/virtual-machines-sql-server-connection-steps/portal-endpoint-creation.png)
-4. 在“添加终结点”边栏选项卡上，提供“名称”，例如 SQLEndpoint。
-5. 选择“TCP”作为“协议”。
-6. 为“公用端口”指定端口号，如“57500”。
-7. 为“专用端口”，指定 SQL Server 侦听端口，默认为“1433”。
-8. 单击“确定”创建终结点。
+4. 在“添加终结点”边栏选项卡上，提供“名称”，例如 SQLEndpoint。  
+5. 选择“TCP”作为“协议”   。
+6. 为“公用端口”指定端口号，如“57500”   。
+7. 为“专用端口”，指定 SQL Server 侦听端口，默认为“1433”   。
+8. 单击“确定”  创建终结点。
 

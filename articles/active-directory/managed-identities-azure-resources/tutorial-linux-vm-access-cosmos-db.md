@@ -1,5 +1,5 @@
 ---
-title: 使用 Linux VM 系统分配托管标识访问 Azure Cosmos DB
+title: 教程`:`使用托管标识访问 Azure Cosmos DB - Linux - Azure AD
 description: 本教程将指导你完成使用 Linux VM 系统分配托管标识访问 Azure Cosmos DB 的过程。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/09/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b79c4e1ddb84213ce9000236727d9bca298a0cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f15a269656f205b0acb6a49740dd4c625c0bdd41
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66231880"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "78248284"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>教程：使用 Linux VM 系统分配托管标识访问 Azure Cosmos DB 
 
@@ -37,7 +37,7 @@ ms.locfileid: "66231880"
 > * 获取访问令牌，并使用它调用 Azure 资源管理器
 > * 从 Azure 资源管理器中获取访问密钥，以便进行 Cosmos DB 调用
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -74,7 +74,7 @@ az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE 
 ```
 响应包括系统分配托管标识的详细信息（请记下 principalID，因为下一部分中将使用它）：
 
-```bash  
+```output  
 {
     "id": "/subscriptions/<SUBSCRIPTION ID>/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAMe>",
   "identity": {
@@ -96,7 +96,7 @@ az role assignment create --assignee <MI PRINCIPALID> --role '<ROLE NAME>' --sco
 
 响应包括所创建的角色分配的详细信息：
 
-```
+```output
 {
   "id": "/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.DocumentDB/databaseAccounts/<COSMOS DB ACCOUNT>/providers/Microsoft.Authorization/roleAssignments/5b44e628-394e-4e7b-bbc3-d6cd4f28f15b",
   "name": "5b44e628-394e-4e7b-bbc3-d6cd4f28f15b",
@@ -118,7 +118,7 @@ az role assignment create --assignee <MI PRINCIPALID> --role '<ROLE NAME>' --sco
 
 1. 在 Azure 门户中，导航到“虚拟机”  ，转到 Linux 虚拟机，然后在“概述”  页中单击顶部的“连接”  。 复制用于连接到 VM 的字符串。 
 2. 使用 SSH 客户端连接到 VM。  
-3. 接下来，系统会提示你输入创建“Linux VM”  时添加的“密码”  。 然后应可以成功登录。  
+3. 接下来，系统会提示你输入创建“Linux VM”时添加的“密码”。 然后应可以成功登录。  
 4. 使用 CURL 获取 Azure 资源管理器的访问令牌： 
      
     ```bash
@@ -159,13 +159,13 @@ CURL 响应提供一个密钥列表。  例如，如果获取只读密钥：
 
 有了 Cosmos DB 帐户的访问密钥以后，即可将其传递给 Cosmos DB SDK 并通过调用来访问该帐户。  如需快速示例，可将该访问密钥传递给 Azure CLI。  在 Azure 门户中，可以从 Cosmos DB 帐户边栏选项卡上的“概览”选项卡获取 `<COSMOS DB CONNECTION URL>`。   将 `<ACCESS KEY>` 替换为在上面获取的值：
 
-```bash
+```azurecli
 az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection "<COSMOS DB CONNECTION URL>" --key <ACCESS KEY>
 ```
 
 此 CLI 命令返回有关集合的详细信息：
 
-```bash
+```output
 {
   "collection": {
     "_conflicts": "conflicts/",

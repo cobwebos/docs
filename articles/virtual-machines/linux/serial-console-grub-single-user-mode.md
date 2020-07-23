@@ -1,25 +1,18 @@
 ---
-title: GRUB 和单用户模式的 Azure 串行控制台 | Microsoft Docs
+title: 适用于 GRUB 和单用户模式的 Azure 串行控制台
 description: 在 Azure 虚拟机中使用 grub 串行控制台。
 services: virtual-machines-linux
-documentationcenter: ''
 author: asinn826
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: a249cf96981957de2c445079c0172b9c0c2ce543
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 2aa7110ab4e52fdc5c3804bd27be5f41081fb435
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60799475"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81758506"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>使用串行控制台访问 GRUB 和单用户模式
 GRUB 指的是 GRand Unified Bootloader。 从 GRUB 可以修改启动配置以实现启动进入单用户模式等功能。
@@ -55,7 +48,7 @@ GRUB 指的是 GRand Unified Bootloader。 从 GRUB 可以修改启动配置以�
 ### <a name="grub-access-in-rhel"></a>在 RHEL 中访问 GRUB 访问
 RHEL 原本就启用了 GRUB。 若要进入 GRUB，请使用 `sudo reboot` 重新启动 VM，然后按任意键。 此时会显示 GRUB 屏幕。
 
-> 请注意:Red Hat 也提供了有关启动进入急救模式、紧急模式、调试模式以及重置 root 密码的文档。 [单击此处访问文档](https://aka.ms/rhel7grubterminal)。
+> 注意：Red Hat 也提供了有关启动进入急救模式、紧急模式、调试模式以及重置 root 密码的文档。 [单击此处访问文档](https://aka.ms/rhel7grubterminal)。
 
 ### <a name="set-up-root-access-for-single-user-mode-in-rhel"></a>在 RHEL 中为单用户模式设置 root 访问权限
 RHEL 中的单用户模式要求启用 root 用户（默认已禁用）。 如果需要启用单用户模式，请遵照以下说明：
@@ -89,7 +82,7 @@ RHEL 中的单用户模式要求启用 root 用户（默认已禁用）。 如�
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>未在 RHEL 中启用 root 帐户的情况下进入单用户模式
 如果未遵循上述步骤启用 root 用户，仍可以重置 root 密码。 请遵照以下说明：
 
-> 请注意:如果使用 SELinux，请确保在重置 root 密码时，执行[此处](https://aka.ms/rhel7grubterminal) Red Hat 文档中所述的附加步骤。
+> 注意：如果使用 SELinux，请确保在重置 root 密码时，执行[此处](https://aka.ms/rhel7grubterminal) Red Hat 文档中所述的附加步骤。
 
 1. 在重启 VM 时按“Esc”进入 GRUB
 1. 在 GRUB 中，按“e”编辑你要启动进入的选定 OS（通常是第一行）
@@ -103,7 +96,7 @@ RHEL 中的单用户模式要求启用 root 用户（默认已禁用）。 如�
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
-> 请注意:遵照上面的整个说明会置于紧急 shell 中，因此还可以执行编辑 `fstab` 之类的任务。 但是，用户普遍接受的建议是重置 root 密码，并使用该密码进入单用户模式。 
+> 注意：遵照上面的整个说明会置于紧急 shell 中，因此还可以执行编辑 `fstab` 之类的任务。 但是，用户普遍接受的建议是重置 root 密码，并使用该密码进入单用户模式。 
 
 
 ## <a name="access-for-centos"></a>在 CentOS 中访问
@@ -126,7 +119,7 @@ Ubuntu 映像不需要 root 密码。 如果系统启动进入单用户模式，
 1. 将 `GRUB_TIMEOUT` 值更改为非零值
 1. 在所选的文本编辑器中打开 `/etc/default/grub`
 1. 注释掉 `GRUB_HIDDEN_TIMEOUT=1` 所在的行
-1. 运行 `sudo update-grub`
+1. `sudo update-grub`运行
 
 ### <a name="single-user-mode-in-ubuntu"></a>Ubuntu 中的单用户模式
 在无法正常启动的情况下，Ubuntu 会自动将你置于单用户模式。 若要手动进入单用户模式，请遵照以下说明：
@@ -172,7 +165,7 @@ CoreOS 中的单用户模式要求启用 GRUB。
 1. 查找以 `linux` 开头的内核行
 1. 在行尾追加 `systemd.unit=emergency.target`
 1. 按 Ctrl + X 使用这些设置重新启动，并进入紧急 shell
-   > 请注意，系统会将你置于采用只读文件系统的紧急 shell。 若要对任何文件进行任何编辑，需要使用读写权限重新装载文件系统。 为此，请在 shell 中输入 `mount -o remount,rw /`
+   > 请注意，系统会将你置于采用只读文件系统的紧急 shell。__ 若要对任何文件进行任何编辑，需要使用读写权限重新装载文件系统。 为此，请在 shell 中输入 `mount -o remount,rw /`
 
 ## <a name="access-for-oracle-linux"></a>在 Oracle Linux 中访问
 与 Red Hat Enterprise Linux 中的情况非常类似，Oracle Linux 中的单用户模式也要求启用 GRUB 和 root 用户。 
@@ -184,7 +177,7 @@ Oracle Linux 原本就启用了 GRUB。 若要进入 GRUB，请使用 `sudo rebo
 遵照适用于 RHEL 的上述说明，在 Oracle Linux 中启用单用户模式。
 
 ## <a name="next-steps"></a>后续步骤
-* 主要串行控制台 Linux 文档页位于[此处](serial-console.md)。
+* 主要的串行控制台 Linux 文档页位于[此处](serial-console.md)。
 * 使用串行控制台执行 [NMI 和 SysRq 调用](serial-console-nmi-sysrq.md)
 * 串行控制台也适用于 [Windows](../windows/serial-console.md) VM
-* 详细了解[启动诊断](boot-diagnostics.md)
+* 了解有关[启动诊断](boot-diagnostics.md)的详细信息

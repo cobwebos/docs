@@ -1,25 +1,23 @@
 ---
-title: Stackify Retrace Azure Linux 代理扩展 | Microsoft Docs
+title: Stackify 回顾 Azure Linux 代理扩展
 description: 在 Linux 虚拟机上部署 Stackify Retrace Linux 代理。
 services: virtual-machines-linux
 documentationcenter: ''
 author: darinhoward
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/12/2018
-ms.author: roiyz
-ms.openlocfilehash: b9c035c1c9088957f59550bf6564cc02bc7972f4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: akjosh
+ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60620594"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79253788"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Stackify Retrace Linux 代理扩展
 
@@ -38,13 +36,13 @@ Retrace 是唯一可以在单一平台中的所有环境下提供以下所有功
 
 此扩展提供了适用于 Retrace 的 Linux 代理的安装路径。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统 
 
 Retrace 代理可以针对这些 Linux 分发运行
 
-| 分发 | Version |
+| 分发 | 版本 |
 |---|---|
 | Ubuntu | 16.04 LTS、14.04 LTS、16.10 和 17.04 |
 | Debian | 7.9+ 和 8.2+、9 |
@@ -90,7 +88,7 @@ Retrace 代理可以针对这些 Linux 分发运行
 
 ## <a name="template-deployment"></a>模板部署 
 
-可使用 Azure 资源管理器模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一部分中详细介绍的 JSON 架构，以便在 Azure 资源管理器模板部署过程中运行 Stackify Retrace Linux 代理扩展。  
+可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一部分中详细介绍的 JSON 架构，以便在 Azure 资源管理器模板部署过程中运行 Stackify Retrace Linux 代理扩展。  
 
 虚拟机扩展的 JSON 可以嵌套在虚拟机资源内，或放置在 Resource Manager JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅“设置子资源的名称和类型”。
 
@@ -151,7 +149,7 @@ Retrace 代理可以针对这些 Linux 分发运行
 
 ## <a name="powershell-deployment"></a>PowerShell 部署
 
-可以使用 `Set-AzVMExtension` 命令将 Stackify Retrace Linux 代理虚拟机扩展部署到现有的虚拟机。 运行命令之前，需将公共和专用配置存储在 PowerShell 哈希表中。
+可以使用 `Set-AzVMExtension` 命令将 Stackify Retrace Linux 代理虚拟机扩展部署到现有的虚拟机。 运行命令之前，需将公共和专用的配置存储在 PowerShell 哈希表中。
 
 该扩展需要 `environment` 和 `activationKey`。
 
@@ -192,7 +190,7 @@ az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --
 | 40 | 安装错误 | 必需 activationKey |
 | 51 | 安装错误 | 不支持 OS 发行版 |
 | 60 | 安装错误 | 必需环境 |
-| 70 | 安装错误 | Unknown |
+| 70 | 安装错误 | 未知 |
 | 80 | 启用错误 | 服务安装失败 |
 | 90 | 启用错误 | 服务启动失败 |
 | 100 | 禁用错误 | 服务停止失败 |

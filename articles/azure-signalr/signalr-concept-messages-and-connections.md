@@ -6,12 +6,11 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: e82ce8f5c97aed7e2cb832d8e808ff84691f7c9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 5f6428231a3639738e8fb52e7dc3f2f2a3d2a26e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61401193"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75392818"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Azure SignalR 服务中的消息和连接
 
@@ -38,21 +37,21 @@ Azure SignalR 服务对消息大小不施加限制。
 
 例如，假设你有 3 个客户端和 1 个应用程序服务器。 1 个客户端发送 1 条 4 KB 消息，让服务器广播到所有客户端。 消息计数是 8：服务向应用程序服务器发送 1 条消息，服务向客户端发送 3 条消息。 每条消息算作 2 条 2-KB 大小的消息。
 
-在消息数累积超过 100 之前，Azure 门户中显示的消息计数会一直保持为 0。
-
 ## <a name="how-connections-are-counted"></a>如何统计连接数
 
-有服务器连接和客户端连接。 默认情况下，每个中心的每个应用程序服务器与 Azure SignalR 服务建立 5 个连接，每个客户端与 Azure SignalR 服务建立 1 个客户端连接。
+Azure SignalR 服务有服务器连接和客户端连接。 默认情况下，每个应用程序服务器启动时每个中心有五个初始连接，每个客户端有一个客户端连接。
 
 Azure 门户中显示的连接计数包括服务器连接和客户端连接。
 
 例如，假设你有 2 个应用程序服务器，并在代码中定义了 5 个中心。 服务器连接计数是 50：2 个应用服务器 * 5 个中心 * 每个中心的 5 个连接。
 
-ASP.NET SignalR 在计算服务器连接数方面有所不同。 除了定义的中心以外，它还包括一个默认的中心。 默认情况下，每个应用程序服务器需要 5 个额外的服务器连接。 默认中心的连接计数与其他中心保持一致。
+ASP.NET SignalR 在计算服务器连接数方面有所不同。 除了定义的中心以外，它还包括一个默认的中心。 默认情况下，每个应用程序服务器需要 5 个额外的初始服务器连接。 默认中心的初始连接计数与其他中心保持一致。
+
+在应用程序服务器的生命周期内，服务和应用程序服务器将保持同步连接状态，并对服务器连接进行调整，以获得更好的性能和服务稳定性。 因此，你可能会看到服务器连接数不时发生变化。
 
 ## <a name="how-inboundoutbound-traffic-is-counted"></a>如何统计入站/出站流量
 
-入站流量与出站流量之间的差别是从 Azure SignalR 服务的角度考虑的。 流量以字节为单位计算。 与消息计数一样，流量也有其采样率。 每当每个中心出现 100 KB 流量时，Azure 门户中的入站/出站图表就会更新。
+入站流量与出站流量之间的差别是从 Azure SignalR 服务的角度考虑的。 流量以字节为单位计算。
 
 ## <a name="related-resources"></a>相关资源
 

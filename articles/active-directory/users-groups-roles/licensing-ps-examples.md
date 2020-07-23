@@ -1,35 +1,34 @@
 ---
-title: 许可组-Azure Active Directory 的 PowerShell 和 Graph 示例 |Microsoft Docs
-description: PowerShell + 关系图的示例和方案 Azure Active Directory 基于组的许可
+title: 组许可的 PowerShell 和 Graph 示例 - Azure AD | Microsoft Docs
+description: Azure Active Directory 基于组的许可的 PowerShell + Graph 示例和方案
 services: active-directory
 keywords: Azure AD 许可
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
-ms.date: 03/18/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fc6e31afbb7ced4699afef38b67b637914198e4
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
-ms.translationtype: MT
+ms.openlocfilehash: 0d0d83d3b981968949d558cb7ee5672094b00555
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192417"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84727324"
 ---
-# <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 中基于组的许可的 PowerShell 示例
+# <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 中基于组的许可的 PowerShell 和 Graph 示例
 
-基于组的许可的完整功能可通过 [Azure 门户](https://portal.azure.com)获取，PowerShell 和 Microsoft Graph 支持目前受到限制。 但是，可使用现有的 [MSOnline PowerShell cmdlet](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) 和 Microsoft Graph 执行一些有用的任务。 本文档提供了可执行的任务示例。
+基于组的许可的完整功能可通过 [Azure 门户](https://portal.azure.com)获得，目前 PowerShell 和 Microsoft Graph 支持仅限于只读操作。 但是，可使用现有的 [MSOnline PowerShell cmdlet](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) 和 Microsoft Graph 执行一些有用的任务。 本文档提供了可执行的任务示例。
 
 > [!NOTE]
-> 在开始运行 cmdlet 之前，请确保首先，通过运行连接你的组织`Connect-MsolService`  cmdlet。
+> 开始运行 cmdlet 前，请先运行 `Connect-MsolService` cmdlet，确保连接到组织。
 
 > [!WARNING]
-> 此示例代码用于演示目的。 如果想要在环境中使用，请考虑先进行小规模的测试，或者在单独的测试租户中使用。 可能需要根据具体的环境需求调整该代码。
+> 此示例代码用于演示目的。 如果想要在环境中使用，请考虑先进行小规模的测试，或者在单独的测试组织中测试。 可能需要根据具体的环境需求调整该代码。
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>查看分配给组的产品许可证
 
@@ -50,18 +49,18 @@ EMSPREMIUM
 > [!NOTE]
 > 数据被限制为产品 (SKU) 信息。 无法列出许可证中禁用的服务计划。
 
-使用下面的示例从 Microsoft Graph 获取相同的数据。
+使用以下示例从 Microsoft Graph 获取相同的数据。
 
 ```
-GET https://graph.microsoft.com/v1.0/groups/99c4216a-56de-42c4-a4ac-e411cd8c7c41$select=assignedLicenses
+GET https://graph.microsoft.com/v1.0/groups/99c4216a-56de-42c4-a4ac-e411cd8c7c41?$select=assignedLicenses
 ```
 输出：
 ```
 HTTP/1.1 200 OK
 {
-  “value”: [
+  "value": [
 {
-  “assignedLicenses”: [
+  "assignedLicenses": [
      {
           "accountId":"f1b45b40-57df-41f7-9596-7f2313883635",
           "skuId":"c7df2760-2c81-4ef7-b578-5b5392b571df",
@@ -82,11 +81,11 @@ HTTP/1.1 200 OK
 
 可通过运行以下命令，查找所有已分配有任意许可证的组：
 ```powershell
-Get-MsolGroup | Where {$_.Licenses}
+Get-MsolGroup -All | Where {$_.Licenses}
 ```
 可显示更多有关分配了哪些产品的详细信息：
 ```powershell
-Get-MsolGroup | Where {$_.Licenses} | Select `
+Get-MsolGroup -All | Where {$_.Licenses} | Select `
     ObjectId, `
     DisplayName, `
     @{Name="Licenses";Expression={$_.Licenses | Select -ExpandProperty SkuPartNumber}}
@@ -163,7 +162,7 @@ Access to Offi... 11151866-5419-4d93-9141-0603bbf78b42 STANDARDPACK             
 ## <a name="get-all-groups-with-license-errors"></a>获取含有许可证错误的所有组
 查找组，这些组中包含一些无法为其分配许可证的用户：
 ```powershell
-Get-MsolGroup -HasLicenseErrorsOnly $true
+Get-MsolGroup -All -HasLicenseErrorsOnly $true
 ```
 输出：
 ```
@@ -227,7 +226,7 @@ ObjectId                             DisplayName      License Error
 6d325baf-22b7-46fa-a2fc-a2500613ca15 Catherine Gibson MutuallyExclusiveViolation
 ```
 
-使用以下命令以从 Microsoft Graph 获取相同的数据：
+使用以下示例从 Microsoft Graph 获取相同的数据：
 
 ```powershell
 GET https://graph.microsoft.com/v1.0/groups/11151866-5419-4d93-9141-0603bbf78b42/membersWithLicenseErrors
@@ -251,12 +250,12 @@ HTTP/1.1 200 OK
 
 ```
 
-## <a name="get-all-users-with-license-errors-in-the-entire-tenant"></a>获取整个租户中含有许可证错误的所有用户
+## <a name="get-all-users-with-license-errors-in-the-entire-organization"></a>获取整个组织中许可证错误的所有用户
 
 可以使用以下脚本获取一个或多个组中具有许可证错误的所有用户。 此脚本将按每个用户、每个许可证错误输出一行，以便可以清楚地确定每个错误的源。
 
 > [!NOTE]
-> 此脚本将枚举租户中的所有用户，这对于大型租户来说可能不是最佳做法。
+> 此脚本将枚举组织中的所有用户，这对于大型组织来说可能不是最佳做法。
 
 ```powershell
 Get-MsolUser -All | Where {$_.IndirectLicenseErrors } | % {   
@@ -285,7 +284,7 @@ Drew Fogarty     f2af28fc-db0b-4909-873d-ddd2ab1fd58c 1ebd5028-6092-41d0-9668-12
 下面是该脚本的另一个版本，它只在包含许可证错误的组中搜索。 预期有问题的组较少的情况下，这可能最适用。
 
 ```powershell
-$groupIds = Get-MsolGroup -HasLicenseErrorsOnly $true
+$groupIds = Get-MsolGroup -All -HasLicenseErrorsOnly $true
     foreach ($groupId in $groupIds) {
     Get-MsolGroupMember -All -GroupObjectId $groupId.ObjectID |
         Get-MsolUser -ObjectId {$_.ObjectId} |
@@ -364,10 +363,10 @@ function UserHasLicenseAssignedFromGroup
 }
 ```
 
-此脚本使用 SKU ID 作为输入，对租户中的每位用户执行这些功能 - 在本示例中，用于企业移动性 + 安全性的许可证在租户中的 ID 表示为：contoso:EMS：
+此脚本使用 SKU ID 作为输入，对组织中的每位用户执行这些功能 - 在本示例中，用于“企业移动性 + 安全性”的许可证在组织中用 ID 表示为：contoso:EMS ：
 
 ```powershell
-#the license SKU we are interested in. use Get-MsolAccountSku to see a list of all identifiers in your tenant
+#the license SKU we are interested in. use Get-MsolAccountSku to see a list of all identifiers in your organization
 $skuId = "contoso:EMS"
 
 #find all users that have the SKU license assigned
@@ -388,7 +387,7 @@ ObjectId                             SkuId       AssignedDirectly AssignedFromGr
 240622ac-b9b8-4d50-94e2-dad19a3bf4b5 contoso:EMS             True              True
 ```
 
-图形没有了简单方法以显示结果，但此 API 可以看到它：
+Graph 没有以直观的方式来显示结果，但可以通过此 API 进行查看：
 
 ```powershell
 GET https://graph.microsoft.com/v1.0/users/e61ff361-5baf-41f0-b2fd-380a6a5e406a?$select=licenseAssignmentStates
@@ -406,7 +405,7 @@ HTTP/1.1 200 OK
       "id": "e61ff361-5baf-41f0-b2fd-380a6a5e406a",
       "licenseAssignmentState":[
         {
-          "skuId": "157870f6-e050-4b3c-ad5e-0f0a377c8f4d”,
+          "skuId": "157870f6-e050-4b3c-ad5e-0f0a377c8f4d",
           "disabledPlans":[],
           "assignedByGroup": null, # assigned directly.
           "state": "Active",
@@ -415,7 +414,7 @@ HTTP/1.1 200 OK
         {
           "skuId": "1f3174e2-ee9d-49e9-b917-e8d84650f895",
           "disabledPlans":[],
-          "assignedByGroup": “e61ff361-5baf-41f0-b2fd-380a6a5e406a”, # assigned by this group.
+          "assignedByGroup": "e61ff361-5baf-41f0-b2fd-380a6a5e406a", # assigned by this group.
           "state": "Active",
           "error": "None"
         },
@@ -617,7 +616,7 @@ UserId                               OperationResult
 aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipping.
 ```
 > [!NOTE]
-> 请更新变量的值`$skuId`并`$groupId` 其为目标删除直接许可证根据测试环境之前运行上述脚本。 
+> 在运行上述脚本之前，请根据测试环境更新变量 `$skuId` 和 `$groupId` 的值，这些变量用于删除直接许可证。 
 
 ## <a name="next-steps"></a>后续步骤
 

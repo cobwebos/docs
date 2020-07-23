@@ -1,0 +1,65 @@
+### YamlMime:Landing
+title: StorSimple 文档
+summary: 了解如何使用 Azure StorSimple（集成的存储解决方案，用于管理本地设备与 Azure 云存储之间的存储任务）。
+metadata:
+  title: StorSimple 文档
+  description: 了解如何使用 Azure StorSimple（集成的存储解决方案，用于管理本地设备与 Azure 云存储之间的存储任务）。
+  ms.service: storsimple
+  services: storsimple
+  ms.topic: landing-page
+  author: twooley
+  ms.author: twooley
+  ms.date: 03/11/2020
+  ms.openlocfilehash: 7744e0fecadbdbcc7af82645b58bb86a9e0bbe18
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79540300"
+landingContent:
+- title: 关于 StorSimple
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 将 StorSimple 与 Azure 文件同步和 Data Box Edge 进行比较
+      url: storsimple-8000-choose-storage-solution.md
+- title: StorSimple 虚拟阵列
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 StorSimple 虚拟阵列？
+      url: storsimple-ova-overview.md
+  - linkListType: get-started
+    links:
+    - text: 审查要求
+      url: storsimple-ova-system-requirements.md
+- title: StorSimple 8000 系列
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 StorSimple 8000 系列？
+      url: storsimple-overview.md
+  - linkListType: get-started
+    links:
+    - text: 审查要求
+      url: storsimple-8000-system-requirements.md
+- title: StorSimple 数据管理器
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 StorSimple 数据管理器？
+      url: storsimple-data-manager-overview.md
+  - linkListType: get-started
+    links:
+    - text: 在 Azure 门户中进行管理
+      url: storsimple-data-manager-ui.md
+- title: 适用于云解决方案提供商的 StorSimple 计划
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是适用于云解决方案提供商的 StorSimple 计划？
+      url: storsimple-partner-csp-overview.md
+  - linkListType: get-started
+    links:
+    - text: 部署
+      url: storsimple-partner-csp-deploy.md

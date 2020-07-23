@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 8da233088389797271541b1aae55ec2e842f252d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: bd08812f83413a997ce655d68d866b145b20dcef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66166217"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75912508"
 ---
 ## <a name="extended-iot-scenarios"></a>扩展的 IoT 方案
 
 使用其他 Azure 服务和工具。 将设备连接到 IoT 中心后，可以浏览使用其他 Azure 工具和服务的其他方案：
 
-| 场景                                                   | Azure 服务或工具              |
+| 方案                                                   | Azure 服务或工具              |
 |----------------------------------------------------------- |------------------------------------|
-| [管理 IoT 中心消息](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)                  | VS Code Azure IoT 中心工具包扩展|
+| [管理 IoT 中心消息](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)                  | VS Code Azure IoT 中心扩展|
 | [管理 IoT 设备](../articles/iot-hub/iot-hub-device-management-iot-extension-azure-cli-2-0.md)                        | Azure CLI 和 IoT 扩展    |
-| [管理 IoT 设备](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)                | VS Code Azure IoT 中心工具包扩展|
+| [管理 IoT 设备](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)                | VS Code Azure IoT 中心扩展|
 | [将 IoT 中心消息保存到 Azure 存储](../articles/iot-hub/iot-hub-store-data-in-azure-table-storage.md)  | Azure 表存储                |
 | [可视化传感器数据](../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md)                      | Microsoft Power BI                 |
 | [可视化传感器数据](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)                      | Azure Web 应用                     |

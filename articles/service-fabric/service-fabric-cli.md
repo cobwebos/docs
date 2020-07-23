@@ -1,19 +1,15 @@
 ---
 title: Azure Service Fabric CLI 入门
 description: 了解如何使用 Azure Service Fabric CLI。 了解如何连接到群集以及如何管理应用程序。
-services: service-fabric
-author: Christina-Kang
-manager: chackdan
-ms.service: service-fabric
+author: jeffj6123
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: d5b6f183a59e3f47aa5867b5e09e06541a6a67db
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 5/19/2020
+ms.author: jejarry
+ms.openlocfilehash: b3714f8401def9bed68e4b0845d025734a480cb3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60803242"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681802"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -21,7 +17,7 @@ Azure Service Fabric 命令行接口 (CLI) 是一个命令行实用程序，用�
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在安装之前，请确保环境中已安装 Python 和 pip。 有关详细信息，请参阅 [pip 快速入门文档](https://pip.pypa.io/en/latest/quickstart/)和官方的 [Python 安装文档](https://wiki.python.org/moin/BeginnersGuide/Download)。
 
@@ -33,7 +29,10 @@ Service Fabric CLI 旨在支持 Service Fabric SDK 的最新运行时版本。 �
 
 | CLI 版本   | 支持的运行时版本 |
 |---------------|---------------------------|
-| 最新版（不等于 7）  | 最新版（不等于 6.4）            |
+| 最新 (~=10) | 最新 (~=7.1)            |
+| 9.0.0         | 7.1                       |
+| 8.0.0         | 6.5                       |
+| 7.1.0         | 6.4                       |
 | 6.0.0         | 6.3                       |
 | 5.0.0         | 6.2                       |
 | 4.0.0         | 6.1                       |
@@ -42,7 +41,7 @@ Service Fabric CLI 旨在支持 Service Fabric SDK 的最新运行时版本。 �
 
 为 `pip install` 命令添加 `==<version>` 后缀即可选择性地指定要安装的 CLI 的目标版本。 例如，版本 1.1.0 的语法为：
 
-```
+```shell
 pip install -I sfctl==1.1.0
 ```
 
@@ -68,14 +67,14 @@ pip install -I sfctl==1.1.0
 
 现在可以打开新的命令窗口，获取 Python 和 pip 的版本。
 
-```bat
+```shell
 python --version
 pip --version
 ```
 
 然后运行以下命令来安装 Azure Service Fabric CLI (sfctl) 并查看 CLI 帮助页：
 
-```bat
+```shell
 pip install sfctl
 sfctl -h
 ```
@@ -104,7 +103,7 @@ sfctl -h
 
 ```bash
 export PATH=$PATH:~/.local/bin
-echo "export PATH=$PATH:~/.local/bin" >> .bashrc
+echo "export PATH=$PATH:~/.local/bin" >> .shellrc
 ```
 
 如果因文件夹权限不正确而导致适用于 Linux 的 Windows 子系统上的安装失败，则可能需要使用提升的权限再试：
@@ -149,7 +148,7 @@ sfctl -h
 
 命令遵循可重复结构，将命令目标置于谓词或操作的前面。
 
-```azurecli
+```shell
 sfctl <object> <action>
 ```
 
@@ -162,7 +161,7 @@ sfctl <object> <action>
 > [!WARNING]
 > 请勿将不安全的 Service Fabric 群集用在生产环境中。
 
-```azurecli
+```shell
 sfctl cluster select --endpoint http://testcluster.com:19080
 ```
 
@@ -170,7 +169,7 @@ sfctl cluster select --endpoint http://testcluster.com:19080
 
 对于使用证书进行保护的群集，可以指定一个进行 PEM 编码的证书。 可以将证书指定为单个文件，或者指定为证书和密钥对。 如果它是并非 CA 签名的自签名证书，可以传递 `--no-verify` 选项以跳过 CA 验证。
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
@@ -182,7 +181,7 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./clie
 
 例如，若要获取 Service Fabric 群集运行状况，请使用以下命令：
 
-```azurecli
+```shell
 sfctl cluster health
 ```
 
@@ -219,13 +218,13 @@ sfctl cluster health
 
 Service Fabric CLI 支持 PEM（.pem 扩展名）文件形式的客户端证书。 如果使用 Windows 的 PFX 文件，则必须将这些证书转换为 PEM 格式。 若要将 PFX 文件转换为 PEM 文件，请使用以下命令：
 
-```bash
+```shell
 openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
 ```
 
 同样，若要从 PEM 文件将转换为 PFX 文件，可以使用以下命令（此处未提供密码）：
 
-```bash
+```shell
 openssl  pkcs12 -export -out Certificates.pfx -inkey Certificates.pem -in Certificates.pem -passout pass:'' 
 ```
 
@@ -247,13 +246,13 @@ openssl  pkcs12 -export -out Certificates.pfx -inkey Certificates.pem -in Certif
 
 如需某个特定命令或一组命令的帮助，请使用 `-h` 标志。
 
-```azurecli
+```shell
 sfctl application -h
 ```
 
 以下是另一个示例：
 
-```azurecli
+```shell
 sfctl application create -h
 ```
 
@@ -261,7 +260,7 @@ sfctl application create -h
 
 若要更新 Service Fabric CLI，请运行以下命令（根据在原始安装期间所选的内容将 `pip` 替换为 `pip3`）：
 
-```bash
+```shell
 pip uninstall sfctl
 pip install sfctl
 ```

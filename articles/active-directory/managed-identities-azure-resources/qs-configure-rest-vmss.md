@@ -1,6 +1,6 @@
 ---
-title: 如何在 Azure VMSS 上使用 REST 配置系统分配的托管标识和用户分配的托管标识
-description: 分步说明如何在 Azure VMSS 上通过使用 CURL 进行 REST API 调用来配置系统分配的托管标识和用户分配的托管标识。
+title: 使用 REST Azure AD 配置 Azure 虚拟机规模集上的托管标识
+description: 逐步说明如何在 Azure 虚拟机规模集上使用卷配置系统和用户分配的托管标识，以便进行 REST API 调用。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -9,18 +9,18 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cafb3c97befd64cc6413a2eefa5e5baa9e01bf93
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 06bce15dfbd2ccd3ac97f6a4f1e4efb5a24db85d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60308275"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609090"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>使用 REST API 调用在虚拟机规模集上配置 Azure 资源的托管标识
 
@@ -30,12 +30,12 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 本文介绍如何在虚拟机规模集上通过使用 CURL 对 Azure 资源管理器 REST 终结点进行调用来执行以下 Azure 资源的托管标识操作：
 
-- 在 Azure 虚拟机规模集上启用和禁用系统分配的托管标识
+- 在 Azure 虚拟机规模集上启用和禁用系统分配托管标识
 - 在 Azure 虚拟机规模集上添加和删除用户分配托管标识
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-it-work)。
+- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#managed-identity-types)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
 - 若要执行本文中的管理操作，帐户需要以下基于 Azure 角色的访问控制分配：
 
@@ -60,7 +60,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 要创建启用了系统分配的托管标识的虚拟机规模集，则需要创建虚拟机规模集并检索访问令牌，以使用 CURL 通过系统分配的托管标识类型值对资源管理器终结点进行调用。
 
-1. 使用 [az group create](/cli/azure/group/#az-group-create)，创建用于容纳和部署虚拟机规模集及其相关资源的[资源组](../../azure-resource-manager/resource-group-overview.md#terminology)。 如果已有要改用的资源组，可以跳过这一步：
+1. 使用 [az group create](/cli/azure/group/#az-group-create)，创建用于容纳和部署虚拟机规模集及其相关资源的[资源组](../../azure-resource-manager/management/overview.md#terminology)。 如果已有要改用的资源组，可以跳过这一步：
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
@@ -90,7 +90,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |描述  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -185,7 +185,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |描述  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -218,7 +218,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |描述  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 |
@@ -252,7 +252,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |描述  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -281,7 +281,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    az account get-access-token
    ```
 
-2. 通过使用 CURL 对 Azure 资源管理器 REST 终结点进行调用以禁用系统分配的托管标识，更新虚拟机规模集。  下面的示例从名为“myVMSS”的虚拟机规模集上禁用系统分配的托管标识（在请求正文中用值 `{"identity":{"type":"None"}}` 进行标识）。  请将 `<ACCESS TOKEN>` 替换为上一步中请求持有者访问令牌和适合环境的 `<SUBSCRIPTION ID>` 值时收到的值。
+2. 通过使用 CURL 对 Azure 资源管理器 REST 终结点进行调用以禁用系统分配的托管标识，更新虚拟机规模集。  下面的示例从名为“myVMSS”的虚拟机规模集上禁用系统分配的托管标识（在请求正文中用值 `{"identity":{"type":"None"}}` 进行标识）  。  请将 `<ACCESS TOKEN>` 替换为上一步中请求持有者访问令牌和适合环境的 `<SUBSCRIPTION ID>` 值时收到的值。
 
    > [!IMPORTANT]
    > 若要确保不删除用户分配给虚拟机规模集的任何现有托管标识，需要使用以下 CURL 命令列出用户分配的托管标识：`curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`。 如果具有用户分配给虚拟机规模集的任何托管标识，请跳过步骤 3，该步骤介绍了如何在从虚拟机规模集中删除系统分配的托管标识的同时保留用户分配的托管标识。
@@ -296,7 +296,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |描述  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -317,7 +317,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 本节将介绍如何在 Azure 虚拟机规模集上通过使用 CURL 对 Azure 资源管理器 REST 终结点进行调用来添加和删除用户分配的托管标识。
 
-### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-a-virtual-machine-scale-set"></a>在创建虚拟机规模集的过程中分配用户分配的托管标识
+### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-a-virtual-machine-scale-set"></a>在创建虚拟机规模集的过程中分配用户分配托管标识
 
 1. 检索持有者访问令牌，下一步在授权标头中将使用该令牌创建具有系统分配的托管标识的虚拟机规模集。
 
@@ -353,7 +353,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |描述  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -440,7 +440,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |描述  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 |
@@ -535,14 +535,14 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |描述  |
+   |请求标头  |说明  |
    |---------|---------|
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 |   
  
 
 4. 如果没有用户或系统分配给虚拟机规模集的任何托管标识，请使用以下 CURL 命令对 Azure 资源管理器 REST 终结点进行调用，以将第一个用户分配的托管标识分配给虚拟机规模集。  如果具有用户或系统分配给虚拟机规模集的托管标识，请跳过步骤 5，该步骤介绍了如何将多个用户分配的托管标识添加到虚拟机规模集并同时保留系统分配的托管标识。
 
-   下面的示例将用户分配的托管标识 `ID1` 分配给 资源组“myResourceGroup”中名为“myVMSS”的虚拟机规模集。  请将 `<ACCESS TOKEN>` 替换为上一步中请求持有者访问令牌和适合环境的 `<SUBSCRIPTION ID>` 值时收到的值。
+   下面的示例将用户分配的托管标识 `ID1` 分配给 资源组“myResourceGroup”中名为“myVMSS”的虚拟机规模集   。  请将 `<ACCESS TOKEN>` 替换为上一步中请求持有者访问令牌和适合环境的 `<SUBSCRIPTION ID>` 值时收到的值。
 
    **API 版本 2018-06-01**
 
@@ -556,7 +556,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |描述  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -588,7 +588,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |描述  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -624,7 +624,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |描述  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -663,7 +663,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
     **请求标头**
 
-   |请求标头  |描述  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -702,7 +702,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |描述  |
+   |请求标头  |说明  |
    |---------|---------|
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 |
    
@@ -724,7 +724,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |描述  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -756,7 +756,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |描述  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -786,7 +786,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 **请求标头**
 
-|请求标头  |描述  |
+|请求标头  |说明  |
 |---------|---------|
 |*Content-Type*     | 必需。 设置为 `application/json`。        |
 |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -813,7 +813,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 **请求标头**
 
-|请求标头  |描述  |
+|请求标头  |说明  |
 |---------|---------|
 |*Content-Type*     | 必需。 设置为 `application/json`。        |
 |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 

@@ -1,32 +1,35 @@
 ---
-title: 使用 Azure Site Recovery 管理配置服务器，以便进行 VMware 和物理服务器灾难恢复 | Microsoft Docs
-description: 本文介绍如何使用 Azure Site Recovery 管理现有配置服务器，以便将 VMware VM 和物理服务器灾难恢复到 Azure。
+title: 通过 Azure Site Recovery 管理配置服务器，以便进行灾难恢复
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 7fab3b05429e430b444c2a14213c524fbf19a01d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 83535fde7f577c4cd5d0b3866afcc0a916c16337
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171713"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134819"
 ---
-# <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>为 VMware VM 灾难恢复管理配置服务器
+# <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>管理配置服务器以便进行 VMware VM/物理服务器灾难恢复
 
 使用 [Azure Site Recovery](site-recovery-overview.md) 进行 VMware VM 和物理服务器到 Azure 的灾难恢复时，需要设置本地配置服务器。 配置服务器协调本地 VMware 与 Azure 之间的通信并管理数据复制。 本文概述了在部署配置服务器后对其进行管理时要执行的常见任务。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
+## <a name="update-windows-license"></a>更新 Windows 许可证
+
+通过 OVF 模板提供的许可证是有效期为 180 天的评估许可证。 为确保不间断使用，必须使用采购的许可证来激活 Windows。 可以通过独立的密钥或 KMS 标准密钥来完成许可证更新。 若要获取相关指导，请参阅[用于运行 OS 的 DISM Windows 命令行](/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options)。 若要获取密钥，请参阅 [KMS 客户端设置](/windows-server/get-started/kmsclientkeys)。
+
 ## <a name="access-configuration-server"></a>访问配置服务器
 
 可以访问配置服务器，如下所示：
 
 * 登录到部署了配置服务器的 VM，然后从桌面快捷方式启动 Azure Site Recovery 配置管理器。
-* 或者，可以从 https://*ConfigurationServerName*/:44315/ 远程访问配置服务器。 使用管理员凭据登录。
+* 或者，你可以从 https://*ConfigurationServerName*/： 44315/远程访问配置服务器。 使用管理员凭据登录。
 
 ## <a name="modify-vmware-server-settings"></a>修改 VMware 服务器设置
 
@@ -74,7 +77,7 @@ ms.locfileid: "66171713"
 还可以通过 CSPSConfigtool.exe 添加凭据。
 
 1. 登录配置服务器，并启动 CSPSConfigtool.exe
-2. 单击“添加”，输入新凭据，单击“确定”。
+2. 单击“添加”，输入新凭据，单击“确定”。 
 
 ## <a name="modify-proxy-settings"></a>修改代理设置
 
@@ -90,6 +93,32 @@ ms.locfileid: "66171713"
 - 可[将其他适配器添加到 VM](vmware-azure-deploy-configuration-server.md#add-an-additional-adapter)，但必须在将配置服务器注册到保管库之前添加它。
 - 在保管库中注册配置服务器之后，若要添加适配器，请在 VM 属性中添加适配器。 然后，需要在保管库中[重新注册](#reregister-a-configuration-server-in-the-same-vault)服务器。
 
+## <a name="how-to-renew-ssl-certificates"></a>如何续订 SSL 证书
+
+配置服务器具有一个内置的 Web 服务器，该服务器协调联接到它的受保护计算机上的移动代理、内置/横向扩展进程服务器和主目标服务器的活动。 Web 服务器使用 SSL 证书对客户端进行身份验证。 该证书在三年后到期，并可随时续订。
+
+### <a name="check-expiry"></a>检查有效期
+
+到期日期显示在“配置服务器运行状况”下。 对于 2016 年 5 月之前的配置服务器部署，证书有效期设置为一年。 如果证书即将到期，将出现以下情况：
+
+- 如果离到期日期有两个月或不到两个月，服务将开始在门户中发送通知以及通过电子邮件发送（如果订阅了 Site Recovery 通知）。
+- 保管库资源页上将显示通知横幅。 若要了解详细信息，请选择横幅。
+- 如果看到了“立即升级”按钮，则表示环境中有些组件尚未升级到 9.4.xxxx.x 或更高版本。 请在续订证书之前升级组件。 无法在旧版本中进行续订。
+
+### <a name="if-certificates-are-yet-to-expire"></a>如果证书即将过期
+
+1. 若要续订，在保管库中，打开“Site Recovery 基础结构” > “配置服务器”。  选择所需的配置服务器。
+2. 确保所有组件的横向扩展进程服务器、主目标服务器和所有受保护计算机上的移动代理均为最新版本并处于连接状态。
+3. 现在，选择“续订证书”。
+4. 仔细按照此页上的说明进行操作，然后单击“确定”以续订选定配置服务器上的证书及其关联组件。
+
+### <a name="if-certificates-have-already-expired"></a>如果证书已过期
+
+1. 过期后，无法从 Azure 门户续订证书。 在继续之前，确保所有组件的横向扩展进程服务器、主目标服务器和所有受保护计算机上的移动代理都处于最新版本并处于连接状态。
+2. 仅当证书已过期时才执行此过程。 登录到配置服务器，导航到 C 驱动器 > Program Data > Site Recovery > home > svsystems > bin 并以管理员身份执行“RenewCerts”执行程序工具。
+3. 将弹出一个 PowerShell 执行窗口，并触发证书续订。 此过程最长需要 15 分钟。 在完成续订之前请勿关闭该窗口。
+
+:::image type="content" source="media/vmware-azure-manage-configuration-server/renew-certificates.png" alt-text="RenewCertificates":::
 
 ## <a name="reregister-a-configuration-server-in-the-same-vault"></a>在同一保管库中重新注册配置服务器
 
@@ -97,10 +126,10 @@ ms.locfileid: "66171713"
 
 
 1. 在保管库中，打开“管理” > “Site Recovery 基础结构” > “配置服务器”。
-2. 在“服务器”中，选择“下载注册密钥”以下载保管库凭据文件。
+2. 在“服务器”中，选择“下载注册密钥”以下载保管库凭据文件。 
 3. 登录到配置服务器计算机。
 4. 在 %ProgramData%\ASR\home\svsystems\bin 中，打开 cspsconfigtool.exe。
-5. 在“保管库注册”选项卡上，单击“浏览”并找到你下载的保管库凭据文件。
+5. 在“保管库注册”选项卡上，单击“浏览”并找到你下载的保管库凭据文件。 
 6. 按需提供代理服务器详细信息。 然后选择“注册”。
 7. 打开管理员 PowerShell 命令窗口并运行以下命令：
    ```
@@ -109,7 +138,7 @@ ms.locfileid: "66171713"
    ```
 
     >[!NOTE]
-    >为了从配置服务器**拉取最新的证书**来横向扩展流程服务器，请执行命令 *“<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe>" --registermt*
+    >若要从配置服务器向横向扩展进程服务器**拉取最新证书**，请执行命令 *" \<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe> "--registermt*
 
 8. 最后，通过执行以下命令重启 obengine。
    ```
@@ -135,7 +164,7 @@ ms.locfileid: "66171713"
 
 ## <a name="upgrade-the-configuration-server"></a>升级配置服务器
 
-运行更新汇总来更新配置服务器。 最多可以为 N-4 版本应用更新。 例如:
+运行更新汇总来更新配置服务器。 最多可以为 N-4 版本应用更新。 例如：
 
 - 如果运行的是 9.7、9.8、9.9 或 9.10 版，可以直接升级到 9.11 版。
 - 如果运行的是 9.6 版或更早版本并且想要升级到 9.11 版，则必须先升级到 9.7 版， 然后再升级到 9.11 版。
@@ -183,21 +212,21 @@ ms.locfileid: "66171713"
 
 ### <a name="parameters"></a>parameters
 
-|参数名称| Type | 描述| 值|
+|参数名称| 类型 | 说明| 值|
 |-|-|-|-|
-| /ServerMode|需要|指定是要同时安装配置服务器和进程服务器，还是只安装进程服务器|CS<br>PS|
-|/InstallLocation|需要|用于安装组件的文件夹| 计算机上的任意文件夹|
-|/MySQLCredsFilePath|需要|MySQL 服务器凭据存储到的文件路径|文件应采用以下指定格式|
-|/VaultCredsFilePath|需要|保管库凭据文件的路径|有效的文件路径|
-|/EnvType|需要|要保护的环境类型 |VMware<br>NonVMware|
-|/PSIP|需要|要用于复制数据传输的 NIC 的 IP 地址| 任何有效的 IP 地址|
-|/CSIP|需要|配置服务器侦听时所在的 NIC 的 IP 地址| 任何有效的 IP 地址|
-|/PassphraseFilePath|需要|通行短语文件位置的完整路径|有效的文件路径|
-|/BypassProxy|可选|指定配置服务器不使用代理连接到 Azure|若要从 Venu 获取此值|
-|/ProxySettingsFilePath|可选|代理设置（默认代理需要身份验证，或自定义代理）|文件应采用以下指定格式|
-|DataTransferSecurePort|可选|PSIP 上用于复制数据的端口号| 有效端口号（默认值为 9433）|
+| /ServerMode|必须|指定是要同时安装配置服务器和进程服务器，还是只安装进程服务器|CS<br>PS|
+|/InstallLocation|必须|用于安装组件的文件夹| 计算机上的任意文件夹|
+|/MySQLCredsFilePath|必须|存储 MySQL 服务器凭据的文件路径|该文件应采用以下指定格式|
+|/VaultCredsFilePath|必须|保管库凭据文件的路径|有效的文件路径|
+|/EnvType|必须|要保护的环境类型 |VMware<br>NonVMware|
+|/PSIP|必须|要用于复制数据传输的 NIC 的 IP 地址| 任何有效的 IP 地址|
+|/CSIP|必须|配置服务器正在侦听的 NIC 的 IP 地址| 任何有效的 IP 地址|
+|/PassphraseFilePath|必须|密码文件位置的完整路径|有效的文件路径|
+|/BypassProxy|可选|指定配置服务器在不使用代理的情况下连接到 Azure|从 Venu 获取此值|
+|/ProxySettingsFilePath|可选|代理设置（默认代理需要身份验证，或自定义代理）|该文件应采用以下指定格式|
+|DataTransferSecurePort|可选|用于复制数据的 PSIP 上的端口号| 有效端口号（默认值为 9433）|
 |/SkipSpaceCheck|可选|跳过缓存磁盘的空间检查| |
-|/AcceptThirdpartyEULA|需要|该标志表示接受第三方 EULA| |
+|/AcceptThirdpartyEULA|必须|该标志表示接受第三方 EULA| |
 |/ShowThirdpartyEULA|可选|显示第三方 EULA。 如果作为输入提供，将忽略所有其他参数| |
 
 
@@ -227,7 +256,7 @@ ProxyPassword="Password"
 1. 对配置服务器下的所有 VM [禁用保护](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)。
 2. 从配置服务器中[取消关联](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)和[删除](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)所有复制策略。
 3. [删除](vmware-azure-manage-vcenter.md#delete-a-vcenter-server)与配置服务器关联的所有 vCenters 服务器/vSphere 主机。
-4. 在保管库中，打开“Site Recovery 基础结构” > “配置服务器”。
+4. 在保管库中，打开“Site Recovery 基础结构” > “配置服务器”。 
 5. 选择要删除的配置服务器。 然后，在“详细信息”页上，选择“删除”。
 
     ![删除配置服务器](./media/vmware-azure-manage-configuration-server/delete-configuration-server.png)
@@ -237,8 +266,8 @@ ProxyPassword="Password"
 
 还可以选择使用 PowerShell 删除配置服务器。
 
-1. [安装](https://docs.microsoft.com/powershell/azure/install-Az-ps) Azure PowerShell 模块。
-2. 使用以下命令登录到你的 Azure 帐户：
+1. [安装](/powershell/azure/install-Az-ps) Azure PowerShell 模块。
+2. 使用以下命令登录到 Azure 帐户：
 
     `Connect-AzAccount`
 3. 选择保管库订阅。
@@ -258,7 +287,7 @@ ProxyPassword="Password"
     `Remove-AzSiteRecoveryFabric -Fabric $fabric [-Force]`
 
 > [!NOTE]
-> 可以使用 **-Force**强制执行删除配置服务器中删除 AzSiteRecoveryFabric 选项。
+> 可使用 Remove-AzSiteRecoveryFabric 中的 -Force 选项强制删除配置服务器。
 
 ## <a name="generate-configuration-server-passphrase"></a>生成配置服务器通行短语
 
@@ -267,34 +296,12 @@ ProxyPassword="Password"
 3. 要生成通行短语文件，请执行 genpassphrase.exe v > MobSvc.passphrase。
 4. 你的通行短语将存储在 %ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase 中。
 
-## <a name="renew-ssl-certificates"></a>续订 SSL 证书
-
-配置服务器具有一个内置的 Web 服务器，该服务器协调连接到配置服务器的移动服务、进程服务器和主目标服务器的活动。 Web 服务器使用 SSL 证书对客户端进行身份验证。 该证书在三年后到期，并可随时续订。
-
-### <a name="check-expiry"></a>检查有效期
-
-对于 2016 年 5 月之前的配置服务器部署，证书有效期设置为一年。 如果证书即将到期，将出现以下情况：
-
-- 如果离到期日期有两个月或不到两个月，服务将开始在门户中发送通知以及通过电子邮件发送（如果订阅了 Site Recovery 通知）。
-- 保管库资源页上将显示通知横幅。 若要了解详细信息，请选择横幅。
-- 如果看到了“立即升级”按钮，则表示环境中有些组件尚未升级到 9.4.xxxx.x 或更高版本。 请在续订证书之前升级组件。 无法在旧版本中进行续订。
-
-### <a name="renew-the-certificate"></a>续订证书
-
-1. 在保管库中，打开“Site Recovery 基础结构” > “配置服务器”。 选择所需的配置服务器。
-2. 到期日期显示在“配置服务器运行状况”下。
-3. 选择“续订证书”。
-
 ## <a name="refresh-configuration-server"></a>刷新配置服务器
 
-1. 在 Azure 门户中，导航至“恢复服务保管库” > “管理” > “站点恢复基础结构” > “对于 VMware 和物理机” > “配置服务器”
+1. 在 Azure 门户中，导航至“恢复服务保管库” > “管理” > “站点恢复基础结构” > “对于 VMware 和物理机” > “配置服务器”    
 2. 单击要刷新的配置服务器。
-3. 在包含所选配置服务器详细信息的边栏选项卡上，单击“更多” > “刷新服务器”。
-4. 在“恢复服务保管库” > “监控” > “站点恢复作业”下监控作业进度。
-
-## <a name="update-windows-license"></a>更新 Windows 许可证
-
-通过 OVF 模板提供的许可证是有效期为 180 天的评估许可证。 为确保不间断使用，必须使用采购的许可证来激活 Windows。
+3. 在包含所选配置服务器详细信息的边栏选项卡上，单击“更多” > “刷新服务器” 。
+4. 在“恢复服务保管库” > “监控” > “站点恢复作业”下监控作业进度  。
 
 ## <a name="failback-requirements"></a>故障回复要求
 

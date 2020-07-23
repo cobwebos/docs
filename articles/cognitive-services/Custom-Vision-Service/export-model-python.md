@@ -1,21 +1,22 @@
 ---
-title: 教程：运行以 Python 编写的 TensorFlow 模型 - 自定义视觉服务
-titlesuffix: Azure Cognitive Services
-description: 运行以 Python 编写的 TensorFlow 模型。
+title: 教程：运行以 Python 编写的 TensorFlow 模型 - 自定义影像服务
+titleSuffix: Azure Cognitive Services
+description: 运行以 Python 编写的 TensorFlow 模型。 本文仅适用于从自定义视觉服务中的图像分类项目导出的模型。
 services: cognitive-services
-author: areddish
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 03/21/2019
-ms.author: areddish
-ms.openlocfilehash: babc9f8c7b8a05c4a91ead4990267311e926fd47
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 04/14/2020
+ms.author: pafarley
+ms.custom: tracking-python
+ms.openlocfilehash: 46ed55e5d6a9156d9ea7909925e92d6c39c8e89d
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236422"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609567"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>教程：运行以 Python 编写的 TensorFlow 模型
 
@@ -24,7 +25,7 @@ ms.locfileid: "66236422"
 > [!NOTE]
 > 本教程仅适用于从图像分类项目导出的模型。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要使用本教程，需要执行以下操作：
 
@@ -48,7 +49,7 @@ pip install opencv-python
 import tensorflow as tf
 import os
 
-graph_def = tf.GraphDef()
+graph_def = tf.compat.v1.GraphDef()
 labels = []
 
 # These are set to the default names from exported models, update as needed.
@@ -56,7 +57,7 @@ filename = "model.pb"
 labels_filename = "labels.txt"
 
 # Import the TF graph
-with tf.gfile.GFile(filename, 'rb') as f:
+with tf.io.gfile.GFile(filename, 'rb') as f:
     graph_def.ParseFromString(f.read())
     tf.import_graph_def(graph_def, name='')
 
@@ -68,7 +69,7 @@ with open(labels_filename, 'rt') as lf:
 
 ## <a name="prepare-an-image-for-prediction"></a>为预测准备图像
 
-准备图像需要几个步骤，以便它具有预测的正确形状。 这些步骤模拟在定型过程中执行的图像处理：
+你需要执行几个步骤来准备要预测的图像。 这些步骤模拟在定型过程中执行的图像处理：
 
 ### <a name="open-the-file-and-create-an-image-in-the-bgr-color-space"></a>打开文件并在 BGR 颜色空间中创建图像
 
@@ -88,7 +89,7 @@ image = update_orientation(image)
 image = convert_to_opencv(image)
 ```
 
-### <a name="deal-with-images-with-a-dimension-1600"></a>处理维度 > 1600 的图像
+### <a name="handle-images-with-a-dimension-1600"></a>处理维度 > 1600 的图像
 
 ```Python
 # If the image has either w or h greater than 1600 we resize it down respecting
@@ -116,7 +117,7 @@ augmented_image = resize_to_256_square(max_square_image)
 
 ```Python
 # Get the input size of the model
-with tf.Session() as sess:
+with tf.compat.v1.Session() as sess:
     input_tensor_shape = sess.graph.get_tensor_by_name('Placeholder:0').shape.as_list()
 network_input_size = input_tensor_shape[1]
 
@@ -180,7 +181,7 @@ def update_orientation(image):
 output_layer = 'loss:0'
 input_node = 'Placeholder:0'
 
-with tf.Session() as sess:
+with tf.compat.v1.Session() as sess:
     try:
         prob_tensor = sess.graph.get_tensor_by_name(output_layer)
         predictions, = sess.run(prob_tensor, {input_node: [augmented_image] })

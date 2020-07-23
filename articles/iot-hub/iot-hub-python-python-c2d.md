@@ -1,236 +1,187 @@
 ---
 title: 使用 Azure IoT 中心发送云到设备消息 (Python) | Microsoft Docs
 description: 如何使用用于 Python 的 Azure IoT SDK 将云到设备消息从 Azure IoT 中心发送到设备。 修改模拟设备应用以接收云到设备消息，并修改后端应用以发送云到设备消息。
-author: kgremban
-manager: philmea
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 02/22/2019
-ms.author: kgremban
-ms.openlocfilehash: 7ac668bdbc3698be3ed2aa50a428cef84e68369a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/09/2020
+ms.author: robinsh
+ms.custom: mqtt, tracking-python
+ms.openlocfilehash: 12d25fd06ddfa8265dbf046093d3854f7fde4f33
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61441355"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609550"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>使用 IoT 中心发送云到设备消息 (Python)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-## <a name="introduction"></a>简介
-Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备和单个解决方案后端之间实现安全可靠的双向通信。 [IoT 中心入门](quickstart-send-telemetry-python.md)快速入门介绍如何创建 IoT 中心、 预配设备标识，以及编写模拟的设备应用发送设备到云消息。
+Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备和单个解决方案后端之间实现安全可靠的双向通信。 [从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-python.md)快速入门介绍了如何创建 IoT 中心、在其中预配设备标识，以及编写模拟设备应用来发送设备到云的消息。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-本教程是在 [IoT 中心入门](quickstart-send-telemetry-python.md)的基础上制作的。 其中了说明了如何：
+本教程在[从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-python.md)的基础上编写。 其中了说明了如何：
 
 * 通过 IoT 中心，将云到设备的消息从解决方案后端发送到单个设备。
 
 * 在设备上接收云到设备的消息。
 
-* 通过解决方案后端，请求确认收到从 IoT 中心发送到设备的消息（反馈）。
-
-你可以找到有关云到设备的消息的详细信息[IoT 中心开发人员指南](iot-hub-devguide-messaging.md)。
+可以在 [IoT 中心开发人员指南](iot-hub-devguide-messaging.md)中找到有关云到设备消息的详细信息。
 
 在本教程末尾，你将运行两个 Python 控制台应用：
 
-* **SimulatedDevice.py**，这是在 [IoT 中心入门](quickstart-send-telemetry-python.md)中创建的应用的修改版本，它连接到 IoT 中心并接收云到设备消息。
+* **SimulatedDevice.py**（[从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-python.md)中创建的应用的修改版本），它连接到 IoT 中心并接收云到设备的消息。
 
-* **SendCloudToDeviceMessage.py**，它将云到设备消息通过 IoT 中心发送到模拟设备应用，然后接收其传送确认。
+* SendCloudToDeviceMessage.py  ，它将云到设备消息通过 IoT 中心发送到模拟设备应用。
 
-> [!NOTE]
-> IoT 中心通过 Azure IoT 设备 SDK 对许多设备平台和语言（包括 C、Java 和 Javascript）提供 SDK 支持。 有关如何将设备连接到本教程的代码以及通常如何连接到 Azure IoT 中心的分步说明，请参阅 [Azure IoT 开发人员中心](https://www.azure.com/develop/iot)。
->
+[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-要完成本教程，需要以下各项：
+## <a name="prerequisites"></a>先决条件
 
-* [Python 2.x 或 3.x](https://www.python.org/downloads/)。 请确保根据安装程序的要求，使用 32 位或 64 位安装。 在安装过程中出现提示时，请确保将 Python 添加到特定于平台的环境变量中。 如果使用 Python 2.x，则可能需要[安装或升级 pip - Python 包管理系统](https://pip.pypa.io/en/stable/installing/)。
+[!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
-* 如果使用 Windows OS，则请安装 [Visual C++ 可再发行组件包](https://www.microsoft.com/download/confirmation.aspx?id=48145)，以便使用 Python 中的本机 DLL。
+* 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
-* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
-
-> [!NOTE]
-> 适用于 `azure-iothub-service-client` 和 `azure-iothub-device-client` 的 pip 包目前仅供 Windows OS 使用。 对于 Linux/Mac OS，请参阅于 Linux 和 Mac OS 特定部分，在[准备开发环境以便使用 Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)发布。
->
-
-## <a name="receive-messages-in-the-simulated-device-app"></a>在模拟设备应用中接收消息
+## <a name="receive-messages-in-the-simulated-device-app"></a>在模拟设备应用上接收消息
 
 在本部分中，将创建一个 Python 控制台应用来模拟设备并从 IoT 中心接收云到设备消息。
 
-1. 使用文本编辑器，创建一个 **SimulatedDevice.py** 文件。
+1. 在工作目录中的命令提示符下，安装**适用于 Python 的 Azure IoT 中心设备 SDK**：
 
-2. 在 **SimulatedDevice.py** 文件的开头添加以下 `import` 语句和变量：
-
-   ```python
-    import time
-    import sys
-    import iothub_client
-    from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult
-    from iothub_client import IoTHubMessage, IoTHubMessageDispositionResult, IoTHubError
-
-    RECEIVE_CONTEXT = 0
-    WAIT_COUNT = 10
-    RECEIVED_COUNT = 0
-    RECEIVE_CALLBACKS = 0
+    ```cmd/sh
+    pip install azure-iot-device
     ```
 
-3. 将以下代码添加到 **SimulatedDevice.py** 文件。 "{DeviceConnectionString}"占位符值替换为在创建的设备的设备连接字符串[IoT 中心入门](quickstart-send-telemetry-python.md)快速入门：
+1. 使用文本编辑器，创建一个名为“SimulatedDevice.py”  的文件。
+
+1. 在 **SimulatedDevice.py** 文件的开头添加以下 `import` 语句和变量：
 
     ```python
-    # choose AMQP or AMQP_WS as transport protocol
-    PROTOCOL = IoTHubTransportProvider.AMQP
+    import threading
+    import time
+    from azure.iot.device import IoTHubDeviceClient
+
+    RECEIVED_MESSAGES = 0
+    ```
+
+1. 将以下代码添加到 **SimulatedDevice.py** 文件。 将 `{deviceConnectionString}` 占位符值替换为在将[遥测从设备发送到 IoT 中心](quickstart-send-telemetry-python.md)快速入门中创建的设备的设备连接字符串：
+
+    ```python
     CONNECTION_STRING = "{deviceConnectionString}"
     ```
 
-4. 添加以下函数，用以在控制台中输出收到的消息：
+1. 添加以下函数，用以在控制台中输出收到的消息：
 
     ```python
-    def receive_message_callback(message, counter):
-        global RECEIVE_CALLBACKS
-        message_buffer = message.get_bytearray()
-        size = len(message_buffer)
-        print ( "Received Message [%d]:" % counter )
-        print ( "    Data: <<<%s>>> & Size=%d" % (message_buffer[:size].decode('utf-8'), size) )
-        map_properties = message.properties()
-        key_value_pair = map_properties.get_internals()
-        print ( "    Properties: %s" % key_value_pair )
-        counter += 1
-        RECEIVE_CALLBACKS += 1
-        print ( "    Total calls received: %d" % RECEIVE_CALLBACKS )
-        return IoTHubMessageDispositionResult.ACCEPTED
+    def message_listener(client):
+        global RECEIVED_MESSAGES
+        while True:
+            message = client.receive_message()
+            RECEIVED_MESSAGES += 1
+            print("\nMessage received:")
 
-    def iothub_client_init():
-        client = IoTHubClient(CONNECTION_STRING, PROTOCOL)
+            #print data and both system and application (custom) properties
+            for property in vars(message).items():
+                print ("    {0}".format(property))
 
-        client.set_message_callback(receive_message_callback, RECEIVE_CONTEXT)
-
-        return client
-
-    def print_last_message_time(client):
-        try:
-            last_message = client.get_last_message_receive_time()
-            print ( "Last Message: %s" % time.asctime(time.localtime(last_message)) )
-            print ( "Actual time : %s" % time.asctime() )
-        except IoTHubClientError as iothub_client_error:
-            if iothub_client_error.args[0].result == IoTHubClientResult.INDEFINITE_TIME:
-                print ( "No message received" )
-            else:
-                print ( iothub_client_error )
+            print( "Total calls received: {}".format(RECEIVED_MESSAGES))
+            print()
     ```
 
-5. 添加以下代码，用以初始化客户端并等待接收云到设备消息：
+1. 添加以下代码，用以初始化客户端并等待接收云到设备消息：
 
     ```python
-    def iothub_client_init():
-        client = IoTHubClient(CONNECTION_STRING, PROTOCOL)
-
-        client.set_message_callback(receive_message_callback, RECEIVE_CONTEXT)
-
-        return client
-
     def iothub_client_sample_run():
         try:
-            client = iothub_client_init()
+            client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
+
+            message_listener_thread = threading.Thread(target=message_listener, args=(client,))
+            message_listener_thread.daemon = True
+            message_listener_thread.start()
 
             while True:
-                print ( "IoTHubClient waiting for commands, press Ctrl-C to exit" )
+                time.sleep(1000)
 
-                status_counter = 0
-                while status_counter <= WAIT_COUNT:
-                    status = client.get_send_status()
-                    print ( "Send status: %s" % status )
-                    time.sleep(10)
-                    status_counter += 1
-
-        except IoTHubError as iothub_error:
-            print ( "Unexpected error %s from IoTHub" % iothub_error )
-            return
         except KeyboardInterrupt:
-            print ( "IoTHubClient sample stopped" )
-
-        print_last_message_time(client)
+            print ( "IoT Hub C2D Messaging device sample stopped" )
     ```
 
-6. 添加以下 main 函数：
+1. 添加以下 main 函数：
 
     ```python
     if __name__ == '__main__':
-        print ( "Starting the IoT Hub Python sample..." )
-        print ( "    Protocol %s" % PROTOCOL )
-        print ( "    Connection string=%s" % CONNECTION_STRING )
+        print ( "Starting the Python IoT Hub C2D Messaging device sample..." )
+        print ( "Waiting for C2D messages, press Ctrl-C to exit" )
 
         iothub_client_sample_run()
     ```
 
-7. 保存并关闭 **SimulatedDevice.py** 文件。
+1. 保存并关闭 SimulatedDevice.py  文件。
+
+## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
+
+在本文中，你会创建一个后端服务，以通过在[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-python.md)中创建的 IoT 中心，发送云到设备消息。 若要发送云到设备消息，服务需要“服务连接”权限。  默认情况下，每个 IoT 中心都使用名为 **service** 的共享访问策略创建，该策略授予此权限。
+
+[!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
 ## <a name="send-a-cloud-to-device-message"></a>发送云到设备的消息
 
-在本部分中，将创建一个 Python 控制台应用，用于向模拟设备应用发送云到设备消息。 需要在添加的设备的设备 ID [IoT 中心入门](quickstart-send-telemetry-python.md)快速入门。 还需要中心的 IoT 中心连接字符串（位于 [Azure 门户](https://portal.azure.com)）。
+在本部分中，将创建一个 Python 控制台应用，用于向模拟设备应用发送云到设备消息。 需要在[从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-python.md)快速入门中添加的设备的设备 ID。 还需要以前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串。
 
-1. 使用文本编辑器，创建一个 **SendCloudToDeviceMessage.py** 文件。
+1. 在工作目录中，打开命令提示符并安装安装适用于 Python 的 Azure IoT 中心服务 SDK  。
 
-2. 在 **SendCloudToDeviceMessage.py** 文件的开头添加以下 `import` 语句和变量：
+   ```cmd/sh
+   pip install azure-iot-hub
+   ```
+
+1. 使用文本编辑器，创建一个名为“SendCloudToDeviceMessage.py”  的文件。
+
+1. 在 **SendCloudToDeviceMessage.py** 文件的开头添加以下 `import` 语句和变量：
 
     ```python
     import random
     import sys
-    import iothub_service_client
-    from iothub_service_client import IoTHubMessaging, IoTHubMessage, IoTHubError
+    from azure.iot.hub import IoTHubRegistryManager
 
-    OPEN_CONTEXT = 0
-    FEEDBACK_CONTEXT = 1
-    MESSAGE_COUNT = 1
+    MESSAGE_COUNT = 2
     AVG_WIND_SPEED = 10.0
     MSG_TXT = "{\"service client sent a message\": %.2f}"
     ```
 
-3. 将以下代码添加到 **SendCloudToDeviceMessage.py** 文件。 "{IoTHubConnectionString}"占位符值替换为中创建的中心的 IoT 中心连接字符串[IoT 中心入门](quickstart-send-telemetry-python.md)快速入门。 "{DeviceId}"占位符替换为在添加的设备的设备 ID [IoT 中心入门](quickstart-send-telemetry-python.md)快速入门：
+1. 将以下代码添加到 **SendCloudToDeviceMessage.py** 文件。 将 `{iot hub connection string}` 和 `{device id}` 占位符值替换为之前记下的 IoT 中心连接字符串和设备ID：
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
     DEVICE_ID = "{deviceId}"
     ```
 
-4. 添加以下函数，用以在控制台中输出反馈消息：
-
-    ```python
-    def open_complete_callback(context):
-        print ( 'open_complete_callback called with context: {0}'.format(context) )
-
-    def send_complete_callback(context, messaging_result):
-        context = 0
-        print ( 'send_complete_callback called with context : {0}'.format(context) )
-        print ( 'messagingResult : {0}'.format(messaging_result) )
-    ```
-
-5. 添加以下代码，以便在设备确认收到云到设备的消息时会消息发送到设备，并处理反馈消息：
+1. 添加以下代码，以便将消息发送到设备：
 
     ```python
     def iothub_messaging_sample_run():
         try:
-            iothub_messaging = IoTHubMessaging(CONNECTION_STRING)
-
-            iothub_messaging.open(open_complete_callback, OPEN_CONTEXT)
+            # Create IoTHubRegistryManager
+            registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
 
             for i in range(0, MESSAGE_COUNT):
                 print ( 'Sending message: {0}'.format(i) )
-                msg_txt_formatted = MSG_TXT % (AVG_WIND_SPEED + (random.random() * 4 + 2))
-                message = IoTHubMessage(bytearray(msg_txt_formatted, 'utf8'))
+                data = MSG_TXT % (AVG_WIND_SPEED + (random.random() * 4 + 2))
 
-                # optional: assign ids
-                message.message_id = "message_%d" % i
-                message.correlation_id = "correlation_%d" % i
-                # optional: assign properties
-                prop_map = message.properties()
+                props={}
+                # optional: assign system properties
+                props.update(messageId = "message_%d" % i)
+                props.update(correlationId = "correlation_%d" % i)
+                props.update(contentType = "application/json")
+
+                # optional: assign application properties
                 prop_text = "PropMsg_%d" % i
-                prop_map.add("Property", prop_text)
+                props.update(testProperty = prop_text)
 
-                iothub_messaging.send_async(DEVICE_ID, message, send_complete_callback, i)
+                registry_manager.send_c2d_message(DEVICE_ID, data, properties=props)
 
             try:
                 # Try Python 2.xx first
@@ -240,63 +191,47 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
                 # Use Python 3.xx in the case of exception
                 input("Press Enter to continue...\n")
 
-            iothub_messaging.close()
-
-        except IoTHubError as iothub_error:
-            print ( "Unexpected error {0}" % iothub_error )
+        except Exception as ex:
+            print ( "Unexpected error {0}" % ex )
             return
         except KeyboardInterrupt:
-            print ( "IoTHubMessaging sample stopped" )
+            print ( "IoT Hub C2D Messaging service sample stopped" )
     ```
 
-6. 添加以下 main 函数：
+1. 添加以下 main 函数：
 
     ```python
     if __name__ == '__main__':
-        print ( "Starting the IoT Hub Service Client Messaging Python sample..." )
-        print ( "    Connection string = {0}".format(CONNECTION_STRING) )
-        print ( "    Device ID         = {0}".format(DEVICE_ID) )
+        print ( "Starting the Python IoT Hub C2D Messaging service sample..." )
 
         iothub_messaging_sample_run()
     ```
 
-7. 保存并关闭 **SendCloudToDeviceMessage.py** 文件。
+1. 保存并关闭 **SendCloudToDeviceMessage.py** 文件。
 
 ## <a name="run-the-applications"></a>运行应用程序
 
 现在，已准备就绪，可以运行应用程序了。
 
-1. 打开命令提示符，并安装**用于 Python 的 Azure IoT 中心设备 SDK**。
-
-    ```
-    pip install azure-iothub-device-client
-    ```
-
-2. 在命令提示符下，运行以下命令来侦听云到设备消息：
+1. 在工作目录中的命令提示符处，运行以下命令以侦听云到设备消息：
 
     ```shell
     python SimulatedDevice.py
     ```
 
-    ![运行模拟设备应用](./media/iot-hub-python-python-c2d/simulated-device.png)
+    ![运行模拟设备应用](./media/iot-hub-python-python-c2d/device-1.png)
 
-3. 打开一个新的命令提示符，并安装**用于 Python 的 Azure IoT 中心服务 SDK**。
-
-    ```
-    pip install azure-iothub-service-client
-    ```
-
-4. 在命令提示符下，运行以下命令发送一条云到设备消息并等待消息反馈：
+1. 在工作目录中打开一个新的命令提示符，然后运行以下命令以发送云到设备消息：
 
     ```shell
     python SendCloudToDeviceMessage.py
     ```
 
-    ![运行应用以发送云到设备的命令](./media/iot-hub-python-python-c2d/send-command.png)
+    ![运行应用以发送云到设备的命令](./media/iot-hub-python-python-c2d/service.png)
 
-5. 注意设备收到的消息。
+1. 记下设备收到的消息。
 
-    ![收到的消息](./media/iot-hub-python-python-c2d/message-received.png)
+    ![收到的消息](./media/iot-hub-python-python-c2d/device-2.png)
 
 ## <a name="next-steps"></a>后续步骤
 

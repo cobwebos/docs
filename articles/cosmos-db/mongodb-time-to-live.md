@@ -5,14 +5,14 @@ author: sivethe
 ms.author: sivethe
 ms.service: cosmos-db
 ms.devlang: javascript
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 12/26/2018
-ms.openlocfilehash: cd6cb68014eea00077328f39c2c9bf0a1f7fb679
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: HT
+ms.openlocfilehash: 74c140f2fa08fb49235c0503ea5812e047185f8b
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436283"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023493"
 ---
 # <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 过期数据
 
@@ -74,7 +74,7 @@ globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: NumberLong(21474
 
 可以使用 Azure Cosmos DB 的用于 MongoDB 的 API 激活每个文档的 TTL 功能。
 
-![在门户中激活按文档 TTL 功能的屏幕截图](./media/mongodb-ttl/mongodb_portal_ttl.png) 
+:::image type="content" source="./media/mongodb-ttl/mongodb_portal_ttl.png" alt-text="在门户中激活按文档 TTL 功能的屏幕截图":::
 
 ## <a name="next-steps"></a>后续步骤
 * [利用生存时间使 Azure Cosmos DB 中的数据自动过期](../cosmos-db/time-to-live.md)

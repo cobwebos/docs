@@ -10,25 +10,24 @@ tags: azure-resource-manager
 keywords: dsc
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 410990ecdca8a94be9c7c3d0b48a5092fcaa6060
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 82d268eedd73b8de670da93ad3a601b5e75e6444
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515910"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82188529"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 扩展处理程序简介
 
 Azure VM 代理和关联的扩展是 Microsoft Azure 基础结构服务的一部分。 VM 扩展是软件组件，可以扩展 VM 功能并简化各种 VM 管理操作。
 
 Azure Desired State Configuration (DSC) 扩展的主要用例是让 VM 启动到 [Azure Automation State Configuration (DSC) 服务](../../automation/automation-dsc-overview.md)。
-该服务带来的[好处](/powershell/dsc/metaconfig#pull-service)包括：持续管理 VM 的配置，并与其他操作工具（例如 Azure 监视）集成。
+该服务带来的[好处](/powershell/scripting/dsc/managing-nodes/metaConfig#pull-service)包括：持续管理 VM 的配置，并与其他操作工具（例如 Azure 监视）集成。
 使用扩展将 VM 注册到该服务可以提供一个甚至可跨 Azure 订阅工作的灵活解决方案。
 
 可以独立于 Automation DSC 服务使用 DSC 扩展。
@@ -37,10 +36,10 @@ Azure Desired State Configuration (DSC) 扩展的主要用例是让 VM 启动到
 
 本文提供有关两种方案的信息：使用 DSC 扩展进行自动化加入，以及使用 DSC 扩展作为工具，通过 Azure SDK 将配置分配给 VM。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - **本地计算机**：若要与 Azure VM 扩展交互，必须使用 Azure 门户或 Azure PowerShell SDK。
-- **来宾代理**：使用 DSC 配置进行配置的 Azure VM 必须采用支持 Windows Management Framework (WMF) 4.0 或更高版本的 OS。 有关支持的 OS 版本的完整列表，请参阅 [DSC 扩展版本历史记录](/powershell/dsc/azuredscexthistory)。
+- **来宾代理**：使用 DSC 配置进行配置的 Azure VM 必须采用支持 Windows Management Framework (WMF) 4.0 或更高版本的 OS。 有关支持的 OS 版本的完整列表，请参阅 [DSC 扩展版本历史记录](../../automation/automation-dsc-extension-history.md)。
 
 ## <a name="terms-and-concepts"></a>术语和概念
 
@@ -52,7 +51,7 @@ Azure Desired State Configuration (DSC) 扩展的主要用例是让 VM 启动到
 
 ## <a name="architecture"></a>体系结构
 
-Azure DSC 扩展使用 Azure VM 代理框架来传送、启用和报告 Azure VM 上运行的 DSC 配置。 DSC 扩展接受配置文档和一组参数。 如果未提供任何文件，[默认配置脚本](#default-configuration-script)会嵌入到扩展中。 默认配置脚本仅用于在[本地配置管理器](/powershell/dsc/metaconfig)中设置元数据。
+Azure DSC 扩展使用 Azure VM 代理框架来传送、启用和报告 Azure VM 上运行的 DSC 配置。 DSC 扩展接受配置文档和一组参数。 如果未提供任何文件，[默认配置脚本](#default-configuration-script)会嵌入到扩展中。 默认配置脚本仅用于在[本地配置管理器](/powershell/scripting/dsc/managing-nodes/metaConfig)中设置元数据。
 
 首次调用扩展时，该扩展使用以下逻辑安装某个版本的 WMF：
 
@@ -60,11 +59,11 @@ Azure DSC 扩展使用 Azure VM 代理框架来传送、启用和报告 Azure VM
 - 如果已指定 **wmfVersion** 属性，除非该 WMF 版本与 VM 的 OS 不兼容，否则将安装该版本。
 - 如果未指定 **wmfVersion** 属性，则安装 WMF 的最新适用版本。
 
-安装 WMF 需要重启。 重启后，扩展将下载 **modulesUrl** 属性中指定的 .zip 文件（若已提供）。 如果此位置在 Azure Blob 存储中，则可以在 **sasToken** 属性中指定 SAS 令牌来访问该文件。 下载并解压缩 .zip 之后，将运行 **configurationFunction** 中定义的配置函数以生成 .mof 文件。 扩展然后通过使用生成的 .mof 文件来运行 `Start-DscConfiguration -Force`。 扩展将捕获输出并将其写入 Azure 状态通道。
+安装 WMF 需要重启。 重启后，扩展将下载 **modulesUrl** 属性中指定的 .zip 文件（若已提供）。 如果此位置在 Azure Blob 存储中，则可以在 **sasToken** 属性中指定 SAS 令牌来访问该文件。 下载并解压缩 .zip 之后，将运行 **configurationFunction** 中定义的配置函数以生成 .mof（[托管对象格式](https://docs.microsoft.com/windows/win32/wmisdk/managed-object-format--mof-)）文件。 扩展然后通过使用生成的 .mof 文件来运行 `Start-DscConfiguration -Force`。 扩展将捕获输出并将其写入 Azure 状态通道。
 
 ### <a name="default-configuration-script"></a>默认配置脚本
 
-Azure DSC 扩展包括一个默认配置脚本，该脚本计划在对 Azure Automation DSC 服务载入 VM 时使用。 脚本参数符合[本地配置管理器](/powershell/dsc/metaconfig)的可配置属性。 有关脚本参数，请参阅 [Desired State Configuration 扩展与 Azure 资源管理器模板](dsc-template.md)中的[默认配置脚本](dsc-template.md#default-configuration-script)。 有关完整脚本，请参阅 [GitHub 中的 Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true)。
+Azure DSC 扩展包括一个默认配置脚本，该脚本计划在对 Azure Automation DSC 服务载入 VM 时使用。 脚本参数符合[本地配置管理器](/powershell/scripting/dsc/managing-nodes/metaConfig)的可配置属性。 有关脚本参数，请参阅 [Desired State Configuration 扩展与 Azure 资源管理器模板](dsc-template.md)中的[默认配置脚本](dsc-template.md#default-configuration-script)。 有关完整脚本，请参阅 [GitHub 中的 Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true)。
 
 ## <a name="information-for-registering-with-azure-automation-state-configuration-dsc-service"></a>有关注册到 Azure Automation State Configuration (DSC) 服务的信息
 
@@ -74,14 +73,14 @@ Azure DSC 扩展包括一个默认配置脚本，该脚本计划在对 Azure Aut
 - RegistrationKey - 用于将节点注册到服务的共享机密
 - NodeConfigurationName - 从服务中提取的，用于配置服务器角色的节点配置 (MOF) 的名称
 
-可以在 [Azure 门户](../../automation/automation-dsc-onboarding.md#azure-portal)中或者使用 PowerShell 查看此信息。
+可以在 Azure 门户中或者使用 PowerShell 查看此信息。
 
 ```powershell
 (Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).Endpoint
 (Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).PrimaryKey
 ```
 
-对于节点配置名称，请确保 Azure 状态配置中存在的节点配置。  如果不是，扩展部署将返回一个故障。  此外请确保使用的名称*节点配置*和不包含配置。
+对于节点配置名称，请确保在 Azure State Configuration 中存在节点配置。  如果不存在，扩展部署将返回失败。  另外，请确保使用“节点配置”的名称而不是“配置”的名称。 
 配置在用于[编译节点配置（MOF 文件）](https://docs.microsoft.com/azure/automation/automation-dsc-compile)的脚本中定义。
 该名称始终为 Configuration 后接句点 `.` 以及 `localhost` 或特定计算机名。
 
@@ -103,11 +102,11 @@ Azure DSC 扩展包括一个默认配置脚本，该脚本计划在对 Azure Aut
 
 **Get-AzVMDscExtensionStatus** cmdlet 检索由 DSC 扩展处理程序启用的 DSC 配置的状态。 可在一个或一组 VM 上执行此操作。
 
-**Remove-AzVMDscExtension** cmdlet 从特定的 VM 中删除扩展处理程序。 此 cmdlet 不会删除配置、卸载 WMF 或更改 VM 上已应用的设置。  而只删除扩展处理程序。 
+**Remove-AzVMDscExtension** cmdlet 从特定的 VM 中删除扩展处理程序。 此 cmdlet 不会删除配置、卸载 WMF 或更改 VM 上已应用的设置。  而只删除扩展处理程序。
 
 有关资源管理器 DSC 扩展 cmdlet 的重要信息：
 
-- Azure 资源管理器 cmdlet 是同步的。
+- Azure Resource Manager cmdlet 是同步的。
 - *ResourceGroupName*、*VMName*、*ArchiveStorageAccountName*、*Version* 和 *Location* 都是必需的参数。
 - *ArchiveResourceGroupName* 是可选参数。 如果用户的存储帐户所属的资源组与创建 VM 的资源组不同，用户可以指定此参数。
 - 使用 **AutoUpdate** 开关可在有最新版本可用时将扩展处理程序自动更新为最新版本。 当发布了新版本的 WMF 时，此参数可能会导致 VM 重启。
@@ -116,7 +115,7 @@ Azure DSC 扩展包括一个默认配置脚本，该脚本计划在对 Azure Aut
 
 Azure DSC 扩展可在部署过程中使用 DSC 配置文档直接配置 Azure VM。 此步骤不会将节点注册到自动化。 不会集中管理节点。 
 
-下面是一个简单的配置示例。 以 IisInstall.ps1 为名称将配置保存在本地。
+下面是一个简单的配置示例。 在本地将配置保存为 iisInstall.ps1。
 
 ```powershell
 configuration IISInstall
@@ -132,7 +131,7 @@ configuration IISInstall
 }
 ```
 
-以下命令将 IisInstall.ps1 脚本放在指定的 VM 上。 这些命令还会执行配置，然后报告状态。
+以下命令将 iisInstall.ps1 脚本放在指定的 VM 上。 这些命令还会执行配置，然后报告状态。
 
 ```powershell
 $resourceGroup = 'dscVmDemo'
@@ -189,13 +188,13 @@ az vm extension set \
 
 - **配置参数**：如果配置函数采用参数，请使用 **argumentName1=value1,argumentName2=value2** 格式在此处输入。 此格式与 PowerShell cmdlet 或资源管理器模板中接受的配置参数格式不同。
 
-- **配置数据 PSD1 文件**：此字段可选。 如果配置要求 .psd1 中有配置数据文件，请使用此字段来选择数据字段，然后将它上传到用户 Blob 存储。 配置数据文件在 Blob 存储中受 SAS 令牌的保护。
+- **配置数据 PSD1 文件**：你的配置需要 PSD1 中的配置数据文件，请使用此字段选择数据文件并将其上传到你的用户 blob 存储。 配置数据文件在 Blob 存储中受 SAS 令牌的保护。
 
 - **WMF 版本**：指定应在 VM 上安装的 Windows Management Framework (WMF) 版本。 将此属性设置为“latest”可安装最新版本的 WMF。 目前，此属性的可能值只有“4.0”、“5.0”、“5.1”和“latest”。 这些可能值将来可能会更新。 默认值为 **latest**。
 
 - **数据收集**：确定扩展是否将收集遥测数据。 有关详细信息，请参阅 [Azure DSC 扩展数据集合](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/)。
 
-- **版本**：指定要安装的 DSC 扩展的版本。 有关版本信息，请参阅 [DSC 扩展版本历史记录](/powershell/dsc/azuredscexthistory)。
+- **版本**：指定要安装的 DSC 扩展的版本。 有关版本信息，请参阅 [DSC 扩展版本历史记录](/powershell/scripting/dsc/getting-started/azuredscexthistory)。
 
 - **自动升级次要版本**：此字段映射到 cmdlet 中的 **AutoUpdate** 开关，使扩展能够在安装过程中自动更新到最新版本。 “是”  将指示扩展处理程序使用最新可用版本，“否”  将强制安装指定的版本  。 既不选择“是”  也不选择“否”  相当于选择“否”  。
 
@@ -205,7 +204,7 @@ az vm extension set \
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 PowerShell DSC 的详细信息，请转到 [PowerShell 文档中心](/powershell/dsc/overview)。
+- 有关 PowerShell DSC 的详细信息，请转到 [PowerShell 文档中心](/powershell/scripting/dsc/overview/overview)。
 - 查看[适用于 DSC 扩展的资源管理器模板](dsc-template.md)。
 - 若要了解可以使用 PowerShell DSC 管理的其他功能并获取更多 DSC 资源，请浏览 [PowerShell 库](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)。
 - 有关将敏感参数传入配置的详细信息，请参阅[使用 DSC 扩展处理程序安全管理凭据](dsc-credentials.md)。

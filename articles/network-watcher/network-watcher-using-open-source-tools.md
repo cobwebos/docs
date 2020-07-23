@@ -1,25 +1,23 @@
 ---
-title: 使用 Azure 网络观察程序和开源工具可视化网络流量模式 | Microsoft 文档
+title: 使用开放源代码工具将网络流量模式可视化
+titleSuffix: Azure Network Watcher
 description: 本页介绍如何使用网络观察程序数据包捕获与 Capanalysis 来可视化传入和传出 VM 的流量模式。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 936d881b-49f9-4798-8e45-d7185ec9fe89
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 3a0ae782d3fe97752ca8b9e786c3c2672f554277
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.author: damendo
+ms.openlocfilehash: 48501a2796f4d826a20af559058490a14785b53e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64936011"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738628"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>使用开源工具将传入和传出 VM 的网络流量模式可视化
 
@@ -27,13 +25,13 @@ ms.locfileid: "64936011"
 
 Azure 网络观察程序允许在网络中执行数据包捕获，提供捕获数据的功能。 本文会演练如何使用 CapAnalysis 和网络观察程序将数据包捕获可视化并从中获得见解。
 
-## <a name="scenario"></a>场景
+## <a name="scenario"></a>方案
 
 在 Azure 中的 VM 上部署了一个简单的 Web 应用程序，想要使用开源工具来直观显示其网络流量，以便快速识别流模式和任何潜在的异常。 使用网络观察程序可以获取网络环境的数据包捕获，并直接将它存储在存储帐户中。 然后，CapAnalysis 可以直接从存储 Blob 引入该数据包捕获并可视化其内容。
 
 ![方案][1]
 
-## <a name="steps"></a>Steps
+## <a name="steps"></a>步骤
 
 ### <a name="install-capanalysis"></a>安装 CapAnalysis
 
@@ -49,7 +47,7 @@ Azure 网络观察程序允许在网络中执行数据包捕获，提供捕获�
 
 向 CapAnalysis 提供链接时，请务必在存储 Blob URL 的后面追加 SAS 令牌。  为此，请从存储帐户导航到“共享访问签名”，指定允许的权限，按“生成 SAS”按钮创建令牌。 然后，可将此 SAS 令牌追加到数据包捕获存储 Blob URL 的后面。
 
-生成的 URL 应如以下 URL 所示： http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere
+生成的 URL 应如以下 URL 所示： `http:\//storageaccount.blob.core.windows.net/container/location?addSASkeyhere`
 
 
 ### <a name="analyzing-packet-captures"></a>分析数据包捕获
@@ -76,7 +74,7 @@ CapAnalysis 提供多种选项来可视化数据包捕获，每种选项从不�
 
 1. Geomap
 
-    使用颜色缩放到的流量从每个国家/地区中，此窗格提供您的网络流量的地图视图。 您可以选择突出显示国家/地区/区域，以查看更多流统计信息，例如发送和接收来自 Ip 的国家/地区中的数据的组成部分。
+    此窗格提供网络流量的地图视图，颜色可根据每个国家/地区的流量大小进行调整。 可以选择突出显示的国家/地区来查看更多流统计数据，例如，从该国家/地区的 IP 发送和接收的数据比例。
 
     ![Geomap][8]
 
@@ -88,7 +86,7 @@ CapAnalysis 提供多种选项来可视化数据包捕获，每种选项从不�
 
     访问 [https://www.capanalysis.net/ca/#about](https://www.capanalysis.net/ca/#about) 可了解有关 CapAnalysis 所有功能的更多信息。
 
-## <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>结论
 
 使用网络观察程序的数据包捕获功能可以捕获所需的数据来执行网络取证，以及更好地了解网络流量。 本方案说明了如何轻松将网络观察程序中的数据包捕获与开源可视化工具相集成。 使用 CapAnalysis 等开源工具将数据包捕获可视化，可以执行深度数据包检查，快速识别网络流量中的趋势。
 

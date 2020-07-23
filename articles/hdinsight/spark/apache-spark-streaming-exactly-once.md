@@ -1,25 +1,26 @@
 ---
-title: 创建支持“恰好一次”事件处理的 Spark 流作业 - Azure HDInsight
-description: 如何将 Spark 流设置为处理事件一次且只有一次。
-ms.service: hdinsight
+title: Spark 流式处理 & 一次事件处理-Azure HDInsight
+description: 如何设置 Apache Spark 流式处理事件一次且仅处理一次。
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 388723624fde73899809b95ff8ae4ee23cf49a9d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.topic: how-to
+ms.date: 11/15/2018
+ms.openlocfilehash: 8e0037f6aea4aef53efc192066027e0a0143bda1
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705100"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086171"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>使用“恰好一次”事件处理创建 Apache Spark 流式处理作业
 
-系统中发生某种故障后，流处理应用程序会采取不同的方法来应对消息的重新处理：
+在系统发生故障后，流处理应用程序采用不同的方法来处理重新处理消息：
 
 * 至少一次：保证处理每条消息，但消息可能会处理多次。
-* 最多一次：不一定会处理每条消息。 如果处理某条消息，只会将它处理一次。
+* 最多一次：不一定会处理每条消息。 如果处理消息，则它仅处理一次。
 * 恰好一次：保证处理每条消息一次且只有一次。
 
 本文介绍如何配置 Spark 流，以实现“恰好一次”处理。
@@ -38,25 +39,25 @@ ms.locfileid: "64705100"
 
 ### <a name="replayable-sources"></a>可重播源
 
-Spark 流应用程序从中读取事件的源必须可重播。 这意味着，如果已检测到消息，但在持久保存或处理该消息之前系统发生故障，则源必须再次提供同一消息。
+Spark 流应用程序从中读取事件的源必须可重播。  这意味着，如果已检测到消息，但在持久保存或处理该消息之前系统发生故障，则源必须再次提供同一消息。
 
 在 Azure 中，Azure 事件中心和 HDInsight 上的 [Apache Kafka](https://kafka.apache.org/) 提供可重播源。 可重播源的另一个示例是 [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) 等容错的文件系统、Azure 存储 Blob 或 Azure Data Lake Storage，其中的所有数据将永久保留，随时都可以重新读取整个数据。
 
 ### <a name="reliable-receivers"></a>可靠的接收器
 
-在 Spark 流中，事件中心和 Kafka 等源具有可靠的接收器，其中的每个接收器可跟踪它在读取源时的进度。 可靠的接收器将其状态持久保存在以下容错存储中：[Apache ZooKeeper](https://zookeeper.apache.org/)，或者写入 HDFS 的 Spark 流检查点。 如果此类接收器发生故障并随后重启，它可以从上次中断的位置继续拾取数据。
+在 Spark 流中，事件中心和 Kafka 等源具有可靠的接收器，其中的每个接收器可跟踪它在读取源时的进度。  可靠的接收器将其状态持久保存在以下容错存储中：[Apache ZooKeeper](https://zookeeper.apache.org/)，或者写入 HDFS 的 Spark 流检查点。 如果此类接收器发生故障并随后重启，它可以从上次中断的位置继续拾取数据。
 
 ### <a name="use-the-write-ahead-log"></a>使用预写日志
 
 Spark 流支持使用预写日志，其中每个收到的事件首先写入容错存储中的 Spark 检查点目录，然后存储在弹性分布式数据集 (RDD) 中。 在 Azure 中，容错存储是由 Azure 存储或 Azure Data Lake Storage 提供支持的 HDFS。 在 Spark 流应用程序中，可以通过将 `spark.streaming.receiver.writeAheadLog.enable` 配置设置指定为 `true`，为所有接收器启用预写日志。 预写日志针对驱动程序和执行器的故障提供容错。
 
-对于针对事件数据运行任务的辅助角色，将会根据定义在多个辅助角色之间复制和分配每个 RDD。 如果由于运行任务的辅助角色崩溃而导致该任务失败，则会在拥有事件数据副本的另一个辅助角色上重启该任务，因此事件不会丢失。
+对于针对事件数据运行任务的辅助角色，将会根据定义在多个辅助角色之间复制和分配每个 RDD。 如果由于运行任务的工作线程崩溃而导致任务失败，则该任务将在具有事件数据副本的另一个工作线程上重新启动，因此事件不会丢失。
 
 ### <a name="use-checkpoints-for-drivers"></a>使用驱动程序的检查点
 
 作业驱动程序需要可重启。 如果运行 Spark 流应用程序的驱动程序崩溃，该驱动程序及其运行的所有接收器、任务和存储事件数据的任何 RDD 都会关闭。 在这种情况下，需要能够保存作业的进度，以便稍后可以恢复。 为此，可以在容错存储中定期创建 DStream 的有向无环图 (DAG) 检查点。 DAG 元数据包括用于创建流应用程序的配置、肜于定义应用程序的操作，以及已排队但尚未完成的任何批。 此元数据可让发生故障的驱动程序根据检查点信息重启。 驱动程序重启时，会启动新的接收器，这些接收器可自行通过预写日志将事件数据恢复到 RDD。
 
-可以执行两个步骤在 Spark 流中启用检查点。 
+可以执行两个步骤在 Spark 流中启用检查点。
 
 1. 在 StreamingContext 对象中配置检查点的存储路径：
 
@@ -78,13 +79,13 @@ Spark 流支持使用预写日志，其中每个收到的事件首先写入容�
 
 ### <a name="use-idempotent-sinks"></a>使用幂等接收器
 
-作业将结果写入到的目标接收器必须能够处理多次提供相同结果的情况。 该接收器必须能够检测此类重复结果并将其忽略。 可以使用相同的数据多次调用幂等接收器，而不会更改状态。
+作业写入结果的目标接收器必须能够处理其结果数超过一次的情况。 该接收器必须能够检测此类重复结果并将其忽略。 可以使用相同的数据多次调用幂等接收器，而不会更改状态。 
 
-若要创建幂等接收器，可以实现相应的逻辑来首先检查数据存储中是否存在传入的结果。 如果已存在该结果，则从 Spark 作业的角度看，写入操作看上去已成功，但实际上数据存储忽略了重复的数据。 如果结果不存在，则接收器应将此新结果插入到其存储中。 
+若要创建幂等接收器，可以实现相应的逻辑来首先检查数据存储中是否存在传入的结果。 如果已存在该结果，则从 Spark 作业的角度看，写入操作看上去已成功，但实际上数据存储忽略了重复的数据。 如果结果不存在，则接收器应将此新结果插入其存储中。
 
 例如，可以在 Azure SQL 数据库中使用存储过程，将事件插入表中。 此存储过程先根据键字段查找事件，仅当未找到匹配的事件时，才将记录插入到表中。
 
-另一个示例是使用分区文件系统，例如 Azure 存储 Blob 或 Azure Data Lake Storage。 在这种情况下，接收器逻辑不需要检查文件是否存在。 如果表示事件的文件存在，只需使用相同的数据将其覆盖。 否则，需要在计算的路径中创建一个新文件。
+另一个示例是使用分区文件系统，例如 Azure 存储 Blob 或 Azure Data Lake Storage。 在这种情况下，接收器逻辑不需要检查文件是否存在。 如果表示事件的文件存在，则只会用相同的数据覆盖它。 否则，需要在计算的路径中创建一个新文件。
 
 ## <a name="next-steps"></a>后续步骤
 

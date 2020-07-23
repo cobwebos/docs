@@ -1,62 +1,65 @@
 ---
-title: 有关访问和创建新租户的快速入门 - Azure Active Directory | Microsoft Docs
+title: 快速入门 - 访问和创建新租户 - Azure AD
 description: 介绍如何查找 Azure Active Directory，以及如何为组织创建新的租户。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/10/2018
-ms.author: lizross
-ms.custom: it-pro, seodec18
+ms.author: ajburnle
+ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fafa3974eb01b36015254307ba1a52a9bc221da
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5f29d103ce1be426fb0b5c462cc1d831fefe87b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798632"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80049997"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>快速入门：在 Azure Active Directory 中创建一个新租户
 可使用 Azure Active Directory (Azure AD) 门户执行所有管理任务，包括为组织创建新的租户。 
 
 在该快速入门中，你将学习如何转到 Azure 门户和 Azure Active Directory，以及如何为组织创建基本租户。
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
-
-## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
-使用全局管理员帐户登录到组织的 [Azure 门户](https://portal.azure.com/)。
-
-![Azure 门户屏幕，包含 Azure AD 选项](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="create-a-new-tenant-for-your-organization"></a>为组织创建新的租户
 登录到 Azure 门户后，即可为组织创建新的租户。 新的租户代表你的组织，可帮助你管理面向内部和外部用户的特定 Microsoft 云服务实例。
 
 ### <a name="to-create-a-new-tenant"></a>创建新的租户
-1. 依次选择“创建资源”、“标识”、“Azure Active Directory”。
 
-    随即出现“创建目录”页面。
+1. 登录到你组织的 [Azure 门户](https://portal.azure.com/)。
+
+1. 在 Azure 门户菜单中，选择“创建资源”  。  
+
+    ![Azure Active Directory 的“创建资源”页](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+
+1. 选择“标识”，然后选择“Azure Active Directory”   。
+
+    随即出现“创建目录”页面  。
 
     ![Azure Active Directory“创建”页面](media/active-directory-access-create-new-tenant/azure-ad-create-new-tenant.png)
 
-2.  在“创建目录”页面上，输入以下信息：
+1.  在“创建目录”页面上，输入以下信息  ：
     
-    - 在“组织名称”框中键入 Contoso。
+    - 在“组织名称”框中键入 Contoso   。
 
-    - 在“初始域名”框中键入 Contoso。
+    - 在“初始域名”框中键入 Contoso   。
 
-    - 保留“国家或地区”框中的“美国”选项。
+    - 保留“国家或地区”框中的“美国”选项   。
 
-3. 选择“创建”。
+1. 选择“创建”  。
 
 新租户是使用 contoso.onmicrosoft.com 域创建的。
 
 ## <a name="clean-up-resources"></a>清理资源
-如果不计划继续使用此应用程序，可按以下步骤删除此租户：
+如果不打算继续使用此应用程序，可按以下步骤删除该租户：
 
-- 选择 Azure Active Directory，然后在“Contoso - 概述”页面上，选择“删除目录”。
+- 确保你已登录到要通过 Azure 门户中的“目录 + 订阅”  筛选器删除的目录，并根据需要切换到目标目录。
+- 选择 Azure Active Directory，然后在“Contoso - 概述”页面上，选择“删除目录”    。
 
     这会删除此租户及其关联信息。
 

@@ -1,5 +1,5 @@
 ---
-title: 规划容量和缩放以便使用 Azure Site Recovery 将 VMware 灾难恢复到 Azure | Microsoft Docs
+title: 为 VMware 灾难恢复规划容量 Azure Site Recovery
 description: 本文可帮助你在使用 Azure Site Recovery 设置 VMware VM 到 Azure 的灾难恢复时规划容量和缩放。
 author: nsoneji
 manager: garavd
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 9a77b3982d8aed6ae694c32baecd7ae194c51724
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: a74d9347d0050a2970e698ae616eb09fe32bdc5b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924834"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135456"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>规划容量和缩放以便将 VMware 灾难恢复到 Azure
 
@@ -41,7 +41,7 @@ CPU | 内存 | 缓存磁盘大小 | 数据更改率 | 受保护的计算机
 8 个 vCPU（2 个插槽 * 4 个核心 \@ 2.5 GHz） | 16 GB | 300 GB | 500 GB 或更少 | 用于复制 100 台以下的计算机。
 12 个 vCPU（2 个插槽 * 6 个核心 \@ 2.5 GHz） | 18 GB | 600 GB | 501 GB 到 1 TB | 用于复制 100 到 150 台计算机。
 16 个 vCPU（2 个插槽 * 8 个核心 \@ 2.5 GHz） | 32 GB | 1 TB | >1 TB 到 2 TB | 用于复制 151 到 200 台计算机。
-使用 [OVF 模板](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template)部署另一个配置服务器。 | | | | 如果要复制 200 台以上的计算机，请部署新的配置服务器。
+使用 [OVF 模板](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template)部署另一个配置服务器。 | | | | 如果要复制 200 台以上的计算机，请部署新的配置服务器。
 部署另一个[进程服务器](vmware-azure-set-up-process-server-scale.md#download-installation-file)。 | | | >2 TB| 如果每日总数据更改率超过 2 TB，请部署新的横向扩展进程服务器。
 
 在这些配置中：
@@ -51,9 +51,9 @@ CPU | 内存 | 缓存磁盘大小 | 数据更改率 | 受保护的计算机
 
 ## <a name="size-recommendations-for-the-process-server"></a>进程服务器的建议大小
 
-进程服务器是处理 Azure Site Recovery 中数据复制的组件。 如果每日更改率大于 2 TB，则必须添加一个横向扩展进程服务器来处理复制负载。 若要横向扩展，可以执行以下操作：
+进程服务器是处理 Azure Site Recovery 中数据复制的组件。 如果每日更改率大于 2 TB，则必须添加一个横向扩展进程服务器来处理复制负载。 若要扩大，可执行以下操作：
 
-* 增加通过 [OVF 模板](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template)部署的配置服务器数目。 例如，可以使用两个配置服务器来保护最多 400 台计算机。
+* 增加通过 [OVF 模板](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template)部署的配置服务器数目。 例如，可以使用两个配置服务器来保护最多 400 台计算机。
 * 添加[横向扩展进程服务器](vmware-azure-set-up-process-server-scale.md#download-installation-file)。 使用横向扩展进程服务器处理复制流量，而无需添加配置服务器。
 
 下表描述了此方案：
@@ -84,19 +84,21 @@ CPU | 内存 | 缓存磁盘大小 | 数据更改率 | 受保护的计算机
 
 ### <a name="throttle-bandwidth"></a>限制带宽
 
-1. 在用作进程服务器的计算机上打开 Azure 备份 MMC 管理单元。 默认情况下，备份的快捷方式位于桌面上或在以下文件夹中：C:\Program Files\Microsoft Azure Recovery Services Agent\bin。
-2. 在该管理单元中，选择“更改属性”。
+1. 在用作进程服务器的计算机上打开 Azure 备份 MMC 管理单元。 默认情况下，桌面或以下文件夹中提供了备份快捷方式： C:\Program Files\Microsoft Azure Recovery Services Agent\bin。
+2. 在该管理单元中，选择“更改属性”。 
 
     ![用于更改属性的 Azure 备份 MMC 管理单元选项的屏幕截图](./media/site-recovery-vmware-to-azure/throttle1.png)
-3. 在“限制”选项卡上，选择“为备份操作启用 Internet 带宽使用限制”。 设置工作和非工作小时数限制。 有效范围为 512 Kbps 到 1,023 Mbps。
+3. 在“限制”  选项卡上，选择“为备份操作启用 Internet 带宽使用限制”  。 设置工作和非工作小时数限制。 有效范围为 512 Kbps 到 1,023 Mbps。
 
     ![“Azure 备份属性”对话框的屏幕截图](./media/site-recovery-vmware-to-azure/throttle2.png)
 
-也可以使用 [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx) cmdlet 来设置限制。 下面是一个示例：
+也可以使用 [Set-OBMachineSetting](/previous-versions/windows/powershell-scripting/hh770409(v=wps.640)) cmdlet 来设置限制。 下面是一个示例：
 
-    $mon = [System.DayOfWeek]::Monday
-    $tue = [System.DayOfWeek]::Tuesday
-    Set-OBMachineSetting -WorkDay $mon, $tue -StartWorkHour "9:00:00" -EndWorkHour "18:00:00" -WorkHourBandwidth  (512*1024) -NonWorkHourBandwidth (2048*1024)
+```azurepowershell-interactive
+$mon = [System.DayOfWeek]::Monday
+$tue = [System.DayOfWeek]::Tuesday
+Set-OBMachineSetting -WorkDay $mon, $tue -StartWorkHour "9:00:00" -EndWorkHour "18:00:00" -WorkHourBandwidth  (512*1024) -NonWorkHourBandwidth (2048*1024)
+```
 
 **Set-OBMachineSetting -NoThrottle** 表示不需要限制。
 
@@ -114,23 +116,23 @@ CPU | 内存 | 缓存磁盘大小 | 数据更改率 | 受保护的计算机
 1. 若要测量这些参数，请在环境中运行 Site Recovery 部署规划器。 如需指导帮助，请参阅[关于用于 VMware 到 Azure 复制的 Site Recovery 部署规划器](site-recovery-deployment-planner.md)。
 2. 部署符合[配置服务器的大小建议](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server)的配置服务器。 如果生产工作负荷超过 650 个虚拟机，请部署另一个配置服务器。
 3. 根据测得的每日数据更改率，借助[大小指导](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server)部署[横向扩展进程服务器](vmware-azure-set-up-process-server-scale.md#download-installation-file)。
-4. 如果您希望的数据更改率超过 2 MBps 为磁盘虚拟机，请确保使用高级托管磁盘。 Site Recovery 部署规划器运行特定的一段时间。 报告中可能不会捕获其他时间段的数据更改率峰值。
+4. 如果预期磁盘虚拟机的数据更改率超过 2 MBps，请确保使用高级托管磁盘。 Site Recovery 部署规划器运行特定的一段时间。 报告中可能不会捕获其他时间段的数据更改率峰值。
 5. 请根据所要实现的 RPO [设置网络带宽](site-recovery-plan-capacity-vmware.md#control-network-bandwidth)。
 6. 设置基础结构时，请为工作负荷启用灾难恢复。 有关操作方法，请参阅[为 VMware 到 Azure 的复制设置源环境](vmware-azure-set-up-source.md)。
 
-## <a name="deploy-additional-process-servers"></a>部署附加的进程服务器
+## <a name="deploy-additional-process-servers"></a>部署额外的进程服务器
 
-如果将部署扩展到 200 台以上的源计算机，或者每日总变动率超过 2 TB，则必须添加进程服务器来处理流量。 提供了增强的产品中 9.24 版本提供[处理服务器警报](vmware-physical-azure-monitor-process-server.md#process-server-alerts)何时设置横向扩展进程服务器。 [设置进程服务器](vmware-azure-set-up-process-server-scale.md)来保护新的源计算机或[平衡负载](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load)。
+如果将部署扩展到 200 台以上的源计算机，或者每日总变动率超过 2 TB，则必须添加进程服务器来处理流量。 我们在 9.24 版本中增强了产品，以便提供有关何时设置横向扩展进程服务器的[进程服务器警报](vmware-physical-azure-monitor-process-server.md#process-server-alerts)。 [设置进程服务器](vmware-azure-set-up-process-server-scale.md)以保护新的源计算机或[均衡负载](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load)。
 
 ### <a name="migrate-machines-to-use-the-new-process-server"></a>对计算机进行迁移，以使用新的进程服务器
 
-1. 选择“设置” > “Site Recovery 服务器”。 选择配置服务器，然后展开“进程服务器”。
+1. 选择“设置” > “Site Recovery 服务器”。   选择配置服务器，然后展开“进程服务器”。 
 
     ![“进程服务器”对话框的屏幕截图](./media/site-recovery-vmware-to-azure/migrate-ps2.png)
-2. 右键单击当前正在使用的进程服务器，然后选择“切换”。
+2. 右键单击当前正在使用的进程服务器，然后选择“切换”。 
 
     ![“配置服务器”对话框的屏幕截图](./media/site-recovery-vmware-to-azure/migrate-ps3.png)
-3. 在“选择目标进程服务器”中，选择要使用的新进程服务器。 然后选择该服务器将要处理的虚拟机。 若要获取有关该服务器的信息，请选择信息图标。 为了帮助你做出负载决策，随后会显示将每个所选虚拟机复制到新进程服务器所需的平均空间。 请选择勾选标记开始复制到新的进程服务器。
+3. 在“选择目标进程服务器”中，选择要使用的新进程服务器。  然后选择该服务器将要处理的虚拟机。 若要获取有关该服务器的信息，请选择信息图标。 为了帮助你做出负载决策，随后会显示将每个所选虚拟机复制到新进程服务器所需的平均空间。 请选择勾选标记开始复制到新的进程服务器。
 
 ## <a name="deploy-additional-master-target-servers"></a>部署其他主目标服务器
 
@@ -144,26 +146,26 @@ CPU | 内存 | 缓存磁盘大小 | 数据更改率 | 受保护的计算机
 
 为基于 Windows 的虚拟机添加主目标服务器：
 
-1. 转到“恢复服务保管库” > “Site Recovery 基础结构” > “配置服务器”。
-2. 选择所需的配置服务器，然后选择“主目标服务器”。
+1. 转到“恢复服务保管库” > “Site Recovery 基础结构” > “配置服务器”    。
+2. 选择所需的配置服务器，然后选择“主目标服务器”。 
 
     ![显示“添加主目标服务器”按钮的屏幕截图](media/site-recovery-plan-capacity-vmware/add-master-target-server.png)
 3. 下载统一安装程序文件并在 VM 上运行该文件，以安装主目标服务器。
-4. 选择“安装主目标” > “下一步”。
+4. 选择“安装主目标” > “下一步”   。
 
     ![显示“安装主目标”选项的屏幕截图](media/site-recovery-plan-capacity-vmware/choose-MT.PNG)
-5. 选择默认安装位置，然后选择“安装”。
+5. 选择默认安装位置，然后选择“安装”。 
 
      ![显示默认安装位置的屏幕截图](media/site-recovery-plan-capacity-vmware/MT-installation.PNG)
-6. 若要将主目标注册到配置服务器，请选择“转到配置”。
+6. 若要将主目标注册到配置服务器，请选择“转到配置”。 
 
     ![显示“转到配置”按钮的屏幕截图](media/site-recovery-plan-capacity-vmware/MT-proceed-configuration.PNG)
 7. 输入配置服务器的 IP 地址，然后输入通行短语。 若要了解如何生成通行短语，请参阅[生成配置服务器通行短语](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)。 
 
     ![显示配置服务器 IP 地址和通行短语输入位置的屏幕截图](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
-8. 选择“注册”。 完成注册后，选择“完成”。
+8. 选择“注册”  。 完成注册后，选择“完成”。 
 
-注册成功完成后，该服务器将在 Azure 门户上的“恢复服务保管库” > “Site Recovery 基础结构” > “配置服务器”中列出，在配置服务器的主目标服务器列表中可以找到它。
+注册成功完成后，该服务器将在 Azure 门户上的“恢复服务保管库” > “Site Recovery 基础结构” > “配置服务器”中列出，在配置服务器的主目标服务器列表中可以找到它。   
 
  > [!NOTE]
  > 下载最新版本的[适用于 Windows 的主目标服务器统一安装程序文件](https://aka.ms/latestmobsvc)。

@@ -8,15 +8,15 @@ ms.author: sgilley
 manager: cgronlund
 ms.custom: include file
 ms.topic: include
-ms.date: 01/25/2019
-ms.openlocfilehash: a882a874574395095e98079cd0f8aa4a4987c749
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.date: 03/05/2020
+ms.openlocfilehash: e289cf7aea6e0ea46ff049f3ea8bf9e1517e8aaf
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66391786"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673642"
 ---
-1. [创建 Azure 机器学习服务工作区](../articles/machine-learning/service/setup-create-workspace.md)。
+1. [创建 Azure 机器学习工作区](../articles/machine-learning/how-to-manage-workspace.md)。
 
 1. 克隆 [GitHub 存储库](https://aka.ms/aml-notebooks)。
 

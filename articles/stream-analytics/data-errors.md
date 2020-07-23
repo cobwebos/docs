@@ -1,28 +1,27 @@
 ---
-title: Azure Stream Analytics 诊断日志数据错误
-description: 此文章介绍了不同的输入和输出数据错误时使用 Azure Stream Analytics 可能发生的。
-services: stream-analytics
+title: Azure 流分析资源日志数据错误
+description: 本文解释使用 Azure 流分析时可能出现的不同输入和输出数据错误。
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
-ms.date: 05/09/2019
-ms.openlocfilehash: b00eb12092838746f4bfe16f00eac55df9224b09
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.topic: troubleshooting
+ms.date: 03/27/2020
+ms.openlocfilehash: 725d1cf38a0c7f6de02addc62577e397a935af94
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65607223"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041041"
 ---
-# <a name="azure-stream-analytics-data-errors"></a>Azure Stream Analytics 数据错误
+# <a name="azure-stream-analytics-data-errors"></a>Azure 流分析数据错误
 
-如果通过 Azure Stream Analytics 作业处理的数据存在差异，Stream Analytics 会将数据错误事件发送到诊断日志。 Stream Analytics 数据错误发生时其诊断日志中写入详细的信息和示例事件。 通过门户通知，了解一些错误也提供此信息的摘要。
+数据错误是处理数据时发生的错误。  这些错误往往发生在数据反序列化、序列化和写入操作期间。  发生数据错误时，流分析会将详细信息和示例事件写入资源日志。  在某些情况下，还会通过门户通知来提供此信息的摘要。
 
-本文概述了不同错误类型、 原因和诊断日志的输入和输出数据错误的详细信息。
+本文概述输入和输出数据错误的不同错误类型、原因和资源日志详细信息。
 
-## <a name="diagnostic-log-schema"></a>诊断日志架构
+## <a name="resource-logs-schema"></a>资源日志架构
 
-请参阅[通过使用诊断日志进行故障排除 Azure Stream Analytics](stream-analytics-job-diagnostic-logs.md#diagnostics-logs-schema)若要查看诊断日志的架构。 以下 JSON 是示例值**属性**字段的数据错误的诊断日志。
+请参阅[使用诊断日志对 Azure 流分析进行故障排除](stream-analytics-job-diagnostic-logs.md#resource-logs-schema)，了解资源日志的架构。 以下 JSON 是数据错误资源日志的“属性”字段示例值****。
 
 ```json
 {
@@ -38,15 +37,16 @@ ms.locfileid: "65607223"
 }
 ```
 
-## <a name="input-data-errors"></a>输入的数据错误
+## <a name="input-data-errors"></a>输入数据错误
 
 ### <a name="inputdeserializererrorinvalidcompressiontype"></a>InputDeserializerError.InvalidCompressionType
 
-* 原因：选定的输入的压缩类型与数据不匹配。
+* 原因：所选的输入压缩类型与数据不匹配。
 * 提供的门户通知：是
-* 诊断日志级别：警告
+* 资源日志级别：警告
+* 影响：将从输入中删除存在任何反序列化错误（包括无效的压缩类型）的消息。
 * 日志详细信息
-   * 输入消息标识符。 事件中心的标识符是 PartitionId、 偏移量和序列号。
+   * 输入消息标识符。 对于事件中心，标识符为 PartitionId、偏移量和序列号。
 
 **错误消息**
 
@@ -56,12 +56,13 @@ ms.locfileid: "65607223"
 
 ### <a name="inputdeserializererrorinvalidheader"></a>InputDeserializerError.InvalidHeader
 
-* 原因：输入数据的标头无效。 例如，CSV 还包含具有重复名称的列。
+* 原因：输入数据的标头无效。 例如，CSV 包含具有重复名称的列。
 * 提供的门户通知：是
-* 诊断日志级别：警告
+* 资源日志级别：警告
+* 影响：将从输入中删除存在任何反序列化错误（包括无效的标头）的消息。
 * 日志详细信息
    * 输入消息标识符。 
-   * 最多几个千字节为单位的实际负载。
+   * 最大若干 KB 的实际有效负载。
 
 **错误消息**
 
@@ -71,13 +72,14 @@ ms.locfileid: "65607223"
 
 ### <a name="inputdeserializererrormissingcolumns"></a>InputDeserializerError.MissingColumns
 
-* 原因：使用 CREATE TABLE 或通过 TIMESTAMP BY 定义的输入的列不存在。
+* 原因：使用 CREATE TABLE 或通过 TIMESTAMP BY 定义的输入列不存在。
 * 提供的门户通知：是
-* 诊断日志级别：警告
+* 资源日志级别：警告
+* 影响：将从输入中删除缺少列的事件。
 * 日志详细信息
    * 输入消息标识符。 
    * 缺少的列的名称。 
-   * 最多几个千字节为单位的实际负载。
+   * 最大若干 KB 的实际有效负载。
 
 **错误消息**
 
@@ -93,10 +95,11 @@ ms.locfileid: "65607223"
 
 * 原因：无法将输入转换为 CREATE TABLE 语句中指定的类型。
 * 提供的门户通知：是
-* 诊断日志级别：警告
+* 资源日志级别：警告
+* 影响：将从输入中删除存在类型转换错误的事件。
 * 日志详细信息
    * 输入消息标识符。 
-   * 列和预期的类型的名称。
+   * 列名称和预期类型。
 
 **错误消息**
 
@@ -110,12 +113,13 @@ ms.locfileid: "65607223"
 
 ### <a name="inputdeserializererrorinvaliddata"></a>InputDeserializerError.InvalidData
 
-* 原因：输入的数据不在正确的格式。 例如，输入不是有效的 JSON。
+* 原因：输入数据的格式不正确。 例如，输入不是有效的 JSON。
 * 提供的门户通知：是
-* 诊断日志级别：警告
+* 资源日志级别：警告
+* 影响：将从输入中删除遇到无效数据错误后显示的消息中的所有事件。
 * 日志详细信息
    * 输入消息标识符。 
-   * 最多几个千字节为单位的实际负载。
+   * 最大若干 KB 的实际有效负载。
 
 **错误消息**
 
@@ -131,11 +135,12 @@ ms.locfileid: "65607223"
 
 * 原因：TIMESTAMP BY 表达式的值无法转换为日期时间。
 * 提供的门户通知：是
-* 诊断日志级别：警告
+* 资源日志级别：警告
+* 影响：将从输入中删除存在无效输入时间戳的事件。
 * 日志详细信息
    * 输入消息标识符。 
    * 错误消息。 
-   * 最多几个千字节为单位的实际负载。
+   * 最大若干 KB 的实际有效负载。
 
 **错误消息**
 
@@ -147,9 +152,10 @@ ms.locfileid: "65607223"
 
 * 原因：TIMESTAMP BY OVER timestampColumn 的值为 NULL。
 * 提供的门户通知：是
-* 诊断日志级别：警告
+* 资源日志级别：警告
+* 影响：将从输入中删除存在无效输入时间戳键的事件。
 * 日志详细信息
-   * 多达几千实际有效负载。
+   * 最大若干 KB 的实际有效负载。
 
 **错误消息**
 
@@ -159,12 +165,13 @@ ms.locfileid: "65607223"
 
 ### <a name="lateinputevent"></a>LateInputEvent
 
-* 原因：应用程序时间与到达时间之间的差异大于延迟到达容错时段。
+* 原因：应用程序时间与抵达时间之间的差大于延期抵达容限时限。
 * 提供的门户通知：否
-* 诊断日志级别：信息
+* 资源日志级别：信息
+* 影响：将会根据作业配置的“事件排序”部分中的“处理其他事件”设置来处理延期输入事件。 有关详细信息，请参阅[时间处理策略](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)。
 * 日志详细信息
-   * 应用程序时间与到达时间。 
-   * 最多几个千字节为单位的实际负载。
+   * 应用程序时间和抵达时间。 
+   * 最大若干 KB 的实际有效负载。
 
 **错误消息**
 
@@ -174,12 +181,13 @@ ms.locfileid: "65607223"
 
 ### <a name="earlyinputevent"></a>EarlyInputEvent
 
-* 原因：应用程序时间与到达时间之间的差异大于 5 分钟。
+* 原因：应用程序时间与抵达时间之间的差大于 5 分钟。
 * 提供的门户通知：否
-* 诊断日志级别：信息
+* 资源日志级别：信息
+* 影响：将会根据作业配置的“事件排序”部分中的“处理其他事件”设置来处理提前输入事件。 有关详细信息，请参阅[时间处理策略](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)。
 * 日志详细信息
-   * 应用程序时间与到达时间。 
-   * 最多几个千字节为单位的实际负载。
+   * 应用程序时间和抵达时间。 
+   * 最大若干 KB 的实际有效负载。
 
 **错误消息**
 
@@ -189,11 +197,12 @@ ms.locfileid: "65607223"
 
 ### <a name="outoforderevent"></a>OutOfOrderEvent
 
-* 原因：事件被视为无序容错时段定义根据无序。
+* 原因：根据定义的失序容限时限将事件视为失序。
 * 提供的门户通知：否
-* 诊断日志级别：信息
+* 资源日志级别：信息
+* 影响：将会根据作业配置的“事件排序”部分中的“处理其他事件”设置来处理失序事件。 有关详细信息，请参阅[时间处理策略](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)。
 * 日志详细信息
-   * 最多几个千字节为单位的实际负载。
+   * 最大若干 KB 的实际有效负载。
 
 **错误消息**
 
@@ -205,11 +214,12 @@ ms.locfileid: "65607223"
 
 ### <a name="outputdataconversionerrorrequiredcolumnmissing"></a>OutputDataConversionError.RequiredColumnMissing
 
-* 原因：所需的输出列不存在。 例如，列定义为 Azure 表 PartitionKey 不存在。
+* 原因：输出所需的列不存在。 例如，定义为 Azure 表 PartitionKey 的列不存在。
 * 提供的门户通知：是
-* 诊断日志级别：警告
+* 资源日志级别：警告
+* 影响：将会根据[输出数据策略](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)设置处理所有输出数据转换错误，包括缺少必需的列。
 * 日志详细信息
-   * 列和记录标识符或记录的一部分的名称。
+   * 列名称，以及记录标识符或记录部分。
 
 **错误消息**
 
@@ -219,11 +229,12 @@ ms.locfileid: "65607223"
 
 ### <a name="outputdataconversionerrorcolumnnameinvalid"></a>OutputDataConversionError.ColumnNameInvalid
 
-* 原因：列的值不符合的输出。 例如，列名称不是有效的 Azure 表的列。
+* 原因：列值不符合输出。 例如，列名称不是有效的 Azure 表列。
 * 提供的门户通知：是
-* 诊断日志级别：警告
+* 资源日志级别：警告
+* 影响：将会根据[输出数据策略](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)设置处理所有输出数据转换错误，包括无效的列名称。
 * 日志详细信息
-   * 列和记录标识符或记录的一部分的名称。
+   * 列名称，以及记录标识符或记录部分。
 
 **错误消息**
 
@@ -233,12 +244,13 @@ ms.locfileid: "65607223"
 
 ### <a name="outputdataconversionerrortypeconversionerror"></a>OutputDataConversionError.TypeConversionError
 
-* 原因：列不能转换为输出中的有效类型。 例如，列的值是与约束或 SQL 表中定义的类型不兼容。
+* 原因：列无法转换为输出中的有效类型。 例如，列的值与 SQL 表中定义的约束或类型不兼容。
 * 提供的门户通知：是
-* 诊断日志级别：警告
+* 资源日志级别：警告
+* 影响：将会根据[输出数据策略](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)设置处理所有输出数据转换错误，包括类型转换错误。
 * 日志详细信息
    * 列的名称。
-   * 记录标识符或记录的一部分。
+   * 记录标识符或记录部分。
 
 **错误消息**
 
@@ -248,11 +260,12 @@ ms.locfileid: "65607223"
 
 ### <a name="outputdataconversionerrorrecordexceededsizelimit"></a>OutputDataConversionError.RecordExceededSizeLimit
 
-* 原因：消息的值大于支持的输出大小。 例如，一条记录是大于 1 MB 的事件中心输出。
+* 原因：消息的值大于支持的输出大小。 例如，事件中心输出的记录大于 1 MB。
 * 提供的门户通知：是
-* 诊断日志级别：警告
+* 资源日志级别：警告
+* 影响：将会根据[输出数据策略](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)设置处理所有输出数据转换错误，包括记录超过大小限制。
 * 日志详细信息
-   * 记录标识符或记录的一部分。
+   * 记录标识符或记录部分。
 
 **错误消息**
 
@@ -262,12 +275,13 @@ ms.locfileid: "65607223"
 
 ### <a name="outputdataconversionerrorduplicatekey"></a>OutputDataConversionError.DuplicateKey
 
-* 原因：一条记录已包含具有相同的名称的系统列的列。 例如，某列的 CosmosDB 输出名为 ID 为不同的列 ID 列时。
+* 原因：记录中已包含与 System 列同名的列。 例如，CosmosDB 输出中包含一个名为 ID 的列，而另外还有一个 ID 列。
 * 提供的门户通知：是
-* 诊断日志级别：警告
+* 资源日志级别：警告
+* 影响：将会根据[输出数据策略](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)设置处理所有输出数据转换错误，包括重复的键。
 * 日志详细信息
    * 列的名称。
-   * 记录标识符或记录的一部分。
+   * 记录标识符或记录部分。
 
 ```json
 "BriefMessage": "Column 'devicePartitionKey' is being mapped to multiple columns."
@@ -275,6 +289,6 @@ ms.locfileid: "65607223"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure Stream Analytics 通过使用诊断日志进行故障排除](stream-analytics-job-diagnostic-logs.md)
+* [使用诊断日志对 Azure 流分析进行故障排除](stream-analytics-job-diagnostic-logs.md)
 
-* [了解 Stream Analytics 作业监视以及如何监视查询](stream-analytics-monitoring.md)
+* [了解流分析作业监视以及如何监视查询](stream-analytics-monitoring.md)

@@ -1,53 +1,50 @@
 ---
 title: 将数据分配到群集：模块参考
-titleSuffix: Azure Machine Learning service
-description: 了解如何在 Azure 机器学习服务中使用群集模块将分配的数据进行评分聚类分析模型。
+titleSuffix: Azure Machine Learning
+description: 了解如何在 Azure 机器学习中使用“将数据分配到群集”模块为聚类分析模型评分。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/06/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 1c2d2a02ecfb617551dd9174b87f363d57b151a8
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
-ms.translationtype: MT
+author: likebupt
+ms.author: keli19
+ms.date: 11/19/2019
+ms.openlocfilehash: 207172f10277589af2b22ae2f41b07234a0925b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467199"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79477708"
 ---
-# <a name="module-assign-data-to-clusters"></a>模块：将数据分配到群集
+# <a name="module-assign-data-to-clusters"></a>模块：将数据分配到聚类
 
-本文介绍如何使用*将数据分配到群集*模块在 Azure 机器学习可视界面。 该模块将生成通过使用已训练的聚类分析模型的预测*k-means 聚类分析*算法。
+本文介绍如何使用 Azure 机器学习设计器（预览版）中的“将数据分配到群集”模块。  该模块通过一个使用“K-means 聚类分析”  算法训练的聚类分析模型来生成预测。
 
-将数据分配到群集模块返回包含每个新的数据点的可能分配的数据集。 
+“将数据分配到群集”模块会返回一个数据集，其中包含每个新数据点的可能分配。 
 
-
-## <a name="how-to-use-assign-data-to-clusters"></a>如何使用将分配到群集的数据
+## <a name="how-to-use-assign-data-to-clusters"></a>如何使用“将数据分配到群集”
   
-1. 在 Azure 机器学习 visual 界面中，找到之前已训练的聚类分析模型。 可以创建和使用以下方法之一来训练聚类分析模型：  
+1. 在 Azure 机器学习设计器中，找到先前训练的聚类分析模型。 可以使用以下方法之一创建和训练聚类分析模型：  
   
-    - 使用配置 K 平均值聚类分析算法[K-means 聚类分析](k-means-clustering.md)模块，并通过使用数据集和定型聚类分析模型模块 （详见本文） 模型定型。  
+    - 使用 [K-Means 聚类分析](k-means-clustering.md)模块配置 K-Means 聚类分析算法，并使用数据集和“训练聚类分析模型”模块（本文）来训练模型。  
   
-    - 您还可以添加从现有的训练聚类分析模型**保存模型**组工作区中。
+    - 还可以从工作区中的“保存的模型”  组添加现有的已训练聚类分析模型。
 
-2. 将训练的模型附加到的左侧输入端口**将数据分配到群集**。  
+2. 将训练的模型附加到“将数据分配到群集”的左侧输入端口。   
 
-3. 附加新的数据集作为输入。 
+3. 将新的数据集作为输入附加。 
 
-   在此数据集，标签是可选的。 通常，聚类分析是一种非监督式的学习方法。 您不需要事先知道类别。 但是，输入的列必须是与用于的训练聚类分析模型，或出现错误的列相同。
+   在此数据集中，标签为可选。 通常情况下，聚类分析是一种无人监督的学习方法。 你不会提前知道这些类别。 但是，输入列必须与在训练聚类分析模型时使用的列相同，否则会发生错误。
 
     > [!TIP]
-    > 若要减少写入到该接口从群集预测的列数，请使用[在数据集中选择列](select-columns-in-dataset.md)，并选择列的子集。 
+    > 若要减少从群集预测写入设计器的列数，请使用[选择数据集中的列](select-columns-in-dataset.md)，然后选择列的子集。 
     
-4. 将保留**结果仅用于检查追加或取消选中**复选框的选中状态，如果你想要包含完整输入数据集，其中包括显示结果 （群集分配） 的列的结果。
+4. 如果希望结果包含完整的输入数据集（包括显示结果的列（群集分配）），请让“选中以便进行追加，或者取消选中以便只获取结果”复选框保持选中状态。 
   
-    如果清除此复选框，则返回的结果。 作为 web 服务的一部分创建预测时，此选项可能会很有用。
+    如果清除此复选框，则仅返回结果。 将预测作为 Web 服务的一部分创建时，可以使用此选项。
   
-5.  运行试验。  
+5.  提交管道。  
   
 ### <a name="results"></a>结果
 
-+  若要查看在数据集中的值，用鼠标右键单击该模块，选择**结果数据集**，然后选择**可视化**。
++  若要查看数据集中的值，请右键单击模块，然后选择“可视化”  。 或者选择模块并切换到右侧面板中的“输出”  选项卡，单击**端口输出**中的直方图图标以直观显示结果。
 

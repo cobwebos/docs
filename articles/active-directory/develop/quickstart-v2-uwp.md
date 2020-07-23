@@ -2,33 +2,25 @@
 title: Microsoft 标识平台 Windows UWP 快速入门 | Azure
 description: 了解通用 Windows 平台 (XAML) 应用程序如何获取访问令牌并调用受 Microsoft 标识平台终结点保护的 API。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/12/2019
+ms.date: 12/12/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd4b6dd31d620603b765fd33494f399f97915af3
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
+ms.openlocfilehash: d68017bcddf43066dd989904578b7d09a84f4a9e
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784919"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85553874"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>快速入门：从通用 Windows 平台 (UWP) 应用程序调用 Microsoft Graph API
 
-本快速入门包含了一个代码示例，该示例演示了通用 Windows 平台 (UWP) 应用程序如何让用户使用个人帐户或工作和学校帐户进行登录，如何获取访问令牌以及如何调用 Microsoft Graph API。
-
-![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-uwp/uwp-intro.svg)
+本快速入门包含了一个代码示例，该示例演示了通用 Windows 平台 (UWP) 应用程序如何让用户使用个人帐户或工作和学校帐户进行登录，如何获取访问令牌以及如何调用 Microsoft Graph API。 （有关说明，请参阅[示例工作原理](#how-the-sample-works)。）
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>注册并下载快速入门应用
@@ -51,18 +43,17 @@ ms.locfileid: "65784919"
 > 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
 > 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://aka.ms/MobileAppReg)页。
 > 1. 选择“新注册”。
-> 1. 出现“注册应用程序”页后，请输入应用程序的注册信息：
+> 1. “注册应用程序”页出现后，请输入应用程序的注册信息：
 >      - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `UWP-App-calling-MsGraph`。
->      - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户和个人 Microsoft 帐户(例如 Skype、Xbox、Outlook.com)”。
+>      - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户和个人 Microsoft 帐户(例如 Skype、Xbox、Outlook.com)”。 
 >      - 选择“注册”以创建应用程序。
 > 1. 在应用的页面列表中，选择“身份验证”。
-> 1. 展开“桌面 + 设备”部分。  （如果“桌面 + 设备”不可见，首先请单击顶部的横幅，以便查看预览版身份验证体验）
-> 1. 在“重定向 URI”部分下选择“添加 URI”。  键入 **urn:ietf:wg:oauth:2.0:oob**。
+> 1. 在“重定向 URI” | “建议用于公共客户端(移动、桌面)的重定向 URI”部分中，选中 **https://login.microsoftonline.com/common/oauth2/nativeclient** 。
 > 1. 选择“保存”。
 
-> [!div renderon="portal" class="sxs-lookup alert alert-info"]
+> [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>步骤 1：配置应用程序
-> 为使此快速入门中的代码示例正常运行，需要将重定向 URI 添加为 **urn:ietf:wg:oauth:2.0:oob**。
+> 要使此快速入门的代码示例正常运行，需要将重定向 URI 添加为 **https://login.microsoftonline.com/common/oauth2/nativeclient** 。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [执行此更改]()
 >
@@ -71,19 +62,32 @@ ms.locfileid: "65784919"
 
 #### <a name="step-2-download-your-visual-studio-project"></a>步骤 2：下载 Visual Studio 项目
 
- - [下载 Visual Studio 项目](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
+> [!div renderon="docs"]
+> [下载 Visual Studio 项目](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>步骤 3：配置 Visual Studio 项目
+> [!div class="sxs-lookup" renderon="portal"]
+> 使用 Visual Studio 2019 运行项目。
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [下载代码示例](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
 
-1. 将 zip 文件提取到靠近磁盘根目录的本地文件夹，例如 **C:\Azure-Samples**。
-1. 在 Visual Studio 中打开项目。 系统可能会提示你安装 UWP SDK。 在这种情况下，请接受。
-1. 编辑 **MainPage.Xaml.cs**，替换 `ClientId` 字段的值：
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行
+> 我们已经为项目配置了应用属性的值，并且该项目已准备好运行。
 
-    ```csharp
-    private const string ClientId = "Enter_the_Application_Id_here";
-    ```
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > `Enter_the_Supported_Account_Info_Here`
 
 > [!div renderon="docs"]
+> #### <a name="step-3-configure-your-visual-studio-project"></a>步骤 3：配置 Visual Studio 项目
+>
+> 1. 将 zip 文件提取到靠近磁盘根目录的本地文件夹，例如 **C:\Azure-Samples**。
+> 1. 在 Visual Studio 中打开项目。 系统可能会提示你安装 UWP SDK。 在这种情况下，请接受。
+> 1. 编辑 **MainPage.Xaml.cs**，替换 `ClientId` 字段的值：
+>
+>    ```csharp
+>    private const string ClientId = "Enter_the_Application_Id_here";
+>    ```
 > 其中：
 > - `Enter_the_Application_Id_here` - 是已注册应用程序的应用程序 ID。
 >
@@ -94,20 +98,22 @@ ms.locfileid: "65784919"
 
 若要在 Windows 计算机上尝试快速入门，请执行以下操作：
 
-1. 在 Visual Studio 工具栏中，选择适当的平台（可能为 **x64** 或 **x86**，不是 ARM）。
-   > 可以看到目标设备从“设备”更改为“本地计算机”。
+1. 在 Visual Studio 工具栏中，选择适当的平台（可能为 **x64** 或 **x86**，不是 ARM）。 你将看到目标设备从“设备”更改为“本地计算机”
 1. 选择“调试”|“在不调试的情况下启动”
 
 ## <a name="more-information"></a>详细信息
 
 此部分提供快速入门的详细信息。
 
+### <a name="how-the-sample-works"></a>示例工作原理
+![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-uwp/uwp-intro.svg)
+
 ### <a name="msalnet"></a>MSAL.NET
 
 MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) 是一个库，用于用户登录和请求安全令牌。 安全令牌用于访问受面向开发人员的 Microsoft 标识平台保护的 API。 可在 Visual Studio 的包管理器控制台中运行以下命令，以便安装 MSAL：
 
 ```powershell
-Install-Package Microsoft.Identity.Client -IncludePrerelease
+Install-Package Microsoft.Identity.Client
 ```
 
 ### <a name="msal-initialization"></a>MSAL 初始化
@@ -122,11 +128,12 @@ using Microsoft.Identity.Client;
 
 ```csharp
 public static IPublicClientApplication PublicClientApp;
-PublicClientApp = new PublicClientApplicationBuilder.Create(ClientId)
+PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
+                                                .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
                                                     .Build();
 ```
 
-> |其中： ||
+> |其中： | 说明 |
 > |---------|---------|
 > | `ClientId` | 是在 Azure 门户中注册的应用程序的**应用程序(客户端) ID**。 可以在 Azure 门户的应用的“概览”页中找到此值。 |
 
@@ -148,13 +155,13 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)
                       .ExecuteAsync();
 ```
 
-> |其中：||
+> |其中：| 说明 |
 > |---------|---------|
-> | `scopes` | 包含所请求的作用域，例如针对 Microsoft Graph 的 `{ "user.read" }` 或针对自定义 Web API 的 `{ "api://<Application ID>/access_as_user" }`。 |
+> | `scopes` | 包含所请求的范围，例如 `{ "user.read" }`（针对 Microsoft Graph）或 `{ "api://<Application ID>/access_as_user" }`（针对自定义 Web API）。 |
 
 #### <a name="get-a-user-token-silently"></a>以无提示方式获取用户令牌
 
-使用 `AcquireTokenSilent` 方法可获取令牌，以在初始 `AcquireTokenAsync` 方法后访问受保护资源。 你不希望在用户每次需要访问资源时都要求其验证其凭据。 大多数时候，你希望在无需任何用户交互的情况下进行令牌获取和续订
+使用 `AcquireTokenSilent` 方法可获取令牌，以在初始 `AcquireTokenInteractive` 方法后访问受保护资源。 你不希望在用户每次需要访问资源时都要求其验证其凭据。 大多数时候，你希望在无需任何用户交互的情况下进行令牌获取和续订
 
 ```csharp
 var accounts = await App.PublicClientApp.GetAccountsAsync();
@@ -163,9 +170,9 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |其中： ||
+> |其中： | 说明 |
 > |---------|---------|
-> | `scopes` | 包含所请求的作用域，例如针对 Microsoft Graph 的 `{ "user.read" }` 或针对自定义 Web API 的 `{ "api://<Application ID>/access_as_user" }` |
+> | `scopes` | 包含所请求的范围，例如 `{ "user.read" }`（针对 Microsoft Graph ）或 `{ "api://<Application ID>/access_as_user" }`（针对自定义 Web API）。 |
 > | `firstAccount` | 指定缓存中的第一个用户帐户（MSAL 支持在单个应用中使用多个用户） |
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

@@ -1,22 +1,17 @@
 ---
-title: 从 Azure 逻辑应用连接到 SendGrid | Microsoft Docs
+title: 从 Azure 逻辑应用连接到 SendGrid
 description: 使用 Azure 逻辑应用自动执行任务和工作流，用以在 SendGrid 中发送电子邮件以及管理邮件列表
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: bc4f1fc2-824c-4ed7-8de8-e82baff3b746
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 7eecd3908883b195b52755d03e70872afe9180bb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+tags: connectors
+ms.openlocfilehash: b86a38278ae345fac376958d18912a878a53872b
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62105728"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834792"
 ---
 # <a name="send-emails-and-manage-mailing-lists-in-sendgrid-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用在 SendGrid 中发送电子邮件以及管理邮件列表
 
@@ -31,9 +26,9 @@ ms.locfileid: "62105728"
 此连接器仅提供操作，因此，若要启动逻辑应用，请使用单独的触发器，例如**定期**触发器。 例如，如果你定期将收件人添加到你的列表中，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送关于收件人和列表的电子邮件。
 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
 * 一个 [SendGrid 帐户](https://www.sendgrid.com/)和一个 [SendGrid API 密钥](https://sendgrid.com/docs/ui/account-and-settings/api-keys/)
 
@@ -47,7 +42,7 @@ ms.locfileid: "62105728"
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. 登录到 [Azure门户](https://portal.azure.com)，然后在逻辑应用设计器中打开你的逻辑应用（如果尚未打开）。
+1. 登录到 [Azure 门户](https://portal.azure.com)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
 1. 选择一个路径： 
 
@@ -56,7 +51,7 @@ ms.locfileid: "62105728"
      -或-
 
    * 在要在其中添加操作的两个步骤之间，将鼠标指针移到步骤之间的箭头上。 
-   选择出现的加号 (**+**)，然后选择“添加操作”。
+   选择出现的加号 ( **+** )，然后选择“添加操作”。
 
 1. 在搜索框中，输入“sendgrid”作为筛选器。 在操作列表下，选择所需的操作。
 
@@ -72,7 +67,7 @@ ms.locfileid: "62105728"
 
 ## <a name="get-support"></a>获取支持
 
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 * 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤

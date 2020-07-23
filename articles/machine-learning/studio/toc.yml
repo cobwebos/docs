@@ -1,27 +1,26 @@
-- name: 机器学习工作室文档
+- name: 机器学习工作室（经典）文档
   href: index.yml
 - name: 概述
   expanded: true
   items:
-    - name: 机器学习工作室
+    - name: 机器学习工作室（经典版）
       displayName: overview
       href: what-is-ml-studio.md
     - name: 比较我们的 ML 产品
-      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
-      maintainContext: true
-- name: 教程
+      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context
+- name: 快速入门
   items:
     - name: 创建第一个试验
       displayName: quickstart
       href: create-experiment.md
-    - name: 创建预测解决方案
-      items:
-        - name: 1 - 创建试验
-          href: tutorial-part1-credit-risk.md
-        - name: 2 - 训练和评估
-          href: tutorial-part2-credit-risk-train.md
-        - name: 3 - 部署 Web 服务
-          href: tutorial-part3-credit-risk-deploy.md
+- name: 教程
+  items:
+    - name: 1：创建预测性实验
+      href: tutorial-part1-credit-risk.md
+    - name: '2:训练并评估解决方案'
+      href: tutorial-part2-credit-risk-train.md
+    - name: 3：部署 Web 服务
+      href: tutorial-part3-credit-risk-deploy.md
 - name: 示例
   items:
     - name: 可用数据集
@@ -53,15 +52,13 @@
           href: create-workspace.md
         - name: 管理
           href: manage-workspace.md
-        - name: 故障排除
-          href: troubleshooting-creating-ml-workspace.md
         - name: 使用 ARM 进行部署
           href: deploy-with-resource-manager-template.md
     - name: 导入训练数据
       items:
         - name: 导入数据
           href: import-data.md
-        - name: 使用本地 SQL 数据库中的数据
+        - name: 使用来自 SQL Server 的数据
           displayName: on-premises
           href: use-data-from-an-on-premises-sql-server.md
     - name: 训练模型
@@ -85,8 +82,6 @@
               href: algorithm-parameters-optimize.md
             - name: 解释结果
               href: interpret-model-results.md
-            - name: 调试
-              href: debug-models.md
         - name: 重新定型
           items:
             - name: “新”Web 服务
@@ -97,26 +92,17 @@
           items:
             - name: 通过 R 开始使用
               href: r-get-started.md
-            - name: 执行 R 脚本
-              href: extend-your-experiment-with-r.md
             - name: 创作自定义 R 模块
               href: custom-r-modules.md
             - name: 执行 Python 脚本
               href: execute-python-scripts.md
     - name: 选择一个算法
-      items:
-        - name: 选择算法
-          href: algorithm-choice.md
-        - name: 算法备忘单
-          href: algorithm-cheat-sheet.md
-        - name: 算法示例
-          displayName: 'infographic, studio basics'
-          href: basics-infographic-with-algorithm-examples.md
+      href: algorithm-choice.md
     - name: 部署模型
       items:
         - name: 部署 Web 服务
-          displayName: 'publish, multiple regions'
-          href: publish-a-machine-learning-web-service.md
+          displayName: 'deploy, multiple regions'
+          href: deploy-a-machine-learning-web-service.md
         - name: 工作原理
           href: model-progression-experiment-to-web-service.md
         - name: 准备部署
@@ -146,25 +132,18 @@
           href: consuming-from-excel.md
         - name: 使用 Excel 加载项
           href: excel-add-in-for-web-services.md
-        - name: 使用 Batch 池
-          href: dedicated-capacity-for-bes-jobs.md
-    - name: 用例
-      items:
-        - name: 客户流失
-          href: azure-ml-customer-churn-scenario.md
-        - name: 情绪分析
-          href: text-analytics-module-tutorial.md
-        - name: 将分析从 Excel 迁移到 Studio
-          href: linear-regression-in-azure.md
     - name: 删除和导出客户数据
       items:
-        - name: 工作室数据
+        - name: 工作室（经典）数据
           displayName: export
           href: export-delete-personal-data-dsr.md
         - name: 库数据
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
-- name: 引用
+        - name: 下载笔记本
+          displayName: export
+          href: download-notebooks-data.md
+- name: 参考
   items:
     - name: 算法和模块参考
       href: /azure/machine-learning/studio-module-reference/machine-learning-studio-algorithm-and-module-help

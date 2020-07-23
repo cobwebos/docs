@@ -1,18 +1,20 @@
 ---
-title: include 文件
-description: include 文件
-services: logic-apps
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 05/14/2018
+author: ecfan
 ms.author: estfan
-ms.custom: include file
-ms.openlocfilehash: 6594031aeccae4b9f0ea843e2d72cb01a67d492d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 06/06/2020
+ms.openlocfilehash: 1113201941ce0757b58e361c08c9d79d7dd374cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66119318"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84449025"
 ---
-要使逻辑应用能够访问某个服务，必须在逻辑应用与该服务之间创建连接。 如果以前未创建此连接，则在向逻辑应用添加该服务的触发器或操作时，系统会提示输入连接信息。 可以使用逻辑应用设计器轻松地直接从逻辑应用创建此连接。
+当你添加第一次连接到服务或系统的触发器或操作时，逻辑应用设计器将提示你通过提供必要的信息（具体取决于连接）来创建*连接*，例如：
+
+* 要用于新连接的名称
+* 服务器或系统名称
+* 你的用户或帐户凭据
+* 要使用的身份验证类型
+* 你之前在连接到本地数据源时创建的数据网关的 Azure 订阅和名称

@@ -1,181 +1,170 @@
 ---
-title: 发送或使用 Python 的 Azure 事件中心接收事件 |Microsoft Docs
-description: 本文提供了创建 Python 应用程序的演练，该应用程序用于将事件发送到 Azure 事件中心。
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: femila
-ms.service: event-hubs
-ms.workload: core
-ms.topic: article
-ms.date: 04/15/2019
-ms.author: shvija
-ms.openlocfilehash: 6a8f0ddcfe6de904219059c6e761ead4c004732d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+title: 使用 Python（旧版）向/从 Azure 事件中心发送/接收事件
+description: 本演练介绍如何创建和运行 Python 脚本，这些脚本使用旧的 azure-eventhub 版本 1 包向/从 Azure 事件中心发送/接收事件。
+ms.topic: quickstart
+ms.date: 06/23/2020
+ms.openlocfilehash: 4ce53d2d82a00f98dbbd538bd7a61da9ba44e832
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60461444"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314472"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-using-python"></a>发送到事件或使用 Python 从事件中心接收事件
+# <a name="quickstart-send-and-receive-events-with-event-hubs-using-python-azure-eventhub-version-1"></a>快速入门：使用 Python（azure-eventhub 版本 1）向/从事件中心发送/接收事件
+本快速入门介绍如何使用 **azure-eventhub 版本 1** Python 包向事件中心发送事件以及从事件中心接收事件。 
 
-Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
+> [!WARNING]
+> 本快速入门使用旧的 azure-eventhub 版本 1 包。 有关使用该包的最新**版本 5** 的快速入门，请参阅[使用 azure-eventhub 版本 5 发送和接收事件](get-started-python-send-v2.md)。 若要将应用程序从使用旧包迁移到使用新包，请参阅[从 azure-eventhub 版本 1 迁移到版本 5 的指南](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)。
+ 
 
-本教程介绍如何创建 Python 应用程序发送到事件或从事件中心接收事件。 
+## <a name="prerequisites"></a>先决条件
+如果不熟悉 Azure 事件中心，请在阅读本快速入门之前参阅[事件中心概述](event-hubs-about.md)。 
 
-> [!NOTE]
-> 可以从 [GitHub](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) 下载此用作示例的快速入门，将 `EventHubConnectionString` 和 `EventHubName` 字符串替换为事件中心值，并运行它。 或者，可以按照本教程中的步骤创建自己的解决方案。
+若要完成本快速入门，需要具备以下先决条件：
 
-## <a name="prerequisites"></a>必备组件
+- Microsoft Azure 订阅。 若要使用 Azure 服务（包括 Azure 事件中心），需要一个订阅。  如果没有现有的 Azure 帐户，可以注册[免费试用](https://azure.microsoft.com/free/)帐户，或者在[创建帐户](https://azure.microsoft.com)时使用 MSDN 订阅者权益。
+- Python 3.4 或更高版本，其中已安装并更新 `pip`。
+- 事件中心的 Python 包。 若要安装此包，请在路径中包含 Python 的命令提示符中运行以下命令： 
+  
+  ```cmd
+  pip install azure-eventhub==1.3.*
+  ```
+- **创建事件中心命名空间和事件中心**。 第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照文章中的以下说明获取事件中心访问密钥的值：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 你将在本快速入门中稍后编写的代码中使用访问密钥。 默认密钥名称为：RootManageSharedAccessKey。 
 
-若要完成本教程，需要具备以下先决条件：
-
-- Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
-- Python 3.4 或更高版本。
-- 使用[Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间并获取你的应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照说明文章中获取的事件中心的访问密钥的值：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 可在本教程后面编写的代码中使用该访问密钥。 默认密钥名称为：RootManageSharedAccessKey。
-
-## <a name="install-python-package"></a>安装 Python 包
-
-若要为事件中心安装 Python 包，请打开其路径中包含 Python 的命令提示符，然后运行以下命令： 
-
-```bash
-pip install azure-eventhub
-```
 
 ## <a name="send-events"></a>发送事件
 
-### <a name="create-a-python-script-to-send-events"></a>创建用于发送事件的 Python 脚本
+若要创建将事件发送到事件中心的 Python 应用程序，请执行以下操作：
 
-接下来，创建将事件发送到事件中心的 Python 应用程序：
+> [!NOTE]
+> 可以从 GitHub 下载并运行[示例应用](https://github.com/Azure/azure-event-hubs-python/tree/master/examples)，不需通过本快速入门来进行。 将 `EventHubConnectionString` 和 `EventHubName` 字符串替换为事件中心的值。
 
-1. 打开常用的 Python 编辑器，如[Visual Studio Code](https://code.visualstudio.com/)
-2. 创建名为 send.py 的脚本。 此脚本将向事件中心发送 100 个事件。
-3. 将以下代码粘贴到 send.py 中，将 ADDRESS、USER 和 KEY 值替换为你在上一节中从 Azure 门户获取的值： 
+1. 打开你常用的 Python 编辑器，例如 [Visual Studio Code](https://code.visualstudio.com/)
+2. 创建名为 *send.py* 的新文件。 此脚本将向事件中心发送 100 个事件。
+3. 将下列代码粘贴到“send.py”，将事件中心 \<namespace>、\<eventhub>、\<AccessKeyName> 和 \<primary key value> 替换为你的值： 
+   
+   ```python
+   import sys
+   import logging
+   import datetime
+   import time
+   import os
+   
+   from azure.eventhub import EventHubClient, Sender, EventData
+   
+   logger = logging.getLogger("azure")
+   
+   # Address can be in either of these formats:
+   # "amqps://<URL-encoded-SAS-policy>:<URL-encoded-SAS-key>@<namespace>.servicebus.windows.net/eventhub"
+   # "amqps://<namespace>.servicebus.windows.net/<eventhub>"
+   # SAS policy and key are not required if they are encoded in the URL
+   
+   ADDRESS = "amqps://<namespace>.servicebus.windows.net/<eventhub>"
+   USER = "<AccessKeyName>"
+   KEY = "<primary key value>"
+   
+   try:
+       if not ADDRESS:
+           raise ValueError("No EventHubs URL supplied.")
+   
+       # Create Event Hubs client
+       client = EventHubClient(ADDRESS, debug=False, username=USER, password=KEY)
+       sender = client.add_sender(partition="0")
+       client.run()
+       try:
+           start_time = time.time()
+           for i in range(100):
+               print("Sending message: {}".format(i))
+               message = "Message {}".format(i)
+               sender.send(EventData(message))
+       except:
+           raise
+       finally:
+           end_time = time.time()
+           client.stop()
+           run_time = end_time - start_time
+           logger.info("Runtime: {} seconds".format(run_time))
+   
+   except KeyboardInterrupt:
+       pass
+   ```
+   
+4. 保存文件。 
 
-```python
-import sys
-import logging
-import datetime
-import time
-import os
+若要运行脚本，请从保存 *send.py* 的目录运行以下命令：
 
-from azure.eventhub import EventHubClient, Sender, EventData
-
-logger = logging.getLogger("azure")
-
-# Address can be in either of these formats:
-# "amqps://<URL-encoded-SAS-policy>:<URL-encoded-SAS-key>@<mynamespace>.servicebus.windows.net/myeventhub"
-# "amqps://<mynamespace>.servicebus.windows.net/myeventhub"
-# For example:
-ADDRESS = "amqps://mynamespace.servicebus.windows.net/myeventhub"
-
-# SAS policy and key are not required if they are encoded in the URL
-USER = "RootManageSharedAccessKey"
-KEY = "namespaceSASKey"
-
-try:
-    if not ADDRESS:
-        raise ValueError("No EventHubs URL supplied.")
-
-    # Create Event Hubs client
-    client = EventHubClient(ADDRESS, debug=False, username=USER, password=KEY)
-    sender = client.add_sender(partition="0")
-    client.run()
-    try:
-        start_time = time.time()
-        for i in range(100):
-            print("Sending message: {}".format(i))
-            sender.send(EventData(str(i)))
-    except:
-        raise
-    finally:
-        end_time = time.time()
-        client.stop()
-        run_time = end_time - start_time
-        logger.info("Runtime: {} seconds".format(run_time))
-
-except KeyboardInterrupt:
-    pass
-```
-
-### <a name="run-application-to-send-events"></a>运行应用程序来发送事件
-
-若要运行此脚本，请打开其路径中包含 Python 的命令提示符，然后运行以下命令：
-
-```bash
+```cmd
 start python send.py
 ```
 
-祝贺你！ 现在已向事件中心发送消息。
+祝贺！ 现在已向事件中心发送消息。
 
 ## <a name="receive-events"></a>接收事件
 
-### <a name="create-a-python-script-to-receive-events"></a>创建用于接收事件的 Python 脚本
+若要创建从事件中心接收事件的 Python 应用程序，请执行以下操作：
 
-接下来，创建从事件中心接收事件的 Python 应用程序：
+1. 在 Python 编辑器中，创建名为 *recv.py* 的文件。
+2. 将下列代码粘贴到“recv.py”，将事件中心 \<namespace>、\<eventhub>、\<AccessKeyName> 和 \<primary key value> 替换为你的值： 
+   
+   ```python
+   import os
+   import sys
+   import logging
+   import time
+   from azure.eventhub import EventHubClient, Receiver, Offset
+   
+   logger = logging.getLogger("azure")
+   
+   # Address can be in either of these formats:
+   # "amqps://<URL-encoded-SAS-policy>:<URL-encoded-SAS-key>@<mynamespace>.servicebus.windows.net/myeventhub"
+   # "amqps://<namespace>.servicebus.windows.net/<eventhub>"
+   # SAS policy and key are not required if they are encoded in the URL
+   
+   ADDRESS = "amqps://<namespace>.servicebus.windows.net/<eventhub>"
+   USER = "<AccessKeyName>"
+   KEY = "<primary key value>"
+   
+   
+   CONSUMER_GROUP = "$default"
+   OFFSET = Offset("-1")
+   PARTITION = "0"
+   
+   total = 0
+   last_sn = -1
+   last_offset = "-1"
+   client = EventHubClient(ADDRESS, debug=False, username=USER, password=KEY)
+   try:
+       receiver = client.add_receiver(
+           CONSUMER_GROUP, PARTITION, prefetch=5000, offset=OFFSET)
+       client.run()
+       start_time = time.time()
+       for event_data in receiver.receive(timeout=100):
+           print("Received: {}".format(event_data.body_as_str(encoding='UTF-8')))
+           total += 1
+   
+       end_time = time.time()
+       client.stop()
+       run_time = end_time - start_time
+       print("Received {} messages in {} seconds".format(total, run_time))
+   
+   except KeyboardInterrupt:
+       pass
+   finally:
+       client.stop()
+   ```
+   
+4. 保存文件。
 
-1. 打开常用的 Python 编辑器，如[Visual Studio Code](https://code.visualstudio.com/)
-2. 创建名为 recv.py 的脚本。
-3. 将以下代码粘贴到 recv.py 中，将 ADDRESS、USER 和 KEY 值替换为在上一节中从 Azure 门户所获取的值： 
+若要运行脚本，请从保存 *recv.py* 的目录运行以下命令：
 
-```python
-import os
-import sys
-import logging
-import time
-from azure.eventhub import EventHubClient, Receiver, Offset
-
-logger = logging.getLogger("azure")
-
-# Address can be in either of these formats:
-# "amqps://<URL-encoded-SAS-policy>:<URL-encoded-SAS-key>@<mynamespace>.servicebus.windows.net/myeventhub"
-# "amqps://<mynamespace>.servicebus.windows.net/myeventhub"
-# For example:
-ADDRESS = "amqps://mynamespace.servicebus.windows.net/myeventhub"
-
-# SAS policy and key are not required if they are encoded in the URL
-USER = "RootManageSharedAccessKey"
-KEY = "namespaceSASKey"
-CONSUMER_GROUP = "$default"
-OFFSET = Offset("-1")
-PARTITION = "0"
-
-total = 0
-last_sn = -1
-last_offset = "-1"
-client = EventHubClient(ADDRESS, debug=False, username=USER, password=KEY)
-try:
-    receiver = client.add_receiver(CONSUMER_GROUP, PARTITION, prefetch=5000, offset=OFFSET)
-    client.run()
-    start_time = time.time()
-    for event_data in receiver.receive(timeout=100):
-        last_offset = event_data.offset
-        last_sn = event_data.sequence_number
-        print("Received: {}, {}".format(last_offset, last_sn))
-        total += 1
-
-    end_time = time.time()
-    client.stop()
-    run_time = end_time - start_time
-    print("Received {} messages in {} seconds".format(total, run_time))
-
-except KeyboardInterrupt:
-    pass
-finally:
-    client.stop()
-```
-
-### <a name="receive-events"></a>接收事件
-
-若要运行此脚本，请打开其路径中包含 Python 的命令提示符，然后运行以下命令：
-
-```bash
+```cmd
 start python recv.py
 ```
- 
+
 ## <a name="next-steps"></a>后续步骤
-请阅读以下文章：
+有关事件中心的详细信息，请参阅以下文章：
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
-- [功能和 Azure 事件中心内的术语](event-hubs-features.md)
-- [事件中心常见问题解答](event-hubs-faq.md)
+- [Azure 事件中心的功能和术语](event-hubs-features.md)
+- [事件中心常见问题](event-hubs-faq.md)
 

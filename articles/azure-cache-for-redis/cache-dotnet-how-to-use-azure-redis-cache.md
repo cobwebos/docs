@@ -1,43 +1,29 @@
 ---
-title: 快速入门：了解如何将 Azure Redis 缓存与 .NET 应用配合使用 | Microsoft Docs
+title: 快速入门：通过 .NET 应用使用 Azure Cache for Redis
 description: 本快速入门介绍如何从 .NET 应用访问 Azure Redis 缓存
-services: cache,app-service
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: c502f74c-44de-4087-8303-1b1f43da12d5
+ms.author: yegu
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/18/2018
-ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 487a51b6f644cca88011383b8035515d437857e6
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 06/18/2020
+ms.openlocfilehash: 2efe05ebb26030720a1af90c4a4de8d48ea37106
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237886"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201480"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-a-net-application"></a>快速入门：将 Azure Redis 缓存与 .NET 应用程序配合使用
+# <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>快速入门：将 Azure Redis 缓存与 .NET Framework 应用程序配合使用
 
-
-
-本快速入门展示如何开始将 Microsoft Azure Redis 缓存与 .NET 配合使用。 Microsoft Azure Redis 缓存基于主流的开源 Azure Redis 缓存。 它提供对 Microsoft 所管理的安全专用的 Azure Redis 缓存的访问权限。 使用 Azure Redis 缓存创建的缓存可从 Microsoft Azure 内的任何应用程序进行访问。
-
-本快速入门将在控制台应用中将 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) 客户端与 C\# 代码配合使用。 将创建缓存并配置 .NET 客户端应用。 然后，将在缓存中添加和更新对象。 
-
-![已完成的控制台应用](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-console-app-complete.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+在本快速入门中，会将 Azure Redis 缓存合并到 .NET Framework 应用中，以便能够访问 Azure 中的任何应用程序都可以访问的安全专用缓存。 你专门在 .NET 控制台应用中将 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) 客户端与 C# 代码配合使用。
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Visual Studio](https://www.visualstudio.com/downloads/)
-* StackExchange.Redis 客户端需要 [.NET Framework 4 或更高版本](https://www.microsoft.com/net/download/dotnet-framework-runtime)。
+- Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/)
+- [.NET Framework 4 或更高版本](https://www.microsoft.com/net/download/dotnet-framework-runtime)，这是 StackExchange.Redis 客户端所必需的。
 
 ## <a name="create-a-cache"></a>创建缓存
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -50,7 +36,7 @@ ms.locfileid: "56237886"
 
 ```xml
 <appSettings>
-    <add key="CacheConnection" value="<cache-name>.redis.cache.windows.net,abortConnect=false,ssl=true,password=<access-key>"/>
+    <add key="CacheConnection" value="<cache-name>.redis.cache.windows.net,abortConnect=false,ssl=true,allowAdmin=true,password=<access-key>"/>
 </appSettings>
 ```
 
@@ -61,10 +47,9 @@ ms.locfileid: "56237886"
 
 ## <a name="create-a-console-app"></a>创建控制台应用
 
-在 Visual Studio 中，单击“文件” > “新建” > “项目”。
+在 Visual Studio 中，单击“文件”   > “新建”   > “项目”  。
 
-在 **Visual C#** 下依次单击“Windows 经典桌面”、“控制台应用”、“确定”，以便创建新的控制台应用程序。
-
+选择“控制台应用(.NET Framework)”  ，然后选择“下一步”  以配置应用。 输入**项目名称**，然后单击“创建”  以创建新的控制台应用程序。
 
 <a name="configure-the-cache-clients"></a>
 
@@ -72,7 +57,7 @@ ms.locfileid: "56237886"
 
 在本部分，请配置控制台应用程序，以便将 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) 客户端用于 .NET。
 
-在 Visual Studio 中单击“工具” > “NuGet 包管理器” > “包管理器控制台”，然后在“包管理器控制台”窗口中运行以下命令。
+在 Visual Studio 中单击“工具”   >   “NuGet 包管理器” >   “包管理器控制台”，然后在“包管理器控制台”窗口中运行以下命令。
 
 ```powershell
 Install-Package StackExchange.Redis
@@ -83,7 +68,7 @@ Install-Package StackExchange.Redis
 
 ## <a name="connect-to-the-cache"></a>连接到缓存
 
-在 Visual Studio 中打开 *App.config* 文件并对其进行更新，使之包括引用 *CacheSecrets.config* 文件的 `appSettings` `file` 属性。
+在 Visual Studio 中，打开 App.config  文件并将其更新为包含引用 CacheSecrets.config  文件的 `appSettings` `file` 属性。
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -92,12 +77,11 @@ Install-Package StackExchange.Redis
         <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.1" />
     </startup>
 
-    <appSettings file="C:\AppSecrets\CacheSecrets.config"></appSettings>  
-
+    <appSettings file="C:\AppSecrets\CacheSecrets.config"></appSettings>
 </configuration>
 ```
 
-在解决方案资源管理器中右键单击“引用”，然后单击“添加引用”。 添加对 **System.Configuration** 程序集的引用。
+在解决方案资源管理器中右键单击“引用”，然后单击“添加引用”。   添加对 **System.Configuration** 程序集的引用。
 
 将以下 `using` 语句添加到 *Program.cs*：
 
@@ -113,19 +97,19 @@ using System.Configuration;
 在 *Program.cs* 中，将以下成员添加到控制台应用程序的 `Program` 类：
 
 ```csharp
-        private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-        {
-            string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
-            return ConnectionMultiplexer.Connect(cacheConnection);
-        });
+private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+{
+    string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
+    return ConnectionMultiplexer.Connect(cacheConnection);
+});
 
-        public static ConnectionMultiplexer Connection
-        {
-            get
-            {
-                return lazyConnection.Value;
-            }
-        }
+public static ConnectionMultiplexer Connection
+{
+    get
+    {
+        return lazyConnection.Value;
+    }
+}
 ```
 
 
@@ -138,40 +122,49 @@ using System.Configuration;
 为控制台应用程序的 `Program` 类的 `Main` 过程添加以下代码：
 
 ```csharp
-        static void Main(string[] args)
-        {
-            // Connection refers to a property that returns a ConnectionMultiplexer
-            // as shown in the previous example.
-            IDatabase cache = lazyConnection.Value.GetDatabase();
+static void Main(string[] args)
+{
+    // Connection refers to a property that returns a ConnectionMultiplexer
+    // as shown in the previous example.
+    IDatabase cache = Connection.GetDatabase();
 
-            // Perform cache operations using the cache object...
+    // Perform cache operations using the cache object...
 
-            // Simple PING command
-            string cacheCommand = "PING";
-            Console.WriteLine("\nCache command  : " + cacheCommand);
-            Console.WriteLine("Cache response : " + cache.Execute(cacheCommand).ToString());
+    // Simple PING command
+    string cacheCommand = "PING";
+    Console.WriteLine("\nCache command  : " + cacheCommand);
+    Console.WriteLine("Cache response : " + cache.Execute(cacheCommand).ToString());
 
-            // Simple get and put of integral data types into the cache
-            cacheCommand = "GET Message";
-            Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
-            Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
+    // Simple get and put of integral data types into the cache
+    cacheCommand = "GET Message";
+    Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
+    Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
 
-            cacheCommand = "SET Message \"Hello! The cache is working from a .NET console app!\"";
-            Console.WriteLine("\nCache command  : " + cacheCommand + " or StringSet()");
-            Console.WriteLine("Cache response : " + cache.StringSet("Message", "Hello! The cache is working from a .NET console app!").ToString());
+    cacheCommand = "SET Message \"Hello! The cache is working from a .NET console app!\"";
+    Console.WriteLine("\nCache command  : " + cacheCommand + " or StringSet()");
+    Console.WriteLine("Cache response : " + cache.StringSet("Message", "Hello! The cache is working from a .NET console app!").ToString());
 
-            // Demonstrate "SET Message" executed as expected...
-            cacheCommand = "GET Message";
-            Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
-            Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
+    // Demonstrate "SET Message" executed as expected...
+    cacheCommand = "GET Message";
+    Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
+    Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
 
-            // Get the client list, useful to see if connection list is growing...
-            cacheCommand = "CLIENT LIST";
-            Console.WriteLine("\nCache command  : " + cacheCommand);
-            Console.WriteLine("Cache response : \n" + cache.Execute("CLIENT", "LIST").ToString().Replace("id=", "id="));
+    // Get the client list, useful to see if connection list is growing...
+    // Note that this requires the allowAdmin=true
+    cacheCommand = "CLIENT LIST";
+    Console.WriteLine("\nCache command  : " + cacheCommand);
+    var endpoint = (System.Net.DnsEndPoint) Connection.GetEndPoints()[0];
+    var server = Connection.GetServer(endpoint.Host, endpoint.Port);
 
-            lazyConnection.Value.Dispose();
-        }
+    var clients = server.ClientList(); 
+    Console.WriteLine("Cache response :");
+    foreach (var client in clients)
+    {
+        Console.WriteLine(client.Raw);
+    }
+
+    lazyConnection.Value.Dispose();
+}
 ```
 
 Azure Redis 缓存具有可配置的数据库数量（默认为 16 个），因此可以通过逻辑方式隔离 Azure Redis 缓存中的数据。 该代码连接到默认数据库 DB 0。 有关详细信息，请参阅[什么是 Redis 数据库？](cache-faq.md#what-are-redis-databases)和[默认 Redis 服务器配置](cache-configure.md#default-redis-server-configuration)。
@@ -193,7 +186,7 @@ Azure Redis 缓存可以缓存 .NET 对象以及基元数据类型，但在缓�
 
 将对象序列化的一种简单方式是使用 [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) 中的 `JsonConvert` 序列化方法，并与 JSON 相互序列化。 在本部分中，将向缓存中添加一个 .NET 对象。
 
-在 Visual Studio 中单击“工具” > “NuGet 包管理器” > “包管理器控制台”，然后在“包管理器控制台”窗口中运行以下命令。
+在 Visual Studio 中单击“工具”   >   “NuGet 包管理器” >   “包管理器控制台”，然后在“包管理器控制台”窗口中运行以下命令。
 
 ```powershell
 Install-Package Newtonsoft.Json
@@ -208,35 +201,35 @@ using Newtonsoft.Json;
 将以下 `Employee` 类定义添加到 *Program.cs*：
 
 ```csharp
-        class Employee
-        {
-            public string Id { get; set; }
-            public string Name { get; set; }
-            public int Age { get; set; }
+class Employee
+{
+    public string Id { get; set; }
+    public string Name { get; set; }
+    public int Age { get; set; }
 
-            public Employee(string EmployeeId, string Name, int Age)
-            {
-                this.Id = EmployeeId;
-                this.Name = Name;
-                this.Age = Age;
-            }
-        }
+    public Employee(string EmployeeId, string Name, int Age)
+    {
+        this.Id = EmployeeId;
+        this.Name = Name;
+        this.Age = Age;
+    }
+}
 ```
 
 在 *Program.cs* 中的 `Main()` 过程的底部，在对 `Dispose()` 的调用之前，添加以下代码行来缓存和检索已序列化的 .NET 对象：
 
 ```csharp
-            // Store .NET object to cache
-            Employee e007 = new Employee("007", "Davide Columbo", 100);
-            Console.WriteLine("Cache response from storing Employee .NET object : " + 
-                cache.StringSet("e007", JsonConvert.SerializeObject(e007)));
+    // Store .NET object to cache
+    Employee e007 = new Employee("007", "Davide Columbo", 100);
+    Console.WriteLine("Cache response from storing Employee .NET object : " + 
+    cache.StringSet("e007", JsonConvert.SerializeObject(e007)));
 
-            // Retrieve .NET object from cache
-            Employee e007FromCache = JsonConvert.DeserializeObject<Employee>(cache.StringGet("e007"));
-            Console.WriteLine("Deserialized Employee .NET object :\n");
-            Console.WriteLine("\tEmployee.Name : " + e007FromCache.Name);
-            Console.WriteLine("\tEmployee.Id   : " + e007FromCache.Id);
-            Console.WriteLine("\tEmployee.Age  : " + e007FromCache.Age + "\n");
+    // Retrieve .NET object from cache
+    Employee e007FromCache = JsonConvert.DeserializeObject<Employee>(cache.StringGet("e007"));
+    Console.WriteLine("Deserialized Employee .NET object :\n");
+    Console.WriteLine("\tEmployee.Name : " + e007FromCache.Name);
+    Console.WriteLine("\tEmployee.Id   : " + e007FromCache.Id);
+    Console.WriteLine("\tEmployee.Age  : " + e007FromCache.Age + "\n");
 ```
 
 按 **Ctrl+F5** 生成并运行控制台应用，以便测试 .NET 对象的序列化。 
@@ -254,13 +247,13 @@ using Newtonsoft.Json;
 > 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可从各自的边栏选项卡逐个删除这些资源，而不要删除资源组。
 >
 
-登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。
+登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。 
 
-在“按名称筛选...”文本框中键入资源组的名称。 本文的说明使用了名为 *TestResources* 的资源组。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组”。
+在“按名称筛选...”文本框中键入资源组的名称  。 本文的说明使用了名为 *TestResources* 的资源组。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组”   。
 
 ![删除](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-delete-resource-group.png)
 
-系统会要求确认是否删除资源组。 键入资源组的名称进行确认，然后单击“删除”。
+系统会要求确认是否删除资源组。 键入资源组的名称进行确认，然后单击“删除”  。
 
 片刻之后，将会删除该资源组及其包含的所有资源。
 
@@ -275,4 +268,7 @@ using Newtonsoft.Json;
 > [!div class="nextstepaction"]
 > [创建使用 Azure Redis 缓存的 ASP.NET Web 应用。](./cache-web-app-howto.md)
 
+希望优化并节省云支出？
 
+> [!div class="nextstepaction"]
+> [使用成本管理开始分析成本](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

@@ -1,27 +1,20 @@
 ---
-title: 教程 - 使用 Azure CLI 在规模集中安装应用程序 | Microsoft Docs
+title: 教程 - 使用 Azure CLI 在规模集中安装应用程序
 description: 了解如何使用自定义脚本扩展通过 Azure CLI 将应用程序安装到虚拟机规模集中
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ju-shim
+ms.author: jushiman
 ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: cli
 ms.date: 03/27/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 38dec49083e84d105f4eed9cbc149bbc025c5e40
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: a2335ae285ca68eb6b6deb58bb3b0e8ff4a6bb57
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755707"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495022"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-the-azure-cli"></a>教程：使用 Azure CLI 在虚拟机规模集中安装应用程序
 若要在规模集中的虚拟机 (VM) 实例上运行应用程序，首先需要安装应用程序组件和所需文件。 前一篇教程介绍了如何创建自定义 VM 映像并使用它来部署 VM 实例。 使用此自定义映像可以手动安装和配置应用程序。 也可以在部署每个 VM 实例之后，将应用程序自动安装到规模集，或者更新已在规模集中运行的应用程序。 本教程介绍如何执行下列操作：
@@ -41,7 +34,7 @@ ms.locfileid: "55755707"
 ## <a name="what-is-the-azure-custom-script-extension"></a>什么是 Azure 自定义脚本扩展？
 自定义脚本扩展在 Azure VM 上下载和执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或 GitHub 下载脚本，或者在扩展运行时将脚本提供给 Azure 门户。
 
-自定义脚本扩展与 Azure 资源管理器模板集成，也可以与 Azure CLI、Azure PowerShell、Azure 门户或 REST API 配合使用。 有关详细信息，请参阅[自定义脚本扩展概述](../virtual-machines/linux/extensions-customscript.md)。
+自定义脚本扩展与 Azure 资源管理器模板集成，也可以与 Azure CLI、Azure PowerShell、Azure 门户或 REST API 配合使用。 有关详细信息，请参阅[自定义脚本扩展概述](../virtual-machines/extensions/custom-script-linux.md)。
 
 若要通过 Azure CLI 使用自定义脚本扩展，请创建 JSON 文件，用于定义要包含的文件和要执行的命令。 这些 JSON 定义可以在规模集部署之间重复使用，以应用一致的应用程序安装。
 
@@ -60,7 +53,7 @@ ms.locfileid: "55755707"
 
 
 ## <a name="create-a-scale-set"></a>创建规模集
-使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -82,7 +75,7 @@ az vmss create \
 
 
 ## <a name="apply-the-custom-script-extension"></a>应用自定义脚本扩展
-使用 [az vmss extension set](/cli/azure/vmss/extension) 将自定义脚本扩展配置应用到规模集中的 VM 实例。 以下示例将 customConfig.json 配置应用于名为 myResourceGroup 的资源组中的 myScaleSet VM 实例：
+使用 [az vmss extension set](/cli/azure/vmss/extension) 将自定义脚本扩展配置应用到规模集中的 VM 实例。 以下示例将 customConfig.json 配置应用于名为 myResourceGroup 的资源组中的 myScaleSet VM 实例  ：
 
 ```azurecli-interactive
 az vmss extension set \

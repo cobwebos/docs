@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/25/2018
 ms.author: jasonh
 ms.openlocfilehash: 8b4d2d9c8d6029ed7027e2e3d358ac7380897674
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66161984"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67173549"
 ---
 > [!div class="op_single_selector"]
 > * [概述](../articles/hdinsight/hadoop/hdinsight-use-sqoop.md)

@@ -1,25 +1,16 @@
 ---
 title: Azure 服务总线到事件网格集成概述 | Microsoft Docs
-description: 服务总线消息传送和事件网格集成的说明
-services: service-bus-messaging
+description: 本文介绍 Azure 服务总线消息传送如何与 Azure 事件网格集成。
 documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: f99766cb-8f4b-4baf-b061-4b1e2ae570e4
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: multiple
+author: spelluru
 ms.topic: conceptual
-ms.date: 09/15/2018
-ms.author: aschhab
-ms.openlocfilehash: 9df321980db3a2481f0d8cc007546822fea46f9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.openlocfilehash: 009e6a1b98e72d9618dc8ed3437d7ea90ab4afac
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66111181"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340572"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure 服务总线到事件网格的集成概述
 
@@ -112,7 +103,7 @@ Azure 服务总线已推出与 Azure 事件网格集成的新功能。 此功能
 
 ### <a name="use-filters-to-limit-where-you-get-events-from"></a>使用筛选器限制事件的来源
 
-例如，如果你只想从命名空间中的某个队列或订阅接收事件，可以使用事件网格提供的“开头为”或“结尾为”筛选器。 在某些界面中，这两个筛选器称为“前缀”和“后缀”筛选器。 如果需要接收多个（但并非所有）队列和订阅的事件，可以创建多个事件网格订阅，并为每个订阅提供一个筛选器。
+例如，如果你只想从命名空间中的某个队列或订阅接收事件，可以使用事件网格提供的“开头为”或“结尾为”筛选器。  在某些界面中，这两个筛选器称为“前缀”和“后缀”筛选器。  如果需要接收多个（但并非所有）队列和订阅的事件，可以创建多个事件网格订阅，并为每个订阅提供一个筛选器。
 
 ## <a name="create-event-grid-subscriptions-for-service-bus-namespaces"></a>为服务总线命名空间创建事件网格订阅
 
@@ -146,12 +137,14 @@ Azure 服务总线已推出与 Azure 事件网格集成的新功能。 此功能
  ```azurecli-interactive
 az login
 
-az account set -s “THE SUBSCRIPTION YOU WANT TO USE”
+az account set -s "<Azure subscription name>"
 
-$namespaceid=(az resource show --namespace Microsoft.ServiceBus --resource-type namespaces --name “<yourNamespace>“--resource-group “<Your Resource Group Name>” --query id --output tsv)
+namespaceid=$(az resource show --namespace Microsoft.ServiceBus --resource-type namespaces --name "<service bus namespace>" --resource-group "<resource group that contains the service bus namespace>" --query id --output tsv
 
-az eventgrid event-subscription create --resource-id $namespaceid --name “<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>” --endpoint “<your_function_url>” --subject-ends-with “<YOUR SERVICE BUS SUBSCRIPTION NAME>”
+az eventgrid event-subscription create --resource-id $namespaceid --name "<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>" --endpoint "<your_function_url>" --subject-ends-with "<YOUR SERVICE BUS SUBSCRIPTION NAME>"
 ```
+
+如果使用 BASH 
 
 ## <a name="powershell-instructions"></a>PowerShell 说明
 
@@ -168,7 +161,7 @@ Install-Module Az.ServiceBus
 $NSID = (Get-AzServiceBusNamespace -ResourceGroupName "<YOUR RESOURCE GROUP NAME>" -Na
 mespaceName "<YOUR NAMESPACE NAME>").Id
 
-New-AzEVentGridSubscription -EventSubscriptionName “<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>” -ResourceId $NSID -Endpoint "<YOUR FUNCTION URL>” -SubjectEndsWith “<YOUR SERVICE BUS SUBSCRIPTION NAME>”
+New-AzEVentGridSubscription -EventSubscriptionName "<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>" -ResourceId $NSID -Endpoint "<YOUR FUNCTION URL>” -SubjectEndsWith "<YOUR SERVICE BUS SUBSCRIPTION NAME>"
 ```
 
 可以在这里浏览其他设置选项，或者测试事件是否正在流动。

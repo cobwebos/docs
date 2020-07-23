@@ -1,22 +1,16 @@
 ---
-title: 运行并行工作负荷 - Azure Batch .NET
+title: 运行并行工作负载
 description: 教程 - 在 Azure Batch 中使用 Batch .NET 客户端库通过 ffmpeg 并行转码媒体文件
-services: batch
-author: laurenhughes
-manager: jeconnoc
-ms.assetid: ''
-ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/21/2018
-ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: e450ca0ff2578c4ec2ce95c14a17735860044b59
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: d8a5db6c6c63d680514e21bef0e5a8bc6b3ea550
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595238"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733067"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>教程：使用 .NET API 通过 Azure Batch 运行并行工作负荷
 
@@ -167,7 +161,7 @@ using (BatchClient batchClient = BatchClient.Open(sharedKeyCredentials))
 应用将 `blobClient` 对象传递至 `CreateContainerIfNotExistAsync` 方法，以便为输入文件（MP4 格式）创建一个存储容器，并为任务输出创建一个容器。
 
 ```csharp
-CreateContainerIfNotExistAsync(blobClient, inputContainerName;
+CreateContainerIfNotExistAsync(blobClient, inputContainerName);
 CreateContainerIfNotExistAsync(blobClient, outputContainerName);
 ```
 
@@ -175,8 +169,8 @@ CreateContainerIfNotExistAsync(blobClient, outputContainerName);
 
 上传文件时，涉及到 `Program.cs` 中的两个方法：
 
-* `UploadResourceFilesToContainerAsync`：返回 ResourceFile 对象的集合，并在内部调用 `UploadResourceFileToContainerAsync` 以上传在 `inputFilePaths` 参数中传递的每个文件。
-* `UploadResourceFileToContainerAsync`：将每个文件作为 Blob 上传到输入容器。 上传文件后，它会获取该 Blob 的共享访问签名 (SAS) 并返回代表它的 ResourceFile 对象。
+* `UploadFilesToContainerAsync`设置用户帐户 ：返回 ResourceFile 对象的集合，并在内部调用 `UploadResourceFileToContainerAsync` 以上传在 `inputFilePaths` 参数中传递的每个文件。
+* `UploadResourceFileToContainerAsync`设置用户帐户 ：将每个文件作为 Blob 上传到输入容器。 上传文件后，它会获取该 Blob 的共享访问签名 (SAS) 并返回代表它的 ResourceFile 对象。
 
 ```csharp
 string inputPath = Path.Combine(Environment.CurrentDirectory, "InputFiles");
@@ -184,7 +178,7 @@ string inputPath = Path.Combine(Environment.CurrentDirectory, "InputFiles");
 List<string> inputFilePaths = new List<string>(Directory.GetFileSystemEntries(inputPath, "*.mp4",
     SearchOption.TopDirectoryOnly));
 
-List<ResourceFile> inputFiles = await UploadResourceFilesToContainerAsync(
+List<ResourceFile> inputFiles = await UploadFilesToContainerAsync(
   blobClient,
   inputContainerName,
   inputFilePaths);
@@ -197,6 +191,9 @@ List<ResourceFile> inputFiles = await UploadResourceFilesToContainerAsync(
 然后，该示例会调用 `CreatePoolIfNotExistAsync` 以在 Batch 帐户中创建计算节点池。 这个定义的方法使用 [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool) 方法设置节点数、VM 大小和池配置。 在这里，[VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) 对象指定对 Azure 市场中发布的 Windows Server 映像的 [ImageReference](/dotnet/api/microsoft.azure.batch.imagereference)。 Batch 支持 Azure 市场中的各种 VM 映像以及自定义 VM 映像。
 
 节点数和 VM 大小使用定义的常数进行设置。 Batch 支持专用节点和[低优先级](batch-low-pri-vms.md)节点。可以在池中使用这其中的一种，或者两种都使用。 专用节点为池保留。 低优先级节点在 Azure 有剩余 VM 容量时以优惠价提供。 如果 Azure 没有足够的容量，低优先级节点会变得不可用。 默认情况下，此示例创建的池只包含 5 个大小为 *Standard_A1_v2* 的低优先级节点。
+
+>[!Note]
+>请务必检查节点配额。 有关如何创建配额请求的说明，请参阅 [Batch 服务配额和限制](batch-quota-limit.md#increase-a-quota)。
 
 ffmpeg 应用程序部署到计算节点的方法是添加对池配置的 [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference)。
 
@@ -335,3 +332,6 @@ batchClient.JobOperations.TerminateJob(jobId);
 
 > [!div class="nextstepaction"]
 > [Batch C# 示例](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)
+
+
+设置实例变量 LowPriorityNodeCount=0 和 DedicatedNodeCount=5 修复了该问题并允许作业完成。

@@ -1,21 +1,21 @@
 ---
 title: 通过必应实体搜索 API 来搜索实体
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用必应实体搜索 API 从搜索查询中提取和搜索实体和场所。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: c205f792138ebd7e8094b3bd7cd303d54dfa8d8f
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
-ms.translationtype: HT
+ms.openlocfilehash: 1805f6f7a61f7e0b0a6e4d5bd6931c0a7d1f1b6f
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389864"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "79220310"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>使用必应实体 API 搜索实体
 
@@ -189,7 +189,7 @@ API 响应包含一个 [SearchResponse](https://docs.microsoft.com/rest/api/cogn
 > [!NOTE]
 > 实体响应支持多个市场，但 Places 响应仅支持美国业务位置。 
 
-本地感知型实体查询（例如“我附近的餐馆”  ）需要用户的位置才能提供准确结果。 请求应始终使用 X-Search-Location 和 X-MSEdge-ClientIP 标头来指定用户的位置。 如果必应认为查询可以利用用户的位置，它会将 [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) 的 `askUserForLocation` 字段设置为 **true**。 
+本地感知型实体查询（例如“我附近的餐馆”**）需要用户的位置才能提供准确结果。 请求应始终使用 X-Search-Location 和 X-MSEdge-ClientIP 标头来指定用户的位置。 如果必应认为查询可以利用用户的位置，它会将 [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) 的 `askUserForLocation` 字段设置为 **true**。 
 
 ```json
 {
@@ -296,7 +296,7 @@ API 响应包含一个 [SearchResponse](https://docs.microsoft.com/rest/api/cogn
 
 ![许可证属性](../media/cognitive-services-bing-entities-api/licenseattribution.png)
 
-你显示的许可证通知必须包括指向包含许可证相关信息的网站的超链接。 通常会将许可证名称作为超链接。 例如，如果声明是“文本需 CC-BY-SA 许可证”  ，且 CC-BY-SA 是许可证名称，则让 CC-BY-SA 成为超链接。
+你显示的许可证通知必须包括指向包含许可证相关信息的网站的超链接。 通常会将许可证名称作为超链接。 例如，如果声明是“文本需 CC-BY-SA 许可证”****，且 CC-BY-SA 是许可证名称，则让 CC-BY-SA 成为超链接。
 
 ### <a name="link-and-text-attribution"></a>链接和文本属性
 
@@ -310,7 +310,7 @@ API 响应包含一个 [SearchResponse](https://docs.microsoft.com/rest/api/cogn
 
 ### <a name="media-attribution"></a>媒体属性
 
-如果实体包括图像而该图像会显示，则必须提供指向提供商网站的点击链接。 如果实体包括 [MediaAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mediaattribution) 规则，则使用规则的 URL 创建点击链接。 否则，请使用包括在图像的 `provider` 字段中的 URL 创建点击链接。
+如果实体包括图像并且将其显示，则必须提供指向提供程序网站的点击链接。 如果实体包括 [MediaAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mediaattribution) 规则，则使用规则的 URL 创建点击链接。 否则，请使用包括在图像的 `provider` 字段中的 URL 创建点击链接。
 
 下面显示的一个示例包含图像的 `provider` 字段和协定规则。 由于此示例包含协定规则，请忽略图像的 `provider` 字段并应用 `MediaAttribution` 规则。
 

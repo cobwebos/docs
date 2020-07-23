@@ -1,6 +1,6 @@
 ---
-title: 快速入门：使用必应视频搜索 REST API 和 Python 来搜索视频
-titlesuffix: Azure Cognitive Services
+title: 快速入门：使用 REST API 和 Python 搜索视频 - 必应视频搜索
+titleSuffix: Azure Cognitive Services
 description: 通过本快速入门使用 Python 向必应视频搜索 REST API 发送视频搜索请求。
 services: cognitive-services
 author: aahill
@@ -8,20 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 1ac4a2ce5027606706367b43eea759fb953994c6
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.custom: tracking-python
+ms.openlocfilehash: 33a4e31be04e5a205322bb3040d3694525c4515c
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876840"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605980"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>快速入门：使用必应视频搜索 REST API 和 Python 来搜索视频
 
-使用本快速入门首次调用必应视频搜索 API 并查看 JSON 响应中的搜索结果。 这个简单的 Python 应用程序会向该 API 发送一个 HTTP 视频搜索查询并显示响应。 虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py) 上提供了此示例的源代码以及附加的错误处理和代码注释。
+根据此快速入门中的说明对必应视频搜索 API 进行第一次调用。 这个简单的 Python 应用程序会向该 API 发送一个 HTTP 视频搜索查询并显示 JSON 响应。 虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 
 
-可以通过单击启动活页夹锁屏提醒，在 [MyBinder](https://mybinder.org) 上将此示例作为 Jupyter Notebook 运行： 
+[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py) 上提供了此示例的源代码以及附加的错误处理和代码注释。
+
+可以通过选择启动活页夹锁屏提醒，在 [MyBinder](https://mybinder.org) 上将此示例作为 Jupyter Notebook 运行： 
 
 [![活页夹](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingVideoSearchAPI.ipynb)
 
@@ -34,13 +37,13 @@ ms.locfileid: "55876840"
 
 ## <a name="initialize-the-application"></a>初始化应用程序
 
-1. 在你最喜欢使用的 IDE 或编辑器中新建一个 Python 文件，并导入以下库。
+1. 在你最喜欢使用的 IDE 或编辑器中新建一个 Python 文件，并导入以下库：
 
     ```python
     import requests
     from IPython.display import HTML
     ```
-2.  为你的订阅密钥、搜索终结点和搜索词创建变量。
+2.  为你的订阅密钥、搜索终结点和搜索词创建变量。 对于 `search_url` 值，可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
     
     ```python
     subscription_key = None

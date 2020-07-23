@@ -1,136 +1,135 @@
 ---
-title: 快速入门：使用 Go SDK 调用文本分析服务
+title: 快速入门：适用于 Go 的文本分析客户端库 | Microsoft Docs
 titleSuffix: Azure Cognitive Services
-description: 获取信息和代码示例，帮助快速开始使用 Microsoft 认知服务中的文本分析 API。
+description: 在本快速入门中，使用 Azure 认知服务的 Go 文本分析客户端库来检测语言。
 services: cognitive-services
-author: laramume
-manager: assafi
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 05/23/2019
+ms.date: 02/26/2020
 ms.author: aahi
-ms.openlocfilehash: 44def29292bc882fdaa08ff76667742756f178b8
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: ff1b35ec036996dfa452d92632c8fc6ede22d82f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299447"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203243"
 ---
-# <a name="quickstart-call-the-text-analytics-service-using-the-go-sdk"></a>快速入门：使用 Go SDK 调用文本分析服务 
-<a name="HOLTop"></a>
+# <a name="quickstart-use-the-text-analytics-client-library-for-go"></a>快速入门：使用适用于 Go 文本分析客户端库
 
-根据本快速入门中的说明，开始使用用于 Go 的文本分析 SDK 来分析语言。 本文展示了如何检测语言、分析情绪、提取关键短语以及识别链接的实体。 虽然 REST API 与大多数编程语言兼容，但该 SDK 提供了一种简单方法来将服务集成到应用程序中。 可以在 [GitHub](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/cognitiveservices) 上找到此示例的源代码。
+- [参考文档](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics)
+- [库源代码](https://github.com/Azure/azure-sdk-for-go/blob/090dc0ee4d8d2d60e2a9525774d967a4111a2b0c/services/cognitiveservices/v2.1/textanalytics/client.go)
+- [包 (GitHub)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics)
+- [示例](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
+
+> [!NOTE]
+> 本快速入门仅适用于文本分析 2.1 版。 目前，适用于 Go 的 v3 客户端库不可用。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 文本分析 [SDK for Go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics)
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
+* 最新版本的 [Go](https://golang.org/dl/)
+* 你有了 Azure 订阅后，<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="创建文本分析资源"  target="_blank">将在 Azure 门户中创建文本分析资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，以获取你的密钥和终结点。 
+    * 你需要从创建的资源获取密钥和终结点，以便将应用程序连接到文本分析 API。 稍后会在本快速入门中执行此操作。
+    * 可以使用免费定价层试用该服务，然后再升级到付费层进行生产。
 
-[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
+## <a name="setting-up"></a>设置
 
-还必须拥有在注册期间生成的[终结点和访问密钥](../How-tos/text-analytics-how-to-access-key.md)。
+### <a name="create-a-new-go-project"></a>创建新的 Go 项目
 
-## <a name="set-up-a-new-project"></a>设置新项目
+在控制台窗口（cmd、PowerShell、终端、Bash）中，为 Go 项目创建一个新的工作区并导航到该工作区。 工作区包含三个文件夹： 
 
-在你喜欢使用的代码编辑器或 IDE 中新建一个 Go 项目。 然后，将以下 import 语句添加到 Go 文件。
+* **src** - 此目录包含源代码和包。 使用 `go get` 命令安装的任何包将位于此处。
+* **pkg** - 此目录包含编译的 Go 包对象。 这些文件使用 `.a` 扩展名。
+* **bin** - 此目录包含运行 `go install` 时创建的二进制可执行文件。
 
-```golang
-import (
-    "context"
-    "encoding/json"
-    "fmt"
-    "github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics"
-    "github.com/Azure/go-autorest/autorest"
-)
+> [!TIP]
+> 详细了解 [Go 工作区](https://golang.org/doc/code.html#Workspaces)的结构。 本指南包含有关设置 `$GOPATH` 和 `$GOROOT` 的信息。
+
+创建名为 `my-app` 的工作区，并为 `src`、`pkg` 和 `bin` 创建所需的子目录：
+
+```console
+$ mkdir -p my-app/{src, bin, pkg}  
+$ cd my-app
 ```
 
-将以下函数添加到项目，因为本快速入门的大多数参数和属性需要字符串和布尔形式的指针。
+### <a name="install-the-text-analytics-client-library-for-go"></a>安装适用于 Go 的文本分析客户端库
 
-```golang
-// returns a pointer to the string value passed in.
-func StringPointer(v string) *string {
-    return &v
+安装适用于 Go 的客户端库： 
+
+```console
+$ go get -u <https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics>
+```
+
+或者，如果使用 dep，则在存储库中运行：
+
+```console
+$ dep ensure -add <https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics>
+```
+
+### <a name="create-your-go-application"></a>创建 Go 应用程序
+
+接下来，创建名为 `src/quickstart.go` 的文件：
+
+```bash
+$ cd src
+$ touch quickstart.go
+```
+
+在喜好的 IDE 或文本编辑器中打开 `quickstart.go`。 然后添加包名称并导入以下库：
+
+[!code-go[Import statements](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=imports)]
+
+## <a name="object-model"></a>对象模型 
+
+文本分析客户端是一个 [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New) 对象，它使用你的密钥向 Azure 进行身份验证。 该客户端提供了几种方法来分析文本，文本可以是单个字符串，也可以是批处理。 
+
+文本将以 `documents` 的列表的形式发送到 API，该项是包含 `id`、`text` 和 `language` 属性的组合的 `dictionary` 对象，具体取决于所用的方法。 `text` 属性存储要以源 `language` 分析的文本，而 `id` 则可以是任何值。 
+
+响应对象是一个列表，其中包含每个文档的分析信息。 
+
+## <a name="code-examples"></a>代码示例
+
+这些代码片段演示如何使用适用于 Go 的文本分析客户端库执行以下操作：
+
+* [对客户端进行身份验证](#authenticate-the-client)
+* [情绪分析](#sentiment-analysis)
+* [语言检测](#language-detection)
+* [实体识别](#entity-recognition)
+* [关键短语提取](#key-phrase-extraction)
+
+## <a name="authenticate-the-client"></a>验证客户端
+
+
+在新函数中，为资源的 Azure 终结点和订阅密钥创建变量。
+
+[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
+
+创建新的 [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New) 对象。 将密钥传递给 [autorest.NewCognitiveServicesAuthorizer()](https://godoc.org/github.com/Azure/go-autorest/autorest#NewCognitiveServicesAuthorizer) 函数，随后它将传递给客户端的 `authorizer` 属性。
+
+```go
+func GetTextAnalyticsClient() textanalytics.BaseClient {
+    var key string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
+
+    textAnalyticsClient := textanalytics.New(endpoint)
+    textAnalyticsClient.Authorizer = autorest.NewCognitiveServicesAuthorizer(key)
+
+    return textAnalyticsClient
 }
-
-// returns a pointer to the bool value passed in.
-func BoolPointer(v bool) *bool {
-    return &v
-}
-```
-
-## <a name="create-text-analytics-client-and-authenticate-credentials"></a>创建文本分析客户端并对凭据进行身份验证
-
-在项目的 main 函数中，创建新的 `TextAnalytics` 项目。 请使用适合你的文本分析订阅的正确 Azure 区域。 例如：`https://eastus.api.cognitive.microsoft.com`。 如果使用的是试用密钥，则无需更新位置。
-
-```golang
-//Replace 'eastus' with the correct region for your Text Analytics subscription
-textAnalyticsClient := textanalytics.New("https://eastus.api.cognitive.microsoft.com")
-```
-
-为密钥创建一个变量，将其传递给函数 `autorest.NewCognitiveServicesAuthorizer`，然后将该函数传递给客户端的 `authorizer` 属性。
-
-```golang
-subscriptionKey := "<<subscriptionKey>>"
-textAnalyticsClient.Authorizer = autorest.NewCognitiveServicesAuthorizer(subscriptionKey)
 ```
 
 ## <a name="sentiment-analysis"></a>情绪分析
 
-创建名为 `SentimentAnalysis()` 的新函数，该函数使用以前创建的客户端。 创建 `MultiLanguageInput` 对象的列表，其中包含需分析的文档。 每个对象会包含 `id`、`Language` 和 `text` 属性。 `text` 属性存储要分析的文本，`language` 是文档的语言，`id` 则可以是任何值。 
+创建名为 `SentimentAnalysis()` 的新函数，并使用先前创建的 `GetTextAnalyticsClient()` 方法创建客户端。 创建 [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) 对象的列表，其中包含要分析的文档。 每个对象会包含 `id`、`Language` 和 `text` 属性。 `text` 属性存储要分析的文本，`language` 是文档的语言，`id` 则可以是任何值。 
 
-```golang
-func SentimentAnalysis(textAnalyticsclient textanalytics.BaseClient) {
+调用客户端的 [Sentiment()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Sentiment) 函数并获取结果。 然后循环访问结果，输出每个文档的 ID 和情绪分数。 评分接近 0 表示消极情绪，评分接近 1 表示积极情绪。
 
-    ctx := context.Background()
-    inputDocuments := []textanalytics.MultiLanguageInput {
-        textanalytics.MultiLanguageInput {
-            Language: StringPointer("en"),
-            ID:StringPointer("0"),
-            Text:StringPointer("I had the best day of my life."),
-        },
-        textanalytics.MultiLanguageInput {
-            Language: StringPointer("en"),
-            ID:StringPointer("1"),
-            Text:StringPointer("This was a waste of my time. The speaker put me to sleep."),
-        },
-        textanalytics.MultiLanguageInput {
-            Language: StringPointer("es"),
-            ID:StringPointer("2"),
-            Text:StringPointer("No tengo dinero ni nada que dar..."),
-        },
-        textanalytics.MultiLanguageInput {
-            Language: StringPointer("it"),
-            ID:StringPointer("3"),
-            Text:StringPointer("L'hotel veneziano era meraviglioso. È un bellissimo pezzo di architettura."),
-        },
-    }
+[!code-go[Sentiment analysis sample](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=sentimentAnalysis)]
 
-    batchInput := textanalytics.MultiLanguageBatchInput{Documents:&inputDocuments}
-}
-```
-
-在同一函数中，调用 `textAnalyticsclient.Sentiment()` 并获取结果。 然后循环访问结果，输出每个文档的 ID 和情绪分数。 评分接近 0 表示消极情绪，评分接近 1 表示积极情绪。
-
-```golang
-result, _ := textAnalyticsclient.Sentiment(ctx, BoolPointer(false), &batchInput)
-batchResult := textanalytics.SentimentBatchResult{}
-jsonString, _ := json.Marshal(result.Value)
-json.Unmarshal(jsonString, &batchResult)
-
-// Printing sentiment results
-for _,document := range *batchResult.Documents {
-    fmt.Printf("Document ID: %s " , *document.ID)
-    fmt.Printf("Sentiment Score: %f\n",*document.Score)
-}
-
-// Printing document errors
-fmt.Println("Document Errors")
-for _,error := range *batchResult.Errors {
-    fmt.Printf("Document ID: %s Message : %s\n" ,*error.ID, *error.Message)
-}
-```
-
-在项目的 main 函数中，调用 `SentimentAnalysis()`。
+在项目中调用 `SentimentAnalysis()`。
 
 ### <a name="output"></a>输出
 
@@ -143,241 +142,89 @@ Document ID: 4 , Sentiment Score: 1.00
 
 ## <a name="language-detection"></a>语言检测
 
-创建名为 `LanguageDetection()` 的新函数，该函数使用以前创建的客户端。 创建 `LanguageInput` 对象的列表，其中包含需分析的文档。 每个对象会包含 `id` 和 `text` 属性。 `text` 属性存储要分析的文本，而 `id` 则可以是任何值。 
+创建名为 `LanguageDetection()` 的新函数，并使用先前创建的 `GetTextAnalyticsClient()` 方法创建客户端。 创建 [LanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#LanguageInput) 对象的列表，其中包含要分析的文档。 每个对象会包含 `id` 和 `text` 属性。 `text` 属性存储要分析的文本，而 `id` 则可以是任何值。 
 
-```golang
-func LanguageDetection(textAnalyticsclient textanalytics.BaseClient) {
+调用客户端的 [DetectLanguage()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.DetectLanguage) 并获取结果。 然后循环访问结果，输出每个文档的 ID 和检测到的语言。
 
-    ctx := context.Background()
-    inputDocuments := []textanalytics.LanguageInput {
-        textanalytics.LanguageInput {
-            ID:StringPointer("0"),
-            Text:StringPointer("This is a document written in English."),
-        },
-        textanalytics.LanguageInput {
-            ID:StringPointer("1"),
-            Text:StringPointer("Este es un document escrito en Español."),
-        },
-        textanalytics.LanguageInput {
-            ID:StringPointer("2"),
-            Text:StringPointer("这是一个用中文写的文件"),
-        },
-    }
+[!code-go[Language detection sample](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=languageDetection)]
 
-    batchInput := textanalytics.LanguageBatchInput{Documents:&inputDocuments}
-}
-```
-
-在同一函数中，调用 `textAnalyticsclient.DetectLanguage()` 并获取结果。 然后循环访问结果，输出每个文档的 ID 和检测到的语言。
-
-```golang
-result, _ := textAnalyticsclient.DetectLanguage(ctx, BoolPointer(false), &batchInput)
-
-// Printing language detection results
-for _,document := range *result.Documents {
-    fmt.Printf("Document ID: %s " , *document.ID)
-    fmt.Printf("Detected Languages with Score: ")
-    for _,language := range *document.DetectedLanguages{
-        fmt.Printf("%s %f,",*language.Name, *language.Score)
-    }
-    fmt.Println()
-}
-
-// Printing document errors
-fmt.Println("Document Errors")
-for _,error := range *result.Errors {
-    fmt.Printf("Document ID: %s Message : %s\n" ,*error.ID, *error.Message)
-}
-```
-
-在项目的 main 函数中，调用 `LanguageDetection()`。
+在项目中调用 `LanguageDetection()`。
 
 ### <a name="output"></a>输出
 
 ```console
-Document ID: 0 Detected Languages with Score: English 1.000000,
-Document ID: 1 Detected Languages with Score: Spanish 1.000000,
-Document ID: 2 Detected Languages with Score: Chinese_Simplified 1.000000,
+Document ID: 0 , Language: English 
+Document ID: 1 , Language: Spanish
+Document ID: 2 , Language: Chinese_Simplified
 ```
 
 ## <a name="entity-recognition"></a>实体识别
 
-创建名为 `ExtractEntities()` 的新函数，该函数使用以前创建的客户端。 创建 `MultiLanguageInput` 对象的列表，其中包含需分析的文档。 每个对象会包含 `id`、`language` 和 `text` 属性。 `text` 属性存储要分析的文本，`language` 是文档的语言，`id` 则可以是任何值。 
+创建名为 `ExtractEntities()` 的新函数，并使用先前创建的 `GetTextAnalyticsClient()` 方法创建客户端。 创建 [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) 对象的列表，其中包含要分析的文档。 每个对象会包含 `id`、`language` 和 `text` 属性。 `text` 属性存储要分析的文本，`language` 是文档的语言，`id` 则可以是任何值。 
 
-```golang
-func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
+调用客户端的 [Entities()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Entities) 并获取结果。 然后循环访问结果，输出每个文档的 ID 和提取的实体分数。
 
-    ctx := context.Background()
-    inputDocuments := []textanalytics.MultiLanguageInput {
-        textanalytics.MultiLanguageInput {
-            Language: StringPointer("en"),
-            ID:StringPointer("0"),
-            Text:StringPointer("Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800."),
-        },
-        textanalytics.MultiLanguageInput {
-            Language: StringPointer("es"),
-            ID:StringPointer("1"),
-            Text:StringPointer("La sede principal de Microsoft se encuentra en la ciudad de Redmond, a 21 kilómetros de Seattle."),
-        },
-    }
+[!code-go[entity recognition sample](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=entityRecognition)]
 
-    batchInput := textanalytics.MultiLanguageBatchInput{Documents:&inputDocuments}
-}
-```
-
-在同一函数中，`call textAnalyticsclient.Entities()` 并获取结果。 然后循环访问结果，输出每个文档的 ID 和提取的实体分数。
-
-```golang
-    result, _ := textAnalyticsclient.Entities(ctx, BoolPointer(false), &batchInput)
-
-    // Printing extracted entities results
-    for _,document := range *result.Documents {
-        fmt.Printf("Document ID: %s\n" , *document.ID)
-        fmt.Printf("\tExtracted Entities:\n")
-        for _,entity := range *document.Entities{
-            fmt.Printf("\t\tName: %s\tType: %s",*entity.Name, *entity.Type)
-            if entity.SubType != nil{
-                fmt.Printf("\tSub-Type: %s\n", *entity.SubType)
-            }
-            fmt.Println()
-            for _,match := range *entity.Matches{
-                fmt.Printf("\t\t\tOffset: %v\tLength: %v\tScore: %f\n", *match.Offset, *match.Length, *match.EntityTypeScore)
-            }
-        }
-        fmt.Println()
-    }
-
-    // Printing document errors
-    fmt.Println("Document Errors")
-    for _,error := range *result.Errors {
-        fmt.Printf("Document ID: %s Message : %s\n" ,*error.ID, *error.Message)
-    }
-```
-
-在项目的 main 函数中，调用 `ExtractEntities()`。
+在项目中调用 `ExtractEntities()`。
 
 ### <a name="output"></a>输出
 
 ```console
-Document ID: 0
-    Extracted Entities:
-        Name: Microsoft Type: Organization
-            Offset: 0   Length: 9   Score: 1.000000
-        Name: Bill Gates    Type: Person
-            Offset: 25  Length: 10  Score: 0.999847
-        Name: Paul Allen    Type: Person
-            Offset: 40  Length: 10  Score: 0.998841
-        Name: April 4   Type: Other
-            Offset: 54  Length: 7   Score: 0.800000
-        Name: April 4, 1975 Type: DateTime  Sub-Type: Date
-
-            Offset: 54  Length: 13  Score: 0.800000
-        Name: BASIC Type: Other
-            Offset: 89  Length: 5   Score: 0.800000
-        Name: Altair 8800   Type: Other
-            Offset: 116 Length: 11  Score: 0.800000
-
 Document ID: 1
-    Extracted Entities:
-        Name: Microsoft Type: Organization
-            Offset: 21  Length: 9   Score: 0.999756
-        Name: Redmond (Washington)  Type: Location
-            Offset: 60  Length: 7   Score: 0.991128
-        Name: 21 kilómetros Type: Quantity  Sub-Type: Dimension
+    Name: Microsoft,        Type: Organization,     Sub-Type: N/A
+    Offset: 0, Length: 9,   Score: 1.0
+    Name: Bill Gates,       Type: Person,   Sub-Type: N/A
+    Offset: 25, Length: 10, Score: 0.999847412109375
+    Name: Paul Allen,       Type: Person,   Sub-Type: N/A
+    Offset: 40, Length: 10, Score: 0.9988409876823425
+    Name: April 4,  Type: Other,    Sub-Type: N/A
+    Offset: 54, Length: 7,  Score: 0.8
+    Name: April 4, 1975,    Type: DateTime, Sub-Type: Date
+    Offset: 54, Length: 13, Score: 0.8
+    Name: BASIC,    Type: Other,    Sub-Type: N/A
+    Offset: 89, Length: 5,  Score: 0.8
+    Name: Altair 8800,      Type: Other,    Sub-Type: N/A
+    Offset: 116, Length: 11,        Score: 0.8
 
-            Offset: 71  Length: 13  Score: 0.800000
-        Name: Seattle   Type: Location
-            Offset: 88  Length: 7   Score: 0.999878
+Document ID: 2
+    Name: Microsoft,        Type: Organization,     Sub-Type: N/A
+    Offset: 21, Length: 9,  Score: 0.999755859375
+    Name: Redmond (Washington),     Type: Location, Sub-Type: N/A
+    Offset: 60, Length: 7,  Score: 0.9911284446716309
+    Name: 21 kilómetros,    Type: Quantity, Sub-Type: Dimension
+    Offset: 71, Length: 13, Score: 0.8
+    Name: Seattle,  Type: Location, Sub-Type: N/A
+    Offset: 88, Length: 7,  Score: 0.9998779296875
 ```
 
 ## <a name="key-phrase-extraction"></a>关键短语提取
 
-创建名为 `ExtractKeyPhrases()` 的新函数，该函数使用以前创建的客户端。 创建 `MultiLanguageInput` 对象的列表，其中包含需分析的文档。 每个对象会包含 `id`、`language` 和 `text` 属性。 `text` 属性存储要分析的文本，`language` 是文档的语言，`id` 则可以是任何值。
+创建名为 `ExtractKeyPhrases()` 的新函数，并使用先前创建的 `GetTextAnalyticsClient()` 方法创建客户端。 创建 [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) 对象的列表，其中包含要分析的文档。 每个对象会包含 `id`、`language` 和 `text` 属性。 `text` 属性存储要分析的文本，`language` 是文档的语言，`id` 则可以是任何值。
 
-```golang
-func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
+调用客户端的 [KeyPhrases()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.KeyPhrases) 并获取结果。 然后循环访问结果，输出每个文档的 ID 以及提取的关键短语。
 
-    ctx := context.Background()
-    inputDocuments := []textanalytics.MultiLanguageInput {
-        textanalytics.MultiLanguageInput {
-            Language: StringPointer("ja"),
-            ID:StringPointer("0"),
-            Text:StringPointer("猫は幸せ"),
-        },
-        textanalytics.MultiLanguageInput {
-            Language: StringPointer("de"),
-            ID:StringPointer("1"),
-            Text:StringPointer("Fahrt nach Stuttgart und dann zum Hotel zu Fu."),
-        },
-        textanalytics.MultiLanguageInput {
-            Language: StringPointer("en"),
-            ID:StringPointer("2"),
-            Text:StringPointer("My cat might need to see a veterinarian."),
-        },
-        textanalytics.MultiLanguageInput {
-            Language: StringPointer("es"),
-            ID:StringPointer("3"),
-            Text:StringPointer("A mi me encanta el fútbol!"),
-        },
-    }
+[!code-go[key phrase extraction sample](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=keyPhrases)]
 
-    batchInput := textanalytics.MultiLanguageBatchInput{Documents:&inputDocuments}
-}
-```
-
-在同一函数中，调用 textAnalyticsclient.KeyPhrases() 并获取结果。 然后循环访问结果，输出每个文档的 ID 以及提取的关键短语。
-
-```golang
-    result, _ := textAnalyticsclient.KeyPhrases(ctx, BoolPointer(false), &batchInput)
-
-    // Printing extracted key phrases results
-    for _,document := range *result.Documents {
-        fmt.Printf("Document ID: %s\n" , *document.ID)
-        fmt.Printf("\tExtracted Key Phrases:\n")
-        for _,keyPhrase := range *document.KeyPhrases{
-            fmt.Printf("\t\t%s\n",keyPhrase)
-        }
-        fmt.Println()
-    }
-
-    // Printing document errors
-    fmt.Println("Document Errors")
-    for _,error := range *result.Errors {
-        fmt.Printf("Document ID: %s Message : %s\n" ,*error.ID, *error.Message)
-    }
-```
-
-在项目的 main 函数中，调用 `ExtractKeyPhrases()`。
+在项目中调用 `ExtractKeyPhrases()`。
 
 ### <a name="output"></a>输出
 
 ```console
-Document ID: 0
-    Extracted Key Phrases:
-        幸せ
-
 Document ID: 1
-    Extracted Key Phrases:
-        Stuttgart
-        Hotel
-        Fahrt
-        Fu
-
+         Key phrases:
+                幸せ
 Document ID: 2
-    Extracted Key Phrases:
-        cat
-        veterinarian
-
+         Key phrases:
+                Stuttgart
+                Hotel
+                Fahrt
+                Fu
 Document ID: 3
-    Extracted Key Phrases:
-        fútbol
+         Key phrases:
+                cat
+                veterinarian
+Document ID: 4
+         Key phrases:
+                fútbol
 ```
-
-## <a name="next-steps"></a>后续步骤
-
-> [!div class="nextstepaction"]
-> [使用 Power BI 进行文本分析](../tutorials/tutorial-power-bi-key-phrases.md)
-
-## <a name="see-also"></a>另请参阅
-
- [文本分析概述](../overview.md)[常见问题解答 (FAQ)](../text-analytics-resource-faq.md)

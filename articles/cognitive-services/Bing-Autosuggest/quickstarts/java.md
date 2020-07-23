@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用必应自动建议 REST API 和 Java 建议搜索查询
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何使用必应自动建议 API 快速开始实时建议搜索词。
 services: cognitive-services
 author: aahill
@@ -8,19 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: f41e81d948bfa482a016e3770a705344f9c26b0c
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: d1c2da10270747aa09ecbcfdc537df567b4cdfc9
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390436"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929649"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>快速入门：使用必应自动建议 REST API 和 Java 建议搜索查询
 
-
-使用此快速入门开始调用必应自动建议 API 并获取 JSON 响应。 这个简单的 Java 应用程序向 API 发送部分搜索查询，并返回搜索建议。 虽然此应用程序是使用 Java 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java) 上获得
+按照此快速入门的要求，学习如何调用必应自动建议 API 并读取 JSON 响应。 这个简单的 Java 应用程序向 API 发送部分搜索查询，并返回搜索建议。 虽然此应用程序是使用 Java 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java) 上获得
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -44,7 +43,7 @@ ms.locfileid: "66390436"
     import com.google.gson.JsonParser;
     ```
 
-2. 为订阅密钥、API 主机和路径、[市场代码](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)和搜索查询创建变量。
+2. 为订阅密钥、API 主机和路径、[市场代码](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)和搜索查询创建变量。 使用下面的全局终结点，也可以使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
     
     ```java
     static String subscriptionKey = "enter key here";
@@ -84,7 +83,7 @@ public static String prettify(String json_text) {
       }
       ```
     
-   2. 使用上面创建的 API 主机、路径和参数为请求创建新的 URL。 
+   2. 使用在上一步创建的 API 主机、路径和参数为请求创建一个新 URL。 
     
        ```java
        //...
@@ -103,7 +102,7 @@ public static String prettify(String json_text) {
        //...
       ```
 
-   4. 读入对 `StringBuilder` 的 API 响应。 捕获响应后，关闭 `InputStreamReader` 流，并返回该响应。
+   4. 将 API 响应存储在 `StringBuilder` 中。 捕获响应后，关闭 `InputStreamReader` 流，并返回该响应。
 
        ```java
        //...

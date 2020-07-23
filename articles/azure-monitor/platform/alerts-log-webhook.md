@@ -1,64 +1,67 @@
 ---
 title: 用于 Azure 警报中日志警报的 Webhook 操作
-description: 本文介绍了使用 Log Analytics 工作区或 Application Insights 的日志警报规则如何作为 HTTP Webhook 推送数据，以及可能的不同自定义设置的详细信息。
-author: msvijayn
+description: 本文介绍如何使用 Log Analytics 工作区或 Application Insights 创建日志警报规则，警报如何作为 HTTP Webhook 推送数据，以及可能的不同自定义设置的详细信息。
+author: yanivlavi
+ms.author: yalavi
 services: monitoring
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/01/2018
-ms.author: vinagara
+ms.date: 06/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 809c98c1e2e51ae51d7fe03f2165a5d9eecb05cc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 6c9bacfc4354351cbbf2eb735414ff3334cd7d0a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681805"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84323665"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>用于日志警报规则的 Webhook 操作
-[在 Azure 中创建日志警报](alerts-log.md)时，可以选择[使用操作组配置](action-groups.md)以执行一个或多个操作。  本文介绍可用的不同 Webhook 操作，以及有关配置基于 JSON 的自定义 Webhook 的详细信息。
+[在 Azure 中创建日志警报](alerts-log.md)时，可以选择[使用操作组配置](action-groups.md)以执行一个或多个操作。 本文介绍可用的不同 Webhook 操作，以及如何配置基于 JSON 的自定义 Webhook。
 
 > [!NOTE]
-> 此外可以使用[常见警报架构](https://aka.ms/commonAlertSchemaDocs)，它提供一个可扩展的优势和 Azure Monitor 中服务的 webhook 集成的跨所有警报的统一警报有效负载。 [了解常见的警报的架构定义。](https://aka.ms/commonAlertSchemaDefinitions)
+> 还可以使用[通用警报架构](https://aka.ms/commonAlertSchemaDocs)进行 Webhook 集成。 常见的警报架构提供了在 Azure Monitor 中的所有警报服务之间具有单个可扩展和统一的警报负载的优点。请注意，公用警报架构不会 honour 日志警报的自定义 JSON 选项。 如果选择了此选项，则它会与常见的警报架构负载相遵从，而不考虑在警报规则级别执行的自定义。 [了解常见的警报架构定义。](https://aka.ms/commonAlertSchemaDefinitions)
 
 ## <a name="webhook-actions"></a>Webhook 操作
 
-使用 Webhook 操作可通过单个 HTTP POST 请求调用外部进程。  被调用的服务应支持 Webhook，并确定将如何使用它收到的任何负载。    
+使用 Webhook 操作可通过单个 HTTP POST 请求调用外部进程。 被调用的服务应支持 Webhook，并确定将如何使用接收的任何有效负载。
 
-Webhook 操作需要下表中的属性：
+Webhook 操作需要下表中的属性。
 
 | 属性 | 描述 |
 |:--- |:--- |
-| Webhook URL |Webhook 的 URL。 |
-| 自定义 JSON 负载 |如果在创建警报期间选择了此选项，请自定义要通过 webhook 发送的有效负载。 [管理日志警报](alerts-log.md)中提供了详细信息 |
+| **Webhook URL** |Webhook 的 URL。 |
+| **自定义 JSON 有效负载** |如果在创建警报期间选择了此选项，请自定义要通过 webhook 发送的有效负载。 有关详细信息，请参阅[管理日志警报](alerts-log.md)。|
 
 > [!NOTE]
 > 单击日志警报的“包括 Webhook 的自定义 JSON 有效负载”选项旁边的“查看 Webhook”按钮会显示所提供的自定义的示例 Webhook 有效负载。 它不包含实际数据，也不代表用于日志警报的 JSON 架构。 
 
-Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据）。  默认情况下，有效负载包括下表中的值：可以选择将此负载替换成自己的自定义负载。  在这种情况下，可以使用下表中每个参数的变量，将其值包含在自定义负载中。
+Webhooks 包括 URL 和 JSON 格式的有效负载（即发送到外部服务的数据）。 默认情况下，有效负载包括下表中的值。 可以选择将此负载替换成自己的自定义负载。 在这种情况下，可以使用下表中每个参数的变量，将其值包含在自定义有效负载中。
 
 
-| 参数 | 变量 | 描述 |
+| 参数 | 变量 | 说明 |
 |:--- |:--- |:--- |
-| AlertRuleName |#alertrulename |警报规则的名称。 |
-| 严重性 |#severity |为触发的日志警报设置的严重性。 |
-| AlertThresholdOperator |#thresholdoperator |警报规则的阈值运算符。  *大于*或*小于*。 |
-| AlertThresholdValue |#thresholdvalue |警报规则的阈值。 |
-| LinkToSearchResults |#linktosearchresults |指向 Analytics 门户的链接，该门户会从创建警报的查询返回记录。 |
-| ResultCount |#searchresultcount |搜索结果中的记录数。 |
-| 搜索时间间隔结束时间 |#searchintervalendtimeutc |查询结束时间 (UTC)，格式 - mm/dd/yyyy HH:mm:ss AM/PM。 |
-| 搜索时间间隔 |#searchinterval |警报规则的时间范围，格式 - HH:mm:ss。 |
-| 搜索时间间隔开始时间 |#searchintervalstarttimeutc |查询开始时间 (UTC)，格式 - mm/dd/yyyy HH:mm:ss AM/PM。 
-| SearchQuery |#searchquery |警报规则所使用的日志搜索查询。 |
-| SearchResults |"IncludeSearchResults": true|如果在自定义 JSON Webhook 定义中添加了 "IncludeSearchResults": true 作为顶级属性，则查询以 JSON 表形式返回的记录将限制为前 1,000 条记录。 |
-| WorkspaceID |#workspaceid |Log Analytics 工作区的 ID。 |
-| 应用程序 ID |#applicationid |你的 Application Insight 应用的 ID。 |
-| 订阅 ID |#subscriptionid |用于 Application Insights 的 Azure 订阅的 ID。 
+| *AlertRuleName* |#alertrulename |警报规则的名称。 |
+| *严重性* |#severity |为触发的日志警报设置的严重性。 |
+| *AlertThresholdOperator* |#thresholdoperator |警报规则的阈值运算符，使用“大于”或“小于”。 |
+| *AlertThresholdValue* |#thresholdvalue |警报规则的阈值。 |
+| *LinkToSearchResults* |#linktosearchresults |指向 Analytics 门户的链接，该门户会从创建警报的查询返回记录。 |
+| *LinkToSearchResultsAPI* |#linktosearchresultsapi |链接到 Analytics API，该 API 从创建警报的查询返回记录。 |
+| *LinkToFilteredSearchResultsUI* |#linktofilteredsearchresultsui |指向分析门户的链接，该门户返回按创建警报的维度值组合筛选的查询中的记录。 |
+| *LinkToFilteredSearchResultsAPI* |#linktofilteredsearchresultsapi |链接到 Analytics API，该 API 返回按创建警报的维度值组合筛选的查询中的记录。 |
+| *ResultCount* |#searchresultcount |搜索结果中的记录数。 |
+| 搜索时间间隔结束时间 |#searchintervalendtimeutc |查询结束时间 (UTC)，格式为 mm/dd/yyyy HH:mm:ss AM/PM。 |
+| 搜索时间间隔 |#searchinterval |警报规则的时间范围，格式为 HH:mm:ss。 |
+| 搜索时间间隔开始时间 |#searchintervalstarttimeutc |查询开始时间 (UTC)，格式为 mm/dd/yyyy HH:mm:ss AM/PM。 
+| *SearchQuery* |#searchquery |警报规则所使用的日志搜索查询。 |
+| *SearchResults* |"IncludeSearchResults": true|查询以 JSON 表形式返回的记录，限制为前1000个记录。 "IncludeSearchResults"： true 作为顶级属性添加到自定义 JSON webhook 定义中。 |
+| *Dimensions* |"IncludeDimensions"： true|将该警报作为 JSON 部分触发的维度值组合。 "IncludeDimensions"： true 作为顶级属性添加到自定义 JSON webhook 定义中。 |
+| 警报类型| #alerttype | 配置为[指标度量](alerts-unified-log.md#metric-measurement-alert-rules) 或 [结果数](alerts-unified-log.md#number-of-results-alert-rules)的日志警报规则的类型。|
+| *WorkspaceID* |#workspaceid |Log Analytics 工作区的 ID。 |
+| *应用程序 ID* |#applicationid |Application Insights 应用的 ID。 |
+| *订阅 ID* |#subscriptionid |使用的 Azure 订阅的 ID。 
 
 > [!NOTE]
-> LinkToSearchResults 将参数（如 SearchQuery、搜索时间间隔开始时间和搜索时间间隔结束时间）传递到 Azure 门户的 URL，以便在“Analytics”部分中查看。 Azure 门户的 URI 大小限制约为 2000 个字符，如果参数值超过此限制，将不会打开警报中提供的链接。 用户可手动输入详细信息，以在 Analytics 门户中查看结果，或使用 [Application Insights Analytics REST API ](https://dev.applicationinsights.io/documentation/Using-the-API) 或 [Log Analytics REST API](/rest/api/loganalytics/) 以编程方式检索结果 
+> 提供的链接将 URL 中的参数（如*SearchQuery*、*搜索间隔 StartTime*和*搜索间隔结束时间*）传递到 Azure 门户或 API。
 
-例如，可以指定以下自定义负载，其中包含名为 *text* 的单一参数。  该 Webhook 调用的服务将需要此参数。
+例如，可以指定以下自定义负载，其中包含名为 *text* 的单一参数。 此 Webhook 调用的服务需要此参数。
 
 ```json
 
@@ -66,7 +69,7 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
         "text":"#alertrulename fired with #searchresultcount over threshold of #thresholdvalue."
     }
 ```
-此示例的有效负载会在发送到 Webhook 时解析如下。
+此示例的有效负载会在发送到 Webhook 时解析如下：
 
 ```json
     {
@@ -75,96 +78,154 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
 ```
 由于自定义 Webhook 中的所有变量都必须在 JSON enclosure（如“#searchinterval”）内指定，因此生成的 Webhook 在 enclosure（如“00:05:00”）内也会有可变数据。
 
-若要在自定义有效负载中包含搜索结果，请确保在 json 有效负载中将 **IncludeSearchResults** 设置为顶级属性。 
+若要在自定义有效负载中包含搜索结果，请确保在 JSON 有效负载中将 **IncludeSearchResults** 设置为顶级属性。 
 
 ## <a name="sample-payloads"></a>示例有效负载
-此部分显示用于日志警报的 Webhook 的示例有效负载，包括有效负载是标准有效负载时以及是自定义有效负载时。
+本部分显示用于日志警报的 Webhook 的示例有效负载。 示例有效负载包括有效负载是标准有效负载时以及是自定义有效负载时的示例。
 
 ### <a name="standard-webhook-for-log-alerts"></a>用于日志警报的标准 Webhook 
-这两个示例都声明了仅包含两列和两行的虚拟有效负载。
+这两个示例是仅包含两列和两行的虚拟有效负载。
 
-#### <a name="log-alert-for-azure-log-analytics"></a>Azure Log-Analytics 的日志警报
-下面是用于基于 Log Analytics 的警报的*不带自定义 Json 选项*的标准 Webhook 操作的示例有效负载。
+#### <a name="log-alert-for-log-analytics"></a>Log Analytics 的日志警报
+以下示例有效负载适用于基于 Log Analytics 的警报使用的不带自定义 JSON 选项的标准 Webhook 操作。
 
 ```json
 {
-    "WorkspaceId":"12345a-1234b-123c-123d-12345678e",
-    "AlertRuleName":"AcmeRule","SearchQuery":"search *",
-    "SearchResult":
-        {
-        "tables":[
-                    {"name":"PrimaryResult","columns":
-                        [
-                        {"name":"$table","type":"string"},
-                        {"name":"Id","type":"string"},
-                        {"name":"TimeGenerated","type":"datetime"}
-                        ],
-                    "rows":
-                        [
-                            ["Fabrikam","33446677a","2018-02-02T15:03:12.18Z"],
-                            ["Contoso","33445566b","2018-02-02T15:16:53.932Z"]
-                        ]
-                    }
-                ]
-        },
+    "SubscriptionId": "12345a-1234b-123c-123d-12345678e",
+    "AlertRuleName": "AcmeRule",
+    "SearchQuery": "Perf | where ObjectName == \"Processor\" and CounterName == \"% Processor Time\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer",
     "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
     "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
     "AlertThresholdOperator": "Greater Than",
     "AlertThresholdValue": 0,
     "ResultCount": 2,
     "SearchIntervalInSeconds": 3600,
-    "LinkToSearchResults": "https://workspaceID.portal.mms.microsoft.com/#Workspace/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
-    "Description": null,
-    "Severity": "Warning"
- }
+    "LinkToSearchResults": "https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+    "LinkToFilteredSearchResultsUI": "https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+    "LinkToSearchResultsAPI": "https://api.loganalytics.io/v1/workspaces/workspaceID/query?query=Heartbeat&timespan=2020-05-07T18%3a11%3a51.0000000Z%2f2020-05-07T18%3a16%3a51.0000000Z",
+    "LinkToFilteredSearchResultsAPI": "https://api.loganalytics.io/v1/workspaces/workspaceID/query?query=Heartbeat&timespan=2020-05-07T18%3a11%3a51.0000000Z%2f2020-05-07T18%3a16%3a51.0000000Z",
+    "Description": "log alert rule",
+    "Severity": "Warning",
+    "AffectedConfigurationItems": [
+        "INC-Gen2Alert"
+    ],
+    "Dimensions": [
+        {
+            "name": "Computer",
+            "value": "INC-Gen2Alert"
+        }
+    ],
+    "SearchResult": {
+        "tables": [
+            {
+                "name": "PrimaryResult",
+                "columns": [
+                    {
+                        "name": "$table",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Computer",
+                        "type": "string"
+                    },
+                    {
+                        "name": "TimeGenerated",
+                        "type": "datetime"
+                    }
+                ],
+                "rows": [
+                    [
+                        "Fabrikam",
+                        "33446677a",
+                        "2018-02-02T15:03:12.18Z"
+                    ],
+                    [
+                        "Contoso",
+                        "33445566b",
+                        "2018-02-02T15:16:53.932Z"
+                    ]
+                ]
+            }
+        ]
+    },
+    "WorkspaceId": "12345a-1234b-123c-123d-12345678e",
+    "AlertType": "Metric measurement"
+}
  ```
 
 > [!NOTE]
 > 如果在 Log Analytics 上针对日志警报[切换了 API 首选项](alerts-log-api-switch.md)，则“严重性”字段值可能会更改。
 
 
-#### <a name="log-alert-for-azure-application-insights"></a>Application Insights 的日志警报
-下面是用于基于 Application Insights 的日志警报时*不带自定义 Json 选项*的标准 Webhook 的示例有效负载。
+#### <a name="log-alert-for-application-insights"></a>Application Insights 的日志警报
+以下示例有效负载是适用于基于 Application Insights 的日志警报使用的不带自定义 JSON 选项的标准 Webhook。
     
 ```json
 {
-    "schemaId":"Microsoft.Insights/LogAlert","data":
-    { 
-    "SubscriptionId":"12345a-1234b-123c-123d-12345678e",
-    "AlertRuleName":"AcmeRule","SearchQuery":"search *",
-    "SearchResult":
-        {
-        "tables":[
-                    {"name":"PrimaryResult","columns":
+    "schemaId": "Microsoft.Insights/LogAlert",
+    "data": {
+        "SubscriptionId": "12345a-1234b-123c-123d-12345678e",
+        "AlertRuleName": "AcmeRule",
+        "SearchQuery": "requests | where resultCode == \"500\" | summarize AggregatedValue = Count by bin(Timestamp, 5m), IP",
+        "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
+        "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
+        "AlertThresholdOperator": "Greater Than",
+        "AlertThresholdValue": 0,
+        "ResultCount": 2,
+        "SearchIntervalInSeconds": 3600,
+        "LinkToSearchResults": "https://portal.azure.com/AnalyticsBlade/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+        "LinkToFilteredSearchResultsUI": "https://portal.azure.com/AnalyticsBlade/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+        "LinkToSearchResultsAPI": "https://api.applicationinsights.io/v1/apps/0MyAppId0/metrics/requests/count",
+        "LinkToFilteredSearchResultsAPI": "https://api.applicationinsights.io/v1/apps/0MyAppId0/metrics/requests/count",
+        "Description": null,
+        "Severity": "3",
+        "Dimensions": [
+            {
+                "name": "IP",
+                "value": "1.1.1.1"
+            }
+        ],
+        "SearchResult": {
+            "tables": [
+                {
+                    "name": "PrimaryResult",
+                    "columns": [
+                        {
+                            "name": "$table",
+                            "type": "string"
+                        },
+                        {
+                            "name": "Id",
+                            "type": "string"
+                        },
+                        {
+                            "name": "Timestamp",
+                            "type": "datetime"
+                        }
+                    ],
+                    "rows": [
                         [
-                        {"name":"$table","type":"string"},
-                        {"name":"Id","type":"string"},
-                        {"name":"TimeGenerated","type":"datetime"}
+                            "Fabrikam",
+                            "33446677a",
+                            "2018-02-02T15:03:12.18Z"
                         ],
-                    "rows":
                         [
-                            ["Fabrikam","33446677a","2018-02-02T15:03:12.18Z"],
-                            ["Contoso","33445566b","2018-02-02T15:16:53.932Z"]
+                            "Contoso",
+                            "33445566b",
+                            "2018-02-02T15:16:53.932Z"
                         ]
-                    }
-                ]
+                    ]
+                }
+            ]
         },
-    "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
-    "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
-    "AlertThresholdOperator": "Greater Than",
-    "AlertThresholdValue": 0,
-    "ResultCount": 2,
-    "SearchIntervalInSeconds": 3600,
-    "LinkToSearchResults": "https://analytics.applicationinsights.io/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
-    "Description": null,
-    "Severity": "3",
-    "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1"
+        "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1",
+        "AlertType": "Metric measurement"
     }
 }
 ```
 
 #### <a name="log-alert-with-custom-json-payload"></a>带自定义 JSON 有效负载的日志警报
-例如，若要创建只包含警报名称和搜索结果的自定义负载，则可以使用以下代码： 
+例如，若要创建只包含警报名称和搜索结果的自定义有效负载，可以使用以下代码： 
 
 ```json
     {
@@ -173,12 +234,12 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
     }
 ```
 
-下面是用于任何日志警报的自定义 Webhook 操作的示例有效负载。
+下面是用于任何日志警报的自定义 Webhook 操作的示例有效负载：
     
 ```json
     {
     "alertname":"AcmeRule","IncludeSearchResults":true,
-    "SearchResult":
+    "SearchResults":
         {
         "tables":[
                     {"name":"PrimaryResult","columns":
@@ -200,9 +261,9 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
 
 
 ## <a name="next-steps"></a>后续步骤
-- 了解 [Azure 警报中的日志警报](alerts-unified-log.md)
-- 了解如何[在 Azure 中管理日志警报](alerts-log.md)
-- 创建和管理 [Azure 门户中的操作组](action-groups.md)
-- 详细了解 [Application Insights](../../azure-monitor/app/analytics.md)
+- 了解 [Azure 警报中的日志警报](alerts-unified-log.md)。
+- 了解如何[管理 Azure 中的日志警报](alerts-log.md)。
+- 创建和管理 [Azure 中的操作组](action-groups.md)。
+- 详细了解 [Application Insights](../../azure-monitor/app/analytics.md)。
 - 了解有关[日志查询](../log-query/log-query-overview.md)的详细信息。 
 

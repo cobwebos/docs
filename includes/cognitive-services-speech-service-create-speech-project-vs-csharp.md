@@ -2,49 +2,73 @@
 author: wolfma61
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/13/2018
+ms.date: 08/30/2019
 ms.author: wolfma
-ms.openlocfilehash: afe6f1493c7fa8272c67f23d6708ad6e4eea9381
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: c7332177795a45331749225e0f3dc3856e28a6a2
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145505"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "71327063"
 ---
-1. 启动 Visual Studio 2017。
+若要创建 Visual Studio 项目用于 Windows 开发，需要创建项目，安装用于 .NET 桌面开发的 Visual Studio，安装语音 SDK，然后选择目标体系结构。
 
-1. 在 Visual Studio 的菜单栏中，选择“工具”>“获取工具”，确保“.NET 桌面开发”工作负荷可用。   如果工作负荷尚未安装，请标记该复选框，然后单击“修改”以启动安装。  下载和安装过程可能需要几分钟。
+### <a name="create-the-project-and-add-the-workload"></a>创建项目并添加工作负荷
 
-   如果“.NET 桌面开发”旁边的复选框已选中，现在就可以关闭对话框。 
+若要开始，请在 Visual Studio 中创建项目，并确保为 .NET 桌面开发安装了 Visual Studio：
 
-   ![启用 .NET 桌面开发](~/articles/cognitive-services/speech-service/media/sdk/vs-enable-net-desktop-workload.png)
+1. 打开 Visual Studio 2019。
 
-1. 接下来，让我们创建一个项目。 从菜单栏中选择“文件”>“新建”>“项目”  。 当对话框显示以后，请在左面板中展开以下部分：“已安装”>“Visual C#”>“Windows 桌面”，然后选择“控制台应用(.NET Framework)”   。 将此项目命名为 *helloworld*。
+1. 在“开始”窗口中，选择“创建新项目”****。 
 
-    ![创建 Visual C# 控制台应用 (.NET Framework)](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-01-new-console-app.png "Create Visual C# Console App (.NET Framework)")
+1. 在“创建新项目”窗口中，选择“控制台应用(.NET Framework)”，然后选择“下一步”。************
 
-1. 设置项目以后，需安装[语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)并在代码中引用它。 找到解决方案资源管理器，右键单击“helloworld”。 在菜单中选择“管理 NuGet 包...”。 
+1. 在“配置新项目”窗口中的“项目名称”内输入 *helloworld*，在“位置”中选择或创建目录路径，然后选择“创建”。****************
 
-   ![右键单击“为解决方案管理 NuGet 包”](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-02-manage-nuget-packages.png "为解决方案管理 NuGet 包")
+1. 从 Visual Studio 菜单栏中选择 "**工具** > " "**获取工具和功能**"，这将打开 Visual Studio 安装程序并显示 "**修改**" 对话框。
 
-1. 在 NuGet 包管理器  的右上角找到“包源”下拉列表，确保“nuget.org”已选中  。 然后选择“浏览”，搜索  `Microsoft.CognitiveServices.Speech` 包并安装最新的稳定版本。
+1. 检查“.NET 桌面开发”工作负荷是否可用。**** 如果尚未安装该工作负荷，请选中它旁边的复选框，然后选择“修改”以启动安装。**** 下载和安装过程可能需要几分钟。
 
-   ![安装 Microsoft.CognitiveServices.Speech NuGet 包](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-03-nuget-install-1.0.0.png "安装 NuGet 包")
+   如果已选中“.NET 桌面开发”旁边的复选框，请选择“关闭”退出对话框。********
+
+   ![启用 .NET 桌面开发](../articles/cognitive-services/speech-service/media/sdk/vs-enable-net-desktop-workload.png)
+
+1. 关闭 Visual Studio 安装程序。
+
+### <a name="install-the-speech-sdk"></a>安装语音 SDK
+
+下一步是安装[语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)，以便可以在代码中引用它。
+
+1. 在解决方案资源管理器中右键单击“helloworld”项目，然后选择“管理 NuGet 包”显示 NuGet 包管理器。  
+
+   ![NuGet 包管理器](../articles/cognitive-services/speech-service/media/sdk/vs-nuget-package-manager.png)
+
+1. 在右上角找到“包源”**** 下拉框，并确保选择了 **nuget.org**。
+
+1. 在左上角，选择“浏览”  。
+
+1. 在搜索框中，键入 *Microsoft.CognitiveServices.Speech* 并按 **Enter**。
+
+1. 在搜索结果中选择“Microsoft.CognitiveServices.Speech”包，然后选择“安装”以安装最新稳定版本。********
+
+   ![安装 Microsoft.CognitiveServices.Speech NuGet 包](../articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-03-nuget-install-1.0.0.png)
 
 1. 接受所有协议和许可证，开始安装。
 
-   ![接受许可证](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-04-nuget-license.png "Accept the license")
+   安装此包后，“包管理器控制台”  窗口中将显示一条确认消息。
 
-    安装此包后，在包管理器控制台中会显示一条确认消息。
+### <a name="choose-the-target-architecture"></a>选择目标体系结构
 
-1. 下一步是创建平台配置，使之与用来生成并运行控制台应用程序的计算机的体系结构相匹配。 在菜单栏中，选择“生成” > “配置管理器...”   。
+现在，若要生成并运行控制台应用程序，请创建与计算机体系结构匹配的平台配置。
 
-    ![启动配置管理器](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-05-cfg-manager-click.png "Launch the configuration manager")
+1. 从菜单栏中，选择 "**生成** > **Configuration Manager**"。 此时将显示“配置管理器”**** 对话框。
 
-1. 在“配置管理器”对话框中找到“活动解决方案平台”下拉列表，选择“新建”    。
+   ![“配置管理器”对话框](../articles/cognitive-services/speech-service/media/sdk/vs-configuration-manager-dialog-box.png)
 
-    ![在配置管理器窗口下添加新平台](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-06-cfg-manager-new.png "Add a new platform under the configuration manager window")
+1. 在“活动解决方案平台”下拉框中，选择“新建”********。 此时将显示“新建解决方案平台”**** 对话框。
 
-1. 如果运行的是 64 位 Windows，则当系统提示“键入或选择新平台”时，键入 `x64`。  如果运行的是 32 位 Windows，则选择 `x86`。 完成后，单击“确定”  。
+1. 在“键入或选择新平台”**** 下拉框中：
+   - 如果运行的是 64 位 Windows，请选择 **x64**。
+   - 如果运行的是 32 位 Windows，请选择 **x86**。
 
-    ![在 64 位 Windows 上，添加名为“x64”的新平台](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-07-cfg-manager-add-x64.png "添加 x64 平台")
+1. 选择“确定”，然后选择“关闭”。********

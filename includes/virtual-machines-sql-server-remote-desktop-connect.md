@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: fe5daa38c43723c85fb464e191ee4a3e85700e0b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66165650"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "67172906"
 ---
 1. 创建并运行 Azure 虚拟机以后，单击 Azure 门户中的“虚拟机”图标即可查看 VM。
 

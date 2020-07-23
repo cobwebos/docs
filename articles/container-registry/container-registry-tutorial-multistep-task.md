@@ -1,19 +1,15 @@
 ---
-title: 教程 - 多步骤容器任务 - Azure 容器注册表任务
+title: 教程 - 多步骤 ACR 任务
 description: 本教程介绍如何配置一个 Azure 容器注册表任务，以便在向 Git 存储库提交源代码时，在云中自动触发多步骤工作流来生成、运行和推送容器映像。
-services: container-registry
-author: dlepow
-ms.service: container-registry
 ms.topic: tutorial
 ms.date: 05/09/2019
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 09b8e5d31bc6a4ec24633889920e2768bb7ce538
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: ff32b3095638af6b2b246b99a5dc9219e0020782
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546551"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "78402300"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>教程：提交源代码时在云中运行多步骤容器工作流
 
@@ -73,7 +69,9 @@ steps:
 
 首先，使用适用于环境的值填充这些 shell 环境变量。 此步骤并非必须执行的步骤，但它能让在此教程中执行多个 Azure CLI 命令更容易。 如果未填充这些环境变量，则每当示例命令中出现每个值，都必须手动替换该值。
 
-```azurecli-interactive
+[![嵌入式启动](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
+
+```console
 ACR_NAME=<registry-name>        # The name of your Azure container registry
 GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
@@ -86,16 +84,15 @@ az acr task create \
     --registry $ACR_NAME \
     --name example1 \
     --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
-    --branch master \
     --file taskmulti.yaml \
     --git-access-token $GIT_PAT
 ```
 
-此任务指定，每当向 `--context` 指定的主分支存储库提交代码时，ACR 任务都要基于该分支中的代码运行该多步骤任务。 存储库根目录中的 `--file` 指定的 YAML 文件将定义步骤。 
+此任务指定，每当向 `--context` 指定的主分支存储库提交代码时，ACR 任务都要基于该分支中的代码运行该多步骤任务。  存储库根目录中的 `--file` 指定的 YAML 文件将定义步骤。 
 
 成功的 [az acr task create][az-acr-task-create] 命令的输出应如下所示：
 
-```console
+```output
 {
   "agentConfiguration": {
     "cpu": 2
@@ -160,7 +157,7 @@ az acr task run --registry $ACR_NAME --name example1
 
 默认情况下，执行此命令时，`az acr task run` 命令会将日志流式传输到控制台。 输出显示每个任务步骤的运行进度。 以下输出经过简化，只显示关键步骤。
 
-```console
+```output
 Queued a run with ID: cf19
 Waiting for an agent...
 2019/05/03 03:03:31 Downloading source code...
@@ -220,15 +217,15 @@ Run ID: cf19 was successful after 18s
 
 通过手动运行任务对其进行测试后，可通过更改源代码手动触发该任务。
 
-首先，确保目录中包含[存储库][sample-repo]的本地克隆：
+首先，确保你位于包含[存储库][sample-repo]的本地克隆的目录中：
 
-```azurecli-interactive
+```console
 cd acr-build-helloworld-node
 ```
 
 接下来执行以下命令，创建新文件，并将其提交和推送给你在 GitHub 上的存储库分支：
 
-```azurecli-interactive
+```console
 echo "Hello World!" > hello.txt
 git add hello.txt
 git commit -m "Testing ACR Tasks"
@@ -237,8 +234,7 @@ git push origin master
 
 执行 `git push` 命令时可能需要提供 GitHub 凭据。 提供 GitHub 用户名并输入之前为密码创建的个人访问令牌 (PAT)。
 
-```console
-$ git push origin master
+```azurecli-interactive
 Username for 'https://github.com': <github-username>
 Password for 'https://githubuser@github.com': <personal-access-token>
 ```
@@ -251,8 +247,7 @@ az acr task logs --registry $ACR_NAME
 
 输出结果类似于以下内容，显示当前执行（或最近执行）的任务：
 
-```console
-$ az acr task logs --registry $ACR_NAME
+```output
 Showing logs of the last created run.
 Run ID: cf1d
 
@@ -271,9 +266,7 @@ az acr task list-runs --registry $ACR_NAME --output table
 
 该命令产生的输出应如下所示。 将显示 ACR 任务已执行的运行，并在最近执行的任务的 TRIGGER 列中显示“Git Commit”：
 
-```console
-$ az acr task list-runs --registry $ACR_NAME --output table
-
+```output
 RUN ID    TASK       PLATFORM    STATUS     TRIGGER    STARTED               DURATION
 --------  ---------  ----------  ---------  ---------  --------------------  ----------
 cf1d      example1   linux       Succeeded  Commit     2019-05-03T04:16:44Z  00:00:37
@@ -330,8 +323,7 @@ az acr task create \
     --registry $ACR_NAME \
     --name example2 \
     --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
-    --branch master \
-    --file taskmulti-image.yaml \
+    --file taskmulti-multiregistry.yaml \
     --git-access-token $GIT_PAT \
     --set regDate=mycontainerregistrydate.azurecr.io
 ```
@@ -356,17 +348,17 @@ az acr task credential add --name example2 \
 
 ### <a name="test-the-multi-step-workflow"></a>测试多步骤工作流
 
-与在前面的示例中一样，若要测试多步骤任务，请执行 [az acr task run][az-acr-task-run] 命令手动将其触发。 若要通过向 Git 存储库提交代码来触发任务，请参阅[通过提交触发生成](#trigger-a-build-with-a-commit)部分。
+与前面的示例一样，若要测试多步骤任务，请执行 [az acr task run][az-acr-task-run] 命令手动将其触发。 若要通过向 Git 存储库提交代码来触发任务，请参阅[通过提交触发生成](#trigger-a-build-with-a-commit)部分。
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name example2
 ```
 
-默认情况下，执行此命令时，`az acr task run` 命令会将日志流式传输到控制台。 与前面一样，输出将显示每个任务步骤的运行进度。 该输出经过简化，只显示关键步骤
+默认情况下，执行此命令时，`az acr task run` 命令会将日志流式传输到控制台。 与前面一样，输出将显示每个任务步骤的运行进度。 该输出已经过简化，只显示关键步骤。
 
 输出：
 
-```console
+```output
 Queued a run with ID: cf1g
 Waiting for an agent...
 2019/05/03 04:33:39 Downloading source code...

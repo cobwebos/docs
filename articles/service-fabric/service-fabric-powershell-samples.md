@@ -1,40 +1,28 @@
 ---
-title: Azure PowerShell 示例 - Service Fabric | Microsoft Docs
-description: Azure PowerShell 示例 - Service Fabric
-services: service-fabric
-documentationcenter: service-fabric
-author: athinanthny
-manager: chackdan
-editor: ''
-tags: ''
-ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
-ms.service: service-fabric
-ms.devlang: na
+title: Azure PowerShell 示例 - Service Fabric
+description: 了解如何使用 Powershell 创建和管理 Azure Service Fabric 群集、应用和服务。
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: service-fabric
 ms.date: 11/29/2018
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 8a3a80fb6ae20eddc3237d986ecda1d4cb5b65a5
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 4b85fd604eb27f0963af882b41e823d800005dda
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666029"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187092"
 ---
-# <a name="azure-powershell-samples"></a>Azure PowerShell 示例
+# <a name="azure-service-fabric-powershell-samples"></a>Azure Service Fabric PowerShell 示例
 
 下表包含用于创建和管理 Service Fabric 群集、应用程序和服务的 PowerShell 脚本示例的链接。
 
-[!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-powershell.md)]
+[!INCLUDE [links to azure CLI and service fabric CLI](../../includes/service-fabric-powershell.md)]
 
-| | |
+| Script | 说明 |
 |-|-|
 | **创建群集** ||
 | [创建群集 (Azure)](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)| 创建 Azure Service Fabric 群集。 |
 | **管理群集、节点和基础结构** ||
-| [添加应用程序证书](./scripts/service-fabric-powershell-add-application-certificate.md)| 将应用程序 X.509 证书添加到群集中的所有节点。 |
+| [添加应用程序证书](./scripts/service-fabric-powershell-add-application-certificate.md)| 创建密钥保管库的 X509 证书，并将其部署到群集中的虚拟机规模集。 |
 | [更新群集 VM 上的 RDP 端口范围](./scripts/service-fabric-powershell-change-rdp-port-range.md)|更改已部署群集中群集节点 VM 上的 RDP 端口范围。|
 | [更新群集节点 VM 的管理员用户和密码](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md) | 更新群集节点 VM 的管理员用户名和密码。 |
 | [打开负载均衡器的端口](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) | 在 Azure 负载均衡器中打开应用程序端口，以允许特定端口上的入站流量。 |

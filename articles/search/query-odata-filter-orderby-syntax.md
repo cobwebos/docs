@@ -1,13 +1,13 @@
 ---
-title: 适用于筛选器和 order-by 子句的 OData 表达式语法 - Azure 搜索
-description: 适用于 Azure 搜索查询的筛选器和 order-by 表达式 OData 语法。
-ms.date: 05/02/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
+title: OData 语言概述
+titleSuffix: Azure Cognitive Search
+description: Azure 认知搜索查询的筛选器、select 和 order-by 的 OData 语言概述。
+manager: nitinme
+author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 02/10/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,309 +19,230 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b1f77a9e0a3308098e5f6c699f2fc79e5c437f17
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 07f3e270e799753a582227abe53223bd05755eb5
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024264"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165203"
 ---
-# <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>Azure 搜索中适用于筛选器和 order-by 子句的 OData 表达式语法
+# <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Azure 认知搜索中 `$filter`、`$orderby` 和 `$select` 的 OData 语言概述
 
-Azure 搜索支持一组适用于 **$filter** 和 **$orderby** 表达式的 OData 表达式语法。 筛选表达式在查询分析期间进行求值，将搜索范围限制为特定字段或添加索引扫描期间使用的匹配条件。 Order-by 表达式作为后续处理步骤应用到结果集。 筛选器和 order-by 表达式都包含在查询请求中，遵循独立于**搜索**参数中使用的[简单](query-simple-syntax.md)或[完整](query-lucene-syntax.md)查询语法的 OData 语法。 本文提供筛选器和排序表达式中使用的 OData 表达式的参考文档。
+Azure 认知搜索支持一组适用于 **$filter**、 **$orderby** 和 **$select** 表达式的 OData 表达式语法。 筛选表达式在查询分析期间进行求值，将搜索范围限制为特定字段或添加索引扫描期间使用的匹配条件。 Order-by 表达式作为后处理步骤应用于结果集，对返回的文档进行排序。 Select 表达式确定要包含在结果集中的文档字段。 这些表达式的语法不同于**搜索**参数中使用的[简单](query-simple-syntax.md)或[完整](query-lucene-syntax.md)查询语法，但引用字段的语法中存在一定的重叠。
 
-## <a name="filter-syntax"></a>筛选器语法
+本文概述筛选器、order-by 和 select 表达式中使用的 OData 表达式语言。 该语言按“自下而上”的顺序演示，从最基本的元素及其上的构建基块开始。 有单独的文章会介绍每个参数的顶级语法：
 
-**$filter** 表达式可以作为完全表达的查询独立执行，或用于优化具有其他参数的查询。 以下示例介绍了几个关键方案。 在第一个示例中，筛选器是查询的物质。
+- [$filter 语法](search-query-odata-filter.md)
+- [$orderby 语法](search-query-odata-orderby.md)
+- [$select 语法](search-query-odata-select.md)
 
+有些 OData 表达式非常简单，而有些 OData 表达式则非常复杂，但它们全部共享通用的元素。 Azure 认知搜索中的 OData 表达式的最基本组成部分包括：
 
-```POST
-POST /indexes/hotels/docs/search?api-version=2019-05-06
-    {
-      "filter": "(baseRate ge 60 and baseRate lt 300) or hotelName eq 'Fancy Stay'"
-    }
-```
+- **字段路径**：引用索引的特定字段。
+- **常量**：特定数据类型的文本值。
 
-另一个常见用例是组合使用筛选器和 facet，其中筛选器根据用户驱动的 facet 导航选择减少查询外围应用：
+> [!NOTE]
+> Azure 认知搜索中的术语在某些方面不同于 [OData 标准](https://www.odata.org/documentation/)。 Azure 认知搜索中所谓的**字段**在 OData 中称为**属性**，类似地，**字段路径**在 OData 中称为**属性路径**。 Azure 认知搜索中包含**文档**的**索引**在 OData 中更普遍地称为包含**实体**的**实体集**。 本参考文档使用 Azure 认知搜索的术语。
 
-```POST
-POST /indexes/hotels/docs/search?api-version=2019-05-06
-    {
-      "search": "test",
-      "facets": [ "tags", "baseRate,values:80|150|220" ],
-      "filter": "rating eq 3 and category eq 'Motel'"
-    }
-```
+## <a name="field-paths"></a>字段路径
 
-### <a name="filter-operators"></a>筛选器运算符  
+下面的 EBNF ([扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义字段路径的语法。
 
-- 逻辑运算符（and、or、not）。  
-
-- 比较表达式 (`eq, ne, gt, lt, ge, le`)。 字符串比较区分大小写。  
-
-- 受支持的[实体数据模型](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDM) 类型的常量（有关受支持类型的列表，请参阅[支持的数据类型 [Azure 搜索]](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)）。 不支持集合类型的常量。  
-
-- 对字段名称的引用。 仅 `filterable` 字段可用于筛选表达式。  
-
-- 没有参数的 `any`。 这将测试 `Collection(Edm.String)` 类型的字段是否包含任何元素。  
-
-- 具有有限 lambda 表达式支持的 `any` 和 `all`。 
-    
-  -   `Collection(Edm.String)` 类型的字段支持 `any/all`。 
-    
-  -   `any` 只能与简单的相等表达式或 `search.in` 函数配合使用。 简单表达式包含单一字段和文本值之间的比较，例如，`Title eq 'Magna Carta'`。
-    
-  -   `all` 只能与简单的不等表达式或 `not search.in` 配合使用。   
-
-- 地理空间函数 `geo.distance` 和 `geo.intersects`。 `geo.distance` 函数以千米为单位返回两点之间的距离，一个点是字段，另一个点是作为筛选器一部分传递的常量。 如果给定的点位于给定的多边形范围内（其中该点是字段，多边形指定为作为筛选器一部分传递的常量），`geo.intersects` 函数会返回 true。  
-
-  多边形是二维表面，作为定义边界环的一系列点存储（参见以下示例）。 多边形需要处于闭合状态，这意味着第一个点集和最后一个点集必须相同。 [多边形中的点必须采用逆时针顺序](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)。
-
-  `geo.distance` 在 Azure 搜索中以千米为单位返回距离。 这与支持 OData 地理空间运算的其他服务不同，后者通常以米为单位返回距离。  
-
-  > [!NOTE]  
-  >  如果在筛选器中使用 geo.distance，则必须使用 `lt`、`le`、`gt` 或 `ge` 将函数返回的距离与常量进行比较。 比较距离时不支持使用 `eq` 和 `ne` 运算符。 例如，以下是 geo.distance 的正确用法：`$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`。  
-
-- `search.in` 函数测试给定字符串字段是否等于给定的值列表之一。 它还可以用于 any 或 all，以便将字符串集合字段的单个值与给定的值列表进行比较。 字段与列表中每个值之间的相等性以区分大小写的方式进行确定，这与 `eq` 运算符的方式相同。 因此，`search.in(myfield, 'a, b, c')` 等表达式相当于 `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`，但 `search.in` 的表现会好得多。 
-
-   `search.in` 函数的第一个参数是字符串字段引用（在 `any` 或 `all` 表达式中使用 `search.in` 的情况下，则为字符串集合字段中的范围变量）。 
-  
-   第二个参数是包含值列表的字符串，由空格和/或逗号分隔。 
-  
-   第三个参数是字符串的一个字符串，其中每个字符或此字符串的一部分被视为一个分隔符分析中的第二个参数的值列表时。 如果因为值包含空格和逗号而需要使用这些字符以外的分隔符，可以将可选的第三个参数指定为 `search.in`。 
-
-  > [!NOTE]   
-  > 某些方案需要将字段与大量常量值进行比较。 例如，使用筛选器实现安全剪裁可能需要将文档 ID 字段与请求用户被授予读取访问权限的 ID 列表进行比较。 在此类方案中，我们强烈建议使用 `search.in` 函数，而不要使用更复杂的相等表达式析取。 例如，使用 `search.in(Id, '123, 456, ...')` 而不是 `Id eq 123 or Id eq 456 or ....`。 
-  >
-  > 如果使用 `search.in`，则当第二个参数包含数百个或数千个值的列表时，可以获得次秒级响应时间。 请注意，尽管仍然受到最大请求大小的限制，但可以传递给 `search.in` 的项数没有明确限制。 但是，延迟会随着值数量的增长而增加。
-
-- `search.ismatch` 函数将搜索查询作为筛选表达式的一部分进行求值。 与搜索查询匹配的文档将在结果集中返回。 此函数的以下重载可用：
-  - `search.ismatch(search)`
-  - `search.ismatch(search, searchFields)`
-  - `search.ismatch(search, searchFields, queryType, searchMode)`
-
-  其中： 
-  
-  - `search`：搜索查询（采用[简单](query-simple-syntax.md)或[完整](query-lucene-syntax.md)查询语法）。 
-  - `queryType`：“简单”或“完整”，默认为“简单”。 指定 `search` 参数中使用的查询语言。
-  - `searchFields`：要在其中进行搜索的可搜索字段的逗号分隔列表，默认为索引中的所有可搜索字段。    
-  - `searchMode`：“any”或“all”，默认为“any”。 指示必须匹配任意搜索词还是全部搜索词才能将文档视为匹配。
-
-  所有上述参数均相当于对应的[搜索请求参数](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
-
-- 与 `search.ismatch` 函数一样，对于与作为参数传递的搜索查询匹配的文档，`search.ismatchscoring` 函数会返回 true。 它们之间的区别在于，与 `search.ismatchscoring` 查询匹配的文档的相关性分数与文档整体分数有关，而对于 `search.ismatch`，文档分数不会发生更改。 此函数的以下重载可用于与 `search.ismatch` 的参数相同的参数：
-  - `search.ismatchscoring(search)`
-  - `search.ismatchscoring(search, searchFields)`
-  - `search.ismatchscoring(search, searchFields, queryType, searchMode)`
-
-  `search.ismatch` 和 `search.ismatchscoring` 函数互相完全正交，并与筛选器代数的其余部分完全正交。 这意味着两个函数可用于同一筛选表达式。 
-
-### <a name="geospatial-queries-and-polygons-spanning-the-180th-meridian"></a>跨越 180 度经线的地理空间查询和多边形  
- 对于许多地理空间查询库，构建包含 180 度经线（国际日期变更线线附近）的查询要么被禁止，要么需要变通方法，例如将多边形拆分为两个，子午线两侧各一个。  
-
- 在 Azure 搜索中，如果查询形状为矩形并且坐标沿经度和纬度方向与网格布局对齐（例如，`geo.intersects(location, geography'POLYGON((179 65,179 66,-179 66,-179 65,179 65))'`），则包含 180 度经度的地理空间查询将按预期工作。 否则，对于非矩形的形状或未对齐的形状，请考虑使用拆分多边形方法。  
-
-<a name="bkmk_limits"></a>
-
-## <a name="filter-size-limitations"></a>筛选器大小限制 
-
- 可以发送到 Azure 搜索的筛选表达式的大小和复杂性存在限制。 限制大致基于筛选器表达式中的子句数。 根据经验，如果有数百个子句，则就存在达到限制的风险。 我们建议正确设计应用程序，使之不会生成大小不受限制的筛选器。  
-
-
-## <a name="filter-examples"></a>筛选器示例  
-
- 查找小于 200 美元信用额度在 4 或更高分级的基本价格的所有酒店：  
+<!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
 ```
-$filter=baseRate lt 200.0 and rating ge 4
+field_path ::= identifier('/'identifier)*
+
+identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 ```
 
- 查找除“Roach Motel”以外的自 2010 年以来经过翻修的所有酒店：  
+下面还提供了交互式语法图：
 
-```
-$filter=hotelName ne 'Roach Motel' and lastRenovationDate ge 2010-01-01T00:00:00Z
-```
+> [!div class="nextstepaction"]
+> [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#field_path)
 
- 查找基本费率小于 200 美元自 2010 年的日期时间文字，其中包含太平洋标准时间的时区信息已翻新的所有酒店：  
+> [!NOTE]
+> 请参阅[适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
 
-```
-$filter=baseRate lt 200 and lastRenovationDate ge 2010-01-01T00:00:00-08:00
-```
+字段路径由斜杠分隔的一个或多个**标识符**组成。 每个标识符是必须以 ASCII 字母或下划线开头的一系列字符，只能包含 ASCII 字母、数字或下划线。 字母可以采用大写或小写。
 
- 查找拥有停车场且不允许吸烟的所有酒店：  
+标识符可以引用字段的名称，或者引用筛选器的[集合表达式](search-query-odata-collection-operators.md)上下文中的某个**范围变量**（`any` 或 `all`）。 范围变量类似于表示集合的当前元素的循环变量。 对于复杂集合，该变量表示某个对象，正因如此，你可以使用字段路径来引用变量的子字段。 这类似于许多编程语言中的点表示法。
 
-```
-$filter=parkingIncluded and not smokingAllowed
-```
+下表显示了字段路径的示例：
 
- \- 或 -  
+| 字段路径 | 说明 |
+| --- | --- |
+| `HotelName` | 引用索引的顶级字段 |
+| `Address/City` | 引用索引中复杂字段的 `City` 子字段；在此示例中，`Address` 的类型为 `Edm.ComplexType` |
+| `Rooms/Type` | 引用索引中复杂集合字段的 `Type` 子字段；在此示例中，`Rooms` 的类型为 `Collection(Edm.ComplexType)` |
+| `Stores/Address/Country` | 引用索引中复杂集合字段的 `Address` 子字段的 `Country` 子字段；在此示例中，`Stores` 的类型为 `Collection(Edm.ComplexType)`，`Address` 的类型为 `Edm.ComplexType` |
+| `room/Type` | 引用 `room` 范围变量的 `Type` 子字段（例如，在筛选表达式 `Rooms/any(room: room/Type eq 'deluxe')` 中） |
+| `store/Address/Country` | 引用 `store` 范围变量的 `Address` 子字段的 `Country` 子字段（例如，在筛选表达式 `Stores/any(store: store/Address/Country eq 'Canada')` 中） |
 
-```
-$filter=parkingIncluded eq true and smokingAllowed eq false
-```
+字段路径的含义因上下文而异。 在筛选器中，字段路径引用当前文档中某个字段的*单个实例*的值。 在其他上下文中（例如 **$orderby**、 **$select**，或[完整 Lucene 语法中的字段搜索](query-lucene-syntax.md#bkmk_fields)），字段路径引用该字段本身。 这种差异会根据你在筛选器中使用字段路径的方式而产生一些后果。
 
- 查找等级为豪华或包含停车场且评分为 5 分的所有酒店：  
+以字段路径 `Address/City` 为例。 在筛选器中，此字段路径引用当前文档的单个城市，例如“旧金山”。 相比之下，`Rooms/Type` 引用许多客房的 `Type` 子字段（例如，“标准”表示第一间客房，“豪华”表示第二间客房，等等）。 由于 `Rooms/Type` 不引用子字段 `Type` 的*单个实例*，因此不能直接在筛选器中使用。 若要根据客房类型进行筛选，请使用包含范围变量的 [Lambda 表达式](search-query-odata-collection-operators.md)，如下所示：
 
-```
-$filter=(category eq 'Luxury' or parkingIncluded eq true) and rating eq 5
-```
-
- 查找带有“wifi”标签的所有酒店（其中每家酒店都将标签存储在 Collection(Edm.String) 字段中）：  
-
-```
-$filter=tags/any(t: t eq 'wifi')
+```odata
+Rooms/any(room: room/Type eq 'deluxe')
 ```
 
- 查找没有“motel”标签的所有酒店：  
+在此示例中，范围变量 `room` 显示在 `room/Type` 字段路径中。 于是，`room/Type` 引用当前文档中当前客房的类型。 这是 `Type` 子字段的单个实例，因此可以直接在筛选器中使用。
+
+### <a name="using-field-paths"></a>使用字段路径
+
+[Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/) 的许多参数中使用字段路径。 下表列出了可以使用字段路径的所有位置，以及字段路径用法的任何限制：
+
+| API | 参数名称 | 限制 |
+| --- | --- | --- |
+| [创建](https://docs.microsoft.com/rest/api/searchservice/create-index)或[更新](https://docs.microsoft.com/rest/api/searchservice/update-index)索引 | `suggesters/sourceFields` | 无 |
+| [创建](https://docs.microsoft.com/rest/api/searchservice/create-index)或[更新](https://docs.microsoft.com/rest/api/searchservice/update-index)索引 | `scoringProfiles/text/weights` | 只能引用**可搜索**字段 |
+| [创建](https://docs.microsoft.com/rest/api/searchservice/create-index)或[更新](https://docs.microsoft.com/rest/api/searchservice/update-index)索引 | `scoringProfiles/functions/fieldName` | 只能引用**可筛选**字段 |
+| [搜索](https://docs.microsoft.com/rest/api/searchservice/search-documents) | 当 `queryType` 为 `full` 时，该参数为 `search` | 只能引用**可搜索**字段 |
+| [搜索](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `facet` | 只能引用**可分面**字段 |
+| [搜索](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `highlight` | 只能引用**可搜索**字段 |
+| [搜索](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `searchFields` | 只能引用**可搜索**字段 |
+| [建议](https://docs.microsoft.com/rest/api/searchservice/suggestions)和[自动完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `searchFields` | 只能引用属于[建议器](index-add-suggesters.md)的字段 |
+| [搜索](https://docs.microsoft.com/rest/api/searchservice/search-documents)、[建议](https://docs.microsoft.com/rest/api/searchservice/suggestions)和[自动完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `$filter` | 只能引用**可筛选**字段 |
+| [搜索](https://docs.microsoft.com/rest/api/searchservice/search-documents)和[建议](https://docs.microsoft.com/rest/api/searchservice/suggestions) | `$orderby` | 只能引用**可排序**字段 |
+| [搜索](https://docs.microsoft.com/rest/api/searchservice/search-documents)、[建议](https://docs.microsoft.com/rest/api/searchservice/suggestions)和[查找](https://docs.microsoft.com/rest/api/searchservice/lookup-document) | `$select` | 只能引用**可检索**字段 |
+
+## <a name="constants"></a>常量
+
+OData 中的常量是给定[实体数据模型](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDM) 类型的文本值。 有关 Azure 认知搜索中受支持类型的列表，请参阅[支持的数据类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)。 不支持集合类型的常量。
+
+下表显示了 Azure 认知搜索支持的每个数据类型的常量示例：
+
+| 数据类型 | 示例常量 |
+| --- | --- |
+| `Edm.Boolean` | `true`, `false` |
+| `Edm.DateTimeOffset` | `2019-05-06T12:30:05.451Z` |
+| `Edm.Double` | `3.14159`、`-1.2e7`、`NaN`、`INF`、`-INF` |
+| `Edm.GeographyPoint` | `geography'POINT(-122.131577 47.678581)'` |
+| `Edm.GeographyPolygon` | `geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'` |
+| `Edm.Int32` | `123`, `-456` |
+| `Edm.Int64` | `283032927235` |
+| `Edm.String` | `'hello'` |
+
+### <a name="escaping-special-characters-in-string-constants"></a>转义字符串常量中的特殊字符
+
+OData 中的字符串常量由单引号分隔。 如果需要使用本身可能包含单引号的字符串常量构造查询，则可以通过将嵌入的引号加倍来对其进行转义。
+
+例如，带有无格式撇号的短语（如“Alice's car”）将在 OData 中表示为字符串常量 `'Alice''s car'`。
+
+> [!IMPORTANT]
+> 以编程方式构建筛选器时，请记住转义来自用户输入的字符串常量，这一点很重要。 这是为了减小[注入攻击](https://wikipedia.org/wiki/SQL_injection)的可能性，尤其是在使用筛选器实现[安全修整](search-security-trimming-for-azure-search.md)时。
+
+### <a name="constants-syntax"></a>常量语法
+
+以下 EBNF ([扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 为上表中所示的大部分常量定义语法。 可在 [Azure 认知搜索中的 OData 地理空间函数](search-query-odata-geo-spatial-functions.md)中找到地理空间类型的语法。
+
+<!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
 ```
-$filter=tags/all(t: t ne 'motel')
+constant ::=
+    string_literal
+    | date_time_offset_literal
+    | integer_literal
+    | float_literal
+    | boolean_literal
+    | 'null'
+
+string_literal ::= "'"([^'] | "''")*"'"
+
+date_time_offset_literal ::= date_part'T'time_part time_zone
+
+date_part ::= year'-'month'-'day
+
+time_part ::= hour':'minute(':'second('.'fractional_seconds)?)?
+
+zero_to_fifty_nine ::= [0-5]digit
+
+digit ::= [0-9]
+
+year ::= digit digit digit digit
+
+month ::= '0'[1-9] | '1'[0-2]
+
+day ::= '0'[1-9] | [1-2]digit | '3'[0-1]
+
+hour ::= [0-1]digit | '2'[0-3]
+
+minute ::= zero_to_fifty_nine
+
+second ::= zero_to_fifty_nine
+
+fractional_seconds ::= integer_literal
+
+time_zone ::= 'Z' | sign hour':'minute
+
+sign ::= '+' | '-'
+
+/* In practice integer literals are limited in length to the precision of
+the corresponding EDM data type. */
+integer_literal ::= digit+
+
+float_literal ::=
+    sign? whole_part fractional_part? exponent?
+    | 'NaN'
+    | '-INF'
+    | 'INF'
+
+whole_part ::= integer_literal
+
+fractional_part ::= '.'integer_literal
+
+exponent ::= 'e' sign? integer_literal
+
+boolean_literal ::= 'true' | 'false'
 ```
 
- 搜索带有任何标签的所有酒店：  
+下面还提供了交互式语法图：
+
+> [!div class="nextstepaction"]
+> [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#constant)
+
+> [!NOTE]
+> 请参阅[适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
+
+## <a name="building-expressions-from-field-paths-and-constants"></a>基于字段路径和常量生成表达式
+
+字段路径和常量是 OData 表达式的最基本组成部分，但它们已经是完整的表达式。 事实上，Azure 认知搜索中的 **$select** 参数无非就是逗号分隔的字段路径列表，而 **$orderby** 也不是比 **$select** 要复杂得多。 如果你正好在索引中使用了 `Edm.Boolean` 类型的字段，则你甚至可以编写一个只包含该字段的路径的筛选器。 常量 `true` 和 `false` 同样是有效的筛选器。
+
+但是，大多数情况下，需要使用更复杂的表达式来引用多个字段和常量。 这些表达式的生成方式根据参数而异。
+
+以下 EBNF ([扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义 **$filter**、 **$orderby**和 **$select**参数的语法。 这些表达式是基于引用字段路径和常量的更简单表达式生成的：
+
+<!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
 ```
-$filter=tags/any()
+filter_expression ::= boolean_expression
+
+order_by_expression ::= order_by_clause(',' order_by_clause)*
+
+select_expression ::= '*' | field_path(',' field_path)*
 ```
 
-查找不具有标记的所有酒店：  
+下面还提供了交互式语法图：
 
-```
-$filter=not tags/any()
-```
+> [!div class="nextstepaction"]
+> [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#filter_expression)
 
+> [!NOTE]
+> 请参阅[适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
 
- 查找与给定参考点的距离在 10 千米范围内的所有酒店（其中 location 是 Edm.GeographyPoint 类型的字段）：  
+**$orderby** 和 **$select** 参数都是较简单表达式的逗号分隔列表。 **$filter** 参数是由较简单的子表达式构成的布尔表达式。 这些子表达式是使用逻辑运算符（例如 [`and`、`or` 和 `not`](search-query-odata-logical-operators.md)）、比较运算符（例如 [`eq`、`lt`、`gt` 等](search-query-odata-comparison-operators.md)）和集合运算符（例如 [`any` 和 `all`](search-query-odata-collection-operators.md)）合并的。
 
-```
-$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
-```
+以下文章更详细地探讨了 **$filter**、 **$orderby** 和 **$select** 参数：
 
- 查找描述为多边形的给定视区内的所有酒店（其中 location 是 Edm.GeographyPoint 类型的字段）。 请注意，多边形是闭合的（第一个点集和最后一个点集必须相同），且[这些点必须按逆时针顺序列出](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)。
-
-```
-$filter=geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
-```
-
- 查找在“description”字段中没有值，或者将该值显式设置为 null 的所有酒店：  
-
-```
-$filter=description eq null
-```
-
-查找所有酒店名称等于 Roach motel 或预算酒店）。 短语包含空格，这是默认分隔符。 可以将 specicfy 在单引号中的一个替代分隔符作为第三个字符串参数：  
-
-```
-$filter=search.in(name, 'Roach motel,Budget hotel', ',')
-```
-
-查找名称等于“Roach motel”或“Budget hotel”并以“|”分隔的所有酒店：  
-
-```
-$filter=search.in(name, 'Roach motel|Budget hotel', '|')
-```
-
-查找带有“wifi”或“pool”标签的所有酒店：  
-
-```
-$filter=tags/any(t: search.in(t, 'wifi, pool'))
-```
-
-在标记中找到在集合中，如加热总是随身携带毛巾机架或 hairdryer 包含短语的匹配的项。 
-
-```
-$filter=tags/any(t: search.in(t, 'heated towel racks,hairdryer included', ','))
-```
-
-查找没有“motel”或“cabin”标签的所有酒店：  
-
-```
-$filter=tags/all(t: not search.in(t, 'motel, cabin'))
-```
-
-查找包含“waterfront”一词的文档。 此筛选器查询与包含 `search=waterfront` 的[搜索请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)相同。
-
-```
-$filter=search.ismatchscoring('waterfront')
-```
-
-查找带有“hostel”一词且评分大于或等于 4 分的文档，或带有“motel”一词且评分等于 5 分的文档。 请注意，如果没有 `search.ismatchscoring` 函数，则无法表达此请求。
-
-```
-$filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
-```
-
-查找没有“luxury”一词的文档。
-
-```
-$filter=not search.ismatch('luxury') 
-```
-
-查找包含短语“ocean view”或评分等于 5 分的文档。 `search.ismatchscoring` 查询仅针对 `hotelName` 和 `description` 字段执行。
-请注意，仅与析取的第二个子句匹配的文档也将被返回，即评分等于 5 分的酒店。 为了清楚地表明这些文档与表达式的任何得分部分都不匹配，它们返回的分数将为零。
-
-```
-$filter=search.ismatchscoring('"ocean view"', 'description,hotelName') or rating eq 5
-```
-
-在酒店描述中查找词条“hotel”和“airport”相距不超过 5 个字词且不允许吸烟的文档。 此查询使用[完整 Lucene 查询语言](query-lucene-syntax.md)。
-
-```
-$filter=search.ismatch('"hotel airport"~5', 'description', 'full', 'any') and not smokingAllowed 
-```
-
-## <a name="order-by-syntax"></a>Order-by 语法
-
-**$orderby** 参数接受包含最多 32 个格式为 `sort-criteria [asc|desc]` 的表达式的逗号分隔列表。 排序条件可以是 `sortable` 字段的名称，也可以是对 `geo.distance` 或 `search.score` 函数的调用。 可以使用 `asc` 或 `desc` 显式指定排序顺序。 默认顺序为升序。
-
-如果多个文档具有相同的排序条件且未使用 `search.score` 函数（例如，如果按 `rating` 数字字段排序，并且三个文档的评分均为 4 分），则会通过以降序按文档分数排序来打破平分的局面。 当文档分数相同时（例如，当请求中没有指定全文搜索查询时），平分文档的相对排序是不确定的。
- 
-可以指定多个排序条件。 表达式的顺序决定最终排序顺序。 例如，若要按分数降序排序，然后按评分排序，语法将为 `$orderby=search.score() desc,rating desc`。
-
-**$orderby** 中 `geo.distance` 的语法与其在 **$filter** 中的语法相同。 如果在 **$orderby** 中使用 `geo.distance`，其应用到的字段必须为 `Edm.GeographyPoint` 类型，且还必须 `sortable`。  
-
-**$orderby** 中 `search.score` 的语法为 `search.score()`。 `search.score` 函数不接受任何参数。  
- 
-
-## <a name="order-by-examples"></a>Order-by 示例
-
-按基准费率对酒店进行升序排序：
-
-```
-$orderby=baseRate asc
-```
-
-按评分对酒店进行降序排序，然后按基准费率对酒店进行升序排序（请记住，升序是默认值）：
-
-```
-$orderby=rating desc,baseRate
-```
-
-按评分对酒店进行降序排序，然后按距给定坐标的距离进行升序排序：
-
-```
-$orderby=rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
-```
-
-按 search.score 和评分对酒店进行降序排序，然后按距给定坐标的距离进行升序排序，以便在两个具有相同评分的酒店中，将距离最近的酒店列在前面：
-
-```
-$orderby=search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
-```
-<a name="bkmk_unsupported"></a>
-
-## <a name="unsupported-odata-syntax"></a>不受支持的 OData 语法
-
--   算术表达式  
-
--   函数（距离和相交地理空间函数除外）  
-
--   包含任意 lambda 表达式的 `any/all`  
+- [Azure 认知搜索中的 OData $filter 语法](search-query-odata-filter.md)
+- [Azure 认知搜索中的 OData $orderby 语法](search-query-odata-orderby.md)
+- [Azure 认知搜索中的 OData $select 语法](search-query-odata-select.md)
 
 ## <a name="see-also"></a>另请参阅  
 
-+ [Azure 搜索中的分面导航](search-faceted-navigation.md) 
-+ [Azure 搜索中的筛选器](search-filters.md) 
-+ [搜索文档（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 
-+ [Lucene 查询语法](query-lucene-syntax.md)
-+ [Azure 搜索中的简单查询语法](query-simple-syntax.md)   
+- [Azure 认知搜索中的分面导航](search-faceted-navigation.md)
+- [Azure 认知搜索中的筛选器](search-filters.md)
+- [搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Lucene 查询语法](query-lucene-syntax.md)
+- [Azure 认知搜索中的简单查询语法](query-simple-syntax.md)

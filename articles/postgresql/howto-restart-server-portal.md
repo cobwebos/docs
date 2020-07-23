@@ -1,26 +1,26 @@
 ---
-title: PostgreSQL-使用 Azure 门户的单个服务器的重新启动 Azure 数据库
-description: 本文介绍如何为 PostgreSQL-使用 Azure 门户的单个服务器重新启动 Azure 数据库。
+title: 重新启动服务器-Azure 门户-Azure Database for PostgreSQL-单一服务器
+description: 本文介绍了如何使用 Azure 门户重启 Azure Database for PostgreSQL - 单一服务器。
 author: ajlam
 ms.author: andrela
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: fd92e27f53f52de3e9a7fd65d577c9dfea44991b
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 4bd5b2d3715376aaca689c4589c3aab41a78f514
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65066840"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120902"
 ---
-# <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>PostgreSQL-使用 Azure 门户的单个服务器的重新启动 Azure 数据库
+# <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>使用 Azure 门户重启 Azure Database for PostgreSQL - 单一服务器
 本主题介绍如何重启 Azure Database for PostgreSQL 服务器。 出于维护原因，可能需要重启服务器，这会在服务器执行操作时导致短暂中断。
 
-如果服务处于繁忙状态，则会阻止重启服务器。 例如，服务可以处理缩放 vCores 等先前请求的操作。
+如果服务处于繁忙状态，则会阻止重启服务器。 例如，服务可能正在处理先前请求的操作（例如缩放 vCore）。
  
 完成重启所需的时间取决于 PostgreSQL 恢复过程。 若要减少重启时间，建议在重启之前尽量减少服务器上发生的活动量。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 若要完成本操作指南，需要：
 - [Azure Database for PostgreSQL 服务器](quickstart-create-server-database-portal.md)
 
@@ -28,13 +28,13 @@ ms.locfileid: "65066840"
 
 可通过以下步骤重启 PostgreSQL 服务器：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure Database for PostgreSQL 服务器。
+1. 在[Azure 门户](https://portal.azure.com/)中，选择 Azure Database for PostgreSQL 服务器。
 
-2. 在服务器“概述”页的工具栏中，单击“重启”。
+2. 在服务器“概述”页的工具栏中，单击“重启”   。
 
    ![Azure Database for PostgreSQL - 概述 - “重启”按钮](./media/howto-restart-server-portal/2-server.png)
 
-3. 单击“是”以确认重启服务器。
+3. 单击“是”以确认重启服务器  。
 
    ![Azure Database for PostgreSQL - 重启确认](./media/howto-restart-server-portal/3-restart-confirm.png)
 

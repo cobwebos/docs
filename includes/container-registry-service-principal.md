@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/14/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 69951693f9d3bacb556453aba954620815884d43
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 9e4f2e355240ba8682cbe9f86f2be94e7dd0d92d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66152225"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "70032350"
 ---
 ## <a name="create-a-service-principal"></a>创建服务主体
 
@@ -28,11 +28,11 @@ ms.locfileid: "66152225"
 <!-- https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh -->
 [!code-azurecli-interactive[acr-sp-create](~/cli_scripts/container-registry/service-principal-create/service-principal-create.sh)]
 
-## <a name="use-an-existing-service-principal"></a>使用现有的服务主体
+### <a name="use-an-existing-service-principal"></a>使用现有的服务主体
 
 若要向现有服务主体授予注册表访问权限，必须为服务主体分配新角色。 与创建新的服务主体一样，可以授予“拉取”、“推送和拉取”以及“所有者”访问权限等。
 
-以下脚本使用 [az role assignment create][az-role-assignment-create] 命令向 `SERVICE_PRINCIPAL_ID` 变量中指定的服务主体授予“拉取”权限。 如果要授予不同的访问级别，请调整 `--role` 值。
+以下脚本使用 [az role assignment create][az-role-assignment-create] 命令向 `SERVICE_PRINCIPAL_ID` 变量中指定的服务主体授予“拉取”** 权限。 如果要授予不同的访问级别，请调整 `--role` 值。
 
 
 <!-- https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-assign-role/service-principal-assign-role.sh -->

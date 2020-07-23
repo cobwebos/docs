@@ -1,32 +1,30 @@
 ---
 title: 向必应实体搜索 API 发送搜索请求
 titleSuffix: Azure cognitive Services
-description: 了解如何向必应实体搜索 API 发送搜索请求
+description: 必应实体搜索 API 向必应发送搜索查询，然后获得包含实体和场所的结果。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
-ms.topic: quickstart
-ms.date: 02/01/2019
+ms.topic: conceptual
+ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: b8879bcbd807f3a74938a09da0abb57a1e0eeb4d
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
-ms.translationtype: HT
+ms.openlocfilehash: f68429a75ddb141c9e42babde3faa9f93fe949cc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388844"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74072689"
 ---
 # <a name="sending-search-requests-to-the-bing-entity-search-api"></a>向必应实体搜索 API 发送搜索请求
 
-必应实体搜索 API 向必应发送搜索查询，然后获得包含实体和场所的结果。 位置结果包括餐馆、酒店或其他当地企业。 对于位置，查询可以指定当地企业名称，也可以请求获取列表（例如，我附近的餐馆）。 实体结果包括人员、位置或事物。 在此上下文中，位置是旅游景点、省/自治区/直辖市、国家/地区等。 
-
-[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
+必应实体搜索 API 向必应发送搜索查询，然后获得包含实体和场所的结果。 位置结果包括餐馆、酒店或其他当地企业。 对于位置，查询可以指定当地企业名称，也可以请求获取列表（例如，我附近的餐馆）。 实体结果包括人员、位置或事物。 在此上下文中，位置是旅游景点、省/自治区/直辖市、国家/地区等。
 
 ## <a name="the-endpoint"></a>终结点
 
 若要获得实体和位置搜索结果，请向以下终结点发送 GET 请求：  
-  
+
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/entities
 ```
@@ -37,14 +35,14 @@ https://api.cognitive.microsoft.com/bing/v7.0/entities
 
 ## <a name="specifying-query-parameters-and-headers"></a>指定查询参数和请求头
 
-请求必须指定包含用户搜索词的 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) 查询参数。 请求还必须指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mkt) 查询参数，用于确定所需的结果来源市场。 有关可选查询参数列表，请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters)。 URL 对所有查询参数进行编码。  
+请求必须指定包含用户搜索词的 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) 查询参数。 请求还必须指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mkt) 查询参数，用于确定所需的结果来源市场。 有关可选查询参数的列表，请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters)。 URL 对所有查询参数进行编码。  
   
 请求必须指定 [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#subscriptionkey) 请求头。 尽管可视需要添加，但仍建议还指定以下请求头：  
   
--   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#useragent)  
+-   [用户代理](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#useragent)  
 -   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientid)  
--   [X-MSEdge-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientip)  
--   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#location)  
+-   [MSEdge-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientip)  
+-   [X-搜索-位置](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#location)  
 
 客户端 IP 和位置请求头对返回位置感知内容非常重要。  
 
@@ -64,11 +62,13 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-如果是首次调用任何必应 API，请勿添加客户端 ID 请求头。 只有在以前调用过必应 API，且必应针对用户和设备组合返回了客户端 ID 的情况下，才添加客户端 ID。
+如果是首次调用任何必应 API，请勿添加客户端 ID 请求头。 只有在以前调用过必应 API 且必应针对用户和设备组合返回了客户端 ID 的情况下，才包括客户端 ID。
 
 ## <a name="the-response"></a>响应
 
 下面的示例展示了对上一请求的响应。 此示例还展示了必应专用响应头。 若要了解响应对象，请参阅 [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse)。
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
 ```json
 BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC

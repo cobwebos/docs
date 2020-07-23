@@ -1,27 +1,19 @@
 ---
-title: 快速入门 - 使用 Azure PowerShell 创建 Linux VM | Microsoft Docs
+title: 快速入门 - 使用 Azure PowerShell 创建 Linux VM
 description: 本快速入门介绍如何使用 Azure PowerShell 创建 Linux 虚拟机
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 46ab5cae7514adfc4ec31ad88f5445a09e3c0e6a
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: e18f66beb8f318e993bd9367f5e50740d76db73f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55975290"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510321"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>快速入门：使用 PowerShell 在 Azure 中创建 Linux 虚拟机
 
@@ -33,7 +25,7 @@ Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Az
 
 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 
 
-若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
+若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。  选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。 
 
 ## <a name="create-ssh-key-pair"></a>创建 SSH 密钥对
 
@@ -47,11 +39,11 @@ ssh-keygen -t rsa -b 2048
 
 有关如何创建 SSH 密钥对的更多详细信息，包括 PuTTy 的用法，请参阅[如何将 SSH 密钥与 Windows 配合使用](ssh-from-windows.md)。
 
-如果使用 Cloud Shell 创建 SSH 密钥对，则会将密钥对存储在[由 Cloud Shell 自动创建的存储帐户](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)的容器映像中。 在检索密钥之前，请勿删除此存储帐户或其中的文件共享，否则将无法访问 VM。 
+如果使用 Cloud Shell 创建 SSH 密钥对，则会将密钥对存储在[由 Cloud Shell 自动创建的存储帐户](../../cloud-shell/persisting-shell-storage.md)的容器映像中。 在检索密钥之前，请勿删除此存储帐户或其中的文件共享，否则将无法访问 VM。 
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器：
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器：
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
@@ -119,7 +111,7 @@ $nsg = New-AzNetworkSecurityGroup `
   -SecurityRules $nsgRuleSSH,$nsgRuleWeb
 ```
 
-使用 [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) 创建虚拟网络接口卡 (NIC)。 虚拟 NIC 将 VM 连接到子网、网络安全组和公用 IP 地址。
+使用 [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) 创建虚拟网络接口卡 (NIC)。 虚拟 NIC 将 VM 连接到子网、网络安全组和公共 IP 地址。
 
 ```azurepowershell-interactive
 # Create a virtual network card and associate with public IP address and NSG
@@ -168,7 +160,7 @@ Add-AzVMSshPublicKey `
   -Path "/home/azureuser/.ssh/authorized_keys"
 ```
 
-现在，组合前面的配置定义来使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 创建虚拟机：
+现在，组合前面的配置定义来使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 创建虚拟机：
 
 ```azurepowershell-interactive
 New-AzVM `
@@ -180,7 +172,7 @@ New-AzVM `
 
 ## <a name="connect-to-the-vm"></a>连接到 VM
 
-使用公共 IP 地址创建与 VM 的 SSH 连接。 若要查看 VM 的公用 IP 地址，请使用 [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) cmdlet：
+使用公共 IP 地址创建与 VM 的 SSH 连接。 若要查看 VM 的公共 IP 地址，请使用 [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) cmdlet：
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
@@ -211,11 +203,11 @@ sudo apt-get -y install nginx
 
 使用所选的 Web 浏览器查看默认的 NGINX 欢迎页。 输入 VM 的公共 IP 地址作为 Web 地址。 可以在 VM 概览页上或此前使用过的 SSH 连接字符串中找到公共 IP 地址。
 
-![NGINX 默认站点](./media/quick-create-cli/nginx.png)
+![NGINX 默认欢迎页](./media/quick-create-cli/nginix-welcome-page.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组、VM 和所有相关的资源，可以使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) cmdlet 将其删除：
+不再需要时，可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) cmdlet 删除资源组、VM 和所有相关资源：
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup"

@@ -8,16 +8,16 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: alkohli
-ms.openlocfilehash: e8932097bcdef782b1a551d386c2872e02d8abfd
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: aadaedfd2c9ecf544d142e42a0fbeb410324b7d8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442385"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82562434"
 ---
-# <a name="azure-data-box-gateway-system-requirements"></a>Azure 数据框网关系统要求
+# <a name="azure-data-box-gateway-system-requirements"></a>Azure Data Box Gateway 系统要求
 
-本文介绍了 Microsoft Azure Data Box Gateway 解决方案以及连接到 Azure Data Box Gateway 的客户端的重要系统要求。 建议在部署 Data Box Gateway 之前仔细查看信息，然后在部署和后续操作期间根据需要重新参考。
+本文介绍了 Microsoft Azure Data Box Gateway 解决方案以及连接到 Azure Data Box Gateway 的客户端的重要系统要求。 建议在部署 Data Box Gateway 之前仔细查看信息，然后在部署和后续操作期间根据需要重新参考。 
 
 Data Box Gateway 虚拟设备的系统要求包括：
 
@@ -29,7 +29,7 @@ Data Box Gateway 虚拟设备的系统要求包括：
 
 Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设备：
 
-| 规范                                          | 描述              |
+| 规范                                          | 说明              |
 |---------------------------------------------------------|--------------------------|
 | 虚拟处理器（核心数）   | 最低为 4 核 |
 | 内存  | 最低为 8 GB|
@@ -48,7 +48,7 @@ Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设
 
 ## <a name="supported-virtualization-platforms-for-device"></a>设备支持的虚拟化平台
 
-| **操作系统/平台**  |**版本**   |**说明**  |
+| **操作系统/平台**  |**早期**   |**说明**  |
 |---------|---------|---------|
 |Hyper-V  |  2012 R2 <br> 2016 <br> 2019 |         |
 |VMware ESXi     | 6.0 <br> 6.5 <br> 6.7       |不支持 VMware 工具。         |
@@ -59,7 +59,7 @@ Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设
 [!INCLUDE [Supported storage accounts](../../includes/data-box-edge-gateway-supported-storage-accounts.md)]
 
 
-## <a name="supported-storage-types"></a>支持的存储类型
+## <a name="supported-storage-types"></a>受支持的存储类型
 
 [!INCLUDE [Supported storage types](../../includes/data-box-edge-gateway-supported-storage-types.md)]
 

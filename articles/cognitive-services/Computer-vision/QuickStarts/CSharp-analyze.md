@@ -8,41 +8,41 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7ad03d06325f45aacd53817d92202b07de7c26e9
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 1ece80ce5337304d1b0d51e5e334cd64cc133619
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011149"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84984408"
 ---
-# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-c-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 C# 分析本地图像
+# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>快速入门：使用计算机视觉 REST API 和 C# 分析本地图像
 
-在本快速入门中，你将使用计算机视觉的 REST API 分析本地存储的图像以提取视觉特征。 使用[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)方法，可以根据图像内容提取视觉特征信息。
-
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services)。
+本快速入门将使用计算机视觉 REST API 分析本地存储的图像以提取视觉特征。 使用[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)方法，可以从图像内容中提取视觉特征信息。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 必须具有 [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) 或更高版本。
-- 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费的试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 必须具有 [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) 或更高版本
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="创建计算机视觉资源"  target="_blank">创建计算机视觉资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到计算机视觉服务。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
+* 为密钥和终结点 URL [创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别将其命名为 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`。
 
 ## <a name="create-and-run-the-sample-application"></a>创建和运行示例应用程序
 
 要在 Visual Studio 中创建示例，请执行以下步骤：
 
-1. 使用 Visual C# 控制台应用 (.NET Framework) 模板在 Visual Studio 中创建新的 Visual Studio 解决方案。
+1. 使用 Visual C# 控制台应用 (.NET Core Framework) 模板在 Visual Studio 中创建新的 Visual Studio 解决方案/项目。
 1. 安装 Newtonsoft.Json NuGet 包。
-    1. 在菜单上，单击“工具”，然后依次选择“NuGet 包管理器”、“管理解决方案的 NuGet 包”。
-    1. 单击“浏览”选项卡，在“搜索”框中键入“Newtonsoft.Json”。
-    1. 选择显示的 Newtonsoft.Json，单击项目名称旁边的复选框，然后单击“安装”。
-1. 将 `Program.cs` 中的代码替换为以下代码，然后根据需要在代码中进行以下更改：
-    1. 将 `subscriptionKey` 的值替换为你的订阅密钥。
-    1. 如有必要，请将 `uriBase` 的值替换为获取的订阅密钥所在的 Azure 区域中的[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)方法的终结点 URL。
+    1. 在菜单上，单击“工具”，然后依次选择“NuGet 包管理器”、“管理解决方案的 NuGet 包”  。
+    1. 单击“浏览”选项卡，在“搜索”框中键入“Newtonsoft.Json”（如果尚未显示） 。
+    1. 选择“Newtonsoft.Json”，单击项目名称旁边的复选框，然后单击“安装” 。
+1. 将下面的示例代码片段复制/粘贴到 Program.cs 文件中。 如果命名空间名称与创建的命名空间名称不同，请进行调整。
+1. 将所选的图像添加到 bin/debug/netcoreappX.X 文件夹，然后将映像名称（加上扩展名）添加到“imageFilePath”变量。
 1. 运行该程序。
-1. 在提示符处，输入本地图像的路径。
 
 ```csharp
 using Newtonsoft.Json.Linq;
@@ -56,38 +56,24 @@ namespace CSHttpClientSample
 {
     static class Program
     {
-        // Replace <Subscription Key> with your valid subscription key.
-        const string subscriptionKey = "<Subscription Key>";
+        // Add your Computer Vision subscription key and endpoint to your environment variables.
+        static string subscriptionKey = Environment.GetEnvironmentVariable("COMPUTER_VISION_SUBSCRIPTION_KEY");
 
-        // You must use the same Azure region in your REST API method as you used to
-        // get your subscription keys. For example, if you got your subscription keys
-        // from the West US region, replace "westcentralus" in the URL
-        // below with "westus".
-        //
-        // Free trial subscription keys are generated in the "westus" region.
-        // If you use a free trial subscription key, you shouldn't need to change
-        // this region.
-        const string uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze";
+        static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
+        
+        // the Analyze method endpoint
+        static string uriBase = endpoint + "vision/v3.0/analyze";
 
-        static void Main()
+        // Image you want analyzed (add to your bin/debug/netcoreappX.X folder)
+        // For sample images, download one from here (png or jpg):
+        // https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/ComputerVision/Images
+        static string imageFilePath = @"my-sample-image";
+
+        public static void Main()
         {
-            // Get the path and filename to process from the user.
-            Console.WriteLine("Analyze an image:");
-            Console.Write(
-                "Enter the path to the image you wish to analyze: ");
-            string imageFilePath = Console.ReadLine();
+            // Call the API
+            MakeAnalysisRequest(imageFilePath).Wait();
 
-            if (File.Exists(imageFilePath))
-            {
-                // Call the REST API method.
-                Console.WriteLine("\nWait a moment for the results to appear.\n");
-                MakeAnalysisRequest(imageFilePath).Wait();
-            }
-            else
-            {
-                Console.WriteLine("\nInvalid file path");
-            }
             Console.WriteLine("\nPress Enter to exit...");
             Console.ReadLine();
         }
@@ -176,7 +162,7 @@ namespace CSHttpClientSample
 
 ## <a name="examine-the-response"></a>检查响应
 
-成功的响应以 JSON 格式返回。 示例应用程序会在控制台窗口中分析和显示成功响应，如下例所示：
+控制台窗口中返回 JSON 格式的成功响应（基于自己使用的映像），类似于以下示例：
 
 ```json
 {
@@ -246,10 +232,6 @@ namespace CSHttpClientSample
     }
 }
 ```
-
-## <a name="clean-up-resources"></a>清理资源
-
-不再需要 Visual Studio 解决方案时，请将其删除。 为此，请打开文件资源管理器，导航到在其中创建 Visual Studio 解决方案的文件夹，然后删除该文件夹。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/05/2018
 ms.author: alkohli
 ms.openlocfilehash: a4adef26153870dbce4c24303a403c69285f7252
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66160995"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67173391"
 ---
 下面是虚拟设备的本地 Web UI 支持的浏览器的列表。
 

@@ -1,25 +1,25 @@
 ---
-title: 文本翻译 API 语言方法
-titlesuffix: Azure Cognitive Services
-description: 使用文本翻译 API 语言方法。
+title: 转换器语言方法
+titleSuffix: Azure Cognitive Services
+description: 语言方法获取当前由转换器的其他操作支持的语言集。
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-pawal
-ms.openlocfilehash: 415093610bfbc314e569eeeb658508bdfb021d9c
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.author: swmachan
+ms.openlocfilehash: 1f4dfc4b80aff01e4b7fe7ebae4850b28cd6a498
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389715"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588592"
 ---
-# <a name="translator-text-api-30-languages"></a>文本翻译 API 3.0：Languages
+# <a name="translator-30-languages"></a>翻译人员3.0：语言
 
-获取文本翻译 API 的其他操作当前支持的语言集。 
+获取转换器的其他操作当前支持的语言集。 
 
 ## <a name="request-url"></a>请求 URL
 
@@ -49,15 +49,15 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>描述</th>
+  <th>说明</th>
   <tr>
     <td>Accept-Language</td>
-    <td>可选请求标头  。<br/>要用于用户界面字符串的语言。 响应中的某些字段是语言的名称，或区域的名称。 使用此参数可以定义要以哪种语言返回这些名称。 通过提供格式正确的 BCP 47 语言标记来指定语言。 例如，使用值 `fr` 来请求法语名称，或使用值 `zh-Hant` 来请求繁体中文名称。<br/>如果未指定目标语言或者本地化不可用，则以英语提供名称。
+    <td>可选请求标头。<br/>可用于用户界面字符串的语言。 响应中的某些字段是语言的名称，或区域的名称。 使用此参数可以定义要以哪种语言返回这些名称。 通过提供格式正确的 BCP 47 语言标记来指定语言。 例如，使用值 `fr` 来请求法语名称，或使用值 `zh-Hant` 来请求繁体中文名称。<br/>如果未指定目标语言或者本地化不可用，则以英语提供名称。
     </td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>可选请求标头  。<br/>客户端生成的 GUID，用于唯一地标识请求。</td>
+    <td>可选请求标头。<br/>客户端生成的 GUID，用于唯一标识请求。</td>
   </tr>
 </table> 
 
@@ -230,7 +230,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>描述</th>
+  <th>说明</th>
   <tr>
     <td>ETag</td>
     <td>所请求的受支持语言组的实体标记的当前值。 若要提高后续请求的效率，客户端可在 `If-None-Match` 标头字段中发送 `ETag` 值。
@@ -248,7 +248,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
 <table width="100%">
   <th width="20%">状态代码</th>
-  <th>描述</th>
+  <th>说明</th>
   <tr>
     <td>200</td>
     <td>成功。</td>
@@ -263,7 +263,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   </tr>
   <tr>
     <td>429</td>
-    <td>服务器拒绝了请求，因为客户端已超出请求限制。</td>
+    <td>由于客户端已超出请求限制，服务器拒绝了请求。</td>
   </tr>
   <tr>
     <td>500</td>
@@ -275,16 +275,12 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   </tr>
 </table> 
 
-如果发生错误，请求也将返回 JSON 错误响应。 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 常见错误代码可在 [v3 文本翻译 API 参考页面](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上找到。 
+如果发生错误，请求也将返回 JSON 错误响应。 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 可在[V3 转换器参考页](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上找到常见错误代码。 
 
 ## <a name="examples"></a>示例
 
 以下示例演示如何检索文本翻译支持的语言。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
-```
+```curl
 curl "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation"
 ```
-
----

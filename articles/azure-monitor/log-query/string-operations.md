@@ -1,30 +1,22 @@
 ---
 title: 在 Azure Monitor 日志查询中使用字符串 | Microsoft Docs
 description: 介绍如何在 Azure Monitor 日志查询中编辑、比较、搜索字符串以及对其执行其他各种操作。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 4b2763629a3036551cb3d362e609c72737436f4a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 08/16/2018
+ms.openlocfilehash: a394fee7178b2e3e167c8bd905ab175b25d1d813
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61424697"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75397472"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用字符串
 
 
 > [!NOTE]
-> 应完成[开始使用 Azure 监视器 Log Analytics](get-started-portal.md)并[开始使用 Azure Monitor 日志查询](get-started-queries.md)之前完成本教程。
+> 完成本教程之前，应先完成 [Azure Monitor 日志分析入门](get-started-portal.md)和 [Azure Monitor 日志查询入门](get-started-queries.md)。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -34,10 +26,14 @@ ms.locfileid: "61424697"
 
 
 ## <a name="strings-and-escaping-them"></a>字符串及其转义
-字符串值包装在单引号或双引号字符中。 反斜杠 (\) 用于将字符转义为其后面的字符，例如，\t 表示 tab（制表符），\n 表示 newline（换行符），\" 表示引号字符本身。
+字符串值包装在单引号或双引号字符中。 反斜杠 (\\) 用于将字符转义为其后面的字符，例如，\t 表示 tab（制表符），\n 表示 newline（换行符），\" 表示引号字符本身。
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"
+```
+
+```Kusto
+print 'this is a "string" literal in single \' quotes'
 ```
 
 为了防止“\\”用作转义字符，请添加“\@”作为字符串的前缀：
@@ -49,7 +45,7 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>字符串比较
 
-运算符       |描述                         |区分大小写|示例（生成 `true`）
+操作员       |说明                         |区分大小写|示例（生成 `true`）
 ---------------|------------------------------------|--------------|-----------------------
 `==`           |等于                              |是           |`"aBc" == "aBc"`
 `!=`           |不等于                          |是           |`"abc" != "ABC"`
@@ -98,7 +94,7 @@ countof(text, search [, kind])
 - `search` - 用于在文本内部匹配的纯字符串或正则表达式。
 - `kind` - _normal_ | _regex_（默认值：normal）。
 
-### <a name="returns"></a>返回值
+### <a name="returns"></a>返回
 
 搜索字符串可在容器中匹配的次数。 纯字符串匹配项可能重叠，而正则表达式匹配项则不会。
 
@@ -140,7 +136,7 @@ extract(regex, captureGroup, text [, typeLiteral])
 - `text` - 要搜索的字符串。
 - `typeLiteral` - 可选的类型文本（例如 typeof(long)）。 （如果支持）提取的子字符串将转换成此类型。
 
-### <a name="returns"></a>返回值
+### <a name="returns"></a>返回
 与指定捕获组 captureGroup 匹配的子字符串可转换为 typeLiteral（可选）。
 如果没有匹配项或类型转换失败，则返回 null。
 
@@ -164,7 +160,7 @@ Heartbeat
 | project ComputerIP, last_octet, next_ip
 ```
 
-以下示例在字符串 *Trace* 中搜索“Duration”的定义。 匹配项强制转换为 *real* 并与时间常量 (1 s) 相乘，该常量将 Duration 强制转换为 timespan 类型。
+以下示例在字符串 *Trace* 中搜索“Duration”的定义。 匹配项强制转换为 *real* 并与时间常量 (1 s) 相乘，该常量将 Duration 强制转换为 timespan 类型。 
 ```Kusto
 let Trace="A=12, B=34, Duration=567, ...";
 print Duration = extract("Duration=([0-9.]+)", 1, Trace, typeof(real));  //result: 567
@@ -246,7 +242,7 @@ replace(regex, rewrite, input_text)
 - `rewrite` - 由匹配正则表达式匹配的任何匹配项的替换正则表达式。 使用 \0 引用整个匹配项，使用 \1 引用第一个捕获组，使用 \2 等引用后续捕获组。
 - `input_text` - 要在其中搜索的输入字符串。
 
-### <a name="returns"></a>返回值
+### <a name="returns"></a>返回
 使用 rewrite 计算结果替换正则表达式的所有匹配项后面的文本。 匹配项不会重叠。
 
 ### <a name="examples"></a>示例

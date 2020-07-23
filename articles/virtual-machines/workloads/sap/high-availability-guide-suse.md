@@ -1,27 +1,26 @@
 ---
-title: SUSE Linux Enterprise Server for SAP applications 上 SAP NetWeaver 的 Azure 虚拟机高可用性 | Microsoft Docs
+title: SLES 上的 SAP NetWeaver 的 Azure Vm 高可用性 |Microsoft Docs
 description: SUSE Linux Enterprise Server for SAP applications 上 SAP NetWeaver 的高可用性指南
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: jeconnoc
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/30/2019
-ms.author: sedusch
-ms.openlocfilehash: 44f99ed1af65eb1e487295c11077fd558ce4285c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 03/26/2020
+ms.author: radeltch
+ms.openlocfilehash: 05effb7d2e64c5f27acabad4b086ba27d6849cc8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142958"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80348823"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>SUSE Linux Enterprise Server for SAP applications 上的 Azure VM 上 SAP NetWeaver 的高可用性
 
@@ -54,26 +53,26 @@ ms.locfileid: "65142958"
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
 本文介绍如何部署虚拟机、配置虚拟机、安装群集框架，以及安装高可用性 SAP NetWeaver 7.50 系统。
-在示例配置和安装命令等内容中，使用了 ASCS 实例编号 00、ERS 实例编号 02 和 SAP 系统 ID NW1。 示例中的资源名称（例如虚拟机、虚拟网络）假设已将[聚合模板][template-converged]与 SAP 系统 ID NW1 结合使用以创建资源。
+在示例配置中，安装命令等。使用 ASCS 实例编号00、ERS 实例编号02和 SAP 系统 ID NW1。 示例中的资源名称（例如虚拟机、虚拟网络）假设已将[聚合模板][template-converged]与 SAP 系统 ID NW1 结合使用以创建资源。
 
 请先阅读以下 SAP 说明和文档
 
-* SAP 说明 [1928533]，其中包含：
+* SAP 说明 [1928533][1928533]，其中包含：
   * SAP 软件部署支持的 Azure VM 大小的列表
   * Azure VM 大小的重要容量信息
   * 支持的 SAP 软件、操作系统 (OS) 和数据库组合
   * Microsoft Azure 上 Windows 和 Linux 所需的 SAP 内核版本
 
-* SAP 说明 [2015553] 列出了在 Azure 中 SAP 支持的 SAP 软件部署的先决条件。
-* SAP 说明 [2205917] 包含适用于 SUSE Linux Enterprise Server for SAP Applications 的推荐 OS 设置
-* SAP 说明 [1944799] 包含适用于 SUSE Linux Enterprise Server for SAP Applications 的 SAP HANA 准则
-* SAP 说明 [2178632] 包含为 Azure 中的 SAP 报告的所有监控指标的详细信息。
-* SAP 说明 [2191498] 包含 Azure 中的 Linux 所需的 SAP 主机代理版本。
-* SAP 说明 [2243692] 包含 Azure 中的 Linux 上的 SAP 许可的相关信息。
-* SAP 说明 [1984787] 包含有关 SUSE Linux Enterprise Server 12 的一般信息。
-* SAP 说明 [1999351] 包含适用于 SAP 的 Azure 增强型监视扩展的其他故障排除信息。
+* SAP 说明 [2015553][2015553] 列出了在 Azure 中 SAP 支持的 SAP 软件部署的先决条件。
+* SAP 说明 [2205917][2205917] 包含适用于 SUSE Linux Enterprise Server for SAP Applications 的推荐 OS 设置
+* SAP 说明 [1944799][1944799] 包含适用于 SUSE Linux Enterprise Server for SAP Applications 的 SAP HANA 准则
+* SAP 说明 [2178632][2178632] 包含为 Azure 中的 SAP 报告的所有监控指标的详细信息。
+* SAP 说明 [2191498][2191498] 包含 Azure 中的 Linux 所需的 SAP 主机代理版本。
+* SAP 说明 [2243692][2243692] 包含 Azure 中的 Linux 上的 SAP 许可的相关信息。
+* SAP 说明 [1984787][1984787] 包含有关 SUSE Linux Enterprise Server 12 的一般信息。
+* SAP 说明 [1999351][1999351] 包含适用于 SAP 的 Azure 增强型监视扩展的其他故障排除信息。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含适用于 Linux 的所有必需 SAP 说明。
-* [针对 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
+* [适用于 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机部署][deployment-guide]
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
 * [SUSE SAP HA 最佳做法指南][suse-ha-guide] 这些指南包含在本地设置 Netweaver HA 和 SAP HANA 系统复制所需的所有信息。 请使用上述指南作为常规基准。 它们提供更多详细信息。
@@ -85,43 +84,43 @@ ms.locfileid: "65142958"
 
 ![SAP NetWeaver 高可用性概述](./media/high-availability-guide-suse/ha-suse.png)
 
-NFS 服务器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP HANA 数据库使用虚拟主机名和虚拟 IP 地址。 在 Azure 上，需要负载均衡器才能使用虚拟 IP 地址。 以下列表显示 (A)SCS 和 ERS 负载均衡器的配置。
-
-> [!IMPORTANT]
-> 多 SID 群集的 SAP ASCS/ERS 为 SUSE Linux Azure Vm 中的来宾操作系统原样**不支持**。 多 SID 群集描述多个具有一个 Pacemaker 群集中不同的 Sid 的 SAP ASCS/ERS 实例的安装
+NFS 服务器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP HANA 数据库使用虚拟主机名和虚拟 IP 地址。 在 Azure 上，需要负载均衡器才能使用虚拟 IP 地址。 建议使用[标准负载均衡器](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)。 以下列表显示 (A)SCS 和 ERS 负载均衡器的配置。
 
 ### <a name="ascs"></a>(A)SCS
 
 * 前端配置
   * IP 地址 10.0.0.7
-* 后端配置
-  * 连接到所有虚拟机（这些虚拟机应为 (A)SCS/ERS 群集的一部分）的主网络接口
 * 探测端口
   * 端口 620&lt;nr&gt;
-* 加载 
-* 均衡规则
-  * 32&lt;nr&gt; TCP
-  * 36&lt;nr&gt; TCP
-  * 39&lt;nr&gt; TCP
-  * 81&lt;nr&gt; TCP
-  * 5&lt;nr&gt;13 TCP
-  * 5&lt;nr&gt;14 TCP
-  * 5&lt;nr&gt;16 TCP
+* 负载均衡规则
+  * 如果使用“标准负载均衡器”，请选择“HA 端口”
+  * 如果使用“基本负载均衡器”，请为以下端口创建负载均衡规则
+    * 32&lt;nr&gt; TCP
+    * 36&lt;nr&gt; TCP
+    * 39&lt;nr&gt; TCP
+    * 81&lt;nr&gt; TCP
+    * 5&lt;nr&gt;13 TCP
+    * 5&lt;nr&gt;14 TCP
+    * 5&lt;nr&gt;16 TCP
 
 ### <a name="ers"></a>ERS
 
 * 前端配置
   * IP 地址 10.0.0.8
-* 后端配置
-  * 连接到所有虚拟机（这些虚拟机应为 (A)SCS/ERS 群集的一部分）的主网络接口
 * 探测端口
   * 端口 621&lt;nr&gt;
 * 负载均衡规则
-  * 32&lt;nr&gt; TCP
-  * 33&lt;nr&gt; TCP
-  * 5&lt;nr&gt;13 TCP
-  * 5&lt;nr&gt;14 TCP
-  * 5&lt;nr&gt;16 TCP
+  * 如果使用“标准负载均衡器”，请选择“HA 端口”
+  * 如果使用“基本负载均衡器”，请为以下端口创建负载均衡规则
+    * 32&lt;nr&gt; TCP
+    * 33&lt;nr&gt; TCP
+    * 5&lt;nr&gt;13 TCP
+    * 5&lt;nr&gt;14 TCP
+    * 5&lt;nr&gt;16 TCP
+
+* 后端配置
+  * 连接到所有虚拟机（这些虚拟机应为 (A)SCS/ERS 群集的一部分）的主网络接口
+
 
 ## <a name="setting-up-a-highly-available-nfs-server"></a>设置高度可用的 NFS 服务器
 
@@ -135,10 +134,10 @@ SAP NetWeaver 要求对传输和配置文件目录使用共享存储。 请阅�
 
 Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications 12 的映像，可以用于部署新的虚拟机。 市场映像包含适用于 SAP NetWeaver 的资源代理。
 
-可以使用 GitHub 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集，等等。请遵照以下步骤部署模板：
+可以使用 GitHub 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集等。按照以下步骤部署模板：
 
-1. 打开[ASCS/SCS 多 SID 模板][ template-multisid-xscs]或[聚合模板][ template-converged]在 Azure 门户上。 
-   ASCS/SCS 模板仅创建负载均衡规则的 SAP NetWeaver ASCS/SCS 和 ERS (仅限 Linux) 实例而聚合的模板还会创建数据库 （例如 Microsoft SQL Server 或 SAP HANA） 的负载均衡规则。 如果打算安装基于 SAP NetWeaver 的系统，同时想要在同一台计算机上安装数据库，请使用[聚合模板][template-converged]。
+1. 在 Azure 门户上打开[ASCS/SCS 多 SID 模板][template-multisid-xscs]或[聚合模板][template-converged]。 
+   ASCS/SCS 模板只为 SAP NetWeaver ASCS/SCS 和 ERS （仅限 Linux）实例创建负载均衡规则，而聚合模板还为数据库创建负载均衡规则（例如 Microsoft SQL Server 或 SAP HANA）。 如果打算安装基于 SAP NetWeaver 的系统，同时想要在同一台计算机上安装数据库，请使用[聚合模板][template-converged]。
 1. 输入以下参数
    1. 资源前缀（仅限于 ASCS/SCS 多 SID 模板）  
       输入想要使用的前缀。 此值将用作所要部署的资源的前缀。
@@ -150,14 +149,14 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
       选择一个 Linux 发行版。 对于本示例，请选择“SLES 12 BYOS”
    6. 数据库类型  
       选择 HANA
-   7. Sap 系统大小。  
+   7. SAP 系统大小。  
       新系统提供的 SAPS 数量。 如果不确定系统需要多少 SAPS，请咨询 SAP 技术合作伙伴或系统集成商
    8. 系统可用性  
       选择 HA
    9. 管理员用户名和管理员密码  
       创建可用于登录计算机的新用户。
    10. 子网 ID  
-   如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/&lt;订阅 ID&gt;/resourceGroups/&lt;资源组名称&gt;/providers/Microsoft.Network/virtualNetworks/&lt;虚拟网络名称&gt;/subnets/&lt;子网名称&gt;
+   如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常类似于/subscriptions/** &lt; 订阅 ID &gt; **/ResourceGroups/** &lt; 资源组名称 &gt; **/providers/Microsoft.Network/virtualNetworks/** &lt; 虚拟网络名称 &gt; **/subnets/** &lt; 子网名称 &gt; **
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>通过 Azure 门户手动部署 Linux
 
@@ -177,7 +176,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    选择前面创建的可用性集  
 1. 将至少一个数据磁盘添加到这两个虚拟机  
    数据磁盘用于 /usr/sap/`<SAPSID`> 目录
-1. 创建负载均衡器（内部）  
+1. 创建负载均衡器（内部，标准）：  
    1. 创建前端 IP 地址
       1. ASCS 的 IP 地址 10.0.0.7
          1. 打开负载均衡器，选择前端 IP 池，并单击“添加”
@@ -187,15 +186,46 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
       1. ASCS ERS 的 IP 地址 10.0.0.8
          * 重复上述步骤，为 ERS 创建 IP 地址（例如 **10.0.0.8** 和 **nw1-aers-backend**）
    1. 创建后端池
-      1. 为 ASCS 创建后端池
-         1. 打开负载均衡器，单击后端池，并单击“添加”
-         1. 输入新后端池的名称（例如 **nw1-ascs-backend**）
-         1. 单击“添加虚拟机”。
-         1. 选择前面创建的可用性集
-         1. 选择 (A)SCS 群集的虚拟机
+      1. 打开负载均衡器，单击后端池，并单击“添加”
+      1. 输入新后端池的名称（例如 **nw1-backend**）
+      1. 单击“添加虚拟机”。
+      1. 选择虚拟机
+      1. 选择 (A)SCS 群集的虚拟机及其 IP 地址。
+      1. 单击“添加”
+   1. 创建运行状况探测
+      1. ASCS 的端口 620**00**
+         1. 打开负载均衡器，选择运行状况探测，并单击“添加”
+         1. 输入新运行状况探测的名称（例如 **nw1-ascs-hp**）
+         1. 选择 TCP 作为协议，选择端口 620**00**，将“间隔”保留为 5，将“不正常阈值”保留为 2
          1. 单击“确定”
-      1. 为 ASCS ERS 创建后端池
-         * 重复上述步骤，为 ERS 创建后端池（例如 **nw1-aers-backend**）
+      1. ASCS ERS 的端口 621**02**
+         * 重复上述步骤，为 ERS 创建运行状况探测（例如 621**02** 和 **nw1-aers-hp**）
+   1. 负载均衡规则
+      1. ASCS 的负载均衡规则
+         1. 打开负载均衡器，选择 "负载均衡规则"，并单击 "添加"
+         1. 输入新负载均衡器规则的名称（例如 nw1- **ascs**）
+         1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如**nw1**、 **nw1**和**nw1-ascs**）
+         1. 选择“HA 端口”
+         1. 将空闲超时增大到 30 分钟
+         1. **确保启用浮动 IP**
+         1. 单击“确定”
+         * 重复上述步骤来为 ERS 创建负载均衡规则（例如 nw1- **ERS**）
+1. 或者，如果你的方案需要基本负载均衡器（内部），请执行以下步骤：  
+   1. 创建前端 IP 地址
+      1. ASCS 的 IP 地址 10.0.0.7
+         1. 打开负载均衡器，选择前端 IP 池，并单击“添加”
+         1. 输入新前端 IP 池的名称（例如 **nw1-ascs-frontend**）
+         1. 将“分配”设置为“静态”并输入 IP 地址（例如 **10.0.0.7**）
+         1. 单击“确定”
+      1. ASCS ERS 的 IP 地址 10.0.0.8
+         * 重复上述步骤创建 ERS 的 IP 地址（例如**10.0.0.8**和**nw1**）
+   1. 创建后端池
+      1. 打开负载均衡器，单击后端池，并单击“添加”
+      1. 输入新后端池的名称（例如 **nw1-backend**）
+      1. 单击“添加虚拟机”。
+      1. 选择前面创建的可用性集
+      1. 选择 (A)SCS 群集的虚拟机
+      1. 单击“确定”
    1. 创建运行状况探测
       1. ASCS 的端口 620**00**
          1. 打开负载均衡器，选择运行状况探测，并单击“添加”
@@ -206,10 +236,10 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
          * 重复上述步骤，为 ERS 创建运行状况探测（例如 621**02** 和 **nw1-aers-hp**）
    1. 负载均衡规则
       1. ASCS 的 32**00** TCP
-         1. 打开负载均衡器，选择负载均衡规则并单击添加
+         1. 打开负载均衡器，选择 "负载均衡规则"，并单击 "添加"
          1. 输入新的负载均衡器规则的名称（例如 **nw1-lb-3200**）
          1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 **nw1-ascs-frontend**）
-         1. 将协议保留为“TCP”，输入端口 **3200**
+         1. 将协议保留为“TCP”，输入端口 **3200** 
          1. 将空闲超时增大到 30 分钟
          1. **确保启用浮动 IP**
          1. 单击“确定”
@@ -218,8 +248,11 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
       1. ASCS ERS 的其他端口
          * 针对 ASCS ERS 的端口 33**02**、5**02**13、5**02**14、5**02**16 和 TCP 重复上述步骤
 
+> [!Note]
+> 如果没有公共 IP 地址的 VM 被放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，就不会有出站 Internet 连接，除非执行额外的配置来允许路由到公共终结点。 有关如何实现出站连接的详细信息，请参阅 [SAP 高可用性方案中使用 Azure 标准负载均衡器的虚拟机的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)。  
+
 > [!IMPORTANT]
-> 不要启用 TCP 放置在 Azure 负载均衡器之后的 Azure Vm 上的时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数设置**net.ipv4.tcp_timestamps**到**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
+> 请勿在放置于 Azure 负载均衡器之后的 Azure VM 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数“net.ipv4.tcp_timestamps”设置为“0”。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
 
 ### <a name="create-pacemaker-cluster"></a>创建 Pacemaker 群集
 
@@ -227,7 +260,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 ### <a name="installation"></a>安装
 
-以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2。
+以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2  。
 
 1. **[A]** 安装 SUSE 连接器
 
@@ -235,7 +268,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    </code></pre>
 
    > [!NOTE]
-   > 请勿在群集节点的主机名中使用短划线。 否则群集无法正常使用。 这是一个已知限制，SUSE 正在努力修复。 修复程序将作为 sap-suse-cloud-connector 包的修补程序发布。
+   > 包 **sap-suse-cluster-connector** 的版本 **3.1.1** 中已修复在主机名中使用破折号引起的已知问题。 如果使用主机名中带有破折号的群集节点，请确保至少使用包 sap-suse-cluster-connector 的版本 3.1.1。 否则群集无法正常使用。 
 
    请确保安装 SAP SUSE 群集连接器的新版本。 旧版本称为 sap_suse_cluster_connector，新版本称为 **sap-suse-cluster-connector**。
 
@@ -314,7 +347,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    sudo chattr +i /usr/sap/<b>NW1</b>/ERS<b>02</b>
    </code></pre>
 
-1. [A] 配置 autofs
+1. [A] 配置 autofs****
 
    <pre><code>sudo vi /etc/auto.master
    
@@ -363,6 +396,15 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 1. **[1]** 为 ASCS 实例创建虚拟 IP 资源和运行状况探测
 
+   > [!IMPORTANT]
+   > 最近的测试表明，由于积压工作 (backlog) 及其仅处理一个连接的限制，netcat 停止响应请求。 netcat 资源停止侦听 Azure 负载均衡器请求，并且浮动 IP 变为不可用。  
+   > 对于现有 Pacemaker 群集，我们过去建议将 netcat 替换为 socat。 当前，我们建议使用 azure-lb 资源代理，它是包 resource-agents 的一部分，具有以下包版本要求：
+   > - 对于 SLES 12 SP4/SP5，版本必须至少为 resource-agents-4.3.018.a7fb5035-3.30.1。  
+   > - 对于 SLES 15/15 SP1，版本必须至少为 resource-agents-4.3.0184.6ee15eb2-4.13.1。  
+   >
+   > 请注意，更改将需要短暂的停机时间。  
+   > 对于现有的 Pacemaker 群集，如果已经按照 [Azure 负载平衡器检测强化](https://www.suse.com/support/kb/doc/?id=7024128)中所述将配置更改为使用 socat，则无需立即切换到 azure-lb 资源代理。
+
    <pre><code>sudo crm node standby <b>nw1-cl-1</b>
    
    sudo crm configure primitive fs_<b>NW1</b>_ASCS Filesystem device='<b>nw1-nfs</b>:/<b>NW1</b>/ASCS' directory='/usr/sap/<b>NW1</b>/ASCS<b>00</b>' fstype='nfs4' \
@@ -374,9 +416,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
      params ip=<b>10.0.0.7</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
    
-   sudo crm configure primitive nc_<b>NW1</b>_ASCS anything \
-     params binfile="/usr/bin/nc" cmdline_options="-l -k 620<b>00</b>" \
-     op monitor timeout=20s interval=10 depth=0
+   sudo crm configure primitive nc_<b>NW1</b>_ASCS azure-lb port=620<b>00</b>
    
    sudo crm configure group g-<b>NW1</b>_ASCS fs_<b>NW1</b>_ASCS nc_<b>NW1</b>_ASCS vip_<b>NW1</b>_ASCS \
       meta resource-stickiness=3000
@@ -394,7 +434,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    # stonith-sbd     (stonith:external/sbd): <b>Started nw1-cl-0</b>
    #  Resource Group: g-NW1_ASCS
    #      fs_NW1_ASCS        (ocf::heartbeat:Filesystem):    <b>Started nw1-cl-0</b>
-   #      nc_NW1_ASCS        (ocf::heartbeat:anything):      <b>Started nw1-cl-0</b>
+   #      nc_NW1_ASCS        (ocf::heartbeat:azure-lb):      <b>Started nw1-cl-0</b>
    #      vip_NW1_ASCS       (ocf::heartbeat:IPaddr2):       <b>Started nw1-cl-0</b>
    </code></pre>
 
@@ -427,12 +467,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
      params ip=<b>10.0.0.8</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
    
-   sudo crm configure primitive nc_<b>NW1</b>_ERS anything \
-    params binfile="/usr/bin/nc" cmdline_options="-l -k 621<b>02</b>" \
-    op monitor timeout=20s interval=10 depth=0
-   
-   # WARNING: Resources nc_NW1_ASCS,nc_NW1_ERS violate uniqueness for parameter "binfile": "/usr/bin/nc"
-   # Do you still want to commit (y/n)? y
+   sudo crm configure primitive nc_<b>NW1</b>_ERS azure-lb port=621<b>02</b>
    
    sudo crm configure group g-<b>NW1</b>_ERS fs_<b>NW1</b>_ERS nc_<b>NW1</b>_ERS vip_<b>NW1</b>_ERS
    </code></pre>
@@ -449,11 +484,11 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    # stonith-sbd     (stonith:external/sbd): <b>Started nw1-cl-1</b>
    #  Resource Group: g-NW1_ASCS
    #      fs_NW1_ASCS        (ocf::heartbeat:Filesystem):    <b>Started nw1-cl-1</b>
-   #      nc_NW1_ASCS        (ocf::heartbeat:anything):      <b>Started nw1-cl-1</b>
+   #      nc_NW1_ASCS        (ocf::heartbeat:azure-lb):      <b>Started nw1-cl-1</b>
    #      vip_NW1_ASCS       (ocf::heartbeat:IPaddr2):       <b>Started nw1-cl-1</b>
    #  Resource Group: g-NW1_ERS
    #      fs_NW1_ERS (ocf::heartbeat:Filesystem):    <b>Started nw1-cl-1</b>
-   #      nc_NW1_ERS (ocf::heartbeat:anything):      <b>Started nw1-cl-1</b>
+   #      nc_NW1_ERS (ocf::heartbeat:azure-lb):      <b>Started nw1-cl-1</b>
    #      vip_NW1_ERS        (ocf::heartbeat:IPaddr2):       <b>Started nw1-cl-1</b>
    </code></pre>
 
@@ -526,7 +561,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    sudo usermod -aG haclient <b>nw1</b>adm
    </code></pre>
 
-1. [1] 将 ASCS 和 ERS SAP 服务添加到 sapservice 文件
+1. [1] 将 ASCS 和 ERS SAP 服务添加到 sapservice 文件****
 
    将 ASCS 服务入口添加到第二个节点，并将 ERS 服务入口复制到第一个节点。
 
@@ -536,20 +571,20 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 1. [1] 创建 SAP 群集资源
 
-如果使用排队服务器 1 体系结构 (ENSA1)，定义的资源，如下所示：
+如果使用排队服务器 1 体系结构 (ENSA1)，请按如下所示定义资源：
 
    <pre><code>sudo crm configure property maintenance-mode="true"
    
    sudo crm configure primitive rsc_sap_<b>NW1</b>_ASCS<b>00</b> SAPInstance \
     operations \$id=rsc_sap_<b>NW1</b>_ASCS<b>00</b>-operations \
-    op monitor interval=11 timeout=60 on_fail=restart \
+    op monitor interval=11 timeout=60 on-fail=restart \
     params InstanceName=<b>NW1</b>_ASCS<b>00</b>_<b>nw1-ascs</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ASCS<b>00</b>_<b>nw1-ascs</b>" \
     AUTOMATIC_RECOVER=false \
     meta resource-stickiness=5000 failure-timeout=60 migration-threshold=1 priority=10
    
    sudo crm configure primitive rsc_sap_<b>NW1</b>_ERS<b>02</b> SAPInstance \
     operations \$id=rsc_sap_<b>NW1</b>_ERS<b>02</b>-operations \
-    op monitor interval=11 timeout=60 on_fail=restart \
+    op monitor interval=11 timeout=60 on-fail=restart \
     params InstanceName=<b>NW1</b>_ERS<b>02</b>_<b>nw1-aers</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ERS<b>02</b>_<b>nw1-aers</b>" AUTOMATIC_RECOVER=false IS_ERS=true \
     meta priority=1000
    
@@ -564,21 +599,21 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    sudo crm configure property maintenance-mode="false"
    </code></pre>
 
-  SAP 引入了对排队服务器 2，包括复制，从 SAP NW 7.52 开始支持。 从 ABAP 平台 1809年开始，默认情况下安装排队服务器 2。 请参阅 SAP 注释[2630416](https://launchpad.support.sap.com/#/notes/2630416) for 排入队列 server 2 的支持。
-如果使用排队服务器 2 体系结构 ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html))，定义的资源，如下所示：
+  从 SAP NW 7.52 开始，SAP 引入了对排队服务器 2 的支持，包括复制。 从 ABAP 平台 1809 开始，系统将默认安装排队服务器 2。 有关排队服务器 2 的支持，请参阅 SAP 说明 [2630416](https://launchpad.support.sap.com/#/notes/2630416)。
+如果使用排队服务器 2 体系结构 ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html))，请按如下所示定义资源：
 
 <pre><code>sudo crm configure property maintenance-mode="true"
    
    sudo crm configure primitive rsc_sap_<b>NW1</b>_ASCS<b>00</b> SAPInstance \
     operations \$id=rsc_sap_<b>NW1</b>_ASCS<b>00</b>-operations \
-    op monitor interval=11 timeout=60 on_fail=restart \
+    op monitor interval=11 timeout=60 on-fail=restart \
     params InstanceName=<b>NW1</b>_ASCS<b>00</b>_<b>nw1-ascs</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ASCS<b>00</b>_<b>nw1-ascs</b>" \
     AUTOMATIC_RECOVER=false \
     meta resource-stickiness=5000
    
    sudo crm configure primitive rsc_sap_<b>NW1</b>_ERS<b>02</b> SAPInstance \
     operations \$id=rsc_sap_<b>NW1</b>_ERS<b>02</b>-operations \
-    op monitor interval=11 timeout=60 on_fail=restart \
+    op monitor interval=11 timeout=60 on-fail=restart \
     params InstanceName=<b>NW1</b>_ERS<b>02</b>_<b>nw1-aers</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ERS<b>02</b>_<b>nw1-aers</b>" AUTOMATIC_RECOVER=false IS_ERS=true 
    
    sudo crm configure modgroup g-<b>NW1</b>_ASCS add rsc_sap_<b>NW1</b>_ASCS<b>00</b>
@@ -591,7 +626,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    sudo crm configure property maintenance-mode="false"
    </code></pre>
 
-  如果您是从较旧版本进行升级并切换到排队服务器 2，请参阅 SAP 注释[2641019](https://launchpad.support.sap.com/#/notes/2641019)。 
+  如果要从旧版本升级并切换到排队服务器 2，请参阅 SAP 说明 [2641019](https://launchpad.support.sap.com/#/notes/2641019)。 
 
    请确保群集状态正常，并且所有资源都已启动。 资源在哪个节点上运行并不重要。
 
@@ -605,17 +640,17 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    # stonith-sbd     (stonith:external/sbd): <b>Started nw1-cl-1</b>
    #  Resource Group: g-NW1_ASCS
    #      fs_NW1_ASCS        (ocf::heartbeat:Filesystem):    <b>Started nw1-cl-1</b>
-   #      nc_NW1_ASCS        (ocf::heartbeat:anything):      <b>Started nw1-cl-1</b>
+   #      nc_NW1_ASCS        (ocf::heartbeat:azure-lb):      <b>Started nw1-cl-1</b>
    #      vip_NW1_ASCS       (ocf::heartbeat:IPaddr2):       <b>Started nw1-cl-1</b>
    #      rsc_sap_NW1_ASCS00 (ocf::heartbeat:SAPInstance):   <b>Started nw1-cl-1</b>
    #  Resource Group: g-NW1_ERS
    #      fs_NW1_ERS (ocf::heartbeat:Filesystem):    <b>Started nw1-cl-0</b>
-   #      nc_NW1_ERS (ocf::heartbeat:anything):      <b>Started nw1-cl-0</b>
+   #      nc_NW1_ERS (ocf::heartbeat:azure-lb):      <b>Started nw1-cl-0</b>
    #      vip_NW1_ERS        (ocf::heartbeat:IPaddr2):       <b>Started nw1-cl-0</b>
    #      rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   <b>Started nw1-cl-0</b>
    </code></pre>
 
-## <a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>SAP NetWeaver 应用程序服务器准备
+## <a name="sap-netweaver-application-server-preparation"></a><a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>SAP NetWeaver 应用程序服务器准备
 
 某些数据库要求在应用程序服务器上执行数据库实例安装。 请准备好应用程序服务器虚拟机，使之能够在这些场合下使用。
 
@@ -756,7 +791,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
      DATABASE: <b>HN1</b>
    </code></pre>
 
-   输出显示，默认条目的 IP 地址正在指向虚拟机而不是负载均衡器的 IP 地址。 需将此条目更改为指向负载均衡器的虚拟主机名。 请确保使用相同端口（上述输出中为“30313”）和数据库名称（上述输出中为“HN1”）！
+   输出显示，默认条目的 IP 地址正在指向虚拟机而不是负载均衡器的 IP 地址。 需将此条目更改为指向负载均衡器的虚拟主机名。 请确保使用相同端口（上述输出中为“30313”）和数据库名称（上述输出中为“HN1”）********！
 
    <pre><code>su - <b>nw1</b>adm
    hdbuserstore SET DEFAULT <b>nw1-db:30313@HN1</b> <b>SAPABAP1</b> <b>&lt;password of ABAP schema&gt;</b>
@@ -768,7 +803,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 1. 测试 HAGetFailoverConfig、HACheckConfig 和 HACheckFailoverConfig
 
-   在当前运行 ASCS 实例的节点上运行以下命令作为 \<sapsid>adm。 如果命令失败，并显示“失败: 内存不足”消息，则原因可能是主机名中存在短划线。 这是一个已知问题，将由 SUSE 在 sap-suse-cluster-connector 包中进行修复。
+   在当前运行 ASCS 实例的节点上，以 \<sapsid>adm 身份运行以下命令。 如果命令失败，并显示“失败: 内存不足”消息，则原因可能是主机名中存在短划线。 这是一个已知问题，将由 SUSE 在 sap-suse-cluster-connector 包中进行修复。
 
    <pre><code>nw1-cl-0:nw1adm 54> sapcontrol -nr <b>00</b> -function HAGetFailoverConfig
    
@@ -826,12 +861,12 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    <pre><code>stonith-sbd     (stonith:external/sbd): Started nw1-cl-0
     Resource Group: g-NW1_ASCS
         fs_NW1_ASCS        (ocf::heartbeat:Filesystem):    Started nw1-cl-0
-        nc_NW1_ASCS        (ocf::heartbeat:anything):      Started nw1-cl-0
+        nc_NW1_ASCS        (ocf::heartbeat:azure-lb):      Started nw1-cl-0
         vip_NW1_ASCS       (ocf::heartbeat:IPaddr2):       Started nw1-cl-0
         rsc_sap_NW1_ASCS00 (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
     Resource Group: g-NW1_ERS
         fs_NW1_ERS (ocf::heartbeat:Filesystem):    Started nw1-cl-1
-        nc_NW1_ERS (ocf::heartbeat:anything):      Started nw1-cl-1
+        nc_NW1_ERS (ocf::heartbeat:azure-lb):      Started nw1-cl-1
         vip_NW1_ERS        (ocf::heartbeat:IPaddr2):       Started nw1-cl-1
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-1
    </code></pre>
@@ -853,12 +888,12 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    <pre><code>stonith-sbd     (stonith:external/sbd): Started nw1-cl-0
     Resource Group: g-NW1_ASCS
         fs_NW1_ASCS        (ocf::heartbeat:Filesystem):    Started nw1-cl-1
-        nc_NW1_ASCS        (ocf::heartbeat:anything):      Started nw1-cl-1
+        nc_NW1_ASCS        (ocf::heartbeat:azure-lb):      Started nw1-cl-1
         vip_NW1_ASCS       (ocf::heartbeat:IPaddr2):       Started nw1-cl-1
         rsc_sap_NW1_ASCS00 (ocf::heartbeat:SAPInstance):   Started nw1-cl-1
     Resource Group: g-NW1_ERS
         fs_NW1_ERS (ocf::heartbeat:Filesystem):    Started nw1-cl-0
-        nc_NW1_ERS (ocf::heartbeat:anything):      Started nw1-cl-0
+        nc_NW1_ERS (ocf::heartbeat:azure-lb):      Started nw1-cl-0
         vip_NW1_ERS        (ocf::heartbeat:IPaddr2):       Started nw1-cl-0
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
@@ -870,23 +905,26 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    <pre><code>stonith-sbd     (stonith:external/sbd): Started nw1-cl-0
     Resource Group: g-NW1_ASCS
         fs_NW1_ASCS        (ocf::heartbeat:Filesystem):    Started nw1-cl-1
-        nc_NW1_ASCS        (ocf::heartbeat:anything):      Started nw1-cl-1
+        nc_NW1_ASCS        (ocf::heartbeat:azure-lb):      Started nw1-cl-1
         vip_NW1_ASCS       (ocf::heartbeat:IPaddr2):       Started nw1-cl-1
         rsc_sap_NW1_ASCS00 (ocf::heartbeat:SAPInstance):   Started nw1-cl-1
     Resource Group: g-NW1_ERS
         fs_NW1_ERS (ocf::heartbeat:Filesystem):    Started nw1-cl-0
-        nc_NW1_ERS (ocf::heartbeat:anything):      Started nw1-cl-0
+        nc_NW1_ERS (ocf::heartbeat:azure-lb):      Started nw1-cl-0
         vip_NW1_ERS        (ocf::heartbeat:IPaddr2):       Started nw1-cl-0
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-   运行以下命令作为 \<sapsid>adm，迁移 ASCS 实例。
+   以 \<sapsid>adm 身份运行以下命令，迁移 ASCS 实例。
 
    <pre><code>nw1-cl-0:nw1adm 55> sapcontrol -nr 00 -host nw1-ascs -user nw1adm &lt;password&gt; -function HAFailoverToNode ""
    
    # run as root
    # Remove failed actions for the ERS that occurred as part of the migration
    nw1-cl-0:~ # crm resource cleanup rsc_sap_NW1_ERS02
+   # Remove migration constraints
+   nw1-cl-0:~ # crm resource clear rsc_sap_NW1_ASCS00
+   #INFO: Removed migration constraints for rsc_sap_NW1_ASCS00
    </code></pre>
 
    测试之后的资源状态：
@@ -894,12 +932,12 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    <pre><code>stonith-sbd     (stonith:external/sbd): Started nw1-cl-0
     Resource Group: g-NW1_ASCS
         fs_NW1_ASCS        (ocf::heartbeat:Filesystem):    Started nw1-cl-0
-        nc_NW1_ASCS        (ocf::heartbeat:anything):      Started nw1-cl-0
+        nc_NW1_ASCS        (ocf::heartbeat:azure-lb):      Started nw1-cl-0
         vip_NW1_ASCS       (ocf::heartbeat:IPaddr2):       Started nw1-cl-0
         rsc_sap_NW1_ASCS00 (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
     Resource Group: g-NW1_ERS
         fs_NW1_ERS (ocf::heartbeat:Filesystem):    Started nw1-cl-1
-        nc_NW1_ERS (ocf::heartbeat:anything):      Started nw1-cl-1
+        nc_NW1_ERS (ocf::heartbeat:azure-lb):      Started nw1-cl-1
         vip_NW1_ERS        (ocf::heartbeat:IPaddr2):       Started nw1-cl-1
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-1
    </code></pre>
@@ -911,12 +949,12 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    <pre><code>stonith-sbd     (stonith:external/sbd): Started nw1-cl-0
     Resource Group: g-NW1_ASCS
         fs_NW1_ASCS        (ocf::heartbeat:Filesystem):    Started nw1-cl-0
-        nc_NW1_ASCS        (ocf::heartbeat:anything):      Started nw1-cl-0
+        nc_NW1_ASCS        (ocf::heartbeat:azure-lb):      Started nw1-cl-0
         vip_NW1_ASCS       (ocf::heartbeat:IPaddr2):       Started nw1-cl-0
         rsc_sap_NW1_ASCS00 (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
     Resource Group: g-NW1_ERS
         fs_NW1_ERS (ocf::heartbeat:Filesystem):    Started nw1-cl-1
-        nc_NW1_ERS (ocf::heartbeat:anything):      Started nw1-cl-1
+        nc_NW1_ERS (ocf::heartbeat:azure-lb):      Started nw1-cl-1
         vip_NW1_ERS        (ocf::heartbeat:IPaddr2):       Started nw1-cl-1
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-1
    </code></pre>
@@ -936,12 +974,12 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    stonith-sbd     (stonith:external/sbd): Started nw1-cl-1
     Resource Group: g-NW1_ASCS
         fs_NW1_ASCS        (ocf::heartbeat:Filesystem):    Started nw1-cl-1
-        nc_NW1_ASCS        (ocf::heartbeat:anything):      Started nw1-cl-1
+        nc_NW1_ASCS        (ocf::heartbeat:azure-lb):      Started nw1-cl-1
         vip_NW1_ASCS       (ocf::heartbeat:IPaddr2):       Started nw1-cl-1
         rsc_sap_NW1_ASCS00 (ocf::heartbeat:SAPInstance):   Started nw1-cl-1
     Resource Group: g-NW1_ERS
         fs_NW1_ERS (ocf::heartbeat:Filesystem):    Started nw1-cl-1
-        nc_NW1_ERS (ocf::heartbeat:anything):      Started nw1-cl-1
+        nc_NW1_ERS (ocf::heartbeat:azure-lb):      Started nw1-cl-1
         vip_NW1_ERS        (ocf::heartbeat:IPaddr2):       Started nw1-cl-1
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-1
    
@@ -969,12 +1007,12 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    <pre><code>stonith-sbd     (stonith:external/sbd): Started nw1-cl-1
     Resource Group: g-NW1_ASCS
         fs_NW1_ASCS        (ocf::heartbeat:Filesystem):    Started nw1-cl-1
-        nc_NW1_ASCS        (ocf::heartbeat:anything):      Started nw1-cl-1
+        nc_NW1_ASCS        (ocf::heartbeat:azure-lb):      Started nw1-cl-1
         vip_NW1_ASCS       (ocf::heartbeat:IPaddr2):       Started nw1-cl-1
         rsc_sap_NW1_ASCS00 (ocf::heartbeat:SAPInstance):   Started nw1-cl-1
     Resource Group: g-NW1_ERS
         fs_NW1_ERS (ocf::heartbeat:Filesystem):    Started nw1-cl-0
-        nc_NW1_ERS (ocf::heartbeat:anything):      Started nw1-cl-0
+        nc_NW1_ERS (ocf::heartbeat:azure-lb):      Started nw1-cl-0
         vip_NW1_ERS        (ocf::heartbeat:IPaddr2):       Started nw1-cl-0
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
@@ -986,17 +1024,17 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    <pre><code>stonith-sbd     (stonith:external/sbd): Started nw1-cl-1
     Resource Group: g-NW1_ASCS
         fs_NW1_ASCS        (ocf::heartbeat:Filesystem):    Started nw1-cl-1
-        nc_NW1_ASCS        (ocf::heartbeat:anything):      Started nw1-cl-1
+        nc_NW1_ASCS        (ocf::heartbeat:azure-lb):      Started nw1-cl-1
         vip_NW1_ASCS       (ocf::heartbeat:IPaddr2):       Started nw1-cl-1
         rsc_sap_NW1_ASCS00 (ocf::heartbeat:SAPInstance):   Started nw1-cl-1
     Resource Group: g-NW1_ERS
         fs_NW1_ERS (ocf::heartbeat:Filesystem):    Started nw1-cl-0
-        nc_NW1_ERS (ocf::heartbeat:anything):      Started nw1-cl-0
+        nc_NW1_ERS (ocf::heartbeat:azure-lb):      Started nw1-cl-0
         vip_NW1_ERS        (ocf::heartbeat:IPaddr2):       Started nw1-cl-0
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-   通过编辑事务 su01 中的用户等方式创建一个排队锁。 在其中运行 ASCS 实例的节点上运行以下命令作为 \<sapsid>adm。 这些命令将停止 ASCS 实例并重新启动该实例。 如果使用排队服务器 1 体系结构，被应排入队列锁在此测试中会丢失。 如果使用排队服务器 2 体系结构，将保留排入队列。 
+   通过编辑事务 su01 中的用户等方式创建一个排队锁。 \<sapsid>在运行 ASCS 实例的节点上运行以下命令作为 adm。 这些命令将停止 ASCS 实例并重新启动该实例。 如果使用排队服务器 1 体系结构，则排队锁预计会在此测试中丢失。 如果使用排队服务器 2 体系结构，则将保留该排队。 
 
    <pre><code>nw1-cl-1:nw1adm 54> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>
@@ -1016,12 +1054,12 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    <pre><code>stonith-sbd     (stonith:external/sbd): Started nw1-cl-1
     Resource Group: g-NW1_ASCS
         fs_NW1_ASCS        (ocf::heartbeat:Filesystem):    Started nw1-cl-1
-        nc_NW1_ASCS        (ocf::heartbeat:anything):      Started nw1-cl-1
+        nc_NW1_ASCS        (ocf::heartbeat:azure-lb):      Started nw1-cl-1
         vip_NW1_ASCS       (ocf::heartbeat:IPaddr2):       Started nw1-cl-1
         rsc_sap_NW1_ASCS00 (ocf::heartbeat:SAPInstance):   Started nw1-cl-1
     Resource Group: g-NW1_ERS
         fs_NW1_ERS (ocf::heartbeat:Filesystem):    Started nw1-cl-0
-        nc_NW1_ERS (ocf::heartbeat:anything):      Started nw1-cl-0
+        nc_NW1_ERS (ocf::heartbeat:azure-lb):      Started nw1-cl-0
         vip_NW1_ERS        (ocf::heartbeat:IPaddr2):       Started nw1-cl-0
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
@@ -1033,12 +1071,12 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    <pre><code>stonith-sbd     (stonith:external/sbd): Started nw1-cl-1
     Resource Group: g-NW1_ASCS
         fs_NW1_ASCS        (ocf::heartbeat:Filesystem):    Started nw1-cl-1
-        nc_NW1_ASCS        (ocf::heartbeat:anything):      Started nw1-cl-1
+        nc_NW1_ASCS        (ocf::heartbeat:azure-lb):      Started nw1-cl-1
         vip_NW1_ASCS       (ocf::heartbeat:IPaddr2):       Started nw1-cl-1
         rsc_sap_NW1_ASCS00 (ocf::heartbeat:SAPInstance):   Started nw1-cl-1
     Resource Group: g-NW1_ERS
         fs_NW1_ERS (ocf::heartbeat:Filesystem):    Started nw1-cl-0
-        nc_NW1_ERS (ocf::heartbeat:anything):      Started nw1-cl-0
+        nc_NW1_ERS (ocf::heartbeat:azure-lb):      Started nw1-cl-0
         vip_NW1_ERS        (ocf::heartbeat:IPaddr2):       Started nw1-cl-0
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
@@ -1059,12 +1097,12 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    <pre><code>stonith-sbd     (stonith:external/sbd): Started nw1-cl-1
     Resource Group: g-NW1_ASCS
         fs_NW1_ASCS        (ocf::heartbeat:Filesystem):    Started nw1-cl-0
-        nc_NW1_ASCS        (ocf::heartbeat:anything):      Started nw1-cl-0
+        nc_NW1_ASCS        (ocf::heartbeat:azure-lb):      Started nw1-cl-0
         vip_NW1_ASCS       (ocf::heartbeat:IPaddr2):       Started nw1-cl-0
         rsc_sap_NW1_ASCS00 (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
     Resource Group: g-NW1_ERS
         fs_NW1_ERS (ocf::heartbeat:Filesystem):    Started nw1-cl-1
-        nc_NW1_ERS (ocf::heartbeat:anything):      Started nw1-cl-1
+        nc_NW1_ERS (ocf::heartbeat:azure-lb):      Started nw1-cl-1
         vip_NW1_ERS        (ocf::heartbeat:IPaddr2):       Started nw1-cl-1
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-1
    </code></pre>
@@ -1076,12 +1114,12 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    <pre><code>stonith-sbd     (stonith:external/sbd): Started nw1-cl-1
     Resource Group: g-NW1_ASCS
         fs_NW1_ASCS        (ocf::heartbeat:Filesystem):    Started nw1-cl-0
-        nc_NW1_ASCS        (ocf::heartbeat:anything):      Started nw1-cl-0
+        nc_NW1_ASCS        (ocf::heartbeat:azure-lb):      Started nw1-cl-0
         vip_NW1_ASCS       (ocf::heartbeat:IPaddr2):       Started nw1-cl-0
         rsc_sap_NW1_ASCS00 (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
     Resource Group: g-NW1_ERS
         fs_NW1_ERS (ocf::heartbeat:Filesystem):    Started nw1-cl-1
-        nc_NW1_ERS (ocf::heartbeat:anything):      Started nw1-cl-1
+        nc_NW1_ERS (ocf::heartbeat:azure-lb):      Started nw1-cl-1
         vip_NW1_ERS        (ocf::heartbeat:IPaddr2):       Started nw1-cl-1
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-1
    </code></pre>
@@ -1102,12 +1140,12 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    <pre><code>stonith-sbd     (stonith:external/sbd): Started nw1-cl-1
     Resource Group: g-NW1_ASCS
         fs_NW1_ASCS        (ocf::heartbeat:Filesystem):    Started nw1-cl-1
-        nc_NW1_ASCS        (ocf::heartbeat:anything):      Started nw1-cl-1
+        nc_NW1_ASCS        (ocf::heartbeat:azure-lb):      Started nw1-cl-1
         vip_NW1_ASCS       (ocf::heartbeat:IPaddr2):       Started nw1-cl-1
         rsc_sap_NW1_ASCS00 (ocf::heartbeat:SAPInstance):   Started nw1-cl-1
     Resource Group: g-NW1_ERS
         fs_NW1_ERS (ocf::heartbeat:Filesystem):    Started nw1-cl-0
-        nc_NW1_ERS (ocf::heartbeat:anything):      Started nw1-cl-0
+        nc_NW1_ERS (ocf::heartbeat:azure-lb):      Started nw1-cl-0
         vip_NW1_ERS        (ocf::heartbeat:IPaddr2):       Started nw1-cl-0
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
@@ -1119,12 +1157,12 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    <pre><code>stonith-sbd     (stonith:external/sbd): Started nw1-cl-1
     Resource Group: g-NW1_ASCS
         fs_NW1_ASCS        (ocf::heartbeat:Filesystem):    Started nw1-cl-1
-        nc_NW1_ASCS        (ocf::heartbeat:anything):      Started nw1-cl-1
+        nc_NW1_ASCS        (ocf::heartbeat:azure-lb):      Started nw1-cl-1
         vip_NW1_ASCS       (ocf::heartbeat:IPaddr2):       Started nw1-cl-1
         rsc_sap_NW1_ASCS00 (ocf::heartbeat:SAPInstance):   Started nw1-cl-1
     Resource Group: g-NW1_ERS
         fs_NW1_ERS (ocf::heartbeat:Filesystem):    Started nw1-cl-0
-        nc_NW1_ERS (ocf::heartbeat:anything):      Started nw1-cl-0
+        nc_NW1_ERS (ocf::heartbeat:azure-lb):      Started nw1-cl-0
         vip_NW1_ERS        (ocf::heartbeat:IPaddr2):       Started nw1-cl-0
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
@@ -1144,12 +1182,12 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    <pre><code>stonith-sbd     (stonith:external/sbd): Started nw1-cl-1
     Resource Group: g-NW1_ASCS
         fs_NW1_ASCS        (ocf::heartbeat:Filesystem):    Started nw1-cl-1
-        nc_NW1_ASCS        (ocf::heartbeat:anything):      Started nw1-cl-1
+        nc_NW1_ASCS        (ocf::heartbeat:azure-lb):      Started nw1-cl-1
         vip_NW1_ASCS       (ocf::heartbeat:IPaddr2):       Started nw1-cl-1
         rsc_sap_NW1_ASCS00 (ocf::heartbeat:SAPInstance):   Started nw1-cl-1
     Resource Group: g-NW1_ERS
         fs_NW1_ERS (ocf::heartbeat:Filesystem):    Started nw1-cl-0
-        nc_NW1_ERS (ocf::heartbeat:anything):      Started nw1-cl-0
+        nc_NW1_ERS (ocf::heartbeat:azure-lb):      Started nw1-cl-0
         vip_NW1_ERS        (ocf::heartbeat:IPaddr2):       Started nw1-cl-0
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
@@ -1161,12 +1199,12 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    <pre><code>stonith-sbd     (stonith:external/sbd): Started nw1-cl-1
     Resource Group: g-NW1_ASCS
         fs_NW1_ASCS        (ocf::heartbeat:Filesystem):    Started nw1-cl-1
-        nc_NW1_ASCS        (ocf::heartbeat:anything):      Started nw1-cl-1
+        nc_NW1_ASCS        (ocf::heartbeat:azure-lb):      Started nw1-cl-1
         vip_NW1_ASCS       (ocf::heartbeat:IPaddr2):       Started nw1-cl-1
         rsc_sap_NW1_ASCS00 (ocf::heartbeat:SAPInstance):   Started nw1-cl-1
     Resource Group: g-NW1_ERS
         fs_NW1_ERS (ocf::heartbeat:Filesystem):    Started nw1-cl-0
-        nc_NW1_ERS (ocf::heartbeat:anything):      Started nw1-cl-0
+        nc_NW1_ERS (ocf::heartbeat:azure-lb):      Started nw1-cl-0
         vip_NW1_ERS        (ocf::heartbeat:IPaddr2):       Started nw1-cl-0
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
@@ -1184,20 +1222,20 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    <pre><code>stonith-sbd     (stonith:external/sbd): Started nw1-cl-1
     Resource Group: g-NW1_ASCS
         fs_NW1_ASCS        (ocf::heartbeat:Filesystem):    Started nw1-cl-1
-        nc_NW1_ASCS        (ocf::heartbeat:anything):      Started nw1-cl-1
+        nc_NW1_ASCS        (ocf::heartbeat:azure-lb):      Started nw1-cl-1
         vip_NW1_ASCS       (ocf::heartbeat:IPaddr2):       Started nw1-cl-1
         rsc_sap_NW1_ASCS00 (ocf::heartbeat:SAPInstance):   Started nw1-cl-1
     Resource Group: g-NW1_ERS
         fs_NW1_ERS (ocf::heartbeat:Filesystem):    Started nw1-cl-0
-        nc_NW1_ERS (ocf::heartbeat:anything):      Started nw1-cl-0
+        nc_NW1_ERS (ocf::heartbeat:azure-lb):      Started nw1-cl-0
         vip_NW1_ERS        (ocf::heartbeat:IPaddr2):       Started nw1-cl-0
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
 ## <a name="next-steps"></a>后续步骤
 
+* [适用于 SAP 应用程序多 SID 的 SLES 上 Azure VM 中的 SAP NW 的 HA 指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
 * [适用于 SAP 的 Azure 虚拟机规划和实施][planning-guide]
 * [适用于 SAP 的 Azure 虚拟机部署][deployment-guide]
 * [适用于 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
-* 若要了解如何建立高可用性以及针对 Azure 上的 SAP HANA（大型实例）规划灾难恢复，请参阅 [Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md)。
 * 若要了解如何在 Azure VM 上建立 SAP HANA 高可用性以及规划灾难恢复，请参阅 [Azure 虚拟机 (VM) 上的 SAP HANA 高可用性][sap-hana-ha]

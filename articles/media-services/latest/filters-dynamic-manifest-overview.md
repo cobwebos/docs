@@ -1,6 +1,7 @@
 ---
-title: 筛选器和 Azure 媒体服务动态清单 | Microsoft Docs
-description: 本主题介绍如何创建筛选器，以便客户端能够使用它们来流式传输流的特定部分。 媒体服务将创建动态清单来存档此选择性流。
+title: 使用动态打包器筛选清单
+titleSuffix: Azure Media Services
+description: 了解如何使用动态打包器创建筛选器，以筛选并有选择性地流式传输清单。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,52 +12,51 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: 041a73cd2840e0b6a1840e15629d9c0e284e9890
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: cb7a399258dcab679468d2b8f699487b1ec5406b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66225519"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84705196"
 ---
-# <a name="pre-filtering-manifests-with-dynamic-packager"></a>预筛选与动态打包程序的清单
+# <a name="filter-your-manifests-using-dynamic-packager"></a>使用动态打包器筛选清单
 
-将内容流式传输到设备的自适应比特率，通常需要将一个清单的多个版本发布到目标特定的设备功能或可用网络带宽。 [动态打包程序](dynamic-packaging-overview.md)允许您指定筛选器可以筛选出特定编解码器、 分辨率、 比特率和音频跟踪组合上实时需创建多个副本中删除。 只需发布一组特定的目标设备 （iOS、 Android、 SmartTV 或浏览器） 和网络功能 （高带宽、 移动、 或低带宽方案） 配置筛选器与新的 URL。 在这种情况下，客户端可以处理通过查询字符串内容的流式处理 (通过指定可用[资产筛选器或帐户筛选器](filters-concept.md)) 和到流的特定部分的流中使用筛选器。
+将自适应比特率流内容传送到设备时，有时需要发布多个版本的清单来适应特定的设备功能或可用网络带宽。 使用[动态打包器](dynamic-packaging-overview.md)可以指定筛选器，用于即时筛选出特定的编解码器、分辨率、比特率和音频轨迹组合。 这种筛选消除了创建多个副本的需要。 只需使用一组根据目标设备（iOS、Android、SmartTV 或浏览器）和网络功能（高带宽、移动或低带宽方案）配置的一组特定筛选器发布新的 URL。 在这种情况下，客户端可以通过查询字符串处理内容流（通过指定可用的[资产筛选器或帐户筛选器](filters-concept.md)），并使用筛选器来流式传输流的特定部分。
 
-某些传递方案要求，请确保客户不能访问特定的跟踪。 例如，可能不想要发布包含到特定订阅服务器层的 HD 轨道的清单。 或者，可能想要删除特定的自适应比特率 (ABR) 跟踪，从而减少成本传递到不会受益于其他跟踪的特定设备。 在这种情况下可以将关联一组预先创建筛选器与你[流式处理定位符](streaming-locators-concept.md)上创建。 在这种情况下，客户端不能操作如何传输的内容，则由定义**流式处理定位符**。
+某些传送方案要求确保客户无法访问特定的轨迹。 例如，你可能不想要将包含 HD 轨迹的清单发布到特定的订户层。 或者，你可能想要删除特定的自适应比特率 (ABR) 轨迹，以降低传送到不会受益于更多轨迹的特定设备的成本。 在这种情况下，可以在创建时将预先创建的筛选器列表关联到[流定位符](streaming-locators-concept.md)。 于是，客户端将无法处理内容的流式传输方式，因为传输方式由**流定位符**定义。
 
-可以通过指定筛选将组合[流式处理定位符的筛选器](filters-concept.md#associating-filters-with-streaming-locator)+ 您的客户端在 URL 中指定的其他设备特定筛选器。 这可用于限制其他跟踪元数据或事件流、 音频语言或描述性的音频轨道等。 
+可以通过指定[针对流定位符的筛选器](filters-concept.md#associating-filters-with-streaming-locator)，以及客户端在 URL 中指定的其他设备特定筛选器，来组合筛选。 这种组合可以有效地限制其他轨迹，例如元数据或事件流、音频语言，或描述性的音频轨迹。
 
-指定不同的筛选器对你的流，此功能提供了一个强大**动态清单**操作解决方案以面向目标设备的多个用例场景。 本主题介绍与**动态清单**相关的概念，并提供可能需要使用此功能的示例方案。
+针对流指定不同筛选器的功能提供了一种强大的**动态清单**处理解决方案用于定位目标设备的多用例方案。 本主题介绍与**动态清单**相关的概念，并提供可以使用此功能的示例方案。
 
 > [!NOTE]
-> 动态清单不会更改资产和该资产的默认清单。 
-> 
+> 动态清单不会更改资产和该资产的默认清单。
 
-## <a name="manifests-overview"></a>清单概述
+## <a name="overview-of-manifests"></a>清单概述
 
-媒体服务支持 HLS、 MPEG DASH、 平滑流式处理协议。 作为的一部分[动态打包](dynamic-packaging-overview.md)，流式处理客户端清单 （HLS 主播放列表、 短划线媒体演示描述 (MPD)，和平滑流式处理） 动态生成基于在 URL 中的格式选择器。 请参阅中的交付协议[本节](dynamic-packaging-overview.md#delivery-protocols)。 
+Azure 媒体服务支持 HLS、MPEG DASH 和平滑流式处理协议。 作为[动态打包](dynamic-packaging-overview.md)的一部分，流式处理客户端清单（HLS Master 播放列表、DASH 媒体演播描述 [MPD] 和平滑流式处理）将会根据 URL 中的格式选择器动态生成。 有关详细信息，请参阅[常用按需工作流](dynamic-packaging-overview.md#to-prepare-your-source-files-for-delivery)中的传送协议。
 
 ### <a name="get-and-examine-manifest-files"></a>获取并检查清单文件
 
-指定筛选器轨迹属性条件的列表，应该根据该列表将流（直播或点播视频）的轨迹包含到动态创建的清单中。 若要获取并检查轨迹的属性，必须先加载平滑流式处理清单。
+指定筛选器轨迹属性条件的列表，应该根据该列表将流（直播或点播视频 [VOD]）的轨迹包含到动态创建的清单中。 若要获取并检查轨迹的属性，必须先加载平滑流式处理清单。
 
-[使用 .NET 上传、编码和流式传输文件](stream-files-tutorial-with-api.md)教程介绍了如何使用 .NET 创建流式处理 URL（参阅[生成 URL](stream-files-tutorial-with-api.md#get-streaming-urls) 部分）。 如果运行应用，某个 URL 将指向平滑流式处理清单：`https://amsaccount-usw22.streaming.media.azure.net/00000000-0000-0000-0000-0000000000000/ignite.ism/manifest`。<br/>请复制该 URL 并将其粘贴到浏览器的地址栏中。 随后将下载文件。 在所选的文本编辑器中打开该文件。
+[使用 .NET 上传、编码和流式传输文件](stream-files-tutorial-with-api.md#get-streaming-urls)教程介绍了如何使用 .NET 创建流式处理 URL。 如果运行应用，某个 URL 将指向平滑流式处理清单：`https://amsaccount-usw22.streaming.media.azure.net/00000000-0000-0000-0000-0000000000000/ignite.ism/manifest`。<br/> 请复制该 URL 并将其粘贴到浏览器的地址栏中。 随后将下载文件。 可以在任何文本编辑器中将其打开。
 
 有关 REST 示例，请参阅[使用 REST 上传、编码和流式传输文件](stream-files-tutorial-with-rest.md#list-paths-and-build-streaming-urls)。
 
 ### <a name="monitor-the-bitrate-of-a-video-stream"></a>监视视频流的比特率
 
-可以使用 [Azure Media Player 演示页](https://aka.ms/amp)监视视频流的比特率。 演示页在“诊断”选项卡中显示诊断信息： 
+可以使用 [Azure Media Player 演示页](https://aka.ms/azuremediaplayer)监视视频流的比特率。 演示页在“诊断”选项卡中显示诊断信息： 
 
 ![Azure Media Player 诊断][amp_diagnostics]
- 
-### <a name="examples-urls-with-filters-in-query-string"></a>示例：Url 查询字符串中的筛选器
 
-筛选器可以应用于自适应比特率流式处理协议：HLS、MPEG-DASH 和平滑流式处理。 下表显示了一些包含筛选器的 URL 示例：
+### <a name="examples-urls-with-filters-in-query-string"></a>示例:在查询字符串中包含筛选器的 URL
 
-|Protocol|示例|
+可将筛选器应用到 ABR 流式处理协议：HLS、MPEG-DASH 和平滑流式处理。 下表显示了一些包含筛选器的 URL 示例：
+
+|协议|示例|
 |---|---|
 |HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
@@ -64,84 +64,93 @@ ms.locfileid: "66225519"
 
 ## <a name="rendition-filtering"></a>再现内容筛选
 
-可选择将资产编码成多个编码配置文件（H.264 Baseline、H.264 High、AACL、AACH、Dolby Digital Plus），以及多个优质比特率。 不过，并非所有的客户端设备都支持资产的所有配置文件和比特率。 例如，早期的 Android 设备只支持 H.264 Baseline+AACL。 将较高的比特率发送到不能利用这些优势的设备会浪费带宽及设备计算资源。 此类设备必须解码所有给定信息，而目的仅仅是为了缩小信号以便能够显示。
+可选择将资产编码成多个编码配置文件（H.264 Baseline、H.264 High、AACL、AACH、Dolby Digital Plus），以及多个优质比特率。 不过，并非所有的客户端设备都支持所有的资产配置文件和比特率。 例如，早期的 Android 设备只支持 H.264 Baseline+AACL。 将较高的比特率发送到不能利用这些优势的设备会浪费带宽及设备计算资源。 此类设备必须解码所有给定信息，目的仅仅是为了缩小信息以便能够显示。
 
-有了动态清单，可以创建设备配置文件（例如移动配置文件、控制台、HD/SD 等），并包含你想要纳入配置文件中的轨迹与质量。
+借助动态清单，可以创建设备配置文件（例如移动配置文件、控制台或 HD/SD），并包含你想要纳入配置文件中的曲目与质量。 这称为“再现内容筛选”。 下图显示了一个示例。
 
-![再现内容筛选示例][renditions2]
+![使用动态清单的再现内容筛选示例][renditions2]
 
-以下示例使用编码器将夹层资产编码成七个 ISO MP4 视频再现内容（从 180p 到 1080p）。 编码的资产可以是[动态打包](dynamic-packaging-overview.md)成以下任一流协议：HLS、MPEG DASH 和平滑流式处理。  图表顶部显示了不包含筛选器的资产的 HLS 清单（包含全部七个再现内容）。  左下角显示名为“ott”的筛选器已应用到 HLS 清单。 “ott”筛选器指定要删除所有不低于 1 Mbps 的比特率，因此将最差的两个质量级别从响应中剥除。 在右下角显示已应用名为“mobile”的筛选器的 HLS 清单。 “mobile”筛选器指定删除分辨率大于 720p 的再现内容，因此会剥除两个 1080p 再现内容。
+以下示例使用编码器将夹层资产编码成七个 ISO MP4 视频再现内容（从 180p 到 1080p）。 编码的资产可[动态打包](dynamic-packaging-overview.md)成以下任一流协议：HLS、MPEG DASH 和平滑流式处理。
 
-![再现内容筛选][renditions1]
+下图的顶部显示了不包含筛选器的资产的 HLS 清单。 （它包含全部七个再现内容。）左下角显示了名为“ott”的筛选器已应用到 HLS 清单。 “ott”筛选器指定要删除所有低于 1 Mbps 的比特率，因此最差的两个质量级别已从响应中剥除。 右下角显示了名为“mobile”的筛选器已应用到 HLS 清单。 “mobile”筛选器指定要删除分辨率大于 720p 的再现内容，因此已剥除两个 1080p 再现内容。
 
-## <a name="removing-language-tracks"></a>删除语言轨迹
-你的资产可能包含多种音频语言，例如英语、西班牙语、法语等。通常，播放器 SDK 管理器会按默认选择音频轨迹，并根据用户的选择来选择可用音频轨迹。 开发此类播放器 SDK 相当有挑战性，因为各个设备特定的播放器框架之间需要不同的实现。 此外，播放器 API 在某些平台上受到限制，且不包含音频选择功能，因此用户无法选择或更改默认的音频轨迹。使用资产筛选器，可以通过创建只包含所需音频语言的筛选器来控制行为。
+![使用动态清单的再现内容筛选][renditions1]
 
-![语言轨迹筛选][language_filter]
+## <a name="removing-language-tracks"></a>删除语言音轨
+你的资产可能包含多种音频语言，例如英语、西班牙语、法语等。 通常，播放器 SDK 管理器会按默认选择音频轨迹，并根据用户的选择来选择可用音频轨迹。
 
-## <a name="trimming-start-of-an-asset"></a>修剪资产开头
-在大多数实时流事件中，操作员必须在发生实际事件之前进行某些测试。 例如，他们可以在事件开始之前包含如下静态内容：“节目即将开始”。 如果节目正在存档，则测试和静态数据也会一并存档并包含在演播中。 但是，此信息不应向客户端显示。 借助动态清单，可以创建开始时间筛选器，并从清单中删除不需要的数据。
+开发此类播放器 SDK 相当有挑战性，因为各个设备特定的播放器框架之间需要不同的实现。 此外，播放器 API 在某些平台上受到限制，且不包含音频选择功能，因此用户无法选择或更改默认的音频轨迹。使用资产筛选器，可以通过创建只包含所需音频语言的筛选器来控制行为。
 
-![剪裁开始][trim_filter]
+![使用动态清单的语言轨迹筛选][language_filter]
+
+## <a name="trimming-the-start-of-an-asset"></a>修剪资产开头
+
+大多数实时流事件中，操作员必须在发生实际事件之前进行某些测试。 例如，他们可以在事件开始之前提供如下盖板：“节目即将开始。”
+
+如果节目正在存档，测试和静态数据也会一并存档并包含在演播中。 但是，此信息不应向客户端显示。 借助动态清单，可以创建开始时间筛选器，并从清单中删除不需要的数据。
+
+![使用动态清单修剪资产的开头][trim_filter]
 
 ## <a name="creating-subclips-views-from-a-live-archive"></a>基于实时存档创建子剪辑（视图）
-许多实时事件的运行时间较长，并且实时存档可能包含多个事件。 实时事件结束后，广播者可能想要将实时存档分解成有序的节目启动和停止序列。 接下来，分别发布这些虚拟节目，但不后续处理实时存档，也不创建独立的资产（这会无法利用 CDN 中现有缓存片段的优势）。 此类虚拟节目的示例包括足球或篮球比赛中的上下半场（第几节）、棒球比赛中的局，或者任何体育项目的单项赛事。
 
-借助动态清单，可以使用开始/结束时间创建筛选器，并基于实时存档创建虚拟视图。 
+许多直播活动长期运行，直播存档可能包含多个活动。 直播活动结束后，广播者可能需要将实时存档分解成符合逻辑的节目启动和停止序列。
 
-![子剪辑筛选器][subclip_filter]
+您可以单独发布这些虚拟程序，而无需处理实时存档，也不会创建单独的资产（这不会获得 Cdn 中现有缓存片段的优势）。 此类虚拟节目的示例包括橄榄球或篮球比赛中的节、棒球比赛中的局，或者任何体育节目中的单项赛事。
 
-筛选的资产：
+借助动态清单，可以使用开始/结束时间创建筛选器，并基于实时存档创建虚拟视图。
 
-![滑雪][skiing]
+![使用动态清单的子剪辑筛选器][subclip_filter]
 
-## <a name="adjusting-presentation-window-dvr"></a>调整演播窗口（DVR）
-目前，Azure 媒体服务提供持续时间可设为 5 分钟到 25 小时的循环存档。 清单筛选可以基于存档创建循环 DVR 窗口存档，而不会删除媒体。 在许多情况下，广播者想要提供受限制的 DVR 窗口，此窗口可随着实时边缘移动，并同时保留更大的存档窗口。 广播者可能想要使用超出 DVR 窗口的数据来突出显示剪辑，或者想要为不同的设备提供不同的 DVR 窗口。 例如，大多数移动设备不处理大的 DVR 窗口（可以让移动设备有 2 分钟的 DVR 窗口，桌面客户端有 1 小时的 DVR 窗口）。
+下面是筛选的资产：
 
-![DVR 窗口][dvr_filter]
+![使用动态清单筛选的资产][skiing]
+
+## <a name="adjusting-the-presentation-window-dvr"></a>调整演播窗口 (DVR)
+
+目前，Azure 媒体服务提供持续时间可设为 1 分钟到 25 小时的循环存档。 清单筛选可以基于存档创建循环 DVR 窗口存档，而不会删除媒体。 许多情况下，广播者需要提供受限制的 DVR 窗口，此窗口可随着实时边缘移动，并同时保留更大的存档窗口。 广播者可能想要使用超出 DVR 窗口的数据来突出显示剪辑，或者想要为不同的设备提供不同的 DVR 窗口。 例如，大多数移动设备不处理大的 DVR 窗口（可以让移动设备有 2 分钟的 DVR 窗口，桌面客户端有 1 小时的 DVR 窗口）。
+
+![包含动态清单的 DVR 窗口][dvr_filter]
 
 ## <a name="adjusting-livebackoff-live-position"></a>调整实时补偿（实时位置）
-清单筛选可用于删除实时节目的实时边缘几秒钟的时间。 筛选操作使广播者可以在观众收到流之前（倒退 30 秒）先观赏预览发布点的演播，并创建广告插入点。 广播者接着可将这些广告及时推送到其客户端框架，以便能够接收与处理信息，然后借机播放广告。
 
-除了广告支持外，实时补偿设置可用于调整观众位置，使客户端偏移并到达实时边缘时，仍然可以从服务器获取片段，而不会收到 HTTP 404 或 412 错误。
+清单筛选可用于删除实时节目的实时边缘几秒钟的时间。 通过筛选，广播者便可以在观众收到流之前（倒退 30 秒）先观赏预览发布点的演播，并创建广告插入点。 接下来，广播者可将这些广告及时推送到他们的客户端框架，以便能够接收与处理信息，并借机播放广告。
 
-![livebackoff_filter][livebackoff_filter]
+除了广告支持外，还可使用实时补偿设置来调整观看者位置，以便在客户端偏移并命中实时边缘时，仍然可以从服务器获取片段。 这样，客户端就不会收到 HTTP 404 或 412 错误。
+
+![使用动态清单按实时后退时间筛选][livebackoff_filter]
 
 ## <a name="combining-multiple-rules-in-a-single-filter"></a>将多个规则合并成单个筛选器
-可以将多个筛选规则合并成单个筛选器。 例如，可以定义一个“范围规则”，以便将静态内容从实时存档中删除，并筛选出可用的比特率。 应用多个筛选规则时，最终结果会是所有规则的交集。
 
-![多规则][multiple-rules]
+可以将多个筛选规则合并成单个筛选器。 例如，可以定义一个“范围规则”，将静态内容从实时存档中删除，并筛选出可用的比特率。 应用多项筛选规则时，最终结果是所有规则的交集。
+
+![使用动态清单的多个筛选规则][multiple-rules]
 
 ## <a name="combining-multiple-filters-filter-composition"></a>组合多个筛选器（筛选器组合）
 
-也可以在单个 URL 中组合多个筛选器。 
+也可以在单个 URL 中组合多个筛选器。 以下方案演示了可能需要组合多个筛选器的原因：
 
-以下方案演示了可能需要组合多个筛选器的原因：
+1. 需要筛选视频质量（目的是限制视频质量）以供 Android 或 iPad 之类的移动设备使用。 若要删除其质量不符合需要的视频，可创建一个适合设备配置文件的帐户筛选器。 帐户筛选器可用于同一媒体服务帐户下的所有资产，这些资产并没有更多的其他联系。
+1. 还可以修改资产的开始时间和结束时间。 若要执行修剪，需要创建一个资产筛选器并设置开始/结束时间。
+1. 需要组合这两个筛选器。 如果不组合，则需要将质量筛选添加到修剪筛选器，这会导致筛选器的使用更加困难。
 
-1. 需要筛选视频质量（目的是限制视频质量）以供 Android 或 iPAD 之类的移动设备使用。 要删除其质量不符合需要的视频，可创建一个适合设备配置文件的帐户筛选器。 帐户筛选器可用于同一媒体服务帐户下的所有资产，这些资产并没有更多的其他联系。 
-2. 还可以修改资产的开始时间和结束时间。 为此，可以创建一个资产筛选器并设置开始/结束时间。 
-3. 希望能够将这些筛选器组合起来（如果不组合的话，则需要将质量筛选添加到进行修改的筛选器上，这会导致筛选器的使用更加困难）。
+若要组合筛选器，请在清单/播放列表 URL 中设置分号分隔格式的筛选器名称。 假设你有一个名为 *MyMobileDevice* 的筛选器，用于筛选质量，另外还有一个名为 *MyStartTime* 的筛选器，用于设置具体的开始时间。 最多可以组合三个筛选器。
 
-为了组合筛选器，需要在清单/播放列表 URL 中设置筛选器名称，用分号对名称进行分隔。 假设你有一个名为 MyMobileDevice  的筛选器，用于筛选质量，另外还有一个名为 MyStartTime  的筛选器，用于设置具体的开始时间。 可以将它们组合成下面这样：
-
-最多可以组合 3 个筛选器。 
-
-有关详细信息，请参阅[此](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)博客。
+有关详细信息，请参阅 [此博客文章](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)。
 
 ## <a name="considerations-and-limitations"></a>注意事项和限制
 
-- 不应设置 VoD 筛选器的 **forceEndTimestamp**、**presentationWindowDuration** 和 **liveBackoffDuration** 值。 这些值仅用于直播筛选器方案。 
-- 动态清单在 GOP 边界（主键帧）内运行，因此修剪后具有精确的 GOP。 
+- 不应设置 VOD 筛选器的 **forceEndTimestamp**、**presentationWindowDuration** 和 **liveBackoffDuration** 值。 它们仅用于动态筛选方案。
+- 动态清单在 GOP 边界（关键帧）内运行，因此修剪后具有精确的 GOP。
 - 可对帐户和资产筛选器使用相同的筛选器名称。 资产筛选器的优先级更高，会替代帐户筛选器。
-- 如果更新筛选器，它可能需要 2 分钟的时间为流式处理终结点来刷新规则。 如果内容是通过使用某些筛选器提供的（并在代理和 CDN 缓存中缓存），则更新这些筛选器会导致播放器失败。 建议在更新筛选器之后清除缓存。 如果此选项不可用，请考虑使用其他筛选器。
-- 客户需要手动下载清单，并分析确切的 startTimestamp 和时间刻度。
-    
+- 如果更新筛选器，则流式处理终结点需要最多 2 分钟来刷新规则。 如果你使用了筛选器来处理内容（并在代理和 CDN 缓存中缓存了内容），则更新这些筛选器会导致播放器失败。 我们建议在更新筛选器之后清除缓存。 如果无法做到这一点，请考虑使用其他筛选器。
+- 客户需要手动下载清单，并分析确切的开始时间戳和时间刻度。
+
     - 若要确定资产中轨迹的属性，请[获取并检查清单文件](#get-and-examine-manifest-files)。
-    - 设置资产筛选器时间戳属性的公式： <br/>startTimestamp = &lt;清单中的开始时间&gt; +  &lt;预期筛选器开始时间（秒）&gt;*时间刻度
+    - 设置资产筛选器时间戳属性的公式是： <br/>startTimestamp = &lt;清单中的开始时间&gt; +  &lt;预期筛选器开始时间（秒）&gt;* 时间刻度
 
 ## <a name="next-steps"></a>后续步骤
 
-以下文章介绍了如何以编程方式创建筛选器。  
+以下文章介绍了如何以编程方式创建筛选器：  
 
 - [使用 REST API 创建筛选器](filters-dynamic-manifest-rest-howto.md)
 - [使用 .NET 创建筛选器](filters-dynamic-manifest-dotnet-howto.md)

@@ -1,22 +1,16 @@
 ---
 title: 使用 Azure Batch 进行并行 R 模拟
 description: 教程 - 分步说明如何在 Azure Batch 中使用 R doAzureParallel 包运行 Monte Carlo 财务模拟
-services: batch
-author: laurenhughes
-manager: jeconnoc
-ms.assetid: ''
-ms.service: batch
 ms.devlang: r
 ms.topic: tutorial
 ms.date: 01/23/2018
-ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: a3f760f31bcd27c5f3d3289aa799d6886df17e15
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: dc5c022b4722f844e0b3c117bb5961843865bd55
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779975"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418171"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>教程：使用 Azure Batch 运行并行 R 模拟 
 
@@ -110,7 +104,7 @@ generateClusterConfig("cluster.json")
 * 将 `maxTasksPerNode` 增加到 *2*，以便充分利用每个节点上的两个核心
 * 将 `dedicatedNodes` 设置为 *0*，以便尝试适用于 Batch 的低优先级 VM。 将 `lowPriorityNodes` 的 `min` 设置为 *5*， 并将 `max` 设置为 *10*，或者根据需要选择更小的数字。 
 
-其余设置保留默认值，然后保存文件。 如下图所示：
+其余设置保留默认值，然后保存文件。 该属性应与下面类似：
 
 ```json
 {

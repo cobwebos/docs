@@ -4,25 +4,24 @@ description: 本文介绍如何使用 Azure CLI 通过路由表路由网络流�
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: ff5897766bb56b76a34940ecd786773fd844a336
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 70f7bd4443602f6f18be54c5bc4ff038e868e58e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683113"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84703343"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>使用 Azure CLI 通过路由表路由网络流量
 
@@ -40,7 +39,7 @@ ms.locfileid: "64683113"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.28 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.28 或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
 
 ## <a name="create-a-route-table"></a>创建路由表
 
@@ -51,11 +50,11 @@ ms.locfileid: "64683113"
 az group create \
   --name myResourceGroup \
   --location eastus
-``` 
+```
 
 使用 [az network route-table create](/cli/azure/network/route-table#az-network-route-table-create) 创建路由表。 以下示例创建名为 *myRouteTablePublic* 的路由表。 
 
-```azurecli-interactive 
+```azurecli-interactive
 # Create a route table
 az network route-table create \
   --resource-group myResourceGroup \
@@ -74,7 +73,7 @@ az network route-table route create \
   --address-prefix 10.0.1.0/24 \
   --next-hop-type VirtualAppliance \
   --next-hop-ip-address 10.0.2.4
-``` 
+```
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>将路由表关联到子网
 
@@ -123,7 +122,7 @@ NVA 是执行网络功能（如路由、防火墙或 WAN 优化）的 VM。
 
 使用 [az vm create](/cli/azure/vm) 在 *DMZ* 子网中创建 NVA。 创建 VM 时，Azure 默认会创建一个公共 IP 地址并将其分配到该 VM。 `--public-ip-address ""` 参数指示 Azure 不要创建公共 IP 地址并将其分配到该 VM，因为不需要从 Internet 连接到该 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。
 
-```azure-cli-interactive
+```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
   --name myVmNva \
@@ -155,11 +154,12 @@ az vm extension set \
   --publisher Microsoft.Azure.Extensions \
   --settings '{"commandToExecute":"sudo sysctl -w net.ipv4.ip_forward=1"}'
 ```
+
 执行该命令最长需要花费一分钟时间。
 
 ## <a name="create-virtual-machines"></a>创建虚拟机
 
-在虚拟网络中创建两个 VM，以便可以在后续步骤中验证来自公共子网的流量是否通过 NVA 路由到专用子网。 
+在虚拟网络中创建两个 VM，以便可以在后续步骤中验证来自公共子网的流量是否通过 NVA 路由到专用子网。   
 
 使用 [az vm create](/cli/azure/vm) 在公共子网中创建一个 VM。 `--no-wait` 参数支持 Azure 在后台中执行命令，因此可以继续执行下一个命令。 为了简化本文的内容，此处使用了密码。 在生产部署中通常使用密钥。 如果使用密钥，还必须配置 SSH 代理转发。 有关详细信息，请参阅 SSH 客户端的文档。 将以下命令中的 `<replace-with-your-password>` 替换为所选的密码。
 
@@ -177,7 +177,7 @@ az vm create \
   --no-wait
 ```
 
-在专用子网中创建一个 VM。
+在专用子网中创建一个 VM  。
 
 ```azurecli-interactive
 az vm create \
@@ -192,7 +192,7 @@ az vm create \
 
 创建 VM 需要几分钟时间。 创建 VM 之后，Azure CLI 将显示类似于以下示例的信息： 
 
-```azurecli 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVmPrivate",
@@ -204,13 +204,14 @@ az vm create \
   "resourceGroup": "myResourceGroup"
 }
 ```
-记下 publicIpAddress。 在后面的步骤中会使用此地址通过 Internet 访问 VM。
+
+记下 publicIpAddress。  在后面的步骤中会使用此地址通过 Internet 访问 VM。
 
 ## <a name="route-traffic-through-an-nva"></a>通过 NVA 路由流量
 
-使用以下命令创建与 *myVmPrivate* VM 的 SSH 会话。 替换 *\<publicIpAddress >* VM 的公共 IP 地址。 在上面的示例中，IP 地址为 *13.90.242.231*。
+使用以下命令创建与 *myVmPrivate* VM 的 SSH 会话。 将替换 *\<publicIpAddress>* 为 VM 的公共 IP 地址。 在上面的示例中，IP 地址为 *13.90.242.231*。
 
-```bash 
+```bash
 ssh azureuser@<publicIpAddress>
 ```
 
@@ -218,7 +219,7 @@ ssh azureuser@<publicIpAddress>
 
 使用以下命令在 *myVmPrivate* VM 上安装跟踪路由：
 
-```bash 
+```bash
 sudo apt-get install traceroute
 ```
 
@@ -228,9 +229,9 @@ sudo apt-get install traceroute
 traceroute myVmPublic
 ```
 
-响应类似于以下示例：
+其响应类似于如下示例：
 
-```bash
+```output
 traceroute to myVmPublic (10.0.0.4), 30 hops max, 60 byte packets
 1  10.0.0.4 (10.0.0.4)  1.404 ms  1.403 ms  1.398 ms
 ```
@@ -239,13 +240,13 @@ traceroute to myVmPublic (10.0.0.4), 30 hops max, 60 byte packets
 
 使用以下命令从 *myVmPrivate* VM 通过 SSH 连接到 *myVmPublic* VM：
 
-```bash 
+```bash
 ssh azureuser@myVmPublic
 ```
 
 使用以下命令在 *myVmPublic* VM 上安装跟踪路由：
 
-```bash 
+```bash
 sudo apt-get install traceroute
 ```
 
@@ -255,14 +256,15 @@ sudo apt-get install traceroute
 traceroute myVmPrivate
 ```
 
-响应类似于以下示例：
+其响应类似于如下示例：
 
-```bash
+```output
 traceroute to myVmPrivate (10.0.1.4), 30 hops max, 60 byte packets
 1  10.0.2.4 (10.0.2.4)  0.781 ms  0.780 ms  0.775 ms
 2  10.0.1.4 (10.0.0.4)  1.404 ms  1.403 ms  1.398 ms
 ```
-可以看到，第一个跃点为 10.0.2.4，即 NVA 的专用 IP 地址。 第二个跃点为 10.0.1.4，即 *myVmPrivate* VM 的专用 IP 地址。 添加到 *myRouteTablePublic* 路由表并关联到公共子网的路由导致 Azure 通过 NVA 路由流量，而不是直接将流量路由到专用子网。
+
+可以看到，第一个跃点为 10.0.2.4，即 NVA 的专用 IP 地址。 第二个跃点为 10.0.1.4，即 *myVmPrivate* VM 的专用 IP 地址。 添加到 *myRouteTablePublic* 路由表并关联到公共子网的路由导致 Azure 通过 NVA 路由流量，而不是直接将流量路由到专用子网。  
 
 同时关闭与 *myVmPublic* VM 和 *myVmPrivate* VM 的 SSH 会话。
 
@@ -270,7 +272,7 @@ traceroute to myVmPrivate (10.0.1.4), 30 hops max, 60 byte packets
 
 如果不再需要资源组及其包含的所有资源，可以使用 [az group delete](/cli/azure/group) 将其删除。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup --yes
 ```
 

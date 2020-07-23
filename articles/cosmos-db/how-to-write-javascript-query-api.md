@@ -1,25 +1,25 @@
 ---
-title: 如何在 Azure Cosmos DB 中使用 JavaScript 查询 API 编写存储过程和触发器
+title: 在 Azure Cosmos DB 中使用 JavaScript 查询 API 编写存储过程和触发器
 description: 了解如何在 Azure Cosmos DB 中使用 JavaScript 查询 API 编写存储过程和触发器
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 05/23/2019
-ms.author: mjbrown
-ms.openlocfilehash: f465ac91936b766d2c19ea8efd67b3acc8df6d75
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: HT
+ms.topic: how-to
+ms.date: 05/07/2020
+ms.author: tisande
+ms.openlocfilehash: 620b05b306622a0102a4fd932c013bdb9574c35c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243932"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262848"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>如何使用 JavaScript 查询 API 在 Azure Cosmos DB 中编写存储过程和触发器
 
 Azure Cosmos DB 允许使用流畅的 JavaScript 接口执行优化的查询，不需要了解可以用来编写存储过程或触发器的 SQL 语言。 若要详细了解 Azure Cosmos DB 对 JavaScript 查询 API 的支持，请参阅[在 Azure Cosmos DB 中使用 JavaScript 语言集成的查询 API](javascript-query-api.md) 一文。
 
-## <a id="stored-procedures"></a>使用 JavaScript 查询 API 的存储过程
+## <a name="stored-procedure-using-the-javascript-query-api"></a><a id="stored-procedures"></a>使用 JavaScript 查询 API 的存储过程
 
-下面的代码示例是一个有关在存储过程的上下文中使用 JavaScript 查询 API 的示例。 此存储过程使用 `__.filter()` 方法插入一个由输入参数指定的 Azure Cosmos DB 项并更新元数据文档，其中 minSize、maxSize 和 totalSize 以输入项的大小属性为基础。
+下面的代码示例是一个有关在存储过程的上下文中使用 JavaScript 查询 API 的示例。 此存储过程插入由输入参数指定的 Azure Cosmos 项，并使用 `__.filter()` 方法更新元数据文档，其中 minSize、maxSize 和 totalSize 基于输入项的 size 属性。
 
 > [!NOTE]
 > 使用 JavaScript 查询 API 时，`__`（双下划线）是 `getContext().getCollection()` 的别名。

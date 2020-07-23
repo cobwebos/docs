@@ -1,39 +1,44 @@
 ---
-title: Azure 应用程序解决方案模板产品/服务发布指南 |Azure Marketplace
-description: 本文介绍在 Azure 市场中发布解决方案模板的要求。
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
-manager: nunoc
+title: Azure 应用程序的发布指南解决方案模板产品/服务-Azure Marketplace
+description: 本文介绍了在 Azure Marketplace 中发布解决方案模板的要求。
 ms.service: marketplace
-ms.topic: article
-ms.date: 11/15/2018
-ms.author: ellacroi
-ms.openlocfilehash: c2393b6ea9f1a2c2b35be63272743e081f4ae240
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+author: msjogarrig
+ms.author: jogarrig
+ms.date: 04/22/2020
+ms.openlocfilehash: 9933e2fd170f8d2fd2f3b483670f184d0cd5eeb5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937751"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103052"
 ---
-# <a name="azure-applications-solution-template-offer-publishing-guide"></a>Azure 应用程序：解决方案模板产品/服务发布指南
+# <a name="publishing-guide-for-azure-applications-solution-template-offers"></a>Azure 应用程序的发布指南解决方案模板产品
 
-解决方案模板是在市场中发布解决方案的主要方式之一。 使用本指南了解此产品/服务的要求。 
+本文介绍发布解决方案模板产品/服务的要求，这是在 Azure Marketplace 中发布 Azure 应用程序产品/服务的一种方法。 解决方案模板产品类型需要[Azure 资源管理器模板（ARM 模板）](../azure-resource-manager/templates/overview.md)才能自动部署解决方案基础结构。
 
-如果解决方案需要在单个 VM 以外实现附加的部署和配置自动化，请使用“Azure 应用：解决方案模板”产品/服务类型。 可以使用“Azure 应用：解决方案模板”自动预配一个或多个 VM。 还可以预配网络和存储资源。 “Azure 应用：解决方案模板”产品/服务类型为单个 VM 和整个基于 IaaS 的解决方案提供自动化优势。
+在以下条件下使用 Azure 应用程序*解决方案模板*产品/服务类型：
 
-这些解决方案模板是通过市场部署和计费的事务产品/服务。 用户看到的号召性用语是“立即获取”。
+- 你的解决方案需要在单个虚拟机（VM）（例如 Vm、网络和存储资源的组合）之外实现额外的部署和配置自动化。
+- 你的客户将自行管理解决方案。
 
+客户查看此产品/服务类型的操作的调用*现在立即获得*。
 
-## <a name="requirements-for-solution-templates"></a>解决方案模板的要求
+## <a name="requirements-for-solution-template-offers"></a>解决方案模板提供的要求
 
 | **要求** | **详细信息**  |
 | ---------------  | -----------  |
-|计费和计量    |  资源将在客户的 Azure 订阅中预配。 即用即付 (PAYGO) 虚拟机将通过 Microsoft 与客户进行交易，通过客户的 Azure 订阅 (PAYGO) 进行计费。  <br/> 如果是自带许可 (BYOL)，虽然 Microsoft 将对客户订阅中产生的基础结构成本进行计费，但你会直接向客户支付软件许可费用。   |
-|与 Azure 兼容的虚拟硬盘 (VHD)  |   必须基于 Windows 或 Linux 构建 VM。  有关详细信息，[请参阅创建与 Azure 兼容的 VHD](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)。 |
-| 客户使用情况归因 | 发布到 Azure 市场的所有解决方案模板都需要启用客户使用情况归因。 有关客户使用情况归因及其启用方式的详细信息，请参阅 [Azure 合作伙伴客户使用情况归因](./azure-partner-customer-usage-attribution.md)。  |
-|  |  |
+|计费和计量    |  解决方案模板产品/服务不是事务提供，但可用于部署通过 Microsoft 商业市场计费的付费 VM 产品/服务。 解决方案的 ARM 模板部署的资源是在客户的 Azure 订阅中设置的。 即用即付虚拟机通过 Microsoft 与客户进行交易，并通过客户的 Azure 订阅进行计费。<br/> 对于自带许可证（BYOL）计费，虽然 Microsoft 会对客户订阅中的基础结构成本收费，但你可以直接向客户收取软件许可费用。   |
+|与 Azure 兼容的虚拟硬盘 (VHD)  |   必须基于 Windows 或 Linux 构建 VM。 有关详情，请参阅： <ul> <li>[创建 Azure 应用程序产品/服务](./partner-center-portal/create-new-azure-apps-offer.md)（适用于 Windows vhd）。</li><li>[Azure 上的 linux 分发](../virtual-machines/linux/endorsed-distros.md)版（适用于 linux vhd）。</li></ul> |
+| 客户使用情况归因 | 在 Azure Marketplace 中发布的所有解决方案模板上都需要启用客户使用情况归属。 有关客户使用情况和如何启用的详细信息，请参阅[Azure 合作伙伴客户使用归属](./azure-partner-customer-usage-attribution.md)。  |
+| 使用托管磁盘 | 对于 Azure 中的基础结构即服务（IaaS） Vm，[托管磁盘](../virtual-machines/windows/managed-disks-overview.md)是默认选项。 必须使用解决方案模板中的托管磁盘。 <ul><li>若要更新解决方案模板，请遵循在[Azure 中使用托管磁盘资源管理器模板](../virtual-machines/windows/using-managed-disks-template-deployments.md)中的指南，并使用提供的[示例](https://github.com/Azure/azure-quickstart-templates)。<br><br> </li><li>若要在 Azure Marketplace 中将 VHD 作为映像发布，请使用以下方法之一将托管磁盘的基础 VHD 导入到存储帐户：<ul><li>[Azure PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd.md) </li> <li> [Azure CLI](../virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd.md) </li> </ul></ul> |
 
 ## <a name="next-steps"></a>后续步骤
-如果尚未注册，请在市场中[注册](https://azuremarketplace.microsoft.com/sell)。
 
-如果已注册并正在创建新产品/服务或正在使用现有产品/服务，请登录到[云合作伙伴门户](https://cloudpartner.azure.com)创建或完成产品/服务。
+如果尚未执行此操作，请了解如何[使用 Azure 市场发展云业务](https://azuremarketplace.microsoft.com/sell)。
+
+若要注册并开始使用合作伙伴中心，请执行以下操作：
+
+- [登录合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以创建或完成产品/服务。
+- 有关详细信息，请参阅[创建 Azure 应用程序产品/服务](./partner-center-portal/create-new-azure-apps-offer.md)。

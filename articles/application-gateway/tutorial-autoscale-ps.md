@@ -1,25 +1,25 @@
 ---
-title: 教程：创建具有预留 IP 地址的自动缩放区域冗余应用程序网关 - Azure PowerShell
+title: 教程：改善 Web 应用访问 - Azure 应用程序网关
 description: 在本教程中，了解如何使用 Azure PowerShell 创建具有预留 IP 地址的自动缩放区域冗余应用程序网关。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 2/14/2019
+ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8ee43a54df019b862d1f8698363d8b0a022bdcb4
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: e07fc34c7177e3a1dace34ab298b64dc3aa6a06a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947148"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74011366"
 ---
 # <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>教程：创建可改进 Web 应用程序访问的应用程序网关
 
 如果你是希望改进 Web 应用程序访问的 IT 管理员，则可以优化应用程序网关，以根据客户需求进行缩放并跨多个可用性区域。 本教程可帮助你配置执行此操作的 Azure 应用程序网关功能：自动缩放、区域冗余和保留的 VIP（静态 IP）。 将使用 Azure PowerShell cmdlet 和 Azure 资源管理器部署模型来解决此问题。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建自签名证书
@@ -101,7 +101,7 @@ $vnet = New-AzvirtualNetwork -Name "AutoscaleVNet" -ResourceGroupName $rg `
 
 ## <a name="create-a-reserved-public-ip"></a>创建保留的公共 IP
 
-将 PublicIPAddress 的分配方法指定为 Static。 自动缩放应用程序网关 VIP 只能为静态。 不支持动态 IP。 只支持标准 PublicIpAddress SKU。
+将 PublicIPAddress 的分配方法指定为 Static  。 自动缩放应用程序网关 VIP 只能为静态。 不支持动态 IP。 只支持标准 PublicIpAddress SKU。
 
 ```azurepowershell
 #Create static public IP

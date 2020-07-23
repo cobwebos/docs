@@ -1,9 +1,9 @@
 ---
-ms.openlocfilehash: a78649033b84a726b6e7daee95efc4192ce85c3a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: MT
+ms.openlocfilehash: bb75ea0f8eb3fcf85a06cadd68ae111d51369891
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66110755"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "76694440"
 ---
-需要尝试创建新的云定位点之前捕获的足够环境数据。
+如前所述，在尝试创建新的云空间定位点之前，需要捕获足够的环境数据。 这意味着 `ReadyForCreateProgress` 必须大于 1，不过我们建议你等到 `RecommendedForCreateProgress` 大于 1 才这样做。

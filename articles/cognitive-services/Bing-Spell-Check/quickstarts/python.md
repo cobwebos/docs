@@ -1,25 +1,28 @@
 ---
-title: 快速入门：使用必应拼写检查 REST API 和 Python 检查拼写
-titlesuffix: Azure Cognitive Services
-description: 开始使用必应拼写检查 REST API 检查拼写和语法。
+title: 快速入门：使用 REST API 和 Python 检查拼写 - 必应拼写检查
+titleSuffix: Azure Cognitive Services
+description: 通过本快速入门开始使用必应拼写检查 REST API 检查拼写和语法。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: e74cc01d9104ed4f26d857f3a99eb21e312a7f59
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.custom: tracking-python
+ms.openlocfilehash: 65994313549c1744da58c5d63a70e803777f7f53
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389731"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84611080"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>快速入门：使用必应拼写检查 REST API 和 Python 检查拼写
 
-根据此快速入门中的说明对必应拼写检查 REST API 进行第一次调用。 此简单的 Python 应用程序将向 API 发送请求并返回一系列建议的更正。 虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py) 上提供了此应用程序的源代码
+根据此快速入门中的说明对必应拼写检查 REST API 进行第一次调用。 此简单的 Python 应用程序将向 API 发送请求并返回一系列建议的更正。 
+
+虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py) 上提供了此应用程序的源代码
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,14 +32,14 @@ ms.locfileid: "66389731"
 
 ## <a name="initialize-the-application"></a>初始化应用程序
 
-1. 在偏好的 IDE 或编辑器中创建新的 Python 文件，然后添加以下 import 语句。
+1. 在你喜欢使用的 IDE 或编辑器中创建新的 Python 文件，然后添加以下 import 语句：
 
    ```python
    import requests
    import json
    ```
 
-2. 为要进行拼写检查的文本、订阅密钥和必应拼写检查终结点创建变量。
+2. 为要进行拼写检查的文本、订阅密钥和必应拼写检查终结点创建变量。 你可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```python
     api_key = "<ENTER-KEY-HERE>"
@@ -52,8 +55,12 @@ ms.locfileid: "66389731"
     data = {'text': example_text}
     ```
 
-2. 为请求添加参数。 在 `mkt=` 之后追加​​市场代码。 市场代码指示发出请求的国家/地区。 同样，请在 `&mode=` 之后追加拼写检查模式。 模式为 `proof`（捕获大部分拼写/语法错误）或者 `spell`（捕获大部分拼写错误，但是捕获的语法错误较少）。
+2. 为请求添加参数： 
 
+   1. 用 `=` 运算符将市场代码分配到 `mkt` 参数。 市场代码指示发出请求的国家/地区的代码。 
+
+   1. 使用 `&` 运算符添加 `mode` 参数，然后分配拼写检查模式。 模式可以是 `proof`（捕获大部分拼写/语法错误）或 `spell`（捕获大部分拼写错误，但是捕获的语法错误较少）。 
+ 
     ```python
     params = {
         'mkt':'en-us',
@@ -84,6 +91,15 @@ ms.locfileid: "66389731"
     json_response = response.json()
     print(json.dumps(json_response, indent=4))
     ```
+
+
+## <a name="run-the-application"></a>运行应用程序
+
+如果使用命令行，则使用以下命令运行应用程序：
+
+```bash
+python <FILE_NAME>.py
+```
 
 ## <a name="example-json-response"></a>示例 JSON 响应
 

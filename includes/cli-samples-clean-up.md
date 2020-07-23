@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/21/2018
 ms.author: cephalin
 ms.openlocfilehash: e7494db94c7d8f0fc610ab297798749bffd55e7c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66126326"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "67173297"
 ---
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -19,4 +19,4 @@ ms.locfileid: "66126326"
 az group delete --name myResourceGroup
 ```
 
-此命令可能需要花费一分钟时间运行。
+此命令可能需要花费一点时间运行。

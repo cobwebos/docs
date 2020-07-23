@@ -1,92 +1,274 @@
 ---
-title: 使用 Azure 逻辑应用连接到任何 HTTP 终结点 | Microsoft Docs
-description: 使用 Azure 逻辑应用自动完成与任何 HTTP 终结点通信的任务和工作流
+title: 使用 HTTP 或 HTTPS 调用服务终结点
+description: 从 Azure 逻辑应用向服务终结点发送出站 HTTP 或 HTTPS 请求
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
-ms.topic: article
+ms.reviewer: jonfan, logicappspm
+ms.topic: conceptual
+ms.date: 06/09/2020
 tags: connectors
-ms.date: 08/25/2018
-ms.openlocfilehash: 22b21512c78a06f2639ca9339f3b7a20c7f5bfa3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 23c6a555909d43f640fb5089fb60da8bac065886
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64713812"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609501"
 ---
-# <a name="call-http-or-https-endpoints-with-azure-logic-apps"></a>使用 Azure 逻辑应用调用 HTTP 或 HTTPS 终结点
+# <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>从 Azure 逻辑应用通过 HTTP 或 HTTPS 调用服务终结点
 
-使用 Azure 逻辑应用和超文本传输协议 (HTTP) 连接器，可以通过生成逻辑应用来自动完成与任何 HTTP 或 HTTPS 终结点通信的工作流。 例如，可以监视网站的服务终结点。 当该终结点上发生某个事件（例如，网站关闭）时，该事件会触发逻辑应用的工作流并运行指定的操作。
+使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和内置 HTTP 触发器或操作，可以创建自动化任务和工作流，通过 HTTP 或 HTTPS 向服务终结点发送请求。 例如，可按特定的计划检查网站的服务终结点，从而对该终结点进行监视。 当该终结点上发生特定的事件（例如网站关闭）时，该事件会触发逻辑应用的工作流并运行该工作流中的操作。 如果要改为接收和响应入站 HTTPS 调用，请使用内置[请求触发器或响应操作](../connectors/connectors-native-reqres.md)。
 
-可将 HTTP 触发器用作工作流中的第一个步骤，用于定期检查或轮询某个终结点。 每次检查时，该触发器会向该终结点发送调用或请求。 该终结点的响应确定了逻辑应用的工作流是否运行。 触发器将响应中的任何内容传递到逻辑应用中的操作。 
+* 若要按定期计划检查或轮询某个终结点，可[添加 HTTP 触发器](#http-trigger)作为工作流中的第一个步骤**。 每次触发器检查终结点时，触发器都会调用该终结点或向该终结点发送请求**。 该终结点的响应确定了逻辑应用的工作流是否运行。 触发器将终结点响应中的任何内容传递到逻辑应用中的操作。
 
-可将 HTTP 操作用作工作流中的另一个步骤，用于调用所需的终结点。 该终结点的响应确定了工作流剩余操作的运行方式。 
+* 若要从工作流中的任何其他位置调用终结点，请[添加 HTTP 操作](#http-action)。 该终结点的响应确定了工作流剩余操作的运行方式。
 
-基于目标终结点的功能，此连接器支持传输层安全性 (TLS) 1.0、 1.1 和 1.2 的版本。 逻辑应用通过使用受支持的最高版本可能与终结点进行协商。 因此，例如，如果终结点支持 1.2，连接器将使用 1.2 第一次。 否则，连接器将使用的最高的受支持的版本。
+本文演示如何将 HTTP 触发器或操作添加到逻辑应用的工作流。
 
-如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+## <a name="prerequisites"></a>先决条件
 
-## <a name="prerequisites"></a>必备组件
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
+* 要调用的目标终结点的 URL
 
-* 要调用的目标终结点的 URL 
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
+* 要从中调用目标终结点的逻辑应用。 若要从 HTTP 触发器开始，请[创建一个空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 HTTP 操作，请使用所需的任何触发器启动逻辑应用。 此示例的第一步是使用 HTTP 触发器。
 
-* 要从中调用目标终结点的逻辑应用。若要从 HTTP 触发器开始，请[创建一个空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 HTTP 操作，请使用触发器启动逻辑应用。
+<a name="http-trigger"></a>
 
-## <a name="add-http-trigger"></a>添加 HTTP 触发器
+## <a name="add-an-http-trigger"></a>添加 HTTP 触发器
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，然后在逻辑应用设计器中打开该空白逻辑应用（如果尚未打开）。
+此内置触发器对终结点的指定 URL 发出 HTTP 调用，并返回响应。
 
-1. 在搜索框中，输入“http”作为筛选器。 在触发器列表下，选择“HTTP”触发器。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开空白逻辑应用。
+
+1. 在设计器的搜索框下，选择“内置”****。 在搜索框中，输入 `http` 作为筛选器。 在“触发器”列表中，选择“HTTP”触发器。**** ****
 
    ![选择 HTTP 触发器](./media/connectors-native-http/select-http-trigger.png)
 
-1. 提供要包含在目标终结点调用中的 [HTTP 触发器参数和值](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger)。 设置触发器的频率定期检查目标终结点。
+   此示例将触发器重命名为“HTTP trigger”，使步骤的名称更具描述性。 此外，该示例稍后会添加 HTTP 操作，因此，两个名称必须唯一。
+
+1. 提供要包含在目标终结点调用中的 [HTTP 触发器参数](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)的值。 设置重复周期，以确定触发器检查目标终结点的频率。
 
    ![输入 HTTP 触发器参数](./media/connectors-native-http/http-trigger-parameters.png)
 
-   有关 HTTP 触发器、参数和值的详细信息，请参阅[触发器和操作类型参考](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger)。
+   如果选择的身份验证类型不是“None”****，则身份验证设置将根据你的选择而有所不同。 有关 HTTP 可用的身份验证类型的详细信息，请参阅以下主题：
+
+   * [向出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+   * [使用托管标识对资源访问者进行身份验证](../logic-apps/create-managed-service-identity.md)
+
+1. 若要添加其他可用参数，请打开“添加新参数”列表，并选择所需的参数。****
 
 1. 继续使用触发器激发时运行的操作生成逻辑应用的工作流。
 
-## <a name="add-http-action"></a>添加 HTTP 操作
+1. 完成后，请记得保存逻辑应用。 在设计器工具栏上选择“保存”。****
 
-[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+<a name="http-action"></a>
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
+## <a name="add-an-http-action"></a>添加 HTTP 操作
 
-1. 在要添加 HTTP 操作的最后一个步骤下，选择“新建步骤”。 
+此内置操作对终结点的指定 URL 发出 HTTP 调用，并返回响应。
 
-   在此示例中，逻辑应用是通过用作第一个步骤的 HTTP 触发器启动的。
+1. 登录到 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开逻辑应用。
 
-1. 在搜索框中，输入“http”作为筛选器。 在操作列表下，选择“HTTP”操作。
+   此示例的第一步是使用 HTTP 触发器。
+
+1. 在要添加 HTTP 操作的步骤下，选择“新建步骤”。****
+
+   若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择出现的加号 ( **+** )，然后选择“添加操作”。****
+
+1. 在“选择操作”下，选择“内置”。**** **** 在搜索框中，输入 `http` 作为筛选器。 在“操作”列表中，选择“HTTP”操作。**** ****
 
    ![选择“HTTP”操作](./media/connectors-native-http/select-http-action.png)
 
-   若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 
-   选择出现的加号 (**+**)，然后选择“添加操作”。
+   此示例将操作重命名为“HTTP action”，使步骤的名称更具描述性。
 
-1. 提供要包含在目标终结点调用中的 [HTTP 操作参数和值](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action)。 
+1. 提供要包含在目标终结点调用中的 [HTTP 操作参数](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)的值。
 
    ![输入 HTTP 操作参数](./media/connectors-native-http/http-action-parameters.png)
 
-1. 完成后，请务必保存逻辑应用。 在设计器工具栏上，选择“保存”。 
+   如果选择的身份验证类型不是“None”****，则身份验证设置将根据你的选择而有所不同。 有关 HTTP 可用的身份验证类型的详细信息，请参阅以下主题：
 
-## <a name="authentication"></a>Authentication
+   * [向出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+   * [使用托管标识对资源访问者进行身份验证](../logic-apps/create-managed-service-identity.md)
 
-若要设置身份验证，请在操作或触发器中选择“显示高级选项”。 有关 HTTP 触发器和操作可用的身份验证类型的详细信息，请参阅[触发器和操作类型参考](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)。
+1. 若要添加其他可用参数，请打开“添加新参数”列表，并选择所需的参数。****
 
-## <a name="get-support"></a>获取支持
+1. 完成后，请记得保存逻辑应用。 在设计器工具栏上选择“保存”。****
 
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
+<a name="tls-support"></a>
+
+## <a name="transport-layer-security-tls"></a>传输层安全 (TLS) (Transport Layer Security) (TLS)
+
+根据目标终结点的功能，出站调用支持传输层安全（TLS），后者以前安全套接字层（SSL），版本1.0、1.1 和1.2。 逻辑应用通过使用可能支持的最高版本与终结点协商。
+
+例如，如果端点支持1.2，则 HTTP 连接器首先使用1.2。 否则，连接器将使用下一个受支持的最高版本。
+
+<a name="self-signed"></a>
+
+## <a name="self-signed-certificates"></a>自签名证书
+
+* 对于全球多租户 Azure 环境中的逻辑应用，HTTP 连接器不允许自签名的 TLS/SSL 证书。 如果逻辑应用对服务器发出 HTTP 调用并显示 TLS/SSL 自签名证书，则 HTTP 调用失败并出现 `TrustFailure` 错误。
+
+* 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，HTTP 连接器允许 TLS/SSL 握手的自签名证书。 但是，必须首先使用逻辑应用 REST API 为现有 ISE 或新 ISE[启用自签名证书支持](../logic-apps/create-integration-service-environment-rest-api.md#request-body)，并在该位置安装公共证书 `TrustedRoot` 。
+
+## <a name="content-with-multipartform-data-type"></a>具有多部分/表单数据类型的内容
+
+若要处理 HTTP 请求中具有 `multipart/form-data` 类型的内容，可以使用此格式向 HTTP 请求的正文添加包含 `$content-type` 和 `$multipart` 属性的 JSON 对象。
+
+```json
+"body": {
+   "$content-type": "multipart/form-data",
+   "$multipart": [
+      {
+         "body": "<output-from-trigger-or-previous-action>",
+         "headers": {
+            "Content-Disposition": "form-data; name=file; filename=<file-name>"
+         }
+      }
+   ]
+}
+```
+
+例如，假设你有一个逻辑应用，它使用该站点的 API（支持 `multipart/form-data` 类型）向网站发送对 Excel 文件的 HTTP POST 请求。 下面是此操作的可能外观：
+
+![多部分表单数据](./media/connectors-native-http/http-action-multipart.png)
+
+以下是在基础工作流定义中显示 HTTP 操作的 JSON 定义的同一示例：
+
+```json
+"HTTP_action": {
+   "inputs": {
+      "body": {
+         "$content-type": "multipart/form-data",
+         "$multipart": [
+            {
+               "body": "@trigger()",
+               "headers": {
+                  "Content-Disposition": "form-data; name=file; filename=myExcelFile.xlsx"
+               }
+            }
+         ]
+      },
+      "method": "POST",
+      "uri": "https://finance.contoso.com"
+   },
+   "runAfter": {},
+   "type": "Http"
+}
+```
+
+<a name="asynchronous-pattern"></a>
+
+## <a name="asynchronous-request-response-behavior"></a>异步请求响应行为
+
+默认情况下，Azure 逻辑应用中的所有基于 HTTP 的操作都遵循标准[异步操作模式](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply)。 此模式指定在 HTTP 操作调用或将请求发送到终结点、服务、系统或 API 后，接收方会立即返回["202 接受"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3)响应。 此代码确认接收方接受了请求，但尚未完成处理。 响应可以包括 `location` 指定 URL 和刷新 ID 的标头，调用方可以使用它来轮询或检查异步请求的状态，直到接收方停止处理并返回["200 正常"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1)成功响应或其他非202响应。 但是，调用方不必等待请求完成处理，并可以继续运行下一个操作。 有关详细信息，请参阅[异步微服务 integration 强制微服务自治](https://docs.microsoft.com/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)。
+
+* 在逻辑应用设计器中，HTTP 操作（但不是触发器）具有**异步模式**设置，该设置在默认情况下处于启用状态。 此设置指定调用方不等待处理完成，并可继续执行下一个操作，但在处理停止前将继续检查状态。 如果禁用此设置，则此设置指定调用方等待处理完成，然后再继续执行下一个操作。
+
+  若要找到此设置，请执行以下步骤：
+
+  1. 在 HTTP 操作的标题栏中，选择省略号（"**...**"）按钮，这将打开操作的设置。
+
+  1. 查找**异步模式**设置。
+
+     !["异步模式" 设置](./media/connectors-native-http/asynchronous-pattern-setting.png)
+
+* HTTP 操作的基础 JavaScript 对象表示法（JSON）定义隐式遵循异步操作模式。
+
+<a name="disable-asynchronous-operations"></a>
+
+## <a name="disable-asynchronous-operations"></a>禁用异步操作
+
+有时，你可能希望在特定情况下执行 HTTP 操作的异步行为，例如，当你想要执行以下操作时：
+
+* [避免长时间运行的任务的 HTTP 超时](#avoid-http-timeouts)
+* [禁用检查位置标头](#disable-location-header-check)
+
+<a name="turn-off-asynchronous-pattern-setting"></a>
+
+### <a name="turn-off-asynchronous-pattern-setting"></a>关闭**异步模式**设置
+
+1. 在逻辑应用设计器的 "HTTP 操作" 标题栏上，选择 "省略号" （**"..."）按钮**，这将打开操作的设置。
+
+1. 找到 "**异步模式**" 设置，将设置为 "**关闭**" （如果已启用），然后选择 "**完成**"。
+
+   ![禁用 "异步模式" 设置](./media/connectors-native-http/disable-asynchronous-pattern-setting.png)
+
+<a name="add-disable-async-pattern-option"></a>
+
+### <a name="disable-asynchronous-pattern-in-actions-json-definition"></a>禁用操作的 JSON 定义中的异步模式
+
+在 HTTP 操作的基础 JSON 定义中，[将 `"DisableAsyncPattern"` 操作选项添加](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options)到操作的定义中，以便该操作改为遵循同步操作模式。 有关详细信息，请参阅[在同步操作模式下运行操作](../logic-apps/logic-apps-workflow-actions-triggers.md#disable-asynchronous-pattern)。
+
+<a name="avoid-http-timeouts"></a>
+
+## <a name="avoid-http-timeouts-for-long-running-tasks"></a>避免长时间运行的任务的 HTTP 超时
+
+HTTP 请求的[超时限制](../logic-apps/logic-apps-limits-and-config.md#http-limits)。 如果有长时间运行的 HTTP 操作由于此限制而超时，则可以使用以下选项：
+
+* [禁用 HTTP 操作的异步操作模式](#disable-asynchronous-operations)，以便操作不会持续轮询或检查请求的状态。 相反，该操作会等待接收方在请求完成处理后响应状态和结果。
+
+* 将 HTTP 操作替换为[Http Webhook 操作](../connectors/connectors-native-webhook.md)，该操作将等待接收方在请求完成处理后响应状态和结果。
+
+<a name="disable-location-header-check"></a>
+
+## <a name="disable-checking-location-headers"></a>禁用检查位置标头
+
+某些终结点、服务、系统或 Api 返回没有标头的 "202 接受" 响应 `location` 。 若要避免在标头不存在时使用 HTTP 操作不断检查请求状态 `location` ，可以使用以下选项：
+
+* [禁用 HTTP 操作的异步操作模式](#disable-asynchronous-operations)，以便操作不会持续轮询或检查请求的状态。 相反，该操作会等待接收方在请求完成处理后响应状态和结果。
+
+* 将 HTTP 操作替换为[Http Webhook 操作](../connectors/connectors-native-webhook.md)，该操作将等待接收方在请求完成处理后响应状态和结果。
+
+## <a name="known-issues"></a>已知问题
+
+<a name="omitted-headers"></a>
+
+### <a name="omitted-http-headers"></a>省略的 HTTP 标头
+
+如果 HTTP 触发器或操作包含这些标头，则逻辑应用会从生成的请求消息中删除这些标头，且不显示任何警告或错误：
+
+* `Accept-*`
+* `Allow`
+* `Content-*` 中含以下例外：`Content-Disposition`、`Content-Encoding` 和 `Content-Type`
+* `Cookie`
+* `Expires`
+* `Host`
+* `Last-Modified`
+* `Origin`
+* `Set-Cookie`
+* `Transfer-Encoding`
+
+尽管逻辑应用不会阻止保存此类逻辑应用（使用具有这些标头的 HTTP 触发器或操作的逻辑应用），但逻辑应用会忽略这些标头。
+
+## <a name="connector-reference"></a>连接器参考
+
+有关触发器和操作参数的详细信息，请参阅以下部分：
+
+* [HTTP 触发器参数](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)
+* [HTTP 操作参数](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)
+
+### <a name="output-details"></a>输出详细信息
+
+下面是有关 HTTP 触发器或操作的输出的详细信息，输出中将返回以下信息：
+
+| Property | 类型 | 描述 |
+|----------|------|-------------|
+| `headers` | JSON 对象 | 请求中的标头 |
+| `body` | JSON 对象 | 包含请求中正文内容的对象 |
+| `status code` | Integer | 请求中的状态代码 |
+|||
+
+| 状态代码 | 说明 |
+|-------------|-------------|
+| 200 | 确定 |
+| 202 | 已接受 |
+| 400 | 错误的请求 |
+| 401 | 未授权 |
+| 403 | 禁止 |
+| 404 | 未找到 |
+| 500 | 内部服务器错误。 发生未知错误。 |
+|||
 
 ## <a name="next-steps"></a>后续步骤
 

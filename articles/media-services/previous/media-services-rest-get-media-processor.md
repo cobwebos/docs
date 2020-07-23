@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: d342cff6d322195ee88a74215f814be7d702aa5e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 342476504fc4757c1fa62dd754ce73ecd5f3cb7f
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60761950"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169283"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>如何获取媒体处理器实例
 > [!div class="op_single_selector"]
@@ -52,33 +52,37 @@ ms.locfileid: "60761950"
 
 请求：
 
-    GET https://media.windows.net/api/MediaProcessors()?$filter=Name%20eq%20'Media%20Encoder%20Standard' HTTP/1.1
-    DataServiceVersion: 1.0;NetFx
-    MaxDataServiceVersion: 3.0;NetFx
-    Accept: application/json
-    Accept-Charset: UTF-8
-    User-Agent: Microsoft ADO.NET Data Services
-    Authorization: Bearer <token>
-    x-ms-version: 2.17
-    Host: media.windows.net
+```console
+GET https://media.windows.net/api/MediaProcessors()?$filter=Name%20eq%20'Media%20Encoder%20Standard' HTTP/1.1
+DataServiceVersion: 1.0;NetFx
+MaxDataServiceVersion: 3.0;NetFx
+Accept: application/json
+Accept-Charset: UTF-8
+User-Agent: Microsoft ADO.NET Data Services
+Authorization: Bearer <token>
+x-ms-version: 2.19
+Host: media.windows.net
+```
 
 响应：
 
-    . . .
+```console
+. . .
 
-    {  
-       "odata.metadata":"https://media.windows.net/api/$metadata#MediaProcessors",
-       "value":[  
-          {  
-             "Id":"nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",
-             "Description":"Media Encoder Standard",
-             "Name":"Media Encoder Standard",
-             "Sku":"",
-             "Vendor":"Microsoft",
-             "Version":"1.1"
-          }
-       ]
-    }
+{  
+   "odata.metadata":"https://media.windows.net/api/$metadata#MediaProcessors",
+   "value":[  
+      {  
+         "Id":"nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",
+         "Description":"Media Encoder Standard",
+         "Name":"Media Encoder Standard",
+         "Sku":"",
+         "Vendor":"Microsoft",
+         "Version":"1.1"
+      }
+   ]
+}
+```
 
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径

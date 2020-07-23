@@ -1,25 +1,23 @@
 ---
-title: 将组织的网络-Azure Active Directory 上的个人设备注册 |Microsoft Docs
+title: 在组织的网络上注册个人设备 - Azure AD
 description: 了解如何在组织的网络上注册个人设备，以便可以访问组织的受保护资源。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 01/04/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 041c8bb6b4de2bbe2cbeb4c1a89e452239ae57bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 68d7b06aa6473a99422d8cfb51f6e3a465933a0f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60473638"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747392"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>在组织的网络上注册个人设备
 在组织的网络上注册个人设备（通常为电话或平板电脑）。 设备注册后，将能够访问组织的受限资源。
@@ -42,15 +40,15 @@ ms.locfileid: "60473638"
 
 按照以下步骤在网络上注册个人设备。
 
-1. 打开“设置”，然后选择“帐户”。
+1. 打开“设置”，然后选择“帐户” 。
 
     ![“设置上的帐户”屏幕](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 
-2. 选择“访问工作单位或学校”，然后从“访问工作单位或学校”屏幕中选择“连接”。
+2. 选择“访问工作单位或学校”，然后从“访问工作单位或学校”屏幕中选择“连接”  。
 
     ![突出显示“访问工作单位或学校”和“连接”选项的屏幕](./media/user-help-register-device-on-network/register-device-access-work-school-connect.png)
 
-3. 在“添加工作或学校帐户”屏幕上，键入工作或学校帐户的电子邮件地址，然后选择“下一步”。 例如，alain@contoso.com。
+3. 在“添加工作或学校帐户”屏幕上，键入工作或学校帐户的电子邮件地址，然后选择“下一步” 。 例如，alain@contoso.com 。
 
 4. 登录工作或学校帐户，然后选择“登录”。
 
@@ -59,7 +57,7 @@ ms.locfileid: "60473638"
 ## <a name="to-verify-that-youre-registered"></a>验证是否已注册
 可以通过查看你的设置确保已注册。
 
-1. 打开“设置”，然后选择“帐户”。
+1. 打开“设置”，然后选择“帐户” 。
 
     ![“设置上的帐户”屏幕](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 

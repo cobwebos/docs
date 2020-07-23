@@ -1,26 +1,20 @@
 ---
-title: 使用 Azure CLI 管理 Azure DNS 中的 DNS 记录 | Microsoft 文档
+title: 使用 Azure CLI 管理 Azure DNS 中的 DNS 记录
 description: 在 Azure DNS 上托管域时管理 Azure DNS 上的 DNS 记录集和记录。
-services: dns
-documentationcenter: na
-author: WenJason
-manager: digimobile
+author: rohinkoul
 ms.assetid: 5356a3a5-8dec-44ac-9709-0c2b707f6cb5
 ms.service: dns
 ms.devlang: azurecli
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
-origin.date: 05/15/2018
-ms.date: 04/15/2019
-ms.author: v-jay
-ms.openlocfilehash: 4864a46b91b4e243ce6a2ae3d9d36df28fe74d8d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 05/15/2018
+ms.author: rohink
+ms.openlocfilehash: 4bf3ee75c9445856fb8a2ce789a3f2f345e720fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61293318"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84701658"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>使用 Azure CLI 管理 Azure DNS 中的 DNS 记录和记录集
 
@@ -256,7 +250,7 @@ az network dns record-set soa update --resource-group myresourcegroup --zone-nam
 以下示例展示如何向区域顶点处的 NS 记录集添加其他名称服务器：
 
 ```azurecli
-az network dns record-set ns add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --nsdname ns1.myotherdnsprovider.cn
+az network dns record-set ns add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --nsdname ns1.myotherdnsprovider.com 
 ```
 
 ### <a name="to-modify-the-ttl-of-an-existing-record-set"></a>修改现有记录集的 TTL

@@ -1,39 +1,36 @@
 ---
-title: 使用 Azure CLI 创建 Azure DNS 专用区域
-description: 在本教程中，将在 Azure DNS 中创建并测试专用 DNS 区域和记录。 这是有关使用 Azure CLI 创建和管理你的第一个专用 DNS 区域和记录的分步指南。
+title: 快速入门 - 使用 Azure CLI 创建 Azure 专用 DNS 区域
+description: 在本快速入门中，将在 Azure DNS 中创建并测试专用 DNS 区域和记录。 这是有关使用 Azure CLI 创建和管理你的第一个专用 DNS 区域和记录的分步指南。
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
-ms.topic: tutorial
-ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: 2758817d58fdd2e80b302b5f833308dbde1a6b63
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: quickstart
+ms.date: 10/05/2019
+ms.author: rohink
+ms.openlocfilehash: 34a9858ffbec2360a347b8c765d53551fd2d9fc0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65916057"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "76935430"
 ---
-# <a name="create-an-azure-dns-private-zone-using-the-azure-cli"></a>使用 Azure CLI 创建 Azure DNS 专用区域
+# <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure 专用 DNS 区域
 
-本教程将引导完成使用 Azure CLI 创建第一个专用 DNS 区域和记录的步骤。
+本快速入门将引导你完成使用 Azure CLI 创建第一个专用 DNS 区域和记录的步骤。
 
-[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
+DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS 中托管域，需要为该域名创建 DNS 区域。 随后会在此 DNS 区域内为每个 DNS 记录创建域。 若要向虚拟网络发布专用 DNS 区域，请指定一个列表，其中包含允许在区域中解析记录的虚拟网络。  这些虚拟网络称为链接的虚拟网络。  启用自动注册后，Azure DNS 还会在创建虚拟机、更改其 IP 地址或删除虚拟机时更新区域记录。
 
-DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS 中托管域，需要为该域名创建 DNS 区域。 随后会在此 DNS 区域内为每个 DNS 记录创建域。 若要向虚拟网络发布专用 DNS 区域，请指定一个列表，其中包含允许在区域中解析记录的虚拟网络。  这些虚拟网络称为“解析虚拟网络”。 也可指定一个虚拟网络，让 Azure DNS 在创建 VM、更改 IP 或删除 VM 时为其保留主机名记录。  这称为“注册虚拟网络”。
-
-本教程介绍如何执行下列操作：
+此快速入门介绍如何：
 
 > [!div class="checklist"]
-> * 创建 DNS 专用区域
+> * 创建专用 DNS 区域
 > * 创建测试虚拟机
 > * 创建额外的 DNS 记录
 > * 测试专用区域
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-如果需要，可以使用 [Azure PowerShell](private-dns-getstarted-powershell.md) 完成本教程中的步骤。
-
+如果你愿意，可以使用 [Azure PowerShell](private-dns-getstarted-powershell.md) 完成本快速入门中的步骤。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -45,11 +42,9 @@ DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS
 az group create --name MyAzureResourceGroup --location "East US"
 ```
 
-## <a name="create-a-dns-private-zone"></a>创建 DNS 专用区域
+## <a name="create-a-private-dns-zone"></a>创建专用 DNS 区域
 
-DNS 区域是通过将 `az network dns zone create` 命令与 **ZoneType** 参数的 *Private* 值一起使用来创建的。 以下示例在名为 **MyAzureResourceGroup** 的资源组中创建名为 **private.contoso.com** 的 DNS 区域，并将 DNS 区域提供给名为 **MyAzureVnet** 的虚拟网络。
-
-如果省略 **ZoneType** 参数，则会将区域创建为公共区域。因此，创建专用区域时必须使用此参数。
+以下示例创建一个名为“myAzureVNet”的虚拟网络  。 然后，它在 **MyAzureResourceGroup** 资源组中创建一个名为 **private.contoso.com** 的 DNS 区域，将该 DNS 区域链接到 **MyAzureVnet** 虚拟网络，并启用自动注册。
 
 ```azurecli
 az network vnet create \
@@ -60,32 +55,30 @@ az network vnet create \
   --subnet-name backendSubnet \
   --subnet-prefixes 10.2.0.0/24
 
-az network dns zone create -g MyAzureResourceGroup \
-   -n private.contoso.com \
-  --zone-type Private \
-  --registration-vnets myAzureVNet
+az network private-dns zone create -g MyAzureResourceGroup \
+   -n private.contoso.com
+
+az network private-dns link vnet create -g MyAzureResourceGroup -n MyDNSLink \
+   -z private.contoso.com -v myAzureVNet -e true
 ```
 
-如果希望创建仅用于名称解析的区域（不创建自动主机名），则可以使用 *resolution-vnets* 参数而非 *registration-vnets* 参数。
-
-> [!NOTE]
-> 你将无法看到自动创建的主机名记录。 但稍后你将进行测试来确保它们存在。
+如果要创建仅用于名称解析的区域（不自动注册主机名），则可以使用 `-e false` 参数。
 
 ### <a name="list-dns-private-zones"></a>列出 Azure DNS 专用区域
 
-若要枚举 DNS 区域，请使用 `az network dns zone list`。 有关帮助，请参阅 `az network dns zone list --help`。
+若要枚举 DNS 区域，请使用 `az network private-dns zone list`。 有关帮助，请参阅 `az network dns zone list --help`。
 
 指定资源组仅列出资源组内的区域：
 
 ```azurecli
-az network dns zone list \
-  --resource-group MyAzureResourceGroup
+az network private-dns zone list \
+  -g MyAzureResourceGroup
 ```
 
 省略资源组可列出订阅中的所有区域：
 
 ```azurecli
-az network dns zone list 
+az network private-dns zone list 
 ```
 
 ## <a name="create-the-test-virtual-machines"></a>创建测试虚拟机
@@ -95,20 +88,24 @@ az network dns zone list
 ```azurecli
 az vm create \
  -n myVM01 \
- --admin-username test-user \
+ --admin-username AzureAdmin \
  -g MyAzureResourceGroup \
  -l eastus \
  --subnet backendSubnet \
  --vnet-name myAzureVnet \
+ --nsg NSG01 \
+ --nsg-rule RDP \
  --image win2016datacenter
 
 az vm create \
  -n myVM02 \
- --admin-username test-user \
+ --admin-username AzureAdmin \
  -g MyAzureResourceGroup \
  -l eastus \
  --subnet backendSubnet \
  --vnet-name myAzureVnet \
+ --nsg NSG01 \
+ --nsg-rule RDP \
  --image win2016datacenter
 ```
 
@@ -116,12 +113,12 @@ az vm create \
 
 ## <a name="create-an-additional-dns-record"></a>创建额外的 DNS 记录
 
-若要创建 DNS 记录，请使用 `az network dns record-set [record type] add-record` 命令。 例如，如果在添加 A 记录时需要帮助，请参阅 `azure network dns record-set A add-record --help`。
+若要创建 DNS 记录，请使用 `az network private-dns record-set [record type] add-record` 命令。 例如，如果在添加 A 记录时需要帮助，请参阅 `az network private-dns record-set A add-record --help`。
 
  下面的示例在 DNS 区域 **private.contoso.com** 的资源组 **MyAzureResourceGroup** 中创建相对名称为 **db** 的一个记录。 记录集的完全限定名称为 **db.private.contoso.com**。 记录类型为“A”，IP 地址为“10.2.0.4”。
 
 ```azurecli
-az network dns record-set a add-record \
+az network private-dns record-set a add-record \
   -g MyAzureResourceGroup \
   -z private.contoso.com \
   -n db \
@@ -133,11 +130,10 @@ az network dns record-set a add-record \
 若要列出区域中的 DNS 记录，请运行：
 
 ```azurecli
-az network dns record-set list \
+az network private-dns record-set list \
   -g MyAzureResourceGroup \
   -z private.contoso.com
 ```
-请记住，你将不会看到为两台测试虚拟机自动创建的 A 记录。
 
 ## <a name="test-the-private-zone"></a>测试专用区域
 
@@ -151,7 +147,7 @@ az network dns record-set list \
 2. 运行以下命令：
 
    ```powershell
-   New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+   New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
    ```
 
 针对 myVM02 重复上述操作。
@@ -159,10 +155,13 @@ az network dns record-set list \
 ### <a name="ping-the-vms-by-name"></a>按名称对 VM 执行 ping 命令
 
 1. 从 myVM02 Windows PowerShell 命令提示符下，使用自动注册的主机名对 myVM01 执行 ping 命令：
+
    ```
    ping myVM01.private.contoso.com
    ```
+
    应当会看到与以下内容类似的输出：
+
    ```
    PS C:\> ping myvm01.private.contoso.com
 
@@ -178,11 +177,15 @@ az network dns record-set list \
        Minimum = 0ms, Maximum = 1ms, Average = 0ms
    PS C:\>
    ```
+
 2. 现在，对之前创建的 **db** 名称执行 ping 命令：
+
    ```
    ping db.private.contoso.com
    ```
+
    应当会看到与以下内容类似的输出：
+
    ```
    PS C:\> ping db.private.contoso.com
 
@@ -201,7 +204,7 @@ az network dns record-set list \
 
 ## <a name="delete-all-resources"></a>删除所有资源
 
-不再需要时，可以通过删除 **MyAzureResourceGroup** 资源组来删除在本教程中创建的资源。
+不再需要时，可以通过删除 **MyAzureResourceGroup** 资源组来删除在本快速入门中创建的资源。
 
 ```azurecli
 az group delete --name MyAzureResourceGroup
@@ -209,8 +212,6 @@ az group delete --name MyAzureResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你部署了一个专用 DNS 区域，创建了一条 DNS 记录，并测试了该区域。
-接下来，可以详细了解专用 DNS 区域。
-
 > [!div class="nextstepaction"]
-> [将 Azure DNS 用于专用域](private-dns-overview.md)
+> [Azure DNS 专用区域方案](private-dns-scenarios.md)
+

@@ -3,22 +3,19 @@ title: 在 Azure DNS 中管理 DNS 区域 - PowerShell | Microsoft Docs
 description: 可以使用 Azure PowerShell 管理 DNS 区域。 本文介绍如何在 Azure DNS 上更新、删除和创建 DNS 区域
 services: dns
 documentationcenter: na
-author: vhorne
-manager: timlt
-ms.assetid: a67992ab-8166-4052-9b28-554c5a39e60c
+author: rohinkoul
 ms.service: dns
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
-ms.author: victorh
-ms.openlocfilehash: 1ef44c16a8ae3b6254a6cea252501b72ddb24a5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: rohink
+ms.openlocfilehash: d46e2d31c8d6c5a175239c76795359ad64b1abd3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61293607"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84686199"
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>如何使用 PowerShell 管理 DNS 区域
 
@@ -53,7 +50,7 @@ New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
 ```
 
-Azure DNS 现在还支持专用 DNS 区域（当前为公开预览版）。  若要详细了解专用 DNS 区域，请参阅[将 Azure DNS 用于专用域](private-dns-overview.md)。 有关如何创建专用 DNS 区域的示例，请参阅 [Azure DNS 专用区域入门（使用 PowerShell）](./private-dns-getstarted-powershell.md)。
+Azure DNS 还支持专用 DNS 区域。  若要详细了解专用 DNS 区域，请参阅[将 Azure DNS 用于专用域](private-dns-overview.md)。 有关如何创建专用 DNS 区域的示例，请参阅 [Azure DNS 专用区域入门（使用 PowerShell）](./private-dns-getstarted-powershell.md)。
 
 ## <a name="get-a-dns-zone"></a>获取 DNS 区域
 
@@ -125,7 +122,7 @@ Set-AzureRmDnsZone -Zone $zone
 可以使用 `Remove-AzureRmDnsZone` cmdlet 删除 DNS 区域。
 
 > [!NOTE]
-> 删除 DNS 区域也会删除该区域中的所有 DNS 记录。 此操作不可撤消。 如果 DNS 区域在使用中，则使用该区域的服务在区域删除后将无效。
+> 删除 DNS 区域也会删除该区域中的所有 DNS 记录。 无法撤消此操作。 如果 DNS 区域在使用中，则使用该区域的服务在区域删除后将无效。
 >
 >若要防止意外删除区域，请参阅[如何保护 DNS 区域和记录](dns-protect-zones-recordsets.md)。
 

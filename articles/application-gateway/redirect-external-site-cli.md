@@ -1,23 +1,18 @@
 ---
-title: 创建支持外部流量重定向的应用程序网关 - Azure CLI | Microsoft Docs
+title: 使用 CLI 进行外部流量重定向 - Azure 应用程序网关
 description: 了解如何创建应用程序网关，将内部 web 流量重定向到相应的池中使用 Azure CLI。
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/24/2018
+ms.topic: how-to
+ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 1ddbc84004622c2a5fa9dc08d4396e1f300474f2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b671af46d34e3b45796186cd10282d060fa8c537
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66133865"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84804671"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>使用 Azure CLI 创建支持外部重定向的应用程序网关
 
@@ -34,13 +29,13 @@ ms.locfileid: "66133865"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/azure/group) 创建资源组。
 
-以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组。
+以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组****。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -93,7 +88,7 @@ az network application-gateway create \
 
 ### <a name="add-the-redirection-configuration"></a>添加重定向配置
 
-使用 [az network application-gateway redirect-config create](/cli/azure/network/application-gateway/redirect-config) 将流量从 *www.consoto.org* 发送到 *www.contoso.com* 的侦听器的重定向配置添加到应用程序网关。
+使用 [az network application-gateway redirect-config create](/cli/azure/network/application-gateway/redirect-config) 在应用程序网关中添加从 www\.consoto.org 将流量发送到 www\.contoso.com 的侦听器的重定向配置。
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -137,7 +132,7 @@ az network application-gateway rule create \
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你将了解：
+在本教程中，你已学习了如何执行以下操作：
 
 > * 设置网络
 > * 创建侦听器和重定向规则

@@ -1,22 +1,17 @@
 ---
-title: 从 Azure 逻辑应用连接到 Slack | Microsoft Docs
+title: 从 Azure 逻辑应用连接到 Slack
 description: 使用 Azure 逻辑应用自动执行任务和工作流，用以监视文件以及管理你的 Slack 帐户中的通道、组和消息
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: 234cad64-b13d-4494-ae78-18b17119ba24
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 675e37120b06af3add58b564495f22875647a0fa
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+tags: connectors
+ms.openlocfilehash: 194f75fbb486d5c53a8e650631c16fcf2649f277
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62105643"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826020"
 ---
 # <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 Slack
 
@@ -29,9 +24,9 @@ ms.locfileid: "62105643"
 
 可以使用触发器从 Slack 帐户获取响应，并使输出可用于其他操作。 可以使用通过 Slack 帐户执行任务的操作。 还可以让其他操作使用来自 Slack 操作的输出。 例如，当创建了新文件时，你可以使用 Office 365 Outlook 连接器发送电子邮件。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
 * [Slack](https://slack.com/) 帐户和用户凭据
 
@@ -45,7 +40,7 @@ ms.locfileid: "62105643"
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. 登录到 [Azure门户](https://portal.azure.com)，然后在逻辑应用设计器中打开你的逻辑应用（如果尚未打开）。
+1. 登录到 [Azure 门户](https://portal.azure.com)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
 1. 对于空白逻辑应用，请在搜索框中输入“slack”作为筛选器。 在触发器列表下，选择所需的触发器。 
 
@@ -56,7 +51,7 @@ ms.locfileid: "62105643"
    在操作列表下，选择所需的操作。
 
    若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 
-   选择出现的加号 (**+**)，然后选择“添加操作”。
+   选择出现的加号 ( **+** )，然后选择“添加操作”。
 
 1. 如果提示你登录到 Slack，请登录到你的 Slack 工作区。 
 
@@ -74,7 +69,7 @@ ms.locfileid: "62105643"
 
 ## <a name="get-support"></a>获取支持
 
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 * 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤

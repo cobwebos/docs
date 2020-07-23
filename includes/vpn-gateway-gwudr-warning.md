@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 06/04/2018
+ms.date: 09/28/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 43e381bd26dadbea5ef5bfb002e51465e180a097
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 97fde67c3ac7649418ed0239a2c7aa4f1a4b3f96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66159315"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81274979"
 ---
-不要将包含目标为 0.0.0.0/0 路由的路由表关联到网关子网。 这样做会阻止网关正常工作。
+**不支持**在 GatewaySubnet 上使用 0.0.0.0/0 Destination 和 nsg 的用户定义路由。 使用此配置创建的网关将被阻止创建。 网关需要访问管理控制器才能正常工作。 GatewaySubnet 上的 [BGP 路由传播](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#border-gateway-protocol)应设置为“已启用”，以确保网关可用。 如果此项设置为“已禁用”，则网关将不起作用。

@@ -1,29 +1,28 @@
 ---
 title: 在多个 IP 配置上进行负载均衡 - Azure 门户
-titlesuffix: Azure Load Balancer
-description: 在主要和辅助 IP 配置间进行负载均衡。
+titleSuffix: Azure Load Balancer
+description: 本文介绍如何使用 Azure 门户对主要和辅助 IP 配置进行负载均衡。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: se0dec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 0cf5aa45e1e8a28dfcdadac0ea32658e5993d06c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: allensu
+ms.openlocfilehash: 5a896d3fbe2d191473b10655ccb19c5759762131
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60591678"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84803636"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>使用 Azure 门户对多个 IP 配置进行负载均衡
 
 > [!div class="op_single_selector"]
-> * [门户](load-balancer-multiple-ip.md)
+> * [Portal](load-balancer-multiple-ip.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 > * [CLI](load-balancer-multiple-ip-cli.md)
 
@@ -42,7 +41,7 @@ ms.locfileid: "60591678"
 - Azure 负载均衡器用于公开两个前端 IP 地址，每个地址对应于一个网站。 前端地址用于将流量分配到每个网站的相应 IP 配置。
 - 前端 IP 地址和后端池 IP 地址使用相同的端口号。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 方案示例假设已创建名为 **contosofabrikam** 的资源组，该资源组的配置如下：
 
@@ -62,7 +61,7 @@ ms.locfileid: "60591678"
 
 对于虚拟网络中的每个 VM，请添加辅助 NIC 的 IP 配置：  
 
-1. 浏览到 Azure 门户： https://portal.azure.com。 使用 Azure 帐户登录。
+1. 浏览到 Azure 门户： https://portal.azure.com 。 使用 Azure 帐户登录。
 
 2. 在屏幕左上方，选择“资源组”图标。 然后选择 VM 所在的资源组（例如 **contosofabrikam**）。 “资源组”窗格中显示了 VM 的所有资源和 NIC。
 
@@ -76,9 +75,9 @@ ms.locfileid: "60591678"
 
         1. 输入辅助 IP 配置的名称。 （例如，对于 VM1 和 VM2，分别将 IP 配置命名为 **VM1NIC2-ipconfig2** 和 **VM2NIC2-ipconfig2**）。
 
-        2. 对于“专用 IP 地址”>“分配”设置，请选择“静态”。
+        2. 对于“专用 IP 地址”>“分配”设置，请选择“静态”。  
 
-        3. 选择“确定”。
+        3. 选择“确定” 。
 
 完成辅助 NIC 的第二个 IP 配置后，它会显示在给定 NIC 的“IP 配置”设置下。
 
@@ -86,7 +85,7 @@ ms.locfileid: "60591678"
 
 为配置创建负载均衡器：
 
-1. 浏览到 Azure 门户： https://portal.azure.com。 使用 Azure 帐户登录。
+1. 浏览到 Azure 门户： https://portal.azure.com 。 使用 Azure 帐户登录。
 
 2. 在屏幕的左上方，选择“创建资源” > “网络” > “负载均衡器”。 接下来，选择“创建”。
 
@@ -102,7 +101,7 @@ ms.locfileid: "60591678"
 
 针对每个网站（contoso.com 和 fabrikam.com），请在负载均衡器上配置前端 IP 池：
 
-1. 在门户中选择“更多服务”。 在筛选框中键入“公共 IP 地址”，选择“公共 IP 地址”。 在下一个窗格中的顶部附近，选择“添加”。
+1. 在门户中选择“更多服务”。 在筛选框中键入“公共 IP 地址”，选择“公共 IP 地址”。  在下一个窗格中的顶部附近，选择“添加”。
 
 2. 为两个网站（contoso.com 和 fabrikam.com）配置两个公共 IP 地址（**PublicIP1** 和 **PublicIP2**）：
 
@@ -112,15 +111,15 @@ ms.locfileid: "60591678"
 
    3. 对于“位置”，请选择 VM 所在的同一位置。
 
-   4. 选择“确定”。
+   4. 选择“确定” 。
 
       创建公共 IP 地址后，它们会显示在“公共 IP 地址”下。
 
-3. <a name="step3-3"></a>在门户中选择“更多服务”。 在筛选框中键入“负载均衡器”，选择“负载均衡器”。 
+3. <a name="step3-3"></a>在门户中选择“更多服务”。 在筛选框中键入“负载均衡器”，选择“负载均衡器”。  
 
 4. 选择要将前端 IP 池添加到的负载均衡器 (**mylb**)。
 
-5. 在“设置”下，选择“前端 IP 配置”。 在下一个窗格中的顶部附近，选择“添加”。
+5. 在“设置”下，选择“前端 IP 配置”。  在下一个窗格中的顶部附近，选择“添加”。
 
 6. 键入前端 IP 地址的名称（例如 **contosofe** 或 **fabrikamfe**）。
 
@@ -134,15 +133,15 @@ ms.locfileid: "60591678"
 
 针对每个网站（contoso.com 和 fabrikam.com），请在负载均衡器上配置后端地址池：
         
-1. 在门户中选择“更多服务”。 在筛选框中键入“负载均衡器”，选择“负载均衡器”。
+1. 在门户中选择“更多服务”。 在筛选框中键入“负载均衡器”，选择“负载均衡器”。 
 
 2. 选择要将后端池添加到的负载均衡器 (**mylb**)。
 
-3. 在“设置”下，选择“后端池”。 键入后端池的名称（例如 **contosopool** 或 **fabrikampool**）。 在下一个窗格中的顶部附近，选择“添加”。 
+3. 在“设置”下，选择“后端池”。  键入后端池的名称（例如 **contosopool** 或 **fabrikampool**）。 在下一个窗格中的顶部附近，选择“添加”。 
 
-4. 对于“关联到”，请选择“可用性集”。
+4. 对于“关联到”，请选择“可用性集”。 
 
-5. 对于“可用性集”，请选择“myAvailset”。
+5. 对于“可用性集”，请选择“myAvailset”。 
 
 6. 为两个 VM 添加目标网络 IP 配置： 
 
@@ -152,7 +151,7 @@ ms.locfileid: "60591678"
 
     2. 对于“网络 IP 配置”，请选择在前一步骤中为 VM 的辅助 NIC 选择的 IP 配置（例如 **VM1NIC2-ipconfig2** 或 **VM2NIC2-ipconfig2**）。
 
-7. 选择“确定”。
+7. 选择“确定” 。
 
 配置后端池后，地址会显示在负载均衡器的“后端池”设置下。
 
@@ -160,25 +159,25 @@ ms.locfileid: "60591678"
 
 为负载均衡器配置运行状况探测
 
-1. 在门户中选择“更多服务”。 在筛选框中键入“负载均衡器”，选择“负载均衡器”。
+1. 在门户中选择“更多服务”。 在筛选框中键入“负载均衡器”，选择“负载均衡器”。 
 
 2. 选择要将运行状况探测添加到的负载均衡器 (**mylb**)。
 
-3. 在“设置”下，选择“运行状况探测”。 在下一个窗格中的顶部附近，选择“添加”。 
+3. 在“设置”下，选择“运行状况探测”。  在下一个窗格中的顶部附近，选择“添加”。 
 
-4. 键入运行状况探测的名称（例如 **HTTP**）。 选择“确定”。
+4. 键入运行状况探测的名称（例如 **HTTP**）。 选择“确定” 。
 
 ### <a name="step-6-configure-load-balancing-rules"></a>步骤 6：配置负载均衡规则
 
 针对每个网站（contoso.com 和 fabrikam.com），请配置负载均衡规则：
     
-1. <a name="step6-1"></a>在“设置”下，选择“负载均衡规则”。 在下一个窗格中的顶部附近，选择“添加”。 
+1. <a name="step6-1"></a>在“设置”下，选择“负载均衡规则” 。 在下一个窗格中的顶部附近，选择“添加”。 
 
 2. 对于“名称”，请键入负载均衡规则的名称（例如，为 contoso.com 键入 **HTTPc**，为 fabrikam.com 键入 **HTTPf**）。
 
 3. 对于“前端 IP 地址”，请选择前面创建的前端 IP 地址（例如 **contosofe** 或 **fabrikamfe**）。
 
-4. 对于“端口”和“后端端口”，请保留默认值 **80**。
+4. 对于“端口”和“后端端口”，请保留默认值 **80**。 
 
 5. 对于“浮动 IP (直接服务器返回)”，选择“已禁用”。
 
@@ -194,4 +193,4 @@ ms.locfileid: "60591678"
 
 ## <a name="next-steps"></a>后续步骤
 - 若要深入了解如何在 Azure 中结合使用负载均衡服务，请参阅[在 Azure 中使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md)。
-- 了解如何使用不同类型的日志进行管理和故障排除中的负载均衡器[Azure Monitor for Azure 负载均衡器日志](../load-balancer/load-balancer-monitor-log.md)。
+- 若要了解如何使用不同类型的日志对负载均衡器进行管理和故障排除，请参阅[用于 Azure 负载均衡器的 Azure Monitor 日志](../load-balancer/load-balancer-monitor-log.md)。

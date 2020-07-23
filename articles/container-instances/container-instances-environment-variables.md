@@ -1,30 +1,26 @@
 ---
-title: 在 Azure 容器实例中设置环境变量
+title: 在容器实例中设置环境变量
 description: 了解如何在 Azure 容器实例的已运行容器中设置环境变量
-services: container-instances
-author: dlepow
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/17/2019
-ms.author: danlep
-ms.openlocfilehash: 4a4b19338d96094f28b4f4bedd8042723f67f10a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 92ae59f69b7cb43fee1d3ce8190a85fc20a11f60
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66149153"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169759"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>在容器实例中设置环境变量
 
 通过在容器实例中设置环境变量，可为容器运行的应用程序或脚本提供动态配置。 这类似于在 `--env` 命令行中指定参数 `docker run`。 
 
-若要设置容器中的环境变量，请在创建容器实例时进行指定。 本文介绍开始使用容器时设置环境变量的示例[Azure CLI](#azure-cli-example)， [Azure PowerShell](#azure-powershell-example)，并[Azure 门户](#azure-portal-example)。 
+若要设置容器中的环境变量，请在创建容器实例时进行指定。 本文演示的示例介绍了如何在使用 [Azure CLI](#azure-cli-example)、[Azure PowerShell](#azure-powershell-example) 和 [Azure 门户](#azure-portal-example)启动容器时设置环境变量。 
 
-例如，如果您运行 Microsoft [aci wordcount] [ aci-wordcount]容器映像，您可以通过指定以下环境变量修改其行为：
+例如，如果运行 Microsoft [aci-wordcount][aci-wordcount] 容器映像，可以通过指定以下环境变量来修改其行为：
 
 *NumWords*：发送到 STDOUT 的单词数。
 
-*MinLength*：单词中最少包含几个字符才将它计为一个单词。 如果指定较大的数字，将会忽略“of”和“the”等常见单词。
+*MinLength*：单词中最少包含几个字符才将它统计为一个单词。 如果指定较大的数字，将会忽略“of”和“the”等常见单词。
 
 如果需要以环境变量的形式传递机密，Azure 容器实例支持 Windows 和 Linux 容器的[安全值](#secure-values)。
 
@@ -32,7 +28,7 @@ ms.locfileid: "66149153"
 
 ## <a name="azure-cli-example"></a>Azure CLI 示例
 
-若要查看的默认输出[aci wordcount] [ aci-wordcount]容器，与此首先运行[az 容器创建][ az-container-create]命令 （否环境变量中指定）：
+若要查看 [aci-wordcount][aci-wordcount] 容器的默认输出，请首先使用此 [az container create][az-container-create] 命令来运行它（不指定环境变量）：
 
 ```azurecli-interactive
 az container create \
@@ -53,7 +49,7 @@ az container create \
     --environment-variables 'NumWords'='5' 'MinLength'='8'
 ```
 
-两个容器的状态显示为“已终止”后（使用 [az container show][az-container-show] 来查看状态），请使用 [az container logs][az-container-logs] 来显示其日志，以便查看输出。
+两个容器的状态显示为“已终止”后  （使用 [az container show][az-container-show] 来查看状态），请使用 [az container logs][az-container-logs] 来显示其日志，以便查看输出。
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer1
@@ -62,8 +58,8 @@ az container logs --resource-group myResourceGroup --name mycontainer2
 
 容器的输出显示你如何通过设置环境变量修改了第二个容器的脚本行为。
 
-```console
-azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name mycontainer1
+ mycontainer1
+```output
 [('the', 990),
  ('and', 702),
  ('of', 628),
@@ -74,8 +70,10 @@ azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name myc
  ('my', 441),
  ('in', 399),
  ('HAMLET', 386)]
+```
 
-azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name mycontainer2
+ mycontainer2
+```output
 [('CLAUDIUS', 120),
  ('POLONIUS', 113),
  ('GERTRUDE', 82),
@@ -87,7 +85,7 @@ azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name myc
 
 在 PowerShell 中设置环境变量类似于在 CLI 中进行的相应操作，但需使用 `-EnvironmentVariable` 命令行参数。
 
-首先，启动[aci wordcount] [ aci-wordcount]以默认配置与此容器[新建 AzContainerGroup] [ new-Azcontainergroup]命令：
+首先，使用此 [New-AzContainerGroup][new-Azcontainergroup] 命令在默认配置中启动 [aci-wordcount][aci-wordcount] 容器：
 
 ```azurepowershell-interactive
 New-AzContainerGroup `
@@ -96,7 +94,7 @@ New-AzContainerGroup `
     -Image mcr.microsoft.com/azuredocs/aci-wordcount:latest
 ```
 
-现在，运行以下[新建 AzContainerGroup] [ new-Azcontainergroup]命令。 此命令在填充数组变量 `envVars` 后指定 *NumWords* 和 *MinLength* 环境变量：
+现在请运行以下 [New-AzContainerGroup][new-Azcontainergroup] 命令。 此命令在填充数组变量 `envVars` 后指定 *NumWords* 和 *MinLength* 环境变量：
 
 ```azurepowershell-interactive
 $envVars = @{'NumWords'='5';'MinLength'='8'}
@@ -108,7 +106,7 @@ New-AzContainerGroup `
     -EnvironmentVariable $envVars
 ```
 
-这两个容器的状态后*Terminated* (使用[Get AzContainerInstanceLog] [ azure-instance-log]检查状态)，拉取其日志与[Get AzContainerInstanceLog] [ azure-instance-log]命令。
+两个容器的状态均为“已终止”后  （使用 [Get-AzContainerInstanceLog][azure-instance-log] 来查看状态），请使用 [Get-AzContainerInstanceLog][azure-instance-log] 命令来拉取其日志。
 
 ```azurepowershell-interactive
 Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer1
@@ -143,15 +141,15 @@ Azure:\
 
 ## <a name="azure-portal-example"></a>Azure 门户示例
 
-若要设置环境变量，在 Azure 门户中启动容器时，他们中指定**高级**页面时创建的容器。
+在 Azure 门户中启动容器时，若要设置环境变量，请在创建容器时所在的“高级”页中指定它们。 
 
-1. 上**高级**页上，将**重启策略**到*失败*
-2. 下**环境变量**，输入`NumWords`值为`5`的第一个变量，然后输入`MinLength`值为`8`第二个变量。 
-1. 选择**查看 + 创建**验证，然后将部署容器。
+1. 在“高级”页上将“重启策略”设置为“在故障时”   
+2. 在“环境变量”下，为第一个变量输入值为 `5` 的 `NumWords`，并为第二个变量输入值为 `8` 的 `MinLength`。 
+1. 选择“查看 + 创建”进行验证，然后部署容器。 
 
 ![门户页，显示环境变量“启用”按钮和文本框][portal-env-vars-01]
 
-若要查看容器的日志，在**设置**选择**容器**，然后**日志**。 可以查看通过环境变量对脚本行为进行的具体修改，这与在此前的 CLI 和 PowerShell 部分显示的输出类似。 仅显示了五个单词，每个的最小长度为八个字符。
+若要查看容器的日志，请在“设置”  下选择“容器”  ，然后选择“日志”  。 可以查看通过环境变量对脚本行为进行的具体修改，这与在此前的 CLI 和 PowerShell 部分显示的输出类似。 仅显示了五个单词，每个的最小长度为八个字符。
 
 ![显示容器日志输出的门户][portal-env-vars-02]
 
@@ -168,7 +166,7 @@ Azure:\
 创建包含下面的代码片段的 `secure-env.yaml` 文件。
 
 ```yaml
-apiVersion: 2018-10-01
+apiVersion: 2019-12-01
 location: eastus
 name: securetest
 properties:
@@ -240,7 +238,7 @@ my-secret-value
 
 ## <a name="next-steps"></a>后续步骤
 
-基于任务的方案（例如对使用多个容器的数据库进行批处理）可以在运行时充分利用自定义环境变量。 有关正在运行的基于任务的容器的详细信息，请参阅[重启策略运行容器化的任务](container-instances-restart-policy.md)。
+基于任务的方案（例如对使用多个容器的数据库进行批处理）可以在运行时充分利用自定义环境变量。 若要详细了解如何运行基于任务的容器，请参阅[使用重启策略运行容器化任务](container-instances-restart-policy.md)。
 
 <!-- IMAGES -->
 [portal-env-vars-01]: ./media/container-instances-environment-variables/portal-env-vars-01.png

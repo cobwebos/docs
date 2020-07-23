@@ -1,0 +1,76 @@
+### YamlMime:Landing
+title: Azure 静态 Web 应用文档
+summary: 使用 Azure 静态 Web 应用，可以构建自动根据 GitHub 中所做的更改发布的 JavaScript Web 应用程序。
+metadata:
+  title: Azure 静态 Web 应用文档
+  description: 使用 Azure 静态 Web 应用，可以构建自动根据 GitHub 中所做的更改发布的 JavaScript Web 应用程序。
+  ms.topic: landing-page
+  ms.service: static-web-apps
+  author: craigshoemaker
+  ms.author: cshoe
+  ms.date: 04/09/2020
+  ms.openlocfilehash: f70a746c948038b5bd67f4645e8dbd3df71b8b8a
+  ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 07/20/2020
+  ms.locfileid: "86528649"
+landingContent:
+- title: 关于静态 Web 应用
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 静态 Web 应用？
+      url: overview.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建第一个 Angular 应用
+      url: ./getting-started.md?tabs=angular
+    - text: 创建第一个 React 应用
+      url: ./getting-started.md?tabs=react
+    - text: 创建第一个 Vue 应用
+      url: ./getting-started.md?tabs=vue
+    - text: 创建第一个应用（无框架）
+      url: ./getting-started.md?tabs=vanilla-javascript
+  - linkListType: learn
+    links:
+    - text: 发布 Angular、React、Svelte 或 Vue JavaScript 应用和 API
+      url: /learn/modules/publish-app-service-static-web-app-api
+  - linkListType: video
+    links:
+    - text: 构建和部署静态 Web 应用
+      url: https://channel9.msdn.com/Shows/Docs-Azure/Building-and-Deploying-a-Static-Web-App/
+- title: 发布方案
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 从 Gatsby 发布
+      url: publish-gatsby.md
+    - text: 从 Hugo 发布
+      url: publish-hugo.md
+    - text: 从 VuePress 发布
+      url: publish-vuepress.md
+    - text: 从 Jekyll 发布
+      url: publish-jekyll.md
+    - text: 从 Next.js 部署
+      url: deploy-nextjs.md
+    - text: 从 Nuxt.js 部署
+      url: deploy-nuxtjs.md
+  - linkListType: learn
+    links:
+    - text: 使用 Gatsby 发布静态 Web 应用
+      url: /learn/modules/create-deploy-static-webapp-gatsby-app-service
+- title: 关键概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 路由
+      url: routes.md
+    - text: 公共 API
+      url: apis.md
+    - text: 过渡
+      url: review-publish-pull-requests.md
+    - text: 限制访问
+      url: authentication-authorization.md

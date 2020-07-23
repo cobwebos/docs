@@ -1,12 +1,14 @@
 - name: 高性能计算文档
   items:
     - name: 概述
-      href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
+      items:
+        - name: H 系列 VM 的 HPC
+          href: overview.md
     - name: 配置
       items:
         - name: 针对 Linux 进行优化
           href: configure.md
-        - name: 启用 Infiniband
+        - name: 启用 InfiniBand
           href: enable-infiniband.md
     - name: 设置 MPI
       href: setup-mpi.md

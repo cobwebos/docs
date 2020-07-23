@@ -1,19 +1,15 @@
 ---
-title: 教程 - 将容器应用部署到 Azure 容器实例
+title: 教程 - 将容器应用部署到容器实例
 description: Azure 容器实例教程第 3 部分（共 3 部分）- 将容器应用程序部署到 Azure 容器实例
-services: container-instances
-author: dlepow
-ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 210254a4404a5280e326bf40057331a784ff6148
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 757b41bd69d69deb901e3b5b9a633dce3b9e133a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326733"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "78249958"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>教程：将容器应用程序部署到 Azure 容器实例
 
@@ -36,7 +32,9 @@ ms.locfileid: "56326733"
 
 ### <a name="get-registry-credentials"></a>获取注册表凭据
 
-部署托管在专用容器注册表（例如[第二篇教程](container-instances-tutorial-prepare-acr.md)中创建的注册表）中的映像时，必须提供用于访问该注册表的凭据。 正如[使用 Azure 容器注册表从 Azure 容器实例进行身份验证](../container-registry/container-registry-auth-aci.md)中所示，对于许多方案来说，最佳做法是创建和配置对注册表具有“拉取”权限的 Azure Active Directory 服务主体。 有关用于创建具有必要权限的服务主体的示例脚本，请参阅该文章。 请记下服务主体 ID 和服务主体密码。 部署容器时将使用这些凭据。
+部署托管在专用 Azure 容器注册表（例如[第二篇教程](container-instances-tutorial-prepare-acr.md)中创建的注册表）中的映像时，必须提供用于访问该注册表的凭据。 
+
+ 对于许多方案来说，最佳做法是创建和配置对注册表具有“拉取”权限的 Azure Active Directory 服务主体。 请参阅[使用 Azure 容器注册表从 Azure 容器实例进行身份验证](../container-registry/container-registry-auth-aci.md)，获取示例脚本以创建具有必要权限的服务主体。 请记下服务主体 ID 和服务主体密码   。 部署容器时将使用这些凭据访问注册表。
 
 还需要容器注册表登录服务器的完整名称（请将 `<acrName>` 替换为注册表的名称）:
 
@@ -62,19 +60,18 @@ az container create --resource-group myResourceGroup --name aci-tutorial-app --i
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query instanceView.state
 ```
 
-重复 [az container show][az-container-show] 命令，直到状态从“挂起”更改为“正在运行”为止，此过程应不到 1 分钟。 当容器状态为“正在运行”时，请继续执行下一步。
+重复 [az container show][az-container-show] 命令，直到状态从“挂起”更改为“正在运行”为止，此过程应不到 1 分钟   。 当容器状态为“正在运行”时，请继续执行下一步  。
 
 ## <a name="view-the-application-and-container-logs"></a>查看应用程序和容器日志
 
 部署成功后，使用 [az container show][az-container-show] 命令显示容器的完全限定域名 (FQDN)：
 
-```bash
+```azurecli
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
 例如：
-```console
-$ az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
+```output
 "aci-demo.eastus.azurecontainer.io"
 ```
 
@@ -90,8 +87,7 @@ az container logs --resource-group myResourceGroup --name aci-tutorial-app
 
 示例输出：
 
-```bash
-$ az container logs --resource-group myResourceGroup --name aci-tutorial-app
+```output
 listening on port 80
 ::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET / HTTP/1.1" 200 1663 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
 ::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://aci-demo.eastus.azurecontainer.io/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"

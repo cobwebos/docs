@@ -1,10 +1,10 @@
 ---
 title: 为 Linux VM 配置 DHCPv6
-titlesuffix: Azure Load Balancer
-description: 如何为 Linux VM 配置 DHCPv6。
+titleSuffix: Azure Load Balancer
+description: 本文介绍如何为 Linux VM 配置 DHCPv6。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 keywords: ipv6, azure 负载均衡器, 双堆栈, 公共 ip, 本机 ipv6, 移动, iot
 ms.service: load-balancer
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2019
-ms.author: kumud
-ms.openlocfilehash: 66777ec314e95d81a4be57082f06ef16dc170186
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: d8bd62bab627beb70a8fcba276bf8c2eca309c45
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60516555"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259725"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>为 Linux VM 配置 DHCPv6
 
@@ -36,47 +36,58 @@ Azure 市场中的某些 Linux 虚拟机映像默认未配置动态主机配置�
 
 ## <a name="ubuntu"></a>Ubuntu
 
-1. 编辑 /etc/dhcp/dhclient6.conf 文件，并添加以下行：
+1. 编辑 /etc/dhcp/dhclient6.conf 文件，并添加以下行  ：
 
-        timeout 10;
+    ```config
+    timeout 10;
+    ```
 
 2. 编辑使用以下配置的 eth0 接口的网络配置：
 
-   * 在 Ubuntu 12.04 和 14.04 上编辑 /etc/network/interfaces.d/eth0.cfg 文件。 
-   * 在 Ubuntu 16.04 上编辑 /etc/network/interfaces.d/50-cloud-init.cfg 文件。
+   * 在 Ubuntu 12.04 和 14.04 上编辑 /etc/network/interfaces.d/eth0.cfg 文件   。 
+   * 在 Ubuntu 16.04 上编辑 /etc/network/interfaces.d/50-cloud-init.cfg 文件   。
 
-         iface eth0 inet6 auto
-             up sleep 5
-             up dhclient -1 -6 -cf /etc/dhcp/dhclient6.conf -lf /var/lib/dhcp/dhclient6.eth0.leases -v eth0 || true
+    ```config
+    iface eth0 inet6 auto
+        up sleep 5
+        up dhclient -1 -6 -cf /etc/dhcp/dhclient6.conf -lf /var/lib/dhcp/dhclient6.eth0.leases -v eth0 || true
+    ```
 
 3. 续订 IPv6 地址：
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
     ```
-从 Ubuntu 17.10 开始，默认网络配置机制是[NETPLAN]( https://netplan.io)。  在安装/实例化时，NETPLAN 读取网络配置 YAML 配置文件中此位置: / {lib,etc,run}/netplan/*.yaml。
 
-请附上*dhcp6:true*在配置中每个以太网接口的语句。  例如：
-  
-        network:
-          version: 2
-          ethernets:
-            eno1:
-              dhcp6: true
+从 Ubuntu 17.10 开始，默认网络配置机制是 [NETPLAN]( https://netplan.io)。  在安装/实例化时，NETPLAN 从以下位置的 YAML 配置文件中读取网络配置：/{lib,etc,run}/netplan/*.yaml。
 
-在早期启动过程 netplan"网络呈现器"将写入到的配置/关闭设备的控制移交运行到指定网络守护程序 NETPLAN，有关参考信息请参阅 https://netplan.io/reference。
+请为配置中的每个以太网接口添加“dhcp6:true”  语句。  例如：
+
+```config
+network:
+  version: 2
+  ethernets:
+    eno1:
+      dhcp6: true
+```
+
+在早期启动过程中，netplan “network renderer”将配置写入“/run”，以将设备控制权移交给指定的网络守护程序。有关 NETPLAN 的参考信息，请参阅 https://netplan.io/reference 。
  
 ## <a name="debian"></a>Debian
 
-1. 编辑 /etc/dhcp/dhclient6.conf 文件，并添加以下行：
+1. 编辑 /etc/dhcp/dhclient6.conf 文件，并添加以下行  ：
 
-        timeout 10;
+    ```config
+    timeout 10;
+    ```
 
-2. 编辑 /etc/network/interfaces 文件，添加以下配置：
+2. 编辑 /etc/network/interfaces 文件，添加以下配置  ：
 
-        iface eth0 inet6 auto
-            up sleep 5
-            up dhclient -1 -6 -cf /etc/dhcp/dhclient6.conf -lf /var/lib/dhcp/dhclient6.eth0.leases -v eth0 || true
+    ```config
+    iface eth0 inet6 auto
+        up sleep 5
+        up dhclient -1 -6 -cf /etc/dhcp/dhclient6.conf -lf /var/lib/dhcp/dhclient6.eth0.leases -v eth0 || true
+    ```
 
 3. 续订 IPv6 地址：
 
@@ -86,14 +97,18 @@ Azure 市场中的某些 Linux 虚拟机映像默认未配置动态主机配置�
 
 ## <a name="rhel-centos-and-oracle-linux"></a>RHEL、CentOS 和 Oracle Linux
 
-1. 编辑 /etc/sysconfig/network 文件，添加以下参数：
+1. 编辑 /etc/sysconfig/network 文件，添加以下参数  ：
 
-        NETWORKING_IPV6=yes
+    ```config
+    NETWORKING_IPV6=yes
+    ```
 
-2. 编辑 /etc/sysconfig/network-scripts/ifcfg-eth0 文件，添加以下两个参数：
+2. 编辑 /etc/sysconfig/network-scripts/ifcfg-eth0 文件，添加以下两个参数  ：
 
-        IPV6INIT=yes
-        DHCPV6C=yes
+    ```config
+    IPV6INIT=yes
+    DHCPV6C=yes
+    ```
 
 3. 续订 IPv6 地址：
 
@@ -111,11 +126,13 @@ Azure 中最新的 SUSE Linux Enterprise Server (SLES) 和 openSUSE 映像已预
     sudo zypper install dhcp-client
     ```
 
-2. 编辑 /etc/sysconfig/network/ifcfg-eth0 文件，添加以下参数：
+2. 编辑 /etc/sysconfig/network/ifcfg-eth0 文件，添加以下参数  ：
 
-        DHCLIENT6_MODE='managed'
+    ```config
+    DHCLIENT6_MODE='managed'
+    
 
-3. 续订 IPv6 地址：
+3. Renew the IPv6 address:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
@@ -125,13 +142,17 @@ Azure 中最新的 SUSE Linux Enterprise Server (SLES) 和 openSUSE 映像已预
 
 Azure 中最新的 SLES 和 openSUSE 映像已预先配置 DHCPv6。 使用这些映像不需要进行额外的更改。 如果 VM 基于旧版或自定义的 SUSE 映像，请执行以下步骤：
 
-1. 编辑 /etc/sysconfig/network/ifcfg-eth0 文件，并使用以下值替换 `#BOOTPROTO='dhcp4'` 参数：
+1. 编辑 /etc/sysconfig/network/ifcfg-eth0 文件，并使用以下值替换 `#BOOTPROTO='dhcp4'` 参数**：
 
-        BOOTPROTO='dhcp'
+    ```config
+    BOOTPROTO='dhcp'
+    ```
 
-2. 编辑 /etc/sysconfig/network/ifcfg-eth0 文件，添加以下参数：
+2. 编辑 /etc/sysconfig/network/ifcfg-eth0 文件，添加以下参数**：
 
-        DHCLIENT6_MODE='managed'
+    ```config
+    DHCLIENT6_MODE='managed'
+    ```
 
 3. 续订 IPv6 地址：
 
@@ -143,13 +164,15 @@ Azure 中最新的 SLES 和 openSUSE 映像已预先配置 DHCPv6。 使用这�
 
 Azure 中最新的 CoreOS 映像已预先配置 DHCPv6。 使用这些映像不需要进行额外的更改。 如果 VM 基于旧版或自定义的 CoreOS 映像，请执行以下步骤：
 
-1. 编辑 /etc/systemd/network/10_dhcp.network 文件：
+1. 编辑 /etc/systemd/network/10_dhcp.network 文件**：
 
-        [Match]
-        eth0
+    ```config
+    [Match]
+    eth0
 
-        [Network]
-        DHCP=ipv6
+    [Network]
+    DHCP=ipv6
+    ```
 
 2. 续订 IPv6 地址：
 

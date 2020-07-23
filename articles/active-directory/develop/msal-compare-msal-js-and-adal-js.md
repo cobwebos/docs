@@ -1,28 +1,23 @@
 ---
 title: MSAL.js 与 ADAL.js 的差异 | Azure
+titleSuffix: Microsoft identity platform
 description: 了解适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 与适用于 JavaScript 的 Azure AD 身份验证库 (ADAL.js) 之间的差异，以及如何在两者之间做出选择。
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: overview
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10b5169d3f06e265b3effa3ec18ad8e4f69959d3
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 7238a78279528b4522d09178d00bf916f14bad88
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121957"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76696412"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>MSAL JS 与 ADAL JS 的差异
 
@@ -59,13 +54,13 @@ ms.locfileid: "66121957"
 
     v2.0 协议在请求中使用范围而不是资源。 换而言之，当应用程序需要使用某个资源（例如 MS Graph）的权限请求令牌时，传递给库方法的值的差异如下：
 
-    v1.0：resource=https://graph.microsoft.com
+    v1.0：resource = https\://graph.microsoft.com
 
-    v2.0：scope = https://graph.microsoft.com/User.Read
+    v2.0：scope = https\://graph.microsoft.com/User.Read
 
     可以使用 API 的 URI 按“应用 ID URI/范围”格式请求任何资源 API 的范围。例如：https:\//mytenant.onmicrosoft.com/myapi/api.read
 
-    仅对于 MS Graph API 而言，范围值 `user.read` 将映射到 https://graph.microsoft.com/User.Read，并且两者可以换用。
+    仅对于 MS 图形 API，范围值 `user.read` 映射到 https： \/ /graph.microsoft.com/User.Read，可互换使用。
 
     ```javascript
     var request = {

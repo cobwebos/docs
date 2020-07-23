@@ -1,33 +1,24 @@
 ---
-title: Azure Service Fabric 安全性最佳做法 | Microsoft Docs
-description: Azure Service Fabric 安全性最佳做法。
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric 安全性最佳做法
+description: 确保 Azure Service Fabric 群集和应用程序安全的最佳做法和设计注意事项。
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 69e51f23980aa1d4225f2e5062470f94e5ca9008
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 90ffd1c01411982f56aed3332c499aa0c10b8a94
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66753782"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257593"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric 安全 
 
-有关 [Azure 安全性最佳做法](https://docs.microsoft.com/azure/security/)的详细信息，请参阅 [Azure Service Fabric 安全性最佳做法](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices)
+有关 [Azure 安全性最佳做法](../security/index.yml)的详细信息，请参阅 [Azure Service Fabric 安全性最佳做法](../security/fundamentals/service-fabric-best-practices.md)
 
-## <a name="key-vault"></a>Key Vault
+## <a name="key-vault"></a>密钥保管库
 
-[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) 是建议用于 Azure Service Fabric 应用程序和群集的机密管理服务。
+[Azure Key Vault](../key-vault/index.yml) 是建议用于 Azure Service Fabric 应用程序和群集的机密管理服务。
 > [!NOTE]
 > 如果将 Key Vault 中的证书/机密以虚拟机规模集机密的形式部署到虚拟机规模集，则必须将 Key Vault 和虚拟机规模集并置。
 
@@ -38,11 +29,11 @@ ms.locfileid: "66753782"
 - 创建自签名证书，以便创建一个公钥-私钥对并将其与证书相关联。 证书将通过其自身的密钥签名。 
 - 手动创建新证书，以便创建一个公钥-私钥对并生成 X.509 证书签名请求。 签名请求可以由注册机构或证书颁发机构进行签名。 签名的 x509 证书可以与挂起的密钥对合并，以便完成 Key Vault 中的 KV 证书。 虽然此方法需要更多步骤，但其安全性更高，因为私钥是在 Key Vault 中创建的，其范围局限于 Key Vault。 下图对此进行了说明。 
 
-如需更多详细信息，请参阅 [Azure Keyvault 证书创建方法](https://docs.microsoft.com/azure/key-vault/create-certificate)。
+如需更多详细信息，请参阅 [Azure Keyvault 证书创建方法](../key-vault/certificates/create-certificate.md)。
 
 ## <a name="deploy-key-vault-certificates-to-service-fabric-cluster-virtual-machine-scale-sets"></a>将 Key Vault 证书部署到 Service Fabric 群集虚拟机规模集
 
-若要将证书从并置的 keyvault 部署到虚拟机规模集，请使用虚拟机规模集 [osProfile](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile)。 下面是资源管理器模板属性：
+若要将证书从并置的 keyvault 部署到虚拟机规模集，请使用虚拟机规模集 [osProfile](/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile)。 下面是资源管理器模板属性：
 
 ```json
 "secrets": [
@@ -65,7 +56,7 @@ ms.locfileid: "66753782"
 
 ## <a name="apply-an-access-control-list-acl-to-your-certificate-for-your-service-fabric-cluster"></a>将访问控制列表 (ACL) 应用到 Service Fabric 群集的证书
 
-[虚拟机规模集扩展](https://docs.microsoft.com/cli/azure/vmss/extension?view=azure-cli-latest)发布服务器 Microsoft.Azure.ServiceFabric 用于配置节点安全性。
+[虚拟机规模集扩展](/cli/azure/vmss/extension?view=azure-cli-latest)发布服务器 Microsoft.Azure.ServiceFabric 用于配置节点安全性。
 若要将 ACL 应用到 Service Fabric 群集过程的证书，请使用以下资源管理器模板属性：
 
 ```json
@@ -79,7 +70,7 @@ ms.locfileid: "66753782"
 
 ## <a name="secure-a-service-fabric-cluster-certificate-by-common-name"></a>通过公用名保护 Service Fabric 群集证书
 
-若要通过证书 `Common Name` 来保护 Service Fabric 群集，请使用资源管理器模板属性 [certificateCommonNames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames)，如下所示：
+若要通过证书 `Common Name` 来保护 Service Fabric 群集，请使用资源管理器模板属性 [certificateCommonNames](/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames)，如下所示：
 
 ```json
 "certificateCommonNames": {
@@ -96,9 +87,9 @@ ms.locfileid: "66753782"
 > [!NOTE]
 > Service Fabric 群集将使用它在主机的证书存储中找到的第一个有效证书。 在 Windows 上，该证书将是具有最晚到期日期且与公用名和颁发者指纹匹配的证书。
 
-Azure 域（例如 *\<你的子域\>.cloudapp.azure.com 或 \<你的子域\>.trafficmanager.net）由 Microsoft 拥有。 证书颁发机构不会将域的证书颁发给未授权的用户。 大多数用户需要从注册机构购买域，或者需要是经授权的域管理员，否则证书颁发机构不会向其颁发具有该公用名的证书。
+Azure 域，如 * \<YOUR SUBDOMAIN\> . cloudapp.azure.com 或 \<YOUR SUBDOMAIN\> trafficmanager.net，由 Microsoft 拥有。 证书颁发机构不会将域的证书颁发给未授权的用户。 大多数用户需要从注册机构购买域，或者需要是经授权的域管理员，否则证书颁发机构不会向其颁发具有该公用名的证书。
 
-若要更详细地确定如何配置 DNS 服务，以便将域解析为 Microsoft IP 地址，请了解如何配置[用于托管域的 Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)。
+若要更详细地确定如何配置 DNS 服务，以便将域解析为 Microsoft IP 地址，请了解如何配置[用于托管域的 Azure DNS](../dns/dns-delegate-domain-azure-dns.md)。
 
 > [!NOTE]
 > 在将域名服务器委托给 Azure DNS 区域名称服务器以后，请将下面的两个记录添加到 DNS 区域：
@@ -115,7 +106,7 @@ Azure 域（例如 *\<你的子域\>.cloudapp.azure.com 或 \<你的子域\>.tra
 
 在 Service Fabric 包中加密的常用值包括：Azure 容器注册表 (ACR) 凭据、环境变量、设置，以及 Azure 卷插件存储帐户密钥。
 
-若要[在 Windows 群集上设置加密证书并对机密进行加密](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management-windows)，请执行以下操作：
+若要[在 Windows 群集上设置加密证书并对机密进行加密](./service-fabric-application-secret-management-windows.md)，请执行以下操作：
 
 生成用于加密机密的自签名证书：
 
@@ -131,7 +122,7 @@ New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEnciphermen
 Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint "<thumbprint>" -Text "mysecret" -StoreLocation CurrentUser -StoreName My
 ```
 
-若要[在 Linux 群集上设置加密证书并对机密进行加密](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management-linux)，请执行以下操作：
+若要[在 Linux 群集上设置加密证书并对机密进行加密](./service-fabric-application-secret-management-linux.md)，请执行以下操作：
 
 生成用于加密机密的自签名证书：
 
@@ -150,13 +141,25 @@ user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt -o plaintext_UTF-16.txt
 user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform der TestCert.pem | base64 > encrypted.txt
 ```
 
-在加密受保护的值以后，[在 Service Fabric 应用程序中指定加密的机密](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#specify-encrypted-secrets-in-an-application)，并[解密服务代码中加密的机密](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#decrypt-encrypted-secrets-from-service-code)。
+在加密受保护的值以后，[在 Service Fabric 应用程序中指定加密的机密](./service-fabric-application-secret-management.md#specify-encrypted-secrets-in-an-application)，并[解密服务代码中加密的机密](./service-fabric-application-secret-management.md#decrypt-encrypted-secrets-from-service-code)。
 
+## <a name="include-certificate-in-service-fabric-applications"></a>包括 Service Fabric 应用程序中的证书
+
+若要让应用程序访问机密，请包括该证书，方法是：将 **SecretsCertificate** 元素添加到应用程序清单。
+
+```xml
+<ApplicationManifest … >
+  ...
+  <Certificates>
+    <SecretsCertificate Name="MyCert" X509FindType="FindByThumbprint" X509FindValue="[YourCertThumbrint]"/>
+  </Certificates>
+</ApplicationManifest>
+```
 ## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>使用托管服务标识 (MSI) 向 Azure 资源验证 Service Fabric 应用程序
 
-若要了解 Azure 资源的托管标识，请参阅[什么是 Azure 资源的托管标识？](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-does-it-work)。
-Azure Service Fabric 群集托管在虚拟机规模集上，后者支持[托管服务标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-managed-identities-for-azure-resources)。
-若要获取可以使用 MSI 向其进行身份验证的服务的列表，请参阅[支持 Azure Active Directory 身份验证的 Azure 服务](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-azure-ad-authentication)。
+若要了解 Azure 资源的托管标识，请参阅[什么是 Azure 资源的托管标识？](../active-directory/managed-identities-azure-resources/overview.md)。
+Azure Service Fabric 群集托管在虚拟机规模集上，后者支持[托管服务标识](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)。
+若要获取可以使用 MSI 向其进行身份验证的服务的列表，请参阅[支持 Azure Active Directory 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 
 
 若要在创建虚拟机规模集期间启用系统分配托管标识，或在现有的虚拟机规模集上这样做，请声明以下 `"Microsoft.Compute/virtualMachinesScaleSets"` 属性：
@@ -166,9 +169,9 @@ Azure Service Fabric 群集托管在虚拟机规模集上，后者支持[托管�
     "type": "SystemAssigned"
 }
 ```
-有关详细信息，请参阅[什么是 Azure 资源的托管标识？](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vmss#system-assigned-managed-identity)。
+有关详细信息，请参阅[什么是 Azure 资源的托管标识？](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vmss.md#system-assigned-managed-identity)。
 
-如果创建了[用户分配托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm#create-a-user-assigned-managed-identity)，请在模板中声明以下资源，以便将其分配到虚拟机规模集。 将 `\<USERASSIGNEDIDENTITYNAME\>` 替换为你创建的用户分配托管标识的名称：
+如果创建了[用户分配托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity)，请在模板中声明以下资源，以便将其分配到虚拟机规模集。 将 `\<USERASSIGNEDIDENTITYNAME\>` 替换为你创建的用户分配托管标识的名称：
 
 ```json
 "identity": {
@@ -188,7 +191,7 @@ principalid=$(az resource show --id /subscriptions/<YOUR SUBSCRIPTON>/resourceGr
 az role assignment create --assignee $principalid --role 'Contributor' --scope "/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/<PROVIDER NAME>/<RESOURCE TYPE>/<RESOURCE NAME>"
 ```
 
-在 Service Fabric 应用程序代码中，[获取访问令牌](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http)Azure 资源管理器，从而 REST 所有类似于下面：
+在 Service Fabric 应用程序代码中，通过进行如下所示的 REST 调用[获取 Azure 资源管理器的访问令牌](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md#get-a-token-using-http)：
 
 ```bash
 access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true | python -c "import sys, json; print json.load(sys.stdin)['access_token']")
@@ -201,18 +204,29 @@ access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-v
 ```bash
 cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/Microsoft.DocumentDB/databaseAccounts/<YOUR ACCOUNT>/listKeys?api-version=2016-03-31' -X POST -d "" -H "Authorization: Bearer $access_token" | python -c "import sys, json; print(json.load(sys.stdin)['primaryMasterKey'])")
 ```
-## <a name="windows-security-baselines"></a>Windows 安全基准
-[我们建议你实现广泛是已知且经过严格测试，如 Microsoft 安全基准，而不是自己创建基线的符合行业标准配置](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines); 一个的预配这些虚拟机上的选项使用 Azure Desired State Configuration (DSC) 扩展处理程序，因为它们均已联机，使它们能够运行生产软件配置 Vm 规模集。
+## <a name="windows-security-baselines"></a>Windows 安全基线
+[我们建议你实现一个行业标准的配置，该配置被广泛已知并且经过良好测试，如 Microsoft 安全基线，而不是自己创建基线](/windows/security/threat-protection/windows-security-baselines);在虚拟机规模集上预配这些虚拟机规模集的选项是使用 Azure Desired State Configuration (DSC) 扩展处理程序，在虚拟机联机时配置 Vm，使它们运行生产软件。
 
 ## <a name="azure-firewall"></a>Azure 防火墙
-[Azure 防火墙是一种托管的基于云的网络安全服务，可保护你的 Azure 虚拟网络资源。它使用内置的高可用性和可伸缩性不受限制的云服务是完全有状态防火墙。](https://docs.microsoft.com/azure/firewall/overview); 这样就可以以出站 HTTP/S 将通信限制为指定的完全限定的域名 (FQDN) 包括通配符列表。 此功能不需要 SSL 终止。 其建议利用[Azure 防火墙 FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)终结点的 Windows 更新，并启用 Microsoft Windows update 的网络流量可以流经防火墙。 [部署 Azure 防火墙使用模板](https://docs.microsoft.com/azure/firewall/deploy-template)提供 Microsoft.Network/azureFirewalls 资源模板定义了一个示例。 普遍适用于 Service Fabric 应用程序的两个防火墙规则是允许您的群集网络通信与 * download.microsoft.com，和 * servicefabric.azure.com;若要提取 Windows 更新和 Service Fabric 计算虚拟机扩展插件代码。
+[Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。它是一个服务形式的完全有状态防火墙，具有内置的高可用性和不受限制的云可伸缩性。](../firewall/overview.md)；这样就可以将出站 HTTP/S 流量限制为指定的完全限定域名 (FQDN) 列表，包括通配符域名。 此功能不需要 TLS/SSL 终止。 建议利用 Windows 更新的 [Azure 防火墙 FQDN 标记](../firewall/fqdn-tags.md)，并允许到 Microsoft Windows 更新终结点的网络流量流经防火墙。 [使用模板部署 Azure 防火墙](../firewall/deploy-template.md)提供了一个有关 azureFirewalls 资源模板定义的示例。 常用于 Service Fabric 应用程序的防火墙规则是为群集虚拟网络启用以下站点：
+
+- *download.microsoft.com
+- *servicefabric.azure.com
+- *.core.windows.net
+
+这些防火墙规则是对允许的出站网络安全组的补充，此类安全组将包括 ServiceFabric 和存储，作为来自虚拟网络的允许目标。
 
 ## <a name="tls-12"></a>TLS 1.2
-[TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
+
+Microsoft [Azure 建议](https://azure.microsoft.com/updates/azuretls12/)所有客户完成到支持传输层安全 (tls) 1.2 的解决方案的迁移，并确保默认情况下使用 tls 1.2。
+
+Azure 服务（包括[Service Fabric](https://techcommunity.microsoft.com/t5/azure-service-fabric/microsoft-azure-service-fabric-6-3-refresh-release-cu1-notes/ba-p/791493)）已完成工程工作以删除 tls 1.0/1.1 协议的依赖项，并为想要将其工作负荷配置为仅接受 tls 1.2 连接的客户提供完全支持。
+
+默认情况下，客户应配置其 Azure 托管的工作负载以及与 Azure 服务交互的本地应用程序以使用 TLS 1.2。 下面介绍如何[将 Service Fabric 群集节点和应用程序配置](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)为使用特定的 TLS 版本。
 
 ## <a name="windows-defender"></a>Windows Defender 
 
-默认情况下，Windows Defender 防病毒安装在 Windows Server 2016 上。 有关详细信息，请参阅 [Windows Server 2016 上的 Windows Defender 防病毒](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)。 用户界面默认安装在某些 SKU 上，但不是必需的。 若要降低 Windows Defender 引发的性能影响和资源使用开销，在安全策略允许排除开源软件的进程和路径的情况下，请声明以下虚拟机规模集扩展资源管理器模板属性，将 Service Fabric 群集排除在扫描范围外：
+默认情况下，Windows Defender 防病毒安装在 Windows Server 2016 上。 有关详细信息，请参阅 [Windows Server 2016 上的 Windows Defender 防病毒](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)。 用户界面默认安装在某些 SKU 上，但不是必需的。 若要降低 Windows Defender 引发的性能影响和资源使用开销，在安全策略允许排除开源软件的进程和路径的情况下，请声明以下虚拟机规模集扩展资源管理器模板属性，将 Service Fabric 群集排除在扫描范围外：
 
 
 ```json
@@ -243,6 +257,18 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 
 > [!NOTE]
 > 如果不使用 Windows Defender，请参阅有关配置规则的反恶意软件文档。 Linux 不支持 Windows Defender。
+
+## <a name="platform-isolation"></a>平台隔离
+默认情况下，Service Fabric 应用程序会被授予访问 Service Fabric 运行时本身的权限，这本身会通过以下不同形式表明：[环境变量](service-fabric-environment-variables-reference.md)（指向对应于应用程序和 Fabric 文件的主机上的文件路径）、进程间通信终结点（接受应用程序特定请求）和客户端证书（Fabric 希望应用程序使用该证书对自身进行身份验证）。 如果服务托管本身不信任的代码，建议禁用此 SF 运行时访问权限，除非明确需要。 该运行时的访问权限可使用应用程序清单的“策略”部分中的以下声明来删除： 
+
+```xml
+<ServiceManifestImport>
+    <Policies>
+        <ServiceFabricRuntimeAccessPolicy RemoveServiceFabricRuntimeAccess="true"/>
+    </Policies>
+</ServiceManifestImport>
+
+```
 
 ## <a name="next-steps"></a>后续步骤
 

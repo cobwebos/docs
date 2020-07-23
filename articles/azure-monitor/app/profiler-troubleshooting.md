@@ -1,31 +1,28 @@
 ---
-title: 排查 Azure Application Insights Profiler 的问题 | Microsoft Docs
+title: 排查 Azure Application Insights Profiler 的问题
 description: 本文提供故障排除步骤和信息，帮助开发人员解决在启用或使用 Application Insights Profiler 时遇到的难题。
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 6ab13e1ecd5f4825270f4b3a28251b959ad98f02
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: 7c9dd20aea410aecb34811ca6e08e0f641be292b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60731007"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84148338"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>排查启用或查看 Application Insights Profiler 时遇到的问题
 
-## <a id="troubleshooting"></a>常规故障排除
+## <a name="active-issues"></a>未解决的问题
+
+* Azure 应用服务现在支持对 ASP.NET Core 3.x 应用程序的分析。
+
+## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>常规故障排除
 
 ### <a name="profiles-are-uploaded-only-if-there-are-requests-to-your-application-while-profiler-is-running"></a>仅当在运行 Profiler 期间对应用程序发出了请求时，才上传配置文件
 
-Azure Application Insights Profiler 每小时会收集两分钟的分析数据。 当你在“配置 Application Insights Profiler”窗格中选择“立即配置文件”按钮时，它也会收集数据。 但是，仅当可将分析数据附加到运行 Profiler 期间所发生的请求时，才会上传分析数据。 
+Azure Application Insights Profiler 每小时会收集两分钟的分析数据。 当你在“配置 Application Insights Profiler”窗格中选择“立即配置文件”按钮时，它也会收集数据 。 但是，仅当可将分析数据附加到运行 Profiler 期间所发生的请求时，才会上传分析数据。 
 
 Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源。 可以使用这些事件来查看 Profiler 的运行方式。 如果你认为 Profiler 应该运行并捕获跟踪，但“性能”窗格中并未显示这些信息，则可以检查 Profiler 的运行方式：
 
@@ -51,8 +48,9 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 * 如果 Web 应用是 ASP.NET Core 应用程序，则必须至少运行 ASP.NET Core 2.0。
 * 如果要查看的数据的期限超过了好几周，请尝试限制时间筛选器并重试。 七天后将删除跟踪。
 * 确保代理或防火墙未阻止对 https://gateway.azureserviceprofiler.net 的访问。
+* 免费或共享应用服务计划不支持 Profiler。 如果你正在使用这些计划之一，请尝试扩展至其中一个基本计划，并且 Profiler 应开始工作。
 
-### <a id="double-counting"></a>并行线程的重复计算
+### <a name="double-counting-in-parallel-threads"></a><a id="double-counting"></a>并行线程的重复计算
 
 在某些情况下，堆栈查看器中的总时间指标大于请求的持续时间。
 
@@ -67,9 +65,9 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 要使 Profiler 正常工作：
 * Web 应用服务计划必须属于“基本”层或更高层。
 * Web 应用必须已启用 Application Insights。
-* 你的 web 应用必须具有以下应用设置：
+* Web 应用必须具有以下应用设置：
 
-    |应用设置    | 值    |
+    |应用设置    | Value    |
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights 资源的 iKey    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
@@ -78,30 +76,30 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 
 * ApplicationInsightsProfiler3 webjob 必须正在运行。 若要检查 webjob：
    1. 转到 [Kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/)。
-   1. 在“工具”菜单中，选择“WebJobs 仪表板”。  
+   1. 在“工具”菜单中，选择“WebJobs 仪表板” 。  
       “WebJobs”窗格随即打开。 
    
       ![profiler-webjob]   
    
-   1. 若要查看详细信息的 web 作业，包括在日志中，选择**ApplicationInsightsProfiler3**链接。  
+   1. 若要查看 webjob 的详细信息（包括日志），请选择“ApplicationInsightsProfiler3”链接。  
      “连续 WebJob 详细信息”窗格随即打开。
 
       ![profiler-webjob-log]
 
-如果你不明白 Profiler 为何不能正常工作，可以下载日志并将其发送给我们的团队以获取帮助。 
+如果你不明白 Profiler 为何不能正常工作，可以下载日志并将其发送给我们的团队 serviceprofilerhelp@microsoft.com 以获取帮助。 
     
 ### <a name="manual-installation"></a>手动安装
 
-配置 Profiler 时，将对 Web 应用的设置进行更新。 如果你的环境有此要求，则可以手动应用更新。 例如，应用程序在适用于 PowerApps 的 Web 应用环境中运行。 若要手动应用更新：
+配置 Profiler 时，将对 Web 应用的设置进行更新。 如果你的环境有此要求，则可以手动应用更新。 例如，应用程序在适用于 PowerApps 的 Web 应用环境中运行。 若要手动应用更新，请执行以下操作：
 
-1. 在“Web 应用控制”窗格中，打开“设置”。
+1. 在“Web 应用控制”窗格中，打开“设置” 。
 
-1. 设置 **.NET Framework 版本**到**v4.6**。
+1. 将“.NET Framework 版本”设置为“v4.6” 。
 
-1. 将“Always On”设置为“打开”。
-1. 创建这些应用程序设置：
+1. 将“Always On”设置为“打开” 。
+1. 创建以下应用设置：
 
-    |应用设置    | 值    |
+    |应用设置    | Value    |
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights 资源的 iKey    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
@@ -111,7 +109,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 
 目前，最多可以对同一服务计划中运行的 4 个 Azure Web 应用和部署槽启用 Profiler。 如果在一个应用服务计划中运行的 Web 应用超过四个，则 Profiler 可能会引发 Microsoft.ServiceProfiler.Exceptions.TooManyETWSessionException。 Profiler 为每个 Web 应用单独运行，并尝试为每个应用启动 Windows 事件跟踪 (ETW) 会话。 但是，可以同时处于活动状态的 ETW 会话数量有限。 如果 Profiler webjob 报告活动探查会话太多，请将一些 Web 应用移到另一服务计划。
 
-### <a name="deployment-error-directory-not-empty-dhomesitewwwrootappdatajobs"></a>部署错误：目录不为空“D:\\home\\site\\wwwroot\\App_Data\\jobs”
+### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>部署错误：目录不为空“D:\\home\\site\\wwwroot\\App_Data\\jobs”
 
 如果在已启用 Profiler 的情况下将 Web 应用重新部署到 Web 应用资源，可能会看到如下消息：
 
@@ -127,11 +125,11 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 
 ### <a name="how-do-i-determine-whether-application-insights-profiler-is-running"></a>如何确定 Application Insights Profiler 是否正在运行？
 
-Profiler 在 Web 应用中以连续 Web 作业的形式运行。 可以在 [Azure 门户](https://portal.azure.com)中打开 Web 应用资源。 在“WebJobs”窗格中，查看 ApplicationInsightsProfiler 的状态。 如果探查器未运行，请打开“日志”获取详细信息。
+Profiler 在 Web 应用中以连续 Web 作业的形式运行。 可以在 [Azure 门户](https://portal.azure.com)中打开 Web 应用资源。 在“WebJobs”窗格中，查看 ApplicationInsightsProfiler 的状态 。 如果探查器未运行，请打开“日志”获取详细信息。
 
-## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>排查 Profiler 和 Azure 诊断的问题
+## <a name="troubleshoot-vms-and-cloud-services"></a>Vm 和云服务故障排除
 
->**已修复探查器在 WAD 中随附的云服务中的错误。** WAD (1.12.2.0) 为云服务的最新版本适用于所有最新版本的 App Insights SDK。 云服务主机将自动升级 WAD，但它不是即时。 若要强制升级，可以重新部署你的服务或重新启动节点。
+>**云服务 WAD 中附带的探查器中的 bug 已修复。** 用于云服务的最新版本的 WAD (1.12.2.0) 适用于所有最新版本的 App Insights SDK。 云服务主机将自动升级 WAD，但不会立即升级。 若要强制升级，可以重新部署服务或重新启动节点。
 
 若要查看 Azure 诊断是否正确配置了 Profiler，请执行以下三项操作： 
 1. 首先，检查部署的 Azure 诊断配置的内容是否符合预期。 
@@ -142,31 +140,54 @@ Profiler 在 Web 应用中以连续 Web 作业的形式运行。 可以在 [Azur
 
 若要检查用于配置 Azure 诊断的设置：
 
-1. 登录到虚拟机 (VM)，并打开位于此位置的日志文件。 （驱动器可能是 c： 或 d： 和插件版本可能不同。）
-
-    ```
-    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
-    ```
-    或
+1. 登录到虚拟机 (VM)，然后打开位于此位置的日志文件。 此插件版本在您的计算机上可能会更高。
+    
+    对于 Vm：
     ```
     c:\WindowsAzure\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log
+    ```
+    
+    对于云服务：
+    ```
+    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
     ```
 
 1. 在该文件中，可以搜索字符串“WadCfg”，找到传递给 VM 用于配置 Azure 诊断的设置。 可以检查 Profiler 接收器使用的 iKey 是否正确。
 
-1. 检查用于启动 Profiler 的命令行。 用于启动 Profiler 的参数是在以下文件中。 （驱动器可能是 c： 或 d:）
+1. 检查用于启动 Profiler 的命令行。 用于启动 Profiler 的参数位于以下文件中。 （驱动器可能为 c：或 d：，目录可能已隐藏。）
 
+    对于 Vm：
+    ```
+    C:\ProgramData\ApplicationInsightsProfiler\config.json
+    ```
+    
+    对于云服务：
     ```
     D:\ProgramData\ApplicationInsightsProfiler\config.json
     ```
 
 1. 确保 Profiler 命令行中的 iKey 是正确的。 
 
-1. 使用上述 config.json 文件中的路径检查 Profiler 日志文件。 它将显示表示 Profiler 正在使用的设置的调试信息。 此外，还将显示来自 Profiler 的状态和错误消息。  
+1. 使用前面*config.js*文件中的路径，检查探查器日志文件，名为**BootstrapN**。 它将显示表示 Profiler 正在使用的设置的调试信息。 此外，还将显示来自 Profiler 的状态和错误消息。  
+
+    对于 Vm，文件通常位于：
+    ```
+    C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.17.0.6\ApplicationInsightsProfiler
+    ```
+
+    对于云服务：
+    ```
+    C:\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.17.0.6\ApplicationInsightsProfiler
+    ```
 
     如果当应用程序接收请求时 Profiler 正在运行，则会显示以下消息：“检测到来自 iKey 的活动”。 
 
     上传跟踪时，会显示以下消息：“开始上传跟踪”。 
+
+
+## <a name="edit-network-proxy-or-firewall-rules"></a>编辑网络代理或防火墙规则
+
+如果应用程序通过代理或防火墙连接到 Internet，则可能需要编辑规则以允许应用程序与 Application Insights Profiler 服务进行通信。 Application Insights Profiler 使用的 IP 包含在 Azure Monitor 服务标记中。
 
 
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png

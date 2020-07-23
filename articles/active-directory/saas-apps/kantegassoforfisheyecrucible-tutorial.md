@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Kantega SSO for FishEye/Crucible 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Kantega SSO for FishEye/Crucible 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Kantega SSO for FishEye/Crucible 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 16-04-2019
+ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 477271debc5f04b4ea0c71145968b29945142571
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: f262f94c451d5dcffd933bdebb1374b8733b9fd8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917491"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67595175"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>教程：Azure Active Directory 与 Kantega SSO for FishEye/Crucible 的集成
+# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>教程：Azure Active Directory 与 Kantega SSO for FishEye/Crucible 集成
 
 本教程介绍如何将 Kantega SSO for FishEye/Crucible 与 Azure Active Directory (Azure AD) 集成。
 将 Kantega SSO for FishEye/Crucible 与 Azure AD 集成具有以下优势：
@@ -35,7 +35,7 @@ ms.locfileid: "64917491"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Kantega SSO for FishEye/Crucible 的集成，需要以下项：
 
@@ -81,7 +81,7 @@ ms.locfileid: "64917491"
 2. **[配置 Kantega SSO for FishEye/Crucible 单一登录](#configure-kantega-sso-for-fisheyecrucible-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 Kantega SSO for FishEye/Crucible 测试用户](#create-kantega-sso-for-fisheyecrucible-test-user) - 在 Kantega SSO for FishEye/Crucible 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 身份  。
+5. **创建 Kantega SSO for FishEye/Crucible 测试用户[ - 在 Kantega SSO for FishEye/Crucible 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 身份](#create-kantega-sso-for-fisheyecrucible-test-user)** 。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -102,7 +102,7 @@ ms.locfileid: "64917491"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
 
     ![Kantega SSO for FishEye/Crucible 域和 URL 单一登录信息](common/idp-intiated.png)
 
@@ -110,7 +110,7 @@ ms.locfileid: "64917491"
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
+5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     ![Kantega SSO for FishEye/Crucible 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
@@ -177,7 +177,7 @@ ms.locfileid: "64917491"
 
     ![配置单一登录](./media/kantegassoforfisheyecrucible-tutorial/addon6.png)
 
-    a. 复制“应用 ID URI”  值并将其用作 Azure 门户中“基本 SAML 配置”  部分中的“标识符、回复 URL 和登录 URL”  。
+    a. 复制“应用 ID URI”值并将其用作 Azure 门户中“基本 SAML 配置”部分中的“标识符、回复 URL 和登录 URL”。
 
     b. 单击“下一步”。 
 
@@ -221,7 +221,7 @@ ms.locfileid: "64917491"
 
     b. 在“已知域”文本框中输入域名  。
 
-    c. 单击“ **保存**”。
+    c. 单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -241,7 +241,7 @@ ms.locfileid: "64917491"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -263,7 +263,7 @@ ms.locfileid: "64917491"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -293,11 +293,11 @@ ms.locfileid: "64917491"
 
     ![添加员工](./media/kantegassoforfisheyecrucible-tutorial/user3.png)
 
-    a. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。 
+    a. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
     b. 在“显示名称”  文本框中，键入用户的显示名称（如 Britta Simon）。
 
-    c. 在“电子邮件地址”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。 
+    c. 在“电子邮件地址”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
     d. 在“密码”文本框中，键入用户的密码。 
 

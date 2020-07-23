@@ -3,24 +3,24 @@ title: 什么是内容分发网络 (CDN)？ - Azure | Microsoft Docs
 description: 了解什么是 Azure 内容分发网络 (CDN)，以及如何使用它来分发高带宽内容。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: 866e0c30-1f33-43a5-91f0-d22f033b16c6
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 05/09/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 9692d495ada8a311fd5037a4f17f24ed6da9243a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 262e5b7bbcbf6c463ef97d5acc72248d37195124
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57843668"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260425"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>什么是 Azure 上的内容分发网络？
 内容分发网络 (CDN) 是高效地向用户分发 Web 内容的分布式服务器网络。 CDN 将缓存的内容存储在 接入点 (POP) 位置（靠近最终用户的边缘服务器），以最大程度地降低延迟。 
@@ -38,7 +38,7 @@ Azure 内容分发网络 (CDN) 为开发人员提供了一个全局解决方案�
 ## <a name="how-it-works"></a>工作原理
 ![CDN 概述](./media/cdn-overview/cdn-overview.png)
 
-1. 用户 (Alice) 使用带有特殊域名（例如 _&lt;终结点名称&gt;_.azureedge.net）的 URL 来请求文件（也称资产）。 此名称可以是终结点主机名，也可以是自定义域。 DNS 将请求路由到性能最佳的 POP 位置，该位置通常是在地理上最靠近用户的 POP。
+1. 用户 (Alice) 使用带有特殊域名（例如 _&lt;终结点名称&gt;_ .azureedge.net）的 URL 来请求文件（也称资产）。 此名称可以是终结点主机名，也可以是自定义域。 DNS 将请求路由到性能最佳的 POP 位置，该位置通常是在地理上最靠近用户的 POP。
     
 2. 如果 POP 中的边缘服务器在其缓存中没有文件，则 POP 将从源服务器请求文件。 源服务器可以是 Azure Web 应用、Azure 云服务、Azure 存储帐户或任何公开可用的 Web 服务器。
    
@@ -59,7 +59,7 @@ Azure 内容分发网络 (CDN) 为开发人员提供了一个全局解决方案�
  - 可以在 CDN 配置文件中创建的终结点的数量。 
  - 可以映射到终结点的自定义域的数量。
 
-有关 CDN 订阅限制的详细信息，请参阅 [CDN 限制](https://docs.microsoft.com/azure/azure-subscription-service-limits)。
+有关 CDN 订阅限制的详细信息，请参阅 [CDN 限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
     
 ## <a name="azure-cdn-features"></a>Azure CDN 功能
 Azure CDN 提供以下重要功能：

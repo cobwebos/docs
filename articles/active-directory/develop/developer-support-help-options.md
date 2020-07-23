@@ -1,28 +1,22 @@
 ---
-title: Azure AD 应用开发人员的支持和帮助选项 | Microsoft Docs
+title: Azure AD 应用开发人员的支持和帮助选项
 description: 了解在创建与 Microsoft 标识（Azure Active Directory 和 Microsoft 帐户）集成的应用程序时，如何获取所遇到的开发相关问题的帮助和支持
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: efa14e88eeb8ab43f998a32aaa0c14220acab03a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: ea1afd2ecac8974c0e865e235288da545a9f1244
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235337"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80885525"
 ---
 # <a name="support-and-help-options-for-developers"></a>开发人员的支持和帮助选项
 
@@ -51,7 +45,7 @@ ms.locfileid: "66235337"
 
 ## <a name="use-the-development-support-tools"></a>使用开发支持工具
 
-| Tool  | 描述  |
+| 工具  | 说明  |
 |---------|---------|
 | [jwt.ms](https://jwt.ms) | 粘贴 ID 或访问令牌来解码声明名称和值。 |
 | [Microsoft Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)| 用于针对 Microsoft Graph API 发出请求和查看响应的工具。 |
@@ -62,7 +56,7 @@ Stack Overflow 是开发相关问题的首选渠道。 在这里，开发人员�
 
 如果通过搜索未找到你的问题的解答，请在 Stack Overflow 中提交新问题。 在提问时请使用以下标记之一，以便社区更快速地识别问题和解答问题：
 
-|组件/区域  | 标记 |
+|组件/区域  | Tags |
 |---------|---------|
 | ADAL 库 | [[adal]](https://stackoverflow.com/questions/tagged/adal) |
 | MSAL 库     | [[msal]](https://stackoverflow.com/questions/tagged/msal) |
@@ -70,21 +64,21 @@ Stack Overflow 是开发相关问题的首选渠道。 在这里，开发人员�
 | [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | [[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
 | [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[azure-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
 | [Microsoft 图形 API](https://developer.microsoft.com/graph/) | [[microsoft-graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
-| 与身份验证或授权主题相关的其他任何方面 | [[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
+| 与身份验证或授权主题相关的其他任何方面 | [[azure-active directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
 
 Stack Overflow 中的以下帖子包含有关如何提问和如何添加源代码的提示。 遵循以下准则可提高社区成员快速评估和响应问题的可能性：
 
-* [如何正确提问](https://stackoverflow.com/help/how-to-ask)
-* [How to create a minimal, complete, and verifiable example](https://stackoverflow.com/help/mcve)（如何创建最小、完整且可验证的示例）
+* [如何实现问一个好问题](https://stackoverflow.com/help/how-to-ask)
+* [如何创建最小、完整和可验证的示例](https://stackoverflow.com/help/mcve)
 
 ## <a name="create-a-github-issue"></a>创建 GitHub 问题
 
 如果发现了与库相关的 Bug 或问题，请在 GitHub 存储库中提出问题。 由于我们的库是开源的，因此也可提交拉取请求。
 
-库和其 GitHub 存储库的列表，请参阅：
+有关库及其 GitHub 存储库的列表，请参阅以下内容：
 
-* [ADAL](active-directory-authentication-libraries.md) 库和 GitHub 存储库
-* [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md)， [MSAL。Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)，并[MSAL.obj_c](https://github.com/AzureAD/microsoft-authentication-library-for-objc)库和 GitHub 存储库
+* [Azure Active Directory 身份验证库（ADAL）](../azuread-dev/active-directory-authentication-libraries.md)库和 GitHub 存储库
+* [Microsoft 身份验证库（MSAL）](reference-v2-libraries.md)库和 GitHub 存储库
 
 ## <a name="open-a-support-request"></a>提出支持请求
 
@@ -95,9 +89,3 @@ Stack Overflow 中的以下帖子包含有关如何提问和如何添加源代�
 * 如果你不是 Azure 客户，也可以通过[我们的商业支持](https://support.microsoft.com/en-us/gp/contactus81?Audience=Commercial)向 Microsoft 提出支持请求。
 
 还可以尝试通过[虚拟代理](https://support.microsoft.com/contactus/?ws=support)获取支持或提出问题。
-
-### <a name="free-chat-support-for-a-limited-time"></a>获取限时免费聊天支持
-
-Microsoft 合作伙伴还可以使用限时免费聊天支持。 如果你的公司不是 Microsoft 合作伙伴，可在[此处](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx)免费将其登记并获取其他权益。
-
-登记公司后，可在[此处](https://aka.ms/devchat)发起聊天请求。

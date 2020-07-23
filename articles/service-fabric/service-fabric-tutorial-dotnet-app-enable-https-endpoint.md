@@ -1,26 +1,15 @@
 ---
-title: 使用 Kestrel 将 HTTPS 终结点添加到 Azure 中的 Service Fabric 应用 | Microsoft Docs
+title: 使用 Kestrel 添加 HTTPS 终结点
 description: 本教程介绍如何使用 Kestrel 向 ASP.NET Core 前端 Web 服务添加 HTTPS 终结点，以及如何将应用程序部署到群集。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 01/17/2019
-ms.author: aljo
+ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 48dd09bf70e99adc250027df872266bea39a786b
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: b9e1800d07d418ff385f2c5e7af112b170e3fd44
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66302405"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780192"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>教程：使用 Kestrel 向 ASP.NET Core Web API 前端服务添加 HTTPS 终结点
 
@@ -31,7 +20,7 @@ ms.locfileid: "66302405"
 > [!div class="checklist"]
 > * 在服务中定义一个 HTTPS 终结点
 > * 将 Kestrel 配置为使用 HTTPS
-> * 在远程群集节点上安装 SSL 证书
+> * 在远程群集节点上安装 TLS/SSL 证书
 > * 允许 NETWORK SERVICE 访问证书的私钥
 > * 在 Azure 负载均衡器中打开端口 443
 > * 将应用程序部署到远程群集
@@ -52,7 +41,7 @@ ms.locfileid: "66302405"
 在开始学习本教程之前：
 
 * 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [安装 Visual Studio 2019](https://www.visualstudio.com/) 版本 15.5 或更高版本，其中包含 **Azure 开发**以及 **ASP.NET 和 Web 开发**工作负荷。
+* [安装 Visual Studio 2019](https://www.visualstudio.com/) 版本 16.5 或更高版本，其中包含“Azure 开发”  以及“ASP.NET 和 Web 开发”  工作负荷。
 * [安装 Service Fabric SDK](service-fabric-get-started.md)
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>获取证书或创建自签名开发证书
@@ -139,7 +128,7 @@ serviceContext =>
                     int port = serviceContext.CodePackageActivationContext.GetEndpoint("EndpointHttps").Port;
                     opt.Listen(IPAddress.IPv6Any, port, listenOptions =>
                     {
-                        listenOptions.UseHttps(GetCertificateFromStore());
+                        listenOptions.UseHttps(FindMatchingCertificateBySubject());
                         listenOptions.NoDelay = true;
                     });
                 })
@@ -164,28 +153,45 @@ serviceContext =>
 另请添加以下方法，这样 Kestrel 就能通过使用者在 `Cert:\LocalMachine\My` 存储中找到证书。  
 
 如果已使用以前的 PowerShell 命令创建自签名证书，请将“&lt;your_CN_value&gt;”替换为“mytestcert”，或者使用证书的 CN。
+请注意，在本地部署到 `localhost` 的情况下，最好使用“CN=localhost”以避免身份验证异常。
 
 ```csharp
-private X509Certificate2 GetCertificateFromStore()
+private X509Certificate2 FindMatchingCertificateBySubject(string subjectCommonName)
 {
-    var store = new X509Store(StoreName.My, StoreLocation.LocalMachine);
-    try
+    using (var store = new X509Store(StoreName.My, StoreLocation.LocalMachine))
     {
-        store.Open(OpenFlags.ReadOnly);
+        store.Open(OpenFlags.OpenExistingOnly | OpenFlags.ReadOnly);
         var certCollection = store.Certificates;
-        var currentCerts = certCollection.Find(X509FindType.FindBySubjectDistinguishedName, "CN=<your_CN_value>", false);
-        return currentCerts.Count == 0 ? null : currentCerts[0];
-    }
-    finally
+        var matchingCerts = new X509Certificate2Collection();
+    
+    foreach (var enumeratedCert in certCollection)
     {
-        store.Close();
+      if (StringComparer.OrdinalIgnoreCase.Equals(subjectCommonName, enumeratedCert.GetNameInfo(X509NameType.SimpleName, forIssuer: false))
+        && DateTime.Now < enumeratedCert.NotAfter
+        && DateTime.Now >= enumeratedCert.NotBefore)
+        {
+          matchingCerts.Add(enumeratedCert);
+        }
+    }
+
+        if (matchingCerts.Count == 0)
+    {
+        throw new Exception($"Could not find a match for a certificate with subject 'CN={subjectCommonName}'.");
+    }
+        
+        return matchingCerts[0];
     }
 }
+
+
 ```
 
-## <a name="give-network-service-access-to-the-certificates-private-key"></a>允许 NETWORK SERVICE 访问证书的私钥
+## <a name="grant-network-service-access-to-the-certificates-private-key"></a>授予网络服务访问证书私钥的权限
 
 在前面的步骤中，已在开发计算机上将证书导入 `Cert:\LocalMachine\My` 存储。  现在，显式允许运行服务（默认为 NETWORK SERVICE）的帐户访问证书的私钥。 可以手动执行此步骤（使用 certlm.msc 工具），但最好是在服务清单的 **SetupEntryPoint** 中[配置启动脚本](service-fabric-run-script-at-service-startup.md)，以便自动运行 PowerShell 脚本。
+
+>[!NOTE]
+> Service Fabric 支持按指纹或使用者公用名声明终结点证书。 在这种情况下，运行时会设置绑定，并根据作为服务运行身份的标识设置证书私钥的 ACL。 运行时还会监视证书的更改/续订，并相应地重新设置对应私钥的 ACL。
 
 ### <a name="configure-the-service-setup-entry-point"></a>配置服务安装程序入口点
 
@@ -360,47 +366,10 @@ if ($cert -eq $null)
 
 在导出向导中，选择“是，导出私钥”，然后选择“个人信息交换(PFX)”格式。   将文件导出到 *C:\Users\sfuser\votingappcert.pfx*。
 
-接下来，使用 [Add-AzServiceFabricApplicationCertificate](/powershell/module/az.servicefabric/Add-azServiceFabricApplicationCertificate) cmdlet 在远程群集上安装证书。
+接下来，使用[提供的 Powershell 脚本](./scripts/service-fabric-powershell-add-application-certificate.md)在远程群集上安装此证书。
 
 > [!Warning]
 > 对于开发和测试应用程序，自签名证书已足够。 对于生产应用程序，请使用[证书颁发机构 (CA)](https://wikipedia.org/wiki/Certificate_authority) 提供的证书，而不是自签名证书。
-
-```powershell
-Connect-AzAccount
-
-$vaultname="sftestvault"
-$certname="VotingAppPFX"
-$certpw="!Password321#"
-$groupname="voting_RG"
-$clustername = "votinghttps"
-$ExistingPfxFilePath="C:\Users\sfuser\votingappcert.pfx"
-
-$appcertpwd = ConvertTo-SecureString -String $certpw -AsPlainText -Force
-
-Write-Host "Reading pfx file from $ExistingPfxFilePath"
-$cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2 $ExistingPfxFilePath, $certpw
-
-$bytes = [System.IO.File]::ReadAllBytes($ExistingPfxFilePath)
-$base64 = [System.Convert]::ToBase64String($bytes)
-
-$jsonBlob = @{
-   data = $base64
-   dataType = 'pfx'
-   password = $certpw
-   } | ConvertTo-Json
-
-$contentbytes = [System.Text.Encoding]::UTF8.GetBytes($jsonBlob)
-$content = [System.Convert]::ToBase64String($contentbytes)
-
-$secretValue = ConvertTo-SecureString -String $content -AsPlainText -Force
-
-# Upload the certificate to the key vault as a secret
-Write-Host "Writing secret to $certname in vault $vaultname"
-$secret = Set-AzureKeyVaultSecret -VaultName $vaultname -Name $certname -SecretValue $secretValue
-
-# Add a certificate to all the VMs in the cluster.
-Add-AzServiceFabricApplicationCertificate -ResourceGroupName $groupname -Name $clustername -SecretIdentifier $secret.Id -Verbose
-```
 
 ## <a name="open-port-443-in-the-azure-load-balancer"></a>在 Azure 负载均衡器中打开端口 443
 
@@ -431,7 +400,7 @@ $slb | Set-AzLoadBalancer
 
 保存所有文件，从“调试”切换到“发布”，然后按 F6 进行重新生成。  在“解决方案资源管理器”中，右键单击“Voting”并选择“发布”   。 选择在[将应用程序部署到群集](service-fabric-tutorial-deploy-app-to-party-cluster.md)中创建的群集的连接终结点，或者选择另一群集。  单击“发布”，将应用程序发布到远程群集。 
 
-当应用程序部署后，打开 Web 浏览器，导航到 [https://mycluster.region.cloudapp.azure.com:443](https://mycluster.region.cloudapp.azure.com:443)（使用群集的连接终结点更新 URL）。 如果使用自签名证书，则会看到一个警告，指出电脑不信任此网站的安全性。  转到该网页。
+在应用程序部署后，打开 Web 浏览器，导航到 `https://mycluster.region.cloudapp.azure.com:443`（使用群集的连接终结点更新 URL）。 如果使用自签名证书，则会看到一个警告，指出电脑不信任此网站的安全性。  转到该网页。
 
 ![Voting 应用程序][image3]
 
@@ -442,7 +411,7 @@ $slb | Set-AzLoadBalancer
 > [!div class="checklist"]
 > * 在服务中定义一个 HTTPS 终结点
 > * 将 Kestrel 配置为使用 HTTPS
-> * 在远程群集节点上安装 SSL 证书
+> * 在远程群集节点上安装 TLS/SSL 证书
 > * 允许 NETWORK SERVICE 访问证书的私钥
 > * 在 Azure 负载均衡器中打开端口 443
 > * 将应用程序部署到远程群集

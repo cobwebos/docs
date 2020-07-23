@@ -1,7 +1,7 @@
 ---
-title: 在视频中查找确切的时刻 - 视频索引器
-titlesuffix: Azure Media Services
-description: 本主题演示如何使用视频索引器在视频中查找确切的时刻。
+title: 在视频中搜索视频索引器的确切时间
+titleSuffix: Azure Media Services
+description: 了解如何使用视频索引器在视频中搜索确切的时间。
 services: media-services
 author: Juliako
 manager: femila
@@ -10,49 +10,51 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 93376059dac2a8336e581269d8289d893779b291
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 1c3326456fefbbef9228cf26b5821f306cd21601
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799093"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80127910"
 ---
-# <a name="find-exact-moments-within-videos"></a>在视频中查找确切的时刻
+# <a name="search-for-exact-moments-in-videos-with-video-indexer"></a>在视频中搜索视频索引器的确切时间
 
-本主题介绍可以在视频中查找确切时刻的搜索选项。
+本主题介绍可用于在视频中搜索确切时间的搜索选项。
 
-1. 浏览到[视频索引器](https://www.videoindexer.ai/)网站并登录。
+1. 请参阅[视频索引器](https://www.videoindexer.ai/)网站并登录。
 2. 在帐户的所有视频中搜索。
 
-    在以下示例中，我们搜索的对话安全有关和中 Satya，所有视频
+    在下面的示例中，我们将搜索与安全性通信的所有视频，其中显示了 Satya。
 
-    ![搜索](./media/video-indexer-search/video-indexer-search01.png)
+    ![在视频索引器中搜索视频](./media/video-indexer-search/video-indexer-search01.png)
+
 3. 搜索视频的汇总见解。
 
-    然后即可单击视频中的“播放”，在视频中进行搜索。 再然后，可以选择“选择”选项卡，在视频中进行搜索。 
+    然后，可以通过在视频上选择 "**播放**" 来搜索视频。 然后，可以通过选择 "**搜索**" 选项卡在视频中搜索确切的时间。
 
-    在以下示例中，我们搜索"安全"内所选的视频。
+    在下面的示例中，我们将在选定视频中搜索 "安全"。
 
-    ![搜索](./media/video-indexer-search/video-indexer-search02.png)
+    ![使用视频索引器在视频中搜索](./media/video-indexer-search/video-indexer-search02.png)
 
-    如果单击某个结果，播放器会将你带到视频中的相应时刻。 可以在应用程序中获得播放器/见解视图和同步。 有关详细信息，请参阅[将视频索引器小组件嵌入应用程序](video-indexer-embed-widgets.md)。 
+    如果选择其中一个结果，播放机将进入视频。 可以在应用程序中实现播放机/见解视图和同步。 有关详细信息，请参阅[将视频索引器小组件嵌入应用](video-indexer-embed-widgets.md)。
+
 4. 搜索视频的明细。
-    
-    如果你想要创建您自己根据找到的视频剪辑，请按**编辑**按钮。 此页介绍了视频以及其 insights 作为筛选器。 有关详细信息，请参阅[查看和编辑视频索引器见解](video-indexer-view-edit.md)。 
 
-    您可以搜索视频以仅显示你感兴趣，并使用端 insights 筛选你想要查看的部分的行中。 完成后，可以预览剪辑并按**发布**创建库中将显示在新剪辑。
-    
-    在以下示例中，我们搜索的"mixed reality"文本。 我们还应用了其他筛选器，如以下屏幕所示。
-    
-    ![搜索](./media/video-indexer-search/video-indexer-search03.png)
+    如果希望基于找到的视频创建自己的剪辑，请选择 "**编辑**" 按钮。 此页面显示视频及其见解作为筛选器。 有关详细信息，请参阅[查看和编辑视频索引器见解](video-indexer-view-edit.md)。
 
-## <a name="next-steps"></a>后续步骤 
+    你可以在视频中搜索确切的时间，只显示你感兴趣的行。 使用侧面见解筛选要查看的部件。 完成后，可以预览剪辑，并选择 "**发布**" 以创建显示在库中的新剪辑。
 
-找到要处理的视频以后，即可根据下述某个主题中的说明继续处理该视频： 
+    在下面的示例中，我们搜索 "mixed reality" 文本。 我们还应用了其他筛选器，如以下屏幕所示。
 
-- [使用视频的深入见解](use-editor-create-project.md)
-- [使用视频索引器 REST API 处理内容](video-indexer-use-apis.md)
-- [将视觉小组件嵌入应用程序](video-indexer-embed-widgets.md)
+    ![在视频索引器中搜索确切时刻](./media/video-indexer-search/video-indexer-search03.png)
+
+## <a name="next-steps"></a>后续步骤
+
+找到要使用的视频中的确切时间后，可以继续处理视频。 有关详细信息，请参阅下列主题：
+
+- [使用视频深入见解](use-editor-create-project.md)
+- [用视频索引器处理内容 REST API](video-indexer-use-apis.md)
+- [在应用程序中嵌入视觉小组件](video-indexer-embed-widgets.md)
 
 ## <a name="see-also"></a>另请参阅
 

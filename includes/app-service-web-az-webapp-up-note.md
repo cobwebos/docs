@@ -9,11 +9,11 @@ ms.date: 02/27/2019
 ms.author: msangapu
 ms.custom: include file
 ms.openlocfilehash: 8b5be0a438d9c5bb1fd0596368327c53a2d6c31f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66137865"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "67173626"
 ---
 > [!NOTE]
 > `az webapp up` 命令执行以下操作：

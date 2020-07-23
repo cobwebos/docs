@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 626163bb512b7b3b651d016f21fc465c398a01e6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: c4d0f753e23e42b1064fec3f56957dfe97c30ca4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236748"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81261187"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>教程：Azure Active Directory 与 ITRP 集成
 
@@ -113,7 +113,7 @@ ms.locfileid: "66236748"
        `https://<tenant-name>.itrp.com`
 
     > [!NOTE]
-    > 这些值是占位符。 需要使用实际登录 URL 和标识符。 若要获取这些值，请与 [ITRP 支持团队](https://www.itrp.com/support)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”对话框中显示的模式  。
+    > 这些值是占位符。 需要使用实际登录 URL 和标识符。 若要获取这些值，请与 [ITRP 支持团队](https://www.4me.com/support/)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”对话框中显示的模式  。
 
 5. 在“SAML 签名证书”  部分中，选择“编辑”  图标以打开“SAML 签名证书”  对话框：
 
@@ -153,9 +153,9 @@ ms.locfileid: "66236748"
 
     1. 选择“启用”。 
 
-    1. 在“远程注销 URL”框中，粘贴从 Azure 门户复制的“注销 URL”值 ****  。
+    1. 在“远程注销 URL”框中，粘贴从 Azure 门户复制的“注销 URL”值   。
 
-    1. 在“SAML SSO URL”框中，粘贴从 Azure 门户复制的“登录 URL”值 ****  。
+    1. 在“SAML SSO URL”框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
     1. 在“证书指纹”  框中，粘贴从 Azure 门户复制的证书“指纹”  值。
 

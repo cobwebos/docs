@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.openlocfilehash: 9398eb4038afcd17788e750fcb5c27c76e9f3f44
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66241080"
 ---
 # <a name="ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 IP 防火墙
 
 为了保护帐户中存储的数据，Azure Cosmos DB 支持基于机密的授权模型，该模型利用强大的基于哈希的消息身份验证代码 (HMAC)。 此外，Azure Cosmos DB 支持使用基于 IP 的访问控制来提供入站防火墙支持。 此模型与传统数据库系统的防火墙规则类似，并且为帐户提供额外级别的安全性。 利用防火墙，可以配置为仅允许从一组已批准的计算机和/或云服务访问你的 Azure Cosmos 帐户。 从这些已批准的计算机和服务访问 Azure Cosmos 数据库中存储的数据仍需调用方提供有效的授权令牌。
 
-## <a id="ip-access-control-overview"></a>IP 访问控制概述
+## <a name="ip-access-control-overview"></a><a id="ip-access-control-overview"></a>IP 访问控制概述
 
 默认情况下，只要请求附有有效的授权令牌，即可从 Internet 访问你的 Azure Cosmos 帐户。 若要配置基于 IP 策略的访问控制，用户必须提供 CIDR（无类域间路由）格式的、要作为客户端 IP 允许列表包含的 IP 地址或 IP 地址范围集，这样才能访问给定的 Azure Cosmos 帐户。 应用此配置后，源自此允许列表外部的计算机的所有请求将收到 403（禁止访问）响应。 使用 IP 防火墙时，我们建议允许 Azure 门户访问你的帐户。 需有相应的访问权限才能允许使用数据资源管理器，以及检索 Azure 门户中显示的帐户指标。 使用数据资源管理器时，除了要允许 Azure 门户访问你的帐户，还需更新防火墙设置，将当前 IP 地址添加到防火墙规则中。 请注意，防火墙更改可能需要长达 15 分钟的时间进行传播。 
 

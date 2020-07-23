@@ -1,36 +1,29 @@
 ---
-title: 使用 WebJobs 运行后台任务 - Azure 应用服务
-description: 了解如何使用 WebJobs 在 Azure 应用服务 Web 应用、API 应用或移动应用中运行后台任务。
-services: app-service
-documentationcenter: ''
+title: 使用 WebJobs 运行后台任务
+description: 了解如何使用 WebJobs 在 Azure 应用服务中运行后台任务。 从各种脚本格式中进行选择，并使用 CRON 表达式运行它们。
 author: ggailey777
-manager: jeconnoc
-editor: jimbe
 ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/16/2018
-ms.author: glenga;msangapu;david.ebbo;suwatch;pbatum;naren.soni;
+ms.author: glenga
+ms.reviewer: msangapu;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 0f2053e978b7c890f4e175515ed54f69694950c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 028551f04b2e44e9456e2f7343159ad9b52fd25f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60833401"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82085138"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>在 Azure 应用服务中使用 WebJobs 运行后台任务
 
+本文介绍如何使用 [Azure 门户](https://portal.azure.com)部署 WebJobs，以便上传可执行文件或脚本。 有关如何使用 Visual Studio 开发和部署 WebJobs 的信息，请参阅[使用 Visual Studio 部署 WebJobs](webjobs-dotnet-deploy-vs.md)。
+
 ## <a name="overview"></a>概述
-WebJobs 是 [Azure 应用服务](https://docs.microsoft.com/azure/app-service/)的一项功能，可以在与 Web 应用、API 应用或移动应用相同的上下文中运行程序或脚本。 使用 Web 作业无需支付额外的费用。
+WebJobs 是 [Azure 应用服务](index.yml)的一项功能，它允许你在与 Web 应用、API 应用或移动应用相同的实例中运行程序或脚本。 使用 Web 作业无需支付额外的费用。
 
 > [!IMPORTANT]
 > Linux 上的应用服务尚不支持 WebJobs。
-
-本文介绍如何使用 [Azure 门户](https://portal.azure.com)部署 WebJobs，以便上传可执行文件或脚本。 有关如何使用 Visual Studio 开发和部署 WebJobs 的信息，请参阅[使用 Visual Studio 部署 WebJobs](webjobs-dotnet-deploy-vs.md)。
 
 可以结合 WebJobs 使用 Azure WebJobs SDK 来简化许多编程任务。 有关详细信息，请参阅[什么是 WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)。
 
@@ -49,7 +42,7 @@ Azure Functions 提供了运行程序和脚本的另一种方式。 有关 WebJo
 
 [!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
-## <a name="acceptablefiles"></a>支持的脚本或程序文件类型
+## <a name="supported-file-types-for-scripts-or-programs"></a><a name="acceptablefiles"></a>支持的脚本或程序文件类型
 
 支持以下文件类型：
 
@@ -61,7 +54,7 @@ Azure Functions 提供了运行程序和脚本的另一种方式。 有关 WebJo
 * .js（使用 Node.js）
 * .jar（使用 Java）
 
-## <a name="CreateContinuous"></a>创建连续 Web 作业
+## <a name="create-a-continuous-webjob"></a><a name="CreateContinuous"></a>创建连续 Web 作业
 
 <!-- 
 Several steps in the three "Create..." sections are identical; 
@@ -74,22 +67,22 @@ when making changes in one don't forget the other two.
 
    ![选择“Web 作业”](./media/web-sites-create-web-jobs/select-webjobs.png)
 
-2. 在“Web 作业”页中，选择“添加”。
+2. 在“Web 作业”页中，选择“添加”。 
 
     ![“Web 作业”页](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. 使用表中指定的“添加 Web 作业” 设置。
+3. 使用表中指定的“添加 Web 作业”设置。
 
    ![“添加 Web 作业”页](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
-   | 设置      | 示例值   | 描述  |
+   | 设置      | 示例值   | 说明  |
    | ------------ | ----------------- | ------------ |
-   | **名称** | myContinuousWebJob | 在应用服务应用中唯一的名称。 必须以字母或数字开头，且不能包含除“-”和“_”以外的特殊字符。 |
-   | **文件上传** | ConsoleApp.zip | 一个 *.zip* 文件，其中包含可执行文件或脚本文件，以及运行程序或脚本所需的所有支持文件。 [支持的文件类型](#acceptablefiles)部分中列出了支持的可执行文件或脚本文件类型。 |
-   | **类型** | 连续 | 本文前面介绍了 [Web 作业类型](#webjob-types)。 |
+   | **名称** | myContinuousWebJob | 在应用服务应用中唯一的名称。 必须以字母或数字开头，且不能包含除“-”和“_”以外的特殊字符。 |
+   | **文件上传** | ConsoleApp.zip | 一个 *.zip* 文件，其中包含可执行文件或脚本文件，以及运行程序或脚本所需的所有支持文件。 [支持的文件类型](#acceptablefiles)部分中列出了支持的可执行文件或脚本文件类型。 |
+   | **类型** | 连续 | 本文前面介绍了 [Web 作业类型](#webjob-types)。 |
    | **缩放** | 多实例 | 仅适用于连续 Web 作业。 确定程序或脚本是在所有实例还是只在一个实例上运行。 指定要在多个实例上运行的选项不适用于免费或共享[定价层](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 | 
 
-4. 单击“确定”。
+4. 单击 **“确定”** 。
 
    新的 Web 作业随即显示在“Web 作业”页上。
 
@@ -99,7 +92,7 @@ when making changes in one don't forget the other two.
 
     ![停止连续 Web 作业](./media/web-sites-create-web-jobs/continuousstop.png)
 
-## <a name="CreateOnDemand"></a>创建手动触发的 Web 作业
+## <a name="create-a-manually-triggered-webjob"></a><a name="CreateOnDemand"></a>创建手动触发的 Web 作业
 
 <!-- 
 Several steps in the three "Create..." sections are identical; 
@@ -112,32 +105,32 @@ when making changes in one don't forget the other two.
 
    ![选择“Web 作业”](./media/web-sites-create-web-jobs/select-webjobs.png)
 
-2. 在“Web 作业”页中，选择“添加”。
+2. 在“Web 作业”页中，选择“添加”。 
 
     ![“Web 作业”页](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. 使用表中指定的“添加 Web 作业” 设置。
+3. 使用表中指定的“添加 Web 作业”设置。
 
    ![“添加 Web 作业”页](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
-   | 设置      | 示例值   | 描述  |
+   | 设置      | 示例值   | 说明  |
    | ------------ | ----------------- | ------------ |
-   | **名称** | myTriggeredWebJob | 在应用服务应用中唯一的名称。 必须以字母或数字开头，且不能包含除“-”和“_”以外的特殊字符。|
-   | **文件上传** | ConsoleApp.zip | 一个 *.zip* 文件，其中包含可执行文件或脚本文件，以及运行程序或脚本所需的所有支持文件。 [支持的文件类型](#acceptablefiles)部分中列出了支持的可执行文件或脚本文件类型。 |
-   | **类型** | 触发 | 本文前面介绍了 [Web 作业类型](#webjob-types)。 |
-   | **触发器** | 手动 | |
+   | **名称** | myTriggeredWebJob | 在应用服务应用中唯一的名称。 必须以字母或数字开头，且不能包含除“-”和“_”以外的特殊字符。|
+   | **文件上传** | ConsoleApp.zip | 一个 *.zip* 文件，其中包含可执行文件或脚本文件，以及运行程序或脚本所需的所有支持文件。 [支持的文件类型](#acceptablefiles)部分中列出了支持的可执行文件或脚本文件类型。 |
+   | **类型** | 触发 | 本文前面介绍了 [Web 作业类型](#webjob-types)。 |
+   | **触发器** | 手动 | |
 
-4. 单击“确定”。
+4. 单击 **“确定”** 。
 
    新的 Web 作业随即显示在“Web 作业”页上。
 
    ![Web 作业列表](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
-7. 要运行 WebJob，请在列表中右键单击其名称，并单击“运行”。
+7. 如果要运行 Web 作业，请在列表中右键单击其名称，并单击“运行” 。
    
     ![运行 Web 作业](./media/web-sites-create-web-jobs/runondemand.png)
 
-## <a name="CreateScheduledCRON"></a>创建计划的 Web 作业
+## <a name="create-a-scheduled-webjob"></a><a name="CreateScheduledCRON"></a>创建计划的 Web 作业
 
 <!-- 
 Several steps in the three "Create..." sections are identical; 
@@ -150,31 +143,31 @@ when making changes in one don't forget the other two.
 
    ![选择“Web 作业”](./media/web-sites-create-web-jobs/select-webjobs.png)
 
-2. 在“Web 作业”页中，选择“添加”。
+2. 在“Web 作业”页中，选择“添加”。 
 
    ![“Web 作业”页](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. 使用表中指定的“添加 Web 作业” 设置。
+3. 使用表中指定的“添加 Web 作业”设置。
 
    ![“添加 Web 作业”页](./media/web-sites-create-web-jobs/addwjscheduled.png)
 
-   | 设置      | 示例值   | 描述  |
+   | 设置      | 示例值   | 说明  |
    | ------------ | ----------------- | ------------ |
-   | **名称** | myScheduledWebJob | 在应用服务应用中唯一的名称。 必须以字母或数字开头，且不能包含除“-”和“_”以外的特殊字符。 |
-   | **文件上传** | ConsoleApp.zip | 一个 *.zip* 文件，其中包含可执行文件或脚本文件，以及运行程序或脚本所需的所有支持文件。 [支持的文件类型](#acceptablefiles)部分中列出了支持的可执行文件或脚本文件类型。 |
-   | **类型** | 触发 | 本文前面介绍了 [Web 作业类型](#webjob-types)。 |
-   | **触发器** | 计划 | 要使计划可靠运行，请启用 Always On 功能。 Always On 仅在基本、标准和高级定价层中提供。|
-   | **CRON 表达式** | 0 0/20 * * * * | 以下部分介绍了 [CRON 表达式](#cron-expressions)。 |
+   | **名称** | myScheduledWebJob | 在应用服务应用中唯一的名称。 必须以字母或数字开头，且不能包含除“-”和“_”以外的特殊字符。 |
+   | **文件上传** | ConsoleApp.zip | 一个 *.zip* 文件，其中包含可执行文件或脚本文件，以及运行程序或脚本所需的所有支持文件。 [支持的文件类型](#acceptablefiles)部分中列出了支持的可执行文件或脚本文件类型。 |
+   | **类型** | 触发 | 本文前面介绍了 [Web 作业类型](#webjob-types)。 |
+   | **触发器** | 计划 | 要使计划可靠运行，请启用 Always On 功能。 Always On 仅在基本、标准和高级定价层中提供。|
+   | **CRON 表达式** | 0 0/20 * * * * | 以下部分介绍了 [CRON 表达式](#ncrontab-expressions)。 |
 
-4. 单击“确定”。
+4. 单击 **“确定”** 。
 
    新的 Web 作业随即显示在“Web 作业”页上。
 
    ![Web 作业列表](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
-## <a name="cron-expressions"></a>CRON 表达式
+## <a name="ncrontab-expressions"></a>NCRONTAB 表达式
 
-可以在门户中输入 [CRON 表达式](../azure-functions/functions-bindings-timer.md#cron-expressions)，或者在 Web 作业 .zip 文件的根目录中包含一个 `settings.job` 文件，如以下示例中所示：
+可以在门户中输入 [NCRONTAB 表达式](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)，或者在 Web 作业 .zip 文件的根目录中包含一个 `settings.job` 文件，如以下示例中所示：
 
 ```json
 {
@@ -184,7 +177,9 @@ when making changes in one don't forget the other two.
 
 若要了解详细信息，请参阅[计划触发的 Web 作业](webjobs-dotnet-deploy-vs.md#scheduling-a-triggered-webjob)。
 
-## <a name="ViewJobHistory"></a>查看作业历史记录
+[!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
+
+## <a name="view-the-job-history"></a><a name="ViewJobHistory"></a>查看作业历史记录
 
 1. 选择要查看其历史记录 Web 作业，并选择“日志”按钮。
    
@@ -194,7 +189,7 @@ when making changes in one don't forget the other two.
    
    ![Web 作业详细信息](./media/web-sites-create-web-jobs/webjobdetails.png)
 
-3. 在“Web 作业运行详细信息”页中，选择“切换输出”查看日志内容的文本。
+3. 在“Web 作业运行详细信息”页中，选择“切换输出”查看日志内容的文本。 
    
     ![Web 作业运行详细信息](./media/web-sites-create-web-jobs/webjobrundetails.png)
 
@@ -206,6 +201,6 @@ when making changes in one don't forget the other two.
    
     ![历史记录仪表板中的 Web 作业列表](./media/web-sites-create-web-jobs/webjobslist.png)
    
-## <a name="NextSteps"></a>后续步骤
+## <a name="next-steps"></a><a name="NextSteps"></a> 后续步骤
 
 可以结合 WebJobs 使用 Azure WebJobs SDK 来简化许多编程任务。 有关详细信息，请参阅[什么是 WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)。

@@ -10,36 +10,35 @@ ms.assetid: 364cd53e-88fb-4301-a093-f132fa1f88f5
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 2e53b0d582a69e10de22e85720833800d44058e3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8be8ffa1b569c365c8fa9b985d2b8319b7c0731b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66141488"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249829"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>如何在 Azure API 管理中使用基于角色的访问控制
 
-Azure API 管理依赖于 Azure 基于角色的访问控制 (RBAC) 来为 API 管理服务和实体（例如，API 和策略）启用精细访问管理。 本文概述 API 管理中的内置角色和自定义角色。 有关 Azure 门户中的访问管理的详细信息，请参阅 [Azure 门户中的访问管理入门](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/)。
+Azure API 管理依赖于 Azure 基于角色的访问控制 (RBAC) 来为 API 管理服务和实体（例如，API 和策略）启用精细访问管理。 本文概述 API 管理中的内置角色和自定义角色。 有关 Azure 门户中的访问管理的详细信息，请参阅 [Azure 门户中的访问管理入门](../role-based-access-control/overview.md)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="built-in-roles"></a>内置角色
 
-API 管理目前提供了三个内置角色，不久之后会再添加两个角色。 可在不同的范围（包括订阅、资源组和单个 API 管理实例）分配这些角色。 例如，如果在资源组级别将“Azure API 管理服务读取者”角色分配给某个用户，则该用户将对该资源组中的所有 API 管理实例拥有读取访问权限。 
+API 管理目前提供了三个内置角色，不久之后会再添加两个角色。 可在不同的范围（包括订阅、资源组和单个 API 管理实例）分配这些角色。 例如，如果将 "API 管理服务读取者" 角色分配给资源组级别的某个用户，则该用户将对该资源组中的所有 API 管理实例拥有读取访问权限。 
 
-下表提供内置角色的简短说明。 可以使用 Azure 门户或其他工具（包括 Azure [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 和 [REST API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)）分配这些角色。 有关如何分配内置角色的详细信息，请参阅[使用角色分配管理对 Azure 订阅资源的访问权限](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
+下表提供内置角色的简短说明。 可以使用 Azure 门户或其他工具（包括 Azure [PowerShell](../role-based-access-control/role-assignments-powershell.md)、[Azure CLI](../role-based-access-control/role-assignments-cli.md) 和 [REST API](../role-based-access-control/role-assignments-rest.md)）分配这些角色。 有关如何分配内置角色的详细信息，请参阅[使用角色分配管理对 Azure 订阅资源的访问权限](../role-based-access-control/role-assignments-portal.md)。
 
-| 角色          | 读取访问权限<sup>[1]</sup> | 写入访问权限<sup>[2]</sup> | 服务创建、删除、缩放，VPN 和自定义域配置 | 对旧版发布者门户拥有访问权限 | 描述
+| 角色          | 读取访问权限<sup>[1]</sup> | 写入访问权限<sup>[2]</sup> | 服务创建、删除、缩放，VPN 和自定义域配置 | 对旧版发布者门户拥有访问权限 | 说明
 | ------------- | ---- | ---- | ---- | ---- | ---- 
-| Azure API 管理服务参与者 | ✓ | ✓ | ✓ | ✓ | 超级用户。 对 API 管理服务和实体（例如，API 和策略）拥有完全 CRUD 访问权限。 对旧版发布者门户拥有访问权限。 |
-| Azure API 管理服务读取者 | ✓ | | || 对 API 管理服务和实体拥有只读访问权限。 |
-| Azure API 管理服务操作员 | ✓ | | ✓ | | 可以管理 API 管理服务，但不能管理实例。|
-| Azure API 管理服务编辑者<sup>*</sup> | ✓ | ✓ | |  | 可以管理 API 管理实体，但不能管理服务。|
-| Azure API 管理内容管理员<sup>*</sup> | ✓ | | | ✓ | 可以管理开发人员门户。 对服务和实体拥有只读访问权限。|
+| API 管理服务参与者 | ✓ | ✓ | ✓ | ✓ | 超级用户。 对 API 管理服务和实体（例如，API 和策略）拥有完全 CRUD 访问权限。 对旧版发布者门户拥有访问权限。 |
+| API 管理服务读取器 | ✓ | | || 对 API 管理服务和实体拥有只读访问权限。 |
+| API 管理服务操作员 | ✓ | | ✓ | | 可以管理 API 管理服务，但不能管理实例。|
+| API 管理服务编辑器<sup>*</sup> | ✓ | ✓ | |  | 可以管理 API 管理实体，但不能管理服务。|
+| API 管理内容管理员<sup>*</sup> | ✓ | | | ✓ | 可以管理开发人员门户。 对服务和实体拥有只读访问权限。|
 
 <sup>[1] 对 API 管理服务和实体（例如，API 和策略）拥有读取访问权限。</sup>
 
@@ -49,12 +48,12 @@ API 管理目前提供了三个内置角色，不久之后会再添加两个角�
 
 ## <a name="custom-roles"></a>自定义角色
 
-如果没有任何内置角色可以满足具体需要，可以创建自定义角色，针对 API 管理实体提供更精细的访问管理。 例如，可以创建一个对 API 管理服务拥有只读访问权限，但只对某个特定 API 拥有写入访问权限的自定义角色。 若要详细了解自定义角色，请参阅 [Azure RBAC 中的自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)。 
+如果没有任何内置角色可以满足具体需要，可以创建自定义角色，针对 API 管理实体提供更精细的访问管理。 例如，可以创建一个对 API 管理服务拥有只读访问权限，但只对某个特定 API 拥有写入访问权限的自定义角色。 若要详细了解自定义角色，请参阅 [Azure RBAC 中的自定义角色](../role-based-access-control/custom-roles.md)。 
 
 > [!NOTE]
 > 若要在 Azure 门户中查看 API 管理实例，自定义角色必须包含 ```Microsoft.ApiManagement/service/read``` 操作。
 
-创建自定义角色时，从某个内置角色着手会更为轻松。 编辑属性以添加 **Actions**、**NotActions** 或 **AssignableScopes**，然后将所做的更改保存为新角色。 以下示例从“Azure API 管理服务读取者”角色着手，创建名为“计算器 API 编辑者”的自定义角色。 可以将自定义角色分配给特定的 API。 因此，此角色仅有权访问该 API。 
+创建自定义角色时，从某个内置角色着手会更为轻松。 编辑属性以添加 **Actions**、**NotActions** 或 **AssignableScopes**，然后将所做的更改保存为新角色。 以下示例以 "API 管理服务读取者" 角色开头，并创建一个名为 "计算器 API Editor" 的自定义角色。 可以将自定义角色分配给特定的 API。 因此，此角色仅有权访问该 API。 
 
 ```powershell
 $role = Get-AzRoleDefinition "API Management Service Reader Role"

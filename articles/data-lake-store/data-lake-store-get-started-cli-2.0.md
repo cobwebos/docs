@@ -1,48 +1,44 @@
 ---
-title: 通过 Azure CLI 开始使用 Azure Data Lake Storage Gen1 | Microsoft Docs
-description: 使用 Azure CLI 创建 Data Lake Storage Gen1 帐户并执行基本操作
-services: data-lake-store
-documentationcenter: ''
+title: 管理 Azure Data Lake Storage Gen1 帐户-Azure CLI
+description: 使用 Azure CLI 创建 Data Lake Storage Gen1 帐户并执行基本操作。
 author: twooley
-manager: mtillman
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 9431cc7fa12b86371ce6b2325aca8e13d264442e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 92fd681d05b8e5bd7cf07ecd735acd87698935ef
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60885334"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985783"
 ---
-# <a name="get-started-with-azure-data-lake-store-using-azure-cli"></a>Azure Data Lake Store 入门（使用 Azure CLI）
+# <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-cli"></a>使用 Azure CLI 开始使用 Azure Data Lake Storage Gen1
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
 
 > [!div class="op_single_selector"]
-> * [门户](data-lake-store-get-started-portal.md)
+> * [Portal](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
 > * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 >
 > 
 
-了解如何使用 Azure CLI 来创建 Azure Data Lake Storage Gen1 帐户以及执行基本操作，如创建文件夹、上载和下载数据文件、删除帐户等。有关 Data Lake Storage Gen1 的详细信息，请参阅 [Data Lake Storage Gen1 概述](data-lake-store-overview.md)。
+了解如何使用 Azure CLI 创建 Azure Data Lake Storage Gen1 帐户并执行基本操作，如创建文件夹、上传和下载数据文件、删除帐户等。有关 Data Lake Storage Gen1 的详细信息，请参阅[Data Lake Storage Gen1 概述](data-lake-store-overview.md)。
 
 Azure CLI 是 Azure 的命令行体验，用于管理 Azure 资源。 它可以在 macOS、Linux 和 Windows 上使用。 有关详细信息，请参阅 [Azure CLI 概述](https://docs.microsoft.com/cli/azure)。 也可查看 [Azure Data Lake Storage Gen1 CLI 参考](https://docs.microsoft.com/cli/azure/dls)，获取命令和语法的完整列表。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 在开始阅读本文前，必须具有：
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **Azure CLI**：请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 以获取说明。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
-本文对 Data Lake Storage Gen1 使用一种较为简单的身份验证方法，你可以在其中以最终用户的身份登录。 系统会根据登录用户的访问级别约束对 Data Lake Storage Gen1 帐户和文件系统的访问权限。 不过，也可以使用其他方法在 Data Lake Storage Gen1 中进行身份验证，即“最终用户身份验证”或“服务到服务身份验证”。 有关如何进行身份验证的说明和详细信息，请参阅[最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)或[服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)。
+本文对 Data Lake Storage Gen1 使用一种较为简单的身份验证方法，你可以在其中以最终用户的身份登录。 系统会根据登录用户的访问级别约束对 Data Lake Storage Gen1 帐户和文件系统的访问权限。 不过，也可以使用其他方法在 Data Lake Storage Gen1 中进行身份验证，即“最终用户身份验证”或“服务到服务身份验证”********。 有关如何进行身份验证的说明和详细信息，请参阅[最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)或[服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)。
 
 
 ## <a name="log-in-to-your-azure-subscription"></a>登录到 Azure 订阅
@@ -114,27 +110,29 @@ az dls fs list --account mydatalakestoragegen1 --path /mynewfolder
 
 命令的输出如下所示：
 
-    [
-        {
-            "accessTime": 1491323529542,
-            "aclBit": false,
-            "blockSize": 268435456,
-            "group": "1808bd5f-62af-45f4-89d8-03c5e81bac20",
-            "length": 1589881,
-            "modificationTime": 1491323531638,
-            "msExpirationTime": 0,
-            "name": "mynewfolder/vehicle1_09142014.csv",
-            "owner": "1808bd5f-62af-45f4-89d8-03c5e81bac20",
-            "pathSuffix": "vehicle1_09142014.csv",
-            "permission": "770",
-            "replication": 1,
-            "type": "FILE"
-        }
-    ]
+```output
+[
+    {
+        "accessTime": 1491323529542,
+        "aclBit": false,
+        "blockSize": 268435456,
+        "group": "1808bd5f-62af-45f4-89d8-03c5e81bac20",
+        "length": 1589881,
+        "modificationTime": 1491323531638,
+        "msExpirationTime": 0,
+        "name": "mynewfolder/vehicle1_09142014.csv",
+        "owner": "1808bd5f-62af-45f4-89d8-03c5e81bac20",
+        "pathSuffix": "vehicle1_09142014.csv",
+        "permission": "770",
+        "replication": 1,
+        "type": "FILE"
+    }
+]
+```
 
 ## <a name="rename-download-and-delete-data-from-a-data-lake-storage-gen1-account"></a>重命名、下载以及删除 Data Lake Storage Gen1 帐户中的数据 
 
-* 使用以下命令，**重命名文件**：
+* **若要重命名文件**，请使用以下命令：
   
     ```azurecli
     az dls fs move --account mydatalakestoragegen1 --source-path /mynewfolder/vehicle1_09142014.csv --destination-path /mynewfolder/vehicle1_09142014_copy.csv
@@ -151,7 +149,7 @@ az dls fs list --account mydatalakestoragegen1 --path /mynewfolder
     > 
     >
 
-* 使用以下命令，**删除文件**：
+* **若要删除文件**，请使用以下命令：
   
     ```azurecli
     az dls fs delete --account mydatalakestoragegen1 --path /mynewfolder/vehicle1_09142014_copy.csv
@@ -187,17 +185,19 @@ az dls fs list --account mydatalakestoragegen1 --path /mynewfolder
 
     输出应如下所示：
 
-        {
-            "entries": [
-            "user::rwx",
-            "group::rwx",
-            "other::---"
-          ],
-          "group": "1808bd5f-62af-45f4-89d8-03c5e81bac20",
-          "owner": "1808bd5f-62af-45f4-89d8-03c5e81bac20",
-          "permission": "770",
-          "stickyBit": false
-        }
+    ```output
+    {
+        "entries": [
+        "user::rwx",
+        "group::rwx",
+        "other::---"
+        ],
+        "group": "1808bd5f-62af-45f4-89d8-03c5e81bac20",
+        "owner": "1808bd5f-62af-45f4-89d8-03c5e81bac20",
+        "permission": "770",
+        "stickyBit": false
+    }
+    ```
 
 * **若要设置 ACL 的条目**，请使用以下命令：
 
@@ -235,5 +235,5 @@ az dls account delete --account mydatalakestoragegen1
 ## <a name="next-steps"></a>后续步骤
 * [使用 Azure Data Lake Storage Gen1 满足大数据要求](data-lake-store-data-scenarios.md) 
 * [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
-* [配合使用 Azure Data Lake Analytics 和 Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [将 Azure Data Lake Analytics 与 Data Lake Storage Gen1 配合使用](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [将 Azure HDInsight 与 Data Lake Storage Gen1 配合使用](data-lake-store-hdinsight-hadoop-use-portal.md)

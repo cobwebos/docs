@@ -1,23 +1,23 @@
 ---
-title: 使用 Azure Site Recovery 将本地 Windows Server 2008 服务器迁移到 Azure | Microsoft Docs
+title: 使用 Azure Site Recovery 将 Windows Server 2008 服务器迁移到 Azure
 description: 本文介绍如何使用 Azure Site Recovery 将本地 Windows Server 2008 计算机迁移到 Azure。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: c449b74a9d6185b0616f62d31926feb6ff218cbb
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 20fe29a6588891c35520db01ac0403fb5b3a85d7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400080"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "73936136"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>将运行 Windows Server 2008 的服务器迁移到 Azure
 
-本教程介绍如何使用 Azure Site Recovery 将运行 Windows Server 2008 或 2008 R2 的本地服务器迁移到 Azure。 本教程介绍如何执行下列操作：
+本教程介绍如何使用 Azure Site Recovery 将运行 Windows Server 2008 或 2008 R2 的本地服务器迁移到 Azure。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 准备适合迁移的本地环境
@@ -28,6 +28,9 @@ ms.locfileid: "66400080"
 > * 故障转移到 Azure 并完成迁移
 
 “限制和已知问题”部分列出了在将 Windows Server 2008 计算机迁移到 Azure 时可能会遇到的已知问题的某些限制和解决方法。 
+
+> [!NOTE]
+> 现在可以使用 Azure Migrate 服务从本地迁移到 Azure。 [了解详细信息](../migrate/migrate-services-overview.md)。
 
 
 ## <a name="supported-operating-systems-and-environments"></a>支持的操作系统和环境
@@ -152,7 +155,7 @@ ms.locfileid: "66400080"
 为想要迁移的计算机运行故障转移。
 
 1. 在“设置”   > “复制的项”  中，单击计算机 >“故障转移”  。
-2. 在“故障转移”  中，选择要故障转移到的“恢复点”  。 选择最新恢复点。
+2. 在“故障转移”中，选择要故障转移到的“恢复点”   。 选择最新恢复点。
 3. 选择“在开始故障转移前关闭计算机”  。 Site Recovery 在触发故障转移之前会尝试关闭服务器。 即使关机失败，故障转移也仍会继续。 可以在“作业”页上跟踪故障转移进度。 
 4. 检查 Azure VM 是否在 Azure 中按预期显示。
 5. 在“复制的项”  中，右键单击服务器 >“完成迁移”  。 这样会执行以下操作：

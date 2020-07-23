@@ -1,22 +1,14 @@
 ---
 title: Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
 description: '了解如何开发使用 C # 的 Azure 功能。'
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构
-ms.service: azure-functions
-ms.devlang: dotnet
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 09/12/2018
-ms.author: glenga
-ms.openlocfilehash: 2a6d670ba9f2f496cc94d2790eb6f66d46305746
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 9ecc2dad8d1d520b44972022d47c312f495d5c38
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872790"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506499"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
 
@@ -31,14 +23,26 @@ Azure Functions 支持 C# 和 C# 脚本编程语言。 如果要寻找有关[在
 * [Azure Functions 开发人员指南](functions-reference.md)
 * [Azure Functions Visual Studio 2019 工具](functions-develop-vs.md)
 
+## <a name="supported-versions"></a>支持的版本
+
+Functions 运行时版本使用特定版本的 .NET。 下表显示了可与项目中特定版本的 Functions 一起使用的 .NET Core、.NET Framework 和 .NET Core 的最高级别。 
+
+| Functions 运行时版本 | 最大 .NET 版本 |
+| ---- | ---- |
+| Functions 3.x | .NET Core 3.1 |
+| Functions 2.x | .NET Core 2.2 |
+| Functions 1.x | .NET Framework 4.6 |
+
+若要了解详细信息，请参阅 [Azure Functions 运行时版本概述](functions-versions.md)
+
 ## <a name="functions-class-library-project"></a>Functions 类库项目
 
 在 Visual Studio 中，**Azure Functions** 项目模板会创建一个 C# 类库项目，它包含以下文件：
 
 * [host.json](functions-host-json.md) - 存储着在本地或者在 Azure 中运行时会影响项目中的所有函数的配置设置。
-* [local.settings.json](functions-run-local.md#local-settings-file) - 存储着在本地运行时使用的应用设置和连接字符串。 此文件包含机密且不会发布到 Azure 中的函数应用中。 相反，[添加到函数应用的应用程序设置](functions-develop-vs.md#function-app-settings)。
+* [local.settings.json](functions-run-local.md#local-settings-file) - 存储着在本地运行时使用的应用设置和连接字符串。 此文件包含机密且不会发布到 Azure 中的函数应用中。 而是，应[将应用设置添加到函数应用](functions-develop-vs.md#function-app-settings)。
 
-当您生成项目时，看起来像下面的示例生成生成输出目录中的文件夹结构：
+生成项目时，在生成输出目录中生成如下例所示的文件夹结构：
 
 ```
 <framework.version>
@@ -50,10 +54,11 @@ Azure Functions 支持 C# 和 C# 脚本编程语言。 如果要寻找有关[在
  | - host.json
 ```
 
-部署到 Azure 中函数应用的正是此目录。 Functions 运行时 [2.x 版](functions-versions.md) 中所需的绑定扩展[作为 NuGet 包添加到项目中](./functions-bindings-register.md#c-class-library-with-visual-studio-2019)。
+部署到 Azure 中函数应用的正是此目录。 Functions 运行时 [2.x 版](functions-versions.md) 中所需的绑定扩展[作为 NuGet 包添加到项目中](./functions-bindings-register.md#vs)。
 
 > [!IMPORTANT]
-> 生成过程将为每个函数创建一个 *function.json* 文件。 此 *function.json* 文件不应直接编辑。 无法通过编辑此文件来更改绑定配置或禁用函数。 要了解如何禁用函数，请参阅[如何禁用函数](disable-function.md#functions-2x---c-class-libraries)。
+> 生成过程将为每个函数创建一个 *function.json* 文件。 此 *function.json* 文件不应直接编辑。 无法通过编辑此文件来更改绑定配置或禁用函数。 要了解如何禁用函数，请参阅[如何禁用函数](disable-function.md)。
+
 
 ## <a name="methods-recognized-as-functions"></a>识别为函数的方法
 
@@ -72,7 +77,7 @@ public static class SimpleExample
 } 
 ```
 
-`FunctionName` 属性将该方法标记为函数入口点。 名称必须是唯一在项目中，以字母开头并且只能包含字母、 数字`_`，和`-`，最多 127 个字符的长度。 项目模板通常创建一个名为 `Run` 的方法，但方法名称可以是任何有效的 C# 方法名称。
+`FunctionName` 属性将该方法标记为函数入口点。 该名称在项目中必须是唯一的，以字母开头，并且只包含字母、数字、`_` 和 `-`，长度不得超过 127 个字符。 项目模板通常创建一个名为 `Run` 的方法，但方法名称可以是任何有效的 C# 方法名称。
 
 触发器属性指定触发器类型并将输入数据绑定到一个方法参数。 示例函数将由一条队列消息触发，并且队列消息将传递到该方法中的 `myQueueItem` 参数。
 
@@ -131,7 +136,7 @@ public static class BindingExpressionsExample
 
 生成过程会在生成文件中的一个函数文件夹中创建一个 *function.json* 文件。 如前所述，此文件不应直接编辑。 无法通过编辑此文件来更改绑定配置或禁用函数。 
 
-此文件的用途是向缩放控制器提供用于[对消耗计划做出缩放决策](functions-scale.md#how-the-consumption-and-premium-plans-work)的信息。 因此，此文件仅包含触发器信息，不包含输入或输出绑定。
+此文件的用途是向缩放控制器提供信息以用于针对[消耗计划的缩放决策](functions-scale.md#how-the-consumption-and-premium-plans-work)。 因此，此文件仅包含触发器信息，不包含输入或输出绑定。
 
 生成的 *function.json* 文件包括一个 `configurationSource` 属性，该属性告诉运行时使用 .NET 属性进行绑定，而不是使用 *function.json* 配置。 下面是一个示例：
 
@@ -156,7 +161,7 @@ public static class BindingExpressionsExample
 
 *function.json* 文件生成是由 NuGet 包 [Microsoft\.NET\.Sdk\.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions) 生成的。 
 
-Functions 运行时的 1.x 版本和 2.x 版本使用相同的包。 1.x 项目和 2.x 项目的不同之处在于目标框架。 以下是 csproj 文件的相关部分，其中显示了不同的目标框架和相同的 `Sdk` 包：
+Functions 运行时的 1.x 版本和 2.x 版本使用相同的包。 1\.x 项目和 2.x 项目的不同之处在于目标框架。 以下是 csproj  文件的相关部分，其中显示了不同的目标框架和相同的 `Sdk` 包：
 
 **Functions 1.x**
 
@@ -181,7 +186,7 @@ Functions 运行时的 1.x 版本和 2.x 版本使用相同的包。 1.x 项目�
 </ItemGroup>
 ```
 
-`Sdk` 包的依赖关系是触发器和绑定。 1.x 项目是指 1.x 触发器和绑定因为这些触发器和绑定面向.NET Framework 中，而 2.x 触发器和绑定面向.NET Core。
+`Sdk` 包的依赖关系是触发器和绑定。 1\.x 项目是指 1.x 触发器和绑定，因为这些触发器和绑定面向 .NET Framework，而 2.x 触发器和绑定面向 .NET Core。
 
 `Sdk` 包也依赖于 [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json)，并间接依赖于 [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage)。 这些依赖关系确保项目使用的包版本与项目面向的 Functions 运行时版本兼容。 例如，`Newtonsoft.Json` 的 11 版可用于 .NET Framework 4.6.1，但面向 .NET Framework 4.6.1 的 Functions 运行时仅与 `Newtonsoft.Json` 9.0.1 兼容。 因此该项目中的函数代码也只能使用 `Newtonsoft.Json` 9.0.1。
 
@@ -191,15 +196,37 @@ GitHub 存储库 [azure\-functions\-vs\-build\-sdk](https://github.com/Azure/azu
 
 Visual Studio 使用 [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 运行 Functions 项目。 Core Tools 是适用于 Functions 运行时的命令行接口。
 
-如果使用 npm 安装 Core Tools，则不会影响 Visual Studio 使用的 Core Tools 版本。 对于 Functions 运行时版本 1.x，Visual Studio 在 %USERPROFILE%\AppData\Local\Azure.Functions.Cli 中存储 Core Tools 版本且存储最新版本。 对于 Functions 2.x，Core Tools 包含在 Azure Functions 和 Web Jobs Tools 扩展中。 对于 1.x 和 2.x，运行 Functions 项目时可以看到控制台输出中正在使用何种版本：
+如果使用 npm 安装 Core Tools，则不会影响 Visual Studio 使用的 Core Tools 版本。 对于 Functions 运行时版本 1.x，Visual Studio 在 %USERPROFILE%\AppData\Local\Azure.Functions.Cli 中存储 Core Tools 版本且存储最新版本  。 对于 Functions 2.x，Core Tools 包含在 Azure Functions 和 Web Jobs Tools 扩展中  。 对于 1.x 和 2.x，运行 Functions 项目时可以看到控制台输出中正在使用何种版本：
 
 ```terminal
 [3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)
 ```
 
+## <a name="readytorun"></a>ReadyToRun
+
+可以将函数应用编译为[ReadyToRun 二进制文件](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)。 ReadyToRun 是一种预先编译的形式，它可以提高启动性能，从而有助于降低[冷启动](functions-scale.md#cold-start)在[消耗计划](functions-scale.md#consumption-plan)中运行时的影响。
+
+ReadyToRun 在 .NET 3.0 中提供，并且需要[3.0 版本的 Azure Functions 运行时](functions-versions.md)。
+
+若要将你的项目编译为 ReadyToRun，请通过添加和元素更新你的项目文件 `<PublishReadyToRun>` `<RuntimeIdentifier>` 。 下面是用于发布到 Windows 32 位函数应用的配置。
+
+```xml
+<PropertyGroup>
+  <TargetFramework>netcoreapp3.1</TargetFramework>
+  <AzureFunctionsVersion>v3</AzureFunctionsVersion>
+  <PublishReadyToRun>true</PublishReadyToRun>
+  <RuntimeIdentifier>win-x86</RuntimeIdentifier>
+</PropertyGroup>
+```
+
+> [!IMPORTANT]
+> ReadyToRun 当前不支持交叉编译。 必须在与部署目标相同的平台上生成应用。 另外，请注意函数应用中配置的 "位数"。 例如，如果 Azure 中的 function app 为 Windows 64 位，则必须在 Windows 上编译应用 `win-x64` 作为[运行时标识符](/dotnet/core/rid-catalog)。
+
+还可以从命令行通过 ReadyToRun 生成应用。 有关详细信息，请参阅 `-p:PublishReadyToRun=true` 中的选项 [`dotnet publish`](/dotnet/core/tools/dotnet-publish) 。
+
 ## <a name="supported-types-for-bindings"></a>绑定支持的类型
 
-每个绑定都具有其自己支持的类型；例如，blob 触发器属性可以应用于字符串参数、POCO 参数、`CloudBlockBlob` 参数或任何其他几种受支持的类型之一。 [适用于 blob 绑定的绑定参考文章](functions-bindings-storage-blob.md#trigger---usage)列出了所有受支持的参数类型。 有关详细信息，请参阅[触发器和绑定](functions-triggers-bindings.md)与[每个绑定类型的绑定参考文档](functions-triggers-bindings.md#next-steps)。
+每个绑定都具有其自己支持的类型；例如，blob 触发器属性可以应用于字符串参数、POCO 参数、`CloudBlockBlob` 参数或任何其他几种受支持的类型之一。 [适用于 blob 绑定的绑定参考文章](functions-bindings-storage-blob-trigger.md#usage)列出了所有受支持的参数类型。 有关详细信息，请参阅[触发器和绑定](functions-triggers-bindings.md)与[每个绑定类型的绑定参考文档](functions-triggers-bindings.md#next-steps)。
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
@@ -233,7 +260,7 @@ public static class ICollectorExample
 
 ## <a name="logging"></a>日志记录
 
-若要使用 C# 将输出记录到流式传输日志中，请包括 [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 类型的参数。 建议将其命名为 `log`，如下例所示：  
+若要使用 C# 将输出记录到流式传输日志中，请包括 [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) 类型的参数。 建议将其命名为 `log`，如下例所示：  
 
 ```csharp
 public static class SimpleExample
@@ -248,11 +275,11 @@ public static class SimpleExample
 } 
 ```
 
-避免在 Azure Functions 中使用 `Console.Write`。 有关详细信息，请参阅“监视 Azure Functions”文章中的[使用 C# 函数编写日志](functions-monitoring.md#write-logs-in-c-functions)。
+避免在 Azure Functions 中使用 `Console.Write`。 有关详细信息，请参阅“监视 Azure Functions”文章中的[使用 C# 函数编写日志](functions-monitoring.md#write-logs-in-c-functions)****。
 
 ## <a name="async"></a>异步
 
-要使函数[异步](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)，请使用 `async` 关键字并返回 `Task` 对象。
+要使函数[异步](/dotnet/csharp/programming-guide/concepts/async/)，请使用 `async` 关键字并返回 `Task` 对象。
 
 ```csharp
 public static class AsyncExample
@@ -325,7 +352,7 @@ public static class EnvironmentVariablesExample
 
 在本地开发和在 Azure 中运行时，都可以从环境变量读取应用设置。 在本地开发时，应用设置来自 *local.settings.json* 文件中的 `Values` 集合。 在这两个环境（本地和 Azure）中，`GetEnvironmentVariable("<app setting name>")` 都会检索命名应用设置的值。 例如，在本地运行时，如果 *local.settings.json* 文件包含 `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }`，则会返回“My Site Name”。
 
-[System.Configuration.ConfigurationManager.AppSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) 属性是用于获取应用设置值的替代 API，但我们建议你使用 `GetEnvironmentVariable`，如下所示。
+[System.Configuration.ConfigurationManager.AppSettings](/dotnet/api/system.configuration.configurationmanager.appsettings) 属性是用于获取应用设置值的替代 API，但我们建议你使用 `GetEnvironmentVariable`，如下所示。
 
 ## <a name="binding-at-runtime"></a>在运行时绑定
 
@@ -344,11 +371,11 @@ public static class EnvironmentVariablesExample
   }
   ```
 
-  `BindingTypeAttribute` 是定义了绑定的 .NET 属性，`T` 是该绑定类型所支持的输入或输出类型。 `T` 不能是 `out` 参数类型（例如 `out JObject`）。 例如，移动应用表输出绑定支持[六种输出类型](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)，但对于命令性绑定，仅可使用 [ICollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) 或 [IAsyncCollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)。
+  `BindingTypeAttribute` 是定义了绑定的 .NET 属性，`T` 是该绑定类型所支持的输入或输出类型。 `T` 不能是 `out` 参数类型（例如 `out JObject`）。 例如，移动应用表输出绑定支持[六种输出类型](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)，但对于命令性绑定，仅可使用 [ICollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) 或 [IAsyncCollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)。
 
 ### <a name="single-attribute-example"></a>单属性示例
 
-下面的示例代码使用在运行时定义的 blob 路径创建[存储 blob 输出绑定](functions-bindings-storage-blob.md#output)，然后将字符串写入此 blob。
+下面的示例代码使用在运行时定义的 blob 路径创建[存储 blob 输出绑定](functions-bindings-storage-blob-output.md)，然后将字符串写入此 blob。
 
 ```cs
 public static class IBinderExample
@@ -369,7 +396,7 @@ public static class IBinderExample
 }
 ```
 
-[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) 定义[存储 blob](functions-bindings-storage-blob.md) 输入或输出绑定，[TextWriter](/dotnet/api/system.io.textwriter) 是支持的输出绑定类型。
+[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs) 定义[存储 blob](functions-bindings-storage-blob.md) 输入或输出绑定，[TextWriter](/dotnet/api/system.io.textwriter) 是支持的输出绑定类型。
 
 ### <a name="multiple-attribute-example"></a>多属性示例
 

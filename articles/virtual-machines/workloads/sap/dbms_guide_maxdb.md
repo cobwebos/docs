@@ -9,19 +9,17 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83319118c778d89749b1eb5d5fd792a5200c19c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 5a7343bcf6ba4388beda118b242fa47d13baaa89
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60835993"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022584"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Azure VM 上的 SAP MaxDB、liveCache 和内容服务器部署
 
@@ -78,8 +76,8 @@ ms.locfileid: "60835993"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide.md 
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 
@@ -236,7 +234,7 @@ ms.locfileid: "60835993"
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -250,7 +248,7 @@ ms.locfileid: "60835993"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -282,9 +280,9 @@ ms.locfileid: "60835993"
 [virtual-machines-sizes-windows]:../../windows/sizes.md
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[virtual-machines-sql-server-infrastructure-services]:./../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
+[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+[virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+[virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/resources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
@@ -329,7 +327,7 @@ SAP 目前支持 SAP MaxDB 版本 7.9 或更高版本，该版本可以与 Azure
 可以在 SAP 说明 [767598] 中找到更新的 SAP MaxDB 文档列表
 
 ### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>在 Azure VM 中安装 SAP 的 SAP MaxDB 配置准则
-#### <a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>存储配置
+#### <a name="storage-configuration"></a><a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>存储配置
 适用于 SAP MaxDB 的 Azure 存储最佳做法遵循[用于 RDBMS 部署的 VM 的存储结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)一章中所述的常规建议。
 
 > [!IMPORTANT]
@@ -349,12 +347,12 @@ SAP 目前支持 SAP MaxDB 版本 7.9 或更高版本，该版本可以与 Azure
 ![适用于 SAP MaxDB DBMS 的 Azure IaaS VM 的参考配置](./media/dbms_maxdb_deployment_guide/Simple_disk_structure_maxdb.PNG)
 
 
-#### <a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>备份和还原
+#### <a name="backup-and-restore"></a><a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>备份和还原
 将 SAP MaxDB 部署到 Azure 时，必须检查备份方法。 即使系统不是生产系统，也必须定期备份 SAP MaxDB 托管的 SAP 数据库。 由于 Azure 存储会保留三个映像，因此，在保护系统以免发生存储故障以及更严重的操作或管理故障方面，备份现在已变得不太重要。 维护适当备份和还原计划的主要原因是，可以通过提供时间点恢复功能来补救逻辑或人为错误。 因此，其目标是使用备份将数据库还原到某个时间点，或者通过复制现有数据库，在 Azure 中使用备份来植入另一个系统。 
 
 在 Azure 中备份和还原数据库的方式与在本地系统中一样，因此，可以使用标准的 SAP MaxDB 备份/还原工具，SAP 说明 [767598] 中列出的其中一个 SAP MaxDB 文档对这些工具进行了说明。 
 
-#### <a name="77cd2fbb-307e-4cbf-a65f-745553f72d2c"></a>备份和还原的性能注意事项
+#### <a name="performance-considerations-for-backup-and-restore"></a><a name="77cd2fbb-307e-4cbf-a65f-745553f72d2c"></a>备份和还原的性能注意事项
 与裸机部署一样，备份和还原的性能取决于可以并行读取的卷数目，以及这些卷的吞吐量。 因此，可以假设：
 
 * 存储数据库设备所用的磁盘数目越少，总体读取吞吐量就越低
@@ -371,7 +369,7 @@ SAP 目前支持 SAP MaxDB 版本 7.9 或更高版本，该版本可以与 Azure
 
 基于已装载的多个磁盘对卷划分带区，这之前已在[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中进行了讨论。 
 
-#### <a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>其他注意事项
+#### <a name="other-considerations"></a><a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>其他注意事项
 如[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)所述，Azure 可用性集或 SAP 监视等所有其他常规领域也适用。  使用 SAP MaxDB 数据库进行 VM 部署。
 其他特定于 SAP MaxDB 的设置对 Azure VM 是透明的，相关介绍请参阅 SAP 说明 [767598] 以及下列 SAP 说明中列出的不同文档：
 
@@ -381,7 +379,7 @@ SAP 目前支持 SAP MaxDB 版本 7.9 或更高版本，该版本可以与 Azure
 
 ## <a name="specifics-for-sap-livecache-deployments-on-windows"></a>有关 Windows 上的 SAP liveCache 部署的具体信息
 ### <a name="sap-livecache-version-support"></a>SAP liveCache 版本支持
-Azure 虚拟机支持的 SAP liveCache 最低版本是针对 EhP 2 for SAP SCM 7.0 和更新版本发行的 SAP LC/LCAPPS 10.0 SP 25，其中包括 liveCache 7.9.08.31 和 LCA-Build 25。
+Azure 虚拟机支持的 SAP liveCache 最低版本是针对 EhP 2 for SAP SCM 7.0 和更新版本发行的 SAP LC/LCAPPS 10.0 SP 25，其中包括 liveCache 7.9.08.31 和 LCA-Build 25   。
 
 ### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-livecache-dbms"></a>SAP liveCache DBMS 支持的 Microsoft Windows 版本和 Azure VM 类型
 若要为 Azure 上的 SAP liveCache DBMS 查找受支持的 Microsoft Windows 版本，请参阅：
@@ -439,7 +437,7 @@ SAP 目前支持：
 强烈建议使用最新版本的 Microsoft Windows Server。
 
 ### <a name="sap-content-server-configuration-guidelines-for-sap-installations-in-azure-vms"></a>在 Azure VM 中安装 SAP 的 SAP 内容服务器配置准则
-#### <a name="storage-configuration-for-content-server-in-azure"></a>在 Azure 中的内容服务器的存储配置
+#### <a name="storage-configuration-for-content-server-in-azure"></a>Azure 中内容服务器的存储配置
 如果将 SAP 内容服务器配置为将文件存储在 SAP MaxDB 数据库中，那么，本文档中针对 SAP MaxDB 提出的所有 Azure 存储最佳做法建议也适用于 SAP 内容服务器方案。 
 
 如果将 SAP 内容服务器配置为将文件存储在文件系统中，则建议使用专用的逻辑驱动器。 如[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)所述，通过使用 Windows 存储空间，还可以增加逻辑磁盘的大小和 IOPS 吞吐量。 
@@ -456,7 +454,7 @@ SAP 缓存服务器是一个基于服务器的附加组件，可在本地提供�
 可以使用以下两个选项：
 
 1. **客户端是后端 SAP 系统**：如果将后端 SAP 系统配置为访问 SAP 内容服务器，则该 SAP 系统就是客户端。 由于 SAP 系统和 SAP 内容服务器部署在同一个 Azure 区域（在相同的 Azure 数据中心），它们在物理上是彼此靠近的。 因此，不需要专用的 SAP 缓存服务器。 SAP UI 客户端（SAP GUI 或 Web 浏览器）可直接访问 SAP 系统，而 SAP 系统会从 SAP 内容服务器检索文档。
-2. **客户端是本地 Web 浏览器** ：SAP 内容服务器可配置为由 Web 浏览器直接访问。 在此情况下，本地运行的 Web 浏览器就是 SAP 内容服务器的客户端。 本地数据中心与 Azure 数据中心位于不同的物理位置（理想情况下相邻）。 本地数据中心通过 Azure 站点到站点 VPN 或 ExpressRoute 连接到 Azure。 虽然这两个选项均提供到 Azure 的安全 VPN 网络连接，但站点到站点网络连接不会在本地数据中心与 Azure 数据中心之间提供网络带宽和延迟 SLA。 若要加快对文档的访问，可以执行以下操作之一：
+2. **客户端是本地 Web 浏览器**：SAP 内容服务器可配置为由 Web 浏览器直接访问。 在此情况下，本地运行的 Web 浏览器就是 SAP 内容服务器的客户端。 本地数据中心与 Azure 数据中心位于不同的物理位置（理想情况下相邻）。 本地数据中心通过 Azure 站点到站点 VPN 或 ExpressRoute 连接到 Azure。 虽然这两个选项均提供到 Azure 的安全 VPN 网络连接，但站点到站点网络连接不会在本地数据中心与 Azure 数据中心之间提供网络带宽和延迟 SLA。 若要加快对文档的访问，可以执行以下操作之一：
    1. 在本地安装 SAP 缓存服务器，靠近本地 Web 浏览器（下图中的选项）
    2. 配置 Azure ExpressRoute，以便在本地数据中心与 Azure 数据中心之间提供高速且低延迟的专用网络连接。
 

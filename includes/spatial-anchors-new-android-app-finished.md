@@ -1,17 +1,17 @@
 ---
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
-ms.date: 04/03/2019
+ms.date: 06/22/2020
 ms.topic: include
 ms.author: rgarcia
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: fcc6c10419b46d31fde20001fefccb32b7a421ce
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4d20b7dee533dae17cfb1c6138e336b91c7e2b0c
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58919860"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296179"
 ---
 ## <a name="putting-everything-together"></a>将所有内容放在一起
 
@@ -145,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
 
         this.cloudSession.getConfiguration().setAccountId(/* Copy your account Identifier in here */);
         this.cloudSession.getConfiguration().setAccountKey(/* Copy your account Key in here */);
+        this.cloudSession.getConfiguration().setAccountDomain(/* Copy your account Domain in here */);
         this.cloudSession.start();
     }
     // </initializeSession>

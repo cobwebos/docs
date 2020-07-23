@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 01/09/2019
+ms.date: 02/07/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 78dfd57fba6365f9c8937b30b5cf96b840749c68
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: e84a77629026bb8885a48b8ed928699825f07115
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66157539"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77111190"
 ---
 | **供应商** | **设备系列** | **固件版本** |
 | --- | --- | --- |
@@ -28,5 +28,5 @@ ms.locfileid: "66157539"
 |Ubiquiti| EdgeRouter| EdgeOS v1.10x RouteBased BGP|
 
 > [!NOTE]
-> (*) 必需：NarrowAzureTrafficSelectors（启用 UsePolicyBasedTrafficSelectors 选项）和 CustomAzurePolicies (IKE/IPsec)
+> ( * ) 必需：NarrowAzureTrafficSelectors（启用 UsePolicyBasedTrafficSelectors 选项）和 CustomAzurePolicies (IKE/IPsec)
 >

@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect 同步：了解和自定义同步 | Microsoft Docs
+title: Azure AD Connect 同步：理解和自定义同步 | Microsoft Docs
 description: 介绍 Azure AD Connect 同步的工作原理以及如何自定义。
 services: active-directory
 documentationcenter: ''
@@ -11,24 +11,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/08/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3b87f40d75d4045155e7dd953dc76ffd9de2b34
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4dc1754eb8818df894e67c1748517b2e2f4356d6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60348733"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356859"
 ---
-# <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect 同步：了解和自定义同步
+# <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect 同步：理解和自定义同步
 Azure Active Directory Connect 同步服务（Azure AD Connect 同步）是 Azure AD Connect 的一个主要组件。 它负责在本地环境与 Azure AD 之间同步标识数据的所有相关操作。 Azure AD Connect 同步是 DirSync、Azure AD Sync 和 Forefront Identity Manager 的后继版本，同时配置了 Azure Active Directory 连接器。
 
 本主题是 **Azure AD Connect 同步**（也称为**同步引擎**）的主页，其中列出了与其相关的所有其他主题的链接。 有关 Azure AD Connect 的链接，请参阅[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)。
 
-同步服务包括两个组件，本地“Azure AD Connect 同步”组件和 Azure AD 中称为 **Azure AD Connect 同步服务**的服务端组件。
+同步服务包括两个组件，本地“Azure AD Connect 同步”  组件和 Azure AD 中称为 **Azure AD Connect 同步服务**的服务端组件。
 
 ## <a name="azure-ad-connect-sync-topics"></a>Azure AD Connect 同步主题
 | 主题 | 涵盖的内容和阅读时机 |
@@ -59,7 +59,7 @@ Azure Active Directory Connect 同步服务（Azure AD Connect 同步）是 Azur
 | **操作和 UI** | |
 | [Synchronization Service Manager](how-to-connect-sync-service-manager-ui.md) |介绍 Synchronization Service Manager UI，包括 [操作](how-to-connect-sync-service-manager-ui-operations.md) 、[连接器](how-to-connect-sync-service-manager-ui-connectors.md) 、[Metaverse 设计器](how-to-connect-sync-service-manager-ui-mvdesigner.md) 和 [Metaverse 搜索](how-to-connect-sync-service-manager-ui-mvsearch.md) 选项卡。 |
 | [操作任务和注意事项](how-to-connect-sync-operations.md) |描述操作注意事项，例如灾难恢复。 |
-| **如何...** | |
+| **如何。。。** | |
 | [重置 Azure AD 帐户](how-to-connect-azureadaccount.md) |如何重置用于从 Azure AD Connect 同步连接到 Azure AD 的服务帐户凭据。 |
 | **详细信息和参考资料** | |
 | [端口](reference-connect-ports.md) |列出需要在同步引擎以及本地目录与 Azure AD 之间打开的端口。 |

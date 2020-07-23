@@ -1,31 +1,21 @@
 ---
-title: Azure PowerShell 脚本示例 - 订阅 Azure 订阅 | Microsoft Docs
-description: Azure PowerShell 脚本示例 - 订阅 Azure 订阅
-services: event-grid
-documentationcenter: na
-author: tfitzmac
-manager: timlt
-ms.service: event-grid
+title: Azure PowerShell - 订阅 Azure 订阅
+description: 本文提供了一个示例 Azure PowerShell 脚本，演示如何订阅 Azure 订阅的事件网格事件。
 ms.devlang: powershell
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/10/2018
-ms.author: tomfitz
-ms.openlocfilehash: 3d3d7a864bf6941dfb0bf7496b291639e7e5ea6d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 07/08/2020
+ms.openlocfilehash: 7540c8eb181e064c5df5372a4bc9b27ebe16bf56
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66117176"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171238"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-powershell"></a>使用 PowerShell 订阅 Azure 订阅的事件
 
 此脚本创建 Azure 订阅事件的事件网格订阅。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
-
-预览示例脚本需要事件网格模块。 若要安装，请运行 `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
 
 ## <a name="sample-script---stable"></a>示例脚本 - 稳定版
 
@@ -35,6 +25,8 @@ ms.locfileid: "66117176"
 
 ## <a name="sample-script---preview-module"></a>示例脚本 - 预览模块
 
+此预览示例脚本需要事件网格模块。 若要安装，请运行 `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
+
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
 [!code-powershell[main](../../../powershell_scripts/event-grid/subscribe-to-azure-subscription-preview/subscribe-to-azure-subscription-preview.ps1 "Subscribe to Azure subscription")]
@@ -43,7 +35,7 @@ ms.locfileid: "66117176"
 
 此脚本使用以下命令创建事件订阅。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | 创建事件网格订阅。 |
 

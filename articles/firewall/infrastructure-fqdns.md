@@ -1,18 +1,17 @@
 ---
 title: Azure 防火墙的基础结构 FQDN
-description: 了解 Azure 防火墙中的基础结构 FQDN
+description: Azure 防火墙包含默认情况下允许的基础结构 FQDN 的内置规则集合。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 9/24/2018
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 34201a0eb4139de64261f77f285096a2aa2dd3aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: d4de81bad1ddda2f5b54f47c1be78925ad4cdbf3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61066314"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74168980"
 ---
 # <a name="infrastructure-fqdns"></a>基础结构 FQDN
 
@@ -23,7 +22,6 @@ Azure 防火墙包含默认情况下允许的基础结构 FQDN 的内置规则�
 - 存储平台映像存储库 (PIR) 的计算访问权限
 - 托管磁盘状态存储访问权限
 - Azure 诊断和日志记录 (MDS)
-- Azure Active Directory
 
 ## <a name="overriding"></a>替代 
 

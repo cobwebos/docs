@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: b7583a0fda2fca0d8ff80879389b824a7b352a84
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: fa7dca62ed51c52b704c199ca04eadb6306be4df
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66752889"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170779"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>使用 REST 将文件上传到媒体服务帐户  
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-upload-files.md)
 > * [REST](media-services-rest-upload-files.md)
-> * [门户](media-services-portal-upload-files.md)
+> * [Portal](media-services-portal-upload-files.md)
 > 
 
 在媒体服务中，可以将数字文件上传到资产中。 [资产](https://docs.microsoft.com/rest/api/media/operations/asset)实体可以包含视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件（以及这些文件的相关元数据。）将文件上传到资产后，相关内容即安全地存储在云中供后续处理和流式处理。 
@@ -40,11 +40,12 @@ ms.locfileid: "66752889"
 > * 使用上传 URL 将文件上传到 Blob 存储
 > * 在资产中为上传的媒体文件创建元数据
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [使用 Azure 门户创建 Azure 媒体服务帐户](media-services-portal-create-account.md)。
-- 查看文章[通过 AAD 身份验证访问 Azure 媒体服务 API 概述](media-services-use-aad-auth-to-access-ams-api.md)。
+- 查看[通过 ADD 身份验证访问 Azure 媒体服务 API 概述](media-services-use-aad-auth-to-access-ams-api.md)一文。
+- 另外，有关详细信息，请参阅[通过 Azure AD 身份验证使用 REST 访问媒体服务 API](https://docs.microsoft.com/azure/media-services/previous/media-services-rest-connect-with-aad) 一文。
 - 根据[为媒体服务 REST API 调用配置 Postman](media-rest-apis-with-postman.md) 中所述配置 **Postman**。
 
 ## <a name="considerations"></a>注意事项
@@ -52,9 +53,9 @@ ms.locfileid: "66752889"
 使用媒体服务 REST API 时，需注意以下事项：
  
 * 访问媒体服务 REST API 访问实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。 <br/>本教程中使用的 Postman 集合负责设置所有必要的标头。
-* 生成流式处理内容的 URL 时，媒体服务会使用 IAssetFile.Name 属性的值（如 http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters。）出于这个原因，不允许使用百分号编码。 **Name** 属性的值不能含有任何以下[百分号编码保留字符](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，文件扩展名中只能含有一个“.”。
+* 为流式处理 (内容生成 Url 时，媒体服务将使用 IAssetFile.Name 属性的值，例如 http：//{AMSAccount} windowsazure.mediaservices/{GUID}/{IAssetFile}/streamingParameters。 ) ，则不允许使用百分号编码。 **Name** 属性的值不能含有任何以下[百分号编码保留字符](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，文件扩展名中只能含有一个“.”。
 * 名称长度不应超过 260 个字符。
-* 支持在媒体服务中处理的最大文件大小存在限制。 有关文件大小限制的详细信息，请参阅[此文](media-services-quotas-and-limitations.md)。
+* 在媒体服务中进行处理时，系统支持的最大文件大小存在限制。 有关文件大小限制的详细信息，请参阅[此文](media-services-quotas-and-limitations.md)。
 
 ## <a name="set-up-postman"></a>设置 Postman
 
@@ -64,7 +65,7 @@ ms.locfileid: "66752889"
 
 1. 将连接值添加到环境。 
 
-    在开始执行[集合](postman-collection.md)中定义的操作之前，需要手动设置 **MediaServices** [环境](postman-environment.md)中的某些变量。
+    在开始执行[集合](postman-collection.md)中定义的操作之前，需要手动设置 MediaServices [环境](postman-environment.md)中的某些变量。 
 
     若要获取前五个变量的值，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。 
 
@@ -103,9 +104,9 @@ ms.locfileid: "66752889"
 ### <a name="overview"></a>概述 
 
 >[!NOTE]
->不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)文章。
+>不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[本文](media-services-dotnet-manage-entities.md#limit-access-policies)。
 
-将任何文件上传到 BLOB 存储之前，请设置用于对资产执行写入操作的访问策略权限。 为此，请向 AccessPolicy 实体集发送一个 HTTP POST 请求。 请在执行创建操作时定义 DurationInMinutes 值，否则会在响应中收到 500 内部服务器错误消息。 有关 AccessPolicies 的详细信息，请参阅 [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy)。
+将任何文件上传到 blob 存储之前，请设置用于对资产执行写入操作的访问策略权限。 为此，请向 AccessPolicy 实体集发送一个 HTTP POST 请求。 请在执行创建操作时定义 DurationInMinutes 值，否则会在响应中收到 500 内部服务器错误消息。 有关 AccessPolicies 的详细信息，请参阅 [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy)。
 
 ### <a name="create-an-access-policy"></a>创建访问策略
 
@@ -122,9 +123,9 @@ ms.locfileid: "66752889"
 
 [资产](https://docs.microsoft.com/rest/api/media/operations/asset)是媒体服务中多种类型的对象或多组对象（包括视频、音频、图像、缩略图集合、文本轨道和隐藏的解释性字幕文件）的容器。 在 REST API 中，创建资产需要向媒体服务发送 POST 请求，并将任何有关资产的属性信息放入请求正文中。
 
-在创建资产时可以添加的属性之一是 **Options**。 可以指定以下加密选项之一：“None”  （默认值，不使用加密）、“StorageEncrypted”  （适用于已通过客户端存储加密预先加密的内容）、“CommonEncryptionProtected”  或“EnvelopeEncryptionProtected”  。 如果资产已加密，则需要配置传送策略。 有关详细信息，请参阅[配置资产传送策略](media-services-rest-configure-asset-delivery-policy.md)。
+在创建资产时可以添加的属性之一是 **Options**。 可以指定以下加密选项之一：**None**（默认值，不使用加密）、**StorageEncrypted**（适用于已使用客户端存储加密预先加密的内容）、**CommonEncryptionProtected** 或 **EnvelopeEncryptionProtected**。 如果资产已加密，则需要配置传送策略。 有关详细信息，请参阅[配置资产传送策略](media-services-rest-configure-asset-delivery-policy.md)。
 
-如果资产要使用加密，必须按以下文章中所述创建 ContentKey  并将其链接到资产：[如何创建 ContentKey](media-services-rest-create-contentkey.md)。 将文件上传到资产后，需要使用加密**资产**期间获取的值更新 **AssetFile** 实体上的加密属性。 使用 **MERGE** HTTP 请求完成此操作。 
+如果资产要使用加密，必须按以下文章中所述创建 **ContentKey** 并将其链接到资产：[如何创建 ContentKey](media-services-rest-create-contentkey.md)。 将文件上传到资产后，需要使用加密**资产**期间获取的值更新 **AssetFile** 实体上的加密属性。 使用 **MERGE** HTTP 请求完成此操作。 
 
 本示例将创建一个不加密的资产。 
 
@@ -141,22 +142,22 @@ ms.locfileid: "66752889"
 
 ### <a name="overview"></a>概述
 
-设置 AccessPolicy 和定位符后，即可使用 Azure 存储 REST API 将具体的文件上传到 Azure BLOB 存储容器。 必须将文件作为块 blob 上传。 Azure 媒体服务不支持页 blob。  
+设置 AccessPolicy 和定位符后，即可使用 Azure 存储 REST API 将实际文件上传到 Azure BLOB 存储容器。 必须将文件作为块 blob 上传。 页 blob 不受 Azure 媒体服务支持。  
 
-有关使用 Azure 存储 Blob 的详细信息，请参阅 [Blob 服务 REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)。
+有关使用 Azure 存储 blob 的详细信息，请参阅 [Blob 服务 REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)。
 
 若要检索实际上传 URL，请创建一个 SAS 定位符（参阅下文）。 定位符为希望访问资产中文件的客户端定义连接终结点的开始时间和类型。 可以为给定 AccessPolicy 和资产对创建多个定位符实体，以处理不同的客户端请求和需求。 这其中的任一定位符都可使用 AccessPolicy 的 StartTime 值和 DurationInMinutes 值来确定可以使用某 URL 的时间长度。 有关详细信息，请参阅 [定位符](https://docs.microsoft.com/rest/api/media/operations/locator)。
 
 SAS URL 采用以下格式：
 
-    {https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}
+`{https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}`
 
 ### <a name="considerations"></a>注意事项
 
 请注意以下事项：
 
 * 一项给定的资产一次最多只能与五个唯一的定位符相关联。 有关详细信息，请参阅定位符。
-* 如果需要立即上传文件，应将 StartTime 值设置为当前时间前五分钟。 这是因为客户端计算机与媒体服务之间可能存在时钟偏差。 StartTime 值还必须采用以下日期/时间格式：YYYY-MM-DDTHH:mm:ssZ（例如“2014-05-23T17:53:50Z”）。    
+* 如果需要立即上传文件，应将 StartTime 值设置为当前时间前五分钟。 这是因为客户端计算机与媒体服务之间可能存在时钟偏差。 此外，StartTime 值必须采用以下 DateTime 格式：YYYY-MM-DDTHH:mm:ssZ（例如“2014-05-23T17:53:50Z”）。    
 * 定位符从创建到可用可能会有 30-40 秒的延迟。
 
 ### <a name="create-a-sas-locator"></a>创建 SAS 定位符
@@ -188,7 +189,7 @@ SAS URL 采用以下格式：
 1. 按 **+** 创建新的请求选项卡。
 2. 选择“PUT”操作并在 URL 中粘贴 **{{UploadURL}}** 。 
 2. 将“授权”选项卡保留原样（不要将其设置为“持有者令牌”）。  
-3. 在“标头”  选项卡中，指定：“键”  ：“x-ms-blob-type”和“值”  ：“BlockBlob”。
+3. 在“标头”  选项卡中，指定：**键**：“x-ms-blob-type”和**值**：“BlockBlob”。
 2. 在“正文”选项卡中，单击“二进制”。  
 4. 选择具有 **MediaFileName** 环境变量中指定的名称的文件。
 5. 按“发送”。 
@@ -212,18 +213,20 @@ SAS URL 采用以下格式：
 
 例如，以下 **GET** 操作将获取资产文件（在本例中为 BigBuckBunny.mp4 文件）的文件数据。 该查询使用前面设置的[环境变量](postman-environment.md)。
 
-    {{RESTAPIEndpoint}}/Assets('{{LastAssetId}}')/Files
+`{{RESTAPIEndpoint}}/Assets('{{LastAssetId}}')/Files`
 
 响应中将会包含大小、名称和其他信息。
 
-    "Id": "nb:cid:UUID:69e72ede-2886-4f2a-8d36-80a59da09913",
-    "Name": "BigBuckBunny.mp4",
-    "ContentFileSize": "3186542",
-    "ParentAssetId": "nb:cid:UUID:0b8f3b04-72fb-4f38-8e7b-d7dd78888938",
-            
+```console
+"Id": "nb:cid:UUID:69e72ede-2886-4f2a-8d36-80a59da09913",
+"Name": "BigBuckBunny.mp4",
+"ContentFileSize": "3186542",
+"ParentAssetId": "nb:cid:UUID:0b8f3b04-72fb-4f38-8e7b-d7dd78888938",
+```
+  
 ## <a name="next-steps"></a>后续步骤
 
-现在可以对上传的资产进行编码。 有关详细信息，请参阅 [对资产进行编码](media-services-portal-encode.md)。
+现即可编码已上传的资产。 有关详细信息，请参阅[对资产进行编码](media-services-portal-encode.md)。
 
-还可以使用 Azure Functions，基于传入到所配置容器中的文件触发编码作业。 有关详细信息，请参阅[此示例](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ )。
+也可使用 Azure Functions 根据到达已配置容器的文件触发编码作业。 有关详细信息，请参阅[此示例](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ )。
 

@@ -1,136 +1,167 @@
 ---
-title: Azure 资源的 Azure 存储 blob 和队列管理的标识的访问进行身份验证 |Microsoft Docs
-description: Azure Blob 和队列存储支持 Azure 资源管理的标识与 Azure Active Directory 身份验证。 可以使用 Azure 资源的托管标识在应用程序中验证对 Blob 和队列的访问权限，此类应用程序可以运行在 Azure 虚拟机、函数应用、虚拟机规模集等位置中。
+title: 使用托管标识授予对数据的访问权限
+titleSuffix: Azure Storage
+description: 了解如何使用 Azure 资源的托管标识在应用程序中授权对 Blob 和队列数据的访问权限，此类应用程序可以在 Azure 虚拟机、函数应用、虚拟机规模集等位置中运行。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 04/21/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f7525c3e125010bb4db9655bc214861e22dc8875
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 69e88aed1485d07bc4adc57abc0bda02a1def728
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787966"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808882"
 ---
-# <a name="authenticate-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>对 blob 和队列与 Azure Active Directory 和管理的标识访问 Azure 资源进行身份验证
+# <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>使用 Azure 资源托管标识授予对 Blob 和队列数据的访问权限
 
-Azure Blob 和队列存储支持使用 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)进行 Azure Active Directory (Azure AD) 身份验证。 有关 Azure 资源可以授权访问 blob 和队列数据使用 Azure AD 凭据从 Azure 虚拟机 (Vm)、 函数应用、 虚拟机规模集和其他服务中运行的应用程序托管标识。 通过使用与 Azure AD 身份验证的 Azure 资源管理的标识，可以避免存储在云中运行应用程序使用的凭据。  
+Azure Blob 和队列存储支持使用 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)进行 Azure Active Directory (Azure AD) 身份验证。 Azure 资源的托管标识可以从 Azure 虚拟机 (VM)、函数应用、虚拟机规模集和其他服务中运行的应用程序使用 Azure AD 凭据授权对 Blob 和队列数据的访问权限。 将 Azure 资源的托管标识与 Azure AD 身份验证结合使用，可避免将凭据随在云中运行的应用程序一起存储。  
 
-本文介绍如何从 Azure VM 托管标识的 blob 或队列数据授予访问权限。 
+本文介绍如何使用 Azure 资源的托管标识对访问授权，以便对 Azure VM 中的 Blob 或队列数据进行访问， 另外还介绍如何在开发环境中对代码进行测试。
 
 ## <a name="enable-managed-identities-on-a-vm"></a>在 VM 上启用托管标识
 
-使用 Azure 资源的管理的标识来授予对 blob 和队列从 VM 的访问权限之前，您必须首先在 VM 上的 Azure 资源的启用管理的标识。 若要了解如何为 Azure 资源启用托管标识，请参阅下述文章之一：
+在使用 Azure 资源的托管标识对 VM 中 Blob 和队列的访问权限进行授权之前，必须首先在 VM 上启用针对 Azure 资源的托管标识。 若要了解如何为 Azure 资源启用托管标识，请参阅下述文章之一：
 
 - [Azure 门户](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
-- [Azure 资源管理器模板](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
-- [Azure SDK](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
+- [Azure Resource Manager 模板](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+- [Azure 资源管理器客户端库](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
-## <a name="grant-permissions-to-an-azure-ad-managed-identity"></a>授予对托管的 Azure AD 标识的权限
+有关托管标识的详细信息，请参阅 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
 
-若要从托管在 Azure 存储应用程序中标识授予对 Blob 或队列服务的请求，首先配置基于角色的访问控制 (RBAC) 设置为该托管标识。 Azure 存储定义 RBAC 角色包含 blob 和队列数据的权限。 如果 RBAC 角色分配给托管标识，托管的标识授予在相应的范围的 blob 或队列数据的这些权限。 
+## <a name="authenticate-with-the-azure-identity-library"></a>使用 Azure 标识库进行身份验证
 
-有关分配 RBAC 角色的详细信息，请参阅以下文章之一：
+Azure 标识客户端库为 [Azure SDK](https://github.com/Azure/azure-sdk) 提供 Azure Azure AD 令牌身份验证支持。 最新版本的适用于 .NET、Java、Python 和 JavaScript 的 Azure 存储客户端库与 Azure 标识库集成，提供一种简单而安全的方法来获取用于为 Azure 存储请求进行授权的 OAuth 2.0 令牌。
 
-- [授予对 Azure blob 和队列数据使用 RBAC 在 Azure 门户中访问权限](storage-auth-aad-rbac-portal.md)
-- [授予对 Azure blob 和队列数据与使用 Azure CLI 的 RBAC 访问权限](storage-auth-aad-rbac-cli.md)
-- [授予对 Azure blob 和队列数据与使用 PowerShell 的 RBAC 访问权限](storage-auth-aad-rbac-powershell.md)
+Azure 标识客户端库的优点在于，它使你可以使用相同的代码来验证你的应用程序是在开发环境中运行还是在 Azure 中运行。 用于 .NET 的 Azure 标识客户端库可以对安全主体进行身份验证。 代码在 Azure 中运行时，安全主体是 Azure 资源的托管标识。 在开发环境中，不存在托管标识，因此客户端库出于测试目的会对用户或服务主体进行身份验证。
 
-## <a name="authorize-with-a-managed-identity-access-token"></a>使用托管的标识访问令牌授权
+进行身份验证后，Azure 标识客户端库会获得令牌凭据。 然后，此令牌凭据会封装在服务客户端对象中。该对象由你创建，用于对 Azure 存储执行操作。 库会获取相应的令牌凭据，为你无缝处理这一切。
 
-若要授权对托管标识的 Blob 和队列存储的请求，应用程序或脚本必须获取 OAuth 令牌。 [Microsoft Azure 应用程序身份验证](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication).NET （预览版） 客户端库可简化获取和续订你的代码中的某个标记的过程。
+有关用于 .NET 的 Azure 标识客户端库的详细信息，请参阅[用于 .NET 的 Azure 标识客户端库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)。 有关 Azure 标识客户端库的参考文档，请参阅 [Azure.Identity 命名空间](/dotnet/api/azure.identity)。
 
-应用身份验证客户端库会自动管理身份验证。 库将使用开发人员的凭据进行身份验证在本地开发过程。 在本地开发期间使用开发人员凭据更安全，因为不需创建 Azure AD 凭据，或者不需在开发人员之间共享凭据。 当解决方案更高版本部署到 Azure 时，库会自动切换到使用应用程序凭据。
+### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>分配基于角色的访问控制 (RBAC) 角色以访问数据
 
-若要使用 Azure 存储应用程序中的应用程序身份验证库，请安装最新的预览包从[Nuget](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)，以及最新版本[用于.NET 的 Azure 存储公共客户端库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)并[适用于.NET 的 Azure Blob 存储客户端库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)。 添加以下**使用**语句至代码：
+当 Azure AD 安全主体尝试访问 Blob 或队列数据时，该安全主体必须有资源访问权限。 不管安全主体是 Azure 中的托管标识还是在开发环境中运行代码的 Azure AD 用户帐户，都必须为安全主体分配一个 RBAC 角色，由该角色授权访问 Azure 存储中的 Blob 或队列数据。 若要了解如何通过 RBAC 分配权限，请参阅[使用 Azure Active Directory 授权访问 Azure Blob 和队列](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)中标题为“为访问权限分配 RBAC 角色”的部分。
 
-```csharp
-using Microsoft.Azure.Services.AppAuthentication;
-using Microsoft.Azure.Storage.Auth;
-using Microsoft.Azure.Storage.Blob;
+### <a name="authenticate-the-user-in-the-development-environment"></a>在开发环境中对用户进行身份验证
+
+代码在开发环境中运行时，可能会自动处理身份验证，也可能需要浏览器登录才能进行身份验证，具体取决于使用哪些工具。 例如，Microsoft Visual Studio 支持单一登录（SSO），以便 active Azure AD 用户帐户自动用于身份验证。 有关 SSO 的详细信息，请参阅[对应用程序的单一登录](../../active-directory/manage-apps/what-is-single-sign-on.md)。
+
+其他开发工具可能会提示你通过 Web 浏览器登录。
+
+### <a name="authenticate-a-service-principal-in-the-development-environment"></a>在开发环境中对服务主体进行身份验证
+
+如果开发环境不支持单一登录或通过 Web 浏览器登录，可以使用服务主体从开发环境进行身份验证。
+
+#### <a name="create-the-service-principal"></a>创建服务主体
+
+若要通过 Azure CLI 来创建服务主体并分配 RBAC 角色，请使用 [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) 命令。 提供要分配给新服务主体的 Azure 存储数据访问角色。 此外，请提供角色分配的范围。 有关为 Azure 存储提供的内置角色的详细信息，请参阅 [Azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)。
+
+如果没有足够的权限将角色分配给服务主体，可能需要请求帐户所有者或管理员来执行相关角色分配。
+
+下面的示例使用 Azure CLI 创建新服务主体，并将帐户范围内的“存储 Blob 数据读取者”角色分配给它****
+
+```azurecli-interactive
+az ad sp create-for-rbac \
+    --name <service-principal> \
+    --role "Storage Blob Data Reader" \
+    --scopes /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 
-应用身份验证库提供了**AzureServiceTokenProvider**类。 此类的实例可以传递给回调获取令牌，然后在过期之前续订令牌。
+`az ad sp create-for-rbac` 命令返回 JSON 格式的服务主体属性列表。 复制这些值，以便在下一步中使用它们来创建必要的环境变量。
 
-下面的示例获取令牌并使用它来创建新的 blob，然后使用相同的令牌来读取 blob。
-
-```csharp
-const string blobName = "https://storagesamples.blob.core.windows.net/sample-container/blob1.txt";
-
-// Get the initial access token and the interval at which to refresh it.
-AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
-var tokenAndFrequency = TokenRenewerAsync(azureServiceTokenProvider, 
-                                            CancellationToken.None).GetAwaiter().GetResult();
-
-// Create storage credentials using the initial token, and connect the callback function 
-// to renew the token just before it expires
-TokenCredential tokenCredential = new TokenCredential(tokenAndFrequency.Token, 
-                                                        TokenRenewerAsync,
-                                                        azureServiceTokenProvider, 
-                                                        tokenAndFrequency.Frequency.Value);
-
-StorageCredentials storageCredentials = new StorageCredentials(tokenCredential);
-
-// Create a blob using the storage credentials.
-CloudBlockBlob blob = new CloudBlockBlob(new Uri(blobName), 
-                                            storageCredentials);
-
-// Upload text to the blob.
-blob.UploadTextAsync(string.Format("This is a blob named {0}", blob.Name));
-
-// Continue to make requests against Azure Storage. 
-// The token is automatically refreshed as needed in the background.
-do
+```json
 {
-    // Read blob contents
-    Console.WriteLine("Time accessed: {0} Blob Content: {1}", 
-                        DateTimeOffset.UtcNow, 
-                        blob.DownloadTextAsync().Result);
-
-    // Sleep for ten seconds, then read the contents of the blob again.
-    Thread.Sleep(TimeSpan.FromSeconds(10));
-} while (true);
-```
-
-回调方法检查令牌的过期时间，并根据需要续订它：
-
-```csharp
-private static async Task<NewTokenAndFrequency> TokenRenewerAsync(Object state, CancellationToken cancellationToken)
-{
-    // Specify the resource ID for requesting Azure AD tokens for Azure Storage.
-    const string StorageResource = "https://storage.azure.com/";  
-
-    // Use the same token provider to request a new token.
-    var authResult = await ((AzureServiceTokenProvider)state).GetAuthenticationResultAsync(StorageResource);
-
-    // Renew the token 5 minutes before it expires.
-    var next = (authResult.ExpiresOn - DateTimeOffset.UtcNow) - TimeSpan.FromMinutes(5);
-    if (next.Ticks < 0)
-    {
-        next = default(TimeSpan);
-        Console.WriteLine("Renewing token...");
-    }
-
-    // Return the new token and the next refresh time.
-    return new NewTokenAndFrequency(authResult.AccessToken, next);
+    "appId": "generated-app-ID",
+    "displayName": "service-principal-name",
+    "name": "http://service-principal-uri",
+    "password": "generated-password",
+    "tenant": "tenant-ID"
 }
 ```
 
-有关应用身份验证库的详细信息，请参阅[对 Azure 密钥保管库中使用.NET 进行服务到服务身份验证](../../key-vault/service-to-service-authentication.md)。 
+> [!IMPORTANT]
+> 传播 RBAC 角色分配可能需要花费几分钟时间。
 
-若要了解有关如何获取访问令牌的详细信息，请参阅[如何使用 Azure VM 上的 Azure 资源管理的标识获取访问令牌](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)。
+#### <a name="set-environment-variables"></a>设置环境变量。
+
+Azure 标识客户端库会在运行时读取三个环境变量中的值，以对服务主体进行身份验证。 下表介绍了为每个环境变量设置的值。
+
+|环境变量|“值”
+|-|-
+|`AZURE_CLIENT_ID`|服务主体的应用 ID
+|`AZURE_TENANT_ID`|服务主体的 Azure AD 租户 ID
+|`AZURE_CLIENT_SECRET`|为服务主体生成的密码
+
+> [!IMPORTANT]
+> 设置环境变量后，关闭并重新打开控制台窗口。 如果使用的是 Visual Studio 或其他开发环境，则可能需要重新启动开发环境以便环境能够注册新的环境变量。
+
+有关详细信息，请参阅[在门户中创建 Azure 应用标识](../../active-directory/develop/howto-create-service-principal-portal.md)。
+
+[!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
+
+## <a name="net-code-example-create-a-block-blob"></a>.NET 代码示例：创建块 blob
+
+向代码添加以下 `using` 指令，以便使用 Azure 标识和 Azure 存储客户端库。
+
+```csharp
+using Azure;
+using Azure.Identity;
+using Azure.Storage.Blobs;
+using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+```
+
+若要获取令牌凭据，以便代码用它来授权对 Azure 存储的请求，请创建 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) 类的实例。 以下代码示例演示了如何获取经身份验证的令牌凭据并使用它来创建服务客户端对象，然后使用服务客户端来上传新的 Blob：
+
+```csharp
+async static Task CreateBlockBlobAsync(string accountName, string containerName, string blobName)
+{
+    // Construct the blob container endpoint from the arguments.
+    string containerEndpoint = string.Format("https://{0}.blob.core.windows.net/{1}",
+                                                accountName,
+                                                containerName);
+
+    // Get a credential and create a client object for the blob container.
+    BlobContainerClient containerClient = new BlobContainerClient(new Uri(containerEndpoint),
+                                                                    new DefaultAzureCredential());
+
+    try
+    {
+        // Create the container if it does not exist.
+        await containerClient.CreateIfNotExistsAsync();
+
+        // Upload text to a new block blob.
+        string blobContents = "This is a block blob.";
+        byte[] byteArray = Encoding.ASCII.GetBytes(blobContents);
+
+        using (MemoryStream stream = new MemoryStream(byteArray))
+        {
+            await containerClient.UploadBlobAsync(blobName, stream);
+        }
+    }
+    catch (RequestFailedException e)
+    {
+        Console.WriteLine(e.Message);
+        Console.ReadLine();
+        throw;
+    }
+}
+```
 
 > [!NOTE]
-> 若要授权向 blob 或队列数据与 Azure AD 发出的请求，必须为这些请求使用 HTTPS。
+> 若要使用 Azure AD 授权针对 Blob 或队列数据的请求，必须对这些请求使用 HTTPS。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解 Azure 存储中的 RBAC 角色，请参阅[使用 RBAC 管理存储数据的访问权限](storage-auth-aad-rbac.md)。
-- 若要了解如何从存储应用程序内授予容器和队列访问权限，请参阅[将 Azure AD 与存储应用程序配合使用](storage-auth-aad-app.md)。
-- 若要了解如何使用 Azure AD 凭据运行 Azure CLI 和 PowerShell 命令，请参阅[运行 Azure CLI 或 PowerShell 命令使用 Azure AD 凭据来访问 blob 或队列数据](storage-auth-aad-script.md)。
+- [使用 RBAC 管理对存储数据的访问权限](storage-auth-aad-rbac.md)。
+- [将 Azure AD 与存储应用程序一起使用](storage-auth-aad-app.md)。
+- [使用 Azure AD 凭据运行 Azure CLI 或 PowerShell 命令以访问 Blob 或队列数据](authorize-active-directory-powershell.md)。

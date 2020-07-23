@@ -1,18 +1,14 @@
 ---
-title: 为 Azure 事件网格中的自定义主题构建自己的灾难恢复方案 | Microsoft Docs
-description: 发生区域性的服务中断时使 Azure 事件网格保持连接。
-services: event-grid
-author: banisadr
-ms.service: event-grid
+title: Azure 事件网格中自定义主题的灾难恢复
+description: 本教程逐步讲解如何设置事件处理体系结构，以便在区域中的事件网格服务运行不正常时能够予以恢复。
 ms.topic: tutorial
-ms.date: 05/16/2019
-ms.author: babanisa
-ms.openlocfilehash: 4a069db7984a7b0b0bb4bb867dc510f73d8b1f75
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.date: 07/07/2020
+ms.openlocfilehash: 1ee9c9566a70ba104f6c12866a631061672cb0c0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305078"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115074"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>为事件网格中的自定义主题构建自己的灾难恢复方案
 灾难恢复侧重于从严重的应用程序功能丧失中恢复。 本教程逐步讲解如何设置事件处理体系结构，以便在特定区域中的事件网格服务不正常时能够予以恢复。
@@ -28,7 +24,7 @@ ms.locfileid: "66305078"
 
 为了简化测试，请部署一个用于显示事件消息的[预生成 Web 应用](https://github.com/Azure-Samples/azure-event-grid-viewer)。 所部署的解决方案包括应用服务计划、应用服务 Web 应用和 GitHub 中的源代码。
 
-1. 选择“部署到 Azure”  将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
+1. 选择“部署到 Azure”将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
@@ -46,30 +42,30 @@ ms.locfileid: "66305078"
 
 首先创建两个事件网格主题。 这些主题充当主要和辅助主题。 默认情况下，事件将会通过主要主题传送。 如果主要区域中发生服务中断，次要区域将接管工作。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 
-1. 在 Azure 主菜单的左上角，选择“所有服务”> 搜索“事件网格”> 选择“事件网格主题”。   
+1. 在 Azure 主菜单的左上角，选择“所有服务”> 搜索“事件网格”> 选择“事件网格主题”。  
 
    ![事件网格主题菜单](./media/custom-disaster-recovery/select-topics-menu.png)
 
     选择“事件网格主题”旁边的星号，将其添加到资源菜单以方便将来进行访问。
 
-1. 在“事件网格主题”菜单中，选择“+添加”以创建主要主题。 
+1. 在“事件网格主题”菜单中，选择“+添加”以创建主要主题。
 
    * 为该主题提供逻辑名称，并添加“-primary”后缀以方便跟踪。
    * 此主题的区域是主要区域。
 
      ![“事件网格主题”中的创建主要主题对话框](./media/custom-disaster-recovery/create-primary-topic.png)
 
-1. 创建主题后，导航到该主题，并复制“主题终结点”。  稍后需要使用该 URI。
+1. 创建主题后，导航到该主题，并复制“主题终结点”。 稍后需要使用该 URI。
 
     ![事件网格主要主题](./media/custom-disaster-recovery/get-primary-topic-endpoint.png)
 
-1. 获取主题的访问密钥，稍后需要用到。 在资源菜单中单击“访问密钥”并复制“密钥 1”。 
+1. 获取主题的访问密钥，稍后需要用到。 在资源菜单中单击“访问密钥”并复制“密钥 1”。
 
     ![获取主要主题密钥](./media/custom-disaster-recovery/get-primary-access-key.png)
 
-1. 在“主题”边栏选项卡中，单击“+事件订阅”以创建订阅连接，用于订阅在本教程的先决条件部分所创建的事件接收者网站。 
+1. 在“主题”边栏选项卡中，单击“+事件订阅”以创建订阅连接，用于订阅在本教程的先决条件部分所创建的事件接收者网站。
 
    * 为事件订阅提供逻辑名称，并添加“-primary”后缀以方便跟踪。
    * 选择终结点类型 Web Hook。

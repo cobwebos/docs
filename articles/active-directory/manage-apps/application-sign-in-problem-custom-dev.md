@@ -1,29 +1,29 @@
 ---
 title: 登录自定义开发的应用程序时出现的问题 | Microsoft Docs
-description: 已开发与 Azure AD 的原因导致您不能登录到应用程序的常见错误
+description: 可能导致你无法登录到已使用 Azure AD 开发的应用程序的常见错误
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8ad2499aea8bf4e41ca00d6c78d76e112f0493e
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: cdfc2a39c6bd3b68df7feb978d2548ad67631235
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825234"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84759124"
 ---
-# <a name="problems-signing-in-to-a-custom-developed-application"></a>登录到自定义开发的应用程序出现的问题
+# <a name="problems-signing-in-to-a-custom-developed-application"></a>登录自定义开发的应用程序时出现的问题
 
 存在多个错误可能导致用户无法登录到应用。 出现此问题的最主要原因是应用配置错误。
 
@@ -41,6 +41,6 @@ ms.locfileid: "65825234"
 
 [同意并将应用集成到 Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
 
-[同意并为 Azure AD v2.0 聚合应用授予权限](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
+[Microsoft 标识平台终结点中的权限和许可](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
 
 [Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory>)

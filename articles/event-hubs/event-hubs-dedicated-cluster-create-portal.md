@@ -1,21 +1,14 @@
 ---
-title: Azure 快速入门 - 使用 Azure 门户创建事件中心专用群集 | Microsoft Docs
+title: 使用 Azure 门户创建事件中心专用群集
 description: 本快速入门介绍如何使用 Azure 门户创建 Azure 事件中心群集。
-services: event-hubs
-documentationcenter: ''
-author: xurui203
-manager: ''
-ms.service: event-hubs
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 05/02/2019
-ms.author: xurui
-ms.openlocfilehash: 269ecca8683229a56d40dfacc354abbd7ce10762
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.date: 06/23/2020
+ms.openlocfilehash: cb657619e16f7be1d633bab61625026a40a378b8
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688586"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323107"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>快速入门：使用 Azure 门户创建事件中心专用群集 
 事件中心群集提供单租户部署来满足客户的苛刻流式处理要求。 此套餐提供有保障的 99.99% SLA，只能在专用定价层上使用。 [事件中心群集](event-hubs-dedicated-overview.md)每秒能够引入数百万个事件，且提供有保障的容量和亚秒级的延迟。 在群集中创建的命名空间和事件中心不仅包括标准套餐的所有功能，而且不存在任何引入限制。 专用套餐还免费随附了热门的[事件中心捕获](event-hubs-capture-overview.md)功能，可让你自动批处理数据流并将其记录到 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)或 [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md)。
@@ -106,6 +99,10 @@ ms.locfileid: "66688586"
 ## <a name="next-steps"></a>后续步骤
 在本文中，你已创建一个事件中心群集。 有关在事件中心发送和接收事件，以及将事件捕获到 Azure 存储或 Azure Data Lake Store 的分步说明，请参阅以下教程：
 
-- [在 .NET Core 中发送和接收事件](event-hubs-dotnet-standard-getstarted-send.md)
+- 发送和接收事件 
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 - [使用 Azure 门户启用事件中心捕获](event-hubs-capture-enable-through-portal.md)
 - [使用适用于 Apache Kafka 的 Azure 事件中心](event-hubs-for-kafka-ecosystem-overview.md)

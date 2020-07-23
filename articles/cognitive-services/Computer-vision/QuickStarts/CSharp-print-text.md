@@ -8,26 +8,31 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/11/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6722fa103b3d48a8ca8ff4b96c9d179a4f743608
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: f91c472184df88c14a9642837e10ee67a8f82539
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996843"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987879"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-c35-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 C&#35; 提取印刷体文本 (OCR)
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>快速入门：使用计算机视觉 REST API 和 C# 提取印刷体文本 (OCR)
 
-在本快速入门中，你将使用计算机视觉的 REST API，通过光学字符识别 (OCR) 从图像中提取印刷体文本。 借助 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 功能，可检测图像中的印刷体文本，并将识别的字符提取到计算机可用的字符流中。
+> [!NOTE]
+> 如果要提取英语文本，请考虑使用新的[读取操作](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)。 [C# 快速入门](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text)可用。 
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services)。
+本快速入门将使用计算机视觉 REST API 通过光学字符识别 (OCR) 从图像中提取印刷体文本。 借助 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 功能，可检测图像中的印刷体文本，并将识别的字符提取到计算机可用的字符流中。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 必须具有 [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) 或更高版本。
-- 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费的试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 必须具有 [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) 或更高版本
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="创建计算机视觉资源"  target="_blank">创建计算机视觉资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到计算机视觉服务。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
+* 为密钥和终结点 URL [创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别将其命名为 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`。
 
 ## <a name="create-and-run-the-sample-application"></a>创建和运行示例应用程序
 
@@ -35,12 +40,9 @@ ms.locfileid: "59996843"
 
 1. 使用 Visual C# 控制台应用模板在 Visual Studio 中创建新的 Visual Studio 解决方案。
 1. 安装 Newtonsoft.Json NuGet 包。
-    1. 在菜单上，单击“工具”，然后依次选择“NuGet 包管理器”、“管理解决方案的 NuGet 包”。
-    1. 单击“浏览”选项卡，在“搜索”框中键入“Newtonsoft.Json”。
-    1. 选择显示的 Newtonsoft.Json，单击项目名称旁边的复选框，然后单击“安装”。
-1. 将 `Program.cs` 中的代码替换为以下代码，然后根据需要在代码中进行以下更改：
-    1. 将 `subscriptionKey` 的值替换为你的订阅密钥。
-    1. 如有必要，请将 `uriBase` 的值替换为获取的订阅密钥所在的 Azure 区域中的 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法的终结点 URL。
+    1. 在菜单上，单击“工具”，然后依次选择“NuGet 包管理器”、“管理解决方案的 NuGet 包”  。
+    1. 单击“浏览”选项卡，在“搜索”框中键入“Newtonsoft.Json” 。
+    1. 选择显示的 Newtonsoft.Json，单击项目名称旁边的复选框，然后单击“安装” 。
 1. 运行该程序。
 1. 在提示符处，输入本地图像的路径。
 
@@ -56,21 +58,15 @@ namespace CSHttpClientSample
 {
     static class Program
     {
-        // Replace <Subscription Key> with your valid subscription key.
-        const string subscriptionKey = "<Subscription Key>";
+        // Add your Computer Vision subscription key and endpoint to your environment variables.
+        static string subscriptionKey = Environment.GetEnvironmentVariable("COMPUTER_VISION_SUBSCRIPTION_KEY");
 
-        // You must use the same Azure region in your REST API method as you used to
-        // get your subscription keys. For example, if you got your subscription keys
-        // from the West US region, replace "westcentralus" in the URL
-        // below with "westus".
-        //
-        // Free trial subscription keys are generated in the "westus" region.
-        // If you use a free trial subscription key, you shouldn't need to change
-        // this region.
-        const string uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr";
+        static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
+        
+        // the OCR method endpoint
+        static string uriBase = endpoint + "vision/v2.1/ocr";
 
-        static void Main()
+        static async Task Main()
         {
             // Get the path and filename to process from the user.
             Console.WriteLine("Optical Character Recognition:");
@@ -81,7 +77,7 @@ namespace CSHttpClientSample
             {
                 // Call the REST API method.
                 Console.WriteLine("\nWait a moment for the results to appear.\n");
-                MakeOCRRequest(imageFilePath).Wait();
+                await MakeOCRRequest(imageFilePath);
             }
             else
             {
@@ -247,10 +243,6 @@ namespace CSHttpClientSample
     ]
 }
 ```
-
-## <a name="clean-up-resources"></a>清理资源
-
-不再需要 Visual Studio 解决方案时，请将其删除。 为此，请打开文件资源管理器，导航到在其中创建 Visual Studio 解决方案的文件夹，然后删除该文件夹。
 
 ## <a name="next-steps"></a>后续步骤
 

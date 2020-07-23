@@ -1,20 +1,19 @@
 ---
-title: 使用 Azure Site Recovery 对 Azure 本地计算机运行灾难恢复演练 | Microsoft 文档
-description: 了解使用 Azure Site Recovery 对从 Azure 本地计算机运行灾难恢复演练的相关信息
+title: 使用 Azure Site Recovery 运行到 Azure 的灾难恢复演练
+description: 了解如何使用 Azure Site Recovery 运行从本地到 Azure 的灾难恢复演练。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-services: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4ed66e3a0237eced852c806e78a8af6bdf8d8579
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 5bd9f5316f8b8799633de8c0c84c61424c0e4f4a
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417821"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699611"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>运行 Azure 灾难恢复演练
 
@@ -88,6 +87,6 @@ ms.locfileid: "66417821"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [针对 VMware VM 运行故障转移和故障回复](vmware-azure-tutorial-failover-failback.md)。
-> [针对 Hyper-V VM 运行故障转移和故障回复](hyper-v-azure-failover-failback-tutorial.md)。
-> [针对物理计算机运行故障转移和故障回复](physical-to-azure-failover-failback.md)
+> [对 VMware VM 运行故障转移和故障回复](vmware-azure-tutorial-failover-failback.md)
+> [对 Hyper-V VM 运行故障转移和故障回复](hyper-v-azure-failover-failback-tutorial.md)
+> [对物理计算机运行故障转移和故障回复](physical-to-azure-failover-failback.md)

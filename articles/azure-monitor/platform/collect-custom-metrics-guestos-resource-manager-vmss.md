@@ -1,19 +1,17 @@
 ---
-title: 使用 Windows 虚拟机规模集的 Azure 资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
+title: 使用模板在 Azure Monitor 中收集 Windows 规模集指标
 description: 使用 Windows 虚拟机规模集的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 573c205cd2e208a1cb2b526d96fb08ca21331c80
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 9a7aa512c636f700cf9c6d990814d9367007c942
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66129618"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83125768"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>使用 Windows 虚拟机规模集的 Azure 资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 
@@ -23,14 +21,15 @@ ms.locfileid: "66129618"
 
 本文介绍将 Windows 虚拟机规模集的来宾 OS 性能指标发送到 Azure Monitor 数据存储的过程。 自 Windows Azure 诊断版本 1.11 版起，可将指标直接写入已收集标准平台指标的 Azure Monitor 指标存储。 将它们存储在此位置可以访问可用于平台指标的相同操作。 操作包括近实时警报、图表绘制、路由、从 REST API 访问，等等。 在过去，Windows Azure 诊断扩展将数据写入 Azure 存储而不是 Azure Monitor 数据存储。  
 
-如果你不熟悉资源管理器模板，请了解[模板部署](../../azure-resource-manager/resource-group-overview.md)及其结构和语法。  
+如果你不熟悉资源管理器模板，请了解[模板部署](../../azure-resource-manager/management/overview.md)及其结构和语法。  
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 你的订阅必须已注册到 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)。 
 
 - 需要安装 [Azure PowerShell](/powershell/azure)，但也可以使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 
 
+- VM 资源必须位于[支持自定义指标的区域](metrics-custom-overview.md#supported-regions)中。
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>将 Azure Monitor 设置为数据接收器 
 Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志路由到不同位置。 以下步骤说明如何通过资源管理器模板和 PowerShell 来使用新的 Azure Monitor 数据接收器部署 VM。 
@@ -252,7 +251,7 @@ MSI 扩展中的以下代码还会将诊断扩展和配置作为扩展资源添�
    ```
 
    > [!NOTE]  
-   > 请记得使用为自定义指标启用的 Azure 区域。 请记得使用[为自定义指标启用的 Azure 区域](https://github.com/MicrosoftDocs/azure-docs-pr/pull/metrics-custom-overview.md#supported-regions)。
+   > 请记得使用为自定义指标启用的 Azure 区域。 请记得使用[为自定义指标启用的 Azure 区域](./metrics-custom-overview.md#supported-regions)。
  
 1. 运行以下命令以部署 VM：  
 
@@ -275,7 +274,7 @@ MSI 扩展中的以下代码还会将诊断扩展和配置作为扩展资源添�
 
 1. 在左侧菜单中选择“监视”。 
 
-1. 在“监视”页上选择“指标”。 
+1. 在“监视”页上选择“指标” 。 
 
    ![监视 - 指标页](media/collect-custom-metrics-guestos-resource-manager-vmss/metrics.png) 
 

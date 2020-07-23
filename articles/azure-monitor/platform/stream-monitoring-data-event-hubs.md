@@ -1,124 +1,65 @@
 ---
 title: 将 Azure 监视数据流式传输到事件中心
 description: 了解如何将 Azure 监视数据流式传输到事件中心，以将数据获取到合作伙伴 SIEM 或分析工具。
-author: johnkemnetz
+author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 11/01/2018
-ms.author: johnkem
+ms.date: 11/15/2019
+ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 72d744808d6b52ccd151645c97005bfdfe1a5541
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8bfec756c365c451a4e2b8236814454980d1d563
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243452"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539306"
 ---
-# <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>将 Azure 监视数据流式传输到事件中心以便外部工具使用
+# <a name="stream-azure-monitoring-data-to-an-event-hub"></a>将 Azure 监视数据流式传输到事件中心
+Azure Monitor 为 Azure、其他云和本地的应用程序与服务提供全堆栈监视解决方案。 除了使用 Azure Monitor 分析数据并将数据用于不同的监视方案以外，可能还需要将其发送到环境中的其他监视工具。 在大多数情况下，将监视数据流式传输到外部工具的最有效方法是使用 [Azure 事件中心](../../event-hubs/index.yml)。 本文简要介绍了如何将不同源中的监视数据流式传输到事件中心，并提供详细指南的链接。
 
-本文将演练如何将 Azure 环境中的不同数据层设置为发送到单个事件中心命名空间或事件中心，以便由外部工具收集。
 
-> [!VIDEO https://www.youtube.com/embed/SPHxCgbcvSw]
+## <a name="create-an-event-hubs-namespace"></a>创建事件中心命名空间
 
-## <a name="what-data-can-i-send-into-an-event-hub"></a>可将哪些数据发送到事件中心？
+在针对任何数据源配置流式传输之前，需要[创建事件中心命名空间和事件中心](../../event-hubs/event-hubs-create.md)。 此命名空间和事件中心是所有监视数据的目标。 事件中心命名空间是共享相同访问策略的事件中心的逻辑分组，就像存储帐户中有各个 blob 一样。 请注意以下有关用于流式传输监视数据的事件中心命名空间和事件中心的详细信息：
 
-在 Azure 环境中，有多“层”监视数据，访问每层数据的方法略有不同。 通常情况下，这些层可描述为：
+* 使用吞吐量单位数，可增加事件中心的吞吐量规模。 通常只需要一个吞吐量单位。 如果需要在日志使用量增加时纵向扩展，可以手动增加命名空间的吞吐量单位数或启用自动扩充。
+* 使用分区数可以在多个使用者之间并行使用。 单个分区最多支持 20MBps，或者大约每秒 20,000 条消息。 不一定支持从多个分区使用，具体取决于使用数据的工具。 如果不确定要设置的分区数量，那么从四个分区开始是合理的。
+* 将事件中心的消息保留期设置为至少 7 天。 如果使用的工具多天出现故障，这可确保该工具可以从它中断的位置重新开始（因为事件最多可保存 7 天）。
+* 应该对事件中心使用默认的使用者组。 除非你打算使用两个不同的工具使用同一事件中心内的相同数据，否则无需创建其他使用者组或使用单独的使用者组。
+* 对于 Azure 活动日志，可选择事件中心命名空间，Azure Monitor 将在该命名空间内创建名为 _insights-logs-operational-logs_ 的事件中心。 对于其他日志类型，可以选择现有的事件中心，或者让 Azure Monitor 为每个日志类别创建一个事件中心。
+* 通常，必须在使用事件中心数据的计算机或 VNET 中上打开端口 5671 和 5672。
 
-- **应用程序监视数据：** 有关已编写并在 Azure 上运行的代码的性能和功能的数据。 应用程序监视数据的示例包括性能跟踪、应用程序日志及用户遥测数据。 通常以下列的一种方式收集应用程序监视数据：
-  - 用 [Application Insights SDK](../../azure-monitor/app/app-insights-overview.md) 等 SDK 检测代码。
-  - 运行一个监视代理（如 [Windows Azure 诊断代理](./../../azure-monitor/platform/diagnostics-extension-overview.md)或 [Linux Azure 诊断代理](../../virtual-machines/extensions/diagnostics-linux.md)），以便侦听运行应用程序的计算机上的新应用程序日志。
-- **来宾 OS 监视数据**：有关运行应用程序的操作系统的数据。 来宾 OS 监视数据的示例有 Linux syslog 或 Windows 系统日志。 若要收集此类型的数据，需安装代理，如[ Windows Azure 诊断代理](./../../azure-monitor/platform/diagnostics-extension-overview.md)或 [Linux Azure 诊断代理](../../virtual-machines/extensions/diagnostics-linux.md)。
-- **Azure 资源监视数据：** 有关 Azure 资源操作的数据。 对于某些 Azure 资源类型（如虚拟机），该 Azure 服务中会监视来宾 OS 和应用程序。 对于其他 Azure 资源（如网络安全组），资源监视数据是可用数据的最高层（因为没有 来宾 OS 或应用程序在这些资源中运行）。 可以使用[资源诊断设置](./../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)收集这些数据。
-- **Azure 订阅监视数据：** 有关 Azure 订阅操作和管理的数据，以及有关 Azure 本身运行状况和操作的数据。 [活动日志](./../../azure-monitor/platform/activity-logs-overview.md)包含大多数订阅监视数据，例如服务运行状况事件和 Azure 资源管理器审核。 可以使用日志配置文件收集此数据。
-- **Azure 租户监视数据：** 有关租户级 Azure 服务（例如 Azure Active Directory）操作的数据。 Azure Active Directory 审核和登录是租户监视数据的示例。 可以使用租户诊断设置收集此数据。
+## <a name="monitoring-data-available"></a>提供的监视数据
+[Azure Monitor 的监视数据源](data-sources.md)介绍了 Azure 应用程序的各种数据层，以及为每个层提供的监视数据类型。 下表列出了每个层，并描述了如何将该数据流式传输到事件中心。 可单击提供的链接了解更多详细信息。
 
-可将任何层的数据发送到事件中心，以便将其拉取到合作伙伴工具。 可将某些源配置为直接向事件中心发送数据，同时，可能需要使用另一个进程（例如逻辑应用）来检索所需的数据。 以下各节描述了如何将每层数据配置为流式传输到事件中心。 这些步骤假定你拥有处于要监视的层的资产。
+| 层 | 数据 | 方法 |
+|:---|:---|:---|
+| [Azure 租户](data-sources.md#azure-tenant) | Azure Active Directory 审核日志 | 在 AAD 租户上配置租户诊断设置。 有关详细信息，请参阅[教程：将 Azure Active Directory 日志流式传输到 Azure 事件中心](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。 |
+| [Azure 订阅](data-sources.md#azure-subscription) | Azure 活动日志 | 创建日志配置文件，以将活动日志事件导出到事件中心。  有关详细信息，请参阅[将 Azure 平台日志流式传输到 Azure 事件中心](./resource-logs.md#send-to-azure-event-hubs)。 |
+| [Azure 资源](data-sources.md#azure-resources) | 平台指标<br> 资源日志 |使用资源诊断设置将两种类型的数据发送到事件中心。 有关详细信息，请参阅[将 Azure 资源日志流式传输到事件中心](./resource-logs.md#send-to-azure-event-hubs)。 |
+| [操作系统（来宾）](data-sources.md#operating-system-guest) | Azure 虚拟机 | 在 Azure 中的 Windows 和 Linux 虚拟机上安装 [Azure 诊断扩展](diagnostics-extension-overview.md)。 有关 Windows VM 的详细信息，请参阅[使用事件中心流式传输热路径中的 Azure 诊断数据](diagnostics-extension-stream-event-hubs.md)；有关 Linux VM 的详细信息，请参阅[使用 Linux 诊断扩展监视指标和日志](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings)。 |
+| [应用程序代码](data-sources.md#application-code) | Application Insights | Application Insights 不提供直接方法用于将数据流式传输到事件中心。 可以设置将 Application Insights 数据[连续导出](../../azure-monitor/app/export-telemetry.md)到存储帐户，然后根据[使用逻辑应用手动进行流式传输](#manual-streaming-with-logic-app)中所述，使用逻辑应用将数据发送到事件中心。 |
 
-## <a name="set-up-an-event-hubs-namespace"></a>设置事件中心命名空间
+## <a name="manual-streaming-with-logic-app"></a>使用逻辑应用手动进行流式传输
+对于无法直接流式传输到事件中心的数据，可以将其写入 Azure 存储，接着使用时间触发的逻辑应用[从 blob 存储中拉取数据](../../connectors/connectors-create-api-azureblobstorage.md#add-action)，然后[将其作为消息推送到事件中心](../../connectors/connectors-create-api-azure-event-hubs.md#add-action)。 
 
-开始之前，需[创建事件中心命名空间和事件中心](../../event-hubs/event-hubs-create.md)。 此命名空间和事件中心是所有监视数据的目标。 事件中心命名空间是共享相同访问策略的事件中心的逻辑分组，就像存储帐户中有各个 blob 一样。 请注意有关所创建的事件中心命名空间和事件中心的一些详细信息：
-* 我们建议使用标准事件中心命名空间。
-* 通常，只需要一个吞吐量单位。 如果需要在日志使用量增加时纵向扩展，以后始终可以手动增加命名空间的吞吐量单位数或启用自动膨胀。
-* 使用吞吐量单位数，可增加事件中心的吞吐量规模。 使用分区数可以在多个使用者之间并行使用。 单个分区最多可以执行 20MBps，或者大约每秒 20,000 条消息。 不一定支持从多个分区使用，具体取决于使用数据的工具。 如果不确定要设置的分区数，我们建议从四个分区开始。
-* 我们建议将事件中心的消息保留期设置为 7 天。 如果使用的工具多天出现故障，这可确保该工具可以从它中断的位置重新开始（因为事件最多可保存 7 天）。
-* 我们建议将默认使用者组用于事件中心。 除非你打算使用两个不同的工具使用同一事件中心内的相同数据，否则无需创建其他使用者组或使用单独的使用者组。
-* 对于 Azure 活动日志中，选择事件中心命名空间和 Azure Monitor 创建名为 insights-日志-operationallogs。 该命名空间中的事件中心 对于其他日志类型，可以选择现有事件中心（可以重复使用同一 insights-logs-operationallogs 事件中心），也可以让 Azure Monitor 为每个日志类别创建一个事件中心。
-* 通常，必须在使用事件中心数据的计算机上打开端口 5671 和端口 5672。
 
-另请参阅 [Azure 事件中心常见问题解答](../../event-hubs/event-hubs-faq.md)。
+## <a name="partner-tools-with-azure-monitor-integration"></a>与 Azure Monitor 集成的合作伙伴工具
 
-## <a name="azure-tenant-monitoring-data"></a>Azure 租户监视数据
+通过 Azure Monitor 将监视数据路由到事件中心，可与外部 SIEM 和监视工具轻松集成。 与 Azure Monitor 集成的工具示例包括：
 
-Azure 租户监视数据目前仅适用于 Azure Active Directory。 可以使用 [Azure Active Directory 报告](../../active-directory/reports-monitoring/overview-reports.md)中的数据，其中包含特定租户中的登录活动历史记录和更改审核跟踪。
+| 工具 | 在 Azure 中托管 | 说明 |
+|:---|:---| :---|
+|  IBM QRadar | 否 | Microsoft Azure DSM 和 Microsoft Azure 事件中心协议可从 [IBM 支持网站](https://www.ibm.com/support)下载。 可以在 [QRadar DSM 配置](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)中详细了解与 Azure 的集成。 |
+| Splunk | 否 | [适用于 Splunk 的 Azure Monitor 加载项](https://splunkbase.splunk.com/app/3534/)是在 Splunkbase 中提供的一个开源项目。 相关文档已在 [适用于 Splunk 的 Azure Monitor 加载项](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)中提供。<br><br> 如果无法在 Splunk 实例中安装加载项（例如，如果使用代理或在 Splunk Cloud 上运行），则可以使用[适用于 Splunk 的 Azure 函数](https://github.com/Microsoft/AzureFunctionforSplunkVS)（由事件中心内的新消息触发）将这些事件转发到 Splunk HTTP 事件收集器。 |
+| SumoLogic | 否 | [从事件中心收集 Azure 审核应用的日志](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)中提供了有关设置 SumoLogic，以使用事件中心数据的说明。 |
+| ArcSight | 否 | ArcSight Azure 事件中心智能连接器作为 [ArcSight 智能连接器集合](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)的一部分提供。 |
+| Syslog 服务器 | 否 | 若要将 Azure Monitor 数据直接流式传输到 syslog 服务器，可以使用[基于 Azure 函数的解决方案](https://github.com/miguelangelopereira/azuremonitor2syslog/)。
+| LogRhythm | 否| [此处](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)提供了有关设置 LogRhythm，以从事件中心收集日志的说明。 
+|Logz.io | 是 | 有关详细信息，请参阅[开始使用用于在 Azure 上运行的 Java 应用的 Logz.io 进行监视和日志记录](/azure/developer/java/fundamentals/java-get-started-with-logzio)
 
-### <a name="azure-active-directory-data"></a>Azure Active Directory 数据
-
-若要将 Azure Active Directory 日志中的数据发送到事件中心命名空间，请在 AAD 租户上设置租户诊断设置。 请[按照此指南](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)设置租户诊断设置。
-
-## <a name="azure-subscription-monitoring-data"></a>Azure 订阅监视数据
-
-Azure 订阅监视数据可以在 [Azure 活动日志](./../../azure-monitor/platform/activity-logs-overview.md)中找到。 此日志包含来自资源管理器的创建、更新和删除操作；[Azure 服务运行状况](../../service-health/service-health-overview.md)中可能影响订阅中资源的更改；[资源运行状况](../../service-health/resource-health-overview.md)状态转换；以及若干其他类型的订阅级别事件。 [本文详细介绍了 Azure 活动日志中显示的所有事件类别](./../../azure-monitor/platform/activity-log-schema.md)。
-
-### <a name="activity-log-data"></a>活动日志数据
-
-若要将数据从 Azure 活动日志发送到事件中心命名空间，请在订阅上设置日志配置文件。 [按照本指南](./activity-logs-stream-event-hubs.md)在订阅上设置日志配置文件。 对要监视每个订阅执行一次此操作。
-
-> [!TIP]
-> 日志配置文件当前仅允许选择一个事件中心命名空间，并将在其中创建名为“insights-operational-logs”的事件日志。 尚不可在日志配置文件中指定自己的事件中心名称。
-
-## <a name="azure-resource-metrics-and-diagnostics-logs"></a>Azure 资源指标和诊断日志
-
-Azure 资源将发出两种类型的监视数据：
-1. [资源诊断日志](diagnostic-logs-overview.md)
-2. [指标](data-platform.md)
-
-使用资源诊断设置将两种类型的数据发送到事件中心。 [按照本指南](diagnostic-logs-stream-event-hubs.md)在特定资源上设置资源诊断设置。 在要从其收集日志的每个资源上设置资源诊断设置。
-
-> [!TIP]
-> 可使用 Azure Policy，[在策略规则中使用 DeployIfNotExists 效果](../../governance/policy/concepts/definition-structure.md#policy-rule)，确保特定范围内的每个资源始终设置了诊断设置。
-
-## <a name="guest-os-data"></a>来宾 OS 数据
-
-需要安装代理以将来宾 OS 监视数据发送到事件中心。 对于 Windows 或 Linux，请在配置文件中指定要发送到事件中心的数据，以及应将数据发送到的事件中心，并将该配置文件传递给在 VM 上运行的代理。
-
-### <a name="linux-data"></a>Linux 数据
-
-[Linux Azure 诊断代理](../../virtual-machines/extensions/diagnostics-linux.md)用于将来自 Linux 计算机的监视数据发送到事件中心。 在 LAD 配置文件保护的设置 JSON 中添加事件中心作为接收器，即可完成此操作。 [参阅此文章，详细了解如何向 Linux Azure 诊断代理添加事件中心接收器](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings)。
-
-> [!NOTE]
-> 不能在门户中将来宾 OS 监视数据设置为流式传输到事件中心。 相反，必须手动编辑配置文件。
-
-### <a name="windows-data"></a>Windows 数据
-
-[Windows Azure 诊断代理](./../../azure-monitor/platform/diagnostics-extension-overview.md)用于将来自 Windows 计算机的监视数据发送到事件中心。 在 WAD 配置文件的 privateConfig 部分添加事件中心作为接收器，即可完成此操作。 [参阅此文章，详细了解如何向 Windows Azure 诊断代理添加事件中心接收器](./../../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md)。
-
-> [!NOTE]
-> 不能在门户中将来宾 OS 监视数据设置为流式传输到事件中心。 相反，必须手动编辑配置文件。
-
-## <a name="application-monitoring-data"></a>应用程序监视数据
-
-应用程序监视数据要求代码经过 SDK 检测，因此没有将应用程序监视数据路由到 Azure 中事件中心的通用解决方案。 但是，[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 是一项可用于收集 Azure 应用程序级数据的服务。 如果使用 Application Insights，可通过执行以下操作，将监视数据流式传输到事件中心：
-
-1. 将 Application Insights 数据[设置为连续导出](../../azure-monitor/app/export-telemetry.md)到存储帐户。
-
-2. 设置计时器触发逻辑应用，[从 blob 存储拉取数据](../../connectors/connectors-create-api-azureblobstorage.md#add-action)并[将其作为消息推送到事件中心](../../connectors/connectors-create-api-azure-event-hubs.md#add-action)。
-
-## <a name="what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub"></a>可对发送到事件中心的监视数据执行什么操作？
-
-通过 Azure Monitor 将监视数据路由到事件中心，可与合作伙伴 SIEM 和监视工具轻松集成。 大多数工具需要事件中心连接字符串和对 Azure 订阅的某些权限，才能从事件中心读取数据。 下面是与 Azure Monitor 集成的工具的不完整列表：
-
-* **IBM QRadar** -Microsoft Azure DSM 和 Microsoft Azure 事件中心协议均可从 [IBM 支持网站](https://www.ibm.com/support)下载。 可以[在此处了解 Azure 集成](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)。
-* **Splunk** - 有两种方法，具体取决于 Splunk 设置：
-    1. [适用于 Splunk 的 Azure Monitor 加载项](https://splunkbase.splunk.com/app/3534/)可在 Splunkbase 中找到，它是一个开源项目。 [文档见此处](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)。
-    2. 如果无法在 Splunk 实例中安装加载项（例如， 如果使用代理或在 Splunk Cloud 上运行），可以使用[此函数（由事件中心中的新消息触发）](https://github.com/Microsoft/AzureFunctionforSplunkVS)将这些事件转发到 Splunk HTTP 事件收集器。
-* **SumoLogic** - 将 SumoLogic 设置为使用来自事件中心的数据的说明[见此处](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)
-* **ArcSight** - ArcSight Azure 事件中心智能连接器作为[此处的 ArcSight 智能连接器集合](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)的一部分提供。
-* **Syslog 服务器** - 如果要将 Azure Monitor 数据直接流式传输到 syslog 服务器，可查看[此 GitHub 存储库](https://github.com/miguelangelopereira/azuremonitor2syslog/)。
 
 ## <a name="next-steps"></a>后续步骤
-* [活动日志存档到存储帐户](../../azure-monitor/platform/archive-activity-log.md)
-* [读取 Azure 活动日志概述](../../azure-monitor/platform/activity-logs-overview.md)
-* [设置警报基于活动日志事件](../../azure-monitor/platform/alerts-log-webhook.md)
-
-
+* [将活动日志存档到存储帐户](./activity-log.md#legacy-collection-methods)
+* [阅读 Azure 活动日志概述](../../azure-monitor/platform/platform-logs-overview.md)
+* [根据活动日志事件设置警报](../../azure-monitor/platform/alerts-log-webhook.md)

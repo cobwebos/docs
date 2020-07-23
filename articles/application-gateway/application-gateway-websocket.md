@@ -1,18 +1,17 @@
 ---
-title: Azure 应用程序网关中的 WebSocket 支持 | Microsoft Docs
-description: 此页概述了应用程序网关的 WebSocket 支持。
+title: Azure 应用程序网关中的 WebSocket 支持
+description: 应用程序网关跨所有网关大小为 WebSocket 提供本机支持。 没有用户可配置的设置。
 author: vhorne
 ms.author: amsriva
 ms.service: application-gateway
+services: application-gateway
 ms.topic: conceptual
-ms.workload: infrastructure-services
-ms.date: 03/18/2019
-ms.openlocfilehash: 54c34690e678f07d6309a1877b0ca5d0a0b274f5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 11/16/2019
+ms.openlocfilehash: baa02c4d946a121f26f421af99835ae2bea18847
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60831227"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74130330"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>应用程序网关中的 WebSocket 支持概述
 
@@ -28,11 +27,11 @@ ms.locfileid: "60831227"
 
 若要建立 WebSocket 连接，需在客户端和服务器之间交换特定的基于 HTTP 的握手。 如果成功，则应用程序层协议会使用之前建立的 TCP 连接从 HTTP“升级”为 WebSocket。 然后就完全不使用 HTTP；两个终结点可以使用 WebSocket 协议来发送或接收数据，直至 WebSocket 连接关闭。 
 
-![addcert](./media/application-gateway-websocket/websocket.png)
+![websocket](./media/application-gateway-websocket/websocket.png)
 
 ### <a name="listener-configuration-element"></a>侦听器配置元素
 
-现有的 HTTP 侦听器可用于支持 WebSocket 流量。 以下是示例模板文件中 httpListeners 元素的代码片段。 需要同时拥有 HTTP 和 HTTPS 侦听器才能支持 WebSocket 并保护 WebSocket 流量。 同样使用门户或 Azure PowerShell 创建具有侦听器的应用程序网关在端口 80/443，用于支持 WebSocket 流量上。
+现有的 HTTP 侦听器可用于支持 WebSocket 流量。 以下是示例模板文件中 httpListeners 元素的代码片段。 需要同时拥有 HTTP 和 HTTPS 侦听器才能支持 WebSocket 并保护 WebSocket 流量。 同样，可以使用门户或 Azure PowerShell 在端口 80/443 上创建具有侦听器的应用程序网关，以支持 WebSocket 通信。
 
 ```json
 "httpListeners": [
@@ -68,7 +67,7 @@ ms.locfileid: "60831227"
 
 ## <a name="backendaddresspool-backendhttpsetting-and-routing-rule-configuration"></a>BackendAddressPool、BackendHttpSetting 和路由规则配置
 
-如果后端池具有已启用 WebSocket 的服务器，那么使用 BackendAddressPool 对其进行定义。 使用后端端口 80 和 443 定义 BackendHttpSetting。 基于 cookie 的相关性和 requestTimeouts 的属性与 WebSocket 流量不相关。 无需更改路由规则，“基本”路由规则用于将适当的侦听器绑定到相应的后端地址池。 
+如果后端池具有已启用 WebSocket 的服务器，那么使用 BackendAddressPool 对其进行定义。 使用后端端口 80 和 443 定义 BackendHttpSetting。 HTTP 设置中的请求超时值也适用于 WebSocket 会话。 不需要对路由规则进行更改，可使用路由规则将适当的侦听器绑定到相应的后端地址池。 
 
 ```json
 "requestRoutingRules": [{

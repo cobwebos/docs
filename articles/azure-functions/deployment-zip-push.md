@@ -1,21 +1,14 @@
 ---
-title: Azure Functions 的 Zip 推送部署 | Microsoft Docs
+title: Azure Functions 的 Zip 推送部署
 description: 使用 Kudu 部署服务的 .zip 文件部署功能来发布 Azure Functions。
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 08/12/2018
-ms.author: glenga
-ms.openlocfilehash: 2762e5c4f2b67415a0e42e80a34ae5b34c57adc9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: e104661dcdf1f6c6fd6dd5eb1024748980e7931f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62111180"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833046"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions 的 Zip 部署
 
@@ -23,7 +16,7 @@ ms.locfileid: "62111180"
 
 Azure Functions 具有完整的持续部署范围，以及由 Azure 应用服务提供的集成选项。 有关详细信息，请参阅 [Azure Functions 的连续部署](functions-continuous-deployment.md)。
 
-要加快开发速度，你可能会发现直接通过 .zip 文件部署你的函数应用项目文件更为简单。 .zip 部署 API 接受 .zip 文件的内容并将内容提取到你的函数应用的 `wwwroot` 文件夹中。 此 .zip 文件部署使用相同的 Kudu 服务，支持基于持续集成的部署，包括：
+为了加快开发速度，你可能会发现直接通过 .zip 文件部署函数应用项目文件更为简单。 .zip 部署 API 接受 .zip 文件的内容并将内容提取到你的函数应用的 `wwwroot` 文件夹中。 此 .zip 文件部署使用相同的 Kudu 服务，支持基于持续集成的部署，包括：
 
 + 删除之前的部署留下的文件。
 + 部署自定义，包括运行部署脚本。
@@ -49,34 +42,36 @@ Azure Functions 具有完整的持续部署范围，以及由 Azure 应用服务
 
 但是，可能已通过 Azure 门户中的编辑器创建了函数。 可以通过以下方式之一下载现有的函数应用项目：
 
-+ **通过 Azure 门户：**
++ **从 Azure 门户：**
 
   1. 登录 [Azure 门户](https://portal.azure.com)，并转到函数应用。
 
-  2. 在“概述”选项卡中，选择“下载应用内容”。 选择下载选项，然后选择“下载”。
+  2. 在“概述”选项卡中，选择“下载应用内容”********。 选择下载选项，然后选择“下载”****。
 
       ![下载函数应用项目](./media/deployment-zip-push/download-project.png)
 
      所下载的 .zip 文件格式正确，可使用 .zip 推送部署将其重新发布到函数应用。 门户下载还可以添加在 Visual Studio 中直接打开函数应用所需的文件。
 
-+ **使用 REST API：**
++ **使用 REST Api：**
 
     使用以下部署 GET API 从 `<function_app>` 项目中下载文件： 
 
-        https://<function_app>.scm.azurewebsites.net/api/zip/site/wwwroot/
+    ```http
+    https://<function_app>.scm.azurewebsites.net/api/zip/site/wwwroot/
+    ```
 
     包含 `/site/wwwroot/` 可确保 zip 文件仅包含函数应用项目文件，而不是整个站点。 如果尚未登录 Azure，系统会要求你登录。  
 
 还可从 GitHub 存储库下载 .zip 文件。 在以 .zip 文件形式下载 GitHub 存储库时，GitHub 会为分支添加一个额外的文件夹级别。 此额外的文件夹级别意味着无法直接部署从 GitHub 下载的 .zip 文件。 如果当前使用 GitHub 存储库维护函数应用，应使用[持续集成](functions-continuous-deployment.md)来部署应用。  
 
-## <a name="cli"></a>使用 Azure CLI 进行部署
+## <a name="deploy-by-using-azure-cli"></a><a name="cli"></a>使用 Azure CLI 进行部署
 
 可使用 Azure CLI 来触发推送部署。 使用 [az functionapp deployment source config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) 命令将 .zip 文件推送部署到函数应用。 要使用此命令，必须使用 Azure CLI 版本 2.0.21 或更高版本。 要查看当前使用的 Azure CLI 版本，请使用 `az --version` 命令。
 
-以下命令将 `<zip_file_path>` 占位符替换为 .zip 文件的位置路径。 此外，`<app_name>` 替换为函数应用的唯一名称。 
+以下命令将 `<zip_file_path>` 占位符替换为 .zip 文件的位置路径。 此外，请将 `<app_name>` 替换为函数应用的唯一名称，并将 `<resource_group>` 替换为资源组的名称。
 
 ```azurecli-interactive
-az functionapp deployment source config-zip  -g myResourceGroup -n \
+az functionapp deployment source config-zip -g <resource_group> -n \
 <app_name> --src <zip_file_path>
 ```
 

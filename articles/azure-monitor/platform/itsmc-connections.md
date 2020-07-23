@@ -1,23 +1,17 @@
 ---
-title: Azure Log Analytics 中与 IT Service Management Connector 的手支持连接 | Microsoft Docs
+title: Azure Monitor 中的 IT 服务管理连接器
 description: 本文提供了有关如何将 ITSM 产品/服务与 Azure Monitor 中的 IT 服务管理连接器 (ITSMC) 相连接，以集中监视和管理 ITSM 工作项的信息。
-documentationcenter: ''
-author: jyothirmaisuri
-manager: riyazp
-editor: ''
-ms.assetid: 8231b7ce-d67f-4237-afbf-465e2e397105
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 05/24/2018
+author: nolavime
 ms.author: v-jysur
-ms.openlocfilehash: ffd9c4bfc934faff1664ff39c0e979a9d6c09487
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.date: 05/12/2020
+ms.openlocfilehash: 7baabe455128bf420a3c3e11ea83bb5357ed35c8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399782"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505153"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>将 ITSM 产品/服务与 IT 服务管理连接器相连接
 本文介绍如何配置 ITSM 产品/服务与 Log Analytics 中的 IT 服务管理连接器 (ITSMC) 之间的连接，以便集中管理工作项。 有关 ITSMC 的详细信息，请参阅[概述](../../azure-monitor/platform/itsmc-overview.md)。
@@ -37,7 +31,7 @@ ms.locfileid: "66399782"
 
 以下部分提供有关如何将 System Center Service Manager 产品连接到 Azure 中的 ITSMC 的详细信息。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 请确保满足以下先决条件：
 
@@ -45,21 +39,21 @@ ms.locfileid: "66399782"
 - 已部署并配置 Service Manager Web 应用程序（Web 应用）。 [此处](#create-and-deploy-service-manager-web-app-service)提供了有关 Web 应用的信息。
 - 已创建并配置混合连接。 详细信息：[配置混合连接](#configure-the-hybrid-connection)。
 - 支持的 Service Manager 版本：2012 R2 或 2016。
-- 用户角色：[高级操作员](https://technet.microsoft.com/library/ff461054.aspx)。
+- 用户角色：[高级操作员](/previous-versions/system-center/service-manager-2010-sp1/ff461054(v=technet.10))。
 
 ### <a name="connection-procedure"></a>连接过程
 
 按照以下过程将 System Center Service Manager 实例连接到 ITSMC：
 
-1. 在 Azure 门户中，转到“所有资源”  ，查找“ServiceDesk(YourWorkspaceName)” 
+1. 在 Azure 门户中，转到“所有资源”，查找“ServiceDesk(YourWorkspaceName)”
 
-2.  在“工作区数据源”  下，单击“ITSM 连接”  。
+2.  在“工作区数据源”下，单击“ITSM 连接”。
 
     ![新建连接](media/itsmc-connections/add-new-itsm-connection.png)
 
-3. 在右窗格的顶部，单击“添加”  。
+3. 在右窗格的顶部，单击“添加”。
 
-4. 提供下表中所述的信息，并单击“确定”  创建连接。
+4. 提供下表中所述的信息，并单击“确定”创建连接。
 
 > [!NOTE]
 > 
@@ -68,7 +62,7 @@ ms.locfileid: "66399782"
 | **字段** | **说明** |
 | --- | --- |
 | **连接名称**   | 键入要与 ITSMC 连接的 System Center Service Manager 实例的名称。  以后在此实例中配置工作项/查看详细日志分析时，需要使用此名称。 |
-| **合作伙伴类型**   | 选择“System Center Service Manager”。  |
+| **合作伙伴类型**   | 选择“System Center Service Manager”。 |
 | **服务器 URL**   | 键入 Service Manager Web 应用的 URL。 [此处](#create-and-deploy-service-manager-web-app-service)提供了有关 Service Manager Web 应用的详细信息。
 | **客户端 ID**   | 键入（使用自动脚本）生成的、用于对 Web 应用进行身份验证的客户端 ID。 [此处](../../azure-monitor/platform/itsmc-service-manager-script.md)提供了有关自动化脚本的详细信息。|
 | **客户端机密**   | 键入为此 ID 生成的客户端机密。   |
@@ -78,14 +72,14 @@ ms.locfileid: "66399782"
 
 ![Service Manager 连接](media/itsmc-connections/service-manager-connection.png)
 
-成功连接并同步后  ：
+成功连接并同步后：
 
 - 选定的工作项将从 Service Manager 导入到 Azure **Log Analytics**。 可以在 IT Service Management Connector 磁贴中查看这些工作项的摘要。
 
 - 在此 Service Manager 实例中，可以根据 Log Analytics 警报、日志记录或 Azure 警报创建事件。
 
 
-了解更多：[根据 Azure 警报创建 ITSM 工作项](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+了解详细信息：[根据 Azure 警报创建 ITSM 工作项](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 ### <a name="create-and-deploy-service-manager-web-app-service"></a>创建和部署 Service Manager Web 应用服务
 
@@ -103,7 +97,7 @@ ms.locfileid: "66399782"
 
 - Azure 订阅详细信息
 - 资源组名称
-- Location
+- 位置
 - Service Manager 服务器详细信息（服务器名称、域、用户名和密码）
 - Web 应用的站点名称前缀
 - ServiceBus 命名空间。
@@ -114,24 +108,24 @@ ms.locfileid: "66399782"
 
 **检查 Web 应用安装**
 
-1. 转到“Azure 门户” > “资源”。  
-2. 选择 Web 应用，并单击“设置” > “应用程序设置”。  
+1. 转到“Azure 门户” > “资源”。 
+2. 选择 Web 应用，并单击“设置” > “应用程序设置”。 
 3. 确认有关通过脚本部署应用时提供的 Service Manager 实例的信息。
 
 ### <a name="configure-the-hybrid-connection"></a>配置混合连接
 
 按照以下过程配置混合连接，将 Service Manager 实例与 Azure 中的 ITSMC 连接。
 
-1. 在“Azure 资源”下面找到 Service Manager Web 应用。 
-2. 单击“设置” > “网络”。  
-3. 在“混合连接”下面，单击“配置混合连接终结点”。  
+1. 在“Azure 资源”下面找到 Service Manager Web 应用。
+2. 单击“设置” > “网络”。 
+3. 在“混合连接”下面，单击“配置混合连接终结点”。 
 
     ![混合连接网络](media/itsmc-connections/itsmc-hybrid-connection-networking-and-end-points.png)
-4. 在“混合连接”边栏选项卡中，单击“添加混合连接”。  
+4. 在“混合连接”边栏选项卡中，单击“添加混合连接”。 
 
     ![添加混合连接](media/itsmc-connections/itsmc-new-hybrid-connection-add.png)
 
-5. 在“添加混合连接”边栏选项卡中，单击“创建新的混合连接”。  
+5. 在“添加混合连接”边栏选项卡中，单击“创建新的混合连接”。 
 
     ![新建混合连接](media/itsmc-connections/itsmc-create-new-hybrid-connection.png)
 
@@ -142,14 +136,14 @@ ms.locfileid: "66399782"
    - **终结点端口**：类型 5724
    - **服务总线命名空间**：使用现有的服务总线命名空间，或新建一个。
    - **位置**：选择位置。
-   - **名称**：指定服务总线的名称（如果要创建服务总线）。
+   - **Name**：指定服务总线的名称（如果要创建服务总线）。
 
      ![混合连接值](media/itsmc-connections/itsmc-new-hybrid-connection-values.png)
-6. 单击“确定”关闭“创建混合连接”边栏选项卡并开始创建混合连接。  
+6. 单击“确定”关闭“创建混合连接”边栏选项卡并开始创建混合连接。 
 
     创建混合连接后，它会显示在边栏选项卡下面。
 
-7. 创建混合连接后，请选择该连接，并单击“添加所选混合连接”。 
+7. 创建混合连接后，请选择该连接，并单击“添加所选混合连接”。
 
     ![新建混合连接](media/itsmc-connections/itsmc-new-hybrid-connection-added.png)
 
@@ -157,11 +151,11 @@ ms.locfileid: "66399782"
 
 使用以下过程配置混合连接的侦听器设置。
 
-1. 在“混合连接”边栏选项卡中，单击“下载连接管理器”，并将它安装在运行 System Center Service Manager 实例的计算机上。  
+1. 在“混合连接”边栏选项卡中，单击“下载连接管理器”，并将它安装在运行 System Center Service Manager 实例的计算机上。 
 
-    安装完成后，“开始”菜单下会出现“混合连接管理器 UI”选项。  
+    安装完成后，“开始”菜单下会出现“混合连接管理器 UI”选项。 
 
-2. 单击“混合连接管理器 UI”。系统会提示提供 Azure 凭据。 
+2. 单击“混合连接管理器 UI”。系统会提示提供 Azure 凭据。
 
 3. 请使用 Azure 凭据登录，并选择在其中创建了混合连接的订阅。
 
@@ -182,14 +176,17 @@ ms.locfileid: "66399782"
 
 以下部分提供有关如何将 ServiceNow 产品连接到 Azure 中的 ITSMC 的详细信息。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 请确保满足以下先决条件：
 - 已安装 ITSMC。 详细信息：[添加 IT 服务管理连接器解决方案](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution)。
-- ServiceNow 支持的版本：马德里、 伦敦、 金斯顿、 雅加达、 伊斯坦布尔、 赫尔辛基、 日内瓦。
+- ServiceNow 支持的版本：纽约、马德里、伦敦、金斯敦、雅加达、伊斯坦布尔、赫尔辛基、日内瓦。
+> [!NOTE]
+> ITSMC 仅支持 ServiceNow 的官方 SaaS 产品/服务。 当前不支持 ServiceNow 的专用部署。 
 
 **ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作**：
 - 生成 ServiceNow 产品的客户端 ID 和客户端密码。 有关如何生成客户端 ID 和机密的信息，请根据需要参阅以下信息：
 
+    - [为纽约设置 OAuth](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [为马德里设置 OAuth](https://docs.servicenow.com/bundle/madrid-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [为伦敦设置 OAuth](https://docs.servicenow.com/bundle/london-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [为金斯顿设置 OAuth](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
@@ -197,7 +194,17 @@ ms.locfileid: "66399782"
     - [为伊斯坦布尔设置 OAuth](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [为赫尔辛基设置 OAuth](https://docs.servicenow.com/bundle/helsinki-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [为日内瓦设置 OAuth](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
-
+> [!NOTE]
+> 在定义“设置 OAuth”的过程中，我们建议：
+>
+> 1) **将刷新令牌的生命期更新为 90 天 (7,776,000 秒)：** 在[设置 OAuth](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_SettingUpOAuth.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696739125&sdata=Q7mF6Ej8MCupKaEJpabTM56EDZ1T8vFVyihhoM594aA%3D&reserved=0) 的阶段 2：[为客户端创建用于访问实例的终结点](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_CreateEndpointforExternalClients.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696749123&sdata=hoAJHJAFgUeszYCX1Q%2FXr4N%2FAKiFcm5WV7mwR2UqeWA%3D&reserved=0) 定义终结点之后，在“ServiceNow”边栏选项卡中搜索“系统 OAuth”，而不是选择“应用程序注册表”。 选择已定义的 OAuth 的名称，并将“刷新令牌生命期”字段更新为 7,776,000（以秒为单位，即 90 天）。
+> 最后单击“更新”。
+> 2) **建议建立一个内部程序，用于确保连接保持活动状态：** 根据刷新令牌生命期来刷新令牌。 请确保在刷新令牌的预期到期时间之前（建议在刷新令牌生命期到期前几天）执行以下操作：
+>
+> 1. [完成 ITSM 连接器配置的手动同步过程](./itsmc-resync-servicenow.md)
+> 2. 撤销旧的刷新令牌，因为出于安全考虑，不建议保留旧密钥。 在“ServiceNow”边栏选项卡中搜索“系统 OAuth”，而不是选择“管理令牌”。 根据 OAuth 名称和到期日期从列表中选取旧令牌。
+> ![SNOW 系统 OAuth 定义](media/itsmc-connections/snow-system-oauth.png)
+> 3. 单击“撤销访问权限”，然后单击“撤消”。
 
 - 安装用于 Microsoft Log Analytics 集成的用户应用（ServiceNow 应用）。 [了解详细信息](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 )。
 - 为安装的用户应用创建集成用户角色。 [此处](#create-integration-user-role-in-servicenow-app)提供了有关如何创建集成用户角色的信息。
@@ -206,14 +213,14 @@ ms.locfileid: "66399782"
 使用以下过程创建 ServiceNow 连接：
 
 
-1. 在 Azure 门户中，转到“所有资源”  ，查找“ServiceDesk(YourWorkspaceName)” 
+1. 在 Azure 门户中，转到“所有资源”，查找“ServiceDesk(YourWorkspaceName)”
 
-2.  在“工作区数据源”  下，单击“ITSM 连接”  。
+2.  在“工作区数据源”下，单击“ITSM 连接”。
     ![新建连接](media/itsmc-connections/add-new-itsm-connection.png)
 
-3. 在右窗格的顶部，单击“添加”  。
+3. 在右窗格的顶部，单击“添加”。
 
-4. 提供下表中所述的信息，并单击“确定”  创建连接。
+4. 提供下表中所述的信息，并单击“确定”创建连接。
 
 
 > [!NOTE]
@@ -222,10 +229,10 @@ ms.locfileid: "66399782"
 | **字段** | **说明** |
 | --- | --- |
 | **连接名称**   | 键入需要与 ITSMC 连接的 ServiceNow 实例的名称。  以后在此 ITSM 中配置工作项/查看详细日志分析时，需要在 Log Analytics 中使用此名称。 |
-| **合作伙伴类型**   | 选择“ServiceNow”。  |
+| **合作伙伴类型**   | 选择“ServiceNow”。 |
 | **用户名**   | 键入在 ServiceNow 应用中创建的、用于支持连接到 ITSMC 的集成用户名。 详细信息：[创建 ServiceNow 应用用户角色](#create-integration-user-role-in-servicenow-app)。|
 | **密码**   | 键入此用户名的关联密码。 **注意**：用户名和密码仅用于生成身份验证令牌，不会存储在 ITSMC 服务中的任何位置。  |
-| **服务器 URL**   | 键入需要连接到 ITSMC 的 ServiceNow 实例的 URL。 |
+| **服务器 URL**   | 键入需要连接到 ITSMC 的 ServiceNow 实例的 URL。 该 URL 应指向后缀为“.servicenow.com”的支持的 SaaS 版本。|
 | **客户端 ID**   | 键入前面生成的、用于 OAuth2 身份验证的客户端 ID。  有关生成客户端 ID 和机密的详细信息： [OAuth 设置](https://wiki.servicenow.com/index.php?title=OAuth_Setup)。 |
 | **客户端机密**   | 键入为此 ID 生成的客户端机密。   |
 | **数据同步范围**   | 选择要通过 ITSMC 同步到 Azure Log Analytics 的 ServiceNow 工作项。  选定的值将导入到 Log Analytics。   **选项：** “事件”和“更改请求”。|
@@ -234,13 +241,17 @@ ms.locfileid: "66399782"
 
 ![ServiceNow 连接](media/itsmc-connections/itsm-connection-servicenow-connection-latest.png)
 
-成功连接并同步后  ：
+成功连接并同步后：
 
 - 选定的工作项将从 ServiceNow 实例导入到 Azure **Log Analytics**。 可以在 IT Service Management Connector 磁贴中查看这些工作项的摘要。
 
 - 在此 ServiceNow 实例中，可以根据 Log Analytics 警告、日志记录或 Azure 警报创建事件。
 
-了解更多：[根据 Azure 警报创建 ITSM 工作项](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+了解详细信息：[根据 Azure 警报创建 ITSM 工作项](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+
+
+> [!NOTE]
+> 在 ServiceNow 中，每小时的请求会有一个速率限制。 若要配置此限制，请通过定义 ServiceNow 实例中的 "入站 REST API 速率限制" 来使用此限制。
 
 ### <a name="create-integration-user-role-in-servicenow-app"></a>在 ServiceNow 应用中创建集成用户角色
 
@@ -251,12 +262,12 @@ ms.locfileid: "66399782"
    >[!NOTE]
    >作为从 Microsoft Operations Management Suite (OMS) 到 Azure Monitor 的持续过渡的一部分，OMS 现在称为 Log Analytics。     
 2. 安装后，请访问 ServiceNow 实例的左侧导航栏，搜索并选择 Microsoft OMS 集成器。  
-3. 单击“安装清单”。 
+3. 单击“安装清单”。
 
-   如果用户角色尚未创建，状态会显示为“未完成”。 
+   如果用户角色尚未创建，状态会显示为“未完成”。
 
-4. 在“创建集成用户”  旁边的文本框中，输入可连接到 Azure 中的 ITSMC 的用户的用户名。
-5. 输入此用户的密码，并单击“确定”。   
+4. 在“创建集成用户”旁边的文本框中，输入可连接到 Azure 中的 ITSMC 的用户的用户名。
+5. 输入此用户的密码，并单击“确定”。  
 
 > [!NOTE]
 > 
@@ -264,7 +275,7 @@ ms.locfileid: "66399782"
 
 将显示新建的用户及其分配的默认角色。
 
-默认角色  ：
+默认角色：
 - personalize_choices
 - import_transformer
 -   x_mioms_microsoft.user
@@ -272,7 +283,7 @@ ms.locfileid: "66399782"
 -   template_editor
 -   view_changer
 
-成功创建用户后，“检查安装清单”的状态将改为“已完成”，同时会列出针对应用创建的用户角色的详细信息。 
+成功创建用户后，“检查安装清单”的状态将改为“已完成”，同时会列出针对应用创建的用户角色的详细信息。
 
 > [!NOTE]
 > 
@@ -287,7 +298,7 @@ ms.locfileid: "66399782"
 以下部分提供有关如何将 Provance 产品连接到 Azure 中的 ITSMC 的详细信息。
 
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 请确保满足以下先决条件：
 
@@ -301,14 +312,14 @@ ms.locfileid: "66399782"
 
 使用以下过程创建 Provance 连接：
 
-1. 在 Azure 门户中，转到“所有资源”  ，查找“ServiceDesk(YourWorkspaceName)” 
+1. 在 Azure 门户中，转到“所有资源”，查找“ServiceDesk(YourWorkspaceName)”
 
-2.  在“工作区数据源”  下，单击“ITSM 连接”  。
+2.  在“工作区数据源”下，单击“ITSM 连接”。
     ![新建连接](media/itsmc-connections/add-new-itsm-connection.png)
 
-3. 在右窗格的顶部，单击“添加”  。
+3. 在右窗格的顶部，单击“添加”。
 
-4. 提供下表中所述的信息，并单击“确定”  创建连接。
+4. 提供下表中所述的信息，并单击“确定”创建连接。
 
 > [!NOTE]
 > 
@@ -317,7 +328,7 @@ ms.locfileid: "66399782"
 | **字段** | **说明** |
 | --- | --- |
 | **连接名称**   | 键入需要与 ITSMC 连接的 Provance 实例的名称。  以后在此 ITSM 中配置工作项/查看详细日志分析时，需要使用此名称。 |
-| **合作伙伴类型**   | 选择“Provance”。  |
+| **合作伙伴类型**   | 选择“Provance”。 |
 | **用户名**   | 键入可以连接到 ITSMC 的用户名。    |
 | **密码**   | 键入此用户名的关联密码。 **注意：** 用户名和密码仅用于生成身份验证令牌，不会存储在 ITSMC 服务中的任何位置。|
 | **服务器 URL**   | 键入需要连接到 ITSMC 的 Provance 实例的 URL。 |
@@ -328,19 +339,19 @@ ms.locfileid: "66399782"
 
 ![Provance 连接](media/itsmc-connections/itsm-connections-provance-latest.png)
 
-成功连接并同步后  ：
+成功连接并同步后：
 
 - 选定的工作项将从此 Provance 实例导入到 Azure **Log Analytics**。 可以在 IT Service Management Connector 磁贴中查看这些工作项的摘要。
 
 - 在此 Provance 实例中，可以根据 Log Analytics 警告、日志记录或 Azure 警报创建事件。
 
-了解更多：[根据 Azure 警报创建 ITSM 工作项](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+了解详细信息：[根据 Azure 警报创建 ITSM 工作项](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 ## <a name="connect-cherwell-to-it-service-management-connector-in-azure"></a>将 Cherwell 连接到 Azure 中的 IT 服务管理连接器
 
 以下部分提供有关如何将 Cherwell 产品连接到 Azure 中的 ITSMC 的详细信息。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 请确保满足以下先决条件：
 
@@ -352,14 +363,14 @@ ms.locfileid: "66399782"
 
 使用以下过程创建 Provance 连接：
 
-1. 在 Azure 门户中，转到“所有资源”  ，查找“ServiceDesk(YourWorkspaceName)” 
+1. 在 Azure 门户中，转到“所有资源”，查找“ServiceDesk(YourWorkspaceName)”
 
-2.  在“工作区数据源”  下，单击“ITSM 连接”  。
+2.  在“工作区数据源”下，单击“ITSM 连接”。
     ![新建连接](media/itsmc-connections/add-new-itsm-connection.png)
 
-3. 在右窗格的顶部，单击“添加”  。
+3. 在右窗格的顶部，单击“添加”。
 
-4. 提供下表中所述的信息，并单击“确定”  创建连接。
+4. 提供下表中所述的信息，并单击“确定”创建连接。
 
 > [!NOTE]
 > 
@@ -368,7 +379,7 @@ ms.locfileid: "66399782"
 | **字段** | **说明** |
 | --- | --- |
 | **连接名称**   | 键入需要连接到 ITSMC 的 Cherwell 实例名称。  以后在此 ITSM 中配置工作项/查看详细日志分析时，需要使用此名称。 |
-| **合作伙伴类型**   | 选择“Cherwell”。  |
+| **合作伙伴类型**   | 选择“Cherwell”。 |
 | **用户名**   | 键入可以连接到 ITSMC 的 Cherwell 用户名。 |
 | **密码**   | 键入此用户名的关联密码。 **注意：** 用户名和密码仅用于生成身份验证令牌，不会存储在 ITSMC 服务中的任何位置。|
 | **服务器 URL**   | 键入需要连接到 ITSMC 的 Cherwell 实例的 URL。 |
@@ -380,21 +391,21 @@ ms.locfileid: "66399782"
 
 ![Provance 连接](media/itsmc-connections/itsm-connections-cherwell-latest.png)
 
-成功连接并同步后  ：
+成功连接并同步后：
 
 - 选定的工作项将从此 Cherwell 实例导入到 Azure **Log Analytics**。 可以在 IT Service Management Connector 磁贴中查看这些工作项的摘要。
 
 - 在此 Cherwell 实例中，可以根据 Log Analytics 警告、日志记录或 Azure 警报创建事件。
 
-了解更多：[根据 Azure 警报创建 ITSM 工作项](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+了解详细信息：[根据 Azure 警报创建 ITSM 工作项](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 ### <a name="generate-client-id-for-cherwell"></a>为 Cherwell 生成客户端 ID
 
 若要为 Cherwell 生成客户端 ID/密钥，请使用以下过程：
 
 1. 以管理员身份登录到 Cherwell 实例。
-2. 单击“安全性” > “编辑 REST API 客户端设置”。  
-3. 选择“创建新客户端” > “客户端机密”。  
+2. 单击“安全性” > “编辑 REST API 客户端设置”。 
+3. 选择“创建新客户端” > “客户端机密”。 
 
     ![Cherwell 用户 ID](media/itsmc-connections/itsmc-cherwell-client-id.png)
 

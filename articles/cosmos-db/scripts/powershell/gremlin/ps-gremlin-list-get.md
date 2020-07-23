@@ -1,19 +1,20 @@
 ---
-title: Azure PowerShell 脚本-Azure Cosmos DB 列表，并通过 Gremlin API 的操作
-description: Azure PowerShell 脚本-Azure Cosmos DB 列表，并通过 Gremlin API 的操作
+title: 用于列出和获取操作的 PowerShell 脚本 - Azure Cosmos DB Gremlin API
+description: Azure PowerShell 脚本 - Azure Cosmos DB 列出和获取操作 - Gremlin API
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
-ms.date: 05/18/2019
+ms.subservice: cosmosdb-graph
+ms.topic: sample
+ms.date: 05/01/2020
 ms.author: mjbrown
-ms.openlocfilehash: 507c17d62473ee8f9166ef822ef0f6fa4ae8008e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: fb78be672566ef281a1323ca893d7fc2f194a6b0
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247494"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82651946"
 ---
-# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---gremlin-api"></a>列表，并通过 Azure Cosmos DB 的 Gremlin API 的数据库和图形
+# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---gremlin-api"></a>列出和获取 Azure Cosmos DB 的数据库和图 - Gremlin API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -35,10 +36,12 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | 列出 Cosmos DB 帐户或获取指定的 Cosmos DB 帐户。 |
+| [Get-AzCosmosDBGremlinDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlindatabase) | 列出帐户中的 Gremlin API 数据库，或在帐户中获取指定的 Gremlin API 数据库。 |
+| [Get-AzCosmosDBGremlinGraph](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraph) | 列出数据库中的 Gremlin API 图，或在数据库中获取指定的 Gremlin API 表。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||

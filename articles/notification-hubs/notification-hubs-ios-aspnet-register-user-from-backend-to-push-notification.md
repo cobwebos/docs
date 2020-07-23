@@ -3,23 +3,23 @@ title: 通过使用 Web API 注册推送通知的当前用户 | Microsoft 文档
 description: 了解在 ASP.NET Web API 执行注册时如何在 iOS 应用程序中请求向 Azure 通知中心注册推送通知。
 services: notification-hubs
 documentationcenter: ios
-author: jwargo
-manager: patniko
-editor: spelluru
-ms.assetid: 4e3772cf-20db-4b9f-bb74-886adfaaa65d
+author: sethmanheim
+manager: femila
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: ff77a955c34941d87a1f653726ab3f19e84aa440
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 0819f5196fffca25a840dc16d1df04cdd0a55029
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61458312"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223306"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>通过使用 ASP.NET 注册推送通知的当前用户
 
@@ -34,21 +34,21 @@ ms.locfileid: "61458312"
 
 1. 在 MainStoryboard_iPhone.storyboard 中，从对象库添加以下组件：
 
-   * **标签**：“Push to User with Notification Hubs”
-   * **标签**：“InstallationId”
-   * **标签**：“User”
-   * **文本字段**：“User”
-   * **标签**：“Password”
-   * **文本字段**：“Password”
-   * **按钮**：“Login”
+   * **标签**：“使用通知中心推送到用户”
+   * **标签**："InstallationId"
+   * **标签**：“用户”
+   * **文本字段**：“用户”
+   * **标签**：“密码”
+   * **文本字段**：“密码”
+   * **按钮**：“登录”
 
      此时，Storyboard 应与下图类似：
 
-     ![][0]
+     ![添加了组件的 MainStoryboard_iPhone 演示图板应用程序的屏幕截图。][0]
 
-2. 在助手编辑器中，创建所有带开关控件的容器并调用它们，连接文本字段与视图控制器（委派），并创建“登录”按钮的“操作”。
+2. 在助手编辑器中，创建所有带开关控件的容器并调用它们，连接文本字段与视图控制器（委派），并创建“**登录**”按钮的“**操作**”。
 
-    ![][1]
+    ![MainStoryboard_iPhone 中的助手编辑器的屏幕截图][1]
 
     BreakingNewsViewController.h 文件现在应当包含以下代码：
 
@@ -122,7 +122,7 @@ ms.locfileid: "61458312"
     这为请求设置设备标记。
 
    > [!NOTE]
-   > 此时，此方法中不应有任何其他代码。 如果已调用在完成[通知中心入门](notification-hubs-ios-apple-push-notification-apns-get-started.md)教程的学习时添加的 `registerNativeWithDeviceToken` 方法，必须注释掉或删除该调用。
+   > 此时，此方法中不应有任何其他代码。 如果已调用 `registerNativeWithDeviceToken` [使用 Azure 通知中心向 iOS 应用程序发送推送通知](ios-sdk-get-started.md)教程时添加的方法，则必须注释掉或删除该调用。
 
 8. 在 `PushToUserAppDelegate.m` 文件中，添加以下处理程序方法：
 
@@ -246,7 +246,7 @@ ms.locfileid: "61458312"
 
     此方法获取一个安装 ID 和用于推送通知的通道并将它与设备类型一起发送到在通知中心创建注册的已经身份验证的 Web API 方法。 此 Web API 已在[使用通知中心通知用户]中定义。
 
-现在客户端应用程序已更新，请返回到 [使用通知中心通知用户] 并更新移动服务以使用通知中心发送通知。
+现在客户端应用程序已更新，请返回到[使用通知中心通知用户]并更新移动服务以使用通知中心发送通知。
 
 <!-- Anchors. -->
 
@@ -256,4 +256,4 @@ ms.locfileid: "61458312"
 
 <!-- URLs. -->
 [使用通知中心通知用户]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
-[通知中心入门]: notification-hubs-ios-apple-push-notification-apns-get-started.md
+[通知中心入门]: ios-sdk-get-started.md

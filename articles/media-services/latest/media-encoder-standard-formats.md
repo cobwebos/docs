@@ -1,6 +1,6 @@
 ---
-title: 标准编码器格式和编解码器-Azure
-description: 本主题概述了标准编码器格式和编解码器。
+title: 标准编码器格式和编解码器 - Azure
+description: 本文包含可与 StandardEncoderPreset 配合使用的最常见的导入和导出文件格式列表。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
-ms.author: juliako;anilmur
-ms.openlocfilehash: 730ff68e70999307417eea276761d56f4a44046a
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
-ms.translationtype: MT
+ms.author: juliako
+ms.reviewer: anilmur
+ms.openlocfilehash: f1d4d4f4006702ebe0d057e56cf24a022e73b83e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65520012"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79251357"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>标准编码器格式和编解码器
 
@@ -40,13 +40,9 @@ ms.locfileid: "65520012"
 | WAVE/WAV (.wav) |是 |
 | QuickTime (.mov) |是 |
 
-> [!NOTE]
-> 
-> 
-
 ### <a name="audio-formats-in-input-containers"></a>输入容器中的音频格式
 
-标准编码器支持携带以下音频格式输入容器中：
+标准编码器支持在输入容器中携带以下音频格式：
 
 * MXF、GXF 和 QuickTime 文件，其中的音频曲目具有交错的立体声或 5.1 示例
 
@@ -80,7 +76,7 @@ ms.locfileid: "65520012"
 ## <a name="input-audio-codecs"></a>输入音频编解码器
 | 输入音频编解码器 | 支持 |
 | --- | --- |
-| AAC（AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1） |是 |
+| AAC(AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1） |是 |
 | MPEG Layer 2 |是 |
 | MP3 (MPEG-1 Audio Layer 3) |是 |
 | Windows Media 音频 |是 |

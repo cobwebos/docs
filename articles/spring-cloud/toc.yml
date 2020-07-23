@@ -1,0 +1,115 @@
+- name: Azure Spring Cloud 文档
+  href: index.yml
+  displayName: Azure Spring Cloud
+- name: 概述
+  items:
+    - name: 什么是 Azure Spring Cloud？
+      href: spring-cloud-overview.md
+    - name: 面向 Spring 微服务应用的 Java 和基础操作系统
+      href: spring-cloud-principles-microservice-apps.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 启动 Spring Cloud 应用 - 门户
+      href: spring-cloud-quickstart-launch-app-portal.md
+    - name: 启动 Spring Cloud 应用 - Azure CLI
+      href: spring-cloud-quickstart-launch-app-cli.md
+    - name: 启动 Spring Cloud 应用 - 源
+      href: spring-cloud-launch-from-source.md
+    - name: 启动 Spring Cloud 应用 - Maven
+      href: spring-cloud-quickstart-launch-app-maven.md
+- name: 教程
+  items:
+    - name: 手动扩缩应用
+      href: spring-cloud-tutorial-scale-manual.md
+    - name: 警报和操作组
+      href: spring-cloud-tutorial-alerts-action-groups.md
+    - name: 使用 IntelliJ 部署应用
+      href: spring-cloud-tutorial-intellij-deploy-apps.md
+    - name: 断路器仪表板
+      href: spring-cloud-tutorial-circuit-breaker.md
+    - name: 自定义 DNS 名称
+      href: spring-cloud-tutorial-custom-domain.md
+    - name: 使用 IntelliJ 部署 Azure Spring Cloud 应用程序
+      href: spring-cloud-tutorial-intellij-deploy-apps.md
+    - name: 使用 Terraform 预配 Azure Spring Cloud 实例
+      href: spring-cloud-tutorial-provision-azure-spring-cloud-instance-terraform.md
+    - name: 使用 Jenkins 进行 CI/CD
+      href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
+    - name: 使用托管标识将 Key Vault 连接到 Azure Spring Cloud 应用
+      href: spring-cloud-tutorial-managed-identities-key-vault.md
+- name: 示例
+  items:
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
+- name: 概念
+  items:
+    - name: 了解配额和限制
+      href: spring-cloud-quotas.md
+    - name: 了解指标
+      href: spring-cloud-concept-metrics.md
+    - name: Azure Spring Boot 执行器
+      href: spring-cloud-concept-manage-monitor-app-spring-boot-actuator.md
+    - name: 安全控件
+      href: spring-cloud-concept-security-controls.md
+    - name: 了解应用状态
+      href: spring-cloud-concept-app-status.md
+    - name: 规划灾难恢复
+      href: disaster-recovery.md
+- name: 操作指南
+  items:
+    - name: 准备 Java Spring 应用以进行部署
+      href: spring-cloud-tutorial-prepare-app-deployment.md
+    - name: 设置配置服务器
+      href: spring-cloud-tutorial-config-server.md
+    - name: 启用服务注册
+      href: spring-cloud-service-registration.md
+    - name: 将应用绑定到 Azure CosmosDB
+      href: spring-cloud-tutorial-bind-cosmos.md
+    - name: 将应用绑定到 Azure Cache for Redis
+      href: spring-cloud-tutorial-bind-redis.md
+    - name: 将应用绑定到 Azure MySQL
+      href: spring-cloud-tutorial-bind-mysql.md
+    - name: 启动、停止和删除应用
+      href: spring-cloud-howto-start-stop-delete.md
+    - name: 设置过渡环境
+      href: spring-cloud-howto-staging-environment.md
+    - name: 添加持久性存储
+      href: spring-cloud-howto-persistent-storage.md
+    - name: 与 Azure 负载均衡解决方案集成
+      href: spring-cloud-howto-integrate-azure-load-balancers.md
+    - name: 启用系统分配的托管标识
+      href: spring-cloud-howto-enable-system-assigned-managed-identity.md
+    - name: 自行诊断并解决问题
+      href: spring-cloud-howto-self-diagnose-solve.md
+    - name: 监视
+      items:
+        - name: 分布式跟踪和 Application Insights
+          href: spring-cloud-tutorial-distributed-tracing.md
+        - name: 分析日志和指标
+          href: diagnostic-services.md
+        - name: 实时流式传输日志
+          href: spring-cloud-howto-log-streaming.md
+    - name: DevOps 部署
+      items:
+        - name: 使用 Azure DevOps 进行 CI/CD
+          href: spring-cloud-howto-cicd.md
+        - name: 使用 GitHub Actions 进行 CI/CD
+          href: spring-cloud-howto-github-actions.md
+        - name: 在 GitHub Actions 中向 Key Vault 进行身份验证
+          href: spring-cloud-github-actions-key-vault.md
+    - name: 疑难解答
+      items:
+        - name: 故障排除指南
+          href: spring-cloud-troubleshoot.md
+- name: 参考
+  items:
+    - name: Azure CLI 插件
+      href: 'https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud'
+    - name: 资源
+      href: spring-cloud-resources.md
+    - name: 常见问题
+      href: spring-cloud-faq.md
+    - name: REST API 参考
+      href: 'https://docs.microsoft.com/rest/api/azurespringclould/'

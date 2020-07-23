@@ -11,14 +11,14 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 12/12/2018
+ms.date: 01/22/2019
 ms.author: kumud
-ms.openlocfilehash: 6306d893f491f93cc31b7e478afe5632e997285c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2a4c63aeaa303692fa0f2d115a3df0d80cfab0b1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692642"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80235195"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建虚拟网络
 
@@ -38,7 +38,7 @@ ms.locfileid: "64692642"
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az network vnet create](/cli/azure/network/vnet) 创建虚拟网络。 此示例创建名为 myVirtualNetwork 的默认虚拟网络，它具有一个名为 default 的子网：
+使用 [az network vnet create](/cli/azure/network/vnet) 创建虚拟网络。 此示例创建名为 myVirtualNetwork 的默认虚拟网络，它具有一个名为 default 的子网   ：
 
 ```azurecli-interactive
 az network vnet create \
@@ -53,7 +53,7 @@ az network vnet create \
 
 ### <a name="create-the-first-vm"></a>创建第一个 VM
 
-使用 [az vm create](/cli/azure/vm) 创建 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 `--no-wait` 选项会在后台创建 VM，因此可继续执行下一步。 此示例创建名为 myVm1 的 VM：
+使用 [az vm create](/cli/azure/vm) 创建 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 `--no-wait` 选项会在后台创建 VM，因此可继续执行下一步。 此示例创建名为 myVm1 的 VM  ：
 
 ```azurecli-interactive
 az vm create \
@@ -66,7 +66,7 @@ az vm create \
 
 ### <a name="create-the-second-vm"></a>创建第二个 VM
 
-由于已在上一步骤中使用了 `--no-wait` 选项，因此可以继续并创建名为 myVm2 的第二个 VM。
+由于已在上一步骤中使用了 `--no-wait` 选项，因此可以继续并创建名为 myVm2 的第二个 VM  。
 
 ```azurecli-interactive
 az vm create \
@@ -80,7 +80,7 @@ az vm create \
 
 创建 VM 可能需要数分钟的时间。 Azure 创建 VM 后，Azure CLI 会返回如下输出：
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVm2",
@@ -94,11 +94,11 @@ az vm create \
 }
 ```
 
-记下 publicIpAddress。 在下一步中，此地址将用于从 Internet 连接到 VM。
+记下 publicIpAddress。  在下一步中，此地址将用于从 Internet 连接到 VM。
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 
-在此命令中，将 `<publicIpAddress>` 替换为 myVm2 VM 的公用 IP 地址：
+在此命令中，将 `<publicIpAddress>` 替换为 myVm2 VM 的公共 IP 地址  ：
 
 ```bash
 ssh <publicIpAddress>
@@ -106,13 +106,13 @@ ssh <publicIpAddress>
 
 ## <a name="communicate-between-vms"></a>VM 之间进行通信
 
-若要确认 myVm2 VM 和 myVm1 VM 之间的私下通信，请输入此命令：
+若要确认 myVm2 VM 和 myVm1 VM 之间的私下通信，请输入此命令   ：
 
 ```bash
 ping myVm1 -c 4
 ```
 
-将从 10.0.0.4 收到四条回复。
+将从 10.0.0.4 收到四条回复  。
 
 退出与 *myVm2* VM 的 SSH 会话。
 

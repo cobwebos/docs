@@ -1,25 +1,21 @@
 ---
-title: Azure Blockchain Workbench 概述
-description: Azure Blockchain Workbench 及其功能概述的。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/20/2019
+title: Azure Blockchain Workbench 预览版概述
+description: Azure Blockchain Workbench 预览版及其功能的概述。
+ms.date: 05/22/2020
 ms.topic: overview
-ms.service: azure-blockchain
 ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: 16e2497f4e26d16c008161477fd7d573e59e84db
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 384fa553204a5a86ad479f2cc623ebb70a9a6f5f
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955201"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434132"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>什么是 Azure Blockchain Workbench？
 
-Azure Blockchain Workbench 是 Azure 服务和功能的集合，旨在帮助创建和部署区块链应用程序，以便与其他组织共享业务流程和数据。 Azure Blockchain Workbench 可提供用于创建区块链应用程序的基础结构基架，使开发者能够专注于创建业务逻辑和智能协定。 此外，借助 Blockchain Workbench，通过集成多种 Azure 服务和功能，帮助自动执行常见开发任务，可更轻松地创建区块链应用程序。
+Azure Blockchain Workbench 预览版是 Azure 服务和功能的集合，旨在帮助创建和部署区块链应用程序，以便与其他组织共享业务流程和数据。 Azure Blockchain Workbench 可提供用于创建区块链应用程序的基础结构基架，使开发者能够专注于创建业务逻辑和智能协定。 此外，借助 Blockchain Workbench，通过集成多种 Azure 服务和功能，帮助自动执行常见开发任务，可更轻松地创建区块链应用程序。
+
+[!INCLUDE [Preview note](./includes/preview.md)]
 
 ## <a name="create-blockchain-applications"></a>创建区块链应用程序
 
@@ -33,7 +29,7 @@ Azure Blockchain Workbench 提供了用于管理区块链应用程序和用户�
 
 可使用 Blockchain Workbench REST API 和基于消息的 API 与现有系统集成。 通过这些 API 提供的接口，可替换或使用多个分布式账本技术、存储和数据库产品/服务。
 
-Blockchain Workbench 可转换发送到其基于消息的 API 的消息，以便按照该区块链本机 API 预期的格式生成事务。  Workbench 可以对事务签名并将其路由到相应区块链。 
+Blockchain Workbench 可转换发送到其基于消息的 API 的消息，以便按照该区块链本机 API 所需的格式生成事务。  Workbench 可以对事务签名并将其路由到相应区块链。 
 
 Workbench 自动将事件发送到服务总线和事件网格，从而向下游使用者发送消息。 开发者可与这些消息传递系统的任意一种集成，以驱动事务并查看结果。
 
@@ -48,6 +44,20 @@ Azure Blockchain Workbench 使用 Azure 资源管理器解决方案模板，将�
 ## <a name="synchronize-on-chain-data-with-off-chain-storage"></a>将链上数据与链下存储同步
 
 Azure Blockchain Workbench 可自动将区块链上的数据与链下存储同步，让区块链事件和数据分析变得更加容易。 可查询 SQL Server 等链下数据库系统，而不是直接从区块链提取数据。 对于正在进行数据分析任务的最终用户而言，无需具备区块链专业知识。
+
+## <a name="support-and-feedback"></a>支持和反馈
+
+对于 Azure 区块链新闻，请访问 [Azure 区块链博客](https://azure.microsoft.com/blog/topics/blockchain/)，以随时了解 Azure 区块链工程团队提供的区块链服务产品和信息。
+
+若要提供产品反馈或请求新功能，请通过[区块链的 Azure 反馈论坛](https://aka.ms/blockchainuservoice)来发布想法或进行投票。
+
+### <a name="community-support"></a>社区支持
+
+与 Microsoft 工程师和 Azure 区块链社区专家交流。
+
+* [有关 Azure Blockchain Workbench 的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)
+* [Microsoft 技术社区](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 
 ## <a name="next-steps"></a>后续步骤
 

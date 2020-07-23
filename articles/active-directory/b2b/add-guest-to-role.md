@@ -1,10 +1,10 @@
 ---
-title: 将 B2B 协作用户添加到角色-Azure Active Directory |Microsoft Docs
+title: 将 B2B 协作用户添加到角色 - Azure Active Directory
 description: 在 Azure Active Directory 中将来宾用户添加到某个角色
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/08/2018
 ms.author: mimart
 author: msmimart
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cb195fd3fbf668afe436d3247767d2cc998281a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c5e9983c265fcc032908424f747066f8f348771f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65767592"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387365"
 ---
 # <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>在 Azure Active Directory 租户中向来自合作伙伴组织的用户授予权限
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) B2B 协作用户已作为来宾用户添加到
 
 ## <a name="limited-administrator-role"></a>受限制的管理员角色
 
-![显示受限制的管理员角色的屏幕截图](./media/add-guest-to-role/limited-admin-role.png)
+![显示受限管理员角色的屏幕截图](./media/add-guest-to-role/limited-admin-role.png)
 
 ## <a name="next-steps"></a>后续步骤
 

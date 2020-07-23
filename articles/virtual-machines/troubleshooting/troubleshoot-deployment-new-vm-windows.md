@@ -3,25 +3,23 @@ title: 在 Azure 中排查 Windows VM 部署问题 | Microsoft 文档
 description: 排查在 Azure 中创建新 Windows 虚拟机时遇到的 Resource Manager 部署问题
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
-author: JiangChen79
-manager: jeconnoc
+author: DavidCBerry13
+manager: gwallace
 editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.assetid: afc6c1a4-2769-41f6-bbf9-76f9f23bcdf4
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/15/2018
-ms.author: cjiang
+ms.author: daberry
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f18fbabe52c9170cde70900933ce96a3a6400c7
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: 78db1ba0eaff0dce83ed13e9f20c3c5a5b96bf9c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123819"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83120957"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>排查在 Azure 中新建 Windows VM 时遇到的部署问题
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -36,7 +34,7 @@ ms.locfileid: "62123819"
 ## <a name="collect-activity-logs"></a>收集活动日志
 若要开始故障排除，请收集活动日志，以识别与问题相关的错误。 以下链接包含有关要遵循的过程的详细信息。
 
-[查看部署操作](../../azure-resource-manager/resource-manager-deployment-operations.md)
+[查看部署操作](../../azure-resource-manager/templates/deployment-history.md)
 
 [通过查看活动日志管理 Azure 资源](../../resource-group-audit.md)
 
@@ -66,21 +64,21 @@ ms.locfileid: "62123819"
 
 若要解决这两个错误，请从门户中删除当前映像，并[从当前 VHD 重新捕获映像](../windows/create-vm-specialized.md)，该映像具有与该 OS（通用/专用）相同的设置。
 
-## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>问题：自定义/库/市场映像；分配失败
+## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>问题：自定义/库/应用商店映像；分配失败
 当新的 VM 请求被固定到不支持所请求的 VM 大小、或没有可用空间可处理请求的群集时，便会发生此错误。
 
-**原因 1：** 群集无法支持所请求的 VM 大小。
+**原因 1：** 群集不支持请求的 VM 大小。
 
 **解决方法 1：**
 
 * 以更小的 VM 大小重试请求。
 * 如果无法更改请求的 VM 大小：
   * 停止可用性集中的所有 VM。
-    单击“资源组” >  *你的资源组*  > “资源” >  *你的可用性集*  > “虚拟机” >  *你的虚拟机*  > “停止”。
+    单击“资源组” > *资源组* > “资源” > *可用性集* > “虚拟机” > *虚拟机* > “停止”。
   * 所有 VM 都停止后，创建所需大小的新 VM。
-  * 先启动新 VM，选择每个已停止的 VM，并单击“启动”。
+  * 先启动新 VM，选择每个已停止的 VM，并单击“启动”。 
 
-**原因 2：** 群集没有空闲的资源。
+**原因 2：** 群集没有可用的资源。
 
 **解决方法 2：**
 

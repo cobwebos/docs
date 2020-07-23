@@ -1,22 +1,17 @@
 ---
-title: 从 Azure 逻辑应用连接到 Twitter | Microsoft Docs
+title: 从 Azure 逻辑应用连接到 Twitter
 description: 使用 Azure 逻辑应用自动执行任务和工作流，用以从你的 Twitter 帐户监视和管理推文，获取关于关注者、你关注的用户、其他用户、时间线和其他内容的数据
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: 8bce2183-544d-4668-a2dc-9a62c152d9fa
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 0fbd89202796cb4543dbecbeee605c9b87cc9d05
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+tags: connectors
+ms.openlocfilehash: f2db6d614c3c12cb1be87724e79d79a16769d6b8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62104980"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829590"
 ---
 # <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 Twitter
 
@@ -27,9 +22,9 @@ ms.locfileid: "62104980"
 
 可以使用触发器从 Twitter 帐户获取响应，并使输出可用于其他操作。 可以使用通过 Twitter 帐户执行任务的操作。 还可以让其他操作使用来自 Twitter 操作的输出。 例如，当出现具有特定井号标签的新推文时，你可以使用 Slack 连接器发送消息。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
 * Twitter 帐户和用户凭据
 
@@ -59,7 +54,7 @@ ms.locfileid: "62104980"
        -或-
 
      * 在要在其中添加操作的两个步骤之间，将鼠标指针移到步骤之间的箭头上。 
-     选择出现的加号 (**+**)，然后选择“添加操作”。
+     选择出现的加号 ( **+** )，然后选择“添加操作”。
      
        在搜索框中，输入“twitter”作为筛选器。 
        在操作列表下，选择所需的操作。
@@ -76,7 +71,7 @@ ms.locfileid: "62104980"
 
 （可选）可以包括一个条件来规定合格的推文必须来自至少具有指定数量的关注者的用户。
 
-**企业示例**：此触发器可用于监视有关您的公司的推文并将推文的内容上载到 SQL 数据库。
+**企业示例**：可使用此触发器监视有关你的公司的推文并将推文的内容上传到 SQL 数据库。
 
 ### <a name="twitter-action-post-a-tweet"></a>Twitter 操作：发布推文
 
@@ -88,7 +83,7 @@ ms.locfileid: "62104980"
 
 ## <a name="get-support"></a>获取支持
 
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 * 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤

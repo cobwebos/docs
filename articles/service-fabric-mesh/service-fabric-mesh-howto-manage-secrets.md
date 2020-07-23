@@ -1,20 +1,13 @@
 ---
-title: 管理 Azure Service Fabric 网格应用程序机密 | Microsoft Docs
+title: 管理 Azure Service Fabric 网格应用程序机密
 description: 管理应用程序机密，以便可以安全地创建并部署 Service Fabric 网格应用程序。
-services: service-fabric-mesh
-keywords: 机密
-author: aljo-microsoft
-ms.author: aljo
 ms.date: 4/2/2019
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: chackdan
-ms.openlocfilehash: 251611e814f890e3cebf0fda2d33ab548a8ff213
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
-ms.translationtype: MT
+ms.openlocfilehash: d7946092a0bebe374404870fcd711ad33cc98b11
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506452"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75461928"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>管理 Service Fabric 网格应用程序机密
 Service Fabric 网格支持将机密作为 Azure 资源。 Service Fabric 网格机密可以是任何敏感文本信息，例如存储连接字符串、密码或应该安全存储和传输的其他值。 本文展示了如何使用 Service Fabric Secure Store Service 来部署和维护机密。
@@ -24,14 +17,14 @@ Service Fabric 网格支持将机密作为 Azure 资源。 Service Fabric 网格
 * 存储在**机密**资源容器中的一个或多个**机密/值**资源。 每个**机密/值**资源都由版本号予以区分。 无法修改**机密/值**资源的版本，只能追加新版本。
 
 管理机密包括以下步骤：
-1. 声明一个网格**机密**使用 inlinedValue 种类和 SecretsStoreRef contentType 定义 Azure 资源模型 YAML 或 JSON 文件中的资源。
-2. 声明网格**机密/Values**将存储在一个 Azure 资源模型 YAML 或 JSON 文件中的资源**机密**（来自步骤 1） 的资源。
+1. 使用 inlinedValue 类型和 SecretsStoreRef contentType 定义在 Azure 资源模型 YAML 或 JSON 文件中声明网格**机密**资源。
+2. 在 Azure 资源模型 YAML 或 JSON 文件（步骤1）中声明要存储在**密码**资源中的网格**机密/值**资源。
 3. 修改网格应用程序以引用网格机密值。
 4. 部署或滚动升级网格应用程序以使用机密值。
 5. 使用 Azure "az" CLI 命令进行 Secure Store Service 生命周期管理。
 
 ## <a name="declare-a-mesh-secrets-resource"></a>声明网格机密资源
-网格机密资源在 Azure 资源模型 JSON 或 YAML 文件使用 inlinedValue 类型定义中声明。 网格机密资源支持源自 Secure Store Service 的机密。 
+使用 inlinedValue 类型定义在 Azure 资源模型 JSON 或 YAML 文件中声明了网格机密资源。 网格机密资源支持源自 Secure Store Service 的机密。 
 >
 下面是有关如何在 JSON 文件中声明网格机密资源的示例：
 
@@ -208,7 +201,7 @@ az mesh deployment create –-<template-file> or --<template-uri>
 
 例如：
 - az mesh deployment create --c:\MyMeshTemplates\SecretTemplate1.txt
-- az mesh deployment create -- https://www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
+- az 网格部署创建--https： \/ /www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
 
 ### <a name="show-a-secret"></a>显示机密
 返回机密的说明（但不是值）。

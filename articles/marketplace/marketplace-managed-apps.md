@@ -1,53 +1,54 @@
 ---
-title: Azure 应用程序“托管应用程序”产品/服务发布指南
-description: 本文介绍在市场中发布托管应用程序的要求
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
-manager: nunoc
+title: Azure 应用程序托管应用程序产品/服务发布指南-Azure Marketplace
+description: 本文介绍在 Azure Marketplace 中发布托管应用程序的要求。
 ms.service: marketplace
-ms.topic: article
-ms.date: 12/19/2018
-ms.author: ellacroi
-ms.openlocfilehash: cb7c0bb571dcb9ec763d0247042e93966bfd0b65
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+author: msjogarrig
+ms.author: jogarrig
+ms.date: 04/22/2020
+ms.openlocfilehash: 70922b80139015226445ca62026ec6f5a59b751c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937802"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119814"
 ---
-# <a name="azure-applications-managed-application-offer-publishing-guide"></a>Azure 应用程序：“托管应用程序”产品/服务发布指南
+# <a name="publishing-guide-for-azure-managed-applications"></a>Azure 托管应用程序的发布指南
 
-托管应用程序是在市场中发布解决方案的主要方式之一。 使用本指南了解此产品/服务的要求。 
+Azure*托管应用程序*产品/服务是在 azure Marketplace 中发布 azure 应用程序的一种方法。 托管应用程序是通过 Azure Marketplace 部署并计费的服务。 用户看到的对操作的调用*现在立即获得*。
 
-以下是通过市场部署和计费的事务产品/服务。 用户看到的号召性用语是“立即获取”。
+本文介绍了托管应用程序产品/服务类型的要求。
 
-需要满足以下条件时，请使用“Azure 应用：托管应用”产品/服务类型：
-- 使用 VM 为客户部署基于订阅的解决方案，或部署基于 IaaS 的整个解决方案。
-- 你或客户要求解决方案由合作伙伴管理。
+在以下条件下使用托管应用程序产品/服务类型：
+
+- 你正在使用虚拟机（VM）或整个基础结构即服务（IaaS）解决方案为客户部署基于订阅的解决方案。
+- 你或你的客户需要由合作伙伴管理解决方案。
 
 >[!NOTE]
->例如，合作伙伴可能是 SI 或托管服务提供商 (MSP)。  
+>例如，合作伙伴可以是系统集成商或托管服务提供商（MSP）。  
 
-## <a name="managed-application-offer"></a>“托管应用程序”产品/服务
+## <a name="managed-application-offer-requirements"></a>托管应用程序提供要求
 
 |要求 |详细信息  |
 |---------|---------|
-|部署到客户的 Azure 订阅 | 托管应用必须部署在客户的订阅中，并且可以由第三方管理 | 
-|计费和计量    |  资源将在客户的 Azure 订阅中预配。 即用即付 (PAYGO) 虚拟机将通过 Microsoft 与客户进行交易，通过客户的 Azure 订阅 (PAYGO) 进行计费 
-如果是自带许可，虽然 Microsoft 将对客户订阅中产生的基础结构成本进行计费，但你会直接向客户支付软件许可费用        |
-|与 Azure 兼容的虚拟硬盘 (VHD)    |   必须基于 Windows 或 Linux 构建 VM。<ul> <ul> <li>有关创建 Linux VHD 的详细信息，请参阅 [Azure 认可的 Linux 发行版](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。</li> <li>有关创建 Windows VHD 的详细信息，请参阅[创建与 Azure 兼容的 VHD](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)。</li> </ul> |
+|Azure 订阅 | 托管应用程序必须部署到客户的订阅中，但可以由第三方管理。 |
+|计费和计量    |  客户的 Azure 订阅中提供了资源。 使用即用即付支付模型的 Vm 通过 Microsoft 与客户进行交易，并通过客户的 Azure 订阅进行计费。 <br><br> 对于自带许可证 Vm，Microsoft 会对客户订阅中产生的任何基础结构成本计费，但你直接向客户收取软件许可费用。        |
+|与 Azure 兼容的虚拟硬盘（VHD）    |   必须基于 Windows 或 Linux 构建 VM。<br><br>有关创建 Linux VHD 的详细信息，请参阅 [Azure 认可的 Linux 发行版](../virtual-machines/linux/endorsed-distros.md)。<br><br>有关创建 Windows VHD 的详细信息，请参阅[创建 Azure 应用程序产品/服务](./partner-center-portal/create-new-azure-apps-offer.md)。 |
 
->[!NOTE]
-> 托管应用必须可通过市场部署。 如果客户沟通是个问题，应该在启用商机分享后与感兴趣的客户交流。  
+---
 
->[!Note]
->云解决方案提供商 (CSP) 合作伙伴通道参加现已推出。  请参阅[云解决方案提供商](./cloud-solution-providers.md)营销通过 Microsoft CSP 产品/服务的详细信息的合作伙伴渠道。
+> [!NOTE]
+> 必须通过 Azure Marketplace 部署托管应用程序。 如果客户沟通是个问题，请在启用 "潜在客户共享" 后与感兴趣的客户联系。  
+
+> [!Note]
+> 现在提供了云解决方案提供商（CSP）合作伙伴渠道选择。 有关通过 Microsoft CSP 合作伙伴渠道营销产品/服务的详细信息，请参阅[云解决方案提供商](./cloud-solution-providers.md)。
 
 ## <a name="next-steps"></a>后续步骤
-如果尚未注册， 
 
-- 请在市场中[注册](https://azuremarketplace.microsoft.com/sell)。
+如果尚未执行此操作，请了解如何[使用 Azure 市场发展云业务](https://azuremarketplace.microsoft.com/sell)。
 
-如果已注册并正在创建新套餐或正在使用现有套餐，
+若要注册并开始使用合作伙伴中心，请执行以下操作：
 
-- [登录到云合作伙伴门户](https://cloudpartner.azure.com)，创建或完成套餐。
+- [登录合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以创建或完成产品/服务。
+- 有关详细信息，请参阅[创建 Azure 应用程序产品/服务](./partner-center-portal/create-new-azure-apps-offer.md)。

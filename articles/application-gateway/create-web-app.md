@@ -1,21 +1,21 @@
 ---
-title: 通过 Azure 应用程序网关保护 Web 应用 - PowerShell
+title: 使用 PowerShell 配置应用服务
+titleSuffix: Azure Application Gateway
 description: 本文提供的指南介绍如何在现有的或新的应用程序网关上将 Web应用配置为后端主机。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-origin.date: 10/16/2018
-ms.date: 03/12/2019
-ms.author: v-junlch
-ms.openlocfilehash: dcf21fe111ab742074ab4fe580a021338e1f7c43
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.topic: how-to
+ms.date: 11/15/2019
+ms.author: victorh
+ms.openlocfilehash: 152f3c3254ab01c8aa61acd12c39bd98c8f55038
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62122211"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808054"
 ---
-# <a name="configure-app-service-with-application-gateway"></a>使用应用程序网关配置应用服务
+# <a name="configure-app-service-with-application-gateway-using-powershell"></a>使用 PowerShell 通过应用程序网关配置应用服务
 
 可以通过应用程序网关将应用服务应用或其他多租户服务配置为后端池成员。 本文介绍如何通过应用程序网关配置应用服务应用。 第一个示例介绍如何将现有的应用程序网关配置为使用 Web 应用作为后端池成员。 第二个示例介绍如何新建一个将 Web 应用用作后端池成员的应用程序网关。
 
@@ -27,7 +27,7 @@ ms.locfileid: "62122211"
 
 ```powershell
 # FQDN of the web app
-$webappFQDN = "<enter your webapp FQDN i.e mywebsite.chinacloudsites.cn>"
+$webappFQDN = "<enter your webapp FQDN i.e mywebsite.azurewebsites.net>"
 
 # Retrieve the resource group
 $rg = Get-AzResourceGroup -Name 'your resource group name'
@@ -66,13 +66,13 @@ $gitrepo="https://github.com/Azure-Samples/app-service-web-dotnet-get-started.gi
 $webappname="mywebapp$(Get-Random)"
 
 # Creates a resource group
-$rg = New-AzResourceGroup -Name ContosoRG -Location ChinaNorth
+$rg = New-AzResourceGroup -Name ContosoRG -Location Eastus
 
 # Create an App Service plan in Free tier.
-New-AzAppServicePlan -Name $webappname -Location ChinaNorth -ResourceGroupName $rg.ResourceGroupName -Tier Free
+New-AzAppServicePlan -Name $webappname -Location EastUs -ResourceGroupName $rg.ResourceGroupName -Tier Free
 
 # Creates a web app
-$webapp = New-AzWebApp -ResourceGroupName $rg.ResourceGroupName -Name $webappname -Location ChinaNorth -AppServicePlan $webappname
+$webapp = New-AzWebApp -ResourceGroupName $rg.ResourceGroupName -Name $webappname -Location EastUs -AppServicePlan $webappname
 
 # Configure GitHub deployment from your GitHub repo and deploy once to web app.
 $PropertiesObject = @{
@@ -86,13 +86,13 @@ Set-AzResource -PropertyObject $PropertiesObject -ResourceGroupName $rg.Resource
 $subnet = New-AzVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
 
 # Creates a vnet for the application gateway
-$vnet = New-AzVirtualNetwork -Name appgwvnet -ResourceGroupName $rg.ResourceGroupName -Location ChinaNorth -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+$vnet = New-AzVirtualNetwork -Name appgwvnet -ResourceGroupName $rg.ResourceGroupName -Location EastUs -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
 # Retrieve the subnet object for use later
 $subnet=$vnet.Subnets[0]
 
 # Create a public IP address
-$publicip = New-AzPublicIpAddress -ResourceGroupName $rg.ResourceGroupName -name publicIP01 -location ChinaNorth -AllocationMethod Dynamic
+$publicip = New-AzPublicIpAddress -ResourceGroupName $rg.ResourceGroupName -name publicIP01 -location EastUs -AllocationMethod Dynamic
 
 # Create a new IP configuration
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
@@ -125,12 +125,12 @@ $rule = New-AzApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic 
 $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 
 # Create the application gateway
-$appgw = New-AzApplicationGateway -Name ContosoAppGateway -ResourceGroupName $rg.ResourceGroupName -Location ChinaNorth -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -Probes $probeconfig -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
+$appgw = New-AzApplicationGateway -Name ContosoAppGateway -ResourceGroupName $rg.ResourceGroupName -Location EastUs -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -Probes $probeconfig -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 ```
 
 ## <a name="get-application-gateway-dns-name"></a>获取应用程序网关 DNS 名称
 
-创建网关后，下一步是配置用于通信的前端。 使用公共 IP 时，应用程序网关需要动态分配的 DNS 名称，这会造成不方便。 若要确保最终用户能够访问应用程序网关，可以使用 CNAME 记录指向应用程序网关的公共终结点。 若要创建别名，可使用附加到应用程序网关的 PublicIPAddress 元素检索应用程序网关及其关联的 IP/DNS 名称的详细信息。 这可通过 Azure DNS 或其他 DNS 提供程序完成，方法是创建指向[公共 IP 地址](../dns/dns-custom-domain.md#public-ip-address)的 CNAME 记录。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
+创建网关后，下一步是配置前端以进行通信。 使用公共 IP 时，应用程序网关需要动态分配的 DNS 名称，这会造成不方便。 若要确保最终用户能够访问应用程序网关，可以使用 CNAME 记录指向应用程序网关的公共终结点。 若要创建别名，可使用附加到应用程序网关的 PublicIPAddress 元素检索应用程序网关及其关联的 IP/DNS 名称的详细信息。 这可通过 Azure DNS 或其他 DNS 提供程序完成，方法是创建指向[公共 IP 地址](../dns/dns-custom-domain.md#public-ip-address)的 CNAME 记录。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName ContosoRG -Name publicIP01
@@ -139,7 +139,7 @@ Get-AzPublicIpAddress -ResourceGroupName ContosoRG -Name publicIP01
 ```
 Name                     : publicIP01
 ResourceGroupName        : ContosoRG
-Location                 : chinanorth
+Location                 : eastus
 Id                       : /subscriptions/<subscription_id>/resourceGroups/ContosoRG/providers/Microsoft.Network/publicIPAddresses/publicIP01
 Etag                     : W/"00000d5b-54ed-4907-bae8-99bd5766d0e5"
 ResourceGuid             : 00000000-0000-0000-0000-000000000000
@@ -154,7 +154,7 @@ IpConfiguration          : {
                             Configurations/frontend1"
                             }
 DnsSettings              : {
-                                "Fqdn": "00000000-0000-xxxx-xxxx-xxxxxxxxxxxx.chinacloudapp.cn"
+                                "Fqdn": "00000000-0000-xxxx-xxxx-xxxxxxxxxxxx.cloudapp.net"
                             }
 ```
 
@@ -166,6 +166,4 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何配置重定向，请访问：[使用 PowerShell 在应用程序网关上配置重定向](redirect-overview.md)。
-
-<!-- Update_Description: code update -->
+若要了解如何配置重定向，请访问：[使用 PowerShell 在应用程序网关上配置重定向](redirect-overview.md)。

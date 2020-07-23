@@ -1,25 +1,27 @@
 ---
-title: 快速入门：使用必应拼写检查 REST API 和 Node.js 检查拼写
-titlesuffix: Azure Cognitive Services
-description: 开始使用必应拼写检查 REST API 检查拼写和语法。
+title: 快速入门：使用 REST API 和 Node.js 检查拼写 - 必应拼写检查
+titleSuffix: Azure Cognitive Services
+description: 通过本快速入门开始使用必应拼写检查 REST API 检查拼写和语法。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 04/02/2019
-ms.author: aahill
-ms.openlocfilehash: ba56f6d68df34fc9249d02c8aba9155ed41b5be8
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.date: 05/21/2020
+ms.author: aahi
+ms.openlocfilehash: f35c2ebc4cd6e31fe59ad715d4f317e650bca52e
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388445"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995949"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>快速入门：使用必应拼写检查 REST API 和 Node.js 检查拼写
 
-根据此快速入门中的说明对必应拼写检查 REST API 进行第一次调用。 这个简单的 Node 应用程序将向 API 发送请求并返回无法识别的单词列表，后跟建议的更正。 虽然此应用程序是使用 Node.js 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js) 上提供了此应用程序的源代码。
+根据此快速入门中的说明对必应拼写检查 REST API 进行第一次调用。 这个简单的 JavaScript 应用程序将向 API 发送请求并返回一系列建议的更正。 
+
+虽然此应用程序是以 JavaScript 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js) 上提供了此应用程序的源代码。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -30,7 +32,7 @@ ms.locfileid: "66388445"
 
 ## <a name="create-and-initialize-a-project"></a>创建并初始化项目
 
-1. 在你喜欢使用的 IDE 或编辑器中新建一个 Java 脚本文件。 设置严格性，并且需要 `https`。 然后为 API 终结点主机、路径和订阅密钥创建变量。
+1. 在你喜欢使用的 IDE 或编辑器中新建一个 Java 脚本文件。 设置严格性，并且需要 `https`。 然后为 API 终结点主机、路径和订阅密钥创建变量。 你可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```javascript
     'use strict';
@@ -41,7 +43,11 @@ ms.locfileid: "66388445"
     let key = '<ENTER-KEY-HERE>';
     ```
 
-2. 为搜索参数和要检查的文本创建变量。 在 `mkt=` 之后追加​​市场代码。 市场代码指示发出请求的国家/地区。 同样，请在 `&mode=` 之后追加拼写检查模式。 模式为 `proof`（捕获大部分拼写/语法错误）或者 `spell`（捕获大部分拼写错误，但是捕获的语法错误较少）。
+2. 为搜索参数和要检查的文本创建变量： 
+
+   1. 用 `=` 运算符将市场代码分配到 `mkt` 参数。 市场代码指示发出请求的国家/地区的代码。 
+
+   1. 使用 `&` 运算符添加 `mode` 参数，然后分配拼写检查模式。 模式可以是 `proof`（捕获大部分拼写/语法错误）或 `spell`（捕获大部分拼写错误，但是捕获的语法错误较少）。
 
     ```javascript
     let mkt = "en-US";
@@ -52,7 +58,7 @@ ms.locfileid: "66388445"
 
 ## <a name="create-the-request-parameters"></a>创建请求参数
 
-通过使用 `POST` 方法创建新对象，来创建请求参数。 通过追加终结点路径和查询字符串来添加路径。 将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头。
+通过使用 `POST` 方法创建新对象，来创建请求参数。 通过追加终结点路径和查询字符串来添加路径。 然后，将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头。
 
 ```javascript
 let request_params = {
@@ -69,7 +75,7 @@ let request_params = {
 
 ## <a name="create-a-response-handler"></a>创建响应处理程序
 
-创建一个名为 `response_handler` 的函数，从 API 获取 JSON 响应，并进行打印。 为响应正文创建变量。 在收到 `data` 标志时使用 `response.on()` 附加响应。 收到 `end` 标志时，将 JSON 正文打印到控制台。
+创建一个名为 `response_handler` 的函数，从 API 获取 JSON 响应，并进行打印。 为响应正文创建变量。 在收到 `data` 标志时使用 `response.on()` 附加响应。 收到 `end` 标志时，将 JSON 正文输出到控制台。
 
 ```javascript
 let response_handler = function (response) {
@@ -89,13 +95,25 @@ let response_handler = function (response) {
 
 ## <a name="send-the-request"></a>发送请求
 
-通过将 `https.request()` 与请求参数和响应处理程序结合使用，来调用 API。 将文本写入 API，并在之后结束请求。
+通过将 `https.request()` 与请求参数和响应处理程序结合使用，来调用 API。 将文本写入 API，然后结束请求。
 
 ```javascript
 let req = https.request (request_params, response_handler);
 req.write ("text=" + text);
 req.end ();
 ```
+
+
+## <a name="run-the-application"></a>运行应用程序
+
+1. 生成并运行项目。
+
+1. 如果使用命令行，则使用以下命令生成并运行应用程序：
+
+   ```bash
+   node <FILE_NAME>.js
+   ```
+
 
 ## <a name="example-json-response"></a>示例 JSON 响应
 

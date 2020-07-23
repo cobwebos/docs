@@ -1,19 +1,19 @@
 ---
-title: 使用 Apache Maven 构建 Java HBase 客户端的 Azure HDInsight
+title: 使用 Apache Maven 生成适用于 Azure HDInsight 的 Java HBase 客户端
 description: 了解如何使用 Apache Maven 构建基于 Java 的 Apache HBase 应用程序，然后将其部署到 Azure HDInsight 上的 HBase。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
+ms.topic: how-to
 ms.custom: hdinsightactive,seodec18
-ms.topic: conceptual
-ms.date: 04/16/2019
-ms.openlocfilehash: a4c601e81390efa3bb53a6f07225bb6e939bc9bb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 12/24/2019
+ms.openlocfilehash: 6f367f7fb6201a62c7fb47e0c593d04d41e0b378
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64726444"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079507"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>构建适用于 Apache HBase 的 Java 应用程序
 
@@ -21,9 +21,9 @@ ms.locfileid: "64726444"
 
 本文档中的步骤使用 [Apache Maven](https://maven.apache.org/) 创建和构建项目。 Maven 是一种软件项目管理和综合工具，可用于为 Java 项目构建软件、文档和报告。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* HDInsight 上的 Apache HBase 群集。 请参阅[Apache HBase 入门](./apache-hbase-tutorial-get-started-linux.md)。
+* HDInsight 上的 Apache HBase 群集。 请参阅 [Apache HBase 入门](./apache-hbase-tutorial-get-started-linux.md)。
 
 * [Java 开发人员工具包 (JDK) 版本 8](https://aka.ms/azure-jdks)。
 
@@ -35,11 +35,9 @@ ms.locfileid: "64726444"
 
 * 文本编辑器。 本文使用 Microsoft 记事本。
 
-> [!IMPORTANT]  
-> Azure PowerShell cmdlet [Get AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster)并[Get AzHDInsightJobOutput](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightjoboutput)当前不起作用时[安全传输](../../storage/common/storage-require-secure-transfer.md)上的存储帐户启用.
-
 ## <a name="test-environment"></a>测试环境
-本文使用的环境是一台运行 Windows 10 的计算机。  命令在命令提示符下执行，各种文件使用记事本进行编辑。 相应地修改您的环境。
+
+本文使用的环境是一台运行 Windows 10 的计算机。  命令在命令提示符下执行，各种文件使用记事本进行编辑。 针对环境进行相应的修改。
 
 在命令提示符下，输入以下命令以创建工作环境：
 
@@ -50,7 +48,7 @@ cd C:\HDI
 
 ## <a name="create-a-maven-project"></a>创建 Maven 项目
 
-1. 输入以下命令以创建一个名为的 Maven 项目**hbaseapp**:
+1. 输入以下命令，创建名为 **hbaseapp** 的 Maven 项目：
 
     ```cmd
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -59,9 +57,9 @@ cd C:\HDI
     mkdir conf
     ```
 
-    此命令会在当前位置创建名为 `hbaseapp` 的目录，其中包含基本 Maven 项目。 第二个命令将更改到的工作目录`hbaseapp`。 第三条命令创建稍后要使用的新目录 `conf`。 `hbaseapp` 目录包含以下项：
+    该命令会在当前位置创建名为 `hbaseapp` 的目录，其中包含基本 Maven 项目。 第二条命令将工作目录更改为 `hbaseapp`。 第三条命令创建稍后要使用的新目录 `conf`。 `hbaseapp` 目录包含以下项：
 
-    * `pom.xml`：项目对象模型 (](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)POM)，其中包含用于生成项目的信息和配置详细信息。
+    * `pom.xml`：项目对象模型 ([POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html))，其中包含用于生成项目的信息和配置详细信息。
     * `src\main\java\com\microsoft\examples`：包含应用程序代码。
     * `src\test\java\com\microsoft\examples`：包含应用程序的测试。
 
@@ -74,7 +72,7 @@ cd C:\HDI
 
 ## <a name="update-the-project-object-model"></a>更新项目对象模型
 
-Pom.xml 文件的完整参考，请参阅 https://maven.apache.org/pom.html。  输入以下命令打开 `pom.xml`：
+有关 pom.xml 文件的完整参考，请参阅 https://maven.apache.org/pom.html 。  输入以下命令打开 `pom.xml`：
 
 ```cmd
 notepad pom.xml
@@ -87,7 +85,7 @@ notepad pom.xml
 ```xml
 <dependency>
     <groupId>org.apache.hbase</groupId>
-    <artifactId>hbase-client</artifactId>
+    <artifactId>hbase-shaded-client</artifactId>
     <version>1.1.2</version>
 </dependency>
 <dependency>
@@ -97,7 +95,7 @@ notepad pom.xml
 </dependency>
 ```  
 
-此部分指示项目需要 **hbase-client** 和 **phoenix-core** 组件。 在编译时，会从默认 Maven 存储库下载这些依赖项。 可以使用 [Maven 中央存储库](https://search.maven.org/artifact/org.apache.hbase/hbase-client/1.1.2/jar)搜索来了解有关此依赖项的详细信息。
+此部分指示项目需要 **hbase-client** 和 **phoenix-core** 组件。 在编译时，会从默认 Maven 存储库下载这些依赖项。 可以使用 [Maven 中央存储库](https://search.maven.org/artifact/org.apache.hbase/hbase-client/1.1.2/jar) 搜索来了解有关此依赖性的详细信息。
 
 > [!IMPORTANT]  
 > hbase-client 的版本号必须与 HDInsight 群集随附的 Apache HBase 版本匹配。 可以使用下表来查找正确的版本号。
@@ -111,9 +109,9 @@ notepad pom.xml
 
 ### <a name="build-configuration"></a>生成配置
 
-Maven 插件允许自定义项目的构建阶段。 此节用于添加插件、资源和其他生成配置选项。
+Maven 插件可用于自定义项目的生成阶段。 此节用于添加插件、资源和其他生成配置选项。
 
-将以下代码添加到`pom.xml`文件，然后保存并关闭该文件。 此文本必须位于文件中的 `<project>...</project>` 标记内，例如 `</dependencies>` 和 `</project>` 之间。
+将以下代码添加到 `pom.xml` 文件，然后保存并关闭该文件。 此文本必须位于文件中的 `<project>...</project>` 标记内，例如 `</dependencies>` 和 `</project>` 之间。
 
 ```xml
 <build>
@@ -131,7 +129,7 @@ Maven 插件允许自定义项目的构建阶段。 此节用于添加插件、�
     <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
         <configuration>
             <source>1.8</source>
             <target>1.8</target>
@@ -171,7 +169,7 @@ maven-shade-plugin 还会生成 uber jar，其中包含应用程序所需的所�
 
 ### <a name="download-the-hbase-sitexml"></a>下载 hbase-site.xml
 
-使用以下命令将 HBase 配置从 HDInsight 群集复制到 `conf` 目录。 替换为`CLUSTERNAME`与你的 HDInsight 群集名称，然后输入命令：
+使用以下命令将 HBase 配置从 HDInsight 群集复制到 `conf` 目录。 将 `CLUSTERNAME` 替换为 HDInsight 群集名称，然后输入以下命令：
 
 ```cmd
 scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml
@@ -181,7 +179,7 @@ scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./
 
 ### <a name="implement-a-createtable-class"></a>实现 CreateTable 类
 
-输入以下命令以创建并打开一个新文件`CreateTable.java`。 选择**是**在提示符下，若要创建新的文件。
+输入以下命令，以创建并打开新文件 `CreateTable.java`。 根据提示选择“是”，以创建新文件。****
 
 ```cmd
 notepad src\main\java\com\microsoft\examples\CreateTable.java
@@ -259,11 +257,11 @@ public class CreateTable {
 }
 ```
 
-此代码是`CreateTable`类，该类将创建名为的表`people`并使用一些预定义的用户填充它。
+此代码是 `CreateTable` 类，该类会创建名为 `people` 的表，并使用一些预定义的用户填充它。
 
 ### <a name="implement-a-searchbyemail-class"></a>实现 SearchByEmail 类
 
-输入以下命令以创建并打开一个新文件`SearchByEmail.java`。 选择**是**在提示符下，若要创建新的文件。
+输入以下命令，以创建并打开新文件 `SearchByEmail.java`。 根据提示选择“是”，以创建新文件。****
 
 ```cmd
 notepad src\main\java\com\microsoft\examples\SearchByEmail.java
@@ -344,11 +342,11 @@ public class SearchByEmail {
 }
 ```
 
-`SearchByEmail`类可用于查询按电子邮件地址的行。 由于它使用正则表达式筛选器，因此，可以在使用类时提供字符串或正则表达式。
+`SearchByEmail` 类可用于按电子邮件地址查询行。 由于它使用正则表达式筛选器，因此，可以在使用类时提供字符串或正则表达式。
 
 ### <a name="implement-a-deletetable-class"></a>实现 DeleteTable 类
 
-输入以下命令以创建并打开一个新文件`DeleteTable.java`。 选择**是**在提示符下，若要创建新的文件。
+输入以下命令，以创建并打开新文件 `DeleteTable.java`。 根据提示选择“是”，以创建新文件。****
 
 ```cmd
 notepad src\main\java\com\microsoft\examples\DeleteTable.java
@@ -378,7 +376,7 @@ public class DeleteTable {
 }
 ```
 
-`DeleteTable`类用于清除在此示例通过禁用并删除创建的表创建的 HBase 表`CreateTable`类。
+`DeleteTable` 类将通过禁用并删除由 `CreateTable` 类创建的表清除在此示例中创建的 HBase 表。
 
 ## <a name="build-and-package-the-application"></a>生成并打包应用程序
 
@@ -399,19 +397,19 @@ public class DeleteTable {
 
 以下步骤使用 `scp` 将 JAR 复制到 Apache HBase on HDInsight 群集的主要头节点。 然后使用 `ssh` 命令连接到群集并直接在头节点上运行示例。
 
-1. 将该 jar 文件上传到群集。 替换为`CLUSTERNAME`与你的 HDInsight 群集名称，然后输入以下命令：
+1. 将该 jar 上传到群集。 将 `CLUSTERNAME` 替换为 HDInsight 群集名称，然后输入以下命令：
 
     ```cmd
     scp ./target/hbaseapp-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:hbaseapp-1.0-SNAPSHOT.jar
     ```
 
-2. 连接到 HBase 群集。 替换为`CLUSTERNAME`与你的 HDInsight 群集名称，然后输入以下命令：
+2. 连接到 HBase 群集。 将 `CLUSTERNAME` 替换为 HDInsight 群集名称，然后输入以下命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
- 3. 若要创建 HBase 表使用的 Java 应用程序，使用以下命令在你打开 ssh 连接：
+3. 若要使用 Java 应用程序创建 HBase 表，请在打开的 ssh 连接中使用以下命令：
 
     ```bash
     yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.CreateTable
@@ -427,12 +425,14 @@ public class DeleteTable {
 
     将生成以下结果：
 
-        Franklin Holtz - ID: 2
-        Franklin Holtz - franklin@contoso.com - ID: 2
-        Rae Schroeder - ID: 4
-        Rae Schroeder - rae@contoso.com - ID: 4
-        Gabriela Ingram - ID: 6
-        Gabriela Ingram - gabriela@contoso.com - ID: 6
+    ```console
+    Franklin Holtz - ID: 2
+    Franklin Holtz - franklin@contoso.com - ID: 2
+    Rae Schroeder - ID: 4
+    Rae Schroeder - rae@contoso.com - ID: 4
+    Gabriela Ingram - ID: 6
+    Gabriela Ingram - gabriela@contoso.com - ID: 6
+    ```
 
 5. 若要删除表，请使用以下命令：
 
@@ -442,9 +442,9 @@ public class DeleteTable {
 
 ## <a name="upload-the-jar-and-run-jobs-powershell"></a>上传 JAR 并运行作业 (PowerShell)
 
-以下步骤使用 Azure PowerShell [AZ 模块](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)若要将该 jar 文件上传到你的 Apache HBase 群集的默认存储。 然后使用 HDInsight cmdlet 远程运行示例。
+以下步骤使用 Azure PowerShell [AZ 模块](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)将 JAR 上传到 Apache HBase 群集的默认存储。 然后使用 HDInsight cmdlet 远程运行示例。
 
-1. 安装和配置 AZ 模块中，创建名为的文件后`hbase-runner.psm1`。 将以下文本用作此文件的内容：
+1. 安装并配置 AZ 模块后，创建一个名为 `hbase-runner.psm1` 的文件。 将以下文本用作此文件的内容：
 
    ```powershell
     <#
@@ -648,9 +648,9 @@ public class DeleteTable {
    * **Add-HDInsightFile** - 用于将文件上传到群集
    * **Start-HBaseExample** - 用于运行以前创建的类
 
-2. 保存`hbase-runner.psm1`文件中`hbaseapp`目录。
+2. 将 `hbase-runner.psm1` 文件保存在 `hbaseapp` 目录中。
 
-3. 使用 Azure PowerShell 注册模块。 打开新的 Azure PowerShell 窗口并通过替换来编辑下面的命令`CLUSTERNAME`与群集的名称。 然后，输入以下命令：
+3. 将这些模块注册到 Azure PowerShell。 打开新的 Azure PowerShell 窗口，编辑以下命令，将 `CLUSTERNAME` 替换为群集的名称， 然后输入以下命令：
 
     ```powershell
     cd C:\HDI\hbaseapp
@@ -686,12 +686,14 @@ public class DeleteTable {
 
     此命令使用 `SearchByEmail` 类搜索 `contactinformation` 列系列和 `email` 列包含字符串 `contoso.com` 的任何行。 应该会收到以下结果：
 
-          Franklin Holtz - ID: 2
-          Franklin Holtz - franklin@contoso.com - ID: 2
-          Rae Schroeder - ID: 4
-          Rae Schroeder - rae@contoso.com - ID: 4
-          Gabriela Ingram - ID: 6
-          Gabriela Ingram - gabriela@contoso.com - ID: 6
+    ```output
+    Franklin Holtz - ID: 2
+    Franklin Holtz - franklin@contoso.com - ID: 2
+    Rae Schroeder - ID: 4
+    Rae Schroeder - rae@contoso.com - ID: 4
+    Gabriela Ingram - ID: 6
+    Gabriela Ingram - gabriela@contoso.com - ID: 6
+    ```
 
     将 **fabrikam.com** 用于 `-emailRegex` 值会返回电子邮件字段中包含 **fabrikam.com** 的用户。 还可以使用正则表达式作为搜索词。 例如，**^r** 返回以字母“r”开头的电子邮件地址。
 
@@ -707,4 +709,4 @@ public class DeleteTable {
 
 ## <a name="next-steps"></a>后续步骤
 
-[了解如何将 SQuirreL SQL 与 Apache HBase 配合使用](apache-hbase-phoenix-squirrel-linux.md)
+[了解如何将 SQLLine 与 Apache HBase 配合使用](apache-hbase-query-with-phoenix.md)

@@ -4,15 +4,15 @@ description: 了解如何通过 Azure CLI 使用虚拟机规模集创建应用�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 5/1/2019
+ms.topic: how-to
+ms.date: 07/20/2019
 ms.author: victorh
-ms.openlocfilehash: d60c756fcf0b527731b8a1f31a8d93f108c91665
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d4a72017b1ec86f10a746a9530a1ff9a2742fa20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146231"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806284"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>通过 Azure CLI 使用应用程序网关管理 Web 流量
 
@@ -37,7 +37,7 @@ ms.locfileid: "65146231"
 
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/azure/group#az-group-create) 创建资源组。
 
-以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组。
+以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组****。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -64,7 +64,9 @@ az network vnet subnet create \
 
 az network public-ip create \
   --resource-group myResourceGroupAG \
-  --name myAGPublicIPAddress
+  --name myAGPublicIPAddress \
+  --allocation-method Static \
+  --sku Standard
 ```
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
@@ -79,7 +81,7 @@ az network application-gateway create \
   --vnet-name myVNet \
   --subnet myAGsubnet \
   --capacity 2 \
-  --sku Standard_Medium \
+  --sku Standard_v2 \
   --http-settings-cookie-based-affinity Disabled \
   --frontend-port 80 \
   --http-settings-port 80 \

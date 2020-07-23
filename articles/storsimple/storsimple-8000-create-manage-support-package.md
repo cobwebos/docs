@@ -1,25 +1,17 @@
 ---
-title: 创建 StorSimple 8000 系列支持包 | Microsoft Docs
+title: 创建 StorSimple 8000 系列支持包
 description: 了解如何创建、解密和编辑 StorSimple 8000 系列设备支持包。
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: dfc2d8d763a1eb64a37af73e03992f2d948a6856
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c4332f3e5a1ca6d434671d3a2cfe100a5d12795d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61481819"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86182009"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>创建和管理 StorSimple 8000 系列支持包
 
@@ -72,14 +64,14 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
 
 可将以下参数用于 Export-HcsSupportPackage cmdlet。
 
-| 参数 | 必需/可选 | 描述 |
+| 参数 | 必需/可选 | 说明 |
 | --- | --- | --- |
-| `-Path` |需要 |用于提供在其中放置支持包的网络共享文件夹的位置。 |
-| `-EncryptionPassphrase` |需要 |用于提供一个密码，以便加密支持包。 |
+| `-Path` |必需 |用于提供在其中放置支持包的网络共享文件夹的位置。 |
+| `-EncryptionPassphrase` |必需 |用于提供一个密码，以便加密支持包。 |
 | `-Credential` |可选 |用于提供网络共享文件夹的访问凭据。 |
 | `-Force` |可选 |用于跳过加密密码确认步骤。 |
-| `-PackageTag` |可选 |用于在“路径”下指定一个目录，以便放置支持包。 默认值为 [设备名称]-[当前日期和时间:yyyy-MM-dd-HH-mm-ss]。 |
-| `-Scope` |可选 |指定为“群集”（默认值），以便为两个控制器创建支持包。 如果只需为当前控制器创建包，请指定“控制器”。 |
+| `-PackageTag` |可选 |用于在“路径”下指定一个目录，以便放置支持包。** 默认值为 [设备名称]-[当前日期和时间:yyyy-MM-dd-HH-mm-ss]。 |
+| `-Scope` |可选 |指定为 **“Cluster”**（默认值），为两个控制器创建支持包。 如果你希望仅为当前控制器创建包，请指定 **“Controller”**。 |
 
 ## <a name="edit-a-support-package"></a>编辑支持包
 
@@ -88,7 +80,7 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
 > [!IMPORTANT]
 > 只能编辑通过 Windows PowerShell for StorSimple 生成的支持包。 无法编辑通过 StorSimple Device Manager 服务在 Azure 门户中创建的包。
 
-若要编辑支持包以便将其上传到 Microsoft 支持站点，请首先解密该支持包，编辑文件，然后重新对其加密。 执行以下步骤。
+要编辑支持包以便将其上传到 Microsoft 支持站点，请首先解密该支持包，编辑文件，然后重新对其加密。 执行以下步骤。
 
 #### <a name="to-edit-a-support-package-in-windows-powershell-for-storsimple"></a>在 Windows PowerShell for StorSimple 中编辑支持包
 
@@ -106,9 +98,11 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
     ![编辑支持包](./media/storsimple-8000-create-manage-support-package/IC750706.png)
 5. 当系统提示输入加密密码时，请输入在创建支持包时使用过的密码。
    
-        cmdlet Open-HcsSupportPackage at command pipeline position 1
-   
-        Supply values for the following parameters:EncryptionPassphrase: ****
+    ```powershell
+    cmdlet Open-HcsSupportPackage at command pipeline position 1
+
+    Supply values for the following parameters:EncryptionPassphrase: ****
+    ```
 6. 浏览到包含日志文件的文件夹。 这些日志文件现在已解压缩和解密，因此会显示原始的文件扩展名。 修改这些文件，删除任何特定于客户的信息，例如卷名称和设备 IP 地址，并保存文件。
 7. 关闭要使用 gzip 压缩并使用 AES-256 加密的文件。 这是为了确保通过网络传输支持包的速度和安全性。 若要压缩和加密文件，请输入以下命令：
    
@@ -117,33 +111,37 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
     ![编辑支持包](./media/storsimple-8000-create-manage-support-package/IC750707.png)
 8. 出现提示时，为已修改的支持包提供加密密码。
    
-        cmdlet Close-HcsSupportPackage at command pipeline position 1
-        Supply values for the following parameters:EncryptionPassphrase: ****
+    ```powershell
+    cmdlet Close-HcsSupportPackage at command pipeline position 1
+    Supply values for the following parameters:EncryptionPassphrase: ****
+    ```
 9. 记下新密码，当 Microsoft 支持部门要求提供密码时，即可将密码与之共享。
 
-### <a name="example-editing-files-in-a-support-package-on-a-password-protected-share"></a>示例：编辑支持包中受密码保护共享上的文件
+### <a name="example-editing-files-in-a-support-package-on-a-password-protected-share"></a>示例：在受密码保护的共享中编辑支持包中的文件
 
 以下示例介绍如何解密、编辑和重新加密支持包。
 
-        PS C:\WINDOWS\system32> Import-module C:\Users\Default\StorSimple\SupportPackage\HCSSupportPackageTools.psm1
+```powershell
+PS C:\WINDOWS\system32> Import-module C:\Users\Default\StorSimple\SupportPackage\HCSSupportPackageTools.psm1
 
-        PS C:\WINDOWS\system32> Open-HcsSupportPackage \\hcsfs\Logs\TD48\TD48Logs\C0-A\etw
+PS C:\WINDOWS\system32> Open-HcsSupportPackage \\hcsfs\Logs\TD48\TD48Logs\C0-A\etw
 
-        cmdlet Open-HcsSupportPackage at command pipeline position 1
+cmdlet Open-HcsSupportPackage at command pipeline position 1
 
-        Supply values for the following parameters:
+Supply values for the following parameters:
 
-        EncryptionPassphrase: ****
+EncryptionPassphrase: ****
 
-        PS C:\WINDOWS\system32> Close-HcsSupportPackage \\hcsfs\Logs\TD48\TD48Logs\C0-A\etw
+PS C:\WINDOWS\system32> Close-HcsSupportPackage \\hcsfs\Logs\TD48\TD48Logs\C0-A\etw
 
-        cmdlet Close-HcsSupportPackage at command pipeline position 1
+cmdlet Close-HcsSupportPackage at command pipeline position 1
 
-        Supply values for the following parameters:
+Supply values for the following parameters:
 
-        EncryptionPassphrase: ****
+EncryptionPassphrase: ****
 
-        PS C:\WINDOWS\system32>
+PS C:\WINDOWS\system32>
+```
 
 ## <a name="next-steps"></a>后续步骤
 

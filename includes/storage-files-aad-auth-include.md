@@ -5,24 +5,18 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 10/22/2018
+ms.date: 07/30/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 0cfa0fdb51969c92e767adfa86a0065d11da56e2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: d470160a9b54af8751371aa4ca58202646c8fab8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237748"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84263326"
 ---
-[Azure 文件](../articles/storage/files/storage-files-introduction.md)使用 [Azure Active Directory (Azure AD) 域服务](../articles/active-directory-domain-services/overview.md)，支持通过 SMB（服务器消息块）实现的基于标识的身份验证（预览版）。 域加入 Windows 虚拟机 (VM) 可使用 [Azure AD](../articles/active-directory/fundamentals/active-directory-whatis.md) 凭据访问 Azure 文件共享。 
+[Azure 文件](../articles/storage/files/storage-files-introduction.md)支持通过服务器消息块（SMB）通过[本地 Active Directory 域服务（AD DS）](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)和[AZURE ACTIVE DIRECTORY 域服务（Azure AD DS）](../articles/active-directory-domain-services/overview.md)进行基于身份的身份验证。 本文重点介绍 Azure 文件共享如何在本地或 Azure 中使用域服务，以支持基于 SMB 的 Azure 文件共享进行基于标识的访问。 为 Azure 文件共享启用基于标识的访问，可将现有文件服务器替换为 Azure 文件共享，而无需替换现有的目录服务，从而无缝用户访问共享。 
 
-Azure AD 使用[基于角色的访问控制 (RBAC)](../articles/role-based-access-control/overview.md) 验证标识（如用户、组或服务主体）。 可定义自定义 RBAC 角色，其中包含用于访问 Azure 文件的常用权限集。 当你将自定义 RBAC 角色分配给 Azure AD 标识时，此标识会根据这些权限获取对 Azure 文件共享的访问权限。
+Azure 文件强制对共享和目录/文件级别的用户访问权限。 可以对通过[基于角色的访问控制（RBAC）](../articles/role-based-access-control/overview.md)模型管理的 Azure Active Directory （Azure AD）用户或组执行共享级权限分配。 使用 RBAC 时，用于文件访问的凭据应该可用或同步到 Azure AD。 可以向 Azure AD 中的用户或组分配内置 RBAC 角色（例如存储文件数据 SMB 共享读取器），以授予对 Azure 文件共享的读取权限。
 
-在预览版推出期间，Azure 文件还支持对文件共享中的所有文件和目录保留、继承和强制实施 [NTFS DACL](https://technet.microsoft.com/library/2006.01.howitworksntfs.aspx)。 如果将文件共享中的数据复制到 Azure 文件（反之亦然），可指定维护 NTFS DACL。 这样一来，可使用 Azure 文件实现备份方案，同时保留本地文件共享和云文件共享之间的 NTFS DACL。 
-
-> [!NOTE]
-> - Linux VM 不支持通过 SMB 实现的 Azure AD 身份验证（预览版）。 只有 Windows Server VM 才支持。
-> - 访问 Azure 文件的本地计算机不支持通过 SMB 进行 Azure AD 身份验证。
-> - Azure AD 身份验证仅适用于 2018 年 9 月 24 日后创建的存储帐户。
-> - Azure 文件同步服务托管的 Azure 文件共享不支持通过 SMB 进行 Azure AD 身份验证和 NTFS ACL 持久性。 
+在目录/文件级别，Azure 文件支持保留、继承和强制实施[Windows dacl](https://docs.microsoft.com/windows/win32/secauthz/access-control-lists) ，就像任何 windows 文件服务器一样。 在现有文件共享和 Azure 文件共享之间通过 SMB 复制数据时，可以选择保留 Windows Dacl。 无论你是否打算强制实施授权，都可以使用 Azure 文件共享来备份 Acl 和数据。 

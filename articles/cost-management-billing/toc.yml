@@ -1,0 +1,468 @@
+- name: Azure 成本管理 + 计费文档
+  href: index.yml
+  items:
+    - name: 概述
+      items:
+        - name: 什么是成本管理和计费？
+          href: cost-management-billing-overview.md
+    - name: 快速入门
+      items:
+        - name: 开始分析成本
+          href: costs/quick-acm-cost-analysis.md
+        - name: 创建预算 - ARM 模板
+          href: costs/quick-create-budget-template.md
+          displayName: 'ARM template, resource manager template'
+    - name: 教程
+      items:
+        - name: 查看个人帐户帐单
+          href: understand/review-individual-bill.md
+        - name: 查看企业协议帐单
+          href: understand/review-enterprise-agreement-bill.md
+        - name: 查看 Microsoft 客户协议帐单
+          href: understand/review-customer-agreement-bill.md
+        - name: 查看 Microsoft 合作伙伴协议帐单
+          href: understand/review-partner-agreement-bill.md
+        - name: 创建并管理预算
+          href: costs/tutorial-acm-create-budgets.md
+        - name: 导出数据
+          href: costs/tutorial-export-acm-data.md
+        - name: 根据建议采取措施
+          href: costs/tutorial-acm-opt-recommendations.md
+    - name: 概念
+      items:
+        - name: 成本管理
+          items:
+            - name: Azure 成本管理最佳做法
+              href: costs/cost-mgt-best-practices.md
+            - name: 了解成本管理数据
+              href: costs/understand-cost-mgt-data.md
+            - name: 了解并使用范围
+              href: costs/understand-work-scopes.md
+            - name: 对选项进行分组和筛选
+              href: costs/group-filter.md
+            - name: 通过自动化功能管理成本
+              href: costs/manage-automation.md
+            - name: 面向合作伙伴的成本管理
+              href: costs/get-started-partners.md
+            - name: 在成本管理与 Cloudyn 之间进行选择
+              href: costs/choose-between-azure-cost-management-cloudyn.md
+        - name: 预留
+          items:
+            - name: 什么是 Azure 预留项？
+              href: reservations/save-compute-costs-reservations.md
+            - name: 如何创建预预留建议
+              href: reservations/reserved-instance-purchase-recommendations.md
+            - name: 如何应用折扣
+              items:
+                - name: 如何应用 Azure 预留折扣
+                  href: reservations/reservation-discount-application.md
+                - name: 应用服务
+                  href: reservations/reservation-discount-app-service-isolated-stamp.md
+                - name: 用于 Redis 的 Azure 缓存
+                  href: reservations/understand-azure-cache-for-redis-reservation-charges.md
+                - name: Cosmos DB
+                  href: reservations/understand-cosmosdb-reservation-charges.md
+                - name: Database for MariaDB
+                  href: reservations/understand-reservation-charges-mariadb.md
+                - name: Database for MySQL
+                  href: reservations/understand-reservation-charges-mysql.md
+                - name: Database for PostgreSQL
+                  href: reservations/understand-reservation-charges-postgresql.md
+                - name: Databricks
+                  href: reservations/reservation-discount-databricks.md
+                - name: 数据资源管理器
+                  href: reservations/understand-azure-data-explorer-reservation-charges.md
+                - name: 专用主机
+                  href: reservations/billing-understand-dedicated-hosts-reservation-charges.md
+                - name: 磁盘存储
+                  href: reservations/understand-disk-reservations.md
+                - name: Red Hat Linux Enterprise
+                  href: reservations/understand-rhel-reservation-charges.md
+                - name: 软件计划
+                  href: reservations/understand-suse-reservation-charges.md
+                - name: 存储
+                  href: reservations/understand-storage-charges.md
+                - name: SQL 数据库
+                  href: reservations/understand-reservation-charges.md
+                - name: Azure Synapse Analytics
+                  href: reservations/reservation-discount-azure-sql-dw.md
+                - name: 虚拟机
+                  href: manage/understand-vm-reservation-charges.md
+            - name: 不包含 Windows 和 SQL 成本
+              href: reservations/reserved-instance-windows-software-costs.md
+            - name: 单个订阅的使用情况数据
+              href: reservations/understand-reserved-instance-usage.md
+            - name: 企业客户的使用情况数据
+              href: reservations/understand-reserved-instance-usage-ea.md
+        - name: 计费术语
+          items:
+            - name: 个人订阅使用情况术语
+              href: understand/understand-usage.md
+            - name: 个人订阅发票术语
+              href: understand/understand-invoice.md
+            - name: Microsoft 客户协议使用情况术语
+              href: understand/mca-understand-your-usage.md
+            - name: Microsoft 客户协议发票术语
+              href: understand/mca-understand-your-invoice.md
+            - name: Microsoft 客户协议价目表术语
+              href: manage/mca-understand-pricesheet.md
+            - name: Microsoft 合作伙伴协议发票术语
+              href: understand/mpa-invoice-terms.md
+            - name: Microsoft 客户协议的计费帐户
+              href: understand/mca-overview.md
+            - name: Microsoft 合作伙伴协议的计费帐户
+              href: understand/mpa-overview.md
+    - name: 操作指南
+      items:
+        - name: 配置 Azure 成本管理 + 计费
+          items:
+            - name: 管理帐户
+              items:
+                - name: 帐户管理员任务
+                  href: manage/account-admin-tasks.md
+                - name: 编辑个人资料
+                  href: manage/change-azure-account-profile.md
+                - name: 处理逾期未付余额
+                  href: manage/resolve-past-due-balance.md
+                - name: 授予对计费信息的访问权限
+                  href: manage/manage-billing-access.md
+                - name: Azure 中的 Microsoft 客户协议角色
+                  href: manage/understand-mca-roles.md
+                - name: 链接合作伙伴 ID
+                  href: manage/link-partner-id.md
+            - name: 管理订阅
+              items:
+                - name: 分配对成本管理数据的访问权限
+                  href: costs/assign-access-acm-data.md
+                - name: 订阅状态
+                  href: manage/subscription-states.md
+                - name: 重新激活订阅
+                  href: manage/subscription-disabled.md
+                - name: 重新激活 Azure 学生订阅
+                  href: manage/azurestudents-subscription-disabled.md
+                - name: 转让所有权
+                  href: manage/billing-subscription-transfer.md
+                - name: 请求 Microsoft 客户协议所有权
+                  href: manage/mca-request-billing-ownership.md
+                - name: 请求 Microsoft 合作伙伴协议所有权
+                  href: manage/mpa-request-ownership.md
+                - name: 设置和配置 AWS 集成
+                  href: costs/aws-integration-set-up-configure.md
+        - name: 执行关键计费管理任务
+          items:
+            - name: 管理帐户
+              items:
+                - name: 查看计费帐户
+                  href: manage/view-all-accounts.md
+                - name: 按发票科目管理成本
+                  href: manage/mca-section-invoice.md
+                - name: 设置 Microsoft 客户协议计费帐户
+                  href: manage/mca-setup-account.md
+                - name: 使用 Microsoft 365 帐户注册
+                  href: manage/microsoft-365-account-for-azure-subscription.md
+                - name: 使用 Azure 帐户注册 Microsoft 365
+                  href: manage/azure-account-for-microsoft-365-subscription.md
+                - name: 使用强客户身份验证支付费用
+                  href: manage/open-banking-strong-customer-authentication.md
+            - name: 管理订阅
+              items:
+                - name: 按发票付款
+                  href: manage/pay-by-invoice.md
+                - name: 创建其他订阅
+                  href: manage/create-subscription.md
+                - name: 导出订阅信息
+                  href: manage/export-subscriptions.md
+                - name: 更改信用卡
+                  href: manage/change-credit-card.md
+                - name: 更改管理员
+                  href: manage/add-change-subscription-administrator.md
+                - name: 切换订阅套餐
+                  href: manage/switch-azure-offer.md
+                - name: 转让云解决方案提供商订阅
+                  href: manage/transfer-subscriptions-subscribers-csp.md
+                - name: 取消订阅
+                  href: manage/cancel-azure-subscription.md
+            - name: 管理企业协议订阅
+              items:
+                - name: 在 Azure EA 门户中开始
+                  href: manage/ea-portal-get-started.md
+                - name: Azure 中的 EA 角色
+                  href: manage/understand-ea-roles.md
+                - name: Azure EA 门户管理
+                  href: manage/ea-portal-administration.md
+                - name: 面向合作伙伴的 Azure EA 门户管理
+                  href: manage/ea-partner-portal-administration.md
+                - name: Azure Enterprise 传输
+                  href: manage/ea-transfers.md
+                - name: Microsoft 客户协议中的 EA 任务
+                  href: manage/mca-enterprise-operations.md
+                - name: Azure EA 协议和修正合同
+                  href: manage/ea-portal-agreements.md
+                - name: Enterprise 注册发票
+                  href: manage/ea-portal-enrollment-invoices.md
+                - name: Azure EA 定价
+                  href: manage/ea-pricing-overview.md
+                - name: Azure Enterprise REST API
+                  href: manage/ea-portal-rest-apis.md
+                - name: Azure EA 虚拟机预留实例
+                  href: manage/ea-portal-vm-reservations.md
+                - name: Azure 市场
+                  href: manage/ea-azure-marketplace.md
+            - name: 下载定价和计费信息
+              items:
+                - name: 支付帐单
+                  href: understand/pay-bill.md
+                - name: 查看和下载 Azure 发票
+                  href: understand/download-azure-invoice.md
+                - name: 查看和下载 Azure 使用情况与费用
+                  href: understand/download-azure-daily-usage.md
+                - name: 下载发票和每日使用情况数据
+                  href: manage/download-azure-invoice-daily-usage-date.md
+                - name: 查看和下载税单
+                  href: understand/mca-download-tax-document.md
+                - name: 查看外部 Azure 服务费用
+                  href: understand/understand-azure-marketplace-charges.md
+                - name: 查看和下载组织的定价
+                  href: manage/ea-pricing.md
+            - name: 免费帐户
+              items:
+                - name: 创建免费服务
+                  href: manage/create-free-services.md
+                - name: 避免产生费用
+                  href: manage/avoid-charges-free-account.md
+                - name: 查看使用情况
+                  href: manage/check-free-service-usage.md
+                - name: 升级免费帐户
+                  href: manage/upgrade-azure-subscription.md
+        - name: 执行关键成本管理任务
+          items:
+            - name: 防止意外成本
+              href: manage/getting-started.md
+            - name: 计算定价
+              href: 'https://azure.microsoft.com/pricing/calculator/'
+            - name: 将成本分析用于常见任务
+              href: costs/cost-analysis-common-uses.md
+            - name: 通过预算自动执行操作
+              href: manage/cost-management-budget-scenario.md
+            - name: 使用成本警报
+              href: costs/cost-mgt-alerts-monitor-usage-spending.md
+            - name: 使用 Power BI Desktop 进行连接
+              href: /power-bi/desktop-connect-azure-cost-management
+            - name: 使用 Power BI 模板应用分析 Azure 成本
+              href: costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md
+            - name: 管理 AWS 成本和使用情况
+              href: costs/aws-integration-manage.md
+            - name: 了解支出限制
+              href: manage/spending-limit.md
+            - name: 跟踪 Microsoft 客户协议的额度余额
+              href: manage/mca-check-azure-credits-balance.md
+            - name: 从 EA 迁移到 MCA API
+              href: costs/migrate-cost-management-api.md
+        - name: 购买和管理预留项
+          items:
+            - name: 确定要购买的内容
+              items:
+                - name: 选择要购买的预留项
+                  href: reservations/determine-reservation-purchase.md
+            - name: 购买预留
+              items:
+                - name: 购买 Azure 预留
+                  href: reservations/prepare-buy-reservation.md
+                - name: 应用服务
+                  href: reservations/prepay-app-service-isolated-stamp.md
+                - name: Azure Cache for Redis 预留项
+                  href: ../azure-cache-for-redis/cache-reserved-pricing.md?toc=/azure/cost-management-billing/toc.json
+                - name: Cosmos DB
+                  href: ../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+                - name: Databricks
+                  href: reservations/prepay-databricks-reserved-capacity.md
+                - name: 数据资源管理器
+                  href: /dataexplorer-docs/data-explorer/pricing-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+                - name: 磁盘存储
+                  href: ../virtual-machines/linux/disks-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+                - name: 专用主机
+                  href: ../virtual-machines/prepay-dedicated-hosts-reserved-instances.md?toc=/azure/cost-management-billing/toc.json
+                - name: 软件计划
+                  href: ../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/cost-management-billing/toc.json
+                - name: Azure 存储
+                  href: ../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+                - name: Azure Database for PostgreSQL
+                  href: ../postgresql/concept-reserved-pricing.md?toc=/azure/cost-management-billing/toc.json
+                - name: Azure Database for MySQL
+                  href: ../mysql/concept-reserved-pricing.md?toc=/azure/cost-management-billing/toc.json
+                - name: Azure Database for MariaDB
+                  href: ../mariadb/concept-reserved-pricing.md?toc=/azure/cost-management-billing/toc.json
+                - name: SQL 数据库
+                  href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+                - name: Azure Synapse Analytics
+                  href: reservations/prepay-sql-data-warehouse-charges.md
+                - name: 虚拟机
+                  href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/cost-management-billing/toc.json
+            - name: 在购买后查看、管理和优化
+              items:
+                - name: 查看预留和利用率
+                  href: reservations/view-reservations.md
+                - name: 管理预留
+                  href: reservations/manage-reserved-vm-instance.md
+                - name: 对预留执行交换和退款操作
+                  href: reservations/exchange-and-refund-azure-reservations.md
+            - name: 报告成本
+              items:
+                - name: 查看预留交易
+                  href: reservations/view-purchase-refunds.md
+                - name: 撤回预留成本
+                  href: reservations/charge-back-usage.md
+            - name: 续订预留
+              items:
+                - name: 续订预留项
+                  href: reservations/reservation-renew.md
+        - name: 疑难解答
+          items:
+            - name: 找不到任何订阅
+              href: manage/no-subscriptions-found.md
+            - name: 支付问题
+              href: manage/billing-troubleshoot-azure-payment-issues.md
+            - name: 银行卡被拒绝
+              href: manage/troubleshoot-declined-card.md
+            - name: Azure 帐户注册问题
+              href: manage/troubleshoot-azure-sign-up.md
+            - name: 订阅登录问题
+              href: manage/troubleshoot-sign-in-issue.md
+            - name: 企业成本视图已禁用
+              href: manage/enterprise-mgmt-grp-troubleshoot-cost-view.md
+            - name: 排查 Azure EA 门户访问问题
+              href: manage/ea-portal-troubleshoot.md
+            - name: 联系支持人员
+              href: ../azure-portal/supportability/how-to-create-azure-support-request.md
+    - name: 参考
+      items:
+        - name: Azure 成本管理 REST API
+          href: 'https://docs.microsoft.com/rest/api/cost-management'
+        - name: Azure 使用情况 REST API
+          href: 'https://docs.microsoft.com/rest/api/consumption'
+        - name: 资源管理器模板
+          href: /azure/templates/microsoft.consumption/budgets
+        - name: 成本管理 REST API 示例
+          href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
+        - name: 计费自动化方案
+          href: manage/cost-management-automation-scenarios.md
+        - name: Azure 计费 API 概述
+          href: manage/usage-rate-card-overview.md
+        - name: Azure 计费 REST API
+          href: 'https://docs.microsoft.com/rest/api/billing'
+        - name: Azure 使用情况 API 概述
+          href: manage/consumption-api-overview.md
+        - name: Azure 使用情况 REST API
+          href: 'https://docs.microsoft.com/rest/api/consumption'
+        - name: RateCard REST API
+          href: 'https://msdn.microsoft.com/library/azure/mt219005.aspx'
+        - name: 使用情况 REST API
+          href: 'https://msdn.microsoft.com/library/azure/mt219003.aspx'
+        - name: Enterprise Reporting 概述
+          href: manage/enterprise-api.md
+        - name: Enterprise Reporting REST API
+          href: 'https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary'
+        - name: 预留
+          items:
+            - name: 预留 REST API
+              href: reservations/reservation-apis.md
+            - name: 预留 - Azure PowerShell
+              href: /powershell/module/azurerm.reservations
+            - name: 预留 - CLI
+              href: /cli/azure/reservations/reservation
+            - name: 成本管理 - 消耗用量详细信息 REST API
+              href: /rest/api/consumption/usagedetails
+            - name: 成本管理 - 消耗预留详细信息 REST API
+              href: /rest/api/consumption/reservationsdetails
+    - name: 资源
+      items:
+        - name: 利用 Microsoft Learn 掌握技能
+          href: /learn/browse/?products=azure-cost-management
+        - name: 成本管理反馈论坛
+          href: 'https://feedback.azure.com/forums/906772-cost-management'
+        - name: Azure 路线图
+          href: 'https://azure.microsoft.com/roadmap/'
+        - name: 定价
+          href: 'https://azure.microsoft.com/pricing/details/cost-management'
+        - name: 区域可用性
+          href: 'https://azure.microsoft.com/regions/services/'
+    - name: 示例
+      items:
+        - name: REST API
+          items:
+            - name: 查看企业成本
+              href: manage/review-enterprise-billing.md
+            - name: 查看订阅使用情况
+              href: manage/review-subscription-billing.md
+            - name: 查看资源使用情况
+              href: manage/review-service-usage-api.md
+        - name: .NET 示例
+          items:
+            - name: 发票 API 代码示例
+              href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
+            - name: 使用情况 API 代码示例
+              href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
+            - name: RateCard API 代码示例
+              href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
+    - name: Cloudyn
+      items:
+        - name: 概述
+          items:
+            - name: 什么是 Cloudyn？
+              href: cloudyn/overview.md
+        - name: 快速入门
+          items:
+            - name: 查看成本数据
+              href: cloudyn/quick-register-azure-sub.md
+            - name: 查看成本数据 - EA
+              href: cloudyn/quick-register-ea.md
+            - name: 查看成本数据 - CSP
+              href: cloudyn/quick-register-csp.md
+        - name: 教程
+          items:
+            - name: 查看使用情况和成本
+              href: cloudyn/tutorial-review-usage.md
+            - name: 预测支出
+              href: cloudyn/tutorial-forecast-spending.md
+            - name: 管理成本
+              href: cloudyn/tutorial-manage-costs.md
+            - name: 优化预留实例
+              href: cloudyn/tutorial-optimize-reserved-instances.md
+            - name: 控制对数据的访问
+              href: cloudyn/tutorial-user-access.md
+        - name: 概念
+          items:
+            - name: 了解成本报表
+              href: cloudyn/understanding-cost-reports.md
+        - name: 操作指南
+          items:
+            - name: 激活 Azure 订阅和帐户
+              href: cloudyn/activate-subs-accounts.md
+            - name: 为 VM 添加扩展的指标
+              href: cloudyn/azure-vm-extended-metrics.md
+            - name: 连接 Google 帐户
+              href: cloudyn/connect-google-account.md
+            - name: 连接 AWS 帐户
+              href: cloudyn/connect-aws-account.md
+            - name: 配置存储帐户
+              href: cloudyn/storage-accounts.md
+            - name: 使用 Cloudyn 报表
+              href: cloudyn/use-reports.md
+            - name: 使用仪表板
+              href: cloudyn/dashboards.md
+            - name: 管理预算
+              href: cloudyn/manage-budgets.md
+        - name: 资源
+          items:
+            - name: Cloudyn 视频
+              href: cloudyn/ref-videos.md
+            - name: Azure 路线图
+              href: 'https://azure.microsoft.com/roadmap/'
+            - name: Cloudyn 定价
+              href: 'https://azure.microsoft.com/pricing/details/cost-management'
+            - name: Cloudyn 区域可用性
+              href: 'https://azure.microsoft.com/regions/services/'
+            - name: Cloudyn 常见问题解答
+              href: cloudyn/cost-mgt-faq.md
+            - name: 联系 Cloudyn 支持人员
+              href: /cloudyn/open-support-request.md

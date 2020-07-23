@@ -1,20 +1,20 @@
 ---
 title: 快速入门：在 Azure HDInsight 中查询 Apache HBase - HBase Shell
-description: 了解如何使用 Apache HBase Shell 运行 Apache HBase 查询。
+description: 本快速入门介绍如何使用 Apache HBase Shell 运行 Apache HBase 查询。
 keywords: hdinsight,hadoop,HBase
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: quickstart
-ms.date: 05/08/2019
+ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 41b16e63522a02cc16eb4dac2cbcc8e6540aceaf
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 572262cbece26171f9a67bf073906fa2dfd4d8e1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65552006"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79371063"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>快速入门：使用 HBase Shell 在 Azure HDInsight 中查询 Apache HBase
 
@@ -24,7 +24,7 @@ ms.locfileid: "65552006"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Apache HBase 群集。 若要创建 HDInsight 群集，请参阅[创建群集](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)。  确保选择 **HBase** 群集类型。
+* Apache HBase 群集。 若要创建 HDInsight 群集，请参阅[创建群集](../hadoop/apache-hadoop-linux-tutorial-get-started.md)。  确保选择 **HBase** 群集类型。
 
 * SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
@@ -32,15 +32,15 @@ ms.locfileid: "65552006"
 
 对于大多数人而言，数据以表格形式显示：
 
-![HDInsight HBase 表格数据](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-tabular.png)
+![HDInsight Apache HBase 表格数据](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-tabular.png)
 
 在 HBase（[Cloud BigTable](https://cloud.google.com/bigtable/) 的一种实现）中，相同的数据看起来类似于：
 
-![HDInsight HBase BigTable 数据](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-bigtable.png)
+![HDInsight Apache HBase BigTable 数据](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-bigtable.png)
 
 可以使用 SSH 连接到 HBase 群集，然后使用 Apache HBase Shell 来创建 HBase 表以及插入和查询数据。
 
-1. 使用 `ssh` 命令连接到 HBase 群集。 通过将 `CLUSTERNAME` 替换为群集的名称来编辑以下命令，然后输入该命令：
+1. 使用 `ssh` 命令连接到 HBase 群集。 编辑以下命令，将 `CLUSTERNAME` 替换为群集的名称，然后输入该命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net

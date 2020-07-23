@@ -1,27 +1,25 @@
 ---
-title: 使用 Azure 数据工厂从 DB2 移动数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 DB2 移动数据
 description: 了解如何使用 Azure 数据工厂复制活动从本地 DB2 数据库移动数据
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: c1644e17-4560-46bb-bf3c-b923126671f1
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 72c88ef10bf1df217ec6e24ac744d0b30386b4a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60824008"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74931791"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>使用 Azure 数据工厂复制活动从 DB2 移动数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-onprem-db2-connector.md)
 > * [版本 2（当前版本）](../connector-db2.md)
 
@@ -33,7 +31,7 @@ ms.locfileid: "60824008"
 
 数据工厂目前仅支持将 DB2 数据库中的数据移至[支持的接收器数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 不支持将其他数据存储中的数据移至 DB2 数据库。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 数据工厂支持使用[数据管理网关](data-factory-data-management-gateway.md)连接到本地 DB2 数据库。 有关设置用于移动数据的网关数据管道的分步说明，请参阅[将数据从本地移到云](data-factory-move-data-between-onprem-and-cloud.md)一文。
 
 即使 DB2 托管在 Azure IaaS VM 中，也需要网关。 可在与数据存储相同的 IaaS VM 上安装网关。 如果网关可连接到数据库，则可在不同的 VM 上安装网关。
@@ -64,7 +62,7 @@ ms.locfileid: "60824008"
 可以使用不同的工具和 API 创建包含复制活动的管道，以便从本地 DB2 数据存储移动数据： 
 
 - 创建管道的最简单方法是使用 Azure 数据工厂复制向导。 有关使用复制数据向导创建管道的快速演练，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。 
-- 也可以使用工具创建管道，这些工具包括 Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+- 你还可以使用工具创建管道，包括 Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -72,20 +70,20 @@ ms.locfileid: "60824008"
 2. 创建数据集用于表示复制操作的输入和输出数据。 
 3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。 
 
-使用复制向导时，会自动创建数据工厂链接服务、数据集和管道实体的 JSON 定义。 使用工具或 API（.NET API 除外）时，可使用 JSON 格式定义数据工厂实体。 “JSON 示例：将数据从 DB2 复制到 Azure Blob 存储”介绍了用于从本地 DB2 数据存储复制数据的数据工厂实体的 JSON 定义。
+使用复制向导时，会自动创建数据工厂链接服务、数据集和管道实体的 JSON 定义。 使用工具或 API（.NET API 除外）时，可使用 JSON 格式定义数据工厂实体。 JSON 示例：将数据从 DB2 复制到 Azure Blob 存储中演示了用于从本地 DB2 数据存储复制数据的数据工厂实体的 JSON 定义。
 
 对于特定于 DB2 数据存储的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息。
 
 ## <a name="db2-linked-service-properties"></a>DB2 链接服务的属性
 下表列出了特定于 DB2 链接服务的 JSON 属性。
 
-| 属性 | 说明 | 需要 |
+| Property | 描述 | 必须 |
 | --- | --- | --- |
-| type |必须将此属性设置为 **OnPremisesDb2**。 |是 |
-| **server** |DB2 服务器的名称。 |是 |
+| **type** |必须将此属性设置为 **OnPremisesDb2**。 |是 |
+| 服务器 |DB2 服务器的名称。 |是 |
 | **database** |DB2 数据库的名称。 |是 |
-| **schema** |DB2 数据库中架构的名称。 此属性区分大小写。 |否 |
-| **authenticationType** |用于连接 DB2 数据库的身份验证类型。 可能的值包括：Anonymous、Basic 和 Windows。 |是 |
+| **架构** |DB2 数据库中架构的名称。 此属性区分大小写。 |否 |
+| **authenticationType** |用于连接 DB2 数据库的身份验证类型。 可能的值为：Anonymous、Basic 和 Windows。 |是 |
 | **username** |如果使用 Basic 或 Windows 身份验证，则表示用户帐户的名称。 |否 |
 | **password** |用户帐户的密码。 |否 |
 | **gatewayName** |应该由数据工厂服务用来连接到本地 DB2 数据库的网关的名称。 |是 |
@@ -93,18 +91,18 @@ ms.locfileid: "60824008"
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的各节和属性的列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 所有数据集类型（Azure SQL、Azure Blob 存储、Azure 表存储等）的数据集 JSON 的 **structure**、**availability** 和 **policy** 等节类似。
 
-每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable** 类型数据集（包括 DB2 数据集）的 **typeProperties** 节具有以下属性：
+每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息****。 **RelationalTable** 类型数据集（包括 DB2 数据集）的 **typeProperties** 节具有以下属性：
 
-| 属性 | 说明 | 需要 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | **tableName** |链接服务引用的 DB2 数据库实例中表的名称。 此属性区分大小写。 |否（如果指定了 **RelationalSource** 类型复制活动的 **query** 属性） |
 
 ## <a name="copy-activity-properties"></a>复制活动属性
-有关可用于定义复制活动的各节和属性的列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 **name**、**description**、**inputs** 表、**outputs** 表和 **policy** 等复制活动属性可用于所有类型的活动。 可在活动的 typeProperties 节中使用的属性因每个活动的类型而异。 对于复制活动，其属性因数据源和接收器的类型而异。
+有关可用于定义复制活动的各节和属性的列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 **name**、**description**、**inputs** 表、**outputs** 表和 **policy** 等复制活动属性可用于所有类型的活动。 可在活动的 typeProperties**** 节中使用的属性因每个活动的类型而异。 对于复制活动，其属性因数据源和接收器的类型而异。
 
 对于复制活动，当源的类型为 **RelationalSource**（包括 DB2）时，以下属性在 **typeProperties** 节中可用：
 
-| 属性 | 说明 | 允许的值 | 需要 |
+| Property | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
 | **query** |使用自定义查询读取数据。 |SQL 查询字符串。 例如： `"query": "select * from "MySchema"."MyTable""` |否（如果指定了数据集的 **tableName** 属性） |
 
@@ -112,13 +110,13 @@ ms.locfileid: "60824008"
 > 架构和表名称区分大小写。 在查询语句中，应使用 ""（双引号）括住属性名称。
 
 ## <a name="json-example-copy-data-from-db2-to-azure-blob-storage"></a>JSON 示例：将数据从 DB2 复制到 Azure Blob 存储
-本示例提供示例 JSON 定义，可使用这些定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 本示例演示了如何将数据从 DB2 数据库复制到 Azure Blob 存储。 但是，可以使用 Azure 数据工厂复制活动将数据复制到[任何受支持的数据存储接收器类型](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。
+此示例提供示例 JSON 定义，可用于通过使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 本示例演示了如何将数据从 DB2 数据库复制到 Azure Blob 存储。 但是，可以使用 Azure 数据工厂复制活动将数据复制到[任何受支持的数据存储接收器类型](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。
 
 此示例具有以下数据工厂实体：
 
 - [OnPremisesDb2](data-factory-onprem-db2-connector.md) 类型的 DB2 链接服务
 - [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的 Azure Blob 存储链接服务
-- [RelationalTable](data-factory-onprem-db2-connector.md#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)
+- [RelationalTable](data-factory-onprem-db2-connector.md#dataset-properties)类型的输入[数据集](data-factory-create-datasets.md)
 - [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)
 - 包含复制活动的[管道](data-factory-create-pipelines.md)，该活动使用 [RelationalSource](data-factory-onprem-db2-connector.md#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 属性
 
@@ -314,10 +312,10 @@ ms.locfileid: "60824008"
 | Real |Single |
 | Double |Double |
 | Float |Double |
-| Decimal |Decimal |
-| DecimalFloat |Decimal |
-| Numeric |Decimal |
-| date |DateTime |
+| 小数 |小数 |
+| DecimalFloat |小数 |
+| Numeric |小数 |
+| Date |DateTime |
 | 时间 |TimeSpan |
 | Timestamp |DateTime |
 | Xml |Byte[] |
@@ -328,7 +326,7 @@ ms.locfileid: "60824008"
 | 二进制 |Byte[] |
 | VarBinary |Byte[] |
 | LongVarBinary |Byte[] |
-| Graphic |String |
+| Graphic |字符串 |
 | VarGraphic |String |
 | LongVarGraphic |String |
 | Clob |String |
@@ -340,10 +338,10 @@ ms.locfileid: "60824008"
 | Real |Single |
 | Double |Double |
 | Float |Double |
-| Decimal |Decimal |
-| DecimalFloat |Decimal |
-| Numeric |Decimal |
-| date |DateTime |
+| 小数 |小数 |
+| DecimalFloat |小数 |
+| Numeric |小数 |
+| Date |DateTime |
 | 时间 |TimeSpan |
 | Timestamp |DateTime |
 | Xml |Byte[] |

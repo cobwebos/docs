@@ -5,29 +5,38 @@
     - name: 关于空间定位点
       href: overview.md
 - name: 快速入门
+  expanded: true
   items:
     - name: 创建 Unity 应用
-      href: unity-overview.yml
       expanded: true
       items:
+        - name: Unity 概述
+          href: unity-overview.md
         - name: HoloLens
           href: quickstarts/get-started-unity-hololens.md
         - name: Android
           href: quickstarts/get-started-unity-android.md
         - name: iOS
           href: quickstarts/get-started-unity-ios.md
-    - name: 创建 iOS 应用
-      href: quickstarts/get-started-ios.md
-    - name: 创建 Android 应用
-      href: quickstarts/get-started-android.md
     - name: 创建 HoloLens 应用
       href: quickstarts/get-started-hololens.md
+    - name: 创建 Android 应用
+      href: quickstarts/get-started-android.md
+    - name: 创建 iOS 应用
+      href: quickstarts/get-started-ios.md
+    - name: 创建 Xamarin 应用
+      items:
+        - name: Android
+          href: quickstarts/get-started-xamarin-android.md
+        - name: iOS
+          href: quickstarts/get-started-xamarin-ios.md
 - name: 教程
   items:
-    - name: 在 Unity 中共享
+    - name: 跨会话、设备进行共享
       href: tutorials/tutorial-share-anchors-across-devices.md
-    - name: 使用 Azure Cosmos DB 在 Unity 中共享
-      href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
+      items:
+        - name: 通过 Azure Cosmos DB 进行永久共享
+          href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
     - name: 启动新的 Unity HoloLens 应用
       href: tutorials/tutorial-new-unity-hololens-app.md
     - name: 启动新的 Android 应用
@@ -49,13 +58,27 @@
           href: how-tos/create-locate-anchors-cpp-ndk.md
         - name: 在 C++/WinRT 中
           href: how-tos/create-locate-anchors-cpp-winrt.md
+    - name: 使用粗略重新局部化发现附近定位点
+      items:
+        - name: '在 C#/Unity 中'
+          href: how-tos/set-up-coarse-reloc-unity.md
+        - name: 在 Objective-C 中
+          href: how-tos/set-up-coarse-reloc-objc.md
+        - name: 在 Swift 中
+          href: how-tos/set-up-coarse-reloc-swift.md
+        - name: 在 Java 中
+          href: how-tos/set-up-coarse-reloc-java.md
+        - name: 在 C ++/NDK 中
+          href: how-tos/set-up-coarse-reloc-cpp-ndk.md
+        - name: 在 C++/WinRT 中
+          href: how-tos/set-up-coarse-reloc-cpp-winrt.md
 - name: 示例
   items:
     - name: Azure 空间定位点示例 (GitHub)
       href: 'https://github.com/Azure/azure-spatial-anchors-samples'
 - name: 概念
   items:
-    - name: Authentication
+    - name: 身份验证
       href: concepts/authentication.md
     - name: 定位点关系
       href: concepts/anchor-relationships-way-finding.md
@@ -63,6 +86,8 @@
       href: concepts/guidelines-effective-anchor-experiences.md
     - name: 日志记录和诊断
       href: concepts/logging-diagnostics.md
+    - name: 粗略重新局部化
+      href: concepts/coarse-reloc.md
 - name: 参考
   items:
     - name: 适用于 Unity 的 SDK
@@ -75,13 +100,19 @@
       href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/'
     - name: 适用于 HoloLens C++/WinRT 的 SDK
       href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/'
+    - name: Azure CLI
+      href: /cli/azure/ext/mixed-reality/spatial-anchors-account
 - name: 资源
   items:
+    - name: 发行说明
+      href: 'https://github.com/Azure/azure-spatial-anchors-samples/releases'
+    - name: Azure 混合现实资源管理 REST API
+      href: 'https://docs.microsoft.com/rest/api/mixedreality/'
     - name: 常见问题解答
       href: spatial-anchor-faq.md
     - name: 提供产品反馈
       href: 'https://feedback.azure.com/forums/919252-azure-spatial-anchors'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-spatial-anchors'
     - name: 支持
       href: spatial-anchor-support.md

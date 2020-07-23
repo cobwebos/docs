@@ -1,26 +1,17 @@
 ---
-title: Azure ExpressRoute 的网络配置详细信息 - 应用服务
-description: 已连接到 Azure ExpressRoute 线路的虚拟网络中 PowerApps 的应用服务环境的网络配置详细信息。
-services: app-service
-documentationcenter: ''
+title: 配置 Azure ExpressRoute v1
+description: 使用 Azure ExpressRoute 的 PowerApps 的应用服务环境的网络配置。 本文档仅供使用旧版 v1 ASE 的用户使用。
 author: stefsch
-manager: nirma
-editor: ''
 ms.assetid: 34b49178-2595-4d32-9b41-110c96dde6bf
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: e0fa87facec73efdfff1a9908dcba92838215425
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: abe08da95416dd73035115361cb0d87822ad9239
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130664"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013391"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>使用 Azure ExpressRoute 的 PowerApps 的应用服务环境网络配置详细信息
 
@@ -43,11 +34,11 @@ ms.locfileid: "62130664"
 
 * 端口 445 上指向 Azure 文件服务的出站网络连接。
 
-* 与应用服务环境所在的同一区域中的 Azure SQL 数据库终结点建立的出站网络连接。 SQL 数据库终结点在 database.windows.net 域下解析，这需要开放端口 1433、11000-11999 和 14000-14999 的访问权限。 有关 SQL 数据库 V12 端口用法的详细信息，请参阅[用于 ADO.NET 4.5 的非 1433 端口](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md)。
+* 与应用服务环境所在的同一区域中的 Azure SQL 数据库终结点建立的出站网络连接。 SQL 数据库终结点在 database.windows.net 域下解析，这需要开放端口 1433、11000-11999 和 14000-14999 的访问权限。 有关 SQL 数据库 V12 端口用法的详细信息，请参阅[用于 ADO.NET 4.5 的非 1433 端口](../../azure-sql/database/adonet-v12-develop-direct-route-ports.md)。
 
 * 与 Azure 管理平面终结点（Azure 经典部署模型和 Azure 资源管理器终结点）建立的出站网络连接。 与这些终结点建立的连接包括 management.core.windows.net 和 management.azure.com 域。 
 
-* 与 ocsp.msocsp.com、mscrl.microsoft.com 和 crl.microsoft.com 域建立的出站网络连接。 需要连接到这些域才能支持 SSL 功能。
+* 与 ocsp.msocsp.com、mscrl.microsoft.com 和 crl.microsoft.com 域建立的出站网络连接。 需要连接到这些域才能支持 TLS 功能。
 
 * 虚拟网络的 DNS 配置必须能够解析本文中所述的所有终结点和域。 如果无法解析这些终结点，创建应用服务环境将会失败。 任何现有的应用服务环境将被标记为不正常。
 
@@ -61,7 +52,7 @@ ms.locfileid: "62130664"
 
 若要满足 DNS 要求，请确保针对虚拟网络配置并维护有效的 DNS 基础结构。 如果创建应用服务环境之后更改了 DNS 配置，开发人员可以强制应用服务环境选择新的 DNS 配置。 可以在 [Azure 门户][NewPortal]中使用“应用服务环境管理”下的“重启”图标，触发滚动环境重新启动。 重新启动后，环境即会选择新的 DNS 配置。
 
-若要满足入站网络访问要求，请在应用服务环境子网中配置[网络安全组 (NSG)][NetworkSecurityGroups]。 NSG 允许进行所需的访问，以[控制应用服务环境的入站流量][requiredports]。
+若要满足入站网络访问要求，请在应用服务环境子网中配置[网络安全组 (NSG)][NetworkSecurityGroups]。 NSG 允许进行所需的访问，[以控制应用服务环境的入站流量][requiredports]。
 
 ## <a name="outbound-network-connectivity"></a>出站网络连接
 
@@ -87,15 +78,15 @@ ms.locfileid: "62130664"
 
 有关用户定义的路由的背景信息，请参阅[虚拟网络流量路由][UDROverview]。  
 
-若要了解如何创建和配置用户定义的路由，请参阅 [使用 PowerShell 通过路由表路由网络流量][UDRHowTo]。
+若要了解如何创建和配置用户定义的路由，请参阅[使用 PowerShell 通过路由表路由网络流量][UDRHowTo]。
 
 ## <a name="udr-configuration"></a>UDR 配置
 
 本部分介绍应用服务环境的示例 UDR 配置。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
-* 从 [Azure 下载页][AzureDownloads]安装 Azure PowerShell。 请选择下载发布日期为 2015 年 6 月或更晚的版本。 在“命令行工具” > “Windows PowerShell”下，选择“安装”以安装最新的 PowerShell cmdlet。
+* 从 [Azure 下载页][AzureDownloads]安装 Azure PowerShell。 请选择下载发布日期为 2015 年 6 月或更晚的版本。 在“命令行工具” > “Windows PowerShell”下，选择“安装”以安装最新的 PowerShell cmdlet。  
 
 * 创建专供应用服务环境使用的唯一子网。 该唯一子网确保应用到子网的 UDR 只会打开应用服务环境的出站流量。
 

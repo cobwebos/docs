@@ -1,28 +1,25 @@
 ---
 title: 解释模型结果
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) - Azure
 description: 如何为使用并可视化评分模型输出的算法选择最佳的参数集。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.topic: how-to
+author: likebupt
+ms.author: keli19
 ms.date: 11/29/2017
-ms.openlocfilehash: c46f22fb5c906aaffa48f39a0c643ca2a48573f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: a99c1d71ed7e718d4d47ba55573a16466f62de5f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60866878"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84687761"
 ---
-# <a name="interpret-model-results-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中解释模型结果
-本主题说明如何在 Azure 机器学习工作室中可视化和解释预测结果。 训练模型并根据它进行预测（“为模型评分”）后，需要了解并解释预测结果。
+# <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典版）中解释模型结果
 
+本主题说明如何在 Azure 机器学习工作室（经典版）中可视化和解释预测结果。 训练模型并根据它进行预测（“为模型评分”）后，需要了解并解释预测结果。
 
-
-Azure 机器学习工作室中有四种主要的机器学习模型：
+Azure 机器学习工作室（经典版）中有四种主要的机器学习模型：
 
 * 分类
 * 群集功能
@@ -33,13 +30,13 @@ Azure 机器学习工作室中有四种主要的机器学习模型：
 
 * 用于分类和回归的[评分模型][score-model]模块
 * 用于聚类分析的[分配到群集][assign-to-clusters]模块
-* 用于推荐系统的[ Matchbox 推荐器评分][score-matchbox-recommender]
+* 用于推荐系统的 [Matchbox 推荐器评分][score-matchbox-recommender]
 
-文本档说明如何解释其中每个模块的预测结果。 有关这些模块的概述，请参阅[如何选择参数以优化 Azure 机器学习工作室中的算法](algorithm-parameters-optimize.md)。
+了解如何[选择参数优化机器学习工作室（经典）中的算法](algorithm-parameters-optimize.md)。
 
-本主题介绍预测解释，而不是模型评估。 有关如何评估模型的详细信息，请参阅[如何在 Azure 机器学习工作室中评估模型性能](evaluate-model-performance.md)。
+若要了解如何评估模型，请参阅[如何评估模型性能](evaluate-model-performance.md)。
 
-如果不熟悉 Azure 机器学习工作室，并需要创建简单实验的帮助以开始，请参阅 Azure 机器学习工作室中的[在 Azure 机器学习工作室中创建一个简单的实验](create-experiment.md)。
+如果你不熟悉机器学习工作室（经典），请参阅[了解如何创建简单的试验](create-experiment.md)。
 
 ## <a name="classification"></a>分类
 分类问题有两个子类别：
@@ -47,12 +44,12 @@ Azure 机器学习工作室中有四种主要的机器学习模型：
 * 仅两个类的问题（双类或二元分类）
 * 多于两个类的问题（多类分类）
 
-Azure 机器学习工作室具有不同的模块用于处理其中每一种分类，但用于解释其预测结果的方法都相似。
+Azure 机器学习工作室（经典版）具有不同的模块用于处理其中每一种分类，但用于解释其预测结果的方法都相似。
 
 ### <a name="two-class-classification"></a>双类分类
 **示例实验**
 
-双类分类问题的一个示例是鸢尾花的分类。 任务是根据特征为鸢尾花分类。 Azure 机器学习工作室中提供的鸢尾花数据集是流行的[鸢尾花数据集](https://en.wikipedia.org/wiki/Iris_flower_data_set)的子集，仅包含两种花卉种类（类 0 和类 1）的实例。 每个花卉有四个特征（花萼长度、花萼宽度、花瓣长度和花瓣宽度）。
+双类分类问题的一个示例是鸢尾花的分类。 任务是根据特征为鸢尾花分类。 Azure 机器学习工作室（经典版）中提供的鸢尾花数据集是流行的[鸢尾花数据集](https://en.wikipedia.org/wiki/Iris_flower_data_set)的子集，仅包含两种花卉种类（类 0 和类 1）的实例。 每个花卉有四个特征（花萼长度、花萼宽度、花瓣长度和花瓣宽度）。
 
 ![鸢尾花实验的屏幕截图](./media/interpret-model-results/1.png)
 
@@ -66,7 +63,7 @@ Azure 机器学习工作室具有不同的模块用于处理其中每一种分�
 
 ![鸢尾花双类分类实验的结果](./media/interpret-model-results/2.png)
 
-图 2。 在双类分类中可视化评分模型结果
+图 2. 在双类分类中可视化评分模型结果
 
 **结果解释**
 
@@ -78,9 +75,9 @@ Azure 机器学习工作室具有不同的模块用于处理其中每一种分�
 
 ![评分实验的屏幕截图](./media/interpret-model-results/3.png)
 
-图 3。 为鸢尾花双类分类问题实验评分
+图 3. 为鸢尾花双类分类问题实验评分
 
-现在需要设置 Web 服务的输入和输出。 输入是[评分模型][score-model]的右输入端口，即鸢尾花特征输入。 输出的选择取决于对预测的类（评分标签）、评分概率还是两者都感兴趣。 在本示例中，假设用户对两者都感兴趣。 若要选择所需的输出列，请使用[选择数据集中的列][select-columns]模块。 单击[选择数据集中的列][select-columns]，单击“启动列选择器”，并选择“评分标签”和“评分概率”。 设置[选择数据集中的列][select-columns]的输出端口并再次运行它之后，应准备好通过单击“发布 Web 服务”将评分实验发布为 Web 服务。 最终实验类似于图 4。
+现在需要设置 Web 服务的输入和输出。 输入是[评分模型][score-model]的右输入端口，即鸢尾花特征输入。 输出的选择取决于对预测的类（评分标签）、评分概率还是两者都感兴趣。 在本示例中，假设用户对两者都感兴趣。 若要选择所需的输出列，请使用[选择数据集中的列][select-columns]模块。 单击[选择数据集中的列][select-columns]，单击“启动列选择器”，并选择“评分标签”和“评分概率”  。 设置[选择数据集中的列][select-columns]的输出端口并再次运行它之后，应准备好通过单击“发布 Web 服务”将评分实验发布为 Web 服务。 最终实验类似于图 4。
 
 ![鸢尾花双类分类实验](./media/interpret-model-results/4.png)
 
@@ -115,7 +112,7 @@ Azure 机器学习工作室具有不同的模块用于处理其中每一种分�
 
 **结果解释**
 
-左边的 16 个列表示测试集的特征值。 名称为“类“XX”的评分概率”之类的列类似于双类案例中的“评分概率”列。 它们显示对应的项归入特定类的概率。 例如，对于第一个项，它是“A”的概率为 0.003571，它是“B”的概率为 0.000451，以此类推。 最后一列（评分标签）与双类案例中的评分标签相同。 它选择具有最大评分概率的类作为对应项的预测类。 例如，对于第一个项，评分标签为“F”，因为它是“F”的概率最大 (0.916995)。
+左边的 16 个列表示测试集的特征值。 名称为“类“XX”的评分概率”之类的列类似于双类案例中的“评分概率”列。 它们显示对应的项归入特定类的概率。 例如，对于第一个项，它是“A”的概率为 0.003571，它是“B”的概率为 0.000451，以此类推。 最后一列（评分标签）与双类案例中的评分标签相同。 它选择具有最大评分概率的类作为对应项的预测类。 例如，对于第一个项，评分标签为“F”，因为它是“F”的概率 (0.916995) 最大。
 
 **Web 服务发布**
 
@@ -127,7 +124,7 @@ Azure 机器学习工作室具有不同的模块用于处理其中每一种分�
 
 ![实验结果](./media/interpret-model-results/9.png)
 
-图 9。 字母识别多类分类问题的最终评分实验
+图 9. 字母识别多类分类问题的最终评分实验
 
 发布和运行 Web 服务并输入某些输入特征值后，返回的结果类似于图 10。 此手写字母及其提取的 16 个特征预测为“T”，概率为 0.9715。
 
@@ -177,13 +174,13 @@ Azure 机器学习工作室具有不同的模块用于处理其中每一种分�
 ## <a name="clustering"></a>群集功能
 **示例实验**
 
-让我们再次使用鸢尾花构建聚类实验。 可在此处筛选出数据集中的类标签，以便它仅具有特征，并且可用于聚类。 在此鸢尾花用例中，在训练过程中将群集的数量指定为二，这意味着将花卉聚类为两个类。 实验显示在图 15 中。
+让我们再次使用 Iris 数据集生成聚类分析试验。 可在此处筛选出数据集中的类标签，以便它仅具有特征，并且可用于聚类。 在此鸢尾花用例中，在训练过程中将群集的数量指定为二，这意味着将花卉聚类为两个类。 实验显示在图 15 中。
 
 ![鸢尾花聚类问题实验](./media/interpret-model-results/15.png)
 
 图 15. 鸢尾花聚类问题实验
 
-聚类不同于分类，因为训练数据集本身没有地面实况标签。 聚类将训练数据集实例分组为离散群集。 在训练过程中，模型通过了解项特征之间的差异标记项。 在那之后，训练的模型可用于进一步分类将来的项。 在聚类问题中，我们对结果的两个部分感兴趣。 第一个部分是训练数据集，第二个部分是使用训练的模型为新数据集分类。
+群集不同于分类的不同之处在于，定型数据集本身并没有实际的标签。 聚类将训练数据集实例分组为离散群集。 在训练过程中，模型通过了解项特征之间的差异标记项。 在那之后，训练的模型可用于进一步分类将来的项。 在聚类问题中，我们对结果的两个部分感兴趣。 第一个部分是训练数据集，第二个部分是使用训练的模型为新数据集分类。
 
 结果的第一个部分可以可视化，方法是单击[聚类分析模型定型][train-clustering-model]的左输出端口，并单击“可视化”。 可视化显示在图 16 中。
 
@@ -226,7 +223,7 @@ Azure 机器学习工作室具有不同的模块用于处理其中每一种分�
 * 客户特征数据
 * 餐馆特色数据
 
-使用 Azure 机器学习工作室中的 [Matchbox 推荐器定型][train-matchbox-recommender]模块，可以执行多个操作：
+使用 Azure 机器学习工作室（经典版）中的 [Matchbox 推荐器定型][train-matchbox-recommender]模块，可以执行多个操作：
 
 * 预测给定用户和项目的评级
 * 向给定用户推荐项目
@@ -237,7 +234,7 @@ Azure 机器学习工作室具有不同的模块用于处理其中每一种分�
 
 ![Matchbox 推荐器](./media/interpret-model-results/19_1.png)
 
-推荐器系统的典型 Azure 机器学习工作室实验类似于图 20。 有关如何使用这些推荐器系统模块的信息，请参阅 [Matchbox 推荐器定型][train-matchbox-recommender]和 [Matchbox 推荐器评分][score-matchbox-recommender]。
+推荐器系统的典型 Azure 机器学习工作室（经典版）实验类似于图 20。 有关如何使用这些推荐器系统模块的信息，请参阅[训练 Matchbox 推荐器][train-matchbox-recommender]和 [Matchbox 推荐器评分][score-matchbox-recommender]。
 
 ![推荐器系统实验](./media/interpret-model-results/20.png)
 

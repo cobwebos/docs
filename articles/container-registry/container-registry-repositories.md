@@ -1,29 +1,23 @@
 ---
-title: Azure 门户中的“Azure 容器注册表”存储库
-description: 如何在 Azure 门户中查看“Azure 容器注册表”存储库。
-services: container-registry
-author: cristy
-manager: jeconnoc
-ms.service: container-registry
+title: 在门户中查看存储库
+description: 使用 Azure 门户查看 Azure 容器注册表存储库，这些存储库托管 Docker 容器映像和其他受支持的项目。
 ms.topic: article
 ms.date: 01/05/2018
-ms.author: cristyg
-ms.openlocfilehash: 685c978ff206e75d770918f2528a826ad522b706
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 1da72706d2554610a685f71199ab14af5e30ce1a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60427085"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74456293"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>在 Azure 门户中查看容器注册表存储库
 
 使用 Azure 容器注册表可将 Docker 容器映像存储在存储库中。 通过将映像存储在存储库中，可以将映像组（或映像版本）存储在隔离环境中。 将映像推送到注册表时，可以指定这些存储库，并可在 Azure 门户中查看其内容。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* **容器注册表**:在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
-* **Docker CLI**:安装[Docker] [ docker-install]在本地计算机上，此大小提供 Docker 命令行接口。
-* **容器映像**:将映像推送到容器注册表。 有关如何推送和拉取映像的指南，请参阅[推送和拉取映像](container-registry-get-started-docker-cli.md)。
+* **容器注册表**：在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
+* **Docker CLI**：在本地计算机上安装 [Docker][docker-install]，该工具可为你提供 Docker 命令行接口。
+* **容器映像**：将映像推送到容器注册表。 有关如何推送和拉取映像的指南，请参阅[推送和拉取映像](container-registry-get-started-docker-cli.md)。
 
 ## <a name="view-repositories-in-azure-portal"></a>在 Azure 门户中查看存储库
 
@@ -39,9 +33,9 @@ docker push myregistry.azurecr.io/samples/nginx
 
 若要查看存储库，请执行以下操作：
 
-1. 登录 [Azure 门户][portal]
+1. 登录到 [Azure 门户][portal]
 1. 选择向其推送了 Nginx 映像的 **Azure 容器注册表**
-1. 选择“存储库”可查看包含注册表中映像的存储库的列表
+1. 选择“存储库”  可查看包含注册表中映像的存储库的列表
 1. 选择某个存储库以查看该存储库中的映像标记
 
 例如，如果已按照[推送和拉取映像](container-registry-get-started-docker-cli.md)中的说明推送了 Nginx 映像，应看到的内容如下所示：

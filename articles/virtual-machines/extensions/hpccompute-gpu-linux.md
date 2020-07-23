@@ -1,25 +1,24 @@
 ---
-title: NVIDIA GPU 驱动程序扩展 - Azure Linux VM | Microsoft Docs
+title: NVIDIA GPU 驱动程序扩展 - Azure Linux VM
 description: 用于在运行 Linux 的 N 系列计算 VM 上安装 NVIDIA GPU 驱动程序的 Microsoft Azure 扩展。
 services: virtual-machines-linux
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
-ms.author: roiyz
-ms.openlocfilehash: 5a184c72da8af0d451902a164c8b71a94a01883f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: akjosh
+ms.openlocfilehash: 52f896e5cbcc8089ee8683338c99fb514400be4a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683175"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511137"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>适用于 Linux 的 NVIDIA GPU 驱动程序扩展
 
@@ -27,19 +26,20 @@ ms.locfileid: "64683175"
 
 此扩展在 Linux N 系列 VM 上安装 NVIDIA GPU 驱动程序。 根据 VM 系列，此扩展安装 CUDA 或 GRID 驱动程序。 使用此扩展安装 NVIDIA 驱动程序时，即表示你接受并同意 [NVIDIA 最终用户许可协议](https://go.microsoft.com/fwlink/?linkid=874330)的条款。 在安装过程中，VM 可能会重新启动以完成驱动程序安装。
 
+[此处](../linux/n-series-driver-setup.md)提供了有关手动安装驱动程序和当前支持的版本的说明。
 此扩展也可用于在 [Windows N 系列 VM](hpccompute-gpu-windows.md) 上安装 NVIDIA GPU 驱动程序。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
 
 此扩展支持以下 OS 发行版，具体取决于特定 OS 版本对驱动程序的支持。
 
-| 分发 | Version |
+| 分发 | 版本 |
 |---|---|
 | Linux：Ubuntu | 16.04 LTS、18.04 LTS |
-| Linux：Red Hat Enterprise Linux | 7.3, 7.4, 7.5, 7.6 |
-| Linux：CentOS | 7.3, 7.4, 7.5, 7.6 |
+| Linux：Red Hat Enterprise Linux | 7.3、7.4、7.5、7.6、7.7 |
+| Linux：CentOS | 7.3、7.4、7.5、7.6、7.7 |
 
 ### <a name="internet-connectivity"></a>Internet 连接
 
@@ -61,7 +61,7 @@ ms.locfileid: "64683175"
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverLinux",
-    "typeHandlerVersion": "1.2",
+    "typeHandlerVersion": "1.3",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -74,18 +74,18 @@ ms.locfileid: "64683175"
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| 发布者 | Microsoft.HpcCompute | string |
+| publisher | Microsoft.HpcCompute | string |
 | type | NvidiaGpuDriverLinux | string |
-| typeHandlerVersion | 1.2 | int |
+| typeHandlerVersion | 1.3 | int |
 
 ### <a name="settings"></a>设置
 
-所有设置都是可选的。 默认行为是，如果安装驱动程序时不要求更新内核，则不进行更新，请安装最新的受支持驱动程序和 CUDA 工具包（根据情况）。
+所有设置都是可选的。 默认行为是，如果安装驱动程序时不要求更新内核，则不进行相应更新，请安装最新的受支持驱动程序和 CUDA 工具包（根据情况）。
 
-| 名称 | 描述 | 默认值 | 有效值 | 数据类型 |
+| 名称 | 说明 | 默认值 | 有效值 | 数据类型 |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | 更新内核，即使安装驱动程序时不需要更新 | false | true、false | boolean |
-| driverVersion | NV：GRID 驱动程序版本<br> NC/ND：CUDA 工具包版本。 将自动安装所选 CUDA 的最新驱动程序。 | 最新 | GRID："418.70", "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA：“10.0.130”、“9.2.88”、“9.1.85” | string |
+| driverVersion | NV：GRID 驱动程序版本<br> NC/ND：CUDA 工具包版本。 将自动安装所选 CUDA 的最新驱动程序。 | 最新 | GRID：“430.30”、“418.70”、“410.92”、“410.71”、“390.75”、“390.57”、“390.42”<br> CUDA：“10.0.130”、“9.2.88”、“9.1.85” | string |
 | installCUDA | 安装 CUDA 工具包。 仅适用于 NC/ND 系列 VM。 | true | true、false | boolean |
 
 
@@ -94,9 +94,9 @@ ms.locfileid: "64683175"
 
 ### <a name="azure-resource-manager-template"></a>Azure 资源管理器模板 
 
-可使用 Azure 资源管理器模板部署 Azure VM 扩展。 部署需要部署后配置的一个或多个虚拟机时，模板是理想选择。
+可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 部署需要部署后配置的一个或多个虚拟机时，模板是理想选择。
 
-虚拟机扩展的 JSON 配置可以嵌套在虚拟机资源内，或放置在资源管理器 JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/resource-manager-template-child-resource.md)。 
+虚拟机扩展的 JSON 配置可以嵌套在虚拟机资源内，或放置在资源管理器 JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/templates/child-resource-name-type.md)。 
 
 以下示例假定扩展嵌套在虚拟机资源内。 嵌套扩展资源时，JSON 放置在虚拟机的 `"resources": []` 对象中。
 
@@ -112,7 +112,7 @@ ms.locfileid: "64683175"
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverLinux",
-    "typeHandlerVersion": "1.2",
+    "typeHandlerVersion": "1.3",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -130,25 +130,36 @@ Set-AzVMExtension
     -Publisher "Microsoft.HpcCompute" `
     -ExtensionName "NvidiaGpuDriverLinux" `
     -ExtensionType "NvidiaGpuDriverLinux" `
-    -TypeHandlerVersion 1.2 `
+    -TypeHandlerVersion 1.3 `
     -SettingString '{ `
     }'
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
 
-以下示例镜像了上述 Azure 资源管理器和 PowerShell 示例，并添加了自定义设置作为非默认驱动程序安装的示例。 具体而言，它更新 OS 内核并安装特定的 CUDA 工具包版本驱动程序。
+以下示例对上述 Azure 资源管理器和 PowerShell 示例进行了镜像。
 
 ```azurecli
-az vm extension set `
-  --resource-group myResourceGroup `
-  --vm-name myVM `
-  --name NvidiaGpuDriverLinux `
-  --publisher Microsoft.HpcCompute `
-  --version 1.2 `
-  --settings '{ `
-    "updateOS": true, `
-    "driverVersion": "9.1.85", `
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name NvidiaGpuDriverLinux \
+  --publisher Microsoft.HpcCompute \
+  --version 1.3 
+```
+
+以下示例还添加了两个可选的自定义设置，作为非默认驱动程序安装的示例。 具体而言，它将 OS 内核更新为最新版本，并安装特定的 CUDA 工具包版本驱动程序。 同样，请注意，“--settings”是可选项，并且是默认设置。 请注意，更新内核可能会增加扩展安装时间。 另外，选择的特定（较旧）CUDA 工具包版本可能并不总是与较新的内核兼容。
+
+```azurecli
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name NvidiaGpuDriverLinux \
+  --publisher Microsoft.HpcCompute \
+  --version 1.3 \
+  --settings '{ \
+    "updateOS": true, \
+    "driverVersion": "10.0.130" \
   }'
 ```
 
@@ -166,7 +177,7 @@ Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtens
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-扩展执行输出将记录到以下文件：
+扩展执行输出将记录到以下文件。 请参考此文件以跟踪（任何长期运行的）安装的状态以及对任何故障进行排查。
 
 ```bash
 /var/log/azure/nvidia-vmext-status
@@ -177,7 +188,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 | 退出代码 | 含义 | 可能的操作 |
 | :---: | --- | --- |
 | 0 | 操作成功 |
-| 第 | 扩展的用法不正确 | 检查执行输出日志 |
+| 1 | 扩展的用法不正确 | 检查执行输出日志 |
 | 10 | 用于 Hyper-V 和 Azure 的 Linux Integration Services 不可用或未安装 | 检查 lspci 的输出 |
 | 11 | 在此 VM 大小上找不到 NVIDIA GPU | 使用[受支持的 VM 大小和 OS](../linux/n-series-driver-setup.md) |
 | 12 | 不支持的映像产品/服务 |
@@ -192,4 +203,4 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ## <a name="next-steps"></a>后续步骤
 有关扩展的详细信息，请参阅[适用于 Linux 的虚拟机扩展和功能](features-linux.md)。
 
-有关 N 系列 VM 的详细信息，请参阅 [GPU 优化虚拟机大小](../linux/sizes-gpu.md)。
+有关 N 系列 VM 的详细信息，请参阅 [GPU 优化虚拟机大小](../sizes-gpu.md)。

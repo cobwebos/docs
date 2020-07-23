@@ -1,24 +1,23 @@
 ---
-title: Azure 负载均衡器的多个前端
-titlesuffix: Azure Load Balancer
-description: Azure 负载均衡器上的多个前端概述
+title: 多个前端 - Azure 负载均衡器
+description: 通过此学习路径，开始大致了解 Azure 标准负载均衡器上的多个前端
 services: load-balancer
 documentationcenter: na
-author: chkuhtz
+author: asudbring
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/22/2018
-ms.author: chkuhtz
-ms.openlocfilehash: b9a140314b8eba6386c37bdbcf2bb3de58589335
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 08/07/2019
+ms.author: allensu
+ms.openlocfilehash: 2192531aec7800314c6748740262f8746da0c4fc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60594132"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956366"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure 负载均衡器的多个前端
 
@@ -30,9 +29,9 @@ ms.locfileid: "60594132"
 
 下表包含一些示例前端配置：
 
-| 前端 | IP 地址 | 协议 | port |
+| 前端 | IP 地址 | protocol | port |
 | --- | --- | --- | --- |
-| 第 |65.52.0.1 |TCP |80 |
+| 1 |65.52.0.1 |TCP |80 |
 | 2 |65.52.0.1 |TCP |*8080* |
 | 3 |65.52.0.1 |*UDP* |80 |
 | 4 |*65.52.0.2* |TCP |80 |
@@ -54,9 +53,9 @@ Azure Load Balancer 允许在相同的负载均衡器配置中混用这两种规
 
 在此方案中，前端的配置如下：
 
-| 前端 | IP 地址 | 协议 | port |
+| 前端 | IP 地址 | protocol | port |
 | --- | --- | --- | --- |
-| ![绿色前端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 第 |65.52.0.1 |TCP |80 |
+| ![绿色前端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![紫色前端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
 
 DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一端口上的所需服务。 此服务通过规则定义与前端关联。
@@ -65,14 +64,14 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 
 | 规则 | 映射前端 | 目标后端池 |
 | --- | --- | --- |
-| 第 |![绿色前端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![后端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![后端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
+| 1 |![绿色前端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![后端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![后端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
 | 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![后端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![后端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
 
 现在，Azure 负载均衡器的完整映射如下：
 
-| 规则 | 前端 IP 地址 | 协议 | port | 目标 | port |
+| 规则 | 前端 IP 地址 | protocol | port | 目标 | port |
 | --- | --- | --- | --- | --- | --- |
-| ![绿色规则](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 第 |65.52.0.1 |TCP |80 |DIP IP 地址 |80 |
+| ![绿色规则](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |DIP IP 地址 |80 |
 | ![紫色规则](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |DIP IP 地址 |81 |
 
 每个规则必须生成具有目标 IP 地址和目标端口唯一组合的流量。 通过改变流量的目标端口，多个规则可将流量发送到不同端口上的相同 DIP。
@@ -99,26 +98,57 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 * 前端 1：来宾 OS 中的环回接口，该接口上已配置前端 1 的 IP 地址
 * 前端 2：来宾 OS 中的环回接口，该接口上已配置前端 2 的 IP 地址
 
+对于后端池中的每个 VM，请在 Windows 命令提示符下运行以下命令。
+
+若要获取 VM 上的接口名称列表，请键入以下命令：
+
+```console
+netsh interface show interface 
+```
+
+对于 VM NIC（Azure 托管），请键入以下命令：
+
+```console
+netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled
+```
+
+（将 interfacename 替换为此接口的名称）
+
+对于添加的每个环回接口，重复以下命令：
+
+```console
+netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled 
+```
+
+（将 interfacename 替换为此环回接口的名称）
+
+```console
+netsh interface ipv4 set interface “interfacename” weakhostsend=enabled 
+```
+
+（将 interfacename 替换为此环回接口的名称）
+
 > [!IMPORTANT]
 > 环回接口的配置在来宾 OS 中执行。 此配置不是由 Azure 执行或管理。 如果没有此配置，规则将无法正常运行。 运行状况探测定义使用 VM 的 DIP（而不是环回接口）表示 DSR 前端。 因此，服务必须在 DIP 端口上提供探测响应，以反映表示 DSR 前端的环回接口上提供的服务的状态。
 
+
 假设上述方案使用相同的前端配置：
 
-| 前端 | IP 地址 | 协议 | port |
+| 前端 | IP 地址 | protocol | port |
 | --- | --- | --- | --- |
-| ![绿色前端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 第 |65.52.0.1 |TCP |80 |
+| ![绿色前端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![紫色前端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
 
 我们定义了两个规则：
 
 | 规则 | 前端 | 映射到后端池 |
 | --- | --- | --- |
-| 第 |![规则](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![后端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80（在 VM1 和 VM2 中） |
-| 2 |![规则](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![后端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80（在 VM1 和 VM2 中） |
+| 1 |![规则 (rule)](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![后端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80（在 VM1 和 VM2 中） |
+| 2 |![规则 (rule)](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![后端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80（在 VM1 和 VM2 中） |
 
 下表显示负载均衡器中的完整映射：
 
-| 规则 | 前端 IP 地址 | 协议 | port | 目标 | port |
+| 规则 | 前端 IP 地址 | protocol | port | 目标 | port |
 | --- | --- | --- | --- | --- | --- |
 | ![绿色规则](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |与前端 (65.52.0.1) 相同 |与前端 (80) 相同 |
 | ![紫色规则](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |与前端 (65.52.0.2) 相同 |与前端 (80) 相同 |
@@ -127,14 +157,14 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 
 请注意，本示例未更改目标端口。 这是一个浮动 IP 方案，不过 Azure 负载均衡器也支持定义规则来重写后端的目标端口，使其与前端的目标端口不同。
 
-浮动 IP 规则类型是多种负载均衡器配置模式的基础。 [具有多个侦听器的 SQL AlwaysOn](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) 配置是目前提供的示例之一。 一段时间后，我们会介绍更多此类方案。
+浮动 IP 规则类型是多种负载均衡器配置模式的基础。 [具有多个侦听器的 SQL AlwaysOn](../azure-sql/virtual-machines/windows/availability-group-listener-powershell-configure.md) 配置是目前提供的示例之一。 一段时间后，我们会介绍更多此类方案。
 
 ## <a name="limitations"></a>限制
 
 * 只有 IaaS VM 支持多个前端配置。
-* 使用浮点 IP 规则时，应用程序必须为出站流使用主要 IP 配置。 如果应用程序绑定到来宾 OS 中环回接口上配置的前端 IP 地址，则无法使用 Azure 的 SNAT 来重写出站流，此时流处理会失败。
+* 使用浮动 IP 规则时，应用程序必须对出站 SNAT 流使用主要 IP 配置。 如果应用程序绑定到来宾 OS 中环回接口上配置的前端 IP 地址，则无法使用 Azure 的出站 SNAT 来重写出站流，此时流处理会失败。  查看[出站方案](load-balancer-outbound-connections.md)。
 * 公共 IP 地址会影响计费。 有关详细信息，请参阅 [IP 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses/)
-* 订阅有所限制。 有关详细信息，请参阅[服务限制](../azure-subscription-service-limits.md#networking-limits)。
+* 订阅有所限制。 有关详细信息，请参阅[服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)。
 
 ## <a name="next-steps"></a>后续步骤
 

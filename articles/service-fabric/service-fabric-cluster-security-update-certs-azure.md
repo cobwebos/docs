@@ -1,30 +1,18 @@
 ---
-title: 管理 Azure Service Fabric 群集中的证书 | Microsoft Docs
+title: 管理 Azure Service Fabric 群集中的证书
 description: 介绍如何向 Service Fabric 群集添加新的证书、滚动更新证书和从群集中删除证书。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chakdan
-editor: ''
-ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/13/2018
-ms.author: aljo
-ms.openlocfilehash: f1998ec2fe82b9fd52547fbccb208542b22bc949
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
-ms.translationtype: MT
+ms.openlocfilehash: 43e9c95e0fb8484f7b24c5a0c409d3aa6a68eabc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306918"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658383"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>在 Azure 中添加或删除 Service Fabric 群集的证书
 建议先了解 Service Fabric 使用 X.509 证书的方式，并熟悉[群集安全性应用场景](service-fabric-cluster-security.md)。 在继续下一步之前，必须先了解群集证书的定义和用途。
 
-Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日期最远的已定义证书，而不管其主要或次要配置定义如何。 回退到的经典行为是非推荐的高级的操作，需要将"UseSecondaryIfNewer"设置参数值设置为 false Fabric.Code 配置中。
+Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日期最远的已定义证书，而不管其主要或次要配置定义如何。 回退到经典行为是不推荐使用的高级操作，需要在 `Fabric.Code` 配置内将“UseSecondaryIfNever”设置参数的值设置为 false。
 
 在创建群集期间配置证书安全性时，Service Fabric 允许指定两个群集证书（主要证书和辅助证书）以及客户端证书。 请参阅[通过门户创建 Azure 群集](service-fabric-cluster-creation-via-portal.md)或[通过 Azure 资源管理器创建 Azure 群集](service-fabric-cluster-creation-via-arm.md)，了解在创建时进行相关设置的详细信息。 如果创建时只指定了一个群集证书，将使用该证书作为主要证书。 在创建群集后，可以添加一个新证书作为辅助证书。
 
@@ -46,20 +34,18 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
 
 若要删除标记为“主要”的证书，则需部署一个过期日期比该主要证书更远的辅助证书，从而启用自动变换行为；并在自动变换完成后该删除主要证书。
 
-## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>使用 Resource Manager Powershell 添加辅助证书
-> [!TIP]
-> 还有现在更好、 更轻松的方法来添加辅助证书 using[添加 AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) cmdlet。 无需执行本部分中的其余步骤。  此外，不需要最初用于创建和部署群集时使用的模板[添加 AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) cmdlet。
+## <a name="add-a-secondary-certificate-using-azure-resource-manager"></a>使用 Azure 资源管理器添加辅助证书
 
 执行这些步骤的前提是，熟悉资源管理器的工作原理，并已使用资源管理器模板至少部署了一个 Service Fabric 群集，同时已准备好在设置此群集时使用的模板。 此外，还有一个前提就是，可以熟练使用 JSON。
 
 > [!NOTE]
-> 如需可参考或入手的示例模板和参数，请从此 [git-repo](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) 下载。 
+> 如需可参考或入手的示例模板和参数，请从此 [git-repo](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) 下载。 
 > 
 > 
 
-### <a name="edit-your-resource-manager-template"></a>编辑 Resource Manager 模板
+### <a name="edit-your-resource-manager-template"></a>编辑 资源管理器模板
 
-为了便于参考，示例 5-VM-1-NodeTypes-Secure_Step2.JSON 包含我们将进行的所有编辑。 该示例位于 [git-repo](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample)。
+为了便于参考，示例 5-VM-1-NodeTypes-Secure_Step2.JSON 包含我们将进行的所有编辑。 该示例位于 [git-repo](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)。
 
 **请确保执行所有步骤**
 
@@ -117,7 +103,7 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
          }
     ``` 
 
-4. 对**所有** **Microsoft.Compute/virtualMachineScaleSets** 资源定义进行更改 - 查找 Microsoft.Compute/virtualMachineScaleSets 资源定义。 在“virtualMachineProfile”下，滚动到“publisher”：“Microsoft.Azure.ServiceFabric”。
+4. 对**所有** **Microsoft.Compute/virtualMachineScaleSets** 资源定义进行更改 - 查找 Microsoft.Compute/virtualMachineScaleSets 资源定义。 滚动到 "publisher":"Microsoft.Azure.ServiceFabric"，位于 "virtualMachineProfile" 下。
 
     在 Service Fabric 发布服务器设置中，应看到类似如下的内容。
     
@@ -178,7 +164,7 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
 > 
 
 ### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>编辑模板文件，反映前面添加的新参数
-如果参考了 [git-repo](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) 中的示例，便可开始更改示例 5-VM-1-NodeTypes-Secure.parameters_Step2.JSON 
+如果参考了 [git-repo](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) 中的示例，便可开始更改示例 5-VM-1-NodeTypes-Secure.parameters_Step2.JSON 
 
 编辑 Resource Manager 模板参数文件，添加 secCertificateThumbprint 和 secCertificateUrlValue 的两个新参数。 
 
@@ -195,7 +181,7 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
 ### <a name="deploy-the-template-to-azure"></a>将模板部署到 Azure
 
 - 现在，可以将模板部署到 Azure。 请打开 Azure PS 版本 1（或更高版本）的命令提示符。
-- 登录到你的 Azure 帐户并选择特定的 azure 订阅。 对于有权访问多个 Azure 订阅的用户而言，这是一个重要步骤。
+- 登录到 Azure 帐户，选择特定的 Azure 订阅。 对于有权访问多个 Azure 订阅的用户而言，这是一个重要步骤。
 
 ```powershell
 Connect-AzAccount
@@ -210,7 +196,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <Resource Group that your clus
 
 ```
 
-将模板部署到该资源组。 使用群集当前部署到的同一个资源组。 运行新建 AzResourceGroupDeployment 命令。 无需指定模式，因为默认值为 **incremental**。
+将模板部署到该资源组。 使用群集当前部署到的同一个资源组。 运行 New-AzResourceGroupDeployment 命令。 无需指定模式，因为默认值为 **incremental**。
 
 > [!NOTE]
 > 如果将 Mode 设置为 Complete，可能会无意中删除不在模板中的资源。 因此请不要在此方案中使用该模式。
@@ -232,7 +218,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroup2 -TemplateParame
 
 ```
 
-部署完成后，使用新证书连接到群集，并执行一些查询。 如果能够执行这些查询， 则可以删除旧证书。 
+部署完成后，使用新证书连接到群集，并执行一些查询。 如果能够执行这些查询， 然后便可删除旧证书。 
 
 如果使用自签名证书，请务必将它们导入本地 TrustedPeople 证书存储。
 
@@ -288,10 +274,14 @@ Get-ServiceFabricClusterHealth
 
 若要删除辅助证书，以防将其用于群集安全，请导航到“安全性”部分，并从特定证书的上下文菜单中选择“删除”选项。
 
+## <a name="adding-application-certificates-to-a-virtual-machine-scale-set"></a>向虚拟机规模集添加应用程序证书
+
+若要将用于应用程序的证书部署到群集，请参阅[此示例 Powershell 脚本](scripts/service-fabric-powershell-add-application-certificate.md)。
+
 ## <a name="next-steps"></a>后续步骤
 有关群集管理的详细信息，请阅读以下文章：
 
-* [Service Fabric 群集升级过程与期望](service-fabric-cluster-upgrade.md)
+* [Service Fabric 群集升级过程和用户预期](service-fabric-cluster-upgrade.md)
 * [为客户端设置基于角色的访问](service-fabric-cluster-security-roles.md)
 
 <!--Image references-->

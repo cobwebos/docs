@@ -6,13 +6,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.openlocfilehash: 8226d1f49b8ba73870dba009e97ff2718a0eee27
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.date: 12/19/2019
+ms.openlocfilehash: 752068af531c4a0ecc832d266f88105c14452ecb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689354"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75494925"
 ---
 # <a name="performance-optimization-for-apache-kafka-hdinsight-clusters"></a>Apache Kafka HDInsight 群集的性能优化
 
@@ -42,22 +41,21 @@ Apache Kafka 性能体现在两个主要方面 – 吞吐量和延迟。 吞吐�
 
 Apache Kafka 生成者将作为一个单元发送的消息组（称为批）汇编到一起，以将其存储在单个存储分区中。 批大小表示在传输该组之前必须达到的字节数。 增大 `batch.size` 参数可以提高吞吐量，因为这可以降低网络和 IO 请求的处理开销。 负载较轻时，增大批大小可能会增大 Kafka 发送延迟，因为生成者需要等待某个批准备就绪。 负载较重时，建议增大批大小以改善吞吐量和延迟。
 
-### <a name="producer-required-acknowledgements"></a>生成者所需的确认
+### <a name="producer-required-acknowledgments"></a>制造者要求的确认
 
-生成者所需的 `acks` 配置确定在将某个写入请求视为已完成之前，分区领先者所需的确认数目。 此设置会影响数据可靠性，其值为 `0`、`1` 或 `-1`。 值 `-1` 表示必须收到所有副本的确认，才能将写入请求视为已完成。 设置 `acks = -1` 能够更可靠地保证数据不会丢失，但同时也会导致延迟增大，吞吐量降低。 如果应用场景要求提供较高的吞吐量，请尝试设置 `acks = 0` 或 `acks = 1`。 请记住，不确认所有副本可能会降低数据可靠性。
+生成者所需的 `acks` 配置确定在将某个写入请求视为已完成之前，分区领先者所需的确认数目。 此设置会影响数据可靠性，其值为 `0`、`1` 或 `-1`。 的值 `-1` 表示在写入完成之前必须从所有副本接收确认。 设置 `acks = -1` 能够更可靠地保证数据不会丢失，但同时也会导致延迟增大，吞吐量降低。 如果应用场景要求提供较高的吞吐量，请尝试设置 `acks = 0` 或 `acks = 1`。 请记住，不确认所有副本可能会降低数据可靠性。
 
 ### <a name="compression"></a>压缩
 
 可将 Kafka 生成者配置为先压缩消息，然后再将消息发送到代理。 `compression.type` 设置指定要使用的压缩编解码器。 支持的压缩编解码器为“gzip”、“snappy”和“lz4”。 如果磁盘容量存在限制，则压缩是有利的做法，应予以考虑。
 
-在 `gzip` 和 `snappy` 这两个常用的压缩编解码器中，`gzip` 的压缩率更高，它可以降低磁盘用量，但代价是使 CPU 负载升高。 `snappy` 编解码器的压缩率更低，但造成的 CPU 开销更低。 可以根据代理磁盘或生成者的 CPU 限制来决定使用哪个编解码器。 `gzip` 可以压缩数据的高五倍增长`snappy`。
+在 `gzip` 和 `snappy` 这两个常用的压缩编解码器中，`gzip` 的压缩率更高，它可以降低磁盘用量，但代价是使 CPU 负载升高。 `snappy` 编解码器的压缩率更低，但造成的 CPU 开销更低。 可以根据代理磁盘或生成者的 CPU 限制来决定使用哪个编解码器。 `gzip` 可以以比 `snappy` 高五倍的速率压缩数据。
 
-使用数据压缩会增加磁盘中可存储的记录数。 如果生成者与代理使用的压缩格式不匹配，则数据压缩也会增大 CPU 开销。 因为数据在发送之前必须经过压缩，并在处理之前经过解压缩。
+使用数据压缩会增加磁盘中可存储的记录数。 在制造者和 broker 使用的压缩格式不匹配的情况下，它还可能会增加 CPU 开销。 因为数据在发送之前必须经过压缩，并在处理之前经过解压缩。
 
 ## <a name="broker-settings"></a>代理设置
 
 以下部分重点介绍一些用于优化 Kafka 代理性能的最重要设置。 有关所有代理设置的详细说明，请参阅[有关生成者配置的 Apache Kafka 文档](https://kafka.apache.org/documentation/#producerconfigs)。
-
 
 ### <a name="number-of-disks"></a>磁盘数目
 
@@ -65,7 +63,7 @@ Apache Kafka 生成者将作为一个单元发送的消息组（称为批）汇�
 
 ### <a name="number-of-topics-and-partitions"></a>主题和分区的数目
 
-Kafka 生成者将写入主题。 Kafka 使用者读取主题。 主题与日志相关联，该日志是磁盘上的数据结构。 Kafka 将生成者中的记录追加到主题日志的末尾。 主题日志包括分散在多个文件之间的多个分区。 而这些文件又分散在多个 Kafka 群集节点之间。 使用者从其节奏的 Kafka 主题读取，并且可选择主题日志中的位置 （偏移量）。
+Kafka 生成者将写入主题。 Kafka 使用者读取主题。 主题与日志相关联，该日志是磁盘上的数据结构。 Kafka 将生成者中的记录追加到主题日志的末尾。 主题日志包括分散在多个文件之间的多个分区。 而这些文件又分散在多个 Kafka 群集节点之间。 使用者按自己的步调读取 Kafka 主题，并可在主题日志中选取其位置（偏移量）。
 
 每个 Kafka 分区是在系统上的一个日志文件，生成者线程可以同时写入到多个日志。 同样，由于每个使用者线程从一个分区读取消息，因此也能并行处理从多个分区使用消息的操作。
 

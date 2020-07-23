@@ -1,26 +1,25 @@
 ---
-title: Azure 数据工厂中的文件和压缩格式 | Microsoft Docs
+title: Azure 数据工厂中的文件和压缩格式
 description: 了解 Azure 数据工厂支持的文件格式。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6adad9dfbb5a8e0a41bfbf6595d54c07c4a5dbe1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 33f67e1bfa27f4314f64cbcc4d472905fcb15099
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61248821"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318758"
 ---
 # <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>Azure 数据工厂支持的文件和压缩格式
-本主题适用于以下连接器：[Amazon S3](data-factory-amazon-simple-storage-service-connector.md)、[Azure Blob](data-factory-azure-blob-connector.md)、[Azure Data Lake Store](data-factory-azure-datalake-connector.md)、[文件系统](data-factory-onprem-file-system-connector.md)、[FTP](data-factory-ftp-connector.md)、[HDFS](data-factory-hdfs-connector.md)、[HTTP](data-factory-http-connector.md) 和 [SFTP](data-factory-sftp-connector.md)。
+*本主题适用于以下连接器：[Amazon S3](data-factory-amazon-simple-storage-service-connector.md)、[Azure Blob](data-factory-azure-blob-connector.md)、[Azure Data Lake Store](data-factory-azure-datalake-connector.md)、[文件系统](data-factory-onprem-file-system-connector.md)、[FTP](data-factory-ftp-connector.md)、[HDFS](data-factory-hdfs-connector.md)、[HTTP](data-factory-http-connector.md) 和 [SFTP](data-factory-sftp-connector.md)。*
 
 > [!NOTE]
 > 本文适用于 Azure 数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[数据工厂中受支持的文件格式和压缩编解码器](../supported-file-formats-and-compression-codecs.md)。
@@ -36,17 +35,17 @@ Azure 数据工厂支持以下文件格式类型：
 ## <a name="text-format"></a>文本格式
 如果想要读取或写入某个文本文件，请将数据集的 `format` 节中的 `type` 属性设置为 **TextFormat**。 也可在 `format` 节指定以下**可选**属性。 请参阅 [TextFormat 示例](#textformat-example)部分，了解如何进行配置。
 
-| 属性 | 说明 | 允许的值 | 需要 |
+| Property | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| columnDelimiter |用于分隔文件中的列的字符。 可以考虑使用数据中不太可能存在的极少见的不可打印字符。 例如，指定“\u0001”表示标题开头 (SOH)。 |只允许一个字符。 **默认**值为**逗号（“,”）**。 <br/><br/>若要使用 Unicode 字符，请参阅 [Unicode 字符](https://en.wikipedia.org/wiki/List_of_Unicode_characters)获取相应的代码。 |否 |
-| rowDelimiter |用于分隔文件中的行的字符。 |只允许一个字符。 **默认**值为以下任何一项：**[“\r\n”、“\r”、“\n”]**（读取时）和 **“\r\n”**（写入时）。 |否 |
-| escapeChar |用于转义输入文件内容中的列分隔符的特殊字符。 <br/><br/>不能同时为表指定 escapeChar 和 quoteChar。 |只允许一个字符。 没有默认值。 <br/><br/>示例：如果使用逗号 (',') 作为列分隔符，但希望在文本中包含逗号字符（例如："Hello, world"），可以将“$”定义为转义字符，并在源代码中使用字符串 "Hello$, world"。 |否 |
-| quoteChar |括住字符串值的引号字符。 引号字符内的列和行分隔符被视为字符串值的一部分。 此属性同时适用于输入和输出数据集。<br/><br/>不能同时为表指定 escapeChar 和 quoteChar。 |只允许一个字符。 没有默认值。 <br/><br/>例如，如果以逗号（“,”）作为列分隔符，但想要在文本中使用逗号字符（例如：<Hello, world>），可以将 "（双引号）定义为引号字符，在源中使用字符串“Hello, world”。 |否 |
-| nullValue |用于表示 null 值的一个或多个字符。 |一个或多个字符。 **默认**值为 **“\N”和“NULL”**（读取时）及 **“\N”**（写入时）。 |否 |
+| columnDelimiter |用于分隔文件中的列的字符。 可以考虑使用数据中不太可能存在的极少见的不可打印字符。 例如，指定“\u0001”表示标题开头 (SOH)。 |只能使用一个字符。 **默认**值为**逗号（“,”）** 。 <br/><br/>若要使用 Unicode 字符，请参阅 [Unicode 字符](https://en.wikipedia.org/wiki/List_of_Unicode_characters)获取相应的代码。 |否 |
+| rowDelimiter |用于分隔文件中的行的字符。 |只能使用一个字符。 **默认**值为以下任何一项： **[“\r\n”、“\r”、“\n”]** （读取时）和 **“\r\n”** （写入时）。 |否 |
+| escapeChar |用于转义输入文件内容中的列分隔符的特殊字符。 <br/><br/>不能同时指定表的 escapeChar 和 quoteChar。 |只能使用一个字符。 没有默认值。 <br/><br/>示例：如果以逗号（“,”）作为列分隔符，但想要在文本中使用逗号字符（例如：“Hello, world”），可以将“$”定义为转义符，在源中使用字符串“Hello$, world”。 |否 |
+| quoteChar |将字符串值用引号括起来的字符。 引号字符内的列和行分隔符将被视为字符串值的一部分。 此属性适用于输入和输出数据集。<br/><br/>不能同时指定表的 escapeChar 和 quoteChar。 |只能使用一个字符。 没有默认值。 <br/><br/>例如，如果以逗号（“,”）作为列分隔符，但想要在文本中使用逗号字符（例如：<Hello, world>），可以将 "（双引号）定义为引号字符，在源中使用字符串“Hello, world”。 |否 |
+| nullValue |用于表示 null 值的一个或多个字符。 |一个或多个字符。 **默认**值为 **“\N”和“NULL”** （读取时）及 **“\N”** （写入时）。 |否 |
 | encodingName |指定编码名称。 |有效的编码名称。 请参阅 [Encoding.EncodingName 属性](https://msdn.microsoft.com/library/system.text.encoding.aspx)。 例如：windows-1250 或 shift_jis。 **默认**值为 **UTF-8**。 |否 |
 | firstRowAsHeader |指定是否将第一行视为标头。 对于输入数据集，数据工厂将读取第一行作为标头。 对于输出数据集，数据工厂将写入第一行作为标头。 <br/><br/>有关示例方案，请参阅 [`firstRowAsHeader` 和 `skipLineCount` 使用方案](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |True<br/><b>False（默认值）</b> |否 |
-| skipLineCount |指示从输入文件读取数据时要跳过的行数。 如果同时指定了 skipLineCount 和 firstRowAsHeader，则先跳过代码行，然后从输入文件读取标头信息。 <br/><br/>有关示例方案，请参阅 [`firstRowAsHeader` 和 `skipLineCount` 使用方案](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |Integer |否 |
-| treatEmptyAsNull |指定从输入文件读取数据时，是否将 null 或空字符串视为 null 值。 |**True（默认值）**<br/>False |否 |
+| skipLineCount |指示从输入文件读取数据时要跳过的行数。 如果同时指定了 skipLineCount 和 firstRowAsHeader，则先跳过行，然后从输入文件读取标头信息。 <br/><br/>有关示例方案，请参阅 [`firstRowAsHeader` 和 `skipLineCount` 使用方案](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |Integer |否 |
+| treatEmptyAsNull |指定是否在从输入文件读取数据时将 null 或空字符串视为 null 值。 |**True（默认值）**<br/>False |否 |
 
 ### <a name="textformat-example"></a>TextFormat 示例
 在某个数据集的以下 JSON 定义中，指定了一些可选属性。
@@ -82,16 +81,16 @@ Azure 数据工厂支持以下文件格式类型：
 * 要从文本文件复制，并想跳过不包含数据或标头信息的开头几行。 通过指定 `skipLineCount` 指明要跳过的行数。 如果文件的剩余部分包含标头行，则也可指定 `firstRowAsHeader`。 如果同时指定了 `skipLineCount` 和 `firstRowAsHeader`，则先跳过代码行，然后从输入文件读取标头信息
 
 ## <a name="json-format"></a>JSON 格式
-要在 Azure Cosmos DB 中按原样导入/导出 JSON 文件，请参阅[将数据移入/移出 Cosmos DB](data-factory-azure-documentdb-connector.md) 一文中的[导入/导出 JSON 文档](data-factory-azure-documentdb-connector.md#importexport-json-documents)部分。
+要在 Azure Cosmos DB 中按原样导入/导出 JSON 文件，请参阅[将数据移入/移出 Cosmos DB](data-factory-azure-documentdb-connector.md) 一文中的[导入/导出 JSON 文档](data-factory-azure-documentdb-connector.md#importexport-json-documents)部分。****
 
 要分析 JSON 文件或以 JSON 格式写入数据，请将 `format` 节中的 `type` 属性设置为 **JsonFormat**。 也可在 `format` 节指定以下**可选**属性。 请参阅 [JsonFormat 示例](#jsonformat-example)部分，了解如何进行配置。
 
-| 属性 | 说明 | 需要 |
+| 属性 | 描述 | 必须 |
 | --- | --- | --- |
 | filePattern |指示每个 JSON 文件中存储的数据模式。 允许的值为：**setOfObjects** 和 **arrayOfObjects**。 **默认**值为 **setOfObjects**。 请参阅 [JSON 文件模式](#json-file-patterns)部分，详细了解这些模式。 |否 |
 | jsonNodeReference | 若要进行迭代操作，以同一模式从数组字段中的对象提取数据，请指定该数组的 JSON 路径。 只有从 JSON 文件复制数据时，才支持此属性。 | 否 |
 | jsonPathDefinition | 为每个使用自定义列名映射的列指定 JSON 路径表达式（开头为小写）。 只有从 JSON 文件复制数据时，才支持此属性，而且用户可以从对象或数组提取数据。 <br/><br/> 对于根对象下的字段，请以根 $ 开头；对于按 `jsonNodeReference` 属性选择的数组中的字段，请以数组元素开头。 请参阅 [JsonFormat 示例](#jsonformat-example)部分，了解如何进行配置。 | 否 |
-| encodingName |指定编码名称。 有关有效编码名称的列表，请参阅：[Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) 属性。 例如：windows-1250 或 shift_jis。 默认值为：**UTF-8**。 |否 |
+| encodingName |指定编码名称。 有关有效编码名称的列表，请参阅：[Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) 属性。 例如：windows-1250 或 shift_jis。 默认值为  ：**UTF-8**。 |否 |
 | nestingSeparator |用于分隔嵌套级别的字符。 默认值为“.”（点）。 |否 |
 
 ### <a name="json-file-patterns"></a>JSON 文件模式
@@ -218,16 +217,16 @@ Azure 数据工厂支持以下文件格式类型：
     }
 }
 ```
-并且想要通过从对象和数组中提取数据，使用以下格式将该文件复制到 Azure SQL 表：
+并且你想要通过从对象和数组中提取数据，使用以下格式将该文件复制到 Azure SQL 表：
 
-| id | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
+| ID | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
 | --- | --- | --- | --- | --- |
 | ed0e4960-d9c5-11e6-85dc-d7996816aad3 | PC | Microsoft.Compute/virtualMachines | 827f8aaa-ab72-437c-ba48-d8917a7336a3 | 1/13/2017 11:24:37 AM |
 
-**JsonFormat** 类型的输入数据集定义如下（部分定义，仅包含相关部件）。 更具体说来：
+**JsonFormat** 类型的输入数据集定义如下（部分定义，仅包含相关部件）。 更具体地说：
 
 - `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为**可选**，除非需要进行列映射。 有关详细信息，请参阅[将源数据集列映射到目标数据集列](data-factory-map-columns.md)。
-- `jsonPathDefinition` 为每个列指定 JSON 路径，表明从何处提取数据。 若要从数组中复制数据，可以使用 **array[x].property** 从 xth 对象中提取给定属性的值，也可以使用 **array[*].property** 从包含此类属性的任何对象中查找该值。
+- `jsonPathDefinition` 为每个列指定 JSON 路径，表明从何处提取数据。 若要从数组中复制数据，可以使用**array [x]. 属性**从 xth 对象中提取给定属性的值，也可以使用**array [*]. 属性**从包含此类属性的任何对象中查找值。
 
 ```json
 "properties": {
@@ -297,7 +296,7 @@ Azure 数据工厂支持以下文件格式类型：
 | 01 | 20170122 | P2 | 13 | [{"sanmateo":"No 1"}] |
 | 01 | 20170122 | P3 | 231 | [{"sanmateo":"No 1"}] |
 
-**JsonFormat** 类型的输入数据集定义如下（部分定义，仅包含相关部件）。 更具体说来：
+**JsonFormat** 类型的输入数据集定义如下（部分定义，仅包含相关部件）。 更具体地说：
 
 - `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为**可选**，除非需要进行列映射。 有关详细信息，请参阅[将源数据集列映射到目标数据集列](data-factory-map-columns.md)。
 - `jsonNodeReference` 指示进行迭代操作，在**数组**订单行下以同一模式从对象提取数据。
@@ -350,9 +349,9 @@ Azure 数据工厂支持以下文件格式类型：
 
 如果 SQL 数据库中存在以下表：
 
-| id | order_date | order_price | order_by |
+| ID | order_date | order_price | order_by |
 | --- | --- | --- | --- |
-| 第 | 20170119 | 2000 | David |
+| 1 | 20170119 | 2000 | David |
 | 2 | 20170120 | 3500 | Patrick |
 | 3 | 20170121 | 4000 | Jason |
 
@@ -409,7 +408,7 @@ Azure 数据工厂支持以下文件格式类型：
 }
 ```
 
-若要在 Hive 表中使用 Avro 格式，可以参考 [Apache Hive 教程](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)。
+若要在 Hive 表中使用 Avro 格式，可以参考[Apache Hive 教程](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)。
 
 请注意以下几点：  
 
@@ -498,10 +497,10 @@ Azure 数据工厂支持以下文件格式类型：
 
 在输入数据集 JSON 中指定 `compression` 属性时，管道可以从源读取压缩的数据；在输出数据集 JSON 中指定属性时，复制活动可以将压缩的数据写入到目标。 下面是一些示例方案：
 
-* 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩，然后将结果数据写入 Azure SQL 数据库。 在此情况下，可以使用值为 GZIP 的 `compression` `type` JSON 属性来定义输入 Azure Blob 数据集。
-* 从来自本地文件系统的纯文本文件读取数据、使用 GZip 格式进行压缩并将压缩的数据写入到 Azure Blob。 在此情况下，可以使用值为 GZip 的 `compression` `type` JSON 属性来定义输出 Azure Blob 数据集。
-* 从 FTP 服务器读取 .zip 文件，将它解压缩以获取文件内容，然后将这些文件加入 Azure Data Lake Store。 可以使用值为 ZipDeflate 的 `compression` `type` JSON 属性来定义输入 FTP 数据集。
-* 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩、使用 BZIP2 将其压缩，然后将结果数据写入 Azure Blob。 在此情况下，可以使用设置为 GZIP 的 `compression` `type` 来定义输入 Azure Blob 数据集，使用设置为 BZIP2 的 `compression` `type` 来定义输出数据集。   
+* 从 Azure blob 读取 GZIP 压缩的数据，将其解压缩，并将结果数据写入 Azure SQL 数据库。 定义输入 Azure Blob 数据集的 `compression` `type` JSON 属性为 GZIP。
+* 从来自本地文件系统的纯文本文件读取数据、使用 GZip 格式进行压缩并将压缩的数据写入到 Azure Blob。 使用 `compression` `type` JSON 属性作为 GZip 来定义输出 Azure Blob 数据集。
+* 从 FTP 服务器读取 .zip 文件，将它解压缩以获取文件内容，然后将这些文件加入 Azure Data Lake Store。 使用 `compression` `type` JSON 属性作为 ZipDeflate 定义输入 FTP 数据集。
+* 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩、使用 BZIP2 将其压缩，然后将结果数据写入 Azure Blob。 在这种情况下，可以定义设置为 GZIP 的输入 Azure Blob 数据集 `compression` `type` ，并将 `compression` `type` 设置为 BZIP2 的输出数据集。   
 
 
 ## <a name="next-steps"></a>后续步骤

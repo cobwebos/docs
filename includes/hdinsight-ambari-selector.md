@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/25/2018
 ms.author: jasonh
 ms.openlocfilehash: 064fce7c2ca8934ef7c4d9d4ab9d5637a4649afd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66257985"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67173609"
 ---
 > [!div class="op_single_selector"]
 > * [Web UI](../articles/hdinsight/hdinsight-hadoop-manage-ambari.md)

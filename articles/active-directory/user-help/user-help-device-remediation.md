@@ -1,27 +1,26 @@
 ---
-title: "\"你不能那里从此处获取\"错误-Azure Active Directory 进行故障排除 |Microsoft Docs"
-description: 排查收到“无法从此处访问”错误消息的潜在原因。
+title: 针对“您无法从此处到达所需目的地”错误的修补程序 - Azure AD
+description: 针对收到“您无法从此处到达所需目的地”错误消息的原因查找潜在修补程序。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 10/10/2018
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a317680a39d4594aacdf84ccdf963bb84bfbf07b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: b76e84f6ae2449347604ab823fde5b74d5c68f07
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60473768"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740993"
 ---
-# <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>“无法从此处访问”错误消息的潜在原因
+# <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>针对“您无法从此处到达所需目的地”错误消息的潜在修补程序
+
 访问组织的内部 Web 应用或服务时，可能会收到以下错误消息：无法从此处访问。 此消息表示组织已使阻止设备访问组织的资源的策略就位。 虽然你可能不必联系支持人员来解决此问题，但可以先尝试执行以下操作。
 
 ## <a name="make-sure-youre-using-a-supported-browser"></a>确保使用的是支持的浏览器
@@ -29,7 +28,7 @@ ms.locfileid: "60473768"
 
 ![与浏览器支持相关的错误消息](media/user-help-device-remediation/browser-version.png)
 
-若要解决此问题，必须根据你的操作系统安装并运行支持的浏览器。 如果使用的是 Windows 10，则支持的浏览器包括 Microsoft Edge、Internet Explorer 和 Google Chrome。 如果使用的是其他操作系统，则可以检查[支持的浏览器](../conditional-access/technical-reference.md#supported-browsers)的完整列表。
+若要解决此问题，必须根据你的操作系统安装并运行支持的浏览器。 如果使用的是 Windows 10，则支持的浏览器包括 Microsoft Edge、Internet Explorer 和 Google Chrome。 如果使用的是其他操作系统，则可以检查[支持的浏览器](../conditional-access/concept-conditional-access-conditions.md#supported-browsers)的完整列表。
 
 ## <a name="make-sure-youre-using-a-supported-operating-system"></a>确保使用的是支持的操作系统
 确保正在运行支持的操作系统版本，包括：
@@ -50,7 +49,7 @@ ms.locfileid: "60473768"
 ![与是否已加入网络相关的错误消息](media/user-help-device-remediation/network-version.png)
 
 ### <a name="to-check-whether-your-device-is-joined-to-your-network"></a>检查设备是否已加入网络
-1. 请使用工作或学校帐户登录到 Windows。 例如，alain@contoso.com。
+1. 请使用工作或学校帐户登录到 Windows。 例如，alain@contoso.com 。
 
 2. 通过虚拟专用网络 (VPN) 或 DirectAccess 连接到组织的网络。
 

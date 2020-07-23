@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure Cosmos DB 帐户
-description: 本文介绍如何创建和使用 Azure Cosmos DB 帐户
-author: rimman
+description: 本文介绍如何创建和使用 Azure Cosmos 帐户。 它还显示了 Azure Cosmos 帐户中的元素层次结构
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.author: rimman
+ms.date: 06/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: c0e97eed0a4028fdd9d2254fd9472dc3141d607a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: a68207b3e5390a26e8d62ee6b725b0768ea565a4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239831"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85116071"
 ---
 # <a name="work-with-azure-cosmos-account"></a>使用 Azure Cosmos 帐户
 
@@ -25,18 +25,18 @@ Azure Cosmos 帐户是全局分配和高可用性的基本单元。 要在多个
 
 ## <a name="elements-in-an-azure-cosmos-account"></a>Azure Cosmos 帐户中的元素
 
-Azure Cosmos DB 容器是基本的缩放单元。 容器可以提供几乎无限的预配吞吐量 (RU/s) 和存储。 Azure Cosmos DB 使用指定的逻辑分区键以透明方式将容器分区，以弹性缩放预配吞吐量和存储。 有关详细信息，请参阅[使用 Azure Cosmos 容器和项](databases-containers-items.md)。
+Azure Cosmos 容器是基本的缩放单元。 容器可以提供几乎无限的预配吞吐量 (RU/s) 和存储。 Azure Cosmos DB 使用指定的逻辑分区键以透明方式将容器分区，以弹性缩放预配吞吐量和存储。 有关详细信息，请参阅[使用 Azure Cosmos 容器和项](databases-containers-items.md)。
 
 目前，在一个 Azure 订阅下最多可以创建 100 个 Azure Cosmos 帐户。 单个 Azure Cosmos 帐户几乎可以管理无限量的数据和预配吞吐量。 若要管理数据和预配吞吐量，可以在帐户下创建一个或多个 Azure Cosmos 数据库，而在该数据库中，可以创建一个或多个容器。 下图显示了 Azure Cosmos 帐户中的元素层次结构：
 
-![Azure Cosmos 帐户的层次结构](./media/account-overview/hierarchy.png)
+:::image type="content" source="./media/account-overview/hierarchy.png" alt-text="Azure Cosmos 帐户的层次结构" border="false":::
 
 ## <a name="next-steps"></a>后续步骤
 
 了解如何管理 Azure Cosmos 帐户，以及了解其他概念：
 
 * [如何管理 Azure Cosmos 帐户](how-to-manage-database-account.md)
-* [全局分发](distribute-data-globally.md)
+* [全球分布](distribute-data-globally.md)
 * [一致性级别](consistency-levels.md)
 * [使用 Azure Cosmos 容器和项](databases-containers-items.md)
 * [Azure Cosmos 帐户的 VNET 服务终结点](vnet-service-endpoint.md)

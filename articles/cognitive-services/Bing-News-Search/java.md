@@ -1,6 +1,6 @@
 ---
-title: 快速入门：通过 C# 执行 Web 搜索 - 必应 Web 搜索 REST API
-titlesuffix: Azure Cognitive Services
+title: 快速入门：使用 Java 执行 Web 搜索 - 必应 Web 搜索 REST API
+titleSuffix: Azure Cognitive Services
 description: 使用本快速入门，通过使用 Java 将请求发送到必应新闻搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
@@ -8,38 +8,35 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 1/10/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: aa90eef5a0888da5a702e5efed489fa37a39a7c2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c3ce10b6d3acb947d3fde6e3c872a2c2a83ddb69
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861963"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871139"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>快速入门：使用 Java 和必应新闻搜索 REST API 执行新闻搜索
 
-使用本快速入门对必应新闻搜索 API 进行你的第一次调用并查看 JSON 响应。 这个简单的 Java 应用程序会向该 API 发送一个新闻搜索查询并显示响应。
+根据此快速入门中的说明对必应资讯搜索 API 进行第一次调用。 这个简单的 Java 应用程序会向该 API 发送一个新闻搜索查询并显示 JSON 响应。
 
 虽然此应用程序是使用 Java 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
-该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java) 上获得 
+该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java) 上获得。 
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Java 开发工具包 (JDK) 7 或 8](https://aka.ms/azure-jdks)
-
-* [Gson 库](https://github.com/google/gson)
+* [Java 开发工具包 (JDK) 7 或 8](https://aka.ms/azure-jdks)。
+* [Gson 库](https://github.com/google/gson)。
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
-
 ## <a name="create-and-initialize-a-project"></a>创建并初始化项目
 
-1. 在你最喜欢的 IDE 或编辑器中新建一个 Java 项目，并导入以下库。
+1. 在你最喜欢的 IDE 或编辑器中新建一个 Java 项目，并导入以下库：
 
     ```java
     import java.net.*;
@@ -52,7 +49,7 @@ ms.locfileid: "55861963"
     import com.google.gson.JsonParser;
     ```
 
-2. 创建一个新类，并在其中包含用于 API 终结点、订阅密钥和搜索词的变量。
+2. 创建新类。 为 API 终结点、订阅密钥和搜索词添加变量。 你可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {
@@ -66,7 +63,7 @@ ms.locfileid: "55861963"
 
 ## <a name="construct-the-search-request-and-receive-a-json-response"></a>构造搜索请求并接收 JSON 响应
 
-1. 使用上一个步骤中的变量来设置 API 请求的搜索 URL 的格式。 注意，将搜索词附加到请求之前，必须进行 URL 编码。
+1. 使用前一个步骤中的变量来设置 API 请求的搜索 URL 的格式。 在将搜索词追加到请求之前，先对其进行 URL 编码。
 
     ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {
@@ -90,6 +87,7 @@ ms.locfileid: "55861963"
 ## <a name="process-the-json-response"></a>处理 JSON 响应
 
 1. 将必应相关 HTTP 标头与 JSON 正文相分离，然后关闭流并返回 API 响应。
+
     ```java
     // extract Bing-related HTTP headers
     Map<String, List<String>> headers = connection.getHeaderFields();
@@ -103,7 +101,8 @@ ms.locfileid: "55861963"
     return results;
     ```
 
-2. 创建一个方法来分析并重新序列化 JSON
+2. 创建一个方法来分析并重新序列化 JSON 结果。
+
     ```java
     // pretty-printer for JSON; uses GSON parser to parse and re-serialize
     public static String prettify(String json_text) {
@@ -114,8 +113,9 @@ ms.locfileid: "55861963"
     }
     ```
 
-3. 在应用程序的 main 方法中，调用搜索方法，并显示结果。
-    ```csharp
+3. 在应用程序的主要方法中，调用搜索方法，并显示结果。
+
+    ```java
    public static void main (String[] args) {
        System.out.println("Searching the Web for: " + searchTerm);
        SearchResults result = SearchNews(searchTerm);
@@ -128,7 +128,7 @@ ms.locfileid: "55861963"
     }
     ```
 
-## <a name="json-response"></a>JSON 响应
+## <a name="example-json-response"></a>示例 JSON 响应
 
 在 JSON 中返回成功的响应，如以下示例所示：
 

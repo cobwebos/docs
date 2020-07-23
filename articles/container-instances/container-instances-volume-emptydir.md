@@ -1,25 +1,20 @@
 ---
-title: 在 Azure 容器实例中装载 emptyDir 卷
+title: 将 emptyDir 卷装载到容器组
 description: 了解如何在 Azure 容器实例中装载 emptyDir 卷以在容器组中的容器之间共享数据
-services: container-instances
-author: dlepow
-ms.service: container-instances
 ms.topic: article
-ms.date: 02/08/2018
-ms.author: danlep
-ms.openlocfilehash: 98a72123a05fa7d8dc16be7ddb787f2a2cf7e4d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 01/31/2020
+ms.openlocfilehash: 64a3c83008f163167528a5e5987fe2316942d5bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60563114"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77117741"
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>在 Azure 容器实例中装载 emptyDir 卷
 
-了解如何在 Azure 容器实例中装载 *emptyDir* 卷以在容器组中的容器之间共享数据。
+了解如何在 Azure 容器实例中装载 *emptyDir* 卷以在容器组中的容器之间共享数据。 使用 emptyDir  卷作为容器化工作负荷的临时缓存。
 
 > [!NOTE]
-> 当前只有 Linux 容器能装载 *emptyDir* 卷。 我们正致力于为 Windows 容器提供全部功能，你可在 [Azure 容器实例的配额和区域可用性](container-instances-quotas.md)中了解当前的平台差异。
+> 当前只有 Linux 容器能装载 *emptyDir* 卷。 虽然我们正致力于为 Windows 容器提供全部功能，但你可在[概述](container-instances-overview.md#linux-and-windows-containers)中了解当前的平台差异。
 
 ## <a name="emptydir-volume"></a>emptyDir 卷
 
@@ -31,20 +26,22 @@ ms.locfileid: "60563114"
 * 长时间运行任务期间的检查点
 * 存储由挎斗容器检索的数据以及由应用程序容器提供的数据
 
-*emptyDir* 卷中的数据将一直保留到容器崩溃。 但是，并不保证重新启动的容器能够持久保留 *emptyDir* 卷中的数据。
+*emptyDir* 卷中的数据将一直保留到容器崩溃。 但是，并不保证重新启动的容器能够持久保留 *emptyDir* 卷中的数据。 如果停止容器组，则不会持久保留 emptyDir** 卷。
+
+Linux *emptyDir*卷的最大大小为 50 GB。
 
 ## <a name="mount-an-emptydir-volume"></a>装载 emptyDir 卷
 
-若要将 emptyDir 卷装载到容器实例中，必须使用 [Azure 资源管理器模板](/azure/templates/microsoft.containerinstance/containergroups)进行部署。
+若要在容器实例中装载 emptyDir 卷，可以使用[Azure 资源管理器模板](/azure/templates/microsoft.containerinstance/containergroups)、 [YAML 文件](container-instances-reference-yaml.md)或其他编程方法部署容器组。
 
-首先，在模板的容器组 `properties` 节中填充 `volumes` 数组。 接下来，针对容器组中希望装载 *emptyDir* 卷的每个容器，在容器定义的 `properties` 节中填充 `volumeMounts` 数组。
+首先， `volumes` 在文件的容器组部分填充数组 `properties` 。 接下来，针对容器组中希望装载 *emptyDir* 卷的每个容器，在容器定义的 `properties` 节中填充 `volumeMounts` 数组。
 
 例如，以下资源管理器模板创建了一个包含两个容器的容器组，每个容器均装载了 *emptyDir* 卷：
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-emptydir.json -->
 [!code-json[volume-emptydir](~/azure-docs-json-samples/container-instances/aci-deploy-volume-emptydir.json)]
 
-若要查看使用 Azure 资源管理器模板进行的容器实例部署示例，请参阅[在 Azure 容器实例中部署多容器组](container-instances-multi-container-group.md)。
+若要查看容器组部署的示例，请参阅[使用资源管理器模板部署多容器组](container-instances-multi-container-group.md)和[使用 YAML 文件部署多容器组](container-instances-multi-container-yaml.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,37 +1,58 @@
 ---
-title: SaaS 履行 Api |Azure Marketplace
-description: 引入了 Api，使您可以将你的 SaaS 集成提供了在 Azure marketplace 中销售的履行的版本。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Microsoft 商业应用商店中的 SaaS 履单 Api
+description: 介绍实现 Api，使你能够在 Microsoft AppSource 和 Azure Marketplace 中集成 SaaS 产品。
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.author: evansma
-ms.openlocfilehash: 7896ed77d9dbb3358ddb1c809ca342828280f66a
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.date: 05/18/2020
+ms.openlocfilehash: 218a0624f7e4adc1aa188dbd62db217bf79202f8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258919"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109291"
 ---
-# <a name="saas-fulfillment-apis"></a>SaaS 履行 API
+# <a name="saas-fulfillment-apis-in-microsoft-commercial-marketplace"></a>Microsoft 商业应用商店中的 SaaS 履单 Api
 
-SaaS 履行 Api 使独立软件供应商 (Isv) 可以将其 SaaS 应用程序集成在 Azure marketplace 中销售。 这些 Api 使 ISV 应用程序能够参与所有启用的商务通道： 直接、 合作伙伴主导式 （经销商） 和字段导致。  它们是用于列出在 Azure Marketplace 上的事务 SaaS 产品/服务的要求。
+SaaS 履单 Api 允许发布者（也称为独立软件供应商（Isv））在 Microsoft AppSource、Azure Marketplace 和 Azure 门户中发布和销售其 SaaS 应用程序。 这些 Api 使 ISV 应用程序能够参与所有启用了商业功能的频道：直接、伙伴 led （经销商）和现场 led。  与这些 Api 集成是在合作伙伴中心创建和发布事务 SaaS 产品/服务的一项要求。
 
-> [!WARNING]
-> 此 API 的当前版本为版本 2 中，应使用的所有新 SaaS 产品/服务。  第 1 版 API 已过时，维护以支持现有产品/服务。
+Isv 必须实现以下 API 流，方法是将添加到其 SaaS 服务代码，以便为 Isv 和 Microsoft 维护相同的订阅状态：
 
+* 登陆页面流： Microsoft 通知发布者，发布者已在 marketplace 中购买了发布者的 SaaS 优惠。
+* 激活流：发布者通知 Microsoft 已在发布者端配置了新购买的 SaaS 帐户。
+* 更新流：更改购买的计划和/或购买的座位数。
+* 挂起和恢复流：如果客户的付款方式不再有效，则暂停购买的 SaaS 产品/服务。 解决了付款方式问题后，可以恢复暂停的产品/服务。
+* Webhook 流： Microsoft 将通知发布者来自 Microsoft 端的客户触发的 SaaS 订阅更改和取消。
 
-## <a name="business-model-support"></a>业务模型支持
+对于已购买的 SaaS 订阅，集成是可选的，因为它可由 Microsoft 端的客户进行。
 
-此 API 支持以下业务模型功能;您可以：
+与 SaaS 履单 Api 的正确集成对于确保
 
-* 指定产品/服务的多个的计划。 这些计划具有不同的功能，并可能价格不一样。
-* 提供有关产品/服务每个站点或每个用户计费模型的基础。
-* 提供每月和年 （提前付费） 计费选项。
-* 提供专用于基于协商的业务协议客户定价。
+* 购买发布者的 SaaS 产品/服务的最终客户将由 Microsoft 进行正确计费。
+* 最终客户将获得正确的用户体验，并使用和管理在 Marketplace 中购买的 SaaS 订阅。
 
+通过这些 Api，发布者的产品/服务可以参与所有启用了商务的频道：
+
+* 直通
+* 伙伴 led （经销商、CSP）
+* 现场 led
+
+在经销商（CSP）方案中，CSP 代表最终客户购买 SaaS 产品/服务。 客户应使用 SaaS 产品/服务，但 CSP 是执行以下操作的实体：
+
+* 向客户计费
+* 更改订阅计划/购买的座位数量
+* 取消订阅
+
+对于此方案，发布服务器不需要实现任何不同的 API 调用流。
+
+有关 CSP 的详细信息，请参阅 https://partner.microsoft.com/en-us/licensing 。
+
+>[!Warning]
+>此 API 的当前版本是版本2，适用于所有新的 SaaS 产品/服务。 API 的版本1已弃用，并将进行维护以支持现有的产品/服务。
+
+>[!Note]
+>SaaS 履单 Api 只应从发布者的后端服务中调用。 不支持直接从发布者的网页与 Api 集成。 只应使用服务到服务的身份验证流。
 
 ## <a name="next-steps"></a>后续步骤
 
-如果尚未这样做，在将 SaaS 应用程序注册[Azure 门户](https://ms.portal.azure.com)中所述[注册一个 Azure AD 应用程序](./pc-saas-registration.md)。  然后，使用此接口的最新版本进行开发：[SaaS 履行 API 版本 2](./pc-saas-fulfillment-api-v2.md)。
+如果尚未这样做，请在[Azure 门户](https://ms.portal.azure.com)中注册 SaaS 应用程序，如[注册 Azure AD 应用程序](./pc-saas-registration.md)中所述。  之后，使用此接口的最新版本进行开发： [SaaS 履单 API 版本 2](./pc-saas-fulfillment-api-v2.md)。

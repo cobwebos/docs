@@ -1,5 +1,5 @@
 ---
-title: StorSimple 设备的安全性 | Microsoft Docs
+title: 安全安装 & 操作 StorSimple 8000 系列设备
 description: 描述安全约定、指南和注意事项，并解释如何安全地安装和运行 StorSimple 设备。
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 66b881ab13e27ee457af4fa1bafb82ad14e9674d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 556a84acb3461fb39b3eb0390b54878254bafabf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60631603"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514536"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>安全地安装和运行 StorSimple 设备
 ![警告图标](./media/storsimple-safety/IC740879.png)
@@ -38,12 +38,12 @@ ms.locfileid: "60631603"
 | ![注意图标](./media/storsimple-safety/IC740881.png) **NOTICE:** |指示应该给予重视但不涉及危险情况的信息。 |
 | ![电击图标](./media/storsimple-safety/IC740882.png) **Electrical Shock Hazard** |高电压 |
 | ![重物图标](./media/storsimple-safety/IC740883.png) **Heavy Weight** | |
-| ![用户不可维修的部件图标](./media/storsimple-safety/IC740879.png) **No User Serviceable Parts** |除非经过适当的培训，否则请勿接触。 |
-| ![阅读安全注意事项图标 ](./media/storsimple-safety/IC740885.png)**Read All Instructions First** | |
+| ![用户不可维修的部件图标](./media/storsimple-safety/IC740879.png) **No User Serviceable Parts** |除非经过适当的培训，否则请勿访问。 |
+| ![阅读安全通告图标](./media/storsimple-safety/IC740885.png)**请先阅读所有说明** | |
 | ![倾翻危险图标](./media/storsimple-safety/IC740886.png) **Tip Hazard** | |
 
 ## <a name="handling-precautions"></a>操作注意事项
-![警告图标](./media/storsimple-safety/IC740879.png)![重物图标](./media/storsimple-safety/IC740883.png) **WARNING!** 
+![警告图标](./media/storsimple-safety/IC740879.png) ![重物图标](./media/storsimple-safety/IC740883.png) **WARNING!** 
 
 若要降低受伤的风险：
 
@@ -67,7 +67,7 @@ ms.locfileid: "60631603"
 若要降低电气连接温度过高或着火的可能性：
 
 * 使用带电气过载保护的合适电源，以满足技术规格中详述的要求。
-* 请勿使用分叉型电源线（“Y”导线）。
+* 请勿使用分叉型电源线（"Y" 导引）。
 * 为了符合适用的安全、发射和热要求，不应移除任意盖子，并且所有托架中必须填充插件模块或驱动器挡板。
 * 确保以制造商指定的方式使用设备。 如果未以制造商指定的方式使用本设备，则该设备提供的保护可能会减弱。
 
@@ -82,7 +82,7 @@ ms.locfileid: "60631603"
 ## <a name="rack-system-precautions"></a>机架系统注意事项
 在机架机柜中装载设备时，必须考虑以下安全要求。
 
-![警告图标](./media/storsimple-safety/IC740879.png)![倾翻危险图标](./media/storsimple-safety/IC740886.png) **WARNING!**
+![警告图标](./media/storsimple-safety/IC740879.png) ![倾翻危险图标](./media/storsimple-safety/IC740886.png) **WARNING!**
 
 若要减少因倾翻受伤的可能性：
 
@@ -96,17 +96,18 @@ ms.locfileid: "60631603"
 
 * 机架应具有安全的配电系统。 它必须为机箱提供过流保护，并且决不能过载安装机箱总数。 应遵循名牌上显示的额定功耗。
 * 配电系统必须在机架中为每个机箱提供可靠的接地。
-* 配电系统的设计必须考虑所有机箱中所有电源的总接地泄漏电流。 请注意，每个机箱中的每个电源在 264 伏，60 Hz 的情况下最大接地泄漏电流为 1.0 mA。 机架可能需要标有“高泄漏电流。 在连接至电源前，接地连接至关重要。”
+* 配电系统的设计必须考虑所有机箱中所有电源的总接地泄漏电流。 请注意，每个机箱中的每个电源在 264 伏，60 Hz 的情况下最大接地泄漏电流为 1.0 mA。 机架可能需要标有 "高泄漏电流"。 连接用品之前，地面（地球）连接至关重要。
 * 当为机架配置机箱时，必须满足 UL 60950-1 和 IEC 60950-1/EN 60950-1 的安全要求。
 
 ![注意图标](./media/storsimple-safety/IC740881.png) **NOTICE:**
 
 机架系统的正确冷却：
 
-* 确保机架设计考虑到 35 摄氏度（95 华氏度）的最高机箱操作环境温度。
+* 确保机架设计考虑到 35 摄氏度（95 华氏度）的最高机箱操作环境温度。 留出机架系统很冷的房间，并检查数据中心内 AC 通风管是否有充足的气流。
 * 系统采用低压后排气安装运行（机架门和障碍物生成的背压不能超过 5 帕斯卡 [0.5 毫米水位]）。
 
 ## <a name="power-cooling-module-pcm-precautions"></a>电源冷却模块 (PCM) 注意事项
+
 该设备的设计可操作两台 PCM。 每个 PCM 都有电源和双轴风扇。 在紧急情况下，系统可以在其中一个电源发生故障时继续正常操作。 必须始终安装两个 PCM（以及相应的电源）。 单个 PCM 不提供冗余电源。 因此，即使一个 PCM 发生故障，也会导致停机或可能造成数据丢失。
 
 ![警告图标](./media/storsimple-safety/IC740879.png) ![电击图标](./media/storsimple-safety/IC740882.png) **WARNING!**
@@ -123,6 +124,7 @@ ms.locfileid: "60631603"
 * 除非可以立即安装更换，否则请勿移除 PCM。 所有模块未准备就绪时，请勿对机箱进行操作。
 
 ## <a name="electrostatic-discharge-esd-precautions"></a>静电放电 (ESD) 预防措施
+
 ![注意图标](./media/storsimple-safety/IC740881.png) **NOTICE:**
 
 请遵循以下与 ESD 相关的注意事项。
@@ -133,6 +135,7 @@ ms.locfileid: "60631603"
 * ESD 损坏不在保修范围内。
 
 ## <a name="battery-disposal-precautions"></a>电池处置注意事项
+
 电源使用特殊电池在临时性的短期停电期间保护内存中的内容。 电池装在 PCM 中。 请注意以下有关电池的信息。
 
 ![警告图标](./media/storsimple-safety/IC740879.png) **WARNING!**
@@ -145,11 +148,11 @@ ms.locfileid: "60631603"
 
 ![注意图标](./media/storsimple-safety/IC740881.png) **NOTICE:**
 
-当通过船运或空运对电池进行运输时，请遵循 [https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx) 中提供的 IATA 锂电池指南文档
+当发运或以其他方式通过无线传输电池时，请遵循 IATA 锂电池指南文档，网址为：[https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
 
 查看完这些安全注意事项之后，后续步骤是对设备进行解包、安装机架并连接电缆。
 
 ## <a name="next-steps"></a>后续步骤
+
 * 对于对 8100 设备，请转到 [安装 StorSimple 8100 设备](storsimple-8100-hardware-installation.md)。
 * 对于对 8600 设备，请转到 [安装 StorSimple 8600 设备](storsimple-8600-hardware-installation.md)。
-

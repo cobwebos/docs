@@ -1,256 +1,346 @@
 ---
-title: Azure 映像生成器使用映像库的 Windows 虚拟机 （预览版）
-description: 使用 Azure 映像生成器和共享映像库创建 Windows 映像。
+title: 将 Azure 映像生成器用于 Windows VM 的映像库（预览）
+description: 使用 Azure 映像生成器和 Azure PowerShell 创建 Azure 共享库映像版本。
 author: cynthn
 ms.author: cynthn
-ms.date: 05/02/2019
-ms.topic: article
-ms.service: virtual-machines-widows
-manager: jeconnoc
-ms.openlocfilehash: 2453d37720bcf48b95b428cf78c6186de40b31aa
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.date: 05/05/2020
+ms.topic: how-to
+ms.service: virtual-machines-windows
+ms.subservice: imaging
+ms.openlocfilehash: 65e8818e19ac5ad20bb87fd8eb27a4c36c2839cf
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160105"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656670"
 ---
-# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>预览版：创建 Windows 映像，并将其分发给共享映像库 
+# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>预览版：创建 Windows 映像并将其分发到共享映像库 
 
-本文旨在向您展示如何使用 Azure 映像生成器创建的映像版本中[共享映像库](shared-image-galleries.md)，然后将映像分发全局范围内。
+本文介绍如何使用 Azure 映像生成器和 Azure PowerShell，来在[共享映像库](shared-image-galleries.md)中创建映像版本，然后全局分发此映像。 也可以使用 [Azure CLI](../linux/image-builder-gallery.md) 来实现此目的。
 
-我们将使用.json 模板要配置的映像。 下面是我们正在使用的.json 文件： [helloImageTemplateforWinSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/helloImageTemplateforWinSIG.json)。 
+我们将使用一个 .json 模板来配置映像。 我们将使用的 .json 文件位于：[armTemplateWinSIG](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json)。 我们将下载并编辑此模板的本地版本，因此本文是使用本地 PowerShell 会话撰写的。
 
-若要将映像分发到共享映像库，该模板，请使用[sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage)的值作为`distribute`模板部分。
+此模板使用 [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) 作为模板的 `distribute` 部分的值，以便将映像分发到共享映像库。
+
+Azure 映像生成器会自动运行 sysprep 来将映像通用化，这是一个通用的 sysprep 命令，如有必要你可以[重写](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#vms-created-from-aib-images-do-not-create-successfully)它。 
+
+请注意层自定义的次数。 最多可以对单个 Windows 映像运行 Sysprep 命令 8 次。 运行 Sysprep 8 次后，必须重新创建 Windows 映像。 有关详细信息，请参阅[有关 Sysprep 可运行次数的限制](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)。 
 
 > [!IMPORTANT]
-> Azure 映像生成器目前处于公共预览状态。
+> Azure 映像生成器目前提供公开预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="register-the-features"></a>注册功能
-若要在预览期间使用 Azure 映像生成器，您需要注册新的功能。
+若要在预览版期间使用 Azure 映像生成器，需要注册新功能。
 
-```azurecli-interactive
-az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
+```powershell
+Register-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
 ```
 
-检查功能注册状态。
+检查功能注册的状态。
 
-```azurecli-interactive
-az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
+```powershell
+Get-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
 ```
 
-检查您的注册。
+等到 `RegistrationState` 成为 `Registered`，然后再进入下一步。
 
-```azurecli-interactive
-az provider show -n Microsoft.VirtualMachineImages | grep registrationState
-az provider show -n Microsoft.Storage | grep registrationState
-az provider show -n Microsoft.Compute | grep registrationState
+检查提供程序注册情况。 请确保每个都返回 `Registered`。
+
+```powershell
+Get-AzResourceProvider -ProviderNamespace Microsoft.VirtualMachineImages | Format-table -Property ResourceTypes,RegistrationState
+Get-AzResourceProvider -ProviderNamespace Microsoft.Storage | Format-table -Property ResourceTypes,RegistrationState 
+Get-AzResourceProvider -ProviderNamespace Microsoft.Compute | Format-table -Property ResourceTypes,RegistrationState
+Get-AzResourceProvider -ProviderNamespace Microsoft.KeyVault | Format-table -Property ResourceTypes,RegistrationState
 ```
 
-如果他们未说已注册，运行以下命令：
+如果未返回 `Registered`，请使用以下命令来注册提供程序：
 
-```azurecli-interactive
-az provider register -n Microsoft.VirtualMachineImages
-az provider register -n Microsoft.Storage
-az provider register -n Microsoft.Compute
+```powershell
+Register-AzResourceProvider -ProviderNamespace Microsoft.VirtualMachineImages
+Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
+Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
+Register-AzResourceProvider -ProviderNamespace Microsoft.KeyVault
 ```
 
-## <a name="set-variables-and-permissions"></a>设置变量和权限 
+## <a name="create-variables"></a>创建变量
 
-我们将使用一些部分信息重复，因此我们将创建一些变量来存储该信息。 值替换为变量，如`username`和`vmpassword`，使用你自己的信息。
+我们将重复使用某些信息，因此我们将创建一些变量来存储这些信息。 将变量（如 `username` 和 `vmpassword`）的值替换为自己的信息。
 
-```azurecli-interactive
-# Resource group name - we are using ibsigRG in this example
-sigResourceGroup=myIBWinRG
-# Datacenter location - we are using West US 2 in this example
-location=westus
-# Additional region to replicate the image to - we are using East US in this example
-additionalregion=eastus
-# name of the shared image gallery - in this example we are using myGallery
-sigName=my22stSIG
-# name of the image definition to be created - in this example we are using myImageDef
-imageDefName=winSvrimages
-# image distribution metadata reference name
-runOutputName=w2019SigRo
-# User name and password for the VM
-username="azureuser"
-vmpassword="passwordfortheVM"
-```
+```powershell
+# Get existing context
+$currentAzContext = Get-AzContext
 
-为订阅 id。 创建一个变量 可以获取此使用`az account show | grep id`。
+# Get your current subscription ID. 
+$subscriptionID=$currentAzContext.Subscription.Id
 
-```azurecli-interactive
-subscriptionID="Subscription ID"
-```
+# Destination image resource group
+$imageResourceGroup="aibwinsig"
 
-创建资源组。
+# Location
+$location="westus"
 
-```azurecli-interactive
-az group create -n $sigResourceGroup -l $location
-```
+# Image distribution metadata reference name
+$runOutputName="aibCustWinManImg02ro"
 
+# Image template name
+$imageTemplateName="helloImageTemplateWin02ps"
 
-授予该资源组中创建资源的 Azure 映像生成器权限。 `--assignee`值是图像生成器服务的应用程序注册 ID。 
+# Distribution properties object name (runOutput).
+# This gives you the properties of the managed image on completion.
+$runOutputName="winclientR01"
 
-```azurecli-interactive
-az role assignment create \
-    --assignee cf32a0cc-373c-47c9-9156-0db11f6a6dfc \
-    --role Contributor \
-    --scope /subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup
+# Create a resource group for Image Template and Shared Image Gallery
+New-AzResourceGroup `
+   -Name $imageResourceGroup `
+   -Location $location
 ```
 
 
+## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>创建用户分配的标识，并在资源组上设置权限
+映像生成器将使用提供的[用户标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell)，来将映像注入到 Azure 共享映像库 (SIG)。 在此示例中，你将创建一个 Azure 角色定义，其中包含将映像分发到 SIG 的精细操作。 然后将此角色定义分配给用户标识。
 
+```powershell
+# setup role def names, these need to be unique
+$timeInt=$(get-date -UFormat "%s")
+$imageRoleDefName="Azure Image Builder Image Def"+$timeInt
+$identityName="aibIdentity"+$timeInt
 
+## Add AZ PS module to support AzUserAssignedIdentity
+Install-Module -Name Az.ManagedServiceIdentity
 
-## <a name="create-an-image-definition-and-gallery"></a>创建图像定义和库
+# create identity
+New-AzUserAssignedIdentity -ResourceGroupName $imageResourceGroup -Name $identityName
 
-创建一个映像库。 
-
-```azurecli-interactive
-az sig create \
-    -g $sigResourceGroup \
-    --gallery-name $sigName
-```
-
-创建图像定义。
-
-```azurecli-interactive
-az sig image-definition create \
-   -g $sigResourceGroup \
-   --gallery-name $sigName \
-   --gallery-image-definition $imageDefName \
-   --publisher corpIT \
-   --offer myOffer \
-   --sku 2019 \
-   --os-type Windows
+$identityNameResourceId=$(Get-AzUserAssignedIdentity -ResourceGroupName $imageResourceGroup -Name $identityName).Id
+$identityNamePrincipalId=$(Get-AzUserAssignedIdentity -ResourceGroupName $imageResourceGroup -Name $identityName).PrincipalId
 ```
 
 
-## <a name="download-and-configure-the-json"></a>下载并配置.json
+### <a name="assign-permissions-for-identity-to-distribute-images"></a>为标识分配权限以分发映像
 
-下载.json 模板并将其配置与你的变量。
+此命令将下载 Azure 角色定义模板，并使用前面指定的参数更新模板。
 
-```azurecli-interactive
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/helloImageTemplateforWinSIG.json -o helloImageTemplateforWinSIG.json
-sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateforWinSIG.json
-sed -i -e "s/<rgName>/$sigResourceGroup/g" helloImageTemplateforWinSIG.json
-sed -i -e "s/<imageDefName>/$imageDefName/g" helloImageTemplateforWinSIG.json
-sed -i -e "s/<sharedImageGalName>/$sigName/g" helloImageTemplateforWinSIG.json
-sed -i -e "s/<region1>/$location/g" helloImageTemplateforWinSIG.json
-sed -i -e "s/<region2>/$additionalregion/g" helloImageTemplateforWinSIG.json
-sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateforWinSIG.json
+```powershell
+$aibRoleImageCreationUrl="https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json"
+$aibRoleImageCreationPath = "aibRoleImageCreation.json"
+
+# download config
+Invoke-WebRequest -Uri $aibRoleImageCreationUrl -OutFile $aibRoleImageCreationPath -UseBasicParsing
+
+((Get-Content -path $aibRoleImageCreationPath -Raw) -replace '<subscriptionID>',$subscriptionID) | Set-Content -Path $aibRoleImageCreationPath
+((Get-Content -path $aibRoleImageCreationPath -Raw) -replace '<rgName>', $imageResourceGroup) | Set-Content -Path $aibRoleImageCreationPath
+((Get-Content -path $aibRoleImageCreationPath -Raw) -replace 'Azure Image Builder Service Image Creation Role', $imageRoleDefName) | Set-Content -Path $aibRoleImageCreationPath
+
+# create role definition
+New-AzRoleDefinition -InputFile  ./aibRoleImageCreation.json
+
+# grant role definition to image builder service principal
+New-AzRoleAssignment -ObjectId $identityNamePrincipalId -RoleDefinitionName $imageRoleDefName -Scope "/subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup"
+
+### NOTE: If you see this error: 'New-AzRoleDefinition: Role definition limit exceeded. No more role definitions can be created.' See this article to resolve:
+https://docs.microsoft.com/azure/role-based-access-control/troubleshooting
 ```
 
-## <a name="create-the-image-version"></a>创建的映像版本
 
-此下一步部分将在库中创建的映像版本。 
+## <a name="create-the-shared-image-gallery"></a>创建共享映像库
 
-映像的配置提交到 Azure 映像生成器服务。
+若要将映像生成器用于共享映像库，需要现有的映像库和映像定义。 映像生成器无法创建映像库和映像定义。
 
-```azurecli-interactive
-az resource create \
-    --resource-group $sigResourceGroup \
-    --properties @helloImageTemplateforWinSIG.json \
-    --is-full-object \
-    --resource-type Microsoft.VirtualMachineImages/imageTemplates \
-    -n helloImageTemplateforWinSIG01
+如果还没有可使用的库和映像定义，请先进行创建。 首先创建映像库。
+
+```powershell
+# Image gallery name
+$sigGalleryName= "myIBSIG"
+
+# Image definition name
+$imageDefName ="winSvrimage"
+
+# additional replication region
+$replRegion2="eastus"
+
+# Create the gallery
+New-AzGallery `
+   -GalleryName $sigGalleryName `
+   -ResourceGroupName $imageResourceGroup  `
+   -Location $location
+
+# Create the image definition
+New-AzGalleryImageDefinition `
+   -GalleryName $sigGalleryName `
+   -ResourceGroupName $imageResourceGroup `
+   -Location $location `
+   -Name $imageDefName `
+   -OsState generalized `
+   -OsType Windows `
+   -Publisher 'myCompany' `
+   -Offer 'WindowsServer' `
+   -Sku 'WinSrv2019'
 ```
 
-开始创建映像。
 
-```azurecli-interactive
-az resource invoke-action \
-     --resource-group $sigResourceGroup \
-     --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
-     -n helloImageTemplateforWinSIG01 \
-     --action Run 
+
+## <a name="download-and-configure-the-template"></a>下载并配置模板
+
+下载 .json 模板，并使用你的变量对它进行配置。
+
+```powershell
+
+$templateFilePath = "armTemplateWinSIG.json"
+
+Invoke-WebRequest `
+   -Uri "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json" `
+   -OutFile $templateFilePath `
+   -UseBasicParsing
+
+(Get-Content -path $templateFilePath -Raw ) `
+   -replace '<subscriptionID>',$subscriptionID | Set-Content -Path $templateFilePath
+(Get-Content -path $templateFilePath -Raw ) `
+   -replace '<rgName>',$imageResourceGroup | Set-Content -Path $templateFilePath
+(Get-Content -path $templateFilePath -Raw ) `
+   -replace '<runOutputName>',$runOutputName | Set-Content -Path $templateFilePath
+(Get-Content -path $templateFilePath -Raw ) `
+   -replace '<imageDefName>',$imageDefName | Set-Content -Path $templateFilePath
+(Get-Content -path $templateFilePath -Raw ) `
+   -replace '<sharedImageGalName>',$sigGalleryName | Set-Content -Path $templateFilePath
+(Get-Content -path $templateFilePath -Raw ) `
+   -replace '<region1>',$location | Set-Content -Path $templateFilePath
+(Get-Content -path $templateFilePath -Raw ) `
+   -replace '<region2>',$replRegion2 | Set-Content -Path $templateFilePath
+((Get-Content -path $templateFilePath -Raw) -replace '<imgBuilderId>',$identityNameResourceId) | Set-Content -Path $templateFilePath
 ```
 
-创建映像并将其复制到这两个区域可能需要一段时间。 等待，直到创建的 VM 继续之前完成此部分。
+
+## <a name="create-the-image-version"></a>创建映像版本
+
+模板必须提交给服务，此操作会下载任何依赖项目（如脚本），并将其存储在带有“IT_”前缀的暂存资源组中。
+
+```powershell
+New-AzResourceGroupDeployment `
+   -ResourceGroupName $imageResourceGroup `
+   -TemplateFile $templateFilePath `
+   -api-version "2019-05-01-preview" `
+   -imageTemplateName $imageTemplateName `
+   -svclocation $location
+```
+
+需要对模板调用“运行”，以生成映像。
+
+```powershell
+Invoke-AzResourceAction `
+   -ResourceName $imageTemplateName `
+   -ResourceGroupName $imageResourceGroup `
+   -ResourceType Microsoft.VirtualMachineImages/imageTemplates `
+   -ApiVersion "2019-05-01-preview" `
+   -Action Run
+```
+
+创建映像并将其复制到这两个区域，这可能需要一段时间。 等待此部分完成后继续创建 VM。
+
+若要了解用于自动获取映像生成状态的选项，请参阅 GitHub 上此模板的[自述文件](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/readme.md#get-status-of-the-image-build-and-query)。
 
 
 ## <a name="create-the-vm"></a>创建 VM
 
-从 Azure 映像生成器创建的映像版本创建的 VM。
+从 Azure 映像生成器创建的映像版本创建 VM。
 
-```azurecli-interactive
-az vm create \
-  --resource-group $sigResourceGroup \
-  --name aibImgWinVm001 \
-  --admin-username $username \
-  --admin-password $vmpassword \
-  --image "/subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup/providers/Microsoft.Compute/galleries/$sigName/images/$imageDefName/versions/latest" \
-  --location $location
+获取所创建的映像版本。
+```powershell
+$imageVersion = Get-AzGalleryImageVersion `
+   -ResourceGroupName $imageResourceGroup `
+   -GalleryName $sigGalleryName `
+   -GalleryImageDefinitionName $imageDefName
 ```
 
+在此映像复制到的第二个区域中创建 VM。
 
-## <a name="verify-the-customization"></a>验证自定义项
-创建远程桌面连接到 VM 使用的用户名和密码创建 VM 时设置。 在 VM 中，打开 cmd 提示符并键入：
+```powershell
+$vmResourceGroup = "myResourceGroup"
+$vmName = "myVMfromImage"
+
+# Create user object
+$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
+
+# Create a resource group
+New-AzResourceGroup -Name $vmResourceGroup -Location $replRegion2
+
+# Network pieces
+$subnetConfig = New-AzVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
+$vnet = New-AzVirtualNetwork -ResourceGroupName $vmResourceGroup -Location $replRegion2 `
+  -Name MYvNET -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
+$pip = New-AzPublicIpAddress -ResourceGroupName $vmResourceGroup -Location $replRegion2 `
+  -Name "mypublicdns$(Get-Random)" -AllocationMethod Static -IdleTimeoutInMinutes 4
+$nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleRDP  -Protocol Tcp `
+  -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
+  -DestinationPortRange 3389 -Access Allow
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $vmResourceGroup -Location $replRegion2 `
+  -Name myNetworkSecurityGroup -SecurityRules $nsgRuleRDP
+$nic = New-AzNetworkInterface -Name myNic -ResourceGroupName $vmResourceGroup -Location $replRegion2 `
+  -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
+
+# Create a virtual machine configuration using $imageVersion.Id to specify the shared image
+$vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1_v2 | `
+Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred | `
+Set-AzVMSourceImage -Id $imageVersion.Id | `
+Add-AzVMNetworkInterface -Id $nic.Id
+
+# Create a virtual machine
+New-AzVM -ResourceGroupName $vmResourceGroup -Location $replRegion2 -VM $vmConfig
+```
+
+## <a name="verify-the-customization"></a>验证自定义
+使用创建 VM 时设置的用户名和密码创建与 VM 的远程桌面连接。 在 VM 中，打开命令提示符并键入以下内容：
 
 ```console
 dir c:\
 ```
 
-你应看到一个名为目录`buildActions`在映像自定义过程中创建。
+应该会看到一个名为 `buildActions` 的目录，该目录是在映像自定义期间创建的。
 
 
 ## <a name="clean-up-resources"></a>清理资源
-如果你想要现在，请尝试重新自定义映像版本来创建相同的映像的新版本**跳过此步骤**并转到[使用 Azure 映像生成器来创建另一个映像版本](image-builder-gallery-update-image-version.md)。
+如果现在想要尝试重新自定义映像版本，以创建同一映像的新版本，请跳过此步骤，并继续学习[使用 Azure 映像生成器创建其他映像版本](image-builder-gallery-update-image-version.md)。
 
 
-这将删除已创建，以及所有其他资源文件的映像。 请确保您已完成此部署，然后删除资源。
+这样会删除已创建的映像以及所有其他资源文件。 删除这些资源前，请确保已完成此部署。
 
-时删除图像库资源，你需要删除所有映像版本，然后才能删除映像定义用来创建它们。 若要删除库，首先需要删除了所有库中的图像定义。
+首先删除资源组模板，否则 AIB 使用的暂存资源组 (IT_) 将无法清除。
 
-删除映像生成器模板。
+获取映像模板的 ResourceID。 
 
-```azurecli-interactive
-az resource delete \
-    --resource-group $sigResourceGroup \
-    --resource-type Microsoft.VirtualMachineImages/imageTemplates \
-    -n helloImageTemplateforWinSIG01
+```powerShell
+$resTemplateId = Get-AzResource -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2019-05-01-preview"
 ```
 
-获取由映像生成器创建的映像版本，这始终始于`0.`，然后删除映像版本
+删除映像模板。
 
-```azurecli-interactive
-sigDefImgVersion=$(az sig image-version list \
-   -g $sigResourceGroup \
-   --gallery-name $sigName \
-   --gallery-image-definition $imageDefName \
-   --subscription $subscriptionID --query [].'name' -o json | grep 0. | tr -d '"')
-az sig image-version delete \
-   -g $sigResourceGroup \
-   --gallery-image-version $sigDefImgVersion \
-   --gallery-name $sigName \
-   --gallery-image-definition $imageDefName \
-   --subscription $subscriptionID
-```   
-
-
-删除映像定义。
-
-```azurecli-interactive
-az sig image-definition delete \
-   -g $sigResourceGroup \
-   --gallery-name $sigName \
-   --gallery-image-definition $imageDefName \
-   --subscription $subscriptionID
+```powerShell
+Remove-AzResource -ResourceId $resTemplateId.ResourceId -Force
 ```
 
-删除库。
+删除角色分配
 
-```azurecli-interactive
-az sig delete -r $sigName -g $sigResourceGroup
+```powerShell
+Remove-AzRoleAssignment -ObjectId $identityNamePrincipalId -RoleDefinitionName $imageRoleDefName -Scope "/subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup"
 ```
 
-删除该资源组。
+删除定义
 
-```azurecli-interactive
-az group delete -n $sigResourceGroup -y
+```powerShell
+Remove-AzRoleDefinition -Name "$identityNamePrincipalId" -Force -Scope "/subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup"
+```
+
+删除标识
+
+```powerShell
+Remove-AzUserAssignedIdentity -ResourceGroupName $imageResourceGroup -Name $identityName -Force
+```
+
+删除资源组。
+
+```powerShell
+Remove-AzResourceGroup $imageResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何更新您创建的映像版本，请参阅[使用 Azure 映像生成器来创建另一个映像版本](image-builder-gallery-update-image-version.md)。
+若要了解如何更新已创建的映像版本，请参阅[使用 Azure 映像生成器创建其他映像版本](image-builder-gallery-update-image-version.md)。

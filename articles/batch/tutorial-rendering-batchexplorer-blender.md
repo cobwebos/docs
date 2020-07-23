@@ -1,24 +1,22 @@
 ---
 title: 使用 Azure Batch 和 Batch Explorer 渲染 Blender 场景
 description: 教程 - 如何使用 Azure Batch 和 Batch Explorer 客户端应用程序渲染 Blender 场景中的多个帧
-services: batch
-ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: 8a512676ab0e56f51c0fb9c59f2e530cfcf73333
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 65baff827417cebe2289cc821df94acd38a1ae61
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791420"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964798"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>教程：使用 Batch Explorer 渲染 Blender 场景
 
 本教程介绍如何渲染 Blender 演示场景的多个帧。 本教程使用 Blender 是因为它免费（不管是客户端还是渲染 VM），但如果使用其他应用程序（例如 Maya 或 3ds Max），则过程十分类似。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 将 Blender 场景上传到 Azure 存储
 > * 创建包含多个节点的 Batch 池，以便执行渲染操作
@@ -29,9 +27,9 @@ ms.locfileid: "57791420"
 
 要以按用户付款模式使用 Batch 中的渲染应用程序，需要有一个即用即付订阅或其他 Azure 购买选项。 如果使用的是提供货币额度的免费 Azure 套餐，则不支持按使用付费的许可。
 
-需要有一个具有关联的存储帐户的 Azure Batch 帐户。  请参阅任何 Batch 快速入门文章（例如 [CLI 文章](https://docs.microsoft.com/azure/batch/quick-create-cli)），了解如何创建 Batch 帐户。
+需要有一个具有关联的存储帐户的 Azure Batch 帐户。  请参阅任何 Batch 快速入门文章（例如 [CLI 文章](./quick-create-cli.md)），了解如何创建 Batch 帐户。
 
-就本教程中指定的 VM 大小和 VM 数目来说，需要至少包含 50 个核心的低优先级核心配额；可以使用默认配额，但必须使用较小的 VM 大小，这意味着图像渲染的时间会变长。 请求提高核心配额的过程详见[此文](https://docs.microsoft.com/azure/batch/batch-quota-limit)。
+就本教程中指定的 VM 大小和 VM 数目来说，需要至少包含 50 个核心的低优先级核心配额；可以使用默认配额，但必须使用较小的 VM 大小，这意味着图像渲染的时间会变长。 请求提高核心配额的过程详见[此文](./batch-quota-limit.md)。
 
 最后，必须安装适用于 Windows、OSX 和 Linux 的 [Batch Explorer](https://azure.github.io/BatchExplorer/)。 它是可选的，但如果安装了 [Blender](https://www.blender.org/download/)，则可查看示例模型文件。
 
@@ -141,4 +139,4 @@ ms.locfileid: "57791420"
 ## <a name="next-steps"></a>后续步骤
 * 通过 Batch Explorer 在“库”部分浏览可用的渲染应用程序。
 * 每个应用程序都有多个可用的模板，这些模板会随时间而扩展。  例如，Blender 的模板可将单个图像拆分成多个图块，这样就可以并行渲染图像的各个部分。
-* 如需渲染功能的全面介绍，请查看[此处](https://docs.microsoft.com/azure/batch/batch-rendering-service)提供的一系列文章。
+* 如需渲染功能的全面介绍，请查看[此处](./batch-rendering-service.md)提供的一系列文章。

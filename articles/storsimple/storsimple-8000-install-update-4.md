@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 5b48cbd1020cfd51fe989a9be33197f2735f21f4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ed6f9d58c5c54c88acf8e3a0e7fda7d2d65b8637
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60860308"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514311"
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>在 StorSimple 设备上安装 Update 4
 
@@ -45,7 +45,7 @@ Update 4 包括设备软件、USM 固件、LSI 驱动程序和固件、Storport 
 
 [!INCLUDE [storsimple-8000-install-update4-via-portal](../../includes/storsimple-8000-install-update4-via-portal.md)]
 
-验证确保设备运行的是 **StorSimple 8000 系列 Update 4 (6.3.9600.17820)**。 还应修改“上次更新日期”。
+验证确保设备运行的是 **StorSimple 8000 系列 Update 4 (6.3.9600.17820)**。 还应修改“上次更新日期”。****
 
 * 现在，会显示“维护模式更新已发布”（此消息可能会在安装更新后持续显示长达 24 小时）。 维护模式更新为中断性更新，会导致设备停机，只能通过设备的 Windows PowerShell 接口应用。
 
@@ -74,7 +74,7 @@ Update 4 包括设备软件、USM 固件、LSI 驱动程序和固件、Storport 
 
 必须按规定顺序将以下修补程序下载并安装到建议的文件夹：
 
-| 顺序 | KB | 描述 | 更新类型 | 安装时间 |在文件夹中安装|
+| 顺序 | KB | 说明 | 更新类型 | 安装时间 |在文件夹中安装|
 | --- | --- | --- | --- | --- | --- |
 | 1. |KB4011839 |软件更新 |常规 <br></br>非中断性 |~ 25 分钟 |FirstOrderUpdate|
 | 2A. |KB4011841 <br> KB4011842 |LSI 驱动程序和固件更新 <br> USM 固件更新（版本 3.38） |常规 <br></br>非中断性 |~ 3 小时 <br> （包括 2A. + 2B. + 2C.）|SecondOrderUpdate|
@@ -83,7 +83,7 @@ Update 4 包括设备软件、USM 固件、LSI 驱动程序和固件、Storport 
 
 除了前面表中显示的所有更新，可能还需安装磁盘固件更新。 运行 `Get-HcsFirmwareVersion` cmdlet 即可验证是否需要磁盘固件更新。 如果运行的是固件版本 `XMGJ`、`XGEG`、`KZ50`、`F6C2`、`VR08`、`N002``0106`，则不需安装这些更新。
 
-| 顺序 | KB | 描述 | 更新类型 | 安装时间 | 在文件夹中安装|
+| 顺序 | KB | 说明 | 更新类型 | 安装时间 | 在文件夹中安装|
 | --- | --- | --- | --- | --- | --- |
 | 3. |KB3121899 |磁盘固件 |维护 <br></br>中断性 |约 30 分钟 | ThirdOrderUpdate |
 

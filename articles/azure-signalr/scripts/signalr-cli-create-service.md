@@ -1,19 +1,19 @@
 ---
 title: Azure CLI 脚本示例 - 创建 SignalR 服务
-description: Azure CLI 脚本示例 - 创建 SignalR 服务
+description: 继续学习示例脚本，在名称随机生成的新资源组中创建新的 Azure SignalR 服务。
 author: sffamily
 ms.service: signalr
 ms.devlang: azurecli
 ms.topic: sample
-ms.date: 04/20/2018
+ms.date: 11/13/2018
 ms.author: zhshang
 ms.custom: mvc
-ms.openlocfilehash: 122b175d026101dd4b15be4458e67ddd8a0d92d6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 45958f020f2e5dbdb0a50f0190aff78568865f74
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66128416"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74158081"
 ---
 # <a name="create-a-signalr-service"></a>创建 SignalR 服务 
 
@@ -27,15 +27,37 @@ ms.locfileid: "66128416"
 
 ## <a name="sample-script"></a>示例脚本
 
-此脚本使用适用于 Azure CLI 的 signalr 扩展。 使用此示例脚本前，执行以下命令，安装适用于 Azure CLI 的 signalr 扩展：
-
-```azurecli-interactive
-az extension add -n signalr
-```
-
 此脚本创建新的 SignalR 服务资源和新的资源组。 
 
-[!code-azurecli-interactive[main](../../../cli_scripts/azure-signalr/create-signalr-service-and-group/create-signalr-service-and-group.sh "Creates a new Azure SignalR Service resource and resource group")]
+```azurecli-interactive
+#!/bin/bash
+
+# Generate a unique suffix for the service name
+let randomNum=$RANDOM*$RANDOM
+
+# Generate a unique service and group name with the suffix
+SignalRName=SignalRTestSvc$randomNum
+#resource name must be lowercase
+mySignalRSvcName=${SignalRName,,}
+myResourceGroupName=$SignalRName"Group"
+
+# Create resource group 
+az group create --name $myResourceGroupName --location eastus
+
+# Create the Azure SignalR Service resource
+az signalr create \
+  --name $mySignalRSvcName \
+  --resource-group $myResourceGroupName \
+  --sku Standard_S1 \
+  --unit-count 1 \
+  --service-mode Default
+
+# Get the SignalR primary connection string 
+primaryConnectionString=$(az signalr key list --name $mySignalRSvcName \
+  --resource-group $myResourceGroupName --query primaryConnectionString -o tsv)
+
+echo "$primaryConnectionString"
+```
 
 记下为新资源组生成的实际名称。 如果要删除所有组资源，将使用该资源组名称。
 
@@ -45,11 +67,11 @@ az extension add -n signalr
 
 表中的每条命令均链接到特定于命令的文档。 此脚本使用以下命令：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az signalr create](/cli/azure/ext/signalr/signalr#ext-signalr-az-signalr-create) | 创建 Azure SignalR 服务资源。 |
-| [az signalr key list](/cli/azure/ext/signalr/signalr/key#ext-signalr-az-signalr-key-list) | 列出密钥，使用 SignalR 推送实时内容更新时，应用程序将使用这些密钥。 |
+| [az signalr create](/cli/azure/signalr#az-signalr-create) | 创建 Azure SignalR 服务资源。 |
+| [az signalr key list](/cli/azure/signalr/key#az-signalr-key-list) | 列出密钥，使用 SignalR 推送实时内容更新时，应用程序将使用这些密钥。 |
 
 
 ## <a name="next-steps"></a>后续步骤

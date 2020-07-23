@@ -1,28 +1,22 @@
 ---
-title: 将实时事件中的数据异常可视化 - Azure 事件中心 | Microsoft Docs
-description: 教程 - 将发送到 Microsoft Azure 事件中心的实时事件中的数据异常可视化
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: timlt
-ms.author: shvija
+title: Azure 事件中心 - 将实时事件中的数据异常可视化
+description: 教程：将发送到 Microsoft Azure 事件中心的实时事件中的数据异常可视化
 ms.topic: tutorial
-ms.service: event-hubs
-ms.custom: seodec18
-ms.date: 02/26/2019
-ms.openlocfilehash: d6786e4e3382c7c4d7a6a6a28c3cd3621df221c1
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.date: 06/23/2020
+ms.openlocfilehash: 595c0e06750171c844249a77ecef16c84dc8ada5
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867136"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315613"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>教程：将发送到 Azure 事件中心的实时事件中的数据异常可视化
 
 借助 Azure 事件中心，可以使用 Azure 流分析检查传入的数据和提取异常，然后在 Power BI 中将这些异常可视化。 假设有数千个设备在不断地向事件中心发送实时数据，每秒发送的事件数累积达到数百万个。 如何在这么多的数据中检查异常或错误？ 例如，如果设备正在发送信用卡交易，而你需要在 5 秒时间间隔内捕获多个国家/地区/区域任意位置发生的多个交易，那么结果会是怎样？ 如果某人窃取了信用卡，然后在全球不同的地方同时使用这些信用卡购物，则可能需要捕获这些异常。 
 
-本教程将模拟此示例。 我们将运行一个可以创建信用卡交易并将其发送到事件中心的应用程序。 再使用 Azure 流分析实时读取数据流，将无效交易与无效交易区分开来，然后使用 Power BI 直观识别标记为无效的交易。
+本教程将模拟此示例。 我们将运行一个可以创建信用卡交易并将其发送到事件中心的应用程序。 然后使用 Azure 流分析实时读取数据流，以便将有效交易与无效交易分开，然后使用 Power BI 直观识别标记为无效的交易。
 
-本教程介绍如何执行以下操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 创建事件中心命名空间
 > * 创建事件中心
@@ -47,7 +41,7 @@ ms.locfileid: "64867136"
 
 以下部分介绍如何执行上述步骤。 遵照适用于 CLI 或 PowerShell 的说明执行以下步骤： 
 
-1. 创建[资源组](../azure-resource-manager/resource-group-overview.md)。 
+1. 创建[资源组](../azure-resource-manager/management/overview.md)。 
 
 2. 创建事件中心命名空间。 
 
@@ -156,14 +150,14 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 ## <a name="run-app-to-produce-test-event-data"></a>运行应用以生成测试事件数据
 
-[GitHub 上的事件中心示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet)包含一个可以生成测试数据的[异常检测程序应用](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/AnomalyDetector)。 该应用通过以下方式模拟信用卡的使用：将信用卡交易写入事件中心，并偶尔在多个位置写入同一张信用卡发生的多笔交易，以便将这些交易标记为异常。 若要运行此应用，请遵循以下步骤： 
+[GitHub 上的事件中心示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet)包含一个生成测试数据的异常检测器应用。 该应用通过以下方式模拟信用卡的使用：将信用卡交易写入事件中心，并偶尔在多个位置写入同一张信用卡发生的多笔交易，以便将这些交易标记为异常。 若要运行此应用，请遵循以下步骤： 
 
 1. 从 GitHub 下载 [Azure 事件中心示例](https://github.com/Azure/azure-event-hubs/archive/master.zip)，并在本地将其解压缩。
+2. 导航到“\azure-event-hubs-master\samples\DotNet\\”  文件夹。 
+3. 切换到“Azure.Messaging.EventHubs\AnomalyDetector\\”  文件夹，然后双击“AnomalyDetector.sln”  以在 Visual Studio 中打开该解决方案。 
 
-2. 转到文件夹 \azure-event-hubs-master\samples\DotNet\AnomalyDetector\，双击 AnomalyDetector.sln 在 Visual Studio 中打开解决方案。 
-
+    若要使用旧版本的使用旧 Microsoft.Azure.EventHubs 包的示例，请打开“Microsoft.Azure.EventHubs\AnomalyDetector”  文件夹中的解决方案。 
 3. 打开 Program.cs，将 **Event Hubs connection string** 替换为运行脚本时保存的连接字符串。 
-
 4. 将 **Event Hub name** 替换为事件中心名称。 单击 F5 运行应用程序。 该应用程序会开始向事件中心发送事件，直到发送了 1000 个事件为止。 在某些情况下，该应用需保持运行状态才能让我们检索数据。 以下说明中根据需要指明了此类情况。
 
 ## <a name="set-up-azure-stream-analytics"></a>设置 Azure 流分析
@@ -217,7 +211,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
    ![显示如何将输入流添加到流分析作业的屏幕截图。](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-inputs.png)
 
-5. 单击“保存”。 
+5. 单击“ **保存**”。
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>将输出添加到流分析作业
 
@@ -229,7 +223,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
    **数据集名称**：使用 **contosoehdataset**。 此字段是要在 Power BI 中使用的数据集的名称。 
 
-   **表名**：使用 **contosoehtable**。 此字段是要在 Power BI 中使用的表的名称。 
+   **表名称**：使用 **contosoehtable**。 此字段是要在 Power BI 中使用的表的名称。 
 
    在剩余字段中使用默认值。
 
@@ -239,7 +233,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 4. 在剩余字段中使用默认值。
 
-5. 单击“保存”。 
+5. 单击“ **保存**”。
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>配置流分析作业的查询
 
@@ -268,7 +262,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-4. 单击“保存”。 
+4. 单击“ **保存**”。
 
 ### <a name="test-the-query-for-the-stream-analytics-job"></a>测试流分析作业的查询 
 
@@ -306,7 +300,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
    ![指定仪表板名称的屏幕截图。](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-name.png)
 
-7. 在“仪表板”页上单击“添加磁贴”，在“实时数据”部分选择“自定义流数据”，然后单击“下一步”。    
+7. 在“仪表板”页上单击“添加磁贴”，在“实时数据”部分中选择“自定义流数据”，然后单击“下一步”。    
 
    ![指定磁贴源的屏幕截图。](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-real-time-data.png)
 
@@ -373,7 +367,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了以下操作：
+在本教程中，你了解了如何执行以下操作：
 > [!div class="checklist"]
 > * 创建事件中心命名空间
 > * 创建事件中心
@@ -384,6 +378,6 @@ Remove-AzResourceGroup -Name $resourceGroup
 请继续学习下一篇文章，以详细了解 Azure 事件中心。
 
 > [!div class="nextstepaction"]
-> [在 .NET Standard 中开始将消息发送到 Azure 事件中心](event-hubs-dotnet-standard-getstarted-send.md)
+> [在 .NET Standard 中开始将消息发送到 Azure 事件中心](get-started-dotnet-standard-send-v2.md)
 
 [创建一个免费帐户]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

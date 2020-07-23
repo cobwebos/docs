@@ -1,5 +1,5 @@
 - name: 必应图像搜索 API 文档
-  href: index.yml
+  href: ../bing-web-search/index.yml
 - name: 概述
   expanded: true
   items:
@@ -26,14 +26,8 @@
           href: quickstarts/ruby.md
     - name: SDK 中 IsInRole 中的声明
       items:
-        - name: '使用 C#'
-          href: image-search-sdk-quickstart.md
-        - name: 使用 Node.js
-          href: image-search-sdk-node-quickstart.md
-        - name: 使用 Python
-          href: image-sdk-python-quickstart.md
-        - name: 使用 Java
-          href: image-sdk-java-quickstart.md
+        - name: 必应图像搜索客户端库
+          href: ./quickstarts/client-libraries.md
 - name: 教程
   items:
     - name: 构建图像搜索 Web 应用程序
@@ -52,10 +46,12 @@
       href: gif-images.md
     - name: 获取热门图像
       href: trending-images.md
-    - name: 对图像进行分页
-      href: paging-images.md
+    - name: 翻页浏览搜索结果
+      maintainContext: true
+      href: ../bing-web-search/paging-search-results.md
     - name: 调整和裁剪缩略图
-      href: resize-and-crop-thumbnails.md
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: 从 v5 升级到 v7
       href: bing-image-upgrade-guide-v5-to-v7.md
 - name: 概念
@@ -64,7 +60,7 @@
       href: concepts/bing-image-search-get-images.md
     - name: 发送和使用搜索查询
       href: concepts/bing-image-search-sending-queries.md
-- name: 引用
+- name: 参考
   items:
     - name: 必应图像搜索 API v7
       href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference'
@@ -79,11 +75,11 @@
         - name: .NET
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingimagesearch?view=azure-dotnet'
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/imagesearch?view=azure-java-stable'
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingimagesearch?view=azure-java-stable'
         - name: Python
           href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/imagesearch?view=azure-python'
         - name: Node.js
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/imagesearch?view=azure-node-latest'
+          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-imagesearch/?view=azure-node-latest'
         - name: Go
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/imagesearch'
     - name: 必应的使用和显示要求
@@ -111,9 +107,10 @@
       href: 'https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/'
     - name: 必应图像搜索终结点
       href: image-search-endpoint.md
-    - name: 语言和区域支持
+    - name: 语言支持
       href: language-support.md
     - name: 适用于必应图像搜索 API 的分析
-      href: bing-image-stats.md
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

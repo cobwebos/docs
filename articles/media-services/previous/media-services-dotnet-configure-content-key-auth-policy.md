@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: juliako;mingfeiy
-ms.openlocfilehash: 744887a3b23518a5b970a3fda94bf990806bd2d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: juliako
+ms.openlocfilehash: 58d52cd194ca4391c61f2477189984273df1198a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61230264"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712388"
 ---
-# <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>动态加密：配置内容密钥授权策略
+# <a name="configure-a-content-key-authorization-policy"></a>配置内容密钥授权策略
+
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>概述
@@ -43,7 +43,7 @@ ms.locfileid: "61230264"
 - [将基于 Azure 媒体服务 OWIN MVC 的应用与 Azure Active Directory 相集成，并基于 JWT 声明限制内容密钥传送](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
 
 ### <a name="some-considerations-apply"></a>需要注意的一些事项
-* 创建媒体服务帐户时，会将一个处于“已停止”状态的默认流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，流式处理终结点必须处于“正在运行”状态。 
+* 创建媒体服务帐户后，一个处于“已停止”状态的默认流式处理终结点会添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，流式处理终结点必须处于“正在运行”状态。 
 * 资产必须包含一组自适应比特率 MP4 或自适应比特率平滑流文件。 有关详细信息，请参阅[对资产进行编码](media-services-encode-asset.md)。
 * 使用 AssetCreationOptions.StorageEncrypted 选项上传资产并对其进行编码。
 * 如果打算创建需要相同策略配置的多个内容密钥，建议创建单个授权策略，并将其重复用于多个内容密钥。
@@ -391,8 +391,8 @@ ms.locfileid: "61230264"
 
 若要获取基于令牌限制（用于密钥授权策略）的测试令牌，请参阅“[测试令牌](#test-token)”部分。 
 
-## <a id="types"></a>定义 ContentKeyAuthorizationPolicy 时使用的类型
-### <a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
+## <a name="types-used-when-you-define-contentkeyauthorizationpolicy"></a><a id="types"></a>定义 ContentKeyAuthorizationPolicy 时使用的类型
+### <a name="contentkeyrestrictiontype"></a><a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
 
 ```csharp
     public enum ContentKeyRestrictionType
@@ -403,7 +403,7 @@ ms.locfileid: "61230264"
     }
 ```
 
-### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
+### <a name="contentkeydeliverytype"></a><a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
 
 ```csharp 
     public enum ContentKeyDeliveryType
@@ -415,7 +415,7 @@ ms.locfileid: "61230264"
     }
 ```
 
-### <a id="TokenType"></a>TokenType
+### <a name="tokentype"></a><a id="TokenType"></a>TokenType
 
 ```csharp
     public enum TokenType
@@ -425,6 +425,10 @@ ms.locfileid: "61230264"
         JWT = 2,
     }
 ```
+
+## <a name="additional-notes"></a>附加说明
+
+* Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

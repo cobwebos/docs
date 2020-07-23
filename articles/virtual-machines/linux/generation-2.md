@@ -1,154 +1,207 @@
 ---
-title: 在 Azure 上的第 2 代 Vm （预览版） |Microsoft Docs
-description: Azure 的第 2 代 Vm 的概述
-services: virtual-machines-linux
-documentationcenter: ''
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
+title: Azure 对第 2 代 VM 的支持
+description: 第 2 代 VM 的 Azure 支持概述
+author: ju-shim
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2019
-ms.author: lahugh
-ms.openlocfilehash: 183e2144317bf3f1c9a60443d393bdcb3fd7c04a
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.date: 02/11/2020
+ms.author: jushiman
+ms.openlocfilehash: e84d4d147490cd3b9d136f25a3707f5a74999f3f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390548"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527330"
 ---
-# <a name="generation-2-vms-preview-on-azure"></a>在 Azure 上的第 2 代 Vm （预览版）
+# <a name="support-for-generation-2-vms-on-azure"></a>Azure 对第 2 代 VM 的支持
 
-> [!IMPORTANT]
-> 第 2 代 Vm 当前处于公共预览状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+Azure 现已提供对第 2 代虚拟机 (VM) 的支持。 创建虚拟机后无法更改其代系，因此，在选择代系之前，请先查看本页上的注意事项。
 
-第 2 代虚拟机 (Vm) 的支持现已在 Azure 上的公共预览版中可用。 无法更改虚拟机的代次后创建它。 因此，我们建议您查看的注意事项[此处](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)以及此页上选择某代之前的信息。
+第 2 代 VM 支持第 1 代 VM 所不支持的某些关键特性。 这些特性包括更大的内存、Intel Software Guard Extensions (Intel SGX) 和虚拟化持久性内存 (vPMEM)。 在本地运行的第 2 代 VM 具有 Azure 中尚不支持的一些功能。 有关详细信息，请参阅[特性和功能](#features-and-capabilities)部分。
 
-第 2 代 Vm 支持主要功能所不支持第 1 代 Vm，如： 增加的内存、 Intel® 软件防护扩展 (SGX)，以及虚拟永久性内存 (vPMEM)。 第 2 代 Vm 还必须在 Azure 上目前尚不支持某些功能。 有关详细信息，请参阅[特性和功能](#features-and-capabilities)部分。
+第 2 代 VM 使用新的基于 UEFI 的启动体系结构，而不是使用第 1 代 VM 所用的基于 BIOS 的体系结构。 与第 1 代 VM 相比，第 2 代 VM 的启动时间和安装时间可能有所改善。 有关第 2 代 VM 的概述以及第 1 代与第 2 代之间的某些差异，请参阅[应在 Hyper-V 中创建第 1 代还是第 2 代虚拟机？](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)。
 
-第 2 代虚拟机使用新的基于 UEFI 的引导体系结构与基于 BIOS 的体系结构使用的第 1 代 Vm。 与第 1 代 Vm 相比，第 2 代 Vm 可能会改进启动和安装时间。 第 2 代 Vm 的概述和一些第 1 代和第 2 代的主要差异，请参阅[应在 HYPER-V 中创建第 1 或 2 代虚拟机？](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)。
+## <a name="generation-2-vm-sizes"></a>第 2 代 VM 的大小
 
-## <a name="generation-2-vm-sizes"></a>第 2 代 VM 大小
+Azure 中的所有 VM 大小都支持第 1 代 VM（Mv2 系列 VM 除外）。 Azure 目前为以下选定 VM 系列提供第 2 代支持：
 
-在 Azure 中的所有 VM 大小都支持的第 1 代 Vm。 Azure 现在提供公共预览版中的以下所选 VM 系列的第 2 代支持：
+* [B 系列](../sizes-b-series-burstable.md)
+* [DCsv2 系列](../dcv2-series.md)
+* [DSv2 系列](../dv2-dsv2-series.md)和 [Dsv3 系列](../dv3-dsv3-series.md)
+* [Esv3 系列](../ev3-esv3-series.md)
+* [Fsv2 系列](../fsv2-series.md)
+* [GS 系列](../sizes-previous-gen.md#gs-series)
+* [HB 系列](../hb-series.md)
+* [HC 系列](../hc-series.md)
+* [Ls 系列](../sizes-previous-gen.md#ls-series)和 [Lsv2 系列](../lsv2-series.md)
+* [M 系列](../m-series.md)
+* [Mv2 系列](../mv2-series.md)<sup>1</sup>
+* [NCv2 系列](../ncv2-series.md)和 [NCv3 系列](../ncv3-series.md)
+* [ND 系列](../nd-series.md)
+* [NVv3 系列](../nvv3-series.md)
 
-* [Dsv2](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv2-series)和[Dsv3 系列](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv3-series-1)
-* [Esv3 系列](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#esv3-series)
-* [Fsv2 系列](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-compute#fsv2-series-1)
-* [GS-series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#gs-series)
-* [Ls-系列](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#ls-series)和[Lsv2 系列](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-storage#lsv2-series)
-* [Mv2-series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#mv2-series)
+<sup>1</sup> Mv2 系列不支持第 1 代 VM 映像，仅支持一部分第 2 代映像。 有关详细信息，请参阅 [Mv2 系列文档](../mv2-series.md)。
 
-## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure Marketplace 中的第 2 代 VM 映像
+## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure 市场中的第 2 代 VM 映像
 
-第 2 代 Vm 支持以下 Azure Marketplace 映像：
+第 2 代 VM 支持以下市场映像：
 
-* Windows server 2019 数据中心
-* Windows server 2016 数据中心
-* Windows server 2012 R2 Datacenter
-* Windows server 2012 数据中心
+* Windows Server 2019、2016、2012 R2、2012
+* Windows 10
+* SUSE Linux Enterprise Server 15 SP1
+* SUSE Linux Enterprise Server 12 SP4
+* Ubuntu Server 16.04、18.04、19.04、19.10 
+* RHEL 8.1、8.0、7.7、7.6、7.5、7.4、7.0
+* Cent OS 8.1、8.0、7.7、7.6、7.5、7.4
+* Oracle Linux 7.7、7.7-CI
 
-## <a name="on-premises-vs-azure-generation-2-vms"></a>在本地与 Azure 的第 2 代 Vm
+## <a name="on-premises-vs-azure-generation-2-vms"></a>本地与Azure 第 2 代 VM
 
-Azure 当前不支持的一些功能，在本地 HYPER-V 支持的第 2 代 Vm。
+Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 
-| 第 2 代功能                | 在本地 Hyper-v | Azure |
+| 第 2 代的特性                | 本地 Hyper-V | Azure |
 |-------------------------------------|---------------------|-------|
 | 安全启动                         | :heavy_check_mark:  | :x:   |
-| 受防护的 VM                         | :heavy_check_mark:  | :x:   |
+| 屏蔽 VM                         | :heavy_check_mark:  | :x:   |
 | vTPM                                | :heavy_check_mark:  | :x:   |
-| 基于虚拟化的安全 (VBS) | :heavy_check_mark:  | :x:   |
+| 基于虚拟化的安全性 (VBS) | :heavy_check_mark:  | :x:   |
 | VHDX 格式                         | :heavy_check_mark:  | :x:   |
 
 ## <a name="features-and-capabilities"></a>特性和功能
 
-### <a name="generation-1-vs-generation-2-features"></a>第 1 代与第 2 代功能
+### <a name="generation-1-vs-generation-2-features"></a>第 1 代和第 2 代的特性
 
 | Feature | 第 1 代 | 第 2 代 |
 |---------|--------------|--------------|
-| 引导             | PCAT                      | UEFI                               |
-| 磁盘控制器 | IDE                       | SCSI                               |
-| VM 大小         | 适用于所有 VM 大小 | 高级存储仅支持虚拟机 |
+| 启动             | PCAT         | UEFI |
+| 磁盘控制器 | IDE          | SCSI |
+| VM 大小         | 所有 VM 大小 | 仅限支持高级存储的 VM |
 
-### <a name="generation-1-vs-generation-2-capabilities"></a>第 1 代与第 2 代功能
+### <a name="generation-1-vs-generation-2-capabilities"></a>第 1 代与第 2 代的功能
 
 | 功能 | 第 1 代 | 第 2 代 |
 |------------|--------------|--------------|
-| OS 磁盘 > 2 TB                    | :x:                        | :heavy_check_mark: |
-| 自定义磁盘/映像/交换 OS         | :heavy_check_mark:         | :heavy_check_mark: |
-| 虚拟机规模集的支持 | :heavy_check_mark:         | :heavy_check_mark: |
-| ASR/备份                        | :heavy_check_mark:         | :x:                |
-| 共享的映像库              | :heavy_check_mark:         | :x:                |
-| Azure 磁盘加密             | :heavy_check_mark:         | :x:                |
+| OS 磁盘 > 2 TB                    | :x:                | :heavy_check_mark: |
+| 自定义磁盘/映像/交换 OS         | :heavy_check_mark: | :heavy_check_mark: |
+| 虚拟机规模集支持 | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
+| 备份/还原                    | :heavy_check_mark: | :heavy_check_mark: |
+| 共享映像库              | :heavy_check_mark: | :heavy_check_mark: |
+| Azure 磁盘加密             | :heavy_check_mark: | :x:                |
 
 ## <a name="creating-a-generation-2-vm"></a>创建第 2 代 VM
 
-### <a name="marketplace-image"></a>Marketplace 映像
+### <a name="marketplace-image"></a>市场映像
 
-可以从 marketplace 映像 （它支持 UEFI 引导） 通过 Azure 门户或 Azure CLI 创建第 2 代 Vm。
+在 Azure 门户或 Azure CLI 中，可以从支持 UEFI 启动的市场映像创建第 2 代 VM。
 
-`windowsserver-gen2preview`产品/服务包含仅 Windows 第 2 代映像。 这将避免与第 1 代与第 2 代映像相关的混淆。 若要创建生成 2 个 Vm，请选择**映像**此产品/服务，然后根据标准 VM 创建过程。
+#### <a name="azure-portal"></a>Azure 门户
 
-目前，以下 Windows 生成 2 个映像是 Azure Marketplace 中发布：
+下面是在 Azure 门户中创建第 2 代 (Gen2) VM 的步骤。
 
-* 2019-datacenter-gen2
-* 2016-datacenter-gen2
-* 2012-r2-datacenter-gen2
-* 2012-datacenter-gen2
+1. 通过 https://portal.azure.com 登录到 Azure 门户。
+1. 选择“创建资源”。
+1. 在左侧的“Azure 市场”中单击“查看全部”。
+1. 选择支持 Gen2 的映像。
+1. 单击“创建”。
+1. 在“高级”选项卡的“VM 代系”部分下，选择“Gen 2”选项。
+1. 在“基本信息”选项卡的“实例详细信息”下，转到“大小”并打开“选择 VM 大小”边栏选项卡。
+1. 选择[支持的第 2 代 VM](#generation-2-vm-sizes)。
+1. 通过 [Azure 门户创建流](quick-create-portal.md)完成 VM 的创建。
 
-因为我们会持续添加其他支持第 2 代的映像，请参阅受支持的 marketplace 映像的列表的功能部分。
+![选择第 1 代或第 2 代 VM](./media/generation-2/gen1-gen2-select.png)
 
-### <a name="managed-image-or-managed-disk"></a>托管的映像或托管的磁盘
+#### <a name="powershell"></a>PowerShell
 
-生成 2 个 Vm 可以从托管的映像或托管的磁盘创建同样会创建第 1 代 VM。
+也可以使用 PowerShell 通过直接引用第 1 代或第 2 代 SKU 来创建 VM。
+
+例如，使用以下 PowerShell cmdlet 获取 `WindowsServer` 产品/服务中的 SKU 列表。
+
+```powershell
+Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
+```
+
+如果要创建使用 Windows Server 2012 作为操作系统的 VM，则将选择第 1 代 (BIOS) 或第 2 代 (UEFI) VM SKU，如下所示：
+
+```powershell
+2012-Datacenter
+2012-datacenter-gensecond
+```
+
+有关支持的市场映像的最新列表，请参阅[特性和功能](#features-and-capabilities)部分。
+
+#### <a name="azure-cli"></a>Azure CLI
+
+或者，可以使用 Azure CLI 查看按 **Publisher** 列出的任何可用第 2 代映像。
+
+```azurecli
+az vm image list --publisher Canonical --sku gen2 --output table --all
+```
+
+### <a name="managed-image-or-managed-disk"></a>托管映像或托管磁盘
+
+可以从托管映像或托管磁盘创建第 2 代 VM，就像创建第 1 代 VM 一样，
 
 ### <a name="virtual-machine-scale-sets"></a>虚拟机规模集
 
-此外可以使用虚拟机规模集创建 2 个 Vm 的代。 您可以创建生成 2 个 Vm 使用 Azure CLI 通过 Azure 虚拟机规模集。
+还可以使用虚拟机规模集创建第 2 代 VM。 在 Azure CLI 中使用 Azure 规模集创建第 2 代 VM。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-* **生成所有 Azure 区域中可用的 2 个 Vm？**  
-    否。但是，并非所有[第 2 代 VM 大小](#generation-2-vm-sizes)每个区域中都可用。 生成 2 个 Vm 是依赖于 VM 大小的可用性的可用性。
+* **第 2 代 VM 是否已在所有 Azure 区域中推出？**  
+    是。 但是，并非所有[第 2 代 VM 大小](#generation-2-vm-sizes)都已在每个区域中推出。 第 2 代 VM 的可用性取决于 VM 大小的可用性。
 
-* **是否有第 1 代和生成之间的价差的 2 个 Vm？**  
-    没有任何区别在第 1 代和第 2 代 Vm 的定价。
+* **第 1 代与第 2 代 VM 的价格是否有差别？**  
+    不是。
 
-* **如何增加 OS 磁盘大小？**  
-  OS 磁盘大于 2 TB 不熟悉第 2 代 Vm。 默认情况下，大多数 OS 磁盘小于 2 TB，对于第 2 代 Vm，但可以增加的磁盘大小为 4 TB 的建议最大值。 可以增加通过 Azure CLI 或 Azure 门户将 OS 磁盘大小。 有关以编程方式扩展磁盘的详细信息，请参阅[调整磁盘大小](expand-disks.md)。
+* **我有一个来自本地第 2 代 VM 的 .vhd 文件。我可以使用该 .vhd 文件在 Azure 中创建第 2 代 VM 吗？**
+  是的，你可以将第 2 代 .vhd 文件带到 Azure，并使用该文件创建第 2 代 VM。 请使用以下步骤来执行该操作：
+    1. 将 .vhd 上传到你要创建 VM 的同一区域中的存储帐户。
+    1. 从该 .vhd 文件创建托管磁盘。 将“Hyper-V Generation”属性设置为 V2。 以下 PowerShell 命令在创建托管磁盘时设置“Hyper-V Generation”属性。
 
-  若要增大通过 Azure 门户将 OS 磁盘大小：
+        ```powershell
+        $sourceUri = 'https://xyzstorage.blob.core.windows.net/vhd/abcd.vhd'. #<Provide location to your uploaded .vhd file>
+        $osDiskName = 'gen2Diskfrmgenvhd'  #<Provide a name for your disk>
+        $diskconfig = New-AzDiskConfig -Location '<location>' -DiskSizeGB 127 -AccountType Standard_LRS -OsType Windows -HyperVGeneration "V2" -SourceUri $sourceUri -CreateOption 'Import'
+        New-AzDisk -DiskName $osDiskName -ResourceGroupName '<Your Resource Group>' -Disk $diskconfig
+        ```
 
-  * 导航到 Azure 门户上的 VM 属性页。
+    1. 磁盘可用后，请通过附加此磁盘来创建 VM。 创建的 VM 将是第 2 代 VM。
+    创建第 2 代 VM 时，可以选择将此 VM 的映像通用化。 通过通用化映像，可以使用它来创建多个 VM。
 
-  * 关闭并解除分配 VM 使用**停止**按钮。
+* **如何增大 OS 磁盘的大小？**  
+  大于 2 TB 的 OS 磁盘是第 2 代 VM 的新配置。 默认情况下，第 2 代 VM 的 OS 磁盘小于 2 TB。 可将磁盘大小增大至 4 TB（建议的最大大小）。 使用 Azure CLI 或 Azure 门户增大 OS 磁盘大小。 有关如何以编程方式扩展磁盘的信息，请参阅[调整磁盘大小](expand-disks.md)。
 
-  * 在中**磁盘**部分中，选择你想要增加的 OS 磁盘。
+  若要在 Azure 门户中增大 OS 磁盘大小：
 
-  * 选择**配置**中**磁盘**部分，并更新**大小**到所需的值。
-  
-  * 向后定位到的 VM 属性页并**启动**VM。
+  1. 在 Azure 门户中，转到 VM 属性页。
+  1. 若要关闭并解除分配 VM，请选择“停止”按钮。
+  1. 在“磁盘”部分，选择要增大的 OS 磁盘。
+  1. 在“磁盘”部分，选择“配置”并将“大小”更新为所需的值。  
+  1. 返回到 VM 属性页并**启动** VM。
 
-  可能会看到一条警告对于 OS 磁盘大于 2 TB。 此警告不适用于第 2 代 Vm;但是，OS 磁盘大小大于 4 TB 为**不建议这样做。**
+  你可能会看到一条警告，指出 OS 磁盘大于 2 TB。 该警告不适用于第 2 代 VM。 但是，不建议使用大于 4 TB 的 OS 磁盘大小。
 
-* **第 2 代 Vm 支持加速网络吗？**  
-    是的第 2 代 Vm 支持[加速网络](../../virtual-network/create-vm-accelerated-networking-cli.md)。
+* **第 2 代 VM 是否支持加速网络？**  
+    是。 有关详细信息，请参阅[创建具有加速网络的 VM](../../virtual-network/create-vm-accelerated-networking-cli.md)。
 
-* **在第 2 代上支持.vhdx？**  
-    不可以，第 2 代 Vm 支持仅.vhd。
+* **第 2 代是否支持 VHDX？**  
+    否，第 2 代 VM 仅支持 VHD。
 
-* **第 2 代 Vm 支持超高固态驱动器 (SSD) 吗？**  
-    是的第 2 代 Vm 支持超高 SSD。
+* **第2代 VM 是否支持 Azure 超级磁盘存储？**  
+    是的。
 
-* **是否可以迁移从第 1 代到第 2 代 Vm？**  
-    不可以，你创建它后无法更改 VM 的代。 如果需要虚拟机代次之间进行切换，您需要创建新的 VM 的不同的生成。
+* **是否可将 VM 从第 1 代迁移到第 2 代？**  
+    否，创建 VM 后无法更改其代系。 如果需要在 VM 代系之间切换，请创建一个不同代系的新 VM。
+
+* **为什么在尝试创建 Gen2 VM 时，大小选择器中没有启用我的 VM 大小？**
+
+    可以通过执行以下操作来解决此问题：
+
+    1. 确认“高级”选项卡中的“VM 代系”属性已设为“Gen 2”。
+    1. 验证是否正在搜索[支持 Gen2 VM 的 VM 大小](#generation-2-vm-sizes)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解如何[第 2 代虚拟机的 HYPER-V 中](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)。
+* 了解 [Hyper-V 中的第 2 代虚拟机](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)。

@@ -2,18 +2,18 @@
 title: include 文件
 description: include 文件
 services: notification-hubs
-author: spelluru
+author: sethmanheim
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 04/02/2018
-ms.author: spelluru
+ms.date: 11/07/2019
+ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: c15d695e072e72c6e7be6dcf49f3ea049a9b70b7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 520a0b4ec42b9a32fbd30c28c7ce311b5445f23d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66152404"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74260659"
 ---
 发送模板通知时，只需提供一组属性。 在此方案中，这组属性包含当前新闻的本地化版本。
 
@@ -33,9 +33,11 @@ ms.locfileid: "66152404"
 private static async void SendTemplateNotificationAsync()
 {
     // Define the notification hub.
-    NotificationHubClient hub = 
-        NotificationHubClient.CreateClientFromConnectionString(
+    NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(
             "<connection string with full access>", "<hub name>");
+
+    // Apple requires the apns-push-type header for all requests
+    var headers = new Dictionary<string, string> {{"apns-push-type", "alert"}};
 
     // Sending the notification as a template notification. All template registrations that contain 
     // "messageParam" or "News_<local selected>" and the proper tags will receive the notifications. 
@@ -64,7 +66,7 @@ private static async void SendTemplateNotificationAsync()
 }
 ```
 
-无论使用何种平台，SendTemplateNotificationAsync 方法都会将本地化新闻传送到所有设备。 通知中心生成正确的本机有效负载并将其传送到已订阅特定标记的所有设备。
+无论使用何种平台，SendTemplateNotificationAsync 方法都会将本地化新闻传送到所有设备  。 通知中心生成正确的本机有效负载并将其传送到已订阅特定标记的所有设备。
 
 ### <a name="sending-notification-with-mobile-services"></a>使用移动服务发送通知
 

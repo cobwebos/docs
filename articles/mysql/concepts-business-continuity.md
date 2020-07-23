@@ -1,21 +1,21 @@
 ---
-title: 有关使用 Azure Database for MySQL 确保业务连续性的概述
-description: 有关使用 Azure Database for MySQL 确保业务连续性的概述。
+title: 业务连续性-Azure Database for MySQL
+description: 使用 Azure Database for MySQL 服务时，了解业务连续性（时间点还原、数据中心服务中断、异地还原）。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: a09c1934ecb34518b191a8e730a72efecc85aa2f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 7/7/2020
+ms.openlocfilehash: 74fdfb9f3a3f59f55b0f0ed4865601c0ddb7b7f2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60525440"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241958"
 ---
-# <a name="overview-of-business-continuity-with-azure-database-for-mysql"></a>有关使用 Azure Database for MySQL 确保业务连续性的概述
+# <a name="understand-business-continuity-in-azure-database-for-mysql"></a>了解 Azure Database for MySQL 中的业务连续性
 
-本概述介绍了 Azure Database for MySQL 针对业务连续性和灾难恢复所提供的功能。 了解在发生破坏性事件后用于进行恢复的选项，破坏性事件可能导致数据丢失或者数据库和应用程序无法使用。 了解对一些情况的处理方式，包括用户或应用程序错误影响数据完整性、Azure 区域服务中断，或者应用程序需要维护。
+本文介绍了 Azure Database for MySQL 针对业务连续性和灾难恢复所提供的功能。 了解在发生破坏性事件后用于进行恢复的选项，破坏性事件可能导致数据丢失或者数据库和应用程序无法使用。 了解对一些情况的处理方式，包括用户或应用程序错误影响数据完整性、Azure 区域发生服务中断，或者应用程序需要维护。
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>可用来提供业务连续性的功能
 
@@ -29,7 +29,7 @@ Azure Database for MySQL 提供了业务连续性功能，这包括自动备份�
 | 从异地复制的备份执行异地还原 | 不支持 | ERT < 12 小时<br/>RPO < 1 小时 | ERT < 12 小时<br/>RPO < 1 小时 |
 
 > [!IMPORTANT]
-> 删除的服务器无法还原。 如果删除服务器，则属于该服务器的所有数据库也会被删除且不可恢复。
+> 已删除的服务器**无法**还原。 如果删除服务器，则属于该服务器的所有数据库也会被删除且不可恢复。
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>在发生用户或应用程序错误之后恢复服务器
 
@@ -46,7 +46,15 @@ Azure 数据中心会罕见地发生中断。 发生中断时，可能仅导致�
 另一个选项是使用 Azure Database for MySQL 的异地还原功能，该功能使用异地冗余备份来还原服务器。 即使托管你的服务器的区域处于脱机状态，也可访问这些备份。 可以使用这些备份还原到任何其他区域并使服务器恢复联机。
 
 > [!IMPORTANT]
-> 只有当为服务器预配了异地冗余备份存储时，异地还原才是可行的。 如果要从现有服务器的本地冗余切换到异地冗余备份，必须使用现有服务器的 mysqldump 进行转储，然后将其还原到配置了异地冗余备份的新建服务器中。
+> 只有当为服务器预配了异地冗余备份存储时，异地还原才是可行的。 如果要从本地冗余备份切换到现有服务器的异地冗余备份，必须使用现有服务器的 mysqldump 进行转储，并将其还原到配置了异地冗余备份的新建服务器。
+
+## <a name="cross-region-read-replicas"></a>跨区域只读副本
+
+可以使用跨区域只读副本来增强业务连续性和灾难恢复规划。 使用 MySQL 的二进制日志复制技术异步更新读取副本。 从[只读副本概念文章](concepts-read-replicas.md)详细了解有关只读副本、可用区域以及如何进行故障转移的信息。 
+
+## <a name="faq"></a>常见问题解答
+### <a name="where-does-azure-database-for-mysql-store-customer-data"></a>Azure Database for MySQL 将客户数据存储在何处？
+默认情况下，Azure Database for MySQL 不会将客户数据从其部署到的区域中移出或存储。 但是，客户可以选择启用[异地冗余备份](concepts-backup.md#backup-redundancy-options)，或创建[跨区域读取副本](concepts-read-replicas.md#cross-region-replication)以便将数据存储在另一个区域中。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,25 +1,14 @@
 ---
-title: Azure CLI 脚本示例 - Batch 中的 Windows 池 | Microsoft Docs
-description: Azure CLI 脚本示例 - 在 Batch 中创建和管理 Windows 池
-services: batch
-documentationcenter: ''
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.devlang: azurecli
+title: Azure CLI 脚本示例 - Batch 中的 Windows 池
+description: 此脚本演示了 Azure Batch 中一些可用于在 Azure CLI 中创建和管理 Windows 计算节点池的命令。
 ms.topic: sample
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 01/29/2018
-ms.author: lahugh
-ms.openlocfilehash: c4906ca67137790e19342f0434e6c2b3932819fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/12/2019
+ms.openlocfilehash: 6e7d53ea4ca0a320cd70563ed982c690fa30542c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66127424"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963965"
 ---
 # <a name="cli-example-create-and-manage-a-windows-pool-in-azure-batch"></a>CLI 示例：在 Azure Batch 中创建和管理 Windows 池
 
@@ -45,19 +34,19 @@ az group delete --name myResourceGroup
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az batch account create](/cli/azure/batch/account#az-batch-account-create) | 创建批处理帐户。 |
-| [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az-batch-account-login) | 针对指定的批处理帐户进行身份验证，以便进一步进行 CLI 交互。 |
-| [az batch pool create](https://docs.microsoft.com/cli/azure/batch/pool#az-batch-pool-create) | 创建计算节点池。  |
-| [az batch pool set](https://docs.microsoft.com/cli/azure/batch/pool#az-batch-pool-set) | 更新池的属性。  |
-| [az batch pool autoscale enable](https://docs.microsoft.com/cli/azure/batch/pool/autoscale#az-batch-pool-autoscale-enable) | 对池启用自动缩放并应用公式。  |
-| [az batch pool show](https://docs.microsoft.com/cli/azure/batch/pool#az-batch-pool-show) | 显示池的属性。  |
-| [az batch pool autoscale disable](https://docs.microsoft.com/cli/azure/batch/pool/autoscale#az-batch-pool-autoscale-disable) | 对池禁用自动缩放。 |
+| [az batch account login](/cli/azure/batch/account#az-batch-account-login) | 针对指定的批处理帐户进行身份验证，以便进一步进行 CLI 交互。 |
+| [az batch pool create](/cli/azure/batch/pool#az-batch-pool-create) | 创建计算节点池。  |
+| [az batch pool set](/cli/azure/batch/pool#az-batch-pool-set) | 更新池的属性。  |
+| [az batch pool autoscale enable](/cli/azure/batch/pool/autoscale#az-batch-pool-autoscale-enable) | 对池启用自动缩放并应用公式。  |
+| [az batch pool show](/cli/azure/batch/pool#az-batch-pool-show) | 显示池的属性。  |
+| [az batch pool autoscale disable](/cli/azure/batch/pool/autoscale#az-batch-pool-autoscale-disable) | 对池禁用自动缩放。 |
 | [az group delete](/cli/azure/group#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
 
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。

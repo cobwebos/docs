@@ -1,6 +1,6 @@
 ---
-title: 针对数据修改设计 Azure 存储表 | Microsoft Docs
-description: 针对 Azure 表存储中的数据修改对表进行设计。
+title: 设计用于数据修改的 Azure 表存储 |Microsoft Docs
+description: 用于在 Azure 表存储中进行数据修改的设计表。
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -8,12 +8,11 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: e993d169025f9b76c5e813bae31ca6cb2a39ba71
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: c95be7afae5c0a84c06b691c8225f32f2aa68260
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325878"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75771540"
 ---
 # <a name="design-for-data-modification"></a>针对数据修改的设计
 本文重点介绍优化插入、更新和删除的设计注意事项。 在某些情况下，需要在针对查询优化的设计与针对数据修改优化的设计之间进行权衡，就像你在设计关系数据库时要做的那样（尽管在关系数据库中，管理设计权衡的方法是不同的）。 “表设计模式”部分介绍了一些详细的表服务设计模式，着重阐释了其中的部分权衡。 在实践中，会发现许多针对查询实体优化的设计对于修改实体也能很好地工作。  

@@ -1,5 +1,5 @@
 ---
-title: 使用 Linux VM 系统分配的托管标识访问 Azure Key Vault
+title: 教程`:`使用托管标识访问 Azure Key Vault - Linux - Azure AD
 description: 本教程将指导你完成使用 Linux VM 系统分配的托管标识访问 Azure Resource Manager 的过程。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7a4ce0419e3a5615cc5a6d57fe2f1cfecad2f09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cdccabf701d4603b8c78f7e23ec1890171603273
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66228576"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74232169"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>教程：使用 Linux VM 系统分配的托管标识访问 Azure Key Vault 
 
@@ -110,7 +110,7 @@ ms.locfileid: "66228576"
 在本教程中，你已学习了如何使用 Linux VM 系统分配的托管标识来访问 Azure Key Vault。  若要详细了解 Azure Key Vault，请参阅：
 
 > [!div class="nextstepaction"]
->[Azure Key Vault](/azure/key-vault/key-vault-whatis)
+>[Azure Key Vault](/azure/key-vault/key-vault-overview)
 
 
 

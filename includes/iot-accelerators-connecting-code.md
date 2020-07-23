@@ -9,11 +9,11 @@ ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: c79b6f854dc78670a7eb8a1275c3e2fc46fcdd99
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147722"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67173385"
 ---
 ### <a name="code-walkthrough"></a>代码演练
 

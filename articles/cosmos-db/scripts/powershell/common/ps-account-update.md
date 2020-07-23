@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell 脚本 - 更新 Azure Cosmos 帐户
-description: Azure PowerShell 脚本示例 - 使用添加的区域更新 Azure Cosmos 帐户
+title: PowerShell 脚本：更新 Azure Cosmos 帐户的默认一致性级别
+description: Azure PowerShell 脚本示例 - 使用 PowerShell 更新 Azure Cosmos DB 帐户的默认一致性级别
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
-ms.date: 05/06/2019
+ms.topic: sample
+ms.date: 03/21/2020
 ms.author: mjbrown
-ms.openlocfilehash: 4a695fd569459e6372465273675620cd40d7e6a7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: d3df2e91624f9b5d82d534a1d525fa6866f1a489
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247824"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366081"
 ---
-# <a name="update-an-azure-cosmos-account-and-add-a-region-using-powershell"></a>使用 PowerShell 更新 Azure Cosmos 帐户并添加区域
+# <a name="update-the-regions-on-an-azure-cosmos-db-account-using-powershell"></a>使用 PowerShell 更新 Azure Cosmos DB 帐户上的区域
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -21,7 +21,12 @@ ms.locfileid: "66247824"
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-account-update.ps1 "Update and add regions to an Azure Cosmos account")]
+> [!NOTE]
+> 不能在同一操作中修改区域并更改其他 Cosmos 帐户属性。 这些操作必须以两个单独的操作来完成。
+> [!NOTE]
+> 此示例演示如何使用 SQL API 帐户。 若要将此示例用于其他 API，请复制相关属性，并将其应用于 API 特定的脚本。
+
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-update.ps1 "Update an Azure Cosmos DB account")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 
@@ -35,13 +40,12 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) | 获取资源。 |
-| [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) | 更新资源。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | 列出 Cosmos DB 帐户或获取指定的 Cosmos DB 帐户。 |
+| [Update-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccountfailoverpriority) | 更新 Cosmos DB 帐户。 |
 |**Azure 资源组**| |
-| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||
 

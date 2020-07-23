@@ -1,20 +1,16 @@
 ---
-title: 快速入门 - 将 Hello World 部署到 Azure Service Fabric 网格 | Microsoft Docs
+title: 快速入门 - 将 Hello World 部署到 Azure Service Fabric 网格
 description: 本快速入门展示了如何将 Service Fabric 网格应用程序部署到 Azure Service Fabric 网格。
-services: service-fabric-mesh
-keywords: 未咨询 SEO 专家的情况下，请不要添加或编辑关键字。
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: quickstart
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: 5ca622602c71976917a07005bf349dd98086327c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 5373cbf76b55b86e4851e1d7c6b53222871faa4c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336977"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254327"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>快速入门：将 Hello World 部署到 Service Fabric 网格
 
@@ -76,7 +72,7 @@ az mesh deployment create --resource-group myResourceGroup --template-uri https:
 ```
 
 ## <a name="open-the-application"></a>打开应用程序
-在应用程序成功部署后，从 CLI 输出中复制服务终结点的公用 IP 地址。 在 Web 浏览器中打开该 IP 地址。 此时将显示包含 Azure Service Fabric 网格徽标的网页。
+在应用程序成功部署后，从 CLI 输出中复制服务终结点的公共 IP 地址。 在 Web 浏览器中打开该 IP 地址。 此时将显示包含 Azure Service Fabric 网格徽标的网页。
 
 ## <a name="check-the-application-details"></a>检查应用程序详细信息
 可以使用 `az mesh app show` 命令来验证应用程序的状态。 此命令提供你可以跟进的有用信息。
@@ -114,4 +110,4 @@ az group delete --name myResourceGroup
 
 <!-- Links / Internal -->
 [az-group-delete]: /cli/azure/group
-[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli-install]: /cli/azure/install-azure-cli?view=azure-cli-latest

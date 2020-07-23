@@ -1,33 +1,25 @@
 ---
-title: 教程 - 使用 Azure PowerShell 管理 Azure 虚拟机 | Microsoft Docs
+title: 教程 - 使用 PowerShell 管理虚拟机
 description: 本教程介绍如何通过使用 Azure PowerShell 应用 RBAC、策略、锁和标记管理 Azure 虚拟机
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: tfitzmac
-manager: jeconnoc
-editor: tysonn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 9be421e85d41586c18bee15cd748539e3910021b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7f993ca817d6ed6b395343eb180b3601a22f7a1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66164611"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508264"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>教程：了解如何使用 Azure PowerShell 管理 Windows 虚拟机
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
 ## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 
 
@@ -61,7 +53,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 通常情况下，与其向单个用户分配角色，不如使用其用户需要执行类似操作的 Azure Active Directory 组， 然后向该组分配相应的角色。 就本文来说，请使用现有的组来管理虚拟机，或者使用门户来[创建 Azure Active Directory 组](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
-创建新组或找到现有组以后，请使用 [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) 命令将 Azure Active Directory 组分配到资源组的“虚拟机参与者”角色。  
+创建新组或找到现有组以后，请使用 [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) 命令将 Azure Active Directory 组分配到资源组的“虚拟机参与者”角色。  
 
 ```azurepowershell-interactive
 $adgroup = Get-AzADGroup -DisplayName <your-group-name>
@@ -71,25 +63,25 @@ New-AzRoleAssignment -ObjectId $adgroup.id `
   -RoleDefinitionName "Virtual Machine Contributor"
 ```
 
-如果收到一条错误，指出“主体 \<guid> 不存在于目录中”，则表明新组未在 Azure Active Directory 中完成传播。 请尝试再次运行命令。
+如果收到一条错误，指出**主体 \<guid> 不存在于目录中**，则表明新组未在 Azure Active Directory 中完成传播。 请尝试再次运行命令。
 
 通常情况下，请对*网络参与者*和*存储帐户参与者*重复执行此过程，确保分配用户来管理已部署的资源。 在本文中，可以跳过这些步骤。
 
 ## <a name="azure-policy"></a>Azure Policy
 
-[Azure Policy](../../governance/policy/overview.md) 可帮助确保订阅中的所有资源符合企业标准。 订阅已经有多个策略定义。 若要查看可用的策略定义，请使用 [Get-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/Get-AzPolicyDefinition) 命令：
+[Azure Policy](../../governance/policy/overview.md) 可帮助确保订阅中的所有资源符合企业标准。 订阅已经有多个策略定义。 若要查看可用的策略定义，请使用 [Get-AzPolicyDefinition](/powershell/module/az.resources/get-azpolicydefinition) 命令：
 
 ```azurepowershell-interactive
 (Get-AzPolicyDefinition).Properties | Format-Table displayName, policyType
 ```
 
-可以看到现有的策略定义。 策略类型为“内置”或“自定义”。 在这些定义中查找所述条件正是你要分配的条件的定义。 在本文中，分配的策略要符合以下条件：
+可以看到现有的策略定义。 策略类型为“内置”或“自定义” 。 在这些定义中查找所述条件正是你要分配的条件的定义。 在本文中，分配的策略要符合以下条件：
 
 * 限制所有资源的位置。
 * 限制虚拟机的 SKU。
 * 审核不使用托管磁盘的虚拟机。
 
-在下面的示例中，你将基于显示名称检索三个策略定义。 并且使用 [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment) 命令将这些定义分配到资源组。 对于某些策略，你将提供参数值来指定允许的值。
+在下面的示例中，你将基于显示名称检索三个策略定义。 并且使用 [New-AzPolicyAssignment](/powershell/module/az.resources/new-azpolicyassignment) 命令将这些定义分配到资源组。 对于某些策略，你将提供参数值来指定允许的值。
 
 ```azurepowershell-interactive
 # Values to use for parameters
@@ -141,9 +133,9 @@ New-AzVm -ResourceGroupName "myResourceGroup" `
 
 ## <a name="lock-resources"></a>锁定资源
 
-[资源锁](../../azure-resource-manager/resource-group-lock-resources.md)可以防止组织中的用户意外删除或修改重要资源。 与基于角色的访问控制不同，资源锁对所有用户和角色应用限制。 可以将锁定级别设置为 *CanNotDelete* 或 *ReadOnly*。
+[资源锁](../../azure-resource-manager/management/lock-resources.md)可以防止组织中的用户意外删除或修改重要资源。 与基于角色的访问控制不同，资源锁对所有用户和角色应用限制。 可以将锁定级别设置为 *CanNotDelete* 或 *ReadOnly*。
 
-若要锁定虚拟机和网络安全组，请使用 [New-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock) 命令：
+若要锁定虚拟机和网络安全组，请使用 [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) 命令：
 
 ```azurepowershell-interactive
 # Add CanNotDelete lock to the VM
@@ -171,11 +163,11 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="tag-resources"></a>标记资源
 
-可以将[标记](../../azure-resource-manager/resource-group-using-tags.md)应用于 Azure 资源，以逻辑方式按类别对其进行组织。 每个标记包含一个名称和一个值。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
+可以将[标记](../../azure-resource-manager/management/tag-resources.md)应用于 Azure 资源，以逻辑方式按类别对其进行组织。 每个标记包含一个名称和一个值。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
 
 [!INCLUDE [Resource Manager governance tags Powershell](../../../includes/resource-manager-governance-tags-powershell.md)]
 
-若要将标记应用于虚拟机，请使用 [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) 命令：
+若要将标记应用于虚拟机，请使用 [Set-AzResource](/powershell/module/az.resources/set-azresource) 命令：
 
 ```azurepowershell-interactive
 # Get the virtual machine
@@ -189,7 +181,7 @@ Set-AzResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentation" } 
 
 ### <a name="find-resources-by-tag"></a>按标记查找资源
 
-若要通过标记名称和值查找资源，请使用 [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) 命令：
+若要通过标记名称和值查找资源，请使用 [Get-AzResource](/powershell/module/az.resources/get-azresource) 命令：
 
 ```azurepowershell-interactive
 (Get-AzResource -Tag @{ Environment="Test"}).Name
@@ -207,7 +199,7 @@ Get-AzResource -Tag @{ Environment="Test"} | Where-Object {$_.ResourceType -eq "
 
 ## <a name="clean-up-resources"></a>清理资源
 
-在解除锁定之前，不能删除锁定的网络安全组。 若要删除锁，请使用 [Remove-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcelock) 命令：
+在解除锁定之前，不能删除锁定的网络安全组。 若要删除锁，请使用 [Remove-AzResourceLock](/powershell/module/az.resources/remove-azresourcelock) 命令：
 
 ```azurepowershell-interactive
 Remove-AzResourceLock -LockName LockVM `
@@ -220,15 +212,19 @@ Remove-AzResourceLock -LockName LockNSG `
   -ResourceGroupName myResourceGroup
 ```
 
-如果不再需要资源组、VM 和所有相关的资源，可以使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) 命令将其删除。
+如果不再需要资源组、VM 和所有相关的资源，可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令将其删除。
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
+## <a name="manage-costs"></a>管理成本
+
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
+
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已创建自定义 VM 映像。 你已了解如何：
+在本教程中，已创建自定义 VM 映像。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 为用户分配角色
@@ -236,8 +232,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 > * 使用锁保护重要资源
 > * 标记用于计费和管理的资源
 
-请转到下一教程，了解如何创建高度可用的虚拟机。
+转到下一教程，了解如何在 Linux 虚拟机上识别更改和管理包更新。
 
 > [!div class="nextstepaction"]
-> [监视虚拟机](tutorial-monitoring.md)
-
+> [管理虚拟机](tutorial-config-management.md)

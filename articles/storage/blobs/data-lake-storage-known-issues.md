@@ -1,75 +1,134 @@
 ---
 title: Azure Data Lake Storage Gen2 的已知问题 | Microsoft Docs
-description: 了解 Azure Data Lake Storage Gen2 的限制和已知问题
-services: storage
+description: 了解 Azure Data Lake Storage Gen2 的限制和已知问题。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 06/29/2020
 ms.author: normesta
-ms.openlocfilehash: 27adc0eeeabed2b1f2e86f301a60604a3d358b82
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.reviewer: jamesbak
+ms.openlocfilehash: f3861ab8839ba0483c5096e29cd09b6268bd765e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65464725"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563913"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
-本文列出了功能和工具，尚不支持或仅部分支持与具有层次结构命名空间 （Azure 数据湖存储第 2 代） 的存储帐户。
+本文介绍了 Azure Data Lake Storage Gen2 的限制和已知问题。
 
-<a id="blob-apis-disabled" />
+## <a name="supported-blob-storage-features"></a>支持的 Blob 存储功能
+
+现在，越来越多的 Blob 存储功能开始使用具有分层命名空间的帐户。 有关完整列表，请参阅 [Azure Data Lake storage Gen2 中提供的 Blob 存储功能](data-lake-storage-supported-blob-storage-features.md)。
+
+## <a name="supported-azure-service-integrations"></a>支持的 Azure 服务集成
+
+Azure Data Lake Storage Gen2 支持多个可用于引入数据、执行分析和创建可视化表示形式的 Azure 服务。 有关受支持的 Azure 服务的列表，请参阅[支持 Azure Data Lake Storage Gen2 的 Azure 服务](data-lake-storage-supported-azure-services.md)。
+
+请参阅[支持 Azure Data Lake Storage Gen2 的 Azure 服务](data-lake-storage-supported-azure-services.md)。
+
+## <a name="supported-open-source-platforms"></a>支持的开源平台
+
+多个开源平台支持 Data Lake Storage Gen2。 有关完整列表，请参阅[支持 Azure Data Lake Storage Gen2 的开源平台](data-lake-storage-supported-open-source-platforms.md)。
+
+请参阅[支持 Azure Data Lake Storage Gen2 的开源平台](data-lake-storage-supported-open-source-platforms.md)。
 
 ## <a name="blob-storage-apis"></a>Blob 存储 API
 
-Blob 的存储 Api 已禁用，以防止意外的数据访问出现问题，因为 Blob 存储 Api 尚不可使用 Azure Data Lake 第 2 代 Api 可互操作。
+Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 
-### <a name="what-to-do-with-existing-tools-applications-and-services"></a>要执行的操作与现有的工具、 应用程序和服务
+本部分介绍了同时使用 blob API 和 Data Lake Storage Gen2 API 对相同的数据执行操作时的问题和限制。
 
-如果任何这些使用 Blob Api 和您想要使用它们可以处理所有的内容，将上传到你的帐户，然后到 Blob Api 便可与 Azure Data Lake 第 2 代 Api 互操作之前不启用到 Blob 存储帐户上的分层命名空间。
+* 不能同时使用 Blob API 和 Data Lake Storage API 写入到文件的同一实例。 如果使用 Data Lake Storage Gen2 API 向某个文件进行写入，则调用[获取 Block 列表](https://docs.microsoft.com/rest/api/storageservices/get-block-list) blob API 时看不到该文件的块。 可以使用 Data Lake Storage Gen2 API 或 Blob API 来覆盖文件。 这不会影响文件属性。
 
-使用存储帐户没有分层命名空间，则意味着您然后不会访问数据湖存储第 2 代特定功能，例如目录和文件系统访问控制列表。
+* 如果在不指定分隔符的情况下使用[列出 Blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 操作，则结果会同时包括目录和 blob。 如果选择使用分隔符，请只使用正斜杠 (`/`)。 这是唯一受支持的分隔符。
 
-### <a name="what-to-do-with-unmanaged-virtual-machine-vm-disks"></a>要执行的操作与非托管虚拟机 (VM) 磁盘
+* 如果使用[删除 Blob](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API 来删除某个目录，则仅当该目录为空时才会将其删除。 这意味着不能使用该 Blob API 以递归方式删除目录。
 
-这取决于已禁用的 Blob 存储 Api，因此如果你想要启用的分层命名空间上的存储帐户，请考虑将它们放置到存储帐户不具有启用了层次结构命名空间功能。
+不支持以下 Blob REST API：
 
-### <a name="what-to-do-if-you-used-blob-apis-to-load-data-before-blob-apis-were-disabled"></a>要执行的操作如果 Blob Api 用于将数据加载之前已禁用，Blob Api
+* [放置 Blob（页）](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [放置页](https://docs.microsoft.com/rest/api/storageservices/put-page)
+* [获取页范围](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
+* [增量复制 Blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
+* [通过 URL 放置页](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
+* [放置 Blob（追加​​）](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [追加块](https://docs.microsoft.com/rest/api/storageservices/append-block)
+* [通过 URL 追加块](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
 
-如果你在这些 API 被禁用之前使用了它们来加载数据，并且生产环境需要访问该数据，请联系 Microsoft 支持部门并提供以下信息：
+具有分层命名空间的帐户不支持非托管 VM 磁盘。 若要在存储帐户中启用分层命名空间，请将非托管 VM 磁盘置于未启用分层命名空间功能的存储帐户中。
 
-> [!div class="checklist"]
-> * 订阅 ID （GUID，而不是名称）。
-> * 存储帐户名称。
-> * 是否你积极影响生产环境中，如果是，有关哪些存储帐户？。
-> * 即使在生产环境中未频繁受到影响，也请告诉我们你是否出于某种原因需要将该数据复制到另一个存储帐户，如果是，为什么？
+<a id="api-scope-data-lake-client-library"></a>
 
-在这些情况下，我们可以在有限的时间段内恢复对 Blob API 的访问权限，以便你可以将此数据复制到未启用分层命名空间功能的存储帐户。
+## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>SDK、PowerShell 和 Azure CLI 中的文件系统支持
 
-## <a name="all-other-features-and-tools"></a>所有其他功能和工具
+- 当前不能以递归方式获取和设置 ACL 操作。
 
-下表列出了所有其他功能和工具，尚不支持或仅部分支持与具有层次结构命名空间 （Azure 数据湖存储第 2 代） 的存储帐户。
+<a id="known-issues-tools"></a>
 
-| 功能 / 工具    | 详细信息    |
-|--------|-----------|
-| **数据湖存储第 2 代存储帐户的 Api** | 部分支持 <br><br>可以使用数据湖存储第 2 代**REST** Api，但其他 Blob Sdk，如.NET、 Java、 Python Sdk 中的 Api 尚不可用。|
-| **AzCopy** | 特定于版本的支持 <br><br>仅使用最新版本的 AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json))。 不支持早期版本的 AzCopy，AzCopy v8.1，例如。|
-| **Azure Blob 存储生命周期管理策略** | 尚不支持 |
-| **Azure 内容分发网络 (CDN)** | 尚不支持|
-| **Azure 事件网格** | 尚不支持 |
-| **Azure 搜索** |尚不支持|
-| **Azure 存储资源管理器** | 特定于版本的支持 <br><br>使用唯一版本`1.6.0`或更高版本。 <br>版本`1.6.0`可用作[免费下载](https://azure.microsoft.com/features/storage-explorer/)。|
-| **Blob 容器的 Acl** |尚不支持|
-| **Blobfuse** |尚不支持|
-| **自定义域** |尚不支持|
-| **诊断日志** |尚不支持|
-| **文件系统资源管理器** | 有限的支持 |
-| **不可变的存储** |尚不支持 <br><br>不可变的存储，可以将数据存储在[（编写一次，曾读过） 蠕虫](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)状态。|
-| **对象级层** |尚不支持 <br><br>例如:Premium、 热、 冷和存档层。|
-| **Powershell 和 CLI 支持** | 有限的功能 <br><br>可以使用 Powershell 或 CLI 来创建一个帐户。 无法执行操作，或在文件系统、 目录和文件上设置访问控制列表。|
-| **静态网站** |尚不支持 <br><br>具体而言，能够满足文件复制到[静态网站](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website)。|
-| **第三方应用程序** | 有限的支持 <br><br>使用 REST Api 处理的第三方应用程序将继续工作，如果它们使用的数据湖存储第 2 代。 <br>如果必须使用 Blob Api 的应用程序，该应用程序很可能会遇到问题，如果该应用程序使用数据湖存储第 2 代。 若要了解详细信息，请参阅[Blob 的存储 Api 的数据湖存储第 2 代存储帐户已禁用](#blob-apis-disabled)本文的部分。|
-| **版本控制功能** |尚不支持 <br><br>这包括[快照](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob)并[软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)。|
-|
+## <a name="azcopy"></a>AzCopy
 
+请仅使用最新版本的 AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json))。 不支持早期版本的 AzCopy，例如 AzCopy v8.1。
+
+<a id="storage-explorer"></a>
+
+## <a name="azure-storage-explorer"></a>Azure 存储资源管理器
+
+请仅使用 `1.6.0` 或更高版本。
+
+<a id="explorer-in-portal"></a>
+
+## <a name="storage-explorer-in-the-azure-portal"></a>Azure 门户中的存储资源管理器
+
+目前不支持 ACL。
+
+<a id="third-party-apps"></a>
+
+## <a name="thirdpartyapplications"></a>第三方应用程序
+
+对于使用 REST API 来工作的第三方应用程序，如果你将它们与调用可能会工作的 Blob API 的 Data Lake Storage Gen2 应用程序一起使用，则这些第三方应用程序会继续工作。
+
+## <a name="access-control-lists-acl-and-anonymous-read-access"></a>访问控制列表 (ACL) 和匿名读取访问
+
+如果已授予对某个容器的[匿名读取访问权限](storage-manage-access-to-resources.md)，则 ACL 对该容器或该容器中的文件没有影响。
+
+## <a name="premium-performance-blockblobstorage-storage-accounts"></a>高性能 BlockBlobStorage 存储帐户
+
+### <a name="diagnostic-logs"></a>诊断日志
+
+目前还无法使用 Azure 门户启用诊断日志。 可以使用 PowerShell 启用它们。 例如：
+
+```powershell
+#To login
+Connect-AzAccount
+
+#Set default block blob storage account.
+Set-AzCurrentStorageAccount -Name premiumGen2Account -ResourceGroupName PremiumGen2Group
+
+#Enable logging
+Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays 14
+```
+
+### <a name="lifecycle-management-policies"></a>生命周期管理策略
+
+- 高级 BlockBlobStorage 存储帐户中尚不支持生命周期管理策略。 
+
+- 不能将数据从高级层级移到较低的层级。 
+
+- 当前不支持**删除 Blob** 操作。 
+
+### <a name="hdinsight-support"></a>HDInsight 支持
+
+创建 HDInsight 群集时，尚无法选择启用了分层命名空间功能的 BlockBlobStorage 帐户。 但是，创建群集后，可以将该帐户附加到该群集。
+
+### <a name="dremio-support"></a>Dremio 支持
+
+Dremio 尚且不能连接到其上启用了分层命名空间功能的 BlockBlobStorage 帐户。 
+
+## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Windows Azure Storage Blob (WASB) 驱动程序（不支持用于 Data Lake Storage Gen2）
+
+目前，WASB 驱动程序设计为仅用于 Blob API，在一些常见场景中会遇到问题。 具体而言，当它是启用了分层命名空间的存储帐户的客户端时会遇到问题。 Data Lake Storage 上的多协议访问不会缓解这些问题。 
+
+目前我们不支持客户使用 WASB 驱动程序作为启用了分层命名空间的存储帐户的客户端（在可预见的将来也很有可能是这种情况）。 因此，建议你选择在 Hadoop 环境中使用 [Azure Blob 文件系统 (ABFS)](data-lake-storage-abfs-driver.md) 驱动程序。 如果你在尝试迁移出采用 Hadoop branch-3 之前的版本的本地 Hadoop 环境，请创建一个 Azure 支持票证，这样我们就可以与你联系，确定适合你和你的组织的正确前进道路。

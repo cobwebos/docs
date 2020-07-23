@@ -1,62 +1,96 @@
 ---
-title: .NET SDK 和 REST API 的 API 版本管理 - Azure 搜索
-description: 适用于 .NET SDK 中的 Azure 搜索 REST API 和客户端库的版本策略。
-author: brjohnstmsft
-manager: jlembicz
-services: search
-ms.service: search
-ms.devlang: dotnet
+title: API 版本
+titleSuffix: Azure Cognitive Search
+description: 适用于 .NET SDK 中的 Azure 认知搜索 REST API 和客户端库的版本策略。
+manager: nitinme
+author: HeidiSteen
+ms.author: heidist
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.author: brjohnst
-ms.openlocfilehash: d72901653e995e811a1d3e89cef8a5f77a9ea8bd
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.date: 07/15/2020
+ms.openlocfilehash: 2cdac18ed20c90861fe23f0a9ccbd02680d380af
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523809"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496683"
 ---
-# <a name="api-versions-in-azure-search"></a>Azure 搜索中的 API 版本
-Azure 搜索会定期发布功能更新。 这些更新有时（但并非总是）需要发布 API 的新版本，以保持后向兼容性。 发布新版本使你可以控制何时以及如何在代码中集成搜索服务更新。
+# <a name="api-versions-in-azure-cognitive-search"></a>Azure 认知搜索中的 API 版本
 
-通常，Azure 搜索团队仅在必要时发布新版本，因为它可能会促使你必须升级代码才能使用新版本 API。 仅在 API 的某些方面以破坏后向兼容性的方式发生更改时，才需要新版本。 此类更改可能会因以下情况而发生：现有功能修复，或更改现有 API 外围功能的新功能。
+Azure 认知搜索会定期发布功能更新。 这些更新有时（但并非总是）需要发布 API 的新版本，以保持后向兼容性。 发布新版本使你可以控制何时以及如何在代码中集成搜索服务更新。
 
-相同规则适用于 SDK 更新。 Azure 搜索 SDK 遵循[语义版本控制](https://semver.org/)规则，这意味着其版本分为三个部分：主要版本号、次要版本号和内部版本号（例如，1.1.0）。 仅在更改破坏了后向兼容性时，才会发布新的 SDK 主版本。 非破坏功能更新会增大次要版本号，Bug 修复仅增大内部版本号。
+通常，Azure 认知搜索团队仅在必要时发布新版本，因为它可能会促使你必须升级代码才能使用新版本 API。 仅在 API 的某些方面以破坏后向兼容性的方式发生更改时，才需要新版本。 此类更改可能会因以下情况而发生：现有功能修复，或更改现有 API 外围功能的新功能。
 
-> [!NOTE]
-> Azure 搜索服务实例支持多个 REST API 版本，包括最新的版本。 可以不使用最新版本，但是我们建议迁移代码，以便使用最新版本。 使用 REST API 时，必须在每个请求中通过 api-version 参数指定 API 版本。 使用 .NET SDK 时，使用的 SDK 版本确定对应的 REST API 版本。 如果使用较旧的 SDK，即使已升级服务以支持较新的 API 版本，也可以继续运行代码，而不进行任何更改。
+相同规则适用于 SDK 更新。 Azure 认知搜索 SDK 遵循[语义版本控制](https://semver.org/)规则，这意味着其版本分为三个部分：主要版本号、次要版本号和内部版本号（例如，1.1.0）。 仅在更改破坏了后向兼容性时，才会发布新的 SDK 主版本。 非破坏功能更新会增大次要版本号，Bug 修复仅增大内部版本号。
 
-## <a name="snapshot-of-current-versions"></a>当前版本的快照
-以下是 Azure 搜索的所有编程接口的当前版本的快照。
+> [!Important]
+> 适用于 .NET 的 Azure Sdk、Java、Python 和 JavaScript 正在推出 Azure 认知搜索的新客户端库。 目前，没有任何 Azure SDK 库支持最新的搜索 REST Api （2020-06-30）或管理 REST Api （2020-03-13），但这会随时间而改变。 可以定期查看此页面或有关功能增强的公告的[新增](whats-new.md)功能。 
+
+## <a name="rest-apis"></a>REST API
+
+Azure 认知搜索服务实例支持多个 REST API 版本，包括最新版本。 如果某个版本不再是最新版本，则可以继续使用该版本，但我们建议你[迁移代码](search-api-migration.md)以使用最新版本。 使用 REST API 时，必须在每个请求中通过 api-version 参数指定 API 版本。 使用 .NET SDK 时，使用的 SDK 版本确定对应的 REST API 版本。 如果使用较旧的 SDK，即使已升级服务以支持较新的 API 版本，也可以继续运行代码，而不进行任何更改。
+
+下表提供了搜索服务 REST API 的当前版本和以前发布版本的版本历史记录。 文档仅适用于最新的稳定和预览版本。
+
+### <a name="search-service-apis"></a>搜索服务 Api
+
+在搜索服务中创建和管理内容。
+
+| 版本&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | 状态 | 向后兼容性问题 |
+|-------------------------|--------|------------------------------|
+| [搜索 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/index)| Stable | 搜索 REST Api 的最新稳定版本，在相关性评分和一般可用性方面进行了改进。|
+| [搜索 2020-06-30-Preview](https://docs.microsoft.com/rest/api/searchservice/index-preview)| 预览 | 与稳定版本关联的预览版本。 包括多个[预览功能](search-api-preview.md)。 |
+| 搜索 2019-05-06 | Stable | 添加[复杂类型](search-howto-complex-data-types.md)。 |
+| 搜索 2019-05-06-Preview | 预览 | 与稳定版本关联的预览版本。 |
+| 搜索2017-11-11 | Stable  | 添加技能集和[AI 扩充](cognitive-search-concept-intro.md)。 |
+| 搜索 2017-11-11-预览 | 预览 | 与稳定版本关联的预览版本。 |
+| 搜索2016-09-01 |Stable | 添加[索引器](search-indexer-overview.md)。 |
+| 搜索 2016-09-01-预览 | 预览 | 与稳定版本关联的预览版本。|
+| 搜索2015-02-28 | Stable  | 第一个公开发布的版本。  |
+| 搜索 2015-02-28-预览 | 预览 | 与稳定版本关联的预览版本。 |
+| 搜索 2014-10-20-预览 | 预览 | 第二公共预览。 |
+| 搜索 2014-07-31-预览 | 预览 | 首个公共预览版。 |
+
+### <a name="management-rest-apis"></a>管理 REST API
+
+创建和配置搜索服务，并管理 API 密钥。
+
+| 版本&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | 状态 | 向后兼容性问题 |
+|-------------------------|--------|------------------------------|
+| [管理 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/) | Stable | 最新稳定版本的管理 REST Api，并在 endpoint protection 方面做了改进。 通过专用链接、新服务的[网络 IP 规则](service-configure-firewall.md)添加[专用终结点](service-create-private-endpoint.md)。 |
+| [管理 2019-10-01-Preview](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) | 预览  | 尽管它是版本号，但这仍然是管理 REST Api 的当前预览版本。 目前没有任何预览功能。 所有预览功能最近已转换为公开上市。 |
+| 管理2015-08-19  | Stable | 管理 REST Api 的第一个公开发布的版本。 提供服务设置、扩展和 api 密钥管理。 |
+| 管理 2015-08-19-预览 | 预览 | 管理 REST Api 的第一个预览版本。 |
+
+## <a name="azure-sdk-for-net"></a>用于 .NET 的 Azure SDK
+
+NuGet.org 上提供了包版本历史记录。此表提供了每个包页的链接。
 
 
-| 接口 | 最新的主要版本 | 状态 |
-| --- | --- | --- |
-| [.NET SDK](https://aka.ms/search-sdk) |9.0 |通常，发布 2019 年 5 |
-| [.NET SDK 预览版](https://aka.ms/search-sdk-preview) |8.0-preview |预览版，发布 2019 年 4 月 |
-| [服务 REST API](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |正式版 |
-| [Service REST API 2019-05-06-Preview](search-api-preview.md) |2019-05-06-Preview |预览 |
-| [.NET 管理 SDK](https://aka.ms/search-mgmt-sdk) |3.0 |正式版 |
-| [管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |正式版 |
+| SDK 版本 | 状态 | 说明 |
+|-------------|--------|------------------------------|
+| [Azure.Search.Documents 11。0](https://www.nuget.org/packages/Azure.Search.Documents/1.0.0-preview.4) | Stable | 从2020年7月发布的 Azure .NET SDK 中的新客户端库。 面向搜索 REST api 版本 = 2019-05-06。 |
+| [Microsoft Azure. 搜索10。0](https://www.nuget.org/packages/Microsoft.Azure.Search/) | Stable | 发布时间可能为2019。 面向搜索 REST api 版本 = 2019-05-06。|
+| [Microsoft Azure. 搜索 8.0-preview](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) | 预览 | 2019年4月发布。 面向搜索 REST api 版本 = 2019-05-06-01.5.1-Preview。|
+| [3.0.0 的搜索](https://docs.microsoft.com/dotnet/api/overview/azure/search/management?view=azure-dotnet) | Stable | 面向管理 REST api 版本 = 2015-08-19。  |
 
-对于 REST API，每次调用都必须包括 `api-version`。 使用 `api-version` 使适配特定版本（如预览版 API）变得非常容易。 以下示例演示了如何指定 `api-version` 参数：
+## <a name="azure-sdk-for-java"></a>用于 Java 的 Azure SDK
 
-    GET https://my-demo-app.search.windows.net/indexes/hotels?api-version=2019-05-06
+| SDK 版本 | 状态 | 说明  |
+|-------------|--------|------------------------------|
+| [Java azure-搜索-文档11](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-search-documents/11.0.0/index.html) | Stable | 从2020年7月发布的 Azure .NET SDK 中的新客户端库。 面向搜索 REST api 版本 = 2019-05-06。 |
+| [Java 管理客户端1.35。0](https://docs.microsoft.com/java/api/overview/azure/search/management?view=azure-java-stable) | Stable | 面向管理 REST api 版本 = 2015-08-19。 |
 
-> [!NOTE]
-> 尽管每个请求都带有 `api-version`，我们还是建议对所有 API 请求使用相同版本。 当新的 API 版本引入了以前版本无法识别的属性或操作时，尤其如此。 混用 API 版本可能产生意想不到的后果，应该避免混用。
->
-> 服务 REST API 和管理 REST API 的版本控制彼此独立。 版本号如有相似之处，实属巧合。
+## <a name="azure-sdk-for-javascript"></a>用于 JavaScript 的 Azure SDK
 
-正式版（或 GA）API 可以在生产中使用，并遵循 Azure 服务级别协议。 预览版中的实验功能并不总是会迁移到 GA 版本。 强烈建议不要在生产应用程序中使用预览版 API。
+| SDK 版本 | 状态 | 说明  |
+|-------------|--------|------------------------------|
+| [JavaScript azure-搜索11。0](https://azure.github.io/azure-sdk-for-node/azure-search/latest/) | Stable | 从2020年7月发布的 Azure .NET SDK 中的新客户端库。 面向搜索 REST api 版本 = 2016-09-01。 |
+| [JavaScript-搜索](https://azure.github.io/azure-sdk-for-node/azure-arm-search/latest/) | Stable | 面向管理 REST api 版本 = 2015-08-19。 |
 
-## <a name="about-preview-and-generally-available-versions"></a>关于预览版和正式版
-Azure 搜索始终先通过 REST API 预发布实验功能，再通过 .NET SDK 的预发布版本进行发布。
+## <a name="azure-sdk-for-python"></a>Azure SDK for Python
 
-预览功能可用于目的为针对功能设计和实现收集反馈的测试和试验。 为此，预览功能可能会随着时间的推移以破坏后向兼容性的方式进行更改。 这与 GA 版本中的功能形成鲜明对比，除了小型的后向兼容性修补程序和增强功能外，这些功能很稳定，不太可能发生变化。 此外，预览功能并不总是纳入 GA 版本。
-
-出于这些原因，我们建议不要编写依赖预览版的生产代码。 如果使用的是旧版预览版，建议迁移到正式版 (GA)。
-
-对于 .NET SDK：代码迁移指南可在[升级 .NET SDK](search-dotnet-sdk-migration-version-9.md) 中找到。
-
-正式版的推出意味着 Azure 搜索现在遵循服务级别协议 (SLA)。 可以在 [Azure 搜索服务级别协议](https://azure.microsoft.com/support/legal/sla/search/v1_0/)中找到 SLA。
+| SDK 版本 | 状态 | 说明  |
+|-------------|--------|------------------------------|
+| [Python azure-搜索-文档11。0](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-search-documents/11.0.0/index.html) | Stable | 从2020年7月发布的 Azure .NET SDK 中的新客户端库。 面向搜索 REST api 版本 = 2019-05-06。 |
+| [Python azure 管理-搜索1。0](https://docs.microsoft.com/python/api/overview/azure/search?view=azure-python) | Stable | 面向管理 REST api 版本 = 2015-08-19。 |

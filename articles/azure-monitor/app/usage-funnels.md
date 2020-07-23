@@ -1,24 +1,16 @@
 ---
 title: Azure Application Insights 漏斗图
 description: 了解如何使用漏斗图来发现客户与你的应用程序的交互方式。
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/17/2017
-ms.pm_owner: daviste;NumberByColors
-ms.reviewer: mbullwin
+author: NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 2cb7e15b701b53e74618c21bf219a355d495f985
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 07/17/2017
+ms.reviewer: mbullwin
+ms.openlocfilehash: 09c1899004bd93d0f2365c3bbc000c37459e8d89
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60372905"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797834"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>使用 Application Insights 漏斗图了解客户如何使用你的应用程序
 
@@ -30,10 +22,10 @@ ms.locfileid: "60372905"
 以下是他们创建漏斗图所执行的步骤。
 
 1. 在 Application Insights 漏斗图工具中，选择“新建”。
-1. 从“时间范围”下拉菜单中，选择“最近 90 天”。 选择“我的漏斗图”或“共享漏斗图”。
+1. 从“时间范围”下拉菜单中，选择“最近 90 天”。  选择“我的漏斗图”或“共享漏斗图”。 
 1. 从“步骤 1”下拉列表中选择“索引”。 
-1. 从“步骤 2”列表中选择“客户”。
-1. 从“步骤 3”列表中选择“创建”。
+1. 从“步骤 2”列表中选择“客户”。 
+1. 从“步骤 3”列表中选择“创建”。 
 1. 向漏斗图中添加一个名称，然后选择“保存”。
 
 以下屏幕截图显示漏斗图工具生成的数据类型示例。 Fabrikam 所有者从此处可以看到，在过去 90 天内，54.3% 访问了主页的客户创建了客户票证。 他们还可以查看 2,700 个客户从主页进入索引。 这可能表示刷新问题。
@@ -53,7 +45,7 @@ ms.locfileid: "60372905"
   * [使用情况概述](usage-overview.md)
   * [用户、会话和事件](usage-segmentation.md)
   * [保留](usage-retention.md)
-  * [工作簿](../../azure-monitor/app/usage-workbooks.md)
+  * [工作簿](../../azure-monitor/platform/workbooks-overview.md)
   * [添加用户上下文](usage-send-user-context.md)
   * [导出到 Power BI](../../azure-monitor/app/export-power-bi.md )
 

@@ -2,17 +2,14 @@
 title: 操作员最佳做法 - Azure Kubernetes 服务 (AKS) 中的基本计划程序功能
 description: 了解有关使用 Azure Kubernetes 服务 (AKS) 中的基本计划程序功能（例如资源配额和 pod 中断预算）的群集操作员最佳做法
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: iainfou
-ms.openlocfilehash: f6e370442c9c359a38025762fb90269119ec0ea6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: cccc476a944b28d24c53a947e434d465c94f94ee
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65074128"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84704737"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的基本计划程序功能的最佳做法
 
@@ -29,7 +26,7 @@ ms.locfileid: "65074128"
 
 **最佳做法指导** - 在命名空间级别规划和应用资源配额。 如果 pod 未定义资源请求和限制，则拒绝部署。 监视资源用量并根据需要调整配额。
 
-在 pod 规范中放置资源请求和限制。 在部署时，Kubernetes 计划程序使用这些限制在群集中查找可用的节点。 这些限制和请求在单个 pod 级别应用。 有关如何定义这些值的详细信息，请参阅[定义 pod 资源请求和限制][resource-limits]
+在 pod 规范中放置资源请求和限制。 在部署时，Kubernetes 计划程序使用这些限制在群集中查找可用的节点。 这些限制和请求在单个 pod 级别应用。 有关如何定义这些值的详细信息，请参阅[定义 Pod 资源请求和限制][resource-limits]
 
 若要通过某个方式来保留和限制整个开发团队或项目的资源，应使用资源配额。  这些配额在命名空间中定义，可用于根据以下条件设置配额：
 
@@ -80,7 +77,7 @@ kubectl apply -f dev-app-team-quotas.yaml --namespace dev-apps
 
 如果要升级群集或更新部署模板，Kubernetes 计划程序会确保在其他节点上计划其他 pod，然后，自愿性中断事件可以继续。 在重新启动节点之前，计划程序将一直等到在群集中的其他节点上成功计划了定义的 pod 数为止。
 
-让我们探讨一个副本集示例，其中包含五个运行 NGINX 的 pod。 为该副本集中的 pod 分配了标签 `app: nginx-frontend`。 在发生自愿性中断事件（例如群集升级）期间，你想要确保至少有三个 pod 可继续运行。 *PodDisruptionBudget* 对象的以下 YAML 清单定义了这些要求：
+让我们探讨一个副本集示例，其中包含五个运行 NGINX 的 pod。 将为副本集中的 Pod 指定 `app: nginx-frontend` 标签。 在发生自愿性中断事件（例如群集升级）期间，你想要确保至少有三个 pod 可继续运行。 *PodDisruptionBudget* 对象的以下 YAML 清单定义了这些要求：
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -118,7 +115,7 @@ kubectl apply -f nginx-pdb.yaml
 
 请咨询应用程序开发人员和所有者以了解其需求，并应用适当的 pod 中断预算。
 
-有关使用 pod 中断预算的详细信息，请参阅[为应用程序指定中断预算][k8s-pdbs]。
+有关使用 Pod 中断预算的详细信息，请参阅[为应用程序指定中断预算][k8s-pdbs]。
 
 ## <a name="regularly-check-for-cluster-issues-with-kube-advisor"></a>定期使用 kube-advisor 检查群集问题
 
@@ -126,7 +123,7 @@ kubectl apply -f nginx-pdb.yaml
 
 [kube-advisor][kube-advisor] 工具是一个关联的 AKS 开放源代码项目，它将扫描 Kubernetes 群集，并报告它找到的问题。 一项有用的检查是识别未应用资源请求和限制的 pod。
 
-Kube 顾问工具可报告资源请求和 PodSpecs 的 Windows 应用程序，以及 Linux 应用程序中缺少的限制，但 kube 顾问工具本身必须安排在 Linux pod。 您可以计划在特定 OS 使用的节点池上运行的 pod[节点选择器][ k8s-node-selector] pod 的配置中。
+kube-advisor 工具可以报告 PodSpecs for Windows 应用程序以及 Linux 应用程序中缺少的资源请求和限制，但 kube-advisor 工具本身必须在 Linux Pod 上进行计划。 可以使用 Pod 配置中的[节点选择器][k8s-node-selector]安排 Pod 在具有特定 OS 的节点池上运行。
 
 在托管多个开发团队和应用程序的 AKS 群集中，可能很难跟踪未设置这些资源请求和限制的 pod。 最佳做法是定期针对 AKS 群集运行 `kube-advisor`，尤其是未向命名空间分配资源配额时。
 

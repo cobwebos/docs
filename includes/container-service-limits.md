@@ -5,20 +5,21 @@ services: container-service
 author: dlepow
 ms.service: container-service
 ms.topic: include
-ms.date: 10/11/2018
+ms.date: 11/22/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: a2729af6a689daa551fc01f585324d53a8770a9b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 6b4678b381e769993b01bbedd1cb4c0aeefc0cc1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66142999"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80335056"
 ---
-| Resource | 默认限制 |
+| 资源 | 限制 |
 | --- | :--- |
 | 每个订阅的最大群集数 | 100 |
-| 每个群集的最大节点数 | 100 |
+| 包含虚拟机可用性集和基本负载均衡器 SKU 的每个群集的最大节点数  | 100 |
+| 包含虚拟机规模集和[标准负载均衡器 SKU][standard-load-balancer] 的每个群集的最大节点数 | 1000（每个[节点池][node-pool] 100 个节点） |
 | 每个节点的最大 Pod 数：带 Kubenet 的[基本网络][basic-networking] | 110 |
 | 每个节点的最大 Pod 数：通过 Azure 容器联网界面进行[高级联网][advanced-networking] | Azure CLI 部署：30<sup>1</sup><br />Azure 资源管理器模板：30<sup>1</sup><br />门户部署：30 |
 
@@ -27,6 +28,8 @@ ms.locfileid: "66142999"
 <!-- LINKS - Internal -->
 [basic-networking]: ../articles/aks/concepts-network.md#kubenet-basic-networking
 [advanced-networking]: ../articles/aks/concepts-network.md#azure-cni-advanced-networking
+[standard-load-balancer]: ../articles/load-balancer/load-balancer-standard-overview.md
+[node-pool]: ../articles/aks/use-multiple-node-pools.md
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

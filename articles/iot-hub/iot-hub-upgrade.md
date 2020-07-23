@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: robinsh
 ms.openlocfilehash: 96c3a7b2cfda23f173f4caeff4fb7a92b1ddc438
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61440197"
 ---
 # <a name="how-to-upgrade-your-iot-hub"></a>如何升级 IoT 中心
@@ -29,25 +29,25 @@ ms.locfileid: "61440197"
 
 这些更改均可在不中断现有操作的情况下进行。
 
-若要将 IoT 中心降级，可以删除单元以及缩小 IoT 中心的大小，但无法降级到较低的层。 例如，可以从 S2 层移到 S1 层，但不能从 S2 层移到 B1 层。 只有一种[Iot 中心版](https://azure.microsoft.com/pricing/details/iot-hub/)层中，可以选择每个 IoT 中心。 例如，可以创建具有多个 S1 单元的 IoT 中心，但不能创建混合使用不同版本的单元，例如 S1 和 B3，或者 S1 和 S2。
+若要将 IoT 中心降级，可以删除单元以及缩小 IoT 中心的大小，但无法降级到较低的层。 例如，可以从 S2 层移到 S1 层，但不能从 S2 层移到 B1 层。 对于每个 IoT 中心，只能选择一种类型的[Iot 中心版](https://azure.microsoft.com/pricing/details/iot-hub/)。 例如，可以创建具有多个 S1 单元的 IoT 中心，但不能创建混合使用不同版本的单元，例如 S1 和 B3，或者 S1 和 S2。
 
-这些示例旨在演示如何根据解决方案的变化来调整 IoT 中心。 有关每个层的功能的特定信息，您应始终参考[Azure IoT 中心定价](https://azure.microsoft.com/pricing/details/iot-hub/)。
+这些示例旨在演示如何根据解决方案的变化来调整 IoT 中心。 有关每个层功能的特定信息，应始终参阅[Azure IoT 中心定价](https://azure.microsoft.com/pricing/details/iot-hub/)。
 
 ## <a name="upgrade-your-existing-iot-hub"></a>升级现有的 IoT 中心
 
 1. 登录 [Azure 门户](https://portal.azure.com/)，导航到 IoT 中心。
 
-2. 选择“定价和缩放”。
+2. 选择“定价和缩放”。 
 
    ![定价和缩放](./media/iot-hub-upgrade/pricing-scale.png)
 
-3. 若要更改中心的层，请选择“定价和缩放层”。 选择新层，然后单击“选择”。
+3. 若要更改中心的层，请选择“定价和缩放层”。  选择新层，然后单击“选择”  。
 
    ![定价和缩放层](./media/iot-hub-upgrade/select-tier.png)
 
-4. 若要更改中心的单元数，请在“IoT 中心单元数”下输入新值。
+4. 若要更改中心的单元数，请在“IoT 中心单元数”下输入新值。 
 
-5. 选择“保存”以保存更改。
+5. 选择“保存”  以保存更改。
 
 现在，IoT 中心已进行调整，但配置未更改。
 

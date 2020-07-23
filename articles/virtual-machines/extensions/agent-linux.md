@@ -1,27 +1,26 @@
 ---
-title: Azure Linux VM 代理概述 | Microsoft Docs
+title: Azure Linux VM 代理概述
 description: 了解如何安装和配置 Linux 代理 (waagent) 以管理虚拟机与 Azure 结构控制器的交互。
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: e41de979-6d56-40b0-8916-895bf215ded6
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
-ms.author: roiyz
+ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1defa08b0eb9ede2adec3b7ac12c873522dd6c37
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4143e049f0a89d1218d9442eaebc1c5ebaf4cc77
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60800219"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186820"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>了解和使用 Azure Linux 代理
 
@@ -61,7 +60,7 @@ Microsoft Azure Linux 代理 (waagent) 可以管理 Linux 与 FreeBSD 预配，�
 * **VM 扩展**
   
   * 将 Microsoft 和合作伙伴授权的组件注入 Linux VM (IaaS)，以便实现软件和配置的自动化
-  * [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions) 上的 VM 扩展参考实现
+  * 上的 VM 扩展参考实现[https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 ## <a name="communication"></a>通信
 从平台到代理的信息流通过两个通道进行：
@@ -73,7 +72,7 @@ Microsoft Azure Linux 代理 (waagent) 可以管理 Linux 与 FreeBSD 预配，�
 下列系统已经过测试并确认兼容 Azure Linux 代理：
 
 > [!NOTE]
-> 此列表可能不同于 Microsoft Azure 平台所支持系统的官方列表，如以下文章所述：[https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
+> 此列表可能与 Microsoft Azure 平台上受支持系统的官方列表有所不同，如下所述：[https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
 > 
 > 
 
@@ -107,7 +106,7 @@ Linux 代理的正常运行依赖一些系统程序包：
 请参阅 [GitHub 上的 Azure Linux 代理存储库](https://github.com/Azure/WALinuxAgent)中的文档了解高级安装选项，例如从源安装，或者安装到自定义位置或前缀。
 
 ## <a name="command-line-options"></a>命令行选项
-### <a name="flags"></a>标志
+### <a name="flags"></a>Flags
 * verbose：增加指定命令的详细程度
 * force：跳过某些命令的交互式确认
 
@@ -130,41 +129,41 @@ Linux 代理的正常运行依赖一些系统程序包：
 * version：显示 waagent 的版本
 * serialconsole：配置 GRUB 以将 ttyS0（第一个串行端口）标记为启动控制台。 这可确保将内核启动日志发送到串行端口并适用于调试。
 * daemon：将 waagent 作为 daemon 运行以管理与平台的交互。 在 waagent init 脚本中为 waagent 指定此参数。
-* start：将 waagent 作为后台进程运行
+* 开始：将 waagent 作为后台进程运行
 
 ## <a name="configuration"></a>配置
 配置文件 (/etc/waagent.conf) 可控制 waagent 的操作。 下面显示了示例配置文件：
 
-    ```
-    Provisioning.Enabled=y
-    Provisioning.DeleteRootPassword=n
-    Provisioning.RegenerateSshHostKeyPair=y
-    Provisioning.SshHostKeyPairType=rsa
-    Provisioning.MonitorHostName=y
-    Provisioning.DecodeCustomData=n
-    Provisioning.ExecuteCustomData=n
-    Provisioning.AllowResetSysUser=n
-    Provisioning.PasswordCryptId=6
-    Provisioning.PasswordCryptSaltLength=10
-    ResourceDisk.Format=y
-    ResourceDisk.Filesystem=ext4
-    ResourceDisk.MountPoint=/mnt/resource
-    ResourceDisk.MountOptions=None
-    ResourceDisk.EnableSwap=n
-    ResourceDisk.SwapSizeMB=0
-    LBProbeResponder=y
-    Logs.Verbose=n
-    OS.RootDeviceScsiTimeout=300
-    OS.OpensslPath=None
-    HttpProxy.Host=None
-    HttpProxy.Port=None
-    AutoUpdate.Enabled=y
-    ```
+```config
+Provisioning.Enabled=y
+Provisioning.DeleteRootPassword=n
+Provisioning.RegenerateSshHostKeyPair=y
+Provisioning.SshHostKeyPairType=rsa
+Provisioning.MonitorHostName=y
+Provisioning.DecodeCustomData=n
+Provisioning.ExecuteCustomData=n
+Provisioning.AllowResetSysUser=n
+Provisioning.PasswordCryptId=6
+Provisioning.PasswordCryptSaltLength=10
+ResourceDisk.Format=y
+ResourceDisk.Filesystem=ext4
+ResourceDisk.MountPoint=/mnt/resource
+ResourceDisk.MountOptions=None
+ResourceDisk.EnableSwap=n
+ResourceDisk.SwapSizeMB=0
+LBProbeResponder=y
+Logs.Verbose=n
+OS.RootDeviceScsiTimeout=300
+OS.OpensslPath=None
+HttpProxy.Host=None
+HttpProxy.Port=None
+AutoUpdate.Enabled=y
+```
 
 下面描述了各种配置选项。 配置选项分为三种类型：布尔值、字符串或整数。 布尔配置选项可指定为“y”或“n”。 特殊关键字“无”可用于某些字符串类型配置条目，详细信息如下所示：
 
 **Provisioning.Enabled：**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
@@ -176,14 +175,14 @@ Default: y
 > 
 
 **Provisioning.DeleteRootPassword：**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 如果设置此参数，则会在设置过程中清除 /etc/shadow 文件中的根密码。
 
 **Provisioning.RegenerateSshHostKeyPair：**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
@@ -192,42 +191,42 @@ Default: y
 此全新密钥对的加密类型可由 Provisioning.SshHostKeyPairType 项进行配置。 重启 SSH 守护程序时（例如，重启时），某些分发将为任何缺失的加密类型重新创建 SSH 密钥对。
 
 **Provisioning.SshHostKeyPairType：**  
-```
+```txt
 Type: String  
 Default: rsa
 ```
 可将其设置为虚拟机上的 SSH 监控程序支持的加密算法类型。 通常支持的值为“rsa”、“dsa”和“ecdsa”。 Windows 上的“putty.exe”不支持“ecdsa”。 因此，若要在 Windows 上使用 putty.exe 连接到 Linux 部署，使用“rsa”或“dsa”。
 
 **Provisioning.MonitorHostName：**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
 如果设置此参数，waagent 监视 Linux 虚拟机的主机名更改情况（由“hostname”命令返回），并自动更新映像中的网络配置以反映此更改。 要将名称更改推送到 DNS 服务器，可在虚拟机中重启网络。 这会导致 Internet 连接暂时中断。
 
 **Provisioning.DecodeCustomData**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 如果设置此参数，waagent 从 Base64 解码 CustomData。
 
 **Provisioning.ExecuteCustomData**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 如果设置此参数，waagent 在预配后执行 CustomData。
 
 **Provisioning.AllowResetSysUser**
-```
+```txt
 Type: Boolean
 Default: n
 ```
 此选项允许重置 sys 用户的密码；默认为禁用。
 
 **Provisioning.PasswordCryptId**  
-```
+```txt
 Type: String  
 Default: 6
 ```
@@ -238,91 +237,91 @@ Default: 6
  6 - SHA-512  
 
 **Provisioning.PasswordCryptSaltLength**  
-```
+```txt
 Type: String  
 Default: 10
 ```
 生成密码哈希时使用的随机 salt 长度。
 
-**ResourceDisk.Format：**  
-```
+**Resourcedisk.filesystem：**  
+```txt
 Type: Boolean  
 Default: y
 ```
 如果设置此参数，则当“ResourceDisk.Filesystem”中用户请求的 filesystem 类型是“ntfs”之外的任何值时，平台提供的资源磁盘通过 waagent 进行格式化和安装。 在磁盘上提供类型 Linux (83) 的单个分区。 如果可以成功安装此分区，不会对其进行格式化。
 
-**ResourceDisk.Filesystem：**  
-```
+**Resourcedisk.filesystem：**  
+```txt
 Type: String  
 Default: ext4
 ```
 这会指定资源磁盘的 filesystem 类型。 支持的值随 Linux 分发的不同而不同。 如果字符串为 X，则 mkfs.X 应呈现在 Linux 映像上。 SLES 11 映像通常应使用“ext3”。 FreeBSD 映像在此处应使用“ufs2”。
 
 **ResourceDisk.MountPoint：**  
-```
+```txt
 Type: String  
 Default: /mnt/resource 
 ```
-这会指定资源磁盘的安装路径。 资源磁盘是临时磁盘，可能在取消预配 VM 时被清空。
+这会指定资源磁盘的安装路径。 资源磁盘是临时** 磁盘，可能在取消预配 VM 时被清空。
 
 **ResourceDisk.MountOptions**  
-```
+```txt
 Type: String  
 Default: None
 ```
 指定要传递给 mount -o 命令的磁盘装载选项。 这是一个逗号分隔值列表，例如 “nodev,nosuid”。 有关详细信息，请参阅 mount(8)。
 
 **ResourceDisk.EnableSwap：**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 如果设置此参数，则会在资源磁盘上创建交换文件 (/swapfile) 并将该文件添加到系统交换空间。
 
 **ResourceDisk.SwapSizeMB：**  
-```
+```txt
 Type: Integer  
 Default: 0
 ```
 交换文件的大小，以兆字节为单位。
 
 **Logs.Verbose：**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 如果设置此参数，则将增大日志的详细程度。 Waagent 将日志记录到 /var/log/waagent.log 并利用系统 logrotate 功能来循环日志。
 
 **OS.EnableRDMA**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 如果设置此参数，代理将尝试安装然后加载与底层硬件上的固件版本匹配的 RDMA 内核驱动程序。
 
 **OS.RootDeviceScsiTimeout：**  
-```
+```txt
 Type: Integer  
 Default: 300
 ```
 此设置将配置 OS 磁盘和数据驱动器上的 SCSI 超时（以秒为单位）。 如果未设置此参数，则使用系统默认值。
 
 **OS.OpensslPath：**  
-```
+```txt
 Type: String  
 Default: None
 ```
 此设置可用于指定要用于加密操作的 openssl 二进制文件的替代路径。
 
 **HttpProxy.Host、HttpProxy.Port**  
-```
+```txt
 Type: String  
 Default: None
 ```
 如果设置此参数，代理将使用此代理服务器访问 Internet。 
 
 **AutoUpdate.Enabled**
-```
+```txt
 Type: Boolean
 Default: y
 ```
@@ -338,12 +337,12 @@ Ubuntu 云映像利用 [cloud-init](https://launchpad.net/ubuntu/+source/cloud-i
   
   * **ResourceDisk.Format**
   * **ResourceDisk.Filesystem**
-  * **ResourceDisk.MountPoint**
-  * **ResourceDisk.EnableSwap**
-  * **ResourceDisk.SwapSizeMB**
+  * **Resourcedisk.filesystem**
+  * **Resourcedisk.filesystem. Resourcedisk.enableswap**
+  * **Resourcedisk.filesystem. Resourcedisk.swapsizemb**
 
 * 有关详细信息，请参阅以下资源来配置资源磁盘装入点，并在预配期间交换 Ubuntu 云映像上的空间：
   
   * [Ubuntu Wiki：配置交换分区](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
-  * [将自定义数据注入到 Azure 虚拟机中](../windows/classic/inject-custom-data.md)
+  * [将自定义数据注入到 Azure 虚拟机](../windows/classic/inject-custom-data.md)
 

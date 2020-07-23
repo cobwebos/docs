@@ -3,36 +3,35 @@ title: 在 Azure Linux VM 上实现 Oracle Golden Gate | Microsoft Docs
 description: 在 Azure 环境中快速建立 Oracle Golden Gate 并运行。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: romitgirdhar
-manager: jeconnoc
+author: rgardler
+manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogirdh
-ms.openlocfilehash: c8d2a948dd82fb2c04aceb24815e63be13e35919
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: rogardle
+ms.openlocfilehash: 60d06fa4cf6d116f9c802cda544a356e469755b5
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722606"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223068"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>在 Azure Linux VM 上实现 Oracle Golden Gate 
 
 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南详述了如何使用 Azure CLI 通过 Azure 市场库映像部署 Oracle 12c 数据库。 
 
-本文档逐步演示如何在 Azure VM 上创建、安装和配置 Oracle Golden Gate。
+本文档逐步演示如何在 Azure VM 上创建、安装和配置 Oracle Golden Gate。 在本教程中，将在单个区域中的可用性集中设置两个虚拟机。 同一教程可用于为单个 Azure 区域中不同可用性区域的 Vm 或两个不同区域中的 Vm 设置 OracleGolden 入口。
 
 在开始之前，请确保已安装 Azure CLI。 有关详细信息，请参阅 [Azure CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ## <a name="prepare-the-environment"></a>准备环境
 
-若要执行 Oracle Golden Gate 安装，需要在同一可用性集中创建两个 Azure VM。 用于创建 VM 的市场映像是 **Oracle:Oracle-Database-Ee:12.1.0.2:latest**。
+若要执行 Oracle Golden Gate 安装，需要在同一可用性集中创建两个 Azure VM。 用于创建 Vm 的 Marketplace 映像是**oracle： oracle-数据库-Ee：12.1.0.2：最新版本**。
 
 还需要熟悉 Unix 编辑器 vi 并基本了解 x11 (X Windows)。
 
@@ -86,6 +85,7 @@ az vm availability-set create \
 以下示例创建两个 VM，分别名为 `myVM1` 和 `myVM2`。 如果默认密钥位置中不存在 SSH 密钥，则创建这些密钥。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。
 
 #### <a name="create-myvm1-primary"></a>创建 myVM1（主）：
+
 ```azurecli
 az vm create \
      --resource-group myResourceGroup \
@@ -98,7 +98,7 @@ az vm create \
 
 创建 VM 之后，Azure CLI 将显示类似于以下示例的信息。 （记下 `publicIpAddress`。 此地址用于访问 VM。）
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -112,6 +112,7 @@ az vm create \
 ```
 
 #### <a name="create-myvm2-replicate"></a>创建 myVM2（复制）：
+
 ```azurecli
 az vm create \
      --resource-group myResourceGroup \
@@ -140,7 +141,7 @@ az network nsg rule create --resource-group myResourceGroup\
 
 效果应类似于以下响应：
 
-```bash
+```output
 {
   "access": "Allow",
   "description": null,
@@ -173,7 +174,7 @@ az network nsg rule create --resource-group myResourceGroup\
 
 使用以下命令创建与虚拟机的 SSH 会话。 将 IP 地址替换为虚拟机的 `publicIpAddress`。
 
-```bash 
+```bash
 ssh <publicIpAddress>
 ```
 
@@ -208,9 +209,10 @@ $ dbca -silent \
    -storageType FS \
    -ignorePreReqs
 ```
+
 输出应类似于以下响应：
 
-```bash
+```output
 Copying database files
 1% complete
 2% complete
@@ -260,6 +262,7 @@ export LD_LIBRARY_PATH=$ORACLE_HOME/lib
 ```
 
 ### <a name="start-oracle-listener"></a>启动 Oracle 侦听器
+
 ```bash
 $ lsnrctl start
 ```
@@ -269,6 +272,7 @@ $ lsnrctl start
 ```bash
 sudo su - oracle
 ```
+
 创建数据库：
 
 ```bash
@@ -290,6 +294,7 @@ $ dbca -silent \
    -storageType FS \
    -ignorePreReqs
 ```
+
 设置 ORACLE_SID and ORACLE_HOME 变量。
 
 ```bash
@@ -310,6 +315,7 @@ export LD_LIBRARY_PATH=$ORACLE_HOME/lib
 ```
 
 ### <a name="start-oracle-listener"></a>启动 Oracle 侦听器
+
 ```bash
 $ sudo su - oracle
 $ lsnrctl start
@@ -389,10 +395,10 @@ SQL> EXIT;
 
 3. 在 PuTTY 密钥生成器中：
 
-   - 若要生成密钥，请选择“生成”按钮。
-   - 复制密钥的内容 (**Ctrl+C**)。
-   - 选择“保存私钥”按钮。
-   - 忽略显示的警告，并选择“确定”。
+   - 若要生成密钥，请选择“生成”按钮。****
+   - 将密钥内容复制 (**Ctrl + C**) 。
+   - 选择“保存私钥”按钮。****
+   - 忽略显示的警告，并选择“确定”。****
 
    ![PuTTY 密钥生成器页屏幕截图](./media/oracle-golden-gate/puttykeygen.png)
 
@@ -404,21 +410,21 @@ SQL> EXIT;
    $ cd .ssh
    ```
 
-5. 创建名为 **authorized_keys** 的文件。 在此文件中粘贴密钥的内容，然后保存该文件。
+5. 创建一个名为**authorized_keys**的文件。 在此文件中粘贴密钥的内容，然后保存该文件。
 
    > [!NOTE]
    > 该密钥必须包含字符串 `ssh-rsa`。 此外，密钥的内容必须是单行文本。
    >  
 
-6. 启动 PuTTY。 在“类别”窗格中，选择“连接” > “SSH” > “身份验证”。在“用于身份验证的私钥文件”框中，浏览到前面生成的密钥。
+6. 启动 PuTTY。 在 "**类别**" 窗格中，选择 "**连接**  >  **SSH**  >  **身份验证**"。在 "**身份验证的私钥文件**" 框中，浏览到之前生成的密钥。
 
    ![“设置私钥”页屏幕截图](./media/oracle-golden-gate/setprivatekey.png)
 
-7. 在“类别”窗格中，选择“连接” > “SSH” > “X11”。 然后选中“启用 X11 转发”框。
+7. 在“类别”**** 窗格中，选择“连接”**** > “SSH”**** > “X11”****。 然后选中“启用 X11 转发”**** 框。
 
    ![“启用 X11”页屏幕截图](./media/oracle-golden-gate/enablex11.png)
 
-8. 在“类别”窗格中，转到“会话”。 输入主机信息，并选择“打开”。
+8. 在“类别”窗格中，转到“会话”。******** 输入主机信息，并选择“打开”。****
 
    ![会话页屏幕截图](./media/oracle-golden-gate/puttysession.png)
 
@@ -426,33 +432,34 @@ SQL> EXIT;
 
 若要安装 Oracle Golden Gate，请完成以下步骤：
 
-1. 以 oracle 身份登录。 （应该可以直接登录，系统不会提示输入密码。）在开始安装之前，请确保 Xming 正在运行。
- 
+1. 以 oracle 身份登录。  (你应该能够在不提示输入密码的情况下登录。 ) 确保在开始安装之前运行 Xming。
+
    ```bash
    $ cd /opt/fbo_ggs_Linux_x64_shiphome/Disk1
    $ ./runInstaller
    ```
-2. 选择“Oracle GoldenGate for Oracle Database 12c”。 然后选择“下一步”继续。
+
+2. 选择“Oracle GoldenGate for Oracle Database 12c”。 然后选择 "**下一步**" 继续。
 
    ![安装程序中的“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_01.png)
 
-3. 更改软件位置。 然后选中“启动管理器”框，并输入数据库位置。 选择“下一步”继续。
+3. 更改软件位置。 然后选中“启动管理器”**** 框，并输入数据库位置。 选择“下一步”继续。
 
    ![“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_02.png)
 
-4. 更改清单目录，然后选择“下一步”继续。
+4. 更改清单目录，然后选择“下一步”**** 继续。
 
    ![“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_03.png)
 
-5. 在“摘要”屏幕上，选择“安装”以继续。
+5. 在“摘要”**** 屏幕上，选择“安装”**** 以继续。
 
    ![安装程序中的“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_04.png)
 
-6. 系统可能会提示以“root”身份运行脚本。 如果是这样，则打开单独的会话，通过 ssh 连接到 VM，执行 sudo 操作到 root，然后运行脚本。 选择“确定”继续。
+6. 系统可能会提示以“root”身份运行脚本。 如果是这样，则打开单独的会话，通过 ssh 连接到 VM，执行 sudo 操作到 root，然后运行脚本。 选择“确定”**** 继续。
 
    ![“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_05.png)
 
-7. 完成安装后，选择“关闭”完成过程。
+7. 完成安装后，选择“关闭”**** 完成过程。
 
    ![“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_06.png)
 
@@ -537,6 +544,7 @@ SQL> EXIT;
 
    GGSCI> EDIT PARAMS EXTORA
    ```
+
 5. 将以下内容添加到 EXTRACT 参数文件（使用 vi 命令）。 按 Esc 键、“:wq!” 以保存文件。 
 
    ```bash
@@ -551,6 +559,7 @@ SQL> EXIT;
    TABLE pdb1.test.TCUSTMER;
    TABLE pdb1.test.TCUSTORD;
    ```
+
 6. 注册提取 -- 集成提取：
 
    ```bash
@@ -566,6 +575,7 @@ SQL> EXIT;
 
    GGSCI> exit
    ```
+
 7. 设置提取检查点并启动实时提取：
 
    ```bash
@@ -588,6 +598,7 @@ SQL> EXIT;
    MANAGER     RUNNING
    EXTRACT     RUNNING     EXTORA      00:00:11      00:00:04
    ```
+
    在此步骤中，可找到启动 SCN（以后会在其他部分中使用）：
 
    ```bash
@@ -685,6 +696,7 @@ SQL> EXIT;
    $ ./ggsci
    GGSCI> EDIT PARAMS REPORA  
    ```
+
    REPORA 参数文件的内容：
 
    ```bash
@@ -720,19 +732,21 @@ SQL> EXIT;
 
 ### <a name="set-up-the-replication-myvm1-and-myvm2"></a>设置复制（myVM1 和 myVM2）
 
-#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1.在 myVM2（复制）上设置复制
+#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1. 在 myVM2 上设置复制 (复制) 
 
   ```bash
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
   $ ./ggsci
   GGSCI> EDIT PARAMS MGR
   ```
+
 使用以下内容更新文件：
 
   ```bash
   PORT 7809
   ACCESSRULE, PROG *, IPADDR *, ALLOW
   ```
+
 然后重新启动管理器服务：
 
   ```bash
@@ -741,7 +755,7 @@ SQL> EXIT;
   GGSCI> EXIT
   ```
 
-#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2.在 myVM1（主）上设置复制
+#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2. 在 myVM1 上设置复制 (主) 
 
 启动初始加载，并检查错误：
 
@@ -751,7 +765,8 @@ $ ./ggsci
 GGSCI> START EXTRACT INITEXT
 GGSCI> VIEW REPORT INITEXT
 ```
-#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3.在 myVM2（复制）上设置复制
+
+#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3. 在 myVM2 上设置复制 (复制) 
 
 使用之前获取的编号更改 SCN 编号：
 
@@ -760,12 +775,13 @@ GGSCI> VIEW REPORT INITEXT
   $ ./ggsci
   START REPLICAT REPORA, AFTERCSN 1857887
   ```
+
 复制已开始，可以通过向 TEST 表插入新记录来测试它。
 
 
 ### <a name="view-job-status-and-troubleshooting"></a>查看作业状态和故障排除
 
-#### <a name="view-reports"></a>查看报告
+#### <a name="view-reports"></a>查看报表
 若要在 myVM1 上查看报告，请运行以下命令：
 
   ```bash

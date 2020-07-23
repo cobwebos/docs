@@ -1,19 +1,20 @@
 ---
-title: Azure PowerShell 脚本-Azure Cosmos DB 创建 MongoDB API 数据库和集合
-description: Azure PowerShell 脚本-Azure Cosmos DB 创建 MongoDB API 数据库和集合
+title: PowerShell 脚本用于创建 Azure Cosmos MongoDB API 数据库和集合
+description: Azure PowerShell script - 创建 Azure Cosmos MongoDB API 数据库和集合
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
-ms.date: 05/18/2019
+ms.subservice: cosmosdb-mongo
+ms.topic: sample
+ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 9263df4b803d60fa0bfdf5bdc30f62e732e774b9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: 1c3e4816e5bf2d104557fa3ed5ef2923d075e237
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247449"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125560"
 ---
-# <a name="create-a-database-and-collection-for-azure-cosmos-db---mongodb-api"></a>创建数据库和 Azure Cosmos DB 的 MongoDB API 的集合
+# <a name="create-a-database-and-collection-for-azure-cosmos-db---mongodb-api"></a>创建 Azure Cosmos DB 的数据库和集合 - MongoDB API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -35,10 +36,13 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
+|**Azure Cosmos DB**| |
+| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | 创建 Cosmos DB 帐户。 |
+| [New-AzCosmosDBMongoDBDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbdatabase) | 创建 MongoDB API 数据库。 |
+| [New-AzCosmosDBMongoDBIndex](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbindex) | 创建 MongoDB API 索引。 |
+| [New-AzCosmosDBMongoDBCollection](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbcollection) | 创建 MongoDB API 集合。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||

@@ -1,27 +1,19 @@
 ---
-title: 使用共享 VM 映像在 Azure 中创建规模集 | Microsoft Docs
+title: 使用共享 VM 映像在 Azure PowerShell 中创建规模集
 description: 了解如何使用 Azure PowerShell 在 Azure 中创建用于部署虚拟机规模集的共享 VM 映像。
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: axayjo
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: cynthn
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/25/2019
-ms.author: akjosh; cynthn
-ms.custom: ''
-ms.openlocfilehash: 055242c3118ce9d972d55cdc6a21bf623679a0c1
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.subservice: imaging
+ms.topic: how-to
+ms.date: 05/04/2020
+ms.author: cynthn
+ms.reviewer: akjosh
+ms.openlocfilehash: 55ca80296bfdfde162ca5a4df348fd80328dd184
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242057"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494915"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-powershell"></a>通过 Azure PowerShell 创建和使用虚拟机规模集的共享映像
 
@@ -31,20 +23,13 @@ ms.locfileid: "66242057"
 
 库是顶级资源，它提供完全基于角色的访问控制 (RBAC)。 你可以控制映像的版本，并且可以选择将每个映像版本复制到一组不同的 Azure 区域。 库仅适用于托管映像。 
 
-共享映像库功能具有多种资源类型。 我们将在本文中使用或生成这些资源类型：
+共享映像库功能具有多种资源类型。 
 
-| Resource | 描述|
-|----------|------------|
-| **托管映像** | 这是基本映像，可以单独使用，也可用于在映像库中创建“映像版本”  。 托管映像是从通用 VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
-| **映像库** | 与 Azure 市场一样，**映像库**是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |
-| **映像定义** | 映像在库中定义，携带有关该映像及其在内部使用的要求的信息。 这包括了该映像是 Windows 还是 Linux 映像、发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 |
-| **映像版本** | 使用库时，将使用**映像版本**来创建 VM。 可根据环境的需要创建多个映像版本。 与托管映像一样，在使用**映像版本**创建 VM 时，将使用映像版本来创建 VM 的新磁盘。 可以多次使用映像版本。 |
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
-[!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 下列步骤详细说明如何将现有 VM 转换为可重用自定义映像，以便将其用于创建新 VM 实例。
 
@@ -55,114 +40,7 @@ ms.locfileid: "66242057"
 
 [!INCLUDE [virtual-machines-common-shared-images-ps](../../includes/virtual-machines-common-shared-images-powershell.md)]
 
-## <a name="create-a-scale-set-from-the-shared-image-version"></a>从共享的映像版本创建规模集
 
-使用 [New-AzVmss](/powershell/module/az.compute/new-azvmss) 创建虚拟机规模集。 下面的示例创建的规模集从中的新映像版本*美国中南部*数据中心。 出现提示时，可针对规模集中的 VM 实例设置自己的管理凭据：
-
-
-```azurepowershell-interactive
-# Define variables
-$resourceGroupName = "myVMSSRG"
-$scaleSetName = "myScaleSet"
-$location = "South Central US"
-$cred = Get-Credential
-
-# Create a resource group
-New-AzResourceGroup -ResourceGroupName $resourceGroupName -Location $location
-
-# Create a netowrking pieces
-$subnet = New-AzVirtualNetworkSubnetConfig `
-  -Name "mySubnet" `
-  -AddressPrefix 10.0.0.0/24
-$vnet = New-AzVirtualNetwork `
-  -ResourceGroupName $resourceGroupName `
-  -Name "myVnet" `
-  -Location $location `
-  -AddressPrefix 10.0.0.0/16 `
-  -Subnet $subnet
-$publicIP = New-AzPublicIpAddress `
-  -ResourceGroupName $resourceGroupName `
-  -Location $location `
-  -AllocationMethod Static `
-  -Name "myPublicIP"
-$frontendIP = New-AzLoadBalancerFrontendIpConfig `
-  -Name "myFrontEndPool" `
-  -PublicIpAddress $publicIP
-$backendPool = New-AzLoadBalancerBackendAddressPoolConfig -Name "myBackEndPool"
-$inboundNATPool = New-AzLoadBalancerInboundNatPoolConfig `
-  -Name "myRDPRule" `
-  -FrontendIpConfigurationId $frontendIP.Id `
-  -Protocol TCP `
-  -FrontendPortRangeStart 50001 `
-  -FrontendPortRangeEnd 50010 `
-  -BackendPort 3389
-# Create the load balancer and health probe
-$lb = New-AzLoadBalancer `
-  -ResourceGroupName $resourceGroupName `
-  -Name "myLoadBalancer" `
-  -Location $location `
-  -FrontendIpConfiguration $frontendIP `
-  -BackendAddressPool $backendPool `
-  -InboundNatPool $inboundNATPool
-Add-AzLoadBalancerProbeConfig -Name "myHealthProbe" `
-  -LoadBalancer $lb `
-  -Protocol TCP `
-  -Port 80 `
-  -IntervalInSeconds 15 `
-  -ProbeCount 2
-Add-AzLoadBalancerRuleConfig `
-  -Name "myLoadBalancerRule" `
-  -LoadBalancer $lb `
-  -FrontendIpConfiguration $lb.FrontendIpConfigurations[0] `
-  -BackendAddressPool $lb.BackendAddressPools[0] `
-  -Protocol TCP `
-  -FrontendPort 80 `
-  -BackendPort 80 `
-  -Probe (Get-AzLoadBalancerProbeConfig -Name "myHealthProbe" -LoadBalancer $lb)
-Set-AzLoadBalancer -LoadBalancer $lb
-
-# Create IP address configurations
-$ipConfig = New-AzVmssIpConfig `
-  -Name "myIPConfig" `
-  -LoadBalancerBackendAddressPoolsId $lb.BackendAddressPools[0].Id `
-  -LoadBalancerInboundNatPoolsId $inboundNATPool.Id `
-  -SubnetId $vnet.Subnets[0].Id
-
-# Create a configuration 
-$vmssConfig = New-AzVmssConfig `
-    -Location $location `
-    -SkuCapacity 2 `
-    -SkuName "Standard_DS2" `
-    -UpgradePolicyMode "Automatic"
-
-# Reference the image version
-Set-AzVmssStorageProfile $vmssConfig `
-  -OsDiskCreateOption "FromImage" `
-  -Id $imageVersion.Id
-
-# Complete the configuration
-Set-AzVmssOsProfile $vmssConfig `
-  -AdminUsername $cred.UserName `
-  -AdminPassword $cred.Password `
-  -ComputerNamePrefix "myVM"
-Add-AzVmssNetworkInterfaceConfiguration `
-  -VirtualMachineScaleSet $vmssConfig `
-  -Name "network-config" `
-  -Primary $true `
-  -IPConfiguration $ipConfig
-
-# Create the scale set 
-New-AzVmss `
-  -ResourceGroupName $resourceGroupName `
-  -Name $scaleSetName `
-  -VirtualMachineScaleSet $vmssConfig
-```
-
-创建和配置所有的规模集资源和 VM 需要几分钟时间。
-
-[!INCLUDE [virtual-machines-common-gallery-list-ps](../../includes/virtual-machines-common-gallery-list-ps.md)]
-
-[!INCLUDE [virtual-machines-common-shared-images-update-delete-ps](../../includes/virtual-machines-common-shared-images-update-delete-ps.md)]
 
 
 ## <a name="next-steps"></a>后续步骤

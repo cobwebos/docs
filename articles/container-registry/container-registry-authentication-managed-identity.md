@@ -1,18 +1,14 @@
 ---
-title: 使用托管标识进行 Azure 容器注册表身份验证
+title: 使用托管标识进行身份验证
 description: 通过使用用户分配或系统分配的托管 Azure 标识，提供对专用容器注册表中映像的访问。
-services: container-registry
-author: dlepow
-ms.service: container-registry
 ms.topic: article
 ms.date: 01/16/2019
-ms.author: danlep
-ms.openlocfilehash: 728a2f8cf61bbe0691350b9de45a5fab6b90cadb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e5fd8ead989838c0ba74b42a9766bc63936379fa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60563063"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537895"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>使用 Azure 托管标识向 Azure 容器注册表验证身份 
 
@@ -83,6 +79,7 @@ ssh azureuser@publicIpAddress
 运行以下命令以在 VM 上安装 Docker：
 
 ```bash
+sudo apt update
 sudo apt install docker.io -y
 ```
 
@@ -154,7 +151,7 @@ az vm identity assign --resource-group myResourceGroup --name myDockerVM --ident
 resourceID=$(az acr show --resource-group myResourceGroup --name myContainerRegistry --query id --output tsv)
 ```
 
-使用 [az role assignment create][az-role-assignment-create] 命令向标识分配 AcrPull 角色。 此角色将提供对注册表的[拉取权限](container-registry-roles.md)。 若要同时提供拉取和推送权限，请分配 ACRPush 角色。
+使用 [az role assignment create][az-role-assignment-create] 命令向注册表分配 AcrPull 角色。 此角色将提供对注册表的[拉取权限](container-registry-roles.md)。 若要同时提供拉取和推送权限，请分配 ACRPush 角色。
 
 ```azurecli
 az role assignment create --assignee $spID --scope $resourceID --role acrpull
@@ -164,13 +161,13 @@ az role assignment create --assignee $spID --scope $resourceID --role acrpull
 
 通过 SSH 连接到配置了标识的 Docker 虚拟机。 使用 VM 上安装的 Azure CLI 运行以下 Azure CLI 命令。
 
-首先，使用在 VM 上配置的标识，通过 [az login][az-login] 在 Azure CLI 中进行身份验证。 对于 `<userID>`，请替换成在上一步中检索到的标识 ID。 
+首先，使用在 VM 上配置的标识，通过 [az login][az-login] 向 Azure CLI 进行身份验证。 对于 `<userID>`，请替换成在上一步中检索到的标识 ID。 
 
 ```azurecli
 az login --identity --username <userID>
 ```
 
-然后，使用 [az acr login][az-acr-login] 在注册表中进行身份验证。 使用此命令时，CLI 使用运行 `az login` 时创建的 Active Directory 令牌，以无缝的方式向容器注册表验证会话的身份。 （根据 VM 的设置，可能需要使用 `sudo` 运行此命令和 docker 命令。）
+然后，使用 [az acr login][az-acr-login] 向注册表进行身份验证。 使用此命令时，CLI 使用运行 `az login` 时创建的 Active Directory 令牌，以无缝的方式向容器注册表验证会话的身份。 （根据 VM 的设置，可能需要使用 `sudo` 运行此命令和 docker 命令。）
 
 ```azurecli
 az acr login --name myContainerRegistry
@@ -192,7 +189,7 @@ docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 az vm identity assign --resource-group myResourceGroup --name myDockerVM 
 ```
 
-使用 [az vm show][az-vm-show] 将变量设置为 VM 标识的值 `principalId`（服务主体 ID），以便在后续步骤中使用。
+使用 [az vm show][az-vm-show] 命令将变量设置为 VM 标识的值 `principalId`（服务主体 ID），以便在后续步骤中使用。
 
 ```azurecli-interactive
 spID=$(az vm show --resource-group myResourceGroup --name myDockerVM --query identity.principalId --out tsv)
@@ -216,13 +213,13 @@ az role assignment create --assignee $spID --scope $resourceID --role acrpull
 
 通过 SSH 连接到配置了标识的 Docker 虚拟机。 使用 VM 上安装的 Azure CLI 运行以下 Azure CLI 命令。
 
-首先，使用 VM 上的系统分配标识通过 [az login][az-login] 在 Azure CLI 中进行身份验证。
+首先，使用 VM 上的系统分配标识通过 [az login][az-login] 向 Azure CLI 进行身份验证。
 
 ```azurecli
 az login --identity
 ```
 
-然后，使用 [az acr login][az-acr-login] 在注册表中进行身份验证。 使用此命令时，CLI 使用运行 `az login` 时创建的 Active Directory 令牌，以无缝的方式向容器注册表验证会话的身份。 （根据 VM 的设置，可能需要使用 `sudo` 运行此命令和 docker 命令。）
+然后，使用 [az acr login][az-acr-login] 向注册表进行身份验证。 使用此命令时，CLI 使用运行 `az login` 时创建的 Active Directory 令牌，以无缝的方式向容器注册表验证会话的身份。 （根据 VM 的设置，可能需要使用 `sudo` 运行此命令和 docker 命令。）
 
 ```azurecli
 az acr login --name myContainerRegistry
@@ -243,7 +240,7 @@ docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 > * 授予标识对 Azure 容器注册表的访问权限
 > * 使用托管标识访问注册表并拉取容器映像
 
-* 详细了解 [Azure 资源的托管标识](/azure/active-directory/managed-identities-azure-resources/)。
+* 详细了解 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/index.yml)。
 
 
 <!-- LINKS - external -->

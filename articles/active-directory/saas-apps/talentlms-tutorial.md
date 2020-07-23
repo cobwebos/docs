@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c17c055b79b8b90bd56a1dcd6472cf74d2512137
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 970ab9de270b1227884a13ac578d4c439043b20c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901777"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74233366"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>教程：Azure Active Directory 与 TalentLMS 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "65901777"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 TalentLMS 的集成，需要以下项：
 
@@ -81,7 +81,7 @@ ms.locfileid: "65901777"
 2. **[配置 TalentLMS 单一登录](#configure-talentlms-single-sign-on)** - 在应用程序端配置单一登录。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 TalentLMS 测试用户](#create-talentlms-test-user) - 在 TalentLMS 中创建 Britta Simon 的对应用户，链接到用户的 Azure AD 表示形式  。
+5. **创建 TalentLMS 测试用户[ - 在 TalentLMS 中创建 Britta Simon 的对应用户，链接到用户的 Azure AD 表示形式](#create-talentlms-test-user)** 。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -106,9 +106,9 @@ ms.locfileid: "65901777"
 
     ![TalentLMS 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.TalentLMSapp.com` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.TalentLMSapp.com`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`http://<tenant-name>.talentlms.com` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`http://<tenant-name>.talentlms.com`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [TalentLMS 客户端支持团队](https://www.talentlms.com/contact)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -117,7 +117,7 @@ ms.locfileid: "65901777"
 
     ![编辑 SAML 签名证书](common/edit-certificate.png)
 
-6. 在“SAML 签名证书”部分中，复制**指纹**并将其保存在计算机上。 
+6. 在“SAML 签名证书”部分中，复制**指纹**并将其保存在计算机上。
 
     ![复制指纹值](common/copy-thumbprint.png)
 
@@ -157,15 +157,15 @@ ms.locfileid: "65901777"
 
     f. 填写以下信息：
 
-    * 在“TargetedID”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` 
+    * 在“TargetedID”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`
 
-    * 在“名字”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` 
+    * 在“名字”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-    * 在“姓氏”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` 
+    * 在“姓氏”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
 
-    * 在“电子邮件”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` 
+    * 在“电子邮件”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
-1. 单击“ **保存**”。
+1. 单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -185,7 +185,7 @@ ms.locfileid: "65901777"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -207,7 +207,7 @@ ms.locfileid: "65901777"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -235,12 +235,12 @@ ms.locfileid: "65901777"
 
     b. 在“姓氏”文本框中，输入用户的姓氏（如“Simon”）   。
  
-    c. 在“电子邮件地址”文本框中，输入用户的电子邮件地址（例如 `brittasimon\@contoso.com`）  。
+    c. 在“电子邮件地址”文本框中，输入用户的电子邮件地址（例如 `brittasimon\@contoso.com`）。
 
     d. 单击“添加用户”  。
 
 > [!NOTE]
-> 可以使用任何其他 TalentLMS 用户帐户创建工具或 TalentLMS 提供的 API 来预配 AAD 用户帐户。
+> 可以使用任何其他 TalentLMS 用户帐户创建工具或 TalentLMS 提供的 API 来预配 Azure AD 用户帐户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

@@ -3,24 +3,24 @@ title: 如何将用户分配给应用程序 | Microsoft Docs
 description: 了解如何将用户分配给租户中的应用程序
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b818fe1d8b6bbc9d2d8c5b460b4d71dccdd39366
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 45124862fffa3a1ef6f601733407fbbea4eb5e74
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825976"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84762949"
 ---
 # <a name="how-to-assign-users-to-applications"></a>如何将用户分配给应用程序
 
@@ -44,9 +44,9 @@ ms.locfileid: "65825976"
 
     * [所有用户](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups)组
 
-3.  管理员启用[自助服务应用程序访问](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)以允许用户**无需业务批准**，即可使用[应用程序访问面板](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)的“添加应用”功能添加应用程序
+3.  管理员启用[自助服务应用程序访问](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)以允许用户**无需业务批准**，即可使用[应用程序访问面板的“添加应用”](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **** 功能添加应用程序
 
-4.  管理员启用[自助服务应用程序访问](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)以允许用户在经过**选定业务批准者的事先批准**的情况下，使用[应用程序访问面板](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)的“添加应用”功能添加应用程序
+4.  管理员启用[自助服务应用程序访问](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)以允许用户在经过**选定业务批准者的事先批准**的情况下，使用[应用程序访问面板的“添加应用”](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **** 功能添加应用程序
 
 5.  管理员启用[自助服务组管理](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management)以允许用户**无需业务批准**，即可加入已对其分配应用程序的组
 

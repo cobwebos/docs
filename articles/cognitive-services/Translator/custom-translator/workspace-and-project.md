@@ -1,21 +1,21 @@
 ---
 title: 什么是工作区和项目？ - 自定义翻译
 titleSuffix: Azure Cognitive Services
-description: 工作区是用于编写和构建自定义翻译系统的工作区域。 工作区可以包含多个项目、模型和文档。 项目是模型、文档和测试的包装器。 每个项目自动包含所有上传到该工作区的、具有正确语言对的文档。
+description: 本文介绍了工作区和项目之间的差异，以及自定义转换器服务的项目类别和标签。
 services: cognitive-services
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
-ms.author: v-pawal
+ms.date: 05/26/2020
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 312688ddccd6a65745b919e4c396a95f40a58d3e
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 659ecbc7f6c2a5627824ff09af5f30ef503c9e16
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66382320"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954530"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>什么是自定义翻译工作区？
 
@@ -31,7 +31,7 @@ ms.locfileid: "66382320"
 
 类别标识项目的领域 – 要使用的术语和样式的区域。 请选择与文档最相关的类别。 在某些情况下，所选的类别会直接影响自定义翻译的行为。
 
-我们有两组基线模型。 它们是“常规”和“技术”。 如果选择了“技术”类别  ，则将使用“技术”基线模型。 如果选择了任何其他类别，则将使用“常规”基线模型。 “技术”基线模型在技术领域表现良好，但如果用于翻译的句子不在技术领域内，则表现出较低的质量。 我们建议客户只有在句子严格属于技术领域时才选择“技术”类别。
+我们有两组基线模型。 它们是“常规”和“技术”。 如果选择了“技术”类别****，则将使用“技术”基线模型。 如果选择了任何其他类别，则将使用“常规”基线模型。 “技术”基线模型在技术领域表现良好，但如果用于翻译的句子不在技术领域内，则表现出较低的质量。 我们建议客户只有在句子严格属于技术领域时才选择“技术”类别。
 
 在同一工作区中，可为不同类别中的相同语言对创建项目。 自定义翻译会阻止创建具有相同语言对和类别的重复项目。 将标签应用到项目可避免这种限制。 除非要为多个客户端构建翻译系统，否则请不要使用标签，因为将唯一标签添加到项目的操作会反映在项目的 CategoryID 中。
 
@@ -39,7 +39,7 @@ ms.locfileid: "66382320"
 
 自定义翻译允许将项目标签分配到项目。 项目标签可以区分具有相同语言对和类别的多个项目。 最佳做法是，除非有必要，否则应避免使用项目标签。
 
-项目标签用作 CategoryID 的一部分。 如果未设置项目标签或者为不同的项目设置相同的项目标签，则具有相同类别和不同语言对的项目将共享同一个 CategoryID。  这种方法比较有利，因为它允许你或你的客户在使用文本翻译 API 时切换语言，而无需考虑每个项目的 CategoryID 是否唯一。
+项目标签用作 CategoryID 的一部分。 如果未设置项目标签或者为不同的项目设置相同的项目标签，则具有相同类别和不同语言对的项目将共享同一个 CategoryID。** 此方法非常有利，因为它允许你或你的客户在使用转换器时在不同语言之间切换，而无需担心每个项目的唯一类别 Id。
 
 例如，若要在技术领域启用从英语到法语以及从法语到英语的翻译，可以创建两个项目：一个是英语到法语翻译项目，另一个是法语到英语翻译项目。 为这两个项目指定相同的类别（“技术”），并将项目标签留空。 这两个项目的 CategoryID 将会匹配，因此，无需修改 CategoryID，即可查询英语和法语翻译的 API。
 

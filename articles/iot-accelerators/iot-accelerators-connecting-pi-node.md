@@ -1,5 +1,5 @@
 ---
-title: 在 Node.js 中将 Raspberry Pi 预配到远程监视 - Azure | Microsoft Docs
+title: 将 Raspberry Pi 连接到远程监视 - Node.js - Azure | Microsoft Docs
 description: 介绍如何使用以 Node.js 编写的应用程序将 Raspberry Pi 设备连接到远程监视解决方案加速器。
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
-ms.openlocfilehash: 20d50ac4ac4a1919077ebe67bb529e2dc5abf187
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom: mqtt
+ms.openlocfilehash: 9335c45688752ea41801e988157740f4170cfcb4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61449614"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81683940"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>将 Raspberry Pi 设备连接到远程监视解决方案加速器 (Node.js)
 

@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂的角色和权限 | Microsoft Docs
+title: Azure 数据工厂的角色和权限
 description: 介绍创建数据工厂并使用子资源所需的角色和权限。
 ms.date: 11/5/2018
 ms.topic: conceptual
@@ -7,30 +7,32 @@ ms.service: data-factory
 services: data-factory
 documentationcenter: ''
 ms.workload: data-services
-ms.tgt_pltfrm: na
-author: gauravmalhot
-ms.author: gamal
-manager: craigg
-ms.openlocfilehash: 19666eb668dd120c1705c6a62a8ba1abd2321026
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+author: djpmsft
+ms.author: daperlov
+manager: anandsub
+ms.openlocfilehash: 923b3fbb617f46ba0551f6b21c384331559da2f9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61261801"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263239"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure 数据工厂的角色和权限
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 
 本文介绍创建和管理 Azure 数据工厂资源所需的角色，以及由这些角色授予的权限。
 
 ## <a name="roles-and-requirements"></a>角色和要求
 
-若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。 若要查看你在订阅中拥有的权限，请在 Azure 门户中，选择右上角的用户名，然后选择“权限”。 如果可以访问多个订阅，请选择相应的订阅。 
+若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。   若要查看你在订阅中拥有的权限，请在 Azure 门户中，选择右上角的用户名，然后选择“权限”。 如果可以访问多个订阅，请选择相应的订阅。 
 
 若要为数据工厂创建和管理子资源（包括数据集、链接服务、管道、触发器和集成运行时），以下要求适用：
 - 若要在 Azure 门户中创建和管理子资源，你必须属于资源组级别或更高级别的**数据工厂参与者**角色。
 - 若要使用 PowerShell 或 SDK 创建和管理子资源，资源级别或更高级别的**参与者**角色已足够。
 
-有关如何将用户添加到角色的示例说明，请参阅[添加角色](../billing/billing-add-change-azure-subscription-administrator.md)一文。
+有关如何将用户添加到角色的示例说明，请参阅[添加角色](../cost-management-billing/manage/add-change-subscription-administrator.md)一文。
 
 ## <a name="set-up-permissions"></a>设置权限
 
@@ -80,9 +82,13 @@ Azure Repos 和 GitHub 上的权限独立于数据工厂权限。 因此，具�
   1. 在数据工厂级别分配内置的“参与者”角色。
   2. 创建权限为 **Microsoft.Resources/deployments/** 的自定义角色。 将此自定义角色分配给资源组级别的用户。
 
+- 允许用户在链接的服务中测试连接或预览数据集中的数据
+
+    为以下操作创建具有权限的自定义角色： **DataFactory/工厂/getFeatureValue/read**和**DataFactory/工厂/getDataPlaneAccess/action**。 在数据工厂资源上为用户分配此自定义角色。
+
 - 允许用户通过 PowerShell 或 SDK 更新数据工厂，但不允许其在 Azure 门户中进行更新。
 
-  为用户分配内置的“参与者”角色，其权限范围为数据工厂资源。 此角色允许用户在 Azure 门户中查看资源，但不允许其访问“发布”和“全部发布”按钮。
+  为用户分配内置的“参与者”角色，其权限范围为数据工厂资源。 此角色允许用户在 Azure 门户中查看资源，但不允许其访问“发布”和“全部发布”按钮。 
 
 ## <a name="next-steps"></a>后续步骤
 

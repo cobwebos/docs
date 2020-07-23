@@ -1,30 +1,24 @@
 ---
-title: 在 Azure 中的 Windows VM 上安装 MongoDB | Microsoft Docs
+title: 在 Azure 的 Windows VM 上安装 MongoDB
 description: 了解如何在使用 Resource Manager 部署模型创建的、运行 Windows Server 2012 R2 的 Azure VM 上安装 MongoDB。
-services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-ms.assetid: 53faf630-8da5-4955-8d0b-6e829bf30cba
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: afd8e6b47fb86985acde062af1fb38ec3af4e902
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: a5ba7d7fce3f3eabd223956ca8d9cc824fbd0c5f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60711398"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81869453"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>在 Azure 中的 Windows VM 上安装和配置 MongoDB
 [MongoDB](https://www.mongodb.org) 是一个流行的开源、高性能 NoSQL 数据库。 本文逐步讲解如何在 Azure 中的 Windows Server 2016 虚拟机 (VM) 上安装和配置 MongoDB。 也可以[在 Azure 中的 Linux VM 上安装 MongoDB](../linux/install-mongodb.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 在安装和配置 MongoDB 之前，需要创建一个 VM，并且最好将一个磁盘添加到该 VM。 请参阅以下文章创建 VM 并向其添加数据磁盘：
 
 * 使用 [Azure 门户](quick-create-portal.md)或 [Azure PowerShell](quick-create-powershell.md) 创建 Windows Server VM。
@@ -42,11 +36,11 @@ ms.locfileid: "60711398"
 3. 默认情况下已启用 Internet Explorer 增强的安全性配置。 将 MongoDB 网站添加到允许的站点列表：
    
    * 选择右上角的“工具”图标。
-   * 在“Internet 选项”中，选择“安全”选项卡，然后选择“受信任的站点”图标。
+   * 在“Internet 选项”中，选择“安全”选项卡，并选择“可信站点”图标。  
    * 单击“站点”按钮。 将 *https://\*.mongodb.com* 添加到受信任的站点列表，然后关闭对话框。
      
      ![配置 Internet Explorer 安全性设置](./media/install-mongodb/configure-internet-explorer-security.png)
-4. 请转到 [MongoDB - 下载](https://www.mongodb.com/downloads)页 (https://www.mongodb.com/downloads))。
+4. 请转到 [MongoDB - 下载](https://www.mongodb.com/downloads)页 (https://www.mongodb.com/downloads) )。
 5. 如有需要，选择“社区服务器”版本，并选择 *Windows Server 2008 R2 64 位及更高版本*的最新稳定版本。 若要下载安装程序，请单击“DOWNLOAD (msi)”。
    
     ![下载 MongoDB 安装程序](./media/install-mongodb/download-mongodb.png)
@@ -74,7 +68,7 @@ ms.locfileid: "60711398"
      > [!NOTE]
      > 请务必添加前置分号 (`;`)，指明要将一个位置添加到 `PATH` 变量。
 
-2. 在数据磁盘上创建 MongoDB 数据和日志目录。 在“开始”菜单中，选择“命令提示符”。 以下示例在 F: 驱动器中创建目录：
+2. 在数据磁盘上创建 MongoDB 数据和日志目录。 在“开始”菜单中，选择“命令提示符”。  以下示例在 F: 驱动器中创建目录：
    
     ```
     mkdir F:\MongoData

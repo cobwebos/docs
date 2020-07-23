@@ -1,81 +1,69 @@
 ---
-title: 什么是 Azure Active Directory 条件访问中的服务依赖项？ | Microsoft Docs
+title: 条件访问服务依赖项 - Azure Active Directory
 description: 了解如何在 Azure Active Directory 条件访问中使用条件来触发策略。
 services: active-directory
-keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 03/18/2019
+ms.topic: conceptual
+ms.date: 05/04/2020
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f727fc7133ebc9ee124e63253e8a266862b0d908
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 00b23a845002f5a92128917d81fdadf5a647d798
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60354345"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253182"
 ---
-# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>什么是 Azure Active Directory 条件访问中的服务依赖项？ 
+# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的服务依赖项是什么？ 
 
+使用条件访问策略时，可以指定网站和服务的访问要求。 例如，访问要求可以包括要求进行多重身份验证 (MFA)，或者要求使用[托管设备](require-managed-devices.md)。 
 
-使用条件性访问策略，可以指定到网站和服务的访问要求。 例如，您的访问要求可以包括需要多重身份验证 (MFA) 或[托管设备](require-managed-devices.md)。 
+直接访问站点或服务时，通常容易评估相关策略的影响。 例如，如果策略要求对配置的 SharePoint Online 进行多重身份验证 (MFA)，则每次登录 SharePoint Web 门户时，都会强制执行 MFA。 但是，评估某项策略的影响并非始终是直截了当的，因为某些云应用依赖于其他云应用。 例如，可以通过 Microsoft Teams 访问 SharePoint Online 中的资源。 因此，你在访问当前方案中的 Microsoft Teams 时，也会受 SharePoint MFA 策略的约束。 
 
-
-直接访问的网站或服务，相关策略的影响时，通常容易评估。 例如，如果您有一个策略，要求适用于 SharePoint Online 配置 MFA，MFA 将强制为每次登录到 SharePoint web 门户。 但是，它并不总是直接以评估策略的影响，因为云应用程序的其他云应用的依赖项。 例如，Microsoft Teams 利用了 SharePoint online。 因此，在 Microsoft Teams 访问在我们当前的方案时，您还将受 SharePoint MFA 策略约束。   
-
+> [!TIP]
+> 使用 [Office 365（预览版）](concept-conditional-access-cloud-apps.md#office-365-preview)应用将针对所有 Office 应用，以避免 Office 堆栈中的服务依赖项出现问题。
 
 ## <a name="policy-enforcement"></a>策略强制执行 
 
-如果已配置的服务依赖项，可能会使用早期绑定或后期绑定强制应用的策略。 
+如果配置了服务依赖项，则可使用早期绑定或后期绑定强制来应用此策略。 
 
-**早期绑定策略实施**意味着用户在访问调用的应用之前必须满足依赖的服务策略。 例如，用户必须登录到 MS Teams 之前满足 SharePoint 策略。 
+- **早期绑定策略强制**意味着用户必须在访问调用应用之前满足依赖的服务策略。 例如，在登录 MS Teams 之前，用户必须满足 SharePoint 策略要求。 
+- **后期绑定策略强制**发生在用户登录到调用应用以后。 强制会延迟到调用应用请求时（下游服务的令牌）。 示例包括 MS Teams 访问 Planner，以及 Office.com 访问 SharePoint。 
 
-**后期绑定策略实施**到调用应用程序在用户登录后发生。 调用下游服务的令牌的应用请求时，强制将推迟到。 示例包括 MS Teams 访问 Planner 和 Office.com 访问 SharePoint。 
+下图演示了 MS Teams 服务依赖关系。 Planner 的实线箭头表示早期绑定强制，虚线箭头表示后期绑定强制。 
 
-下图显示了 MS Teams 服务依赖项。 规划器指示后期绑定强制，实线箭头指示早期绑定强制的虚线箭头。 
+![MS Teams 服务依赖关系](./media/service-dependencies/01.png)
 
+最佳做法是，尽可能跨相关的应用和服务设置常用策略。 安全态势一致可以为你提供最佳用户体验。 例如，跨 Exchange Online、SharePoint Online、Microsoft Teams 和 Skype for Business 设置常用策略可以显著减少意外提示数（为下游服务应用不同策略时，可能会出现这些提示）。 
 
+使用 Office 堆栈中的应用程序实现此目的的一种上佳方法是使用 [Office 365（预览版）](concept-conditional-access-cloud-apps.md#office-365-preview)，而不是针对单个应用程序。
 
-![MS Teams 服务依赖项](./media/service-dependencies/01.png)
-
-
-
-  
-
-作为最佳做法，应在相关的应用和服务尽可能设置通用的策略。 具有一致的安全状况提供最佳用户体验。 例如，在 Exchange Online 设置通用策略，SharePoint Online、 MS Teams 和 Skype 的业务显著减少了意外从不同的策略应用于下游服务可能会出现的提示。 
-
-下表列出了其他服务依赖关系，其中客户端应用程序必须满足  
+下表列出了客户端应用必须满足的其他服务依赖项  
 
 | 客户端应用         | 下游服务                          | 强制 |
 | :--                 | :--                                         | ---         | 
-| Azure Data Lake     | Microsoft Azure 管理 （门户和 API） | 早期绑定 |
-| Microsoft 教室 | Exchange                                    | 早期绑定 |
-|                     | SharePoint                                  | 早期绑定  |
+| Azure 数据湖     | Microsoft Azure 管理（门户和 API） | 早期绑定 |
+| Microsoft Classroom | Exchange                                    | 早期绑定 |
+|                     | SharePoint                                  | 早期绑定 |
 | Microsoft Teams     | Exchange                                    | 早期绑定 |
-|                     | MS 规划器                                  | 后期绑定  |
+|                     | MS Planner                                  | 后期绑定  |
 |                     | SharePoint                                  | 早期绑定 |
 |                     | Skype for Business Online                   | 早期绑定 |
 | Office 门户       | Exchange                                    | 后期绑定  |
 |                     | SharePoint                                  | 后期绑定  |
 | Outlook 组      | Exchange                                    | 早期绑定 |
 |                     | SharePoint                                  | 早期绑定 |
-| PowerApps           | Microsoft Azure 管理 （门户和 API） | 早期绑定 |
+| PowerApps           | Microsoft Azure 管理（门户和 API） | 早期绑定 |
 |                     | Microsoft Azure Active Directory              | 早期绑定 |
 | Project             | Dynamics CRM                                | 早期绑定 |
 | Skype for Business  | Exchange                                    | 早期绑定 |
-| Visual Studio       | Microsoft Azure 管理 （门户和 API） | 早期绑定 |
-
-
+| Visual Studio       | Microsoft Azure 管理（门户和 API） | 早期绑定 |
+| Microsoft Forms     | Exchange                                    | 早期绑定 |
+|                     | SharePoint                                  | 早期绑定 |
+| 微软待办     | Exchange                                    | 早期绑定 |
 
 ## <a name="next-steps"></a>后续步骤
 

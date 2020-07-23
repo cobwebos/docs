@@ -1,25 +1,23 @@
 ---
-title: 使用 Azure 网络观察程序排查虚拟网络网关和连接问题 - REST | Microsoft 文档
+title: 对 VNET 网关和连接进行故障排除 | Azure REST API
+titleSuffix: Azure Network Watcher
 description: 本页说明如何在 REST 中使用 Azure 网络观察程序排查虚拟网络网关和连接问题
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: e4d5f195-b839-4394-94ef-a04192766e55
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: kumud
-ms.openlocfilehash: 0f10b9b45f63485417685a0826c047725a264772
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: a3cd2323900dfbe6bec8f192822135f0c9dbb1cf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64686119"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738662"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>使用 Azure 网络观察程序排查虚拟网络网关和连接问题
 
@@ -33,8 +31,8 @@ ms.locfileid: "64686119"
 
 本文逐步讲解如何完成当前可用于资源故障排除的不同管理任务。
 
-- [排查虚拟网络网关问题](#troubleshoot-a-virtual-network-gateway)
-- [排查连接问题](#troubleshoot-connections)
+- [排查虚拟网络网关问题  ](#troubleshoot-a-virtual-network-gateway)
+- [排查连接问题  ](#troubleshoot-connections)
 
 ## <a name="before-you-begin"></a>开始之前
 

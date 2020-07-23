@@ -1,26 +1,19 @@
 ---
-title: 使用 Azure CLI 管理虚拟机规模集 | Microsoft Docs
+title: 使用 Azure CLI 管理虚拟机规模集
 description: 管理虚拟机规模集常用的 Azure CLI 命令，例如管理如何启动和停止实例，或更改规模集容量。
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: management
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: b49182ebdcc93c4a51a55f27c3e0bf7a45307b7f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 2742b0b73d4143159fd1ed1338988b01a2171041
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60618075"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124323"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 管理虚拟机规模集
 在虚拟机规模集的整个生命周期内，可能需要运行一个或多个管理任务。 此外，可能还需要创建自动执行各种生命周期任务的脚本。 本文详细介绍了执行这些任务常用的一些 Azure CLI 命令。
@@ -29,7 +22,7 @@ ms.locfileid: "60618075"
 
 
 ## <a name="view-information-about-a-scale-set"></a>查看有关规模集的信息
-若要查看有关规模集的全部信息，请使用 [az vmss show](/cli/azure/vmss)。 以下示例将获取有关 myResourceGroup 资源组中 myScaleSet 规模集的信息。 按如下所示输入自己的名称：
+若要查看有关规模集的全部信息，请使用 [az vmss show](/cli/azure/vmss)。 以下示例将获取有关 myResourceGroup 资源组中 myScaleSet 规模集的信息 。 按如下所示输入自己的名称：
 
 ```azurecli
 az vmss show --resource-group myResourceGroup --name myScaleSet
@@ -46,7 +39,7 @@ az vmss list-instances \
     --output table
 ```
 
-要查看与特定 VM 实例有关的其他信息，请将 `--instance-id` 参数添加到 [az vmss get-instance-view](/cli/azure/vmss)，并指定要查看的实例。 以下示例将查看与 myScaleSet 规模集和 myResourceGroup 资源组中 VM 实例“0”有关的信息。 按如下所示输入自己的名称：
+要查看与特定 VM 实例有关的其他信息，请将 `--instance-id` 参数添加到 [az vmss get-instance-view](/cli/azure/vmss)，并指定要查看的实例。 以下示例将查看与 myScaleSet 规模集和 myResourceGroup 资源组中 VM 实例“0”有关的信息  。 按如下所示输入自己的名称：
 
 ```azurecli
 az vmss get-instance-view \
@@ -57,7 +50,7 @@ az vmss get-instance-view \
 
 
 ## <a name="list-connection-information-for-vms"></a>VM 连接信息列表
-若要连接规模集中的 VM，可将 SSH 或 RDP 连接到分配的公共 IP 地址和端口号。 默认情况下，会向将远程连接流量转发给每个 VM 的 Azure 负载均衡器添加网络地址转换 (NAT) 规则。 若要列出规模集中连接 VM 的地址和端口，请使用 [az vmss list-instance-connection-info](/cli/azure/vmss)。 以下示例将列出 myScaleSet 规模集和 myResourceGroup 资源组中 VM 实例的连接信息。 为这些名称提供自己的值：
+若要连接规模集中的 VM，可将 SSH 或 RDP 连接到分配的公共 IP 地址和端口号。 默认情况下，会向将远程连接流量转发给每个 VM 的 Azure 负载均衡器添加网络地址转换 (NAT) 规则。 若要列出规模集中连接 VM 的地址和端口，请使用 [az vmss list-instance-connection-info](/cli/azure/vmss)。 以下示例将列出 myScaleSet 规模集和 myResourceGroup 资源组中 VM 实例的连接信息 。 为这些名称提供自己的值：
 
 ```azurecli
 az vmss list-instance-connection-info \
@@ -94,13 +87,13 @@ az vmss scale \
 ## <a name="stop-and-start-vms-in-a-scale-set"></a>停止和启动规模集中的 VM
 要在规模集中停止一个或多个 VM，请使用 [az vmss stop](/cli/azure/vmss#az-vmss-stop)。 通过 `--instance-ids` 参数，可指定要停止的一个或多个 VM。 若不指定实例 ID，则停止规模集中的所有 VM。 要停止多个 VM，请用空格分隔每个实例 ID。
 
-以下示例将停止 myScaleSet 规模集和 myResourceGroup 资源组中的实例“0”。 请按照如下所示，提供值：
+以下示例将停止 myScaleSet 规模集和 myResourceGroup 资源组中的实例“0”  。 请按照如下所示，提供值：
 
 ```azurecli
 az vmss stop --resource-group myResourceGroup --name myScaleSet --instance-ids 0
 ```
 
-已停止的 VM 会保留已分配状态，且会继续产生计算费用。 如果想 VM 保持已解除分配状态，且仅会产生存储费用，使用 [az vmss deallocate](/cli/azure/vmss)。 要解除分配多个 VM，请用空格分隔每个实例 ID。 以下示例停止并并解除分配 myScaleSet 规模集和 myResourceGroup 资源组中实例“0”。 请按照如下所示，提供值：
+已停止的 VM 会保留已分配状态，且会继续产生计算费用。 如果想 VM 保持已解除分配状态，且仅会产生存储费用，使用 [az vmss deallocate](/cli/azure/vmss)。 要解除分配多个 VM，请用空格分隔每个实例 ID。 以下示例停止并并解除分配 myScaleSet 规模集和 myResourceGroup 资源组中实例“0”  。 请按照如下所示，提供值：
 
 ```azurecli
 az vmss deallocate --resource-group myResourceGroup --name myScaleSet --instance-ids 0
@@ -110,7 +103,7 @@ az vmss deallocate --resource-group myResourceGroup --name myScaleSet --instance
 ### <a name="start-vms-in-a-scale-set"></a>启动规模集中的 VM
 要在规模集中启动一个或多个 VM，请使用 [az vmss start](/cli/azure/vmss)。 通过 `--instance-ids` 参数，可指定要启动的一个或多个 VM。 若不指定实例 ID，则启动规模集中的所有 VM。 要启动多个 VM，请用空格分隔每个实例 ID。
 
-以下示例将启动 myScaleSet 规模集和 myResourceGroup 资源组中的实例“0”。 请按照如下所示，提供值：
+以下示例将启动 myScaleSet 规模集和 myResourceGroup 资源组中的实例“0”  。 请按照如下所示，提供值：
 
 ```azurecli
 az vmss start --resource-group myResourceGroup --name myScaleSet --instance-ids 0
@@ -120,7 +113,7 @@ az vmss start --resource-group myResourceGroup --name myScaleSet --instance-ids 
 ## <a name="restart-vms-in-a-scale-set"></a>重启规模集中的 VM
 若要重启规模集中的一个或多个 VM，请使用 [az vmss restart](/cli/azure/vmss)。 通过 `--instance-ids` 参数，可指定要重启的一个或多个 VM。 若不指定实例 ID，则重启规模集中的所有 VM。 要重启多个 VM，请用空格分隔每个实例 ID。
 
-以下示例将重启 myScaleSet 规模集和 myResourceGroup 资源组中的实例“0”。 请按照如下所示，提供值：
+以下示例将重启 myScaleSet 规模集和 myResourceGroup 资源组中的实例“0”  。 请按照如下所示，提供值：
 
 ```azurecli
 az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-ids 0
@@ -130,7 +123,7 @@ az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-id
 ## <a name="remove-vms-from-a-scale-set"></a>删除规模集中的 VM
 要在规模集中删除一个或多个 VM，请使用 [az vmss delete-instances](/cli/azure/vmss)。 通过 `--instance-ids` 参数，可指定要删除的一个或多个 VM。 若指定实例 ID 的 *，规模集中所有 VM 都将删除。 要删除多个 VM，请用空格分隔每个实例 ID。
 
-以下示例将删除 myScaleSet 规模集和 myResourceGroup 资源组中的实例“0”。 请按照如下所示，提供值：
+以下示例将删除 myScaleSet 规模集和 myResourceGroup 资源组中的实例“0”  。 请按照如下所示，提供值：
 
 ```azurecli
 az vmss delete-instances --resource-group myResourceGroup --name myScaleSet --instance-ids 0

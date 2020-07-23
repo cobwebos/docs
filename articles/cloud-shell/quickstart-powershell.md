@@ -1,25 +1,20 @@
 ---
-title: Azure Cloud Shell 中的 PowerShell 快速入门 | Microsoft Docs
-description: Cloud Shell 中的 PowerShell 快速入门
-services: Azure
-documentationcenter: ''
+title: Azure Cloud Shell 快速入门-PowerShell
+description: 了解如何在浏览器中使用 Azure Cloud Shell 的 PowerShell。
 author: maertendmsft
-manager: timlt
+ms.author: damaerte
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
-ms.author: damaerte
-ms.openlocfilehash: 1fc9883e0ea35c384c3bfc83e76b8eded48cbcba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b50922d129fb4c72db1d6077a49c4d1309d5fe55
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60199497"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512973"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 PowerShell 快速入门
 
@@ -28,17 +23,15 @@ ms.locfileid: "60199497"
 > [!NOTE]
 > 此外，还提供了 [Azure Cloud Shell 中的 Bash](quickstart.md) 快速入门。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="start-cloud-shell"></a>启动 Cloud Shell
 
-1. 在 Azure 门户的顶部导航栏中单击“Cloud Shell”按钮
+1. 在 Azure 门户的顶部导航栏中单击“Cloud Shell”按钮****
 
-   ![](media/quickstart-powershell/shell-icon.png)
+   ![显示如何从 Azure 门户启动 Azure Cloud Shell 的屏幕截图。](media/quickstart-powershell/shell-icon.png)
 
 2. 在下拉列表中选择 PowerShell 环境，随后会进入 Azure 驱动器 `(Azure:)`
 
-   ![](media/quickstart-powershell/environment-ps.png)
+   ![显示如何为 Azure Cloud Shell 选择 PowerShell 环境的屏幕截图。](media/quickstart-powershell/environment-ps.png)
 
 ## <a name="run-powershell-commands"></a>运行 PowerShell 命令
 
@@ -186,14 +179,15 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
   假设有一个名为 MyVM1 的 VM，现在让我们使用 `Invoke-AzVMCommand` 在远程计算机上调用 PowerShell 脚本块。
 
   ```azurepowershell-interactive
-  Invoke-AzVMCommand -Name MyVM1 -ResourceGroupName MyResourceGroup -Scriptblock {Get-ComputerInfo} -EnableRemoting
+  Enable-AzVMPSRemoting -Name MyVM1 -ResourceGroupname MyResourceGroup
+  Invoke-AzVMCommand -Name MyVM1 -ResourceGroupName MyResourceGroup -Scriptblock {Get-ComputerInfo} -Credential (Get-Credential)
   ```
 
   还可以先导航到 VirtualMachines 目录，然后按如下所示运行 `Invoke-AzVMCommand`。
 
   ```azurepowershell-interactive
-  PS Azure:\> cd MySubscriptionName\MyResourceGroup\Microsoft.Compute\virtualMachines
-  PS Azure:\MySubscriptionName\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Invoke-AzVMCommand -Scriptblock {Get-ComputerInfo}
+  PS Azure:\> cd MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines
+  PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Invoke-AzVMCommand -Scriptblock {Get-ComputerInfo} -Credential (Get-Credential)
 
   # You will see output similar to the following:
 
@@ -215,13 +209,13 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
 可以使用 `Enter-AzVM` 以交互方式登录到 Azure 中运行的 VM。
 
   ```azurepowershell-interactive
-  PS Azure:\> Enter-AzVM -Name MyVM1 -ResourceGroupName MyResourceGroup -EnableRemoting
+  PS Azure:\> Enter-AzVM -Name MyVM1 -ResourceGroupName MyResourceGroup -Credential (Get-Credential)
   ```
 
 还可以先导航到 `VirtualMachines` 目录，然后按如下所示运行 `Enter-AzVM`
 
   ```azurepowershell-interactive
- PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzVM
+ PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzVM -Credential (Get-Credential)
  ```
 
 ### <a name="discover-webapps"></a>发现 WebApps
@@ -267,7 +261,7 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 ### <a name="using-ssh"></a>使用 SSH
 
-按照说明进行操作[此处](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell)若要创建新的 VM 配置使用 Azure PowerShell cmdlet。
+按照[此处](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell)的说明使用 Azure PowerShell cmdlet 创建新的 VM 配置。
 在调用 `New-AzVM` 以启动部署之前，请将 SSH 公钥添加到 VM 配置。
 新创建的 VM 将包含 `~\.ssh\authorized_keys` 位置中的公钥，从而允许通过无凭据的 SSH 会话连接到 VM。
 

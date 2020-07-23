@@ -1,23 +1,23 @@
 ---
-title: 在 Azure Database for MariaDB 中配置服务参数
+title: 配置服务器参数 - Azure CLI - Azure Database for MariaDB
 description: 本文介绍了如何使用 Azure CLI 命令行实用工具在 Azure Database for MariaDB 中配置服务参数。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
-ms.topic: conceptual
-ms.date: 11/09/2018
-ms.openlocfilehash: 4e0bf45f1c67a5e07d6ed632f6560d094b673c0a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 6/11/2020
+ms.openlocfilehash: a5aed10927a808d0002f765d493709e0e49483ff
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61040026"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104803"
 ---
-# <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>使用 Azure CLI 自定义服务器配置参数
+# <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Database for MariaDB 中配置服务器参数
 可以使用 Azure CLI、Azure 命令行实用工具来列出、显示和更新 Azure Database for MariaDB 服务器的配置参数。 在服务器级别会公开引擎配置的一个子集，并可以进行修改。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 若要逐步执行本操作方法指南，需要：
 - [Azure Database for MariaDB 服务器](quickstart-create-mariadb-server-database-using-azure-cli.md)
 - [Azure CLI](/cli/azure/install-azure-cli) 命令行实用工具或在浏览器中使用 Azure Cloud Shell。
@@ -55,18 +55,29 @@ az mariadb server configuration set --name slow_query_log --resource-group myres
 
 此代码会将 slow\_query\_log 配置重置为默认值 OFF。 
 
+## <a name="setting-parameters-not-listed"></a>未列出设置参数
+如果 Azure 门户中未列出您要更新的服务器参数，则可以选择使用在连接级别设置参数 `init_connect` 。 这会为每个连接到服务器的客户端设置服务器参数。 
+
+更新资源组**myresourcegroup**下的服务器**mydemoserver.mariadb.database.azure.com**的**init \_ connect**服务器配置参数，以设置诸如字符集之类的值。
+```azurecli-interactive
+az mariadb server configuration set --name init_connect --resource-group myresourcegroup --server mydemoserver --value "SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;"
+```
+
 ## <a name="working-with-the-time-zone-parameter"></a>使用时区参数
 
 ### <a name="populating-the-time-zone-tables"></a>填充时区表
 
-可以通过从 MariaDB 命令行或 MariaDB Workbench 等工具调用 `az_load_timezone` 存储过程，填充服务器上的时区表。
+可以通过从 MariaDB 命令行或 MariaDB Workbench 等工具调用 `mysql.az_load_timezone` 存储过程，填充服务器上的时区表。
 
 > [!NOTE]
-> 如果是从 MariaDB Workbench 中运行 `az_load_timezone` 命令，可能需要先使用 `SET SQL_SAFE_UPDATES=0;` 关闭安全更新模式。
+> 如果是从 MariaDB Workbench 中运行 `mysql.az_load_timezone` 命令，可能需要先使用 `SET SQL_SAFE_UPDATES=0;` 关闭安全更新模式。
 
 ```sql
 CALL mysql.az_load_timezone();
 ```
+
+> [!IMPORTANT]
+> 应重启服务器，以确保正确填充时区表。 若要重启服务器，请使用 [Azure 门户](howto-restart-server-portal.md)或 [CLI](howto-restart-server-cli.md)。
 
 要查看可用的时区值，请运行以下命令：
 

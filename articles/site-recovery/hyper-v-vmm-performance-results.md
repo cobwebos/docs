@@ -1,5 +1,5 @@
 ---
-title: 通过 Azure Site Recovery 将 VMM 云中的 Hyper-V VM 复制到辅助站点的测试结果 | Microsoft Docs
+title: 使用 Azure Site Recovery 测试将 Hyper-v VM 复制到辅助站点
 description: 本文介绍了使用 Azure Site Recovery 在 VMM 云中将 Hyper-V VM 复制到辅助站点时的性能测试。
 author: sujayt
 manager: rochakm
@@ -7,12 +7,11 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 7e2f5c344a0fb632956ab5d5b951ee69cff528ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 3edd182e335bc679d95d7be64f45b617a9f54c1a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60363465"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73663170"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>从 Hyper-V 复制到辅助站点的测试结果
 
@@ -106,9 +105,9 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 
 ![主要硬件要求](./media/hyper-v-vmm-performance-results/IC744922.png)
 
-| 服务器 | RAM | 型号 | 处理器 | 处理器数目 | NIC | 软件 |
+| 服务器 | RAM | “模型” | 处理器 | 处理器数目 | NIC | 软件 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 在群集中的 Hyper-V 服务器： <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB-HOST25 有 256 个 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2.20 GHz |4 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
+| 在群集中的 Hyper-V 服务器： <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128<br />ESTLAB-HOST25 有 256 个 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2.20 GHz |4 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
 | VMM 服务器 |2 | | |2 |1 Gbps |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
 
 ### <a name="secondary-site"></a>辅助站点
@@ -118,7 +117,7 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 
 ![主要硬件规格](./media/hyper-v-vmm-performance-results/IC744923.png)
 
-| 服务器 | RAM | 型号 | 处理器 | 处理器数目 | NIC | 软件 |
+| 服务器 | RAM | “模型” | 处理器 | 处理器数目 | NIC | 软件 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 在群集中的 Hyper-V 服务器： <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell ™ PowerEdge ™ R720 |Intel(R) Xeon(R) CPU E5-2630 0 \@ 2.30 GHz |2 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
 | ESTLAB-HOST17 |128 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2.20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
@@ -131,13 +130,13 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 * 我们使用 [IOMeter](http://www.iometer.org) 与表中汇总的工作负载特性进行模拟。
 * 所有 IOMeter 配置文件都设置为写入随机字节以模拟工作负载的最坏情况写入模式。
 
-| 工作负载 | I/O 大小 (KB) | 访问百分比 | 读取百分比 | 未完成的 I/O | I/O 模式 |
+| 工作负荷 | I/O 大小 (KB) | 访问百分比 | 读取百分比 | 未完成的 I/O | I/O 模式 |
 | --- | --- | --- | --- | --- | --- |
-| 文件服务器 |48163264 |60%20%5%5%10% |80%80%80%80%80% |88888 |全部 100% 随机 |
-| SQL Server（卷 1）SQL Server（卷 2） |864 |100%100% |70%0% |88 |100% 随机 100% 连续 |
+| 文件服务器 |4<br />8<br />16<br />32<br />64 |60%<br />20%<br />5%<br />5%<br />10% |80%<br />80%<br />80%<br />80%<br />80% |8<br />8<br />8<br />8<br />8 |全部 100% 随机 |
+| SQL Server（卷 1）<br />SQL Server（卷 2） |8<br />64 |100%<br />100% |70%<br />0% |8<br />8 |100% 随机<br />100% 顺序 |
 | Exchange |32 |100% |67% |8 |100% 随机 |
-| 工作站/VDI |464 |66%34% |70%95% |11 |两者都 100% 随机 |
-| Web 文件服务器 |4864 |33%34%33% |95%95%95% |888 |全部 75% 随机 |
+| 工作站/VDI |4<br />64 |66%<br />34% |70%<br />95% |1<br />1 |两者都 100% 随机 |
+| Web 文件服务器 |4<br />8<br />64 |33%<br />34%<br />33% |95%<br />95%<br />95% |8<br />8<br />8 |全部 75% 随机 |
 
 ### <a name="vm-configuration"></a>VM 配置
 
@@ -150,8 +149,8 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 | SQL Server |51 |1 |4 |167 |10 |
 | Exchange Server |71 |1 |4 |552 |10 |
 | 文件服务器 |50 |1 |2 |552 |22 |
-| VDI |149 |0.5 |1 |80 |6 |
-| Web 服务器 |149 |0.5 |1 |80 |6 |
+| VDI |149 |.5 |1 |80 |6 |
+| Web 服务器 |149 |.5 |1 |80 |6 |
 | 总计 |470 | | |96.83 TB |4108 |
 
 ### <a name="site-recovery-settings"></a>Site Recovery 设置

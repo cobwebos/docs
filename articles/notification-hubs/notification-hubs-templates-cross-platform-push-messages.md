@@ -1,11 +1,11 @@
 ---
-title: 模板
-description: 本主题介绍 Azure 通知中心的模板。
+title: Azure 通知中心模板
+description: 了解如何使用 Azure 通知中心模板。
 services: notification-hubs
 documentationcenter: .net
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: a41897bb-5b4b-48b2-bfd5-2e3c65edc37e
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,15 +13,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 02473eb5649c7d201b6a54fd57faea997c1a21cc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: e3c64155053517205ab006673bb8f400325ad3c4
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60872068"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219957"
 ---
-# <a name="templates"></a>模板
+# <a name="notification-hubs-templates"></a>通知中心模板
 
 模板可让客户端应用程序指定它想要接收的确切通知格式。 通过使用模板，应用可获得多个不同优势，其中包括：
 
@@ -56,11 +58,11 @@ ms.locfileid: "60872068"
 
 此要求将强制应用后端针对每个平台生成不同的负载，并有效地使后端负责应用的表示层部分。 某些考虑因素包括本地化和图形布局（尤其针对 Windows 应用商店应用，其中包含不同磁贴类型的通知）。
 
-使用通知中心模板功能，客户端应用可以创建称为模板注册的特殊注册，其中除了包含标记集外，还包含一个模板。 无论你使用安装（首选）还是注册，通知中心模板功能都能使客户端应用将设备与模板相关联。 在前面的负载示例中，唯一的与平台无关的信息就是实际警报消息 (Hello!)。 模板是一组指令，指示通知中心如何针对该特定客户端应用的注册来设置与平台无关的消息的格式。 在前面的示例中，与平台无关的消息是单个属性：`message = Hello!`。
+使用通知中心模板功能，客户端应用可以创建称为模板注册的特殊注册，其中除了包含标记集外，还包含一个模板。 无论使用安装（首选）还是注册，通知中心模板功能都能使客户端应用将设备与模板相关联。 在前面的负载示例中，唯一的与平台无关的信息就是实际警报消息 (Hello!)。 模板是一组指令，指示通知中心如何针对该特定客户端应用的注册来设置与平台无关的消息的格式。 在前面的示例中，与平台无关的消息是单个属性：`message = Hello!`。
 
 下图演示了该过程：
 
-![](./media/notification-hubs-templates/notification-hubs-hello.png)
+![显示使用模板跨平台的过程的示意图](./media/notification-hubs-templates/notification-hubs-hello.png)
 
 iOS 客户端应用注册的模板如下所示：
 
@@ -80,7 +82,7 @@ Windows 应用商店客户端应用的相应模板为：
 </toast>
 ```
 
-请注意，实际消息将替换表达式 $ (message)。 每当通知中心向此特定注册发送消息时，此表达式将指示通知中心构建遵循此模板并用常用值替换的消息。
+请注意，实际消息将替换表达式 $(message)。 每当通知中心向此特定注册发送消息时，此表达式将指示通知中心构建遵循此模板并用常用值替换的消息。
 
 如果使用的是安装模型，则安装“templates”键会保存多个模板的 JSON。 如果使用的是注册模型，则客户端应用程序可以创建多个注册以使用多个模板；例如，例如，用于警报消息的模板和用于磁贴更新的模板。 客户端应用程序还可以混合使用本机注册（不带模板的注册）和模板注册。
 
@@ -119,7 +121,7 @@ Windows 应用商店客户端应用的相应模板为：
 
 通过使用此模式，后端只需发送一条消息，而不必为应用用户存储特定的个性化选项。 下图演示了此方案：
 
-![](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
+![显示后端如何只向每个平台发送一条消息的关系图。](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
 
 ## <a name="how-to-register-templates"></a>如何注册模板
 
@@ -131,7 +133,7 @@ Windows 应用商店客户端应用的相应模板为：
 
 下表显示了模板中允许使用的语言：
 
-| 表达式       | 描述 |
+| 表达式       | 说明 |
 | ---------------- | --- |
 | $(prop)          | 对具有给定名称的事件属性的引用。 属性名称不区分大小写。 此表达式将解析为属性的文本值，如果该属性不存在，则解析为空字符串。 |
 | $(prop, n)       | 同上，但会在 n 个字符处对文本进行显式剪切，例如，$(title, 20) 会在 20 个字符处对 title 属性的内容进行剪切。 |
@@ -168,3 +170,7 @@ Windows 应用商店客户端应用的相应模板为：
   </visual>
 </tile>
 ```
+
+## <a name="next-steps"></a>后续步骤
+
+[了解 Azure 通知中心](notification-hubs-push-notification-overview.md)

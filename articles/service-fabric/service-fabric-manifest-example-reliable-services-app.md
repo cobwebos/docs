@@ -1,25 +1,15 @@
 ---
-title: Azure Service Fabric Reliable Services 应用程序清单示例 | Microsoft Docs
+title: Reliable Services 应用清单示例
 description: 了解如何为 Reliable Services Service Fabric 应用程序配置应用程序和服务清单设置。
-services: service-fabric
-documentationcenter: na
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: xml
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: 6c4c8f0ee6aa12c58e02f71b42312cd6872076aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: f40e54f5260f827f0b18c833d23d1f57b5ebc3a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60719141"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84701092"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Reliable Services 应用程序和服务清单示例
 下面是包含 ASP.NET Core Web 前端和有状态后端的 Service Fabric 应用程序的应用程序和服务清单示例。 这些示例的用途是展示有哪些设置可用以及如何使用它们。 这些应用程序和服务清单基于 [Service Fabric .NET 快速入门](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)清单。
@@ -78,7 +68,7 @@ ms.locfileid: "60719141"
                                 MemorySwapInMB="[MemorySwapInMB]"/>
 
       <!-- Share the data package across multiple instances of the VotingData service-->
-      <PackageSharingPolicy PackageRef="VotingDataPkg.Data"/>
+      <PackageSharingPolicy PackageRef="Data"/>
 
       <!-- Give read rights on the "DataEndpoint" endpoint to the Customer2 account.-->
       <SecurityAccessPolicy GrantRights="Read" PrincipalRef="Customer2" ResourceRef="DataEndpoint" ResourceType="Endpoint"/>         
@@ -400,7 +390,7 @@ ms.locfileid: "60719141"
  有关详细信息，请参阅 [Arguments 元素](service-fabric-service-model-schema-elements.md#ArgumentsElementxs:stringComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="workingfolder-element"></a>WorkingFolder 元素
-部署应用程序时所在群集节点上的代码包中的进程工作目录。 可以指定三个值：Work（默认值）、CodePackage 或 CodeBase。 CodeBase 指定将工作目录设置为在代码包中定义 EXE 时所在的目录。 CodePackage 将工作目录设置为代码包的根目录，不管在代码包目录中定义 EXE 时的位置如何。 Work 将工作目录设置为在节点上创建的唯一文件夹。  整个应用程序实例的此文件夹是同一个文件夹。 默认情况下，应用程序中所有进程的工作目录设置为应用程序工作文件夹。 这是允许进程写入数据的位置。 建议不要在代码包或代码库中写入数据，因为这些文件夹可能是在不同的应用程序实例之间共享的，可能会被删除。 有关详细信息，请参阅 [WorkingFolder 元素](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
+部署应用程序时所在群集节点上的代码包中的进程工作目录。 可以指定三个值：Work（默认）、CodePackage 或 CodeBase。 CodeBase 指定将工作目录设置为在代码包中定义 EXE 时所在的目录。 CodePackage 将工作目录设置为代码包的根目录，不管在代码包目录中定义 EXE 时的位置如何。 Work 将工作目录设置为在节点上创建的唯一文件夹。  整个应用程序实例的此文件夹是同一个文件夹。 默认情况下，应用程序中所有进程的工作目录设置为应用程序工作文件夹。 这是允许进程写入数据的位置。 建议不要在代码包或代码库中写入数据，因为这些文件夹可能是在不同的应用程序实例之间共享的，可能会被删除。 有关详细信息，请参阅 [WorkingFolder 元素](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="consoleredirection-element"></a>ConsoleRedirection 元素
 
@@ -450,7 +440,7 @@ EntryPoint 指定的可执行文件通常是长时间运行的服务主机。 �
 可执行文件名称。  例如，“MySetup.bat”或“MyServiceHost.exe”。 有关详细信息，请参阅 [Program 元素](service-fabric-service-model-schema-elements.md#ProgramElementxs:stringComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="workingfolder-element"></a>WorkingFolder 元素
-部署应用程序时所在群集节点上的代码包中的进程工作目录。 可以指定三个值：Work（默认值）、CodePackage 或 CodeBase。 CodeBase 指定将工作目录设置为在代码包中定义 EXE 时所在的目录。 CodePackage 将工作目录设置为代码包的根目录，不管在代码包目录中定义 EXE 时的位置如何。 Work 将工作目录设置为在节点上创建的唯一文件夹。  整个应用程序实例的此文件夹是同一个文件夹。 默认情况下，应用程序中所有进程的工作目录设置为应用程序工作文件夹。 这是允许进程写入数据的位置。 建议不要在代码包或代码库中写入数据，因为这些文件夹可能是在不同的应用程序实例之间共享的，可能会被删除。 有关详细信息，请参阅 [WorkingFolder 元素](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
+部署应用程序时所在群集节点上的代码包中的进程工作目录。 可以指定三个值：Work（默认）、CodePackage 或 CodeBase。 CodeBase 指定将工作目录设置为在代码包中定义 EXE 时所在的目录。 CodePackage 将工作目录设置为代码包的根目录，不管在代码包目录中定义 EXE 时的位置如何。 Work 将工作目录设置为在节点上创建的唯一文件夹。  整个应用程序实例的此文件夹是同一个文件夹。 默认情况下，应用程序中所有进程的工作目录设置为应用程序工作文件夹。 这是允许进程写入数据的位置。 建议不要在代码包或代码库中写入数据，因为这些文件夹可能是在不同的应用程序实例之间共享的，可能会被删除。 有关详细信息，请参阅 [WorkingFolder 元素](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="configpackage-element"></a>ConfigPackage 元素
 声明一个按 Name 特性命名的文件夹，该文件夹位于包含 Settings.xml 文件的 PackageRoot 中。 此文件包含进程用户定义的键值对设置，进程可在运行时读回这些设置。 升级期间，如果仅更改了 ConfigPackage 版本，则不重启正在运行的进程。 相反，回调会向进程通知配置设置已更改，以便可以重新动态加载这些设置。 有关详细信息，请参阅 [ConfigPackage 元素](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)

@@ -1,24 +1,23 @@
 ---
-title: 从 Azure 数据工厂复制活动调用存储过程 | Microsoft Docs
+title: 从 Azure 数据工厂复制活动调用存储过程
 description: 了解如何从 Azure 数据工厂复制活动调用 Azure SQL 数据库或 SQL Server 中的存储过程。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 35e9347039a7b9939ab4d2719f9738429dec168c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f687901601ba517a50710610d4c827524b8ec565
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60824246"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320975"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>从 Azure 数据工厂中的复制活动调用存储过程
 > [!NOTE]
@@ -30,7 +29,7 @@ ms.locfileid: "60824246"
 以下示例演示如何从数据工厂管道（复制活动）调用 SQL Server 数据库中的存储过程：  
 
 ## <a name="output-dataset-json"></a>输出数据集 JSON
-在输出数据集 JSON 中，将 **type** 设置为：**SqlServerTable**。 将它设置为 **AzureSqlTable** 可配合 Azure SQL 数据库使用。 **tableName** 属性的值必须与存储过程的第一个参数的名称匹配。  
+在输出数据集 JSON 中，将 **type** 设置为：**SqlServerTable**。 将其设置为**AzureSqlTable**可用于 Azure SQL 数据库。 **tableName** 属性的值必须与存储过程的第一个参数的名称匹配。  
 
 ```json
 {
@@ -69,7 +68,7 @@ ms.locfileid: "60824246"
 ```
 
 ## <a name="stored-procedure-definition"></a>存储过程定义 
-在数据库中，使用与 **SqlWriterStoredProcedureName** 相同的名称定义存储过程。 该存储过程处理来自源数据存储的输入数据，并将数据插入到目标数据库的表中。 存储过程的第一个参数的名称必须与数据集 JSON（市场营销部）中定义的 tableName 匹配。
+在数据库中，用与**SqlWriterStoredProcedureName**相同的名称定义存储过程。 该存储过程处理来自源数据存储的输入数据，并将数据插入到目标数据库的表中。 存储过程的第一个参数的名称必须与数据集 JSON（市场营销部）中定义的 tableName 匹配。
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @stringData varchar(256)
@@ -82,7 +81,7 @@ END
 ```
 
 ## <a name="table-type-definition"></a>表类型定义
-在数据库中，使用与 **SqlWriterTableType** 相同的名称定义表类型。 表类型的架构必须与输入数据集的架构匹配。
+在数据库中，用与**SqlWriterTableType**相同的名称定义表类型。 表类型的架构必须与输入数据集的架构匹配。
 
 ```sql
 CREATE TYPE [dbo].[MarketingType] AS TABLE(

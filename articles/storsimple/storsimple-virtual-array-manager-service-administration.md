@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: 958244a5-f9f5-455e-b7ef-71a65558872e
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
-ms.openlocfilehash: bb6bb491ca71e5ced5aecc8137e9e1cbd950e80b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: d7c7cf335336cc552adaf5d9490bc58d64b0cdc9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123799"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515437"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务管理 StorSimple 虚拟阵列
 ![安装流程](./media/storsimple-virtual-array-manager-service-administration/manage4.png)

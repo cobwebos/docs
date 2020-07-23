@@ -1,39 +1,36 @@
 ---
-title: 构建第一个数据工厂 (REST) | Microsoft Docs
+title: 生成第一个数据工厂 (REST)
 description: 本教程使用数据工厂 REST API 创建一个示例 Azure 数据工厂管道。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 7e0a2465-2d85-4143-a4bb-42e03c273097
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/01/2017
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 5dcf31adc5e8bdf810d484f07ebeb6f23acbf452
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9d8b05a2268a122289c529050c75fd27dd73245b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66146851"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75438953"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>教程：使用数据工厂 REST API 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-build-your-first-pipeline.md)
-> * [Azure 门户](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
-> * [Resource Manager 模板](data-factory-build-your-first-pipeline-using-arm.md)
+> * [资源管理器模板](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 >
 >
 
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1。 如果使用的是数据工厂服务的当前版本，请参阅[快速入门：使用 Azure 数据工厂创建数据工厂](../quickstart-create-data-factory-rest-api.md)。
+> 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[快速入门：使用 Azure 数据工厂创建数据工厂](../quickstart-create-data-factory-rest-api.md)。
 
 本教程介绍如何使用数据工厂 REST API 创建第一个 Azure 数据工厂。 若要使用其他工具/SDK 来完成教程，请从下拉列表中选择一个选项。
 
@@ -45,7 +42,7 @@ ms.locfileid: "66146851"
 > 一个管道可以有多个活动。 而且，可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[在数据工厂中计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -87,7 +84,7 @@ ms.locfileid: "66146851"
 
 ### <a name="azurestoragelinkedservicejson"></a>azurestoragelinkedservice.json
 > [!IMPORTANT]
-> 将 **accountname** 和 **accountkey** 分别替换为 Azure 存储帐户的名称和密钥。 要了解如何获取存储访问密钥，请在[管理存储帐户](../../storage/common/storage-account-manage.md#access-keys)中查看有关如何查看、复制和重新生成存储访问密钥的信息。
+> 将 **accountname** 和 **accountkey** 分别替换为 Azure 存储帐户的名称和密钥。 若要了解如何获取存储访问密钥，请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
 >
 >
 
@@ -123,7 +120,7 @@ ms.locfileid: "66146851"
 
 下表提供了代码片段中使用的 JSON 属性的描述：
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | clusterSize |HDInsight 群集的大小。 |
 | timeToLive |指定 HDInsight 群集在被删除之前的空闲时间。 |
@@ -169,7 +166,7 @@ ms.locfileid: "66146851"
 
 下表提供了代码片段中使用的 JSON 属性的描述：
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | type |type 属性设置为 AzureBlob，因为数据位于 Azure Blob 存储中。 |
 | linkedServiceName |引用前面创建的 StorageLinkedService。 |
@@ -302,7 +299,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
     确认此处指定的名称 (ADFCopyTutorialDF) 与 **datafactory.json**中指定的名称匹配。
 
     ```powershell
-    $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@datafactory.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/FirstDataFactoryREST?api-version=2015-10-01};
+    $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@datafactory.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/FirstDataFactoryREST?api-version=2015-10-01};
     ```
 2. 使用 **Invoke-Command**运行命令。
 
@@ -323,7 +320,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
   3. 运行以下两个命令来调用 REST API，创建数据工厂并列显操作结果。
 * 只有 Azure 订阅的参与者/管理员才可以创建数据工厂实例
 * 数据工厂名称可能在将来被注册为 DNS 名称，因此将公开可见。
-* 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”  ，请执行下列操作之一，再尝试重新发布：
+* 如果收到错误：“**该订阅未注册为使用命名空间 Microsoft.DataFactory**”，请执行下列操作之一，尝试再次发布：
 
   * 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。
 
@@ -474,9 +471,9 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 >
 >
 
-可以使用 Azure 门户监视切片和排除任何问题。 有关详细信息，请参阅 [Monitor pipelines using Azure portal](data-factory-build-your-first-pipeline-using-editor.md#monitor-a-pipeline) （使用 Azure 门户监视管道）。
+可以使用 Azure 门户监视切片和排除任何问题。 有关详细信息，请参阅 [Monitor pipelines using Azure portal](data-factory-monitor-manage-pipelines.md) （使用 Azure 门户监视管道）。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 本教程通过在 HDInsight hadoop 群集上运行 Hive 脚本，创建了一个 Azure 数据工厂来处理数据。 在 Azure 门户中使用数据工厂编辑器执行了以下步骤：
 
 1. 创建了 Azure **数据工厂**。
@@ -487,7 +484,7 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 4. 创建了包含 **HDInsight Hive** 活动的**管道**。
 
 ## <a name="next-steps"></a>后续步骤
-本文创建了可在按需 Azure HDInsight 群集上运行 Hive 脚本、包含转换活动（HDInsight 活动）的管道。 若要了解如何使用复制活动将数据从 Azure Blob 复制到 Azure SQL，请参阅[教程：将数据从 Azure Blob 复制到 Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+本文创建了可在按需 Azure HDInsight 群集上运行 Hive 脚本、包含转换活动（HDInsight 活动）的管道。 要了解如何使用复制活动将数据从 Azure Blob 复制到 Azure SQL，请参阅 [Tutorial: Copy data from an Azure Blob to Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)（教程：将数据从 Azure Blob 复制到 Azure SQL）。
 
 ## <a name="see-also"></a>另请参阅
 | 主题 | 说明 |

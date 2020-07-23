@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: jopapa
 ms.openlocfilehash: f2ec39cc4f9a18a0738f8041e4948e8db02b302f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66120877"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "67173488"
 ---
 ## <a name="sign-in-to-azure"></a>登录 Azure
 

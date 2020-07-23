@@ -9,11 +9,11 @@ ms.topic: include
 ms.date: 09/12/2018
 ms.author: raynew
 ms.openlocfilehash: f4cd9cad3813378fcdc3f06e8ab1c28eced4f93c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66116020"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "67173475"
 ---
 名称 | 商用 URL | 政府 URL | 说明
 --- | --- | --- | ---

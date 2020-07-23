@@ -1,23 +1,27 @@
 ---
 title: 如何在 Azure Cosmos DB 中配置多主数据库
-description: 了解如何在 Azure Cosmos DB 中配置应用程序中的多主数据库。
-author: rimman
+description: 了解如何在 Azure Cosmos DB 中使用不同 SDK 为应用程序配置多主数据库。
+author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 05/23/2019
-ms.author: rimman
-ms.openlocfilehash: 1d9fa7380f62165d360888fd8cb03919f1736297
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: HT
+ms.topic: how-to
+ms.date: 12/02/2019
+ms.author: mjbrown
+ms.custom: tracking-python
+ms.openlocfilehash: a07ab3f65fcdeacf37626ad05d0b95ac3f4e7e64
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244749"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263662"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>在使用 Azure Cosmos DB 的应用程序配置多主数据库
 
-若要在应用程序中使用多主数据库功能，必须启用多区域写入并在 Azure Cosmos DB 中配置多宿主功能。 若要配置多宿主功能，请设置部署应用程序的区域。
+创建启用了多个写入区域的帐户后，必须在应用程序中对 DocumentClient 的 ConnectionPolicy 进行两处更改，以启用 Azure Cosmos DB 中的多主数据库和多宿主功能。 在 ConnectionPolicy 中，将 UseMultipleWriteLocations 设置为 true，并将部署应用程序的区域的名称传递给 SetCurrentLocation。 这将根据传入位置的地理接近性填充 PreferredLocations 属性。 如果稍后将新区域添加到帐户中，则无需更新或重新部署应用程序，它将自动检测距离较近的区域，并在发生区域事件时自动定位到该区域。
 
-## <a id="netv2"></a>.NET SDK v2
+> [!Note]
+> 最初配置有单个写入区域的 Cosmos 帐户可以配置为多个写入区域（即多主数据库）且停机时间为零。 若要了解详细信息，请参阅[配置多个写入区域](how-to-manage-database-account.md#configure-multiple-write-regions)
+
+## <a name="net-sdk-v2"></a><a id="netv2"></a>.NET SDK v2
 
 若要在应用程序中启用多主数据库，请将 `UseMultipleWriteLocations` 设置为 `true`。 此外，将 `SetCurrentLocation` 设置为在其中部署应用程序并复制 Azure Cosmos DB 的区域：
 
@@ -31,19 +35,48 @@ ConnectionPolicy policy = new ConnectionPolicy
 policy.SetCurrentLocation("West US 2");
 ```
 
-## <a id="netv3"></a>.NET SDK v3（预览版）
+## <a name="net-sdk-v3"></a><a id="netv3"></a>.NET SDK v3
 
-若要在应用程序中启用多主数据库，请将 `UseCurrentRegion` 设置为在其中部署应用程序并复制 Cosmos DB 的区域：
+若要在应用程序中启用多主数据库，请将 `ApplicationRegion` 设置为在其中部署应用程序并复制 Cosmos DB 的区域：
 
 ```csharp
-CosmosConfiguration config = new CosmosConfiguration("endpoint", "key");
-config.UseCurrentRegion("West US");
-CosmosClient client = new CosmosClient(config);
+CosmosClient cosmosClient = new CosmosClient(
+    "<connection-string-from-portal>", 
+    new CosmosClientOptions()
+    {
+        ApplicationRegion = Regions.WestUS2,
+    });
 ```
 
-## <a id="java"></a>Java 异步 SDK
+（可选）可以使用 `CosmosClientBuilder` 和 `WithApplicationRegion` 来获得相同的结果：
 
-若要在应用程序中启用多主数据库，请设置 `policy.setUsingMultipleWriteLocations(true)` 并将 `policy.setPreferredLocations` 设置为在其中部署应用程序并复制 Cosmos DB 的区域：
+```csharp
+CosmosClientBuilder cosmosClientBuilder = new CosmosClientBuilder("<connection-string-from-portal>")
+            .WithApplicationRegion(Regions.WestUS2);
+CosmosClient client = cosmosClientBuilder.Build();
+```
+
+## <a name="java-v4-sdk"></a><a id="java4-multi-master"></a> Java V4 SDK
+
+若要在应用程序中启用多主数据库，请在客户端生成器中调用 `.multipleWriteRegionsEnabled(true)` 和 `.preferredRegions(preferredRegions)`，其中 `preferredRegions` 是包含一个元素的 `List`，即正在部署应用程序和复制 Cosmos DB 的区域：
+
+# <a name="async"></a>[异步](#tab/api-async)
+
+   [Java SDK V4](sql-api-sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) 异步 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ConfigureMultimasterAsync)]
+
+# <a name="sync"></a>[Sync](#tab/api-sync)
+
+   [Java SDK V4](sql-api-sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) 同步 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=ConfigureMultimasterSync)]
+
+--- 
+
+## <a name="async-java-v2-sdk"></a><a id="java2-milti-master"></a>Async Java V2 SDK
+
+Java V2 SDK 使用 Maven [com.microsoft.azure::azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)。 若要在应用程序中启用多主数据库，请设置 `policy.setUsingMultipleWriteLocations(true)` 并将 `policy.setPreferredLocations` 设置为在其中部署应用程序并复制 Cosmos DB 的区域：
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -58,7 +91,7 @@ AsyncDocumentClient client =
         .withConnectionPolicy(policy).build();
 ```
 
-## <a id="javascript"></a>Node.js、JavaScript 和 TypeScript SDK
+## <a name="nodejs-javascript-and-typescript-sdks"></a><a id="javascript"></a>Node.js、JavaScript 和 TypeScript SDK
 
 若要在应用程序中启用多主数据库，请将 `connectionPolicy.UseMultipleWriteLocations` 设置为 `true`。 此外，将 `connectionPolicy.PreferredLocations` 设置为在其中部署应用程序并复制 Cosmos DB 的区域：
 
@@ -75,7 +108,7 @@ const client = new CosmosClient({
 });
 ```
 
-## <a id="python"></a>Python SDK
+## <a name="python-sdk"></a><a id="python"></a>Python SDK
 
 若要在应用程序中启用多主数据库，请将 `connection_policy.UseMultipleWriteLocations` 设置为 `true`。 此外，将 `connection_policy.PreferredLocations` 设置为在其中部署应用程序并复制 Cosmos DB 的区域。
 
@@ -84,7 +117,8 @@ connection_policy = documents.ConnectionPolicy()
 connection_policy.UseMultipleWriteLocations = True
 connection_policy.PreferredLocations = [region]
 
-client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.account_key}, connection_policy, documents.ConsistencyLevel.Session)
+client = cosmos_client.CosmosClient(self.account_endpoint, {
+                                    'masterKey': self.account_key}, connection_policy, documents.ConsistencyLevel.Session)
 ```
 
 ## <a name="next-steps"></a>后续步骤
@@ -99,4 +133,4 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.ac
 * [Azure Cosmos DB 中的一致性、可用性和性能权衡](consistency-levels-tradeoffs.md)
 * [各种一致性级别的可用性和性能权衡](consistency-levels-tradeoffs.md)
 * [全局缩放预配的吞吐量](scaling-throughput.md)
-* [全局分发：揭秘](global-dist-under-the-hood.md)
+* [全局分发：在幕后](global-dist-under-the-hood.md)

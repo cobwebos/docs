@@ -1,59 +1,55 @@
 ---
-title: Microsoft 标识平台代码示例 | Microsoft Docs
-description: 提供了按方案组织的可用 Microsoft 标识平台（V2 终结点）代码示例的索引。
+title: Microsoft 标识平台的代码示例
+description: 提供可用 Microsoft 标识平台（v2.0 终结点）代码示例的索引，这些示例按方案进行组织。
 services: active-directory
-documentationcenter: dev-center-name
-author: rwike77
+author: mmacy
 manager: CelesteDG
-editor: ''
-ms.assetid: a242a5ff-7300-40c2-ba83-fb6035707433
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: sample
 ms.workload: identity
-ms.date: 10/26/2018
-ms.author: ryanwi
+ms.date: 06/01/2020
+ms.author: marsma
 ms.reviewer: jmprieur
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4efe7fabb503cbfdc855d46ffea24dda2cb9c05f
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
-ms.translationtype: MT
+ms.custom: aaddev, identityplatformtop40
+ms.openlocfilehash: 42b7cf88942fb9b54b1292ece18cf14eb0d21958
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65849939"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165956"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft 标识平台代码示例（v2.0 终结点）
-
-[!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
 可以使用 Microsoft 标识平台执行以下操作：
 
 - 向 Web 应用程序和 Web API 添加身份验证和授权。
 - 要求使用访问令牌来访问受保护的 Web API。
 
-本文简要介绍了 Microsoft 标识平台终结点示例并提供了指向这些示例的链接。 这些示例将展示其工作原理以及可以在应用程序中使用的代码片段。 在代码示例页上，可以找到在要求、安装和设置方面提供帮助的详细自述主题。 代码中的注释可帮助你理解关键部分。
+本文简要介绍了 Microsoft 标识平台终结点示例并提供了指向这些示例的链接。 这些示例将展示其工作原理，并提供可以在应用程序中使用的代码片段。 在代码示例页上，可以找到在要求、安装和设置方面提供帮助的详细自述主题。 代码中的注释可帮助你理解关键部分。
 
 > [!NOTE]
-> 如果对 v1.0 示例感兴趣，请参阅 [Azure AD 代码示例（v1.0 终结点）](sample-v1-code.md)。
+> 如果对 v1.0 示例感兴趣，请参阅 [Azure AD 代码示例（v1.0 终结点）](../azuread-dev/sample-v1-code.md)。
 
 若要了解每种示例类型的基本方案，请参阅 [Microsoft 标识平台终结点的应用类型](v2-app-types.md)。
 
 你也可以为 GitHub 上的示例做出补充。 若要了解如何操作，请参阅 [Microsoft Azure Active Directory 示例和文档](https://github.com/Azure-Samples?page=3&query=active-directory)。
 
-## <a name="single-page-applications-spa"></a>单页应用程序 (SPA)
+## <a name="single-page-applications"></a>单页应用程序
 
-这些示例展示了如何编写由 Microsoft 标识平台保护的单页应用程序。 这些示例使用下列种类的 MSAL.js 之一：
+这些示例展示了如何编写受 Microsoft 标识平台保护的单页应用程序。 这些示例使用下列种类的 MSAL.js 之一。
 
-| 平台 | 描述 | 链接 |
+| 平台 | 说明 | 链接 |
 | -------- | --------------------- | -------- |
-| ![JavaScript](media/sample-v2-code/logo_js.png) [JavaScript (msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | 调用 Microsoft Graph |[javascript-graphapi-web-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
-| ![JavaScript](media/sample-v2-code/logo_js.png) [JavaScript (msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | 调用 B2C |[b2c-javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) |
-| ![JavaScript](media/sample-v2-code/logo_js.png) [JavaScript (msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | 调用自己的 web API |[javascript-singlepageapp-dotnet-webapi-v2](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) |
-| ![Angular JS](media/sample-v2-code/logo_angular.png) [JavaScript (MSAL AngularJS)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs)| 调用 Microsoft Graph  | [MsalAngularjsDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angularjs/samples/MsalAngularjsDemoApp)
-| ![Angular](media/sample-v2-code/logo_angular.png) [JavaScript (Angular MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)| 调用 Microsoft Graph  | [MSALAngularDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angular/samples/MSALAngularDemoApp) |
+| ![此图显示了 JavaScript 徽标](media/sample-v2-code/logo_js.png) [JavaScript (msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | SPA 调用 Microsoft Graph |[javascript-graphapi-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
+| ![此图显示了 JavaScript 徽标](media/sample-v2-code/logo_js.png) [JavaScript (msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | SPA 使用含 PKCE 的身份验证代码流调用 Microsoft Graph |[javascript-v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) |
+| ![此图显示了 JavaScript 徽标](media/sample-v2-code/logo_js.png) [JavaScript (msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | SPA 调用 B2C |[b2c-javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) |
+| ![此图显示了 Angular 徽标](media/sample-v2-code/logo_angular.png) [JavaScript (MSAL Angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)| SPA 调用 Microsoft Graph  | [active-directory-javascript-singlepageapp-angular](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) |
+| ![此图显示了 Angular 徽标](media/sample-v2-code/logo_angular.png) [JavaScript (MSAL Angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)| SPA 调用自定义 Web API | [ms-identity-javascript-angular-spa-aspnetcore-webapi](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi) |
+| ![此图显示了 Angular 徽标](media/sample-v2-code/logo_angular.png) [JavaScript (MSAL Angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) | SPA 调用 B2C |[active-directory-b2c-javascript-angular-spa](https://github.com/Azure-Samples/active-directory-b2c-javascript-angular-spa) |
+| ![此图显示了 React 徽标](media/sample-v2-code/logo_react.png) [JavaScript (msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core)| SPA 调用自定义 Web API，后者反过来调用 Microsoft Graph  | [ms-identity-javascript-react-spa-dotnetcore-webapi-obo](https://github.com/Azure-Samples/ms-identity-javascript-react-spa-dotnetcore-webapi-obo) |
+| ![此图显示了 Angular 徽标](media/sample-v2-code/logo_angular.png) [JavaScript (MSAL Angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) | 多租户 SPA 调用多租户自定义 Web API |[ms-identity-javascript-angular-spa-aspnet-webapi-multitenant](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant) |
+| ![此图显示了 Angular 徽标](media/sample-v2-code/logo_angular.png) [JavaScript (MSAL Angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) | SPA 使用应用角色和安全组调用自定义 Web API |[ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups) |
 
 ## <a name="web-applications"></a>Web 应用程序
 
@@ -61,23 +57,30 @@ ms.locfileid: "65849939"
 
 | 平台 | 仅让用户登录 | 让用户登录并调用 Microsoft Graph |
 | -------- | ------------------- | --------------------------------- |
-| ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.1 | [ASP.NET Core WebApp 让用户登录教程](https://aka.ms/aspnetcore-webapp-sign-in) | [ASP.NET Core Web 应用调用 Microsoft Graph](https://aka.ms/aspnetcore-webapp-call-msgraph) 阶段中的同一示例 |
-| ![ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET 快速入门](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[msgraph-training-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
-| ![Node.js](media/sample-v2-code/logo_nodejs.png)  |                   | [Node.js 快速入门](https://github.com/azureadquickstarts/appmodelv2-webapp-openidconnect-nodejs) |
-| ![Ruby](media/sample-v2-code/logo_ruby.png) |                   | [msgraph-training-rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp) |
+| ![此图显示了 ASP.NET Core 徽标](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [ASP.NET Core WebApp 登录用户教程](https://aka.ms/aspnetcore-webapp-sign-in) | [ASP.NET Core Web 应用调用 Microsoft Graph](https://aka.ms/aspnetcore-webapp-call-msgraph) 阶段中的相同示例 |
+| ![此图显示了 ASP.NET 徽标](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET 快速入门](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[msgraph-training-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
+| ![此图显示了 Java 徽标](media/sample-v2-code/logo_java.png)  |                   | [ms-identity-java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
+| ![此图显示了 Python 徽标](media/sample-v2-code/logo_python.png)  |                   | [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp) |
+| ![此图显示了 Ruby 徽标](media/sample-v2-code/logo_ruby.png) |                   | [msgraph-training-rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp) |
 
 ## <a name="desktop-and-mobile-public-client-apps"></a>桌面和移动公共客户端应用
 
-以下示例展示了以用户身份访问 Microsoft Graph API 或你自己的 Web API 的公共客户端应用程序（桌面/移动应用程序）。 所有这些客户端应用程序均使用 Microsoft 身份验证库 (MSAL)。
+以下示例展示了以用户身份访问 Microsoft Graph API 或你自己的 Web API 的公共客户端应用程序（桌面或移动应用程序）。 除了使用 WAM 的桌面（控制台）示例，所有这些客户端应用程序均使用 Microsoft 身份验证库 (MSAL)。
 
-| 客户端应用程序 | 平台 | 流/授权 | 调用 Microsoft Graph | 调用 ASP.NET Core 2.0 Web API |
+| 客户端应用程序 | 平台 | 流/授权 | 调用 Microsoft Graph | 调用 ASP.NET Core Web API |
 | ------------------ | -------- |  ----------| ---------- | ------------------------- |
-| 桌面 (WPF)      | ![.NET/C#](media/sample-v2-code/logo_NET.png) | [交互](msal-authentication-flows.md#interactive)| [dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [dotnet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi) |
-| 桌面（控制台）   | ![.NET/C#（桌面）](media/sample-v2-code/logo_NET.png) | [Windows 集成身份验证](msal-authentication-flows.md#integrated-windows-authentication) | [dotnet-iwa-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2) |  |
-| 桌面（控制台）   | ![.NET/C#（桌面）](media/sample-v2-code/logo_NETcore.png) | [用户名/密码](msal-authentication-flows.md#usernamepassword) |[dotnetcore-up-v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) |  |
-| 移动（Android、iOS、UWP）   | ![.NET/C# (Xamarin)](media/sample-v2-code/logo_xamarin.png) | [交互](msal-authentication-flows.md#interactive) |[xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) |  |
-| 移动 (iOS)       | ![iOS / Objective C 或 swift](media/sample-v2-code/logo_iOS.png) | [交互](msal-authentication-flows.md#interactive) |[ios-swift-native-v2](https://github.com/azure-samples/active-directory-ios-swift-native-v2) </p> [ios-native-nxoauth2-v2](https://github.com/azure-samples/active-directory-ios-native-nxoauth2-v2) |  |
-| 移动 (Android)   | ![Android / Java](media/sample-v2-code/logo_Android.png) | [交互](msal-authentication-flows.md#interactive) |  [android-native-v2](https://github.com/azure-samples/active-directory-android-native-v2 ) |  |
+| 桌面 (WPF)      | ![此图显示了 .NET/C# 徽标](media/sample-v2-code/logo_NET.png) | [授权代码](msal-authentication-flows.md#authorization-code)| [dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [dotnet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi) |
+| 桌面（控制台）   | ![此图显示了 .NET/C#（桌面）徽标](media/sample-v2-code/logo_NET.png) | [Windows 集成身份验证](msal-authentication-flows.md#integrated-windows-authentication) | [dotnet-iwa-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2) |  |
+| 桌面（控制台）   | ![此图显示了 Java 徽标](media/sample-v2-code/logo_java.png) | [Windows 集成身份验证](msal-authentication-flows.md#integrated-windows-authentication) |[ms-identity-java-desktop](https://github.com/Azure-Samples/ms-identity-java-desktop/) |  |
+| 桌面（控制台）   | ![此图显示了 .NET/C#（桌面）徽标](media/sample-v2-code/logo_NETcore.png) | [用户名/密码](msal-authentication-flows.md#usernamepassword) |[dotnetcore-up-v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) |  |
+| 使用 WAM 的桌面（控制台）  | ![此图显示了 .NET/C#（桌面）徽标](media/sample-v2-code/logo_NETcore.png) | 与 [Web 帐户管理器](/windows/uwp/security/web-account-manager) (WAM) 交互 |[dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) |  |
+| 桌面（控制台）   | ![此图显示了 Java 徽标](media/sample-v2-code/logo_java.png) | [用户名/密码](msal-authentication-flows.md#usernamepassword) |[ms-identity-java-desktop](https://github.com/Azure-Samples/ms-identity-java-desktop/) |  |
+| 桌面（控制台）   | ![此图显示了 Python 徽标](media/sample-v2-code/logo_python.png) | [用户名/密码](msal-authentication-flows.md#usernamepassword) |[ms-identity-python-desktop](https://github.com/Azure-Samples/ms-identity-python-desktop) |  |
+| 移动（Android、iOS、UWP）   | ![此图显示了 .NET/C# (Xamarin) 徽标](media/sample-v2-code/logo_xamarin.png) | [授权代码](msal-authentication-flows.md#authorization-code) |[xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) |  |
+| 移动 (iOS)       | ![此图显示了 iOS/Objective-C 或 Swift](media/sample-v2-code/logo_iOS.png) | [授权代码](msal-authentication-flows.md#authorization-code) |[ios-swift-objc-native-v2](https://github.com/azure-samples/active-directory-ios-swift-native-v2) </p> [ios-native-nxoauth2-v2](https://github.com/azure-samples/active-directory-ios-native-nxoauth2-v2) |  |
+| 桌面 (macOS)       | macOS | [授权代码](msal-authentication-flows.md#authorization-code) |[macOS-swift-objc-native-v2](https://github.com/Azure-Samples/ms-identity-macOS-swift-objc) |  |
+| 移动 (Android-Java)   | ![此图显示了 Android 徽标](media/sample-v2-code/logo_Android.png) | [授权代码](msal-authentication-flows.md#authorization-code) |  [android-Java](https://github.com/Azure-Samples/ms-identity-android-java) |  |
+| 移动 (Android-Kotlin)   | ![此图显示了 Android 徽标](media/sample-v2-code/logo_Android.png) | [授权代码](msal-authentication-flows.md#authorization-code) |  [android-Kotlin](https://github.com/Azure-Samples/ms-identity-android-kotlin) |  |
 
 ## <a name="daemon-applications"></a>守护程序应用程序
 
@@ -85,24 +88,43 @@ ms.locfileid: "65849939"
 
 | 客户端应用程序 | 平台 | 流/授权 | 调用 Microsoft Graph |
 | ------------------ | -------- | ---------- | -------------------- |
-| 控制台 | ![.NET Core](media/sample-v2-code/logo_NETcore.png)</p> ASP.NET  | [客户端凭据](msal-authentication-flows.md#client-credentials) | [dotnetcore-daemon-v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2) |
-| Web 应用 | ![ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET  | [客户端凭据](msal-authentication-flows.md#client-credentials) | [dotnet-daemon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2) |
+| 控制台 | ![此图显示了 .NET Core 徽标](media/sample-v2-code/logo_NETcore.png)</p> ASP.NET  | [客户端凭据](msal-authentication-flows.md#client-credentials) | [dotnetcore-daemon-v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2) |
+| Web 应用 | ![此图显示了 ASP.NET 徽标](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET  | [客户端凭据](msal-authentication-flows.md#client-credentials) | [dotnet-daemon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2) |
+| 控制台 | ![此图显示了 Java 徽标](media/sample-v2-code/logo_java.png) | [客户端凭据](msal-authentication-flows.md#client-credentials) | [ms-identity-java-daemon](https://github.com/Azure-Samples/ms-identity-java-daemon) |
+| 控制台 | ![此图显示了 Python 徽标](media/sample-v2-code/logo_python.png) | [客户端凭据](msal-authentication-flows.md#client-credentials) | [ms-identity-python-daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) |
 
 ## <a name="headless-applications"></a>无外设应用程序
 
-以下示例展示了在没有 Web 浏览器的设备上运行的公共客户端应用程序。 该应用可以是命令行工具，或者在 Linux/Mac 上运行，或者是 IoT 应用程序。 此示例提供了一个应用，以用户身份访问 Microsoft Graph API，该用户以交互方式在另一台设备上登录（例如移动电话）。 此客户端应用程序使用 MicroSoft 身份验证库 (MSAL)。
+以下示例展示了在没有 Web 浏览器的设备上运行的公共客户端应用程序。 该应用可以是命令行工具，可以是在 Linux 或 Mac 上运行的应用，还可以是 IoT 应用程序。 此示例提供了一个应用，以用户身份访问 Microsoft Graph API，该用户以交互方式在另一台设备上登录（例如移动电话）。 此客户端应用程序使用 Microsoft 身份验证库 (MSAL)。
 
 | 客户端应用程序 | 平台 | 流/授权 | 调用 Microsoft Graph |
 | ------------------ | -------- |  ----------| ---------- |
-| 桌面（控制台）   | ![.NET/C#（桌面）](media/sample-v2-code/logo_NETcore.png) | [设备代码流](msal-authentication-flows.md#device-code) |[dotnetcore-devicecodeflow-v2](https://github.com/azure-samples/active-directory-dotnetcore-devicecodeflow-v2) |
+| 桌面（控制台）   | ![此图显示了 .NET/C#（桌面）徽标](media/sample-v2-code/logo_NETcore.png) | [设备代码流](msal-authentication-flows.md#device-code) |[dotnetcore-devicecodeflow-v2](https://github.com/azure-samples/active-directory-dotnetcore-devicecodeflow-v2) |
+| 桌面（控制台）   | ![此图显示了 Java 徽标](media/sample-v2-code/logo_java.png) | [设备代码流](msal-authentication-flows.md#device-code) |[ms-identity-java-devicecodeflow](https://github.com/Azure-Samples/ms-identity-java-devicecodeflow) |
+| 桌面（控制台）   | ![此图显示了 Python 徽标](media/sample-v2-code/logo_python.png) | [设备代码流](msal-authentication-flows.md#device-code) |[ms-identity-python-devicecodeflow](https://github.com/Azure-Samples/ms-identity-python-devicecodeflow) |
 
 ## <a name="web-apis"></a>Web API
 
-以下示例展示了如何使用 Microsoft 标识平台终结点保护 Web API。 此 API 由 WPF 应用程序执行，但可以由任何应用程序调用。 Web API 还调用 Microsoft Graph。
+以下示例展示了如何使用 Microsoft 标识平台终结点保护 Web API，以及如何从 Web API 调用下游 API。
 
 | 平台 | 示例 |
 | -------- | ------------------- |
-| ![.NET/C#](media/sample-v2-code/logo_NET.png) | [dotnet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph) 的 WebAPI（服务） |
+| ![此图显示了 ASP.NET Core 徽标](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [dotnet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph) 的 ASP.NET Core Web API（服务）  |
+| ![此图显示了 ASP.NET 徽标](media/sample-v2-code/logo_NET.png)</p>ASP.NET MVC | [ms-identity-aspnet-webapi-onbehalfof](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof) 的 Web API（服务） |
+| ![此图显示了 Java 徽标](media/sample-v2-code/logo_java.png) | [ms-identity-java-webapi](https://github.com/Azure-Samples/ms-identity-java-webapi) 的 Web API（服务） |
+| ![此图显示了 Node.js 徽标](media/sample-v2-code/logo_nodejs.png) | [active-directory-javascript-nodejs-webapi-v2](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2) 的 Web API（服务） |
+| ![此图显示了 Node.js 徽标](media/sample-v2-code/logo_nodejs.png) | [active-directory-b2c-javascript-nodejs-webapi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) 的 B2C Web API（服务） |
+
+## <a name="azure-functions-as-web-apis"></a>Azure Functions 作为 Web API
+
+以下示例演示如何使用 HttpTrigger 保护 Azure Function 并通过 Microsoft 标识平台终结点公开 Web API，以及如何从 Web API 调用下游 API。
+
+| 平台 | 示例 |
+| -------- | ------------------- |
+| ![此图显示了 ASP.NET Core 徽标](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [dotnet-native-aspnetcore-v2](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions) 的 ASP.NET Core Web API（服务）Azure Function  |
+| ![此图显示了 Node.js 徽标](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | [NodeJS 和 passport-azure-ad](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions) 的 Web API（服务） |
+| ![此图显示了 Python 徽标](media/sample-v2-code/logo_python.png)</p>Python | [Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions) 的 Web API（服务） |
+| ![此图显示了 Node.js 徽标](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | [使用 on behalf of 的 NodeJS 和 passport-azure-ad](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions) 的 Web API（服务） |
 
 ## <a name="other-microsoft-graph-samples"></a>其他 Microsoft Graph 示例
 
@@ -110,6 +132,5 @@ ms.locfileid: "65849939"
 
 ## <a name="see-also"></a>另请参阅
 
-- [Azure Active Directory (v1.0) 开发人员指南](v1-overview.md)
-- [Azure AD 图形 API 概念和参考](https://msdn.microsoft.com/library/azure/hh974476.aspx)
-- [Azure AD 图形 API 帮助程序库](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)
+- [Azure Active Directory (v1.0) 开发人员指南](../azuread-dev/v1-overview.md)
+- [Microsoft Graph API 概念和参考](https://docs.microsoft.com/graph/use-the-api?context=graph%2Fapi%2Fbeta&view=graph-rest-beta)

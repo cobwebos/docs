@@ -1,6 +1,6 @@
 ---
-title: Azure AD 多长时间存储报告数据？ | Microsoft Docs
-description: 了解 Azure 存储各种类型的报告数据的多长时间。
+title: Azure AD 存储报告数据多长时间？ | Microsoft Docs
+description: 了解 Azure 存储各种报告数据的时间。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,18 +13,19 @@ ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41fa12c9d79d14a6602d995ed93b5d1a23be8a4d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 54636600c208f8f5df9fa2e25460c63dd9f46e85
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65781042"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80239548"
 ---
-# <a name="how-long-does-azure-ad-store-reporting-data"></a>Azure AD 多长时间存储报告数据？
+# <a name="how-long-does-azure-ad-store-reporting-data"></a>Azure AD 存储报告数据多长时间？
+
 
 本文介绍 Azure Active Directory 中不同活动报告的数据保留策略。 
 
@@ -33,7 +34,7 @@ ms.locfileid: "65781042"
 | Azure AD 版本 | 开始收集 |
 | :--              | :--   |
 | Azure AD Premium P1 <br /> Azure AD Premium P2 | 注册订阅时 |
-| Azure AD Free <br /> Azure AD Basic | 首次打开 [Azure Active Directory 边栏选项卡](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)或使用[报告 API](https://aka.ms/aadreports) 时  |
+| Azure AD Free| 首次打开 [Azure Active Directory 边栏选项卡](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)或使用[报告 API](https://aka.ms/aadreports) 时  |
 
 ---
 
@@ -58,7 +59,7 @@ ms.locfileid: "65781042"
 
 ### <a name="when-does-azure-ad-start-collecting-security-signal-data"></a>Azure AD 何时开始收集安全信号数据？  
 
-当用户选择使用**标识防护中心**时，收集安全信号的过程会开始。 
+对于安全信号，当你选择使用**Identity Protection Center**时，收集过程将开始。 
 
 ---
 
@@ -66,19 +67,19 @@ ms.locfileid: "65781042"
 
 **活动报告**    
 
-| 报表                 | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
-| :--                    | :--           | :--            | :--                 | :--                 |
-| 审核日志             | 7 天        |  7 天        | 30 天             | 30 天             |
-| 登录               | 不适用           |  不适用           | 30 天             | 30 天             |
-| Azure MFA 使用情况        | 30 天       |  30 天       | 30 天             | 30 天             |
+| 报表                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| :--                    | :--           | :--                 | :--                 |
+| 审核日志             | 7 天        | 30 天             | 30 天             |
+| 登录               | 7 天        | 30 天             | 30 天             |
+| Azure MFA 使用情况        | 30 天       | 30 天             | 30 天             |
 
 通过使用 Azure Monitor 将审核和登录活动数据路由到 Azure 存储帐户，可以使这些活动数据的保留时间长于上述默认保留期限。 有关详细信息，请参阅[将 Azure AD 日志存档到 Azure 存储帐户](quickstart-azure-monitor-route-logs-to-storage-account.md)。
 
 **安全信号**
 
-| 报表         | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
-| :--            | :--           | :--            | :--                 | :--                 |
-| 有风险的用户  | 7 天        | 7 天         | 30 天             | 90 天             |
-| 有风险的登录 | 7 天        | 7 天         |  30 天            | 90 天             |
+| 报表         | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| :--            | :--           | :--                 | :--                 |
+| 有风险的用户  | 7 天        | 30 天             | 90 天             |
+| 有风险的登录 | 7 天        | 30 天             | 90 天             |
 
 ---

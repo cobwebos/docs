@@ -1,23 +1,14 @@
 ---
 title: Azure Application Insights 遥测数据模型 - 事件遥测 | Microsoft Docs
 description: 适用于事件遥测的 Application Insights 数据模型
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 8e519e5a5e5fe6b893fa5663e1426630f46f885f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: bd8b2581f7642f6825aaf0d1b51c8e94d4333d33
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60900844"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77671874"
 ---
 # <a name="event-telemetry-application-insights-data-model"></a>事件遥测：Application Insights 数据模型
 

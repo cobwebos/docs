@@ -1,26 +1,26 @@
 ---
-title: 使用 Azure AD 应用程序代理登录本地应用程序时遇到问题 | Microsoft Docs
+title: 使用 Azure AD 应用代理登录到本地应用时出现问题 |Microsoft Docs
 description: 无法使用 Azure AD 应用程序代理登录与 Azure AD 集成的本地应用程序时所遇到的常见问题疑难解答
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0adc2effb27ffcd870ec543ee7b353a092808797
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 29aa4eb0bc40f0b2b960c49cf7b17dc62d92b0ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825255"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367710"
 ---
 # <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理登录本地应用程序时遇到问题
 
@@ -36,7 +36,7 @@ ms.locfileid: "65825255"
 
 ## <a name="im-having-a-connectivity-problem-my-application"></a>应用程序出现连接问题
   以下文档可帮助你解决一些此类最常见问题。
-  * [我不知道要为应用程序打开哪些端口](application-proxy-connectivity-ports-how-to.md)
+  * [我不知道要为应用程序打开哪些端口](application-proxy-add-on-premises-application.md)
   * [由于应用程序的连接器组中不存在有效的连接器，因此出现了问题](application-proxy-connectivity-no-working-connector.md)
 
 ## <a name="im-having-a-problem-configuring-the-azure-ad-application-proxy-in-the-admin-portal"></a>在管理门户中配置 AD 应用程序代理时遇到问题
@@ -56,7 +56,7 @@ ms.locfileid: "65825255"
 
 ## <a name="im-having-a-problem-with-the-application-proxy-agent-connector"></a>应用程序代理程序连接器出现问题
   以下文档可帮助你解决一些此类最常见问题。
-  * [我遇到了一些问题，安装应用程序代理程序连接器](application-proxy-connector-installation-problem.md)
+  * [安装应用程序代理程序连接器时出现问题](application-proxy-connector-installation-problem.md)
 
 ## <a name="next-steps"></a>后续步骤
 [如何提供对本地应用程序的安全远程访问](application-proxy.md)

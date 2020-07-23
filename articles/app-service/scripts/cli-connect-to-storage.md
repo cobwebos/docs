@@ -1,27 +1,20 @@
 ---
-title: Azure CLI 脚本示例 - 将应用连接到存储帐户 | Microsoft Docs
-description: Azure CLI 脚本示例 - 将应用连接到存储帐户
-services: appservice
-documentationcenter: appservice
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI：将应用连接到存储帐户
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 此示例演示如何将应用连接到存储帐户。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: bc8345b2-8487-40c6-a91f-77414e8688e6
-ms.service: app-service
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 57a1e9ad6bf377fa5148a4d5c716be00db786c84
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 92cb41552d246dd30a84ce7bc27573ab6dbb7dae
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136847"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80058087"
 ---
 # <a name="connect-an-app-service-app-to-a-storage-account-using-cli"></a>使用 CLI 将应用服务应用连接到存储帐户
 
@@ -44,7 +37,7 @@ ms.locfileid: "66136847"
 
 此脚本使用以下命令创建资源组、应用服务应用、存储帐户和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 创建应用服务计划。 |

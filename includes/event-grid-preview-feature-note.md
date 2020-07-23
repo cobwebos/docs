@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 85a1579e32b4c216f234f77c76316bedeaea77b0
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: d32beb2d799a60cb9c5be061c39e4ec834da8dcf
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66119545"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "66814715"
 ---
 此功能为预览版。 若要使用它，必须安装预览扩展或模块。
 
@@ -28,11 +28,9 @@ ms.locfileid: "66119545"
 
 对于本地安装：
 
-1. 在本地卸载 Azure CLI。
-1. 安装[最新版本](/cli/azure/install-azure-cli)的 Azure CLI。
-1. 启动命令窗口。
+1. [安装 Azure CLI](/cli/azure/install-azure-cli)。 请通过使用 `az --version` 进行检查来确保安装了最新版本。
 1. 卸载早期版本的扩展 `az extension remove -n eventgrid`
-1. 安装扩展 `az extension add -n eventgrid`
+1. 通过 `az extension add -n eventgrid` 安装 `eventgrid` 扩展
 
 ### <a name="install-module-for-powershell"></a>安装适用于 PowerShell 的模块
 
@@ -49,8 +47,8 @@ ms.locfileid: "66119545"
 
 如果 `-AllowPrerelease` 参数不可用，请使用以下步骤：
 
-1. 运行 `Install-Module PowerShellGet -Force`
-1. 运行 `Update-Module PowerShellGet`
+1. `Install-Module PowerShellGet -Force`运行
+1. `Update-Module PowerShellGet`运行
 1. 关闭 PowerShell 控制台
 1. 以管理员身份重启 PowerShell
 1. 安装模块 `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`

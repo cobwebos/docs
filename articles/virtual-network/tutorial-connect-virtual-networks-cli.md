@@ -1,28 +1,25 @@
 ---
-title: 使用虚拟网络对等互连连接虚拟网络 - Azure CLI | Microsoft Docs
+title: 使用 VNet 对等互连连接虚拟网络 - Azure CLI
 description: 在本文中，你将学习如何使用 Azure CLI 通过虚拟网络对等互连来连接虚拟网络。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
 tags: azure-resource-manager
 Customer intent: I want to connect two virtual networks so that virtual machines in one virtual network can communicate with virtual machines in the other virtual network.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: f8ffd321d6f49b3d31c2e0119e14538409812680
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: b8c226d083c75d50639e7036de938626ca81a5ee
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64713075"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84703441"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>通过 Azure CLI 使用虚拟网络对等互连连接虚拟网络
 
@@ -37,7 +34,7 @@ ms.locfileid: "64713075"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.28 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.28 或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
 
 ## <a name="create-virtual-networks"></a>创建虚拟网络
 
@@ -95,22 +92,22 @@ az network vnet peering create \
   --name myVirtualNetwork1-myVirtualNetwork2 \
   --resource-group myResourceGroup \
   --vnet-name myVirtualNetwork1 \
-  --remote-vnet-id $vNet2Id \
+  --remote-vnet $vNet2Id \
   --allow-vnet-access
 ```
 
-在前一个命令执行后返回的输出中，可以看到 **peeringState** 为“已启动”。 对等互连将保持“已启动”状态，直到你创建从 *myVirtualNetwork2* 到 *myVirtualNetwork1* 的对等互连。 创建从 *myVirtualNetwork2* 到 *myVirtualNetwork1* 的对等互连。 
+在前一个命令执行后返回的输出中，可以看到 **peeringState** 为“已启动”  。 对等互连将保持 *Initiated* 状态，直到你创建从 *myVirtualNetwork2* 到 *myVirtualNetwork1* 的对等互连。 创建从 *myVirtualNetwork2* 到 *myVirtualNetwork1* 的对等互连。 
 
 ```azurecli-interactive
 az network vnet peering create \
   --name myVirtualNetwork2-myVirtualNetwork1 \
   --resource-group myResourceGroup \
   --vnet-name myVirtualNetwork2 \
-  --remote-vnet-id $vNet1Id \
+  --remote-vnet $vNet1Id \
   --allow-vnet-access
 ```
 
-在前一个命令执行后返回的输出中，可以看到 **peeringState** 为“已连接”。 Azure 还将 *myVirtualNetwork1-myVirtualNetwork2* 对等互连的对等互连状态更改为“已连接”。 使用 [az network vnet peering show](/cli/azure/network/vnet/peering) 确认 *myVirtualNetwork1-myVirtualNetwork2* 对等互连的对等互连状态是否已更改为“已连接”。
+在前一个命令执行后返回的输出中，可以看到 **peeringState** 为“已连接”  。 Azure 还将 *myVirtualNetwork1-myVirtualNetwork2* 对等互连的对等互连状态更改为 *Connected*。 使用 [az network vnet peering show](/cli/azure/network/vnet/peering) 确认 *myVirtualNetwork1-myVirtualNetwork2* 对等互连的对等互连状态是否已更改为“已连接”。
 
 ```azurecli-interactive
 az network vnet peering show \
@@ -120,7 +117,7 @@ az network vnet peering show \
   --query peeringState
 ```
 
-在两个虚拟网络中的对等互连的 **peeringState** 为“已连接”之前，在一个虚拟网络中的资源无法与另一个虚拟网络中的资源通信。 
+在两个虚拟网络中的对等互连的 **peeringState** 为“已连接”  之前，在一个虚拟网络中的资源无法与另一个虚拟网络中的资源通信。 
 
 ## <a name="create-virtual-machines"></a>创建虚拟机
 
@@ -145,7 +142,7 @@ az vm create \
 
 在 *myVirtualNetwork2* 虚拟网络中创建 VM。
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
   --name myVm2 \
@@ -157,7 +154,7 @@ az vm create \
 
 创建 VM 需要几分钟时间。 创建 VM 之后，Azure CLI 将显示类似于以下示例的信息： 
 
-```azurecli 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVm2",
@@ -170,19 +167,19 @@ az vm create \
 }
 ```
 
-记下 publicIpAddress。 在后面的步骤中会使用此地址通过 Internet 访问 VM。
+记下 publicIpAddress。  在后面的步骤中会使用此地址通过 Internet 访问 VM。
 
 ## <a name="communicate-between-vms"></a>VM 之间进行通信
 
 使用以下命令来与 *myVm2* VM 建立 SSH 会话。 将 `<publicIpAddress>` 替换为 VM 的公共 IP 地址。 在前一示例中，公共 IP 地址为 *13.90.242.231*。
 
-```bash 
+```bash
 ssh <publicIpAddress>
 ```
 
 对 *myVirtualNetwork1* 中的 VM 执行 Ping 操作。
 
-```bash 
+```bash
 ping 10.0.0.4 -c 4
 ```
 
@@ -194,12 +191,12 @@ ping 10.0.0.4 -c 4
 
 如果不再需要资源组及其包含的所有资源，可以使用 [az group delete](/cli/azure/group) 将其删除。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup --yes
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你已学习了如何使用虚拟网络对等互连来连接同一 Azure 区域中的两个网络。 还可以将不同[受支持的区域](virtual-network-manage-peering.md#cross-region)、[不同 Azure 订阅](create-peering-different-subscriptions.md#cli)中的虚拟网络对等互连，并且可以使用对等互连创建[中心辐射型网络设计](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering)。 若要详细了解虚拟网络对等互连，请参阅[虚拟网络对等互连概述](virtual-network-peering-overview.md)和[管理虚拟网络对等互连](virtual-network-manage-peering.md)。
+在本文中，你已学习了如何使用虚拟网络对等互连来连接同一 Azure 区域中的两个网络。 还可以将不同[受支持的区域](virtual-network-manage-peering.md#cross-region)、[不同 Azure 订阅](create-peering-different-subscriptions.md#cli)中的虚拟网络对等互连，并且可以使用对等互连创建[中心辐射型网络设计](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering)。 若要详细了解虚拟网络对等互连，请参阅[虚拟网络对等互连概述](virtual-network-peering-overview.md)和[管理虚拟网络对等互连](virtual-network-manage-peering.md)。
 
 可以通过 VPN [将自己的计算机连接到虚拟网络](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，并可与虚拟网络或对等虚拟网络中的资源进行交互。 有关用来完成虚拟网络文章中涉及的许多任务的可重用脚本，请参阅[脚本示例](cli-samples.md)。

@@ -1,27 +1,26 @@
 ---
-title: 教程 - 创建支持基于 URL 路径的重定向的应用程序网关 - Azure CLI
+title: 教程：使用 CLI 实现基于 URL 路径的重定向
+titleSuffix: Azure Application Gateway
 description: 本教程介绍如何通过 Azure CLI 使用基于 URL 路径的重定向流量创建应用程序网关。
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: e0b7995a8234ddb5927c4ef3e1ddd31fab9a00b3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 87f6febaf89f82c2c81b397c94d744229b3f4b34
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996400"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80239494"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>教程：通过 Azure CLI 使用基于 URL 路径的重定向创建应用程序网关
 
-创建[应用程序网关](application-gateway-introduction.md)时可以使用 Azure CLI 配置[基于 URL 路径的路由规则](application-gateway-url-route-overview.md)。 在本教程中，使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)创建后端池。 然后创建 URL 路由规则，以确保 Web 流量重定向到相应的后端池。
+创建[应用程序网关](application-gateway-introduction.md)时可以使用 Azure CLI 配置[基于 URL 路径的路由规则](tutorial-url-route-cli.md)。 在本教程中，使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)创建后端池。 然后创建 URL 路由规则，以确保 Web 流量重定向到相应的后端池。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 设置网络
@@ -39,13 +38,13 @@ ms.locfileid: "57996400"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.4 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/azure/group) 创建资源组。
 
-以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组。
+以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组   。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -72,7 +71,9 @@ az network vnet subnet create \
 
 az network public-ip create \
   --resource-group myResourceGroupAG \
-  --name myAGPublicIPAddress
+  --name myAGPublicIPAddress \
+  --allocation-method Static \
+  --sku Standard
 ```
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
@@ -87,7 +88,7 @@ az network application-gateway create \
   --vnet-name myVNet \
   --subnet myAGsubnet \
   --capacity 2 \
-  --sku Standard_Medium \
+  --sku Standard_v2 \
   --http-settings-cookie-based-affinity Disabled \
   --frontend-port 80 \
   --http-settings-port 80 \
@@ -285,7 +286,7 @@ done
 
 若要获取应用程序网关的公共 IP 地址，请使用 [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show)。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如，`http://40.121.222.19`、`http://40.121.222.19:8080/images/test.htm`、`http://40.121.222.19:8080/video/test.htm` 或 `http://40.121.222.19:8081/images/test.htm`。
 
-```azurepowershell-interactive
+```azurecli-interactive
 az network public-ip show \
   --resource-group myResourceGroupAG \
   --name myAGPublicIPAddress \
@@ -310,7 +311,7 @@ az network public-ip show \
 当不再需要资源组、应用程序网关以及所有相关资源时，请将其删除。
 
 ```azurecli-interactive
-az group delete --name myResourceGroupAG --location eastus
+az group delete --name myResourceGroupAG
 ```
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,24 +1,13 @@
 ---
 title: Azure 服务总线消息序列化和时间戳 | Microsoft Docs
-description: 通过时间戳保持服务总线消息的序列和顺序
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+description: 本文介绍如何保留 Azure 服务总线消息的序列化和排序（使用时间戳）。
 ms.topic: article
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: 8665d0a1fccecf5521a553a894e2a55e52384ec3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: fdb18802e576ad114fd3f783d5efd7bb826a5f94
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60402711"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341174"
 ---
 # <a name="message-sequencing-and-timestamps"></a>消息序列化和时间戳
 

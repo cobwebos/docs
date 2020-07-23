@@ -1,41 +1,64 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Windows 虚拟桌面预览版文档
+### YamlMime:Landing
+title: Windows 虚拟桌面文档
+summary: 为任何设备提供虚拟桌面体验和远程应用。 将 Microsoft 365 和 Azure 结合在一起，以非凡的规模和更低的 IT 成本为用户提供唯一的多会话 Windows 10 体验。
 metadata:
-  title: Windows 虚拟桌面预览版文档 - 教程、快速入门和 API 参考 | Microsoft Docs
-  description: 适用于 Azure 的 Windows 虚拟桌面预览版是在云中虚拟化的多用户 Windows 10 企业版体验。
-  author: Heidilohr
-  manager: daveba
+  title: Windows 虚拟桌面文档
+  description: 适用于 Azure 的 Windows 虚拟桌面是已在云中虚拟化的多用户 Windows 10 企业版体验。
   ms.service: virtual-desktop
   services: virtual-desktop
   ms.topic: landing-page
-  ms.date: 02/20/2019
+  manager: lizross
+  author: Heidilohr
   ms.author: helohr
-abstract:
-  description: 为任何设备提供虚拟桌面体验和远程应用。 将 Microsoft 365 和 Azure 结合在一起，以非凡的规模和更低的 IT 成本为用户提供唯一的多会话 Windows 10 体验。
-sections:
-  - title: 概述
-    items:
-      - type: paragraph
-        text: 了解 Windows 虚拟桌面预览版及其使用方法。 教程、操作方法、参考内容等演示了如何设置主机池和租户并将角色分配给 Windows 虚拟桌面环境的用户。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/virtual-desktop/overview">什么是 Windows 虚拟桌面预览版？</a>
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何安装和配置 Windows 虚拟桌面，以及如何在准备好以后连接到客户端。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/virtual-desktop/tenant-setup-azure-active-directory">在 Windows 虚拟桌面中创建租户</a>
-          - html: <a href="/azure/virtual-desktop/create-host-pools-azure-marketplace">通过 Azure 市场创建主机池</a>
-          - html: <a href="/azure/virtual-desktop/manage-app-groups">管理 Windows 虚拟桌面的应用组</a>
-          - html: <a href="/azure/virtual-desktop/create-service-principal-role-powershell">使用 PowerShell 创建服务主体和角色分配</a>
-  - title: 引用
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell</a>
+  ms.date: 03/06/2020
+  ms.openlocfilehash: 596d115d02d246afc037bd6f453f2eec2f9ca2d1
+  ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 07/11/2020
+  ms.locfileid: "86259847"
+landingContent:
+- title: 关于 Windows 虚拟桌面
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Windows 虚拟桌面？
+      url: overview.md
+- title: Windows 虚拟桌面 2020 春季版入门
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 通过 Azure 市场创建主机池
+      url: create-host-pools-azure-marketplace.md
+    - text: 管理 Windows 虚拟桌面的应用组
+      url: manage-app-groups.md
+    - text: 创建主机池以验证服务更新
+      url: create-validation-host-pool.md
+    - text: 设置服务警报
+      url: set-up-service-alerts.md
+- title: Windows 虚拟桌面 2019 秋季版入门
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 在 Windows 虚拟桌面中创建租户
+      url: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
+    - text: 通过 Azure 市场创建主机池
+      url: create-host-pools-azure-marketplace.md
+    - text: 管理 Windows 虚拟桌面的应用组
+      url: manage-app-groups.md
+    - text: 使用 PowerShell 创建服务主体和角色分配
+      url: ./virtual-desktop-fall-2019/create-service-principal-role-powershell.md
+- title: 连接到 Windows 虚拟桌面
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Windows 桌面客户端
+      url: connect-windows-7-10.md
+    - text: Web 客户端
+      url: connect-web.md
+    - text: Android 客户端
+      url: connect-android.md
+    - text: macOS 客户端
+      url: connect-macos.md
+    - text: iOS 客户端
+      url: connect-ios.md

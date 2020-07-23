@@ -1,31 +1,31 @@
 ---
-title: 教程 - 使用 Azure 存储队列 - Azure 存储
-description: 有关如何使用 Azure 队列服务创建队列以及插入、获取和删除消息的教程。
-services: storage
+title: 教程 - 在 .NET 中使用 Azure 存储队列
+description: 有关如何使用 Azure 队列服务创建队列以及如何使用 .NET 代码插入、获取和删除消息的教程。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.reviewer: cbrooks
+ms.date: 06/09/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
-ms.date: 04/24/2019
-ms.openlocfilehash: 8d108e1683be03a79e87990b983f2eda3eadba90
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.reviewer: dineshm
+ms.openlocfilehash: 73bc21307ff0648b7e0aab7611e57f6fa60a806b
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797538"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809561"
 ---
-# <a name="tutorial-work-with-azure-storage-queues"></a>教程：使用 Azure 存储队列
+# <a name="tutorial-work-with-azure-storage-queues-in-net"></a>教程：在 .NET 中使用 Azure 存储队列
 
 Azure 队列存储实现基于云的队列以在分布式应用程序的组件之间实现通信。 每个队列维护一个可由发送方组件添加的、由接收方组件处理的消息列表。 使用队列时，应用程序可根据需求立即缩放。 本文介绍有关使用 Azure 存储队列的基本步骤。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 >
 > - 创建 Azure 存储帐户
-> - 创建应用程序
+> - 创建应用
+> - 添加 Azure 客户端库
 > - 支持异步代码的支持
 > - 创建队列
 > - 将消息插入队列
@@ -37,14 +37,14 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
 ## <a name="prerequisites"></a>先决条件
 
 - 获取跨平台 [Visual Studio Code](https://code.visualstudio.com/download) 编辑器的免费副本。
-- 下载并安装 [.NET Core SDK](https://dotnet.microsoft.com/download)。
+- 下载并安装 [.NET Core SDK](https://dotnet.microsoft.com/download) 3.1 版或更高版本。
 - 如果你没有最新的 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 
-首先创建 Azure 存储帐户。 有关创建存储帐户的分步指南，请参阅[创建存储帐户](../common/storage-quickstart-create-account.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json)快速入门。
+首先创建 Azure 存储帐户。 有关创建存储帐户的分步指南，请参阅[创建存储帐户](../common/storage-account-create.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json)快速入门。 这是在先决条件中创建免费的 Azure 帐户后执行的单独的步骤。
 
-## <a name="create-the-app"></a>创建应用程序
+## <a name="create-the-app"></a>创建应用
 
 创建名为 **QueueApp** 的 .NET Core 应用程序。 为方便起见，此应用将通过队列发送和接收消息。
 
@@ -64,7 +64,7 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
    dotnet build
    ```
 
-   应会看到如下所示的结果：
+   应看到结果类似于以下输出：
 
    ```output
    C:\Tutorials>dotnet new console -n QueueApp
@@ -72,7 +72,7 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
 
    Processing post-creation actions...
    Running 'dotnet restore' on QueueApp\QueueApp.csproj...
-     Restore completed in 155.62 ms for C:\Tutorials\QueueApp\QueueApp.csproj.
+     Restore completed in 155.63 ms for C:\Tutorials\QueueApp\QueueApp.csproj.
 
    Restore succeeded.
 
@@ -83,7 +83,7 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
    Copyright (C) Microsoft Corporation. All rights reserved.
 
      Restore completed in 40.87 ms for C:\Tutorials\QueueApp\QueueApp.csproj.
-     QueueApp -> C:\Tutorials\QueueApp\bin\Debug\netcoreapp2.1\QueueApp.dll
+     QueueApp -> C:\Tutorials\QueueApp\bin\Debug\netcoreapp3.1\QueueApp.dll
 
    Build succeeded.
        0 Warning(s)
@@ -94,77 +94,64 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
    C:\Tutorials\QueueApp>_
    ```
 
-## <a name="add-support-for-asynchronous-code"></a>支持异步代码的支持
+## <a name="add-the-azure-client-libraries"></a>添加 Azure 客户端库
 
-由于该应用使用云资源，因此代码将以异步方式运行。 但是，在 C# 7.1 推出之前，C# 中的 **async** 和 **await** 在 **Main** 方法中不是有效的关键字。 可以通过 **csproj** 文件中的一个标志轻松切换到该编译器。
+1. 使用 `dotnet add package` 命令将 Azure 存储客户端库添加到项目。
 
-1. 在项目目录中的命令行下，键入 `code .` 以在当前目录中打开 Visual Studio Code。 请将命令行窗口保持打开状态。 稍后需要执行更多的命令。 如果系统提示是否要添加用于生成和调试的 C# 资产，请单击“是”按钮。 
+   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-2. 在编辑器中打开 **QueueApp.csproj** 文件。
+   在控制台窗口中从项目文件夹执行以下命令。
 
-3. 将 `<LangVersion>7.1</LangVersion>` 添加到生成文件中的第一个 **PropertyGroup**。 请确保只添加 **LangVersion** 标记，因为你的 **TargetFramework** 可能有所不同，具体取决于安装的 .NET 版本。
-
-   ```xml
-   <Project Sdk="Microsoft.NET.Sdk">
-
-     <PropertyGroup>
-       <OutputType>Exe</OutputType>
-       <TargetFramework>netcoreapp2.1</TargetFramework>
-       <LangVersion>7.1</LangVersion>
-     </PropertyGroup>
-
-   ...
-
+   ```console
+   dotnet add package Azure.Storage.Queues
    ```
 
-4. 保存 **QueueApp.csproj** 文件。
+   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-5. 打开 **Program.cs** 源文件，并将 **Main** 方法更新为以异步方式运行。 将 **void** 替换为**异步任务**返回值。
+   在控制台窗口中从项目文件夹执行以下命令。
+
+   ```console
+   dotnet add package Microsoft.Azure.Storage.Common
+   ```
+
+   ```console
+   dotnet add package Microsoft.Azure.Storage.Queue
+   ```
+   ---
+
+### <a name="add-using-statements"></a>添加 using 语句
+
+1. 在项目目录中的命令行下，键入 `code .` 以在当前目录中打开 Visual Studio Code。 请将命令行窗口保持打开状态。 稍后需要执行更多的命令。 如果系统提示是否要添加用于生成和调试的 C# 资产，请单击“是”按钮。
+
+1. 打开 Program.cs 源文件，紧接在 `using System;` 语句的后面添加以下命名空间。 此应用将使用这些命名空间中的类型来连接 Azure 存储和使用队列。
+
+   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_UsingStatements":::
+
+   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_UsingStatements":::
+
+1. 保存 **Program.cs** 文件。
+
+## <a name="add-support-for-asynchronous-code"></a>支持异步代码的支持
+
+由于该应用使用云资源，因此代码将以异步方式运行。
+
+1. 更新 Main 方法以异步运行。 将 **void** 替换为**异步任务**返回值。
 
    ```csharp
    static async Task Main(string[] args)
    ```
 
-6. 保存 **Program.cs** 文件。
+1. 保存 **Program.cs** 文件。
 
 ## <a name="create-a-queue"></a>创建队列
 
-1. 使用 `dotnet add package` 命令将 Microsoft.Azure.Storage.Common 和 Microsoft.Azure.Storage.Queue 包安装到项目   。 在控制台窗口中从项目文件夹执行以下 dotnet 命令。
+在对 Azure API 进行任何调用之前，必须从 Azure 门户获取凭据。
 
-   ```console
-   dotnet add package Microsoft.Azure.Storage.Common
-   dotnet add package Microsoft.Azure.Storage.Queue
-   ```
-
-2. 在 **Program.cs** 文件的顶部，紧接在 `using System;` 语句的后面添加以下命名空间。 此应用将使用这些命名空间中的类型来连接 Azure 存储和使用队列。
-
-   ```csharp
-   using System.Threading.Tasks;
-   using Microsoft.Azure.Storage;
-   using Microsoft.Azure.Storage.Queue;
-   ```
-
-3. 保存 **Program.cs** 文件。
-
-### <a name="get-your-connection-string"></a>获取连接字符串
-
-客户端库使用连接字符串来建立连接。 Azure 门户中存储帐户的“设置”部分提供了该连接字符串。 
-
-1. 在 Web 浏览器中登录到 [Azure 门户](https://portal.azure.com/)。
-
-2. 导航到 Azure 门户中的存储帐户。
-
-3. 选择“访问密钥”。 
-
-4. 单击“连接字符串”字段右侧的“复制”按钮。  
-
-![连接字符串](media/storage-tutorial-queues/get-connection-string.png)
-
-连接字符串是按以下格式：
-
-   ```
-   "DefaultEndpointsProtocol=https;AccountName=<your storage account name>;AccountKey=<your key>;EndpointSuffix=core.windows.net"
-   ```
+[!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
 ### <a name="add-the-connection-string-to-the-app"></a>将连接字符串添加到应用
 
@@ -172,264 +159,132 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
 
 1. 切回到 Visual Studio Code。
 
-2. 在 **Program** 类中，添加一个 `private const string connectionString =` 成员用于保存连接字符串。
+1. 在 Main 方法中，将 `Console.WriteLine("Hello World!");` 代码替换为以下行，该行从环境变量中获取连接字符串。
 
-3. 在等号的后面，粘贴先前在 Azure 门户中复制的字符串值。 **connectionString** 值是与你的帐户相关的唯一值。
+   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-4. 从 **Main** 中删除“Hello World”代码。 代码应如下所示，但使用了唯一的连接字符串值。
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_DeclareConnectionString":::
 
-   ```csharp
-   namespace QueueApp
-   {
-       class Program
-       {
-           private const string connectionString = "DefaultEndpointsProtocol=https; ...";
+   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-           static async Task Main(string[] args)
-           {
-           }
-       }
-   }
-   ```
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_DeclareConnectionString":::
 
-5. 更新 **Main** 以创建 **CloudQueue** 对象，稍后要将它传入到 send 和 receive 方法。
+1. 将以下代码添加到 Main 以创建 queue 对象，稍后要将它传入到 send 和 receive 方法。
 
-   ```csharp
-        static async Task Main(string[] args)
-        {
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString);
-            CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-            CloudQueue queue = queueClient.GetQueueReference("mystoragequeue");
-        }
-   ```
+   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-6. 保存文件。
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_CreateQueueClient":::
+
+   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_CreateQueueClient":::
+
+1. 保存文件。
 
 ## <a name="insert-messages-into-the-queue"></a>将消息插入队列
 
-创建一个新方法用于将消息发送到队列。 将以下方法添加到 **Program** 类。 此方法获取队列引用，然后通过调用 [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync) 创建一个新队列（如果尚不存在）。 然后，它通过调用 [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync) 将消息添加到该队列。
+创建一个新方法用于将消息发送到队列。
 
-1. 将以下 **SendMessageAsync** 方法添加到 **Program** 类。
+1. 将以下 InsertMessageAsync 方法添加到 Program 类 。
 
-   ```csharp
-   static async Task SendMessageAsync(CloudQueue theQueue, string newMessage)
-   {
-       bool createdQueue = await theQueue.CreateIfNotExistsAsync();
+   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-       if (createdQueue)
-       {
-           Console.WriteLine("The queue was created.");
-       }
+   向此方法传递一个队列引用。 通过调用 [CreateIfNotExistsAsync](/dotnet/api/azure.storage.queues.queueclient.createifnotexistsasync) 创建新队列（如果尚不存在）。 然后，它通过调用 [SendMessageAsync](/dotnet/api/azure.storage.queues.queueclient.sendmessageasync)，将 newMessage 添加到队列中。
 
-       CloudQueueMessage message = new CloudQueueMessage(newMessage);
-       await theQueue.AddMessageAsync(message);
-   }
-   ```
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_InsertMessage":::
 
-2. 保存文件。
+   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+   向此方法传递一个队列引用。 通过调用 [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync) 创建新队列（如果尚不存在）。 然后，它通过调用 [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync)，将 newMessage 添加到队列中。
+
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_InsertMessage":::
+
+1. （可选）默认情况下，消息的最大生存时间默认设置为 7 天。 可以为消息生存时间指定任何正数。 下面的代码片段添加一个永不过期的消息。
+
+   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+    若要添加未过期的消息，请在对 SendMessageAsync 的调用中使用 `Timespan.FromSeconds(-1)`。
+
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Initial.cs" id="snippet_SendNonExpiringMessage":::
+
+   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+    若要添加未过期的消息，请在对 **AddMessageAsync** 的调用中使用 `Timespan.FromSeconds(-1)`。
+
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Initial.cs" id="snippet_SendNonExpiringMessage":::
+
+1. 保存文件。
+
+队列消息必须采用与使用 UTF-8 编码的 XML 请求兼容的格式。 消息的大小最大可为 64 KB。 如果消息包含二进制数据，则对消息进行 [Base64 编码](/dotnet/api/system.convert.tobase64string)。
 
 ## <a name="dequeue-messages"></a>取消消息的排队
 
-创建名为 **ReceiveMessageAsync** 的新方法。 此方法通过调用 [GetMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync) 从队列接收消息。 成功收到消息后，必须从队列中删除该消息，以免再次处理该消息。 收到消息后，请调用 [DeleteMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync) 从队列中删除该消息。
+创建一个新方法，用于从队列检索消息。 成功收到消息后，必须从队列中删除该消息，以免再次处理该消息。
 
-1. 将以下 **ReceiveMessageAsync** 方法添加到 **Program** 类。
+1. 将名为 RetrieveNextMessageAsync 的新方法添加到 Program 类中 。
 
-   ```csharp
-   static async Task<string> ReceiveMessageAsync(CloudQueue theQueue)
-   {
-       bool exists = await theQueue.ExistsAsync();
+   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-       if (exists)
-       {
-           CloudQueueMessage retrievedMessage = await theQueue.GetMessageAsync();
+   此方法通过调用 [ReceiveMessagesAsync](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync) 接收来自队列的消息，在第一个参数中传递 1，仅检索队列中的下一条消息。 收到消息后，请调用 [DeleteMessageAsync](/dotnet/api/azure.storage.queues.queueclient.deletemessageasync) 从队列中删除该消息。
 
-           if (retrievedMessage != null)
-           {
-               string theMessage = retrievedMessage.AsString;
-               await theQueue.DeleteMessageAsync(retrievedMessage);
-               return theMessage;
-           }
-       }
-   }
-   ```
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Initial.cs" id="snippet_InitialRetrieveMessage":::
 
-2. 保存文件。
+   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+   此方法通过调用 [GetMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync) 从队列接收消息。 收到消息后，请调用 [DeleteMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync) 从队列中删除该消息。
+
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Initial.cs" id="snippet_InitialRetrieveMessage":::
+
+1. 保存文件。
 
 ## <a name="delete-an-empty-queue"></a>删除空队列
 
 在项目结束时，最好是确定是否仍然需要所创建的资源。 持续运行资源可能会产生费用。 如果存在空队列，请询问用户是否要删除该队列。
 
-1. 扩展 **ReceiveMessageAsync** 方法以包含有关是否删除空队列的提示。
+1. 扩展 RetrieveNextMessageAsync 方法以包含有关是否删除空队列的提示。
 
-   ```csharp
-   static async Task<string> ReceiveMessageAsync(CloudQueue theQueue)
-   {
-       bool exists = await theQueue.ExistsAsync();
+   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-       if (exists)
-       {
-           CloudQueueMessage retrievedMessage = await theQueue.GetMessageAsync();
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_RetrieveMessage":::
 
-           if (retrievedMessage != null)
-           {
-               string theMessage = retrievedMessage.AsString;
-               await theQueue.DeleteMessageAsync(retrievedMessage);
-               return theMessage;
-           }
-           else
-           {
-               Console.Write("The queue is empty. Attempt to delete it? (Y/N) ");
-               string response = Console.ReadLine();
+   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-               if (response == "Y" || response == "y")
-               {
-                   await theQueue.DeleteIfExistsAsync();
-                   return "The queue was deleted.";
-               }
-               else
-               {
-                   return "The queue was not deleted.";
-               }
-           }
-       }
-       else
-       {
-           return "The queue does not exist. Add a message to the command line to create the queue and store the message.";
-       }
-   }
-   ```
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_RetrieveMessage":::
 
-2. 保存文件。
+1. 保存文件。
 
 ## <a name="check-for-command-line-arguments"></a>检查命令行参数
 
-如果在应用中传入了任何命令行参数，系统会假设这些参数是要添加到队列的消息。 将参数联接到一起以构成一个字符串。 调用前面添加的 **SendMessageAsync** 方法，将此字符串添加到消息队列。
+如果在应用中传入了任何命令行参数，系统会假设这些参数是要添加到队列的消息。 将参数联接到一起以构成一个字符串。 调用前面添加的 InsertMessageAsync 方法，将此字符串添加到消息队列。
 
-如果没有任何命令行参数，请执行检索操作。 调用 **ReceiveMessageAsync** 方法检索队列中的第一个消息。
+如果没有任何命令行参数，请尝试检索操作。 调用 RetrieveNextMessageAsync 方法检索队列中的下一条消息。
 
 最后，等待用户输入，然后调用 **Console.ReadLine** 退出。
 
 1. 扩展 **Main** 方法以检查命令行参数并等待用户输入。
 
-   ```csharp
-        static async Task Main(string[] args)
-        {
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString);
-            CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-            CloudQueue queue = queueClient.GetQueueReference("mystoragequeue");
+   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-            if (args.Length > 0)
-            {
-                string value = String.Join(" ", args);
-                await SendMessageAsync(queue, value);
-                Console.WriteLine($"Sent: {value}");
-            }
-            else
-            {
-                string value = await ReceiveMessageAsync(queue);
-                Console.WriteLine($"Received: {value}");
-            }
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_Main":::
 
-            Console.Write("Press Enter...");
-            Console.ReadLine();
-        }
-   ```
+   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-2. 保存文件。
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_Main":::
+
+1. 保存文件。
 
 ## <a name="complete-code"></a>完整代码
 
 下面是此项目的完整代码列表。
 
-   ```csharp
-   using System;
-   using System.Threading.Tasks;
-   using Microsoft.Azure.Storage;
-   using Microsoft.Azure.Storage.Queue;
+   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-   namespace QueueApp
-   {
-    class Program
-    {
-        // The string value is broken up for better onscreen formatting
-        private const string connectionString = "DefaultEndpointsProtocol=https;" +
-                                                "AccountName=<your storage account name>;" +
-                                                "AccountKey=<your key>;" +
-                                                "EndpointSuffix=core.windows.net";
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_AllCode":::
 
-        static async Task Main(string[] args)
-        {
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString);
-            CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-            CloudQueue queue = queueClient.GetQueueReference("mystoragequeue");
+   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-            if (args.Length > 0)
-            {
-                string value = String.Join(" ", args);
-                await SendMessageAsync(queue, value);
-                Console.WriteLine($"Sent: {value}");
-            }
-            else
-            {
-                string value = await ReceiveMessageAsync(queue);
-                Console.WriteLine($"Received {value}");
-            }
-
-            Console.Write("Press Enter...");
-            Console.ReadLine();
-        }
-
-        static async Task SendMessageAsync(CloudQueue theQueue, string newMessage)
-        {
-            bool createdQueue = await theQueue.CreateIfNotExistsAsync();
-
-            if (createdQueue)
-            {
-                Console.WriteLine("The queue was created.");
-            }
-
-            CloudQueueMessage message = new CloudQueueMessage(newMessage);
-            await theQueue.AddMessageAsync(message);
-        }
-
-        static async Task<string> ReceiveMessageAsync(CloudQueue theQueue)
-        {
-            bool exists = await theQueue.ExistsAsync();
-
-            if (exists)
-            {
-                CloudQueueMessage retrievedMessage = await theQueue.GetMessageAsync();
-
-                if (retrievedMessage != null)
-                {
-                    string theMessage = retrievedMessage.AsString;
-                    await theQueue.DeleteMessageAsync(retrievedMessage);
-                    return theMessage;
-                }
-                else
-                {
-                    Console.Write("The queue is empty. Attempt to delete it? (Y/N) ");
-                    string response = Console.ReadLine();
-
-                    if (response == "Y" || response == "y")
-                    {
-                        await theQueue.DeleteIfExistsAsync();
-                        return "The queue was deleted.";
-                    }
-                    else
-                    {
-                        return "The queue was not deleted.";
-                    }
-                }
-            }
-            else
-            {
-                return "The queue does not exist. Add a message to the command line to create the queue and store the message.";
-            }
-        }
-    }
-   }
-   ```
+   :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_AllCode":::
+   ---
 
 ## <a name="build-and-run-the-app"></a>生成并运行应用
 
@@ -439,13 +294,13 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
    dotnet build
    ```
 
-2. 项目成功生成后，运行以下命令将第一个消息添加到队列。
+1. 项目成功生成后，运行以下命令将第一个消息添加到队列。
 
    ```console
    dotnet run First queue message
    ```
 
-应该会看到以下输出：
+   应该会看到以下输出：
 
    ```output
    C:\Tutorials\QueueApp>dotnet run First queue message
@@ -454,13 +309,13 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
    Press Enter..._
    ```
 
-3. 不结合任何命令行参数运行该应用可以接收和删除队列中的第一个消息。
+1. 不结合任何命令行参数运行该应用可以接收和删除队列中的第一个消息。
 
    ```console
    dotnet run
    ```
 
-4. 继续运行应用，直到已删除所有消息。 如果多次运行该应用，将会收到一条指出队列为空的消息，以及一条有关是否要删除该队列的提示。
+1. 继续运行应用，直到已删除所有消息。 如果多次运行该应用，将会收到一条指出队列为空的消息，以及一条有关是否要删除该队列的提示。
 
    ```output
    C:\Tutorials\QueueApp>dotnet run First queue message
@@ -498,13 +353,18 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 1. 创建队列
-2. 在队列中添加和删除消息
-3. 删除 Azure 存储队列
+1. 在队列中添加和删除消息
+1. 删除 Azure 存储队列
 
 查看 Azure 队列快速入门了解详细信息。
 
 > [!div class="nextstepaction"]
-> [队列快速入门](storage-quickstart-queues-portal.md)
+> [适用于门户的队列快速入门](storage-quickstart-queues-portal.md)
+
+- [适用于 .NET 的队列快速入门](storage-quickstart-queues-dotnet.md)
+- [适用于 Java 的队列快速入门](storage-quickstart-queues-java.md)
+- [适用于 Python 的队列快速入门](storage-quickstart-queues-python.md)
+- [适用于 JavaScript 的队列快速入门](storage-quickstart-queues-nodejs.md)

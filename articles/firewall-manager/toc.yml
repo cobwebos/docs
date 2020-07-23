@@ -1,0 +1,78 @@
+- name: Azure 防火墙管理器文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是 Azure 防火墙管理器？
+      href: overview.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 保护虚拟中心 - ARM 模板
+      displayName: Resource Manager
+      href: quick-secure-virtual-hub.md
+- name: 教程
+  items:
+    - name: 保护虚拟中心 - 门户
+      href: secure-cloud-network.md
+    - name: 保护中心虚拟网络 - 门户
+      href: secure-hybrid-network.md
+- name: 概念
+  items:
+    - name: 策略概述
+      href: policy-overview.md
+    - name: 什么是安全虚拟中心？
+      href: secured-virtual-hub.md
+    - name: 常规部署过程
+      href: deployment-overview.md
+    - name: 安全合作伙伴提供程序
+      href: trusted-security-partners.md
+    - name: IP 组
+      href: ip-groups.md
+    - name: 规则处理逻辑
+      href: rule-processing.md
+    - name: 体系结构选项
+      href: vhubs-and-vnets.md
+    - name: 威胁情报设置
+      href: threat-intelligence-settings.md
+    - name: 网络规则中的 FQDN
+      href: fqdn-filtering-network-rules.md
+- name: 操作指南
+  items:
+    - name: 部署安全合作伙伴提供程序
+      href: deploy-trusted-security-partner.md
+    - name: 迁移到防火墙策略 - PowerShell
+      href: migrate-to-policy.md
+    - name: DNS 设置
+      href: dns-settings.md
+    - name: 部署多个公共 IP
+      href: multiple-public-ip-powershell.md
+- name: 参考
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/azure-firewall/network/firewall/policy
+    - name: Azure PowerShell
+      href: /powershell/module/az.network/new-azfirewallpolicy
+    - name: .NET
+      href: /dotnet/api
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/virtualnetwork/firewallpolicies
+    - name: Azure 资源管理器
+      href: ../azure-resource-manager/management/overview.md
+- name: 资源
+  items:
+    - name: 创作模板
+      href: ../azure-resource-manager/templates/template-syntax.md
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 社区模板
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/azure-firewall/'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/regions/services/'

@@ -3,23 +3,23 @@ title: Azure 诊断日志 | Microsoft Docs
 description: 客户可为 Azure CDN 启用日志分析。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 06/06/2018
-ms.author: magattus
-ms.openlocfilehash: a5fab3e2bf9908fa35cf5f5485df3116b7718d8c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 2c432b28250dca382f69a992de73d633b5ea45b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66125808"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84883989"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 诊断日志
 
@@ -35,7 +35,7 @@ ms.locfileid: "66125808"
 
 - 将数据导出到 Blob 存储、导出为CSV，并在 Excel 中生成图形。
 - 将数据导出到事件中心，并关联到其他 Azure 服务的数据。
-- 将数据导出到 Azure Monitor 日志并在自己的 Log Analytics 工作区中查看数据
+- 将数据导出到 Azure Monitor 日志，并在自己的 Log Analytics 工作区中查看数据
 
 下图显示了一个典型的 CDN 核心分析数据视图。
 
@@ -53,15 +53,15 @@ ms.locfileid: "66125808"
 
 登录到 [Azure 门户](https://portal.azure.com)。 如果还没有为工作流启用 CDN，请在继续操作之前[创建 Azure CDN 配置文件和终结点](cdn-create-new-endpoint.md)。
 
-1. 在 Azure 门户中，导航到“CDN 配置文件”。
+1. 在 Azure 门户中，导航到“CDN 配置文件”。****
 
 2. 在 Azure 门户中，搜索一个 CDN 配置文件或者从仪表板中选择一个。 然后，选择要为其启用诊断日志的 CDN 终结点。
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/02_Browse-to-Diagnostics-logs.png)
 
-3. 在“监视”部分中选择“诊断日志”。
+3. 在“监视”部分中选择“诊断日志”。****
 
-   此时将显示“诊断日志”页。
+   此时将显示“诊断日志”**** 页。
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/03_Diagnostics-logs-options.png)
 
@@ -69,73 +69,73 @@ ms.locfileid: "66125808"
 
 若要使用存储帐户来存储日志，请执行以下步骤：
     
-1. 对于“名称”，输入你的诊断日志设置的名称。
+1. 对于“名称”****，输入你的诊断日志设置的名称。
  
-2. 选择“存档到存储帐户”，然后选择“CoreAnalytics”。 
+2. 选择“存档到存储帐户”****，然后选择“CoreAnalytics”****。 
 
-2. 对于“保留期(天数)”，请选择保留天数。 如果保留期为 0 天，则会无限期存储日志。 
+2. 对于“保留期(天数)”****，请选择保留天数。 如果保留期为 0 天，则会无限期存储日志。 
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/04_Diagnostics-logs-storage.png) 
 
-3. 选择“存储帐户”。
+3. 选择 "**存储帐户**"。
 
-    此时将显示“选择存储帐户”页面。
+    此时将显示“选择存储帐户”页面。****
 
-4. 从下拉列表中选择一个存储帐户，然后选择“确定”。
+4. 从下拉列表中选择一个存储帐户，然后选择“确定”。****
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/cdn-select-storage-account.png)
 
-5. 完成诊断日志设置后，选择“保存”。
+5. 完成诊断日志设置后，选择“保存”。****
 
-### <a name="logging-with-azure-monitor"></a>使用 Azure Monitor 的日志记录
+### <a name="logging-with-azure-monitor"></a>使用 Azure Monitor 进行日志记录
 
 若要使用 Azure Monitor 来存储日志，请执行以下步骤：
 
-1. 从“诊断日志”页面中，选择“发送到 Log Analytics”。 
+1. 从“诊断日志”页面中，选择“发送到 Log Analytics”********。 
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/05_Ready-to-Configure.png)    
 
-2. 选择**配置**若要配置 Azure Monitor 日志记录。 
+2. 选择 "**配置**" 以配置 Azure Monitor 日志记录。 
 
-   此时将显示“Log Analytics 工作区”页。
+   此时将显示“Log Analytics 工作区”**** 页。
 
     >[!NOTE] 
     >OMS 工作区现在称为 Log Analytics 工作区。
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/06_Choose-workspace.png)
 
-3. 选择“新建工作区”。
+3. 选择“新建工作区”****。
 
-    此时将显示“Log Analytics 工作区”页。
+    此时将显示“Log Analytics 工作区”**** 页。
 
     >[!NOTE] 
     >OMS 工作区现在称为 Log Analytics 工作区。
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/07_Create-new.png)
 
-4. 对于 Log Analytics 工作区，输入 Log Analytics 工作区名称。 Log Analytics 工作区名称必须唯一，只能包含字母、数字和连字符；不允许空格和下划线。 
+4. 对于 Log Analytics 工作区****，输入 Log Analytics 工作区名称。 Log Analytics 工作区名称必须唯一，只能包含字母、数字和连字符；不允许空格和下划线。 
 
-5. 对于“订阅”，从下拉列表中选择一个现有的订阅。 
+5. 对于“订阅”，从下拉列表中选择一个现有的订阅。**** 
 
 6. 对于“资源组”，创建一个新资源组或选择现有的资源组。
 
-7. 对于“位置”，从下拉列表中选择一个位置。
+7. 对于“位置”****，从下拉列表中选择一个位置。
 
-8. 如果希望将日志配置保存到仪表板，请选择“固定到仪表板”。 
+8. 如果希望将日志配置保存到仪表板，请选择“固定到仪表板”****。 
 
-9. 选择“确定”以完成配置。
+9. 选择“确定”以完成配置。****
 
-10. 创建工作区后，会返回到“诊断日志”页面。 确认新 Log Analytics 工作区的名称。
+10. 创建工作区后，会返回到“诊断日志”页面。**** 确认新 Log Analytics 工作区的名称。
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/09_Return-to-logging.png)
 
-11. 选择“CoreAnalytics”，然后选择“保存”。
+11. 选择“CoreAnalytics”****，然后选择“保存”****。
 
-12. 若要查看新的 Log Analytics 工作区，请从 CDN 终结点页选择“核心分析”。
+12. 若要查看新的 Log Analytics 工作区，请从 CDN 终结点页选择“核心分析”。****
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/cdn-core-analytics-page.png) 
 
-    Log Analytics 工作区现在已经可以用来记录数据日志。 若要使用该数据，必须使用[Azure Monitor 日志解决方案](#consuming-diagnostics-logs-from-a-log-analytics-workspace)后面这篇文章所述。
+    Log Analytics 工作区现在已经可以用来记录数据日志。 若要使用这些数据，您必须使用[Azure Monitor 日志解决方案](#consuming-diagnostics-logs-from-a-log-analytics-workspace)，本文稍后将对此进行介绍。
 
 有关日志数据延迟的详细信息，请参阅[日志数据延迟](#log-data-delays)。
 
@@ -172,9 +172,9 @@ ms.locfileid: "66125808"
 ### <a name="using-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 存储资源管理器
 首先需要一款可访问存储帐户内容的工具，才可从 Azure 存储帐户访问核心分析数据。 市场上有多种可用的工具，但推荐使用 Microsoft Azure 存储资源管理器。 若要下载该工具，请参阅 [Azure 存储资源管理器](https://storageexplorer.com/)。 下载并安装软件后，请将其配置为使用已配置为 CDN 诊断日志目标的同一 Azure 存储帐户。
 
-1.  打开 Microsoft Azure 存储资源管理器
+1.  打开**Microsoft Azure 存储资源管理器**
 2.  找到存储帐户
-3.  展开该存储帐户下的“Blob 容器”节点。
+3.  展开该存储帐户下的“Blob 容器”节点。****
 4.  选择名为 *insights-logs-coreanalytics* 的容器。
 5.  结果显示在右窗格中，从第一级开始，类似于 *resourceId=*。 继续选择每个级别，直至找到 *PT1H.json* 文件。 有关路径的说明，请参阅 [Blob 路径格式](cdn-azure-diagnostic-logs.md#blob-path-format)。
 6.  每个 Blob *PT1H.json* 文件表示特定 CDN 终结点或其自定义域一小时内的分析日志。
@@ -187,17 +187,17 @@ ms.locfileid: "66125808"
 
 ```resourceId=/SUBSCRIPTIONS/{Subscription Id}/RESOURCEGROUPS/{Resource Group Name}/PROVIDERS/MICROSOFT.CDN/PROFILES/{Profile Name}/ENDPOINTS/{Endpoint Name}/ y={Year}/m={Month}/d={Day}/h={Hour}/m={Minutes}/PT1H.json```
 
-字段说明：
+字段说明：****
 
-|值|描述|
+|“值”|描述|
 |-------|---------|
 |订阅 ID    |Azure 订阅的 ID，采用 GUID 格式。|
 |资源组名称 |CDN 资源所属资源组的名称。|
 |配置文件名称 |CDN 配置文件的名称|
 |终结点名称 |CDN 终结点的名称|
-|年龄|  年份的四位数表示形式，例如 2017|
-|月份| 月份的两位数表示形式。 01 = 1 月...12 = 12 月|
-|日期|   月份中日的两位数表示形式|
+|年|  年份的四位数表示形式，例如 2017|
+|月份| 月份的两位数表示形式。 01 = 一月 .。。12 = 12 月|
+|天|   月份中日的两位数表示形式|
 |PT1H.json| 实际存储分析数据的 JSON 文件|
 
 ### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>将核心分析数据导出到 CSV 文件
@@ -206,16 +206,16 @@ ms.locfileid: "66125808"
 
 该工具的使用方式如下：
 
-1.  请访问 GitHub 链接： [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
+1.  访问 GitHub 链接：[https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
 2.  下载代码。
 3.  遵照说明进行编译和配置。
-4.  运行工具。
+4.  运行该工具。
 5.  生成的 CSV 文件以简单的平面层次结构显示分析数据。
 
 ## <a name="consuming-diagnostics-logs-from-a-log-analytics-workspace"></a>从 Log Analytics 工作区使用诊断日志
-Azure Monitor 是一项 Azure 服务，用于监视你的云并在本地环境，以保持其可用性和性能。 它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。 
+Azure Monitor 是一项 Azure 服务，用于监视云和本地环境，使其保持其可用性和性能。 它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。 
 
-若要使用 Azure Monitor，您必须[启用日志记录](#enable-logging-with-azure-storage)到 Azure Log Analytics 工作区中，对其进行讨论本文前面部分中。
+若要使用 Azure Monitor，你必须对 Azure Log Analytics 工作区[启用日志记录](#enable-logging-with-azure-storage)，本文前面将对此进行讨论。
 
 ### <a name="using-the-log-analytics-workspace"></a>使用 Log Analytics 工作区
 
@@ -223,24 +223,24 @@ Azure Monitor 是一项 Azure 服务，用于监视你的云并在本地环境�
 
 ![Log Analytics 工作区](./media/cdn-diagnostics-log/12_Repo-overview.png)
 
-图 3 - Log Analytics 存储库
+图 3 - Log Analytics 存储库**
 
 使用管理解决方案可通过各种方式显示数据。 可从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions)获取管理解决方案。
 
-你可以从 Azure marketplace 安装监视解决方案，通过选择**立即获取**每个解决方案底部的链接。
+可以通过选择每个解决方案底部的 "**立即获取**" 链接从 Azure marketplace 安装监视解决方案。
 
-### <a name="add-an-azure-monitor-cdn-monitoring-solution"></a>添加 Azure 监视器 CDN 监视解决方案
+### <a name="add-an-azure-monitor-cdn-monitoring-solution"></a>添加 Azure Monitor CDN 监视解决方案
 
-请执行以下步骤添加 Azure 监视器监视解决方案：
+按照以下步骤添加 Azure Monitor 监视解决方案：
 
 1.   使用你的 Azure 订阅登录到 Azure 门户并转到你的仪表板。
     ![Azure 仪表板](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
 
-2. 在“新建”页面中，在“市场”下，选择“监视 + 管理”。
+2. 在“新建”页面中，在“市场”下，选择“监视 + 管理”。************
 
     ![市场](./media/cdn-diagnostics-log/14_Marketplace.png)
 
-3. 在“监视 + 管理”页面中，选择“查看全部”。
+3. 在“监视 + 管理”页面中，选择“查看全部”。********
 
     ![查看全部](./media/cdn-diagnostics-log/15_See-all.png)
 
@@ -248,11 +248,11 @@ Azure Monitor 是一项 Azure 服务，用于监视你的云并在本地环境�
 
     ![查看全部](./media/cdn-diagnostics-log/16_Search-for.png)
 
-5. 选择“Azure CDN 核心分析”。 
+5. 选择“Azure CDN 核心分析”****。 
 
     ![查看全部](./media/cdn-diagnostics-log/17_Core-analytics.png)
 
-6. 选择“创建”后，系统会要求创建一个新的 Log Analytics 工作区或使用现有的 Log Analytics 工作区。 
+6. 选择“创建”后，系统会要求创建一个新的 Log Analytics 工作区或使用现有的 Log Analytics 工作区****。 
 
     ![查看全部](./media/cdn-diagnostics-log/18_Adding-solution.png)
 
@@ -274,7 +274,7 @@ Azure Monitor 是一项 Azure 服务，用于监视你的云并在本地环境�
 
     选择你创建的 Log Analytics 工作区以转到你的工作区。 
 
-11. 选择“OMS 门户”磁贴来查看新解决方案。
+11. 选择“OMS 门户”磁贴来查看新解决方案****。
 
     ![查看全部](./media/cdn-diagnostics-log/23_workspace.png)
 
@@ -292,13 +292,13 @@ Azure Monitor 是一项 Azure 服务，用于监视你的云并在本地环境�
 
      ![查看全部](./media/cdn-diagnostics-log/26_Further-detail.png)
 
-### <a name="offers-and-pricing-tiers"></a>产品和定价层
+### <a name="offers-and-pricing-tiers"></a>套餐和定价层
 
-可在[此处](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)查看管理解决方案的产品/服务和定价层。
+可在[此处](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)查看管理解决方案的套餐和定价层。
 
 ### <a name="customizing-views"></a>自定义视图
 
-可使用“视图设计器”自定义数据视图。 若要开始设计，请转到 Log Analytics 工作区并选择“视图设计器”磁贴。
+可使用“视图设计器”自定义数据视图****。 若要开始设计，请转到 Log Analytics 工作区并选择“视图设计器”磁贴。****
 
 ![视图设计器](./media/cdn-diagnostics-log/27_Designer.png)
 
@@ -323,7 +323,7 @@ Microsoft 当前仅提供核心分析日志，其中包含一些显示 HTTP 响�
 下表显示了 **Microsoft 推出的 Azure CDN 标准版**、**Akamai 推出的 Azure CDN 标准版**和 **Verizon 推出的 Azure CDN 标准/高级版**的核心分析日志中提供的一系列指标。 并非所有提供商提供的所有指标都可用，尽管这种差异很小。 此表还显示了某提供商的给定指标是否可用。 这些指标仅适用于在其上拥有流量的 CDN 终结点。
 
 
-|指标                     | 描述 | Microsoft | Verizon | Akamai |
+|指标                     | 说明 | Microsoft | Verizon | Akamai |
 |---------------------------|-------------|-----------|---------|--------|
 | RequestCountTotal         | 在此期间请求命中的总次数。 | 是 | 是 |是 |
 | RequestCountHttpStatus2xx | 导致 2xx HTTP 代码（例如 200 和 202）的所有请求的计数。 | 是 | 是 |是 |

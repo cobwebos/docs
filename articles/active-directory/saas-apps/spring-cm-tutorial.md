@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04-08-2019
+ms.date: 04/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04ddc09d3d2475afe9be90cf1d5585697b9c36cf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: be4edfe3262ab74d903384eb00c0282acc7a3299
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65866845"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81867430"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>教程：Azure Active Directory 与 SpringCM 集成
 
@@ -58,7 +58,7 @@ ms.locfileid: "65866845"
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项 。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "65866845"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“SpringCM”，在结果面板中选择“SpringCM”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中，键入“SpringCM”，在结果面板中选择“SpringCM”，然后单击“添加”按钮添加该应用程序  。
 
     ![结果列表中的 SpringCM](common/search-new-app.png)
 
@@ -90,7 +90,7 @@ ms.locfileid: "65866845"
 
 若要配置 SpringCM 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 SpringCM 应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的 SpringCM 应用程序集成页上，选择“单一登录” 。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -98,7 +98,7 @@ ms.locfileid: "65866845"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框  。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -137,13 +137,13 @@ ms.locfileid: "65866845"
    
     ![标识提供者配置](./media/spring-cm-tutorial/ic797052.png "标识提供者配置")
     
-    a. 若要上传已下载的 Azure Active Directory 证书，请单击“选择颁发者证书”或“更改颁发者证书”。
+    a. 若要上传已下载的 Azure Active Directory 证书，请单击“选择颁发者证书”或“更改颁发者证书”。 
     
-    b. 在“证书颁发者”文本框中，粘贴从 Azure 门户复制的 Azure AD 标识符值。
+    b. 在“证书颁发者”文本框中，粘贴从 Azure 门户复制的 Azure AD 标识符值 。
     
-    c. 在“服务提供商(SP)启动的终结点”文本框中，粘贴从 Azure 门户复制的登录 URL 值。
+    c. 在“服务提供商(SP)启动的终结点”文本框中，粘贴从 Azure 门户复制的登录 URL 值 。
             
-    d. 将“已启用 SAML”选择为“启用”。
+    d. 将“已启用 SAML”选择为“启用”。 
 
     e. 单击“ **保存**”。
 
@@ -175,7 +175,7 @@ ms.locfileid: "65866845"
 
 在本部分中，通过授予 Britta Simon 访问 SpringCM 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“SpringCM”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“SpringCM”  。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -195,14 +195,14 @@ ms.locfileid: "65866845"
 
 6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。 
 
 ### <a name="create-springcm-test-user"></a>创建 SpringCM 测试用户
 
 要使 Azure Active Directory 用户能够登录到 SpringCM，必须将其预配到 SpringCM 中。 对于 SpringCM，预配是一项手动任务。
 
 > [!NOTE]
-> 有关详细信息，请参阅[创建和编辑 SpringCM 用户](https://knowledge.springcm.com/create-and-edit-a-springcm-user)。 
+> 有关详细信息，请参阅[创建和编辑 SpringCM 用户](http://community.springcm.com/s/article/Create-and-Edit-a-SpringCM-User-1619481053)。 
 
 **要将用户帐户预配到 SpringCM，请执行以下步骤：**
 

@@ -1,5 +1,5 @@
 - name: StorSimple 文档
-  href: index.md
+  href: index.yml
 - name: StorSimple 虚拟阵列
   items:
     - name: 概述
@@ -87,11 +87,11 @@
           href: storsimple-ova-web-ui-admin.md
     - name: 发行说明
       items:
-        - name: Update 1.2
+        - name: Update 1.2 - 最新版
           href: storsimple-virtual-array-update-12-release-notes.md
         - name: Update 1.1
           href: storsimple-virtual-array-update-11-release-notes.md
-        - name: Update 1
+        - name: 更新 1
           href: storsimple-virtual-array-update-1-release-notes.md
         - name: 存档
           items:
@@ -284,7 +284,7 @@
               href: storsimple-8000-monitor-hardware-status.md
             - name: 使用监控 LED
               href: storsimple-monitoring-indicators.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 部署问题
               href: storsimple-8000-troubleshoot-deployment.md
@@ -316,6 +316,8 @@
           items:
             - name: 订阅和存储帐户
               href: storsimple-8000-migrate-classic-azure-portal.md
+            - name: 从 8000 系列设备
+              href: storsimple-8000-migration-from-8000-options.md
             - name: 从 5000/7000 系列设备
               href: storsimple-8000-migration-options.md
               items:
@@ -327,13 +329,17 @@
               href: 'https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf'
         - name: 更新
           items:
-            - name: 安装 Update 5 - 最新版
+            - name: 安装 Update 5.1 - 最新版
+              href: storsimple-8000-install-update-51.md
+            - name: 安装 Update 5
               href: storsimple-8000-install-update-5.md
             - name: 安装 Update 4
               href: storsimple-8000-install-update-4.md
     - name: 发行说明
       items:
-        - name: Update 5 - 最新版
+        - name: Update 5.1 - 最新版
+          href: storsimple-update51-release-notes.md
+        - name: Update 5
           href: storsimple-update5-release-notes.md
         - name: Update 4
           href: storsimple-update4-release-notes.md
@@ -345,7 +351,7 @@
               href: storsimple-update21-release-notes.md
             - name: Update 2
               href: storsimple-update2-release-notes.md
-            - name: Update 1
+            - name: 更新 1
               href: storsimple-update1-release-notes.md
             - name: Update 0.3
               href: storsimple-february-2015-release-notes.md
@@ -355,7 +361,7 @@
               href: storsimple-october-2014-release-notes.md
             - name: 发行版 - 正式版
               href: storsimple-july-2014-release-notes.md
-    - name: 引用
+    - name: 参考
       items:
         - name: REST API
           href: 'https://docs.microsoft.com/rest/api/storsimple'
@@ -410,11 +416,11 @@
     - name: 营销博客
       href: 'https://blogs.technet.com/b/cis/'
     - name: Marketing
-      href: 'https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx'
+      href: 'https://azure.microsoft.com/services/storsimple/'
     - name: StorSimple 支持选项
       href: storsimple-8000-support-options.md
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple'
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-storsimple.html'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/storsimple/'
     - name: 定价计算器

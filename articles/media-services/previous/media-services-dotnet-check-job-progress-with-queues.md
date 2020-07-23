@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 2a7f15eb7e90ba4dec9bc614a45d2de46c07bdfd
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: d75ba63955deb3fb6ef4a1207754097b0b3be532
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64868107"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962673"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>使用 Azure 队列存储通过 .NET 监视媒体服务作业通知 
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 运行编码作业时，通常需要采用某种方式来跟踪作业进度。 你可以配置媒体服务将通知传送到 [Azure 队列存储](../../storage/storage-dotnet-how-to-use-queues.md)。 然后可以通过从队列存储获取通知来监视作业进度。 
 
@@ -53,7 +53,10 @@ ms.locfileid: "64868107"
 5. 将通知终结点附加到作业，然后提交编码作业。 可以将多个通知终结点附加到一个作业。
 6. 将 **NotificationJobState.FinalStatesOnly** 传递到 **AddNew** 方法。 （本例中，只想了解作业处理的最终状态。）
 
-        job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
+    ```csharp
+    job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
+    ```
+
 7. 如果传递 **NotificationJobState.All**，则会收到以下所有状态更改通知：已排队、已计划、处理中和已完成。 但如前所述，队列存储不保证按顺序传递。 若要对消息排序，请使用 **Timestamp** 属性（在以下示例的 **EncodingJobMessage** 类型中定义）。 可能出现重复消息。 若要检查重复项，请使用 **ETag 属性**（在 **EncodingJobMessage** 类型中定义）。 此外，可能会跳过某些状态更改通知。
 8. 每 10 秒检查一次队列，等待作业进入已完成状态。 处理消息后删除消息。
 9. 删除队列和通知终结点。
@@ -61,7 +64,7 @@ ms.locfileid: "64868107"
 > [!NOTE]
 > 建议通过侦听通知消息来监视作业的状态，如下例所示：
 >
-> 或者，可以使用 **IJob.State** 属性检查作业状态。  在 **IJob** 的状态设置为“已完成”之前，可能会先收到一条指示作业已完成的通知消息。 **IJob.State** 属性在延迟片刻之后反映正确的状态。
+> 或者，可以使用 **IJob.State** 属性检查作业状态。  在 **IJob** 的状态设置为“已完成”  之前，可能会先收到一条指示作业已完成的通知消息。 **IJob.State** 属性在延迟片刻之后反映正确的状态。
 >
 >
 
@@ -69,7 +72,7 @@ ms.locfileid: "64868107"
 
 1. 设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
 2. 创建新的文件夹（文件夹可以位于本地驱动器上的任何位置），复制需要编码和流处理或渐进式下载的 .mp4 文件。 在此示例中，我们使用了“C:\Media”路径。
-3. 将引用添加到“System.Runtime.Serialization”库中。
+3. 将引用添加到“System.Runtime.Serialization”库中  。
 
 ### <a name="code"></a>代码
 
@@ -342,33 +345,34 @@ namespace JobNotification
 }
 ```
 
-以上示例生成了以下输出：值会有所变化。
+上例生成了以下输出，值会有所变化。
 
-    Created assetFile BigBuckBunny.mp4
-    Upload BigBuckBunny.mp4
-    Done uploading of BigBuckBunny.mp4
+```output
+Created assetFile BigBuckBunny.mp4
+Upload BigBuckBunny.mp4
+Done uploading of BigBuckBunny.mp4
 
-    EventType: NotificationEndPointRegistration
-    MessageVersion: 1.0
-    ETag: e0238957a9b25bdf3351a88e57978d6a81a84527fad03bc23861dbe28ab293f6
-    TimeStamp: 2013-05-14T20:22:37
-        NotificationEndPointId: nb:nepid:UUID:d6af9412-2488-45b2-ba1f-6e0ade6dbc27
-        State: Registered
-        Name: dde957b2-006e-41f2-9869-a978870ac620
-        Created: 2013-05-14T20:22:35
+EventType: NotificationEndPointRegistration
+MessageVersion: 1.0
+ETag: e0238957a9b25bdf3351a88e57978d6a81a84527fad03bc23861dbe28ab293f6
+TimeStamp: 2013-05-14T20:22:37
+    NotificationEndPointId: nb:nepid:UUID:d6af9412-2488-45b2-ba1f-6e0ade6dbc27
+    State: Registered
+    Name: dde957b2-006e-41f2-9869-a978870ac620
+    Created: 2013-05-14T20:22:35
 
-    EventType: JobStateChange
-    MessageVersion: 1.0
-    ETag: 4e381f37c2d844bde06ace650310284d6928b1e50101d82d1b56220cfcb6076c
-    TimeStamp: 2013-05-14T20:24:40
-        JobId: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54
-        JobName: My MP4 to Smooth Streaming encoding job
-        NewState: Finished
-        OldState: Processing
-        AccountName: westeuropewamsaccount
-    job with Id: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54 reached expected
-    State: Finished
-
+EventType: JobStateChange
+MessageVersion: 1.0
+ETag: 4e381f37c2d844bde06ace650310284d6928b1e50101d82d1b56220cfcb6076c
+TimeStamp: 2013-05-14T20:24:40
+    JobId: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54
+    JobName: My MP4 to Smooth Streaming encoding job
+    NewState: Finished
+    OldState: Processing
+    AccountName: westeuropewamsaccount
+job with Id: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54 reached expected
+State: Finished
+```
 
 ## <a name="next-step"></a>后续步骤
 查看媒体服务学习路径。

@@ -1,25 +1,16 @@
 ---
-title: 在 Mac OS X 上设置兼容 Azure Service Fabric 的开发环境 | Microsoft Docs
-description: 安装运行时、SDK 和工具并创建本地开发群集。 完成此设置后，就可以在 Mac OS X 上开始生成应用程序了。
-services: service-fabric
-documentationcenter: linux
+title: 在 macOS 上设置开发环境
+description: 安装运行时、SDK 和工具并创建本地开发群集。 完成此设置后，就可以在 macOS 上生成应用程序了。
 author: suhuruli
-manager: chackdan
-editor: ''
-ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
-ms.service: service-fabric
-ms.devlang: linux
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: 84d1f52b5fb8f18d3578bad28930f74534b1409f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c7e2d556c4fb8bebc0b75bdf9d4c209c27f86971
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60947578"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82193388"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>在 Mac OS X 上设置开发环境
 > [!div class="op_single_selector"]
@@ -31,7 +22,7 @@ ms.locfileid: "60947578"
 
 可以使用 Mac OS X 生成在 Linux 群集上运行的 Azure Service Fabric 应用程序。本文档介绍了如何设置用于开发的 Mac。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Service Fabric 群集，我们提供了预配置的 Docker 容器映像。 准备事项：
 
 * 至少 4 GB 的 RAM。
@@ -66,7 +57,7 @@ Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Servic
 2. 在新目录中创建名为 `Dockerfile` 的文件，以生成 Service Fabric 映像：
 
     ```Dockerfile
-    FROM microsoft/service-fabric-onebox
+    FROM mcr.microsoft.com/service-fabric/onebox:latest
     WORKDIR /home/ClusterDeployer
     RUN ./setup.sh
     #Generate the local
@@ -107,10 +98,10 @@ Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Servic
     >
     >如果应用程序正在侦听特定端口，则必须使用附加的 `-p` 标记指定这些端口。 例如，如果应用程序正在侦听端口 8080，请添加下面的 `-p` 标记：
     >
-    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
+    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
     >
 
-5. 群集需要一小段时间来启动。 运行时，可以使用以下命令查看日志，或者通过跳转到仪表板来查看群集运行状况 [http://localhost:19080](http://localhost:19080)：
+5. 群集需要一小段时间来启动。 运行群集时，可以使用以下命令查看日志，或者通过跳转到仪表板来查看群集运行状况 `http://localhost:19080`：
 
     ```bash 
     docker logs sftestcluster
@@ -174,8 +165,9 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
     brew install gradle
     ```
 
-    >[!TIP]
-    > 请务必验证并确保已安装 JDK 的正确版本。 
+    > [!IMPORTANT]
+    > `brew cask install java` 的当前版本可能会安装更新版本的 JDK。
+    > 请确保安装 JDK 8。
 
 ## <a name="deploy-your-application-on-your-mac-from-the-terminal"></a>通过 Terminal 在 Mac 上部署应用程序
 
@@ -205,7 +197,7 @@ Azure Service Fabric 为适用于 Java IDE 的 Eclipse Neon（或更高版本）
 最后一步是使用与主机共享的路径实例化该容器。 该插件需要此类实例化才能与 Mac 上的 Docker 容器配合使用。 例如：
 
 ```bash
-docker run -itd -p 19080:19080 -v /Users/sayantan/work/workspaces/mySFWorkspace:/tmp/mySFWorkspace --name sfonebox microsoft/service-fabric-onebox
+docker run -itd -p 19080:19080 -v /Users/sayantan/work/workspaces/mySFWorkspace:/tmp/mySFWorkspace --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest
 ```
 
 这些属性定义如下：

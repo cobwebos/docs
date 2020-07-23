@@ -1,22 +1,15 @@
 ---
 title: Azure CLI 脚本示例 - 创建自定义主题 | Microsoft Docs
-description: Azure CLI 脚本示例 - 创建自定义主题
-services: event-grid
-documentationcenter: na
-author: tfitzmac
-ms.service: event-grid
+description: 本文提供了一个示例 Azure CLI 脚本，演示如何创建 Azure 事件网格自定义主题。
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/02/2018
-ms.author: tomfitz
-ms.openlocfilehash: 16c6586939a6dad248cef3abdabd78faf04a2381
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.date: 07/08/2020
+ms.openlocfilehash: 951008a2bf3919f69429ca15382334a9618b912f
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034262"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171306"
 ---
 # <a name="create-event-grid-custom-topic-with-azure-cli"></a>使用 Azure CLI 创建事件网格自定义主题
 
@@ -34,7 +27,7 @@ ms.locfileid: "51034262"
 
 此脚本使用以下命令创建自定义主题。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az eventgrid topic create](https://docs.microsoft.com/cli/azure/eventgrid/topic#az-eventgrid-topic-create) | 创建事件网格自定义主题。 |
 

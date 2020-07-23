@@ -1,25 +1,17 @@
 ---
-title: 使用 Azure 资源管理器预配 Azure Redis 缓存 | Microsoft Docs
-description: 使用 Azure 资源管理器模板部署 Azure Redis 缓存。
-services: app-service
-documentationcenter: ''
+title: 使用 Azure 资源管理器部署 Azure Cache for Redis
+description: 了解如何使用 Azure 资源管理器模板部署 Azure Cache for Redis 资源。 为常见方案提供模板。
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: ce6f5372-7038-4655-b1c5-108f7c148282
-ms.service: cache
-ms.workload: web
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
-ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: 5bdad61df732f0aeb1a758aacb5844204387e19b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.service: cache
+ms.topic: conceptual
+ms.date: 01/23/2017
+ms.openlocfilehash: 0dbcbd173ce0a7c4c6a123f0644b870aa3cec2f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66132816"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829884"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>使用模板创建 Azure Redis 缓存
 
@@ -29,7 +21,7 @@ ms.locfileid: "66132816"
 
 目前，对订阅的同一区域中的所有缓存共享诊断设置。 更新区域中的一个缓存会影响该区域中的所有其他缓存。
 
-有关创建模板的详细信息，请参阅[创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)。 若要了解缓存资源类型的 JSON 语法和属性，请参阅 [Microsoft.Cache 资源类型](/azure/templates/microsoft.cache/allversions)。
+有关创建模板的详细信息，请参阅[创作 Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)。 若要了解缓存资源类型的 JSON 语法和属性，请参阅 [Microsoft.Cache 资源类型](/azure/templates/microsoft.cache/allversions)。
 
 有关完整的模板，请参阅 [Azure Redis 缓存模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json)。
 
@@ -52,88 +44,99 @@ ms.locfileid: "66132816"
 [![部署到 Azure](./media/cache-redis-cache-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>parameters
-使用 Azure Resource Manager，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 Parameters 的部分，其中包含所有参数值。
-应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为永远保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。 
+使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 Parameters 的部分，其中包含所有参数值。
+应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为始终保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。 
 
 [!INCLUDE [app-service-web-deploy-redis-parameters](../../includes/cache-deploy-parameters.md)]
 
 ### <a name="rediscachelocation"></a>redisCacheLocation
 Azure Redis 缓存的位置。 为获得最佳性能，请使用要与缓存配合使用的应用所在的同一位置。
 
-    "redisCacheLocation": {
-      "type": "string"
-    }
+```json
+  "redisCacheLocation": {
+    "type": "string"
+  }
+```
 
 ### <a name="existingdiagnosticsstorageaccountname"></a>existingDiagnosticsStorageAccountName
 要用于诊断的现有存储帐户的名称。 
 
-    "existingDiagnosticsStorageAccountName": {
-      "type": "string"
-    }
+```json
+  "existingDiagnosticsStorageAccountName": {
+    "type": "string"
+  }
+```
 
 ### <a name="enablenonsslport"></a>enableNonSslPort
 一个布尔值，该值指示是否允许通过非 SSL 端口访问。
 
-    "enableNonSslPort": {
-      "type": "bool"
-    }
+```json
+  "enableNonSslPort": {
+    "type": "bool"
+  }
+```
 
 ### <a name="diagnosticsstatus"></a>diagnosticsStatus
 一个值，该值指示是否启用诊断。 使用 ON 或 OFF。
 
-    "diagnosticsStatus": {
-      "type": "string",
-      "defaultValue": "ON",
-      "allowedValues": [
-            "ON",
-            "OFF"
-        ]
-    }
+```json
+  "diagnosticsStatus": {
+    "type": "string",
+    "defaultValue": "ON",
+    "allowedValues": [
+          "ON",
+          "OFF"
+      ]
+  }
+```
 
 ## <a name="resources-to-deploy"></a>要部署的资源
 ### <a name="azure-cache-for-redis"></a>用于 Redis 的 Azure 缓存
 创建 Azure Redis 缓存。
 
-    {
-      "apiVersion": "2015-08-01",
-      "name": "[parameters('redisCacheName')]",
-      "type": "Microsoft.Cache/Redis",
-      "location": "[parameters('redisCacheLocation')]",
-      "properties": {
-        "enableNonSslPort": "[parameters('enableNonSslPort')]",
-        "sku": {
-          "capacity": "[parameters('redisCacheCapacity')]",
-          "family": "[parameters('redisCacheFamily')]",
-          "name": "[parameters('redisCacheSKU')]"
+```json
+  {
+    "apiVersion": "2015-08-01",
+    "name": "[parameters('redisCacheName')]",
+    "type": "Microsoft.Cache/Redis",
+    "location": "[parameters('redisCacheLocation')]",
+    "properties": {
+      "enableNonSslPort": "[parameters('enableNonSslPort')]",
+      "sku": {
+        "capacity": "[parameters('redisCacheCapacity')]",
+        "family": "[parameters('redisCacheFamily')]",
+        "name": "[parameters('redisCacheSKU')]"
+      }
+    },
+    "resources": [
+      {
+        "apiVersion": "2017-05-01-preview",
+        "type": "Microsoft.Cache/redis/providers/diagnosticsettings",
+        "name": "[concat(parameters('redisCacheName'), '/Microsoft.Insights/service')]",
+        "location": "[parameters('redisCacheLocation')]",
+        "dependsOn": [
+          "[concat('Microsoft.Cache/Redis/', parameters('redisCacheName'))]"
+        ],
+        "properties": {
+          "status": "[parameters('diagnosticsStatus')]",
+          "storageAccountName": "[parameters('existingDiagnosticsStorageAccountName')]"
         }
-      },
-      "resources": [
-        {
-          "apiVersion": "2017-05-01-preview",
-          "type": "Microsoft.Cache/redis/providers/diagnosticsettings",
-          "name": "[concat(parameters('redisCacheName'), '/Microsoft.Insights/service')]",
-          "location": "[parameters('redisCacheLocation')]",
-          "dependsOn": [
-            "[concat('Microsoft.Cache/Redis/', parameters('redisCacheName'))]"
-          ],
-          "properties": {
-            "status": "[parameters('diagnosticsStatus')]",
-            "storageAccountName": "[parameters('existingDiagnosticsStorageAccountName')]"
-          }
-        }
-      ]
-    }
-
-
+      }
+    ]
+  }
+```
 
 ## <a name="commands-to-run-deployment"></a>运行部署的命令
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
 
+```azurepowershell
     New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup -redisCacheName ExampleCache
+```
 
 ### <a name="azure-cli"></a>Azure CLI
+
+```azurecli
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -g ExampleDeployGroup
-
-
+```

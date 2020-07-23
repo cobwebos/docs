@@ -1,36 +1,27 @@
 ---
-title: 升级独立 Azure Service Fabric 群集的配置 | Microsoft Docs
+title: 升级独立群集的配置
 description: 了解如何升级运行独立 Service Fabric 群集的配置。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 66296cc6-9524-4c6a-b0a6-57c253bdf67e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: f99c1ebb64bf881bcd42f15e13bb81b96ccfa064
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4817c7b76ccd127d5f310a9d2abcecdb094944dc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387122"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246599"
 ---
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>升级独立群集的配置 
 
 对于任何新式系统而言，升级能力是实现产品长期成功的关键所在。 Azure Service Fabric 群集是你拥有的资源。 本文介绍如何升级独立 Service Fabric 群集的配置设置。
 
 ## <a name="customize-cluster-settings-in-the-clusterconfigjson-file"></a>在 ClusterConfig.json 文件中自定义群集设置
-通过“ClusterConfig.json”文件配置独立群集。 若要了解不同设置的详细信息，请参阅[独立 Windows 群集的配置设置](service-fabric-cluster-manifest.md)。
+通过“ClusterConfig.json”文件配置独立群集  。 若要了解不同设置的详细信息，请参阅[独立 Windows 群集的配置设置](service-fabric-cluster-manifest.md)。
 
-可以在“ClusterConfig.json”中[群集属性](./service-fabric-cluster-manifest.md#cluster-properties)部分下的 `fabricSettings` 部分中添加、更新或删除设置。 
+可以在“ClusterConfig.json”中[群集属性](./service-fabric-cluster-manifest.md#cluster-properties)部分下的 `fabricSettings` 部分中添加、更新或删除设置  。 
 
-例如，以下 JSON 将向 `fabricSettings` 下的“诊断”部分添加新设置“MaxDiskQuotaInMB”：
+例如，以下 JSON 将向 `fabricSettings` 下的“诊断”部分添加新设置“MaxDiskQuotaInMB”   ：
 
 ```json
       {
@@ -59,10 +50,10 @@ TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File
 TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File> -OldClusterConfigFilePath <Path to the old Configuration File> -FabricRuntimePackagePath <Path to the .cab file which you want to test the configuration against>
 ```
 
-部分配置不能升级（如终结点、群集名称、节点 IP 等）。将会针对旧配置测试新的群集配置 JSON ，并在出现问题时在 PowerShell 窗口中引发错误。
+某些配置不能升级（如终结点、群集名称、节点 IP 等）。将会针对旧配置测试新的群集配置 JSON ，并在出现问题时在 PowerShell 窗口中引发错误。
 
 ## <a name="upgrade-the-cluster-configuration"></a>升级群集配置
-若要升级群集配置，请运行 [Start-ServiceFabricClusterConfigurationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade)。 配置升级由升级域处理。
+若要升级群集配置，请运行 [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade)。 按升级域逐个处理配置升级。
 
 ```powershell
 Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
@@ -84,7 +75,7 @@ Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Confi
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何自定义某些 [Service Fabric 群集设置](service-fabric-cluster-fabric-settings.md)。
-* 了解如何[扩大和缩小群集](service-fabric-cluster-scale-up-down.md)。
+* 了解如何[扩大和缩小群集](service-fabric-cluster-scale-in-out.md)。
 * 了解[应用程序升级](service-fabric-application-upgrade.md)。
 
 <!--Image references-->

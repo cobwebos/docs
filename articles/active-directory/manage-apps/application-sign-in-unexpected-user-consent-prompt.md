@@ -3,25 +3,25 @@ title: 登录到应用程序时出现的意外许可提示 | Microsoft Docs
 description: 如何对用户遇到的与 Azure AD 集成的应用程序出现意外许可提示这一情形进行故障排除
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83d043ecef152f977437e21e2caec40d1c40ce0d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9559e22a8396de93bbe46f20b76855d9ff00f753
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65781156"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763714"
 ---
 # <a name="unexpected-consent-prompt-when-signing-in-to-an-application"></a>登录到应用程序时出现的意外许可提示
 
@@ -33,7 +33,7 @@ ms.locfileid: "65781156"
 
 可能在各种情况下看到其他提示：
 
-* 更改应用程序所需的权限集。
+* 应用程序所需的权限集已更改。
 
 * 最初对应用程序进行许可的用户不是管理员，现在其他（非管理员）用户首次使用该应用程序。
 

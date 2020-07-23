@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/20/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: da63a5418ab94623f6ce3c9f35a085dd8b198d1a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 10fb9e8169b7f4159ccbf4a0ff36021f6033f811
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66148998"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75552405"
 ---
 必须满足以下要求才能完成本教程：
 
@@ -21,7 +21,7 @@ ms.locfileid: "66148998"
 
 **Docker**：本教程假设读者基本了解核心 Docker 概念，如容器、容器映像和基本的 `docker` 命令。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述][docker-get-started]。
 
-**Docker 引擎**：若要完成本教程，需在本地安装 Docker 引擎。 Docker 提供用于在 [macOS][docker-mac]、[Windows][docker-windows] 和 [Linux][docker-linux] 上配置 Docker 环境的包。
+**Docker**：要完成本教程，需在本地安装 Docker。 Docker 提供用于在 [macOS][docker-mac]、[Windows][docker-windows] 和 [Linux][docker-linux] 上配置 Docker 环境的包。
 
 > [!IMPORTANT]
 > 由于 Azure Cloud Shell 不包含 Docker 守护程序，因此，必须在本地计算机上安装 Azure CLI 和 Docker 引擎才能完成本教程。   不能在本教程中使用 Azure Cloud Shell。

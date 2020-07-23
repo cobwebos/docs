@@ -1,7 +1,7 @@
 ---
 title: 代码示例 - 内容审查器、C#
-titlesuffix: Azure Cognitive Services
-description: 通过 REST API 调用在应用程序中使用内容审查器。
+titleSuffix: Azure Cognitive Services
+description: 通过 REST API 调用，在应用程序中使用基于 Azure 认知服务内容审查器功能的示例。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: sample
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 9448cb2279b78143007f460c17427d91dfa397c7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: df0b17509dfb11fb18a591c70e9060973459a24c
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878368"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "73744294"
 ---
 # <a name="content-moderator-rest-samples-in-c"></a>采用 C# 的内容审查器 REST 示例
 
@@ -27,4 +27,4 @@ ms.locfileid: "55878368"
 - [图像评审](https://github.com/MicrosoftContentModerator/ContentModerator-API-Samples/tree/master/ImageReviews)
 - [图像作业](https://github.com/MicrosoftContentModerator/ContentModerator-API-Samples/tree/master/ImageJob)
 
-有关这些示例的演练，请参阅[按需网络研讨会](https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html)。
+有关这些示例的演练，请观看[点播网络研讨会](https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html)。

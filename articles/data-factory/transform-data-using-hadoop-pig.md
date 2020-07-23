@@ -1,27 +1,29 @@
 ---
-title: 在 Azure 数据工厂中使用 Hadoop Pig 活动转换数据 | Microsoft Docs
+title: 使用 Hadoop Pig 活动转换数据
 description: 了解如何使用 Azure 数据工厂中的 Pig 活动在按需或自己的 HDInsight 群集上运行 Pig 脚本。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/16/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: 914bc37552a80886df16ed69fba4e31b3f22ac22
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+manager: shwang
+ms.custom: seo-lt-2019
+ms.date: 05/08/2020
+ms.openlocfilehash: 54eff77daa7e69c39e9ec5d6f326f2f64c9fcafb
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61399516"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849223"
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hadoop Pig 活动转换数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-pig-activity.md)
 > * [当前版本](transform-data-using-hadoop-pig.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 数据工厂[管道](concepts-pipelines-activities.md)中的 HDInsight Pig 活动会在[自己的](compute-linked-services.md#azure-hdinsight-linked-service)或[按需](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 Pig 查询。 本文基于[数据转换活动](transform-data.md)一文，它概述了数据转换和受支持的转换活动。
 
@@ -56,16 +58,16 @@ ms.locfileid: "61399516"
 ```
 ## <a name="syntax-details"></a>语法详细信息
 
-| 属性            | 说明                              | 需要 |
+| properties            | 说明                              | 必选 |
 | ------------------- | ---------------------------------------- | -------- |
-| 名称                | 活动名称                     | 是      |
+| name                | 活动名称                     | 是      |
 | description         | 描述活动用途的文本 | 否       |
 | type                | 对于 Hive 活动，活动类型是 HDinsightPig | 是      |
 | linkedServiceName   | 引用在数据工厂中注册为链接服务的 HDInsight 群集。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。 | 是      |
-| scriptLinkedService | 对 Azure 存储链接服务的引用，该服务用于存储要执行的 Pig 脚本。 如果未指定此链接服务，则使用 HDInsight 链接服务中定义的 Azure 存储链接服务。 | 否       |
+| scriptLinkedService | 对 Azure 存储链接服务的引用，该服务用于存储要执行的 Pig 脚本。 此处仅支持 [Azure Blob 存储](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)和 [ADLS Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage) 链接服务 。 如果未指定此链接服务，则使用 HDInsight 链接服务中定义的 Azure 存储链接服务。 | 否       |
 | scriptPath          | 提供由 scriptLinkedService 引用的 Azure 存储中存储的脚本文件的路径。 文件名称需区分大小写。 | 否       |
 | getDebugInfo        | 指定何时将日志文件复制到 HDInsight 群集使用的（或者）scriptLinkedService 指定的 Azure 存储。 允许的值：None、Always 或 Failure。 默认值：无。 | 否       |
-| arguments           | 指定 Hadoop 作业的参数数组。 参数以命令行参数的形式传递到每个任务。 | 否       |
+| 参数           | 指定 Hadoop 作业的参数数组。 参数以命令行参数的形式传递到每个任务。 | 否       |
 | 定义             | 在 Pig 脚本中指定参数作为键/值对，以供引用。 | 否       |
 
 ## <a name="next-steps"></a>后续步骤

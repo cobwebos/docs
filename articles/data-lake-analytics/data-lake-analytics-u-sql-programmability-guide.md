@@ -7,14 +7,14 @@ author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/30/2017
-ms.openlocfilehash: d1b230b40d1f880787334ebfd39e704e3a650baa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2fb54c821c50ff8e1364a125cc5db181aedf0437
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60811597"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110583"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL 可编程性指南
 
@@ -28,7 +28,7 @@ U-SQL 是为大数据类型的工作负荷设计的查询语言。 U-SQL 的一�
 
 查看以下 U-SQL 脚本：
 
-```
+```usql
 @a  = 
   SELECT * FROM 
     (VALUES
@@ -50,7 +50,7 @@ U-SQL 是为大数据类型的工作负荷设计的查询语言。 U-SQL 的一�
 
 U-SQL 表达式是与 U-SQL 逻辑运算（如 `AND`、`OR` 和 `NOT`）配合使用的 C# 表达式。 U-SQL 表达式可与 SELECT、0EXTRACT、WHERE、HAVING、GROUP BY 和 DECLARE 配合使用。 例如，以下脚本将字符串分析为 DateTime 值。
 
-```
+```usql
 @results =
   SELECT
     customer,
@@ -61,7 +61,7 @@ U-SQL 表达式是与 U-SQL 逻辑运算（如 `AND`、`OR` 和 `NOT`）配合�
 
 以下代码片段将字符串分析为 DECLARE 语句中的 DateTime 值。
 
-```
+```usql
 DECLARE @d = DateTime.Parse("2016/01/01");
 ```
 
@@ -69,7 +69,7 @@ DECLARE @d = DateTime.Parse("2016/01/01");
 
 以下示例演示如何使用 C# 表达式执行日期时间数据转换。 在此特定方案中，字符串日期/时间数据转换为标准日期时间（采用午夜 00:00:00 时间表示法）。
 
-```
+```usql
 DECLARE @dt = "2016-07-06 10:23:15";
 
 @rs1 =
@@ -89,7 +89,7 @@ OUTPUT @rs1
 
 以下示例演示如何在脚本中使用此表达式：
 
-```
+```usql
 @rs1 =
   SELECT
     MAX(guid) AS start_id,
@@ -112,14 +112,14 @@ U-SQL 扩展性模型很大程度取决于从 .NET 程序集添加自定义代�
 
 以下代码演示如何注册程序集：
 
-```
+```usql
 CREATE ASSEMBLY MyDB.[MyAssembly]
    FROM "/myassembly.dll";
 ```
 
 以下代码演示如何引用程序集：
 
-```
+```usql
 REFERENCE ASSEMBLY MyDB.[MyAssembly];
 ```
 
@@ -133,14 +133,14 @@ U-SQL 当前使用 .NET Framework 4.5 版本。 因此请确保自己的程序�
 
 每个上传的程序集 DLL、资源文件（如不同的运行时、本机程序集或配置文件）最大可为 400 MB。 部署的资源（通过 DEPLOY RESOURCE 或引用程序集部署）的总大小及其附加文件不能超过 3 GB。
 
-最后请注意，每个 U-SQL 数据库仅可包含任何给定程序集的一个版本。 例如，如果您需要版本 7 和 NewtonSoft Json.NET 库的版本 8，您需要两个不同的数据库中注册它们。 此外，每个脚本仅可引用给定程序集 DLL 的一个版本。 在这一方面，U-SQL 遵循 C# 程序集管理和版本控制语义。
+最后请注意，每个 U-SQL 数据库仅可包含任何给定程序集的一个版本。 例如，如果需要 Newtonsoft.json Json.NET 库的版本7和版本8，则需要将它们注册到两个不同的数据库中。 此外，每个脚本仅可引用给定程序集 DLL 的一个版本。 在这一方面，U-SQL 遵循 C# 程序集管理和版本控制语义。
 
-## <a name="use-user-defined-functions-udf"></a>使用用户定义的函数：UDF
+## <a name="use-user-defined-functions-udf"></a>使用用户定义的函数 (UDF)
 U-SQL 用户定义的函数或 UDF 是编程例程，可接受参数、执行操作（例如复杂计算）并将操作的结果以值的形式返回。 UDF 的返回值只能是单个标量。 与任何其他 C# 标量函数相似，U-SQL UDF可在 U-SQL 基本脚本中进行调用。
 
 我们建议将 U-SQL 用户定义的函数初始化为**公共**和**静态**。
 
-```
+```usql
 public static string MyFunction(string param1)
 {
     return "my result";
@@ -153,7 +153,7 @@ public static string MyFunction(string param1)
 
 为计算会计时段，引入以下 C# 函数：
 
-```
+```usql
 public static string GetFiscalPeriod(DateTime dt)
 {
     int FiscalMonth=0;
@@ -194,7 +194,7 @@ public static string GetFiscalPeriod(DateTime dt)
 
 下面是此方案中代码隐藏部分的样子：
 
-```
+```usql
 using Microsoft.Analytics.Interfaces;
 using Microsoft.Analytics.Types.Sql;
 using System;
@@ -243,14 +243,12 @@ namespace USQL_Programmability
 ```
 
 现在从基本 U-SQL 脚本调用此函数。 为此，必须提供函数的完全限定名称，包括命名空间（在本例中为 NameSpace.Class.Function(parameter)）。
-
-```
+```usql
 USQL_Programmability.CustomFunctions.GetFiscalPeriod(dt)
 ```
 
 下面是实际的 U-SQL 基本脚本：
-
-```
+```usql
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
 DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
 
@@ -282,7 +280,7 @@ OUTPUT @rs1
 
 下面是脚本执行的输出文件：
 
-```
+```output
 0d8b9630-d5ca-11e5-8329-251efa3a2941,2016-02-11T07:04:17.2630000-08:00,2016-06-01T00:00:00.0000000,"Q3:8","User1",""
 
 20843640-d771-11e5-b87b-8b7265c75a44,2016-02-11T07:04:17.2630000-08:00,2016-06-01T00:00:00.0000000,"Q3:8","User2",""
@@ -295,7 +293,7 @@ OUTPUT @rs1
 ### <a name="keep-state-between-udf-invocations"></a>保持 UDF 调用之间的状态
 在通过代码隐藏全局变量利用交互性时，U-SQL C# 可编程性对象会更加复杂。 来看看以下这个企业用例场景。
 
-在大型组织中，用户可在多种内部应用程序之间切换。 其中可能包括 Microsoft Dynamics CRM、PowerBI 等。 客户希望对用户切换不同应用程序的方式、使用趋势等进行遥测分析。 企业的目标是优化应用程序的使用。 他们可能会合并不同的应用程序或特定的登录例程。
+在大型组织中，用户可在多种内部应用程序之间切换。 其中包括 Microsoft Dynamics CRM、Power BI 等。 客户希望对用户切换不同应用程序的方式、使用趋势等进行遥测分析。 企业的目标是优化应用程序的使用。 他们可能会合并不同的应用程序或特定的登录例程。
 
 要实现此目标，必须确定会话 ID 和上次发生的会话之间的延迟时间。
 
@@ -307,7 +305,7 @@ OUTPUT @rs1
 
 下面是 U-SQL 程序的代码隐藏部分：
 
-```
+```csharp
 using Microsoft.Analytics.Interfaces;
 using Microsoft.Analytics.Types.Sql;
 using System;
@@ -347,7 +345,7 @@ namespace USQLApplication21
 
 U-SQL 基本脚本如下所示：
 
-```
+```usql
 DECLARE @in string = @"\UserSession\test1.tsv";
 DECLARE @out1 string = @"\UserSession\Out1.csv";
 DECLARE @out2 string = @"\UserSession\Out2.csv";
@@ -399,7 +397,7 @@ OUTPUT @rs2
 
 输出文件如下所示：
 
-```
+```output
 "2016-02-19T07:32:36.8420000-08:00","User1",,True,"72a0660e-22df-428e-b672-e0977007177f"
 "2016-02-17T11:52:43.6350000-08:00","User2",,True,"4a0cd19a-6e67-4d95-a119-4eda590226ba"
 "2016-02-17T11:59:08.8320000-08:00","User2","2016-02-17T11:52:43.6350000-08:00",False,"4a0cd19a-6e67-4d95-a119-4eda590226ba"
@@ -426,7 +424,7 @@ OUTPUT @rs2
 
 此示例演示一个更复杂的用例场景，其中将使用代码隐藏部分（应用于整个内存行集）内部的全局变量。
 
-## <a name="use-user-defined-types-udt"></a>使用用户定义的类型：UDT
+## <a name="use-user-defined-types-udt"></a>使用用户定义的类型 (UDT)
 用户定义的类型 (UDT) 是 U-SQL 的另一个可编程性功能。 U-SQL UDT 的作用类似常规 C# 用户定义的类型。 C# 是一种强类型语言，允许使用内置的和自定义的用户定义的类型。
 
 在行集中的顶点之间传递 UDT 时，U-SQL 无法隐式序列化或反序列化任意 UDT。 这意味着，用户必须使用 IFormatter 接口提供显式格式化程序。 这样，就为 U-SQL 提供了针对 UDT 的序列化和反序列化方法。
@@ -436,7 +434,7 @@ OUTPUT @rs2
 
 如果尝试在 EXTRACTOR 或 OUTPUTTER（在之前的 SELECT 以外）中使用 UDT，如下所示：
 
-```
+```usql
 @rs1 =
     SELECT 
         MyNameSpace.Myfunction_Returning_UDT(filed1) AS myfield
@@ -449,7 +447,7 @@ OUTPUT @rs1
 
 将收到以下错误：
 
-```
+```output
 Error   1   E_CSC_USER_INVALIDTYPEINOUTPUTTER: Outputters.Text was used to output column myfield of type
 MyNameSpace.Myfunction_Returning_UDT.
 
@@ -468,7 +466,7 @@ USQL-Programmability\Types.usql 52  1   USQL-Programmability
 
 目前不能在 GROUP BY 中使用 UDT。 如果在 GROUP BY 中使用 UDT，将引发以下错误：
 
-```
+```output
 Error   1   E_CSC_USER_INVALIDTYPEINCLAUSE: GROUP BY doesn't support type MyNameSpace.Myfunction_Returning_UDT
 for column myfield
 
@@ -487,7 +485,7 @@ C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\USQL-Programmability\USQ
 
 * 添加以下命名空间：
 
-```
+```csharp
 using Microsoft.Analytics.Interfaces
 using System.IO;
 ```
@@ -496,7 +494,7 @@ using System.IO;
 
 * 使用 SqlUserDefinedType 属性定义用户定义的类型。
 
-**SqlUserDefinedType** 用于将程序集中的类型定义标记为 U-SQL 中的用户定义的类型 (UDT)。 特性上的属性反映 UDT 的物理特征。 此类不能继承。
+**SqlUserDefinedType** 用于将程序集中的类型定义标记为 U-SQL 中的用户定义的类型 (UDT)。 特性上的属性反映 UDT 的物理特征。 无法继承此类。
 
 SqlUserDefinedType 是 UDT 定义必需的特性。
 
@@ -504,9 +502,9 @@ SqlUserDefinedType 是 UDT 定义必需的特性。
 
 * SqlUserDefinedTypeAttribute（类型格式化程序）
 
-* 类型格式化程序：定义 UDT 格式化程序所需的参数 -- 具体而言，`IFormatter` 接口的类型必须传递到此处。
+* 类型格式化程序：定义 UDT 格式化程序所需的参数 -- 具体而言，`IFormatter` 接口的类型必须在此处传递。
 
-```
+```csharp
 [SqlUserDefinedType(typeof(MyTypeFormatter))]
 public class MyType
 { … }
@@ -514,7 +512,7 @@ public class MyType
 
 * 典型的 UDT 还需要 IFormatter 接口的定义，如以下示例中所示：
 
-```
+```csharp
 public class MyTypeFormatter : IFormatter<MyType>
 {
     public void Serialize(MyType instance, IColumnWriter writer, ISerializationContext context)
@@ -525,21 +523,21 @@ public class MyTypeFormatter : IFormatter<MyType>
 }
 ```
 
-`IFormatter` 接口使用根类型 \<typeparamref name="T"> 序列化和反序列化对象图形。
+`IFormatter`接口使用根类型对对象图进行序列化和反序列化 \<typeparamref name="T"> 。
 
-\<typeparam name="T">要序列化和反序列化的对象图形的根类型。
+\<typeparam name="T">要进行序列化和反序列化的对象图的根类型。
 
 * **反序列化**：对所提供的流上的数据进行反序列化，并重构对象的图形。
 
-* **序列化**：使用所提供流的给定根对某对象或对象的图形进行序列化。
+* **序列化**：使用所提供流的给定根对对象或对象的图形进行序列化。
 
 `MyType` 实例：类型的实例。  
 `IColumnWriter` 写入器/`IColumnReader` 读取器：基础列流。  
-`ISerializationContext` 上下文：用于定义一组标志的枚举，该枚举在序列化期间指定流的源上下文或目标上下文。
+`ISerializationContext` 上下文：用于定义一组标志的枚举，这些标志在序列化期间指定流的源和定义上下文。
 
-* **中间**：指定源上下文或目标上下文不是持久存储。
+* **Intermediate**：指定源或定义上下文不是持久存储区。
 
-* **持久性**：指定源上下文或目标上下文是持久存储。
+* **Persistence**：指定源或定义上下文是持久存储区。
 
 U-SQL UDT 定义是常规 C# 类型，可包括对运算符（如 +/==/!=）的重写。 它还可包括静态方法。 例如，如果将此 UDT 用作 U-SQL MIN 聚合函数的参数，则必须定义 < 运算符重写。
 
@@ -547,7 +545,7 @@ U-SQL UDT 定义是常规 C# 类型，可包括对运算符（如 +/==/!=）的�
 
 以下示例演示了代码隐藏部分和用于该部分的自定义 UDT 和 IFormatter 接口：
 
-```
+```csharp
 [SqlUserDefinedType(typeof(FiscalPeriodFormatter))]
 public struct FiscalPeriod
 {
@@ -652,7 +650,7 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
 
 接下来讨论 UDT 的用法。 在代码隐藏部分中，已将 GetFiscalPeriod 函数更改为以下值：
 
-```
+```csharp
 public static FiscalPeriod GetFiscalPeriodWithCustomType(DateTime dt)
 {
     int FiscalMonth = 0;
@@ -691,7 +689,7 @@ public static FiscalPeriod GetFiscalPeriodWithCustomType(DateTime dt)
 
 以下示例演示如何在 U-SQL 基本脚本中进一步使用 UDT。 此示例演示从 U-SQL 脚本调用 UDT 的不同形式。
 
-```
+```usql
 DECLARE @input_file string = @"c:\work\cosmos\usql-programmability\input_file.tsv";
 DECLARE @output_file string = @"c:\work\cosmos\usql-programmability\output_file.tsv";
 
@@ -737,7 +735,7 @@ OUTPUT @rs2
 
 下面是完整的代码隐藏部分的示例：
 
-```
+```csharp
 using Microsoft.Analytics.Interfaces;
 using Microsoft.Analytics.Types.Sql;
 using System;
@@ -895,7 +893,7 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
 }
 ```
 
-## <a name="use-user-defined-aggregates-udagg"></a>使用用户定义的聚合：UDAGG
+## <a name="use-user-defined-aggregates-udagg"></a>使用用户定义的聚合 (UDAGG)
 用户定义的聚合是非随时随附于 U-SQL 的任何与聚合相关的函数。 示例包括：用于执行自定义数学计算、字符串串联或字符串操作的聚合等。
 
 用户定义的聚合基类定义如下所示：
@@ -912,14 +910,14 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
     }
 ```
 
-**SqlUserDefinedAggregate** 指示该类型应注册为用户定义的聚合。 此类不能继承。
+**SqlUserDefinedAggregate** 指示该类型应注册为用户定义的聚合。 无法继承此类。
 
 SqlUserDefinedType 属性对于 UDAGG 定义是**可选**的。
 
 
 基类允许传递三个抽象参数：两个输入参数和一个结果参数。 数据类型是可变的且应在类继承期间定义。
 
-```
+```csharp
 public class GuidAggregate : IAggregate<string, string, string>
 {
     string guid_agg;
@@ -941,23 +939,23 @@ public class GuidAggregate : IAggregate<string, string, string>
 
 若要声明正确的输入或输出数据类型，请使用类定义，如下所示：
 
-```
+```csharp
 public abstract class IAggregate<T1, T2, TResult> : IAggregate
 ```
 
 * T1：Accumulate 的第一个参数
-* T2：Accumulate 的第二个参数
+* T2：要累积的第二个参数
 * TResult：Terminate 的返回类型
 
 例如：
 
-```
+```csharp
 public class GuidAggregate : IAggregate<string, int, int>
 ```
 
 或
 
-```
+```csharp
 public class GuidAggregate : IAggregate<string, string, string>
 ```
 
@@ -966,13 +964,13 @@ public class GuidAggregate : IAggregate<string, string, string>
 
 然后使用以下语法：
 
-```
+```csharp
 AGG<UDAGG_functionname>(param1,param2)
 ```
 
 下面是 UDAGG 的示例：
 
-```
+```csharp
 public class GuidAggregate : IAggregate<string, string, string>
 {
     string guid_agg;
@@ -1000,7 +998,7 @@ public class GuidAggregate : IAggregate<string, string, string>
 
 基本 U-SQL 脚本：
 
-```
+```usql
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
 DECLARE @output_file string = @" \usql-programmability\output_file.tsv";
 
@@ -1025,7 +1023,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 
 在此用例场景中，将串联特定用户的类 GUID。
 
-## <a name="use-user-defined-objects-udo"></a>使用用户定义的对象：UDO
+## <a name="use-user-defined-objects-udo"></a>使用用户定义的对象 (UDO)
 U-SQL 可让你定义自定义可编程性对象，此类对象称为用户定义的对象 (UDO)。
 
 下面是 U-SQL 中的 UDO 列表：
@@ -1067,7 +1065,7 @@ U-SQL 可让你定义自定义可编程性对象，此类对象称为用户定�
 ## <a name="use-user-defined-extractors"></a>使用用户定义的提取器
 U-SQL 允许通过使用 EXTRACT 语句导入外部数据。 EXTRACT 语句可以使用内置 UDO 提取器：  
 
-* *Extractors.Text()*：提供从不同编码的带分隔符的文本文件中进行的提取。
+* *Extractors.Text()*：提供从不同编码的分隔文本文件中进行的提取。
 
 * *Extractors.Csv()*：提供从不同编码的逗号分隔值 (CSV) 文件中进行的提取。
 
@@ -1081,7 +1079,7 @@ U-SQL 允许通过使用 EXTRACT 语句导入外部数据。 EXTRACT 语句可�
 
 若要定义用户定义的提取器 (UDE)，需要创建 `IExtractor` 接口。 提取器的所有输入参数（如列/行分隔符、编码）需要在类的构造函数中定义。 `IExtractor` 接口还应包含 `IEnumerable<IRow>` 重定的定义，如下所示：
 
-```
+```csharp
 [SqlUserDefinedExtractor]
 public class SampleExtractor : IExtractor
 {
@@ -1093,7 +1091,7 @@ public class SampleExtractor : IExtractor
 }
 ```
 
-**SqlUserDefinedExtractor** 属性指示该类型应注册为用户定义的提取器。 此类不能继承。
+**SqlUserDefinedExtractor** 属性指示该类型应注册为用户定义的提取器。 无法继承此类。
 
 SqlUserDefinedExtractor 是 UDE 定义的可选特性。 用于定义 UDE 对象的 AtomicFileProcessing 属性。
 
@@ -1102,13 +1100,13 @@ SqlUserDefinedExtractor 是 UDE 定义的可选特性。 用于定义 UDE 对象
 * **true** = 指示此提取器需要原子输入文件（JSON、XML 等）
 * **false** = 指示此提取器可以处理拆分文件/分布式文件（CSV、SEQ 等）
 
-主要 UDE 可编程性对象包括输入和输出。 输入对象用于将输入数据枚举为 `IUnstructuredReader`。 输出对象用于将输出数据设置为提取器活动的结果。
+主要 UDE 可编程性对象包括输入**** 和输出****。 输入对象用于将输入数据枚举为 `IUnstructuredReader`。 输出对象用于将输出数据设置为提取器活动的结果。
 
 可通过 `System.IO.Stream` 和 `System.IO.StreamReader` 访问输入数据。
 
 为枚举输入列，此处首先使用行分隔符拆分输入流。
 
-```
+```csharp
 foreach (Stream current in input.Split(my_row_delimiter))
 {
 …
@@ -1117,7 +1115,7 @@ foreach (Stream current in input.Split(my_row_delimiter))
 
 然后进一步将输入行拆分为列部分。
 
-```
+```csharp
 foreach (Stream current in input.Split(my_row_delimiter))
 {
 …
@@ -1131,7 +1129,7 @@ foreach (Stream current in input.Split(my_row_delimiter))
 
 请务必了解，自定义提取器仅返回使用输出定义的列和值。 所定义的列/值。
 
-```
+```csharp
 output.Set<string>(count, part);
 ```
 
@@ -1139,7 +1137,7 @@ output.Set<string>(count, part);
 
 下面是提取器的示例：
 
-```
+```csharp
 [SqlUserDefinedExtractor(AtomicFileProcessing = true)]
 public class FullDescriptionExtractor : IExtractor
 {
@@ -1200,7 +1198,7 @@ public class FullDescriptionExtractor : IExtractor
 
 下面是使用自定义提取器的基本 U-SQL 脚本：
 
-```
+```usql
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
 DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
 
@@ -1219,9 +1217,9 @@ OUTPUT @rs0 TO @output_file USING Outputters.Text();
 ## <a name="use-user-defined-outputters"></a>使用用户定义的输出器
 用户定义的输出器是另一种 U-SQL UDO，允许扩展内置 U-SQL 功能。 与提取程序类似，内置输出器也有几种。
 
-* *Outputters.Text()*：将数据写入不同编码的带分隔符的文本文件中。
+* *Outputters.Text()*：将数据写入不同编码的分隔文本文件中。
 * *Outputters.Csv()*：将数据写入不同编码的逗号分隔值 (CSV) 文件中。
-* *Outputters.Tsv()*：将数据写入不同编码的制表符分隔值 (CSV) 文件中。
+* *Outputters.Tsv()*：将数据写入不同编码的制表符分隔值 (TSV) 文件中。
 
 自定义输出器允许以自定义格式编写数据。 这有助于完成以下任务：
 
@@ -1233,7 +1231,7 @@ OUTPUT @rs0 TO @output_file USING Outputters.Text();
 
 下面是基本 `IOutputter` 类的实现：
 
-```
+```csharp
 public abstract class IOutputter : IUserDefinedOperator
 {
     protected IOutputter();
@@ -1245,7 +1243,7 @@ public abstract class IOutputter : IUserDefinedOperator
 
 输出器的的所有输入参数（如列/行分隔符、编码等）需要在类的构造函数中定义。 `IOutputter` 接口还应包含 `void Output` 重写的定义。 （可选）可设置 `[SqlUserDefinedOutputter(AtomicFileProcessing = true)` 属性以进行原子文件处理。 有关详细信息，请参阅以下详细信息。
 
-```
+```csharp
 [SqlUserDefinedOutputter(AtomicFileProcessing = true)]
 public class MyOutputter : IOutputter
 {
@@ -1271,7 +1269,7 @@ public class MyOutputter : IOutputter
 * 构造函数类用于将参数传递到用户定义的输出器。
 * `Close` 用于选择性地进行重写以发布开销状态或确定最后一行的写入时间。
 
-**SqlUserDefinedOutputter** 属性指示该类型应注册为用户定义的输出器。 此类不能继承。
+**SqlUserDefinedOutputter** 属性指示该类型应注册为用户定义的输出器。 无法继承此类。
 
 SqlUserDefinedOutputter 是用户定义的输出器定义的可选属性。 用于定义 AtomicFileProcessing 属性。
 
@@ -1280,19 +1278,19 @@ SqlUserDefinedOutputter 是用户定义的输出器定义的可选属性。 用�
 * **true** = 指示此输出器需要原子输出文件（JSON、XML 等）
 * **false** = 指示此输出器可以处理拆分文件/分布式文件（CSV、SEQ 等）
 
-主要可编程性对象是行和输出。 **row** 对象用于将输出数据枚举为 `IRow` 接口。 **Output** 用于将输出数据设置为目标文件。
+主要可编程性对象是行**** 和输出****。 **row** 对象用于将输出数据枚举为 `IRow` 接口。 **Output** 用于将输出数据设置为目标文件。
 
 可通过 `IRow` 接口访问输出数据。 一次将输出数据传递到一行。
 
 通过调用 IRow 接口的 Get 方法枚举各个值。
 
-```
+```csharp
 row.Get<string>("column_name")
 ```
 
 可通过调用 `row.Schema` 确定各列名称：
 
-```
+```csharp
 ISchema schema = row.Schema;
 var col = schema[i];
 string val = row.Get<string>(col.Name)
@@ -1304,7 +1302,7 @@ string val = row.Get<string>(col.Name)
 
 每次行迭代后，必须将数据缓冲区刷新到文件中。 此外，在默认启用 Disposable 属性并使用 **using** 关键字的情况下，必须使用 `StreamWriter` 对象：
 
-```
+```csharp
 using (StreamWriter streamWriter = new StreamWriter(output.BaseStream, this._encoding))
 {
 …
@@ -1316,7 +1314,7 @@ using (StreamWriter streamWriter = new StreamWriter(output.BaseStream, this._enc
 ### <a name="set-headers-and-footers-for-user-defined-outputter"></a>为用户定义的输出器设置页眉和页脚
 若要设置页眉，请使用单个迭代执行流。
 
-```
+```csharp
 public override void Output(IRow row, IUnstructuredWriter output)
 {
  …
@@ -1341,7 +1339,7 @@ if (isHeaderRow)
 
 下面是用户定义的输出器示例：
 
-```
+```csharp
 [SqlUserDefinedOutputter(AtomicFileProcessing = true)]
 public class HTMLOutputter : IOutputter
 {
@@ -1448,7 +1446,7 @@ public static class Factory
 
 U-SQL 基本脚本：
 
-```
+```usql
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
 DECLARE @output_file string = @"\usql-programmability\output_file.html";
 
@@ -1490,7 +1488,7 @@ OUTPUT @rs0 TO @output_file USING new USQL_Programmability.HTMLOutputter(isHeade
 
 在这种情况下，原始调用如下所示：
 
-```
+```usql
 OUTPUT @rs0 
 TO @output_file 
 USING USQL_Programmability.Factory.HTMLOutputter(isHeader: true);
@@ -1503,7 +1501,7 @@ USING USQL_Programmability.Factory.HTMLOutputter(isHeader: true);
 
 此接口应包含 `IRow` 接口行集重写的定义，如以下示例中所示：
 
-```
+```csharp
 [SqlUserDefinedProcessor]
 public class MyProcessor: IProcessor
 {
@@ -1514,15 +1512,15 @@ public override IRow Process(IRow input, IUpdatableRow output)
 }
 ```
 
-**SqlUserDefinedProcessor** 指示该类型应注册为用户定义的处理器。 此类不能继承。
+**SqlUserDefinedProcessor** 指示该类型应注册为用户定义的处理器。 无法继承此类。
 
 SqlUserDefinedProcessor 属性对于 UDP 定义是**可选**的。
 
-主要可编程性对象是输入和输出。 输入对象用于枚举输入列，输出对象用于将输出数据设置为处理器活动的结果。
+主要可编程性对象是输入**** 和输出****。 输入对象用于枚举输入列，输出对象用于将输出数据设置为处理器活动的结果。
 
 对于输入列枚举，此处使用 `input.Get` 方法。
 
-```
+```csharp
 string column_name = input.Get<string>("column_name");
 ```
 
@@ -1532,7 +1530,7 @@ string column_name = input.Get<string>("column_name");
 
 请务必了解，自定义生成器仅输出使用 `output.Set` 方法调用定义的列和值。
 
-```
+```csharp
 output.Set<string>("mycolumn", mycolumn);
 ```
 
@@ -1540,7 +1538,7 @@ output.Set<string>("mycolumn", mycolumn);
 
 下面是一个处理器示例：
 
-```
+```csharp
 [SqlUserDefinedProcessor]
 public class FullDescriptionProcessor : IProcessor
 {
@@ -1564,7 +1562,7 @@ public override IRow Process(IRow input, IUpdatableRow output)
 
 下面是使用自定义处理器的基本 U-SQL 脚本示例：
 
-```
+```usql
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
 DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
 
@@ -1594,7 +1592,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 
 对用户定义的应用器的典型调用如下所示：
 
-```
+```usql
 SELECT …
 FROM …
 CROSS APPLYis used to pass parameters
@@ -1605,7 +1603,7 @@ new MyScript.MyApplier(param1, param2) AS alias(output_param1 string, …);
 
 用户定义的应用器基类定义如下所示：
 
-```
+```csharp
 public abstract class IApplier : IUserDefinedOperator
 {
 protected IApplier();
@@ -1616,7 +1614,7 @@ public abstract IEnumerable<IRow> Apply(IRow input, IUpdatableRow output);
 
 若要定义用户定义的应用器，需使用 [`SqlUserDefinedApplier`] 属性创建 `IApplier` 接口，这对于用户定义的应用器定义是可选的。
 
-```
+```csharp
 [SqlUserDefinedApplier]
 public class ParserApplier : IApplier
 {
@@ -1635,14 +1633,14 @@ public class ParserApplier : IApplier
 * 针对外部表的每一行进行调用。 返回 `IUpdatableRow` 输出行集。
 * 构造函数类用于将参数传递到用户定义的应用器。
 
-**SqlUserDefinedApplier** 指示该类型应注册为用户定义的应用器。 此类不能继承。
+**SqlUserDefinedApplier** 指示该类型应注册为用户定义的应用器。 无法继承此类。
 
 **SqlUserDefinedApplier** 对于用户定义的应用器是**可选**的。
 
 
 主要可编程性对象如下所示：
 
-```
+```csharp
 public override IEnumerable<IRow> Apply(IRow input, IUpdatableRow output)
 ```
 
@@ -1650,7 +1648,7 @@ public override IEnumerable<IRow> Apply(IRow input, IUpdatableRow output)
 
 可通过调用 `IRow` 架构方法确定各列名称。
 
-```
+```csharp
 ISchema schema = row.Schema;
 var col = schema[i];
 string val = row.Get<string>(col.Name)
@@ -1658,19 +1656,19 @@ string val = row.Get<string>(col.Name)
 
 为从传入 `IRow` 获取实际数据值，需使用 `IRow` 接口的 Get() 方法。
 
-```
+```csharp
 mycolumn = row.Get<int>("mycolumn")
 ```
 
 或使用架构列名称：
 
-```
+```csharp
 row.Get<int>(row.Schema[0].Name)
 ```
 
 必须使用 `IUpdatableRow` 输出设置输出值：
 
-```
+```csharp
 output.Set<int>("mycolumn", mycolumn)
 ```
 
@@ -1680,13 +1678,13 @@ output.Set<int>("mycolumn", mycolumn)
 
 可将用户定义的应用器参数传递到构造函数。 应用器可返回数量不等的列，这些列需要在基本 U-SQL 脚本中应用器调用期间进行定义。
 
-```
+```csharp
 new USQL_Programmability.ParserApplier ("all") AS properties(make string, model string, year string, type string, millage int);
 ```
 
 下面是用户定义的应用器示例：
 
-```
+```csharp
 [SqlUserDefinedApplier]
 public class ParserApplier : IApplier
 {
@@ -1744,7 +1742,7 @@ public override IEnumerable<IRow> Apply(IRow input, IUpdatableRow output)
 
 下面是用户定义的应用器的基本 U-SQL 脚本：
 
-```
+```usql
 DECLARE @input_file string = @"c:\usql-programmability\car_fleet.tsv";
 DECLARE @output_file string = @"c:\usql-programmability\output_file.tsv";
 
@@ -1773,7 +1771,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 
 在此用例场景中，用户定义的应用器充当车队属性的逗号分隔值分析器。 输入文件行如下所示：
 
-```
+```text
 103 Z1AB2CD123XY45889   Ford,Explorer,2005,SUV,152345
 303 Y0AB2CD34XY458890   Chevrolet,Cruise,2010,4Dr,32455
 210 X5AB2CD45XY458893   Nissan,Altima,2011,4Dr,74000
@@ -1781,20 +1779,22 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 
 它是典型的制表符分隔 TSV 文件，具有包含制造商和型号等汽车属性的属性列。 这些属性必须解析为表中的列。 提供的应用器还可让你基于传递的参数在结果行集中生成动态数量的属性。 可以生成所有属性，或仅生成特定的属性集。
 
-    …USQL_Programmability.ParserApplier ("all")
-    …USQL_Programmability.ParserApplier ("make")
-    …USQL_Programmability.ParserApplier ("make&model")
+```text
+...USQL_Programmability.ParserApplier ("all")
+...USQL_Programmability.ParserApplier ("make")
+...USQL_Programmability.ParserApplier ("make&model")
+```
 
 用户定义的应用器可作为应用器对象的新实例进行调用：
 
-```
-CROSS APPLY new MyNameSpace.MyApplier (parameter: “value”) AS alias([columns types]…);
+```usql
+CROSS APPLY new MyNameSpace.MyApplier (parameter: "value") AS alias([columns types]…);
 ```
 
 或使用包装器工厂方法的调用实现：
 
 ```csharp
-    CROSS APPLY MyNameSpace.MyApplier (parameter: “value”) AS alias([columns types]…);
+    CROSS APPLY MyNameSpace.MyApplier (parameter: "value") AS alias([columns types]…);
 ```
 
 ## <a name="use-user-defined-combiners"></a>使用用户定义的合并器
@@ -1804,7 +1804,7 @@ CROSS APPLY new MyNameSpace.MyApplier (parameter: “value”) AS alias([columns
 
 若要在基本 U-SQL 脚本中调用合并器，需使用以下语法：
 
-```
+```usql
 Combine_Expression :=
     'COMBINE' Combine_Input
     'WITH' Combine_Input
@@ -1821,7 +1821,7 @@ Combine_Expression :=
 
 基本 `ICombiner` 类定义：
 
-```
+```csharp
 public abstract class ICombiner : IUserDefinedOperator
 {
 protected ICombiner();
@@ -1834,7 +1834,7 @@ public abstract IEnumerable<IRow> Combine(IRowset left, IRowset right,
 
 `ICombiner` 接口的自定义实现应包含 `IEnumerable<IRow>` 合并重写的定义。
 
-```
+```csharp
 [SqlUserDefinedCombiner]
 public class MyCombiner : ICombiner
 {
@@ -1847,7 +1847,7 @@ public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
 }
 ```
 
-**SqlUserDefinedCombiner** 属性指示该类型应注册为用户定义的合并器。 此类不能继承。
+**SqlUserDefinedCombiner** 属性指示该类型应注册为用户定义的合并器。 无法继承此类。
 
 **SqlUserDefinedCombiner** 用于定义合并器模式属性。 它也是用户定义的合并器定义的可选属性。
 
@@ -1873,21 +1873,21 @@ CombinerMode 枚举可采用以下值：
         IUpdatableRow output
 ```
 
-输入行集作为左侧和右侧 `IRowset` 类型的接口进行传递。 必须同时枚举这两个行集以进行处理。 由于只能枚举每个接口一次，因此必须在必要时对其进行枚举和缓存。
+输入行集作为左侧**** 和右侧**** `IRowset` 类型的接口进行传递。 必须同时枚举这两个行集以进行处理。 由于只能枚举每个接口一次，因此必须在必要时对其进行枚举和缓存。
 
-为进行缓存，可创建 List\<T\> 类型的内存结构，作为 LINQ 查询执行的结果，具体而言就是 List<`IRow`>。 还可在枚举期间使用匿名数据类型。
+出于缓存目的，我们可以创建一个列表 \<T\> 类型作为 LINQ 查询执行的结果，尤其是列出<`IRow`>。 还可在枚举期间使用匿名数据类型。
 
-有关 LINQ 查询的详细信息，请参阅 [LINQ 查询 (C#) 简介](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries)，有关 IEnumerable\<T\> 接口的详细信息，请参阅 [IEnumerable\<T\> 接口](/dotnet/api/system.collections.generic.ienumerable-1)。
+有关 LINQ 查询的详细信息，请参阅[Linq 查询简介（c #）](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries)和[ienumerable \<T\> 接口](/dotnet/api/system.collections.generic.ienumerable-1) \<T\> 。
 
 为从传入 `IRowset` 获取实际数据值，需使用 `IRow` 接口的 Get() 方法。
 
-```
+```csharp
 mycolumn = row.Get<int>("mycolumn")
 ```
 
 可通过调用 `IRow` 架构方法确定各列名称。
 
-```
+```csharp
 ISchema schema = row.Schema;
 var col = schema[i];
 string val = row.Get<string>(col.Name)
@@ -1895,13 +1895,13 @@ string val = row.Get<string>(col.Name)
 
 或使用架构列名称：
 
-```
+```csharp
 c# row.Get<int>(row.Schema[0].Name)
 ```
 
 使用 LINQ 实现的常规枚举如下所示：
 
-```
+```csharp
 var myRowset =
             (from row in left.Rows
                           select new
@@ -1914,7 +1914,7 @@ var myRowset =
 
 必须使用 `IUpdatableRow` 输出设置输出值。
 
-```
+```csharp
 output.Set<int>("mycolumn", mycolumn)
 ```
 
@@ -1922,7 +1922,7 @@ output.Set<int>("mycolumn", mycolumn)
 
 下面是一个合并器示例：
 
-```
+```csharp
 [SqlUserDefinedCombiner]
 public class CombineSales : ICombiner
 {
@@ -2073,14 +2073,14 @@ OUTPUT @rs2 TO @output_file2 USING Outputters.Tsv();
 
 用户定义的合并器可作为填充器对象的新实例进行调用：
 
-```
+```csharp
 USING new MyNameSpace.MyCombiner();
 ```
 
 
 或使用包装器工厂方法的调用实现：
 
-```
+```csharp
 USING MyNameSpace.MyCombiner();
 ```
 
@@ -2094,7 +2094,7 @@ USING MyNameSpace.MyCombiner();
 
 此类接口应包含 `IEnumerable` 接口行集重写的定义。
 
-```
+```csharp
 [SqlUserDefinedReducer]
 public class EmptyUserReducer : IReducer
 {
@@ -2107,17 +2107,17 @@ public class EmptyUserReducer : IReducer
 }
 ```
 
-**SqlUserDefinedReducer** 属性指示该类型应注册为用户定义的化简器。 此类不能继承。
+**SqlUserDefinedReducer** 属性指示该类型应注册为用户定义的化简器。 无法继承此类。
 **SqlUserDefinedReducer** 是用户定义的化简器定义的可选属性。 可用于定义 IsRecursive 属性。
 
 * bool     IsRecursive    
 * **true** = 指示此化简器是否关联和可交换
 
-主要可编程性对象是输入和输出。 input 对象用于枚举输入行。 Output 用于将输出行设置为化简活动的结果。
+主要可编程性对象是输入**** 和输出****。 input 对象用于枚举输入行。 Output 用于将输出行设置为化简活动的结果。
 
 对于输入行枚举，需使用 `Row.Get` 方法。
 
-```
+```csharp
 foreach (IRow row in input.Rows)
 {
     row.Get<string>("mycolumn");
@@ -2130,7 +2130,7 @@ foreach (IRow row in input.Rows)
 
 请务必了解，自定义化简器仅输出使用 `output.Set` 方法调用定义的值。
 
-```
+```csharp
 output.Set<string>("mycolumn", guid);
 ```
 
@@ -2138,7 +2138,7 @@ output.Set<string>("mycolumn", guid);
 
 下面是一个化简器示例：
 
-```
+```csharp
 [SqlUserDefinedReducer]
 public class EmptyUserReducer : IReducer
 {
@@ -2176,7 +2176,7 @@ public class EmptyUserReducer : IReducer
 
 下面是使用自定义化简器的基本 U-SQL 脚本：
 
-```
+```usql
 DECLARE @input_file string = @"\usql-programmability\input_file_reducer.tsv";
 DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
 

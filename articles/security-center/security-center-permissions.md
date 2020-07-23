@@ -4,22 +4,22 @@ description: 本文介绍 Azure 安全中心如何使用基于角色的访问控
 services: security-center
 cloud: na
 documentationcenter: na
-author: rkarlin
-manager: barbkess
+author: memildin
+manager: rkarlin
 ms.assetid: ''
 ms.service: security-center
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: aa6c154e14fbf5291e2493f4f27b9d4501ba18f4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 07/02/2020
+ms.author: memildin
+ms.openlocfilehash: 953881b0c576ad6ce12a4dc44bb0980edd7bcd50
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60905613"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970546"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure 安全中心的权限
 
@@ -35,21 +35,20 @@ Azure 安全中心使用[基于角色的访问控制 (RBAC)](../role-based-acces
 > [!NOTE]
 > 安全角色（安全读取者和安全管理员）只能访问安全中心。 安全角色无权访问存储、Web 和移动或物联网等其他 Azure 服务区域。
 >
->
 
 ## <a name="roles-and-allowed-actions"></a>角色和允许的操作
 
-下表显示安全中心的角色和允许的操作。 X 指示允许该角色执行该操作。
+下表显示安全中心的角色和允许的操作。
 
-| 角色 | 编辑安全策略 | 应用资源的安全建议 | 关闭警报和建议 | 查看警报和建议 |
-|:--- |:---:|:---:|:---:|:---:|
-| 订阅所有者 | X | X | X | X |
-| 订阅参与者 | -- | X | X | X |
-| 资源组所有者 | -- | X | -- | X |
-| 资源组参与者 | -- | X | -- | X |
-| 读取器 | -- | -- | -- | X |
-| 安全管理员 | X | -- | X | X |
-| 安全读取者 | -- | -- | -- | X |
+|操作|安全读取器/ <br> 读取器 |安全管理员  |资源组参与者/ <br> 资源组所有者  |订阅参与者  |订阅所有者  |
+|:--- |:---:|:---:|:---:|:---:|:---:|
+|编辑安全策略|-|✔|-|-|✔|
+|添加/分配计划（包括）法规遵从标准）|-|-|-|-|✔|
+|更改订阅定价层|-|✔|-|-|✔|
+|启用/禁用自动预配|-|✔|✔|-|✔|
+|应用资源的安全建议</br> （并使用[快速修复！](security-center-remediate-recommendations.md#quick-fix-remediation)）|-|-|✔|✔|✔|
+|消除警报|-|✔|-|✔|✔|
+|查看警报和建议|✔|✔|✔|✔|✔|
 
 > [!NOTE]
 > 对于需要完成任务的用户，建议尽可能为其分配权限最小的角色。 例如，将“读者”角色分配到只需查看有关资源的安全运行状况而不执行操作（例如应用建议或编辑策略）的用户。

@@ -1,21 +1,15 @@
 ---
 title: 使用 Azure CLI 创建事件中心 - Azure 事件中心 | Microsoft Docs
 description: 本快速入门介绍如何使用 Azure CLI 创建事件中心，然后使用 Java 发送和接收事件。
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
-ms.devlang: java
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: 3bc7b409d590ac096b70431ae009fed36c968307
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.openlocfilehash: 90828a09b925fd3af774b22db3102094c1dd0c6d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66148249"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537150"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-cli"></a>快速入门：使用 Azure CLI 创建事件中心
 
@@ -76,11 +70,10 @@ az eventhubs eventhub create --name <event hub name> --resource-group <resource 
 
 在本文中，你已创建一个资源组、一个事件中心命名空间和一个事件中心。 有关如何将事件发送到事件中心（或）从事件中心接收事件的分步说明，请参阅“发送和接收事件”教程： 
 
-- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
-- [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md)
-- [Java](event-hubs-java-get-started-send.md)
-- [Python](event-hubs-python-get-started-send.md)
-- [Node.js](event-hubs-node-get-started-send.md)
+- [.NET Core](get-started-dotnet-standard-send-v2.md)
+- [Java](get-started-java-send-v2.md)
+- [Python](get-started-python-send-v2.md)
+- [JavaScript](get-started-node-send-v2.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C（仅发送）](event-hubs-c-getstarted-send.md)
 - [Apache Storm（仅接收）](event-hubs-storm-getstarted-receive.md)

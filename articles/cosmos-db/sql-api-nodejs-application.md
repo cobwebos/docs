@@ -1,20 +1,19 @@
 ---
-title: 教程：使用 JavaScript SDK 生成 Node.js Web 应用，以管理 Azure Cosmos DB SQL API 数据
+title: 教程：使用 Azure Cosmos DB JavaScript SDK 构建 Node.js Web 应用以管理 SQL API 数据
 description: 此 Node.js 教程探讨了如何使用 Microsoft Azure Cosmos DB 通过在 Microsoft Azure 应用服务的 Web 应用功能中托管的 Node.js Express Web 应用程序存储和访问数据。
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 12/10/2018
+ms.date: 11/05/2019
 ms.author: sngun
-Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: efe24f5203c0479c71b565b8cf2c272dc107a96b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b85a70b6d2feba68ed5a766ad05bc6aa22f597f8
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088105"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114684"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>教程：使用 JavaScript SDK 生成 Node.js Web 应用，以便在 Azure Cosmos DB 中管理 SQL API 帐户 
 
@@ -28,7 +27,7 @@ ms.locfileid: "58088105"
 
 作为开发人员，你可能有使用 NoSQL 文件数据的应用程序。 可以使用 Azure Cosmos DB 中的 SQL API 帐户存储和访问此文档数据。 本 Node.js 教程介绍了如何使用在 Microsoft Azure 应用服务的 Web 应用功能上托管的 Node.js Express 应用程序，通过 Azure Cosmos DB 中的 SQL API 帐户存储和访问数据。 在本教程中，需生成一个基于 Web 的应用程序（待办事项应用）来创建、检索和完成任务。 任务存储为 Azure Cosmos DB 中的 JSON 文档。 
 
-本教程演示如何使用 Azure 门户在 Azure Cosmos DB 中创建 SQL API 帐户， 然后生成并运行一个基于 Node.js SDK 的 Web 应用，以便创建数据库和容器并向容器添加项。 本教程使用 JavaScript SDK 版本 2.0。
+本教程演示如何使用 Azure 门户在 Azure Cosmos DB 中创建 SQL API 帐户， 然后生成并运行一个基于 Node.js SDK 的 Web 应用，以便创建数据库和容器并向容器添加项。 本教程使用 JavaScript SDK 版本 3.0。
 
 本教程涵盖以下任务：
 
@@ -38,7 +37,7 @@ ms.locfileid: "58088105"
 > * 将应用程序连接到 Azure Cosmos DB
 > * 运行应用程序并将其部署到 Azure
 
-## <a name="_Toc395783176"></a>先决条件
+## <a name="prerequisites"></a><a name="_Toc395783176"></a>先决条件
 
 在按照本文中的说明操作之前，请确保具备以下资源：
 
@@ -50,14 +49,14 @@ ms.locfileid: "58088105"
 * [Express 生成器](https://www.expressjs.com/starter/generator.html)（可以通过 `npm install express-generator -g` 安装 Express）
 * 在本地工作站上安装 [Git][Git]。
 
-## <a name="_Toc395637761"></a>创建 Azure Cosmos DB 帐户
+## <a name="create-an-azure-cosmos-db-account"></a><a name="_Toc395637761"></a>创建 Azure Cosmos DB 帐户
 让我们首先创建一个 Azure Cosmos DB 帐户。 如果已有一个帐户，或者要在本教程中使用 Azure Cosmos DB 模拟器，可以跳到[步骤 2：创建新的 Node.js 应用程序](#_Toc395783178)。
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 [!INCLUDE [cosmos-db-keys](../../includes/cosmos-db-keys.md)]
 
-## <a name="_Toc395783178"></a>创建新的 Node.js 应用程序
+## <a name="create-a-new-nodejs-application"></a><a name="_Toc395783178"></a>创建新的 Node.js 应用程序
 现在让我们来了解如何使用 Express 框架创建基本的 Hello World Node.js 项目。
 
 1. 打开最喜欢的终端，如 Node.js 命令提示符。
@@ -83,29 +82,23 @@ ms.locfileid: "58088105"
    npm start
    ```
 
-1. 在浏览器中导航到 [http://localhost:3000](http://localhost:3000) 即可查看新应用程序。
+1. 在浏览器中导航到 `http://localhost:3000` 即可查看新应用程序。
    
-   ![了解 Node.js - 浏览器窗口中 Hello World 应用程序的屏幕截图](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
+   :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-express.png" alt-text="了解 Node.js - 浏览器窗口中 Hello World 应用程序的屏幕截图":::
 
    停止应用程序的方法是先在终端窗口中按 CTRL+C，然后选择“y”终止批处理作业。
 
-## <a name="_Toc395783179"></a>安装所需的模块
+## <a name="install-the-required-modules"></a><a name="_Toc395783179"></a>安装所需的模块
 
 **package.json** 文件是在项目的根目录中创建的文件之一。 此文件包含一系列其他模块，它们是 Node.js 应用程序必需的。 在将此应用程序部署到 Azure 时，请使用此文件以确定应该在 Azure 上安装哪些模块来支持应用程序。 为本教程再安装两个包。
 
-1. 打开终端，通过 npm 安装 **async** 模块。
-
-   ```bash
-   npm install async --save
-   ```
-
-2. 通过 npm 安装 **\@azure/cosmos** 模板。 
+1. 通过 npm 安装 **\@azure/cosmos** 模板。 
 
    ```bash
    npm install @azure/cosmos
    ```
 
-## <a name="_Toc395783180"></a>将 Node.js 应用程序连接到 Azure Cosmos DB
+## <a name="connect-the-nodejs-application-to-azure-cosmos-db"></a><a name="_Toc395783180"></a>将 Node.js 应用程序连接到 Azure Cosmos DB
 完成初始安装和配置以后，下一步是编写待办事项应用程序与 Azure Cosmos DB 通信所需的代码。
 
 ### <a name="create-the-model"></a>创建模型
@@ -116,76 +109,79 @@ ms.locfileid: "58088105"
 3. 将以下代码复制到“taskDao.js”文件中：
 
    ```javascript
-   // @ts-check
-   const CosmosClient = require("@azure/cosmos").CosmosClient;
-   const debug = require("debug")("todo:taskDao");
-   class TaskDao {
-     /**
-      * Manages reading, adding, and updating Tasks in Cosmos DB
-      * @param {CosmosClient} cosmosClient
-      * @param {string} databaseId
-      * @param {string} containerId
-      */
-     constructor(cosmosClient, databaseId, containerId) {
-       this.client = cosmosClient;
-       this.databaseId = databaseId;
-       this.collectionId = containerId;
+    // @ts-check
+    const CosmosClient = require('@azure/cosmos').CosmosClient
+    const debug = require('debug')('todo:taskDao')
 
-       this.database = null;
-       this.container = null;
-     }
+    // For simplicity we'll set a constant partition key
+    const partitionKey = undefined
+    class TaskDao {
+      /**
+       * Manages reading, adding, and updating Tasks in Cosmos DB
+       * @param {CosmosClient} cosmosClient
+       * @param {string} databaseId
+       * @param {string} containerId
+       */
+      constructor(cosmosClient, databaseId, containerId) {
+        this.client = cosmosClient
+        this.databaseId = databaseId
+        this.collectionId = containerId
 
-     async init() {
-       debug("Setting up the database...");
-       const dbResponse = await this.client.databases.createIfNotExists({
-         id: this.databaseId
-       });
-       this.database = dbResponse.database;
-       debug("Setting up the database...done!");
-       debug("Setting up the container...");
-       const coResponse = await this.database.containers.createIfNotExists({
-         id: this.collectionId
-       });
-       this.container = coResponse.container;
-       debug("Setting up the container...done!");
-     }
+        this.database = null
+        this.container = null
+      }
 
-     async find(querySpec) {
-       debug("Querying for items from the database");
-       if (!this.container) {
-         throw new Error("Collection is not initialized.");
-       }
-       const { result: results } = await this.container.items
-        .query(querySpec)
-        .toArray();
-      return results;
+      async init() {
+        debug('Setting up the database...')
+        const dbResponse = await this.client.databases.createIfNotExists({
+          id: this.databaseId
+        })
+        this.database = dbResponse.database
+        debug('Setting up the database...done!')
+        debug('Setting up the container...')
+        const coResponse = await this.database.containers.createIfNotExists({
+          id: this.collectionId
+        })
+        this.container = coResponse.container
+        debug('Setting up the container...done!')
+      }
+
+      async find(querySpec) {
+        debug('Querying for items from the database')
+        if (!this.container) {
+          throw new Error('Collection is not initialized.')
+        }
+        const { resources } = await this.container.items.query(querySpec).fetchAll()
+        return resources
+      }
+
+      async addItem(item) {
+        debug('Adding an item to the database')
+        item.date = Date.now()
+        item.completed = false
+        const { resource: doc } = await this.container.items.create(item)
+        return doc
+      }
+
+      async updateItem(itemId) {
+        debug('Update an item in the database')
+        const doc = await this.getItem(itemId)
+        doc.completed = true
+
+        const { resource: replaced } = await this.container
+          .item(itemId, partitionKey)
+          .replace(doc)
+        return replaced
+      }
+
+      async getItem(itemId) {
+        debug('Getting an item from the database')
+        const { resource } = await this.container.item(itemId, partitionKey).read()
+        return resource
+      }
     }
 
-    async addItem(item) {
-      debug("Adding an item to the database");
-      item.date = Date.now();
-      item.completed = false;
-      const { body: doc } = await this.container.items.create(item);
-      return doc;
-    }
-
-    async updateItem(itemId) {
-      debug("Update an item in the database");
-      const doc = await this.getItem(itemId);
-      doc.completed = true;
-
-      const { body: replaced } = await this.container.item(itemId).replace(doc);
-      return replaced;
-    }
-
-    async getItem(itemId) {
-      debug("Getting an item from the database");
-      const { body } = await this.container.item(itemId).read();
-      return body;
-    }
-   }
-
-   module.exports = TaskDao;
+    module.exports = TaskDao
    ```
 4. 保存并关闭 **taskDao.js** 文件。  
 
@@ -196,56 +192,56 @@ ms.locfileid: "58088105"
 2. 将以下代码添加到 **tasklist.js**。 此代码会加载 **tasklist.js** 使用的 CosmosClient 和 async 模块， 并定义 **TaskList** 类，该类作为我们之前定义的 **TaskDao** 对象的一个实例来传递：
    
    ```javascript
-   const TaskDao = require("../models/TaskDao");
+    const TaskDao = require("../models/TaskDao");
+    
+    class TaskList {
+      /**
+       * Handles the various APIs for displaying and managing tasks
+       * @param {TaskDao} taskDao
+       */
+      constructor(taskDao) {
+        this.taskDao = taskDao;
+      }
+      async showTasks(req, res) {
+        const querySpec = {
+          query: "SELECT * FROM root r WHERE r.completed=@completed",
+          parameters: [
+            {
+              name: "@completed",
+              value: false
+            }
+          ]
+        };
 
-   class TaskList {
-     /**
-      * Handles the various APIs for displaying and managing tasks
-      * @param {TaskDao} taskDao
-     */
-    constructor(taskDao) {
-    this.taskDao = taskDao;
+        const items = await this.taskDao.find(querySpec);
+        res.render("index", {
+          title: "My ToDo List ",
+          tasks: items
+        });
+      }
+
+      async addTask(req, res) {
+        const item = req.body;
+
+        await this.taskDao.addItem(item);
+        res.redirect("/");
+      }
+
+      async completeTask(req, res) {
+        const completedTasks = Object.keys(req.body);
+        const tasks = [];
+
+        completedTasks.forEach(task => {
+          tasks.push(this.taskDao.updateItem(task));
+        });
+
+        await Promise.all(tasks);
+
+        res.redirect("/");
+      }
     }
-    async showTasks(req, res) {
-      const querySpec = {
-        query: "SELECT * FROM root r WHERE r.completed=@completed",
-        parameters: [
-          {
-            name: "@completed",
-            value: false
-          }
-        ]
-      };
 
-      const items = await this.taskDao.find(querySpec);
-      res.render("index", {
-        title: "My ToDo List ",
-        tasks: items
-      });
-    }
-
-    async addTask(req, res) {
-      const item = req.body;
-
-      await this.taskDao.addItem(item);
-      res.redirect("/");
-    }
-
-    async completeTask(req, res) {
-      const completedTasks = Object.keys(req.body);
-      const tasks = [];
-
-      completedTasks.forEach(task => {
-        tasks.push(this.taskDao.updateItem(task));
-      });
-
-      await Promise.all(tasks);
-
-      res.redirect("/");
-    }
-   }
-
-   module.exports = TaskList;
+    module.exports = TaskList;
    ```
 
 3. 保存并关闭 **tasklist.js** 文件。
@@ -286,79 +282,81 @@ ms.locfileid: "58088105"
 2. 将以下代码添加到 **app.js** 文件。 此代码定义要使用的配置文件，并将值加载到将要在后续部分使用的某些变量中。 
    
    ```javascript
-   const CosmosClient = require("@azure/cosmos").CosmosClient;
-   const config = require("./config");
-   const TaskList = require("./routes/tasklist");
-   const TaskDao = require("./models/taskDao");
+    const CosmosClient = require('@azure/cosmos').CosmosClient
+    const config = require('./config')
+    const TaskList = require('./routes/tasklist')
+    const TaskDao = require('./models/taskDao')
 
-   const express = require("express");
-   const path = require("path");
-   const logger = require("morgan");
-   const cookieParser = require("cookie-parser");
-   const bodyParser = require("body-parser");
+    const express = require('express')
+    const path = require('path')
+    const logger = require('morgan')
+    const cookieParser = require('cookie-parser')
+    const bodyParser = require('body-parser')
 
-   const app = express();
+    const app = express()
 
-   // view engine setup
-   app.set("views", path.join(__dirname, "views"));
-   app.set("view engine", "jade");
+    // view engine setup
+    app.set('views', path.join(__dirname, 'views'))
+    app.set('view engine', 'jade')
 
-   // uncomment after placing your favicon in /public
-   //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-   app.use(logger("dev"));
-   app.use(bodyParser.json());
-   app.use(bodyParser.urlencoded({ extended: false }));
-   app.use(cookieParser());
-   app.use(express.static(path.join(__dirname, "public")));
+    // uncomment after placing your favicon in /public
+    //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+    app.use(logger('dev'))
+    app.use(bodyParser.json())
+    app.use(bodyParser.urlencoded({ extended: false }))
+    app.use(cookieParser())
+    app.use(express.static(path.join(__dirname, 'public')))
 
-   //Todo App:
-   const cosmosClient = new CosmosClient({
-     endpoint: config.host,
-     auth: {
-       masterKey: config.authKey
-     }
-   });
-   const taskDao = new TaskDao(cosmosClient, config.databaseId, config.containerId);
-   const taskList = new TaskList(taskDao);
-   taskDao
-     .init(err => {
-       console.error(err);
-     })
-     .catch(err => {
-       console.error(err);
-       console.error("Shutting down because there was an error setting up the database.");
-       process.exit(1);
-     });
+    //Todo App:
+    const cosmosClient = new CosmosClient({
+      endpoint: config.host,
+      key: config.authKey
+    })
+    const taskDao = new TaskDao(cosmosClient, config.databaseId, config.containerId)
+    const taskList = new TaskList(taskDao)
+    taskDao
+      .init(err => {
+        console.error(err)
+      })
+      .catch(err => {
+        console.error(err)
+        console.error(
+          'Shutting down because there was an error settinig up the database.'
+        )
+        process.exit(1)
+      })
 
-   app.get("/", (req, res, next) => taskList.showTasks(req, res).catch(next));
-   app.post("/addtask", (req, res, next) => taskList.addTask(req, res).catch(next));
-   app.post("/completetask", (req, res, next) => taskList.completeTask(req, res).catch(next));
-   app.set("view engine", "jade");
+    app.get('/', (req, res, next) => taskList.showTasks(req, res).catch(next))
+    app.post('/addtask', (req, res, next) => taskList.addTask(req, res).catch(next))
+    app.post('/completetask', (req, res, next) =>
+      taskList.completeTask(req, res).catch(next)
+    )
+    app.set('view engine', 'jade')
 
-   // catch 404 and forward to error handler
-   app.use(function(req, res, next) {
-     const err = new Error("Not Found");
-     err.status = 404;
-     next(err);
-   });
+    // catch 404 and forward to error handler
+    app.use(function(req, res, next) {
+      const err = new Error('Not Found')
+      err.status = 404
+      next(err)
+    })
 
-   // error handler
-   app.use(function(err, req, res, next) {
-     // set locals, only providing error in development
-     res.locals.message = err.message;
-     res.locals.error = req.app.get("env") === "development" ? err : {};
+    // error handler
+    app.use(function(err, req, res, next) {
+      // set locals, only providing error in development
+      res.locals.message = err.message
+      res.locals.error = req.app.get('env') === 'development' ? err : {}
 
-     // render the error page
-     res.status(err.status || 500);
-     res.render("error");
-   });
+      // render the error page
+      res.status(err.status || 500)
+      res.render('error')
+    })
 
-   module.exports = app;
+    module.exports = app
    ```
 
 3. 最后，保存并关闭 **app.js** 文件。
 
-## <a name="_Toc395783181"></a>生成用户界面
+## <a name="build-a-user-interface"></a><a name="_Toc395783181"></a>生成用户界面
 
 现在让我们生成用户界面，使用户能够与应用程序交互。 我们在前述部分创建的 Express 应用程序使用 **Jade** 作为视图引擎。
 
@@ -434,13 +432,13 @@ ms.locfileid: "58088105"
     
 第二个窗体包含两个输入字段和一个按钮，可以通过该按钮将内容发布到控制器的 **/addtask** 方法，以便新建项。 这是运行应用程序所需的一切。
 
-## <a name="_Toc395783181"></a>在本地运行应用程序
+## <a name="run-your-application-locally"></a><a name="_Toc395783181"></a>在本地运行应用程序
 
 生成应用程序以后，即可通过以下步骤在本地运行它：  
 
-1. 若要在本地计算机上测试应用程序，请在终端中运行 `npm start` 以启动应用程序，然后刷新 [http://localhost:3000](http://localhost:3000) 浏览器页。 该页现在应该如以下屏幕截图所示：
+1. 若要在本地计算机上测试应用程序，请在终端中运行 `npm start` 以启动应用程序，然后刷新 `http://localhost:3000` 浏览器页。 该页现在应该如以下屏幕截图所示：
    
-    ![浏览器窗口中 MyTodo List 应用程序的屏幕截图](./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png)
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="浏览器窗口中“我的待办事项列表”应用程序的屏幕截图":::
 
     > [!TIP]
     > 如果收到有关 layout.jade 文件或 index.jade 文件的缩进错误，请确保这两个文件中的头两行都已经左对齐，没有空格。 如果头两行之前留有空格，请删除这些空格，将这两个文件保存，然后刷新浏览器窗口。 
@@ -449,13 +447,13 @@ ms.locfileid: "58088105"
 
 3. 页面应更新为在 ToDo 列表中显示新建项。
    
-    ![ToDo 列表中具有新的项的应用程序屏幕截图](./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png)
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="待办事项列表中有新的项的应用程序屏幕截图":::
 
 4. 若要完成任务，请选中“完成”列中的复选框，然后选择“更新任务”。 此时会更新已创建的文档并将其从视图中删除。
 
 5. 若要停止应用程序，请在终端窗口中按 CTRL+C，然后选择“Y”以终止批处理作业。
 
-## <a name="_Toc395783182"></a>将应用程序部署到 Web 应用
+## <a name="deploy-your-application-to-web-apps"></a><a name="_Toc395783182"></a>将应用程序部署到 Web 应用
 
 应用程序在本地成功以后，即可通过以下步骤将其部署到 Azure：
 
@@ -479,7 +477,7 @@ ms.locfileid: "58088105"
 
 不再需要资源组、Azure Cosmos DB 帐户和所有相关的资源时，可将这些资源删除。 为此，请选择用于 Azure Cosmos DB 帐户的资源组，接着选择“删除”，然后确认要删除的资源组的名称。
 
-## <a name="_Toc395637775"></a>后续步骤
+## <a name="next-steps"></a><a name="_Toc395637775"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [使用 Xamarin 和 Azure Cosmos DB 构建移动应用程序](mobile-apps-with-xamarin.md)

@@ -3,25 +3,25 @@ title: 应用程序代理应用程序加载耗时过长 | Microsoft Docs
 description: 对 Azure AD 应用程序代理的页面加载性能问题进行故障排除
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ac1182d719d7c90129115e1fadf94f4f86a28e8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b1dc1b14a917786e124775a4505c53f63238a383
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782648"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203862"
 ---
 # <a name="an-application-proxy-application-takes-too-long-to-load"></a>应用程序代理应用程序加载耗时过长
 
@@ -31,8 +31,6 @@ ms.locfileid: "65782648"
 尽管你的应用程序正在运行，也可能会发生长时间延迟。 你可能需要进行网络拓扑调整以提高速度。 有关不同拓扑的评估，请参阅[网络注意事项文档](application-proxy-network-topology.md)。
 
 除了网络拓扑之外，目前还没有关于性能调整的更多建议。 随着应用程序代理服务的扩展，可能会有物理上更为接近的数据中心。 距离上的接近可能有助于缓解延迟。 有关 Azure 数据中心列表，请参阅[延迟测试页](http://www.azurespeed.com/Azure/Latency)。 
-
-具有应用程序代理服务的数据中心可以在[连接器端口测试工具](https://aadap-portcheck.connectorporttest.msappproxy.net/)上找到。 
 
 ## <a name="feedback-on-application-proxy-data-center-locations"></a>有关应用程序代理数据中心位置的反馈 
 可能有的 Azure 数据中心尚未包含应用程序代理，但会为你带来很大的延迟改进。 将数据中心位置发送到 aadapfeedback@microsoft.com。 Microsoft 将根据你的反馈来扩展计划。

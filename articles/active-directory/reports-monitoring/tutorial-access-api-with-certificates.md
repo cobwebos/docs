@@ -1,5 +1,5 @@
 ---
-title: “使用证书通过 Azure AD 报告 API 获取数据”教程 | Microsoft Docs
+title: 使用证书的 AD 报告 API 教程 | Microsoft Docs
 description: 本教程介绍如何在没有用户干预的情况下，使用证书凭据通过 Azure AD 报告 API 从目录获取数据。
 services: active-directory
 documentationcenter: ''
@@ -10,18 +10,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: tutorial
 ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e006111cce7f53ff87f1c6d60b2a5147da02e1e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom: has-adal-ref
+ms.openlocfilehash: 4f27385cc33c6c289718c3143d03e24f0454a9f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60284868"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608002"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>教程：使用证书通过 Azure Active Directory 报告 API 获取数据
 
@@ -29,11 +30,11 @@ ms.locfileid: "60284868"
 
 本教程介绍如何使用测试证书访问 MS 图形 API 以进行报告。 建议不要在生产环境中使用测试证书。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 1. 若要访问登录数据，请确保拥有一个使用高级 (P1/P2) 许可证的 Azure Active Directory 租户。 请参阅 [Azure Active Directory Premium 入门](../fundamentals/active-directory-get-started-premium.md)来升级 Azure Active Directory 版本。 请注意，如果在升级之前没有任何活动数据，则在升级到高级版许可证后，数据需要经过几天才会显示在报表中。 
 
-2. 创建或切换到属于该租户的全局管理员、安全管理员、安全读取者或报表读取者角色的用户帐户。 
+2. 创建或切换到属于该租户的全局管理员、安全管理员、安全读取者或报表读取者角色的用户帐户   。 
 
 3. 完成[访问 Azure Active Directory 报告 API 的先决条件](howto-configure-prerequisites-for-reporting-api.md)。 
 
@@ -44,9 +45,9 @@ ms.locfileid: "60284868"
     - 使用 ADAL 的用户、应用程序密钥和证书中的访问令牌
     - 处理分页结果的图形 API
 
-6. 如果是首次使用模块，请运行 Install-MSCloudIdUtilsModule，否则使用 Import-Module Powershell 命令将其导入。 会话应如以下屏幕所示：![Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. 如果是首次使用模块，请运行 Install-MSCloudIdUtilsModule；否则，请使用 Import-Module PowerShell 命令将其导入 。 会话应如以下屏幕所示：![Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
   
-7. 使用 New-SelfSignedCertificate Powershell commandlet 创建测试证书。
+7. 使用 New-SelfSignedCertificate PowerShell commandlet 创建测试证书。
 
    ```
    $cert = New-SelfSignedCertificate -Subject "CN=MSGraph_ReportingAPI" -CertStoreLocation "Cert:\CurrentUser\My" -KeyExportPolicy Exportable -KeySpec Signature -KeyLength 2048 -KeyAlgorithm RSA -HashAlgorithm SHA256
@@ -61,15 +62,15 @@ ms.locfileid: "60284868"
 
 ## <a name="get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>使用证书通过 Azure Active Directory 报告 API 获取数据
 
-1. 导航到 [Azure 门户](https://portal.azure.com)，选择“Azure Active Directory”，然后选择“应用注册”并从列表中选择应用程序。 
+1. 导航到 [Azure 门户](https://portal.azure.com)，选择“Azure Active Directory”，然后选择“应用注册”并从列表中选择应用程序 。 
 
-2. 选择“设置” > “密钥”，然后选择“上传公钥”。
+2. 在“应用程序注册”边栏选项卡上的“管理”部分中选择“证书和密码”，然后选择“上传证书”  。
 
-3. 选择上一步中的证书文件，然后选择“保存”。 
+3. 选择上一步中的证书文件，然后选择“添加”。 
 
-4. 请注意应用程序 ID 以及刚刚使用应用程序注册的证书的指纹。 若要查找指纹，在门户中的“应用程序”页，转到“设置”，然后单击“密钥”。 指纹将位于“公钥”列表下。
+4. 请注意应用程序 ID 以及刚刚使用应用程序注册的证书的指纹。 若要查找指纹，请从门户中的应用程序页转到“管理”部分下的“证书和密码” 。 指纹将位于“证书”列表下。
 
-5. 在内联清单编辑器中打开应用程序清单，并使用以下架构将 keyCredentials 属性替换为新的证书信息。 
+5. 在内联清单编辑器中打开应用程序清单，并验证 keyCredentials 属性是否更新为了新的证书信息，如下所示 - 
 
    ```
    "keyCredentials": [
@@ -81,23 +82,20 @@ ms.locfileid: "60284868"
             "value":  "$base64Value" //base64 encoding of the certificate raw data
         }
     ]
-   ```
-
-6. 保存清单。 
-  
-7. 现在，可以使用此证书获取 MS 图形 API 的访问令牌。 使用 MSCloudIdUtils PowerShell 模块中的 Get-MSCloudIdMSGraphAccessTokenFromCert cmdlet，传入从上一步获取的应用程序 ID 和指纹。 
+   ``` 
+6. 现在，可以使用此证书获取 MS 图形 API 的访问令牌。 使用 MSCloudIdUtils PowerShell 模块中的 Get-MSCloudIdMSGraphAccessTokenFromCert cmdlet，传入从上一步获取的应用程序 ID 和指纹。 
 
    ![Azure 门户](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
 
-8. 在 Powershell 脚本中使用访问令牌来查询图形 API。 使用 MSCloudIDUtils 中的 Invoke-MSCloudIdMSGraphQuery cmdlet 来枚举 signins 和 directoryAudits 终结点。 该 cmdlet 处理分多页的结果，并将这些结果发送到 PowerShell 管道。
+7. 在 PowerShell 脚本中使用访问令牌来查询图形 API。 使用 MSCloudIDUtils 中的 Invoke-MSCloudIdMSGraphQuery cmdlet 来枚举 signins 和 directoryAudits 终结点。 该 cmdlet 处理分多页的结果，并将这些结果发送到 PowerShell 管道。
 
-9. 查询 directoryAudits 终结点以检索审核日志。 
+8. 查询 directoryAudits 终结点以检索审核日志。 
    ![Azure 门户](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
 
-10. 查询 signins 终结点以检索登录日志。
+9. 查询 signins 终结点以检索登录日志。
     ![Azure 门户](./media/tutorial-access-api-with-certificates/query-signins.png)
 
-11. 现在可以选择将此数据导出为 CSV 并保存到 SIEM 系统。 也可以将脚本包装到计划的任务中，以便从租户定期获取 Azure AD 数据，不需将应用程序密钥存储在源代码中。 
+10. 现在可以选择将此数据导出为 CSV 并保存到 SIEM 系统。 也可以将脚本包装到计划的任务中，以便从租户定期获取 Azure AD 数据，不需将应用程序密钥存储在源代码中。 
 
 ## <a name="next-steps"></a>后续步骤
 

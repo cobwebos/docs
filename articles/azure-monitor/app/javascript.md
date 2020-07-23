@@ -1,247 +1,350 @@
 ---
-title: 适用于 JavaScript Web 应用的 Azure Application Insights | Microsoft Docs
-description: 获取页面视图、会话计数和 Web 客户端数据，以及跟踪使用模式。 检测 JavaScript 网页中的异常和性能问题。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 3b710d09-6ab4-4004-b26a-4fa840039500
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: 适用于 JavaScript Web 应用的 Azure Application Insights
+description: 获取页面视图和会话计数、Web 客户端数据、单页应用程序 (SPA)，以及跟踪使用模式。 检测 JavaScript 网页中的异常和性能问题。
 ms.topic: conceptual
-ms.date: 03/14/2017
-ms.author: mbullwin
-ms.openlocfilehash: 2192bad89764f20c24c85d9571bebbd6518de307
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+author: Dawgfan
+ms.author: mmcc
+ms.date: 09/20/2019
+ms.openlocfilehash: 4b3d489477a0ee0cc201d4383b5ed960de515c7d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66387276"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517104"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
+
 了解网页或应用的性能和使用情况。 如果将 [Application Insights](app-insights-overview.md) 添加到页面脚本，可以获取页面加载和 AJAX 调用的时间、浏览器异常和 AJAX 失败的计数和详细信息，以及用户和会话计数。 所有这些信息可按页面、客户端 OS 和浏览器版本、地理位置和其他维度细分。 可以针对失败计数或页面加载缓慢情况设置警报。 并且通过在 JavaScript 代码中插入跟踪调用，可以跟踪网页应用程序的不同功能的使用情况。
 
-可以在任何网页中使用 Application Insights - 刚刚添加了 JavaScript 的简短片段。 如果 Web 服务是 [Java](java-get-started.md) 或 [ASP.NET](asp-net.md)，可以集成来自服务器和客户端的遥测。
+可以在任何网页中使用 Application Insights - 刚刚添加了 JavaScript 的简短片段。 如果 Web 服务是 [Java](java-get-started.md) 或 [ASP.NET](asp-net.md)，则你可以将服务器端 SDK 与客户端 JavaScript SDK 结合使用，以全方面地了解应用的性能。
 
-![在 portal.azure.com 中，打开应用的资源，并单击“浏览器”](media/javascript/03.png)
+## <a name="adding-the-javascript-sdk"></a>添加 JavaScript SDK
 
-首先需要订阅 [Microsoft Azure](https://azure.com)。 如果团队拥有组织订阅，请咨询所有者将 Microsoft 帐户添加到其中。
+1. 首先需要一个 Application Insights 资源。 如果你尚未获得资源和检测密钥，请遵照[有关创建新资源的说明](create-new-resource.md)。
+2. 对于希望将 JavaScript 遥测发送到的资源（从步骤1开始），复制_检测密钥_（也称为 "iKey"）。你需要将其添加到 `instrumentationKey` Application Insights JAVASCRIPT SDK 的设置中。
+3. 通过以下两个选项之一，将 Application Insights JavaScript SDK 添加到网页或应用：
+    * [npm 设置](#npm-based-setup)
+    * [JavaScript 代码片段](#snippet-based-setup)
 
-## <a name="set-up-application-insights-for-your-web-page"></a>设置适用于网页的 Application Insights
-按如下方式将加载程序代码片段添加到网页。
+> [!IMPORTANT]
+> 仅使用一种方法将 JavaScript SDK 添加到应用程序。 如果使用 NPM 安装程序，请不要使用代码片段，反之亦然。
 
-### <a name="open-or-create-application-insights-resource"></a>打开或创建 Application Insights 资源
-Application Insights 资源是显示有关页面性能和使用情况的数据的位置。 
+> [!NOTE]
+> NPM 安装程序会将 JavaScript SDK 作为依赖项安装到项目中，启用 IntelliSense，而代码片段则会在运行时获取 SDK。 两者都支持相同的功能。 但是，需要更多自定义事件和配置的开发人员通常会选择 NPM 安装程序，而需要快速启用现成 Web 分析的用户则选择代码片段。
 
-登录到 [Azure 门户](https://portal.azure.com)。
+### <a name="npm-based-setup"></a>基于 npm 的设置
 
-如果已经为应用的服务器端设置监视，则已创建了一个资源：
+通过 NPM 安装。
 
-![选择“浏览”、“开发人员服务”、“Application Insights”。](media/javascript/01-find.png)
+```sh
+npm i --save @microsoft/applicationinsights-web
+```
 
-否则，请创建资源：
+> *注意：* **Typings 包含在此包**中，因此你**不**需要安装单独的 Typings 包。
+    
+```js
+import { ApplicationInsights } from '@microsoft/applicationinsights-web'
 
-![选择“新建”、“开发人员服务”、“Application Insights”。](media/javascript/01-create.png)
+const appInsights = new ApplicationInsights({ config: {
+  instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE'
+  /* ...Other Configuration Options... */
+} });
+appInsights.loadAppInsights();
+appInsights.trackPageView(); // Manually call trackPageView to establish the current user/session/pageview
+```
 
-*有问题吗？* [有关创建资源的详细信息](create-new-resource.md )。
+### <a name="snippet-based-setup"></a>基于代码片段的设置
 
-### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>将 SDK 脚本添加到应用或网页
+如果应用不使用 npm，则可以通过直接使用 Application Insights 来检测网页：只需将此代码片段粘贴到每个页面的顶部即可。 最好是部分中的第一个脚本， `<head>` 以便它可以监视所有依赖项的任何潜在问题以及任何 JavaScript 错误。 如果使用的是 Blazor Server 应用，请在文件 `_Host.cshtml` 的顶部 `<head>` 部分中添加代码片段。
 
-```HTML
-<!-- 
-To collect user behavior analytics about your application, 
-insert the following script into each page you want to track.
-Place this code immediately before the closing </head> tag,
-and before any other scripts. Your first data will appear 
-automatically in just a few seconds.
--->
+为了帮助跟踪应用程序使用的代码段版本，从版本2.5.5 开始，页面视图事件将包含一个新的标记 "ai ..."，它将包含标识的代码段版本。
+
+当前代码段（如下所列）将标识为版本 "3"。
+
+```html
 <script type="text/javascript">
-var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){
-  function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/next/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t
-  }({
-      instrumentationKey:"<your instrumentation key>"
-  });
-
-window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+!function(T,l,y){var S=T.location,u="script",k="instrumentationKey",D="ingestionendpoint",C="disableExceptionTracking",E="ai.device.",I="toLowerCase",b="crossOrigin",w="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"4",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[I](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,p,l,u;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][I]()]=i[1])}if(!e[D]){var r=e.endpointsuffix,o=r?e.location:null;e[D]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[k]||d[k]||"",p=s[D],l=p?p+"/v2/track":config.endpointUrl,(u=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=l,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),u.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,l)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:w,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(w,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(u,l))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(u);n.src=h;var e=y[b];return!e&&""!==e||"undefined"==n[b]||(n[b]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(u)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[C]&&!0!==s[C]){method="onerror",t(["_"+method]);var c=T[method];T[method]=function(e,t,n,a,i){var r=c&&c(e,t,n,a,i);return!0!==r&&m["_"+method]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);(T[t]=n).queue&&0===n.queue.length&&n.trackPageView({})}(window,document,{
+src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js", // The SDK URL Source
+//name: "appInsights", // Global SDK Instance name defaults to "appInsights" when not supplied
+//ld: 0, // Defines the load delay (in ms) before attempting to load the sdk. -1 = block page load and add to head. (default) = 0ms load after timeout,
+//useXhr: 1, // Use XHR instead of fetch to report failures (if available),
+//crossOrigin: "anonymous", // When supplied this will add the provided value as the cross origin attribute on the script tag 
+cfg: { // Application Insights Configuration
+    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+    /* ...Other Configuration Options... */
+}});
 </script>
 ```
 
-紧靠在要跟踪的每个页面的 `</head>` 标记前面插入脚本。如果网站有母版页，可以在那里插入脚本。 例如：
+> [!NOTE]
+> 为了提高可读性并减少可能的 JavaScript 错误，在上面的代码段代码的新行上列出了所有可能的配置选项，如果不想更改注释行的值，则可以将其删除。
 
-* 在 ASP.NET MVC 项目中，请将脚本放在 `View\Shared\_Layout.cshtml`
-* 在 SharePoint 站点的控制面板中，打开 [站点设置/母版页](sharepoint.md)。
 
-脚本包含检测密钥，可将数据定向到 Application Insights 资源。 
+#### <a name="reporting-script-load-failures"></a>报告脚本加载失败
 
-（[更深入的脚本说明。](https://apmtips.com/blog/2015/03/18/javascript-snippet-explained/)）
+此版本的代码段检测并报告在将 SDK 作为 Azure Monitor 门户（在 "故障异常浏览器" 下）的情况下的 CDN 加载时出现的故障 &gt; &gt; ，此异常提供此类型的故障的可见性，以便您知道您的应用程序不会按预期方式报告遥测（或其他异常）。 此信号非常重要，因为它会丢失遥测数据，因为 SDK 未加载或初始化，这可能导致：
+- 报告用户使用（或尝试使用）你的站点的方式：
+- 最终用户使用您的站点的方式缺少遥测数据;
+- 缺少 JavaScript 错误，这些错误可能会阻止最终用户成功使用您的站点。
 
-## <a name="detailed-configuration"></a>详细配置
-可以设置几个 [参数](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config) ，但大多数情况下，应该不需要这样做。 例如，可以禁用或限制每个页面视图报告的 Ajax 调用数目（减少流量）。 或者，可以设置调试模式，让遥测通过管道快速移动而不需要批处理。
+有关此异常的详细信息，请参阅[SDK 加载失败](javascript-sdk-load-failure.md)故障排除页。
 
-若要设置这些参数，请在代码片段中查找此行，在后面添加逗号分隔的更多项：
+如果将此失败报告为门户例外，则不会使用 ```disableExceptionTracking``` application insights 配置中的配置选项，因此，如果发生此失败，则它将始终通过代码段进行报告，即使禁用了 onerror 支持也是如此。
 
-    })({
-      instrumentationKey: "..."
-      // Insert here
-    });
-
-有关配置参数的完整列表，请参阅[GitHub 页面](https://github.com/microsoft/applicationinsights-js#configuration)。 某些可用的参数包括：
-
-    // Send telemetry immediately without batching.
-    // Remember to remove this when no longer required, as it
-    // can affect browser performance.
-    enableDebug: boolean,
-
-    // Don't log browser exceptions.
-    disableExceptionTracking: boolean,
-
-    // Set false to enable autocollection of [Fetch requests](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) (disabled by default)
-    disableFetchTracking: boolean, // default is true
-    
-    // Don't log ajax calls.
-    disableAjaxTracking: boolean,
-
-    // Limit number of Ajax calls logged, to reduce traffic.
-    maxAjaxCallsPerView: 10, // default is 500
-    
-    // Time page load up to execution of first trackPageView().
-    overridePageViewDuration: boolean,
-
-    // Set dynamically for an authenticated user.
-    accountId: string,
-    
-
-## <a name="run"></a>运行应用
-运行 Web 应用，使用它生成遥测数据，并等待几秒钟。 可以在开发计算机上使用 **F5** 键运行应用，或者发布应用供用户操作。
-
-如果想要检查 Web 应用发送到 Application Insights 的遥测数据，请使用浏览器的调试工具（许多浏览器支持的**F12** 键）。 数据将发送到 dc.services.visualStudio.com。
-
-## <a name="explore-your-browser-performance-data"></a>查看浏览器性能数据
-打开“浏览器”边栏选项卡，显示来自用户浏览器的聚合性能数据。
-
-![在 portal.azure.com 中，打开应用的资源，并单击“设置”、“浏览器”](./media/javascript/03.png)
-
-还没有数据？ 单击页面顶部的**刷新**。 仍然没有数据？ 请参阅 [疑难解答](troubleshoot-faq.md)。
-
-“浏览器”边栏选项卡是一个[指标资源管理器边栏选项卡](metrics-explorer.md)，其中包含预设筛选器和图表选项。 如果需要，可以编辑时间范围、筛选器和图表配置，将结果另存为收藏项目。 单击“还原默认值”可恢复原始边栏选项卡配置  。
-
-## <a name="page-load-performance"></a>页面加载性能
-顶部是页面加载时间的分段图表。 图表总高度表示从应用加载页面并在用户浏览器中显示页面所花费的平均时间。 该时间从浏览器发送初始 HTTP 请求开始计量，直到处理所有同步加载事件，包括布局和运行脚本。 不包含从 AJAX 调用加载 Web 组件等异步任务。
-
-图表将页面加载总时间细分为 [W3C 定义的标准计时](https://www.w3.org/TR/navigation-timing/#processing-model)。 
-
-![](./media/javascript/08-client-split.png)
-
-请注意， *网络连接* 时间通常小于预期，因为它是从浏览器到服务器的所有请求的平均值。 许多不同请求的连接时间为 0，原因是已经与服务器建立了活动的连接。
-
-### <a name="slow-loading"></a>加载速度缓慢？
-页面加载速度缓慢是用户不满的主要原因。 如果图表指出页面加载速度缓慢，可以轻松执行一些诊断调查。
-
-图表显示应用中所有页面加载的平均时间。 若要查看问题是否局限于特定页面，请进一步查看边栏选项卡，其中包含按页面 URL 细分的网格：
-
-![](./media/javascript/09-page-perf.png)
-
-请注意页面视图计数和标准偏差。 如果页面计数很小，则问题对用户的影响不大。 如果标准偏差（相对于平均值本身）较大，则表示单个测量之间存在很大的差异。
-
-**放大一个 URL 和一个页面视图。** 单击任意页面名称即可查看包含浏览器图表（已根据该 URL 筛选）的边栏选项卡；然后会看到页面视图的实例。
-
-![](./media/javascript/35.png)
-
-单击 `...` 获取该事件的属性的完整列表，或检查 Ajax 调用和相关事件。 如果它们是同步的，缓慢的 Ajax 调用会影响整体页面加载时间。 相关事件包含服务器对同一 URL 的请求（如果已在 Web 服务器上设置 Application Insights）。
-
-**一段时间内的页面性能。** 返回“浏览器”边栏选项卡，将“页面视图加载时间”网格更改为折线图，查看在特定时间是否出现高峰：
-
-![单击网格标题，并选择新图表类型](./media/javascript/10-page-perf-area.png)
-
-**按其他维度分段。** 也许页面在特定浏览器、客户端 OS 或用户位置的加载速度较缓慢？ 添加具有 **分组依据** 维度的图表和试验。
-
-![](./media/javascript/21.png)
-
-## <a name="ajax-performance"></a>AJAX 性能
-确保网页中的任何 AJAX 调用执行正常。 它们通常用于以异步方式填充页面部件。 尽管可以立即加载整个页面，但用户仍可能厌烦于不断盯着空白 Web 部件，等待其中的数据出现。
-
-从网页执行的 AJAX 调用作为依赖项显示在“浏览器”边栏选项卡中。
-
-边栏选项卡上部是摘要图表：
-
-![](./media/javascript/31.png)
-
-下部是详细网格：
-
-![](./media/javascript/33.png)
-
-单击任一行可获取具体的详细信息。
+IE 8 （或更少）上特别不支持报告 SDK 加载失败。 这有助于减少代码段的缩小大小，方法是假定大多数环境不是以独占方式8或更小。 如果你有此要求并且希望收到这些例外，则需要将提取的 poly 填充或 create 你自己的代码段版本用于 ```XDomainRequest``` 而不是 ```XMLHttpRequest``` ，因此建议使用[提供的代码段源代码](https://github.com/microsoft/ApplicationInsights-JS/blob/master/AISKU/snippet/snippet.js)作为起点。
 
 > [!NOTE]
-> 如果删除边栏选项卡上的“浏览器”筛选器，服务器和 AJAX 依赖项将包含在这些图表中。 单击“还原默认值”可以重新配置筛选器。
-> 
-> 
+> 如果您使用的是代码段的以前版本，则强烈建议您更新到最新版本，以便您将收到以前未报告的问题。
 
-**要深入到失败的 Ajax 调用** ，请向下滚动到“依赖项失败”网格，并单击某行查看特定的实例。
+#### <a name="snippet-configuration-options"></a>代码段配置选项
 
-![](./media/javascript/37.png)
+现在，所有配置选项都已移到脚本的末尾，有助于避免意外引入 JavaScript 错误，这不会导致 SDK 加载失败，而且还会禁止报告故障。
 
-单击 `...` 获取 Ajax 调用的完整遥测数据。
+每个配置选项在新行上显示，如果不希望覆盖作为 [optional] 列出的项的默认值，则可以删除该行以最大程度地减小返回页面的结果大小。
 
-### <a name="no-ajax-calls-reported"></a>未报告任何 Ajax 调用？
-Ajax 调用包含从网页脚本发出的任何 HTTP/HTTPS 调用。 如果没有看到这些报告，请检查代码片段中是否未设置 `disableAjaxTracking` 或 `maxAjaxCallsPerView` [参数](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config)。
+可用的配置选项包括 
 
-## <a name="browser-exceptions"></a>浏览器异常
-“浏览器”边栏选项卡上有一个异常摘要图表，其下面还提供了异常类型网格。
+| 名称 | 类型 | 说明
+|------|------|----------------
+| src | string **[必需]** | 要从其加载 SDK 的的完整 URL。 此值用于动态添加的脚本/标记的 "src" 特性 &lt; &gt; 。 你可以使用公共 CDN 位置，也可以使用自己的私有托管位置。
+| name | string *[optional]* | 已初始化的 SDK 的全局名称，默认值为 appInsights。 因此 ```window.appInsights``` 将是对已初始化实例的引用。 注意：如果提供名称值或上一个实例（通过全局名称 appInsightsSDK），则此名称值也将在全局命名空间中定义为 ```window.appInsightsSDK=<name value>``` ，这是 SDK 初始化代码需要的，以确保它正在初始化并更新正确的代码段主干和代理方法。
+| ld | ms 中的数字 *[可选]* | 定义在尝试加载 SDK 之前要等待的加载延迟。 默认值为0ms，任何负值会立即将脚本标记添加到页面的 &lt; head &gt; 区域，然后在加载脚本（或失败）之前阻止页面加载事件。
+| useXhr | boolean *[可选]* | 此设置仅用于报告 SDK 加载失败。 报告将首先尝试使用 fetch （）（如果可用），并回退到 XHR，将此值设置为 true 即可绕过提取检查。 仅当您的应用程序在提取将无法发送失败事件的环境中使用时，才需要使用此值。
+| crossOrigin | string *[optional]* | 通过包含此设置，添加到下载 SDK 的脚本标记将包含带有此字符串值的 crossOrigin 属性。 如果未定义（默认值），则不添加 crossOrigin 属性。 未定义建议值（默认值）;"";或 "anonymous" （对于所有有效值，请参阅[HTML 特性： crossorigin](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)文档）
+| cfg | 对象 **[必需]** | 初始化期间传递到 Application Insights SDK 的配置。
 
-![](./media/javascript/39.png)
+### <a name="sending-telemetry-to-the-azure-portal"></a>将遥测数据发送到 Azure 门户
 
-如果未看到有报告浏览器异常，请检查代码片段中是否未设置 `disableExceptionTracking` [参数](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config)。
+默认情况下，Application Insights JavaScript SDK 会自动收集许多遥测项，这些项有助于确定应用程序和底层用户体验的运行状况。 其中包括：
 
-## <a name="inspect-individual-page-view-events"></a>检查各个页面视图事件
+- 应用中**未捕获到的异常**，包括以下相关信息
+    - 堆栈跟踪
+    - 异常详细信息和错误随附的消息
+    - 错误的行号与列号
+    - 引发错误的 URL
+- 应用发出的**网络依赖项请求**：**XHR** 和 **FETCH**（默认已禁用提取集合）请求，包括以下相关信息
+    - 依赖项源的 URL
+    - 用于请求依赖项的命令和方法
+    - 请求持续时间
+    - 请求的结果代码和成功状态
+    - 发出请求的用户的 ID（如果有）
+    - 发出请求的关联上下文（如果有）
+- **用户信息**（例如位置、网络、IP）
+- **设备信息**（例如，浏览器、OS、版本、语言、型号）
+- **会话信息**
 
-页面视图遥测数据通常由 Application Insights 分析，我们只会看到累积报告，其中的数据是基于所有用户的平均值。 但在调试时，也可以查看各个页面视图事件。
+### <a name="telemetry-initializers"></a>遥测初始化表达式
+遥测初始化表达式用于在从用户浏览器发送收集的遥测内容之前先对其进行修改。 它们还可用于返回 `false` 以阻止发送某些遥测数据。 可将多个遥测初始化表达式添加到 Application Insights 实例，它们将按添加顺序执行。
 
-在“诊断搜索”边栏选项卡中，将“筛选器”设置为“页面视图”。
+`addTelemetryInitializer` 的输入参数是一个回调，该回调采用 [`ITelemetryItem`](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API-reference.md#addTelemetryInitializer) 作为参数，并返回 `boolean` 或 `void`。 如果返回 `false`，则不发送遥测项，否则将继续处理下一个遥测初始化表达式（如果有），或者将遥测项发送到遥测集合终结点。
 
-![](./media/javascript/12-search-pages.png)
+使用遥测初始化表达式的示例：
+```ts
+var telemetryInitializer = (envelope) => {
+  envelope.data.someField = 'This item passed through my telemetry initializer';
+};
+appInsights.addTelemetryInitializer(telemetryInitializer);
+appInsights.trackTrace({message: 'This message will use a telemetry initializer'});
 
-选择任一事件查看更多详细信息。 在详细信息页中，单击“...”查看更多详细信息。
+appInsights.addTelemetryInitializer(() => false); // Nothing is sent after this is executed
+appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
+```
+
+## <a name="configuration"></a>配置
+大多数配置字段的命名都可默认为 false。 除 `instrumentationKey` 以外的所有字段都是可选的。
+
+| 名称 | 默认 | 说明 |
+|------|---------|-------------|
+| instrumentationKey | Null | **必需**<br>从 Azure 门户获取的检测密钥。 |
+| accountId | Null | 可选的帐户 ID（如果应用将用户分组到帐户中）。 不允许使用空格、逗号、分号、等于或竖线 |
+| sessionRenewalMs | 1800000 | 如果用户处于非活动状态有这么长的时间（以毫秒为单位），则会记录会话。 默认值为 30 分钟 |
+| sessionExpirationMs | 86400000 | 如果会话持续了这么长的时间（以毫秒为单位），则会记录会话。 默认值为 24 小时 |
+| maxBatchSizeInBytes | 10000 | 遥测批的最大大小。 如果某个批超过此限制，则立即发送此批，并启动新批 |
+| maxBatchInterval | 15000 | 发送前要批处理遥测数据的时间长短（毫秒） |
+| disableExceptionTracking | false | 如果为 true，则不自动收集异常。 默认值为 false。 |
+| disableTelemetry | false | 如果为 true，则不收集或发送遥测数据。 默认值为 false。 |
+| enableDebug | false | 如果为 true，则不管 SDK 日志记录设置如何，**内部**调试数据都将引发为异常，**而不是**记录这些数据。 默认值为 false。 <br>***注意：*** 如果启用此设置，每当发生内部错误时，都会导致丢弃遥测数据。 这可能有利于快速识别 SDK 的配置或用法问题。 如果你不希望在调试时丢失遥测数据，请考虑使用 `consoleLoggingLevel` 或 `telemetryLoggingLevel`，而不是 `enableDebug`。 |
+| loggingLevelConsole | 0 | 将**内部** Application Insights 错误记录到控制台。 <br>0：关闭， <br>1:仅限严重错误， <br>2:所有内容（错误和警告） |
+| loggingLevelTelemetry | 1 | 将**内部** Application Insights 错误作为遥测数据发送。 <br>0：关闭， <br>1:仅限严重错误， <br>2:所有内容（错误和警告） |
+| diagnosticLogInterval | 10000 | 内部日志记录队列的（内部）轮询间隔（以毫秒为单位） |
+| samplingPercentage | 100 | 要发送的事件百分比。 默认值为 100，表示发送所有事件。 如果你希望避免大型应用程序达到数据上限，请设置此项。 |
+| autoTrackPageVisitTime | false | 如果为 true，则对于页面视图，将跟踪前一个检测的页面的查看时间并将其作为遥测数据发送，同时，为当前的页面视图启动新的计时器。 默认值为 false。 |
+| disableAjaxTracking | false | 如果为 true，则不自动收集 Ajax 调用。 默认值为 false。 |
+| disableFetchTracking | true | 如果为 true，则不自动收集 Fetch 请求。 默认值为 true |
+| overridePageViewDuration | false | 如果为 true，则在调用 trackPageView 时，trackPageView 的默认行为将更改为记录页面视图持续时间间隔的结束时间。 如果为 false 且未为 trackPageView 提供自定义持续时间，则会使用导航计时 API 计算页面视图性能。 默认值为 false。 |
+| maxAjaxCallsPerView | 500 | 默认值为 500 - 控制每个页面视图将监视多少个 Ajax 调用。 设置为 -1 可监视页面上的所有（无限制）Ajax 调用。 |
+| disableDataLossAnalysis | 是 | 如果为 false，则对于尚未发送的项，启动时将检查内部遥测发送方缓冲区。 |
+| disableCorrelationHeaders | false | 如果为 false，则 SDK 会将两个标头（“Request-Id”和“Request-Context”）添加到所有依赖项请求，以将其关联到服务器端上的对应请求。 默认值为 false。 |
+| correlationHeaderExcludedDomains |  | 禁用特定域的关联标头 |
+| correlationHeaderDomains |  | 启用特定域的关联标头 |
+| disableFlushOnBeforeUnload | false | 默认值为 false。 如果为 true，则触发 onBeforeUnload 事件时不会调用 flush 方法 |
+| enableSessionStorageBuffer | true | 默认值为 true。 如果为 true，则会将包含所有未发送的遥测数据的缓冲区存储在会话存储中。 加载页面时会还原该缓冲区 |
+| isCookieUseDisabled | false | 默认值为 false。 如果为 true，则 SDK 不会存储或读取 Cookie 中的任何数据。|
+| cookieDomain | Null | 自定义 Cookie 域。 若要跨子域共享 Application Insights Cookie，此字段会有帮助。 |
+| isRetryDisabled | false | 默认值为 false。 如果为 false，则出现代码 206（部分成功）、408（超时）、429（请求过多）、500（内部服务器错误）、503（服务不可用）和 0（脱机，仅当已检测到此状态时）时会重试 |
+| isStorageUseDisabled | false | 如果为 true，则 SDK 不会存储或读取本地和会话存储中的任何数据。 默认值为 false。 |
+| isBeaconApiDisabled | 是 | 如果为 false，则 SDK 将使用[信标 API](https://www.w3.org/TR/beacon) 发送所有遥测数据 |
+| onunloadDisableBeacon | false | 默认值为 false。 选项卡关闭时，SDK 将使用[信标 API](https://www.w3.org/TR/beacon) 发送所有剩余的遥测 |
+| sdkExtension | Null | 设置 SDK 扩展名。 仅允许使用字母字符。 扩展名将添加为“ai.internal.sdkVersion”标记的前缀（例如“ext_javascript:2.0.0”）。 默认值为 null。 |
+| isBrowserLinkTrackingEnabled | false | 默认值为 false。 如果为 true，则 SDK 将跟踪所有[浏览器链接](/aspnet/core/client-side/using-browserlink)请求。 |
+| appId | Null | appId 用于在客户端上发生的 AJAX 依赖项与服务器端请求之间进行关联。 启用信标 API 后，无法自动使用 appId，但可以在配置中手动设置它。 默认值为 null |
+| enableCorsCorrelation | false | 如果为 true，则 SDK 会将两个标头（“Request-Id”和“Request-Context”）添加到所有 CORS 请求，以将传出的 AJAX 依赖项关联到服务器端上的对应请求。 默认值为 false |
+| namePrefix | undefined | 一个可选值，用作 localStorage 和 Cookie 名称的名称后缀。
+| enableAutoRouteTracking | false | 自动跟踪单页应用程序 (SPA) 中的路由更改。 如果为 true，则每次更改路由都会将一个新的页面视图发送到 Application Insights。 哈希路由更改 (`example.com/foo#bar`) 也会记录为新的页面视图。
+| enableRequestHeaderTracking | false | 如果为 true，则跟踪 AJAX 和 Fetch 请求标头，默认值为 false。
+| enableResponseHeaderTracking | false | 如果为 true，则跟踪 AJAX 和 Fetch 请求的响应标头，默认值为 false。
+| distributedTracingMode | `DistributedTracingModes.AI` | 设置分布式跟踪模式。 如果设置了 AI_AND_W3C 模式或 W3C 模式，则将生成 W3C 跟踪上下文标头 (traceparent/tracestate)，并将其包含在所有传出请求中。 提供 AI_AND_W3C 是为了与任何旧版 Application Insights 检测服务向后兼容。 请参阅[此处](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)的示例。
+| enableAjaxErrorStatusText | false | 默认值为 false。 如果为 true，则在失败的 AJAX 请求上包含依赖关系事件中的响应错误数据文本。
+| enableAjaxPerfTracking | false | 默认值为 false。 用于启用查找和包含其他浏览器窗口的标记。报告的 ajax （XHR 和 fetch）报告的指标中的性能计时。
+| maxAjaxPerfLookupAttempts | 3 | 默认值为 3。 要在窗口中查找的最大次数。性能计时（如果可用），这是必需的，因为并非所有浏览器都填充窗口。在报告 XHR 请求结束之前的性能和提取请求后，将在其完成后添加。
+| ajaxPerfLookupDelay | 25 | 默认值为25毫秒。 在重新尝试查找 windows 之前要等待的时间量。 ajax 请求的性能计时，时间以毫秒为单位，并直接传递给 setTimeout （）。
+| enableUnhandledPromiseRejectionTracking | false | 如果为 true，则会将未处理的承诺拒绝 autocollected 并报告为 JavaScript 错误。 当 disableExceptionTracking 为 true （不跟踪例外）时，将忽略配置值，不会报告未处理的承诺否决。
+
+## <a name="single-page-applications"></a>单页应用程序
+
+默认情况下，此 SDK **不会**处理单页应用程序中发生的基于状态的路由更改。 若要为单页应用程序启用自动路由更改跟踪，可将 `enableAutoRouteTracking: true` 添加到设置配置。
+
+目前，我们提供了一个单独的 [React 插件](#react-extensions)（可以使用此 SDK 对其进行初始化）。 该插件也能为你实现路由更改跟踪，并可收集[其他特定于 React 的遥测数据](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)。
 
 > [!NOTE]
-> 如果使用[搜索](diagnostic-search.md)，请注意，必须全字匹配：“Abou”和“bout”与“About”并不匹配。
-> 
-> 
+> 仅当你不使用 React 插件时，才使用 `enableAutoRouteTracking: true`。 当路由更改时，这两种方法都能发送新的 PageView。 如果这两种方法均已启用，则可能会发送重复的 PageView。
 
-也可以使用功能强大的 [Log Analytics 查询语言](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-tour)来搜索页面视图。
+## <a name="configuration-autotrackpagevisittime"></a>配置：autoTrackPageVisitTime
 
-### <a name="page-view-properties"></a>页面视图属性
-* **页面视图持续时间** 
-  
-  * 默认情况下，是指从客户端请求到完全加载页面（包括辅助文件，但不包括异步任务，例如 Ajax 调用）所花费的时间。 
-  * 如果在[页面配置](#detailed-configuration)中设置了 `overridePageViewDuration`，则表示从发出客户端请求到执行第一个 `trackPageView` 相隔的时间。 如果在脚本初始化后将 trackPageView 从正常位置移走，此参数将反映不同的值。
-  * 如果设置了 `overridePageViewDuration` 并且在 `trackPageView()` 调用中提供了持续时间参数，则改用该参数值。 
+通过设置 `autoTrackPageVisitTime: true`，跟踪用户在每个页面上花费的时间。 在每个新 PageView 上，用户在上一页花费的时间将作为名为 `PageVisitTime` 的[自定义指标](../platform/metrics-custom-overview.md)发送。 此自定义指标可在[指标资源管理器](../platform/metrics-getting-started.md)中作为“基于日志的指标”查看。
 
-## <a name="custom-page-counts"></a>自定义页面计数
-默认情况下，每当在客户端浏览器中加载新页面时，会发生页面计数。  但是，可能想要统计其他页面视图。 例如，由于页面可能将内容显示在选项卡中，因此需要在用户切换选项卡时统计页面。 或者，页面中的 JavaScript 代码可能在未更改浏览器 URL 的情况下加载新内容。
+## <a name="react-extensions"></a>React 扩展
 
-请将类似于下面的 JavaScript 调用插入客户端代码中的适当位置：
+| 扩展 |
+|---------------|
+| [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
+| [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
 
-    appInsights.trackPageView(myPageName);
+## <a name="explore-browserclient-side-data"></a>浏览浏览器/客户端数据
 
-页面名称可以包含与 URL 相同的字符，不过“#”或“?”后面的任何内容都会被忽略。
+可以转到“指标”并添加你感兴趣的各个指标，来查看浏览器/客户端数据：
 
-## <a name="usage-tracking"></a>使用情况跟踪
-想要了解用户如何使用应用？
+!["指标" 页的屏幕截图，Application Insights 显示 web 应用程序的指标数据的图形显示。](./media/javascript/page-view-load-time.png)
 
-* [了解用户行为分析工具](usage-overview.md)
-* [了解自定义事件和指标 API。](api-custom-events-metrics.md)
+还可以通过门户中的“浏览器”体验查看 JavaScript SDK 中的数据。
 
-## <a name="video"></a> 视频
+选择“浏览器”，然后选择“失败”或“性能”。  
 
+![Application Insights 中的 "浏览器" 页的屏幕截图，显示如何将浏览器故障或浏览器性能添加到可以为 web 应用程序查看的指标。](./media/javascript/browser.png)
 
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
+### <a name="performance"></a>性能
 
+![Application Insights 中的 "性能" 页的屏幕截图，显示了 web 应用程序的操作指标的图形显示。](./media/javascript/performance-operations.png)
 
+### <a name="dependencies"></a>依赖项
 
-## <a name="next"></a>后续步骤
+![显示 web 应用程序的依赖项指标图形显示的 "性能" 页面的屏幕截图 Application Insights。](./media/javascript/performance-dependencies.png)
+
+### <a name="analytics"></a>分析
+
+若要查询 JavaScript SDK 收集的遥测数据，请选择“在日志(分析)中查看”按钮。 如果添加 `client_Type == "Browser"` 的 `where` 语句，则只会看到来自 JavaScript SDK 的数据，而其他 SDK 收集的任何服务器端遥测数据将被排除。
+ 
+```kusto
+// average pageView duration by name
+let timeGrain=5m;
+let dataset=pageViews
+// additional filters can be applied here
+| where timestamp > ago(1d)
+| where client_Type == "Browser" ;
+// calculate average pageView duration for all pageViews
+dataset
+| summarize avg(duration) by bin(timestamp, timeGrain)
+| extend pageView='Overall'
+// render result in a chart
+| render timechart
+```
+
+### <a name="source-map-support"></a>源映射支持
+
+可以在 Azure 门户中取消缩小异常遥测的已缩小调用堆栈。 “异常详细信息”面板中的所有现有集成将适用于最近取消缩小的调用堆栈。
+
+#### <a name="link-to-blob-storage-account"></a>链接到 Blob 存储帐户
+
+可以将 Application Insights 资源链接到自己的 Azure Blob 存储容器，以便自动取消缩小调用堆栈。 若要开始，请参阅[自动源映射支持](./source-map-support.md)。
+
+### <a name="drag-and-drop"></a>拖放
+
+1. 请在 Azure 门户中选择一个异常遥测项，以查看其“端到端事务详细信息”
+2. 确定哪些源映射对应于此调用堆栈。 源映射必须与堆栈帧的源文件相匹配，但后缀为 `.map`
+3. 将源映射拖放到 Azure 门户中的调用堆栈上，该 ![ 图像显示了如何将源映射文件从生成文件夹拖放到 Azure 门户中的 "调用堆栈" 窗口。](https://i.imgur.com/Efue9nU.gif)
+
+### <a name="application-insights-web-basic"></a>Application Insights Web 基本版
+
+若要获得精简的体验，可以改为安装基本版 Application Insights
+```
+npm i --save @microsoft/applicationinsights-web-basic
+```
+此版本附带最少数量的功能，你可以根据自己的需求对其进行构建。 例如，它不执行自动收集（未捕获的异常、AJAX 等等）。 此版本不包含用于发送某些遥测类型的 API（例如 `trackTrace`、`trackException` 等），因此你需要提供自己的包装器。 提供的唯一 API 是 `track`。 [此处](https://github.com/Azure-Samples/applicationinsights-web-sample1/blob/master/testlightsku.html)提供了一个示例。
+
+## <a name="examples"></a>示例
+
+有关可运行的示例，请参阅 [Application Insights JavaScript SDK 示例](https://github.com/topics/applicationinsights-js-demo)
+
+## <a name="upgrading-from-the-old-version-of-application-insights"></a>从旧版 Application Insights 升级
+
+SDK V2 版本中的重大更改：
+- 为了让用户生成更好的 API 签名，某些 API 调用（例如 trackPageView 和 trackException）已更新。 不支持在 Internet Explorer 8 和早期版本的浏览器中运行。
+- 由于数据架构更新，遥测信封的字段名称和结构已更改。
+- 已将 `context.operation` 转移到 `context.telemetryTrace`。 此外还更改了一些字段 (`operation.id` --> `telemetryTrace.traceID`)。
+  - 若要手动刷新当前页面视图 ID（例如，在 SPA 应用中这样做），请使用 `appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()`。
+    > [!NOTE]
+    > 为了使跟踪 ID 独一无二，以前使用 `Util.newId()`，现在使用 `Util.generateW3CId()`。 二者最终都会成为操作 ID。
+
+如果你正在使用最新的 Application Insights PRODUCTION SDK (1.0.20)，并想要查看新 SDK 是否可在运行时中正常工作，请根据当前的 SDK 加载方案更新 URL。
+
+- 通过 CDN 方案下载：更新当前用于指向以下 URL 的代码片段：
+   ```
+   "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js"
+   ```
+
+- npm 方案：调用 `downloadAndSetup` 以从 CDN 下载完整的 ApplicationInsights 脚本，并使用检测密钥将其初始化：
+
+   ```ts
+   appInsights.downloadAndSetup({
+     instrumentationKey: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+     url: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js"
+     });
+   ```
+
+在内部环境中进行测试，以验证是否可按预期方式监视遥测。 如果一切正常，请相应地将 API 签名更新为 SDK V2 版本，并部署到生产环境中。
+
+## <a name="sdk-performanceoverhead"></a>SDK 性能/开销
+
+只需 36 KB gzip 压缩过，只需大约15毫秒的初始化，Application Insights 就会向网站添加数量不计的 loadtime。 使用代码片段时，很快就能加载极少量的库组件。 同时，整个脚本将在后台下载。
+
+从 CDN 下载脚本时，页面的所有跟踪将会排队。 在下载的脚本以异步方式完成初始化后，将会跟踪已排队的所有事件。 因此，在页面的整个生命周期内，你都不会丢失任何遥测数据。 此设置过程可为页面提供一个无缝分析系统，而用户察觉不到该系统。
+
+> 摘要：
+> - ![npm 版本](https://badge.fury.io/js/%40microsoft%2Fapplicationinsights-web.svg)
+> - ![gzip 压缩大小](https://img.badgesize.io/https://js.monitor.azure.com/scripts/b/ai.2.min.js.svg?compression=gzip)
+> - 总初始化时间为 **15 毫秒**
+> - 在页面的整个生命周期内都**不会**失去跟踪
+
+## <a name="browser-support"></a>浏览器支持
+
+![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
+--- | --- | --- | --- | --- |
+Chrome 最新版 ✔ |  Firefox 最新版 ✔ | IE 9 + 和 Microsoft Edge ✔<br>IE 8 兼容 | Opera 最新版 ✔ | Safari 最新版 ✔ |
+
+## <a name="es3ie8-compatibility"></a>ES3/IE8 兼容性
+
+作为 SDK，有很多用户无法控制其客户所使用的浏览器。 因此，我们需要确保此 SDK 继续 "工作"，并且在由较旧的浏览器加载时不会中断 JS 执行。 虽然不支持 IE8 和较旧的生成（ES3）浏览器是理想之选，但有很多大型客户/用户会继续要求页面 "工作"，并注意到它们可能或无法控制最终用户选择使用的浏览器。
+
+这并不意味着我们只支持最少的一组常见功能，只是我们需要维护 ES3 代码兼容性，并且在添加新功能时，需要以不会中断 ES3 JavaScript 分析并将其作为可选功能添加的方式添加这些新功能。
+
+[有关 IE8 支持的完整详细信息，请参阅 GitHub](https://github.com/Microsoft/ApplicationInsights-JS#es3ie8-compatibility)
+
+## <a name="open-source-sdk"></a>开源 SDK
+
+Application Insights JavaScript SDK 是开源的，用户可查看其源代码；若要对该项目做贡献，请访问[官方 GitHub 存储库](https://github.com/Microsoft/ApplicationInsights-JS)。
+
+## <a name="next-steps"></a><a name="next"></a> 后续步骤
 * [跟踪使用情况](usage-overview.md)
 * [自定义事件和指标](api-custom-events-metrics.md)
 * [Build-measure-learn](usage-overview.md)
-
+* [SDK 加载失败疑难解答](javascript-sdk-load-failure.md)

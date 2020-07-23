@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 01/08/2019
+ms.date: 06/05/2019
 ms.author: lbosq
-ms.openlocfilehash: 923d39a87340ffd26b6cc34d412edfbb97c13bbf
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 9365a71d7e5bab86b5c1d58a32510b9c5c5f15d1
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480501"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964526"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>快速入门：使用 Azure Cosmos DB Gremlin API 帐户生成 Node.js 应用程序
 
@@ -26,17 +26,12 @@ ms.locfileid: "66480501"
 > * [PHP](create-graph-php.md)
 >  
 
-Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。 
-
-本快速入门教程演示如何使用 Azure 门户创建 Azure Cosmos DB [Gremlin API](graph-introduction.md) 帐户、数据库和图形。 然后使用开放源 [Gremlin Node.js](https://www.npmjs.com/package/gremlin) 驱动程序生成并运行控制台应用。
+在本快速入门中，你将通过 Azure 门户创建和管理 Azure Cosmos DB Gremlin（图形）API 帐户，并使用从 GitHub 克隆的 Node.js 应用来添加数据。 Azure Cosmos DB 是一种多模型数据库服务，它通过全局分布和水平缩放功能让你快速创建和查询文档、表、键/值和图形数据库。
 
 ## <a name="prerequisites"></a>先决条件
-
-在运行此示例之前，必须具备以下先决条件：
-* [Node.js](https://nodejs.org/en/) 版本 v0.10.29 或更高版本
-* [Git](https://git-scm.com/)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+- 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
+- [Node.js 0.10.29+](https://nodejs.org/)。
+- [Git](https://git-scm.com/downloads)。
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
@@ -74,95 +69,108 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
 
 此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看以下代码片段。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。 
 
-以下代码片段全部摘自 app.js 文件。
+以下代码片段全部摘自 *app.js* 文件。
+
+此控制台应用使用开源 [Gremlin Node.js](https://www.npmjs.com/package/gremlin) 驱动程序。
 
 * 将创建 Gremlin 客户端。
 
     ```javascript
-    const client = Gremlin.createClient(
-        443, 
+    const authenticator = new Gremlin.driver.auth.PlainTextSaslAuthenticator(
+        `/dbs/${config.database}/colls/${config.collection}`, 
+        config.primaryKey
+    )
+
+
+    const client = new Gremlin.driver.Client(
         config.endpoint, 
         { 
-            "session": false, 
-            "ssl": true, 
-            "user": `/dbs/${config.database}/colls/${config.collection}`,
-            "password": config.primaryKey
-        });
+            authenticator,
+            traversalsource : "g",
+            rejectUnauthorized : true,
+            mimeType : "application/vnd.gremlin-v2.0+json"
+        }
+    );
+
     ```
 
-  配置均位于 `config.js` 中，后者可在[以下部分](#update-your-connection-string)中编辑。
+  配置均位于 *config.js* 中，可以在[以下部分](#update-your-connection-string)中编辑该文件。
 
 * 将定义一系列函数以执行不同 Gremlin 操作。 以下是其中一个函数：
 
     ```javascript
-    function addVertex1(callback)
+    function addVertex1()
     {
         console.log('Running Add Vertex1'); 
-        client.execute("g.addV('person').property('id', 'thomas').property('firstName', 'Thomas').property('age', 44).property('userid', 1)", { }, (err, results) => {
-          if (err) callback(console.error(err));
-          console.log("Result: %s\n", JSON.stringify(results));
-          callback(null)
-        });
+        return client.submit("g.addV(label).property('id', id).property('firstName', firstName).property('age', age).property('userid', userid).property('pk', 'pk')", {
+                label:"person",
+                id:"thomas",
+                firstName:"Thomas",
+                age:44, userid: 1
+            }).then(function (result) {
+                    console.log("Result: %s\n", JSON.stringify(result));
+            });
     }
     ```
 
 * 每个函数均通过 Gremlin 查询字符串参数执行 `client.execute` 方法。 下面是演示如何执行 `g.V().count()` 的示例：
 
     ```javascript
-    console.log('Running Count'); 
-    client.execute("g.V().count()", { }, (err, results) => {
-        if (err) return console.error(err);
-        console.log(JSON.stringify(results));
-        console.log();
-    });
+    function countVertices()
+    {
+        console.log('Running Count');
+        return client.submit("g.V().count()", { }).then(function (result) {
+            console.log("Result: %s\n", JSON.stringify(result));
+        });
+    }
     ```
 
-* 然后在文件末尾，使用 `async.waterfall()` 方法调用所有方法。 这将依次执行它们：
+* 然后在文件末尾，调用所有方法。 这将依次执行它们：
 
     ```javascript
-    try{
-        async.waterfall([
-            dropGraph,
-            addVertex1,
-            addVertex2,
-            addEdge,
-            countVertices
-            ], finish);
-    } catch(err) {
-        console.log(err)
-    }
+    client.open()
+    .then(dropGraph)
+    .then(addVertex1)
+    .then(addVertex2)
+    .then(addEdge)
+    .then(countVertices)
+    .catch((err) => {
+        console.error("Error running query...");
+        console.error(err)
+    }).then((res) => {
+        client.close();
+        finish();
+    }).catch((err) => 
+        console.error("Fatal error:", err)
+    );
     ```
 
 
 ## <a name="update-your-connection-string"></a>更新连接字符串
 
-1. 打开 config.js 文件。 
+1. 打开 *config.js* 文件。 
 
-2. 在 config.js 中，使用 Azure 门户的“概述”页中的“Gremlin URI”值填写 `config.endpoint` 密钥。   
+2. 在 *config.js* 中，使用 Azure 门户中你的 Cosmos DB 帐户的“概述”页面中的“Gremlin 终结点”值填写 `config.endpoint` 密钥。  
 
-    `config.endpoint = "GRAPHENDPOINT";`
+    `config.endpoint = "https://<your_Gremlin_account_name>.gremlin.cosmosdb.azure.com:443/";`
 
-    ![在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥](./media/create-graph-nodejs/gremlin-uri.png)
+    :::image type="content" source="./media/create-graph-nodejs/gremlin-uri.png" alt-text="在 Azure 门户的“概述”页面中，查看并复制访问密钥":::
 
-   如果“Gremlin URI”  值为空，可从门户中的“密钥”  页生成值。 使用“URI”  值，删除 https:// 并将 documents 更改为 gremlin.cosmosdb。 如果图形帐户是在 2017 年 12 月 20 日之前创建的，请将 documents 更改为 graphs。 
-
-   Gremlin 终结点只能是没有协议/端口号的主机名，例如 `mygraphdb.gremlin.cosmosdb.azure.com`（不能是 `https://mygraphdb.gremlin.cosmosdb.azure.com` 或 `mygraphdb.gremlin.cosmosdb.azure.com:433`）。
-
-3. 在 config.js 中，使用 Azure 门户“密钥”页中的“主密钥”值填充 config.primaryKey 值。   
+3. 在 *config.js* 中，使用 Azure 门户中你的 Cosmos DB 帐户的“密钥”页面中的“主密钥”值填写 config.primaryKey 值。  
 
     `config.primaryKey = "PRIMARYKEY";`
 
-   ![Azure 门户“密钥”边栏选项卡](./media/create-graph-nodejs/keys.png)
+   :::image type="content" source="./media/create-graph-nodejs/keys.png" alt-text="Azure 门户“密钥”边栏选项卡":::
 
 4. 输入数据库名称和图形（容器）名称作为 config.database 和 config.collection 的值。 
 
-下面举例说明了完成的 config.js 文件是什么样子：
+下面的示例展示了完成的 *config.js* 文件应该是什么样子的：
 
 ```javascript
 var config = {}
 
-// Note that this must not have HTTPS or the port number
-config.endpoint = "testgraphacct.gremlin.cosmosdb.azure.com";
+// Note that this must include the protocol (HTTPS:// for .NET SDK URI or wss:// for Gremlin Endpoint) and the port number
+config.endpoint = "https://testgraphacct.gremlin.cosmosdb.azure.com:443/"; 
 config.primaryKey = "Pams6e7LEUS7LJ2Qk0fjZf3eGo65JdMWHmyn65i52w8ozPX2oxY3iP0yu05t9v1WymAHNcMwPIqNAEv3XDFsEg==";
 config.database = "graphdb"
 config.collection = "Persons"
@@ -172,7 +180,7 @@ module.exports = config;
 
 ## <a name="run-the-console-app"></a>运行控制台应用
 
-1. 打开终端窗口，更改（通过 `cd` 命令）为项目中包括的 package.json 文件的安装目录。
+1. 打开一个终端窗口，切换到（通过 `cd` 命令）项目中包括的 *package.json* 文件的安装目录。
 
 2. 运行 `npm install`，安装所需的 npm 模块，包括 `gremlin`。
 
@@ -182,9 +190,9 @@ module.exports = config;
 
 现在可以返回到 Azure 门户中的数据资源管理器，查看、查询、修改以及使用新的图形数据。
 
-在数据资源管理器中，新数据库会显示在“图形”窗格中。  展开数据库（后跟容器），然后选择“图形”。 
+在数据资源管理器中，新数据库会显示在“图形”窗格中。 展开数据库（后跟容器），然后选择“图形”。
 
-选择“应用筛选器”时，由示例应用生成的数据会显示在“图形”选项卡的下一窗格中。  
+选择“应用筛选器”时，由示例应用生成的数据会显示在“图形”选项卡的下一窗格中。 
 
 尝试使用 `.has('firstName', 'Thomas')` 来完成 `g.V()`，对筛选器进行测试。 请注意，值区分大小写。
 
@@ -198,7 +206,7 @@ module.exports = config;
 
 ## <a name="next-steps"></a>后续步骤
 
-通过本文，已了解如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建图形和运行应用。 现可使用 Gremlin 生成更复杂的查询，实现功能强大的图形遍历逻辑。 
+在本文中，你已了解了如何创建 Azure Cosmos DB 帐户，使用数据资源管理器创建图形，以及运行 Node.js 应用来向图形中添加数据。 现可使用 Gremlin 生成更复杂的查询，实现功能强大的图形遍历逻辑。 
 
 > [!div class="nextstepaction"]
 > [使用 Gremlin 查询](tutorial-query-graph.md)

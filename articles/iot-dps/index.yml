@@ -1,52 +1,75 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure IoT 中心设备预配服务文档
+### YamlMime:Landing
+title: Azure IoT 中心设备预配服务 (DPS) 文档
+summary: IoT 中心设备预配服务 (DPS) 是针对 IoT 中心的帮助程序服务，无需人为干预即可零接触、近实时地预配至合适的 IoT 中心，方便客户采用安全且可缩放的方式预配数百万台设备。 使用快速入门、 教程和示例，了解如何将设备预配到 IoT 中心。
 metadata:
-  title: Azure IoT 中心设备预配服务文档 - 教程和 API 参考
-  description: Azure IoT 中心设备预配服务概述
-  author: nberdy
-  manager: briz
+  title: Azure IoT 中心设备预配服务 (DPS) 文档
+  description: Azure IoT 中心设备预配服务 (DPS) - 教程、快速入门、操作指南和 API 参考
+  author: wesmc7777
   ms.service: iot-dps
   services: iot-dps
   ms.topic: landing-page
-  ms.date: 01/23/2017
-  ms.author: nberdy
-abstract:
-  description: IoT 中心设备预配服务是针对 IoT 中心的帮助程序服务，无需人为干预即可零接触实时预配至合适的 IoT 中心，方便客户采用安全且可缩放的方式预配数百万台设备。 使用快速入门、 教程和示例，了解如何将设备预配到 IoT 中心。
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 了解如何设置你的第一个设备预配服务实例，以及如何将模拟设备预配到 IoT 中心。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/sql-database/media/index/portal.svg
-            text: 设置自动预配
-            href: /azure/iot-dps/quick-setup-auto-provision
-          - image:
-              src: /azure/sql-database/media/index/portal.svg
-            text: 创建模拟设备
-            href: /azure/iot-dps/quick-create-simulated-device
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何使用 IoT 中心设备预配服务将已启用安全性的设备自动预配到单个或多个 IoT 中心。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/iot-dps/tutorial-set-up-cloud">配置云资源</a>
-          - html: <a href="/azure/iot-dps/tutorial-set-up-device">设置设备以连接到 Azure</a>
-          - html: <a href="/azure/iot-dps/tutorial-provision-device-to-hub">将设备预配到单个 IoT 中心</a>
-          - html: <a href="/azure/iot-dps/tutorial-provision-multiple-hubs">将设备预配到多个负载均衡的 IoT 中心</a>
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST API
-            html: <p><a href="/rest/api/iot-dps">REST</a></p>
-          - title: Azure IoT SDK
-            html: '<p><a href="https://github.com/Azure/azure-iot-sdk-c">C</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-python">Python</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-node">Node</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-java">Java</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-csharp">C#</a></p>'
+  ms.date: 03/03/2020
+  ms.author: wesmc
+  ms.openlocfilehash: 2d89b99005a4e430aca85c109f3d000c3b21674c
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "80133262"
+landingContent:
+- title: 关于 Azure IoT 中心设备预配服务 (DPS)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 DPS？
+      url: about-iot-dps.md
+  - linkListType: concept
+    links:
+    - text: Azure IoT 的自动预配概念
+      url: concepts-auto-provisioning.md
+  - linkListType: video
+    links:
+    - text: IoT 中心 DPS 演示
+      url: https://azure.microsoft.com/resources/videos/iot-hub-dps-demo/
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 Azure 门户设置 DPS
+      url: quick-setup-auto-provision.md
+  - linkListType: sample
+    links:
+    - text: 使用 C 预配模拟对称密钥设备
+      url: quick-create-simulated-device-symm-key.md
+    - text: 使用 Java 预配模拟对称密钥设备
+      url: quick-create-simulated-device-symmetric-key-java.md
+  - linkListType: how-to-guide
+    links:
+    - text: 如何预配多租户
+      url: how-to-provision-multitenant.md
+    - text: 如何使用自定义分配策略
+      url: how-to-use-custom-allocation-policies.md
+- title: 管理访问权限
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 如何管理设备注册
+      url: how-to-manage-enrollments.md
+    - text: 控制对 Azure IoT 中心设备预配服务的访问
+      url: how-to-control-access.md
+- title: 使用 DPS 开发 IoT 解决方案
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 适用于 C 的 Azure IoT SDK
+      url: https://github.com/Azure/azure-iot-sdk-c
+    - text: 适用于 Python 的 Azure IoT SDK
+      url: https://github.com/Azure/azure-iot-sdk-python
+    - text: 适用于 Node.js 的 Azure IoT SDK
+      url: https://github.com/Azure/azure-iot-sdk-node
+    - text: 适用于 Java 的 Azure IoT SDK
+      url: https://github.com/Azure/azure-iot-sdk-java
+    - text: 适用于 .NET 的 Azure IoT SDK
+      url: https://github.com/Azure/azure-iot-sdk-csharp
+    - text: REST API
+      url: /rest/api/iot-dps

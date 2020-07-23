@@ -1,33 +1,36 @@
 ---
 title: Azure 文件简介 | Microsoft Docs
 description: 本文概述 Azure 文件服务，使用该服务可以通过行业标准 SMB 协议在云中创建和使用网络文件共享。
-services: storage
 author: roygara
 ms.service: storage
 ms.topic: overview
-ms.date: 07/19/2018
+ms.date: 03/10/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6e8e2843ad8e00b1fe334200b9b1a5c8a7c2c5df
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: aff6f99c119ba2854fd7923d2a15efb2e1a6b601
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64706955"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666793"
 ---
 # <a name="what-is-azure-files"></a>什么是 Azure 文件？
 Azure 文件在云端提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)进行访问。 Azure 文件共享可由云或者 Windows、Linux 和 macOS 的本地部署同时装载。 此外，可以使用 Azure 文件同步将 Azure 文件共享缓存在 Windows Server 上，以加快访问速度（与在数据使用位置进行访问的速度相当）。
 
 ## <a name="videos"></a>视频
-| Azure 文件同步简介（2 分钟） | Azure 文件与同步 (Ignite 2017)（85 分钟）  |
+| Azure 文件同步简介 | Azure 文件存储与同步 (Ignite 2019)  |
 |-|-|
-| [![Azure 文件同步简介视频截屏 - 单击播放！](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Azure 文件与同步演示截屏 - 单击播放！](./media/storage-files-introduction/azure-files-ignite-2017-video.png)](https://www.youtube.com/watch?v=r26jWDGF_rg) |
+| [![Azure 文件同步简介视频截屏 - 单击播放！](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Azure 文件与同步演示截屏 - 单击播放！](./media/storage-files-introduction/ignite-2018-video.png)](https://www.youtube.com/embed/6E2p28XwovU) |
+
+下面是有关 Azure 文件存储的常见用例的一些视频：
+* [Replace your file server with a serverless Azure File Share](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)（将你的文件服务器替换为无服务器的 Azure 文件共享）
+* [Getting started with FSLogix profile containers on Azure Files in Windows Virtual Desktop leveraging AD authentication](https://www.youtube.com/embed/9S5A1IJqfOQ)（Windows 虚拟桌面中 Azure 文件存储上的 FSLogix 配置文件容器入门（利用 AD 身份验证））
 
 ## <a name="why-azure-files-is-useful"></a>为何 Azure 文件很有用
 Azure 文件共享可用于：
 
 * **取代或补充本地文件服务器**：  
-    可以使用 Azure 文件来完全取代或补充传统的本地文件服务器或 NAS 设备。 流行的操作系统（例如 Windows、macOS 和 Linux）可在世界各地直接装载 Azure 文件共享。 此外，可以使用 Azure 文件同步将 Azure 文件共享复制到本地或云中的 Windows Server，以便在使用位置对数据进行高性能的分布式缓存。
+    可以使用 Azure 文件来完全取代或补充传统的本地文件服务器或 NAS 设备。 流行的操作系统（例如 Windows、macOS 和 Linux）可在世界各地直接装载 Azure 文件共享。 此外，可以使用 Azure 文件同步将 Azure 文件共享复制到本地或云中的 Windows Server，以便在使用位置对数据进行高性能的分布式缓存。 使用最新版本的 [Azure 文件存储 AD 身份验证](storage-files-active-directory-overview.md)，Azure 文件共享可继续使用本地托管的 AD 进行访问控制。 
 
 * **“直接迁移”应用程序**：  
     借助 Azure 文件可以轻松地将预期使用文件共享存储文件应用程序或用户数据的应用程序“直接迁移”到云中。 Azure 文件既支持“经典”直接迁移方案（应用程序及其数据将移到 Azure 中），也支持“混合”直接迁移方案（应用程序数据将移到 Azure 文件中，应用程序继续在本地运行）。 

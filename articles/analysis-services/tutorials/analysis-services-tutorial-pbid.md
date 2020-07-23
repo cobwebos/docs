@@ -1,19 +1,18 @@
 ---
-title: 教程 - 使用 Power BI Desktop 连接到 Azure Analysis Services | Microsoft Docs
+title: 教程 - 使用 Power BI Desktop 连接 Azure Analysis Services | Microsoft Docs
 author: minewiskan
-manager: kfile
-description: 了解如何使用 Power BI Desktop 连接到 Azure Analysis Services。
+description: 了解如何从 Azure 门户获取 Analysis Services 服务器名称，然后使用 Power BI Desktop 连接到服务器。
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 04/25/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: ea2a6612a568d4080a8df2c569f79aaaa283e9c4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4d8c753f06e58fd1cce1c55eca213637cb70e436
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702836"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "73572318"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>教程：使用 Power BI Desktop 进行连接
 
@@ -24,7 +23,7 @@ ms.locfileid: "64702836"
 > * 使用 Power BI Desktop 进行连接
 > * 创建基本报表
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 向服务器中[添加 adventureworks 示例模型数据库](../analysis-services-create-sample-model.md)。
 - 具有 adventureworks 示例模型数据库的 [*读取*](../analysis-services-server-admins.md) 权限。
@@ -60,7 +59,7 @@ ms.locfileid: "64702836"
 
    ![可视化效果](./media/analysis-services-tutorial-pbid/aas-pbid-visualizations-report.png)
 
-5. 在“字段” >  **Internet Sales** 表中，选择 **Internet Sales Total** 和 **Margin** 度量值。  在 **Product Category** 表中，选择 **Product Category Name**。
+5. 在“字段” > **Internet Sales** 表中，选择 **Internet Sales Total** 和 **Margin** 度量值。 在 **Product Category** 表中，选择 **Product Category Name**。
 
    ![完成报表](./media/analysis-services-tutorial-pbid/aas-pbid-complete-report.png)
 
@@ -71,4 +70,4 @@ ms.locfileid: "64702836"
 如果不再需要报表，则不要保存它，如果已保存，则将文件删除。
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已了解了如何使用 Power BI Desktop 连接到服务器上的数据模型并创建基本报表。 如果不熟悉如何创建数据模型，请参阅 SQL Server Analysis Services 文档中的 [Adventure Works Internet Sales 表格数据建模教程](https://docs.microsoft.com/sql/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)。
+在本教程中，你已了解了如何使用 Power BI Desktop 连接到服务器上的数据模型并创建基本报表。 如果不熟悉如何创建数据模型，请参阅 SQL Server Analysis Services 文档中的 [Adventure Works Internet Sales 表格数据建模教程](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)。

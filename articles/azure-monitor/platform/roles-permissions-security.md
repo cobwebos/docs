@@ -1,21 +1,19 @@
 ---
-title: Azure Monitor 的角色、权限和安全入门
+title: Azure Monitor 中的角色、权限和安全性
 description: 了解如何使用 Azure Monitor 的内置角色和权限限制对监视资源的访问。
 author: johnkemnetz
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 4949391aded58f27ba8acd5c9ec437e8933f9843
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: 86314fd5bfe103cef8332ee3113f46fb0e39dafc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243424"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83836356"
 ---
-# <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Monitor 的角色、权限和安全入门
+# <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Monitor 中的角色、权限和安全性
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -29,9 +27,9 @@ Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，
 
 * 在门户中查看监视仪表板和创建自己专用的监视仪表板。
 * 查看 [Azure 警报](alerts-overview.md)中定义的预警规则
-* 使用 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx)、[PowerShell cmdlet](powershell-quickstart-samples.md) 或 [跨平台 CLI](cli-samples.md) 查询指标。
+* 使用 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx)、[PowerShell cmdlet](powershell-quickstart-samples.md) 或 [跨平台 CLI](../samples/cli-samples.md) 查询指标。
 * 使用门户、Azure Monitor REST API、PowerShell cmdlet 或跨平台 CLI 查询活动日志。
-* 查看资源的[诊断设置](diagnostic-logs-overview.md#diagnostic-settings)。
+* 查看资源的[诊断设置](diagnostic-settings.md)。
 * 查看订阅的[日志配置文件](activity-log-export.md)。
 * 查看自动调整规模设置。
 * 查看警报活动和设置。
@@ -52,7 +50,7 @@ Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，
 分配了监视参与者角色的人员可以查看订阅中的所有监视数据和创建或修改监视设置，但不能修改任何其他资源。 此角色是监视查阅者角色的一个超集，适用于组织的监视团队成员或托管服务提供商，除了上述权限外，他们还需要能够：
 
 * 将监视仪表板发布为共享仪表板。
-* 设置资源的[诊断设置](diagnostic-logs-overview.md#diagnostic-settings)。\*
+* 设置资源的[诊断设置](diagnostic-settings.md)。\*
 * 设置订阅的[日志配置文件](activity-log-export.md)。\*
 * 通过 [Azure 警报](alerts-overview.md)设置预警规则活动和设置。
 * 创建 Application Insights Web 测试和组件。
@@ -71,7 +69,7 @@ Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，
 ## <a name="monitoring-permissions-and-custom-rbac-roles"></a>监视权限和自定义 RBAC 角色
 如果上述的内置角色不能满足团队的确切需求，则可以[创建具有更加细化的权限的自定义 RBAC 角色](../../role-based-access-control/custom-roles.md)。 以下是常见的 Azure Monitor RBAC 操作及其说明。
 
-| Operation | 描述 |
+| Operation | 说明 |
 | --- | --- |
 | Microsoft.Insights/ActionGroups/[Read, Write, Delete] |读取/写入/删除操作组。 |
 | Microsoft.Insights/ActivityLogAlerts/[Read, Write, Delete] |读取/写入/删除活动日志警报。 |
@@ -116,7 +114,7 @@ New-AzRoleDefinition -Role $role
 监视的数据 — 尤其是日志文件 — 可能包含敏感信息，如 IP 地址或用户名。 在 Azure 中监视的数据有三种基本形式：
 
 1. 活动日志，描述 Azure 订阅的所有控制平面操作。
-2. 诊断日志，由资源发出的日志文件。
+2. 资源日志，由资源发出的日志文件。
 3. 指标，由资源发出。
 
 所有这三种数据类型可以存储在存储帐户或传输到事件中心，两者都是通用的 Azure 资源。 由于这些是通用的资源，因此创建、删除和访问它们是一项预留给管理员的权限操作。 我们建议对监视相关的资源使用以下做法，以防止误用：
@@ -134,7 +132,7 @@ $context = New-AzStorageContext -ConnectionString "[connection string for your m
 $token = New-AzStorageAccountSASToken -ResourceType Service -Service Blob -Permission "rl" -Context $context
 ```
 
-然后，可将令牌授予需要从存储帐户中进行读取的实体，该实体可以列出并读取存储帐户中的所有 blob。
+然后可以将令牌提供给需要读取存储帐户的实体，它可以列出并读取存储帐户中的所有 blob。
 
 或者，如果需要控制此 RBAC 的权限，可以授予该实体特定存储帐户的 Microsoft.Storage/storageAccounts/listkeys/action 权限。 这对于需要能够设置存档到存储帐户的诊断设置或日志配置文件的用户来说是必需的。 例如，可以为只需读取一个存储帐户的用户或应用程序创建以下自定义 RBAC 角色：
 
@@ -182,7 +180,7 @@ Azure Monitor 需要访问 Azure 资源以提供你启用的服务。 如果你�
 ### <a name="secured-storage-accounts"></a>安全存储帐户 
 
 监视数据通常会写入到存储帐户。 你可能希望确保未经授权的用户无法访问复制到存储帐户的数据。 为了提高安全性，你可以通过限制存储帐户使用“所选网络”来锁定网络访问权限，以仅允许授权资源和受信任的 Microsoft 服务访问存储帐户。
-![“Azure 存储设置”对话框](./media/roles-permissions-security/secured-storage-example.png) Azure Monitor 被视为“受信任的 Microsoft 服务”之一。如果你允许受信任的 Microsoft 服务访问安全存储，则 Azure Monitor 将可以访问安全存储帐户；在这些受保护的条件下，允许将 Azure Monitor 诊断日志、活动日志和指标写入存储帐户。 这还会使 Log Analytics 能够从受保护的存储中读取日志。   
+![“Azure 存储设置”对话框](./media/roles-permissions-security/secured-storage-example.png) Azure Monitor 被视为“受信任的 Microsoft 服务”之一。如果你允许受信任的 Microsoft 服务访问安全存储，则 Azure Monitor 将可以访问安全存储帐户；在这些受保护的条件下，允许将 Azure Monitor 资源日志、活动日志和指标写入存储帐户。 这还会使 Log Analytics 能够从受保护的存储中读取日志。   
 
 
 有关详细信息，请参阅[网络安全性和 Azure 存储](../../storage/common/storage-network-security.md)

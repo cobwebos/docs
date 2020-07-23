@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: c2769282a2e9afda22d2e03c653b0f62b05b98bc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: e52433cfae1e889f07818f582fc3aef0752932ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121565"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74482484"
 ---
-在阅读本文之前, 应该熟悉以下概念或阅读以下文章：
+在阅读本文之前，应熟悉以下概念：
 
 - [Microsoft 标识平台概述](../articles/active-directory/develop/v2-overview.md)
 - [身份验证基础知识](../articles/active-directory/develop/authentication-scenarios.md)

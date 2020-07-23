@@ -3,20 +3,19 @@ title: Team Data Science Process 生命周期部署阶段
 description: 你的数据科学项目部署阶段的目标、任务和可交付结果
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 00710183828892c81d3ea887e4394237288eb6bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 1138c95274c769186a9a29aa4d35517e378baeae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60303530"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76720480"
 ---
 # <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命周期部署阶段
 
@@ -39,7 +38,7 @@ ms.locfileid: "60303530"
 ## <a name="how-to-do-it"></a>如何执行
 在此阶段中解决的主要任务：
 
-操作模型：将模型和管道部署到生产或类似生产的环境中供应用程序操作。
+**操作模型**：将模型和管道部署到生产中或生产类似的环境中供应用程序操作。
 
 ### <a name="operationalize-a-model"></a>操作模型
 如果拥有一组运行良好的模型，则可操作这些模型，以供其他应用程序使用。 根据具体的业务需求，实时作出预测或基于批处理作出预测。 若要部署模型，请使用开放 API 接口公开模型。 通过该接口，各种应用程序可轻松使用模型，例如：
@@ -50,7 +49,7 @@ ms.locfileid: "60303530"
    * 业务线应用程序 
    * 后端应用程序 
 
-有关使用 Azure 机器学习 Web 服务使模型可操作化的示例，请参阅[部署 Azure 机器学习 Web 服务](../studio/publish-a-machine-learning-web-service.md)。 将遥测和监视功能构建到部署的生产模型和数据管道中是一种最佳做法。 此做法有助于后续进行系统状态报告和故障排除。  
+有关使用 Azure 机器学习 Web 服务使模型可操作化的示例，请参阅[部署 Azure 机器学习 Web 服务](../studio/deploy-a-machine-learning-web-service.md)。 将遥测和监视功能构建到部署的生产模型和数据管道中是一种最佳做法。 此做法有助于后续进行系统状态报告和故障排除。  
 
 ## <a name="artifacts"></a>项目
 
@@ -69,6 +68,6 @@ ms.locfileid: "60303530"
    4. [部署](lifecycle-deployment.md)
    5. [客户验收](lifecycle-acceptance.md)
 
-我们还提供了完整的演练，演示特定方案过程中的所有步骤。 [示例演练](walkthroughs.md)一文提供了包含链接和缩略图描述的方案列表。 该演练演示如何将云、本地工具以及服务结合到一个工作流或管道中，以创建智能应用程序。 
+我们提供了完整的演练，演示特定方案在过程中的所有步骤。 [示例演练](walkthroughs.md)一文提供了包含链接和缩略图描述的方案列表。 该演练演示如何将云、本地工具以及服务结合到一个工作流或管道中，以创建智能应用程序。 
 
 有关如何在使用 Azure 机器学习工作室的 TDSP 中执行步骤的示例，请参阅[通过 Azure 机器学习使用 TDSP](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)。

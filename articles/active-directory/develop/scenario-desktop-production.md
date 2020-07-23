@@ -1,54 +1,49 @@
 ---
-title: 桌面应用程序调用 web Api （移动到生产环境）-Microsoft 标识平台
-description: 了解如何构建桌面应用调用 web Api （移动到生产环境）
+title: 将调用 Web API 的桌面应用移到生产环境 - Microsoft 标识平台 | Azure
+description: 了解如何将调用 Web API 的桌面应用移到生产环境
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ca66a41f26c54bf04273682d14889a36b688c70
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: MT
+ms.openlocfilehash: ea564eb69f102d8e548bf8ae9a626598fa264cd4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075125"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80882873"
 ---
-# <a name="desktop-app-that-calls-web-apis---move-to-production"></a>桌面应用程序调用 web Api-移动到生产环境
+# <a name="desktop-app-that-calls-web-apis-move-to-production"></a>用于调用 Web API 的桌面应用：移到生产环境
 
-本文提供详细信息来改进应用程序进一步并将其移到生产环境。
+本文介绍如何将调用 Web API 的桌面应用移到生产环境。
 
-## <a name="handling-errors-in-desktop-applications"></a>在桌面应用程序中处理错误
+## <a name="handle-errors-in-desktop-applications"></a>在桌面应用程序中处理错误
 
-在不同的流中，已了解如何处理无提示的流的错误 （代码段所示）。 您也可以看到有交互的情况下需要 （增量许可和条件性访问）。
+你已了解，在不同的流中如何处理静默流的错误，如代码片段所示。 你还发现存在需要交互的情况，如增量许可和条件访问。
 
-## <a name="how-to-have--the-user-consent-upfront-for-several-resources"></a>如何让用户同意提前为多个资源
+## <a name="have-the-user-consent-upfront-for-several-resources"></a>让用户提前许可多个资源
 
 > [!NOTE]
-> 多个资源的工作原理有关 Microsoft 标识平台，而不是 Azure Active Directory (Azure AD) B2C 中获得许可。 Azure AD B2C 支持仅管理员许可，用户的同意。
+> 获得多个资源的同意适用于 Microsoft 标识平台，但不适用于 Azure Active Directory (Azure AD) B2C。 Azure AD B2C 仅支持管理员同意，不支持用户同意。
 
-Microsoft 标识平台 (v2.0) 终结点不允许您以一次性获取多个资源的令牌。 因此，`scopes`参数只能包含单个资源的作用域。 您可以确保，用户预许可给多个资源使用`extraScopesToConsent`参数。
+不能使用 Microsoft 标识平台 (v2.0) 终结点一次获取多个资源的令牌。 `scopes` 参数只能包含单个资源的范围。 可以使用 `extraScopesToConsent` 参数确保用户预先同意多个资源。
 
-例如，如果您有两个资源，其中有两个范围每个：
+例如，你可能有两个资源（每个资源有两个范围）：
 
-- `https://mytenant.onmicrosoft.com/customerapi` -2 个作用域与`customer.read`和 `customer.write`
-- `https://mytenant.onmicrosoft.com/vendorapi` -2 个作用域与`vendor.read`和 `vendor.write`
+- `https://mytenant.onmicrosoft.com/customerapi`，范围为 `customer.read` 和 `customer.write`
+- `https://mytenant.onmicrosoft.com/vendorapi`，范围为 `vendor.read` 和 `vendor.write`
 
-应使用`.WithAdditionalPromptToConsent`修饰符具有`extraScopesToConsent`参数。
+在此示例中，请使用具有 `extraScopesToConsent` 参数的 `.WithAdditionalPromptToConsent` 修饰符。
 
 例如：
 
-```CSharp
+### <a name="in-msalnet"></a>在 MSAL.NET 中
+
+```csharp
 string[] scopesForCustomerApi = new string[]
 {
   "https://mytenant.onmicrosoft.com/customerapi/customer.read",
@@ -67,17 +62,47 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .ExecuteAsync();
 ```
 
-此调用将获取第一个 web API 的访问令牌。
+### <a name="in-msal-for-ios-and-macos"></a>在适用于 iOS 和 macOS 的 MSAL 中
 
-当您需要调用第二个 web API 时，您可以调用：
+Objective-C：
 
-```CSharp
+```objc
+NSArray *scopesForCustomerApi = @[@"https://mytenant.onmicrosoft.com/customerapi/customer.read",
+                                @"https://mytenant.onmicrosoft.com/customerapi/customer.write"];
+
+NSArray *scopesForVendorApi = @[@"https://mytenant.onmicrosoft.com/vendorapi/vendor.read",
+                              @"https://mytenant.onmicrosoft.com/vendorapi/vendor.write"]
+
+MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParameters alloc] initWithScopes:scopesForCustomerApi webviewParameters:[MSALWebviewParameters new]];
+interactiveParams.extraScopesToConsent = scopesForVendorApi;
+[application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) { /* handle result */ }];
+```
+
+Swift：
+
+```swift
+let scopesForCustomerApi = ["https://mytenant.onmicrosoft.com/customerapi/customer.read",
+                            "https://mytenant.onmicrosoft.com/customerapi/customer.write"]
+
+let scopesForVendorApi = ["https://mytenant.onmicrosoft.com/vendorapi/vendor.read",
+                          "https://mytenant.onmicrosoft.com/vendorapi/vendor.write"]
+
+let interactiveParameters = MSALInteractiveTokenParameters(scopes: scopesForCustomerApi, webviewParameters: MSALWebviewParameters())
+interactiveParameters.extraScopesToConsent = scopesForVendorApi
+application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in /* handle result */ })
+```
+
+此调用为你获得第一个 Web API 的访问令牌。
+
+如果需要调用第二个 Web API，请调用 `AcquireTokenSilent` API。
+
+```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();
 ```
 
-### <a name="microsoft-personal-account-requires-reconsenting-each-time-the-app-is-run"></a>Microsoft 个人帐户需要 reconsenting 每次运行该应用程序
+### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>每次应用运行时，Microsoft 个人帐户都需要 reconsent
 
-对于 Microsoft 个人帐户的用户，对每个本机客户端 （桌面/移动应用） 调用来授权同意 reprompting 是预期的行为。 本机客户端标识是本质上是不安全 （与机密客户端应用程序的交换的 Microsoft 标识平台，以证明其身份的机密）。 Microsoft 标识平台选择通过提示用户同意，授权该应用程序每次来缓解此安全的使用者服务。
+对于 Microsoft 个人帐户用户，针对每个本机客户端（桌面或移动应用）的同意调用的 reprompting 是预期的行为。 本机客户端标识本质上是不安全的，这与机密客户端应用程序标识相反。 机密客户端应用程序通过 Microsoft 标识平台交换机密，以证明其身份。 Microsoft 标识平台选择通过在应用程序每次获得授权时提示用户进行同意，来缓解消费者服务的安全。
 
 ## <a name="next-steps"></a>后续步骤
 

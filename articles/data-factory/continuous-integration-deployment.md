@@ -1,140 +1,139 @@
 ---
-title: 在 Azure 数据工厂中进行持续集成和交付 | Microsoft Docs
+title: Azure 数据工厂中的持续集成和交付
 description: 了解如何使用持续集成和交付将数据工厂管道从一个环境（开发、测试、生产）移到另一个环境。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.topic: conceptual
-ms.date: 01/17/2019
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 ms.reviewer: maghan
-manager: craigg
-ms.openlocfilehash: 76962975705ff53a292f41a0a54e42c5f2991a2c
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
-ms.translationtype: MT
+manager: jroth
+ms.topic: conceptual
+ms.date: 04/30/2020
+ms.openlocfilehash: d997c6d4eae93290cbb1e4cafe6c7ad662a65933
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002557"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85336871"
 ---
-# <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>在 Azure 数据工厂中进行持续集成和交付 (CI/CD)
+# <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure 数据工厂中的持续集成和交付
 
-持续集成是这样一种做法：自动地尽早测试对代码库所做的每项更改。 在测试之后进行的持续交付可将更改推送到过渡或生产系统，而测试发生在持续集成期间。
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-对于 Azure 数据工厂，持续集成和交付意味着将数据工厂管道从一个环境（开发、测试、生产）移到另一个环境。 若要进行持续集成和交付，可以将数据工厂 UI 集成与 Azure 资源管理器模板配合使用。 选择“ARM 模板”选项时，数据工厂 UI 可以生成资源管理器模板。 选择“导出 ARM 模板”时，门户会为数据工厂生成资源管理器模板，并生成一个包含所有连接字符串和其他参数的配置文件。 然后，需为每个环境（开发、测试、生产）创建一个配置文件。 所有环境的主资源管理器模板文件始终相同。
+## <a name="overview"></a>概述
 
-有关此功能的 9 分钟介绍和演示，请观看以下视频：
+持续集成是这样一种做法：自动尽早测试对代码库所做的每项更改。 在测试之后进行的持续交付可将更改推送到过渡或生产系统，而测试发生在持续集成期间。
+
+在 Azure 数据工厂中，持续集成和交付 (CI/CD) 是指将数据工厂管道从一个环境（开发、测试、生产）移到另一个环境。 Azure 数据工厂利用 [Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)存储各种 ADF 实体（管道、数据集、数据流等）的配置。 可通过两种建议的方式将数据工厂提升到另一个环境：
+
+-    使用数据工厂与 [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) 的集成进行自动化部署
+-    使用数据工厂 UX 与 Azure 资源管理器的集成手动上传资源管理器模板。
+
+有关此功能的九分钟介绍及演示，请观看以下视频：
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-integration-and-deployment-using-Azure-Data-Factory/player]
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="create-a-resource-manager-template-for-each-environment"></a>为每个环境创建资源管理器模板
-选择“导出 ARM 模板”，在开发环境中导出数据工厂的资源管理器模板。
+## <a name="cicd-lifecycle"></a>CI/CD 生命周期
 
-![](media/continuous-integration-deployment/continuous-integration-image1.png)
+下面是配置了 Azure Repos Git 的 Azure 数据工厂中的 CI/CD 生命周期示例概述。 若要详细了解如何配置 Git 存储库，请参阅 [Azure 数据工厂中的源代码管理](source-control.md)。
 
-然后转到测试性数据工厂和生产性数据工厂，选择“导入 ARM 模板”。
+1.  开发数据工厂是使用 Azure Repos Git 创建和配置的。 所有开发人员都应有权创作数据工厂资源，例如管道和数据集。
 
-![](media/continuous-integration-deployment/continuous-integration-image2.png)
+1.  开发人员[创建功能分支](source-control.md#creating-feature-branches)以进行更改。 他们使用最近的更改来调试其管道运行。 若要详细了解如何调试管道运行，请参阅[使用 Azure 数据工厂进行迭代开发和调试](iterative-development-debugging.md)。
 
-此操作会将你转到 Azure 门户，可以在其中导入已导出的模板。 依次选择“在编辑器中生成自己的模板”、“加载文件”、生成的资源管理器模板。 提供设置，然后数据工厂和整个管道就会导入到生产环境中。
+1.  对所做的更改满意以后，开发人员可以创建一个拉取请求，将请求从其功能分支拉取到主分支或协作分支，让同行来评审他们的更改。
 
-![](media/continuous-integration-deployment/continuous-integration-image3.png)
+1.  在拉取请求获得批准并已将更改合并到主分支后，更改将发布到开发工厂。
 
-![](media/continuous-integration-deployment/continuous-integration-image4.png)
+1.  团队在准备好将更改部署到测试或 UAT 工厂后，会转到其 Azure Pipelines 发布阶段，并会将所需版本的开发工厂部署到 UAT。 此部署作为 Azure Pipelines 任务的一部分发生，使用资源管理器模板参数来应用相应的配置。
 
-选择“加载文件”，以便选择导出的资源管理器模板并提供所有配置值（例如，链接服务）。
+1.  在测试工厂中验证更改后，将使用下一个管道发布任务部署到生产工厂。
 
-![](media/continuous-integration-deployment/continuous-integration-image5.png)
+> [!NOTE]
+> 只有开发工厂才与 git 存储库相关联。 测试工厂和生产工厂不应有关联的 git 存储库，只能通过 Azure DevOps 管道或资源管理模板更新这些工厂。
 
-**连接字符串**。 可以在关于各个连接器的文章中找到创建连接字符串所需的信息。 例如，对于 Azure SQL 数据库，请参阅[使用 Azure 数据工厂向/从 Azure SQL 数据库复制数据](connector-azure-sql-database.md)。 若要验证正确的连接字符串（例如，针对链接的服务），还可以在数据工厂 UI 中打开资源的代码视图。 但是，在代码视图中，连接字符串的密码或帐户密钥部分已删除。 若要打开代码视图，请选择下面的屏幕截图中突出显示的图标。
-
-![打开代码视图来查看连接字符串](media/continuous-integration-deployment/continuous-integration-codeview.png)
-
-## <a name="continuous-integration-lifecycle"></a>持续集成生命周期
-下面是持续集成和交付的整个生命周期。使用此类集成和交付的前提是在数据工厂 UI 中启用 Azure Repos Git 集成：
-
-1.  使用 Azure Repos 设置开发数据工厂，以便所有开发人员都能创作数据工厂资源，例如管道、数据集，等等。
-
-1.  然后，开发人员就可以修改管道之类的资源。 进行修改后，开发人员可以选择“调试”来查看在使用最新更改的情况下管道的运行情况。
-
-1.  对所做的更改满意以后，开发人员可以创建一个拉取请求，将请求从其分支拉取到 master 分支（或 collaboration 分支），让同行来审核他们的更改。
-
-1.  将更改置于 master 分支中以后，即可选择“发布”，将其发布到开发工厂。
-
-1.  准备将更改提升到测试工厂和生产工厂时，团队可以将资源管理器模板从 master 分支导出，或者在 master 分支需要对实时开发数据工厂提供支持的情况下，从任何其他分支导出。
-
-1.  可以使用不同的参数文件，将导出的资源管理器模板部署到测试工厂和生产工厂。
-
-## <a name="automate-continuous-integration-with-azure-pipelines-releases"></a>使用 Azure Pipelines 发布自动完成持续集成
-
-可以使用下面的步骤来设置 Azure Pipelines 发布，以便将数据工厂自动部署到多个环境。
+下图突出显示了此生命周期的各个步骤。
 
 ![与 Azure Pipelines 的持续集成示意图](media/continuous-integration-deployment/continuous-integration-image12.png)
 
+## <a name="automate-continuous-integration-by-using-azure-pipelines-releases"></a>使用 Azure Pipelines 发布自动进行持续集成
+
+下面是有关设置 Azure Pipelines 发布以自动将数据工厂部署到多个环境的指导。
+
 ### <a name="requirements"></a>要求
 
--   一项使用  [*Azure 资源管理器服务终结点*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)链接到 Team Foundation Server 或 Azure Repos 的 Azure 订阅。
+-   一个已链接到 Visual Studio Team Foundation Server 或 Azure Repos 并使用 [Azure 资源管理器服务终结点](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager)的 Azure 订阅。
 
--   配置了 Azure Repos Git 集成的数据工厂。
+-   一个配置了 Azure Repos Git 集成的数据工厂。
 
--   一个包含机密的  [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 。
+-   一个 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)，其中包含每个环境的机密。
 
 ### <a name="set-up-an-azure-pipelines-release"></a>设置 Azure Pipelines 发布
 
-1.  转到使用数据工厂配置的项目中的 Azure Repos 页。
+1.  在 [Azure DevOps](https://dev.azure.com/) 中，打开配置了数据工厂的项目。
 
-1.  单击顶部菜单“Azure Pipelines”&gt;“发布”&gt;“创建发布定义”。
+1.  在页面左侧选择“管道”，然后选择“发布”。 
 
-    ![](media/continuous-integration-deployment/continuous-integration-image6.png)
+    ![依次选择“管道”、“发布”](media/continuous-integration-deployment/continuous-integration-image6.png)
 
-1.  选择“空进程”模板。
+1.  选择“新建管道”；如果有现有的管道，请依次选择“新建”、“新建发布管道”。  
 
-1.  输入环境的名称。
+1.  选择“空作业”模板。
 
-1.  添加一个 Git 项目，选择使用数据工厂配置的存储库。 选择 `adf_publish` 作为使用最新默认版本的默认分支。
+    ![选择“空作业”](media/continuous-integration-deployment/continuous-integration-image13.png)
 
-    ![](media/continuous-integration-deployment/continuous-integration-image7.png)
+1.  在“阶段名称”框中，输入环境的名称。
+
+1.  选择“添加项目”，然后选择配置了开发数据工厂的 git 存储库。 选择“默认分支”对应的存储库的[发布分支](source-control.md#configure-publishing-settings)。 默认情况下，此发布分支为 `adf_publish`。 对于“默认版本”，请选择“默认分支中的最新版本”。 
+
+    ![添加项目](media/continuous-integration-deployment/continuous-integration-image7.png)
 
 1.  添加 Azure 资源管理器部署任务：
 
-    a.  创建新的任务，然后搜索并添加“Azure 资源组部署”。
+    a.  在阶段视图中选择“查看阶段任务”。
 
-    b.  在部署任务中选择目标数据工厂对应的订阅、资源组和位置，然后根据需要提供凭据。
+    ![阶段视图](media/continuous-integration-deployment/continuous-integration-image14.png)
 
-    c.  选择“创建或更新资源组”操作。
+    b.  创建新任务。 搜索 " **ARM 模板部署**"，然后选择 "**添加**"。
 
-    d.  在“替代模板参数”字段旁边 选择“…”。 以浏览方式查找在门户中通过发布操作创建的资源管理器模板 (*ARMTemplateForFactory.json*)。 在 `adf_publish` 分支的文件夹 `<FactoryName>` 中查找该文件。
+    c.  在“部署任务”中，选择目标数据工厂的订阅、资源组和位置。 根据需要提供凭据。
 
-    e.  针对参数文件执行相同的操作。 选择正确的文件，具体取决于你是创建了副本，还是使用默认的 *ARMTemplateParametersForFactory.json* 文件。
+    d.  在“操作”列表中，选择“创建或更新资源组”。 
 
-    f.  在“替代模板参数”字段旁边 选择“…”，然后填充目标数据工厂的信息。 对于来自密钥保管库的凭据，请按以下格式使用机密的名称：假设机密的名称为 `cred1`，请输入 `"$(cred1)"`（使用引号）。
+    e.  选择“模板”框旁边的省略号按钮 ( **...** )。 浏览在配置的 git 存储库的发布分支中生成的 Azure 资源管理器模板。 在 adf_publish 分支的 <FactoryName> 文件夹中查找文件 `ARMTemplateForFactory.json`。
 
-    ![](media/continuous-integration-deployment/continuous-integration-image9.png)
+    f.  选择“模板参数”框旁边 的“…”，以便选择参数文件。 在 adf_publish 分支的 <FactoryName> 文件夹中查找文件 `ARMTemplateParametersForFactory.json`。
 
-    g. 选择“增量”部署模式。
+    g.  在“替代模板参数”框旁边 选择“...”，并输入目标数据工厂的所需参数值。 对于来自 Azure Key Vault 的凭据，请输入机密名称并以双引号将其括住。 例如，如果机密名称为 cred1，请为此值输入 **"$(cred1)"** 。
+
+    h. 选择“增量”作为“部署模式”。 
 
     > [!WARNING]
-    > 如果选择“完成”部署模式，则可能会删除现有资源，包括资源管理器模板中未定义的目标资源组中的所有资源。
+    > 如果选择“完整”作为“部署模式”，可能会删除现有资源，包括目标资源组中未在资源管理器模板中定义的所有资源。 
+
+    ![数据工厂生产部署](media/continuous-integration-deployment/continuous-integration-image9.png)
 
 1.  保存发布管道。
 
-1.  根据此发布管道创建新发布。
+1. 若要触发发布，请选择“创建发布”。 若要自动创建发布，请参阅 [Azure DevOps 发布触发器](https://docs.microsoft.com/azure/devops/pipelines/release/triggers?view=azure-devops)
 
-    ![](media/continuous-integration-deployment/continuous-integration-image10.png)
+   ![选择“创建发布”](media/continuous-integration-deployment/continuous-integration-image10.png)
 
-### <a name="optional---get-the-secrets-from-azure-key-vault"></a>可选 - 获取 Azure Key Vault 中的机密
+> [!IMPORTANT]
+> 在 CI/CD 方案中，不同环境中的集成运行时 (IR) 类型必须相同。 例如，如果在开发环境中使用自承载 IR，则同一 IR 在测试和生产等其他环境中的类型也必须是自承载。 同样，如果跨多个阶段共享集成运行时，则必须在所有环境（例如开发、测试和生产）中将集成运行时配置为链接自承载。
 
-如果有要传入 Azure 资源管理器模板的机密，我们建议将 Azure Key Vault 用于 Azure Pipelines 发布。
+### <a name="get-secrets-from-azure-key-vault"></a>获取 Azure Key Vault 中的机密
 
-可以通过两种方式来处理机密：
+如果要在 Azure 资源管理器模板中传入机密，建议你将 Azure Key Vault 用于 Azure Pipelines 发布。
 
-1.  将机密添加到参数文件。 有关详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](../azure-resource-manager/resource-manager-keyvault-parameter.md)。
+可通过两种方式来处理机密：
 
-    -   创建上传到 publish 分支的参数文件的副本，并使用以下格式设置需要从密钥保管库获取的参数的值：
+1.  将机密添加到参数文件。 有关详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](../azure-resource-manager/templates/key-vault-parameter.md)。
+
+    创建上传到发布分支的参数文件的副本。 使用以下格式设置要从 Key Vault 获取的参数的值：
 
     ```json
     {
@@ -151,29 +150,31 @@ ms.locfileid: "66002557"
     }
     ```
 
-    -   使用此方法时，会自动从密钥保管库拉取机密。
+    使用此方法时，会自动从密钥保管库拉取机密。
 
-    -   参数文件也需位于 publish 分支中。
+    参数文件也需位于 publish 分支中。
 
-1.  在上一部分中介绍的 Azure 资源管理器部署之前添加 [Azure Key Vault 任务](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault)：
+1. 在上一部分所述的 Azure 资源管理器部署任务的前面添加一个 [Azure Key Vault 任务](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault)：
 
-    -   选择“任务”选项卡，创建新的任务，然后搜索并添加“Azure Key Vault”。
+    1.  在“任务”选项卡上创建一个新任务。 搜索并添加 **Azure Key Vault**。
 
-    -   在 Key Vault 任务中，选择在其中创建了密钥保管库的订阅，根据需要提供凭据，然后选择密钥保管库。
+    1.  在 Key Vault 任务中，选择在其中创建了密钥保管库的订阅。 根据需要提供凭据，然后选择该密钥保管库。
 
-    ![](media/continuous-integration-deployment/continuous-integration-image8.png)
+    ![添加 Key Vault 任务](media/continuous-integration-deployment/continuous-integration-image8.png)
 
-### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>向 Azure Pipelines 代理授权
-Azure Key Vault 任务可能会失败并出现拒绝访问错误的 fIntegration 运行时时间。 请下载此发行版的日志，并使用此命令找到 `.ps1` 文件，以便向 Azure Pipelines 代理授权。 可以直接运行此命令，也可以从文件中复制主体 ID，然后在 Azure 门户中手动添加访问策略。 （“获取”和“列出”是所需的最小权限）。
+#### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>向 Azure Pipelines 代理授权
 
-### <a name="update-active-triggers"></a>更新活动触发器
-如果尝试更新活动触发器，部署可能会失败。 若要更新活动触发器，需手动将其停止，在部署后再将其启动。 可以为此添加 Azure Powershell 任务，如以下示例所示：
+如果未设置正确的权限，Azure Key Vault 任务可能失败并出现“拒绝访问”错误。 请下载发布日志，并找到 .ps1 文件，其中包含用于向 Azure Pipelines 代理授予权限的命令。 可以直接运行该命令。 也可以从文件中复制主体 ID，然后在 Azure 门户中手动添加访问策略。 `Get` 和 `List` 是所需的最低权限。
 
-1.  在此发布的“任务”选项卡中，搜索并添加“Azure Powershell”。
+### <a name="updating-active-triggers"></a>更新活动触发器
 
-1.  选择“Azure 资源管理器”作为连接类型，然后选择订阅。
+如果尝试更新活动触发器，部署可能会失败。 若要更新活动触发器，需手动将其停止，并在部署后将其重启。 为此，可以使用 Azure PowerShell 任务：
 
-1.  选择“内联脚本”作为脚本类型，然后提供代码。 以下示例停止触发器：
+1.  在此发布版本的“任务”选项卡上，添加一个 **Azure PowerShell** 任务。 选择任务版本 4.*。 
+
+1.  选择工厂所在的订阅。
+
+1.  选择“脚本文件路径”作为脚本类型。 这需要将 PowerShell 脚本保存到存储库中。 以下 PowerShell 脚本可用于停止触发器：
 
     ```powershell
     $triggersADF = Get-AzDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
@@ -181,700 +182,66 @@ Azure Key Vault 任务可能会失败并出现拒绝访问错误的 fIntegration
     $triggersADF | ForEach-Object { Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.name -Force }
     ```
 
-    ![](media/continuous-integration-deployment/continuous-integration-image11.png)
+部署后，可以完成类似的步骤（使用 `Start-AzDataFactoryV2Trigger` 函数）来重启触发器。
 
-可以在部署后按照类似的步骤并使用类似的代码（通过 `Start-AzDataFactoryV2Trigger` 函数）来重启触发器。
+数据工厂团队已在本文的末尾提供了[部署前和部署后示例脚本](#script)。 
 
-> [!IMPORTANT]
-> 在持续集成和部署方案中，不同环境之间的集成运行时类型必须相同。 例如，如果在开发环境中有自承载集成运行时 (IR)，则在测试和生产等其他环境中同一 IR 的类型必须为自承载。 同样，如果跨多个阶段共享集成运行时，则必须在所有环境（如开发、测试和生产）中将集成运行时配置为“链接自承载”。
+## <a name="manually-promote-a-resource-manager-template-for-each-environment"></a>手动提升每个环境的资源管理器模板
 
-## <a name="sample-deployment-template"></a>示例部署模板
+1. 在“ARM 模板”列表中，选择“导出 ARM 模板”，以在开发环境中导出数据工厂的资源管理器模板。 
 
-下面是一个可以在 Azure Pipelines 中导入的示例部署模板。
+   ![导出资源管理器模板](media/continuous-integration-deployment/continuous-integration-image1.png)
 
-```json
-{
-    "source": 2,
-    "id": 1,
-    "revision": 51,
-    "name": "Data Factory Prod Deployment",
-    "description": null,
-    "createdBy": {
-        "displayName": "Sample User",
-        "url": "https://pde14b1dc-d2c9-49e5-88cb-45ccd58d0335.codex.ms/vssps/_apis/Identities/c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-        "id": "c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-        "uniqueName": "sampleuser@microsoft.com",
-        "imageUrl": "https://sampleuser.visualstudio.com/_api/_common/identityImage?id=c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-        "descriptor": "aad.M2Y2N2JlZGUtMDViZC03ZWI3LTgxYWMtMDcwM2UyODMxNTBk"
-    },
-    "createdOn": "2018-03-01T22:57:25.660Z",
-    "modifiedBy": {
-        "displayName": "Sample User",
-        "url": "https://pde14b1dc-d2c9-49e5-88cb-45ccd58d0335.codex.ms/vssps/_apis/Identities/c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-        "id": "c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-        "uniqueName": "sampleuser@microsoft.com",
-        "imageUrl": "https://sampleuser.visualstudio.com/_api/_common/identityImage?id=c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-        "descriptor": "aad.M2Y2N2JlZGUtMDViZC03ZWI3LTgxYWMtMDcwM2UyODMxNTBk"
-    },
-    "modifiedOn": "2018-03-14T17:58:11.643Z",
-    "isDeleted": false,
-    "path": "\\",
-    "variables": {},
-    "variableGroups": [],
-    "environments": [{
-        "id": 1,
-        "name": "Prod",
-        "rank": 1,
-        "owner": {
-            "displayName": "Sample User",
-            "url": "https://pde14b1dc-d2c9-49e5-88cb-45ccd58d0335.codex.ms/vssps/_apis/Identities/c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-            "id": "c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-            "uniqueName": "sampleuser@microsoft.com",
-            "imageUrl": "https://sampleuser.visualstudio.com/_api/_common/identityImage?id=c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-            "descriptor": "aad.M2Y2N2JlZGUtMDViZC03ZWI3LTgxYWMtMDcwM2UyODMxNTBk"
-        },
-        "variables": {
-            "factoryName": {
-                "value": "sampleuserprod"
-            }
-        },
-        "variableGroups": [],
-        "preDeployApprovals": {
-            "approvals": [{
-                "rank": 1,
-                "isAutomated": true,
-                "isNotificationOn": false,
-                "id": 1
-            }],
-            "approvalOptions": {
-                "requiredApproverCount": null,
-                "releaseCreatorCanBeApprover": false,
-                "autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
-                "enforceIdentityRevalidation": false,
-                "timeoutInMinutes": 0,
-                "executionOrder": 1
-            }
-        },
-        "deployStep": {
-            "id": 2
-        },
-        "postDeployApprovals": {
-            "approvals": [{
-                "rank": 1,
-                "isAutomated": true,
-                "isNotificationOn": false,
-                "id": 3
-            }],
-            "approvalOptions": {
-                "requiredApproverCount": null,
-                "releaseCreatorCanBeApprover": false,
-                "autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
-                "enforceIdentityRevalidation": false,
-                "timeoutInMinutes": 0,
-                "executionOrder": 2
-            }
-        },
-        "deployPhases": [{
-            "deploymentInput": {
-                "parallelExecution": {
-                    "parallelExecutionType": "none"
-                },
-                "skipArtifactsDownload": false,
-                "artifactsDownloadInput": {
-                    "downloadInputs": []
-                },
-                "queueId": 19,
-                "demands": [],
-                "enableAccessToken": false,
-                "timeoutInMinutes": 0,
-                "jobCancelTimeoutInMinutes": 1,
-                "condition": "succeeded()",
-                "overrideInputs": {}
-            },
-            "rank": 1,
-            "phaseType": 1,
-            "name": "Run on agent",
-            "workflowTasks": [{
-                "taskId": "72a1931b-effb-4d2e-8fd8-f8472a07cb62",
-                "version": "2.*",
-                "name": "Azure PowerShell script: FilePath",
-                "refName": "",
-                "enabled": true,
-                "alwaysRun": false,
-                "continueOnError": false,
-                "timeoutInMinutes": 0,
-                "definitionType": "task",
-                "overrideInputs": {},
-                "condition": "succeeded()",
-                "inputs": {
-                    "ConnectedServiceNameSelector": "ConnectedServiceNameARM",
-                    "ConnectedServiceName": "",
-                    "ConnectedServiceNameARM": "e4e2ef4b-8289-41a6-ba7c-92ca469700aa",
-                    "ScriptType": "FilePath",
-                    "ScriptPath": "$(System.DefaultWorkingDirectory)/Dev/deployment.ps1",
-                    "Inline": "param\n(\n    [parameter(Mandatory = $false)] [String] $rootFolder=\"C:\\Users\\sampleuser\\Downloads\\arm_template\",\n    [parameter(Mandatory = $false)] [String] $armTemplate=\"$rootFolder\\arm_template.json\",\n    [parameter(Mandatory = $false)] [String] $armTemplateParameters=\"$rootFolder\\arm_template_parameters.json\",\n    [parameter(Mandatory = $false)] [String] $domain=\"microsoft.onmicrosoft.com\",\n    [parameter(Mandatory = $false)] [String] $TenantId=\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\n    [parame",
-                    "ScriptArguments": "-rootFolder \"$(System.DefaultWorkingDirectory)/Dev/\" -DataFactoryName $(factoryname) -predeployment $true",
-                    "TargetAzurePs": "LatestVersion",
-                    "CustomTargetAzurePs": "5.*"
-                }
-            }, {
-                "taskId": "1e244d32-2dd4-4165-96fb-b7441ca9331e",
-                "version": "1.*",
-                "name": "Azure Key Vault: sampleuservault",
-                "refName": "secret1",
-                "enabled": true,
-                "alwaysRun": false,
-                "continueOnError": false,
-                "timeoutInMinutes": 0,
-                "definitionType": "task",
-                "overrideInputs": {},
-                "condition": "succeeded()",
-                "inputs": {
-                    "ConnectedServiceName": "e4e2ef4b-8289-41a6-ba7c-92ca469700aa",
-                    "KeyVaultName": "sampleuservault",
-                    "SecretsFilter": "*"
-                }
-            }, {
-                "taskId": "94a74903-f93f-4075-884f-dc11f34058b4",
-                "version": "2.*",
-                "name": "Azure Deployment:Create Or Update Resource Group action on sampleuser-datafactory",
-                "refName": "",
-                "enabled": true,
-                "alwaysRun": false,
-                "continueOnError": false,
-                "timeoutInMinutes": 0,
-                "definitionType": "task",
-                "overrideInputs": {},
-                "condition": "succeeded()",
-                "inputs": {
-                    "ConnectedServiceName": "e4e2ef4b-8289-41a6-ba7c-92ca469700aa",
-                    "action": "Create Or Update Resource Group",
-                    "resourceGroupName": "sampleuser-datafactory",
-                    "location": "East US",
-                    "templateLocation": "Linked artifact",
-                    "csmFileLink": "",
-                    "csmParametersFileLink": "",
-                    "csmFile": "$(System.DefaultWorkingDirectory)/Dev/ARMTemplateForFactory.json",
-                    "csmParametersFile": "$(System.DefaultWorkingDirectory)/Dev/ARMTemplateParametersForFactory.json",
-                    "overrideParameters": "-factoryName \"$(factoryName)\" -linkedService1_connectionString \"$(linkedService1-connectionString)\" -linkedService2_connectionString \"$(linkedService2-connectionString)\"",
-                    "deploymentMode": "Incremental",
-                    "enableDeploymentPrerequisites": "None",
-                    "deploymentGroupEndpoint": "",
-                    "project": "",
-                    "deploymentGroupName": "",
-                    "copyAzureVMTags": "true",
-                    "outputVariable": "",
-                    "deploymentOutputs": ""
-                }
-            }, {
-                "taskId": "72a1931b-effb-4d2e-8fd8-f8472a07cb62",
-                "version": "2.*",
-                "name": "Azure PowerShell script: FilePath",
-                "refName": "",
-                "enabled": true,
-                "alwaysRun": false,
-                "continueOnError": false,
-                "timeoutInMinutes": 0,
-                "definitionType": "task",
-                "overrideInputs": {},
-                "condition": "succeeded()",
-                "inputs": {
-                    "ConnectedServiceNameSelector": "ConnectedServiceNameARM",
-                    "ConnectedServiceName": "",
-                    "ConnectedServiceNameARM": "e4e2ef4b-8289-41a6-ba7c-92ca469700aa",
-                    "ScriptType": "FilePath",
-                    "ScriptPath": "$(System.DefaultWorkingDirectory)/Dev/deployment.ps1",
-                    "Inline": "# You can write your azure powershell scripts inline here. \n# You can also pass predefined and custom variables to this script using arguments",
-                    "ScriptArguments": "-rootFolder \"$(System.DefaultWorkingDirectory)/Dev/\" -DataFactoryName $(factoryname) -predeployment $false",
-                    "TargetAzurePs": "LatestVersion",
-                    "CustomTargetAzurePs": ""
-                }
-            }]
-        }],
-        "environmentOptions": {
-            "emailNotificationType": "OnlyOnFailure",
-            "emailRecipients": "release.environment.owner;release.creator",
-            "skipArtifactsDownload": false,
-            "timeoutInMinutes": 0,
-            "enableAccessToken": false,
-            "publishDeploymentStatus": true,
-            "badgeEnabled": false,
-            "autoLinkWorkItems": false
-        },
-        "demands": [],
-        "conditions": [{
-            "name": "ReleaseStarted",
-            "conditionType": 1,
-            "value": ""
-        }],
-        "executionPolicy": {
-            "concurrencyCount": 1,
-            "queueDepthCount": 0
-        },
-        "schedules": [],
-        "retentionPolicy": {
-            "daysToKeep": 30,
-            "releasesToKeep": 3,
-            "retainBuild": true
-        },
-        "processParameters": {
-            "dataSourceBindings": [{
-                "dataSourceName": "AzureRMWebAppNamesByType",
-                "parameters": {
-                    "WebAppKind": "$(WebAppKind)"
-                },
-                "endpointId": "$(ConnectedServiceName)",
-                "target": "WebAppName"
-            }]
-        },
-        "properties": {},
-        "preDeploymentGates": {
-            "id": 0,
-            "gatesOptions": null,
-            "gates": []
-        },
-        "postDeploymentGates": {
-            "id": 0,
-            "gatesOptions": null,
-            "gates": []
-        },
-        "badgeUrl": "https://sampleuser.vsrm.visualstudio.com/_apis/public/Release/badge/19749ef3-2f42-49b5-9696-f28b49faebcb/1/1"
-    }, {
-        "id": 2,
-        "name": "Staging",
-        "rank": 2,
-        "owner": {
-            "displayName": "Sample User",
-            "url": "https://pde14b1dc-d2c9-49e5-88cb-45ccd58d0335.codex.ms/vssps/_apis/Identities/c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-            "id": "c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-            "uniqueName": "sampleuser@microsoft.com",
-            "imageUrl": "https://sampleuser.visualstudio.com/_api/_common/identityImage?id=c9f828d1-2dbb-4e39-b096-f1c53d82bc2c",
-            "descriptor": "aad.M2Y2N2JlZGUtMDViZC03ZWI3LTgxYWMtMDcwM2UyODMxNTBk"
-        },
-        "variables": {
-            "factoryName": {
-                "value": "sampleuserstaging"
-            }
-        },
-        "variableGroups": [],
-        "preDeployApprovals": {
-            "approvals": [{
-                "rank": 1,
-                "isAutomated": true,
-                "isNotificationOn": false,
-                "id": 4
-            }],
-            "approvalOptions": {
-                "requiredApproverCount": null,
-                "releaseCreatorCanBeApprover": false,
-                "autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
-                "enforceIdentityRevalidation": false,
-                "timeoutInMinutes": 0,
-                "executionOrder": 1
-            }
-        },
-        "deployStep": {
-            "id": 5
-        },
-        "postDeployApprovals": {
-            "approvals": [{
-                "rank": 1,
-                "isAutomated": true,
-                "isNotificationOn": false,
-                "id": 6
-            }],
-            "approvalOptions": {
-                "requiredApproverCount": null,
-                "releaseCreatorCanBeApprover": false,
-                "autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
-                "enforceIdentityRevalidation": false,
-                "timeoutInMinutes": 0,
-                "executionOrder": 2
-            }
-        },
-        "deployPhases": [{
-            "deploymentInput": {
-                "parallelExecution": {
-                    "parallelExecutionType": "none"
-                },
-                "skipArtifactsDownload": false,
-                "artifactsDownloadInput": {
-                    "downloadInputs": []
-                },
-                "queueId": 19,
-                "demands": [],
-                "enableAccessToken": false,
-                "timeoutInMinutes": 0,
-                "jobCancelTimeoutInMinutes": 1,
-                "condition": "succeeded()",
-                "overrideInputs": {}
-            },
-            "rank": 1,
-            "phaseType": 1,
-            "name": "Run on agent",
-            "workflowTasks": [{
-                "taskId": "72a1931b-effb-4d2e-8fd8-f8472a07cb62",
-                "version": "2.*",
-                "name": "Azure PowerShell script: FilePath",
-                "refName": "",
-                "enabled": true,
-                "alwaysRun": false,
-                "continueOnError": false,
-                "timeoutInMinutes": 0,
-                "definitionType": "task",
-                "overrideInputs": {},
-                "condition": "succeeded()",
-                "inputs": {
-                    "ConnectedServiceNameSelector": "ConnectedServiceNameARM",
-                    "ConnectedServiceName": "",
-                    "ConnectedServiceNameARM": "e4e2ef4b-8289-41a6-ba7c-92ca469700aa",
-                    "ScriptType": "FilePath",
-                    "ScriptPath": "$(System.DefaultWorkingDirectory)/Dev/deployment.ps1",
-                    "Inline": "# You can write your azure powershell scripts inline here. \n# You can also pass predefined and custom variables to this script using arguments",
-                    "ScriptArguments": "-rootFolder \"$(System.DefaultWorkingDirectory)/Dev/\" -DataFactoryName $(factoryname) -predeployment $true",
-                    "TargetAzurePs": "LatestVersion",
-                    "CustomTargetAzurePs": ""
-                }
-            }, {
-                "taskId": "1e244d32-2dd4-4165-96fb-b7441ca9331e",
-                "version": "1.*",
-                "name": "Azure Key Vault: sampleuservault",
-                "refName": "",
-                "enabled": true,
-                "alwaysRun": false,
-                "continueOnError": false,
-                "timeoutInMinutes": 0,
-                "definitionType": "task",
-                "overrideInputs": {},
-                "condition": "succeeded()",
-                "inputs": {
-                    "ConnectedServiceName": "e4e2ef4b-8289-41a6-ba7c-92ca469700aa",
-                    "KeyVaultName": "sampleuservault",
-                    "SecretsFilter": "*"
-                }
-            }, {
-                "taskId": "94a74903-f93f-4075-884f-dc11f34058b4",
-                "version": "2.*",
-                "name": "Azure Deployment:Create Or Update Resource Group action on sampleuser-datafactory",
-                "refName": "",
-                "enabled": true,
-                "alwaysRun": false,
-                "continueOnError": false,
-                "timeoutInMinutes": 0,
-                "definitionType": "task",
-                "overrideInputs": {},
-                "condition": "succeeded()",
-                "inputs": {
-                    "ConnectedServiceName": "e4e2ef4b-8289-41a6-ba7c-92ca469700aa",
-                    "action": "Create Or Update Resource Group",
-                    "resourceGroupName": "sampleuser-datafactory",
-                    "location": "East US",
-                    "templateLocation": "Linked artifact",
-                    "csmFileLink": "",
-                    "csmParametersFileLink": "",
-                    "csmFile": "$(System.DefaultWorkingDirectory)/Dev/ARMTemplateForFactory.json",
-                    "csmParametersFile": "$(System.DefaultWorkingDirectory)/Dev/ARMTemplateParametersForFactory.json",
-                    "overrideParameters": "-factoryName \"$(factoryName)\" -linkedService1_connectionString \"$(linkedService1-connectionString)\" -linkedService2_connectionString \"$(linkedService2-connectionString)\"",
-                    "deploymentMode": "Incremental",
-                    "enableDeploymentPrerequisites": "None",
-                    "deploymentGroupEndpoint": "",
-                    "project": "",
-                    "deploymentGroupName": "",
-                    "copyAzureVMTags": "true",
-                    "outputVariable": "",
-                    "deploymentOutputs": ""
-                }
-            }, {
-                "taskId": "72a1931b-effb-4d2e-8fd8-f8472a07cb62",
-                "version": "2.*",
-                "name": "Azure PowerShell script: FilePath",
-                "refName": "",
-                "enabled": true,
-                "alwaysRun": false,
-                "continueOnError": false,
-                "timeoutInMinutes": 0,
-                "definitionType": "task",
-                "overrideInputs": {},
-                "condition": "succeeded()",
-                "inputs": {
-                    "ConnectedServiceNameSelector": "ConnectedServiceNameARM",
-                    "ConnectedServiceName": "",
-                    "ConnectedServiceNameARM": "16a37943-8b58-4c2f-a3d6-052d6f032a07",
-                    "ScriptType": "FilePath",
-                    "ScriptPath": "$(System.DefaultWorkingDirectory)/Dev/deployment.ps1",
-                    "Inline": "param(\n$x,\n$y,\n$z)\nwrite-host \"----------\"\nwrite-host $x\nwrite-host $y\nwrite-host $z | ConvertTo-SecureString\nwrite-host \"----------\"",
-                    "ScriptArguments": "-rootFolder \"$(System.DefaultWorkingDirectory)/Dev/\" -DataFactoryName $(factoryname) -predeployment $false",
-                    "TargetAzurePs": "LatestVersion",
-                    "CustomTargetAzurePs": ""
-                }
-            }]
-        }],
-        "environmentOptions": {
-            "emailNotificationType": "OnlyOnFailure",
-            "emailRecipients": "release.environment.owner;release.creator",
-            "skipArtifactsDownload": false,
-            "timeoutInMinutes": 0,
-            "enableAccessToken": false,
-            "publishDeploymentStatus": true,
-            "badgeEnabled": false,
-            "autoLinkWorkItems": false
-        },
-        "demands": [],
-        "conditions": [{
-            "name": "ReleaseStarted",
-            "conditionType": 1,
-            "value": ""
-        }],
-        "executionPolicy": {
-            "concurrencyCount": 1,
-            "queueDepthCount": 0
-        },
-        "schedules": [],
-        "retentionPolicy": {
-            "daysToKeep": 30,
-            "releasesToKeep": 3,
-            "retainBuild": true
-        },
-        "processParameters": {
-            "dataSourceBindings": [{
-                "dataSourceName": "AzureRMWebAppNamesByType",
-                "parameters": {
-                    "WebAppKind": "$(WebAppKind)"
-                },
-                "endpointId": "$(ConnectedServiceName)",
-                "target": "WebAppName"
-            }]
-        },
-        "properties": {},
-        "preDeploymentGates": {
-            "id": 0,
-            "gatesOptions": null,
-            "gates": []
-        },
-        "postDeploymentGates": {
-            "id": 0,
-            "gatesOptions": null,
-            "gates": []
-        },
-        "badgeUrl": "https://sampleuser.vsrm.visualstudio.com/_apis/public/Release/badge/19749ef3-2f42-49b5-9696-f28b49faebcb/1/2"
-    }],
-    "artifacts": [{
-        "sourceId": "19749ef3-2f42-49b5-9696-f28b49faebcb:a6c88f30-5e1f-4de8-b24d-279bb209d85f",
-        "type": "Git",
-        "alias": "Dev",
-        "definitionReference": {
-            "branches": {
-                "id": "adf_publish",
-                "name": "adf_publish"
-            },
-            "checkoutSubmodules": {
-                "id": "",
-                "name": ""
-            },
-            "defaultVersionSpecific": {
-                "id": "",
-                "name": ""
-            },
-            "defaultVersionType": {
-                "id": "latestFromBranchType",
-                "name": "Latest from default branch"
-            },
-            "definition": {
-                "id": "a6c88f30-5e1f-4de8-b24d-279bb209d85f",
-                "name": "Dev"
-            },
-            "fetchDepth": {
-                "id": "",
-                "name": ""
-            },
-            "gitLfsSupport": {
-                "id": "",
-                "name": ""
-            },
-            "project": {
-                "id": "19749ef3-2f42-49b5-9696-f28b49faebcb",
-                "name": "Prod"
-            }
-        },
-        "isPrimary": true
-    }],
-    "triggers": [{
-        "schedule": {
-            "jobId": "b5ef09b6-8dfd-4b91-8b48-0709e3e67b2d",
-            "timeZoneId": "UTC",
-            "startHours": 3,
-            "startMinutes": 0,
-            "daysToRelease": 31
-        },
-        "triggerType": 2
-    }],
-    "releaseNameFormat": "Release-$(rev:r)",
-    "url": "https://sampleuser.vsrm.visualstudio.com/19749ef3-2f42-49b5-9696-f28b49faebcb/_apis/Release/definitions/1",
-    "_links": {
-        "self": {
-            "href": "https://sampleuser.vsrm.visualstudio.com/19749ef3-2f42-49b5-9696-f28b49faebcb/_apis/Release/definitions/1"
-        },
-        "web": {
-            "href": "https://sampleuser.visualstudio.com/19749ef3-2f42-49b5-9696-f28b49faebcb/_release?definitionId=1"
-        }
-    },
-    "tags": [],
-    "properties": {
-        "DefinitionCreationSource": {
-            "$type": "System.String",
-            "$value": "ReleaseNew"
-        }
-    }
-}
-```
+1. 在测试和生产数据工厂中，选择“导入 ARM 模板”。 此操作会将你转到 Azure 门户，可以在其中导入已导出的模板。 选择“在编辑器中生成自己的模板”以打开资源管理器模板编辑器。
 
-## <a name="sample-script-to-stop-and-restart-triggers-and-clean-up"></a>用来停止和重启触发器以及进行清理的示例脚本
+   ![生成自己的模板](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
-下面是一个示例脚本，用于在部署之前停止触发器并随后重启触发器。 此脚本还包括用于删除已移除资源的代码。 若要安装最新版本的 Azure PowerShell，请参阅[使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+1. 选择“加载文件”，然后选择生成的资源管理器模板。 此模板是在步骤 1 中导出的 .zip 文件中的 **arm_template.json** 文件。
 
-```powershell
-param
-(
-    [parameter(Mandatory = $false)] [String] $rootFolder,
-    [parameter(Mandatory = $false)] [String] $armTemplate,
-    [parameter(Mandatory = $false)] [String] $ResourceGroupName,
-    [parameter(Mandatory = $false)] [String] $DataFactoryName,
-    [parameter(Mandatory = $false)] [Bool] $predeployment=$true,
-    [parameter(Mandatory = $false)] [Bool] $deleteDeployment=$false
-)
+   ![编辑模板](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
-$templateJson = Get-Content $armTemplate | ConvertFrom-Json
-$resources = $templateJson.resources
+1. 在设置部分输入配置值，例如链接服务凭据。 完成后，选择“购买”以部署该资源管理器模板。
 
-#Triggers 
-Write-Host "Getting triggers"
-$triggersADF = Get-AzDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
-$triggersTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/triggers" }
-$triggerNames = $triggersTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
-$activeTriggerNames = $triggersTemplate | Where-Object { $_.properties.runtimeState -eq "Started" -and ($_.properties.pipelines.Count -gt 0 -or $_.properties.pipeline.pipelineReference -ne $null)} | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
-$deletedtriggers = $triggersADF | Where-Object { $triggerNames -notcontains $_.Name }
-$triggerstostop = $triggerNames | where { ($triggersADF | Select-Object name).name -contains $_ }
-
-if ($predeployment -eq $true) {
-    #Stop all triggers
-    Write-Host "Stopping deployed triggers"
-    $triggerstostop | ForEach-Object { 
-        Write-host "Disabling trigger " $_
-        Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
-    }
-}
-else {
-    #Deleted resources
-    #pipelines
-    Write-Host "Getting pipelines"
-    $pipelinesADF = Get-AzDataFactoryV2Pipeline -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
-    $pipelinesTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/pipelines" }
-    $pipelinesNames = $pipelinesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
-    $deletedpipelines = $pipelinesADF | Where-Object { $pipelinesNames -notcontains $_.Name }
-    #datasets
-    Write-Host "Getting datasets"
-    $datasetsADF = Get-AzDataFactoryV2Dataset -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
-    $datasetsTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/datasets" }
-    $datasetsNames = $datasetsTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40) }
-    $deleteddataset = $datasetsADF | Where-Object { $datasetsNames -notcontains $_.Name }
-    #linkedservices
-    Write-Host "Getting linked services"
-    $linkedservicesADF = Get-AzDataFactoryV2LinkedService -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
-    $linkedservicesTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/linkedservices" }
-    $linkedservicesNames = $linkedservicesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
-    $deletedlinkedservices = $linkedservicesADF | Where-Object { $linkedservicesNames -notcontains $_.Name }
-    #Integrationruntimes
-    Write-Host "Getting integration runtimes"
-    $integrationruntimesADF = Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
-    $integrationruntimesTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/integrationruntimes" }
-    $integrationruntimesNames = $integrationruntimesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
-    $deletedintegrationruntimes = $integrationruntimesADF | Where-Object { $integrationruntimesNames -notcontains $_.Name }
-
-    #Delete resources
-    Write-Host "Deleting triggers"
-    $deletedtriggers | ForEach-Object { 
-        Write-Host "Deleting trigger "  $_.Name
-        $trig = Get-AzDataFactoryV2Trigger -name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName
-        if ($trig.RuntimeState -eq "Started") {
-            Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name -Force 
-        }
-        Remove-AzDataFactoryV2Trigger -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
-    }
-    Write-Host "Deleting pipelines"
-    $deletedpipelines | ForEach-Object { 
-        Write-Host "Deleting pipeline " $_.Name
-        Remove-AzDataFactoryV2Pipeline -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
-    }
-    Write-Host "Deleting datasets"
-    $deleteddataset | ForEach-Object { 
-        Write-Host "Deleting dataset " $_.Name
-        Remove-AzDataFactoryV2Dataset -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
-    }
-    Write-Host "Deleting linked services"
-    $deletedlinkedservices | ForEach-Object { 
-        Write-Host "Deleting Linked Service " $_.Name
-        Remove-AzDataFactoryV2LinkedService -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
-    }
-    Write-Host "Deleting integration runtimes"
-    $deletedintegrationruntimes | ForEach-Object { 
-        Write-Host "Deleting integration runtime " $_.Name
-        Remove-AzDataFactoryV2IntegrationRuntime -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
-    }
-
-    if ($deleteDeployment -eq $true) {
-        Write-Host "Deleting ARM deployment ... under resource group: " $ResourceGroupName
-        $deployments = Get-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName
-        $deploymentsToConsider = $deployments | Where { $_.DeploymentName -like "ArmTemplate_master*" -or $_.DeploymentName -like "ArmTemplateForFactory*" } | Sort-Object -Property Timestamp -Descending
-        $deploymentName = $deploymentsToConsider[0].DeploymentName
-
-       Write-Host "Deployment to be deleted: " $deploymentName
-        $deploymentOperations = Get-AzResourceGroupDeploymentOperation -DeploymentName $deploymentName -ResourceGroupName $ResourceGroupName
-        $deploymentsToDelete = $deploymentOperations | Where { $_.properties.targetResource.id -like "*Microsoft.Resources/deployments*" }
-
-        $deploymentsToDelete | ForEach-Object { 
-            Write-host "Deleting inner deployment: " $_.properties.targetResource.id
-            Remove-AzResourceGroupDeployment -Id $_.properties.targetResource.id
-        }
-        Write-Host "Deleting deployment: " $deploymentName
-        Remove-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -Name $deploymentName
-    }
-
-    #Start Active triggers - After cleanup efforts
-    Write-Host "Starting active triggers"
-    $activeTriggerNames | ForEach-Object { 
-        Write-host "Enabling trigger " $_
-        Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
-    }
-}
-```
+   ![设置部分](media/continuous-integration-deployment/continuous-integration-image5.png)
 
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>将自定义参数用于资源管理器模板
 
-如果处于 GIT 模式下时，您可以在 Resource Manager 模板中的模板和已硬编码的属性设置将参数化的属性重写默认属性。 你可能想要重写这些方案中的默认参数化模板：
+如果开发工厂具有关联的 git 存储库，则可替代通过发布或导出模板生成的资源管理器模板的默认资源管理器模板参数。 在以下情况下，你可能想要替代默认的参数化模板：
 
-* 使用自动化的 CI/CD 和你想要在资源管理器部署过程中更改某些属性，但属性在默认情况下不参数化。
-* 您的工厂是很大的默认资源管理器模板无效，因为它有多个参数 (256) 允许的最大。
+* 你使用自动化 CI/CD，想要在部署资源管理器期间更改某些属性，但这些属性在默认情况下不会参数化。
+* 工厂太大，包含的参数数目超过了允许的最大数目 (256)，以致默认的资源管理器模板无效。
 
-上述情况下，若要重写默认的参数化模板，创建名为的文件 *arm 模板参数 definition.json* 存储库的根文件夹中。 必须完全匹配的文件的名称。 数据工厂会尝试读取此文件，从目前正在使用 Azure 数据工厂门户中的任何一个分支，而不只是从协作分支。 可以创建或编辑其中使用可测试所做的更改将文件从一个私有分支**导出 ARM 模板**在 UI 中。 然后，可以将文件合并到协作分支。 如果未找到文件，则使用默认模板。
+若要替代默认的参数化模板，请在 git 分支的根文件夹中创建名为 **arm-template-parameters-definition.json** 的文件。 必须使用这个具体的文件名。
 
+   ![自定义参数文件](media/continuous-integration-deployment/custom-parameters.png)
 
-### <a name="syntax-of-a-custom-parameters-file"></a>自定义参数文件的语法
+从协作分支发布时，数据工厂将读取此文件，并使用其配置来生成参数化的属性。 如果找不到文件，则使用默认模板。
 
-以下是一些指导原则创作的自定义参数文件时使用。 该文件由每个实体类型的部分： 触发器、 管道、 链接服务、 数据集、 integrationruntime，等等。
-* 输入下的相关实体类型的属性路径。
-* 属性名称设置为\*'，指示您希望参数化下它 （仅到第一个级别，不以递归方式） 的所有属性。 你还可以提供任何例外情况。
-* 将属性的值设置为字符串时，表示你希望参数化该属性。 使用格式 `<action>:<name>:<stype>`。
-   *  `<action>` 可以是下列字符之一：
-      * `=` 方法将当前值保留为参数的默认值。
+导出资源管理器模板时，数据工厂将从当前正在处理的任何分支读取此文件，而不只是从协作分支读取。 可以在某个专用分支中创建或编辑文件，在此文件中，可以通过选择 UI 中的“导出 ARM 模板”来测试更改。 然后，可将该文件合并到协作分支。
+
+> [!NOTE]
+> 自定义参数化模板不会更改 ARM 模板参数限制 256。 它允许选择和减少参数化属性的数目。
+
+### <a name="custom-parameter-syntax"></a>自定义参数语法
+
+下面是创建自定义参数文件 **arm-template-parameters-definition.json** 时要遵循的一些准则。 对于下述每个实体类型，该文件都包含一个节：触发器、管道、链接服务、数据集、集成运行时和数据流。
+
+* 输入相关实体类型下的属性路径。
+* 将属性名称设置为 `*` 表示要将其下的所有属性参数化（仅参数化到第一个级别，而不是递归性的参数化）。 还可为此配置提供例外情况。
+* 将属性值设置为字符串表示你希望参数化该属性。 使用格式 `<action>:<name>:<stype>`。
+   *  `<action>` 可以是以下字符之一：
+      * `=` 表示将当前值保留为参数的默认值。
       * `-` 表示不保留参数的默认值。
-      * `|` 是一种特殊情况的连接字符串或密钥从 Azure 密钥保管库机密。
-   * `<name>` 为参数的名称。 如果为空，它将属性的名称。 如果值开头`-`字符，缩短名称。 例如，`AzureStorage1_properties_typeProperties_connectionString`将缩写为`AzureStorage1_connectionString`。
-   * `<stype>` 是参数的类型。 如果 `<stype>` 是保留为空，默认类型是`string`。 支持的值： `string`， `bool`， `number`， `object`，和`securestring`。
-* 当您在定义文件中指定数组时，则指示在模板中的匹配属性数组。 数据工厂循环访问数组中的所有对象使用的集成运行时对象的数组中指定的定义。 第二个对象（一个字符串）成为属性的名称，这用作每次遍历的参数的名称。
-* 不能有一个特定的资源实例的定义。 任何定义适用于该类型的所有资源。
-* 默认情况下，所有的安全字符串，例如密钥保管库机密和安全字符串，例如连接字符串、 密钥和令牌，将参数化。
+      * `|` 是 Azure Key Vault 中的机密的特例，用于连接字符串或密钥。
+   * `<name>` 是参数的名称。 如果为空，将采用属性的名称。 如果值以 `-` 字符开头，则会简写名称。 例如，`AzureStorage1_properties_typeProperties_connectionString` 将简写为 `AzureStorage1_connectionString`。
+   * `<stype>` 是参数的类型。 如果 `<stype>` 为空，则默认类型为 `string`。 支持的值：`string`、`bool`、`number`、`object` 和 `securestring`。
+* 在定义文件中指定数组表示模板中匹配的属性是一个数组。 数据工厂使用数组的集成运行时对象中指定的定义来循环访问该数组中的所有对象。 第二个对象（一个字符串）成为属性的名称，这用作每次遍历的参数的名称。
+* 定义不能特定于资源实例。 任何定义都将应用到该类型的所有资源。
+* 默认情况下，会参数化 Key Vault 机密等安全字符串，以及连接字符串、密钥和令牌等安全字符串。
  
-## <a name="sample-parameterization-template"></a>示例参数化模板
+### <a name="sample-parameterization-template"></a>示例参数化模板
+
+下面是参数化模板的示例：
 
 ```json
 {
@@ -935,39 +302,41 @@ else {
     }
 }
 ```
-
-### <a name="explanation"></a>说明:
+下面说明如何构造上述模板并按资源类型划分该模板。
 
 #### <a name="pipelines"></a>管道
     
-* 路径的活动/typeProperties/waitTimeInSeconds 中的任何属性已参数化。 这意味着，具有一个名为的代码级别属性的管道中的任何活动`waitTimeInSeconds`(例如，`Wait`活动) 为数字，使用默认名称参数化。 但是，它不会在资源管理器模板中具有默认值。 它将在资源管理器部署期间是必需的输入。
-* 同样，属性，称为`headers`(例如，在`Web`活动) 使用类型参数化`object`(JObject)。 它具有默认值，这是与的值相同源工厂。
+* 路径 `activities/typeProperties/waitTimeInSeconds` 中的任何属性已参数化。 包含名为 `waitTimeInSeconds` 的代码级属性的管道中的任一活动（例如 `Wait` 活动）将以默认名称参数化为数字。 但是，该活动在资源管理器模板中没有默认值。 在部署资源管理器期间，必须输入其默认值。
+* 同样，名为 `headers` 的属性（例如，在 `Web` 活动中的该属性）将以类型 `object` (JObject) 参数化。 该属性具有默认值，该值与源工厂的默认值相同。
 
 #### <a name="integrationruntimes"></a>IntegrationRuntimes
 
-* 仅属性和所有属性，在路径下的`typeProperties`被参数化，使用其各自的默认值。 例如，截至今天的架构中，有两个属性下的**IntegrationRuntimes**类型属性：`computeProperties`和`ssisProperties`。 使用其各自的默认值和类型 （对象） 创建这两种属性类型。
+* 路径 `typeProperties` 下的所有属性以其各自的默认值参数化。 例如，`IntegrationRuntimes` 类型属性下有两个属性：`computeProperties` 和 `ssisProperties`。 这两个属性类型是使用各自的默认值和类型 (Object) 创建的。
 
 #### <a name="triggers"></a>触发器
 
-* 下`typeProperties`，两个属性进行参数化。 第一个参数是`maxConcurrency`，其指定为具有默认值和该类型将`string`。 它具有的默认参数名称`<entityName>_properties_typeProperties_maxConcurrency`。
-* `recurrence`属性也参数化。 在其下的该级别的所有属性都指定为字符串，默认值和参数名称与参数化。 例外情况是`interval`属性，这是作为数字类型，参数化，使用参数名称带有后缀`<entityName>_properties_typeProperties_recurrence_triggerSuffix`。 同样，`freq`属性是一个字符串，作为一个字符串，参数化。 但是，`freq`属性没有默认值参数化。 名称是缩短，作为后缀。 例如，`<entityName>_freq`。
+* 在 `typeProperties` 下，会参数化两个属性。 第一个属性是 `maxConcurrency`，该属性指定为具有默认值，类型为 `string`。 其默认参数名称为 `<entityName>_properties_typeProperties_maxConcurrency`。
+* 另外还会参数化 `recurrence` 属性。 该属性级别下的所有属性均指定为参数化为字符串，并具有默认值和参数名称。 `interval` 属性例外，它将参数化为类型 `number`。 参数名称带有 `<entityName>_properties_typeProperties_recurrence_triggerSuffix` 后缀。 同样，`freq` 属性是字符串，将参数化为字符串。 但是，将参数化 `freq` 属性且不提供默认值。 名称将会简写并带有后缀。 例如，`<entityName>_freq` 。
 
 #### <a name="linkedservices"></a>LinkedServices
 
-* 链接的服务是唯一的。 由于链接的服务和数据集可以属于多个类型，您可以提供特定于类型的自定义项。 例如，您可能会说所有链接类型的服务`AzureDataLakeStore`，特定的模板将应用，并对所有其他人 (通过\*) 将应用不同的模板。
-* 在前面的示例中，`connectionString`属性将作为参数化`securestring`值，它不会具有默认值，其中包含带有后缀的缩短了的参数名称`connectionString`。
-* 属性`secretAccessKey`，但是，碰巧`AzureKeyVaultSecret`(例如，`AmazonS3`链接服务)。 因此，自动参数化为 Azure 密钥保管库机密，并且从在源工厂中使用配置的密钥保管库提取。 您可以还参数化密钥保管库本身。
+* 链接服务是独特的。 由于链接服务和数据集的类型多种多样，你可以提供类型特定的自定义。 在此示例中，对于 `AzureDataLakeStore` 类型的所有链接服务，将应用特定的模板。 对于所有其他链接服务（通过 `*` 获取），将应用不同的模板。
+* `connectionString` 属性将参数化为 `securestring` 值。 该属性没有默认值。 它使用带有 `connectionString` 后缀的简写参数名称。
+* 属性 `secretAccessKey` 正好是 `AzureKeyVaultSecret`（例如，在 Amazon S3 链接服务中就是如此）。 它自动参数化为 Azure Key Vault 机密，可从配置的密钥保管库提取。 你还可以参数化密钥保管库本身。
 
 #### <a name="datasets"></a>数据集
 
-* 即使特定于类型的自定义不适用于数据集，可以无显式提供配置\*-级别配置。 在前面的示例中下的所有数据集属性`typeProperties`参数化。
+* 尽管类型特定的自定义可用于数据集，但你无需显式使用 \* 级配置即可提供配置。 在前面的示例中，`typeProperties` 下的所有数据集属性都将参数化。
 
-可以更改默认参数化模板，但这是当前的模板。 这会十分有用，如果您只需添加一个附加属性作为参数，而且还如果不想丢失现有的参数化并且需要重新创建它们。
+### <a name="default-parameterization-template"></a>默认参数化模板
 
+下面是当前的默认参数化模板。 如果只需添加少量的参数，直接编辑此模板也许是不错的想法，因为这样不会丢失现有的参数化结构。
 
 ```json
 {
     "Microsoft.DataFactory/factories/pipelines": {
+    },
+    "Microsoft.DataFactory/factories/dataflows": {
     },
     "Microsoft.DataFactory/factories/integrationRuntimes":{
         "properties": {
@@ -991,6 +360,14 @@ else {
                         "value": "-::secureString"
                     },
                     "resourceId": "="
+                },
+                "computeProperties": {
+                    "dataFlowProperties": {
+                        "externalComputeInfo": [{
+                                "accessToken": "-::secureString"
+                            }
+                        ]
+                    }
                 }
             }
         }
@@ -1025,6 +402,7 @@ else {
                     "accessKeyId": "=",
                     "servicePrincipalId": "=",
                     "userId": "=",
+                    "host": "=",
                     "clientId": "=",
                     "clusterUserName": "=",
                     "clusterSshUserName": "=",
@@ -1038,11 +416,16 @@ else {
                     "database": "=",
                     "serviceEndpoint": "=",
                     "batchUri": "=",
+                    "poolName": "=",
                     "databaseName": "=",
                     "systemNumber": "=",
                     "server": "=",
                     "url":"=",
+                    "functionAppUrl":"=",
+                    "environmentUrl": "=",
                     "aadResourceId": "=",
+                    "sasUri": "|:-sasUri:secureString",
+                    "sasToken": "|",
                     "connectionString": "|:-connectionString:secureString"
                 }
             }
@@ -1070,11 +453,15 @@ else {
 }
 ```
 
-**示例**：添加一个 Databricks 交互式群集 ID （从 Databricks 链接服务） 的参数文件：
+### <a name="example-parameterizing-an-existing-azure-databricks-interactive-cluster-id"></a>示例：参数化现有的 Azure Databricks 交互式群集 ID
 
-```
+以下示例演示如何将单个值添加到默认的参数化模板。 我们只想要将 Databricks 链接服务的某个现有 Azure Databricks 交互式群集 ID 添加到参数文件。 请注意，此文件除了在 `Microsoft.DataFactory/factories/linkedServices` 的属性字段下添加了 `existingClusterId` 以外，在其他方面，它与前一个文件相同。
+
+```json
 {
     "Microsoft.DataFactory/factories/pipelines": {
+    },
+    "Microsoft.DataFactory/factories/dataflows": {
     },
     "Microsoft.DataFactory/factories/integrationRuntimes":{
         "properties": {
@@ -1145,6 +532,7 @@ else {
                     "database": "=",
                     "serviceEndpoint": "=",
                     "batchUri": "=",
+            "poolName": "=",
                     "databaseName": "=",
                     "systemNumber": "=",
                     "server": "=",
@@ -1178,37 +566,376 @@ else {
 }
 ```
 
-
 ## <a name="linked-resource-manager-templates"></a>链接的资源管理器模板
 
-如果你为数据工厂设置了持续集成和部署 (CI/CD)，则可能会注意到，随着工厂变得越来越大，你会达到资源管理器模板限制，例如，资源管理器模板中的最大资源数或最大有效负载。 对于这类情况，除了为工厂生成完整的资源管理器模板外，数据工厂现在还会生成链接的资源管理器模板。 因此，这将工厂有效负载拆分为多个文件，以便不会达到上面提到的限制。
+如果为数据工厂设置了 CI/CD，随着工厂的不断增大，最终可能会超过 Azure 资源管理器模板限制。 例如，有一项限制是资源管理器模板中的最大资源数。 为了容纳较大的工厂，同时为工厂生成完整的资源管理器模板，数据工厂现在会生成链接的资源管理器模板。 借助此功能，整个工厂有效负载将分解为多个文件，这样就不会受到限制的约束。
 
-如果已配置了 Git，则会在 `adf_publish` 分支中在名为 `linkedTemplates` 的新文件夹下生成并保存链接的模板以及完整的资源管理器模板。
+如果已配置 Git，将会生成链接的模板，并将其连同完整的资源管理器模板一起保存在 adf_publish 分支中名为 linkedTemplates 的新文件夹内：
 
 ![链接的资源管理器模板文件夹](media/continuous-integration-deployment/linked-resource-manager-templates.png)
 
-链接的资源管理器模板通常有一个主模板和一组链接到主模板的子模板。 父模板名为 `ArmTemplate_master.json`，子模板以如下模式命名：`ArmTemplate_0.json`、`ArmTemplate_1.json`，依此类推。 若要从使用完整的资源管理器模板转变为使用链接的模板，请更新 CI/CD 任务以指向 `ArmTemplate_master.json` 而非指向 `ArmTemplateForFactory.json`（即完整的资源管理器模板）。 资源管理器还要求将链接的模板上传到存储帐户，以便它们在部署期间可供 Azure 访问。 有关详细信息，请参阅[通过 VSTS 部署链接的 ARM 模板](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/)。
+链接的资源管理器模板通常包括一个主模板，以及一组链接到主模板的子模板。 父模板名为 ArmTemplate_master.json，子模板按照 ArmTemplate_0.json、ArmTemplate_1.json ... 的模式命名。 
+
+若要使用链接的模板而不是完整的资源管理器模板，请将 CI/CD 任务更新为指向 ArmTemplate_master.json 而不是 ArmTemplateForFactory.json（完整资源管理器模板）。 资源管理器还要求将链接的模板上传到存储帐户，使 Azure 能够在部署期间访问这些模板。 有关详细信息，请参阅[使用 VSTS 部署链接的资源管理器模板](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/)。
 
 不要忘记在执行部署任务之前和之后在 CI/CD 管道中添加数据工厂脚本。
 
-如果没有配置 Git，则可以通过**导出 ARM 模板**操作访问链接的模板。
+如果未配置 Git，可以通过“ARM 模板”列表中的“导出 ARM 模板”访问链接的模板。 
+
+## <a name="hotfix-production-environment"></a>修补程序生产环境
+
+将某个工厂部署到生产环境后，如果你发现某个 bug 需要立即予以修复，但无法部署当前协作分支，则你可能需要部署一个修补程序。 此方法称作快速修复工程 (QFE)。
+
+1.    在 Azure DevOps 中，转到已部署至生产环境的版本。 找到已部署的最后一个提交内容。
+
+2.    从提交消息中获取协作分支的提交 ID。
+
+3.    基于该提交内容创建新的修补程序分支。
+
+4.    转到 Azure 数据工厂 UX，切换到修补程序分支。
+
+5.    使用 Azure 数据工厂 UX 修复该 bug。 测试更改。
+
+6.    验证修复结果后，选择“导出 ARM 模板”以获取修补程序资源管理器模板。
+
+7.    手动将此生成签入到 adf_publish 分支。
+
+8.    如果已将发布管道配置为根据 adf_publish 签入内容自动触发，则会自动启动新的发布。 否则，请手动将发布排入队列。
+
+9.    将修补程序版本部署到测试工厂和生产工厂。 此版本包含以前的生产有效负载，以及你在步骤 5 中完成的修复。
+
+10.   将此修补程序中的更改添加到开发分支，使以后的版本不会出现相同的 bug。
 
 ## <a name="best-practices-for-cicd"></a>CI/CD 最佳做法
 
-如果你使用数据工厂的 Git 集成，并且某个 CI/CD 管道会将更改从“开发”环境依次转移到“测试”和“生产”环境，则我们建议采用以下最佳做法：
+如果你使用数据工厂的 Git 集成，并且某个 CI/CD 管道会将更改从开发环境依次转移到测试和生产环境，则我们建议采用以下最佳做法：
 
--   **Git 集成**。 只需使用 Git 集成配置开发数据工厂。 对测试和生产做出的更改将通过 CI/CD 部署，不需要采用 Git 集成。
+-   **Git 集成**。 仅配置具有 Git 集成的开发数据工厂。 对测试和生产环境所做的更改将通过 CI/CD 进行部署，不需要 Git 集成。
 
--   **数据工厂 CI/CD 脚本**。 在执行 CI/CD 中的资源管理器部署步骤之前，必须处理好停止触发器、执行不同类型的工厂清理等任务。 我们建议使用[此脚本](#sample-script-to-stop-and-restart-triggers-and-clean-up)，它可以处理所有这些任务。 使用相应的标志，在部署之前和之后各运行该脚本一次。
+-   **部署前和部署后脚本**。 在 CI/CD 中完成资源管理器部署步骤之前，需要先完成某些任务，例如停止再重启触发器并执行清理。 我们建议在执行部署任务之前和之后使用 PowerShell 脚本。 有关详细信息，请参阅[更新活动触发器](#updating-active-triggers)。 数据工厂团队已在本网页的末尾提供了一个可用的[脚本](#script)。
 
--   **集成运行时和共享**。 集成运行时是数据工厂中的基础结构组件之一，它们不经常会发生更改，在 CI/CD 的各个阶段都是类似的。 因此，数据工厂预期集成运行时在 CI/CD 的所有阶段具有相同的名称和类型。 若要在所有阶段共享集成运行时 - 例如，自承载集成运行时 - 共享方法之一是将自承载 IR 托管在仅用于包含共享的集成运行时的三元工厂中。 然后，可以在开发/测试/生产环境中将这些集成运行时用作链接的 IR 类型。
+-   **集成运行时和共享**。 集成运行时不经常更改，在 CI/CD 的所有阶段中都是类似的。 因此，数据工厂预期在 CI/CD 的所有阶段使用相同的集成运行时名称和类型。 若要在所有阶段中共享集成运行时，请考虑使用三元工厂，这只是为了包含共享的集成运行时。 可以在所有环境中将此共享工厂用作链接的集成运行时类型。
 
--   **Key Vault**。 使用建议的基于 Azure Key Vault 的链接服务时，可以通过为开发/测试/生产环境保留独立的 Key Vault，来进一步发挥 Key Vault 的优势。此外，可为每个 Key Vault 单独配置权限级别。 你可能不希望团队成员有权访问生产机密。 此外，我们建议在所有阶段保留相同的机密名称。 如果保留相同的名称，则无需在 CI/CD 中更改资源管理器模板，因为唯一需要更改的设置是 Key Vault 名称，这是一个资源管理器模板参数。
+-   **Key Vault**。 使用其连接信息存储在 Azure Key Vault 中的链接服务时，建议为不同的环境保留不同的密钥保管库。 此外，可为每个密钥保管库单独配置权限级别。 例如，你可能不希望团队成员有权访问生产机密。 如果采用此方法，我们建议在所有阶段中保留相同的机密名称。 如果保留相同的机密名称，则无需在 CI/CD 环境中参数化每个连接字符串，因为只需更改密钥保管库名称，而该名称是一个单独的参数。
 
 ## <a name="unsupported-features"></a>不支持的功能
 
--   无法发布单个资源，因为数据工厂实体相互依赖。 例如，触发器依赖于管道，管道依赖于数据集和其他管道，等等。很难跟踪更改依赖项。 即使可以选择手动发布的资源，也可能只能选择整个更改集中的某个子集，导致发布后出现意外的行为。
+- 按照设计，数据工厂不允许挑拣提交内容或选择性地发布资源。 发布将包含数据工厂中发生的所有更改。
+
+    - 数据工厂实体相互依赖。 例如，触发器依赖于管道，而管道又依赖于数据集和其他管道。 选择性发布资源子集可能会导致意外的行为和错误。
+    - 如果需要进行选择性发布（这种情况很少见），请考虑使用修补程序。 有关详细信息，请参阅[修补程序生产环境](#hotfix-production-environment)。
 
 -   无法从专用分支发布。
 
--   无法在 Bitbucket 上托管项目。
+-   目前无法在 Bitbucket 上托管项目。
+
+## <a name="sample-pre--and-post-deployment-script"></a><a name="script"></a> 部署前和部署后示例脚本
+
+以下示例脚本可用于在部署之前停止触发器，并在部署之后重启触发器。 此脚本还包括用于删除已移除资源的代码。 请将该脚本保存到 Azure DevOps git 存储库，并使用版本 4.* 通过 Azure PowerShell 任务引用它。
+
+在运行部署前脚本时，需在“脚本参数”字段中指定以下参数的变体。
+
+`-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $true -deleteDeployment $false`
+
+
+在运行部署后脚本时，需在“脚本参数”字段中指定以下参数的变体。
+
+`-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $false -deleteDeployment $true`
+
+![Azure PowerShell 任务](media/continuous-integration-deployment/continuous-integration-image11.png)
+
+下面是部署前和部署后可以使用的脚本。 其中考虑到了已删除的资源以及资源引用。
+
+  
+```powershell
+param
+(
+    [parameter(Mandatory = $false)] [String] $armTemplate,
+    [parameter(Mandatory = $false)] [String] $ResourceGroupName,
+    [parameter(Mandatory = $false)] [String] $DataFactoryName,
+    [parameter(Mandatory = $false)] [Bool] $predeployment=$true,
+    [parameter(Mandatory = $false)] [Bool] $deleteDeployment=$false
+)
+
+function getPipelineDependencies {
+    param([System.Object] $activity)
+    if ($activity.Pipeline) {
+        return @($activity.Pipeline.ReferenceName)
+    } elseif ($activity.Activities) {
+        $result = @()
+        $activity.Activities | ForEach-Object{ $result += getPipelineDependencies -activity $_ }
+        return $result
+    } elseif ($activity.ifFalseActivities -or $activity.ifTrueActivities) {
+        $result = @()
+        $activity.ifFalseActivities | Where-Object {$_ -ne $null} | ForEach-Object{ $result += getPipelineDependencies -activity $_ }
+        $activity.ifTrueActivities | Where-Object {$_ -ne $null} | ForEach-Object{ $result += getPipelineDependencies -activity $_ }
+        return $result
+    } elseif ($activity.defaultActivities) {
+        $result = @()
+        $activity.defaultActivities | ForEach-Object{ $result += getPipelineDependencies -activity $_ }
+        if ($activity.cases) {
+            $activity.cases | ForEach-Object{ $_.activities } | ForEach-Object{$result += getPipelineDependencies -activity $_ }
+        }
+        return $result
+    } else {
+        return @()
+    }
+}
+
+function pipelineSortUtil {
+    param([Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipeline]$pipeline,
+    [Hashtable] $pipelineNameResourceDict,
+    [Hashtable] $visited,
+    [System.Collections.Stack] $sortedList)
+    if ($visited[$pipeline.Name] -eq $true) {
+        return;
+    }
+    $visited[$pipeline.Name] = $true;
+    $pipeline.Activities | ForEach-Object{ getPipelineDependencies -activity $_ -pipelineNameResourceDict $pipelineNameResourceDict}  | ForEach-Object{
+        pipelineSortUtil -pipeline $pipelineNameResourceDict[$_] -pipelineNameResourceDict $pipelineNameResourceDict -visited $visited -sortedList $sortedList
+    }
+    $sortedList.Push($pipeline)
+
+}
+
+function Get-SortedPipelines {
+    param(
+        [string] $DataFactoryName,
+        [string] $ResourceGroupName
+    )
+    $pipelines = Get-AzDataFactoryV2Pipeline -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+    $ppDict = @{}
+    $visited = @{}
+    $stack = new-object System.Collections.Stack
+    $pipelines | ForEach-Object{ $ppDict[$_.Name] = $_ }
+    $pipelines | ForEach-Object{ pipelineSortUtil -pipeline $_ -pipelineNameResourceDict $ppDict -visited $visited -sortedList $stack }
+    $sortedList = new-object Collections.Generic.List[Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipeline]
+    
+    while ($stack.Count -gt 0) {
+        $sortedList.Add($stack.Pop())
+    }
+    $sortedList
+}
+
+function triggerSortUtil {
+    param([Microsoft.Azure.Commands.DataFactoryV2.Models.PSTrigger]$trigger,
+    [Hashtable] $triggerNameResourceDict,
+    [Hashtable] $visited,
+    [System.Collections.Stack] $sortedList)
+    if ($visited[$trigger.Name] -eq $true) {
+        return;
+    }
+    $visited[$trigger.Name] = $true;
+    if ($trigger.Properties.DependsOn) {
+        $trigger.Properties.DependsOn | Where-Object {$_ -and $_.ReferenceTrigger} | ForEach-Object{
+            triggerSortUtil -trigger $triggerNameResourceDict[$_.ReferenceTrigger.ReferenceName] -triggerNameResourceDict $triggerNameResourceDict -visited $visited -sortedList $sortedList
+        }
+    }
+    $sortedList.Push($trigger)
+}
+
+function Get-SortedTriggers {
+    param(
+        [string] $DataFactoryName,
+        [string] $ResourceGroupName
+    )
+    $triggers = Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName
+    $triggerDict = @{}
+    $visited = @{}
+    $stack = new-object System.Collections.Stack
+    $triggers | ForEach-Object{ $triggerDict[$_.Name] = $_ }
+    $triggers | ForEach-Object{ triggerSortUtil -trigger $_ -triggerNameResourceDict $triggerDict -visited $visited -sortedList $stack }
+    $sortedList = new-object Collections.Generic.List[Microsoft.Azure.Commands.DataFactoryV2.Models.PSTrigger]
+    
+    while ($stack.Count -gt 0) {
+        $sortedList.Add($stack.Pop())
+    }
+    $sortedList
+}
+
+function Get-SortedLinkedServices {
+    param(
+        [string] $DataFactoryName,
+        [string] $ResourceGroupName
+    )
+    $linkedServices = Get-AzDataFactoryV2LinkedService -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName
+    $LinkedServiceHasDependencies = @('HDInsightLinkedService', 'HDInsightOnDemandLinkedService', 'AzureBatchLinkedService')
+    $Akv = 'AzureKeyVaultLinkedService'
+    $HighOrderList = New-Object Collections.Generic.List[Microsoft.Azure.Commands.DataFactoryV2.Models.PSLinkedService]
+    $RegularList = New-Object Collections.Generic.List[Microsoft.Azure.Commands.DataFactoryV2.Models.PSLinkedService]
+    $AkvList = New-Object Collections.Generic.List[Microsoft.Azure.Commands.DataFactoryV2.Models.PSLinkedService]
+
+    $linkedServices | ForEach-Object {
+        if ($_.Properties.GetType().Name -in $LinkedServiceHasDependencies) {
+            $HighOrderList.Add($_)
+        }
+        elseif ($_.Properties.GetType().Name -eq $Akv) {
+            $AkvList.Add($_)
+        }
+        else {
+            $RegularList.Add($_)
+        }
+    }
+
+    $SortedList = New-Object Collections.Generic.List[Microsoft.Azure.Commands.DataFactoryV2.Models.PSLinkedService]($HighOrderList.Count + $RegularList.Count + $AkvList.Count)
+    $SortedList.AddRange($HighOrderList)
+    $SortedList.AddRange($RegularList)
+    $SortedList.AddRange($AkvList)
+    $SortedList
+}
+
+$templateJson = Get-Content $armTemplate | ConvertFrom-Json
+$resources = $templateJson.resources
+
+#Triggers 
+Write-Host "Getting triggers"
+$triggersInTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/triggers" }
+$triggerNamesInTemplate = $triggersInTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
+
+$triggersDeployed = Get-SortedTriggers -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+
+$triggersToStop = $triggersDeployed | Where-Object { $triggerNamesInTemplate -contains $_.Name } | ForEach-Object { 
+    New-Object PSObject -Property @{
+        Name = $_.Name
+        TriggerType = $_.Properties.GetType().Name 
+    }
+}
+$triggersToDelete = $triggersDeployed | Where-Object { $triggerNamesInTemplate -notcontains $_.Name } | ForEach-Object { 
+    New-Object PSObject -Property @{
+        Name = $_.Name
+        TriggerType = $_.Properties.GetType().Name 
+    }
+}
+$triggersToStart = $triggersInTemplate | Where-Object { $_.properties.runtimeState -eq "Started" -and ($_.properties.pipelines.Count -gt 0 -or $_.properties.pipeline.pipelineReference -ne $null)} | ForEach-Object { 
+    New-Object PSObject -Property @{
+        Name = $_.name.Substring(37, $_.name.Length-40)
+        TriggerType = $_.Properties.type
+    }
+}
+
+if ($predeployment -eq $true) {
+    #Stop all triggers
+    Write-Host "Stopping deployed triggers`n"
+    $triggersToStop | ForEach-Object {
+        if ($_.TriggerType -eq "BlobEventsTrigger") {
+            Write-Host "Unsubscribing" $_.Name "from events"
+            $status = Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+            while ($status.Status -ne "Disabled"){
+                Start-Sleep -s 15
+                $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+            }
+        }
+        Write-Host "Stopping trigger" $_.Name
+        Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name -Force
+    }
+}
+else {
+    #Deleted resources
+    #pipelines
+    Write-Host "Getting pipelines"
+    $pipelinesADF = Get-SortedPipelines -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+    $pipelinesTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/pipelines" }
+    $pipelinesNames = $pipelinesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
+    $deletedpipelines = $pipelinesADF | Where-Object { $pipelinesNames -notcontains $_.Name }
+    #dataflows
+    $dataflowsADF = Get-AzDataFactoryV2DataFlow -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+    $dataflowsTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/dataflows" }
+    $dataflowsNames = $dataflowsTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40) }
+    $deleteddataflow = $dataflowsADF | Where-Object { $dataflowsNames -notcontains $_.Name }
+    #datasets
+    Write-Host "Getting datasets"
+    $datasetsADF = Get-AzDataFactoryV2Dataset -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+    $datasetsTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/datasets" }
+    $datasetsNames = $datasetsTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40) }
+    $deleteddataset = $datasetsADF | Where-Object { $datasetsNames -notcontains $_.Name }
+    #linkedservices
+    Write-Host "Getting linked services"
+    $linkedservicesADF = Get-SortedLinkedServices -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+    $linkedservicesTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/linkedservices" }
+    $linkedservicesNames = $linkedservicesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
+    $deletedlinkedservices = $linkedservicesADF | Where-Object { $linkedservicesNames -notcontains $_.Name }
+    #Integrationruntimes
+    Write-Host "Getting integration runtimes"
+    $integrationruntimesADF = Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+    $integrationruntimesTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/integrationruntimes" }
+    $integrationruntimesNames = $integrationruntimesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
+    $deletedintegrationruntimes = $integrationruntimesADF | Where-Object { $integrationruntimesNames -notcontains $_.Name }
+
+    #Delete resources
+    Write-Host "Deleting triggers"
+    $triggersToDelete | ForEach-Object { 
+        Write-Host "Deleting trigger "  $_.Name
+        $trig = Get-AzDataFactoryV2Trigger -name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName
+        if ($trig.RuntimeState -eq "Started") {
+            if ($_.TriggerType -eq "BlobEventsTrigger") {
+                Write-Host "Unsubscribing trigger" $_.Name "from events"
+                $status = Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+                while ($status.Status -ne "Disabled"){
+                    Start-Sleep -s 15
+                    $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+                }
+            }
+            Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name -Force 
+        }
+        Remove-AzDataFactoryV2Trigger -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+    }
+    Write-Host "Deleting pipelines"
+    $deletedpipelines | ForEach-Object { 
+        Write-Host "Deleting pipeline " $_.Name
+        Remove-AzDataFactoryV2Pipeline -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+    }
+    Write-Host "Deleting dataflows"
+    $deleteddataflow | ForEach-Object { 
+        Write-Host "Deleting dataflow " $_.Name
+        Remove-AzDataFactoryV2DataFlow -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+    }
+    Write-Host "Deleting datasets"
+    $deleteddataset | ForEach-Object { 
+        Write-Host "Deleting dataset " $_.Name
+        Remove-AzDataFactoryV2Dataset -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+    }
+    Write-Host "Deleting linked services"
+    $deletedlinkedservices | ForEach-Object { 
+        Write-Host "Deleting Linked Service " $_.Name
+        Remove-AzDataFactoryV2LinkedService -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+    }
+    Write-Host "Deleting integration runtimes"
+    $deletedintegrationruntimes | ForEach-Object { 
+        Write-Host "Deleting integration runtime " $_.Name
+        Remove-AzDataFactoryV2IntegrationRuntime -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+    }
+
+    if ($deleteDeployment -eq $true) {
+        Write-Host "Deleting ARM deployment ... under resource group: " $ResourceGroupName
+        $deployments = Get-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName
+        $deploymentsToConsider = $deployments | Where { $_.DeploymentName -like "ArmTemplate_master*" -or $_.DeploymentName -like "ArmTemplateForFactory*" } | Sort-Object -Property Timestamp -Descending
+        $deploymentName = $deploymentsToConsider[0].DeploymentName
+
+       Write-Host "Deployment to be deleted: " $deploymentName
+        $deploymentOperations = Get-AzResourceGroupDeploymentOperation -DeploymentName $deploymentName -ResourceGroupName $ResourceGroupName
+        $deploymentsToDelete = $deploymentOperations | Where { $_.properties.targetResource.id -like "*Microsoft.Resources/deployments*" }
+
+        $deploymentsToDelete | ForEach-Object { 
+            Write-host "Deleting inner deployment: " $_.properties.targetResource.id
+            Remove-AzResourceGroupDeployment -Id $_.properties.targetResource.id
+        }
+        Write-Host "Deleting deployment: " $deploymentName
+        Remove-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -Name $deploymentName
+    }
+
+    #Start active triggers - after cleanup efforts
+    Write-Host "Starting active triggers"
+    $triggersToStart | ForEach-Object { 
+        if ($_.TriggerType -eq "BlobEventsTrigger") {
+            Write-Host "Subscribing" $_.Name "to events"
+            $status = Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+            while ($status.Status -ne "Enabled"){
+                Start-Sleep -s 15
+                $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+            }
+        }
+        Write-Host "Starting trigger" $_.Name
+        Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name -Force
+    }
+}
+```

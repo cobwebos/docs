@@ -1,6 +1,6 @@
 ---
-title: 快速入门：使用必应视频搜索 REST API 和 PHP 来搜索视频
-titlesuffix: Azure Cognitive Services
+title: 快速入门：使用 REST API 和 PHP 搜索视频 - 必应视频搜索
+titleSuffix: Azure Cognitive Services
 description: 使用本快速入门使用 PHP 向必应视频搜索 REST API 发送视频搜索请求
 services: cognitive-services
 author: aahill
@@ -8,21 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 50c39594aeb014860d25b2f2cc791ebfec14b572
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: c43abc6c87b88e9fc4a15d4ca5d5506389a8a81a
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535189"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849614"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>快速入门：使用必应视频搜索 REST API 和 PHP 来搜索视频
 
-使用本快速入门首次调用必应视频搜索 API 并查看 JSON 响应中的搜索结果。 这个简单的 JavaScript 应用程序会向该 API 发送一个 HTTP 视频搜索查询并显示响应。 虽然此应用程序采用 JavaScript 编写且使用了 Node.js，但 API 是一种 RESTful Web 服务，可与大多数编程语言兼容。
-编写的示例代码在 PHP 5.6 下工作。
+根据此快速入门中的说明对必应视频搜索 API 进行第一次调用。 这个简单的 PHP 应用程序会向该 API 发送一个 HTTP 视频搜索查询并显示 JSON 响应。 编写的示例代码在 PHP 5.6 下工作。
 
-有关 API 的技术详细信息，请参阅 [API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference)。
+虽然此应用程序是使用 PHP 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,12 +31,12 @@ ms.locfileid: "57535189"
 
 ## <a name="running-the-application"></a>运行应用程序
 
-[必应视频搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) 从必应搜索引擎返回结果。
+[必应视频搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) 从必应搜索引擎返回结果。
 
-1. 请确保在 `php.ini` 中启用安全 HTTP 支持，如代码注释中所述。
-2. 在你喜欢使用的 IDE 或编辑器中新建一个 PHP 项目。
-3. 添加下面提供的代码。
-4. 使用对订阅有效的访问密钥替换 `accessKey` 值。
+1. 通过取消注释 `;extension=php_openssl.dll` 行，在 `php.ini` 文件中启用安全 HTTP 支持，如以下代码中所述。
+2. 在喜欢使用的 IDE 或编辑器中新建一个 PHP 项目。
+3. 添加以下提供的代码。
+4. 使用对订阅有效的访问密钥替换 `$accessKey` 值。 对于 `$endpoint` 值，可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 5. 运行该程序。
 
 ```php

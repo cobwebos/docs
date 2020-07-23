@@ -1,24 +1,16 @@
 ---
-title: Azure Application Insights 中用户行为分析工具的故障排除
+title: 排查用户分析工具问题 - Azure Application Insights
 description: 故障排除指南 - 通过 Application Insights 分析站点和应用使用情况。
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: eabc47c2acb33d8c6ee03477b5e8c7783edebbb7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 8d2e573f34895207a455838b5fc64f95560943d2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60371846"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77670910"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Application Insights 中用户行为分析工具的故障排除
 如果对 [Application Insights 中的用户行为分析工具](usage-overview.md)有疑问：[用户、会话、活动](usage-segmentation.md)，[漏斗图](usage-funnels.md)，[用户流](usage-flows.md)，[保留期](usage-retention.md)或队列？ 请参考下面的解答。
@@ -39,9 +31,9 @@ Application Insights 中的所有遥测事件都具有[匿名用户 ID](../../az
 ## <a name="naming-events"></a>命名事件
 **我的应用具有数千个不同的页面视图和自定义事件名称。很难对其进行区分，并且用户行为分析工具经常反应迟钝。应如何解决这些命名问题？**
 
-用户行为分析工具中会频繁使用页面视图和自定义事件名称。 若要从这些工具中获取值，为事件提供合适的名称至关重要。 目标是之间的平衡太少，过于通用名称 （"按钮"） 和具有太多，过于特定名称 ("http 上单击编辑按钮：\//www.contoso.com/index")。
+用户行为分析工具中会频繁使用页面视图和自定义事件名称。 若要从这些工具中获取值，为事件提供合适的名称至关重要。 其目标是过于宽泛的名称（“单击‘按钮’”）和过于具体的名称（“单击 http:\//www.contoso.com/index 上的‘编辑’按钮”）的数量应达到一个平衡。
 
-若要对应用发送的页面视图和自定义事件名称进行更改，需要更改应用的源代码并重新部署。 Application Insights 中的所有遥测数据均存储 90 天，且无法删除，因此对事件名称所做的更改需要 90 天才能完全生效。 名称更改后的 90 天中，新旧事件名称都会显示在遥测中，因此请相应调整查询并在团队内进行相应传达。
+若要对应用发送的页面视图和自定义事件名称进行更改，需要更改应用的源代码并重新部署。 Application Insights 中的所有遥测数据均存储 90 天，且无法删除  ，因此对事件名称所做的更改需要 90 天才能完全生效。 名称更改后的 90 天中，新旧事件名称都会显示在遥测中，因此请相应调整查询并在团队内进行相应传达。
 
 如果应用发送过多页面视图名称，检查这些页面视图名称是在代码中手动指定的还是由 Application Insights JavaScript SDK 自动发送的：
 

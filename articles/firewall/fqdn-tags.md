@@ -1,18 +1,18 @@
 ---
 title: Azure 防火墙的 FQDN 标记概述
-description: 了解 Azure 防火墙中的 FQDN 标记
+description: FQDN 标记表示与已知的 Microsoft 服务关联的一组完全限定的域名 (FQDN)。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 4/23/2019
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 7a412589f4e86f2a49d07f2d01ca34bf30fd528b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e29e568786881f663414dcdf3eff72d4d72ab181
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721167"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610602"
 ---
 # <a name="fqdn-tags-overview"></a>FQDN 标记概述
 
@@ -28,14 +28,16 @@ FQDN 标记表示与已知的 Microsoft 服务关联的一组完全限定的域�
 
 ## <a name="current-fqdn-tags"></a>当前 FQDN 标记
 
-|FQDN 标记  |描述  |
+|FQDN 标记  |说明  |
 |---------|---------|
 |Windows 更新     |允许出站访问 Microsoft 更新，如[如何为软件更新配置防火墙](https://technet.microsoft.com/library/bb693717.aspx)中所述。|
 |Windows 诊断|允许出站访问所有 [Windows 诊断终结点](https://docs.microsoft.com/windows/privacy/configure-windows-diagnostic-data-in-your-organization#endpoints)。|
 |Microsoft 主动保护服务 (MAPS)|允许出站访问 [MAPS](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/)。|
 |应用服务环境 (ASE)|允许出站访问 ASE 平台流量。 此标记未涵盖由 ASE 创建的特定于客户的存储和 SQL 终结点。 这些应通过[服务终结点](../virtual-network/tutorial-restrict-network-access-to-resources.md)启用或手动添加。<br><br>有关将 Azure 防火墙与 ASE 集成的详细信息，请参阅[锁定应用服务环境](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase)。|
 |Azure 备份|允许对 Azure 备份服务进行出站访问。|
-|Azure HDInsight<br>（预览版）|允许出站访问用于 HDInsight 平台流量。 此标记未涵盖从 HDInsight 的特定于客户的存储或 SQL 流量。 启用这些 using[服务终结点](../virtual-network/tutorial-restrict-network-access-to-resources.md)或手动添加它们。|
+|Azure HDInsight|允许出站访问 HDInsight 平台流量。 此标记不会涵盖特定于客户的存储或来自 HDInsight 的 SQL 流量。 使用[服务终结点](../virtual-network/tutorial-restrict-network-access-to-resources.md)启用这些项或手动添加它们。|
+|WindowsVirtualDesktop (WVD)|允许出站 Windows 虚拟桌面平台通信。 此标记不包括由 WVD 创建的部署特定的存储和服务总线终结点。 此外，还需要 DNS 和 KMS 网络规则。 有关将 Azure 防火墙与 WVD 集成的详细信息，请参阅[使用 Azure 防火墙保护 Windows 虚拟桌面部署](protect-windows-virtual-desktop.md)。|
+|Azure Kubernetes 服务 (AKS)|允许到 AKS 的出站访问。 有关详细信息，请参阅[使用 Azure 防火墙保护 Azure Kubernetes 服务（AKS）部署](protect-azure-kubernetes-service.md)。|
 
 > [!NOTE]
 > 在应用程序规则中选择 FQDN 标记时，“协议:端口”字段必须设置为 **https**。

@@ -1,25 +1,28 @@
 ---
 title: 如何结合使用通知中心与 Python
-description: 了解如何从 Python 后端使用 Azure 通知中心。
+description: 了解如何通过 Python 应用程序使用 Azure 通知中心。
 services: notification-hubs
 documentationcenter: ''
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 5640dd4a-a91e-4aa0-a833-93615bde49b4
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: python
 ms.devlang: php
 ms.topic: article
-ms.author: jowargo
 ms.date: 01/04/2019
-ms.openlocfilehash: 43a691ff9025cdb39786f965be6a2fca1b33bd3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.custom: tracking-python
+ms.openlocfilehash: af03d0fc091c34bfef7f38b1a215832086de57c6
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61458369"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220059"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>如何通过 Python 使用通知中心
 
@@ -30,13 +33,13 @@ ms.locfileid: "61458369"
 > [!NOTE]
 > 这是在 Python 中实现通知发送的示例引用实现，不是官方支持的通知中心 Python SDK。 该示例是使用 Python 3.4 创建的。
 
-本文介绍以下操作：
+本文介绍如何：
 
 - 以 Python 构建 REST 客户端以获取通知中心功能。
 - 使用 Python 接口发送通知到通知中心 REST API。
 - 获取 HTTP REST 请求/响应的转储以进行调试/培训。
 
-可按照所选定移动平台的[入门教程](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)，以 Python 实现后端部分。
+可以按照所选定的移动平台的[入门教程](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)，以 Python 实现后端部分。
 
 > [!NOTE]
 > 该示例仅限于发送通知，并不执行任何注册管理操作。
@@ -73,7 +76,7 @@ hub.send_windows_notification(wns_payload)
 
 ### <a name="parse-the-connection-string"></a>解析连接字符串
 
-下面是实现客户端的主类，其构造函数解析连接字符串：
+下面是实现客户端的主类，其构造函数将解析连接字符串：
 
 ```python
 class NotificationHub:
@@ -109,9 +112,11 @@ def get_expiry():
     # By default returns an expiration of 5 minutes (=300 seconds) from now
     return int(round(time.time() + 300))
 
+
 @staticmethod
 def encode_base64(data):
     return base64.b64encode(data)
+
 
 def sign_string(self, to_sign):
     key = self.SasKeyValue.encode('utf-8')
@@ -120,6 +125,7 @@ def sign_string(self, to_sign):
     digest = signed_hmac_sha256.digest()
     encoded_digest = self.encode_base64(digest)
     return encoded_digest
+
 
 def generate_sas_token(self):
     target_uri = self.Endpoint + self.HubName
@@ -139,7 +145,8 @@ def generate_sas_token(self):
 ```python
 class Notification:
     def __init__(self, notification_format=None, payload=None, debug=0):
-        valid_formats = ['template', 'apple', 'fcm', 'windows', 'windowsphone', "adm", "baidu"]
+        valid_formats = ['template', 'apple', 'fcm',
+                         'windows', 'windowsphone', "adm", "baidu"]
         if not any(x in notification_format for x in valid_formats):
             raise Exception(
                 "Invalid Notification format. " +
@@ -164,7 +171,8 @@ class Notification:
 ```python
 def make_http_request(self, url, payload, headers):
     parsed_url = urllib.parse.urlparse(url)
-    connection = http.client.HTTPSConnection(parsed_url.hostname, parsed_url.port)
+    connection = http.client.HTTPSConnection(
+        parsed_url.hostname, parsed_url.port)
 
     if self.Debug > 0:
         connection.set_debuglevel(self.Debug)
@@ -172,7 +180,8 @@ def make_http_request(self, url, payload, headers):
         url += self.DEBUG_SEND
         print("--- REQUEST ---")
         print("URI: " + url)
-        print("Headers: " + json.dumps(headers, sort_keys=True, indent=4, separators=(' ', ': ')))
+        print("Headers: " + json.dumps(headers, sort_keys=True,
+                                       indent=4, separators=(' ', ': ')))
         print("--- END REQUEST ---\n")
 
     connection.request('POST', url, payload, headers)
@@ -192,6 +201,7 @@ def make_http_request(self, url, payload, headers):
             "Error sending notification. Received HTTP code " + str(response.status) + " " + response.reason)
 
     connection.close()
+
 
 def send_notification(self, notification, tag_or_tag_expression=None):
     url = self.Endpoint + self.HubName + '/messages' + self.API_VERSION
@@ -226,31 +236,39 @@ def send_notification(self, notification, tag_or_tag_expression=None):
 
     self.make_http_request(url, payload_to_send, headers)
 
+
 def send_apple_notification(self, payload, tags=""):
     nh = Notification("apple", payload)
     self.send_notification(nh, tags)
+
 
 def send_fcm_notification(self, payload, tags=""):
     nh = Notification("fcm", payload)
     self.send_notification(nh, tags)
 
+
 def send_adm_notification(self, payload, tags=""):
     nh = Notification("adm", payload)
     self.send_notification(nh, tags)
+
 
 def send_baidu_notification(self, payload, tags=""):
     nh = Notification("baidu", payload)
     self.send_notification(nh, tags)
 
+
 def send_mpns_notification(self, payload, tags=""):
     nh = Notification("windowsphone", payload)
 
     if "<wp:Toast>" in payload:
-        nh.headers = {'X-WindowsPhone-Target': 'toast', 'X-NotificationClass': '2'}
+        nh.headers = {'X-WindowsPhone-Target': 'toast',
+                      'X-NotificationClass': '2'}
     elif "<wp:Tile>" in payload:
-        nh.headers = {'X-WindowsPhone-Target': 'tile', 'X-NotificationClass': '1'}
+        nh.headers = {'X-WindowsPhone-Target': 'tile',
+                      'X-NotificationClass': '1'}
 
     self.send_notification(nh, tags)
+
 
 def send_windows_notification(self, payload, tags=""):
     nh = Notification("windows", payload)
@@ -263,6 +281,7 @@ def send_windows_notification(self, payload, tags=""):
         nh.headers = {'X-WNS-Type': 'wns/badge'}
 
     self.send_notification(nh, tags)
+
 
 def send_template_notification(self, properties, tags=""):
     nh = Notification("template", properties)
@@ -283,7 +302,7 @@ hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 
 通知中心发送请求 HTTP URL 会追加​​一个“test”查询字符串作为结果。
 
-## <a name="complete-tutorial"></a>完成教程
+## <a name="complete-the-tutorial"></a><a name="complete-tutorial"></a>完成教程
 
 现在，可以通过从 Python 后端发送通知来完成该入门教程。
 
@@ -364,7 +383,7 @@ hub.send_baidu_notification(baidu_payload)
 
 如果在初始化 NotificationHub 时启用调试标志，则会显示详细的 HTTP 请求和响应转储以及 NotificationOutcome，如下所示，可从中了解哪些 HTTP 标头传入请求以及从通知中心收到哪些 HTTP 响应：
 
-![][1]
+![控制台的屏幕截图，其中包含 "H T P 请求" 和 "响应转储" 的详细信息以及以红色列出的通知结果消息。][1]
 
 例如会出现详细的通知中心结果。
 
@@ -385,7 +404,7 @@ hub.send_baidu_notification(baidu_payload)
 hub.send_windows_notification(wns_payload)
 ```
 
-![][2]
+![控制台的屏幕截图，其中包含有关 H T P P 请求和服务总线通知格式的详细信息，以及以红色列出的 X W 类型值。][2]
 
 ### <a name="send-notification-specifying-a-tag-or-tag-expression"></a>发送通知指定标记（或标记表达式）
 
@@ -395,7 +414,7 @@ hub.send_windows_notification(wns_payload)
 hub.send_windows_notification(wns_payload, "sports")
 ```
 
-![][3]
+![控制台的屏幕截图，其中包含有关 H T P P 请求和服务总线通知格式、服务总线通知标记以及以红色列出的 X W 类型值的详细信息。][3]
 
 ### <a name="send-notification-specifying-multiple-tags"></a>发送通知指定多个标记
 
@@ -406,7 +425,7 @@ tags = {'sports', 'politics'}
 hub.send_windows_notification(wns_payload, tags)
 ```
 
-![][4]
+![控制台的屏幕截图，其中包含有关 H T P P 请求和服务总线通知格式、服务总线通知标记以及以红色列出的 X W 类型值的详细信息。][4]
 
 ### <a name="templated-notification"></a>模板通知
 
@@ -425,11 +444,11 @@ template_payload = {'greeting_en': 'Hello', 'greeting_fr': 'Salut'}
 hub.send_template_notification(template_payload)
 ```
 
-![][5]
+![控制台的屏幕截图，其中包含有关 H T P 请求的详细信息，以及以红色列出的内容类型和服务总线通知格式值的详细信息。][5]
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何为通知中心创建 Python REST 客户端。 从这里可以：
+本文介绍了如何为通知中心创建 Python REST 客户端。 此处你可以：
 
 - 下载完整的 [Python REST 包装器示例]，其中包含本文中的所有代码。
 - 在[突发新闻教程]中继续学习通知中心标记功能

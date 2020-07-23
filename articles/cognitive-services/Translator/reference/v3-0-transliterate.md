@@ -1,23 +1,23 @@
 ---
-title: 文本翻译 API Transliterate 方法
-titlesuffix: Azure Cognitive Services
-description: 使用文本翻译 API Transliterate 方法。
+title: 转换器直译方法
+titleSuffix: Azure Cognitive Services
+description: 通过转换器直译方法将一种语言中的文本从一个脚本转换为另一个脚本。
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-pawal
-ms.openlocfilehash: 138a04cca1bbbaf7b59f628f491a5f13d73fb6f7
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.author: swmachan
+ms.openlocfilehash: 8b811c57eb163931c39a311418ac9f1513e9393a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66387399"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592247"
 ---
-# <a name="translator-text-api-30-transliterate"></a>文本翻译 API 3.0：Transliterate
+# <a name="translator-30-transliterate"></a>翻译人员3.0：直译
 
 将一种语言的文本从一个脚本转换为另一个脚本。
 
@@ -41,16 +41,16 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
     <td>必需参数  。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。</td>
   </tr>
   <tr>
-    <td>language</td>
+    <td>语言</td>
     <td>必需参数  。<br/>指定要从一个脚本转换为另一个脚本的文本的语言。 通过查询服务的[支持的语言](./v3-0-languages.md)获得的 `transliteration` 范围中列出了可能的语言。</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>*必需参数*。<br/>指定输入文本所使用的脚本。 使用 `transliteration` 范围查找[支持的语言](./v3-0-languages.md)，以找到可用于选定语言的输入脚本。</td>
+    <td>必需参数  。<br/>指定输入文本所使用的脚本。 使用 `transliteration` 范围查找[支持的语言](./v3-0-languages.md)，以找到可用于选定语言的输入脚本。</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>*必需参数*。<br/>指定输出脚本。 使用 `transliteration` 范围查找[支持的语言](./v3-0-languages.md)，以找到可用于选定输入语言和输入脚本组合的输出脚本。</td>
+    <td>必需参数  。<br/>指定输出脚本。 使用 `transliteration` 范围查找[支持的语言](./v3-0-languages.md)，以找到可用于选定输入语言和输入脚本组合的输出脚本。</td>
   </tr>
 </table> 
 
@@ -58,7 +58,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>描述</th>
+  <th>说明</th>
   <tr>
     <td>身份验证标头</td>
     <td>必需的请求标头。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。</td>
@@ -73,7 +73,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>可选  。<br/>客户端生成的 GUID，用于唯一标识请求。 请注意，如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
+    <td>*可选*。<br/>客户端生成的 GUID，用于唯一标识请求。 请注意，如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
   </tr>
 </table> 
 
@@ -115,7 +115,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>描述</th>
+  <th>说明</th>
   <tr>
     <td>X-RequestId</td>
     <td>服务生成的用于标识请求的值。 它用于故障排除目的。</td>
@@ -128,7 +128,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
 <table width="100%">
   <th width="20%">状态代码</th>
-  <th>描述</th>
+  <th>说明</th>
   <tr>
     <td>200</td>
     <td>成功。</td>
@@ -147,7 +147,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
   </tr>
   <tr>
     <td>429</td>
-    <td>服务器拒绝了请求，因为客户端已超出请求限制。</td>
+    <td>由于客户端已超出请求限制，服务器拒绝了请求。</td>
   </tr>
   <tr>
     <td>500</td>
@@ -159,17 +159,15 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
   </tr>
 </table> 
 
-如果发生错误，请求也将返回 JSON 错误响应。 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 常见错误代码可在 [v3 文本翻译 API 参考页面](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上找到。 
+如果发生错误，请求还会返回 JSON 错误响应。 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 可在[V3 转换器参考页](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上找到常见错误代码。 
 
 ## <a name="examples"></a>示例
 
 以下示例显示如何将两个日语字符串转换为用罗马字母拼写的日语。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
 此示例中请求的 JSON 有效负载：
 
-```
+```json
 [{"text":"こんにちは","script":"jpan"},{"text":"さようなら","script":"jpan"}]
 ```
 
@@ -178,5 +176,3 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0&language=ja&fromScript=Jpan&toScript=Latn" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d @request.txt
 ```
-
----

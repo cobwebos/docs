@@ -1,25 +1,16 @@
 ---
-title: 从 Azure 或独立群集中的 .NET Service Fabric 应用生成日志事件
+title: 从 .NET 应用生成日志事件
 description: 了解如何向 Azure 群集或独立群集中托管的 .NET Service Fabric 应用程序添加日志记录。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/27/2018
 ms.author: srrengar
-ms.openlocfilehash: d1b3dc25dd9bda9d7f9d9152c2a94cea8321f5cf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: caa6d4fc27373e524f4c492635cffbf8b735add8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60482601"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247211"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>向 Service Fabric 应用程序添加日志记录
 
@@ -105,7 +96,7 @@ internal sealed class ServiceEventSource : EventSource
 
 ASP.NET Core 日志记录（[Microsoft.Extensions.Logging NuGet 包](https://www.nuget.org/packages/Microsoft.Extensions.Logging)）是一个日志记录框架，可为应用程序提供标准日志记录 API。 可以将对其他日志记录后端的支持插入到 ASP.NET Core 日志记录。 这可以为处理应用程序中的日志记录提供各种支持，而无需更改大量代码。
 
-1. 将 **Microsoft.Extensions.Logging** NuGet 包添加到要检测的项目。 此外，还添加任何提供程序包。 有关详细信息，请参阅 [Logging in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging)（ASP.NET Core 中的日志记录）。
+1. 将 **Microsoft.Extensions.Logging** NuGet 包添加到要检测的项目。 此外，还添加任何提供程序包。 有关详细信息，请参阅 [Logging in ASP.NET Core](/aspnet/core/fundamentals/logging)（ASP.NET Core 中的日志记录）。
 2. 在服务文件中添加一条针对 **Microsoft.Extensions.Logging** 的 **using** 指令。
 3. 在服务类中定义一个专用变量。
 
@@ -176,13 +167,3 @@ ASP.NET Core 日志记录（[Microsoft.Extensions.Logging NuGet 包](https://www
 
 - 阅读有关 [Service Fabric 中的应用程序监视](service-fabric-diagnostics-event-generation-app.md)的详细信息。
 - 阅读使用 [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) 和 [Windows Azure 诊断](service-fabric-diagnostics-event-aggregation-wad.md)进行日志记录的相关信息。
-
-
-
-
-
-
-
-
-
-

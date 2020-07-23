@@ -1,25 +1,25 @@
 ---
-title: Azure 数据工厂中的查找活动 | Microsoft Docs
+title: Azure 数据工厂中的查找活动
 description: 了解如何使用查找活动从外部源查找值。 此输出可进一步由后续活动引用。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: shlo
-ms.openlocfilehash: 4f0662a71ee14af3c2c1aafee210641fc8b51f1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 02abdaf46ca2af6c96d3b5e8d4ce5876831bd415
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60768644"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81417992"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure 数据工厂中的查找活动
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 查找活动可以从任何 Azure 数据工厂支持的数据源检索数据集。 在以下方案中使用它：
 - 动态确定哪些对象在后续活动中工作，而不是针对对象名称进行硬编码。 一些对象示例包括文件和表。
@@ -54,11 +54,11 @@ ms.locfileid: "60768644"
 
 ## <a name="type-properties"></a>Type 属性
 
-名称 | 描述 | Type | 必需？
+名称 | 说明 | 类型 | 必需？
 ---- | ----------- | ---- | --------
 dataset | 为查找提供数据集引用。 从每篇相应的连接器文章的“数据集属性”部分中获取详细信息。 | 键/值对 | 是
 source | 包含特定于数据集的源属性，与复制活动源相同。 从每篇相应的连接器文章的“复制活动属性”部分中获取详细信息。 | 键/值对 | 是
-firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 不。 默认为 `true`。
+firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 不是。 默认为 `true`。
 
 > [!NOTE]
 > 
@@ -82,7 +82,7 @@ firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 不�
     }
     ```
 
-* **当 `firstRowOnly` 设置为 `false` 时**，输出格式如以下代码所示。 `count` 字段指示返回的记录数。 详细值显示在固定的 `value` 数组下。 在这种情况下，查找活动后跟 [Foreach 活动](control-flow-for-each-activity.md)。 使用 `@activity('MyLookupActivity').output.value` 模式将 `value` 数组传递给 ForEach 活动 `items` 字段。 若要访问 `value` 数组中的元素，请使用以下语法：`@{activity('lookupActivity').output.value[zero based index].propertyname}`。 例如 `@{activity('lookupActivity').output.value[0].tablename}`。
+* **当 `firstRowOnly` 设置为 `false` 时**，输出格式如以下代码所示。 `count` 字段指示返回的记录数。 详细值显示在固定的 `value` 数组下。 在这种情况下，查找活动后跟 [Foreach 活动](control-flow-for-each-activity.md)。 使用 `@activity('MyLookupActivity').output.value` 模式将 `value` 数组传递给 ForEach 活动 `items` 字段。 若要访问 `value` 数组中的元素，请使用以下语法：`@{activity('lookupActivity').output.value[zero based index].propertyname}`。 示例为 `@{activity('lookupActivity').output.value[0].tablename}`。
 
     ```json
     {
@@ -239,10 +239,7 @@ firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 不�
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<StorageAccountKey>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<StorageAccountKey>"
         }
     },
         "name": "AzureStorageLinkedService"
@@ -259,10 +256,7 @@ firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 不�
         "type": "AzureSqlDatabase",
         "description": "",
         "typeProperties": {
-            "connectionString": {
-                "value": "Server=<server>;Initial Catalog=<database>;User ID=<user>;Password=<password>;",
-                "type": "SecureString"
-            }
+            "connectionString": "Server=<server>;Initial Catalog=<database>;User ID=<user>;Password=<password>;"
         }
     }
 }

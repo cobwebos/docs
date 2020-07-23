@@ -1,5 +1,5 @@
-- name: Azure 存储文档
-  href: /azure/storage/
+- name: Azure 队列存储文档
+  href: /azure/storage/queues/
 - name: 概述
   expanded: true
   items:
@@ -13,8 +13,16 @@
           href: storage-quickstart-queues-portal.md
     - name: 使用队列进行开发
       items:
-        - name: .NET
+        - name: .NET (v12)
           href: storage-quickstart-queues-dotnet.md
+        - name: .NET (v11)
+          href: storage-quickstart-queues-dotnet-legacy.md
+        - name: Java (v12)
+          href: storage-quickstart-queues-java.md
+        - name: Python (v12)
+          href: storage-quickstart-queues-python.md
+        - name: JavaScript (v12)
+          href: storage-quickstart-queues-nodejs.md
 - name: 教程
   items:
     - name: 使用 Azure 存储队列
@@ -25,48 +33,58 @@
       href: ../common/storage-samples-dotnet.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Java
       href: ../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: Python
+      href: ../common/storage-samples-python.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: JavaScript
+      href: ../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: 其他语言
+      href: ../common/storage-samples.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
 - name: 概念
   items:
     - name: 存储帐户
       href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: 安全
+    - name: 安全性
       items:
-        - name: 安全概述
-          href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: 存储帐户加密
+        - name: 安全基线
+          href: ../common/security-baseline.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Azure 存储静态加密
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: 授权
+          items:
+            - name: 客户管理的密钥和 Azure Key Vault
+              href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: 授权数据操作
           href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
           items:
-            - name: 使用 Azure AD 进行身份验证
+            - name: 通过 Azure AD 进行身份验证和授权
               href: ../common/storage-auth-aad.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: 通过共享密钥进行授权
               href: /rest/api/storageservices/authorize-with-shared-key
             - name: 通过 SAS 进行授权
-              href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+              href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: 授权管理操作
+          href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: 高级威胁防护
           href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Azure 的常见安全属性
-          href: ../common/storage-security-attributes.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: 内置安全控件
+          href: ../common/storage-security-controls.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: 使用 Azure 专用终结点
+          href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: 数据冗余
       href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-      items:
-        - name: 本地冗余存储
-          href: ../common/storage-redundancy-lrs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: 区域冗余存储
-          href: ../common/storage-redundancy-zrs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: 异地冗余存储
-          href: ../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: 灾难恢复和故障转移
-          href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: 使用 RA-GRS 设计 HA 应用
-          href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: 性能和缩放
+    - name: 灾难恢复和故障转移
+      href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: 性能、缩放和成本优化
       items:
         - name: 可伸缩性和性能目标
-          href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+          items:
+            - name: 队列存储
+              href: scalability-targets.md
+            - name: 标准存储帐户
+              href: ../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+            - name: 存储资源提供程序
+              href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: 性能和可伸缩性清单
-          href: ../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+          href: storage-performance-checklist.md
     - name: 并发
       href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: 监视和故障排除
@@ -95,9 +113,7 @@
       items:
         - name: 创建存储帐户
           displayName: 'resource manager, resource manager template, template, ARM'
-          href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: 管理存储帐户
-          href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+          href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: 升级存储帐户
           href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: 保护队列数据
@@ -108,8 +124,10 @@
               items:
                 - name: 门户
                   href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-                - name: PowerShell 或 Azure CLI
-                  href: ../common/storage-auth-aad-script.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: PowerShell
+                  href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: Azure CLI
+                  href: ../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: 使用 RBAC 管理访问权限
               items:
                 - name: 门户
@@ -118,26 +136,36 @@
                   href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                 - name: Azure CLI
                   href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: 使用 Azure AD 进行身份验证
+            - name: 通过 Azure AD 进行身份验证和授权
               items:
-                - name: 使用托管标识进行身份验证
+                - name: 通过托管标识授权
                   href: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-                - name: 通过应用程序进行身份验证
+                - name: 从应用程序授权
                   href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: 通过共享密钥进行授权
               items:
+                - name: 查看和管理帐户密钥
+                  href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                 - name: 配置连接字符串
                   href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                 - name: 使用 Azure 存储 REST API
                   href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: 配置客户管理的密钥以进行服务加密
+        - name: 管理 Azure 存储加密
           items:
-            - name: 门户
-              href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: PowerShell
-              href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: Azure CLI
-              href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+            - name: 创建支持客户管理的密钥的帐户
+              href: ../common/account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+            - name: 配置客户管理的密钥
+              items:
+                - name: 门户
+                  href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: PowerShell
+                  href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: Azure CLI
+                  href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+            - name: 检查帐户的加密密钥模型
+              href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+            - name: 为存储帐户启用基础结构加密
+              href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: 配置客户端加密
           items:
             - name: .NET
@@ -152,14 +180,30 @@
               href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: 需要安全传输
               href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: 启用传输层安全性
-              href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: 灾难恢复
+            - name: 配置传输层安全性 (TLS)
+              items:
+                - name: 为存储帐户配置最低 TLS 版本
+                  href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: 为客户端应用程序配置 TLS
+                  href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: 管理数据冗余
       items:
+        - name: 更改复制数据的方式
+          href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: 设计具有高可用性的应用程序
+          href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: 管理灾难恢复
+      items:
+        - name: 检查“上次同步时间”属性
+          href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: 启动帐户故障转移
           href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: 使用存储模拟器
-      href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+      items:
+        - name: 使用 Azurite 开放源代码模拟器
+          href: ../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: 使用 Azure 存储模拟器
+          href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: 使用队列进行开发
       items:
         - name: .NET
@@ -180,74 +224,28 @@
       items:
         - name: 将 PowerShell 用于 Azure 队列
           href: storage-powershell-how-to-use-queues.md
-        - name: 将 PowerShell 用于 Azure 存储
-          href: ../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: 将 PowerShell 用于中国云、政府云和德国云
           href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-- name: 引用
+    - name: 疑难解答
+      items:
+        - name: 延迟问题
+          href: ../common/troubleshoot-latency-storage-analytics-logs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+- name: 参考
   items:
-    - name: PowerShell
-      href: /powershell/module/azure.storage
-    - name: Azure CLI
-      href: /cli/azure/storage
-    - name: .NET
-      items:
-        - name: Blob、队列、表和文件
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client'
-        - name: 数据移动
-          href: /dotnet/api/microsoft.azure.storage.datamovement
-        - name: 资源管理器
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
-    - name: Java
-      items:
-        - name: Blob、队列、表和文件
-          href: 'https://docs.microsoft.com/java/api/overview/azure/storage/client'
-        - name: 资源管理器
-          href: 'https://docs.microsoft.com/java/api/overview/azure/storage/management'
-    - name: Node.js
-      href: 'https://docs.microsoft.com/javascript/api/overview/azure/storage'
-    - name: Ruby
-      href: 'https://azure.github.io/azure-storage-ruby'
-    - name: PHP
-      href: 'https://azure.github.io/azure-storage-php/'
-    - name: Python
-      href: 'https://docs.microsoft.com/python/api/overview/azure/storage'
-    - name: C++
-      href: 'https://azure.github.io/azure-storage-cpp'
-    - name: iOS
-      href: 'https://azure.github.io/azure-storage-ios/'
-    - name: Android
-      href: 'https://azure.github.io/azure-storage-android'
-    - name: REST
-      items:
-        - name: Blob、队列、表和文件
-          href: /rest/api/storageservices
-        - name: 资源提供程序
-          href: /rest/api/storagerp
-        - name: 导入/导出
-          href: /rest/api/storageimportexport
+    - name: Azure 队列存储参考
+      href: ../queues/reference.md
     - name: 资源管理器模板
       displayName: ARM
       href: /azure/templates/microsoft.storage/allversions
 - name: 资源
   items:
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/?product=storage'
-    - name: Azure 存储客户端工具
-      href: ../common/storage-explorers.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: 论坛
-      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata'
-    - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/storage/queues/'
-    - name: 定价计算器
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: 堆栈溢出
-      href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
-    - name: 视频
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'
+    - name: Azure 更新
+      href: 'https://azure.microsoft.com/updates/?product=storage'
     - name: Azure 存储资源管理器
       items:
-        - name: 存储资源管理器
+        - name: 下载存储资源管理器
+          href: 'https://azure.microsoft.com/features/storage-explorer/'
+        - name: 存储资源管理器入门
           href: ../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: 存储资源管理器发行说明
           href: ../../vs-azure-tools-storage-explorer-relnotes.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
@@ -255,37 +253,63 @@
           href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: 存储资源管理器可访问性
           href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: NuGet 包
+    - name: Azure 存储论坛
+      href: 'https://docs.microsoft.com/answers/topics/azure-queue-storage.html'
+    - name: Stack Overflow 上的 Azure 存储
+      href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
+    - name: Azure 存储的定价
+      href: 'https://azure.microsoft.com/pricing/details/storage/'
+    - name: Azure 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'
+    - name: NuGet 包 (.NET)
       items:
-        - name: Azure 存储公用客户端库
+        - name: Microsoft.Azure.Storage.Common（版本 11.x）
           href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/'
-        - name: Azure 队列存储客户端库
+        - name: Azure.Storage.Common（版本 12.x）
+          href: 'https://www.nuget.org/packages/Azure.Storage.Common/'
+        - name: Microsoft.Azure.Storage.Queue（版本 11.x）
           href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/'
-        - name: Azure 存储数据移动客户端库
-          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/'
+        - name: Azure.Storage.Queue（版本 12.x）
+          href: 'https://www.nuget.org/packages/Azure.Storage.Queues/'
         - name: Azure 配置管理器
           href: 'https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/'
+        - name: 存储资源提供程序库
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/'
     - name: 源代码
       items:
         - name: .NET
           items:
-            - name: Blob、队列和文件
-              href: 'https://github.com/Azure/azure-storage-net'
-            - name: 存储资源提供程序
-              href: 'https://github.com/Azure/azure-sdk-for-net'
-        - name: Node.js
-          href: 'https://azure.github.io/azure-storage-node/'
+            - name: Azure 存储客户端库
+              items:
+                - name: 版本 12.x
+                  href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage'
+                - name: 版本 11.x 和更早版本
+                  href: 'https://github.com/Azure/azure-storage-net'
+            - name: 数据移动库
+              href: /dotnet/api/microsoft.azure.storage.datamovement
+            - name: 存储资源提供程序库
+              href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.Management.Storage'
         - name: Java
-          href: 'https://github.com/Azure/azure-storage-java'
-        - name: C++
-          href: 'https://github.com/Azure/azure-storage-cpp'
-        - name: PHP
-          href: 'https://github.com/Azure/azure-storage-php'
+          items:
+            - name: Azure 存储客户端库版本 12.x
+              href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage'
+            - name: Blob、队列和文件（版本 8）
+              href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
+            - name: Azure 存储客户端库版本 8.x 和更早版本
+              href: 'https://github.com/Azure/azure-storage-java'
+        - name: Node.js
+          items:
+            - name: Azure 存储客户端库版本 12.x
+              href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage'
+            - name: Azure 存储客户端库版本 10.x
+              href: 'https://github.com/Azure/azure-storage-node'
         - name: Python
-          href: 'https://github.com/Azure/azure-storage-python'
-        - name: Ruby
-          href: 'https://github.com/Azure/azure-storage-ruby'
-        - name: iOS
-          href: 'https://github.com/Azure/azure-storage-ios'
+          items:
+            - name: Azure 存储客户端库版本 12.x
+              href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage'
+            - name: Azure 存储客户端库版本 2.1
+              href: 'https://github.com/Azure/azure-storage-python'
     - name: 合规性产品
       href: ../common/storage-compliance-offerings.md

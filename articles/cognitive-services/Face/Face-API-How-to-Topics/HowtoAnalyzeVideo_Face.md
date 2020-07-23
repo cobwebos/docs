@@ -1,7 +1,7 @@
 ---
-title: 示例：实时视频分析 - 人脸 API
+title: 示例：实时视频分析 - 人脸
 titleSuffix: Azure Cognitive Services
-description: 使用人脸 API 对从实时视频流中获取的帧执行近实时分析。
+description: 使用人脸服务对从实时视频流中获取的帧执行近实时分析。
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 936c516385c88191428a46d22c14b3991885340b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d52f4ad7be6ce31fd2d01208536945c1f9ab2d7d
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878148"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986721"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>示例：如何实时分析视频
 
@@ -36,7 +36,7 @@ ms.locfileid: "55878148"
 
 近实时分析系统的最简单设计是无限循环，在每次迭代中捕捉一个帧，对它进行分析，然后使用结果：
 
-```CSharp
+```csharp
 while (true)
 {
     Frame f = GrabFrame();
@@ -54,7 +54,7 @@ while (true)
 
 简单的单线程循环适用于轻量级客户端算法，但不适用于云 API 调用中涉及的延迟。 该问题的解决方案是允许长时间运行的 API 调用与帧捕捉并行执行。 在 C# 中，我们可以使用基于任务的并行来实现这一点，例如：
 
-```CSharp
+```csharp
 while (true)
 {
     Frame f = GrabFrame();
@@ -75,7 +75,7 @@ while (true)
 
 在最终的“生产者-使用者”系统中，我们有一个生产者线程，看起来与我们之前的无限循环类似。 但是，生产者只需将任务放入队列即可跟踪它们，而不必在分析结果可用时立即使用它们。
 
-```CSharp
+```csharp
 // Queue that will contain the API call tasks. 
 var taskQueue = new BlockingCollection<Task<ResultWrapper>>();
      
@@ -112,7 +112,7 @@ while (true)
 
 我们还有一个使用者线程，它会将任务从队列中取出，等待它们完成，并显示结果或引发已引发的异常。 通过使用队列，我们​​可以保证按正确的顺序一次使用一个结果，而不限制系统的最大帧速率。
 
-```CSharp
+```csharp
 // Consumer thread. 
 while (true)
 {
@@ -142,9 +142,9 @@ while (true)
 
 该库包含 FrameGrabber 类，该类可实现上面所述的生产者-使用者系统，以处理来自网络摄像头的视频帧。 用户可以指定 API 调用的确切形式，该类将使用事件来让调用代码知道何时获取新帧或者新的分析结果何时可用。
 
-为了说明一些可能性，下面例举了使用该库的两个示例应用。 第一个是简单的控制台应用，下面再现了它的简化版本。 它从默认网络摄像头捕捉帧，并将它们提交到人脸 API 进行人脸检测。
+为了说明一些可能性，下面例举了使用该库的两个示例应用。 第一个是简单的控制台应用，下面再现了它的简化版本。 它从默认网络摄像头抓取帧，并将它们提交到人脸服务进行人脸检测。
 
-```CSharp
+```csharp
 using System;
 using VideoFrameAnalyzer;
 using Microsoft.ProjectOxford.Face;
@@ -159,8 +159,10 @@ namespace VideoFrameConsoleApplication
             // Create grabber, with analysis type Face[]. 
             FrameGrabber<Face[]> grabber = new FrameGrabber<Face[]>();
             
-            // Create Face API Client. Insert your Face API key here.
-            FaceServiceClient faceClient = new FaceServiceClient("<Subscription Key>");
+            // Create Face Client. Insert your Face API key here.
+            private readonly IFaceClient faceClient = new FaceClient(
+            new ApiKeyServiceClientCredentials("<subscription key>"),
+            new System.Net.Http.DelegatingHandler[] { });
 
             // Set up our Face API call.
             grabber.AnalysisFunction = async frame => return await faceClient.DetectAsync(frame.Image.ToMemoryStream(".jpg"));
@@ -199,23 +201,21 @@ namespace VideoFrameConsoleApplication
 
 若要开始使用此示例，请按照下列步骤操作：
 
-1. 从[订阅](https://azure.microsoft.com/try/cognitive-services/)获取视觉 API 的 API 密钥。 对于视频帧分析，适用的 API 包括：
-    - [计算机视觉 API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
-    - [情感 API](https://docs.microsoft.com/azure/cognitive-services/emotion/home)
-    - [人脸 API](https://docs.microsoft.com/azure/cognitive-services/face/overview)
-
-2. 克隆 [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) GitHub 存储库
-
-3. 在 Visual Studio 2015 中打开示例，然后生成并运行示例应用程序：
-    - 对于 BasicConsoleSample，人脸 API 密钥直接在  [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) 中进行硬编码。
+1. 创建 [Azure 帐户](https://azure.microsoft.com/free/cognitive-services/)。 如果已有帐户，请跳至下一步。
+2. 在 Azure 门户中为计算机视觉和人脸创建资源，以获取密钥和终结点。 请确保在设置过程中选择免费层 (F0)。
+   - [计算机视觉](https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)
+   - [人脸](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) 部署资源后，单击“转到资源”，以收集每项资源的密钥和终结点。 
+3. 克隆 [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) GitHub 存储库。
+4. 在 Visual Studio 中打开示例，然后生成并运行示例应用程序：
+    - 对于 BasicConsoleSample，人脸密钥直接在  [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) 中进行硬编码。
     - 对于 LiveCameraSample，应将密钥输入应用的“设置”窗格。 它们将作为用户数据保留在各会话中。
         
 
 当准备好进行集成时，请从你自己的项目中引用 VideoFrameAnalyzer 库。 
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
-本指南介绍了如何使用人脸 API、计算机视觉 API 和情感 API 对实时视频流运行近实时分析，以及如何使用我们的示例代码开始操作。 可以在 [Azure 认知服务注册页](https://azure.microsoft.com/try/cognitive-services/)上使用免费 API 密钥开始构建应用。 
+本指南介绍了如何使用人脸 API、计算机视觉 API 和情感 API 对实时视频流运行近实时分析，以及如何使用我们的示例代码开始操作。
 
 请随时在 [GitHub 存储库](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)中提供反馈和建议，或者在我们的  [UserVoice 站点](https://cognitive.uservoice.com/)上提供更广泛的 API 反馈。
 

@@ -6,14 +6,14 @@ ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 5c12787cd6e0df19fd842dd44da49aa5ea97aa05
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 30cac5894998ca2bb9c37217820e1000ed97ba5d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60898876"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260553"
 ---
 # <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>Spark 上 Azure Cosmos DB Cassandra API 中的 DDL 操作
 
@@ -85,7 +85,7 @@ DESCRIBE keyspaces;
 **注意事项：**  
 
 - 可使用 create table 语句在表级别分配吞吐量。  
-- 一个分区键可存储 10 GB 的数据。  
+- 一个分区键可存储 20 GB 的数据。  
 - 一条记录最多可存储 2 MB 的数据。  
 - 一个分区键范围可存储多个分区键。
 

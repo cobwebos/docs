@@ -1,6 +1,5 @@
 ---
-title: 使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建 Angular 应用 - 将 CRUD 函数添加至应用
-titleSuffix: Azure Cosmos DB
+title: 使用 Azure Cosmos DB 的 API for MongoDB 将 CRUD 函数添加到 Angular 应用
 description: 本教程系列的第 6 部分，介绍如何通过 Angular 和 Node 在 Azure Cosmos DB 上创建 MongoDB 应用，所使用的 API 与用于 MongoDB 的 API 完全相同
 author: johnpapa
 ms.service: cosmos-db
@@ -11,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 42015ca816f2744ef28660c5396db4cfd93a76f0
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: de9e7fd605a1d53d1078523c77cd33065c03ca85
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040551"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118961"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建 Angular 应用 - 将 CRUD 函数添加至应用
 
@@ -41,7 +40,7 @@ ms.locfileid: "54040551"
 
     可以看到，routes.js 第 7 行调用的是 hero.service.js 中第 5 行的 `getHeroes` 函数。  需为 post、put 和 delete 函数进行与此相同的配对。 
 
-    ![Visual Studio Code 中的 routes.js 和 hero.service.js](./media/tutorial-develop-mongodb-nodejs-part6/routes-heroservicejs.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/routes-heroservicejs.png" alt-text="Visual Studio Code 中的 routes.js 和 hero.service.js":::
     
     首先，请对 hero 服务进行编码。 
 
@@ -85,15 +84,15 @@ ms.locfileid: "54040551"
     });
     ```
 
-5. 运行应用，看是否一切正常。 在 Visual Studio Code 中，保存所有更改，选择左侧的“调试”按钮 ![Visual Studio Code 中的“调试”图标](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png)，然后选择“开始调试”按钮 ![Visual Studio Code 中的“开始调试”图标](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png)。
+5. 运行应用，看是否一切正常。 在 Visual Studio Code 中，保存所有更改，选择左侧的“调试”按钮![Visual Studio Code 中的“调试”图标](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png)，然后选择“开始调试”按钮![Visual Studio Code 中的“开始调试”图标](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png)。
 
-6. 现在请返回到 Internet 浏览器，打开开发人员工具的“网络”选项卡（在大多数计算机上按 F12 即可）。 导航到 [http://localhost:3000](http://localhost:3000)，观察通过网络进行的调用。
+6. 现在请返回到 Internet 浏览器，打开开发人员工具的“网络”选项卡（在大多数计算机上按 F12 即可）。 导航到 `http://localhost:3000`，观察通过网络进行的调用。
 
-    ![Chrome 中的“网络”选项卡，显示网络活动](./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png" alt-text="Chrome 中的“网络”选项卡，显示网络活动":::
 
 7. 通过选择“添加新 Hero”按钮添加新的 hero。 输入“999”作为 ID，“Fred”作为 name，“Hello”作为 saying，然后选择“保存”。 此时会在“网络”选项卡中看到为新的 hero 发送了 POST 请求。 
 
-    ![Chrome 中的“网络”选项卡，显示 Get 和 Post 函数的网络活动](./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png" alt-text="Chrome 中的“网络”选项卡，显示 Get 和 Post 函数的网络活动":::
 
     现在，让我们回过头来向应用添加 Put 和 Delete 函数。
 
@@ -170,7 +169,7 @@ ms.locfileid: "54040551"
     };
     ```
 
-4. 更新了代码后，请选择 Visual Studio Code 中的“重启”按钮 ![Visual Studio Code 中的“重启”按钮](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png)。
+4. 更新了代码后，请选择 Visual Studio Code 中的“重启”按钮![Visual Studio Code 中的“重启”按钮](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png)。
 
 5. 刷新 Internet 浏览器中的页面，选择“添加新 Hero”按钮。 添加 ID 为“9”、name 为“Starlord”、saying 为“Hi”的新 hero。 选择“保存”按钮保存新 hero。
 
@@ -178,11 +177,11 @@ ms.locfileid: "54040551"
 
     现在可以在“网络”选项卡中选择 ID 来显示有效负载了。 可以在有效负载中看到，saying 现在已设置为“Bye”。
 
-    ![Heroes 应用和“网络”选项卡，显示有效负载](./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png) 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png" alt-text="Heroes 应用和“网络”选项卡，显示有效负载"::: 
 
     还可以在 UI 中删除某个 hero，看完成删除操作需要多少时间。 尝试时，可针对名为“Fred”的 hero 选择“删除”按钮。
 
-    ![Heroes 应用和“网络”选项卡，显示完成函数操作的时间](./media/tutorial-develop-mongodb-nodejs-part6/times.png) 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/times.png" alt-text="Heroes 应用和“网络”选项卡，显示完成函数操作的时间"::: 
 
     如果刷新页面，“网络”选项卡会显示获取 hero 的时间。 虽然这里显示的时间很短，但很多情况下，具体时间取决于数据在全球所处的位置，以及能否在靠近用户的区域进行异地复制。 可以在即将推出的下一教程中详细了解异地复制。
 

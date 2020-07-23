@@ -1,28 +1,17 @@
 ---
-title: Service Fabric 应用程序升级 | Microsoft 文档
+title: Service Fabric 应用程序升级
 description: 本文介绍如何升级 Service Fabric 应用程序，包括选择升级模式和执行运行状况检查。
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: 803c9c63-373a-4d6a-8ef2-ea97e16e88dd
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: e2b407733bcab7bc854e8e3703e53eb474f3425b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9e7a93dd3ef8a1adf6617dcd57887a0ce694c509
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60615072"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247993"
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric 应用程序升级
-Azure Service Fabric 应用程序是多个服务的集合。 在升级期间，Service Fabric 将新的[应用程序清单](service-fabric-application-and-service-manifests.md)与前一版进行比较，并确定应用程序中的哪些服务需要更新。 Service Fabric 会将服务清单中的版本号与前一版中的版本号进行比较。 如果服务未更改，则不升级服务。
+Azure Service Fabric 应用程序是多个服务的集合。 在升级期间，Service Fabric 将新的[应用程序清单](service-fabric-application-and-service-manifests.md)与以前的版本进行比较，并确定应用程序中的哪些服务需要升级。 Service Fabric 会将服务清单中的版本号与前一版中的版本号进行比较。 如果服务未更改，则不升级服务。
 
 ## <a name="rolling-upgrades-overview"></a>滚动升级概述
 在应用程序滚动升级过程中，分阶段进行升级。 在每个阶段，对群集中的部分节点进行升级，这一部分节点称为更新域。 因此，应用程序在整个升级过程中保持可用。 升级期间，群集中可能混合了新旧版本。
@@ -31,7 +20,7 @@ Azure Service Fabric 应用程序是多个服务的集合。 在升级期间，S
 
 在配置群集时在群集清单中指定更新域。 更新域不按特定的顺序接收更新。 更新域是应用程序部署的逻辑单元。 更新域可让服务在升级过程中保持高可用性。
 
-如果对群集中的所有节点应用升级，即应用程序只有一个更新域，不可能进行任何滚动升级。 由于服务会关闭，并且在升级时不可用，因此不建议此方法。 此外，当仅为群集设置了一个更新域时，Azure 不提供任何保证。
+如果对群集中的所有节点应用升级，即应用程序只有一个更新域，将不可能进行任何滚动升级。 由于服务会关闭，并且在升级时不可用，因此不建议此方法。 此外，当仅为群集设置了一个更新域时，Azure 不提供任何保证。
 
 升级完成后，所有的服务和副本（实例）将会保持相同版本，也就是说，如果升级成功，它们会更新到新版本；如果升级失败并回滚，它们会降回到旧版本。
 
@@ -48,7 +37,7 @@ Azure Service Fabric 应用程序是多个服务的集合。 在升级期间，S
 不受监视的手动模式在每次对更新域升级之后都需要人工干预，以开始进行下一个更新域的升级。 系统不会执行任何 Service Fabric 运行状况检查。 管理员开始在下一个更新域中升级之前，需执行状况或状态检查。
 
 ## <a name="upgrade-default-services"></a>升级默认服务
-在应用程序升级过程中，还可以升级在[应用程序清单](service-fabric-application-and-service-manifests.md)中定义的某些默认服务参数。 在升级过程中，只能更改支持通过 [Update-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) 进行更改的服务参数。 在应用程序升级过程中更改默认服务的行为如下所述：
+在应用程序升级过程中，还可以升级在[应用程序清单](service-fabric-application-and-service-manifests.md)中定义的某些默认服务参数。 在升级过程中，只能更改支持通过 [Update-ServiceFabricService](/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) 进行更改的服务参数。 在应用程序升级过程中更改默认服务的行为如下所述：
 
 1. 创建新的应用程序清单中在群集中尚不存在的默认服务。
 2. 更新在以前的和新的应用程序清单中都存在的默认服务。 新的应用程序清单中默认服务的参数将覆盖现有服务的参数。 如果更新某个默认服务失败，则会自动回滚应用程序升级。
@@ -62,7 +51,7 @@ Azure Service Fabric 应用程序是多个服务的集合。 在升级期间，S
 ## <a name="upgrading-multiple-applications-with-https-endpoints"></a>使用 HTTPS 终结点升级多个应用程序
 请注意，使用 HTTPS 时，不要将相同端口用于同一应用程序的不同实例。 原因是，Service Fabric 无法升级应用程序实例之一的证书。 例如，如果应用程序 1 或应用程序 2 都要将证书 1 升级为证书 2。 升级时，Service Fabric 可能已使用 http.sys 清除了证书 1 注册，即使其他应用程序仍在使用它，也不例外。 为了防止发生这种情况，Service Fabric 检测到另一个应用程序实例已在带证书的端口上注册（由于 http.sys），导致操作失败。
 
-因此，Service Fabric 不支持通过以下方法升级两个不同的服务：在不同的应用程序实例中使用同一端口。 也就是说，不能对同一端口上的不同服务使用同一证书。 如果需要在同一端口上使用共享证书，请务必将服务放置在具有放置约束的不同计算机上。 或者，如果可以，考虑将 Service Fabric 动态端口用于每个应用程序实例中的各个服务。 
+因此，Service Fabric 不支持通过以下方法升级两个不同的服务：在不同的应用程序实例中使用同一端口  。 也就是说，不能对同一端口上的不同服务使用同一证书。 如果需要在同一端口上使用共享证书，请务必将服务放置在具有放置约束的不同计算机上。 或者，如果可以，考虑将 Service Fabric 动态端口用于每个应用程序实例中的各个服务。 
 
 如果 https 升级失败，则会看到内容为“Windows HTTP Server API 不支持对共享端口的应用程序使用多个证书”的错误警告。
 

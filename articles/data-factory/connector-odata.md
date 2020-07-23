@@ -1,27 +1,26 @@
 ---
-title: 使用 Azure 数据工厂从 OData 源复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 OData 源复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 OData 源复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/13/2018
+ms.date: 06/12/2020
 ms.author: jingwang
-ms.openlocfilehash: eeab0311519d7e3410ddb625c1801101ad63ad18
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 12a858364fc58972894f9fb365955496f8832246
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61400108"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987796"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 OData 源复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-odata-connector.md)
 > * [当前版本](connector-odata.md)
 
@@ -29,14 +28,23 @@ ms.locfileid: "61400108"
 
 ## <a name="supported-capabilities"></a>支持的功能
 
+以下活动支持此 OData 连接器：
+
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
+
 可以将数据从 OData 源复制到任何支持的接收器数据存储。 有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)。
 
 具体而言，此 OData 连接器支持：
 
 - OData 3.0 和 4.0 版。
-- 使用以下某种身份验证复制数据：**匿名**、**基本**、**Windows**、**AAD 服务主体**和 **Azure 资源的托管标识**。
+- 使用以下身份验证之一复制数据：**匿名**、**基本**、 **Windows**和**AAD 服务主体**。
 
-## <a name="get-started"></a>开始使用
+## <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
+## <a name="get-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -46,13 +54,13 @@ ms.locfileid: "61400108"
 
 OData 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| Property | 描述 | 必需 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为 OData。 |是 |
+| type | **Type**属性必须设置为**OData**。 |是 |
 | url | OData 服务的根 URL。 |是 |
-| authenticationType | 用于连接 OData 源的身份验证类型。 允许的值为“Anonymous”、“Basic”、“Windows”、“AadServicePrincipal”和“ManagedServiceIdentity”。 不支持基于用户的 OAuth。 | 是 |
-| userName | 如果使用 Basic 或 Windows 身份验证，请指定用户名。 | 否 |
-| password | 指定为 userName 指定的用户帐户的密码。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 否 |
+| authenticationType | 用于连接 OData 源的身份验证类型。 允许的值为**Anonymous**、 **Basic**、 **Windows**和**AadServicePrincipal**。 不支持基于用户的 OAuth。 | 是 |
+| userName | 如果使用 Basic 或 Windows 身份验证，请指定用户名****。 | 否 |
+| password | 指定为 userName 指定的用户帐户的密码********。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中  。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 否 |
 | servicePrincipalId | 指定 Azure Active Directory 应用程序的客户端 ID。 | 否 |
 | aadServicePrincipalCredentialType | 指定要用于服务主体身份验证的凭据类型。 允许值为：`ServicePrincipalKey` 或 `ServicePrincipalCert`。 | 否 |
 | servicePrincipalKey | 指定 Azure Active Directory 应用程序的密钥。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
@@ -60,9 +68,9 @@ OData 链接的服务支持以下属性：
 | servicePrincipalEmbeddedCertPassword | 如果使用密码保护证书，请指定证书的密码。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。  | 否|
 | tenant | 指定应用程序的租户信息（域名或租户 ID）。 将鼠标悬停在 Azure 门户右上角进行检索。 | 否 |
 | aadResourceId | 指定你请求授权的 AAD 资源。| 否 |
-| connectVia | 用于连接到数据存储的 [ Integration Runtime](concepts-integration-runtime.md)。 可选择 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+| connectVia | 用于连接到数据存储的 [ Integration Runtime](concepts-integration-runtime.md)。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
-**示例 1：使用匿名身份验证**
+**示例1：使用匿名身份验证**
 
 ```json
 {
@@ -81,7 +89,7 @@ OData 链接的服务支持以下属性：
 }
 ```
 
-**示例 2：使用基本身份验证**
+**示例2：使用基本身份验证**
 
 ```json
 {
@@ -105,7 +113,7 @@ OData 链接的服务支持以下属性：
 }
 ```
 
-**示例 3：使用 Windows 身份验证**
+示例 3：使用 Windows 身份验证****
 
 ```json
 {
@@ -129,7 +137,7 @@ OData 链接的服务支持以下属性：
 }
 ```
 
-**示例 4：使用服务主体密钥身份验证**
+**示例4：使用服务主体密钥身份验证**
 
 ```json
 {
@@ -156,7 +164,7 @@ OData 链接的服务支持以下属性：
 }
 ```
 
-**示例 5：使用服务主体证书身份验证**
+**示例5：使用服务主体证书身份验证**
 
 ```json
 {
@@ -193,11 +201,11 @@ OData 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。 
 
-要从 OData 复制数据，请将数据集的 type 属性设置为“ODataResource”。 支持以下属性：
+要从 OData 复制数据，请将数据集的 type 属性设置为“ODataResource”********。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| properties | 描述 | 必需 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为 ODataResource。 | 是 |
+| type | 数据集的 type 属性必须设置为 ODataResource********。 | 是 |
 | path | OData 资源的路径。 | 是 |
 
 **示例**
@@ -208,6 +216,7 @@ OData 链接的服务支持以下属性：
     "properties":
     {
         "type": "ODataResource",
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<OData linked service name>",
             "type": "LinkedServiceReference"
@@ -228,12 +237,13 @@ OData 链接的服务支持以下属性：
 
 ### <a name="odata-as-source"></a>以 OData 作为源
 
-要从 OData 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动 **source** 节支持以下属性：
+从 OData 复制数据时，复制活动的 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| Property | 描述 | 必需 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为 RelationalSource。 | 是 |
-| query | 用于筛选数据的 OData 查询选项。 示例：`"?$select=Name,Description&$top=5"`。<br/><br/>**注意**：OData 连接器会从以下组合 URL 复制数据：`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`。 有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
+| type | 复制活动源的 type 属性必须设置为 ODataSource********。 | 是 |
+| query | 用于筛选数据的 OData 查询选项。 示例：`"$select=Name,Description&$top=5"`。<br/><br/>请注意，OData 连接器会从组合 URL 复制数据：`[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`****。 有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
+| httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 该值是获取响应而不是读取响应数据的超时。 如果未指定，则默认值为**00:30:00** （30分钟）。 | 否 |
 
 **示例**
 
@@ -256,8 +266,8 @@ OData 链接的服务支持以下属性：
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
-                "query": "?$select=Name,Description&$top=5"
+                "type": "ODataSource",
+                "query": "$select=Name,Description&$top=5"
             },
             "sink": {
                 "type": "<sink type>"
@@ -266,6 +276,8 @@ OData 链接的服务支持以下属性：
     }
 ]
 ```
+
+如果使用 `RelationalSource` 类型源，该源仍按原样受支持，但我们建议今后使用新源。
 
 ## <a name="data-type-mapping-for-odata"></a>OData 的数据类型映射
 
@@ -277,7 +289,7 @@ OData 链接的服务支持以下属性：
 | Edm.Boolean | Bool |
 | Edm.Byte | Byte[] |
 | Edm.DateTime | DateTime |
-| Edm.Decimal | Decimal |
+| Edm.Decimal | 小数 |
 | Edm.Double | Double |
 | Edm.Single | Single |
 | Edm.Guid | Guid |
@@ -290,9 +302,13 @@ OData 链接的服务支持以下属性：
 | Edm.DateTimeOffset | DateTimeOffset |
 
 > [!NOTE]
-> 不支持 OData 复杂数据类型，例如对象。
+> 不支持 OData 复杂数据类型，例如对象****。
 
+
+## <a name="lookup-activity-properties"></a>Lookup 活动属性
+
+若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure 数据工厂中复制活动支持用作源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md##supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持用作源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)。

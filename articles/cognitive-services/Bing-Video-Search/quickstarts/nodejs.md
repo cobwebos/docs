@@ -1,6 +1,6 @@
 ---
-title: 快速入门：使用必应视频搜索 REST API 和 Node.js 来搜索视频
-titlesuffix: Azure Cognitive Services
+title: 快速入门：使用 REST API 和 Node.js 搜索视频 - 必应视频搜索
+titleSuffix: Azure Cognitive Services
 description: 通过本快速入门使用 JavaScript 向必应视频搜索 REST API 发送视频搜索请求。
 services: cognitive-services
 author: aahill
@@ -8,25 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: a4e3d37b2eb32fa0384986e37781f21b906bed42
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 693b8209498f07928c811fd084eaf259bcbcb5ff
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077303"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849631"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>快速入门：使用必应视频搜索 REST API 和 Node.js 来搜索视频
 
-使用本快速入门首次调用必应视频搜索 API 并查看 JSON 响应中的搜索结果。 这个简单的 JavaScript 应用程序会向该 API 发送一个 HTTP 视频搜索查询并显示响应。 虽然此应用程序采用 JavaScript 编写且使用了 Node.js，但 API 是一种 RESTful Web 服务，可与大多数编程语言兼容。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingVideoSearchv7.js) 上提供了此示例的源代码以及附加的错误处理和代码注释。
+根据此快速入门中的说明对必应视频搜索 API 进行第一次调用。 这个简单的 JavaScript 应用程序会向该 API 发送一个 HTTP 视频搜索查询并显示 JSON 响应。 虽然此应用程序采用 JavaScript 编写且使用了 Node.js，但 API 是一种 RESTful Web 服务，可与大多数编程语言兼容。 
+
+[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingVideoSearchv7.js) 上提供了此示例的源代码以及附加的错误处理和代码注释。
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Node.js](https://nodejs.org/en/download/)
+* [Node.js](https://nodejs.org/en/download/)。
 
-* JavaScript 请求模块
-    * 可以使用 `npm install request` 安装此模块
+* JavaScript 请求模块。 使用 `npm install request` 安装此模块。
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
@@ -39,7 +40,7 @@ ms.locfileid: "58077303"
     let https = require('https');
     ```
 
-2. 为 API 终结点、订阅密钥和搜索词创建变量。
+2. 为 API 终结点、订阅密钥和搜索词创建变量。 对于 `host` 值，可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```javascript
     let subscriptionKey = 'enter key here';
@@ -61,39 +62,40 @@ ms.locfileid: "58077303"
     };
     ```
     
-   1. 指示 `end` 时，使用 `response.on()` 存储与必应相关的标头（以 `bingapis` 或 `x-msedge-` 开头）。 然后使用 `JSON.parse()` 来分析 JSON，通过 `JSON.stringify()` 将其转换为字符串，再将其输出。
-
-       ```javascript
-       response.on('end', function () {
-           for (var header in response.headers)
-               // header keys are lower-cased by Node.js
-               if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
-                    console.log(header + ": " + response.headers[header]);
-           body = JSON.stringify(JSON.parse(body), null, '  ');
-           //JSON Response body
-           console.log(body);
-       });
-       ```
-
-# <a name="create-and-send-the-search-request"></a>创建并发送搜索请求
-
-1. 创建一个名为 `bing_video_search()` 的函数。 为请求添加参数，包括主机名和标头。 将搜索词编码并通过 `?q=` 参数将其追加到路径参数。 然后通过 `req.end()` 发送请求。
+1. 在此函数中，当通过信号发出 `end` 以存储必应相关标头（以 `bingapis` 或 `x-msedge-` 开始）时，使用 `response.on()`。 使用 `JSON.parse()` 来分析 JSON，通过 `JSON.stringify()` 将其转换为字符串，再将其输出。
 
     ```javascript
-    let bing_video_search = function (search_term) {
-      console.log('Searching videos for: ' + term);
-      let request_params = {
-            method : 'GET',
-            hostname : host,
-            path : path + '?q=' + encodeURIComponent(search_term),
-            headers : {
-                'Ocp-Apim-Subscription-Key' : subscriptionKey,
-            }
-        };
-        let req = https.request(request_params, response_handler);
-        req.end();
-    }
+    response.on('end', function () {
+        for (var header in response.headers)
+            // header keys are lower-cased by Node.js
+            if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
+                 console.log(header + ": " + response.headers[header]);
+        body = JSON.stringify(JSON.parse(body), null, '  ');
+        //JSON Response body
+        console.log(body);
+    });
     ```
+
+## <a name="create-and-send-the-search-request"></a>创建并发送搜索请求
+
+创建一个名为 `bing_video_search()` 的函数。 为请求添加参数，包括主机名和标头。 将搜索词编码并通过 `?q=` 参数将其追加到路径参数。 然后通过 `req.end()` 发送请求。
+
+```javascript
+let bing_video_search = function (search_term) {
+  console.log('Searching videos for: ' + term);
+let request_params = {
+    method : 'GET',
+    hostname : host,
+    path : path + '?q=' + encodeURIComponent(search_term),
+    headers : {
+        'Ocp-Apim-Subscription-Key' : subscriptionKey,
+        }
+    };
+    let req = https.request(request_params,
+      response_handler);
+    req.end();
+}
+```
 
 ## <a name="json-response"></a>JSON 响应
 

@@ -3,25 +3,24 @@ title: 转换链接和 URL Azure AD 应用代理 | Microsoft Docs
 description: 介绍有关 Azure AD 应用程序代理连接器的基础知识。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 05/04/2018
-ms.author: mimart
-ms.reviewer: harshja
+ms.topic: how-to
+ms.date: 08/15/2019
+ms.author: kenwith
+ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0899a127566c4d06de7d42443a956c2660a7a6d
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
-ms.translationtype: MT
+ms.openlocfilehash: 8e8d6f97870699cea7f55abe42290acdc82c385e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956905"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764836"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理重定向已发布应用的硬编码链接
 
@@ -30,13 +29,16 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 确保链接在企业网络内部和外部都能够正常工作的最佳方式是，将应用的外部 URL 与其内部 URL 配置为相同的。 使用[自定义域](application-proxy-configure-custom-domain.md)来配置你的外部 URL，以获取企业域名，而不是默认的应用程序代理域。
 
 
-如果无法在租户中使用自定义域，还有其他几个选项可提供此功能。 所有这些选项也都与自定义域兼容且彼此兼容，因此可以根据需要配置自定义域和其他解决方案。 
+如果无法在租户中使用自定义域，还有其他几个选项可提供此功能。 所有这些选项也都与自定义域兼容且彼此兼容，因此可以根据需要配置自定义域和其他解决方案。
 
-**选项 1：使用 Managed Browser** - 此解决方案仅适用于计划推荐或要求用户通过 Intune Managed Browser 访问应用程序的情况。 它处理所有已发布的 URL。 
+> [!NOTE]
+> 通过 Javascript 生成的硬编码内部 Url 不支持链接转换。
+
+**选项1：使用 Managed Browser 或 Microsoft edge** –此解决方案仅适用于计划建议或要求用户通过 Intune Managed Browser 或 Microsoft Edge 浏览器访问应用程序的情况。 它处理所有已发布的 URL。 
 
 **选项 2：使用 MyApps 扩展** - 此解决方案要求用户安装客户端浏览器扩展，但它将处理所有已发布的 URL，并可与大多数热门浏览器一起使用。 
 
-**选项 3：使用链接转换设置** - 这是一种管理端设置，对用户不可见。 但是，它仅处理 HTML 和 CSS 中的 URL。 例如，不适用于通过 Javascript 生成的硬编码内部 URL。  
+**选项 3：使用链接转换设置** - 这是一种管理端设置，对用户不可见。 但是，它仅处理 HTML 和 CSS 中的 URL。   
 
 无论用户位于何处，这三个功能都可使链接保持正常工作。 如果具有直接指向内部终结点或端口的应用，可以将这些内部 URL 映射到已发布的外部应用程序代理服务器 URL 中。 
 
@@ -47,9 +49,9 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 > 或者，如果需要配置链接转换的应用程序是 SharePoint，请参阅[配置 SharePoint 2013 的备用访问映射](https://technet.microsoft.com/library/cc263208.aspx)，以获取映射链接的另一种方法。 
 
  
-### <a name="option-1-intune-managed-browser-integration"></a>选项 1：Intune Managed Browser 集成 
+### <a name="option-1-intune-managed-browser-and-microsoft-edge-integration"></a>选项1： Intune Managed Browser 和 Microsoft Edge 集成 
 
-可以使用 Intune Managed Browser 进一步保护应用程序和内容。 若要使用此解决方案，需要求/建议用户通过 Intune Managed Browser 访问应用程序。 随应用程序代理一起发布的所有内部 URL 都将由 Managed Browser 识别并重定向到相应的外部 URL。 这可确保所有硬编码内部 URL 正常运行，并且如果用户在浏览器中直接键入该内部 URL，即使该用户是远程用户，该 URL 也可正常运行。  
+你可以使用 Intune Managed Browser 或 Microsoft Edge 进一步保护你的应用程序和内容。 若要使用此解决方案，需要求/建议用户通过 Intune Managed Browser 访问应用程序。 随应用程序代理一起发布的所有内部 URL 都将由 Managed Browser 识别并重定向到相应的外部 URL。 这可确保所有硬编码内部 URL 正常运行，并且如果用户在浏览器中直接键入该内部 URL，即使该用户是远程用户，该 URL 也可正常运行。  
 
 若要了解详细信息（包括如何配置此选项），请参阅 [Managed Browser](https://docs.microsoft.com/intune/app-configuration-managed-browser) 文档。  
 
@@ -63,10 +65,10 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 
 ### <a name="option-3-link-translation-setting"></a>选项 3：链接转换设置 
 
-如果启用了链接转换，应用程序代理服务通过 HTML 和 CSS 搜索发布的内部链接并对它们进行转换，以便让用户获得不间断的体验。 使用 MyApps 浏览器扩展是链接转换设置为首选，因为它可以向用户提供更高的性能体验。
+如果启用了链接转换，应用程序代理服务通过 HTML 和 CSS 搜索发布的内部链接并对它们进行转换，以便让用户获得不间断的体验。 使用 MyApps 浏览器扩展是链接转换设置的首选，因为它可以为用户提供更高性能的体验。
 
 > [!NOTE]
-> 如果使用选项 2 或 3，但应启用一次。
+> 如果使用的是选项2或3，则每次只应启用其中一项。
 
 ## <a name="how-link-translation-works"></a>链接转换工作原理
 
@@ -80,37 +82,37 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 
 本地应用程序中有两种常见类型的内部链接：
 
-- 相对内部链接，可指向本地文件结构（如 `/claims/claims.html`）中的共享资源。 这些链接在通过应用程序代理发布的应用中自动运行，并且在有无链接转换时均能继续运行。 
-- 硬编码内部链接，指向其他本地应用（如 `http://expenses`）或已发布文件（如 `http://expenses/logo.jpg`）。 链接转换功能对硬编码内部链接进行操作，并将其更改为指向远程用户需要访问的外部 URL。
+- 相对内部链接，可指向本地文件结构（如 `/claims/claims.html`）中的共享资源。**** 这些链接在通过应用程序代理发布的应用中自动运行，并且在有无链接转换时均能继续运行。 
+- 硬编码内部链接，指向其他本地应用（如 `http://expenses`）或已发布文件（如 `http://expenses/logo.jpg`）。**** 链接转换功能对硬编码内部链接进行操作，并将其更改为指向远程用户需要访问的外部 URL。
 
-HTML 代码的完整列表标记包含该应用程序代理支持链接转换：
-* 一个
-* audio
-* 基本
+应用程序代理支持链接转换的 HTML 代码标记的完整列表包括：
+* a
+* 音频
+* base
 * button
 * div
 * 嵌入
-* 窗体
-* 帧
-* Head
+* 表单
+* 框架
+* head
 * html
 * iframe
 * img
 * input
 * 链接
-* 菜单项
+* 项
 * meta
-* 对象
+* 对象 (object)
 * 脚本
 * source
 * 跟踪
-* 视频
+* video
 
-此外，在 CSS URL 特性还转换。
+此外，CSS 内还翻译了 URL 属性。
 
 ### <a name="how-do-apps-link-to-each-other"></a>应用如何彼此链接？
 
-链接转换对每个应用程序均启用，以便可以按应用级别控制用户体验。 如果要将该应用的链接，而不是指向该应用的链接进行转换，请启用应用的链接转换功能。 
+链接转换对每个应用程序均启用，以便可以按应用级别控制用户体验。 如果要将该应用的链接，而不是指向该应用的链接进行转换，请启用应用的链接转换功能。**** 
 
 例如，假设有三个通过应用程序代理发布的应用程序，这些应用程序均彼此链接：Benefits、Expenses 和 Travel。 还有第四个应用，Feedback，但它不是通过应用程序代理发布的。
 
@@ -134,8 +136,8 @@ HTML 代码的完整列表标记包含该应用程序代理支持链接转换：
 链接转换入门就像单击按钮一样简单：
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 转到“Azure Active Directory” > “企业应用程序” > “所有应用程序”选择要管理的应用，再单击“应用程序代理”。
-3. 将“转换应用程序主体中的 URL”改为“是”。
+2. 请参阅 " **Azure Active Directory**  >  **企业应用**程序" "  >  **所有应用**程序" > 选择要管理的应用 >**应用程序代理**。
+3. 将“转换应用程序主体中的 URL”改为“是”。********
 
    ![选择“是”可转换应用程序主体中的 URL](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)
 4. 单击“保存”应用所做的更改。
@@ -147,6 +149,6 @@ HTML 代码的完整列表标记包含该应用程序代理支持链接转换：
 我们希望获得你的帮助，使此功能适用于所有应用。 在 HTML 和 CSS 中搜索 30 多个标记。 如果有尚未进行转换的生成链接示例，请向[应用程序代理反馈](mailto:aadapfeedback@microsoft.com)发送一个代码片段。 
 
 ## <a name="next-steps"></a>后续步骤
-[通过 Azure AD 应用程序代理使用自定义域](application-proxy-configure-custom-domain.md)，以便具有相同的内部和外部 URL
+[使用带有 Azure AD 应用程序代理的自定义域](application-proxy-configure-custom-domain.md)，使其具有相同的内部和外部 URL
 
 [配置 SharePoint 2013 的备用访问映射](https://technet.microsoft.com/library/cc263208.aspx)

@@ -2,22 +2,22 @@
 title: 使用 HBase .NET SDK - Azure HDInsight
 description: 使用 HBase .NET SDK 创建和删除表，以及读取和写入数据。
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
+ms.topic: how-to
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 12/13/2017
-ms.author: ashishth
-ms.openlocfilehash: 707869880c5df619def2d707264b59e22e03c521
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 12/02/2019
+ms.openlocfilehash: 9d03a201711488b1c0a3f4f2bab0981f83374a5d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720299"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085576"
 ---
-# <a name="use-the-net-sdk-for-apache-hbase"></a>使用适用于 Apache HBase.NET SDK
+# <a name="use-the-net-sdk-for-apache-hbase"></a>使用 .NET SDK for Apache HBase
 
-[Apache HBase](apache-hbase-overview.md) 提供了两个用于处理数据的主要选项：[Apache Hive 查询和调用 HBase 的 RESTful API](apache-hbase-tutorial-get-started-linux.md)。 可以通过 `curl` 命令或类似的实用工具直接使用 REST API。
+[Apache HBase](apache-hbase-overview.md) 提供两种主要的数据处理选择：[Apache Hive 查询，以及调用 HBase 的 RESTful API](apache-hbase-tutorial-get-started-linux.md)。 可以通过 `curl` 命令或类似的实用工具直接使用 REST API。
 
 对于 C# 和 .NET 应用程序，[用于 .NET 的 Microsoft HBase REST 客户端库](https://www.nuget.org/packages/Microsoft.HBase.Client/)提供基于 HBase REST API 的客户端库。
 
@@ -25,7 +25,9 @@ ms.locfileid: "64720299"
 
 HBase .NET SDK 以 NuGet 包的形式提供，可以使用以下命令通过 Visual Studio **NuGet 包管理器控制台**进行安装：
 
-    Install-Package Microsoft.HBase.Client
+```console
+Install-Package Microsoft.HBase.Client
+```
 
 ## <a name="instantiate-a-new-hbaseclient-object"></a>实例化新的 HBaseClient 对象
 
@@ -40,9 +42,9 @@ client = new HBaseClient(credentials);
 
 ## <a name="create-a-new-table"></a>创建新表
 
-HBase 在表中存储数据。 表包含 *Rowkey*、主键以及一个或多个名为“列系列”的列组。 每个表中的数据按 Rowkey 范围水平分布到多个区域。 每个区域都有一个开始键和结束键。 一个表可以有一个或多个区域。 随着表中数据的增长，HBase 会将大区域拆分为较小的区域。 区域存储在区域服务器中，一个区域服务器可以存储多个区域。
+HBase 在表中存储数据。 表包含 *Rowkey*、主键以及一个或多个名为“列系列”的列组。  每个表中的数据按 Rowkey 范围水平分布到多个区域。  每个区域都有一个开始键和结束键。 一个表可以有一个或多个区域。 随着表中数据的增长，HBase 会将大区域拆分为较小的区域。 区域存储在区域服务器  中，一个区域服务器可以存储多个区域。
 
-数据以物理方式存储在 *HFile* 中。 单个 HFile 包含的数据适用于一个表、一个区域和一个列系列。 HFile 中的行在存储时按 Rowkey 排序。 每个 HFile 都有一个 B+ 树索引，用于快速检索行。
+数据以物理方式存储在 *HFile* 中。 单个 HFile 包含的数据适用于一个表、一个区域和一个列系列。 HFile 中的行在存储时按 Rowkey 排序。 每个 HFile 都有一个  B+ 树索引，用于快速检索行。
 
 若要创建新表，请指定 `TableSchema` 和列。 以下代码检查“RestSDKTable”表是否已存在 - 如果不存在，则会创建该表。
 
@@ -58,7 +60,7 @@ if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
 }
 ```
 
-此新表有两个列系列：t1 和 t2。 由于列系列单独存储在不同的 HFile 中，因此对于频繁查询的数据，应该有一个单独的列系列。 在下面的[插入数据](#insert-data)示例中，列添加到 t1 列系列中。
+此新表有两列系列： t1 和 t2。 由于列系列单独存储在不同的 HFile 中，因此对于频繁查询的数据，应该有一个单独的列系列。 在下面的[插入数据](#insert-data)示例中，列添加到 t1 列系列中。
 
 ## <a name="delete-a-table"></a>删除表
 
@@ -112,9 +114,9 @@ set.rows.Add(row);
 await client.StoreCellsAsync("RestSDKTable", set);
 ```
 
-HBase 可实现 [Cloud BigTable](https://cloud.google.com/bigtable/)，因此数据格式如下所示：
+HBase 实现了[Cloud BigTable](https://cloud.google.com/bigtable/)，因此数据格式如下图所示：
 
-![具有“群集用户”角色的用户](./media/apache-hbase-rest-sdk/table.png)
+![Apache HBase 示例数据输出](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
 
 ## <a name="select-data"></a>选择数据
 

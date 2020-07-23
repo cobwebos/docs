@@ -1,26 +1,15 @@
 ---
-title: 在 Azure 中部署具有持续集成功能和 Azure Pipelines 的 Service Fabric 应用 | Microsoft Docs
+title: 使用 CI 和 Azure Pipelines 部署应用
 description: 本教程介绍了如何使用 Azure Pipelines 为 Service Fabric 应用程序设置持续集成和部署。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 12/02/2018
-ms.author: atsenthi
+ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: ba0975486039546d5be0f704fb617beb1a9e0908
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 992d720d86fc2e7fedd8e7fd4b559220ff3c0512
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306897"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260363"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>教程：将具有 CI/CD 的应用程序部署到 Service Fabric 群集
 
@@ -50,7 +39,7 @@ ms.locfileid: "66306897"
 * [安装 Visual Studio 2019](https://www.visualstudio.com/)，并安装 **Azure 开发**以及 **ASP.NET 和 Web 开发**工作负荷。
 * [安装 Service Fabric SDK](service-fabric-get-started.md)
 * 在 Azure 上创建一个 Windows Service Fabric 群集，例如[根据此教程](service-fabric-tutorial-create-vnet-and-windows-cluster.md)创建
-* 创建一个 [Azure DevOps 组织](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)。 这允许你在 Azure DevOps 中创建项目并使用 Azure Pipelines。
+* 创建一个 [Azure DevOps 组织](/azure/devops/organizations/accounts/create-organization-msa-or-work-student)。 这允许你在 Azure DevOps 中创建项目并使用 Azure Pipelines。
 
 ## <a name="download-the-voting-sample-application"></a>下载投票示例应用程序
 
@@ -144,7 +133,7 @@ Azure Pipelines 发布管道描述了将应用程序程序包部署到群集的�
 
 选择“+ 发布” -> “创建发布” -> “创建”，手动创建发布    。 可以在“发布”  选项卡中监视发布进度。
 
-验证部署是否已成功且应用程序是否正在群集中运行。  打开 Web 浏览器并导航到 [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/)。  记下应用程序版本，在本例中为“1.0.0.20170616.3”。
+验证部署是否已成功且应用程序是否正在群集中运行。  打开 Web 浏览器并导航到 `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`。  记下应用程序版本，在本例中为“1.0.0.20170616.3”。
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>提交并推送更改，触发发布
 
@@ -164,7 +153,7 @@ Azure Pipelines 发布管道描述了将应用程序程序包部署到群集的�
 
 若要检查生成进度，请在 Visual Studio 中切换到“团队资源管理器”中的“生成”选项卡。    在验证生成成功执行后，请定义用于将应用程序部署到群集的发布管道。
 
-验证部署是否已成功且应用程序是否正在群集中运行。  打开 Web 浏览器并导航到 [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/)。  记下应用程序版本，在本例中为“1.0.0.20170815.3”。
+验证部署是否已成功且应用程序是否正在群集中运行。  打开 Web 浏览器并导航到 `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`。  记下应用程序版本，在本例中为“1.0.0.20170815.3”。
 
 ![Service Fabric Explorer][sfx1]
 
@@ -182,7 +171,7 @@ Azure Pipelines 发布管道描述了将应用程序程序包部署到群集的�
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了以下操作：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 向项目中添加源代码管理

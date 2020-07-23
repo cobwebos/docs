@@ -1,27 +1,18 @@
 ---
-title: 在 Azure Application Insights 中分隔开发、测试和发布阶段的遥测 | Microsoft Docs
+title: 如何设计 Application Insights 部署 - 一个资源与多个资源？
 description: 为开发、测试和生产戳记直接遥测不同的资源。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 578e30f0-31ed-4f39-baa8-01b4c2f310c9
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/15/2017
-ms.author: mbullwin
-ms.openlocfilehash: 2e9c599c12ed10327d352baee02500d2284d98d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/11/2020
+ms.openlocfilehash: ff301887aebf64d26d0fb391a8a16adefc8a3860
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60713394"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516713"
 ---
-# <a name="separating-telemetry-from-development-test-and-production"></a>分隔开发、测试和生产阶段的遥测
+# <a name="how-many-application-insights-resources-should-i-deploy"></a>应该部署多少个 Application Insights 资源
 
-部署 Web 应用程序的下一个版本时，不希望将新版本和已发布的版本中的 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 遥测混合使用。 为避免混淆，请使用不同的检测密钥 (ikey) 将遥测数据从不同的开发阶段发送到不同的 Application Insights 资源。 为了在版本从一个阶段移动到另一个阶段时更轻松地更改检测密钥，在代码中而非在配置文件中设置 ikey 可能比较有用。 
+部署 Web 应用程序的下一个版本时，不希望将新版本和已发布的版本中的 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 遥测混合使用。 为避免混淆，请使用不同的检测密钥 (ikey) 将遥测数据从不同的开发阶段发送到不同的 Application Insights 资源。 为了在版本从一个阶段移动到另一个阶段时更轻松地更改检测密钥，在代码中而非在配置文件中设置 ikey 可能比较有用。
 
 （如果系统是 Azure 云服务，有[另一种方法可以设置单独 ikey](../../azure-monitor/app/cloudservices.md)。）
 
@@ -29,78 +20,73 @@ ms.locfileid: "60713394"
 
 为 Web 应用设置 Application Insights 监视时，会在 Microsoft Azure 中创建 Application Insights *资源*。 为了查看和分析从应用收集的遥测数据，会在 Azure 门户中打开此资源。 每个资源都由一个*检测密钥* (iKey) 予以标识。 在安装 Application Insights 程序包来监视应用时，将为其配置检测密钥，以使其知道要将遥测数据发送到何处。
 
-在不同的方案中，通常选择使用不同的资源或使用单个共享资源：
+每个 Application Insights 资源都附带了现成可用的指标。 如果将组件报表完全划分到相同的 Application Insights 资源，则这些指标可能对仪表板/警报没有意义。
 
-* 不同的独立应用程序 - 为每个应用使用不同的资源和 ikey。
-* 单个业务应用程序的多个组件或角色 - 为所有组件应用使用[单个共享资源](../../azure-monitor/app/app-map.md)。 可以按 cloud_RoleName 属性对遥测数据进行筛选或分段。
-* 开发、测试和发布 - 在各个生产“戳记”或生产阶段中为系统的不同版本使用不同的资源和 ikey。
-* A | B 测试 - 使用单个资源 创建遥测初始值设定项来向遥测添加用于标识各个变体的属性。
+### <a name="when-to-use-a-single-application-insights-resource"></a>何时使用单个 Application Insights 资源
 
+-   对于一起部署的应用程序组件。 通常由单个团队开发，由同一组 DevOps/ITOps 用户管理。
+-   如果有必要在默认情况下聚合所有关键绩效指标 (KPI)（如响应持续时间、仪表板中的故障率等）（可以选择按指标资源管理器体验中的角色名称划分）。
+-   如果不需要在应用程序组件之间以不同的方式管理基于角色的访问控制 (RBAC)。
+-   如果不需要组件之间不同的指标警报条件。
+-   如果不需要在组件之间以不同的方式管理连续导出。
+-   如果不需要在组件之间以不同的方式管理帐单/配额。
+-   如果可以让 API 密钥对所有组件中的数据具有相同的访问权限。 10 个 API 密钥足以满足所有组件的需求。
+-   如果可以在所有角色中具有相同的智能检测和工作项集成设置。
 
-## <a name="dynamic-ikey"></a> 动态检测密钥
+### <a name="other-things-to-keep-in-mind"></a>其他注意事项
+
+-   你可能需要添加自定义代码，以确保有意义的值设置到 [Cloud_RoleName](./app-map.md?tabs=net#set-cloud-role-name) 特性中。 如果没有为此特性设置有意义的值，则无任何门户体验可用。
+- 对于 Service Fabric 应用程序和经典云服务，SDK 会自动从 Azure 角色环境中读取并设置这些内容。 对于所有其他类型的应用，你可能需要对其显式设置。
+-   实时指标体验不支持按角色名称拆分。
+
+## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 动态检测密钥
 
 为了在代码在不同生产阶段中移动时更轻松地更改 ikey，请在代码中而非在配置文件中设置 ikey。
 
 在初始化方法中设置密钥，如 ASP.NET 服务中的 global.aspx.cs：
 
-*C#*
-
-    protected void Application_Start()
-    {
-      Microsoft.ApplicationInsights.Extensibility.
-        TelemetryConfiguration.Active.InstrumentationKey = 
-          // - for example -
-          WebConfigurationManager.AppSettings["ikey"];
-      ...
+```csharp
+protected void Application_Start()
+{
+  Microsoft.ApplicationInsights.Extensibility.
+    TelemetryConfiguration.Active.InstrumentationKey = 
+      // - for example -
+      WebConfigurationManager.AppSettings["ikey"];
+  ...
+```
 
 在此示例中，不同资源的 ikey 放置在 Web 配置文件的不同版本中。 通过交换 Web 配置文件（可作为发布脚本的一部分执行），将交换目标资源。
 
 ### <a name="web-pages"></a>网页
-通过[从快速启动边栏选项卡获取的脚本](../../azure-monitor/app/javascript.md)，iKey 也在应用的网页中使用。 从服务器状态生成它，而不是逐字将其编码到脚本中。 例如，在 ASP.NET 应用中：
+通过[从快速启动窗格获取的脚本](../../azure-monitor/app/javascript.md)，iKey 也在应用的网页中使用。 从服务器状态生成它，而不是逐字将其编码到脚本中。 例如，在 ASP.NET 应用中：
 
-*使用 Razor 的 JavaScript*
-
-    <script type="text/javascript">
-    // Standard Application Insights web page script:
-    var appInsights = window.appInsights || function(config){ ...
-    // Modify this part:
-    }({instrumentationKey:  
-      // Generate from server property:
-      "@Microsoft.ApplicationInsights.Extensibility.
-         TelemetryConfiguration.Active.InstrumentationKey"
-    }) // ...
-
+```javascript
+<script type="text/javascript">
+// Standard Application Insights web page script:
+var appInsights = window.appInsights || function(config){ ...
+// Modify this part:
+}({instrumentationKey:  
+  // Generate from server property:
+  "@Microsoft.ApplicationInsights.Extensibility.
+     TelemetryConfiguration.Active.InstrumentationKey"
+  }
+ )
+//...
+```
 
 ## <a name="create-additional-application-insights-resources"></a>创建其他 Application Insights 资源
-若要为不同的应用程序组件或同一组件的不同戳记（开发/测试/生产）分隔遥测，则必须创建新的 Application Insights 资源。
 
-在 [portal.azure.com](https://portal.azure.com) 中，添加 Application Insights 资源：
-
-![依次单击“新建”、“Application Insights”](./media/separate-resources/01-new.png)
-
-* **应用程序类型**会影响在概述边栏选项卡上看到的内容和[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)中的可用属性。 如果未看到应用类型，请选择网页的 Web 类型之一。
-* **资源组**便于管理[访问控件](../../azure-monitor/app/resources-roles-access-control.md)之类的属性。 可为开发、测试和生产使用单独的资源组。
-* **订阅**是 Azure 中的付款帐户。
-* **位置**是保留数据的位置。 当前无法更改它。 
-* **添加到仪表板**将资源的快速访问磁贴放在 Azure 主页上。 
-
-创建资源需要几秒钟。 完成后，会看到警报。
-
-（可编写 [PowerShell 脚本](../../azure-monitor/app/powershell-script-create-resource.md)，自动创建资源。）
+若要创建 Application Insights 资源，请按照[资源创建指南](./create-new-resource.md)操作。
 
 ### <a name="getting-the-instrumentation-key"></a>获取检测密钥
-检测密钥标识所创建的资源。 
-
-![单击“Essentials”、单击“检测密钥，并按“CTRL+C”](./media/separate-resources/02-props.png)
+检测密钥标识所创建的资源。
 
 需要将向其发送数据的所有资源的检测密钥。
 
 ## <a name="filter-on-build-number"></a>按版本号筛选
 发布新应用版本时，我们希望能够将不同版本的遥测数据分开。
 
-可以设置“应用程序版本”属性，这样便可以筛选[搜索](../../azure-monitor/app/diagnostic-search.md)和[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)结果。
-
-![按属性进行筛选](./media/separate-resources/050-filter.png)
+可以设置“应用程序版本”属性，这样便可以筛选[搜索](../../azure-monitor/app/diagnostic-search.md)和[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)结果。
 
 可通过多种不同的方法设置“应用程序版本”属性。
 
@@ -111,7 +97,6 @@ ms.locfileid: "60713394"
 * [ASP.NET] 在 `BuildInfo.config` 中设置版本。 Web 模块将从 BuildLabel 节点选择版本。 在项目中包含此文件，并记得在解决方案资源管理器中设置“始终复制”属性。
 
     ```XML
-
     <?xml version="1.0" encoding="utf-8"?>
     <DeploymentEvent xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/VisualStudio/DeploymentEvent/2013/06">
       <ProjectName>AppVersionExpt</ProjectName>
@@ -126,7 +111,6 @@ ms.locfileid: "60713394"
 * [ASP.NET] 在 MSBuild 中自动生成 BuildInfo.config。 为此，请在 `.csproj` 文件中添加以下几行：
 
     ```XML
-
     <PropertyGroup>
       <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>    <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
     </PropertyGroup>
@@ -139,23 +123,22 @@ ms.locfileid: "60713394"
     若要允许 MSBuild 生成版本号，请在 AssemblyReference.cs 中设置类似于 `1.0.*` 的版本
 
 ## <a name="version-and-release-tracking"></a>版本和发行版本跟踪
-若要跟踪应用程序版本，请确保 Microsoft 生成引擎进程生成了 `buildinfo.config`。 在 .csproj 文件中，添加：  
+若要跟踪应用程序版本，请确保 Microsoft 生成引擎进程生成了 `buildinfo.config`。 在 `.csproj` 文件中，添加：  
 
 ```XML
-
-    <PropertyGroup>
-      <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>    <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
-    </PropertyGroup>
+<PropertyGroup>
+  <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>
+  <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
+</PropertyGroup>
 ```
 
-当它具有内部信息时，Application Insights Web 模块自动将**应用程序版本**作为属性添加到每个遥测项。 这样，便可以在执行[诊断搜索](../../azure-monitor/app/diagnostic-search.md)或[浏览指标](../../azure-monitor/app/metrics-explorer.md)时按版本进行筛选。
+当它具有内部信息时，Application Insights Web 模块自动将**应用程序版本**作为属性添加到每个遥测项。 这样，便可以在执行[诊断搜索](../../azure-monitor/app/diagnostic-search.md)或[浏览指标](../../azure-monitor/platform/metrics-charts.md)时按版本进行筛选。
 
 但请注意，内部版本号只能由 Microsoft 生成引擎生成，而不能由 Visual Studio 中的开发人员生成引擎生成。
 
 ### <a name="release-annotations"></a>版本注释
-如果使用 Azure DevOps，则可以在每次发布新版本时将[批注标记](../../azure-monitor/app/annotations.md)添加到图表中。 下图显示了此标记的形式。
+如果使用 Azure DevOps，则可以在每次发布新版本时将[批注标记](../../azure-monitor/app/annotations.md)添加到图表中。 
 
-![图表中示例版本批注的屏幕截图](media/separate-resources/release-annotation.png)
 ## <a name="next-steps"></a>后续步骤
 
 * [多个角色的共享资源](../../azure-monitor/app/app-map.md)

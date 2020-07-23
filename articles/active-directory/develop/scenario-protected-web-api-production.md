@@ -1,44 +1,43 @@
 ---
-title: 受保护的 Web API-移动到生产环境 |Azure
-description: 了解如何生成一个受保护的 Web API （移动到生产环境）。
+title: 将受保护的 web API 移动到生产环境 |Microsoft
+titleSuffix: Microsoft identity platform
+description: 了解如何构建受保护的 web API （转到生产环境）。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e78cb712501b86f98d3459cac6280d0484f41a1
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
-ms.translationtype: MT
+ms.openlocfilehash: 86e897547869c917313deeb8d71b361c9e16798b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833114"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81537179"
 ---
-# <a name="protected-web-api---move-to-production"></a>受保护的 web API-移动到生产环境
+# <a name="protected-web-api---move-to-production"></a>受保护的 Web API - 移到生产环境
 
-您已经知道了如何保护你的 web API，下面是如何您可以将其移到生产环境。
+现在你已了解如何保护 Web API，下面说明如何将其移到生产环境。
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何调用下游 Api:
+了解如何调用下游 API。
 
 > [!div class="nextstepaction"]
-> [方案-Web API 调用下游 API](scenario-web-api-call-api-overview.md)
+> [方案 - Web API 调用下游 API](scenario-web-api-call-api-overview.md)
 
-通过教程和示例了解更多信息：
-
-> [!div class="nextstepaction"]
-> [ASP.NET Core web API 教程](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)
+通过教程和示例了解更多信息。
 
 > [!div class="nextstepaction"]
-> [ASP.NET web API 示例](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)
+> [使用守护程序调用受保护的 API](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/2-Call-OwnApi)
+
+> [!div class="nextstepaction"]
+> [ASP.NET Core Web API 教程](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)
+
+> [!div class="nextstepaction"]
+> [ASP.NET Web API 示例](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)

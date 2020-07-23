@@ -7,19 +7,19 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: 8cc596a7-3e01-4f76-af7b-a05a1421517e
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 7dfa252c29121adca2ecc77c08b2fca81d56e575
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dc1599fc0c2f8c55c709ab674c10dd53c8d8dc04
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61069889"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887700"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>分析 Microsoft Azure CDN 中的边缘节点性能
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -55,11 +55,11 @@ CDN 活动数据必须由“边缘性能分析”模块收集，才能为其生�
     ![CDN 配置文件边栏选项卡管理按钮](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     CDN 管理门户打开。
-2. 将鼠标悬停在“分析”选项卡，然后悬停在“边缘性能分析”浮出控件。  单击“**仪表板**”。
+2. 将鼠标悬停在“分析”选项卡，然后悬停在“边缘性能分析”浮出控件********。  单击“**仪表板**”。
    
     将显示边缘节点分析仪表板。
 
-### <a name="chart"></a>图表
+### <a name="chart"></a>Chart
 仪表板包含一张图表，用于跟踪在其正下方显示的时间线中选择的时间段内的指标。  一条时间线将直接显示在图表下方，并以图表方式表示直到最近两年的 CDN 活动。
 
 #### <a name="using-the-chart"></a>使用图表
@@ -70,7 +70,7 @@ CDN 活动数据必须由“边缘性能分析”模块收集，才能为其生�
 * 单击“查看一年前”可将同一时间段内上一年度的活动覆盖到图表上。 这种类型的比较可让我们深入了解长期的 CDN 使用模式。 图表的右上角包含一个图例，用于指示每个线形图的颜色代码。
 
 #### <a name="updating-the-chart"></a>更新图表
-* 时间范围：执行以下某种方案：
+* 时间范围：执行以下操作之一：
   * 在时间线中选择所需的区域。 图表将使用与所选时间段相对应的数据进行更新。
   * 双击图表以显示最多两年内的所有可用历史数据。
 * 指标：单击所需指标旁边显示的图表图标。 图表和时间线将使用相应指标的数据进行刷新。
@@ -91,7 +91,7 @@ CDN 活动数据必须由“边缘性能分析”模块收集，才能为其生�
 | % 的远程字节 - 无缓存配置 |表示从源服务器提供给 CDN（边缘服务器）的流量的百分比，由于“绕过缓存”功能（HTTP 规则引擎），该流量不会被缓存。 |
 | % 的远程字节 - 到期缓存 |指示由于陈旧内容重新验证而从源服务器提供给 CDN（边缘服务器）的流量的百分比。 |
 
-#### <a name="usage-metrics"></a>使用指标
+#### <a name="usage-metrics"></a>使用情况指标
 使用这些指标的目的是为了让你深入了解以下降低成本的措施：
 
 * 通过 CDN 将运营成本降至最低。
@@ -117,7 +117,7 @@ CDN 活动数据必须由“边缘性能分析”模块收集，才能为其生�
 | 字段 | 描述 |
 | --- | --- |
 | 传输速率 |表示内容从 CDN 传输到请求者的平均速率。 |
-| Duration |表示将资产传送给请求者（例如，Web 浏览器）所需的平均时间（以毫秒为单位）。 |
+| 持续时间 |表示将资产传送给请求者（例如，Web 浏览器）所需的平均时间（以毫秒为单位）。 |
 | 压缩请求速率 |表示以压缩格式从 CDN（边缘服务器）传递到请求者（例如，Web 浏览器）的命中数的百分比。 |
 | 4xx 错误率 |表示生成 4xx 状态代码的命中数的百分比。 |
 | 5xx 错误率 |表示生成 5xx 状态代码的命中数的百分比。 |
@@ -134,7 +134,7 @@ CDN 活动数据必须由“边缘性能分析”模块收集，才能为其生�
 | 安全命中数 |表示 CDN 内容的 HTTPS 请求数。 |
 | 安全传出字节 |表示从 CDN（边缘服务器）传递到请求者（例如，Web 浏览器）的 HTTPS 流量（以字节为单位）。 |
 
-## <a name="reports"></a>报告
+## <a name="reports"></a>报表
 此模块中的每个报告都包含有关不同类型指标的带宽和流量使用情况的图表和统计信息（例如，HTTP 状态代码，缓存状态代码，请求 URL 等）。 此信息可用于深入了解内容是如何提供给客户端以及如何微调 CDN 行为以提高数据传输性能。
 
 ### <a name="accessing-the-edge-performance-reports"></a>访问边缘性能报告
@@ -143,11 +143,11 @@ CDN 活动数据必须由“边缘性能分析”模块收集，才能为其生�
     ![CDN 配置文件边栏选项卡管理按钮](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     CDN 管理门户打开。
-2. 将鼠标悬停在“分析”选项卡，然后悬停在“边缘性能分析”浮出控件。  单击“**HTTP 大型对象**”。
+2. 将鼠标悬停在“分析”选项卡，然后悬停在“边缘性能分析”浮出控件********。  单击“**HTTP 大型对象**”。
    
     将显示边缘节点分析报告屏幕。
 
-| 报表 | 描述 |
+| 报表 | 说明 |
 | --- | --- |
 | 每日摘要 |允许查看指定时间段内的每日流量趋势。 此图表上的每个条形都表示特定的日期。 条形的大小表示在该日期发生的命中的总数。 |
 | 每小时摘要 |允许查看指定时间段内每小时的流量趋势。 此图表上的每个条形都表示特定日期的单个小时。 条形的大小表示在该小时内发生的命中的总数。 |
@@ -183,7 +183,7 @@ CDN 活动数据必须由“边缘性能分析”模块收集，才能为其生�
 | 502 错误 |包含一个条形图，允许查看导致 502 Bad Gateway 响应代码的前 10 个请求。 当服务器和 HTTP 代理之间发生 HTTP 协议故障时，会出现 502 Bad Gateway 响应代码。 在我们的 CDN 中，当客户源服务器向边缘服务器返回无效响应时，通常出现发生 502 Bad Gateway 响应代码。 如果响应无法解析或不完整，则该响应无效。 |
 | 5xx 错误 |包含一个条形图，允许查看导致 500 范围内响应代码的前 10 个请求。  此报告中排除 502 Bad Gateway 和 504 Gateway Timeout 响应代码。 |
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [Azure CDN 概述](cdn-overview.md)
 * [Microsoft Azure CDN 中的实时统计信息](cdn-real-time-stats.md)
 * [使用规则引擎重写默认 HTTP 行为](cdn-rules-engine.md)

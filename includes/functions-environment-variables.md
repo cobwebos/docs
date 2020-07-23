@@ -1,20 +1,18 @@
 ---
 title: include 文件
 description: include 文件
-services: functions
 author: ggailey777
-manager: jeconnoc
 ms.service: azure-functions
 ms.topic: include
 ms.date: 05/08/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 6cfe83f16dfb5d7d0e3ca5253081e30abb9029c9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: b72de9fb15eafd48c3b72aae4f35fef3bb1f1bef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66131820"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76279571"
 ---
 还可以在代码中将函数应用设置值读取为环境变量。 有关详细信息，请参阅以下特定于语言的参考主题的“环境变量”部分：
 
@@ -24,3 +22,4 @@ ms.locfileid: "66131820"
 * [Java](../articles/azure-functions/functions-reference-java.md#environment-variables)
 * [JavaScript](../articles/azure-functions/functions-reference-node.md#environment-variables)
 * [PowerShell](../articles/azure-functions/functions-reference-powershell.md#environment-variables)
+* [Python](../articles/azure-functions/functions-reference-python.md#environment-variables)

@@ -1,41 +1,37 @@
 ---
-title: 命名实体识别认知搜索技能 - Azure 搜索
-description: 从 Azure 搜索认知搜索管道中的文本中提取人员、位置和组织的命名实体。
-services: search
-manager: pablocas
+title: 命名实体识别认知技能
+titleSuffix: Azure Cognitive Search
+description: 在 Azure 认知搜索中的 AI 扩充管道中，从文本中提取人员、位置和组织的已命名实体。
+manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: b7af4d0a48f002f7523def971a306d1fa2077c70
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
-ms.translationtype: MT
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 7d7227a0eeaa496dd774eb962946a4ee85e22009
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65952035"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080017"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>命名实体识别认知技能
 
-命名实体识别技能可以从文本中提取命名实体。 可用实体包括 `person`、`location` 和 `organization` 类型。
+命名实体识别  技能可以从文本中提取命名实体。 可用实体包括 `person`、`location` 和 `organization` 类型。
 
 > [!IMPORTANT]
-> 替换为命名的实体识别技能现已终止[Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)。 在 2019 年 2 月 15 日停止支持和 API 已从产品在删除，2019 年 5 月 2 日。 请按照中的建议[不推荐使用认知搜索技能](cognitive-search-skill-deprecated.md)迁移到受支持的一项技能。
+> 已命名的实体识别技能现已弃用，替换为 [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)。 已于 2019 年 2 月 15 日停止支持，并且已于 2019 年 5 月 2 日将此 API 从产品中删除。 建议按照[已弃用的认知搜索技能](cognitive-search-skill-deprecated.md)来迁移到受支持的技能。
 
 > [!NOTE]
-> 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API，以及在 Azure 搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
+> 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
 >
-> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)所述。
+> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 认知搜索定价页](https://azure.microsoft.com/pricing/details/search/)所述。
 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
 ## <a name="data-limits"></a>数据限制
-记录的最大大小应为 50,000 个字符，通过 `String.Length` 进行测量。 如果在将数据发送到关键短语提取器之前需要拆分数据，请使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
+记录的最大大小应为 50,000 个字符，通过 [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) 进行测量。 如果在将数据发送到关键短语提取器之前需要拆分数据，请使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
 
 ## <a name="skill-parameters"></a>技能参数
 
@@ -158,6 +154,6 @@ Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
 ## <a name="see-also"></a>另请参阅
 
-+ [预定义技能](cognitive-search-predefined-skills.md)
++ [内置技能](cognitive-search-predefined-skills.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
 + [实体识别技能](cognitive-search-skill-entity-recognition.md)

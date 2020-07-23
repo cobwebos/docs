@@ -1,33 +1,28 @@
 ---
 title: 使用 Azure Application Insights 监视实时 ASP.NET Web 应用 | Microsoft 文档
 description: 在不重新部署网站的情况下监视网站性能。 使用托管在本地或 VM 中的 ASP.NET Web 应用。
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/05/2018
-ms.author: mbullwin
-ms.openlocfilehash: 3f4ef7f333525d7408d0345b917102cddb295386
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.date: 08/26/2019
+ms.openlocfilehash: 93b150b831a01989093fd916d17e31aee27beb3a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66255468"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499522"
 ---
-# <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>在运行时使用 Application Insights 状态监视器检测 Web 应用
+# <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>在运行时使用 Application Insights 无代码附加检测 Web 应用
+
+> [!IMPORTANT]
+> 不再建议使用状态监视器，并**从六月6月 2021 1 日开始**，将不支持此版本的状态监视器。 它已被 Azure Monitor Application Insights 代理（以前称为状态监视器 v2）取代。 若要了解[本地服务器部署](./status-monitor-v2-overview.md)或 [Azure 虚拟机和虚拟机规模集部署](./azure-vm-vmss-apps.md)，请参阅我们的文档。
 
 无需修改或重新部署代码，即可使用 Azure Application Insights 检测实时 Web 应用。 需要 [Microsoft Azure](https://azure.com) 订阅。
 
 状态监视器可用于检测托管在 IIS、本地或 VM 中的 .NET 应用程序。
 
+- 如果将应用部署到 Azure VM 或 Azure 虚拟机规模集，请按照[这些说明](azure-vm-vmss-apps.md)操作。
 - 如果应用部署在 Azure 应用服务中，请遵循[这些说明](azure-web-apps.md)。
 - 如果应用部署在 Azure VM 中，则可通过 Azure 控制面板启用 Application Insights 监视。
-- (此外，还有单独文章有关检测[Azure 云服务](../../azure-monitor/app/cloudservices.md)。)
+- （我们还单独提供了有关检测 [Azure 云服务](../../azure-monitor/app/cloudservices.md)的文章。）
 
 
 ![包含失败请求、服务器响应时间和服务器请求信息的 App Insights 概览图屏幕截图](./media/monitor-performance-live-website-now/overview-graphs.png)
@@ -44,14 +39,14 @@ ms.locfileid: "66255468"
 
 |  | 构建时 | 运行时 |
 | --- | --- | --- |
-| 请求和异常 |是 |是 |
-| [更详细异常](../../azure-monitor/app/asp-net-exceptions.md) | |是 |
-| [依赖项诊断](../../azure-monitor/app/asp-net-dependencies.md) |在 NET 4.6+ 上，但更少详细信息 |是，完整的详细信息：结果代码、SQL 命令文本、HTTP 谓词|
-| [系统性能计数器](../../azure-monitor/app/performance-counters.md) |是 |是 |
-| [自定义遥测 API][api] |是 |否 |
-| [跟踪日志集成](../../azure-monitor/app/asp-net-trace-logs.md) |是 |否 |
-| [页面视图和用户数据](../../azure-monitor/app/javascript.md) |是 |否 |
-| 需要重新生成代码 |是 | 否 |
+| **请求 & 异常** |是 |是 |
+| **[更详细异常](../../azure-monitor/app/asp-net-exceptions.md)** | |是 |
+| **[依赖项诊断](../../azure-monitor/app/asp-net-dependencies.md)** |在 NET 4.6+ 上，但更少详细信息 |是，完整的详细信息：结果代码、SQL 命令文本、HTTP 谓词|
+| **[系统性能计数器](../../azure-monitor/app/performance-counters.md)** |是 |是 |
+| **[自定义遥测 API][api]** |是 |否 |
+| **[跟踪日志集成](../../azure-monitor/app/asp-net-trace-logs.md)** |是 |否 |
+| **[页面视图和用户数据](../../azure-monitor/app/javascript.md)** |是 |否 |
+| **需要重新生成代码** |是 | 否 |
 
 
 
@@ -89,7 +84,7 @@ ms.locfileid: "66255468"
 4. 恢复对 .config 文件所做的任何编辑。
 
 
-## <a name="troubleshoot"></a>故障排除
+## <a name="troubleshooting"></a><a name="troubleshoot"></a>故障排除
 
 ### <a name="confirm-a-valid-installation"></a>确认安装有效 
 
@@ -97,13 +92,14 @@ ms.locfileid: "66255468"
 
 - 确认 applicationInsights.config 文件在目标应用目录中并且包含 ikey。
 
-- 如果怀疑缺失数据，可在 [Analytics](../log-query/get-started-portal.md) 中运行简单的查询，列出目前正在发送遥测数据的所有云角色。
+- 如果怀疑缺少数据，可以在[分析](../log-query/get-started-portal.md)中运行查询，以列出当前发送遥测数据的所有云角色。
   ```Kusto
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
 
-- 如果需要确认 Application Insights 已成功附加，可在命令窗口中运行 [Sysinternals Handle](https://docs.microsoft.com/sysinternals/downloads/handle)，确认 IIS 已加载该 applicationinsights.dll。
-  ```cmd
+- 如果需要确认已成功附加 Application Insights，可以在命令窗口中运行[Sysinternals 句柄](/sysinternals/downloads/handle)以确认 applicationinsights.dll 是否已由 IIS 加载。
+
+  ```console
   handle.exe /p w3wp.exe
   ```
 
@@ -114,7 +110,7 @@ ms.locfileid: "66255468"
 
 ### <a name="unable-to-login"></a>无法登录
 
-* 如果不能登录状态监视器，请改为安装命令行。 状态监视器尝试登录以收集 ikey，但可使用以下命令手动提供该信息：
+如果不能登录状态监视器，请改为安装命令行。 状态监视器尝试登录以收集 ikey，但可使用以下命令手动提供该信息：
 
 ```powershell
 Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'
@@ -149,12 +145,12 @@ Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-0
 * 若要输出详细日志，请修改配置文件：`C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` 并将 `<add key="TraceLevel" value="All" />` 添加到 `appsettings`。
 然后重启状态监视器。
 
-* 按状态监视器是一个.NET 应用程序还可以启用[通过将适当的诊断添加到配置文件.net 跟踪](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element)。 例如，在某些情况下它可用于查看在网络级别的正在发生[配置网络跟踪](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing)
+* 由于状态监视器是一个 .NET 应用程序，因此还可以[通过向配置文件添加适当的诊断来启用 .NET 跟踪](/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element)。 例如，在某些情况下，通过[配置网络跟踪](/dotnet/framework/network-programming/how-to-configure-network-tracing)来查看网络级别发生的情况可能会很有用。
 
 ### <a name="insufficient-permissions"></a>权限不足
   
 * 如果在服务器上看到有关“权限不足”的消息，请尝试以下操作：
-  * 在 IIS 管理器中选择应用程序池，打开“高级设置”，并记下“进程模型”下的标识   。
+  * 在 IIS 管理器中选择应用程序池，打开“高级设置”，并记下“进程模型”下的标识 。
   * 在计算机管理控制面板中，将此标识添加到性能监试器用户组。
 
 ### <a name="conflict-with-systems-center-operations-manager"></a>与 Systems Center Operations Manager 发生冲突
@@ -186,7 +182,7 @@ Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-0
 * Windows server 2012 R2
 * Windows Server 2016
 
-使用最新 SP 及.NET Framework 4.5 （在此版本的 framework 上构建状态监视器）
+装有最新 SP 及 .NET Framework 4.5（状态监视器基于此版本的 Framework 构建）
 
 在客户端：对于 Windows 7、8、8.1 和 10，同样需要安装 .NET Framework 4.5
 
@@ -197,7 +193,9 @@ IIS 支持的是：IIS 7、7.5、8、8.5（IIS 是必需的）
 
 首先导入 Application Insights 模块：
 
-`Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'`
+```powershell
+Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'
+```
 
 找出受监视的应用：
 
@@ -226,12 +224,14 @@ IIS 支持的是：IIS 7、7.5、8、8.5（IIS 是必需的）
     若要下载最新版本，请使用 Update-ApplicationInsightsVersion。
 * 成功时返回 `ApplicationInsightsApplication` 。 如果失败，则向 stderr 记录跟踪。
 
-          Name                      : Default Web Site/WebApp1
-          InstrumentationKey        : 00000000-0000-0000-0000-000000000000
-          ProfilerState             : ApplicationInsights
-          SdkState                  : EnabledAfterDeployment
-          SdkVersion                : 1.2.1
-          LatestAvailableSdkVersion : 1.2.3
+   ```output
+   Name                      : Default Web Site/WebApp1
+   InstrumentationKey        : 00000000-0000-0000-0000-000000000000
+   ProfilerState             : ApplicationInsights
+   SdkState                  : EnabledAfterDeployment
+   SdkVersion                : 1.2.1
+   LatestAvailableSdkVersion : 1.2.3
+   ```
 
 `Stop-ApplicationInsightsMonitoring [-Name appName | -All]`
 
@@ -252,7 +252,7 @@ IIS 支持的是：IIS 7、7.5、8、8.5（IIS 是必需的）
 
 * 将最新的 Application Insights SDK 下载到服务器。
 
-## <a name="questions"></a>有关状态监视器的问题
+## <a name="questions-about-status-monitor"></a><a name="questions"></a>有关状态监视器的问题
 
 ### <a name="what-is-status-monitor"></a>什么是状态监视器？
 
@@ -280,7 +280,7 @@ IIS 支持的是：IIS 7、7.5、8、8.5（IIS 是必需的）
 
 目前，状态监视器仅可安装 Application Insights SDK 版本 2.3 或 2.4。 
 
-是 Application Insights SDK 版本 2.4[最后一个版本支持.NET 4.0](https://github.com/microsoft/ApplicationInsights-dotnet/releases/tag/v2.5.0-beta1)这是[EOL 2016 年 1 月](https://devblogs.microsoft.com/dotnet/support-ending-for-the-net-framework-4-4-5-and-4-5-1/)。 因此，到目前为止状态监视器可以用于检测.NET 4.0 应用程序。 
+Application Insights SDK 版本 2.4 是[支持 .NET 4.0 的最新版本](https://github.com/microsoft/ApplicationInsights-dotnet/releases/tag/v2.5.0-beta1)，已于 [2016 年 1 月停产](https://devblogs.microsoft.com/dotnet/support-ending-for-the-net-framework-4-4-5-and-4-5-1/)。 因此，到目前为止，状态监视器可以用于检测 .NET 4.0 应用程序。 
 
 ### <a name="do-i-need-to-run-status-monitor-whenever-i-update-the-app"></a>是否每次更新应用都需要运行状态监视器？
 
@@ -294,7 +294,7 @@ IIS 支持的是：IIS 7、7.5、8、8.5（IIS 是必需的）
 
 * HTTP 请求
 * 对依赖项的调用
-* 例外
+* 异常
 * 性能计数器
 
 对于已在编译时进行检测的应用程序：
@@ -303,29 +303,30 @@ IIS 支持的是：IIS 7、7.5、8、8.5（IIS 是必需的）
  * 依赖项调用 (.NET 4.5)；返回依赖项调用中的值 (.NET 4.6)。
  * 异常堆栈跟踪值。
 
-[了解详细信息](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)
+[了解详细信息](https://apmtips.com/posts/2016-11-18-how-application-insights-status-monitor-not-monitors-dependencies/)
 
 ## <a name="video"></a>视频
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="download"></a>下载状态监视器
+## <a name="download-status-monitor"></a><a name="download"></a>下载状态监视器
 
+- 使用新的 [PowerShell 模块](./status-monitor-v2-overview.md)
 - 下载并运行[状态监视器安装程序](https://go.microsoft.com/fwlink/?LinkId=506648)
 - 或运行 [Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx)并在其中搜索 Application Insights 状态监视器。
 
-## <a name="next"></a>后续步骤
+## <a name="next-steps"></a><a name="next"></a>后续步骤
 
 查看遥测：
 
-* [浏览指标](../../azure-monitor/app/metrics-explorer.md)，以便监视性能和使用情况
-* [搜索事件和日志][diagnostic]，以便诊断问题
-* [分析](../../azure-monitor/app/analytics.md)，以便进行更高级的查询
+* [浏览指标](../../azure-monitor/platform/metrics-charts.md)，以便监视性能和使用情况
+* [搜索事件和日志][diagnostic]以诊断问题
+* [分析](../log-query/log-query-overview.md)，以便进行更高级的查询
 
 添加更多遥测：
 
-* [创建 Web 测试][availability]，确保站点保持活动状态。
-* [添加 Web 客户端遥测][usage]，查看网页代码中的异常并将其插入跟踪调用。
+* [创建 Web 测试][availability]，以确保站点保持活动状态。
+* [添加 Web 客户端遥测][usage]，以查看网页代码中的异常并将其插入跟踪调用。
 * [将 Application Insights SDK 添加到代码][greenbrown]，以便插入跟踪和日志调用
 
 <!--Link references-->
@@ -335,6 +336,6 @@ IIS 支持的是：IIS 7、7.5、8、8.5（IIS 是必需的）
 [client]: ../../azure-monitor/app/javascript.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [greenbrown]: ../../azure-monitor/app/asp-net.md
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../faq.md
 [roles]: ../../azure-monitor/app/resources-roles-access-control.md
 [usage]: ../../azure-monitor/app/javascript.md

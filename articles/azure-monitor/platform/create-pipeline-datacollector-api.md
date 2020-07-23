@@ -1,24 +1,17 @@
 ---
-title: 使用 Azure 监视器数据收集器 API 创建数据管道 |Microsoft Docs
+title: 使用数据收集器 API 创建数据管道
 description: 可以使用 Azure Monitor HTTP 数据收集器 API，从能够调用 REST API 的任何客户端将 POST JSON 数据添加到 Log Analytics 工作区。 本文介绍如何以自动方式上传存储在文件中的数据。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 08/09/2018
-ms.author: magoedte
-ms.openlocfilehash: 53457a044f5c69af7bf68561f24732e8f02219d8
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: ac2b79046718fe45ad0dad0396b6f7653efbb779
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603235"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505323"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>使用数据收集器 API 创建数据管道
 
@@ -27,7 +20,7 @@ ms.locfileid: "65603235"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="example-problem"></a>示例问题
-本文余下部分，我们会在 Application Insights 中检查页面视图数据。 在我们假想方案中，我们想要关联到自定义数据包含在世界中，每个国家/地区的填充行为，目的是确定我们的支出，默认情况下，通过 Application Insights SDK 收集地理信息的最市场营销资金。 
+本文余下部分，我们会在 Application Insights 中检查页面视图数据。 在我们的假想方案中，我们需要将默认情况下由 Application Insights SDK 收集的地理信息与包含全球每个国家/地区人口的自定义数据关联起来，目的是确定最值得我们投入市场营销费用的地方。 
 
 为此，我们使用公开的数据源，例如 [UN World Population Prospects](https://esa.un.org/unpd/wpp/)（联合国世界人口展望）。 数据将采用以下简单架构：
 
@@ -50,7 +43,7 @@ ms.locfileid: "65603235"
 
 虽然我们未在本文中概述 Blob 存储、逻辑应用或 Azure Function 的详细设置，但在具体产品的页面上提供了详细说明。
 
-为了监视此管道，我们使用 Application Insights 来监视 Azure Function（[详见此文](../../azure-functions/functions-monitoring.md)），使用 Azure Monitor 来监视逻辑应用（[详见此文](../../logic-apps/logic-apps-monitor-your-logic-apps-oms.md)）。 
+为了监视此管道，我们使用 Application Insights 来监视 Azure Function（[详见此文](../../azure-functions/functions-monitoring.md)），使用 Azure Monitor 来监视逻辑应用（[详见此文](../../logic-apps/monitor-logic-apps-log-analytics.md)）。 
 
 ## <a name="setting-up-the-pipeline"></a>设置管道
 若要设置管道，请先确保创建并配置 Blob 容器。 同样，请确保创建 Log Analytics 工作区，以便将数据发送到其中。
@@ -67,8 +60,8 @@ ms.locfileid: "65603235"
 
 在此示例中，我们分析 CSV 文件，但任何其他的文件类型也可以进行类似的处理。 请直接修改 Azure Function 的反序列化部分，使之反映特定数据类型的正确逻辑。
 
-1.  在系统提示时使用 Function 运行时 v1 根据使用情况创建新的 Azure Function。  选择以 C# 为目标对象的“HTTP 触发器”模板作为起点，根据我们的要求配置绑定。 
-2.  在右窗格的“查看文件”选项卡中，创建名为 **project.json** 的新文件，然后粘贴以下代码（来自我们正使用的 NuGet 包）：
+1.  在系统提示时使用 Function 运行时 v1 根据使用情况创建新的 Azure Function。  选择以 C# 为目标对象的“HTTP 触发器”模板作为起点，根据我们的要求配置绑定。**** 
+2.  在右窗格的“查看文件”选项卡中，**** 创建名为 **project.json** 的新文件，然后粘贴以下代码（来自我们正使用的 NuGet 包）：
 
     ![Azure Functions 示例项目](./media/create-pipeline-datacollector-api/functions-example-project-01.png)
     
@@ -129,7 +122,7 @@ ms.locfileid: "65603235"
     ```
 
 4. 保存函数。
-5. 测试函数，确保代码正常运行。 切换到右窗格中的“测试”选项卡，对测试进行配置，如下所示。 将 Blob 链接和示例数据置于“请求正文”文本框中。 单击“运行”以后，会在“输出”框中看到 JSON 输出：
+5. 测试函数，确保代码正常运行。 切换到右窗格中的“测试”选项卡，对测试进行配置，如下所示。**** 将 Blob 链接和示例数据置于“请求正文”文本框中。**** 单击“运行”以后，会在“输出”框中看到 JSON 输出：********
 
     ![Function App 测试代码](./media/create-pipeline-datacollector-api/functions-test-01.png)
 

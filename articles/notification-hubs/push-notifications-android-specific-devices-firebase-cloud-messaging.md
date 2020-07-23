@@ -1,11 +1,11 @@
 ---
-title: 使用 Azure 通知中心和 Google Firebase Cloud Messaging 将通知推送到特定的 Android 设备 | Microsoft Docs
+title: 使用 Azure 通知中心和 Google Firebase Cloud Messaging 将推送通知发送到特定设备 | Microsoft Docs
 description: 了解如何使用通知中心通过 Azure 通知中心和 Google Firebase Cloud Messaging (FCM) 将通知推送到特定的 Android 设备。
 services: notification-hubs
 documentationcenter: android
-author: jwargo
-manager: patniko
-editor: spelluru'
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 3c23cb80-9d35-4dde-b26d-a7bfd4cb8f81
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,15 +14,17 @@ ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/30/2019
-ms.author: jowargo
-ms.openlocfilehash: f4a0da5d3ef0dd2d5ae04a2cc1b07ddb0a649bef
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 04/30/2019
+ms.openlocfilehash: 7143ecbb04fc19c990c4a5d71f3d6b0e8e05f229
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205395"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529720"
 ---
-# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-firebase-cloud-messaging-fcm"></a>教程：使用 Azure 通知中心和 Google Firebase Cloud Messaging (FCM) 将通知推送到特定的 Android 设备
+# <a name="tutorial-send-notifications-to-specific-devices-using-notification-hubs-and-google-firebase-cloud-messaging"></a>教程：使用通知中心和 Google Firebase Cloud Messaging 将通知发送到特定设备
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -32,7 +34,7 @@ ms.locfileid: "65205395"
 
 在通知中心创建注册时，通过加入一个或多个*标记*来启用广播方案。 将通知发送到标签时，已注册该标签的所有设备将接收通知。 因为标签是简单的字符串，它们不必提前设置。 有关标记的详细信息，请参阅[通知中心路由和标记表达式](notification-hubs-tags-segment-push-message.md)。
 
-在本教程中，请执行以下操作：
+在本教程中，将执行以下操作：
 
 > [!div class="checklist"]
 > * 向移动应用添加类别选择。
@@ -115,7 +117,7 @@ ms.locfileid: "65205395"
 
     `main_activity.xml` 的图形布局应如下图所示：
 
-    ![][A1]
+    ![显示主活动 XML 图形布局外观的仿真器的屏幕截图。][A1]
 3. 在与 `MainActivity` 类相同的包中创建 `Notifications` 类。
 
     ```java
@@ -217,7 +219,7 @@ ms.locfileid: "65205395"
 
         mainActivity = this;
 
-        MyHandler.createChannelAndHandleNotifications(getApplicationContext());
+        FirebaseService.createChannelAndHandleNotifications(getApplicationContext());
         notifications = new Notifications(this, NotificationSettings.HubName, NotificationSettings.HubListenConnectionString);
         notifications.subscribeToCategories(notifications.retrieveCategories());
     }
@@ -329,7 +331,7 @@ ms.locfileid: "65205395"
 在本教程中，已向注册类别的特定 Android 设备发送了广播通知。 若要了解如何向特定的用户推送通知，请转到以下教程：
 
 > [!div class="nextstepaction"]
->[向特定用户推送通知](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md)
+>[向特定用户推送通知](push-notifications-android-specific-users-firebase-cloud-messaging.md)
 
 <!-- Images. -->
 [A1]: ./media/notification-hubs-aspnet-backend-android-breaking-news/android-breaking-news1.PNG
@@ -338,8 +340,8 @@ ms.locfileid: "65205395"
 [Use Notification Hubs to broadcast localized breaking news]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started/
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for Windows Store]: https://msdn.microsoft.com/library/jj927172.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[Notification Hubs How-To for Windows Store]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Submit an app page]: https://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: https://go.microsoft.com/fwlink/p/?LinkId=262253

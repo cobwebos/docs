@@ -3,23 +3,23 @@ title: 清除 Azure CDN 终结点 | Microsoft Docs
 description: 了解如何从 Azure CDN 终结点清除所有缓存的内容。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: sohamnchatterjee
 ms.assetid: 0b50230b-fe82-4740-90aa-95d4dde8bd4f
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/17/2019
-ms.author: magattus
-ms.openlocfilehash: 94d9fb0878458f3de0a64fac57af4a70e1875112
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.author: allensu
+ms.openlocfilehash: 1946da6a18956b420684f4c2ffe86f35d0084eaf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65909684"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887298"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>清除 Azure CDN 终结点
 ## <a name="overview"></a>概述
@@ -51,8 +51,8 @@ ms.locfileid: "65909684"
    > 也可以通过单击 CDN 终结点边栏选项卡上的**清除**按钮进入“清除”边栏选项卡。  在这种情况下，**URL** 字段将预填充该特定终结点的服务地址。
    > 
    > 
-4. 选择要从边缘节点清除的资产。  如果想清除所有资产，单击“**全部清除**”复选框。  否则，请在“路径”文本框中输入要清除的每个资产的路径。 路径支持以下格式。
-    1. **单个 URL 清除**：通过使用或不带文件扩展名，例如，指定的完整 URL 清除单个资产`/pictures/strasbourg.png`; `/pictures/strasbourg`
+4. 选择要从边缘节点清除的资产。  若要清除所有资产，请单击 "**全部清除**" 复选框。  否则，请在“路径”**** 文本框中输入要清除的每个资产的路径。 路径支持以下格式。
+    1. **单个 URL 清除**：通过指定完整 URL （带或不带文件扩展名，例如，）清除单个资产 `/pictures/strasbourg.png` ;`/pictures/strasbourg`
     2. **通配符清除**：星号 (\*) 可用作通配符。 清除路径中含 `/*` 的终结点下的所有文件夹、子文件夹和文件，或通过指定后跟 `/*`（例如 `/pictures/*`）的文件夹来清除特定文件夹下的所有子文件夹和文件。  请注意，目前来自 Akamai 的 Azure CDN 不支持通配符清除。 
     3. **根域清除**：清除路径中具有“/”的终结点的根。
    
@@ -69,11 +69,11 @@ ms.locfileid: "65909684"
     ![“清除”按钮](./media/cdn-purge-endpoint/cdn-purge-button.png)
 
 > [!IMPORTANT]
-> 清除请求需要约 2 分钟处理的**来自 Microsoft 的 Azure CDN**并**来自 Verizon 的 Azure CDN** （标准和高级），并使用大约 10 秒**Azure CDN来自 Akamai**。  在任何给定时间，Azure CDN 在配置文件级别拥有最多 50 个并发清除请求的限制。 
+> 清除请求大约需要10分钟才能处理**Azure CDN，从**Verizon （标准和高级）到**Azure CDN** （标准和高级）约为2分钟， **Azure CDN 从 Akamai 开始**。  在任何给定时间，Azure CDN 在配置文件级别拥有最多 50 个并发清除请求的限制。 
 > 
 > 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [在 Azure CDN 终结点上预加载资产](cdn-preload-endpoint.md)
 * [Azure CDN REST API 参考 - 清除或预加载终结点](/rest/api/cdn/endpoints)
 

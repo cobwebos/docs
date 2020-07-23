@@ -1,72 +1,109 @@
 ---
-title: Azure 数据工厂映射数据流“透视”转换
-description: 从行到使用 Azure 数据工厂映射数据流透视转换的列的数据进行透视
+title: 映射数据流中的透视转换
+description: 使用 Azure 数据工厂映射数据流透视转换将数据从行透视到列
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: e16cac281b77f3ca93d9ef358ae806203bc8b663
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: a0084c3e8185f615e7ac2a2b8c212f1ebf022c08
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61348415"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683295"
 ---
-# <a name="azure-data-factory-pivot-transformation"></a>Azure 数据工厂透视转换
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+# <a name="pivot-transformation-in-mapping-data-flow"></a>映射数据流中的透视转换
 
-在 ADF 数据流中使用“透视”作为聚合，其中一个或多个分组列将其不同的行值转换到各个列中。 实际上，你可以将行值透视到新列中（将数据转换为元数据）。
 
-![透视选项](media/data-flow/pivot1.png "透视 1")
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-## <a name="group-by"></a>分组依据
+借助透视转换，可根据单个列的唯一行值创建多个列。 透视是一种聚合转换，需选择分组依据列并使用[聚合函数](data-flow-expression-functions.md#aggregate-functions)生成透视键。
 
-![透视选项](media/data-flow/pivot2.png "透视 2")
+## <a name="configuration"></a>配置
 
-首先，为你的透视聚合设置要用作分组依据的列。 此处，你可以设置 1 个以上的列，列的列表旁边会显示一个 + 号。
+透视转换需要三种不同的输入：分组依据列、透视键以及如何生成已透视列
 
-## <a name="pivot-key"></a>透视键
+### <a name="group-by"></a>Group by
 
-![透视选项](media/data-flow/pivot3.png "透视 3")
+![Group by 选项](media/data-flow/pivot2.png "Group By 选项")
 
-透视键是 ADF 从行透视到列的列。 默认情况下，此字段的数据集中的每个唯一值都将透视到列。 但是，你也可以选择输入此数据集中要透视到列值的值。 这是将确定将创建的新列的列。
+选择要在其基础上聚合已透视列的列。 输出数据会将所有具有相同分组依据值的行分组为一行。 在已透视列中完成的聚合将在每个组上进行。
 
-## <a name="pivoted-columns"></a>透视的列
+本部分为可选。 如果未选择分组依据列，则将聚合整个数据流，并且仅输出一行。
 
-![透视选项](media/data-flow/pivot4.png "透视 4")
+### <a name="pivot-key"></a>透视键
 
-最后，你将选择要用于透视的值的聚合以及如何在转换的新输出投影中显示列。
+![透视键](media/data-flow/pivot3.png "透视键")
 
-（可选）你可以设置一个命名模式，在其中包含要在行值中的每个新列名称中添加的前缀、中间名和后缀。
+透视键是将其行值透视到新列的列。 默认情况下，透视转换将为每个唯一的行值创建一个新列。
 
-例如，按“区域”透视“销售”将会得到每个销售值的新列值，例如“25”、“50”、“1000”，等等。但是，如果将前缀值"Sales-"，每个列的值将添加"销售-"值的开头。
+在标有“值”的部分中，可以输入要透视的特定行值。 将仅透视在此部分中输入的行值。 启用“Null 值”将为列中的 Null 值创建一个已透视列。
 
-![透视选项](media/data-flow/pivot5.png "透视 5")
+### <a name="pivoted-columns"></a>已透视列
 
-将列排列设置为“正常”，将所有透视列与其聚合值组合在一起。 将列排列设置为“横向”将在列和值之间交替。
+![已透视列](media/data-flow/pivot4.png "已透视列")
 
-### <a name="aggregation"></a>聚合
+对于变成列的每个唯一透视键值，将为每个组生成一个聚合的行值。 你可以为每个透视键创建多个列。 每个透视列必须至少包含一个[聚合函数](data-flow-expression-functions.md#aggregate-functions)。
 
-若要设置要用于透视值的聚合，请单击“透视的列”窗格底部的字段。 你将进入 ADF 数据流表达式生成器，可以在其中构建聚合表达式并为新的聚合值提供描述性的别名。
+**列名称模式：** 选择如何格式化每个透视列的列名称。 输出的列名称将为透视键值、列前缀和可选前缀、后缀、中间字符的组合。 
 
-在表达式生成器中使用 ADF 数据流表达式语言来描述透视列转换： https://aka.ms/dataflowexpressions。
+**列排列方式：** 如果为每个透视键生成多个透视列，请选择所需的列排序方式。 
 
-## <a name="pivot-metadata"></a>数据透视表的元数据
+**列前缀：** 如果为每个透视键生成多个透视列，请为每一列输入一个列前缀。 如果只有一个已透视列，则此设置是可选的。
 
-透视转换将生成是动态的基于传入数据的新列名称。 透视键生成每个新的列名称的值。 如果您未指定单独的值并想要在透视键中创建每个唯一值的动态列名称，然后 UI 将不显示在检查的元数据，并会有任何列传播到接收器转换。 如果将值设置为透视键，然后 ADF 可以确定新的列名和这些列名将检查可用和接收器映射。
+## <a name="help-graphic"></a>帮助图形
 
-### <a name="landing-new-columns-in-sink"></a>登陆接收器中的新列
+以下帮助图形显示了不同透视组件之间的交互方式
 
-即使使用 Pivot 中的动态列名称，可以仍到目标存储区中接收器新列名称和值。 只需设置"允许架构偏差"接收器设置中。 则不会看到新的动态名称在列元数据，但架构偏差选项将允许您将数据移。
+![透视帮助图形](media/data-flow/pivot5.png "透视帮助图形")
 
-### <a name="view-metadata-in-design-mode"></a>在设计模式下查看元数据
+## <a name="pivot-metadata"></a>透视元数据
 
-如果你想要查看新的列名称作为元数据检查，并且你想要看到显式传播到接收器转换的列，然后在透视键选项卡中设置显式值。
+如果未在透视键配置中指定任何值，则将在运行时动态生成已透视列。 已透视列的数量将等于唯一透视列值的数量乘以透视列的数量。 由于该数字可能会不断变化，因此 UX 不会在“检查”选项卡中显示列元数据，并且不会进行列传播。 若要转换这些列，请使用映射数据流的[列模式](concepts-data-flow-column-pattern.md)功能。 
 
-### <a name="how-to-rejoin-original-fields"></a>如何重新联接原始字段
-“透视”转换将仅对聚合、分组和透视操作中使用的列进行投影。 如果你想要在流中包括的其他列从上一步，使用上一步的一个新分支，并使用自联接模式连接的原始元数据的流。
+如果设置了特定的透视列值，则已透视列将出现在元数据中。 “检查”和“接收器映射”中将提供列名称。
+
+### <a name="generate-metadata-from-drifted-columns"></a>根据偏移列生成元数据
+
+透视基于行值动态生成新的列名称。 可以将这些新列添加到元数据中，以便稍后在数据流中引用。 为此，请使用数据预览中的[映射偏移列](concepts-data-flow-schema-drift.md#map-drifted-columns-quick-action)快速操作。 
+
+![透视列](media/data-flow/newpivot1.png "映射偏移透视列")
+
+### <a name="sinking-pivoted-columns"></a>接收已透视列
+
+尽管已透视列是动态的，但仍可以将它们写入目标数据存储中。 在接收器设置中启用“允许架构偏差”。 这将允许你写入未包含在元数据中的列。 列元数据中不会显示新的动态名称，但是架构偏差选项允许你移入数据。
+
+### <a name="rejoin-original-fields"></a>重新联接原始字段
+
+透视转换仅投影分组依据列和已透视列。 如果希望输出数据包含其他输入列，请使用[自联接](data-flow-join.md#self-join)模式。
+
+## <a name="data-flow-script"></a>数据流脚本
+
+### <a name="syntax"></a>语法
+
+```
+<incomingStreamName>
+    pivot(groupBy(Tm),
+        pivotBy(<pivotKeyColumn, [<specifiedColumnName1>,...,<specifiedColumnNameN>]),
+        <pivotColumnPrefix> = <pivotedColumnValue>,
+        columnNaming: '< prefix >< $N | $V ><middle >< $N | $V >< suffix >',
+        lateral: { 'true' | 'false'}
+    ) ~> <pivotTransformationName
+```
+### <a name="example"></a>示例
+
+配置部分中显示的屏幕具有以下数据流脚本：
+
+```
+BasketballPlayerStats pivot(groupBy(Tm),
+    pivotBy(Pos),
+    {} = count(),
+    columnNaming: '$V$N count',
+    lateral: true) ~> PivotExample
+
+```
 
 ## <a name="next-steps"></a>后续步骤
 
-请尝试[逆透视转换](data-flow-unpivot.md)以将列的值转换为行值。 
+尝试使用[逆透视转换](data-flow-unpivot.md)将列值转换为行值。 

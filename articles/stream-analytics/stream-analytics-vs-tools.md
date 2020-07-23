@@ -1,20 +1,18 @@
 ---
 title: 在 Visual Studio 中查看 Azure 流分析作业
-description: 本文介绍如何在 Visual Studio 中查看流分析作业。
-services: stream-analytics
+description: 了解如何使用 Visual Studio 查看、启动和停止、测试连接、检查结果以及导出 Azure 流分析作业。
 author: su-jie
 ms.author: sujie
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2018
-ms.openlocfilehash: 1c7133801eb0d95616cacf501162e6cee3da7c80
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 95abf403dfd4abd4c0533b6e8b4a2f83b33fa18b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477785"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045546"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>使用 Visual Studio 查看 Azure 流分析作业
 
@@ -34,13 +32,11 @@ ms.locfileid: "61477785"
 
 ### <a name="open-the-job-view"></a>打开作业视图
 
-1. 在“服务器资源管理器”中，选择“流分析作业”，然后选择“刷新”。 作业应显示在“流分析作业”下。
+1. 在“服务器资源管理器”中，选择“流分析作业”，然后选择“刷新”    。 作业应显示在“流分析作业”下  。
 
     ![流分析服务器资源管理器列表](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-list-jobs-01.png)
 
-
-
-2. 展开作业节点，并双击“作业视图”节点打开作业视图。
+2. 展开作业节点，并双击“作业视图”节点打开作业视图  。
     
    ![展开的作业节点](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-job-view-01.png)
 
@@ -50,27 +46,25 @@ ms.locfileid: "61477785"
     
    ![流分析作业控件](./media/stream-analytics-vs-tools/azure-stream-analytics-job-view-controls.png)
 
-
 ## <a name="check-job-results"></a>检查作业结果
 
-适用于 Visual Studio 的流分析工具目前支持 Azure Data Lake Storage 和 Blob 存储的输出预览。 若要查看结果，只需双击“作业视图”中作业关系图的输出节点并输入相应凭据即可。
+适用于 Visual Studio 的流分析工具目前支持 Azure Data Lake Storage 和 Blob 存储的输出预览。 若要查看结果，只需双击“作业视图”  中作业关系图的输出节点并输入相应凭据即可。
 
    ![流分析作业 Blob 输出](./media/stream-analytics-vs-tools/stream-analytics-blob-preview.png)
-
 
 ## <a name="export-jobs-to-a-project"></a>将作业导出到项目
 
 可使用两种方法将现有作业导出到项目。
 
-1. 在“服务器资源管理器”中的“流分析作业”节点下，右键单击作业节点。 选择“导出到新的流分析项目”。
+1. 在“服务器资源管理器”中的“流分析作业”节点下，右键单击作业节点  。 选择“导出到新的流分析项目”  。
     
    ![将作业导出到项目](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-01.png)
     
-    生成的项目会显示在“解决方案资源管理器”中。
+    生成的项目会显示在“解决方案资源管理器”中  。
     
    ![解决方案资源管理器](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-02.png)
 
-2. 在作业视图中，选择“生成项目”。
+2. 在作业视图中，选择“生成项目”  。
     
    ![从作业视图生成项目](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-03.png)
 
@@ -80,7 +74,7 @@ ms.locfileid: "61477785"
 
    ![“测试连接”下拉框](./media/stream-analytics-vs-tools/stream-analytics-test-connection-dropdown.png)
 
-“测试连接”结果会显示在“输出”窗口中。
+“测试连接”  结果会显示在“输出”  窗口中。
 
    ![“测试连接”结果](./media/stream-analytics-vs-tools/stream-analytics-test-connection-results.png)
 
@@ -88,5 +82,5 @@ ms.locfileid: "61477785"
 
 * [使用 Visual Studio 监视和管理 Azure 流分析作业](stream-analytics-monitor-jobs-use-vs.md)
 * [快速入门：使用 Visual Studio 创建流分析作业](stream-analytics-quick-create-vs.md)
-* [教程：与使用 Azure 管道的 CI/CD 部署 Azure Stream Analytics 作业](stream-analytics-tools-visual-studio-cicd-vsts.md)
+* [教程：使用 Azure Pipelines 通过 CI/CD 部署 Azure 流分析作业](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [使用流分析工具进行持续集成和开发](stream-analytics-tools-for-visual-studio-cicd.md)

@@ -1,26 +1,19 @@
 ---
-title: Azure PowerShell 脚本示例 - 将应用备份还原到其他订阅 | Microsoft Docs
-description: Azure PowerShell 脚本示例 - 从另一订阅的备份中还原 Web 应用
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jpconnoc
-editor: ''
+title: PowerShell：将备份还原到另一个订阅
+description: 了解如何使用 Azure PowerShell 自动部署和管理应用服务。 此示例演示如何在另一订阅中还原备份。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: a2a27d94-d378-4c17-a6a9-ae1e69dc4a72
-ms.service: app-service-web
-ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 11/21/2018
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: a33df69a10dc803c60652c64a11a137f085e5c61
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 4a22148d4151fd3c80c7be439b5dd281200e5456
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136557"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044581"
 ---
 # <a name="restore-a-web-app-from-a-backup-in-another-subscription-using-powershell"></a>使用 PowerShell 从另一订阅中的备份还原 Web 应用
 
@@ -46,7 +39,7 @@ Remove-AzResourceGroup -Name $resourceGroupName -Force
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [Add-AzAccount](/powershell/module/az.accounts/connect-azaccount) | 添加一个经身份验证的帐户，用于 Azure 资源管理器 cmdlet 请求。  |
 | [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | 获取 Web 应用的备份列表。 |

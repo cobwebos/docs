@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric DNS 服务 | Microsoft Docs
+title: Azure Service Fabric DNS 服务
 description: 使用 Service Fabric 的 DNS 服务从群集内部发现微服务。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: vturecek
-ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 7/20/2018
-ms.author: aljo
-ms.openlocfilehash: 3b3262eadc732c23000a66f24aaeeed4d9794db0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a6611281fd2d2368809419ad594d2eb1289b5a0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60947612"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258911"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric 中的 DNS 服务
 DNS 服务是可选的系统服务，可以在群集中启用，用于发现使用 DNS 协议的其他服务。 
@@ -46,14 +35,14 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
 > [!NOTE]
 > 在 Linux 上尚不支持用于 Service Fabric 服务的 DNS 服务。
 
-使用门户创建群集时，默认情况下，在“群集配置”菜单的“包括 DNS 服务”复选框中启用 DNS 服务：
+使用门户创建群集时，默认情况下，在“群集配置”菜单的“包括 DNS 服务”复选框中启用 DNS 服务   ：
 
 ![通过门户启用 DNS 服务](./media/service-fabric-dnsservice/enable-dns-service.png)
 
 如果不使用门户创建群集或者要更新现有群集，则需要在模板中启用 DNS 服务：
 
 - 若要部署新的群集，可以使用[示例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)或创建自己的资源管理器模板。 
-- 若要更新现有群集，可以导航到门户的群集资源组并单击“自动化脚本”，使用反映群集和组中其他资源当前状态的模板。 若要了解详细信息，请参阅[从资源组导出模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template)。
+- 若要更新现有群集，可以导航到门户的群集资源组并单击“自动化脚本”，使用反映群集和组中其他资源当前状态的模板  。 若要了解详细信息，请参阅[从资源组导出模板](../azure-resource-manager/templates/export-template-portal.md)。
 
 有了模板后，可以通过以下步骤启用 DNS 服务：
 
@@ -73,16 +62,16 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
 
    - 若要启用采用默认设置的 DNS 服务，请将其添加到 `properties` 节中的 `addonFeatures` 节，如以下示例所示：
 
-       ```json
-           "properties": {
-              ...
-
-              "addonFeatures": [
-                "DnsService"
+        ```json
+          "properties": {
+            ...
+            "addonFeatures": [
+              "DnsService"
               ],
-              ...
-           }
-       ```
+            ...
+          }
+        ```
+
    - 若要启用采用非默认设置的服务，请将 `DnsService` 节添加到 `properties` 节中的 `fabricSettings` 节。 在这种情况下，不需要将 DnsService 添加到 `addonFeatures`。 若要详细了解可为 DNS 服务设置的属性，请参阅 [DNS 服务设置](./service-fabric-cluster-fabric-settings.md#dnsservice)。
 
        ```json
@@ -111,8 +100,13 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
               ]
             }
        ```
-1. 通过这些更改更新群集模板后，请应用更改并等待升级完成。 完成升级后，DNS 系统服务将开始在群集中运行。 服务名称是 `fabric:/System/DnsService`，可以在 Service Fabric Explorer 的“系统”服务部分下找到它。 
+3. 通过这些更改更新群集模板后，请应用更改并等待升级完成。 完成升级后，DNS 系统服务将开始在群集中运行。 服务名称是 `fabric:/System/DnsService`，可以在 Service Fabric Explorer 的“系统”服务部分下找到它  。 
 
+> [!NOTE]
+> 将 DNS 从禁用升级到启用时，Service Fabric Explorer 可能未反映新状态。 若要解决问题，请重启节点，方法是：在 Azure 资源管理器模板中修改 UpgradePolicy。 有关详细信息，请参阅 [Service Fabric 模板参考](/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications)。
+
+> [!NOTE]
+> 在本地计算机上进行开发时，如果启用 DNS 服务，则会替代某些 DNS 设置。 如果在连接到 Internet 时遇到问题，请检查 DNS 设置。
 
 ## <a name="setting-the-dns-name-for-your-service"></a>设置服务的 DNS 名称
 可以在 ApplicationManifest.xml 文件中或者通过 PowerShell 命令，以声明方式为默认服务设置 DNS 名称。
@@ -135,7 +129,7 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
 
 ![服务终结点](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
 
-以下示例将有状态服务的 DNS 名称设置为 `statefulsvc.app`。 该服务使用命名分区方案。 请注意分区名称均为小写。 这是在 DNS 查询中用作目标的分区的一项要求；有关详细信息，请参阅[针对有状态服务分区发出 DNS 查询](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#preview-making-dns-queries-on-a-stateful-service-partition)。
+以下示例将有状态服务的 DNS 名称设置为 `statefulsvc.app`。 该服务使用命名分区方案。 请注意分区名称均为小写。 这是在 DNS 查询中用作目标的分区的一项要求；有关详细信息，请参阅[针对有状态服务分区发出 DNS 查询](#preview-making-dns-queries-on-a-stateful-service-partition)。
 
 ```xml
     <Service Name="Stateful1" ServiceDnsName="statefulsvc.app" />
@@ -179,7 +173,7 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
 其中：
 
 - *First-Label-Of-Partitioned-Service-DNSName* 是服务 DNS 名称的第一个部分。
-- *PartitionPrefix* 是可以在群集清单的 DnsService 节中设置的，或者通过群集资源管理器模板设置的值。 默认值为“-”。 有关详细信息，请参阅 [DNS 服务设置](./service-fabric-cluster-fabric-settings.md#dnsservice)。
+- *PartitionPrefix* 是可以在群集清单的 DnsService 节中设置的，或者通过群集资源管理器模板设置的值。 默认值为“--”。 有关详细信息，请参阅 [DNS 服务设置](./service-fabric-cluster-fabric-settings.md#dnsservice)。
 - *Target-Partition-Name* 是分区的名称。 
 - *PartitionSuffix* 是可以在群集清单的 DnsService 节中设置的，或者通过群集资源管理器模板设置的值。 默认值为空字符串。 有关详细信息，请参阅 [DNS 服务设置](./service-fabric-cluster-fabric-settings.md#dnsservice)。
 - *Remaining-Partitioned-Service-DNSName* 是服务 DNS 名称的剩余部分。
@@ -259,4 +253,3 @@ public class ValuesController : Controller
 
 ## <a name="next-steps"></a>后续步骤
 通过[连接服务并与服务进行通信](service-fabric-connect-and-communicate-with-services.md)，了解有关群集内服务通信的详细信息
-

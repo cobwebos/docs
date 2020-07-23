@@ -5,41 +5,16 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 01/16/2019
+ms.date: 09/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c6f9065786879749eee6187e93283f4c026b7fff
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 1c2525b352c25f470814ce909a8d10ff821d9e32
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150069"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "70961601"
 ---
-以下计算机配置用于执行下面的步骤：
-
-  | | |
-  |---|---|
-  |Computer| Ubuntu Server 16.04<br>ID_LIKE=debian<br>PRETTY_NAME="Ubuntu 16.04.4 LTS"<br>VERSION_ID="16.04" |
-  |依赖项| strongSwan |
-
-#### <a name="1-install-strongswan"></a>1.安装 strongSwan
-
-使用以下命令安装所需的 strongSwan 配置：
-
-```
-apt-get install strongswan-ikev2 strongswan-plugin-eap-tls
-```
-
-```
-apt-get install libstrongswan-standard-plugins
-```
-
-```
-apt-get install strongswan-pki
-```
-
-#### <a name="2-generate-keys-and-certificate"></a>2.生成密钥和证书
-
 生成 CA 证书。
 
   ```
@@ -47,7 +22,7 @@ apt-get install strongswan-pki
   ipsec pki --self --in caKey.pem --dn "CN=VPN CA" --ca --outform pem > caCert.pem
   ```
 
-打印 base64 格式的 CA 证书。 这是 Azure 支持的格式。 稍后需将其作为 P2S 配置的一部分上传到 Azure。
+打印 base64 格式的 CA 证书。 这是 Azure 支持的格式。 按照 [P2S 配置步骤](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)，将此证书上传到 Azure。
 
   ```
   openssl x509 -in caCert.pem -outform der | base64 -w0 ; echo

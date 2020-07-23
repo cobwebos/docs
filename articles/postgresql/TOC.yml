@@ -15,6 +15,11 @@
           href: quickstart-create-server-database-azure-cli.md
         - name: 创建 DB - Azure CLI up 命令
           href: quickstart-create-server-up-azure-cli.md
+        - name: 创建 DB - Azure PowerShell
+          href: quickstart-create-postgresql-server-database-using-azure-powershell.md
+        - name: 创建 DB - ARM 模板
+          href: quickstart-create-postgresql-server-database-using-arm-template.md
+          displayName: deploy azure resource manager template
         - name: 连接和查询
           items:
             - name: Python
@@ -45,6 +50,8 @@
               href: tutorial-design-database-using-azure-portal.md
             - name: Azure CLI
               href: tutorial-design-database-using-azure-cli.md
+            - name: Azure PowerShell
+              href: tutorial-design-database-using-powershell.md
         - name: 2 - 设计 Web 应用 - Python
           href: ../app-service/containers/tutorial-python-postgresql-app.md
           maintainContext: true
@@ -60,6 +67,9 @@
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 单个服务器
@@ -78,23 +88,38 @@
           items:
             - name: 定价层
               href: concepts-pricing-tiers.md
+            - name: 为预留容量预付费
+              href: concept-reserved-pricing.md
             - name: 限制
               href: concepts-limits.md
         - name: 数据访问和安全性
           items:
-            - name: 防火墙规则
-              href: concepts-firewall-rules.md
+            - name: 安全概述
+              href: concepts-security.md
             - name: 配置 SSL
               href: concepts-ssl-connection-security.md
-            - name: 高级威胁防护
-              href: concepts-data-access-and-security-threat-protection.md
-            - name: 虚拟网络
-              href: concepts-data-access-and-security-vnet.md
             - name: 连接体系结构
               href: concepts-connectivity-architecture.md
+            - name: 防火墙规则
+              href: concepts-firewall-rules.md
+            - name: 虚拟网络
+              href: concepts-data-access-and-security-vnet.md
+            - name: 高级威胁防护
+              href: concepts-data-access-and-security-threat-protection.md
+            - name: Azure AD 身份验证
+              href: concepts-aad-authentication.md
+            - name: 专用链接
+              href: concepts-data-access-and-security-private-link.md
+            - name: 数据加密
+              href: concepts-data-encryption-postgresql.md
+            - name: 基础结构双重加密
+              href: concepts-infrastructure-double-encryption.md
+            - name: Azure 安全基准的安全基线
+              href: security-baseline.md
         - name: 业务连续性
           items:
-            - name: 概述
+            - name: 业务连续性简介
+              displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
               href: concepts-business-continuity.md
             - name: 备份和还原
               href: concepts-backup.md
@@ -102,8 +127,10 @@
           items:
             - name: 监视和优化
               href: concepts-monitoring.md
-            - name: 服务器日志
+            - name: 日志
               href: concepts-server-logs.md
+            - name: 审核日志
+              href: concepts-audit.md
             - name: 查询存储
               items:
                 - name: 查询存储
@@ -134,6 +161,12 @@
           items:
             - name: 只读副本
               href: concepts-read-replicas.md
+            - name: 逻辑解码
+              href: concepts-logical.md
+        - name: 在区域之间移动
+          items:
+            - name: Azure 门户
+              href: howto-move-regions-portal.md
     - name: 超大规模 (Citus)
       items:
         - name: Nodes
@@ -144,93 +177,185 @@
           href: concepts-hyperscale-choose-distribution-column.md
         - name: 表共置
           href: concepts-hyperscale-colocation.md
+        - name: 数据访问和安全性
+          items:
+            - name: 防火墙规则
+              href: concepts-hyperscale-firewall-rules.md
+            - name: 配置 SSL
+              href: concepts-hyperscale-ssl-connection-security.md
+            - name: Azure 安全基准的安全基线
+              href: postgresql-hyperscale-security-baseline.md
+        - name: 业务连续性
+          items:
+            - name: 备份和还原
+              href: concepts-hyperscale-backup.md
+        - name: 监视和优化
+          items:
+            - name: 监视和优化
+              href: concepts-hyperscale-monitoring.md
         - name: PostgreSQL 扩展
           href: concepts-hyperscale-extensions.md
+        - name: 高可用性
+          href: concepts-hyperscale-high-availability.md
         - name: 资源
           items:
             - name: 配置选项
               href: concepts-hyperscale-configuration-options.md
+            - name: 为预留容量预付费
+              href: concepts-hyperscale-reserved-pricing.md
 - name: 操作指南
   items:
-    - name: 创建用户
-      href: howto-create-users.md
-    - name: 优化
+    - name: 单个服务器
       items:
-        - name: 批量插入
-          href: howto-optimize-bulk-inserts.md
-        - name: Autovacuum
-          href: howto-optimize-autovacuum.md
-        - name: 查询统计信息集合
-          href: howto-optimize-query-stats-collection.md
-        - name: Toast 表策略
-          href: howto-optimize-query-time-with-toast-table-storage-strategy.md
-    - name: 管理防火墙
+        - name: 管理服务器
+          items:
+            - name: Azure 门户
+              href: howto-create-manage-server-portal.md
+        - name: 身份验证
+          items:
+            - name: 创建用户
+              href: howto-create-users.md
+            - name: 配置 Azure AD 集成
+              href: howto-configure-sign-in-aad-authentication.md
+            - name: 与托管标识连接
+              href: howto-connect-with-managed-identity.md
+        - name: 优化
+          items:
+            - name: 批量插入
+              href: howto-optimize-bulk-inserts.md
+            - name: Autovacuum
+              href: howto-optimize-autovacuum.md
+            - name: 查询统计信息集合
+              href: howto-optimize-query-stats-collection.md
+            - name: Toast 表策略
+              href: howto-optimize-query-time-with-toast-table-storage-strategy.md
+        - name: 管理防火墙
+          items:
+            - name: Azure 门户
+              href: howto-manage-firewall-using-portal.md
+            - name: Azure CLI
+              href: howto-manage-firewall-using-cli.md
+        - name: 还原服务器
+          items:
+            - name: Azure 门户
+              href: howto-restore-server-portal.md
+            - name: Azure CLI
+              href: howto-restore-server-cli.md
+            - name: Azure PowerShell
+              href: howto-restore-server-powershell.md
+        - name: 迁移数据库
+          items:
+            - name: 转储和还原
+              href: howto-migrate-using-dump-and-restore.md
+            - name: 导入和导出
+              href: howto-migrate-using-export-and-import.md
+            - name: 停机时间最短的迁移
+              href: howto-migrate-online.md
+        - name: 连接应用程序
+          items:
+            - name: 配置 TLS
+              href: howto-tls-configurations.md
+        - name: 配置服务器参数
+          items:
+            - name: Azure 门户
+              href: howto-configure-server-parameters-using-portal.md
+            - name: Azure CLI
+              href: howto-configure-server-parameters-using-cli.md
+            - name: Azure PowerShell
+              href: howto-configure-server-parameters-using-powershell.md
+        - name: 自动增长存储
+          items:
+            - name: Azure 门户
+              href: howto-auto-grow-storage-portal.md
+            - name: Azure CLI
+              href: howto-auto-grow-storage-cli.md
+            - name: Azure PowerShell
+              href: howto-auto-grow-storage-powershell.md
+        - name: 访问日志
+          items:
+            - name: Azure 门户
+              href: howto-configure-server-logs-in-portal.md
+            - name: Azure CLI
+              href: howto-configure-server-logs-using-cli.md
+        - name: 监视
+          items:
+            - name: 针对指标创建警报
+              href: howto-alert-on-metric.md
+        - name: 疑难解答
+          items:
+            - name: 排查连接错误
+              href: howto-troubleshoot-common-connection-issues.md
+            - name: 排查数据加密问题
+              href: howto-data-encryption-troubleshoot.md
+        - name: 高级威胁防护
+          items:
+            - name: Azure 门户
+              href: howto-database-threat-protection-portal.md
+        - name: 虚拟网络
+          items:
+            - name: Azure 门户
+              href: howto-manage-vnet-using-portal.md
+            - name: Azure CLI
+              href: howto-manage-vnet-using-cli.md
+        - name: 专用链接
+          items:
+            - name: Azure 门户
+              href: howto-configure-privatelink-portal.md
+            - name: Azure CLI
+              href: howto-configure-privatelink-cli.md
+        - name: 数据加密
+          items:
+            - name: Azure 门户
+              href: howto-data-encryption-portal.md
+            - name: Azure CLI
+              href: howto-data-encryption-cli.md
+            - name: 数据加密验证
+              href: howto-data-encryption-validation.md
+        - name: 基础结构双重加密
+          items:
+            - name: 配置基础结构双加密
+              href: howto-double-encryption.md
+        - name: 重新启动服务器
+          items:
+            - name: Azure 门户
+              href: howto-restart-server-portal.md
+            - name: Azure CLI
+              href: howto-restart-server-cli.md
+            - name: Azure PowerShell
+              href: howto-restart-server-powershell.md
+        - name: 拒绝公用网络访问
+          items:
+            - name: Azure 门户
+              href: howto-deny-public-network-access.md
+        - name: 复制
+          items:
+            - name: 在 Azure 门户中管理只读副本
+              href: howto-read-replicas-portal.md
+            - name: 使用 Azure CLI、REST API 管理只读副本
+              href: howto-read-replicas-cli.md
+            - name: 管理只读副本 - Azure PowerShell
+              href: howto-read-replicas-powershell.md
+    - name: 超大规模 (Citus)
       items:
-        - name: Azure 门户
-          href: howto-manage-firewall-using-portal.md
-        - name: Azure CLI
-          href: howto-manage-firewall-using-cli.md
-    - name: 还原服务器
-      items:
-        - name: Azure 门户
-          href: howto-restore-server-portal.md
-        - name: Azure CLI
-          href: howto-restore-server-cli.md
-    - name: 迁移数据库
-      items:
-        - name: 转储和还原
-          href: howto-migrate-using-dump-and-restore.md
-        - name: 导入和导出
-          href: howto-migrate-using-export-and-import.md
-        - name: 停机时间最短的迁移
-          href: howto-migrate-online.md
-    - name: 配置服务器参数
-      items:
-        - name: Azure 门户
-          href: howto-configure-server-parameters-using-portal.md
-        - name: Azure CLI
-          href: howto-configure-server-parameters-using-cli.md
-    - name: 自动增长存储
-      items:
-        - name: Azure 门户
-          href: howto-auto-grow-storage-portal.md
-    - name: 访问服务器日志
-      items:
-        - name: Azure 门户
-          href: howto-configure-server-logs-in-portal.md
-        - name: Azure CLI
-          href: howto-configure-server-logs-using-cli.md
-    - name: 监视
-      items:
-        - name: 针对指标创建警报
-          href: howto-alert-on-metric.md
-    - name: 故障排除
-      items:
-        - name: 排查连接错误
-          href: howto-troubleshoot-common-connection-issues.md
-    - name: 高级威胁防护
-      items:
-        - name: Azure 门户
-          href: howto-database-threat-protection-portal.md
-    - name: 虚拟网络
-      items:
-        - name: Azure 门户
-          href: howto-manage-vnet-using-portal.md
-        - name: Azure CLI
-          href: howto-manage-vnet-using-cli.md
-    - name: 重新启动服务器
-      items:
-        - name: Azure 门户
-          href: howto-restart-server-portal.md
-        - name: Azure CLI
-          href: howto-restart-server-cli.md
-    - name: 复制
-      items:
-        - name: 在 Azure 门户中管理只读副本
-          href: howto-read-replicas-portal.md
-        - name: 管理只读副本 Azure CLI
-          href: howto-read-replicas-cli.md
-- name: 引用
+        - name: 创建用户
+          href: howto-hyperscale-create-users.md
+        - name: 缩放
+          href: howto-hyperscale-scaling.md
+        - name: 管理防火墙
+          items:
+            - name: Azure 门户
+              href: howto-hyperscale-manage-firewall-using-portal.md
+        - name: 高可用性
+          href: howto-hyperscale-high-availability.md
+        - name: 监视
+          items:
+            - name: 针对指标创建警报
+              href: howto-hyperscale-alert-on-metric.md
+        - name: 疑难解答
+          items:
+            - name: 排查连接错误
+              href: howto-hyperscale-troubleshoot-common-connection-issues.md
+- name: 参考
   items:
     - name: Azure CLI
       href: /cli/azure/postgres
@@ -248,9 +373,9 @@
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/postgresql/'
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDatabaseforPostgreSQL'
-    - name: 堆栈溢出
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-database-postgresql.html'
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-postgresql'
     - name: 视频
       items:

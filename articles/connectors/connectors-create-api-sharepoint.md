@@ -1,22 +1,17 @@
 ---
-title: 从 Azure 逻辑应用连接到 SharePoint | Microsoft Docs
+title: 从 Azure 逻辑应用连接到 SharePoint
 description: 使用 Azure 逻辑应用自动完成用于在 SharePoint Online 或本地 SharePoint Server 中监视和管理资源的任务与工作流
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: e0ec3149-507a-409d-8e7b-d5fbded006ce
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: e636b2bb08477e6c56c6ae41f08983fc5bfa2a9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+tags: connectors
+ms.openlocfilehash: 06dfca4fc59ba6ff32714d7a92b0d4a65e262de5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60450737"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826003"
 ---
 # <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 SharePoint 资源
 
@@ -37,9 +32,9 @@ ms.locfileid: "60450737"
 可以使用触发器从 SharePoint 获取响应，并使输出可用于其他操作。 可以使用逻辑应用中的操作在 SharePoint 中执行任务。 还可以让其他操作使用 SharePoint 操作的输出。 例如，如果你定期从 SharePoint 提取文件，可以使用 Slack 连接器向团队发送消息。
 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
 * SharePoint 站点地址和用户凭据
 
@@ -70,9 +65,9 @@ ms.locfileid: "60450737"
    在操作列表下，选择所需的操作。
 
    若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 
-   选择出现的加号 (**+**)，然后选择“添加操作”。
+   选择出现的加号 ( **+** )，然后选择“添加操作”。
 
-1. 系统提示登录时，请提供所需的连接信息。 如果您使用 SharePoint Server，请确保选择**通过本地数据网关连接**。 完成后，选择“创建”。
+1. 系统提示登录时，请提供所需的连接信息。 如果使用 SharePoint Server，请务必选择“通过本地数据网关连接”。 完成后，选择“创建”。
 
 1. 为所选触发器或操作提供所需的详细信息，然后继续生成逻辑应用的工作流。
 
@@ -82,7 +77,7 @@ ms.locfileid: "60450737"
 
 ## <a name="get-support"></a>获取支持
 
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 * 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤

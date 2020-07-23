@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: bcfdb5eb213547b12920a3ceb87f5b943946a7fe
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3671f948bb61a348492d89e9b4bf011400d1e986
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688954"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67100229"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-innotas"></a>教程：Azure Active Directory 与 Innotas 的集成
 
@@ -127,7 +127,7 @@ ms.locfileid: "64688954"
 
 ### <a name="configure-innotas-single-sign-on"></a>配置 Innotas 单一登录
 
-要在 Innotas 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Innotas 支持团队](https://www.innotas.com/contact)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+要在 Innotas 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Innotas 支持团队](https://www.innotas.com/contact)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -147,7 +147,7 @@ ms.locfileid: "64688954"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -169,7 +169,7 @@ ms.locfileid: "64688954"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

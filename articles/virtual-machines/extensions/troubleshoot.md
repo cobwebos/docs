@@ -1,26 +1,25 @@
 ---
-title: Windows VM 扩展故障排除 | Microsoft Docs
+title: Windows VM 扩展故障排除
 description: 了解如何进行 Azure Windows VM 扩展故障排除
 services: virtual-machines-windows
 documentationcenter: ''
 author: kundanap
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: top-support-issue,azure-resource-manager
 ms.assetid: 878ab9b6-c3e6-40be-82d4-d77fecd5030f
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: cf53df30dfccb76a6f33621038ba7f031a69f6de
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 2fa87e860d0f5f5117840b9e230e383cdd6aae7c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62107238"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187551"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure Windows VM 扩展故障排除
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -28,44 +27,50 @@ ms.locfileid: "62107238"
 ## <a name="viewing-extension-status"></a>查看扩展状态
 可以从 Azure PowerShell 执行 Azure 资源管理器模板。 一旦执行该模板，就可以从 Azure 资源浏览器或命令行工具查看扩展状态。
 
-下面是一个示例：
+以下是示例：
 
 Azure PowerShell：
 
-      Get-AzVM -ResourceGroupName $RGName -Name $vmName -Status
+```azurepowershell
+Get-AzVM -ResourceGroupName $RGName -Name $vmName -Status
+```
 
 下面是示例输出：
 
-      Extensions:  {
-      "ExtensionType": "Microsoft.Compute.CustomScriptExtension",
-      "Name": "myCustomScriptExtension",
-      "SubStatuses": [
-        {
-          "Code": "ComponentStatus/StdOut/succeeded",
-          "DisplayStatus": "Provisioning succeeded",
-          "Level": "Info",
-          "Message": "    Directory: C:\\temp\\n\\n\\nMode                LastWriteTime     Length Name
-              \\n----                -------------     ------ ----                              \\n-a---          9/1/2015   2:03 AM         11
-              test.txt                          \\n\\n",
-                      "Time": null
-          },
-        {
-          "Code": "ComponentStatus/StdErr/succeeded",
-          "DisplayStatus": "Provisioning succeeded",
-          "Level": "Info",
-          "Message": "",
-          "Time": null
-        }
+```output
+Extensions:  {
+  "ExtensionType": "Microsoft.Compute.CustomScriptExtension",
+  "Name": "myCustomScriptExtension",
+  "SubStatuses": [
+    {
+      "Code": "ComponentStatus/StdOut/succeeded",
+      "DisplayStatus": "Provisioning succeeded",
+      "Level": "Info",
+      "Message": "    Directory: C:\\temp\\n\\n\\nMode                LastWriteTime     Length Name
+          \\n----                -------------     ------ ----                              \\n-a---          9/1/2015   2:03 AM         11
+          test.txt                          \\n\\n",
+                  "Time": null
+      },
+    {
+      "Code": "ComponentStatus/StdErr/succeeded",
+      "DisplayStatus": "Provisioning succeeded",
+      "Level": "Info",
+      "Message": "",
+      "Time": null
     }
   ]
+}
+```
 
 ## <a name="troubleshooting-extension-failures"></a>扩展故障排除
 ### <a name="rerun-the-extension-on-the-vm"></a>在 VM 上重新运行扩展
 如果使用自定义脚本扩展在 VM 上运行脚本，有时可能会遇到错误：VM 已成功创建但脚本却运行失败。 在这些情况下，从此错误中恢复的建议方法是删除该扩展并再次重新运行该模板。
-请注意:未来此功能将得到增强，不再需要卸载该扩展。
+注意：未来此功能将得到增强，不再需要卸载该扩展。
 
 #### <a name="remove-the-extension-from-azure-powershell"></a>从 Azure PowerShell 删除扩展
-    Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"
+```azurepowershell
+Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"
+```
 
 删除该扩展后，可以重新执行模板在 VM 上运行脚本。
 

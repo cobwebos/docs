@@ -1,39 +1,37 @@
 ---
-title: 对 Azure 虚拟网络网关和连接进行故障排除 - Azure CLI | Microsoft 文档
+title: 对 Azure VNET 网关和连接进行故障排除 | Azure CLI
+titleSuffix: Azure Network Watcher
 description: 此页说明如何使用 Azure 网络观察程序对 Azure CLI 进行故障排除
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 2838bc61-b182-4da8-8533-27db8fdbd177
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: kumud
-ms.openlocfilehash: 0974c242533ff122d75979acc5eb158ec36c179d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: e2f9ba27410195b187ad7c8ae39c04a66da4c234
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699595"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738696"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>使用 Azure 网络观察程序 Azure CLI 对虚拟网络网关和连接进行故障排除
 
 > [!div class="op_single_selector"]
-> - [门户](diagnose-communication-problem-between-networks.md)
+> - [Portal](diagnose-communication-problem-between-networks.md)
 > - [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
 > - [Azure CLI](network-watcher-troubleshoot-manage-cli.md)
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
 
 网络观察程序提供了许多功能，因为它关系到了解 Azure 中的网络资源。 其中一项功能就是资源故障排除。 可以通过门户、PowerShell、CLI 或 REST API 调用资源故障排除。 调用后，网络观察程序会检查虚拟网络网关或连接的运行状况，并返回调查结果。
 
-若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (CLI)](/cli/azure/install-azure-cli)。
+若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口（CLI）](/cli/azure/install-azure-cli)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
 
@@ -81,7 +79,7 @@ az network vpn-connection show --resource-group resourceGroupName --ids vpnConne
 
 ## <a name="run-network-watcher-resource-troubleshooting"></a>运行网络观察程序资源故障排除
 
-使用 `az network watcher troubleshooting` cmdlet 对资源进行故障排除。 我们将向该 cmdlet 传递资源组、网络观察程序的名称、连接的 ID、存储帐户 的 ID 以及要在其中存储故障排除结果的 blob 的路径。
+将使用 `az network watcher troubleshooting` cmdlet 对资源进行故障排除。 我们将向该 cmdlet 传递资源组、网络观察程序的名称、连接的 ID、存储帐户 的 ID 以及要在其中存储故障排除结果的 blob 的路径。
 
 ```azurecli
 az network watcher troubleshooting start --resource-group resourceGroupName --resource resourceName --resource-type {vnetGateway/vpnConnection} --storage-account storageAccountName  --storage-path https://{storageAccountName}.blob.core.windows.net/{containerName}

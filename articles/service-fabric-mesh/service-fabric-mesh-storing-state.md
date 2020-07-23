@@ -1,24 +1,20 @@
 ---
-title: Azure Service Fabric 网格上的状态存储选项 | Microsoft Docs
+title: Azure Service Fabric 网格上的状态存储选项
 description: 了解 Azure Service Fabric 网格上运行的 Service Fabric 网格应用程序的可靠存储状态。
-services: service-fabric-mesh
-keywords: ''
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: jeconnoc
-ms.openlocfilehash: ef51040d1bad74ee74d5901d1f5acbe875c02a07
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d56ce811155f7b7f60fa870dbdae2550afab2eac
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810533"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246820"
 ---
 # <a name="state-management-with-service-fabric"></a>Service Fabric 的状态管理
 
-Service Fabric 支持用于状态存储的许多不同选项。 有关状态管理模式和 Service Fabric 的概念性概述，请参阅 [Service Fabric 概念：状态](/azure/service-fabric/service-fabric-concepts-state)。 无论服务是在 Service Fabric 网格内部还是外部运行，相同的概念均适用。 
+Service Fabric 支持用于状态存储的许多不同选项。 有关状态管理模式和 Service Fabric 的概念性概述，请参阅 [Service Fabric 概念：状态](../service-fabric/service-fabric-concepts-state.md)。 无论服务是在 Service Fabric 网格内部还是外部运行，相同的概念均适用。 
 
 利用 Service Fabric 网格，可以轻松部署新的应用程序，并将其连接到托管在 Azure 中的现有数据存储。 除了使用远程数据库外，还有一些用于存储数据的选项，具体取决于服务需要本地还是远程存储。 
 
@@ -30,7 +26,7 @@ Service Fabric 支持用于状态存储的许多不同选项。 有关状态管�
 
 ### <a name="service-fabric-reliable-volume"></a>Service Fabric Reliable Volume
 
-Service Fabric Reliable Volume 是用于将本地卷装载到容器的 Docker 卷驱动程序。 读取和写入是本地操作，非常快速。 数据将复制到辅助节点，使其高度可用。 故障转移也非常快速。 当容器崩溃时，将故障转移到已具有数据的副本的节点。 有关示例，请参阅[如何使用 Service Fabric Reliable Volume 部署应用](service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md)。
+Service Fabric Reliable Volume 是用于将本地卷装载到容器的 Docker 卷驱动程序。 读取和写入是本地操作，非常快速。 数据将复制到辅助节点，使其高度可用。 故障转移也非常快速。 当容器崩溃时，将故障转移到已具有数据的副本的节点。 有关示例，请参阅[如何使用 Service Fabric 可靠卷部署应用](service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md)。
 
 ### <a name="azure-files-volume"></a>Azure 文件卷
 

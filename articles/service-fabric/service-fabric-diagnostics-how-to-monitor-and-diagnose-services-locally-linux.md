@@ -1,27 +1,16 @@
 ---
-title: 在 Linux 中调试 Azure Service Fabric 应用 | Microsoft Docs
+title: 在 Linux 中调试 Azure Service Fabric 应用
 description: 了解如何在本地 Linux 开发计算机上监视和诊断 Service Fabric 服务。
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: 4eebe937-ab42-4429-93db-f35c26424321
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: f0b850038a29dd0949def97b359b2b7a5ce920bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6f637721d24045f5ca3386ffc31775d469e88537
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60392851"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247551"
 ---
-# <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>在本地计算机开发安装过程中监视和诊断服务
+# <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>在本地 Linux 计算机开发设置中监视和诊断服务
 
 
 > [!div class="op_single_selector"]
@@ -35,7 +24,7 @@ ms.locfileid: "60392851"
 
 ## <a name="debugging-service-fabric-java-applications"></a>调试 Service Fabric Java 应用程序
 
-对于 Java 应用程序，可以使用[多个记录框架](https://en.wikipedia.org/wiki/Java_logging_framework)。 由于 `java.util.logging` 是 JRE 的默认选项，因此也适用于 [GitHub 中的代码示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)。 以下内容说明如何配置 `java.util.logging` 框架。
+对于 Java 应用程序，可以使用 [多个日志记录框架](https://en.wikipedia.org/wiki/Java_logging_framework) 。 由于 `java.util.logging` 是 JRE 的默认选项，因此也适用于 [GitHub 中的代码示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)。 以下内容说明如何配置 `java.util.logging` 框架。
 
 使用 java.util.logging 可将应用程序日志重定向到内存、输出流、控制台文件或套接字。 对于其中的每个选项，框架中已提供默认处理程序。 可以创建 `app.properties` 文件来配置应用程序的文件处理程序，将所有日志重定向到本地文件。
 
@@ -70,15 +59,15 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
 ## <a name="debugging-service-fabric-c-applications"></a>调试 Service Fabric C# 应用程序
 
 
-可以使用多个框架在 Linux 上跟踪 CoreCLR 应用程序。 有关详细信息，请参阅 [GitHub：日志记录](http:/github.com/aspnet/logging)。  由于 C# 开发者熟悉 EventSource，因此本文使用 EventSource 在 Linux 上跟踪 CoreCLR 示例。
+可以使用多个框架在 Linux 上跟踪 CoreCLR 应用程序。 有关详细信息，请参阅[用于记录的 .NET 扩展](https://github.com/dotnet/extensions/tree/master/src/Logging).。  由于 C# 开发者熟悉 EventSource，因此本文使用 EventSource 在 Linux 上跟踪 CoreCLR 示例。
 
-第一步是添加 System.Diagnostics.Tracing，以便可以将日志写入内存、输出流或控制台文件。  要使用 EventSource 进行日志记录，请将以下项目添加到 project.json 中：
+第一步是添加 System.Diagnostics.Tracing，以便可以将日志写入内存、输出流或控制台文件。  要使用 EventSource 进行日志记录，请将以下项目添加到 project.json：
 
 ```json
     "System.Diagnostics.StackTrace": "4.0.1"
 ```
 
-可以使用自定义 EventListener 侦听服务事件，并将它们相应地重定向到跟踪文件。 以下代码片段展示了使用 EventSource 和自定义 EventListener 进行日志记录的实现示例：
+可以使用自定义 EventListener 侦听服务事件，并将它们相应地重定向到跟踪文件。 下面的代码片段展示使用 EventSource 和自定义 EventListener 进行日志记录的实现示例：
 
 
 ```csharp
@@ -131,7 +120,7 @@ internal class ServiceEventListener : EventListener
 ```
 
 
-上述片段将日志输出到 `/tmp/MyServiceLog.txt` 中的文件。 需要相应地更新此文件名。 如果要将日志重定向到控制台，请在自定义的 EventListener 类中使用以下片段：
+上述片段将日志输出到 `/tmp/MyServiceLog.txt` 中的文件。 此文件名需要相应地更新。 如果要将日志重定向到控制台，请在自定义的 EventListener 类中使用以下片段：
 
 ```csharp
 public static TextWriter Out = Console.Out;
@@ -142,5 +131,5 @@ public static TextWriter Out = Console.Out;
 
 
 ## <a name="next-steps"></a>后续步骤
-添加到应用程序中的跟踪代码也可用于诊断 Azure 群集中的应用程序。 请参阅下面几篇文章，了解不同的工具选项，以及如何设置这些选项。
-* [如何使用 Azure 诊断收集日志](service-fabric-diagnostics-how-to-setup-lad.md)
+添加到应用程序中的跟踪代码也可用于诊断 Azure 群集中的应用程序。 请查看以下文章，其中介绍了不同的工具选项，以及如何设置这些选项。
+* [如何使用 Azure 诊断收集日志](./service-fabric-diagnostics-event-aggregation-lad.md)

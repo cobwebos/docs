@@ -1,26 +1,24 @@
 ---
 title: Azure 虚拟机的多个 IP 地址 - PowerShell | Microsoft Docs
-description: 了解如何将多个 IP 地址分配给使用 PowerShell 在虚拟机。 |资源管理器
+description: 了解如何使用 PowerShell 将多个 IP 地址分配给虚拟机。 | 资源管理器
 services: virtual-network
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: c44ea62f-7e54-4e3b-81ef-0b132111f1f8
+author: asudbring
+manager: KumudD
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
-ms.author: kumud;annahar
-ms.openlocfilehash: ee6a2d36d88d9a80ba7e64819344f6cca56e47cd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: allensu
+ms.openlocfilehash: 819b6af0d336e454aeeb67a9be62109cb6b08bb8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730423"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708223"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>使用 PowerShell 将多个 IP 地址分配到虚拟机
 
@@ -28,17 +26,17 @@ ms.locfileid: "64730423"
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-本文介绍如何使用 PowerShell 通过 Azure 资源管理器部署模型创建虚拟机 (VM)。 无法将多个 IP 地址分配到通过经典部署模型创建的资源。 若要详细了解 Azure 部署模型，请阅读 [Understand deployment models](../resource-manager-deployment-model.md)（了解部署模型）一文。
+本文介绍如何使用 PowerShell 通过 Azure Resource Manager 部署模型创建虚拟机 (VM)。 无法将多个 IP 地址分配到通过经典部署模型创建的资源。 若要详细了解 Azure 部署模型，请阅读 [Understand deployment models](../resource-manager-deployment-model.md)（了解部署模型）一文。
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
-## <a name = "create"></a>创建具有多个 IP 地址的 VM
+## <a name="create-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>创建具有多个 IP 地址的 VM
 
 下面的步骤说明如何根据方案中所述，创建具有多个 IP 地址的示例 VM。 根据实现的需要，更改变量值。
 
 1. 打开 PowerShell 命令提示符，在单个 PowerShell 会话中完成本部分余下的步骤。 如果尚未安装并配置 PowerShell，请先完成[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 一文中所述的步骤。
 2. 使用 `Connect-AzAccount` 命令登录帐户。
-3. 将 myResourceGroup 和 westus 替换为所选名称和位置。 创建资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。
+3. 将 myResourceGroup** 和 westus** 替换为所选名称和位置。 创建资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
    ```powershell
    $RgName   = "MyResourceGroup"
@@ -94,9 +92,9 @@ ms.locfileid: "64730423"
     -SecurityRules $NSGRule
     ```
 
-6. 定义 NIC 的主 IP 配置。 如果没有使用以前定义的值，请将 10.0.0.4 更改成创建的子网中的有效地址。 分配静态 IP 地址前，建议先确认它未被占用。 输入命令 `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`。 如果该地址可用，则输出返回 *True*。 如果该地址不可用，输出将返回 *False* 以及可用的地址列表。 
+6. 定义 NIC 的主 IP 配置。 如果没有使用以前定义的值，请将 10.0.0.4 更改成创建的子网中的有效地址。 分配静态 IP 地址前，建议先确认它未被占用。 输入命令 `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`。 如果该地址可用，则输出返回 *True*。 如果该地址不可用，输出返回 *False* 以及可用的地址列表。 
 
-    在以下命令中，**替换为\<替换-与-你的唯一名称 > 若要使用的唯一 DNS 名称。** 该名称在 Azure 区域内的所有公共 IP 地址中必须唯一。 这是一个可选参数。 如果只想使用公共 IP 地址连接到 VM，则可删除该名称。
+    在以下命令中，将 \<replace-with-your-unique-name> 替换为要使用的唯一 DNS 名称****。 该名称在 Azure 区域内的所有公共 IP 地址中必须唯一。 这是一个可选参数。 如果只想使用公共 IP 地址连接到 VM，则可删除该名称。
 
     ```powershell
     
@@ -118,10 +116,10 @@ ms.locfileid: "64730423"
     -Primary
     ```
 
-    向 NIC 分配多个 IP 配置时，必须将一个配置指定为 Primary。
+    向 NIC 分配多个 IP 配置时，必须将一个配置指定为 Primary**。
 
     > [!NOTE]
-    > 公共 IP 地址会产生少许费用。 有关 IP 地址定价的详细信息，请阅读 [IP 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses)页。 在一个订阅中可以使用的公共 IP 地址数有限制。 有关限制的详细信息，请阅读 [Azure limits](../azure-subscription-service-limits.md#networking-limits)（Azure 限制）一文。
+    > 公共 IP 地址会产生少许费用。 有关 IP 地址定价的详细信息，请阅读 [IP 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses)页。 可在一个订阅中使用的公共 IP 地址数有限制。 有关限制的详细信息，请阅读 [Azure limits](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)（Azure 限制）一文。
 
 7. 定义 NIC 的辅助 IP 配置。 可以根据需要添加或删除配置。 每个 IP 配置必须分配有专用 IP 地址。 每个配置可选择性分配有一个公共 IP 地址。
 
@@ -194,9 +192,9 @@ ms.locfileid: "64730423"
 
 10. 将专用 IP 地址添加到 VM 操作系统，只需完成本文[将 IP 地址添加到 VM 操作系统](#os-config)部分针对操作系统的步骤即可。 请勿向操作系统添加公共 IP 地址。
 
-## <a name="add"></a>将 IP 地址添加到 VM
+## <a name="add-ip-addresses-to-a-vm"></a><a name="add"></a>将 IP 地址添加到 VM
 
-完成以下步骤可将专用和公共 IP 地址添加到 Azure 网络接口。 以下部分中的示例假定用户的 VM 已完成本文[方案](#scenario)中描述的三项 IP 配置，但这不是必需的。
+完成以下步骤可将专用和公共 IP 地址添加到 Azure 网络接口。 以下部分的示例假定用户的 VM 已完成本文 [方案](#scenario) 中描述的三项 IP 配置，但这不是必需的。
 
 1. 打开 PowerShell 命令提示符，在单个 PowerShell 会话中完成本部分余下的步骤。 如果尚未安装并配置 PowerShell，请先完成[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 一文中所述的步骤。
 2. 将以下 $Variable 的“值”分别更改为要向其添加 IP 地址的 NIC 名称，以及 NIC 所在的资源组和位置：
@@ -219,7 +217,7 @@ ms.locfileid: "64730423"
    $MyNIC = Get-AzNetworkInterface -Name $NicName -ResourceGroupName $RgName
    ```
 
-4. 在以下命令中，请将 MyVNet 和 MySubnet 更改为 NIC 连接到的 VNet 和子网的名称。 输入以下命令，检索 NIC 连接到的 VNet 和子网对象：
+4. 在以下命令中，请将 MyVNet** 和 MySubnet** 更改为 NIC 连接到的 VNet 和子网的名称。 输入以下命令，检索 NIC 连接到的 VNet 和子网对象：
 
    ```powershell
    $MyVNet = Get-AzVirtualnetwork -Name MyVNet -ResourceGroupName $RgName
@@ -238,13 +236,13 @@ ms.locfileid: "64730423"
    "Id": "/subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/MyVNet/subnets/MySubnet"
    ```
 
-    在此输出中，MyVnet 是 NIC 连接到的 VNet，MySubnet 是其连接到的子网。
+    在此输出中，MyVnet** 是 NIC 连接到的 VNet，MySubnet** 是其连接到的子网。
 
 5. 根据要求完成以下部分之一中的步骤：
 
    **添加专用 IP 地址**
 
-   要将专用 IP 地址添加到 NIC，必须创建 IP 配置。 以下命令创建具有静态 IP 地址 10.0.0.7 的配置。 指定静态 IP 地址时，该地址必须是未使用的子网地址。 建议先通过输入 `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` 命令来测试该地址，确保它可用。 如果 IP 地址可用，输出会返回 *True*。 如果该地址不可用，则输出返回 *False* 以及可用的地址列表。
+   要将专用 IP 地址添加到 NIC，必须创建 IP 配置。 以下命令创建具有静态 IP 地址 10.0.0.7 的配置。 指定静态 IP 地址时，该地址必须是未使用的子网地址。 建议首先输入 `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` 命令测试地址，确保地址可用。 如果 IP 地址可用，输出会返回 *True*。 如果该地址不可用，则输出返回 *False* 以及可用的地址列表。
 
    ```powershell
    Add-AzNetworkInterfaceIpConfig -Name IPConfig-4 -NetworkInterface `
@@ -253,19 +251,19 @@ ms.locfileid: "64730423"
 
    使用唯一的配置名称和专用 IP 地址创建任意数目的配置（适用于具有静态 IP 地址的配置）。
 
-   将专用 IP 地址添加到 VM 操作系统，只需完成本文[将 IP 地址添加到 VM 操作系统](#os-config)部分针对操作系统的步骤即可。
+   将专用 IP 地址添加到 VM 操作系统，只需完成本文 [将 IP 地址添加到 VM 操作系统](#os-config) 部分针对操作系统的步骤即可。
 
    **添加公共 IP 地址**
 
-   将公共 IP 地址资源关联到新 IP 配置或现有 IP 配置即可添加公共 IP 地址。 根据需要完成以下部分之一中的步骤。
+   将公共 IP 地址资源关联到新 IP 配置或现有 IP 配置即可添加公共 IP 地址。 根据需要，完成以下任一部分中的步骤。
 
    > [!NOTE]
-   > 公共 IP 地址会产生少许费用。 有关 IP 地址定价的详细信息，请阅读 [IP 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses)页。 在一个订阅中可以使用的公共 IP 地址数有限制。 若要了解有关限制的详细信息，请阅读 [Azure 限制](../azure-subscription-service-limits.md#networking-limits) 一文。
+   > 公共 IP 地址会产生少许费用。 有关 IP 地址定价的详细信息，请阅读 [IP 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses)页。 可在一个订阅中使用的公共 IP 地址数有限制。 若要了解有关限制的详细信息，请阅读 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) 一文。
    >
 
    **将公共 IP 地址资源关联到新 IP 配置**
 
-   每当在新 IP 配置中添加公共 IP 地址时，还必须添加一个专用 IP 地址，因为所有 IP 配置都必须有专用 IP 地址。 可以添加现有的公共 IP 地址资源，或新建一个。 若要新建此类资源，请输入以下命令：
+   每次在新 IP 配置中添加公共 IP 地址时，还必须添加专用 IP 地址，因为所有 IP 配置都必须具有专用 IP 地址。 可添加现有公共 IP 地址资源，也可创建新的公共 IP 地址资源。 若要新建此类资源，请输入以下命令：
 
    ```powershell
    $myPublicIp3 = New-AzPublicIpAddress `
@@ -275,7 +273,7 @@ ms.locfileid: "64730423"
    -AllocationMethod Static
    ```
 
-   若要新建具有静态专用 IP 地址和关联的 myPublicIp3 公共 IP 地址资源的 IP 配置，请输入下面的命令：
+   若要新建具有静态专用 IP 地址和关联的 myPublicIp3** 公共 IP 地址资源的 IP 配置，请输入下面的命令：
 
    ```powershell
    Add-AzNetworkInterfaceIpConfig `
@@ -294,7 +292,7 @@ ms.locfileid: "64730423"
    $MyNIC.IpConfigurations | Format-Table Name, PrivateIPAddress, PublicIPAddress, Primary
    ```
 
-   将显示类似于下面的输出：
+   会显示类似于下面的输出：
 
    ```
    Name       PrivateIpAddress PublicIpAddress                                           Primary
@@ -304,7 +302,7 @@ ms.locfileid: "64730423"
    IpConfig-3 10.0.0.6                                                                     False
    ```
 
-   *IpConfig-3* 的 **PublicIpAddress** 列为空，这表示该 IP 配置当前没有任何关联的公共 IP 地址资源。 可将现有公共 IP 地址资源添加到 IpConfig-3，或输入以下命令来创建一个：
+   *IpConfig-3* 的 **PublicIpAddress** 列为空，这表示该 IP 配置当前没有任何关联的公共 IP 地址资源。 可将现有公共 IP 地址资源添加到 IpConfig-3，或输入以下命令进行创建：
 
    ```powershell
    $MyPublicIp3 = New-AzPublicIpAddress `
@@ -313,7 +311,7 @@ ms.locfileid: "64730423"
    -Location $Location -AllocationMethod Static
    ```
 
-   输入以下命令，将公共 IP 地址资源关联到名为 *IpConfig-3* 的现有 IP 配置：
+   输入以下命令，将公共 IP 地址资源关联到名为 *IPConfig-3*的现有 IP 配置：
 
    ```powershell
    Set-AzNetworkInterfaceIpConfig `
@@ -323,7 +321,7 @@ ms.locfileid: "64730423"
    -PublicIpAddress $myPublicIp3
    ```
 
-6. 输入以下命令，使用新 IP 配置设置 NIC：
+6. 输入以下命令，为 NIC 设置新 IP 配置：
 
    ```powershell
    Set-AzNetworkInterface -NetworkInterface $MyNIC
@@ -335,6 +333,6 @@ ms.locfileid: "64730423"
    $MyNIC.IpConfigurations | Format-Table Name, PrivateIPAddress, PublicIPAddress, Primary
    ```
 
-8. 将专用 IP 地址添加到 VM 操作系统，只需完成本文[将 IP 地址添加到 VM 操作系统](#os-config)部分针对操作系统的步骤即可。 请勿向操作系统添加公共 IP 地址。
+8. 将专用 IP 地址添加到 VM 操作系统，只需完成本文 [将 IP 地址添加到 VM 操作系统](#os-config) 部分针对操作系统的步骤即可。 请勿向操作系统添加公共 IP 地址。
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]

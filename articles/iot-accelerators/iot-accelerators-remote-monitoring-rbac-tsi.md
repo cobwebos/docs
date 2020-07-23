@@ -1,5 +1,5 @@
 ---
-title: 远程监视数据的访问控制-Azure |Microsoft Docs
+title: 远程监视数据访问控制 - Azure | Microsoft Docs
 description: 本文介绍如何在远程监视解决方案加速器中为时序见解遥测数据资源浏览器配置访问控制
 author: dominicbetts
 manager: timlt
@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.openlocfilehash: 9d5d572c3e32e3645e65ba8d6fc28b567b3c1e9a
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "65827218"
 ---
 # <a name="configure-access-controls-for-the-time-series-insights-telemetry-explorer"></a>为时序见解遥测数据资源浏览器配置访问控制
@@ -27,30 +27,30 @@ ms.locfileid: "65827218"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 查找时序见解环境。 在“搜索”框中，键入“时序见解”。 在搜索结果中选择“时序环境”。 
+2. 查找时序见解环境。 在“搜索”框中，键入“时序见解”********。 在搜索结果中选择“时序环境”****。 
 
 3. 从列表中选择时序见解环境。
 
-4. 选择“数据访问策略”，然后选择“+ 添加”。
+4. 选择“数据访问策略”，然后选择“+ 添加”********。
     ![管理时序见解源 - 环境](media/iot-accelerators-remote-monitoring-rbac-tsi/getstarted-grant-data-access1.png)
 
-5. 选择“选择用户”。  搜索用户名称或电子邮件地址，查找要添加的用户。 单击“选择”确认选择。 
+5. 选择“选择用户”****。  搜索用户名称或电子邮件地址，查找要添加的用户。 单击“选择”确认选择****。 
 
     ![管理时序见解源 - 添加](media/iot-accelerators-remote-monitoring-rbac-tsi/getstarted-grant-data-access2.png)
 
-6. 选择“选择角色”。 为用户选择相应的访问角色：
-   - 若要允许用户更改引用数据，以及与环境的其他用户共享保存的查询和透视，请选择“参与者”。 
-   - 否则请选择“读取者”，允许用户查询环境中的数据，以及在环境中保存个人（非共享）查询。
+6. 选择“选择角色”****。 为用户选择相应的访问角色：
+   - 若要允许用户更改引用数据，以及与环境的其他用户共享保存的查询和透视，请选择“参与者”****。 
+   - 否则请选择“读取者”，允许用户查询环境中的数据，以及在环境中保存个人（非共享）查询****。
 
-     选择“确定”确认角色选择。
+     选择 **"确定"** 以确认角色选择。
 
      ![管理时序见解源 - 选择用户](media/iot-accelerators-remote-monitoring-rbac-tsi/getstarted-grant-data-access3.png)
 
-7. 在“选择用户角色”页中，选择“确定”。
+7. 在“选择用户角色”页中，选择“确定”********。
 
     ![管理时序见解源 - 选择角色](media/iot-accelerators-remote-monitoring-rbac-tsi/getstarted-grant-data-access4.png)
 
-8. “数据访问策略”页列出了用户和每个用户的角色。
+8. “数据访问策略”页列出了用户和每个用户的角色****。
 
     ![管理时序见解源 - 结果](media/iot-accelerators-remote-monitoring-rbac-tsi/getstarted-grant-data-access5.png)
 

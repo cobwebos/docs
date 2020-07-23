@@ -9,40 +9,40 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/26/2019
+ms.date: 03/04/2020
 ms.author: juliako
-ms.openlocfilehash: 5897b7df2460257784c40eb974c473573ec4003d
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 41b2d0ad1e072fb2bf5860ae80f8f25f886b37f7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299165"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80582680"
 ---
 # <a name="streaming-locators"></a>流式处理定位符
 
-若要使输出资产中的视频可供客户端进行播放，必须创建[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)，然后生成流式处理 URL。 若要生成的 URL，需要将流式处理终结点主机名和流式处理定位符路径连接。 对于 .NET 示例，请参阅[获取流式处理定位符](stream-files-tutorial-with-api.md#get-a-streaming-locator)。
+若要使输出资产中的视频可供客户端进行播放，必须创建[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)，然后生成流式处理 URL。 若要生成 URL，需要连接流式处理终结点主机名和流定位器路径。 对于 .NET 示例，请参阅[获取流式处理定位符](stream-files-tutorial-with-api.md#get-a-streaming-locator)。
 
 创建**流定位符**的过程称为发布。 默认情况下，除非配置可选的开始和结束时间，否则调用 API 后，**流定位符**立即生效，并持续到被删除为止。 
 
-创建时**流式处理定位符**，则必须指定**资产**名称和一个**流式处理策略**名称。 有关详细信息，请参阅下列主题：
+创建**流定位器**时，必须指定**资产**名称和**流式处理策略**名称。 有关详细信息，请参阅以下主题：
 
 * [资产](assets-concept.md)
 * [流式处理策略](streaming-policy-concept.md)
 * [内容密钥策略](content-key-policy-concept.md)
 
-此外可以指定在流式处理定位符，它仅允许用户上的开始和结束时间播放 （例如，5/1/2019 到 5/5/2019年) 之间的这些时间之间的内容。  
+还可以在流定位器上指定开始和结束时间，这将仅允许用户在这两个时间之间播放内容（例如，在 2019 年 5 月 1 日至 2019 年 5 月 5 日之间）。  
 
 ## <a name="considerations"></a>注意事项
 
-* **流式处理定位符**不能更新。 
+* **流定位器**不可更新。 
 * 属于日期/时间类型的流式处理定位符  的属性始终采用 UTC 格式。
 * 应为媒体服务帐户设计一组有限的策略，并在需要相同的选项时重新将这些策略用于流式处理定位符。 有关详细信息，请参阅[配额和限制](limits-quotas-constraints.md)。
 
-## <a name="create-streaming-locators"></a>创建流式处理定位符  
+## <a name="create-streaming-locators"></a>创建流定位器  
 
 ### <a name="not-encrypted"></a>未加密
 
-如果你想要在文件中的-清除 （非加密） 流式传输，预定义的清除流式处理策略设置: Predefined_ClearStreamingOnly 到 （在.NET 中，您可以使用 PredefinedStreamingPolicy.ClearStreamingOnly 枚举）。
+如果想要明文（非加密）流式传输文件，请将预定义的明文流式处理策略设置为“Predefined_ClearStreamingOnly”（在 .NET 中，可以使用 PredefinedStreamingPolicy.ClearStreamingOnly 枚举）。
 
 ```csharp
 StreamingLocator locator = await client.StreamingLocators.CreateAsync(
@@ -58,7 +58,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 ### <a name="encrypted"></a>加密 
 
-如果需要加密你的内容使用 CENC 加密，你将策略设置为 Predefined_MultiDrmCencStreaming。 Widevine 加密将为 DASH 流，并 PlayReady 应用到平滑。 该密钥将传送到基于配置的 DRM 许可证播放客户端。
+如果需要使用 CENC 加密来加密内容，请将策略设置为“Predefined_MultiDrmCencStreaming”。 Widevine 加密将应用于短划线流，PlayReady 为平滑。 密钥会根据配置的 DRM 许可证传送到播放客户端。
 
 ```csharp
 StreamingLocator locator = await client.StreamingLocators.CreateAsync(
@@ -73,34 +73,38 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
     });
 ```
 
-如果还想要加密 HLS 流使用 CBC (FairPlay)，使用 Predefined_MultiDrmStreaming。
+如果还想使用 CBCS (FairPlay) 加密 HLS 流，请使用“Predefined_MultiDrmStreaming”。
 
-## <a name="associate-filters-with-streaming-locators"></a>将筛选器与流式处理定位符相关联
+> [!NOTE]
+> Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
-请参阅[筛选器： 流式处理定位符相关联](filters-concept.md#associating-filters-with-streaming-locator)。
+## <a name="associate-filters-with-streaming-locators"></a>将筛选器与流定位器关联
 
-## <a name="filter-order-page-streaming-locator-entities"></a>筛选器、 顺序、 页流式处理定位符实体
+请参阅[筛选器：与流定位器关联](filters-concept.md#associating-filters-with-streaming-locator)。
+
+## <a name="filter-order-page-streaming-locator-entities"></a>对流定位器实体进行筛选、排序、分页
 
 请参阅[媒体服务实体的筛选、排序、分页](entities-overview.md)。
 
-## <a name="list-streaming-locators-by-asset-name"></a>列出资产名称由流式处理定位符
+## <a name="list-streaming-locators-by-asset-name"></a>按资产名称列出流定位器
 
-若要获取基于关联的资产名称流式处理定位符，请使用以下操作：
+若要基于关联的资产名称获取流定位器，请使用以下操作：
 
 |语言|API|
 |---|---|
 |REST|[liststreaminglocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators)|
 |CLI|[az ams asset list-streaming-locators](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
 |.NET|[ListStreamingLocators](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
-|Java|[AssetStreamingLocator](https://docs.microsoft.com/java/api/com.microsoft.azure.management.mediaservices.v2018_07_01.assetstreaminglocator?view=azure-java-stable)|
-|Node.js|[listStreamingLocators](https://docs.microsoft.com/javascript/api/azure-arm-mediaservices/assets?view=azure-node-latest#liststreaminglocators-string--string--string--object-)|
+|Java|[AssetStreamingLocator](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
+|Node.js|[listStreamingLocators](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
 
-## <a name="also-see"></a>另请参阅
+## <a name="see-also"></a>另请参阅
 
 * [资产](assets-concept.md)
 * [流式处理策略](streaming-policy-concept.md)
 * [内容密钥策略](content-key-policy-concept.md)
+* [教程：使用 .NET 上传、编码和流式传输视频](stream-files-tutorial-with-api.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-[教程：使用 .NET 上传、编码和流式传输视频](stream-files-tutorial-with-api.md)
+[如何创建流式处理定位符并生成 URL](create-streaming-locator-build-url.md)

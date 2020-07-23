@@ -1,31 +1,19 @@
 ---
-title: Azure 服务总线高级和标准消息传送定价层概述 | Microsoft Docs
-description: 服务总线高级和标准消息传送层
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: e211774d-821c-4d79-8563-57472d746c58
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Azure 服务总线高级层和标准层
+description: 本文介绍 Azure 服务总线的标准层和高级层。 比较这些层并提供技术差异。
 ms.topic: conceptual
-ms.date: 03/05/2019
-ms.author: aschhab
-ms.openlocfilehash: 600577ebf05a8bc89dbec35d3b3ee5162aa246e1
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: eb2d3dda18eb08809a5c8f1020490acdb1e9a21c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872727"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337410"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>服务总线高级和标准消息传送层
 
-服务总线消息传送（包括队列和主题等实体）将企业消息传送功能与丰富的云规模发布-订阅语义结合在一起。 对于许多完善的云解决方案，服务总线消息传送会用作通信基础结构。
+服务总线消息传送（包括队列和主题等实体）将企业消息传送功能与丰富的云规模发布-订阅语义结合在一起。 对于许多复杂的云解决方案，服务总线消息传送用作通信中枢。
 
-服务总线消息传送的*高级*层将解决有关任务关键应用程序的规模、性能和可用性的常见客户请求。 高级层建议用于生产方案。 虽然功能集几乎完全相同，但这两个层的服务总线消息传送旨在用于满足不同的使用情形。
+服务总线消息传送的 *高级* 层处理有关任务关键应用程序的规模、性能和可用性的常见客户请求。 高级层建议用于生产方案。 虽然功能集几乎完全相同，但这两个层的服务总线消息传送旨在满足不同的使用情形。
 
 下表突出显示了部分高层差异。
 
@@ -33,11 +21,11 @@ ms.locfileid: "64872727"
 | --- | --- |
 | 高吞吐量 |可变吞吐量 |
 | 可预测性能 |可变滞后时间 |
-| 固定价格 |即用即付可变定价 |
-| 可以扩展和缩减工作负荷 |不适用 |
+| 固定定价 |即用即付可变定价 |
+| 增加和减少工作负荷的能力 |空值 |
 | 消息大小最大为 1 MB |消息大小最大为 256 KB |
 
-**服务总线高级消息传送**在 CPU 和内存级别提供资源隔离，以便每个客户工作负荷以隔离方式运行。 此资源容器称为 *消息传送单元*。 每个高级命名空间至少会分配一个消息传送单元。 你可以购买 1、 2、 4 或 8 消息传送单元的每个服务总线高级命名空间。 单一工作负荷或实体可以跨多个消息传送单元，并且可以随意更改消息传送单元数。 从而为基于服务总线的解决方案提供可预测和稳定的性能。
+**服务总线高级消息传送**在 CPU 和内存级别提供资源隔离，以便每个客户工作负荷以隔离方式运行。 此资源容器称为 *消息传送单元*。 每个高级命名空间至少会分配一个消息传送单元。 可以为每个服务总线高级命名空间购买 1、2、4 或 8 个消息传送单元。 单一工作负荷或实体可以跨多个消息传送单元，可以随意更改消息传送单元数。 这会为基于服务总线的解决方案提供可预测和稳定的性能。
 
 此性能不仅更易于预测和实现，而且速度更快。 服务总线高级消息传送以在 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)引入的存储引擎为基础。 使用高级消息传送，峰值性能比使用标准层快得多。
 
@@ -45,7 +33,7 @@ ms.locfileid: "64872727"
 
 以下部分介绍高级和标准消息传送层之间的一些差异。
 
-### <a name="partitioned-queues-and-topics"></a>分区的队列和主题
+### <a name="partitioned-queues-and-topics"></a>分区队列和主题
 
 高级消息传送不支持分区队列和主题。 有关分区的详细信息，请参阅 [分区的队列和主题](service-bus-partitioning.md)。
 
@@ -56,23 +44,48 @@ ms.locfileid: "64872727"
 如果有在标准传送下运行的代码并且希望将其移植到高级层，请确保将 [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 属性设置为 **false**（默认值）。
 
 ## <a name="premium-messaging-resource-usage"></a>高级消息传送资源使用情况
-一般情况下，对实体的任何操作可能会导致 CPU 和内存使用情况。 下面是一些这些操作： 
+通常，对实体进行的任何操作都可能导致 CPU 和内存使用率。 下面是其中一些操作： 
 
-- 管理操作，例如 CRUD （创建、 检索、 更新和删除） 操作队列、 主题和订阅。
-- 运行时操作 （发送和接收消息）
+- 对队列、主题和订阅的管理操作，如 CRUD （创建、检索、更新和删除）操作。
+- 运行时操作（发送和接收消息）
 - 监视操作和警报
 
-此外但不定价的更多 CPU 和内存使用情况。 对于高级消息传送层中，没有消息单元的单个价格。
+但额外的 CPU 和内存使用情况并不是定价的。 对于高级消息传送层，消息单位有单个价格。
 
-CPU 和内存使用情况跟踪，并向你显示原因如下： 
+由于以下原因，将跟踪并显示 CPU 和内存使用情况： 
 
-- 提供到系统内部的透明度
-- 了解资源购买的容量。
-- 容量规划，可帮助你决定增加/减少。
+- 提供系统内部的透明度
+- 了解购买的资源的容量。
+- 可帮助您决定增加/减少的容量规划。
+
+## <a name="messaging-unit---how-many-are-needed"></a>消息单元-需要多少？
+
+预配 Azure 服务总线高级命名空间时，必须指定分配的消息传送单元数。 这些消息传送单元是分配给命名空间的专用资源。
+
+可以**动态调整**分配给服务总线高级命名空间的消息传送单元数，以考虑工作负荷中的更改（增加或减少）。
+
+为体系结构确定消息单元数量时，需要考虑以下几个因素：
+
+- 从分配给命名空间的***1 或2个消息传送单元***开始。
+- 研究命名空间的[资源使用情况](service-bus-metrics-azure-monitor.md#resource-usage-metrics)指标内的 CPU 使用情况指标。
+    - 如果 CPU 使用率***低于 20%***，则可以***缩减***分配给命名空间的消息传送单元数。
+    - 如果 CPU 使用率***高于 70%***，则你的应用程序将从***扩展***分配给命名空间的消息传送单元数中获益。
+
+可以使用[Azure 自动化 runbook](../automation/automation-quickstart-create-runbook.md)自动执行将分配给服务总线命名空间的资源进行扩展的过程。
+
+> [!NOTE]
+> 分配给命名空间的资源的**缩放**可以是抢先或被动。
+>
+>  * **抢先**：如果需要其他工作负荷（由于季节性或趋势），可以在工作负荷命中之前继续向命名空间分配更多消息传送单元。
+>
+>  * **反应**：如果通过研究资源使用情况指标来识别其他工作负荷，则可以将其他资源分配给命名空间以合并增加的需求。
+>
+> 服务总线的计费指标为每小时。 对于纵向扩展，只需为使用这些资源的小时数付费。
+>
 
 ## <a name="get-started-with-premium-messaging"></a>高级消息传送入门
 
-高级消息传送很容易入门，其操作过程类似于标准消息传送。 一开始时，请在 [Azure 门户](https://portal.azure.com)中[创建命名空间](service-bus-create-namespace-portal.md)。 确保在“定价层”下选择“高级”。 单击“查看完整的定价详细信息”以查看有关每个层级的详细信息。
+高级消息传送很容易入门，其操作过程类似于标准消息传送。 一开始时，请在 [Azure 门户](https://portal.azure.com)中[创建命名空间](service-bus-create-namespace-portal.md)。 确保在“定价层”下选择“高级”。   单击“查看完整的定价详细信息”  以查看有关每个层级的详细信息。
 
 ![create-premium-namespace][create-premium-namespace]
 

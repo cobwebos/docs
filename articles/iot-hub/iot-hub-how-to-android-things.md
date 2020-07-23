@@ -1,18 +1,17 @@
 ---
 title: 使用 Azure IoT SDK 针对 Android Things 平台进行开发 | Microsoft Docs
 description: 开发人员指南 - 了解如何使用 Azure IoT 中心 SDK 对 Android Things 进行开发。
-author: yzhong94
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: yizhon
-ms.openlocfilehash: 8e36cee9857c00fcb618a8491595432fb0fd60fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: robinsh
+ms.openlocfilehash: a06583e9aab4b082517d47c1022f7bec5184b9bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60400097"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78673385"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>使用 Azure IoT SDK 针对 Android Things 平台进行开发
 
@@ -20,7 +19,7 @@ ms.locfileid: "60400097"
 
 本教程概述使用 Azure IoT Java SDK 在 Android Things 上构建设备端应用程序的步骤。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 受 Android Things 支持且运行 Android Things OS 的硬件。  可以按照有关如何刷新 Android Things OS 的 [Android Things 文档](https://developer.android.com/things/get-started/kits#flash-at)进行操作。  确保 Android Things 设备连接到 Internet 并连接了基本外围设备（例如键盘、显示器和鼠标）。  本教程使用 Raspberry Pi 3。
 
@@ -45,11 +44,11 @@ ms.locfileid: "60400097"
    **MyAndroidThingsDevice**：这是为注册的设备提供的名称。 如图所示使用 MyAndroidThingsDevice。 如果为设备选择不同名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
+    az extension add --name azure-iot
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyAndroidThingsDevice
     ```
 
-2. 运行以下命令在 Azure Cloud Shell 中获取*设备连接字符串*刚注册的设备。 替换为`YourIoTHubName`下面具有名称为选择 IoT 中心。
+2. 在 Azure Cloud Shell 中运行以下命令，以获取刚注册设备的设备连接字符串  。 将下面的 `YourIoTHubName` 替换为你为 IoT 中心选择的名称。
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyAndroidThingsDevice --output table
@@ -65,7 +64,7 @@ ms.locfileid: "60400097"
 
 1. 构建 Android Things 应用程序的第一步是连接到 Android Things 设备。 将 Android Things 设备连接到一个显示器，并将它连接到 Internet。 Android Things 提供了有关如何连接到 WiFi 的[文档](https://developer.android.com/things/get-started/kits)。 连接到 Internet 之后，记下“网络”下列出的 IP 地址。
 
-2. 使用 [adb](https://developer.android.com/studio/command-line/adb) 工具，通过上面记下的 IP 地址连接到 Android Things 设备。 从终端使用此命令仔细检查连接。 应会看到设备列为"已连接"。
+2. 使用 [adb](https://developer.android.com/studio/command-line/adb) 工具，通过上面记下的 IP 地址连接到 Android Things 设备。 从终端使用此命令仔细检查连接。 你应看到你的设备已列为 "已连接"。
 
    ```
    adb devices
@@ -87,7 +86,7 @@ ms.locfileid: "60400097"
 
 ## <a name="read-the-telemetry-from-your-hub"></a>从中心读取遥测数据
 
-可通过 IoT 中心查看接收的数据。 IoT 中心 CLI 扩展可以连接到 IoT 中心上的服务端**事件**终结点。 该扩展会接收模拟设备发送的设备到云的消息。 IoT 中心后端应用程序通常在云中运行，接收和处理设备到云的消息。
+可通过 IoT 中心查看接收的数据。 IoT 中心 CLI 扩展可以连接到 IoT 中心上的服务端**事件**终结点。 扩展会接收模拟设备发送的设备到云的消息。 IoT 中心后端应用程序通常在云中运行，接收和处理设备到云的消息。
 
 在 Azure Cloud Shell 中运行以下命令，并将 `YourIoTHubName` 替换为 IoT 中心的名称：
 

@@ -1,47 +1,46 @@
 ---
 title: 深入探讨 - 高级分析 - Azure HDInsight
-description: 了解高级分析如何使用算法来处理大数据。
+description: 了解高级分析如何在 Azure HDInsight 中使用算法来处理大数据。
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
+ms.topic: how-to
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 11/14/2017
-ms.author: ashishth
-ms.openlocfilehash: ac0edf2de4337154b665b8f3898134a7c2fd1f4c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 01/01/2020
+ms.openlocfilehash: fa2909055259d7832942f9f47434963f7bbb2aa1
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712400"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079354"
 ---
 # <a name="deep-dive---advanced-analytics"></a>深入探讨 - 高级分析
 
 ## <a name="what-is-advanced-analytics-for-hdinsight"></a>什么是 HDInsight 的高级分析？
 
-HDInsight 提供可从大量结构化、非结构化和快速移动的数据中获取宝贵见解的功能。 高级分析使用高度可缩放的体系结构、统计、机器学习模型和智能仪表板提供有意义的见解。 机器学习（或预测分析）使用可从数据中的关系进行识别和学习的算法进行预测，然后引导你做出决策。
+HDInsight 提供可从大量结构化、非结构化和快速移动的数据中获取宝贵见解的功能。 高级分析使用高度可缩放的体系结构、统计、机器学习模型和智能仪表板提供有意义的见解。 机器学习（或预测分析）使用可从数据中的关系进行识别和学习的算法进行预测，然后引导你做出决策。 
 
 ## <a name="advanced-analytics-process"></a>高级分析过程
 
-![进程](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
+![高级分析流程](./media/apache-hadoop-deep-dive-advanced-analytics/hdinsight-analytic-process.png)
 
-在识别业务问题并开始收集和处理数据之后，需要创建一个模型用于表示所要预测的问题。 该模型使用一种或多种机器学习算法做出最符合业务需求的预测类型。  大部分数据应该用于训练模型，剩余的数据用于测试或评估该模型。 
+在识别业务问题并开始收集和处理数据之后，需要创建一个模型用于表示所要预测的问题。 该模型使用一种或多种机器学习算法做出最符合业务需求的预测类型。  大部分数据应该用于训练模型，剩余的数据用于测试或评估该模型。
 
-在创建、加载、测试和评估模型之后，下一步就是部署该模型，让它开始为问题提供解答。 最后一步是监视模型的性能，并根据需要进行优化。 
+在创建、加载、测试和评估模型之后，下一步就是部署该模型，让它开始为问题提供解答。 最后一步是监视模型的性能，并根据需要进行优化。
 
 ## <a name="common-types-of-algorithms"></a>常见算法类型
 
 高级分析解决方案提供一套机器学习算法。 下面是算法类别和相关常见业务用例的摘要。
 
-![机器学习用例](./media/apache-hadoop-deep-dive-advanced-analytics/ml-use-cases.png)
+![机器学习类别摘要](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-use-cases.png)
 
 除了选择最合适的算法以外，还要考虑是否需要提供用于训练的数据。 机器学习算法划分为：
 
 * 监督式 - 首先需要基于一组带有标签的数据训练算法，然后，该算法才能提供结果
-* 半监督式 - 算法可以由训练者通过交互式查询以额外的目标进行补充，这些目标在初始训练阶段不可用
-* 非监督式 - 算法无需训练数据 
+* 半监督算法可以通过由培训师提供的交互式查询来增加额外的目标
+* 无人监督-算法无需定型数据
 * 增强式 - 算法使用软件代理来确定特定上下文中的理想行为（通常在机器人中使用）
-
 
 | 算法类别| 用途 | 学习类型 | 算法 |
 | --- | --- | --- | -- |
@@ -62,15 +61,13 @@ HDInsight 提供多个适用于高级分析工作流的机器学习选项：
 
 ### <a name="machine-learning-and-apache-spark"></a>机器学习和 Apache Spark
 
-
-[HDInsight Spark](../spark/apache-spark-overview.md) 是 Azure 托管的 [Apache Spark](https://spark.apache.org/) 产品/服务，它是统一的开源并行数据处理框架，使用内存中处理来大幅提升大数据分析性能。 Spark 处理引擎是专为速度、易用性和复杂分析打造的产品。 Spark 的内存中分布式计算功能使其成为机器学习和图形计算中使用的迭代算法的最佳选择。 
-
+[HDInsight Spark](../spark/apache-spark-overview.md) 是 Azure 托管的 [Apache Spark](https://spark.apache.org/) 产品/服务，它是统一的开源并行数据处理框架，使用内存中处理来大幅提升大数据分析性能。 Spark 处理引擎是专为速度、易用性和复杂分析打造的产品。 Spark 的内存中分布式计算功能使其成为机器学习和图形计算中使用的迭代算法的最佳选择。
 
 有三个可缩放的机器学习库向此分布式环境引入了算法建模功能。
 
 * [**MLlib**](https://spark.apache.org/docs/latest/ml-guide.html) - MLlib 包含构建在 Spark RDD 基础之上的原始 API。
 * [**SparkML**](https://spark.apache.org/docs/1.2.2/ml-guide.html) - SparkML 是一个较新的包，提供构建在 Spark DataFrames 基础之上的高级 API 用于构造机器学习管道。
-* [**MMLSpark**](https://github.com/Azure/mmlspark) - 适用于 Apache Spark 的 Microsoft 机器学习库 (MMLSpark) 旨在提升数据科学家在 Spark 上的生产力，它不仅可以提高试验成功率，而且还能利用前沿的机器学习技术，包括深度学习。 MMLSpark 库简化了在 PySpark 中构建模型的常见建模任务。 
+* [**MMLSpark**](https://github.com/Azure/mmlspark) - 适用于 Apache Spark 的 Microsoft 机器学习库 (MMLSpark) 旨在提升数据科学家在 Spark 上的生产力，它不仅可以提高试验成功率，而且还能利用前沿的机器学习技术，包括深度学习。 MMLSpark 库简化了在 PySpark 中构建模型的常见建模任务。
 
 ### <a name="r-and-ml-services"></a>R 和 ML Services
 
@@ -78,29 +75,29 @@ HDInsight 提供多个适用于高级分析工作流的机器学习选项：
 
 ### <a name="azure-machine-learning-and-apache-hive"></a>Azure 机器学习和 Apache Hive
 
-[Azure 机器学习工作室](https://studio.azureml.net/)不仅提供预测分析建模工具，还提供完全托管的服务，可以通过此服务将预测模型部署为随时可用的 Web 服务。 Azure 机器学习提供可在云中创建完整预测分析解决方案的工具，用于快速创建、测试、操作和管理预测模型。 可以从大型算法库中进行选择、使用基于 Web 的工作室来构建模型，然后将模型轻松部署为 Web 服务。
+[Azure 机器学习 Studio （经典）](https://studio.azureml.net/)提供了用于模拟预测分析的工具，并提供了一项完全托管的服务，可用于将预测模型部署为随时可用的 web 服务。 Azure 机器学习提供可在云中创建完整预测分析解决方案的工具，用于快速创建、测试、操作和管理预测模型。 可以从大型算法库中进行选择、使用基于 Web 的工作室来构建模型，然后将模型轻松部署为 Web 服务。
 
 ### <a name="apache-spark-and-deep-learning"></a>Apache Spark 和深度学习
 
-[深度学习](https://www.microsoft.com/research/group/dltc/)是机器学习的一个分支，使用以人类大脑的生物学流程为灵感的*深度神经网络* (DNN)。 许多研究人员将深度学习视为有前景的人工智能方法。 深度学习的例子包括口译工具、图像识别系统和计算机推理。 为了帮助推进自身在深度学习方面的工作，Microsoft 开发了免费、易用的开源 [Microsoft 认知工具包](https://www.microsoft.com/en-us/cognitive-toolkit/)。 各种 Microsoft 产品、世界各地需要大规模部署深度学习的公司，以及对最新算法和技术感兴趣的学生都在广泛使用该工具包。 
+[深度学习](https://www.microsoft.com/research/group/dltc/)是机器学习的一个分支，使用以人类大脑的生物学流程为灵感的*深度神经网络* (DNN)。 许多研究人员将深度学习视为有前景的人工智能方法。 深度学习的例子包括口译工具、图像识别系统和计算机推理。 为了帮助推进自身在深度学习方面的工作，Microsoft 开发了免费、易用的开源 [Microsoft 认知工具包](https://www.microsoft.com/en-us/cognitive-toolkit/)。 各种 Microsoft 产品、世界各地需要大规模部署深度学习的公司，以及对最新算法和技术感兴趣的学生都在广泛使用该工具包。
 
 ## <a name="scenario---score-images-to-identify-patterns-in-urban-development"></a>方案 - 为图像评分以识别城市发展模式
 
 接下来我们探讨一个使用 HDInsight 的高级分析机器学习管道示例。
 
-此方案展示了如何使用 HDInsight Spark 群集上的 PySpark，使深度学习框架（Microsoft 的认知工具包 (CNTK)）中生成的 DNN 变得可操作，从而为存储在 Azure Blob 存储帐户中的大型图像集合进行评分。 此方法适用于一般的 DNN 用例和航拍图像分类，并可用于识别最近的城市发展模式。  我们将使用预先训练的图像分类模型。 此模型已基于 [CIFAR-10 数据集](https://www.cs.toronto.edu/~kriz/cifar.html)预先训练，并已应用到 10,000 个保留的图像。
+在此方案中，你将了解如何在深度学习框架（Microsoft 的 Cognitive Toolkit （CNTK））中生成 Dnn，可以使用 HDInsight Spark 群集上的 PySpark 通过操作化对存储在 Azure Blob 存储帐户中的大型图像集合进行评分。 此方法适用于一般的 DNN 用例和航拍图像分类，并可用于识别最近的城市发展模式。  你将使用预先训练的图像分类模型。 此模型已基于 [CIFAR-10 数据集](https://www.cs.toronto.edu/~kriz/cifar.html)预先训练，并已应用到 10,000 个保留的图像。
 
 此高级分析方案包括三个关键任务：
 
-1. 使用 Apache Spark 2.1.0 分发版创建 Azure HDInsight Hadoop 群集。 
-2. 运行自定义脚本，在 Azure HDInsight Spark 群集的所有节点上安装 Microsoft 认知工具包。 
-3. 将预先构建的 Jupyter Notebook 上传到 HDInsight Spark 群集，以使用 Spark Python API (PySpark) 将定型的 Microsoft 认知工具包深入学习模型应用到 Azure Blob 存储帐户中的文件。 
+1. 使用 Apache Spark 2.1.0 分发版创建 Azure HDInsight Hadoop 群集。
+2. 运行自定义脚本，在 Azure HDInsight Spark 群集的所有节点上安装 Microsoft 认知工具包。
+3. 将预先构建的 Jupyter Notebook 上传到 HDInsight Spark 群集，以使用 Spark Python API (PySpark) 将定型的 Microsoft 认知工具包深入学习模型应用到 Azure Blob 存储帐户中的文件。
 
 此示例使用 Alex Krizhevsky、Vinod Nair 及 Geoffrey Hinton 编译和分发的 CIFAR-10 图像集。 CIFAR-10 数据集包含 60,000 个分属 10 个互斥类的 32×32 彩色图像：
 
-![映像](./media/apache-hadoop-deep-dive-advanced-analytics/ml-images.png)
+![机器学习示例图像](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png)
 
-有关该数据集的详细信息，请参阅 Alex Krizhevsky 撰写的 [Learning Multiple Layers of Features from Tiny Images](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf)（从微小图像中学习多层特征）。
+有关数据集的详细信息，请参阅 Alex Krizhevsky 的[学习来自小图像的多层功能](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf)。
 
 该数据集已分区成由 50,000 个图像组成的训练集，以及由 10,000 个图像组成的测试集。 第一个集用于遵循认知工具包 GitHub 存储库中的[此教程](https://github.com/Microsoft/CNTK/tree/master/Examples/Image/Classification/ResNet)，使用 Microsoft 认知工具包来训练一个深度达到 20 层的卷积残差网络 (ResNet) 模型。 剩余的 10,000 个图像用于测试模型的准确性。 分布式计算在此场合下发挥了作用：图像的前处理和评分任务是高度可并行化的任务。 借助手头保存的已训练模型：
 
@@ -111,24 +108,24 @@ HDInsight 提供多个适用于高级分析工作流的机器学习选项：
 
 在包含 4 个工作节点的群集上，10,000 个图像的前处理/评分花费了不到 1 分钟。 该模型可准确预测大约 9,100 个 (91%) 图像的标签。 混淆矩阵可演示最常见的分类错误。 例如，以下矩阵显示，与其他标签对相比，发生将狗标记成猫（以及将猫标记成狗）的错误的频率较高。
 
-![结果](./media/apache-hadoop-deep-dive-advanced-analytics/ml-results.png)
+![机器学习结果图表](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-results.png)
 
-### <a name="try-it-out"></a>试试吧！
+### <a name="try-it-out"></a>试试看！
 
-请遵循[此教程](../spark/apache-spark-microsoft-cognitive-toolkit.md)以端到端的方式实施此解决方案：设置 HDInsight Spark 群集、安装认知工具包，然后运行可对 10,000 个 CIFAR 图像评分的 Jupyter Notebook。
+按照[本教程](../spark/apache-spark-microsoft-cognitive-toolkit.md)进行操作，实现此解决方案的端到端部署：设置 HDInsight Spark 群集，安装 Cognitive Toolkit，并运行评分 10000 cifar-10 映像的 Jupyter Notebook。
 
 ## <a name="next-steps"></a>后续步骤
 
 Apache Hive 和 Azure 机器学习
 
 * [Apache Hive 和 Azure 机器学习端到端教程](../../machine-learning/team-data-science-process/hive-walkthrough.md)
-* [针对 1 TB 数据集使用 Azure HDInsight Hadoop 群集](../../machine-learning/team-data-science-process/hive-criteo-walkthrough.md)
+* [在 1 TB 数据集上使用 Azure HDInsight Hadoop 群集](../../machine-learning/team-data-science-process/hive-criteo-walkthrough.md)
 
 Apache Spark 和 MLLib
 
 * [在 Apache Spark on HDInsight 中使用机器学习](../../machine-learning/team-data-science-process/spark-overview.md)
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Apache Spark 来通过 HVAC 数据分析建筑物温度](../spark/apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Apache Spark 预测食品检验结果](../spark/apache-spark-machine-learning-mllib-ipython.md)
+* [使用机器学习 Apache Spark：使用 HDInsight 中的 Apache Spark 对使用 HVAC 数据生成温度进行分析](../spark/apache-spark-ipython-notebook-machine-learning.md)
+* [使用机器学习 Apache Spark：使用 HDInsight 中的 Apache Spark 预测食物检查结果](../spark/apache-spark-machine-learning-mllib-ipython.md)
 
 深度学习、认知工具包和其他技术
 

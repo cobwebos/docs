@@ -1,6 +1,6 @@
 ---
 title: H264 单比特率 4K Audio 5.1 | Microsoft 文档
-description: 本主题概述了“H264 单比特率 4K Audio 5.1”任务预设。
+description: 本主题概述了“H264 单比特率 4K Audio 5.1”任务预设  。
 author: Juliako
 manager: femila
 editor: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 9c4b133ae74438def30f4fcd9e49a5ca5e6f9cd4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61463559"
 ---
 # <a name="h264-single-bitrate-4k-audio-51"></a>H264 单比特率 4K Audio 5.1
@@ -29,7 +29,7 @@ ms.locfileid: "61463559"
  此预设产生比特率为 18000 kbps 的单个 MP4 文件和 AAC 5.1 音频。 有关此预设的配置文件、比特率、采样率等的详细信息，请观察下面定义的 XML 或 JSON。 有关每个元素的含义及其有效值的说明，请参阅 [Media Encoder Standard 架构](media-services-mes-schema.md)。  
   
 > [!NOTE]
->  应当会获得采用 4K 编码的“高级”预留单位类型。 有关详细信息，请参阅 [如何缩放编码](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)。  
+>  应当会获得采用 4K 编码的“高级”预留单位类型。 有关详细信息，请参阅[如何缩放编码](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)。  
   
  XML  
   

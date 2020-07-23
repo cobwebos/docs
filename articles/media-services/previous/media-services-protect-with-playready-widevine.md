@@ -14,17 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: c6271b5bb64eacf66c771b84139cead722a2e7b3
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
-ms.translationtype: MT
+ms.openlocfilehash: 79c24eb078cc3de764ecc1c814e5b8772777eab6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869394"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78199489"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>使用 PlayReady 和/或 Widevine DRM 动态通用加密
 
 > [!NOTE]
-> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。   > 无新特性或功能将被添加到媒体服务 v2。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。   > 未向 Media Services v2 添加新功能或功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 >   
 
 ## <a name="overview"></a>概述
@@ -35,15 +34,15 @@ ms.locfileid: "64869394"
 
 还可通过以下媒体服务合作伙伴来传送 Widevine 许可证： 
 
-* [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/) 
+* [Axinom](https://www.axinom.com) 
 * [EZDRM](https://ezdrm.com/) 
 * [castLabs](https://castlabs.com/company/partners/azure/) 
 
 有关详细信息，请参阅与 [Axinom](media-services-axinom-integration.md) 和 [castLabs](media-services-castlabs-integration.md) 的集成。
 
-媒体服务支持通过多种方式对发出密钥请求的用户进行授权。 内容密钥授权策略可能有一种或多种授权限制：开放或令牌限制。 令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持采用[简单 Web 令牌](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) 格式和 [JSON Web 令牌](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT) 格式的令牌。 
+媒体服务支持通过多种方式对发出密钥请求的用户进行授权。 内容密钥授权策略可能有一种或多种授权限制：开放或令牌限制。 令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持[简单 web 令牌](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)（SWT）和[JSON web 令牌](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)（JWT）格式的令牌。 
 
-有关详细信息，请参阅[配置内容密钥授权策略](media-services-protect-with-aes128.md#configure_key_auth_policy)。
+有关详细信息，请参阅[配置内容密钥的授权策略](media-services-protect-with-aes128.md#configure_key_auth_policy)。
 
 为了充分利用动态加密，资产需包含一组多码率 MP4 文件或多码率平滑流源文件。 还需要为资产配置传送策略（在本主题后面部分介绍）。 然后，根据在流式处理 URL 中指定的格式，按需流式处理服务器会确保使用选定的协议来传送流。 因此，可存储只使用单一存储格式的文件并为其付费。 媒体服务会根据客户端的每个请求生成并提供适当的 HTTP 响应。
 
@@ -98,17 +97,17 @@ ms.locfileid: "64869394"
 
 有关如何编码的说明，请参阅[使用 Media Encoder Standard 对资产进行编码](media-services-dotnet-encode-with-media-encoder-standard.md)。
 
-## <a id="create_contentkey"></a>创建内容密钥并将其与编码资产相关联
+## <a name="create-a-content-key-and-associate-it-with-the-encoded-asset"></a><a id="create_contentkey"></a>创建内容密钥并将其与编码资产相关联
 在媒体服务中，内容密钥包含用于加密资产的密钥。
 
 有关详细信息，请参阅[创建内容密钥](media-services-dotnet-create-contentkey.md)。
 
-## <a id="configure_key_auth_policy"></a>配置内容密钥授权策略
+## <a name="configure-the-content-keys-authorization-policy"></a><a id="configure_key_auth_policy"></a>配置内容密钥的授权策略
 媒体服务支持通过多种方式对发出密钥请求的用户进行身份验证。 必须配置内容密钥授权策略。 客户端（播放器）必须符合该策略才能将密钥传送到客户端。 内容密钥授权策略可能有一种或多种授权限制：开放或令牌限制。
 
 有关详细信息，请参阅[配置内容密钥授权策略](media-services-dotnet-configure-content-key-auth-policy.md#playready-dynamic-encryption)。
 
-## <a id="configure_asset_delivery_policy"></a>配置资产传送策略
+## <a name="configure-an-asset-delivery-policy"></a><a id="configure_asset_delivery_policy"></a>配置资产传送策略
 为资产配置传送策略。 资产传送策略配置包括：
 
 * DRM 许可证获取 URL。
@@ -117,7 +116,7 @@ ms.locfileid: "64869394"
 
 有关详细信息，请参阅[配置资产传送策略](media-services-dotnet-configure-asset-delivery-policy.md)。
 
-## <a id="create_locator"></a>创建 OnDemand 流式处理定位符以获取流式处理 URL
+## <a name="create-an-ondemand-streaming-locator-to-get-a-streaming-url"></a><a id="create_locator"></a>创建 OnDemand 流式处理定位符以获取流式处理 URL
 需要为用户提供平滑流式处理、DASH 或 HLS 的流式处理 URL。
 
 > [!NOTE]
@@ -143,7 +142,7 @@ string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTem
 Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
 ```
 
-可以使用 [Azure 媒体服务播放器](https://amsplayer.azurewebsites.net/azuremediaplayer.html)来测试流。
+可以使用 [Azure 媒体服务播放器](https://aka.ms/azuremediaplayer)来测试流。
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
@@ -563,7 +562,7 @@ namespace DynamicEncryptionWithDRM
             // Get a reference to the streaming manifest file from the 
             // collection of files in the asset.
 
-            var assetFile = asset.AssetFiles.Where(f => f.Name.ToLower().
+            var assetFile = asset.AssetFiles.ToList().Where(f => f.Name.ToLower().
                          EndsWith(".ism")).
                          FirstOrDefault();
 
@@ -605,6 +604,10 @@ namespace DynamicEncryptionWithDRM
 }
 ```
 
+## <a name="additional-notes"></a>附加说明
+
+* Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
+
 ## <a name="next-steps"></a>后续步骤
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -612,10 +615,10 @@ namespace DynamicEncryptionWithDRM
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [使用带 Multi-DRM 的 CENC 和访问控制](media-services-cenc-with-multidrm-access-control.md)
 * [Configure Widevine packaging with Media Services](https://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)（使用媒体服务配置 Widevine 打包）
-* [开始使用 Java 客户端 SDK 进行 Azure 媒体服务](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use)
+* [用于 Azure 媒体服务的 Java 客户端 SDK 入门](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use)
 * 若要下载最新的用于媒体服务的 PHP SDK，请在 [Packagist 存储库](https://packagist.org/packages/microsoft/windowsazure#v0.5.7)中查找 0.5.7 版 Microsoft/WindowsAzure 包。 
 

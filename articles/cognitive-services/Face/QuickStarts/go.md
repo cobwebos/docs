@@ -1,29 +1,32 @@
 ---
 title: 快速入门：使用 REST API 和 Go 检测图像中的人脸
 titleSuffix: Azure Cognitive Services
-description: 在该快速入门中，使用人脸 API 和 Go 检测图像中的人脸。
+description: 在本快速入门中，你将使用人脸服务和 Go 检测图像中的人脸。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 752f15fd730f1244f44ba3749bff3c5bb85ca02b
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 8de043e9ae79c29d1c6d7e4f59ac7494eeb2d4f8
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312593"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84985583"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>快速入门：使用 REST API 和 Go 检测图像中的人脸
 
-在本快速入门中，将使用 Azure 人脸 REST API 和 Go 来检测图像中的人脸。
+本快速入门将通过 Go 使用 Azure 人脸 REST API 来检测图像中的人脸。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 人脸 API 订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=face-api)获取免费试用的订阅密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸 API 服务并获取密钥。
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="创建人脸资源"  target="_blank">创建人脸资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到人脸 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 - 代码编辑器，如 [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="write-the-script"></a>编写脚本
@@ -49,7 +52,7 @@ func main() {
     // subscription keys. For example, if you got your subscription keys from
     // westus, replace "westcentralus" in the URL below with "westus".
     const uriBase =
-      "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect"
+      "https://<My Endpoint String>.com/face/v1.0/detect"
     const imageUrl =
       "https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg"
 
@@ -60,8 +63,16 @@ func main() {
 
     reader := strings.NewReader(imageUrlEnc)
 
+    //Configure TLS, etc.
+    tr := &http.Transport{
+        TLSClientConfig: &tls.Config{
+            InsecureSkipVerify: true,
+        },
+    }
+    
     // Create the Http client
     client := &http.Client{
+        Transport: tr,
         Timeout: time.Second * 2,
     }
 
@@ -100,7 +111,9 @@ func main() {
 }
 ```
 
-需使用订阅密钥更新 `subscriptionKey` 值，并且可能需要更改 `uriBase` 字符串，使之包含正确的区域标识符（如需所有区域终结点的列表，请参阅[人脸 API 文档](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)）。 
+需使用订阅密钥更新 `subscriptionKey` 值，并更改 `uriBase` 字符串，使之包含正确的终结点字符串。
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 你可能还希望更改 `imageUrl` 字段以指向自己的输入图像。 你还可能想要更改 `returnFaceAttributes` 字段，该字段指定要检索的人脸属性。
 
@@ -301,7 +314,7 @@ detect-face
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你编写了一个 Ruby 脚本，该脚本调用 Azure 人脸 API，以便检测图像中的人脸并返回其属性。 接下来，请浏览人脸 API 参考文档，以便进行详细的了解。
+在本快速入门中，你编写了一个 Go 控制台应用程序，该应用程序调用 Azure 人脸服务检测图像中的人脸并返回其属性。 接下来，请浏览人脸 API 参考文档，以便进行详细的了解。
 
 > [!div class="nextstepaction"]
 > [人脸 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

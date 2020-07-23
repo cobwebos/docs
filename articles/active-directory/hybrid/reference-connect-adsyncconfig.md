@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：ADSyncConfig PowerShell 参考 |Microsoft 文档
+title: Azure AD Connect：ADSyncConfig PowerShell 参考 | Microsoft Docs
 description: 本文档提供 ADSyncConfig.psm1 PowerShell 模块的参考信息。
 author: billmath
 manager: daveba
@@ -10,12 +10,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 554bb99121190198982f64deb6ee0674aa8831ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2a2126aceba8724b46de094d14db754d704500c6
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60381189"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850969"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect：ADSyncConfig PowerShell 参考
 以下文档提供了 Azure AD Connect 附带的 ADSyncConfig.psm1 PowerShell 模块的参考信息。
@@ -26,7 +26,7 @@ ms.locfileid: "60381189"
 ### <a name="synopsis"></a>摘要
 获取在每个 AD Connector 中配置的帐户名和域
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncADConnectorAccount
@@ -47,7 +47,7 @@ Get-ADSyncADConnectorAccount
 ### <a name="synopsis"></a>摘要
 获得已禁用权限继承的 AD 对象
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncObjectsWithInheritanceDisabled [-SearchBase] <String> [[-ObjectClass] <String>] [<CommonParameters>]
@@ -59,27 +59,26 @@ Get-ADSyncObjectsWithInheritanceDisabled [-SearchBase] <String> [[-ObjectClass] 
 ### <a name="examples"></a>示例
 
 #### <a name="example-1"></a>示例 1
+在“Contoso”域中查找已禁用继承的对象（默认情况下仅返回“organizationalUnit”对象）
 ```
-Find objects with disabled inheritance in 'Contoso' domain (by default returns 'organizationalUnit' objects only)
-```
-
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso'
+```
 
 #### <a name="example-2"></a>示例 2
+在“Contoso”域中查找具有禁用继承的“user”对象
 ```
-Find 'user' objects with disabled inheritance in 'Contoso' domain
-```
-
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso' -ObjectClass 'user'
+```
 
 #### <a name="example-3"></a>示例 3
+在 OU 中查找具有禁用继承的所有类型的对象
 ```
-Find all types of objects with disabled inheritance in a OU
-```
-
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase OU=AzureAD,DC=Contoso,DC=com -ObjectClass '*'
+```
 
-### <a name="parameters"></a>参数
+
+
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-searchbase"></a>-SearchBase
 可以是 AD 域 DistinguishedName 或 FQDN 的 LDAP 查询的 SearchBase
@@ -113,14 +112,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="set-adsyncbasicreadpermissions"></a>Set-ADSyncBasicReadPermissions
 
 ### <a name="synopsis"></a>摘要
 初始化 Active Directory 林和域以获取基本读取权限。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -176,7 +175,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,
 Set-ADSyncBasicReadPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 Azure AD Connect 同步现在或将来用其管理目录对象的 Active Directory 帐户的名称。
@@ -254,8 +253,8 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-显示在此 cmdlet 运行的情况下将会发生什么。
-此 cmdlet 未运行。
+显示运行该 cmdlet 时会发生什么情况。
+cmdlet 未运行。
 
 ```yaml
 Type: SwitchParameter
@@ -286,14 +285,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="set-adsyncexchangehybridpermissions"></a>Set-ADSyncExchangeHybridPermissions
 
 ### <a name="synopsis"></a>摘要
 初始化 Active Directory 林和域以获取 Exchange 混合功能。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -343,7 +342,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=Azu
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 Azure AD Connect 同步现在或将来用其管理目录对象的 Active Directory 帐户的名称。
@@ -421,8 +420,8 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-显示在此 cmdlet 运行的情况下将会发生什么。
-此 cmdlet 未运行。
+显示运行该 cmdlet 时会发生什么情况。
+cmdlet 未运行。
 
 ```yaml
 Type: SwitchParameter
@@ -453,14 +452,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="set-adsyncexchangemailpublicfolderpermissions"></a>Set-ADSyncExchangeMailPublicFolderPermissions
 
 ### <a name="synopsis"></a>摘要
 初始化 Active Directory 林和域以获取 Exchange 邮件公用文件夹。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -505,7 +504,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN 'CN=ADConnec
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 Azure AD Connect 同步现在或将来用其管理目录对象的 Active Directory 帐户的名称。
@@ -583,8 +582,8 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-显示在此 cmdlet 运行的情况下将会发生什么。
-此 cmdlet 未运行。
+显示运行该 cmdlet 时会发生什么情况。
+cmdlet 未运行。
 
 ```yaml
 Type: SwitchParameter
@@ -615,14 +614,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Set-ADSyncMsDsConsistencyGuidPermissions
 
 ### <a name="synopsis"></a>摘要
 初始化 Active Directory 林和域以获取 mS-DS-ConsistencyGuid 功能。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -666,7 +665,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN 'CN=ADConnector,O
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 Azure AD Connect 同步现在或将来用其管理目录对象的 Active Directory 帐户的名称。
@@ -744,8 +743,8 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-显示在此 cmdlet 运行的情况下将会发生什么。
-此 cmdlet 未运行。
+显示运行该 cmdlet 时会发生什么情况。
+cmdlet 未运行。
 
 ```yaml
 Type: SwitchParameter
@@ -776,14 +775,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="set-adsyncpasswordhashsyncpermissions"></a>Set-ADSyncPasswordHashSyncPermissions
 
 ### <a name="synopsis"></a>摘要
 初始化 Active Directory 林和域以获取密码哈希同步。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -817,7 +816,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName 'ADConnector' -ADC
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 将被 Azure AD Connect 同步用来管理目录中的对象的 Active Directory 帐户的名称。
@@ -865,8 +864,8 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-显示在此 cmdlet 运行的情况下将会发生什么。
-此 cmdlet 未运行。
+显示运行该 cmdlet 时会发生什么情况。
+cmdlet 未运行。
 
 ```yaml
 Type: SwitchParameter
@@ -897,14 +896,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="set-adsyncpasswordwritebackpermissions"></a>Set-ADSyncPasswordWritebackPermissions
 
 ### <a name="synopsis"></a>摘要
 初始化 Active Directory 林和域以从 Azure AD 进行密码回写。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -952,7 +951,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 Azure AD Connect 同步现在或将来用其管理目录对象的 Active Directory 帐户的名称。
@@ -1030,8 +1029,8 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-显示在此 cmdlet 运行的情况下将会发生什么。
-此 cmdlet 未运行。
+显示运行该 cmdlet 时会发生什么情况。
+cmdlet 未运行。
 
 ```yaml
 Type: SwitchParameter
@@ -1062,7 +1061,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="set-adsyncrestrictedpermissions"></a>Set-ADSyncRestrictedPermissions
 
@@ -1071,7 +1070,7 @@ Accept wildcard characters: False
 典型示例是由 AAD Connect 自动创建的 AD Connect 帐户 (MSOL)。
 此帐户具有所有域的复制权限，但由于不受保护，因此很容易受到入侵。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <PSCredential>
@@ -1081,28 +1080,19 @@ Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <
 ### <a name="description"></a>说明
 Set-ADSyncRestrictedPermissions 函数将增强所提供帐户的权限。
 限制权限操作包括以下步骤：
-1.
-禁用指定对象上的继承
-2.
-删除特定对象上的所有 ACE，但特定于 SELF 的 ACE 除外。
+1. 禁用指定对象上的继承
+2. 删除特定对象上的所有 ACE，但特定于 SELF 的 ACE 除外。
 我们希望在处理 SELF 时默认权限保持不变。
-3.
-分配以下特定权限：
+3. 分配以下特定权限：
 
-        Type    Name                                        Access              Applies To
-        =============================================================================================
-        Allow   SYSTEM                                      Full Control        This object
-        Allow   Enterprise Admins                           Full Control        This object
-        Allow   Domain Admins                               Full Control        This object
-        Allow   Administrators                              Full Control        This object
-
-        Allow   Enterprise Domain Controllers               List Contents
-                                                            Read All Properties
-                                                            Read Permissions    This object
-
-        Allow   Authenticated Users                         List Contents
-                                                            Read All Properties
-                                                            Read Permissions    This object
+   | 类型 | 名称 | 访问 | 应用于 |
+   |------|------|--------|------------|
+   | Allow | SYSTEM | 完全控制 | 此对象 |
+   | Allow | 企业管理员 | 完全控制 | 此对象 |
+   | Allow | 域管理员 | 完全控制 | 此对象 | 
+   | Allow | 管理员 | 完全控制 | 此对象 |
+   | Allow | 企业域控制器 | 列出内容 <br> 读取所有属性 <br> 读取权限 | 此对象 |
+   | Allow | 经过身份验证的用户 | 列出内容 <br> 读取所有属性 <br> 读取权限 | 此对象 |
 
 ### <a name="examples"></a>示例
 
@@ -1111,7 +1101,7 @@ Set-ADSyncRestrictedPermissions 函数将增强所提供帐户的权限。
 Set-ADSyncRestrictedPermissions -ADConnectorAccountDN "CN=TestAccount1,CN=Users,DC=Contoso,DC=com" -Credential $(Get-Credential)
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
 需要加强其权限的 Active Directory 帐户的 DistinguishedName。
@@ -1130,7 +1120,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-credential"></a>-Credential
-管理员凭据，拥有限制 ADConnectorAccountDN 帐户权限的必要特权。 这通常为企业或域管理员。 使用管理员帐户的完全限定域名来避免帐户查找失败。
+管理员凭据，拥有限制 ADConnectorAccountDN 帐户权限的必要特权。 这通常是企业管理员或域管理员。 使用管理员帐户的完全限定域名来避免帐户查找失败。
 示例：CONTOSO\admin
 
 ```yaml
@@ -1161,8 +1151,8 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-显示在此 cmdlet 运行的情况下将会发生什么。
-此 cmdlet 未运行。
+显示运行该 cmdlet 时会发生什么情况。
+cmdlet 未运行。
 
 ```yaml
 Type: SwitchParameter
@@ -1193,14 +1183,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="set-adsyncunifiedgroupwritebackpermissions"></a>Set-ADSyncUnifiedGroupWritebackPermissions
 
 ### <a name="synopsis"></a>摘要
 初始化 Active Directory 林和域以从 Azure AD 进行组回写。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="userdomain"></a>UserDomain
 ```
@@ -1245,7 +1235,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN 'CN=ADConnector
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 Azure AD Connect 同步现在或将来用其管理目录对象的 Active Directory 帐户的名称。
@@ -1323,8 +1313,8 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-显示在此 cmdlet 运行的情况下将会发生什么。
-此 cmdlet 未运行。
+显示运行该 cmdlet 时会发生什么情况。
+cmdlet 未运行。
 
 ```yaml
 Type: SwitchParameter
@@ -1355,20 +1345,20 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="show-adsyncadobjectpermissions"></a>Show-ADSyncADObjectPermissions
 
 ### <a name="synopsis"></a>摘要
 显示指定 AD 对象的权限。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Show-ADSyncADObjectPermissions [-ADobjectDN] <String> [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>DESCRIPTION
 此函数返回当前为参数 -ADobjectDN 中提供的给定 AD 对象设置的所有 AD 权限。
 ADobjectDN 必须以 DistinguishedName 格式提供。
 
@@ -1379,7 +1369,7 @@ ADobjectDN 必须以 DistinguishedName 格式提供。
 Show-ADSyncADObjectPermissions -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
 {{填写 ADobjectDN 说明}}
@@ -1398,4 +1388,4 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。

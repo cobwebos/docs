@@ -6,19 +6,32 @@
     - name: 什么是个性化体验创建服务？
       href: what-is-personalizer.md
       displayName: 'loop, context, feature, action, rank, reward, developer, use case'
+    - name: 新增功能
+      href: whats-new.md
+      displayName: 'release notes, service updates, videos'
 - name: 快速入门
   items:
-    - name: 创建和使用反馈循环
-      href: csharp-quickstart-commandline-feedback-loop.md
-      displayName: 'code, sample, quickstart, c#'
+    - name: 使用 SDK
+      href: sdk-learning-loop.md
+- name: 教程
+  items:
+    - name: 使用 Web 应用
+      href: tutorial-use-personalizer-web-app.md
+    - name: 使用聊天机器人
+      href: tutorial-use-personalizer-chat-bot.md
+    - name: 使用 Azure Notebook
+      href: tutorial-use-azure-notebook-generate-loop-data.md
+      displayName: 'jupyter, notebook, python, cell, graph, chart, aggregate, model update frequency'
 - name: 概念
   items:
     - name: 个性化体验创建服务的工作原理
       href: how-personalizer-works.md
       displayName: 'rank, reward, api, explore, exploit, score, design, research, loop, action, context, feature, JSON, event, inactive, model'
-    - name: 可在哪种场合下使用个性化体验创建服务？
+    - name: 使用个性化体验创建服务的场合
       href: where-can-you-use-personalizer.md
       displayName: 'checklist, considerations, effectiveness, recommendation engine'
+    - name: 术语
+      href: terminology.md
     - name: 道德和负责使用
       href: ethics-responsible-use.md
       displayName: 'best practice, design'
@@ -26,10 +39,14 @@
       items:
         - name: 特征 - 操作和上下文
           href: concepts-features.md
-          displayName: 'action, context, feature, namespace, JSON, best practice, set'
-        - name: 主动学习
+          displayName: 'action, context, feature, namespace, JSON, best practice, set, ID, guid, event id,'
+        - name: 学习策略
           href: concept-active-learning.md
           displayName: 'active, inactive'
+        - name: 学徒模式
+          href: concept-apprentice-mode.md
+        - name: 活动和非活动事件
+          href: concept-active-inactive-events.md
         - name: 奖励
           href: concept-rewards.md
           displayName: 'reward, wait time, default reward'
@@ -43,16 +60,24 @@
         - name: 脱机评估
           href: concepts-offline-evaluation.md
           displayName: 'learning policy, Counterfactual, features'
+        - name: 功能评估
+          href: concept-feature-evaluation.md
+    - name: 可伸缩性和性能
+      href: concepts-scalability-performance.md
 - name: 操作指南
   items:
-    - name: 创建并配置个性化体验创建服务
+    - name: 创建个性化体验创建服务资源
+      href: how-to-create-resource.md
+    - name: 配置个性化体验创建服务
       href: how-to-settings.md
-      displayName: 'azure, portal, settings, evaluation, offline, policy, export, model'
-    - name: 分析
-      items:
-        - name: 脱机评估
-          href: how-to-offline-evaluation.md
-- name: 引用
+      displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
+    - name: 使用学徒模式
+      href: how-to-learning-behavior.md
+    - name: 管理模型和学习设置
+      href: how-to-manage-model.md
+    - name: 使用脱机评估进行分析
+      href: how-to-offline-evaluation.md
+- name: 参考
   items:
     - name: 示例
       href: 'https://go.microsoft.com/fwlink/?linkid=2092083'
@@ -60,21 +85,43 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2092082'
     - name: SDK
       items:
-        - name: .NET SDK 参考
-          href: 'https://go.microsoft.com/fwlink/?linkid=2092353'
-        - name: NuGet 包
-          href: 'https://go.microsoft.com/fwlink/?linkid=2092272'
+        - name: .NET
+          items:
+            - name: 参考
+              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet'
+            - name: NuGet 包
+              href: 'https://go.microsoft.com/fwlink/?linkid=2092272'
+        - name: Go
+          items:
+            - name: SDK 中 IsInRole 中的声明
+              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/personalizer/v1.0/personalizer'
+        - name: Node.js
+          items:
+            - name: 参考
+              href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest'
+            - name: NPM
+              href: 'https://www.npmjs.com/package/@azure/cognitiveservices-personalizer/v/1.0.0'
+        - name: Python
+          items:
+            - name: 参考
+              href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python'
+            - name: Pypi 包
+              href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
 - name: 资源
   items:
+    - name: 疑难解答
+      href: troubleshooting.md
     - name: 区域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 加密
+      href: personalizer-encryption-of-data-at-rest.md
     - name: Azure 路线图
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'
     - name: 定价
       href: 'https://go.microsoft.com/fwlink/?linkid=2092154'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/personalizer'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/921562-personalizer'

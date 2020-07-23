@@ -4,15 +4,14 @@ description: 了解如何检测和调试 Azure Cosmos DB 请求的 SQL 查询性
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 61bb102e17d9980d991fdf423174d7110cd5433d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: 8776ecae982a4b1c67f6b66f16fceec930a561f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237869"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392125"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>优化 Azure Cosmos DB 的查询性能
 
@@ -38,13 +37,13 @@ Azure Cosmos DB 提供了一个[用于查询数据的 SQL API](how-to-sql-query.
 
 SDK 针对查询执行提供了各种选项。 例如，在 .NET 中，`FeedOptions` 类中提供了以下选项。 下表介绍了这些选项以及它们如何影响查询执行时间。 
 
-| Option | 描述 |
+| 选项 | 说明 |
 | ------ | ----------- |
 | `EnableCrossPartitionQuery` | 对于需要跨多个分区执行的任何查询，都必须将其设置为 true。 这是一个显式标志，可用来在开发时有意识地进行性能权衡。 |
 | `EnableScanInQuery` | 如果已决定不使用索引编制，但仍然希望通过扫描方式运行查询，必须将其设置为 true。 只有针对所请求的筛选器路径禁用了索引编制时才适用。 | 
 | `MaxItemCount` | 到服务器的每次往返要返回的最大项数。 通过将其设置为 -1，可以让服务器来管理此项数。 或者，可以减小此值来使每次往返仅检索少量项。 
 | `MaxBufferedItemCount` | 这是一个客户端选项，在执行跨分区 ORDER BY 时用来限制内存占用。 较高的值有助于降低跨分区排序的延迟。 |
-| `MaxDegreeOfParallelism` | 获取或设置在 Azure Cosmos DB 数据库服务中并行执行查询期间客户端运行的并发操作数。 属性值为正会将并发操作数限制为所设置的值。 如果它设置为小于 0，则系统会自动决定要运行的并发操作数。 |
+| `MaxDegreeOfParallelism` | 获取或设置在 Azure Cosmos 数据库服务中并行执行查询期间客户端运行的并发操作数。 属性值为正会将并发操作数限制为所设置的值。 如果它设置为小于 0，则系统会自动决定要运行的并发操作数。 |
 | `PopulateQueryMetrics` | 详细记录在执行查询的各个阶段花费的时间的统计信息，例如编译时间、索引循环时间和文档加载时间。 可以与 Azure 支持共享来自查询统计信息的输出以诊断查询性能问题。 |
 | `RequestContinuation` | 可以通过传入任何查询返回的不透明继续标记来继续执行查询。 继续标记封装了执行查询所需的所有状态。 |
 | `ResponseContinuationTokenLimitInKb` | 可以限制服务器返回的继续标记的最大大小。 如果应用程序主机对响应标头大小有限制，则可能需要设置此项。 设置此项可能会增加查询的总体持续时间和所使用的 RU。  |
@@ -124,14 +123,14 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 
 从查询返回的主要响应标头包括以下内容：
 
-| Option | 描述 |
+| 选项 | 说明 |
 | ------ | ----------- |
 | `x-ms-item-count` | 响应中返回的项数。 这取决于所提供的 `x-ms-max-item-count`、在最大响应有效负载大小内可以容纳的项数、预配的吞吐量以及查询执行时间。 |  
 | `x-ms-continuation:` | 用于继续执行查询的继续标记（如果有更多结果）。 | 
 | `x-ms-documentdb-query-metrics` | 执行的查询统计信息。 这是一个经分隔的字符串，其中包含在执行查询的各个阶段中花费的时间的统计信息。 如果 `x-ms-documentdb-populatequerymetrics` 设置为 `True`，则会返回。 | 
 | `x-ms-request-charge` | 查询使用的[请求单位](request-units.md)数。 | 
 
-有关 REST API 请求标头和选项的详细信息，请参阅[使用 REST API 查询资源](https://docs.microsoft.com/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api)。
+有关 REST API 请求标头和选项的详细信息，请参阅[使用 REST API 查询资源](/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api)。
 
 ## <a name="best-practices-for-query-performance"></a>有关查询性能的最佳做法
 下面是影响 Azure Cosmos DB 查询性能的最常见因素。 本文深入探讨了其中的每一个主题。
@@ -213,7 +212,7 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 
 有关查询执行指标的部分介绍如何检索查询的服务器执行时间 ( `totalExecutionTimeInMs`)，以便可区分查询执行和网络传输所用的时间。
 
-### <a name="indexing-policy"></a>索引策略
+### <a name="indexing-policy"></a>索引编制策略
 若要了解索引编制路径、种类和模式以及它们对查询执行有何影响，请参阅[配置索引编制策略](index-policy.md)。 默认情况下，索引编制策略为字符串使用哈希索引编制，字符串比较适合进行等式查询，但不适合进行范围查询/order by 查询。 如果需要对字符串使用范围查询，建议为所有字符串指定范围索引类型。 
 
 默认情况下，Azure Cosmos DB 会对所有数据应用自动索引。 对于高性能插入方案，考虑排除路径，因为这会降低每项插入操作的 RU 成本。 
@@ -237,7 +236,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| 指标 | 单位 | 描述 | 
+| 指标 | 单位 | 说明 | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | 毫秒 | 查询执行时间 | 
 | `queryCompileTimeInMs` | 毫秒 | 查询编译时间  | 
@@ -249,9 +248,9 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 | `documentLoadTimeInMs` | 毫秒 | 加载文档时花费的时间  | 
 | `systemFunctionExecuteTimeInMs` | 毫秒 | 执行系统（内置）函数花费的总时间（毫秒）  | 
 | `userFunctionExecuteTimeInMs` | 毫秒 | 执行用户定义的函数花费的总时间（毫秒） | 
-| `retrievedDocumentCount` | 计数 | 检索的文档总数  | 
+| `retrievedDocumentCount` | count | 检索的文档总数  | 
 | `retrievedDocumentSize` | 字节 | 检索的文档的总大小（字节）  | 
-| `outputDocumentCount` | 计数 | 输出文档数 | 
+| `outputDocumentCount` | count | 输出文档数 | 
 | `writeOutputTimeInMs` | 毫秒 | 查询执行时间（毫秒） | 
 | `indexUtilizationRatio` | 比率 (<=1) | 由筛选器匹配出的文档数与加载的文档数的比率  | 
 
@@ -259,7 +258,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 下面提供了一些示例查询，并说明了如何解释从查询执行返回的某些指标： 
 
-| Query | 示例指标 | 描述 | 
+| 查询 | 示例指标 | 说明 | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | 为匹配 TOP 子句而检索的文档数为 100+1。 查询时间主要花费在 `WriteOutputTime` 和 `DocumentLoadTime` 中，因为它是一个扫描。 | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount 现在较高（为匹配 TOP 子句为 500+1）。 | 
@@ -272,7 +271,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 
 ## <a name="next-steps"></a>后续步骤
-* 若要了解受支持的 SQL 查询运算符和关键字，请参阅 [SQL 查询](how-to-sql-query.md)。 
+* 若要了解受支持的 SQL 查询运算符和关键字，请参阅 [SQL 查询](sql-query-getting-started.md)。 
 * 若要了解请求单位，请参阅[请求单位](request-units.md)。
 * 若要了解索引编制策略，请参阅[索引编制策略](index-policy.md) 
 

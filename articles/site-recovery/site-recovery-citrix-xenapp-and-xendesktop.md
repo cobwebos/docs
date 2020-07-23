@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 为多层 Citrix XenDesktop 和 XenApp 部署设置灾难恢复 | Microsoft Docs
+title: 设置 Citrix XenDesktop/XenApp 灾难恢复 Azure Site Recovery
 description: 本文介绍了如何使用 Azure Site Recovery 为 Citrix XenDesktop 和 XenApp 部署设置灾难恢复。
 author: ponatara
 manager: abhemraj
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
-ms.openlocfilehash: 68f12bb7335da0a996aeadd752f59db0aa360a8e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 90d54a8ded99dd8ab43aed688036add6aede20ab
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61038173"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134835"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>为多层 Citrix XenApp 和 XenDesktop 部署设置灾难恢复
 
@@ -26,12 +26,12 @@ Citrix XenApp 暂不提供任何灾难恢复功能。
 本文档分步介绍了如何为 Hyper-V 和 VMware vSphere 平台上的本地 Citrix XenApp 部署生成灾难恢复解决方案。 此外还介绍了如何利用恢复计划、支持的配置和先决条件，执行到 Azure 的测试故障转移（灾难恢复演练）和计划外故障转移。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保了解以下知识：
 
-1. [将虚拟机复制到 Azure](site-recovery-vmware-to-azure.md)
-1. 如何[设计恢复网络](site-recovery-network-design.md)
+1. [将虚拟机复制到 Azure](./vmware-azure-tutorial.md)
+1. 如何[设计恢复网络](./concepts-on-premises-to-azure-networking.md)
 1. [执行到 Azure 的测试故障转移](site-recovery-test-failover-to-azure.md)
 1. [执行到 Azure 的故障转移](site-recovery-failover.md)
 1. 如何[复制域控制器](site-recovery-active-directory.md)
@@ -73,7 +73,7 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
 3.  Azure Site Recovery 无法复制和保护现有的本地 MCS 或 PVS 克隆。
 需要使用从传递控制器预配的 Azure RM 重新创建这些克隆。
 
-4. 无法使用 Azure Site Recovery 保护 NetScaler，因为 NetScaler 基于 FreeBSD，而 Azure Site Recovery 不支持保护 FreeBSD OS。 故障转移到 Azure 之后，你需要部署并配置来自 Azure 应用商店的新 NetScaler 设备。
+4. 无法使用 Azure Site Recovery 保护 NetScaler，因为 NetScaler 基于 FreeBSD，而 Azure Site Recovery 不支持保护 FreeBSD OS。 故障转移到 Azure 之后，你需要部署并配置来自 Azure Marketplace 的新 NetScaler 设备。
 
 
 ## <a name="replicating-virtual-machines"></a>复制虚拟机
@@ -96,7 +96,7 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
 
 有关用于保护 SQL 服务器的推荐选项的详细技术指南，请参阅[使用 SQL Server 灾难恢复和 Azure Site Recovery 来保护 SQL Server](site-recovery-sql.md)。
 
-遵循[此指南](site-recovery-vmware-to-azure.md)，开始将其他组件虚拟机复制到 Azure。
+遵循[此指南](./vmware-azure-tutorial.md)，开始将其他组件虚拟机复制到 Azure。
 
 ![保护 XenApp 组件](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-enablereplication.png)
 
@@ -108,7 +108,7 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
 
 注意以下事项：
 
-* 可以设置目标 IP 地址。 如果未提供地址，故障转移的计算机将使用 DHCP。 如果设置了无法用于故障转移的地址，故障转移不会正常工作。 如果地址可用于测试故障转移网络，则同一个目标 IP 地址可用于测试故障转移。
+* 可以设置目标 IP 地址。 如果未提供地址，故障转移的计算机将使用 DHCP。 如果设置了无法用于故障转移的地址，故障转移将不会正常工作。 如果地址可用于测试故障转移网络，则同一个目标 IP 地址可用于测试故障转移。
 
 * 对于 AD/DNS 服务器，如果保留本地地址，则可以为 Azure 虚拟网络指定与 DNS 服务器相同的地址。
 
@@ -130,17 +130,17 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
 
 1. 在恢复计划中添加 XenApp 组件虚拟机。
 2. 单击“恢复计划”->“+ 恢复计划”。 为恢复计划提供一个直观的名称。
-3. 对于 VMware 虚拟机：选择 VMware 进程服务器作为源，选择 Microsoft Azure 作为目标，选择“资源管理器”作为部署模型，然后单击“选择项”。
-4. 对于 Hyper-V 虚拟机：选择 VMM 服务器作为源，选择 Microsoft Azure 作为目标，选择“资源管理器”作为部署模型，单击“选择项”，然后选择 XenApp 部署 VM。
+3. 对于 VMware 虚拟机：选择 VMware 进程服务器作为源，Microsoft Azure 作为目标，Resource Manager 作为部署模型，然后单击“选择项”。
+4. 对于 Hyper-V 虚拟机：选择 VMM 服务器作为源，Microsoft Azure 作为目标，Resource Manager 作为部署模型，单击“选择项”，然后选择 XenApp 部署 VM。
 
 ### <a name="adding-virtual-machines-to-failover-groups"></a>将虚拟机添加到故障转移组
 
 可以自定义恢复计划，以便按特定启动顺序添加故障转移组、添加脚本或手动操作。 需要向恢复计划添加以下组。
 
-1. 故障转移组 1：AD DNS
-2. 故障转移组 2：SQL Server VM
-2. 故障转移组 3：VDA 主映像 VM
-3. 故障转移组 4：传递控制器和 StoreFront 服务器 VM
+1. 故障转移组1：AD DNS
+2. 故障转移组2：SQL Server VM
+2. 故障转移组3：VDA 主映像 VM
+3. 故障转移组4：传递控制器和 StoreFront 服务器 VM
 
 
 ### <a name="adding-scripts-to-the-recovery-plan"></a>将脚本添加到恢复计划
@@ -149,17 +149,17 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
 
 自定义的恢复计划如下所示：
 
-1. 故障转移组 1：AD DNS
-2. 故障转移组 2：SQL Server VM
-3. 故障转移组 3：VDA 主映像 VM
+1. 故障转移组1：AD DNS
+2. 故障转移组2：SQL Server VM
+3. 故障转移组3：VDA 主映像 VM
 
    >[!NOTE]     
    >包含手动操作或脚本操作的步骤 4、6 和 7 仅适用于具有 MCS/PVS 目录的本地 XenApp 环境。
 
-4. 组 3 手动或脚本操作：关闭主 VDA VM。
+4. 组3手动或脚本操作：关闭主 VDA VM。
 主 VDA VM 在故障转移到 Azure 时将处于运行状态。 若要使用 Azure 宿主创建新的 MCS 目录，Master VDA VM 需处于“已停止”（已解除分配）状态。 从 Azure 门户关闭 VM。
 
-5. 故障转移组 4：传递控制器和 StoreFront 服务器 VM
+5. 故障转移组4：传递控制器和 StoreFront 服务器 VM
 6. 组3 手动操作或脚本操作 1：
 
     ***添加 Azure RM 主机连接***

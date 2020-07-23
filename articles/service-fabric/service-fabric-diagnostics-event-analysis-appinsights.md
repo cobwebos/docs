@@ -1,25 +1,16 @@
 ---
-title: 使用 Application Insights 进行 Azure Service Fabric 事件分析 | Microsoft Docs
+title: 使用 Application Insights 进行 Azure Service Fabric 事件分析
 description: 了解通过使用 Application Insights 可视化和分析事件来监视和诊断 Azure Service Fabric 群集。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: f4c620bbb0e17abfacb504866230786a971ff409
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a912b7a6d918a40aaae54c9b177250dc3c30c84d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60393146"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256554"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>使用 Application Insights 进行事件分析和可视化
 
@@ -47,11 +38,11 @@ Application Insights 提供指定的视图用于查询所有传入的数据。 �
 
 ![Application Insights 请求详细信息](media/service-fabric-diagnostics-event-analysis-appinsights/ai-metrics-explorer.png)
 
-若要进一步了解 Application Insights 门户的功能，请转到 [Application Insights 门户文档](../azure-monitor/app/app-insights-dashboards.md)。
+若要进一步了解 Application Insights 门户的功能，请转到 [Application Insights 门户文档](../azure-monitor/app/overview-dashboard.md)。
 
 ### <a name="configuring-application-insights-with-eventflow"></a>使用 EventFlow 配置 Application Insights
 
-若正在使用 EventFlow 聚合事件，请务必导入 `Microsoft.Diagnostics.EventFlow.Output.ApplicationInsights` NuGet 包。 需要在 *eventFlowConfig.json* 的 *outputs* 节中包含以下代码：
+若正在使用 EventFlow 聚合事件，请务必导入 `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` NuGet 包。 需要在 *eventFlowConfig.json* 的 *outputs* 节中包含以下代码：
 
 ```json
 "outputs": [
@@ -74,13 +65,13 @@ Application Insights 提供指定的视图用于查询所有传入的数据。 �
 
 ## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>在 Azure 门户中导航到 Application Insights 资源。
 
-配置 Application Insights 作为事件和日志输出的数分钟后，Application Insights 资源中应开始显示信息。 导航到 Application Insights 资源，此时会转到 Application Insights 资源仪表板。 单击 Application Insights 任务栏中的“搜索”，查看其最近收到的跟踪，并能够筛选它们。
+配置 Application Insights 作为事件和日志输出的数分钟后，Application Insights 资源中应开始显示信息。 导航到 Application Insights 资源，此时会转到 Application Insights 资源仪表板。 单击 Application Insights 任务栏中的“搜索”，查看其最近收到的跟踪，并能够筛选它们。 
 
-指标资源管理器是非常有用的工具，能够基于应用程序、服务和群集报告的指标创建自定义仪表板。 请参阅[了解 Application Insights 中的指标](../azure-monitor/app/metrics-explorer.md)，基于收集的数据为自身设置数个图表。
+指标资源管理器  是非常有用的工具，能够基于应用程序、服务和群集报告的指标创建自定义仪表板。 请参阅[了解 Application Insights 中的指标](../azure-monitor/platform/metrics-charts.md)，基于收集的数据为自身设置数个图表。
 
-单击“分析”会转到 Application Insights 分析门户，可在此处基于更广的范围和可选性查询事件和跟踪。 若要阅读详细信息，请转到 [Application Insights 中的分析](../azure-monitor/app/analytics.md)。
+单击“分析”会转到 Application Insights 分析门户，可在此处基于更广的范围和可选性查询事件和跟踪。  若要阅读详细信息，请转到 [Application Insights 中的分析](../azure-monitor/log-query/log-query-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 AI 中设置警报](../azure-monitor/app/alerts.md)以获取有关性能或使用情况的通知
+* [在 AI 中设置警报](../azure-monitor/platform/alerts-log.md)以获取有关性能或使用情况的通知
 * [Application Insights 中的智能检测](../azure-monitor/app/proactive-diagnostics.md)针对发送给 Application Insights 的遥测进行主动分析，向你警告潜在的性能问题

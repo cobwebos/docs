@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: mbullwin
 ms.openlocfilehash: 91141e314bf276d9138157c8a9d85d5262ac5907
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66131031"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67172708"
 ---
 自定义度量值的集合。 使用此集合报告与遥测项关联的命名度量值。 典型用例如下：
 - 依赖项遥测有效负载的大小

@@ -1,26 +1,23 @@
 ---
-title: Azure PowerShell 脚本示例 - 为多层应用程序创建网络 | Microsoft Docs
+title: Azure PowerShell 脚本示例 - 为多层应用程序创建网络
 description: Azure PowerShell 脚本示例 - 为多层应用程序创建虚拟网络。
 services: virtual-network
 documentationcenter: virtual-network
-author: georgewallace
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: KumudD
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: powershell
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
-ms.author: gwallace
-ms.openlocfilehash: d5433cdd6e6702a289fe0a4b6eab87e9f196fb1c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: kumud
+ms.openlocfilehash: 2faa799276bafca1ac731dbbef1c08430c7cea73
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66156901"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80521481"
 ---
 # <a name="create-a-network-for-multi-tier-applications"></a>为多层应用程序创建网络
 
@@ -46,9 +43,9 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令创建资源组、虚拟网络和网络安全组。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令创建资源组、虚拟网络和网络安全组。 表中的每条命令链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 创建 Azure 虚拟网络和前端子网。 |

@@ -1,27 +1,17 @@
 ---
-title: 迁移活动 DNS 名称 - Azure 应用服务 | Microsoft Docs
+title: 迁移活动 DNS 名称
 description: 了解如何在不停机的情况下，将已分配到实时站点的自定义 DNS 域名迁移到 Azure 应用服务。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: jimbe
 tags: top-support-issue
 ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2017
-ms.author: cephalin
+ms.date: 10/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6215230a52bcb5c44f54747b447dc5f64e6af650
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 5c1760c746aca439e19ab5727e5be02f6dbad3cb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130375"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81535683"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>将活动 DNS 名称迁移到 Azure 应用服务
 
@@ -31,7 +21,7 @@ ms.locfileid: "62130375"
 
 如果你不担心 DNS 解析中的停机时间，请参阅[将现有的自定义 DNS 名称映射到 Azure 应用服务](app-service-web-tutorial-custom-domain.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本操作说明：
 
@@ -39,10 +29,10 @@ ms.locfileid: "62130375"
 
 ## <a name="bind-the-domain-name-preemptively"></a>提前绑定域名
 
-提前绑定自定义域时，对 DNS 记录进行任何更改之前，需要完成以下两项操作：
+提前绑定自定义域时，请先完成下面的两项操作，再对 DNS 记录进行更改：
 
 - 验证域所有权
-- 启用应用的域名
+- 为应用启用域名
 
 最终将自定义 DNS 名称从旧站点迁移到应用服务应用时，DNS 解析中将不会有停机时间。
 
@@ -50,15 +40,15 @@ ms.locfileid: "62130375"
 
 ### <a name="create-domain-verification-record"></a>创建域验证记录
 
-若要验证域所有权，请添加 TXT 记录。 TXT 记录从 awverify.&lt;subdomain> 映射到 &lt;appname>.azurewebsites.net。 
+若要验证域所有权，请添加 TXT 记录。 TXT 记录从 awverify.&lt;subdomain>__ 映射到 &lt;appname>.azurewebsites.net__。 
 
 你需要的 TXT 记录取决于要迁移的 DNS 记录。 有关示例，请参阅下表（`@` 通常表示根域）：
 
 | DNS 记录示例 | TXT 主机 | TXT 值 |
 | - | - | - |
-| \@（根） | awverify | &lt;appname>.azurewebsites.net |
-| www（子域） | awverify.www | &lt;appname>.azurewebsites.net |
-| \*（通配符） | awverify.\* | &lt;appname>.azurewebsites.net |
+| \@（根） | awverify | _&lt;appname>. azurewebsites.net_ |
+| www（子域） | awverify.www | _&lt;appname>. azurewebsites.net_ |
+| \*（通配符） | awverify.\* | _&lt;appname>. azurewebsites.net_ |
 
 在 DNS 记录页中，记下要迁移的 DNS 名称的记录类型。 应用服务支持来自 CNAME 和 A 记录的映射。
 
@@ -91,7 +81,7 @@ ms.locfileid: "62130375"
 
 ![将 DNS 名称添加到应用](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-新主机名可能需要经过一段时间后才会反映在应用的“自定义域”页面中。 请尝试刷新浏览器来更新数据。
+新主机名可能需要经过一段时间后才会反映在应用的“自定义域”页中。 请尝试刷新浏览器来更新数据。
 
 ![已添加 CNAME 记录](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
@@ -111,7 +101,7 @@ ms.locfileid: "62130375"
 
 通过选择右上角的 X 关闭“添加主机名”页。 
 
-在“自定义域”页中，复制应用的 IP 地址。
+在“自定义域”页面中，复制应用的 IP 地址。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
 
@@ -121,19 +111,25 @@ ms.locfileid: "62130375"
 
 对于 `contoso.com` 根域示例，重新映射 A 或 CNAME 记录，如下表中的示例所示： 
 
-| FQDN 示例 | 记录类型 | 主机 | 值 |
+| FQDN 示例 | 记录类型 | 主机 | Value |
 | - | - | - | - |
-| contoso.com（根域） | A | `@` | 在[复制应用的 IP 地址](#info)步骤中复制的 IP 地址 |
-| www\.contoso.com (sub) | CNAME | `www` | &lt;appname>.azurewebsites.net |
-| \*.contoso.com（通配符域） | CNAME | _\*_ | &lt;appname>.azurewebsites.net |
+| contoso.com (root) | A | `@` | 通过[复制应用的 IP 地址](#info)获得的 IP 地址 |
+| www\.contoso.com (sub) | CNAME | `www` | _&lt;appname>. azurewebsites.net_ |
+| \*.contoso.com（通配符域） | CNAME | _\*_ | _&lt;appname>. azurewebsites.net_ |
 
 保存设置。
 
 在 DNS 传播发生后，DNS 查询应立即开始解析应用服务应用。
 
+## <a name="active-domain-in-azure"></a>Azure 中的活动域
+
+可以在订阅之间或者在同一订阅内部迁移 Azure 中的活动自定义域。 但是，这种不停机的迁移方案需要在特定的时间为源应用和目标应用分配同一个自定义域。 因此，需确保两个应用未部署到同一个部署单元（在内部称为“Web 空间”）。 一个域名只能分配到每个部署单元中的一个应用。
+
+可以通过查看 FTP/S URL `<deployment-unit>.ftp.azurewebsites.windows.net` 的域名，找到应用的部署单元。 检查并确保源应用与目标应用的部署单元不同。 应用的部署单元由它所在的[应用服务计划](overview-hosting-plans.md)决定。 该部署单元是在创建计划时由 Azure 随机选择的，且无法更改。 [在同一资源组和同一区域中创建两个计划](app-service-plan-manage.md#create-an-app-service-plan)时，Azure 只会确保这两个计划位于同一个部署单元，但不提供任何逻辑来确保计划位于不同的部署单元。 在不同部署单元中创建计划的唯一方法是在新的资源组或区域中不断地创建计划，直到获得不同的部署单元。
+
 ## <a name="next-steps"></a>后续步骤
 
-了解如何将自定义 SSL 证书绑定到应用服务。
+了解如何将自定义 TLS/SSL 证书绑定到应用服务。
 
 > [!div class="nextstepaction"]
-> [将现有的自定义 SSL 证书绑定到 Azure 应用服务](app-service-web-tutorial-custom-ssl.md)
+> [在 Azure 应用服务中使用 TLS 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB 中的自动联机备份和按需数据还原
+title: Azure Cosmos DB 中的联机备份和按需数据还原
 description: 本文介绍了 Azure Cosmos DB 中自动联机备份和按需数据还原的工作原理。
 author: kanshiG
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 066549f1343eaceb9a47fccc3b5d4508f226a89b
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 8ed9e23b178b8eeefbd3c3a690491124e6901180
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967471"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85112916"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB 中的联机备份和按需数据还原
 
@@ -22,7 +22,7 @@ Azure Cosmos DB 会定期自动备份数据。 自动备份不会影响数据库
 
 使用 Azure Cosmos DB，数据和数据备份都高度冗余，并且具有可复原性，能抵御区域性灾难。 以下步骤演示 Azure Cosmos DB 如何执行数据备份：
 
-* Azure Cosmos DB 每 4 小时自动备份数据库一次，在任何时间点都只存储最新的 2 个备份。 不过，如果删除了容器或数据库，Azure Cosmos DB 会将给定容器或数据库中的现有快照保留 30 天。
+* Azure Cosmos DB 每隔 4 小时自动对数据库执行一次备份，而且在任何时候都只存储最新的 2 个备份。 不过，如果删除了容器或数据库，Azure Cosmos DB 会将给定容器或数据库中的现有快照保留 30 天。
 
 * Azure Cosmos DB 将这些备份存储在 Azure Blob 存储中，而实际数据以本地形式驻留在 Azure Cosmos DB 中。
 
@@ -34,7 +34,7 @@ Azure Cosmos DB 会定期自动备份数据。 自动备份不会影响数据库
 
 下图显示了如何在美国西部的远程 Azure Blob 存储帐户中备份 Azure Cosmos 容器（其三个主要物理分区全部位于美国西部），然后将其复制到美国东部：
 
-![GRS Azure 存储中所有 Cosmos DB 实体的定期完整备份](./media/online-backup-and-restore/automatic-backup.png)
+:::image type="content" source="./media/online-backup-and-restore/automatic-backup.png" alt-text="GRS Azure 存储中所有 Cosmos DB 实体的定期完整备份" border="false":::
 
 ## <a name="options-to-manage-your-own-backups"></a>管理自己的备份的选项
 
@@ -79,7 +79,7 @@ Azure Cosmos DB 每四个小时拍摄一次数据快照。 在任何给定时间
 可通过以下方式将数据迁移回原始的 Azure Cosmos 帐户：
 
 * 使用 [Cosmos DB 数据迁移工具](import-data.md)
-* 使用 [Azure 数据工厂]( ../data-factory/connector-azure-cosmos-db.md)
+* 使用[Azure 数据工厂]( ../data-factory/connector-azure-cosmos-db.md)
 * 使用 Azure Cosmos DB 中的[更改源](change-feed.md) 
 * 编写自定义代码
 

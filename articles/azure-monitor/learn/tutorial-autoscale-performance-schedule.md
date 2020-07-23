@@ -1,20 +1,19 @@
 ---
-title: 基于性能数据或计划自动缩放 Azure 资源
+title: 基于数据或计划自动缩放 Azure 资源
 description: 使用指标数据和调度为应用服务计划创建自动缩放设置
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: tutorial
 ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
-ms.openlocfilehash: 44fecf47ccd1ce07c7e51f7bcf51ef7823f2cf97
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9a069c4e63abd5307c123799d92e656294045a65
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088343"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505850"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>基于性能数据或调度为 Azure 资源创建自动缩放设置 | Microsoft 文档
 
@@ -184,5 +183,4 @@ ms.locfileid: "58088343"
 若要了解有关自动缩放设置的详细信息，请继续查看[自动缩放概述](../../azure-monitor/platform/autoscale-overview.md)。
 
 > [!div class="nextstepaction"]
-> [存档监视数据](tutorial-archive-data.md)
-
+> [存档监视数据](../platform/platform-logs-overview.md)

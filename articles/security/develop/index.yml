@@ -1,0 +1,49 @@
+### YamlMime:Landing
+title: 安全开发文档
+summary: 通过我们的示例应用、最佳做法和指南，了解如何在 Azure 上开发和部署安全的应用程序。
+metadata:
+  title: Microsoft Azure 上的安全开发文档
+  description: 通过使用示例应用、最佳做法和指南，了解如何在 Azure 上开发安全的应用程序。
+  services: security
+  ms.service: security
+  ms.subservice: develop
+  ms.topic: landing-page
+  author: TerryLanfear
+  ms.author: terrylan
+  manager: rkarlin
+  ms.date: 10/24/2019
+  ms.openlocfilehash: 7ba31270de5a2b81fdfbc61db6bc5f3065f45438
+  ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/17/2020
+  ms.locfileid: "84886256"
+landingContent:
+- title: 入门
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 安全开发最佳做法
+      url: secure-dev-overview.md
+    - text: 设计阶段
+      url: secure-design.md
+    - text: 开发阶段
+      url: secure-develop.md
+    - text: 部署阶段
+      url: secure-deploy.md
+- title: 将分析工具添加到安全开发
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 安全代码分析
+      url: security-code-analysis-overview.md
+    - text: 威胁建模
+      url: threat-modeling-tool.md
+- title: 培养技能
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 前 5 个安全项
+      url: https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider
+    - text: 保护 Azure 中云应用程序的安全
+      url: https://docs.microsoft.com/learn/paths/secure-your-cloud-apps

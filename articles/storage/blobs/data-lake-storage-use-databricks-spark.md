@@ -1,22 +1,22 @@
 ---
-title: 教程：使用 Spark 通过 Azure Databricks 访问 Azure Data Lake Storage Gen2 数据 | Microsoft Docs
+title: 教程：Azure Data Lake Storage Gen2、Azure Databricks & Spark | Microsoft Docs
 description: 本教程介绍如何在 Azure Databricks 群集上运行 Spark 查询，以便访问 Azure Data Lake Storage Gen2 存储帐户中的数据。
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 03/11/2019
+ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: b332c11e76ad335772cc607edcf569f896acb873
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.custom: tracking-python
+ms.openlocfilehash: 12f5f8b1e1a20675fd08f753e515faef2f7a97ce
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65951390"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560035"
 ---
-# <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>教程：使用 Spark 通过 Azure Databricks 访问 Data Lake Storage Gen2 数据
+# <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>教程：Azure Data Lake Storage Gen2、Azure Databricks & Spark
 
 本教程介绍如何将 Azure Databricks 群集连接到启用了 Azure Data Lake Storage Gen2 的 Azure 存储帐户中存储的数据。 建立此连接后，即可在群集本机上针对数据运行查询和分析。
 
@@ -43,12 +43,12 @@ ms.locfileid: "65951390"
 
   在执行该文中的步骤时，需要完成一些特定的事项。
 
-  :heavy_check_mark:执行该文中[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)部分中的步骤时，请确保将“存储 Blob 数据参与者”  角色分配给服务主体。
+  :heavy_check_mark:执行该文中[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)部分中的步骤时，请确保将“存储 Blob 数据参与者”  角色分配给服务主体。
 
   > [!IMPORTANT]
   > 请确保在 Data Lake Storage Gen2 存储帐户的范围内分配角色。 可以将角色分配给父资源组或订阅，但在这些角色分配传播到存储帐户之前，你将收到与权限相关的错误。
 
-  :heavy_check_mark:执行本文中[获取用于登录的值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分中的步骤时，请将租户 ID、应用 ID 和密码值粘贴到文本文件中。 很快就会需要这些值。
+  :heavy_check_mark:执行本文的[获取用于登录的值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分中的步骤时，请将租户 ID、应用 ID 和客户端机密值粘贴到文本文件中。 很快就会需要这些值。
 
 ### <a name="download-the-flight-data"></a>下载航班数据
 
@@ -72,11 +72,11 @@ ms.locfileid: "65951390"
 
 2. 在“Azure Databricks 服务”  下，提供以下值来创建 Databricks 服务：
 
-    |属性  |说明  |
+    |properties  |说明  |
     |---------|---------|
     |**工作区名称**     | 为 Databricks 工作区提供一个名称。  |
     |**订阅**     | 从下拉列表中选择自己的 Azure 订阅。        |
-    |**资源组**     | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../../azure-resource-manager/resource-group-overview.md)。 |
+    |**资源组**     | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../../azure-resource-manager/management/overview.md)。 |
     |**位置**     | 选择“美国西部 2”  。 有关其他可用区域，请参阅[各区域推出的 Azure 服务](https://azure.microsoft.com/regions/services/)。       |
     |**定价层**     |  选择“标准”  。     |
 
@@ -98,15 +98,13 @@ ms.locfileid: "65951390"
 
     ![在 Azure 上创建 Databricks Spark 群集](./media/data-lake-storage-use-databricks-spark/create-databricks-spark-cluster.png "在 Azure 上创建 Databricks Spark 群集")
 
-4. 填写以下字段的值，对于其他字段接受默认值：
+    填写以下字段的值，对于其他字段接受默认值：
 
-    * 输入群集的名称。
+    - 输入群集的名称。
+     
+    - 请务必选中“在不活动超过 120 分钟后终止”  复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
 
-    * 在本文中，请创建运行时为 **5.1** 的群集。
-
-    * 请务必选中“在不活动超过 \_\_ 分钟后终止”  复选框。 如果未使用群集，则请提供一个持续时间（以分钟为单位），超过该时间后群集会被终止。
-
-    * 选择“创建群集”。  群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
+4. 选择“创建群集”。  群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
 
 ## <a name="ingest-data"></a>引入数据
 
@@ -125,20 +123,20 @@ ms.locfileid: "65951390"
 2. 若要复制 *.csv* 帐户中的数据，请输入以下命令。
 
    ```bash
-   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time.csv
+   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<container-name>/folder1/On_Time.csv
    ```
 
    * 将 `<csv-folder-path>` 占位符值替换为 .csv 文件的路径  。
 
    * 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
 
-   * 将 `<file-system-name>` 占位符替换为你要为文件系统提供的任何名称。
+   * 将 `<container-name>` 占位符替换为存储帐户中容器的名称。
 
-## <a name="create-a-file-system-and-mount-it"></a>创建并装载文件系统
+## <a name="create-a-container-and-mount-it"></a>创建容器并将其装载
 
-在本部分，你将在存储帐户中创建一个文件系统和文件夹。
+在本部分中，你将在存储帐户中创建容器和文件夹。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，转到所创建的 Azure Databricks 服务，然后选择“启动工作区”。 
+1. 在 [Azure 门户](https://portal.azure.com)中，转到你创建的 Azure Databricks 服务，然后选择“启动工作区”。 
 
 2. 在左侧选择“工作区”  。 在**工作区**下拉列表中，选择**创建** > **笔记本**。
 
@@ -154,30 +152,17 @@ ms.locfileid: "65951390"
     configs = {"fs.azure.account.auth.type": "OAuth",
            "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
            "fs.azure.account.oauth2.client.id": "<appId>",
-           "fs.azure.account.oauth2.client.secret": "<password>",
+           "fs.azure.account.oauth2.client.secret": "<clientSecret>",
            "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant>/oauth2/token",
            "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
 
     dbutils.fs.mount(
-    source = "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/folder1",
+    source = "abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/folder1",
     mount_point = "/mnt/flightdata",
     extra_configs = configs)
     ```
 
-18. 在此代码块中，请将 `appId`、`password`、`tenant` 和 `storage-account-name` 占位符值替换为在完成本教程的先决条件时收集的值。 将 `file-system-name` 占位符值替换为在上一步中为 ADLS 文件系统指定的名称。
-
-使用这些值替换上述占位符。
-
-   * `appId` 和 `password` 来自在创建服务主体的过程中向 active directory 注册的应用。
-
-   * `tenant-id` 来自你的订阅。
-
-   * `storage-account-name` 是 Azure Data Lake Storage Gen2 存储帐户的名称。
-
-   * 将 `file-system-name` 占位符替换为你要为文件系统提供的任何名称。
-
-   > [!NOTE]
-   > 在生产设置中，请考虑将密码存储在 Azure Databricks 中。 然后，将查找密钥（而不是密码）添加到代码块中。 完成了本快速入门之后，请参阅 Azure Databricks 网站上的 [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) 一文以查看此方法的示例。
+18. 在此代码块中，请将 `appId`、`clientSecret`、`tenant` 和 `storage-account-name` 占位符值替换为在完成本教程的先决条件时收集的值。 将 `container-name` 占位符值替换为容器的名称。
 
 19. 按 **SHIFT + ENTER** 键，运行此块中的代码。
 
@@ -191,7 +176,8 @@ ms.locfileid: "65951390"
 # Use the previously established DBFS mount point to read the data.
 # create a data frame to read data.
 
-flightDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/*.csv")
+flightDF = spark.read.format('csv').options(
+    header='true', inferschema='true').load("/mnt/flightdata/*.csv")
 
 # read the airline csv file and write the output to parquet format for easy query.
 flightDF.write.mode("append").parquet("/mnt/flightdata/parquet/flights")
@@ -227,57 +213,61 @@ dbutils.fs.ls("/mnt/flightdata/parquet/flights")
 * 将 `<csv-folder-path>` 占位符值替换为 .csv 文件的路径  。
 
 ```python
-#Copy this into a Cmd cell in your notebook.
-acDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/On_Time.csv")
+# Copy this into a Cmd cell in your notebook.
+acDF = spark.read.format('csv').options(
+    header='true', inferschema='true').load("/mnt/flightdata/On_Time.csv")
 acDF.write.parquet('/mnt/flightdata/parquet/airlinecodes')
 
-#read the existing parquet file for the flights database that was created earlier
-flightDF = spark.read.format('parquet').options(header='true', inferschema='true').load("/mnt/flightdata/parquet/flights")
+# read the existing parquet file for the flights database that was created earlier
+flightDF = spark.read.format('parquet').options(
+    header='true', inferschema='true').load("/mnt/flightdata/parquet/flights")
 
-#print the schema of the dataframes
+# print the schema of the dataframes
 acDF.printSchema()
 flightDF.printSchema()
 
-#print the flight database size
+# print the flight database size
 print("Number of flights in the database: ", flightDF.count())
 
-#show the first 20 rows (20 is the default)
-#to show the first n rows, run: df.show(n)
+# show the first 20 rows (20 is the default)
+# to show the first n rows, run: df.show(n)
 acDF.show(100, False)
 flightDF.show(20, False)
 
-#Display to run visualizations
-#preferably run this in a separate cmd cell
+# Display to run visualizations
+# preferably run this in a separate cmd cell
 display(flightDF)
 ```
 
 输入此脚本，以针对数据运行一些基本分析查询。
 
 ```python
-#Run each of these queries, preferably in a separate cmd cell for separate analysis
-#create a temporary sql view for querying flight information
+# Run each of these queries, preferably in a separate cmd cell for separate analysis
+# create a temporary sql view for querying flight information
 FlightTable = spark.read.parquet('/mnt/flightdata/parquet/flights')
 FlightTable.createOrReplaceTempView('FlightTable')
 
-#create a temporary sql view for querying airline code information
+# create a temporary sql view for querying airline code information
 AirlineCodes = spark.read.parquet('/mnt/flightdata/parquet/airlinecodes')
 AirlineCodes.createOrReplaceTempView('AirlineCodes')
 
-#using spark sql, query the parquet file to return total flights in January and February 2016
+# using spark sql, query the parquet file to return total flights in January and February 2016
 out1 = spark.sql("SELECT * FROM FlightTable WHERE Month=1 and Year= 2016")
 NumJan2016Flights = out1.count()
 out2 = spark.sql("SELECT * FROM FlightTable WHERE Month=2 and Year= 2016")
-NumFeb2016Flights=out2.count()
-print("Jan 2016: ", NumJan2016Flights," Feb 2016: ",NumFeb2016Flights)
-Total= NumJan2016Flights+NumFeb2016Flights
+NumFeb2016Flights = out2.count()
+print("Jan 2016: ", NumJan2016Flights, " Feb 2016: ", NumFeb2016Flights)
+Total = NumJan2016Flights+NumFeb2016Flights
 print("Total flights combined: ", Total)
 
 # List out all the airports in Texas
-out = spark.sql("SELECT distinct(OriginCityName) FROM FlightTable where OriginStateName = 'Texas'") 
+out = spark.sql(
+    "SELECT distinct(OriginCityName) FROM FlightTable where OriginStateName = 'Texas'")
 print('Airports in Texas: ', out.show(100))
 
-#find all airlines that fly from Texas
-out1 = spark.sql("SELECT distinct(Reporting_Airline) FROM FlightTable WHERE OriginStateName='Texas'")
+# find all airlines that fly from Texas
+out1 = spark.sql(
+    "SELECT distinct(Reporting_Airline) FROM FlightTable WHERE OriginStateName='Texas'")
 print('Airlines that fly to/from Texas: ', out1.show(100, False))
 ```
 

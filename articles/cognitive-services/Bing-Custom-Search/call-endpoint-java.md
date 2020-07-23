@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用 Java 调用必应自定义搜索终结点 | Microsoft Docs
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 参考本快速入门开始从必应自定义搜索实例请求 Java 搜索结果。
 services: cognitive-services
 author: aahill
@@ -8,32 +8,32 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 03/04/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: fc1c7d2730d68fb8e3b51a39e0cb89b4098418d6
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 292b94e56d988a1126db83e2f8ce40bbb0af6f42
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337016"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873246"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>快速入门：使用 Java 调用必应自定义搜索终结点
 
-参考本快速入门开始从必应自定义搜索实例请求搜索结果。 虽然此应用程序是以 Java 编写的，但必应自定义搜索 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java) 上获得。
+使用此快速入门了解如何从必应自定义搜索实例请求搜索结果。 虽然此应用程序是以 Java 编写的，但必应自定义搜索 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java) 上获得。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 必应自定义搜索实例。 请参阅[快速入门：创建第一个必应自定义搜索实例](quick-start.md)，了解详细信息。
+- 必应自定义搜索实例。 有关详细信息，请参阅[快速入门：创建首个必应自定义搜索实例](quick-start.md)。
 
-- 最新的 [Java 开发工具包](https://www.oracle.com/technetwork/java/javase/downloads/index.html)  
+- 最新的 [Java 开发工具包](https://www.oracle.com/technetwork/java/javase/downloads/index.html)。
 
-- [Gson 库](https://github.com/google/gson)
+- [Gson 库](https://github.com/google/gson)。
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 
-1. 在你最喜欢的 IDE 或编辑器中新建一个 Java 项目，并导入以下库。
+1. 在你最喜欢的 IDE 或编辑器中新建一个 Java 项目，并导入以下库：
 
     ```java
     import java.io.InputStream;
@@ -50,7 +50,7 @@ ms.locfileid: "57337016"
     import com.google.gson.JsonParser;
     ```
 
-2. 创建名为 `CustomSrchJava` 的类，然后为订阅密钥、自定义搜索终结点和搜索实例的自定义配置 ID 创建变量。 
+2. 创建名为 `CustomSrchJava` 的类，然后为订阅密钥、自定义搜索终结点和搜索实例的自定义配置 ID 创建变量。 你可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
     ```java
     public class CustomSrchJava {
         static String host = "https://api.cognitive.microsoft.com";
@@ -63,8 +63,8 @@ ms.locfileid: "57337016"
 
 3. 创建另一个名为 `SearchResults` 的类，用于存储来自必应自定义搜索实例的响应。
 
-    ```csharp
-    class SearchResults{
+    ```java
+    class SearchResults {
         HashMap<String, String> relevantHeaders;
         String jsonResponse;
         SearchResults(HashMap<String, String> headers, String json) {
@@ -120,7 +120,7 @@ ms.locfileid: "57337016"
         }
     ```
 
-3. 在应用程序的主要方法中使用搜索词调用 `SearchWeb()` 
+3. 输出 JSON 响应。
 
     ```java
     System.out.println("\nJSON Response:\n");

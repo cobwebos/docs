@@ -1,25 +1,24 @@
 ---
-title: 快速入门 - 使用 PowerShell 创建 Azure Analysis Services 服务器 | Microsoft Docs
+title: 快速入门 - 使用 PowerShell Azure Analysis Services 创建 Azure Analysis Services | Microsoft Docs
 description: 了解如何使用 PowerShell 创建 Azure Analysis Services 服务器
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 01/09/2019
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b3b23509197dd1d91dbd74c57b3c732151c51a97
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e2b772ac060e55d21341626772667d56245542ca
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66142989"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80409933"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>快速入门：创建服务器 - PowerShell
 
 本快速入门介绍如何从命令行使用 PowerShell，以便在 Azure 订阅中创建 Azure Analysis Services 服务器。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -45,7 +44,7 @@ Connect-AzAccount
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-[Azure 资源组](../azure-resource-manager/resource-group-overview.md)是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 创建服务器时，必须在订阅中指定资源组。 如果还没有资源组，可以使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令新建一个。 以下示例在美国西部区域创建一个名为 `myResourceGroup` 的资源组。
+[Azure 资源组](../azure-resource-manager/management/overview.md)是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 创建服务器时，必须在订阅中指定资源组。 如果还没有资源组，可以使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令新建一个。 以下示例在美国西部区域创建一个名为 `myResourceGroup` 的资源组。
 
 ```powershell
 New-AzResourceGroup -Name "myResourceGroup" -Location "WestUS"

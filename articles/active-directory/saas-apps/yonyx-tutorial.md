@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 0cc94141d683f626d0654e2067135569710de330
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: b2a22beb1c88e30ce0c88a0f57ec71bbdc45ece8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65896027"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67086444"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yonyx-interactive-guides"></a>教程：Azure Active Directory 与 Yonyx Interactive Guides 的集成
 
@@ -107,9 +107,9 @@ ms.locfileid: "65896027"
 
     ![Yonyx Interactive Guides 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company name>.yonyx.com/y/conversation/?id=<guid number>` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company name>.yonyx.com/y/conversation/?id=<guid number>`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<company name>.yonyx.com` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<company name>.yonyx.com`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Yonyx Interactive Guides 客户端支持团队](mailto:support@yonyx.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -130,7 +130,7 @@ ms.locfileid: "65896027"
 
 ### <a name="configure-yonyx-interactive-guides-single-sign-on"></a>配置 Yonyx Interactive Guides 单一登录
 
-若要在 **Yonyx Interactive Guides** 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Yonyx Interactive Guides 支持团队](mailto:support@yonyx.com)  。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Yonyx Interactive Guides** 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Yonyx Interactive Guides 支持团队](mailto:support@yonyx.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -150,7 +150,7 @@ ms.locfileid: "65896027"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -172,7 +172,7 @@ ms.locfileid: "65896027"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

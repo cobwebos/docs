@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ba132adc6b0fd2b8423a7bce30ad6d52fccc898e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bbb6acd4e976d345daa99cde7635febc3755963f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57858195"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873825"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>快速入门：使用 PHP 调用必应 Web 搜索 API  
 
-使用本快速入门进行你的第一次必应 Web 搜索 API 并接收 JSON 响应。 这个 Node.js 应用程序会向该 API 发送一个搜索请求并显示响应。 虽然此应用程序是以 JavaScript 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
+根据此快速入门中的说明对必应 Web 搜索 API 进行第一次调用。 这个 Node.js 应用程序会向该 API 发送一个搜索请求并显示 JSON 响应。 虽然此应用程序是以 JavaScript 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,7 +33,7 @@ ms.locfileid: "57858195"
 
 ## <a name="enable-secure-http-support"></a>启用安全 HTTP 支持
 
-在开始之前，请找到 `php.ini` 并取消以下行的注释：
+在开始之前，请找到 php.ini 并取消以下行的注释：
 
 ```php
 ; extension=php_openssl.dll
@@ -41,9 +41,13 @@ ms.locfileid: "57858195"
 
 ## <a name="create-a-project-and-define-variables"></a>创建项目并定义变量
 
-在喜欢使用的 IDE 或编辑器中新建一个 PHP 项目。 请勿忘记添加开始和结束标记 `<?php` 和 `?>`。
+1. 在喜欢使用的 IDE 或编辑器中新建一个 PHP 项目。 添加开始和结束标记：`<?php` 和 `?>`。
 
-必须设置几个变量，然后才能继续操作。 确认 `$endpoint` 正确并将 `$accesskey` 值替换为来自你的 Azure 帐户的有效订阅密钥。 可以通过替换 `$term` 的值随意自定义搜索查询。
+2. 对于 `$endpoint` 值，可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。 
+
+3. 确认 `$endpoint` 值正确并将 `$accesskey` 值替换为来自你的 Azure 帐户的有效订阅密钥。 
+
+4. （可选）通过替换 `$term` 的值自定义搜索查询。
 
 ```php
 $accessKey = 'enter key here';
@@ -113,7 +117,7 @@ if (strlen($accessKey) == 32) {
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-最后一步是验证代码并运行它！ 如果希望将你的代码与我们的进行比较，下面是完整的程序：
+最后一步是验证代码并运行它。 如果希望将你的代码与我们的进行比较，下面是完整的程序：
 
 ```php
 <?php
@@ -155,7 +159,7 @@ if (strlen($accessKey) == 32) {
 ?>
 ```
 
-## <a name="sample-response"></a>示例响应
+## <a name="example-json-response"></a>示例 JSON 响应
 
 来自必应 Web 搜索 API 的响应以 JSON 形式返回。 此示例响应已截断，仅显示了单个结果。  
 
@@ -177,9 +181,9 @@ if (strlen($accessKey) == 32) {
         "snippet": "Knock down barriers between you and your ideas. Enable natural and contextual interaction with tools that augment users' experiences via the power of machine-based AI. Plug them in and bring your ideas to life.",
         "deepLinks": [
           {
-            "name": "Face API",
+            "name": "Face",
             "url": "https://azure.microsoft.com/services/cognitive-services/face/",
-            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using a Face API from Microsoft Azure. ... Cognitive Services; Face API;"
+            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using the Face service from Microsoft Azure. ... Cognitive Services; Face service;"
           },
           {
             "name": "Text Analytics",
@@ -284,6 +288,6 @@ if (strlen($accessKey) == 32) {
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [必应 Web 搜索单页应用教程](../tutorial-bing-web-search-single-page-app.md)
+> [必应 Web 搜索 API 单页应用教程](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

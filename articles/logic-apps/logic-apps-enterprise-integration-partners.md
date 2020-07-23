@@ -1,95 +1,110 @@
 ---
-title: 为 B2B 集成添加贸易合作伙伴 - Azure 逻辑应用 | Microsoft Docs
-description: 在带有 Enterprise Integration Pack 的 Azure 逻辑应用中为集成帐户创建贸易合作伙伴
+title: 为 B2B 集成添加贸易合作伙伴
+description: 在要与 Azure 逻辑应用配合使用的集成帐户中创建贸易合作伙伴
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: b179325c-a511-4c1b-9796-f7484b4f6873
-ms.date: 07/08/2016
-ms.openlocfilehash: 137ed89c276338b534cad8fdf81ec31b5e5610b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 06/22/2019
+ms.openlocfilehash: e58cbe85f30ea09adde45d55bb7b80c710c45495
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60845912"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74792440"
 ---
-# <a name="add-trading-partners-for-integration-accounts-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中为集成帐户添加贸易合作伙伴
+# <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>向 Azure 逻辑应用的集成帐户添加贸易合作伙伴
 
-合作伙伴是参与企业到企业 (B2B) 交易并相互交换消息的实体。 在创建代表你和这些交易中的其他组织的合作伙伴之前，们双方必须先共享可识别并验证相互发送的消息的信息。 在讨论这些详细信息并准备好开始业务关系后，们便可以在集成帐户中创建代表你们双方的合作伙伴。
+在 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)中，可以通过将[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)与逻辑应用配合使用来创建自动化的企业到企业 (B2B) 集成工作流。 可以创建代表你的组织和他人的组织的贸易合作伙伴并将其作为项目添加到集成帐户。 合作伙伴是参与 B2B 交易并相互交换消息的实体。
 
-## <a name="what-roles-do-partners-play-in-your-integration-account"></a>合作伙伴在集成帐户中扮演什么角色？
+创建这些合作伙伴之前，请务必与合作伙伴讨论并共享相关信息，明确如何确定和验证另一方发送的消息。 在认可这些详细信息后，就可以在集成帐户中创建合作伙伴了。
 
-要定义有关合作伙伴之间交换的消息的详细信息，需在这些合作伙伴之间创建协议。 但是，在创建协议前，必须先将至少两个合作伙伴添加到集成帐户。 组织必须作为**管理方**是协议的一部分。 其他合作伙伴或**托管方**表示与组织交换消息的组织。 托管方可以是其他公司，甚至是自己的组织中的部门。
+## <a name="partner-roles-in-integration-accounts"></a>集成帐户中的合作伙伴角色
 
-添加这些合作伙伴后，便可以创建协议。
+若要明确与合作伙伴交换的消息的详情，请创建[协议](../logic-apps/logic-apps-enterprise-integration-agreements.md)并将其作为项目添加到集成帐户。 协议要求集成帐户中至少有两个合作伙伴。 在协议中，你的组织始终是主机合作伙伴  。 与你的组织交换消息的组织是来宾合作伙伴  。 来宾合作伙伴可以是其他公司，甚至是你自己的组织中的部门。 添加这些合作伙伴后，便可以创建协议。
 
-接收和发送设置源于主机合作伙伴的角度。 例如，协议中的接收设置确定主机合作伙伴如何接收从来宾合作伙伴发送的消息。 同样，协议中的发送设置指示主机合作伙伴如何将消息发送给来宾合作伙伴。
+在协议中，你从主机合作伙伴的角度详细指定如何处理传入和传出消息。 对于传入消息，可以通过“接收设置”指定主机合作伙伴如何从协议中的来宾合作伙伴处接收消息。  对于传出消息，可以通过“发送设置”  指定主机合作伙伴如何向来宾合作伙伴发送消息。
+
+## <a name="prerequisites"></a>必备条件
+
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
+
+* 用于存储合作伙伴、协议和其他 B2B 项目的[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。 此集成帐户必须与 Azure 订阅相关联。
 
 ## <a name="create-partner"></a>创建合作伙伴
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 在 Azure 主菜单中，选择“所有服务”。 在搜索框中输入“集成”，然后选择“集成帐户”。
+1. 在 Azure 主菜单中，选择“所有服务”  。 在搜索框中输入“集成”，然后选择“集成帐户”  。
 
-   ![查找集成帐户](./media/logic-apps-enterprise-integration-partners/account-1.png)
+   ![选择“集成帐户”](./media/logic-apps-enterprise-integration-partners/find-integration-accounts.png)
 
-3. 在“集成帐户”下，选择要添加合作伙伴的集成帐户。
+1. 在“集成帐户”  下，选择要添加合作伙伴的集成帐户。
 
-   ![选择“集成帐户”](./media/logic-apps-enterprise-integration-partners/account-2.png)
+   ![选择“集成帐户”](./media/logic-apps-enterprise-integration-partners/select-integration-account.png)
 
-4. 选择“合作伙伴”磁贴。
+1. 选择“合作伙伴”  磁贴。
 
-   ![选择“合作伙伴”](./media/logic-apps-enterprise-integration-partners/partner-1.png)
+   ![选择“合作伙伴”磁贴](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
 
-5. 在“合作伙伴”下，选择“添加”。
+1. 在“合作伙伴”  下，选择“添加”  。 在“添加合作伙伴”  下提供合作伙伴的详细信息，如下表所述。
 
-   ![选择“添加”](./media/logic-apps-enterprise-integration-partners/partner-2.png)
+   ![选择“添加”，提供合作伙伴详细信息](./media/logic-apps-enterprise-integration-partners/add-partners.png)
 
-6. 为合作伙伴输入名称，并选择“限定符”。 输入**值**以标识应用将接收的文档。 完成后，选择“确定”。
+   | properties | 必选 | 说明 |
+   |----------|----------|-------------|
+   | **名称** | 是 | 合作伙伴的名称 |
+   | **Qualifier** | 是 | 身份验证正文，用于向组织提供唯一业务标识，例如 **D-U-N-S (Dun & Bradstreet)** 。 <p>合作伙伴可以选择使用双方约定的业务标识。 对于这些方案，请为 EDIFACT 选择“双方约定”，或为 X12 选择“双方约定(X12)”。   <p>对于 RosettaNet，请仅选择“DUNS”  ，这是标准。 |
+   | **值** | 是 | 一个值，用于标识逻辑应用接收的文档。 <p>对于 RosettaNet，此值必须是对应于 DUNS 号的 9 位数字。 |
+   ||||
 
-   ![添加合作伙伴详细信息](./media/logic-apps-enterprise-integration-partners/partner-3.png)
+   > [!NOTE]
+   > 对于使用 RosettaNet 的合作伙伴，可以先创建这些合作伙伴，[然后编辑它们](#edit-partner)，通过这种方式指定其他信息。
 
-7. 再次选择“合作伙伴”磁贴。
+1. 完成后，选择“确定”  。
 
-   ![选择“合作伙伴”磁贴](./media/logic-apps-enterprise-integration-partners/partner-5.png)
+   现在会在“合作伙伴”列表中显示新合作伙伴。  此外，“合作伙伴”  磁贴会更新当前的合作伙伴数。
 
-   现在将显示新合作伙伴。 
+   ![新合作伙伴](./media/logic-apps-enterprise-integration-partners/new-partner.png)
 
-   ![查看新合作伙伴](./media/logic-apps-enterprise-integration-partners/partner-6.png)
+<a name="edit-partner"></a>
 
 ## <a name="edit-partner"></a>编辑合作伙伴
 
-1. 在 [Azure 门户](https://portal.azure.com)中，查找并选择“集成帐户”。 选择“合作伙伴”磁贴。
+1. 在 [Azure 门户](https://portal.azure.com)中，查找并选择“集成帐户”。
+选择“合作伙伴”  磁贴。
 
    ![选择“合作伙伴”磁贴](./media/logic-apps-enterprise-integration-partners/edit.png)
 
-2. 在“合作伙伴”下，选择要编辑的合作伙伴。
+1. 在“合作伙伴”  下选择要编辑的合作伙伴，然后选择“编辑”。  在“编辑”下进行更改。 
 
-   ![选择要删除的合作伙伴](./media/logic-apps-enterprise-integration-partners/edit-1.png)
+   ![进行更改和保存更改](./media/logic-apps-enterprise-integration-partners/edit-partner.png)
 
-3. 在“更新合作伙伴”下，进行更改。
-完成后，选择“保存”。 
+   对于 RosettaNet，可以在“RosettaNet 合作伙伴属性”下指定以下附加信息： 
 
-   ![进行更改和保存更改](./media/logic-apps-enterprise-integration-partners/edit-2.png)
+   | properties | 必选 | 说明 |
+   |----------|----------|-------------|
+   | **合作伙伴分类** | 否 | 合作伙伴的组织类型 |
+   | **供应链代码** | 否 | 合作伙伴的供应链代码，例如“信息技术”或“电子组件” |
+   | **联系人姓名** | 否 | 合作伙伴的联系人姓名 |
+   | **电子邮件** | 否 | 合作伙伴的电子邮件地址 |
+   | **Fax** | 否 | 合作伙伴的传真号码 |
+   | **电话** | 否 | 合作伙伴的电话号码 |
+   ||||
 
-   若要取消所做的更改，请选择“放弃”。
+1. 完成后选择“确定”，保存所做的更改。 
 
 ## <a name="delete-partner"></a>删除合作伙伴
 
-1. 在 [Azure 门户](https://portal.azure.com)中，查找并选择“集成帐户”。 选择“合作伙伴”磁贴。
+1. 在 [Azure 门户](https://portal.azure.com)中，查找并选择“集成帐户”。 选择“合作伙伴”  磁贴。
 
-   ![选择“合作伙伴”磁贴](./media/logic-apps-enterprise-integration-partners/delete.png)
+   ![选择“合作伙伴”磁贴](./media/logic-apps-enterprise-integration-partners/choose-partners-to-delete.png)
 
-2. 在“合作伙伴”下，选择要删除的合作伙伴。
-选择“删除”。
+1. 在“合作伙伴”  下，选择要删除的合作伙伴。 选择“删除”  。
 
-   ![删除合作伙伴](./media/logic-apps-enterprise-integration-partners/delete-1.png)
+   ![删除合作伙伴](./media/logic-apps-enterprise-integration-partners/delete-partner.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解有关协议的详细信息](../logic-apps/logic-apps-enterprise-integration-agreements.md "了解企业集成协议")  
-
+* 详细了解[协议](../logic-apps/logic-apps-enterprise-integration-agreements.md)

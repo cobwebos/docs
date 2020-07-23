@@ -1,20 +1,19 @@
 ---
-title: 准备本地 VMware 服务器用于将 VMware VM 灾难恢复到 Azure| Microsoft 文档
+title: 使用 Azure Site Recovery 准备 VMware VM 灾难恢复
 description: 了解如何准备本地 VMware 服务器使用 Azure Site Recovery 服务灾难恢复到 Azure。
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 7a61edc01a87be8996b4d7dd5093f9d3554e6585
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: b8fd34c8f1e3a32a8252074941a49d61aa540207
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417751"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134907"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>准备本地 VMware 服务器用于灾难恢复到 Azure
 
@@ -91,25 +90,25 @@ Site Recovery 需要访问 VMware 服务器，才能够：
 
 若要在故障转移后使用 RDP 连接到 Windows VM，请执行以下操作：
 
-- **Internet 访问权限**。 在故障转移之前，在本地 VM 上启用 RDP。 请确保为“公共”配置文件添加了 TCP 和 UDP 规则，并确保在“Windows 防火墙” > “允许的应用”中针对所有配置文件允许 RDP    。
+- **Internet 访问权限**。 在故障转移之前，在本地 VM 上启用 RDP。 请确保为“公共”配置文件添加了 TCP 和 UDP 规则，并确保在“Windows 防火墙” > “允许的应用”中针对所有配置文件允许 RDP。
 - **站点到站点 VPN 访问权限**：
     - 在故障转移之前，在本地计算机上启用 RDP。
-    - 应在“Windows 防火墙” -> “允许的应用和功能”中针对“域和专用”网络允许 RDP    。
+    - 应在“Windows 防火墙” -> “允许的应用和功能”中针对“域和专用”网络允许 RDP。
     - 检查操作系统的 SAN 策略是否已设置为 OnlineAll  。 [了解详细信息](https://support.microsoft.com/kb/3031135)。
 - 触发故障转移时，VM 上不应存在待处理的 Windows 更新。 如果存在，则在更新完成之前无法登录到虚拟机。
-- 在 Windows Azure VM 上执行故障转移后，请选中“启动诊断”，查看 VM 的屏幕截图  。 如果无法连接，请检查 VM 是否正在运行，并查看这些[故障排除技巧](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
+- 在 Windows Azure VM 上执行故障转移后，请选中“启动诊断”，查看 VM 的屏幕截图  。 如果无法连接，请检查 VM 是否正在运行，并查看这些[疑难解答提示](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
 
 若要在故障转移后使用 SSH 连接到 Linux VM，请执行以下操作：
 
 - 执行故障转移之前，请在本地计算机上确保安全外壳服务设置为在系统启动时自动启动。
 - 确保防火墙规则允许 SSH 连接。
 - 在 Azure VM 上执行故障转移后，允许已故障转移的 VM 及其所连接 Azure 子网上的网络安全组规则与 SSH 端口建立传入连接。
-- 为 VM [添加公共 IP 地址](site-recovery-monitoring-and-troubleshooting.md)。
+- 为 VM [添加公共 IP 地址](./site-recovery-monitor-and-troubleshoot.md)。
 - 可选中“启动诊断”查看 VM 的屏幕截图  。
 
 
 ## <a name="failback-requirements"></a>故障回复要求
-如果计划故障回复到本地站点，则有多个[故障回复先决条件](vmware-azure-reprotect.md##before-you-begin)。 现在可以准备这些先决条件，但不需要。 可以在故障转移到 Azure 后准备。
+如果计划故障回复到本地站点，则有多个[故障回复先决条件](vmware-azure-reprotect.md#before-you-begin)。 现在可以准备这些先决条件，但不需要。 可以在故障转移到 Azure 后准备。
 
 
 

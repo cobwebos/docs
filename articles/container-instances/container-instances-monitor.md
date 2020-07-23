@@ -1,18 +1,14 @@
 ---
-title: 监视 Azure 容器实例中的容器
+title: 监视容器实例
 description: 如何监视 Azure 容器实例中的容器消耗的计算资源，例如 CPU 和内存。
-services: container-instances
-author: dlepow
-ms.service: container-instances
-ms.topic: overview
+ms.topic: article
 ms.date: 04/24/2019
-ms.author: danlep
-ms.openlocfilehash: 7b46ea0518038eeb908591b8438acc2a9095242c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: HT
+ms.openlocfilehash: e8d41e419abe43530186e256ac6253e2d4783f9b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64570897"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82116361"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>监视 Azure 容器实例中的容器资源
 
@@ -27,26 +23,26 @@ ms.locfileid: "64570897"
 
 目前，仅提供了 Linux 容器的 Azure Monitor 指标。
 
-## <a name="available-metrics"></a>可用指标
+## <a name="available-metrics"></a>可用度量值
 
-Azure Monitor 提供下述 [Azure 容器实例指标][supported-metrics]。 这些指标适用于容器组和单独的容器。
+Azure Monitor 提供下述 [Azure 容器实例指标][supported-metrics]。 这些指标适用于容器组和单独的容器。 默认情况下，指标聚合为平均值。
 
-* **CPU 使用率** - 以**毫核心**为单位进行度量。 一个毫核心是一个 CPU 核心的 1/1000，因此 500 毫核心（或 500 毫）表示 CPU 核心的使用率为 50%。 聚合为所有核心的**平均使用率**。
+* **CPU 使用率** - 以**毫核心**为单位进行度量。 一个毫核心是一个 CPU 核心的 1/1000，因此 500 毫核心表示 0.5 CPU 核心的使用量。
 
-* **内存使用率** - 聚合为**平均字节数**。
+* 内存使用量 - 以字节为单位。****
 
-* **每秒接收的网络字节数**和**每秒传输的网络字节数** - 聚合为**每秒平均字节数**。 
+* 每秒接收的网络字节数和每秒传输的网络字节数。**** **** 
 
 ## <a name="get-metrics---azure-portal"></a>获取指标 - Azure 门户
 
-创建容器组时，Azure Monitor 数据在 Azure 门户中可用。 若要查看容器组的指标，请转到容器组的“概览”页。 在这里可以看到为每个可用指标预先创建的图表。
+创建容器组时，Azure Monitor 数据在 Azure 门户中可用。 若要查看容器组的指标，请转到容器组的“概览”页。**** 在这里可以看到为每个可用指标预先创建的图表。
 
 ![双图表][dual-chart]
 
-在包含多个容器的容器组中，请使用[维度][monitor-dimension]来表示容器的指标。 若要创建包含个体容器指标的图表，请执行以下步骤：
+在包含多个容器的容器组中，使用[维度][monitor-dimension]按容器显示指标。 若要创建包含个体容器指标的图表，请执行以下步骤：
 
-1. 在“概览”页中选择一个指标图表，例如“CPU”。 
-1. 选择“应用拆分”按钮，然后选择“容器名称”。
+1. 在“概览”页中选择一个指标图表，例如“CPU”。**** **** 
+1. 选择“应用拆分”按钮，然后选择“容器名称”****。****
 
 ![维度][dimension]
 
@@ -61,9 +57,11 @@ CONTAINER_GROUP=$(az container show --resource-group <resource-group> --name <co
 
 使用以下命令获取 **CPU** 使用情况指标。
 
-```console
-$ az monitor metrics list --resource $CONTAINER_GROUP --metric CPUUsage --output table
+```azurecli
+az monitor metrics list --resource $CONTAINER_GROUP --metric CPUUsage --output table
+```
 
+```output
 Timestamp            Name       Average
 -------------------  ---------  ---------
 2019-04-23 22:59:00  CPU Usage
@@ -82,9 +80,11 @@ Timestamp            Name       Average
 
 更改命令中 `--metric` 参数的值即可获取其他[支持的指标][supported-metrics]。 例如，使用以下命令获取**内存**使用率指标。 
 
-```console
-$ az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --output table
+```azurecli
+az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --output table
+```
 
+```output
 Timestamp            Name          Average
 -------------------  ------------  ----------
 2019-04-23 22:59:00  Memory Usage
@@ -103,9 +103,11 @@ Timestamp            Name          Average
 
 对于多容器组，添加 `containerName` 维度即可返回每个容器的指标。
 
-```console
-$ az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --dimension containerName --output table
+```azurecli
+az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --dimension containerName --output table
+```
 
+```output
 Timestamp            Name          Containername             Average
 -------------------  ------------  --------------------  -----------
 2019-04-23 22:59:00  Memory Usage  aci-tutorial-app
@@ -138,7 +140,7 @@ Timestamp            Name          Containername             Average
 
 从 [Azure 监视概述][azure-monitoring]详细了解 Azure 监视。
 
-了解如何创建[指标图表][metric-alert]，在 Azure 容器实例的指标超出阈值时获得通知。
+了解如何创建[指标警报][metric-alert]，以便在 Azure 容器实例的指标超出阈值时获得通知。
 
 <!-- IMAGES -->
 [cpu-chart]: ./media/container-instances-monitor/cpu-multi.png

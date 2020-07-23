@@ -1,6 +1,7 @@
 ---
-title: 筛选、 排序、 分页的媒体服务实体-Azure |Microsoft Docs
-description: 本文讨论 Azure 媒体服务实体的筛选、排序和分页。
+title: 媒体服务实体的筛选、排序和分页
+titleSuffix: Azure Media Services
+description: 了解如何对 Azure 媒体服务 v3 实体进行筛选、排序和分页。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,240 +10,120 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 01/21/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 28c880e8709074d808a41d9920361eaa2b20ecc4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7e4f1141a9d4bd58451782e8412063a22565556d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60732359"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80584530"
 ---
-# <a name="filtering-ordering-paging-of-media-services-entities"></a>媒体服务实体的筛选、排序和分页
+# <a name="filtering-ordering-and-paging-of-media-services-entities"></a>媒体服务实体的筛选、排序和分页
 
-媒体服务支持适用于媒体服务 v3 实体的以下 OData 查询选项： 
+本主题讨论在列出 Azure 媒体服务 v3 实体时可以使用的 OData 查询选项和分页支持。
 
-* $filter 
-* $orderby 
-* $top 
-* $skiptoken 
+## <a name="considerations"></a>注意事项
 
-运算符说明：
+* 属于 `Datetime` 类型的实体的属性始终采用 UTC 格式。
+* 在发送请求之前，应将查询字符串中的空格进行 URL 编码。
 
-* Eq = 等于
-* Ne = 不等于
-* Ge = 大于或等于
-* Le = 小于或等于
-* Gt = 大于
-* Lt = 小于
+## <a name="comparison-operators"></a>比较运算符
 
-属于日期/时间类型的实体的属性始终采用 UTC 格式。
+可以使用以下运算符将字段与常量值进行比较：
 
-## <a name="page-results"></a>页面结果
+相等性运算符：
 
-如果查询响应包含许多项，则服务将返回一个“\@odata.nextLink”属性来获取下一页结果。 这可用于逐页浏览整个结果集。 无法配置页面大小。 页面大小因实体类型而异，请参阅以下各个部分，了解详细信息。
+- `eq`：测试某个字段是否*等于*某个常量值。
+- `ne`：测试某个字段是否*不等于*某个常量值。
 
-如果在逐页浏览集合时创建或删除实体，则会在返回的结果中反映此更改（如果这些更改位于集合中尚未下载的部分）。 
+范围运算符：
 
-> [!TIP]
-> 应始终使用下一个链接来枚举集合，而不依赖特定的页面大小。
+- `gt`：测试某个字段是否*大于*某个常量值。
+- `lt`：测试某个字段是否*小于*某个常量值。
+- `ge`：测试某个字段是否大于或等于  某个常数值。
+- `le`：测试某个字段是否*小于或等于*某个常量值。
 
-## <a name="assets"></a>资产
+## <a name="filter"></a>筛选器
 
-### <a name="filteringordering"></a>筛选/排序
+使用 `$filter` 提供一个 OData 筛选器参数，以便只查找感兴趣的对象。
 
-下表显示了如何将筛选和排序选项应用于[资产](https://docs.microsoft.com/rest/api/media/assets)属性： 
+下面的 REST 示例根据资产的 `alternateId` 值进行筛选：
 
-|名称|筛选器|顺序|
-|---|---|---|
-|id|||
-|名称|eq、gt、lt| 升序和降序|
-|properties.alternateId |eq||
-|properties.assetId |eq||
-|properties.container |||
-|properties.created| eq、gt、lt| 升序和降序|
-|properties.description |||
-|properties.lastModified |||
-|properties.storageAccountName |||
-|properties.storageEncryptionFormat | ||
-|type|||
+```
+GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$filter=properties/alternateId%20eq%20'unique identifier'
+```
 
-以下 C# 示例按创建日期筛选：
+下面的 C# 示例根据资产的创建日期进行筛选：
 
 ```csharp
 var odataQuery = new ODataQuery<Asset>("properties/created lt 2018-05-11T17:39:08.387Z");
 var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName, odataQuery);
 ```
 
-### <a name="pagination"></a>分页 
+## <a name="order-by"></a>排序依据
 
-已启用的四个排序顺序均支持分页。 页面大小当前为 1000。
+使用 `$orderby` 按指定的参数对返回的对象排序。 例如：  
 
-#### <a name="c-example"></a>C# 示例
-
-以下 C# 示例显示如何枚举帐户中的所有资产。
-
-```csharp
-var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName);
-
-var currentPage = firstPage;
-while (currentPage.NextPageLink != null)
-{
-    currentPage = await MediaServicesArmClient.Assets.ListNextAsync(currentPage.NextPageLink);
-}
+```
+GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
 ```
 
-#### <a name="rest-example"></a>REST 示例
+若要按升序或降序对结果排序，请将用空格分隔的 `asc` 或 `desc` 追加到字段名称。 例如：`$orderby properties/created desc`。
 
-考虑以下使用 $skiptoken 的示例。 请务必将 *amstestaccount* 替换为你的帐户名，并将 *api-version* 值设置为最新版本。
+## <a name="skip-token"></a>跳过令牌
+
+如果查询响应包含许多项，则服务将返回一个 `$skiptoken` (`@odata.nextLink`) 值，用于获取下一页结果。 使用它可以逐页浏览整个结果集。
+
+在媒体服务 v3 中，无法配置页面大小。 页面大小因实体类型而异。 请阅读以下各个部分，了解详细信息。
+
+如果在对集合进行分页时创建或删除了实体，则返回的结果中会反映这些更改（如果这些更改位于集合中尚未下载的部分中）。
+
+> [!TIP]
+> 始终使用 `nextLink` 来枚举集合，而不依赖于特定的页面大小。
+>
+> `nextLink` 值存在的前提是有多个页面的实体。
+
+考虑以下使用 `$skiptoken` 的示例。 请务必将 *amstestaccount* 替换为你的帐户名，并将 *api-version* 值设置为最新版本。
 
 如果按如下所示请求列出资产：
 
 ```
-GET  https://management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01 HTTP/1.1
+GET  https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01 HTTP/1.1
 x-ms-client-request-id: dd57fe5d-f3be-4724-8553-4ceb1dbe5aab
 Content-Type: application/json; charset=utf-8
 ```
 
-将获得如下所示的响应：
+将返回类似于以下内容的响应：
 
 ```
 HTTP/1.1 200 OK
- 
+
 {
 "value":[
 {
-"name":"Asset 0","id":"/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/amstestaccount/assets/Asset 0","type":"Microsoft.Media/mediaservices/assets","properties":{
-"assetId":"00000000-5a4f-470a-9d81-6037d7c23eff","created":"2018-12-11T22:12:44.98Z","lastModified":"2018-12-11T22:15:48.003Z","container":"asset-98d07299-5a4f-470a-9d81-6037d7c23eff","storageAccountName":"amsdevc1stoaccount11","storageEncryptionFormat":"None"
+"name":"Asset 0","id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/amstestaccount/assets/Asset 0","type":"Microsoft.Media/mediaservices/assets","properties":{
+"assetId":"00000000-0000-0000-0000-000000000000","created":"2018-12-11T22:12:44.98Z","lastModified":"2018-12-11T22:15:48.003Z","container":"asset-00000000-0000-0000-0000-0000000000000","storageAccountName":"amsacctname","storageEncryptionFormat":"None"
 }
 },
 // lots more assets
 {
-"name":"Asset 517","id":"/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/amstestaccount/assets/Asset 517","type":"Microsoft.Media/mediaservices/assets","properties":{
-"assetId":"00000000-912e-447b-a1ed-0f723913b20d","created":"2018-12-11T22:14:08.473Z","lastModified":"2018-12-11T22:19:29.657Z","container":"asset-fd05a503-912e-447b-a1ed-0f723913b20d","storageAccountName":"amsdevc1stoaccount11","storageEncryptionFormat":"None"
+"name":"Asset 517","id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/amstestaccount/assets/Asset 517","type":"Microsoft.Media/mediaservices/assets","properties":{
+"assetId":"00000000-0000-0000-0000-000000000000","created":"2018-12-11T22:14:08.473Z","lastModified":"2018-12-11T22:19:29.657Z","container":"asset-00000000-0000-0000-0000-000000000000","storageAccountName":"amsacctname","storageEncryptionFormat":"None"
 }
 }
-],"@odata.nextLink":"https:// management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517"
+],"@odata.nextLink":"https:// management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517"
 }
 ```
 
 然后通过发送 Get 请求来请求显示下一页：
 
 ```
-https://management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517
+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517
 ```
 
-有关更多 REST 示例，请参阅[资产 - 列出](https://docs.microsoft.com/rest/api/media/assets/list)
-
-## <a name="content-key-policies"></a>内容密钥策略
-
-### <a name="filteringordering"></a>筛选/排序
-
-下表显示了如何将这些选项应用于[内容密钥策略](https://docs.microsoft.com/rest/api/media/contentkeypolicies)属性： 
-
-|名称|筛选器|顺序|
-|---|---|---|
-|id|||
-|名称|eq、ne、ge、le、gt、lt|升序和降序|
-|properties.created |eq、ne、ge、le、gt、lt|升序和降序|
-|properties.description |eq、ne、ge、le、gt、lt||
-|properties.lastModified|eq、ne、ge、le、gt、lt|升序和降序|
-|properties.options |||
-|properties.policyId|eq、ne||
-|type|||
-
-### <a name="pagination"></a>分页
-
-已启用的四个排序顺序均支持分页。 当前，页面大小为 10。
-
-以下 C# 示例演示如何通过帐户中的所有内容密钥策略进行枚举。
-
-```csharp
-var firstPage = await MediaServicesArmClient.ContentKeyPolicies.ListAsync(CustomerResourceGroup, CustomerAccountName);
-
-var currentPage = firstPage;
-while (currentPage.NextPageLink != null)
-{
-    currentPage = await MediaServicesArmClient.ContentKeyPolicies.ListNextAsync(currentPage.NextPageLink);
-}
-```
-
-有关 REST 示例，请参阅[内容密钥策略 - 列表](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
-
-## <a name="jobs"></a>作业
-
-### <a name="filteringordering"></a>筛选/排序
-
-下表显示了如何将这些选项应用于[作业](https://docs.microsoft.com/rest/api/media/jobs)属性： 
-
-| 名称    | 筛选器                        | 顺序 |
-|---------|-------------------------------|-------|
-| 名称                    | eq            | 升序和降序|
-| properties.state        | eq、ne        |                         |
-| properties.created      | gt、ge、lt、le| 升序和降序|
-| properties.lastModified | gt、ge、lt、le | 升序和降序| 
-
-### <a name="pagination"></a>分页
-
-媒体服务 v3 支持作业分页。
-
-以下 C# 示例演示如何枚举帐户中的作业。
-
-```csharp            
-List<string> jobsToDelete = new List<string>();
-var pageOfJobs = client.Jobs.List(config.ResourceGroup, config.AccountName, "Encode");
-
-bool exit;
-do
-{
-    foreach (Job j in pageOfJobs)
-    {
-        jobsToDelete.Add(j.Name);
-    }
-
-    if (pageOfJobs.NextPageLink != null)
-    {
-        pageOfJobs = client.Jobs.ListNext(pageOfJobs.NextPageLink);
-        exit = false;
-    }
-    else
-    {
-        exit = true;
-    }
-}
-while (!exit);
-
-```
-
-有关 REST 示例，请参阅[作业 - 列出](https://docs.microsoft.com/rest/api/media/jobs/list)
-
-## <a name="streaming-locators"></a>流式处理定位符
-
-### <a name="filteringordering"></a>筛选/排序
-
-下表显示这些选项如何应用于 StreamingLocator 属性： 
-
-|名称|筛选器|顺序|
-|---|---|---|
-|id |||
-|名称|eq、ne、ge、le、gt、lt|升序和降序|
-|properties.alternativeMediaId  |||
-|properties.assetName   |||
-|properties.contentKeys |||
-|properties.created |eq、ne、ge、le、gt、lt|升序和降序|
-|properties.defaultContentKeyPolicyName |||
-|properties.endTime |eq、ne、ge、le、gt、lt|升序和降序|
-|properties.startTime   |||
-|properties.streamingLocatorId  |||
-|properties.streamingPolicyName |||
-|type   |||
-
-### <a name="pagination"></a>分页
-
-已启用的四个排序顺序均支持分页。 当前，页面大小为 10。
-
-以下 C# 示例显示如何枚举帐户中的所有 StreamingLocator。
+以下 C# 示例显示如何枚举帐户中的所有流式处理定位符。
 
 ```csharp
 var firstPage = await MediaServicesArmClient.StreamingLocators.ListAsync(CustomerResourceGroup, CustomerAccountName);
@@ -254,56 +135,57 @@ while (currentPage.NextPageLink != null)
 }
 ```
 
-若要查看 REST 示例，请参阅[流式处理定位符 - 列表](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
+## <a name="using-logical-operators-to-combine-query-options"></a>使用逻辑运算符来组合查询选项
 
-## <a name="streaming-policies"></a>流式处理策略
+媒体服务 v3 支持 **OR** 和 **AND** 逻辑运算符。 
 
-### <a name="filteringordering"></a>筛选/排序
+以下 REST 示例检查作业的状态：
 
-下表显示了可以如何将这些选项应用于 StreamingPolicy 属性： 
-
-|名称|筛选器|顺序|
-|---|---|---|
-|id|||
-|名称|eq、ne、ge、le、gt、lt|升序和降序|
-|properties.commonEncryptionCbcs|||
-|properties.commonEncryptionCenc|||
-|properties.created |eq、ne、ge、le、gt、lt|升序和降序|
-|properties.defaultContentKeyPolicyName |||
-|properties.envelopeEncryption|||
-|properties.noEncryption|||
-|type|||
-
-### <a name="pagination"></a>分页
-
-已启用的四个排序顺序均支持分页。 当前，页面大小为 10。
-
-以下 C# 示例显示如何枚举帐户中的所有 StreamingPolicies。
-
-```csharp
-var firstPage = await MediaServicesArmClient.StreamingPolicies.ListAsync(CustomerResourceGroup, CustomerAccountName);
-
-var currentPage = firstPage;
-while (currentPage.NextPageLink != null)
-{
-    currentPage = await MediaServicesArmClient.StreamingPolicies.ListNextAsync(currentPage.NextPageLink);
-}
+```
+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qbtest/providers/Microsoft.Media/mediaServices/qbtest/transforms/VideoAnalyzerTransform/jobs?$filter=properties/state%20eq%20Microsoft.Media.JobState'Scheduled'%20or%20properties/state%20eq%20Microsoft.Media.JobState'Processing'&api-version=2018-07-01
 ```
 
-有关 REST 示例，请参阅[流式处理策略 - 列表](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
+可以在 C# 中构造同一查询，如下所示： 
 
-## <a name="transform"></a>转换
+```csharp
+var odataQuery = new ODataQuery<Job>("properties/state eq Microsoft.Media.JobState'Scheduled' or properties/state eq Microsoft.Media.JobState'Processing'");
+client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransformName, odataQuery);
+```
 
-### <a name="filteringordering"></a>筛选/排序
+## <a name="filtering-and-ordering-options-of-entities"></a>实体的筛选和排序选项
 
-下表显示了如何将这些选项应用于[转换](https://docs.microsoft.com/rest/api/media/transforms)属性： 
+下表显示了如何将筛选和排序选项应用于不同实体：
 
-| 名称    | 筛选器                        | 顺序 |
-|---------|-------------------------------|-------|
-| 名称                    | eq            | 升序和降序|
-| properties.created      | gt、ge、lt、le| 升序和降序|
-| properties.lastModified | gt、ge、lt、le | 升序和降序|
+|实体名称|属性名称|筛选器|订单|
+|---|---|---|---|
+|[资产](https://docs.microsoft.com/rest/api/media/assets/)|name|`eq`、`gt`、`lt`、`ge`、`le`|`asc` 和 `desc`|
+||properties.alternateId |`eq`||
+||properties.assetId |`eq`||
+||properties.created| `eq`、`gt`、`lt`| `asc` 和 `desc`|
+|[内容密钥策略](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
+||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
+||properties.description    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`||
+||properties.lastModified|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
+||properties.policyId|`eq`, `ne`||
+|[作业](https://docs.microsoft.com/rest/api/media/jobs)| name  | `eq`            | `asc` 和 `desc`|
+||properties.state        | `eq`, `ne`        |                         |
+||properties.created      | `gt`、`ge`、`lt`、`le`| `asc` 和 `desc`|
+||properties.lastModified | `gt`、`ge`、`lt`、`le` | `asc` 和 `desc`| 
+|[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
+||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
+||properties.endTime    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
+|[流式处理策略](https://docs.microsoft.com/rest/api/media/streamingpolicies)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
+||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
+|[转换](https://docs.microsoft.com/rest/api/media/transforms)| name | `eq`            | `asc` 和 `desc`|
+|| properties.created      | `gt`、`ge`、`lt`、`le`| `asc` 和 `desc`|
+|| properties.lastModified | `gt`、`ge`、`lt`、`le`| `asc` 和 `desc`|
 
 ## <a name="next-steps"></a>后续步骤
 
-[流式传输文件](stream-files-dotnet-quickstart.md)
+* [列出资产](https://docs.microsoft.com/rest/api/media/assets/list)
+* [列出内容密钥策略](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
+* [列出作业](https://docs.microsoft.com/rest/api/media/jobs/list)
+* [列出流式处理策略](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
+* [列出流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
+* [流式传输文件](stream-files-dotnet-quickstart.md)
+* [配额和限制](limits-quotas-constraints.md)

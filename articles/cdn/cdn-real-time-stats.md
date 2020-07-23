@@ -7,25 +7,25 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: c7989340-1172-4315-acbb-186ba34dd52a
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: eb20630533735fb46ea7743be75448329281938a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3af2e849aa6658e539b0b5bdbda4428cc28e5ce5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60334513"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887224"
 ---
 # <a name="real-time-stats-in-microsoft-azure-cdn"></a>Microsoft Azure CDN 中的实时统计信息
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>概述
-本文档介绍 Microsoft Azure CDN 中的实时统计信息。  在将内容传送到客户端时，此功能将提供实时数据（如带宽、缓存状态和并发连接数）给 CDN 配置文件。 这样就可以随时连续监视服务的运行状况，包括上线事件。
+本文档介绍 Microsoft Azure CDN 中的实时统计信息。  在将内容传送到客户端时，此功能将提供实时数据（如带宽、缓存状态和并发连接数）给 CDN 配置文件。 这样就可以随时连续监视服务的运行状况，包括上线活动。
 
 以下是可用图表：
 
@@ -35,14 +35,14 @@ ms.locfileid: "60334513"
 * [连接](#connections)
 
 ## <a name="accessing-real-time-stats"></a>访问实时统计信息
-1. 在 [Azure 门户](https://portal.azure.com)中，导航到 CDN 配置文件。
+1. 在[Azure 门户](https://portal.azure.com)中，浏览到 CDN 配置文件。
    
     ![CDN 配置文件边栏选项卡](./media/cdn-real-time-stats/cdn-profile-blade.png)
 2. 从 CDN 配置文件的边栏选项卡，单击“**管理**”按钮。
    
     ![CDN 配置文件边栏选项卡管理按钮](./media/cdn-real-time-stats/cdn-manage-btn.png)
    
-    随即 CDN 管理门户打开。
+    CDN 管理门户打开。
 3. 将鼠标悬停在“**分析**”选项卡，然后悬停在“**实时统计信息**”浮出控件。  单击“**HTTP 大型对象**”。
    
     ![CDN 管理门户](./media/cdn-real-time-stats/cdn-premium-portal.png)

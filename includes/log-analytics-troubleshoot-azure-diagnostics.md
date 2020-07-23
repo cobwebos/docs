@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: magoedte
 ms.openlocfilehash: 6890c71ac7c265d46cc77751786fea4d0b228588
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66129711"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "67173343"
 ---
 ### <a name="troubleshoot-azure-diagnostics"></a>排查 Azure 诊断问题
 
@@ -34,4 +34,4 @@ ms.locfileid: "66129711"
 
 `Set-AzDiagnosticSetting : A parameter cannot be found that matches parameter name 'WorkspaceId'.`
 
-更新你的 Azure PowerShell 版本，请按照中的说明[安装 Azure PowerShell](/powershell/azure/install-az-ps)一文。
+更新 Azure PowerShell 的版本，按照[安装 Azure PowerShell](/powershell/azure/install-az-ps) 一文中的说明进行操作。

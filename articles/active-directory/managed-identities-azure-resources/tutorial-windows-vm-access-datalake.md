@@ -1,5 +1,5 @@
 ---
-title: 如何使用 Windows VM 系统分配的托管标识访问 Azure Data Lake Store
+title: 教程`:`使用托管标识访问 Azure Data Lake Store - Windows - Azure AD
 description: 本教程介绍了如何使用 Windows VM 系统分配的托管标识访问 Azure Data Lake Store。
 services: active-directory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/13/2018
+ms.date: 11/14/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd03ccdab6a7120dc59e42ab62c1d3b2d1e5bc3
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: c03f78341b7521267f8aaf72d58ebd4c912949ce
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444685"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75977882"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure Data Lake Store
 
@@ -32,31 +32,39 @@ ms.locfileid: "58444685"
 > * 授予 VM 对 Azure Data Lake Store 的访问权限
 > * 使用 VM 标识获取访问令牌，并使用它访问 Azure Data Lake Store
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>授予 VM 对 Azure Data Lake Store 的访问权限
+
+
+## <a name="enable"></a>启用
+
+[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
+
+
+
+## <a name="grant-access"></a>授予访问权限
 
 现在可以授予 VM 对 Azure Data Lake Store 中的文件和文件夹的访问权限。  对于此步骤，可以使用现有 Data Lake Store，也可以重新创建。  若要使用 Azure 门户新建 Data Lake Store，请按照此 [Azure Data Lake Store 快速入门](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)执行操作。 [Azure Data Lake Store 文档](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview)中还提供了有关使用 Azure CLI 和 Azure PowerShell 执行这些操作的快速入门。
 
 在 Data Lake Store 中，新建一个文件夹，并向 VM 的系统分配的标识授予在该文件夹中读取、写入和执行文件的权限：
 
-1. 在 Azure 门户中，单击左侧导航栏中的“Data Lake Store”。
+1. 在 Azure 门户中，单击左侧导航栏中的“Data Lake Store”  。
 2. 单击要用于本教程的 Data Lake Store。
-3. 单击命令栏中的“数据资源管理器”。
-4. 选择此 Data Lake Store 的根文件夹。  单击命令栏中的“访问权限”。
-5. 单击“添加”。  在“选择”字段中，输入 VM 的名称，如“DevTestVM”。  单击以从搜索结果中选择 VM，然后单击“选择”。
-6. 单击“选择权限”。  选择“读取”和“执行”，并以“仅为访问权限”的形式添加到“此文件夹”。  单击“确定” 。  权限应已成功添加。
-7. 关闭“访问权限”边栏选项卡。
-8. 本教程将新建一个文件夹。  单击命令栏中的“新建文件夹”并为新文件夹命名，如“TestFolder”。  单击“确定” 。
-9. 单击创建的文件夹，然后单击命令栏中的“访问权限”。
-10. 与步骤 5 类似，单击“添加”，在“选择”字段中输入 VM 的名称，选中此名称，然后单击“选择”。
-11. 与步骤 6 类似，单击“选择权限”，选择“读取”、“写入”和“执行”，并以“访问权限条目和默认访问权限条目”的形式添加到“此文件夹”。  单击“确定” 。  权限应已成功添加。
+3. 单击命令栏中的“数据资源管理器”  。
+4. 选择此 Data Lake Store 的根文件夹。  单击命令栏中的“访问权限”  。
+5. 单击“添加”  。  在“选择”字段中，输入 VM 的名称，如“DevTestVM”   。  单击以从搜索结果中选择 VM，然后单击“选择”  。
+6. 单击“选择权限”  。  选择“读取”和“执行”，并以“仅为访问权限”的形式添加到“此文件夹”     。  单击“确定”  。  权限应已成功添加。
+7. 关闭“访问权限”边栏选项卡  。
+8. 本教程将新建一个文件夹。  单击命令栏中的“新建文件夹”并为新文件夹命名，如“TestFolder”   。  单击“确定”  。
+9. 单击创建的文件夹，然后单击命令栏中的“访问权限”  。
+10. 与步骤 5 类似，单击“添加”，在“选择”字段中输入 VM 的名称，选中此名称，然后单击“选择”    。
+11. 与步骤 6 类似，单击“选择权限”，选择“读取”、“写入”和“执行”，并以“访问权限条目和默认访问权限条目”的形式添加到“此文件夹”       。  单击“确定”  。  权限应已成功添加。
 
 VM 的系统分配的托管标识现在可以对你创建的文件夹中的文件执行所有操作。  若要详细了解管理 Data Lake Store 的访问权限，请在 [Data Lake Store 中的访问控制](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control)阅读相应文章。
 
-## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-the-azure-data-lake-store-filesystem"></a>使用 VM 的系统分配的托管标识获取访问令牌，并使用它调用 Azure Data Lake Store 文件系统
+## <a name="access-data"></a>访问数据
 
 Azure Data Lake Store 原本就支持 Azure AD 身份验证，因此可以直接接受使用 Azure 资源的托管标识获取的访问令牌。  若要对 Data Lake Store 文件系统进行身份验证，请将 Azure AD 颁发的访问令牌发送到 Data Lake Store 文件系统终结点，并且身份验证标头的格式应为“Bearer <ACCESS_TOKEN_VALUE>”。  若要详细了解 Data Lake Store 对 Azure AD 身份验证的支持情况，请阅读[使用 Azure Active Directory 进行 Data Lake Store 身份验证](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory)
 
@@ -65,9 +73,9 @@ Azure Data Lake Store 原本就支持 Azure AD 身份验证，因此可以直接
 
 在本教程中，将通过使用 PowerShell 发出 REST 请求来对 Data Lake Store 文件系统 REST API 进行身份验证。 若要使用 VM 的系统分配的托管标识进行身份验证，需要从 VM 发出此请求。
 
-1. 在门户中，导航到“虚拟机”，转到 Windows VM，然后在“概述”中，单击“连接”。
-2. 输入创建 Windows VM 时添加的用户名和密码。 
-3. 现在，已经创建了与虚拟机的远程桌面连接，请在远程会话中打开 PowerShell。 
+1. 在门户中，导航到“虚拟机”，转到 Windows VM，然后在“概述”中，单击“连接”    。
+2. 输入创建 Windows VM 时添加的用户名  和密码  。 
+3. 现在，已经创建了与虚拟机的远程桌面连接  ，请在远程会话中打开 PowerShell  。 
 4. 使用 Powershell 的 `Invoke-WebRequest`，向 Azure 资源终结点的本地托管标识发出请求以获取 Azure Data Lake Store 的访问令牌。  Data Lake Store 的资源标识符是 `https://datalake.azure.net/`。  Data Lake 对资源标识符执行完全匹配，因此尾部反斜杠非常重要。
 
    ```powershell
@@ -86,7 +94,7 @@ Azure Data Lake Store 原本就支持 Azure AD 身份验证，因此可以直接
    $AccessToken = $content.access_token
    ```
 
-5. 使用 PowerShell 的“Invoke-WebRequest”向 Data Lake Store 的 REST 终结点发出请求，在根文件夹中列出文件夹。  使用此方法可轻松检查是否所有内容都已正确配置。  身份验证标头中“Bearer”字符串的首字母“B”必须大写。  在 Azure 门户中，可以在 Data Lake Store 边栏选项卡中的“概述”部分找到你的 Data Lake Store 的名称。
+5. 使用 PowerShell 的“Invoke-WebRequest”向 Data Lake Store 的 REST 终结点发出请求，在根文件夹中列出文件夹。  使用此方法可轻松检查是否所有内容都已正确配置。  身份验证标头中“Bearer”字符串的首字母“B”必须大写。  在 Azure 门户中，可以在 Data Lake Store 边栏选项卡中的“概述”部分找到你的 Data Lake Store 的名称  。
 
    ```powershell
    Invoke-WebRequest -Uri https://<YOUR_ADLS_NAME>.azuredatalakestore.net/webhdfs/v1/?op=LISTSTATUS -Headers @{Authorization="Bearer $AccessToken"}
@@ -173,6 +181,12 @@ Azure Data Lake Store 原本就支持 Azure AD 身份验证，因此可以直接
    ```
 
 使用其他 Data Lake Store 文件系统 API 可以执行追加文件、下载文件以及其他操作。
+
+
+## <a name="disable"></a>禁用
+
+[!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
+
 
 ## <a name="next-steps"></a>后续步骤
 

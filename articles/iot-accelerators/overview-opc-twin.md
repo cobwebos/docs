@@ -1,19 +1,19 @@
 ---
 title: 什么是 OPC 孪生 - Azure | Microsoft Docs
-description: OPC 孪生概述
+description: 本文提供了 OPC 孪生的概述。 OPC 孪生通过 REST API 提供发现、注册和远程控制工业设备的功能。
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: overview
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 15deadad3b53b64c619933db76d28f012c85d6d1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 91448f55f0ebb88ba6c685b960ece9d91cb98e25
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730271"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "73826225"
 ---
 # <a name="what-is-opc-twin"></a>什么是 OPC 孪生？
 
@@ -42,4 +42,4 @@ OPC 孪生可与通过 REST API 以任何编程语言编写的应用程序配合
 了解 OPC 孪生及其用途后，建议接下来完成以下步骤：
 
 > [!div class="nextstepaction"]
-> [什么是 OPC 保管库](overview-opc-twin-architecture.md)
+> [什么是 OPC 保管库](overview-opc-vault.md)

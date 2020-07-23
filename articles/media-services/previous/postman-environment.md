@@ -3,27 +3,28 @@ title: 为 Azure 媒体服务 REST 调用导入 Postman 环境
 description: 本文提供了用于 Azure 媒体服务 REST 调用的 Postman 环境的定义。
 services: media-services
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: Juliako
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 02/08/2019
-ms.date: 03/04/2019
-ms.author: v-jay
-ms.openlocfilehash: 6813dfca4a89263a10887ef4fa58c7403a9b1294
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 03/20/2019
+ms.author: juliako
+ms.openlocfilehash: 8254d121c62a20de0a1593920b7793195f8eb50e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60637550"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78926709"
 ---
 # <a name="import-the-postman-environment"></a>导入 Postman 环境  
 
 本文包含 [Postman 集合](postman-collection.md)使用的 **Postman** 环境变量的定义，该集合包含调用媒体服务 REST API 的分组 HTTP 请求。 [配置 Postman 以便进行媒体服务 REST API 调用](media-rest-apis-with-postman.md)教程将使用这些环境和集合文件。
+
+> [!NOTE]
+> `AzureADSTSEndpoint ` 的值 =  `https://login.microsoftonline.com/{{TenantId}}/oauth2/token`。 若要获取你的租户 ID，你可以将鼠标悬停在门户中的用户名上（在右上角），并且它将位于 "目录： Microsoft （{{TENANTID}}）"。
 
 ```
 {

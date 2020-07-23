@@ -8,27 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 04/16/2019
+ms.date: 07/06/2020
 ms.author: aahi
-ms.openlocfilehash: e6d641109bafdc3dba05a30fd627a3246c7edef5
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 3b922dca46b575abc428aa6e76fb920ffc13d6b0
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002761"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027998"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 Go 调用文本分析认知服务 
 <a name="HOLTop"></a>
 
 本文展示了如何将 [文本分析 API](//go.microsoft.com/fwlink/?LinkID=759711) 与 Go 配合使用来[检测语言](#Detect)、[分析情绪](#SentimentAnalysis)、[提取关键短语](#KeyPhraseExtraction)以及[识别链接的实体](#Entities)。
 
-有关 API 的技术文档，请参阅 [API 定义](//go.microsoft.com/fwlink/?LinkID=759346)。
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-还必须拥有在注册期间生成的[终结点和访问密钥](../How-tos/text-analytics-how-to-access-key.md)。
+[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
+
 
 <a name="Detect"></a>
 
@@ -38,8 +39,7 @@ ms.locfileid: "60002761"
 
 1. 在你喜欢使用的代码编辑器中新建一个 Go 项目。
 1. 添加以下提供的代码。
-1. 将 `subscriptionKey` 值替换为对你的订阅有效的访问密钥。
-1. 将 `uriBase` 中的位置（当前为 `westcentralus`）替换为进行注册的区域。
+1. 将文本分析 API 密钥和终结点复制到代码中。
 1. 使用“.go”扩展名保存文件。
 1. 从根文件夹中安装了 Go 的计算机上打开命令提示符。
 1. 生成文件，例如：`go build detect.go`。
@@ -52,29 +52,20 @@ import (
     "encoding/json"
     "fmt"
     "io/ioutil"
+    "log"
     "net/http"
+    "os"
     "strings"
     "time"
 )
 
 func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
+    
+    var subscriptionKey string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
+    const uriPath = "/text/analytics/v3.0/languages"
 
-    /*
-    Replace or verify the region.
-
-    You must use the same region in your REST API call as you used to obtain your access keys.
-    For example, if you obtained your access keys from the westus region, replace 
-    "westcentralus" in the URI below with "westus".
-
-    NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-    a free trial access key, you should not need to change this region.
-    */
-    const uriBase =    "https://westcentralus.api.cognitive.microsoft.com"
-    const uriPath = "/text/analytics/v2.1/languages"
-
-    const uri = uriBase + uriPath
+    var uri = endpoint + uriPath
 
     data := []map[string]string{
         {"id": "1", "text": "This is a document written in English."},
@@ -133,43 +124,38 @@ func main() {
 在 JSON 中返回成功的响应，如以下示例所示：
 
 ```json
-
 {
-   "documents": [
-      {
-         "id": "1",
-         "detectedLanguages": [
-            {
-               "name": "English",
-               "iso6391Name": "en",
-               "score": 1.0
-            }
-         ]
-      },
-      {
-         "id": "2",
-         "detectedLanguages": [
-            {
-               "name": "Spanish",
-               "iso6391Name": "es",
-               "score": 1.0
-            }
-         ]
-      },
-      {
-         "id": "3",
-         "detectedLanguages": [
-            {
-               "name": "Chinese_Simplified",
-               "iso6391Name": "zh_chs",
-               "score": 1.0
-            }
-         ]
-      }
-   ],
-   "errors": [
-
-   ]
+    "documents": [
+        {
+            "id": "1",
+            "detectedLanguage": {
+                "name": "English",
+                "iso6391Name": "en",
+                "confidenceScore": 1.0
+            },
+            "warnings": []
+        },
+        {
+            "id": "2",
+            "detectedLanguage": {
+                "name": "Spanish",
+                "iso6391Name": "es",
+                "confidenceScore": 1.0
+            },
+            "warnings": []
+        },
+        {
+            "id": "3",
+            "detectedLanguage": {
+                "name": "Chinese_Simplified",
+                "iso6391Name": "zh_chs",
+                "confidenceScore": 1.0
+            },
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2019-10-01"
 }
 ```
 
@@ -181,8 +167,7 @@ func main() {
 
 1. 在你喜欢使用的代码编辑器中新建一个 Go 项目。
 1. 添加以下提供的代码。
-1. 将 `subscriptionKey` 值替换为对你的订阅有效的访问密钥。
-1. 将 `uriBase` 中的位置（当前为 `westcentralus`）替换为进行注册的区域。
+1. 将文本分析密钥和终结点复制到代码中。
 1. 使用“.go”扩展名保存文件。
 1. 从根文件夹中安装了 Go 的计算机上打开命令提示符。
 1. 生成文件，例如：`go build sentiment.go`。
@@ -195,29 +180,20 @@ import (
     "encoding/json"
     "fmt"
     "io/ioutil"
+    "log"
     "net/http"
+    "os"
     "strings"
     "time"
 )
 
 func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
+    var subscriptionKey string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
 
-    /*
-    Replace or verify the region.
+    const uriPath = "/text/analytics/v3.0/sentiment"
 
-    You must use the same region in your REST API call as you used to obtain your access keys.
-    For example, if you obtained your access keys from the westus region, replace 
-    "westcentralus" in the URI below with "westus".
-
-    NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-    a free trial access key, you should not need to change this region.
-    */
-    const uriBase =    "https://westcentralus.api.cognitive.microsoft.com"
-    const uriPath = "/text/analytics/v2.1/sentiment"
-
-    const uri = uriBase + uriPath
+    var uri = endpoint + uriPath
 
     data := []map[string]string{
         {"id": "1", "language": "en", "text": "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."},
@@ -277,17 +253,56 @@ func main() {
 
 ```json
 {
-   "documents": [
-      {
-         "score": 0.99984133243560791,
-         "id": "1"
-      },
-      {
-         "score": 0.024017512798309326,
-         "id": "2"
-      },
-   ],
-   "errors": [   ]
+    "documents": [
+        {
+            "id": "1",
+            "sentiment": "positive",
+            "confidenceScores": {
+                "positive": 1.0,
+                "neutral": 0.0,
+                "negative": 0.0
+            },
+            "sentences": [
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 1.0,
+                        "neutral": 0.0,
+                        "negative": 0.0
+                    },
+                    "offset": 0,
+                    "length": 102,
+                    "text": "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."
+                }
+            ],
+            "warnings": []
+        },
+        {
+            "id": "2",
+            "sentiment": "negative",
+            "confidenceScores": {
+                "positive": 0.02,
+                "neutral": 0.05,
+                "negative": 0.93
+            },
+            "sentences": [
+                {
+                    "sentiment": "negative",
+                    "confidenceScores": {
+                        "positive": 0.02,
+                        "neutral": 0.05,
+                        "negative": 0.93
+                    },
+                    "offset": 0,
+                    "length": 92,
+                    "text": "Este ha sido un dia terrible, llegué tarde al trabajo debido a un accidente automobilistico."
+                }
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2020-04-01"
 }
 ```
 
@@ -299,8 +314,7 @@ func main() {
 
 1. 在你喜欢使用的代码编辑器中新建一个 Go 项目。
 1. 添加以下提供的代码。
-1. 将 `subscriptionKey` 值替换为对你的订阅有效的访问密钥。
-1. 将 `uriBase` 中的位置（当前为 `westcentralus`）替换为进行注册的区域。
+1. 将文本分析密钥和终结点复制到代码中。
 1. 使用“.go”扩展名保存文件。
 1. 在安装了 Go 的计算机上打开命令提示符。
 1. 生成文件，例如：`go build key-phrases.go`。
@@ -313,29 +327,20 @@ import (
     "encoding/json"
     "fmt"
     "io/ioutil"
+    "log"
     "net/http"
+    "os"
     "strings"
     "time"
 )
 
 func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
+    var subscriptionKey string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
+    
+    const uriPath = "/text/analytics/v3.0/keyPhrases"
 
-    /*
-    Replace or verify the region.
-
-    You must use the same region in your REST API call as you used to obtain your access keys.
-    For example, if you obtained your access keys from the westus region, replace 
-    "westcentralus" in the URI below with "westus".
-
-    NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-    a free trial access key, you should not need to change this region.
-    */
-    const uriBase =    "https://westcentralus.api.cognitive.microsoft.com"
-    const uriPath = "/text/analytics/v2.1/keyPhrases"
-
-    const uri = uriBase + uriPath
+    var uri = endpoint + uriPath
 
     data := []map[string]string{
         {"id": "1", "language": "en", "text": "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."},
@@ -395,37 +400,41 @@ func main() {
 
 ```json
 {
-   "documents": [
-      {
-         "keyPhrases": [
-            "HDR resolution",
-            "new XBox",
-            "clean look"
-         ],
-         "id": "1"
-      },
-      {
-         "keyPhrases": [
-            "Carlos",
-            "notificacion",
-            "algun problema",
-            "telefono movil"
-         ],
-         "id": "2"
-      },
-      {
-         "keyPhrases": [
-            "new hotel",
-            "Grand Hotel",
-            "review",
-            "center of Seattle",
-            "classiest decor",
-            "stars"
-         ],
-         "id": "3"
-      }
-   ],
-   "errors": [  ]
+    "documents": [
+        {
+            "id": "1",
+            "keyPhrases": [
+                "HDR resolution",
+                "new XBox",
+                "clean look"
+            ],
+            "warnings": []
+        },
+        {
+            "id": "2",
+            "keyPhrases": [
+                "Carlos",
+                "notificacion",
+                "algun problema",
+                "telefono movil"
+            ],
+            "warnings": []
+        },
+        {
+            "id": "3",
+            "keyPhrases": [
+                "new hotel",
+                "Grand Hotel",
+                "review",
+                "center of Seattle",
+                "classiest decor",
+                "stars"
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2019-10-01"
 }
 ```
 
@@ -437,8 +446,6 @@ func main() {
 
 1. 在你喜欢使用的代码编辑器中新建一个 Go 项目。
 1. 添加以下提供的代码。
-1. 将 `subscriptionKey` 值替换为对你的订阅有效的访问密钥。
-1. 将 `uriBase` 中的位置（当前为 `westcentralus`）替换为进行注册的区域。
 1. 使用“.go”扩展名保存文件。
 1. 在安装了 Go 的计算机上打开命令提示符。
 1. 生成文件，例如：`go build entities.go`。
@@ -451,32 +458,24 @@ import (
     "encoding/json"
     "fmt"
     "io/ioutil"
+    "log"
     "net/http"
+    "os"
     "strings"
     "time"
 )
 
 func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
 
-    /*
-    Replace or verify the region.
+    var subscriptionKey string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
+    
+    const uriPath = "/text/analytics/v3.0/entities/recognition/general"
 
-    You must use the same region in your REST API call as you used to obtain your access keys.
-    For example, if you obtained your access keys from the westus region, replace 
-    "westus" in the URI below with "westcentralus".
-
-    NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-    a free trial access key, you should not need to change this region.
-    */
-    const uriBase =    "https://westus.api.cognitive.microsoft.com"
-    const uriPath = "/text/analytics/v2.1/entities"
-
-    const uri = uriBase + uriPath
+    var uri = endpoint + uriPath
 
     data := []map[string]string{
-        {"id": "1", "language": "en", "text": "Microsoft is an It company."}
+        {"id": "1", "language": "en", "text": "Microsoft is an It company."},
     }
 
     documents, err := json.Marshal(&data)
@@ -530,47 +529,31 @@ func main() {
 在 JSON 中返回成功的响应，如以下示例所示：
 
 ```json
-{  
-   "documents":[  
-      {  
-         "id":"1",
-         "entities":[  
-            {  
-               "name":"Microsoft",
-               "matches":[  
-                  {  
-                     "wikipediaScore":0.20872054383103444,
-                     "entityTypeScore":0.99996185302734375,
-                     "text":"Microsoft",
-                     "offset":0,
-                     "length":9
-                  }
-               ],
-               "wikipediaLanguage":"en",
-               "wikipediaId":"Microsoft",
-               "wikipediaUrl":"https://en.wikipedia.org/wiki/Microsoft",
-               "bingId":"a093e9b9-90f5-a3d5-c4b8-5855e1b01f85",
-               "type":"Organization"
-            },
-            {  
-               "name":"Technology company",
-               "matches":[  
-                  {  
-                     "wikipediaScore":0.82123868042800585,
-                     "text":"It company",
-                     "offset":16,
-                     "length":10
-                  }
-               ],
-               "wikipediaLanguage":"en",
-               "wikipediaId":"Technology company",
-               "wikipediaUrl":"https://en.wikipedia.org/wiki/Technology_company",
-               "bingId":"bc30426e-22ae-7a35-f24b-454722a47d8f"
-            }
-         ]
-      }
-   ],
-    "errors":[]
+{
+    "documents": [
+        {
+            "id": "1",
+            "entities": [
+                {
+                    "text": "Microsoft",
+                    "category": "Organization",
+                    "offset": 0,
+                    "length": 9,
+                    "confidenceScore": 0.86
+                },
+                {
+                    "text": "IT",
+                    "category": "Skill",
+                    "offset": 16,
+                    "length": 2,
+                    "confidenceScore": 0.8
+                }
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2020-04-01"
 }
 ```
 

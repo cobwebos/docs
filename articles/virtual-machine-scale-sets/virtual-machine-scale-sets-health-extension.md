@@ -1,33 +1,26 @@
 ---
-title: 配合使用 Azure 虚拟机规模集和应用程序运行状况扩展 | Microsoft Docs
+title: 配合使用 Azure 虚拟机规模集和应用程序运行状况扩展
 description: 了解如何使用应用程序运行状况扩展监视部署在虚拟机规模集上的应用程序的运行状况。
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: drewm
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/30/2019
-ms.author: manayar
-ms.openlocfilehash: d1cff1011e190e5fbb2874657cbdfbdc68bde0c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.subservice: extensions
+ms.date: 05/06/2020
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: a38a715b45ab4d0810862ef4d016e4187ea507ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60619818"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84783038"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>配合使用虚拟机规模集和应用程序运行状况扩展
-监视应用程序的运行状况是管理和升级部署的重要信号。 Azure 虚拟机规模集支持[滚动升级](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)（包括[自动 OS-image 升级](virtual-machine-scale-sets-automatic-upgrade.md)），其依赖对各实例的运行状况监视来升级部署。
+监视应用程序的运行状况是管理和升级部署的重要信号。 Azure 虚拟机规模集支持[滚动升级](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)（包括[自动 OS-image 升级](virtual-machine-scale-sets-automatic-upgrade.md)），其依赖对各实例的运行状况监视来升级部署。 你还可以使用运行状况扩展来监视规模集中每个实例的应用程序运行状况，并使用[自动实例修复](virtual-machine-scale-sets-automatic-instance-repairs.md)执行实例修复。
 
 本文介绍如何使用应用程序运行状况扩展监控部署在虚拟机规模集上的应用程序的运行状况。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 本文假定你熟悉以下内容：
 -   Azure 虚拟机[扩展](../virtual-machines/extensions/overview.md)
 -   [修改](virtual-machine-scale-sets-upgrade-scale-set.md)虚拟机规模集
@@ -39,7 +32,7 @@ ms.locfileid: "60619818"
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示应用程序运行状况扩展的架构。 扩展至少需要“tcp”或“http”请求，且各自具有相关的端口或请求路径。
+以下 JSON 显示应用程序运行状况扩展的架构。 扩展至少需要“tcp”、“http”或“https”请求，且各自具有相关的端口或请求路径。
 
 ```json
 {
@@ -66,17 +59,17 @@ ms.locfileid: "60619818"
 | 名称 | 值/示例 | 数据类型
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
-| 发布者 | `Microsoft.ManagedServices` | string |
-| type | `ApplicationHealthLinux` (Linux)、`ApplicationHealthWindows` (Windows) | string |
+| publisher | `Microsoft.ManagedServices` | 字符串 |
+| type | `ApplicationHealthLinux` (Linux)、`ApplicationHealthWindows` (Windows) | 字符串 |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>设置
 
 | 名称 | 值/示例 | 数据类型
 | ---- | ---- | ----
-| 协议 | `http` 或 `tcp` | string |
-| port | 协议为 `http` 时为可选，协议为 `tcp` 时为必需 | int |
-| requestPath | 协议为 `http` 时为必需，协议为 `tcp` 时为不允许 | string |
+| 协议 | `http` 或 `https` 或 `tcp` | 字符串 |
+| port | 协议为 `http` 或 `https` 时为可选，协议为 `tcp` 时为必需 | int |
+| requestPath | 协议为 `http` 或 `https` 时为必需，协议为 `tcp` 时为不允许 | string |
 
 ## <a name="deploy-the-application-health-extension"></a>部署应用程序运行状况扩展
 可以使用多种方法将应用程序运行状况扩展部署到规模集，如下面的示例所示。
@@ -149,16 +142,25 @@ Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
 
 使用 [az vmss 扩展集](/cli/azure/vmss/extension#az-vmss-extension-set)将应用程序运行状况扩展添加到规模集模型定义中。
 
-下面的示例将应用程序运行状况扩展添加到基于 Windows 的规模集的规模集模型中。
+下面的示例将应用程序运行状况扩展添加到基于 Linux 的规模集的规模集模型中。
 
 ```azurecli-interactive
 az vmss extension set \
-  --name ApplicationHealthWindows \
+  --name ApplicationHealthLinux \
   --publisher Microsoft.ManagedServices \
   --version 1.0 \
   --resource-group <myVMScaleSetResourceGroup> \
   --vmss-name <myVMScaleSet> \
   --settings ./extension.json
+```
+extension.json 文件内容。
+
+```json
+{
+  "protocol": "<protocol>",
+  "port": "<port>",
+  "requestPath": "</requestPath>"
+}
 ```
 
 
@@ -170,7 +172,8 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.ManagedServices.ApplicationHealthWindows\
 ```
 
 ```Linux
-/var/lib/waagent/apphealth
+/var/lib/waagent/Microsoft.ManagedServices.ApplicationHealthLinux-<extension_version>/status
+/var/log/azure/applicationhealth-extension
 ```
 
 日志还会定期捕获应用程序运行状况状态。

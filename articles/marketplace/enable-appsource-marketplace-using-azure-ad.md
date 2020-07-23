@@ -1,27 +1,26 @@
 ---
-title: 使用 Azure Active Directory 启用 Microsoft AppSource 和 Azure 市场列表 | Azure
-description: 在 Azure 市场和 AppSource 中使用 Azure Active Directory 为应用和服务发布者启用列表类型。
-services: Azure, AppSource, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: qianw211
-manager: pabutler
+title: 将 Microsoft 商业市场产品/服务与 Azure Active Directory 集成
+description: 使用 Azure Active Directory 实现 Microsoft AppSource 和 Azure 市场产品/服务的身份验证。
 ms.service: marketplace
-ms.topic: article
-ms.date: 09/12/2018
-ms.author: qianw211
-ms.openlocfilehash: 981d9427dc8407c7300f01c941e39ba9723d53a8
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+author: keferna
+ms.author: keferna
+ms.date: 04/15/2020
+ms.openlocfilehash: eab7b556dc45d03bf440a3bc63aa6bf2d799face
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938087"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103617"
 ---
-# <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>使用 Azure Active Directory 启用 AppSource 和市场列表
+# <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>将商业市场列表与 Azure Active Directory 集成
 
- Azure Active Directory (Azure AD) 是一种云标识服务，它使用 Microsoft 帐户进行身份验证。 Azure AD 使用行业标准框架。 [详细了解 Azure Active Directory](https://azure.microsoft.com/services/active-directory)。
+ 本文介绍将商业市场列表或产品/服务与 Azure Active Directory (Azure AD) 进行集成的相关要求。 Azure AD 是一种云标识服务，它使用行业标准框架来实现 Microsoft 帐户的身份验证。 [详细了解 Azure Active Directory](https://azure.microsoft.com/services/active-directory)。
 
 ## <a name="azure-ad-benefits"></a>Azure AD 优势
 
-Microsoft AppSource 和 Azure 市场客户使用产品内体验来搜索列表目录。 这将要求客户登录该产品。 Azure AD 集成具有以下优势：
+Microsoft AppSource 和 Azure 市场客户使用产品内体验来搜索店面列表目录。 这将要求客户登录该产品。 Azure AD 集成具有以下优势：
 
 - 更快的参与和优化的客户体验
 - 针对数百万企业用户的单一登录 (SSO)
@@ -30,30 +29,29 @@ Microsoft AppSource 和 Azure 市场客户使用产品内体验来搜索列表�
 
 ## <a name="offers-that-require-azure-ad"></a>需要 Azure AD 的产品/服务
 
-AppSource 和 Azure 市场的各种[列表选项和产品/服务类型](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)对 Azure AD 实现有不同的要求。 有关详细信息，请参阅下表：
+各种商业市场[列表选项和产品/服务类型](determine-your-listing-type.md)对 Azure AD 的实现有不同的要求。 有关详细信息，请参阅下表。
 
-| **产品/服务类型**    | **是否需要 Azure AD SSO？**  |  |   |  |
+| 产品/服务类型    | 需要 Azure AD SSO 才能联系我？  | 需要 Azure AD SSO？ | 需要 Azure AD 用于测试驱动器的 SSO？  | 需要 Azure AD SSO 才能实现 |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
-|  | 与我联系 | 试用 | 体验版 | 事务处理 |
-| 虚拟机 | 不适用 | 否 | 否 | 否 |
-| Azure 应用（解决方案模板）  | 不适用 | 不适用 | 不适用 | 不适用 |
-| 托管应用  | 不适用 | 不适用 | 不适用 | 否 |
-| SaaS  | 否 | 是 | 是 | 是 |
-| 容器  | 不适用 | 不适用 | 不适用 | 否 |
-| 咨询服务  | 否 | 不适用 | 不适用 | 不适用 |
+| 虚拟机 | 空值 | 否 | 否 | 否 |
+| Azure 应用（解决方案模板）  | 不适用 | 空值 | 空值 | 空值 |
+| 托管应用  | 不适用 | 空值 | 空值 | 否 |
+| SaaS  | No | 是 | 是 | 是 |
+| 容器  | 空值 | 空值 | 空值 | 否 |
+| 咨询服务  | 否 | 不适用 | 空值 | 空值 |
 
-有关 SaaS 技术需求的详细信息，请参阅 [SaaS 应用程序产品/服务发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)。
+有关 SaaS 技术需求的详细信息，请参阅 [SaaS 应用程序产品/服务发布指南](marketplace-saas-applications-technical-publishing-guide.md)。
 
 ## <a name="azure-ad-integration"></a>Azure AD 集成
 
-- 有关如何通过将 Azure AD 集成到列表中来启用单一登录的信息，请参阅[针对开发者的 Azure Active Directory]( https://aka.ms/aaddev)。
-- 若要获取有关 Azure AD 单一登录的详细信息，请参阅[Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+- 有关如何通过将 Azure AD 集成到列表中来启用单一登录的信息，请参阅[针对开发者的 Azure Active Directory](../active-directory/develop/index.yml)。
+- 若要获取有关 Azure AD 单一登录的详细信息，请参阅[Azure Active Directory 的应用程序访问与单一登录是什么？](../active-directory/manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="enable-a-trial-listing"></a>启用试用列表
 
 自动化客户设置可以增加转换的可能性。 当客户选择你的试用列表并重定向到试用环境时，可直接设置客户，而无需其他登录步骤。
 
-在身份验证期间，Azure AD 会向应用或产品/服务发送令牌。 令牌提供的用户信息可在应用或产品/服务中创建用户帐户。 若要了解更多信息，请参阅[示例令牌](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)。
+在身份验证期间，Azure AD 会向应用或产品/服务发送令牌。 令牌提供的用户信息可在应用或产品/服务中创建用户帐户。 若要了解更多信息，请参阅[示例令牌](../active-directory/develop/id-tokens.md)。
 
 使用 Azure AD 在应用或试用列表中启用一键式身份验证时，可以：
 
@@ -68,25 +66,30 @@ AppSource 和 Azure 市场的各种[列表选项和产品/服务类型](https://
 
 使用 Azure AD 支持以下操作：
 
-- 在某个市场店面中注册应用。 查看[应用注册](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)或 [AppSource 认证](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified)以获取详细信息。
+- 在某个市场店面中注册应用。 查看[应用注册](../active-directory/develop/quickstart-register-app.md)或 [AppSource 认证](../active-directory/azuread-dev/howto-get-appsource-certified.md)以获取详细信息。
 - 启用 Azure AD 中的多租户支持功能，以获取一键式试用体验。
 
 如果对使用 Azure AD 联合单一登录不熟悉，请执行以下步骤：
 
 1. 在市场中注册应用。
-1. 使用 [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) 或 [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) 通过 Azure AD 开发 SSO。
+1. 使用 [OAuth 2.0](../active-directory/azuread-dev/v1-protocols-oauth-code.md) 或 [OpenID Connect](../active-directory/azuread-dev/v1-protocols-openid-connect-code.md) 通过 Azure AD 开发 SSO。
 1. 启用 Azure AD 中的多租户支持功能，以提供一键式试用体验。
 
 ### <a name="single-tenant-solutions"></a>单租户解决方案
 
 使用 Azure AD 支持以下操作之一：
 
-- 使用 [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) 将访客用户添加到目录。
+- 使用 [Azure AD B2B](../active-directory/b2b/what-is-b2b.md) 将访客用户添加到目录。
 - 使用“与我联系”发布选项手动为客户设置试用版。
 - 开发针对每个用户的体验版。
 - 生成使用 SSO 的多租户示例演示应用。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 确保[已在 Azure 市场中注册](https://azuremarketplace.microsoft.com/sell)。
-- 登录到[云合作伙伴门户](https://cloudpartner.azure.com/)创建或完成套餐。
+如果尚未注册， 
+
+- [了解](https://azuremarketplace.microsoft.com/sell)有关市场的信息。
+
+要在合作伙伴中心注册，请开始创建新产品/服务或处理现有产品/服务：
+
+- [登录合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以创建或完成产品/服务。

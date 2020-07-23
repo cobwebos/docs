@@ -1,7 +1,7 @@
 ---
-title: 示例：使用大规模功能 - 人脸 API
+title: 示例：使用大规模功能 - 人脸
 titleSuffix: Azure Cognitive Services
-description: 使用人脸 API 中的大规模功能。
+description: 本指南是有关如何从现有 PersonGroup 和 FaceList 对象纵向扩展到 LargePersonGroup 和 LargeFaceList 对象的文章。
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
-ms.openlocfilehash: 5a4085f713d66859a464ab59b00d856921db8ec3
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: dc0964e40e9214e414d865c06006f1d36e97eeb2
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66124485"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "76169778"
 ---
 # <a name="example-use-the-large-scale-feature"></a>示例：使用大规模使用的功能
 
@@ -23,20 +23,23 @@ ms.locfileid: "66124485"
 
 LargePersonGroup 和 LargeFaceList 统称为大规模操作。 LargePersonGroup 最多可以包含 100 万个人，其中每个人最多有 248 张人脸。 LargeFaceList 最多可以包含 100 万张人脸。 大规模操作类似于传统的 PersonGroup 和 FaceList，但因采用新体系结构而有一些差异。 
 
-这些示例是使用 Azure 认知服务人脸 API 客户端库以 C# 编写的。
+这些示例是使用 Azure 认知服务人脸客户端库以 C# 编写的。
 
 > [!NOTE]
 > 为了在大规模的 Identification 和 FindSimilar 操作中提高人脸搜索的性能，我们引入了一个“训练”操作用于预处理 LargeFaceList 和 LargePersonGroup。 训练时间从几秒到约半小时不等，具体取决于实际容量。 如果以前的某个训练操作成功，则在训练期间，可以执行 Identification 和 FindSimilar。 缺点在于，在完成迁移到大规模训练的最新后处理前，新添加的人员和人脸不会出现在结果中。
 
 ## <a name="step-1-initialize-the-client-object"></a>步骤 1：初始化客户端对象
 
-使用人脸 API 客户端库时，订阅密钥和订阅终结点将通过 FaceServiceClient 类的构造函数传入。 例如：
+使用人脸客户端库时，订阅密钥和订阅终结点将通过 FaceClient 类的构造函数传入。 例如：
 
-```CSharp
+```csharp
 string SubscriptionKey = "<Subscription Key>";
 // Use your own subscription endpoint corresponding to the subscription key.
-string SubscriptionRegion = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/";
-FaceServiceClient FaceServiceClient = new FaceServiceClient(SubscriptionKey, SubscriptionRegion);
+string SubscriptionEndpoint = "https://westus.api.cognitive.microsoft.com";
+private readonly IFaceClient faceClient = new FaceClient(
+            new ApiKeyServiceClientCredentials(subscriptionKey),
+            new System.Net.Http.DelegatingHandler[] { });
+faceClient.Endpoint = SubscriptionEndpoint
 ```
 
 若要获取订阅密钥及其相应的终结点，请从 Azure 门户转到 Azure 市场。
@@ -70,7 +73,7 @@ FaceServiceClient FaceServiceClient = new FaceServiceClient(SubscriptionKey, Sub
 
 上表对 FaceList 和 LargeFaceList 的列级操作进行了对比。 如表中所示，与 FaceList 相比，LargeFaceList 附带了新的操作（“训练”和“获取训练状态”）。 训练 LargeFaceList 是 [FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) 操作的前提条件。 FaceList 不需要训练。 以下代码片段是一个用于等待训练 LargeFaceList 的帮助器函数：
 
-```CSharp
+```csharp
 /// <summary>
 /// Helper function to train LargeFaceList and wait for finish.
 /// </summary>
@@ -94,13 +97,13 @@ private static async Task TrainLargeFaceList(
     int timeIntervalInMilliseconds = 1000)
 {
     // Trigger a train call.
-    await FaceServiceClient.TrainLargeFaceListAsync(largeFaceListId);
+    await FaceClient.LargeTrainLargeFaceListAsync(largeFaceListId);
 
     // Wait for training finish.
     while (true)
     {
         Task.Delay(timeIntervalInMilliseconds).Wait();
-        var status = await FaceServiceClient.GetLargeFaceListTrainingStatusAsync(largeFaceListId);
+        var status = await faceClient.LargeFaceList.TrainAsync(largeFaceListId);
 
         if (status.Status == Status.Running)
         {
@@ -120,12 +123,12 @@ private static async Task TrainLargeFaceList(
 
 以前，添加了人脸的 FaceList 和 FindSimilar 的典型用法如下所示：
 
-```CSharp
+```csharp
 // Create a FaceList.
 const string FaceListId = "myfacelistid_001";
 const string FaceListName = "MyFaceListDisplayName";
 const string ImageDir = @"/path/to/FaceList/images";
-FaceServiceClient.CreateFaceListAsync(FaceListId, FaceListName).Wait();
+faceClient.FaceList.CreateAsync(FaceListId, FaceListName).Wait();
 
 // Add Faces to the FaceList.
 Parallel.ForEach(
@@ -134,7 +137,7 @@ Parallel.ForEach(
         {
             using (Stream stream = File.OpenRead(imagePath))
             {
-                await FaceServiceClient.AddFaceToFaceListAsync(FaceListId, stream);
+                await faceClient.FaceList.AddFaceFromStreamAsync(FaceListId, stream);
             }
         });
 
@@ -143,22 +146,22 @@ const string QueryImagePath = @"/path/to/query/image";
 var results = new List<SimilarPersistedFace[]>();
 using (Stream stream = File.OpenRead(QueryImagePath))
 {
-    var faces = FaceServiceClient.DetectAsync(stream).Result;
+    var faces = faceClient.Face.DetectWithStreamAsync(stream).Result;
     foreach (var face in faces)
     {
-        results.Add(await FaceServiceClient.FindSimilarAsync(face.FaceId, FaceListId, 20));
+        results.Add(await faceClient.Face.FindSimilarAsync(face.FaceId, FaceListId, 20));
     }
 }
 ```
 
 将它迁移到 LargeFaceList 时，它会变成：
 
-```CSharp
+```csharp
 // Create a LargeFaceList.
 const string LargeFaceListId = "mylargefacelistid_001";
 const string LargeFaceListName = "MyLargeFaceListDisplayName";
 const string ImageDir = @"/path/to/FaceList/images";
-FaceServiceClient.CreateLargeFaceListAsync(LargeFaceListId, LargeFaceListName).Wait();
+faceClient.LargeFaceList.CreateAsync(LargeFaceListId, LargeFaceListName).Wait();
 
 // Add Faces to the LargeFaceList.
 Parallel.ForEach(
@@ -167,7 +170,7 @@ Parallel.ForEach(
         {
             using (Stream stream = File.OpenRead(imagePath))
             {
-                await FaceServiceClient.AddFaceToLargeFaceListAsync(LargeFaceListId, stream);
+                await faceClient.LargeFaceList.AddFaceFromStreamAsync(LargeFaceListId, stream);
             }
         });
 
@@ -180,10 +183,10 @@ const string QueryImagePath = @"/path/to/query/image";
 var results = new List<SimilarPersistedFace[]>();
 using (Stream stream = File.OpenRead(QueryImagePath))
 {
-    var faces = FaceServiceClient.DetectAsync(stream).Result;
+    var faces = faceClient.Face.DetectWithStreamAsync(stream).Result;
     foreach (var face in faces)
     {
-        results.Add(await FaceServiceClient.FindSimilarAsync(face.FaceId, largeFaceListId: LargeFaceListId));
+        results.Add(await faceClient.Face.FindSimilarAsync(face.FaceId, largeFaceListId: LargeFaceListId));
     }
 }
 ```
@@ -230,13 +233,13 @@ LargePersonGroup 或 LargeFaceList 中的人员/人脸仅在训练后才可搜�
 
 假设存在类似于 `TrainLargeFaceList` 的 `TrainLargePersonGroup` 函数。 通过调用 `System.Timers` 中的 [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) 类，针对 LargePersonGroup 的独立训练的典型实现为：
 
-```CSharp
+```csharp
 private static void Main()
 {
     // Create a LargePersonGroup.
     const string LargePersonGroupId = "mylargepersongroupid_001";
     const string LargePersonGroupName = "MyLargePersonGroupDisplayName";
-    FaceServiceClient.CreateLargePersonGroupAsync(LargePersonGroupId, LargePersonGroupName).Wait();
+    faceClient.LargePersonGroup.CreateAsync(LargePersonGroupId, LargePersonGroupName).Wait();
 
     // Set up standalone training at regular intervals.
     const int TimeIntervalForStatus = 1000 * 60; // 1-minute interval for getting training status.
@@ -258,7 +261,7 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 
 有关数据管理和识别相关实现的详细信息，请参阅[添加人脸](how-to-add-faces.md)和[在图像中识别人脸](HowtoIdentifyFacesinImage.md)。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 本指南介绍了如何将现有 PersonGroup 或 FaceList 代码（不是数据）迁移到 LargePersonGroup 或 LargeFaceList：
 
@@ -270,4 +273,4 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 请遵循操作指南了解如何将人脸添加到 PersonGroup，或针对 PersonGroup 执行“识别”操作。
 
 - [添加人脸](how-to-add-faces.md)
-- [在图像中识别人脸](HowtoIdentifyFacesinImage.md)
+- [识别图像中的人脸](HowtoIdentifyFacesinImage.md)

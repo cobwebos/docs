@@ -1,6 +1,6 @@
 ---
 title: 教程：在 .NET 中审查视频和脚本 - 内容审查器
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 本教程可帮助你了解如何使用机器辅助审查和人工介入评论创建，来生成完整的视频和脚本审查解决方案。
 services: cognitive-services
 author: PatrickFarley
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 03/11/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 4a28e9f1f911e274f9a53275afa577024405b336
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 2171bbaea065ce1ab3a8d90f32e6ea6dc1f1e821
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474698"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404223"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>教程：视频和脚本审查
 
-本教程介绍如何使用机器辅助审查和人工介入评论创建，来生成完整的视频和脚本审查解决方案。
+本教程介绍如何使用机器辅助审查和人工评审集成生成完整的视频和脚本审查解决方案。
 
 本教程演示如何：
 
@@ -37,12 +37,12 @@ ms.locfileid: "66474698"
 - 在[内容审查器评审工具](https://contentmoderator.cognitive.microsoft.com/)网站上注册并创建自定义标记。 执行此步骤时如需帮助，请参阅[使用标记](Review-Tool-User-Guide/tags.md)。
 
     ![屏幕截图：视频审查自定义标记](images/video-tutorial-custom-tags.png)
-- 若要运行示例应用程序，需要有 Azure 帐户、Azure 媒体服务帐户、Azure 内容审查器资源，以及 Azure Active Directory 凭据。 有关如何获取这些项的说明，请查看[视频审查 API](video-moderation-api.md) 指南。
+- 若要运行示例应用程序，需要有 Azure 帐户、Azure 媒体服务帐户、Azure 内容审查器资源，以及 Azure Active Directory 凭据。 有关如何获取这些资源的说明，请查看[视频审查 API](video-moderation-api.md) 指南。
 - 从 GitHub 下载[视频审查控制台应用程序](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp)。
 
 ## <a name="enter-credentials"></a>输入凭据
 
-编辑文件 `App.config` 并添加 Active Directory 租户名称、服务终结点和用 `#####` 表示的订阅密钥。 你需要以下信息：
+编辑文件 `App.config` 并添加 Active Directory 租户名称、服务终结点和用 `#####` 表示的订阅密钥。 需要以下信息：
 
 |密钥|说明|
 |-|-|
@@ -82,7 +82,7 @@ ms.locfileid: "66474698"
 如果不存在命令行参数，`Main()` 将调用 `GetUserInputs()`。 此方法提示用户输入单个视频文件的路径，并指定是否应生成文本脚本。
 
 > [!NOTE]
-> 控制台应用程序使用 [Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) 根据上传视频的音频轨道生成脚本。结果以 WebVTT 格式提供。 有关此格式的详细信息，请参阅 [Web Video Text Tracks Format](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)（Web 视频文本轨道格式）。
+> 控制台应用程序使用 [Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) 根据上传视频的音频轨道生成脚本。结果以 WebVTT 格式提供。 有关此格式的详细信息，请参阅 [Web Video Text Tracks Format](https://developer.mozilla.org/docs/Web/API/WebVTT_API)（Web 视频文本轨道格式）。
 
 ### <a name="initialize-and-processvideo-methods"></a>Initialize 和 ProcessVideo 方法
 
@@ -121,7 +121,7 @@ ms.locfileid: "66474698"
 
 [!code-csharp[CompressVideo](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/AMSComponent.cs?range=31-59)]
 
-该代码执行以下步骤：
+此代码执行以下步骤：
 
 - 检查以确保 `App.config` 中的配置包含所有必要数据
 - 检查以确保存在 `ffmpeg` 二进制文件
@@ -223,11 +223,11 @@ ms.locfileid: "66474698"
 当设置 `GenerateVTT` 标志时，还会生成来自视频的音频脚本。
 
 > [!NOTE]
-> 控制台应用程序使用 [Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) 根据上传视频的音频轨道生成脚本。结果以 WebVTT 格式提供。 有关此格式的详细信息，请参阅 [Web Video Text Tracks Format](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)（Web 视频文本轨道格式）。
+> 控制台应用程序使用 [Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) 根据上传视频的音频轨道生成脚本。结果以 WebVTT 格式提供。 有关此格式的详细信息，请参阅 [Web Video Text Tracks Format](https://developer.mozilla.org/docs/Web/API/WebVTT_API)（Web 视频文本轨道格式）。
 
-## <a name="create-a-the-human-in-the-loop-review"></a>创建人为介入评论
+## <a name="create-a-human-review"></a>创建人工评审
 
-审查过程会从视频返回一个关键帧列表，以及其音频轨道的脚本。 下一步是在内容审查器评论工具中为人工审查器创建评论。 回到 `Program.cs` 中的 `ProcessVideo()` 方法，你会看到对 `CreateVideoReviewInContentModerator()` 方法的调用。 此方法位于 `videoReviewApi` 类中，该类位于 `VideoReviewAPI.cs` 中，如下所示。
+审查过程会从视频返回一个关键帧列表，以及其音频轨道的脚本。 下一步是在内容审查器评审工具中为人工审查器创建评审。 回到 `Program.cs` 中的 `ProcessVideo()` 方法，你会看到对 `CreateVideoReviewInContentModerator()` 方法的调用。 此方法位于 `videoReviewApi` 类中，该类位于 `VideoReviewAPI.cs` 中，如下所示。
 
 [!code-csharp[CreateVideoReviewInContentModerator](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=42-69)]
 
@@ -299,7 +299,7 @@ ms.locfileid: "66474698"
 
 ### <a name="parse-the-transcript-for-captions"></a>分析脚本字幕
 
-接下来，分析 VTT 格式的脚本的字幕和时间戳。 评论工具会在视频评论屏幕的“脚本”选项卡中显示这些字幕。 时间戳用于将字幕与相应的视频帧同步。
+接下来，分析 VTT 格式的脚本的字幕和时间戳。 评审工具会在视频评审屏幕的“脚本”选项卡中显示这些字幕。 时间戳用于将字幕与相应的视频帧同步。
 
 [!code-csharp[TextScreen2](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=528-567)]
 

@@ -1,92 +1,85 @@
 ---
-title: 设置 Azure 数据工厂中映射 Data Flow 功能的接收器转换
-description: 了解如何设置映射在数据流中的接收器转换。
+title: 映射数据流中的接收器转换
+description: 了解如何在映射数据流中配置接收器转换。
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
+manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/03/2019
-ms.openlocfilehash: 4341cbb0e24330d535f5211c088f0068eab33af7
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.custom: seo-lt-2019
+ms.date: 06/03/2020
+ms.openlocfilehash: 49cfc4899379698cab78a5e22fcffacb60636052
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596265"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223629"
 ---
-# <a name="sink-transformation-for-a-data-flow"></a>接收器数据流的转换
+# <a name="sink-transformation-in-mapping-data-flow"></a>映射数据流中的接收器转换
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-转换数据的流后，您可以到目标数据集接收器数据。 在接收器转换中，选择该目标的输出数据的数据集定义。 您可以有很多接收器转换，因为需要数据的流。
+转换完数据后，使用接收器转换将数据写入目标存储。 每个数据流都需要至少一个接收器转换，但你可以根据需要写入任意多个接收器来完成转换流。 若要写入其他接收器，请通过新的分支和条件拆分创建新的流。
 
-到帐户进行架构偏差和传入数据中的更改而无需在输出数据集中定义的架构文件夹到接收器的输出数据。 可以还考虑了列的更改在源中通过选择**允许架构偏差**源中。 然后自动映射所有字段在接收器中。
+每个接收器转换只与一个 Azure 数据工厂数据集对象或链接服务相关联。 接收器转换确定要写入的数据的形状和位置。
 
-![包括自动映射选项的接收器选项卡上的选项](media/data-flow/sink1.png "接收器 1")
+## <a name="inline-datasets"></a>内联数据集
 
-要接收传入的所有字段，开启**自动映射**。 若要选择的字段到接收器到目标，或若要更改的目标处的字段的名称，将关闭**自动映射**。 然后打开**映射**选项卡可将输出字段。
+创建接收器转换时，请选择是否在 dataset 对象内或接收器转换内定义接收器信息。 大多数格式仅可用于其中一种格式。 若要了解如何使用特定的连接器，请参阅相应的连接器文档。
 
-![在映射选项卡上的选项](media/data-flow/sink2.png "接收器 2")
+当 inline 和 dataset 对象同时支持格式时，这两种方法都有好处。 数据集对象是可重复使用的实体，可在其他数据流和活动（如复制）中利用。 当使用强化的架构时，这些方法特别有用。 数据集并不基于 Spark，有时你可能需要在接收器转换中替代某些设置或架构投影。
 
-## <a name="output"></a>输出 
-对于 Azure Blob 存储或 Data Lake 存储接收器类型，输出到的文件夹已转换的数据。 Spark 生成已分区的输出接收器转换所使用的分区方案基于的数据文件。 
+使用灵活的架构、一次性接收器实例或参数化接收器时，建议使用内联数据集。 如果接收器的参数化很高，则行内数据集允许你不创建 "虚拟" 对象。 内联数据集基于 spark，其属性是流的本机属性。
 
-您可以设置从分区方案**优化**选项卡。如果你想要将输出合并到单个文件的数据工厂，请选择**单个分区**。
+若要使用内联数据集，请在**接收器类型**选择器中选择所需的格式。 选择要连接到的链接服务，而不是选择接收器数据集。
 
-![在优化选项卡上的选项](media/data-flow/opt001.png "接收器选项")
+![内联数据集](media/data-flow/inline-selector.png "内联数据集")
+
+##  <a name="supported-sink-types"></a><a name="supported-sinks"></a>支持的接收器类型
+
+映射数据流遵循提取、加载、转换 (ELT) 方法，并适用于所有 Azure 中的*临时*数据集。 当前，以下数据集可用于源转换：
+
+| 连接器 | 格式 | 数据集/内联 |
+| --------- | ------ | -------------- |
+| [Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [带分隔符的文本](format-delimited-text.md#mapping-data-flow-properties) <br> [增量 (预览) ](format-delta.md) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> ✓/- <br> -/✓ <br> ✓/- |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [带分隔符的文本](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [带分隔符的文本](format-delimited-text.md#mapping-data-flow-properties) <br> [增量 (预览) ](format-delta.md) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  <br> [通用数据模型 (预览) ](format-common-data-model.md#sink-properties) | ✓/- <br> ✓/- <br> ✓/- <br> -/✓ <br> ✓/- <br> -/✓ |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure SQL 数据库](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure CosmosDB (SQL API) ](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+
+特定于这些连接器的设置位于 "**设置**" 选项卡中。有关这些设置的信息和数据流脚本示例位于连接器文档中。 
+
+Azure 数据工厂可以访问 [90 多个原生连接器](connector-overview.md)。 若要将数据从数据流写入其他源，请使用复制活动从支持的接收器加载数据。
+
+## <a name="sink-settings"></a>接收器设置
+
+添加接收器后，通过 "**接收器**" 选项卡进行配置。可在此处选取或创建接收器写入的数据集。 以下视频介绍了几种用于文本分隔文件类型的不同接收器选项：
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4tf7T]
+
+![接收器设置](media/data-flow/sink-settings.png "接收器设置")
+
+**架构偏差：** [架构偏差](concepts-data-flow-schema-drift.md)是指数据工厂本机处理数据流中的灵活架构的能力，无需显式定义列更改。 启用 "**允许架构偏移**" 可以在接收器数据架构中定义的内容的基础上写入其他列。
+
+**验证架构：** 如果选择了 "验证架构"，则在源投影中找不到传入源架构的任何列或数据类型不匹配时，数据流将失败。 使用此设置可强制源数据满足定义投影的协定。 它在数据库源方案中非常有用，用来指示列名称或类型已更改。
 
 ## <a name="field-mapping"></a>字段映射
 
-上**映射**选项卡的接收器转换中，可以传入的列映射在左侧到右侧的目标。 时对文件接收器的数据流，数据工厂将始终写入新文件的文件夹。 当您映射到数据库数据集时，可以生成新表，需要通过设置使用此架构**保存策略**到**覆盖**。 或在现有表中插入新行，然后将字段映射到现有架构。 
+与选择转换类似，在接收器的 "**映射**" 选项卡中，您可以决定写入哪些传入列。 默认情况下，映射所有输入列，包括偏移列。 这就是所谓的**自动映射**。
 
-![映射选项卡](media/data-flow/sink2.png "接收器")
+关闭自动映射时，可以选择添加基于列的固定映射或基于规则的映射。 基于规则的映射允许您编写具有模式匹配的表达式，而固定映射将映射逻辑列名和物理列名。 有关基于规则的映射的详细信息，请参阅[映射数据流中的列模式](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink)。
 
-在映射表中，你可以多选要链接的多个列，解除链接多个列，或将多个行映射到相同的列名称。
+## <a name="custom-sink-ordering"></a>自定义接收器排序
 
-若要始终将传入组字段映射到目标，原样，而若要完全接受灵活的架构定义，请选择**允许架构偏差**。
+默认情况下，数据按非确定性顺序写入多个接收器。 当转换逻辑完成并且接收顺序可能因每次运行而异时，执行引擎将并行写入数据。 若要指定和确切的接收顺序，请在数据流的 "常规" 选项卡中启用**自定义接收器排序**。 启用后，将按递增顺序写入接收器。
 
-![映射选项卡，其中显示字段映射到数据集中的列](media/data-flow/multi1.png "多个选项")
+![自定义接收器排序](media/data-flow/custom-sink-ordering.png "自定义接收器排序")
 
-若要重置列映射，请选择**重新映射**。
+## <a name="data-preview-in-sink"></a>接收器中的数据预览
 
-![接收器选项卡](media/data-flow/sink1.png "一个接收器")
-
-选择**验证架构**失败接收器，如果架构发生更改。
-
-选择**清除文件夹**写入该目标文件夹中的目标文件之前截断接收器文件夹的内容。
-
-## <a name="file-name-options"></a>文件名选项
-
-设置文件命名： 
-
-   * **默认**：可让 Spark 将名称文件基于部分默认值。
-   * **模式**:输入输出文件的一种模式。 例如，**贷款 [n]** 将创建 loans1.csv、 loans2.csv，等等。
-   * **每个分区**:输入每个分区的一个文件名。
-   * **列中的数据作为**:设置输出文件为列的值。
-   * **输出到单个文件**:使用此选项，ADF 将将已分区的输出文件合并到单个命名的文件。 若要使用此选项，你的数据集应解析为文件夹名称。 此外，请注意此合并操作可能会失败可能基于节点大小。
-
-> [!NOTE]
-> 文件操作开始，仅当正在运行的执行数据流的活动时。 它们不在数据流动调试模式下启动。
-
-## <a name="database-options"></a>数据库选项
-
-选择数据库设置：
-
-* **更新方法**:默认值是允许插入。 清除**允许插入**如果你想要停止从你的源中插入新行。 若要更新，更新插入或删除行，首先将 alter 行转换添加到这些操作的标记行。 
-* **重新创建表**:删除或创建目标表，然后数据流完成。
-* **截断表**:数据流完成之前，请从目标表中删除所有行。
-* **批大小**：输入一个数字以将写入内容装桶成区块。 对大型数据加载使用此选项。 
-* **启用暂存**:使用 PolyBase 加载 Azure 数据仓库作为接收器数据集时。
-
-![显示 SQL 接收器选项的设置选项卡](media/data-flow/alter-row2.png "SQL 选项")
-
-> [!NOTE]
-> 在数据流中，可以指示要在目标数据库中创建新的表定义的数据工厂。 若要创建表定义，请设置接收器转换具有新的表名称中的数据集。 在 SQL 数据集，下面的表名称，选择**编辑**并输入新的表名称。 然后，在接收器转换中，开启**允许架构偏差**。 设置**导入架构**到**None**。
-
-![SQL 数据集设置，显示在何处编辑表名](media/data-flow/dataset2.png "SQL 架构")
-
-> [!NOTE]
-> 在更新或删除数据库接收器中的行，必须设置的键列。 此设置允许更改行转换以确定在数据移动库 (DML) 中的唯一行。
+在调试群集上提取数据预览时，不会将任何数据写入接收器。 将返回数据的外观的快照，但不会向目标写入任何内容。 若要测试将数据写入接收器，请从管道画布运行管道调试。
 
 ## <a name="next-steps"></a>后续步骤
-
-现在，已创建数据的流，添加[到你的管道的数据流活动](concepts-data-flow-overview.md)。
+创建数据流后，请将数据流[活动添加到管道](concepts-data-flow-overview.md)。

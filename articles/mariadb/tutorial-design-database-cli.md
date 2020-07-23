@@ -1,19 +1,19 @@
 ---
-title: 教程：使用 Azure CLI 设计 Azure Database for MariaDB
+title: 教程：设计 Azure Database for MariaDB - Azure CLI
 description: 本教程介绍如何使用 Azure CLI 从命令行创建和管理 Azure Database for MariaDB 服务器和数据库。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 11/10/2018
+ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 548f4f10758b2d69bf4fda00f8bf52d33d20306c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 455d7a0c1b3826060ade1083ec6eea99e397574b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999166"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "79534841"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>教程：使用 Azure CLI 设计 Azure Database for MariaDB
 
@@ -85,7 +85,7 @@ az mariadb server firewall-rule create --resource-group myresourcegroup --server
 az mariadb server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-结果采用 JSON 格式。 记下 fullyQualifiedDomainName 和 administratorLogin。
+结果采用 JSON 格式。 记下 fullyQualifiedDomainName  和 administratorLogin  。
 ```json
 {
   "administratorLogin": "myadmin",
@@ -188,7 +188,7 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 | 设置 | 建议的值 | 说明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  源服务器所在的资源组。  |
-| 名称 | mydemoserver-restored | 通过还原命令创建的新服务器的名称。 |
+| name | mydemoserver-restored | 通过还原命令创建的新服务器的名称。 |
 | restore-point-in-time | 2017-04-13T13:59:00Z | 选择要还原到的时间点。 此日期和时间必须在源服务器的备份保留期限内。 使用 ISO8601 日期和时间格式。 例如，可使用自己的本地时区（如 `2017-04-13T05:59:00-08:00`），或使用 UTC Zulu 格式 `2017-04-13T13:59:00Z`。 |
 | source-server | mydemoserver | 要从其还原的源服务器的名称或 ID。 |
 

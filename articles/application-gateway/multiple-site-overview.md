@@ -4,29 +4,28 @@ description: 本文概述了 Azure 应用程序网关的多站点支持。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-origin.date: 01/17/2019
-ms.date: 04/16/2019
-ms.author: v-junlch
+ms.date: 03/11/2020
+ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: 335545f86c9c23feefb6ac21ca9cc5c8fcb5e7fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4d945a255dacd35c61c3c80574b7d46b56de4aab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60715833"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80257404"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>应用程序网关的多站点托管功能
 
-托管多个站点可以让你在同一应用程序网关实例上配置多个 Web 应用程序。 此功能可以将多达 100 个网站添加到一个应用程序网关中，从而为部署配置更有效的拓扑。 每个网站都可以定向到自己的后端池。 在以下示例中，应用程序网关通过两个名为 ContosoServerPool 和 FabrikamServerPool 的后端服务器池来为 contoso.com 和 fabrikam.com 提供流量。
+使用多站点托管功能可以在应用程序网关的同一端口上配置多个 Web 应用程序。 此功能可以将多达 100 个网站添加到一个应用程序网关中，从而为部署配置更有效的拓扑。 每个网站都可以定向到自己的后端池。 在以下示例中，应用程序网关从两个后端服务器池（称为 ContosoServerPool 和 FabrikamServerPool）为 `contoso.com` 和 `fabrikam.com` 提供流量。
 
 ![imageURLroute](./media/multiple-site-overview/multisite.png)
 
 > [!IMPORTANT]
-> 规则将按照门户中的列出顺序进行处理。 我们强烈建议先配置多站点侦听器，然后再配置基本侦听器。  这可以确保将流量路由到适当的后端。 如果基本侦听器先列出并且与传入的请求匹配，则该侦听器将处理该请求。
+> 对于 v1 SKU，规则按照它们在门户中列出的顺序进行处理。 对于 v2 SKU，完全匹配具有更高的优先级。 我们强烈建议先配置多站点侦听器，然后再配置基本侦听器。  这可以确保将流量路由到适当的后端。 如果基本侦听器先列出并且与传入的请求匹配，则该侦听器将处理该请求。
 
-对 http://contoso.com 的请求路由到 ContosoServerPool，对 http://fabrikam.com 的请求路由到 FabrikamServerPool。
+对 `http://contoso.com` 的请求路由到 ContosoServerPool，对 `http://fabrikam.com` 的请求路由到 FabrikamServerPool。
 
-同样可以将同一父域的两个子域托管到同一应用程序网关部署。 例如，在单个应用程序网关部署中托管的 http://blog.contoso.com 和 http://app.contoso.com 都是使用子域。
+同样，可以在同一应用程序网关部署中托管同一父域的多个子域。 例如，可以在单个应用程序网关部署中托管 `http://blog.contoso.com` 和 `http://app.contoso.com`。
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>主机标头和服务器名称指示 (SNI)
 
@@ -36,11 +35,17 @@ ms.locfileid: "60715833"
 2. 使用主机名在同一 IP 地址上托管多个 Web 应用程序。
 3. 使用不同的端口在同一 IP 地址上托管多个 Web 应用程序。
 
-目前，应用程序网关通过单个公共 IP 地址来侦听流量。 因此，目前不支持使用多个自带 IP 地址的应用程序。 应用程序网关支持托管多个应用程序，每个应用程序在不同的端口上进行侦听，但此方案要求应用程序接受非标准端口上的流量，通常情况下这不是所需的配置。 应用程序网关需要使用 HTTP 1.1 主机标头才能在相同的公共 IP 地址和端口上托管多个网站。 在应用程序网关上托管的站点也可以通过服务器名称指示 (SNI) TLS 扩展来支持 SSL 卸载。 这种情况意味着，客户端浏览器和后端 Web 场必须支持 RFC 6066 中定义的 HTTP/1.1 和 TLS 扩展。
+当前，应用程序网关支持一个公共 IP 地址，用于侦听流量。 因此，目前不支持多个有自己的 IP 地址的应用程序。 
+
+应用程序网关支持多个应用程序，每个应用程序侦听不同的端口，但此方案要求应用程序接受非标准端口上的流量。 这通常不是所需的配置。
+
+应用程序网关需要使用 HTTP 1.1 主机标头才能在相同的公共 IP 地址和端口上托管多个网站。 在应用程序网关上托管的站点也可以通过服务器名称指示 (SNI) TLS 扩展来支持 TLS 卸载。 这种情况意味着，客户端浏览器和后端 Web 场必须支持 RFC 6066 中定义的 HTTP/1.1 和 TLS 扩展。
 
 ## <a name="listener-configuration-element"></a>侦听器配置元素
 
-现有的 HTTPListener 配置元素得到了增强，因此可以支持主机名称和服务器名称指示元素，方便应用程序网关将流量路由到相应的后端池。 以下代码示例是模板文件中 HttpListeners 元素的代码片段。
+现有的 HTTPListener 配置元素得到了增强，以支持主机名和服务器名称指示元素。 应用程序网关使用此配置元素将流量路由到相应的后端池。 
+
+以下代码示例是模板文件中 HttpListeners 元素的代码片段：
 
 ```json
 "httpListeners": [
@@ -125,5 +130,3 @@ ms.locfileid: "60715833"
 
 了解多站点托管以后，请转到[创建使用多站点托管的应用程序网关](tutorial-multiple-sites-powershell.md)，以便创建能够支持多个 Web 应用程序的应用程序网关。
 
-
-<!-- Update_Description: update metedata properties -->

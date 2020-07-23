@@ -1,42 +1,41 @@
 ---
-title: Azure CDN DDoS 防护功能 |Microsoft Docs
-description: 来自 Microsoft 的 azure CDN 受 DDoS 保护基本没有额外增加的成本
+title: Azure CDN DDoS 保护功能 |Microsoft Docs
+description: Microsoft 提供的 Azure CDN 受 DDoS 保护基本保护，无需额外付费
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
-ms.author: magattus
-ms.openlocfilehash: 3aefe2ff3891857ec3588e4b48f53876c5c90aa2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: allensu
+ms.openlocfilehash: dc7af555bcaf8654ecdb27d804cbef0c2cedb284
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61069708"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81253809"
 ---
-# <a name="azure-cdn-ddos-protection"></a>Azure CDN DDoS 保护
+# <a name="azure-cdn-ddos-protection"></a>Azure CDN DDoS 防护
 
-内容交付网络通过设计提供 DDoS 保护。 除了全局容量来消除容量耗尽攻击，Azure CDN 有其他的 DDoS 防护，如下所述，没有为需另付费用。
+内容交付网络按设计提供了 DDoS 保护。 除用于吸收容量耗尽攻击的全局容量外，Azure CDN 还提供额外的 DDoS 保护，但不会产生额外的费用。
 
 ## <a name="azure-cdn-from-microsoft"></a>Microsoft 推出的 Azure CDN
 
-来自 Microsoft 的 azure CDN 受[Azure 基本 DDoS](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)。 它已集成到 Microsoft 平台的 Azure CDN 默认情况下，不另外收费。 完整规模和容量的 Azure CDN 从 Microsoft 的全球部署网络提供了对通过始终可用的流量监控和实时风险缓解常见网络层攻击的防御。 基本 DDoS 防护还能够抵御最常见的、 频繁发生的层 7 DNS 查询泛滥和第 3 层和 4 容量耗尽攻击的目标 CDN 终结点。 此服务还具有可靠的经验，在保护 Microsoft 的企业和使用者服务受到大规模攻击。
+Microsoft Azure CDN 受[Azure 基本 DDoS](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)保护。 默认情况下，它已集成到 Microsoft 平台的 Azure CDN 中，无需额外付费。 Microsoft 的全球部署网络的 Azure CDN 的完整缩放和容量可通过 always on 流量监视和实时缓解功能，抵御常见网络层攻击。 基本 DDoS 防护还可以抵御最常见的、频繁出现的第7层 DNS 查询泛滥以及面向 CDN 终结点的第3层和第4容量耗尽攻击。 此服务还提供了一个行之有效的跟踪记录，可保护 Microsoft 的企业和消费者服务免受大规模攻击。
 
 ## <a name="azure-cdn-from-verizon"></a>Verizon 的 Azure CDN
 
-来自 Verizon 的 azure CDN 受 Verzion 的专有 DDoS 缓解平台。 它已集成到来自 Verizon 的 Azure CDN 默认情况下，不另外收费。 它提供了基本保护最常见的、 频繁发生的层 7 DNS 查询泛滥和第 3 层和 4 个容量耗尽攻击的目标 CDN 终结点。
+Verizon 中的 Azure CDN 受 Verzion 的专用 DDoS 缓解平台保护。 默认情况下，它已集成到 Verizon 的 Azure CDN 中，无需额外付费。 它为面向 CDN 终结点的最常见的第7层 DNS 查询泛滥和第3层和4容量耗尽攻击提供基本保护。
 
 ## <a name="azure-cdn-from-akamai"></a>Akamai 的 Azure CDN
 
-来自 Akamai 的 azure CDN 受 Akamai 的专有 DDoS 缓解平台。 它已集成到来自 Akamai 的 Azure CDN 默认情况下，不另外收费。 它提供了基本保护最常见的、 频繁发生的层 7 DNS 查询泛滥和第 3 层和 4 个容量耗尽攻击的目标 CDN 终结点。
+Akamai 中的 Azure CDN 受 Akamai 的专用 DDoS 缓解平台保护。 默认情况下，它已集成到 Akamai 的 Azure CDN 中，无需额外付费。 它为面向 CDN 终结点的最常见的第7层 DNS 查询泛滥和第3层和4容量耗尽攻击提供基本保护。
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解如何[Azure DDoS](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)。 
+了解有关[Azure DDoS](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)的详细信息。 

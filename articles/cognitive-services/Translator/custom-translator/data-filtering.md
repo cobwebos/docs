@@ -2,19 +2,19 @@
 title: 数据筛选 - 自定义翻译器
 titleSuffix: Azure Cognitive Services
 description: 提交用于训练自定义系统的文档时，这些文档需要经历一系列的处理和筛选步骤，为训练做准备。
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
-ms.author: v-pawal
+ms.date: 05/26/2020
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: ba6d1ed5bc26f121f32fad548e7a17c1f4998851
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 67807e18559006b7d7eb6089a30370d614aefca3
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389350"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83992824"
 ---
 # <a name="data-filtering"></a>数据筛选
 
@@ -23,15 +23,15 @@ ms.locfileid: "66389350"
 ## <a name="sentence-alignment"></a>句子对齐
 如果文档不是 XLIFF、TMX 或 ALIGN 格式，则自定义翻译器会将源文档和目标文档的句子一句句地互相对齐。 翻译器并不执行文档对齐操作，而是根据文档的命名找出另一语言的匹配文档。 在文档中，自定义翻译器会尝试找出另一语言的相应句子。 它使用类似于嵌入式 HTML 标记的文档标记来帮助进行对齐。  
 
-如果看到的源中的语句的数目较大差异，并且目标端的文档，文档可能不会进行并行第一个位置中，或由于其他原因而无法对齐。 如果文档配对时每侧的句子存在大的差异 (>10%)，则必须再次进行查看，确保这些句子确实已对齐。 如果句子计数差异令人怀疑，自定义翻译器会在文档旁边显示一个警告。  
+如果在源和目标端文档中的句子数与目标端文档中的句子数之间存在较大的差异，可能是因为你的文档可能没有在第一位置并行，或者无法对齐其他原因。 如果文档配对时每侧的句子存在大的差异 (>10%)，则必须再次进行查看，确保这些句子确实已对齐。 如果句子计数差异令人怀疑，自定义翻译器会在文档旁边显示一个警告。  
 
 
 ## <a name="deduplication"></a>重复数据删除
-自定义翻译器会删除存在于测试中的会根据训练数据来优化文档的句子。 删除操作在训练运行中动态进行，不在数据处理步骤中进行。 自定义翻译器会在进行此类删除之前，在项目概览中将句子计数报告给你。  
+自定义翻译器会删除存在于测试中的会根据训练数据来优化文档的句子。删除操作在训练运行中动态进行，不在数据处理步骤中进行。 自定义翻译器会在进行此类删除之前，在项目概览中将句子计数报告给你。  
 
 ## <a name="length-filter"></a>长度筛选器
 * 删除任意一侧的只有一个单词的句子。
-* 删除任意一侧的包含 100 多个单词的句子。  中文、日语和朝鲜语除外。
+* 删除任意一侧的包含 100 多个单词的句子。中文、日语和朝鲜语除外。
 * 删除不到 3 个字符的句子。 中文、日语和朝鲜语除外。
 * 删除中文、日语、朝鲜语中超出 2000 个字符的句子。
 * 删除字母字符数不到 1% 的句子。
@@ -45,7 +45,7 @@ ms.locfileid: "66389350"
 将多个句末标点字符替换为单个实例。  
 
 ## <a name="japanese-character-normalization"></a>日语字符规范化
-将全角字符字母和数字转换为半角字符。
+将全角字母和数字转换为半角字符。
 
 ## <a name="unescaped-xml-tags"></a>非转义的 XML 标记
 筛选会将非转义的标记转换为转义的标记：

@@ -1,6 +1,6 @@
 ---
-title: 快速入门：使用 Ruby 向必应实体搜索 REST API 发送搜索请求
-titlesuffix: Azure Cognitive Services
+title: 快速入门：使用 Ruby 向 REST API 发送搜索请求 - 必应实体搜索
+titleSuffix: Azure Cognitive Services
 description: 使用本快速入门，通过 Ruby 将请求发送到必应实体搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: b5653ffbfeb22bc59c48dd92b558178fcd89b2de
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 9699bb0e75aac19a2d5c5c68d07e85b1c17c7cbc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384500"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650188"
 ---
-# <a name="quickstart-for-bing-entity-search-api-with-ruby"></a>通过 Ruby 使用必应实体搜索 API 快速入门
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-ruby"></a>快速入门：使用 Ruby 向必应实体搜索 REST API 发送搜索请求
 
-使用本快速入门对必应实体搜索 API 进行你的第一次调用并查看 JSON 响应。 这个简单的 Ruby 应用程序会向该 API 发送一个新闻搜索查询并显示响应。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingEntitySearchv7.rb) 上提供了此应用程序的源代码。
+参考本快速入门对必应实体搜索 API 进行第一次调用并查看 JSON 响应。 这个简单的 Ruby 应用程序会向该 API 发送一个新闻搜索查询并显示响应。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingEntitySearchv7.rb) 上提供了此应用程序的源代码。
 
 虽然此应用程序是使用 Ruby 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
@@ -31,7 +31,7 @@ ms.locfileid: "66384500"
 
 ## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 
-1. 在你最喜欢的 IDE 或代码编辑器中创建新闻 Ruby 文件并导入以下包。
+1. 在你最喜欢的 IDE 或代码编辑器中创建新闻 Ruby 文件并导入以下包：
 
     ```ruby
     require 'net/https'
@@ -39,7 +39,7 @@ ms.locfileid: "66384500"
     require 'json'
     ```
 
-2. 为 API 终结点、新闻搜索 URL、订阅密钥和搜索查询创建变量。
+2. 为 API 终结点、新闻搜索 URL、订阅密钥和搜索查询创建变量。 你可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
     
     ```ruby
     host = 'https://api.cognitive.microsoft.com'
@@ -65,7 +65,7 @@ ms.locfileid: "66384500"
     request['Ocp-Apim-Subscription-Key'] = subscriptionKey
     ```
 
-3. 发送请求并输出响应
+3. 发送请求并打印响应。
 
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -145,5 +145,5 @@ ms.locfileid: "66384500"
 > [!div class="nextstepaction"]
 > [构建单页 Web 应用](../tutorial-bing-entities-search-single-page-app.md)
 
-* [什么是必应实体搜索 API](../search-the-web.md)
-* [必应实体搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [什么是必应实体搜索 API？](../search-the-web.md)
+* [必应实体搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)。

@@ -1,42 +1,32 @@
 ---
-title: Windows Server 的 Azure 混合权益 | Microsoft Docs
+title: Windows Server 的 Azure 混合权益
 description: 了解如何充分利用 Windows 软件保障权益将本地许可证引入到 Azure 中
-services: virtual-machines-windows
-documentationcenter: ''
-author: xujing
-manager: jeconnoc
-editor: ''
-ms.assetid: 332583b6-15a3-4efb-80c3-9082587828b0
+author: xujing-ms
 ms.service: virtual-machines-windows
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
-ms.author: xujing-ms
-ms.openlocfilehash: 64e9350606748116d2eef247790e88ed0d576c3f
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
-ms.translationtype: MT
+ms.author: xujing
+ms.openlocfilehash: f84d4fcd85f1e718f414e63bbe76fd29fa32427d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570362"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81869569"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 的 Azure 混合权益
 对于有软件保障的客户，Windows Server 的 Azure 混合权益可让你使用本地 Windows Server 许可证，并以较低成本在 Azure 中运行 Windows 虚拟机。 可以使用 Windows Server 的 Azure 混合权益部署 Windows OS 的新虚拟机。 本文介绍如何使用 Windows Server 的 Azure 混合权益部署新的 VM 的步骤，以及如何更新现有正在运行的 VM 的步骤。 有关 Windows Server 的 Azure 混合权益许可和成本节约方面的更多信息，请参阅[“Windows Server 的 Azure 混合权益许可”页](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
 
-> [!Important]
-> 每个双处理器许可证或每组 16 核心许可证均可授权用于多达 8 核心的两个实例，或用于多达 16 核心的一个实例。 Standard Edition 许可证的 Azure 混合权益仅可在本地或 Azure 中使用一次。 Datacenter Edition 权益允许同时在本地和 Azure 中使用。
->
+每个双处理器许可证或每组 16 核心许可证均可授权用于多达 8 核心的两个实例，或用于多达 16 核心的一个实例。 Standard Edition 许可证的 Azure 混合权益仅可在本地或 Azure 中使用一次。 Datacenter Edition 权益允许同时在本地和 Azure 中使用。
 
-> [!Important]
-> 所有区域现在都支持将 Windows Server 的 Azure 混合权益用于运行 Windows Server OS 的任何 VM，其中包括具有其他软件（如 SQL Server 或第三方市场软件）的 VM。 
->
+所有区域现在都支持将 Windows Server 的 Azure 混合权益用于运行 Windows Server OS 的任何 VM，其中包括具有其他软件（如 SQL Server 或第三方市场软件）的 VM。 
 
-> [!NOTE]
-> 对于经典 Vm，支持唯一部署新 VM 从本地自定义映像上。 若要使用本文支持的功能，必须首先将经典 VM 迁移到资源管理器模型。
->
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+## <a name="classic-vms"></a>经典 VM
+
+对于经典 VM，仅支持从本地自定义映像部署新的 VM。 若要使用本文支持的功能，必须首先将经典 VM 迁移到资源管理器模型。
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+ 
 
 ## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>使用 Windows Server 的 Azure 混合权益的方式
 可以通过以下几种方式将 Windows 虚拟机与 Azure 混合权限配合使用：
@@ -171,7 +161,7 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
 ```
 
 ## <a name="deploy-a-virtual-machine-scale-set-with-azure-hybrid-benefit-for-windows-server"></a>使用 Windows Server 的 Azure 混合权益部署虚拟机规模集
-在虚拟机规模集资源管理器模板内，必须在 VirtualMachineProfile 属性中指定额外参数 `licenseType`。 您可以执行此操作期间创建或更新规模集通过 ARM 模板、 PowerShell、 Azure CLI 或 REST。
+在虚拟机规模集资源管理器模板内，必须在 VirtualMachineProfile 属性中指定额外参数 `licenseType`。 可以通过 ARM 模板、PowerShell、Azure CLI 或 REST，在为规模集创建或更新期间执行此操作。
 
 以下示例将 ARM 模板用于 Windows Server 2016 Datacenter 映像：
 ```json
@@ -202,4 +192,4 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
 - 详细了解 [Windows Server 的 Azure 混合权益许可详细指南](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)。
 - 详细了解 [Windows Server 的 Azure 混合权益和 Azure Site Recovery 让应用迁移到 Azure 更具成本效益](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)
 - 详细了解[如何使用多租户托管权限在 Azure 上部署 Windows 10](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)
-- 详细了解如何[使用资源管理器模板](../../azure-resource-manager/resource-group-overview.md)
+- 详细了解如何[使用资源管理器模板](../../azure-resource-manager/management/overview.md)

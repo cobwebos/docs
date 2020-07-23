@@ -1,6 +1,6 @@
 ---
 title: IoT 解决方案加速器常见问题解答 - Azure | Microsoft Docs
-description: IoT 解决方案加速器常见问题解答
+description: 本文解答了 IoT 解决方案加速器的常见问题。 它包括 GitHub 存储库的链接。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,16 +8,15 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: b2f08e811217572e09a254e9ab3306ab954b14b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 7a2b167f90b4ec79f5fa515ded1c676ca7085e72
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61447943"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75647707"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT 解决方案加速器常见问题解答
 
-另请参阅[特定于连接工厂的常见问题解答](iot-accelerators-faq-cf.md)和[特定于远程监视的常见问题解答](iot-accelerators-faq-rm-v2.md)。
+另请参阅[已连接的工厂特定常见问题](iot-accelerators-faq-cf.md)和[远程监视特定的常见问题](iot-accelerators-faq-rm-v2.md)。
 
 ### <a name="where-can-i-find-the-source-code-for-the-solution-accelerators"></a>在哪里可以找到此解决方案加速器的源代码？
 
@@ -50,7 +49,7 @@ ms.locfileid: "61447943"
 
 请参阅支持文章[使用组织帐户登录时更改服务管理员和共同管理员](https://azure.microsoft.com/support/changing-service-admin-and-co-admin)。
 
-### <a name="why-am-i-seeing-this-error-your-account-does-not-have-the-proper-permissions-to-create-a-solution-please-check-with-your-account-administrator-or-try-with-a-different-account"></a>为何会出现以下错误？ “你的帐户没有创建解决方案的正确权限。 请咨询帐户管理员或使用其他帐户进行尝试。”
+### <a name="why-am-i-seeing-this-error-your-account-does-not-have-the-proper-permissions-to-create-a-solution-please-check-with-your-account-administrator-or-try-with-a-different-account"></a>为何会出现以下错误？ “帐户没有创建解决方案的正确权限。 请咨询帐户管理员或使用其他帐户进行尝试。”
 
 请查看以下指南示意图：
 
@@ -65,24 +64,24 @@ ms.locfileid: "61447943"
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>在哪里可以找到有关以前版本的远程监视解决方案的信息？
 
-以前版本的远程监视解决方案加速器称为 IoT 套件远程监视预配置解决方案。 可以在 [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) 中找到已存档文档。
+以前版本的远程监视解决方案加速器称为 IoT 套件远程监视预配置解决方案。 可以在中找到存档的文档 [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) 。
 
 ### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>新的解决方案加速器是否在现有解决方案所在的同一地理区域中可用？
 
 是的，新的远程监视解决方案可在同一地理区域中使用。
 
-### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>删除在 Azure 门户中的资源组与在单击删除解决方案加速器中 azureiotsolutions.com 之间的区别是什么？
+### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>删除 Azure 门户中的资源组与在 azureiotsolutions.com 中的解决方案加速器上单击 "删除" 之间有何区别？
 
-* 如果删除中的解决方案加速器[azureiotsolutions.com](https://www.azureiotsolutions.com/)，删除创建的解决方案加速器时已部署的所有资源。 如果向资源组添加了其他资源，则也会删除这些资源。
+* 如果删除[azureiotsolutions.com](https://www.azureiotsolutions.com/)中的解决方案加速器，则会删除在创建解决方案加速器时部署的所有资源。 如果向资源组添加了其他资源，则也会删除这些资源。
 * 如果在 [Azure 门户](https://portal.azure.com)中删除资源组，则只会删除该资源组中的资源。 此外还需要删除与解决方案加速器关联的 Azure Active Directory 应用程序。
 
 ### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>是否可以继续利用 Azure IoT 解决方案加速器中的现有投资？
 
-可以。 现存的所有解决方案可继续在 Azure 订阅中工作，GitHub 中仍会提供其源代码。
+是的。 现存的所有解决方案可继续在 Azure 订阅中工作，GitHub 中仍会提供其源代码。
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>在一个订阅中可以设置多少个 IoT 中心实例？
 
-默认情况下，可[为每个订阅预配 10 个 IoT 中心](../azure-subscription-service-limits.md#iot-hub-limits)。 可以创建 [Azure 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以提高此限制。 由于每个解决方案加速器将预配一个新的 IoT 中心，因此，在给定的订阅中，最多只能预配 10 个解决方案加速器。
+默认情况下，可[为每个订阅预配 10 个 IoT 中心](../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-limits)。 可以创建 [Azure 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以提高此限制。 由于每个解决方案加速器将预配一个新的 IoT 中心，因此，在给定的订阅中，最多只能预配 10 个解决方案加速器。
 
 ### <a name="how-many-azure-cosmos-db-instances-can-i-provision-in-a-subscription"></a>在订阅中可以预配多少个 Azure Cosmos DB 实例？
 

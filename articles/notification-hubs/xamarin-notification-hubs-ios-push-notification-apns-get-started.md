@@ -1,29 +1,29 @@
 ---
-title: 使用 Azure 通知中心向 Xamarin.iOS 应用推送通知 | Microsoft Docs
+title: 使用 Azure 通知中心将推送通知发送到 Xamarin | Microsoft Docs
 description: 本教程介绍如何使用 Azure 通知中心将推送通知发送到 Xamarin.iOS 应用程序。
 services: notification-hubs
 keywords: ios 推送通知, 推送消息, 推送通知, 推送消息
 documentationcenter: xamarin
-author: jwargo
-manager: patniko
-editor: spelluru
-ms.assetid: 4d4dfd42-c5a5-4360-9d70-7812f96924d2
+author: sethmanheim
+manager: femila
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/23/2019
-ms.author: jowargo
-ms.openlocfilehash: cd6d22e7c689bce5c325863b914c5ee8abcbf40a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 07/07/2020
+ms.author: sethm
+ms.reviewer: thsomasu
+ms.lastreviewed: 05/23/2019
+ms.openlocfilehash: 3a10b17b65c518b483a713701986765b8c979c79
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240777"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529958"
 ---
-# <a name="tutorial-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 Xamarin.iOS 应用推送通知
+# <a name="tutorial-send-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 Xamarin.iOS 应用发送推送通知
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -57,25 +57,6 @@ ms.locfileid: "66240777"
 
 [!INCLUDE [Notification Hubs Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
-## <a name="configure-your-notification-hub-for-ios-push-notifications"></a>针对 iOS 推送通知配置通知中心
-
-本部分介绍如何执行相关步骤，以便使用以前创建的 **.p12** 推送证书创建新的通知中心并配置 APNs 身份验证。 如果想要使用已创建的通知中心，可以跳到步骤 5。
-
-[!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
-
-### <a name="configure-ios-settings-for-the-notification-hub"></a>针对 iOS 设置配置通知中心
-
-1. 在“通知设置”组中选择“Apple (APNS)”。  
-2. 选择“证书”，单击文件图标，然后选择此前导出的 **.p12** 文件。  
-3. 指定证书的密码。 
-4. 选择“沙盒”  模式。 仅当希望将推送通知发送给从应用商店购买应用的用户时，才应使用“生产”模式。 
-
-    ![在 Azure 门户中配置 APNs][6]
-
-    ![在 Azure 门户中配置 APNs 证书][7]
-
-通知中心现在已配置为使用 APNs，并且你有连接字符串用于注册应用和发送推送通知。
-
 ## <a name="connect-your-app-to-the-notification-hub"></a>将应用连接到通知中心
 
 ### <a name="create-a-new-project"></a>创建新项目
@@ -104,7 +85,7 @@ ms.locfileid: "66240777"
     public const string NotificationHubName = "<Azure Notification Hub Name>";
     ```
 
-7. 在 `AppDelegate.cs` 中添加以下 using 语句：
+7. 在 `AppDelegate.cs` 中，添加以下 using 语句：
 
     ```csharp
     using WindowsAzure.Messaging;
@@ -124,22 +105,22 @@ ms.locfileid: "66240777"
     {
         if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
         {
-            UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Sound | UNAuthorizationOptions.Sound,
-                                                                    (granted, error) =>
-            {
-                if (granted)
-                    InvokeOnMainThread(UIApplication.SharedApplication.RegisterForRemoteNotifications);
-            });
-        } else if (UIDevice.CurrentDevice.CheckSystemVersion (8, 0)) {
-            var pushSettings = UIUserNotificationSettings.GetSettingsForTypes (
+            UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound,
+                                                                    (granted, error) => InvokeOnMainThread(UIApplication.SharedApplication.RegisterForRemoteNotifications));
+        }
+        else if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
+        {
+            var pushSettings = UIUserNotificationSettings.GetSettingsForTypes(
                     UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound,
-                    new NSSet ());
+                    new NSSet());
 
-            UIApplication.SharedApplication.RegisterUserNotificationSettings (pushSettings);
-            UIApplication.SharedApplication.RegisterForRemoteNotifications ();
-        } else {
+            UIApplication.SharedApplication.RegisterUserNotificationSettings(pushSettings);
+            UIApplication.SharedApplication.RegisterForRemoteNotifications();
+        }
+        else
+        {
             UIRemoteNotificationType notificationTypes = UIRemoteNotificationType.Alert | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound;
-            UIApplication.SharedApplication.RegisterForRemoteNotificationTypes (notificationTypes);
+            UIApplication.SharedApplication.RegisterForRemoteNotificationTypes(notificationTypes);
         }
 
         return true;
@@ -153,7 +134,7 @@ ms.locfileid: "66240777"
     {
         Hub = new SBNotificationHub(Constants.ListenConnectionString, Constants.NotificationHubName);
 
-        Hub.UnregisterAllAsync (deviceToken, (error) => {
+        Hub.UnregisterAll (deviceToken, (error) => {
             if (error != null)
             {
                 System.Diagnostics.Debug.WriteLine("Error calling Unregister: {0}", error.ToString());
@@ -208,8 +189,9 @@ ms.locfileid: "66240777"
                 //Manually show an alert
                 if (!string.IsNullOrEmpty(alert))
                 {
-                    UIAlertView avAlert = new UIAlertView("Notification", alert, null, "OK", null);
-                    avAlert.Show();
+                    var myAlert = UIAlertController.Create("Notification", alert, UIAlertControllerStyle.Alert);
+                    myAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
+                    UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(myAlert, true, null);
                 }
             }
         }

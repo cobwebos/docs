@@ -2,18 +2,18 @@
 title: include 文件
 description: include 文件
 services: functions
-author: tdykstra
+author: ggailey777
 manager: cfowler
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
 ms.date: 05/23/2018
-ms.author: tdykstra
+ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 9093733f4dedac8c95d1526e57abea9489c0138f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 0276874f1f37533f7b5bd26be8e65204d9fbeb41
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66132358"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67608097"
 ---
 在所有开发环境中自动提供对该绑定的支持。 无需手动安装包或注册扩展。

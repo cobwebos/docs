@@ -1,26 +1,19 @@
 ---
-title: Azure PowerShell 脚本示例 - 备份 Web 应用 | Microsoft Docs
-description: Azure PowerShell 脚本示例 - 备份 Web 应用
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: PowerShell：备份应用
+description: 了解如何使用 Azure PowerShell 自动部署和管理应用服务。 此示例演示如何备份应用。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: fc755f82-ca3e-4532-b251-690b699324d6
-ms.service: app-service-web
-ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 43a99835776563f469efa3e0b14992203b34915e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: mvc, seodec18
+ms.openlocfilehash: c17cfcd2e55b98be9d86a73f6388d921336f993b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136641"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80057664"
 ---
 # <a name="back-up-a-web-app-using-powershell"></a>使用 PowerShell 备份 Web 应用
 
@@ -46,7 +39,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | 创建存储帐户。 |

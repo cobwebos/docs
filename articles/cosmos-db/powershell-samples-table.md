@@ -1,28 +1,34 @@
 ---
 title: 适用于 Azure Cosmos DB 的 Azure PowerShell 示例 - 表 API
-description: 适用于 Azure Cosmos DB 的 Azure PowerShell 示例 - 表 API
+description: 获取用于在 Azure Cosmos DB 表 API 帐户中执行各种常见任务的 Azure PowerShell 示例
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 05/18/2019
+ms.topic: how-to
+ms.date: 06/12/2020
 ms.author: mjbrown
-ms.openlocfilehash: b424e074d9696aadcd098c95976b5237caf980a7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 751fa9daabaaef05abb5df8229e84975b87cffc1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245179"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563828"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---table-api"></a>适用于 Azure Cosmos DB 的 Azure PowerShell 示例 - 表 API
 
 下表包含用于 Azure Cosmos DB for Table API 的示例 Azure PowerShell 脚本的链接。
 
-| | |
+> [!NOTE]
+> 该示例使用 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理 cmdlet。 请定期检查 `Az.CosmosDB` 是否有更新。
+
+|任务 | 说明 |
 |---|---|
 |[创建帐户和表](scripts/powershell/table/ps-table-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 创建 Azure Cosmos 帐户和表。 |
 |[列出或获取表](scripts/powershell/table/ps-table-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 列出或获取表。 |
+|[获取 RU/秒](scripts/powershell/table/ps-table-ru-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 获取表的 RU/秒。 |
 |[更新 RU/秒](scripts/powershell/table/ps-table-ru-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 更新表的 RU/秒。 |
-|[添加区域](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 获取 Azure Cosmos 帐户并将区域添加到位置列表。 |
-|[更改故障转移优先级](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 使用手动故障转移触发器更改 Azure Cosmos 帐户的优先级。 |
-|[帐户密钥和连接字符串任务](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 获取 Azure Cosmos 帐户的连接字符串。 获取 Azure Cosmos 帐户的主密钥和辅助密钥。 重新生成帐户密钥。 |
+|[更新帐户或添加区域](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 将区域添加到 Cosmos 帐户。 也可用于修改其他帐户属性，但这些必须与对区域的更改分开。 |
+|[更改故障转移优先级或触发故障转移](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 更改 Azure Cosmos 帐户的区域故障转移优先级或触发手动故障转移。 |
+|[帐户密钥或连接字符串](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 获取主密钥和辅助密钥、连接字符串或重新生成 Azure Cosmos 帐户的帐户密钥。 |
+|[创建启用 IP 防火墙的 Cosmos 帐户](scripts/powershell/common/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 创建启用 IP 防火墙的 Azure Cosmos 帐户。 |
+|[锁定资源以防止将其删除](scripts/powershell/table/powershell-table-lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 通过资源锁防止资源遭到删除。 |
 |||

@@ -10,16 +10,15 @@ ms.assetid: 47da4bb2-426e-4e53-8fa7-214ee2e3ab37
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: c70e88a572bc261ad9d25f9a742b1987d0c19b44
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1dac90053797caf66af79e458b9dbb95b682cd17
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60656660"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846859"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Azure API 管理中的问题模板
 通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页面的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](api-management-template-resources.md#strings)、[字形资源](api-management-template-resources.md#glyphs)和[页面控件](api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
@@ -31,12 +30,14 @@ ms.locfileid: "60656660"
 > [!NOTE]
 >  示例默认模板包含在后续文档中，但是会因持续改进而有所更改。 通过导航到所需单个模板，可在开发人员门户中查看实时的默认模板。 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](api-management-developer-portal-templates.md)。  
 
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
+
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="IssueList"></a> 问题列表  
+##  <a name="issue-list"></a><a name="IssueList"></a>问题列表  
  **问题列表**模板可用于自定义开发人员门户中问题列表页的正文。  
   
- ![问题列表开发人员门户](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM 问题列表开发人员门户")  
+ ![问题列表（开发人员门户）](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM 问题列表（开发人员门户）")  
   
 ### <a name="default-template"></a>默认模板  
   
@@ -97,13 +98,13 @@ ms.locfileid: "60656660"
   
 ### <a name="data-model"></a>数据模型  
   
-|属性|Type|描述|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`Issues`|[问题](api-management-template-data-model-reference.md#Issue)实体的集合。|对当前用户可见的问题。|  
 |`Paging`|[分页](api-management-template-data-model-reference.md#Paging)实体。|应用程序集合的分页信息。|  
 |`IsAuthenticated`|boolean|当前用户是否登录到开发人员门户。|  
 |`CanReportIssues`|boolean|当前用户是否有权提出问题。|  
-|`Search`|string|此属性已弃用，不应使用。|  
+|`Search`|字符串|此属性已弃用，不应使用。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   

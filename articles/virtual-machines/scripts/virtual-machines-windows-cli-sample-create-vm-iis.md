@@ -1,11 +1,10 @@
 ---
-title: Azure CLI 脚本示例 - 安装 IIS | Microsoft 文档
+title: Azure CLI 脚本示例 - 安装 IIS
 description: Azure CLI 脚本示例 - 安装 IIS
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -15,12 +14,12 @@ ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/28/2017
 ms.author: cynthn
-ms.openlocfilehash: 4b4d8f68c8b541b44065931991fea7c598aa770e
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 2cd8a91d81ab5416c040f3548ad5ad8a568eda5f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673830"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459502"
 ---
 # <a name="quick-create-a-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 快速创建虚拟机
 
@@ -46,7 +45,7 @@ az group delete --name myResourceGroup --yes
 
 此脚本使用以下命令创建资源组、虚拟机和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | 创建用于存储所有资源的资源组。 |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和网络安全组。 此命令还指定要使用的虚拟机映像和管理凭据。  |

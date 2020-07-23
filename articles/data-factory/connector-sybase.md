@@ -1,41 +1,47 @@
 ---
-title: 使用 Azure 数据工厂从 Sybase 复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 Sybase 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Sybase 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 06/10/2020
 ms.author: jingwang
-ms.openlocfilehash: 55ff6d37f18f4ffa2f12e17bd33dd196b77f79af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: ac9dff4b16d8ba1b346a2827f3b5487dbf97392e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61473053"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669828"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>使用 Azure 数据工厂从 Sybase 复制数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-onprem-sybase-connector.md)
 > * [当前版本](connector-sybase.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Sybase 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
+以下活动支持此 Sybase 连接器：
+
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
+
 可以将数据从 Sybase 数据库复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 具体而言，此 Sybase 连接器支持：
 
-- SAP Sybase SQL 随处 (ASA) **版本 16 和更高版本**；不支持智能和 ASE。
+- SAP Sybase SQL Anywhere (ASA) 版本 16 及更高版本。
 - 使用**基本**或 **Windows** 身份验证复制数据。
 
-## <a name="prerequisites"></a>必备组件
+不支持 Sybase IQ 和 ASE。 可以改用带有 Sybase 驱动程序的通用 ODBC 连接器。
+
+## <a name="prerequisites"></a>先决条件
 
 要使用此 Sybase 连接器，需要：
 
@@ -52,7 +58,7 @@ ms.locfileid: "61473053"
 
 Sybase 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| Property | 描述 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Sybase** | 是 |
 | server | Sybase 服务器的名称。 |是 |
@@ -89,13 +95,13 @@ Sybase 链接的服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 Sybase 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Sybase 数据集支持的属性列表。
 
-要从 Sybase 复制数据，请将数据集的 type 属性设置为“RelationalTable”。 支持以下属性：
+若要从 Sybase 复制数据，支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| Property | 描述 | 必需 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：**RelationalTable** | 是 |
+| type | 数据集的 type 属性必须设置为：**SybaseTable** | 是 |
 | tableName | Sybase 数据库中的表名。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -104,15 +110,18 @@ Sybase 链接的服务支持以下属性：
 {
     "name": "SybaseDataset",
     "properties": {
-        "type": "RelationalTable",
+        "type": "SybaseTable",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Sybase linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
+
+如果使用 `RelationalTable` 类型数据集，该数据集仍按原样受支持，但我们建议今后使用新数据集。
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
@@ -120,12 +129,12 @@ Sybase 链接的服务支持以下属性：
 
 ### <a name="sybase-as-source"></a>以 Sybase 作为源
 
-要从 Sybase 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动源部分支持以下属性：
+若要从 Sybase 复制数据，复制活动的 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 描述 | 必需 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**RelationalSource** | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| type | 复制活动 source 的 type 属性必须设置为：**SybaseSource** | 是 |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 
@@ -148,7 +157,7 @@ Sybase 链接的服务支持以下属性：
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "SybaseSource",
                 "query": "SELECT * FROM MyTable"
             },
             "sink": {
@@ -159,11 +168,18 @@ Sybase 链接的服务支持以下属性：
 ]
 ```
 
+如果使用 `RelationalSource` 类型源，该源仍按原样受支持，但我们建议今后使用新源。
+
 ## <a name="data-type-mapping-for-sybase"></a>Sybase 的数据类型映射
 
 从 Sybase 复制数据时，以下映射用于从 Sybase 数据类型映射到 Azure 数据工厂临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
 
 Sybase 支持 T-SQL 类型。 有关从 SQL 类型到 Azure 数据工厂临时数据类型的映射表，请参阅 [Azure SQL 数据库连接器 - 数据类型映射](connector-azure-sql-database.md#data-type-mapping-for-azure-sql-database)一节。
+
+## <a name="lookup-activity-properties"></a>Lookup 活动属性
+
+若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
+
 
 
 ## <a name="next-steps"></a>后续步骤

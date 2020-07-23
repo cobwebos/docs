@@ -22,12 +22,16 @@
       items:
         - name: 针对本地工作负荷的云治理管理
           href: cloud-governed-management-for-on-premises.md
+        - name: 构建坚实标识基础的四个步骤
+          href: four-steps.md
+        - name: 选择混合标识身份验证方法
+          href: choose-ad-authn.md
     - name: Azure AD Connect 和 Connect Health
       items:
         - name: 什么是 Azure AD Connect 和 Connect Health？
           href: whatis-azure-ad-connect.md
         - name: 选择正确的身份验证
-          href: 'https://docs.microsoft.com/azure/security/azure-ad-choose-authn'
+          href: 'https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn'
         - name: 标识同步和重复属性复原
           href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
     - name: 密码哈希同步
@@ -68,6 +72,8 @@
       items:
         - name: 什么是 Azure AD Connect Sync？
           href: how-to-connect-sync-whatis.md
+        - name: Azure ADSync 服务帐户
+          href: concept-adsync-service-account.md
         - name: Azure AD Connect 同步功能
           href: how-to-connect-syncservice-features.md
         - name: 什么是 Azure AD Connect 同步服务管理器？
@@ -100,6 +106,8 @@
           href: how-to-connect-install-express.md
         - name: 使用联合身份验证或其他自定义设置安装 Azure AD Connect
           href: how-to-connect-install-custom.md
+        - name: 导入和导出配置设置
+          href: how-to-connect-import-export-config.md
         - name: 使用直通身份验证 (PTA) 安装 Azure AD Connect
           href: how-to-connect-pta-quick-start.md
         - name: 安装 Azure AD Connect Health
@@ -144,6 +152,10 @@
               href: plan-migrate-adfs-password-hash-sync.md
             - name: 从联合身份验证迁移到 PTA
               href: plan-migrate-adfs-pass-through-authentication.md
+            - name: 将组从一个林移到另一个林
+              href: how-to-connect-migrate-groups.md
+            - name: 使用分阶段推出迁移到云身份验证
+              href: how-to-connect-staged-rollout.md
         - name: 混合标识设计注意事项
           items:
             - name: 混合标识设计注意事项概述
@@ -178,6 +190,8 @@
       items:
         - name: 启用设备写回
           href: how-to-connect-device-writeback.md
+        - name: 启用组写回
+          href: how-to-connect-group-writeback.md
         - name: 设备选项
           href: how-to-connect-device-options.md
         - name: Azure AD Connect 中的其他功能
@@ -200,6 +214,8 @@
           href: how-to-connect-pta-quick-start.md
         - name: 直通身份验证常见问题解答
           href: how-to-connect-pta-faq.md
+        - name: 通过设置“不配置”来为 Azure AD Connect 禁用 PTA
+          href: how-to-connect-pta-disable-do-not-configure.md
     - name: 管理联合身份验证服务
       items:
         - name: 使用 Azure AD Connect 管理联合身份验证
@@ -266,6 +282,8 @@
           href: how-to-connect-sync-feature-scheduler.md
         - name: 创建和自定义同步规则
           href: how-to-connect-create-custom-sync-rule.md
+        - name: Azure AD Connect 同步 V2 终结点 API
+          href: how-to-connect-sync-endpoint-api-v2.md
         - name: Azure AD Connect 同步服务管理器
           items:
             - name: 管理“服务管理器操作”选项卡
@@ -276,7 +294,7 @@
               href: how-to-connect-sync-service-manager-ui-mvdesigner.md
             - name: Metaverse 搜索
               href: how-to-connect-sync-service-manager-ui-mvsearch.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 什么是 Azure AD Connect 管理员代理？
           href: whatis-aadc-admin-agent.md
@@ -308,7 +326,9 @@
           href: tshoot-connect-attribute-not-syncing.md
         - name: 安装问题
           href: tshoot-connect-install-issues.md
-- name: 引用
+        - name: UPN 更改
+          href: howto-troubleshoot-upn-changes.md
+- name: 参考
   items:
     - name: 混合标识所需的端口和协议
       href: reference-connect-ports.md
@@ -316,6 +336,8 @@
       href: reference-connect-version-history.md
     - name: Azure AD Connect Health 版本历史记录
       href: reference-connect-health-version-history.md
+    - name: Azure AD 直通身份验证代理版本历史记录
+      href: reference-connect-pta-version-history.md
     - name: 连接器版本历史记录
       href: reference-connect-sync-connector-version-history.md
     - name: 帐户和权限
@@ -324,6 +346,8 @@
       href: reference-connect-faq.md
     - name: Azure AD Connect Health 常见问题
       href: reference-connect-health-faq.md
+    - name: 针对 Azure 政府的混合标识注意事项
+      href: reference-connect-government-cloud.md
     - name: Azure AD Connect 用户隐私
       href: reference-connect-user-privacy.md
     - name: Azure AD Connect Health 用户隐私
@@ -346,3 +370,7 @@
       href: reference-connect-adsynctools.md
     - name: ADConnectivityTools 参考
       href: reference-connect-adconnectivitytools.md
+    - name: msExchUserHoldPolicies 和 cloudMSExchUserHoldPolicies
+      href: reference-connect-msexchuserholdpolicies.md
+    - name: 了解 Azure AD Connect 1.4.xx.x 设备消失
+      href: reference-connect-device-disappearance.md

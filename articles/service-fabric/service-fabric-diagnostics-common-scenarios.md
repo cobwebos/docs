@@ -1,29 +1,18 @@
 ---
-title: Azure Service Fabric 诊断常见情况 | Microsoft Docs
-description: 了解如何使用 Azure Service Fabric 对常见情况进行故障排除
-services: service-fabric
-documentationcenter: .net
-author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Azure Service Fabric 诊断常见情况
+description: 了解对 Azure Service Fabric 应用程序中常见监视和诊断情况进行故障排除的信息。
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
-ms.author: srrengar
-ms.openlocfilehash: 265aea1b8873d812859b39175c732c3e7118cbb5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f92bc02082d8bcd9d917f05c93d3da413f772cd0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60394119"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257737"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>使用 Service Fabric 诊断常见情况
 
-本文阐述了用户在使用 Service Fabric 进行监视和诊断时遇到的常见情况。 所介绍的方案涵盖了 Service Fabric 的所有 3 层：应用程序、群集和基础结构。 每个解决方案使用 Application Insights 和 Azure Monitor 日志的 Azure 监视工具，来完成每个方案。 每个解决方案中的步骤为用户提供介绍如何使用 Application Insights 和 Azure Monitor 日志的 Service Fabric 上下文中。
+本文阐述了用户在使用 Service Fabric 进行监视和诊断时遇到的常见情况。 所介绍的方案涵盖了 Service Fabric 的所有 3 层：应用程序、群集和基础结构。 每个解决方案均使用 Application Insights 和 Azure Monitor 日志（Azure 监视工具）来处理每种情况。 每个解决方案中的步骤都向用户介绍了如何在 Service Fabric 环境中使用 Application Insights 和 Azure Monitor 日志。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -65,7 +54,7 @@ ms.locfileid: "60394119"
 1. 节点事件由 Service Fabric 群集跟踪。 导航到名为 **ServiceFabric(NameofResourceGroup)** 的 Service Fabric 分析解决方案资源
 2. 单击标题为“摘要”的边栏选项卡底部的图表
 
-    ![Azure 监视器将记录解决方案](media/service-fabric-diagnostics-common-scenarios/oms-solution-azure-portal.png)
+    ![Azure Monitor 日志解决方案](media/service-fabric-diagnostics-common-scenarios/oms-solution-azure-portal.png)
 
 3. 此处有许多图表和磁贴，上面显示了各种指标。 单击其中一个图表，它会带你进入“日志搜索”。 在这里，你可以查询任何群集事件或性能计数器。
 4. 输入以下查询。 这些事件 ID 位于[节点事件参考](service-fabric-diagnostics-event-generation-operational.md#application-events)中
@@ -77,7 +66,7 @@ ms.locfileid: "60394119"
 
 5. 单击顶部的“新建警报规则”，现在只要发生基于此查询的事件，就会通过所选通信方式收到警报。
 
-    ![Azure 监视器将记录新警报](media/service-fabric-diagnostics-common-scenarios/oms-create-alert.png)
+    ![Azure Monitor 日志新建警报](media/service-fabric-diagnostics-common-scenarios/oms-create-alert.png)
 
 ## <a name="how-can-i-be-alerted-of-application-upgrade-rollbacks"></a>怎样才能收到应用程序升级回滚警报？
 
@@ -129,10 +118,10 @@ ms.locfileid: "60394119"
 
 ## <a name="how-do-i-track-performance-of-my-reliable-services-and-actors"></a>如何跟踪 Reliable Services 和 Actors 的性能？
 
-若要跟踪应用程序中 Reliable Services 或 Actors 的性能，还应收集“Service Fabric 执行组件”、“执行组件方法”、“服务”和“服务方法”计数器。 下面是要收集的可靠服务和执行组件性能计数器
+若要跟踪应用程序中 Reliable Services 或 Actors 的性能，还应收集 Service Fabric Actor、Actor Method、Service 和 Service Method 计数器。 下面是要收集的 Reliable Service 和 Actor 性能计数器的示例
 
 >[!NOTE]
->当前无法通过 Log Analytics 代理收集 Service Fabric 性能计数器，但可以通过[其他诊断解决方案](service-fabric-diagnostics-partners.md)进行收集
+>Log Analytics 代理当前无法收集 Service Fabric 性能计数器，但[其他诊断解决方案](service-fabric-diagnostics-partners.md)可以收集这些计数器
 
 * `Service Fabric Service(*)\\Average milliseconds per request`
 * `Service Fabric Service Method(*)\\Invocations/Sec`
@@ -143,9 +132,10 @@ ms.locfileid: "60394119"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 AI 中设置警报](../azure-monitor/app/alerts.md)以获取有关性能或使用情况的通知
+* [查找常见代码包激活错误](./service-fabric-diagnostics-code-package-errors.md)
+* [在 AI 中设置警报](../azure-monitor/platform/alerts-log.md)以获取有关性能或使用情况的通知
 * [Application Insights 中的智能检测](../azure-monitor/app/proactive-diagnostics.md)针对发送给 AI 的遥测进行主动分析，向你警告潜在的性能问题
-* 要详细了解 Azure Monitor 日志[警报](../log-analytics/log-analytics-alerts.md)以辅助检测和诊断。
-* 对于在本地群集，Azure Monitor 日志提供可用于将数据发送到 Azure Monitor 日志的网关 （HTTP 转发代理）。 了解更多信息，请参阅[将无法访问 Internet 的计算机连接到使用 Log Analytics 网关的 Azure Monitor 日志](../azure-monitor/platform/gateway.md)
-* 掌握[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)作为 Azure Monitor 日志的一部分提供的功能
-* 获取 Azure Monitor 日志和它所提供的更详细的概述，读取[什么是 Azure Monitor 日志？](../operations-management-suite/operations-management-suite-overview.md)
+* 详细了解有助于进行检测和诊断的 Azure Monitor 日志[警报](../azure-monitor/platform/alerts-overview.md)。
+* 对于本地群集，Azure Monitor 日志提供了一个网关（HTTP 正向代理），可用于向 Azure Monitor 日志发送数据。 有关更多信息，请参阅[使用 Log Analytics 网关将无法访问 Internet 的计算机连接到 Azure Monitor 日志](../azure-monitor/platform/gateway.md)
+* 掌握 Azure Monitor 日志中提供的[日志搜索和查询](../azure-monitor/log-query/log-query-overview.md)功能
+* 有关 Azure Monitor 日志及其功能的更详细概述，请参阅[什么是 Azure Monitor 日志？](../azure-monitor/overview.md)

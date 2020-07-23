@@ -1,32 +1,24 @@
 ---
-title: Azure 虚拟机 PowerShell 示例 | Microsoft 文档
+title: Azure 虚拟机 PowerShell 示例
 description: Azure 虚拟机 PowerShell 示例
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-service-management
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.devlang: na
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 53784c3d74f9e6af5f1e84cc098194113e81333b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a9d68527a44d78a702e00d3b6ce910c2e9473dac
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60771254"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527007"
 ---
-# <a name="azure-virtual-machine-powershell-samples"></a>Azure 虚拟机 PowerShell 示例
+# <a name="azure-virtual-machine-powershell-samples-for-creating-and-managing-linux-vms"></a>用于创建和管理 Linux Vm 的 Azure 虚拟机 PowerShell 示例
 
 下表包含用于创建和管理 Linux 虚拟机的 PowerShell 脚本示例的链接。
 
-| | |
+| Script | 说明 |
 |---|---|
 |**创建虚拟机**||
 | [创建完全配置的虚拟机](./../scripts/virtual-machines-linux-powershell-sample-create-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 创建资源组、虚拟机以及所有相关资源。|
@@ -45,4 +37,5 @@ ms.locfileid: "60771254"
 |**监视虚拟机**||
 | [使用 Azure Monitor 日志监视 VM](./../scripts/virtual-machines-linux-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 创建一个虚拟机，安装 Log Analytics 代理，并在 Log Analytics 工作区中注册该 VM。  |
 | [将托管磁盘复制到相同或不同的订阅](../scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 将托管磁盘复制到父托管磁盘所在区域中的相同或不同订阅。
+| [使用 PowerShell 收集订阅中所有 VM 的详细信息](../scripts/virtual-machines-powershell-sample-collect-vm-details.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 创建一个 csv，其中包含所提供订阅中 VM 的 VM 名称、资源组名称、区域、虚拟网络、子网、专用 IP 地址、OS 类型和公共 IP 地址。
 | | |

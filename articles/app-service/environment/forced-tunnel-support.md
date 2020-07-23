@@ -1,25 +1,18 @@
 ---
-title: 将应用服务环境配置为采用强制隧道 - Azure
-description: 在通过强制隧道传输出站流量时，使应用服务环境能够正常运行
-services: app-service
-documentationcenter: na
+title: 配置强制隧道
+description: 了解在虚拟网络中通过强制隧道传输出站流量时，如何使应用服务环境能够正常运行。
 author: ccompy
-manager: stefsch
 ms.assetid: 384cf393-5c63-4ffb-9eb2-bfd990bc7af1
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 36324ccd9b6e9470c93949efed6c29a9b8d3ab61
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 6dc002b0ed9e68ea15eaa58c226249837c7df32d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389283"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85830853"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>使用强制隧道配置应用服务环境
 
@@ -67,7 +60,7 @@ ASE 具有许多外部依赖项，详见[应用服务环境网络体系结构][n
 将 ASE 子网配置为忽略 BGP 路由：
 
 * 创建 UDR 并将其分配到 ASE 子网（如果没有 UDR）。
-* 在 Azure 门户中，打开分配到 ASE 子网的路由表的 UI。  选择“配置”。  将 BGP 路由传播设置为“已禁用”。  单击“保存”。 [创建路由表][routetable]文档介绍了如何关闭此设置。
+* 在 Azure 门户中，打开分配到 ASE 子网的路由表的 UI。  选择“配置”。  将“虚拟网关路由传播”设置为“禁用”。  单击“保存”。 [创建路由表][routetable]文档介绍了如何关闭此设置。
 
 将 ASE 子网配置为忽略所有 BGP 路由后，应用将不再能够访问本地资源。 若要让用于访问本地资源，请编辑分配到 ASE 子网的 UDR，并添加本地地址范围的路由。 “下一跃点类型”应设置为“虚拟网络网关”。 
 
@@ -82,7 +75,7 @@ ASE 具有许多外部依赖项，详见[应用服务环境网络体系结构][n
 
 若要在虚拟网络中创建 ASE，而该虚拟网络已配置为将所有流量路由到本地，则需使用资源管理器模板来创建 ASE。  无法通过门户将 ASE 创建到预先存在的子网中。  若要将 ASE 部署到 VNet 中，而该 VNet 已配置为将所有出站流量路由到本地，则需使用可指定预先存在的子网的资源管理器模板来创建 ASE。 若要详细了解如何使用模板来部署 ASE，请阅读[使用模板创建应用服务环境][template]。
 
-可以通过服务终结点将多租户服务的访问权限限制给一组 Azure 虚拟网络和子网。 若要详细了解服务终结点，可参阅[虚拟网络服务终结点][serviceendpoints]文档。 
+可以通过服务终结点将多租户服务的访问权限限制给一组 Azure 虚拟网络和子网。 若要详细了解服务终结点，请参阅[虚拟网络服务终结点][serviceendpoints]文档。 
 
 在资源上启用服务终结点时，有些已创建路由的优先级高于所有其他路由。 如果将服务终结点与强制隧道 ASE 配合使用，则 Azure SQL 和 Azure 存储管理流量不会通过强制隧道进行重定向。 其他 ASE 依赖项流量会通过强制隧道重定向，不能丢失，否则 ASE 会功能失常。
 
@@ -102,35 +95,39 @@ ASE 具有许多外部依赖项，详见[应用服务环境网络体系结构][n
 
 3. 获取可供所有从应用服务环境到 Internet 的出站流量使用的地址。 如果在本地路由流量，则这些地址为 NAT 或网关 IP。 若要通过 NVA 路由应用服务环境出站流量，则出口地址为 NVA 的公共 IP。
 
-4. 在现有应用服务环境中设置出口地址：请转到 resources.azure.com，再转到 Subscription/\<subscription id>/resourceGroups/\<ase resource group>/providers/Microsoft.Web/hostingEnvironments/\<ase name>。 然后即可看到描述应用服务环境的 JSON 代码。 确保代码的顶部显示“读/写”。 选择“编辑”。 向下滚动到底部。 将“userWhitelistedIpRanges”值从“null”更改为类似于以下内容的值。 使用要设置为出口地址范围的地址。 
+4. 在现有应用服务环境中设置出口地址：转到 resources.azure.com，再转到 Subscription/\<subscription id>/resourceGroups/\<ase resource group>/providers/Microsoft.Web/hostingEnvironments/\<ase name>。 然后即可看到描述应用服务环境的 JSON 代码。 确保代码的顶部显示“读/写”。 选择“编辑”。 向下滚动到底部。 将“userWhitelistedIpRanges”值从“null”更改为类似于以下内容的值 。 使用要设置为出口地址范围的地址。 
 
-        "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"] 
+    ```json
+    "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"]
+    ```
 
    选择顶部的“PUT”。 此选项会触发应用服务环境的缩放操作，并对防火墙进行调整。
 
-使用出口地址创建 ASE：按照[使用模板创建应用服务环境][template]中的说明，并下拉相应的模板。  编辑 azuredeploy.json 文件中的 "resources" 节，但 "properties" 块除外，并添加一行，用于 **userWhitelistedIpRanges**（含值）。
+使用出口地址创建 ASE：按照[使用模板创建应用服务环境][template]中的说明进行操作，并下拉相应的模板。  编辑 azuredeploy.json 文件中的 "resources" 节，但 "properties" 块除外，并添加一行，用于 **userWhitelistedIpRanges**（含值）。
 
-    "resources": [
-      {
+```json
+"resources": [
+    {
         "apiVersion": "2015-08-01",
         "type": "Microsoft.Web/hostingEnvironments",
         "name": "[parameters('aseName')]",
         "kind": "ASEV2",
         "location": "[parameters('aseLocation')]",
         "properties": {
-          "name": "[parameters('aseName')]",
-          "location": "[parameters('aseLocation')]",
-          "ipSslAddressCount": 0,
-          "internalLoadBalancingMode": "[parameters('internalLoadBalancingMode')]",
-          "dnsSuffix" : "[parameters('dnsSuffix')]",
-          "virtualNetwork": {
-            "Id": "[parameters('existingVnetResourceId')]",
-            "Subnet": "[parameters('subnetName')]"
-          },
-        "userWhitelistedIpRanges":  ["11.22.33.44/32", "55.66.77.0/30"]
+            "name": "[parameters('aseName')]",
+            "location": "[parameters('aseLocation')]",
+            "ipSslAddressCount": 0,
+            "internalLoadBalancingMode": "[parameters('internalLoadBalancingMode')]",
+            "dnsSuffix" : "[parameters('dnsSuffix')]",
+            "virtualNetwork": {
+                "Id": "[parameters('existingVnetResourceId')]",
+                "Subnet": "[parameters('subnetName')]"
+            },
+            "userWhitelistedIpRanges":  ["11.22.33.44/32", "55.66.77.0/30"]
         }
-      }
-    ]
+    }
+]
+```
 
 进行这些更改后，即可将流量直接从 ASE 发送到 Azure 存储，并且可以从 ASE 的 VIP 之外的其他地址访问 Azure SQL。
 

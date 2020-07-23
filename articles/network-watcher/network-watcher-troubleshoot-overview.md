@@ -1,25 +1,23 @@
 ---
-title: 在 Azure 网络观察程序中进行资源故障排除简介 | Microsoft 文档
+title: 资源故障排除简介
+titleSuffix: Azure Network Watcher
 description: 此页概述了网络观察程序资源故障排除功能
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: c1145cd6-d1cf-4770-b1cc-eaf0464cc315
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: kumud
-ms.openlocfilehash: 65ce9e7d298131486ae4e5f3584c7975ca81e1ab
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: 675038189fdc9c9626fee409a90e17341cf9b6cd
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64684242"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207360"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>在 Azure 网络观察程序中进行资源故障排除简介
 
@@ -84,15 +82,15 @@ ms.locfileid: "64684242"
 
 下表列出了网络观察程序故障排除支持的网关和连接：
 
-|  |  |
+| 网关或连接 | 支持  |
 |---------|---------|
-|网关类型   |         |
+|**网关类型**   |         |
 |VPN      | 支持        |
 |ExpressRoute | 不支持 |
-|VPN 类型 | |
+|**VPN 类型** | |
 |基于路由 | 支持|
 |基于策略 | 不支持|
-|连接类型||
+|**连接类型**||
 |IPSec| 支持|
 |VNet2Vnet| 支持|
 |ExpressRoute| 不支持|
@@ -107,7 +105,7 @@ ms.locfileid: "64684242"
 > [!NOTE]
 > 在某些情况下，仅部分日志文件写入到存储中。
 
-有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 使用 Azure Blob 存储入门](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 可以使用的另一个工具是存储资源管理器。 有关存储资源管理器的详细信息可以在此链接中找到：[存储资源管理器](https://storageexplorer.com/)
+有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 可以使用的另一个工具是存储资源管理器。 有关存储资源管理器的详细信息可以在此链接中找到：[存储资源管理器](https://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 

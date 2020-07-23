@@ -2,20 +2,17 @@
 title: Azure 上的 Kubernetes 教程 - 更新应用程序
 description: 本 Azure Kubernetes 服务 (AKS) 教程介绍如何使用新版应用程序代码将现有应用程序部署更新到 AKS。
 services: container-service
-author: tylermsft
-ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: 05eac7e673ad01e9d3e0fb25f261444fd7bc4e6d
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: d5457d790cd3c95bb23ec0c517097b443a2389ed
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475514"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "77593370"
 ---
-# <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中更新应用程序。
+# <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中更新应用程序
 
 在 Kubernetes 中部署应用程序后，可以指定新的容器映像或映像版本，从而更新应用程序。 更新分阶段进行，因此，只有一部分部署会同时更新。 借助这种暂存更新，可以让应用程序在更新期间继续运行。 如果发生部署故障，还可以利用它的回滚机制。
 
@@ -29,9 +26,9 @@ ms.locfileid: "66475514"
 
 ## <a name="before-you-begin"></a>开始之前
 
-上一教程中，应用程序已打包到容器映像中。 该映像已上传到 Azure容器注册表，同时，你创建了 AKS 群集。 然后，将应用程序部署到了 AKS 群集。
+上一教程中，应用程序已打包到容器映像中。 该映像已上传到 Azure容器注册表，同时，你创建了 AKS 群集。 然后，应用程序部署到了 AKS 群集。
 
-此外，还克隆了应用程序存储库，其中包括应用程序源代码和本教程中使用的预创建的 Docker Compose 文件。 验证是否已克隆存储库，并且是否已将目录更改为克隆的目录。 如果尚未完成这些步骤，并且想要逐一完成，请先学习[教程 1 - 创建容器映像][aks-tutorial-prepare-app]。
+此外，还克隆了应用程序存储库，其中包括应用程序源代码和本教程中使用的预创建的 Docker Compose 文件。 验证是否已克隆存储库，并且是否已将目录更改为克隆的目录。 如果尚未完成这些步骤，并且想要逐一完成，请先阅读[教程 1 - 创建容器映像][aks-tutorial-prepare-app]。
 
 此教程需要运行 Azure CLI 2.0.53 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
@@ -53,7 +50,7 @@ VOTE2VALUE = 'Purple'
 SHOWHOST = 'false'
 ```
 
-保存并关闭该文件。 在 `vi` 中使用 `:wq`。
+保存并关闭该文件。 在 `vi` 中，使用 `:wq`。
 
 ## <a name="update-the-container-image"></a>更新容器映像
 
@@ -88,7 +85,7 @@ docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
 现在，请使用 [docker push][docker-push] 将映像上传到注册表。 将 `<acrLoginServer>` 替换为 ACR 登录服务器名称。
 
 > [!NOTE]
-> 如果在推送到 ACR 注册表时遇到问题，请确保你仍已登录。 使用在 [创建 Azure 容器注册表](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry)步骤中创建的 Azure 容器注册表的名称运行 [az acr login][az-acr-login] 命令。 例如，`az acr login --name <azure container registry name>`。
+> 如果在推送到 ACR 注册表时遇到问题，请确保你仍已登录。 使用在 [创建 Azure 容器注册表](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry)步骤中创建的 Azure 容器注册表的名称运行 [az acr login][az-acr-login] 命令。 例如，`az acr login --name <azure container registry name>` 。
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2
@@ -96,7 +93,7 @@ docker push <acrLoginServer>/azure-vote-front:v2
 
 ## <a name="deploy-the-updated-application"></a>部署更新的应用程序
 
-为了提供最长运行时间，必须运行应用程序 Pod 的多个实例。 使用 [kubectl get pods][kubectl-get] 命令验证运行的前端实例的数目：
+为了提供最长运行时间，必须运行应用程序 Pod 的多个实例。 使用 [kubectl get pods][kubectl-get] 命令验证正在运行的前端实例的数目：
 
 ```
 $ kubectl get pods
@@ -152,7 +149,7 @@ kubectl get service azure-vote-front
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你更新了一个应用程序并向 AKS 群集推出了此更新。 你已了解如何：
+在本教程中，你更新了一个应用程序并向 AKS 群集推出了此更新。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 更新前端应用程序代码

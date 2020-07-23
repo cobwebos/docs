@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Kudos 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Kudos 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Kudos 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 00492ba379a4b4d8ae7437d18f9b2880dae03e44
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1fb1a1bc7bfd8b3cc9d7758bf8e80d8759f9357e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917459"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74227482"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kudos"></a>教程：Azure Active Directory 与 Kudos 集成
+# <a name="tutorial-azure-active-directory-integration-with-kudos"></a>教程：Azure Active Directory 与 Kudos 的集成
 
 在本教程中，了解如何将 Kudos 与 Azure Active Directory (Azure AD) 集成。
 将 Kudos 与 Azure AD 集成可提供以下优势：
@@ -34,7 +34,7 @@ ms.locfileid: "64917459"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Kudos 的集成，需要以下项：
 
@@ -144,7 +144,7 @@ ms.locfileid: "64917459"
 
     d. 在“Kudos URL”  文本框中，键入公司名称。
 
-    e. 单击“ **保存**”。
+    e. 单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -164,7 +164,7 @@ ms.locfileid: "64917459"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 `brittasimon@yourcompanydomain.extension`   
+    b. 在“用户名”字段中，键入 `brittasimon@yourcompanydomain.extension`  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -187,7 +187,7 @@ ms.locfileid: "64917459"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -224,7 +224,7 @@ ms.locfileid: "64917459"
     b. 单击“创建用户”  。
 
 > [!NOTE]
-> 可以使用 Kudos 提供的任何其他 Kudos 用户帐户创建工具或 API 来预配 AAD 用户帐户。
+> 可以使用 Kudos 提供的任何其他 Kudos 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

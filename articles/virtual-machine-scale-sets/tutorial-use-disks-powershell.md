@@ -1,27 +1,20 @@
 ---
-title: 教程 - 通过 Azure PowerShell 创建和使用规模集的磁盘 | Microsoft 文档
+title: 教程 - 通过 Azure PowerShell 创建和使用规模集的磁盘
 description: 了解如何通过 Azure PowerShell 对虚拟机规模集创建和使用托管磁盘，包括如何添加、准备、列出和分离磁盘。
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ju-shim
+ms.author: jushiman
 ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: disks
 ms.date: 03/27/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 6035a6ddd690db456edfa5777ca2d41e4be8b919
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: b3b57cd2a2e5d5502f3865eddcdddfac67460dc7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66728584"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495013"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>教程：通过 Azure PowerShell 对虚拟机规模集创建和使用磁盘
 
@@ -34,7 +27,7 @@ ms.locfileid: "66728584"
 > * 磁盘性能
 > * 附加和准备数据磁盘
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -49,28 +42,28 @@ ms.locfileid: "66728584"
 **临时磁盘** - 临时磁盘使用 VM 实例所在的 Azure 主机上的固态硬盘。 这些磁盘具有高性能，可用于临时数据处理等操作。 但是，如果将 VM 实例移到新的主机，临时磁盘上存储的数据都会删除。 临时磁盘的大小由 VM 实例大小决定。 临时磁盘标记为“/dev/sdb”  ，且装载点为 /mnt  。
 
 ### <a name="temporary-disk-sizes"></a>临时磁盘大小
-| Type | 常见大小 | 临时磁盘大小上限 (GiB) |
+| 类型 | 常见大小 | 临时磁盘大小上限 (GiB) |
 |----|----|----|
-| [常规用途](../virtual-machines/windows/sizes-general.md) | A、B、D 系列 | 1600 |
-| [计算优化](../virtual-machines/windows/sizes-compute.md) | F 系列 | 576 |
-| [内存优化](../virtual-machines/windows/sizes-memory.md) | D、E、G、M 系列 | 6144 |
-| [存储优化](../virtual-machines/windows/sizes-storage.md) | L 系列 | 5630 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md) | N 系列 | 1440 |
-| [高性能](../virtual-machines/windows/sizes-hpc.md) | A 和 H 系列 | 2000 |
+| [常规用途](../virtual-machines/sizes-general.md) | A、B、D 系列 | 1600 |
+| [计算优化](../virtual-machines/sizes-compute.md) | F 系列 | 576 |
+| [内存优化](../virtual-machines/sizes-memory.md) | D、E、G、M 系列 | 6144 |
+| [存储优化](../virtual-machines/sizes-storage.md) | L 系列 | 5630 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N 系列 | 1440 |
+| [高性能](../virtual-machines/sizes-hpc.md) | A 和 H 系列 | 2000 |
 
 
 ## <a name="azure-data-disks"></a>Azure 数据磁盘
 可添加额外的数据磁盘，用于安装应用程序和存储数据。 在任何需要持久和响应性数据存储的情况下，都应使用数据磁盘。 每个数据磁盘的最大容量为 4 TB。 VM 实例的大小决定可附加的数据磁盘数。 对于每个 VM vCPU，都可以附加两个数据磁盘。
 
 ### <a name="max-data-disks-per-vm"></a>每个 VM 的最大数据磁盘数
-| Type | 常见大小 | 每个 VM 的最大数据磁盘数 |
+| 类型 | 常见大小 | 每个 VM 的最大数据磁盘数 |
 |----|----|----|
-| [常规用途](../virtual-machines/windows/sizes-general.md) | A、B、D 系列 | 64 |
-| [计算优化](../virtual-machines/windows/sizes-compute.md) | F 系列 | 64 |
-| [内存优化](../virtual-machines/windows/sizes-memory.md) | D、E、G、M 系列 | 64 |
-| [存储优化](../virtual-machines/windows/sizes-storage.md) | L 系列 | 64 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md) | N 系列 | 64 |
-| [高性能](../virtual-machines/windows/sizes-hpc.md) | A 和 H 系列 | 64 |
+| [常规用途](../virtual-machines/sizes-general.md) | A、B、D 系列 | 64 |
+| [计算优化](../virtual-machines/sizes-compute.md) | F 系列 | 64 |
+| [内存优化](../virtual-machines/sizes-memory.md) | D、E、G、M 系列 | 64 |
+| [存储优化](../virtual-machines/sizes-storage.md) | L 系列 | 64 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N 系列 | 64 |
+| [高性能](../virtual-machines/sizes-hpc.md) | A 和 H 系列 | 64 |
 
 
 ## <a name="vm-disk-types"></a>VM 磁盘类型
@@ -142,7 +135,7 @@ Update-AzVmss `
 ## <a name="prepare-the-data-disks"></a>准备数据磁盘
 已创建并附加到规模集 VM 实例的磁盘是原始磁盘。 将磁盘用于数据和应用程序之前，必须准备磁盘。 若要准备磁盘，需要创建分区、创建文件系统，并将其装载。
 
-若要跨规模集中的多个 VM 实例自动完成此过程，可以使用 Azure 自定义脚本扩展。 此扩展可以在每个 VM 实例上以本地方式执行脚本，以便完成各种任务，例如准备附加的数据磁盘。 有关详细信息，请参阅[自定义脚本扩展概述](../virtual-machines/windows/extensions-customscript.md)。
+若要跨规模集中的多个 VM 实例自动完成此过程，可以使用 Azure 自定义脚本扩展。 此扩展可以在每个 VM 实例上以本地方式执行脚本，以便完成各种任务，例如准备附加的数据磁盘。 有关详细信息，请参阅[自定义脚本扩展概述](../virtual-machines/extensions/custom-script-windows.md)。
 
 
 以下示例在每个 VM 实例上执行来自 GitHub 示例存储库的脚本，使用的是 [Add-AzVmssExtension](/powershell/module/az.compute/Add-AzVmssExtension) 命令，该命令用于准备所有原始的附加数据磁盘：

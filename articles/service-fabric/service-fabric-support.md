@@ -1,25 +1,16 @@
 ---
-title: 了解 Azure Service Fabric 支持选项 | Microsoft Docs
+title: 了解 Azure Service Fabric 支持选项
 description: 支持的 Azure Service Fabric 群集版本，以及文件支持票证的链接
-services: service-fabric
-documentationcenter: .net
 author: pkcsf
-manager: jpconnock
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: troubleshooting
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: a931de8be07d41cf4daab63aa7691973ee158452
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ae49a59c2629d9f9461d298ada555d314c0c9f22
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60545055"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256962"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric 支持选项
 
@@ -35,15 +26,15 @@ ms.locfileid: "60545055"
 - [Microsoft 顶级支持](https://support.microsoft.com/en-us/premier)。
 
 > [!Note]
-> 铜级的可靠性层上运行的群集，可运行测试工作负荷。 如果使用铜牌可靠性上运行的群集时遇到问题，Microsoft 支持团队将帮助您缓解问题，但不是会执行根本原因分析。 请参阅[群集的可靠性特征](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)的更多详细信息。
+> 在青铜级可靠性层上运行的群集或单节点群集将仅允许运行测试工作负荷。 如果遇到在青铜级可靠性层上运行的群集或单节点群集方面的问题，Microsoft 支持团队将帮助你缓解问题，但不会执行根本原因分析。 有关更多详细信息，请参阅[群集的可靠性特征](./service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster)。
 >
-> 有关什么是所必需的生产就绪的群集的详细信息，请参阅[生产就绪清单](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)。
+> 有关生产就绪群集所需满足的要求的详细信息，请参阅[生产就绪情况核对清单](./service-fabric-production-readiness-checklist.md)。
 
 <a id="getlivesitesupportonprem"></a>
 
 ## <a name="report-production-issues-or-request-paid-support-for-standalone-service-fabric-clusters"></a>报告生产问题，或者请求独立 Service Fabric 群集的付费支持
 
-若要报告部署在本地或其他云上的 Service Fabric 群集的问题，请通过 [Microsoft 支持门户](https://support.microsoft.com/oas/default.aspx?prid=16146)开具专业支持票证。
+若要报告部署在本地或其他云上的 Service Fabric 群集的问题，请通过 [Microsoft 支持门户](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)开具专业支持票证。
 
 了解有关以下方面的详细信息：
 
@@ -64,20 +55,21 @@ ms.locfileid: "60545055"
 
 ### <a name="azure-feedback-forum"></a>Azure 反馈论坛
 
-[有关 Service Fabric 的 Azure 反馈论坛][uservoice-forum]最适合提交用户关于产品的大型功能创意，我们可以看到，大多数常见的请求都属于我们的中长期规划。 我们鼓励你在社区内争取大家对建议的支持。
+[有关 Service Fabric 的 Azure 反馈论坛][uservoice-forum]最适合提交用户关于产品的大型功能创意，作为中长期规划的一部分，我们会查看最热门的请求。 我们鼓励你在社区内争取大家对建议的支持。
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric 预览版本 - 不支持在生产环境中使用
 
-我们会不时发布包含重要功能的版本，希望用户对这些功能提供反馈，这些版本将作为预览版发布。 这些预览版本应仅用于测试目的。 生产群集应始终运行支持的稳定 Service Fabric 版本。 预览版本始终以主版本号和次版本号 255 开头。 例如，如果看到 Service Fabric 版本 255.255.5703.949，则该版本应仅在测试群集中使用且处于预览状态。 这些预览版本也在 [Service Fabric 团队博客](https://blogs.msdn.microsoft.com/azureservicefabric)上公布，并将提供有关包含的功能的详细信息。
-这些预览版本没有付费的支持选项。 使用[报告 Azure Service Fabric 问题](https://docs.microsoft.com/azure/service-fabric/service-fabric-support#report-azure-service-fabric-issues)下列出的选项之一提出问题或提供反馈。
+我们会不时发布包含重要功能的版本，希望用户对这些功能提供反馈，这些版本将作为预览版发布。 这些预览版本应仅用于测试目的。 生产群集应始终运行支持的稳定 Service Fabric 版本。 预览版本始终以主版本号和次版本号 255 开头。 例如，如果看到 Service Fabric 版本 255.255.5703.949，则该版本应仅在测试群集中使用且处于预览状态。 这些预览版本也在 [Service Fabric 团队博客](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)上公布，并将提供有关包含的功能的详细信息。
+这些预览版本没有付费的支持选项。 使用[报告 Azure Service Fabric 问题](#report-azure-service-fabric-issues)下列出的选项之一提出问题或提供反馈。
 
 ## <a name="next-steps"></a>后续步骤
 
 [支持的 Service Fabric 版本](service-fabric-versions.md)
 
 <!--references-->
-[msdn-forum]: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureServiceFabric
+[Microsoft Q&A question page]: /answers/topics/azure-service-fabric.html
 [stackoverflow]: https://stackoverflow.com/questions/tagged/azure-service-fabric
 [uservoice-forum]: https://feedback.azure.com/forums/293901-service-fabric
 [acom-docs]: https://aka.ms/servicefabricdocs
 [sample-repos]: https://aka.ms/servicefabricsamples
+[msdn-forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?category=windowsazureplatform

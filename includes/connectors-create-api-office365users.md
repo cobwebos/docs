@@ -1,24 +1,25 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: ebae0fac5edc0bb79e6a19d8bdc741960f0b0e20
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 11/03/2016
+ms.openlocfilehash: 3ca8d631110f8b175e7dc68d61cc6da4ac87d375
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66149693"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74789506"
 ---
-### <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
+
 * [Office 365 用户](https://office365.com)帐户  
 
 可以在逻辑应用中使用 Office 365 用户帐户之前，必须先授权该逻辑应用连接到 Office 365 用户帐户。好在可以从 Azure 门户的逻辑应用中轻松执行此操作。  
 
 下面介绍授权逻辑应用连接到 Office 365 用户帐户的步骤：  
 
-1. 要与 Office 365 用户建立连接，请在逻辑应用设计器的下拉列表中选择“显示 Microsoft 托管的 API”，并在搜索框中输入“Office 365 用户”。 选择要使用的触发器或操作：  
+1. 要与 Office 365 用户建立连接，请在逻辑应用设计器的下拉列表中选择“显示 Microsoft 托管的 API”，并在搜索框中输入“Office 365 用户”。   选择要使用的触发器或操作：  
    ![Office 365 用户连接创建步骤](./media/connectors-create-api-office365users/office365users-1.png)  
 2. 如果以前尚未与 Office 365 用户建立任何连接，系统会提示提供 Office 365 用户凭据。 这些凭据用于授权逻辑应用连接到 Office 365 用户帐户，并访问该帐户中的数据：  
    ![Office 365 用户连接创建步骤](./media/connectors-create-api-office365users/office365users-2.png)  

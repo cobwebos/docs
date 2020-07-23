@@ -3,25 +3,25 @@ title: 使用 Azure AD 应用程序代理时的安全注意事项 | Microsoft Do
 description: 介绍使用 Azure AD 应用程序代理时的安全注意事项
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/08/2017
-ms.author: mimart
+ms.date: 03/13/2020
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7bb07fa00babb00d1b2af03f89ae6857cb79f5f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 13b020f633adc2e2286cc14b01c6d248fc2c1e3e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782871"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84759880"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理远程访问应用时的安全注意事项
 
@@ -47,9 +47,9 @@ Azure AD 应用程序代理依赖于使用 Azure AD 安全令牌服务 (STS) 执
 
 在与网络建立连接之前应用更丰富的策略控制。
 
-使用[条件性访问](../conditional-access/overview.md)可以针对允许哪些流量访问后端应用程序来定义限制。 可以基于位置、身份验证强度和用户风险配置文件，创建限制登录的策略。
+使用[条件访问](../conditional-access/concept-conditional-access-cloud-apps.md)可以定义对允许用户访问应用程序的方式的限制。 可以基于位置、身份验证强度和用户风险配置文件，创建限制登录的策略。
 
-还可以使用条件性访问配置多重身份验证策略，为用户身份验证再添一层安全保障。 此外，还可以通过 Azure AD 条件性访问将应用程序路由到 Microsoft Cloud App Security，以便通过[访问](https://docs.microsoft.com/cloud-app-security/access-policy-aad)和[会话](https://docs.microsoft.com/cloud-app-security/session-policy-aad)策略提供实时监视和控制
+还可以使用条件访问配置多重身份验证策略，为用户身份验证再添一层安全保障。 此外，还可以通过 Azure AD 条件访问将应用程序路由到 Microsoft Cloud App Security，以便通过[访问](https://docs.microsoft.com/cloud-app-security/access-policy-aad)和[会话](https://docs.microsoft.com/cloud-app-security/session-policy-aad)策略提供实时监视和控制
 
 ### <a name="traffic-termination"></a>流量终止
 
@@ -69,7 +69,7 @@ Azure AD 应用程序代理是一个反向代理，因此，发往后端应用�
 
 获得一流的安全保护。
 
-由于属于 Azure Active Directory，因此应用程序代理可以利用 [Azure AD Identity Protection](../active-directory-identityprotection.md)（数据由 Microsoft 安全响应中心和反数字犯罪部门提供）。 我们会共同主动发现遭到入侵的帐户，并提供保护，以免出现高风险登录威胁。我们考虑许多因素，以确定哪些登录尝试有高风险。 这些因素包括标记为受感染设备、对网络进行匿名化处理，以及非典型或不太可能的位置。
+由于属于 Azure Active Directory，因此应用程序代理可以利用 [Azure AD 标识保护](../active-directory-identityprotection.md)（数据由 Microsoft 安全响应中心和反数字犯罪部门提供）。 我们会共同主动发现遭到入侵的帐户，并提供保护，以免出现高风险登录威胁。我们会考虑许多因素，以确定哪些登录尝试有高风险。 这些因素包括标记为受感染设备、对网络进行匿名化处理，以及非典型或不太可能的位置。
 
 其中的许多报告与事件已通过某个 API 提供，便于与安全信息与事件管理 (SIEM) 系统集成。
 
@@ -81,13 +81,9 @@ Azure AD 应用程序代理是一个反向代理，因此，发往后端应用�
 
 为了提高 Azure AD 应用程序代理发布的应用程序的安全性，我们会阻止 Web 爬网程序机器人存档应用程序或编制其索引。 每当 Web 爬网程序机器人尝试检索已发布的应用的机器人设置时，应用程序代理都会回复一个 robots.txt 文件，其中包含 `User-agent: * Disallow: /`。
 
-### <a name="ddos-prevention"></a>DDOS 预防
+#### <a name="azure-ddos-protection-service"></a>Azure DDoS 防护服务
 
-通过应用程序代理发布的应用程序受到保护，以免遭分布式拒绝服务 (DDOS) 攻击。
-
-应用程序代理服务监视试图访问应用程序和网络的流量。 如果请求远程访问应用程序的设备数量激增，Microsoft 就会限制对网络的访问。 
-
-Microsoft 统一监视各个应用程序和订阅的流量模式。 如果某应用程序收到的请求数高于正常水平，那么请求访问应用程序将会在短时间内遭到拒绝。 如果跨整个订阅收到的请求数高于正常水平，那么请求访问任何应用都会遭到拒绝。 这一预防措施可以防止应用程序服务器因远程访问请求而重载，以便本地用户能够一直访问应用程序。 
+通过应用程序代理发布的应用程序受到保护，以免遭分布式拒绝服务 (DDoS) 攻击。 Azure DDoS 防护是一种随 Azure 平台一起提供的服务，用于保护 Azure 资源免受拒绝服务攻击。 基本服务层级会自动启用，可提供始终可用的流量监视以及对常见网络级别攻击的实时缓解功能。 此外，还提供了标准层级，可提供专门针对 Azure 虚拟网络资源进行了优化的其他风险缓解功能。 有关详细信息，请参阅 [Azure DDoS 防护标准概述](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)。
 
 ## <a name="under-the-hood"></a>揭秘
 
@@ -103,7 +99,7 @@ Azure AD 应用程序代理由两个部分组成：
 * 用户访问发布的应用程序时。
 
 >[!NOTE]
->所有通信通过 SSL 发生，始终从连接器发起，目标为应用程序代理服务。 该服务只会建立出站连接。
+>所有通信都通过 TLS 发生，始终从连接器发起，目标为应用程序代理服务。 该服务只会建立出站连接。
 
 连接器在执行几乎所有的调用时，都会使用客户端证书向应用程序代理服务进行身份验证。 只有在执行初始设置步骤时，此过程才有所不同，因为客户端证书是在此步骤中建立的。
 

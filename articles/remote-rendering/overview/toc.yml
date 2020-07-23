@@ -1,0 +1,6 @@
+- name: 关于 Azure 远程渲染
+  href: about.md
+- name: 系统要求
+  href: system-requirements.md
+- name: 功能
+  href: features/toc.yml

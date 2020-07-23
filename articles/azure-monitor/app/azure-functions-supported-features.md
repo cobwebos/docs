@@ -1,33 +1,29 @@
 ---
-title: Azure Application Insights - Azure Functions 支持功能 | Microsoft Docs
+title: Azure Application Insights - Azure Functions 支持的功能
 description: 适用于 Azure Functions 的 Application Insights 支持功能
-services: application-insights
-documentationcenter: .net
-author: MS-TimothyMothra
-manager: ''
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: reference
-ms.date: 10/05/2018
-ms.reviewer: mbullwin
+author: TimothyMothra
 ms.author: tilee
-ms.openlocfilehash: 101c985178b8269b4ff542b94b057330d0c2652a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 4/23/2019
+ms.reviewer: mbullwin
+ms.openlocfilehash: cf0c97fd65f9966bf42fa22e2c8f92263952cb7a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60902241"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77655644"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>适用于 Azure Functions 的 Application Insights 支持功能
 
-Azure Functions 提供与 Application Insights 的[内置集成](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)功能（通过 ILogger Interface 可用）。 以下是当前受支持的功能列表。 有关[入门](https://github.com/Azure/Azure-Functions/wiki/App-Insights)信息，请参阅 Azure Functions 指南。
+Azure Functions 提供与 Application Insights 的[内置集成](../../azure-functions/functions-monitoring.md)功能（通过 ILogger Interface 可用）。 以下是当前受支持的功能列表。 有关[入门](../../azure-functions/functions-monitoring.md#enable-application-insights-integration)信息，请参阅 Azure Functions 指南。
 
-## <a name="supported-features"></a>受支持的功能
+有关函数运行时版本的详细信息，请参阅[此处](../../azure-functions/functions-versions.md)。
 
-| Azure Functions                       | V1                | V2 (Ignite 2018)  | 
+有关 Application Insights 的兼容版本的详细信息，请参阅[依赖关系](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)。
+
+## <a name="supported-features"></a>支持的功能
+
+| Azure Functions                       | V1                | V2 和 V3   | 
 |-----------------------------------    |---------------    |------------------ |
-| **Application Insights .NET SDK**   | 2.5.0       | **2.9.1**         |
 | | | | 
 | **自动集合**        |                 |                   |               
 | &bull; 请求                     | 是             | 是               | 
@@ -45,7 +41,7 @@ Azure Functions 提供与 Application Insights 的[内置集成](https://docs.mi
 | &bull; 采样                     | 是             | 是               | 
 | &bull; 检测信号                   |                 | 是               | 
 | | | | 
-| **关联性**                       |                   |                   |               
+| **Correlation**                       |                   |                   |               
 | &bull; ServiceBus                     |                   | 是               | 
 | &bull; EventHub                       |                   | 是               | 
 | | | | 
@@ -66,9 +62,9 @@ Azure Functions 提供与 Application Insights 的[内置集成](https://docs.mi
 
 Azure Functions 默认在其配置中启用采样功能。 有关详细信息，请参阅[配置采样](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling)。
 
-如果你的项目依赖于 Application Insights SDK 以执行手动跟踪的遥测数据，可能会遇到奇怪的行为，则不同于 Functions 的采样配置采样配置时。 
+如果你的项目依赖 Application Insights SDK 进行手动遥测跟踪，则当采样配置与 Functions 的采样配置不同时，可能会遇到奇怪的行为。 
 
-我们建议为函数使用相同的配置。 与**Functions v2**，可以获取在构造函数中使用依赖关系注入的相同配置：
+我们建议使用与 Functions 相同的配置。 使用 **Functions v2**，可以在构造函数中使用依赖注入获得相同的配置：
 
 ```csharp
 using Microsoft.ApplicationInsights;

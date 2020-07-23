@@ -1,24 +1,16 @@
 ---
 title: 在 Azure Monitor 日志查询中使用日期时间值 | Microsoft Docs
 description: 介绍如何在 Azure Monitor 日志查询中使用日期和时间数据。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 402511ba3c45e8bd12cb7f92ecd54f6084c8ada2
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.date: 08/16/2018
+ms.openlocfilehash: ea7c98a1b5b4059c5fea0cf1e8ea2ff5ef08d9d1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62112351"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77655372"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用日期时间值
 
@@ -40,7 +32,7 @@ Kusto 查询语言主要具有两种与日期和时间相关的数据类型：�
 |d           | day          |
 |h           | hour         |
 |m           | minute       |
-|s           | 秒       |
+|s           | second       |
 |ms          | 毫秒  |
 |微秒 | 微秒  |
 |时钟周期        | 纳秒   |
@@ -153,7 +145,7 @@ Event
 
 ## <a name="related-functions"></a>相关函数
 
-| 类别 | 函数 |
+| Category | 函数 |
 |:---|:---|
 | 转换数据类型 | [todatetime](/azure/kusto/query/todatetimefunction)  [totimespan](/azure/kusto/query/totimespanfunction)  |
 | 将值舍入到箱大小 | [bin](/azure/kusto/query/binfunction) |

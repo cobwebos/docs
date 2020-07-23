@@ -1,6 +1,6 @@
 ---
 title: 注册 Azure NetApp 文件 | Microsoft Docs
-description: 介绍如何注册以使用 Azure NetApp 文件。
+description: 描述如何注册以使用 Azure NetApp 文件。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -11,37 +11,36 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 05/06/2019
+ms.topic: how-to
+ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: 6f5d84dea2e835fd12a062b628181354295ed9f6
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
-ms.translationtype: MT
+ms.openlocfilehash: cdb96f08f78e22dd0e46070ab62bf9327e2d72a3
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299213"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956298"
 ---
 # <a name="register-for-azure-netapp-files"></a>注册 Azure NetApp 文件
 
 > [!IMPORTANT] 
-> 在注册之前 Azure NetApp 文件资源提供程序，你应已收到一封电子邮件从 Azure NetApp 文件团队确认您已被授予对服务的访问。 
+> 在注册 Azure NetApp 文件资源提供程序之前，你必须收到来自 Azure NetApp 文件团队的一封电子邮件，确认你已被授予对该服务的访问权限。 
 
-在本文中，了解如何注册 Azure NetApp 文件，以便你可以开始使用该服务。
+本文介绍如何注册 Azure NetApp 文件，以便你可以开始使用该服务。
 
-## <a name="waitlist"></a>提交被插入等待队列请求用于访问服务
+## <a name="submit-a-waitlist-request-for-accessing-the-service"></a><a name="waitlist"></a>提交用于访问服务的候补请求
 
-1. 提交被插入等待队列的访问通过 Azure NetApp 文件服务请求[Azure NetApp 文件被插入等待队列提交页面](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u)。 
+1. 提交候补请求，通过[Azure Netapp 文件候补提交页](https://aka.ms/azurenetappfiles)访问 Azure netapp 文件服务。 
 
-    候补名单注册不保证我们的服务立即访问。 
+    候补注册不保证立即访问服务。 
 
-2. 在继续执行其他任务之前等待来自 Azure NetApp 文件团队的官方确认电子邮件。 
+2. 在继续执行其他任务之前，请先从 Azure NetApp 文件团队等待官方确认电子邮件。 
 
-## <a name="resource-provider"></a>注册 NetApp 资源提供程序
+## <a name="register-the-netapp-resource-provider"></a><a name="resource-provider"></a>注册 NetApp 资源提供程序
 
 若要使用该服务，必须为 Azure NetApp 文件注册 Azure 资源提供程序。
 
 > [!NOTE] 
-> 你将能够成功即使没有被授予访问权限的服务注册 NetApp 资源提供程序。 但是，而无需访问授权的任何 Azure 门户或 API 创建 NetApp 帐户或任何其他 Azure NetApp 文件资源请求将被拒绝并显示以下错误：  
+> 即使没有为服务授予访问权限，也能成功注册 NetApp 资源提供程序。 但是，如果没有访问授权，则任何 Azure 门户或 API 请求创建 NetApp 帐户或任何其他 Azure NetApp 文件资源都将被拒绝，并出现以下错误：  
 >
 > `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
 
@@ -52,44 +51,56 @@ ms.locfileid: "66299213"
 
 2. 如果你的 Azure 帐户上有多个订阅，请选择已列入 Azure NetApp 文件的允许列表的订阅：
     
-        az account set --subscription <subscriptionId>
+    ```azurepowershell
+    az account set --subscription <subscriptionId>
+    ```
 
 3. 在 Azure Cloud Shell 控制台中，输入以下命令来验证你的订阅是否已列入允许列表：
     
-        az feature list | grep NetApp
+    ```azurepowershell
+    az feature list | grep NetApp
+    ```
 
    命令输出如下所示：
    
-       "id": "/subscriptions/<SubID>/providers/Microsoft.Features/providers/Microsoft.NetApp/features/ANFGA",  
-       "name": "Microsoft.NetApp/ANFGA" 
+    ```output
+    "id": "/subscriptions/<SubID>/providers/Microsoft.Features/providers/Microsoft.NetApp/features/ANFGA",  
+    "name": "Microsoft.NetApp/ANFGA" 
+    ```
        
    `<SubID>` 是你的订阅 ID。
 
-    如果您看不到功能名称`Microsoft.NetApp/ANFGA`，没有对服务的访问。 在此步骤处停止。 按照中的说明进行操作[提交用于访问服务被插入等待队列请求](#waitlist)才能继续操作之前的请求服务访问权限。 
+    如果看不到该功能名称 `Microsoft.NetApp/ANFGA` ，则无法访问该服务。 停止执行此步骤。 按照[提交用于访问服务的候补请求](#waitlist)中的说明来请求服务访问，然后再继续。 
 
 4. 在 Azure Cloud Shell 控制台中，输入以下命令来注册 Azure 资源提供程序： 
     
-        az provider register --namespace Microsoft.NetApp --wait
+    ```azurepowershell
+    az provider register --namespace Microsoft.NetApp --wait
+    ```
 
    `--wait` 参数指示控制台等待注册完成。 注册过程可能需要一些时间才能完成。
 
 5. 在 Azure Cloud Shell 控制台中，输入以下命令来验证 Azure 资源提供程序是否已注册： 
     
-        az provider show --namespace Microsoft.NetApp
+    ```azurepowershell
+    az provider show --namespace Microsoft.NetApp
+    ```
 
    命令输出如下所示：
    
-        {
-        "id": "/subscriptions/<SubID>/providers/Microsoft.NetApp",
-        "namespace": "Microsoft.NetApp", 
-        "registrationState": "Registered", 
-        "resourceTypes": […. 
+    ```output
+    {
+     "id": "/subscriptions/<SubID>/providers/Microsoft.NetApp",
+     "namespace": "Microsoft.NetApp", 
+     "registrationState": "Registered", 
+     "resourceTypes": […. 
+    ```
 
    `<SubID>` 是你的订阅 ID。  `state` 参数值表示 `Registered`。
 
-6. 从 Azure 门户中，单击“订阅”边栏选项卡。 
+6. 从 Azure 门户中，单击“订阅”边栏选项卡。****
 7. 在“订阅”边栏选项卡中，单击你的订阅 ID。 
-8. 在订阅设置中，单击“资源提供程序”  来验证 Microsoft.NetApp 提供程序是否指示了“已注册”状态： 
+8. 在订阅设置中，单击“资源提供程序”**** 来验证 Microsoft.NetApp 提供程序是否指示了“已注册”状态： 
 
       ![已注册的 Microsoft.NetApp](../media/azure-netapp-files/azure-netapp-files-registered-resource-providers.png)
 

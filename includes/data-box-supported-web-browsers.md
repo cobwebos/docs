@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: alkohli
 ms.openlocfilehash: 2b0149bd2bb46de87b4575ccb5d44836dd74bde9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66242207"
 ---
 下面是本地 Web UI 支持的 Web 浏览器列表。

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: 4097d4fc46aac88cd44d21a4cdcf0d7d5093feea
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: b5a136ae05b3cd410ca252b6d5a1df443aff6f7a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242723"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "75350139"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>教程：使用 Azure 门户通过网络安全组筛选网络流量
 
-可以使用网络安全组来筛选虚拟网络子网的入站和出站网络流量。 网络安全组包含安全规则，这些规则可按 IP 地址、端口和协议筛选网络流量。 安全规则应用到子网中部署的资源。 本教程介绍如何执行下列操作：
+可以使用网络安全组来筛选虚拟网络子网的入站和出站网络流量。 网络安全组包含安全规则，这些规则可按 IP 地址、端口和协议筛选网络流量。 安全规则应用到子网中部署的资源。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建网络安全组和安全规则
@@ -41,7 +41,7 @@ ms.locfileid: "66242723"
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-1. 选择 Azure 门户左上角的“+ 创建资源”  。
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。 
 2. 选择“网络”，然后选择“虚拟网络”   。
 3. 输入或选择以下信息，接受剩下的默认设置，然后选择“创建”  ：
 
@@ -59,7 +59,7 @@ ms.locfileid: "66242723"
 
 使用应用程序安全组可以将功能类似的服务器（例如 Web 服务器）组合在一起。
 
-1. 选择 Azure 门户左上角的“+ 创建资源”  。
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。 
 2. 在“在市场中搜索”框中输入“应用程序安全组”   。 当“应用程序安全组”显示在搜索结果中时，将其选中，再次在“所有项”下选择“应用程序安全组”，然后选择“创建”     。
 3. 输入或选择以下信息，然后选择“创建”  ：
 
@@ -81,7 +81,7 @@ ms.locfileid: "66242723"
 
 ## <a name="create-a-network-security-group"></a>创建网络安全组
 
-1. 选择 Azure 门户左上角的“+ 创建资源”  。
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。 
 2. 依次选择“网络”、“网络安全组”   。
 3. 输入或选择以下信息，然后选择“创建”  ：
 
@@ -138,29 +138,31 @@ ms.locfileid: "66242723"
 
 ### <a name="create-the-first-vm"></a>创建第一个 VM
 
-1. 选择 Azure 门户左上角的“+ 创建资源”  。
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。 
 2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”。  
-3. 输入或选择以下信息，保留剩下的默认设置，然后选择“确定”  ：
+3. 输入或选择以下信息，并接受剩下的默认设置：
 
     |设置|值|
     |---|---|
-    |名称|myVmWeb|
-    |用户名| 输入所选用户名。|
-    |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |订阅| 选择订阅。|
     |资源组| 选择“使用现有资源组”，再选择“myResourceGroup”   。|
-    |位置| 选择“美国东部” |
+    |名称|myVmWeb|
+    |位置| 选择“美国东部”  。|
+    |用户名| 输入所选用户名。|
+    |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
+
+   
 
 4. 选择 VM 的大小，然后选择“选择”  。
-5. 在“设置”下选择以下值，接受剩下的默认设置，然后选择“确定”：  
+5. 在“网络”  下选择以下值，并接受剩下的默认设置：
 
     |设置|值|
     |---|---|
-    |虚拟网络 |选择“myVirtualNetwork” |
-    |网络安全组 | 选择“高级”。 |
-    |网络安全组（防火墙）| 选择“(新) myVmWeb-nsg”，然后在“选择网络安全组”下选择“无”。    |
+    |虚拟网络 |选择“myVirtualNetwork”  。|
+    |NIC 网络安全组 |选择“无”。 |
+  
 
-6. 在“摘要”中的“创建”下，选择“创建”以启动 VM 部署    。
+6. 选择左下角的“查看 + 创建”  ，选择“创建”  以开始 VM 部署。
 
 ### <a name="create-the-second-vm"></a>创建第二个 VM
 
@@ -214,7 +216,7 @@ ms.locfileid: "66242723"
 不再需要资源组时，可将资源组及其包含的所有资源一并删除：
 
 1. 在门户顶部的“搜索”框中输入“myResourceGroup”   。 当在搜索结果中看到“myResourceGroup”时，将其选中。 
-2. 选择“删除资源组”。 
+2. 选择“删除资源组”  。
 3. 对于“键入资源组名称:”，输入“myResourceGroup”，然后选择“删除”。   
 
 ## <a name="next-steps"></a>后续步骤

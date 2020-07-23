@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: c14362a220cc60b0b8956ca41950faecd0563b3e
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: be1aa932e246992bd5826ac502ab2ac5b8d52ddf
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65890623"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800664"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>教程：Azure Active Directory 与 Predictix Assortment Planning 的集成
 
@@ -52,19 +52,19 @@ ms.locfileid: "65890623"
 
 若要通过设置将 Predictix Assortment Planning 集成到 Azure AD 中，需从库将 Predictix Assortment Planning 添加到托管 SaaS 应用的列表中。
 
-1. 在 [Azure 门户](https://portal.azure.com)的左窗格中，选择“Azure Active Directory”： 
+1. 在 [Azure 门户](https://portal.azure.com)的左窗格中，选择“Azure Active Directory”：
 
     ![选择“Azure Active Directory”](common/select-azuread.png)
 
-2. 转到“企业应用程序” > “所有应用程序”   ：
+2. 转到“企业应用程序” > “所有应用程序” ：
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加应用程序，请在窗口顶部选择“新建应用程序”  ：
+3. 若要添加应用程序，请在窗口顶部选择“新建应用程序”：
 
     ![选择“新建应用程序”](common/add-new-app.png)
 
-4. 在搜索框中，输入“Predictix Assortment Planning”。  在搜索结果中选择“Predictix Assortment Planning”，然后选择“添加”   。
+4. 在搜索框中，输入“Predictix Assortment Planning”。 在搜索结果中选择“Predictix Assortment Planning”，然后选择“添加” 。
 
      ![搜索结果](common/search-new-app.png)
 
@@ -76,10 +76,10 @@ ms.locfileid: "65890623"
 若要配置并测试 Predictix Assortment Planning 的 Azure AD 单一登录，需要完成以下步骤：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** ，为用户启用该功能。
-2. 在应用程序端[配置 Predictix Assortment Planning 单一登录](#configure-predictix-assortment-planning-single-sign-on)  。
-3. [创建 Azure AD 测试用户](#create-an-azure-ad-test-user)，以测试 Azure AD 单一登录  。
-4. [分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)，为用户启用 Azure AD 单一登录  。
-5. 创建与用户的 Azure AD 表示形式相链接的 [Predictix Assortment 测试用户](#create-a-predictix-assortment-planning-test-user)  。
+2. 在应用程序端[配置 Predictix Assortment Planning 单一登录](#configure-predictix-assortment-planning-single-sign-on)。
+3. [创建 Azure AD 测试用户](#create-an-azure-ad-test-user)，以测试 Azure AD 单一登录。
+4. [分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)，为用户启用 Azure AD 单一登录。
+5. 创建与用户的 Azure AD 表示形式相链接的 [Predictix Assortment 测试用户](#create-a-predictix-assortment-planning-test-user)。
 6. **[测试单一登录](#test-single-sign-on)** ，验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -88,46 +88,44 @@ ms.locfileid: "65890623"
 
 若要配置 Predictix Assortment Planning 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Predictix Assortment Planning”应用程序集成页上，选择“单一登录”：  
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Predictix Assortment Planning”应用程序集成页上，选择“单一登录”： 
 
     ![选择“单一登录”](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择“SAML/WS-Fed”模式以启用单一登录：  
+2. 在“选择单一登录方法”对话框中，选择“SAML/WS-Fed”模式以启用单一登录： 
 
     ![选择单一登录方法](common/select-saml-option.png)
 
-3. 在“设置 SAML 单一登录”页上，选择“编辑”图标打开“基本 SAML 配置”对话框：   
+3. 在“设置 SAML 单一登录”页上，选择“编辑”图标打开“基本 SAML 配置”对话框：  
 
     ![“编辑”图标](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”对话框中完成以下步骤  。
+4. 在“基本 SAML 配置”对话框中完成以下步骤。
 
     ![“基本 SAML 配置”对话框](common/sp-identifier.png)
 
-    1. 在“登录 URL”框中，输入以下模式的 URL  ：
+    1. 在“登录 URL”框中，输入以下模式的 URL：
 
-       | |
-        |--|
-        | `https://<sub-domain>.ap.predictix.com/sso/request`|
-        | `https://<sub-domain>.dev.ap.predictix.com/`|
-        | |
+        ```https
+        https://<sub-domain>.ap.predictix.com/sso/request
+        https://<sub-domain>.dev.ap.predictix.com/
+        ```
 
-    1. 在“标识符(实体 ID)”框中，输入以下模式的 URL  ：
+    1. 在“标识符(实体 ID)”框中，输入以下模式的 URL：
 
-        | |
-        |--|
-        | `https://<sub-domain>.ap.predictix.com`|
-        | `https://<sub-domain>.dev.ap.predictix.com`|
-        | |
+        ```https
+        https://<sub-domain>.ap.predictix.com
+        https://<sub-domain>.dev.ap.predictix.com
+        ```
 
     > [!NOTE]
-    > 这些值是占位符。 需要使用实际登录 URL 和标识符。 请联系 [Predictix Assortment Planning 支持团队](https://www.infor.com/support)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”对话框中显示的模式  。
+    > 这些值是占位符。 需要使用实际登录 URL 和标识符。 请联系 [Predictix Assortment Planning 支持团队](https://www.infor.com/support)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”对话框中显示的模式。
 
-5. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，选择“证书(Base64)”旁的“下载”链接（根据要求），并将证书保存在计算机上     ：
+5. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，选择“证书(Base64)”旁的“下载”链接（根据要求），并将证书保存在计算机上   ：
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 Predictix Assortment Planning”部分，根据要求复制相应的 URL： 
+6. 在“设置 Predictix Assortment Planning”部分，根据要求复制相应的 URL：
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -145,51 +143,51 @@ ms.locfileid: "65890623"
 
 在本部分，我们将在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”：   
+1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”：  
 
     ![选择“所有用户”](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”： 
+2. 选择屏幕顶部的“新建用户”：
 
     ![选择“新建用户”](common/new-user.png)
 
-3. 在“用户”对话框中执行以下步骤： 
+3. 在“用户”对话框中执行以下步骤：
 
     ![“用户”对话框](common/user-properties.png)
 
-    1. 在“姓名”  框中，输入 **BrittaSimon**。
+    1. 在“姓名”框中，输入 **BrittaSimon**。
   
-    1. 在“用户名”框中，输入 BrittaSimon@\<yourcompanydomain>.\<extension>   。 （例如：BrittaSimon@contoso.com。）
+    1. 在“用户名”框中，输入 BrittaSimon@\<yourcompanydomain>.\<extension> 。 （例如：BrittaSimon@contoso.com。）
 
-    1. 选择“显示密码”，然后记下“密码”框中的值   。
+    1. 选择“显示密码”，然后记下“密码”框中的值 。
 
-    1. 选择“创建”  。
+    1. 选择“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，我们通过授予 Britta Simon 访问 Predictix Assortment Planning 的权限，使她能够使用 Azure AD 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Predictix Assortment Planning”。   
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Predictix Assortment Planning”。  
 
     ![企业应用程序](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Predictix Assortment Planning”。 
+2. 在应用程序列表中，选择“Predictix Assortment Planning”。
 
     ![应用程序列表](common/all-applications.png)
 
-3. 在左窗格中选择“用户和组”： 
+3. 在左窗格中选择“用户和组”：
 
     ![选择“用户和组”](common/users-groups-blade.png)
 
-4. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+4. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
 
     ![选择“添加用户”](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”，然后单击屏幕底部的“选择”按钮。   
+5. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”，然后单击屏幕底部的“选择”按钮。  
 
-6. 如果希望在 SAML 断言中使用角色值，请在“选择角色”对话框中，从列表中为用户选择相应的角色。  单击屏幕底部的“选择”按钮  。
+6. 如果希望在 SAML 断言中使用角色值，请在“选择角色”对话框中，从列表中为用户选择相应的角色。 单击屏幕底部的“选择”按钮。
 
-7. 在“添加分配”对话框中选择“分配”。  
+7. 在“添加分配”对话框中选择“分配”。 
 
 ### <a name="create-a-predictix-assortment-planning-test-user"></a>创建 Predictix Assortment Planning 测试用户
 

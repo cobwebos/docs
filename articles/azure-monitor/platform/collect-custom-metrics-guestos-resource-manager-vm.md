@@ -1,37 +1,35 @@
 ---
-title: 使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
-description: 使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
+title: 使用模板收集 Azure Monitor 中的 Windows VM 指标
+description: 使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标数据库存储
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: ancav
+ms.date: 05/04/2020
+ms.author: bwren
 ms.subservice: metrics
-ms.openlocfilehash: 5647802ff383ce046d108f25384df81bcbd08cd3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 208515b7541948ca6913e6fda092c6a424de85f9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66129650"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515778"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>使用 Windows 虚拟机的 Azure 资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
+对于来自 Azure 虚拟机来宾 OS 的性能数据，不会像收集其他[平台指标](../insights/monitor-azure-resource.md#monitoring-data)一样自动收集其性能数据。 安装 Azure Monitor [诊断扩展](diagnostics-extension-overview.md)以将来宾 OS 指标收集到指标数据库中，以便该数据库可用于 Azure Monitor 指标的所有功能，包括准实时警报、制图、路由和来自 REST API 的访问。 本文介绍使用资源管理器模板将 Windows 虚拟机的来宾 OS 性能指标发送到指标数据库的过程。 
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+> [!NOTE]
+> 有关配置诊断扩展以使用 Azure 门户收集来宾 OS 指标的详细信息，请参阅[安装和配置 Windows Azure 诊断扩展 (WAD)](diagnostics-extension-windows-install.md)。
 
-使用 Azure Monitor [诊断扩展](diagnostics-extension-overview.md)，可以从作为虚拟机、云服务或 Service Fabric 群集的一部分运行的来宾操作系统（来宾 OS）中收集指标和日志。 该扩展可将遥测数据发送到[许多不同的位置](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)。
 
-本文介绍将 Windows 虚拟机的来宾 OS 性能指标发送到 Azure Monitor 数据存储的过程。 自诊断版本 1.11 版起，可将指标直接写入已收集标准平台指标的 Azure Monitor 指标存储。
+如果你不熟悉资源管理器模板，请了解[模板部署](../../azure-resource-manager/management/overview.md)及其结构和语法。
 
-将它们存储在此位置可以访问平台指标的相同操作。 操作包括近实时警报、图表绘制、路由、从 REST API 访问，等等。 在过去，诊断扩展将数据写入 Azure 存储而不是 Azure Monitor 数据存储。
+## <a name="prerequisites"></a>先决条件
 
-如果你不熟悉资源管理器模板，请了解[模板部署](../../azure-resource-manager/resource-group-overview.md)及其结构和语法。
+- 你的订阅必须已注册到 [Microsoft.Insights](../../azure-resource-manager/management/resource-providers-and-types.md)。
 
-## <a name="prerequisites"></a>必备组件
+- 需要安装 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](../../cloud-shell/overview.md)。
 
-- 你的订阅必须已注册到 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)。
-
-- 需要安装 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
+- VM 资源必须位于[支持自定义指标的区域](metrics-custom-overview.md#supported-regions)中。 
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>将 Azure Monitor 设置为数据接收器
@@ -47,9 +45,9 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 下载这两个文件并在本地保存。
 
 ### <a name="modify-azuredeployparametersjson"></a>修改 azuredeploy.parameters.json
-打开 azuredeploy.parameters.json 文件
+打开 *azuredeploy.parameters.json* 文件
 
-1. 输入 VM 的“adminUsername”和“adminPassword”的值。 这些参数用于对 VM 进行远程访问。 为了避免 VM 被劫持，请勿使用此模板中的值。 机器人在 Internet 上扫描公共 GitHub 存储库中的用户名和密码。 它们可能会使用这些默认值测试 VM。
+1. 输入 VM 的“adminUsername”和“adminPassword”的值 。 这些参数用于对 VM 进行远程访问。 为了避免 VM 被劫持，请勿使用此模板中的值。 机器人在 Internet 上扫描公共 GitHub 存储库中的用户名和密码。 它们可能会使用这些默认值测试 VM。
 
 1. 为 VM 创建唯一 dnsname。
 
@@ -76,8 +74,8 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 // Add this code directly below.
     {
         "type": "Microsoft.Compute/virtualMachines/extensions",
-        "name": "WADExtensionSetup",
-        "apiVersion": "2015-05-01-preview",
+        "name": "[concat(variables('vmName'), '/', 'WADExtensionSetup')]",
+        "apiVersion": "2017-12-01",
         "location": "[resourceGroup().location]",
         "dependsOn": [
             "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]" ],
@@ -145,9 +143,9 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 //Start of section to add
 "resources": [
 {
-            "type": "extensions",
-            "name": "Microsoft.Insights.VMDiagnosticsSettings",
-            "apiVersion": "2015-05-01-preview",
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(variables('vmName'), '/', 'Microsoft.Insights.VMDiagnosticsSettings')]",
+            "apiVersion": "2017-12-01",
             "location": "[resourceGroup().location]",
             "dependsOn": [
             "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
@@ -288,4 +286,3 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解[自定义指标](metrics-custom-overview.md)。
-

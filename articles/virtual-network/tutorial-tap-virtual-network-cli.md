@@ -1,5 +1,5 @@
 ---
-title: 创建、更改或删除虚拟网络 TAP - Azure CLI | Microsoft Docs
+title: 创建、更改或删除 VNet 分流 Azure CLI
 description: 了解如何使用 Azure CLI 创建、更改或删除虚拟网络 TAP。
 services: virtual-network
 documentationcenter: na
@@ -10,17 +10,16 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/18/2018
 ms.author: kaanan
-ms.openlocfilehash: 3d95a9ea555cceda82530eb5c487eeb993c1a678
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 9460208d66e859f5fe1ce0e9ae4d62087ea3f4ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60743184"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84696012"
 ---
 # <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>通过 Azure CLI 使用虚拟网络 TAP
 
@@ -28,7 +27,7 @@ ms.locfileid: "60743184"
 
 ## <a name="create-a-virtual-network-tap-resource"></a>创建虚拟网络 TAP 资源
 
-在创建虚拟网络 TAP 资源之前，请先阅读[先决条件](virtual-network-tap-overview.md#prerequisites)。 可以在 [Azure Cloud Shell](https://shell.azure.com/bash) 中运行以下命令，或者在计算机上运行 Azure 命令行接口 (CLI)。 Azure Cloud Shell 是免费的交互式 shell，不需要在计算机上安装 Azure CLI。 必须使用具有相应[权限](virtual-network-tap-overview.md#permissions)的帐户登录 Azure。 本文需要 Azure CLI 2.0.46 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。 虚拟网络点击是目前以扩展形式提供。 若要安装的扩展需要运行`az extension add -n virtual-network-tap`。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
+在创建虚拟网络 TAP 资源之前，请先阅读[先决条件](virtual-network-tap-overview.md#prerequisites)。 可以在 [Azure Cloud Shell](https://shell.azure.com/bash) 中运行以下命令，或者在计算机上运行 Azure 命令行接口 (CLI)。 Azure Cloud Shell 是免费的交互式 shell，不需要在计算机上安装 Azure CLI。 必须使用具有相应[权限](virtual-network-tap-overview.md#permissions)的帐户登录 Azure。 本文需要 Azure CLI 2.0.46 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。 虚拟网络 TAP 目前以扩展的形式提供。 若要安装此扩展，需要运行 `az extension add -n virtual-network-tap`。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
 
 1. 将订阅 ID 检索到后续步骤中使用的变量中：
 
@@ -86,6 +85,7 @@ ms.locfileid: "60743184"
       --query id \
       --out tsv)
       ```
+
    - 将前端 IP 配置的 ID 用作目标和可选的端口属性，创建虚拟网络 TAP。 该端口指定了前端 IP 配置上用于接收 TAP 流量的目标端口：  
 
       ```azurecli-interactive
@@ -140,7 +140,7 @@ ms.locfileid: "60743184"
 
 ## <a name="delete-the-tap-configuration-on-a-network-interface"></a>删除网络接口上的 TAP 配置
 
-   ```azure-cli-interactive
+   ```azurecli-interactive
    az network nic vtap-config delete \
    --resource-group myResourceGroup \
    --nic myNetworkInterface \

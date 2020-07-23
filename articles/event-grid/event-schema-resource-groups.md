@@ -1,20 +1,16 @@
 ---
-title: Azure 事件网格资源组事件架构
+title: 充当事件网格源的 Azure 资源组
 description: 介绍针对 Azure 事件网格中的资源组事件提供的属性
-services: event-grid
-author: spelluru
-ms.service: event-grid
-ms.topic: reference
-ms.date: 01/12/2019
-ms.author: spelluru
-ms.openlocfilehash: 6cbfc06f380d7c4818ca82e858c23bb18849fb7c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: conceptual
+ms.date: 07/07/2020
+ms.openlocfilehash: ed01bfdb67d9b8a3dd5875ec3fd8c6edf8922520
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60561687"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105908"
 ---
-# <a name="azure-event-grid-event-schema-for-resource-groups"></a>资源组的 Azure 事件网格事件架构
+# <a name="azure-resource-group-as-an-event-grid-source"></a>充当事件网格源的 Azure 资源组
 
 本文提供资源组事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
@@ -28,13 +24,14 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 
 事件主题是作为操作目标的资源的资源 ID。 若要筛选资源的事件，请在创建事件订阅时提供该资源 ID。  若要按资源类型筛选，请使用以下格式的值：`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
-有关示例脚本和教程的列表，请参阅[资源组事件源](event-sources.md#resource-groups)。
 
-## <a name="available-event-types"></a>可用事件类型
+## <a name="event-grid-event-schema"></a>事件网格事件架构
+
+### <a name="available-event-types"></a>可用事件类型
 
 资源组可从 Azure 资源管理器发出管理事件，例如，在创建 VM 或删除存储帐户时。
 
-| 事件类型 | 描述 |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Resources.ResourceActionCancel | 在资源操作被取消时引发。 |
 | Microsoft.Resources.ResourceActionFailure | 在资源操作失败时引发。 |
@@ -46,7 +43,7 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 | Microsoft.Resources.ResourceWriteFailure | 在创建或更新操作失败时引发。 |
 | Microsoft.Resources.ResourceWriteSuccess | 在创建或更新操作成功时引发。 |
 
-## <a name="example-event"></a>示例事件
+### <a name="example-event"></a>示例事件
 
 以下示例展示了 ResourceWriteSuccess 事件的架构  。 具有不同 `eventType` 值的 ResourceWriteFailure 和 ResourceWriteCancel 事件会使用相同的模式   。
 
@@ -230,35 +227,45 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 }]
 ```
 
-## <a name="event-properties"></a>事件属性
+### <a name="event-properties"></a>事件属性
 
 事件具有以下顶级数据：
 
-| 属性 | Type | 描述 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| topic | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| 主题 | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | string | 事件主题的发布者定义路径。 |
 | eventType | string | 此事件源的一个注册事件类型。 |
-| eventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
 | id | string | 事件的唯一标识符。 |
-| data | 对象 | 资源组事件数据。 |
+| 数据 | object | 资源组事件数据。 |
 | dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 数据对象具有以下属性：
 
-| 属性 | Type | 描述 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| authorization | 对象 | 操作请求的授权。 |
-| claims | 对象 | 声明的属性。 有关详细信息，请参阅 [JWT 规范](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |
+| authorization | object | 操作请求的授权。 |
+| 声明 | object | 声明的属性。 有关详细信息，请参阅 [JWT 规范](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |
 | correlationId | string | 用于故障排除的操作 ID。 |
-| httpRequest | 对象 | 操作的详细信息。 仅在更新现有资源或删除资源时才包含此对象。 |
+| httpRequest | object | 操作的详细信息。 仅在更新现有资源或删除资源时才包含此对象。 |
 | resourceProvider | string | 操作的资源提供程序。 |
 | resourceUri | string | 操作中资源的 URI。 |
 | operationName | string | 执行的操作。 |
-| status | string | 操作状态。 |
+| 状态 | string | 操作状态。 |
 | subscriptionId | string | 资源的订阅 ID。 |
 | tenantId | string | 资源的租户 ID。 |
+
+## <a name="tutorials-and-how-tos"></a>教程和操作指南
+|标题  |说明  |
+|---------|---------|
+| [教程：通过 Azure 事件网格和逻辑应用监视虚拟机更改](monitor-virtual-machine-changes-event-grid-logic-app.md) | 逻辑应用可监视对虚拟机的更改并就这些更改发送电子邮件。 |
+| [Azure CLI：订阅资源组的事件](./scripts/event-grid-cli-resource-group.md)| 用于订阅资源组的事件的示例脚本。 它将事件发送到 WebHook。 |
+| [Azure CLI：订阅资源组的事件并筛选资源](./scripts/event-grid-cli-resource-group-filter.md) | 用于订阅资源组的事件并筛选一个资源的事件的示例脚本。 |
+| [PowerShell：订阅资源组的事件](./scripts/event-grid-powershell-resource-group.md) | 用于订阅资源组的事件的示例脚本。 它将事件发送到 WebHook。 |
+| [PowerShell：订阅资源组的事件并筛选资源](./scripts/event-grid-powershell-resource-group-filter.md) | 用于订阅资源组的事件并筛选一个资源的事件的示例脚本。 |
+| [资源管理器模板：资源订阅](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook) | 订阅 Azure 订阅的事件或资源组。 它将事件发送到 WebHook。 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,19 +6,18 @@ ms.subservice: cosmosdb-table
 ms.devlang: python
 ms.topic: reference
 ms.date: 11/20/2018
-author: wmengmsft
-ms.author: wmeng
-ms.openlocfilehash: a26e69d756c0f5b8bb26d85d2901e686aba50771
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
-ms.translationtype: MT
+author: sakash279
+ms.author: akshanka
+ms.openlocfilehash: 66a53840d6002731910baf63a331a79a6f654078
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480165"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84167955"
 ---
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>用于 Python 的 Azure Cosmos DB 表 API SDK：发行说明和资源
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
-> * [.NET 标准](table-sdk-dotnet-standard.md)
+> * [.NET Standard](table-sdk-dotnet-standard.md)
 > * [Java](table-sdk-java.md)
 > * [Node.js](table-sdk-nodejs.md)
 > * [Python](table-sdk-python.md)
@@ -38,10 +37,10 @@ ms.locfileid: "66480165"
 
 ## <a name="release-notes"></a>发行说明
 
-### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 * 正式发布版
 
-### <a name="a-name03710371"></a><a name="0.37.1"/>0.37.1
+### <a name="0371"></a><a name="0.37.1"></a>0.37.1
 * 预发行版 SDK
 
 ## <a name="release-and-retirement-dates"></a>发布日期和停用日期
@@ -51,7 +50,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 <br/>
 
-| Version | 发布日期 | 停用日期 |
+| 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |2017 年 11 月 15 日 |--- |
 | [0.37.1](#0.37.1) |2017 年 10 月 5 日 |--- |

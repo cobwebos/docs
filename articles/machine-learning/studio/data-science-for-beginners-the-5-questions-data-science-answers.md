@@ -1,6 +1,6 @@
 ---
 title: 适合初学者的数据科学
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) - Azure
 description: 适合初学者的数据科学以 5 个较短的视频讲授基本概念，从 5 个数据科学可解答的问题开始。 来自 Azure 机器学习。
 services: machine-learning
 ms.service: machine-learning
@@ -10,15 +10,14 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: d89a701f1d4528e1f3dff08daf31873891778f07
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 350363641056802e09eea90c85b4ccf8e33d9051
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60751324"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82930142"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>适合初学者的数据科学视频 1：5 个数据科学可解答的问题
-通过顶级数据科学家制作的“适合初学者的数据科学”的五个简短视频，快速了解数据科学。 这些视频介绍基础知识，但无论是对研究数据科学感兴趣还是与数据科学家合作，这些内容都非常有用。
+通过顶级数据科学家制作的“适合初学者的数据科学”  的五个简短视频，快速了解数据科学。 这些视频介绍基础知识，但无论是对研究数据科学感兴趣还是与数据科学家合作，这些内容都非常有用。
 
 第一个视频是有关数据科学可回答的这类问题。 若要充分利用此系列内容，请观看所有视频。 [转到视频列表](#other-videos-in-this-series)
 <br>
@@ -28,16 +27,16 @@ ms.locfileid: "60751324"
 >
 
 ## <a name="other-videos-in-this-series"></a>本系列中的其他视频
-“适合初学者的数据科学”是对数据科学的简要介绍，学习时间共约 25 分钟。 观看所有五个视频：
+“适合初学者的数据科学”  是对数据科学的简要介绍，学习时间共约 25 分钟。 观看所有五个视频：
 
 * 视频 1：5 个数据科学可解答的问题
-* 视频 2：[数据是否可用于数据科学？](data-science-for-beginners-is-your-data-ready-for-data-science.md) （4 分 56 秒）
-* 视频 3：[提出可用数据回答的问题](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)（4 分钟 17 秒）
-* 视频 4：[使用简单的模型预测答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md)（7 分 42 秒）
-* 视频 5：[复制他人的工作以执行数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)（3 分 18 秒）
+* 视频 2：[数据是否可用于数据科学？](data-science-for-beginners-is-your-data-ready-for-data-science.md) （4 分 56 秒） 
+* 视频 3：[提出可用数据回答的问题](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)（4 分钟 17 秒） 
+* 视频 4：[使用简单的模型预测答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md)（7 分 42 秒） 
+* 视频 5：[复制他人的工作以执行数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)（3 分 18 秒） 
 
 ## <a name="transcript-the-5-questions-data-science-answers"></a>脚本：5 个数据科学可解答的问题
-好！ 欢迎观看“适合初学者的数据科学”系列视频。
+好！ 欢迎观看“适合初学者的数据科学”  系列视频。
 
 数据科学知识的广博令人生畏，因此这里只简单介绍一些基础知识，不会涉及任何公式或计算机编程专业术语。
 
@@ -45,7 +44,7 @@ ms.locfileid: "60751324"
 
 数据科学使用数字和名称（也称为类别或标签）预测问题的答案。
 
-这可能会让人感到惊讶，但数据科学只可解答以下五种问题：
+这可能会让人感到惊讶，但数据科学只可解答以下五种问题  ：
 
 * 这是 A 还是 B？
 * 这是否很奇怪？
@@ -78,12 +77,12 @@ ms.locfileid: "60751324"
 
 ![异常检测算法：这是否很奇怪？](./media/data-science-for-beginners-the-5-questions-data-science-answers/anomaly-detection-algorithms.png)
 
-如果有信用卡，那么已从异常检测获益。 信用卡公司分析购买模式，使他们可提醒用户可能的欺诈行为。 “异常”费用可能是在一家通常不会去购物的商店购物时，或购买非常昂贵的物品时所产生的费用。
+如果有信用卡，则已从异常情况检测中获益。 信用卡公司分析购买模式，使他们可提醒用户可能的欺诈行为。 “异常”费用可能是在一家通常不会去购物的商店购物时，或购买非常昂贵的物品时所产生的费用。
 
 此问题在很多方面都很有用。 例如：
 
 * 如果汽车上配有压力表，可能会想知道：此压力表读数是否正常？
-* 如果在监视 Internet，会想知道：此消息是否来自典型 Internet？
+* 如果监视的是 internet，则需要知道：此邮件是否是来自 internet 的典型消息？
 
 异常检测标志意外或异常事件或行为。 它会提供在何处查找问题的线索。
 
@@ -102,7 +101,7 @@ ms.locfileid: "60751324"
 ## <a name="question-4-how-is-this-organized-uses-clustering-algorithms"></a>问题 4：“组织方式为何？”使用聚类分析算法
 最后两个问题更高级一点。
 
-有时希望了解数据集的结构 - 组织方式为何？ 对于此问题，并没有已经知道结果的示例。
+有时希望了解数据集的结构 - 组织方式为何？ 对于此问题，你没有了解其结果的示例。
 
 可通过多种方法梳理出数据结构。 其中一种方法就是聚类分析。 为方便解释，该方法将数据分成多个自然“群”。 使用聚类分析，不会存在正确答案。
 
@@ -116,7 +115,7 @@ ms.locfileid: "60751324"
 通过了解数据的组织方式，可以更好地了解并预测行为和事件。  
 
 ## <a name="question-5-what-should-i-do-now-uses-reinforcement-learning-algorithms"></a>问题 5：“现在应该做什么？”使用强化学习算法
-最后一个问题 – 现在应该做什么？ - 使用称为强化学习的算法系列。
+最后一个问题 – 现在应该做什么？ \- 使用称为强化学习的算法系列。
 
 强化学习的灵感来自于老鼠和人类的大脑对惩罚和奖励的反应。 这些算法从结果中学习，并决定下一步操作。
 
@@ -135,5 +134,5 @@ ms.locfileid: "60751324"
 这就是数据科学可以回答的 5 个问题。
 
 ## <a name="next-steps"></a>后续步骤
-* [使用机器学习工作室尝试第一个数据科学实验](create-experiment.md)
-* [在 Microsoft Azure 上获取机器学习简介](/azure/machine-learning/preview/overview-what-is-azure-ml)
+* [使用机器学习工作室（经典）尝试第一个数据科学试验](create-experiment.md)
+* [在 Microsoft Azure 上获取机器学习简介](/azure/machine-learning/overview-what-is-azure-ml)

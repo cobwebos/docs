@@ -1,124 +1,201 @@
 ---
 title: 在 Azure 中使用 Visual Studio Code 创建你的第一个函数
 description: 使用 Visual Studio Code 中的 Azure Functions扩展创建一个简单的 HTTP 触发函数并将其发布到 Azure。
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: azure functions, functions, 事件处理, 计算, 无服务器体系结构
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
-ms.date: 09/07/2018
-ms.author: glenga
-ms.custom: mvc, devcenter
-ms.openlocfilehash: cbe4dbd2ae741f4225cfdc628c31508956cbb95c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 01/10/2020
+ms.custom: mvc, devcenter, seo, tracking-python
+zone_pivot_groups: programming-languages-set-functions
+ms.openlocfilehash: 819fdec23d00929db34942434f66a6ffa5d4a1d8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59490527"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833734"
 ---
-# <a name="create-your-first-function-using-visual-studio-code"></a>使用 Visual Studio Code 创建你的第一个函数
+# <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>快速入门：在 Azure 中使用 Visual Studio Code 创建函数
 
-Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/serverless/)环境中执行代码，无需先创建 VM 或发布 Web 应用程序。
+::: zone pivot="programming-language-csharp"  
+在本文中，我们使用 Visual Studio Code 来创建一个响应 HTTP 请求的基于 C# 类库的函数。 在本地测试代码后，将代码部署到 Azure Functions 的无服务器环境。 
+::: zone-end  
+::: zone pivot="programming-language-javascript"
+在本文中，我们使用 Visual Studio Code 来创建一个响应 HTTP 请求的 JavaScript 函数。 在本地测试代码后，将代码部署到 Azure Functions 的无服务器环境。 
+::: zone-end
+::: zone pivot="programming-language-typescript"
+在本文中，我们使用 Visual Studio Code 来创建一个响应 HTTP 请求的 TypeScript 函数。 在本地测试代码后，将代码部署到 Azure Functions 的无服务器环境。 
+::: zone-end   
+::: zone pivot="programming-language-powershell"
+在本文中，我们使用 Visual Studio Code 来创建一个响应 HTTP 请求的 PowerShell 函数。 在本地测试代码后，将代码部署到 Azure Functions 的无服务器环境。 
+::: zone-end  
+::: zone pivot="programming-language-python" 
+在本文中，我们使用 Visual Studio Code 来创建一个响应 HTTP 请求的 Python 函数。 在本地测试代码后，将代码部署到 Azure Functions 的无服务器环境。 
+::: zone-end  
+::: zone pivot="programming-language-java" 
+在本文中，我们使用 Visual Studio Code 来创建一个响应 HTTP 请求的 Java 函数。 在本地测试代码后，将代码部署到 Azure Functions 的无服务器环境。 
+::: zone-end
 
-本文介绍了如何使用[适用于 Visual Studio Code 的 Azure Functions 扩展]来通过 Microsoft Visual Studio Code 在本地计算机上创建和测试“hello world”函数。 然后说明了如何将函数代码从 Visual Studio Code 发布到 Azure。
+完成本快速入门会从你的 Azure 帐户中扣取最多几美分的费用。 
 
-![Visual Studio 项目中的 Azure Functions 代码](./media/functions-create-first-function-vs-code/functions-vscode-intro.png)
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
+本文还有一个[基于 CLI 的版本](functions-create-first-azure-function-azure-cli.md)。
+::: zone-end
+::: zone pivot="programming-language-java"  
+> [!NOTE]
+> 如果 Visual Studio Code 不是首选开发工具，请查看面向使用 [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)、[Gradle](/azure/azure-functions/functions-create-first-java-gradle) 和 [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) 的 Java 开发人员的类似教程。
+::: zone-end  
 
-该扩展目前完全支持 C#、JavaScript 和 Java 函数，Python 支持目前处于预览状态。 本文中的步骤可能会因你为 Azure Functions 项目所选的语言而异。 此扩展目前为预览版。 若要了解详细信息，请参阅[适用于 Visual Studio Code 的 Azure Functions 扩展]页。
+## <a name="configure-your-environment"></a>配置环境
 
-## <a name="prerequisites"></a>先决条件
+在开始之前，请确保已满足下列要求：
 
-完成本快速入门教程需要：
++ 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-* 在某一[受支持的平台](https://code.visualstudio.com/docs/supporting/requirements#_platforms)上安装 [Visual Studio Code](https://code.visualstudio.com/)。 本文是在运行 macOS (High Sierra) 的设备上开发并测试的。
+::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-python"  
++ [Node.js](https://nodejs.org/)，在 Windows 上使用 npm 时所必需的。 仅限[活动 LTS 和维护 LTS 版本](https://nodejs.org/about/releases/)。 可以使用 `node --version` 命令检查你的版本。
+    对于 macOS 和 Linux 上的本地开发而言，这不是必需的。   
+::: zone-end  
+::: zone pivot="programming-language-javascript,programming-language-typescript"  
++ [Node.js](https://nodejs.org/)，活动 LTS 和维护 LTS 版本（建议使用 10.14.1）。 可以使用 `node --version` 命令检查你的版本。
+::: zone-end 
+::: zone pivot="programming-language-python"
++ Azure Functions (x64) 支持 [Python 3.8](https://www.python.org/downloads/release/python-381/)、[Python 3.7](https://www.python.org/downloads/release/python-375/)、[Python 3.6](https://www.python.org/downloads/release/python-368/)。
+::: zone-end   
+::: zone pivot="programming-language-powershell"
++ [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-* 安装 [Azure Functions Core Tools](functions-run-local.md#v2) 的 2.x 版（仍为预览版）。
++ [.NET Core SDK 2.2+](https://www.microsoft.com/net/download)  
+::: zone-end  
+::: zone pivot="programming-language-java"  
++ [Java 开发人员工具包](https://aka.ms/azure-jdks)版本 8。
 
-* 针对所选语言安装特定必需组件：
++ [Apache Maven](https://maven.apache.org) 3.0 或更高版本。
+::: zone-end  
++ 安装在某个[受支持的平台](https://code.visualstudio.com/docs/supporting/requirements#_platforms)上的 [Visual Studio Code](https://code.visualstudio.com/)。  
+::: zone pivot="programming-language-csharp"  
++ Visual Studio Code 的 [C# 扩展](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。  
+::: zone-end  
+::: zone pivot="programming-language-python"
++ Visual Studio Code 的 [Python 扩展](https://marketplace.visualstudio.com/items?itemName=ms-python.python)。  
+::: zone-end  
+::: zone pivot="programming-language-powershell"
++ [Visual Studio Code 的 PowerShell 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)。 
+::: zone-end  
+::: zone pivot="programming-language-java"  
++ [Java 扩展包](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
+::: zone-end  
 
-    | 语言 | 分机 |
-    | -------- | --------- |
-    | **C#** | [适用于 Visual Studio Code 的 C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[.NET Core CLI 工具](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)*   |
-    | **Java** | [Debugger for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3+](https://maven.apache.org/) |
-    | **JavaScript** | [Node 8.0+](https://nodejs.org/)  |
++ Visual Studio Code 的 [Azure Functions 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)。 
 
-    \* 也是 Core Tools 所必需的。
+## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>创建本地项目 
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+在本部分，你将使用 Visual Studio Code 以所选语言创建一个本地 Azure Functions 项目。 稍后在本文中，你要将函数代码发布到 Azure。 
 
-[!INCLUDE [functions-install-vs-code-extension](../../includes/functions-install-vs-code-extension.md)]
+1. 在活动栏中选择“Azure”图标，然后在“Azure:函数”区域中选择“创建新项目...”图标。
 
-[!INCLUDE [functions-create-function-app-vs-code](../../includes/functions-create-function-app-vs-code.md)]
+    ![选择“创建新项目”](media/functions-create-first-function-vs-code/create-new-project.png)
 
-## <a name="create-an-http-triggered-function"></a>创建 HTTP 触发的函数
+1. 为项目工作区选择目录位置，然后选择“选择”。
 
-1. 从 **Azure：Functions** 区域中，选择“创建函数”图标。
+    > [!NOTE]
+    > 这些步骤已设计为在工作区之外完成。 在这种情况下，请不要选择属于工作区内的项目文件夹。
 
-    ![创建函数](./media/functions-create-first-function-vs-code/create-function.png)
+1. 根据提示提供以下信息：
 
-1. 选择包含函数应用项目的文件夹，然后选择“HTTP 触发器”函数模板。
+    ::: zone pivot="programming-language-csharp"
+    + **选择函数项目的语言**：选择`C#`。
+    ::: zone-end
+    ::: zone pivot="programming-language-javascript"
+    + **选择函数项目的语言**：选择`JavaScript`。
+    ::: zone-end
+    ::: zone pivot="programming-language-typescript"
+    + **选择函数项目的语言**：选择`TypeScript`。
+    ::: zone-end
+    ::: zone pivot="programming-language-powershell"
+    + **选择函数项目的语言**：选择`PowerShell`。
+    ::: zone-end
+    ::: zone pivot="programming-language-python"
+    + **选择函数项目的语言**：选择`Python`。
 
-    ![选择 HTTP 触发器模板](./media/functions-create-first-function-vs-code/create-function-choose-template.png)
+    + **选择一个 Python 别名以创建虚拟环境**：选择 Python 解释器的位置。 如果该位置未显示，请键入 Python 二进制文件的完整路径。  
+    ::: zone-end
 
-1. 键入 `HTTPTrigger` 作为函数名称，然后按 Enter，然后选择“匿名”身份验证。
+    ::: zone pivot="programming-language-java"  
+    + **选择函数项目的语言**：选择`Java`。
 
-    ![选择匿名身份验证](./media/functions-create-first-function-vs-code/create-function-anonymous-auth.png)
+    + **提供组 ID**：选择`com.function`。
 
-    此时将使用 HTTP 触发的函数的模板，以所选语言创建函数。
+    + **提供项目 ID**：选择`myFunction`。
 
-    ![Visual Studio Code 中的 HTTP 触发的函数模板](./media/functions-create-first-function-vs-code/new-function-full.png)
+    + **提供版本**：选择`1.0-SNAPSHOT`。
 
-可以通过修改 function.json 文件，将输入和输出绑定添加到函数。 有关详细信息，请参阅 [Azure Functions 触发器和绑定概念](functions-triggers-bindings.md)。
+    + **提供包名称**：选择`com.function`。
 
-创建函数项目和 HTTP 触发的函数后，可以在本地计算机上对其进行测试。
+    + **提供应用名称**：选择`myFunction-12345`。
+    ::: zone-end  
+    ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
+    + **为项目的第一个函数选择模板**：选择`HTTP trigger`。
+    
+    + **提供函数名称**：键入 `HttpExample`。
+    ::: zone-end  
+    ::: zone pivot="programming-language-csharp"
+    + **提供命名空间**：键入 `My.Functions`。 
+    ::: zone-end  
+    ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
+    + **授权级别**：选择 `Anonymous`，这使任何人都可以调用你的函数终结点。 若要了解授权级别，请参阅[授权密钥](functions-bindings-http-webhook-trigger.md#authorization-keys)。
+    ::: zone-end  
+    + **选择打开项目的方式**：选择`Add to workspace`。
 
-## <a name="test-the-function-locally"></a>在本地测试函数
+1. Visual Studio Code 将使用此信息生成一个包含 HTTP 触发器的 Azure Functions 项目。 可以在资源管理器中查看本地项目文件。 若要详细了解所创建的文件，请参阅[生成的项目文件](functions-develop-vs-code.md#generated-project-files)。 
 
-使用 Azure Functions Core Tools 可以在本地开发计算机上运行 Azure Functions 项目。 首次从 Visual Studio Code 启动某个函数时，系统会提示你安装这些工具。  
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python,programming-language-java"
 
-1. 若要测试函数，请在函数代码中设置断点并按 F5 启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”面板中。
+[!INCLUDE [functions-run-function-test-local-vs-code](../../includes/functions-run-function-test-local-vs-code.md)]
 
-1. 在“终端”面板中，复制 HTTP 触发的函数的 URL 终结点。
+::: zone-end
 
-    ![Azure 本地输出](./media/functions-create-first-function-vs-code/functions-vscode-f5.png)
+::: zone pivot="programming-language-powershell"
 
-1. 将 HTTP 请求的 URL 粘贴到浏览器的地址栏中。 将查询字符串 `?name=<yourname>` 追加到此 URL 并执行请求。 执行将在命中断点时暂停。
+[!INCLUDE [functions-run-function-test-local-vs-code-ps](../../includes/functions-run-function-test-local-vs-code-ps.md)]
 
-    ![Visual Studio Code 中的命中断点的函数](./media/functions-create-first-function-vs-code/function-debug-vscode-js.png)
+::: zone-end
 
-1. 下面显示了当继续执行时浏览器中对 GET 请求的响应：
-
-    ![浏览器中的函数 localhost 响应](./media/functions-create-first-function-vs-code/functions-test-local-browser.png)
-
-1. 若要停止调试，请按 Shift + F5。
-
-确认该函数可以在本地计算机上正确运行以后，即可将项目发布到 Azure。
+确认该函数可以在本地计算机上正确运行以后，可以使用 Visual Studio Code 将项目直接发布到 Azure。 
 
 [!INCLUDE [functions-sign-in-vs-code](../../includes/functions-sign-in-vs-code.md)]
 
 [!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 
-## <a name="test-your-function-in-azure"></a>在 Azure 中测试函数
+## <a name="run-the-function-in-azure"></a>在 Azure 中运行函数
 
-1. 从“输出”面板复制 HTTP 触发器的 URL。 与前面一样，请确保将查询字符串 `?name=<yourname>` 添加到此 URL 的末尾并执行请求。
+1. 返回到“Azure：函数”函数”区域，在你的订阅下展开新的函数应用。 展开“函数”，在“HttpExample”中右键单击“(Windows)”或者在按住 Ctrl 的同时单击“(macOS)”，然后选择“复制函数 URL”。  
 
-    调用 HTTP 触发的函数的 URL 应采用以下格式：
+    ![复制新的 HTTP 触发器的函数 URL](./media/functions-create-first-function-vs-code/function-copy-endpoint-url.png)
 
-        http://<functionappname>.azurewebsites.net/api/<functionname>?name=<yourname> 
+1. 将 HTTP 请求的此 URL 粘贴到浏览器的地址栏中，将 `name` 查询字符串以 `?name=Functions` 形式添加到此 URL 的末尾，然后执行请求。 调用 HTTP 触发的函数的 URL 应采用以下格式：
 
-1. 将 HTTP 请求的这个新 URL 粘贴到浏览器的地址栏中。 下面演示浏览器中函数返回的对远程 GET 请求的响应： 
+    ```http
+    http://<functionappname>.azurewebsites.net/api/httpexample?name=Functions
+    ```
+        
+    以下示例演示浏览器中函数返回的对远程 GET 请求的响应： 
 
     ![浏览器中的函数响应](./media/functions-create-first-function-vs-code/functions-test-remote-browser.png)
 
+## <a name="clean-up-resources"></a>清理资源
+
+若要继续执行下一步骤[将 Azure 存储队列绑定添加到函数](functions-add-output-binding-storage-queue-vs-code.md)，需要保留到目前为止构建的所有资源。
+
+否则，可以使用以下步骤删除函数应用及其相关资源，以免产生任何额外的费用。
+
+[!INCLUDE [functions-cleanup-resources-vs-code.md](../../includes/functions-cleanup-resources-vs-code.md)]
+
+若要详细了解 Functions 的费用，请参阅[估算消耗计划成本](functions-consumption-costs.md)。
+
 ## <a name="next-steps"></a>后续步骤
 
-你已使用 Visual Studio Code 通过简单的 HTTP 触发函数创建了函数应用。 你还可能想要了解有关使用 Azure Functions Core Tools [从终端或命令提示符进行本地测试和调试](functions-run-local.md)的详细信息。
+你已使用 Visual Studio Code 通过简单的 HTTP 触发函数创建了函数应用。 在下一篇文章中，将通过添加输出绑定来扩展该函数。 此绑定将 HTTP 请求中的字符串写入 Azure 队列存储队列中的消息。 
 
 > [!div class="nextstepaction"]
-> [启用 Application Insights 集成](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [将 Azure 存储队列绑定添加到函数](functions-add-output-binding-storage-queue-vs-code.md)
 
 [Azure Functions Core Tools]: functions-run-local.md
-[适用于 Visual Studio Code 的 Azure Functions 扩展]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions
+[Azure Functions extension for Visual Studio Code]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions

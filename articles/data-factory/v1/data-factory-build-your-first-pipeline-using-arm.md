@@ -1,33 +1,29 @@
 ---
-title: 构建第一个数据工厂（Resource Manager 模板）| Microsoft Docs
+title: 构建第一个数据工厂（资源管理器模板）
 description: 本教程使用 Azure 资源管理器模板创建一个示例 Azure 数据工厂管道。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: ''
-editor: ''
-ms.assetid: eb9e70b9-a13a-4a27-8256-2759496be470
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 9e5a3deb66c0f6da6c8a253840058c10fc445553
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e6a14cbb758426203a46ac508fe8e4bfdf3090cf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66147165"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82203890"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-build-your-first-pipeline.md)
-> * [Azure 门户](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
-> * [Resource Manager 模板](data-factory-build-your-first-pipeline-using-arm.md)
+> * [资源管理器模板](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 > 
  
@@ -49,7 +45,7 @@ ms.locfileid: "66147165"
 
 * 阅读 [教程概述](data-factory-build-your-first-pipeline.md) ，完成 **先决条件** 步骤。
 * 遵循 [How to install and configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装最新版本的 Azure PowerShell。
-* 若要了解 Azure 资源管理器模板，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)。 
+* 若要了解 Azure 资源管理器模板，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)。 
 
 ## <a name="in-this-tutorial"></a>本教程的内容
 
@@ -80,7 +76,7 @@ ms.locfileid: "66147165"
         {
             "name": "[parameters('dataFactoryName')]",
             "apiVersion": "[variables('apiVersion')]",
-            "type": "Microsoft.DataFactory/datafactories",
+            "type": "Microsoft.DataFactory/factories",
             "location": "westus",
             "resources": [
                 { ... },
@@ -120,7 +116,7 @@ ms.locfileid: "66147165"
       {
         "name": "[variables('dataFactoryName')]",
         "apiVersion": "2015-10-01",
-        "type": "Microsoft.DataFactory/datafactories",
+        "type": "Microsoft.DataFactory/factories",
         "location": "West US",
         "resources": [
           {
@@ -336,10 +332,10 @@ ms.locfileid: "66147165"
     ```
 
 ## <a name="monitor-pipeline"></a>监视管道
-1. 登录到 [Azure 门户](https://portal.azure.com/)后，单击“浏览”，并选择“数据工厂”。
+1. 登录到 [Azure 门户](https://portal.azure.com/)后，单击“浏览”，并选择“数据工厂”。 
      ![“浏览”->“数据工厂”](./media/data-factory-build-your-first-pipeline-using-arm/BrowseDataFactories.png)
 2. 在“数据工厂”边栏选项卡中，单击创建的数据工厂 (**TutorialFactoryARM**)。    
-3. 在数据工厂的“数据工厂”边栏选项卡中，单击“图示”。
+3. 在数据工厂的“数据工厂”边栏选项卡中，单击“图示”。 
 
      ![图示磁贴](./media/data-factory-build-your-first-pipeline-using-arm/DiagramTile.png)
 4. 在“图示视图”中，可以看到管道的概述，以及本教程中使用的数据集。
@@ -371,7 +367,7 @@ ms.locfileid: "66147165"
 {
     "name": "[variables('dataFactoryName')]",
     "apiVersion": "2015-10-01",
-    "type": "Microsoft.DataFactory/datafactories",
+    "type": "Microsoft.DataFactory/factories",
     "location": "West US"
 }
 ```
@@ -602,11 +598,11 @@ New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutori
         {
             "name": "[variables('dataFactoryName')]",
             "apiVersion": "[variables('apiVersion')]",
-            "type": "Microsoft.DataFactory/datafactories",
+            "type": "Microsoft.DataFactory/factories",
             "location": "eastus",
             "resources": [
                 {
-                    "dependsOn": [ "[concat('Microsoft.DataFactory/dataFactories/', variables('dataFactoryName'))]" ],
+                    "dependsOn": [ "[concat('Microsoft.DataFactory/factories/', variables('dataFactoryName'))]" ],
                     "type": "gateways",
                     "apiVersion": "[variables('apiVersion')]",
                     "name": "GatewayUsingARM",

@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 73a76162efaf7317c5e2f1668b76325da6f018ce
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
-ms.translationtype: MT
+ms.openlocfilehash: b1f8b158c511919a72e72629d72b0e5ff73ff7db
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64868134"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78268113"
 ---
 # <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>使用媒体服务传送 DRM 许可证或 AES 密钥 
 
 > [!NOTE]
-> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。   > 无新特性或功能将被添加到媒体服务 v2。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
->
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 Azure 媒体服务可引入、编码、添加内容保护，以及流式传输内容。 有关详细信息，请参阅[使用 PlayReady 和/或 Widevine 动态通用加密](media-services-protect-with-playready-widevine.md)。 一些客户希望将媒体服务仅用于传送许可证和/或密钥，以及通过使用其本地服务器进行编码、加密和流式处理。 本文说明如何使用媒体服务来传送 PlayReady 和/或 Widevine 许可证，但使用本地服务器来完成其余部分。 
+
+要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="overview"></a>概述
 媒体服务提供传送 PlayReady 和 Widevine 数字版权管理 (DRM) 许可证及 AES-128 密钥的服务。 媒体服务还提供用于配置所需权限和限制的 API，这样当用户播放 DRM 保护的内容时，DRM 运行时便会强制实施这些权限和限制。 当用户请求受保护的内容时，播放器应用程序会从媒体服务许可证服务请求许可证。 如果许可证获得授权，媒体服务许可证服务会向该播放器颁发许可证。 PlayReady 和 Widevine 许可证包含客户端播放器用来对内容进行解密和流式传输的解密密钥。
 
-媒体服务支持通过多种方式对发出许可证或密钥请求的用户进行授权。 配置内容密钥授权策略。 策略可以有一个或多个限制。 选项为打开或令牌限制。 令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持采用简单 Web 令牌 (SWT) 格式和 JSON Web 令牌 (JWT) 格式的令牌。
+媒体服务支持通过多种方式对发出许可证或密钥请求的用户进行授权。 配置内容密钥授权策略。 策略可以有一个或多个限制。 选项为“开放”或“令牌限制”。 令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持采用简单 Web 令牌 (SWT) 格式和 JSON Web 令牌 (JWT) 格式的令牌。
 
 下图显示了使用媒体服务传送 PlayReady 和/或 Widevine 许可证，但使用本地服务器完成其余部分所要执行的主要步骤：
 
@@ -344,12 +344,16 @@ namespace DeliverDRMLicenses
 }
 ```
 
+## <a name="additional-notes"></a>附加说明
+
+* Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
+
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [使用 PlayReady 和/或 Widevine DRM 动态通用加密](media-services-protect-with-playready-widevine.md)
 * [使用 AES-128 动态加密和密钥传递服务](media-services-protect-with-aes128.md)

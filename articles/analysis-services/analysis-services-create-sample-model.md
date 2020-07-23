@@ -1,19 +1,18 @@
 ---
-title: 教程 - 将示例模型添加到 Azure Analysis Services 服务器 | Microsoft Docs
+title: 教程 - 添加示例模型 - Azure Analysis Services | Microsoft Docs
 description: 本教程介绍如何在 Azure Analysis Services 中添加示例模型。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 03/13/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 32c46f0a488d775275b3a367aa2913f034569041
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 88ed58ea1eea80b4b890c31260fc65153377eaaa
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903923"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697519"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>教程：从门户添加示例模型
 
@@ -23,7 +22,7 @@ ms.locfileid: "57903923"
 > * 将已完成的示例表格数据模型添加到服务器 
 > * 使用 SSMS 连接到模型
 
-如果没有 Azure 订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -44,7 +43,7 @@ ms.locfileid: "57903923"
 
     ![创建示例模型](./media/analysis-services-create-sample-model/aas-create-sample-new-model.png)
 
-2. 在“新建模型” > “选择数据源”中，确认已选中“示例数据”，然后单击“添加”。
+2. 在“新建模型” > “选择数据源”中，确认已选中“示例数据”，然后单击“添加”。   
 
     ![选择“示例数据”](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 
@@ -65,7 +64,7 @@ ms.locfileid: "57903923"
 
     ![登录](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
 
-3. 在“对象资源管理器”中，右键单击 `adventureworks` 示例数据库，然后单击“删除”。
+3. 在“对象资源管理器”中，右键单击 `adventureworks` 示例数据库，然后单击“删除”。 
 
     ![删除示例数据库](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-delete.png)
 
@@ -74,6 +73,6 @@ ms.locfileid: "57903923"
 本教程介绍了如何将基本示例模型添加到服务器。 现在，已有模型数据库，可以从 SQL Server Management Studio 连接到它，并添加用户角色。 若要了解详细信息，请继续阅读下一个教程。
 
 > [!div class="nextstepaction"]
-> [教程：配置服务器管理员和用户角色](analysis-services-database-users.md)
+> [教程：配置服务器管理员和用户角色](tutorials/analysis-services-tutorial-roles.md)
 
 

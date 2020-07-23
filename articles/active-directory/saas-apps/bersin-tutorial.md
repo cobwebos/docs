@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: bbc9d229-69fb-4ab5-b6c3-5f3d790ea13e
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8ff026743ccda0a47ce176db51dbc7913376f46
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 6c6794baab00dbb59df89187c8ab91f1a42ab03e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65987998"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "73158886"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bersin"></a>教程：Azure Active Directory 与 Bersin 集成
 
@@ -108,9 +109,9 @@ ms.locfileid: "65987998"
 
     b. 单击“设置其他 URL”  。
 
-    c. 在“中继状态”文本框中，使用以下模式键入 URL：`https://www.bersin.com/secure/` 
+    c. 在“中继状态”文本框中，使用以下模式键入 URL：`https://www.bersin.com/secure/`
 
-5. 若要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”并执行以下步骤   ：
+5. 若要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”并执行以下步骤：
 
     ![Bersin 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
@@ -132,7 +133,7 @@ ms.locfileid: "65987998"
 
 ### <a name="configure-bersin-single-sign-on"></a>配置 Bersin 单一登录
 
-若要在“Bersin”端配置单一登录，请将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Bersin 支持团队](mailto:ramansabde@gmail.com)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在“Bersin”端配置单一登录，请将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Bersin 支持团队](mailto:ramansabde@gmail.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -150,9 +151,9 @@ ms.locfileid: "65987998"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”  字段中，输入 BrittaSimon  。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -175,7 +176,7 @@ ms.locfileid: "65987998"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

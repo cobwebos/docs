@@ -1,5 +1,5 @@
 ---
-title: 快速入门：搜索图像 - 必应图像搜索 REST API 和 Ruby
+title: 快速入门：使用必应图像搜索 REST API 和 Ruby 来搜索图像
 titleSuffix: Azure Cognitive Services
 description: 使用本快速入门，通过 Ruby 将图像搜索请求发送到必应图像搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
@@ -9,15 +9,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 03/04/2019
+ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 60a8c0009073a996aef7e7fd0bda8f88311b34e6
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: ee1308f08b5ca2192bb429acbb5bdaec199fb26f
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383601"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603260"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-ruby"></a>快速入门：使用必应图像搜索 REST API 和 Ruby 来搜索图像
 
@@ -26,17 +26,18 @@ ms.locfileid: "66383601"
 虽然此应用程序是使用 Ruby 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
 该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingImageSearchv7.rb) 上获得。
+
 ## <a name="prerequisites"></a>先决条件
 
 * [最新版的 Ruby](https://www.ruby-lang.org/en/downloads/)。
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+有关详细信息，请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 ## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 
-1. 将以下包导入代码文件。
+1. 将以下包导入代码文件：
 
     ```ruby
     require 'net/https'
@@ -44,7 +45,7 @@ ms.locfileid: "66383601"
     require 'json'
     ```
 
-2. 为 API 终结点、图像 API 搜索路径、订阅密钥和搜索词创建变量。
+2. 为 API 终结点、图像 API 搜索路径、订阅密钥和搜索词创建变量。 对于 `uri`，你可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```ruby
     uri  = "https://api.cognitive.microsoft.com"
@@ -54,7 +55,7 @@ ms.locfileid: "66383601"
 
 ## <a name="format-and-make-an-api-request"></a>设置 API 请求的格式并将其发出
 
-使用上一个步骤中的变量来设置 API 请求的搜索 URL 的格式。 然后发送请求。
+使用前一个步骤中的变量来设置 API 请求的搜索 URL 的格式。 然后，发送请求。
 
 ```ruby
 uri = URI(uri + path + "?q=" + URI.escape(term))
@@ -144,8 +145,7 @@ puts "Url to the thumbnail of the first returned search result: #{first_result}"
 
 ## <a name="see-also"></a>另请参阅
 
-* [什么是必应图像搜索？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [尝试在线互动演示](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-* [获取免费的认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [什么是必应图像搜索 API？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [尝试在线互动演示](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)   
 * [Azure 认知服务文档](https://docs.microsoft.com/azure/cognitive-services)
 * [必应图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

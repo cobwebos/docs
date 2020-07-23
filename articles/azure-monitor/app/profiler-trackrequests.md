@@ -1,23 +1,16 @@
 ---
 title: 编写代码来使用 Azure Application Insights 跟踪请求 | Microsoft Docs
 description: 编写代码来使用 Application Insights 跟踪请求以便可以获取你的请求的配置文件。
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 4782e560b580b7f565724dbb35ed9876bffdc256
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: c59cbe852a91a91c7b3adb4452328700ec718a82
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60730848"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77671590"
 ---
 # <a name="write-code-to-track-requests-with-application-insights"></a>编写代码来使用 Application Insights 跟踪请求
 

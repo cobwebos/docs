@@ -1,34 +1,32 @@
 ---
 title: Azure Kubernetes 服务 (AKS) 中的 HTTP 应用程序路由加载项
-description: 使用 Azure Kubernetes 服务 (AKS) 中的 HTTP 应用程序路由加载项。
+description: 使用 HTTP 应用程序路由外接程序访问部署在 Azure Kubernetes Service (AKS) 上的应用程序。
 services: container-service
 author: lachie83
-manager: jeconnoc
-ms.service: container-service
 ms.topic: article
-ms.date: 04/25/2018
+ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: d6e1cc033416c90e27b5caf4bba310400e55b3a5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 216705ef4ff7c235179c1f1be38a993ecd2fe782
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60466273"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244406"
 ---
 # <a name="http-application-routing"></a>HTTP 应用程序路由
 
-可以通过 HTTP 应用程序路由解决方案轻松地访问部署到 Azure Kubernetes 服务 (AKS) 群集的应用程序。 启用此解决方案后，它可以在 AKS 群集中配置入口控制器。 在部署应用程序以后，此解决方案还可以为应用程序终结点创建可公开访问的 DNS 名称。
+可以通过 HTTP 应用程序路由解决方案轻松地访问部署到 Azure Kubernetes 服务 (AKS) 群集的应用程序。 启用该解决方案后，它将在 AKS 群集中配置[入口控制器](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)。 在部署应用程序以后，此解决方案还可以为应用程序终结点创建可公开访问的 DNS 名称。
 
 启用此加载项后，它会在订阅中创建 DNS 区域。 有关 DNS 成本的详细详细，请参阅 [DNS 定价][dns-pricing]。
 
 > [!CAUTION]
-> HTTP 应用程序路由加载项旨在可以快速创建入口控制器并访问应用程序。 建议不要将此加载项用于生产。 对于包含多个副本和 TLS 支持的生产就绪入口部署，请参阅[创建 HTTPS 入口控制器](https://docs.microsoft.com/azure/aks/ingress-tls)。
+> HTTP 应用程序路由加载项旨在可以快速创建入口控制器并访问应用程序。 建议不要将此加载项用于生产。 对于包含多个副本和 TLS 支持的生产就绪入口部署，请参阅[创建 HTTPS 入口控制器](./ingress-tls.md)。
 
 ## <a name="http-routing-solution-overview"></a>HTTP 路由解决方案概述
 
-此加载项部署两个组件：[Kubernetes 入口控制器][ingress]和 [External-DNS][external-dns] 控制器。
+外接程序部署两个组件：一个[Kubernetes 入口控制器][ingress]和一个[外部 DNS][external-dns]控制器。
 
-- **入口控制器**：入口控制器通过类型为 LoadBalancer 的 Kubernetes 服务公开给 Internet。 入口控制器监视并实现 [Kubernetes 入口资源][ingress-resource]，后者创建到应用程序终结点的路由。
+- **入口控制器**：入口控制器通过类型为 LoadBalancer 的 Kubernetes 服务公开给 Internet。 入口控制器监视并实现[Kubernetes 入口资源][ingress-resource]，这些资源创建指向应用程序终结点的路由。
 - **External-DNS 控制器**：监视 Kubernetes 入口资源并在特定于群集的 DNS 区域中创建 DNS A 记录。
 
 ## <a name="deploy-http-routing-cli"></a>部署 HTTP 路由：CLI
@@ -48,13 +46,15 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --enable-addo
 az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing
 ```
 
-部署或更新群集后，使用 [az aks show][az-aks-show] 命令检索 DNS 区域名称。 将应用程序部署到 AKS 群集时，需要此名称。
+部署或更新群集后，使用 [az aks show][az-aks-show] 命令检索 DNS 区域名称。 
 
 ```azurecli
-$ az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
+az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
+```
 
-Result
------------------------------------------------------
+此名称是将应用程序部署到 AKS 群集所必需的，并显示在下面的示例输出中：
+
+```console
 9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
 ```
 
@@ -68,6 +68,22 @@ HTTP 应用程序路由加载项可以在部署 AKS 群集时通过 Azure 门户
 
 ![获取 DNS 区域名称](media/http-routing/dns.png)
 
+## <a name="connect-to-your-aks-cluster"></a>连接到 AKS 群集
+
+若要从本地计算机连接到 Kubernetes 群集，请使用 [kubectl][kubectl]（Kubernetes 命令行客户端）。
+
+如果使用的是 Azure Cloud Shell，则 `kubectl` 已安装。 也可使用 [az aks install-cli][] 命令在本地安装它：
+
+```azurecli
+az aks install-cli
+```
+
+若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][] 命令。 以下示例获取*MyResourceGroup*中名为*MyAKSCluster*的 AKS 群集的凭据：
+
+```azurecli
+az aks get-credentials --resource-group MyResourceGroup --name MyAKSCluster
+```
+
 ## <a name="use-http-routing"></a>使用 HTTP 路由
 
 只能在具有如下注释的入口资源上触发 HTTP 应用程序路由解决方案：
@@ -78,7 +94,6 @@ annotations:
 ```
 
 创建名为 **samples-http-application-routing.yaml** 的文件，并将其复制到以下 YAML 中。 在第 43 行，将 `<CLUSTER_SPECIFIC_DNS_ZONE>` 更新为在本文上一步中收集的 DNS 区域名称。
-
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -137,6 +152,12 @@ spec:
 ```
 
 使用 [kubectl apply][kubectl-apply] 命令创建资源。
+
+```bash
+kubectl apply -f samples-http-application-routing.yaml
+```
+
+下面的示例显示了已创建的资源：
 
 ```bash
 $ kubectl apply -f samples-http-application-routing.yaml
@@ -207,7 +228,7 @@ kubectl delete configmaps addon-http-application-routing-nginx-configuration --n
 
 针对群集中剩余的所有 *addon-http-application-routing* 资源重复前面的 `kubectl delete` 步骤。
 
-## <a name="troubleshoot"></a>故障排除
+## <a name="troubleshoot"></a>疑难解答
 
 请使用 [kubectl logs][kubectl-logs] 命令查看 External-DNS 应用程序的应用程序日志。 这些日志应确认已成功创建 A 和 TXT DNS 记录。
 
@@ -263,7 +284,13 @@ I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully re
 
 ## <a name="clean-up"></a>清理
 
-删除在本文中创建的相关 Kubernetes 对象。
+使用删除在本文中创建的关联的 Kubernetes 对象 `kubectl delete` 。
+
+```bash
+kubectl delete -f samples-http-application-routing.yaml
+```
+
+示例输出显示已删除 Kubernetes 对象。
 
 ```bash
 $ kubectl delete -f samples-http-application-routing.yaml
@@ -282,11 +309,13 @@ ingress "party-clippy" deleted
 [az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az-aks-show
 [ingress-https]: ./ingress-tls.md
 [az-aks-enable-addons]: /cli/azure/aks#az-aks-enable-addons
-
+[az aks install-cli]: /cli/azure/aks#az-aks-install-cli
+[az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials
 
 <!-- LINKS - external -->
 [dns-pricing]: https://azure.microsoft.com/pricing/details/dns/
 [external-dns]: https://github.com/kubernetes-incubator/external-dns
+[kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete

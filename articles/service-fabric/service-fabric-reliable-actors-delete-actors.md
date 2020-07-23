@@ -1,25 +1,16 @@
 ---
-title: 删除 Azure Service Fabric 执行组件 | Microsoft Docs
-description: 了解如何手动删除 Service Fabric Reliable Actors 及其状态。
-services: service-fabric
-documentationcenter: .net
+title: 删除 Azure Service Fabric 执行组件
+description: 了解如何在 Azure Service Fabric 应用程序中手动完全删除 Reliable Actors 及其状态。
 author: amanbha
-manager: chackdan
-editor: vturecek
-ms.assetid: b91384cc-804c-49d6-a6cb-f3f3d7d65a8e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/19/2018
 ms.author: amanbha
-ms.openlocfilehash: e297a6f42774f29e2eca4a410b695d5bbb636300
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d977b6fea71d246610b0e6ef2d9e17d587f1e9ad
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60726598"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253535"
 ---
 # <a name="delete-reliable-actors-and-their-state"></a>删除 Reliable Actors 及其状态
 对已停用的执行组件进行垃圾回收只会清除该执行组件对象，但是存储在执行组件的状态管理器中的数据不会被删除。 重新激活执行组件后，可通过状态管理器再次使用其数据。 如果执行组件将数据存储在状态管理器，并且已停用且始终不激活该执行组件，那么可能需要清理其数据。
@@ -47,7 +38,7 @@ myActorServiceProxy.deleteActorAsync(actorToDelete);
 
 * **活动执行组件**
   * 执行组件从活动的执行组件列表中删除并停用。
-  * 该执行组件的状态会被永久删除。
+  * 将永久删除该执行组件的状态。
 * **非活动执行组件**
   * 将永久删除该执行组件的状态。
 
@@ -58,8 +49,8 @@ myActorServiceProxy.deleteActorAsync(actorToDelete);
 * [执行组件事件](service-fabric-reliable-actors-events.md)
 * [执行组件可重入性](service-fabric-reliable-actors-reentrancy.md)
 * [执行组件诊断和性能监视](service-fabric-reliable-actors-diagnostics.md)
-* [执行组件 API 参考文档](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C# 示例代码](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [执行组件 API 参考文档](/previous-versions/azure/dn971626(v=azure.100))
+* [C# 代码示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java 代码示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->

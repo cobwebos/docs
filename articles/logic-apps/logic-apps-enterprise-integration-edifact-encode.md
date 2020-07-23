@@ -1,21 +1,19 @@
 ---
-title: 为 EDIFACT 消息编码 - Azure 逻辑应用 | Microsoft 文档
+title: 为 EDIFACT 消息编码
 description: 使用 EDIFACT 消息编码器为带有 Enterprise Integration Pack 的 Azure 逻辑应用验证 EDI 并生成 XML
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jonfan, divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
-ms.assetid: 974ac339-d97a-4715-bc92-62d02281e900
-ms.date: 01/27/2017
-ms.openlocfilehash: 7396aee56acdf2476ed1bb3cc5a9909349662dc7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 04/22/2020
+ms.openlocfilehash: cee97fddc619840de821ebb70d32e0cab1bbe040
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705536"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82106519"
 ---
 # <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>为带有 Enterprise Integration Pack 的 Azure 逻辑应用编码 EDIFACT 消息
 
@@ -24,7 +22,7 @@ ms.locfileid: "64705536"
 
 ## <a name="before-you-start"></a>开始之前
 
-需要具有以下各项：
+下面是需要准备好的项：
 
 * Azure 帐户；可以创建[免费帐户](https://azure.microsoft.com/free)
 * 已定义的、与 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。 必须拥有集成帐户，才能使用编码 EDIFACT 消息连接器。 
@@ -33,11 +31,15 @@ ms.locfileid: "64705536"
 
 ## <a name="encode-edifact-messages"></a>为 EDIFACT 消息编码
 
+> [!IMPORTANT]
+> EDIFACT 连接器仅支持 UTF-8 字符。
+> 如果输出中包含意外的字符，请检查 EDIFACT 消息是否使用 UTF-8 字符集。
+
 1. [创建逻辑应用](quickstart-create-first-logic-app-workflow.md)。
 
 2. 编码 EDIFACT 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加触发器，然后将操作添加到逻辑应用。
 
-3.  在搜索框中，输入“EDIFACT”作为筛选器。 选择“编码 EDIFACT 消息(按协议名称)”或“编码为 EDIFACT 消息(按标识)”。
+3.  在搜索框中，输入“EDIFACT”作为筛选器。 选择 "**按协议名称编码 Edifact 消息**" 或**按标识将其编码为 edifact 消息**。
    
     ![搜索 EDIFACT](media/logic-apps-enterprise-integration-edifact-encode/edifactdecodeimage1.png)  
 
@@ -47,12 +49,12 @@ ms.locfileid: "64705536"
 
     带有星号的属性必填。
 
-    | 属性 | 详细信息 |
+    | properties | 详细信息 |
     | --- | --- |
     | 连接名称 * |为连接输入任何名称。 |
     | 集成帐户 * |输入集成帐户的名称。 确保集成帐户和逻辑应用位于同一 Azure 位置。 |
 
-5.  完成后，连接详细信息应如此示例所示。 若要完成连接创建，请选择“创建”。
+5.  完成后，连接详细信息应如此示例所示。 若要完成连接创建，请选择“创建”****。
 
     ![集成帐户连接详细信息](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage2.png)
 
@@ -62,7 +64,7 @@ ms.locfileid: "64705536"
 
 #### <a name="encode-edifact-message-by-agreement-name"></a>编码 EDIFACT 消息(按协议名称)
 
-如果选择了按协议名称编码 EDIFACT 消息，请打开“EDIFACT 协议的名称”列表，输入或选择现有的 EDIFACT 协议名称。 输入要编码的 XML 消息。
+如果选择了按协议名称编码 EDIFACT 消息，请打开“EDIFACT 协议的名称”**** 列表，输入或选择现有的 EDIFACT 协议名称。 输入要编码的 XML 消息。
 
 ![输入 EDIFACT 协议名称和要编码的 XML 消息](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage6.png)
 

@@ -1,33 +1,30 @@
 ---
-title: 传递身份验证请求 （适用于 JavaScript 的 Microsoft 身份验证库） 中的自定义状态 |Azure
-description: 了解如何使用 JavaScript (MSAL.js) Microsoft 身份验证库身份验证请求中传递的自定义状态参数值。
+title: 在身份验证请求中传递自定义状态 (MSAL.js) | Azure
+titleSuffix: Microsoft identity platform
+description: 了解如何使用适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 在身份验证请求中传递自定义状态参数值。
 services: active-directory
-documentationcenter: dev-center-name
-author: rwike77
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
-ms.date: 05/29/2019
-ms.author: nacanuma
+ms.date: 01/16/2020
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f29d84838ddb11ac359d7a04dbce8e39dd05ac01
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 840c371e63aacf8ef410cbf84cc9f68137dd77df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66420493"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85477577"
 ---
-# <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>将使用 MSAL.js 的身份验证请求中的自定义状态传递
-*状态*参数定义的 OAuth 2.0 身份验证请求中包含和也会返回令牌响应，以防止跨站点请求伪造攻击。 默认情况下，JavaScript (MSAL.js) 的 Microsoft 身份验证库将传递随机生成唯一*状态*身份验证请求中的参数值。
+# <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>使用 MSAL.js 在身份验证请求中传递自定义状态
 
-此外可以使用状态参数之前重定向的应用程序的状态信息进行编码。 可以将传递在应用中，例如用户之前，作为此参数的输入页面或视图的用户的状态。 MSAL.js 库，可将自定义状态作为状态参数中传递`Request`对象：
+由 OAuth 2.0 定义的 state  参数包含在身份验证请求中，并在令牌响应中返回，以防止跨站点请求伪造攻击。 默认情况下，适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 在身份验证请求中传递随机生成的唯一 state  参数值。
+
+state 参数也可用于在重定向之前对应用的状态信息进行编码。 可以在应用中传递用户的状态，例如他们所在的页面或视图，作为此参数的输入。 MSAL.js 库允许你将自定义状态作为 state 参数传入 `Request` 对象：
 
 ```javascript
 // Request type
@@ -43,21 +40,29 @@ export type AuthenticationParameters = {
     account?: Account;
     sid?: string;
     loginHint?: string;
+    forceRefresh?: boolean;
 };
 ```
+
+> [!Note]
+> 如果要跳过缓存的令牌并转到服务器，请将布尔值 `forceRefresh` 传入到用于发出登录/令牌请求的 AuthenticationParameters 对象。
+> 默认情况下不应使用 `forceRefresh`，因为对应用程序存在性能影响。
+> 可以依靠缓存为用户提供更好的体验。
+> 只应在知道当前缓存的数据没有最新信息的情况下，才应跳过缓存。
+> 例如，管理工具将角色添加到需要使用更新角色获取新令牌的用户。
 
 例如：
 
 ```javascript
 let loginRequest = {
     scopes: ["user.read", "user.write"],
-    state: “page_url”
+    state: "page_url"
 }
 
 myMSALObj.loginPopup(loginRequest);
 ```
 
-传入的状态将追加到 MSAL.js 发送请求时设置的唯一 GUID。 时返回的响应，MSAL.js 检查以确定状态匹配，然后返回传入的状态中的自定义`Response`对象作为`accountState`。
+发送请求时，传入状态将追加到 MSAL.js 设置的唯一 GUID 中。 返回响应时，MSAL.js 将检查状态是否匹配，然后在 `Response` 对象中返回自定义传入状态作为 `accountState`。
 
 ```javascript
 export type AuthResponse = {
@@ -73,4 +78,4 @@ export type AuthResponse = {
 };
 ```
 
-若要了解详细信息，请阅读有关[生成单页面应用程序 (SPA)](scenario-spa-overview.md)使用 MSAL.js。
+若要了解详细信息，请阅读[使用 MSAL.js 生成单页应用程序 (SPA)](scenario-spa-overview.md)。

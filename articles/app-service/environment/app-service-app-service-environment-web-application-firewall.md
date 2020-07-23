@@ -1,33 +1,25 @@
 ---
-title: 为应用服务环境配置 Web 应用程序防火墙 (WAF) - Azure
-description: 了解如何在应用服务环境的前面配置 Web 应用程序防火墙。
-services: app-service\web
-documentationcenter: ''
-author: naziml
-manager: erikre
-editor: jimbe
+title: 配置 WAF
+description: 了解如何使用 Azure 应用程序网关或第三方 WAF 在应用服务环境的前面配置 Web 应用程序防火墙 (WAF)。
+author: ccompy
 ms.assetid: a2101291-83ba-4169-98a2-2c0ed9a65e8d
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/03/2018
-ms.author: naziml
-ms.custom: seodec18
-ms.openlocfilehash: c1930777f44266755f20400d063ec938ee631adb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: stefsch
+ms.custom: mvc, seodec18
+ms.openlocfilehash: d629aca791794de6c3e065fdc9f4a9e7f6d8a5df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089312"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833175"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>为应用服务环境配置 Web 应用程序防火墙 (WAF)
 ## <a name="overview"></a>概述
 
 Web 应用程序防火墙 (WAF) 会检查入站 Web 流量，并阻止 SQL 注入、跨站点脚本、恶意软件上传和应用程序 DDoS 及其他攻击，有助于保护 Web 应用程序的安全。 为了进行数据丢失防护 (DLP)，该防火墙还会检查后端 Web 服务器的响应。 与隔离功能以及应用服务环境提供的附加缩放相结合，它可以提供一个理想的环境，用于托管需要承受恶意请求和大量流量的业务关键型 Web 应用程序。 Azure 通过[应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction)提供 WAF 功能。  若要了解如何将应用服务环境与应用程序网关集成，请阅读[将 ILB ASE 与应用程序网关集成](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)文档。
 
-除了 Azure 应用程序网关，还有多个市场选项，例如 [Barracuda WAF for Azure](https://www.barracuda.com/programs/azure)，在 [Azure 市场](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/)中提供。 本文档其余部分重点介绍如何将应用服务环境与 Barracuda WAF 设备集成。
+除了 Azure 应用程序网关，还有多个市场选项，例如 [Barracuda WAF for Azure](https://www.barracuda.com/programs/azure)，在 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf?tab=PlansAndPrice)中提供。 本文档其余部分重点介绍如何将应用服务环境与 Barracuda WAF 设备集成。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)] 
 
@@ -79,7 +71,7 @@ Barracuda WAF 使用 TCP 端口 8000 通过其管理门户进行配置。 如果
 ![管理添加服务][ManagementAddServices]
 
 > [!NOTE]
-> 根据应用程序的配置方式与应用服务环境中正在使用的功能，需要转发非 80 和 443 TCP 端口的流量（例如，如果为应用服务应用设置了 IP SSL）。 有关应用服务环境中使用的网络端口的列表，请参阅[控制入站流量文档](app-service-app-service-environment-control-inbound-traffic.md)中的“网络端口”部分。
+> 根据应用程序的配置方式与应用服务环境中正在使用的功能，需要转发非 80 和 443 TCP 端口的流量（例如，如果为应用服务应用设置了 IP TLS）。 有关应用服务环境中使用的网络端口的列表，请参阅[控制入站流量文档](app-service-app-service-environment-control-inbound-traffic.md)中的“网络端口”部分。
 > 
 > 
 
@@ -97,9 +89,11 @@ Barracuda WAF 使用 TCP 端口 8000 通过其管理门户进行配置。 如果
 ![网站转换][WebsiteTranslations]
 
 ## <a name="securing-traffic-to-app-service-environment-using-network-security-groups-nsg"></a>使用网络安全组 (NSG) 保护发往应用服务环境的流量
-有关使用云服务的 VIP 地址只限制从 WAF 流入应用服务环境的流量的详细信息，请遵循[控制入站流量文档](app-service-app-service-environment-control-inbound-traffic.md)。 以下是针对 TCP 端口 80 运行此任务的示例 Powershell 命令。
+有关使用云服务的 VIP 地址只限制从 WAF 流入应用服务环境的流量的详细信息，请遵循[控制入站流量文档](app-service-app-service-environment-control-inbound-traffic.md)。 以下是针对 TCP 端口 80 执行此任务的示例 PowerShell 命令。
 
-    Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+```azurepowershell-interactive
+Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+```
 
 将 SourceAddressPrefix 替换为 WAF 云服务的虚拟 IP 地址 (VIP)。
 

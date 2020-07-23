@@ -1,17 +1,14 @@
 ---
-title: 使用资源管理器模板创建 Azure 资源运行运行状况警报 | Microsoft Docs
+title: 用于创建资源运行状况警报的模板
 description: 以编程方式创建在 Azure 资源不可用时发出通知的警报。
-author: stephbaron
-ms.author: stbaron
 ms.topic: conceptual
-ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: e552b90a4c98eff7b04cbeaef26aa10749ce672c
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 18a3b2df2d159d2903c69debd79cccfc6d0af63e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66493403"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255874"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>使用资源管理器模板创建资源运行状况警报
 
@@ -24,7 +21,7 @@ ms.locfileid: "66493403"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要按本页中的说明操作，需事先进行几项设置：
 
@@ -34,45 +31,55 @@ ms.locfileid: "66493403"
 ## <a name="instructions"></a>说明
 1. 使用 PowerShell，使用你的帐户登录到 Azure，并选择需与之交互的订阅
 
-        Login-AzAccount
-        Select-AzSubscription -Subscription <subscriptionId>
+    ```azurepowershell
+    Login-AzAccount
+    Select-AzSubscription -Subscription <subscriptionId>
+    ```
 
     > 可以使用 `Get-AzSubscription` 列出有权访问的订阅。
 
 2. 查找并保存操作组的完整 Azure 资源管理器 ID
 
-        (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
+    ```azurepowershell
+    (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
+    ```
 
 3. 创建资源运行状况警报的资源管理器模板，并保存为 `resourcehealthalert.json`（[请参阅下面的详细信息](#resource-manager-template-options-for-resource-health-alerts)）
 
 4. 使用该模板创建一个新的 Azure 资源管理器部署
 
-        New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
+    ```azurepowershell
+    New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
+    ```
 
 5. 系统将提示你键入之前复制的警报名称和操作组资源 ID：
 
-        Supply values for the following parameters:
-        (Type !? for Help.)
-        activityLogAlertName: <Alert Name>
-        actionGroupResourceId: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.insights/actionGroups/<actionGroup>
+    ```azurepowershell
+    Supply values for the following parameters:
+    (Type !? for Help.)
+    activityLogAlertName: <Alert Name>
+    actionGroupResourceId: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.insights/actionGroups/<actionGroup>
+    ```
 
 6. 如果一切正常，PowerShell 中将显示一条确认消息
 
-        DeploymentName          : ExampleDeployment
-        ResourceGroupName       : <resourceGroup>
-        ProvisioningState       : Succeeded
-        Timestamp               : 11/8/2017 2:32:00 AM
-        Mode                    : Incremental
-        TemplateLink            :
-        Parameters              :
-                                Name                     Type       Value
-                                ===============          =========  ==========
-                                activityLogAlertName     String     <Alert Name>
-                                activityLogAlertEnabled  Bool       True
-                                actionGroupResourceId    String     /...
-        
-        Outputs                 :
-        DeploymentDebugLogLevel :
+    ```output
+    DeploymentName          : ExampleDeployment
+    ResourceGroupName       : <resourceGroup>
+    ProvisioningState       : Succeeded
+    Timestamp               : 11/8/2017 2:32:00 AM
+    Mode                    : Incremental
+    TemplateLink            :
+    Parameters              :
+                            Name                     Type       Value
+                            ===============          =========  ==========
+                            activityLogAlertName     String     <Alert Name>
+                            activityLogAlertEnabled  Bool       True
+                            actionGroupResourceId    String     /...
+
+    Outputs                 :
+    DeploymentDebugLogLevel :
+    ```
 
 请注意，如果你打算使该进程完全自动化，只需在第 5 步中将资源管理器模板编辑为不提示值。
 
@@ -180,12 +187,12 @@ ms.locfileid: "66493403"
             "anyOf": [
                 {
                     "field": "resourceType",
-                    "equals": "Microsoft.Compute/virtualMachines",
+                    "equals": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
                     "containsAny": null
                 },
                 {
                     "field": "resourceType",
-                    "equals": "Microsoft.Storage/storageAccounts",
+                    "equals": "MICROSOFT.STORAGE/STORAGEACCOUNTS",
                     "containsAny": null
                 },
                 ...
@@ -198,7 +205,7 @@ ms.locfileid: "66493403"
 其中，我们使用 `anyOf` 包装器使资源运行状况警报符合指定的任何条件，从而实现以特定资源类型为目标的警报。
 
 ### <a name="adjusting-the-resource-health-events-that-alert-you"></a>调整向你发出警报的资源运行状况事件
-在资源经历运行状况事件时，它们可经过几个代表运行状况事件状态的阶段：`Active`、`InProgress`、`Updated` 和 `Resolved`。
+在资源经历运行状况事件时，它们可经过几个代表运行状况事件状态的阶段：`Active`、`In Progress`、`Updated` 和 `Resolved`。
 
 你可能希望在资源运行状况不正常时获得通知，在这种情况下需将警报配置为仅在 `status` 为 `Active` 时发出通知。 而如果希望在其他阶段也得到通知，可以像下面的示例那样添加相关详细信息：
 
@@ -214,7 +221,7 @@ ms.locfileid: "66493403"
                 },
                 {
                     "field": "status",
-                    "equals": "InProgress"
+                    "equals": "In Progress"
                 },
                 {
                     "field": "status",
@@ -231,6 +238,9 @@ ms.locfileid: "66493403"
 ```
 
 如果希望在运行状况的全部四个阶段都获得通知，可以将这一条件全部删除，这样不管 `status` 属性是什么，警报都会向你发出通知。
+
+> [!NOTE]
+> 每个“anyOf”部分应只包含一个字段类型值。
 
 ### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>将资源运行状况警报调整为避免“Unknown”事件
 
@@ -409,7 +419,7 @@ Azure 资源运行状况可通过使用测试运行器持续监控资源，向�
                                 },
                                 {
                                     "field": "status",
-                                    "equals": "InProgress",
+                                    "equals": "In Progress",
                                     "containsAny": null
                                 },
                                 {

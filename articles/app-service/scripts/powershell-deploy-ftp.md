@@ -1,26 +1,17 @@
 ---
-title: Azure PowerShell 脚本示例 - 使用 FTP 将文件上传到 Web 应用 | Microsoft 文档
-description: Azure PowerShell 脚本示例 - 使用 FTP 将文件上传到 Web 应用
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: PowerShell：使用 FTP 上传文件
+description: 了解如何使用 Azure PowerShell 自动部署和管理应用服务。 此示例演示如何使用 FTP 将文件上传到应用。
 tags: azure-service-management
 ms.assetid: b7d46d6f-44fd-454c-8008-87dab6eefbc1
-ms.service: app-service-web
-ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 03/20/2017
-ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: c28fcff9b1910f2d6e86aee5b855d064bd2952fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 02c664f6a2bf80ac2f219995be5efd6235db8da0
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136462"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169519"
 ---
 # <a name="upload-files-to-a-web-app-using-ftp"></a>使用 FTP 将文件上传到 Web 应用
 
@@ -39,14 +30,14 @@ ms.locfileid: "66136462"
 运行脚本示例后，可以使用以下命令删除资源组、Web 应用以及所有相关资源。
 
 ```powershell
-Remove-AzResourceGroup -Name $webappname -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="script-explanation"></a>脚本说明
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | 创建应用服务计划。 |

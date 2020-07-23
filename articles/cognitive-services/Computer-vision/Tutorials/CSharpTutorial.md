@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 63b5130e3cade54a2fbc432b2391ad3ee1ea8a1a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 4445fd893027f21adfcf6a273d1ba6360087ec49
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004017"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983611"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>示例：使用 C# 探索图像处理应用
 
@@ -33,7 +33,10 @@ ms.locfileid: "60004017"
 在探索示例应用之前，请确保已满足以下先决条件：
 
 * 必须具有 [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) 或更高版本。
-* 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="创建计算机视觉资源"  target="_blank">创建计算机视觉资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到计算机视觉服务。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 
 ## <a name="get-the-sample-app"></a>获取示例应用
 
@@ -69,18 +72,18 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Face-Windo
    * VisionAPI-WPF-Samples  
 
    如果没有 SampleUserControlLibrary 项目，请确认已经以递归方式克隆 `Microsoft/Cognitive-Vision-Windows` 存储库。
-1. 在 Visual Studio 中，按 Ctrl+Shift+B 或从功能区菜单中选择“构建”，然后选择“构建解决方案”以构建该解决方案。
+1. 在 Visual Studio 中，按 Ctrl+Shift+B 或从功能区菜单中选择“构建”，然后选择“构建解决方案”以构建该解决方案 。
 
 ## <a name="run-and-interact-with-the-sample-app"></a>运行示例应用并与之交互
 
 可以运行示例应用，以便在执行各种任务（例如生成缩略图或标记图像）时查看它与你以及与计算机视觉客户端库的交互方式。 要运行示例应用并与之交互，请执行以下步骤：
 
-1. 构建完成后，按“F5”或从功能区菜单中选择“调试”，然后选择“开始调试”以运行示例应用。
+1. 构建完成后，按“F5”或从功能区菜单中选择“调试”，然后选择“开始调试”以运行示例应用  。
 1. 显示示例应用时，从导航窗格中选择“订阅密钥管理”以显示“订阅密钥管理”页面。
    ![订阅密钥管理页面](../Images/Vision_UI_Subscription.PNG)  
 1. 在“订阅密钥”中输入订阅密钥。
-1. 在“终结点”中输入订阅密钥的计算机视觉资源的终结点 URL（省略 `/vision/v1.0`）。  
-   例如，如果你使用的是计算机视觉免费试用版中的订阅密钥，请输入以下美国中西部 Azure 区域的终结点 URL：`https://westcentralus.api.cognitive.microsoft.com`
+1. 在“终结点”中输入终结点 URL。  
+   [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 1. 如果不想在下次运行该示例应用时输入订阅密钥和终结点 URL，请选择“保存设置”以将订阅密钥和终结点 URL 保存到计算机。 如果要删除以前保存的订阅密钥和终结点 URL，请选择“删除设置”。
 
    > [!NOTE]
@@ -310,4 +313,4 @@ using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [人脸 API 入门](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)
+> [人脸服务入门](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)

@@ -8,36 +8,36 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 04/03/2019
+ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: 7d52585b51af09c430130141c3680b5630f7b95e
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 1e9928359f314ed57004df0264ac843871083eba
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417286"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141851"
 ---
-# <a name="what-is-text-analytics-api"></a>什么是文本分析 API？
+# <a name="what-is-the-text-analytics-api"></a>什么是文本分析 API？
 
-文本分析 API 是一种基于云的服务，它对原始文本提供高级自然语言处理，并且包含四项主要功能：情绪分析、关键短语提取、语言检测和实体识别。
+文本分析 API 是一种基于云的服务，它提供对原始文本的高级自然语言处理，并且包含四项主要功能：情绪分析、关键短语提取、语言检测和命名实体识别。
 
 该 API 是 [Azure 认知服务](https://docs.microsoft.com/azure/cognitive-services/)的一部分，是云中机器学习和 AI 算法的集合，适用于开发项目。
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
-文本分析可能有不同的含义，但在认知服务中，文本分析 API 提供如下所述的四种分析。
+文本分析可能有不同的含义，但在认知服务中，文本分析 API 提供如下所述的四种分析。 可以将这些功能与 [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) 或[客户端库](quickstarts/text-analytics-sdk.md)一起使用。
 
 ## <a name="sentiment-analysis"></a>情绪分析
-通过在原始文本中分析有关积极和消极情绪的线索，使用[情绪分析](how-tos/text-analytics-how-to-sentiment-analysis.md)确定客户如何看待你的品牌或主题。 此 API 针对每个文档返回介于 0 和 1 之间的情绪评分，1 是最积极的评分。<br /> 分析模型已使用 Microsoft 提供的大量文本正文和自然语言技术进行预先训练。 对于[选定的语言](text-analytics-supported-languages.md)，该 API 可以分析和评分提供的任何原始文本，并直接将结果返回给调用方应用程序。 可以使用 [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c9) API 或 [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK。
+通过在原始文本中分析有关积极和消极情绪的线索，使用[情绪分析](how-tos/text-analytics-how-to-sentiment-analysis.md)确定客户如何看待你的品牌或主题。 此 API 针对每个文档返回介于 0 和 1 之间的情绪评分，1 是最积极的评分。<br /> 分析模型已使用 Microsoft 提供的大量文本正文和自然语言技术进行预先训练。 对于[选定的语言](text-analytics-supported-languages.md)，该 API 可以分析和评分提供的任何原始文本，并直接将结果返回给调用方应用程序。
 
 ## <a name="key-phrase-extraction"></a>关键短语提取
-自动[提取关键短语](how-tos/text-analytics-how-to-keyword-extraction.md)，以快速识别要点。 例如，针对输入文本“The food was delicious and there were wonderful staff”，该 API 会返回谈话要点：“food”和“wonderful staff”。 可以使用此处的 [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) API，也可以使用 [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK。
+自动[提取关键短语](how-tos/text-analytics-how-to-keyword-extraction.md)，以快速识别要点。 例如，针对输入文本“The food was delicious and there were wonderful staff”，该 API 会返回谈话要点：“food”和“wonderful staff”。
 
 ## <a name="language-detection"></a>语言检测
-可以[检测输入文本是用哪种语言编写的](how-tos/text-analytics-how-to-language-detection.md)，并以多种语言、变体、方言和一些区域/文化语言报告请求中提交的每个文档的单一语言代码。 语言代码与表示评分强度的评分相搭配。 可以使用 [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c7) API 或 [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK。
+可以[检测输入文本是用哪种语言编写的](how-tos/text-analytics-how-to-language-detection.md)，并以多种语言、变体、方言和一些区域/文化语言报告请求中提交的每个文档的单一语言代码。 语言代码与表示评分强度的评分相搭配。
 
 ## <a name="named-entity-recognition"></a>命名实体识别
-[识别文本中的实体并将其分类](how-tos/text-analytics-how-to-entity-linking.md)为人员、地点、组织、日期/时间、数量、百分比、货币等。 已知实体也可以在 Web 上识别并链接到更多信息。 可以使用 [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) API。
+[识别文本中的实体并将其分类](how-tos/text-analytics-how-to-entity-linking.md)为人员、地点、组织、日期/时间、数量、百分比、货币等。 已知实体也可以在 Web 上识别并链接到更多信息。
 
 ## <a name="use-containers"></a>使用容器
 
@@ -47,11 +47,11 @@ ms.locfileid: "66417286"
 
 工作流非常简单：在代码中提交分析数据和处理输出。 分析器按原样使用，无需额外的配置或自定义。
 
-1. [注册](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)[访问密钥](how-tos/text-analytics-how-to-access-key.md)。 必须在每个请求中传递密钥。
+1. 为文本分析[创建 Azure 资源](../cognitive-services-apis-create-account.md)。 然后，[获取生成的密钥](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)，以便对请求进行身份验证。
 
 2. [规划请求](how-tos/text-analytics-how-to-call-api.md#json-schema)，其中包含原始非结构化文本形式的 JSON 数据。
 
-3. 将此请求发布到注册期间建立的终结点，并追加所需的资源：情绪分析、关键短语提取、语言检测或实体识别。
+3. 将此请求发布到注册期间建立的终结点，并追加所需的资源：情绪分析、关键短语提取、语言检测或命名实体识别。
 
 4. 在本地流式处理或存储响应。 根据具体的请求，结果将是情绪评分、提取的关键短语集合或语言代码。
 
@@ -64,6 +64,7 @@ ms.locfileid: "66417286"
 即使编程经验并不丰富，也可以开始在进程中使用文本分析 API。 学习这些教程，了解如何根据自己的经验水平使用该 API 以不同方式分析文本。 
 
 * 最低的编程要求：
+    * [使用文本分析和 Power Automate 在 Excel 中提取信息](tutorials/extract-excel-information.md)
     * [使用文本分析 API 和 MS Flow 识别 Yammer 组中的评论的情绪](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
     * [集成 Power BI 和文本分析 API 以分析自定义反馈](tutorials/tutorial-power-bi-key-phrases.md)
 * 建议的编程体验：
@@ -75,21 +76,32 @@ ms.locfileid: "66417286"
 
 ## <a name="supported-languages"></a>支持的语言
 
-为方便查找，本部分已转移到单独的文章。 请参阅[文本分析 API 支持的语言](text-analytics-supported-languages.md)中的相关内容。
+为方便查找，本部分已转移到单独的文章。 有关此内容，请参阅[文本分析 API 支持的语言](text-analytics-supported-languages.md)。
 
 <a name="data-limits"></a>
 
 ## <a name="data-limits"></a>数据限制
 
-所有的文本分析 API 终结点都接受原始文本数据。 当前限制为每个文档最多包含 5,120 个字符；如果需要分析更大的文档，可将它们分解成较小的区块。 如果仍然需要提高限制，请[联系我们](https://azure.microsoft.com/overview/sales-number/)讨论具体要求。
+所有的文本分析 API 终结点都接受原始文本数据。 当前限制为每个文档最多包含 5,120 个字符；如果需要分析更大的文档，可将它们分解成较小的区块。
 
 | 限制 | 值 |
 |------------------------|---------------|
 | 单个文档的最大大小 | 5,120 个字符，由 [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) 度量。 |
 | 整个请求的最大大小 | 1 MB |
-| 一个请求中的文档数上限 | 1,000 个文档 |
+| 一个请求中的文档数上限 | 最多为 1,000 个文档（[具体上限取决于不同的功能](concepts/data-limits.md)） |
 
-速率限制为每秒 100 个请求，每分钟 1000 个请求。 可以在单次调用中提交大量的文档（最多 1000 个文档）。
+速率限制将因定价层而异。
+
+| 层          | 每秒请求数 | 每分钟请求数 |
+|---------------|---------------------|---------------------|
+| S/多服务 | 1000                | 1000                |
+| S0/F0         | 100                 | 300                 |
+| S1            | 200                 | 300                 |
+| S2            | 300                 | 300                 |
+| S3            | 500                 | 500                 |
+| S4            | 1000                | 1000                |
+
+对每个文本分析功能的请求分别进行测量。 例如，可以同时向每个功能发送定价层的最大数量的请求。      
 
 ## <a name="unicode-encoding"></a>Unicode 编码
 
@@ -97,10 +109,12 @@ ms.locfileid: "66417286"
 
 ## <a name="next-steps"></a>后续步骤
 
-+ [注册](how-tos/text-analytics-how-to-signup.md)访问密钥，并查看[调用 API](how-tos/text-analytics-how-to-call-api.md) 的步骤。
++ 为文本分析[创建 Azure 资源](../cognitive-services-apis-create-account.md)，以获取应用程序的密钥和终结点。
 
-+ [快速入门](quickstarts/csharp.md)演练了以 C# 编写的 REST API 调用。 了解如何以少量的代码提交文本、选择分析，并查看结果。 如果你愿意，可以改为从 [Python 快速入门](quickstarts/python.md)着手。
++ 使用[快速入门](quickstarts/text-analytics-sdk.md)开始发送 API 调用。 了解如何以少量的代码提交文本、选择分析，并查看结果。
+
++ 有关新版本和功能的信息，请参阅[文本分析 API 中的新增功能](whats-new.md)。
 
 + 更深入地探讨此[情绪分析教程](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services)（使用 Azure Databricks）。
 
-+ 在[外部和社区内容页](text-analytics-resource-external-community.md)中查看一系列博客文章和更多的视频，了解如何结合其他工具和技术使用文本分析 API。
++ 在[“外部和社区内容”页](text-analytics-resource-external-community.md)中查看一系列博客文章和更多的视频，了解如何结合其他工具和技术使用文本分析 API。

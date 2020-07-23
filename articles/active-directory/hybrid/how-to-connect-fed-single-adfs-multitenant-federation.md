@@ -1,5 +1,5 @@
 ---
-title: 联合多个 Azure AD 与单个 AD FS-Azure
+title: 联合多个 Azure AD 与单个 AD FS - Azure
 description: 本文档介绍如何联合多个 Azure AD 与单个 AD FS。
 keywords: 联合, ADFS, AD FS, 多个租户, 单个 AD FS, 一个 ADFS, 多租户联合身份验证, 多林 adfs, aad connect, 联合身份验证, 跨租户联合身份验证
 services: active-directory
@@ -12,17 +12,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9122e3a7af2230dc0f68e72b28891d488b01a80a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c8d0e8301fe5443e548dd35a6b6058e8c7a409d0
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137834"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849906"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>将 Azure AD 的多个实例与 AD FS 的单个实例联合
 
@@ -56,14 +56,18 @@ ms.locfileid: "65137834"
  
 ## <a name="step-3-federate-fabrikamcom-with-ad-fs"></a>步骤 3：通过 AD FS 联合 fabrikam.com
  
-在 Azure AD powershell 会话中执行以下步骤：连接到包含域 fabrikam.com 的 Azure Active Directory
+在 Azure AD PowerShell 会话中，执行以下步骤：连接到 Azure Active Directory，其中包含域 fabrikam.com
 
-    Connect-MsolService
+```powershell
+Connect-MsolService
+```
 将 fabrikam.com 托管域转换为联合身份验证域：
 
-    Convert-MsolDomainToFederated -DomainName fabrikam.com -Verbose -SupportMultipleDomain
+```powershell
+Convert-MsolDomainToFederated -DomainName fabrikam.com -Verbose -SupportMultipleDomain
+```
  
 上述操作会将域 fabrikam.com 与同一 AD FS 联合。 可以对两个域使用 Get-MsolDomainFederationSettings，以便验证域设置。
 
 ## <a name="next-steps"></a>后续步骤
-[将 Active Directory 连接到 Azure Active Directory](whatis-hybrid-identity.md)
+[将 Active Directory 与 Azure Active Directory 连接](whatis-hybrid-identity.md)

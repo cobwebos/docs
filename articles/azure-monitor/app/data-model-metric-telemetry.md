@@ -1,23 +1,15 @@
 ---
-title: Azure Application Insights 遥测数据模型 - 指标遥测 | Microsoft Docs
+title: 适用于指标遥测的数据模型 - Azure Application Insights
 description: 适用于指标遥测的 Application Insights 数据模型
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 0973c86d055ff4ebbe7e5a3c4a2ca4e3dcabc6a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 44f0b070a7c0da416002d9bf7e509d643a96dc7a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60900454"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540003"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>指标遥测：Application Insights 数据模型
 
@@ -32,7 +24,7 @@ Application Insights 支持几个已知的指标名称。 这些指标已放入 
 | **.NET 名称**             | **与平台无关的名称** | **REST API 名称** | **说明**
 | ------------------------- | -------------------------- | ----------------- | ---------------- 
 | `\Processor(_Total)\% Processor Time` | 工作正在进行... | [processorCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessorCpuPercentage) | 总计算机 CPU 百分比
-| `\Memory\Available Bytes`                 | 工作正在进行... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | 显示可用于计算机上运行的进程的物理内存量（以字节为单位）。 通过对清零、可用和备用内存列表上的空间量进行求和来进行计算。 可用内存可供使用；清零内存包含填充了零的内存页，可防止后面的进程看到前面进程使用的数据；备用内存是指已从进程的工作集（其物理内存）中删除、在前往磁盘途中但仍可被重新调用的内存。 请参阅[内存对象](https://msdn.microsoft.com/library/ms804008.aspx)
+| `\Memory\Available Bytes`                 | 工作正在进行... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | 显示可用于计算机上运行的进程的物理内存量（以字节为单位）。 通过对清零、可用和备用内存列表上的空间量进行求和来进行计算。 可用内存可供使用；清零内存包含填充了零的内存页，可防止后面的进程看到前面进程使用的数据；备用内存是指已从进程的工作集（其物理内存）中删除、在前往磁盘途中但仍可被重新调用的内存。 请参阅[内存对象](/previous-versions/ms804008(v=msdn.10))
 | `\Process(??APP_WIN32_PROC??)\% Processor Time` | 工作正在进行... | [processCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessCpuPercentage) | 托管应用程序的进程的 CPU 百分比
 | `\Process(??APP_WIN32_PROC??)\Private Bytes`      | 工作正在进行... | [processPrivateBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessPrivateBytes) | 托管应用程序的进程所占用的内存量
 | `\Process(??APP_WIN32_PROC??)\IO Data Bytes/sec` | 工作正在进行... | [processIOBytesPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessIOBytesPerSecond) | 托管应用程序的进程运行的 I/O 操作速率

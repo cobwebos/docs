@@ -1,33 +1,32 @@
 ---
 title: 如何部署 Azure 文件 | Microsoft Docs
 description: 了解如何从头至尾部署 Azure 文件。
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 416040d91da2f6346027f738de507777f804fd1f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: b9df9375dee59df987cea01a4142a22a78eb533e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237735"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510803"
 ---
 # <a name="how-to-deploy-azure-files"></a>如何部署 Azure 文件
 [Azure 文件](storage-files-introduction.md)在云中提供完全托管的文件共享，这些共享项可通过行业标准 SMB 协议进行访问。 本文介绍如何在组织内实际部署 Azure 文件。
 
 强烈建议在按照本文中的步骤操作之前，阅读[规划 Azure 文件部署](storage-files-planning.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 本文假设你已完成下列步骤：
 
 - 在所需区域创建了具有所需复原和加密选项的 Azure 存储帐户。 有关如何创建存储帐户的分步说明，请参阅[创建存储帐户](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 - 在存储帐户中创建了具有所需配额的 Azure 文件共享。 有关如何创建文件共享的分步说明，请参阅[创建文件共享](storage-how-to-create-file-share.md)。
 
 ## <a name="transfer-data-into-azure-files"></a>将数据传输到 Azure 文件
-可能需要将现有文件共享（例如本地存储的文件共享）迁移到新的 Azure 文件共享。 本部分介绍如何通过[规划指南](storage-files-planning.md#data-transfer-method)中详述的几种常用方法将数据移动到 Azure 文件共享
+可能需要将现有文件共享（例如本地存储的文件共享）迁移到新的 Azure 文件共享。 本部分介绍如何通过[规划指南](storage-files-planning.md#migration)中详述的几种常用方法将数据移动到 Azure 文件共享
 
 ### <a name="azure-file-sync"></a>Azure 文件同步
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 你可以使用 Windows Server 上的任意可用协议在本地访问数据（包括 SMB、NFS 和 FTPS），并且可以在世界各地获取所需的缓存数。
@@ -64,7 +63,7 @@ Azure 文件同步也可用于将数据迁移到 Azure 文件共享，即使长�
     "F:\shares\scratch\","MyAzureFileShare/",file,rename,"None",None
     ```
 
-    可以指定同一存储帐户的多个共享。 有关详细信息，请参阅[准备数据集 CSV 文件](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#prepare-the-dataset-csv-file)。
+    可以指定同一存储帐户的多个共享。 有关详细信息，请参阅[准备数据集 CSV 文件](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 5. 创建驱动器集 CSV 文件。 驱动器集 CSV 文件可列出本地导出代理可用的磁盘。 例如，以下驱动器集 CSV 文件可列出用于本地导出作业的 `X:`、`Y:` 和 `Z:` 驱动器：
 
@@ -75,7 +74,7 @@ Azure 文件同步也可用于将数据迁移到 Azure 文件共享，即使长�
     Z,Format,SilentMode,Encrypt,
     ```
     
-    有关详细信息，请参阅[准备驱动器集 CSV 文件](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#prepare-initialdriveset-or-additionaldriveset-csv-file)。
+    有关详细信息，请参阅[准备驱动器集 CSV 文件](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 6. 使用 [WAImportExport 工具](https://www.microsoft.com/download/details.aspx?id=55280)将数据复制到一个或多个硬盘驱动器。
 
@@ -150,5 +149,5 @@ done
 
 ## <a name="next-steps"></a>后续步骤
 - [规划 Azure 文件同步部署](storage-sync-files-planning.md)
-- [排查 Windows 中的 Azure 文件问题](storage-troubleshoot-windows-file-connection-problems.md)
-- [排查 Linux 中的 Azure 文件问题](storage-troubleshoot-linux-file-connection-problems.md)
+- [排查 Windows 上的 Azure 文件问题](storage-troubleshoot-windows-file-connection-problems.md)
+- [排查 Linux 上的 Azure 文件问题](storage-troubleshoot-linux-file-connection-problems.md)

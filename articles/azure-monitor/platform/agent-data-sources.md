@@ -1,24 +1,16 @@
 ---
 title: 在 Azure Monitor 中配置代理数据源 | Microsoft Docs
 description: 数据源定义 Azure Monitor 从代理和其他已连接的源收集的日志数据。  本文介绍有关 Azure Monitor 如何使用数据源的概念，详细解释如何配置数据源，并对不同的可用数据源进行概要介绍。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: 67710115-c861-40f8-a377-57c7fa6909b4
-ms.service: log-analytics
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/28/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: d7d4aa89c4dcf2ac9cc0c393e0481cae1f3aeaf2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 11/28/2018
+ms.openlocfilehash: aec3fe2386ce916c556f6da295a8554fff140259
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60776048"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708869"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Azure Monitor 中的代理数据源
 Azure Monitor 从代理收集的数据是由你配置的数据源定义的。  来自代理的数据存储为包含记录集的[日志数据](data-platform-logs.md)。  每个数据源将创建具有某种特殊类型的记录，而每个类型都具有自己的一组属性。
@@ -29,7 +21,7 @@ Azure Monitor 从代理收集的数据是由你配置的数据源定义的。  �
 下表列出了 Azure Monitor 中当前可用的代理数据源。  每个数据源都链接到一篇单独的文章，提供该数据源的详细信息。   它还提供了有关收集方法和收集频率的信息。 
 
 
-| 数据源 | 平台 | Microsoft Monitoring Agent | Operations Manager 代理 | Azure 存储 | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
+| 数据源 | 平台 | Log Analytics 代理 | Operations Manager 代理 | Azure 存储 | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [自定义日志](data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | 到达时 |
 | [自定义日志](data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | 到达时 |
@@ -45,7 +37,7 @@ Azure Monitor 从代理收集的数据是由你配置的数据源定义的。  �
 
 ![配置 Windows 事件](media/agent-data-sources/configure-events.png)
 
-1. 在 Azure 门户中，选择“Log Analytics 工作区”> 你的工作区 >“高级设置”。
+1. 在 Azure 门户中，选择“Log Analytics 工作区”> 你的工作区 >“高级设置”   。
 2. 选择“**数据**”。
 3. 单击要配置的数据源。
 4. 按照上表中每个数据源链接到的文档，了解有关其配置的详细信息。

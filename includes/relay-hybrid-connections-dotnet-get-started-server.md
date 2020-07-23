@@ -1,5 +1,5 @@
 ---
-title: include 文件
+title: 包含文件
 description: include 文件
 services: service-bus-relay
 author: clemensv
@@ -9,11 +9,11 @@ ms.date: 08/16/2018
 ms.author: clemensv
 ms.custom: include file
 ms.openlocfilehash: 2684f89088854ecf05c547c77852155168baa38d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150381"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67173185"
 ---
 ### <a name="create-a-console-application"></a>创建控制台应用程序
 

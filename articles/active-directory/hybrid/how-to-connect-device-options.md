@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/13/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8f397401581cc1bc947f1b19ce248c17fba26f4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cedf1419a763fe0b0f528bee6e1b48e435ec0e2a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60245635"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85360021"
 ---
 # <a name="azure-ad-connect-device-options"></a>Azure AD Connect：设备选项
 
@@ -31,10 +31,10 @@ ms.locfileid: "60245635"
 
 ## <a name="configure-device-options-in-azure-ad-connect"></a>在 Azure AD Connect 中配置设备选项
 
-1.  运行 Azure AD Connect。 在“其他任务”页中，选择“配置设备选项”。  单击“下一步”。
+1.  运行 Azure AD Connect。 在“其他任务”页中，选择“配置设备选项”********。  单击“下一步” 。
     ![配置设备选项](./media/how-to-connect-device-options/deviceoptions.png) 
 
-    “概述”页显示详细信息。
+    “概述”页显示详细信息****。
     ![概述](./media/how-to-connect-device-options/deviceoverview.png)
 
     >[!NOTE]
@@ -45,6 +45,6 @@ ms.locfileid: "60245635"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [配置混合 Azure AD 加入](../device-management-hybrid-azuread-joined-devices-setup.md)
+* [配置混合 Azure AD 联接](../device-management-hybrid-azuread-joined-devices-setup.md)
 * [配置/禁用设备写回](how-to-connect-device-writeback.md)
 

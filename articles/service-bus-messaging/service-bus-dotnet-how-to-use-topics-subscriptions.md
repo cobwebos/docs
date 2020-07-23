@@ -1,25 +1,15 @@
 ---
 title: Azure 服务总线主题和订阅入门 | Microsoft Docs
 description: 编写一个 C# .NET Core 控制台应用程序，以便使用服务总线消息传递主题和订阅。
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 04/15/2019
-ms.author: aschhab
-ms.openlocfilehash: 2ca8f0e34b63802453c8876f878b531e78e66d76
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.date: 06/23/2020
+ms.openlocfilehash: 7b2b8382c11f447237a8f49ee5be1f4989e3f906
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991779"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337512"
 ---
 # <a name="get-started-with-service-bus-topics"></a>服务总线主题入门
 
@@ -30,9 +20,9 @@ ms.locfileid: "65991779"
 1. 编写 .NET Core 控制台应用程序，向主题发送一组消息。
 2. 编写 .NET Core 控制台应用程序，从订阅接收这些消息。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以[激活 Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或者注册[免费试用帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 2. 按照[快速入门：使用 Azure 门户创建服务总线主题和主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来执行以下任务：
     1. 创建一个服务总线**命名空间**。
     2. 获取**连接字符串**。
@@ -52,7 +42,7 @@ ms.locfileid: "65991779"
 ### <a name="add-the-service-bus-nuget-package"></a>添加服务总线 NuGet 包
 
 1. 右键单击新创建的项目，并选择“管理 NuGet 包” 。
-2. 单击“浏览”选项卡，搜索 [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)，然后选择“Microsoft.Azure.ServiceBus”项。 单击“安装”以完成安装，并关闭此对话框。
+2. 单击“浏览”选项卡，搜索 [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)，然后选择“Microsoft.Azure.ServiceBus” 项。 单击“安装”以完成安装，并关闭此对话框。
    
     ![选择 NuGet 包][nuget-pkg]
 
@@ -75,16 +65,10 @@ ms.locfileid: "65991779"
     static ITopicClient topicClient;
     ``` 
 
-3. 将 `Main()` 的默认内容替换为以下代码行：
+3. 将 `Main()` 方法替换为下面的 **async** `Main` 方法，该方法使用将在下一步中添加的 SendMessagesAsync 方法异步发送消息。 
 
     ```csharp
-    MainAsync().GetAwaiter().GetResult();
-    ```
-   
-4. 在 `Main()` 之后直接添加以下异步 `MainAsync()` 方法，以调用“发送消息”方法：
-
-    ```csharp
-    static async Task MainAsync()
+    public static async Task Main(string[] args)
     {
         const int numberOfMessages = 10;
         topicClient = new TopicClient(ServiceBusConnectionString, TopicName);
@@ -101,8 +85,7 @@ ms.locfileid: "65991779"
         await topicClient.CloseAsync();
     }
     ```
-
-5. 在 `MainAsync()` 方法后直接添加以下 `SendMessagesAsync()` 方法，以便执行发送 `numberOfMessagesToSend` 所指定的消息数（当前设置为 10）的工作：
+5. 在 `Main` 方法后直接添加以下 `SendMessagesAsync()` 方法，以便执行发送 `numberOfMessagesToSend` 所指定的消息数（当前设置为 10）的工作：
 
     ```csharp
     static async Task SendMessagesAsync(int numberOfMessagesToSend)
@@ -146,25 +129,20 @@ ms.locfileid: "65991779"
             const string TopicName = "<your_topic_name>";
             static ITopicClient topicClient;
 
-            static void Main(string[] args)
-            {
-                MainAsync().GetAwaiter().GetResult();
-            }
-
-            static async Task MainAsync()
+            public static async Task Main(string[] args)
             {
                 const int numberOfMessages = 10;
                 topicClient = new TopicClient(ServiceBusConnectionString, TopicName);
-
+    
                 Console.WriteLine("======================================================");
                 Console.WriteLine("Press ENTER key to exit after sending all the messages.");
                 Console.WriteLine("======================================================");
-
+    
                 // Send messages.
                 await SendMessagesAsync(numberOfMessages);
-
+    
                 Console.ReadKey();
-
+    
                 await topicClient.CloseAsync();
             }
 
@@ -194,7 +172,7 @@ ms.locfileid: "65991779"
     }
     ```
 
-3. 运行该程序并检查 Azure 门户：在命名空间“概览”窗口中单击主题的名称。 此时会显示主题的“基本信息”屏幕。 请注意，在列在窗口底部附近的订阅中，订阅的“消息计数”值现在应该为 **10**。 每次运行发件人应用程序而没有检索消息（如下一部分所述）时，该值会增加 10。 另请注意，每次该应用将消息添加到主题，主题的当前大小就会递增，增量为“基本信息”窗口中的“当前”值。
+3. 运行该程序并检查 Azure 门户：在命名空间“概览”窗口中单击主题的名称。 此时会显示主题的“基本信息”屏幕。 请注意，在列在窗口底部附近的订阅中，订阅的“消息计数”值现在应该为 **10**。 每次运行发件人应用程序而没有检索消息（如下一部分所述）时，该值会增加 10。 另请注意，每次该应用将消息添加到主题，主题的当前大小就会递增，增量为“基本信息”窗口中的“当前”值。 
    
       ![消息大小][topic-message]
 
@@ -222,17 +200,11 @@ ms.locfileid: "65991779"
     static ISubscriptionClient subscriptionClient;
     ```
 
-3. 将 `Main()` 的默认内容替换为以下代码行：
+3. 将 `Main()` 方法替换为以下 **async** `Main` 方法。 它调用将在下一步中添加的 `RegisterOnMessageHandlerAndReceiveMessages()` 方法。 
 
     ```csharp
-    MainAsync().GetAwaiter().GetResult();
-    ```
-
-4. 在 `Main()` 之后直接添加以下异步 `MainAsync()` 方法，以调用 `RegisterOnMessageHandlerAndReceiveMessages()` 方法：
-
-    ```csharp
-    static async Task MainAsync()
-    {
+    public static async Task Main(string[] args)
+    {    
         subscriptionClient = new SubscriptionClient(ServiceBusConnectionString, TopicName, SubscriptionName);
 
         Console.WriteLine("======================================================");
@@ -244,11 +216,10 @@ ms.locfileid: "65991779"
 
         Console.ReadKey();
 
-        await subscriptionClient.CloseAsync();
+        await subscriptionClient.CloseAsync();    
     }
-    ```
-
-5. 在 `MainAsync()` 方法后直接添加以下方法，以便注册消息处理程序并接收发件人应用程序发送的消息：
+   ```
+5. 在 `Main()` 方法后直接添加以下方法，以便注册消息处理程序并接收发件人应用程序发送的消息：
 
     ```csharp
     static void RegisterOnMessageHandlerAndReceiveMessages()
@@ -322,25 +293,20 @@ ms.locfileid: "65991779"
             const string SubscriptionName = "<your_subscription_name>";
             static ISubscriptionClient subscriptionClient;
 
-            static void Main(string[] args)
-            {
-                MainAsync().GetAwaiter().GetResult();
-            }
-
-            static async Task MainAsync()
-            {
+            public static async Task Main(string[] args)
+            {    
                 subscriptionClient = new SubscriptionClient(ServiceBusConnectionString, TopicName, SubscriptionName);
-
+        
                 Console.WriteLine("======================================================");
                 Console.WriteLine("Press ENTER key to exit after receiving all the messages.");
                 Console.WriteLine("======================================================");
-
-                // Register subscription message handler and receive messages in a loop.
+        
+                // Register subscription message handler and receive messages in a loop
                 RegisterOnMessageHandlerAndReceiveMessages();
-
+        
                 Console.ReadKey();
-
-                await subscriptionClient.CloseAsync();
+        
+                await subscriptionClient.CloseAsync();    
             }
 
             static void RegisterOnMessageHandlerAndReceiveMessages()
@@ -388,14 +354,14 @@ ms.locfileid: "65991779"
         }
     }
     ```
-9. 运行该程序，并再次检查门户。 请注意，“消息计数”和“当前”值现在为 **0**。
+9. 运行该程序，并再次检查门户。 请注意，“消息计数”和“当前”值现在为 **0**。 
    
     ![主题长度][topic-message-receive]
 
-祝贺你！ 现已使用 .NET Standard 库创建主题和订阅，发送了 10 条消息，并接收到了这些消息。
+祝贺！ 现已使用 .NET Standard 库创建主题和订阅，发送了 10 条消息，并接收到了这些消息。
 
 > [!NOTE]
-> 你可以管理与服务总线资源[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)。 服务总线资源管理器允许用户连接到服务总线命名空间并轻松管理消息实体。 该工具提供高级的功能，如导入/导出功能或测试主题、 队列、 订阅、 中继服务、 通知中心和事件中心的功能。 
+> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
 
 ## <a name="next-steps"></a>后续步骤
 

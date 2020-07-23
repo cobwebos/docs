@@ -1,82 +1,75 @@
 ---
-title: 守护程序应用程序调用 web Api （获取令牌的应用）-Microsoft 标识平台
-description: 了解如何构建守护程序应用调用 web Api （获取令牌）
+title: 获取用于调用 Web API（守护程序应用）的令牌 - Microsoft 标识平台 | Azure
+description: 了解如何构建调用 Web API 的守护程序应用（获取令牌）
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa4f5dc7a5aceaf81f71eacd36d131471a57e5c0
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: MT
+ms.openlocfilehash: d755573b53eb63d85165fb73fe4b97298dbeff09
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075365"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81869000"
 ---
-# <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>守护程序应用调用 web Api-获取令牌
+# <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>用于调用 Web API 的守护程序应用 - 获取令牌
 
-机密客户端应用程序构造后，您可以通过调用获取的应用令牌``AcquireTokenForClient``，传递作用域，并强制实施或未刷新令牌。
+在构建机密客户端应用程序以后，可以获取应用的令牌，方法是调用 `AcquireTokenForClient`，传递作用域，然后强制刷新令牌。
 
-## <a name="scopes-to-request"></a>作用域，以请求
+## <a name="scopes-to-request"></a>请求的作用域
 
-作用域，以请求客户端凭据流是资源的名称后跟`/.default`。 此表示法告知 Azure AD 即可使用**应用程序级权限**应用程序注册过程中以静态方式声明。 此外，如上所述，API 授予这些权限必须由租户管理员
+请求客户端凭据流时，其作用域是资源的名称后跟 `/.default`。 此表示法告知 Azure Active Directory (Azure AD) 使用在应用程序注册过程中静态声明的*应用程序级权限*。 另外，这些 API 权限必须由租户管理员授予。
 
-### <a name="net"></a>.NET
+# <a name="net"></a>[.NET](#tab/dotnet)
 
-```CSharp
+```csharp
 ResourceId = "someAppIDURI";
 var scopes = new [] {  ResourceId+"/.default"};
 ```
 
-### <a name="python"></a>Python
+# <a name="python"></a>[Python](#tab/python)
 
-在 MSAL。Python，配置文件如以下代码片段所示：
+在 MSAL Python 中，该配置文件应该如以下代码片段所示：
 
-```Python
+```Json
 {
-    "authority": "https://login.microsoftonline.com/organizations",
-    "client_id": "your_client_id",
-    "secret": "This is a sample only. You better NOT persist your password."
-    "scope": ["https://graph.microsoft.com/.default"]
+    "scope": ["https://graph.microsoft.com/.default"],
 }
 ```
 
-### <a name="java"></a>Java
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
-public final static String KEYVAULT_DEFAULT_SCOPE = "https://vault.azure.net/.default";
+final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default";
 ```
 
-### <a name="all"></a>全部
+---
 
-使用客户端凭据的作用域应始终为 resourceId +"/.default"
+### <a name="azure-ad-v10-resources"></a>Azure AD (v1.0) 资源
 
-### <a name="case-of-v10-resources"></a>用例的 1.0 版资源
+用于客户端凭据的作用域应该始终为资源 ID 后跟 `/.default`。
 
 > [!IMPORTANT]
-> 对于要求接受 v1.0 访问令牌的资源的访问令牌 MSAL （v2.0 终结点），Azure AD 通过采用最后一个反斜杠之前的所有内容并将其用作资源标识符分析期望的受众，从所请求的范围。
-> 因此如果，如 Azure SQL (**https://database.windows.net**) 资源需要结尾斜杠的受众 (Azure sql: `https://database.windows.net/`)，你将需要请求的范围为`https://database.windows.net//.default`（请注意双斜杠）。 另请参阅 MSAL.NET 问题[#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747):省略资源 url 尾部反斜杠，导致 sql 身份验证失败。
+> 当 MSAL 向接受 1.0 版访问令牌的资源请求访问令牌时，Azure AD 将获取最后一个斜杠前面的所有内容并将其用作资源标识符，从请求的范围内分析所需的受众。
+> 因此，如 Azure SQL Database （**https： \/ /database.windows.net**），资源期望以斜杠（对于 Azure sql 数据库，）结尾的受众 `https://database.windows.net/` ，需要请求的作用域 `https://database.windows.net//.default` 。 （请注意双斜杠。）另请参阅 MSAL.NET 问题 [#747：将省略资源 URL 的尾部斜杠，因为该斜杠会导致 SQL 身份验证失败](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
 
-### <a name="net"></a>.NET
+为了获取应用的令牌，你将使用 `AcquireTokenForClient` 或其等效命令，具体取决于平台。
 
-```CSharp
+# <a name="net"></a>[.NET](#tab/dotnet)
+
+```csharp
 using Microsoft.Identity.Client;
 
-// With client credentials flows the scopes is ALWAYS of the shape "resource/.default", as the
+// With client credentials flows, the scope is always of the shape "resource/.default" because the
 // application permissions need to be set statically (in the portal or by PowerShell), and then granted by
-// a tenant administrator
+// a tenant administrator.
 string[] scopes = new string[] { "https://graph.microsoft.com/.default" };
 
 AuthenticationResult result = null;
@@ -87,55 +80,100 @@ try
 }
 catch (MsalUiRequiredException ex)
 {
-    // The application does not have sufficient permissions
-    // - did you declare enough app permissions in during the app creation?
-    // - did the tenant admin needs to grant permissions to the application.
+    // The application doesn't have sufficient permissions.
+    // - Did you declare enough app permissions during app creation?
+    // - Did the tenant admin grant permissions to the application?
 }
 catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
 {
-    // Invalid scope. The scope has to be of the form "https://resourceurl/.default"
-    // Mitigation: change the scope to be as expected !
+    // Invalid scope. The scope has to be in the form "https://resourceurl/.default"
+    // Mitigation: Change the scope to be as expected.
 }
 ```
 
-#### <a name="application-token-cache"></a>应用程序令牌缓存
-
-在 MSAL.NET，`AcquireTokenForClient`使用**应用程序令牌缓存**（所有其他 AcquireTokenXX 方法使用用户令牌缓存），不要调用`AcquireTokenSilent`之前调用`AcquireTokenForClient`作为`AcquireTokenSilent`使用**用户**令牌缓存。 `AcquireTokenForClient` 检查**应用程序**令牌缓存本身并对其进行更新。
-
-### <a name="python"></a>Python
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
-# Firstly, looks up a token from cache
-# Since we are looking for token for the current app, NOT for an end user,
-# notice we give account parameter as None.
+# The pattern to acquire a token looks like this.
+result = None
+
+# First, the code looks up a token from the cache.
+# Because we're looking for a token for the current app, not for a user,
+# use None for the account parameter.
 result = app.acquire_token_silent(config["scope"], account=None)
 
 if not result:
     logging.info("No suitable token exists in cache. Let's get a new one from AAD.")
     result = app.acquire_token_for_client(scopes=config["scope"])
+
+if "access_token" in result:
+    # Call a protected API with the access token.
+    print(result["token_type"])
+else:
+    print(result.get("error"))
+    print(result.get("error_description"))
+    print(result.get("correlation_id"))  # You might need this when reporting a bug.
 ```
 
-### <a name="java"></a>Java
+# <a name="java"></a>[Java](#tab/java)
+
+此代码摘自 [MSAL Java 开发示例](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/)。
 
 ```Java
-ClientCredentialParameters parameters = ClientCredentialParameters
-        .builder(Collections.singleton(KEYVAULT_DEFAULT_SCOPE))
-        .build();
+private static IAuthenticationResult acquireToken() throws Exception {
 
-CompletableFuture<AuthenticationResult> future = cca.acquireToken(parameters);
+     // Load token cache from file and initialize token cache aspect. The token cache will have
+     // dummy data, so the acquireTokenSilently call will fail.
+     TokenCacheAspect tokenCacheAspect = new TokenCacheAspect("sample_cache.json");
 
-// You can complete the future in many different ways. Here we use .get() for simplicity
-AuthenticationResult result = future.get();
+     IClientCredential credential = ClientCredentialFactory.createFromSecret(CLIENT_SECRET);
+     ConfidentialClientApplication cca =
+             ConfidentialClientApplication
+                     .builder(CLIENT_ID, credential)
+                     .authority(AUTHORITY)
+                     .setTokenCacheAccessAspect(tokenCacheAspect)
+                     .build();
+
+     IAuthenticationResult result;
+     try {
+         SilentParameters silentParameters =
+                 SilentParameters
+                         .builder(SCOPE)
+                         .build();
+
+         // try to acquire token silently. This call will fail since the token cache does not
+         // have a token for the application you are requesting an access token for
+         result = cca.acquireTokenSilently(silentParameters).join();
+     } catch (Exception ex) {
+         if (ex.getCause() instanceof MsalException) {
+
+             ClientCredentialParameters parameters =
+                     ClientCredentialParameters
+                             .builder(SCOPE)
+                             .build();
+
+             // Try to acquire a token. If successful, you should see
+             // the token information printed out to console
+             result = cca.acquireToken(parameters).join();
+         } else {
+             // Handle other exceptions accordingly
+             throw ex;
+         }
+     }
+     return result;
+ }
 ```
 
-### <a name="protocol"></a>Protocol
+---
 
-如果您还没有你选择的语言的库，你可能想要直接使用协议：
+### <a name="protocol"></a>协议
 
-#### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一种情况：使用共享机密访问令牌请求
+如果还没有适用于所选语言的库，你可能希望直接使用协议：
 
-```Text
-POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity
+#### <a name="first-case-access-the-token-request-by-using-a-shared-secret"></a>第一种情况：使用共享机密访问令牌请求
+
+```HTTP
+POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity.
 Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -145,10 +183,10 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 &grant_type=client_credentials
 ```
 
-#### <a name="second-case-access-token-request-with-a-certificate"></a>第二种情况：使用证书访问令牌请求
+#### <a name="second-case-access-the-token-request-by-using-a-certificate"></a>第二种情况：使用证书访问令牌请求
 
-```Text
-POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity
+```HTTP
+POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity.
 Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -159,22 +197,24 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-### <a name="learn-more-about-the-protocol"></a>了解有关协议的详细信息
+有关详细信息，请参阅协议文档：[Microsoft 标识平台和 OAuth 2.0 客户端凭据流](v2-oauth2-client-creds-grant-flow.md)。
 
-有关详细信息，请参阅协议文档：[Azure Active Directory v2.0 和 OAuth 2.0 客户端凭据流](v2-oauth2-client-creds-grant-flow.md)。
+## <a name="application-token-cache"></a>应用程序令牌缓存
+
+在 MSAL.NET 中，`AcquireTokenForClient` 使用应用程序令牌缓存。 （所有其他 AcquireToken*XX* 方法都使用用户令牌缓存。）不要在调用 `AcquireTokenForClient` 之前调用 `AcquireTokenSilent`，因为 `AcquireTokenSilent` 使用“用户”  令牌缓存。 `AcquireTokenForClient` 会检查*应用程序*令牌缓存本身并对其进行更新。
 
 ## <a name="troubleshooting"></a>故障排除
 
-### <a name="did-you-use-the-resourcedefault-scope"></a>未使用的资源/.default 范围？
+### <a name="did-you-use-the-resourcedefault-scope"></a>你是否使用过 resource/.default 作用域？
 
-如果收到错误消息，告诉您使用无效的作用域，则可能没有使用`resource/.default`作用域。
+如果出现一条错误消息，指出所使用的作用域无效，则表明你并未使用 `resource/.default` 作用域。
 
-### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>您是否忘记提供管理员许可？ 守护程序应用需要它 ！
+### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>你是否忘记提供管理员许可？ 守护程序应用需要它！
 
-如果调用 API 时遇到错误**特权不足以完成该操作**，租户管理员需要向应用程序授予权限。 请参阅上述客户端应用注册到的第 6 步。
-通常，会看到等错误显示以下错误说明：
+如果在调用 API 时出现错误“权限不足，无法完成该操作”，  则租户管理员需要授予对应用程序的权限。 请查看上面的步骤 6：注册客户端应用。
+通常会看到如下错误：
 
-```JSon
+```json
 Failed to call the web API: Forbidden
 Content: {
   "error": {
@@ -190,5 +230,19 @@ Content: {
 
 ## <a name="next-steps"></a>后续步骤
 
+# <a name="net"></a>[.NET](#tab/dotnet)
+
 > [!div class="nextstepaction"]
-> [守护程序应用-调用 web API](scenario-daemon-call-api.md)
+> [守护程序应用 - 调用 Web API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=dotnet)
+
+# <a name="python"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [守护程序应用 - 调用 Web API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=python)
+
+# <a name="java"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [守护程序应用 - 调用 Web API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=java)
+
+---

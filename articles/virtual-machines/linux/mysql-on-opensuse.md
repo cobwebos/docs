@@ -1,39 +1,31 @@
 ---
-title: 在 Azure 中的 OpenSUSE VM 上安装 MySQL | Microsoft Docs
+title: 在 Azure 中的 OpenSUSE VM 上安装 MySQL
 description: 了解如何在 Azure 中的 OpenSUSE Linux 虚拟机上安装 MySQL。
 services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 1594e10e-c314-455a-9efb-a89441de364b
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
-ms.author: za-rhoads
-ms.openlocfilehash: 19f53449e21b39eb212f94b100eaf5d26ca4cf13
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: cynthn
+ms.openlocfilehash: 0d3f0a61da3654c31c99cfac43c86b081876f700
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66161619"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78944573"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>在 Azure 中运行 OpenSUSE Linux 的虚拟机上安装 MySQL
 
 [MySQL](https://www.mysql.com) 是一种常用的开源 SQL 数据库。 本教程介绍如何创建运行 OpenSUSE Linux 的虚拟机，并安装 MySQL。
 
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
 如果选择在本地安装并使用 CLI，需要 Azure CLI 2.0 版或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-virtual-machine-running-opensuse-linux"></a>创建运行 OpenSUSE Linux 的虚拟机
 
-首先创建一个资源组。 在此示例中，资源组名为 *mySQSUSEResourceGroup*，并在“美国东部”区域中创建。
+首先创建一个资源组。 在此示例中，资源组名为 *mySQSUSEResourceGroup*，并在“美国东部”** 区域中创建。
 
 ```azurecli-interactive
 az group create --name mySQLSUSEResourceGroup --location eastus

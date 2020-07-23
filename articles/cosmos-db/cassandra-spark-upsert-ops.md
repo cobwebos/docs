@@ -1,22 +1,20 @@
 ---
 title: 从 Spark 将数据更新插入到 Azure Cosmos DB Cassandra API
 description: 本文详细介绍了如何从 Spark 更新插入到 Azure Cosmos DB Cassandra API 表
-author: rockboyfor
-ms.author: v-yeche
+author: kanshiG
+ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
-origin.date: 09/24/2018
-ms.date: 03/18/2019
-ms.openlocfilehash: 7770e7fbe846defc865b3fcc702fcb00bae1b73c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 09/24/2018
+ms.openlocfilehash: 5ad2cf5dee43f0345017930377a3ed9d2e4624bf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60893386"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85257476"
 ---
-<!--Verify sucessfully-->
 # <a name="upsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>从 Spark 将数据更新插入到 Azure Cosmos DB Cassandra API
 
 本文介绍如何从 Spark 将数据更新插入到 Azure Cosmos DB Cassandra API。
@@ -33,7 +31,7 @@ import com.datastax.spark.connector.cql.CassandraConnector
 import com.microsoft.azure.cosmosdb.cassandra
 
 //Connection-related
-spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.cn")
+spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.com")
 spark.conf.set("spark.cassandra.connection.port","10350")
 spark.conf.set("spark.cassandra.connection.ssl.enabled","true")
 spark.conf.set("spark.cassandra.auth.username","YOUR_ACCOUNT_NAME")
@@ -48,7 +46,7 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="dataframe-api"></a>Dataframe API
+## <a name="dataframe-api"></a>数据帧 API
 
 ### <a name="create-a-dataframe"></a>创建 dataframe 
 
@@ -92,11 +90,7 @@ cdbConnector.withSessionDo(session => session.execute("update books_ks.books set
 ## <a name="next-steps"></a>后续步骤
 
 继续下面的文章，对 Azure Cosmos DB Cassandra API 表中存储的数据执行其他操作：
-
+ 
 * [删除操作](cassandra-spark-delete-ops.md)
 * [聚合操作](cassandra-spark-aggregation-ops.md)
 * [表复制操作](cassandra-spark-table-copy-ops.md)
-
-<!--Verify sucessfully-->
-<!--Update_Description: new articles on  -->
-<!--ms.date: 03/18/2019-->

@@ -3,7 +3,7 @@ title: Azure Cloud Shell 概述 | Microsoft Docs
 description: Azure Cloud Shell 的概述。
 services: ''
 documentationcenter: ''
-author: jluk
+author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''
@@ -12,19 +12,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: 5608b3e0f9b98db62d22245de5a864f757f48799
-ms.sourcegitcommit: f4469b7bb1f380bf9dddaf14763b24b1b508d57c
-ms.translationtype: MT
+ms.openlocfilehash: 513c3da8031774f5f111ee357b5a3c43e1d09d95
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "60199643"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75832474"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell 的概述
-Azure Cloud Shell 是一个用于管理 Azure 资源的交互式的可通过浏览器访问的 shell。
-它使用户能够灵活选择最适合自己工作方式的 shell 体验。
-Linux 用户可以选择 Bash 体验，Windows 用户可以选择 PowerShell。
+Azure Cloud Shell 是一个用于管理 Azure 资源的、可通过浏览器访问的交互式经验证 shell。
+它使用户能够灵活选择最适合自己工作方式的 shell 体验，无论是 Bash 还是 PowerShell。
 
 单击以下图标，前往 shell.azure.com 试用。
 
@@ -41,11 +39,14 @@ Cloud Shell 能够访问以执行 Azure 管理任务为宗旨构建的基于浏�
 利用 Cloud Shell 可以不受限制地以只有云才能提供的方式从本地计算机工作。
 
 ### <a name="choice-of-preferred-shell-experience"></a>选择偏好的 shell 体验
-用户可以从 shell 下拉列表中选择 Bash 或 PowerShell。
+用户可以在 Bash 或 PowerShell 之间进行选择。
+1. 选择**Cloud Shell**。
 
-![Cloud Shell 中的 Bash](media/overview/overview-bash-pic.png)
+    ![Cloud Shell 图标](media/overview/overview-cloudshell-icon.png)
 
-![Cloud Shell 中的 PowerShell](media/overview/overview-ps-pic.png)
+2. 选择 " **Bash** " 或 " **PowerShell**"。
+
+    ![选择 Bash 或 PowerShell](media/overview/overview-choices.png)
 
 ### <a name="authenticated-and-configured-azure-workstation"></a>经身份验证的已配置 Azure 工作站
 Cloud Shell 由 Microsoft 管理，因此附带了常用的命令行工具和语言支持。 此外，Cloud Shell 还能够安全地自动执行身份验证以立即通过 Azure CLI 或 Azure PowerShell cmdlet 访问资源。
@@ -71,11 +72,12 @@ Cloud Shell 是一个灵活的工具，可以通过以下项使用：
 * [Visual Studio Code Azure 帐户扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>连接 Microsoft Azure 文件存储
-Cloud Shell 计算机是临时的，需要将新的或现有 Azure 文件共享装载为 `clouddrive` 才能持久保存文件。
+Cloud Shell 计算机是临时的，但文件通过以下两种方式持久保存：通过磁盘映像，并通过名为的已装载文件共享 `clouddrive` 。  首次启动时，Cloud Shell 将提示它会代你创建资源组、存储帐户和 Azure 文件共享。 这是一个一次性步骤，将来会针对所有会话自动附加。 单个文件共享可以映射，将由 Cloud Shell 中的 Bash 和 PowerShell 使用。
 
-首次启动时，Cloud Shell 会提示代表你创建资源组、存储帐户和 Azure 文件共享。 这是一个一次性步骤，将来会针对所有会话自动附加。 单个文件共享可以映射，将由 Cloud Shell 中的 Bash 和 PowerShell 使用。
+详细了解如何装载[新的或现有的存储帐户](persisting-shell-storage.md)，或了解[Cloud Shell 中使用的持久性机制](persisting-shell-storage.md#how-cloud-shell-storage-works)。
 
-阅读更多信息，了解如何装载[新的或现有存储帐户](persisting-shell-storage.md)。
+> [!NOTE]
+> Cloud shell 存储帐户不支持 Azure 存储防火墙。
 
 ## <a name="concepts"></a>概念
 * Cloud Shell 在按会话按用户提供的临时主机上运行
@@ -92,5 +94,5 @@ Cloud Shell 计算机是临时的，需要将新的或现有 Azure 文件共享�
 托管 Cloud Shell 的计算机是免费的，先决条件是具有已装载的 Azure 文件共享。 将收取常规存储费用。
 
 ## <a name="next-steps"></a>后续步骤
-[Bash in Cloud Shell 快速入门](quickstart.md) <br>
+[Cloud Shell 快速入门中的 Bash](quickstart.md) <br>
 [Cloud Shell 中的 PowerShell 快速入门](quickstart-powershell.md)

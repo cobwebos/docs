@@ -1,11 +1,11 @@
 ---
 ms.openlocfilehash: 1598d89d254e788ecf94f9a42b83cbe22b62204a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66110791"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "67172665"
 ---
 ## <a name="set-expiration"></a>设置到期时间
 
-还有可能要配置你的定位点在给定的日期在将来自动过期。 定位点过期后，它将不再位于或更新。 创建定位点时，可以仅设置过期。 更新过期之后不能。 因此，可以设置其过期之前将其保存到云。
+还可以将定位点配置为在将来的给定日期自动过期。 当定位点过期后，将不再对其进行定位或更新。 只能在创建定位点时设置过期时间。 之后无法更新过期时间。 因此，你可以在将其保存到云之前设置其过期时间。

@@ -1,18 +1,17 @@
 ---
-title: 使用 Azure PowerShell 委托 Azure DNS 子域
-description: 了解如何使用 Azure PowerShell 委托 Azure DNS 子域。
+title: 委派子域-Azure PowerShell-Azure DNS
+description: 使用此学习路径，开始使用 Azure PowerShell 委托 Azure DNS 子域。
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
-ms.topic: article
+ms.topic: how-to
 ms.date: 2/7/2019
-ms.author: victorh
-ms.openlocfilehash: 4ee4d9e6390c9a091096bb7c06160b76fd8af90f
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
-ms.translationtype: MT
+ms.author: rohink
+ms.openlocfilehash: 9b37d313aa5d8c2255b4e3be69831dfcb50238ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730293"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712541"
 ---
 # <a name="delegate-an-azure-dns-subdomain-using-azure-powershell"></a>使用 Azure PowerShell 委托 Azure DNS 子域
 
@@ -27,7 +26,7 @@ ms.locfileid: "66730293"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 若要委托 Azure DNS 子域，必须先将公共域委托给 Azure DNS。 有关如何为委托配置名称服务器的说明，请参阅[将域委托给 Azure DNS](./dns-delegate-domain-azure-dns.md)。 将域委托给 Azure DNS 区域后，可以委托子域。
 
@@ -47,7 +46,7 @@ ms.locfileid: "66730293"
 
 在 engineering 区域中创建一条 **A** 记录以用于测试。
 
-   `New-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -Name www -RecordType A -ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address 10.10.10.10)`。
+   `New-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -Name www -RecordType A -ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address 10.10.10.10)` 列中的一个值匹配。
 
 ## <a name="create-an-ns-record"></a>创建 NS 记录
 

@@ -1,19 +1,15 @@
 ---
 title: 了解 Azure Monitor 中的自动缩放设置
 description: 自动缩放设置的详细步骤及其工作原理。 适用于虚拟机、云服务、Web 应用
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2017
-ms.author: ancav
-ms.component: autoscale
-ms.openlocfilehash: 02840b8a909f46c37130bdb7162674c694a0ff96
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.subservice: autoscale
+ms.openlocfilehash: 03019b35a85d8d511e3ada131eff890a60fd57f6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60787489"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539374"
 ---
 # <a name="understand-autoscale-settings"></a>了解自动缩放设置
 使用自动缩放设置有助于确保运行适当数量的资源来处理应用程序负载的波动。 可将自动缩放设置配置为基于指标（指示负载或性能）触发，或者在计划好的日期和时间触发。 本文将会深度剖析自动缩放设置。 本文首先介绍设置的架构和属性，然后逐步讲解可配置的不同配置文件类型。 最后讨论 Azure 中的自动缩放功能如何评估要在任意给定时间执行哪个配置文件。
@@ -21,7 +17,7 @@ ms.locfileid: "60787489"
 ## <a name="autoscale-setting-schema"></a>自动缩放设置的架构
 为了演示自动缩放设置的架构，本文使用了以下自动缩放设置。 请务必注意，此自动缩放设置包含：
 - 一个配置文件。 
-- 此配置文件包含两条指标规则：一条规则针对扩展，另一条规则针对缩减。
+- 此配置文件包含两条指标规则：一条规则针对横向扩展，另一条规则针对横向缩减。
   - 当虚拟机规模集的平均 CPU 百分比指标在过去 10 分钟大于 85% 时，将触发扩展规则。
   - 当虚拟机规模集的平均值在过去 1 分钟小于 60% 时，将触发缩减规则。
 
@@ -89,35 +85,35 @@ ms.locfileid: "60787489"
 }
 ```
 
-| 部分 | 元素名称 | 描述 |
+| 部分 | 元素名称 | 说明 |
 | --- | --- | --- |
 | 设置 | ID | 自动缩放设置的资源 ID。 自动缩放设置属于 Azure 资源管理器资源。 |
-| 设置 | 名称 | 自动缩放设置的名称。 |
-| 设置 | 位置 | 自动缩放设置的位置。 此位置可与缩放的资源所在的位置不同。 |
+| 设置 | name | 自动缩放设置的名称。 |
+| 设置 | location | 自动缩放设置的位置。 此位置可与缩放的资源所在的位置不同。 |
 | properties | targetResourceUri | 缩放的资源的资源 ID。 针对每个资源，只能使用一项自动缩放设置。 |
 | properties | 配置文件 | 自动缩放设置由一个或多个配置文件组成。 自动缩放引擎每次运行时，将会执行一个配置文件。 |
-| 个人资料 | 名称 | 配置文件的名称。 可以选择有助于识别该配置文件的任何名称。 |
+| 个人资料 | name | 配置文件的名称。 可以选择有助于识别该配置文件的任何名称。 |
 | 个人资料 | Capacity.maximum | 允许的最大容量。 此值可以确保自动缩放在执行此配置文件时，不会将资源扩展到超过此数字。 |
 | 个人资料 | Capacity.minimum | 允许的最小容量。 此值可以确保自动缩放在执行此配置文件时，不会将资源缩减到低于此数字。 |
-| 个人资料 | Capacity.default | 如果读取资源指标（在本例中，为“vmss1”的 CPU）时出现问题，且当前容量低于默认容量，则自动缩放将扩展到默认值。 这是为了确保资源可用性。 如果当前容量已大于默认容量，则自动缩放不会缩减。 |
-| 个人资料 | 规则 | 自动缩放使用配置文件中的规则在最大和最小容量之间自动缩放。 可以在一个配置文件中包含多个规则。 通常包含两个规则：一个用于确定何时扩展，另一个用于确定何时缩减。 |
-| 规则 | metricTrigger | 定义规则的指标条件。 |
+| 个人资料 | Capacity.default | 如果读取资源指标（在本例中，为“vmss1”的 CPU）时出现问题，且当前容量低于默认容量，则自动缩放将扩展到默认值。 这是为了确保资源可用性。 如果当前容量已大于默认容量，则自动缩放不会横向缩减。 |
+| 个人资料 | 规则 | 自动缩放使用配置文件中的规则在最大和最小容量之间自动缩放。 可以在一个配置文件中包含多个规则。 通常包含两个规则：一个用于确定何时横向扩展，另一个用于确定何时横向缩减。 |
+| 规则 (rule) | metricTrigger | 定义规则的指标条件。 |
 | metricTrigger | metricName | 指标的名称。 |
 | metricTrigger |  metricResourceUri | 发出指标的资源的资源 ID。 在大多数情况下，它与缩放的资源相同。 在某些情况下，它可能不同。 例如，可以基于存储队列中的消息数缩放虚拟机规模集。 |
 | metricTrigger | timeGrain | 指标采样持续时间。 例如，**TimeGrain = "PT1M"** 表示应使用 statistic 元素中指定的聚合方法每分钟聚合一次指标。 |
 | metricTrigger | statistic | timeGrain 时间段内的聚合方法。 例如，**statistic = "Average"** 且 **timeGrain = "PT1M"** 表示每分钟取平均值来聚合指标。 此属性规定指标的采样方式。 |
 | metricTrigger | timeWindow | 查找指标的时间范围。 例如，**timeWindow = "PT10M"** 表示自动缩放每次运行时，都会查询过去 10 分钟的指标。 使用该时间范围可将指标规范化，避免对暂时性的峰值作出反应。 |
-| metricTrigger | timeAggregation | 用于聚合已采样指标的聚合方法。 例如，如果 **TimeAggregation = "Average"**，则应取平均值来聚合采样的指标。 上例取 10 个 1 分钟样本并求其平均值。 |
-| 规则 | scaleAction | 触发规则的 metricTrigger 时要执行的操作。 |
-| scaleAction | direction | “Increase”表示扩展，“Decrease”表示缩减。|
-| scaleAction | value | 要将资源容量增大或减小多少。 |
-| scaleAction | cooldown | 在执行缩放操作之后、再次执行缩放操作之前所要等待的时间。 例如，如果 **cooldown = "PT10M"**，则自动缩放只会在 10 分钟之后才尝试再次执行缩放。 在添加或删除实例之后，cooldown（冷却）可让指标变稳定。 |
+| metricTrigger | timeAggregation | 用于聚合已采样指标的聚合方法。 例如，如果 **TimeAggregation = "Average"** ，则应取平均值来聚合采样的指标。 上例取 10 个 1 分钟样本并求其平均值。 |
+| 规则 (rule) | scaleAction | 触发规则的 metricTrigger 时要执行的操作。 |
+| scaleAction | direction | “Increase”表示横向扩展，“Decrease”表示横向缩减。|
+| scaleAction | 值 | 要将资源容量增大或减小多少。 |
+| scaleAction | cooldown | 在执行缩放操作之后、再次执行缩放操作之前所要等待的时间。 例如，如果 **cooldown = "PT10M"** ，则自动缩放只会在 10 分钟之后才尝试再次执行缩放。 在添加或删除实例之后，cooldown（冷却）可让指标变稳定。 |
 
 ## <a name="autoscale-profiles"></a>自动缩放配置文件
 
 有三种类型的自动缩放配置文件：
 
-- **常规配置文件：** 最常见的配置文件。 如果不需要根据星期日期或特定的日历日期以不同的方式缩放资源，则可以使用常规配置文件。 然后，可以使用规定何时扩展及何时缩减的指标规则，来配置此配置文件。 只应定义一个常规配置文件。
+- **常规配置文件：** 最常见的配置文件。 如果不需要根据星期日期或特定的日历日期以不同的方式缩放资源，则可以使用常规配置文件。 然后，可以使用规定何时横向扩展及何时横向缩减的指标规则，来配置此配置文件。 只应定义一个常规配置文件。
 
     本文前面使用的示例配置文件就是一个常规配置文件。 请注意，还可以将配置文件设置为缩放到资源的静态实例计数。
 
@@ -154,7 +150,7 @@ ms.locfileid: "60787489"
     ]
     ```
     
-- **重复配置文件：** 使用此类配置文件可以确保始终在特定的星期几使用此配置文件。 重复配置文件只包含开始时间。 它们会一直运行到下一个重复配置文件或固定日期配置文件设置为启动为止。 只包含一个重复配置文件的自动缩放设置只会运行该配置文件，即使相同的设置中定义了常规配置文件。 以下两个示例演示了此配置文件的用法：
+- **重复配置文件：** 使用此类配置文件可以确保始终在特定的星期日期使用此配置文件。 重复配置文件只包含开始时间。 它们会一直运行到下一个重复配置文件或固定日期配置文件设置为启动为止。 只包含一个重复配置文件的自动缩放设置只会运行该配置文件，即使相同的设置中定义了常规配置文件。 以下两个示例演示了此配置文件的用法：
 
     **示例 1：工作日与周末**
     
@@ -217,7 +213,7 @@ ms.locfileid: "60787489"
 
     例如，在上面的设置中，“weekdayProfile”设置为在星期一午夜 12 点启动。 这意味着，此配置文件将在星期一午夜 12 点开始运行。 它会持续到星期六午夜 12 点，即“weekendProfile”计划开始运行的时间。
 
-    **示例 2：营业时间**
+    **示例 2 - 营业时间**
     
     假设你要在营业时间上午 9 点到下午 5 点使用一个指标阈值，并其他所有时间使用另一个指标阈值。 该设置如下所示：
     
@@ -309,4 +305,4 @@ ms.locfileid: "60787489"
 * [Azure 监视器自动缩放常用指标](../../azure-monitor/platform/autoscale-common-metrics.md)
 * [Azure 监视器自动缩放的最佳做法](../../azure-monitor/platform/autoscale-best-practices.md)
 * [使用自动缩放操作发送电子邮件和 webhook 警报通知](../../azure-monitor/platform/autoscale-webhook-email.md)
-* [自动缩放 REST API](https://msdn.microsoft.com/library/dn931953.aspx)
+* [自动缩放 REST API](/rest/api/monitor/autoscalesettings)

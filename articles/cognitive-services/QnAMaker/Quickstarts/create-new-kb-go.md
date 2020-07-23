@@ -1,34 +1,33 @@
 ---
 title: 快速入门：创建知识库 - REST、Go - QnA Maker
-titlesuffix: Azure Cognitive Services
 description: 此 Go 基于 REST 的快速入门详细介绍如何以编程方式创建一个示例 QnA Maker 知识库，该知识库会显示在认知服务 API 帐户的 Azure 仪表板中。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
-ms.topic: quickstart
-ms.date: 02/04/2019
-ms.author: diberry
-ms.openlocfilehash: 4831fca8a72f62d64c1977b510f039065f6cd3c5
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.date: 12/16/2019
+ROBOTS: NOINDEX,NOFOLLOW
+ms.custom: RESTCURL2020FEB27
+ms.topic: how-to
+ms.openlocfilehash: d49b74ffff8f382427422071b7d8f494f71a52fb
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788567"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345183"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-go"></a>快速入门：通过 Go 在 QnA Maker 中创建知识库
 
-本快速入门将指导你完成以编程方式创建示例 QnA Maker 知识库的过程。 QnA Maker 自动从[数据源](../Concepts/data-sources-supported.md)中从半结构化内容（例如常见问题解答）中自动提取问题和解答。 用于知识库的模型是在 API 请求的正文中发送的 JSON 中定义的。 
+本快速入门将指导你完成以编程方式创建示例 QnA Maker 知识库的过程。 QnA Maker 自动从[数据源](../Concepts/knowledge-base.md)中从半结构化内容（例如常见问题解答）中自动提取问题和解答。 用于知识库的模型是在 API 请求的正文中发送的 JSON 中定义的。
 
 本快速入门调用了 QnA Maker API：
-* [创建知识库](https://go.microsoft.com/fwlink/?linkid=2092179)
+* [创建知识库](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [获取操作详细信息](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
+
+[参考文档](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  | [开始示例](https://github.com/Azure-Samples/cognitive-services-qnamaker-go/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go)
+
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
 * [Go 1.10.1](https://golang.org/dl/)
-* 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在仪表板的“资源管理”下选择“密钥”。 
+* 您必须具有[QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥和终结点（包括资源名称），请在 Azure 门户中为资源选择“快速入门”****。
 
 ## <a name="create-a-knowledge-base-go-file"></a>创建知识库 Go 文件
 
@@ -41,7 +40,12 @@ ms.locfileid: "65788567"
 [!code-go[Add the required dependencies](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=1-11 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>添加必需的常量
-在上述必需的依赖项后，添加访问 QnA Maker 所必需的常量。 将 `subscriptionKey` 变量的值替换为你自己的 QnA Maker 密钥。
+在上述必需的依赖项后，添加访问 QnA Maker 所必需的常量。
+
+设置以下值：
+
+* `<your-qna-maker-subscription-key>` - **密钥**是一个 32 字符的字符串，可以在“快速入门”页的 QnA Maker 资源上的 Azure 门户中使用。 这与预测终结点密钥不同。
+* `{your-resource-name}` - **资源名称**用于构造用于创作的创作终结点 URL，其格式为 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`。 这与用于查询预测终结点的 URL 不同。
 
 [!code-go[Add the required constants](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=13-20 "Add the required constants")]
 
@@ -62,17 +66,17 @@ ms.locfileid: "65788567"
 
     [!code-go[Add the POST method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=51-66 "Add the POST method")]
 
-3. 添加以下方法，以处理向 QnA Maker API 发出的 GET 请求。 在本快速入门中，GET 用于检查创建操作的状态。 
+3. 添加以下方法，以处理向 QnA Maker API 发出的 GET 请求。 在本快速入门中，GET 用于检查创建操作的状态。
 
     [!code-go[Add the GET method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=68-83 "Add the GET method")]
 
 ## <a name="add-function-to-create-kb"></a>添加函数以创建知识库
 
-添加以下函数以发出用于创建知识库的 HTTP POST 请求。 _create_ **Operation ID** 在 POST 响应标头字段 **Location** 中返回，然后在 GET 请求中用作路由的一部分。 `Ocp-Apim-Subscription-Key` 是用于身份验证的 QnA Maker 服务密钥。 
+添加以下函数以发出用于创建知识库的 HTTP POST 请求。 _create_ **Operation ID** 在 POST 响应标头字段 **Location** 中返回，然后在 GET 请求中用作路由的一部分。 `Ocp-Apim-Subscription-Key` 是用于身份验证的 QnA Maker 服务密钥。
 
 [!code-go[Add the create_kb method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=85-97 "Add the create_kb method")]
 
-此 API 调用将返回包括操作 ID 的 JSON 响应。 使用操作 ID 来确定知识库是否已成功创建。 
+此 API 调用将返回包括操作 ID 的 JSON 响应。 使用操作 ID 来确定知识库是否已成功创建。
 
 ```JSON
 {
@@ -86,11 +90,11 @@ ms.locfileid: "65788567"
 
 ## <a name="add-function-to-get-status"></a>添加函数以获取状态
 
-添加以下函数以发出用于检查操作状态的 HTTP GET 请求。 `Ocp-Apim-Subscription-Key` 是用于身份验证的 QnA Maker 服务密钥。 
+添加以下函数以发出用于检查操作状态的 HTTP GET 请求。 `Ocp-Apim-Subscription-Key` 是用于身份验证的 QnA Maker 服务密钥。
 
 [!code-go[Add the check_status method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=99-108 "Add the check_status method")]
 
-重复调用，直到成功或失败： 
+重复调用，直到成功或失败：
 
 ```JSON
 {
@@ -124,9 +128,9 @@ go build create-new-knowledge-base.go
 go run create-new-knowledge-base
 ```
 
-创建知识库以后，即可在 QnA Maker 门户 - [My knowledge bases](https://www.qnamaker.ai/Home/MyServices)（我的知识库）页中查看它。 
+创建知识库以后，即可在 QnA Maker 门户 - [My knowledge bases](https://www.qnamaker.ai/Home/MyServices)（我的知识库）页中查看它。
 
-[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,20 +3,20 @@ title: include 文件
 description: include 文件
 services: cdn
 author: SyntaxC4
-ms.service: cdn
+ms.service: azure-cdn
 ms.topic: include
-ms.date: 04/13/2018
-ms.author: cfowler
+ms.date: 11/15/2019
+ms.author: magattus
 ms.custom: include file
-ms.openlocfilehash: a0edb0a2017466ded4709dbf09dbb8ff940b8f20
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 5c6f79cb7ad0a31eb3461d6d8e54307537f0491e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66125436"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "74284080"
 ---
 > [!IMPORTANT]
-> 这仅是**来自 Verizon 的高级 Azure CDN** 的功能，不适用于标准 Azure CDN 产品。 有关 CDN 功能的比较，请参阅 [Azure CDN 产品功能](../articles/cdn/cdn-features.md)。 
+> 这是 Verizon 的 Azure CDN 高级版独有的功能；若要配置 Microsoft 的 Azure CDN 上的规则，请使用[标准规则引擎](../articles/cdn/cdn-standard-rules-engine-reference.md)。 高级规则不适用于 Akamai 的 Azure CDN。 有关 CDN 功能的完整比较，请参阅 [Azure CDN 产品功能](../articles/cdn/cdn-features.md)。 
 > 
 > 
 

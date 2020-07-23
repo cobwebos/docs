@@ -8,6 +8,7 @@ manager: daveba
 editor: curtand
 ms.assetid: 8dd4e998-747b-4c52-b8d3-3900fe77d88f
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,46 +16,60 @@ ms.topic: reference
 ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58de8de9a9fab67d743d4560ccda037d8f41301b
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
-ms.translationtype: MT
+ms.openlocfilehash: ace8d170a5ba48c00775c3b376df8bb70a337d5d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66298987"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76897031"
 ---
-# <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health：版本发行历史记录
+# <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health：版本发布历史记录
 Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特性和功能。 本文列出已发布的版本和功能。  
 
 > [!NOTE]
-> 连接发布新版本时，将自动更新代理的运行状况。 请确保从 Azure 门户启用自动升级设置。 
+> 新版本发布时，会自动更新连接运行状况代理。 请确保从 Azure 门户启用自动升级设置。
 >
 
 适用于同步的 Azure AD Connect Health 与 Azure AD Connect 安装相集成。 详细了解 [Azure AD Connect 版本历史记录](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history)有关功能反馈，请在 [Connect Health User Voice 频道](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)进行投票
 
+## <a name="july-2019"></a>2019 年 7 月
+**代理更新**
+* AD FS 的 Azure AD Connect Health 代理（版本3.1.59.0） 
+   1. TestWindowsTransport 中的文本更改
+   2. AD FS RP 上传的更改
+   
+* AD FS 的 Azure AD Connect Health 代理（版本3.1.56.0） 
+   1. 添加 TestWindowsTransport 测试并删除 CheckOffice365Endpoints 测试中的 WsTrust 终结点检查
+   2. 记录 OS 和 .NET 信息
+   3. 将 RP 配置消息上传大小增加到1MB。
+   4. Bug 修复
+   
+* AD DS 的 Azure AD Connect Health 代理（版本3.1.56.0） 
+   1. 记录 OS 和 .NET 信息 
+   2. Bug 修复
 
 ## <a name="may-2019"></a>2019 年 5 月
 **代理更新：** 
-* 适用于 AD FS （版本 3.1.51.0） 的 azure AD Connect Health 代理 
-   1. Bug 修复，用于区分多个登录共享同一个客户端请求 id。
-   2. Bug 修复，可分析不当的用户名/密码错误语言本地化服务器。   
+* AD FS 的 Azure AD Connect Health 代理（版本3.1.51.0） 
+   1. Bug 修复，可区分共享同一客户端请求 id 的多个登录名。
+   2. Bug 修复，用于分析语言本地化服务器上的错误用户名/密码错误。   
 
 ## <a name="april-2019"></a>2019 年 4 月
 **代理更新：** 
-* 适用于 AD FS （版本 3.1.46.0） 的 azure AD Connect Health 代理 
-   1. 修复检查重复的 SPN 警报过程的 ADFS
+* AD FS 的 Azure AD Connect Health 代理（版本3.1.46.0） 
+   1. 修复检查 ADFS 的重复 SPN 警报进程
 
 ## <a name="march-2019"></a>2019 年 3 月
 **代理更新：** 
-* 适用于 AD DS （版本 3.1.41.0） 的 azure AD Connect Health 代理  
-   1. .NET 版本集合
-   2. 改进的性能计数器收集时缺少某些类别
-   3. 阻止生成的多个监视代理实例上的 bug 修复
+* AD DS 的 Azure AD Connect Health 代理（版本3.1.41.0）  
+   1. .NET 版本收集
+   2. 缺少特定类别时的性能计数器集合改进
+   3. 用于阻止生成多个监视代理实例的 Bug 修复
 
-* 适用于 AD FS （版本 3.1.41.0） 的 azure AD Connect Health 代理 
-   1. 集成并升级的 AD FS 测试脚本使用 ADFSToolBox
-   2. 实现.NET 版本的集合
-   3. 改进的性能计数器收集时缺少某些类别
-   4. 阻止生成的多个监视代理实例上的 bug 修复
+* AD FS 的 Azure AD Connect Health 代理（版本3.1.41.0） 
+   1. 使用 ADFSToolBox 集成和升级 AD FS 测试脚本
+   2. 实现 .NET 版本收集
+   3. 缺少特定类别时的性能计数器集合改进
+   4. 用于阻止生成多个监视代理实例的 Bug 修复
 
 
 ## <a name="november-2018"></a>2018 年 11 月
@@ -70,12 +85,12 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 * 适用于 AD FS 的 Azure AD Connect Health 代理（3.1.24.0 版）  
    1. 传输层安全性 (TLS) 协议版本 1.2 符合性和强制执行
    2. Test-ADFSRequestToken 对本地化操作系统的支持
-   3. 解决了诊断代理事件处理程序锁定问题
+   3. 解决了诊断代理 EventHandler 锁定问题
    4. 运行状况代理注册 bug 修复
 
 ## <a name="august-2018"></a>2018 年 8 月 
 *  适用于同步的 Azure AD Connect Health（3.1.7.0 版），与 Azure AD Connect 1.1.880.0 版一起发布    
-   1. [使用 .NET Framework KB 版本监视代理的高 CPU 问题](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync)的修补程序
+   1. 用于[监视具有 .NET FRAMEWORK KB 版本的监视代理的 CPU 严重问题的](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync)修补程序
 
 ## <a name="june-2018"></a>2018 年 6 月 
 **新的预览功能：** 
@@ -83,10 +98,10 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 
 **代理更新：** 
 * 适用于 AD DS 的 Azure AD Connect Health 代理（3.1.7.0 版）    
-  1. [使用 .NET Framework KB 版本监视代理的高 CPU 问题](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync)的修补程序
+  1. 用于[监视具有 .NET FRAMEWORK KB 版本的监视代理的 CPU 严重问题的](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync)修补程序
    
 * 适用于 AD FS 的 Azure AD Connect Health 代理（3.1.7.0 版）  
-  1. [使用 .NET Framework KB 版本监视代理的高 CPU 问题](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync)的修补程序
+  1. 用于[监视具有 .NET FRAMEWORK KB 版本的监视代理的 CPU 严重问题的](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync)修补程序
   2. 测试结果在 ADFS Server 2016 辅助服务器上修复
    
 * 适用于 AD FS 的 Azure AD Connect Health 代理（3.1.2.0 版）  
@@ -141,7 +156,7 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 **代理更新：**
 
  * 适用于同步的 Azure AD Connect Health 代理（3.0.129.0 版），与 Azure AD Connect 1.1.649.0 版一起发布
-<br></br> 修复了 Azure AD Connect 与适用于同步的 Azure AD Connect Health 代理之间存在的版本兼容性问题。此问题会影响要执行 Azure AD Connect 就地升级到版本 1.1.647.0，但当前 Health 代理版本为 3.0.127.0 的用户。 升级之后，Health 代理不再能够将有关 Azure AD Connect 同步服务的运行状况数据发送到 Azure AD Health 服务。 通过此修复，在 Azure AD Connect 就地升级过程中将安装 Health 代理版本 3.0.129.0。 Health 代理版本 3.0.129.0 与 Azure AD Connect 版本 1.1.649.0 没有兼容性问题。
+<br></br> 修复了 Azure AD Connect 和 Azure AD Connect Health 代理之间用于同步的版本兼容性问题。此问题会影响正在 Azure AD Connect 就地升级到版本1.1.647.0 的客户，但当前具有运行状况代理版本3.0.127.0。 升级之后，Health 代理不再能够将有关 Azure AD Connect 同步服务的运行状况数据发送到 Azure AD Health 服务。 通过此修复，在 Azure AD Connect 就地升级过程中将安装 Health 代理版本 3.0.129.0。 Health 代理版本 3.0.129.0 与 Azure AD Connect 版本 1.1.649.0 没有兼容性问题。
 
 ## <a name="july-2017"></a>2017 年 7 月
 **代理更新：**
@@ -187,7 +202,7 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 ## <a name="july-2016"></a>2016 年 7 月
 **新的预览功能：**
 
-* [用于 AD DS 的 Azure AD Connect Health](how-to-connect-health-adds.md)。
+* [AD DS 的 Azure AD Connect Health](how-to-connect-health-adds.md)。
 
 ## <a name="january-2016"></a>2016 年 1 月
 **代理更新：**

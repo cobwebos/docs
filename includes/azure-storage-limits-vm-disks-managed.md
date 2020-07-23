@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 12/12/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dd5c0782e1132f8592d9c6381b541c6f1a7d84cd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 2766ea87544f2a21fb654f687eb62dee3c0714ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66148221"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80334707"
 ---
-**标准 HDD 托管磁盘**
+**标准 HDD 托管磁盘**  
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]
 
-**标准 SSD 托管磁盘**
+**标准 SSD 托管磁盘**  
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
-**高级 SSD 托管磁盘：每个磁盘的限制**
+**高级 SSD 托管磁盘：每磁盘限制**  
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
 **高级 SSD 托管磁盘：每个 VM 的限制**
 
-| Resource | 默认限制 |
+| 资源 | 限制 |
 | --- | --- |
 | 每个 VM 的最大 IOPS |GS5 VM 为 80,000 IOPS |
 | 每个 VM 的最大吞吐量 |GS5 VM 为 2,000 MB/秒 |

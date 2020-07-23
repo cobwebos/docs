@@ -4,12 +4,12 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7c081b3bc5f9e6273f680b24897f9aced4999afa
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: aac2f3ea2b52ac0319f96279deed13c1145749bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66129030"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74451554"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>从 Cloud Shell 部署模板
 
@@ -19,7 +19,7 @@ ms.locfileid: "66129030"
 
 1. 选择 Cloud Shell 资源组。 名称模式为 `cloud-shell-storage-<region>`。
 
-   ![选择资源组](./media/resource-manager-cloud-shell-deploy/select-cs-resource-group.png)
+   ![选择资源组](./media/resource-manager-cloud-shell-deploy/select-cloud-shell-resource-group.png)
 
 1. 选择适用于 Cloud Shell 的存储帐户。
 
@@ -41,7 +41,7 @@ ms.locfileid: "66129030"
 
    ![选择新容器](./media/resource-manager-cloud-shell-deploy/select-container.png)
 
-1. 选择 **“上传”**。
+1. 选择**上载**。
 
    ![上传 blob](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
 

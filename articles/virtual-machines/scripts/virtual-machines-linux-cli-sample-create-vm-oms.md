@@ -1,11 +1,10 @@
 ---
-title: Azure CLI 脚本示例 - 使用 Azure Monitor 创建 Linux VM | Microsoft Docs
+title: Azure CLI 脚本示例 - 使用 Azure Monitor 创建 Linux VM
 description: Azure CLI 脚本示例 - 使用 Azure Monitor 创建 Linux VM
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -16,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6aed5f40d689fc84c82f37760e78fc7c3fe94dd1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 90b8e4273b44b46372f85f05ee48072a5e387a21
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535615"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501443"
 ---
 # <a name="monitor-a-vm-with-azure-monitor"></a>使用 Azure Monitor 监视 VM
 
@@ -47,15 +46,15 @@ az group delete --name myResourceGroup
 
 此脚本使用以下命令创建资源组、虚拟机和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| 命令 | 注释 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | 创建用于存储所有资源的资源组。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和 NSG。 此命令还指定要使用的虚拟机映像和管理凭据。  |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | 针对虚拟机运行 VM 扩展。 在此示例中，使用 Azure Monitor 代理扩展安装 Log Analytics 代理，并在 Log Analytics 工作区中注册 VM。 |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](/cli/azure/group) | 创建用于存储所有资源的资源组。 |
+| [az vm create](/cli/azure/vm) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和 NSG。 此命令还指定要使用的虚拟机映像和管理凭据。  |
+| [azure vm extension set](/cli/azure/vm/extension) | 针对虚拟机运行 VM 扩展。 在此示例中，使用 Azure Monitor 代理扩展安装 Log Analytics 代理，并在 Log Analytics 工作区中注册 VM。 |
+| [az group delete](/cli/azure/vm/extension) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。
 
 可以在 [Azure Linux VM 文档](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中找到其他虚拟机 CLI 脚本示例。

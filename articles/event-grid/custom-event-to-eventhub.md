@@ -1,20 +1,14 @@
 ---
-title: 将自定义事件发送到事件中心 - 事件网格、Azure CLI
-description: 使用 Azure 事件网格和 Azure CLI 发布一个主题，然后订阅该事件。 事件中心用于终结点。
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 10/09/2018
+title: 快速入门：将自定义事件发送到事件中心 - 事件网格、Azure CLI
+description: 快速入门：使用 Azure 事件网格和 Azure CLI 发布一个主题，然后订阅该事件。 事件中心用于终结点。
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: fd087c2afe50870289b008906b28605fdd558311
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 77268dde90959298c76813fb146e972ecfa3685d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475180"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104089"
 ---
 # <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>快速入门：使用 Azure CLI 和事件网格将自定义事件路由到 Azure 事件中心
 
@@ -26,9 +20,9 @@ Azure 事件网格是针对云的事件处理服务。 Azure 事件中心是受�
 
 事件网格主题是 Azure 资源，必须放置在 Azure 资源组中。 该资源组是在其中部署和管理 Azure 资源的逻辑集合。
 
-使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 
+使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。 
 
-以下示例在“westus2”位置创建名为“gridResourceGroup”的资源组。
+以下示例在“westus2”  位置创建名为“gridResourceGroup”  的资源组。
 
 ```azurecli-interactive
 az group create --name gridResourceGroup --location westus2

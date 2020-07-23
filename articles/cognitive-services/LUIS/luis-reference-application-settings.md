@@ -1,54 +1,43 @@
 ---
-title: 应用程序设置
-titleSuffix: Azure Cognitive Services
-description: 了解语言理解应用程序的应用程序设置。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
-ms.topic: article
-ms.date: 05/29/2019
-ms.author: diberry
-ms.openlocfilehash: c19d328c3a5f4dd6dbe14ca94809e42c5655ea72
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+title: 应用程序设置 - LUIS
+description: Azure 认知服务语言理解应用的应用程序设置存储在应用和门户中。
+ms.topic: reference
+ms.date: 05/04/2020
+ms.openlocfilehash: 7b545e0959a43520b7d643ef8c0658a1e1a3b295
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66391140"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590973"
 ---
-# <a name="application-settings"></a>应用程序设置
+# <a name="app-and-version-settings"></a>应用和版本设置
 
-这些应用程序设置存储在[导出](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)应用程序和[更新](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings)使用 REST Api。 更改应用程序版本设置可将您的应用程序的培训状态重置为未训练。
+这些设置存储在[导出](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)的应用中，并通过 REST API 或 LUIS 门户更新。
 
-|设置|默认值|说明|
-|--|--|--|
-|NormalizePunctuation|True|删除标点。|
-|NormalizeDiacritics|True|删除音调符号。|
+更改应用版本设置会将应用训练状态重置为“未训练”。
 
-## <a name="diacritics-normalization"></a>标注字符规范化 
+[!INCLUDE [App and version settings](includes/app-version-settings.md)]
 
-打开到 LUIS JSON 应用文件中的标注字符的查询文本规范化`settings`参数。
 
-```JSON
-"settings": [
-    {"name": "NormalizeDiacritics", "value": "true"}
-] 
-```
+文本参考和示例包括：
 
-以下查询文本显示音调符号规范化将如何影响查询文本：
+* [标点符号](#punctuation-normalization)
+* [语音](#diacritics-normalization)
 
-|具有标注字符设置为 false|标注字符设置为 true|
+## <a name="diacritics-normalization"></a>音调符号规范化
+
+以下话语显示了音调符号规范化如何影响话语：
+
+|音调符号设置为 false 时|音调符号设置为 true 时|
 |--|--|
 |`quiero tomar una piña colada`|`quiero tomar una pina colada`|
 |||
 
-### <a name="language-support-for-diacritics"></a>标注字符的语言支持
+### <a name="language-support-for-diacritics"></a>对音调符号的语言支持
 
-#### <a name="brazilian-portuguese-pt-br-diacritics"></a>葡萄牙语 （巴西)`pt-br`音调符号
+#### <a name="brazilian-portuguese-pt-br-diacritics"></a>巴西葡萄牙语 `pt-br` 音调符号
 
-|标注字符设置为 false|标注字符设置为 false|
+|音调符号设置为 false|音调符号设置为 true|
 |-|-|
 |`á`|`a`|
 |`â`|`a`|
@@ -61,12 +50,12 @@ ms.locfileid: "66391140"
 |`ó`|`o`|
 |`ô`|`o`|
 |`õ`|`o`|
-|`ú`|`u`| 
+|`ú`|`u`|
 |||
 
-#### <a name="dutch-nl-nl-diacritics"></a>荷兰语`nl-nl`音调符号
+#### <a name="dutch-nl-nl-diacritics"></a>荷兰语 `nl-nl` 音调符号
 
-|标注字符设置为 false|标注字符设置为 false|
+|音调符号设置为 false|音调符号设置为 true|
 |-|-|
 |`á`|`a`|
 |`à`|`a`|
@@ -77,94 +66,85 @@ ms.locfileid: "66391140"
 |`í`|`i`|
 |`ó`|`o`|
 |`ö`|`o`|
-|`ú`|`u`| 
+|`ú`|`u`|
 |`ü`|`u`|
 |||
 
-#### <a name="french-fr--diacritics"></a>法语`fr-`音调符号
+#### <a name="french-fr--diacritics"></a>法语 `fr-` 音调符号
 
-这包括法语和加拿大子区域性。
+这包括法国和加拿大的子区域性。
 
-|标注字符设置为 false|标注字符设置为 false|
+|音调符号设置为 false|音调符号设置为 true|
 |--|--|
 |`é`|`e`|
 |`à`|`a`|
 |`è`|`e`|
 |`ù`|`u`|
-|`â`|`a`| 
-|`ê`|`e`| 
-|`î`|`i`| 
-|`ô`|`o`| 
-|`û`|`u`| 
-|`ç`|`c`| 
-|`ë`|`e`| 
-|`ï`|`i`| 
-|`ü`|`u`| 
-|`ÿ`|`y`| 
+|`â`|`a`|
+|`ê`|`e`|
+|`î`|`i`|
+|`ô`|`o`|
+|`û`|`u`|
+|`ç`|`c`|
+|`ë`|`e`|
+|`ï`|`i`|
+|`ü`|`u`|
+|`ÿ`|`y`|
 
-#### <a name="german-de-de-diacritics"></a>德语`de-de`音调符号
+#### <a name="german-de-de-diacritics"></a>德语 `de-de` 音调符号
 
-|标注字符设置为 false|标注字符设置为 false|
+|音调符号设置为 false|音调符号设置为 true|
 |--|--|
 |`ä`|`a`|
-|`ö `|`o`| 
-|`ü `|`u`| 
+|`ö`|`o`|
+|`ü`|`u`|
 
-#### <a name="italian-it-it-diacritics"></a>意大利语`it-it`音调符号
+#### <a name="italian-it-it-diacritics"></a>意大利语 `it-it` 音调符号
 
-|标注字符设置为 false|标注字符设置为 false|
+|音调符号设置为 false|音调符号设置为 true|
 |--|--|
 |`à`|`a`|
 |`è`|`e`|
 |`é`|`e`|
-|`ì`|`i`| 
-|`í`|`i`| 
-|`î`|`i`| 
-|`ò`|`o`| 
-|`ó `|`o`| 
+|`ì`|`i`|
+|`í`|`i`|
+|`î`|`i`|
+|`ò`|`o`|
+|`ó`|`o`|
 |`ù`|`u`|
 |`ú`|`u`|
 
-#### <a name="spanish-es--diacritics"></a>西班牙语`es-`音调符号
+#### <a name="spanish-es--diacritics"></a>西班牙语 `es-` 音调符号
 
-这包括墨西哥西班牙语和加拿大。
+这包括西班牙和加拿大墨西哥。
 
-|标注字符设置为 false|标注字符设置为 false|
+|音调符号设置为 false|音调符号设置为 true|
 |-|-|
 |`á`|`a`|
 |`é`|`e`|
-|`í`|`i`| 
-|`ó `|`o`| 
+|`í`|`i`|
+|`ó`|`o`|
 |`ú`|`u`|
 |`ü`|`u`|
 |`ñ`|`u`|
 
-
 ## <a name="punctuation-normalization"></a>标点规范化
 
-打开查询文本规范化到 LUIS JSON 应用文件中的标点`settings`参数。
+以下话语显示了标点如何影响话语：
 
-```JSON
-"settings": [
-    {"name": "NormalizePunctuation", "value": "true"}
-] 
-```
-
-以下查询文本显示音调符号将如何影响查询文本：
-
-|具有标注字符设置为 False|具有标注字符设置为 True|
+|当标点设置为 False 时|当标点设置为 True 时|
 |--|--|
 |`Hmm..... I will take the cappuccino`|`Hmm I will take the cappuccino`|
 |||
 
-### <a name="punctuation-removed"></a>删除标点
+### <a name="punctuation-removed"></a>标点已删除
 
-以下标点操作会删除`NormalizePunctuation`设置为 true。
+将 `NormalizePunctuation` 设置为 true 时，将删除以下标点符号。
 
 |标点|
 |--|
-|`-`| 
-|`.`| 
+|`-`|
+|`.`|
 |`'`|
 |`"`|
 |`\`|
@@ -183,3 +163,7 @@ ms.locfileid: "66391140"
 |`}`|
 |`+`|
 |`¡`|
+
+## <a name="next-steps"></a>后续步骤
+
+* 了解音调符号和标点的[概念](luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation)。

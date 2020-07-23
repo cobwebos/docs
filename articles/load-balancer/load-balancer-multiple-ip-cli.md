@@ -1,24 +1,24 @@
 ---
 title: 使用 Azure CLI 在多个 IP 配置上进行负载均衡
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: 了解如何使用 Azure CLI 将多个 IP 地址分配给虚拟机。
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
-ms.author: kumud
-ms.openlocfilehash: 1e8911847a555e3b6326f15d15a09344a4472f2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 9e9a74690108c0e089e99f9cd7f0f62e7a7d1778
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60860549"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809163"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-azure-cli"></a>使用 Azure CLI 在多个 IP 配置上进行负载均衡
 
@@ -89,7 +89,7 @@ ms.locfileid: "60860549"
     az network lb show --resource-group contosofabrikam --name mylb
     ```
 
-10. 为第一个虚拟机 VM1 [创建公共 IP](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-public-ip-address) *myPublicIp* 和[存储帐户](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) *mystorageaccont1*，如下所示：
+10. 为第一个虚拟机 VM1 [创建公共 IP](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-public-ip-address)*myPublicIp* 和[存储帐户](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json)*mystorageaccont1*，如下所示：
 
     ```azurecli
     az network public-ip create --resource-group contosofabrikam --location westcentralus --name myPublicIP --domain-name-label mypublicdns345 --allocation-method Dynamic

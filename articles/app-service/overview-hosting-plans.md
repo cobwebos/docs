@@ -1,54 +1,42 @@
 ---
-title: 应用服务计划概述 - Azure | Microsoft Docs
-description: 了解针对 Azure 应用服务的应用服务计划的工作原理，以及如何利用它们进行管理。
+title: 应用服务计划
+description: 了解应用服务计划在 Azure 应用服务中的工作方式，如何向客户收取其费用，以及如何根据需要对其进行缩放。
 keywords: 应用服务, azure 应用服务, 缩放, 可缩放, 可伸缩性, 应用服务计划, 应用服务成本
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ab04d1288eb3a851774128b8aaaae03868c2ffa7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: b1c44fb9f44eb75e6d2a766213c5db094ebe79b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60839005"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81537638"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure 应用服务计划概述
 
-在应用服务中，应用在应用服务计划中运行。 应用服务计划为要运行的 Web 应用定义一组计算资源。 这些计算资源类似于传统 Web 托管方案中的[_服务器场_](https://wikipedia.org/wiki/Server_farm)。 可将一个或多个应用配置为在相同的计算资源中（或相同的应用服务计划中）运行。
+在应用服务中，应用在_应用服务计划_中运行。 应用服务计划为要运行的 Web 应用定义一组计算资源。 这些计算资源类似于传统 web 承载中的[_服务器场_](https://wikipedia.org/wiki/Server_farm)。 可将一个或多个应用配置为在相同的计算资源中（或相同的应用服务计划中）运行。
 
 在特定的区域（例如“西欧”）中创建应用服务计划时，将在该区域中为该计划创建一组计算资源。 放入此应用服务计划的任何应用都在应用服务计划定义的这些计算资源中运行。 每个应用服务计划定义：
 
 - 区域（美国西部、美国东部，等等）
 - VM 实例数
 - VM 实例大小（“小型”、“中型”、“大型”）
-- 定价层（“免费”、“共享”、“基本”、“标准”、“高级”、“高级 V2”、“隔离”、“消耗”）
+- 定价层（免费、共享、基本、标准、高级、高级 V2、独立）
 
-应用服务计划的定价层确定了所提供的应用服务功能和计划费用。 定价层有以下几个类别：
+应用服务计划的定价层确定了所提供的应用服务功能和计划费用。  定价层有以下几个类别：
 
-- **共享计算**：“免费”和“共享”，这两个基本层在其他应用服务应用（包括其他客户的应用）所在的同一个 Azure VM 上运行应用。 这些层为共享资源中运行的每个应用分配 CPU 配额，且资源不可横向扩展。
-- **专用计算**：“基本”、“标准”、“高级”和“高级 V2”层在专用的 Azure VM 上运行应用。 只有同一应用服务计划中的应用可以共享相同的计算资源。 层越高，可用于横向扩展的 VM 实例就越多。
-- **隔离**：此层在专用的 Azure 虚拟网络中运行专用 Azure VM，从而在计算隔离的基础上，为应用提供网络隔离。 此层提供最大的横向扩展能力。
-- **消耗**：此层仅适用于[函数应用](../azure-functions/functions-overview.md)。 它根据工作负荷动态缩放函数。 有关详细信息，请参阅 [Azure Functions 托管计划的比较](../azure-functions/functions-scale.md)。
+- **共享计算**：“免费”和“共享”，这两个基本层在其他应用服务应用（包括其他客户的应用）所在的同一个 Azure VM 上运行应用。   这些层为共享资源中运行的每个应用分配 CPU 配额，且资源不可横向扩展。
+- **专用计算**：“基本”、“标准”、“高级”和“高级 V2”层在专用的 Azure VM 上运行应用。     只有同一应用服务计划中的应用可以共享相同的计算资源。 层越高，可用于横向扩展的 VM 实例就越多。
+- **隔离**：此层级在专用 Azure 虚拟网络上运行专用 Azure VM。 它在计算隔离的基础上为应用提供了网络隔离。 此层提供最大的横向扩展能力。
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-每个层还提供应用服务功能的特定子集。 这些功能包括自定义域和 SSL 证书、自动缩放、部署槽位、备份、流量管理器集成，等等。 层越高，可用的功能越多。 若要了解每个定价层支持的功能，请参阅[应用服务计划详细信息](https://azure.microsoft.com/pricing/details/app-service/plans/)。
+每个层还提供应用服务功能的特定子集。 这些功能包括自定义域和 TLS/SSL 证书、自动缩放、部署槽位、备份、流量管理器集成等。 层越高，可用的功能越多。 若要了解每个定价层支持的功能，请参阅[应用服务计划详细信息](https://azure.microsoft.com/pricing/details/app-service/plans/)。
 
 <a name="new-pricing-tier-premiumv2"></a>
 
 > [!NOTE]
-> 与“标准”层相比，新的“高级 V2”层提供 [Dv2 系列 VM](../virtual-machines/windows/sizes-general.md#dv2-series)，此系列 VM 配备更快的处理器、SSD 存储以及双倍的内存核心比。 **高级 V2** 还支持通过增加实例数扩大规模，同时仍提供标准计划中的所有高级功能。 **高级 V2** 中包含现有“高级”层中提供的所有功能。
+> 与“标准”层相比，新的“高级 V2”层提供 [Dv2 系列 VM](../virtual-machines/dv2-dsv2-series.md)，此系列 VM 配备更快的处理器、SSD 存储以及双倍的内存核心比。   **高级 V2** 还支持通过增加实例数扩大规模，同时仍提供标准计划中的所有高级功能。 **高级 V2** 中包含现有“高级”  层中提供的所有功能。
 >
 > 类似于其他专用层，以下三种 VM 大小可用于此层：
 >
@@ -58,11 +46,11 @@ ms.locfileid: "60839005"
 >
 > 有关**高级 V2** 定价信息，请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)。
 >
-> 若要开始使用新的“高级 V2”定价层，请参阅[为应用服务配置“高级 V2”层](app-service-configure-premium-tier.md)。
+> 若要开始使用新的“高级 V2”  定价层，请参阅[为应用服务配置“高级 V2”层](app-service-configure-premium-tier.md)。
 
 ## <a name="how-does-my-app-run-and-scale"></a>应用如何运行和缩放？
 
-在“免费”和“共享”层中，应用遵循共享 VM 实例上的 CPU 分钟配额，且不能横向扩展。在其他层中，应用按如下所述运行和缩放。
+在“免费”和“共享”层中，应用遵循共享 VM 实例上的 CPU 分钟配额，且不能横向扩展。   在其他层中，应用按如下所述运行和缩放。
 
 在应用服务中创建某个应用时，该应用将被放入应用服务计划。 该应用运行时，将在应用服务计划中配置的所有 VM 实例上运行。 如果同一应用服务计划中包含多个应用，这些应用将共享相同的 VM 实例。 如果对某个应用使用多个部署槽位，所有部署槽位也在相同的 VM 实例上运行。 如果启用诊断日志、执行备份或运行 Web 作业，它们也会使用这些 VM 实例上的 CPU 周期和内存。
 
@@ -76,18 +64,17 @@ ms.locfileid: "60839005"
 
 本部分介绍应用服务应用的计费方式。 有关区域特定的详细定价信息，请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)。
 
-除“免费”层外，应用服务计划会根据所用的计算资源量产生小时费用。
+除“免费”层外，应用服务计划会根据所用的计算资源量产生小时费用。 
 
-- 在“共享”层中，每个应用遵循 CPU 分钟配额，因此，每个应用会根据 CPU 配额产生小时费用。
-- 在专用计算层（“基本”、“标准”、“高级”、“高级 V2”）中，应用服务计划定义了应用可缩放到的 VM 实例数，因此，应用服务计划中的每个 VM 实例会产生小时费用。 不管这些 VM 实例上运行了多少个应用，其计费方式都是相同的。 为了避免意外的费用，请参阅[清理应用服务计划](app-service-plan-manage.md#delete)。
-- 在“隔离”层中，应用服务环境定义了运行应用的隔离辅助角色数目，每个辅助角色按小时计费。 此外，运行应用服务环境本身也会产生一笔基本的小时费用。 
-- （仅限 Azure Functions）“消耗”层动态分配 VM 实例来为函数应用的工作负荷提供服务，由 Azure 每秒动态计费。 有关详细信息，请参阅 [Azure Functions 定价](https://azure.microsoft.com/pricing/details/functions/)。
+- 在“共享”层中，每个应用遵循 CPU 分钟配额，因此，每个应用会根据 CPU 配额产生小时费用。  
+- 在专用计算层（“基本”、“标准”、“高级”、“高级 V2”）中，应用服务计划定义了应用可缩放到的 VM 实例数，因此，应用服务计划中的每个 VM 实例会产生小时费用。      不管这些 VM 实例上运行了多少个应用，其计费方式都是相同的。 为了避免意外的费用，请参阅[清理应用服务计划](app-service-plan-manage.md#delete)。
+- 在“隔离”层中，应用服务环境定义了运行应用的隔离辅助角色数目，每个辅助角色按小时计费。   此外，运行应用服务环境本身也会产生一笔基本的小时费用。
 
-使用随附的应用服务功能（配置自定义域、SSL 证书、部署槽位、备份等）不会产生费用。 例外情况包括：
+使用可用的应用服务功能时，不会向你收费（配置自定义域、TLS/SSL 证书、部署槽位、备份等）。 例外情况包括：
 
 - 应用服务域 - 在 Azure 中购买以及每年续订时付费。
 - 应用服务证书 - 在 Azure 中购买以及每年续订时付费。
-- 基于 IP 的 SSL 连接 - 每个基于 IP 的 SSL 连接会产生小时费用，但“标准”或更高类别的某些层免费提供了一个基于 IP 的 SSL 连接。 基于 SNI 的 SSL 连接免费。
+- 基于 IP 的 TLS 连接-每个基于 IP 的 TLS 连接都有小时收费，但某些**标准**层或更高版本提供了一个免费的基于 IP 的 tls 连接。 基于 SNI 的 TLS 连接是免费的。
 
 > [!NOTE]
 > 如果将应用服务与其他 Azure 服务集成，可能需要考虑这些服务的费用。 例如，如果使用 Azure 流量管理器在特定的地理位置缩放应用，则 Azure 流量管理器也会根据用量收取费用。 若要估算 Azure 中的跨服务费用，请参阅[定价计算器](https://azure.microsoft.com/pricing/calculator/)。 
@@ -98,11 +85,11 @@ ms.locfileid: "60839005"
 
 随时可以提高和降低应用服务计划。 只需更改计划的定价层即可。 一开始可以选择一个较低的定价层，以后需要更多的应用服务功能时，可以提高层。
 
-例如，可以在“免费”应用服务计划中开始免费测试 Web 应用。 想要将[自定义 DNS 名称](app-service-web-tutorial-custom-domain.md)添加到 Web 应用时，只需将计划提高到“共享”层。 以后想要添加[自定义 SSL 证书](app-service-web-tutorial-custom-ssl.md)时，可将计划提高到“基本”层。 想要部署[过渡环境](deploy-staging-slots.md)时，可提高到“标准”层。 需要更多的核心、内存或存储时，可提高到同一层中的更大 VM 大小。
+例如，可以在“免费”应用服务计划中开始免费测试 Web 应用。  想要将[自定义 DNS 名称](app-service-web-tutorial-custom-domain.md)添加到 Web 应用时，只需将计划提高到“共享”层。  稍后，当你想要[创建 TLS 绑定](configure-ssl-bindings.md)时，请将你的计划缩放到**基本**层。 想要部署[过渡环境](deploy-staging-slots.md)时，可提高到“标准”层。  需要更多的核心、内存或存储时，可提高到同一层中的更大 VM 大小。
 
-反之亦然。 如果觉得自己不再需要较高层的功能，可以降低到更低的层，从而节省资金。
+反之亦然。 如果觉得自己不再需要较高层的功能，可以纵向缩减到更低的层，从而节省资金。
 
-有关提高应用服务计划的信息，请参阅[纵向扩展 Azure 中的应用](web-sites-scale.md)。
+有关提高应用服务计划的信息，请参阅[纵向扩展 Azure 中的应用](manage-scale-up.md)。
 
 如果你的应用与其他应用在同一个应用服务计划中，可以通过隔离计算资源来提高你的应用的性能。 为此，可将应用移到单独的应用服务计划中。 有关详细信息，请参阅[将应用移到另一个应用服务计划](app-service-plan-manage.md#move)。
 

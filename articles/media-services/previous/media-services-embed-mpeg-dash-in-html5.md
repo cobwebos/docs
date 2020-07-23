@@ -14,17 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f521fd11a2053cf8cf1ea0f9f91667fe475f0eee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 6c1df14ba5a9f233f42750d4e6dea68a7d6ddc0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61464192"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77564850"
 ---
 # <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>使用 DASH.js 在 HTML5 应用程序中嵌入 MPEG-DASH 自适应流式处理视频  
 
 ## <a name="overview"></a>概述
-MPEG-DASH 是视频内容自适应流式处理的 ISO 标准，为希望传送高质量自适应视频流式处理输出的开发人员提供了显著的好处。 使用 MPEG-DASH，当网络阻塞时，视频流会自动调整到较低清晰度。 这会减少在播放器下载下几秒钟要播放内容（又称缓冲）时观众看到“暂停”视频的可能性。 当网络拥塞减少时，视频播放器将转而恢复到较高质量的流。 这种适应所需带宽的能力也会导致视频开始的速度更快。 这意味着可以在快速下载较低质量段播放最初的几秒钟，并在已缓冲足够内容后提升到更高质量。
+MPEG-DASH 是视频内容自适应流式处理的 ISO 标准，为希望传送高质量自适应视频流式处理输出的开发人员提供了显著的好处。 使用 MPEG-DASH，当网络阻塞时，视频流会自动调整到较低清晰度。 这样可以减少在播放器下载下几秒钟要播放内容时观众看到“暂停”视频的可能性（也就是说，它减少了缓冲的可能性）。 当网络拥塞减少时，视频播放器将转而恢复到较高质量的流。 这种适应所需带宽的能力也会导致视频开始的速度更快。 这意味着可以在快速下载较低质量段播放最初的几秒钟，并在已缓冲足够内容后提升到更高质量。
 
 Dash.js 是用 JavaScript 编写的开源 MPEG-DASH 视频播放器。 其目标是提供可以在需要视频播放的应用程序中自由重用的功能强大的跨平台播放器。 它在支持 W3C 媒体源扩展 (MSE) 的任何浏览器（目前为 Chrome、Microsoft Edge 和 IE11，其他浏览器已指示有意支持 MSE）中提供 MPEG-DASH 播放。 有关 DASH.js、js 的详细信息，请参阅 GitHub dash.js 存储库。
 
@@ -113,7 +112,6 @@ Dash.js 是用 JavaScript 编写的开源 MPEG-DASH 视频播放器。 其目标
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>另请参阅
-[开发视频播放器应用程序](media-services-develop-video-players.md)
 
 [GitHub dash.js 存储库](https://github.com/Dash-Industry-Forum/dash.js) 
 

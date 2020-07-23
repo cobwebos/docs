@@ -4,23 +4,25 @@ description: 了解如何使用通知中心从 Node.js 应用程序发送推送�
 keywords: 推送通知,push notification,node.js 推送,ios 推送
 services: notification-hubs
 documentationcenter: nodejs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: ded4749c-6c39-4ff8-b2cf-1927b3e92f93
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: bdeba401e99ad16555b9f6ea00017fc525302983
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/29/2020
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: cb984a944067ddb1449f58b464e596fd138dc7c7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61457851"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82592003"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>使用 Azure 通知中心和 Node.js 发送推送通知
 
@@ -42,25 +44,25 @@ ms.locfileid: "61457851"
 
 ## <a name="notification-hubs"></a>通知中心
 
-Azure 通知中心提供用于向移动设备发送推送通知的易于使用、多平台且可缩放的基础结构。 有关服务基础结构的详细信息，请参阅 [Azure 通知中心](https://msdn.microsoft.com/library/windowsazure/jj927170.aspx)页。
+Azure 通知中心提供用于向移动设备发送推送通知的易于使用、多平台且可缩放的基础结构。 有关服务基础结构的详细信息，请参阅 [Azure 通知中心](https://msdn.microsoft.com/library/windowsazure/jj927170.aspx) 页。
 
 ## <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 
-本教程的第一步是创建新的空白 Node.js 应用程序。 有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][nodejswebsite]、使用 Windows PowerShell [创建 Node.js 云服务][Node.js Cloud Service]或[使用 WebMatrix 创建网站][webmatrix]。
+本教程的第一步是创建新的空白 Node.js 应用程序。 有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][nodejswebsite]、使用 Windows PowerShell 创建 [Node.js 云服务][Node.js Cloud Service]或[使用 WebMatrix 创建网站][webmatrix]。
 
 ## <a name="configure-your-application-to-use-notification-hubs"></a>将应用程序配置为使用通知中心
 
-若要使用 Azure 通知中心，需要下载和使用 Node.js [azure 包](https://www.npmjs.com/package/azure)，其中包括一组可与推送通知 REST 服务通信的内置帮助程序库。
+若要使用 Azure 通知中心，请下载和使用 Node.js [azure 包](https://www.npmjs.com/package/azure)，其中包括一组可与推送通知 REST 服务通信的内置帮助程序库。
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>使用 Node 包管理器 (NPM) 可获取该程序包
 
-1. 使用 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Linux) 等命令行接口导航到在其中创建了空白应用程序的文件夹。
+1. 使用 PowerShell (Windows)、Terminal (Mac) 或 Bash (Linux) 等命令行接口导航到在其中创建了空白应用程序的文件夹  。
 2. 在命令窗口中执行 `npm install azure-sb`。
 3. 可以手动运行 `ls` 或 `dir` 命令来验证是否创建了 `node_modules` 文件夹。
 4. 在该文件夹中，找到 **azure** 包，其中包含访问通知中心所需的库。
 
 > [!NOTE]
-> 可以在官方 [NPM 博客](https://blog.npmjs.org/post/85484771375/how-to-install-npm)中了解有关安装 NPM 的详细信息。
+> 可在官方 [NPM 博客](https://blog.npmjs.org/post/85484771375/how-to-install-npm)中了解有关安装 NPM 的详细信息。
 
 ### <a name="import-the-module"></a>导入模块
 使用文本编辑器将以下内容添加到应用程序的 `server.js` 文件的顶部：
@@ -79,15 +81,15 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 
 通过执行以下步骤从 [Azure 门户] 获取连接 `connectionstring` 值：
 
-1. 在左侧导航窗格中，单击“浏览”。
-2. 选择“通知中心”，并找到要用于示例的中心。 您可以参考[Windows 应用商店入门教程](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)如果您需要创建新的通知中心的帮助。
-3. 选择“设置”。
-4. 单击“访问策略”。 会看到共享连接字符串和完全访问连接字符串。
+1. 在左侧导航窗格中，单击“浏览” 。
+2. 选择“通知中心” ，并找到要用于示例的中心。 如果在创建新通知中心时需要帮助，可以参阅 [Windows 应用商店入门教程](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。
+3. Select <bpt id="p1">**</bpt>Settings<ept id="p1">**</ept>.
+4. 单击“访问策略” 。 会看到共享连接字符串和完全访问连接字符串。
 
 ![Azure 门户 — 通知中心](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
 
 > [!NOTE]
-> 还可以使用 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 提供的 **Get-AzureSbNamespace** cmdlet 或者在 [Azure 命令行接口 (Azure CLI)](../cli-install-nodejs.md) 中使用 **azure sb namespace show** 命令检索连接字符串。
+> 还可以使用 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 提供的 Get-AzureSbNamespace cmdlet 或者在 [Azure 命令行接口 (Azure CLI)](../cli-install-nodejs.md) 中使用 azure sb namespace show 命令检索连接字符串 。
 
 ## <a name="general-architecture"></a>一般体系结构
 
@@ -102,11 +104,11 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 
 `GcmService` 对象提供 `send` 方法，该方法可用于将推送通知发送到 Android 应用程序。 该 `send` 方法接受以下参数：
 
-- **Tags** — 标记标识符。 如果没有提供任何标记，通知会发送给所有客户端。
+- **Tags** - 标记标识符。 如果没有提供任何标记，通知会发送给所有客户端。
 - **Payload** — 消息的 JSON 或原始字符串的有效负载。
-- **Callback** — 回调函数。
+- **Callback** - 回调函数。
 
-有关有效负载格式的详细信息，请参阅 [Implementing GCM Server](https://developer.android.com/google/gcm/server.html#payload)（实现 GCM 服务器）文档中的 **Payload**（有效负载）部分。
+有关负载格式的详细信息，请参阅[有效负载文档](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload)。
 
 以下代码使用由 `NotificationHubService` 公开的 `GcmService` 实例将推送通知发送到所有已注册的客户端。
 
@@ -127,11 +129,11 @@ notificationHubService.gcm.send(null, payload, function(error){
 
 与上述 Android 应用程序一样，`ApnsService` 对象提供可用于将推送通知发送到 iOS 应用程序的 `send` 方法。 该 `send` 方法接受以下参数：
 
-- **Tags** — 标记标识符。 如果没有提供任何标记，通知会发送给所有客户端。
-- **Payload** — 消息的 JSON 或字符串的有效负载。
+- **Tags** - 标记标识符。 如果没有提供任何标记，通知会发送给所有客户端。
+- **Payload** - 消息的 JSON 或字符串的有效负载。
 - **Callback** - 回调函数。
 
-有关有效负载格式的详细信息，请参阅 [Local and Push Notification Programming Guide](https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html)（本地通知和推送通知编程指南）文档中的 **Notification Payload**（通知有效负载）部分。
+有关有效负载格式的详细信息，请参阅 [UserNotifications 指南](https://developer.apple.com/documentation/usernotifications)的“通知内容”部分。
 
 以下代码使用由 `NotificationHubService` 公开的 `ApnsService` 实例将警报消息发送给所有客户端：
 
@@ -150,12 +152,12 @@ notificationHubService.apns.send(null, payload, function(error){
 
 `MpnsService` 对象提供可用于将推送通知发送到 Windows Phone 应用程序的 `send` 方法。 该 `send` 方法接受以下参数：
 
-- **Tags** — 标记标识符。 如果没有提供任何标记，通知会发送给所有客户端。
-- **Payload** — 消息的 XML 有效负载。
-- **TargetName** - `toast` 用于 toast 通知。 `token` 用于磁贴通知。
-- **NotificationClass** — 通知的优先级。 有关该参数的有效值，请参阅 [从服务器推送通知](https://msdn.microsoft.com/library/hh221551.aspx)文档中的 **HTTP Header Elements**（HTTP 标头元素）部分。
-- **Options** — 可选的请求标头。
-- **Callback** — 回调函数。
+- **Tags** - 标记标识符。 如果没有提供任何标记，通知会发送给所有客户端。
+- **Payload** - 消息的 XML 有效负载。
+- TargetName - `toast` 用于 toast 通知。 `token` 表示磁贴通知。
+- **NotificationClass** - 通知的优先级。 有关该参数的有效值，请参阅 [Push notifications from a server](https://msdn.microsoft.com/library/hh221551.aspx)（从服务器推送通知）文档中的 HTTP Header Elements（HTTP 标头元素）部分。
+- **Options** - 可选的请求标头。
+- **Callback** - 回调函数。
 
 有关有效的 `TargetName`、`NotificationClass` 和标头选项的列表，请查看[从服务器推送通知](https://msdn.microsoft.com/library/hh221551.aspx)页面。
 
@@ -174,13 +176,13 @@ notificationHubService.mpns.send(null, payload, 'toast', 22, function(error){
 
 `WnsService` 对象提供可用于将推送通知发送到通用 Windows 平台应用程序的 `send` 方法。  该 `send` 方法接受以下参数：
 
-- **Tags** — 标记标识符。 如果没有提供任何标记，通知会发送给所有已注册的客户端。
-- **Payload** — XML 消息有效负载。
-- **Type** — 通知类型。
-- **Options** — 可选的请求标头。
-- **Callback** — 回调函数。
+- **Tags** - 标记标识符。 如果没有提供任何标记，通知会发送给所有已注册的客户端。
+- **Payload** - XML 消息有效负载。
+- **Type** - 通知类型。
+- **Options** - 可选的请求标头。
+- **Callback** - 回调函数。
 
-有关有效的类型和请求标头的列表，请参阅[推送通知服务请求和响应标头](https://msdn.microsoft.com/library/windows/apps/hh465435.aspx)。
+若要了解有效的类型和请求标头的列表，请参阅 [推送通知服务请求和响应头](https://msdn.microsoft.com/library/windows/apps/hh465435.aspx)。
 
 以下示例代码使用由 `NotificationHubService` 公开的 `WnsService` 实例将 toast 推送通知发送给 UWP 应用：
 
@@ -197,7 +199,7 @@ notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
 
 使用上述示例代码段，可以轻松地构建服务基础结构，将推送通知传递到各种设备。 了解使用通知中心和 node.js 的基础知识之后，请参考下列链接以了解有关如何进一步扩展这些功能的详细信息。
 
-- 请参阅 MSDN 参考：[Azure 通知中心](https://msdn.microsoft.com/library/azure/jj927170.aspx)。
+- 请参阅 [Azure 通知中心](https://msdn.microsoft.com/library/azure/jj927170.aspx)的 MSDN 参考。
 - 请访问 GitHub 上的 [用于 Node 的 Azure SDK] 存储库以获取更多示例和实施详细信息。
 
 [用于 Node 的 Azure SDK]: https://github.com/WindowsAzure/azure-sdk-for-node

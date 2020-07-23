@@ -1,29 +1,28 @@
 ---
-title: 查看从特定位置到 Azure 区域的相对延迟 | Microsoft Docs
+title: 查看从特定位置到 Azure 区域的相对延迟
 description: 了解如何查看从 Internet 提供商的特定位置到 Azure 区域的相对延迟。
 services: network-watcher
 documentationcenter: ''
-author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: damendo
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2017
-ms.author: kumud
+ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: b4a50657442422786f49c931aa6c2610d49846b1
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 938315dac80ae51984851083753a9cb8f77662b2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939880"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737897"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>查看从特定位置到 Azure 区域的相对延迟
+
+> [!WARNING]
+> 此功能目前处于预览状态，并且仍在测试稳定性。
 
 本教程介绍如何使用 Azure [网络观察程序](network-watcher-monitoring-overview.md)服务，根据用户的人口统计，帮助确定要将应用程序或服务部署到哪个 Azure 区域。 此外，还可以使用此服务来帮助评估服务提供商与 Azure 之间的连接。  
         
@@ -60,7 +59,7 @@ Get-AzNetworkWatcherReachabilityReport `
 ```
 
 > [!NOTE]
-> 在上述命令中指定的区域，不需要与检索网络观察程序时指定的区域相同。 上述命令只要求指定现有的网络观察程序。 网络观察程序可以位于任何区域。 如果为 `-Country` 和 `-State` 指定了值，这些值必须有效。 这些值区分大小写。 数据是适用于有限数量的国家/地区、 州和城市。 运行中的命令[查看可用的国家/地区、 状态、 城市和提供程序](#view-available)若要查看可用的国家/地区、 城市和状态，以使用与前一命令的列表。 
+> 在上述命令中指定的区域，不需要与检索网络观察程序时指定的区域相同。 上述命令只要求指定现有的网络观察程序。 网络观察程序可以位于任何区域。 如果为 `-Country` 和 `-State` 指定了值，这些值必须有效。 这些值区分大小写。 数据适用于有限数量的国家/地区、州/省和城市。 运行[查看可用的国家/地区、州/省、城市和提供商](#view-available)中的命令，查看可用于上一条命令的国家/地区、城市和州/省的列表。 
 
 > [!WARNING]
 > 必须为 `-StartTime` 和 `-EndTime` 指定过去 30 天内的日期。 指定之前的日期将不会返回任何数据。
@@ -125,15 +124,15 @@ Get-AzNetworkWatcherReachabilityReport `
 > [!NOTE]
 > 与指定单个位置时不同，如果未指定位置，或指定了多个位置（例如“美国西部 2”、“美国西部”），则运行该命令时，必须指定 Internet 服务提供商。 
 
-## <a name="view-available"></a>查看可用的国家/地区、 状态、 城市和提供程序
+## <a name="view-available-countriesregions-states-cities-and-providers"></a><a name="view-available"></a>查看可用的国家/地区、州/省、城市和提供商
 
-数据是可用于特定的 Internet 服务提供商、 国家/地区、 州和城市。 若要查看一系列可用的所有 Internet 服务提供商、 国家/地区、 州和城市，您可以查看数据，输入以下命令：
+数据适用于特定的 Internet 服务提供商、国家/地区、州/省和城市。 若要查看你可以查看其数据的所有可用 Internet 服务提供商、国家/地区、州/省和城市的列表，请输入以下命令：
 
 ```powershell
 Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG
 ```
 
-数据可用的国家/地区、 州和城市由上一命令返回。 上述命令要求指定现有的网络观察程序。 该示例指定了名为 *NetworkWatcherRG* 的资源组中的 *NetworkWatcher_eastus* 网络观察程序，但你可以指定任何现有的网络观察程序。 如果没有现有的网络观察程序，可以通过完成[创建网络观察程序](#create-a-network-watcher)中的任务来创建一个。 
+数据仅适用于上一条命令返回的国家/地区、州/省和城市。 上述命令要求指定现有的网络观察程序。 该示例指定了名为 *NetworkWatcherRG* 的资源组中的 *NetworkWatcher_eastus* 网络观察程序，但你可以指定任何现有的网络观察程序。 如果没有现有的网络观察程序，可以通过完成[创建网络观察程序](#create-a-network-watcher)中的任务来创建一个。 
 
 运行上述命令后，可以根据需要，通过指定 **Country**、**State** 和 **City** 的有效值，来筛选返回的输出。  例如，若要查看美国华盛顿州西雅图市的 Internet 服务提供商列表，请输入以下命令：
 

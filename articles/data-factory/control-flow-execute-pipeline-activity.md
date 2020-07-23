@@ -1,26 +1,30 @@
 ---
-title: Azure 数据工厂中的 Execute Pipeline 活动 | Microsoft Docs
+title: Azure 数据工厂中的 Execute Pipeline 活动
 description: 了解如何使用 Execute Pipeline 活动从一个数据工厂管道调用另一个数据工厂管道。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-ms.openlocfilehash: a0ece499262464bc28f55c37188698a3313e2c04
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4bd667a2302136b5e12d2e4e548c9e8863715621
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60808850"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81415278"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Execute Pipeline 活动
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Execute Pipeline 活动允许一个数据工厂管道调用另一个管道。
+
+
 
 ## <a name="syntax"></a>语法
 
@@ -60,9 +64,9 @@ Execute Pipeline 活动允许一个数据工厂管道调用另一个管道。
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 需要
+properties | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
-名称 | Execute Pipeline 活动的名称。 | String | 是
+name | Execute Pipeline 活动的名称。 | String | 是
 type | 必须设置为：**ExecutePipeline**。 | String | 是
 管道 | 管道引用此管道调用的依赖管道。 管道引用对象具有两个属性：**referenceName** 和 **type**。 referenceName 属性指定引用管道的名称。 type 属性必须设置为 PipelineReference。 | PipelineReference | 是
 parameters | 传递给已调用管道的参数 | 将参数名映射为自变量值的 JSON 对象 | 否
@@ -169,10 +173,7 @@ waitOnCompletion | 定义活动执行是否等待从属管道执行完成。 默
     "properties": {
     "type": "AzureStorage",
     "typeProperties": {
-      "connectionString": {
-        "value": "DefaultEndpointsProtocol=https;AccountName=*****",
-        "type": "SecureString"
-      }
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=*****;AccountKey=*****"
     }
   }
 }

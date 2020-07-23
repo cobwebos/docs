@@ -1,6 +1,6 @@
 ---
 title: 远程监视解决方案加速器概述 - Azure | Microsoft Docs
-description: 远程监视解决方案加速器概述。
+description: 本文概述了远程监视解决方案的一些关键要素，以帮助你了解其工作原理。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: af09ea39f373d518d5600e3fa46adc378fd9236d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f501eb55f72811063ddf1d8e02a0ce2137d598f3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61442524"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80546318"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>远程监视解决方案加速器概述
 
@@ -32,7 +32,7 @@ GitHub 上提供了远程监视解决方案加速器代码：
 
 ## <a name="logical-architecture"></a>逻辑体系结构
 
-下图描绘了叠加在 [IoT 体系结构](../iot-fundamentals/iot-introduction.md)之上的远程监视解决方案加速器的逻辑组件：
+下图概述了在[IoT 体系结构](../iot-fundamentals/iot-introduction.md)上叠加的远程监视解决方案加速器的逻辑组件：
 
 ![逻辑体系结构](./media/iot-accelerators-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
 
@@ -41,7 +41,7 @@ GitHub 上提供了远程监视解决方案加速器代码：
 自 Microsoft 发布第一款解决方案加速器以来，云体系结构已有所演变。 [微服务](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)应运而生，经证实能够在不降低开发速度的情况下实现可伸缩性和灵活性。 有多种 Microsoft 服务在内部使用此体系结构模式，且获得了出色的可靠性和可伸缩性。 更新的解决方案加速器将这些知识付诸实践，使我们也能从中受益。
 
 > [!TIP]
-> 若要详细了解微服务体系结构，请参阅 [.NET 应用程序体系结构](https://www.microsoft.com/net/learn/architecture)和[微服务：由云驱动的应用程序革命](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)。
+> 若要详细了解微服务体系结构，请参阅 [.NET 应用程序体系结构](https://www.microsoft.com/net/learn/architecture)和[微服务：由云推动的应用程序革命](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)。
 
 ## <a name="device-connectivity"></a>设备连接
 
@@ -126,9 +126,6 @@ ASA 作业将来自已连接设备的遥测数据提供给时序见解以便进�
 
 [Azure 时序见解](https://docs.microsoft.com/azure/time-series-insights/)存储来自连接到解决方案加速器的设备的遥测数据。 通过它还可在解决方案 Web UI 中显示和查询设备遥测数据。
 
-> [!NOTE]
-> 时序见解目前在 Azure 中国云中不可用。 Azure 中国云中的新远程监视解决方案加速器部署使用 Cosmos DB 进行所有存储。
-
 ### <a name="configuration-microservice"></a>配置微服务
 
 [配置微服务](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/config)提供一个 RESTful 终结点，用于对解决方案加速器中的设备组、解决方案设置和用户设置实现 CRUD 操作。 它与存储适配器微服务一起用于保持配置数据。
@@ -170,4 +167,4 @@ ASA 作业将来自已连接设备的遥测数据提供给时序见解以便进�
 详细的解决方案体系结构示意图：
 * [用于远程监视体系结构的解决方案加速器](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture)。
 
-有关远程监视解决方案加速器的更多概念性信息，请参阅[自定义解决方案加速器](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md)。
+有关远程监视解决方案加速器的更多概念信息，请参阅[自定义解决方案加速器](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md)。

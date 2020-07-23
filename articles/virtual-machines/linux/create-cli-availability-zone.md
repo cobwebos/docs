@@ -1,33 +1,23 @@
 ---
-title: 使用 Azure CLI 创建分区的 Linux VM | Microsoft Docs
+title: 使用 Azure CLI 创建分区 Linux VM
 description: 使用 Azure CLI 在可用性区域中创建 Linux VM
-services: virtual-machines-linux
-documentationcenter: virtual-machines
-author: dlepow
-manager: jeconnoc
-editor: ''
-tags: ''
-ms.assetid: ''
+author: cynthn
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 04/05/2018
-ms.author: danlep
-ms.custom: ''
-ms.openlocfilehash: cdd9910bfef96f56cfa8c8e81363ff9bdb40f444
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: cynthn
+ms.openlocfilehash: 568bac3c6c80173e38d7b15de17e90cb4fbdab80
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60328725"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82208952"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>使用 Azure CLI 在可用性区域中创建 Linux 虚拟机
 
 本文逐步说明如何使用 Azure CLI 在 Azure 可用性区域中创建 Linux VM。 [可用性区域](../../availability-zones/az-overview.md)是 Azure 区域中物理上独立的区域。 使用可用性区域可以在整个数据中心发生故障或服务中断（这种情况很少见）时保护应用和数据。
 
-若要使用可用性区域，请在[受支持的 Azure 区域](../../availability-zones/az-overview.md#services-support-by-region)中创建虚拟机。
+若要使用可用性区域，请在[受支持的 Azure 区域](../../availability-zones/az-region.md)中创建虚拟机。
 
 确保已安装最新版 [Azure CLI](/cli/azure/install-az-cli2)，并已使用 [az login](/cli/azure/reference-index) 登录 Azure 帐户。
 
@@ -43,7 +33,7 @@ az vm list-skus --location eastus2 --output table
 
 输出类似于以下浓缩版示例，其中显示了每种 VM 大小都可用的可用性区域：
 
-```azurecli
+```output
 ResourceType      Locations  Name               [...]    Tier       Size     Zones
 ----------------  ---------  -----------------           ---------  -------  -------
 virtualMachines   eastus2    Standard_DS1_v2             Standard   DS1_v2   1,2,3
@@ -64,7 +54,7 @@ virtualMachines   eastus2    Standard_E4_v3              Standard   E4_v3    1,2
 
 使用 [az group create](/cli/azure/group) 命令创建资源组。  
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在此示例中，在“eastus2”区域中创建了名为“myResourceGroupVM”的资源组。 “美国东部 2”是支持可用性区域的 Azure 区域之一。
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在此示例中，在“eastus2”** 区域中创建了名为“myResourceGroupVM”** 的资源组。 “美国东部 2”是支持可用性区域的 Azure 区域之一。
 
 ```azurecli 
 az group create --name myResourceGroupVM --location eastus2
@@ -76,15 +66,15 @@ az group create --name myResourceGroupVM --location eastus2
 
 使用 [az vm create](/cli/azure/vm) 命令创建虚拟机。 
 
-创建虚拟机时，可使用多个选项，例如操作系统映像、磁盘大小调整和管理凭据。 在此示例中，创建了一个名为“myVM”的运行 Ubuntu Server 的虚拟机。 在可用性区域 *1* 中创建了一个 VM。 默认情况下，创建的 VM 大小为 *Standard_DS1_v2*。
+创建虚拟机时，可使用多个选项，例如操作系统映像、磁盘大小调整和管理凭据。 在此示例中，创建了一个名为“myVM”** 的运行 Ubuntu Server 的虚拟机。 在可用性区域 *1* 中创建了一个 VM。 默认情况下，创建的 VM 大小为 *Standard_DS1_v2*。
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create --resource-group myResourceGroupVM --name myVM --location eastus2 --image UbuntuLTS --generate-ssh-keys --zone 1
 ```
 
 创建 VM 可能需要几分钟。 创建 VM 后，Azure CLI 会输出有关 VM 的信息。 请记下 `zones` 值，该值指示在其中运行 VM 的可用性区域。 
 
-```azurecli 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -100,9 +90,9 @@ az vm create --resource-group myResourceGroupVM --name myVM --location eastus2 -
 
 ## <a name="confirm-zone-for-managed-disk-and-ip-address"></a>为托管磁盘和 IP 地址确认区域
 
-当 VM 部署在可用性区域中时，将在同一可用性区域中创建 VM 的托管磁盘。 默认情况下，还会在该区域中创建一个公用 IP 地址。 以下示例可获取有关这些资源的信息。
+当 VM 部署在可用性区域中时，将在同一可用性区域中创建 VM 的托管磁盘。 默认情况下，还会在该区域中创建一个公共 IP 地址。 以下示例可获取有关这些资源的信息。
 
-若要验证 VM 的托管的磁盘是在可用性区域中，使用[az vm show](/cli/azure/vm)命令返回磁盘 id。 在此示例中，磁盘 ID 存储在变量中，用在后面的步骤。 
+若要验证 VM 的托管磁盘是否在可用性区域中，请使用[az VM show](/cli/azure/vm)命令返回磁盘 ID。 在此示例中，磁盘 ID 存储在稍后的步骤中使用的变量中。 
 
 ```azurecli-interactive
 osdiskname=$(az vm show -g myResourceGroupVM -n myVM --query "storageProfile.osDisk.name" -o tsv)
@@ -115,7 +105,7 @@ az disk show --resource-group myResourceGroupVM --name $osdiskname
 
 输出显示，托管磁盘与 VM 位于相同的可用性区域中：
 
-```azurecli
+```output
 {
   "creationData": {
     "createOption": "FromImage",
@@ -149,7 +139,7 @@ az disk show --resource-group myResourceGroupVM --name $osdiskname
 }
 ```
 
-使用 [az vm list-ip-addresses](/cli/azure/vm) 命令返回 *myVM* 中公用 IP 地址资源的名称。 在此示例中，该名称存储在变量中，会在稍后的步骤中用到。
+使用 [az vm list-ip-addresses](/cli/azure/vm) 命令返回 *myVM* 中公共 IP 地址资源的名称。 在此示例中，该名称存储在变量中，会在稍后的步骤中用到。
 
 ```azurecli
 ipaddressname=$(az vm list-ip-addresses -g myResourceGroupVM -n myVM --query "[].virtualMachine.network.publicIpAddresses[].name" -o tsv)
@@ -163,7 +153,7 @@ az network public-ip show --resource-group myResourceGroupVM --name $ipaddressna
 
 输出显示，IP 地址与 VM 位于相同的可用性区域：
 
-```azurecli
+```output
 {
   "dnsSettings": null,
   "etag": "W/\"b7ad25eb-3191-4c8f-9cec-c5e4a3a37d35\"",
@@ -198,7 +188,7 @@ az network public-ip show --resource-group myResourceGroupVM --name $ipaddressna
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何在可用性区域中创建 VM。 详细了解 Azure VM 的[区域和可用性](regions-and-availability.md)。
+本文介绍了如何在可用性区域中创建 VM。 详细了解 Azure Vm 的[可用性](availability.md)。
 
 
 

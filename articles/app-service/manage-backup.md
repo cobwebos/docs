@@ -1,29 +1,19 @@
 ---
-title: 备份应用 - Azure 应用服务
-description: 了解如何在 Azure 应用服务中创建应用备份。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: jimbe
+title: 备份应用
+description: 了解如何在 Azure 应用服务中创建应用备份。 运行手动或计划的备份。 通过包含附加的数据库来自定义备份。
 ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 07/06/2016
-ms.author: cephalin
+ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7e697329e83b530157e490b04f5155d28d243bb6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d611be27d8d576748019dee46022ca4cb70e966a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61271644"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253437"
 ---
 # <a name="back-up-your-app-in-azure"></a>在 Azure 中备份应用
-利用 [Azure App Service](overview.md) 中的备份和还原功能，可以轻松地手动或按计划创建应用备份。 通过覆盖现有应用或还原为另一应用可将应用还原为先前状态的快照。 
+利用 [Azure App Service](overview.md) 中的备份和还原功能，可以轻松地手动或按计划创建应用备份。 可以将备份配置为无限期保留。 通过覆盖现有应用或还原为另一应用可将应用还原为先前状态的快照。
 
 有关从备份中还原应用的信息，请参阅[在 Azure 中还原应用](web-sites-restore.md)。
 
@@ -37,25 +27,25 @@ ms.locfileid: "61271644"
 * 连接到应用的数据库
 
 备份功能支持以下数据库解决方案： 
-   - [SQL 数据库](https://azure.microsoft.com/services/sql-database/)
-   - [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
-   - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
-   - [MySQL 应用内产品](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
+
+- [SQL 数据库](https://azure.microsoft.com/services/sql-database/)
+- [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
+- [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
+- [MySQL 应用内产品](https://azure.microsoft.com/blog/mysql-in-app-preview-app-service/)
  
 
 > [!NOTE]
->  每个备份都是应用的完整脱机副本，而不是增量更新。
->  
+> 每个备份都是应用的完整脱机副本，而不是增量更新。
+>
 
 <a name="requirements"></a>
 
 ## <a name="requirements-and-restrictions"></a>要求和限制
-* 备份和还原功能要求应用服务计划处于标准层或高级层。 有关缩放应用服务计划以使用更高层的详细信息，请参阅[增加 Azure 中的应用](web-sites-scale.md)。  
-  与标准层相比，高级层每日允许更多备份量。
+* 备份和还原功能要求应用服务计划处于标准层、高级层或隔离层  。 有关缩放应用服务计划以使用更高层的详细信息，请参阅[增加 Azure 中的应用](manage-scale-up.md)。 与标准层相比，高级层和隔离层每日允许更多备份量  。
 * 在与要备份的应用相同的订阅中，需要有一个 Azure 存储帐户和容器。 有关 Azure 存储帐户的详细信息，请参阅 [Azure 存储帐户概述](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
 * 最多可备份 10 GB 的应用和数据库内容。 如果备份大小超过此限制，会出错。
-* 不支持备份启用了 SSL 的 Azure Database for MySQL。 如果配置备份，备份将失败。
-* 不支持备份启用了 SSL 的 Azure Database for PostgreSQL。 如果配置备份，备份将失败。
+* 不支持备份启用了 TLS 的 Azure Database for MySQL。 如果配置备份，备份将失败。
+* 不支持备份启用了 TLS 的 Azure Database for PostgreSQL。 如果配置备份，备份将失败。
 * 应用内 MySQL 数据库无需任何配置即可自动备份。 如果对应用内 MySQL 数据库进行手动设置，例如添加连接字符串，则备份可能无法正常工作。
 * 不支持将启用了防火墙的存储帐户用作备份目标。 如果配置备份，备份将失败。
 
@@ -64,52 +54,54 @@ ms.locfileid: "61271644"
 
 ## <a name="create-a-manual-backup"></a>创建手动备份
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到应用的页面，然后选择“备份”。 将显示“备份”页。
-   
-    ![“备份”页面][ChooseBackupsPage]
-   
-   > [!NOTE]
-   > 若显示以下消息，请单击该消息升级 应用服务计划，才能继续备份。
-   > 有关详细信息，请参阅[增加 Azure 中的应用](web-sites-scale.md)。  
-   > ![选择存储帐户](./media/web-sites-backup/01UpgradePlan1.png)
-   > 
-   > 
 
-2. 在“备份”页中，单击“配置”
-![单击“配置”](./media/web-sites-backup/ClickConfigure1.png)
-3. 在“备份配置”页中，单击“存储: 未配置”以配置存储帐户。
-   
-    ![选择存储帐户][ChooseStorageAccount]
+    ![“备份”页面](./media/manage-backup/access-backup-page.png)
+
+    > [!NOTE]
+    > 若显示以下消息，请单击该消息升级 应用服务计划，才能继续备份。
+    > 有关详细信息，请参阅[增加 Azure 中的应用](manage-scale-up.md)。
+    > ![选择存储帐户](./media/manage-backup/upgrade-plan.png)
+    > 
+    > 
+
+2. 在“备份”页上，选择“未配置备份”。 单击此处为应用配置备份。
+
+    ![单击“配置”](./media/manage-backup/configure-start.png)
+
+3. 在“备份配置”页中，单击“未配置存储”来配置存储帐户 。
+
+    ![选择存储帐户](./media/manage-backup/configure-storage.png)
+
 4. 选择“存储帐户”和“容器”来选择备份目标。 该存储帐户必须与要备份的应用属于同一订阅。 也可在各自的页面中新建存储帐户或容器。 完成后，单击“选择”。
-   
-    ![选择存储帐户](./media/web-sites-backup/02ChooseStorageAccount1-1.png)
-5. 在仍处于打开状态的“备份配置”页中，可配置“备份数据库”，然后选择备份要包含的数据库（SQL 数据库或 MySQL），然后单击“确定”。  
-   
-    ![选择存储帐户](./media/web-sites-backup/03ConfigureDatabase1.png)
-   
-   > [!NOTE]
-   > 若要使数据库显示在此列表中，其连接字符串必须位于应用中“应用程序设置”页的“连接字符串”部分中。 
-   >
-   > 应用内 MySQL 数据库无需任何配置即可自动备份。 如果对应用内 MySQL 数据库进行手动设置，例如添加连接字符串，则备份可能无法正常工作。
-   > 
-   > 
-6. 在“备份配置”页中，单击“保存”。    
-7. 在“备份”页中，单击“备份”。
-   
-    ![BackUpNow 按钮][BackUpNow]
-   
+
+5. 在仍处于打开状态的 "**备份配置**" 页上，你可以配置 "**备份数据库**"，然后选择要包含在备份中的数据库（SQL 数据库或 MySQL），然后单击 **"确定"**。
+
+    ![选择存储帐户](./media/manage-backup/configure-database.png)
+
+    > [!NOTE]
+    > 若要使数据库显示在此列表中，其连接字符串必须位于应用中“应用程序设置”页的“连接字符串”部分中 。 
+    >
+    > 应用内 MySQL 数据库无需任何配置即可自动备份。 如果对应用内 MySQL 数据库进行手动设置，例如添加连接字符串，则备份可能无法正常工作。
+    > 
+    > 
+
+6. 在“备份配置”页中，单击“保存” 。
+7. 在“备份”页中，单击“备份” 。
+
+    ![BackUpNow 按钮](./media/manage-backup/manual-backup.png)
+
     备份过程中会显示进度消息。
 
-配置存储帐户和容器后，可随时启动手动备份。  
+配置存储帐户和容器后，可随时启动手动备份。
 
 <a name="automatedbackups"></a>
 
 ## <a name="configure-automated-backups"></a>配置自动执行的备份
-1. 在“备份配置”页中，将“计划备份”设置为“开”。 
-   
-    ![选择存储帐户](./media/web-sites-backup/05ScheduleBackup1.png)
-2. 此时将显示备份计划选项，将“计划备份”设置为“开”，然后按需配置备份计划，并单击“确定”。
-   
-    ![启用自动化的备份][SetAutomatedBackupOn]
+1. 在“备份配置”页中，将“计划备份”设置为“开”  。 
+
+    ![启用自动化的备份](./media/manage-backup/scheduled-backup.png)
+
+2. 根据需要配置备份计划，并选择“确定”。
 
 <a name="partialbackups"></a>
 
@@ -123,24 +115,23 @@ ms.locfileid: "61271644"
 使用部分备份可以精确选择需要备份的文件。
 
 > [!NOTE]
-> 在备份中的单个数据库可以为 4 GB 最大，但备份的总的最大大小为 10 GB
+> 备份中的单个数据库最大可为 4GB，但备份的最大总大小为 10GB
 
 ### <a name="exclude-files-from-your-backup"></a>从备份中排除文件
 假定应用中包含的日志文件和静态映像已经过备份且不会发生更改。 这种情况下，可排除这些文件夹和文件，以免其存储在将来的备份中。 若要从备份中排除文件和文件夹，请在应用的 `D:\home\site\wwwroot` 文件夹中创建一个 `_backup.filter` 文件。 指定要在此文件中排除的文件和文件夹列表。 
 
-访问文件的一种简单方式是使用 Kudu。 单击 Web 应用的“高级工具”->“转到”设置，访问 Kudu。
+可以通过导航到 `https://<app-name>.scm.azurewebsites.net/DebugConsole` 来访问文件。 如果出现系统提示，请登录到你的 Azure 帐户。
 
-![使用门户的 Kudu][kudu-portal]
+确定要从备份中排除的文件夹。 例如，筛选出突出显示的文件夹和文件。
 
-确定要从备份中排除的文件夹。  例如，筛选出突出显示的文件夹和文件。
-
-![映像文件夹][ImagesFolder]
+![映像文件夹](./media/manage-backup/kudu-images.png)
 
 创建名为 `_backup.filter` 的文件并将上述列表放在文件中，但删除 `D:\home`。 每行列出一个目录或文件。 文件的内容应为：
- ```bash
-    \site\wwwroot\Images\brand.png
-    \site\wwwroot\Images\2014
-    \site\wwwroot\Images\2013
+
+ ```
+\site\wwwroot\Images\brand.png
+\site\wwwroot\Images\2014
+\site\wwwroot\Images\2013
 ```
 
 使用 [ftp](deploy-ftp.md) 或任何其他方法，将 `_backup.filter` 文件上传到站点的 `D:\home\site\wwwroot\` 目录。 如果需要，可使用 Kudu `DebugConsole` 直接创建此文件，并在其中插入内容。
@@ -150,7 +141,7 @@ ms.locfileid: "61271644"
 > [!NOTE]
 > 采用与[还原定期备份](web-sites-restore.md)相同的方式，还原站点的部分备份。 还原过程会执行正确的操作。
 > 
-> 还原完整备份后，站点上的所有内容都被替换为备份中的所有内容。 如果文件在站点上但不在备份中，则会将其删除。 但是，还原部分备份时，位于其中一个方块列表目录或任何方块列表文件中的任何内容都保持不变。
+> 还原完整备份后，站点上的所有内容都被替换为备份中的任何内容。 如果文件在站点上但不在备份中，则会将其删除。 但是，还原部分备份时，位于其中一个方块列表目录或任何方块列表文件中的任何内容都保持不变。
 > 
 
 
@@ -159,7 +150,7 @@ ms.locfileid: "61271644"
 ## <a name="how-backups-are-stored"></a>如何存储备份
 对应用进行了一次或多次备份后，可在存储帐户的“容器”页中看到备份以及应用。 在存储帐户中，每个备份都由一个 `.zip` 文件和一个 `.xml` 文件组成，前者包含备份数据，后者包含 `.zip` 文件内容的清单。 如果想要在无需实际执行应用还原的情况下访问备份，则可以解压缩并浏览这些文件。
 
-应用的数据库备份存储在 .zip 文件的根目录中。 对于 SQL 数据库，这是 BACPAC 文件（无文件扩展名），并且可以导入。 若要基于 BACPAC 导出创建 SQL 数据库，请参阅[导入 BACPAC 文件以创建新的用户数据库](https://technet.microsoft.com/library/hh710052.aspx)。
+应用的数据库备份存储在 .zip 文件的根目录中。 对于 SQL 数据库，这是 BACPAC 文件（无文件扩展名），并且可以导入。 若要基于 BACPAC 导出在 Azure SQL 数据库中创建数据库，请参阅[导入 BACPAC 文件，在 AZURE Sql 数据库中创建数据库](../azure-sql/database/database-import.md)。
 
 > [!WARNING]
 > 改动 **websitebackups** 容器中的任何文件都导致备份无效，进而无法还原。
@@ -179,16 +170,3 @@ ms.locfileid: "61271644"
 
 ## <a name="next-steps"></a>后续步骤
 有关从备份中还原应用的信息，请参阅[在 Azure 中还原应用](web-sites-restore.md)。 
-
-
-<!-- IMAGES -->
-[ChooseBackupsPage]: ./media/web-sites-backup/01ChooseBackupsPage1.png
-[ChooseStorageAccount]: ./media/web-sites-backup/02ChooseStorageAccount-1.png
-[BackUpNow]: ./media/web-sites-backup/04BackUpNow1.png
-[SetAutomatedBackupOn]: ./media/web-sites-backup/06SetAutomatedBackupOn1.png
-[SaveIcon]: ./media/web-sites-backup/10SaveIcon.png
-[ImagesFolder]: ./media/web-sites-backup/11Images.png
-[LogsFolder]: ./media/web-sites-backup/12Logs.png
-[GhostUpgradeWarning]: ./media/web-sites-backup/13GhostUpgradeWarning.png
-[kudu-portal]:./media/web-sites-backup/kudu-portal.PNG
-

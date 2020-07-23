@@ -4,8 +4,6 @@ description: Azure CLI 脚本示例 - 使用 Web 应用程序防火墙和使用 
 services: application-gateway
 documentationcenter: networking
 author: vhorne
-manager: jpconnock
-editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: sample
@@ -14,16 +12,16 @@ ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 68c0b1c01d79f591b5023d2e048d1788a3eaffd4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 7fb66c54b13581b9afc516067c1450a154699bb5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117368"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457767"
 ---
 # <a name="restrict-web-traffic-using-the-azure-cli"></a>使用 Azure CLI 限制 Web 流量
 
-此脚本创建具有 Web 应用程序防火墙且使用虚拟机规模集作为后端服务器的应用程序网关。 Web 应用程序防火墙基于 OWASP 规则限制 Web 流量。 在运行脚本后，可以使用应用程序网关的公用 IP 地址测试该网关。
+此脚本创建具有 Web 应用程序防火墙且使用虚拟机规模集作为后端服务器的应用程序网关。 Web 应用程序防火墙基于 OWASP 规则限制 Web 流量。 在运行脚本后，可以使用应用程序网关的公共 IP 地址测试该网关。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -45,12 +43,12 @@ az group delete --name myResourceGroupAG --yes
 
 此脚本使用以下命令创建部署。 表中的每一项均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) | 创建虚拟网络。 |
 | [az network vnet subnet create](https://docs.microsoft.com/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) | 在虚拟网络中创建子网。 |
-| [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest) | 创建应用程序网关的公用 IP 地址。 |
+| [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest) | 创建应用程序网关的公共 IP 地址。 |
 | [az network application-gateway create](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest) | 创建应用程序网关。 |
 | [az vmss create](https://docs.microsoft.com/cli/azure/vmss#az-vmss-create) | 创建虚拟机规模集。 |
 | [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | 创建存储帐户。 |

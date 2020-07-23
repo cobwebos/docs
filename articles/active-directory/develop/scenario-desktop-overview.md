@@ -1,67 +1,70 @@
 ---
-title: 桌面应用程序调用 web Api （概述）-Microsoft 标识平台
-description: 了解如何构建桌面应用调用 web Api （概述）
+title: 构建用于调用 Web API 的桌面应用 | Azure
+titleSuffix: Microsoft identity platform
+description: 了解如何构建用于调用 Web API 的桌面应用（概述）
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 05/18/2020
 ms.author: jmprieur
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44d31011ca70bbebaf994b5fb80a45eee8dbde40
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: MT
+ms.custom: aaddev, identityplatformtop40
+ms.openlocfilehash: 92f0909660427e414264442523dba3ed2abe0142
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65076940"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771853"
 ---
-# <a name="scenario-desktop-app-that-calls-web-apis"></a>场景：桌面应用程序调用 web Api
+# <a name="scenario-desktop-app-that-calls-web-apis"></a>方案：用于调用 Web API 的 桌面应用
 
-了解您需要构建桌面应用调用 web Api
+了解构建用于调用 Web API 的桌面应用所需的一切。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="getting-started"></a>入门
+## <a name="get-started"></a>入门
 
-如果尚未安装，请按照以下.NET 桌面快速入门或 UWP 快速入门中创建第一个应用程序：
-
-> [!div class="nextstepaction"]
-> [快速入门：获取令牌并调用 Microsoft Graph API 从 Windows 桌面应用](./quickstart-v2-windows-desktop.md)
-
+如果尚未创建第一个应用程序，请按照 .NET 桌面快速入门、通用 Windows 平台 (UWP) 快速入门或 macOS 本机应用程序快速入门进行创建：
 
 > [!div class="nextstepaction"]
-> [快速入门：获取令牌，然后从 UWP 应用调用 Microsoft Graph API](./quickstart-v2-uwp.md)
+> [快速入门：获取令牌并从 Windows 桌面应用中调用 Microsoft Graph API](./quickstart-v2-windows-desktop.md)
+
+
+> [!div class="nextstepaction"]
+> [快速入门：获取令牌并从 UWP 应用中调用 Microsoft Graph API](./quickstart-v2-uwp.md)
+
+> [!div class="nextstepaction"]
+> [快速入门：获取令牌并从 macOS 本机应用中调用 Microsoft Graph API](./quickstart-v2-ios.md)
 
 ## <a name="overview"></a>概述
 
-编写桌面应用程序，并且你想要用户登录到你的应用程序，并调用 web Api，如 Microsoft Graph、 其他 Microsoft Api 或你自己的 web API。 有以下几种可能性：
+编写桌面应用程序后，想要将用户登录到应用程序，并调用 Web API，如 Microsoft Graph、其他 Microsoft API 或自己的 Web API。 有几种可能的选择：
 
-- 如果桌面应用程序支持图形控件，例如如果 Windows.Form 应用程序或 WPF 应用程序，可以使用交互式令牌获取。
-- 对于托管的 Windows 应用程序，还有可能加入 Windows 域的计算机上运行的应用程序或 AAD 联接以获取令牌以无提示方式使用集成 Windows 身份验证。
-- 最后，尽管不建议这样做，您可以在公共客户端应用程序中使用用户名/密码。 它仍需要在某些情况下 （如 DevOps)，但要注意，使用它将施加约束你的应用程序。 例如，它不能在需要执行多重身份验证 （条件性访问） 用户登录。 你的应用程序不会有益的单一登录 (SSO)。
+- 可以使用交互式令牌获取：
 
-  它也是针对新式身份验证的原则，并仅提供由于历史原因。
+  - 如果您的桌面应用程序支持图形控件，例如，它是一个 Windows.Form 应用程序、一个 WPF 应用程序或一个 macOS 本机应用程序。
+  - 或者，如果它是 .NET Core 应用程序，并且你同意在系统浏览器中与 Azure Active Directory (Azure AD) 进行身份验证交互。
+
+- 对于 Windows 托管的应用程序，在已加入 Windows 域或 Azure AD 的计算机上运行的应用程序也可以使用集成 Windows 身份验证以无提示方式获取令牌。
+- 最后，虽然不推荐但也可以在公共客户端应用程序中使用用户名和密码。 在某些方案（例如 DevOps）中仍需要它。 但是，使用它会对应用程序施加约束。 例如，它无法使需要执行[多重身份验证](../authentication/concept-mfa-howitworks.md)（条件访问）的用户登录。 此外，应用程序将无法受益于单一登录 (SSO)。
+
+  它也不适用于新式身份验证原则，仅出于遗留原因提供。
 
   ![桌面应用程序](media/scenarios/desktop-app.svg)
 
-- 如果您正在编写可移植的命令行工具-可能在 Linux 或 Mac 上运行的.NET Core 应用程序-你将无法使用任一的交互式身份验证 (如.NET Core 不提供[Web 浏览器](https://aka.ms/msal-net-uses-web-browser))，也不集成Windows 身份验证。 在这种情况下的最佳选项是使用设备代码流。 此流还可用于应用程序，而浏览器中，如 iOT 应用程序
+- 如果编写可移植命令行工具（可能是在 Linux 或 Mac 上运行的 .NET Core 应用程序），并且如果接受将身份验证委派给系统浏览器，则可以使用交互式身份验证。 .NET Core 不提供 [Web 浏览器](https://aka.ms/msal-net-uses-web-browser)，因此会在系统浏览器中进行身份验证。 否则，在这种情况下，最好的选择是使用设备代码流。 此流还适用于没有浏览器的应用程序，如 IoT 应用程序。
 
-  ![Browserless 应用程序](media/scenarios/device-code-flow-app.svg)
+  ![无浏览器应用程序](media/scenarios/device-code-flow-app.svg)
 
-## <a name="specifics"></a>详细信息
+## <a name="specifics"></a>特性
 
-桌面应用程序有很多 specificities，这主要取决于是否您的应用程序是否使用交互式身份验证。
+桌面应用程序具有很多特性。 它们主要取决于你的应用程序是否使用交互式身份验证。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [桌面应用程序-应用注册](scenario-desktop-app-registration.md)
+> [桌面应用：应用注册](scenario-desktop-app-registration.md)

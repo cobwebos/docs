@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 14-04-2019
+ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fa59dff1fcc39cdccc8f74c8a71857ad7367f1b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: d47a70f2e086c5322e8ecd53cbf352c672528ebc
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917714"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85798791"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-cloudsuite"></a>教程：Azure Active Directory 与 Infor CloudSuite 集成
 
@@ -109,23 +109,21 @@ ms.locfileid: "64917714"
 
     a. 在“标识符”文本框中，使用以下模式键入 URL： 
 
-    | | |
-    |-|-|
-    | `http://mingle-sso.inforcloudsuite.com`|
-    | `http://mingle-sso.se1.inforcloudsuite.com`|
-    | `http://mingle-sso.eu1.inforcloudsuite.com`|
-    | `http://mingle-sso.se2.inforcloudsuite.com`|
-    | |
+    ```http
+    http://mingle-sso.inforcloudsuite.com
+    http://mingle-sso.se1.inforcloudsuite.com
+    http://mingle-sso.eu1.inforcloudsuite.com
+    http://mingle-sso.se2.inforcloudsuite.com
+    ```
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
 
-    | | |
-    |-|-|
-    | `https://mingle-sso.inforcloudsuite.com:443/sp/ACS.saml2`|
-    | `https://mingle-sso.se1.inforcloudsuite.com:443/sp/ACS.saml2`|
-    | `https://mingle-sso.se2.inforcloudsuite.com:443/sp/ACS.saml2`|
-    | `https://mingle-sso.eu1.inforcloudsuite.com:443/sp/ACS.saml2`|
-    | |
+    ```http
+    https://mingle-sso.inforcloudsuite.com:443/sp/ACS.saml2
+    https://mingle-sso.se1.inforcloudsuite.com:443/sp/ACS.saml2
+    https://mingle-sso.se2.inforcloudsuite.com:443/sp/ACS.saml2
+    https://mingle-sso.eu1.inforcloudsuite.com:443/sp/ACS.saml2
+    ```
 
 5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
@@ -133,12 +131,12 @@ ms.locfileid: "64917714"
 
     在“登录 URL”文本框中，使用以下模式键入 URL： 
 
-    | | |
-    |-|-|
-    | `https://mingle-portal.inforcloudsuite.com/Tenant-Name/`|
-    | `https://mingle-portal.eu1.inforcloudsuite.com/Tenant-Name/`|
-    | `https://mingle-portal.se1.inforcloudsuite.com/Tenant-Name/`|
-    | `https://mingle-portal.se2.inforcloudsuite.com/Tenant-Name/`|
+    ```http
+    https://mingle-portal.inforcloudsuite.com/Tenant-Name/
+    https://mingle-portal.eu1.inforcloudsuite.com/Tenant-Name/
+    https://mingle-portal.se1.inforcloudsuite.com/Tenant-Name/
+    https://mingle-portal.se2.inforcloudsuite.com/Tenant-Name/
+    ```
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 要获取这些值，请联系 [Infor CloudSuite 客户端支持团队](mailto:support@infor.com)。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。

@@ -4,12 +4,12 @@ ms.service: hdinsight
 ms.topic: include
 ms.date: 10/25/2018
 ms.author: jasonh
-ms.openlocfilehash: 22c71aaa444d105995ee21c6c255542c2edf77af
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: eac8a9f1ca0c9a4824499155f25bb22ac8474bae
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66118682"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75934623"
 ---
 > [!div class="op_single_selector"]
 > * [概述](../articles/hdinsight/hdinsight-hadoop-provision-linux-clusters.md)
@@ -18,7 +18,6 @@ ms.locfileid: "66118682"
 > * [Azure CLI](../articles/hdinsight/hdinsight-hadoop-create-linux-clusters-azure-cli.md)
 > * [Azure PowerShell](../articles/hdinsight/hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
 > * [REST API (cURL)](../articles/hdinsight/hdinsight-hadoop-create-linux-clusters-curl-rest.md)
-> * [.NET SDK](../articles/hdinsight/hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)
 > * [Azure 资源管理器模板](../articles/hdinsight/hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 > 
 > 

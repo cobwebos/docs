@@ -9,15 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-origin.date: 06/20/2018
-ms.date: 12/31/2018
-ms.author: v-yiso
-ms.openlocfilehash: a01e50debf11daf2f1163a56726f5574f7e3e379
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 06/20/2018
+ms.author: apimpm
+ms.openlocfilehash: cbdc81789fcd996774090f12523e7404c0aa0111
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123461"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205848"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>自动缩放 Azure API 管理实例  
 
@@ -25,7 +24,10 @@ Azure API 管理服务实例可以根据一组规则自动缩放。 此行为可
 
 本文逐步讲解配置自动缩放的过程，并建议自动缩放规则的最佳配置。
 
-## <a name="prerequisites"></a>必备组件
+> [!NOTE]
+> **消耗**层中的 API 管理服务会根据流量自动缩放，无需任何其他配置。
+
+## <a name="prerequisites"></a>先决条件
 
 若要执行本文中的步骤，必须：
 
@@ -34,7 +36,7 @@ Azure API 管理服务实例可以根据一组规则自动缩放。 此行为可
 + 了解 [Azure API 管理实例容量](api-management-capacity.md)的概念。
 + 了解 [Azure API 管理实例的手动缩放过程](upgrade-and-scale.md)，包括成本影响。
 
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+[!INCLUDE [premium-standard.md](../../includes/api-management-availability-premium-standard.md)]
 
 ## <a name="azure-api-management-autoscale-limitations"></a>Azure API 管理自动缩放的限制
 
@@ -50,21 +52,21 @@ Azure API 管理服务实例可以根据一组规则自动缩放。 此行为可
 
 遵循以下步骤为 Azure API 管理服务配置自动缩放：
 
-1. 在 Azure 门户中导航到“Monitor”实例。
+1. 在 Azure 门户中导航到“Monitor”实例。****
 
     ![Azure Monitor](media/api-management-howto-autoscale/01.png)
 
-2. 在左侧菜单中选择“自动缩放”。
+2. 在左侧菜单中选择“自动缩放”****。
 
     ![Azure Monitor - 自动缩放 - 资源](media/api-management-howto-autoscale/02.png)
 
 3. 基于下拉菜单中的筛选器找到自己的 Azure API 管理服务。
 4. 选择所需的 Azure API 管理服务实例。
-5. 在新打开的部分，单击“启用自动缩放”按钮。
+5. 在新打开的部分，单击“启用自动缩放”按钮。****
 
     ![Azure Monitor - 自动缩放 - 启用](media/api-management-howto-autoscale/03.png)
 
-6. 在“规则”部分，单击“+ 添加规则”。
+6. 在“规则”部分，单击“+ 添加规则”。********
 
     ![Azure Monitor - 自动缩放 - 添加规则](media/api-management-howto-autoscale/04.png)
 
@@ -82,16 +84,16 @@ Azure API 管理服务实例可以根据一组规则自动缩放。 此行为可
     | 运算符              | 大于      |                                                                                                                                                                                                                                                                                 |
     | 阈值             | 80%               | 平均容量指标的阈值。                                                                                                                                                                                                                                 |
     | 持续时间(分钟) | 30                | 要计算平均值的容量指标的时间跨度特定于使用模式。 该时间段越长，做出的反应就越流畅 - 间歇性高峰对横向扩展决策的影响较小。 但是，它还会延迟横向扩展触发器。 |
-    | *Action*              |                   |                                                                                                                                                                                                                                                                                 |
-    | Operation             | 增加计数 |                                                                                                                                                                                                                                                                                 |
-    | 实例计数        | 第                 | 以 1 个单位为增量横向扩展 Azure API 管理实例。                                                                                                                                                                                                                          |
-    | 冷却(分钟)   | 60                | 横向扩展 Azure API 管理服务至少需要 20 分钟。在大多数情况下，60 分钟冷却期可以防止触发许多的横向扩展操作。                                                                                                  |
+    | *操作*              |                   |                                                                                                                                                                                                                                                                                 |
+    | 操作             | 计数增量 |                                                                                                                                                                                                                                                                                 |
+    | 实例计数        | 1                 | 以 1 个单位为增量横向扩展 Azure API 管理实例。                                                                                                                                                                                                                          |
+    | 冷却(分钟)   | 60                | Azure API 管理服务的横向扩展至少需要20分钟。在大多数情况下，60分钟的冷却时间段会阻止触发许多横向扩展。                                                                                                  |
 
 8. 单击“添加”保存规则。
 
     ![Azure Monitor - 横向扩展规则](media/api-management-howto-autoscale/05.png)
 
-9. 再次单击“+ 添加规则”。
+9. 再次单击“+ 添加规则”。****
 
     这次需要定义横向缩减规则。 这可以确保在 API 用量减少时不会浪费资源。
 
@@ -109,9 +111,9 @@ Azure API 管理服务实例可以根据一组规则自动缩放。 此行为可
     | 运算符              | 小于         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | 阈值             | 35%               | 与横向扩展规则类似，此值在很大程度取决于 Azure API 管理的使用模式。 |
     | 持续时间(分钟) | 30                | 横向扩展规则所用的相同值。                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-    | *Action*              |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Operation             | 减少计数 | 与横向扩展规则使用的值相反。                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-    | 实例计数        | 第                 | 横向扩展规则所用的相同值。                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+    | *操作*              |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | 运算             | 计数减量 | 与横向扩展规则使用的值相反。                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+    | 实例计数        | 1                 | 横向扩展规则所用的相同值。                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
     | 冷却(分钟)   | 90                | 横向缩减应该比横向扩展更保守，因此冷却期应该更长。                                                                                                                                                                                                                                                                                                                                                                                                    |
 
 11. 单击“添加”保存规则。
@@ -125,8 +127,9 @@ Azure API 管理服务实例可以根据一组规则自动缩放。 此行为可
 
     ![Azure Monitor - 横向缩减规则](media/api-management-howto-autoscale/07.png)
 
-13. 单击“ **保存**”。 现已配置自动缩放。
+13. 单击“保存”。 现已配置自动缩放。
 
 ## <a name="next-steps"></a>后续步骤
 
-+ [如何将 Azure API 管理服务实例部署到多个 Azure 区域](api-management-howto-deploy-multi-region.md)
+- [如何将 Azure API 管理服务实例部署到多个 Azure 区域](api-management-howto-deploy-multi-region.md)
+- [优化并节省云支出](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

@@ -7,19 +7,20 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 204f540b-09f1-452b-a52f-78143710ef76
-ms.service: Azure-Active-Directory
+ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 611867cf5606d5a1078706e1c0f67f673a7fa500
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 26a761708f56ff7aba8daf86d2991579e60291cb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66254605"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81870193"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect"></a>教程：Azure Active Directory 与 Mitel MiCloud Connect 的集成
 
@@ -109,18 +110,18 @@ ms.locfileid: "66254605"
     此时会显示“Mitel Connect 单一登录设置”对话框。
     
 3. 选中“启用单一登录”  复选框。
-    ![图片](./media/mitel-connect-tutorial/Mitel_Connect_Enable.png)
+    ![图像](./media/mitel-connect-tutorial/Mitel_Connect_Enable.png)
 
 
 4. 在 Azure 门户的“基本 SAML 配置”部分，单击“编辑”图标。  
-    ![图片](common/edit-urls.png)
+    ![图像](common/edit-urls.png)
 
     此时会显示“基本 SAML 配置”对话框。
 
 5.  在 Mitel 帐户门户中复制“Mitel 标识符(实体 ID)”字段中的 URL，将其粘贴到 Azure 门户的“标识符(实体 ID)”字段中。  
 
 6. 在 Mitel 帐户门户中复制“回复 URL (断言使用者服务 URL)”字段中的 URL，将其粘贴到 Azure 门户的“回复 URL (断言使用者服务 URL)”字段中。    
-   ![图片](./media/mitel-connect-tutorial/Mitel_Azure_BasicConfig.png)
+   ![图像](./media/mitel-connect-tutorial/Mitel_Azure_BasicConfig.png)
 
 7. 在“登录 URL”文本框中，键入以下 URL 之一： 
 
@@ -132,17 +133,17 @@ ms.locfileid: "66254605"
 8. 在 Azure 门户的“基本 SAML 配置”对话框中单击“保存”。  
 
 9. 在 Azure 门户的“基于 SAML 的登录”页的“SAML 签名证书”部分，单击“证书(Base64)”旁边的“下载”，下载**签名证书**并将其保存到计算机     。
-    ![图片](./media/mitel-connect-tutorial/Azure_SigningCert.png)
+    ![图像](./media/mitel-connect-tutorial/Azure_SigningCert.png)
 
 10. 在文本编辑器中打开签名证书文件，复制文件中的所有数据，然后将数据粘贴到 Mitel 帐户门户的“签名证书”字段中。  
-    ![图片](./media/mitel-connect-tutorial/Mitel_Connect_SigningCert.png)
+    ![图像](./media/mitel-connect-tutorial/Mitel_Connect_SigningCert.png)
 
 11. 在 Azure 门户的“基于 SAML 的登录”页的“设置 Mitel Connect”部分，执行以下操作：  
 
     a. 复制“登录 URL”字段中的 URL，将其粘贴到 Mitel 帐户门户的“登录 URL”字段中。  
 
     b. 复制“Azure AD 标识符”字段中的 URL，将其粘贴到 Mitel 帐户门户的“实体 ID”字段中。  
-    ![图片](./media/mitel-connect-tutorial/Mitel_Azure_SetupConnect.png)
+    ![图像](./media/mitel-connect-tutorial/Mitel_Azure_SetupConnect.png)
 
 12. 在 Mitel 帐户门户的“Mitel Connect 单一登录设置”对话框中单击“保存”。  
 
@@ -165,7 +166,7 @@ ms.locfileid: "66254605"
     a. 在“姓名”  字段中，键入输入“BrittaSimon”  。
   
     b. 在“用户名”字段中，键入 brittasimon@\<yourcompanydomain\>.\<extension\>。   
-例如，BrittaSimon@contoso.com。
+例如，BrittaSimon@contoso.com 。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
 
@@ -201,7 +202,7 @@ ms.locfileid: "66254605"
 
 在本部分，我们将在 MiCloud Connect 帐户中创建名为 Britta Simon 的用户。 使用单一登录前，必须先创建并激活用户。
 
-若要详细了解如何在 Mitel 帐户门户中添加用户，请参阅 Mitel 知识库中的 [Adding a User](https://docs.shoretel.com/connectcloud/Account/Users/AddUser)（添加用户）一文。
+若要详细了解如何在 Mitel 帐户门户中添加用户，请参阅 Mitel 知识库中的 [Adding a User](https://oneview.mitel.com/s/article/Adding-a-User-092815)（添加用户）一文。
 
 根据以下详细信息在 MiCloud Connect 帐户中创建用户：
 
@@ -210,7 +211,7 @@ ms.locfileid: "66254605"
 * **业务电子邮件地址：** `brittasimon@<yourcompanydomain>.<extension>`   
 （示例：[brittasimon@contoso.com](mailto:brittasimon@contoso.com)）
 
-* **用户名：** `brittasimon@<yourcompanydomain>.<extension> `  
+* **用户名：** `brittasimon@<yourcompanydomain>.<extension>`  
 （示例：[brittasimon@contoso.com](mailto:brittasimon@contoso.com)；用户的用户名通常就是用户的业务电子邮件地址）
 
 **注意：** 用户的 MiCloud Connect 用户名必须与用户在 Azure 中的电子邮件地址相同。

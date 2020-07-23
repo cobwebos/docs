@@ -1,31 +1,29 @@
 ---
-title: 使用 Spark 读取和写入 HBase 数据 - Azure HDInsight
+title: 使用 Spark 来读写 HBase 数据 - Azure HDInsight
 description: 使用 Spark HBase 连接器将 Spark 群集中的数据读写到 HBase 群集。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 03/12/2019
-ms.openlocfilehash: e3f5cb726dddbdbfbd1b1f48c800ac681e7a174c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.topic: how-to
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/20/2020
+ms.openlocfilehash: 3ddb8734a3d15a6cd5f4a43ee069d6364f7523ed
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696551"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087476"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>使用 Apache Spark 读取和写入 Apache HBase 数据
 
-通常使用 Apache HBase 的低级别 API（扫描、获取和放置）或者通过 Apache Phoenix 使用 SQL 语法来查询 Apache HBase。 Apache 还提供 Apache Spark HBase 连接器，这是一个查询并修改 HBase 存储的数据的方便且高效的替代方案。
+通常使用 Apache HBase 的低级别 API（扫描、获取和放置）或者通过 Apache Phoenix 使用 SQL 语法来查询 Apache HBase。 Apache 还提供 Apache Spark HBase 连接器。 连接器是用于查询和修改 HBase 存储的数据的一种方便、高性能的替代方法。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* 两个独立的 HDInsight 群集、一个HBase、一个至少装有 Spark 2.1 (HDInsight 3.6) 的 Spark。
-* Spark 集群需要按最低延迟直接与 HBase 集群进行通信，因此推荐的配置是将两个集群都部署在同一个虚拟网络中。 有关详细信息，请参阅[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)。
-* SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。
-* 群集主存储的 [URI 方案](hdinsight-hadoop-linux-information.md#URI-and-scheme)。 这将是 wasb: / / Azure Blob 存储，abfs: / / 用于 Azure 数据湖存储第 2 代或 adl: / / 用于 Azure 数据湖存储 Gen1。 如果为 Blob 存储或 Data Lake Storage Gen2 启用了安全传输，则 URI 分别是 wasbs:// 或 abfss://。另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
+* 部署在同一[虚拟网络](./hdinsight-plan-virtual-network-deployment.md)中的两个单独的 HDInsight 群集。 一个HBase 和一个至少安装了 Spark 2.1 (HDInsight 3.6) 的 Spark。 有关详细信息，请参阅[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)。
 
+* 群集主存储的 URI 方案。 此方案将 wasb://用于 Azure Blob 存储， `abfs://` 适用于 Azure Data Lake Storage Gen1 的 Azure Data Lake Storage Gen2 或 adl://。 如果为 Blob 存储启用了安全传输，则 URI 将为 `wasbs://`。  另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
 
 ## <a name="overall-process"></a>整体进程
 
@@ -40,38 +38,47 @@ ms.locfileid: "64696551"
 
 ## <a name="prepare-sample-data-in-apache-hbase"></a>在 Apache HBase 中准备示例数据
 
-此步骤中，在 Apache HBase 中创建并填充一个简单的表，然后可使用 Spark 来查询。
+此步骤中，将在 Apache HBase 中创建并填充一个表，然后可使用 Spark 对其进行查询。
 
-1. 使用 SSH 连接到 HBase 集群的头节点。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)。  编辑以下命令，将 `HBASECLUSTER` 替换为 HBase 群集的名称，将 `sshuser` 替换为 SSH 用户帐户名，然后输入该命令。
+1. 使用 `ssh` 命令连接到 HBase 群集。 编辑以下命令，将 `HBASECLUSTER` 替换为 HBase 群集的名称，然后输入该命令：
 
-    ```
+    ```cmd
     ssh sshuser@HBASECLUSTER-ssh.azurehdinsight.net
     ```
 
-2. 输入以下命令，以启动 HBase shell：
+2. 使用 `hbase shell` 命令启动 HBase 交互式 shell。 在 SSH 连接中输入以下命令。
 
-        hbase shell
+    ```bash
+    hbase shell
+    ```
 
-3. 输入以下命令，以创建包含列系列 `Personal` 和 `Office` 的 `Contacts` 表：
+3. 使用 `create` 命令创建包含双列系列的 HBase 表。 输入以下命令：
 
-        create 'Contacts', 'Personal', 'Office'
+    ```hbase
+    create 'Contacts', 'Personal', 'Office'
+    ```
 
-4. 输入以下命令，以加载几行示例数据：
+4. 使用 `put` 命令将指定列中的值插入特定表中的指定行。 输入以下命令：
 
-        put 'Contacts', '1000', 'Personal:Name', 'John Dole'
-        put 'Contacts', '1000', 'Personal:Phone', '1-425-000-0001'
-        put 'Contacts', '1000', 'Office:Phone', '1-425-000-0002'
-        put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
-        put 'Contacts', '8396', 'Personal:Name', 'Calvin Raji'
-        put 'Contacts', '8396', 'Personal:Phone', '230-555-0191'
-        put 'Contacts', '8396', 'Office:Phone', '230-555-0191'
-        put 'Contacts', '8396', 'Office:Address', '5415 San Gabriel Dr.'
+    ```hbase
+    put 'Contacts', '1000', 'Personal:Name', 'John Dole'
+    put 'Contacts', '1000', 'Personal:Phone', '1-425-000-0001'
+    put 'Contacts', '1000', 'Office:Phone', '1-425-000-0002'
+    put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
+    put 'Contacts', '8396', 'Personal:Name', 'Calvin Raji'
+    put 'Contacts', '8396', 'Personal:Phone', '230-555-0191'
+    put 'Contacts', '8396', 'Office:Phone', '230-555-0191'
+    put 'Contacts', '8396', 'Office:Address', '5415 San Gabriel Dr.'
+    ```
 
-5. 输入以下命令，以退出 HBase shell：
+5. 使用 `exit` 命令停止 HBase 交互式 shell。 输入以下命令：
 
-        exit 
+    ```hbase
+    exit
+    ```
 
 ## <a name="copy-hbase-sitexml-to-spark-cluster"></a>将 hbase-site.xml 复制到 Spark 群集
+
 将 hbase-site.xml 从本地存储复制到 Spark 群集默认存储所在的根目录。  编辑以下命令以反映配置。  然后，在与 HBase 群集建立的 SSH 会话中输入该命令：
 
 | 语法值 | 新值|
@@ -80,27 +87,75 @@ ms.locfileid: "64696551"
 |`SPARK_STORAGE_CONTAINER`|替换为 Spark 群集使用的默认存储容器名称。|
 |`SPARK_STORAGE_ACCOUNT`|替换为 Spark 群集使用的默认存储帐户名称。|
 
-```
+```bash
 hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CONTAINER@SPARK_STORAGE_ACCOUNT.blob.core.windows.net/
+```
+
+然后退出与 HBase 群集的 ssh 连接。
+
+```bash
+exit
 ```
 
 ## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>将 hbase-site.xml 放置于 Spark 集群上
 
-1. 使用 SSH 连接到 Spark 集群的头节点。
+1. 使用 SSH 连接到 Spark 集群的头节点。 编辑以下命令，将 `SPARKCLUSTER` 替换为 Spark 群集的名称，然后输入该命令：
+
+    ```cmd
+    ssh sshuser@SPARKCLUSTER-ssh.azurehdinsight.net
+    ```
 
 2. 输入以下命令，将 `hbase-site.xml` 从 Spark 群集的默认存储复制到群集本地存储上的 Spark 2 配置文件夹中：
 
-        sudo hdfs dfs -copyToLocal /hbase-site.xml /etc/spark2/conf
+    ```bash
+    sudo hdfs dfs -copyToLocal /hbase-site.xml /etc/spark2/conf
+    ```
 
 ## <a name="run-spark-shell-referencing-the-spark-hbase-connector"></a>运行 Spark Shell，引用 Spark HBase 连接器
 
-1. 在与 Spark 群集建立的 SSH 会话中，输入以下命令以启动 Spark shell：
+完成上述步骤后，应能够运行 Spark shell，并引用相应版本的 Spark HBase 连接器。 若要为群集方案查找最新的适当 Spark HBase 连接器核心版本，请参阅[SHC Core Repository](https://repo.hortonworks.com/content/groups/public/com/hortonworks/shc/shc-core/)。
 
+例如，下表列出了 HDInsight 团队当前使用的两个版本和相应的命令。 如果 HBase 和 Spark 的版本与表中所示的相同，则可为群集使用相同的版本。 
+
+
+1. 在打开的到 Spark 群集的 SSH 会话中，输入以下命令以启动 Spark shell：
+
+    |Spark 版本| HDI HBase 版本  | SHC 版本    |  Command  |
+    | :-----------:| :----------: | :-----------: |:----------- |
+    |      2.1    | HDI 3.6 （HBase 1.1） | 1.1.0.3.1.2.2-1    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
+    |      2.4    | HDI 4.0 （HBase 2.0） | 1.1.1-2.1-s_2  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
+
+2. 使此 Spark shell 实例保持打开状态并继续[定义目录和查询](#define-a-catalog-and-query)。 如果找不到对应于 SHC Core 存储库中版本的 jar，请继续阅读。 
+
+可以直接从[spark--连接器](https://github.com/hortonworks-spark/shc)GitHub 分支生成 jar。 例如，如果运行的是 Spark 2.3 和 HBase 1.1，请完成以下步骤：
+
+1. 克隆存储库：
+
+    ```bash
+    git clone https://github.com/hortonworks-spark/shc
     ```
-    spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/
-    ```  
+    
+2. 中转到分支-2.3：
 
-2. 保持此 Spark Shell 实例处于打开状态，并继续执行下一步操作。
+    ```bash
+    git checkout branch-2.3
+    ```
+
+3. 从分支生成（创建 .jar 文件）：
+
+    ```bash
+    mvn clean package -DskipTests
+    ```
+    
+3. 运行以下命令（请确保更改对应于所生成的 .jar 文件的 .jar 名称）：
+
+    ```bash
+    spark-shell --jars <path to your jar>,/usr/hdp/current/hbase-client/lib/htrace-core-3.1.0-incubating.jar,/usr/hdp/current/hbase-client/lib/hbase-client.jar,/usr/hdp/current/hbase-client/lib/hbase-common.jar,/usr/hdp/current/hbase-client/lib/hbase-server.jar,/usr/hdp/current/hbase-client/lib/hbase-protocol.jar,/usr/hdp/current/hbase-client/lib/htrace-core-3.1.0-incubating.jar
+    ```
+    
+4. 使此 Spark shell 实例保持打开状态，然后继续下一部分。 
+
+
 
 ## <a name="define-a-catalog-and-query"></a>定义目录和查询
 
@@ -115,7 +170,7 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
     import spark.sqlContext.implicits._
     ```  
 
-2. 输入以下命令，以定义在 HBase 中创建的 Contacts 表的目录：
+1. 输入以下命令，以定义在 HBase 中创建的 Contacts 表的目录：
 
     ```scala
     def catalog = s"""{
@@ -131,13 +186,13 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
     |}""".stripMargin
     ```
 
-    该代码执行以下操作：  
+    代码：  
 
-     a. 定义名为 `Contacts` 的 HBase 表的目录架构。  
-     b. 将 rowkey 标识为 `key`，并将 Spark 中使用的列名映射到 HBase 中使用的列族、列名和列类型。  
-     c. Rowkey 还必须详细定义为具有 `rowkey` 的特定列族 `cf` 的命名列 (`rowkey`)。  
+    1. 定义名为的 HBase 表的目录架构 `Contacts` 。  
+    1. 将 rowkey 标识为 `key` ，并将 Spark 中使用的列名映射到在 HBase 中使用的列系列、列名称和列类型。  
+    1. 将 rowkey 定义为详细的命名列（ `rowkey` ），该列具有特定的列系列 `cf` `rowkey` 。  
 
-3. 输入以下命令，以定义一个在 HBase 中提供围绕 `Contacts` 表的 DataFrame 的方法：
+1. 输入以下命令，以定义一个在 HBase 中提供围绕 `Contacts` 表的 DataFrame 的方法：
 
     ```scala
     def withCatalog(cat: String): DataFrame = {
@@ -149,48 +204,51 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
      }
     ```
 
-4. 创建 DataFrame 的实例：
+1. 创建 DataFrame 的实例：
 
     ```scala
     val df = withCatalog(catalog)
     ```  
 
-5. 查询 DataFrame：
+1. 查询 DataFrame：
 
     ```scala
     df.show()
     ```
 
-6. 应看到如下两行数据：
+    应看到如下两行数据：
 
-        +------+--------------------+--------------+-------------+--------------+
-        |rowkey|       officeAddress|   officePhone| personalName| personalPhone|
-        +------+--------------------+--------------+-------------+--------------+
-        |  1000|1111 San Gabriel Dr.|1-425-000-0002|    John Dole|1-425-000-0001|
-        |  8396|5415 San Gabriel Dr.|  230-555-0191|  Calvin Raji|  230-555-0191|
-        +------+--------------------+--------------+-------------+--------------+
+    ```output
+    +------+--------------------+--------------+-------------+--------------+
+    |rowkey|       officeAddress|   officePhone| personalName| personalPhone|
+    +------+--------------------+--------------+-------------+--------------+
+    |  1000|1111 San Gabriel Dr.|1-425-000-0002|    John Dole|1-425-000-0001|
+    |  8396|5415 San Gabriel Dr.|  230-555-0191|  Calvin Raji|  230-555-0191|
+    +------+--------------------+--------------+-------------+--------------+
+    ```
 
-7. 注册一个临时表，以便使用 Spark SQL 查询 HBase 表：
+1. 注册一个临时表，以便使用 Spark SQL 查询 HBase 表：
 
     ```scala
     df.createTempView("contacts")
     ```
 
-8. 针对 `contacts` 表发出 SQL 查询：
+1. 针对 `contacts` 表发出 SQL 查询：
 
     ```scala
-    val query = spark.sqlContext.sql("select personalName, officeAddress from contacts")
-    query.show()
+    spark.sqlContext.sql("select personalName, officeAddress from contacts").show
     ```
 
-9. 应看到如下结果：
+    应看到如下结果：
 
-        +-------------+--------------------+
-        | personalName|       officeAddress|
-        +-------------+--------------------+
-        |    John Dole|1111 San Gabriel Dr.|
-        |  Calvin Raji|5415 San Gabriel Dr.|
-        +-------------+--------------------+
+    ```output
+    +-------------+--------------------+
+    | personalName|       officeAddress|
+    +-------------+--------------------+
+    |    John Dole|1111 San Gabriel Dr.|
+    |  Calvin Raji|5415 San Gabriel Dr.|
+    +-------------+--------------------+
+    ```
 
 ## <a name="insert-new-data"></a>插入新数据
 
@@ -206,7 +264,7 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
         )
     ```
 
-2. 创建 `ContactRecord` 的实例并将其放在一个数组中：
+1. 创建 `ContactRecord` 的实例并将其放在一个数组中：
 
     ```scala
     val newContact = ContactRecord("16891", "40 Ellis St.", "674-555-0110", "John Jackson","230-555-0194")
@@ -215,27 +273,35 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
     newData(0) = newContact
     ```
 
-3. 将新数据数组保存到 HBase：
+1. 将新数据数组保存到 HBase：
 
     ```scala
     sc.parallelize(newData).toDF.write.options(Map(HBaseTableCatalog.tableCatalog -> catalog, HBaseTableCatalog.newTable -> "5")).format("org.apache.spark.sql.execution.datasources.hbase").save()
     ```
 
-4. 检查结果：
+1. 检查结果：
 
     ```scala  
     df.show()
     ```
 
-5. 应看到如下输出：
+    应看到如下输出：
 
-        +------+--------------------+--------------+------------+--------------+
-        |rowkey|       officeAddress|   officePhone|personalName| personalPhone|
-        +------+--------------------+--------------+------------+--------------+
-        |  1000|1111 San Gabriel Dr.|1-425-000-0002|   John Dole|1-425-000-0001|
-        | 16891|        40 Ellis St.|  674-555-0110|John Jackson|  230-555-0194|
-        |  8396|5415 San Gabriel Dr.|  230-555-0191| Calvin Raji|  230-555-0191|
-        +------+--------------------+--------------+------------+--------------+
+    ```output
+    +------+--------------------+--------------+------------+--------------+
+    |rowkey|       officeAddress|   officePhone|personalName| personalPhone|
+    +------+--------------------+--------------+------------+--------------+
+    |  1000|1111 San Gabriel Dr.|1-425-000-0002|   John Dole|1-425-000-0001|
+    | 16891|        40 Ellis St.|  674-555-0110|John Jackson|  230-555-0194|
+    |  8396|5415 San Gabriel Dr.|  230-555-0191| Calvin Raji|  230-555-0191|
+    +------+--------------------+--------------+------------+--------------+
+    ```
+
+1. 通过输入以下命令关闭 spark shell：
+
+    ```scala
+    :q
+    ```
 
 ## <a name="next-steps"></a>后续步骤
 

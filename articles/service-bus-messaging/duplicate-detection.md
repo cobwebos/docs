@@ -1,24 +1,13 @@
 ---
 title: Azure 服务总线重复消息检测 | Microsoft Docs
-description: 检测重复的服务总线消息
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+description: 本文介绍如何检测 Azure 服务总线消息中的重复项。 可以忽略并丢弃重复消息。
 ms.topic: article
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: d9f814a49924ca95078f3b3decca4f3922c74c2b
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: c8935fa67dda28bb2fec663c5e714982933f0f22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413665"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337915"
 ---
 # <a name="duplicate-detection"></a>重复检测
 
@@ -37,7 +26,7 @@ ms.locfileid: "65413665"
 虽然 MessageId 可以始终是某 GUID，但将标识符绑定到业务流程可以预测重复消息，这更有利于有效使用重复检测功能。
 
 > [!NOTE]
-> 如果已启用重复侦测，未设置会话 ID 或分区键的消息 ID 用作分区键。 如果还未设置消息 ID，.NET 和 AMQP 库自动生成的消息的消息 ID。 有关详细信息，请参阅[使用的分区密钥](service-bus-partitioning.md#use-of-partition-keys)。
+> 如果启用了重复检测，并且未设置会话 ID 或分区键，则消息 ID 将用作分区键。 如果消息 ID 也未设置，.NET 和 AMQP 库将自动为消息生成消息 ID。 有关详细信息，请参阅[使用分区键](service-bus-partitioning.md#use-of-partition-keys)。
 
 ## <a name="enable-duplicate-detection"></a>启用重复检测
 
@@ -67,6 +56,8 @@ ms.locfileid: "65413665"
 * [服务总线队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
 * [如何使用服务总线主题和订阅](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+
+如果客户端代码无法使用与以前相同的*MessageId*重新提交消息，则必须设计可安全重新处理的消息，这一点很重要。 此[博客文章关于幂等性](https://particular.net/blog/what-does-idempotent-mean)介绍了如何执行此操作的各种技术。
 
 [1]: ./media/duplicate-detection/create-queue.png
 [2]: ./media/duplicate-detection/queue-prop.png

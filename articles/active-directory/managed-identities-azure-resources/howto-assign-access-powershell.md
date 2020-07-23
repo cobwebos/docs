@@ -1,6 +1,6 @@
 ---
-title: 如何使用 PowerShell 向托管标识分配对 Azure 资源的访问权限
-description: 分步说明如何使用 PowerShell 将托管标识分配给一个资源，将访问权限分配给另一个资源。
+title: 使用 PowerShell 向托管标识分配对资源的访问权限 - Azure AD
+description: 分步说明了如何使用 PowerShell 在一个资源上分配托管标识，以及访问另一资源。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -9,18 +9,18 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff36be7f87d0dd9e5cac5ee7f788eec0cda5a9fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a9fcca72234340a6284dbba5443ae6fb735d4a04
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60290679"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608273"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-powershell"></a>使用 PowerShell 向托管标识分配对资源的访问权限
 
@@ -30,9 +30,9 @@ ms.locfileid: "60290679"
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-it-work)。
+- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#managed-identity-types)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
 - 安装[最新版本的 Azure PowerShell](/powershell/azure/install-az-ps)（如果尚未安装）。
 

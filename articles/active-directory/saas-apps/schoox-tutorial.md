@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Schoox 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Schoox 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Schoox 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: f8b4cdcc-cbf6-4229-9427-05632e33f942
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c19dae4af1007d8444097db06bded51d714e74ff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5b800966055ede8a6fb897eda15b4ff77ea61fcc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65867797"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "73161159"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-schoox"></a>教程：Azure Active Directory 与 Schoox 集成
+# <a name="tutorial-azure-active-directory-integration-with-schoox"></a>教程：Azure Active Directory 与 Schoox 的集成
 
 本教程介绍了如何将 Schoox 与 Azure Active Directory (Azure AD) 进行集成。
 将 Schoox 与 Azure AD 进行集成可提供以下优势：
@@ -34,7 +35,7 @@ ms.locfileid: "65867797"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Schoox 的集成，需要以下项：
 
@@ -53,25 +54,25 @@ ms.locfileid: "65867797"
 
 **若要从库中添加 Schoox，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Schoox”，在结果面板中选择“Schoox”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中，键入“Schoox”，在结果面板中选择“Schoox”，然后单击“添加”按钮添加该应用程序。   
 
      ![结果列表中的 Schoox](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Schoox 的 Azure AD 单一登录。
+在本部分中，将基于名为“Britta Simon”  的测试用户配置和测试 Schoox 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 Schoox 相关用户之间建立链接关系。
 
 若要配置和测试 Schoox 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -89,7 +90,7 @@ ms.locfileid: "65867797"
 
 若要配置 Schoox 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Schoox”应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Schoox”应用程序集成页上，选择“单一登录”。  
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,7 +98,7 @@ ms.locfileid: "65867797"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“设置 SAML 单一登录”页上，单击“编辑”图标，打开“基本 SAML 配置”对话框。
+3. 在“设置 SAML 单一登录”页上，单击“编辑”图标，打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -105,22 +106,22 @@ ms.locfileid: "65867797"
 
     ![Schoox 域和 URL 单一登录信息](common/idp-identifier.png)
 
-    在“标识符”文本框中，键入一个 URL：`https://saml.schoox.com/saml/adfsmetadata`
+    在“标识符”  文本框中，键入一个 URL：`https://saml.schoox.com/saml/adfsmetadata`
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     ![image](common/both-preintegrated-signon.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://saml.schoox.com/saml/login?idpUrl=<entityID>`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://saml.schoox.com/saml/login?idpUrl=<entityID>`
 
     > [!NOTE]
     > `<entityID>` 是从教程下文中介绍的“快速参考”部分中复制的 SAML 实体 ID。
 
-6. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
+6. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
-7. 在“设置 Schoox”部分中，根据需求复制相应的 URL。
+7. 在“设置 Schoox”部分中，根据需求复制相应的 URL  。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -132,17 +133,17 @@ ms.locfileid: "65867797"
 
 ### <a name="configure-schoox-single-sign-on"></a>配置 Schoox 单一登录
 
-若要在 **Schoox** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Schoox 支持团队](https://www.schoox.com/help/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Schoox** 端配置单一登录，需要将下载的“联合元数据 XML”  以及从 Azure 门户复制的相应 URL 发送给 [Schoox 支持团队](https://www.schoox.com/help/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”。
+2. 选择屏幕顶部的“新建用户”  。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -150,28 +151,28 @@ ms.locfileid: "65867797"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。
+    d. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过向 Britta Simon 授予对 Schoox 的访问权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Schoox”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Schoox”    。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Schoox”。
+2. 在应用程序列表中，选择“Schoox”  。
 
     ![应用程序列表中的 Schoox 链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在左侧菜单中，选择“用户和组”  。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
@@ -179,11 +180,11 @@ ms.locfileid: "65867797"
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”，然后单击屏幕底部的“选择”按钮。   
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中，从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中，从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-schoox-test-user"></a>创建 Schoox 测试用户
 

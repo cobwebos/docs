@@ -1,19 +1,15 @@
 ---
-title: 教程 - 在 Azure 中创建异地复制的 Docker 注册表
+title: 教程 - 创建异地复制注册表
 description: 创建 Azure 容器注册表，配置异地复制，准备 Docker 映像，并将该映像部署到注册表。 由三个部分构成的系列教程的第一部分。
-services: container-registry
-author: dlepow
-ms.service: container-registry
 ms.topic: tutorial
-ms.date: 04/30/2017
-ms.author: danlep
+ms.date: 06/30/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7aec257335e3380fa99669c1191ee89857ec975d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 780a16d691e0d8afe62cd06f37a37fc3f6445ea6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533658"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259525"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>教程：准备异地复制的 Azure 容器注册表
 
@@ -41,55 +37,68 @@ Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
-登录到 [Azure 门户](https://portal.azure.com)。
+对于本教程，你需要高级服务层中的 Azure 容器注册表。 若要创建新的 Azure 容器注册表，请遵循本部分中的步骤。
 
-选择“创建资源” > “容器” > “Azure 容器注册表”。
+> [!TIP]
+> 如果以前创建了注册表并需要升级，请参阅[更改层](container-registry-skus.md#changing-tiers)。 
 
-![在 Azure 门户中创建容器注册表][tut-portal-01]
+登录 [Azure 门户](https://portal.azure.com)。
 
-使用以下设置配置新注册表：
+选择“创建资源” > “容器” > “Azure 容器注册表”。  
+
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-01.png" alt-text="在 Azure 门户中创建容器注册表":::
+
+使用以下设置配置新注册表。 在“基本信息”选项卡中：
 
 * **注册表名称**：创建在 Azure 中全局唯一的、包含 5-50 个字母数字字符的注册表名称
 * **资源组**：**新建** > `myResourceGroup`
 * **位置**：`West US`
-* **管理员用户**：`Enable`（用于容器的 Web 应用需使用此帐户来提取映像）
 * **SKU**：`Premium`（异地复制需要此项设置）
 
-选择“创建”，部署 ACR 实例。
+依次选择“查看 + 创建”和“创建”来创建注册表实例 。
 
-![在 Azure 门户中创建容器注册表][tut-portal-02]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="在 Azure 门户中配置容器注册表":::
 
 本教程的余下部分使用 `<acrName>` 作为所选**容器注册表名称**的占位符。
 
 > [!TIP]
 > 由于 Azure 容器注册表通常是在多个容器主机上使用的长期生存的资源，因此我们建议在注册表自身所在的资源组中创建该注册表。 配置异地复制注册表和 Webhook 时，这些附加资源会放置在同一个资源组中。
->
 
 ## <a name="configure-geo-replication"></a>配置异地复制
 
 获取高级注册表后，可以配置异地复制。 Web 应用（在下一篇教程中，会将其配置为在两个区域中运行）可从最靠近的注册表中提取其容器映像。
 
-在 Azure 门户中导航到新的容器注册表，选择“服务”下面的“复制项”：
+在 Azure 门户中导航到新的容器注册表，选择“服务”下面的“复制项” ：
 
-![Azure 门户容器注册表 UI 中的“复制项”][tut-portal-03]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="Azure 门户容器注册表 UI 中的复制项":::
 
 此时会出现一幅地图，其中显示了绿色的六边形，表示支持异地复制的 Azure 区域：
 
- ![Azure 门户中的区域地图][tut-map-01]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="Azure 门户中的区域地图":::
 
-选择注册表对应的绿色六边形将它复制到“美国东部”区域，然后选择“创建复制项”下面的“创建”：
+选择注册表对应的绿色六边形将它复制到“美国东部”区域，然后选择“创建复制项”下面的“创建”： 
 
- ![Azure 门户中的“创建复制项”UI][tut-portal-04]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="Azure 门户中的“创建复制项”UI":::
 
 完成复制后，门户会显示两个区域的“就绪”状态。 使用“刷新”按钮刷新复制状态；创建并同步副本可能需要大约一分钟时间。
 
-![Azure 门户中的复制状态 UI][tut-portal-05]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Azure 门户中的复制项状态 UI":::
+
+
+## <a name="enable-admin-account"></a>启用管理员帐户
+
+在后续教程中，会将容器映像从注册表直接部署到用于容器的 Web 应用。 若要启用此功能，还必须启用注册表的[管理员帐户](container-registry-authentication.md#admin-account)。
+
+在 Azure 门户中导航到新的容器注册表，选择“设置”下面的“访问密钥” 。 在“管理员用户”下，选择“启用” 。
+
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="在 Azure 门户中启用管理员帐户":::
+
 
 ## <a name="container-registry-login"></a>容器注册表登录
 
-配置异地复制后，生成一个容器映像并将其推送到注册表。 在将映像推送到 ACR 实例之前，必须先登录到 ACR 实例。
+配置异地复制后，生成一个容器映像并将其推送到注册表。 在将映像推送到注册表之前，必须先登录到注册表。
 
-使用 [az acr login](https://docs.microsoft.com/cli/azure/acr#az-acr-login) 命令进行身份验证，并缓存注册表的凭据。 将 `<acrName>` 替换为之前创建的注册表的名称。
+使用 [az acr login](/cli/azure/acr#az-acr-login) 命令进行身份验证，并缓存注册表的凭据。 将 `<acrName>` 替换为之前创建的注册表的名称。
 
 ```azurecli
 az acr login --name <acrName>
@@ -101,7 +110,7 @@ az acr login --name <acrName>
 
 本教程中的示例包括使用 [ASP.NET Core][aspnet-core] 生成的小型 Web 应用程序。 该应用提供一个 HTML 页面，其中显示了 Azure 容器注册表已从中部署映像的区域。
 
-![显示在浏览器中的教程应用][tut-app-01]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-app-01.png" alt-text="显示在浏览器中的教程应用":::
 
 使用 git 将示例下载到某个本地目录，并执行 `cd` 切换到该目录：
 
@@ -209,7 +218,7 @@ uniqueregistryname.azurecr.io/acr-helloworld    v1     01ac48d5c8cf    About a m
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-由于已经为异地复制配置了注册表，因此，使用这一条 `docker push` 命令，即可将映像自动复制到“美国西部”和“美国东部”区域。
+由于已经为异地复制配置了注册表，因此，使用这一条 `docker push` 命令，即可将映像自动复制到“美国西部”和“美国东部”区域。 
 
 ```console
 $ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1
@@ -232,15 +241,6 @@ v1: digest: sha256:0799014f91384bda5b87591170b1242bcd719f07a03d1f9a1ddbae72b3543
 
 > [!div class="nextstepaction"]
 > [从 Azure 容器注册表部署 Web 应用](container-registry-tutorial-deploy-app.md)
-
-<!-- IMAGES -->
-[tut-portal-01]: ./media/container-registry-tutorial-prepare-registry/tut-portal-01.png
-[tut-portal-02]: ./media/container-registry-tutorial-prepare-registry/tut-portal-02.png
-[tut-portal-03]: ./media/container-registry-tutorial-prepare-registry/tut-portal-03.png
-[tut-portal-04]: ./media/container-registry-tutorial-prepare-registry/tut-portal-04.png
-[tut-portal-05]: ./media/container-registry-tutorial-prepare-registry/tut-portal-05.png
-[tut-app-01]: ./media/container-registry-tutorial-prepare-registry/tut-app-01.png
-[tut-map-01]: ./media/container-registry-tutorial-prepare-registry/tut-map-01.png
 
 <!-- LINKS - External -->
 [acr-helloworld-zip]: https://github.com/Azure-Samples/acr-helloworld/archive/master.zip

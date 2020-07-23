@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用必应自动建议 REST API 和 C# 建议搜索查询
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何使用必应自动建议 API 快速开始实时建议搜索词。
 services: cognitive-services
 author: aahill
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 4cd77c1e71287ea2cec2a4098e5ef7f713350f9f
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: cf74d686a9156d6ccff1753a4f53abb5ecc6b7df
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388639"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929683"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>快速入门：使用必应自动建议 REST API 和 C# 建议搜索查询
 
-使用此快速入门开始调用必应自动建议 API 并获取 JSON 响应。 这个简单的 C# 应用程序向 API 发送部分搜索查询，并返回搜索建议。 虽然此应用程序是使用 C# 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs) 上获得。
+按照此快速入门的要求，学习如何调用必应自动建议 API 并读取 JSON 响应。 这个简单的 C# 应用程序向 API 发送部分搜索查询，并返回搜索建议。 虽然此应用程序是使用 C# 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs) 上获得。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -30,7 +30,7 @@ ms.locfileid: "66388639"
 
 ## <a name="create-a-visual-search-solution"></a>创建视觉搜索解决方案
 
-1. 在 Visual Studio 中创建一个新的控制台解决方案。 然后将以下命名空间添加到主代码文件。
+1. 在 Visual Studio 中创建一个新的控制台解决方案。 然后，将以下命名空间添加到主代码文件。
 
     ```csharp
     using System;
@@ -40,7 +40,7 @@ ms.locfileid: "66388639"
     using System.Text;
     ```
 
-2. 在新类中，为 API 主机和路径、[市场代码](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)和部分搜索查询创建变量。
+2. 在新类中，为 API 主机和路径、[市场代码](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)和部分搜索查询创建变量。 使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```csharp
     static string host = "https://api.cognitive.microsoft.com";
@@ -65,7 +65,7 @@ ms.locfileid: "66388639"
     }
     ```
 
-2. 在上面的同一函数中，通过组合 API 主机和路径来创建请求 URI。 将市场追加到 `?mkt=` 参数，并将查询追加到 `&query=` 参数。 确保对查询进行 URL 编码。 
+2. 在上面的同一函数中，通过组合 API 主机和路径来创建请求 URI。 将市场追加到 `mkt=` 参数，并将查询追加到 `query=` 参数。 确保对查询进行 URL 编码。 
 
     ```csharp
     string uri = host + path + "?mkt=" + market + "&query=" + System.Net.WebUtility.UrlEncode (query);

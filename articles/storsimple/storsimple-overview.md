@@ -13,15 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
-ms.author: v-sharos@microsoft.com
-ms.openlocfilehash: 63906e65acb8e8aa836e6e59714bddca24ea21eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: timlt
+ms.openlocfilehash: 2a6650cac975c575415a329361da00d4fbfcaa9d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60630163"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "68965120"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 系列：混合云存储解决方案
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
+
 ## <a name="overview"></a>概述
 欢迎使用 Microsoft Azure StorSimple，它是集成的存储解决方案，用于管理本地设备与 Microsoft Azure 云存储之间的存储任务。 StorSimple 是一种经济高效、易于管理的存储区域网络 (SAN) 解决方案，可以消除与企业存储和数据保护相关的很多问题和开支。 它使用专有的 StorSimple 8000 系列设备，与云服务集成，并提供一套管理工具用于无缝查看包括云存储在内的所有企业存储。 （Microsoft Azure 网站上发布的 StorSimple 部署信息仅适用于 StorSimple 8000 系列设备。 如果使用的是 StorSimple 5000/7000 系列设备，请转到 [StorSimple 帮助](http://onlinehelp.storsimple.com/)。）
 
@@ -36,7 +38,7 @@ StorSimple 使用[存储分层](#automatic-storage-tiering)管理各种存储介
 ## <a name="why-use-storsimple"></a>为什么使用 StorSimple？
 下表介绍了 Microsoft Azure StorSimple 提供的某些主要优势。
 
-| Feature | 优势 |
+| 功能 | 好处 |
 | --- | --- |
 | 透明集成 |使用 iSCSI 协议以不可见的方式链接数据存储设施。 这样可以确保存储在云中、数据中心或远程服务器上的数据看起来好像存储在单个位置。 |
 | 降低存储成本 |分配足够的本地存储或云存储以满足当前需求，仅在必要时才扩展云存储。 它可以通过消除相同数据的冗余版本（删除重复）和使用压缩，进一步降低存储需求和开支。 |
@@ -45,7 +47,7 @@ StorSimple 使用[存储分层](#automatic-storage-tiering)管理各种存储介
 | 数据移动性 |上传到 Microsoft Azure 云服务的数据可从其他站点访问，以便进行恢复和迁移。 此外，可以使用 StorSimple 来配置在 Microsoft Azure 中运行的虚拟机 (VM) 上的 StorSimple 云设备。 然后，VM 可使用虚拟设备来访问存储的数据，以便进行测试或恢复。 |
 | 业务连续性 |允许 StorSimple 5000-7000 系列用户将他们的数据迁移到 StorSimple 8000 系列设备。 |
 | 在 Azure 政府门户中的可用性 |可在 Azure 政府门户中使用 StorSimple。 有关详细信息，请参阅[在政府门户中部署本地 StorSimple 设备](storsimple-8000-deployment-walkthrough-gov-u2.md)。 |
-| 数据保护和可用性 |除了本地冗余存储 (LRS) 和异地冗余存储 (GRS)，StorSimple 8000 系列还支持区域冗余存储 (ZRS)。 请参阅[这篇有关 Azure 存储冗余选项的文章](https://azure.microsoft.com/documentation/articles/storage-redundancy/)，了解 ZRS 的详细信息。 |
+| 数据保护和可用性 |除了本地冗余存储 (LRS) 和异地冗余存储 (GRS)，StorSimple 8000 系列还支持区域冗余存储 (ZRS)。 有关 ZRS 的详细信息，请参阅有关[Azure 存储冗余选项的文章](https://azure.microsoft.com/documentation/articles/storage-redundancy/)。 |
 | 对关键应用程序的支持 |使用 StorSimple 可将相应的卷标识为本地固定卷，从而确保不会将关键应用程序所需的数据分层到云中。 本地固定卷不受云延迟或连接问题影响。 有关本地固定卷的详细信息，请参阅[使用 StorSimple 设备管理器服务管理卷](storsimple-8000-manage-volumes-u2.md)。 |
 | 低延迟和高性能 |可以创建充分利用 Azure 高级存储的高性能和低延迟的云设备。 有关 StorSimple 高级云设备的详细信息，请参阅[在 Azure 中部署和管理 StorSimple 云设备](storsimple-8000-cloud-appliance-u2.md)。 |
 
@@ -92,7 +94,7 @@ StorSimple 设备包括 SSD 和硬盘驱动器 HDD，并且支持群集和自动
 * 可在云中创建无数云设备，并根据需要将其打开和关闭。
 * 它可以帮助模拟灾难恢复、开发和测试情形下的本地环境，并可帮助从备份中进行项目级检索。
 
-StorSimple 云设备提供两种型号：8010 设备（以前称为 1100 型）和 8020 设备。 8010 设备的最大容量为 30 TB。 充分利用 Azure 高级存储的 8020 设备的最大容量为 64 TB。 （在本地层中，Azure 高级存储将数据存储在 SSD 上，而标准存储将数据存储在 HDD 上。）请注意，必须具有 Azure 高级存储帐户才能使用高级存储。
+StorSimple 云设备提供两种型号：8010 设备（以前称为 1100 型）和 8020 设备。 8010 设备的最大容量为 30 TB。 充分利用 Azure 高级存储的 8020 设备的最大容量为 64 TB。 （在本地层中，Azure 高级存储将数据存储在 Ssd 上，而标准存储将数据存储在 Hdd 上。）请注意，必须使用 Azure 高级存储帐户才能使用高级存储。
 
 有关 StorSimple 云设备的详细信息，请转到[在 Azure 中部署和管理 StorSimple 云设备](storsimple-8000-cloud-appliance-u2.md)。
 
@@ -205,7 +207,7 @@ Microsoft Azure StorSimple 使用删除重复和数据压缩功能进一步减�
 ## <a name="storsimple-workload-summary"></a>StorSimple 工作负荷摘要
 下表列出了受支持的 StorSimple 工作负荷摘要。
 
-| 场景 | 工作负荷 | 支持 | 限制 | Version |
+| 方案 | 工作负荷 | 支持 | 限制 | Version |
 | --- | --- | --- | --- | --- |
 | 协作 |文件共享 |是 | |所有版本 |
 | 协作 |分布式文件共享 |是 | |所有版本 |
@@ -217,7 +219,7 @@ Microsoft Azure StorSimple 使用删除重复和数据压缩功能进一步减�
 | 备份 |主目标备份 |是* |StorSimple 设备专用于此工作负荷时，支持 |Update 3 及更高版本 |
 | 备份 |辅助目标备份 |是* |StorSimple 设备专用于此工作负荷时，支持 |Update 3 及更高版本 |
 
-是&#42; - 应该应用解决方案的指导原则和限制。
+是&#42; - 应该应用解决方案的指导原则和限制。**
 
 StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorSimple，这些工作负荷将产生不支持的配置。
 
@@ -232,7 +234,7 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 
 下面是 StorSimple 支持的基础结构组件列表。
 
-| 场景 | 工作负荷 | 支持 | 限制 | Version |
+| 方案 | 工作负荷 | 支持 | 限制 | Version |
 | --- | --- | --- | --- | --- |
 | 常规 |Express Route |是 | |所有版本 |
 | 常规 |DataCore FC |是* |受 DataCore SANsymphony 支持 |所有版本 |
@@ -240,7 +242,7 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 | 常规 |索引 |是* |对于分层卷，仅支持元数据索引（非数据）。<br>对于本地固定卷，支持完整索引。 |所有版本 |
 | 常规 |防病毒 |是* |对于分层卷，仅支持扫描打开和关闭。<br> 对于本地固定卷，支持完全扫描。 |所有版本 |
 
-是&#42; - 应该应用解决方案的指导原则和限制。
+是&#42; - 应该应用解决方案的指导原则和限制。**
 
 下面是可以配合 StorSimple 用来构建解决方案的其他软件的列表。
 
@@ -278,7 +280,7 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 | 动态磁盘镜像 |对动态磁盘上逻辑磁盘卷的复制。 |
 | 动态磁盘 |一种磁盘卷格式，可使用逻辑磁盘管理器 (LDM) 在多个物理磁盘中存储和管理数据。 可扩大动态磁盘，以提供更多可用空间。 |
 | 扩展磁盘组 (EBOD) 机箱 |Microsoft Azure StorSimple 设备的辅助机箱，其中包含用于其他存储的额外硬盘驱动器。 |
-| FAT 预配 |常规的存储预配，其中，存储空间根据预期需求分配（且通常超出当前需求）。 另请参阅“精简预配”。 |
+| FAT 预配 |常规的存储预配，其中，存储空间根据预期需求分配（且通常超出当前需求）。 另请参阅“精简预配”**。 |
 | 硬盘驱动器 (HDD) |使用旋转盘片来存储数据的驱动器。 |
 | 混合云存储 |使用本地资源和异地资源的存储体系结构，包括云存储。 |
 | Internet 小型计算机系统接口 (iSCSI) |一种基于存储网络标准的 Internet 协议 (IP)，用于链接数据存储设备或设施。 |
@@ -302,7 +304,7 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 | StorSimple Device Manager 服务 |Azure 门户的扩展，用于管理 Azure StorSimple 本地设备和虚拟设备。 |
 | StorSimple 快照管理器 |Microsoft 管理控制台 (MMC) 管理单元，用于管理 Microsoft Azure StorSimple 中的备份和还原操作。 |
 | 执行备份 |一种允许用户对卷执行交互备份的功能。 它是另一种手动备份卷的方法，而不是通过已定义的策略自动备份。 |
-| 精简预配 |一种优化存储系统使用可用存储空间效率的方法。 在精简预配中，根据每个用户在任何给定时间所需的最小空间，为多个用户分配存储。 另请参阅 FAT 预配。 |
+| 精简预配 |一种优化存储系统使用可用存储空间效率的方法。 在精简预配中，根据每个用户在任何给定时间所需的最小空间，为多个用户分配存储。 另请参阅 FAT 预配**。 |
 | 分层 |在逻辑分组中，根据当前使用情况、期限以及与其他数据的关系对数据进行排列。 StorSimple 自动排列层中的数据。 |
 | 卷 |逻辑存储区，以驱动器的形式表示。 StorSimple 卷对应于主机装载​​的卷，包括通过使用 iSCSI 和 StorSimple 设备发现的卷。 |
 | 卷容器 |卷和应用到卷的设置的一个分组。 StorSimple 设备中的所有卷都分组到卷容器。 卷容器设置包括存储帐户、使用关联加密密钥将数据发送到云所采用的加密设置，以及涉及云的操作所消耗的带宽。 |

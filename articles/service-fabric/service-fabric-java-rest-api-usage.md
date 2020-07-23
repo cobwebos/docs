@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric Java 客户端 API | Microsoft Docs
+title: Azure Service Fabric Java 客户端 API
 description: 按照 Service Fabric 客户端 REST API 规范生成和使用 Service Fabric Java 客户端 API
-services: service-fabric
-documentationcenter: java
 author: rapatchi
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/27/2017
 ms.author: rapatchi
-ms.openlocfilehash: 97bba87331965b0f7ce20ec2ee089e0e18f72457
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c093958b9a8c5a21cb6996db891705ec8c3d21ab
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60720274"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246276"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Azure Service Fabric Java 客户端 API
 
@@ -126,13 +117,12 @@ ms.locfileid: "60720274"
 你会发现每个 API 有四个实现重载。 如果有可选参数，你会发现另外还有四个包含这些可选参数的变体。 这里以 API ``removeReplica`` 为例。
  1. **public void removeReplica(String nodeName, UUID partitionId, String replicaId, Boolean forceRemove, Long timeout)**
     * 这是 removeReplica API 调用的同步变体
- 2. **公共 ServiceFuture\<Void > removeReplicaAsync (字符串节点名称、 UUID partitionId、 字符串 replicaId、 布尔 forceRemove、 长超时，最终 ServiceCallback\<Void > serviceCallback)**
+ 2. **public ServiceFuture\<Void> removeReplicaAsync(String nodeName, UUID partitionId, String replicaId, Boolean forceRemove, Long timeout, final ServiceCallback\<Void> serviceCallback)**
     * 若要使用基于未来的异步编程并使用回调，则可使用 API 调用的此变体
- 3. **公共的可观察量\<Void > removeReplicaAsync （字符串 nodeName、 UUID partitionId、 字符串 replicaId）**
+ 3. **public Observable\<Void> removeReplicaAsync(String nodeName, UUID partitionId, String replicaId)**
     * 若要使用反应式异步编程，则可使用 API 调用的此变体
- 4. **public Observable\<ServiceResponse\<Void>> removeReplicaWithServiceResponseAsync(String nodeName, UUID partitionId, String replicaId)**
+ 4. **公共可观察 \<ServiceResponse\<Void>> removeReplicaWithServiceResponseAsync (字符串 nodeName、UUID partitionId、String replicaId) **
     * 若要使用反应式异步编程并处理原始 REST 响应，则可使用 API 调用的此变体
 
 ## <a name="next-steps"></a>后续步骤
-* 了解 [Service Fabric REST APIs](https://docs.microsoft.com/rest/api/servicefabric/)（Service Fabric REST API）
-
+* 了解 [Service Fabric REST APIs](/rest/api/servicefabric/)（Service Fabric REST API）

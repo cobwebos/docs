@@ -1,70 +1,107 @@
 ---
-title: 配置 ASP.NET Core 应用程序-Azure 应用服务 |Microsoft Docs
-description: 了解如何配置 ASP.NET Core 应用，以便在 Azure 应用服务中
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: jpconnock
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
+title: 配置 Linux ASP.NET Core 应用
+description: 了解如何为应用配置预建 ASP.NET Core 容器。 本文介绍最常见的配置任务。
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/28/2019
-ms.author: cephalin
-ms.openlocfilehash: f2781e3cc2433f73ba7ff33e5c452e29de746adf
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.date: 06/02/2020
+ms.openlocfilehash: e009f5b1fc656f700b3f0e76dda6e545aed535d2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956204"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84905759"
 ---
-# <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>配置 Linux 的 Azure 应用服务的 ASP.NET Core 应用
+# <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>为 Azure App Service 配置 Linux ASP.NET Core 应用
 
-必须为编译的二进制文件部署 ASP.NET Core 应用。 Visual Studio 发布工具生成解决方案并部署已编译的二进制文件直接，而应用服务部署引擎最初部署代码存储库并进行编译的二进制文件。
+必须将 ASP.NET Core 应用部署为已编译的二进制文件。 Visual Studio 发布工具生成解决方案，然后直接部署已编译的二进制文件，而应用服务部署引擎首先部署代码存储库，然后编译二进制文件。
 
-本指南提供的重要概念并说明适用于 ASP.NET Core 的开发人员在应用服务中使用内置的 Linux 容器。 如果你从未使用过 Azure 应用服务，请按照[ASP.NET Core 快速入门](quickstart-dotnetcore.md)并[ASP.NET Core 和 SQL 数据库教程](tutorial-dotnetcore-sqldb-app.md)第一个。
+本指南为在应用服务中使用内置 Linux 容器的 ASP.NET Core 开发人员提供重要的概念和说明。 如果你从未使用过 Azure App Service，请先参阅[ASP.NET Core 快速入门](quickstart-dotnetcore.md)和[SQL 数据库的 ASP.NET Core 教程](tutorial-dotnetcore-sqldb-app.md)。
 
-## <a name="show-net-core-version"></a>显示.NET Core 版本
+## <a name="show-net-core-version"></a>显示 .NET Core 版本
 
-若要显示当前的.NET Core 版本，请运行以下命令[Cloud Shell](https://shell.azure.com):
+若要显示当前的 .NET Core 版本，请在[Cloud Shell](https://shell.azure.com)中运行以下命令：
 
 ```azurecli-interactive
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
 ```
 
-若要显示所有受支持的.NET Core 版本，请运行以下命令[Cloud Shell](https://shell.azure.com):
+若要显示所有支持的 .NET Core 版本，请在[Cloud Shell](https://shell.azure.com)中运行以下命令：
 
 ```azurecli-interactive
 az webapp list-runtimes --linux | grep DOTNETCORE
 ```
 
-## <a name="set-net-core-version"></a>设置.NET Core 版本
+## <a name="set-net-core-version"></a>设置 .NET Core 版本
 
-在中运行以下命令[Cloud Shell](https://shell.azure.com)将.NET Core 版本为 2.1:
+在[Cloud Shell](https://shell.azure.com)中运行以下命令，将 .net Core 版本设置为2.1：
 
 ```azurecli-interactive
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "DOTNETCORE|2.1"
 ```
 
-## <a name="access-environment-variables"></a>访问环境变量
+## <a name="customize-build-automation"></a>自定义生成自动化
 
-在应用服务中，可以在应用代码外部[设置应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。 然后您可以访问它们使用标准 ASP.NET 模式：
+如果在启用生成自动化的情况下使用 Git 或 zip 包部署应用，应用服务生成自动化将按以下顺序完成各个步骤：
 
-```csharp
-include Microsoft.Extensions.Configuration;
-// retrieve App Service app setting
-System.Configuration.ConfigurationManager.AppSettings["MySetting"]
-// retrieve App Service connection string
-Configuration.GetConnectionString("MyDbConnection")
+1. 运行 `PRE_BUILD_SCRIPT_PATH` 指定的自定义脚本。
+1. 运行 `dotnet restore` 以还原 NuGet 依赖项。
+1. 运行 `dotnet publish` 以生成用于生产的二进制文件。
+1. 运行 `POST_BUILD_SCRIPT_PATH` 指定的自定义脚本。
+
+`PRE_BUILD_COMMAND` 和 `POST_BUILD_COMMAND` 是默认为空的环境变量。 若要运行生成前命令，请定义 `PRE_BUILD_COMMAND`。 若要运行生成后命令，请定义 `POST_BUILD_COMMAND`。
+
+以下示例在一系列命令中指定两个以逗号分隔的变量。
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
 ```
 
-如果具有相同名称在应用服务中并在配置的应用设置*Web.config*，应用服务值将优先于 Web.config 值。 Web.config 值可用于调试应用本地，但应用服务值可让你运行产品的生产设置中的应用程序。 连接字符串的工作方式相同。 这样一来，可以确保应用程序密码的外部代码存储库并不更改代码的情况下访问相应的值。
+有关用于自定义生成自动化的其他环境变量，请参阅 [Oryx 配置](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)。
 
-## <a name="get-detailed-exceptions-page"></a>获取详细的异常页面
+若要详细了解如何在 Linux 中运行应用服务并构建 ASP.NET Core 应用，请参阅[Oryx 文档：如何检测和生成 .Net Core 应用](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/dotnetcore.md)。
 
-当 ASP.NET 应用程序将引发异常，Visual Studio 调试器中，浏览器将显示详细的异常页，但在应用服务该页面被替换为一个泛型**HTTP 500**错误或**错误时出错处理你的请求。** 。 若要在应用服务中显示详细的异常页，添加`ASPNETCORE_ENVIRONMENT`应用设置为你的应用中运行以下命令<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>。
+## <a name="access-environment-variables"></a>访问环境变量
+
+在应用服务中，可以在应用代码外部[设置应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。 然后，你可以使用标准 ASP.NET Core 依赖关系注入模式在任何类中访问它们：
+
+```csharp
+using Microsoft.Extensions.Configuration;
+
+namespace SomeNamespace 
+{
+    public class SomeClass
+    {
+        private IConfiguration _configuration;
+    
+        public SomeClass(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+    
+        public SomeMethod()
+        {
+            // retrieve nested App Service app setting
+            var myHierarchicalConfig = _configuration["My:Hierarchical:Config:Data"];
+            // retrieve App Service connection string
+            var myConnString = _configuration.GetConnectionString("MyDbConnection");
+        }
+    }
+}
+```
+
+例如，如果在应用服务中配置具有相同名称的应用设置，并且在的*appsettings.js*中，应用服务值优先于值的*appsettings.js* 。 利用本地*appsettings.js*值，你可以在本地调试应用程序，但应用服务值允许你在产品和生产设置中运行应用。 连接字符串的工作方式与此相同。 这样，你可以将应用程序机密保存在代码存储库外，并访问适当的值，而无需更改代码。
+
+> [!NOTE]
+> 请注意，使用 .NET Core 标准的分隔符访问*appsettings.js上*的[层次结构配置数据](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data) `:` 。 若要覆盖应用服务中的特定层次结构配置设置，请在密钥中设置具有相同分隔格式的应用设置名称。 可以在[Cloud Shell](https://shell.azure.com)中运行以下示例：
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings My:Hierarchical:Config:Data="some value"
+```
+
+## <a name="get-detailed-exceptions-page"></a>获取详细的异常页
+
+当 ASP.NET 应用在 Visual Studio 调试器中生成异常时，浏览器将显示一个详细的异常页，但在应用服务中，该页面将被通用**HTTP 500**错误替换或在**处理请求时出错。** 消息。 若要在应用服务中显示详细的异常页面，请 `ASPNETCORE_ENVIRONMENT` 在<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中运行以下命令，将应用设置添加到应用。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"
@@ -72,13 +109,13 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="detect-https-session"></a>检测 HTTPS 会话
 
-在应用服务中，[SSL 终止](https://wikipedia.org/wiki/TLS_termination_proxy)在网络负载均衡器上发生，因此，所有 HTTPS 请求将以未加密的 HTTP 请求形式访问你的应用。 如果你的应用逻辑需要知道如果用户请求或不加密，将配置为转发标头中的中间件*Startup.cs*:
+在应用服务中，[SSL 终止](https://wikipedia.org/wiki/TLS_termination_proxy)在网络负载均衡器上发生，因此，所有 HTTPS 请求将以未加密的 HTTP 请求形式访问你的应用。 如果应用逻辑需要知道用户请求是否已加密，请在*Startup.cs*中配置转发的标头中间件：
 
-- 配置与中间件[ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions)转发`X-Forwarded-For`并`X-Forwarded-Proto`中的标头`Startup.ConfigureServices`。
-- 将专用 IP 地址范围添加到已知的网络，以便中间件可以信任的应用服务负载均衡器中。
-- 调用[UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders)中的方法`Startup.Configure`然后再调用其他中间件。
+- 使用 [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) 配置中间件，以转接 `Startup.ConfigureServices` 中的 `X-Forwarded-For` 和 `X-Forwarded-Proto` 标头。
+- 向已知网络添加专用 IP 地址范围，以便中间件可以信任应用服务负载均衡器。
+- 调用其他中间件之前，调用中的[UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders)方法 `Startup.Configure` 。
 
-将所有三个元素放在一起，你的代码看起来如下例所示：
+将所有这三个元素放在一起，代码类似于以下示例：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -109,22 +146,22 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ## <a name="deploy-multi-project-solutions"></a>部署多项目解决方案
 
-当 ASP.NET 存储库部署到部署引擎 *.csproj*文件位于根目录，则引擎会将项目部署。 当你部署使用的 ASP.NET 存储库 *.sln*根目录引擎中的文件会提取的第一个网站或 Web 应用程序项目会在有作为应用服务应用。 很可能引擎不选取所需的项目。
+当你使用根目录中的 *.csproj*文件将 ASP.NET 存储库部署到部署引擎时，该引擎将部署项目。 当你在根目录中部署带有 *.sln*文件的 ASP.NET 存储库时，引擎将选取它作为应用服务应用找到的第一个网站或 Web 应用程序项目。 引擎可能不会选择所需的项目。
 
-若要部署的多项目解决方案，可以指定要在应用服务中使用两种不同方式的项目：
+若要部署多项目解决方案，可以通过两种不同的方式指定要在应用服务中使用的项目：
 
-### <a name="using-deployment-file"></a>使用.deployment 文件
+### <a name="using-deployment-file"></a>使用 deployment 文件
 
-添加 *.deployment*文件到存储库根路径，然后添加以下代码：
+将一个 *. 部署*文件添加到存储库根，并添加以下代码：
 
 ```
 [config]
 project = <project-name>/<project-name>.csproj
 ```
 
-### <a name="using-app-settings"></a>使用应用设置
+### <a name="using-app-settings"></a>使用应用程序设置
 
-在中<a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a>，通过运行以下 CLI 命令的应用设置添加到应用服务应用。 替换*\<应用名称 >*， *\<资源组名称 >*，以及*\<项目名称 >* 使用适当的值.
+在<a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a>中，通过运行以下 CLI 命令将应用设置添加到应用服务应用。 *\<app-name>* *\<resource-group-name>* *\<project-name>* 用适当的值替换、和。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PROJECT="<project-name>/<project-name>.csproj"
@@ -132,11 +169,32 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="access-diagnostic-logs"></a>访问诊断日志
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+ASP.NET Core 提供[应用服务的内置日志记录提供程序](https://docs.microsoft.com/aspnet/core/fundamentals/logging/#azure-app-service)。 在项目的*Program.cs*中，通过扩展方法将提供程序添加到应用程序 `ConfigureLogging` ，如以下示例中所示：
+
+```csharp
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureLogging(logging =>
+        {
+            logging.AddAzureWebAppDiagnostics();
+        })
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        });
+```
+
+然后，你可以配置和生成具有[标准 .Net Core 模式](https://docs.microsoft.com/aspnet/core/fundamentals/logging)的日志。
+
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
+
+有关应用服务中 ASP.NET Core 应用疑难解答的详细信息，请参阅对[Azure App Service 和 IIS 上的 ASP.NET Core 进行故障排除](https://docs.microsoft.com/aspnet/core/test/troubleshoot-azure-iis)
 
 ## <a name="open-ssh-session-in-browser"></a>在浏览器中打开 SSH 会话
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
+
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,19 +1,20 @@
 ---
-title: Azure PowerShell 脚本-Azure Cosmos DB Update RU/s Cassandra API
-description: Azure PowerShell 脚本-Azure Cosmos DB Update RU/s Cassandra API
+title: 用于更新 Azure Cosmos DB Cassandra API 资源的 RU/秒的 PowerShell 脚本
+description: 了解如何使用 PowerShell 脚本更新 Azure Cosmos DB Cassandra API 中密钥空间或表的吞吐量
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
-ms.date: 05/18/2019
+ms.subservice: cosmosdb-cassandra
+ms.topic: sample
+ms.date: 05/01/2020
 ms.author: mjbrown
-ms.openlocfilehash: 05ff4379c0a5d5436525f25bd755a7fce46d8121
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: e3a2e1f277d0824089ef5288f8966f9cd4b21efc
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247914"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82651997"
 ---
-# <a name="update-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Azure Cosmos DB 的 Cassandra API 的密钥空间或表更新 RU/秒
+# <a name="update-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>更新 Azure Cosmos DB 的密钥空间或表的 RU/秒 - Cassandra API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -35,10 +36,11 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBCassandraTableThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandratablethroughput) | 获取 Cassandra API 表的吞吐量值。 |
+| [Update-AzCosmosDBCassandraTableThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbcassandratablethroughput) | 更新 Cassandra API 表的吞吐量值。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||

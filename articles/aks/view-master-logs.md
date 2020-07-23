@@ -2,54 +2,38 @@
 title: 查看 Azure Kubernetes 服务 (AKS) 控制器日志
 description: 了解如何启用和查看 Azure Kubernetes 服务 (AKS) 中 Kubernetes 主节点的日志
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.author: iainfou
-ms.openlocfilehash: 256101cce5588f56a8094a7a9a98e5fe69e6ec73
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 76ded781d4eae48db04f54a4f88a80cc700d0ad9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497257"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250730"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>启用和查看 Azure Kubernetes 服务 (AKS) 中 Kubernetes 主节点的日志
 
 使用 Azure Kubernetes 服务 (AKS)，可以提供 *kube-apiserver* 和 *kube-controller-manager* 等主组件作为托管服务。 创建和管理运行 *kubelet* 与容器运行时的节点，并通过托管的 Kubernetes API 服务器部署应用程序。 为帮助排查应用程序和服务问题，可能需要查看这些主组件生成的日志。 本文介绍如何使用 Azure Monitor 日志从 Kubernetes 主组件启用和查询日志。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
-本文要求在 Azure 帐户中运行一个现有的 AKS 群集。 如果没有 AKS 群集，请使用 [Azure CLI][cli-quickstart] 或 [Azure 门户][portal-quickstart]创建一个群集。 Azure Monitor 日志适用于支持 RBAC 和不支持 RBAC 的 AKS 群集。
+本文要求在 Azure 帐户中运行一个现有的 AKS 群集。 如果还没有 AKS 群集，请使用 [Azure CLI][cli-quickstart] 或 [Azure 门户][portal-quickstart]创建一个。 Azure Monitor 日志适用于支持 RBAC 和不支持 RBAC 的 AKS 群集。
 
-## <a name="enable-diagnostics-logs"></a>启用诊断日志
+## <a name="enable-resource-logs"></a>启用资源日志
 
-为帮助收集和审查来自多个源的数据，Azure Monitor 日志提供了查询语言和分析引擎，该引擎可提供环境的见解。 工作区用于整理和分析数据，并可与 Application Insights 和安全中心等其他 Azure 服务集成。 若要使用不同的平台分析日志，可以选择将诊断日志发送到 Azure 存储帐户或事件中心。 有关详细信息，请参阅[什么是 Azure Monitor 日志？][log-analytics-overview]。
+为帮助收集和审查来自多个源的数据，Azure Monitor 日志提供了查询语言和分析引擎，该引擎可提供环境的见解。 工作区用于整理和分析数据，并可与 Application Insights 和安全中心等其他 Azure 服务集成。 若要使用不同的平台分析日志，可以选择将资源日志发送到 Azure 存储帐户或事件中心。 有关详细信息，请参阅[什么是 Azure Monitor 日志？][log-analytics-overview]。
 
-启用并在 Azure 门户中管理 azure Monitor 日志。 若要为 AKS 群集中的 Kubernetes 主组件启用日志收集，请在 Web 浏览器中打开 Azure 门户并完成以下步骤：
+Azure Monitor 日志是在 Azure 门户中启用和管理的。 若要为 AKS 群集中的 Kubernetes 主组件启用日志收集，请在 Web 浏览器中打开 Azure 门户并完成以下步骤：
 
 1. 选择 AKS 群集的资源组，例如 *myResourceGroup*。 不要选择包含单个 AKS 群集资源的资源组，例如 *MC_myResourceGroup_myAKSCluster_eastus*。
-1. 在左侧选择“诊断设置”。 
-1. 选择你的 AKS 群集，如*myAKSCluster*，然后选择**添加诊断设置**。
-1. 输入名称（例如 myAKSClusterLogs  ），然后选择“发送到 Log Analytics”选项。 
-1. 选择现有的工作区或创建一个新。 如果您创建工作区，提供工作区名称、 资源组和位置。
-1. 在可用日志列表中，选择要启用的日志。 常见日志包括*kube apiserver*， *kube 控制管理器*，并*kube 计划程序*。 你可以启用其他日志，例如 kube-audit  和 cluster-autoscaler  。 启用 Log Analytics 工作区后，可以返回并更改收集的日志。
-1. 准备就绪后，选择“保存”以启用收集选定日志。 
+1. 在左侧选择“诊断设置”。
+1. 选择 AKS 群集（如*myAKSCluster*），然后选择 "**添加诊断设置**"。
+1. 输入名称（例如 myAKSClusterLogs），然后选择“发送到 Log Analytics”选项。
+1. 选择现有工作区或者创建新的工作区。 如果创建工作区，请提供工作区名称、资源组和位置。
+1. 在可用日志列表中，选择要启用的日志。 常见日志包括 kube-apiserver、kube-controller-manager 和 kube-scheduler。 你可以启用其他日志，例如 kube-audit** 和 cluster-autoscaler**。 启用 Log Analytics 工作区后，可以返回并更改收集的日志。
+1. 准备就绪后，选择“保存”以启用收集选定日志。
 
-> [!NOTE]
-> AKS 仅捕获在订阅上启用功能标志后创建或升级的群集的审核日志。 若要注册 *AKSAuditLog* 功能标志，请使用 [az feature register][az-feature-register] 命令，如以下示例所示：
->
-> `az feature register --name AKSAuditLog --namespace Microsoft.ContainerService`
->
-> 等待状态显示“已注册”  。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
->
-> `az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAuditLog')].{Name:name,State:properties.state}"`
->
-> 准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 AKS 资源提供程序的注册状态：
->
-> `az provider register --namespace Microsoft.ContainerService`
-
-下面的示例门户屏幕截图演示*诊断设置*窗口：
+以下示例门户屏幕截图显示了“诊断设置”窗口：
 
 ![为 AKS 群集的 Azure Monitor 日志启用 Log Analytics 工作区](media/view-master-logs/enable-oms-log-analytics.png)
 
@@ -87,11 +71,11 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>查看收集的日志
 
-可能需要等待几分钟，诊断日志才会启用并显示在 Log Analytics 工作区中。 在 Azure 门户中，选择 Log Analytics 工作区的资源组（例如 *myResourceGroup*），然后选择 Log Analytics 资源（例如 *myAKSLogs*）。
+可能需要等待几分钟，诊断日志才会启用并显示在 Log Analytics 工作区中。 在 Azure 门户中，选择 Log Analytics 工作区的资源组（例如*myResourceGroup*），然后选择 Log Analytics 资源，如*myAKSLogs*。
 
 ![选择 AKS 群集的 Log Analytics 工作区](media/view-master-logs/select-log-analytics-workspace.png)
 
-在左侧选择“日志”。  若要查看 *kube-apiserver*，请在文本框中输入以下查询：
+在左侧选择“日志”。 若要查看 *kube-apiserver*，请在文本框中输入以下查询：
 
 ```
 AzureDiagnostics
@@ -120,7 +104,7 @@ AzureDiagnostics
 
 为帮助分析日志数据，下表详细说明了用于每个事件的架构：
 
-| 字段名               | 描述 |
+| 字段名称               | 说明 |
 |--------------------------|-------------|
 | *resourceId*             | 生成日志的 Azure 资源 |
 | *time*                   | 上传日志的时间戳 |
@@ -129,11 +113,19 @@ AzureDiagnostics
 | *properties.log*         | 来自组件的日志的完整文本 |
 | *properties.stream*      | *stderr* 或 *stdout* |
 | *properties.pod*         | 日志的来源 pod 名称 |
-| *properties.containerID* | 此日志来自的 docker 容器的 ID |
+| *properties.containerID* | 此日志的来源 Docker 容器的 ID |
+
+## <a name="log-roles"></a>日志角色
+
+| 角色                     | 说明 |
+|--------------------------|-------------|
+| *aksService*             | 审核日志中控制平面操作的显示名称（来自 hcpService） |
+| *masterclient*           | 审核日志中 MasterClientCertificate（通过 az aks get-credentials 获得的证书）的显示名称 |
+| *nodeclient*             | 代理节点使用的 ClientCertificate 的显示名称 |
 
 ## <a name="next-steps"></a>后续步骤
 
-本文已介绍如何启用和查看 AKS 群集中 Kubernetes 主组件的日志。 若要进一步进行监视和排除故障，还可以[查看 Kubelet 日志][kubelet-logs]并[启用 SSH 节点访问][aks-ssh]。
+本文已介绍如何启用和查看 AKS 群集中 Kubernetes 主组件的日志。 若要进一步进行监视和故障排除，还可以[查看 Kubelet 日志][kubelet-logs]并[启用 SSH 节点访问][aks-ssh]。
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
@@ -141,8 +133,8 @@ AzureDiagnostics
 <!-- LINKS - internal -->
 [cli-quickstart]: kubernetes-walkthrough.md
 [portal-quickstart]: kubernetes-walkthrough-portal.md
-[log-analytics-overview]: ../log-analytics/log-analytics-overview.md
-[analyze-log-analytics]: ../azure-monitor/learn/tutorial-viewdata.md
+[log-analytics-overview]: ../azure-monitor/log-query/log-query-overview.md
+[analyze-log-analytics]: ../azure-monitor/log-query/get-started-portal.md
 [kubelet-logs]: kubelet-logs.md
 [aks-ssh]: ssh.md
 [az-feature-register]: /cli/azure/feature#az-feature-register

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
-ms.openlocfilehash: d2f854c869ead8016a5437a4e40339d9455c9ad7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 0b6fd17d2f8577532778733866260f43e9ac7685
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66226418"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67092734"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rolepoint"></a>教程：Azure Active Directory 与 RolePoint 的集成
 
@@ -56,7 +56,7 @@ ms.locfileid: "66226418"
 
     ![选择“Azure Active Directory”](common/select-azuread.png)
 
-2. 转到“企业应用程序” > “所有应用程序”   ：
+2. 转到“企业应用程序” > “所有应用程序”：
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -152,7 +152,7 @@ ms.locfileid: "66226418"
 
     1. 在“姓名”  框中，输入 **BrittaSimon**。
   
-    1. 在“用户名”框中，输入 BrittaSimon@\<yourcompanydomain>.\<extension>   。 （例如：BrittaSimon@contoso.com。）
+    1. 在“用户名”框中，输入 BrittaSimon@\<yourcompanydomain>.\<extension>。 （例如：BrittaSimon@contoso.com。）
 
     1. 选择“显示密码”，然后记下“密码”框中的值   。
 

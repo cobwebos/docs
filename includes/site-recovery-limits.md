@@ -13,16 +13,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/06/2015
 ms.author: lauraa
-ms.openlocfilehash: 4d4e68d99585522e773e71430b4e4f37ad7b1580
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 7a241d3144b6220d0084b61de2dde7c36a68c257
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238188"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80335135"
 ---
 以下限制适用于 Azure Site Recovery。
 
-| 限制标识符 | 默认限制 |
+| 限制标识符 | 限制 |
 | --- | --- |
 | 每个订阅的保管库数 |500 |     
 | 每个 Azure 保管库的服务器数 |250 |

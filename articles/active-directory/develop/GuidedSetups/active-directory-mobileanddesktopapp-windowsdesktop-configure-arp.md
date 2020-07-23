@@ -1,27 +1,21 @@
 ---
-title: Azure AD v2 Windows 桌面入门 - 配置 | Microsoft Docs
+title: Azure AD v2 Windows 桌面入门-Config
 description: Windows 桌面 .NET (XAML) 应用程序如何获取访问令牌并调用 Azure Active Directory v2 终结点保护的 API。
 services: active-directory
-documentationcenter: dev-center-name
-author: andretms
+author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.subservice: develop
+ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/09/2017
-ms.author: andret
+ms.date: 01/29/2020
+ms.author: ryanwi
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef32cef67ae5f32959e026157f5126647b01401d
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
-ms.translationtype: MT
+ms.openlocfilehash: d82f9beecb1b558fca094c31f8c6718c990debd1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540582"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80885763"
 ---
 # <a name="add-the-applications-registration-information-to-your-app"></a>向应用添加应用程序的注册信息
 在此步骤中，需要将应用程序 ID 添加到项目。

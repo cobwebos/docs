@@ -1,5 +1,5 @@
 - name: 必应自动建议文档
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: 概述
   items:
     - name: 什么是必应自动建议？
@@ -7,21 +7,27 @@
     - name: 比较必应搜索 API
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: REST API 快速入门
+- name: 快速入门
   expanded: true
   items:
-    - name: 'C#'
-      href: quickstarts/csharp.md
-    - name: Java
-      href: quickstarts/java.md
-    - name: Node.js
-      href: quickstarts/nodejs.md
-    - name: PHP
-      href: quickstarts/php.md
-    - name: Python
-      href: quickstarts/python.md
-    - name: Ruby
-      href: quickstarts/ruby.md
+    - name: REST API
+      items:
+        - name: 'C#'
+          href: quickstarts/csharp.md
+        - name: Java
+          href: quickstarts/java.md
+        - name: Node.js
+          href: quickstarts/nodejs.md
+        - name: PHP
+          href: quickstarts/php.md
+        - name: Python
+          href: quickstarts/python.md
+        - name: Ruby
+          href: quickstarts/ruby.md
+    - name: 客户端库
+      items:
+        - name: 必应自动建议客户端库
+          href: ./quickstarts/client-libraries.md
 - name: 教程
   items:
     - name: 单页 Web 应用
@@ -36,7 +42,7 @@
       href: concepts/get-suggestions.md
     - name: 发送请求
       href: concepts/sending-requests.md
-- name: 引用
+- name: 参考
   items:
     - name: 必应自动推荐 API v7
       href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference'
@@ -47,9 +53,11 @@
         - name: .NET
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet'
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/autosuggest?view=azure-java-stable'
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-java-stable'
         - name: Go
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-autosuggest/?view=azure-node-latest'
     - name: 使用和显示要求
       href: ../Bing-Web-Search/use-display-requirements.md
       maintainContext: true
@@ -71,9 +79,10 @@
       href: 'https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api'
     - name: 试试看！
       href: 'https://azure.microsoft.com/services/cognitive-services/autosuggest/'
-    - name: 语言和区域支持
+    - name: 语言支持
       href: language-support.md
     - name: 适用于必应自动推荐 API 的分析
-      href: bing-autosuggest-stats.md
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

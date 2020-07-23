@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: 4d6dce952eca3d528a310685106a017dd7e3b80f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1b7b4d3c25794a62bc19925ade278159ebb37615
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66166033"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80066545"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>在 Azure VM 上安装 Elastic Stack
 
@@ -41,11 +41,11 @@ ms.locfileid: "66166033"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
+使用“[az group create](/cli/azure/group)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
@@ -55,7 +55,7 @@ az group create --name myResourceGroup --location eastus
 
 下面的示例创建一个名为 *myVM* 的 VM，并且在默认密钥位置中不存在 SSH 密钥时创建这些密钥。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。  
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
     --resource-group myResourceGroup \
     --name myVM \
@@ -66,7 +66,7 @@ az vm create \
 
 创建 VM 后，Azure CLI 会显示类似于以下示例的信息。 记下 `publicIpAddress`。 此地址用于访问 VM。
 
-```azurecli-interactive 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -226,17 +226,17 @@ sudo systemctl start kibana.service
 az vm open-port --port 5601 --resource-group myResourceGroup --name myVM
 ```
 
-打开 Kibana 控制台并选择“创建”，根据之前发送给 Elasticsearch 的 syslog 数据生成默认索引。 
+打开 Kibana 控制台并选择“创建”，根据之前发送给 Elasticsearch 的 syslog 数据生成默认索引  。 
 
 ![浏览 Kibana 中的 Syslog 事件](media/elasticsearch-install/kibana-index.png)
 
-在 Kibana 控制台上选择“发现”，搜索、浏览和筛选 syslog 事件。
+在 Kibana 控制台上选择“发现”，搜索、浏览和筛选 syslog 事件  。
 
 ![浏览 Kibana 中的 Syslog 事件](media/elasticsearch-install/kibana-search-filter.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程已将 Elastic Stack 部署到 Azure 中的开发 VM。 你已了解如何：
+本教程已将 Elastic Stack 部署到 Azure 中的开发 VM。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 资源组中创建 Ubuntu VM

@@ -1,25 +1,23 @@
 ---
-title: 使用 Power BI 可视化 Azure 网络安全组流日志 | Microsoft Docs
+title: 可视化 Azure NSG 流日志 - Power BI
+titleSuffix: Azure Network Watcher
 description: 本页介绍如何使用 Power BI 可视化 NSG 流日志。
 services: network-watcher
 documentationcenter: na
-author: mattreatMSFT
-manager: vitinnan
-editor: ''
-ms.assetid: 1e4f95fa-f5f0-4e03-bc25-008fbfc4934c
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: mareat
-ms.openlocfilehash: 6df49f9cd308f4bb9b1fef6e5860872526ce8bb7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: damendo
+ms.openlocfilehash: 1ef2e32614b5a57208f91ac0fe5a4c17affa38e4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60860700"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738543"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>使用 Power BI 可视化网络安全组流日志
 
@@ -30,7 +28,7 @@ ms.locfileid: "60860700"
 > [!Warning]  
 > 以下步骤适用于流日志版本 1。 有关详细信息，请参阅[针对网络安全组的流日志记录简介](network-watcher-nsg-flow-logging-overview.md)。 以下说明在未修改的情况下不适用于版本 2 的日志文件。
 
-## <a name="scenario"></a>场景
+## <a name="scenario"></a>方案
 
 在以下方案中，我们会将 Power BI Desktop 连接到已配置为 NSG 流日志数据接收器的存储帐户。 连接到存储帐户后，Power BI 将下载并分析日志，提供网络安全组记录的流量的可视化形式。
 
@@ -52,7 +50,7 @@ ms.locfileid: "60860700"
 
 ![Visio 图示][1]
 
-### <a name="steps"></a>Steps
+### <a name="steps"></a>步骤
 
 1. 在 Power BI Desktop 应用程序中下载并打开以下 Power BI 模板：[网络观察程序 PowerBI 流日志模板](https://aka.ms/networkwatcherpowerbiflowlogstemplate)
 1. 输入所需的查询参数
@@ -61,7 +59,7 @@ ms.locfileid: "60860700"
 
       ![Power BI 主界面][2]
 
-1. 输入存储帐户的访问密钥。 在 Azure 门户中导航到存储帐户，并从“设置”菜单中选择“访问密钥”，即可找到有效的访问密钥。 单击“连接”，并应用更改。
+1. 输入存储帐户的访问密钥。 在 Azure 门户中导航到存储帐户，并从“设置”菜单中选择“访问密钥”，即可找到有效的访问密钥。  单击“连接”，并应用更改。 
 
     ![访问密钥][3]
 
@@ -105,13 +103,13 @@ ms.locfileid: "60860700"
 
 ![slicers][13]
 
-## <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>结论
 
 本方案表明，我们可以使用网络观察程序和 Power BI 提供的网络安全组流日志来可视化和了解流量。 使用提供的模板，Power BI 可以直接从存储中下载日志并在本地对其进行处理。 加载模板所需的时间根据请求的文件数和下载文件的大小而异。
 
 可以根据需要任意自定义此模板。 在 Power BI 中使用网络安全组流日志的方式多种多样。 
 
-## <a name="notes"></a>说明
+## <a name="notes"></a>注释
 
 * 日志默认存储在 `https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/` 中
 

@@ -1,32 +1,31 @@
 ---
-title: 配置 ExpressRoute 线路的对等互连：PowerShell：Azure | Microsoft Docs
-description: 本文指导完成创建和预配 ExpressRoute 线路的专用、公共和 Microsoft 对等互连的步骤。 本文还介绍了如何检查状态，以及如何更新或删除线路的对等互连。
+title: Azure ExpressRoute：配置对等互连： PowerShell
+description: 本文指导完成创建和预配 ExpressRoute 线路的专用、公共和 Microsoft 对等互连的步骤。 本文还介绍如何检查状态，以及如何更新或删除线路的对等互连。
 services: expressroute
 author: jaredr80
 ms.service: expressroute
-ms.topic: conceptual
-ms.date: 04/24/2019
+ms.topic: how-to
+ms.date: 12/13/2019
 ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: d59a26184cac8df31fd16637d538c1eb45d947df
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ab20ae00fd9f275d21bc818e07bdc868944ee689
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716131"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84735262"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>使用 PowerShell 创建和修改 ExpressRoute 线路的对等互连
 
-本文帮助你使用 PowerShell 在资源管理器部署模型中创建和管理 ExpressRoute 线路的路由配置。 还可以检查 ExpressRoute 线路的状态，更新、删除和取消预配其对等互连。 如果想使用不同的方法处理线路，请从以下列表中选择一篇文章进行参阅：
+本文可帮助使用 PowerShell 在资源管理器部署模型中创建和管理 ExpressRoute 线路的路由配置。 还可以检查 ExpressRoute 线路的状态，更新、删除和取消预配其对等互连。 如果想使用不同的方法处理线路，请从以下列表中选择一篇文章进行参阅：
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
+> * [公共对等互连](about-public-peering.md)
 > * [视频 - 专用对等互连](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
-> * [视频 - 公共对等互连](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
 > * [视频 - Microsoft 对等互连](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
-> * [PowerShell（经典）](expressroute-howto-routing-classic.md)
+> * [PowerShell （经典）](expressroute-howto-routing-classic.md)
 > 
 
 
@@ -37,20 +36,20 @@ ms.locfileid: "64716131"
 > 
 > 
 
-可以为 ExpressRoute 线路配置一到三个对等互连（Azure 专用、Azure 公共和 Microsoft）。 可以按照所选的任意顺序配置对等互连。 但是，必须确保一次只完成一个对等互连的配置。 有关路由域和对等互连的详细信息，请参阅 [ExpressRoute 路由域](expressroute-circuit-peerings.md)。
+可以为 ExpressRoute 线路配置专用对等互连和 Microsoft 对等互连（新线路不推荐使用 Azure 公共对等互连）。 可以按所选的任意顺序配置对等互连。 但是，必须确保一次只完成一个对等互连的配置。 有关路由域和对等互连的详细信息，请参阅 [ExpressRoute 路由域](expressroute-circuit-peerings.md)。 有关公共对等互连的信息，请参阅[ExpressRoute 公共对等互连](about-public-peering.md)。
 
 ## <a name="configuration-prerequisites"></a>配置先决条件
 
 * 在开始配置之前，请务必查看[先决条件](expressroute-prerequisites.md)页、[路由要求](expressroute-routing.md)页和[工作流](expressroute-workflows.md)页。
-* 必须有一个活动的 ExpressRoute 线路。 在继续下一步之前，请按说明 [创建 ExpressRoute 线路](expressroute-howto-circuit-arm.md) ，并通过连接提供商启用该线路。 ExpressRoute 线路必须处于已预配和已启用状态，才能运行本文中的 cmdlet。
+* 必须有一个活动的 ExpressRoute 线路。 继续之前，请按照说明[创建 ExpressRoute 线路](expressroute-howto-circuit-arm.md)，并让连接提供商启用该线路。 ExpressRoute 线路必须处于已预配和已启用状态，才能运行本文中的 cmdlet。
 
 ### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-## <a name="msft"></a>Microsoft 对等互连
+## <a name="microsoft-peering"></a><a name="msft"></a>Microsoft 对等互连
 
 本文介绍如何为 ExpressRoute 线路创建、获取、更新和删除 Microsoft 对等互连配置。
 
@@ -84,7 +83,7 @@ ms.locfileid: "64716131"
    Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
    ```
 
-   响应类似于以下示例：
+   其响应类似于如下示例：
 
    ```
    Name                             : ExpressRouteARMCircuit
@@ -121,6 +120,13 @@ ms.locfileid: "64716131"
      * 客户 ASN：如果要播发的前缀未注册到对等互连 AS 编号，可以指定它们要注册到的 AS 编号。
      * MD5 哈希（如果选择使用）。
 
+> [!IMPORTANT]
+> Microsoft 会验证指定的“播发的公用前缀”和“对等 ASN”（或“客户 ASN”）是否已在 Internet 路由注册表中分配给你。 如果要从其他实体获取公用前缀，并且没有在路由注册表中记录分配，则自动验证不会完成，需要手动验证。 如果自动验证失败，则会在“Get-AzExpressRouteCircuitPeeringConfig”（请参阅下面的“获取 Microsoft 对等互连详细信息”）命令的输出中看到作为”需要验证”的“AdvertisedPublicPrefixesState”。 
+> 
+> 如果看到消息“需要验证”，请收集相关文档，它们显示公用前缀已由在路由注册表中作为前缀所有者列出的实体分配给你的组织，然后通过开具支持票证来提交这些文档以进行手动验证，如下所示。 
+> 
+>
+
    使用以下示例为线路配置 Microsoft 对等互连：
 
    ```azurepowershell-interactive
@@ -131,7 +137,7 @@ ms.locfileid: "64716131"
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
-### <a name="getmsft"></a>获取 Microsoft 对等互连详细信息
+### <a name="to-get-microsoft-peering-details"></a><a name="getmsft"></a>获取 Microsoft 对等互连详细信息
 
 可以使用以下示例来获取配置详细信息：
 
@@ -141,7 +147,7 @@ $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupNa
 Get-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
 ```
 
-### <a name="updatemsft"></a>更新 Microsoft 对等互连配置
+### <a name="to-update-microsoft-peering-configuration"></a><a name="updatemsft"></a>更新 Microsoft 对等互连配置
 
 可以使用以下示例来更新配置的任何部分：
 
@@ -153,7 +159,7 @@ Set-AzExpressRouteCircuitPeeringConfig  -Name "MicrosoftPeering" -ExpressRouteCi
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="deletemsft"></a>删除 Microsoft 对等互连
+### <a name="to-delete-microsoft-peering"></a><a name="deletemsft"></a>删除 Microsoft 对等互连
 
 可以运行以下 cmdlet 来删除对等互连配置：
 
@@ -163,7 +169,7 @@ Remove-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRoute
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-## <a name="private"></a>Azure 专用对等互连
+## <a name="azure-private-peering"></a><a name="private"></a>Azure 专用对等互连
 
 本文介绍如何为 ExpressRoute 线路创建、获取、更新和删除 Azure 专用对等互连配置。
 
@@ -171,7 +177,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 1. 为 ExpressRoute 导入 PowerShell 模块。
 
-   必须从 [PowerShell 库](https://www.powershellgallery.com/)安装最新的 PowerShell 安装程序，并将 Azure Resource Manager 模块导入 PowerShell 会话，以便开始使用 ExpressRoute cmdlet。 需要以管理员身份运行 PowerShell。
+   必须从 [PowerShell 库](https://www.powershellgallery.com/) 安装最新的 PowerShell 安装程序，并将 Azure 资源管理器模块导入 PowerShell 会话，以便开始使用 ExpressRoute cmdlet。 需要以管理员身份运行 PowerShell。
 
    ```azurepowershell-interactive
    Install-Module Az
@@ -210,7 +216,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
    ```
 
-   响应类似于以下示例：
+   其响应类似于如下示例：
 
    ```
    Name                             : ExpressRouteARMCircuit
@@ -259,11 +265,11 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
    > [!IMPORTANT]
-   > 请确保将 AS 编号指定为对等互连 ASN 而不是客户 ASN。
+   > 请确保将 AS 编号指定为对等互连 ASN，而不是客户 ASN。
    > 
    >
 
-### <a name="getprivate"></a>获取 Azure 专用对等互连详细信息
+### <a name="to-get-azure-private-peering-details"></a><a name="getprivate"></a>获取 Azure 专用对等互连详细信息
 
 可以使用以下示例来获取配置详细信息：
 
@@ -273,7 +279,7 @@ $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupNa
 Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
 ```
 
-### <a name="updateprivate"></a>更新 Azure 专用对等互连配置
+### <a name="to-update-azure-private-peering-configuration"></a><a name="updateprivate"></a>更新 Azure 专用对等互连配置
 
 可以使用以下示例来更新配置的任何部分。 在此示例中，线路的 VLAN ID 将从 100 更新为 500。
 
@@ -283,7 +289,7 @@ Set-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRoute
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="deleteprivate"></a>删除 Azure 专用对等互连
+### <a name="to-delete-azure-private-peering"></a><a name="deleteprivate"></a>删除 Azure 专用对等互连
 
 可以运行以下示例来删除对等互连配置：
 
@@ -298,140 +304,6 @@ Remove-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRo
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-## <a name="public"></a>Azure 公共对等互连
-
-本文介绍如何为 ExpressRoute 线路创建、获取、更新和删除 Azure 公共对等互连配置。
-
-> [!Note]
-> Azure 公共对等互连不推荐使用适用于新线路。 有关详细信息，请参阅[ExpressRoute 对等互连](expressroute-circuit-peerings.md)。
->
-
-### <a name="to-create-azure-public-peering"></a>创建 Azure 公共对等互连
-
-1. 为 ExpressRoute 导入 PowerShell 模块。
-
-   必须从 [PowerShell 库](https://www.powershellgallery.com/)安装最新的 PowerShell 安装程序，并将 Azure Resource Manager 模块导入 PowerShell 会话，以便开始使用 ExpressRoute cmdlet。 需要以管理员身份运行 PowerShell。
-
-   ```azurepowershell-interactive
-   Install-Module Az
-   ```
-
-   导入已知语义版本范围内的所有 Az.\* 模块。
-
-   ```azurepowershell-interactive
-   Import-Module Az
-   ```
-
-   也可以只导入已知语义版本范围内的 select 模块。
-
-   ```azurepowershell-interactive
-   Import-Module Az.Network
-   ```
-
-   登录到帐户。
-
-   ```azurepowershell-interactive
-   Connect-AzAccount
-   ```
-
-   选择要创建 ExpressRoute 线路的订阅。
-
-   ```azurepowershell-interactive
-   Select-AzSubscription -SubscriptionId "<subscription ID>"
-   ```
-2. 创建 ExpressRoute 线路。
-
-   请按说明创建 [ExpressRoute 线路](expressroute-howto-circuit-arm.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 公共对等互连。 在此情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不为你管理路由，请在创建线路后按照后续步骤继续配置。
-
-3. 检查 ExpressRoute 线路以确保它已预配并已启用。 使用以下示例：
-
-   ```azurepowershell-interactive
-   Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
-   ```
-
-   响应类似于以下示例：
-
-   ```
-   Name                             : ExpressRouteARMCircuit
-   ResourceGroupName                : ExpressRouteResourceGroup
-   Location                         : westus
-   Id                               : /subscriptions/***************************/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuit
-   Etag                             : W/"################################"
-   ProvisioningState                : Succeeded
-   Sku                              : {
-                                      "Name": "Standard_MeteredData",
-                                       "Tier": "Standard",
-                                       "Family": "MeteredData"
-                                     }
-   CircuitProvisioningState         : Enabled
-   ServiceProviderProvisioningState : Provisioned
-   ServiceProviderNotes             : 
-   ServiceProviderProperties        : {
-                                       "ServiceProviderName": "Equinix",
-                                       "PeeringLocation": "Silicon Valley",
-                                       "BandwidthInMbps": 200
-                                     }
-   ServiceKey                       : **************************************
-   Peerings                         : []
-   ```
-4. 配置线路的 Azure 公共对等互连。 在继续下一步前，请确保已准备好以下信息。
-
-   * 主链路的 /30 子网。 这必须是有效的公共 IPv4 前缀。
-   * 辅助链路的 /30 子网。 这必须是有效的公共 IPv4 前缀。
-   * 用于建立此对等互连的有效 VLAN ID。 请确保线路中没有其他对等互连使用同一个 VLAN ID。
-   * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。
-   * 可选：
-     * MD5 哈希（如果选择使用）。
-
-   运行以下示例为线路配置 Azure 公共对等互连
-
-   ```azurepowershell-interactive
-   Add-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "12.0.0.0/30" -SecondaryPeerAddressPrefix "12.0.0.4/30" -VlanId 100
-
-   Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
-   ```
-
-   如果选择使用 MD5 哈希，请使用以下示例：
-
-   ```azurepowershell-interactive
-   Add-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "12.0.0.0/30" -SecondaryPeerAddressPrefix "12.0.0.4/30" -VlanId 100  -SharedKey "A1B2C3D4"
-
-   Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
-   ```
-
-   > [!IMPORTANT]
-   > 请确保将 AS 编号指定为对等互连 ASN 而不是客户 ASN。
-   > 
-   >
-
-### <a name="getpublic"></a>获取 Azure 公共对等互连详细信息
-
-可以使用以下 cmdlet 来获取配置详细信息：
-
-```azurepowershell-interactive
-  $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
-
-  Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -Circuit $ckt
-  ```
-
-### <a name="updatepublic"></a>更新 Azure 公共对等互连配置
-
-可以使用以下示例来更新配置的任何部分。 在此示例中，线路的 VLAN ID 将从 200 更新为 600。
-
-```azurepowershell-interactive
-Set-AzExpressRouteCircuitPeeringConfig  -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 600
-
-Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
-```
-
-### <a name="deletepublic"></a>删除 Azure 公共对等互连
-
-可以运行以下示例来删除对等互连配置：
-
-```azurepowershell-interactive
-Remove-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
-Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
-```
 
 ## <a name="next-steps"></a>后续步骤
 

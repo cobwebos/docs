@@ -1,116 +1,118 @@
 ---
-title: Azure Active Directory 域服务：服务主体配置故障排除 | Microsoft Docs
-description: Azure AD 域服务的服务主体配置疑难解答
+title: 解除 Azure AD 域服务中的服务主体警报 | Microsoft Docs
+description: 了解如何发现和解除 Azure Active Directory 域服务的服务主体配置警报
 services: active-directory-ds
-documentationcenter: ''
-author: MikeStephens-MS
-manager: ''
-editor: ''
+author: iainfoulds
+manager: daveba
 ms.assetid: f168870c-b43a-4dd6-a13f-5cfadc5edf2c
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 05/14/2019
-ms.author: mstephen
-ms.openlocfilehash: a8c21e3b27a4868837d3e381c7c1868c89858bea
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.topic: troubleshooting
+ms.date: 07/09/2020
+ms.author: iainfou
+ms.openlocfilehash: fc665503413d2f022b10ae043aac3315597c6ba4
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66246489"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221385"
 ---
-# <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>排查托管域中无效的服务主体配置
+# <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>已知问题：Azure Active Directory 域服务中的服务主体警报
 
-本文帮助你排查和解决与导致以下警报消息的配置错误相关的服务主体问题：
+[服务主体](../active-directory/develop/app-objects-and-service-principals.md)是 Azure 平台用于管理、更新和维护 Azure Active Directory 域服务 (Azure AD DS) 托管域的应用程序。 如果删除服务主体，托管域中的功能会受到影响。
+
+本文帮助你发现和解除与服务主体相关的配置警报。
 
 ## <a name="alert-aadds102-service-principal-not-found"></a>警报 AADDS102：找不到服务主体
 
-**警报消息：** 已从 Azure AD 目录中删除 Azure AD 域服务正常工作所需的服务主体。*此配置影响 Microsoft 监视、管理、修补和同步托管域的功能*。
+### <a name="alert-message"></a>警报消息
 
-[服务主体](../active-directory/develop/app-objects-and-service-principals.md)是指 Microsoft 用于管理、更新和维护托管域的应用程序。 如果删除服务主体，将中断 Microsoft 为域提供服务的功能。
+已从 Azure AD 目录中删除 Azure AD 域服务正常工作所需的服务主体。此配置影响 Microsoft 监视、管理、修补和同步托管域的功能。
 
+如果需要的服务主体遭删除，Azure 平台无法执行自动化的管理任务。 托管域可能无法正确应用更新或进行备份。
 
-## <a name="check-for-missing-service-principals"></a>检查是否缺少服务主体
-请使用以下步骤确定是否需要重新创建服务主体：
+### <a name="check-for-missing-service-principals"></a>检查是否缺少服务主体
 
-1. 导航到 Azure 门户中的[企业应用程序 - 所有应用程序](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)页。
-2. 在“显示”下拉列表中，选择“所有应用程序”，然后单击“应用”    。
-3. 使用下表，通过将 ID 粘贴到搜索框中并按 Enter 来搜索每个应用程序 ID。 如果搜索结果为空，则必须按照“解决方法”列中的步骤重新创建服务主体。
+若要检查缺少的服务主体，必须重新创建，请完成以下步骤：
 
-| 应用程序 ID | 解决方法 |
-| :--- | :--- |
-| 2565bd9d-da50-47d4-8b85-4c97f669dc36 | [使用 PowerShell 重新创建缺少的服务主体](#recreate-a-missing-service-principal-with-powershell) |
-| 443155a6-77f3-45e3-882b-22b3a8d431fb | [重新注册到 Microsoft.AAD 命名空间](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
-| abba844e-bc0e-44b0-947a-dc74e5d09022  | [重新注册到 Microsoft.AAD 命名空间](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
-| d87dcbc6-a371-462e-88e3-28ad15ec4e64 | [重新注册到 Microsoft.AAD 命名空间](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
+1. 在 Azure 门户的左侧导航菜单中，选择“Azure Active Directory”。
+1. 选择“企业应用程序”。 在“应用程序类型”下拉菜单中，选择“所有应用程序”，然后选择“应用” 。
+1. 搜索以下每个应用程序 Id。 如果找不到现有的应用程序，请按照解决步骤创建服务主体或重新注册命名空间。
 
-## <a name="recreate-a-missing-service-principal-with-powershell"></a>使用 PowerShell 重新创建缺失的服务主体
-如果 Azure AD 目录中缺少 ID 为 ```2565bd9d-da50-47d4-8b85-4c97f669dc36``` 的服务主体，请按照以下步骤操作。
+    | 应用程序 ID | 解决方法 |
+    | :--- | :--- |
+    | 2565bd9d-da50-47d4-8b85-4c97f669dc36 | [重新创建缺失的服务主体](#recreate-a-missing-service-principal) |
+    | 443155a6-77f3-45e3-882b-22b3a8d431fb | [重新注册 Microsoft.AAD 命名空间](#re-register-the-microsoft-aad-namespace) |
+    | abba844e-bc0e-44b0-947a-dc74e5d09022 | [重新注册 Microsoft.AAD 命名空间](#re-register-the-microsoft-aad-namespace) |
+    | d87dcbc6-a371-462e-88e3-28ad15ec4e64 | [重新注册 Microsoft.AAD 命名空间](#re-register-the-microsoft-aad-namespace) |
 
-**解决方法：** 需要 Azure AD PowerShell 来完成这些步骤。 有关安装 Azure AD PowerShell 的信息，请参阅[本文](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.)。
+### <a name="recreate-a-missing-service-principal"></a>重新创建缺失的服务主体
 
-若要解决此问题，在 PowerShell 窗口中键入以下命令：
-1. 安装 Azure AD PowerShell 模块并将其导入。
+如果 Azure AD 目录中缺少应用程序 ID 2565bd9d-da50-47d4-8b85-4c97f669dc36，请使用 Azure AD PowerShell 完成以下步骤。 有关详细信息，请参阅[Azure AD PowerShell](/powershell/azure/active-directory/install-adv2)。
+
+1. 如果需要，请安装 Azure AD PowerShell 模块并将其导入，如下所示：
 
     ```powershell
     Install-Module AzureAD
     Import-Module AzureAD
     ```
 
-2. 通过执行以下 PowerShell 命令检查目录中是否缺失 Azure AD 域服务所需的服务主体：
-
-    ```powershell
-    Get-AzureAdServicePrincipal -filter "AppId eq '2565bd9d-da50-47d4-8b85-4c97f669dc36'"
-    ```
-
-3. 通过键入以下 PowerShell 命令创建服务主体：
+1. 现在，使用 [New-AzureAdServicePrincipal][New-AzureAdServicePrincipal] cmdlet 重新创建服务主体：
 
     ```powershell
     New-AzureAdServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
     ```
 
-4. 创建好缺少的服务主体后，请稍等两小时，然后再检查托管域的运行状况。
+托管域的运行状况在两小时内自动更新，并删除警报。
 
+### <a name="re-register-the-microsoft-aad-namespace"></a>重新注册 Microsoft.AAD 命名空间
 
-## <a name="re-register-to-the-microsoft-aad-namespace-using-the-azure-portal"></a>使用 Azure 门户重新注册到 Microsoft.AAD 命名空间
-如果 Azure AD 目录中缺少 ID 为 ```443155a6-77f3-45e3-882b-22b3a8d431fb```、```abba844e-bc0e-44b0-947a-dc74e5d09022``` 或 ```d87dcbc6-a371-462e-88e3-28ad15ec4e64``` 的服务主体，请按照以下步骤操作。
+如果 Azure AD 目录中缺少应用程序 ID 443155a6-77f3-45e3-882b-22b3a8d431fb、abba844e-bc0e-44b0-947a-dc74e5d09022 或 d87dcbc6-a371-462e-88e3-28ad15ec4e64，请完成以下步骤，以重新注册 Microsoft.AAD 资源提供程序   ：
 
-**解决方法：** 使用以下步骤还原目录上的域服务：
+1. 在 Azure 门户中，搜索并选择“订阅”。
+1. 选择与托管域相关联的订阅。
+1. 从左侧导航中选择“资源提供程序”。
+1. 搜索“Microsoft.AAD”，然后选择“重新注册”。
 
-1. 导航到 Azure 门户中的[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)页。
-2. 从与托管域相关联的表中选择订阅
-3. 使用左侧的导航，选择“资源提供程序” 
-4. 在表中搜索“Microsoft.AAD”并单击“重新注册” 
-5. 请在两小时后查看托管域的运行状况页面，确保已解除警报。
-
+托管域的运行状况在两小时内自动更新，并删除警报。
 
 ## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>警报 AADDS105：密码同步应用程序已过期
 
-**警报消息：** 应用程序 ID 为“d87dcbc6-a371-462e-88e3-28ad15ec4e64”的服务主体已删除并重新创建。 重新创建会导致在为托管域提供服务所需的 Azure AD 域服务资源上出现不一致的权限。 托管域上的密码同步可能会受影响。
+### <a name="alert-message"></a>警报消息
 
+*应用程序 ID 为 "d87dcbc6-a371-462e-88e3-28ad15ec4e64" 的服务主体已删除，然后重新创建。重新尝试在为托管域服务所需的 Azure AD 域服务资源上留下不一致的权限。托管域上的密码同步可能会受到影响。*
 
-**解决方法：** 需要 Azure AD PowerShell 来完成这些步骤。 有关安装 Azure AD PowerShell 的信息，请参阅[本文](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.)。
+Azure AD DS 自动从 Azure AD 同步用户帐户和凭据。 如果用于此过程的 Azure AD 应用程序有问题，Azure AD DS 和 Azure AD 之间的凭据同步就会失败。
 
-若要解决此问题，在 PowerShell 窗口中键入以下命令：
-1. 安装 Azure AD PowerShell 模块并将其导入。
+### <a name="resolution"></a>解决方法
+
+若要重新创建用于凭据同步的 Azure AD 应用程序，请使用 Azure AD PowerShell 完成以下步骤。 有关详细信息，请参阅[安装 Azure AD PowerShell](/powershell/azure/active-directory/install-adv2)。
+
+1. 如果需要，请安装 Azure AD PowerShell 模块并将其导入，如下所示：
 
     ```powershell
     Install-Module AzureAD
     Import-Module AzureAD
     ```
-2. 使用以下 PowerShell 命令删除旧的应用程序和对象
+
+2. 现在使用以下 PowerShell cmdlet 删除旧的应用程序和对象：
 
     ```powershell
     $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.windowsazure.com'"
     Remove-AzureADApplication -ObjectId $app.ObjectId
     $spObject = Get-AzureADServicePrincipal -Filter "DisplayName eq 'Azure AD Domain Services Sync'"
-    Remove-AzureADServicePrincipal -ObjectId $app.ObjectId
+    Remove-AzureADServicePrincipal -ObjectId $spObject
     ```
-3. 删除这两者后，系统将修正自身并重新创建密码同步所需的应用程序。 若要确保警报已修正，请等待两个小时，然后检查域的运行状况。
 
+删除这两个应用程序后，Azure 平台自动重新创建它们，并尝试恢复密码同步。 托管域的运行状况在两小时内自动更新，并删除警报。
 
-## <a name="contact-us"></a>联系我们
-欢迎联系 Azure Active Directory 域服务产品团队[分享看法或请求支持](contact-us.md)。
+## <a name="next-steps"></a>后续步骤
+
+如果仍有问题，请[发起 Azure 支持请求][azure-support]以获得额外的疑难解答帮助。
+
+<!-- INTERNAL LINKS -->
+[azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md
+
+<!-- EXTERNAL LINKS -->
+[New-AzureAdServicePrincipal]: /powershell/module/AzureAD/New-AzureADServicePrincipal

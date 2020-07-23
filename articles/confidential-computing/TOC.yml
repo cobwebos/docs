@@ -1,0 +1,33 @@
+- name: Azure 机密计算
+  href: overview.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 在 Azure 门户中创建
+      href: quick-create-portal.md
+    - name: 通过市场创建
+      href: quick-create-marketplace.md
+- name: 概念
+  expanded: true
+  items:
+    - name: 有关虚拟机的解决方案
+      href: virtual-machine-solutions.md
+- name: 资源
+  expanded: true
+  items:
+    - name: 常见问题解答
+      href: faq.md
+    - name: 机密计算反馈
+      href: 'https://feedback.azure.com/forums/919792-azure-confidential-compute'
+    - name: StackOverflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-confidential-computing'
+    - name: 开放式 Enclave SDK
+      href: 'https://aka.ms/oesdkGitHubRepo'
+    - name: 机密计算联盟
+      href: 'https://confidentialcomputing.io/'
+    - name: Azure 上的虚拟机
+      href: 'https://docs.microsoft.com/azure/virtual-machines/'
+    - name: 定价
+      href: 'https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/#DC1s-C8s%20v2'
+    - name: 区域
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=virtual-machines'

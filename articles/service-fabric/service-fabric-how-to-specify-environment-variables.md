@@ -1,23 +1,15 @@
 ---
-title: 在 Azure Service Fabric 中指定服务的环境变量的操作说明 | Microsoft Docs
+title: 为服务指定环境变量
 description: 演示如何在 Service Fabric 中使用应用程序的环境变量
-documentationcenter: .net
 author: mikkelhegn
-manager: markfuss
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: f75de635f08ae06db349387a436c636c149ec9f2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: f4c4f2a1c140e3d0f181c4fd55482056f9f91b62
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60720223"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75614309"
 ---
 # <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>如何在 Service Fabric 中指定服务的环境变量
 
@@ -28,30 +20,39 @@ ms.locfileid: "60720223"
 在此示例中，可以为容器设置环境变量。 本文假设你已有一个应用程序和服务清单。
 
 1. 打开 ServiceManifest.xml 文件。
-1. 在 `CodePackage` 元素中，为每个环境变量添加新的 `EnvironmentVariables` 元素和 `EnvironmentVariable` 元素。
+2. 在 `CodePackage` 元素中，为每个环境变量添加新的 `EnvironmentVariables` 元素和 `EnvironmentVariable` 元素。
 
     ```xml
-      <CodePackage Name="MyCode" Version="CodeVersion1">
-      ...
-        <EnvironmentVariables>
-          <EnvironmentVariable Name="MyEnvVariable" Value="DefaultValue"/>
-          <EnvironmentVariable Name="HttpGatewayPort" Value="19080"/>
-        </EnvironmentVariables>
-      </CodePackage>
+    <CodePackage Name="MyCode" Version="CodeVersion1">
+            ...
+            <EnvironmentVariables>
+                  <EnvironmentVariable Name="MyEnvVariable" Value="DefaultValue"/>
+                  <EnvironmentVariable Name="HttpGatewayPort" Value="19080"/>
+            </EnvironmentVariables>
+    </CodePackage>
     ```
 
-    可在应用程序清单中重写环境变量。
+   可在应用程序清单中重写环境变量。
 
-1. 若要替代应用程序清单中的环境变量，请使用 `EnvironmentOverrides` 元素。
+3. 若要替代应用程序清单中的环境变量，请使用 `EnvironmentOverrides` 元素。
 
     ```xml
       <ServiceManifestImport>
-        <ServiceManifestRef ServiceManifestName="FrontEndServicePkg" ServiceManifestVersion="1.0.0" />
+        <ServiceManifestVersion="1.0.0" />
         <EnvironmentOverrides CodePackageRef="MyCode">
           <EnvironmentVariable Name="MyEnvVariable" Value="OverrideValue"/>
         </EnvironmentOverrides>
       </ServiceManifestImport>
     ```
+
+## <a name="specifying-environment-variables-dynamically-using-docker-compose"></a>使用 Docker Compose 动态指定环境变量
+
+Service Fabric 支持[使用 Docker Compose 进行部署](service-fabric-docker-compose.md#supported-compose-directives)的功能。 Compose 文件可以从 shell 获取环境变量。 此行为可用于动态替换所需的环境值：
+
+```yml
+environment:
+  - "hostname:${hostname}"
+```
 
 ## <a name="next-steps"></a>后续步骤
 若要详细了解本文中讨论的一些核心概念，请参阅文章[管理多个环境的应用程序](service-fabric-manage-multiple-environment-app-configuration.md)。

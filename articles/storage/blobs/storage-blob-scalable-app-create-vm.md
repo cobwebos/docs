@@ -1,21 +1,18 @@
 ---
-title: 在 Azure 中为可缩放的应用程序创建 VM 和存储帐户 | Microsoft Docs
+title: 在 Azure 中为可缩放的应用程序创建 VM 和存储帐户
 description: 了解如何使用 Azure Blob 存储来部署用于运行可缩放的应用程序的 VM
-services: storage
 author: roygara
 ms.service: storage
-ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
-ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 38fd62eff663c7714acf00afe3ffa559c1eeb7e0
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 60bb227af7cc886bb35cbd045cc8a27cf82ae903
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729101"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "75372221"
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>为可缩放的应用程序创建虚拟机和存储帐户
 

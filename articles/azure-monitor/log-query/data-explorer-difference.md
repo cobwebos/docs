@@ -1,24 +1,17 @@
 ---
 title: Azure Monitor 日志查询语言差异 | Microsoft Docs
 description: Azure Monitor 使用的 Kusto 查询语言的参考信息。 包括特定于 Azure Monitor 的附加元素以及 Azure Monitor 日志查询中不支持的元素。
-services: log-analytics
-documentationcenter: ''
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 10/31/2018
 ms.author: bwren
-ms.openlocfilehash: 1185f3f96fd39f168d138d7dbf66e7780884b1fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/01/2020
+ms.openlocfilehash: 265179909c8ae4a6fa630b835bc9993f042d6460
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60589256"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80585699"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure Monitor 日志查询语言差异
 
@@ -48,10 +41,10 @@ ms.locfileid: "60589256"
 ### <a name="operators-not-supported-in-azure-monitor"></a>Azure Monitor 中不支持的运算符
 
 * [跨群集加入](/azure/kusto/query/joincrosscluster)
-* [externaldata 运算符](/azure/kusto/query/externaldata-operator)
 
 ### <a name="plugins-not-supported-in-azure-monitor"></a>Azure Monitor 中不支持的插件
 
+* [Python 插件](/azure/kusto/query/pythonplugin)
 * [sql_request 插件](/azure/kusto/query/sqlrequestplugin)
 
 

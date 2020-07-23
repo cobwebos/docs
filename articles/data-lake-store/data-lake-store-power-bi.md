@@ -1,52 +1,46 @@
 ---
-title: 使用 Power BI 分析 Azure Data Lake Storage Gen1 中的数据 | Microsoft Docs
-description: 使用 Power BI 分析 Azure Data Lake Storage Gen1 中存储的数据
-services: data-lake-store
-documentationcenter: ''
+title: 分析 Azure Data Lake Storage Gen1 中的数据 - Power BI
+description: 使用 Power BI 分析 Azure Data Lake Storage Gen1 中存储的数据。
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 57d19d27-e135-49d9-a7ea-46c48ef4e3bd
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: d8717b8f365e692b5f27bf8a04d65c5147b8f31b
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: a692c5b23eaf23b33eef9bd2baf1e62b4bcca74e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603211"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504927"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>使用 Power BI 分析 Azure Data Lake Storage Gen1 中的数据
 本文介绍如何使用 Power BI Desktop 分析和可视化 Azure Data Lake Storage Gen1 中存储的数据。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 在开始阅读本教程前，必须具有：
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Data Lake Storage Gen1 帐户**。 请遵循[通过 Azure 门户开始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的说明进行操作。 本文假定已创建名为“myadlsg1”的 Data Lake Storage Gen1 帐户，且已向其上传了示例数据文件 (Drivers.txt)。 可从 [Azure Data Lake Git Repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)（Azure Data Lake Git 存储库）下载此示例文件。
+* **Data Lake Storage Gen1 帐户**。 请遵循[通过 Azure 门户开始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的说明进行操作。 本文假定已创建名为“myadlsg1”的 Data Lake Storage Gen1 帐户，且已向其上传了示例数据文件 (Drivers.txt) 。 可从 [Azure Data Lake Git Repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)（Azure Data Lake Git 存储库）下载此示例文件。
 * **Power BI Desktop**。 可从 [Microsoft 下载中心](https://www.microsoft.com/en-us/download/details.aspx?id=45331) 进行下载。 
 
 ## <a name="create-a-report-in-power-bi-desktop"></a>在 Power BI Desktop 中创建报表
 1. 在计算机上启动 Power BI Desktop。
 2. 在“主页”功能区上，单击“获取数据”，并单击“详细信息”。 在“获取数据”对话框中，单击“Azure”，单击“Azure Data Lake Store”，然后单击“连接”。
    
-    ![连接到 Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Connect to Data Lake Storage Gen1")
+    ![连接到 Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account.png "连接到 Data Lake Storage Gen1")
 3. 如果出现一个对话框显示连接器处于开发阶段，选择继续。
 4. 在“Azure Data Lake Store”对话框中，提供 Data Lake Storage Gen1 帐户的 URL，并单击“确定”。
    
-    ![Data Lake Storage Gen1 的 URL](./media/data-lake-store-power-bi/get-data-lake-store-account-url.png "URL for Data Lake Storage Gen1")
+    ![Data Lake Storage Gen1 的 URL](./media/data-lake-store-power-bi/get-data-lake-store-account-url.png "Data Lake Storage Gen1 的 URL")
 5. 在下一个对话框中，单击“登录”以登录到 Data Lake Storage Gen1 帐户。 将重定向到组织的登录页面。 按照提示登录到该帐户。
    
-    ![登录到 Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "Sign into Data Lake Storage Gen1")
+    ![登录 Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "登录 Data Lake Storage Gen1")
 6. 登录成功后，单击“连接”。
    
-    ![连接到 Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Connect to Data Lake Storage Gen1")
+    ![连接到 Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "连接到 Data Lake Storage Gen1")
 7. 下一个对话框中会显示已上传至 Data Lake Storage Gen1 帐户的文件。 验证信息，并单击“加载”。
    
-    ![加载 Data Lake Storage Gen1 中的数据](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "Load data from Data Lake Storage Gen1")
+    ![从 Data Lake Storage Gen1 加载数据](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "从 Data Lake Storage Gen1 加载数据")
 8. 数据成功加载到 Power BI 后，“字段”选项卡会出现以下字段。
    
     ![已导入的字段](./media/data-lake-store-power-bi/imported-fields.png "已导入的字段")
@@ -74,23 +68,23 @@ ms.locfileid: "65603211"
 14. 查询更新后，“字段”选项卡会显示可用于可视化的新字段。
     
     ![已更新的字段](./media/data-lake-store-power-bi/updated-query-fields.png "已更新的字段")
-15. 让我们创建一个饼图来表示给定的国家/地区的每个城市中的驱动程序。 为此，请如下进行选择。
+15. 我们来创建一个饼图，表示特定国家/地区的每个城市中的司机。 为此，请如下进行选择。
     
     1. 在“可视化”选项卡中，单击饼图符号。
        
         ![创建饼图](./media/data-lake-store-power-bi/create-pie-chart.png "创建饼图")
-    2. 我们将使用的列**Column 4** （城市名称） 和**列 7** （国家/地区的名称）。 如下所示，从“字段”选项卡将这些列拖动到“可视化”选项卡。
+    2. 将使用到的列是“列 4”（城市名称）和“列 7”（国家/地区名称）。 如下所示，从“字段”选项卡将这些列拖动到“可视化”选项卡。
        
-        ![创建视觉效果](./media/data-lake-store-power-bi/create-visualizations.png "创建视觉效果")
+        ![创建可视化效果](./media/data-lake-store-power-bi/create-visualizations.png "创建视觉效果")
     3. 此时饼图应如下所示。
        
         ![饼图](./media/data-lake-store-power-bi/pie-chart.png "创建视觉效果")
-16. 通过从页面级别筛选器选择特定的国家/地区，现在可以看到所选的国家/地区的每个城市中的驱动程序的数量。 例如，在“可视化”选项卡中的“页面级别筛选器”中，选择“巴西”。
+16. 通过在页面级别筛选器中选择一个特定的国家/地区，可看到所选国家/地区的每个城市中的司机数量。 例如，在“可视化”选项卡中的“页面级别筛选器”中，选择“巴西”。
     
-    ![选择一个国家/地区](./media/data-lake-store-power-bi/select-country.png "选择国家/地区")
+    ![选择国家/地区](./media/data-lake-store-power-bi/select-country.png "选择国家/地区")
 17. 饼图会自动更新，显示巴西各个城市中的司机。
     
-    ![一个国家/地区中的驱动程序](./media/data-lake-store-power-bi/driver-per-country.png "每个国家/地区的驱动程序")
+    ![某个国家/地区中的司机](./media/data-lake-store-power-bi/driver-per-country.png "每个国家/地区的司机")
 18. 在“文件”菜单上，单击“保存”将可视化对象另存为 Power BI Desktop 文件。
 
 ## <a name="publish-report-to-power-bi-service"></a>将报表发布到 Power BI 服务

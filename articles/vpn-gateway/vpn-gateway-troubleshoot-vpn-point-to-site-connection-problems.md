@@ -1,31 +1,24 @@
 ---
-title: 排查 Azure 点到站点连接问题 | Microsoft Docs
+title: 排查 Azure 点到站点连接问题
+titleSuffix: Azure VPN Gateway
 description: 了解如何排查点到站点连接问题。
 services: vpn-gateway
-documentationcenter: na
 author: chadmath
-manager: cshepard
-editor: ''
-tags: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/31/2019
+ms.date: 03/26/2020
 ms.author: genli
-ms.openlocfilehash: cab40284f36f21f9de72ee4dc1faf78153621d26
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
-ms.translationtype: MT
+ms.openlocfilehash: b997942fd8d8a90b4bd395c2afa7d99b64a97ad8
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475973"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037743"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>故障排除：Azure 点到站点连接问题
 
 本文列举了可能会出现的常见点到站点连接问题。 此外，还介绍了这些问题的可能原因和解决方案。
 
-## <a name="vpn-client-error-a-certificate-could-not-be-found"></a>VPN 客户端错误：找不到证书
+## <a name="vpn-client-error-a-certificate-could-not-be-found"></a>VPN 客户端错误：找不到证书。
 
 ### <a name="symptom"></a>症状
 
@@ -41,28 +34,27 @@ ms.locfileid: "66475973"
 
 若要解决该问题，请执行以下步骤：
 
-1. 打开证书管理器：单击“开始”  ，键入“管理计算机证书”  ，然后单击搜索结果中的“管理计算机证书”  。
+1. 打开证书管理器：单击“开始”，键入“管理计算机证书”，然后单击搜索结果中的“管理计算机证书”。
 
 2. 请确保已正确的位置安装下列证书：
 
     | 证书 | 位置 |
     | ------------- | ------------- |
     | AzureClient.pfx  | Current User\Personal\Certificates |
-    | Azuregateway-GUID  .cloudapp.net  | Current User\Trusted Root Certification Authorities|
-    | AzureGateway-GUID  .cloudapp.net、AzureRoot.cer    | Local Computer\Trusted Root Certification Authorities|
+    | AzureRoot.cer    | Local Computer\Trusted Root Certification Authorities|
 
-3. 转到 C:\Users\<UserName>\AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID>，在用户和计算机的存储上手动安装证书（*.cer 文件）。
+3. 转到 C:\Users\<UserName>\AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID>，在用户和计算机存储上手动安装证书（*.cer 文件）。
 
 若要详细了解如何安装客户端证书，请参阅[为点到站点连接生成并导出证书](vpn-gateway-certificates-point-to-site.md)。
 
 > [!NOTE]
-> 导入客户端证书时，请勿选择“启用强私钥保护”  选项。
+> 导入客户端证书时，请勿选择“启用强私钥保护”选项。
 
 ## <a name="the-network-connection-between-your-computer-and-the-vpn-server-could-not-be-established-because-the-remote-server-is-not-responding"></a>无法在计算机与 VPN 服务器之间建立网络连接，因为远程服务器不响应
 
 ### <a name="symptom"></a>症状
 
-尝试连接到正使用 IKEv2 在 Windows 上的 Azure 虚拟网络网关，将获得以下错误消息：
+尝试在 Windows 上使用 IKEv2 连接到 Azure 虚拟网关时，出现以下错误消息：
 
 **无法在计算机与 VPN 服务器之间建立网络连接，因为远程服务器不响应**
 
@@ -85,9 +77,9 @@ ms.locfileid: "66475973"
    | Windows 10 版本 1709 | 2018 年 3 月 22 日 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |  |
 
-2. 设置注册表项值。 在注册表中创建“HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload”REG_DWORD 键或将其设置为 1。
+2. 设置注册表项值。 在注册表中创建 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload` REG_DWORD 项或将其设置为 1。
 
-## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN 客户端错误：接收到的消息异常，或格式不正确
+## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN 客户端错误：收到意外或格式不当的消息
 
 ### <a name="symptom"></a>症状
 
@@ -110,7 +102,7 @@ ms.locfileid: "66475973"
 1. 删除网关子网上的 UDR。 请确保 UDR 正确地转发所有流量。
 2. 请在 Azure 门户中检查根证书的状态，确定它是否已吊销。 如果未吊销，请尝试删除并重新上传根证书。 有关详细信息，请参阅[创建证书](vpn-gateway-howto-point-to-site-classic-azure-portal.md#generatecerts)。
 
-## <a name="vpn-client-error-a-certificate-chain-processed-but-terminated"></a>VPN 客户端错误：已处理证书链，但被终止 
+## <a name="vpn-client-error-a-certificate-chain-processed-but-terminated"></a>VPN 客户端错误：证书链已处理，但被终止 
 
 ### <a name="symptom"></a>症状 
 
@@ -125,12 +117,12 @@ ms.locfileid: "66475973"
     | 证书 | 位置 |
     | ------------- | ------------- |
     | AzureClient.pfx  | Current User\Personal\Certificates |
-    | Azuregateway-GUID  .cloudapp.net  | Current User\Trusted Root Certification Authorities|
-    | AzureGateway-GUID  .cloudapp.net、AzureRoot.cer    | Local Computer\Trusted Root Certification Authorities|
+    | Azuregateway-GUID**.cloudapp.net  | Current User\Trusted Root Certification Authorities|
+    | AzureGateway-GUID**.cloudapp.net、AzureRoot.cer    | Local Computer\Trusted Root Certification Authorities|
 
 2. 如果相应位置上已有证书，请尝试删除并重新安装证书。 **azuregateway-*GUID*.cloudapp.net** 证书位于从 Azure 门户下载的 VPN 客户端配置包中。 可以使用文件存档程序从配置包中提取文件。
 
-## <a name="file-download-error-target-uri-is-not-specified"></a>文件下载错误：目标 URI 未指定
+## <a name="file-download-error-target-uri-is-not-specified"></a>文件下载错误：未指定目标 URI
 
 ### <a name="symptom"></a>症状
 
@@ -173,9 +165,9 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 提取 VPN 客户端配置包，并找到 .cer 文件。 若要安装证书，请执行以下步骤：
 
 1. 打开 mmc.exe。
-2. 添加“证书”  管理单元。
-3. 选择本地计算机的“计算机”  帐户。
-4. 右键单击“受信任的根证书颁发机构”节点。  单击“所有任务” > “导入”，浏览到从 VPN 客户端配置包中提取的 .cer 文件。  
+2. 添加“证书”管理单元。
+3. 选择本地计算机的“计算机”帐户。
+4. 右键单击“受信任的根证书颁发机构”节点。 单击“所有任务” > “导入”，浏览到从 VPN 客户端配置包中提取的 .cer 文件。 
 5. 重启计算机。 
 6. 尝试安装 VPN 客户端。
 
@@ -185,7 +177,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 尝试在 Azure 门户中保存 VPN 网关的更改时，看到以下错误消息：
 
-无法保存虚拟网络网关 &lt;网关名称&gt; ** 。证书 &lt;证书 ID&gt; 的数据无效  **。
+**无法保存虚拟网络网关 &lt;*网关名称*&gt;。证书 &lt;*证书 ID*&gt; 的数据无效。**
 
 ### <a name="cause"></a>原因 
 
@@ -195,24 +187,26 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 请确保证书中的数据不包含换行符（回车符）等无效字符。 整个值应为一长行。 下面为证书示例文本：
 
-    -----BEGIN CERTIFICATE-----
-    MIIC5zCCAc+gAwIBAgIQFSwsLuUrCIdHwI3hzJbdBjANBgkqhkiG9w0BAQsFADAW
-    MRQwEgYDVQQDDAtQMlNSb290Q2VydDAeFw0xNzA2MTUwMjU4NDZaFw0xODA2MTUw
-    MzE4NDZaMBYxFDASBgNVBAMMC1AyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEF
-    AAOCAQ8AMIIBCgKCAQEAz8QUCWCxxxTrxF5yc5uUpL/bzwC5zZ804ltB1NpPa/PI
-    sa5uwLw/YFb8XG/JCWxUJpUzS/kHUKFluqkY80U+fAmRmTEMq5wcaMhp3wRfeq+1
-    G9OPBNTyqpnHe+i54QAnj1DjsHXXNL4AL1N8/TSzYTm7dkiq+EAIyRRMrZlYwije
-    407ChxIp0stB84MtMShhyoSm2hgl+3zfwuaGXoJQwWiXh715kMHVTSj9zFechYd7
-    5OLltoRRDyyxsf0qweTFKIgFj13Hn/bq/UJG3AcyQNvlCv1HwQnXO+hckVBB29wE
-    sF8QSYk2MMGimPDYYt4ZM5tmYLxxxvGmrGhc+HWXzMeQIDAQABozEwLzAOBgNVHQ8B
-    Af8EBAMCAgQwHQYDVR0OBBYEFBE9zZWhQftVLBQNATC/LHLvMb0OMA0GCSqGSIb3
-    DQEBCwUAA4IBAQB7k0ySFUQu72sfj3BdNxrXSyOT4L2rADLhxxxiK0U6gHUF6eWz
-    /0h6y4mNkg3NgLT3j/WclqzHXZruhWAXSF+VbAGkwcKA99xGWOcUJ+vKVYL/kDja
-    gaZrxHlhTYVVmwn4F7DWhteFqhzZ89/W9Mv6p180AimF96qDU8Ez8t860HQaFkU6
-    2Nw9ZMsGkvLePZZi78yVBDCWMogBMhrRVXG/xQkBajgvL5syLwFBo2kWGdC+wyWY
-    U/Z+EK9UuHnn3Hkq/vXEzRVsYuaxchta0X2UNRzRq+o706l+iyLTpe6fnvW6ilOi
-    e8Jcej7mzunzyjz4chN0/WVF94MtxbUkLkqP
-    -----END CERTIFICATE-----
+```text
+-----BEGIN CERTIFICATE-----
+MIIC5zCCAc+gAwIBAgIQFSwsLuUrCIdHwI3hzJbdBjANBgkqhkiG9w0BAQsFADAW
+MRQwEgYDVQQDDAtQMlNSb290Q2VydDAeFw0xNzA2MTUwMjU4NDZaFw0xODA2MTUw
+MzE4NDZaMBYxFDASBgNVBAMMC1AyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEF
+AAOCAQ8AMIIBCgKCAQEAz8QUCWCxxxTrxF5yc5uUpL/bzwC5zZ804ltB1NpPa/PI
+sa5uwLw/YFb8XG/JCWxUJpUzS/kHUKFluqkY80U+fAmRmTEMq5wcaMhp3wRfeq+1
+G9OPBNTyqpnHe+i54QAnj1DjsHXXNL4AL1N8/TSzYTm7dkiq+EAIyRRMrZlYwije
+407ChxIp0stB84MtMShhyoSm2hgl+3zfwuaGXoJQwWiXh715kMHVTSj9zFechYd7
+5OLltoRRDyyxsf0qweTFKIgFj13Hn/bq/UJG3AcyQNvlCv1HwQnXO+hckVBB29wE
+sF8QSYk2MMGimPDYYt4ZM5tmYLxxxvGmrGhc+HWXzMeQIDAQABozEwLzAOBgNVHQ8B
+Af8EBAMCAgQwHQYDVR0OBBYEFBE9zZWhQftVLBQNATC/LHLvMb0OMA0GCSqGSIb3
+DQEBCwUAA4IBAQB7k0ySFUQu72sfj3BdNxrXSyOT4L2rADLhxxxiK0U6gHUF6eWz
+/0h6y4mNkg3NgLT3j/WclqzHXZruhWAXSF+VbAGkwcKA99xGWOcUJ+vKVYL/kDja
+gaZrxHlhTYVVmwn4F7DWhteFqhzZ89/W9Mv6p180AimF96qDU8Ez8t860HQaFkU6
+2Nw9ZMsGkvLePZZi78yVBDCWMogBMhrRVXG/xQkBajgvL5syLwFBo2kWGdC+wyWY
+U/Z+EK9UuHnn3Hkq/vXEzRVsYuaxchta0X2UNRzRq+o706l+iyLTpe6fnvW6ilOi
+e8Jcej7mzunzyjz4chN0/WVF94MtxbUkLkqP
+-----END CERTIFICATE-----
+```
 
 ## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-resource-name-is-invalid"></a>Azure 门户错误：无法保存 VPN 网关，资源名称无效
 
@@ -220,7 +214,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 尝试在 Azure 门户中保存 VPN 网关的更改时，看到以下错误消息： 
 
-无法保存虚拟网络网关 &lt;网关名称&gt; ** 。资源名称 &lt;尝试上传的证书名称 无效&gt;  **。
+**无法保存虚拟网络网关 &lt;*网关名称*&gt;。资源名称 &lt;*尝试上传的证书名称*&gt; 无效**。
 
 ### <a name="cause"></a>原因
 
@@ -232,7 +226,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 尝试下载 VPN 客户端配置包时，看到以下错误消息：
 
-**无法下载文件。错误详细信息:错误 503。服务器正忙。**
+**无法下载文件。错误详细信息: 错误 503。服务器正忙。**
  
 ### <a name="solution"></a>解决方案
 
@@ -252,32 +246,6 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 已达到允许的最大连接数。 可以在 Azure 门户中查看连接的客户端总数。
 
-## <a name="point-to-site-vpn-incorrectly-adds-a-route-for-100008-to-the-route-table"></a>点到站点 VPN 将 10.0.0.0/8 路由错误添加到路由表
-
-### <a name="symptom"></a>症状
-
-在点到站点客户端上进行 VPN 拨号连接时，VPN 客户端应该将一个路由添加到 Azure 虚拟网络。 IP 帮助程序服务应添加 VPN 客户端子网的路由。 
-
-VPN 客户端范围属于 10.0.0.0/8 的较小子网（如 10.0.12.0/24）。 添加了具有更高优先级的 10.0.0.0/8 的路由，而不是 10.0.12.0/24 的路由。 
-
-这种错误的路由会断开与可能属于 10.0.0.0/8 范围内另一子网（如未定义特定路由的 10.50.0.0/24）的其他本地网络的连接。 
-
-### <a name="cause"></a>原因
-
-此行为专为 Windows 客户端设计。 客户端使用 PPP IPCP 协议时，会从服务器（在本例中为 VPN 网关）中获取隧道接口的 IP 地址。 不过，由于协议有限制，因此客户端没有子网掩码。 因为无法通过其他方式获取子网掩码，所以客户端会尝试根据隧道接口 IP 地址的种类来猜测子网掩码。 
-
-因此，路由的添加依据为以下静态映射： 
-
-如果地址属于 A 类 --> 应用 /8
-
-如果地址属于 B 类 --> 应用 /16
-
-如果地址属于 C 类 --> 应用 /24
-
-### <a name="solution"></a>解决方案
-
-将其他网络的路由注入具有最长前缀匹配或指标低于点到站点（因此具有更高优先级）的路由表中。 
-
 ## <a name="vpn-client-cannot-access-network-file-shares"></a>VPN 客户端无法访问网络文件共享
 
 ### <a name="symptom"></a>症状
@@ -294,18 +262,18 @@ SMB 协议用于文件共享访问。 连接启动时，VPN 客户端添加了�
 
 若要解决此问题，请禁止从以下注册表子项缓存域凭据： 
 
-    HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\DisableDomainCreds - Set the value to 1 
+`HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\DisableDomainCreds - Set the value to 1`
 
 
 ## <a name="cannot-find-the-point-to-site-vpn-connection-in-windows-after-reinstalling-the-vpn-client"></a>重新安装 VPN 客户端后，在 Windows 中找不到点到站点 VPN 连接
 
 ### <a name="symptom"></a>症状
 
-先删除了点到站点 VPN 连接，再重新安装 VPN 客户端。 在这种情况下，VPN 连接未成功配置。 在 Windows 的“网络连接”  设置中看不到 VPN 连接。
+先删除了点到站点 VPN 连接，再重新安装 VPN 客户端。 在这种情况下，VPN 连接未成功配置。 在 Windows 的“网络连接”设置中看不到 VPN 连接。
 
 ### <a name="solution"></a>解决方案
 
-要解决此问题，请从 C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId>  删除旧的 VPN 客户端配置文件，再重新运行 VPN 客户端安装程序。
+若要解决此问题，请从 C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId> 删除旧的 VPN 客户端配置文件，再重新运行 VPN 客户端安装程序。
 
 ## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>点到站点 VPN 客户端无法解析本地域中的资源的 FQDN
 
@@ -315,7 +283,7 @@ SMB 协议用于文件共享访问。 连接启动时，VPN 客户端添加了�
 
 ### <a name="cause"></a>原因
 
-点到站点 VPN 客户端使用在 Azure 虚拟网络中配置的 Azure DNS 服务器。 Azure DNS 服务器优先于在客户端中配置的本地 DNS 服务器，因此所有 DNS 查询都被发送到 Azure DNS 服务器。 如果 Azure DNS 服务器中没有本地资源的记录，则查询失败。
+点到站点 VPN 客户端通常使用在 Azure 虚拟网络中配置的 Azure DNS 服务器。 在客户端配置的 Azure DNS 服务器优先于本地 DNS 服务器（除非以太网接口的标准较低），因此所有 DNS 查询都被发送到 Azure DNS 服务器。 如果 Azure DNS 服务器中没有本地资源的记录，则查询失败。
 
 ### <a name="solution"></a>解决方案
 
@@ -334,11 +302,11 @@ SMB 协议用于文件共享访问。 连接启动时，VPN 客户端添加了�
 ## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>错误：“吊销功能无法检查吊销，因为吊销服务器已脱机。(错误 0x80092013)”
 
 ### <a name="causes"></a>原因
-如果客户端无法访问 http://crl3.digicert.com/ssca-sha2-g1.crl 和 http://crl4.digicert.com/ssca-sha2-g1.crl，则会发生此错误消息。  进行吊销检查需要访问这两个站点。  此问题通常发生在配置了代理服务器的客户端上。 在某些环境中，如果请求不通过代理服务器，则在边缘防火墙处会被拒绝。
+如果客户端无法访问 http://crl3.digicert.com/ssca-sha2-g1.crl 和 http://crl4.digicert.com/ssca-sha2-g1.crl ，则会出现此错误消息。  进行吊销检查需要访问这两个站点。  此问题通常发生在配置了代理服务器的客户端上。 在某些环境中，如果请求不通过代理服务器，则在边缘防火墙处会被拒绝。
 
 ### <a name="solution"></a>解决方案
 
-请检查代理服务器设置，请确保客户端可以访问 http://crl3.digicert.com/ssca-sha2-g1.crl 和 http://crl4.digicert.com/ssca-sha2-g1.crl。
+请检查代理服务器设置，确保客户端可以访问 http://crl3.digicert.com/ssca-sha2-g1.crl 和 http://crl4.digicert.com/ssca-sha2-g1.crl 。
 
 ## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>VPN 客户端错误：由于 RAS/VPN 服务器上配置的某个策略，连接被阻止。 (错误 812)
 
@@ -366,11 +334,24 @@ SMB 协议用于文件共享访问。 连接启动时，VPN 客户端添加了�
 
 更新网卡驱动程序：
 
-1. 单击“开始”，键入“设备管理器”，然后从结果列表中选择它   。 如果系统提示需要管理员密码或确认，请键入密码或进行确认。
-2. 在“网络适配器”  类别中，找到要更新的 NIC。  
-3. 双击设备名称，选择“更新驱动程序”，选择“自动搜索更新的驱动程序软件”   。
+1. 单击“开始”，键入“设备管理器”，然后从结果列表中选择它 。 如果系统提示需要管理员密码或确认，请键入密码或进行确认。
+2. 在“网络适配器”类别中，找到要更新的 NIC。  
+3. 双击设备名称，选择“更新驱动程序”，选择“自动搜索更新的驱动程序软件” 。
 4. 如果 Windows 找不到新的驱动程序，可以尝试在设备制造商的网站上查找，并按照说明执行操作。
 5. 重启计算机并再次尝试连接。
+
+## <a name="vpn-client-error-dialing-vpn-connection-vpn-connection-name-status--vpn-platform-did-not-trigger-connection"></a>VPN 客户端错误：拨号 VPN 连接 <VPN Connection Name>，状态 =“VPN 平台未触发连接”
+
+你可能还会在 RasClient 的事件查看器中看到以下错误：“用户 <User> 拨打了一个名为 <VPN Connection Name> 的连接，该连接已失败。 失败时返回的错误代码是 1460。”
+
+### <a name="cause"></a>原因
+
+Azure VPN Client 没有在适用于 Windows 的应用设置中启用“后台应用”应用权限。
+
+### <a name="solution"></a>解决方案
+
+1. 在 Windows 中，转到“设置”->“隐私”->“后台应用”
+2. 将“允许应用在后台运行”切换到“开”
 
 ## <a name="error-file-download-error-target-uri-is-not-specified"></a>错误：“文件下载错误，未指定目标 URI”
 
@@ -380,7 +361,7 @@ SMB 协议用于文件共享访问。 连接启动时，VPN 客户端添加了�
 
 ### <a name="solution"></a>解决方案
 
-Azure VPN 网关类型必须是 VPN，VPN 类型必须是 RouteBased  。
+Azure VPN 网关类型必须是 VPN，VPN 类型必须是 RouteBased。
 
 ## <a name="vpn-package-installer-doesnt-complete"></a>VPN 包安装程序未完成
 
@@ -390,7 +371,7 @@ Azure VPN 网关类型必须是 VPN，VPN 类型必须是 RouteBased  。
 
 ### <a name="solution"></a>解决方案
 
-从 C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId> 删除旧的 VPN 客户端配置文件，再次运行 VPN 客户端安装程序  。 
+从 C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId> 删除旧的 VPN 客户端配置文件，再次运行 VPN 客户端安装程序。 
 
 ## <a name="the-vpn-client-hibernates-or-sleep-after-some-time"></a>VPN 客户端在一段时间后进入休眠状态或睡眠状态
 

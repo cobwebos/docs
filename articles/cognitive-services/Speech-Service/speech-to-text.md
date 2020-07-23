@@ -1,113 +1,67 @@
 ---
-title: 语音到文本与 Azure 的语音服务
+title: 语音转文本 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 从 Azure 语音服务，也称为语音到文本，使实时听录的音频流到应用程序、 工具或设备便可以使用，文本的语音到文本显示，并作为命令的输入对其执行操作。 此服务是由相同的识别技术，Microsoft 使用 Cortana 和 Office 产品，并无缝配合，翻译和文本到语音转换提供支持。
+description: 使用语音转文本功能，可将音频流实时听录为文本。 应用程序、工具或设备可以使用、显示和处理此文本输入。 此服务可与文本转语音（语音合成）和语音翻译功能无缝协作。
 services: cognitive-services
-author: erhopf
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/13/2019
-ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 7596670e794c090b04f81cf6b235a4bc54c1f3c4
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.date: 03/12/2020
+ms.author: trbye
+ms.openlocfilehash: b1e84f9acb439324317ed2f0d11ed06eb3e43ad8
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800106"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678053"
 ---
-# <a name="what-is-speech-to-text"></a>什么是语音到文本？
+# <a name="what-is-speech-to-text"></a>什么是语音转文本？
 
-从 Azure 语音服务，也称为语音到文本，使实时听录的音频流到应用程序、 工具或设备便可以使用，文本的语音到文本显示，并作为命令的输入对其执行操作。 此服务是由相同的识别技术，Microsoft 使用 Cortana 和 Office 产品，并无缝配合，翻译和文本到语音转换提供支持。  有关可用的语音到文本语言的完整列表，请参阅[支持的语言](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-to-text)。
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-默认情况下，语音转文本服务使用的通用语言模型。 此模型使用 Microsoft 拥有的数据训练和已部署的云。 其最适合于交谈和听写方案。 如果使用语音转文本在独特的环境中进行识别和听录，则可以创建并训练自定义的声学、语言和发音模型，以解决环境干扰或行业特定的词汇。 
+使用语音服务提供的语音转文本（也称为语音识别）功能，可将音频流实时听录为文本。 应用程序、工具或设备可以使用、显示和处理此文本即命令输入。 此服务由 Microsoft 对 Cortana 和 Office 产品使用的同一识别技术提供支持。 它可与<a href="./speech-translation.md" target="_blank">翻译<span class="docon docon-navigate-external x-hidden-focus"></span></a>和<a href="./text-to-speech.md" target="_blank">文本转语音<span class="docon docon-navigate-external x-hidden-focus"></span></a>服务产品无缝地协同工作。 有关可用语音转文本语言的完整列表，请参阅[支持的语言](language-support.md#speech-to-text)。
 
-可以轻松地捕获来自麦克风的音频、 从流中读取或从存储使用语音 SDK 和 REST Api 访问音频文件。 语音 SDK 支持 WAV PCM/16 位、 16 kHz/8 kHz、 语音识别的单声道音频。 使用支持其他音频格式[语音到文本 REST 终结点](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)或[批处理脚本服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats)。
+语音转文本服务默认使用通用语言模型。 此模型已使用 Microsoft 自有的数据训练，部署在云中。 它非常适合用于对话和听写方案。 使用语音转文本在独特的环境中进行识别和听录时，可以创建并训练自定义的声学、语言和发音模型。 自定义有助于解决环境干扰或特定于行业的词汇的问题。
 
-## <a name="core-features"></a>核心功能
+通过其他参考文本作为输入，语音到文本服务[还可用于评估语音](rest-speech-to-text.md#pronunciation-assessment-parameters)发音，并为演讲音频提供精确和熟练反馈。 借助发音评估，语言学习人员可以练习、获得即时反馈并改进其发音，使他们能够放心地进行讲话和演示。 教师可以使用此功能来实时评估多个扬声器的发音。 此功能当前支持美国英语，并与专家开展的语音评估相关联。
 
-此处是通过 Speech SDK 和 REST Api 提供的功能：
+> [!NOTE]
+> 必应语音于2019年10月15日停用。 如果你的应用程序、工具或产品正在使用必应语音 Api，我们已创建了可帮助你迁移到语音服务的指南。
+> - [从必应语音迁移到语音服务](how-to-migrate-from-bing-speech.md)
 
-| 使用案例 | SDK 中 IsInRole 中的声明 | REST |
-|----------|-----|------|
-| 转录短的查询文本 (< 15 秒)。 仅支持最终脚本结果。 | 是 | 是 |
-| 连续的长语音样本和流式处理音频转录 (> 15 秒)。 支持中期和最终脚本结果。 | 是 | 否 |
-| 从与识别结果派生意向[LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis)。 | 是 | 否\* |
-| 以异步方式执行批处理的音频文件的脚本。 | 否 | 是\** |
-| 创建和管理语音模型。 | 否 | 是\** |
-| 创建和管理自定义模型部署。 | 否 | 是\** |
-| 创建准确性测试以衡量与自定义模型的基线模型的准确性。 | 否 | 是\** |
-| 管理订阅。 | 否 | 是\** |
+## <a name="get-started-with-speech-to-text"></a>语音转文本入门
 
-\* *可以使用单独的 LUIS 订阅获取 LUIS 意向和实体。与此订阅，SDK，可以为您调用 LUIS 并提供实体和意向的结果。使用 REST API，可以自己调用 LUIS 以使用 LUIS 订阅获取意向和实体。*
+语音转文本服务通过[语音 SDK](speech-sdk.md) 提供。 有几种常见方案可作为快速入门，以各种语言和平台提供：
 
-\** *这些服务可使用 cris.ai 终结点。请参阅[Swagger 引用](https://westus.cris.ai/swagger/ui/index)。*
+ - [快速入门：通过麦克风输入识别语音](quickstarts/speech-to-text-from-microphone.md)
+ - [快速入门：从文件中识别语音](quickstarts/speech-to-text-from-file.md)
+ - [快速入门：识别存储在 Blob 存储中的语音](quickstarts/from-blob.md)
 
-## <a name="get-started-with-speech-to-text"></a>开始使用语音转文本
+如果你偏向于使用语音转文本 REST 服务，请参阅 [REST API](rest-speech-to-text.md)。
 
-我们提供了适用于大多数流行编程语言的快速入门，旨在帮助你在 10 分钟以内运行代码。 此表包括按语言的语音 SDK 快速入门的完整列表。
-
-| 快速入门 | 平台 | API 参考 |
-|------------|----------|---------------|
-| [C#, .NET Core](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-dotnetcore-windows) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C#.NET framework](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-dotnet-windows) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C#, UWP](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-uwp) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C++](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-cpp-windows) | Windows | [Browse](https://aka.ms/csspeech/cppref)|
-| [C++](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-cpp-linux) | Linux | [Browse](https://aka.ms/csspeech/cppref) |
-| [Java](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-java-android) | Android | [Browse](https://aka.ms/csspeech/javaref) |
-| [Java](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-java-jre) | Windows、Linux | [Browse](https://aka.ms/csspeech/javaref) |
-| [JavaScript 中，浏览器](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-js-browser) | Browser、Windows、Linux、macOS | [Browse](https://aka.ms/AA434tv) |
-| [JavaScript Node.js](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-js-node) | Windows、Linux、macOS | [Browse](https://aka.ms/AA434tv) |
-| [Objective-C](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-objectivec-ios) | iOS | [Browse](https://aka.ms/csspeech/objectivecref) |
-| [Python](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-python) | Windows、Linux、macOS | [Browse](https://aka.ms/AA434tr)  |
-
-如果你愿意使用语音到文本 REST 服务，请参阅[REST Api](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)。
+ - [快速入门：带引用输入的发音评估](rest-speech-to-text.md#pronunciation-assessment-parameters)
 
 ## <a name="tutorials-and-sample-code"></a>教程和示例代码
 
 有机会使用语音服务后，请尝试学习有关如何使用语音 SDK 和 LUIS 从语音中识别意向的教程。
 
-* [教程：使用适用于 C# 的语音 SDK 和 LUIS 从语音中识别意向](how-to-recognize-intents-from-speech-csharp.md)
+- [教程：使用 C 通过语音识别语音 SDK 和 LUIS#](how-to-recognize-intents-from-speech-csharp.md)
 
-Speech SDK 的示例代码位于 GitHub 上提供。 这些示例涵盖了常见方案，例如，从文件或流中读取音频、连续和单次识别，以及使用自定义模型。
+GitHub 上提供了语音 SDK 的示例代码。 这些示例涵盖了常见方案，例如，从文件或流中读取音频、连续和单次识别，以及使用自定义模型。
 
-* [语音到文本示例 (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
-* [批量听录示例 (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
+- [语音转文本示例 (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+- [批量听录示例 (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
+- [发音评估示例（REST）](rest-speech-to-text.md#pronunciation-assessment-parameters)
 
 ## <a name="customization"></a>自定义
 
-除了使用语音服务的通用模型，您可以创建自定义声学、 语言和发音模型特定到您的体验。 下面是自定义选项的列表：
+除了标准语音服务模型外，还可以创建自定义模型。 自定义有助于克服语音识别障碍，如说话风格、词汇和背景噪音，详见[自定义语音](how-to-custom-speech.md)。 自定义选项因语言/区域设置而异，请参阅[支持的语言](supported-languages.md)以验证相关支持。
 
-| 模型 | 描述 |
-|-------|-------------|
-| [声学模型](how-to-customize-acoustic-models.md) | 创建自定义声学模型将应用程序、 工具或设备使用在特定环境中，如汽车或特定录制条件与工厂中的情况下十分有用。 示例包括带有口音的讲话、特定的背景噪音，或使用特定的麦克风录制音频。 |
-| [语言模型](how-to-customize-language-model.md) | 创建自定义语言模型来改善行业特定的词汇和语法的听录，例如医疗术语中或 IT 行话。 |
-| [发音模型](how-to-customize-pronunciation.md) | 借助自定义发音模型，可以定义语音形式以及字词或术语的显示。 它适用于处理自定义术语，如产品名称或首字母缩略词。 只需使用发音文件（简单的 .txt 文件）即可。 |
-
-> [!NOTE]
-> 自定义选项因语言/区域设置而异 (请参阅[支持的语言](supported-languages.md))。
-
-## <a name="migration-guides"></a>迁移指南
-
-> [!WARNING]
-> 必应语音将在 2019 年 10 月 15 日停用。
-
-如果应用程序、 工具或产品使用必应语音 Api 或自定义语音，我们创建了指南，以帮助您迁移到语音服务。
-
-* [从必应语音将迁移到语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-bing-speech)
-* [将自定义语音迁移到语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-custom-speech-service)
-
-## <a name="reference-docs"></a>参考文档
-
-* [语音 SDK](speech-sdk-reference.md)
-* [语音设备 SDK](speech-devices-sdk.md)
-* [REST API：语音转文本](rest-speech-to-text.md)
-* [REST API：文本转语音](rest-text-to-speech.md)
-* [REST API：批量听录和自定义](https://westus.cris.ai/swagger/ui/index)
+[!INCLUDE [speech-reference-doc-links](includes/speech-reference-doc-links.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-* [免费获取语音服务订阅密钥](get-started.md)
-* [获取语音 SDK](speech-sdk.md)
+- [免费获取语音服务订阅密钥](get-started.md)
+- [获取语音 SDK](speech-sdk.md)

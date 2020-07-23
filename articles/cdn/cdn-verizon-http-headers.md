@@ -3,46 +3,45 @@ title: Azure CDN 规则引擎的 Verizon 特定的 HTTP 标头 | Microsoft Docs
 description: 本文介绍如何使用 Azure CDN 规则引擎的 Verizon 特定的 HTTP 标头。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
-ms.author: magattus
-ms.openlocfilehash: b9f7a5332c8529753f2e22efd6af3d04cb3f44b6
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
-ms.translationtype: MT
+ms.author: allensu
+ms.openlocfilehash: e20f6ce9540d357b61ae2cfdf0e8f96d127dc6c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479748"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343211"
 ---
 # <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN 规则引擎的 Verizon 特定的 HTTP 标头
 
 对于 **Verizon 的 Azure CDN Premium** 产品，将 HTTP 请求发送到源服务器后，接入点 (POP) 服务器可在发往 POP 的客户端请求中以添加一个或多个保留的标头（或代理特殊标头）。 这些标头是收到的标准转发标头的补充。 有关标准请求标头的信息，请参阅[请求字段](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields)。
 
-如果想要防止在发往源服务器的 Azure CDN（内容分发网络）POP 请求中添加其中的某个保留标头，必须使用规则引擎中的[代理特殊标头功能](cdn-verizon-premium-rules-engine-reference-features.md#proxy-special-headers)创建一个规则。 在此规则中，排除想要从标头字段的默认标头列表中删除的标头。 如果已启用[调试缓存响应标头功能](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers)，请务必添加所需的 `X-EC-Debug` 标头。 
+如果想要防止在发往源服务器的 Azure CDN（内容分发网络）POP 请求中添加其中的某个保留标头，必须使用规则引擎中的[代理特殊标头功能](https://docs.vdms.com/cdn/Content/HRE/F/Proxy-Special-Headers.htm)创建一个规则。 在此规则中，排除想要从标头字段的默认标头列表中删除的标头。 如果已启用[调试缓存响应标头功能](https://docs.vdms.com/cdn/Content/HRE/F/Debug-Cache-Response-Headers.htm)，请务必添加所需的 `X-EC-Debug` 标头。 
 
-例如，若要删除`Via`标头，该规则的标头字段应包含以下标头列表：*X-转发-对于、 X-转发-Proto，X 主机、 X 发生 Midgress，X 网关列表中，X EC 名称，承载*。 
+例如，若要删除 `Via` 标头，规则的标头字段应包含以下标头列表：X-Forwarded-For、X-Forwarded-Proto、X-Host、X-Midgress、X-Gateway-List、X-EC-Name、Host。** 
 
 ![代理特殊标头规则](./media/cdn-http-headers/cdn-proxy-special-header-rule.png)
 
 下表描述了 Verizon CDN POP 可在请求中添加的标头：
 
-请求标头 | 描述 | 示例
+请求标头 | 说明 | 示例
 ---------------|-------------|--------
-[Via](#via-request-header) | 标识发往源服务器的请求的代理 POP 服务器。 | HTTP/1.1 ECS (dca/1A2B)
+[经](#via-request-header) | 标识发往源服务器的请求的代理 POP 服务器。 | HTTP/1.1 ECS (dca/1A2B)
 X-Forwarded-For | 指示请求方的 IP 地址。| 10.10.10.10
 X-Forwarded-Proto | 指示请求的协议。 | http
 X-Host | 指示请求的主机名。 | cdn.mydomain.com
-X-Midgress | 指示是否通过附加的 CDN 服务器来代理请求。 例如，POP 服务器到源防护服务器，或 POP 服务器到 ADN 网关服务器。 <br />仅当发生 midgress 流量时，才将此标头添加到请求中。 在这种情况下，标头设置为 1，指示通过附加的 CDN 服务器代理了请求。| 第
+X-Midgress | 指示是否通过附加的 CDN 服务器来代理请求。 例如，POP 服务器到源防护服务器，或 POP 服务器到 ADN 网关服务器。 <br />仅当发生 midgress 流量时，才将此标头添加到请求中。 在这种情况下，标头设置为 1，指示通过附加的 CDN 服务器代理了请求。| 1
 [主机](#host-request-header) | 标识可在其中找到所请求内容的主机和端口。 | marketing.mydomain.com:80
-[X-Gateway-List](#x-gateway-list-request-header) | ADN:标识分配给客户源服务器的 ADN 网关服务器故障转移列表。 <br />源防护：指示分配给客户源的源防护服务器组。 | `icn1,hhp1,hnd1`
-X-EC- _&lt;name&gt;_ | 以 *X-EC* 开头的请求标头（例如 X-EC-Tag、[X-EC-Debug](cdn-http-debug-headers.md)）保留给 CDN 使用。| waf-production
+[X-Gateway-List](#x-gateway-list-request-header) | ADN：标识分配给客户源服务器的 ADN 网关服务器故障转移列表。 <br />源防护服务器：指示分配给客户源服务器的源防护服务器集。 | `icn1,hhp1,hnd1`
+X-EC-_ &lt; name &gt; _ | 以 *X-EC* 开头的请求标头（例如 X-EC-Tag、[X-EC-Debug](cdn-http-debug-headers.md)）保留给 CDN 使用。| waf-production
 
 ## <a name="via-request-header"></a>Via 请求标头
 `Via` 请求标头标识 POP 服务器所用的格式由以下语法指定：
@@ -50,9 +49,9 @@ X-EC- _&lt;name&gt;_ | 以 *X-EC* 开头的请求标头（例如 X-EC-Tag、[X-E
 `Via: Protocol from Platform (POP/ID)` 
 
 语法中使用的元素定义如下：
-- 协议：指示协议 (例如，HTTP/1.1) 的版本使用代理执行该请求。 
+- Protocol：指示用于代理请求的协议版本（例如 HTTP/1.1）。 
 
-- 平台:指示所请求内容的平台。 以下代码在此字段中有效： 
+- Platform：指示在其上请求内容的平台。 以下代码在此字段中有效： 
 
     代码 | 平台
     -----|---------
@@ -60,9 +59,9 @@ X-EC- _&lt;name&gt;_ | 以 *X-EC* 开头的请求标头（例如 X-EC-Tag、[X-E
     ECS   | HTTP Small
     ECD   | 应用程序传送网络 (ADN)
 
-- POP:指示[POP](cdn-pop-abbreviations.md)处理请求。 
+- POP：指示处理请求的 [POP](cdn-pop-abbreviations.md)。 
 
-- ID:仅供内部使用。
+- ID：仅供内部使用。
 
 ### <a name="example-via-request-header"></a>示例 Via 请求标头
 

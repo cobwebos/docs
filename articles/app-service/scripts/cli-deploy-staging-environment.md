@@ -1,27 +1,19 @@
 ---
-title: Azure CLI 脚本示例 - 创建应用并将代码部署到过渡槽 | Microsoft Docs
-description: Azure CLI 脚本示例 - 创建应用服务应用并将代码部署到过渡槽
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI：部署到过渡槽
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 此示例演示如何将代码部署到过渡槽。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 2b995dcd-e471-4355-9fda-00babcdb156e
-ms.service: app-service-web
-ms.workload: web
 ms.devlang: azurecli
-ms.tgt_pltfrm: na
 ms.topic: sample
 ms.date: 12/11/2017
-ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 069dbcb5784414e63d093b7e38c399f358f830fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 0f535e902bc86ba3c098dd2238766a3bd547781f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136726"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80057854"
 ---
 # <a name="create-an-app-service-app-and-deploy-code-to-a-staging-environment-using-azure-cli"></a>使用 Azure CLI 创建应用服务应用并将代码部署到过渡环境
 
@@ -44,7 +36,7 @@ ms.locfileid: "66136726"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 创建应用服务计划。 |

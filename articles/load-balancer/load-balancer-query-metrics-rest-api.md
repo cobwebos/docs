@@ -1,26 +1,25 @@
 ---
 title: 使用 REST API 检索指标
-titlesuffix: Azure Load Balancer
-description: 在给定的时间和日期范围内，使用 Azure REST API 收集负载均衡器的运行状况和利用率指标。
+titleSuffix: Azure Load Balancer
+description: 在本文中，开始使用 Azure REST API 收集 Azure 负载均衡器的运行状况和使用情况指标。
 services: sql-database
-author: KumudD
-ms.reviewer: routlaw
-manager: jeconnoc
+author: asudbring
+manager: KumudD
 ms.service: load-balancer
 ms.custom: REST, seodec18
-ms.topic: article
-ms.date: 06/06/2017
-ms.author: KumudD
-ms.openlocfilehash: 9f5206ef5348ee8fd7b3fe981a9cfe4afc1367fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 11/19/2019
+ms.author: allensu
+ms.openlocfilehash: 3b5aedb20bc7a8d2aa6f3aa3d8691a71af4cd3a2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60734535"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808374"
 ---
-# <a name="get-load-balancer-utilization-metrics-using-the-rest-api"></a>使用 REST API 获取负载均衡器利用率指标
+# <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>使用 REST API 获取负载均衡器使用情况指标
 
-本操作指南演示如何使用 [Azure REST API](/rest/api/azure/) 收集[标准负载均衡器](/azure/load-balancer/load-balancer-standard-overview)在一段时间内处理的字节数。
+使用 [Azure REST API](/rest/api/azure/) 收集[标准负载均衡器](/azure/load-balancer/load-balancer-standard-overview)在一段时间内处理的字节数。
 
 [Azure Monitor REST 参考](/rest/api/monitor)中提供了完整的参考文档和 REST API 的其他示例。 
 
@@ -36,19 +35,19 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 以下标头是必需的： 
 
-|请求标头|描述|  
+|请求标头|说明|  
 |--------------------|-----------------|  
-|Content-Type：|必需。 设置为 `application/json`。|  
-|Authorization：|必需。 设置为有效的 `Bearer` [访问令牌](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
+|Content-Type： |必需。 设置为 `application/json`。|  
+|Authorization： |必需。 设置为有效的`Bearer` [访问令牌](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
 
 ### <a name="uri-parameters"></a>URI 参数
 
-| 名称 | 描述 |
+| 名称 | 说明 |
 | :--- | :---------- |
 | subscriptionId | 用于标识 Azure 订阅的订阅 ID。 如果拥有多个订阅，请参阅[使用多个订阅](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
 | resourceGroupName | 包含该资源的资源组名称。 可以从 Azure 资源管理器 API、CLI 或门户获取此值。 |
 | loadBalancerName | Azure 负载均衡器的名称。 |
-| metricnames | 以逗号分隔的有效[负载均衡器指标](/azure/load-balancer/load-balancer-standard-diagnostics)列表。 |
+| 指标名称 | 以逗号分隔的有效[负载均衡器指标](/azure/load-balancer/load-balancer-standard-diagnostics)列表。 |
 | api-version | 要用于请求的 API 版本。<br /><br /> 本文档涵盖 API 版本 `2018-01-01`，包含于上述 URL 中。  |
 | timespan | 查询的时间跨度。 它是具有格式 `startDateTime_ISO/endDateTime_ISO` 的字符串。 此可选参数设置为在示例中返回一天的数据。 |
 | &nbsp; | &nbsp; |
@@ -59,7 +58,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="handle-the-response"></a>处理响应
 
-成功返回指标值列表以后，会返回状态代码 200。 [参考文档](/rest/api/monitor/metrics/list#errorresponse)中提供了错误代码的完整列表。
+成功返回指标值列表时，返回状态代码 200。 [参考文档](/rest/api/monitor/metrics/list#errorresponse)中提供了错误代码的完整列表。
 
 ## <a name="example-response"></a>示例响应 
 

@@ -2,24 +2,23 @@
 title: 将 Azure自动化与事件网格相集成 | Microsoft Docs
 description: 了解如何在创建新的 VM 并向 Microsoft Teams 发送通知时自动添加标记。
 keywords: 自动化, runbook, Teams, 事件网格, 虚拟机, VM
-services: automation
+services: automation,event-grid
 author: eamonoreilly
-manager: ''
 ms.service: automation
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 05/10/2019
+ms.date: 07/07/2020
 ms.author: eamono
-ms.openlocfilehash: 9f99ce5862850c2453e9e72241fff77fe091616f
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 79f3d83417a99d40ea0d4bd101a89300bc85a393
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65521430"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114510"
 ---
 # <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>教程：将 Azure 自动化与事件网格和 Microsoft Teams 相集成
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 导入事件网格示例 runbook。
@@ -126,7 +125,7 @@ ms.locfileid: "65521430"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，在事件网格和自动化之间设置集成。 你已了解如何：
+在本教程中，在事件网格和自动化之间设置集成。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 导入事件网格示例 runbook。

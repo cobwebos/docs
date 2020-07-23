@@ -1,27 +1,18 @@
 ---
-title: 修改本地网络网关 IP 地址前缀和 VPN 网关 IP 地址 | Azure| 门户 | Microsoft Docs
+title: VPN 网关：修改网关 IP 地址设置： Azure 门户
 description: 本文介绍了如何使用 Azure 门户更改本地网络网关的 IP 地址前缀。
 services: vpn-gateway
-documentationcenter: na
-author: WenJason
-manager: digimobile
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: cherylmc
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-origin.date: 06/19/2017
-ms.date: 12/10/2018
-ms.author: v-jay
-ms.openlocfilehash: 12f1f8bbcb103d0882059cadc12bc1a8b9d40bdb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 06/19/2017
+ms.author: cherylmc
+ms.openlocfilehash: fa43df8c4f17bff4e97d999c6653bdcb045bfec3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60419574"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84985219"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>使用 Azure 门户修改本地网络网关设置
 
@@ -37,13 +28,13 @@ ms.locfileid: "60419574"
 >
 
 
-## <a name="ipaddprefix"></a>修改 IP 地址前缀
+## <a name="modify-ip-address-prefixes"></a><a name="ipaddprefix"></a>修改 IP 地址前缀
 
 修改 IP 地址前缀时，执行的步骤取决于你的本地网络网关是否具有连接。
 
 [!INCLUDE [modify prefix](../../includes/vpn-gateway-modify-ip-prefix-portal-include.md)]
 
-## <a name="gwip"></a>修改网关 IP 地址
+## <a name="modify-the-gateway-ip-address"></a><a name="gwip"></a>修改网关 IP 地址
 
 如果要连接的 VPN 设备已更改其公共 IP 地址，则需根据该更改修改本地网关。 更改公共 IP 地址时，执行的步骤取决于你的本地网络网关是否具有连接。
 

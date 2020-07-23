@@ -4,8 +4,6 @@
   items:
     - name: 关于适用于 FHIR 的 Azure API
       href: overview.md
-    - name: 关于适用于 Azure 的 FHIR Server
-      href: overview-open-source-server.md
 - name: 快速入门
   expanded: true
   items:
@@ -21,35 +19,100 @@
       href: fhir-oss-powershell-quickstart.md
     - name: 部署适用于 Azure 的 FHIR Server - CLI
       href: fhir-oss-cli-quickstart.md
-    - name: 配置 CORS
-      href: configure-cross-origin-resource-sharing.md
-    - name: 配置 Cosmos DB
-      href: configure-cosmos-db.md
+    - name: 部署 IoT 连接器 - 门户
+      href: iot-fhir-portal-quickstart.md
 - name: 教程
   expanded: false
   items:
+    - name: 部署 JavaScript 应用程序
+      expanded: false
+      items:
+        - name: 1. 初始安装和 FHIR 部署
+          href: tutorial-web-app-fhir-server.md
+        - name: 2. 注册公共客户端应用程序
+          href: tutorial-web-app-public-app-reg.md
+        - name: 3. 使用 Postman 测试设置
+          href: tutorial-web-app-test-postman.md
+        - name: 4. 编写 Web 应用程序
+          href: tutorial-web-app-write-web-app.md
     - name: 使用 Postman 访问 FHIR API
       href: access-fhir-postman-tutorial.md
     - name: 使用 SMART on FHIR 代理
       href: use-smart-on-fhir-proxy.md
+    - name: 从 IoT 设备引入数据
+      expanded: false
+      items:
+        - name: 通过 Azure IoT 中心接收设备数据
+          href: device-data-through-iot-hub.md
+- name: 示例
+  items:
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 操作指南
   expanded: false
   items:
-    - name: 注册资源应用程序
-      href: register-resource-azure-ad-client-app.md
-    - name: 注册机密客户端应用程序
-      href: register-confidential-azure-ad-client-app.md
-    - name: 注册公共客户端应用程序
-      href: register-public-azure-ad-client-app.md
-    - name: 注册服务客户端应用程序
-      href: register-service-azure-ad-client-app.md
-    - name: 为适用于 FHIR 的 Azure API 获取令牌 - CLI
-      href: get-healthcare-apis-access-token-cli.md
+    - name: 注册应用程序
+      expanded: false
+      items:
+        - name: “为 Azure API for FHIR 注册应用程序”概述
+          href: fhir-app-registration.md
+        - name: 资源应用程序
+          href: register-resource-azure-ad-client-app.md
+        - name: 机密客户端应用程序
+          href: register-confidential-azure-ad-client-app.md
+        - name: 公共客户端应用程序
+          href: register-public-azure-ad-client-app.md
+        - name: 服务客户端应用程序
+          href: register-service-azure-ad-client-app.md
+    - name: 配置设置
+      expanded: false
+      items:
+        - name: 配置其他 Azure API for FHIR 设置
+          href: azure-api-for-fhir-additional-settings.md
+        - name: 配置 Azure RBAC
+          href: configure-azure-rbac.md
+        - name: 配置本地 RBAC
+          href: configure-local-rbac.md
+        - name: 配置数据库设置
+          href: configure-database.md
+        - name: 配置 CORS
+          href: configure-cross-origin-resource-sharing.md
+        - name: 配置导出
+          href: configure-export-data.md
     - name: 查找标识对象 ID
       href: find-identity-object-ids.md
+    - name: 在 Azure API for FHIR® 中启用诊断日志记录
+      href: enable-diagnostic-logging.md
+    - name: 为适用于 FHIR 的 Azure API 获取令牌 - CLI
+      href: get-healthcare-apis-access-token-cli.md
+    - name: 排除 IoT 连接器中的故障
+      href: iot-troubleshoot-guide.md
+- name: 概念
+  expanded: false
+  items:
+    - name: Azure AD 和 Azure API for FHIR 概述
+      href: azure-ad-hcapi.md
+    - name: 访问令牌验证
+      href: azure-ad-hcapi-token-validation.md
+    - name: 使用自定义 HTTP 头将数据添加到审核日志
+      href: use-custom-headers.md
+    - name: IoT 连接器工作原理
+      expanded: false
+      items:
+        - name: IoT 连接器数据流
+          href: iot-data-flow.md
+        - name: IoT 连接器映射模板
+          href: iot-mapping-templates.md
 - name: 资源
   items:
     - name: 常见问题解答
       href: fhir-faq.md
-    - name: 受支持的功能
+    - name: 支持的功能
       href: fhir-features-supported.md
+    - name: 合作伙伴生态系统
+      href: partner-ecosystem.md
+- name: 参考
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/healthcareapis/healthcareapis

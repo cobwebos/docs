@@ -1,33 +1,33 @@
 ---
-title: Azure 的数据框大量限制 |Microsoft Docs
-description: 介绍了系统限制与建议的大小的 Microsoft Azure 数据框大量组件和连接。
+title: Azure Data Box Heavy 限制 | Microsoft Docs
+description: 介绍 Microsoft Azure Data Box Heavy 组件和连接的系统限制与建议大小。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: article
-ms.date: 05/21/2019
+ms.date: 08/28/2019
 ms.author: alkohli
-ms.openlocfilehash: da518de4702925ebad29727e2bdce99e67d40249
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 76e543a5bec749db55eb77649d2f6e0526f2cb1d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427765"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84705553"
 ---
-# <a name="azure-data-box-heavy-limits-preview"></a>Azure 数据框大量限制 （预览）
+# <a name="azure-data-box-heavy-limits"></a>Azure Data Box Heavy 限制
+
+在部署和操作 Azure Data Box Heavy 设备时请考虑这些限制。 下表介绍了 Data Box 的这些限制。
 
 
-您部署和运行 Azure 数据框大量设备，请考虑这些限制。 下表介绍了 Data Box 的这些限制。
-
-
-## <a name="data-box-heavy-service-limits"></a>数据框大量服务限制
+## <a name="data-box-heavy-service-limits"></a>Data Box Heavy 服务限制
 
 [!INCLUDE [data-box-service-limits](../../includes/data-box-service-limits.md)]
 
-## <a name="data-box-heavy-limits"></a>数据框大量限制
+## <a name="data-box-heavy-limits"></a>Data Box Heavy 限制
 
-- 每个节点的 1 亿个文件的最多可以存储数据框。
+- Data Box Heavy 每个节点最多可存储 10 亿个文件。
+- Data Box Heavy 支持云中每个节点最多 512 个容器或共享。 用户共享中的顶层目录将成为云中的容器或 Azure 文件共享。
 
 ## <a name="azure-storage-limits"></a>Azure 存储限制
 

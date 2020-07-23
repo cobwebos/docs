@@ -1,0 +1,89 @@
+### YamlMime:Landing
+title: “IoT Edge 上的实时视频分析”文档
+summary: 了解如何使用 IoT Edge 上的实时视频分析
+metadata:
+  title: “IoT Edge 上的实时视频分析”文档
+  description: 了解如何使用 IoT Edge 上的实时视频分析
+  services: media-services
+  ms.service: media-services
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: collection
+  author: 
+  ms.author: 
+  ms.date: 10/12/2019
+  ms.openlocfilehash: ef82f7ccfabce330c5604a26d74f0491876a1634
+  ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/01/2020
+  ms.locfileid: "84259883"
+landingContent:
+- title: 关于 IoT Edge 上的实时视频分析（预览版）
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 关于 IoT Edge 上的实时视频分析
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 媒体图
+      url: media-graph-concept.md
+    - text: 视频录制
+      url: video-recording-concept.md
+    - text: 视频播放
+      url: video-playback-concept.md
+  - linkListType: learn
+    links:
+    - text: 连续视频录制
+      url: continuous-video-recording-concept.md
+    - text: 基于事件的视频录制
+      url: event-based-video-recording-concept.md
+    - text: 分析实时视频
+      url: analyze-live-video-concept.md
+- title: 方案
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 入门 - IoT Edge 上的实时视频分析
+      url: get-started-detect-motion-emit-events-quickstart.md
+    - text: 检测运动，将视频剪辑录制到 Azure 媒体服务
+      url: detect-motion-record-video-clips-media-services-quickstart.md
+    - text: 检测运动并发出事件
+      url: detect-motion-emit-events-quickstart.md
+    - text: 检测运动，将视频录制到边缘设备
+      url: detect-motion-record-video-clips-edge-devices-quickstart.md
+    - text: 使用自己的模型运行实时视频分析
+      url: use-your-model-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: 连续视频录制
+      url: continuous-video-recording-tutorial.md
+    - text: 基于事件的视频录制
+      url: event-based-video-recording-tutorial.md
+    - text: 播放多天的录制内容
+      url: playback-multi-day-recordings-tutorial.md
+- title: 开发
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 创建自定义 Azure 资源管理器角色
+      url: create-custom-azure-resource-manager-role-how-to.md
+    - text: 部署到 IoT Edge 设备
+      url: deploy-iot-edge-device.md
+    - text: 监视和日志记录
+      url: monitoring-logging.md
+    - text: 播放录制内容
+      url: playback-recordings-how-to.md
+    - text: 管理录制策略
+      url: manage-recording-policy-how-to.md
+    - text: 疑难解答
+      url: troubleshoot-how-to.md
+  - linkListType: reference
+    links:
+    - text: 直接方法
+      url: direct-methods.md
+    - text: 模块孪生配置架构
+      url: module-twin-configuration-schema.md
+    - text: 配额和限制
+      url: quotas-limitations.md

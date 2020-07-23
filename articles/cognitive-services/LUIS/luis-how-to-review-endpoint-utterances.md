@@ -1,96 +1,70 @@
 ---
-title: 查看用户陈述
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: 主动学习捕获终结点查询，并选择不确定的用户的终结点查询文本。 查看这些语音样本，以选择意图并将标记这些读取世界语音样本添加的实体。 接受这些更改分成示例语音样本，然后定型和发布。 LUIS 然后更准确地标识语音样本。
+title: 评审用户话语 - LUIS
+titleSuffix: Azure Cognitive Services
+description: 查看活动学习捕获的最谈话，以选择目的并标记最谈话的实体。接受更改、定型和发布。
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 03/25/2019
+ms.topic: how-to
+ms.date: 05/07/2020
 ms.author: diberry
-ms.openlocfilehash: 8fac360682ef11c438cdec333fac21d6f8cfc117
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 58674bf38ec1efb970fa8e79f7d970ecefb36712
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60195055"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055607"
 ---
-# <a name="how-to-review-endpoint-utterances-in-luis-portal-for-active-learning"></a>如何查看终结点言辞，LUIS 门户中的主动学习
+# <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>如何通过查看端点最谈话改善 LUIS 应用
 
-[主动学习](luis-concept-review-endpoint-utterances.md)捕获终结点查询，并选择不确定的用户的终结点查询文本。 查看这些语音样本，以选择意图并将标记这些读取世界语音样本添加的实体。 接受这些更改分成示例语音样本，然后定型和发布。 LUIS 然后更准确地标识语音样本。
-
+查看终结点最谈话进行正确预测的过程称为[活动学习](luis-concept-review-endpoint-utterances.md)。 主动学习捕获终结点查询并选择用户不确定的终结点话语。 您将查看这些最谈话以选择意图并标记这些现实世界最谈话的实体。 在示例话语中接受这些更改，然后对其进行训练和发布。 然后 LUIS 更准确地识别话语。
 
 ## <a name="enable-active-learning"></a>启用主动学习
 
-若要启用主动学习，记录用户查询。 这可以通过设置[终结点查询](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance)与`log=true`查询字符串参数和值。
+若要启用主动学习，必须记录用户查询。 这是通过 `log=true` querystring 参数和值调用[终结点查询](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)实现的。
 
-## <a name="disable-active-learning"></a>禁用主动学习
+使用 LUIS 门户构造正确的终结点查询。
 
-若要禁用主动学习，不记录用户查询。 这可以通过设置[终结点查询](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance)与`log=false`查询字符串参数和值。
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
+1. 在“我的应用”页上选择应用名称以打开应用。
+1. 请在 "**管理**" 部分，选择 " **Azure 资源**"。
+1. 对于分配的预测资源，请选择 "**更改查询参数**"。
 
-## <a name="filter-utterances"></a>筛选陈述
+    > [!div class="mx-imgBorder"]
+    > ![使用 LUIS 门户保存活动学习所需的日志。](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
 
-1. 通过在“我的应用”页上选择应用名称来打开应用（例如 TravelAgent），然后选择顶栏中的“生成”。
+1. 切换**保存日志**，然后选择 "**完成**"。
 
-1. 在“提升应用性能”下，选择“评审终结点陈述”。
+    > [!div class="mx-imgBorder"]
+    > ![使用 LUIS 门户保存活动学习所需的日志。](./media/luis-tutorial-review-endpoint-utterances/luis-portal-manage-azure-resource-save-logs.png)
 
-1. 在“评审终结点陈述”页，在“按意向或实体筛选列表”文本框中进行选择。 此下拉列表的“意向”下包含所有意向，“实体”下包含所有实体。
+     此操作通过添加 `log=true` 查询字符串参数来更改示例 URL。 对运行时终结点进行预测查询时，请复制并使用更改后的示例查询 URL。
 
-    ![陈述筛选](./media/label-suggested-utterances/filter.png)
+## <a name="correct-intent-predictions-to-align-utterances"></a>更正意向预测以使最谈话
 
-1. 在下拉列表中选择类别（意向或实体）并评审陈述。
+每个陈述的“统一意向”列中都显示一个建议意向****。
 
-    ![意向陈述](./media/label-suggested-utterances/intent-utterances.png)
+> [!div class="mx-imgBorder"]
+> [![查看 LUIS 无法确定的终结点最谈话](./media/label-suggested-utterances/review-endpoint-utterances.png)](./media/label-suggested-utterances/review-endpoint-utterances.png#lightbox)
 
-## <a name="label-entities"></a>标记实体
-LUIS 将实体标记（字词）替换为突出显示为蓝色的实体名称。 如果陈述具有未标记的实体，请在陈述中对其进行标记。 
+如果同意该意向，请选择复选标记。 如果不同意建议，请从统一意向下拉列表中选择合适的意向，然后选择统一意向右侧的复选标记。 选中复选标记后，查询文本将移到该意向，并从**查看终结点最谈话**列表中删除。
 
-1. 选择陈述中的字词。 
-
-1. 从列表选择一个实体。
-
-    ![标记实体](./media/label-suggested-utterances/label-entity.png)
-
-## <a name="align-single-utterance"></a>统一单个陈述
-
-每个陈述的“统一意向”列中都显示一个建议意向。 
-
-1. 如果同意该建议，则选择复选标记。
-
-    ![保留统一意向](./media/label-suggested-utterances/align-intent-check.png)
-
-1. 如果不同意建议，请从统一意向下拉列表中选择合适的意向，然后选择统一意向右侧的复选标记。 
-
-    ![统一意向](./media/label-suggested-utterances/align-intent.png)
-
-1. 选择复选标记后，该陈述将从列表中移除。 
-
-## <a name="align-several-utterances"></a>统一多个陈述
-
-若要统一多个陈述，请勾选陈述左侧的框，然后选择“添加所选”按钮。 
-
-![统一多个陈述](./media/label-suggested-utterances/add-selected.png)
-
-## <a name="verify-aligned-intent"></a>验证统一意向
-
-要想验证已将陈述统一为具有正确的意向，可转到“意向”页，选择意向名称，然后评审陈述。 “评审终结点陈述”中的陈述将出现在列表中。
+> [!TIP]
+> 若要查看并更正 "**查看终结点最谈话**" 列表中的所有示例最谈话中的实体预测，这一点很重要。
 
 ## <a name="delete-utterance"></a>删除陈述
 
-可删除评审列表中的每个陈述。 删除后，该陈述将不再出现在列表中。 即使用户从终结点中输入同一陈述，结果也是如此。 
+可删除评审列表中的每个陈述。 删除后，该陈述将不再出现在列表中。 即使用户从终结点中输入同一陈述，结果也是如此。
 
-如果不确定是否应删除陈述，请将其移动到 None 意向，或创建一个新意向（例如“其他”），然后将陈述移入此意向。 
+如果不确定是否应删除查询文本，请将其移到 "无" 意向，或创建一个新意向（如）， `miscellaneous` 然后将查询文本移到该意向。
 
-## <a name="delete-several-utterances"></a>删除多个陈述
+## <a name="disable-active-learning"></a>禁用主动学习
 
-若要删除多个陈述，请选择各项，然后选择“添加所选”按钮右侧的垃圾桶。
-
-![删除多个陈述](./media/label-suggested-utterances/delete-several.png)
-
+若要禁用主动学习，请不要记录用户查询。 这是通过使用 querystring 参数和值设置[终结点查询](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)来实现的 `log=false` ，或者不使用 querystring 值，因为默认值为 false。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要测试标记建议陈述后的性能提升情况，可通过选择顶部面板中的“测试”访问测试控制台。 有关如何使用测试控制台测试应用的说明，请参阅[训练和测试应用](luis-interactive-test.md)。
+若要测试标记建议陈述后的性能提升情况，可通过选择顶部面板中的“测试”访问测试控制台****。 有关如何使用测试控制台测试应用的说明，请参阅[训练和测试应用](luis-interactive-test.md)。

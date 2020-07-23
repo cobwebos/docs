@@ -1,5 +1,5 @@
 ---
-title: 将内容标记应用于图像 - 计算机视觉
+title: 内容标记-计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 了解与计算机视觉 API 的图像标记功能相关的概念。
 services: cognitive-services
@@ -8,16 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-origin.date: 02/08/2019
-ms.date: 02/27/2019
-ms.author: v-junlch
+ms.date: 02/08/2019
+ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: aeb03566a650fe46286d77913e0d36dcbb19f436
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 887f6d9163f800ecbe8a5ab9a0715fd171f1d3d9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60759667"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80244505"
 ---
 # <a name="applying-content-tags-to-images"></a>将内容标记应用于图像
 
@@ -29,7 +28,7 @@ ms.locfileid: "60759667"
 
 以下 JSON 响应表明计算机视觉在示例图像中检测到标记可视功能时所返回的内容。
 
-![一座蓝色的房子和前院](./Images/house_yard.png).
+![一座蓝色的房子和前院](./Images/house_yard.png)。
 
 ```json
 {
@@ -84,7 +83,13 @@ ms.locfileid: "60759667"
 }
 ```
 
+## <a name="use-the-api"></a>使用 API
+
+标记功能是[分析映像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API 的一部分。 可以通过本机 SDK 或 REST 调用来调用此 API。 将 `Tags` 包括在 **visualFeatures** 查询参数中。 然后，在获取完整 JSON 响应时，就只需分析 `"tags"` 部分内容的字符串。
+
+* [快速入门：计算机视觉 .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [快速入门：分析图像（REST API）](./quickstarts/csharp-analyze.md)
+
 ## <a name="next-steps"></a>后续步骤
 
-了解[对图像进行分类](concept-categorizing-images.md)和[描述图像](concept-describing-images.md)的概念。
-
+了解用于对图像进行[分类](concept-categorizing-images.md)和[描述图像](concept-describing-images.md)的相关概念。

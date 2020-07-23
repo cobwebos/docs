@@ -45,6 +45,10 @@
           href: pim-resource-roles-activate-your-roles.md
     - name: 管理 Azure AD 角色
       items:
+        - name: 功能更新
+          href: azure-ad-roles-features.md
+        - name: 适用于 Azure AD 角色的 PowerShell
+          href: powershell-for-azure-ad-roles.md
         - name: 分配角色
           href: pim-how-to-add-role-to-user.md
         - name: 审批请求
@@ -53,9 +57,19 @@
           href: pim-how-to-change-default-settings.md
         - name: 配置警报
           href: pim-how-to-configure-security-alerts.md
+        - name: 自定义角色预览版
+          items:
+            - name: 激活自定义角色
+              href: azure-ad-custom-roles-activate.md
+            - name: 分配自定义角色
+              href: azure-ad-custom-roles-assign.md
+            - name: 删除角色分配
+              href: azure-ad-custom-roles-update-remove.md
+            - name: 配置自定义角色
+              href: azure-ad-custom-roles-configure.md
         - name: 查看审核历史记录
           href: pim-how-to-use-audit-log.md
-    - name: 管理 Azure 资源角色
+    - name: 管理 Azure 角色
       items:
         - name: 分配角色
           href: pim-resource-roles-assign-roles.md
@@ -69,10 +83,12 @@
           href: pim-resource-roles-configure-role-settings.md
         - name: 配置警报
           href: pim-resource-roles-configure-alerts.md
-        - name: 查看活动和审核历史记录
+        - name: 查看审核历史记录
           href: azure-pim-resource-rbac.md
         - name: 使用自定义角色
           href: pim-resource-roles-custom-role-policy.md
+    - name: 排查 PIM 问题
+      href: pim-troubleshoot.md
     - name: 访问评审
       items:
         - name: Azure AD 角色
@@ -83,7 +99,7 @@
               href: pim-how-to-perform-security-review.md
             - name: 完成访问评审
               href: pim-how-to-complete-review.md
-        - name: Azure 资源角色
+        - name: Azure 角色
           items:
             - name: 创建访问评审
               href: pim-resource-roles-start-access-review.md
@@ -91,3 +107,13 @@
               href: pim-resource-roles-perform-access-review.md
             - name: 完成访问评审
               href: pim-resource-roles-complete-access-review.md
+- name: 参考
+  items:
+    - name: 图形 API
+      href: 'https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/azure_ad_overview'
+    - name: Azure AD CLI
+      href: 'https://docs.microsoft.com/cli/azure/ad'
+    - name: 用于 Graph 的 Azure AD PowerShell
+      href: 'https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0'
+    - name: Azure AD 服务限制
+      href: ../users-groups-roles/directory-service-limits-restrictions.md

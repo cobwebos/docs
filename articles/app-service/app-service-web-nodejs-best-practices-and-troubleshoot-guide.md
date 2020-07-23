@@ -1,33 +1,26 @@
 ---
-title: Node.js 的最佳做法和故障排除 - Azure 应用服务
-description: 了解 Azure 应用服务上节点应用程序的最佳做法和故障排除步骤。
-services: app-service\web
-documentationcenter: nodejs
-author: ranjithr
-manager: wadeh
-editor: ''
+title: Node.js 最佳做法和故障排除
+description: 了解 Azure 应用服务中运行的 Node.js 应用程序的最佳做法和故障排除步骤。
+author: msangapu-msft
 ms.assetid: 387ea217-7910-4468-8987-9a1022a99bef
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: ranjithr
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 321dbf891c77007952f01b32bb509a15c2ac3e6f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e2c60e851d61a5f33e1b050412b0e91b81e20a16
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60853022"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169970"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure 应用服务 Windows 版上节点应用程序的最佳做法和故障排除指南
 
 本文介绍 Azure 应用服务上运行的 [node 应用程序](app-service-web-get-started-nodejs.md)的最佳实践和故障排除步骤（使用 [iisnode](https://github.com/azure/iisnode)）。
 
 > [!WARNING]
-> 在生产站点上使用故障排除步骤时，请格外小心。 建议在非生产安装（例如过渡槽）上排查应用问题，当问题修复后，请交换过渡槽与生产槽。
+> 在生产站点上使用故障排除步骤时，请格外小心。 建议在非生产安装（例如过渡槽）上排查应用问题，问题修复后，请交换过渡槽与生产槽。
 >
 
 ## <a name="iisnode-configuration"></a>IISNODE 配置
@@ -126,11 +119,11 @@ IIS 的默认行为是在刷新之前或直到响应结束时（以较早出现�
 
 ### <a name="my-node-application-is-making-excessive-outbound-calls"></a>Node 应用程序发出的出站调用过多
 
-许多应用程序想要在其定期操作中进行出站连接。 例如，当请求传入时，节点应用程序会想连接别处的 REST API，并获取一些信息来处理请求。 建议在进行 http 或 https 调用时使用保持连接代理。 可在进行这些出站调用时，使用 agentkeepalive 模块作为保持连接代理。
+许多应用程序想要在其定期操作中进行出站连接。 例如，请求传入时，节点应用程序会想连接别处的 REST API，并获取一些信息来处理请求。 建议在进行 http 或 https 调用时使用保持连接代理。 可在进行这些出站调用时，使用 agentkeepalive 模块作为保持连接代理。
 
 agentkeepalive 模块确保在 Azure Web 应用 VM 上重复使用套接字。 在每个出站请求中创建新套接字会增大应用程序的开销。 让应用程序对出站请求重复使用套接字可确保应用程序不会超过为每个 VM 分配的 maxSockets。 对于 Azure 应用服务的建议是将 agentKeepAlive maxSockets 值设置为每个 VM 总共 160 个套接字（4 个 node.exe 实例 \* 每个实例 40 个 maxSockets）。
 
-[agentKeepALive ](https://www.npmjs.com/package/agentkeepalive) 配置示例：
+[agentKeepALive 配置](https://www.npmjs.com/package/agentkeepalive)示例：
 
 ```nodejs
 let keepaliveAgent = new Agent({
@@ -173,11 +166,11 @@ http.createServer(function (req, res) {
 }).listen(process.env.PORT);
 ```
 
-转到调试控制台站点 `https://yoursite.scm.azurewebsites.net/DebugConsole`。
+转到调试控制台站点 `https://yoursite.scm.azurewebsites.net/DebugConsole` 。
 
 进入 site/wwwroot 目录。 将会看到一个命令提示符，如以下示例所示：
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
+![显示 site/wwwroot 目录和命令提示符的屏幕截图。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
 
 运行命令 `npm install v8-profiler`。
 
@@ -210,11 +203,11 @@ http.createServer(function (req, res) {
 
 上述代码将会分析 WriteConsoleLog 函数，然后将配置文件输出写入站点 wwwroot 下的“profile.cpuprofile”文件。 将请求发送到应用程序。 站点 wwwroot 下会显示所创建的“profile.cpuprofile”文件。
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
+![显示 profile.cpuprofile 文件的屏幕截图。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
-请下载此文件，并使用 Chrome F12 工具将其打开。 在 Chrome 中按 F12，并选择“配置文件”选项卡。单击“加载”按钮。 选择下载的 profile.cpuprofile 文件。 单击刚加载的配置文件。
+请下载此文件，并使用 Chrome F12 工具将其打开。 在 Chrome 上按 F12，然后选择 "**配置文件**" 选项卡。选择 "**加载**" 按钮。 选择下载的 profile.cpuprofile 文件。 单击刚加载的配置文件。
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
+![显示已加载的 profile.cpuprofile 文件的屏幕截图。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 
 可以看到，WriteConsoleLog 函数已耗用 95% 的时间。 输出中还会显示造成此问题的具体行号和源文件。
 
@@ -281,7 +274,7 @@ NODE.exe 具有名为 `NODE_PENDING_PIPE_INSTANCES` 的设置。 在 Azure 应�
 请访问以下链接，了解有关 Azure 应用服务上的 node.js 应用程序的详细信息。
 
 * [Azure 应用服务中的 Node.js Web 应用入门](app-service-web-get-started-nodejs.md)
-* [如何在 Azure 应用服务中调试 Node.js Web 应用](app-service-web-tutorial-nodejs-mongodb-app.md)
+* [如何在 Azure 应用服务中调试 Node.js Web 应用](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)
 * [将 Node.js 模块与 Azure 应用程序一起使用](../nodejs-use-node-modules-azure-apps.md)
 * [Azure 应用服务 Web 应用：Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
 * [Node.js 开发人员中心](../nodejs-use-node-modules-azure-apps.md)

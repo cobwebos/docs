@@ -1,23 +1,23 @@
 ---
-title: 在 Azure Database for PostgreSQL（单一服务器）中配置服务参数
-description: 本文介绍如何使用 Azure CLI 命令行在 Azure Database for PostgreSQL（单一服务器）中配置服务参数。
+title: 配置参数-Azure Database for PostgreSQL-单服务器
+description: 本文介绍如何使用 Azure CLI 在 Azure Database for PostgreSQL 单服务器中配置 Postgres 参数。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
-ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 9a9312d347f896047a5f8606b2518b63830c4d76
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.topic: how-to
+ms.date: 06/19/2019
+ms.openlocfilehash: e95987621a7f821e8e63b36dbb719baaed7823c0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65067176"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117961"
 ---
 # <a name="customize-server-configuration-parameters-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>使用 Azure CLI 自定义 Azure Database for PostgreSQL（单一服务器）的服务器配置参数
 可以使用命令行接口 (Azure CLI) 列出、显示和更新 Azure PostgreSQL 服务器的配置参数。 会在服务器级别公开引擎配置的一个子集，并且可以进行修改。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 若要逐步执行本操作方法指南，需要：
 - 按照[创建 Azure Database for PostgreSQL](quickstart-create-server-database-azure-cli.md) 创建 Azure Database for PostgreSQL 服务器和数据库
 - 将 [Azure CLI](/cli/azure/install-azure-cli) 命令行接口安装在计算机上或通过浏览器在 Azure 门户中使用 [Azure Cloud Shell](../cloud-shell/overview.md)。
@@ -25,21 +25,21 @@ ms.locfileid: "65067176"
 ## <a name="list-server-configuration-parameters-for-azure-database-for-postgresql-server"></a>列出 Azure Database for PostgreSQL 服务器的服务器配置参数
 若要列出服务器中的所有可修改参数及其值，请运行 [az postgres server configuration list](/cli/azure/postgres/server/configuration) 命令。
 
-可以列出资源组“myresourcegroup”  下服务器 mydemoserver.postgres.database.azure.com  的服务器配置参数。
+可以列出资源组“myresourcegroup”**** 下服务器 mydemoserver.postgres.database.azure.com**** 的服务器配置参数。
 ```azurecli-interactive
 az postgres server configuration list --resource-group myresourcegroup --server mydemoserver
 ```
 ## <a name="show-server-configuration-parameter-details"></a>显示服务器配置参数详细信息
 若要显示服务器的某个特定配置参数的详细信息，请运行 [az postgres server configuration show](/cli/azure/postgres/server/configuration) 命令。
 
-此示例显示了资源组“myresourcegroup”下服务器 mydemoserver.postgres.database.azure.com 的服务器配置参数 log\_min\_messages 的详细信息。   
+此示例显示了资源组“myresourcegroup”下服务器 mydemoserver.postgres.database.azure.com 的服务器配置参数 log\_min\_messages 的详细信息。************
 ```azurecli-interactive
 az postgres server configuration show --name log_min_messages --resource-group myresourcegroup --server mydemoserver
 ```
 ## <a name="modify-server-configuration-parameter-value"></a>修改服务器配置参数值
 还可以修改某个服务器配置参数的值，这会更新 PostgreSQL 服务器引擎的基础配置值。 若要更新配置，请使用 [az postgres server configuration set](/cli/azure/postgres/server/configuration) 命令。 
 
-更新资源组“myresourcegroup”下服务器 mydemoserver.postgres.database.azure.com 的服务器配置参数 log\_min\_message。   
+更新资源组“myresourcegroup”下服务器 mydemoserver.postgres.database.azure.com 的服务器配置参数 log\_min\_message。************
 ```azurecli-interactive
 az postgres server configuration set --name log_min_messages --resource-group myresourcegroup --server mydemoserver --value INFO
 ```
@@ -50,4 +50,5 @@ az postgres server configuration set --name log_min_messages --resource-group my
 此命令会将 **log\_min\_messages** 配置重置为默认值 **WARNING**。 有关服务器配置和允许值的详细信息，请参阅有关[服务器配置](https://www.postgresql.org/docs/9.6/static/runtime-config.html)的 PostgreSQL 文档。
 
 ## <a name="next-steps"></a>后续步骤
+- [了解如何重启服务器](howto-restart-server-cli.md)
 - 若要配置和访问服务器日志，请参阅 [Azure Database for PostgreSQL 中的服务器日志](concepts-server-logs.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure 媒体服务作业 （编码和分析） 错误代码 |Microsoft Docs
-description: 这篇文章链接到作业错误代码参考主题，并提供相关主题的有用链接。
+title: Azure 媒体服务作业（编码和分析）错误代码 | Microsoft Docs
+description: 本文会链接到作业错误代码参考主题，并提供指向相关主题的有用链接。
 author: Juliako
 manager: femila
 editor: ''
@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/28/2019
 ms.author: juliako
-ms.openlocfilehash: 9443a50d130e6542672eb143bcb56d04d63959a4
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: d66347bc5510189b1d947b4c6b00345b0a56c3f7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65235710"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80582218"
 ---
 # <a name="media-services-job-error-codes"></a>媒体服务作业错误代码
 
-本主题链接到的详细说明的 REST 参考文档[作业](transforms-jobs-concept.md)错误代码和消息。
+本主题会链接到 REST 参考文档，以获取[作业](transforms-jobs-concept.md)错误代码和消息的详细说明。
 
 ## <a name="job-error-codes"></a>作业错误代码
 
-下面的 REST 文档详细的说明提供有关[作业错误代码](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)。
+以下 REST 文档提供了有关[作业错误代码](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)的详细说明。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 
@@ -40,4 +40,4 @@ ms.locfileid: "65235710"
 
 ## <a name="next-steps"></a>后续步骤
 
-[示例： 从 ApiException 使用.NET 访问错误代码和消息](configure-connect-dotnet-howto.md#connect-to-the-net-client)
+[示例：使用 .NET 访问 ApiException 中的错误代码和消息](configure-connect-dotnet-howto.md#connect-to-the-net-client)

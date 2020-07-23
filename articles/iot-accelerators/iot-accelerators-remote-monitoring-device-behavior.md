@@ -1,5 +1,5 @@
 ---
-title: 远程监视解决方案中的模拟设备行为 - Azure | Microsoft Docs
+title: 远程监视解决方案中的模拟设备-Azure |Microsoft Docs
 description: 本文介绍如何使用 JavaScript 来定义远程监视解决方案中模拟设备的行为。
 author: dominicbetts
 manager: timlt
@@ -8,19 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 04d2ad2f0e86ee977600af86a2ffd1e9d7680375
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
-ms.translationtype: MT
+ms.openlocfilehash: c39ca0a018bd22844cf7e5350e6d3586319aac16
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823423"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73890847"
 ---
 # <a name="implement-the-device-model-behavior"></a>实现设备模型的行为
 
 [了解设备模型架构](iot-accelerators-remote-monitoring-device-schema.md)一文中介绍了定义模拟设备模型的架构。 该文章参考了实现模拟设备行为的两种 JavaScript 文件：
 
-- 按固定间隔运行，更新设备内部状态的**状态** JavaScript 文件。
-- 解决方案在设备上调用方法时运行的**方法** JavaScript 文件。
+- **状态**按固定间隔运行的 JavaScript 文件，用于更新设备的内部状态。
+- **方法**在解决方案调用设备上的方法时运行的 JavaScript 文件。
 
 > [!NOTE]
 > 设备模型行为仅适用于在设备模拟服务中托管的模拟设备。 如果想要创建真实设备，请参阅[将设备连接到远程监视解决方案加速器](iot-accelerators-connecting-devices.md)。

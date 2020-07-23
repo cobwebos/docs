@@ -1,15 +1,15 @@
 ---
-author: cynthn
+author: tanmaygore
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
-ms.author: cynthn
-ms.openlocfilehash: dc871b29cdafa57d337f9be6cf01e76212f31b67
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.author: tagore
+ms.openlocfilehash: d7019d673bd8dfda31c5073fb7f37e26768dcc1d
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66167081"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778158"
 ---
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 首先，必须了解在基础结构即服务 (IaaS) 资源上进行的数据平面操作和管理平面操作的差异。
@@ -117,11 +117,11 @@ ms.locfileid: "66167081"
 > 触发提交操作后，就无法执行此操作。     
 >
 
-### <a name="commit"></a>提交
+### <a name="commit"></a>Commit
 完成验证之后，就可以提交迁移。 资源不再出现在经典部署模型中，只在资源管理器部署模型中提供。 只能在新门户中管理迁移的资源。
 
 > [!NOTE]
-> 这是幂等操作。 如果失败，请重试操作。 如果仍失败，请创建支持票证，或在 [VM 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesforWindows)上创建标记为“ClassicIaaSMigration”的论坛帖子。
+> 这是幂等操作。 如果失败，请重试操作。 如果仍旧失败，请创建支持票证，或在 [Microsoft 问答](https://docs.microsoft.com/answers/index.html)论坛中创建帖子
 >
 >
 
@@ -138,11 +138,11 @@ ms.locfileid: "66167081"
 
 | 经典表示形式 | Resource Manager 表示形式 | 说明 |
 | --- | --- | --- |
-| 云服务名称 |DNS 名称 |在迁移期间，以命名模式 `<cloudservicename>-migrated` 为每个云服务创建新的资源组。 此资源组包含用户的所有资源。 云服务名称会成为与公共 IP 地址关联的 DNS 名称。 |
+| 云服务名称 |DNS 名称 |在迁移期间，会以命名模式 `<cloudservicename>-migrated` 为每个云服务创建新的资源组。 此资源组包含用户的所有资源。 云服务名称会成为与公共 IP 地址关联的 DNS 名称。 |
 | 虚拟机 |虚拟机 |VM 特定属性将原封不动地进行迁移。 某些 osProfile 信息（例如计算机名称）不会存储在经典部署模型中，因此迁移后会保留空白。 |
 | 附加到 VM 的磁盘资源 |附加到 VM 的隐式磁盘 |在 Resource Manager 部署模型中，磁盘不会建模为顶级资源。 这些磁盘将作为 VM 下的隐式磁盘进行迁移。 目前只支持附加到 VM 的磁盘。 资源管理器 VM 现在可以使用经典部署模型中的存储帐户轻松地迁移磁盘，不需任何更新。 |
 | VM 扩展 |VM 扩展 |除 XML 扩展以外的所有资源扩展都会从经典部署模型中迁移。 |
-| 虚拟机证书 |Azure 密钥保管库中的证书	 |如果云服务包含服务证书，迁移会为每个云服务创建新的 Azure Key Vault，并将证书移到该 Key Vault。 VM 将更新为引用该密钥保管库中的证书。 <br><br> 请勿删除该 Key Vault。 这可能导致 VM 进入故障状态。 |
+| 虚拟机证书 |Azure 密钥保管库中的证书 |如果云服务包含服务证书，迁移会为每个云服务创建新的 Azure Key Vault，并将证书移到该 Key Vault。 VM 将更新为引用该密钥保管库中的证书。 <br><br> 请勿删除该 Key Vault。 这可能导致 VM 进入故障状态。 |
 | WinRM 配置 |osProfile 下的 WinRM 配置 |Windows 远程管理配置在迁移过程中会原封不动地进行转移。 |
 | 可用性集属性 |可用性集资源 | 可用性集规范是经典部署模型中 VM 上的属性。 在迁移过程中，可用性集将成为顶级资源。 以下配置不受支持：每个云服务包含多个可用性集，或者在一个云服务中有一个或多个可用性集以及不在任何可用性集中的 VM。 |
 | VM 上的网络配置 |主网络接口 |在迁移后，VM 上的网络配置会表示为主网络接口资源。 对于不在虚拟网络中的 VM，内部 IP 地址在迁移期间会更改。 |
@@ -151,11 +151,11 @@ ms.locfileid: "66167081"
 | 入站 NAT 规则 |入站 NAT 规则 |在迁移期间，VM 上定义的输入终结点将转换成负载均衡器下的入站网络地址转换规则。 |
 | VIP 地址 |具有 DNS 名称的公共 IP 地址 |虚拟 IP 地址会变成公共 IP 地址并与负载均衡器关联。 虚拟机 IP 仅在已向其分配了输入终结点的情况下才能迁移。 |
 | 虚拟网络 |虚拟网络 |虚拟网络将连同其所有属性一起迁移到 Resource Manager 部署模型。 将创建名为 `-migrated` 的新资源组。 |
-| 保留 IP |具有静态分配方法的公共 IP 地址 |与负载均衡器关联的保留 IP 会在迁移云服务或虚拟机的过程中一起迁移。 目前不支持进行未关联的保留 IP 迁移。 |
+| 保留 IP |具有静态分配方法的公共 IP 地址 |与负载均衡器关联的保留 IP 会在迁移云服务或虚拟机的过程中一起迁移。 可以使用 [Move-AzureReservedIP](https://docs.microsoft.com/powershell/module/servicemanagement/azure/move-azurereservedip?view=azuresmps-4.0.0) 迁移未关联的保留 IP。  |
 | 每个 VM 的公共 IP 地址 |具有动态分配方法的公共 IP 地址 |与 VM 关联的公共 IP 地址将转换为公共 IP 地址资源，分配方法将设置为静态。 |
-| NSG |NSG |在迁移到 Resource Manager 部署模型的过程中，将克隆与子网关联的网络安全组。 在迁移期间不会删除经典部署模型中的 NSG。 但是，当迁移正在进行时，会阻止 NSG 的管理平面操作。 |
+| NSG |NSG |在迁移到 Resource Manager 部署模型的过程中，将克隆与子网关联的网络安全组。 在迁移期间不会删除经典部署模型中的 NSG。 但是，当迁移正在进行时，会阻止 NSG 的管理平面操作。 可以使用 [Move-AzureNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/servicemanagement/azure/move-azurenetworksecuritygroup?view=azuresmps-4.0.0) 迁移未关联的 NSG。|
 | DNS 服务器 |DNS 服务器 |与虚拟网络或 VM 关联的 DNS 服务器会在迁移相应资源的过程中连同所有属性一起迁移。 |
-| UDR |UDR |在迁移到 Resource Manager 部署模型的过程中，将克隆与子网关联的用户定义路由。 在迁移期间不会删除经典部署模型中的 UDR。 但是，当迁移正在进行时，会阻止 UDR 的管理平面操作。 |
+| UDR |UDR |在迁移到 Resource Manager 部署模型的过程中，将克隆与子网关联的用户定义路由。 在迁移期间不会删除经典部署模型中的 UDR。 但是，当迁移正在进行时，会阻止 UDR 的管理平面操作。 可以使用 [Move-AzureRouteTable](https://docs.microsoft.com/powershell/module/servicemanagement/azure/Move-AzureRouteTable?view=azuresmps-4.0.0) 迁移未关联的 UDR。 |
 | VM 网络配置中的 IP 转发属性 |NIC 中的 IP 转发属性 |VM 上的 IP 转发属性在迁移期间将转换为网络接口上的属性。 |
 | 具有多个 IP 的负载均衡器 |具有多个公共 IP 资源的负载均衡器 |与负载均衡器关联的每个公共 IP 都会转换为公共 IP 资源，并在迁移后与负载均衡器关联。 |
 | VM 上的内部 DNS 名称 |NIC 上的内部 DNS 名称 |在迁移期间，VM 的内部 DNS 后缀将迁移到 NIC 上名为“InternalDomainNameSuffix”的只读属性。 在迁移后，该后缀会保持不变，并且 VM 解决方案会继续像以前一样正常工作。 |

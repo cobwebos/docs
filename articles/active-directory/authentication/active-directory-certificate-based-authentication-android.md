@@ -1,22 +1,21 @@
 ---
-title: Android 上基于证书的身份验证 - Azure Active Directory
+title: Android 基于证书的身份验证 - Azure Active Directory
 description: 了解 Android 设备的解决方案中配置基于证书的身份验证的支持方案和要求
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: article
-ms.date: 01/15/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.topic: how-to
+ms.date: 11/21/2019
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b55b439f61c76d6d0524c1f01ba5fef745187d04
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: d9760624afec111a271ae5aa0ebbe5533d6ba8d6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60416158"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81680215"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android 上 Azure Active Directory 基于证书的身份验证
 
@@ -27,7 +26,7 @@ ms.locfileid: "60416158"
 
 如果配置了此功能，就无需在移动设备上的某些邮件和 Microsoft Office 应用程序中输入用户名和密码组合。
 
-本主题面向 Office 365 企业版、商业版、教育版、美国政府计划、中国计划和德国计划中的租户用户，提供在 iOS(Android) 设备上配置 CBA 时的要求和受支持方案。
+本主题提供了在 Android 设备上为 Office 365 企业版、商业版、教育版、美国政府版和德国计划中的租户用户配置 CBA 时的要求和受支持方案。
 
 此功能在 Office 365 US Government Defense 和 Federal 计划中以预览形式提供。
 
@@ -66,7 +65,7 @@ ms.locfileid: "60416158"
 
 有关详细信息，请参阅[自定义 AD FS 登录页](https://technet.microsoft.com/library/dn280950.aspx)。
 
-某些 Office 应用（启用了新式身份验证）在请求中向 Azure AD 发送“*prompt=login*”。 默认情况下，Azure AD 会将向 ADFS 发出的请求中的“prompt=login”转换为“wauth=usernamepassworduri”（要求 ADFS 执行 U/P 身份验证）和“wfresh=0”（要求 ADFS 忽略 SSO 状态并执行全新的身份验证）。 如果想要为这些应用启用基于证书的身份验证，需要修改默认 Azure AD 行为。 将联盟域设置中的“PromptLoginBehavior”设置为“已禁用”。
+某些 Office 应用（启用了新式身份验证）在请求中向 Azure AD 发送“prompt=login”。 默认情况下，Azure AD 会将向 ADFS 发出的请求中的“prompt=login”转换为“wauth=usernamepassworduri”（要求 ADFS 执行 U/P 身份验证）和“wfresh=0”（要求 ADFS 忽略 SSO 状态并执行全新的身份验证）  。 如果想要为这些应用启用基于证书的身份验证，需要修改默认 Azure AD 行为。 将联盟域设置中的“PromptLoginBehavior”设置为“已禁用”。 
 可使用 [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) cmdlet 执行此任务：
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`

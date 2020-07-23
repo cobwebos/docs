@@ -9,13 +9,13 @@ ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
 ms.openlocfilehash: 57f557a812ec5e4eea75b76ca1394ca360a85d30
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66164646"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67172889"
 ---
-Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和“电源”状态。 本文旨在介绍这些状态并专门突出显示了何时会对客户收取实例使用费用。 
+Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和“电源”状态。   本文旨在介绍这些状态并专门突出显示了何时会对客户收取实例使用费用。 
 
 ## <a name="power-states"></a>电源状态
 
@@ -32,7 +32,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 状态
 </th>
 <th>
-描述
+说明
 </th>
 <th>
 实例使用计费
@@ -153,7 +153,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 
 &#42;*某些 Azure 资源（如磁盘和网络）会产生费用。 实例上的软件许可证不产生费用。
 
-## <a name="provisioning-states"></a>设置状态
+## <a name="provisioning-states"></a>预配状态
 
 预配状态是用户在 VM 上启动的控制平面操作的状态。 以下状态独立于 VM 的电源状态。
 
@@ -178,12 +178,12 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 <p><b>状态</b></p>
 </td>
 <td width="366">
-<p>描述</p>
+<p>说明</p>
 </td>
 </tr>
 <tr>
 <td width="162">
-<p><b>正在创建</b></p>
+<p><b>Creating</b></p>
 </td>
 <td width="366">
 <code>"statuses": [<br>
@@ -196,7 +196,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 </tr>
 <tr>
 <td width="162">
-<p><b>正在更新</b></p>
+<p><b>更新</b></p>
 </td>
 <td width="366">
 <code>"statuses": [<br>
@@ -210,7 +210,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 </tr>
 <tr>
 <td width="162">
-<p><b>正在删除</b></p>
+<p><b>删除</b></p>
 </td>
 <td width="366">
 <code>"statuses": [<br>
@@ -236,7 +236,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
  "displayStatus": "OS Provisioning In progress"<br>
  }<br>
 ]</code><br>
-<p>2. <b>OSProvisioningComplete</b> &ndash; 短时状态。 VM 会快速过渡到“成功”状态，除非需要安装扩展。 安装扩展可能需要一定的时间。 <br />
+<p>2. <b>OSProvisioningComplete</b> &ndash; 短时状态。 VM 会快速过渡到“成功”状态，除非需要安装扩展。**** 安装扩展可能需要一定的时间。 <br />
 <code> "statuses": [<br>
  {<br>
  "code": "ProvisioningState/creating/OSProvisioningComplete",<br>
@@ -244,7 +244,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
  "displayStatus": "OS Provisioning Complete"<br>
  }<br>
 ]</code><br>
-<p><b>注意</b>：如果存在 OS 故障或者 OS 没有及时安装，则 OS 预配可能会过渡到“失败”状态。 会根据部署在基础结构上的 VM 对客户收费。</p>
+<p><b>注意</b>：如果存在 OS 故障或者 OS 没有及时安装，则 OS 预配可能会过渡到“失败”状态。**** 会根据部署在基础结构上的 VM 对客户收费。</p>
 </td>
 </tr>
 </table>

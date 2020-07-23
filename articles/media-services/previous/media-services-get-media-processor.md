@@ -1,6 +1,6 @@
 ---
 title: 如何使用用于 .NET 的 Azure 媒体服务 SDK 创建媒体处理器 | Microsoft Docs
-description: 了解如何创建一个媒体处理器组件用来为 Azure 媒体服务编码、转换格式、加密或解密媒体内容。 代码示例用 C# 编写且使用适用于 .NET 的媒体服务 SDK。
+description: 了解如何创建一个媒体处理器组件来为 Azure 媒体服务编码、转换格式、加密或解密媒体内容。 代码示例用 C# 编写且使用适用于 .NET 的媒体服务 SDK。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: af6badda426f1bb81d8528cfda9b8c02d55712b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 84b94240431026020d3de793d56853a7d92a6f14
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61463820"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057970"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>如何：获取媒体处理器实例
 > [!div class="op_single_selector"]
@@ -40,18 +40,20 @@ ms.locfileid: "61463820"
 
 ## <a name="get-media-processor"></a>获取媒体处理器
 
-以下方法演示了如何获取媒体处理器实例。 该代码示例假设使用名为 _context 的模块级变量引用服务器上下文，如[如何：以编程方式连接到媒体服务](media-services-use-aad-auth-to-access-ams-api.md)一节所述。
+以下方法演示了如何获取媒体处理器实例。 该代码示例假设使用名为 _context 的模块级变量引用服务器上下文，如[如何：  以编程方式连接到媒体服务](media-services-use-aad-auth-to-access-ams-api.md)一节所述。
 
-    private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
-    {
-        var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
-        ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
+```csharp
+private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+{
+    var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
+    ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
 
-        if (processor == null)
-        throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
+    if (processor == null)
+    throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
 
-        return processor;
-    }
+    return processor;
+}
+```
 
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径

@@ -1,87 +1,168 @@
 ---
-title: 设置使用 Azure Site Recovery 灾难恢复并故障转移到 Azure 后要连接的 IP 地址 | Microsoft Docs
-description: 说明如何设置使用 Azure Site Recovery 从本地灾难恢复并故障转移后用于连接到 Azure VM 的 IP 地址
-services: site-recovery
+title: 使用 Azure Site Recovery 从本地故障转移后连接到 Azure VM
+description: 介绍在使用 Azure Site Recovery 从本地故障转移到 Azure 后如何连接到 Azure VM
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/15/2019
+ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 2e1cbb2446501d0afda29eba179e388b5a22e6a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 33dafaff396ce378dfa9eab0158e1b2fd9c10da6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60772227"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84770486"
 ---
-# <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>设置在故障转移后用于连接到 Azure VM 的 IP 地址
+# <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>从本地故障转移后连接到 Azure VM 
 
-本文介绍使用 [Azure Site Recovery](site-recovery-overview.md) 服务复制和故障转移到 Azure 后，用于连接 Azure VM 的网络要求。
 
-本文介绍以下内容：
+本文介绍如何设置连接，以便在故障转移后能够成功连接到 Azure VM。
+
+设置本地虚拟机 (VM) 和物理服务器到 Azure 的灾难恢复后，[Azure Site Recovery](site-recovery-overview.md) 会开始将计算机复制到 Azure。 然后，在发生服务中断时，你可以从本地站点故障转移到 Azure。 发生故障转移时，Site Recovery 将使用复制的本地数据创建 Azure VM。 作为灾难恢复规划的一部分，需要确定在故障转移后如何连接到这些 Azure VM 上运行的应用。
+
+本文介绍如何执行以下操作：
 
 > [!div class="checklist"]
-> * 可以使用的连接方法
-> * 如何对已复制 Azure VM 使用不同 IP 地址
-> * 如何在故障转移后保留 Azure VM 的 IP 地址
+> * 在故障转移之前准备本地计算机。
+> * 在故障转移之后准备 Azure VM。 
+> * 在故障转移之后保留 Azure VM 上的 IP 地址。
+> * 在故障转移之后将新的 IP 地址分配给 Azure VM。
 
-## <a name="connecting-to-replica-vms"></a>连接到副本 VM
+## <a name="prepare-on-premises-machines"></a>准备本地计算机
 
-在规划复制和故障转移策略时，其中一个关键问题是如何在故障转移后连接到 Azure VM。 在设计副本 Azure VM 的网络策略时，有以下几个选择：
+为了确保能够连接到 Azure VM，在故障转移之前请准备好本地计算机。
 
-- **使用不同 IP 地址**：可以为复制的 Azure VM 网络选择使用不同的 IP 地址范围。 在此方案中，VM 会在故障转移后获取新的 IP 地址，并且需要进行 DNS 更新。
-- **保留相同的 IP 地址**：可能想要在故障转移后为 Azure 网络使用与本地主站点相同的 IP 地址范围。 保留相同的 IP 地址，可以减少运行故障转移后出现的网络相关问题，从而简化恢复过程。 不过，复制到 Azure 时，需要在运行故障转移后在路由中更新 IP 地址的新位置。
+### <a name="prepare-windows-machines"></a>准备 Windows 计算机
 
-## <a name="retaining-ip-addresses"></a>保留 IP 地址
+在本地 Windows 计算机上执行以下操作：
 
-Site Recovery 支持在通过子网故障转移到 Azure 时保留固定的 IP 地址。
+1. 配置 Windows 设置。 这包括删除任何静态持久路由或 WinHTTP 代理，并将磁盘 SAN 策略设置为 **OnlineAll**。 [按照这些说明](../virtual-machines/windows/prepare-for-upload-vhd-image.md#set-windows-configurations-for-azure)进行操作。
 
-- 借助子网故障转移，特定子网会出现在站点 1 或站点 2 中，但永远不会同时出现在这两个站点中。
-- 为了能够在故障转移时保留 IP 地址空间，可以编程方式安排路由器基础结构，将子网从一个站点移到另一个站点。
-- 在故障转移期间，子网会随关联的受保护 VM 一起移动。 主要缺点是，在出现故障时，必须移动整个子网。
+2. 确保[这些服务](../virtual-machines/windows/prepare-for-upload-vhd-image.md#check-the-windows-services)正在运行。
 
+3. 启用远程桌面 (RDP)，以便能够远程连接到本地计算机。 [了解如何](../virtual-machines/windows/prepare-for-upload-vhd-image.md#update-remote-desktop-registry-settings)使用 PowerShell 启用 RDP。
+
+4. 若要在故障转移后通过 Internet 访问 Azure VM，请在本地计算机上的 Windows 防火墙中，在“公共”配置文件中允许 TCP 和 UDP，并将 RDP 设置为所有配置文件允许的应用。
+
+5. 若要在故障转移后通过站点到站点 VPN 访问 Azure VM，请在本地计算机上的 Windows 防火墙中，允许对“域”和“专用”配置文件使用 RDP。 [了解](../virtual-machines/windows/prepare-for-upload-vhd-image.md#configure-windows-firewall-rules)如何允许 RDP 流量。
+6. 确保在触发故障转移时本地 VM 上没有任何挂起的 Windows 更新。 如果有，在故障转移后，这些更新可能会在 Azure VM 上开始安装，而在更新完成之前，你将无法登录到 VM。
+
+### <a name="prepare-linux-machines"></a>准备 Linux 计算机
+
+在本地 Linux 计算机上执行以下操作：
+
+1. 检查安全外壳服务是否设置为在系统引导时自动启动。
+2. 确保防火墙规则允许 SSH 连接。
+
+
+## <a name="configure-azure-vms-after-failover"></a>故障转移后配置 Azure VM
+
+故障转移后，在创建的 Azure VM 上执行以下操作。
+
+1. 若要通过 Internet 连接到 VM，请将公共 IP 地址分配到该 VM。 不能将本地计算机所用的同一个公共 IP 地址用于 Azure VM。 [了解详细信息](../virtual-network/virtual-network-public-ip-address.md)
+2. 检查 VM 上的网络安全组 (NSG) 规则是否允许与 RDP 或 SSH 端口建立传入连接。
+3. 在[启动诊断](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine)中查看 VM。
+
+
+> [!NOTE]
+> Azure Bastion 服务提供对 Azure VM 的 RDP 和 SSH 私密访问。 [详细了解](../bastion/bastion-overview.md)此服务。
+
+## <a name="set-a-public-ip-address"></a>设置公共 IP 地址
+
+除了手动为 Azure VM 分配公共 IP 地址以外，还可以在故障转移期间使用某个脚本或 Site Recovery [恢复计划](site-recovery-create-recovery-plans.md)中的 Azure 自动化 Runbook 来分配地址，或者使用 Azure 流量管理器设置 DNS 级路由。 [详细了解](concepts-public-ip-address-with-site-recovery.md)如何设置公共地址。
+
+
+## <a name="assign-an-internal-address"></a>分配内部地址
+
+若要在故障转移后设置 Azure VM 的内部 IP 地址，可使用以下选项：
+
+- **保留相同的 ip 地址**：你可以在 Azure VM 上使用与分配给本地计算机的 ip 地址相同的 ip 地址。
+- **使用不同的 ip 地址**：可以为 Azure VM 使用不同的 ip 地址。
+
+
+## <a name="retain-ip-addresses"></a>保留 IP 地址
+
+在故障转移到 Azure 时，Site Recovery 允许保留相同的 IP 地址。 保留相同的 IP 地址可以避免故障转移后出现潜在的网络问题，但这会带来一些复杂性。
+
+- 如果目标 Azure VM 使用与本地站点相同的 IP 地址/子网，则无法使用站点到站点 VPN 连接或 ExpressRoute 在它们之间建立连接，因为地址存在重叠。 子网必须是唯一的。
+- 故障转移后，需要从本地连接到 Azure，以便可以在 Azure VM 上使用相关的应用。 Azure 不支持延伸的 VLAN，因此，若要保留 IP 地址，需要通过故障转移本地计算机以及整个子网，将 IP 空间转接到 Azure。
+- 子网故障转移确保特定的子网不能同时在本地和 Azure 中可用。
+
+保留 IP 地址需要执行以下步骤：
+
+- 在复制的项的“计算和网络”属性中，将目标 Azure VM 的网络和 IP 地址设置为镜像本地设置。
+- 在灾难恢复过程中必须管理子网。 需要通过一个 Azure VNet 来匹配本地网络。故障转移后，必须修改故障转移网络路由，以反映子网已移到 Azure，并反映新的 IP 地址位置。  
 
 ### <a name="failover-example"></a>故障转移示例
 
-我们来看一个故障转移到 Azure 的示例，这里采用一个虚构的公司：Woodgrove Bank。
+接下来举例说明。
 
-- Woodgrove Bank 在本地站点中托管商业应用程序。 它们在 Azure 上托管其移动应用。
-- 其本地边缘网络和 Azure 虚拟网络之间存在 VPN 站点到站点连接。 由于存在 VPN 连接，Azure 中的虚拟网络显示为本地网络的扩展。
-- Woodgrove 希望使用 Site Recovery 将本地工作负荷复制到 Azure。
-  - Woodgrove 的应用依赖于硬编码 IP 地址，因此需要在故障转移到 Azure 后保留应用的 IP 地址。
-  - Azure 中运行的资源使用 IP 地址范围 172.16.1.0/24、172.16.2.0/24。
+- 虚构公司 Woodgrove Bank 在本地托管其业务应用，并在 Azure 中托管其移动应用。
+- 他们通过站点到站点 VPN 从本地连接到 Azure。 
+- Woodgrove 使用 Site Recovery 将本地计算机复制到 Azure。
+- 其本地应用使用硬编码的 IP 地址，因此他们想要在 Azure 中保留相同的 IP 地址。
+- 运行这些应用的本地计算机在以下三个子网中运行：
+    - 192.168.1.0/24
+    - 192.168.2.0/24
+    - 192.168.3.0/24
+- Azure 中运行的应用位于以下两个子网中的 Azure VNet“Azure 网络”中：****
+- 172.16.1.0/24
+- 172.16.2.0/24
 
-![运行子网故障转移前](./media/site-recovery-network-design/network-design7.png)
+他们通过以下操作来保留地址。
+
+1. 启用复制时，指定应将计算机复制到“Azure 网络”。****
+2. 在 Azure 中创建“恢复网络”。**** 此 VNet 镜像其本地网络中的 192.168.1.0/24 子网。
+3. Woodgrove 在两个网络之间设置了 [VNet 到 VNet 连接](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)。 
+
+    > [!NOTE]
+    > 根据应用程序的要求，可以在故障转移之前通过手动步骤/脚本化步骤/Site Recovery [恢复计划](site-recovery-create-recovery-plans.md)中的Azure 自动化 Runbook 设置 VNet 到 VNet 连接，或者在故障转移完成后设置此连接。
+
+4. 故障转移之前，他们按以下过程中所述，在 Site Recovery 的计算机属性中将目标 IP 地址设置为本地计算机的地址。
+5. 故障转移后，使用相同的 IP 地址创建 Azure VM。 Woodgrove 使用 VNet 对等互连（已启用传输连接）将“Azure 网络”连接到“恢复网络”VNet。********
+6. 在本地，Woodgrove 需要进行网络更改（包括修改路由），以反映 192.168.1.0/24 已移到 Azure。  
 
 **故障转移前的基础结构**
 
-
-为了能使 Woodgrove 在保留 IP 地址的同时将其 VM 复制到 Azure，该公司需执行以下操作：
-
-
-1. 创建 Azure 虚拟网络，故障转移本地计算机后将在其中创建 Azure VM。 此网络应为本地网络扩展，这样应用程序才能顺畅地进行故障转移。
-2. 在 Site Recovery 中故障转移前，将在计算机属性中分配相同 IP 地址。 故障转移后，Site Recovery 将此地址分配给 Azure VM。
-3. 运行故障转移并使用相同 IP 地址创建 Azure VM 后，这些 VM 将使用 [Vnet 到 Vnet 连接](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)连接到网络。 此操作可以编写脚本。
-4. 它们需要修改路由，以反映 192.168.1.0/24 现在已移到 Azure。
+![运行子网故障转移前](./media/site-recovery-network-design/network-design7.png)
 
 
 **故障转移后的基础结构**
 
 ![运行子网故障转移后](./media/site-recovery-network-design/network-design9.png)
 
-#### <a name="site-to-site-connection"></a>站点到站点连接
 
-除了 vnet 到 vnet 连接外，故障转移后，Woodgrove 还可以设置站点到站点 VPN 连接：
-- 设置站点到站点连接时，只有当 IP 地址范围与本地 IP 地址范围不同时，才能在 Azure 网络中将流量路由到本地位置（本地网络）。 这是因为 Azure 不支持延伸子网。 因此，如果在本地有一个子网 192.168.1.0/24，则不能在 Azure 网络中添加一个本地网络 192.168.1.0/24。 这是意料之中的，因为 Azure 不知道子网中没有活动的 VM，也不知道正在创建的子网仅用于灾难恢复。
-- 为了能够将网络流量从一个 Azure 网络中正确路由出去，该网络中的子网和本地网络中的子网不能有冲突。
+### <a name="set-target-network-settings"></a>指定目标网络设置
+
+在故障转移之前，为目标 Azure VM 指定网络设置和 IP 地址。
+
+1.  在“恢复服务保管库”->“复制的项”中，选择本地计算机。****
+2. 在计算机的“计算和网络”页中，单击“编辑”以配置目标 Azure VM 的网络和适配器设置。********
+3. 在“网络属性”中，选择故障转移后创建的 Azure VM 所在的目标网络。****
+4. 在“网络接口”中，配置目标网络中的网络适配器。**** Site Recovery 默认会显示本地计算机上所有已检测到的 NIC。
+    - 在“目标网络接口类型”中，可将每个 NIC 设置为“主要”、“辅助”接口；如果在目标网络中不需要该特定 NIC，请选择“不要创建”。**************** 必须将一个网络适配器设置为用于故障转移的主要接口。 请注意，修改目标网络会影响 Azure VM 的所有 NIC。
+    - 单击 NIC 名称以指定要在其中部署 Azure VM 的子网。
+    - 使用要分配给目标 Azure VM 的专用 IP 地址覆盖“动态”地址。**** 如果未指定 IP 地址，Site Recovery 会在故障转移时将子网中的下一个可用 IP 地址分配给 NIC。
+    - [详细了解](site-recovery-manage-network-interfaces-on-premises-to-azure.md)如何管理用于从本地故障转移到 Azure 的 NIC。
 
 
+## <a name="get-new-ip-addresses"></a>获取新 IP 地址
 
+在此方案中，Azure VM 会在故障转移后获取新的 IP 地址。 若要为在故障转移后创建的虚拟机设置新的 IP 地址，可以参考以下步骤-
 
-## <a name="assigning-new-ip-addresses"></a>分配新 IP 地址
+1. 中转到 "**复制的项**"。
+2. 选择所需的 Azure 虚拟机。
+3. 选择 "**计算和网络**"，然后选择 "**编辑**"。
 
-这篇[博文](https://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/)介绍了如何在运行故障转移后无需保留 IP 地址时设置 Azure 网络基础结构。 这篇博文从应用程序说明入手，介绍了如何设置本地网络和 Azure 网络，最后介绍了如何运行故障转移。
+     ![自定义故障转移网络配置](media/azure-to-azure-customize-networking/edit-networking-properties.png)
+
+4. 若要更新故障转移网络设置，请选择要配置的 NIC 的 "**编辑**"。 在随后打开的页面中，在测试故障转移和故障转移位置提供相应的预先创建的 IP 地址。
+
+    ![编辑 NIC 配置](media/azure-to-azure-customize-networking/nic-drilldown.png)
+
+5. 选择“确定”。
+
+Site Recovery 现在将遵循这些设置，并确保故障转移中的虚拟机通过相应的 IP 地址（如果在目标 IP 范围内可用）连接到所选资源。 在此方案中，无需对整个子网进行故障转移。 需要进行 DNS 更新以更新已故障转移的计算机的记录，使之指向虚拟机的新 IP 地址。
 
 ## <a name="next-steps"></a>后续步骤
-[运行故障转移](site-recovery-failover.md)
+[了解](site-recovery-active-directory.md)如何将本地 Active Directory 和 DNS 复制到 Azure。

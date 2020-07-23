@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee12bfc8a79b6abcfdf2978d4e640c34f801e346
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 50097aec1c4a003d3494029e8f25bb13b564f207
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65989711"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "68944026"
 ---
 # <a name="tutorial-integrate-ilms-with-azure-active-directory"></a>教程：将 iLMS 与 Azure Active Directory 集成
 
@@ -88,7 +88,7 @@ ms.locfileid: "65989711"
 
     在“登录 URL”文本框中，粘贴从 iLMS 管理门户上“SAML 设置”的“服务提供程序”部分中复制的、采用 `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx` 模式的“终结点(URL)”值   
 
-1. 要启用 JIT 预配，iLMS 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框 ****  。
+1. 要启用 JIT 预配，iLMS 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框  。
 
     > [!NOTE]
     > 必须在 iLMS 中启用“创建不可识别的用户帐户”才能映射这些属性。  遵照[此处](https://support.inspiredelearning.com/help/adding-updating-and-managing-users#just-in-time-provisioning-with-saml-single-signon)的说明获取有关属性配置的思路。
@@ -179,7 +179,7 @@ ms.locfileid: "65989711"
 1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤  ：
    1. 在“名称”  字段中，输入 `Britta Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
    1. 单击“创建”。 
 
@@ -193,12 +193,12 @@ ms.locfileid: "65989711"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
 1. 在“用户和组”对话框中，从“用户”列表中选择“Britta Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-ilms-test-user"></a>创建 iLMS 测试用户

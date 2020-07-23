@@ -1,33 +1,23 @@
 ---
-title: 配置 PremiumV2 层 - Azure 应用服务 | Microsoft Docs
+title: 配置 PremiumV2 层
 description: 了解如何通过扩展到新的 PremiumV2 定价层提高 Azure 应用服务中的 Web、移动和 API 应用的性能。
 keywords: 应用服务, azure 应用服务, 缩放, 可缩放, 应用服务计划, 应用服务成本
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
 ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c85644e3cab39f9e0864af91722ee54aab6d59f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4fa64562f8d26297d2b2c8a13cd8b6a513c2c630
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66139791"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170014"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>为 Azure 应用服务配置 PremiumV2 层
 
-与现有定价层相比，新的 PremiumV2 定价层提供更快的处理器和 SSD 存储以及双倍的内存-内核比。 借助性能优势，可以通过在更少的实例上运行应用来节省资金。 在本文中，你将了解如何在 **PremiumV2** 层中创建应用或者将应用纵向扩展到 **PremiumV2** 层。
+与现有定价层相比，新的 PremiumV2 定价层提供更快的处理器和 SSD 存储以及双倍的内存-内核比  。 借助性能优势，可以通过在更少的实例上运行应用来节省资金。 在本文中，你将了解如何在 **PremiumV2** 层中创建应用或者将应用纵向扩展到 **PremiumV2** 层。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 若要将应用纵向扩展到 **PremiumV2**，需要有一个 Azure 应用服务应用，该应用在低于 **PremiumV2** 的定价层中运行，并且必须在支持 PremiumV2 的应用服务部署中运行。
 
@@ -49,11 +39,11 @@ az appservice list-locations --sku P1V2
 
 应用服务应用的定价层是在运行它的[应用服务计划](overview-hosting-plans.md)中定义的。 应用服务计划可以独立创建，也可以在创建应用的过程中创建。
 
-在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>中配置应用服务计划时，选择“定价层”。 
+在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>中配置应用服务计划时，选择“定价层”。  
 
-选择“生产”，然后选择 **P1V2**、**P2V2** 或 **P3V2**，然后单击“应用”。
+选择“生产”  ，然后选择 **P1V2**、**P2V2** 或 **P3V2**，然后单击“应用”  。
 
-![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
+![显示应用的建议定价层的屏幕截图。](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
 > 如果未看到 **P1V2**、**P2V2** 和 **P3V2** 作为选项列出，或者这些选项灰显，则 **PremiumV2** 可能在包含应用服务计划的基础应用服务部署中不可用。 有关更多详细信息，请参阅[从不受支持的资源组和区域组合纵向扩展](#unsupported)。
@@ -66,17 +56,17 @@ az appservice list-locations --sku P1V2
 
 在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>中，打开你的应用服务应用页面。
 
-在应用服务应用页面的左侧导航栏中，选择“纵向扩展(应用服务计划)”。
+在应用服务应用页面的左侧导航栏中，选择“纵向扩展(应用服务计划)”。****
 
-![](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
+![显示如何纵向扩展应用服务计划的屏幕截图。](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
-选择“生产”，然后选择 **P1V2**、**P2V2** 或 **P3V2**，然后单击“应用”。
+选择“生产”****，然后选择 **P1V2**、**P2V2** 或 **P3V2**，然后单击“应用”****。
 
-![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
+![显示应用的建议定价层的屏幕截图。](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 如果操作成功完成，则应用的概述页会显示它目前处于 **PremiumV2** 层中。
 
-![](media/app-service-configure-premium-tier/finished.png)
+![在应用的 "概述" 页上显示 "PremiumV2" 定价层的屏幕截图。](media/app-service-configure-premium-tier/finished.png)
 
 ### <a name="if-you-get-an-error"></a>如果遇到错误
 
@@ -91,9 +81,9 @@ az appservice list-locations --sku P1V2
 - 创建**新**资源组，然后在**新**资源组中创建**新**应用和应用服务计划，并在创建过程中选择所需的 Azure 区域。  创建新应用服务计划时，**必须**选择 **PremiumV2** 计划。  这可以确保资源组、应用服务计划和 Azure 区域的组合可让你在支持 **PremiumV2** 的应用服务部署中创建应用服务计划。  然后，将应用程序代码重新部署到新建的应用和应用服务计划。 以后可以根据需要，将应用服务计划从 **PremiumV2** 纵向缩减以节省成本，同时仍可使用 **PremiumV2** 成功纵向扩展。
 - 如果应用已在现有的**高级**层中运行，则可将应用以及所有应用设置、连接字符串和部署配置克隆到使用 **PremiumV2** 的新应用服务计划。
 
-    ![](media/app-service-configure-premium-tier/clone-app.png)
+    ![显示如何克隆应用程序的屏幕截图。](media/app-service-configure-premium-tier/clone-app.png)
 
-    在“克隆应用”页中，可以在所需的区域中创建使用 **PremiumV2** 的应用服务计划，并指定要克隆的应用设置和配置。
+    在“克隆应用”页中，可以在所需的区域中创建使用 **PremiumV2** 的应用服务计划，并指定要克隆的应用设置和配置。****
 
 ## <a name="automate-with-scripts"></a>使用脚本自动化
 
@@ -125,5 +115,5 @@ New-AzAppServicePlan -ResourceGroupName <resource_group_name> `
 ```
 ## <a name="more-resources"></a>更多资源
 
-[纵向扩展 Azure 中的应用](web-sites-scale.md)  
+[纵向扩展 Azure 中的应用](manage-scale-up.md)  
 [手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md)

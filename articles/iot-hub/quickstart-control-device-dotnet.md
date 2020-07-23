@@ -8,20 +8,22 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 02/22/2019
-ms.openlocfilehash: fc219d9e3e5b365f341b2997804586e67275c1b7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.custom:
+- mvc
+- mqtt
+ms.date: 03/04/2020
+ms.openlocfilehash: 560ab582102cc92689093bb0e36acf2fcbc5a30a
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046506"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81771015"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>快速入门：控制连接到 IoT 中心的设备 (.NET)
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入云，并从云管理设备。 在本快速入门中，会使用直接方法来控制连接到 IoT 中心的模拟设备。 可使用直接方法远程更改连接到 IoT 中心的设备的行为。
+IoT 中心是一项 Azure 服务，使你可以从云管理 IoT 设备，并将大量设备遥测引入云以进行存储或处理。 在本快速入门中，会使用直接方法来控制连接到 IoT 中心的模拟设备  。 可使用直接方法远程更改连接到 IoT 中心的设备的行为。
 
 本快速入门使用两个预先编写的 .NET 应用程序：
 
@@ -31,7 +33,7 @@ IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,13 +47,17 @@ IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入�
 dotnet --version
 ```
 
-运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IOT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
+运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
 
 ```azurecli-interactive
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 ```
 
-如果尚未进行此操作，请从 https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip 下载示例 C# 项目并提取 ZIP 存档。
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
+
+如果尚未进行此操作，请从 https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip 下载 Azure IoT C# 示例并提取 ZIP 存档。
+
+确保已在防火墙中打开端口 8883。 本快速入门中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -69,11 +75,11 @@ az extension add --name azure-cli-iot-ext
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
-   **MyDotnetDevice**：所注册的设备的名称。 请按显示的方法使用 MyDotnetDevice。 如果为设备选择其他名称，则需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
+   **MyDotnetDevice**：这是所注册的设备的名称。 建议使用 **MyDotnetDevice**，如图所示。 如果为设备选择不同名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
     ```azurecli-interactive
     az iot hub device-identity create \
-      --hub-name YourIoTHubName --device-id MyDotnetDevice
+      --hub-name {YourIoTHubName} --device-id MyDotnetDevice
     ```
 
 2. 在 Azure Cloud Shell 中运行以下命令，以获取刚注册设备的_设备连接字符串_：
@@ -82,8 +88,8 @@ az extension add --name azure-cli-iot-ext
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
-      --hub-name YourIoTHubName \
-      --device-id MyDotnetDevice 
+      --hub-name {YourIoTHubName} \
+      --device-id MyDotnetDevice \
       --output table
     ```
 
@@ -95,17 +101,17 @@ az extension add --name azure-cli-iot-ext
 
 ## <a name="retrieve-the-service-connection-string"></a>检索服务连接字符串
 
-还需一个 IoT 中心服务连接字符串，以便后端应用程序能够连接到中心并检索消息。 以下命令检索 IoT 中心的服务连接字符串：
+还需一个 IoT 中心服务连接字符串，以便后端应用程序能够连接到中心并检索消息  。 以下命令检索 IoT 中心的服务连接字符串：
 
 ```azurecli-interactive
-az iot hub show-connection-string --name YourIoTHubName --output table
+az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
 ```
 
 记下如下所示的服务连接字符串：
 
-   `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={YourSharedAccessKey}`
+   `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
 
-稍后会在快速入门中用到此值。 服务连接字符串与设备连接字符串不同。  
+稍后会在快速入门中用到此值。 此服务连接字符串与你在上一步中记录的设备连接字符串不同。
 
 ## <a name="listen-for-direct-method-calls"></a>侦听直接方法调用
 
@@ -113,9 +119,9 @@ az iot hub show-connection-string --name YourIoTHubName --output table
 
 1. 在本地终端窗口中，导航到示例 C# 项目的根文件夹。 然后导航到 **iot-hub\Quickstarts\simulated-device-2** 文件夹。
 
-2. 在所选文本编辑器中打开 SimulatedDevice.cs 文件。
+2. 在所选文本编辑器中打开 SimulatedDevice.cs 文件  。
 
-    将 `s_connectionString` 变量的值替换为之前记下的设备连接字符串。 然后将更改保存到 SimulatedDevice.cs 文件。
+    将 `s_connectionString` 变量的值替换为之前记下的设备连接字符串。 然后将更改保存到 **SimulatedDevice.cs**。
 
 3. 在本地终端窗口中，运行以下命令以安装模拟设备应用程序所需的包：
 
@@ -137,11 +143,11 @@ az iot hub show-connection-string --name YourIoTHubName --output table
 
 后端应用程序会连接到 IoT 中心上的服务端终结点。 应用程序通过 IoT 中心对设备进行直接方法调用，并侦听确认。 IoT 中心后端应用程序通常在云中运行。
 
-1. 在另一本地终端窗口中，导航到示例 C# 项目的根文件夹。 然后导航到 iot-hub\Quickstarts\back-end-application 文件夹。
+1. 在另一本地终端窗口中，导航到示例 C# 项目的根文件夹。 然后导航到 iot-hub\Quickstarts\back-end-application 文件夹  。
 
-2. 在所选文本编辑器中打开 BackEndApplication.cs 文件。
+2. 在所选文本编辑器中打开 BackEndApplication.cs 文件  。
 
-    将 `s_connectionString` 变量的值替换为以前记下的服务连接字符串。 然后将更改保存到 BackEndApplication.cs 文件。
+    将 `s_connectionString` 变量的值替换为以前记下的服务连接字符串。 然后将更改保存到 **BackEndApplication.cs**。
 
 3. 在本地终端窗口中，运行以下命令，安装后端应用程序所需的库：
 

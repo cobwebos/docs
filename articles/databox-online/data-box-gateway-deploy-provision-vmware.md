@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 85992224edd10c0a0f233de9f6274cc77e109b22
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: b62441a4b1307a232ad2f592f13253c0759b5431
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517771"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85564205"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>教程：在 VMware 中预配 Azure Data Box Gateway
 
@@ -21,9 +21,9 @@ ms.locfileid: "58517771"
 
 本教程介绍如何在运行 VMware ESXi 6.0、6.5 或 6.7 的主机系统上预配 Data Box Gateway。 
 
-需要管理员权限才能预配和连接虚拟设备。 完成预配和初始设置可能需要大约 10 分钟。
+需要管理员权限才能预配和连接虚拟设备。 完成预配和初始设置可能需要大约 10 分钟。 
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 确保主机满足最低设备要求
@@ -112,7 +112,7 @@ ms.locfileid: "58517771"
 
    ![创建目录](./media/data-box-gateway-deploy-provision-vmware/image5.png)
 
-8. 新文件夹会显示在“数据存储浏览器”的左窗格中。 单击“上传”图标，然后选择“上传文件”。
+8. 新文件夹会显示在“数据存储浏览器”的左窗格中。 单击“上传”图标，然后选择“上传文件”。 
 
     ![上传文件](./media/data-box-gateway-deploy-provision-vmware/image6.png)
 
@@ -120,7 +120,7 @@ ms.locfileid: "58517771"
 
     ![选择要上传的文件](./media/data-box-gateway-deploy-provision-vmware/image7.png)
 
-10. 单击“打开”。 此时会开始将 VMDK 文件上传到指定的数据存储。 上传文件可能需要数分钟的时间。
+10. 单击 **“打开”** 。 此时会开始将 VMDK 文件上传到指定的数据存储。 上传文件可能需要数分钟的时间。
 11. 上传完成后，可以在数据存储的已创建文件夹中看到该文件。 现在将第二个 VMDK 文件上传到同一数据存储。 两个文件在上传后会合并成单个文件。 然后会在目录中看到一个文件。
 
     ![两个 VMDK 文件合并为单个文件](./media/data-box-gateway-deploy-provision-vmware/image8.png)
@@ -129,29 +129,29 @@ ms.locfileid: "58517771"
 
     ![创建或注册 VM](./media/data-box-gateway-deploy-provision-vmware/image9.png)
 
-13. 此时会显示“新建虚拟机”。 在“选择创建类型”下选择“新建虚拟机”，然后单击“下一步”。
+13. 此时会显示“新建虚拟机”。 在“选择创建类型”下选择“新建虚拟机”，然后单击“下一步”。 
     ![“选择创建类型”页](./media/data-box-gateway-deploy-provision-vmware/image10.png)
 
-14. 在“选择名称以及 OS 名称和位置”页上，指定虚拟机的“名称”。 该名称应与此前在步骤 7 中指定的文件夹名称配置（建议的最佳做法）。 选择“Windows”作为“来宾 OS 系列”，选择“Microsoft Windows Server 2016 (64 位)”作为“来宾 OS 版本”。 单击“下一步”。
+14. 在“选择名称以及 OS 名称和位置”页上，指定虚拟机的“名称”。  该名称应与此前在步骤 7 中指定的文件夹名称配置（建议的最佳做法）。 选择“Windows”作为“来宾 OS 系列”，选择“Microsoft Windows Server 2016 (64 位)”作为“来宾 OS 版本”。  单击“下一步”。
 
     ![“选择名称以及 OS 名称和位置”页](./media/data-box-gateway-deploy-provision-vmware/image11.png)
 
 15. 在“选择存储”页上，选择要用于预配 VM 的数据存储。 单击“下一步”。
 
     ![“选择存储”页](./media/data-box-gateway-deploy-provision-vmware/image12.png)
-16. 在“自定义设置”页上，将“CPU”设置为 4，将“内存”设置为 8192 MB（或更高），将“硬盘 1”设置为 2 TB（或更高）。 选择要添加的 **SCSI 硬盘**。 本例中为“LSI 逻辑 SAS”。 **静态 IDE 磁盘不受支持。** “硬盘 1”为虚拟数据磁盘。 请注意，不能压缩已预配的磁盘。 尝试收缩磁盘会导致设备上的所有本地数据丢失。 
+16. 在“自定义设置”页上，将“CPU”设置为 4，将“内存”设置为  8192 MB（或更高），将“硬盘 1”设置为 2 TB（或更高）。 选择要添加的 **SCSI 硬盘**。 本例中为“LSI 逻辑 SAS”。 **静态 IDE 磁盘不受支持。** “硬盘 1”为虚拟数据磁盘。 请注意，不能压缩已预配的磁盘。 尝试收缩磁盘会导致设备上的所有本地数据丢失。 
 
     ![“自定义设置”页](./media/data-box-gateway-deploy-provision-vmware/image13.png)
 
-    在同一页上单击“添加硬盘”，然后选择“现有硬盘”。 在数据存储中选择 VMDK 文件。 这将添加 OS 磁盘。 
+    在同一页上单击“添加硬盘”，然后选择“现有硬盘”。  在数据存储中选择 VMDK 文件。 这将添加 OS 磁盘。 
 
-     !“自定义设置”页[](./media/data-box-gateway-deploy-provision-vmware/image14.png)
+     ![“自定义设置”页](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
-    向下滚动，直到看到“新建硬盘”，然后将其展开以查看设置。 将“虚拟设备节点”设置为“IDE 控制器 0”。
+    向下滚动，直到看到“新建硬盘”，然后将其展开以查看设置。 将“虚拟设备节点”设置为“IDE 控制器 0”。 
 
      ![“自定义设置”页](./media/data-box-gateway-deploy-provision-vmware/image15.png)
 
-17. （可选）只有在运行 VMware ESXi Server 6.7 的情况下，才执行此步骤。 在“自定义设置”页中，单击“VM 选项”。 转到“启动选项”>“固件”，将其更改为“BIOS”。 默认情况下，该值设置为 EFI。 单击“下一步”。
+17. （可选）只有在运行 VMware ESXi Server 6.7 的情况下，才执行此步骤。 在“自定义设置”页中，单击“VM 选项”。  转到“启动选项”>“固件”，将其更改为“BIOS”。  默认情况下，该值设置为 EFI。 单击“下一步”。
 
     ![如果运行 VMware ESXi Server 6.7，则为“自定义设置”页](./media/data-box-gateway-deploy-provision-vmware/image15a.png)
 
@@ -174,11 +174,11 @@ ms.locfileid: "58517771"
 执行以下步骤，启动虚拟设备并与其进行连接。
 
 #### <a name="to-start-the-virtual-device"></a>启动虚拟设备
-1. 启动虚拟设备。 在右窗格的 VM 列表中选择设备，然后右键单击以显示上下文菜单。 选择“电源”，并选择“启动”。 此时会启动虚拟机。 可以在 Web 客户端的底部窗格中查看状态。
+1. 启动虚拟设备。 在右窗格的 VM 列表中选择设备，然后右键单击以显示上下文菜单。 选择“电源”，并选择“启动”。  此时会启动虚拟机。 可以在 Web 客户端的底部窗格中查看状态。
 
     ![虚拟设备上的电源](./media/data-box-gateway-deploy-provision-vmware/image19.png)
 
-2. 请再一次选择 VM。 右键单击并选择“控制台”，然后选择“在新窗口中打开”。
+2. 请再一次选择 VM。 右键单击并选择“控制台”，然后选择“在新窗口中打开”。 
 
     ![打开虚拟设备控制台](./media/data-box-gateway-deploy-provision-vmware/image20.png)
 

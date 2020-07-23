@@ -1,26 +1,20 @@
 ---
-title: 在 Azure 门户中自动缩放虚拟机规模集 | Microsoft Docs
+title: 在 Azure 门户中自动缩放虚拟机规模集
 description: 如何在 Azure 门户中为虚拟机规模集创建自动缩放规则
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 88886cad-a2f0-46bc-8b58-32ac2189fc93
-ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
+ms:service: virtual-machine-scale-sets
+ms.subservice: autoscale
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: 648bc0295cd5435e9c3e44f33b7ae80522fa8e0e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.reviewer: avverma
+ms.custom: avverma
+ms.openlocfilehash: cfbd5af7063a4764820b5ce892a9a2b8a305b1b7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60618784"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494932"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>在 Azure 门户中自动缩放虚拟机规模集
 创建规模集时，可定义想运行的 VM 实例数。 若应用程序需要更改，可自动增加或减少 VM 实例数。 通过自动缩放功能，可随客户需求的改变而进行调整，或在应用的整个生命周期内响应应用程序性能更改。
@@ -28,12 +22,12 @@ ms.locfileid: "60618784"
 本文演示如何在 Azure 门户中创建自动缩放规则，以监视规模集中 VM 实例的性能。 这些缩放规则根据性能指标增加或减少 VM 实例数。 也可使用 [Azure PowerShell](tutorial-autoscale-powershell.md) 或 [Azure CLI](tutorial-autoscale-cli.md) 完成这些步骤。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 需要现有虚拟机规模集，才能创建自动缩放规则。 可使用 [Azure 门户](quick-create-portal.md)、[Azure PowerShell](quick-create-powershell.md) 或 [Azure CLI](quick-create-cli.md) 创建规模集。
 
 
 ## <a name="create-a-rule-to-automatically-scale-out"></a>创建规则，以便自动横向扩展
-如果应用程序需求提高，规模集中 VM 实例上的负载将会增大。 如果这种负载增大持续稳定，而不只是短暂的需求，那么可以配置自动缩放规则来增加规模集中的 VM 实例数。 创建这些 VM 实例及部署应用程序后，规模集会开始通过负载均衡器将流量分配到这些实例和应用程序。 可以控制要监视的指标（例如 CPU 或磁盘）、应用程序负载必须处于给定阈值内的时间，以及要添加到规模集的 VM 实例数。
+如果应用程序需求提高，规模集中 VM 实例上的负载将会增大。 如果这种负载增大持续稳定，而不只是短暂的需求，那么可以配置自动缩放规则来增加规模集中的 VM 实例数。 创建这些 VM 实例并部署应用程序后，规模集会开始通过负载均衡器将流量分配到这些实例和应用程序。 可以控制要监视的指标（例如 CPU 或磁盘）、应用程序负载必须处于给定阈值内的时间，以及要添加到规模集的 VM 实例数。
 
 1. 打开 Azure 门户，然后在仪表板的左侧菜单中选择“资源组”。
 2. 选择包含其规模集的资源组，然后从资源列表中选择该规模集。
@@ -43,7 +37,7 @@ ms.locfileid: "60618784"
 
 4. 为设置输入名称（例如“自动缩放”），然后选择“添加规则”选项。
 
-5. 当平均 CPU 负载在十分钟内均超过 70% 时，请创建规则以增加规模集中的 VM 实例数。 触发规则时，VM 实例数增加 20%。 在 VM 实例数较少的规模集中，可将“操作”设置为“增加计数”，然后指定 1 或 2 作为实例计数。 在有大量 VM 实例的规模集中，增加 10% 或 20% 的 VM 实例可能更合适。
+5. 当平均 CPU 负载在十分钟内均超过 70% 时，请创建规则以增加规模集中的 VM 实例数。 触发规则时，VM 实例数增加 20%。 在 VM 实例数较少的规模集中，可将“操作”设置为“增加计数”，然后指定 1 或 2 作为实例计数   。 在有大量 VM 实例的规模集中，增加 10% 或 20% 的 VM 实例可能更合适。
 
     为规则指定以下设置：
     
@@ -52,9 +46,9 @@ ms.locfileid: "60618784"
     | 时间聚合     | 定义如何聚合已收集的指标以便分析。                                                | 平均值        |
     | 指标名称          | 监视和应用规模集操作的性能指标。                                                   | CPU 百分比 |
     | 时间粒度统计信息 | 定义如何聚合每个时间粒度中收集的指标，以便进行分析。                             | 平均值        |
-    | 运算符             | 用于比较指标数据和阈值的运算符。                                                     | 大于   |
+    | *“运算符”*             | 用于比较指标数据和阈值的运算符。                                                     | 大于   |
     | *阈值*            | 使自动缩放规则触发操作的百分比。                                                 | 70             |
-    | *持续时间*             | 比较指标与阈值之前监视的时长。                                   | 10 分钟     |
+    | *Duration*             | 比较指标与阈值之前监视的时长。                                   | 10 分钟     |
     | *操作*            | 定义应用规则时应纵向扩展还是缩减规模集，以及扩展或缩减的量                        | 增加百分比 |
     | *实例计数*       | 规则触发时，应更改 VM 实例的百分比。                                            | 20             |
     | 冷却（分钟）  | 为使自动缩放操作有时间生效，再次应用规则前需要等待的时间。 | 5 分钟      |
@@ -76,7 +70,7 @@ ms.locfileid: "60618784"
     
     | 参数              | 说明                                                                                                          | 值          |
     |------------------------|----------------------------------------------------------------------------------------------------------------------|----------------|
-    | 运算符             | 用于比较指标数据和阈值的运算符。                                                      | 小于   |
+    | *“运算符”*             | 用于比较指标数据和阈值的运算符。                                                      | 小于   |
     | *阈值*            | 使自动缩放规则触发操作的百分比。                                                 | 30             |
     | *操作*            | 定义应用规则时应纵向扩展还是缩减规模集，以及扩展或缩减的量                         | 降低百分比 |
     | *实例计数*       | 规则触发时，应更改 VM 实例的百分比。                                             | 20             |
@@ -85,7 +79,7 @@ ms.locfileid: "60618784"
 
 
 ## <a name="define-autoscale-instance-limits"></a>定义自动缩放实例限制
-自动缩放文件必须定义最小、最大和默认的 VM 实例数。 应用自动缩放规则时，这些实例限制可确保不会横向扩展到最大实例数以外，或缩减到最小实例数以内。
+自动缩放文件必须定义最小、最大和默认的 VM 实例数。 应用自动缩放规则时，这些实例限制可确保不会横向扩展到最大实例数以外，或横向缩减到最小实例数以内。
 
 1. 设置以下实例限制：
 
@@ -97,13 +91,13 @@ ms.locfileid: "60618784"
 
 
 ## <a name="monitor-number-of-instances-in-a-scale-set"></a>监视规模集中的实例数
-若要查看 VM 实例的数量和状态，请在规模集窗口的左侧菜单中选择“实例”。 状态指示是随规模集自动横向扩展而创建 VM 实例，还是随规模集自动缩减而删除 VM 实例。
+若要查看 VM 实例的数量和状态，请在规模集窗口的左侧菜单中选择“实例”。 状态指示是随规模集自动横向扩展而创建 VM 实例，还是随规模集自动缩减而删除 VM 实例 。
 
 ![查看规模集 VM 实例的列表](media/virtual-machine-scale-sets-autoscale-portal/view-instances.png)
 
 
 ## <a name="autoscale-based-on-a-schedule"></a>按计划自动缩放
-前述示例通过 CPU 使用情况等基本主机指标自动横向扩展或缩减规模集。 还可以根据计划创建自动缩放规则。 通过这些基于计划的规则，可在应用程序需求按预期增加（如核心工作时间）之前自动增加 VM 实例数，在预期需求减少时（例如周末）自动减少实例数。
+前述示例通过 CPU 使用情况等基本主机指标自动横向扩展或缩减规模集。 还可以根据计划创建自动缩放规则。 通过这些基于计划的规则，可在应用程序需求按预期增加（如核心工作时间）之前自动横向扩展 VM 实例数，在预期需求减少时（例如周末）自动横向缩减实例数。
 
 1. 在规模集窗口的左侧菜单中，选择“缩放”。 若要删除以前示例中创建的现有自动缩放规则，请选择回收站图标。
 
@@ -115,20 +109,20 @@ ms.locfileid: "60618784"
 
 3. 选择“单选按钮”，缩放到特定的实例计数。
 4. 若要纵向扩展实例数，请输入“10”作为实例计数。
-5. 为计划类型选择“在特定日期重复”。
+5. 为计划类型选择“在特定日期重复” 。
 6. 选择所有工作日，即星期一到星期五。
 7. 选择适当的时区，然后将“开始时间”指定为“09:00”。
-8. 再次选择“添加缩放条件”。 重复此过程，创建名为“在夜间横向缩减”的计划，该计划在每天 18:00 开始将规模集缩减到 3 个实例。
+8. 再次选择“添加缩放条件”。 重复此过程，创建名为“在夜间横向缩减”的计划，该计划在每天 18:00 开始将规模集缩减到 3 个实例  。
 9. 若要应用基于计划的自动缩放规则，请选择“保存”。
 
     ![创建按计划进行缩放的自动缩放规则](media/virtual-machine-scale-sets-autoscale-portal/schedule-autoscale.PNG)
 
-若要查看如何应用自动缩放规则，请通过顶部的缩放窗口选择“运行历史记录”。 图和事件列表显示触发自动缩放规则的时间和规模集中增加或减少的 VM 实例数。
+若要查看如何应用自动缩放规则，请通过顶部的缩放窗口选择“运行历史记录” 。 图和事件列表显示触发自动缩放规则的时间和规模集中增加或减少的 VM 实例数。
 
 
 ## <a name="next-steps"></a>后续步骤
 本文详细介绍了如何使用自动缩放规则来进行横向缩放，即增加或减少规模集中的 VM 实例数。 还可进行纵向缩放，即增大或减小 VM 实例的大小。 有关详细信息，请参阅[虚拟机规模集的纵向自动缩放](virtual-machine-scale-sets-vertical-scale-reprovision.md)。
 
-有关如何管理 VM 实例的信息，请参阅[使用 Azure PowerShell 管理虚拟机规模集](virtual-machine-scale-sets-windows-manage.md)。
+有关如何管理 VM 实例的信息，请参阅[使用 Azure PowerShell 管理虚拟机规模集](./virtual-machine-scale-sets-manage-powershell.md)。
 
-若要了解如何在触发自动缩放规则时生成警报，请参阅[在 Azure Monitor 中使用自动缩放操作发送电子邮件和 Webhook 警报通知](../azure-monitor/platform/autoscale-webhook-email.md)。 还可以[在 Azure Monitor 中使用审核日志发送电子邮件和 Webhook 警报通知](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)。
+若要了解如何在触发自动缩放规则时生成警报，请参阅[在 Azure Monitor 中使用自动缩放操作发送电子邮件和 Webhook 警报通知](../azure-monitor/platform/autoscale-webhook-email.md)。 还可以[在 Azure Monitor 中使用审核日志发送电子邮件和 Webhook 警报通知](../azure-monitor/platform/alerts-log-webhook.md)。

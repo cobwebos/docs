@@ -1,29 +1,21 @@
 ---
-title: 在 Azure 中采用 Linux VM 上的策略强制执行安全措施 | Microsoft Docs
-description: 如何将策略应用到 Azure 资源管理器 Linux 虚拟机
-services: virtual-machines-linux
-documentationcenter: ''
-author: singhkays
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 06778ab4-f8ff-4eed-ae10-26a276fc3faa
+title: 在 Azure 中的 Linux VM 上通过策略强制执行安全措施
+description: 如何向 Azure Resource Manager Linux 虚拟机应用策略
+author: mimckitt
 ms.service: virtual-machines-linux
+ms.subservice: security
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
-ms.author: kasing
-ms.openlocfilehash: 92aa81281c8b0a6accdcc7b76afefe4fef0488ef
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
-ms.translationtype: MT
+ms.author: mimckitt
+ms.openlocfilehash: 6eb571ccc8c996a06d3bdf2dda25860df4dc930f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65966184"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81759370"
 ---
 # <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>使用 Azure 资源管理器向 Linux VM 应用策略
-通过使用策略，组织可以在整个企业中强制实施各种约定和规则。 强制实施所需行为有助于消除风险，同时为组织的成功做出贡献。 本文将介绍如何使用 Azure 资源管理器策略，为组织中的虚拟机定义相应行为。
+通过使用策略，组织可以在整个企业中强制实施各种约定和规则。 强制实施所需行为有助于消除风险，同时为组织的成功做出贡献。 本文介绍如何使用 Azure 资源管理器策略，为组织中的虚拟机定义所需的行为。
 
 有关策略的简介，请参阅[什么是 Azure Policy？](../../governance/policy/overview.md)。
 
@@ -89,7 +81,7 @@ ms.locfileid: "65966184"
 }
 ```
 
-若要了解策略字段，请参阅[策略别名](../../governance/policy/concepts/definition-structure.md#aliases)。
+有关策略字段的信息，请参阅[策略别名](../../governance/policy/concepts/definition-structure.md#aliases)。
 
 ## <a name="managed-disks"></a>托管磁盘
 
@@ -141,7 +133,7 @@ ms.locfileid: "65966184"
 
 ## <a name="images-for-virtual-machines"></a>虚拟机映像
 
-出于安全考虑，可要求在环境中部署仅已批准的自定义映像。 可以指定包含已批准映像的资源组，或特定已批准映像。
+出于安全考虑，可要求仅在环境中部署已批准的自定义映像。 可以指定包含已批准映像的资源组，或特定已批准映像。
 
 下例需要来自已批准资源组的映像：
 
@@ -181,7 +173,7 @@ ms.locfileid: "65966184"
 
 ## <a name="virtual-machine-extensions"></a>虚拟机扩展
 
-建议禁止某些扩展类型的使用情况。 例如，扩展名可能与某些自定义虚拟机映像不兼容。 下例演示如何阻止特定扩展。 该示例使用发布者和类型来确定要阻止的扩展。
+可能想要禁止使用某些类型的扩展。 例如，扩展名可能与某些自定义虚拟机映像不兼容。 下例演示如何阻止特定扩展。 该示例使用发布者和类型来确定要阻止的扩展。
 
 ```json
 {

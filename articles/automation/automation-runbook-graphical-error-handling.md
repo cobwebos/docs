@@ -1,77 +1,68 @@
 ---
-title: Azure 自动化图形 Runbook 中的错误处理
-description: 本文介绍如何在 Azure 自动化图形 Runbook 中实现错误处理逻辑。
+title: 处理 Azure 自动化图形 Runbook 中的错误
+description: 本文介绍如何在图形 Runbook 中实现错误处理逻辑。
 services: automation
-documentationcenter: ''
-author: yunan2016
-manager: digimobile
-editor: tysonn
-ms.assetid: ''
-ms.service: automation
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-origin.date: 03/16/2018
-ms.date: 05/14/2018
-ms.author: v-nany
-ms.openlocfilehash: d7fe38334b71334d4dae9235643117efdf5fbd5d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.subservice: process-automation
+ms.date: 03/16/2018
+ms.topic: conceptual
+ms.openlocfilehash: 8af64f2189625bcff5271855d6c0102551d1a535
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61233036"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185953"
 ---
-# <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure 自动化图形 Runbook 中的错误处理
+# <a name="handle-errors-in-graphical-runbooks"></a>处理图形 Runbook 中的错误
 
-需要考虑的 Runbook 设计关键原则是确定 Runbook 可能会遇到的不同情况。 这些情况可能包括：成功、预计的错误状态，以及意外的错误条件。
+对于 Azure 自动化图形 Runbook，需要考虑的一个关键设计原则是识别 Runbook 在执行期间可能会遇到的问题。 这些情况可能包括：成功、预计的错误状态，以及意外的错误条件。
 
-Runbook 应包含错误处理。 若要通过图形 Runbook 来验证活动的输出或处理错误，可以使用 Windows PowerShell 代码活动、针对活动的输出链接定义条件逻辑，或者应用另一方法。          
+通常情况下，如果 Runbook 活动出现的是非终止错误，则 Windows PowerShell 会无视该错误，并继续处理该活动以及后续的任何活动。 该错误可能会生成异常，但下一活动仍允许运行。
 
-通常情况下，如果某个 Runbook 活动出现了非终止性错误，系统会无视错误，继续执行后续的任何活动。 该错误可能会生成异常，但下一活动仍允许运行。 PowerShell 这样处理错误是设计使然。    
+图形 Runbook 应包含错误处理代码来处理执行问题。 若要验证某个活动的输出或对错误进行处理，可以使用 PowerShell 代码活动，对活动的输出链接定义条件逻辑，或者应用其他方法。
 
-在执行期间可能发生的 PowerShell 错误类型包括终止性错误或非终止性错误。 终止性和非终止性错误的区别如下：
+Azure 自动化图形 Runbook 在改进后可以进行错误处理。 用户现在可以将例外变成非终止性错误，并在活动之间创建错误链接。 这一经过改进的过程使 Runbook 可以捕获错误，并管理意料内或意料外的情况。 
 
-* **终止性错误**：执行期间发生的严重错误，会完全停止命令（或脚本执行）。 例子包括：cmdlet 不存在、阻止某个 cmdlet 运行的语法错误，或其他严重错误。
+## <a name="powershell-error-types"></a>PowerShell 错误类型
 
-* **非终止性错误**：非严重性错误，尽管失败，但允许继续执行。 例子包括：“找不到文件”之类的操作错误、权限问题。
+Runbook 执行期间可能会发生的 PowerShell 错误的类型为终止性错误和非终止性错误。
+ 
+### <a name="terminating-error"></a>终止性错误
 
-Azure 自动化图形 Runbook 在改进后可以进行错误处理。 用户现在可以将例外变成非终止性错误，并在活动之间创建错误链接。 通过这样一个过程，Runbook 创作者便可以捕获错误，以及管理意料内或意料外的情况。  
+终止性错误是执行期间发生的严重错误，该错误会导致命令或脚本的执行完全停止。 示例包括：cmdlet 不存在、阻止某个 cmdlet 运行的语法错误，以及其他灾难性错误。
+
+### <a name="non-terminating-error"></a>非终止性错误
+
+非终止性错误是不严重的错误，尽管出现错误状况，但允许继续执行。 示例包括：“找不到文件”之类的操作错误、权限问题。
 
 ## <a name="when-to-use-error-handling"></a>何时使用错误处理
 
-每当关键活动引发错误或异常时，必须阻止 Runbook 中下一活动的继续执行，并对错误进行相应处理。 当 Runbook 在为业务过程或服务运营过程提供支持时，特别有必要采取此措施。
+当关键活动引发错误或异常时，可使用 Runbook 中的错误处理。 必须禁止处理 Runbook 中的下一个活动，并适当地处理错误。 当 Runbook 在为业务过程或服务运营过程提供支持时，处理错误尤其重要。
 
-对于可能会生成错误的每个活动，Runbook 创作者可以添加指向其他任何活动的错误链接。 目标活动可属于任何类型，包括：代码活动、调用 cmdlet、调用另一个 Runbook，等等。
+## <a name="add-error-links"></a>添加错误链接
 
-此外，目标活动还可以有传出链接。 这些链接可以是常规链接，也可以是错误链接。 这意味着，Runbook 创作者可以在不求助于代码活动的情况下，实现复杂的错误处理逻辑。 建议的做法是创建具有常用功能的专用错误处理 Runbook，但这不是必需的。 在 PowerShell 代码活动中实现错误处理逻辑不是唯一选项。  
+对于可能会生成错误的每个活动，可以添加指向其他任何活动的错误链接。 目标活动可属于任何类型，包括代码活动、调用 cmdlet、调用另一个 Runbook，等等。 目标活动还可以包含传出链接（常规链接或错误链接）。 这些链接可让 Runbook 在不求助于代码活动的情况下，实现复杂的错误处理逻辑。
 
-例如，有一个 Runbook 尝试启动 VM 并在其上安装应用程序。 VM 在未正确启动的情况下，会执行两项操作：
+建议的做法是创建具有常用功能的专用错误处理 Runbook，但这种做法不是必需的。 例如，有一个 Runbook 尝试启动虚拟机并在其上安装应用程序。 如果 VM 无法正常启动，将会：
 
 1. 发送有关此问题的通知。
 2. 改为启动另一个 Runbook 来自动预配新的 VM。
 
-一种解决方案是让一个错误链接指向处理步骤一操作的活动。 例如，可以将 **Write-Warning** cmdlet 连接到步骤二的一个活动，例如 **Start-AzureRmAutomationRunbook** cmdlet。
+一种解决方案是让 Runbook 中的一个错误链接指向处理步骤 1 的活动。 例如，Runbook 可以将 `Write-Warning` cmdlet 连接到步骤 2 的活动（如 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) cmdlet）。
 
-还可以通用化此行为，使其能够在多个 Runbook 中使用，只需将这两个活动放在单独的错误处理 Runbook 中，并遵循前面提供的指导即可。 在调用此错误处理 Runbook 之前，可以根据原始 Runbook 中的数据构造自定义消息，并将此消息作为参数传递给错误处理 Runbook。
+还可以通过将这两个活动放在单独的错误处理 Runbook 中，来通用化此行为，以便在许多 Runbook 中使用。 在原始 Runbook 调用此错误处理 Runbook 之前，原始 Runbook 可以基于其数据构造自定义消息，然后将其作为参数传递给错误处理 Runbook。
 
-## <a name="how-to-use-error-handling"></a>如何使用错误处理
+## <a name="turn-exceptions-into-non-terminating-errors"></a>将异常转换为非终止性错误
 
-在每个活动中，有一项配置设置可将异常转化为非终止性错误。 此设置默认已禁用。 在需要处理错误的任何活动中，建议启用此设置。  
+Runbook 中的每个活动都有一项可将异常转化为非终止性错误的配置设置。 此设置默认已禁用。 对于 Runbook 要为其处理错误的任何活动，我们均建议启用此设置。 此设置可确保 Runbook 使用错误链接将活动中的终止性错误和非终止性错误作为非终止性错误进行处理。  
 
-启用此配置可确保将活动中的终止性和非终止性错误作为非终止性错误进行处理，并可使用错误链接进行处理。  
+启用该配置设置后，请让 Runbook 创建一个处理错误的活动。 如果该活动生成了任何错误，将会打开传出错误链接。 不会打开常规链接，即使活动也生成了常规输出。<br><br> ![自动化 Runbook 错误链接示例](media/automation-runbook-graphical-error-handling/error-link-example.png)
 
-配置此设置后，请创建用于处理该错误的活动。 如果某个活动生成了任何错误，会遵循传出错误链接，但不遵循常规链接，即使活动同时生成了常规输出。<br><br> ![自动化 Runbook 错误链接示例](media/automation-runbook-graphical-error-handling/error-link-example.png)
+在以下示例中，一个 Runbook 检索了一个包含 VM 的计算机名称的变量。 然后，它尝试使用下一个活动启动该 VM。<br><br> ![自动化 Runbook 错误处理示例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
 
-在以下示例中，一个 Runbook 检索的变量包含虚拟机的计算机名称。 然后，该 Runbook 尝试使用下一活动启动虚拟机。<br><br> ![自动化 Runbook 错误处理示例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
+`Get-AutomationVariable` 活动和 [Start-AzVM](/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) cmdlet 已配置为将异常转换为错误。 如果获取变量或启动 VM 时出现问题，代码会生成错误。<br><br> ![自动化 Runbook 错误处理活动设置](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)。
 
-**Get-AutomationVariable** 活动和 **Start-AzureRmVm** 已配置为将异常转换为错误。 如果在获取变量或启动 VM 时出现问题，会生成错误。<br><br> ![自动化 Runbook 错误处理活动设置](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)
-
-错误链接从这些活动流向单个“错误管理”活动（代码活动）。 该活动是通过使用 *Throw* 关键字的简单 PowerShell 表达式（用于停止处理）以及 *$Error.Exception.Message*（用于获取描述当前异常的消息）配置的。<br><br> ![自动化 Runbook 错误处理代码示例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
-
+错误链接从这些活动流向单个 `error management` 代码活动。 此活动是通过使用 `throw` 关键字的简单 PowerShell 表达式（用于停止处理）以及 `$Error.Exception.Message`（用于获取描述当前异常的消息）配置的。<br><br> ![自动化 Runbook 错误处理代码示例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解图形 Runbook 中的链接和链接类型，请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md#links-and-workflow)。
-
-* 若要详细了解 Runbook 执行方式、如何监视 Runbook 作业和其他技术详细信息，请参阅[跟踪 Runbook 作业](automation-runbook-execution.md)。
+* 有关解决图形 Runbook 错误的信息，请参阅[排查 Runbook 问题](troubleshoot/runbooks.md)。

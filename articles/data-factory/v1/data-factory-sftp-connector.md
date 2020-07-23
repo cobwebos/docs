@@ -1,26 +1,25 @@
 ---
-title: 使用 Azure 数据工厂从 SFTP 服务器移动数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 SFTP 服务器移动数据
 description: 了解如何使用 Azure 数据工厂从本地或云 SFTP 服务器移动数据。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fe253feca6a22ee0177082e178f897c5b634bb3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3f78934fb11dd4f9e34bf27d565d471d47f250b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61257182"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847679"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>使用 Azure 数据工厂从 SFTP 服务器移动数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-sftp-connector.md)
 > * [版本 2（当前版本）](../connector-sftp.md)
 
@@ -42,29 +41,29 @@ ms.locfileid: "61257182"
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从 SFTP 源移动数据。
 
-- 创建管道的最简单方法是使用  复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+- 创建管道的最简单方法是使用**** 复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-- 还可以使用以下工具来创建管道：Azure 门户  、Visual Studio  、Azure PowerShell  、Azure 资源管理器模板  、.NET API  和 REST API  。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 有关将数据从 SFTP 服务器复制到 Azure Blob 存储的 JSON 示例，请参阅本文的 [JSON 示例：将数据从 SFTP 服务器复制到 Azure Blob](#json-example-copy-data-from-sftp-server-to-azure-blob) 部分。
+- 你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API**和**REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 有关将数据从 SFTP 服务器复制到 Azure Blob 存储的 JSON 示例，请参阅本文的 [JSON 示例：将数据从 SFTP 服务器复制到 Azure Blob](#json-example-copy-data-from-sftp-server-to-azure-blob) 部分。
 
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供 FTP 链接服务专属的 JSON 元素描述。
 
-| 属性 | 说明 | 必选 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | type | type 属性必须设置为 `Sftp`。 |是 |
 | host | SFTP 服务器的名称或 IP 地址。 |是 |
-| port |SFTP 服务器侦听的端口。 默认值为：21 |否 |
+| port |SFTP 服务器侦听的端口。 默认值为 21 |否 |
 | authenticationType |指定身份验证类型。 允许的值：**Basic**、**SshPublicKey**。 <br><br> 有关其他属性和 JSON 示例，请分别参阅[使用基本身份验证](#using-basic-authentication)和[使用 SSH 公钥身份验证](#using-ssh-public-key-authentication)部分。 |是 |
-| skipHostKeyValidation | 指定是否要跳过主机密钥验证。 | 不。 默认值：false |
+| skipHostKeyValidation | 指定是否要跳过主机密钥验证。 | 不能。 默认值：false |
 | hostKeyFingerprint | 指定主机密钥的指纹。 | `skipHostKeyValidation` 设置为 false 时表示 Yes。  |
 | gatewayName |用于连接本地 SFTP 服务器的数据管理网关的名称。 | 如果从本地 SFTP 服务器复制数据，则值为 Yes。 |
-| encryptedCredential | 访问 SFTP 服务器的加密凭据 在复制向导或 ClickOnce 弹出对话框中指定基本身份验证（用户名 + 密码）或 SshPublicKey 身份验证（用户名 + 私钥路径或内容）时自动生成。 | 不。 仅当从本地 SFTP 服务器复制数据时才适用。 |
+| encryptedCredential | 访问 SFTP 服务器的加密凭据 在复制向导或 ClickOnce 弹出对话框中指定基本身份验证（用户名 + 密码）或 SshPublicKey 身份验证（用户名 + 私钥路径或内容）时自动生成。 | 不能。 仅当从本地 SFTP 服务器复制数据时才适用。 |
 
 ### <a name="using-basic-authentication"></a>使用基本身份验证
 
 要使用基本身份验证，请将 `authenticationType` 设置为 `Basic`，并指定除上一部分所述 SFTP 连接器泛型属性以外的下列属性：
 
-| 属性 | 说明 | 需要 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | username | 有权访问 SFTP 服务器的用户。 |是 |
 | password | 用户 (username) 的密码。 | 是 |
@@ -89,7 +88,7 @@ ms.locfileid: "61257182"
 }
 ```
 
-#### <a name="example-basic-authentication-with-encrypted-credential"></a>示例：使用加密凭据的基本身份验证
+#### <a name="example-basic-authentication-with-encrypted-credential"></a>示例：使用包含加密凭据的基本身份验证
 
 ```JSON
 {
@@ -114,7 +113,7 @@ ms.locfileid: "61257182"
 
 若要使用 SSH 公钥身份验证，请将 `authenticationType` 设置为`SshPublicKey`，并且除上一部分所述 SFTP 连接器泛型属性外，还需指定下列属性：
 
-| 属性 | 说明 | 需要 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | username |有权访问 SFTP 服务器的用户 |是 |
 | privateKeyPath | 指定网关可以访问的私钥文件的绝对路径。 | 指定 `privateKeyPath` 或 `privateKeyContent`。 <br><br> 仅当从本地 SFTP 服务器复制数据时才适用。 |
@@ -124,7 +123,7 @@ ms.locfileid: "61257182"
 > [!NOTE]
 > SFTP 连接器支持 RSA/DSA OpenSSH 密钥。 请确保密钥文件内容以“-----BEGIN [RSA/DSA] PRIVATE KEY-----”开头。 如果私钥文件是 ppk 格式文件，请使用 Putty 工具从 .ppk 转换为 OpenSSH 格式。
 
-#### <a name="example-sshpublickey-authentication-using-private-key-filepath"></a>示例：使用私钥文件路径进行 SshPublicKey 身份验证
+#### <a name="example-sshpublickey-authentication-using-private-key-filepath"></a>示例：使用私钥 filePath 进行 SshPublicKey 身份验证
 
 ```json
 {
@@ -170,15 +169,15 @@ ms.locfileid: "61257182"
 
 每个数据集类型的 **typeProperties** 节都不同。 它提供特定于数据集类型的信息。 **FileShare** 数据集类型的 typeProperties 节具有以下属性：
 
-| 属性 | 说明 | 需要 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | folderPath |文件夹的子路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅“链接服务和数据集定义示例”。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
-| fileName |如果希望表引用文件夹中的特定文件，请在 **folderPath** 中指定文件名。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
+| fileName |指定 **folderPath** 中的文件的名称（如果你想要引用该文件夹中的特定文件）。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（示例： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
 | fileFilter |指定在 folderPath 中选择一部分文件而不是所有文件时要使用的筛选器。<br/><br/>允许的值为：`*`（多个字符）和 `?`（单个字符）。<br/><br/>示例 1：`"fileFilter": "*.log"`<br/>示例 2：`"fileFilter": 2014-1-?.txt"`<br/><br/> fileFilter 适用于 FileShare 输入数据集。 HDFS 不支持此属性。 |否 |
 | partitionedBy |partitionedBy 可用于指定时序数据的动态 folderPath 和 filename。 例如，folderPath 可针对每小时的数据参数化。 |否 |
-| format | 支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat      。 请将格式中的“type”属性设置为上述值之一  。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
-| compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：“最佳”和“最快”   。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
-| useBinaryTransfer |指定是否使用二进制传输模式。 使用二进制模式时为 true，使用 ASCII 时为 false。 默认值：True。 仅当关联的链接服务为以下类型时，才可以使用此属性：FtpServer。 |否 |
+| format | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
+| compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：“最佳”和“最快” 。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
+| useBinaryTransfer |指定是否使用二进制传输模式。 使用二进制模式时为 true，使用 ASCII 时为 false。 默认值：True。 仅当关联的链接服务类型为 FtpServer 时，才可以使用此属性。 |否 |
 
 > [!NOTE]
 > filename 和 fileFilter 不能同时使用。
@@ -225,7 +224,7 @@ ms.locfileid: "61257182"
 请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)一文了解详细信息。
 
 ## <a name="json-example-copy-data-from-sftp-server-to-azure-blob"></a>JSON 示例：将数据从 SFTP 服务器复制到 Azure Blob
-以下示例提供示例 JSON 定义，可使用该定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它们演示了如何将数据从 SFTP 源复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据**直接**从任何源复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
+下面的示例提供示例 JSON 定义，可用于通过使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 它们演示了如何将数据从 SFTP 源复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据**直接**从任何源复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
 
 > [!IMPORTANT]
 > 此示例提供 JSON 代码段。 它不包括创建数据工厂的分步说明。 请参阅文章[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)以获取分步说明。
@@ -233,9 +232,9 @@ ms.locfileid: "61257182"
 此示例具有以下数据工厂实体：
 
 * [sftp](#linked-service-properties) 类型的链接服务。
-* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
+* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)类型的链接服务。
 * [FileShare](#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
-* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
+* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)类型的输出[数据集](data-factory-create-datasets.md)。
 * 包含复制活动的[管道](data-factory-create-pipelines.md)，其使用 [FileSystemSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
 此示例每小时将数据从 SFTP 服务器复制到 Azure Blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
@@ -308,7 +307,7 @@ ms.locfileid: "61257182"
 
 **Azure Blob 输出数据集**
 
-数据每小时向新的 blob 写入一次（frequency：hour，interval：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
+数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```JSON
 {

@@ -4,7 +4,7 @@ description: 了解如何排查 Azure VM 间的连接问题。
 services: virtual-network
 documentationcenter: na
 author: chadmath
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-network
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: fc3d6ab1d7fdf05963d9ecd350deccd940a95b87
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 83841349ec7563231653cd063791e19ae2af4857
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61036251"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130678"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>排查 Azure VM 间的连接问题
 
@@ -81,13 +81,17 @@ Azure 虚拟机 (VM) 间可能出现连接问题。 本文提供解决此问题�
 
 **Windows VM**
 
-    netstat –ano
+```console
+netstat –ano
+```
 
 **Linux VM**
 
-    netstat -l
+```console
+netstat -l
+```
 
-- 对虚拟机本身运行 telnet 命令，测试端口。 如果测试失败，则应用程序或服务未配置为侦听该端口。
+- 对虚拟机本身运行 telnet 命令，测试端口  。 如果测试失败，则应用程序或服务未配置为侦听该端口。
 
 ### <a name="step-5-check-whether-the-problem-is-caused-by-snat"></a>步骤 5：检查问题是否由 SNAT 引起
 

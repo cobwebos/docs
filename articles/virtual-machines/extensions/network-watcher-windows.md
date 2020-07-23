@@ -1,26 +1,25 @@
 ---
-title: 适用于 Windows 的 Azure 网络观察程序代理虚拟机扩展 | Microsoft 文档
+title: 适用于 Windows 的 Azure 网络观察程序代理虚拟机扩展
 description: 使用虚拟机扩展在 Windows 虚拟机上部署网络观察程序代理。
 services: virtual-machines-windows
 documentationcenter: ''
-author: gurudennis
-manager: amku
+author: mimckitt
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 27e46af7-2150-45e8-b084-ba33de8c5e3f
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
-ms.author: dennisg
-ms.openlocfilehash: 6e02f5a5b42da9c99a08782903cdc05ee32ec9d4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: mimckitt
+ms.openlocfilehash: e78a18055d85e2105ea604d568c154c889ab0655
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60743320"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206017"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>适用于 Windows 的网络观察程序代理虚拟机扩展
 
@@ -29,13 +28,13 @@ ms.locfileid: "60743320"
 [Azure 网络观察程序](../../network-watcher/network-watcher-monitoring-overview.md)是一项网络性能监视、诊断和分析服务，可以对 Azure 网络进行监视。 网络观察程序代理虚拟机扩展是按需捕获网络流量和运行 Azure 虚拟机上的其他高级功能所必需的。
 
 
-本文档详细介绍适用于 Windows 的网络观察程序代理虚拟机扩展支持的平台和部署选项。 安装代理时不会中断，也不会需要重新启动虚拟机。 可以将扩展部署到所部署的虚拟机。 如果 Azure 服务部署了虚拟机，请查看该服务的文档以确定它是否允许在虚拟机中安装扩展。
+本文档详细介绍适用于 Windows 的网络观察程序代理虚拟机扩展支持的平台和部署选项。 安装代理时不会中断，也不会需要重新启动虚拟机。 可以将扩展部署到你部署的虚拟机中。 如果虚拟机由 Azure 服务部署，请查看该服务的文档以确定它是否允许在虚拟机中安装扩展。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
 
-可以在 Windows Server 2008 R2、2012、2012 R2 和 2016 版本中运行适用于 Windows 的网络观察程序代理扩展。 目前不支持 Nano Server。
+适用于 Windows 的网络观察程序代理扩展可以针对 Windows Server 2008 R2、2012、2012 R2、2016和2019版本运行。 目前不支持 Nano Server。
 
 ### <a name="internet-connectivity"></a>Internet 连接
 
@@ -68,7 +67,7 @@ ms.locfileid: "60743320"
 | 名称 | 值/示例 |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
-| 发布者 | Microsoft.Azure.NetworkWatcher |
+| publisher | Microsoft.Azure.NetworkWatcher |
 | type | NetworkWatcherAgentWindows |
 | typeHandlerVersion | 1.4 |
 
@@ -102,7 +101,7 @@ Set-AzVMExtension `
 Get-AzVMExtension -ResourceGroupName myResourceGroup1 -VMName myVM1 -Name networkWatcherAgent
 ```
 
-扩展执行输出将记录到在以下目录中发现的文件：
+扩展执行输出记录到在以下目录中发现的文件：
 
 ```cmd
 C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows\

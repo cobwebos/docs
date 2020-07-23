@@ -1,25 +1,18 @@
 ---
-title: 有关 Azure IaaS Windows VM 磁盘的常见问题解答 (FAQ) | Microsoft 文档
+title: 有关 Azure IaaS Windows VM 磁盘的常见问题
 description: 有关 Azure IaaS Windows VM 磁盘和高级磁盘（托管和非托管）的常见问题解答
-services: virtual-machines-windows
-documentationcenter: ''
 author: roygara
-manager: twooley
-editor: tysonn
-ms.assetid: e2a20625-6224-4187-8401-abadc8f1de91
 ms.service: virtual-machines-windows
-ms.workload: storage
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
-ms.date: 06/15/2017
+ms.workload: infrastructure
+ms.topic: conceptual
+ms.date: 08/15/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 81cdb0273f64bd70fc77a6e61007290bdd4627c5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 1b03037d65597314d910a899d43b6f395b97438b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64727460"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81869649"
 ---
+# <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 [!INCLUDE [virtual-machines-faq-for-disks](../../../includes/virtual-machines-faq-for-disks.md)]

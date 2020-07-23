@@ -1,10 +1,10 @@
 ---
-title: Azure PowerShell 脚本示例 - 为实现应用程序的高可用性路由流量 | Microsoft 文档
+title: 为实现应用程序的高可用性路由流量 - Azure PowerShell - 流量管理器
 description: Azure PowerShell 脚本示例 - 为实现应用程序的高可用性路由流量
 services: traffic-manager
 documentationcenter: traffic-manager
-author: KumudD
-manager: jeconnoc
+author: rohinkoul
+manager: kumudD
 editor: ''
 tags: azure-infrastructure
 ms.assetid: ''
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 04/26/2018
-ms.author: kumud
-ms.openlocfilehash: db84de194832180b8e153cf6aa7e6c9fab5e6d61
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: rohink
+ms.openlocfilehash: 3f448683dbb210ab196e27cfd98a376429d03aec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66147435"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76934734"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-powershell"></a>使用 Azure PowerShell 为实现应用程序的高可用性路由流量
 
@@ -49,7 +48,7 @@ Remove-AzResourceGroup -Name myResourceGroup2
 
 此脚本使用以下命令创建资源组、Web 应用、流量管理器配置文件和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)  | 创建用于存储所有资源的资源组。 |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | 创建应用服务计划。 这与 Azure Web 应用的服务器场类似。 |

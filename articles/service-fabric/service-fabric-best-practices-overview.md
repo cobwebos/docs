@@ -1,31 +1,22 @@
 ---
-title: Azure Service Fabric 应用程序和群集最佳做法 | Microsoft Docs
-description: 用于管理 Service Fabric 群集和应用程序的最佳做法。
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric 应用程序和群集最佳做法
+description: 使用 Azure Service Fabric 管理群集、应用和服务的最佳做法和设计注意事项。
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 04/24/2019
+ms.date: 06/18/2019
 ms.author: pepogors
-ms.openlocfilehash: 051d6b1129724ce4e8a67bde4e56ebe61cd832f3
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 86a02fd489ca0eec61b798db7136f963277f6c82
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231379"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261086"
 ---
 # <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Azure Service Fabric 应用程序和群集最佳做法
 
-若要成功管理 Azure Service Fabric 应用程序和群集，有一些我们强烈建议进行优化的生产环境; 可靠性所执行的操作请执行本文档中定义的操作，然后选择其中一个我们[Azure 示例 Service Fabric 群集模板](https://github.com/Azure-Samples/service-fabric-cluster-templates)开始设计你的生产解决方案或修改现有模板以合并这些做法。
+本文提供了有关管理 Azure Service Fabric 应用程序和群集的最佳做法的链接。 我们强烈建议你实施这些做法，以优化生产环境的可靠性。 使用 [Service Fabric 群集模板之一](https://github.com/Azure-Samples/service-fabric-cluster-templates)开始设计生产解决方案，或更新现有模板以纳入这些做法。
 
-## <a name="security"></a>安全 
+## <a name="security"></a>安全性
 
 * [安全性最佳做法](service-fabric-best-practices-security.md)
 
@@ -36,7 +27,7 @@ ms.locfileid: "65231379"
 ## <a name="compute-planning-and-scaling"></a>计算规划和缩放
 
 * [计算缩放最佳做法](service-fabric-best-practices-capacity-scaling.md)
-* [计算容量规划](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)
+* [计算容量规划](./service-fabric-cluster-capacity.md)
 
 ## <a name="infrastructure-as-code"></a>基础结构即代码
 
@@ -48,15 +39,15 @@ ms.locfileid: "65231379"
 
 ## <a name="application-design"></a>应用程序设计
 
-* [应用程序设计最佳实践](service-fabric-best-practices-applications.md)
+* [应用程序设计的最佳做法](service-fabric-best-practices-applications.md)
 
 ## <a name="checklist"></a>清单
 
-完成上面的所有部分后，请确保你已集成了生产就绪情况核对清单中的所有最佳做法：
-* [Azure Service Fabric 生产就绪情况核对清单](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)
+实施前面几节中建议的做法后，请确保已将所有最佳做法集成到生产就绪情况核对清单中：
+* [Azure Service Fabric 生产准备情况清单](./service-fabric-production-readiness-checklist.md)
 
 ## <a name="next-steps"></a>后续步骤
 
 * 在运行 Windows Server 的 VM 或计算机上创建群集：[创建适用于 Windows Server 的 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)
 * 在运行 Linux 的 VM 或计算机上创建群集：[创建 Linux 群集](service-fabric-cluster-creation-via-portal.md)
-* 故障排除：[Service Fabric 故障排除指南](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)
+* Service Fabric 故障排除：[故障排除指南](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)

@@ -1,180 +1,66 @@
 ---
-title: Fortinet 数据连接到 Azure Sentinel 预览版 |Microsoft Docs
-description: 了解如何连接到 Azure Sentinel Fortinet 数据。
+title: 将 Fortinet 数据连接到 Azure Sentinel |Microsoft Docs
+description: 将 Fortinet 设备连接到 Azure Sentinel 以查看仪表板、创建自定义警报和改进调查。 
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: add92907-0d7c-42b8-a773-f570f2d705ff
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
-ms.author: rkarlin
-ms.openlocfilehash: 4418b11de4da7c69dd13ae74d94be90daadcb1f6
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.date: 12/30/2019
+ms.author: yelevin
+ms.openlocfilehash: 8aa8599cbaab6af00d7b4122b94c9e24870881f3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390534"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511324"
 ---
-# <a name="connect-your-fortinet-appliance"></a>Fortinet 设备连接 
-
-> [!IMPORTANT]
-> Azure Sentinel 当前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-您可以连接 Azure Sentinel 到任何 Fortinet 设备通过将日志文件保存为 Syslog CEF。 与 Azure Sentinel 的集成，可轻松分析和查询所有日志文件数据从运行 Fortinet。 有关如何 Azure Sentinel 引入 CEF 数据的详细信息，请参阅[连接 CEF 设备](connect-common-event-format.md)。
-
-> [!NOTE]
-> - 数据将存储在其运行 Azure Sentinel 的工作区的地理位置。
-
-## <a name="step-1-connect-your-fortinet-appliance-using-an-agent"></a>步骤 1：连接使用一个代理将 Fortinet 设备
-
-若要连接到 Azure Sentinel Fortinet 设备，需要专用的计算机上部署代理 (VM 或本地) 以支持设备和 Azure Sentinel 之间的通信。 可以自动或手动部署代理。 仅当专用计算机是在 Azure 中创建的新 VM 时，才能进行自动部署。 
-
-或者，可以在现有的 Azure VM 上、在其他云中的 VM 上或者在本地计算机上手动部署代理。
-
-若要查看网络图的这两个选项，请参阅[数据源连接](connect-data-sources.md#agent-options)。
-
-### <a name="deploy-the-agent-in-azure"></a>部署在 Azure 中的代理
-
-1. 在 Azure Sentinel 门户中，单击**数据连接器**，然后选择你的设备类型。 
-
-1. 下**Linux Syslog 代理配置**:
-   - 选择**自动部署**如果你想要创建预装了 Azure Sentinel 代理，并包括所有配置必要的新计算机，如上文所述。 选择**自动部署**然后单击**自动将代理部署**。 这将转到购买页自动连接到工作区，是的专用 vm。 VM 处于**标准 D2s v3 （2 个 Vcpu，8 GB 内存）** 并且具有一个公共 IP 地址。
-      1. 在中**自定义部署**页上，提供你的详细信息和选择用户名和密码，如果你同意条款和条件，购买的 VM。
-      1. 配置你的设备，可使用连接页中列出的设置发送日志。 适用于通用的通用事件格式连接器，使用以下设置：
-         - 协议 = UDP
-         - 端口 = 514
-         - 设施 = 本地 4
-         - 格式 = CEF
-   - 选择**手动部署**如果想要使用现有的 VM 作为专用 Azure Sentinel 代理应安装到其上的 Linux 计算机。 
-      1. 下**下载并安装 Syslog 代理**，选择**Azure Linux 虚拟机**。 
-      1. 在中**虚拟机**屏幕上，此时会打开，选择你想要使用，并单击的机**Connect**。
-      1. 在连接器屏幕中下,**配置和转发的 Syslog**，将 Syslog 后台程序是否**rsyslog.d**或**syslog ng**。 
-      1. 将以下命令复制并在你的设备上运行它们：
-          - 如果选择了 rsyslog.d:
-              
-            1. 告诉 Syslog 守护程序以侦听设施 local_4 和将 Syslog 消息发送到 Azure Sentinel 代理使用端口 25226。 `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
-            
-            2. 下载并安装[security_events 配置文件](https://aka.ms/asi-syslog-config-file-linux)配置为侦听端口 25226 上的 Syslog 代理。 `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` 其中{0}应替换为你的工作区的 GUID。
-            
-            1. 重新启动 syslog 守护程序 `sudo service rsyslog restart`
-             
-          - 如果选择了 syslog ng:
-
-              1. 告诉 Syslog 守护程序以侦听设施 local_4 和将 Syslog 消息发送到 Azure Sentinel 代理使用端口 25226。 `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
-              2. 下载并安装[security_events 配置文件](https://aka.ms/asi-syslog-config-file-linux)配置为侦听端口 25226 上的 Syslog 代理。 `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` 其中{0}应替换为你的工作区的 GUID。
-
-              3. 重新启动 syslog 守护程序 `sudo service syslog-ng restart`
-      2. 重新启动 Syslog 代理使用以下命令： `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
-      1. 确认没有任何错误代理日志中通过运行以下命令： `tail /var/opt/microsoft/omsagent/log/omsagent.log`
-
-### <a name="deploy-the-agent-on-an-on-premises-linux-server"></a>部署本地 Linux 服务器上的代理
-
-如果不使用 Azure，手动部署 Azure Sentinel 代理专用的 Linux 服务器上运行。
+# <a name="connect-fortinet-to-azure-sentinel"></a>将 Fortinet 连接到 Azure Sentinel
 
 
-1. 在 Azure Sentinel 门户中，单击**数据连接器**，然后选择你的设备类型。
-1. 若要创建一个专用的 Linux VM 下,**代理配置 Linux Syslog**选择**手动部署**。
-   1. 下**下载并安装 Syslog 代理**，选择**非 Azure Linux 机**。 
-   1. 在中**直接代理**屏幕打开时，选择**适用于 Linux 代理**下载代理或运行以下命令来下载 Linux 计算机上：   `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w {workspace GUID} -s gehIk/GvZHJmqlgewMsIcth8H6VqXLM9YXEpu0BymnZEJb6mEjZzCHhZgCx5jrMB1pVjRCMhn+XTQgDTU3DVtQ== -d opinsights.azure.com`
-      1. 在连接器屏幕中下,**配置和转发的 Syslog**，将 Syslog 后台程序是否**rsyslog.d**或**syslog ng**。 
-      1. 将以下命令复制并在你的设备上运行它们：
-         - 如果选择了 rsyslog:
-           1. 告诉 Syslog 守护程序以侦听设施 local_4 和将 Syslog 消息发送到 Azure Sentinel 代理使用端口 25226。 `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
-            
-           2. 下载并安装[security_events 配置文件](https://aka.ms/asi-syslog-config-file-linux)配置为侦听端口 25226 上的 Syslog 代理。 `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` 其中{0}应替换为你的工作区的 GUID。
-           3. 重新启动 syslog 守护程序 `sudo service rsyslog restart`
-         - 如果选择了 syslog ng:
-            1. 告诉 Syslog 守护程序以侦听设施 local_4 和将 Syslog 消息发送到 Azure Sentinel 代理使用端口 25226。 `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
-            2. 下载并安装[security_events 配置文件](https://aka.ms/asi-syslog-config-file-linux)配置为侦听端口 25226 上的 Syslog 代理。 `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` 其中{0}应替换为你的工作区的 GUID。
-            3. 重新启动 syslog 守护程序 `sudo service syslog-ng restart`
-      1. 重新启动 Syslog 代理使用以下命令： `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
-      1. 确认没有任何错误代理日志中通过运行以下命令： `tail /var/opt/microsoft/omsagent/log/omsagent.log`
+
+本文介绍了如何将 Fortinet 设备连接到 Azure Sentinel。 Fortinet 数据连接器可让你轻松地将 Fortinet 日志连接到 Azure Sentinel，查看仪表板、创建自定义警报和改进调查。 使用 Azure 上的 Fortinet 可以更深入地了解组织的 Internet 使用情况，并增强其安全性操作功能。 
+
+
  
-## <a name="step-2-forward-fortinet-logs-to-the-syslog-agent"></a>步骤 2：将 Fortinet 日志转发到 Syslog 代理
+## <a name="forward-fortinet-logs-to-the-syslog-agent"></a>将 Fortinet 日志转发到 Syslog 代理
 
-配置 Fortinet 转发到 Azure 工作区通过 Syslog 代理 CEF 格式中的 Syslog 消息：
+配置 Fortinet 以通过 Syslog 代理将 CEF 格式的 Syslog 消息转发到 Azure 工作区。
 
-1. 打开 Fortinet 装置上的 CLI 并运行以下命令：
+1. 在 Fortinet 设备上打开 CLI，并运行以下命令：
 
-        config log syslogd setting
-        set format cef
-        set facility <facility_name>
-        set port 514
-        set reliable disable
-        set server <ip_address_of_Receiver>
-        set status enable
-        end
+    ```console
+    config log syslogd setting
+    set format cef
+    set port 514
+    set server <ip_address_of_Receiver>
+    set status enable
+    end
+    ```
 
-    - 替换服务器**ip 地址**代理的 IP 地址。
-    - 设置**facility_name**使用代理中配置的工具。 默认情况下，代理设置这为 local4。
-    - 设置**syslog 端口**到**514**，或设置在代理上的端口。
-    - 若要启用在早期版本中 FortiOS CEF 格式，您可能需要运行命令集**csv 禁用**。
+    - 将服务器**ip 地址**替换为代理的 ip 地址。
+    - 将**syslog 端口**设置为**514**或在代理上设置的端口。
+    - 若要在早期 FortiOS 版本中启用 CEF 格式，你可能需要运行命令 set **csv disable**。
  
    > [!NOTE] 
-   > 有关详细信息，请转到[Fortinet 文档库](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary)。 选择你的版本，并使用**手册**并**日志消息引用**。
+   > 有关详细信息，请参阅[Fortinet 文档库](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary)。 选择版本，并使用**手册**和**日志消息参考**。
 
- 若要使用 Log Analytics 中的 Fortinet 事件相关的架构，搜索`CommonSecurityLog`。
+1. 若要使用 Fortinet 事件的 Azure Monitor Log Analytics 中的相关架构，请搜索 `CommonSecurityLog` 。
 
+1. 继续执行[步骤 3：验证连接性](connect-cef-verify.md)。
 
-## <a name="step-3-validate-connectivity"></a>步骤 3：验证连接
-
-它可能需要 1-2 20 分钟，直到你的日志开始在 Log Analytics 中显示。 
-
-1. 请确保使用正确的工具。 设备必须在你的设备和 Azure Sentinel 相同。 您可检查使用的 Azure Sentinel 中并在文件中修改哪些设施文件`security-config-omsagent.conf`。 
-
-2. 请确保你的日志会转到 Syslog 代理中的正确端口。 Syslog 代理计算机上运行以下命令：`tcpdump -A -ni any  port 514 -vv` 此命令显示了从设备流式传输到 Syslog 计算机的日志。请确保源设备上的正确的端口和右设施从接收到日志。
-
-3. 请确保您发送的日志符合[RFC 5424](https://tools.ietf.org/html/rfc542)。
-
-4. 在上运行的系统日志代理的计算机，请确保这些端口 514，25226 是打开并在侦听，使用命令`netstat -a -n:`。 有关使用此命令的详细信息请参阅[netstat(8)-Linux 手册页](https://linux.die.net/man/8/netstat)。 如果它正在侦听正确，您将看到：
-
-   ![Azure Sentinel 端口](./media/connect-cef/ports.png) 
-
-5. 请确保该守护程序设置为侦听端口 514，要在其上发送日志。
-    - Rsyslog:<br>请确保该文件`/etc/rsyslog.conf`包括此配置：
-
-           # provides UDP syslog reception
-           module(load="imudp")
-           input(type="imudp" port="514")
-        
-           # provides TCP syslog reception
-           module(load="imtcp")
-           input(type="imtcp" port="514")
-
-      有关详细信息，请参阅[imudp:UDP Syslog 输入模块](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imudp.html#imudp-udp-syslog-input-module)和[imtcp:TCP Syslog 输入模块](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imtcp.html#imtcp-tcp-syslog-input-module)
-
-   - 针对 syslog-ng:<br>请确保该文件`/etc/syslog-ng/syslog-ng.conf`包括此配置：
-
-           # source s_network {
-            network( transport(UDP) port(514));
-             };
-     有关详细信息，请参阅 [imudp:UDP Syslog 输入模块] (有关详细信息，请参阅[syslog ng 开放源版本 3.16-管理指南](https://www.syslog-ng.com/technical-documents/doc/syslog-ng-open-source-edition/3.16/administration-guide/19#TOPIC-956455)。
-
-1. 检查 Syslog 后台程序和代理之间的通信。 Syslog 代理计算机上运行以下命令：`tcpdump -A -ni any  port 25226 -vv` 此命令显示了从设备流式传输到 Syslog 计算机的日志。请确保将还收到日志在代理上。
-
-6. 如果这两个这些命令提供成功的结果，请检查 Log Analytics，请参阅正在传入到你的日志。 从这些设备流式传输的所有事件都显示在下的 Log Analytics 中的原始格式`CommonSecurityLog`类型。
-
-7. 若要检查是否有错误或如果不到达日志，查找范围`tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`。 如果状态显示为日志格式不匹配错误，请转到`/etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"`并查看该文件`security_events.conf`并确保你的日志与您将看到此文件中的正则表达式格式相匹配。
-
-8. 请确保你 Syslog 消息的默认大小限制为 2048 个字节 (2 KB)。 如果日志太长，更新 security_events.conf 使用以下命令： `message_length_limit 4096`
-
-1. 如果不由代理在接收 Fortinet 日志，请运行以下命令，具体取决于哪种类型的使用，来设置工具并设置要搜索的字词 Fortinet 在日志中的日志的 Syslog 守护程序：
-   - rsyslog.d: `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226\n\n:msg, contains, \"Fortinet\"  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
-
-     重新启动 Syslog 守护程序： `sudo service rsyslog restart`
-   - Syslog ng: `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };\n\nfilter f_msg_oms { match(\"Fortinet\" value(\"MESSAGE\")); };\n  destination security_msg_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_msg_oms); destination(security_msg_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
-      
-     重新启动 Syslog 守护程序： `sudo service syslog-ng restart`
 
 ## <a name="next-steps"></a>后续步骤
-在本文档中，您学习了如何连接到 Azure Sentinel Fortinet 设备。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[来了解一下你的数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[检测威胁 Azure Sentinel](tutorial-detect-threats.md)。
+本文介绍了如何将 Fortinet 设备连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
+- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
+- [使用工作簿](tutorial-monitor-your-data.md)监视数据。
+
 

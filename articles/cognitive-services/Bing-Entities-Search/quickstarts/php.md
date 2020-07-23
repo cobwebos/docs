@@ -1,6 +1,6 @@
 ---
-title: 快速入门：使用 PHP 向必应实体搜索 REST API 发送搜索请求
-titlesuffix: Azure Cognitive Services
+title: 快速入门：使用 PHP 向 REST API 发送搜索请求 - 必应实体搜索
+titleSuffix: Azure Cognitive Services
 description: 使用本快速入门，通过 PHP 向必应实体搜索 REST API 发送请求，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 69624f7383b37b9d23f3fb8879f804e7169c1c29
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 21a8d47f80dae35553114f522c1c78a97a086518
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384557"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650217"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>快速入门：使用 PHP 向必应实体搜索 REST API 发送搜索请求
 
-使用本快速入门对必应实体搜索 API 进行你的第一次调用并查看 JSON 响应。 这个简单的 PHP 应用程序会向该 API 发送一个新闻搜索查询并显示响应。 
+使用本快速入门，对必应实体搜索 API 进行第一次调用并查看 JSON 响应。 这个简单的 PHP 应用程序会向该 API 发送一个新闻搜索查询并显示响应。 
 
 虽然此应用程序是使用 PHP 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
@@ -31,12 +31,13 @@ ms.locfileid: "66384557"
 
 ## <a name="search-entities"></a>搜索实体
 
-若要运行此应用程序，请执行以下步骤。
+若要运行此应用程序，请执行以下步骤：
 
 1. 在你喜欢使用的 IDE 中新建一个 PHP 项目。
-2. 添加下面提供的代码。
+2. 添加以下提供的代码。
 3. 使用对订阅有效的访问密钥替换 `key` 值。
-4. 运行该程序。
+4. 你可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
+5. 运行该程序。
 
 ```php
 <?php
@@ -82,7 +83,7 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 ?>
 ```
 
-**响应**
+## <a name="example-json-response"></a>示例 JSON 响应
 
 在 JSON 中返回成功的响应，如以下示例所示： 
 
@@ -153,4 +154,4 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 > [构建单页 Web 应用](../tutorial-bing-entities-search-single-page-app.md)
 
 * [什么是必应实体搜索 API？](../overview.md )
-* [必应实体搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [必应实体搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)。

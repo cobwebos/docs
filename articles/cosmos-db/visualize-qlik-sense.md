@@ -4,15 +4,15 @@ description: 本文介绍了将 Azure Cosmos DB 连接到 Qlik Sense 并可视�
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: eea4366ca19c01af1f79566a5ca6bcae8805b6c3
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 986db85ddbf741dc459625dbd763b9cbbba1c429
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242498"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263341"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>将 Qlik Sense 连接到 Azure Cosmos DB 并可视化数据
 
@@ -34,7 +34,7 @@ Qlik Sense 是一个数据可视化工具，可将来自不同源的数据合并
 
 本文介绍了使用 ODBC 连接器连接到 Cosmos DB SQL API 的详细信息。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在按照本文中的说明操作之前，请确保以下资源准备就绪：
 
@@ -44,7 +44,7 @@ Qlik Sense 是一个数据可视化工具，可将来自不同源的数据合并
 
 * 使用快速入门文章的[创建帐户](create-sql-api-dotnet.md#create-account)部分所述的步骤创建 Azure Cosmos DB SQL API 帐户。
 
-* [创建数据库和集合](create-sql-api-dotnet.md#create-collection-database) – 可以将集合吞吐量值设置为 1000 RU/秒。 
+* [创建数据库和集合](create-sql-api-java.md#add-a-container) – 可以将集合吞吐量值设置为 1000 RU/秒。 
 
 * 将示例电子游戏机销售数据加载到 Cosmos DB 帐户。 可以使用 Azure Cosmos DB 数据迁移工具导入数据，可以执行[按顺序](import-data.md#SQLSeqTarget)或[批量导入](import-data.md#SQLBulkTarget)数据。 大约需要 3 到 5 分钟才能将数据导入到 Cosmos DB 帐户。
 
@@ -52,25 +52,25 @@ Qlik Sense 是一个数据可视化工具，可将来自不同源的数据合并
 
 ## <a name="connect-qlik-sense-to-cosmos-db"></a>将 Qlik Sense 连接到 Cosmos DB
 
-1. 打开 Qlik Sense，然后选择“创建新应用”  。 为应用提供一个名称，然后选择“创建”  。
+1. 打开 Qlik Sense，然后选择“创建新应用”****。 为应用提供一个名称，然后选择“创建”****。
 
-   ![创建新的 Qlik Sense 应用](./media/visualize-qlik-sense/create-new-qlik-sense-app.png)
+   :::image type="content" source="./media/visualize-qlik-sense/create-new-qlik-sense-app.png" alt-text="创建新的 Qlik Sense 应用":::
 
-2. 成功创建新应用后，选择“打开应用”  ，然后选择“添加来自文件和其他源的数据”  。 
+2. 成功创建新应用后，选择“打开应用”****，然后选择“添加来自文件和其他源的数据”****。 
 
-3. 从数据源中，选择“ODBC”  以打开新的连接设置窗口。 
+3. 从数据源中，选择“ODBC”**** 以打开新的连接设置窗口。 
 
-4. 切换到“用户 DSN”  ，然后选择之前创建的 ODBC 连接。 为连接提供一个名称，然后选择“创建”  。 
+4. 切换到“用户 DSN”****，然后选择之前创建的 ODBC 连接。 为连接提供一个名称，然后选择“创建”****。 
 
-   ![创建新连接](./media/visualize-qlik-sense/create-new-connection.png)
+   :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="创建新连接":::
 
 5. 创建连接后，可以选择数据库、电子游戏机数据所在的集合，然后进行预览。
 
-   ![选择数据库和集合](./media/visualize-qlik-sense/choose-database-and-collection.png) 
+   :::image type="content" source="./media/visualize-qlik-sense/choose-database-and-collection.png" alt-text="选择数据库和集合"::: 
 
-6. 接下来，选择“添加数据”  以将数据加载到 Qlik Sense。 将数据加载到 Qlik Sense 后，可以生成见解并对数据执行分析。 可以使用见解，也可以自行生成用来浏览电子游戏机销售的应用。 下图显示 
+6. 接下来，选择“添加数据”**** 以将数据加载到 Qlik Sense。 将数据加载到 Qlik Sense 后，可以生成见解并对数据执行分析。 可以使用见解，也可以自行生成用来浏览电子游戏机销售的应用。 下图显示 
 
-   ![可视化数据](./media/visualize-qlik-sense/visualize-data.png)
+   :::image type="content" source="./media/visualize-qlik-sense/visualize-data.png" alt-text="可视化数据":::
 
 ### <a name="limitations-when-connecting-with-odbc"></a>使用 ODBC 连接时的限制 
 

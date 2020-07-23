@@ -8,10 +8,12 @@
   items:
     - name: Azure 应用程序的高可用性
       href: 'https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications'
+    - name: 区域和可用性区域
+      href: az-overview.md
     - name: 可用性区域文档
       items:
-        - name: 什么是可用性区域？
-          href: az-overview.md
+        - name: 支持可用性区域的地区
+          href: az-region.md
         - name: 虚拟机
           items:
             - name: 使用 CLI 在可用性区域中创建 Linux VM
@@ -23,7 +25,7 @@
         - name: 托管磁盘
           items:
             - name: 使用 CLI 在可用性区域中添加托管磁盘
-              href: '../virtual-machines/linux/add-disk.md#use-managed-disks'
+              href: '../virtual-machines/linux/add-disk.md#attach-a-new-disk-to-a-vm'
             - name: 使用 PowerShell 在可用性区域中添加托管磁盘
               href: '../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine'
         - name: 虚拟机规模集
@@ -33,7 +35,7 @@
         - name: 负载均衡器
           items:
             - name: 什么是负载均衡器？
-              href: ../load-balancer/load-balancer-standard-overview.md
+              href: ../load-balancer/load-balancer-overview.md
             - name: 负载均衡器标准版和可用性区域
               href: ../load-balancer/load-balancer-standard-availability-zones.md
             - name: 创建区域冗余的公共标准负载均衡器
@@ -68,11 +70,11 @@
         - name: 事件中心
           items:
             - name: 事件中心异地灾难恢复
-              href: '../event-hubs/event-hubs-geo-dr.md#availability-zones-preview'
+              href: '../event-hubs/event-hubs-geo-dr.md#availability-zones'
         - name: 服务总线
           items:
             - name: 服务总线异地灾难恢复
-              href: '../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview'
+              href: '../service-bus-messaging/service-bus-geo-dr.md#availability-zones'
         - name: VPN 网关
           items:
             - name: 创建区域冗余的虚拟网关
@@ -81,6 +83,14 @@
           items:
             - name: 创建区域冗余的虚拟网关
               href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+        - name: 标识
+          items:
+            - name: 创建 Azure Active Directory 域服务实例
+              href: ../active-directory-domain-services/tutorial-create-instance.md
+    - name: Edge Zones 文档
+      items:
+        - name: 什么是 Edge Zones？
+          href: ../networking/edge-zones-overview.md
 - name: 灾难恢复
   items:
     - name: 使用 Azure Site Recovery

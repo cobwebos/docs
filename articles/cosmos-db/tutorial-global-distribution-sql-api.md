@@ -1,20 +1,21 @@
 ---
-title: 适用于 SQL API 的 Azure Cosmos DB 全局分发教程
-description: 了解如何使用 SQL API 设置 Azure Cosmos DB 全局分发。
-author: rimman
+title: 教程：适用于 SQL API 的 Azure Cosmos DB 全局分发教程
+description: 教程：了解如何将 SQL API 与 .NET、Java、Python 和各种其他 SDK 配合使用来设置 Azure Cosmos DB 全局分发
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 05/10/2019
-ms.author: rimman
+ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 4f97d1f052cd8684674eecf479133051f2cfb76e
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.custom: tracking-python
+ms.openlocfilehash: 15f5ac1da6d24feceed3a9106b990ae31e3571e3
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480551"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851614"
 ---
-# <a name="set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>使用 SQL API 设置 Azure Cosmos DB 全局分发
+# <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>教程：使用 SQL API 设置 Azure Cosmos DB 全局分发
 
 本文介绍了如何使用 Azure 门户设置 Azure Cosmos DB 全局分发，并使用 SQL API 进行连接。
 
@@ -28,7 +29,7 @@ ms.locfileid: "66480551"
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 
-## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a>使用 SQL API 连接到首选区域
+## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a><a id="preferred-locations"></a> 使用 SQL API 连接到首选区域
 
 为了利用[全局分发](distribute-data-globally.md)，客户端应用程序可以指定要用于执行文档操作的区域优先顺序列表。 可通过设置连接策略来实现此目的。 SQL SDK 会根据 Azure Cosmos DB 帐户配置、当前区域可用性和指定的优先顺序列表，选择最佳的终结点来执行写入和读取操作。
 
@@ -78,73 +79,94 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-## <a name="nodejs-javascript-and-python-sdks"></a>NodeJS、JavaScript 和 Python SDK
-无需进行任何代码更改即可使用该 SDK。 在此情况下，SDK 会自动将读取和写入请求定向到当前写入区域。
-
-在每个 SDK 的 1.8 和更高版本中，DocumentClient 构造函数的 ConnectionPolicy 参数有一个名为 DocumentClient.ConnectionPolicy.PreferredLocations 的新属性。 此参数是采用区域名称列表的字符串数组。 名称已根据 [Azure 区域][regions]页中的“区域名称”列设置格式。 也可以在便捷对象 AzureDocuments.Regions 中使用预定义的常量
-
-当前写入终结点和读取终结点分别在 DocumentClient.getWriteEndpoint 和 DocumentClient.getReadEndpoint 中提供。
+## <a name="nodejsjavascript"></a>Node.js/JavaScript
 
 > [!NOTE]
 > 不应将终结点 URL 视为长期不变的常量。 服务随时会更新这些 URL。 SDK 会自动处理这种更改。
 >
 >
 
-下面是 NodeJS/Javascript 的代码示例。 Python 和 Java 将遵循相同的模式。
+下面是 Node.js/Javascript 的代码示例。
 
 ```JavaScript
-// Creating a ConnectionPolicy object
-var connectionPolicy = new DocumentBase.ConnectionPolicy();
-
 // Setting read region selection preference, in the following order -
 // 1 - West US
 // 2 - East US
 // 3 - North Europe
-connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe'];
+const preferredLocations = ['West US', 'East US', 'North Europe'];
 
 // initialize the connection
-var client = new DocumentDBClient(host, { masterKey: masterKey }, connectionPolicy);
+const client = new CosmosClient{ endpoint, key, connectionPolicy: { preferredLocations } });
 ```
 
-## <a name="rest"></a>REST
-数据库帐户在多个区域中可用后，客户端可以通过对以下 URI 执行 GET 请求来查询该帐户的可用性。
+## <a name="python-sdk"></a>Python SDK
 
-    https://{databaseaccount}.documents.azure.com/
+以下代码演示如何使用 Python SDK 设置首选位置：
+
+```python
+connectionPolicy = documents.ConnectionPolicy()
+connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe']
+client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connectionPolicy)
+
+```
+
+## <a name="java-v4-sdk"></a><a id="java4-preferred-locations"></a> Java V4 SDK
+
+以下代码演示如何使用 Java SDK 设置首选位置：
+
+# <a name="async"></a>[异步](#tab/api-async)
+
+   [Java SDK V4](sql-api-sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) 异步 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=TutorialGlobalDistributionPreferredLocationAsync)]
+
+# <a name="sync"></a>[Sync](#tab/api-sync)
+
+   [Java SDK V4](sql-api-sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) 同步 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=TutorialGlobalDistributionPreferredLocationSync)]
+
+--- 
+
+## <a name="rest"></a>REST
+
+数据库帐户在多个区域中可用后，客户端可以通过对此 URI `https://{databaseaccount}.documents.azure.com/` 执行 GET 请求来查询该帐户的可用性
 
 服务将返回副本的区域及其对应 Azure Cosmos DB 终结点 URI 的列表。 当前写入区域会在响应中指示。 然后，客户端可为所有其他 REST API 请求选择适当的终结点，如下所示。
 
 示例响应
 
-    {
-        "_dbs": "//dbs/",
-        "media": "//media/",
-        "writableLocations": [
-            {
-                "Name": "West US",
-                "DatabaseAccountEndpoint": "https://globaldbexample-westus.documents.azure.com:443/"
-            }
-        ],
-        "readableLocations": [
-            {
-                "Name": "East US",
-                "DatabaseAccountEndpoint": "https://globaldbexample-eastus.documents.azure.com:443/"
-            }
-        ],
-        "MaxMediaStorageUsageInMB": 2048,
-        "MediaStorageUsageInMB": 0,
-        "ConsistencyPolicy": {
-            "defaultConsistencyLevel": "Session",
-            "maxStalenessPrefix": 100,
-            "maxIntervalInSeconds": 5
-        },
-        "addresses": "//addresses/",
-        "id": "globaldbexample",
-        "_rid": "globaldbexample.documents.azure.com",
-        "_self": "",
-        "_ts": 0,
-        "_etag": null
-    }
-
+```json
+{
+    "_dbs": "//dbs/",
+    "media": "//media/",
+    "writableLocations": [
+        {
+            "Name": "West US",
+            "DatabaseAccountEndpoint": "https://globaldbexample-westus.documents.azure.com:443/"
+        }
+    ],
+    "readableLocations": [
+        {
+            "Name": "East US",
+            "DatabaseAccountEndpoint": "https://globaldbexample-eastus.documents.azure.com:443/"
+        }
+    ],
+    "MaxMediaStorageUsageInMB": 2048,
+    "MediaStorageUsageInMB": 0,
+    "ConsistencyPolicy": {
+        "defaultConsistencyLevel": "Session",
+        "maxStalenessPrefix": 100,
+        "maxIntervalInSeconds": 5
+    },
+    "addresses": "//addresses/",
+    "id": "globaldbexample",
+    "_rid": "globaldbexample.documents.azure.com",
+    "_self": "",
+    "_ts": 0,
+    "_etag": null
+}
+```
 
 * 所有 PUT、POST 和 DELETE 请求必须转到指示的写入 URI
 * 所有 GET 和其他只读请求（例如查询）可以转到客户端选择的任何终结点

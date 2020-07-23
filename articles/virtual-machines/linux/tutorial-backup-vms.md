@@ -1,27 +1,25 @@
 ---
-title: 教程 - 在 Azure 门户中备份 Linux 虚拟机 | Microsoft Docs
+title: 教程 - 在 Azure 门户中备份 Linux 虚拟机
 description: 本教程介绍如何在 Azure 门户中使用 Azure 备份保护 Linux 虚拟机。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 99ec8ea6a5b08323021a168e8ec47b976e1ae7f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d233cba65d190178c500f78d4817e233ab46d780
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60739369"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460064"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>教程：在 Azure 中备份和还原 Linux 虚拟机的文件
 
@@ -44,7 +42,7 @@ ms.locfileid: "60739369"
 ## <a name="create-a-backup"></a>创建备份
 在恢复服务保管库中创建计划每日备份：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 在左侧菜单中选择“虚拟机”。  
 3. 从列表中选择要备份的 VM。
 4. 在 VM 边栏选项卡上的“设置”部分中，单击“备份”。   此时会打开“启用备份”边栏选项卡。 
@@ -57,7 +55,7 @@ ms.locfileid: "60739369"
 
     ![恢复点](./media/tutorial-backup-vms/backup-complete.png)
 
-首次备份大约需要 20 分钟。 完成备份后，请继续学习本教程的下一部分。
+首次备份大约需要 20 分钟。 完成备份后，请继续执行本教程的下一部分。
 
 ## <a name="restore-a-file"></a>还原文件
 
@@ -65,7 +63,7 @@ ms.locfileid: "60739369"
 
 本示例演示如何恢复默认 nginx 网页 /var/www/html/index.nginx-debian.html。 本示例中的 VM 的公共 IP 地址为 *13.69.75.209*。 可使用以下命令找到 VM 的 IP 地址：
 
- ```bash 
+ ```azurecli
  az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
  ```
 
@@ -79,6 +77,7 @@ ms.locfileid: "60739369"
     ```bash
     ssh 13.69.75.209
     ```
+
 2. 删除 /var/www/html/index.nginx-debian.html。
 
     ```bash
@@ -123,7 +122,7 @@ ms.locfileid: "60739369"
     
 12. 脚本的输出将提供装入点的路径。 输出与下面类似：
 
-    ```bash
+    ```output
     Microsoft Azure VM Backup - File Recovery
     ______________________________________________
                           
@@ -161,7 +160,7 @@ ms.locfileid: "60739369"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 VM 的备份

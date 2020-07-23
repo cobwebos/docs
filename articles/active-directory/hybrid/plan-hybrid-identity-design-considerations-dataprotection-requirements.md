@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 056d0caf2bfc6e99d5d659a2561bc41844feb79a
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "64918774"
 ---
 # <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>通过强标识解决方案增强数据安全性的计划

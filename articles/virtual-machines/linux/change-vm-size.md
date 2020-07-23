@@ -1,27 +1,16 @@
 ---
-title: 如何使用 Azure CLI 调整 Linux VM 的大小 | Microsoft Docs
-description: 如何通过更改 VM 大小来扩展或缩减 Linux 虚拟机。
-services: virtual-machines-linux
-documentationcenter: na
-author: mikewasson
-manager: jeconnoc
-editor: ''
-tags: ''
-ms.assetid: e163f878-b919-45c5-9f5a-75a64f3b14a0
+title: 如何使用 Azure CLI 重设 Linux VM 的大小
+description: 如何通过更改 VM 大小来增加或减少 Linux 虚拟机。
+author: DavidCBerry13
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 02/10/2017
-ms.author: mwasson
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8bd8136c61a277e730c07c8789afd1bf3214bd7c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.author: daberry
+ms.openlocfilehash: cf2716ce5d24aa86e32f6f521134590c671d5011
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127066"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83120974"
 ---
 # <a name="resize-a-linux-virtual-machine-using-azure-cli"></a>使用 Azure CLI 重设 Linux 虚拟机大小 
 
@@ -42,9 +31,9 @@ ms.locfileid: "62127066"
     az vm resize --resource-group myResourceGroup --name myVM --size Standard_DS3_v2
     ```
    
-    在此过程中，VM 将重新启动。 重启后，现有 OS 和数据磁盘将重新映射。 临时磁盘上的所有内容会丢失。
+    在此过程中，VM 将重新启动。 重新启动后，现有 OS 和数据磁盘将重新映射。 临时磁盘上的所有内容会丢失。
 
-3. 如果未列出所需的 VM 大小，则需要先使用 [az vm deallocate](/cli/azure/vm) 解除分配 VM。 此过程允许将 VM 调整为该区域支持的任何可用大小然后将其启动。 以下步骤会将名为 `myResourceGroup` 的资源组中名为 `myVM` 的 VM 解除分配、调整大小并启动：
+3. 如果所需的 VM 大小未列出，则需先使用 [az vm deallocate](/cli/azure/vm)解除分配 VM。 然后，可以通过此过程将 VM 的大小调整为区域支持的任何可用大小，再启动该 VM。 以下步骤会将名为 `myResourceGroup` 的资源组中名为 `myVM` 的 VM 解除分配、调整大小并启动：
    
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
@@ -56,7 +45,7 @@ ms.locfileid: "62127066"
    > 解除分配 VM 也会释放分配给该 VM 的所有动态 IP 地址。 OS 和数据磁盘不受影响。
 
 ## <a name="next-steps"></a>后续步骤
-若要提高伸缩性，请运行多个 VM 实例并进行横向扩展。有关详细信息，请参阅[自动缩放虚拟机规模集中的 Linux 计算机][scale-set]。 
+若要提高可伸缩性，请运行多个 VM 实例并进行横向扩展。有关详细信息，请参阅[自动缩放虚拟机规模集中的 Linux 计算机][scale-set]。 
 
 <!-- links -->
 [boot-diagnostics]: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/

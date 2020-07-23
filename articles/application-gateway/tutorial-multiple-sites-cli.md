@@ -1,23 +1,24 @@
 ---
-title: 创建托管多个网站的应用程序网关 - Azure CLI
+title: 使用 CLI 托管多个网站
+titleSuffix: Azure Application Gateway
 description: 了解如何使用 Azure CLI 创建托管多个网站的应用程序网关。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: tutorial
-ms.date: 5/20/2019
+ms.topic: how-to
+ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 9c99b534a40b5c87cf511c75ccdb19df4d9aaf63
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
-ms.translationtype: HT
+ms.openlocfilehash: 79a239148647467185e407e1e07fdea658a7be40
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955631"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517888"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>使用 Azure CLI 创建托管多个网站的应用程序网关
 
-创建[应用程序网关](overview.md)时，可以使用 Azure CLI [配置多个网站的托管](multiple-site-overview.md)。 本文使用虚拟机规模集定义后端地址池。 然后，基于所拥有的域配置侦听器和规则，以确保 Web 流量可到达池中的相应服务器。 本文假定你拥有多个域，并使用示例 www\.contoso.com 和 www\.fabrikam.com   。
+创建[应用程序网关](overview.md)时，可以使用 Azure CLI [配置多个网站的托管](multiple-site-overview.md)。 本文使用虚拟机规模集定义后端地址池。 然后，基于所拥有的域配置侦听器和规则，以确保 Web 流量可到达池中的相应服务器。 本文假定你拥有多个域，并使用示例 www\.contoso.com 和 www\.fabrikam.com。
 
 在本文中，学习如何：
 
@@ -29,7 +30,7 @@ ms.locfileid: "65955631"
 > * 使用后端池创建虚拟机规模集
 > * 在域中创建 CNAME 记录
 
-![多站点路由示例](./media/tutorial-multiple-sites-cli/scenario.png)
+:::image type="content" source="./media/tutorial-multiple-sites-cli/scenario.png" alt-text="多站点应用程序网关":::
 
 如果需要，可以使用 [Azure PowerShell](tutorial-multiple-sites-powershell.md) 完成此过程。
 
@@ -37,13 +38,13 @@ ms.locfileid: "65955631"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.4 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/azure/group) 创建资源组。
 
-以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组   。
+以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组****。
 
 ```azurecli-interactive
 az group create --name myResourceGroupAG --location eastus
@@ -70,7 +71,9 @@ az network vnet subnet create \
 
 az network public-ip create \
   --resource-group myResourceGroupAG \
-  --name myAGPublicIPAddress
+  --name myAGPublicIPAddress \
+  --allocation-method Static \
+  --sku Standard
 ```
 
 ## <a name="create-the-application-gateway"></a>创建应用程序网关
@@ -85,7 +88,7 @@ az network application-gateway create \
   --vnet-name myVNet \
   --subnet myAGsubnet \
   --capacity 2 \
-  --sku Standard_Medium \
+  --sku Standard_v2 \
   --http-settings-cookie-based-affinity Disabled \
   --frontend-port 80 \
   --http-settings-port 80 \
@@ -116,9 +119,13 @@ az network application-gateway address-pool create \
   --name fabrikamPool
 ```
 
-### <a name="add-backend-listeners"></a>添加后端侦听器
+### <a name="add-listeners"></a>添加侦听器
 
-使用 [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) 添加路由流量所需的后端侦听器。
+使用[az 网络应用程序网关 http 侦听器 create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create)添加路由流量所需的侦听器。
+
+>[!NOTE]
+> 使用应用程序网关或 WAF v2 SKU，你还可以为每个侦听器配置最多5个主机名，并且可以在主机名中使用通配符。 有关详细信息，请参阅[侦听器中的通配符主机名](multiple-site-overview.md#wildcard-host-names-in-listener-preview)。
+>若要使用 Azure CLI 在侦听器中使用多个主机名和通配符，则必须使用 `--host-names` 而不是 `--host-name` 。 利用主机名，最多可将5个主机名称为逗号分隔值。 例如： `--host-names "*.contoso.com,*.fabrikam.com"`
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -140,9 +147,9 @@ az network application-gateway http-listener create \
 
 ### <a name="add-routing-rules"></a>添加路由规则
 
-规则按其列出的顺序进行处理，并且流量使用匹配的第一个规则进行定向，而无论特殊性如何。 例如，如果在同一端口上同时有使用基本侦听器的规则和使用多站点侦听器的规则，则使用多站点侦听器的规则必须在使用基本侦听器的规则之前列出，多站点规则才能正常运行。 
+规则按其列出的顺序进行处理。 使用第一条匹配的规则来定向流量，而不考虑特殊性。 例如，如果在同一端口上同时有使用基本侦听器的规则和使用多站点侦听器的规则，则使用多站点侦听器的规则必须在使用基本侦听器的规则之前列出，多站点规则才能正常运行。 
 
-在此示例中，将创建两个新规则并删除在创建应用程序网关时创建的默认规则。 可以使用 [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) 添加规则。
+在此示例中，将创建两个新规则并删除在部署应用程序网关时创建的默认规则。 可以使用 [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) 添加规则。
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -229,11 +236,11 @@ az network public-ip show \
   --output tsv
 ```
 
-不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
+建议不要使用 A 记录，因为应用程序网关重启后 VIP 可能会变化。
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-在浏览器的地址栏中输入域名。 例如 http://www.contoso.com。
+在浏览器的地址栏中输入域名。 例如，http:\//www.contoso.com。
 
 ![在应用程序网关中测试 contoso 站点](./media/tutorial-multiple-sites-cli/application-gateway-nginxtest1.png)
 
@@ -246,9 +253,9 @@ az network public-ip show \
 当不再需要资源组、应用程序网关以及所有相关资源时，请将其删除。
 
 ```azurecli-interactive
-az group delete --name myResourceGroupAG --location eastus
+az group delete --name myResourceGroupAG
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用基于 URL 路径的路由规则创建应用程序网关](./tutorial-url-route-cli.md)
+[使用基于 URL 路径的路由规则创建应用程序网关](./tutorial-url-route-cli.md)

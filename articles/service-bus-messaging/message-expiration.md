@@ -1,24 +1,13 @@
 ---
-title: Azure 服务总线消息过期 | Microsoft Docs
-description: Azure 服务总线消息的过期时间和生存时间
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Azure 服务总线 - 消息到期时间
+description: 本文介绍 Azure 服务总线消息的到期时间和生存时间。 此截止时间过后，将不再传递该消息。
 ms.topic: article
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: fdfd7794961b0254526b124525c6e978d13b0114
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: ca789be91e835576ec06a422bdbbbf25eb775dac
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800264"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341212"
 ---
 # <a name="message-expiration-time-to-live"></a>消息过期时间（生存时间）
 
@@ -26,7 +15,7 @@ ms.locfileid: "65800264"
 
 对于经常在应用程序或应用程序部件部分运行轮次的上下文中使用队列与主题的开发和测试环境，还需要对滞留的测试消息自动进行垃圾回收，使下一轮测试运行能够从新启动。
 
-可以通过设置 [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) 系统属性（指定相对持续时间）来控制任何一条消息的过期时间。 在实体中将消息排队后，过期时间即成为一个绝对时刻。 此时，[ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) 属性取值为 [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive)。 当任何客户端都没有在主动侦听时，不强制实施中转消息的生存时间 (TTL) 设置。
+可以通过设置 [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) 系统属性（指定相对持续时间）来控制任何一条消息的过期时间。 在实体中将消息排队后，过期时间即成为一个绝对时刻。 此时，[ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) 属性取值为 [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive)。 当没有客户端主动侦听时，不会强制实施中转消息的生存时间 (TTL) 设置。
 
 在 **ExpiresAtUtc** 时刻过后，消息不可检索。 过期时间不会影响当前已锁定等待传送的消息；这些消息仍会按正常方式得到处理。 如果锁已过期或者消息被丢弃，则过期时间立即生效。
 
@@ -37,9 +26,9 @@ ms.locfileid: "65800264"
 发送到队列或主题中的所有消息附带一个默认的过期时间，该时间是使用 [defaultMessageTimeToLive](/azure/templates/microsoft.servicebus/namespaces/queues) 属性在实体级别设置的，或者也可以在创建期间在门户中设置，并且以后可以调整。 默认过期时间是针对发送到未显式设置 [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) 的实体的所有消息使用的。 默认过期时间还充当 **TimeToLive** 值的上限。 **TimeToLive** 过期时间长于默认值的消息在排队之前，会以无提示方式调整为 **defaultMessageTimeToLive** 值。
 
 > [!NOTE]
-> 默认值[TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive)值为中转的消息[TimeSpan.Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue)如果未另行指定。
+> 如果没有另外指定，则中转消息的默认 [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) 值为 [TimeSpan.Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue)。
 >
-> 用于消息传送实体 （队列和主题），默认过期时间也是[TimeSpan.Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue)针对服务总线标准和高级层。  对于基本层中，默认过期时间为 14 天。
+> 对于消息传送实体（队列和主题），服务总线标准层和高级层的默认到期时间也是 [TimeSpan.Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue)。  对于基本层，默认到期时间为 14 天。
 
 可以选择性地通过设置 [EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enabledeadletteringonmessageexpiration#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) 属性或者在门户中选中相应的框，将已过期的消息移到[死信队列](service-bus-dead-letter-queues.md)。 如果保持禁用该选项，将会丢弃已过期的消息。 可以通过评估由中转站存储在用户属性部分中的 [DeadletterReason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) 属性（在本例中，该值为 [TTLExpiredException](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq)），将已移到死信队列的已过期消息与其他死信消息区分开来。
 

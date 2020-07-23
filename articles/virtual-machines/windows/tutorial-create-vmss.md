@@ -1,27 +1,20 @@
 ---
-title: 教程 - 在 Azure 中为 Window 创建虚拟机规模集 | Microsoft Docs
-description: 本教程介绍如何通过 Azure PowerShell 使用虚拟机规模集在 Windows VM 上创建和部署高度可用的应用程序
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: ''
+title: 教程：创建 Windows 虚拟机规模集
+description: 了解如何通过 Azure PowerShell 使用虚拟机规模集在 Windows VM 上创建和部署高度可用的应用程序
+author: ju-shim
+ms.author: jushiman
 ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: windows
 ms.date: 11/30/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 6766dc2b4d99d51e2832a054969697e4e330dd86
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 14777b85fdc531b96c61882d5f244ca40ed28fa6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60785145"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197989"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>教程：使用 Azure PowerShell 在 Windows 上创建虚拟机规模集和部署高度可用的应用
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数。 也可以定义规则，以便根据 CPU、内存需求或网络流量等资源使用情况进行自动缩放。 在本教程中，请在 Azure 中部署虚拟机规模集，并了解如何执行以下操作：
@@ -37,7 +30,7 @@ ms.locfileid: "60785145"
 
 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 
 
-若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
+若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。  也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。 
 
 ## <a name="scale-set-overview"></a>规模集概述
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 规模集中的 VM 将分布在逻辑容错域和更新域的一个或多个*放置组*中。 放置组是配置类似的 VM 的组，与[可用性集](tutorial-availability-sets.md)相似。
@@ -148,7 +141,7 @@ Update-AzVmss `
 ```
 
 ## <a name="test-your-scale-set"></a>测试规模集
-若要查看运行中的规模集，请使用 [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) 获取负载均衡器的公共 IP 地址。 以下示例显示创建为规模集一部分的“myPublicIP”的 IP 地址：
+若要查看运行中的规模集，请使用 [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) 获取负载均衡器的公共 IP 地址。 以下示例显示创建为规模集一部分的“myPublicIP”的 IP 地址： 
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress `
@@ -195,7 +188,7 @@ Get-AzVmssVM `
 
 
 ### <a name="increase-or-decrease-vm-instances"></a>增加或减少 VM 实例
-若要查看规模集中当前包含的实例数，请使用 [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) 并查询 sku.capacity：
+若要查看规模集中当前包含的实例数，请使用 [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) 并查询 sku.capacity  ：
 
 ```azurepowershell-interactive
 Get-AzVmss -ResourceGroupName "myResourceGroupScaleSet" `
@@ -279,7 +272,7 @@ Add-AzAutoscaleSetting `
 
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，已创建虚拟机规模集。 你已了解如何：
+在本教程中，已创建虚拟机规模集。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用自定义脚本扩展定义要缩放的 IIS 站点

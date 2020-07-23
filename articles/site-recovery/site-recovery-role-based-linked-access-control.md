@@ -1,21 +1,21 @@
 ---
-title: 使用基于角色的访问控制 (RBAC) 管理 Azure Site Recovery 访问 | Microsoft Docs
+title: 在 Azure Site Recovery 中管理 Azure 基于角色的访问控制
 description: 本文介绍如何应用基于角色的访问控制 (RBAC) 以管理 Azure Site Recovery 访问。
 ms.service: site-recovery
 ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 33fc2cd19152fb6cbbffb106aa058948d39555f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ce389f9281b02662f87353f00c9bca92cdf86937
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61471428"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847907"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>使用基于角色的访问控制 (RBAC) 管理 Site Recovery 访问
 
-Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访问管理。 通过 RBAC 可分离团队中的职责，并按需仅向用户授予执行特定作业的特定访问权限。
+Azure 基于角色的访问控制（RBAC）可用于对 Azure 进行细致的访问管理。 通过 RBAC 可分离团队中的职责，并按需仅向用户授予执行特定作业的特定访问权限。
 
 Azure Site Recovery 提供了 3 个用于控制 Site Recovery 管理操作的内置角色。 详细了解 [Azure RBAC 内置角色](../role-based-access-control/built-in-roles.md)
 
@@ -38,9 +38,12 @@ Azure Site Recovery 提供了 3 个用于控制 Site Recovery 管理操作的内
 > [!IMPORTANT]
 >确保根据用于资源部署的部署模型（Resource Manager/经典）添加相关权限。
 
-| **资源类型** | 部署模型 | 权限 |
+> [!NOTE]
+> 如果要为 Azure VM 启用复制并希望允许 Site Recovery 管理更新，则在启用复制时，可能还需要创建一个新的自动化帐户，在这种情况下，你需要具有在与保管库相同的订阅中创建自动化帐户的权限。
+
+| **资源类型** | **部署模型** | **权限** |
 | --- | --- | --- |
-| 计算 | 资源管理器 | Microsoft.Compute/availabilitySets/read |
+| 计算 | Resource Manager | Microsoft.Compute/availabilitySets/read |
 |  |  | Microsoft.Compute/virtualMachines/read |
 |  |  | Microsoft.Compute/virtualMachines/write |
 |  |  | Microsoft.Compute/virtualMachines/delete |
@@ -50,7 +53,7 @@ Azure Site Recovery 提供了 3 个用于控制 Site Recovery 管理操作的内
 |  |  | Microsoft.ClassicCompute/virtualMachines/read |
 |  |  | Microsoft.ClassicCompute/virtualMachines/write |
 |  |  | Microsoft.ClassicCompute/virtualMachines/delete |
-| 网络 | 资源管理器 | Microsoft.Network/networkInterfaces/read |
+| 网络 | Resource Manager | Microsoft.Network/networkInterfaces/read |
 |  |  | Microsoft.Network/networkInterfaces/write |
 |  |  | Microsoft.Network/networkInterfaces/delete |
 |  |  | Microsoft.Network/networkInterfaces/join/action |
@@ -59,17 +62,17 @@ Azure Site Recovery 提供了 3 个用于控制 Site Recovery 管理操作的内
 |  |  | Microsoft.Network/virtualNetworks/subnets/join/action |
 |  | 经典 | Microsoft.ClassicNetwork/virtualNetworks/read |
 |  |  | Microsoft.ClassicNetwork/virtualNetworks/join/action |
-| 存储 | 资源管理器 | Microsoft.Storage/storageAccounts/read |
+| 存储 | Resource Manager | Microsoft.Storage/storageAccounts/read |
 |  |  | Microsoft.Storage/storageAccounts/listkeys/action |
 |  | 经典 | Microsoft.ClassicStorage/storageAccounts/read |
 |  |  | Microsoft.ClassicStorage/storageAccounts/listKeys/action |
-| 资源组 | 资源管理器 | Microsoft.Resources/deployments/* |
+| 资源组 | Resource Manager | Microsoft.Resources/deployments/* |
 |  |  | Microsoft.Resources/subscriptions/resourceGroups/read |
 
 考虑分别为 Resource Manager 和经典部署模型使用[内置角色](../role-based-access-control/built-in-roles.md)“虚拟机参与者”和“经典虚拟机参与者”。
 
 ## <a name="next-steps"></a>后续步骤
-* [基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)：在 Azure 门户中开始使用 RBAC。
+* [基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)：Azure 门户中的 RBAC 入门。
 * 了解如何通过以下方式管理访问权限：
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)

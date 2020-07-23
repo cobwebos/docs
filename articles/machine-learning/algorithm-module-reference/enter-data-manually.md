@@ -1,106 +1,98 @@
 ---
-title: 手动输入数据：模块参考
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的手动输入数据模块中键入值来创建一个小型数据集。 数据集可以有多个列。
+title: 手动输入数据：模块引用
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的“手动输入数据”模块通过键入值来创建小型数据集。 该数据集可以有多个列。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: ee15b6fb7160ece907d55e790b0ae38ee458ab96
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
-ms.translationtype: MT
+author: likebupt
+ms.author: keli19
+ms.date: 02/22/2020
+ms.openlocfilehash: 35e31e5ace53654e8aad794dd3e25fc04bd9a088
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028600"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79367510"
 ---
-# <a name="enter-data-manually-module"></a>输入手动数据模块
+# <a name="enter-data-manually-module"></a>“手动输入数据”模块
 
-本指南介绍了 Azure 机器学习服务的可视界面 （预览版） 的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的一个模块。
 
-使用此模块通过键入值创建一个小型数据集。 数据集可以有多个列。
+使用**手动输入数据**模块，可以通过键入值来创建小型数据集。 该数据集可以有多个列。
   
-此模块可以是以下应用场景中很有帮助：  
+此模块可用于以下方案：  
   
-- 生成少量用于测试的值  
-  
-- 创建一个标签的简短列表
-  
-- 键入要在数据集中插入的列名称的列表
+- 生成一小组值用于测试。  
+- 创建简短的标签列表。  
+- 键入要在数据集中插入的列名的列表。
 
-## <a name="enter-data-manually"></a>手动输入数据 
+## <a name="create-a-dataset"></a>创建数据集 
   
-1.  添加[手动输入数据](./enter-data-manually.md)模块在试验。 您可以找到此模块中的**数据输入和输出**Azure 机器学习中的类别。 
+1. 将[手动输入数据](./enter-data-manually.md)模块添加到管道。 可以在 Azure 机器学习的**数据输入和输出**类别中找到此模块。 
   
-2.  有关**DataFormat**，选择以下选项之一。 这些选项用于确定应如何分析您提供的数据。 为每个格式要求差异很大，因此请务必阅读相关的主题。  
+1. 对于“DataFormat”  ，选择以下选项之一。 这些选项决定了应该如何分析你提供的数据。 每种格式的要求差别很大，因此请务必阅读相关主题。  
   
-    -   **ARFF**。 属性关系文件格式，使用的 Weka。   
-  
-    -   **CSV**。 以逗号分隔值格式。 有关详细信息，请参阅[转换为 CSV](./convert-to-csv.md)。  
-  
-    -   **SVMLight**。 使用 Vowpal Wabbit 和其他机器学习框架的格式。  
-  
-    -   **TSV**。 制表符分隔值格式。
+   - **ARFF**：Weka 使用的属性-关系文件格式。   
+   - **CSV**：逗号分隔值格式。 有关详细信息，请参阅[转换为 CSV](./convert-to-csv.md)。    
+   - **SVMLight**：Vowpal Wabbit 和其他机器学习框架使用的一种格式。    
+   - **TSV**：制表符分隔值格式。
 
-     如果您选择一种格式，并且不提供符合格式规范的数据，会发生运行时错误。
+   如果你选择了某种格式，但是未提供满足格式规范的数据，则会发生运行时错误。
   
-3.  在单击**数据**文本框中输入数据。 以下格式需要特别注意：  
+1. 在“数据”  文本框内单击以开始输入数据。 以下格式需要特别注意：  
   
-    - **CSV**:若要创建多个列，在以逗号分隔的文本将粘贴或键入字段之间用逗号分隔的多个列。
+   - **CSV**：若要创建多个列，请粘贴逗号分隔的文本，或者键入多个列并在字段之间使用逗号。
   
-        如果选择**HasHeader**选项，您可以使用值的第一行作为列标题。  
+     如果选择“HasHeader”  选项，则可以使用第一行值作为列标题。  
   
-        如果您取消选中此选项、 列名称、 Col1、 Col2 等，则使用。 可以添加或更改列名称使用以后[编辑元数据](./edit-metadata.md)。  
+     如果取消选择此选项，将使用列名（Col1、Col2，等等）。 稍后可以使用[编辑元数据](./edit-metadata.md)来添加或更改列名。  
   
-    - **TSV**:若要创建多个列，以制表符分隔文本将粘贴或键入多个列的字段之间使用选项卡。  
+   - **TSV**：若要创建多个列，请粘贴制表符分隔的文本，或者键入多个列并在字段之间使用制表符。  
   
-        如果选择**HasHeader**选项，您可以使用值的第一行作为列标题。  
+     如果选择“HasHeader”  选项，则可以使用第一行值作为列标题。  
   
-        如果您取消选中此选项、 列名称、 Col1、 Col2 等，则使用。 可以添加或更改列名称使用以后[编辑元数据](./edit-metadata.md)。  
+     如果取消选择此选项，将使用列名（Col1、Col2，等等）。 稍后可以使用[编辑元数据](./edit-metadata.md)来添加或更改列名。  
   
-    -   **ARFF**:将粘贴的现有 ARFF 格式文件中。 如果要直接键入值，请务必在数据的开头添加的可选标头和所需的属性字段。 
+   - **ARFF**：粘贴现有的 ARFF 格式文件。 如果直接键入值，请确保在数据的开头添加可选的标题和必需的属性字段。 
+
+     例如，可以将以下标题和属性行添加到一个简单列表中。 列标题将是 `SampleText`。 请注意，不支持字符串类型。
     
-        例如，以下标头和属性行无法添加到一个简单的列表。 列标题会`SampleText`。
-    
-        ```text
-        % Title: SampleText.ARFF  
-        % Source: Enter Data module  
-        @ATTRIBUTE SampleText STRING  
-        @DATA  
-        \<type first data row here>  
-        ```
+     ```text
+     % Title: SampleText.ARFF  
+     % Source: Enter Data module  
+     @ATTRIBUTE SampleText NUMERIC  
+     @DATA  
+     \<type first data row here>  
+     ```
 
-    -   **SVMLight**:键入或粘贴使用 SVMLight 格式的值。  
+   - **SVMLight**：使用 SVMLight 格式键入或粘贴值。  
   
-        例如，下面的示例表示 SVMight 格式中的献血数据集的前几行：  
+     例如，下面的示例以 SVMLight 格式表示 Blood Donation 数据集的前两行：  
   
-        ```text  
-        # features are [Recency], [Frequency], [Monetary], [Time]  
-        1 1:2 2:50 3:12500 4:98   
-        1 1:0 2:13 3:3250 4:28   
-        ```  
+     ```text  
+     # features are [Recency], [Frequency], [Monetary], [Time]  
+     1 1:2 2:50 3:12500 4:98   
+     1 1:0 2:13 3:3250 4:28   
+     ```  
   
-        在运行时[手动输入数据](./enter-data-manually.md)模块，这些行转换为列的数据集和索引值，如下所示：  
+     运行[手动输入数据](./enter-data-manually.md)模块时，这些行将转换为列和索引值的数据集，如下所示：  
   
-        |Col1|第 2 列|Col3|第 4 列|标签|  
-        |-|-|-|-|-|  
-        |0.00016|0.004|0.999961|0.00784|第|  
-        |0|0.004|0.999955|0.008615|第|  
+     |Col1|Col2|Col3|Col4|标签|  
+     |-|-|-|-|-|  
+     |0.00016|0.004|0.999961|0.00784|1|  
+     |0|0.004|0.999955|0.008615|1|  
   
-4.  在每个行，以开始新行后按 ENTER。  
-  
-     **请确保在最后一行后按 ENTER。** 
+1. 在每行后面选择 Enter 键，以便另起一行。      
      
-     如果按 ENTER 多次添加多个空尾随行、 最后一个空的行中删除已剪裁，但其他为空的行被视为缺失值。  
+   如果多次选择 Enter 来添加多个空的尾随行，则会删除或剪裁空行。  
   
-     如果您创建具有缺失值的行，可以始终其进行筛选更高版本。  
+   如果创建包含缺失值的行，则稍后随时可以将其筛选出来。  
   
-5.  右键单击模块并选择**运行所选**来分析数据，并将其加载到作为数据集的工作区。  
+1. 将输出端口连接到其他模块，然后运行管道。  
   
-     若要查看数据集，请单击输出端口，然后选择**可视化**。  
+   若要查看数据集，请右键单击模块并选择“可视化”  。
+
 ## <a name="next-steps"></a>后续步骤
 
-请参阅[可用的模块集](module-reference.md)到 Azure 机器学习服务。 
+请参阅 Azure 机器学习的[可用模块集](module-reference.md)。 

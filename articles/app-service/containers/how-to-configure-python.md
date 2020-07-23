@@ -1,26 +1,16 @@
 ---
-title: 配置 Python 应用 - Azure 应用服务
-description: 本教程介绍为 Linux 上的 Azure 应用服务创作和配置 Python 应用时可用的选项。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: 配置 Linux Python 应用
+description: 了解如何为应用配置预先构建的 Python 容器。 本文介绍最常见的配置任务。
 ms.topic: quickstart
 ms.date: 03/28/2019
-ms.author: astay;cephalin;kraigb
-ms.custom: seodec18
-ms.openlocfilehash: ad2ea32749c6556d17460b2a16ed41bbaa2ec62e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.reviewer: astay; kraigb
+ms.custom: mvc, seodec18, tracking-python
+ms.openlocfilehash: 94398c90f820b0e08ea8d4f0a492d96ba8039631
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956154"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905608"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux Python 应用
 
@@ -58,9 +48,31 @@ az webapp list-runtimes --linux | grep PYTHON
 az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "PYTHON|3.7"
 ```
 
+## <a name="customize-build-automation"></a>自定义生成自动化
+
+如果在启用生成自动化的情况下使用 Git 或 zip 包部署应用，应用服务生成自动化将按以下顺序完成各个步骤：
+
+1. 运行 `PRE_BUILD_SCRIPT_PATH` 指定的自定义脚本。
+1. 运行 `pip install -r requirements.txt`。
+1. 如果在存储库的根目录中找到了 *manage.py*，则运行 *manage.py collectstatic*。 但是，如果 `DISABLE_COLLECTSTATIC` 设置为 `true`，则会跳过此步骤。
+1. 运行 `POST_BUILD_SCRIPT_PATH` 指定的自定义脚本。
+
+`PRE_BUILD_COMMAND`、`POST_BUILD_COMMAND` 和 `DISABLE_COLLECTSTATIC` 是默认为空的环境变量。 若要运行生成前命令，请定义 `PRE_BUILD_COMMAND`。 若要运行生成后命令，请定义 `POST_BUILD_COMMAND`。 若要在生成 Django 应用时禁用正在运行的 collectstatic，请设置 `DISABLE_COLLECTSTATIC=true`。
+
+以下示例在一系列命令中指定两个以逗号分隔的变量。
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+有关用于自定义生成自动化的其他环境变量，请参阅 [Oryx 配置](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)。
+
+有关应用服务如何在 Linux 中运行和生成 Python 应用的详细信息，请参阅 [Oryx 文档：如何检测和生成 Python 应用](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/python.md)。
+
 ## <a name="container-characteristics"></a>容器特征
 
-部署到 Linux 上的应用服务的 Python 应用在 GitHub 存储库 [Python 3.6](https://github.com/Azure-App-Service/python/tree/master/3.6.6) 或 [Python 3.7](https://github.com/Azure-App-Service/python/tree/master/3.7.0) 中定义的 Docker 容器内运行。
+部署到 Linux 上的应用服务的 Python 应用在[应用服务 Python GitHub 存储库](https://github.com/Azure-App-Service/python)中定义的 Docker 容器内运行。 可以在特定于版本的目录中找到映像配置。
 
 此容器具有以下特征：
 
@@ -119,7 +131,7 @@ gunicorn --bind=0.0.0.0 --timeout 600 app:app
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
 ```
 
-例如，如果 Flask 应用的主模块是 hello.py，而该文件中的 Flask 应用对象名为 `myapp`，则 \<custom-command> 如下所示：
+例如，如果 Flask 应用的主模块是 *hello.py*，而该文件中的 Flask 应用对象名为 `myapp`，则 *\<custom-command>* 如下所示：
 
 ```bash
 gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -131,9 +143,9 @@ gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
 gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
-还可以将 Gunicorn 的任何附加参数添加到 \<custom-command>，例如 `--workers=4`。 有关详细信息，请参阅[运行 Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org)。
+还可以将 Gunicorn 的任何附加参数添加到 *\<custom-command>* ，例如 `--workers=4`。 有关详细信息，请参阅[运行 Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org)。
 
-要使用非 Gunicorn 服务器（例如 [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html)），则可以使用以下内容替换 \<custom-command>：
+要使用非 Gunicorn 服务器（例如 [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html)），可以将 *\<custom-command>* 替换为以下内容：
 
 ```bash
 python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
@@ -163,13 +175,13 @@ if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto
 
 ## <a name="access-diagnostic-logs"></a>访问诊断日志
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="open-ssh-session-in-browser"></a>在浏览器中打开 SSH 会话
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 - **部署自己的应用代码后看到默认应用。** 之所以显示默认应用，是因为并未将应用代码部署到应用服务，或者应用服务未找到应用代码，因此运行了默认应用。
 - 请重启应用服务，等待 15 到 20 秒，然后再次检查应用。

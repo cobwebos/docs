@@ -4,28 +4,25 @@ description: 了解如何解决 Azure VM 启动在更新 Windows 时停滞的问
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: v-jesits
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: cff1577eacd0af86d3ad1c99e1eb2164b64318c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a41c1f634c030106dd6936676010fea32da8d436
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60443766"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084012"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Azure VM 启动在更新 Windows 时停滞
 
 本文可帮助你解决虚拟机 (VM) 在启动过程中停滞在 Windows 更新阶段的问题。 
 
-> [!NOTE] 
-> Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用 Resource Manager 部署模型。 建议为新部署使用此模型，而不是使用经典部署模型。
 
 ## <a name="symptom"></a>症状
 
@@ -51,14 +48,19 @@ ms.locfileid: "60443766"
 
 4. 打开权限提升的命令提示符实例（“以管理员身份运行”）。 运行以下命令获取附加 OS 磁盘上的更新包列表：
 
-        dism /image:<Attached OS disk>:\ /get-packages > c:\temp\Patch_level.txt
+    ```console
+    dism /image:<Attached OS disk>:\ /get-packages > c:\temp\Patch_level.txt
+    ```
 
     例如，如果附加 OS 磁盘是驱动器 F，则运行以下命令：
 
-        dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
-5. 打开 C:\temp\Patch_level.txt 文件，然后从下往上浏览。 查找处于“安装挂起”或“卸载挂起”状态的更新。  以下是更新状态的示例：
+    ```console
+    dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
+    ```
 
-     ```
+5. 打开 C:\temp\Patch_level.txt 文件，然后从下往上浏览。 查找处于“安装挂起”或“卸载挂起”状态的更新   。  以下是更新状态的示例：
+
+    ```
     Package Identity : Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5
     State : Install Pending
     Release Type : Security Update

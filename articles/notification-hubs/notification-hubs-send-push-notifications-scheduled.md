@@ -4,24 +4,25 @@ description: 本主题介绍如何使用 Azure 通知中心发送预定通知。
 services: notification-hubs
 documentationcenter: .net
 keywords: 推送通知,push notification,计划推送通知
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 6b718c75-75dd-4c99-aee3-db1288235c1a
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: dotnet
 ms.topic: article
-origin.date: 04/14/2018
-ms.date: 02/25/2019
-ms.author: v-biyu
-ms.openlocfilehash: af0de9e8c18644f4ae200f6546c0dd0a41320f9f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 01/04/2019
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: ef5eedaa903480ae670f9bc48d0af89744a99d22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61457679"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "71213001"
 ---
 # <a name="how-to-send-scheduled-notifications"></a>如何：发送预定通知
 
@@ -31,7 +32,7 @@ ms.locfileid: "61457679"
 ## <a name="schedule-your-notifications"></a>计划通知
 发送通知时，只需如以下示例中所示，使用通知中心 SDK 中的 [`ScheduledNotification` 类](https://msdn.microsoft.com/library/microsoft.azure.notificationhubs.schedulednotification.aspx)：
 
-```c#
+```csharp
 Notification notification = new AppleNotification("{\"aps\":{\"alert\":\"Happy birthday!\"}}");
 var scheduled = await hub.ScheduleNotificationAsync(notification, new DateTime(2014, 7, 19, 0, 0, 0));
 ```
@@ -39,7 +40,7 @@ var scheduled = await hub.ScheduleNotificationAsync(notification, new DateTime(2
 ## <a name="cancel-scheduled-notifications"></a>取消预定通知
 此外，可以使用其 notificationId 取消以前计划的通知：
 
-```c#
+```csharp
 await hub.CancelNotificationAsync(scheduled.ScheduledNotificationId);
 ```
 

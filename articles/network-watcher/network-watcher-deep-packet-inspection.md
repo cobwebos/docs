@@ -3,35 +3,32 @@ title: 使用 Azure 网络观察程序执行数据包检查 | Microsoft 文档
 description: 本文介绍如何在 VM 中使用网络观察程序执行深度数据包检查
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: 7b907d00-9c35-40f5-a61e-beb7b782276f
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 7f3fc69bbfd881a26ceb25705852558b66c60153
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.author: damendo
+ms.openlocfilehash: 2a4debda712636e577639b84845dda6b9b4228a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716900"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84725049"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>使用 Azure 网络观察程序执行数据包检查
 
 使用网络观察程序的数据包捕获功能，可在门户、PowerShell、CLI 中以及通过 SDK 和 REST API 以编程方式在 Azure VM 上启动和管理捕获会话。 借助数据包捕获，可通过以随时可用的格式提供信息，来解决需要数据包级数据的方案。 利用免费工具检查数据，可以检测传入和传出 VM 的通信并洞察网络流量。 数据包捕获数据的一些示例用途包括：调查网络或应用程序问题、检测网络滥用和入侵企图，或保持合规性。 本文介绍如何使用流行的开源工具打开网络观察程序提供的数据包捕获文件。 此外，还举例说明了如何计算连接延迟、识别异常流量，以及检查网络统计信息。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文会回顾以前运行的有关数据包捕获的一些预配置方案。 这些方案演示了可以通过查看数据包捕获访问的功能。 本方案使用 [WireShark](https://www.wireshark.org/) 来检查数据包捕获。
 
 本方案假设已在虚拟机上运行数据包捕获。 若要了解如何创建数据包捕获，请访问 [Manage packet captures with the portal](network-watcher-packet-capture-manage-portal.md)（使用门户管理数据包捕获）；若要了解如何使用 REST 进行相应操作，请访问 [Managing Packet Captures with REST API](network-watcher-packet-capture-manage-rest.md)（使用 REST API 管理数据包捕获）。
 
-## <a name="scenario"></a>场景
+## <a name="scenario"></a>方案
 
 本方案中的操作：
 
@@ -41,7 +38,7 @@ ms.locfileid: "64716900"
 
 本方案说明如何查看两个终结点之间发生的传输控制协议 (TCP) 对话的初始往返时间 (RTT)。
 
-建立 TCP 连接后，在连接中发送的前三个数据包遵循一种通常称作“三次握手”的模式。 通过检查此握手中发送的前两个数据包、客户端发出的初始请求以及服务器发出的响应，我们可以计算建立此连接时的延迟。 此延迟称为“往返时间”(RTT)。 有关 TCP 协议和三次握手的详细信息，请参阅以下资源。 https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip
+建立 TCP 连接后，在连接中发送的前三个数据包遵循一种通常称作“三次握手”的模式。 通过检查此握手中发送的前两个数据包、客户端发出的初始请求以及服务器发出的响应，我们可以计算建立此连接时的延迟。 此延迟称为“往返时间”(RTT)。 有关 TCP 协议和三次握手的详细信息，请参阅以下资源。 [https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip)
 
 ### <a name="step-1"></a>步骤 1
 
@@ -79,7 +76,7 @@ ms.locfileid: "64716900"
 
 ### <a name="step-1"></a>步骤 1
 
-使用前一方案中的同一个捕获。单击“统计信息” > “协议层次结构”
+使用前一方案中的同一个捕获。单击“统计信息” > “协议层次结构” 
 
 ![协议层次结构菜单][2]
 
@@ -95,7 +92,7 @@ ms.locfileid: "64716900"
 
 ### <a name="step-1"></a>步骤 1
 
-使用前一方案中的同一个捕获。单击“统计信息” > “IPv4 统计信息” > “目标和端口”
+使用前一方案中的同一个捕获。单击“统计信息” > “IPv4 统计信息” > “目标和端口”  
 
 ![数据包捕获窗口][4]
 

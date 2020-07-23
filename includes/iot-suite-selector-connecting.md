@@ -9,11 +9,11 @@ ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147710"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "67173386"
 ---
 > [!div class="op_single_selector"]
 > * [Windows 上的 C](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -58,17 +58,17 @@ ms.locfileid: "66147710"
 
 对于连接到解决方案加速器的设备，该设备必须使用有效的凭据将自身标识到 IoT 中心。 将设备添加到解决方案时，有机会保存包含这些凭据的设备连接字符串。 在本教程中，稍后会在客户端应用程序中添加设备连接字符串。
 
-若要在远程监视解决方案中添加设备，请在解决方案中的 **Device Explorer** 页上完成以下步骤：
+若要在远程监视解决方案中添加设备，请在解决方案中的“设备资源管理器”页上完成以下步骤：
 
-1. 选择“+ 新建设备”，并选择“真实”作为设备类型：
+1. 选择“+ 新建设备”，然后选择“真实”作为设备类型  ：
 
     ![添加真实设备](media/iot-suite-selector-connecting/devicesprovision.png)
 
-1. 输入 Physical-chiller 作为设备 ID。 选择“对称密钥”和“自动生成密钥”选项：
+1. 输入 Physical-chiller 作为设备 ID。 选择“对称密钥”和“自动生成密钥”选项： 
 
     ![选择设备选项](media/iot-suite-selector-connecting/devicesoptions.png)
 
-1. 选择“应用”。 然后记下设备 ID、主密钥和连接字符串主密钥值：
+1. 选择“应用”。 然后记下设备 ID、主密钥和连接字符串主密钥值  ：
 
     ![检索凭据](media/iot-suite-selector-connecting/credentials.png)
 
@@ -78,4 +78,4 @@ ms.locfileid: "66147710"
 
 * 设备报告给解决方案的属性。 例如，冷却器设备报告有关其固件和位置的信息。
 * 由设备发送到解决方案的遥测数据类型。 例如，冷却器设备发送温度、湿度和压力值。
-* 从解决方案可计划的在设备上运行的方法。 例如，冷却器设备必须实现 Reboot、FirmwareUpdate、EmergencyValveRelease 和 IncreasePressure 方法。
+* 从解决方案可计划的在设备上运行的方法。 例如，冷却器设备必须实现 Reboot、FirmwareUpdate、EmergencyValveRelease 和 IncreasePressure 方法    。

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: 647f46502079d85eb82e2da953889a8776bf2e6c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66120880"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67173485"
 ---
 ## <a name="create-a-resource-group"></a>创建资源组
 

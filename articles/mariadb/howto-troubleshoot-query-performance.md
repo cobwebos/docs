@@ -1,17 +1,16 @@
 ---
-title: 如何对 Azure Database for MariaDB 中的查询性能问题进行故障排除
-description: 本文介绍了如何使用 EXPLAIN 对 Azure Database for MariaDB 中的查询性能问题进行故障排除。
+title: 查询性能故障排除 - Azure Database for MariaDB
+description: 了解如何使用 EXPLAIN 对 Azure Database for MariaDB 中的查询性能问题进行故障排除。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
-ms.date: 11/09/2018
-ms.openlocfilehash: 672635c8d8c84fa16c106ae79e97332fd740928d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.topic: troubleshooting
+ms.date: 3/18/2020
+ms.openlocfilehash: ca9a74763715c5c68526ff3213a14d2148f5ad30
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60745156"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834299"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>如何使用 EXPLAIN 分析 Azure Database for MariaDB 中的查询性能
 **EXPLAIN** 是一个可用来优化查询的易用工具。 可以使用 EXPLAIN 语句来获取有关 SQL 语句执行情况的信息。 下面的输出显示了 EXPLAIN 语句的一个执行示例。
@@ -166,4 +165,4 @@ EXPLAIN 现在表明，MariaDB 能够使用组合索引避免额外的排序，�
 使用 EXPLAIN 和各种类型的索引可以显著提高性能。 表上有索引并不一定意味着 MariaDB 能够将其用于查询。 请始终使用 EXPLAIN 来验证假设并使用索引优化查询。
 
 ## <a name="next-steps"></a>后续步骤
-- 若要查找同行对你最关心问题的解答，或者要发布新的问题/答案，请访问 [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMariadb)或 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb)。
+- 若要查找同行对你最关心问题的解答，或者要发布新的问题/答案，请访问 [Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-database-mariadb.html)或 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb)。

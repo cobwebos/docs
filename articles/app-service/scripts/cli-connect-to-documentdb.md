@@ -1,27 +1,20 @@
 ---
-title: Azure CLI 脚本示例 - 将 Web 应用连接到 MongoDB (Cosmos DB) | Microsoft Docs
-description: Azure CLI 脚本示例 - 将 Web 应用连接到 MongoDB (Cosmos DB)
-services: appservice
-documentationcenter: appservice
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI：将应用连接到 Cosmos DB
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 此示例演示如何将应用连接到 MongoDB (Cosmos DB)。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: bbbdbc42-efb5-4b4f-8ba6-c03c9d16a7ea
-ms.service: app-service
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 68c69413322d87fc557686701c474730d2ed8405
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 911282e71491c86fefa86d342e916cdff4fa8c9b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136874"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80058671"
 ---
 # <a name="connect-an-app-service-app-to-cosmos-db-using-cli"></a>使用 CLI 将应用服务应用连接到 Cosmos DB
 
@@ -43,7 +36,7 @@ ms.locfileid: "66136874"
 
 此脚本使用以下命令创建资源组、应用服务应用、Cosmos DB 和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 创建应用服务计划。 |

@@ -3,24 +3,20 @@ title: Azure PowerShell 脚本示例 - 对等互连两个虚拟网络 | Microsof
 description: Azure PowerShell 脚本示例 - 对等互连两个虚拟网络
 services: virtual-network
 documentationcenter: virtual-network
-author: georgewallace
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: KumudD
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: powershell
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
-ms.author: gwallace
-ms.openlocfilehash: 65f578a82cba73a21ef8be559c3b229235a073ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: kumud
+ms.openlocfilehash: 53af283813500fc93d3e5fb9d4b00a9c3034af2d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66156878"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73890190"
 ---
 # <a name="peer-two-virtual-networks"></a>对等互连两个虚拟网络
 
@@ -48,7 +44,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 此脚本使用以下命令创建资源组、虚拟机和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 | 
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)| 创建 Azure 虚拟网络和子网。 |

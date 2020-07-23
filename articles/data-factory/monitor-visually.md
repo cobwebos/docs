@@ -1,112 +1,79 @@
 ---
-title: 以可视化方式监视 Azure 数据工厂 | Microsoft Docs
-description: 了解如何以可视化方式监视 Azure 数据工厂
+title: 以可视化方式监视 Azure 数据工厂
+description: 了解如何直观监视 Azure 数据工厂
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.author: shlo
-ms.openlocfilehash: df684860cd3d1b6a002a300682ca4c6398461ba6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 06/30/2020
+ms.openlocfilehash: b65b5b847712ce32c6723d725be9cf2ed1f99050
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60716673"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801508"
 ---
-# <a name="visually-monitor-azure-data-factories"></a>以可视化方式监视 Azure 数据工厂
-Azure 数据工厂是基于云的数据集成服务，用于在云中创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。 使用 Azure 数据工厂，可以创建和计划数据驱动型工作流（称为管道），以便从不同的数据存储引入数据，通过各种计算服务（例如 Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics 和 Azure 机器学习）处理/转换数据，将输出数据发布到数据存储（例如 Azure SQL 数据仓库），供商业智能 (BI) 应用程序使用。
+# <a name="visually-monitor-azure-data-factory"></a>以可视化方式监视 Azure 数据工厂
 
-在本快速入门中，你将学习如何在不需要编写任何代码的情况下以可视化方式监视数据工厂管道。
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+在 Azure 数据工厂中创建并发布管道以后，即可将其与触发器关联，或者手动启动临时运行。 可以在 Azure 数据工厂用户体验中以本机方式监视所有管道运行。 若要打开监视体验，请在 [Azure 门户](https://portal.azure.com/)的数据工厂边栏选项卡中选择“监视和管理”磁贴。 如果已在 ADF UX 中，请单击左侧边栏上的“监视”图标。
 
-## <a name="monitor-data-factory-pipelines"></a>监视数据工厂管道
-
-使用简单的列表视图界面监视管道和活动运行。 所有运行都以本地浏览器时区显示。 你可以更改时区，所有日期时间字段都将调整到所选的时区。  
-
-1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
-2. 登录到 [Azure 门户](https://portal.azure.com/)。
-3. 在 Azure 门户中，导航到所创建的数据工厂边栏选项卡并单击“监视和管理”磁贴，以启动数据工厂视觉对象监视体验。
+所有数据工厂运行都以浏览器的本地时区显示。 如果你更改时区，所有日期/时间字段都会与你选择的时区保持一致。
 
 ## <a name="monitor-pipeline-runs"></a>监视管道运行
-以下列表视图展示了数据工厂 v2 管道的每个管道运行。 包括的列：
 
-| **列名称** | **说明** |
+默认监视视图是所选时段内管道运行的列表。 以下列会显示：
+
+| **列名** | **说明** |
 | --- | --- |
-| 管道名称 | 管道的名称。 |
-| 操作 | 可用于查看活动运行的单个操作。 |
-| 运行开始时间 | 管道运行的开始日期时间（MM/DD/YYYY，HH:MM:SS AM/PM） |
-| Duration | 运行持续时间 (HH:MM:SS) |
-| 触发者 | 手动触发、计划触发 |
-| 状态 | 已失败、已成功、正在进行 |
-| parameters | 管道运行参数（名称-值对） |
-| 错误 | 管道运行错误（如果有） |
+| 管道名称 | 管道的名称 |
+| 操作 | 图标，用于查看活动详细信息、取消或重新运行管道 |
+| 运行开始时间 | 管道运行的开始日期和时间（MM/DD/YYYY，HH:MM:SS AM/PM） |
+| 持续时间 | 运行持续时间 (HH:MM:SS) |
+| 触发者 | 启动了管道的触发器的名称 |
+| 状态 | **失败**、**成功**、**正在进行**、**已取消**或**已排队** |
+| 批注 | 与管道关联的可筛选标记  |
+| parameters | 管道运行的参数（名称/值对） |
+| 错误 | 在管道失败的情况下出现的运行错误 |
 | 运行 ID | 管道运行的 ID |
 
-![监视管道运行](media/monitor-visually/pipeline-runs.png)
+![用于监视管道运行的列表视图](media/monitor-visually/pipeline-runs.png)
+
+需要手动选择“刷新”按钮来刷新管道和活动运行的列表。 当前不支持自动刷新。
+
+![“刷新”按钮](media/monitor-visually/refresh.png)
 
 ## <a name="monitor-activity-runs"></a>监视活动运行
-以下列表视图展示了与每个管道运行对应的活动运行。 单击“操作”列下的“活动运行”图标可查看每个管道运行的活动运行。 包括的列：
 
-| **列名称** | **说明** |
+若要查看每个管道运行的活动运行，请在“操作”列下选择“查看活动运行”图标。  此列表视图显示了与每个管道运行对应的活动运行。
+
+| **列名** | **说明** |
 | --- | --- |
-| 活动名称 | 管道中的活动的名称。 |
-| 活动类型 | 活动类型，例如复制、HDInsightSpark、HDInsightHive，等等。 |
-| 运行开始时间 | 活动运行的开始日期时间（MM/DD/YYYY，HH:MM:SS AM/PM） |
-| Duration | 运行持续时间 (HH:MM:SS) |
-| 状态 | 已失败、已成功、正在进行 |
-| 输入 | 描述了活动输入的 JSON 数组 |
-| 输出 | 描述了活动输出的 JSON 数组 |
-| 错误 | 活动运行错误（如果有） |
+| 活动名称 | 管道中的活动的名称 |
+| 活动类型 | 活动类型，如“复制”、“ExecuteDataFlow”或“AzureMLExecutePipeline” |
+| 操作 | 图标，用于查看 JSON 输入信息、JSON 输出信息或详细的特定于活动的监视体验 | 
+| 运行开始时间 | 活动运行的开始日期和时间（MM/DD/YYYY，HH:MM:SS AM/PM） |
+| 持续时间 | 运行持续时间 (HH:MM:SS) |
+| 状态 | **失败**、**成功**、**正在进行**或**已取消** |
+| Integration Runtime | 运行活动时所在的 Integration Runtime |
+| 用户属性 | 活动的用户定义属性 |
+| 错误 | 在活动失败的情况下出现的运行错误 |
+| 运行 ID | 活动运行的 ID |
 
-![监视活动运行](media/monitor-visually/activity-runs.png)
+![用于监视活动运行的列表视图](media/monitor-visually/activity-runs.png)
 
-> [!IMPORTANT]
-> 需要单击顶部的“刷新”图标来刷新管道和活动运行的列表。 当前不支持自动刷新。
+### <a name="promote-user-properties-to-monitor"></a>提升要监视的用户属性
 
-![刷新](media/monitor-visually/refresh.png)
-
-## <a name="select-a-data-factory-to-monitor"></a>选择要监视的数据工厂
-将鼠标指针悬停在左上角的“数据工厂”图标上。 单击“箭头”图标以查看可以监视的 azure 订阅和数据工厂的列表。
-
-![选择数据工厂](media/monitor-visually/select-datafactory.png)
-
-## <a name="configure-the-list-view"></a>配置列表视图
-
-### <a name="apply-rich-ordering-and-filtering"></a>应用丰富的排序和筛选
-
-按运行开始时间以降序/升序排列管道运行，并按以下列筛选管道运行：
-
-| **列名称** | **说明** |
-| --- | --- |
-| 管道名称 | 管道的名称。 选项包括针对“过去 24 小时”、“过去一周”、“过去 30 天”的快速筛选器，还可以选择一个自定义日期时间。 |
-| 运行开始时间 | 管道运行的开始日期时间 |
-| 运行状态 | 按状态筛选运行 - 已成功、已失败、正在进行 |
-
-![筛选器](media/monitor-visually/filter.png)
-
-### <a name="add-or-remove-columns"></a>添加或删除列
-右键单击列表视图标题，并选择希望在列表视图中显示的列
-
-![列](media/monitor-visually/columns.png)
-
-### <a name="adjust-column-widths"></a>调整列宽
-通过将鼠标指针悬停在列标题上来增大或减小列表视图中的列宽
-
-## <a name="promote-user-properties-to-monitor"></a>提升要监视的用户属性
-
-可以将任何管道活动属性提升为用户属性，使其成为可以监视的实体。 例如，可以将管道中复制活动的**源**和**目标**属性提升为用户属性。 还可以选择“自动生成”，为复制活动生成**源**和**目标**用户属性。
+将任何管道活动属性提升为用户属性，使其成为受监视的实体。 例如，可以将管道中复制活动的“源”和“目标”属性提升为用户属性。 选择“自动生成”，为复制活动生成“源”和“目标”用户属性。
 
 ![创建用户属性](media/monitor-visually/monitor-user-properties-image1.png)
 
 > [!NOTE]
-> 最多只能将 5 个管道活动属性提升为用户属性。
+> 最多只能将五个管道活动属性提升为用户属性。
 
 创建用户属性后，便可在监视列表视图中监视它们。 如果复制活动的源是表名，则可以将源表名称作为活动运行列表视图中的列进行监视。
 
@@ -116,13 +83,43 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 
 ![具有用户属性的列的活动运行列表](media/monitor-visually/monitor-user-properties-image4.png)
 
+## <a name="configure-the-list-view"></a>配置列表视图
+
+### <a name="order-and-filter"></a>排序和筛选
+
+进行切换操作，以便根据运行开始时间按降序或升序来排列管道运行。 使用以下列来筛选管道运行：
+
+| **列名** | **说明** |
+| --- | --- |
+| 管道名称 | 按管道名称筛选。 |
+| 运行开始时间 |  确定所显示的管道运行的时间范围。 选项包括针对“过去 24 小时”、“过去一周”、“过去 30 天”的快速筛选器，还可以选择一个自定义日期和时间。   |
+| 运行状态 | 按状态筛选运行：**成功**、**失败**、**已排队**、**已取消**或**正在进行**。 |
+| 批注 | 按应用到每个管道的标记进行筛选 |
+| 运行次数 | 筛选是否要查看重新运行的管道 |
+
+![筛选选项](media/monitor-visually/filter.png)
+
+### <a name="add-or-remove-columns"></a>添加或删除列
+右键单击列表视图标题，并选择希望在列表视图中显示的列。
+
+![列选项](media/monitor-visually/columns.png)
+
+### <a name="adjust-column-widths"></a>调整列宽
+通过将鼠标悬停在列标题之上，可以增加和减少列表视图中的列宽。
+
 ## <a name="rerun-activities-inside-a-pipeline"></a>重新运行管道中的活动
 
-现在可以重新运行管道中的活动。 单击“查看活动运行”并选择要从管道中的活动中的哪个点重新运行管道。
+可以重新运行管道中的活动。 依次选择“查看活动运行”和管道中的活动，以从这一点开始重新运行管道。
 
 ![查看活动运行](media/monitor-visually/rerun-activities-image1.png)
 
 ![选择一个活动运行](media/monitor-visually/rerun-activities-image2.png)
+
+### <a name="rerun-from-failed-activity"></a>从失败的活动重新运行
+
+如果某个活动失败、超时或被取消，则可以通过选择“从失败的活动重新运行”来从该失败的活动重新运行管道。
+
+![重新运行失败的活动](media/monitor-visually/rerun-failed-activity.png)
 
 ### <a name="view-rerun-history"></a>查看重新运行历史记录
 
@@ -134,21 +131,45 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 
 ![查看管道运行的历史记录](media/monitor-visually/rerun-history-image2.png)
 
+## <a name="monitor-consumption"></a>监视消耗
+
+通过单击管道运行旁边的消耗图标，可以查看运行消耗的资源。 
+
+![监视消耗](media/monitor-visually/monitor-consumption-1.png)
+
+单击此图标会打开相应管道运行所使用的资源的消耗报告。 
+
+![监视消耗](media/monitor-visually/monitor-consumption-2.png)
+
+可以将这些值插入到 [Azure 定价计算器](https://azure.microsoft.com/pricing/details/data-factory/)中，以估计管道运行的成本。 若要详细了解 Azure 数据工厂定价，请参阅[了解定价](pricing-concepts.md)。
+
+> [!NOTE]
+> 定价计算器返回的这些值是估计值。 它并不反映 Azure 数据工厂将向你收取的确切金额 
+
+## <a name="gantt-views"></a>甘特视图
+
+使用甘特视图可快速可视化管道和活动运行。
+
+![甘特图示例](media/monitor-visually/gantt1.png)
+
+可以根据在管道上创建的注释/标记，按管道或组查看甘特图。
+
+![甘特图注释](media/monitor-visually/gantt2.png)
+
+条形长度表示管道持续时间。 还可以选择条形来查看更多详细信息。
+
+![甘特图持续时间](media/monitor-visually/gantt3.png)
+
 ## <a name="guided-tours"></a>引导式演示
-单击左下角的“信息图标”并单击“引导式演示”来获取有关如何监视管道和活动运行的分步说明。
+选择左下角的“信息”图标。 然后选择“引导式演示”来获取有关如何监视管道和活动运行的分步说明。
 
 ![引导式演示](media/monitor-visually/guided-tours.png)
 
-## <a name="feedback"></a>反馈
-单击“反馈”图标可向我们提供有关各种功能以及你可能遇到的任何问题的反馈。
-
-![反馈](media/monitor-visually/feedback.png)
-
 ## <a name="alerts"></a>警报
 
-可在数据工厂中发出有关受支持指标的警报。 在“数据工厂监视器”页面上选择“监视器”->“警报和指标”以开始。 
+可在数据工厂中发出有关受支持指标的警报。 在“数据工厂监视”页上，依次选择“监视” > “警报和指标”，以开始操作。
 
-![](media/monitor-visually/alerts01.png)
+![数据工厂监视页](media/monitor-visually/start-page.png)
 
 有关此功能的 7 分钟介绍和演示，请观看以下视频：
 
@@ -156,34 +177,38 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 
 ### <a name="create-alerts"></a>创建警报
 
-1.  单击“新建警报规则”以创建新警报。 
+1.  选择“新建警报规则”，以新建警报。
 
-    ![](media/monitor-visually/alerts02.png)
+    ![“新建警报规则”按钮](media/monitor-visually/new-alerts.png)
 
-1.  指定规则名称，然后选择警报**严重性**。
+1.  指定规则名称，然后选择警报严重性。
 
-    ![](media/monitor-visually/alerts03.png)
+    ![规则名称和严重性的框](media/monitor-visually/name-and-severity.png)
 
 1.  选择警报条件。
 
-    ![](media/monitor-visually/alerts04.png)
+    ![目标条件的框](media/monitor-visually/add-criteria-1.png)
 
-    ![](media/monitor-visually/alerts05.png)
+    ![条件列表](media/monitor-visually/add-criteria-2.png)
+
+    ![条件列表](media/monitor-visually/add-criteria-3.png)
+
+    你可以基于各种指标创建警报，包括 ADF 实体计数/大小、活动/管道/触发器运行、Integration Runtime （IR） CPU 使用率/内存/节点计数/队列，以及 SSIS 包执行和 SSIS IR 启动/停止操作。
 
 1.  配置警报逻辑。 可以针对所选的指标为所有管道和对应的活动创建警报。 还可以选择特定的活动类型、活动名称、管道名称或故障类型。
 
-    ![](media/monitor-visually/alerts06.png)
+    ![用于配置警报逻辑的选项](media/monitor-visually/alert-logic.png)
 
-1.  为警报配置**电子邮件/短信/推送/语音**通知。 为警报通知创建或选择现有**操作组**。
+1.  为警报配置电子邮件、短信、推送和语音通知。 为警报通知创建一个操作组，或选择现有的操作组。
 
-    ![](media/monitor-visually/alerts07.png)
+    ![用于配置通知的选项](media/monitor-visually/configure-notification-1.png)
 
-    ![](media/monitor-visually/alerts08.png)
+    ![用于添加通知的选项](media/monitor-visually/configure-notification-2.png)
 
 1.  创建警报规则。
 
-    ![](media/monitor-visually/alerts09.png)
+    ![用于创建警报规则的选项](media/monitor-visually/create-alert-rule.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-参阅[以编程方式监视和管理管道](https://docs.microsoft.com/azure/data-factory/monitor-programmatically)一文，了解有关监视和管理管道的信息。
+若要了解有关监视和管理管道的信息，请参阅[以编程方式监视和管理管道](https://docs.microsoft.com/azure/data-factory/monitor-programmatically)一文。

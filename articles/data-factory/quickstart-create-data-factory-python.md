@@ -1,47 +1,56 @@
 ---
-title: 使用 Python 创建 Azure 数据工厂 | Microsoft Docs
+title: 快速入门：使用 Python 创建 Azure 数据工厂
 description: 创建一个 Azure 数据工厂，将数据从 Azure Blob 存储中的一个位置复制到另一位置。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
-ms.author: shlo
-ms.openlocfilehash: 264a1200ce78d85181650de716f9898033834bc0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.custom: seo-python-october2019, tracking-python
+ms.openlocfilehash: 3a40ff7fbf021833ff382ad2288eb263378c96c2
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549827"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512597"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>快速入门：使用 Python 创建数据工厂和管道
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
+> * [版本 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [当前版本](quickstart-create-data-factory-python.md)
 
-Azure 数据工厂是基于云的数据集成服务，用于在云中创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。 使用 Azure 数据工厂，可以创建和计划数据驱动型工作流（称为管道），以便从不同的数据存储引入数据，通过各种计算服务（例如 Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics 和 Azure 机器学习）处理/转换数据，将输出数据发布到数据存储（例如 Azure SQL 数据仓库），供商业智能 (BI) 应用程序使用。
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-此快速入门教程介绍了如何使用 Python 创建一个 Azure 数据工厂。 该数据工厂中的管道将数据从 Azure blob 存储中的一个文件夹复制到另一个文件夹。
+在本快速入门中，你将使用 Python 创建数据工厂。 此数据工厂中的管道将数据从 Azure Blob 存储中的一个文件夹复制到另一个文件夹。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+Azure 数据工厂是基于云的数据集成服务，用于创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。 可以使用 Azure 数据工厂创建和计划数据驱动型工作流（称为管道）。
+
+管道可以从不同的数据存储引入数据。 管道使用计算服务（例如 Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics 和 Azure 机器学习）处理或转换数据。 管道将输出数据发布到数据存储（例如 Azure SQL 数据仓库），供商业智能 (BI) 应用程序使用。
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 存储帐户**。 可以将 blob 存储用作**源**和**接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)一文来获取创建步骤。
-* 按照[此说明](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)**在 Azure Active Directory 中创建应用程序**。 记下要在后续步骤中使用的以下值：**应用程序 ID**、**身份验证密钥**和**租户 ID**。 根据同一文章中的以下说明将应用程序分配到“参与者”角色。
+* 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-### <a name="create-and-upload-an-input-file"></a>创建并上传输入文件
+* [Python 3.4+](https://www.python.org/downloads/)。
+
+* [Azure 存储帐户](../storage/common/storage-account-create.md)。
+
+* [Azure 存储资源管理器](https://storageexplorer.com/)（可选）。
+
+* [Azure Active Directory 中的应用程序](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 记下要在后续步骤中使用的以下值：**应用程序 ID**、**身份验证密钥**和**租户 ID**。 按照同一文章中的以下说明将应用程序分配到“参与者”角色。
+
+## <a name="create-and-upload-an-input-file"></a>创建并上传输入文件
 
 1. 启动记事本。 复制以下文本并在磁盘上将其另存为 **input.txt** 文件。
 
-    ```
+    ```text
     John|Doe
     Jane|Doe
     ```
@@ -52,12 +61,12 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 1. 使用管理员特权打开一个终端或命令提示符。 
 2. 首先，安装 Azure 管理资源的 Python 包：
 
-    ```
+    ```python
     pip install azure-mgmt-resource
     ```
 3. 若要为数据工厂安装 Python 包，请运行以下命令：
 
-    ```
+    ```python
     pip install azure-mgmt-datafactory
     ```
 
@@ -107,7 +116,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
         else:
             print("\tErrors: {}".format(activity_run.error['message']))
     ```
-3. 向 **Main** 方法中添加用于创建 DataFactoryManagementClient 类的实例的以下代码。 将使用此对象来创建数据工厂、链接服务、数据集和管道。 还将使用此对象来监视管道运行详细信息。 将 **subscription_id** 变量设置为 Azure 订阅的 ID。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+3. 向 **Main** 方法中添加用于创建 DataFactoryManagementClient 类的实例的以下代码。 将使用此对象来创建数据工厂、链接服务、数据集和管道。 还将使用此对象来监视管道运行详细信息。 将 **subscription_id** 变量设置为 Azure 订阅的 ID。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
     ```python
     def main():
@@ -159,7 +168,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
     ls_name = 'storageLinkedService'
 
     # IMPORTANT: specify the name and key of your Azure Storage account.
-    storage_string = SecureString('DefaultEndpointsProtocol=https;AccountName=<storageaccountname>;AccountKey=<storageaccountkey>')
+    storage_string = SecureString(value='DefaultEndpointsProtocol=https;AccountName=<storageaccountname>;AccountKey=<storageaccountkey>')
 
     ls_azure_storage = AzureStorageLinkedService(connection_string=storage_string)
     ls = adf_client.linked_services.create_or_update(rg_name, df_name, ls_name, ls_azure_storage)
@@ -173,15 +182,15 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 
 向 Main 方法中添加用于创建 Azure blob 数据集的以下代码。 有关 Azure Blob 数据集的属性的信息，请参阅 [Azure Blob 连接器](connector-azure-blob-storage.md#dataset-properties)一文。
 
-你将在 Azure Blob 中定义表示源数据的数据集。 此 Blob 数据集引用在上一步中创建的 Azure 存储链接服务。
+在 Azure Blob 中定义表示源数据的数据集。 此 Blob 数据集引用在上一步中创建的 Azure 存储链接服务。
 
 ```python
     # Create an Azure blob dataset (input)
     ds_name = 'ds_in'
-    ds_ls = LinkedServiceReference(ls_name)
+    ds_ls = LinkedServiceReference(reference_name=ls_name)
     blob_path= 'adfv2tutorial/input'
     blob_filename = 'input.txt'
-    ds_azure_blob= AzureBlobDataset(ds_ls, folder_path=blob_path, file_name = blob_filename)
+    ds_azure_blob= AzureBlobDataset(linked_service_name=ds_ls, folder_path=blob_path, file_name = blob_filename)
     ds = adf_client.datasets.create_or_update(rg_name, df_name, ds_name, ds_azure_blob)
     print_item(ds)
 ```
@@ -190,13 +199,13 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 
 向 Main 方法中添加用于创建 Azure blob 数据集的以下代码。 有关 Azure Blob 数据集的属性的信息，请参阅 [Azure Blob 连接器](connector-azure-blob-storage.md#dataset-properties)一文。
 
-你将在 Azure Blob 中定义表示源数据的数据集。 此 Blob 数据集引用在上一步中创建的 Azure 存储链接服务。
+在 Azure Blob 中定义表示源数据的数据集。 此 Blob 数据集引用在上一步中创建的 Azure 存储链接服务。
 
 ```python
     # Create an Azure blob dataset (output)
     dsOut_name = 'ds_out'
     output_blobpath = 'adfv2tutorial/output'
-    dsOut_azure_blob = AzureBlobDataset(ds_ls, folder_path=output_blobpath)
+    dsOut_azure_blob = AzureBlobDataset(linked_service_name=ds_ls, folder_path=output_blobpath)
     dsOut = adf_client.datasets.create_or_update(rg_name, df_name, dsOut_name, dsOut_azure_blob)
     print_item(dsOut)
 ```
@@ -210,9 +219,9 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
     act_name = 'copyBlobtoBlob'
     blob_source = BlobSource()
     blob_sink = BlobSink()
-    dsin_ref = DatasetReference(ds_name)
-    dsOut_ref = DatasetReference(dsOut_name)
-    copy_activity = CopyActivity(act_name,inputs=[dsin_ref], outputs=[dsOut_ref], source=blob_source, sink=blob_sink)
+    dsin_ref = DatasetReference(reference_name=ds_name)
+    dsOut_ref = DatasetReference(reference_name=dsOut_name)
+    copy_activity = CopyActivity(name=act_name,inputs=[dsin_ref], outputs=[dsOut_ref], source=blob_source, sink=blob_sink)
 
     #Create a pipeline with the copy activity
     p_name = 'copyPipeline'
@@ -228,10 +237,7 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 
 ```python
     #Create a pipeline run.
-    run_response = adf_client.pipelines.create_run(rg_name, df_name, p_name,
-        {
-        }
-    )
+    run_response = adf_client.pipelines.create_run(rg_name, df_name, p_name, parameters={})
 ```
 
 ## <a name="monitor-a-pipeline-run"></a>监视管道运行
@@ -243,8 +249,12 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
     time.sleep(30)
     pipeline_run = adf_client.pipeline_runs.get(rg_name, df_name, run_response.run_id)
     print("\n\tPipeline run status: {}".format(pipeline_run.status))
-    activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(rg_name, df_name, pipeline_run.run_id, datetime.now() - timedelta(1),  datetime.now() + timedelta(1)))
-    print_activity_run_details(activity_runs_paged[0])
+    filter_params = RunFilterParameters(
+        last_updated_after=datetime.now() - timedelta(1), last_updated_before=datetime.now() + timedelta(1))
+    query_response = adf_client.activity_runs.query_by_pipeline_run(
+        rg_name, df_name, pipeline_run.run_id, filter_params)
+    print_activity_run_details(query_response.value[0])
+
 ```
 
 现在添加以下语句，以便在运行程序时调用 **main** 方法：
@@ -266,6 +276,7 @@ from azure.mgmt.datafactory.models import *
 from datetime import datetime, timedelta
 import time
 
+
 def print_item(group):
     """Print an Azure object instance."""
     print("\tName: {}".format(group.name))
@@ -278,6 +289,7 @@ def print_item(group):
         print_properties(group.properties)
     print("\n")
 
+
 def print_properties(props):
     """Print a ResourceGroup properties instance."""
     if props and hasattr(props, 'provisioning_state') and props.provisioning_state:
@@ -285,16 +297,21 @@ def print_properties(props):
         print("\t\tProvisioning State: {}".format(props.provisioning_state))
     print("\n")
 
+
 def print_activity_run_details(activity_run):
     """Print activity run details."""
     print("\n\tActivity run details\n")
     print("\tActivity run status: {}".format(activity_run.status))
     if activity_run.status == 'Succeeded':
-        print("\tNumber of bytes read: {}".format(activity_run.output['dataRead']))
-        print("\tNumber of bytes written: {}".format(activity_run.output['dataWritten']))
-        print("\tCopy duration: {}".format(activity_run.output['copyDuration']))
+        print("\tNumber of bytes read: {}".format(
+            activity_run.output['dataRead']))
+        print("\tNumber of bytes written: {}".format(
+            activity_run.output['dataWritten']))
+        print("\tCopy duration: {}".format(
+            activity_run.output['copyDuration']))
     else:
         print("\tErrors: {}".format(activity_run.error['message']))
+
 
 def main():
 
@@ -308,12 +325,13 @@ def main():
     df_name = '<Your data factory name>'
 
     # Specify your Active Directory client ID, client secret, and tenant ID
-    credentials = ServicePrincipalCredentials(client_id='<Active Directory client ID>', secret='<client secret>', tenant='<tenant ID>')
+    credentials = ServicePrincipalCredentials(
+        client_id='<Active Directory client ID>', secret='<client secret>', tenant='<tenant ID>')
     resource_client = ResourceManagementClient(credentials, subscription_id)
     adf_client = DataFactoryManagementClient(credentials, subscription_id)
 
-    rg_params = {'location':'eastus'}
-    df_params = {'location':'eastus'}
+    rg_params = {'location': 'eastus'}
+    df_params = {'location': 'eastus'}
 
     # create the resource group
     # comment out if the resource group already exits
@@ -331,55 +349,65 @@ def main():
     ls_name = 'storageLinkedService'
 
     # Specify the name and key of your Azure Storage account
-    storage_string = SecureString('DefaultEndpointsProtocol=https;AccountName=<storage account name>;AccountKey=<storage account key>')
+    storage_string = SecureString(
+        value='DefaultEndpointsProtocol=https;AccountName=<storage account name>;AccountKey=<storage account key>')
 
-    ls_azure_storage = AzureStorageLinkedService(connection_string=storage_string)
-    ls = adf_client.linked_services.create_or_update(rg_name, df_name, ls_name, ls_azure_storage)
+    ls_azure_storage = AzureStorageLinkedService(
+        connection_string=storage_string)
+    ls = adf_client.linked_services.create_or_update(
+        rg_name, df_name, ls_name, ls_azure_storage)
     print_item(ls)
 
     # Create an Azure blob dataset (input)
     ds_name = 'ds_in'
-    ds_ls = LinkedServiceReference(ls_name)
-    blob_path= 'adfv2tutorial/input'
+    ds_ls = LinkedServiceReference(reference_name=ls_name)
+    blob_path = 'adfv2tutorial/input'
     blob_filename = 'input.txt'
-    ds_azure_blob= AzureBlobDataset(ds_ls, folder_path=blob_path, file_name = blob_filename)
-    ds = adf_client.datasets.create_or_update(rg_name, df_name, ds_name, ds_azure_blob)
+    ds_azure_blob = AzureBlobDataset(
+        linked_service_name=ds_ls, folder_path=blob_path, file_name=blob_filename)
+    ds = adf_client.datasets.create_or_update(
+        rg_name, df_name, ds_name, ds_azure_blob)
     print_item(ds)
 
     # Create an Azure blob dataset (output)
     dsOut_name = 'ds_out'
     output_blobpath = 'adfv2tutorial/output'
-    dsOut_azure_blob = AzureBlobDataset(ds_ls, folder_path=output_blobpath)
-    dsOut = adf_client.datasets.create_or_update(rg_name, df_name, dsOut_name, dsOut_azure_blob)
+    dsOut_azure_blob = AzureBlobDataset(linked_service_name=ds_ls, folder_path=output_blobpath)
+    dsOut = adf_client.datasets.create_or_update(
+        rg_name, df_name, dsOut_name, dsOut_azure_blob)
     print_item(dsOut)
 
     # Create a copy activity
     act_name = 'copyBlobtoBlob'
     blob_source = BlobSource()
     blob_sink = BlobSink()
-    dsin_ref = DatasetReference(ds_name)
-    dsOut_ref = DatasetReference(dsOut_name)
-    copy_activity = CopyActivity(act_name,inputs=[dsin_ref], outputs=[dsOut_ref], source=blob_source, sink=blob_sink)
+    dsin_ref = DatasetReference(reference_name=ds_name)
+    dsOut_ref = DatasetReference(reference_name=dsOut_name)
+    copy_activity = CopyActivity(name=act_name, inputs=[dsin_ref], outputs=[
+                                 dsOut_ref], source=blob_source, sink=blob_sink)
 
     # Create a pipeline with the copy activity
     p_name = 'copyPipeline'
     params_for_pipeline = {}
-    p_obj = PipelineResource(activities=[copy_activity], parameters=params_for_pipeline)
+    p_obj = PipelineResource(
+        activities=[copy_activity], parameters=params_for_pipeline)
     p = adf_client.pipelines.create_or_update(rg_name, df_name, p_name, p_obj)
     print_item(p)
 
     # Create a pipeline run
-    run_response = adf_client.pipelines.create_run(rg_name, df_name, p_name,
-        {
-        }
-    )
+    run_response = adf_client.pipelines.create_run(rg_name, df_name, p_name, parameters={})
 
-    # Monitor the pipeilne run
+    # Monitor the pipeline run
     time.sleep(30)
-    pipeline_run = adf_client.pipeline_runs.get(rg_name, df_name, run_response.run_id)
+    pipeline_run = adf_client.pipeline_runs.get(
+        rg_name, df_name, run_response.run_id)
     print("\n\tPipeline run status: {}".format(pipeline_run.status))
-    activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(rg_name, df_name, pipeline_run.run_id, datetime.now() - timedelta(1), datetime.now() + timedelta(1)))
-    print_activity_run_details(activity_runs_paged[0])
+    filter_params = RunFilterParameters(
+        last_updated_after=datetime.now() - timedelta(1), last_updated_before=datetime.now() + timedelta(1))
+    query_response = adf_client.activity_runs.query_by_pipeline_run(
+        rg_name, df_name, pipeline_run.run_id, filter_params)
+    print_activity_run_details(query_response.value[0])
+
 
 # Start the main method
 main()
@@ -428,7 +456,7 @@ Copy duration: 4
 若要删除数据工厂，请向程序中添加以下代码：
 
 ```python
-adf_client.factories.delete(rg_name,df_name)
+adf_client.factories.delete(rg_name, df_name)
 ```
 
 ## <a name="next-steps"></a>后续步骤

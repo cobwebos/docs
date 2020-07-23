@@ -1,52 +1,45 @@
 ---
 title: 使用 Azure Monitor 跨资源进行查询 | Microsoft Docs
 description: 本文介绍了如何在订阅中跨多个工作区以及从特定的 App Insights 应用查询资源。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/05/2019
-ms.author: magoedte
-ms.openlocfilehash: 51645f4f0c6dcc70d76ed1a20bc40f95db9d9717
-ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
+author: bwren
+ms.author: bwren
+ms.date: 05/01/2020
+ms.openlocfilehash: 5d16c62c14ff6f24e519173b979e11d21d997927
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693359"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505782"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>在 Azure Monitor 中执行跨资源日志查询  
 
-以前，使用 Azure Monitor 只能分析来自当前工作区内的数据，这限制了跨订阅中定义的多个工作区查询数据的能力。  此外，之前只能直接在 Application Insights 中或从 Visual Studio 中使用 Application Insights 搜索通过基于 web 的应用程序收集的遥测数据项。 这还使得难以采用本机方式将操作数据和应用程序数据一起分析。   
+> [!IMPORTANT]
+> 如果使用的是[基于工作区的 Application Insights 资源](../app/create-workspace-resource.md)，则遥测与其他所有日志数据一起存储在 Log Analytics 工作区中。 使用 log() 表达式编写一个查询来包括多个工作区中的应用。 对于同一个工作区中的多个应用，则无需跨工作区查询。
 
-现在不但可以跨多个 Log Analytics 工作区进行查询，而且还可以查询同一资源组、另一资源组或另一订阅中特定 Application Insights 应用的数据。 这可以提供数据的系统级视图。 你只能在 [Log Analytics](portals.md) 中执行这些类型的查询。
+以前，使用 Azure Monitor 只能分析来自当前工作区内的数据，这限制了跨订阅中定义的多个工作区查询数据的能力。  此外，之前只能直接在 Application Insights 中或从 Visual Studio 中使用 Application Insights 搜索通过基于 web 的应用程序收集的遥测数据项。 这还使得难以采用本机方式将操作数据和应用程序数据一起分析。
+
+现在不但可以跨多个 Log Analytics 工作区进行查询，而且还可以查询同一资源组、另一资源组或另一订阅中特定 Application Insights 应用的数据。 这可以提供数据的系统级视图。 你只能在 [Log Analytics](./log-query-overview.md) 中执行这些类型的查询。
 
 ## <a name="cross-resource-query-limits"></a>跨资源查询限制 
 
-* Application Insights 资源和 Log Analytics 工作区可包括在单个查询中的数被限制为 100。
-* 视图设计器不支持跨资源查询。 可以在 Log Analytics 中创作一个查询，将其固定到 Azure 仪表板，并[将日志搜索可视化](../../azure-monitor/learn/tutorial-logs-dashboards.md#visualize-a-log-search)。 
-* 新的 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 支持日志警报中的跨资源查询。 默认情况下，除非从[旧版日志警报 API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切换，否则 Azure Monitor 会使用[旧版 Log Analytics 警报 API](../platform/api-alerts.md) 从 Azure 门户创建新的日志警报规则。 切换之后，新的 API 成为 Azure 门户中新警报规则的默认设置，借助它可以创建跨资源查询日志警报规则。 可以使用 [scheduledQueryRules API 的 ARM 模板](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)创建跨资源查询日志警报规则，而无需进行切换。但是，此警告规则可通过 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 进行管理，而不可通过 Azure 门户进行管理。
+* 可以在单个查询中包含的 Application Insights 资源和 Log Analytics 工作区的数量限制为 100。
+* 视图设计器不支持跨资源查询。 可以在 Log Analytics 中创作一个查询，将其固定到 Azure 仪表板，以[将日志查询可视化](../learn/tutorial-logs-dashboards.md)。 
+* 新的 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 支持在日志警报中进行跨资源查询。 默认情况下，除非从[旧版日志警报 API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切换，否则 Azure Monitor 会使用[旧版 Log Analytics 警报 API](../platform/api-alerts.md) 从 Azure 门户创建新的日志警报规则。 切换之后，新的 API 成为 Azure 门户中新警报规则的默认设置，借助它可以创建跨资源查询日志警报规则。 可以使用 [scheduledQueryRules API 的 Azure 资源管理器模板](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)来创建跨资源查询日志警报规则，而无需进行切换，但此警告规则是可通过 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 进行管理，而不可通过 Azure 门户进行管理。
 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>跨 Log Analytics 工作区以及从 Application Insights 进行查询
-若要在查询中引用另一个工作区，请使用 [*workspace*](https://docs.microsoft.com/azure/log-analytics/query-language/workspace-expression) 标识符，对于 Application Insights 中的应用，请使用 [*app*](https://docs.microsoft.com/azure/log-analytics/query-language/app-expression) 标识符。  
+若要在查询中引用另一个工作区，请使用 [*workspace*](./workspace-expression.md) 标识符，对于 Application Insights 中的应用，请使用 [*app*](./app-expression.md) 标识符。  
 
 ### <a name="identifying-workspace-resources"></a>标识工作区资源
 以下示例演示了跨 Log Analytics 工作区进行查询以从名为 *contosoretail-it* 的工作区的 Update 表中返回记录的汇总计数。 
 
 可以通过以下任一方式来标识工作区：
 
-* 资源名称 - 用户可读的工作区名称，有时称为“组件名称”  。 
+* 资源名称 - 用户可读的工作区名称，有时称为“组件名称”。 
 
     `workspace("contosoretail-it").Update | count`
- 
-    >[!NOTE]
-    >按名称标识工作区会假设它在所有可访问订阅中是唯一的。 如果具有多个采用指定名称的应用程序，查询将因多义性而失败。 在这种情况下，必须使用其他标识符之一。
 
 * 限定名称 - 工作区的“全名”，由订阅名称、资源组和组件名称组成，并采用以下格式：*subscriptionName/resourceGroup/componentName*。 
 
@@ -60,7 +53,7 @@ ms.locfileid: "66693359"
 
     `workspace("b459b4u5-912x-46d5-9cb1-p43069212nb4").Update | count`
 
-* Azure 资源 ID - Azure 定义的工作区唯一标识。 当资源名称不明确时需使用资源 ID。  对于工作区，此格式为：/subscriptions/subscriptionId/resourcegroups/resourceGroup/providers/microsoft.OperationalInsights/workspaces/componentName  。  
+* Azure 资源 ID - Azure 定义的工作区唯一标识。 当资源名称不明确时需使用资源 ID。  对于工作区，此格式为：/subscriptions/subscriptionId/resourcegroups/resourceGroup/providers/microsoft.OperationalInsights/workspaces/componentName。  
 
     例如：
     ``` 
@@ -72,9 +65,12 @@ ms.locfileid: "66693359"
 
 可以使用 *app(Identifier)* 表达式标识 Application Insights 中的应用程序。  *Identifier* 参数使用下列项之一来指定应用：
 
-* 资源名称 - 人类可读的应用名称，有时称为“组件名称”  。  
+* 资源名称 - 人类可读的应用名称，有时称为“组件名称”。  
 
     `app("fabrikamapp")`
+
+    >[!NOTE]
+    >按名称标识应用程序会假设它在所有可访问的订阅中是唯一的。 如果具有多个采用指定名称的应用程序，查询将因多义性而失败。 在这种情况下，必须使用其他标识符之一。
 
 * 限定名称 - 应用的“全名”，由订阅名称、资源组和组件名称组成，并采用以下格式：*subscriptionName/resourceGroup/componentName*。 
 
@@ -110,7 +106,7 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 ## <a name="using-cross-resource-query-for-multiple-resources"></a>针对多个资源使用跨资源查询
 使用跨资源查询来关联来自多个 Log Analytics 工作区和 Application Insights 资源的数据时，查询可能变得复杂且难以维护。 应利用 [Azure Monitor 日志查询中的函数](functions.md)将查询逻辑与查询资源的范围分开，这样可以简化查询结构。 以下示例演示了如何监视多个 Application Insights 资源，并按应用程序名称显示失败请求的计数。 
 
-创建如下所示的引用 Application Insights 资源范围的查询。 `withsource= SourceApp` 命令可添加用于指定发送日志的应用程序名称的列。 使用别名 applicationsScoping  [ 将查询另存为函数 ](functions.md#create-a-function)。
+创建如下所示的引用 Application Insights 资源范围的查询。 `withsource= SourceApp` 命令可添加用于指定发送日志的应用程序名称的列。 使用别名 applicationsScoping[ 将查询另存为函数 ](functions.md#create-a-function)。
 
 ```Kusto
 // crossResource function that scopes my Application Insights resources
@@ -124,7 +120,7 @@ app('Contoso-app5').requests
 
 
 
-现可在跨资源查询中[使用此函数](../../azure-monitor/log-query/functions.md#use-a-function)，如下所示。 函数别名 applicationsScoping 返回来自所有已定义应用程序的请求表的并集  。 然后，查询筛选失败的请求，并按应用程序显示趋势。 在此示例中，分析运算符是可选的  。 该运算符从 SourceApp 属性中提取应用程序名称  。
+现可在跨资源查询中[使用此函数](../../azure-monitor/log-query/functions.md#use-a-function)，如下所示。 函数别名 applicationsScoping 返回来自所有已定义应用程序的请求表的并集。 然后，查询筛选失败的请求，并按应用程序显示趋势。 在此示例中，分析运算符是可选的。 该运算符从 SourceApp 属性中提取应用程序名称。
 
 ```Kusto
 applicationsScoping 
@@ -134,6 +130,11 @@ applicationsScoping
 | summarize count() by applicationName, bin(timestamp, 1h) 
 | render timechart
 ```
+
+>[!NOTE]
+>此方法不能用于日志警报，因为警报规则资源（包括工作区和应用程序）的访问验证是在警报创建时执行的。 不支持在创建警报后将新资源添加到该函数。 若要使用函数在日志警报中限定资源范围，则需要在门户中或使用资源管理器模板来编辑警报规则，以更新范围内资源。 此外，也可以在日志警报查询中添加资源列表。
+
+
 ![时间表](media/cross-workspace-query/chart.png)
 
 ## <a name="next-steps"></a>后续步骤

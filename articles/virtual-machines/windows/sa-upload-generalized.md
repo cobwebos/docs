@@ -1,27 +1,19 @@
 ---
-title: 上传通用化 VHD 以在 Azure 中创建多个 VM | Microsoft Docs
+title: 上传通用化 VHD 以在 Azure 中创建多个 VM
 description: 将通用化 VHD 上传到 Azure 存储帐户，创建一个 Windows VM，将其用于 Resource Manager 部署模型。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5b38d022d372e7d35ba2dbeaef90660ce95f73fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom: storage-accounts
+ms.openlocfilehash: fc2e2ff0edc09e613b1da0a503eff9d53ebcf7a9
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60250738"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234621"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>将通用化 VHD 上传到 Azure，创建新 VM
 
@@ -31,7 +23,7 @@ ms.locfileid: "60250738"
 
 本主题介绍如何使用存储帐户，但建议客户改用托管磁盘。 有关如何使用托管磁盘准备、上传和创建新 VM 的完整演练，请参阅[使用托管磁盘从上传到 Azure 的通用化 VHD 中创建新的 VM](upload-generalized-managed.md)。
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="prepare-the-vm"></a>准备 VM
 
@@ -52,7 +44,7 @@ ms.locfileid: "60250738"
 
 1. 登录到 Windows 虚拟机。
 2. 以管理员身份打开“命令提示符”窗口。 将目录切换到 **%windir%\system32\sysprep**，然后运行 `sysprep.exe`。
-3. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。
+3. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。  
 4. 在“关机选项”中选择“关机”。
 5. 单击“确定”。
    
@@ -182,7 +174,7 @@ $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vh
     ```    
 
 ### <a name="create-a-public-ip-address-and-network-interface"></a>创建公共 IP 地址和网络接口
-若要与虚拟网络中的虚拟机通信，需要一个 [公共 IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) 和网络接口。
+若要与虚拟网络中的虚拟机通信，需要一个 [公共 IP 地址](../../virtual-network/public-ip-addresses.md) 和网络接口。
 
 1. 创建公共 IP 地址。 此示例创建名为 **myPip** 的公共 IP 地址。 
    
@@ -283,7 +275,7 @@ $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
 ## <a name="verify-that-the-vm-was-created"></a>验证是否已创建 VM
-完成后，应会在 [Azure 门户](https://portal.azure.com)的“浏览” > “虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM：
+完成后，应会在 [Azure 门户](https://portal.azure.com)的“浏览” > “虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM： 
 
 ```powershell
     $vmList = Get-AzVM -ResourceGroupName $rgName

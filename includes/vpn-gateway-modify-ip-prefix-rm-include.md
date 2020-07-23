@@ -9,13 +9,13 @@ ms.date: 02/14/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 13089a2514229c5c5bc7b40d9447719247b23405
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66157699"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67172787"
 ---
-### <a name="noconnection"></a>修改本地网关 IP 地址前缀 - 无网关连接
+### <a name="to-modify-local-network-gateway-ip-address-prefixes---no-gateway-connection"></a><a name="noconnection"></a>修改本地网关 IP 地址前缀 - 无网关连接
 
 添加其他地址前缀：
 
@@ -47,9 +47,9 @@ ms.locfileid: "66157699"
    -AddressPrefix @('10.101.0.0/24','10.101.1.0/24')
    ```
 
-### <a name="withconnection"></a>修改本地网关 IP 地址前缀 - 存在网关连接
+### <a name="to-modify-local-network-gateway-ip-address-prefixes---existing-gateway-connection"></a><a name="withconnection"></a>修改本地网关 IP 地址前缀 - 存在网关连接
 
-如果有一个网关连接并且想要添加或删除包含在本地网关中的 IP 地址前缀，则需要按顺序执行以下步骤。 这会导致 VPN 连接中断一段时间。 修改 IP 地址前缀时，不需删除 VPN 网关。 只需删除连接。
+如果有一个网关连接并且想要添加或删除包含在本地网关中的 IP 地址前缀，将需要按顺序执行以下步骤。 这会导致 VPN 连接中断一段时间。 修改 IP 地址前缀时，不需删除 VPN 网关。 只需删除连接。
 
 1. 删除连接。
 

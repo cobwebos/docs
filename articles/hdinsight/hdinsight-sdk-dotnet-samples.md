@@ -2,16 +2,17 @@
 title: Azure HDInsight：.NET 示例
 description: 针对用于 .NET 的 HDInsight SDK，请在 GitHub 上查找有关使用它的常见任务的 C# .NET 示例。
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
-ms.date: 04/15/2019
-ms.author: hrasheed
-ms.openlocfilehash: 3e2cb0768701196515ace3f6ef0d475f8e3b0f79
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 12/06/2019
+ms.openlocfilehash: 097323b4566daeda737428121bee4d64e9f7248b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688108"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74951558"
 ---
 # <a name="azure-hdinsight-net-samples"></a>Azure HDInsight：.NET 示例
 
@@ -26,13 +27,13 @@ ms.locfileid: "64688108"
 * 有关群集创建任务的示例链接。
 * 有关其他管理任务的参考内容链接。
 
-可以[激活 Visual Studio 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)：Visual Studio 订阅每月提供可用来试用付费版 Azure 服务的信用额度。
-
-## <a name="prerequisites"></a>先决条件
+可以[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)：Visual Studio 订阅每月为用户提供可用来试用付费版 Azure 服务的信用额度。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- [用于 .NET 的 Azure HDInsight SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight#sdk-installation)
+## <a name="prerequisite"></a>先决条件
+
+[用于 .NET 的 Azure HDInsight SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight#sdk-installation)
 
 ## <a name="cluster-management---creation"></a>群集管理 - 创建
 

@@ -1,34 +1,24 @@
 ---
-title: Service Fabric 群集资源管理器：移动成本 |Microsoft Docs
-description: Service Fabric 服务的移动成本概述
-services: service-fabric
-documentationcenter: .net
+title: Service Fabric 群集资源管理器：移动成本
+description: 了解 Service Fabric 服务的移动成本，以及如何将其指定为适合任何结构需求（包括动态配置）。
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: f022f258-7bc0-4db4-aa85-8c6c8344da32
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 1bd049e6f929b6c3247ca1842412d5527605e643
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: af3e01d0d5a605c052be24eed8e14ee3449e2c79
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60516600"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75563337"
 ---
 # <a name="service-movement-cost"></a>服务移动成本
-尝试确定要对群集进行哪些更改时，Service Fabric 群集资源管理器考虑的一个因素是这些更改的成本。 “成本”这一概念根据能够改进的群集量而权衡。 移动服务以满足均衡、碎片整理和其他要求时，成本是一项考虑因素。 目标是以最稳妥或最便宜的方式满足这些要求。 
+尝试确定要对群集进行哪些更改时，Service Fabric 群集资源管理器考虑的一个因素是这些更改的成本。 “成本”这一概念根据能够改进的群集量而权衡。 移动服务以满足均衡、碎片整理和其他要求时，成本是一项考虑因素。 目标是以最稳妥或最便宜的方式满足这些要求。
 
 移动服务可将 CPU 时间和网络带宽的成本降到最低。 对于有状态服务，需要复制消耗额外内存和磁盘的这些服务的状态。 将 Azure Service Fabric 群集资源管理器所提出的解决方案成本降到最低有助于避免使用不必要的群集资源。 但是，也不希望忽略可大幅改善群集中资源分配的解决方案。
 
 群集资源管理器提供两种方式来计算和限制成本，同时尝试管理群集。 第一种机制只需计算它所进行的每次移动。 如果生成的两个解决方案的均衡值（分数）大致相同，则群集资源管理器倾向于采用成本（移动总量）最低的解决方案。
 
-此策略适用。 但是，对于默认负载或静态负载，在任何复杂的系统中不太可能所有移动都一样。 有些移动的成本可能要昂贵得多。
+此策略很适用。 但是，对于默认负载或静态负载，在任何复杂的系统中不太可能所有移动都一样。 有些移动的成本可能要昂贵得多。
 
 ## <a name="setting-move-costs"></a>设置移动成本 
 可在服务创建时为其指定默认的移动成本：
@@ -76,7 +66,14 @@ this.Partition.ReportMoveCost(MoveCost.Medium);
 ```
 
 ## <a name="impact-of-move-cost"></a>移动成本的影响
-MoveCost 有四个级别：零、低、中和高。 MoveCost 是相对于彼此的，但零除外。 零移动成本表示移动不会产生成本，不应计入解决方案的分数。 将移动成本设置为“高”并不能保证副本保留在同一个位置。
+MoveCost 有五个级别：Zero、Low、Medium、High 和 VeryHigh。 以下规则适用：
+
+* MoveCost 是相互的，但 Zero 和 VeryHigh 除外。 
+* “零”移动成本表示移动不会产生成本，不应计入解决方案的分数。
+* 将移动成本设置为 High 或 VeryHigh 并不能确保副本不会被移动。  
+* 移动成本为 VeryHigh 的副本进行移动的前提是在群集中存在约束冲突，该冲突无法通过任何其他方式解决（即使需要移动许多其他的副本来解决冲突）
+
+
 
 <center>
 
@@ -87,7 +84,10 @@ MoveCost 可帮助我们在达成对等的均衡时，查找整体导致最少�
 
 - 服务必须移动的状态或数据量。
 - 客户端断开连接的成本。 移动主要副本的成本通常比移动次要副本的成本更高。
-- 中断某些进行中操作的成本。 某些数据存储级别的操作，或者为了响应客户端调用而执行的操作，成本都很高。 在特定的时间点后，除非有必要，否则我们不会停止这些操作。 因此，当操作正在进行时，提高该服务对象的移动成本可以降低其移动的可能性。 当操作完成之后，可以将成本设置恢复正常。
+- 中断某些进行中操作的成本。 某些数据存储级别的操作，或者为了响应客户端调用而执行的操作，成本都很高。 在特定的时间点后，除非有必要，否则我们不会停止这些操作。 因此，当操作正在进行时，提高该服务对象的移动成本可以降低其移动的可能性。 当操作完成之后，可以将成本重新设置为正常。
+
+> [!IMPORTANT]
+> 应慎重考虑使用 VeryHigh 移动成本，因为它会极大地限制群集资源管理器在群集中查找全局最佳放置解决方案的功能。 移动成本为 VeryHigh 的副本进行移动的前提是在群集中存在约束冲突，该冲突无法通过任何其他方式解决（即使需要移动许多其他的副本来解决冲突）
 
 ## <a name="enabling-move-cost-in-your-cluster"></a>在群集中启用移动成本
 为了考虑到更为精细的 MoveCost，必须在群集中启用 MoveCost。 如不进行此设置，则会使用计数移动的默认模式来计算 MoveCost，并忽略 MoveCost 报告。

@@ -1,33 +1,26 @@
 ---
-title: Azure Monitor 中的容量和性能解决方案 |Microsoft Docs
-description: 使用监视器中的容量和性能解决方案来帮助你了解 HYPER-V 服务器的容量。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 51617a6f-ffdd-4ed2-8b74-1257149ce3d4
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Azure Monitor 中的容量和性能解决方案 | Microsoft Docs
+description: 使用 Monitor 中的容量和性能解决方案来帮助了解 Hyper-V 服务器的容量。
+ms.subservice: logs
 ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 07/13/2017
-ms.author: magoedte
-ms.openlocfilehash: fcf71bf144b559c4867303988d4c1f08b7aa5605
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: d52138f5b23a6a0ac8ff8c585e6aed0edd92eaf0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62101908"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499539"
 ---
-# <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>规划 HYPER-V 虚拟机容量 （已弃用） 的容量和性能解决方案
+# <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>使用容量和性能解决方案（已弃用）规划 Hyper-V 虚拟机容量
 
 ![容量和性能符号](./media/capacity-performance/capacity-solution.png)
 
 > [!NOTE]
 > 容量和性能解决方案已弃用。  已安装该解决方案的客户可以继续使用它，但“容量和性能”无法添加到任何新的工作区。
 
-可以在监视器中使用的容量和性能解决方案来帮助你了解 HYPER-V 服务器的容量。 可以通过该解决方案查看在这些 Hyper-V 主机上运行的主机和 VM 的总体利用率（CPU、内存和磁盘），从而深入了解 Hyper-V 环境。 将收集在这些 Hyper-V 主机上运行的所有主机和 VM 的 CPU、内存和磁盘的指标。
+可以使用 Monitor 中的容量和性能解决方案来帮助了解 Hyper-V 服务器的容量。 可以通过该解决方案查看在这些 Hyper-V 主机上运行的主机和 VM 的总体利用率（CPU、内存和磁盘），从而深入了解 Hyper-V 环境。 将收集在这些 Hyper-V 主机上运行的所有主机和 VM 的 CPU、内存和磁盘的指标。
 
 解决方案：
 
@@ -46,19 +39,19 @@ ms.locfileid: "62101908"
 
 下表介绍了该解决方案支持的连接的源。
 
-| 连接的源 | 支持 | 描述 |
+| 连接的源 | 支持 | 说明 |
 |---|---|---|
 | [Windows 代理](../../azure-monitor/platform/agent-windows.md) | 是 | 解决方案从 Windows 代理收集容量和性能数据信息。 |
 | [Linux 代理](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否    | 解决方案不从直接 Linux 代理收集容量和性能数据信息。|
 | [SCOM 管理组](../../azure-monitor/platform/om-agents.md) | 是 |解决方案从连接的 SCOM 管理组中的代理收集容量和性能数据。 不需要从 SCOM 代理直接连接到 Log Analytics。|
-| [Azure 存储帐户](../../azure-monitor/platform/collect-azure-metrics-logs.md) | 否 | Azure 存储不包括容量和性能数据。|
+| [Azure 存储帐户](../platform/resource-logs.md#send-to-log-analytics-workspace) | 否 | Azure 存储不包括容量和性能数据。|
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 必须在 Windows Server 2012 或更高版本的 Hyper-V 主机而非虚拟机上安装 Windows 或 Operations Manager 代理。
 
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 执行以下步骤，将容量和性能解决方案添加到工作区。
 
@@ -90,7 +83,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 ### <a name="review-utilization"></a>查看利用率
 
-单击“容量和性能”磁贴，打开“容量和性能”仪表板。 仪表板包含下表中的列。 每个列按照指定范围和时间范围列出了匹配该列条件的最多十项。 可单击该列底部的“查看全部”或单击列标题运行返回所有记录的日志搜索。
+单击“容量和性能”磁贴，打开“容量和性能”仪表板。 仪表板包含下表中的列。 每个列按照指定范围和时间范围列出了匹配该列条件的最多十项。 可单击该列底部的“查看全部”**** 或单击列标题运行返回所有记录的日志搜索。
 
 - **主机**
     - **主机 CPU 利用率**：根据所选时间段显示主计算机的 CPU 利用率图形趋势和主机的列表。 将鼠标悬停在折线图上即可查看特定时间点的详细信息。 单击图表即可在日志搜索中查看更多详细信息。 单击任意主机名称即可打开日志搜索并查看托管 VM 的 CPU 计数器详细信息。
@@ -116,7 +109,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 不同组织的生产计算环境相差很大。 另外，容量和性能工作负荷可能取决于 VM 的运行方式以及你所认为正常的标准。 特定的用于衡量性能的过程可能不适用于环境。 因此，更通用的说明性指导帮助性更大。 Microsoft 发布了各种说明性的关于如何衡量性能的指导文章。
 
-总之，该解决方案从包括性能计数器在内的各种源收集容量和性能数据。 请使用在解决方案的各个图面中提供的该容量和性能数据，并将结果与 [Measuring Performance on Hyper-V](https://msdn.microsoft.com/library/cc768535.aspx)（衡量 Hyper-V 上的性能）一文中的结果进行比较。 虽然该文已发布了一段时间，但指标、注意事项和准则仍然有效。 该文包含指向其他有用资源的链接。
+总之，该解决方案从包括性能计数器在内的各种源收集容量和性能数据。 请使用在解决方案的各个图面中提供的该容量和性能数据，并将结果与 [Measuring Performance on Hyper-V](https://www.microsoft.com/en-us/download/details.aspx?id=56495)（衡量 Hyper-V 上的性能）一文中的结果进行比较。 虽然该文已发布了一段时间，但指标、注意事项和准则仍然有效。 该文包含指向其他有用资源的链接。
 
 
 ## <a name="sample-log-searches"></a>示例日志搜索
@@ -124,7 +117,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 下表提供的示例日志搜索针对该解决方案所收集和计算的容量和性能数据。
 
 
-| Query | 描述 |
+| 查询 | 说明 |
 |:--- |:--- |
 | 所有主机内存配置 | Perf | 其中 ObjectName == "Capacity and Performance" 且 CounterName == "Host Assigned Memory MB" | summarize MB = avg(CounterValue) by InstanceName |
 | 所有 VM 内存配置 | Perf | 其中 ObjectName == "Capacity and Performance" 且 CounterName == "VM Assigned Memory MB" | summarize MB = avg(CounterValue) by InstanceName |

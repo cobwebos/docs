@@ -1,20 +1,20 @@
 ---
-title: 使用 Azure Cosmos DB Gremlin API 的执行配置文件函数评估查询
+title: 使用执行配置文件评估以 Azure Cosmos DB Gremlin API 编写的查询
 description: 了解如何使用执行配置文件步骤改善 Gremlin 查询及排查其问题。
 services: cosmos-db
 author: luisbosquez
 manager: kfile
 ms.service: cosmos-db
-ms.component: cosmosdb-graph
-ms.topic: conceptual
+ms.subservice: cosmosdb-graph
+ms.topic: how-to
 ms.date: 03/27/2019
 ms.author: lbosq
-ms.openlocfilehash: 2f3967c64e79b2bc7b01b35eff26f5ac0d4e3db4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: faacaf6700b14ba068d5cf0a48ea851f562e2302
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60888396"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261794"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>如何使用执行配置文件步骤来评估 Gremlin 查询
 
@@ -54,12 +54,14 @@ ms.locfileid: "60888396"
     // Amount of time in milliseconds that the entire operation took.
     "totalTime": 28,
 
-    // An array containing metrics for each of the steps that were executed. Each Gremlin step will translate to one or more of these steps.
+    // An array containing metrics for each of the steps that were executed. 
+    // Each Gremlin step will translate to one or more of these steps.
     // This list is sorted in order of execution.
     "metrics": [
       {
         // This operation obtains a set of Vertex objects.
-        // The metrics include: time, percentTime of total execution time, resultCount, fanoutFactor, count, size (in bytes) and time.
+        // The metrics include: time, percentTime of total execution time, resultCount, 
+        // fanoutFactor, count, size (in bytes) and time.
         "name": "GetVertices",
         "time": 24,
         "annotations": {
@@ -78,8 +80,12 @@ ms.locfileid: "60888396"
         ]
       },
       {
-        // This operation obtains a set of Edge objects. Depending on the query, these might be directly adjacent to a set of vertices, or separate, in the case of an E() query.
-        // The metrics include: time, percentTime of total execution time, resultCount, fanoutFactor, count, size (in bytes) and time.
+        // This operation obtains a set of Edge objects. 
+        // Depending on the query, these might be directly adjacent to a set of vertices, 
+        // or separate, in the case of an E() query.
+        //
+        // The metrics include: time, percentTime of total execution time, resultCount, 
+        // fanoutFactor, count, size (in bytes) and time.
         "name": "GetEdges",
         "time": 4,
         "annotations": {
@@ -110,8 +116,9 @@ ms.locfileid: "60888396"
         }
       },
       {
-        // This operation represents the serialization and preparation for a result from the preceding graph operations.
-        // The metrics include: time, percentTime of total execution time and resultCount.
+        // This operation represents the serialization and preparation for a result from 
+        // the preceding graph operations. The metrics include: time, percentTime of total 
+        // execution time and resultCount.
         "name": "ProjectOperator",
         "time": 0,
         "annotations": {
@@ -148,7 +155,7 @@ executionProfile() 函数的响应将生成采用以下结构的 JSON 对象层�
     - `storeOps.count`：表示此存储操作返回的结果数。
     - `storeOps.size`：表示给定存储操作的结果大小（以字节为单位）。
 
-Cosmos DB Gremlin 运行时运算符|描述
+Cosmos DB Gremlin 运行时运算符|说明
 ---|---
 `GetVertices`| 此步骤从持久性层获取一组带谓词的对象。 
 `GetEdges`| 此步骤获取与一组顶点相邻的边缘。 此步骤可以生成一个或多个存储操作。

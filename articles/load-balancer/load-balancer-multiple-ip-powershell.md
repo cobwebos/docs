@@ -1,29 +1,29 @@
 ---
 title: 在多个 IP 配置上进行负载均衡 - Azure CLI
-titlesuffix: Azure Load Balancer
-description: 在主要和辅助 IP 配置间进行负载均衡。
+titleSuffix: Azure Load Balancer
+description: 本文介绍如何使用 Azure CLI 对主要和辅助 IP 配置进行负载均衡。
 services: load-balancer
 documentationcenter: na
-author: anavinahar
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: annahar
-ms.openlocfilehash: 9654fd66faa1f745f25494e8b54625a92eb1745b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 8f1273f1476ea7da03eb44b700519482deac3284
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66111623"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809179"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>使用 PowerShell 在多个 IP 配置上进行负载均衡
 
 > [!div class="op_single_selector"]
-> * [门户](load-balancer-multiple-ip.md)
+> * [Portal](load-balancer-multiple-ip.md)
 > * [CLI](load-balancer-multiple-ip-cli.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 
@@ -122,7 +122,7 @@ ms.locfileid: "66111623"
     Add-AzLoadBalancerRuleConfig -Name HTTP -LoadBalancer $mylb -FrontendIpConfiguration $frontendIP2 -BackendAddressPool $beaddresspool2 -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 80 | Set-AzLoadBalancer
     ```
 
-12. 下面的命令获取 NIC，然后将每个辅助 NIC 的两个 IP 配置添加到负载均衡器的后端地址池：
+12. 下面的命令获取 NIC，并将每个辅助 NIC 的两个 IP 配置添加到负载均衡器的后端地址池：
 
     ```powershell
     $nic1 = Get-AzNetworkInterface -Name "VM1-NIC2" -ResourceGroupName "MyResourcegroup";
@@ -143,4 +143,4 @@ ms.locfileid: "66111623"
 
 ## <a name="next-steps"></a>后续步骤
 - 若要深入了解如何在 Azure 中结合使用负载均衡服务，请参阅[在 Azure 中使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md)。
-- 了解如何使用不同类型的日志在 Azure 中进行管理和故障排除中的负载均衡器[Azure Monitor for Azure 负载均衡器日志](../load-balancer/load-balancer-monitor-log.md)。
+- 若要了解如何在 Azure 中使用不同类型的日志对负载均衡器进行管理和故障排除，请参阅[用于 Azure 负载均衡器的 Azure Monitor 日志](../load-balancer/load-balancer-monitor-log.md)。

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: de4194671f09bde65bee0a1d0d86ffacdcedfbf3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61091529"
 ---
 # <a name="azure-database-for-postgresql-videos"></a>Azure Database for PostgreSQL 视频

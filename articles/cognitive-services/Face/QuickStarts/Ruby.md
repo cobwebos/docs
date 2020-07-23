@@ -1,42 +1,43 @@
 ---
 title: 快速入门：使用 REST API 和 Ruby 检测图像中的人脸
 titleSuffix: Azure Cognitive Services
-description: 在本快速入门中，你将使用人脸 API 和 Ruby 检测图像中的人脸。
+description: 在本快速入门中，你将使用人脸 REST API 和 Ruby 检测图像中的人脸。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 52faef37dbd9a3ce324db9665f04d6ac9b223d9c
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: e355ccdaf89d7f0ff63e3137def50792b171a4cc
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312389"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84985596"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>快速入门：使用 REST API 和 Ruby 检测图像中的人脸
 
-在本快速入门中，将使用 Azure 人脸 REST API 和 Ruby 来检测图像中的人脸。
+本快速入门将通过 Ruby 使用 Azure 人脸 REST API 来检测图像中的人脸。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 人脸 API 订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=face-api)获取免费试用的订阅密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸 API 服务并获取密钥。
-- 代码编辑器，如 [Visual Studio Code](https://code.visualstudio.com/download)
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="创建人脸资源"  target="_blank">创建人脸资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到人脸 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
+* 代码编辑器，如 [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="write-the-script"></a>编写脚本
 
-创建一个新文件 (_faceDetection.rb_)，并添加以下代码。 这将根据给定的图像 URL 调用人脸 API。
+创建一个新文件 (_faceDetection.rb_)，并添加以下代码。 此代码将对给定的图像 URL 调用人脸 API。
 
 ```ruby
 require 'net/http'
 
-# You must use the same location in your REST call as you used to get your
-# subscription keys. For example, if you got your subscription keys from  westus,
-# replace "westcentralus" in the URL below with "westus".
-uri = URI('https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect')
+# replace <My Endpoint String> in the URL below with the string from your endpoint.
+uri = URI('https://<My Endpoint String>.com/face/v1.0/detect')
 uri.query = URI.encode_www_form({
     # Request parameters
     'returnFaceId' => 'true',
@@ -62,7 +63,9 @@ end
 puts response.body
 ```
 
-需使用订阅密钥更新 `request['Ocp-Apim-Subscription-Key']` 值，并且可能需要更改 `uri` 字符串，使之包含正确的区域标识符（如需所有区域终结点的列表，请参阅[人脸 API 文档](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)）。 
+需使用订阅密钥更新 `request['Ocp-Apim-Subscription-Key']` 值，并更改 `uri` 字符串，使之包含正确的终结点。
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 你可能还希望更改 `imageUri` 字段以指向自己的输入图像。 你还可能想要更改 `returnFaceAttributes` 字段，该字段指定要检索的人脸属性。
 
@@ -74,7 +77,7 @@ puts response.body
 ruby faceDetection.rb
 ```
 
-应该会看到输出到控制台的已检测到人脸数据的 JSON 字符串。 下面是成功的 JSON 响应的示例。
+应该会看到输出到控制台的已检测到人脸数据的 JSON 字符串。 以下文本是成功的 JSON 响应的示例。
 
 ```json
 [
@@ -257,7 +260,7 @@ ruby faceDetection.rb
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你编写了一个 Ruby 脚本，该脚本调用 Azure 人脸 API，以便检测图像中的人脸并返回其属性。 接下来，请浏览人脸 API 参考文档，以便进行详细的了解。
+在本快速入门中，你编写了一个 Ruby 脚本，该脚本调用 Azure 人脸服务检测图像中的人脸并返回其属性。 接下来，请浏览人脸 API 参考文档，以便进行详细的了解。
 
 > [!div class="nextstepaction"]
 > [人脸 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

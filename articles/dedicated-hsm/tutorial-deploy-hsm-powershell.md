@@ -3,22 +3,22 @@ title: 教程：使用 PowerShell 部署到现有虚拟网络中 - Azure 专用 
 description: 本教程介绍如何使用 PowerShell 将专用 HSM 部署到现有虚拟网络中
 services: dedicated-hsm
 documentationcenter: na
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
 ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2018
-ms.author: barclayn
-ms.openlocfilehash: 581ce6d75df8f42bb72bbfc93e85684d97620e3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 11/11/2019
+ms.author: mbaldwin
+ms.openlocfilehash: c1a847a315a264591c0d003ff691d9938c2bf0f5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158971"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474418"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>教材 - 使用 PowerShell 将 HSM 部署到现有虚拟网络中
 
@@ -245,23 +245,12 @@ ssh 工具用于连接到虚拟机。 命令将如下所示，但使用在参数
 
 ## <a name="delete-or-clean-up-resources"></a>删除或清理资源
 
-如果已完成 HSM 设备的操作，则可将其作为资源删除，并让其返回到可用池中。 执行该操作时，最需要关注的问题是设备上的敏感客户数据。 若要删除敏感客户数据，应通过 Gemalto 客户端对设备进行出厂重置。 请参阅适用于 SafeNet 网络 Luna 7 设备的 Gemalto 管理员指南，并考虑按顺序执行以下命令。
-
-1. `hsm factoryReset -f`
-2. `sysconf config factoryReset -f -service all`
-3. `network interface delete -device eth0`
-4. `network interface delete -device eth1`
-5. `network interface delete -device eth2`
-6. `network interface delete -device eth3`
-7. `my file clear -f`
-8. `my public-key clear -f`
-9. `syslog rotate`
-
+如果已完成 HSM 设备的操作，则可将其作为资源删除，并让其返回到可用池中。 执行该操作时，最需要关注的问题是设备上的敏感客户数据。 将设备“归零”的最佳方式是让 HSM 管理员密码错误 3 次（注意：这不是设备管理员，而是实际的 HSM 管理员）。 在设备处于“已归零”状态之前，不能将其作为 Azure 资源删除，这是一种保护密钥材料的安全措施。
 
 > [!NOTE]
 > 如果有 Gemalto 设备配置的问题，则应联系 [Gemalto 客户支持](https://safenet.gemalto.com/technical-support/)。
 
-如果已完成此资源组中资源的相关操作，则可使用以下命令将其全部删除：
+如果要删除 Azure 中的 HSM 资源，则可使用以下命令，将“$”变量替换为唯一参数：
 
 ```powershell
 
@@ -279,5 +268,5 @@ Remove-AzResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGrou
 * [高可用性](high-availability.md)
 * [物理安全性](physical-security.md)
 * [网络](networking.md)
-* [监视](monitoring.md)
+* [Monitoring](monitoring.md)
 * [可支持性](supportability.md)

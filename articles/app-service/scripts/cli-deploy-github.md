@@ -1,27 +1,20 @@
 ---
-title: Azure CLI 脚本示例 - 从 GitHub 使用部署创建应用 | Microsoft 文档
-description: Azure CLI 脚本示例 - 从 GitHub 使用部署创建应用服务应用
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI：从 GitHub 部署应用
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 此示例演示如何从 GitHub 部署应用。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 0205c991-0989-4ca3-bb41-237dcc964460
-ms.service: app-service-web
-ms.workload: web
 ms.devlang: azurecli
-ms.tgt_pltfrm: sample
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 61cf31bcd82997a13ffae79df106485a86a9444d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 368a5d6810de5628ab98a7bef43cfceab750f95f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136831"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80057847"
 ---
 # <a name="create-an-app-service-app-with-deployment-from-github-using-azure-cli"></a>使用 Azure CLI 从 GitHub 通过部署创建应用服务应用
 
@@ -43,7 +36,7 @@ ms.locfileid: "66136831"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 创建应用服务计划。 |

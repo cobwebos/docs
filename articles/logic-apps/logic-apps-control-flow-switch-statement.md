@@ -1,20 +1,16 @@
 ---
-title: 将 Switch 语句添加到工作流 - Azure 逻辑应用 | Microsoft Docs
+title: 向工作区添加 switch 语句
 description: 如何基于 Azure 逻辑应用中的特定值创建控制工作流操作的 Switch 语句
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
-ms.openlocfilehash: 2a3f8ee5cba3110d392555fad78c1cb2513b5d4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 4f24efc4ea306046ab09119b859fa1d0853b25b6
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60683063"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834520"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>基于 Azure 逻辑应用中的特定值创建运行工作流操作的 Switch 语句
 
@@ -26,13 +22,13 @@ ms.locfileid: "60683063"
 > 与所有的编程语言相同，Switch 语句仅支持相等运算符。 如果需要其他关系运算符（例如“大于”），请使用[条件语句](../logic-apps/logic-apps-control-flow-conditional-statement.md)。
 > 为了确保确定性的执行行为，case 必须包含唯一且静态的值，而不是动态令牌或表达式。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。
 
 * 若要执行本文中的示例，请使用 Outlook.com 或 Office 365 Outlook 帐户[创建此示例逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-  1. 添加用于发送电子邮件的操作时，请改为查找并选择此操作：**发送审批电子邮件**
+  1. 添加用于发送电子邮件的操作时，请改为查找并选择此操作：“发送审批电子邮件”
 
      ![选择“发送审批电子邮件”](./media/logic-apps-control-flow-switch-statement/send-approval-email-action.png)
 
@@ -45,9 +41,9 @@ ms.locfileid: "60683063"
 
 1. 对于此示例，请在示例工作流的末尾添加 switch 语句。 完成最后一步后，选择“新建步骤”。
 
-   如果想要在步骤之间添加 switch 语句，请将指针移到要添加 switch 语句的箭头上。 选择出现的**加号** (**+**)，然后选择“添加操作”。
+   如果想要在步骤之间添加 switch 语句，请将指针移到要添加 switch 语句的箭头上。 选择出现的**加号** ( **+** )，然后选择“添加操作”。
 
-1. 在搜索框中，输入“switch”作为筛选器。 选择此操作：**Switch - 控制**
+1. 在搜索框中，输入“switch”作为筛选器。 选择此操作：**Switch - 控件**
 
    ![添加 switch](./media/logic-apps-control-flow-switch-statement/add-switch-statement.png)
 
@@ -113,7 +109,7 @@ ms.locfileid: "60683063"
 }
 ```
 
-| Label | 描述 |
+| Label | 说明 |
 |-------|-------------|
 | `"Switch"`         | Switch 语句的名称，可对其进行重命名以提高可读性 |
 | `"type": "Switch"` | 指示该操作是一个 Switch 语句 |
@@ -124,7 +120,7 @@ ms.locfileid: "60683063"
 
 ## <a name="get-support"></a>获取支持
 
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 * 若要提交功能和建议或为功能和建议投票，请访问 [Azure 逻辑应用用户反馈站点](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤

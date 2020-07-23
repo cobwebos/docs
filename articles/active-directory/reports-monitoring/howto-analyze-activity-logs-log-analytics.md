@@ -1,6 +1,6 @@
 ---
-title: 分析使用 Azure Monitor 日志的 Azure Active Directory 活动日志 |Microsoft Docs
-description: 了解如何分析使用 Azure Monitor 日志的 Azure Active Directory 活动日志
+title: 使用 Azure Monitor 日志分析活动日志 | Microsoft Docs
+description: 了解如何使用 Azure Monitor 日志分析 Azure Active Directory 活动日志
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -9,22 +9,21 @@ editor: ''
 ms.assetid: 4535ae65-8591-41ba-9a7d-b7f00c574426
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: priyamo
-ms.reviewer: markvi
+ms.author: markvi
+ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1651bb2898a2bd1e3e0c3fbbce77dc4106d76e7a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 08d56a13d0a2e373a725320e132df739d806f2e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60438157"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608222"
 ---
-# <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>分析 Azure AD 活动日志与 Azure Monitor 日志
+# <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>使用 Azure Monitor 日志分析 Azure AD 活动日志
 
 [将 Azure AD 活动日志与 Azure Monitor 日志集成](howto-integrate-activity-logs-with-log-analytics.md)之后，可以使用 Azure Monitor 日志的强大功能来深入了解自己的环境。 此外，可以安装[用于 Azure AD 活动日志的 Log Analytics 视图](howto-install-use-log-analytics-views.md)，访问有关环境中审核和登录事件的预建报表。
 
@@ -32,16 +31,22 @@ ms.locfileid: "60438157"
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>必备组件 
+## <a name="prerequisites"></a>先决条件 
 
 若要按照文中内容操作，需要：
 
 * 在 Azure 订阅中创建 Log Analytics 工作区。 了解如何[创建 Log Analytics 工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)。
 * 首先，完成[将 Azure AD 活动日志路由到 Log Analytics 工作区](howto-integrate-activity-logs-with-log-analytics.md)的相关步骤。
-
+*  [访问](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions) Log Analytics 工作区
+* Azure Active Directory 中的以下角色（如果要通过 Azure Active Directory 门户访问 Log Analytics）
+    - 安全管理员
+    - 安全读取者
+    - 报表读取者
+    - 全局管理员
+    
 ## <a name="navigate-to-the-log-analytics-workspace"></a>导航到 Log Analytics 工作区
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 
 2. 选择“Azure Active Directory”，然后从“监视”部分选择“日志”以打开 Log Analytics 工作区。 随即工作区打开，并含有默认查询。
 
@@ -54,8 +59,8 @@ ms.locfileid: "60438157"
 
 1. 在上一节中的默认查询视图中，选择“架构”并展开工作区。 
 
-2. 展开“日志管理”部分，然后展开“AuditLogs”或“SignInLogs”以查看日志架构。
-    ![审核日志](./media/howto-analyze-activity-logs-log-analytics/auditlogschema.png)![登录日志](./media/howto-analyze-activity-logs-log-analytics/signinlogschema.png)
+2. 展开“日志管理”部分，然后展开“AuditLogs”或“SigninLogs”以查看日志架构  。
+    ![Audit logs](./media/howto-analyze-activity-logs-log-analytics/auditlogschema.png) ![Signin logs](./media/howto-analyze-activity-logs-log-analytics/signinlogschema.png)
 
 ## <a name="query-the-azure-ad-activity-logs"></a>查询 Azure AD 活动日志
 
@@ -99,14 +104,14 @@ AuditLogs
 还可以下载用于 Azure AD 活动日志的预建日志分析视图。 这些视图提供与涉及审核和登录事件的常见方案相关的多个报表。 还可使用上一节中所述步骤，针对报表中提供的任何数据设置警报。
 
 * **Azure AD 帐户预配事件**：此视图显示与审核预配活动相关的报表，例如，预配的新用户数和预配失败情况、更新的用户数和更新失败情况以及取消预配的用户数和相应失败情况。    
-* **登录事件**：此视图显示与监视登录活动最相关的报表，例如，分别按应用程序、用户、设备统计的登录情况，以及随时间推移跟踪登录情况的汇总视图。
+* **登录事件**：此视图显示与监视登录活动最相关的报表，例如，分别按应用程序、用户、设备统计的登录情况，以及随时间推移跟踪登录情况的摘要视图。
 * **用户执行“同意”相关情况**：此视图显示与用户同意相关的报表，如由用户执行的“同意”操作、按执行“同意”操作的用户统计的登录情况，以及按所有基于同意操作的应用程序统计的登录情况。 
 
-了解如何[安装和使用 Azure AD 活动日志的日志分析视图](howto-install-use-log-analytics-views.md)。 
+了解如何[安装和使用用于 Azure AD 活动日志的 Log Analytics 视图](howto-install-use-log-analytics-views.md)。 
 
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure Monitor 日志查询入门](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)
 * [在 Azure 门户中创建和管理器警报组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)
-* [安装和使用用于 Azure Active Directory 的 Log Analytics 视图](howto-install-use-log-analytics-views.md)
+* [安装和使用用于 Azure Active Directory 的日志分析视图](howto-install-use-log-analytics-views.md)

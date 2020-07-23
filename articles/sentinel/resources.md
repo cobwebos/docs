@@ -1,47 +1,84 @@
 ---
-title: 使用 Azure Sentinel 预览版时有用的资源 |Microsoft Docs
-description: 本文档提供一系列有用的资源使用 Azure Sentinel 时也是如此。
+title: 使用 Azure Sentinel 时有用的资源 |Microsoft Docs
+description: 本文档提供使用 Azure Sentinel 时可用资源的列表。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: 9b4c8e38-c986-4223-aa24-a71b01cb15ae
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
-ms.author: rkarlin
-ms.openlocfilehash: 52b9d64ebd4ab90d97a417f9296c424b9412aae9
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
-ms.translationtype: MT
+ms.date: 12/02/2019
+ms.author: yelevin
+ms.openlocfilehash: 2110d3319cebf693ef06deec26a29fa655e35035
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65209681"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77585265"
 ---
-# <a name="useful-resources-for-working-with-azure-sentinel-preview"></a>有用的资源，使用 Azure Sentinel 预览版
+# <a name="useful-resources-for-working-with-azure-sentinel"></a>使用 Azure Sentinel 的有用资源
 
-> [!IMPORTANT]
-> Azure Sentinel 当前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-本文列出了资源，可帮助你详细了解如何使用 Azure Sentinel。
 
-Azure 逻辑应用连接器： <https://docs.microsoft.com/connectors/>
+本文列出了可帮助你获取有关使用 Azure Sentinel 的详细信息的资源。
+
+Azure 逻辑应用连接器：<https://docs.microsoft.com/connectors/>
+
+
+## <a name="auditing-and-reporting"></a>审核和报告
+Azure Sentinel 的审核日志保留在[Azure 活动日志](../azure-monitor/platform/platform-logs-overview.md)中。
+
+可以审核以下受支持的操作。
+
+|操作名称|    资源类型|
+|----|----|
+|创建或更新工作簿  |Microsoft Insights/工作簿|
+|删除工作簿    |Microsoft Insights/工作簿|
+|设置工作流   |Microsoft.Logic/workflows|
+|删除工作流    |Microsoft.Logic/workflows|
+|创建保存的搜索    |Microsoft.operationalinsights/工作区/savedSearches|
+|删除保存的搜索    |Microsoft.operationalinsights/工作区/savedSearches|
+|更新警报规则 |Microsoft.SecurityInsights/alertRules|
+|删除警报规则 |Microsoft.SecurityInsights/alertRules|
+|更新警报规则响应操作 |SecurityInsights/alertRules/actions|
+|删除警报规则响应操作 |SecurityInsights/alertRules/actions|
+|更新书签   |Microsoft.SecurityInsights/bookmarks|
+|删除书签   |Microsoft.SecurityInsights/bookmarks|
+|更新事例   |SecurityInsights/事例|
+|更新案例调查  |SecurityInsights/案例/调查|
+|创建案例注释   |SecurityInsights/案例/注释|
+|更新数据连接器 |Microsoft.SecurityInsights/dataConnectors|
+|删除数据连接器 |Microsoft.SecurityInsights/dataConnectors|
+|更新设置    |Microsoft.SecurityInsights/settings|
+
+### <a name="view-audit-and-reporting-data-in-azure-sentinel"></a>在 Azure Sentinel 中查看审核和报告数据
+
+你可以查看此数据，方法是将其从 Azure 活动日志流式传输到 Azure Sentinel，然后你可以在其中对其执行研究和分析。
+
+1. 连接[Azure 活动](connect-azure-activity.md)数据源。 执行此操作后，审核事件会在名为 AzureActivity 的**日志**屏幕上流式传输到新的表中。
+2. 然后，使用 KQL 查询数据，就像对任何其他表一样。
+
+
 
 ## <a name="vendor-documentation"></a>供应商文档
 
-
-| **供应商**  | **Azure Sentinel 中的用例** | **链接**|
+| **供应商**  | **在 Azure Sentinel 中使用事件** | **链接**。|
 |----|----|----|
-| GitHub| 用于访问社区页| <https://github.com/Azure/Azure-Sentinel> |
+| GitHub| 用于访问社区页面| <https://github.com/Azure/Azure-Sentinel> |
 | PaloAlto| 配置 CEF| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
 | PluralSight | Kusto 查询语言课程| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
 
+## <a name="blogs-and-forums"></a>博客和论坛
+
+将你的问题发布到 Azure Sentinel 的[TechCommunity 空间](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel)。
+
+查看[TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog)和[Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)的 Azure Sentinel 博客文章。
+
 
 ## <a name="next-steps"></a>后续步骤
-在本文档中，你有正在使用 Azure Sentinel 时非常有用的资源的列表。 若要了解有关 Azure Sentinel 的详细信息，请参阅以下：
-
-* [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/)。 查找关于 Azure 安全性及合规性的博客文章。
+在本文档中，你获得了在使用 Azure Sentinel 时非常有用的资源列表。 你会在[Microsoft Azure 安全和合规性博客](https://blogs.msdn.com/b/azuresecurity/)上找到有关 Azure 安全性和符合性的其他信息。

@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 11/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8794ffa1654e49690f3bd31a380ba2051b4b1da7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: fd7a5b186ebc98babe1baacc9f56f39dc8fbc093
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294935"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80049371"
 ---
 # <a name="what-is-federation-with-azure-ad"></a>什么是与 Azure AD 的联合？
 
@@ -35,7 +35,7 @@ ms.locfileid: "60294935"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [什么是混合标识？](whatis-phs.md)
+- [什么是混合标识？](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)
 - [什么是 Azure AD Connect 和 Connect Health？](whatis-azure-ad-connect.md)
 - [什么是密码哈希同步？](whatis-phs.md)
 - [什么是联合身份验证？](whatis-fed.md)

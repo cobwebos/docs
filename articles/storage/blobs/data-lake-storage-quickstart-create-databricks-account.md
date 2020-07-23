@@ -1,44 +1,34 @@
 ---
 title: 快速入门：使用 Azure Databricks 分析 Azure Data Lake Storage Gen2 中的数据 | Microsoft Docs
 description: 了解如何使用 Azure 门户和 Azure Data Lake Storage Gen2 存储帐户在 Azure Databricks 上运行 Spark 作业。
-services: storage
 author: normesta
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/15/2019
-ms.openlocfilehash: e6d153ff0e4f32c352694f51953c6955fae7f12f
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.date: 06/12/2020
+ms.reviewer: jeking
+ms.openlocfilehash: 482d703689ca6cfc34dd5d78574ae52e4def2b1f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949674"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109767"
 ---
-# <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>快速入门：使用 Azure Databricks 分析 Azure Data Lake Storage Gen2 中的数据
+# <a name="quickstart-analyze-data-with-databricks"></a>快速入门：使用 Databricks 分析数据
 
-本快速入门展示了如何使用 Azure Databricks 运行 Apache Spark 作业，以便对启用了 Azure Data Lake Storage Gen2 的存储帐户中存储的数据执行分析。
-
-在 Spark 作业中，你将分析收音机频道订阅数据，以根据人口统计信息洞察免费/付费节目的使用情况。
-
-如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+在本快速入门中，你将使用 Azure Databricks 运行 Apache Spark 作业，以对存储帐户中存储的数据执行分析。 在 Spark 作业中，你将分析收音机频道订阅数据，以根据人口统计信息洞察免费/付费节目的使用情况。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 创建 Data Lake Gen2 存储帐户。 请参阅[快速入门：创建 Azure Data Lake Storage Gen2 存储帐户](data-lake-storage-quickstart-create-account.md)
+* 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-  将存储帐户的名称粘贴到文本文件中。 稍后需要使用该名称。
+* Azure Data Lake Gen2 存储帐户的名称。 [创建 Azure Data Lake Storage Gen2 存储帐户](data-lake-storage-quickstart-create-account.md)。
 
-* 创建服务主体。 请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
-
-  在执行该文中的步骤时，需要完成一些特定的事项。
-
-  :heavy_check_mark:执行该文中[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)部分中的步骤时，请确保将“存储 Blob 数据参与者”  角色分配给服务主体。
+* 分配有角色“存储 Blob 数据参与者”  的 Azure 服务主体的租户 ID、应用 ID 和密码。 [创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
   > [!IMPORTANT]
-  > 请确保在 Data Lake Storage Gen2 存储帐户的范围内分配角色。 可以将角色分配给父资源组或订阅，但在这些角色分配传播到存储帐户之前，你将收到与权限相关的错误。
-
-  :heavy_check_mark:在执行文章的[获取用于登录的值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分的步骤时，请将租户 ID、应用 ID 和密码值粘贴到文本文件中。 很快就会需要这些值。
+  > 在 Data Lake Storage Gen2 存储帐户范围内分配角色。 可以将角色分配给父资源组或订阅，但在这些角色分配传播到存储帐户之前，你将收到与权限相关的错误。
 
 ## <a name="create-an-azure-databricks-workspace"></a>创建 Azure Databricks 工作区
 
@@ -54,11 +44,11 @@ ms.locfileid: "65949674"
 
     提供以下值：
 
-    |属性  |说明  |
+    |properties  |说明  |
     |---------|---------|
     |**工作区名称**     | 提供 Databricks 工作区的名称        |
     |**订阅**     | 从下拉列表中选择自己的 Azure 订阅。        |
-    |**资源组**     | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../../azure-resource-manager/resource-group-overview.md)。 |
+    |**资源组**     | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../../azure-resource-manager/management/overview.md)。 |
     |**位置**     | 选择“美国西部 2”  。 可以根据偏好随意选择其他公共区域。        |
     |**定价层**     |  选择“标准”或“高级”。   有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。       |
 
@@ -78,17 +68,17 @@ ms.locfileid: "65949674"
 
     ![在 Azure 上创建 Databricks Spark 群集](./media/data-lake-storage-quickstart-create-databricks-account/create-databricks-spark-cluster.png "在 Azure 上创建 Databricks Spark 群集")
 
-    除以下值外，接受其他所有默认值：
+    填写以下字段的值，对于其他字段接受默认值：
 
-    * 输入群集的名称。
-    * 创建采用 5.1 版运行时的群集  。
-    * 请务必选中“在不活动超过 120 分钟后终止”  复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
+    - 输入群集的名称。
+     
+    - 请务必选中“在不活动超过 120 分钟后终止”  复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
 
 4. 选择“创建群集”。  群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
 
 有关创建群集的详细信息，请参阅[在 Azure Databricks 中创建 Spark 群集](https://docs.azuredatabricks.net/user-guide/clusters/create.html)。
 
-## <a name="create-storage-account-file-system"></a>创建存储帐户文件系统
+## <a name="create-notebook"></a>创建笔记本
 
 在本部分中，你将在 Azure Databricks 工作区中创建一个 Notebook，然后运行代码片段来配置存储帐户。
 
@@ -113,18 +103,11 @@ ms.locfileid: "65949674"
    spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<password>")
    spark.conf.set("fs.azure.account.oauth2.client.endpoint.<storage-account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
-   dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
+   dbutils.fs.ls("abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
 
    ```
-
-    > [!NOTE]
-    > 此代码块通过 OAuth 直接访问 Data Lake Gen2 终结点，但是，也可以通过其他方式将 Databricks 工作区连接到 Data Lake Storage Gen2 帐户。 例如，可以通过 OAuth 来装载文件系统，还可以通过共享密钥进行直接访问。 <br>有关这些方法的示例，请参阅 Azure Databricks 网站上的文章：[Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)。
-
-5. 在此代码块中，请将 `storage-account-name`、`appID`、`password` 和 `tenant-id` 占位符值替换为在创建服务主体时收集的值。 将 `file-system-name` 占位符的值设置为你想要为文件系统提供的任意名称。
-
-    > [!NOTE]
-    > 在生产设置中，请考虑将身份验证密钥存储在 Azure Databricks 中。 然后，将查找密钥（而不是身份验证密钥）添加到代码块。 完成了本快速入门之后，请参阅 Azure Databricks 网站上的 [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) 一文以查看此方法的示例。
+5. 在此代码块中，请将 `storage-account-name`、`appID`、`password` 和 `tenant-id` 占位符值替换为在创建服务主体时收集的值。 将 `container-name` 占位符值设置为你要为容器指定的任何名称。
 
 6. 按 **SHIFT + ENTER** 键，运行此块中的代码。
 
@@ -134,13 +117,17 @@ ms.locfileid: "65949674"
 
 将以下代码输入到 Notebook 单元格中：
 
-    %sh wget -P /tmp https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json
+```bash
+%sh wget -P /tmp https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json
+```
 
 在单元格中，按 SHIFT + ENTER 来运行代码  。
 
 现在，请在此单元格下方的新单元格中输入以下代码，将括号中出现的值替换为此前使用的相同值：
 
-    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<file-system>@<account-name>.dfs.core.windows.net/")
+```python
+dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/")
+```
 
 在单元格中，按 SHIFT + ENTER 来运行代码  。
 
@@ -148,7 +135,7 @@ ms.locfileid: "65949674"
 
 执行以下任务来对数据运行 Spark SQL 作业。
 
-1. 运行一条 SQL 语句，以使用示例 JSON 数据文件 **small_radio_json.json** 中的数据创建一个临时表。 在以下代码片段中，将占位符值替换为你的文件系统名称和存储帐户名称。 使用之前创建的 Notebook，将该代码片段粘贴到该 Notebook 中的一个新的代码单元格中，然后按 SHIFT + ENTER。
+1. 运行一条 SQL 语句，以使用示例 JSON 数据文件 **small_radio_json.json** 中的数据创建一个临时表。 在以下代码片段中，请将占位符值替换为容器名称和存储帐户名称。 使用之前创建的 Notebook，将该代码片段粘贴到该 Notebook 中的一个新的代码单元格中，然后按 SHIFT + ENTER。
 
     ```sql
     %sql
@@ -156,7 +143,7 @@ ms.locfileid: "65949674"
     CREATE TABLE radio_sample_data
     USING json
     OPTIONS (
-     path  "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/<PATH>/small_radio_json.json"
+     path  "abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/small_radio_json.json"
     )
     ```
 
@@ -206,7 +193,13 @@ ms.locfileid: "65949674"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你在 Azure Databricks 中创建了一个 Spark 群集，并使用启用了 Data Lake Storage Gen2 的存储帐户中的数据运行了一个 Spark 作业。 我们还可以查看 [Spark 数据源](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)，了解如何将其他数据源中的数据导入 Azure Databricks。 请继续学习下一篇文章，了解如何使用 Azure Databricks 执行 ETL（提取、转换和加载数据）操作。
+在本文中，你在 Azure Databricks 中创建了一个 Spark 群集，并使用启用了 Data Lake Storage Gen2 的存储帐户中的数据运行了一个 Spark 作业。
+
+请继续学习下一篇文章，了解如何使用 Azure Databricks 执行 ETL（提取、转换和加载数据）操作。
 
 > [!div class="nextstepaction"]
->[使用 Azure Databricks 提取、转换和加载数据](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md)
+>[使用 Azure Databricks 提取、转换和加载数据](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md)。
+
+- 若要了解如何将其他数据源中的数据导入 Azure Databricks，请参阅 [Spark 数据源](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)。
+
+- 若要了解从 Azure Databricks 工作区访问 Azure Data Lake Storage Gen2 的其他方式，请参阅 [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)。

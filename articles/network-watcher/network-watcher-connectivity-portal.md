@@ -1,24 +1,23 @@
 ---
-title: 使用 Azure 网络观察程序排查连接问题 - Azure 门户 | Microsoft Docs
+title: 排查连接问题 - Azure 门户
+titleSuffix: Azure Network Watcher
 description: 了解如何通过 Azure 门户使用 Azure 网络观察程序的排查连接问题功能。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2017
-ms.author: kumud
-ms.openlocfilehash: 783bcd0cdc97328f16c4a0defa18daa46a065842
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: a16e99df57da66d2633947f8aecdf1d2cef9ab15
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702004"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737404"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>通过 Azure 门户使用 Azure 网络观察程序排查连接问题
 
@@ -44,9 +43,9 @@ ms.locfileid: "64702004"
 
 此示例通过端口 80 检查与目标虚拟机的连接。
 
-导航到网络观察程序并单击“排查连接问题”。 选择虚拟机以检查其连接性。 在“目标”部分，选择“选择虚拟机”，并选择正确的虚拟机和端口来进行测试。
+导航到网络观察程序并单击“排查连接问题”  。 选择虚拟机以检查其连接性。 在“目标”  部分，选择“选择虚拟机”  ，并选择正确的虚拟机和端口来进行测试。
 
-单击“检查”后，将检查指定的端口上的虚拟机间的连接性。 在此示例中，目标虚拟机不可访问，并显示了一个跃点列表。
+单击“检查”  后，将检查指定的端口上的虚拟机间的连接性。 在此示例中，目标虚拟机不可访问，并显示了一个跃点列表。
 
 ![查看虚拟机的连接性结果][1]
 

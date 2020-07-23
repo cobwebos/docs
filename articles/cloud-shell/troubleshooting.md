@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: eb7deacc068661ca9a4f473ee2d36b7d4464c81c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b06deadae15a8176a49bed88a53884df2b71e473
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60199429"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82189456"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的故障排除和限制
 
@@ -29,6 +29,11 @@ ms.locfileid: "60199429"
 
 ## <a name="general-troubleshooting"></a>常规故障排除
 
+### <a name="error-running-azuread-cmdlets-in-powershell"></a>在 PowerShell 中运行 AzureAD cmdlet 时出错
+
+- **详细信息**：运行 Cloud Shell 中的 AzureAD cmdlet 时 `Get-AzureADUser` ，可能会看到错误： `You must call the Connect-AzureAD cmdlet before calling any other cmdlets` 。 
+- **解决方法**：运行 `Connect-AzureAD` cmdlet。 以前，Cloud Shell 在 PowerShell 启动过程中自动运行此 cmdlet。 为了加快开始时间，该 cmdlet 不再自动运行。 你可以选择通过将添加 `Connect-AzureAD` 到 PowerShell 中的 $PROFILE 文件来还原以前的行为。
+
 ### <a name="early-timeouts-in-firefox"></a>FireFox 中的提前超时
 
 - **详细信息**：Cloud Shell 利用打开的 Websocket 将输入/输出传递到你的浏览器。 FireFox 已经预设了可提前关闭 websocket 的策略，导致在 Cloud Shell 中提前超时。
@@ -36,13 +41,13 @@ ms.locfileid: "60199429"
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>在锁定的网络环境中禁用 Cloud Shell
 
-- **详细信息**：管理员可能希望禁止其用户访问 Cloud Shell。 Cloud Shell 利用对 `ux.console.azure.com` 域的访问（可被拒绝），停止对 Cloud Shell 入口点的任何访问，包括 portal.azure.com、shell.azure.com、Visual Studio Code Azure 帐户扩展和 docs.microsoft.com。
-- **解决方法**：通过环境的网络设置限制对 `ux.console.azure.com` 的访问权限。 Cloud Shell 图标仍将存在于 portal.azure.com 中，但无法成功连接到该服务。
+- **详细信息**：管理员可能希望禁止其用户访问 Cloud Shell。 Cloud Shell 利用访问域的权限， `ux.console.azure.com` 可以拒绝对 Cloud Shell 的 s 的任何访问，包括 portal.azure.com、shell.azure.com、Visual Studio Code Azure 帐户扩展和 docs.microsoft.com。 在美国政府版云中，入口点为 `ux.console.azure.us` ; 没有相应的 shell.azure.us。
+- **解决方法**：将网络设置的访问权限限制为 `ux.console.azure.com` `ux.console.azure.us` 你的环境。 Azure 门户中仍然存在 Cloud Shell 图标，但无法成功连接到该服务。
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>存储对话框 - 错误：403 RequestDisallowedByPolicy
 
-- **详细信息**：通过 Cloud Shell 创建存储帐户时，由于管理员设置的 Azure Policy 而失败。错误消息将包括：`The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
-- **解决方法**：与 Azure 管理员联系，让其删除或更新拒绝存储创建的 Azure Policy。
+- **详细信息**：通过 Cloud Shell 创建存储帐户时，由于管理员所放置的 Azure 策略分配，此操作不成功。错误消息将包括：`The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
+- **解决方法**：请联系 azure 管理员以删除或更新 azure 策略分配，拒绝存储创建。
 
 ### <a name="storage-dialog---error-400-disallowedoperation"></a>存储对话框 - 错误：400 DisallowedOperation
 
@@ -54,7 +59,7 @@ ms.locfileid: "60199429"
 - **解决方法**：检查是否已将网络设置配置为允许向域（*.console.azure.com）发送 https 请求和 websocket 请求。
 
 ### <a name="set-your-cloud-shell-connection-to-support-using-tls-12"></a>将 Cloud Shell 连接设置为支持使用 TLS 1.2
- - **详细信息**：要定义 TLS 版本以连接到 Cloud Shell，必须设置特定于浏览器的设置。
+ - **详细信息**：若要定义连接 CLOUD SHELL 的 TLS 版本，必须设置特定于浏览器的设置。
  - **解决方法**：导航至浏览器的安全设置，然后选中“使用 TLS 1.2”旁边的复选框。
 
 ## <a name="bash-troubleshooting"></a>Bash 故障排除
@@ -76,7 +81,7 @@ ms.locfileid: "60199429"
 > Azure VM 必须具有面向公众的 IP 地址。
 
 - **详细信息**：由于 WinRM 的默认 Windows 防火墙设置，用户可能会看到以下错误：`Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
-- **解决方法**：运行 `Enable-AzVMPSRemoting` 以启用目标计算机上 PowerShell 远程处理的所有方面。
+- 解决方法****：运行 `Enable-AzVMPSRemoting` 以启用目标计算机上 PowerShell 远程处理的所有方面。
 
 ### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir` 不会更新 Azure 驱动器中的结果
 
@@ -86,6 +91,12 @@ ms.locfileid: "60199429"
 ## <a name="general-limitations"></a>一般限制
 
 Azure Cloud Shell 有以下已知限制：
+
+### <a name="quota-limitations"></a>配额限制
+
+Azure Cloud Shell 的每个区域每个租户的用户数限制为20个。 如果尝试打开的会话数超过限制，将显示 "租户用户超过配额" 错误。 如果你合理地需要打开多个会话（例如培训会话），请在预期使用提前联系支持人员以请求增加配额。
+
+Cloud Shell 提供为免费服务，设计用于配置你的 Azure 环境，而不是作为一般用途的计算平台。 在违反 Azure 服务条款的情况中，可能会考虑过多的自动使用情况，并可能导致 Cloud Shell 访问被阻止。
 
 ### <a name="system-state-and-persistence"></a>系统状态和持久性
 
@@ -158,9 +169,9 @@ Azure Cloud Shell 非常重视你的个人数据，Azure Cloud Shell 服务捕�
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ### <a name="export"></a>导出
-若要导出 Cloud Shell 为你保存的用户设置（如首选 shell、字号和字体类型），请运行以下命令。
+若要导出 Cloud Shell 为你保存的用户设置（如首选 shell、字号和字体类型），请运行以下命令****。
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
+1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
 2. 在 Bash 或 PowerShell 中运行以下命令：
 
 Bash：
@@ -178,12 +189,12 @@ PowerShell：
 ```
 
 ### <a name="delete"></a>删除
-若要删除 Cloud Shell 为你保存的用户设置（如首选 shell、字号和字体类型），请运行以下命令。 下次启动 Azure Cloud Shell 时，系统会要求你再次载入文件共享。 
+若要删除 Cloud Shell 为你保存的用户设置（如首选 shell、字号和字体类型），请运行以下命令****。 下次启动 Azure Cloud Shell 时，系统会要求你再次载入文件共享。 
 
 >[!Note]
 > 如果删除用户设置，不会删除实际的 Azure 文件共享。 请转到“Azure 文件”完成该操作。
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
+1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
 2. 在 Bash 或 PowerShell 中运行以下命令：
 
 Bash：
@@ -199,3 +210,8 @@ PowerShell：
   $token= ((Invoke-WebRequest -Uri "$env:MSI_ENDPOINT`?resource=https://management.core.windows.net/" -Headers @{Metadata='true'}).content |  ConvertFrom-Json).access_token
   Invoke-WebRequest -Method Delete -Uri https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -Headers @{Authorization = "Bearer $token"}
   ```
+## <a name="azure-government-limitations"></a>Azure 政府限制
+仅可通过 Azure 门户访问 Azure 政府版中的 Azure Cloud Shell。
+
+>[!Note]
+> 当前不支持连接到 GCC-高或政府版 DoD 云以进行 Exchange Online。

@@ -1,19 +1,18 @@
 ---
-title: Microsoft Azure Data Box 磁盘概述 | Microsoft Docs
-description: 介绍 Azure Data Box 磁盘 - 用于将大量数据传输到 Azure 的云解决方案
+title: Microsoft Azure Data Box Disk 安全功能 | 关于数据的 Microsoft Docs
+description: 介绍针对 Azure Data Box Disk 实现的安全功能，Azure Data Box Disk 是一种云解决方案，用于将大量数据传输到 Azure
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: overview
-ms.date: 01/09/2019
+ms.topic: conceptual
+ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: afb344418f843e54c3172c17d28bde7055e101b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 59cce6d89bc863ad489a8ed37c7f284d3085c775
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093450"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79117263"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk 安全性和数据保护
 
@@ -34,7 +33,7 @@ Microsoft Azure Data Box 解决方案由四个彼此交互的主要组件构成�
 
 ## <a name="security-features"></a>安全功能
 
-Data Box 磁盘确保只有经过授权的实体能够查看、修改或删除你的数据，为数据保护提供安全的解决方案。 此解决方案的安全功能适用于该磁盘，以及用于确保磁盘中存储的数据安全性的关联服务。 
+Data Box 磁盘确保只有经过授权的实体能够查看、修改或删除你的数据，为数据保护提供安全的解决方案。 此解决方案的安全功能适用于该磁盘，以及用于确保磁盘中存储的数据安全性的关联服务。
 
 ### <a name="data-box-disk-protection"></a>Data Box 磁盘保护
 
@@ -48,7 +47,7 @@ Data Box 磁盘受以下功能的保护：
 
 流入和流出 Data Box 磁盘的数据受以下功能的保护：
 
-- 始终对数据进行 BitLocker 加密。 
+- 始终对数据进行 BitLocker 加密。
 - 将数据上传到 Azure 后，从磁盘中安全擦除数据。 数据擦除根据 NIST 800-88r1 标准进行。
 
 ### <a name="data-box-service-protection"></a>Data Box 服务保护
@@ -56,10 +55,9 @@ Data Box 磁盘受以下功能的保护：
 Data Box 服务受以下功能的保护。
 
 - 访问 Data Box 磁盘服务要求组织具备包含 Data Box 磁盘在内的 Azure 订阅。 订阅决定可以在 Azure 门户中访问的功能。
-- 由于 Data Box 服务在 Azure 中托管，因此受 Azure 安全功能的保护。 有关 Microsoft Azure 提供的安全功能的详细信息，请转到 [Microsoft Azure 信任中心](https://www.microsoft.com/TrustCenter/Security/default.aspx)。 
+- 由于 Data Box 服务在 Azure 中托管，因此受 Azure 安全功能的保护。 有关 Microsoft Azure 提供的安全功能的详细信息，请转到 [Microsoft Azure 信任中心](https://www.microsoft.com/TrustCenter/Security/default.aspx)。
 - Data Box 磁盘在服务中存储用于解锁磁盘的磁盘支持密钥。 
-- Data box 磁盘服务在服务中存储订单详细信息和状态。 删除订单会删除这些信息。 
-
+- Data box 磁盘服务在服务中存储订单详细信息和状态。 删除订单会删除这些信息。
 
 ## <a name="managing-personal-data"></a>管理个人数据
 

@@ -1,83 +1,203 @@
 ---
-title: 守护程序应用程序调用 web Api （应用程序配置）-Microsoft 标识平台
-description: 了解如何构建守护程序应用调用 web Api （应用程序配置）
+title: 配置调用 Web API 的守护程序应用 - Microsoft 标识平台 | Azure
+description: 了解如何为调用 Web API 的守护程序应用程序配置代码（应用配置）
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8d377db827a6548c380128624c21f4ae7896aff
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: MT
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: 921015d6aa7acd840a4a231a899217daafe3525b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075320"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84558549"
 ---
-# <a name="daemon-app-that-calls-web-apis---code-configuration"></a>守护程序应用程序调用 web Api 的代码配置
+# <a name="daemon-app-that-calls-web-apis---code-configuration"></a>调用 Web API 的守护程序应用 - 代码配置
 
-了解如何配置守护程序应用程序调用 web Api 的代码。
+了解如何为调用 Web API 的守护程序应用程序配置代码。
 
-## <a name="msal-libraries-supporting-daemon-apps"></a>MSAL 库支持守护程序应用
+## <a name="msal-libraries-that-support-daemon-apps"></a>支持守护程序应用的 MSAL 库
 
-支持守护程序应用的 Microsoft 库包括：
+以下 Microsoft 库支持守护程序应用：
 
-  MSAL 库 | 描述
+  MSAL 库 | 说明
   ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 支持的平台构建守护程序应用程序是.NET Framework 和.NET Core 平台 （不 UWP、 Xamarin.iOS 和 Xamarin.Android 为这些平台用于生成公共客户端应用程序）
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL.Python | 进度-公共预览版中的开发
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL.Java | 进度-公共预览版中的开发
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 支持使用 .NET Framework 和 .NET Core 平台构建守护程序应用程序。 （不支持 UWP、Xamarin.iOS 和 Xamarin.Android，因为这些平台用于生成公共客户端应用程序。）
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Python 中支持守护程序应用程序。
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Java 中支持守护程序应用程序。
 
-## <a name="configuration-of-the-authority"></a>颁发机构的配置
+## <a name="configure-the-authority"></a>配置颁发机构
 
-考虑到守护程序应用程序不使用委派的权限，但应用程序权限，其*受支持的帐户类型*不能为*任何组织的目录中的帐户和个人 Microsoft 帐户 （例如，Skype，Xbox、 Outlook.com)*。 实际上，是没有租户管理员同意 Microsoft 个人帐户的守护程序应用程序。 将需要选择*我的组织中的帐户*或*任何组织中的帐户*。
+守护程序应用程序使用应用程序权限，而不是委托的权限。 因此，其支持的帐户类型不能是任何组织目录或任何个人 Microsoft 帐户（例如 Skype、Xbox、Outlook.com）中的帐户。 无租户管理员可以向 Microsoft 个人帐户的后台应用程序授予许可。 你需要选择“我的组织中的帐户”** 或“任何组织中的帐户”**。
 
-因此在应用程序配置中指定的颁发机构应租户 ed （指定租户 ID 或与组织关联的域名）。 如果你是 ISV 并且想要提供多租户工具，则可以使用`organizations`。 但请记住，您还需要向客户说明如何授予管理员同意。 请参阅[请求整个租户的许可](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)有关详细信息
+因此，在应用程序配置中指定的颁发机构应该是租户的（指定租户 ID 或者与组织相关联的域名）。
 
-## <a name="application-configuration-and-instantiation"></a>应用程序配置和实例化
+如果你是 ISV 并且希望提供多租户工具，则可以使用 `organizations`。 但请记住，你还需向客户说明如何授予管理员同意。 有关详细信息，请参阅[请求整个租户的许可](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。 此外，目前 MSAL 中有一个限制：仅当客户端凭据是应用程序机密（而不是证书）时才允许使用 `organizations`。
 
-在 MSAL 库中，客户端凭据 （密码或证书） 作为机密客户端应用程序构造的一个参数传递。
+## <a name="configure-and-instantiate-the-application"></a>配置并实例化应用程序
+
+在 MSAL 库中，客户端凭据（机密或证书）是作为机密客户端应用程序构造的参数传递的。
 
 > [!IMPORTANT]
-> 即使你的应用程序是控制台应用程序的后台应用程序是否运行作为一种服务，它需要机密客户端应用程序。
+> 即使应用程序是作为服务运行的控制台应用程序，如果它是守护程序应用程序，则也需要是机密客户端应用程序。
 
-### <a name="msalnet"></a>MSAL.NET
+### <a name="configuration-file"></a>配置文件
 
-添加[Microsoft.IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client)到你的应用程序的 NuGet 包。
+配置文件定义：
 
-使用 MSAL.NET 命名空间
+- 颁发机构或者云实例和租户 ID。
+- 通过应用程序注册获得的客户端 ID。
+- 客户端机密或证书。
 
-```CSharp
-using Microsoft.Identity.Client;
+# <a name="net"></a>[.NET](#tab/dotnet)
+
+[appsettings.json](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json)，来自 [.NET Core 控制台守护程序](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)示例。
+
+```json
+{
+  "Instance": "https://login.microsoftonline.com/{0}",
+  "Tenant": "[Enter here the tenantID or domain name for your Azure AD tenant]",
+  "ClientId": "[Enter here the ClientId for your application]",
+  "ClientSecret": "[Enter here a client secret for your application]",
+  "CertificateName": "[Or instead of client secret: Enter here the name of a certificate (from the user cert store) as registered with your application]"
+}
 ```
 
-后台应用程序将主讲 `IConfidentialClientApplication`
+请提供 `ClientSecret` 或 `CertificateName`。 这些设置是互斥的。
 
-```CSharp
+# <a name="python"></a>[Python](#tab/python)
+
+使用客户端机密构建机密客户端时，[Python 守护程序](https://github.com/Azure-Samples/ms-identity-python-daemon)示例中的 [parameters.json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) 配置文件如下所示：
+
+```Json
+{
+  "authority": "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here",
+  "client_id": "your_client_id",
+  "scope": [ "https://graph.microsoft.com/.default" ],
+  "secret": "The secret generated by AAD during your confidential app registration",
+  "endpoint": "https://graph.microsoft.com/v1.0/users"
+}
+```
+
+使用证书构建机密客户端时，[Python 守护程序](https://github.com/Azure-Samples/ms-identity-python-daemon)示例中的 [parameters.json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json) 配置文件如下所示：
+
+```Json
+{
+  "authority": "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here",
+  "client_id": "your_client_id",
+  "scope": [ "https://graph.microsoft.com/.default" ],
+  "thumbprint": "790E... The thumbprint generated by AAD when you upload your public cert",
+  "private_key_file": "server.pem",
+  "endpoint": "https://graph.microsoft.com/v1.0/users"
+}
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+```Java
+ private final static String CLIENT_ID = "";
+ private final static String AUTHORITY = "https://login.microsoftonline.com/<tenant>/";
+ private final static String CLIENT_SECRET = "";
+ private final static Set<String> SCOPE = Collections.singleton("https://graph.microsoft.com/.default");
+```
+
+---
+
+### <a name="instantiate-the-msal-application"></a>实例化 MSAL 应用程序
+
+若要实例化 MSAL 应用程序，你需要添加、引用或导入 MSAL 包（取决于语言）。
+
+构造取决于你是使用客户端机密还是使用证书（还是使用已签名断言，这是一种高级方案）。
+
+#### <a name="reference-the-package"></a>引用此包
+
+在应用程序代码中引用 MSAL 包。
+
+# <a name="net"></a>[.NET](#tab/dotnet)
+
+向应用程序添加 [Microsoft.IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet 包。
+在 MSAL.NET 中，机密客户端应用程序通过 `IConfidentialClientApplication` 接口表示。
+在源代码中使用 MSAL.NET 命名空间。
+
+```csharp
+using Microsoft.Identity.Client;
 IConfidentialClientApplication app;
 ```
 
-下面是生成与应用程序密码的应用程序的代码：
+# <a name="python"></a>[Python](#tab/python)
 
-```CSharp
+```python
+import msal
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+```java
+import com.microsoft.aad.msal4j.ClientCredentialFactory;
+import com.microsoft.aad.msal4j.ClientCredentialParameters;
+import com.microsoft.aad.msal4j.ConfidentialClientApplication;
+import com.microsoft.aad.msal4j.IAuthenticationResult;
+import com.microsoft.aad.msal4j.IClientCredential;
+import com.microsoft.aad.msal4j.MsalException;
+import com.microsoft.aad.msal4j.SilentParameters;
+```
+
+---
+
+#### <a name="instantiate-the-confidential-client-application-with-a-client-secret"></a>使用客户端机密实例化机密客户端应用程序
+
+下面的代码用于使用客户端机密实例化机密客户端应用程序：
+
+# <a name="net"></a>[.NET](#tab/dotnet)
+
+```csharp
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
            .WithClientSecret(config.ClientSecret)
            .WithAuthority(new Uri(config.Authority))
            .Build();
 ```
 
-下面是生成的证书的应用程序的代码：
+# <a name="python"></a>[Python](#tab/python)
 
-```CSharp
+```Python
+config = json.load(open(sys.argv[1]))
+
+# Create a preferably long-lived app instance that maintains a token cache.
+app = msal.ConfidentialClientApplication(
+    config["client_id"], authority=config["authority"],
+    client_credential=config["secret"],
+    # token_cache=...  # Default cache is in memory only.
+                       # You can learn how to use SerializableTokenCache from
+                       # https://msal-python.rtfd.io/en/latest/#msal.SerializableTokenCache
+    )
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+```Java
+IClientCredential credential = ClientCredentialFactory.createFromSecret(CLIENT_SECRET);
+
+ConfidentialClientApplication cca =
+        ConfidentialClientApplication
+                .builder(CLIENT_ID, credential)
+                .authority(AUTHORITY)
+                .build();
+```
+
+---
+
+#### <a name="instantiate-the-confidential-client-application-with-a-client-certificate"></a>通过客户端证书实例化机密客户端应用程序
+
+下面的代码用于使用证书来构建应用程序：
+
+# <a name="net"></a>[.NET](#tab/dotnet)
+
+```csharp
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
     .WithCertificate(certificate)
@@ -85,37 +205,140 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
     .Build();
 ```
 
-### <a name="msalpython"></a>MSAL.Python
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
-# Create a preferably long-lived app instance which maintains a token cache.
+config = json.load(open(sys.argv[1]))
 
+# Create a preferably long-lived app instance that maintains a token cache.
 app = msal.ConfidentialClientApplication(
     config["client_id"], authority=config["authority"],
-    client_credential=config["secret"],
+    client_credential={"thumbprint": config["thumbprint"], "private_key": open(config['private_key_file']).read()},
     # token_cache=...  # Default cache is in memory only.
                        # You can learn how to use SerializableTokenCache from
                        # https://msal-python.rtfd.io/en/latest/#msal.SerializableTokenCache
-
     )
 ```
 
-### <a name="msaljava"></a>MSAL.Java
+# <a name="java"></a>[Java](#tab/java)
+
+在 MSAL Java 中，可以通过两个生成器使用证书来实例化机密客户端应用程序：
 
 ```Java
-PrivateKey key = getPrivateKey();
-X509Certificate publicCertificate = getPublicCertificate();
 
-// create clientCredential with public and private key
-IClientCredential credential = ClientCredentialFactory.create(key, publicCertificate);
+InputStream pkcs12Certificate = ... ; /* Containing PCKS12-formatted certificate*/
+string certificatePassword = ... ;    /* Contains the password to access the certificate */
 
-ConfidentialClientApplication cca = ConfidentialClientApplication
-  .builder(CLIENT_ID, credential)
-  .authority(AUTHORITY_MICROSOFT)
-  .build();
+IClientCredential credential = ClientCredentialFactory.createFromCertificate(pkcs12Certificate, certificatePassword);
+
+ConfidentialClientApplication cca =
+        ConfidentialClientApplication
+                .builder(CLIENT_ID, credential)
+                .authority(AUTHORITY)
+                .build();
 ```
+
+或
+
+```Java
+PrivateKey key = getPrivateKey(); /* RSA private key to sign the assertion */
+X509Certificate publicCertificate = getPublicCertificate(); /* x509 public certificate used as a thumbprint */
+
+IClientCredential credential = ClientCredentialFactory.createFromCertificate(key, publicCertificate);
+
+ConfidentialClientApplication cca =
+        ConfidentialClientApplication
+                .builder(CLIENT_ID, credential)
+                .authority(AUTHORITY)
+                .build();
+```
+
+---
+
+#### <a name="advanced-scenario-instantiate-the-confidential-client-application-with-client-assertions"></a>高级方案：实例化包含客户端断言的机密客户端应用程序
+
+# <a name="net"></a>[.NET](#tab/dotnet)
+
+机密客户端应用程序还可以使用客户端断言（而不是客户端密码或证书）来证明其身份。
+
+MSAL.NET 可以通过两种方法将签名的断言提供给机密客户端应用：
+
+- `.WithClientAssertion()`
+- `.WithClientClaims()`
+
+使用 `WithClientAssertion` 时，需提供签名的 JWT。 [客户端断言](msal-net-client-assertions.md)详细介绍了这一高级方案。
+
+```csharp
+string signedClientAssertion = ComputeAssertion();
+app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
+                                          .WithClientAssertion(signedClientAssertion)
+                                          .Build();
+```
+
+使用 `WithClientClaims` 时，MSAL.NET 将生成一个已签名断言，其中包含 Azure AD 预期的声明，以及你想要发送的其他客户端声明。
+此代码展示了如何执行该操作：
+
+```csharp
+string ipAddress = "192.168.1.2";
+var claims = new Dictionary<string, string> { { "client_ip", ipAddress } };
+X509Certificate2 certificate = ReadCertificate(config.CertificateName);
+app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
+                                          .WithAuthority(new Uri(config.Authority))
+                                          .WithClientClaims(certificate, claims)
+                                          .Build();```
+```
+
+同样，如需详细信息，请参阅[客户端断言](msal-net-client-assertions.md)。
+
+# <a name="python"></a>[Python](#tab/python)
+
+在 MSAL Python 中，可以使用将要由此 `ConfidentialClientApplication` 的私钥签名的声明来提供客户端声明。
+
+```Python
+config = json.load(open(sys.argv[1]))
+
+# Create a preferably long-lived app instance that maintains a token cache.
+app = msal.ConfidentialClientApplication(
+    config["client_id"], authority=config["authority"],
+    client_credential={"thumbprint": config["thumbprint"], "private_key": open(config['private_key_file']).read()},
+    client_claims = {"client_ip": "x.x.x.x"}
+    # token_cache=...  # Default cache is in memory only.
+                       # You can learn how to use SerializableTokenCache from
+                       # https://msal-python.rtfd.io/en/latest/#msal.SerializableTokenCache
+    )
+```
+
+如需详细信息，请参阅 MSAL Python 的 [ConfidentialClientApplication](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.__init__) 参考文档。
+
+# <a name="java"></a>[Java](#tab/java)
+
+```Java
+IClientCredential credential = ClientCredentialFactory.createFromClientAssertion(assertion);
+
+ConfidentialClientApplication cca =
+        ConfidentialClientApplication
+                .builder(CLIENT_ID, credential)
+                .authority(AUTHORITY)
+                .build();
+```
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 
+# <a name="net"></a>[.NET](#tab/dotnet)
+
 > [!div class="nextstepaction"]
-> [守护程序应用-获取令牌的应用](./scenario-daemon-acquire-token.md)
+> [守护程序应用 - 获取应用的令牌](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=dotnet)
+
+# <a name="python"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [守护程序应用 - 获取应用的令牌](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=python)
+
+# <a name="java"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [守护程序应用 - 获取应用的令牌](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=java)
+
+---

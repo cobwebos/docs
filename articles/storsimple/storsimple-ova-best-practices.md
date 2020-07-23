@@ -12,17 +12,21 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/08/2018
+ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b8e9f12a549f71971c2da3b9865f6a74dad58f61
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60630132"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81460641"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple 虚拟阵列最佳实践
+
 ## <a name="overview"></a>概述
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
+
 Microsoft Azure StorSimple 虚拟阵列是一个集成式存储解决方案，可管理虚拟机监控程序中运行的本地虚拟设备与 Microsoft Azure 云存储之间的存储任务。 StorSimple 虚拟阵列是 8000 系列物理阵列的替代品，具有很高的效率和性价比。 该虚拟阵列可在现有虚拟机监控程序基础结构上运行，支持 iSCSI 和 SMB 协议，适合用于远程办公室/分支机构方案。 有关 StorSimple 解决方案的详细信息，请转到 [Microsoft Azure StorSimple 概述](https://www.microsoft.com/en-us/server-cloud/products/storsimple/overview.aspx)。
 
 本文介绍在 StorSimple 虚拟阵列初始设置、部署和管理期间实施的最佳实践。 这些最佳实践提供经过验证的指导原则，让用户了解如何设置和管理虚拟阵列。 本文面向想要在数据中心内部署和管理虚拟阵列的 IT 管理员。
@@ -75,9 +79,9 @@ StorSimple 虚拟阵列是在主机服务器虚拟机监控程序（Hyper-V 或 
 * 120 GB 的本地预留空间（用于 1 TB 分层卷/共享）
 * 330 GB 用于本地固定卷或共享（在 300 GB 预配大小的基础上增加 10% 的本地预留空间）
 
-到目前为止本地层上所需的总空间是：240 GB + 120 GB + 330 GB = 690 GB。
+到目前为止，本地层所需的总空间是：240 GB + 120 GB + 330 GB = 690 GB。
 
-其次，本地层所需的空间至少要与最大的单个预留空间一样大。 需要从云快照还原时，就要用到此额外空间量。 在此示例中，最大本地保留空间是 330 GB （包括文件系统的保留），因此会将其添加到 690 GB:690 GB + 330 GB = 1020 GB。
+其次，本地层所需的空间至少要与最大的单个预留空间一样大。 需要从云快照还原时，就要用到此额外空间量。 在本示例中，最大本地预留空间是 330 GB （包括文件系统的预留空间），因此，要为 690 GB 加上该空间量：690 GB + 330 GB = 1020 GB。
 在执行其他后续还原操作时，始终可以释放以前还原操作的空间。
 
 第三，需要本地总空间的 15% 来存储本地快照，因此只剩 85% 的空间可供使用。 在本示例中，这大约是 1020 GB，即 0.85 &ast; 预配的数据磁盘 TB 数。 因此，预配的数据磁盘是 (1020&ast;(1/0.85))= 1200 GB = 1.20 TB ~ 1.25 TB（四舍五入为最接近的四分位数）
@@ -99,7 +103,7 @@ StorSimple 虚拟阵列是在主机服务器虚拟机监控程序（Hyper-V 或 
 * 240 GB 本地预留空间（用于 2 TB 分层卷/共享）
 * 330 GB 用于本地固定卷或共享（在 300 GB 预配空间的基础上增加 10% 的本地预留空间）
 
-在本地层所需的总空间是：240 GB + 330 GB = 570 GB
+本地层所需的总空间是：240 GB + 330 GB = 570 GB
 
 还原所需的最小本地空间是 330 GB。
 
@@ -129,11 +133,11 @@ StorSimple 虚拟阵列是在主机服务器虚拟机监控程序（Hyper-V 或 
 * 确保随时都可以连接到 Internet。 设备的 Internet 连接如果断断续续或不可靠，可能导致无法访问云数据，并可能导致配置不受支持。
 * 如果打算将设备部署为 iSCSI 服务器：
   
-  * 建议禁用“自动获取 IP 地址”选项 (DHCP)。
+  * 建议禁用“自动获取 IP 地址”选项 (DHCP)。****
   * 配置静态 IP 地址。 必须配置主要和辅助 DNS 服务器。
   * 如果在虚拟阵列上定义多个网络接口，只有第一个网络接口（默认情况下，此接口是**以太网**接口）可以连接到云。 要控制流量类型，可以在虚拟阵列上创建多个虚拟网络接口（配置为 iSCSI 服务器），并将这些接口连接到不同的子网。
 * 若只要限制云带宽（由虚拟阵列使用），可以在路由器或防火墙中配置限制。 如果在虚拟机监控程序中定义限制，它会限制所有协议（包括 iSCSI 和 SMB），而不只是限制云带宽。
-* 确保启用虚拟机监控程序的时间同步。 如果使用 Hyper-V，请在 Hyper-V 管理器选择虚拟阵列，转到“设置”&gt;“集成服务”，并确保已选中“时间同步”。
+* 确保启用虚拟机监控程序的时间同步。 如果使用 Hyper-V，请在 Hyper-V 管理器选择虚拟阵列，转到“设置”&gt;“集成服务”，并确保已选中“时间同步”。********
 
 ### <a name="storage-accounts"></a>存储帐户
 StorSimple 虚拟阵列可与单个存储帐户关联。 此存储帐户可以是自动生成的存储帐户、位于服务所在的同一订阅中的帐户，也可以是与另一个订阅相关的存储帐户。 有关详细信息，请参阅有关如何[管理虚拟阵列的存储帐户](storsimple-virtual-array-manage-storage-accounts.md)的主题。
@@ -155,15 +159,15 @@ StorSimple 虚拟阵列可与单个存储帐户关联。 此存储帐户可以�
 
 在虚拟设备上预配共享或卷时，请记住以下最佳实践。
 
-* 相对于已预配分层共享大小的文件大小可能影响分层性能。 处理大型文件可能会导致分层速度变慢。处理大型文件时，建议最大的文件应小于共享大小的 3%。
+* 相对于已预配分层共享大小的文件大小可能影响分层性能。 处理大型文件可能会导致该层速度缓慢。处理大型文件时，建议将最大的文件小于共享大小的3%。
 * 虚拟阵列上最多可以创建 16 个卷/共享。 有关在本地固定和分层的卷/共享的大小限制，请始终参阅 [StorSimple 虚拟阵列限制](storsimple-ova-limits.md)。
-* 创建卷时，请将预期的数据使用量以及将来的增长量包含考虑。 稍后将无法扩展卷。
-* 创建卷后，无法缩小 StorSimple 上的卷大小。
+* 创建卷时，请将预期的数据使用量以及将来的增长量包含考虑。 以后无法扩展卷或共享。
+* 卷/共享一旦创建，就不能缩小 StorSimple 上的卷/共享的大小。
 * 在写入 StorSimple 上的分层卷时，如果卷数据达到特定的阈值（相对于保留给卷的本地空间），IO 将受到限制。 继续写入此卷会让 IO 明显变慢。 尽管可以写入已超过预配容量的分层卷（系统不会主动阻止用户写入超出预配容量的数据），但会看到警报通知，指出已超过订阅量。 在看到该警报后，请务必采取补救措施，例如删除卷数据（目前不支持扩展卷）。
 * 对于灾难恢复用例，可允许的共享/卷数为 16 个，可并行处理的共享/卷数上限也是 16 个，因此共享/卷数并不影响 RPO 和 RTO。
 
 #### <a name="volumeshare-type"></a>卷/共享类型
-根据用途，StorSimple 支持两种类型的卷/共享：本地固定和分层。 本地固定卷/共享是丰富预配的，分层卷/共享是精简预配的。 创建后，便无法将本地固定的卷/共享转换为分层卷/共享，反之亦然。
+根据用途，StorSimple 支持两种类型的卷/共享：本地固定和分层。 本地固定卷/共享是丰富预配的，分层卷/共享是精简预配的。 创建后，便无法将本地固定的卷/共享转换为分层卷/共享，反之亦然**。
 
 配置 StorSimple 卷/共享时，建议实施以下最佳实践：
 
@@ -195,8 +199,8 @@ StorSimple 虚拟阵列可与单个存储帐户关联。 此存储帐户可以�
 ### <a name="data-security-and-encryption"></a>数据安全与加密
 StorSimple 虚拟阵列具有数据安全和加密功能，可确保数据的机密性和完整性。 使用这些功能时，建议遵循以下最佳实践： 
 
-* 先定义用于生成 AES-256 加密的云存储加密密钥，然后将数据从虚拟阵列发送到云。 如果数据一开始就已加密，则不需要此密钥。 使用密钥管理系统（例如 [Azure 密钥保管库](../key-vault/key-vault-whatis.md)）可以生成并妥善保存密钥。
-* 在通过 StorSimple Manager 服务配置存储帐户时，请务必启用 SSL 模式来创建用于在 StorSimple 设备与云之间实现网络通信的安全隧道。
+* 先定义用于生成 AES-256 加密的云存储加密密钥，然后将数据从虚拟阵列发送到云。 如果数据一开始就已加密，则不需要此密钥。 使用密钥管理系统（例如 [Azure 密钥保管库](../key-vault/general/overview.md)）可以生成并妥善保存密钥。
+* 通过 StorSimple Manager 服务配置存储帐户时，请确保启用 TLS 模式，以便为 StorSimple 设备和云之间的网络通信创建一个安全通道。
 * 定期重新生成存储帐户的密钥（通过访问 Azure 存储服务），反映管理员列表更改造成的访问权限更改。
 * 虚拟阵列上的数据先压缩并进行重复数据删除，再发送到 Azure。 不建议在 Windows Server 主机上使用“重复数据删除”角色服务。
 
@@ -238,7 +242,7 @@ StorSimple 虚拟阵列具有数据安全和加密功能，可确保数据的机
   * 故障转移已完成，随后删除了源设备，但目标设备有问题，无法访问任何数据。 云中的数据仍保持安全，只要创建另一个虚拟阵列，然后将它用作 DR 的目标设备，即可轻松检索数据。
 
 ### <a name="deactivate"></a>停用
-停用 StorSimple 虚拟阵列时，会断开设备与相应 StorSimple Manager 服务之间的连接。 停用是不可撤消的**永久性**操作。 停用的设备不再能够注册到 StorSimple Manager 服务。 有关详细信息，请转到 [deactivate and delete your StorSimple Virtual Array](storsimple-virtual-array-deactivate-and-delete-device.md)（停用和删除 StorSimple 虚拟阵列）。
+停用 StorSimple 虚拟阵列时，会断开设备与相应 StorSimple Manager 服务之间的连接。 停用是**永久性**操作，不能撤消。 停用的设备不再能够注册到 StorSimple Manager 服务。 有关详细信息，请转到 [deactivate and delete your StorSimple Virtual Array](storsimple-virtual-array-deactivate-and-delete-device.md)（停用和删除 StorSimple 虚拟阵列）。
 
 停用虚拟阵列时，请记住以下最佳实践：
 

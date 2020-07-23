@@ -1,69 +1,74 @@
 ---
-title: 如何使用自定义 NuGet 源在 Azure 开发人员空间中
-titleSuffix: Azure Dev Spaces
+title: 使用自定义 NuGet 源
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: johnsta
-ms.author: johnsta
-ms.date: 05/11/2018
+author: zr-msft
+ms.author: zarhoads
+ms.date: 07/17/2019
 ms.topic: conceptual
 description: 使用自定义 NuGet 源访问和使用 Azure Dev Space 中的 NuGet 包。
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
-manager: ghogen
-ms.openlocfilehash: 1a000e378a9b8ecfb09d778fd6444e3f24b3df7b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+manager: gwallace
+ms.openlocfilehash: 77c7b733b12d9b352f9a806cadc0f900b9283ef3
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60686441"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229271"
 ---
-#  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>在 Azure Dev Space 中使用自定义 NuGet 源
+# <a name="use-a-custom-nuget-feed-with-azure-dev-spaces"></a>使用带有 Azure Dev Spaces 的自定义 NuGet 源
 
-NuGet 源提供了一种方便方式将包源包含在项目中。 Azure Dev Spaces 需要能够访问此源，以便将依赖项正确安装到 Docker 容器中。
+NuGet 源提供了一种方便方式将包源包含在项目中。 Azure Dev Spaces 需要访问此源，以便在 Docker 容器中正确安装依赖项。
 
 ## <a name="set-up-a-nuget-feed"></a>设置 NuGet 源
 
-若要设置 NuGet 源，请执行以下操作：
-1. 在 `PackageReference` 节点下的 `*.csproj` 文件中添加[包引用](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files)。
+将依赖项的[包引用](/nuget/consume-packages/package-references-in-project-files)添加到 " `*.csproj` " 节点下的文件中 `PackageReference` 。 例如：
 
-   ```xml
-   <ItemGroup>
-       <!-- ... -->
-       <PackageReference Include="Contoso.Utility.UsefulStuff" Version="3.6.0" />
-       <!-- ... -->
-   </ItemGroup>
-   ```
+```xml
+<ItemGroup>
+    <!-- ... -->
+    <PackageReference Include="Contoso.Utility.UsefulStuff" Version="3.6.0" />
+    <!-- ... -->
+</ItemGroup>
+```
 
-2. 在项目文件夹中创建一个 [NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-file) 文件。
-     * 使用 `packageSources` 节引用 NuGet 源位置。 重要说明：NuGet 源必须可公开访问。
-     * 使用 `packageSourceCredentials` 节配置用户名和密码凭据。 
+在项目文件夹中创建[NuGet.Config](/nuget/reference/nuget-config-file)文件，并 `packageSources` `packageSourceCredentials` 为 NuGet 源设置和部分。 `packageSources`部分包含源 url，必须可从 AKS 群集访问该 url。 `packageSourceCredentials`是用于访问源的凭据。 例如：
 
-   ```xml
-   <packageSources>
-       <add key="Contoso" value="https://contoso.com/packages/" />
-   </packageSources>
+```xml
+<packageSources>
+    <add key="Contoso" value="https://contoso.com/packages/" />
+</packageSources>
 
-   <packageSourceCredentials>
-       <Contoso>
-           <add key="Username" value="user@contoso.com" />
-           <add key="ClearTextPassword" value="33f!!lloppa" />
-       </Contoso>
-   </packageSourceCredentials>
-   ```
+<packageSourceCredentials>
+    <Contoso>
+        <add key="Username" value="user@contoso.com" />
+        <add key="ClearTextPassword" value="33f!!lloppa" />
+    </Contoso>
+</packageSourceCredentials>
+```
 
-3. 如果使用源代码管理：
-    - 在 `.gitignore` 文件中引用 `NuGet.Config`，这样就不会意外地将凭据提交到源存储库。
-    - 打开项目中的 `azds.yaml` 文件，找到 `build` 节，然后插入以下代码片段，以确保将 `NuGet.Config` 文件同步到 Azure，以便在容器映像生成过程中使用它。 （默认情况下，Azure Dev Spaces 不会同步与 `.gitignore` 和 `.dockerignore` 规则匹配的文件。）
+更新 Dockerfile，将文件复制 `NuGet.Config` 到映像。 例如：
 
-        ```yaml
-        build:
-        useGitIgnore: true
-        ignore:
-        - “!NuGet.Config”
-        ```
+```console
+COPY ["<project folder>/NuGet.Config", "./NuGet.Config"]
+```
 
+> [!TIP]
+> 在 Windows 上，、 `NuGet.Config` `Nuget.Config` 和 `nuget.config` 都可以作为有效的文件名。 在 Linux 上，只 `NuGet.Config` 是此文件的有效文件名。 由于 Azure Dev Spaces 使用 Docker 和 Linux，因此必须将此文件命名为 `NuGet.Config` 。 可以手动或通过运行来修复命名 `dotnet restore --configfile nuget.config` 。
+
+
+如果使用的是 Git，则不应在版本控制中具有 NuGet 源的凭据。 将添加 `NuGet.Config` 到 `.gitignore` 项目的，以便不将该 `NuGet.Config` 文件添加到版本控制中。 Azure Dev Spaces 将在容器映像生成过程中需要此文件，但默认情况下，它会考虑在 `.gitignore` 同步期间和中定义的规则 `.dockerignore` 。 若要更改默认值并允许 Azure Dev Spaces 同步 `NuGet.Config` 文件，请更新 `azds.yaml` 文件：
+
+```yaml
+build:
+useGitIgnore: true
+ignore:
+- "!NuGet.Config"
+```
+
+如果未使用 Git，则可以跳过此步骤。
+
+下一次 `azds up` `F5` 在 Visual Studio Code 或 Visual Studio 中运行或命中时，Azure Dev Spaces 会同步 `NuGet.Config` 文件，使用它来安装包依赖项。
 
 ## <a name="next-steps"></a>后续步骤
 
-完成上述步骤后，下次运行 `azds up`（或者在 VSCode 或 Visual Studio 中点击 `F5`）时，Azure Dev Spaces 会将 `NuGet.Config` 文件同步到 Azure，然后 `dotnet restore` 会利用该文件在容器中安装包依赖项。
-
+详细了解[NuGet 及其工作原理](/nuget/what-is-nuget)。

@@ -27,6 +27,9 @@
         - name: 开发
           tocHref: /azure/active-directory/develop/
           topicHref: /azure/active-directory/develop/
+        - name: 适用于开发人员的 Azure AD
+          tocHref: /azure/active-directory/azuread-dev/
+          topicHref: /azure/active-directory/azuread-dev/
         - name: Privileged Identity Management
           tocHref: /azure/active-directory/privileged-identity-management/
           topicHref: /azure/active-directory/privileged-identity-management/
@@ -51,6 +54,9 @@
         - name: 标识监管
           tocHref: /azure/active-directory/governance/
           topicHref: /azure/active-directory/governance/
+        - name: 应用程序预配
+          tocHref: /azure/active-directory/app-provisioning/
+          topicHref: /azure/active-directory/app-provisioning/
         - name: 应用程序管理
           tocHref: /azure/active-directory/manage-apps/
           topicHref: /azure/active-directory/manage-apps/
@@ -74,6 +80,9 @@
         - name: Azure PowerShell
           tocHref: /azure/api-management/scripts/
           topicHref: /azure/api-management/powershell-samples/
+    - name: Avere vFXT for Azure
+      tocHref: /azure/avere-vfxt/
+      topicHref: /azure/avere-vfxt/
     - name: Azure 应用配置
       tocHref: /azure/azure-app-configuration/
       topicHref: /azure/azure-app-configuration/
@@ -93,21 +102,40 @@
         - name: 移动应用
           tocHref: /azure/app-service-mobile/
           topicHref: /azure/app-service-mobile/
+    - name: 静态 Web 应用
+      tocHref: /azure/static-web-apps/
+      topicHref: /azure/static-web-apps/
     - name: 顾问
       tocHref: /azure/advisor/
       topicHref: /azure/advisor/
     - name: 应用程序网关
       tocHref: /azure/application-gateway/
       topicHref: /azure/application-gateway/
-    - name: 适用于 IoT 的 ASC
+    - name: Synapse Analytics
+      tocHref: /azure/synapse-analytics/
+      topicHref: /azure/synapse-analytics/
+    - name: ASC for IoT
       tocHref: /azure/asc-for-iot/
       topicHref: /azure/asc-for-iot/
     - name: 自动化
       tocHref: /azure/automation/
       topicHref: /azure/automation/
-    - name: Azure 区块链服务
-      tocHref: /azure/blockchain/service
-      topicHref: /azure/blockchain/service
+    - name: Internet 对等互连
+      tocHref: /azure/internet-peering/
+      topicHref: /azure/internet-peering/
+    - name: 区块链
+      tocHref: /azure/blockchain/
+      topicHref: /azure/blockchain/
+      items:
+        - name: 区块链服务
+          tocHref: /azure/blockchain/service/
+          topicHref: /azure/blockchain/service/index
+        - name: 区块链令牌
+          tocHref: /azure/blockchain/tokens/
+          topicHref: /azure/blockchain/tokens/index
+        - name: Blockchain Workbench
+          tocHref: /azure/blockchain/workbench/
+          topicHref: /azure/blockchain/workbench/
     - name: Azure Databricks
       tocHref: /azure/azure-databricks/
       topicHref: /azure/azure-databricks/
@@ -117,25 +145,38 @@
     - name: Azure 数字孪生
       tocHref: /azure/digital-twins/
       topicHref: /azure/digital-twins/
+    - name: Azure HPC 缓存
+      tocHref: /azure/hpc-cache/
+      topicHref: /azure/hpc-cache/
+    - name: Azure Lighthouse
+      tocHref: /azure/lighthouse/
+      topicHref: /azure/lighthouse/
     - name: Azure Monitor
       tocHref: /azure/azure-monitor/
       topicHref: /azure/azure-monitor/
+      items:
+        - name: Application Insights
+          tocHref: /azure/azure-monitor/azure-monitor-app-hub
+          topicHref: /azure/azure-monitor/azure-monitor-app-hub
     - name: Azure 空间定位点
       tocHref: /azure/spatial-anchors/
       topicHref: /azure/spatial-anchors/
+    - name: Azure 远程渲染
+      tocHref: /azure/remote-rendering/
+      topicHref: /azure/remote-rendering/
     - name: 容器注册表
       tocHref: /azure/container-registry/
       topicHref: /azure/container-registry/
-    - name: 成本管理
-      tocHref: /azure/cost-management/
-      topicHref: /azure/cost-management/
     - name: 函数
       tocHref: /azure/azure-functions/
       topicHref: /azure/azure-functions/
       items:
         - name: Durable Functions
           tocHref: /azure/azure-functions/durable/
-          topicHref: /azure/azure-functions/durable/durable-functions-overview
+          topicHref: /azure/azure-functions/durable/
+    - name: Azure 澳大利亚
+      tocHref: /azure/azure-australia/
+      topicHref: /azure/azure-australia/
     - name: Azure Government
       tocHref: /azure/azure-government/
       topicHref: /azure/azure-government/
@@ -145,10 +186,13 @@
     - name: Azure NetApp 文件
       tocHref: /azure/azure-netapp-files/
       topicHref: /azure/azure-netapp-files/
-    - name: CloudSimple 提供的 Azure VMware 解决方案
+    - name: Azure VMware 解决方案
+      tocHref: /azure/azure-vmware/
+      topicHref: /azure/azure-vmware/
+    - name: Azure VMware Solution by CloudSimple
       tocHref: /azure/vmware-cloudsimple/
       topicHref: /azure/vmware-cloudsimple/
-    - name: Azure 门户自定义
+    - name: Azure 门户文档
       tocHref: /azure/azure-portal/
       topicHref: /azure/azure-portal/\
     - name: 物联网
@@ -161,9 +205,28 @@
         - name: IoT Central
           tocHref: /azure/iot-central/
           topicHref: /azure/iot-central/
+          items:
+            - name: IoT Central
+              tocHref: /azure/iot-central/core/
+              topicHref: /azure/iot-central/core/
+            - name: 能源行业用 IoT Central
+              tocHref: /azure/iot-central/energy/
+              topicHref: /azure/iot-central/energy/
+            - name: 政府用 IoT Central
+              tocHref: /azure/iot-central/government/
+              topicHref: /azure/iot-central/government/
+            - name: 医疗保健业用 IoT Central
+              tocHref: /azure/iot-central/healthcare/
+              topicHref: /azure/iot-central/healthcare/
+            - name: 零售业用 IoT Central
+              tocHref: /azure/iot-central/retail/
+              topicHref: /azure/iot-central/retail/
         - name: IoT Edge
           tocHref: /azure/iot-edge/
           topicHref: /azure/iot-edge/
+        - name: IoT 即插即用
+          tocHref: /azure/iot-pnp/
+          topicHref: /azure/iot-pnp/
         - name: Azure 数字孪生
           tocHref: /azure/digital-twins/
           topicHref: /azure/digital-twins/
@@ -182,6 +245,19 @@
     - name: 资源管理器
       tocHref: /azure/azure-resource-manager/
       topicHref: /azure/azure-resource-manager/
+      items:
+        - name: 模板
+          tocHref: /azure/azure-resource-manager/templates/
+          topicHref: /azure/azure-resource-manager/templates/
+        - name: 管理
+          tocHref: /azure/azure-resource-manager/management/
+          topicHref: /azure/azure-resource-manager/management/
+        - name: 托管应用程序
+          tocHref: /azure/azure-resource-manager/managed-applications/
+          topicHref: /azure/azure-resource-manager/managed-applications/
+        - name: Azure Custom Providers
+          tocHref: /azure/azure-resource-manager/custom-providers/
+          topicHref: /azure/azure-resource-manager/custom-providers/
     - name: SignalR 服务
       tocHref: /azure/azure-signalr/
       topicHref: /azure/azure-signalr/
@@ -191,9 +267,6 @@
     - name: Azure Stack 用户
       tocHref: /azure/azure-stack/user/
       topicHref: /azure/azure-stack/user/
-    - name: 可支持性
-      tocHref: /azure/azure-supportability/
-      topicHref: /azure/azure-supportability/
     - name: 备份
       tocHref: /azure/backup/
       topicHref: /azure/backup/
@@ -203,27 +276,21 @@
     - name: Batch AI
       tocHref: /azure/batch-ai/
       topicHref: /azure/batch-ai/
-    - name: 计费 + 成本管理
-      tocHref: /azure/billing/
-      topicHref: /azure/billing/
     - name: BizTalk 服务
       tocHref: /azure/biztalk-services/
       topicHref: /azure/biztalk-services/
-    - name: Blockchain Workbench
-      tocHref: /azure/blockchain-workbench/
-      topicHref: /azure/blockchain-workbench/
     - name: Bot 服务
       tocHref: /azure/bot-service/
       topicHref: /azure/bot-service/
     - name: 缓存
       tocHref: /azure/cache/
       topicHref: /azure/cache/
-    - name: CDN
-      tocHref: /azure/cdn/
-      topicHref: /azure/cdn/
     - name: 云服务
       tocHref: /azure/cloud-services/
       topicHref: /azure/cloud-services/
+    - name: 认知搜索
+      tocHref: /azure/search/
+      topicHref: /azure/search/
     - name: 认知服务
       tocHref: /azure/cognitive-services/
       topicHref: /azure/cognitive-services/
@@ -234,36 +301,40 @@
         - name: 异常检测器
           tocHref: /azure/cognitive-services/anomaly-detector/
           topicHref: /azure/cognitive-services/anomaly-detector/
-        - name: 必应自动建议
-          tocHref: /azure/cognitive-services/Bing-Autosuggest/
-          topicHref: /azure/cognitive-services/Bing-Autosuggest/
-        - name: 必应自定义搜索
-          tocHref: /azure/cognitive-services/bing-custom-search/
-          topicHref: /azure/cognitive-services/bing-custom-search/
-        - name: 必应实体搜索
-          tocHref: /azure/cognitive-services/bing-entities-search/
-          topicHref: /azure/cognitive-services/bing-entities-search/
-        - name: 必应图像搜索
-          tocHref: /azure/cognitive-services/bing-image-search/
-          topicHref: /azure/cognitive-services/bing-image-search/
-        - name: 必应新闻搜索
-          tocHref: /azure/cognitive-services/bing-news-search/
-          topicHref: /azure/cognitive-services/bing-news-search/
-        - name: 必应拼写检查
-          tocHref: /azure/cognitive-services/bing-spell-check/
-          topicHref: /azure/cognitive-services/bing-spell-check/
-        - name: 必应视频搜索
-          tocHref: /azure/cognitive-services/Bing-Video-Search/
-          topicHref: /azure/cognitive-services/Bing-Video-Search/
-        - name: 必应视觉搜索
-          tocHref: /azure/cognitive-services/bing-visual-search/
-          topicHref: /azure/cognitive-services/bing-visual-search/
-        - name: 必应 Web 搜索
-          tocHref: /azure/cognitive-services/bing-web-search/
-          topicHref: /azure/cognitive-services/bing-web-search/
-        - name: 必应当地企业搜索
-          tocHref: /azure/cognitive-services/bing-local-business-search/
-          topicHref: /azure/cognitive-services/bing-local-business-search/
+        - name: 必应搜索 API
+          tocHref: /azure/cognitive-services/bing-web-search
+          topicHref: /azure/cognitive-services/bing-web-search
+          items:
+            - name: 必应自动建议
+              tocHref: /azure/cognitive-services/Bing-Autosuggest
+              topicHref: /azure/cognitive-services/Bing-Autosuggest/get-suggested-search-terms
+            - name: 必应自定义搜索
+              tocHref: /azure/cognitive-services/bing-custom-search
+              topicHref: /azure/cognitive-services/bing-custom-search/overview
+            - name: 必应实体搜索
+              tocHref: /azure/cognitive-services/bing-entities-search
+              topicHref: /azure/cognitive-services/bing-entities-search/overview
+            - name: 必应图像搜索
+              tocHref: /azure/cognitive-services/bing-image-search
+              topicHref: /azure/cognitive-services/bing-image-search/overview
+            - name: 必应新闻搜索
+              tocHref: /azure/cognitive-services/bing-news-search
+              topicHref: /azure/cognitive-services/bing-news-search/search-the-web
+            - name: 必应拼写检查
+              tocHref: /azure/cognitive-services/bing-spell-check
+              topicHref: /azure/cognitive-services/bing-spell-check/overview
+            - name: 必应视频搜索
+              tocHref: /azure/cognitive-services/Bing-Video-Search
+              topicHref: /azure/cognitive-services/Bing-Video-Search/overview
+            - name: 必应视觉搜索
+              tocHref: /azure/cognitive-services/bing-visual-search
+              topicHref: /azure/cognitive-services/bing-visual-search/overview
+            - name: 必应 Web 搜索
+              tocHref: /azure/cognitive-services/bing-web-search
+              topicHref: /azure/cognitive-services/bing-web-search/overview
+            - name: 必应当地企业搜索
+              tocHref: /azure/cognitive-services/bing-local-business-search
+              topicHref: /azure/cognitive-services/bing-local-business-search/overview
         - name: 计算机视觉
           tocHref: /azure/cognitive-services/computer-vision/
           topicHref: /azure/cognitive-services/computer-vision/
@@ -284,7 +355,7 @@
           topicHref: /azure/cognitive-services/entitylinking/home
         - name: 异常查找器
           tocHref: /azure/cognitive-services/labs/anomaly-finder/
-          topicHref: /azure/cognitive-services/labs/anomaly-finder/overview
+          topicHref: /azure/cognitive-services/anomaly-detector/overview
         - name: 对话学习器
           tocHref: /azure/cognitive-services/labs/conversation-learner/
           topicHref: /azure/cognitive-services/labs/conversation-learner/overview
@@ -318,12 +389,9 @@
         - name: 文本分析
           tocHref: /azure/cognitive-services/text-analytics/
           topicHref: /azure/cognitive-services/text-analytics/
-        - name: 文本翻译
+        - name: 转换器
           tocHref: /azure/cognitive-services/translator/
           topicHref: /azure/cognitive-services/translator/
-        - name: Translator 语音
-          tocHref: /azure/cognitive-services/translator-speech/
-          topicHref: /azure/cognitive-services/translator-speech/
         - name: 视频索引器
           tocHref: /azure/cognitive-services/video-indexer/
           topicHref: /azure/cognitive-services/video-indexer/video-indexer-overview
@@ -332,10 +400,22 @@
           topicHref: /azure/cognitive-services/web-language-model/home
         - name: 个性聊天
           tocHref: /azure/cognitive-services/project-personality-chat/
-          topicHref: /azure/cognitive-services/project-personality-chat/overview
+          topicHref: /azure/cognitive-services/qnamaker/overview/overview
         - name: 项目音响效果
           tocHref: /azure/cognitive-services/acoustics/
           topicHref: /azure/cognitive-services/acoustics/what-is-acoustics
+        - name: 表单识别器
+          tocHref: /azure/cognitive-services/form-recognizer/
+          topicHref: /azure/cognitive-services/form-recognizer/
+        - name: 墨迹识别器
+          tocHref: /azure/cognitive-services/Ink-Recognizer/
+          topicHref: /azure/cognitive-services/Ink-Recognizer/
+        - name: 个性化体验创建服务
+          tocHref: /azure/cognitive-services/personalizer/
+          topicHref: /azure/cognitive-services/personalizer/
+        - name: 沉浸式阅读器
+          tocHref: /azure/cognitive-services/immersive-reader/
+          topicHref: /azure/cognitive-services/immersive-reader/
     - name: 连接器
       tocHref: /azure/connectors/
       topicHref: /azure/connectors/
@@ -361,9 +441,9 @@
     - name: Cosmos DB
       tocHref: /azure/cosmos-db/
       topicHref: /azure/cosmos-db/
-    - name: Data Box 系列
-      tocHref: /azure/databox-family/
-      topicHref: /azure/databox-family/
+    - name: 存储
+      tocHref: /azure/storage/
+      topicHref: /azure/storage/
       items:
         - name: Data Box 脱机传输
           tocHref: /azure/databox/
@@ -387,26 +467,11 @@
       tocHref: /azure/dedicated-hsm/
       topicHref: /azure/dedicated-hsm/
     - name: 开发测试实验室
-      tocHref: /azure/devtest-lab/
-      topicHref: /azure/devtest-lab/
-    - name: DNS
-      tocHref: /azure/dns/
-      topicHref: /azure/dns/
-    - name: 事件网格
-      tocHref: /azure/event-grid/
-      topicHref: /azure/event-grid
-    - name: 事件中心
-      tocHref: /azure/event-hubs/
-      topicHref: /azure/event-hubs/
-    - name: ExpressRoute
-      tocHref: /azure/expressroute/
-      topicHref: /azure/expressroute/
-    - name: 防火墙
-      tocHref: /azure/firewall/
-      topicHref: /azure/firewall/
-    - name: Front Door 服务
-      tocHref: /azure/frontdoor/
-      topicHref: /azure/frontdoor/
+      tocHref: /azure/devtest-labs/
+      topicHref: /azure/devtest-labs/
+    - name: FXT Edge Filer
+      tocHref: /azure/fxt-edge-filer/
+      topicHref: /azure/fxt-edge-filer/
     - name: 基因组学
       tocHref: /azure/genomics/
       topicHref: /azure/genomics/
@@ -460,33 +525,49 @@
     - name: 适用于 FHIR 的 Azure API
       tocHref: /azure/healthcare-apis
       topicHref: /azure/healthcare-apis
+    - name: Azure for Industry
+      tocHref: /azure/industry
+      topicHref: /azure/industry
+      items:
+        - name: Azure FarmBeats
+          tocHref: /azure/industry
+          topicHref: /azure/industry
     - name: Jenkins
       tocHref: /azure/jenkins/
       topicHref: /azure/jenkins/
     - name: Key Vault
       tocHref: /azure/key-vault/
-      topicHref: /azure/key-vault/
+      topicHref: /azure/key-vault
+      items:
+        - name: 常规
+          tocHref: /azure/key-vault/general/
+          topicHref: /azure/key-vault/general/
+        - name: 证书
+          tocHref: /azure/key-vault/certificates/
+          topicHref: /azure/key-vault/certificates/
+        - name: 键
+          tocHref: /azure/key-vault/keys/
+          topicHref: /azure/key-vault/keys/
+        - name: 机密
+          tocHref: /azure/key-vault/secrets/
+          topicHref: /azure/key-vault/secrets/
+    - name: Azure Kinect DK
+      tocHref: /azure/kinect-dk/
+      topicHref: /azure/kinect-dk/
     - name: 实验室服务
       tocHref: /azure/lab-services/
       topicHref: /azure/lab-services/
-    - name: 负载均衡器
-      tocHref: /azure/load-balancer/
-      topicHref: /azure/load-balancer/
     - name: 逻辑应用
       tocHref: /azure/logic-apps/
       topicHref: /azure/logic-apps/
     - name: 机器学习
-      tocHref: /azure/machine-learning/
+      tocHref: /azure/machine-learning
       topicHref: /azure/machine-learning/
       items:
-        - name: 服务
-          tocHref: /azure/machine-learning/service
-          topicHref: /azure/machine-learning/service/
-          items:
-            - name: 算法和模块参考
-              tocHref: /azure/machine-learning/algorithm-module-reference
-              topicHref: /azure/machine-learning/algorithm-module-reference/module-reference
-        - name: 工作室
+        - name: 算法和模块参考
+          tocHref: /azure/machine-learning/algorithm-module-reference
+          topicHref: /azure/machine-learning/algorithm-module-reference/module-reference
+        - name: 工作室（经典版）
           tocHref: /azure/machine-learning/studio
           topicHref: /azure/machine-learning/studio/
         - name: Team Data Science Process
@@ -497,10 +578,10 @@
           topicHref: /azure/machine-learning/data-science-virtual-machine/
     - name: 市场消费者
       tocHref: /azure/marketplace-consumer/
-      topicHref: /azure/marketplace-consumer/
+      topicHref: /azure/marketplace/
     - name: 市场发布
       tocHref: /azure/marketplace-publishing/
-      topicHref: /azure/marketplace-publishing/
+      topicHref: /azure/marketplace/marketplace-publishers-guide
     - name: 媒体服务
       tocHref: /azure/media-services/
       topicHref: /azure/media-services/
@@ -514,12 +595,37 @@
         - name: 视频索引器
           tocHref: /azure/media-services/video-indexer/
           topicHref: /azure/media-services/video-indexer/
+        - name: Azure Media Player
+          tocHref: /azure/media-services/azure-media-player/
+          topicHref: /azure/media-services/azure-media-player/
+        - name: IoT Edge 上的实时视频分析
+          tocHref: /azure/media-services/live-video-analytics-edge/
+          topicHref: /azure/media-services/live-video-analytics-edge/
+    - name: 消息传送服务
+      tocHref: /azure/messaging-services/
+      topicHref: /azure/messaging-services/
+      items:
+        - name: 事件网格
+          tocHref: /azure/event-grid/
+          topicHref: /azure/event-grid
+        - name: 事件中心
+          tocHref: /azure/event-hubs/
+          topicHref: /azure/event-hubs/
+        - name: 服务总线消息传送
+          tocHref: /azure/service-bus-messaging/
+          topicHref: /azure/service-bus-messaging/
+        - name: Azure 中继
+          tocHref: /azure/service-bus-relay/
+          topicHref: /azure/azure-relay/
+    - name: 迁移
+      tocHref: /azure/migrate/
+      topicHref: /azure/migrate/
     - name: Mobile Engagement
       tocHref: /azure/mobile-engagement/
       topicHref: /azure/mobile-engagement/
     - name: 移动服务
       tocHref: /azure/mobile-services/
-      topicHref: /azure/mobile-services/
+      topicHref: /previous-versions/azure/app-service-mobile/app-service-mobile-value-prop
     - name: 多重身份验证
       tocHref: /azure/multi-factor-authentication/
       topicHref: /azure/multi-factor-authentication/
@@ -530,13 +636,68 @@
     - name: MySQL
       tocHref: /azure/mysql/
       topicHref: /azure/mysql/
-    - name: 网络观察程序
-      tocHref: /azure/network-watcher/
-      topicHref: /azure/network-watcher/
     - name: 网络
       tocHref: /azure/networking/
-      topicHref: /azure/networking/networking-overview
-    - name: Notebooks
+      topicHref: /azure/networking/
+      items:
+        - name: 应用程序网关
+          tocHref: /azure/application-gateway/
+          topicHref: /azure/application-gateway/
+        - name: Bastion
+          tocHref: /azure/bastion/
+          topicHref: /azure/bastion/
+        - name: CDN
+          tocHref: /azure/cdn/
+          topicHref: /azure/cdn/
+        - name: DNS
+          tocHref: /azure/dns/
+          topicHref: /azure/dns/
+        - name: ExpressRoute
+          tocHref: /azure/expressroute/
+          topicHref: /azure/expressroute/
+        - name: 防火墙
+          tocHref: /azure/firewall/
+          topicHref: /azure/firewall/
+        - name: 防火墙管理器
+          tocHref: /azure/firewall-manager/
+          topicHref: /azure/firewall-manager/
+        - name: Front Door 服务
+          tocHref: /azure/frontdoor/
+          topicHref: /azure/frontdoor/
+        - name: Internet 分析器
+          tocHref: /azure/internet-analyzer/
+          topicHref: /azure/internet-analyzer/
+        - name: Internet 对等互连
+          tocHref: /azure/internet-peering/
+          topicHref: /azure/internet-peering/
+        - name: 负载均衡器
+          tocHref: /azure/load-balancer/
+          topicHref: /azure/load-balancer/
+        - name: 网络观察程序
+          tocHref: /azure/network-watcher/
+          topicHref: /azure/network-watcher/
+        - name: 专用链接
+          tocHref: /azure/private-link/
+          topicHref: /azure/private-link/
+        - name: 对等互连服务
+          tocHref: /azure/peering-service/
+          topicHref: /azure/peering-service/
+        - name: 流量管理器
+          tocHref: /azure/traffic-manager/
+          topicHref: /azure/traffic-manager/
+        - name: 虚拟网络
+          tocHref: /azure/virtual-network/
+          topicHref: /azure/virtual-network/
+        - name: 虚拟 WAN
+          tocHref: /azure/virtual-wan/
+          topicHref: /azure/virtual-wan/
+        - name: VPN 网关
+          tocHref: /azure/vpn-gateway/
+          topicHref: /azure/vpn-gateway/
+        - name: Web 应用程序防火墙
+          tocHref: /azure/web-application-firewall/
+          topicHref: /azure/web-application-firewall/
+    - name: 笔记本
       tocHref: /azure/notebooks/
       topicHref: /azure/notebooks/azure-notebooks-overview
     - name: 通知中心
@@ -557,6 +718,9 @@
     - name: Power BI 工作区集合
       tocHref: /azure/power-bi-workspace-collections/
       topicHref: /azure/power-bi-workspace-collections/
+    - name: 专用链接
+      tocHref: /azure/private-link/
+      topicHref: /azure/private-link/
     - name: 用于 Redis 的 Azure 缓存
       tocHref: /azure/azure-cache-for-redis/
       topicHref: /azure/azure-cache-for-redis/
@@ -565,7 +729,7 @@
       topicHref: /azure/remoteapp/
     - name: 复原
       tocHref: /azure/resiliency/
-      topicHref: /azure/resiliency/
+      topicHref: /azure/architecture/framework/resiliency/overview
     - name: 基于角色的访问控制
       tocHref: /azure/role-based-access-control/
       topicHref: /azure/role-based-access-control/
@@ -575,27 +739,25 @@
     - name: 计划程序
       tocHref: /azure/scheduler/
       topicHref: /azure/scheduler/
-    - name: 搜索
-      tocHref: /azure/search/
-      topicHref: /azure/search/
-    - name: 安全
+    - name: 安全性
       tocHref: /azure/security/
       topicHref: /azure/security/
+      items:
+        - name: 基本
+          tocHref: /azure/security/fundamentals/
+          topicHref: /azure/security/fundamentals/
+        - name: 开发
+          tocHref: /azure/security/develop/
+          topicHref: /azure/security/develop/
+        - name: 基准
+          tocHref: /azure/security/benchmarks/
+          topicHref: /azure/security/benchmarks/
     - name: 安全中心
       tocHref: /azure/security-center/
       topicHref: /azure/security-center/
     - name: Azure Sentinel
       tocHref: /azure/sentinel/
       topicHref: /azure/sentinel/
-    - name: 服务总线
-      tocHref: /azure/service-bus/
-      topicHref: /azure/service-bus/
-    - name: 服务总线消息传送
-      tocHref: /azure/service-bus-messaging/
-      topicHref: /azure/service-bus-messaging/
-    - name: Service Bus 中继
-      tocHref: /azure/service-bus-relay/
-      topicHref: /azure/service-bus-relay/
     - name: Service Fabric
       tocHref: /azure/service-fabric/
       topicHref: /azure/service-fabric/
@@ -605,12 +767,35 @@
     - name: Site Recovery
       tocHref: /azure/site-recovery/
       topicHref: /azure/site-recovery/
-    - name: SQL 数据仓库
-      tocHref: /azure/sql-data-warehouse/
-      topicHref: /azure/sql-data-warehouse/
-    - name: SQL 数据库
-      tocHref: /azure/sql-database/
-      topicHref: /azure/sql-database/
+    - name: 站点可靠性工程
+      tocHref: /azure/site-reliability-engineering/
+      topicHref: /azure/site-reliability-engineering/
+    - name: Synapse Analytics
+      tocHref: /azure/synapse-analytics/
+      topicHref: /azure/synapse-analytics/
+    - name: Azure SQL
+      tocHref: /azure/azure-sql/
+      topicHref: /azure/azure-sql/
+      items:
+        - name: SQL 数据库
+          tocHref: /azure/azure-sql/database
+          topicHref: /azure/azure-sql/database
+        - name: SQL 托管实例
+          tocHref: /azure/azure-sql/managed-instance
+          topicHref: /azure/azure-sql/managed-instance
+        - name: Azure VM 上的 SQL Server
+          tocHref: /azure/azure-sql/virtual-machines
+          topicHref: /azure/azure-sql/virtual-machines
+          items:
+            - name: Windows
+              tocHref: /azure/azure-sql/virtual-machines/windows
+              topicHref: /azure/azure-sql/virtual-machines/windows
+            - name: Linux
+              tocHref: /azure/azure-sql/virtual-machines/linux
+              topicHref: /azure/azure-sql/virtual-machines/linux
+    - name: Azure SQL Edge
+      tocHref: /azure/azure-sql-edge/
+      topicHref: /azure/azure-sql-edge/
     - name: SQL Server Stretch Database
       tocHref: /azure/sql-server-stretch-database/
       topicHref: /azure/sql-server-stretch-database/
@@ -639,9 +824,6 @@
     - name: 流分析
       tocHref: /azure/stream-analytics/
       topicHref: /azure/stream-analytics/
-    - name: 流量管理器
-      tocHref: /azure/traffic-manager/
-      topicHref: /azure/traffic-manager/
     - name: 虚拟机规模集
       tocHref: /azure/virtual-machine-scale-sets/
       topicHref: /azure/virtual-machine-scale-sets/
@@ -682,12 +864,25 @@
             - name: SQL VM
               tocHref: /azure/virtual-machines/windows/sql
               topicHref: /azure/virtual-machines/windows/sql
-    - name: 虚拟网络
-      tocHref: /azure/virtual-network/
-      topicHref: /azure/virtual-network/
-    - name: VPN 网关
-      tocHref: /azure/vpn-gateway/
-      topicHref: /azure/vpn-gateway/
+    - name: 机密计算
+      tocHref: /azure/confidential-computing/
+      topicHref: /azure/confidential-computing/overview
     - name: Windows 虚拟桌面
       tocHref: /azure/virtual-desktop/
       topicHref: /azure/virtual-desktop/
+    - name: 成本管理和计费
+      tocHref: /azure/cost-management-billing/
+      topicHref: /azure/cost-management-billing/
+      items:
+        - name: 入门
+          tocHref: /azure/cost-management-billing/understand/
+          topicHref: /azure/cost-management-billing/understand/
+        - name: 管理成本和使用情况
+          tocHref: /azure/cost-management-billing/costs/
+          topicHref: /azure/cost-management-billing/costs/
+        - name: 管理帐户和订阅
+          tocHref: /azure/cost-management-billing/manage/
+          topicHref: /azure/cost-management-billing/manage/
+        - name: 预留
+          tocHref: /azure/cost-management-billing/reservations/
+          topicHref: /azure/cost-management-billing/reservations/

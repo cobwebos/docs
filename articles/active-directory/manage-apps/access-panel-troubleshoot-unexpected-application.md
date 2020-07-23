@@ -3,25 +3,25 @@ title: 应用程序在访问面板上的显示方式 | Microsoft Docs
 description: 关于应用程序为何在访问面板上显示的疑难解答
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewr: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fa8ea75cc7fda05326c802c25a91d025b66b5ce
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 22ba0709f4c5ca2294f515bdf1a96bff661b7293
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784418"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84760824"
 ---
 # <a name="how-applications-appear-on-the-access-panel"></a>应用程序为何在访问面板上显示
 
@@ -58,11 +58,11 @@ ms.locfileid: "65784418"
 
 6. **搜索**有关应用程序的名称。
 
-7. 单击“用户和组”。
+7. 单击 "**用户和组**"。
 
 8. 检查用户是否被分配给应用程序。
 
-   * 要将用户从应用程序中删除，请**单击用户对应的行**，并选择“删除”。
+   * 要将用户从应用程序中删除，请**单击用户对应的行**，并选择“删除”****。
 
 ### <a name="check-if-a-user-is-under-a-license-related-to-the-application"></a>检查用户是否符合与应用程序相关的许可证
 
@@ -74,13 +74,13 @@ ms.locfileid: "65784418"
 
 3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4. 在导航菜单中，单击“用户和组”。
+4. 单击导航菜单中的 "**用户和组**"。
 
-5. 单击“所有用户”。
+5. 单击“所有用户”****。
 
 6. **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
-7. 单击“许可证”查看当前已分配给用户的许可证。
+7. 单击“许可证”**** 查看当前已分配给用户的许可证。
 
    * 如果已向用户分配了 Office 许可证，则第一方 Office 应用程序会显示在用户的访问面板中。
 
@@ -102,13 +102,13 @@ ms.locfileid: "65784418"
 
 3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4. 在导航菜单中，单击“用户和组”。
+4. 单击导航菜单中的 "**用户和组**"。
 
-5. 单击“所有用户”。
+5. 单击“所有用户”****。
 
 6. **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
-7. 单击“组”
+7. 单击 "**组"。**
 
 8. 检查用户是否是分配给应用程序的组的成员。
 
@@ -122,17 +122,17 @@ ms.locfileid: "65784418"
 
 3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4. 在导航菜单中，单击“用户和组”。
+4. 单击导航菜单中的 "**用户和组**"。
 
-5. 单击“所有用户”。
+5. 单击“所有用户”****。
 
 6. **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
-7. 单击“组”
+7. 单击 "**组"。**
 
 8. 单击特定组所在的行。
 
-9. 单击“许可证”查看已分配给组的许可证有哪些。
+9. 单击“许可证”**** 查看已分配给组的许可证有哪些。
 
    * 如果已向组分配 Office 许可证，则某个第一方 Office 应用程序可能会显示在用户的访问面板中。
 

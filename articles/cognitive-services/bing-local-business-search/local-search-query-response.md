@@ -1,20 +1,21 @@
 ---
-title: 发送和使用必应当地企业搜索 API 查询和响应 | Microsoft Docs
+title: 发送和使用 API 查询和响应-必应本地业务搜索
 titleSuffix: Azure Cognitive Services
 description: 在本文中了解如何通过必应当地企业搜索 API 发送和使用搜索查询。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 11/01/2018
-ms.author: rosh; v-gedod
-ms.openlocfilehash: 45f7adab684b7b6097328a42abb60c8d58c1acc2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.subservice: bing-local-business
+ms.topic: conceptual
+ms.date: 06/26/2018
+ms.author: rosh
+ms.openlocfilehash: 25bcdb89002fec4f9b67b091996d7bf80bcf21c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796779"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74326719"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>发送和使用必应当地企业搜索 API 查询和响应
 
@@ -38,6 +39,8 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search[?q][&localC
 
 必应当地企业搜索 API 的 JSON 响应包含 `SearchResponse` 对象。 API 将在 `places` 字段中返回相关搜索结果。 如果未找到任何结果，`places` 字段不会包含在响应中。
 
+[!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
+
 ```
 {
    "_type": "SearchResponse",
@@ -54,7 +57,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search[?q][&localC
 API 返回的 JSON 结果包含以下属性：
 
 * _type
-* 地址
+* address
 * entityPresentationInfo
 * 地区
 * id

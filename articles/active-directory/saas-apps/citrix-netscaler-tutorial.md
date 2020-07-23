@@ -1,6 +1,6 @@
 ---
-title: 教程：Azure Active Directory 与 Citrix Netscaler 的集成 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 和 Citrix Netscaler 之间配置单一登录。
+title: 教程：Azure Active Directory 单一登录与 Citrix NetScaler（基于 Kerberos 的身份验证）集成 | Microsoft Docs
+description: 了解如何使用基于 Kerberos 的身份验证在 Azure Active Directory 和 Citrix NetScaler 之间配置单一登录 (SSO)。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,381 +11,460 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/14/2019
+ms.date: 03/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 6d434295a6a46ee5b7089608cbf788ff91589fb7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6771060f05a03c82879738dc5e8caccb67e55abc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65863772"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478000"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-citrix-netscaler"></a>教程：Azure Active Directory 与 Citrix Netscaler 的集成
+# <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-kerberos-based-authentication"></a>教程：Azure Active Directory 单一登录与 Citrix NetScaler（基于 Kerberos 的身份验证）集成
 
-本教程介绍如何将 Citrix Netscaler 与 Azure Active Directory (Azure AD) 集成。
-将 Citrix Netscaler 与 Azure AD 集成具有以下优势：
+本教程介绍如何将 Citrix NetScaler 与 Azure Active Directory (Azure AD) 集成。 将 Citrix NetScaler 与 Azure AD 集成后，可以：
 
-* 可在 Azure AD 中控制谁有权访问 Citrix Netscaler。
-* 可让用户使用其 Azure AD 帐户自动登录到 Citrix Netscaler（单一登录）。
-* 可在中心位置（即 Azure 门户）管理帐户。
+* 在 Azure AD 中控制谁有权访问 Citrix NetScaler。
+* 让用户使用其 Azure AD 帐户自动登录到 Citrix NetScaler。
+* 在一个中心位置（Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
-如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+若要了解服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与 Citrix Netscaler 的集成，需要具有以下项：
+若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 已启用 Citrix Netscaler 单一登录的订阅
+* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 已启用 Citrix NetScaler 单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
-本教程会在测试环境中配置和测试 Azure AD 单一登录。
+本教程在测试环境中配置并测试 Azure AD SSO。 本教程包括以下方案：
 
-* Citrix Netscaler 支持 SP 发起的 SSO
+* 用于 Citrix NetScaler 的 **SP 发起的** SSO
 
-* Citrix Netscaler 支持实时用户预配
+* 用于 Citrix NetScaler 的**恰时**用户预配
 
-## <a name="adding-citrix-netscaler-from-the-gallery"></a>从库添加 Citrix Netscaler
+* [用于 Citrix NetScaler 的基于 Kerberos 的身份验证](#publish-the-web-server)
 
-要配置 Citrix Netscaler 与 Azure AD 的集成，需要从库中将 Citrix Netscaler 添加到托管 SaaS 应用列表。
+* [Citrix NetScaler 的基于标头的身份验证](header-citrix-netscaler-tutorial.md#publish-the-web-server)
 
-**若要从库中添加 Citrix Netscaler，请执行以下步骤：**
+* 配置 Citrix NetScaler 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+## <a name="add-citrix-netscaler-from-the-gallery"></a>从库中添加 Citrix NetScaler
 
-    ![“Azure Active Directory”按钮](common/select-azuread.png)
+若要将 Citrix NetScaler 与 Azure AD 集成，请先从库中将 Citrix NetScaler 添加到托管 SaaS 应用的列表：
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+1. 在左侧菜单中，选择“Azure Active Directory”  。
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+1. 转到“企业应用程序”，并选择“所有应用程序”。  
 
-    ![“新增应用程序”按钮](common/add-new-app.png)
+1. 若要添加新的应用程序，请选择“新建应用程序”  。
 
-4. 在搜索框中键入“Citrix Netscaler”，在结果面板中选择“Citrix Netscaler”，并单击“添加”按钮添加该应用程序。
+1. 在“从库中添加”部分的搜索框中，输入 **Citrix NetScaler**  。
 
-     ![结果列表中的 Citrix Netscaler](common/search-new-app.png)
+1. 在结果中选择“Citrix NetScaler”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-single-sign-on-for-citrix-netscaler"></a>为 Citrix NetScaler 配置和测试 Azure AD 单一登录
 
-在本部分中，基于一个名为 Britta Simon 的测试用户配置和测试 Citrix Netscaler 的 Azure AD 单一登录。
-若要运行单一登录，需要在 Azure AD 用户与 Citrix Netscaler 中的相关用户之间建立链接关系。
+使用名为 **B.Simon** 的测试用户配置并测试 Citrix NetScaler 的 Azure AD SSO。 若要正常使用 SSO，需要在 Azure AD 用户与 Citrix NetScaler 中的相关用户之间建立关联关系。
 
-若要配置并测试 Citrix Netscaler 的 Azure AD 单一登录，需要完成以下构建基块：
+若要配置并测试 Citrix NetScaler 的 Azure AD SSO，请完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[配置 Citrix Netscaler 单一登录](#configure-citrix-netscaler-single-sign-on)** - 在应用程序端配置单一登录设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Citrix Netscaler 测试用户](#create-citrix-netscaler-test-user)** - 在 Citrix Netscaler 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
-6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. [配置 Azure AD SSO](#configure-azure-ad-sso) - 使用户能够使用此功能。
 
-### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+    1. [创建 Azure AD 测试用户](#create-an-azure-ad-test-user) - 使用 B.Simon 用户测试 Azure AD SSO。
 
-在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
+    1. [分配 Azure AD 测试用户](#assign-the-azure-ad-test-user) - 使 B.Simon 能够使用 Azure AD SSO。
 
-若要配置 Citrix Netscaler 的 Azure AD 单一登录，请执行以下步骤：
+1. [配置 Citrix NetScaler SSO](#configure-citrix-netscaler-sso) - 在应用程序端配置 SSO 设置。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“Citrix Netscaler”应用程序集成页上，单击“单一登录”。
+    * [创建 Citrix NetScaler 测试用户](#create-a-citrix-netscaler-test-user) - 在 Citrix NetScaler 中创建 B.Simon 的对应用户，并将其关联到该用户的 Azure AD 表示形式。
 
-    ![配置单一登录链接](common/select-sso.png)
+1. [测试 SSO](#test-sso) - 验证配置是否正常工作。
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
-    ![单一登录选择模式](common/select-saml-option.png)
+若要通过 Azure 门户启用 Azure AD SSO，请完成以下步骤：
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+1. 在 [Azure 门户](https://portal.azure.com/)的“Citrix NetScaler”应用程序集成窗格的“管理”下，选择“单一登录”。   
 
-    ![编辑基本 SAML 配置](common/edit-urls.png)
+1. 在“选择单一登录方法”窗格中选择“SAML”。  
 
-4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
+1. 在“使用 SAML 设置单一登录”窗格中，选择“基本 SAML 配置”对应的笔形“编辑”图标以编辑设置    。
 
-    ![Citrix Netscaler 域和 URL 单一登录信息](common/sp-identifier-reply.png)
+   ![编辑基本 SAML 配置](common/edit-urls.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<<Your FQDN>>/CitrixAuthService/AuthService.asmx`
-    
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<<Your FQDN>>`
+1. 在“基本 SAML 配置”部分，若要在 IDP 发起的模式下配置应用程序，请执行以下步骤：  
 
-    c. 在“回复 URL (断言使用者服务 URL)”文本框中，使用以下模式键入 URL：`https://<<Your FQDN>>/CitrixAuthService/AuthService.asmx`
-    
-    > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Citrix Netscaler 客户端支持团队](https://www.citrix.com/contact/technical-support.html)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    1. 在“标识符”  文本框中，输入采用以下模式的 URL：`https://<Your FQDN>`
+
+    1. 在“回复 URL”  文本框中，输入采用以下模式的 URL：`http(s)://<Your FQDN>.of.vserver/cgi/samlauth`
+
+1. 若要在 SP 发起的模式下配置应用程序，请选择“设置其他 URL”并完成以下步骤：  
+
+    * 在“登录 URL”  文本框中，输入具有以下模式的 URL：`https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
 
     > [!NOTE]
-    > 要让 SSO 正常运行，这些 URL 应可通过公共网站进行访问。 需要在 Netscaler 端启用防火墙或其他安全设置，才能让 Azure AD 在所配置的 ACS URL 上发布令牌。
+    > * 本部分使用的 URL 不是实际值。 请使用“标识符”、“回复 URL”和“登录 URL”的实际值更新这些值。 请联系 [Citrix NetScaler 客户端支持团队](https://www.citrix.com/contact/technical-support.html)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > * 若要设置 SSO，必须可以从公共网站访问 URL。 必须在 Citrix NetScaler 端启用防火墙或其他安全设置，才能让 Azure AD 在所配置的 URL 上发布令牌。
 
-5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
+1. 在“使用 SAML 设置单一登录”窗格的“SAML 签名证书”部分，对于“应用联合元数据 URL”，请复制 URL 并将其保存在记事本中    。
 
-    ![证书下载链接](common/metadataxml.png)
+    ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 Citrix Netscaler”部分，根据要求复制相应的 URL。
+1. 在“设置 Citrix NetScaler”部分中，根据要求复制相关 URL  。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-    a. 登录 URL
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
-    b. Azure AD 标识符
+在本部分，你将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-    c. 注销 URL
+1. 在 Azure 门户的左菜单上，依次选择“Azure Active Directory”、“用户”、“所有用户”。   
 
-### <a name="configure-citrix-netscaler-single-sign-on"></a>配置 Citrix Netscaler 单一登录
+1. 选择窗格顶部的“新建用户”。 
 
-1. 在另一个 Web 浏览器窗口中，以管理员身份登录 Citrix Netscaler 租户。
+1. 在“用户”属性中，完成以下步骤： 
 
-2. 确保 **NetScaler 固件版本为 NS12.1:Build 48.13.nc**。
+   1. 对于“名称”  ，请输入 `B.Simon`。  
 
-    ![配置单一登录](./media/citrix-netscaler-tutorial/configure01.png)
+   1. 对于“用户名”  ，请输入 _username@companydomain.extension_ 。 例如，`B.Simon@contoso.com` 。
 
-3. 在“VPN 虚拟机”页上，执行以下步骤：
+   1. 选中“显示密码”复选框，然后记下或复制“密码”中显示的值。  
 
-     ![配置单一登录](./media/citrix-netscaler-tutorial/configure02.png)
-
-    a. 将“仅限 ICA”这一网关设置设为 true。
-    
-    b. 将“启用身份验证”设为 true。
-    
-    c. DTLS 是可选的。
-    
-    d. 请确保 SSLv3 设为“已禁用”。
-
-4. 已创建自定义的“SSL 加密”组以在 https://www.ssllabs.com 上获取 A+，如下所示：
-
-    ![配置单一登录](./media/citrix-netscaler-tutorial/configure03.png)
-
-5. 在“配置身份验证 SAML 服务器”页面上，执行以下步骤：
-
-      ![配置单一登录](./media/citrix-netscaler-tutorial/configure04.png)
-
-    a. 在“名称”文本框中，键入服务器的名称。
-
-    b. 在“重定向 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
-
-    c. 在“单一注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
-
-    d. 在“IDP 证书名称”中，单击“+”符号以添加从 Azure 门户下载的证书。 上传后，请从下拉列表中选择证书。
-
-    e. 还需要在此页面上设置以下字段
-
-      ![配置单一登录](./media/citrix-netscaler-tutorial/configure24.png)
-
-    f. 在“请求的身份验证上下文”中选择 Exact。
-
-    g. 在“签名算法”中选择 RSA-SHA256。
-
-    h. 在“摘要方法”中选择 SHA256。
-
-    i. 勾选“强制实施用户名”。
-
-    j. 单击 **“确定”**
-
-6. 要配置“会话配置文件”，请执行以下步骤：
-
-    ![配置单一登录](./media/citrix-netscaler-tutorial/configure06.png)
-
-    a. 在“名称”文本框中，键入会话配置文件的名称。
-
-    b. 在“客户端体验”选项卡上，进行下述屏幕截图中所示的更改。
-
-    c. 继续在“常规”选项卡上进行如下所示的更改，然后单击“确定”
-
-    ![配置单一登录](./media/citrix-netscaler-tutorial/configure07.png)
-
-    d. 在“发布的应用程序”选项卡上，进行下述屏幕截图中所示的更改，然后单击“确定”。
-
-    ![配置单一登录](./media/citrix-netscaler-tutorial/configure08.png)
-
-    e. 在“安全性”选项卡上，进行下述屏幕截图中所示的更改，然后单击“确定”。
-
-    ![配置单一登录](./media/citrix-netscaler-tutorial/configure09.png)
-
-7. 在会话可靠性端口 2598 上建立 ICA 连接，如以下屏幕截图所示。
-
-    ![配置单一登录](./media/citrix-netscaler-tutorial/configure10.png)
-
-8. 在“SAML”部分添加“服务器”，如以下屏幕截图所示 。
-
-    ![配置单一登录](./media/citrix-netscaler-tutorial/configure11.png)
-
-9. 在“SAML”部分添加“策略”，如以下屏幕截图所示 。
-
-     ![配置单一登录](./media/citrix-netscaler-tutorial/configure12.png)
-
-10. 在“全局设置”页面上，转到“无客户端访问”部分。
-
-    ![配置单一登录](./media/citrix-netscaler-tutorial/configure13.png)
-
-11. 在“配置”选项卡中执行以下步骤：
-
-    ![配置单一登录](./media/citrix-netscaler-tutorial/configure14.png)
-
-    a. 选择“允许域”。
-
-    b. 在“域名”文本框中，选择域。
-
-    c. 单击“确定”。
-
-12. 在“网站接收器”上进行店面设置，如以下屏幕截图所示：
-
-    ![配置单一登录](./media/citrix-netscaler-tutorial/configure15.png)
-
-13. 在“管理身份验证方法 - 公司”部分执行以下步骤：
-
-    ![配置单一登录](./media/citrix-netscaler-tutorial/configure16.png)
-
-    a. 选择“用户名和密码”。
-
-    b. 选择“从 NetScaler 网关直通”。
-
-    c. 单击“确定”。
-
-14. 在“配置受信任的域”弹出窗口中，执行以下步骤：
-
-    ![配置单一登录](./media/citrix-netscaler-tutorial/configure17.png)
-
-    a. 选择“仅限受信任的域”。
-
-    b. 单击“添加”，以在“受信任的域”文本框中添加你的渔域。
-
-    c. 从“默认域”列表中选择默认域。
-
-    d. 选择“在登录页面显示域列表”。
-
-    e. 单击“确定”。
-
-15. 在“管理 NetScaler 网关”弹出窗口中，执行以下步骤：
-
-    ![配置单一登录](./media/citrix-netscaler-tutorial/configure18.png)
-
-    a. 单击“添加”，以在“NetScaler 网关”文本框中添加 NetScaler 网关。
-
-    b. 单击“关闭”。
-
-16. 在“店面常规设置”选项卡上，执行以下步骤：
-
-    ![配置单一登录](./media/citrix-netscaler-tutorial/configure19.png)
-
-    a. 在“显示名”文本框中，键入 NetScaler 网关名称。
-
-    b. 在“NetScaler 网关 URL”文本框中，键入 NetScaler 网关 URL。
-
-    c. 在“使用情况或角色”中选择“身份验证和 HDX 路由”。
-
-    d. 单击“确定”。
-
-17. 在“店面安全票证颁发机构”选项卡上，执行以下步骤：
-
-    ![配置单一登录](./media/citrix-netscaler-tutorial/configure20.png)
-
-    a. 单击“添加”按钮，以在文本框中添加“安全票证颁发机构 URL”。
-
-    b. 选择“启用会话可靠性”。
-
-    c. 单击“确定”。
-
-18. 在“店面身份验证设置”选项卡上，执行以下步骤：
-
-    ![配置单一登录](./media/citrix-netscaler-tutorial/configure21.png)
-
-    a. 选择你的版本。
-
-    b. 在“登录类型”中选择“域”。
-
-    c. 输入你的回调 URL。
-
-    d. 单击“确定”。
-
-19. 在“店面部署 Citrix 接收器”选项卡上，执行以下步骤：
-
-    ![配置单一登录](./media/citrix-netscaler-tutorial/configure22.png)
-
-    a. 在“部署选项”中选择“如果本地接收器不可用，在使用面向 HTML5 的接收器。
-
-    b. 单击“确定”。
-
-20. 在“管理信标”弹出窗口中，执行以下步骤：
-
-    ![配置单一登录](./media/citrix-netscaler-tutorial/configure23.png)
-
-    a. 在“内部信标”中选择“使用服务 URL”。
-
-    b. 单击“添加”，以在“外部信标”文本框中添加你的 URL。
-
-    c. 单击“确定”。
-
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
-
-本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
-
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
-
-    ![“用户和组”以及“所有用户”链接](common/users.png)
-
-2. 选择屏幕顶部的“新建用户”。
-
-    ![“新建用户”按钮](common/new-user.png)
-
-3. 在“用户属性”中，按照以下步骤操作。
-
-    ![“用户”对话框](common/user-properties.png)
-
-    a. 在“名称”字段中，输入 BrittaSimon。
-  
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
-    例如： BrittaSimon@contoso.com
-
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
-
-    d. 单击“创建”。
+   1. 选择“创建”  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，将通过向 Britta Simon 授予 Citrix Netscaler 的访问权限使之能够使用 Azure 单一登录。
+在本部分中，通过授予用户 B.Simon 访问 Citrix NetScaler 的权限，允许其使用 Azure SSO。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Citrix Netscaler”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+1. 在应用程序列表中，选择“Citrix NetScaler”。 
 
-2. 在应用程序列表中，选择“Citrix Netscaler”。
+1. 在应用概览的“管理”下，选择“用户和组”   。
 
-    ![应用程序列表中的 Citrix Netscaler 链接](common/all-applications.png)
+   ![“用户和组”链接](common/users-groups-blade.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+1. 选择“添加用户”。  然后，在“添加分配”对话框中选择“用户和组”。  
 
-    ![“用户和组”链接](common/users-groups-blade.png)
+    ![“添加用户”链接](common/add-assign-user.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+1. 在“用户和组”对话框的“用户”列表中，选择“B.Simon”。    选择“选择”。 
 
-    ![“添加分配”窗格](common/add-assign-user.png)
+1. 如果希望在 SAML 断言中使用任何角色值，请在“选择角色”对话框的列表中为用户选择相关角色，然后选择“选择”。  
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中选择“分配”。  
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+## <a name="configure-citrix-netscaler-sso"></a>配置 Citrix NetScaler SSO
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+根据你要配置的身份验证类型选择相应的步骤链接：
 
-### <a name="create-citrix-netscaler-test-user"></a>创建 Citrix Netscaler 测试用户
+- [为基于 Kerberos 的身份验证配置 Citrix NetScaler SSO](#publish-the-web-server)
 
-在本部分中，将在 Citrix Netscaler中创建一个名为 Britta Simon 的用户。 Citrix Netscaler 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 Citrix Netscaler 中不存在用户，则会在身份验证后创建一个新用户。
+- [为基于标头的身份验证配置 Citrix NetScaler SSO](header-citrix-netscaler-tutorial.md#publish-the-web-server)
 
->[!NOTE]
->如果需要手动创建用户，则需要联系 [Citrix Netscaler 客户端支持团队](https://www.citrix.com/contact/technical-support.html)。
+### <a name="publish-the-web-server"></a>发布 Web 服务器 
 
-### <a name="test-single-sign-on"></a>测试单一登录 
+若要创建虚拟服务器：
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+1. 选择“流量管理” > “负载均衡” > “服务”。   
+    
+1. 选择 **添加** 。
 
-单击访问面板中的 Citrix Netscaler 磁贴时，应会自动登录到设置了 SSO 的 Citrix Netscaler。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+    ![Citrix NetScaler 配置 -“服务”窗格](./media/citrix-netscaler-tutorial/web01.png)
+
+1. 为运行应用程序的 Web 服务器设置以下值：
+
+   * **服务名称**
+   * 服务器 IP/现有服务器 
+   * 协议 
+   * 端口 
+
+### <a name="configure-the-load-balancer"></a>配置负载均衡器
+
+若要配置负载均衡器：
+
+1. 转到“流量管理” > “负载均衡” > “虚拟服务器”。   
+
+1. 选择 **添加** 。
+
+1. 如以下屏幕截图所述设置以下值：
+
+    * **名称**
+    * 协议 
+    * **IP 地址**
+    * 端口 
+
+1. 选择“确定”  。
+
+    ![Citrix NetScaler 配置 -“基本设置”窗格](./media/citrix-netscaler-tutorial/load01.png)
+
+### <a name="bind-the-virtual-server"></a>绑定虚拟服务器
+
+若要将负载均衡器与虚拟服务器绑定：
+
+1. 在“服务和服务组”窗格中，选择“无负载均衡虚拟服务器服务绑定”。  
+
+   ![Citrix NetScaler 配置 -“负载均衡虚拟服务器服务绑定”窗格](./media/citrix-netscaler-tutorial/bind01.png)
+
+1. 如以下屏幕截图所示验证设置，然后选择“关闭”。 
+
+   ![Citrix NetScaler 配置 - 验证虚拟服务器服务绑定](./media/citrix-netscaler-tutorial/bind02.png)
+
+### <a name="bind-the-certificate"></a>绑定证书
+
+若要将此服务发布为 TLS，请绑定服务器证书，然后测试应用程序：
+
+1. 在“证书”下，选择“无服务器证书”。  
+
+   ![Citrix NetScaler 配置 -“服务器证书”窗格](./media/citrix-netscaler-tutorial/bind03.png)
+
+1. 如以下屏幕截图所示验证设置，然后选择“关闭”。 
+
+   ![Citrix NetScaler 配置 - 验证证书](./media/citrix-netscaler-tutorial/bind04.png)
+
+## <a name="citrix-adc-saml-profile"></a>Citrix ADC SAML 配置文件
+
+若要配置 Citrix ADC SAML 配置文件，请完成以下部分。
+
+### <a name="create-an-authentication-policy"></a>创建身份验证策略
+
+若要创建身份验证策略：
+
+1. 转到“安全性” > “AAA – 应用程序流量” > “策略” > “身份验证” > “身份验证策略”。     
+
+1. 选择 **添加** 。
+
+1. 在“创建身份验证策略”窗格中，输入或选择以下值： 
+
+    * **Name**：输入身份验证策略的名称。
+    * **操作**：输入 **SAML**，然后选择“添加”。 
+    * **表达式**：输入 **true**。     
+    
+    ![Citrix NetScaler 配置 -“创建身份验证策略”窗格](./media/citrix-netscaler-tutorial/policy01.png)
+
+1. 选择“创建”  。
+
+### <a name="create-an-authentication-saml-server"></a>创建身份验证 SAML 服务器
+
+若要创建身份验证 SAML 服务器，请转到“创建身份验证 SAML 服务器”窗格，然后完成以下步骤： 
+
+1. 对于“名称”，请输入身份验证 SAML 服务器的名称。 
+
+1. 在“导出 SAML 元数据”下： 
+
+   1. 选中“导入元数据”复选框。 
+
+   1. 输入前面在 Azure SAML UI 中复制的联合元数据 URL。
+    
+1. 对于“颁发者名称”，请输入相关的 URL。 
+
+1. 选择“创建”  。
+
+![Citrix NetScaler 配置 -“创建身份验证 SAML 服务器”窗格](./media/citrix-netscaler-tutorial/server01.png)
+
+### <a name="create-an-authentication-virtual-server"></a>创建身份验证虚拟服务器
+
+若要创建身份验证虚拟服务器：
+
+1.  转到“安全性” > “AAA - 应用程序流量” > “策略” > “身份验证” > “身份验证虚拟服务器”。     
+
+1.  选择“添加”，然后完成以下步骤： 
+
+    1. 对于“名称”，请输入身份验证虚拟服务器的名称。 
+
+    1. 选中“不可寻址”复选框。 
+
+    1. 对于“协议”，请选择“SSL”。  
+
+    1. 选择“确定”  。
+    
+1. 选择“继续”。 
+
+### <a name="configure-the-authentication-virtual-server-to-use-azure-ad"></a>配置身份验证虚拟服务器以使用 Azure AD
+
+修改身份验证虚拟服务器的两个部分：
+
+1.  在“高级身份验证策略”窗格中，选择“无身份验证策略”。  
+
+    ![Citrix NetScaler 配置 -“高级身份验证策略”窗格](./media/citrix-netscaler-tutorial/virtual01.png)
+
+1. 在“策略绑定”窗格中选择身份验证策略，然后选择“绑定”。  
+
+    ![Citrix NetScaler 配置 -“策略绑定”窗格](./media/citrix-netscaler-tutorial/virtual02.png)
+
+1. 在“基于表单的虚拟服务器”窗格中，选择“无负载均衡虚拟服务器”。  
+
+    ![Citrix NetScaler 配置 -“基于表单的虚拟服务器”窗格](./media/citrix-netscaler-tutorial/virtual03.png)
+
+1. 对于“身份验证 FQDN”，请输入完全限定的域名 (FQDN)（必需）。 
+
+1. 选择要使用 Azure AD 身份验证保护的负载均衡虚拟服务器。
+
+1. 选择“绑定”。 
+
+    ![Citrix NetScaler 配置 -“负载均衡虚拟服务器绑定”窗格](./media/citrix-netscaler-tutorial/virtual04.png)
+
+    > [!NOTE]
+    > 确保在“身份验证虚拟服务器配置”窗格中选择“完成”。  
+
+1. 若要验证更改，请在浏览器中转到应用程序 URL。 应会看到租户登录页，而不是之前所看到的“未经身份验证的访问”消息。
+
+    ![Citrix NetScaler 配置 - Web 浏览器中的登录页](./media/citrix-netscaler-tutorial/virtual05.png)
+
+## <a name="configure-citrix-netscaler-sso-for-kerberos-based-authentication"></a>为基于 Kerberos 的身份验证配置 Citrix NetScaler SSO
+
+### <a name="create-a-kerberos-delegation-account-for-citrix-adc"></a>为 Citrix ADC 创建 Kerberos 委托帐户
+
+1. 创建用户帐户（在此示例中，我们使用 _AppDelegation_）。
+
+    ![Citrix NetScaler 配置 -“属性”窗格](./media/citrix-netscaler-tutorial/kerberos01.png)
+
+1. 为此帐户设置一个主机 SPN。 
+
+    示例： `setspn -S HOST/AppDelegation.IDENTT.WORK identt\appdelegation`
+    
+    在本示例中：
+
+    * `IDENTT.WORK` 是域 FQDN。
+    * `identt` 是域 NetBIOS 名称。
+    * `appdelegation` 是委托用户帐户名称。
+
+1. 配置 Web 服务器的委托，如以下屏幕截图所示：
+ 
+    ![Citrix NetScaler 配置 -“属性”窗格下的“委托”](./media/citrix-netscaler-tutorial/kerberos02.png)
+
+    > [!NOTE]
+    > 在屏幕截图示例中，运行 Windows 集成身份验证 (WIA) 站点的内部 Web 服务器名称是 _CWEB2_。
+
+### <a name="citrix-netscaler-aaa-kcd-kerberos-delegation-accounts"></a>Citrix NetScaler AAA KCD（Kerberos 委托帐户）
+
+若要配置 Citrix NetScaler AAA KCD 帐户，请执行以下操作：
+
+1.  转到“Citrix 网关” > “AAA KCD (Kerberos 约束委托)帐户”。  
+
+1.  选择“添加”  ，然后输入或选择以下值：
+
+    * **Name**：输入 KCD 帐户的名称。
+
+    * **领域**：以大写形式输入域和扩展。
+
+    * **服务 SPN**：`http/<host/fqdn>@<DOMAIN.COM>`。
+    
+        > [!NOTE]
+        > `@DOMAIN.COM` 是必需的，必须大写。 示例：`http/cweb2@IDENTT.WORK`。
+
+    * **委托的用户**：输入委托的用户名。
+
+    * 选中“委托用户的密码”复选框，输入并确认密码。 
+
+1. 选择“确定”  。
+ 
+    ![Citrix NetScaler 配置 -“配置 KCD 帐户”窗格](./media/citrix-netscaler-tutorial/kerberos03.png)
+
+### <a name="citrix-traffic-policy-and-traffic-profile"></a>Citrix 流量策略和流量配置文件
+
+若要 Citrix 流量策略和流量配置文件，请执行以下操作：
+
+1.  转到“安全性  >  AAA - 应用程序流量  >  策略  >  流量策略、配置文件和窗体 SSO 配置文件流量策略”。    
+
+1.  选择“流量配置文件”。 
+
+1.  选择 **添加** 。
+
+1.  若要配置流量配置文件，请输入或选择以下值。
+
+    * **Name**：输入流量配置文件的名称。
+
+    * **单一登录**：选择“启用”。 
+
+    * **KCD 帐户**：选择在上一部分创建的 KCD 帐户。
+
+1. 选择“确定”  。
+
+    ![Citrix NetScaler 配置 -“配置流量配置文件”窗格](./media/citrix-netscaler-tutorial/kerberos04.png)
+ 
+1.  选择“流量策略”。 
+
+1.  选择 **添加** 。
+
+1.  若要配置流量策略，请输入或选择以下值：
+
+    * **Name**：输入流量策略的名称。
+
+    * **配置文件**：选择在上一部分创建的流量配置文件。
+
+    * **表达式**：输入 **true**。
+
+1. 选择“确定”  。
+
+    ![Citrix NetScaler 配置 -“配置流量策略”窗格](./media/citrix-netscaler-tutorial/kerberos05.png)
+
+### <a name="bind-a-traffic-policy-to-a-virtual-server-in-citrix"></a>将流量策略绑定到 Citrix 中的虚拟服务器
+
+使用 GUI 将流量策略绑定到虚拟服务器：
+
+1. 转到“流量管理” > “负载均衡” > “虚拟服务器”。   
+
+1. 在虚拟服务器列表中，选择要绑定重写策略的虚拟服务器，然后选择“打开”  。
+
+1. 在“负载均衡虚拟服务器”窗格中的“高级设置”下，选择“策略”。    为 NetScaler 实例配置的所有策略将显示在列表中。
+ 
+    ![Citrix NetScaler 配置 -“负载均衡虚拟服务器”窗格](./media/citrix-netscaler-tutorial/kerberos06.png)
+
+    ![Citrix NetScaler 配置 -“策略”对话框](./media/citrix-netscaler-tutorial/kerberos07.png)
+
+1.  选择要绑定到此虚拟服务器的策略名称旁的“复选框”。
+ 
+    ![Citrix NetScaler 配置 -“负载均衡虚拟服务器流量策略绑定”窗格](./media/citrix-netscaler-tutorial/kerberos09.png)
+
+1. 在“选择类型”对话框中： 
+
+    1. 对于“选择策略”，请选择“流量”。  
+
+    1. 对于“选择类型”，请选择“请求”。  
+
+    ![Citrix NetScaler 配置 -“选择类型”窗格](./media/citrix-netscaler-tutorial/kerberos08.png)
+
+1. 在绑定策略后，选择“完成”。 
+ 
+    ![Citrix NetScaler 配置 -“策略”窗格](./media/citrix-netscaler-tutorial/kerberos10.png)
+
+1. 使用 WIA 网站测试绑定。
+
+    ![Citrix NetScaler 配置 - Web 浏览器中的测试页](./media/citrix-netscaler-tutorial/kerberos11.png)    
+
+### <a name="create-a-citrix-netscaler-test-user"></a>创建 Citrix NetScaler 测试用户
+
+本部分将在 Citrix NetScaler 中创建一个名为 B.Simon 的用户。 Citrix NetScaler 支持默认启用的实时用户预配。 在本部分无需采取任何措施。 如果 Citrix NetScaler 中尚不存在用户，则会在身份验证后创建一个新用户。
+
+> [!NOTE]
+> 如果需要手动创建用户，请联系 [Citrix NetScaler 客户端支持团队](https://www.citrix.com/contact/technical-support.html)。
+
+## <a name="test-sso"></a>测试 SSO 
+
+在本部分，我们将使用访问面板测试 Azure AD SSO 配置。
+
+在访问面板中选择“Citrix NetScaler”磁贴时，应会自动登录到设置了 SSO 的 Citrix NetScaler。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [通过 Azure AD 试用 Citrix NetScaler](https://aad.portal.azure.com/)
+
+- [为基于标头的身份验证配置 Citrix NetScaler 单一登录](header-citrix-netscaler-tutorial.md)
+
+- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [如何通过高级可见性和控制保护 Citrix NetScaler](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

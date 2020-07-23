@@ -1,396 +1,394 @@
 ---
-title: 了解如何使用 Linux Data Science Virtual Machine
-titleSuffix: Azure
-description: 如何通过 Linux 数据科研 VM 执行几个常见的数据科学任务。
+title: 探索 Linux
+titleSuffix: Azure Data Science Virtual Machine
+description: 了解如何使用 Linux 数据科学虚拟机完成几项常见的数据科学任务。
 services: machine-learning
-documentationcenter: ''
-author: gopitk
-manager: cgronlun
-editor: cgronlun
-ms.custom: seodec18
-ms.assetid: 34ef0b10-9270-474f-8800-eecb183bbce4
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
-ms.date: 07/16/2018
-ms.author: gokuma
-ms.openlocfilehash: 6e8883870cc0f035df5122e91449f04203836218
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 04/02/2020
+ms.openlocfilehash: dec9d7d6f4676c3550bb6c0be79e25d907e5b3da
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60516869"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682477"
 ---
-# <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure 上的 Linux 数据科学虚拟机中的数据科学
-本演练显示如何通过 Linux 数据科研 VM 执行几个常见的数据科学任务。 Linux 数据科研虚拟机 (DSVM) 是 Azure 提供的虚拟机映像，其中预安装了一组常用于执行数据分析和机器学习的工具。 [预配 Linux 数据科研虚拟机](linux-dsvm-intro.md)主题中逐项列出了主要的软件组件。 VM 映像允许在几分钟之内轻松开始执行数据科学任务，而无需逐个安装和配置每个工具。 如有必要，可以轻松扩展 VM，并在不使用时停止 VM。 因此，此资源既具有弹性，又具有成本效益。
+# <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>使用 Azure 中的 Linux 数据科学虚拟机完成数据科学任务
 
-在本演练中演示的数据科学任务遵循了 [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) 中所概述的步骤。 此过程针对数据科学任务提供了系统的方法，允许数据科学家团队在构建智能应用程序的生命周期内有效地协作。 数据科学过程还为数据科学提供了可供个人遵循迭代框架。
+本演练演示了如何使用 Linux 数据科学虚拟机 (DSVM) 完成几项常见的数据科学任务。 Linux DSVM 是 Azure 中的虚拟机映像，其中预安装了一组常用于执行数据分析和机器学习的工具。 [预配 Linux 数据科学虚拟机](linux-dsvm-intro.md)中逐项列出了主要的软件组件。 使用 DSVM 映像，可以轻松地在几分钟之内开始执行数据科学任务，而无需单独安装和配置各个工具。 如果需要，可以轻松地纵向扩展 DSVM，也可以在不使用时停止它。 DSVM 资源既具有弹性，又具有成本效益。
 
-在本演练中，我们对 [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) 数据集进行了分析。 这一组电子邮件被标记为 spam 或 ham（即它们不是垃圾邮件），并且还包含电子邮件内容的一些统计信息。 包含的统计信息会在下一节中讨论。
+本演练中演示的数据科学任务遵循[什么是团队数据科学过程？](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview)中所概述的步骤。 团队数据科学过程是一种系统的数据科学方法，有助于数据科学家团队在生成智能应用程序的生命周期内有效地协作。 数据科学过程还为数据科学提供了可供个人遵循迭代框架。
 
-## <a name="prerequisites"></a>必备组件
-在可以使用 Linux 数据科研虚拟机之前，必须具备以下条件：
+在本演练中，我们分析了 [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) 数据集。 spambase 是一组标记为垃圾邮件或非垃圾邮件的电子邮件。 spambase 还包含一些关于电子邮件内容的统计信息。 本演练的稍后部分将讨论统计信息。
 
-* **Azure 订阅帐户**。 如果没有，请参阅[立即创建免费的 Azure 帐户](https://azure.microsoft.com/free/)。
-* [**Linux 数据科学 VM**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm)。 有关预配此 VM 的信息，请参阅[预配 Linux 数据科研虚拟机](linux-dsvm-intro.md)。
-* 计算机上安装了 [X2Go](https://wiki.x2go.org/doku.php) 且 XFCE 会话处于打开状态。 若要深入了解安装和配置 **X2Go 客户端**的方法，请参阅[安装和配置 X2Go 客户端](linux-dsvm-intro.md#installing-and-configuring-x2go-client)。
-* 为了获得更平滑的滚动体验，请在 VM FireFox 浏览器中切换 about:config 中的 gfx.xrender.enabled 标志。 [在此处了解详细信息](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 另请考虑将 *mousewheel.enable_pixel_scrolling* 切换为 False。 请参阅[此处的说明](https://support.mozilla.org/en-US/questions/981140)。
-* **AzureML 帐户**。 如果还没有帐户，请在 [AzureML 主页](https://studio.azureml.net/)中注册一个新帐户。 里面有免费的使用等级可帮助用户开始使用。
+## <a name="prerequisites"></a>先决条件
+
+必须先满足以下先决条件，然后才能使用 Linux DSVM：
+
+* **Azure 订阅**。 若要获取 Azure 订阅，请参阅[立即创建免费 Azure 帐户](https://azure.microsoft.com/free/)。
+* [Linux 数据科学虚拟机](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。 若要了解如何预配虚拟机，请参阅[预配 Linux 数据科学虚拟机](linux-dsvm-intro.md)。
+* 在计算机上安装了 [X2Go](https://wiki.x2go.org/doku.php)，且 XFCE 会话处于打开状态。 有关详细信息，请参阅[安装并配置 X2Go 客户端](linux-dsvm-intro.md#x2go)。
+* 为了获得更流畅的滚动体验，请在 DSVM 的 FireFox Web 浏览器中切换 `about:config` 中的 `gfx.xrender.enabled` 标志。 [了解详细信息](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 另外，不妨将 `mousewheel.enable_pixel_scrolling` 设置为 `False`。 [了解详细信息](https://support.mozilla.org/questions/981140)。
+* Azure 机器学习帐户。 如果还没有帐户，请在 [Azure 机器学习主页](https://azure.microsoft.com/free/services/machine-learning//)上注册一个新帐户。
 
 ## <a name="download-the-spambase-dataset"></a>下载 spambase 数据集
-[Spambase](https://archive.ics.uci.edu/ml/datasets/spambase) 数据集是相对较小，仅包含 4601 个示例的一组数据。 在演示数据科学 VM 的一些主要功能时，这是一个很方便的大小，因为它使资源需求保持适中。
+
+[spambase](https://archive.ics.uci.edu/ml/datasets/spambase) 是相对较小的数据集，包含 4,601 个示例。 数据集的大小便于演示 DSVM 的一些关键功能，因为它保持了适度的资源需求。
 
 > [!NOTE]
-> 本演练在 D2 v2 大小的 Linux Data Science Virtual Machine（CentOS 版本）上进行。 此大小的 DSVM 能够处理本演练中的过程。
->
->
+> 本演练是使用 D2 v2 大小的 Linux DSVM（Ubuntu 18.04 版本）创建的。 可以使用这种大小的 DSVM 来完成本演练中演示的过程。
 
-如果需要更多存储空间，可以创建额外的磁盘，然后将它们附加到 VM。 这些磁盘使用 Azure 持久存储，这样即使是在服务器被重新调整大小或关闭的情况下，其数据仍会被保留。 要添加磁盘并将其附加到 VM，请遵循[将磁盘添加到 Linux VM](../../virtual-machines/linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 中的说明进行操作。 这些步骤使用 Azure 命令行界面 (Azure CLI)，界面已安装在 DSVM 上。 因此完全可以从虚拟机自身完成这些过程。 另一个增加存储的选项是使用 [Azure 文件](../../storage/files/storage-how-to-use-files-linux.md)。
+如果需要更多存储空间，可以创建额外的磁盘，然后将它们附加到 DSVM。 这些磁盘使用 Azure 永久性存储，所以即使服务器因为调整大小或关闭而重新预配，它们的数据也会暂留。 若要添加磁盘，并将它们附加到 DSVM，请完成[将磁盘添加到 Linux VM](../../virtual-machines/linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 中的步骤。 添加磁盘的步骤使用 Azure CLI，它已经安装在 DSVM 上。 可以完全在 DSVM 本身中完成这些步骤。 另一种增加存储的方式是使用 [Azure 文件存储](../../storage/files/storage-how-to-use-files-linux.md)。
 
-若要下载数据，打开终端窗口并运行以下命令：
+若要下载数据，请打开终端窗口，然后运行以下命令：
 
-    wget https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
+```bash
+wget --no-check-certificate https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
+```
 
-下载的文件并没有标头行，因此，让我们创建另一个有标头的文件。 运行以下命令来创建具有适当标头的文件：
+下载的文件没有标题行。 让我们创建另一个有标题的文件。 运行以下命令来创建具有适当标头的文件：
 
-    echo 'word_freq_make, word_freq_address, word_freq_all, word_freq_3d,word_freq_our, word_freq_over, word_freq_remove, word_freq_internet,word_freq_order, word_freq_mail, word_freq_receive, word_freq_will,word_freq_people, word_freq_report, word_freq_addresses, word_freq_free,word_freq_business, word_freq_email, word_freq_you, word_freq_credit,word_freq_your, word_freq_font, word_freq_000, word_freq_money,word_freq_hp, word_freq_hpl, word_freq_george, word_freq_650, word_freq_lab,word_freq_labs, word_freq_telnet, word_freq_857, word_freq_data,word_freq_415, word_freq_85, word_freq_technology, word_freq_1999,word_freq_parts, word_freq_pm, word_freq_direct, word_freq_cs, word_freq_meeting,word_freq_original, word_freq_project, word_freq_re, word_freq_edu,word_freq_table, word_freq_conference, char_freq_semicolon, char_freq_leftParen,char_freq_leftBracket, char_freq_exclamation, char_freq_dollar, char_freq_pound, capital_run_length_average,capital_run_length_longest, capital_run_length_total, spam' > headers
+```bash
+echo 'word_freq_make, word_freq_address, word_freq_all, word_freq_3d,word_freq_our, word_freq_over, word_freq_remove, word_freq_internet,word_freq_order, word_freq_mail, word_freq_receive, word_freq_will,word_freq_people, word_freq_report, word_freq_addresses, word_freq_free,word_freq_business, word_freq_email, word_freq_you, word_freq_credit,word_freq_your, word_freq_font, word_freq_000, word_freq_money,word_freq_hp, word_freq_hpl, word_freq_george, word_freq_650, word_freq_lab,word_freq_labs, word_freq_telnet, word_freq_857, word_freq_data,word_freq_415, word_freq_85, word_freq_technology, word_freq_1999,word_freq_parts, word_freq_pm, word_freq_direct, word_freq_cs, word_freq_meeting,word_freq_original, word_freq_project, word_freq_re, word_freq_edu,word_freq_table, word_freq_conference, char_freq_semicolon, char_freq_leftParen,char_freq_leftBracket, char_freq_exclamation, char_freq_dollar, char_freq_pound, capital_run_length_average,capital_run_length_longest, capital_run_length_total, spam' > headers
+```
 
-然后执行以下命令将两个文件相连接：
+然后，将两个文件连接在一起：
 
-    cat spambase.data >> headers
-    mv headers spambaseHeaders.data
+```bash
+cat spambase.data >> headers
+mv headers spambaseHeaders.data
+```
 
-数据集内有多种关于每封电子邮件的统计信息：
+数据集对于每个电子邮件都有几种类型的统计信息：
 
-* 列 ***word\_freq\_WORD*** 指明电子邮件中的单词与 *WORD* 的匹配百分比。 例如，如果 *word\_freq\_make* 为 1，那么电子邮件中所有单词的 1% 都为 *make*。
-* 列 ***char\_freq\_CHAR*** 指明电子邮件的所有字符中 *CHAR* 所占的百分比。
-* ***capital\_run\_length\_longest*** 是一连串大写字母的最大长度。
-* ***capital\_run\_length\_average*** 是所有连串大写字母的平均长度。
-* ***capital\_run\_length\_total*** 是所有连串大写字母的合计长度。
-* ***spam*** 指示是否将电子邮件视为垃圾邮件（1 = 垃圾邮件，0 = 不是垃圾邮件）。
+* word\_freq\__WORD_ 等列指明电子邮件中与 WORD 匹配的字词所占的百分比。 例如，如果 word\_freq\_make 为 1，那么电子邮件中的所有字词有 1% 是 make。
+* char\_freq\__CHAR_ 等列指明电子邮件中所有 CHAR 字符所占的百分比。
+* **capital\_run\_length\_longest** 是一连串大写字母的最大长度。
+* **capital\_run\_length\_average** 是所有连串大写字母的平均长度。
+* **capital\_run\_length\_total** 是所有连串大写字母的合计长度。
+* **spam** 指示是否将电子邮件视为垃圾邮件（1 = 垃圾邮件，0 = 不是垃圾邮件）。
 
-## <a name="explore-the-dataset-with-microsoft-r-open"></a>使用 Microsoft R Open 探索数据集
-让我们使用 R 来检查数据并执行一些基本的机器学习。数据科研 VM已预安装了 [Microsoft R Open](https://mran.revolutionanalytics.com/open/) 。 此版本的 R 中的多线程数学库提供了优于不同单线程版本的性能。 通过使用 CRAN 程序包存储库的快照，Microsoft R Open 还提供了再现功能。
+## <a name="explore-the-dataset-by-using-r-open"></a>使用 R Open 浏览数据集
 
-若要获取本演练中使用的代码示例的副本，请使用 VM 上已预装的 git 克隆 **Azure-Machine-Learning-Data-Science** 存储库。 从 git 命令行运行：
+让我们使用 R 来检查数据并执行一些基本的机器学习。DSVM 已预安装了 [Microsoft R Open](https://mran.revolutionanalytics.com/open/)。 此预安装版本 R 中的多线程数学库的性能优于单线程版本。 R Open 还通过 CRAN 包存储库的快照提供了可再现性。
 
-    git clone https://github.com/Azure/Azure-MachineLearning-DataScience.git
+若要获取本演练中使用的代码示例的副本，请使用 git 来克隆 Azure-Machine-Learning-Data-Science 存储库。 git 已预安装在 DSVM 上。 在 git 命令行处，运行以下命令：
 
-打开终端窗口，使用 R 交互式控制台启动一个新 R 会话，或者使用计算上预安装的 RStudio。
+```bash
+git clone https://github.com/Azure/Azure-MachineLearning-DataScience.git
+```
 
+打开终端窗口，在 R 交互式控制台中启动一个新的 R 会话。 也可以使用 DSVM 上预安装的 RStudio。
 
-若要导入数据并设置环境，请运行：
+若要导入数据并设置环境，请执行以下操作：
 
-    data <- read.csv("spambaseHeaders.data")
-    set.seed(123)
+```R
+data <- read.csv("spambaseHeaders.data")
+set.seed(123)
+```
 
 若要查看有关每列的汇总统计信息：
 
-    summary(data)
+```R
+summary(data)
+```
 
 有关数据的不同视图：
 
-    str(data)
+```R
+str(data)
+```
 
-这会显示数据集中每个变量的类型以及开始的几个值。
+此视图显示每个变量的类型和数据集中的前几个值。
 
-*spam* 列作为一个整数被读取，但实际上它是一个分类变量 （或系数）。 若要设置其类型：
+**spam** 列作为一个整数被读取，但实际上它是一个分类变量 （或系数）。 若要设置其类型：
 
-    data$spam <- as.factor(data$spam)
+```R
+data$spam <- as.factor(data$spam)
+```
 
-若要进行一些探索性分析，请使用 [ggplot2](https://ggplot2.tidyverse.org/) 程序包 - 一个适用于 R 的常用绘图库，已安装在 VM 上。 请注意，从前面显示的摘要数据，我们已经获得有关感叹号字符的频率的汇总统计信息。 让我们使用以下命令来绘制这些频率：
+若要进行一些探索分析，请使用 [ggplot2](https://ggplot2.tidyverse.org/) 包，这是适用于 R 的常用绘图库，已预安装在 DSVM 上。 根据前面显示的摘要数据，我们已有关于感叹号字符使用频率的汇总统计信息。 让我们通过运行以下命令来绘制这些频率：
 
-    library(ggplot2)
-    ggplot(data) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```R
+library(ggplot2)
+ggplot(data) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```
 
-由于零轴会影响绘图的准确性，让我们将其删除：
+由于零条形会导致绘图倾斜，让我们消除它：
 
-    email_with_exclamation = data[data$char_freq_exclamation > 0, ]
-    ggplot(email_with_exclamation) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```R
+email_with_exclamation = data[data$char_freq_exclamation > 0, ]
+ggplot(email_with_exclamation) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```
 
-在 1 上面有看起来很有意思的不寻常密度。 让我们只看该数据：
+有一个大于 1 的重要密度，看起来很有趣。 让我们只看这些数据：
 
-    ggplot(data[data$char_freq_exclamation > 1, ]) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```R
+ggplot(data[data$char_freq_exclamation > 1, ]) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```
 
-然后按垃圾邮件与非垃圾邮件来拆分它：
+然后，按垃圾邮件与非垃圾邮件来拆分它：
 
-    ggplot(data[data$char_freq_exclamation > 1, ], aes(x=char_freq_exclamation)) +
-    geom_density(lty=3) +
-    geom_density(aes(fill=spam, colour=spam), alpha=0.55) +
-    xlab("spam") +
-    ggtitle("Distribution of spam \nby frequency of !") +
-    labs(fill="spam", y="Density")
+```R
+ggplot(data[data$char_freq_exclamation > 1, ], aes(x=char_freq_exclamation)) +
+geom_density(lty=3) +
+geom_density(aes(fill=spam, colour=spam), alpha=0.55) +
+xlab("spam") +
+ggtitle("Distribution of spam \nby frequency of !") +
+labs(fill="spam", y="Density")
+```
 
-这些示例应使用户能够为其他列绘制类似图形来探索它们所包含的数据。
+这些示例应该可以帮助你绘制类似的绘图，并浏览其他列中的数据。
 
-## <a name="train-and-test-an-ml-model"></a>训练和测试 ML 模型
-现在，让我们来对几个机器学习模型进行定型，按照包含垃圾邮件或非垃圾邮件对数据集中的电子邮件进行分类。 在本部分中，我们将训练决策树模型和随机森林模型，然后测试其预测的准确性。
+## <a name="train-and-test-a-machine-learning-model"></a>训练和测试机器学习模型
+
+让我们来训练几个机器学习模型，以将数据集中的电子邮件分类为包含垃圾邮件或非垃圾邮件。 在此部分中，我们训练一个决策树模型和一个随机林模型。 然后，我们测试预测准确度。
 
 > [!NOTE]
-> 数据科学 VM 上已安装了以下代码中使用的 rpart（递归分区和回归树）包。
->
->
+> 下面代码中使用的 rpart（递归分区和回归树）包已经安装在 DSVM 上。
 
-首先，让我们将该数据集拆分为训练集和测试集：
+首先，让我们将数据集拆分为训练集和测试集：
 
-    rnd <- runif(dim(data)[1])
-    trainSet = subset(data, rnd <= 0.7)
-    testSet = subset(data, rnd > 0.7)
+```R
+rnd <- runif(dim(data)[1])
+trainSet = subset(data, rnd <= 0.7)
+testSet = subset(data, rnd > 0.7)
+```
 
-然后创建决策树，将电子邮件分类。
+然后，创建决策树，以对电子邮件进行分类：
 
-    require(rpart)
-    model.rpart <- rpart(spam ~ ., method = "class", data = trainSet)
-    plot(model.rpart)
-    text(model.rpart)
+```R
+require(rpart)
+model.rpart <- rpart(spam ~ ., method = "class", data = trainSet)
+plot(model.rpart)
+text(model.rpart)
+```
 
 结果如下：
 
-![1](./media/linux-dsvm-walkthrough/decision-tree.png)
+![所创建的决策树的图](./media/linux-dsvm-walkthrough/decision-tree.png)
 
 若要确定它对训练集的执行情况，请使用下面的代码：
 
-    trainSetPred <- predict(model.rpart, newdata = trainSet, type = "class")
-    t <- table(`Actual Class` = trainSet$spam, `Predicted Class` = trainSetPred)
-    accuracy <- sum(diag(t))/sum(t)
-    accuracy
+```R
+trainSetPred <- predict(model.rpart, newdata = trainSet, type = "class")
+t <- table(`Actual Class` = trainSet$spam, `Predicted Class` = trainSetPred)
+accuracy <- sum(diag(t))/sum(t)
+accuracy
+```
 
 若要确定它对测试集的执行情况，请使用下面的代码：
 
-    testSetPred <- predict(model.rpart, newdata = testSet, type = "class")
-    t <- table(`Actual Class` = testSet$spam, `Predicted Class` = testSetPred)
-    accuracy <- sum(diag(t))/sum(t)
-    accuracy
+```R
+testSetPred <- predict(model.rpart, newdata = testSet, type = "class")
+t <- table(`Actual Class` = testSet$spam, `Predicted Class` = testSetPred)
+accuracy <- sum(diag(t))/sum(t)
+accuracy
+```
 
-让我们也尝试一个随机林模型。 随机森林模型训练大量的决策树并输出一个类，该类是来自所有单个决策树的分类模式。 它们提供了更强大的机器学习方法，因为他们会校正决策树模型过拟合 (overfit) 数据集的趋势。
+让我们也尝试一个随机林模型。 随机林训练大量的决策树，并输出一个类，这是所有单个决策树的分类模式。 它们提供了一种更强大的机器学习方法，因为它们纠正了决策树模型过度拟合训练数据集的倾向。
 
-    require(randomForest)
-    trainVars <- setdiff(colnames(data), 'spam')
-    model.rf <- randomForest(x=trainSet[, trainVars], y=trainSet$spam)
+```R
+require(randomForest)
+trainVars <- setdiff(colnames(data), 'spam')
+model.rf <- randomForest(x=trainSet[, trainVars], y=trainSet$spam)
 
-    trainSetPred <- predict(model.rf, newdata = trainSet[, trainVars], type = "class")
-    table(`Actual Class` = trainSet$spam, `Predicted Class` = trainSetPred)
+trainSetPred <- predict(model.rf, newdata = trainSet[, trainVars], type = "class")
+table(`Actual Class` = trainSet$spam, `Predicted Class` = trainSetPred)
 
-    testSetPred <- predict(model.rf, newdata = testSet[, trainVars], type = "class")
-    t <- table(`Actual Class` = testSet$spam, `Predicted Class` = testSetPred)
-    accuracy <- sum(diag(t))/sum(t)
-    accuracy
+testSetPred <- predict(model.rf, newdata = testSet[, trainVars], type = "class")
+t <- table(`Actual Class` = testSet$spam, `Predicted Class` = testSetPred)
+accuracy <- sum(diag(t))/sum(t)
+accuracy
+```
 
+<a name="deep-learning"></a>
 
-## <a name="deploy-a-model-to-azure-machine-learning-studio"></a>将模型部署到 Azure 机器学习工作室
-[Azure 机器学习工作室](https://studio.azureml.net/)是一种云服务，可用来轻松地生成和部署预测分析模型。 Azure 机器学习工作室出色的功能之一是能够将任何 R 函数发布为 Web 服务。 Azure 机器学习工作室 R 程序包使得从 DSVM 上的 R 会话执行部署更加简便直接。
+## <a name="deep-learning-tutorials-and-walkthroughs"></a>深度学习教程和演练
 
-要部署前一部分中的决策树代码，需要登录 Azure 机器学习工作室。 需要使用工作区 ID 和授权令牌进行登录。 若要查找这些值并使用它们初始化 Azure 机器学习变量：
+除了基于框架的示例外，还提供了一组综合演练。 这些演练可帮助你快速开始开发域中的深度学习应用程序，如图像和文本/语言理解等。
 
-在左侧菜单上选择“**设置**”。 记下“**工作区 ID**”。 ![2](./media/linux-dsvm-walkthrough/workspace-id.png)
+- [在不同的框架中运行神经网络](https://github.com/ilkarman/DeepLearningFrameworks)：演示如何将代码从一个框架迁移到另一个框架的综合演练。 它还演示了如何跨框架比较模型和运行时性能。 
 
-从顶部的菜单选择“**授权令牌**”并记下“**主授权令牌**”。![3](./media/linux-dsvm-walkthrough/workspace-token.png)
+- [关于如何生成端到端解决方案来检测图像中的产品的操作指南](https://github.com/Azure/cortana-intelligence-product-detection-from-images)：图像检测是一种能够对图像中的对象进行定位和分类的技术。 这项技术有可能在许多现实生活的商业领域带来巨大的回报。 例如，零售商可以使用此技术确定客户已从货架上选取哪个产品。 从而，此信息可帮助商店管理产品库存。 
 
-加载 **AzureML** 包，并使用 DSVM 上 R 会话中的令牌和工作区 ID 设置变量的值：
+- [音频深度学习](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/)：本教程展示了如何训练深度学习模型，用于在[城市声音数据集](https://urbansounddataset.weebly.com/)中检测音频事件。 本教程概述了如何处理音频数据。
 
-    if(!require("AzureML")) install.packages("AzureML")
-    require(AzureML)
-    wsAuth = "<authorization-token>"
-    wsID = "<workspace-id>"
+- [文本文档分类](https://github.com/anargyri/lstm_han)：本演练演示如何生成和训练两种不同的神经网络体系结构：分层注意网络和长短期记忆 (LSTM)。 这些神经网络使用用于深度学习的 Keras API 对文本文档进行分类。 Keras 是以下三大最热门深度学习框架的前端：Microsoft Cognitive Toolkit、TensorFlow 和 Theano。
 
+## <a name="other-tools"></a>其他工具
 
-让我们简化模型，使此演示更易实现。 在离根最近的决策树中选取三个变量，然后只使用这三个变量构建新的树：
-
-    colNames <- c("char_freq_dollar", "word_freq_remove", "word_freq_hp", "spam")
-    smallTrainSet <- trainSet[, colNames]
-    smallTestSet <- testSet[, colNames]
-    model.rpart <- rpart(spam ~ ., method = "class", data = smallTrainSet)
-
-我们需要一个预测函数将这些功能作为输入并返回预测值：
-
-    predictSpam <- function(newdata) {
-      predictDF <- predict(model.rpart, newdata = newdata)
-      return(colnames(predictDF)[apply(predictDF, 1, which.max)])
-    }
-
-
-使用 **publishWebService** 函数将 predictSpam 函数发布到 AzureML：
-
-    spamWebService <- publishWebService(ws, fun = predictSpam, name="spamWebService", inputSchema = smallTrainSet, data.frame=TRUE)
-
-
-此函数会采用 **predictSpam** 函数创建一个名为 **spamWebService** 并且定义了输入和输出的 web 服务，并返回有关新的终结点的信息。
-
-使用以下命令查看最新发布的 web 服务的详细信息，包括其 API 终结点和访问密钥：
-
-    s<-tail(services(ws, name = "spamWebService"), 1)
-    ep <- endpoints(ws,s)
-    ep
-
-若要尝试测试集的前 10 行：
-
-    consume(ep, smallTestSet[1:10, ])
-
-
-## <a name="use-other-tools-available"></a>使用其他可用工具
-其余部分会显示如何使用 Linux 数据科研虚拟机上安装的一些工具。以下是所讨论工具的列表：
+其余部分介绍了如何使用 Linux DSVM 上安装的一些工具。 我们将讨论下面这些工具：
 
 * XGBoost
 * Python
-* Jupyterhub
+* JupyterHub
 * Rattle
-* PostgreSQL 和 Squirrel SQL
+* PostgreSQL 和 SQuirreL SQL
 * SQL Server 数据仓库
 
-## <a name="xgboost"></a>XGBoost
-[XGBoost](https://xgboost.readthedocs.org/en/latest/) 是一种可提供快速、 准确地提升树实现的工具。
+### <a name="xgboost"></a>XGBoost
 
-    require(xgboost)
-    data <- read.csv("spambaseHeaders.data")
-    set.seed(123)
+[XGBoost](https://xgboost.readthedocs.org/en/latest/) 提供了快速、准确的增强树实现。
 
-    rnd <- runif(dim(data)[1])
-    trainSet = subset(data, rnd <= 0.7)
-    testSet = subset(data, rnd > 0.7)
+```R
+require(xgboost)
+data <- read.csv("spambaseHeaders.data")
+set.seed(123)
 
-    bst <- xgboost(data = data.matrix(trainSet[,0:57]), label = trainSet$spam, nthread = 2, nrounds = 2, objective = "binary:logistic")
+rnd <- runif(dim(data)[1])
+trainSet = subset(data, rnd <= 0.7)
+testSet = subset(data, rnd > 0.7)
 
-    pred <- predict(bst, data.matrix(testSet[, 0:57]))
-    accuracy <- 1.0 - mean(as.numeric(pred > 0.5) != testSet$spam)
-    print(paste("test accuracy = ", accuracy))
+bst <- xgboost(data = data.matrix(trainSet[,0:57]), label = trainSet$spam, nthread = 2, nrounds = 2, objective = "binary:logistic")
 
-还可以从 python 或命令行调用 XGBoost。
+pred <- predict(bst, data.matrix(testSet[, 0:57]))
+accuracy <- 1.0 - mean(as.numeric(pred > 0.5) != testSet$spam)
+print(paste("test accuracy = ", accuracy))
+```
 
-## <a name="python"></a>Python
-对于使用 Python 进行的开发，DSVM 上已安装了 Anaconda Python 分发版 2.7 和 3.5。
+XGBoost 还可以通过 Python 或命令行调用。
+
+### <a name="python"></a>Python
+
+对于 Python 开发，Anaconda Python 发行版 3.5 和 2.7 已安装在 DSVM 上。
 
 > [!NOTE]
-> Anaconda 发行版包含 [Condas](https://conda.pydata.org/docs/index.html)，可用来为 Python 建立已安装不同版本和 (或) 封装的自定义环境。
->
->
+> Anaconda 发行版包括 [Conda](https://conda.pydata.org/docs/index.html)。 可以使用 Conda 创建自定义 Python 环境，这些环境中安装了不同的版本或包。
 
-让我们读入部分 spambase 数据集，并使用 scikit-learn 中的支持向量机 (support vector machine) 对电子邮件进行分类：
+让我们读入部分 spambase 数据集，并使用 Scikit-learn 中的支持向量机对电子邮件进行分类：
 
-    import pandas
-    from sklearn import svm
-    data = pandas.read_csv("spambaseHeaders.data", sep = ',\s*')
-    X = data.ix[:, 0:57]
-    y = data.ix[:, 57]
-    clf = svm.SVC()
-    clf.fit(X, y)
+```Python
+import pandas
+from sklearn import svm
+data = pandas.read_csv("spambaseHeaders.data", sep = ',\s*')
+X = data.ix[:, 0:57]
+y = data.ix[:, 57]
+clf = svm.SVC()
+clf.fit(X, y)
+```
 
 若要进行预测:
 
-    clf.predict(X.ix[0:20, :])
+```Python
+clf.predict(X.ix[0:20, :])
+```
 
-若要显示如何发布 AzureML 终结点，让我们使用三个变量创建一个更简单的模型，与之前发布 R 模型的方法相同。
+为了演示如何发布 Azure 机器学习终结点，让我们创建一个更基本的模型。 我们将使用前面发布 R 模型时使用的三个变量：
 
-    X = data[["char_freq_dollar", "word_freq_remove", "word_freq_hp"]]
-    y = data.ix[:, 57]
-    clf = svm.SVC()
-    clf.fit(X, y)
+```Python
+X = data[["char_freq_dollar", "word_freq_remove", "word_freq_hp"]]
+y = data.ix[:, 57]
+clf = svm.SVC()
+clf.fit(X, y)
+```
 
-要将模型发布到 AzureML：
+若要将模型发布到 Azure 机器学习，请执行以下操作：
 
-    # Publish the model.
-    workspace_id = "<workspace-id>"
-    workspace_token = "<workspace-token>"
-    from azureml import services
-    @services.publish(workspace_id, workspace_token)
-    @services.types(char_freq_dollar = float, word_freq_remove = float, word_freq_hp = float)
-    @services.returns(int) # 0 or 1
-    def predictSpam(char_freq_dollar, word_freq_remove, word_freq_hp):
-        inputArray = [char_freq_dollar, word_freq_remove, word_freq_hp]
-        return clf.predict(inputArray)
+```Python
+# Publish the model.
+workspace_id = "<workspace-id>"
+workspace_token = "<workspace-token>"
+from azureml import services
+@services.publish(workspace_id, workspace_token)
+@services.types(char_freq_dollar = float, word_freq_remove = float, word_freq_hp = float)
+@services.returns(int) # 0 or 1
+def predictSpam(char_freq_dollar, word_freq_remove, word_freq_hp):
+    inputArray = [char_freq_dollar, word_freq_remove, word_freq_hp]
+    return clf.predict(inputArray)
 
-    # Get some info about the resulting model.
-    predictSpam.service.url
-    predictSpam.service.api_key
+# Get some info about the resulting model.
+predictSpam.service.url
+predictSpam.service.api_key
 
-    # Call the model
-    predictSpam.service(1, 1, 1)
-
-> [!NOTE]
-> 此功能仅适用于 python 2.7， 在 3.5 上尚不支持。 请使用 **/anaconda/bin/python2.7** 来运行。
->
->
-
-## <a name="jupyterhub"></a>Jupyterhub
-在 DSVM 中的 Anaconda 分发版包含 Jupyter notebook - 一个共享 Python、R 或 Julia 代码和分析的跨平台环境。 可通过 JupyterHub 访问 Jupyter notebook。 使用本地 Linux 用户名和密码在 ***https://\<VM DNS 名称 或 IP 地址\>:8000/*** 中进行登录。 JupyterHub 的所有配置文件可以在 **/etc/jupyterhub** 目录中找到。
+# Call the model
+predictSpam.service(1, 1, 1)
+```
 
 > [!NOTE]
-> 若要在当前内核中从 Jupyter Notebook 使用 Python 包管理器（通过 `pip` 命令），可以在代码单元中使用以下命令，例如：
->   ```python
+> 这种方法只适用于 Python 2.7。 Python 3.5 还不支持它。 若要运行，请使用 /anaconda/bin/python2.7。
+
+### <a name="jupyterhub"></a>JupyterHub
+
+DSVM 中的 Anaconda 发行版随附 Jupyter Notebook，这是用于共享 Python、R 或 Julia 代码和分析的跨平台环境。 Jupyter Notebook 是可通过 JupyterHub 访问的。 可以使用本地 Linux 用户名和密码在 https://\<DSVM DNS name or IP address\>:8000/ 处登录。 JupyterHub 的所有配置文件可以在 /etc/jupyterhub 中找到。
+
+> [!NOTE]
+> 若要在当前内核中从 Jupyter Notebook 使用 Python 包管理器（通过 `pip` 命令），请在代码单元格中使用以下命令：
+>
+>   ```Python
 >    import sys
 >    ! {sys.executable} -m pip install numpy -y
 >   ```
 > 
-> 
-> 
-> [!NOTE]
-> 若要在当前内核中从 Jupyter Notebook 使用 Conda 安装程序（通过 `conda` 命令），可以在代码单元中使用以下命令，例如：
->   ```python
+> 若要在当前内核中从 Jupyter Notebook 使用 Conda 安装程序（通过 `conda` 命令），请在代码单元格中使用以下命令：
+>
+>   ```Python
 >    import sys
 >    ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
 >   ```
 
-VM 上已安装了几个示例 Notebook：
+DSVM 上已安装了几个示例笔记本：
 
-* 请参阅 [IntroToJupyterPython.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroToJupyterPython.ipynb) 以了解示例 Python notebook。
-* 有关示例 **R** Notebook ，请参阅 [IntroTutorialinR](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroTutorialinR.ipynb)。
-* 请参阅 [IrisClassifierPyMLWebService](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IrisClassifierPyMLWebService.ipynb) 以了解另一个示例 **Python** notebook。
-
-> [!NOTE]
-> Linux 数据科科研 VM 上的命令行也提供了 Julia 语言。
->
->
-
-## <a name="rattle"></a>Rattle
-[Rattle](https://cran.r-project.org/web/packages/rattle/index.html)（易于学习的 R 分析工具） 是用于数据挖掘的图形式 R 工具。 它具有直观的界面，可方便地加载、 浏览和转换数据，生成和评估模型。  [Rattle: A Data Mining GUI for R](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf)（Rattle：R 的数据挖掘 GUI）一文提供了演练来演示其功能。
-
-使用以下命令安装并启动 Rattle：
-
-    if(!require("rattle")) install.packages("rattle")
-    require(rattle)
-    rattle()
+* 示例 Python 笔记本：
+  * [IntroToJupyterPython.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroToJupyterPython.ipynb)
+  * [IrisClassifierPyMLWebService](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IrisClassifierPyMLWebService.ipynb)
+* 示例 R 笔记本：
+  * [IntroTutorialinR](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroTutorialinR.ipynb) 
 
 > [!NOTE]
-> DSVM 不需要安装 Rattle。 但 Rattle 在加载时可能会提示安装其他程序包。
->
->
+> Julia 语言也可以通过 Linux DSVM 上的命令行使用。
 
-Rattle 使用一个基于选项卡的接口。 大部分选项卡与 [Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的步骤相对应，如加载数据或浏览数据等。 数据科学过程从左到由通过选项卡流动。 但是，最后一个选项卡包含 Rattle 所运行的 R 命令日志。
+### <a name="rattle"></a>Rattle
+
+[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (R Analytical Tool To Learn Easily) 是用于数据挖掘的图形化 R 工具。 Rattle 有直观的界面，可以很容易地加载、浏览和转换数据，以及生成和评估模型。 [Rattle：适用于 R 的数据挖掘 GUI](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) 提供了演示 Rattle 功能的演练。
+
+通过运行以下命令来安装和启动 Rattle：
+
+```R
+if(!require("rattle")) install.packages("rattle")
+require(rattle)
+rattle()
+```
+
+> [!NOTE]
+> 不需要在 DSVM 上安装 Rattle。 不过，当 Rattle 打开时，系统可能会提示你安装其他包。
+
+Rattle 使用一个基于选项卡的接口。 大多数选项卡对应于[团队数据科学过程](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)中的步骤，如加载数据或浏览数据。 数据科学过程从左到由通过选项卡流动。 最后一个选项卡包含由 Rattle 运行的 R 命令日志。
 
 要加载和配置数据集：
 
-* 要加载文件，选择”**数据**“选项卡，然后
-* 选择 **Filename** 旁边的选择器，并选择 **spambaseHeaders.data**。
-* 要加载文件， 在按钮的首行中，选择“执行”。 应看到每列的摘要，包括其标识的数据类型，是输入、目标还是其他类型的变量，以及唯一值的数量。
-* Rattle 已经正确将”**spam**“列作为目标。 选择垃圾邮件列，然后将”**目标数据类型**“设置为 ”**类别**“。
+1. 若要加载文件，请选择“数据”选项卡。
+1. 选择“文件名”旁边的选择器，然后选择“spambaseHeaders.data”。
+1. 要加载文件， 选择“执行”。 应该会看到每一列的摘要，包括它的已标识数据类型；是输入、目标还是其他类型的变量；以及唯一值的数量。
+1. Rattle 已经正确将”**spam**“列作为目标。 选择“垃圾邮件”列，然后将“目标数据类型”设置为“分类”。
 
 要浏览数据：
 
-* 选择”**浏览**“选项卡。
-* 依次单击“摘要”和“执行”，然后会显示变量类型的相关信息和一些摘要统计信息。
-* 若要查看每个变量其他类型的统计信息，请选择其他选项，如“描述”或“基本信息”。
+1. 选择”**浏览**“选项卡。
+1. 若要查看变量类型的相关信息和一些摘要统计信息，请依次选择“摘要” > “执行”。
+1. 若要查看每个变量的其他类型统计信息，请选择其他选项，如“描述”或“基本信息”。
 
-”**浏览**“选项卡还允许生成多个具有洞察力的图形。 若要绘制数据直方图：
+还可以使用“浏览”选项卡来生成见解深入的绘图。 若要绘制数据直方图：
 
-* 选择”**分布**“。
-* 为 **word_freq_remove** 和 **word_freq_you** 勾选“**直方图**”。
-* 选择”**执行**“。 应看到一个图形窗口中的两个密度图，很显然在电子邮件中 "you"一词的出现比 "remove" 频繁得多。
+1. 选择”**分布**“。
+1. 对于 word_freq_remove 和 word_freq_you，选择“直方图”。
+1. 选择“执行”。 应该会在一个图表窗口中看到两个密度绘图，很显然在电子邮件中 you 一词的出现比 remove 更频繁。
 
-”关联“图形也很有意思。 要创建一个关联图形：
+“相关性”绘图也很有意思。 若要创建绘图，请执行以下操作：
 
-* 选择“关联”作为“类型”，然后
-* 选择”**执行**“。
-* Rattle 会发出警告，建议最多使用 40 个变量。 选择”**是**“以查看该绘图。
+1. 对于“类型”，选择“相关性”。
+1. 选择“执行”。
+1. Rattle 会发出警告，建议最多使用 40 个变量。 选择”**是**“以查看该绘图。
 
-有一些很有意思的关联性：例如，"technology" 与 "HP" 和 "labs" 密切关联。 它还与 "650" 密切关联，因为数据集捐赠者的区号是 650。
+出现了一些很有意思的相关性：例如，technology 与 HP 和 labs 密切相关。 它还与 650 密切相关，因为数据集捐赠者的区号是 650。
 
-”资源管理器“窗口中提供了单词之间的关联性数值。 有意思的是，"technology" 很少与 "your" 和 "money" 关联。
+“资源管理器”窗口中提供了字词的相关性数值。 有意思的是，例如，可以注意到 technology 与 your 和 money 是负相关的。
 
-Rattle 可以转换数据集，以处理一些常见问题。 例如，它允许重新调整功能、 输入缺失值、处理离群值，并删除缺少数据的变量或观察值。 Rattle 还可以识别观察值和/或变量之间的关联规则。 这些选项卡不在此介绍性演练的范围。
+Rattle 可以转换数据集，以处理一些常见问题。 例如，它可以重新缩放特征、插补缺失值、处理离群值，并删除缺少数据的变量或观察值。 Rattle 还可以识别观察值和变量之间的相关性规则。 这些选项卡不在本介绍性演练的范围内。
 
-Rattle 还可以执行群集分析。 让我们来排除某些功能，以使输出更易于理解。 在”**数据**“选项卡上，选择每个变量旁边的”**忽略**“，以下 10 个变量除外：
+Rattle 还可以运行群集分析。 让我们来排除某些功能，以使输出更易于理解。 在“数据”选项卡上，选择每个变量旁边的“忽略”，以下 10 项除外：
 
 * word_freq_hp
 * word_freq_technology
@@ -403,147 +401,173 @@ Rattle 还可以执行群集分析。 让我们来排除某些功能，以使输
 * word_freq_business
 * spam
 
-然后返回“群集”选项卡，选择“KMeans”，将“群集数”设置为 4。 然后“执行”。 结果会显示在输出窗口中。 一个群集具有高频率的 "george" 和 "hp"，可能合法的商业电子邮件。
+返回到“群集”选项卡。选择“KMeans”，然后将“群集数”设置为“4”。 选择“执行”。 结果会显示在输出窗口中。 其中一个集群具有高频率的 george 和 hp，可能是合法的企业电子邮件。
 
-构建简单的决策树机器学习模型：
+若要生成基本的决策树机器学习模型，请执行以下操作：
 
-* 选择”**模型**“选项卡，
-* 选择”**树**“作为”**类型**“。
-* 选择“执行”在输出窗口中以文本形式显示树。
-* 选择”**绘制**“按钮，以查看图形版本。 这看起来非常类似于我们早前使用 *rpart* 获取的树。
+1. 选择”**模型**“选项卡，
+1. 对于“类型”，选择“树”。
+1. 选择“执行”在输出窗口中以文本形式显示树。
+1. 选择”**绘制**“按钮，以查看图形版本。 决策树与我们之前使用 rpart 得到的树很相似。
 
-Rattle 的一个不错的功能是它能够运行多个计算机学习方法，并快速对它们进行评估。 下面是该过程：
+Rattle 的一项实用功能是，能够运行多个机器学习方法，并快速评估它们。 步骤如下：
 
-* 选择”**所有**“作为”**类型**“。
-* 选择“执行”。
-* 完成后，可以单击任意单个”**类型**“（如 **SVM**）并查看结果。
-* 还可以使用“评估”选项卡，在验证集上比较模型的性能。例如，”**错误矩阵**“选项显示验证集上每个模型的混淆矩阵、整体错误和平均类错误。
-* 此外还可以绘制 ROC 曲线，执行区分大小写分析，并执行其他类型的模型评估。
+1. 对于“类型”，选择“全部”。
+1. 选择“执行”。
+1. 在 Rattle 完成运行后，可以选择任意“类型”值（如“SVM”），然后查看结果。
+1. 还可以使用“评估”选项卡来比较验证集上模型的性能。例如，”**错误矩阵**“选项显示验证集上每个模型的混淆矩阵、整体错误和平均类错误。 此外，还可以绘制 ROC 曲线、运行敏感度分析，并执行其他类型的模型评估。
 
-成功生成模型后，可选择“日志”选项卡查看会话期间 Rattle 运行的 R 代码。 可选择“导出”按钮来保存它。
+生成完模型后，选择“日志”选项卡，以查看在会话期间由 Rattle 运行的 R 代码。 可选择“导出”按钮来保存它。
 
 > [!NOTE]
-> 当前版本的 Rattle 中存在一个 Bug。 若要修改脚本或使用它来重复步骤更高版本，必须插入 # 字符的前面*导出此日志...* 在日志文本中。
->
->
+> 当前版本的 Rattle 有一个 bug。 若要修改脚本或稍后使用它来重复步骤，必须在日志文本中的“导出此日志...”前面插入 # 字符。
 
-## <a name="postgresql--squirrel-sql"></a>PostgreSQL 和 Squirrel SQL
-DSVM 已预安装 PostgreSQL。 PostgreSQL 是一个复杂的开源关系数据库。 本部分显示如何将垃圾邮件数据集加载到 PostgreSQL，然后对其进行查询。
+### <a name="postgresql-and-squirrel-sql"></a>PostgreSQL 和 SQuirreL SQL
 
-在可以加载数据之前，需要允许来自 localhost 的密码身份验证。 在命令提示符：
+DSVM 已预安装 PostgreSQL。 PostgreSQL 是一个复杂的开源关系数据库。 此部分介绍了如何将 spambase 数据集加载到 PostgreSQL，然后对它进行查询。
 
-    sudo gedit /var/lib/pgsql/data/pg_hba.conf
+必须先允许从 localhost 进行密码身份验证，然后才能加载数据。 在命令提示符处运行以下命令：
+
+```Bash
+sudo gedit /var/lib/pgsql/data/pg_hba.conf
+```
 
 配置文件的底部附近的几行详细说明了允许的连接数：
 
-    # "local" is for Unix domain socket connections only
-    local   all             all                                     trust
-    # IPv4 local connections:
-    host    all             all             127.0.0.1/32            ident
-    # IPv6 local connections:
-    host    all             all             ::1/128                 ident
+```
+# "local" is only for Unix domain socket connections:
+local   all             all                                     trust
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            ident
+# IPv6 local connections:
+host    all             all             ::1/128                 ident
+```
 
-更改 "IPv4 local connections"，以便使用 md5，而不是 ident，这样我们可以使用用户名和密码登录：
+更改“IPv4 本地连接”行，以使用 md5，而不是 ident，这样可以使用用户名和密码进行登录：
 
-    # IPv4 local connections:
-    host    all             all             127.0.0.1/32            md5
+```
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            md5
+```
 
-然后重启 postgres 服务：
+然后，重启 PostgreSQL 服务：
 
-    sudo systemctl restart postgresql
+```Bash
+sudo systemctl restart postgresql
+```
 
-若要作为内置 postgres 用户启动 psql（PostgreSQL 的交互式终端）， 在提示符下运行以下命令：
+若要以内置 postgres 用户身份启动 psql（PostgreSQL 的交互式终端），请运行以下命令：
 
-    sudo -u postgres psql
+```Bash
+sudo -u postgres psql
+```
 
-创建新的用户帐户，使用当前登录所使用的相同用户名作为 Linux 帐户，并为其提供密码：
+使用你用来登录的 Linux 帐户的用户名来新建用户帐户。 创建密码：
 
-    CREATE USER <username> WITH CREATEDB;
-    CREATE DATABASE <username>;
-    ALTER USER <username> password '<password>';
-    \quit
+```Bash
+CREATE USER <username> WITH CREATEDB;
+CREATE DATABASE <username>;
+ALTER USER <username> password '<password>';
+\quit
+```
 
-然后作为用户登录到 psql：
+登录 psql：
 
-    psql
+```Bash
+psql
+```
 
-将数据导入新的数据库：
+将数据导入到新的数据库：
 
-    CREATE DATABASE spam;
-    \c spam
-    CREATE TABLE data (word_freq_make real, word_freq_address real, word_freq_all real, word_freq_3d real,word_freq_our real, word_freq_over real, word_freq_remove real, word_freq_internet real,word_freq_order real, word_freq_mail real, word_freq_receive real, word_freq_will real,word_freq_people real, word_freq_report real, word_freq_addresses real, word_freq_free real,word_freq_business real, word_freq_email real, word_freq_you real, word_freq_credit real,word_freq_your real, word_freq_font real, word_freq_000 real, word_freq_money real,word_freq_hp real, word_freq_hpl real, word_freq_george real, word_freq_650 real, word_freq_lab real,word_freq_labs real, word_freq_telnet real, word_freq_857 real, word_freq_data real,word_freq_415 real, word_freq_85 real, word_freq_technology real, word_freq_1999 real,word_freq_parts real, word_freq_pm real, word_freq_direct real, word_freq_cs real, word_freq_meeting real,word_freq_original real, word_freq_project real, word_freq_re real, word_freq_edu real,word_freq_table real, word_freq_conference real, char_freq_semicolon real, char_freq_leftParen real,char_freq_leftBracket real, char_freq_exclamation real, char_freq_dollar real, char_freq_pound real, capital_run_length_average real, capital_run_length_longest real, capital_run_length_total real, spam integer);
-    \copy data FROM /home/<username>/spambase.data DELIMITER ',' CSV;
-    \quit
+```SQL
+CREATE DATABASE spam;
+\c spam
+CREATE TABLE data (word_freq_make real, word_freq_address real, word_freq_all real, word_freq_3d real,word_freq_our real, word_freq_over real, word_freq_remove real, word_freq_internet real,word_freq_order real, word_freq_mail real, word_freq_receive real, word_freq_will real,word_freq_people real, word_freq_report real, word_freq_addresses real, word_freq_free real,word_freq_business real, word_freq_email real, word_freq_you real, word_freq_credit real,word_freq_your real, word_freq_font real, word_freq_000 real, word_freq_money real,word_freq_hp real, word_freq_hpl real, word_freq_george real, word_freq_650 real, word_freq_lab real,word_freq_labs real, word_freq_telnet real, word_freq_857 real, word_freq_data real,word_freq_415 real, word_freq_85 real, word_freq_technology real, word_freq_1999 real,word_freq_parts real, word_freq_pm real, word_freq_direct real, word_freq_cs real, word_freq_meeting real,word_freq_original real, word_freq_project real, word_freq_re real, word_freq_edu real,word_freq_table real, word_freq_conference real, char_freq_semicolon real, char_freq_leftParen real,char_freq_leftBracket real, char_freq_exclamation real, char_freq_dollar real, char_freq_pound real, capital_run_length_average real, capital_run_length_longest real, capital_run_length_total real, spam integer);
+\copy data FROM /home/<username>/spambase.data DELIMITER ',' CSV;
+\quit
+```
 
-现在，让我们来浏览数据并使用 **Squirrel SQL** 运行一些查询 - Squirrel SQL 是一种图形工具，允许通过 JDBC 驱动程序与数据库交互。
+现在，让我们使用 SQuirreL SQL 来浏览数据并运行一些查询。Squirrel SQL 是一种图形化工具，可用于通过 JDBC 驱动程序与数据库进行交互。
 
-若要开始，从应用程序菜单启动 Squirrel SQL。 若要设置驱动程序：
+首先，请在“应用程序”菜单上打开“Squirrel SQL”。 若要设置驱动程序：
 
-* 选择”**Windows**“，并选择”**查看驱动程序**“。
-* 右键单击 **PostgreSQL**，并选择”**修改驱动程序**“。
-* 选择“额外类路径”，并选择“添加”。
-* 在“文件名”中输入 ***/usr/share/java/jdbcdrivers/postgresql-9.4.1208.jre6.jar***，并
-* 选择“打开”。
-* 选择”列出驱动程序“，在”**类名**“中选择 **org.postgresql.Driver**，并选择”**确定**“。
+1. 依次选择“Windows” > “查看驱动程序”。
+1. 右键单击“PostgreSQL”，然后选择“修改驱动程序”。
+1. 依次选择“额外类路径” > “添加”。
+1. 对于“文件名”，输入“/usr/share/java/jdbcdrivers/postgresql-9.4.1208.jre6.jar”。
+1. 选择“打开”。
+1. 选择“列出驱动程序”。 对于“类名”，依次选择“org.postgresql.Driver”和“确定”。
 
 设置与本地服务器的连接：
 
-* 选择“Windows”，并选择“查看别名”。
-* 选择“+”按钮创建新的别名。
-* 将其命名为*垃圾邮件数据库*，在“驱动程序”下拉列表中，选择“PostgreSQL”。
-* 将 URL 设置为 *jdbc:postgresql://localhost/spam*。
-* 输入*用户名*和*密码*。
-* 单击“确定”。
-* 若要打开“连接”窗口，请双击***垃圾邮件数据库***别名。
-* 选择“连接”。
+1. 依次选择“Windows” > “查看别名”。
+1. 选择“+”按钮，以新建别名。 对于新别名，输入“垃圾邮件数据库”。 
+1. 对于“驱动程序”，选择“PostgreSQL”。
+1. 将 URL 设置为 **jdbc:postgresql://localhost/spam**。
+1. 输入用户名和密码。
+1. 选择“确定”。
+1. 若要打开“连接”窗口，请双击**垃圾邮件数据库**别名。
+1. 选择“连接”。
 
 运行一些查询：
 
-* 选择“SQL”选项卡。
-* 在“SQL”选项卡顶部的查询文本框中输入一个简单查询，例如 `SELECT * from data;`。
-* 按 **Ctrl-Enter** 运行它。 默认情况下，Squirrel SQL 将从查询中返回前 100 行的内容。
+1. 选择“SQL”选项卡。
+1. 在“SQL”选项卡顶部的查询框中，输入基本查询（如 `SELECT * from data;`）。
+1. 按 Ctrl+Enter，以运行查询。 默认情况下，SQuirreL SQL 返回查询中的前 100 行。
 
 可以运行更多查询来浏览此数据。 例如，在垃圾邮件和非垃圾邮件之间单词 *make* 的频率存在何种差异？
 
-    SELECT avg(word_freq_make), spam from data group by spam;
+```SQL
+SELECT avg(word_freq_make), spam from data group by spam;
+```
 
-或，经常包含 *3d* 的电子邮件有什么特征？
+或者，内容中频繁出现 3d 的电子邮件有什么特征？
 
-    SELECT * from data order by word_freq_3d desc;
+```SQL
+SELECT * from data order by word_freq_3d desc;
+```
 
-大多数 *3d* 出现率较高的电子邮件很明显是垃圾邮件，因此它可能是一个有用的特征，可用于构建预测模型来对电子邮件进行分类。
+大多数频繁出现 3d 的电子邮件显然是垃圾邮件。 此类信息可能有助于生成用于分类电子邮件的预测模型。
 
-如果希望使用 PostgreSQL 数据库中存储的数据执行机器学习，请考虑使用 [MADlib](https://madlib.incubator.apache.org/)。
+若要使用 PostgreSQL 数据库中存储的数据来执行机器学习，不妨使用 [MADlib](https://madlib.incubator.apache.org/)。
 
-## <a name="sql-server-data-warehouse"></a>SQL Server 数据仓库
-Azure SQL 数据仓库是一种基于云的向外扩展数据库，可以处理大量数据（关系数据和非关系数据）。 有关详细信息，请参阅[什么是 Azure SQL 数据仓库？](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+### <a name="sql-data-warehouse"></a>SQL 数据仓库
+
+Azure SQL 数据仓库是一种基于云的横向扩展数据库，可以处理大量数据（包括关系数据和非关系数据）。 有关详细信息，请参阅[什么是 Azure SQL 数据仓库？](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
 若要连接到数据仓库并创建表，请从命令提示符运行以下命令：
 
-    sqlcmd -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -I
+```Bash
+sqlcmd -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -I
+```
 
-然后在 sqlcmd 提示符处：
+在 sqlcmd 提示符处，运行以下命令：
 
-    CREATE TABLE spam (word_freq_make real, word_freq_address real, word_freq_all real, word_freq_3d real,word_freq_our real, word_freq_over real, word_freq_remove real, word_freq_internet real,word_freq_order real, word_freq_mail real, word_freq_receive real, word_freq_will real,word_freq_people real, word_freq_report real, word_freq_addresses real, word_freq_free real,word_freq_business real, word_freq_email real, word_freq_you real, word_freq_credit real,word_freq_your real, word_freq_font real, word_freq_000 real, word_freq_money real,word_freq_hp real, word_freq_hpl real, word_freq_george real, word_freq_650 real, word_freq_lab real,word_freq_labs real, word_freq_telnet real, word_freq_857 real, word_freq_data real,word_freq_415 real, word_freq_85 real, word_freq_technology real, word_freq_1999 real,word_freq_parts real, word_freq_pm real, word_freq_direct real, word_freq_cs real, word_freq_meeting real,word_freq_original real, word_freq_project real, word_freq_re real, word_freq_edu real,word_freq_table real, word_freq_conference real, char_freq_semicolon real, char_freq_leftParen real,char_freq_leftBracket real, char_freq_exclamation real, char_freq_dollar real, char_freq_pound real, capital_run_length_average real, capital_run_length_longest real, capital_run_length_total real, spam integer) WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
-    GO
+```SQL
+CREATE TABLE spam (word_freq_make real, word_freq_address real, word_freq_all real, word_freq_3d real,word_freq_our real, word_freq_over real, word_freq_remove real, word_freq_internet real,word_freq_order real, word_freq_mail real, word_freq_receive real, word_freq_will real,word_freq_people real, word_freq_report real, word_freq_addresses real, word_freq_free real,word_freq_business real, word_freq_email real, word_freq_you real, word_freq_credit real,word_freq_your real, word_freq_font real, word_freq_000 real, word_freq_money real,word_freq_hp real, word_freq_hpl real, word_freq_george real, word_freq_650 real, word_freq_lab real,word_freq_labs real, word_freq_telnet real, word_freq_857 real, word_freq_data real,word_freq_415 real, word_freq_85 real, word_freq_technology real, word_freq_1999 real,word_freq_parts real, word_freq_pm real, word_freq_direct real, word_freq_cs real, word_freq_meeting real,word_freq_original real, word_freq_project real, word_freq_re real, word_freq_edu real,word_freq_table real, word_freq_conference real, char_freq_semicolon real, char_freq_leftParen real,char_freq_leftBracket real, char_freq_exclamation real, char_freq_dollar real, char_freq_pound real, capital_run_length_average real, capital_run_length_longest real, capital_run_length_total real, spam integer) WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
+GO
+```
 
 使用 bcp 复制数据：
 
-    bcp spam in spambaseHeaders.data -q -c -t  ',' -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -F 1 -r "\r\n"
+```bash
+bcp spam in spambaseHeaders.data -q -c -t  ',' -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -F 1 -r "\r\n"
+```
 
 > [!NOTE]
-> 下载的文件中的行尾为 Windows 样式，但 bcp 期望 UNIX 样式，因此我们需要告诉 bcp 使用-r 标志。
->
->
+> 下载的文件包含 Windows 样式的行尾。 bcp 工具需要 Unix 样式的行尾。 使用 -r 标志来告知 bcp。
 
-使用 sqlcmd 查询：
+然后，使用 sqlcmd 执行查询：
 
-    select top 10 spam, char_freq_dollar from spam;
-    GO
+```sql
+select top 10 spam, char_freq_dollar from spam;
+GO
+```
 
-还可以使用 Squirrel SQL 查询。 按照类似于 PostgreSQL 的步骤，使用 Microsoft MSSQL Server JDBC 驱动程序（可在 ***/usr/share/java/jdbcdrivers/sqljdbc42.jar*** 中找到该驱动程序）。
+也可以使用 SQuirreL SQL 执行查询。 使用 SQL Server JDBC 驱动程序执行类似于 PostgreSQL 的步骤。 JDBC 驱动程序位于 /usr/share/java/jdbcdrivers/sqljdbc42.jar 文件夹中。
 
 ## <a name="next-steps"></a>后续步骤
-获取主题概述，了解包含在 Azure 中的数据科学过程的任务，请参阅[团队数据科学过程](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview)。
 
-有关针对特定方案，演示团队数据科学过程中的步骤的其他端到端演练的说明，请参阅[团队数据科学过程演练](../team-data-science-process/walkthroughs.md)。 该演练还展示了如何将云、本地工具以及服务结合到一个工作流或管道中，以创建智能应用程序。
+若要概览指导你在 Azure 中完成组成数据科学过程的任务的文章，请参阅[团队数据科学过程](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview)。
+
+有关针对特定方案演示团队数据科学过程中的步骤的端到端演练的说明，请参阅[团队数据科学过程演练](../team-data-science-process/walkthroughs.md)。 该演练还展示了如何将云、本地工具以及服务结合到一个工作流或管道中，以创建智能应用程序。

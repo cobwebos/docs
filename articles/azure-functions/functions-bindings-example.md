@@ -1,21 +1,15 @@
 ---
 title: Azure Functions 触发器和绑定示例
 description: 了解如何配置 Azure 函数绑定
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 8372becd614e35bead9e98e405e2694f3f16db4a
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
-ms.translationtype: MT
+ms.openlocfilehash: 8685c0fe02ad6c68918736e857c2015e2bfb4595
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66472330"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74227248"
 ---
 # <a name="azure-functions-trigger-and-binding-example"></a>Azure Functions 触发器和绑定示例
 
@@ -50,14 +44,14 @@ ms.locfileid: "66472330"
 
 `bindings` 数组中的第二个元素是 Azure 表存储输出绑定。 `type` 和 `direction` 属性标识该绑定。 `name` 属性指定函数提供新表行的方式，在此例中是使用函数返回值来提供。 表格的名称位于 `tableName` 中，连接字符串位于由 `connection` 标识的应用设置中。
 
-若要在 Azure 门户中查看和编辑 *function.json* 的内容，请单击函数“集成”  选项卡上的“高级编辑器”  选项。
+若要在 Azure 门户中查看和编辑 *function.json* 的内容，请单击函数“集成”选项卡上的“高级编辑器”选项。
 
 > [!NOTE]
 > `connection` 的值是包含连接字符串的应用设置的名称，而不是连接字符串本身的名称。 绑定使用应用设置中存储的连接字符串，以强制执行 function.json  不包含服务密钥这一最佳做法。
 
 ## <a name="c-script-example"></a>C# 脚本示例
 
-以下是适用于此触发器和绑定的 C# 脚本代码。 请注意，提供队列消息内容的参数的名称是 `order`；需使用此名称是因为 function.json  中的 `name` 属性值是 `order` 
+以下是适用于此触发器和绑定的 C# 脚本代码。 请注意，提供队列消息内容的参数的名称是 `order`；需使用此名称是因为 function.json 中的 `name` 属性值是 `order` 
 
 ```cs
 #r "Newtonsoft.Json"
@@ -135,7 +129,7 @@ public class Person
 }
 ```
 
-现可由 Azure 队列触发，并将数据输出到 Azure 表存储的工作函数。
+现在，你已有一个由 Azure 队列触发并将数据输出到 Azure 表存储的工作函数。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,30 +1,21 @@
 ---
-title: 教程：安装 Service Fabric 独立客户端 - Azure Service Fabric | Microsoft Docs
+title: 安装 Service Fabric 独立客户端
 description: 本教程介绍如何在上一教程文章中创建的群集上安装 Service Fabric 独立客户端。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 05/11/2018
+ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 1bcb7f9fadc79db0db17336f07f6d58302433c1f
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: bbaf7dfc546c739dfb858be7ef8372eccf60111b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664023"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75613935"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>教程：安装并创建 Service Fabric 群集
 
-Service Fabric 独立群集为你提供选择自己的环境的选项，并创建群集作为 Service Fabric 所采用的“任何 OS、任何云”方法的一部分。 在本系列教程中，我们将创建一个托管在 AWS 上的独立群集，并将应用程序安装到其中。
+Service Fabric 独立群集为你提供选择自己的环境的选项，并创建群集作为 Service Fabric 所采用的“任何 OS、任何云”方法的一部分。 在本系列教程中，将创建一个托管在 AWS 或 Azure 上的独立群集，并将应用程序安装到其中。
 
 本教程是一个系列中的第二部分。 本教程将逐步指导完成创建 Service Fabric 独立群集的步骤。
 
@@ -37,9 +28,9 @@ Service Fabric 独立群集为你提供选择自己的环境的选项，并创�
 
 ## <a name="download-the-service-fabric-for-windows-server-package"></a>下载用于 Windows Server 的 Service Fabric 包
 
-Service Fabric 提供了一个安装程序包，用于创建独立的 Service Fabric 群集。  在本地计算机上[下载安装程序包](https://go.microsoft.com/fwlink/?LinkId=730690)。  成功下载后，将其通过 RDP 连接复制到 EC2 实例，并将其粘贴到桌面上。
+Service Fabric 提供了一个安装程序包，用于创建独立的 Service Fabric 群集。  在本地计算机上[下载安装程序包](https://go.microsoft.com/fwlink/?LinkId=730690)。  成功下载后，将其通过 RDP 连接复制到 VM，并将其粘贴到桌面上。
 
-选择 zip 文件并打开上下文菜单，然后选择“全部提取” > “提取”。  提取文件时，将在桌面上生成一个与 zip 文件名相同的文件夹。
+选择 zip 文件并打开上下文菜单，然后选择“全部提取”   > “提取”  。  提取文件时，将在桌面上生成一个与 zip 文件名相同的文件夹。
 
 如果想要获取更多详细信息，请参阅[安装程序包的内容](service-fabric-cluster-standalone-package-contents.md)。
 

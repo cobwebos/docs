@@ -1,39 +1,39 @@
 ---
 title: 使用 Bulk Executor Java 库在 Azure Cosmos DB 中执行批量导入和更新操作
-description: 使用 Bulk Executor Java 库批量导入和更新 Azure Cosmos DB 文档。
+description: 使用 Bulk Executor Java 库批量导入和更新 Azure Cosmos DB 文档
 author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
-ms.topic: conceptual
-ms.date: 05/28/2019
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 68c83809cba0585d99751760c0e4f51893806170
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 6e283ff140e02d604fdf5e20d69fff96aab94f71
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257194"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260587"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>使用 Bulk Executor Java 库针对 Azure Cosmos DB 数据执行批量操作
 
-本教程提供有关使用 Azure Cosmos DB 的批量执行程序 Java 库导入和更新 Azure Cosmos DB 文档的说明。 若要了解 Bulk Executor 库及它如何帮助你利用大量吞吐量和存储，请参阅 [Bulk Executor 库概述](bulk-executor-overview.md)一文。 在本教程中，我们将构建一个可生成随机文档的 Java 应用程序，然后将文档批量导入 Azure Cosmos DB 容器。 导入后，我们将批量更新文档的某些属性。 
+本教程说明了如何使用 Azure Cosmos DB 的批量执行程序 Java 库导入和更新 Azure Cosmos DB 文档。 若要了解 Bulk Executor 库及它如何帮助你利用大量吞吐量和存储，请参阅 [Bulk Executor 库概述](bulk-executor-overview.md)一文。 在本教程中，我们将构建一个可生成随机文档的 Java 应用程序，然后将文档批量导入 Azure Cosmos 容器。 导入后，我们将批量更新文档的某些属性。 
 
-目前，批量执行程序库仅受 Azure Cosmos DB SQL API 和 Gremlin API 帐户支持。 本文介绍如何配合使用 SQL API 帐户和批量执行程序 .NET 库。 若要了解如何配合使用 Gremlin API 和批量执行程序 .NET 库，请参阅[在 Azure Cosmos DB Gremlin API 中执行批量操作](bulk-executor-graph-dotnet.md)。
+目前，批量执行程序库仅受 Azure Cosmos DB SQL API 和 Gremlin API 帐户支持。 本文介绍如何配合使用 SQL API 帐户和批量执行程序 Java 库。 若要了解如何配合使用 Gremlin API 和批量执行程序 .NET 库，请参阅[在 Azure Cosmos DB Gremlin API 中执行批量操作](bulk-executor-graph-dotnet.md)。 所述的批量执行工具库仅适用于 [Azure Cosmos DB Java sync SDK v2](sql-api-sdk-java.md)，它是目前推荐的 Java 批量支持解决方案。 它目前不适用于 3.x、4.x 或更高版本的 SDK。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。  
 
-* 无需 Azure 订阅即可[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，也无需缴纳费用或承诺金。 或者，可以通过 `https://localhost:8081` 终结点使用 [Azure Cosmos DB 模拟器](https://docs.microsoft.com/azure/cosmos-db/local-emulator)。 [对请求进行身份验证](local-emulator.md#authenticating-requests)中提供了主密钥。  
+* 无需 Azure 订阅即可免费[试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 。 或者，可以通过 `https://localhost:8081` 终结点使用 [Azure Cosmos DB 模拟器](https://docs.microsoft.com/azure/cosmos-db/local-emulator)。 [对请求进行身份验证](local-emulator.md#authenticating-requests)中提供了主密钥。  
 
-* [Java 开发工具包 (JDK) 1.7+](https://aka.ms/azure-jdks)  
+* [Java 开发工具包 (JDK) 1.7+](/java/azure/jdk/?view=azure-java-stable)  
   - 在 Ubuntu 上运行 `apt-get install default-jdk`，以便安装 JDK。  
 
   - 请确保设置 JAVA_HOME 环境变量，使之指向在其中安装了 JDK 的文件夹。
 
-* [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html) [Maven](https://maven.apache.org/) 二进制存档  
+* [下载](https://maven.apache.org/download.cgi)并[安装](https://maven.apache.org/install.html) [Maven](https://maven.apache.org/)二进制存档  
   
   - 在 Ubuntu 上，可以通过运行 `apt-get install maven` 来安装 Maven。
 
@@ -88,7 +88,7 @@ ms.locfileid: "66257194"
    client.getConnectionPolicy().getRetryOptions().setMaxRetryAttemptsOnThrottledRequests(0);
    ```
 
-4. 调用 importAll API，用于生成要批量导入 Azure Cosmos DB 容器的随机文档。 可以在 CmdLineConfiguration.java 文件中配置命令行配置。
+4. 调用 importAll API，以便生成要批量导入 Azure Cosmos 容器的随机文档。 可以在 CmdLineConfiguration.java 文件中配置命令行配置。
 
    ```java
    BulkImportResponse bulkImportResponse = bulkExecutor.importAll(documents, false, true, null);
@@ -130,7 +130,7 @@ ms.locfileid: "66257194"
 6. 生成目标依赖关系后，可使用以下命令调用批量导入程序应用程序：  
 
    ```java
-   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB’s endpoint>*  -masterKey *<Fill in your Azure Cosmos DB’s master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
+   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB's endpoint>*  -masterKey *<Fill in your Azure Cosmos DB's master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
    批量导入程序会创建新的数据库和集合，并在 App.config 文件中指定数据库名称、集合名称与吞吐量值。 
@@ -150,12 +150,12 @@ ms.locfileid: "66257194"
    updateOperations.add(descriptionUpdate);
 
    List<UpdateItem> updateItems = new ArrayList<>(cfg.getNumberOfDocumentsForEachCheckpoint());
-   IntStream.range(0, cfg.getNumberOfDocumentsForEachCheckpoint()).mapToObj(j -> {                      
+   IntStream.range(0, cfg.getNumberOfDocumentsForEachCheckpoint()).mapToObj(j -> {                        
     return new UpdateItem(Long.toString(prefix + j), Long.toString(prefix + j), updateOperations);
     }).collect(Collectors.toCollection(() -> updateItems));
    ```
 
-2. 调用 updateAll API，用于生成随后要批量导入 Azure Cosmos DB 容器的随机文档。 可以在 CmdLineConfiguration.java 文件中配置要传递的命令行配置。
+2. 调用 updateAll API，以便生成随后要批量导入 Azure Cosmos 容器的随机文档。 可以在 CmdLineConfiguration.java 文件中配置要传递的命令行配置。
 
    ```java
    BulkUpdateResponse bulkUpdateResponse = bulkExecutor.updateAll(updateItems, null)
@@ -171,7 +171,7 @@ ms.locfileid: "66257194"
 
    updateAll 方法接受以下参数：
 
-   |**Parameter** |**说明** |
+   |**参数** |**说明** |
    |---------|---------|
    |maxConcurrencyPerPartitionRange   |  每个分区键范围的最大并发度。 默认值为 20。  |
  
@@ -182,7 +182,7 @@ ms.locfileid: "66257194"
    |int getNumberOfDocumentsUpdated()  |   从提供给批量更新 API 调用的文档中成功更新的文档总数。      |
    |double getTotalRequestUnitsConsumed() |  批量更新 API 调用消耗的请求单位 (RU) 总数。       |
    |Duration getTotalTimeTaken()  |   批量更新 API 调用完成执行所花费的总时间。      |
-   |List\<Exception> getErrors()   |    如果分批提供给批量更新 API 调用的某些文档无法插入，则获取错误列表。      |
+   |List\<Exception> getErrors()   |       如果分批提供给批量更新 API 调用的某些文档无法插入，则获取错误列表。      |
 
 3. 准备好批量更新应用程序后，请使用“mvn clean package”命令从源代码生成命令行工具。 此命令在目标文件夹中生成一个 jar 文件：  
 
@@ -193,7 +193,7 @@ ms.locfileid: "66257194"
 4. 生成目标依赖关系后，可使用以下命令调用批量更新应用程序：
 
    ```
-   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB’s endpoint>* -masterKey **<Fill in your Azure Cosmos DB’s master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
+   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB's endpoint>* -masterKey **<Fill in your Azure Cosmos DB's master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
 ## <a name="performance-tips"></a>性能提示 
@@ -206,7 +206,7 @@ ms.locfileid: "66257194"
    * 请将 JVM 的堆大小设为足够大的数字，以免在处理大量文档时出现任何内存问题。 建议的堆大小：max(3GB, 3 * sizeof(在一个批中传递给批量导入 API 的文档总数))。  
    * 会有一段预处理时间，因此，在对大量的文档执行批量操作时可以获得更高的吞吐量。 如果想要导入 10,000,000 个文档，针对 10 批文档（每个批的大小为 1,000,000）运行批量导入 10 次，比针对 100 批文档（每个批的大小为 100,000 个文档）运行批量导入 100 次会更有利。  
 
-* 建议在单个虚拟机中，为整个应用程序实例化对应于特定 Azure Cosmos DB 容器的单个 DocumentBulkExecutor 对象。  
+* 建议在单个虚拟机中，为整个应用程序实例化对应于特定 Azure Cosmos 容器的单个 DocumentBulkExecutor 对象。  
 
 * 原因是单个批量操作 API 执行会消耗客户端计算机的大量 CPU 和网络 IO。 而发生这种情况的原因是在内部生成了多个任务，因此，每次执行批量操作 API 调用时，请避免在应用程序进程中生成多个并发任务。 如果单个虚拟机上运行的单个批量操作 API 调用无法占用整个容器的吞吐量（如果容器吞吐量超过 100 万 RU/秒），最好是创建独立的虚拟机来并发执行批量操作 API 调用。
 

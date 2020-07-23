@@ -1,125 +1,194 @@
 ---
-title: 使用 Azure 市场创建 Windows 虚拟桌面预览版主机池 - Azure
-description: 如何使用 Azure 市场创建 Windows 虚拟桌面预览版主机池。
+title: 使用 Azure 门户创建 Windows 虚拟桌面主机池 - Azure
+description: 如何使用 Azure 门户创建 Windows 虚拟桌面主机池。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 04/05/2019
+ms.date: 04/30/2020
 ms.author: helohr
-ms.openlocfilehash: e19523834c0ddb517fa9d15853411c1b58024b43
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+manager: lizross
+ms.openlocfilehash: 7c22ad844f0a543cfbf2e007ab2bfc8f0fe22ef7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833993"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362928"
 ---
-# <a name="tutorial-create-a-host-pool-with-azure-marketplace"></a>教程：通过 Azure 市场创建主机池
-
-主机池是 Windows 虚拟桌面预览版租户环境中一个或多个相同虚拟机的集合。 每个主机池可以包含一个应用组，用户可以像在物理桌面上一样与该应用组交互。
-
-本文介绍如何使用 Microsoft Azure 市场套餐在 Windows 虚拟桌面租户中创建主机池。 这包括在 Windows 虚拟桌面中创建主机池，使用 Azure 订阅中的 VM 创建资源组，将这些 VM 加入 Active Directory 域，然后将 VM 注册到 Windows 虚拟桌面。
-
-在开始之前，如果尚未这样做，请[下载并导入 Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)，以便在 PowerShell 会话中使用。
-
-## <a name="sign-in-to-azure"></a>登录 Azure
-
-通过 <https://portal.azure.com> 登录到 Azure 门户。
-
-## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>运行 Azure 市场套餐以预配新的主机池
-
-若要运行 Azure 市场套餐以预配新的主机池，请执行以下操作：
-
-1. 选择 **+** 或“+ 创建资源”。 
-2. 在市场搜索窗口中输入“Windows 虚拟桌面”。 
-3. 依次选择“Windows 虚拟桌面 - 预配主机池”、“创建”。  
-
-遵照指导在相应的边栏选项卡中输入信息。
-
-### <a name="basics"></a>基础
-
-在“基本信息”边栏选项卡中执行以下操作：
-
-1. 输入主机池的名称，该名称在 Windows 虚拟桌面租户中必须唯一。
-2. 选择适合个人桌面的选项。 如果选择“是”，则连接到此主机池的每个用户将永久分配到某个虚拟机。 
-3. 输入在运行完 Azure 市场套餐后可以登录到 Windows 虚拟桌面客户端并可以访问桌面的用户的逗号分隔列表。 例如，若要向 user1@contoso.com 和 user2@contoso.com 分配访问权限，请输入“user1@contoso.com,user2@contoso.com”。
-4. 选择“新建”，并为新资源组提供一个名称。 
-5. 对于“位置”，请选择连接到 Active Directory 服务器的虚拟网络所在的同一位置。 
-6. 选择“确定”  。
-
-### <a name="configure-virtual-machines"></a>配置虚拟机
-
-在“配置虚拟机”边栏选项卡中：
-
-1. 接受默认设置，或自定义 VM 的数量和大小。
-2. 输入虚拟机名称的前缀。 例如，如果输入“prefix”作为名称，则虚拟机的名称将是“prefix-0”、“prefix-1”，依此类推。
-3. 选择“确定”  。
-
-### <a name="virtual-machine-settings"></a>虚拟机设置
-
-在“虚拟机设置”边栏选项卡中：
-
->[!NOTE]
-> 如果要将 VM 加入到 Azure AD 域服务环境，请确保你的域加入用户也是 [AAD DC 管理员组](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-admingroup#task-3-configure-administrative-group)的成员。
-
-1. 选择“映像源”，并输入有关如何找到和存储该映像的相应信息。  如果选择不使用托管磁盘，请选择包含 .vhd 文件的存储帐户。
-2. 输入用于将 VM 加入 Active Directory 域的域帐户的用户主体名称和密码。 在虚拟机上将会创建与此相同的用户名和密码作为本地帐户。 以后可以重置这些本地帐户。
-3. 选择连接到 Active Directory 服务器的虚拟网络，然后选择一个子网用于托管虚拟机。
-4. 选择“确定”  。
-
-### <a name="windows-virtual-desktop-preview-tenant-information"></a>Windows 虚拟桌面预览版租户信息
-
-在“Windows 虚拟桌面租户信息”边栏选项卡中：
-
-1. 输入包含你的租户的租户组的 **Windows 虚拟桌面租户组名称**。 将此字段保留默认值，除非为你提供了具体的租户组名称。
-2. 输入要在其中创建此主机池的租户的 **Windows 虚拟桌面租户名称**。
-3. 指定以 Windows 虚拟桌面租户 RDS 所有者身份进行身份验证时要使用的凭据类型。 如果已完成[“使用 PowerShell 创建服务主体和角色分配”教程](./create-service-principal-role-powershell.md)，选择“服务主体”  。 现在需要输入带有服务主体的 Azure Active Directory 的 Azure AD 租户 ID  。
-4. 另请输入租户管理员帐户的凭据。 仅支持具有密码凭据的服务主体。
-5. 选择“确定”  。
-
-## <a name="complete-setup-and-create-the-virtual-machine"></a>完成设置并创建虚拟机
-
-对于最后两个边栏选项卡：
-
-1. 在“摘要”边栏选项卡中检查设置信息。  如果需要更改设置，请返回相应的边栏选项卡进行更改，然后继续。 如果信息正确，请选择“确定”。 
-2. 在“购买”边栏选项卡中，检查有关在 Azure 市场中购买的内容的附加信息。 
-3. 选择“创建”以部署主机池。 
-
-此过程可能需要 30 分钟或更长时间才能完成，具体取决于创建的 VM 有多少。
-
-## <a name="optional-assign-additional-users-to-the-desktop-application-group"></a>（可选）将其他用户分配到桌面应用程序组
-
-运行完 Azure 市场套餐后，可将其他用户分配到桌面应用程序组，然后在虚拟机上开始测试完整的会话桌面。 如果已在 Azure 市场套餐中添加默认用户，并且不想要添加其他用户，则可以跳过本部分。
-
-若要将用户分配到桌面应用程序组，首先必须打开 PowerShell 窗口。 然后，需要输入以下两个 cmdlet。
-
-运行以下 cmdlet 登录到 Windows 虚拟桌面环境：
-
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
-
-完成这两项操作后，可使用以下 cmdlet 将用户添加到桌面应用程序组：
-
-```powershell
-Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
-```
-
-用户的 UPN 应与该用户在 Azure Active Directory 中的标识（例如 user1@contoso.com）相匹配。 若要添加多个用户，必须针对每个用户运行此 cmdlet。
-
-完成这些步骤后，添加到桌面应用程序组的用户可以使用支持的远程桌面客户端登录到 Windows 虚拟桌面，并且可以看到会话桌面的资源。
-
-当前支持的客户端如下：
-
-- [适用于 Windows 7 和 Windows 10 的远程桌面客户端](connect-windows-7-and-10.md)
-- [Windows 虚拟桌面 Web 客户端](connect-web.md)
+# <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>教程：使用 Azure 门户创建主机池
 
 >[!IMPORTANT]
->为了帮助保护 Azure 中的 Windows 虚拟桌面环境，我们建议你不要在 VM 上打开入站端口 3389。 Windows 虚拟机不需要打开入站端口 3389，用户就可以访问主机池的 VM。 如果必须打开端口 3389 以进行故障排除，我们建议你使用[实时 VM 访问](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面 2019 秋季版，请参阅[此文](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md)。 使用 Windows 虚拟桌面 2019 秋季版创建的任何项目都无法通过 Azure 门户进行管理。
+>
+> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+主机池是 Windows 虚拟桌面环境中包含一个或多个相同虚拟机 (VM) 的集合。 每个主机池可以包含一个应用组，用户可以像在物理桌面上一样与该应用组交互。
+
+本文将引导你完成通过 Azure 门户为 Windows 虚拟桌面环境创建主机池的设置过程。 此方法提供基于浏览器的用户界面，用于在 Windows 虚拟桌面中创建主机池，在 Azure 订阅中创建包含 VM 的资源组，将这些 VM 加入 Azure Active Directory (AD) 域，然后将 VM 注册到 Windows 虚拟桌面。
+
+## <a name="prerequisites"></a>先决条件
+
+需要输入以下参数才能创建主机池：
+
+- VM 映像名称
+- VM 配置
+- 域和网络属性
+- Windows 虚拟桌面主机池属性
+
+还需要了解以下信息：
+
+- 要使用的映像的源所在的位置。 该映像是来自 Azure 库，还是一个自定义映像？
+- 你的域加入凭据。
+
+此外，请确保已注册 Microsoft.DesktopVirtualization 资源提供程序。 如果还没有注册，请转到“订阅”，选择你的订阅名称，然后选择“Azure 资源提供程序” 。
+
+使用 Azure 资源管理器模板创建 Windows 虚拟桌面主机池时，可以从 Azure 库、托管映像或非托管映像创建虚拟机。 若要详细了解如何创建 VM 映像，请参阅[准备要上传到 Azure 的 Windows VHD 或 VHDX](../virtual-machines/windows/prepare-for-upload-vhd-image.md)，以及[为 Azure 中的通用化 VM 创建托管映像](../virtual-machines/windows/capture-image-resource.md)。
+
+如果你还没有 Azure 订阅，请务必在按照以下说明开始操作之前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+## <a name="begin-the-host-pool-setup-process"></a>开始执行主机池设置过程
+
+若要开始创建新的主机池，请执行以下操作：
+
+1. 在 [https://portal.azure.com](https://portal.azure.com/) 中登录 Azure 门户。
+
+2. 在搜索栏中输入“Windows 虚拟桌面”，然后在“服务”下找到并选择“Windows 虚拟桌面” 。
+
+3. 在“Windows 虚拟桌面”概览页中，选择“创建主机池” 。
+
+4. 在“基本信息”选项卡中，在“项目详细信息”下选择正确的订阅。
+
+5. 选择“新建”以创建新的资源组，或者从下拉菜单中选择现有的资源组。
+
+6. 为你的主机池输入一个唯一名称。
+
+7. 在“位置”字段中，从下拉菜单中选择要在其中创建主机池的区域。
+   
+   与你选择的区域关联的 Azure 地理位置是此主机池及其相关对象的元数据将存储到的位置。 请确保在要用于存储服务元数据的地理位置选择区域。
+
+     > [!div class="mx-imgBorder"]
+     > ![Azure 门户的屏幕截图，其中显示了“位置”字段并选择了“美国东部”位置。 字段旁边的文本指出“将在美国东部存储元数据”。](media/portal-location-field.png)
+
+8. 在“主机池类型”下，选择主机池是“个人”还是“共用”类型 。
+
+    - 如果选择“个人”，请在“分配类型”字段中选择“自动”或“直接”  。
+
+      > [!div class="mx-imgBorder"]
+      > ![“分配类型”字段下拉菜单的屏幕截图。 用户已选择“自动”。](media/assignment-type-field.png)
+
+9. 如果选择“共用”，请输入以下信息：
+
+     - 对于“会话数上限”，请输入你要在单个会话主机中进行负载均衡的最大用户数。
+     - 对于“负载均衡算法”，请根据使用模式选择“广度优先”或“深度优先”。
+
+       > [!div class="mx-imgBorder"]
+       > ![“分配类型”字段的屏幕截图，其中已选择“共用”。 用户正在将其光标悬停在负载均衡下拉菜单中的“广度优先”上。](media/pooled-assignment-type.png)
+
+10. 在完成时选择“下一步:VM 详细信息”。
+
+11. 如果你已创建虚拟机并想要在新主机池中使用它们，请选择“否”。 如果要创建新的虚拟机并将其注册到新主机池，请选择“是”。
+
+现在，第一部分已完成，接下来让我们转到设置过程的下一部分来创建 VM。
+
+## <a name="virtual-machine-details"></a>虚拟机详细信息
+
+现在，我们已完成第一部分，接下来必须设置 VM。
+
+若要在主机池设置过程中设置虚拟机，请执行以下操作：
+
+1. 在“资源组”下，选择要在其中创建虚拟机的资源组。 此资源组可以与用于主机池的资源组不同。
+
+2. 选择要在其中创建虚拟机的“虚拟机区域”。 该区域可以与你为主机池选择的区域相同或不同。
+
+3. 接下来，选择要创建的虚拟机的大小。 可以按原样保留默认大小，也可以选择“更改大小”来更改大小。 如果选择“更改大小”，请在显示的窗口中选择适合你的工作负荷的虚拟机大小。
+
+4. 在“VM 数量”下，提供要为主机池创建的 VM 数量。
+
+    >[!NOTE]
+    >在设置主机池时，设置过程最多可以创建 400 个 VM，每个 VM 设置过程将在资源组中创建四个对象。 由于创建过程不会检查订阅配额，因此请确保输入的 VM 数量在资源组和订阅的 Azure VM 与 API 限制范围内。 创建完主机池后，可以添加更多的 VM。
+
+5. 然后，提供一个名称前缀来为设置过程创建的虚拟机命名。 该后缀是 `-` 加上从 0 开始的数字。
+
+6. 接下来，选择需要用来创建虚拟机的映像。 可以选择“库”或“存储 Blob” 。
+
+    - 如果选择了“库”，请从下拉菜单中选择一个建议的映像：
+
+      - Windows 10 企业版多会话版本 1909 + Microsoft 365 企业应用版 - Gen 1
+      - Windows 10 企业版多会话版本 1909 – Gen 1
+      - Windows Server 2019 Datacenter - Gen1
+
+     如果未看到所需的映像，请选择“浏览所有映像和磁盘”，然后便可以选择库中的另一个映像，或选择 Microsoft 和其他发行商提供的映像。
+
+     > [!div class="mx-imgBorder"]
+     > ![市场屏幕截图，其中显示了 Microsoft 提供的映像列表。](media/marketplace-images.png)
+
+     还可以转到“我的项”并选择已上传的自定义映像。
+
+     > [!div class="mx-imgBorder"]
+     > ![“我的项”选项卡的屏幕截图。](media/my-items.png)
+
+    - 如果选择“存储 Blob”，则可以利用你自己的、通过 Hyper-V 生成的映像或 Azure VM 上的映像。 只需输入该映像在存储 Blob 中的位置作为 URI 即可。
+
+7. 选择希望 VM 使用的 OS 磁盘类型：“标准 SSD”、“高级 SSD”或“标准 HDD”。
+
+8. 在“网络和安全”下，选择要在其中放置所创建的虚拟机的虚拟网络和子网。 请确保该虚拟网络可以连接到域控制器，因为你需要将该虚拟网络中的虚拟机加入域。 接下来，选择是否要为虚拟机使用公共 IP。 建议选择“否”，因为专用 IP 更安全。
+
+9. 选择所需的安全组类型：“基本”、“高级”或“无”  。
+
+    如果选择“基本”，则必须选择是否需要打开任何入站端口。 如果选择“是”，请从标准端口列表中选择允许入站连接的端口。
+
+    >[!NOTE]
+    >为了提高安全性，我们建议不要打开公共入站端口。
+
+    > [!div class="mx-imgBorder"]
+    > ![安全组页的屏幕截图，其中的下拉菜单显示了可用端口列表。](media/available-ports.png)
+    
+    如果选择“高级”，请选择已配置的现有网络安全组。
+
+10. 然后，选择是否要将虚拟机加入特定的域和组织单位。 如果选择“是”，请指定要加入到的域。 还可以添加要将虚拟机加入到的特定组织单位。
+
+11. 在“管理员帐户”下，输入所选虚拟网络的 Active Directory 域管理员的凭据。
+
+12. 选择“工作区”。
+
+完成这些操作后，我们便可以开始进行设置主机池的下一阶段：将应用组注册到工作区。
+
+## <a name="workspace-information"></a>工作区信息
+
+主机池设置过程默认会创建一个桌面应用程序组。 要使主机池按预期方式工作，需将此应用组发布给用户或用户组，并且必须将此应用组注册到工作区。 
+
+若要将桌面应用组注册到工作区，请执行以下操作：
+
+1. 请选择“是”。
+
+   如果选择“否”，则可以在以后再注册应用组，但我们建议尽快完成工作区注册，使主机池能够正常工作。
+
+2. 接下来，选择是要创建新的工作区，还是从现有工作区进行选择。 只允许将应用组注册到在主机池所在的同一位置中创建的工作区。
+
+3. （可选）可以选择“标记”。
+
+    可以在此处添加标记，以便可以根据元数据将对象分组，为管理员的工作提供方便。
+
+4. 完成操作后，选择“查看 + 创建”。 
+
+     >[!NOTE]
+     >“查看 + 创建”过程不会检查你的密码是否符合安全标准，也不会检查你的体系结构是否正确，因此，你需要亲自检查密码和体系结构是否存在任何问题。 
+
+5. 检查你的部署的相关信息，确保全部正确。 完成操作后，选择“创建”。 这会启动部署过程，该过程将创建以下对象：
+
+     - 新的主机池。
+     - 桌面应用组。
+     - 工作区（如果已选择创建工作区）。
+     - 如果你已选择注册桌面应用组，则会完成注册
+     - 已加入域并已注册到新主机池的虚拟机（如果已选择创建虚拟机）。
+     - 基于配置的 Azure 资源管理模板的下载链接。
+
+所有操作现已全部完成！
 
 ## <a name="next-steps"></a>后续步骤
 
-创建主机池并分配可访问其桌面的用户后，还可以使用 RemoteApps 来填充主机池。 若要详细了解如何在 Windows 虚拟桌面中管理应用，请参阅“管理应用组”教程。
+创建主机池后，可以使用 RemoteApp 程序来填充主机池。 若要详细了解如何在 Windows 虚拟桌面中管理应用，请转到下一篇教程：
 
 > [!div class="nextstepaction"]
 > [管理应用组教程](./manage-app-groups.md)

@@ -1,55 +1,44 @@
 - name: 自定义影像服务文档
   href: index.yml
 - name: 概述
+  expanded: true
   items:
     - name: 什么是自定义视觉？
       href: home.md
+    - name: 新增功能
+      href: whats-new.md
 - name: 快速入门
   items:
-    - name: 使用 .NET SDK
+    - name: 生成分类器
       items:
-        - name: 图像分类
-          href: csharp-tutorial.md
-        - name: 对象检测
-          href: csharp-tutorial-od.md
-    - name: 使用 Python SDK
+        - name: 使用 Web 门户
+          href: getting-started-build-a-classifier.md
+        - name: 使用自定义视觉 SDK
+          href: quickstarts/image-classification.md
+    - name: 生成对象检测器
       items:
-        - name: 图像分类
-          href: python-tutorial.md
-        - name: 对象检测
-          href: python-tutorial-od.md
-    - name: 使用 Java SDK
-      items:
-        - name: 图像分类
-          href: java-tutorial.md
-        - name: 对象检测
-          href: java-tutorial-od.md
-    - name: 使用 Node.js SDK
-      items:
-        - name: 图像分类
-          href: node-tutorial.md
-        - name: 对象检测
-          href: node-tutorial-object-detection.md
-    - name: 使用 Go SDK
-      items:
-        - name: 图像分类
-          href: go-tutorial.md
-        - name: 对象检测
-          href: go-tutorial-object-detection.md
+        - name: 使用 Web 门户
+          href: get-started-build-detector.md
+        - name: 使用自定义视觉 SDK
+          href: quickstarts/object-detection.md
 - name: 教程
   items:
-    - name: 适用于移动设备的徽标检测程序
+    - name: 报告 IoT 设备上的视觉状态
+      href: iot-visual-alerts-tutorial.md
+    - name: 识别移动设备上的徽标
       href: logo-detector-mobile.md
 - name: 操作指南
   items:
-    - name: 生成分类器
-      href: getting-started-build-a-classifier.md
     - name: 测试模型
       href: test-your-model.md
     - name: 改进分类器
       href: getting-started-improving-your-classifier.md
+    - name: 选择域
+      href: select-domain.md
     - name: 使用预测 API
       href: use-prediction-api.md
+    - name: 使用智能标记工具
+      href: suggested-tags.md
     - name: 导出模型
       items:
         - name: 将模型导出到移动设备
@@ -60,11 +49,9 @@
           href: export-model-python.md
     - name: 导出或删除帐户数据
       href: ./export-delete-data.md
-    - name: 将有限试用版项目移到 Azure
-      href: ./move-your-project-to-azure.md
     - name: 经应用更新到 3.0 API
       href: ./update-application-to-3.0-sdk.md
-- name: 引用
+- name: 参考
   items:
     - name: 自定义视觉训练 API
       href: 'https://go.microsoft.com/fwlink/?linkid=865446'
@@ -76,6 +63,10 @@
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet'
         - name: Java
           href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable'
+        - name: Node.js - 训练
+          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest'
+        - name: Node.js - 预测
+          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest'
         - name: Python
           href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python'
         - name: Go - 训练
@@ -85,12 +76,12 @@
 - name: 资源
   items:
     - name: 示例
-      href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=vision'
     - name: 限制和配额
       href: limits-and-quotas.md
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/598141-custom-vision-service'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
@@ -98,5 +89,7 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 加密
+      href: custom-vision-encryption-of-data-at-rest.md
     - name: 发行说明
       href: release-notes.md

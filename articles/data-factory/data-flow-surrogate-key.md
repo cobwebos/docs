@@ -1,55 +1,85 @@
 ---
-title: Azure 数据工厂映射数据流代理键转换
-description: 如何使用 Azure 数据工厂的映射数据流代理项键转换以生成密钥的连续值
+title: 映射数据流中的代理键转换
+description: 如何使用 Azure 数据工厂的映射数据流代理键转换生成顺序键值
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/12/2019
-ms.openlocfilehash: eaa1c577f7e208400d3430222b006e0dbbd7956a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom: seo-lt-2019
+ms.date: 04/08/2020
+ms.openlocfilehash: ade2fd6011bbcdaed4ce31ce70bfb4235429bb0d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61350340"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81606296"
 ---
-# <a name="mapping-data-flow-surrogate-key-transformation"></a>映射数据数据流代理项键转换
+# <a name="surrogate-key-transformation-in-mapping-data-flow"></a>映射数据流中的代理键转换 
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-使用代理键转换将递增的非业务任意键值添加到数据流行集。 这对于在星型架构分析数据模型中设计维度表非常有用，在该模型中维度表中的每个成员都需要拥有一个非业务的唯一键（这是 Kimball DW 方法的一部分）。
+使用代理键转换向每个数据行添加递增的键值。 在星型架构分析数据模型中设计维度表时，这非常有用。 在星型架构中，维度表中的每个成员都需要唯一键，这是一个非业务键。
 
-![代理键转换](media/data-flow/surrogate.png "Surrogate Key Transformation")
+## <a name="configuration"></a>配置
 
-“键列”是将赋予新代理键列的名称。
+![代理键转换](media/data-flow/surrogate.png "代理键转换")
 
-"起始值"是增量值的起始点。
+**键列：** 生成的代理键列的名称。
 
-## <a name="increment-keys-from-existing-sources"></a>从现有源增量密钥
+**起始值：** 要生成的最小键值。
 
-如果你想要从一个值，在源中存在启动您的序列，可使用派生列转换紧跟代理键转换并将两个值相加：
+## <a name="increment-keys-from-existing-sources"></a>从现有源增加密钥
 
-![SK 添加最大](media/data-flow/sk006.png "代理项键转换添加最大")
+若要从源中存在的值启动序列，请使用代理键转换后的派生列转换将两个值相加：
 
-以设定种子的键值与以前的最大值，有两种技术，可以使用：
+![SK 添加 Max](media/data-flow/sk006.png "代理键转换添加 Max")
 
-### <a name="database-sources"></a>数据库源
+### <a name="increment-from-existing-maximum-value"></a>从现有的最大值开始递增
 
-使用"查询"选项以使用源转换从源选择 max （）：
+若要使用以前的最大值为密钥值设定种子，可以根据源数据的位置使用两种方法。
 
-![代理项键的查询](media/data-flow/sk002.png "代理项键转换查询")
+#### <a name="database-sources"></a>数据库源
 
-### <a name="file-sources"></a>文件源
+使用 SQL 查询选项可选择源中的 MAX （）。 例如，`Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
 
-如果你以前的最大值是在文件中，可以使用聚合转换以及在源转换并使用 max （） 表达式函数获取上一个最大值：
+![代理键查询](media/data-flow/sk002.png "代理键转换查询")
 
-![代理密钥文件](media/data-flow/sk008.png "代理密钥文件")
+#### <a name="file-sources"></a>文件源
 
-在这两种情况下，必须在源中包含的以前的最大值以及加入您传入的新数据：
+如果以前的最大值位于文件中，则使用 `max()` 聚合转换中的函数获取上一个最大值：
 
-![代理项键联接](media/data-flow/sk004.png "代理项键联接")
+![代理键文件](media/data-flow/sk008.png "代理键文件")
+
+在这两种情况下，你都必须将传入的新数据与包含之前的最大值的源一起加入。
+
+![代理键联接](media/data-flow/sk004.png "代理键联接")
+
+## <a name="data-flow-script"></a>数据流脚本
+
+### <a name="syntax"></a>语法
+
+```
+<incomingStream> 
+    keyGenerate(
+        output(<surrogateColumnName> as long),
+        startAt: <number>L
+    ) ~> <surrogateKeyTransformationName>
+```
+
+### <a name="example"></a>示例
+
+![代理键转换](media/data-flow/surrogate.png "代理键转换")
+
+上面的代码段中提供了上述代理项密钥配置的数据流脚本。
+
+```
+AggregateDayStats
+    keyGenerate(
+        output(key as long),
+        startAt: 1L
+    ) ~> SurrogateKey1
+```
 
 ## <a name="next-steps"></a>后续步骤
 
-这些示例使用[加入](data-flow-join.md)并[派生列](data-flow-derived-column.md)转换。
+这些示例使用[联接](data-flow-join.md)和[派生列](data-flow-derived-column.md)转换。

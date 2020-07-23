@@ -1,28 +1,27 @@
 ---
-title: 限制对 PaaS 资源的网络访问 - Azure PowerShell | Microsoft Docs
+title: 限制对 PaaS 资源的网络访问-Azure PowerShell
 description: 本文介绍如何使用 Azure PowerShell 通过虚拟网络服务终结点限制对 Azure 资源（例如 Azure 存储和 Azure SQL 数据库）的网络访问。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: b76256ef70b85df0c504427179518d175f08b645
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
-ms.translationtype: MT
+ms.openlocfilehash: 3a9ae1b847d3f31a2cd4c01f9ecb61e39e950ffe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66727660"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84688086"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>使用 PowerShell 通过虚拟网络服务终结点限制对 PaaS 资源的网络访问
 
@@ -41,7 +40,7 @@ ms.locfileid: "66727660"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装和使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+如果选择在本地安装和使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
@@ -98,7 +97,7 @@ $virtualNetwork | Set-AzVirtualNetwork
 
 ## <a name="restrict-network-access-for-a-subnet"></a>限制子网的网络访问
 
-使用 [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) 创建网络安全组安全规则。 以下规则允许对分配给 Azure 存储服务的公用 IP 地址进行出站访问： 
+使用 [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) 创建网络安全组安全规则。 以下规则允许对分配给 Azure 存储服务的公共 IP 地址进行出站访问： 
 
 ```azurepowershell-interactive
 $rule1 = New-AzNetworkSecurityRuleConfig `
@@ -113,7 +112,7 @@ $rule1 = New-AzNetworkSecurityRuleConfig `
   -SourcePortRange *
 ```
 
-以下规则拒绝对所有公用 IP 地址的访问。 上一个规则将替代此规则，因为它的优先级更高，上一个规则允许对 Azure 存储的公用 IP 地址进行访问。
+以下规则拒绝对所有公共 IP 地址的访问。 上一个规则将替代此规则，因为它的优先级更高，上一个规则允许对 Azure 存储的公共 IP 地址进行访问。
 
 ```azurepowershell-interactive
 $rule2 = New-AzNetworkSecurityRuleConfig `
@@ -265,7 +264,7 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 1      Long Running... AzureLongRun... Running       True            localhost            New-AzVM     
 ```
 
-### <a name="create-the-second-virtual-machine"></a>创建第二台虚拟机
+### <a name="create-the-second-virtual-machine"></a>创建第二个虚拟机
 
 在 *Private* 子网中创建一台虚拟机：
 
@@ -307,7 +306,7 @@ $credential = New-Object System.Management.Automation.PSCredential -ArgumentList
 New-PSDrive -Name Z -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\my-file-share" -Credential $credential
 ```
 
-PowerShell 将返回类似于以下示例输出的输出：
+PowerShell 将返回类似于以下示例的输出：
 
 ```powershell
 Name           Used (GB)     Free (GB) Provider      Root
@@ -317,19 +316,19 @@ Z                                      FileSystem    \\vnt.file.core.windows.net
 
 Azure 文件共享已成功映射到驱动器 Z。
 
-确认 VM 没有到任何其他公用 IP 地址的出站连接：
+确认 VM 没有到任何其他公共 IP 地址的出站连接：
 
 ```powershell
 ping bing.com
 ```
 
-不会收到回复，因为除了分配给 Azure 存储服务的地址以外，关联到“专用”子网的网络安全组不允许与其他公共 IP 地址建立出站访问。 
+你不会收到回复，因为除了分配给 Azure 存储服务的地址之外，关联到 *Private* 子网的网络安全组不允许对其他公共 IP 地址的出站访问。
 
 关闭与 *myVmPrivate* VM 建立的远程桌面会话。
 
 ## <a name="confirm-access-is-denied-to-storage-account"></a>确认已拒绝对存储帐户的访问
 
-获取 *myVmPublic* VM 的公用 IP 地址：
+获取 *myVmPublic* VM 的公共 IP 地址：
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress `
@@ -352,7 +351,7 @@ $credential = New-Object System.Management.Automation.PSCredential -ArgumentList
 New-PSDrive -Name Z -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\my-file-share" -Credential $credential
 ```
 
-对该共享的访问被拒绝，并且将收到 `New-PSDrive : Access is denied` 错误。 访问被拒绝，因为 *myVmPublic* VM 部署在 *Public* 子网中。 “公共”子网没有为 Azure 存储启用服务终结点，并且存储帐户仅允许来自“专用”子网的网络访问，不允许来自“公共”子网的网络访问。   
+对该共享的访问被拒绝，并且将收到 `New-PSDrive : Access is denied` 错误。 访问被拒绝，因为 *myVmPublic* VM 部署在“公共”子网中。  “公共”子网没有为 Azure 存储启用服务终结点，并且存储帐户仅允许来自“专用”子网的网络访问，不允许来自“公共”子网的网络访问。   
 
 关闭与 *myVmPublic* VM 建立的远程桌面会话。
 
@@ -364,7 +363,7 @@ Get-AzStorageFile `
   -Context $storageContext
 ```
 
-访问被拒绝，并且你会收到 *Get-AzStorageFile：远程服务器返回错误：(403) 禁止访问。HTTP 状态代码：403 - HTTP 错误消息：此请求无权执行此操作* 错误，因为你的计算机不在 *MyVirtualNetwork* 虚拟网络的 *Private* 子网中。
+访问被拒绝，并且你会收到 *Get-AzStorageFile：远程服务器返回了错误：(403) 禁止访问。HTTP 状态代码：403 - HTTP 错误消息：此请求无权执行此操作* 错误，因为你的计算机不在 *MyVirtualNetwork* 虚拟网络的 *Private* 子网中。
 
 ## <a name="clean-up-resources"></a>清理资源
 

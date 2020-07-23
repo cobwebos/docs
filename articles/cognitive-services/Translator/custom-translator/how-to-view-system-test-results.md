@@ -2,19 +2,19 @@
 title: 查看系统测试结果和部署 - 自定义翻译
 titleSuffix: Azure Cognitive Services
 description: 训练成功后，可以审查系统测试以分析训练结果。 如果对训练结果感到满意，可以针对训练的模型下达部署请求。
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
-ms.author: v-pawal
+ms.date: 05/26/2020
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 675ae10e304bd22c441740a87e8033136ff63ebd
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 3361241bf0a330abc18701f93460208b8804a7dc
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389313"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994253"
 ---
 # <a name="view-system-test-results"></a>查看系统测试结果
 
@@ -26,7 +26,7 @@ ms.locfileid: "66389313"
 
 “测试”选项卡显示：
 
-1.  **系统测试结果：** 在培训中测试过程的结果。 测试过程生成 BLEU 评分。
+1.  **系统测试结果：** 培训过程中测试过程的结果。 测试过程生成 BLEU 评分。
 
     **句子计数：** 在测试集中使用了多少个并行句子。
 
@@ -54,11 +54,11 @@ ms.locfileid: "66389313"
 
 下载的 zip 存档中包含三个文件。
 
-1.  **custom.mt.txt：** 此文件包含使用用户数据训练的模型为源语言句子提供的目标语言机器翻译。
+1.  **自定义 mt：** 此文件包含由使用用户数据训练的模型完成的目标语言中源语言句子的机器翻译。
 
-2.  **ref.txt：** 此文件包含用户为源语言句子提供的目标语言翻译。
+2.  **引用 .txt：** 此文件包含用户在目标语言中提供的源语言句子翻译。
 
-3.  **source.txt：** 此文件包含源语言的句子。
+3.  **源 .txt：** 此文件包含源语言中的句子。
 
     ![下载系统测试结果](media/how-to/how-to-download-system-test.png)
 
@@ -68,40 +68,40 @@ ms.locfileid: "66389313"
 
 1.  选择一个项目，并转到“模型”选项卡。
 
-2. 对于成功训练的但尚未部署的模型，将显示“部署”按钮。
+2. 对于已成功训练的模型，如果未部署，它将显示 "部署" 按钮。
 
     ![部署模型](media/how-to/how-to-deploy-model.png)
 
 3.  单击“部署”。
-4.  针对要在其中部署模型的区域选择“已部署”  ，然后单击“保存”。 可以为多个区域选择“已部署”。 
+4.  针对要在其中部署模型的区域选择“已部署”****，然后单击“保存”。 可以为多个区域选择“已部署”。****
 
     ![部署模型](media/how-to/how-to-deploy-model-regions.png)
 
-5.  可在“状态”列中查看模型的状态。
+5.  您可以在 "状态" 列中查看模型的状态。
 
 >[!Note]
->自定义转换器支持时间中的任何位置工作区中的 10 个已部署的模型。
+>自定义转换器在任一时间点在工作区中支持10个已部署的模型。
 
 ## <a name="update-deployment-settings"></a>更新部署设置
 
 若要更新部署设置，请执行以下操作：
 
-1.  选择一个项目，并转到“模型”  选项卡。
+1.  选择一个项目，并转到“模型”**** 选项卡。
 
-2. 对于已成功部署的模型，它会显示“更新”  按钮。
+2. 对于已成功部署的模型，它会显示“更新”**** 按钮。
 
     ![部署模型](media/how-to/how-to-update-undeploy-model.png)
 
-3.  选择“更新”  。
-4.  针对要在其中部署或取消部署模型的区域选择“已部署”或“已取消部署”，然后单击“保存”。   
+3.  选择“更新”。
+4.  针对要在其中部署或取消部署模型的区域选择“已部署”或“已取消部署”，然后单击“保存”。************
 
     ![部署模型](media/how-to/how-to-undeploy-model.png)
 
 >[!Note]
->如果针对所有区域选择“已取消部署”，则会将模型从所有区域取消部署，并将其置于已取消部署状态。  它现在不可使用。
+>如果针对所有区域选择“已取消部署”，则会将模型从所有区域取消部署，并将其置于已取消部署状态。**** 它现在不可使用。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 通过 [Microsoft 文本翻译 API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) 开始使用已部署的自定义翻译模型。
+- 开始通过[转换器 V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)使用已部署的自定义翻译模型。
 - 了解[如何管理设置](how-to-manage-settings.md)以共享工作区和管理订阅密钥。
-- 了解如何从 [Microsoft Translator Hub](https://hub.microsofttranslator.com) [迁移工作区和项目](how-to-migrate.md)
+- 了解如何从 [Microsoft Translator Hub](https://hub.microsofttranslator.com)[迁移工作区和项目](how-to-migrate.md)

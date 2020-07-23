@@ -1,24 +1,24 @@
 ---
-title: 使用 Azure Maps 进行搜索 | Microsoft Docs
-description: 使用 Azure Maps 搜索附近兴趣点
-author: walsehgal
-ms.author: v-musehg
-ms.date: 03/07/2019
+title: 教程：在地图上搜索附近位置 | Microsoft Azure Maps
+description: 在本教程中，你将了解如何使用 Microsoft Azure Maps 在地图上搜索兴趣点。
+author: philmea
+ms.author: philmea
+ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 21c7e996cfe2f07d9a5b056d8cbc22f238bb48fd
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 0b0cb92cd6b4918e28e143178a5cdbbbb19ac9af
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357603"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80333636"
 ---
-# <a name="search-nearby-points-of-interest-using-azure-maps"></a>使用 Azure Maps 搜索附近兴趣点
+# <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>教程：使用 Azure Maps 搜索附近兴趣点
 
-本教程演示如何为 Azure Maps 设置帐户，然后使用 Maps API 搜索兴趣点。 本教程介绍如何执行下列操作：
+本教程演示如何为 Azure Maps 设置帐户，然后使用 Maps API 搜索兴趣点。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Azure Maps 帐户
@@ -30,7 +30,7 @@ ms.locfileid: "66357603"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 <a id="createaccount"></a>
 
@@ -49,25 +49,27 @@ ms.locfileid: "66357603"
     * 阅读许可证和隐私声明，并选择复选框接受这些条款   。
     * 单击“创建”  按钮。
 
-![在门户中创建 Maps 帐户](./media/tutorial-search-location/create-account.png)
+![在 Azure 门户中创建 Azure Maps 帐户](./media/tutorial-search-location/create-account.png)
 
 <a id="getkey"></a>
 
 ## <a name="get-the-primary-key-for-your-account"></a>获取帐户的主密钥
 
-成功创建 Maps 帐户后，检索查询 Maps API 的密钥。
+成功创建 Maps 帐户后，检索查询 Maps API 的密钥。 建议在调用 Azure Maps 服务时使用帐户的主密钥作为订阅密钥。
 
 1. 在门户中打开 Maps 帐户。
 2. 在设置部分中，选择“身份验证”  。
 3. 将“主密钥”复制到剪贴板。  本地保存它以便稍后在本教程中使用。
 
-![在门户中获取主密钥](./media/tutorial-search-location/get-key.png)
+![在 Azure 门户中获取主密钥](./media/tutorial-search-location/get-key.png)
+
+有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
 
 <a id="createmap"></a>
 
 ## <a name="create-a-new-map"></a>创建新地图
 
-Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps 集成到 Web 应用程序中。 它消除了单纯 REST 服务调用的复杂性，并可以通过有样式且可自定义的组件促升工作效率。 以下步骤说明如何使用 Map Control API 创建一个嵌入式静态 HTML 页面。
+Map Control API 是一个便利的客户端库。 使用此 API，可以轻松将 Maps 集成到你的 Web 应用程序中。 它消除了单纯 REST 服务调用的复杂性，并可以通过可自定义的组件提高工作效率。 以下步骤说明如何使用 Map Control API 创建一个嵌入式静态 HTML 页面。
 
 1. 在本地计算机上，创建一个新文件并将其命名为 **MapSearch.html**。
 2. 将以下 HTML 组件添加到该文件：
@@ -85,7 +87,7 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
         <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
         <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
-        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
+        <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
 
         <script>
         function GetMap(){
@@ -131,7 +133,7 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
 
    此段为 Azure Maps 帐户密钥初始化地图控件 API。 `atlas` 是包含 API 和相关视觉对象组件的命名空间。 `atlas.Map` 提供视觉对象和交互式 Web 地图的控件。
 
-4. 将更改保存到文件并在浏览器中打开 HTML 页。 这是使用帐户密钥调用 `atlas.Map` 所能生成的最基本的地图。
+4. 将更改保存到文件并在浏览器中打开 HTML 页。 所显示的地图是使用帐户密钥调用 `atlas.Map` 所能生成的最基本的地图。
 
    ![查看地图](./media/tutorial-search-location/basic-map.png)
 
@@ -161,7 +163,7 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
     });
     ```
 
-   在此代码段中，将会向地图添加一个 `ready` 事件。当地图资源加载以后，该事件会触发，然后地图就可以供用户访问。 在地图 `ready` 事件处理程序中，将会创建一个数据源来存储结果数据。 将会创建一个符号层并将其附加到数据源。 此层指定如何呈现数据源中的结果数据。在此示例中，深蓝色的圆形针位于结果坐标的中心，其他图标可以与其重叠。 结果层将添加到地图层。
+   在此代码段中，将会向地图添加一个 `ready` 事件。当地图资源加载以后，该事件会触发，然后地图就可以供用户访问。 在地图 `ready` 事件处理程序中，将会创建一个数据源来存储结果数据。 将会创建一个符号层并将其附加到数据源。 此层指定应当如何呈现数据源中的结果数据。 在本例中，结果将使用深蓝色圆形图钉图标呈现，该图标位于结果坐标的中心，并允许其他图标重叠。 结果层将添加到地图层。
 
 <a id="usesearch"></a>
 
@@ -213,23 +215,23 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
     });
     ```
 
-3. 保存“MapSearch.html”文件并刷新浏览器  。 现在应看到地图以西雅图为中心，蓝色的圆形图钉标记了该区域中加油站的位置。
+3. 保存“MapSearch.html”文件并刷新浏览器  。 你应当会看到地图以西雅图为中心，蓝色的圆形图钉标记了该区域中加油站的位置。
 
    ![查看包含搜索结果的地图](./media/tutorial-search-location/pins-map.png)
 
 4. 在浏览器中输入以下 HTTPRequest，即可看到地图呈现的原始数据。 将 \<Your Azure Maps Key\> 替换为主键。
 
    ```http
-   https://atlas.microsoft.com/search/poi/json?api-version=2&query=gasoline%20station&subscription-key=<subscription-key>&lat=47.6292&lon=-122.2337&radius=100000
+   https://atlas.microsoft.com/search/poi/json?api-version=1.0&query=gasoline%20station&subscription-key=<subscription-key>&lat=47.6292&lon=-122.2337&radius=100000
    ```
 
 此时，MapSearch 页可显示模糊搜索查询返回的兴趣点的位置。 让我们添加一些交互功能和有关位置的详细信息。
 
 ## <a name="add-interactive-data"></a>添加交互式数据
 
-现在为止已完成的地图仅显示搜索结果的经度/纬度数据。 但是，如果查看该 Maps Search 服务返回的原始 JSON，会看到它包含有关每个加油站的其他信息，包括名称和街道地址。 可以使用交互式弹出框将数据合并到地图。
+现在为止已完成的地图仅显示搜索结果的经度/纬度数据。 但是，Maps 搜索服务返回的原始 JSON 包含有关每个加油站的其他信息。 包括名称和街道地址。 可以使用交互式弹出框将数据合并到地图。
 
-1. 在地图 `ready` 事件处理程序中，在用于查询模糊搜索服务的代码后面添加以下代码行。 这样会创建弹出窗口的实例，并向符号层添加鼠标悬停事件。
+1. 在地图 `ready` 事件处理程序中，在用于查询模糊搜索服务的代码后面添加以下代码行。 此代码将创建弹出窗口的实例，并向符号层添加鼠标悬停事件。
 
     ```JavaScript
    //Create a popup but leave it closed so we can update it and display it later.
@@ -239,25 +241,28 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
     map.events.add('mouseover', resultLayer, showPopup);
     ```
 
-    API `sup` 提供一个固定在地图上所需位置的信息窗口。 
+    API `*atlas.Popup` 提供一个固定在地图上所需位置的信息窗口。 
 
-2. 在 script 标记中的 `GetMap` 函数后面添加以下代码，以便在弹出窗口中显示鼠标悬停结果信息  。
+2. 在 `GetMap` 函数中添加以下代码，以便在弹出窗口中显示鼠标悬停结果信息。
 
     ```JavaScript
     function showPopup(e) {
-        //Get the properties and coordinates of the first shape that the event occured on.
+        //Get the properties and coordinates of the first shape that the event occurred on.
 
         var p = e.shapes[0].getProperties();
         var position = e.shapes[0].getCoordinates();
 
         //Create HTML from properties of the selected result.
-        var html = ['<div style="padding:5px"><div><b>', p.poi.name,
-            '</b></div><div>', p.address.freeformAddress,
-            '</div><div>', position[1], ', ', position[0], '</div></div>'];
+        var html = `
+          <div style="padding:5px">
+            <div><b>${p.poi.name}</b></div>
+            <div>${p.address.freeformAddress}</div>
+            <div>${position[1]}, ${position[0]}</div>
+          </div>`;
 
         //Update the content and position of the popup.
         popup.setPopupOptions({
-            content: html.join(''),
+            content: html,
             position: position
         });
 
@@ -272,7 +277,7 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 通过 Azure Maps 创建帐户

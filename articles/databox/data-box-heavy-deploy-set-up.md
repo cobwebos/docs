@@ -6,25 +6,45 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 05/24/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: f2f6b544b56977b3f1bfb6a4fb46a9f1e3bcc294
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.localizationpriority: high
+ms.openlocfilehash: 15e031bcdcac7bd84d58286f5bdb5a7b6cd0c973
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427947"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199209"
 ---
-# <a name="tutorial-cable-and-connect-to-your-azure-data-box-heavy-preview"></a>教程：为 Azure Data Box Heavy 布线并与它建立连接（预览）
+::: zone target = "docs"
 
+# <a name="tutorial-cable-and-connect-to-your-azure-data-box-heavy"></a>教程：为 Azure Data Box Heavy 布线并与它建立连接
+
+::: zone-end
+
+::: zone target = "chromeless"
+
+## <a name="get-started-with-azure-data-box-heavy"></a>Azure Data Box Heavy 入门
+
+::: zone-end
+
+::: zone target = "docs"
 
 本教程介绍如何为 Azure Data Box Heavy 布线、与它建立连接以及将它打开。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 为 Data Box Heavy 布线
 > * 连接到 Data Box Heavy
+
+::: zone-end
+
+::: zone target = "chromeless"
+
+本指南提供了有关如何检查先决条件、为设备连接电缆并连接到设备、复制数据、将数据上传到 Azure，并验证上传的数据的说明。
+
+::: zone-end
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,6 +62,8 @@ ms.locfileid: "66427947"
     - 选择与 [Mellanox MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) 网络接口兼容的线缆。
     - 40-Gbps 线缆的设备端需是 QSFP+。
     - 对于 10-Gbps 线缆，需要使用 SFP+ 线缆，其一端插入 10-Gbps 交换机，插入设备的另一端配备 QSFP+ 转 SFP+ 适配器（或 QSA 适配器）。
+
+::: zone target = "docs"
 
 ## <a name="cable-your-device-for-power"></a>为设备排布电源线
 
@@ -78,8 +100,8 @@ ms.locfileid: "66427947"
 
 在设备的某个节点上，执行以下步骤进行网络布线。
 
-1. 使用 CAT 6 RJ-45 网线（图中的蓝色线缆）将主机连接到 1-Gbps 管理端口。
-2. 使用 Twinax QSFP+ 铜缆（图中的红色线缆）连接至少一个 40-Gbps（比 1-Gbps 更好）数据网络接口。 如果使用 10-Gbps 交换机，请使用 Twinax SFP+ 铜缆和 QSFP+ 转 SFP+ 适配器（QSA 适配器）连接 40-Gbps 数据网络接口。
+1. 使用 CAT 6 RJ-45 网络电缆（图片中右上角连接到标有 MGMT 的插头的电缆）将主计算机连接到 1-Gbps 管理端口。
+2. 使用 QSFP+ 电缆（光纤或铜）连接至少一个 40-Gbps（首选超过 1 Gbps）的网络接口进行数据传输。 如果使用 10-Gbps 交换机，请使用 SFP+ 电缆和 QSFP+ 转 SFP+ 适配器（QSA 适配器）连接 40 Gbps 网络接口进行数据传输。
 
     ![Data Box Heavy 端口已布线](media/data-box-heavy-deploy-set-up/data-box-heavy-ports-cabled.png)
 
@@ -107,7 +129,7 @@ ms.locfileid: "66427947"
     
     - 此页面上的某个节点序列号与门户 UI 和本地 Web UI 中的序列号相匹配。 请记下节点编号与序列号的映射。 门户中有两个节点和两个设备序列号。 此映射可帮助你了解哪个节点对应于哪个序列号。
     - 设备此时处于锁定状态。
-    - 提供你在上一步骤中获取的设备管理员密码，以登录到设备。 单击“登录”  。
+    - 提供你在上一步骤中获取的设备管理员密码，以登录到设备。 单击**登录**。
 
     ![登录到 Data Box Heavy 本地 Web UI](media/data-box-heavy-deploy-set-up/data-box-heavy-unlock-device.png)
 
@@ -128,7 +150,7 @@ ms.locfileid: "66427947"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了有关 Azure Data Box Heavy 的主题，例如：
+本教程介绍了 Azure Data Box Heavy 主题，例如：
 
 > [!div class="checklist"]
 > * 为 Data Box Heavy 布线
@@ -138,3 +160,5 @@ ms.locfileid: "66427947"
 
 > [!div class="nextstepaction"]
 > [将数据复制到 Azure Data Box](./data-box-heavy-deploy-copy-data.md)
+
+::: zone-end

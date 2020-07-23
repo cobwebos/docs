@@ -1,38 +1,28 @@
 ---
 title: Azure 服务总线管理库 | Microsoft Docs
-description: 在 .NET 中管理服务总线命名空间和消息实体。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
+description: 本文介绍如何使用 Azure 服务总线管理库动态预配服务总线命名空间和实体。
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/05/2019
-ms.author: aschhab
-ms.openlocfilehash: 3836eb87516eed546ae6bb69f53bf64e5df00906
-ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
+ms.date: 06/23/2020
+ms.openlocfilehash: 042edcd1851f86dd2a660673bc87884b68410bfb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693209"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341722"
 ---
 # <a name="service-bus-management-libraries"></a>服务总线管理库
 
 Azure 服务总线管理库可以动态预配服务总线命名空间和实体。 这样可以实现复杂的部署和消息方案，并能以编程方式确定要预配的实体。 这些库目前可用于 .NET。
 
-## <a name="supported-functionality"></a>支持的功能
+## <a name="supported-functionality"></a>受支持的功能
 
-* 命名空间创建、更新、删除
-* 队列创建、更新、删除
-* 主题创建、更新、删除
-* 订阅创建、更新、删除
+* 创建、更新、删除命名空间
+* 创建、更新、删除队列
+* 创建、更新、删除主题
+* 创建、更新、删除订阅
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要开始使用服务总线管理库，必须使用 Azure Active Directory (Azure AD) 服务进行身份验证。 Azure AD 要求身份验证为服务主体，并且该主体提供对 Azure 资源的访问权限。 有关创建服务主体的信息，请参阅以下文章之一：  
 
@@ -40,17 +30,17 @@ Azure 服务总线管理库可以动态预配服务总线命名空间和实体�
 * [使用 Azure PowerShell 创建服务主体来访问资源](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
 * [使用 Azure CLI 创建服务主体来访问资源](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 
-这些教程提供 `AppId`（客户端 ID）、`TenantId` 和 `ClientSecret`（身份验证密钥），这些都用于管理库进行的身份验证。 若要对资源组运行命令，必须拥有“所有者”  权限。
+这些教程提供 `AppId`（客户端 ID）、`TenantId` 和 `ClientSecret`（身份验证密钥），这些都将用于管理库进行的身份验证。 对于用于运行的资源组，需要至少具有 [Azure 服务总线数据所有者](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner)或[参与者](/azure/role-based-access-control/built-in-roles#contributor)权限 。
 
 ## <a name="programming-pattern"></a>编程模式
 
-操作任何服务总线资源的模式都遵循通用协议：
+所有服务总线资源的操纵模式都遵循常用协议：
 
 1. 使用 **Microsoft.IdentityModel.Clients.ActiveDirectory** 库从 Azure AD 获取令牌：
    ```csharp
    var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 
-   var result = await context.AcquireTokenAsync("https://management.core.windows.net/", new ClientCredential(clientId, clientSecret));
+   var result = await context.AcquireTokenAsync("https://management.azure.com/", new ClientCredential(clientId, clientSecret));
    ```
 2. 创建 `ServiceBusManagementClient` 对象：
 
@@ -76,8 +66,8 @@ Azure 服务总线管理库可以动态预配服务总线命名空间和实体�
    await sbClient.Queues.CreateOrUpdateAsync(resourceGroupName, namespaceName, QueueName, queueParams);
    ```
 
-## <a name="complete-code-to-create-a-queue"></a>若要创建的队列的完整代码
-下面是用于创建服务总线队列的完整代码： 
+## <a name="complete-code-to-create-a-queue"></a>完成创建队列的代码
+下面是创建服务总线队列的完整代码： 
 
 ```csharp
 using System;
@@ -139,7 +129,7 @@ namespace SBusADApp
                 var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 
                 var result = await context.AcquireTokenAsync(
-                    "https://management.core.windows.net/",
+                    "https://management.azure.com/",
                     new ClientCredential(clientId, clientSecret)
                 );
 
@@ -164,7 +154,7 @@ namespace SBusADApp
 ```
 
 > [!IMPORTANT]
-> 有关完整示例，请参阅[GitHub 上的.NET 管理示例]((https://github.com/Azure-Samples/service-bus-dotnet-management/))。 
+> 有关完整示例，请参阅 [GitHub 上的 .NET 管理示例](https://github.com/Azure-Samples/service-bus-dotnet-management/)。 
 
 ## <a name="next-steps"></a>后续步骤
 [Microsoft.Azure.Management.ServiceBus API 参考](/dotnet/api/Microsoft.Azure.Management.ServiceBus)

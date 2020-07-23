@@ -1,20 +1,16 @@
 ---
-title: 快速入门 - 使用 Azure 门户创建服务总线队列 | Microsoft Docs
+title: 使用 Azure 门户创建服务总线队列
 description: 在本快速入门中，你将了解如何使用 Azure 门户创建服务总线队列。 然后，你将使用示例客户端应用程序向队列发送消息以及从中接收消息。
-services: service-bus-messaging
 author: spelluru
-manager: timlt
-ms.service: service-bus-messaging
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 04/10/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: a946443e1d1e66a1ae8f70671ff328cdf47ff009
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0753259f76c46c5df4246008f3f80ffa5bf35747
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65992016"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337336"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>快速入门：使用 Azure 门户创建服务总线队列
 本快速入门介绍如何使用 [Azure 门户][Azure portal]创建消息命名空间并在该命名空间中创建队列，以及如何获取该命名空间上的授权凭据，以便将消息发送到服务总线队列以及从中接收消息。 然后该过程展示了如何使用 [.NET Standard 库](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)从此队列发送和接收消息。
@@ -35,7 +31,19 @@ ms.locfileid: "65992016"
 
 ## <a name="send-and-receive-messages"></a>发送和接收消息
 
-预配命名空间和队列并且拥有所需的凭据后，便可以发送和接收消息。 可以在[此 GitHub 示例文件夹](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters)中检查代码。
+> [!NOTE]
+> 此部分中用于发送和接收消息的示例是 .NET 示例。 有关使用其他编程语言发送/接收消息的示例，请参阅[服务总线示例](service-bus-samples.md)。 
+> 
+> 有关使用各种编程语言发送/接收消息的分步说明，请参阅以下快速入门：
+> - [.NET](service-bus-dotnet-get-started-with-queues.md)
+> - [Java](service-bus-java-how-to-use-queues.md)
+> - [Node.js（使用 azure/service-bus 包）](service-bus-nodejs-how-to-use-queues-new-package.md)
+> - [Node.js（使用 azure-sb 包）](service-bus-nodejs-how-to-use-queues.md)
+> - [PHP](service-bus-php-how-to-use-queues.md)
+> - [Python](service-bus-python-how-to-use-queues.md)
+> - [Ruby](service-bus-ruby-how-to-use-queues.md)
+
+预配命名空间和队列并且拥有所需的凭据后，便可以发送和接收消息。 可以在[此 GitHub 示例文件夹](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters)中检查代码。
 
 若要运行此代码，请执行以下操作：
 
@@ -202,7 +210,7 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何创建一个服务总线命名空间并从队列发送和接收消息所需的其他资源。 若要详细了解如何编写收发消息的代码，请继续阅读教程的“发送和接收消息”部分  。 
+本文介绍了如何创建一个服务总线命名空间并从队列发送和接收消息所需的其他资源。 若要详细了解如何编写收发消息的代码，请继续阅读教程的“发送和接收消息”部分。 
 
 > [!div class="nextstepaction"]
 > [发送和接收消息](service-bus-dotnet-get-started-with-queues.md)

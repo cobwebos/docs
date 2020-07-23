@@ -1,28 +1,19 @@
 ---
 title: 在 Azure Application Insights 中监视 Docker 应用程序 | Microsoft Docs
 description: Docker 性能计数器、事件和异常可连同容器化应用发送的遥测数据一起显示在 Application Insights 中。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 27a3083d-d67f-4a07-8f3c-4edb65a0a685
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.author: mbullwin
-ms.openlocfilehash: 115e2d6b041ecc3f38a2a6438d90777da9660221
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 6af39db68c2020e578fe6fbd39870b2e00a16e07
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62098025"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539918"
 ---
-# <a name="monitor-docker-applications-in-application-insights-deprecated"></a>在 Application Insights （已弃用） 中监视 Docker 应用程序
+# <a name="monitor-docker-applications-in-application-insights-deprecated"></a>在 Application Insights 中监视 Docker 应用程序（已弃用）
 
 > [!NOTE]
-> 此解决方案已弃用。 若要深入了解我们当前对容器监控的投资，建议查看[适用于容器的 Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview)。
+> 此解决方案已弃用。 若要深入了解我们当前对容器监控的投资，建议查看[适用于容器的 Azure Monitor](../insights/container-insights-overview.md)。
 
 [Docker](https://www.docker.com/) 容器中的生命周期事件和性能计数器可以在 Application Insights 上绘制成图表。 在主机的容器中安装 [Application Insights](https://hub.docker.com/r/microsoft/applicationinsights/) 映像，该映像会显示主机及其他映像的性能计数器。
 
@@ -44,7 +35,7 @@ ms.locfileid: "62098025"
    
     第三种情况是你开发了大多数应用，但使用不同的资源来显示其遥测数据。 此情况下，可能还需要为 Docker 数据创建不同的资源。
 
-2. 单击“概要”下拉列表，并复制检测密钥。 使用此密钥告知 SDK 要将遥测数据发送到哪个位置。
+2. 单击“概要”下拉列表，并复制检测密钥。**** 使用此密钥告知 SDK 要将遥测数据发送到哪个位置。
 
 保持打开浏览器窗口，因为稍后要返回查看遥测数据。
 
@@ -108,5 +99,5 @@ ms.locfileid: "62098025"
 ## <a name="next-steps"></a>后续步骤
 
 * [Application Insights for Java](../../azure-monitor/app/java-get-started.md)
-* [Application Insights for Node.js](../../azure-monitor/app/nodejs.md)
+* [用于 Node.js 的 Application Insights](../../azure-monitor/app/nodejs.md)
 * [Application Insights for ASP.NET](../../azure-monitor/app/asp-net.md)

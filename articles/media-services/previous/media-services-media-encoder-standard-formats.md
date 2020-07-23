@@ -1,6 +1,6 @@
 ---
 title: Media Encoder Standard 格式和编解码器 - Azure
-description: 本主题概述 Media Encoder Standard 格式和编解码器。
+description: 本文提供 Media Encoder Standard 格式和编解码器的概述。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: juliako;anilmur
-ms.openlocfilehash: c862de2eec4e6c116218457a20b567dc02778685
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: juliako
+ms.reviewer: anilmur
+ms.openlocfilehash: e2ccce13e4ef09426d0f3a02dcbce2f330b0ead8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61463729"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712286"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard 格式和编解码器
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="选择所使用的媒体服务版本："]
 > * [第 2 版](media-services-media-encoder-standard-formats.md)
 > * [第 3 版](../latest/media-encoder-standard-formats.md)
 
@@ -83,7 +83,7 @@ Media Encoder Standard 支持在输入容器中带有以下音频格式：
 ## <a name="input-audio-codecs"></a>输入音频编解码器
 | 输入音频编解码器 | 支持 |
 | --- | --- |
-| AAC（AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1） |是 |
+| AAC(AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1） |是 |
 | MPEG Layer 2 |是 |
 | MP3 (MPEG-1 Audio Layer 3) |是 |
 | Windows Media 音频 |是 |
@@ -111,7 +111,7 @@ Media Encoder Standard 支持在输入容器中带有以下音频格式：
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 [使用 Azure 媒体服务对按需内容进行编码](media-services-encode-asset.md)
 
 [如何使用 Media Encoder Standard 进行编码](media-services-dotnet-encode-with-media-encoder-standard.md)

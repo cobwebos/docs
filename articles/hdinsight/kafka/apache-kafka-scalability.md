@@ -1,19 +1,18 @@
 ---
 title: Apache Kafka 增加可伸缩性 - Azure HDInsight
 description: 了解如何在 Azure HDInsight 上为 Apache Kafka 群集配置托管磁盘以提高可伸缩性。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/30/2018
-ms.openlocfilehash: a3c4f78e9d3b46b66cb2a893c4eed39f865172dc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.custom: hdinsightactive
+ms.date: 12/09/2019
+ms.openlocfilehash: 56c25b7c77809a5cb7f4e539cff8e1815cd9976f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64711721"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77031693"
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>在 HDInsight 上为 Apache Kafka 配置存储和可伸缩性
 
@@ -23,20 +22,20 @@ Kafka on HDInsight 在 HDInsight 群集中使用虚拟机的本地磁盘。 由�
 
 下图提供不带托管磁盘的 Kafka on HDInsight 与带托管磁盘的 Kafka on HDInsight 之间的比较：
 
-![显示每 VM 使用单个 VHD 与每 VM 使用多个托管磁盘的 Kafka on HDInsight 的图表](./media/apache-kafka-scalability/kafka-with-managed-disks-architecture.png)
+![具有托管磁盘体系结构的 kafka](./media/apache-kafka-scalability/kafka-with-managed-disks-architecture.png)
 
 ## <a name="configure-managed-disks-azure-portal"></a>配置托管磁盘：Azure 门户
 
 1. 按照[创建 HDInsight 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)中的步骤操作，了解使用门户创建群集的常用步骤。 请勿完成门户创建过程。
 
-2. 在“群集大小”部分中，使用“每个工作节点的磁盘数”字段来配置磁盘数。
+2. 在“配置和定价”  部分中，使用“节点数”  字段配置磁盘数。
 
     > [!NOTE]  
-    > 托管磁盘的类型可以为“标准”(HDD) 或“高级”(SSD)。 高级磁盘可与 DS 和 GS 系列 VM 一起使用。 所有其他的 VM 类型使用“标准”。
+    > 托管磁盘的类型可以为“标准”  (HDD) 或“高级”  (SSD)。 高级磁盘可与 DS 和 GS 系列 VM 一起使用。 所有其他的 VM 类型使用“标准”。
 
-    ![“群集大小”部分的图像，其中突出显示了每个工作节点的磁盘数](./media/apache-kafka-scalability/set-managed-disks-portal.png)
+    ![“群集大小”部分，其中突出显示了每个工作器节点的磁盘数](./media/apache-kafka-scalability/azure-portal-cluster-configuration-pricing-kafka-disks.png)
 
-## <a name="configure-managed-disks-resource-manager-template"></a>配置托管磁盘：资源管理器模板
+## <a name="configure-managed-disks-resource-manager-template"></a>配置托管磁盘：Resource Manager 模板
 
 若要控制 Kafka 群集中辅助节点使用的磁盘数，请使用模板的以下部分：
 

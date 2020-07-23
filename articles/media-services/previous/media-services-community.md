@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 1347e28fe36ffe9595516252aea102d817a705a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 11902e363428a45bc158a99d251343e13b62540d
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61245086"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836424"
 ---
 # <a name="azure-media-services-community"></a>Azure 媒体服务社区  
 
@@ -48,24 +47,16 @@ ms.locfileid: "61245086"
 
 目前，MSDN 为媒体服务团队的主社区论坛。
 
-[![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
+[![MSDN](./media/media-services-community/msdn.png)](https://docs.microsoft.com/answers/topics/azure-media-services.html) 
 
 团队还可以监控使用 Azure 媒体服务标记 Stack Overflow 的问题。
 
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
-## <a name="contact-the-team"></a>与团队联系
+## <a name="need-help"></a>需要帮助？
 
-Azure 媒体服务主要支持电子邮件是： **amshelp\@microsoft.com**。
+可以通过导航到[新建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来开具支持票证
 
-下表列出了功能子团队的电子邮件：
+## <a name="next-steps"></a>后续步骤
 
-| Feature | 电子邮件 |
-| --- | --- |
-| Azure 媒体分析 |amsanalytics@microsoft.com |
-| Azure Media Player |ampinfo@microsoft.com |
-| Azure 媒体资源管理器 |amse@microsoft.com |
-| 工作流设计器 |mepd@microsoft.com |
-| 文件流式传输和打包 |amsstreaming@microsoft.com |
-| 实时传送视频流和打包 |amslived@microsoft.com |
-
+[概述](media-services-overview.md)

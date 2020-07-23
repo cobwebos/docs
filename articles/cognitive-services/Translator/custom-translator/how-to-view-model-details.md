@@ -2,25 +2,25 @@
 title: 查看模型详细信息 - 自定义翻译
 titleSuffix: Azure Cognitive Services
 description: 任何项目下的“模型”选项卡会显示每个模型的详细信息，例如模型名称、模型状态、BLEU 评分、训练、优化、测试句子计数。
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
-ms.author: v-pawal
+ms.date: 05/26/2020
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 33b1d7e0e44ecae4bc8a7a6bf9c7e6dfd6b0eb66
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 56d947a6b2d236a04f2b71421a235120a9f02c76
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66386889"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994183"
 ---
 # <a name="view-model-details"></a>查看模型详细信息
 
 项目下的“模型”选项卡显示该项目中的所有模型。 为该项目训练的所有模型列在此选项卡中。
 
-在项目中每个模型，显示了这些详细信息。
+对于项目中的每个模型，将显示这些详细信息。
 
 1.  模型名称：显示给定模型的模型名称。
 
@@ -58,7 +58,7 @@ ms.locfileid: "66386889"
 
 8.  单语句子计数：显示用作单语集的句子总数。
 
-9.  部署操作按钮：对于成功训练的但尚未部署的模型，将显示“部署”按钮。 如果模型已部署，则会显示“取消部署”按钮。
+9.  部署操作按钮：对于已成功训练的模型，如果未部署，将显示 "部署" 按钮。 如果部署了模型，则会显示 "取消部署" 按钮。
 
 10. 删除：使用此按钮可以删除模型。 删除某个模型不会删除用于创建该模型的任何文档。
 
@@ -71,7 +71,7 @@ ms.locfileid: "66386889"
 
 训练完成后，可在“详细信息”页中查看有关该训练的详细信息。 选择一个项目，找到并选择“模型”选项卡，然后选择一个模型。
 
-模型页面有两个选项卡：“训练详细信息”和“测试”。
+模型页包含两个选项卡：“训练详细信息”和“测试”。
 
 1.  **训练详细信息：** 此选项卡显示训练中使用的文档列表：
 

@@ -1,19 +1,19 @@
 ---
-title: 快速入门 - 将 Docker 容器部署到 Azure 容器实例 - PowerShell
+title: 快速入门 - 将 Docker 容器部署到容器实例 - PowerShell
 description: 本快速入门将使用 Azure PowerShell 快速部署在隔离的 Azure 容器实例中运行的容器化 Web 应用
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 03/21/2019
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c6baf10308f04d5f08ba651bd70ac2b48dfc013c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 9901b3f18973365dc9ceb8c85ff8587b6c2ea894
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729453"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "74533610"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 在 Azure 中部署容器实例
 
@@ -91,7 +91,7 @@ Events                   : {}
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要容器，可使用 [Remove-AzContainerGroup][Remove-AzContainerGroup] cmdlet 将其删除：
+使用完容器后，可使用 [Remove-AzContainerGroup][Remove-AzContainerGroup] cmdlet 将其删除：
 
  ```azurepowershell-interactive
 Remove-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer

@@ -1,71 +1,54 @@
 ---
-title: 主动学习 - 个性化体验创建服务
-titleSuffix: Azure Cognitive Services
-description: ''
-services: cognitive-services
-author: edjez
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: personalizer
-ms.topic: overview
-ms.date: 05/30/2019
-ms.author: edjez
-ms.openlocfilehash: d758e8fc7952a414003746d39df9368f3274b08b
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
-ms.translationtype: HT
+title: 学习策略-Personalizer
+description: 学习设置确定模型定型的*超参数*。 对于在不同学习设置上定型的相同数据，两个模型将最终不同。
+ms.topic: conceptual
+ms.date: 02/20/2020
+ms.openlocfilehash: abe6a2a2ec9b9978230d894c69193469f6e932e6
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66482057"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700726"
 ---
-# <a name="active-learning-and-learning-policies"></a>主动学习和学习策略 
+# <a name="learning-policy-and-settings"></a>了解策略和设置
 
-当应用程序调用排名 API 时，你会收到内容的排名。 业务逻辑可以使用此排名来确定是否要向用户显示该内容。 显示排名的内容时，即表示发生了活动的排名事件。  如果应用程序未显示该排名的内容，即表示发生了非活动的排名事件。  
+学习设置确定模型定型的*超参数*。 对于在不同学习设置上定型的相同数据，两个模型将最终不同。
 
-活动的排名事件信息将返回到个性化体验创建服务。 使用此信息可通过当前学习策略继续训练模型。
+在 Azure 门户中的 Personalizer 资源上设置[学习策略和设置](how-to-settings.md#configure-rewards-for-the-feedback-loop)。
 
-## <a name="active-events"></a>活动的事件
+## <a name="import-and-export-learning-policies"></a>导入和导出学习策略
 
-活动的事件应始终显示给用户，应该返回奖励调用来关闭学习循环。 
+你可以从 Azure 门户导入和导出学习策略文件。 使用此方法可以保存现有策略，对其进行测试，替换它们，并将它们作为项目存档在源代码控制中，以供将来参考和审核。
 
-### <a name="inactive-events"></a>非活动事件 
+了解[如何](how-to-manage-model.md#import-a-new-learning-policy)在 Personalizer 资源的 Azure 门户中导入和导出学习策略。
 
-非活动状态事件不应更改基础模型，因为用户没有任何机会从排名的内容中进行选择。
+## <a name="understand-learning-policy-settings"></a>了解学习策略设置
 
-## <a name="dont-train-with-inactive-rank-events"></a>不要使用非活动排名事件进行训练 
+学习策略中的设置不应更改。 仅在了解其对 Personalizer 的影响时才更改设置。 如果没有此信息，则可能会导致问题，包括使 Personalizer 模型失效。
 
-对于某些应用程序，可能需要在尚不知道应用程序是否要向用户显示结果的情况下调用排名 API。 
+Personalizer 使用[vowpalwabbit](https://github.com/VowpalWabbit)来定型和评分事件。 请参阅[vowpalwabbit 文档](https://github.com/VowpalWabbit/vowpal_wabbit/wiki/Command-line-arguments)，了解如何使用 vowpalwabbit 编辑学习设置。 使用正确的命令行参数后，请使用以下格式将命令保存到文件（使用所需的命令替换 arguments 属性值），并上传该文件，以便在 Personalizer 资源的 Azure 门户中的 "**模型和学习设置**" 窗格中导入学习设置。
 
-在以下情况下会发生这种情况：
+下面 `.json` 是学习策略的一个示例。
 
-* 你可能正在预先呈现不一定可让用户看到的某个 UI。 
-* 应用程序可能正在执行预测个性化，其中的“排名”调用是使用实时性不够高的上下文发出的，其输出不一定会由应用程序使用。 
+```json
+{
+  "name": "new learning settings",
+  "arguments": " --cb_explore_adf --epsilon 0.2 --power_t 0 -l 0.001 --cb_type mtr -q ::"
+}
+```
 
-### <a name="disable-active-learning-for-inactive-rank-events-during-rank-call"></a>在排名调用期间禁用非活动排名事件的主动学习
+## <a name="compare-learning-policies"></a>比较学习策略
 
-若要禁用自动学习，请结合 `learningEnabled = False` 调用“排名”。
+您可以通过执行[脱机评估](concepts-offline-evaluation.md)来比较不同的学习策略如何对 Personalizer 日志中的过去的数据执行。
 
-如果发送排名的奖励，则会隐式激活非活动事件的学习。
+[上传你自己的学习策略](how-to-manage-model.md)，以将其与当前学习策略进行比较。
 
-## <a name="learning-policies"></a>学习策略
+## <a name="optimize-learning-policies"></a>优化学习策略
 
-学习策略确定模型训练的特定超参数。  基于不同的学习策略训练的两个相同数据模型会有不同的行为。
+Personalizer 可以在[脱机评估版](how-to-offline-evaluation.md)中创建优化的学习策略。 在离线评估中获得更好回报的优化学习策略将在 Personalizer 中联机使用时产生更好的结果。
 
-### <a name="importing-and-exporting-learning-policies"></a>导入和导出学习策略
+优化学习策略后，可以将其直接应用到 Personalizer，以便立即替换当前策略。 或者，你可以保存优化后的策略，以便进一步评估，并决定是要放弃、保存还是应用它。
 
-可以通过 Azure 门户导入和导出学习策略文件。 在门户中可以保存、测试、替换现有策略，并在源代码管理中将其存档为项目，以供将来参考和审核。
+## <a name="next-steps"></a>后续步骤
 
-### <a name="learning-policy-settings"></a>学习策略设置
-
-不应更改**学习策略**中的设置。 仅当你了解所做的更改会对个性化体验创建服务造成何种影响时，才能更改设置。 在不了解这种后果的情况下更改设置会造成负面影响，包括使个性化体验创建服务模型失效。
-
-### <a name="comparing-effectiveness-of-learning-policies"></a>比较学习策略的有效性
-
-可以通过执行[脱机评估](concepts-offline-evaluation.md)，来比较不同的学习策略针对个性化体验创建服务日志中以往数据的有效性。
-
-[上传自己的学习策略](how-to-offline-evaluation.md)以便与当前学习策略进行比较。
-
-### <a name="discovery-of-optimized-learning-policies"></a>发现优化的学习策略
-
-执行[脱机评估](how-to-offline-evaluation.md)时，个性化体验创建服务可以创建更优化的学习策略。 更优化的学习策略会在脱机评估中生成更好的奖励评分，在个性化体验创建服务中联机使用时会产生更好的结果。
-
-创建优化的学习策略后，可将其直接应用到个性化体验创建服务，使之立即取代当前策略，或者可将其保存供进一步的评估，将来可以决定是要放弃、保存还是应用它。
+* 了解[活动和非活动事件](concept-active-inactive-events.md)。

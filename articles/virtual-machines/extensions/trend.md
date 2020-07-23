@@ -1,28 +1,30 @@
 ---
-title: 在 VM 上安装 Trend Micro Deep Security | Microsoft Docs
+title: 在虚拟机上安装趋势微 Deep Security
 description: 本文介绍如何在 Azure 中使用经典部署模型创建的 VM 上安装和配置 Trend Micro Deep Security。
 services: virtual-machines-windows
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 tags: azure-service-management
 ms.assetid: e991b635-f1e2-483f-b7ca-9d53e7c22e2a
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
-ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
-ms.author: roiyz
-ms.openlocfilehash: d7808fbff0199105a12c0570807876413d5c98c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: akjosh
+ms.openlocfilehash: 874e6f9b1c0bebedb5f50ca38d0703420be69de5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60800151"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186956"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>如何在 Windows VM 上安装和配置 Trend Micro Deep Security 即服务
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
 本文演示了如何在运行 Windows Server 的新的或现有虚拟机 (VM) 上安装和配置 Trend Micro Deep Security 即服务。 Deep Security 即服务包括反恶意软件保护、防火墙、入侵防御系统和完整性监视。
 
@@ -36,19 +38,19 @@ ms.locfileid: "60800151"
 
 使用**市场**中的映像创建虚拟机时，[Azure 门户](https://portal.azure.com)允许安装 Trend Micro 安全扩展。 如果要创建的是单个虚拟机，则可通过此门户轻松地添加来自 Trend Micro 的保护。
 
-使用**市场**中的某个条目会打开一个向导，帮助用户设置虚拟机。 使用该向导的第三个面板“设置”边栏选项卡安装 Trend Micro 安全扩展。  有关常规说明，请参阅[在 Azure 门户中创建运行 Windows 的虚拟机](../windows/classic/tutorial.md)。
+使用**市场**中的某个条目会打开一个向导，帮助用户设置虚拟机。 使用该向导的第三个面板“设置”**** 边栏选项卡安装 Trend Micro 安全扩展。  有关常规说明，请参阅[在 Azure 门户中创建运行 Windows 的虚拟机](../windows/classic/tutorial.md)。
 
-进入向导的“设置”边栏选项卡时，请执行以下步骤：
+进入向导的“设置”**** 边栏选项卡时，请执行以下步骤：
 
-1. 单击“扩展”，并在下一个窗格中单击“添加扩展”。
+1. 单击“扩展”****，并在下一个窗格中单击“添加扩展”****。
 
    ![开始添加扩展][1]
 
-2. 在“新建资源”窗格中选择“Deep Security Agent”。 在 Deep Security Agent 窗格中，单击“创建”。
+2. 在“新建资源”**** 窗格中选择“Deep Security Agent”****。 在 Deep Security Agent 窗格中，单击“创建”****。
 
    ![标识 Deep Security Agent][2]
 
-3. 为扩展输入“租户标识符”和“租户激活密码”。 （可选）可输入“安全策略标识符”。 然后，单击“确定”添加客户端。
+3. 为扩展输入“租户标识符”**** 和“租户激活密码”****。 （可选）可输入“安全策略标识符”****。 然后，单击“确定”**** 添加客户端。
 
    ![提供扩展详细信息][3]
 
@@ -60,10 +62,12 @@ ms.locfileid: "60800151"
 
 首先，请验证是否已安装 VM 代理。 填写云服务名称和虚拟机名称，并在管理员级别的 Azure PowerShell 命令提示符下运行以下命令。 替换引号内的所有内容，包括 < and > 字符。
 
-    $CSName = "<cloud service name>"
-    $VMName = "<virtual machine name>"
-    $vm = Get-AzureVM -ServiceName $CSName -Name $VMName
-    write-host $vm.VM.ProvisionGuestAgent
+```azurepowershell
+$CSName = "<cloud service name>"
+$VMName = "<virtual machine name>"
+$vm = Get-AzureVM -ServiceName $CSName -Name $VMName
+write-host $vm.VM.ProvisionGuestAgent
+```
 
 如果不知道云服务名称和虚拟机名称，运行 **Get-AzureVM** 即可显示当前订阅中所有虚拟机的该信息。
 
@@ -71,9 +75,11 @@ ms.locfileid: "60800151"
 
 如果已安装 VM 代理，请运行以下命令。
 
-    $Agent = Get-AzureVMAvailableExtension TrendMicro.DeepSecurity -ExtensionName TrendMicroDSA
+```azurepowershell
+$Agent = Get-AzureVMAvailableExtension TrendMicro.DeepSecurity -ExtensionName TrendMicroDSA
 
-    Set-AzureVMExtension -Publisher TrendMicro.DeepSecurity –Version $Agent.Version -ExtensionName TrendMicroDSA -VM $vm | Update-AzureVM
+Set-AzureVMExtension -Publisher TrendMicro.DeepSecurity –Version $Agent.Version -ExtensionName TrendMicroDSA -VM $vm | Update-AzureVM
+```
 
 ## <a name="next-steps"></a>后续步骤
 安装后，代理需要几分钟时间才会开始运行。 之后需在虚拟机上激活 Deep Security，才能通过 Deep Security Manager 进行管理。 有关其他说明，请参阅以下文章：

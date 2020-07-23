@@ -1,28 +1,19 @@
 ---
-title: 使用 Azure Monitor 的 azure Service Fabric 事件分析日志 |Microsoft Docs
-description: 了解如何可视化和分析事件用于监视和诊断 Azure Service Fabric 群集使用 Azure Monitor 日志。
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric 事件分析与 Azure Monitor 日志
+description: 了解如何使用 Azure Monitor 日志来可视化和分析事件，以便对 Azure Service Fabric 群集进行监视和诊断。
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: ba4923edbc59f0e6650fda1a71e1c4f79b884cf2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bd952449cb088a383f0b9241fb7856522fbeeb10
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60393360"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257667"
 ---
-# <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>使用 Azure Monitor 日志事件分析和可视化
- Azure Monitor 日志收集并分析云中托管的应用程序和服务的遥测，并提供分析工具以帮助最大限度地提高其可用性和性能。 本文概述了如何在 Azure Monitor 日志以获取见解并排查群集中发生的情况中运行查询。 本文解决以下常见问题：
+# <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Azure Monitor 日志进行事件分析和可视化
+ Azure Monitor 日志收集并分析云中托管的应用程序和服务的遥测，并提供分析工具以帮助最大限度地提高其可用性和性能。 本文概述了如何在 Azure Monitor 日志中运行查询，以获取见解并解决群集中发生的问题。 本文解决以下常见问题：
 
 * 如何排查运行状况事件问题？
 * 如何知道节点已关闭？
@@ -35,15 +26,15 @@ ms.locfileid: "60393360"
 >[!NOTE] 
 >虽然默认情况下诊断存储已在群集创建时启用，但你仍必须设置 Log Analytics 工作区以从诊断存储中读取。
 
-Azure 监视器从托管资源，包括 Azure 存储表或一个代理，日志收集数据，并在中央存储库中对其进行维护。 之后这些数据可用于分析、报警、可视化或进一步导出。 Azure 监视器将记录支持事件、 性能数据或任何其他自定义数据。 请查看[步骤来配置诊断扩展以聚合事件](service-fabric-diagnostics-event-aggregation-wad.md)并[创建 Log Analytics 工作区读取存储中的事件步骤](service-fabric-diagnostics-oms-setup.md)以确保数据传输到 Azure Monitor日志。
+Azure Monitor 日志从托管资源（包括 Azure 存储表或代理）收集数据，并在中央存储库中维护数据。 之后这些数据可用于分析、报警、可视化或进一步导出。 Azure Monitor 日志支持事件、性能数据或任何其他自定义数据。 查看[配置诊断扩展以聚合事件的步骤](service-fabric-diagnostics-event-aggregation-wad.md)，以及[创建 Log Analytics 工作区以从存储中的事件中进行读取的步骤](service-fabric-diagnostics-oms-setup.md)，以确保数据流入 Azure Monitor 日志。
 
-Azure Monitor 日志收到数据后，Azure 会提供多*监视解决方案*而言是预先打包的解决方案或操作仪表板来监视传入的数据，自定义的几个方案。 包括 Service Fabric 分析解决方案和容器解决方案。使用 Service Fabric 群集时，这两种解决方案与诊断和监视最为相关。 本文介绍如何使用在工作区中创建的 Service Fabric 分析解决方案。
+Azure Monitor 日志接收到数据后，Azure 提供多个*监视解决方案*，这些解决方案是预打包的解决方案或操作面板，用于监视传入数据，并针对多个方案进行了自定义。 包括 Service Fabric 分析** 解决方案和容器** 解决方案。使用 Service Fabric 群集时，这两种解决方案与诊断和监视最为相关。 本文介绍如何使用在工作区中创建的 Service Fabric 分析解决方案。
 
 ## <a name="access-the-service-fabric-analytics-solution"></a>访问 Service Fabric 分析解决方案
 
-在 [Azure 门户](https://portal.azure.com)中，转到在其中创建了 Service Fabric 分析解决方案的资源组。
+在[Azure 门户](https://portal.azure.com)中，切换到在其中创建了 Service Fabric 分析解决方案的资源组。
 
-选择资源 **ServiceFabric\<nameOfOMSWorkspace\>**。
+选择 "资源**ServiceFabric \<nameOfOMSWorkspace\> **"。
 
 在 `Summary` 中，将看到每个已启用的解决方案的图形形式的磁贴，包括 Service Fabric 的磁贴。 单击 **Service Fabric** 图形以转到 Service Fabric 分析解决方案。
 
@@ -64,15 +55,15 @@ Azure Monitor 日志收到数据后，Azure 会提供多*监视解决方案*而�
 
 ## <a name="view-service-fabric-events-including-actions-on-nodes"></a>查看 Service Fabric 事件，包括对节点执行的操作
 
-在“Service Fabric 分析”页上，单击“Service Fabric 事件”对应的图形。
+在“Service Fabric 分析”页上，单击“Service Fabric 事件”对应的图形****。
 
 ![Service Fabric 解决方案操作通道](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
 
-单击“列表”，在列表中查看事件。 打开该列表后，将会看到已收集的所有系统事件。 从 Azure 存储帐户中的 **WADServiceFabricSystemEventsTable** 摘录了以下内容供你参考，类似地，接下来看到的 Reliable Services 和 Reliable Actors 事件也都摘自相应的表。
+单击“列表”****，在列表中查看事件。 打开该列表后，将会看到已收集的所有系统事件。 作为参考，它们来自于 Azure 存储帐户中的**WADServiceFabricSystemEventsTable** ，类似于你接下来看到的可靠服务和执行组件事件来自相应的表。
     
 ![查询操作通道](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
 
-或者，可以单击左侧的放大镜并使用 Kusto 查询语言找到所需的内容。 例如，若要查找针对群集中的节点执行的所有操作，可以使用以下查询。 在[操作通道事件参考](service-fabric-diagnostics-event-generation-operational.md)中可以找到下面使用的事件 ID。
+或者，可以单击左侧的放大镜并使用 Kusto 查询语言找到所需的内容。 例如，若要查找针对群集中的节点执行的所有操作，可以使用以下查询。 下面使用的事件 Id 位于[操作通道事件引用](service-fabric-diagnostics-event-generation-operational.md)中。
 
 ```kusto
 ServiceFabricOperationalEvent
@@ -83,15 +74,15 @@ ServiceFabricOperationalEvent
 
 ## <a name="view-service-fabric-reliable-service-and-actor-events"></a>查看 Service Fabric Reliable Services 和 Reliable Actors 事件
 
-在“Service Fabric 分析”页上，单击“Reliable Services”对应的图形。
+在“Service Fabric 分析”页上，单击“Reliable Services”对应的图形****。
 
 ![Service Fabric 解决方案 Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
 
-单击“列表”，在列表中查看事件。 在此处可以查看来自 Reliable Services 的事件。 可以看到服务 runasync 在启动和完成（通常发生在部署和升级时）时的不同事件。 
+单击“列表”****，在列表中查看事件。 在此处可以查看来自 Reliable Services 的事件。 可以看到服务 runasync 在启动和完成（通常发生在部署和升级时）时的不同事件。 
 
 ![查询 Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
 
-可以类似的方式查看 Reliable Actors 事件。 若要为 Reliable Actors 配置更详细的事件，需要在诊断扩展的配置中更改 `scheduledTransferKeywordFilter`（如下所示）。 [Reliable Actors 事件参考](service-fabric-reliable-actors-diagnostics.md#keywords)中提供了这些参数值的详细信息。
+可以类似的方式查看 Reliable Actors 事件。 若要为 Reliable Actors 配置更详细的事件，需要在诊断扩展的配置中更改 `scheduledTransferKeywordFilter`（如下所示）。 有关这些值的详细信息，请[参阅可靠参与者事件参考](service-fabric-reliable-actors-diagnostics.md#keywords)。
 
 ```json
 "EtwEventSourceProviderConfiguration": [
@@ -112,7 +103,7 @@ Kusto 查询语言非常强大。 可以运行另一个有用查询来找出哪�
 ## <a name="next-steps"></a>后续步骤
 
 * 若要启用基础结构监视（即性能计数器），请转到[添加 Log Analytics 代理](service-fabric-diagnostics-oms-agent.md)。 该代理将收集性能计数器，并将其添加到现有工作区。
-* 对于在本地群集，Azure Monitor 日志提供可用于将数据发送到 Azure Monitor 日志的网关 （HTTP 转发代理）。 了解更多信息，请参阅[将无法访问 Internet 的计算机连接到使用 Log Analytics 网关的 Azure Monitor 日志](../azure-monitor/platform/gateway.md)。
-* 配置[自动警报](../log-analytics/log-analytics-alerts.md)来帮助进行检测和诊断。
-* 掌握 Azure Monitor 日志中提供的[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)功能。
-* 获取 Azure Monitor 日志和它所提供的更详细的概述，读取[什么是 Azure Monitor 日志？](../operations-management-suite/operations-management-suite-overview.md)。
+* 对于本地群集，Azure Monitor 日志提供了一个可用于将数据发送到 Azure Monitor 日志的 (HTTP 转发代理) 的网关。 有关详细信息，请参阅[使用 Log Analytics 网关将计算机连接到无 Internet 访问 Azure Monitor 日志](../azure-monitor/platform/gateway.md)。
+* 配置[自动警报](../azure-monitor/platform/alerts-overview.md)，帮助检测和诊断。
+* 获取熟悉，其中包含作为 Azure Monitor 日志一部分提供的[日志搜索和查询](../azure-monitor/log-query/log-query-overview.md)功能。
+* 详细了解 Azure Monitor 日志及其提供的内容，请参阅[什么是 Azure Monitor 日志？](../azure-monitor/overview.md)。

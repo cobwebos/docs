@@ -1,25 +1,15 @@
 ---
-title: Azure Service Fabric 监视合作伙伴 | Microsoft Docs
-description: 了解如何使用合作伙伴监视解决方案监视 Azure Service Fabric
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric 监视合作伙伴
+description: 了解如何使用合作伙伴监视解决方案监视 Azure Service Fabric 应用程序、群集和基础结构。
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/16/2018
 ms.author: srrengar
-ms.openlocfilehash: c2f953c98e41291951f07556bd0cd441d2793d1d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: fd24d65ebdf4e458870819286024d1ea2e13d83e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60946586"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75645712"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Azure Service Fabric 监视合作伙伴
 
@@ -27,7 +17,7 @@ ms.locfileid: "60946586"
 
 ## <a name="dynatrace"></a>Dynatrace
 
-与 Dynatrace 的集成可提供许多现成的功能用于监视 Service Fabric 群集。 在 VMSS 实例上安装 Dynatrace OneAgent 可以提供性能计数器，并实现应用级别的 Service Fabric 部署拓扑。 此外，Dynatrace 非常适合用于本地监视。 请查看详细信息中列出的功能[公告](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/)并[说明](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/)若要在群集上启用 Dynatrace。 
+与 Dynatrace 的集成可提供许多现成的功能用于监视 Service Fabric 群集。 在 VMSS 实例上安装 Dynatrace OneAgent 可以提供性能计数器，并实现应用级别的 Service Fabric 部署拓扑。 此外，Dynatrace 非常适合用于本地监视。 请查看[通告](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/)和[说明](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/)中所列的，用于在群集上启用 Dynatrace 的其他功能。 
 
 ## <a name="datadog"></a>Datadog
 
@@ -43,11 +33,11 @@ New Relic 是与 Service Fabric 应用程序完美集成的另一个应用程序
 
 ## <a name="elk"></a>ELK 
 
-ELK 堆栈是以下开源技术的集合：Elasticsearch、Logstash 和 Kibana。 结合使用这些技术可以收集、存储和分析 Service Fabric 监视与诊断数据。 我们在[此处](service-fabric-tutorial-java-elk.md)提供了有关如何对 Service Fabric 本机 Java 应用程序执行此操作的教程。 
+ELK stack 是开放源代码技术的集合： Elasticsearch、Logstash 和 Kibana。 结合使用这些技术，您可以收集、存储和分析 Service Fabric 监视和诊断数据。 我们在[此处](service-fabric-tutorial-java-elk.md)提供了有关如何对 Service Fabric 本机 Java 应用程序执行此操作的教程。 
 
 ## <a name="humio"></a>Humio
 
-Humio 是可从你的应用程序和 Service Fabric 在云中或本地在真实时间中的事件中收集日志的日志收集服务。 除实时的可观察性，Humio 还提供最先进的分析和可视化功能，用于查看和从你的诊断收集见解。 Humio 具有成本效益的定价计划和内置，同时保留它的规模变革快的速度。 它直接与 Service Fabric 平台事件和应用程序遥测集成。 你可以阅读更多有关 Humio 和 Service Fabric 集成[此处](https://github.com/humio/service-fabric-humio)。
+Humio 是一项日志收集服务，可以通过实时方式在云中或本地收集应用程序中的日志以及 Service Fabric 中的事件。 除了实时可观察性外，Humio 还提供了一些先进的分析和可视化功能，可用于查看和收集诊断信息。 Humio 具有经济有效的定价计划，构建后可以在保持超高速度的同时进行缩放。 它直接集成 Service Fabric 平台事件和应用程序遥测。 可以在[此处](https://github.com/humio/service-fabric-humio)详细了解 Humio 和 Service Fabric 集成。
 
 ## <a name="next-steps"></a>后续步骤
 

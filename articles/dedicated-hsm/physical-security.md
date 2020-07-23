@@ -2,8 +2,8 @@
 title: HSM 物理安全性 - Azure 专用 HSM | Microsoft Docs
 description: 有关 Azure 专用 HSM 设备在数据中心中的物理安全性的信息
 services: dedicated-hsm
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
@@ -11,13 +11,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: barclayn
-ms.openlocfilehash: 6fe0557aa90ec3345d4ca0c3d9292cab3435bb2f
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.author: mbaldwin
+ms.openlocfilehash: ede1af4625d06af4e280eda86d09ae1db3dfdfd1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62118032"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "70881022"
 ---
 # <a name="azure-dedicated-hsm-physical-security"></a>Azure 专用 HSM 物理安全性
 
@@ -58,5 +57,5 @@ HSM 属于硬件设备（HSM 实际是设备内的 PCI 卡），因此可能出�
 * [高可用性](high-availability.md)
 * [网络](networking.md)
 * [可支持性](supportability.md)
-* [监视](monitoring.md)
+* [Monitoring](monitoring.md)
 * [部署体系结构](deployment-architecture.md)

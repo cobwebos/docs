@@ -1,64 +1,67 @@
 ---
-title: 托管在 Azure 存储中的静态网站
-description: 了解如何在 Azure 存储 GPv2 帐户中提供直接在容器中的静态内容 （HTML、 CSS、 JavaScript 和图像文件）。
-services: storage
+title: 在 Azure 存储中托管静态网站
+description: 了解如何直接通过 Azure 存储 GPv2 帐户中的容器提供静态内容（HTML、CSS、JavaScript 和图像文件）。
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.subservice: blobs
+ms.topic: conceptual
 ms.author: normesta
-ms.date: 05/28/2019
-ms.openlocfilehash: 7a1aef14a2a32266c893933482527c361f17d7fb
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
-ms.translationtype: MT
+ms.date: 03/04/2020
+ms.openlocfilehash: 1fb4e7cf589d63e9e595a35c34a2728d564b309b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428555"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609924"
 ---
-# <a name="host-a-static-website-in-azure-storage"></a>托管在 Azure 存储中的静态网站
+# <a name="host-a-static-website-in-azure-storage"></a>在 Azure 存储中托管静态网站
 
-可以在 Azure 存储 GPv2 帐户中提供静态内容 （HTML、 CSS、 JavaScript 和图像文件） 直接从一个容器。 若要了解详细信息，请参阅[静态网站托管在 Azure 存储中](storage-blob-static-website.md)。
+可以直接通过 Azure 存储 GPv2 帐户中的容器提供静态内容（HTML、CSS、JavaScript 和图像文件）。 有关详细信息，请参阅 [Azure 存储中的静态网站托管](storage-blob-static-website.md)。
 
-本文介绍如何启用静态网站托管使用 Azure 门户、 Azure CLI 或 PowerShell。
+本文介绍如何使用 Azure 门户、Azure CLI 或 PowerShell 启用静态网站托管。
 
-<a id="portal" />
+## <a name="enable-static-website-hosting"></a>启用静态网站托管
 
-## <a name="use-the-azure-portal"></a>使用 Azure 门户
+静态网站托管是必须在存储帐户上启用的一项功能。
 
-有关分步教程，请参阅[教程：在 Blob 存储上托管静态网站](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host)。
+### <a name="portal"></a>[门户](#tab/azure-portal)
 
-启用静态网站托管后，可以通过网站的公共 URL 来查看你的站点从浏览器的页。
+1. 登录到 [Azure 门户](https://portal.azure.com/)即可开始操作。
 
-<a id="portal-find-url" />
+2. 找到存储帐户并显示帐户概览。
 
-### <a name="find-the-website-url-by-using-the-azure-portal"></a>使用 Azure 门户中查找网站的 URL
+3. 选择“静态网站”，以显示静态网站的配置页。
 
-在你的存储帐户的帐户概述页的旁边会显示窗格中，选择**静态网站**。 你的网站的 URL 将显示在**主终结点**字段。
+4. 选择“启用”，启用针对存储帐户的静态网站托管功能。
 
-![Azure 存储静态网站指标 - 指标](./media/storage-blob-static-website/storage-blob-static-website-url.png)
+5. 在“索引文档名称”字段中，指定一个默认索引页（例如：“index.html”）。 
 
-<a id="cli" />
+   当用户导航到静态网站的根目录时，会显示默认索引页。  
 
-## <a name="use-the-azure-cli"></a>使用 Azure CLI
+6. 在“错误文档路径”字段中，指定一个默认错误页（例如：“404.html”）。 
 
-可以让使用静态网站承载[Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。
+   当用户尝试导航到静态网站中不存在的页面时，会显示默认错误页。
 
-1. 首先，打开[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)，或如果你已[安装](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)Azure CLI 在本地，打开 Windows PowerShell 等命令控制台应用程序。
+7. 单击“ **保存**”。 Azure 门户现在会显示静态网站终结点。 
 
-2. 从命令窗口中打开过，安装存储预览扩展。
+    ![启用针对存储帐户的静态网站托管功能](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
-   ```azurecli-interactive
-   az extension add --name storage-preview
-   ```
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-3. 如果你的身份与多个订阅相关联，则您的活动设置订阅的存储帐户来托管静态网站。
+<a id="cli"></a>
+
+可以使用 [Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 来启用静态网站托管。
+
+1. 首先，打开 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)，或者，如果已在本地[安装](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Azure CLI，请打开命令控制台应用程序，如 Windows PowerShell。
+
+2. 如果你的标识与多个订阅相关联，请将你的活动订阅设置为将托管静态网站的存储帐户的订阅。
 
    ```azurecli-interactive
    az account set --subscription <subscription-id>
    ```
 
-   替换为`<subscription-id>`占位符值替换你的订阅的 ID。
+   将 `<subscription-id>` 占位符值替换为你的订阅 ID。
 
-4. 启用静态网站托管。
+3. 启用静态网站托管。
 
    ```azurecli-interactive
    az storage blob service-properties update --account-name <storage-account-name> --static-website --404-document <error-document-name> --index-document <index-document-name>
@@ -66,55 +69,19 @@ ms.locfileid: "66428555"
 
    * 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
 
-   * 替换为`<error-document-name>`占位符替换将在浏览器请求不存在您站点上的页时向用户显示的错误文档的名称。
+   * 将 `<error-document-name>` 占位符替换为错误文档的名称，当浏览器请求网站上不存在的页面时，用户将看到此错误文档。
 
-   * 替换为`<index-document-name>`索引文档名称的占位符。 本文档通常是"index.html"。
+   * 将 `<index-document-name>` 占位符替换为索引文档的名称。 该文档通常是“index.html”。
 
-5. 将对象从源目录上传到 $web 容器  。
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-   > [!NOTE]
-   > 如果使用 Azure Cloud Shell，请务必添加`\`引用时转义符`$web`容器 (例如： `\$web`)。 如果你使用 Azure CLI 的本地安装，然后您无需使用转义符。
+<a id="powershell"></a>
 
-   此示例假定你从 Azure Cloud Shell 会话中运行命令。
-
-   ```azurecli-interactive
-   az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name>
-   ```
-
-   * 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
-
-   * 替换为`<source-path>`占位符替换为你想要上传的文件的位置的路径。
-
-   > [!NOTE]
-   > 如果使用的位置安装的 Azure CLI，则可以在本地计算机上的任何位置使用路径 (例如： `C:\myFolder`。
-   >
-   > 如果你使用 Azure Cloud Shell，您必须引用可见到 Cloud Shell 的文件共享。 此位置可能是在云中的文件共享共享本身或从 Cloud Shell 中装载的现有文件共享。 若要了解如何执行此操作，请参阅[持久保存在 Azure Cloud Shell 中的文件](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)。
-
-<a id="cli-find-url" />
-
-### <a name="find-the-website-url-by-using-the-azure-cli"></a>使用 Azure CLI 查找网站的 URL
-
-可以使用该网站的公共 URL 来查看从浏览器的内容。
-
-使用以下命令查找 URL:
-
-```azurecli-interactive
-az storage account show -n <storage-account-name> -g <resource-group-name> --query "primaryEndpoints.web" --output tsv
-```
-
-* 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
-
-* 替换为`<resource-group-name>`占位符值替换资源组的名称。
-
-<a id="powershell" />
-
-## <a name="use-powershell"></a>使用 PowerShell
-
-你可以启用静态网站托管使用 Azure PowerShell 模块。
+可以使用 Azure PowerShell 模块启用静态网站托管。
 
 1. 打开 Windows PowerShell 命令窗口。
 
-2. 验证具有 Azure PowerShell 模块 Az 版本 0.7 或更高版本。
+2. 确认是否已安装 Azure PowerShell 模块 Az 版本 0.7 或更高版本。
 
    ```powershell
    Get-InstalledModule -Name Az -AllVersions | select Name,Version
@@ -128,23 +95,23 @@ az storage account show -n <storage-account-name> -g <resource-group-name> --que
    Connect-AzAccount
    ```
 
-4. 如果你的身份与多个订阅相关联，则您的活动设置订阅的存储帐户来托管静态网站。
+4. 如果你的标识与多个订阅相关联，请将你的活动订阅设置为将托管静态网站的存储帐户的订阅。
 
    ```powershell
    $context = Get-AzSubscription -SubscriptionId <subscription-id>
    Set-AzContext $context
    ```
 
-   替换为`<subscription-id>`占位符值替换你的订阅的 ID。
+   将 `<subscription-id>` 占位符值替换为你的订阅 ID。
 
-5. 获取用于定义你想要使用的存储帐户的存储帐户上下文。
+5. 获取用于定义要使用的存储帐户的存储帐户上下文。
 
    ```powershell
    $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
    $ctx = $storageAccount.Context
    ```
 
-   * 替换为`<resource-group-name>`占位符值替换资源组的名称。
+   * 将 `<resource-group-name>` 占位符值替换为资源组的名称。
 
    * 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
 
@@ -154,79 +121,157 @@ az storage account show -n <storage-account-name> -g <resource-group-name> --que
    Enable-AzStorageStaticWebsite -Context $ctx -IndexDocument <index-document-name> -ErrorDocument404Path <error-document-name>
    ```
 
-   * 替换为`<error-document-name>`占位符替换将在浏览器请求不存在您站点上的页时向用户显示的错误文档的名称。
+   * 将 `<error-document-name>` 占位符替换为错误文档的名称，当浏览器请求网站上不存在的页面时，用户将看到此错误文档。
 
-   * 替换为`<index-document-name>`索引文档名称的占位符。 本文档通常是"index.html"。
+   * 将 `<index-document-name>` 占位符替换为索引文档的名称。 该文档通常是“index.html”。
 
-7. 将对象从源目录上传到 $web 容器  。
+---
 
-    ```powershell
-    # upload a file
-    set-AzStorageblobcontent -File "<path-to-file>" `
-    -Container `$web `
-    -Blob "<blob-name>" `
-    -Context $ctx
-     ```
+## <a name="upload-files"></a>上传文件 
 
-   * 替换`<path-to-file>`占位符值替换为你想要上传的文件的完全限定路径 (例如： `C:\temp\index.html`)。
+### <a name="portal"></a>[门户](#tab/azure-portal)
 
-   * 替换`<blob-name>`占位符值替换为生成的 blob 的名称 (例如： `index.html`)。
+这些说明介绍如何使用 Azure 门户中出现的存储资源管理器版本来上传文件。 不过，也可以使用在 Azure 门户之外运行的[存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)版本。 可以使用 [AzCopy](../common/storage-use-azcopy-v10.md)、PowerShell、CLI 或可将文件上传到帐户的 $web 容器的任何自定义应用程序。 有关使用 Visual Studio Code 上传文件的分步教程，请参阅[教程：在 Blob 存储上托管静态网站](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host)。
 
-<a id="powershell-find-url" />
+1. 选择“存储资源管理器（预览版）”。
 
-### <a name="find-the-website-url-by-using-powershell"></a>使用 PowerShell 查找网站的 URL
+2. 展开“Blob 容器”节点，然后选择 $web 容器。
 
-可以使用该网站的公共 URL 来查看从浏览器的内容。
+3. 选择“上传”按钮以上传文件。
 
-使用以下命令查找 URL:
+   ![上传文件](media/storage-blob-static-website/storage-blob-static-website-upload.png)
 
-```powershell
-$context = Get-AzSubscription -SubscriptionId <subscription-d>
-Set-AzContext $context
+4. 如果希望浏览器显示文件的内容，请确保将该文件的内容类型设置为 `text/html`。 
+
+   ![查看内容类型](media/storage-blob-static-website/storage-blob-static-website-content-type.png)
+
+   >[!NOTE]
+   > 存储资源管理器会将常见扩展（如 `.html`）的此属性自动设置为 `text/html`。 但是，在某些情况下，必须自行设置此属性。 如果没有将此属性设置为 `text/html`，浏览器将提示用户下载文件，而不是呈现内容。 若要设置此属性，右键单击文件，然后单击“属性”。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+将对象从源目录上传到 $web 容器。
+
+此示例假设从 Azure Cloud Shell 会话中运行命令。
+
+```azurecli-interactive
+az storage blob upload-batch -s <source-path> -d '$web' --account-name <storage-account-name>
 ```
 
-替换为`<subscription-id>`占位符值替换你的订阅的 ID。
+> [!NOTE] 
+> 如果浏览器提示用户下载文件而不是呈现内容，则可以将 `--content-type 'text/html; charset=utf-8'` 追加到命令中。 
 
-<a id="metrics" />
+* 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
 
-## <a name="enable-metrics-on-static-website-pages"></a>启用静态网站页上的度量值
+* 将 `<source-path>` 占位符替换为要上传的文件所在位置的路径。
 
-一旦您启用指标，流量中的文件的统计信息 **$web**容器报告指标仪表板中。
+> [!NOTE]
+> 如果使用的是 Azure CLI 的位置安装，则可以使用本地计算机上的任何位置的路径（例如：`C:\myFolder`）。
+>
+> 如果使用 Azure Cloud Shell，则必须引用对 Cloud Shell 可见的文件共享。 此位置可以是云共享本身的文件共享，也可以是从 Cloud Shell 装载的现有文件共享。 若要了解如何执行此操作，请参阅[在 Azure Cloud Shell 中持久保存文件](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)。
 
-1. 单击**设置** > **监视** > **指标**。
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-   将通过挂接到不同的指标 API 来生成指标数据。 门户只会显示在给定时间范围内使用的 API 成员，以便重点关注可返回数据的成员。 为了确保您可以选择所需的 API 成员，第一步是展开时间范围。
+将对象从源目录上传到 $web 容器。
 
-2. 单击时间范围按钮，然后选择**过去 24 小时**，然后单击**应用**。
+```powershell
+# upload a file
+set-AzStorageblobcontent -File "<path-to-file>" `
+-Container `$web `
+-Blob "<blob-name>" `
+-Context $ctx
+```
+
+> [!NOTE] 
+> 如果浏览器提示用户下载文件而不是呈现内容，则可以将 `-Properties @{ ContentType = "text/html; charset=utf-8";}` 追加到命令中。
+
+* 将 `<path-to-file>` 占位符值替换为要上传的文件的完全限定的路径（例如：`C:\temp\index.html`）。
+
+* 将 `<blob-name>` 占位符值替换为要为生成的 blob 提供的名称（例如：`index.html`）。
+
+---
+
+<a id="portal-find-url"></a>
+
+## <a name="find-the-website-url"></a>查找网站 URL
+
+可以使用网站的公共 URL 从浏览器查看网站的页面。
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+在存储帐户的“帐户概述”页旁显示的窗格中，选择“静态网站”。 网站的 URL 将显示在“主终结点”字段中。
+
+![Azure 存储静态网站指标 - 指标](./media/storage-blob-static-website/storage-blob-static-website-url.png)
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+使用以下命令查找静态网站的公共 URL：
+
+```azurecli-interactive
+az storage account show -n <storage-account-name> -g <resource-group-name> --query "primaryEndpoints.web" --output tsv
+```
+
+* 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
+
+* 将 `<resource-group-name>` 占位符值替换为资源组的名称。
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+使用以下命令查找静态网站的公共 URL：
+
+```powershell
+ $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -Name "<storage-account-name>"
+Write-Output $storageAccount.PrimaryEndpoints.Web
+```
+
+* 将 `<resource-group-name>` 占位符值替换为资源组的名称。
+
+* 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
+
+---
+
+<a id="metrics"></a>
+
+## <a name="enable-metrics-on-static-website-pages"></a>在静态网站页面上启用指标
+
+启用指标后，指标仪表板会报告有关 $web 容器中文件的流量统计信息。
+
+1. 单击存储帐户菜单的“监视器”部分下的“指标”。
+
+   > [!div class="mx-imgBorder"]
+   > ![指标链接](./media/storage-blob-static-website/metrics-link.png)
+
+   > [!NOTE]
+   > 将通过挂接到不同的指标 API 来生成指标数据。 门户只会显示在给定时间范围内使用的 API 成员，以便重点关注可返回数据的成员。 为确保能够选择所需的 API 成员，第一步是展开期限。
+
+2. 单击期限按钮，选择一个期限，然后单击“应用”。
 
    ![Azure 存储静态网站指标 - 时间范围](./media/storage-blob-static-website/storage-blob-static-website-metrics-time-range.png)
 
-3. 选择**Blob**从*Namespace*下拉列表。
+3. 从“命名空间”下拉列表中选择“Blob”。
 
    ![Azure 存储静态网站指标 - 命名空间](./media/storage-blob-static-website/storage-blob-static-website-metrics-namespace.png)
 
-4. 然后选择“传出”指标。 
+4. 然后选择“传出”指标。
 
    ![Azure 存储静态网站指标 - 指标](./media/storage-blob-static-website/storage-blob-static-website-metrics-metric.png)
 
-5. 从“聚合”选择器中选择“总和”。  
+5. 从“聚合”选择器中选择“总和”。
 
    ![Azure 存储静态网站指标 - 聚合](./media/storage-blob-static-website/storage-blob-static-website-metrics-aggregation.png)
 
-6. 单击**添加筛选器**按钮，然后选择**API 名称**从*属性*选择器。
+6. 单击“添加筛选器”按钮，并从“属性”选择器中选择“API 名称” 。
 
    ![Azure 存储静态网站指标 - API 名称](./media/storage-blob-static-website/storage-blob-static-website-metrics-api-name.png)
 
-7. 为了增加点乐趣框旁边**GetWebContent**中*值*选择器来填充指标报表。
+7. 在“值”选择器中选中“GetWebContent”旁边的复选框，以填充指标报告。
 
    ![Azure 存储静态网站指标 - GetWebContent](./media/storage-blob-static-website/storage-blob-static-website-metrics-getwebcontent.png)
 
+   >[!NOTE]
+   > 仅当在给定期限内使用该 API 成员时，才会显示“GetWebContent”复选框。 门户只会显示在给定时间范围内使用的 API 成员，以便重点关注可返回数据的成员。 如果在此列表中找不到特定的 API 成员，请展开期限。
+
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure 存储中的静态网站托管](storage-blob-static-website.md)
-* [使用 Azure CDN 通过 HTTPS 访问包含自定义域的 blob](storage-https-custom-domain-cdn.md)
-* [为 blob 或 Web 终结点配置自定义域名](storage-custom-domain-name.md)
-* [Azure Functions](/azure/azure-functions/functions-overview)
-* [Azure 应用服务](/azure/app-service/overview)
-* [生成首个无服务器 Web 应用程序](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
-* [教程：在 Azure DNS 中托管域](../../dns/dns-delegate-domain-azure-dns.md)
+* 了解如何为静态网站配置自定义域。 请参阅[将自定义域映射到 Azure Blob 存储终结点](storage-custom-domain-name.md)。
+

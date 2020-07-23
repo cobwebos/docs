@@ -5,17 +5,17 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
-ms.date: 05/23/2019
+ms.topic: article
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 18c6175ede1e8459d3a9ca60f7890cc43d75e5ba
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: HT
+ms.openlocfilehash: 9e54b9add52e484a95cf5a8291dec90a6bb258b8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236278"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207012"
 ---
-# <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box：常见问题
+# <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box：常见问题解答
 
 利用 Microsoft Azure Data Box 混合云解决方案，可使用传输设备通过快速、经济和可靠的方式将 TB 量级的数据发送到 Azure。 本常见问题解答文章包含了在 Azure 门户使用 Data Box 时可能遇到的问题及其解答。 
 
@@ -38,10 +38,10 @@ A.  Azure Data Box 服务专为脱机数据引入而设计。 此服务可以管
 ### <a name="q-what-is-azure-data-box"></a>问： 什么是 Azure Data Box？
 A. 使用 Azure Data Box，可以快速、廉价且安全地将数 TB 的数据传输到 Azure。 可通过 Azure 门户订购 Data Box 设备。 Microsoft 通过区域承运人向你寄送具有 80 TB 可用容量的存储设备。 
 
-收到设备后，可使用本地 Web UI 进行快速设置。 将数据从服务器复制到设备，然后将设备发回 Azure。 在 Azure 数据中心内，数据将从设备自动上传到 Azure。 通过 Azure 门户中的 Data Box 服务对整个过程进行端到端跟踪。
+收到设备后，可使用本地 Web UI 进行快速设置。 将服务器中的数据复制到设备或从设备复制到服务器，并将设备送回 Azure。 对于导入顺序，Azure 数据中心中的数据自动从设备上传到 Azure。 通过 Azure 门户中的 Data Box 服务对整个过程进行端到端跟踪。
 
 ### <a name="q-when-should-i-use-data-box"></a>问： 何时应使用 Data Box？
-A. 如果需要将 40 - 500 TB 的数据传输到 Azure，则使用 Data Box 会很有利。 对于 < 40 TB 的数据大小，请使用 Data Box Disk，对于 > 500 TB 的数据大小，请注册 [Data Box Heavy](data-box-heavy-overview.md)。
+A. 如果要在 Azure 中传输 40-500 TB 的数据，则可以使用 Data Box。 对于 < 40 TB 的数据大小，请使用 Data Box Disk，对于 > 500 TB 的数据大小，请注册 [Data Box Heavy](data-box-heavy-overview.md)。
 
 ### <a name="q-what-is-the-price-of-data-box"></a>问： Data Box 的价格是多少？
 A. 使用 Data Box 10 天会产生少许费用。 在 Azure 门户中创建订单并选择产品型号时，将显示设备的费用。 寄送也是免费的，但是，Azure 存储会产生费用。 有关详细信息，请转到 [Azure Data Box 定价](https://azure.microsoft.com/pricing/details/storage/databox/)。 
@@ -53,7 +53,7 @@ A. Data Box 的原始容量为 100 TB，可用容量为 80 TB。 使用 Data Box
 A.  有关 Data Box 在哪些国家/区域可用的信息，请转到[区域可用性](data-box-overview.md#region-availability)。  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>问： 可在哪些区域使用 Data Box 存储数据？
-A. 美国、西欧、北欧、法国和英国的所有区域支持 Data Box。 仅支持 Azure 公有云区域。 不支持 Azure 政府版或其他主权云。 有关详细信息，请参阅[适用区域](data-box-overview.md#region-availability)。
+A. 美国、西欧、北欧、法国、英国、日本、澳大利亚和加拿大的所有区域均支持 Data Box。 有关详细信息，请参阅[适用区域](data-box-overview.md#region-availability)。
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>问： 如果 Data Box 出现任何问题，应该与谁联系？
 A. 如果 Data Box 出现任何问题，请联系 [Microsoft 支持部门](data-box-disk-contact-microsoft-support.md)。
@@ -84,12 +84,12 @@ A. 这表示 Data Box 服务在你所选的国家和地区组合中不可用。 
 A. 客户下单后，我们会检查订购的设备是否有货。 如果设备有货，我们将在 10 天内寄送。 也可能有高需求时期。 在此情况下，订单将进行排队，可在 Azure 门户中跟踪状态更改。 如果订单未在 90 天内完成，则会自动取消。
 
 ### <a name="q-i-have-filled-up-my-data-box-with-data-and-need-to-order-another-one-is-there-a-way-to-quickly-place-the-order"></a>问： 我的 Data Box 已填满数据，需要再订购一台。 是否有某种方法可让我快速下单？
-A. 可以克隆以前的订单。 克隆操作会创建与以前相同的订单，并允许编辑订单详细信息（仅限这些信息），而无需键入地址、联系人和通知详细信息。
+A. 可以克隆以前的订单。 克隆操作会创建与以前相同的订单，并允许编辑订单详细信息（仅限这些信息），而无需键入地址、联系人和通知详细信息。 只允许克隆导入订单。
 
 ## <a name="configure-and-connect"></a>配置和连接
 
 ### <a name="q-how-do-i-unlock-the-data-box"></a>问： 如何解锁 Data Box？ 
-A.  在 Azure 门户中，转到 Data Box 订单，并导航到“设备详细信息”  。 复制解锁密码。 在 Data Box 上使用此密码登录本地 Web UI。 有关详细信息，请转到[教程：为 Azure Data Box 拆除包装、连接电缆并连接到它](data-box-deploy-set-up.md)。
+A.  在 Azure 门户中，转到 Data Box 订单，并导航到“设备详细信息”。 复制解锁密码。 在 Data Box 上使用此密码登录本地 Web UI。 有关详细信息，请转到[教程：为 Azure Data Box 拆除包装、连接电缆并连接到它](data-box-deploy-set-up.md)。
 
 ### <a name="q-can-i-use-a-linux-host-computer-to-connect-and-copy-the-data-on-to-the-data-box"></a>问： 是否可以使用 Linux 主机建立连接并将数据复制到 Data Box？
 A.  是的。 可以使用 Data Box 连接 SMB 和 NFS 客户端。 有关详细信息，请转到主机的[受支持操作系统](data-box-system-requirements.md)列表。
@@ -130,10 +130,10 @@ A. Data Box 上不支持端口通道配置、多路径 IO (MPIO) 配置或 vLAN 
 A.  可以在 Azure 门户中跟踪 Data Box 的订单状态。 创建订单时，系统还会提示你提供通知电子邮件。 如果已提供，则在订单状态发生任何变化时，你都会收到电子邮件通知。 详细了解如何[配置通知电子邮件](data-box-portal-ui-admin.md#edit-notification-details)。
 
 ### <a name="q-how-do-i-return-the-device"></a>问： 如何退回设备？ 
-A.  Microsoft 将在电子墨水显示屏上显示发货标签。 如果发货标签未显示在电子墨水显示屏上，请转至“概述”>“下载发货标签”  。 下载并打印标签，将标签插入设备上的透明塑料标签中，然后将设备放在运输承运商位置。 
+A.  Microsoft 将在电子墨水显示屏上显示发货标签。 如果发货标签未显示在电子墨水显示屏上，请转至“概述”>“下载发货标签”。 下载并打印标签，将标签插入设备上的透明塑料标签中，然后将设备放在运输承运商位置。 
 
 ### <a name="q-i-received-an-email-notification-that-my-device-has-reached-the-azure-datacenter-how-do-i-find-out-if-the-data-upload-is-in-progress"></a>问： 我收到电子邮件通知，提示我的设备已到达 Azure 数据中心。 如何了解数据是否正在上传？
-A. 可转到 Azure 门户中的 Data Box 订单，然后转到“概况”  。 如果将数据上传到 Azure 已启动，将在右窗格中看到复制进度。 
+A. 可转到 Azure 门户中的 Data Box 订单，然后转到“概况”。 如果将数据上传到 Azure 已启动，将在右窗格中看到复制进度。 
 
 ## <a name="migrate-data"></a>迁移数据
 
@@ -141,7 +141,7 @@ A. 可转到 Azure 门户中的 Data Box 订单，然后转到“概况”  。 
 A.  Data Box 的可用存储容量为 80 TB。 对于大小介于 40 TB - 80 TB 之间的数据，使用一台 Data Box 设备即可。 对于高达 500 TB 的大型数据大小，可以订购多台 Data Box 设备。 对于大小超过 500 TB 的数据，请注册 Data Box Heavy。  
 
 ### <a name="q-what-are-the-maximum-block-blob-and-page-blob-sizes-supported-by-data-box"></a>问： Data Box 支持的最大块 Blob 和页 Blob 大小是什么？ 
-A.  最大大小受制于 Azure 存储限制。 最大块 Blob 大致为 4.768 TiB，最大页 Blob 大小为 8 TiB。 有关详细信息，请转到 [Azure 存储可伸缩性和性能目标](../storage/common/storage-scalability-targets.md)。 
+A.  最大大小受制于 Azure 存储限制。 最大块 Blob 大致为 4.768 TiB，最大页 Blob 大小为 8 TiB。 有关详细信息，请参阅 [Blob 存储可伸缩性和性能目标](../storage/blobs/scalability-targets.md)。
 
 ### <a name="q-how-do-i-know-that-my-data-is-secure-during-transit"></a>问： 如何知道我的数据在传输过程中是否安全？ 
 A. 已实现多个安全功能，可在数据传输期间保护 Data Box。 其中包括防篡改封条、硬件和软件篡改检测和设备解锁密码。 有关详细信息，请参阅 [Azure Data Box 安全性和数据保护](data-box-security.md)。
@@ -159,18 +159,18 @@ A.  若要加快复制过程：
 - 使用多个数据复制流。 例如，在 Robocopy 中使用多线程选项。 有关所用的确切命令的详细信息，请转到[教程：将数据复制到 Azure Data Box 并进行验证](data-box-deploy-copy-data.md)。
 - 使用多个会话。
 - 不通过网络共享进行复制（否则可能受到网络速度的限制）可确保在 Data Box 连接到的计算机本地驻留数据。
-- 为用于复制数据的计算机建立性能基准。 下载并使用 [Bluestop FIO 工具](https://bluestop.org/fio/)来建立服务器硬件的性能基准。
+- 为用于复制数据的计算机建立性能基准。 下载并使用 [Bluestop FIO 工具](https://ci.appveyor.com/project/axboe/fio)来建立服务器硬件的性能基准。 选择最新的 x86 或 x64 版本，选择“项目”选项卡，然后下载 MSI。
 
 <!--### Q. How to speed up the data copy if the source data has small files (KBs or few MBs)?
 A.  To speed up the copy process:
 
 - Create a local VHDx on fast storage or create an empty VHD on the HDD/SSD (slower).
 - Mount it to a VM.
-- Copy files to the VM’s disk.-->
+- Copy files to the VM's disk.-->
 
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box"></a>问： 是否可对 Data Box 使用多个存储帐户？
-A.  是的。 Data Box 最多支持 10 个存储帐户（常规用途帐户、经典帐户或 blob 存储帐户）。 支持热 Blob 和冷 Blob。 在 GA 发布期，仅支持美国所有区域、西欧、北欧、法国和英国的 Azure 公有云中的存储帐户。
+A.  是的。 Data Box 最多支持 10 个存储帐户（常规用途帐户、经典帐户或 blob 存储帐户）。 支持热 Blob 和冷 Blob。 
 
 
 ## <a name="ship-device"></a>运送设备
@@ -180,16 +180,19 @@ A.  是的。 Data Box 最多支持 10 个存储帐户（常规用途帐户、�
 ### <a name="q-my-device-was-delivered-but-the-device-seems-to-be-damaged-what-should-i-do"></a>问： 我的设备已送达，但似乎已损坏。 我该怎么办？
 A. 如果设备到达时已损坏或存在被篡改的证据，请不要使用该设备。 [请联系 Microsoft 支持部门](data-box-disk-contact-microsoft-support.md)并尽快退回设备。 还可以新建针对更换设备的 Data Box 订单。 在这种情况下，更换设备不收费。
 
-### <a name="q-can-i-use-my-own-shipping-carrier-to-ship-data-box"></a>问： 能否使用我自己的承运人运送 Data Box？
-A. Microsoft 负责将 Data Box 服务寄回和寄出 Azure 数据中心。 如果想要使用你自己的承运人，可以使用 Azure 导入/导出服务。 有关详细信息，请转到[什么是 Azure 导入/导出服务？](../storage/common/storage-import-export-service.md)
+### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>问： 我可以自己提取 Data Box 订单吗？ 能否通过我选择的承运人退回 Data Box？
+A. 是的。 Microsoft 还提供自行管理的传送。 在下 Data Box 订单时，可以选择“自我管理的发货”选项。 有关详细信息，请参阅[Data Box 的自行托管发运](data-box-portal-customer-managed-shipping.md)。
 
-### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>问： 我的 Data Box 设备在运输过程中是否将跨越国家/地区边界？
+### <a name="q-will-my-data-box-devices-cross-countryregion-borders-during-shipping"></a>问： 我的 Data Box 设备在运输过程中是否将跨越国家/地区边界？
 A. 所有 Data Box 设备都将从与其目的地相同的国家/地区发运，不会跨越任何国际边界。 唯一的例外是在欧盟 (EU) 的订单，设备可以在任何 EU 国家/地区之间发送。 这适用于 Data Box 和 Data Box Heavy 设备。
+
+### <a name="q-i-ordered-a-data-box-in-us-east-but-i-received-a-device-that-was-shipped-from-a-location-in-us-west-where-should-i-return-the-device-to"></a>问： 我订购了美国东部的 Data Box，但收到的设备是从美国西部位置发货的。 我应该将设备退回到何处？
+A. 我们会尽快为你提供一个 Data Box 设备。 我们优先从离你的存储帐户位置最近的数据中心发货，但会从任何有可用库存的 Azure 数据中心发运设备。 你的 Data Box 应退回到发货标签中显示的发货地点。
 
 ### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>问： 电子墨水显示屏未显示退货发货标签。 我该怎么办？
 A. 如果电子墨水显示屏未显示退货发货标签，请执行以下步骤：
 - 取下上一次发货留下的旧发货标签和任何便签。
-- 在 Azure 门户中转到订单。 转到“概述”  和“下载发货标签”  。 有关详细信息，请转到[下载发货标签](data-box-portal-admin.md#download-shipping-label)。
+- 在 Azure 门户中转到订单。 转到“概述”和“下载发货标签”。 有关详细信息，请转到[下载发货标签](data-box-portal-admin.md#download-shipping-label)。
 - 打印发货标签并将其插入附加到设备的透明塑料封套中。 
 - 请确保发货标签清晰可见。 
 
@@ -199,8 +202,8 @@ A.  传输期间，Data Box 的以下功能可帮助保护数据。
  - 设备将锁定，需要解锁密码才能进入和访问数据。
 有关详细信息，请转到 [Data Box 的安全功能](data-box-security.md)。  
 
-### <a name="q-i-have-finished-prepare-to-ship-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>问： 我已完成“准备交付”，并关闭了设备。 是否仍能向 Data Box 添加更多数据？
-A. 是的。 可以打开设备并添加更多数据。 完成数据复制后，需要再次运行“准备交付”  。
+### <a name="q-i-have-finished-prepare-to-ship-for-my-import-order-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>问： 我已经完成了为导入订单寄送并关闭设备的准备工作。 是否仍能向 Data Box 添加更多数据？
+A. 是的。 可以打开设备并添加更多数据。 完成数据复制后，需要再次运行“准备交付”。
 
 ### <a name="q-i-received-my-device-and-it-is-not-booting-up-how-do-i-ship-the-device-back"></a>问： 我收到了我的设备，但它无法启动。 如何将设备寄回？
 A. 如果设备无法启动，请转到 Azure 门户中的订单。 下载发货标签，将其贴在设备上。 有关详细信息，请转到[下载发货标签](data-box-portal-admin.md#download-shipping-label)。
@@ -208,7 +211,7 @@ A. 如果设备无法启动，请转到 Azure 门户中的订单。 下载发货
 ## <a name="verify-and-upload"></a>验证和上传
 
 ### <a name="q-how-soon-can-i-access-my-data-in-azure-once-ive-shipped-the-data-box-back"></a>问： 寄回 Data Box 后，多久可以访问我在 Azure 中的数据？ 
-A.  一旦“数据复制”的订单状态显示为“已完成”，应该立即就能访问数据   。
+A.  一旦“数据复制”的订单状态显示为“已完成”，应该立即就能访问数据 。
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>问： 上传后，我的数据位于 Azure 中的哪个位置？
 A.  将数据复制到 Data Box 中时，数据将上传到 Azure 存储帐户中的以下一个路径，具体取决于数据是块 Blob、页 Blob 还是 Azure 文件。
@@ -223,12 +226,12 @@ A.  如果容器名称包含大写字母，这些名称会自动转换为小写�
 - [块 blob 和页 blob 约定](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)。
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-data-box"></a>问： 如何验证已复制到 Data Box 的数据？
-A.  数据复制完成后，运行“准备交付”即可验证数据  。 验证过程中，Data Box 将生成文件列表和数据的校验和。 可以下载文件列表，并根据源数据中的文件验证该列表。 有关详细信息，请转到[准备交付](data-box-deploy-picked-up.md#prepare-to-ship)。
+A.  数据复制完成后，运行“准备交付”即可验证数据。 验证过程中，Data Box 将生成文件列表和数据的校验和。 可以下载文件列表，并根据源数据中的文件验证该列表。 有关详细信息，请转到[准备交付](data-box-deploy-picked-up.md#prepare-to-ship)。
 
 ### <a name="q-what-happens-to-my-data-after-i-have-returned-the-data-box"></a>问： 退回 Data Box 后，我的数据会发生什么情况？
 A.  完成将数据复制到 Azure 的过程后，会根据 NIST SP 800-88 修订版 1 中的指导原则，安全擦除 Data Box 磁盘中的数据。 有关详细信息，请转到[从 Data Box 中擦除数据](data-box-deploy-picked-up.md#erasure-of-data-from-data-box)。
 
-## <a name="audit-report"></a>审核报表
+## <a name="audit-report"></a>审核报告
 
 ### <a name="how-does-azure-data-box-service-help-support-customers-chain-of-custody-procedure"></a>Azure Data Box 服务如何帮助支持客户的监管过程链？
 A.  Azure Data Box 服务以本机方式提供可用于监管文件链的报表。 Azure 存储帐户中提供审核和复制日志。订单完成后，可以在 Azure 门户中[下载订单历史记录](data-box-portal-admin.md#download-order-history)。
@@ -239,15 +242,17 @@ A.  以下报表可用于支持监管链：
 
 - UPS 的运输物流。
 - 打开电源和用户共享访问的日志记录。
-- 具有 64 位循环冗余检验 (CRC-64) 或成功引入到 Data Box 的每个文件的校验和的清单文件。
+- 具有64位循环冗余检查的 BOM 或清单文件将 (CRC-64) ，以及每个文件的校验和是否成功引入到 Data Box 中。
 - 未能上传到 Azure 存储帐户的文件报告。
 - 数据复制到 Azure 存储帐户后，依据 NIST 800 88R1 标准清理 Data Box 设备。
 
 ### <a name="are-the-carrier-tracking-logs-from-ups-available"></a>承运人跟踪日志（来自 UPS）是否可用？ 
-A.  承运人跟踪日志在 Data Box 订单历史记录中捕获。 设备已返回 Azure 数据中心且其中的数据已清理后，此报告可用。 如立即需要，还可直接转到运营商的网站，使用订单跟踪号码获取跟踪信息。
+A.  承运人跟踪日志在 Data Box 订单历史记录中捕获。 设备已返回 Azure 数据中心且其中的数据已清理后，此报告可用。 如立即需要，还可直接转到承运人的网站，使用订单跟踪号码获取跟踪信息。
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>我能否自己将 Data Box 送到 Azure 数据中心？ 
-A.  不是。 Azure 数据中心目前不接受客户或 UPS 以外的承运人交付 Data Box。
+A.  不是。 如果你选择了 Microsoft 管理的装运，则无法传输该日期。 Azure 数据中心目前不接受客户或 UPS 以外的承运人交付 Data Box。
+
+如果选择了 "自行管理的装运"，则可以从 Azure 数据中心选择或删除 Data Box。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -7,19 +7,19 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: c4bb6a61-de3d-4f0c-9dca-202554c43dfa
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 48a84520a61d19968b467091871459e21898dd5e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c83323ff7b951892b96d49f3173c022592aac331
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564081"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920177"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 开发入门
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "60564081"
 
 可以使用[适用于 Node.js 的 Azure CDN SDK](https://www.npmjs.com/package/azure-arm-cdn) 来自动创建和管理 CDN 配置文件和终结点。  本教程介绍一个简单的 Node.js 控制台应用程序的创建示例，演示几个可用的操作。  本教程不打算详细描述适用于 Node.js 的 Azure CDN SDK 的所有方面。
 
-要完成本教程，应已安装并配置了 [Node.js](https://www.nodejs.org)**4.x.x** 或更高版本。  可以使用任何需要的文本编辑器创建 Node.js 应用程序。  为了编写本教程，我使用了 [Visual Studio Code](https://code.visualstudio.com)。  
+要完成本教程，应已安装并配置了 [Node.js](https://www.nodejs.org) **4.x.x** 或更高版本。  可以使用任何需要的文本编辑器创建 Node.js 应用程序。  为了编写本教程，我使用了 [Visual Studio Code](https://code.visualstudio.com)。  
 
 > [!TIP]
 > 可在 MSDN 上下载[本教程中已完成的项目](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74)。
@@ -44,7 +44,9 @@ ms.locfileid: "60564081"
 
 创建一个文件夹以存储应用程序。  在当前路径中带有 Node.js 工具的控制台中，将当前位置设置为此新文件夹，并通过执行以下命令来初始化项目：
 
-    npm init
+```console
+npm init
+```
 
 然后，将看到一系列问题，用于初始化项目。  对于**入口点**，本教程使用 *app.js*。  可以在下面的例子中看到我的其他选择。
 
@@ -52,8 +54,10 @@ ms.locfileid: "60564081"
 
 我们的项目现在使用 *packages.json* 文件进行初始化。  我们的项目将使用 NPM 包中包含的部分 Azure 库。  我们将使用适用于 Node.js 的 Azure 客户端运行时 (ms-rest-azure) 和适用于 Node.js 的 Azure CDN 客户端库 (azure-arm-cd)。  让我们将它们作为依赖项添加到项目。
 
-    npm install --save ms-rest-azure
-    npm install --save azure-arm-cdn
+```console
+npm install --save ms-rest-azure
+npm install --save azure-arm-cdn
+```
 
 当包安装完成后，*package.json* 文件应与此示例类似（版本号可能不同）：
 
@@ -86,7 +90,7 @@ ms.locfileid: "60564081"
     var msRestAzure = require('ms-rest-azure');
     var cdnManagementClient = require('azure-arm-cdn');
     ```
-2. 我们需要定义我们的方法将使用的一些常量。  添加以下内容。  请务必根据需要使用值替换占位符，包括**&lt;尖括号&gt;**。
+2. 我们需要定义我们的方法将使用的一些常量。  添加以下内容。  请务必根据需要使用值替换占位符，包括 **&lt;尖括号&gt;** 。
    
     ``` javascript
     //Tenant app constants
@@ -119,7 +123,7 @@ ms.locfileid: "60564081"
     var cdnClient = new cdnManagementClient(credentials, subscriptionId);
     ```
    
-    请务必使用正确的信息替换**&lt;尖括号&gt;** 中的项目。  对于 `<redirect URI>`，请使用在 Azure AD 中注册应用程序时输入的重定向 URI。
+    请确保将** &lt; 尖括号 &gt; **中的项替换为正确的信息。  对于 `<redirect URI>`，请使用在 Azure AD 中注册应用程序时输入的重定向 URI。
 4. 我们的 Node.js 控制台应用程序会采用一些命令行参数。  让我们验证是否至少传递了一个参数。
    
    ```javascript

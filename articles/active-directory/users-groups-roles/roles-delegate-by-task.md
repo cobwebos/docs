@@ -1,26 +1,25 @@
 ---
-title: 按管理员任务委托最小特权角色 - Azure Active Directory | Microsoft Docs
+title: 按管理任务委派角色 - Azure Active Directory | Microsoft Docs
 description: 在 Azure Active Directory 中为标识任务委托角色
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
-ms.date: 05/31/2019
+ms.topic: reference
+ms.date: 05/04/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3f21f552add551ac2434618b184eb18c53ad5be
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 3bc1546566e5bb79a207899fab7418480e5cfab0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66752237"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117873"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中按管理员任务委托管理员角色
 
@@ -39,26 +38,26 @@ ms.locfileid: "66752237"
 下载连接器服务 | 应用程序管理员 | 
 读取所有配置 | 应用程序管理员 | 
 
-## <a name="b2c"></a>B2C
+## <a name="external-identitiesb2c"></a>外部标识/B2C
 
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
 创建 Azure AD B2C 目录 | 所有非来宾用户（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 
 创建 B2C 应用程序 | 全局管理员角色 | 
 创建企业应用程序 | 云应用管理员 | 应用程序管理员
-创建、读取、更新和删除 B2C 策略 | 全局管理员角色 | 
-创建、读取、更新和删除标识提供者 | 全局管理员角色 | 
-创建、读取、更新和删除密码重置用户流 | 全局管理员角色 | 
-创建、读取、更新和删除配置文件编辑用户流 | 全局管理员角色 | 
-创建、读取、更新和删除登录用户流 | 全局管理员角色 | 
-创建、读取、更新和删除注册用户流 |全局管理员角色 | 
-创建、读取、更新和删除用户特性 | 全局管理员角色 | 
-创建、读取、更新和删除用户 | 全局管理员（[请参阅文档](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)）
-读取所有配置 | 全局管理员角色 | 
-读取 B2C 审核日志 | 全局管理员（[请参阅文档](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)） | 
+创建、读取、更新和删除 B2C 策略 | B2C IEF 策略管理员 | 
+创建、读取、更新和删除标识提供者 | 外部标识提供者管理员 | 
+创建、读取、更新和删除密码重置用户流 | 外部 ID 用户流管理员 | 
+创建、读取、更新和删除配置文件编辑用户流 | 外部 ID 用户流管理员 | 
+创建、读取、更新和删除登录用户流 | 外部 ID 用户流管理员 | 
+创建、读取、更新和删除注册用户流 |外部 ID 用户流管理员 | 
+创建、读取、更新和删除用户特性 | 外部 ID 用户流属性管理员 | 
+创建、读取、更新和删除用户 | 用户管理员
+读取所有配置 | 全局读取者 | 
+读取 B2C 审核日志 | 全局读取者（[请参阅文档](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)） | 
 
 > [!NOTE]
-> Azure AD B2C 的全局管理员没有与 Azure AD 全局管理员相同的权限。 如果您具有 Azure AD B2C 全局管理员权限，请确保您已在 Azure AD B2C 目录，而不是 Azure AD 目录中。
+> Azure AD B2C 全局读取者的权限与 Azure AD 全局管理员的权限不同。 如果你拥有 Azure AD B2C 全局管理员权限，请确保你位于 Azure AD B2C 目录（而不是 Azure AD 目录）中。
 
 ## <a name="company-branding"></a>公司品牌
 
@@ -77,9 +76,17 @@ ms.locfileid: "66752237"
 
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
-直通身份验证 | 全局管理员角色 | 
-读取所有配置 | 全局管理员角色 | 
-无缝单一登录 | 全局管理员角色 | 
+直通身份验证 | 全局管理员角色  | 
+读取所有配置 | 全局读取者 | 全局管理员角色  |
+无缝单一登录 | 全局管理员角色  | 
+
+## <a name="cloud-provisioning"></a>云预配
+
+任务 | 最小特权角色 | 其他角色
+---- | --------------------- | ----------------
+直通身份验证 | 混合标识管理员  | 
+读取所有配置 | 全局读取者 | 混合标识管理员  |
+无缝单一登录 | 混合标识管理员  | 
 
 ## <a name="connect-health"></a>Connect Health
 
@@ -98,7 +105,6 @@ ms.locfileid: "66752237"
 查看指标和警报 | 读者（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)） | 参与者、所有者
 查看同步服务指标和警报 | 读者（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)） | 参与者、所有者
 
-
 ## <a name="custom-domain-names"></a>自定义域名
 
 任务 | 最小特权角色 | 其他角色
@@ -111,7 +117,7 @@ ms.locfileid: "66752237"
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
 创建 Azure AD 域服务实例 | 全局管理员角色 | 
-执行所有 Azure AD 域服务任务 | Azure AD DC 管理员组（[请参阅文档](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-domain#administrative-tasks-you-can-perform-on-a-managed-domain)） | 
+执行所有 Azure AD 域服务任务 | Azure AD DC 管理员组（[请参阅文档](../../active-directory-domain-services/tutorial-create-management-vm.md#administrative-tasks-you-can-perform-on-a-managed-domain)） | 
 读取所有配置 | 包含 AD DS 服务的 Azure 订阅的读者 | 
 
 ## <a name="devices"></a>设备
@@ -128,8 +134,8 @@ ms.locfileid: "66752237"
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
 同意任何委托的权限 | 云应用程序管理员 | 应用程序管理员
-同意应用程序权限（不包括 Microsoft Graph 或 Azure AD Graph） | 云应用程序管理员 | 应用程序管理员
-同意 Microsoft Graph 或 Azure AD Graph 的应用程序权限 | 全局管理员角色 | 
+同意应用程序权限（不包括 Microsoft Graph） | 云应用程序管理员 | 应用程序管理员
+同意 Microsoft Graph 的应用程序权限 | 特权角色管理员 | 
 同意应用程序访问自己的数据 | 默认用户角色（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 
 创建企业应用程序 | 云应用程序管理员 | 应用程序管理员
 管理应用程序代理 | 应用程序管理员 | 
@@ -143,15 +149,22 @@ ms.locfileid: "66752237"
 更新企业应用程序自助服务 | 企业应用程序所有者（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 云应用程序管理员、应用程序管理员
 更新单一登录属性 | 企业应用程序所有者（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 云应用程序管理员、应用程序管理员
 
+## <a name="entitlement-management"></a>权利管理
+任务 | 最小特权角色 | 其他角色
+---- | --------------------- | ----------------
+将资源添加到目录 | 用户管理员 | 通过权限管理，你可以将此任务委托给目录所有者（[请参阅文档](../governance/entitlement-management-catalog-create.md#add-additional-catalog-owners)）
+将 SharePoint Online 网站添加到目录 | 全局管理员
+
+
 ## <a name="groups"></a>组
 
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
 分配许可证 | 用户管理员 | 
-创建组 | 用户管理员 | 
+创建组 | 组管理员 | 用户管理员
 创建、更新或删除组或应用的访问评审 | 用户管理员 | 
 管理组到期时间 | 用户管理员 | 
-管理组设置 | 全局管理员角色 | 
+管理组设置 | 组管理员 | 用户管理员 | 
 读取所有配置（隐藏成员身份除外） | 目录读者 | 默认用户角色（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)）
 读取隐藏成员身份 | 组成员 | 组所有者、密码管理员、Exchange 管理员、SharePoint 管理员、Teams 管理员、用户管理员
 读取具有隐藏成员身份的组的成员身份 | 支持管理员 | 用户管理员、Teams 管理员
@@ -159,6 +172,7 @@ ms.locfileid: "66752237"
 更新组成员身份 | 组所有者（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 用户管理员
 更新组所有者 | 组所有者（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 用户管理员
 更新组属性 | 组所有者（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 用户管理员
+删除组 | 组管理员 | 用户管理员
 
 ## <a name="identity-protection"></a>标识保护
 
@@ -169,10 +183,10 @@ ms.locfileid: "66752237"
 配置并启用/禁用登录风险策略| 安全管理员 | 
 配置并启用/禁用用户风险策略 | 安全管理员 | 
 配置每周摘要 | 安全管理员| 
-消除所有风险事件 | 安全管理员 | 
+消除所有风险检测 | 安全管理员 | 
 修复或消除漏洞 | 安全管理员 | 
 读取所有配置 | 安全读取者 | 
-读取所有风险事件 | 安全读取者 | 
+读取所有风险检测 | 安全读取者 | 
 读取漏洞 | 安全读取者 | 
 
 ## <a name="licenses"></a>许可证
@@ -221,18 +235,18 @@ ms.locfileid: "66752237"
 配置电话呼叫设置 | 全局管理员角色 | 
 配置提供程序 | 全局管理员角色 | 
 配置服务器设置 | 全局管理员角色 | 
-读取活动报表 | 全局管理员角色 | 
-读取所有配置 | 全局管理员角色 | 
-读取服务器状态 | 全局管理员角色 |  
+读取活动报表 | 全局读取者 | 
+读取所有配置 | 全局读取者 | 
+读取服务器状态 | 全局读取者 |  
 
 ## <a name="organizational-relationships"></a>组织关系
 
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
-管理标识提供者 | 全局管理员角色 | 
+管理标识提供者 | 外部标识提供者管理员 | 
 管理设置 | 全局管理员角色 | 
 管理使用条款 | 全局管理员角色 | 
-读取所有配置 | 全局管理员角色 | 
+读取所有配置 | 全局读取者 | 
 
 ## <a name="password-reset"></a>密码重置
 
@@ -246,7 +260,7 @@ ms.locfileid: "66752237"
 配置注册 | 全局管理员角色 |
 读取所有配置 | 安全管理员 | 用户管理员 |
 
-## <a name="privileged-identity-management"></a>Privileged Identity Management
+## <a name="privileged-identity-management"></a>Privileged identity management
 
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
@@ -268,9 +282,11 @@ ms.locfileid: "66752237"
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
 配置身份验证方法 | 全局管理员角色 | 
-读取所有配置 | 全局管理员角色 | 
+配置密码保护 | 安全管理员
+配置智能锁定 | 安全管理员
+读取所有配置 | 全局读取者 | 
 
-## <a name="security---conditional-access"></a>安全性 - 条件性访问
+## <a name="security---conditional-access"></a>安全性 - 条件访问
 
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
@@ -325,11 +341,11 @@ ms.locfileid: "66752237"
 删除用户 | 用户管理员 | 
 使受限管理员的刷新令牌失效（请参阅文档） | 用户管理员 | 
 使非管理员的刷新令牌失效（请参阅文档） | 密码管理员 | 用户管理员
-使特权管理员的刷新令牌失效（请参阅文档） | 全局管理员角色 | 
+使特权管理员的刷新令牌失效（请参阅文档） | 特权身份验证管理员 | 
 读取基本配置 | 默认用户角色（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 
 重置受限管理员的密码（请参阅文档） | 用户管理员 | 
 重置非管理员的密码（请参阅文档） | 密码管理员 | 用户管理员
-重置特权管理员的密码 | 全局管理员角色 | 
+重置特权管理员的密码 | 特权身份验证管理员 | 
 撤销许可证 | 许可证管理员 | 用户管理员
 更新除用户主体名称之外的所有属性 | 用户管理员 | 
 更新受限管理员的用户主体名称（请参阅文档） | 用户管理员 | 
@@ -341,7 +357,7 @@ ms.locfileid: "66752237"
 
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
-提交支持票证 | 服务管理员 | 应用程序管理员、 Azure 信息保护管理员计费管理员、 云应用程序管理员、 合规性管理员、 Dynamics 365 管理员桌面分析管理员、 Exchange 管理员密码管理员，Intune 管理员、 企业管理员、 Power BI 管理员、 特权身份验证管理员、 SharePoint 管理员、 团队通信管理员、 团队管理员、 用户管理员、 SkypeWorkplace Analytics 管理员
+提交支持票证 | 服务管理员 | 应用程序管理员、Azure 信息保护管理员、计费管理员、云应用程序管理员、符合性管理员、Dynamics 365 管理员、桌面分析管理员、Exchange 管理员、密码管理员、Intune 管理员、Skype for Business 管理员、Power BI 管理员、特权身份验证管理员、SharePoint 管理员、Teams 通信管理员、Teams 管理员、用户管理员、工作区分析管理员
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,32 +1,35 @@
 ---
 title: 快速入门：使用 REST API 和 PHP 检测图像中的人脸
 titleSuffix: Azure Cognitive Services
-description: 在本快速入门中，你将使用人脸 API 和 PHP 检测图像中的人脸。
+description: 在本快速入门中，你将使用人脸 REST API 和 PHP 检测图像中的人脸。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 280143d54e516fb626bb2d5afd01653e03d8a82c
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: f4d848eae23023d55ad41b7893610f246eddefd9
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59490440"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987806"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>快速入门：使用 REST API 和 PHP 检测图像中的人脸
 
-在本快速入门中，将使用 Azure 人脸 REST API 和 PHP 来检测图像中的人脸。
+本快速入门中将通过 PHP 使用 Azure 人脸 REST API 来检测图像中的人脸。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 人脸 API 订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=face-api)获取免费试用的订阅密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸 API 服务并获取密钥。
-- 代码编辑器，如 [Visual Studio Code](https://code.visualstudio.com/download)。
-- PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) 包。
-- 支持 PHP 的 Web 浏览器。 如果尚未进行设置，可以在计算机上安装并设置 [XAMPP](https://www.apachefriends.org/)。
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="创建人脸资源"  target="_blank">创建人脸资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到人脸 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
+* 代码编辑器，如 [Visual Studio Code](https://code.visualstudio.com/download)。
+* PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) 包。
+* 支持 PHP 的 Web 浏览器。 如果尚未进行设置，可以在计算机上安装并设置 [XAMPP](https://www.apachefriends.org/)。
 
 ## <a name="initialize-the-html-file"></a>初始化 HTML 文件
 
@@ -43,17 +46,15 @@ ms.locfileid: "59490440"
 
 ## <a name="write-the-php-script"></a>编写 PHP 脚本
 
-在该文档的 `body` 元素中添加以下代码。 这将设置一个基本用户界面，其中包含 URL 字段、“分析人脸”按钮、响应窗格和图像显示窗格。
+在该文档的 `body` 元素中添加以下代码。 此代码将设置一个基本用户界面，其中包含 URL 字段、“分析人脸”按钮、响应窗格和图像显示窗格。
 
 ```php
 <?php
 // Replace <Subscription Key> with a valid subscription key.
 $ocpApimSubscriptionKey = '<Subscription Key>';
 
-// You must use the same location in your REST call as you used to obtain
-// your subscription keys. For example, if you obtained your subscription keys
-// from westus, replace "westcentralus" in the URL below with "westus".
-$uriBase = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/';
+// Replace <My Endpoint String> with the string in your endpoint URL.
+$uriBase = 'https:/<My Endpoint String>.com/face/v1.0/';
 
 $imageUrl =
     'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg';
@@ -101,7 +102,9 @@ catch (HttpException $ex)
 ?>
 ```
 
-需使用订阅密钥的值更新 `subscriptionKey` 字段，并且可能需要更改 `uriBase` 字符串，使之包含正确的区域标识符（如需包含所有区域终结点的列表，请参阅[人脸 API 文档](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)）。 `returnFaceAttributes` 字段指定要检索的人脸属性；你可能希望根据自己的预期用途更改此字符串。
+需使用订阅密钥的值更新 `subscriptionKey` 字段，并且可能需要更改 `uriBase` 字符串，使之包含正确的终结点字符串。 `returnFaceAttributes` 字段指定要检索的人脸属性；你可能希望根据自己的预期用途更改此字符串。
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="run-the-script"></a>运行脚本
 
@@ -288,7 +291,7 @@ catch (HttpException $ex)
 
 ## <a name="next-steps"></a>后续步骤
 
-探索用于检测图像中人脸的人脸 API，使用矩形划分人脸，并返回年龄和性别等属性。
+探索用于检测图像中人脸的人脸 API，使用矩形定人脸界线，并返回年龄和性别等属性。
 
 > [!div class="nextstepaction"]
 > [人脸 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

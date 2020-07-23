@@ -1,21 +1,15 @@
 ---
-title: Azure Functions 运行时概述 | Microsoft Docs
+title: Azure Functions 运行时概述
 description: Azure Functions 运行时预览版概述
-services: functions
 author: apwestgarth
-manager: stefsch
-ms.assetid: ''
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 2af9575c50ee522d6330ddf46c75b666132b7a84
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: ab04aa4ca7f54e8de120d078a313c3096a350aa5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61021165"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74226633"
 ---
 # <a name="azure-functions-runtime-overview-preview"></a>Azure Functions 运行时概述（预览版）
 

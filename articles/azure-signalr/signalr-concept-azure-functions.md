@@ -1,25 +1,27 @@
 ---
-title: 生成实时应用程序使用 Azure Functions 和 Azure SignalR 服务
-description: 在无服务器应用程序中使用 Azure SignalR 服务的概述。
+title: 生成实时应用 - Azure Functions 和 Azure SignalR 服务
+description: 通过以下示例了解如何使用 Azure SignalR 服务开发实时无服务器 Web 应用程序。
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: c06203cfd7537dd4c9bc35c75a3f21d12bf64d26
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: cbb1fcf320a78f11045bf9627ffcc438af3e388a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61401864"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74157619"
 ---
-# <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>生成实时应用程序使用 Azure Functions 和 Azure SignalR 服务
+# <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>使用 Azure Functions 和 Azure SignalR 服务生成实时应用
 
 Azure SignalR Service 和 Azure Functions 都是高度可缩放的完全托管服务，使你可以专注于构建应用程序而不是管理基础结构，因此通常将这两种服务结合使用以在[无服务器](https://azure.microsoft.com/solutions/serverless/)环境中提供实时通信。
 
+> [!NOTE]
+> 了解如何在交互式教程中同时使用 SignalR 和 Azure Functions，[使用 Azure Functions 和 SignalR 服务在 web 应用程序中启用自动更新](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)。
+
 ## <a name="integrate-real-time-communications-with-azure-services"></a>将实时通信与 Azure 服务集成在一起
 
-Azure Functions 允许你以 JavaScript、C# 和 Java 等[多种语言](../azure-functions/supported-languages.md)编写代码，在云中发生事件时触发。 这些事件的示例包括：
+Azure Functions 允许你以 JavaScript、Python、C# 和 Java 等[多种语言](../azure-functions/supported-languages.md)编写代码，在云中发生事件时触发。 这些事件的示例包括：
 
 * HTTP 和 Webhook 请求
 * 周期性定时器
@@ -63,9 +65,10 @@ Azure Functions 允许你以 JavaScript、C# 和 Java 等[多种语言](../azure
 
 在本文中，你将大致了解如何结合使用 Azure Functions 和 SignalR Service 实现各种无服务器实时消息传递的情景。
 
-如何结合使用 Azure Functions 和 SignalR 服务的完整信息，请参阅以下指南。
+有关如何使用 Azure Functions 和 SignalR 服务的完整详细信息，请访问以下资源：
 
-* [Azure Functions 开发和使用 SignalR 服务的配置](signalr-concept-serverless-development-config.md)
+* [通过 SignalR 服务进行 Azure Functions 开发和配置](signalr-concept-serverless-development-config.md)
+* [使用 Azure Functions 和 SignalR 服务在 Web 应用程序中启用自动更新](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)
 
 请按照以下其中一个快速入门了解详细信息。
 

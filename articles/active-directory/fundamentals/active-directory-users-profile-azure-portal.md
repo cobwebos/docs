@@ -1,23 +1,22 @@
 ---
-title: 添加或更新用户的配置文件信息 - Azure Active Directory | Microsoft Docs
+title: 添加或更新用户配置文件信息-Azure AD
 description: 有关如何在 Azure Active Directory 中向用户配置文件添加信息（包括图片和作业详细信息）的说明。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/11/2019
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d710a86bb63765ea8a1a777818ca5f99e38d3a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 277f4c7016849fbdbac4b5070c2a4db681cc66a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60248105"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604006"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>使用 Azure Active Directory 添加或更新用户的配置文件信息
 使用 Azure Active Directory (Azure AD) 来添加用户配置文件信息，包括配置文件图片、工作特定信息和某些设置。 有关添加新用户的详细信息，请参阅[如何添加或删除 Azure Active Directory 中的用户](add-users-azure-active-directory.md)。
@@ -28,29 +27,29 @@ ms.locfileid: "60248105"
 ## <a name="to-add-or-change-profile-information"></a>添加或更改配置文件信息的步骤
 1. 以组织的用户管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 依次选择“Azure Active Directory”、“用户”，然后选择一个用户。 例如，Alain Charon。
+2. 依次选择“Azure Active Directory”、“用户”，然后选择一个用户   。 例如，Alain Charon  。
 
-    Alain Charon - 配置文件页面随即出现。
+    Alain Charon - 配置文件页面随即出现  。
 
     ![用户的配置文件页面，其中包括可编辑信息](media/active-directory-users-profile-azure-portal/user-profile-all-blade.png)
 
-3. 选择“编辑”以选择性地添加或更新每个可用部分中包含的信息。
+3. 选择“编辑”以选择性地添加或更新每个可用部分中包含的信息  。
 
     ![用户的配置文件页面，其中显示可编辑区域](media/active-directory-users-profile-azure-portal/user-profile-edit.png)
 
     - **配置文件图片。** 为用户帐户选择缩略图图像。 该图显示在 Azure Active Directory 和用户的个人页面上（如 myapps.microsoft.com 页面）。
 
-    - **身份。** 添加或更新用户，如已婚姓氏一个附加的标识值。 名字和姓氏的值中，可以单独设置此名称。 例如，可以将它包括姓名首字母缩写，公司名称，或更改显示名称的序列。 在另一个示例中，为两个名为 Chris Green 的用户可以使用的标识字符串将其名称设置为 Chris B.Green Chris。 Green (Contoso)。
+    - **身份。** 添加或更新用户的其他标识值，例如结婚后的姓氏。 可以独立于姓氏和名称的值来设置此名称。 例如，可以使用它来包括首字母缩写、公司名称，或者更改所显示名称的顺序。 又比如，如果两个用户的姓名均为“Chris Green”，则可使用标识字符串将其姓名设置为“Chris B. Green”和“Chris R. Green (Contoso)”。
 
     - **工作信息。** 添加与工作相关的任何信息（如用户的职务、部门或经理）。
 
     - **设置。** 决定用户是否可以登录到 Azure Active Directory 租户。 此外可以指定用户的全局位置。
 
-    - **联系信息。** 为用户添加任何相关的联系信息。 例如，街道地址或移动电话号码。
+    - **联系信息。** 添加用户的任何相关联系信息，但某些用户的电话或移动联系信息除外（只有全局管理员才能更新具有管理员角色的用户）。
 
     - **身份验证联系人信息。** 验证此信息以确保用户的电话号码和电子邮件地址有效。 Azure Active Directory 使用此信息在登录期间确保用户为本人。 身份验证联系人信息只能由全局管理员更新。
 
-4. 选择“保存”。
+4. 选择“保存”。 
 
     为用户保存所做的所有更改。
 

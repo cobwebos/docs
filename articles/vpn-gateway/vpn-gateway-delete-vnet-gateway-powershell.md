@@ -1,18 +1,18 @@
 ---
-title: 删除虚拟网关：PowerShell：Azure 资源管理器 | Microsoft Docs
+title: Azure VPN 网关：删除网关：PowerShell
 description: 在 Resource Manager 部署模型中使用 PowerShell 删除虚拟网络网关。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.date: 02/07/2019
 ms.author: cherylmc
-ms.topic: conceptual
-ms.openlocfilehash: 7b9503b2db14d4de6c4c8cf983c42bccd6f9f8fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.openlocfilehash: c9b6c915fe986e0a953a4e5c503e79f39f3d40ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66157430"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84988006"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>使用 PowerShell 删除虚拟网络网关
 > [!div class="op_single_selector"]
@@ -30,11 +30,11 @@ ms.locfileid: "66157430"
 
 ## <a name="before-beginning"></a>开始之前
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-### <a name="1-download-the-latest-azure-resource-manager-powershell-cmdlets"></a>1.下载最新的 Azure 资源管理器 PowerShell cmdlet。
 
-下载并安装最新版本的 Azure 资源管理器 PowerShell cmdlet。 有关下载和安装 PowerShell cmdlet 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+### <a name="1-download-the-latest-azure-resource-manager-powershell-cmdlets"></a>1.下载最新的 Azure Resource Manager PowerShell cmdlet。
+
+下载并安装最新版本的 Azure Resource Manager PowerShell cmdlet。 有关下载和安装 PowerShell cmdlet 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ### <a name="2-connect-to-your-azure-account"></a>2.连接到 Azure 帐户。
 
@@ -56,7 +56,7 @@ Get-AzSubscription
 Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
-## <a name="S2S"></a>删除站点到站点 VPN 网关
+## <a name="delete-a-site-to-site-vpn-gateway"></a><a name="S2S"></a>删除站点到站点 VPN 网关
 
 若要删除 S2S 配置中的虚拟网络网关，必须先删除与该网关相关的每个资源。 由于存在依赖关系，必须按特定的顺序删除资源。 在以下示例中，必须指定某些值，而其他值是输出结果。 为方便演示，我们在示例中使用了以下特定值：
 
@@ -96,7 +96,7 @@ $Conns | ForEach-Object {Remove-AzVirtualNetworkGatewayConnection -Name $_.name 
 Remove-AzVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-此时，虚拟网络网关已被删除。 可以使用接下来的步骤删除不再使用的任何资源。
+此时，虚拟网络网关已删除。 可以使用后续步骤删除不再使用的任何资源。
 
 ### <a name="5-delete-the-local-network-gateways"></a>5 删除本地网络网关。
 
@@ -120,7 +120,7 @@ $LNG | ForEach-Object {Remove-AzLocalNetworkGateway -Name $_.Name -ResourceGroup
 $GWIpConfigs = $Gateway.IpConfigurations
 ```
 
-获取此虚拟网络网关使用的公共 IP 地址资源列表。 如果虚拟网络网关采用主动-主动配置，会显示两个公共 IP 地址。
+获取此虚拟网络网关使用的公共 IP 地址资源列表。 如果虚拟网络网关采用主动-主动配置，则会显示两个公共 IP 地址。
 
 ```powershell
 $PubIP=Get-AzPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
@@ -139,7 +139,7 @@ $GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-Az
 Set-AzVirtualNetwork -VirtualNetwork $GWSub
 ```
 
-## <a name="v2v"></a>删除 VNet 到 VNet VPN 网关
+## <a name="delete-a-vnet-to-vnet-vpn-gateway"></a><a name="v2v"></a>删除 VNet 到 VNet VPN 网关
 
 若要删除 V2V 配置中的虚拟网络网关，必须先删除与该网关相关的每个资源。 由于存在依赖关系，必须按特定的顺序删除资源。 在以下示例中，必须指定某些值，而其他值是输出结果。 为方便演示，我们在示例中使用了以下特定值：
 
@@ -175,7 +175,7 @@ get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG2" | where-object {$
 $ConnsL=get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
 ```
  
-在此示例中，我们会检查来自 RG2 的连接。 请针对可能与虚拟网络网关建立了连接的每个资源组运行此步骤。
+在此示例中，我们检查来自 RG2 的连接。 请针对可能与虚拟网络网关建立了连接的每个资源组运行此步骤。
 
 ```powershell
  $ConnsR=get-Azvirtualnetworkgatewayconnection -ResourceGroupName "<NameOfResourceGroup2>" | where-object {$_.VirtualNetworkGateway2.Id -eq $GW.Id}
@@ -198,7 +198,7 @@ $ConnsR | ForEach-Object {Remove-AzVirtualNetworkGatewayConnection -Name $_.name
 Remove-AzVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-此时，虚拟网络网关已删除。 可以使用接下来的步骤删除不再使用的任何资源。
+此时，虚拟网络网关已删除。 可以使用后续步骤删除不再使用的任何资源。
 
 ### <a name="6-delete-the-public-ip-address-resources"></a>6.删除公共 IP 地址资源
 
@@ -208,7 +208,7 @@ Remove-AzVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 $GWIpConfigs = $Gateway.IpConfigurations
 ```
 
-获取此虚拟网络网关使用的公共 IP 地址资源列表。 如果虚拟网络网关采用主动-主动配置，会显示两个公共 IP 地址。
+获取此虚拟网络网关使用的公共 IP 地址资源列表。 如果虚拟网络网关采用主动-主动配置，则会显示两个公共 IP 地址。
 
 ```powershell
 $PubIP=Get-AzPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
@@ -227,7 +227,7 @@ $GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-Az
 Set-AzVirtualNetwork -VirtualNetwork $GWSub
 ```
 
-## <a name="deletep2s"></a>删除点到站点 VPN 网关
+## <a name="delete-a-point-to-site-vpn-gateway"></a><a name="deletep2s"></a>删除点到站点 VPN 网关
 
 若要删除 P2S 配置中的虚拟网络网关，必须先删除与该网关相关的每个资源。 由于存在依赖关系，必须按特定的顺序删除资源。 在以下示例中，必须指定某些值，而其他值是输出结果。 为方便演示，我们在示例中使用了以下特定值：
 
@@ -257,7 +257,7 @@ $GW=get-Azvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 Remove-AzVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
-此时，虚拟网络网关已被删除。 可以使用接下来的步骤删除不再使用的任何资源。
+此时，虚拟网络网关已删除。 可以使用后续步骤删除不再使用的任何资源。
 
 ### <a name="3-delete-the-public-ip-address-resources"></a>3.删除公共 IP 地址资源
 
@@ -267,7 +267,7 @@ Remove-AzVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 $GWIpConfigs = $Gateway.IpConfigurations
 ```
 
-获取此虚拟网络网关使用的公共 IP 地址列表。 如果虚拟网络网关采用主动-主动配置，会显示两个公共 IP 地址。
+获取此虚拟网络网关使用的公共 IP 地址列表。 如果虚拟网络网关采用主动-主动配置，则会显示两个公共 IP 地址。
 
 ```powershell
 $PubIP=Get-AzPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
@@ -286,7 +286,7 @@ $GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-Az
 Set-AzVirtualNetwork -VirtualNetwork $GWSub
 ```
 
-## <a name="delete"></a>通过删除资源组来删除 VPN 网关
+## <a name="delete-a-vpn-gateway-by-deleting-the-resource-group"></a><a name="delete"></a>通过删除资源组来删除 VPN 网关
 
 如果不关心是否要保留资源组中的任何资源，而只是要从头开始配置，则可以删除整个资源组。 这种方法可以快速删除所有信息。 以下步骤仅适用于 Resource Manager 部署模型。
 
@@ -310,7 +310,7 @@ Find-AzResource -ResourceGroupNameContains RG1
 
 ### <a name="4-delete-the-resource-group-and-resources"></a>4.删除资源组和资源。
 
-要删除资源组及其包含的所有资源，请修改本示例，并运行。
+如果要删除资源组及其包含的所有资源，请修改本示例，并运行。
 
 ```powershell
 Remove-AzResourceGroup -Name RG1

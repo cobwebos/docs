@@ -1,82 +1,113 @@
 ---
-title: 在 Azure AD 授权管理 （预览版）-Azure Active Directory 中查看报告和日志
-description: 了解如何查看用户分配报表和审核日志在 Azure Active Directory 权利管理 （预览版）。
+title: 在授权管理中查看报表 & 日志-Azure AD
+description: 了解如何在 Azure Active Directory 授权管理中查看 "用户分配" 报表和 "审核日志"。
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: barclayn
+manager: daveba
 editor: jocastel-MSFT
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 04/19/2019
-ms.author: rolyon
+ms.date: 06/18/2020
+ms.author: barclayn
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a61a581574c77a57939ea23fdadc7b060b82af
-ms.sourcegitcommit: 9ad75f83bbf0fc4623b7995794f33bbf823b31c0
-ms.translationtype: MT
+ms.openlocfilehash: 86f2d5202a9b5439fcacca549659e4e181ffeca4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64541535"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85078137"
 ---
-# <a name="view-reports-and-logs-in-azure-ad-entitlement-management-preview"></a>查看报表和 Azure AD 授权管理 （预览版） 中的日志
+# <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>查看 Azure AD 权利管理中的报告和日志
 
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) 授权管理当前处于公共预览状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+Azure AD 的权利管理报表和 Azure AD 审核日志提供了用户有权访问的资源的其他详细信息。 作为管理员，你可以查看用户的访问包和资源分配，并查看请求日志以供审核，或确定用户请求的状态。 本文介绍如何使用权利管理报表和 Azure AD 审核日志。
 
-## <a name="view-resources-a-user-has-access-to"></a>查看用户有权访问的资源
+观看以下视频，了解如何在 "权利管理" 中查看用户有权访问的资源：
 
-1. 单击**Azure Active Directory** ，然后单击**标识监管**。
+>[!VIDEO https://www.youtube.com/embed/omtNJ7ySjS0]
 
-1. 在左侧菜单中，单击**用户分配报表**。
+## <a name="view-access-packages-for-a-user"></a>查看用户的访问包
 
-1. 单击**选择用户**以打开选择用户窗格。
+使用此报告，可以列出用户可以请求的所有访问包和当前分配给用户的访问包。
 
-1. 你想要查看他们有权访问的资源的列表中找到的用户。
+**必备角色：** 全局管理员或用户管理员
 
-1. 单击用户，然后单击**选择**。
+1. 依次单击“Azure Active Directory”、“标识监管”。  
 
-    显示用户有权访问的资源的列表。 它包括访问包、 策略和日期。
+1. 在左侧菜单中，单击 "**报表**"。
 
-    ![用户分配报表](./media/entitlement-management-reports/user-assignments-report.png)
+1. 单击 "**访问用户的包**"。
+
+1. 单击“选择用户”，打开“选择用户”窗格****。
+
+1. 在列表中查找用户，然后单击 "**选择**"。
+
+    "**可以请求**" 选项卡显示用户可以请求的访问包的列表。 此列表由为访问包定义的[请求策略](entitlement-management-access-package-request-policy.md#for-users-in-your-directory)确定。 
+
+    ![访问用户的包](./media/entitlement-management-reports/access-packages-report.png)
+
+1. 如果访问包有多个资源角色或策略，请单击 "资源角色或策略" 条目以查看选择详细信息。
+
+1. 单击 "**分配**" 选项卡以查看当前分配给用户的访问包的列表。 向用户分配访问包时，这意味着用户有权访问访问包中的所有资源角色。
+
+## <a name="view-resource-assignments-for-a-user"></a>查看用户的资源分配
+
+使用此报告可以列出当前分配给授权管理的用户的资源。 请注意，此报表适用于通过授权管理管理的资源。 用户可能有权访问权限管理之外的目录中的其他资源。
+
+**必备角色：** 全局管理员或用户管理员
+
+1. 依次单击“Azure Active Directory”、“标识监管”。  
+
+1. 在左侧菜单中，单击 "**报表**"。
+
+1. 单击 "**资源分配**"。
+
+1. 单击“选择用户”，打开“选择用户”窗格****。
+
+1. 在列表中查找用户，然后单击 "**选择**"。
+
+    将显示当前分配给用户的资源列表。 此列表还显示了访问包及其从其获取资源角色的策略，以及访问的开始和结束日期。
+    
+    如果用户可以访问两个或更多个包中的同一资源，则可以单击箭头查看每个包和策略。
+
+    ![用户的资源分配](./media/entitlement-management-reports/resource-assignments-report.png)
 
 ## <a name="determine-the-status-of-a-users-request"></a>确定用户的请求的状态
 
-若要获取用户如何请求和接收权访问包的其他详细信息，可以使用 Azure AD 审核日志。 具体而言，可以使用中的日志记录`EntitlementManagement`和`UserManagement`类别为每个请求上的处理步骤获取其他详细信息。  
+若要更详细地了解用户如何请求访问某个访问包，以及如何接受对该包的访问，可以使用 Azure AD 审核日志。 具体说来，可以使用`EntitlementManagement` 和 `UserManagement` 类别中的日志记录来更详细地了解每个请求的处理步骤。  
 
-1. 单击**Azure Active Directory** ，然后单击**审核日志**。
+1. 单击“Azure Active Directory”，然后单击“审核日志”。********
 
-1. 在顶部，更改**类别**至任一`EntitlementManagement`或`UserManagement`，取决于所需的审核记录。  
+1. 在顶部将“类别”更改为****`EntitlementManagement` 或 `UserManagement`，具体取决于要查找的审核记录。  
 
 1. 单击“应用”。
 
-1. 若要下载日志，请单击**下载**。
+1. 若要下载日志，请单击“下载”。****
 
-当 Azure AD 收到新请求时，它将审核记录，在其中**类别**是`EntitlementManagement`并且**活动**通常是`User requests access package assignment`。  在 Azure 门户中创建一个直接分配的情况下**活动**审核记录的字段是`Administrator directly assigns user to access package`，并由标识执行分配的用户**ActorUserPrincipalName**.
+Azure AD 在收到新请求时会写入一条审核记录，其中的“类别”为****`EntitlementManagement`，“活动”通常为****`User requests access package assignment`。  如果是在 Azure 门户中创建的直接分配，则审核记录的“活动”字段**** 为 `Administrator directly assigns user to access package`，执行分配的用户通过 **ActorUserPrincipalName** 来标识。
 
-Azure AD 将写入其他审核记录，当请求正在进行，包括：
+Azure AD 会在请求正在进行时写入更多的审核记录，包括：
 
 | 类别 | 活动 | 请求状态 |
 | :---- | :------------ | :------------ |
 | `EntitlementManagement` | `Auto approve access package assignment request` | 请求不需要审批 |
 | `UserManagement` | `Create request approval` | 请求需要审批 |
 | `UserManagement` | `Add approver to request approval` | 请求需要审批 |
-| `EntitlementManagement` | `Approve access package assignment request` | 请求批准 |
-| `EntitlementManagement` | `Ready to fulfill access package assignment request` |请求获得批准，或不需要审批 |
+| `EntitlementManagement` | `Approve access package assignment request` | 已批准请求 |
+| `EntitlementManagement` | `Ready to fulfill access package assignment request` |请求已获得批准，或者不需要审批 |
 
-Azure AD 用户分配访问权限后，写入的审核记录`EntitlementManagement`使用类别**活动** `Fulfill access package assignment`。  收到的访问权限的用户由**ActorUserPrincipalName**字段。
+为用户分配访问权限以后，Azure AD 会写入一条审核记录，其类别为 `EntitlementManagement`，其“活动”为**** `Fulfill access package assignment`。  收到访问权限的用户按 **ActorUserPrincipalName** 字段进行标识。
 
-如果不分配访问权限，则 Azure AD 写入的审核记录`EntitlementManagement`使用类别**活动**任一`Deny access package assignment request`，如果请求被拒绝的审批者或`Access package assignment request timed out (no approver action taken)`，如果请求之前已超时无法批准审批者。
+如果未分配访问权限，则 Azure AD 会写入一条审核记录，其类别为 `EntitlementManagement`，其“活动”为****`Deny access package assignment request`（如果请求被审批者拒绝）或 `Access package assignment request timed out (no approver action taken)`（如果请求已在审批者进行审批之前超时）。
 
-用户的访问权限包分配过期时，用户已取消或删除管理员，然后 Azure AD 将写入的审核记录`EntitlementManagement`使用类别**活动**的`Remove access package assignment`。
+如果用户的访问包分配过期、被用户取消，或者被管理员删除，则 Azure AD 会写入一条审核记录，其类别为 `EntitlementManagement`，其“活动”为****`Remove access package assignment`。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure AD 授权管理故障排除](entitlement-management-troubleshoot.md)
+- [存档报表和日志](entitlement-management-logs-and-reporting.md)
+- [排查 Azure AD 权利管理的问题](entitlement-management-troubleshoot.md)
 - [常见方案](entitlement-management-scenarios.md)

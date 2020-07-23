@@ -1,5 +1,6 @@
 ---
-title: 诊断虚拟机网络流量筛选器问题 - 快速入门 - Azure CLI | Microsoft Docs
+title: 快速入门：诊断 VM 网络流量筛选器问题 - Azure CLI
+titleSuffix: Azure Network Watcher
 description: 本快速入门介绍了如何使用 Azure 网络观察程序的 IP 流验证功能来诊断虚拟机网络流量筛选器问题。
 services: network-watcher
 documentationcenter: network-watcher
@@ -17,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 460513e4818cbef8fca0cd1b84d69b3021afaab7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b3919a016613da2470c14995663acc9c5415e483
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690431"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382845"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>快速入门：诊断虚拟机网络流量筛选器问题 - Azure CLI
 
@@ -32,17 +33,17 @@ ms.locfileid: "64690431"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.28 或更高版本。 要查找已安装的版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 验证 CLI 版本以后，请运行 `az login`，以便创建与 Azure 的连接。 本快速入门中的 CLI 命令已格式化，适合在 Bash Shell 中运行。
+如果选择在本地安装并使用 Azure CLI，本快速入门要求运行 Azure CLI 2.0.28 或更高版本。 要查找已安装的版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 验证 Azure CLI 版本以后，请运行 `az login`，以便创建与 Azure 的连接。 本快速入门中的 Azure CLI 命令已设置了格式，以便在 Bash Shell 中运行。
 
 ## <a name="create-a-vm"></a>创建 VM
 
-在创建 VM 之前，必须创建该 VM 所属的资源组。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+在创建 VM 之前，必须创建该 VM 所属的资源组。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az vm create](/cli/azure/vm) 创建 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 以下示例创建名为 myVm 的 VM：
+使用 [az vm create](/cli/azure/vm) 创建 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 以下示例创建名为 myVm 的 VM  ：
 
 ```azurecli-interactive
 az vm create \
@@ -52,7 +53,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-创建 VM 需要几分钟时间。 在创建好 VM 且 CLI 返回输出之前，请勿继续执行剩余的步骤。
+创建 VM 需要几分钟时间。 在创建好 VM 且 Azure CLI 返回输出之前，请勿继续执行剩余的步骤。
 
 ## <a name="test-network-communication"></a>测试网络通信
 
@@ -133,7 +134,7 @@ az network nic list-effective-nsg \
 
 返回的输出包含 **AllowInternetOutbound** 规则的以下文本，该规则在[使用 IP 流验证](#use-ip-flow-verify)下的前述步骤中允许对 www.bing.com 进行出站访问：
 
-```azurecli
+```
 {
  "access": "Allow",
  "additionalProperties": {},
@@ -170,11 +171,11 @@ az network nic list-effective-nsg \
 },
 ```
 
-可以在上述输出中看到 **destinationAddressPrefix** 为 **Internet**。 尚不清楚 13.107.21.200 与 **Internet** 的关系如何。 可以看到多个地址前缀列在 **expandedDestinationAddressPrefix** 下。 列表中的一个前缀是 **12.0.0.0/6**，涵盖了 IP 地址范围 12.0.0.1-15.255.255.254。 由于 13.107.21.200 在该地址范围内，因此 **AllowInternetOutBound** 规则允许此出站流量。 另外，在上述输出中没有显示优先级更高（数字更小）的可以覆盖此规则的规则。 若要拒绝到某个 IP 地址的出站通信，可以添加一项优先级更高的安全规则，拒绝通过端口 80 向该 IP 地址发送出站流量。
+可以在上述输出中看到 **destinationAddressPrefix** 为 **Internet**。 尚不清楚 13.107.21.200 与 **Internet** 的关系如何。 可以看到多个地址前缀列在 **expandedDestinationAddressPrefix** 下。 列表中的前缀之一为 **12.0.0.0/6**，它涵盖了 IP 地址范围 12.0.0.1-15.255.255.254。 由于 13.107.21.200 在该地址范围内，因此 **AllowInternetOutBound** 规则允许此出站流量。 另外，在上述输出中没有显示优先级更高（数字更小）的可以覆盖此规则的规则。 若要拒绝到某个 IP 地址的出站通信，可以添加一项优先级更高的安全规则，拒绝通过端口 80 向该 IP 地址发送出站流量。
 
 在[使用 IP 流验证](#use-ip-flow-verify)中运行 `az network watcher test-ip-flow` 命令以测试发往 172.131.0.100 的出站通信时，输出指示 **DefaultOutboundDenyAll** 规则拒绝了该通信。 **DefaultOutboundDenyAll** 规则相当于在 `az network nic list-effective-nsg` 命令的以下输出中列出的 **DenyAllOutBound** 规则：
 
-```azurecli
+```
 {
  "access": "Deny",
  "additionalProperties": {},
@@ -207,7 +208,7 @@ az network nic list-effective-nsg \
 
 在[使用 IP 流验证](#use-ip-flow-verify)中运行 `az network watcher test-ip-flow` 命令以测试来自 172.131.0.100 的入站通信时，输出指示 **DefaultInboundDenyAll** 规则拒绝了该通信。 **DefaultInboundDenyAll** 规则相当于在 `az network nic list-effective-nsg` 命令的以下输出中列出的 **DenyAllInBound** 规则：
 
-```azurecli
+```
 {
  "access": "Deny",
  "additionalProperties": {},

@@ -8,17 +8,16 @@ manager: cfowler
 editor: ''
 ms.service: api-management
 ms.workload: mobile
-ms.devlang: na
 ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 547e93fbd9f8d9e676060b8f9e6146ea3537e59b
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: fcedf37843fa0e8175f65db9ff9a434a6d945f7c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730612"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253705"
 ---
 # <a name="backup-and-restore-service"></a>备份和还原服务
 
@@ -44,6 +43,6 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/overview)。
+有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
 
 可以在 [PowerShell 示例](../powershell-samples.md)中找到 Azure API 管理的其他 Azure Powershell 示例。

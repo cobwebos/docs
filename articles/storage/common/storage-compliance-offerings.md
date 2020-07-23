@@ -4,16 +4,16 @@ description: Azure 存储上符合性产品/服务的摘要
 services: storage
 author: fhryo-msft
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 1ad41b0b7391236a15b7c1be7d42ed81aaf5b51a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c24db9fb1b411de31ba8d086b6baa418f656c920
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61483428"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514400"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure 存储符合性产品/服务
 
@@ -21,7 +21,7 @@ ms.locfileid: "61483428"
 
 你可以找到以下 Azure 存储上的符合性产品/服务，确保你的服务在使用 Azure 存储服务方面受到管控。 它们适用于以下 Azure 存储产品/服务：Blob、文件、队列、表、磁盘、冷存储和高级存储。
 
-## <a name="global"></a>全局
+## <a name="global"></a>Global
 
 * [CSA-STAR-Attestation](https://www.microsoft.com/trustcenter/compliance/csa-star-attestation)
 * [CSA-Star-Certification](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)
@@ -64,7 +64,6 @@ ms.locfileid: "61483428"
 * [MAS + ABS（新加坡）](https://aka.ms/AzureCompliance)
 * [MPAA](https://www.microsoft.com/trustcenter/compliance/mpaa)
 * [NEN-7510（荷兰）](https://www.microsoft.com/trustcenter/compliance/nen-7510)
-* [NHS IG 工具包（英国）](https://www.microsoft.com/trustcenter/Compliance/NHS)
 * [PCI DSS](https://www.microsoft.com/trustcenter/compliance/pci)
 * [共享评估](https://aka.ms/AzureCompliance)
 * [SOX](https://www.microsoft.com/trustcenter/compliance/SOX)

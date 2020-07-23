@@ -1,21 +1,16 @@
 ---
 title: Durable Functions 中的永久业务流程 - Azure
 description: 了解如何使用 Azure Functions 的 Durable Functions 扩展实现永久业务流程。
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
-ms.devlang: multiple
+author: cgillum
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 99eabf3bc91887ff19b3a0bc9cf6647d32fa6750
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 34c70f4305ebb2c45757d982ab558aea6450003f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787567"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506360"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions 中的永久业务流程 (Azure Functions)
 
@@ -23,11 +18,11 @@ ms.locfileid: "65787567"
 
 ## <a name="orchestration-history"></a>业务流程历史记录
 
-如[检查点和重播](durable-functions-checkpointing-and-replay.md)中所述，Durable Task Framework 会跟踪每个函数业务流程的历史记录。 只要业务流程协调程序函数继续计划新工作，此历史记录就会不断增长。 如果业务流程协调程序函数进入无限循环并持续计划工作，则此历史记录可能会变得非常大并导致明显的性能问题。 *永久业务流程*概念是为了减轻需要无限循环的应用程序的此类问题而设计的。
+如[业务流程历史记录](durable-functions-orchestrations.md#orchestration-history)主题中所述，Durable Task Framework 会跟踪每个函数业务流程的历史记录。 只要业务流程协调程序函数继续计划新工作，此历史记录就会不断增长。 如果业务流程协调程序函数进入无限循环并持续计划工作，则此历史记录可能会变得非常大并导致明显的性能问题。 *永久业务流程*概念是为了减轻需要无限循环的应用程序的此类问题而设计的。
 
 ## <a name="resetting-and-restarting"></a>重置和重启
 
-业务流程协调程序函数通过调用 [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) 方法重置其状态，而不使用无限循环。 此方法采用单个 JSON 可序列化参数，该参数将成为用于生成下一个业务流程协调程序函数的新输入。
+业务流程协调程序函数通过调用 `ContinueAsNew` 业务流程触发器绑定的（.net）、 `continueAsNew` （JavaScript）或 `continue_as_new` （Python）方法[orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger)来重置其状态，而不是使用无限循环。 此方法采用单个 JSON 可序列化参数，该参数将成为用于生成下一个业务流程协调程序函数的新输入。
 
 当调用 `ContinueAsNew` 时，实例会在其退出之前将一条消息排入其自己的队列。 该消息将使用新的输入值重启实例。 将保持同一实例 ID，但业务流程协调程序函数的历史记录实际上会被截断。
 
@@ -38,14 +33,14 @@ ms.locfileid: "65787567"
 
 永久业务流程的一个用例是需要无限期执行定期工作的代码。
 
-### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Periodic_Cleanup_Loop")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
-    await context.CallActivityAsync("DoCleanup");
+    await context.CallActivityAsync("DoCleanup", null);
 
     // sleep for one hour between cleanups
     DateTime nextCleanup = context.CurrentUtcDateTime.AddHours(1);
@@ -55,7 +50,10 @@ public static async Task Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+> [!NOTE]
+> 前面的 C# 示例适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -72,13 +70,91 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+from datetime import datetime, timedelta
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    yield context.call_activity("DoCleanup")
+
+    # sleep for one hour between cleanups
+    next_cleanup = context.current_utc_datetime + timedelta(hours = 1)
+    yield context.create_timer(next_cleanup)
+
+    context.continue_as_new(None)
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+---
+
 此示例与计时器触发的函数之间的区别是此处的清理触发时间不基于计划。 例如，每小时执行某个函数的 CRON 计划将在 1:00、2:00 和 3:00 等时间执行，并且可能会遇到重叠问题。 不过，在此示例中，如果清理花费 30 分钟，则它将计划在 1:00、2:30、4:00 等时间执行，因此不可能重叠。
+
+## <a name="starting-an-eternal-orchestration"></a>启动永久业务流程
+
+使用 `StartNewAsync` （.net）、 `startNew` （JavaScript）和 `start_new` （Python）方法启动永久业务流程，就像对任何其他业务流程功能一样。  
+
+> [!NOTE]
+> 如果需要确保单一永久业务流程实例正在运行，则在启动业务流程时维护相同的实例 `id` 非常重要。 有关详细信息，请参阅[实例管理](durable-functions-instance-management.md)。
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+```csharp
+[FunctionName("Trigger_Eternal_Orchestration")]
+public static async Task<HttpResponseMessage> OrchestrationTrigger(
+    [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequestMessage request,
+    [DurableClient] IDurableOrchestrationClient client)
+{
+    string instanceId = "StaticId";
+
+    await client.StartNewAsync("Periodic_Cleanup_Loop", instanceId); 
+    return client.CreateCheckStatusResponse(request, instanceId);
+}
+```
+
+> [!NOTE]
+> 前面的代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `OrchestrationClient` 属性而不是 `DurableClient` 属性，并且必须使用 `DurableOrchestrationClient` 参数类型而不是 `IDurableOrchestrationClient`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context, req) {
+    const client = df.getClient(context);
+    const instanceId = "StaticId";
+    
+    // null is used as the input, since there is no input in "Periodic_Cleanup_Loop".
+    await client.startNew("Periodic_Cleanup_Loop", instanceId, null);
+
+    context.log(`Started orchestration with ID = '${instanceId}'.`);
+    return client.createCheckStatusResponse(context.bindingData.req, instanceId);
+};
+```
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    instance_id = 'StaticId'
+
+    await client.start_new('Periodic_Cleanup_Loop', instance_id, None)
+
+    logging.info(f"Started orchestration with ID = '{instance_id}'.")
+    return client.create_check_status_response(req, instance_id)
+
+```
+
+---
 
 ## <a name="exit-from-an-eternal-orchestration"></a>从永久业务流程退出
 
-如果业务流程协调程序函数需要最终完成，则你需要做的全部工作“不是”调用 `ContinueAsNew` 而是让函数退出。
+如果业务流程协调程序函数需要最终完成，则你需要做的全部工作“不是”调用 `ContinueAsNew` 而是让函数退出。**
 
-如果业务流程协调程序函数处于无限循环中并且需要停止，则使用 [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) 方法将其停止。 有关详细信息，请参阅[实例管理](durable-functions-instance-management.md)。
+如果业务流程协调程序函数处于无限循环并且需要停止，请使用 `TerminateAsync` `terminate` 业务流程客户端绑定的（.net）、（JavaScript）或 `terminate` （Python） [orchestration client binding](durable-functions-bindings.md#orchestration-client)方法将其停止。 有关详细信息，请参阅[实例管理](durable-functions-instance-management.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

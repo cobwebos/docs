@@ -1,49 +1,41 @@
 ---
 title: ApplicationInsights.config 参考 - Azure | Microsoft Docs
 description: 启用或禁用数据收集模块，并添加性能计数器和其他参数。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 6e397752-c086-46e9-8648-a1196e8078c2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/19/2018
+ms.date: 05/22/2019
 ms.reviewer: olegan
-ms.author: mbullwin
-ms.openlocfilehash: e50314d80f3b773d2ea3bbc8abd4709b574aae65
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: dde2cbf227f085b751f6ad22e1f2fa95f38c5915
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66226232"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485133"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>使用 ApplicationInsights.config 或 .xml 配置 Application Insights SDK
-Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](https://www.nuget.org/packages/Microsoft.ApplicationInsights)提供 API，用于将遥测数据发送到 Application Insights。 [其他包](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights)提供遥测*模块*和*初始值设定项*，用于自动从应用程序及其上下文跟踪遥测。 通过调整配置文件，可以启用或禁用遥测模块和初始值设定项，并为其设置参数。
+Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](https://www.nuget.org/packages/Microsoft.ApplicationInsights)提供 API，用于将遥测数据发送到 Application Insights。 [其他包](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights)提供遥测*模块*和*初始值设定项*，用于自动从应用程序及其上下文跟踪遥测。 可以通过调整配置文件来启用或禁用遥测模块和初始值设定项并为其设置参数。
 
-配置文件名为 `ApplicationInsights.config` 或 `ApplicationInsights.xml`，具体取决于应用程序的类型。 [安装大多数版本的 SDK][start] 时，系统会自动将配置文件添加到项目。 通过使用 [IIS 服务器上的状态监视器][redfield]或者在选择[适用于 Azure 网站或 VM 的 Application Insights 扩展](azure-web-apps.md)时，也会将配置文件添加到 Web 应用。
+配置文件名为 `ApplicationInsights.config` 或 `ApplicationInsights.xml`，具体取决于应用程序的类型。 [安装大多数版本的 SDK][start] 时，系统会自动将配置文件添加到项目。 默认情况下，使用支持“添加”>“添加 Application Insights 遥测”的 Visual Studio 模板项目提供的自动化体验时，ApplicationInsights.config 文件在项目根文件夹中创建，在编译后复制到 bin 文件夹。 通过使用 [IIS 服务器上的状态监视器][redfield]，也会将配置文件添加到 Web 应用。 如果使用了 [Azure 网站的扩展](azure-web-apps.md)或 [Azure VM 和虚拟机规模集的扩展](azure-vm-vmss-apps.md)，则会忽略此配置文件。
 
-没有同等的文件可以控制[网页中的 SDK][client]。
+没有等效的文件可以控制[网页中的 SDK][client]。
 
 本文档说明配置文件中显示的节、控制 SDK 组件的方式，以及哪些 NuGet 包会加载这些组件。
 
 > [!NOTE]
-> ApplicationInsights.config 和 .xml 指令不适用于 .NET Core SDK。 有关配置.NET Core 应用程序，请遵循[这](../../azure-monitor/app/asp-net-core.md)指南。
+> ApplicationInsights.config 和 .xml 指令不适用于 .NET Core SDK。 若要配置 .NET Core 应用程序，请遵循[此](../../azure-monitor/app/asp-net-core.md)指南。
 
 ## <a name="telemetry-modules-aspnet"></a>遥测模块 (ASP.NET)
-每个遥测模块收集特定类型的数据，并使用核心 API 将数据发送。 不同的 NuGet 包会安装这些模块，同时在 .config 文件中添加所需的行。
+每个遥测模块收集特定类型的数据，并使用核心 API 来发送数据。 不同的 NuGet 包会安装这些模块，同时在 .config 文件中添加所需的行。
 
 在配置文件中，每个模块都有一个对应的节点。 要禁用某个模块，请删除该节点或将其注释掉。
 
 ### <a name="dependency-tracking"></a>依赖项跟踪
-[依赖项跟踪](../../azure-monitor/app/asp-net-dependencies.md)收集有关应用对数据库以及外部服务和数据库的调用的遥测数据。 若要允许在 IIS 服务器中使用此模块，需要[安装状态监视器][redfield]。 若要在 Azure Web 应用或 VM 中使用此模块，请[选择 Application Insights 扩展](azure-web-apps.md)。
+[依赖项跟踪](../../azure-monitor/app/asp-net-dependencies.md)收集有关应用对数据库以及外部服务和数据库的调用的遥测数据。 若要允许在 IIS 服务器中使用此模块，需要[安装状态监视器][redfield]。
 
 还可以使用 [TrackDependency API](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency) 编写自己的依赖项跟踪代码。
 
 * `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule`
 * [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) NuGet 包。
+
+依赖项可以自动收集，不需使用基于代理（无代码）的附加来修改代码。 若要在 Azure Web 应用中使用此模块，请启用 [Application Insights 扩展](azure-web-apps.md)。 若要在 Azure VM 或 Azure 虚拟机规模集中使用它，请启用[用于 VM 和虚拟机规模集的应用程序监视扩展](azure-vm-vmss-apps.md)。
 
 ### <a name="performance-collector"></a>性能收集器
 [收集系统性能计数器](../../azure-monitor/app/performance-counters.md)，例如 IIS 安装中的 CPU、内存和网络负载。 可以指定要收集哪些计数器，包括自己设置的性能计数器。
@@ -52,7 +44,7 @@ Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](https://w
 * [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector) NuGet 包。
 
 ### <a name="application-insights-diagnostics-telemetry"></a>Application Insights 诊断遥测
-`DiagnosticsTelemetryModule` 报告 Application Insights 检测代码本身中的错误。 例如，代码无法访问性能计数器，或 `ITelemetryInitializer` 引发异常。 此模块跟踪的跟踪遥测数据显示在[诊断搜索][diagnostic]中。
+`DiagnosticsTelemetryModule` 报告 Application Insights 检测代码本身中的错误。 例如，代码无法访问性能计数器，或 `ITelemetryInitializer` 引发异常。 此模块跟踪的跟踪遥测数据将显示在[诊断搜索][diagnostic]中。
 
 ```
 * `Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.DiagnosticsTelemetryModule`
@@ -76,7 +68,7 @@ Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](https://w
 
 * `Microsoft.ApplicationInsights.Web.ExceptionTrackingTelemetryModule`
 * [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet 包
-* `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule` - 跟踪[未观察到的任务异常](https://blogs.msdn.com/b/pfxteam/archive/2011/09/28/task-exception-handling-in-net-4-5.aspx)。
+* `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule`-跟踪未观察到任务异常
 * `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule` - 跟踪辅助角色、Windows 服务和控制台应用程序的未经处理的异常。
 * [Application Insights Windows Server](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) NuGet 包。
 
@@ -93,19 +85,19 @@ Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](https://w
 * [Microsoft.ApplicationInsights.EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
 
 ### <a name="microsoftapplicationinsights"></a>Microsoft.ApplicationInsights
-Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microsoft.com/library/mt420197.aspx)。 其他遥测模块使用此操作，请也可以[使用它来定义自己的遥测数据](../../azure-monitor/app/api-custom-events-metrics.md)。
+Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microsoft.com/library/mt420197.aspx)。 其他遥测模块使用此包，也可以[使用它来定义自己的遥测](../../azure-monitor/app/api-custom-events-metrics.md)。
 
 * ApplicationInsights.config 中没有条目。
 * [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet 包。 如果只安装此 NuGet，则不会生成任何 .config 文件。
 
 ## <a name="telemetry-channel"></a>遥测通道
-[遥测通道](telemetry-channels.md)管理缓冲以及传输到 Application Insights 服务的遥测数据。
+[遥测通道](telemetry-channels.md)管理遥测到 Application Insights 服务的缓冲和传输。
 
-* `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel` 是 web 应用程序的默认通道。 它在内存中缓冲数据，使用重试机制和本地磁盘存储的更可靠的遥测数据传递。
-* `Microsoft.ApplicationInsights.InMemoryChannel` 是一个轻型遥测通道，不配置任何其他通道时使用的。 
+* `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel` 是 Web 应用程序的默认通道。 它在内存中缓冲数据，并采用重试机制和本地磁盘存储，以实现更可靠的遥测传输。
+* `Microsoft.ApplicationInsights.InMemoryChannel` 是一个轻型遥测通道，在未配置其他通道时使用。 
 
 ## <a name="telemetry-initializers-aspnet"></a>遥测初始值设定项 (ASP.NET)
-遥测初始值设定项设置上下文属性与每个遥测项一起发送。
+遥测初始值设定项设置连同每个遥测项一起发送的上下文属性。
 
 可以[编写自己的初始值设定项](../../azure-monitor/app/api-filtering-sampling.md#add-properties)来设置上下文属性。
 
@@ -127,21 +119,21 @@ Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microso
 * `OperationNameTelemetryInitializer` 根据 HTTP 方法、ASP.NET MVC 控制器的名称以及为了处理请求而调用的操作，更新所有遥测项的 `RequestTelemetry` 的 `Name` 属性，以及 `Operation` 上下文的 `Name` 属性。
 * `OperationIdTelemetryInitializer` 或 `OperationCorrelationTelemetryInitializer` 在处理包含自动生成的 `RequestTelemetry.Id` 的请求时，更新跟踪的所有遥测项的 `Operation.Id` 上下文属性。
 * 对于包含从用户浏览器中运行的 Application Insights JavaScript 检测代码生成的 `ai_session` Cookie 提取的值的所有遥测项，`SessionTelemetryInitializer` 将更新 `Session` 上下文的 `Id` 属性。
-* `SyntheticTelemetryInitializer` 或 `SyntheticUserAgentTelemetryInitializer` 在处理来自综合源（例如可用性测试或搜索引擎 Bot）的请求时，更新跟踪的所有遥测项的 `User`、`Session` 和 `Operation` 上下文属性。 默认情况下，[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)不显示综合遥测数据。
+* `SyntheticTelemetryInitializer` 或 `SyntheticUserAgentTelemetryInitializer` 在处理来自综合源（例如可用性测试或搜索引擎 Bot）的请求时，更新跟踪的所有遥测项的 `User`、`Session` 和 `Operation` 上下文属性。 默认情况下，[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)不显示综合遥测数据。
 
     `<Filters>` 设置请求的标识属性。
 * 对于包含从用户浏览器中运行的 Application Insights JavaScript 检测代码生成的 `ai_user` Cookie 提取的值的所有遥测项，`UserTelemetryInitializer` 将更新 `User` 上下文的 `Id` 和 `AcquisitionDate` 属性。
-* `WebTestTelemetryInitializer` 设置用户 ID、 会话 ID 和综合源属性的 HTTP 请求的来自[可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)。
+* `WebTestTelemetryInitializer` 设置用户 ID、会话 ID，以及来自[可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)的 HTTP 请求的综合源属性。
   `<Filters>` 设置请求的标识属性。
 
 对于在 Service Fabric 中运行的 .NET 应用程序，可包含 `Microsoft.ApplicationInsights.ServiceFabric` NuGet 包。 该包所含的 `FabricTelemetryInitializer` 会将 Service Fabric 属性添加到遥测项。 有关详细信息，请参阅[GitHub 页](https://github.com/Microsoft/ApplicationInsights-ServiceFabric/blob/master/README.md)，了解由此 NuGet 包所添加的属性。
 
 ## <a name="telemetry-processors-aspnet"></a>遥测处理器 (ASP.NET)
-遥测处理器可以筛选和修改每个遥测项，它从 SDK 发送到门户之前。
+将遥测数据从 SDK 发送到门户之前，遥测处理器可以筛选和修改每个遥测项。
 
-你可以[编写你自己的遥测处理器](../../azure-monitor/app/api-filtering-sampling.md#filtering)。
+可以[编写自己的遥测处理器](../../azure-monitor/app/api-filtering-sampling.md#filtering)。
 
-#### <a name="adaptive-sampling-telemetry-processor-from-200-beta3"></a>自适应采样遥测处理器 （从 2.0.0-beta3 开始）
+#### <a name="adaptive-sampling-telemetry-processor-from-200-beta3"></a>自适性采样遥测处理器（从 2.0.0-beta3 开始）
 此项已默认启用。 如果应用程序要发送大量遥测数据，此处理器将删除某些遥测数据。
 
 ```xml
@@ -158,8 +150,8 @@ Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microso
 
 [了解有关采样的详细信息](../../azure-monitor/app/sampling.md)。
 
-#### <a name="fixed-rate-sampling-telemetry-processor-from-200-beta1"></a>固定速率采样遥测处理器 （从 2.0.0-beta1 开始）
-此外，还有一种标准[采样遥测处理器](../../azure-monitor/app/api-filtering-sampling.md)（从 2.0.1 开始）：
+#### <a name="fixed-rate-sampling-telemetry-processor-from-200-beta1"></a>固定速率采样遥测处理器（从 2.0.0-beta1 开始）
+还有一种标准的[采样遥测处理器](../../azure-monitor/app/api-filtering-sampling.md)（从 2.0.1 开始）：
 
 ```XML
 
@@ -174,106 +166,23 @@ Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microso
 
 ```
 
-
-
-## <a name="channel-parameters-java"></a>通道参数 (Java)
-这些参数会影响到 Java SDK 存储和刷新它所收集的遥测数据的方式。
-
-#### <a name="maxtelemetrybuffercapacity"></a>MaxTelemetryBufferCapacity
-可以存储在 SDK 内存中的遥测项数。 达到此数目时，将刷新遥测缓冲区 - 即，将遥测项发送到 Application Insights 服务器。
-
-* 最小值：第
-* 最大值：1000
-* 默认值：500
-
-```
-
-  <ApplicationInsights>
-      ...
-      <Channel>
-       <MaxTelemetryBufferCapacity>100</MaxTelemetryBufferCapacity>
-      </Channel>
-      ...
-  </ApplicationInsights>
-```
-
-#### <a name="flushintervalinseconds"></a>FlushIntervalInSeconds
-确定以何种频率刷新存储在内存中的数据（以及将数据发送到 Application Insights）。
-
-* 最小值：第
-* 最大值：300
-* 默认值：5
-
-```
-
-    <ApplicationInsights>
-      ...
-      <Channel>
-        <FlushIntervalInSeconds>100</FlushIntervalInSeconds>
-      </Channel>
-      ...
-    </ApplicationInsights>
-```
-
-#### <a name="maxtransmissionstoragecapacityinmb"></a>MaxTransmissionStorageCapacityInMB
-确定分配给本地磁盘上持久性存储的最大大小，以 MB 为单位。 此存储用于保存无法发送到 Application Insights 终结点的遥测项。 达到该存储大小时，将丢弃新遥测项。
-
-* 最小值：第
-* 最大值：100
-* 默认值：10
-
-```
-
-   <ApplicationInsights>
-      ...
-      <Channel>
-        <MaxTransmissionStorageCapacityInMB>50</MaxTransmissionStorageCapacityInMB>
-      </Channel>
-      ...
-   </ApplicationInsights>
-```
-
-#### <a name="local-forwarder"></a>本地转发器
-
-[本地转发器](opencensus-local-forwarder.md)是从各种 SDK 和框架中收集 Application Insights 或 [OpenCensus](https://opencensus.io/) 遥测并将其路由到 Application Insights 的代理。 它能够在 Windows 和 Linux 下运行。 本地转发器与 Application Insights Java SDK 结合使用时，可为[实时指标](../../azure-monitor/app/live-stream.md)和自适应采样提供全面支持。
-
-```xml
-<Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">
-<EndpointAddress><!-- put the hostname:port of your LocalForwarder instance here --></EndpointAddress>
-
-<!-- The properties below are optional. The values shown are the defaults for each property -->
-
-<FlushIntervalInSeconds>5</FlushIntervalInSeconds><!-- must be between [1, 500]. values outside the bound will be rounded to nearest bound -->
-<MaxTelemetryBufferCapacity>500</MaxTelemetryBufferCapacity><!-- units=number of telemetry items; must be between [1, 1000] -->
-</Channel>
-```
-
-如果使用的是 SpringBoot 入门版，请将以下内容添加到配置文件（application.properties）中：
-
-```yml
-azure.application-insights.channel.local-forwarder.endpoint-address=<!--put the hostname:port of your LocalForwarder instance here-->
-azure.application-insights.channel.local-forwarder.flush-interval-in-seconds=<!--optional-->
-azure.application-insights.channel.local-forwarder.max-telemetry-buffer-capacity=<!--optional-->
-```
-
-SpringBoot application.properties 和 applicationinsights.xml 配置的默认值是相同的。
-
 ## <a name="instrumentationkey"></a>InstrumentationKey
 确定显示数据的 Application Insights 资源。 通常，我们会使用单独的密钥为每个应用程序单独创建一个资源。
 
 如果想要以动态方式设置密钥（例如，要将应用程序的结果发送到不同的资源），可以在配置文件中省略密钥，并在代码中设置密钥。
 
-若要设置所有 TelemetryClient 的实例的密钥，包括标准遥测模块，在 TelemetryConfiguration.Active 中都设置密钥。 请在初始化方法中执行此操作，例如通过 ASP.NET 服务中的 global.aspx.cs：
+若要为 TelemetryClient 的所有实例（包括标准遥测模块）设置密钥， 请在初始化方法中执行此操作，例如通过 ASP.NET 服务中的 global.aspx.cs：
 
 ```csharp
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.ApplicationInsights;
 
     protected void Application_Start()
     {
-      Microsoft.ApplicationInsights.Extensibility.
-        TelemetryConfiguration.Active.InstrumentationKey =
-          // - for example -
-          WebConfigurationManager.AppSettings["ikey"];
-      //...
+        TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
+        configuration.InstrumentationKey = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+        var telemetryClient = new TelemetryClient(configuration);
+   
 ```
 
 如果只想将特定的一组事件发送到不同的资源，可以针对特定的 TelemetryClient 设置密钥：

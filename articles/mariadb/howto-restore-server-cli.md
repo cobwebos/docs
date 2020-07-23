@@ -1,26 +1,24 @@
 ---
-title: 如何在 Azure Database for MariaDB 中备份和还原服务器
+title: 备份和还原 - Azure CLI - Azure Database for MariaDB
 description: 了解如何使用 Azure CLI 在 Azure Database for MariaDB 中备份和还原服务器。
-author: rachel-msft
-ms.author: raagyema
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
-ms.topic: conceptual
-ms.date: 11/10/2018
-ms.openlocfilehash: 409fe7b76306036cad19980459ca718c87118d8f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.topic: how-to
+ms.date: 3/27/2020
+ms.openlocfilehash: 3b1eb164d367aa968b599c6d3e92c48fd94b0098
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66171395"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118692"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for MariaDB 中备份和还原服务器
 
-## <a name="backup-happens-automatically"></a>自动进行备份
-
 Azure Database for MariaDB 服务器定期进行备份以便启用还原功能。 通过此功能，用户可将服务器及其所有数据库还原到新服务器上的某个较早时间点。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本操作指南，需要：
 
@@ -71,18 +69,20 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 
 `az mariadb server restore` 命令需要以下参数：
 
-| 设置 | 建议的值 | 描述  |
+| 设置 | 建议的值 | 说明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  源服务器所在的资源组。  |
 | name | mydemoserver-restored | 通过还原命令创建的新服务器的名称。 |
 | restore-point-in-time | 2018-03-13T13:59:00Z | 选择要还原到的时间点。 此日期和时间必须在源服务器的备份保留期限内。 使用 ISO8601 日期和时间格式。 例如，可以使用自己的本地时区，如 `2018-03-13T05:59:00-08:00`。 也可以使用 UTC Zulu 格式，如 `2018-03-13T13:59:00Z`。 |
 | source-server | mydemoserver | 要从其还原的源服务器的名称或 ID。 |
 
-将服务器还原到以前的某个时间点时，会创建新服务器。 原始服务器及其从指定时间点开始创建的数据库会复制到新服务器。
+当将服务器还原到较早的时间点时，将创建新服务器。 原始服务器及其从指定时间点开始创建的数据库会复制到新服务器。
 
-还原的服务器的位置值和定价层值与原始服务器保持相同。
+还原的服务器的位置值和定价层值与原始服务器保持相同。 
 
-还原过程完成后，找到新服务器，验证数据是否已按预期还原。
+还原过程完成后，找到新服务器，验证数据是否已按预期还原。 新服务器具有在启动还原时对现有服务器有效的相同服务器管理员登录名和密码。 可以从新服务器的“概述”  页更改密码。
+
+在还原期间创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 需要为此新服务器单独设置这些规则。 将从原始服务器还原防火墙规则。
 
 ## <a name="geo-restore"></a>异地还原
 
@@ -100,7 +100,7 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 az mariadb server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen5_8
 ```
 
-此命令在 East US 创建一台名为 *mydemoserver-georestored* 且将属于 *myresourcegroup* 的新服务器。 它是一台常规用途第 5 代服务器，具有 8 个 vCore。 该服务器是基于也在资源组 *myresourcegroup* 中的 *mydemoserver* 的异地冗余备份创建的。
+此命令在 East US 创建一台名为 *mydemoserver-georestored* 且将属于 *myresourcegroup* 的新服务器。 它是第 5 代常规用途服务器，具有 8 个 vCore。 该服务器是基于也在资源组 *myresourcegroup* 中的 *mydemoserver* 的异地冗余备份创建的。
 
 如果希望在与现有服务器不同的资源组中创建新服务器，则需要如下例所示在 `--source-server` 参数中限定服务器名称：
 
@@ -111,20 +111,22 @@ az mariadb server georestore --resource-group newresourcegroup --name mydemoserv
 
 `az mariadb server georestore` 命令需要以下参数：
 
-| 设置 | 建议的值 | 描述  |
+| 设置 | 建议的值 | 说明  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | 新服务器将属于的资源组的名称。|
 |name | mydemoserver-georestored | 新服务器的名称。 |
 |source-server | mydemoserver | 将使用其异地冗余备份的现有服务器的名称。 |
-|位置 | eastus | 新服务器的位置。 |
-|sku-name| GP_Gen5_8 | 此参数设置新服务器的定价层、计算层代和 vCore 数。 GP_Gen5_8 映射为一台第 5 代常规用途服务器，具有 8 个 vCore。|
+|location | eastus | 新服务器的位置。 |
+|sku-name| GP_Gen5_8 | 此参数设置新服务器的定价层、计算层代和 vCore 数。 GP_Gen5_8 映射为一个第 5 代常规用途服务器，具有 8 个 vCore。|
 
->[!Important]
->通过异地还原创建新服务器时，它将继承与源服务器相同的存储大小和定价层。 在创建过程中无法更改这些值。 创建新服务器后，可以纵向扩展其存储大小。
+通过异地还原创建新服务器时，它将继承与源服务器相同的存储大小和定价层。 在创建过程中无法更改这些值。 创建新服务器后，可以纵向扩展其存储大小。
 
-还原过程完成后，找到新服务器，验证数据是否已按预期还原。
+还原过程完成后，找到新服务器，验证数据是否已按预期还原。 新服务器具有在启动还原时对现有服务器有效的相同服务器管理员登录名和密码。 可以从新服务器的“概述”  页更改密码。
+
+在还原期间创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 需要为此新服务器单独设置这些规则。 将从原始服务器还原防火墙规则。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解服务的[备份](concepts-backup.md)。
-- 详细了解[业务连续性](concepts-business-continuity.md)选项。
+- 详细了解服务的[备份](concepts-backup.md)
+- 了解[副本](concepts-read-replicas.md)
+- 详细了解[业务连续性](concepts-business-continuity.md)选项

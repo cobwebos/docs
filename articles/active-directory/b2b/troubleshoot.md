@@ -1,27 +1,32 @@
 ---
-title: B2B 协作-Azure Active Directory 故障排除 |Microsoft Docs
+title: B2B 协作故障排除 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory B2B 协作的常见问题的补救措施
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 05/25/2017
+ms.topic: troubleshooting
+ms.date: 03/19/2020
+tags: active-directory
 ms.author: mimart
-author: v-miegge
-manager: celestedg
+author: msmimart
 ms.reviewer: mal
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom:
+- it-pro
+- seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4185d29ff1770ed9549b4b63a2e5da579bcf054f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a835872d4a4fedfb5ef72a1cb9499e4f969adcd3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65767158"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202111"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B 协作故障排除
 
 以下是 Azure Active Directory (Azure AD) B2B 协作的常见问题的一些补救措施。
+
+   > [!IMPORTANT]
+   > **从 2021 年 3 月 31 日起**，Microsoft 将不再支持通过创建用于 B2B 协作方案的非托管 Azure AD 帐户和租户进行邀请兑换。 在准备期间，我们鼓励客户选择参与[电子邮件一次性密码身份验证](one-time-passcode.md)。 我们欢迎你提供有关此公共预览版功能的反馈，并且很乐意创建更多的协作方式。
 
 ## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>我已添加外部用户，但在全局通讯簿或人员选取器中看不到这些用户
 
@@ -35,9 +40,9 @@ ms.locfileid: "65767158"
 
 ## <a name="invitations-have-been-disabled-for-directory"></a>已对目录禁用邀请
 
-如果收到无权邀请用户的通知，请在“用户设置”下验证用户帐户是否有权邀请外部用户：
+如果收到无权邀请用户的通知，请在“Azure Active Directory”>“用户设置”>“外部用户”>“管理外部协作设置”下验证你的用户帐户是否有权邀请外部用户：
 
-![显示外部用户设置的屏幕截图](media/troubleshoot/external-user-settings.png)
+![显示了”外部用户”设置的屏幕截图](media/troubleshoot/external-user-settings.png)
 
 如果最近修改了这些设置或为用户分配了“来宾邀请者”角色，可能有 15-60 分钟的延迟更改才生效。
 
@@ -49,7 +54,7 @@ ms.locfileid: "65767158"
 
 受邀用户所在组织正在使用 Azure Active Directory，但其中不存在特定用户帐户（例如，用户不存在于 AAD contoso.comAzure AD contoso.com 中）。 contoso.com 的管理员可能会设置一个策略以阻止创建用户。 用户必须向其管理员进行核实以确定是否允许外部用户。 外部用户的管理员可能需要在其域中允许电子邮件验证的用户（请参阅有关允许电子邮件验证的用户的此[文章](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)）。
 
-![错误，指出租户不允许电子邮件经过验证的用户](media/troubleshoot/allow-email-verified-users.png)
+![错误，指出租户不允许经电子邮件验证的用户](media/troubleshoot/allow-email-verified-users.png)
 
 ### <a name="external-user-does-not-exist-already-in-a-federated-domain"></a>外部用户尚未存在于联合域中
 
@@ -78,19 +83,29 @@ ms.locfileid: "65767158"
 
 如果此方案非常重要，则可取消 API 邀请电子邮件，并通过所选的电子邮件机制发送邮件。 请咨询所属组织的法律顾问，确保通过这种方式发送的任何电子邮件均符合隐私法规。
 
-## <a name="you-receive-an-aadsts65005-error-when-you-try-to-log-in-to-an-azure-resource"></a>当您尝试登录到 Azure 资源时收到"AADSTS65005"错误
+## <a name="you-receive-an-aadsts65005-error-when-you-try-to-log-in-to-an-azure-resource"></a>尝试登录到 Azure 资源时收到“AADSTS65005”错误
 
-具有来宾帐户的用户无法登录，并且正在接收以下错误消息：
+具有来宾帐户的某个用户无法登录，并收到以下错误消息：
 
+```plaintext
     AADSTS65005: Using application 'AppName' is currently not supported for your organization contoso.com because it is in an unmanaged state. An administrator needs to claim ownership of the company by DNS validation of contoso.com before the application AppName can be provisioned.
+```
 
-用户具有 Azure 用户帐户，并且已放弃或非托管的促销型租户。 此外，还有不全局或公司中租户的管理员。
+该用户具有 Azure 用户帐户，是已被放弃的或非托管的病毒性租户。 此外，租户中没有全局或公司管理员。
 
-若要解决此问题，必须接管已放弃的租户。 请参阅[以在 Azure Active Directory 中的管理员身份接管非托管目录](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)。 您还必须以提供直接的证据，你可以控制命名空间的访问有问题的域后缀的面向 internet 的 DNS。 租户返回到托管状态后，请与客户进行讨论是否保留用户，并已验证的域名是其组织的最佳选项。
+若要解决此问题，你必须接管被放弃的租户。 请参阅[在 Azure Active Directory 中以管理员身份接管非托管目录](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)。 你还必须访问相关域后缀的面向 Internet 的 DNS，以便提供直接证据来证明你控制着该命名空间。 在租户返回到托管状态后，请与客户讨论保留用户和经验证的域名是否是其组织的最佳选择。
 
 ## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>具有实时或“病毒性”租户的来宾用户无法重置其密码
 
-如果标识租户是实时 (JIT) 或病毒性租户（独立的不受管 Azure 租户），则只有来宾用户可以重置其密码。 有时，组织将[接管在员工使用其工作电子邮件地址注册服务时创建的病毒性租户的管理](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)。 组织接管病毒性租户后，只有该组织中的管理员可以重置用户密码或启用 SSPR。 如果需要，作为邀请方组织，你可以从目录中删除来宾用户帐户并重新发送邀请。
+如果标识租户是实时 (JIT) 或病毒性租户（独立的不受管 Azure 租户），则只有来宾用户可以重置其密码。 有时，组织会接管在员工使用其工作电子邮件地址注册服务时创建[的病毒租户的管理](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)。 组织接管病毒性租户后，只有该组织中的管理员可以重置用户密码或启用 SSPR。 如果需要，作为邀请方组织，你可以从目录中删除来宾用户帐户并重新发送邀请。
+
+## <a name="a-guest-user-is-unable-to-use-the-azuread-powershell-v1-module"></a>来宾用户无法使用 AzureAD PowerShell V1 模块
+
+从 2019 年 11 月 18 日开始，你的目录中的来宾用户（所定义的其 userType  属性为 Guest  的用户帐户）被系统阻止使用 AzureAD PowerShell V1 模块。 之后，用户需要成为成员用户（userType  为 Member  ）或使用 AzureAD PowerShell V2 模块。
+
+## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>在 Azure 美国政府租户中，无法邀请 B2B 协作来宾用户
+
+在 Azure 美国政府版云中，当前仅支持在 Azure 美国政府云中的租户之间进行 B2B 协作，并且两者都支持 B2B 协作。 如果你邀请不属于 Azure 美国政府云的租户中的用户，或者不支持 B2B 协作，则会出现错误。 有关详细信息和限制，请参阅[Azure Active Directory Premium P1 和 P2 变体](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)。
 
 ## <a name="next-steps"></a>后续步骤
 

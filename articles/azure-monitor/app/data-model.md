@@ -3,21 +3,17 @@ title: Azure Application Insights 遥测数据模型 | Microsoft Docs
 description: Application Insights 数据模型概述
 services: application-insights
 documentationcenter: .net
-author: mrbullwinkle
 manager: carmonm
-ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/25/2017
+ms.date: 10/14/2019
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 749b4077b457eff836ec515f21d97e892e663156
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 94013a12e1cf48a8007fce2547c200d82a657b71
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60899178"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77671828"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights 遥测数据模型
 
@@ -29,11 +25,11 @@ Application Insights 收集的数据为典型的应用程序执行模式建模�
 
 使用以下类型的遥测监视应用的执行情况。 Application Insights SDK 通常会从 Web 应用程序框架自动收集以下三种类型：
 
-* [请求](data-model-request-telemetry.md) - 生成该类型的遥测用以记录应用接收的请求。 例如，Application Insights Web SDK 会自动为 Web 应用接收到的每个 HTTP 请求生成请求遥测项。 
+* [请求](data-model-request-telemetry.md)  - 生成该类型的遥测用以记录应用接收的请求。 例如，Application Insights Web SDK 会自动为 Web 应用接收到的每个 HTTP 请求生成请求遥测项。 
 
-    “操作”是处理请求的执行线程。 还可以[编写代码](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)监视其他类型的操作，例如 Web 作业或函数中定期处理数据的“唤醒”操作。  每个操作都有一个 ID。 此 ID 可用于对应用处理请求时生成的所有遥测[进行分组](../../azure-monitor/app/correlation.md)。 每个操作无论成功或失败都需要持续一段时间。
-* [异常](data-model-exception-telemetry.md) - 通常表示导致操作失败的异常。
-* [依赖项](data-model-dependency-telemetry.md) - 表示从应用到外部服务或存储（如 REST API 或 SQL）的调用。 在 ASP.NET 中，对 SQL 的依赖项调用由 `System.Data` 定义。 对 HTTP 终结点的调用由 `System.Net` 定义。 
+    “操作”  是处理请求的执行线程。 还可以[编写代码](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)监视其他类型的操作，例如 Web 作业或函数中定期处理数据的“唤醒”操作。  每个操作都有一个 ID。 此 ID 可用于对应用处理请求时生成的所有遥测[进行分组](../../azure-monitor/app/correlation.md)。 每个操作无论成功或失败都需要持续一段时间。
+* [异常](data-model-exception-telemetry.md)  - 通常表示导致操作失败的异常。
+* [依赖项](data-model-dependency-telemetry.md)  - 表示从应用到外部服务或存储（如 REST API 或 SQL）的调用。 在 ASP.NET 中，对 SQL 的依赖项调用由 `System.Data` 定义。 对 HTTP 终结点的调用由 `System.Net` 定义。 
 
 Application Insights 为自定义遥测提供了三种额外的数据类型：
 
@@ -49,7 +45,7 @@ Application Insights 遥测模型定义了将遥测与它所属的操作进行[�
 
 Application Insights 数据模型采用简单基本的结构，不过，它能够非常有效地为应用程序遥测建模。 我们将努力保持该模型的精简结构，以便支持基本方案，并让用户根据高级用途扩展架构。
 
-若要报告数据模型或架构问题以及提供建议，请使用 GitHub [ApplicationInsights-Home](https://github.com/Microsoft/ApplicationInsights-Home/labels/schema) 存储库。
+若要报告数据模型或架构问题以及提供建议，请使用 GitHub [ApplicationInsights-Home](https://github.com/Microsoft/ApplicationInsights-Home/issues) 存储库。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,30 +2,30 @@
 title: 启用 Azure Active Directory B2C 中的年龄限制 | Microsoft Docs
 description: 学习如何辨别使用应用程序的未成年人。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/13/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 33b379a03c92b81885f7adfc70f7025a85ce9057
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 6bd93f9062f8446ce20436a7a04e2054aaf5be71
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66511668"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386125"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>启用 Azure Active Directory B2C 中的年龄限制
 
 >[!IMPORTANT]
->此功能目前以公共预览版提供。 请勿将此功能用于生产应用程序。 
+>此功能目前以公共预览版提供。 请勿将此功能用于生产应用程序。
 >
 
-通过 Azure Active Directory (Azure AD) B2C 中的年龄限制，可识别想要使用你的应用程序的未成年人。 可选择阻止未成年人登录应用程序。 用户还可返回应用程序并确定其年龄组和父母同意状态。 Azure AD B2C 可以阻止未获父母同意的未成年人使用应用程序。 也可以将 Azure AD B2C 设置为允许应用程序决定如何对待未成年人。
+通过 Azure Active Directory B2C (Azure AD B2C) 中的年龄限制，可识别想要使用你的应用程序的未成年人。 可选择阻止未成年人登录应用程序。 用户还可返回应用程序并确定其年龄组和父母同意状态。 Azure AD B2C 可以阻止未获父母同意的未成年人使用应用程序。 也可以将 Azure AD B2C 设置为允许应用程序决定如何对待未成年人。
 
-启用年龄限制中后你[用户流](active-directory-b2c-reference-policies.md)，会要求用户出生时并哪一个国家/地区他们居住在。 如果用户登录之前未输入信息，则他们需要在下次登录时输入该信息。 每次用户登录时都会应用这些规则。
+在[用户流](user-flow-overview.md)中启用年龄限制后，系统会询问用户的出生日期及其所居住的国家/地区。 如果用户登录之前未输入信息，则他们需要在下次登录时输入该信息。 每次用户登录时都会应用这些规则。
 
 Azure AD B2C 使用用户输入的信息来确定他们是否是未成年人。 然后，在其帐户中更新“ageGroup”字段  。 值可为 `null`、`Undefined`、`Minor`、`Adult` 和 `NotAdult`。  然后，将 ageGroup 和 consentProvidedForMinor 字段用于计算 legalAgeGroupClassification 的值    。
 
@@ -48,7 +48,7 @@ Azure AD B2C 使用用户输入的信息来确定他们是否是未成年人。 
 | EG | 埃及 | 无 | 21 |
 | ES | 西班牙 | 13 | 18 |
 | FR | 法国 | 16 | 18 |
-| GB | 英国 | 13 | 18 |
+| GB | United Kingdom | 13 | 18 |
 | GR | 希腊 | 16 | 18 |
 | HR | 克罗地亚 | 16 | 18 |
 | HU | 匈牙利 | 16 | 18 |
@@ -70,11 +70,11 @@ Azure AD B2C 使用用户输入的信息来确定他们是否是未成年人。 
 | SK | 斯洛伐克 | 16 | 18 |
 | TD | 乍得 | 无 | 21 |
 | TH | 泰国 | 无 | 20 |
-| TW | 中国台湾 | 无 | 20 | 
-| 美国 | 美国 | 13 | 18 |
+| TW | 中国台湾 | 无 | 20 |
+| 美国 | United States | 13 | 18 |
 
 ## <a name="age-gating-options"></a>年龄限制选项
- 
+
 ### <a name="allowing-minors-without-parental-consent"></a>允许未征得家长同意的未成年人
 
 对于允许注册和/或登录的用户流，可以选择允许未经同意的未成年人使用应用程序。 对于未征得家长同意的未成年人，允许他们照常登录或注册，并且 Azure AD B2C 会颁发一个带有“legalAgeGroupClassification”声明的 ID 令牌  。 此声明定义了用户体验，例如征得家长同意和更新“consentProvidedForMinor”字段  。
@@ -90,7 +90,7 @@ Azure AD B2C 使用用户输入的信息来确定他们是否是未成年人。 
 
 若要在用户流中使用年龄限制，需要将租户配置为具有附加属性。
 
-1. 单击顶部菜单中的“目录和订阅筛选器”，确保使用包含 Azure AD B2C 租户的目录  。 选择包含租户的目录。 
+1. 选择顶部菜单中的“目录 + 订阅”筛选器，确保使用包含 Azure AD B2C 租户的目录  。 选择包含租户的目录。
 2. 选择 Azure 门户左上角的“所有服务”，搜索并选择 Azure AD B2C   。
 3. 在左侧菜单中选择租户的“属性”  。
 2. 在“年龄限制”部分，单击“配置”   。
@@ -103,7 +103,7 @@ Azure AD B2C 使用用户输入的信息来确定他们是否是未成年人。 
 1. 创建启用了年龄限制的用户流。
 2. 创建用户流后，在菜单中选择“属性”  。
 3. 在“年龄限制”部分，选择“已启用”   。
-4. 然后确定如何管理标识为未成年人的用户。 对于“注册或登录”，可以选择 `Allow minors to access your application` 或 `Block minors from accessing your application`  。 如果选择阻止未成年人，则选择 `Send a JSON back to the application` 或 `Show an error message`。 
+4. 然后确定如何管理标识为未成年人的用户。 对于“注册或登录”，可以选择 `Allow minors to access your application` 或 `Block minors from accessing your application`。 如果选择阻止未成年人，则选择 `Send a JSON back to the application` 或 `Show an error message`。
 
 
 

@@ -6,15 +6,17 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.custom: mvc
 ms.date: 03/18/2019
 ms.author: troyhop
-ms.openlocfilehash: 4401d4b93a27e76554368ce72d256b38de61df4c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom:
+- mvc
+- amqp
+- mqtt
+ms.openlocfilehash: c568dddcbbf57ebd6ed5906bb83af01a84dafa41
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61448973"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81683832"
 ---
 # <a name="create-an-advanced-device-model"></a>创建高级设备模型
 
@@ -22,7 +24,7 @@ ms.locfileid: "61448973"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要遵循本操作指南中的步骤，需在 Azure 订阅中部署设备模拟的实例。
 
@@ -56,7 +58,7 @@ ms.locfileid: "61448973"
 每个设备定义文件包含模拟设备模型的详细信息，其中包括以下信息：
 
 * 设备模型名称：字符串。
-* 协议：AMQP |MQTT |HTTP。
+* 协议：AMQP | MQTT | HTTP。
 * 初始设备状态。
 * 刷新设备状态的频率。
 * 用于刷新设备状态的 JavaScript 文件。
@@ -149,7 +151,7 @@ IoT 设备可以使用不同的协议进行连接。 模拟允许使用 **AMQP**
 ],
 ```
 
-占位符使用特殊语法 **${NAME}**，其中，**NAME** 是 JavaScript **main** 函数返回的设备状态对象中的键。 字符串应括在引号中，而数字则不应括住。
+占位符使用特殊语法 **${NAME}** ，其中，**NAME** 是 JavaScript **main** 函数返回的设备状态对象中的键。 字符串应括在引号中，而数字则不应括住。
 
 #### <a name="message-schema"></a>消息架构
 
@@ -161,7 +163,7 @@ IoT 设备可以使用不同的协议进行连接。 模拟允许使用 **AMQP**
 
 * 对象 - 使用 JSON 序列化
 * 二进制 - 使用 base64 序列化
-* Text
+* 文本
 * Boolean
 * Integer
 * Double

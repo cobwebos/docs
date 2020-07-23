@@ -1,18 +1,19 @@
 ---
-title: 排查 Azure 应用程序网关会话相关性问题
+title: 排查会话相关性问题
+titleSuffix: Azure Application Gateway
 description: 本文介绍如何排查 Azure 应用程序网关中的会话相关性问题
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
-ms.date: 02/22/2019
+ms.topic: troubleshooting
+ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 66f61b5d6fcb86ed93e4dbae802ae7a80613c83d
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 5acf4ac1ec75d5cec057e4b66e3c6cbd8a463271
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66397838"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808015"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>排查 Azure 应用程序网关会话相关性问题
 
@@ -53,7 +54,7 @@ ms.locfileid: "66397838"
 
 也可以使用以下方法之一，检查“backendHttpSettingsCollection”下的“CookieBasedAffinity”值是否设置为“Enabled”：   
 
-- 运行[Get AzApplicationGatewayBackendHttpSetting](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhttpsetting)在 PowerShell 中
+- 在 PowerShell 中运行 [Get-AzApplicationGatewayBackendHttpSetting](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhttpsetting)
 - 使用 Azure 资源管理器模板通查 JSON 文件
 
 ```
@@ -74,7 +75,7 @@ ms.locfileid: "66397838"
 
 #### <a name="symptom"></a>症状
 
-你已启用“基于 Cookie 的相关性”设置，但在 Internet Explorer 中使用短名 URL（例如 [http://website](http://website/)）访问应用程序网关时，请求仍在后端服务器之间弹跳。
+你已启用“基于 Cookie 的相关性”设置，但在 Internet Explorer 中使用短名 URL（例如 `http://website`）访问应用程序网关时，请求仍在后端服务器之间弹跳。
 
 若要识别此问题，请遵照以下说明操作：
 
@@ -96,7 +97,7 @@ ms.locfileid: "66397838"
 
 #### <a name="resolution"></a>解决方法
 
-若要解决此问题，应使用 FQDN 访问应用程序网关。 例如，使用 [http://website.com](https://website.com/) 或 [http://appgw.website.com](http://appgw.website.com/)。
+若要解决此问题，应使用 FQDN 访问应用程序网关。 例如，使用 [http://website.com](https://website.com/) 或 [http://appgw.website.com](http://website.com/)。
 
 ## <a name="additional-logs-to-troubleshoot"></a>用于故障排除的其他日志
 
@@ -140,11 +141,11 @@ ms.locfileid: "66397838"
 
 5. 检查以下数据：
 
-- **ClientIP**– 这是从连接的客户端的客户端 IP 地址。
+- **ClientIP**–这是连接客户端中的客户端 IP 地址。
 - **ClientPort** - 这是发出请求的连接方客户端的源端口。
-- **RequestQuery** – 这表示目标服务器收到的请求。
+- **RequestQuery** –这表示接收请求的目标服务器。
 - **Server-Routed**：收到请求的后端池实例。
-- **X-AzureApplicationGateway-LOG-ID**：用于请求的相关 ID。 它可用于排查后端服务器上的流量问题。 例如：X-AzureApplicationGateway-CACHE-HIT=0&SERVER-ROUTED=10.0.2.4.
+- **X-AzureApplicationGateway-LOG-ID**：用于请求的相关 ID。 可用于排查后端服务器上的流量问题。 例如：X-AzureApplicationGateway-CACHE-HIT=0&SERVER-ROUTED=10.0.2.4.
 
   - **SERVER-STATUS**：应用程序网关接收从后端的 HTTP 响应代码。
 

@@ -1,25 +1,25 @@
 ---
-title: 重置有故障的线路 - ExpressRoute：PowerShell：Azure | Microsoft Docs
+title: 重置失败的线路-ExpressRoute： PowerShell： Azure |Microsoft Docs
 description: 本文帮助你重置处于故障状态的 ExpressRoute 线路。
 services: expressroute
-author: anzaman
+author: kumudD
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/28/2018
-ms.author: anzaman
+ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: f6fd8e5f0e5730e55fa5bbe13f74be796dd6a4cb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e0f79ce0959e7b7dccc20e46493f34e1963df70e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66115842"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537099"
 ---
 # <a name="reset-a-failed-expressroute-circuit"></a>重置有故障的 ExpressRoute 线路
 
 针对 ExpressRoute 线路执行的某个操作未成功完成时，该线路可能进入“故障”状态。 本文帮助你重置有故障的 Azure ExpressRoute 线路。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 ## <a name="reset-a-circuit"></a>重置线路
 

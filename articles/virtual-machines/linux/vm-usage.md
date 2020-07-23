@@ -1,10 +1,10 @@
 ---
-title: 了解 Azure 虚拟机使用情况 | Microsoft Docs
+title: 了解 Azure 虚拟机使用情况
 description: 了解虚拟机使用情况详细信息
 services: virtual-machines
 documentationcenter: ''
 author: mmccrory
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-virtual-machine
 ms.assetid: ''
@@ -15,18 +15,17 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: d3e6d3c534a9295b76043dc8a6e01b9c1bb1496e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: fe3c8a3b5d63c67813a5098742392d5658e5c204
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60743201"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74034236"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>了解 Azure 虚拟机使用情况
 通过分析 Azure 使用情况数据，可以获得强有力的使用情况见解，根据这些见解，可以更好地在整个组织内进行成本管理和分配。 本文档深入介绍 Azure 计算使用情况详细信息。 有关 Azure 一般使用情况的更多详细信息，请导航到[了解你的帐单](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)。
 
 ## <a name="download-your-usage-details"></a>下载使用情况详细信息
-首先，[下载使用情况详细信息](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv)。 下表提供了通过 Azure 资源管理器部署的虚拟机的定义和使用情况示例值。 本文档不包含通过经典模型部署的 VM 的详细信息。
+首先，[下载使用情况详细信息](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)。 下表提供了通过 Azure 资源管理器部署的虚拟机的定义和使用情况示例值。 本文档不包含通过经典模型部署的 VM 的详细信息。
 
 
 | 字段             | 含义                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | 示例值                                                                                                                                                                                                                                                                                                                                                   |
@@ -42,8 +41,8 @@ ms.locfileid: "60743201"
 | 已耗用的服务   | 使用的 Azure 平台服务。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | “Microsoft.Compute”                                                                                                                                                                                                                                                                                                                                              |
 | 资源组     | 部署的资源正在其中运行的资源组。 有关详细信息，请参阅 [Azure 资源管理器概述](https://docs.microsoft.com/azure/virtual-machines/linux/vm-usage)。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |    “MyRG”                                                                                                                                                                                                                                                                                                                                                        |
 | 实例 ID        | 资源的标识符。 此标识符包含你在资源创建时为其指定的名称。 对于 VM，实例 ID 包含 SubscriptionId、ResourceGroupName 和 VMName（或规模集使用情况的规模集名称）。                                                                                                                                                                                                                                                                                                                                                                                                                    | “/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1”<br><br>或<br><br>“/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1”                                                                                           |
-| 标记               | 分配给资源的标记。 使用标记对计费记录进行分组。 了解如何[标记虚拟机](tag.md)。 这仅适用于资源管理器 VM。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | “{"myDepartment":"RD"，"myUser":"myName"}”                                                                                                                                                                                                                                                                                                                        |
-| 其他信息    | 服务特定的元数据。 对于 VM，我们在其他信息字段中填充以下数据： <ul><li>映像类型 - 所运行的特定映像。 在“映像类型”下找到受支持字符串的完整列表。</li><li>服务类型：所部署的大小。</li><li>VMName：VM 的名称。 仅规模集 VM 才填充此字段。 如果需要规模集 VM 的 VM 名称，可在上面的实例 ID 字符串中找到。</li><li>UsageType:这将指定的使用情况，这表示的类型。<ul><li>ComputeHR 是基础 VM（如 Standard_D1_v2）的计算小时数使用情况。</li><li>ComputeHR_SW 是 VM 使用高级软件（如 Microsoft R Server）产生的高级软件费用。</li></ul></li></ul>    | 虚拟机 {"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}<br><br>虚拟机规模集 {"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}<br><br>高级软件 {"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"} |
+| Tags               | 分配给资源的标记。 使用标记对计费记录进行分组。 了解如何[标记虚拟机](tag.md)。 这仅适用于资源管理器 VM。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | “{"myDepartment":"RD"，"myUser":"myName"}”                                                                                                                                                                                                                                                                                                                        |
+| 其他信息    | 服务特定的元数据。 对于 VM，我们在其他信息字段中填充以下数据： <ul><li>映像类型 - 所运行的特定映像。 在“映像类型”下找到受支持字符串的完整列表。</li><li>服务类型：所部署的大小。</li><li>VMName：VM 的名称。 仅规模集 VM 才填充此字段。 如果需要规模集 VM 的 VM 名称，可在上面的实例 ID 字符串中找到。</li><li>UsageType：指定其所代表的使用情况类型。<ul><li>ComputeHR 是基础 VM（如 Standard_D1_v2）的计算小时数使用情况。</li><li>ComputeHR_SW 是 VM 使用高级软件（如 Microsoft R Server）产生的高级软件费用。</li></ul></li></ul>    | 虚拟机 {"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}<br><br>虚拟机规模集 {"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}<br><br>高级软件 {"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"} |
 
 ## <a name="image-type"></a>映像类型
 对于 Azure 库中的某些映像，会在其他信息字段中填充映像类型。 这可让用户了解和跟踪自己在虚拟机上部署的内容。 基于已部署映像在此字段填充的以下值：
@@ -99,11 +98,11 @@ ms.locfileid: "60743201"
 |    uksouth               |    英国南部                              |
 |    UKSouth2              |    英国南部 2                            |
 |    ukwest                |    英国西部                               |
-|    USDoDCentral          |    美国 DoD 中部                        |
-|    USDoDEast             |    美国 DoD 东部                           |
-|    USGovArizona          |    美国亚利桑那州政府                         |
+|    USDoDCentral          |    US DoD 中部                        |
+|    USDoDEast             |    US DoD 东部                           |
+|    USGovArizona          |    US Gov 亚利桑那州                         |
 |    usgoviowa             |    USGov Iowa                            |
-|    USGovTexas            |    美国德克萨斯州政府                           |
+|    USGovTexas            |    US Gov 德克萨斯州                           |
 |    usgovvirginia         |    USGov Virginia                        |
 |    westcentralus         |    美国中西部                       |
 |    westeurope            |    西欧                           |

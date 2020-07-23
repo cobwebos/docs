@@ -2,27 +2,27 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 04/23/2019
+ms.date: 06/26/2019
 ms.author: alkohli
-ms.openlocfilehash: d7a9923d5bd9e357bcd75fae6e0a7d1bcd437a53
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 09d9b5bbf3f9ca7a4eef37891d03c9c865e7f74b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66161207"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67448638"
 ---
-正确的 SSL 证书可以确保，要将加密的信息发送给正确的服务器。 除了加密，该证书还允许进行身份验证。 你可以上载您自己受信任的 SSL 证书通过设备的 PowerShell 接口。
+适当的 SSL 证书可确保将加密信息发送到正确的服务器。 除了加密以外，证书还允许进行身份验证。 你可以通过设备的 PowerShell 接口上传你自己的受信任的 SSL 证书。
 
-1. [连接到 PowerShell 界面](#connect-to-the-powershell-interface)。
-2. 使用`Set-HcsCertificate`cmdlet 来上传的证书。 出现提示时，提供以下参数：
+1. [连接到 PowerShell 接口](#connect-to-the-powershell-interface)。
+2. 使用 `Set-HcsCertificate` cmdlet 上载证书。 出现提示时，请提供以下参数：
 
-   - `CertificateFilePath` -包含中的证书文件的共享路径 *.pfx*格式。
-   - `CertificatePassword` -一个用于保护证书的密码。
-   - `Credentials` -用户名和密码来访问包含证书的共享。
+   - `CertificateFilePath`-以 *.pfx*格式包含证书文件的共享的路径。
+   - `CertificatePassword`-用于保护证书的密码。
+   - `Credentials`-用于访问包含证书的共享的用户名。 在出现提示时向网络共享提供密码。
 
-     下面的示例显示了此 cmdlet 的用法：
+     以下示例显示了此 cmdlet 的用法：
 
      ```
-     Set-HcsCertificate -Scope LocalWebUI -CertificateFilePath "\\myfileshare\certificates\mycert.pfx" -CertificatePassword "mypassword" -Credential "Username/Password"
+     Set-HcsCertificate -Scope LocalWebUI -CertificateFilePath "\\myfileshare\certificates\mycert.pfx" -CertificatePassword "mypassword" -Credential "Username"
      ```
 

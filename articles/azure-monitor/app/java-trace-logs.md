@@ -1,32 +1,57 @@
 ---
-title: 在 Azure Application Insights 中浏览 Java 跟踪日志 | Microsoft Docs
+title: 在 Azure Application Insights 中浏览 Java 跟踪日志
 description: 在 Application Insights 中搜索 Log4J 或 Logback 跟踪
-services: application-insights
-documentationcenter: java
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: fc0a9e2f-3beb-4f47-a9fe-3f86cd29d97a
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.author: mbullwin
-ms.openlocfilehash: 614f9a44f7c699be38906ac00e12f523490ce112
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 05/18/2019
+ms.openlocfilehash: da1b76d52ab93f4d1be7196d6eb7286579481119
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60900475"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77657208"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>在 Application Insights 中浏览 Java 跟踪日志
 如果使用 Logback 或 Log4J（v1.2 或 v2.0）进行跟踪，可将跟踪日志自动发送到 Application Insights，以便在其中发现和搜索日志。
 
-## <a name="install-the-java-sdk"></a>安装 Java SDK
+> [!TIP]
+> 只需为应用程序设置一次 Application Insights 检测密钥。 如果使用的是 Java Spring 之类的框架，则可能已经在应用配置中的其他位置注册了密钥。
+
+## <a name="using-the-application-insights-java-agent"></a>使用 Application Insights Java 代理
+
+默认情况下，Application Insights Java 代理会自动捕获在 `WARN` 级别和更高级别上执行的日志记录。
+
+可以更改使用 `AI-Agent.xml` 文件捕获的日志记录的阈值：
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsightsAgent>
+   <Instrumentation>
+      <BuiltIn>
+         <Logging threshold="info"/>
+      </BuiltIn>
+   </Instrumentation>
+</ApplicationInsightsAgent>
+```
+
+可以使用 `AI-Agent.xml` 文件禁用 Java 代理的日志记录捕获：
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsightsAgent>
+   <Instrumentation>
+      <BuiltIn>
+         <Logging enabled="false"/>
+      </BuiltIn>
+   </Instrumentation>
+</ApplicationInsightsAgent>
+```
+
+## <a name="alternatively-as-opposed-to-using-the-java-agent-you-can-follow-the-instructions-below"></a>或者（不使用 Java 代理），可以按照以下说明进行操作
+
+### <a name="install-the-java-sdk"></a>安装 Java SDK
 
 按照说明安装[适用于 Java 的 Application Insights SDK][java]（如果尚未安装）。
 
-## <a name="add-logging-libraries-to-your-project"></a>将日志记录库添加到项目
+### <a name="add-logging-libraries-to-your-project"></a>将日志记录库添加到项目
 *为项目选择适当的方式。*
 
 #### <a name="if-youre-using-maven"></a>如果使用 Maven...
@@ -107,7 +132,7 @@ ms.locfileid: "60900475"
 | Log4j v1.2 |[Log4J v1.2 追加器 Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
 
 
-## <a name="add-the-appender-to-your-logging-framework"></a>将追加器添加到日志记录框架
+### <a name="add-the-appender-to-your-logging-framework"></a>将追加器添加到日志记录框架
 要开始跟踪，请将相关的代码片段合并到 Log4J 或 Logback 配置文件： 
 
 *Logback*

@@ -1,47 +1,41 @@
 ---
-title: 如何配置 Azure Active Directory 访问权限
-description: 如何使用 Azure Active Directory 访问配置 Azure 区块链服务
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: seal
-ms.date: 05/02/2019
-ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: seal
-manager: femila
-ms.openlocfilehash: 616e342f1d52179c40c225c5dafc9de13ce85e06
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+title: 配置 Azure Active Directory 访问-Azure 区块链服务
+description: 如何配置 Azure Active Directory 访问的 Azure 区块链服务
+ms.date: 11/22/2019
+ms.topic: how-to
+ms.reviewer: janders
+ms.openlocfilehash: 337d01abc51d310d06aeea3427b770132be4824c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028210"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85208767"
 ---
-# <a name="how-to-configure-azure-active-directory-access"></a>如何配置 Azure Active Directory 访问权限
+# <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>如何为 Azure 区块链服务配置 Azure Active Directory 访问权限
 
-在本文中，您将学习如何授予访问权限，并连接到 Azure 区块链服务节点上使用 Azure Active Directory (Azure AD) 用户、 组或应用程序 Id。
+本文介绍如何使用 Azure Active Directory （Azure AD）用户、组或应用程序 Id 授予访问权限并连接到 Azure 区块链服务节点。
 
-Azure AD 提供基于云的标识管理，并允许您在整个企业和访问应用程序在 Azure 中使用单个标识。 Azure 区块链服务与 Azure AD 集成，并提供了好处，如 ID 联合身份验证、 单一登录和多因素身份验证。
+Azure AD 提供基于云的标识管理，使你能够跨整个企业使用单个标识，并在 Azure 中访问应用程序。 Azure 区块链服务与 Azure AD 集成，并提供了诸如 ID 联合身份验证、单一登录和多重身份验证等优点。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* [创建使用 Azure 门户的区块链成员](create-member.md)
+* [使用 Azure 门户创建区块链成员](create-member.md)
 
 ## <a name="grant-access"></a>授予访问权限
 
-您可以授予成员级别和节点级别的访问权限。 授予成员级别的访问权限又将授予成员下的所有节点访问权限。
+可以同时授予成员级别和节点级别的访问权限。 如果授予成员级别的访问权限，则会将访问权限授予成员下的所有节点。
 
-### <a name="grant-member-level-access"></a>授予成员级别的访问权限
+### <a name="grant-member-level-access"></a>授予成员级别访问权限
 
-若要授予成员级别的访问权限。
+在成员级别授予访问权限。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 导航到**访问控制 (IAM) > 添加 > 添加角色分配**。
-1. 选择**区块链成员节点访问 （预览）** 角色并添加你想要授予访问权限的 Azure AD ID 对象。 Azure AD ID 对象可以是：
+1. 导航到**访问控制（IAM） > 添加 > 添加角色分配**。
+1. 选择**区块链成员节点访问（预览版）** 角色，并添加要向其授予访问权限的 Azure AD ID 对象。 Azure AD ID 对象可以是：
 
     | Azure AD 对象 | 示例 |
     |-----------------|---------|
-    | Azure AD 用户   | `frank@contoso.onmicrosoft.com` |
+    | Azure AD 用户   | `kim@contoso.onmicrosoft.com` |
     | Azure AD 组  | `sales@contoso.onmicrosoft.com` |
     | 应用程序 ID  | `13925ab1-4161-4534-8d18-812f5ca1ab1e` |
 
@@ -49,42 +43,45 @@ Azure AD 提供基于云的标识管理，并允许您在整个企业和访问�
 
 1. 选择“保存”。
 
-### <a name="grant-node-level-access"></a>授予节点级别的访问权限
+### <a name="grant-node-level-access"></a>授予节点级别访问权限
 
-1. 可以通过导航到节点安全性授予节点级别的访问权限，并单击你想要授予访问权限的节点名称。
-1. 选择区块链成员节点访问 （预览） 角色并添加你想要授予访问权限的 Azure AD ID 对象。 
+可以通过导航到 "节点安全性" 并单击要授予访问权限的节点名称，在节点级别授予访问权限。
+
+选择区块链成员节点访问（预览版）角色，并添加要向其授予访问权限的 Azure AD ID 对象。
+
+有关详细信息，请参阅[Configure Azure 区块链 Service transaction 节点](configure-transaction-nodes.md#azure-active-directory-access-control)。
 
 ## <a name="connect-using-azure-blockchain-connector"></a>使用 Azure 区块链连接器进行连接
 
-下载或克隆[从 GitHub 的 Azure 区块链连接器](https://github.com/Microsoft/azure-blockchain-connector/)。
+从 GitHub 下载或克隆[Azure 区块链连接器](https://github.com/Microsoft/azure-blockchain-connector/)。
 
 ```bash
 git clone https://github.com/Microsoft/azure-blockchain-connector.git
 ```
 
-本快速入门主题中，请按照**自述文件**若要生成的源代码从连接器。
+按照**自述文件**中的 "快速入门" 部分，从源代码构建连接器。
 
 ### <a name="connect-using-an-azure-ad-user-account"></a>使用 Azure AD 用户帐户进行连接
 
-1. 运行以下命令以使用 Azure AD 用户帐户进行身份验证。 替换\<myAADDirectory\>与 Azure AD 域。 例如，`yourdomain.onmicrosoft.com`。
+1. 运行以下命令，使用 Azure AD 的用户帐户进行身份验证。 替换 \<myAADDirectory\> 为 Azure AD 域。 例如 `yourdomain.onmicrosoft.com`。
 
     ```
     connector.exe -remote <myMemberName>.blockchain.azure.com:3200 -method aadauthcode -tenant-id <myAADDirectory> 
     ```
 
-1. Azure AD 会提示你输入凭据。
-1. 使用你的用户名和密码登录。
-1. 成功进行身份验证，您的本地代理服务器连接到你区块链的节点。 现在可以将附加 Geth 客户端与本地终结点。
+1. Azure AD 提示输入凭据。
+1. 用你的用户名和密码登录。
+1. 身份验证成功后，本地代理将连接到区块链节点。 你现在可以将 Geth 客户端附加到本地终结点。
 
     ```bash
     geth attach http://127.0.0.1:3100
     ```
 
-### <a name="connect-using-an-application-id"></a>使用应用程序 ID 进行连接
+### <a name="connect-using-an-application-id"></a>使用应用程序 ID 连接
 
-许多应用程序而不 Azure AD 用户帐户使用应用程序 ID 与 Azure AD 进行身份验证。
+许多应用程序使用应用程序 ID 而不是 Azure AD 用户帐户对 Azure AD 进行身份验证。
 
-若要连接到你使用应用程序 ID 的节点，替换**aadauthcode**与**aadclient**。
+若要使用应用程序 ID 连接到节点，请将**aadauthcode**替换为**aadclient**。
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myClientID> -client-secret "<myClientSecret>" -tenant-id <myAADDirectory>
@@ -92,17 +89,17 @@ connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myCl
 
 | 参数 | 描述 |
 |-----------|-------------|
-| tenant-id | Azure AD 域，例如， `yourdomain.onmicrosoft.com`
-| client-id | Azure AD 中注册的应用程序的客户端 ID
-| client-secret | Azure AD 中注册的应用程序的客户端机密
+| 租户-id | Azure AD 域，例如`yourdomain.onmicrosoft.com`
+| client-id | Azure AD 中已注册应用程序的客户端 ID
+| client-secret | Azure AD 中已注册应用程序的客户端机密
 
 有关如何在 Azure AD 中注册应用程序的详细信息，请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)
 
-### <a name="connect-a-mobile-device-or-text-browser"></a>将移动设备或文本浏览器连接
+### <a name="connect-a-mobile-device-or-text-browser"></a>连接移动设备或文本浏览器
 
-对于移动设备或 Azure AD 身份验证弹出窗口中显示不能基于文本的浏览器中，Azure AD 将生成一次性密码。 可以复制密码，并继续进行在另一个环境中的 Azure AD 身份验证。
+对于不可能 Azure AD 身份验证弹出窗口显示的移动设备或基于文本的浏览器，Azure AD 生成一次性密码。 你可以复制密码，并在另一个环境中继续进行 Azure AD 身份验证。
 
-若要生成代码的更多信息，请替换**aadauthcode**与**aaddevice**。 替换\<myAADDirectory\>与 Azure AD 域。 例如，`yourdomain.onmicrosoft.com`。
+若要生成密码，请将**aadauthcode**替换为**aaddevice**。 替换 \<myAADDirectory\> 为 Azure AD 域。 例如，`yourdomain.onmicrosoft.com`。
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAADDirectory>
@@ -110,7 +107,4 @@ connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAA
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure 区块链服务中的数据安全性的详细信息，请参阅：
-
-> [!div class="nextstepaction"]
-> [Azure 区块链服务安全性](data-security.md)
+有关 Azure 区块链服务中的数据安全的详细信息，请参阅[Azure 区块链服务安全性](data-security.md)。

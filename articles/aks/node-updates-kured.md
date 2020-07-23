@@ -1,31 +1,29 @@
 ---
-title: 更新并重新启动 Linux 节点使用 kured 中 Azure Kubernetes 服务 (AKS)
-description: 了解如何更新 Linux 节点和自动重新引导这些与 kured 中 Azure Kubernetes 服务 (AKS)
+title: 使用 kured 处理 Linux 节点重启
+titleSuffix: Azure Kubernetes Service
+description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 kured 更新并自动重启 Linux 节点
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: article
 ms.date: 02/28/2019
-ms.author: iainfou
-ms.openlocfilehash: 1702d9558e27452006a2f015fd3312ac19362871
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: 955e5323769a7b9bf80413c045aaa3d55547eb02
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65849874"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82208068"
 ---
-# <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>将安全更新和内核更新应用到 Linux 节点在 Azure Kubernetes 服务 (AKS)
+# <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>将安全更新和内核更新应用于 Azure Kubernetes 服务 (AKS) 中的 Linux 节点
 
-若要保护你的群集，安全更新自动应用于 AKS 的 Linux 节点。 这些更新包括 OS 安全修复项或内核更新。 其中的部分更新需要重启节点才能完成更新进程。 AKS 不会自动重新启动这些 Linux 节点，以完成更新过程。
+为保护群集，安全更新会自动应用于 AKS 中的 Linux 节点。 这些更新包括 OS 安全修复项或内核更新。 其中的部分更新需要重启节点才能完成更新进程。 AKS 不会自动重启这些 Linux 节点以完成更新进程。
 
-以保持 （目前以预览版在 AKS 中） 的 Windows 服务器节点的最新的过程是稍有不同。 Windows Server 节点不会接收每日更新。 相反，您执行 AKS 升级部署与最新的基本 Windows Server 映像和修补程序的新节点。 对于使用 Windows Server 节点的 AKS 群集，请参阅[升级在 AKS 中的节点池][nodepool-upgrade]。
+保持 Windows Server 节点处于最新状态的过程稍有不同。 Windows Server 节点不接收每日更新。 相反，你执行 AKS 升级，该升级使用最新的基本窗口服务器映像和修补程序来部署新节点。 对于使用 Windows Server 节点的 AKS 群集，请参阅[在 AKS 中升级节点池][nodepool-upgrade]。
 
-本文介绍如何使用开放源代码[kured （KUbernetes 重新启动守护程序）] [ kured]要监视的 Linux 节点需要重新启动，然后自动处理正在运行的 pod 和节点的重新安排重新启动进程。
+本文介绍了如何使用开源 [kured (KUbernetes REboot Daemon)][kured] 来查看需要重启的 Linux 节点，然后自动重新调度运行中的 Pod 并处理节点重启进程。
 
 > [!NOTE]
-> `Kured` 是 Weaveworks 提供的一个开源项目。 我们尽可能地在 AKS 中提供对该项目的支持。 可以 #weave 社区 slack 通道中找到其他支持。
+> `Kured` 是 Weaveworks 提供的一个开源项目。 我们尽可能地在 AKS 中提供对该项目的支持。 在 #weave-community Slack 通道中可找到其他支持。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
@@ -37,9 +35,9 @@ ms.locfileid: "65849874"
 
 ![使用 kured 进行的 AKS 节点更新和重启进程](media/node-updates-kured/node-reboot-process.png)
 
-部分安全更新（如内核更新）需要重启节点才能完成更新进程。 需要重新启动在 Linux 节点创建名为的文件 */var/run/reboot-required*。 此重启进程不会自动进行。
+部分安全更新（如内核更新）需要重启节点才能完成更新进程。 需要重启的 Linux 节点会创建名为 /var/run/reboot-required 的文件。 此重启进程不会自动进行。
 
-你可以使用自己的工作流和进程来重启节点，或使用 `kured` 安排该进程。 与`kured`、 一个[DaemonSet] [ DaemonSet]部署，在群集中每个 Linux 节点上运行 pod。 DaemonSet 中的这些 pod 可监视是否存在 /var/run/reboot-required 文件，然后启动重启节点的进程。
+你可以使用自己的工作流和进程来重启节点，或使用 `kured` 安排该进程。 使用 `kured`，可以部署在群集每个 Linux 节点上运行 Pod 的 [DaemonSet][DaemonSet]。 DaemonSet 中的这些 pod 会监视是否存在 /var/run/reboot-required 文件，然后启动重启节点的进程。
 
 ### <a name="node-upgrades"></a>节点升级
 
@@ -54,16 +52,27 @@ AKS 中还有额外的进程，可通过该进程升级群集。 升级通常是
 
 ## <a name="deploy-kured-in-an-aks-cluster"></a>在 AKS 群集中部署 kured
 
-要部署 `kured` DaemonSet，请从以下示例 YAML 清单的 GitHub 项目页应用它们。 此清单创建角色、群集角色、绑定和服务帐户，然后使用支持 AKS 群集 1.9 或更高版本的 `kured` 1.1.0 版部署 DaemonSet。
+若要部署 `kured` DaemonSet，请安装以下正式的 Kured Helm 图表。 这将创建角色和群集角色、绑定以及服务帐户，然后使用 `kured` 部署 DaemonSet。
 
 ```console
-kubectl apply -f https://github.com/weaveworks/kured/releases/download/1.2.0/kured-1.2.0-dockerhub.yaml
+# Add the stable Helm repository
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 
-You can also configure additional parameters for `kured`, such as integration with Prometheus or Slack. For more information about additional configuration parameters, see the [kured installation docs][kured-install].
+# Update your local Helm chart repository cache
+helm repo update
 
-## Update cluster nodes
+# Create a dedicated namespace where you would like to deploy kured into
+kubectl create namespace kured
 
-By default, Linux nodes in AKS check for updates every evening. If you don't want to wait, you can manually perform an update to check that `kured` runs correctly. First, follow the steps to [SSH to one of your AKS nodes][aks-ssh]. Once you have an SSH connection to the Linux node, check for updates and apply them as follows:
+# Install kured in that namespace with Helm 3 (only on Linux nodes, kured is not working on Windows nodes)
+helm install kured stable/kured --namespace kured --set nodeSelector."beta\.kubernetes\.io/os"=linux
+```
+
+也可以为 `kured` 配置其他参数，例如与 Prometheus 或 Slack 集成。 有关其他配置参数的详细信息，请参阅 [kured Helm 图表][kured-install]。
+
+## <a name="update-cluster-nodes"></a>更新群集节点
+
+默认情况下，AKS 中的 Linux 节点会每晚检查更新。 如果不想等待，可以手动执行更新以检查 `kured` 是否正常运行。 首先，按照步骤[与任意 AKS 节点建立 SSH 连接][aks-ssh]。 与 Linux 节点建立 SSH 连接后，检查更新并按如下方式应用更新：
 
 ```console
 sudo apt-get update && sudo apt-get upgrade -y
@@ -82,7 +91,7 @@ NAME                       STATUS                     ROLES     AGE       VERSIO
 aks-nodepool1-28993262-0   Ready,SchedulingDisabled   agent     1h        v1.11.7
 ```
 
-更新过程完成后，可使用带有 `--output wide` 参数的 [kubectl get nodes][kubectl-get-nodes] 命令查看节点的状态。 通过此附加输出，可发现基础节点的 KERNEL-VERSION 会有所差异，如以下示例输出所示。 *Aks nodepool1 28993262 0*已在上一步并显示了内核版本中更新*4.15.0-1039-azure*。 在节点*aks nodepool1 28993262 1*的尚未更新的显示的内核版本*4.15.0-1037-azure*。
+更新过程完成后，可使用带有 `--output wide` 参数的 [kubectl get nodes][kubectl-get-nodes] 命令查看节点的状态。 通过此附加输出，可发现基础节点的 KERNEL-VERSION 会有所差异，如以下示例输出所示。 在上一步中已更新 *aks-nodepool1-28993262-0*，并显示内核版本为 *4.15.0-1039-azure*。 尚未更新的 *aks-nodepool1-28993262-1* 节点显示的内核版本为 *4.15.0-1037-azure*。
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
@@ -92,13 +101,13 @@ aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5   
 
 ## <a name="next-steps"></a>后续步骤
 
-本文详细介绍如何使用`kured`作为安全更新过程的一部分自动重新启动 Linux 节点。 若要升级到 Kubernetes 的最新版本，可以[升级 AKS 群集][aks-upgrade]。
+本文详细介绍了如何在安全更新进程中使用 `kured` 自动重启 Linux 节点。 若要升级到 Kubernetes 的最新版本，可以[升级 AKS 群集][aks-upgrade]。
 
-对于使用 Windows Server 节点的 AKS 群集，请参阅[升级在 AKS 中的节点池][nodepool-upgrade]。
+对于使用 Windows Server 节点的 AKS 群集，请参阅[在 AKS 中升级节点池][nodepool-upgrade]。
 
 <!-- LINKS - external -->
 [kured]: https://github.com/weaveworks/kured
-[kured-install]: https://github.com/weaveworks/kured#installation
+[kured-install]: https://hub.helm.sh/charts/stable/kured
 [kubectl-get-nodes]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
 <!-- LINKS - internal -->

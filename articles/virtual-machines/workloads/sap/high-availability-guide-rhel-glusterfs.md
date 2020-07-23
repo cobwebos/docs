@@ -1,26 +1,24 @@
 ---
-title: 适用于 SAP NetWeaver 的 Red Hat Enterprise Linux 上的 Azure VM 上的 GlusterFS | Microsoft Docs
+title: RHEL 上的 Azure Vm 上的 GlusterFS for SAP NetWeaver |Microsoft Docs
 description: 适用于 SAP NetWeaver 的 Red Hat Enterprise Linux 上的 Azure VM 上的 GlusterFS
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: timlt
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
-ms.author: sedusch
-ms.openlocfilehash: 484a0043b9b5eefa5491dee75e87244d1c001620
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: radeltch
+ms.openlocfilehash: 388a2db2c888be541d89c5f4274bd38b37e4ca28
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60711222"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77591908"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 Red Hat Enterprise Linux 上的 Azure VM 上的 GlusterFS
 
@@ -44,7 +42,7 @@ ms.locfileid: "60711222"
 [sap-hana-ha]:sap-hana-high-availability-rhel.md
 
 本文介绍了如何部署虚拟机、配置虚拟机以及安装可用于存储高可用性 SAP 系统的共享数据的 GlusterFS 群集。
-本指南介绍了如何设置供两个 SAP 系统（NW1 和 NW2）使用的 GlusterFS。 示例中的资源名称（例如虚拟机、虚拟网络）假设你将 [SAP 文件服务器模板][template-file-server]与资源前缀 glust 配合使用。
+本指南介绍了如何设置供两个 SAP 系统（NW1 和 NW2）使用的 GlusterFS。 示例中的资源名称（例如虚拟机、虚拟网络）假设你将 [SAP 文件服务器模板][template-file-server]与资源前缀 glust 配合使用****。
 
 请先阅读以下 SAP 说明和文档
 
@@ -87,7 +85,7 @@ ms.locfileid: "60711222"
 ### <a name="deploy-linux-via-azure-template"></a>通过 Azure 模板部署 Linux
 
 Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于部署新的虚拟机。
-可以使用 github 上的某个快速启动模板部署全部所需资源。 该模板部署虚拟机、可用性集等。请遵照以下步骤部署模板：
+可以使用 github 上的某个快速启动模板部署全部所需资源。 模板部署虚拟机、可用性集等。按照以下步骤部署模板：
 
 1. 在 Azure 门户中打开 [SAP 文件服务器模板][template-file-server]
 1. 输入以下参数
@@ -99,11 +97,11 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
    4. 管理员用户名、管理员密码或 SSH 密钥  
       创建可用于登录计算机的新用户。
    5. 子网 ID  
-      如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/&lt;订阅 ID&gt;/resourceGroups/&lt;资源组名称&gt;/providers/Microsoft.Network/virtualNetworks/&lt;虚拟网络名称&gt;/subnets/&lt;子网名称&gt;
+      如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常类似于/subscriptions/** &lt; 订阅 ID &gt; **/ResourceGroups/** &lt; 资源组名称 &gt; **/providers/Microsoft.Network/virtualNetworks/** &lt; 虚拟网络名称 &gt; **/subnets/** &lt; 子网名称 &gt; **
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>通过 Azure 门户手动部署 Linux
 
-首先需要为此群集创建虚拟机。 之后，创建一个负载均衡器并使用后端池中的虚拟机。
+首先需要为此群集创建虚拟机。 之后，创建一个负载均衡器并使用后端池中的虚拟机。 建议使用[标准负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。  
 
 1. 创建资源组。
 1. 创建虚拟网络
@@ -119,7 +117,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
 
 ### <a name="configure-glusterfs"></a>配置 GlusterFS
 
-以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1、[2] - 仅适用于节点 2、[3] - 仅适用于节点 3。
+以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1、[2] - 仅适用于节点 2、[3] - 仅适用于节点 3****************。
 
 1. [A] 设置主机名称解析
 

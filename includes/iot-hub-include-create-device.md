@@ -8,31 +8,30 @@ ms.topic: include
 ms.date: 11/06/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: d70544866b9e321d98acd3978da145276e036025
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 7b022f71e197c5695876f2049ee376c3616afc6d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146543"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "70049021"
 ---
 <!-- put the ## header in the file that includes this file -->
 
-本部分在 IoT 中心的标识注册表中创建设备标识。 设备无法连接到 IoT 中心，除非它在标识注册表中具有条目。 有关详细信息，请参阅 [IoT 中心开发人员指南](../articles/iot-hub/iot-hub-devguide-identity-registry.md)的“标识注册表”部分 
+本部分在 IoT 中心的标识注册表中创建设备标识。 设备无法连接到中心，除非它在标识注册表中具有条目。 有关详细信息，请参阅 [IoT 中心开发人员指南](../articles/iot-hub/iot-hub-devguide-identity-registry.md#identity-registry-operations)。
 
-1. 在 IoT 中心导航菜单中，打开**IoT 设备**，然后选择**添加**在 IoT 中心中注册新设备。
+1. 在 IoT 中心导航菜单中，打开“IoT 设备”，然后选择“新建”，在 IoT 中心添加设备 。
 
-    ![在门户中创建设备标识](./media/iot-hub-include-create-device/create-identity-portal.png)
+    ![在门户中创建设备标识](./media/iot-hub-include-create-device/create-identity-portal-vs2019.png)
 
-1. 提供在新设备的名称，例如**myDeviceId**，然后选择**保存**。 此操作会为 IoT 中心创建新设备标识。
+1. 在“创建设备”中，提供新设备的名称（例如 myDeviceId），然后选择“保存”。 此操作会为 IoT 中心创建设备标识。
 
-   ![添加新设备](./media/iot-hub-include-create-device/create-a-device.png)
+   ![添加新设备](./media/iot-hub-include-create-device/create-a-device-vs2019.png)
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
+1. 创建设备后，在“IoT 设备”窗格的列表中打开该设备。 复制“主连接字符串”以供稍后使用。
 
-1. 创建设备后，在“IoT 设备”窗格的列表中打开该设备。 复制“连接字符串 ---主密钥”供以后使用。
-
-    ![设备连接字符串](./media/iot-hub-include-create-device/device-details.png)
+    ![设备连接字符串](./media/iot-hub-include-create-device/device-details-vs2019.png)
 
 > [!NOTE]
-> IoT 中心标识注册表只存储设备标识，以启用对 IoT 中心的安全访问。 它存储设备 ID 和密钥作为安全凭据，以及启用/禁用标志让你禁用对单个设备的访问。 如果应用程序需要存储其他特定于设备的元数据，则应使用特定于应用程序的存储。 有关详细信息，请参阅 [IoT 中心开发人员指南](../articles/iot-hub/iot-hub-devguide-identity-registry.md)。
+> IoT 中心标识注册表只存储设备标识，以启用对 IoT 中心的安全访问。 它存储设备 ID 和密钥用作安全凭据，以及可用于禁用单个设备访问的启用/禁用标志。 如果应用程序需要存储其他特定于设备的元数据，则应使用特定于应用程序的存储。 有关详细信息，请参阅 [IoT 中心开发人员指南](../articles/iot-hub/iot-hub-devguide-identity-registry.md)。

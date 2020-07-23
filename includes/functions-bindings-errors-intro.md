@@ -4,14 +4,32 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: c1784111cd2fc2c93b67510f310b9e513cf2b86e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 629de079f7cc7d95d10f8ff951a47b8b8fc62dad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66132469"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77474123"
 ---
-Azure Functions [触发器和绑定](../articles/azure-functions/functions-triggers-bindings.md)与各种 Azure 服务进行通信。 与这些服务集成时，可能会遇到来源于底层 Azure 服务 API 的引发错误。 尝试使用 REST 或客户端库通过函数代码与其他服务进行通信时，也可能会发生错误。 若要避免数据丢失并确保函数的行为正常，请务必处理来自任一源的错误。
+Azure Functions 中引发的错误可能来自以下任一来源：
+
+- 使用内置 Azure Functions [触发器和绑定](..\articles\azure-functions\functions-triggers-bindings.md)
+- 调用底层 Azure 服务的 API
+- 调用 REST 终结点
+- 调用客户端库、包或第三方 API
+
+遵循可靠的错误处理做法对于避免数据丢失或遗漏消息非常重要。 建议的错误处理做法包括下列操作：
+
+- [启用 Application Insights](../articles/azure-functions/functions-monitoring.md)
+- [使用结构化错误处理](#use-structured-error-handling)
+- [幂等性设计](../articles/azure-functions/functions-idempotent.md)
+- [实施重试策略](../articles/azure-functions/functions-reliable-event-processing.md)（如果适用）
+
+### <a name="use-structured-error-handling"></a>使用结构化错误处理
+
+捕获和发布错误对于监视应用程序的运行状况至关重要。 任何函数代码的最顶层应包含 try/catch 块。 在 catch 块中，可以捕获并发布错误。
+
+### <a name="retry-support"></a>重试支持
 
 以下触发器具有内置重试支持：
 
@@ -19,8 +37,6 @@ Azure Functions [触发器和绑定](../articles/azure-functions/functions-trigg
 * [Azure 队列存储](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure 服务总线（队列/主题）](../articles/azure-functions/functions-bindings-service-bus.md)
 
-默认情况下，这两种触发器最多重试五次。 第五次重试后，这些触发器会将消息写入到一个特殊的[有害队列](../articles/azure-functions/functions-bindings-storage-queue.md#trigger---poison-messages)。
+默认情况下，这些触发器最多重试请求五次。 第五次重试后，Azure 队列存储和 Azure 服务总线触发器会将消息写入 [有害队列](..\articles\azure-functions\functions-bindings-storage-queue-trigger.md#poison-messages)。
 
-对于其他 Functions 触发器而言，函数执行期间发生错误时没有内置重试机制。 为了防止在函数中发生错误时触发器信息丢失，我们建议你在函数代码中使用 try-catch 块捕获任何错误。 发生错误时，触发器会将传入函数的信息写入到特殊的“有害”消息队列。 [Blob 存储触发器](../articles/azure-functions/functions-bindings-storage-blob.md#trigger---poison-blobs)也使用此方法。
-
-这样，可以捕获因出错可能会丢失的触发器事件，并在稍后通过其他函数使用存储的信息重试处理有害队列中的消息。  
+需要为任何其他触发器或绑定类型手动实现重试策略。 手动实现可能包括将错误信息写入到一个[有害队列](..\articles\azure-functions\functions-bindings-storage-blob-trigger.md#poison-blobs)。 写入到有害队列后，你就有机会在稍后重试操作。 Blob 存储触发器也使用此方法。

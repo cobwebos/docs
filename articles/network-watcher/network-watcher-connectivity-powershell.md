@@ -1,24 +1,22 @@
 ---
-title: 使用 Azure 网络观察程序排查连接问题 - PowerShell | Microsoft Docs
+title: 排查连接问题 - Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: 了解如何通过 PowerShell 使用 Azure 网络观察程序的排查连接问题功能。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
-ms.author: kumud
-ms.openlocfilehash: fe665c425c2b28678ccb29a06d29c20bb11b5c1d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.author: damendo
+ms.openlocfilehash: aa5d7efed1ce1f41ebb67e2ec377e862ad14ed7a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716645"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84725029"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>通过 PowerShell 使用 Azure 网络观察程序排查连接问题
 
@@ -57,15 +55,14 @@ $RG = Get-AzResourceGroup -Name $rgName
 $VM1 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
 $VM2 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $destVMName
 
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location} 
-$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
+$networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Value $VM1.Location 
 
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationId $VM2.Id -DestinationPort 80
 ```
 
 ### <a name="response"></a>响应
 
-以下响应来自前面的示例。  在此响应中，`ConnectionStatus` 为“不可访问”。 可以看到所有探测都发送失败。 由于用户配置的名为 **UserRule_Port80** 的 `NetworkSecurityRule` 已配置为阻止端口 80 上的传入流量，虚拟设备上的连接失败。 可以使用此信息来了解连接问题。
+以下响应来自前面的示例。  在此响应中，`ConnectionStatus` 为“不可访问”  。 可以看到所有探测都发送失败。 由于用户配置的名为 **UserRule_Port80** 的 `NetworkSecurityRule` 已配置为阻止端口 80 上的传入流量，虚拟设备上的连接失败。 可以使用此信息来了解连接问题。
 
 ```
 ConnectionStatus : Unreachable
@@ -149,15 +146,14 @@ $sourceVMName = "MultiTierApp0"
 $RG = Get-AzResourceGroup -Name $rgName
 $VM1 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
 
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location } 
-$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
+$networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Value $VM1.Location 
 
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress 13.107.21.200 -DestinationPort 80
 ```
 
 ### <a name="response"></a>响应
 
-在以下示例中，`ConnectionStatus` 显示为“不可访问”。 在 `Hops` 详细信息中，可以在 `Issues` 下看到由于 `UserDefinedRoute` 流量已被阻止。 
+在以下示例中，`ConnectionStatus` 显示为“不可访问”  。 在 `Hops` 详细信息中，可以在 `Issues` 下看到由于 `UserDefinedRoute` 流量已被阻止。 
 
 ```
 ConnectionStatus : Unreachable
@@ -213,8 +209,7 @@ $sourceVMName = "MultiTierApp0"
 $RG = Get-AzResourceGroup -Name $rgName
 $VM1 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
 
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location } 
-$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
+$networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Value $VM1.Location 
 
 
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress https://bing.com/
@@ -222,7 +217,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>响应
 
-在以下响应中，可以看到 `ConnectionStatus` 显示为“可以访问”。 连接成功后，提供了延迟值。
+在以下响应中，可以看到 `ConnectionStatus` 显示为“可以访问”  。 连接成功后，提供了延迟值。
 
 ```
 ConnectionStatus : Reachable
@@ -267,15 +262,14 @@ $RG = Get-AzResourceGroup -Name $rgName
 
 $VM1 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
 
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location }
-$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
+$networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Value $VM1.Location
 
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress https://contosostorageexample.blob.core.windows.net/ 
 ```
 
 ### <a name="response"></a>响应
 
-以下 json 是运行前面 cmdlet 的示例响应。 因为目标可访问，`ConnectionStatus` 属性显示为“可以访问”。  提供了有关到达存储 blob 所需的跃点数和延迟的详细信息。
+以下 json 是运行前面 cmdlet 的示例响应。 因为目标可访问，`ConnectionStatus` 属性显示为“可以访问”  。  提供了有关到达存储 Blob 所需的跃点数和延迟的详细信息。
 
 ```json
 ConnectionStatus : Reachable

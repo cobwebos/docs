@@ -3,9 +3,9 @@ title: 使用 Azure 通知中心向 Windows 应用发送本地化通知 | Micros
 description: 了解如何使用 Azure 通知中心发送本地化的突发新闻通知。
 services: notification-hubs
 documentationcenter: windows
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: c454f5a3-a06b-45ac-91c7-f91210889b25
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,15 +14,17 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
-ms.author: jowargo
-ms.openlocfilehash: f3880db813072ca0bcecf073a8db24b21c87189f
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/22/2019
+ms.openlocfilehash: 4ccf62dd8a249c9ba23bbb4510164b35a58db917
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402705"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "72387405"
 ---
-# <a name="tutorial-push-localized-notifications-to-windows-apps-by-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 Windows 应用推送本地化通知
+# <a name="tutorial-send-localized-push-notifications-to-windows-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 Windows 应用发送本地化推送通知
 
 > [!div class="op_single_selector"]
 > * [Windows 应用商店 C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
@@ -37,7 +39,7 @@ ms.locfileid: "58402705"
 
 完成本教程后，即可通过移动应用程序注册感兴趣的类别，并指定接收通知的语言。 后端应用程序可发送按语言和设备本地化的通知。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 更新 Windows 应用，使之支持区域设置信息
@@ -46,7 +48,7 @@ ms.locfileid: "58402705"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成[教程：向特定设备（通用 Windows 平台）发送通知](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md)。
+在开始本教程之前完成[教程：向特定设备（通用 Windows 平台）发送通知](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md)创建的 Visual Studio 解决方案。
 
 在[教程：向特定设备（通用 Windows 平台）发送通知](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md)中，已开发一个使用**标记**订阅不同新闻**类别**通知的应用。 在本教程中，请使用通知中心的**模板**功能轻松传递**本地化**突发新闻通知。
 
@@ -194,10 +196,10 @@ ms.locfileid: "58402705"
 
 ## <a name="run-the-uwp-application"></a>运行 UWP 应用程序
 
-1. 运行通用 Windows 平台应用程序。 等待“注册成功”消息出现。
+1. 运行通用 Windows 平台应用程序。 等待“注册成功”消息出现。 
 
     ![移动应用程序和注册](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/registration-successful.png)
-2. 选择**类别**和**区域设置**，然后单击“订阅”。 应用程序将所选类别转换为标签并针对所选标签从通知中心请求注册新设备。
+2. 选择**类别**和**区域设置**，然后单击“订阅”。  应用程序将所选类别转换为标签并针对所选标签从通知中心请求注册新设备。
 
     ![移动应用程序](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/mobile-app.png)
 3. 此时会看到有关**订阅**的**确认**消息。

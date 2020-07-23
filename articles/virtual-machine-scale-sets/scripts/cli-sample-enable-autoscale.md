@@ -1,27 +1,21 @@
 ---
-title: Azure CLI 示例 - 启用基于主机的自动缩放 | Microsoft Docs
-description: Azure CLI 示例
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
+title: Azure CLI 示例 - 启用基于主机的自动缩放
+description: 此脚本创建运行 Ubuntu 的虚拟机规模集，当 CPU 负载发生变化时，它会使用基于主机的指标自动缩放。
+author: ju-shim
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
+ms.subservice: autoscale
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: c843bed96ebd69f0fe96f8dab292d50ef025e750
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 966fd5a3c89fb794b270a9cce6c45c43f4da7354
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657342"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494951"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 自动缩放虚拟机规模集
 此脚本创建运行 Ubuntu 的虚拟机规模集，当 CPU 负载发生变化时，它会使用基于主机的指标自动缩放。
@@ -51,6 +45,4 @@ az group delete --name myResourceGroup
 | [az group delete](/cli/azure/ad/group) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/overview)。
-
-可以在 [Azure 虚拟机规模集文档](../cli-samples.md)中找到其他虚拟机规模集 Azure CLI 脚本示例。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure/overview)。

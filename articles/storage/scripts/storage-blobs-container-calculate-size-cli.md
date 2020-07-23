@@ -2,25 +2,19 @@
 title: Azure CLI 脚本示例 - 计算 blob 容器大小 | Microsoft Docs
 description: 通过计算容器中 blob 的总大小来计算 Azure Blob 存储中容器的大小。
 services: storage
-documentationcenter: na
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: ''
-ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
+ms.subservice: blobs
+ms.devlang: cli
 ms.topic: sample
 ms.date: 06/28/2017
 ms.author: tamram
-ms.openlocfilehash: 3cb1e35617a58fcde7968ab45d437d865c91f983
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 83ec8c7b3bf5ba9d23d50d8fa1bce563dc56c135
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696926"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067126"
 ---
 # <a name="calculate-the-size-of-a-blob-storage-container"></a>计算 Blob 存储容器的大小
 
@@ -37,7 +31,7 @@ ms.locfileid: "55696926"
 
 [!code-azurecli[main](../../../cli_scripts/storage/calculate-container-size/calculate-container-size.sh?highlight=2-3 "Calculate container size")]
 
-## <a name="clean-up-deployment"></a>清理部署 
+## <a name="clean-up-deployment"></a>清理部署
 
 运行以下命令来删除资源组、容器和所有相关资源。
 
@@ -49,7 +43,7 @@ az group delete --name myResourceGroup
 
 此脚本使用以下命令来计算 Blob 存储容器的大小。 表中的每一项均链接到命令特定的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/azure/group) | 创建用于存储所有资源的资源组。 |
 | [az storage blob upload](/cli/azure/storage/account) | 将本地文件上传到 Azure Blob 存储容器。 |

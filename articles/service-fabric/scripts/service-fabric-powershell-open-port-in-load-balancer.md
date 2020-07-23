@@ -1,26 +1,25 @@
 ---
-title: Azure PowerShell 脚本示例 - 打开负载均衡器中的应用程序端口 | Microsoft Docs
+title: 在 PowerShell 的负载均衡器中打开应用程序端口
 description: Azure PowerShell 脚本示例 - 打开 Azure 负载均衡器中 Service Fabric 应用程序的端口。
 services: service-fabric
 documentationcenter: ''
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
-ms.devlang: na
 ms.topic: sample
 ms.date: 05/18/2018
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 942dd995651f4c672d50163e5c380b62155b2227
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3e5e1df77b8bc701bf330d98f264db26a01ea748
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66161945"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75614751"
 ---
 # <a name="open-an-application-port-in-the-azure-load-balancer"></a>打开 Azure 负载均衡器中的应用程序端口
 
@@ -38,7 +37,7 @@ ms.locfileid: "66161945"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | 获取 Azure 资源。  |
 | [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer) | 获取 Azure 负载均衡器。 |

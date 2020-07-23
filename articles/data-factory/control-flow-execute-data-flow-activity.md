@@ -1,26 +1,25 @@
 ---
-title: 在 Azure 数据工厂中执行数据流活动 |Microsoft Docs
-description: 如何执行数据从流中的数据工厂管道。
+title: 数据流活动
+description: 如何在数据工厂管道中执行数据流。
 services: data-factory
 documentationcenter: ''
 author: kromerm
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: c33219eacb1d3bada5630a7792f98ba33dba824e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.date: 04/30/2020
+ms.openlocfilehash: 1004f7fcc8ff93a170b724a6d8b1c2216b9c39b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235863"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84726945"
 ---
-# <a name="execute-data-flow-activity-in-azure-data-factory"></a>在 Azure 数据工厂中执行数据流活动
-使用 execute 数据流活动的管道调试 （沙盒） 运行和触发的管道运行中运行 ADF 数据的流。
+# <a name="data-flow-activity-in-azure-data-factory"></a>Azure 数据工厂中的数据流活动
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+使用数据流活动可以通过映射数据流来转换和移动数据。 如果你不熟悉数据流，请参阅[映射数据流概述](concepts-data-flow-overview.md)
 
 ## <a name="syntax"></a>语法
 
@@ -30,12 +29,23 @@ ms.locfileid: "66235863"
     "type": "ExecuteDataFlow",
     "typeProperties": {
       "dataflow": {
-         "referenceName": "dataflow1",
+         "referenceName": "MyDataFlow",
          "type": "DataFlowReference"
       },
-        "compute": {
-          "computeType": "General",
-          "coreCount": 8,
+      "compute": {
+         "coreCount": 8,
+         "computeType": "General"
+      },
+      "staging": {
+          "linkedService": {
+              "referenceName": "MyStagingLinkedService",
+              "type": "LinkedServiceReference"
+          },
+          "folderPath": "my-container/my-folder"
+      },
+      "integrationRuntime": {
+          "referenceName": "MyDataFlowIntegrationRuntime",
+          "type": "IntegrationRuntimeReference"
       }
 }
 
@@ -43,51 +53,110 @@ ms.locfileid: "66235863"
 
 ## <a name="type-properties"></a>Type 属性
 
-* ```dataflow``` 是你想要执行的数据流实体的名称
-* ```compute``` 描述了 Spark 执行环境
-* ```coreCount``` 是要分配给此活动执行的数据的核心数
+properties | 说明 | 允许的值 | 必须
+-------- | ----------- | -------------- | --------
+数据流 | 对正在执行的数据流的引用 | DataFlowReference | 是
+integrationRuntime | 运行数据流的计算环境。 如果未指定，将使用自动解析 Azure 集成运行时。 | IntegrationRuntimeReference | 否
+coreCount | Spark 群集中使用的内核数。 仅当使用自动解析 Azure 集成运行时，才能指定 | 8、16、32、48、80、144、272 | 否
+computeType | Spark 群集中使用的计算类型。 仅当使用自动解析 Azure 集成运行时，才能指定 | "常规"、"ComputeOptimized"、"MemoryOptimized" | 否
+暂存。 linkedService | 如果使用的是 SQL DW 源或接收器，则用于 PolyBase 暂存的存储帐户 | LinkedServiceReference | 仅当数据流读取或写入 SQL DW 时
+暂存。 folderPath | 如果使用的是 SQL DW 源或接收器，则用于 PolyBase 暂存的 blob 存储帐户中的文件夹路径 | String | 仅当数据流读取或写入 SQL DW 时
 
 ![执行数据流](media/data-flow/activity-data-flow.png "执行数据流")
 
-### <a name="debugging-pipelines-with-data-flows"></a>调试具有数据流管道
+### <a name="dynamically-size-data-flow-compute-at-runtime"></a>在运行时动态调整数据流的大小
 
-![调试按钮](media/data-flow/debugbutton.png "调试按钮")
+可以动态设置核心计数和计算类型属性，以便在运行时调整传入源数据的大小。 使用查找或获取元数据等管道活动来查找源数据集数据的大小。 然后，使用 "数据流活动属性" 中的 "添加动态内容"。
 
-使用数据流调试利用 warmed 的群集以供在运行管道调试中以交互方式测试你的数据的流。 使用管道调试选项来测试管道内你数据的流。
+![动态数据流](media/data-flow/dyna1.png "动态数据流")
 
-### <a name="run-on"></a>运行位置
+[下面是介绍此方法的简短视频教程](https://www.youtube.com/watch?v=jWSkJdtiJNM)
 
-这是必填的字段，用于定义要用于您数据流的活动执行的集成运行时。 默认情况下，数据工厂将使用默认自动解决 Azure 集成运行时。 但是，可以创建自己的 Azure 集成运行时，定义特定的区域，请将数据流活动执行的计算类型、 内核计数和 TTL。
+### <a name="data-flow-integration-runtime"></a>数据流集成运行时
 
-数据流执行的默认设置是与 TTL 为 60 分钟的常规计算的 8 个核心。
+选择要用于数据流活动执行的 Integration Runtime。 默认情况下，数据工厂将使用带有四个辅助角色的自动解析 Azure 集成运行时，而不提供生存时间（TTL）。 此 IR 具有常规用途计算类型，并与工厂在同一区域中运行。 你可以创建自己的 Azure 集成运行时，用于定义数据流活动执行的特定区域、计算类型、核心计数和 TTL。
 
-选择此执行数据的流的计算环境。 默认值为 Azure 自动解决默认集成运行时。 选择此选项将在数据工厂所在的同一区域中的 Spark 环境上执行数据流。 计算类型将是作业群集，这意味着在计算环境将启动到需要几分钟时间。
+对于管道执行，群集是作业群集，在执行开始之前需要几分钟时间启动。 如果未指定 TTL，则每次运行管道时都需要此启动时间。 如果指定 TTL，则在上一次执行之后指定的时间，温群集池将保持活动状态，从而缩短启动时间。 例如，如果 TTL 为60分钟，并且一小时运行一次数据流，则群集池将保持活动状态。 有关详细信息，请参阅[Azure 集成运行时](concepts-integration-runtime.md)。
 
-Data Flow 活动可以控制的 Spark 执行环境。 在中[Azure 集成运行时](concepts-integration-runtime.md)设置计算类型 （常规用途、 内存优化和计算优化），辅助内核数和到-生存时间以匹配使用数据流计算的执行引擎的设置系统要求。 此外，设置 TTL 将允许您维护的热群集，可立即用于作业执行。
+![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration Runtime")
 
-![Azure 集成运行时](media/data-flow/ir-new.png "Azure 集成运行时")
+> [!IMPORTANT]
+> 数据流活动中的 Integration Runtime 选择仅适用于管道的已触发执行。** 在调试会话中指定的群集上运行数据流时，调试管道。
+
+### <a name="polybase"></a>PolyBase
+
+如果使用 Azure SQL 数据仓库作为接收器或源，则必须为 PolyBase 批处理负载选择一个暂存位置。 PolyBase 允许批量加载，而不是逐行加载数据。 PolyBase 大大降低了 SQL DW 的加载时间。
+
+## <a name="parameterizing-data-flows"></a>参数化数据流
+
+### <a name="parameterized-datasets"></a>参数化数据集
+
+如果数据流使用参数化数据集，则在 "**设置**" 选项卡中设置参数值。
+
+![执行数据流参数](media/data-flow/params.png "参数")
+
+### <a name="parameterized-data-flows"></a>参数化数据流
+
+如果您的数据流已参数化，则在 "**参数**" 选项卡中设置数据流参数的动态值。您可以使用 ADF 管道表达式语言或数据流表达式语言来分配动态或文本参数值。 有关详细信息，请参阅[数据流参数](parameters-data-flow.md)。
+
+### <a name="parameterized-compute-properties"></a>参数化计算属性。
+
+如果使用自动解析 Azure Integration runtime 并指定 coreCount 和 computeType 的值，则可以参数化核心计数或计算类型。
+
+![Execute 数据流参数示例](media/data-flow/parameterize-compute.png "参数示例")
+
+## <a name="pipeline-debug-of-data-flow-activity"></a>数据流活动的管道调试
+
+若要执行带有数据流活动的调试管道运行，必须通过顶部栏上的 "数据流**调试**" 滑块来切换数据流调试模式。 调试模式允许您针对活动的 Spark 群集运行数据流。 有关详细信息，请参阅[调试模式](concepts-data-flow-debug-mode.md)。
+
+![“调试”按钮](media/data-flow/debugbutton.png "“调试”按钮")
+
+调试管道针对活动调试群集运行，而不是在数据流活动设置中指定的集成运行时环境。 启动调试模式时，可以选择调试计算环境。
+
+## <a name="monitoring-the-data-flow-activity"></a>监视数据流活动
+
+数据流活动具有特殊的监视体验，你可以在其中查看分区、阶段时间和数据沿袭信息。 通过 "**操作**" 下的 "眼镜" 图标打开 "监视" 窗格。 有关详细信息，请参阅[监视数据流](concepts-data-flow-monitoring.md)。
+
+### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>在后续活动中使用数据流活动结果
+
+数据流活动输出有关写入每个接收器的行数和从每个源读取的行数的指标。 在活动运行结果的节中返回这些结果 `output` 。 返回的度量值的格式为以下 json。
+
+``` json
+{
+    "runStatus": {
+        "metrics": {
+            "<your sink name1>": {
+                "rowsWritten": <number of rows written>,
+                "sinkProcessingTime": <sink processing time in ms>,
+                "sources": {
+                    "<your source name1>": {
+                        "rowsRead": <number of rows read>
+                    },
+                    "<your source name2>": {
+                        "rowsRead": <number of rows read>
+                    },
+                    ...
+                }
+            },
+            "<your sink name2>": {
+                ...
+            },
+            ...
+        }
+    }
+}
+```
+
+例如，若要获取写入到名为 "dataflowActivity" 的活动中名为 "sink1" 的接收器的行数，请使用 `@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten` 。
+
+若要获取从该接收器中使用的名为 "source1" 的源中读取的行数，请使用 `@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead` 。
 
 > [!NOTE]
-> 中的数据流活动的集成运行时选择仅适用于*触发执行*管道。 使用调试调试你的流数据的管道将执行针对 8 核默认 Spark 群集。
-
-### <a name="staging-area"></a>临时区域
-
-如果到 Azure 数据仓库接收你的数据，则必须为 Polybase 批处理负载选择暂存位置。
-
-## <a name="parameterized-datasets"></a>参数化数据集
-
-如果使用参数化数据集，请务必设置参数值。
-
-![执行数据流量参数](media/data-flow/params.png "参数")
-
-### <a name="debugging-parameterized-data-flows"></a>调试参数化数据的流
-
-仅可以调试数据流管道 Debug 使用执行数据的流活动运行中的参数化数据集。 目前，在 ADF 数据流中的交互式调试会话不使用参数化数据集。 管道执行和调试运行将使用参数。
-
-较好的做法是生成与静态数据集数据的流，以便在设计时具有可用的完整元数据列传播。 然后替换为静态数据集的动态参数化数据集时实施数据流管道。
+> 如果接收器写入的行数为零，则它不会显示在指标中。 可以使用函数来验证是否存在 `contains` 。 例如， `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` 将检查是否有任何行写入 sink1。
 
 ## <a name="next-steps"></a>后续步骤
-查看数据工厂支持的其他控制流活动： 
+
+请参阅数据工厂支持的控制流活动： 
 
 - [If Condition 活动](control-flow-if-condition-activity.md)
 - [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)

@@ -21,33 +21,46 @@
           href: event-hubs-quickstart-cli.md
         - name: Azure PowerShell
           href: event-hubs-quickstart-powershell.md
-        - name: Azure 资源管理器模板
+        - name: ARM 模板
+          displayName: Resource Manager
           href: event-hubs-resource-manager-namespace-event-hub.md
     - name: 发送和接收事件
       items:
-        - name: .NET Core
-          href: event-hubs-dotnet-standard-getstarted-send.md
-        - name: .NET framework
-          href: event-hubs-dotnet-framework-getstarted-send.md
-        - name: Java
-          href: event-hubs-java-get-started-send.md
-        - name: Python
-          href: event-hubs-python-get-started-send.md
-        - name: Node.js
-          href: event-hubs-node-get-started-send.md
+        - name: .NET (Azure.Messaging.EventHubs)
+          href: get-started-dotnet-standard-send-v2.md
+        - name: Java (azure-messaging-eventhubs)
+          href: get-started-java-send-v2.md
+        - name: Python（azure-eventhub 版本 5）
+          href: get-started-python-send-v2.md
+        - name: JavaScript（azure/event-hubs 版本 5）
+          href: get-started-node-send-v2.md
         - name: Go
           href: event-hubs-go-get-started-send.md
         - name: C（仅发送）
           href: event-hubs-c-getstarted-send.md
         - name: Apache Storm（仅接收）
           href: event-hubs-storm-getstarted-receive.md
+    - name: 发送和接收事件（旧版本/包）
+      items:
+        - name: .NET (Microsoft.Azure.EventHubs)
+          href: event-hubs-dotnet-standard-getstarted-send.md
+        - name: Java (azure-eventhubs)
+          href: event-hubs-java-get-started-send.md
+        - name: Python（azure-eventhub 版本 1）
+          href: event-hubs-python-get-started-send.md
+        - name: JavaScript（azure/event-hubs 版本 2）
+          href: event-hubs-node-get-started-send.md
+        - name: .NET Framework (Microsoft.ServiceBus)
+          href: event-hubs-dotnet-framework-getstarted-send.md
     - name: 捕获事件
       items:
         - name: 使用 Azure 门户启用事件中心捕获
           href: event-hubs-capture-enable-through-portal.md
         - name: 使用资源管理器模板启用事件中心捕获
           href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
-        - name: 使用 Python 捕获事件中心数据
+        - name: 使用 Python 读取捕获的数据（azure-eventhub 版本 5）
+          href: get-started-capture-python-v2.md
+        - name: 使用 Python 读取捕获的数据（azure-eventhub 版本 1）
           href: event-hubs-capture-python.md
     - name: 流式传输到用于 Apache Kafka 的事件中心
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md
@@ -59,115 +72,217 @@
       href: event-hubs-tutorial-visualize-anomalies.md
     - name: 将捕获的数据存储在 SQL 数据仓库中
       href: store-captured-data-data-warehouse.md
+    - name: 使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件
+      href: event-hubs-kafka-stream-analytics.md
     - name: 使用事件中心将数据流式传输到 Azure Databricks
       href: ../azure-databricks/databricks-stream-from-eventhubs.md
       maintainContext: true
-    - name: 在事件中心命名空间中启用虚拟网络集成和防火墙
-      href: event-hubs-tutorial-virtual-networks-firewalls.md
-    - name: 用于 Apache Kafka 的事件中心
-      items:
-        - name: 将 Kafka 代理镜像到已启用 Apache Kafka 的事件中心
-          href: event-hubs-kafka-mirror-maker-tutorial.md
-        - name: 将 Apache Spark 连接到已启用 Apache Kafka 的事件中心
-          href: event-hubs-kafka-spark-tutorial.md
-        - name: 将 Apache Flink 连接到已启用 Apache Kafka 的事件中心
-          href: event-hubs-kafka-flink-tutorial.md
-        - name: 将 Apache Kafka Connect 与已启用 Kafka 的事件中心集成（预览版）
-          href: event-hubs-kafka-connect-tutorial.md
-        - name: 将 Akka Streams 连接到已启用 Apache Kafka 的事件中心
-          href: event-hubs-kafka-akka-streams-tutorial.md
 - name: 示例
-  href: event-hubs-samples.md
+  items:
+    - name: 代码示例
+      href: event-hubs-samples.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
-    - name: 事件中心功能
+    - name: 事件中心术语
       href: event-hubs-features.md
-    - name: 事件处理器主机概述
+    - name: 事件处理器主机（旧版 SDK）
       href: event-hubs-event-processor-host.md
-    - name: 编程指南
-      href: event-hubs-programming-guide.md
-    - name: 安全
-      items:
-        - name: Azure 资源的托管标识
-          href: event-hubs-managed-service-identity.md
-        - name: 基于角色的访问控制（预览）
-          href: event-hubs-role-based-access-control.md
-        - name: 异地灾难恢复和异地复制
-          href: event-hubs-geo-dr.md
-        - name: 身份验证和安全模型概述
-          href: event-hubs-authentication-and-security-model-overview.md
-        - name: 安全属性
-          href: event-hubs-security-attributes.md
+    - name: 事件处理器（最新 SDK）
+      href: event-processor-balance-partition-load.md
     - name: 可用性和一致性
       href: event-hubs-availability-and-consistency.md
+    - name: 可伸缩性
+      href: event-hubs-scalability.md
+    - name: 异地灾难恢复
+      items:
+        - name: 异地灾难恢复和异地复制
+          href: event-hubs-geo-dr.md
+    - name: 安全性
+      items:
+        - name: 授权
+          items:
+            - name: 授予对 Azure 事件中心的访问权限
+              href: authorize-access-event-hubs.md
+            - name: 使用 Azure Active Directory 授予访问权限
+              href: authorize-access-azure-active-directory.md
+            - name: 使用共享访问签名授予访问权限
+              href: authorize-access-shared-access-signature.md
+        - name: 身份验证
+          items:
+            - name: 使用 Azure Active Directory 进行身份验证
+              items:
+                - name: 使用托管标识进行身份验证
+                  href: authenticate-managed-identity.md
+                - name: 通过应用程序进行身份验证
+                  href: authenticate-application.md
+            - name: 使用共享访问签名进行身份验证
+              href: authenticate-shared-access-signature.md
+        - name: 网络安全
+          href: network-security.md
+        - name: 内置安全控件
+          href: event-hubs-security-controls.md
+        - name: 安全基线
+          href: security-baseline.md
     - name: AMQP 1.0 协议指南
       href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
       maintainContext: true
 - name: 操作指南
   items:
-    - name: 使用 Python 发送、接收和捕获事件
-      href: event-hubs-python.md
-    - name: 设置诊断日志
-      href: event-hubs-diagnostic-logs.md
-    - name: 用于 Apache Kafka 的事件中心
+    - name: 跨区域移动
+      href: move-across-regions.md
+    - name: 动态添加分区
+      href: dynamically-add-partitions.md
+    - name: 使用 Blob 存储作为 Azure Stack Hub 上的检查点存储
+      href: use-blob-storage-checkpoint-store-azure-stack-hub.md
+    - name: 从 Azure Service Manager（经典）API 迁移到资源管理器 API
+      href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fevent-hubs%2ftoc.json
+    - name: 开发
       items:
-        - name: 创建启用了 Apache Kafka 的事件中心
-          href: event-hubs-create-kafka-enabled.md
-        - name: 使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件
-          href: event-hubs-kafka-stream-analytics.md
-    - name: 管理
+        - name: 获取事件中心连接字符串
+          href: event-hubs-get-connection-string.md
+        - name: 使用不同的协议在应用程序之间交换事件
+          href: event-hubs-exchange-events-different-protocols.md
+        - name: 编程指南
+          items:
+            - name: .NET (Azure.Messaging.EventHubs)
+              href: 'https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/README.md'
+            - name: Java (azure-messaging-eventhubs)
+              href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/README.md'
+            - name: Python（azure-eventhub 版本 5）
+              href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/README.md'
+            - name: JavaScript（azure/event-hubs 版本 5）
+              href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/README.md'
+            - name: .NET (Microsoft.Azure.EventHubs)
+              href: event-hubs-programming-guide.md
+    - name: 处理数据
       items:
-        - name: 使用 Azure 监视来监视事件中心
-          href: event-hubs-metrics-azure-monitor.md
-        - name: 事件中心管理库
-          href: event-hubs-management-libraries.md
-    - name: 获取事件中心连接字符串
-      href: event-hubs-get-connection-string.md
-    - name: Java 开发
+        - name: 使用 Azure 流分析处理数据
+          href: process-data-azure-stream-analytics.md
+    - name: 与 Spring Framework 集成
       items:
         - name: 创建 Spring Cloud Stream Binder 应用
           href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
+          maintainContext: true
         - name: 使用适用于 Apache Kafka 的 Spring Boot Starter
           href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub
-    - name: 故障排除
+          maintainContext: true
+    - name: 与 Apache Kafka 集成
       items:
-        - name: 例外
+        - name: 针对事件中心的 Kafka 开发人员指南
+          href: apache-kafka-developer-guide.md
+        - name: 针对事件中心的 Kafka 迁移指南
+          href: apache-kafka-migration-guide.md
+        - name: 针对事件中心的 Kafka 故障排除指南
+          href: apache-kafka-troubleshooting-guide.md
+        - name: 在事件中心镜像 Kafka 代理
+          href: event-hubs-kafka-mirror-maker-tutorial.md
+        - name: 将 Apache Spark 连接到事件中心
+          href: event-hubs-kafka-spark-tutorial.md
+        - name: 将 Apache Flink 连接到事件中心
+          href: event-hubs-kafka-flink-tutorial.md
+        - name: 将 Apache Kafka Connect 与中心集成（预览版）
+          href: event-hubs-kafka-connect-tutorial.md
+        - name: 将 Akka Streams 连接到事件中心
+          href: event-hubs-kafka-akka-streams-tutorial.md
+        - name: 常见问题解答 - 用于 Kafka 的事件中心
+          href: apache-kafka-frequently-asked-questions.md
+    - name: 管理和监视
+      items:
+        - name: 使用 Azure 监视来监视事件中心
+          href: event-hubs-metrics-azure-monitor.md
+        - name: 设置诊断日志
+          href: event-hubs-diagnostic-logs.md
+        - name: 使用事件中心流式传输 Azure 诊断数据
+          href: event-hubs-streaming-azure-diags-data.md
+        - name: 自动缩放吞吐量单位
+          href: event-hubs-auto-inflate.md
+        - name: 事件中心管理库
+          href: event-hubs-management-libraries.md
+    - name: 安全
+      items:
+        - name: 配置 IP 防火墙
+          href: event-hubs-ip-filtering.md
+        - name: 配置虚拟网络服务终结点
+          href: event-hubs-service-endpoints.md
+        - name: 配置专用终结点
+          href: private-link-service.md
+        - name: 配置客户管理的密钥
+          href: configure-customer-managed-key.md
+    - name: 疑难解答
+      items:
+        - name: 解决连接问题
+          href: troubleshooting-guide.md
+        - name: 排查身份验证和授权问题
+          href: troubleshoot-authentication-authorization.md
+        - name: 针对事件中心的 Kafka 故障排除指南
+          href: apache-kafka-troubleshooting-guide.md
+        - name: .NET 异常
           href: event-hubs-messaging-exceptions.md
-    - name: 使用防火墙
-      href: event-hubs-ip-filtering.md
-    - name: 使用虚拟网络服务终结点
-      href: event-hubs-service-endpoints.md
-    - name: 自动缩放吞吐量单位
-      href: event-hubs-auto-inflate.md
-    - name: 使用事件中心流式传输 Azure 诊断数据
-      href: event-hubs-streaming-azure-diags-data.md
-    - name: 使用不同的协议在应用程序之间交换事件
-      href: event-hubs-exchange-events-different-protocols.md
-    - name: 创建 Spring Cloud Stream Binder 应用程序
-      href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub?view=azure-java-stable
-      maintainContext: true
-- name: 引用
+        - name: 资源管理器异常
+          href: resource-manager-exceptions.md
+- name: 参考
   items:
-    - name: Java
-      items:
-        - name: com.microsoft.azure.eventhubs
-          href: /java/api/com.microsoft.azure.eventhubs
-        - name: com.microsoft.azure.eventprocessorhost
-          href: /java/api/com.microsoft.azure.eventprocessorhost
+    - name: SDK
+      href: sdks.md
     - name: .NET
       items:
-        - name: Microsoft.Azure.EventHubs
-          href: /dotnet/api/microsoft.azure.eventhubs
-        - name: Microsoft.Azure.EventHubs.Processor
-          href: /dotnet/api/microsoft.azure.eventhubs.processor
-        - name: Microsoft.ServiceBus.Messaging
-          href: /dotnet/api/microsoft.servicebus.messaging
-        - name: Microsoft.ServiceBus.Messaging.EventProcessorHost
-          href: /dotnet/api/microsoft.servicebus.messaging.eventprocessorhost
-        - name: Microsoft.Azure.Management.EventHub
+        - name: 客户端库
+          items:
+            - name: 从 Microsoft.Azure.EventHubs 迁移到 Azure.Messaging.EventHubs
+              href: 'https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md'
+            - name: Azure.Messaging.EventHubs（最新）
+              href: /dotnet/api/azure.messaging.eventhubs
+            - name: Microsoft.Azure.EventHubs（旧版）
+              href: /dotnet/api/microsoft.azure.eventhubs
+            - name: Microsoft.ServiceBus.Messaging（旧版）
+              href: /dotnet/api/microsoft.servicebus.messaging
+        - name: 管理库
           href: /dotnet/api/microsoft.azure.management.eventhub
-    - name: Node.js
-      href: /javascript/api/overview/azure/event-hub?view=azure-node-latest
+    - name: Java
+      items:
+        - name: 客户端库
+          items:
+            - name: 从 azure-eventhubs 迁移到 azure-messaging-eventhubs
+              href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md'
+            - name: azure-messaging-eventhubs（最新）
+              href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-messaging-eventhubs/5.0.0-beta.6/index.html'
+            - name: azure-eventhubs（旧版）
+              href: /java/api/overview/azure/eventhubs/client?view=azure-java-stable
+        - name: 管理库
+          href: /java/api/com.microsoft.azure.management.eventhub?view=azure-java-stable
+    - name: Python
+      items:
+        - name: 从 azure-eventhub 版本 1 迁移到版本 5
+          href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md'
+        - name: 客户端库
+          items:
+            - name: azure-eventhub 版本 5
+              href: /python/api/azure-eventhub/?view=azure-python
+            - name: azure-eventhub 版本 1
+              href: /python/api/azure-eventhub/?view=azure-python-previous
+        - name: 管理库
+          href: /python/api/overview/azure/event-hub?view=azure-python
+    - name: JavaScript
+      items:
+        - name: 从 azure/eventhubs 版本 2 迁移到版本 5
+          href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md'
+        - name: 客户端库
+          items:
+            - name: azure/eventhubs 版本 5
+              href: /javascript/api/@azure/event-hubs/?view=azure-node-latest
+            - name: azure/eventhubs 版本 2
+              href: /javascript/api/@azure/event-hubs/?view=azure-node-legacy
+        - name: 管理库
+          href: /javascript/api/@azure/arm-eventhub/?view=azure-node-latest
+    - name: Go
+      items:
+        - name: 客户端库
+          href: 'https://pkg.go.dev/github.com/Azure/azure-event-hubs-go?tab=doc'
+        - name: 管理库
+          href: 'https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/eventhub/mgmt/2017-04-01/eventhub?tab=doc'
     - name: REST
       href: /rest/api/eventhub
     - name: 资源管理器模板
@@ -188,7 +303,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=event-hubs'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-eventhub'
     - name: 视频
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=event-hubs'

@@ -1,25 +1,16 @@
 ---
-title: 在 Azure Service Fabric 中管理多个环境的应用程序 | Microsoft Docs
+title: 管理多个环境的应用
 description: Azure Service Fabric 应用程序可以在规模为一台计算机到数千台计算机的群集上运行。 在某些情况下，需要以不同的方式针对各种环境配置应用程序。 本文介绍如何为每个环境定义不同的应用程序参数。
-services: service-fabric
-documentationcenter: .net
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.assetid: f406eac9-7271-4c37-a0d3-0a2957b60537
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: dac96ef6fce38a0557444e181fa6eccb649cfb9a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b6d6ff37024a3181a43b67d2af26b067225654fe
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60719220"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257471"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>管理多个环境的应用程序
 
@@ -49,9 +40,9 @@ ms.locfileid: "60719220"
 
 在 Service Fabric 中创建命名的应用程序实例时，可以选择传入参数。 执行此操作的方式取决于创建应用程序实例的方式。
 
-  - 在 PowerShell 中，[`New-ServiceFabricApplication`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) cmdlet 将应用程序参数作为哈希表。
-  - 借助 sfctl，[`sfctl application create`](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) 命令将参数作为 JSON 字符串。 Install.sh 脚本使用 sfctl。
-  - Visual Studio 在应用程序项目的参数文件夹中提供一组参数文件。 使用 Azure DevOps Services 或 Team Foundation Server 从 Visual Studio 发布时会用到这些参数文件。 在 Visual Studio 中，参数文件会传递给 Deploy-FabricApplication.ps1 脚本。
+  - 在 PowerShell 中，[`New-ServiceFabricApplication`](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) cmdlet 将应用程序参数作为哈希表。
+  - 借助 sfctl，[`sfctl application create`](./service-fabric-sfctl-application.md#sfctl-application-create) 命令将参数作为 JSON 字符串。 Install.sh 脚本使用 sfctl。
+  - Visual Studio 在应用程序项目的参数文件夹中提供一组参数文件。 使用 Azure DevOps Services 或 Azure DevOps Server 从 Visual Studio 发布时会使用这些参数文件。 在 Visual Studio 中，参数文件会传递给 Deploy-FabricApplication.ps1 脚本。
 
 ## <a name="next-steps"></a>后续步骤
 以下文章演示如何使用此处所述的某些概念：

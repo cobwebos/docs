@@ -1,88 +1,104 @@
 ---
 title: Microsoft Azure 上的 Oracle 解决方案 | Microsoft Docs
-description: 了解用于 Oracle 应用程序和 Microsoft Azure，包括完全在 Azure 基础结构上运行或使用跨云连接 Oracle 云基础结构 (OCI) 上的解决方案部署选项。
+description: 了解有关在 Microsoft Azure 上部署 Oracle 应用程序和解决方案的选项，包括完全在 Azure 基础结构上运行，或与 Oracle 云基础结构 (OCI) 跨云连接。
 services: virtual-machines-linux
 documentationcenter: ''
-author: romitgirdhar
-manager: jeconnoc
+author: rgardler
 tags: azure-resource-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/04/2019
-ms.author: rogirdh
-ms.openlocfilehash: b5e40975fca491f289d949ee273d13053897fc6d
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.date: 06/05/2020
+ms.author: rogardle
+ms.openlocfilehash: 6a516fc75880e3b6a5bc5b5907e8d968dce2ae31
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743630"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507856"
 ---
-# <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Oracle 应用程序和 Azure 上的解决方案概述
+# <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 上的 Oracle 应用程序和解决方案概述
 
-本文介绍了功能可用于运行 Oracle 解决方案使用 Azure 基础结构。 另请参阅详细的介绍可用[Oracle VM 映像](oracle-vm-solutions.md)在 Azure Marketplace 和的预览功能[互连 Azure Oracle 云基础结构 (OCI)](oracle-oci-overview.md)。
+本文介绍使用 Azure 基础结构运行 Oracle 解决方案的功能。 另请参阅 Azure 市场中的可用 [WebLogic Server Azure 应用程序](oracle-weblogic.md)、[Oracle VM 映像](oracle-vm-solutions.md)的详细介绍，以及 [Azure 与 Oracle 云基础结构 (OCI) 互连](oracle-oci-overview.md)的功能。
 
-## <a name="oracle-databases-on-azure-infrastructure"></a>Azure 基础结构上的 oracle 数据库
+## <a name="oracle-databases-on-azure-infrastructure"></a>Azure 基础结构上的 Oracle 数据库
 
-在 Azure Marketplace 中使用 Linux 映像可用的 Azure 基础结构上运行 Oracle 数据库：
+使用 Azure 市场中提供的 Oracle Linux 映像上的 Oracle 数据库在 Azure 基础结构上运行 Oracle 数据库：
 
-* Oracle 数据库 12.1、 12.2 和 18.3 企业版 
+* Oracle Database 12.1、12.2 和 18.3 Enterprise Edition 
 
-* Oracle 数据库 12.1、 12.2 和 18.3 标准版 
+* Oracle Database 12.1、12.2 和 18.3 Standard Edition
 
-您还可以选择一种解决方案的基础自定义映像在 Azure 中从头开始创建或从你的本地环境上传自定义映像。
+* Oracle Database 19。3
 
-（可选） 配置多个附加的磁盘，并通过安装 Oracle 自动存储管理 (ASM) 来提高数据库性能。
+你还可以选择在 Azure 中提供的非 Oracle Linux 映像上安装 Oracle Database，解决方案要基于你在 Azure 中从头创建的自定义映像解决方案，或从本地环境上传自定义映像。
 
-## <a name="applications-on-oracle-linux-and-weblogic-server"></a>在 Oracle Linux 和 WebLogic Server 上的应用程序
+（可选）通过安装 Oracle 自动存储管理 (ASM) 来配置多个附加磁盘并提高数据库性能。
 
-在 Azure 中运行企业应用程序支持 Oracle 的操作系统上。 Azure Marketplace 中提供了以下映像：
+## <a name="weblogic-server-with-azure-service-integrations"></a>WebLogic Server 与 Azure 服务集成
+
+从各种 WebLogic Server Azure 应用程序中进行选择，以加快云旅程。  提供了几个预配置的 Azure 服务集成，其中包括数据库、Azure 应用程序网关和 Azure Active Directory。
+
+## <a name="applications-on-oracle-linux-and-weblogic-server"></a>Oracle Linux 和 WebLogic Server 上的应用程序
+
+在 Azure 上运行支持 Oracle Linux 映像的企业应用程序。 Azure 市场中提供以下虚拟机映像：
 
 * Oracle WebLogic Server 12.1.2
 
-* Oracle Linux (UEK) 6.8、 6.9、 6.10、 7.3、 7.4、 7.5 和 7.6
+* 使用 Unbreakable Enterprise 内核（UEK）6.8、6.9、6.10、7.3 到7.7、8.0、8.1 Oracle Linux。 
 
 ## <a name="high-availability-and-disaster-recovery-options"></a>高可用性和灾难恢复选项
 
-* 结合 Azure 基础结构上配置 Oracle 数据防护、 活动数据防护或 GoldenGate[可用性区域](../../../availability-zones/az-overview.md)以实现高可用性。
+* 将 Azure 基础结构上的 [Oracle Data Guard](https://docs.oracle.com/cd/B19306_01/server.102/b14239/concepts.htm#g1049956)、[使用 FSFO 激活 Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html)、[分片](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html)或[Golden Gate](https://www.oracle.com/middleware/technologies/goldengate.html) 配置为与[可用性区域](../../../availability-zones/az-overview.md)结合，以获得区域内高可用性。 你还可以跨多个 Azure 区域设置这些配置，以提高可用性和灾难恢复能力。
 
-* 使用[Azure Site Recovery](../../../site-recovery/site-recovery-overview.md)来安排和管理 Azure 和你的本地或物理服务器中的 Oracle Linux Vm 的灾难恢复。 
+* 使用[Azure Site Recovery](../../../site-recovery/site-recovery-overview.md)来协调和管理 Azure 中的 Oracle Linux vm 和物理服务器的灾难恢复。 
 
-* 在 Azure 中使用启用 Oracle Real Application Clusters (RAC) [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)。
+* 使用[Azure VMware 解决方案](../../../vmware-cloudsimple/oracle-real-application-clusters.md)或[FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)在 Azure 中启用 Oracle 真正应用程序群集（RAC）。
 
-## <a name="integration-of-azure-with-oci-preview"></a>Azure 中使用 OCI （预览版） 的集成
+## <a name="backup-oracle-workloads"></a>备份 Oracle 工作负载
 
-在 Azure 基础结构，连接到后端数据库在 Oracle 云基础结构 (OCI) 中运行 Oracle 应用程序。 此解决方案使用以下功能： 
+* 使用 [Azure 备份](../../../backup/backup-overview.md)来备份 Oracle VM
 
-* **跨云网络**-使用直接互连 Azure ExpressRoute 和 Oracle FastConnect 建立应用程序和数据库层之间的高带宽、 专用和低延迟连接之间可用。
-* **集成标识**-设置 Azure AD 之间的联合身份标识和 Oracle IDC，若要创建解决方案的单一标识源。 启用单一登录以管理 OCI 和 Azure 间的资源。
+* 使用 Oracle RMAN 备份 Oracle Database，并选择性地使用 [Azure Blob Fuse](../../../storage/blobs/storage-how-to-mount-container-linux.md)，以装载[高度冗余的 Azure Blob 存储帐户](../../../storage/common/storage-redundancy.md)，并将 RMAN 备份写入其中以提高复原能力。
 
-### <a name="deploy-oracle-applications-on-azure"></a>部署 Azure 上的 Oracle 应用程序
+## <a name="integration-of-azure-with-oci"></a>Azure 与 OCI 集成
 
-使用 Terraform 模板设置 Azure 基础结构和安装 Oracle 应用程序验证并支持在跨云配置中运行：
+在 Azure 基础结构中运行 Oracle 应用程序，连接到 Oracle 云基础结构 (OCI) 中的后端数据库。 此解决方案使用以下功能： 
 
-* 电子商务套件
+* 跨云网络 - 使用 Azure ExpressRoute 和 Oracle FastConnect 之间可用的直接互连在应用程序和数据库层之间建立高带宽、专用和低延迟连接。
+* 集成身份 - 在 Azure AD 和 Oracle IDCS 之间设置联合身份，为解决方案创建单个标识源。 启用单一登录以跨 OCI 和 Azure 管理资源。
+
+### <a name="deploy-oracle-applications-on-azure"></a>在 Azure 上部署 Oracle 应用程序
+
+使用 Terraform 模板设置 Azure 基础结构并安装 Oracle 应用程序。 
+
+当通过 Azure/Oracle 云互连解决方案连接到 Oracle 数据库时，oracle 已通过认证，可在 Azure 中运行这些应用程序：
+
+* E-Business Suite
 * JD Edwards EnterpriseOne
 * PeopleSoft
-* Oracle 零售应用程序
+* Oracle Retail 应用程序
 * Oracle Hyperion 财务管理
 
-此外将部署在 Azure 中的自定义应用程序使用 OCI 和其他 Azure 服务连接。
+还会在 Azure 中部署与 OCI 和其他 Azure 服务连接的自定义应用程序。
 
-### <a name="set-up-oracle-databases-in-oci"></a>设置 Oracle OCI 中的数据库
+### <a name="set-up-oracle-databases-in-oci"></a>在 OCI 中设置 Oracle 数据库
 
-以 Oracle 在 Azure 中运行的应用程序结合使用 Oracle 数据库云服务 （自治数据库，RAC、 Exadata、 DBaaS，单个节点）。 详细了解如何[OCI 数据库选项](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm)。 
+结合在 Azure 中运行的 Oracle 软件，使用 Oracle Database 云服务（自主数据库、RAC、Exadata、DBaaS、单一节点）。 详细了解 [OCI 数据库选项](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm)。 
  
 
-## <a name="licensing"></a>许可
+## <a name="licensing"></a>授权
 
-在 Azure 中的 Oracle 应用程序的部署取决于"自带许可"模型。 假定您已获得适当使用 Oracle 软件和在具有 Oracle 位置拥有最新支持协议。 Oracle 确保了从本地到 Azure 的许可移动性。 请参阅 Oracle Azure[常见问题解答](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)。
+在 Azure 中部署 Oracle 应用程序基于“自带许可”模型。 假定已获得使用 Oracle 软件的相关许可，且拥有 Oracle 最新支持协议。 Oracle 确保了从本地到 Azure 的许可移动性。 请参阅 Oracle-Azure [常见问题解答](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解如何部署[Oracle VM 映像](oracle-vm-solutions.md)Azure 基础结构中。
+* 详细了解 [WebLogic Server Azure 应用程序](oracle-weblogic.md)及其支持的 Azure 服务集成。
 
-* 了解如何[互连 Azure 中的使用 OCI](oracle-oci-overview.md)。
+* 详细了解如何在 Azure 基础结构中部署 [Oracle VM 映像](oracle-vm-solutions.md)。
+
+* 详细了解如何[将 Azure 与 OCI 互连](oracle-oci-overview.md)。
+
+* 查看 Ignite 2019 中的 [“Azure 上的 Oracle”概述课程](https://myignite.techcommunity.microsoft.com/sessions/82915)。 

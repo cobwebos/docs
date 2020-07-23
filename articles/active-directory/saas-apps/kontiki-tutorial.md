@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bee7454942b9214eeb1253339446df370e20fe01
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: bfb154bce34b2ceda99b82c7ca3534b8a8ee0a1f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785837"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67098491"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>教程：Azure Active Directory 与 Kontiki 的集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "65785837"
 
 有关服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure Active Directory 的应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Kontiki 的集成，需要以下项：
 
@@ -55,13 +55,13 @@ Kontiki 支持以下功能：
 
 若要将 Kontiki 与 Azure AD 集成，必须将 Kontiki 添加到托管 SaaS 应用列表中。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在左侧菜单中，选择“Azure Active Directory”  。
 
     ![“Azure Active Directory”选项](common/select-azuread.png)
 
-1. 选择“企业应用程序” > “所有应用程序”   。
+1. 选择“企业应用程序” > “所有应用程序”。
 
     ![“企业应用程序”窗格](common/enterprise-applications.png)
 
@@ -131,7 +131,7 @@ Kontiki 支持以下功能：
 
 在本部分中，会在 Azure 门户中创建名为“Britta Simon”的测试用户。
 
-1. 在 Azure 门户中，选择“Azure Active Directory” > “用户” > “所有用户”。   
+1. 在 Azure 门户中，选择“Azure Active Directory” > “用户” > “所有用户”。
 
     ![“用户”和“所有用户”选项](common/users.png)
 
@@ -143,7 +143,7 @@ Kontiki 支持以下功能：
 
     1. 在“姓名”  框中，输入 **BrittaSimon**。
   
-    1. 在“用户名”框中，输入“brittasimon\@\<your-company-domain>.\<extension>”   。 例如，brittasimon\@contoso.com  。
+    1. 在“用户名”框中，输入“brittasimon\@\<your-company-domain>.\<extension>”。 例如，brittasimon\@contoso.com。
 
     1. 选中“显示密码”复选框  。 记下“密码”框中显示的值  。
 
@@ -155,7 +155,7 @@ Kontiki 支持以下功能：
 
 在本部分中，通过授予 Britta Simon 访问 Kontiki 的权限，使其可使用 Azure 单一登录。
 
-1. 在 Azure 门户中，选择“企业应用程序” > “所有应用程序” > “Kontiki”。   
+1. 在 Azure 门户中，选择“企业应用程序” > “所有应用程序” > “Kontiki”。
 
     ![“企业应用程序”窗格](common/enterprise-applications.png)
 

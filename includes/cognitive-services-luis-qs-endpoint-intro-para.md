@@ -11,11 +11,11 @@ ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
 ms.openlocfilehash: 00ffb8f4777fd458c92a9e996c18cd6bfadbc45e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66124042"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173262"
 ---
 本快速入门使用可用的公共 LUIS 应用从会话文本中确定用户的意向。 将用户的意向作为文本发送到公共应用的 HTTP 预测终结点。 在终结点处，LUIS 应用公共应用的模型来分析自然语言文本的含义，确定总体意向并提取与应用的主题域相关的数据。 
 

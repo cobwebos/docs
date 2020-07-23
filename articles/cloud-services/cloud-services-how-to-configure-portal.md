@@ -3,27 +3,21 @@ title: 如何配置云服务（门户）| Microsoft Docs
 description: 了解如何在 Azure 中配置云服务。 了解如何更新云服务配置以及配置对角色实例的远程访问。 这些示例使用 Azure 门户。
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 7308f3c0-825e-499d-bfa5-c60f86371921
+author: tgore03
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2016
-ms.author: jeconnoc
-ms.openlocfilehash: 4d8d3b93ef2a6347076fada53932b5fc56838d20
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: tagore
+ms.openlocfilehash: 169b12ff4fbf2471270aa912d5d1f8242371036b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61435731"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223731"
 ---
 # <a name="how-to-configure-cloud-services"></a>如何配置云服务
 
-可以在 Azure 门户中配置最常使用的云服务设置。 或者，如果你希望直接更新配置文件，则可以下载要更新的服务配置文件，然后上传更新文件并使用配置更改更新云服务。 无论使用哪种方法，配置更新都会应用于所有角色实例。
+可以在 Azure 门户中配置最常使用的云服务设置。 或者，如果希望直接更新配置文件，可下载要更新的服务配置文件，并上传更新文件并通过配置更改更新云服务。 无论使用哪种方法，配置更新都会应用于所有角色实例。
 
 还可以管理云服务角色的实例，或者通过远程桌面进入这些角色中。
 
@@ -35,7 +29,7 @@ ms.locfileid: "61435731"
 
 ![“设置”页](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 
-可以通过“设置”或“所有设置”链接打开“设置”，在该选项卡中，可以更改“属性”、更改“配置”、管理“证书”、设置“警报规则”，以及管理有权访问该云服务的“用户”。
+可以通过“设置”或“所有设置”链接打开“设置”，在该选项卡中，可以更改“属性”、更改“配置”、管理“证书”、设置“警报规则”，以及管理有权访问该云服务的“用户”         。
 
 ![Azure 云服务设置](./media/cloud-services-how-to-configure-portal/cs-settings-blade.png)
 
@@ -43,20 +37,20 @@ ms.locfileid: "61435731"
 
 默认情况下，Azure 会定期将来宾 OS 更新为 OS 系列（在服务配置 (.cscfg) 中指定）中支持的最新映像，例如 Windows Server 2016。
 
-如果需要设定某一特定 OS 版本，可在“配置”中进行设置。
+如果需要设定某一特定 OS 版本，可在“配置”  中进行设置。
 
 ![设置 OS 版本](./media/cloud-services-how-to-configure-portal/cs-settings-config-guestosversion.png)
 
 >[!IMPORTANT]
-> 选择特定 OS 版本会禁用自动 OS 更新，用户需要自行负责修补工作。 务必确保角色示例可以接收更新，否则应用程序可能存在安全漏洞。
+> 选择特定 OS 版本会禁用自动 OS 更新，用户需要自行负责修补工作。 务必确保角色实例可以接收更新，否则应用程序可能存在安全漏洞。
 
 ## <a name="monitoring"></a>监视
 
-可将警报添加到云服务。 单击“**设置**” > “**警报规则**” > “**添加警报**”。
+可将警报添加到云服务。 单击“设置”   > “警报规则”   > “添加警报”  。
 
-![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
+![设置平移的屏幕截图，其中突出显示了 "警报规则" 选项，以红色突出显示了 "添加警报" 选项，以红色列出。](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
-可以在此处设置警报。 使用“指标”下拉框，可以针对以下类型的数据设置警报。
+可以在此处设置警报。 使用“指标”  下拉框，可以针对以下类型的数据设置警报。
 
 * 磁盘读取
 * 磁盘写入
@@ -64,11 +58,11 @@ ms.locfileid: "61435731"
 * 出网络
 * CPU 百分比
 
-![](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
+!["添加警报规则" 窗格的屏幕截图，其中设置了所有配置选项。](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>配置从度量值磁贴进行的监视
 
-可以单击“云服务”边栏选项卡的“监视”部分中的某个度量值磁贴，而不必使用“设置” > “警报规则”。
+可以单击“云服务”边栏选项卡的“监视”部分中的某个度量值磁贴，而不必使用“设置” > “警报规则”    。
 
 ![云服务监视](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
 
@@ -88,25 +82,28 @@ ms.locfileid: "61435731"
 
 ## <a name="reconfigure-your-cscfg"></a>重新配置 .cscfg
 
-可能需要通过 [service config (cscfg)](cloud-services-model-and-package.md#cscfg) 文件来重新配置云服务。 首先，需要下载 .cscfg 文件，对其进行修改，然后再上载该文件。
+建议通过 [service config (cscfg)](cloud-services-model-and-package.md#cscfg) 文件来重新配置云服务。 首先，用户需要下载 .cscfg 文件，对其进行修改，再上传该文件。
 
-1. 单击“设置”图标或“所有设置”链接以打开“设置”。
+1. 单击“设置”图标或“所有设置”链接以打开“设置”    。
 
     ![“设置”页](./media/cloud-services-how-to-configure-portal/cloud-service.png)
-2. 单击“**配置**”项。
+2. 单击“配置”  项。
 
     ![“配置”边栏选项卡](./media/cloud-services-how-to-configure-portal/cs-settings-config.png)
-3. 单击“**下载**”按钮。
+3. 单击“下载”  按钮。
 
     ![下载](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
 4. 更新服务配置文件后，上传并应用配置更新：
 
-    ![上载](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
-5. 选择 .cscfg 文件，并单击“**确定**”。
+    ![上传](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
+5. 选择 .cscfg 文件，并单击“确定”  。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[部署云服务](cloud-services-how-to-create-deploy-portal.md)。
-* 配置[自定义域名](cloud-services-custom-domain-name-portal.md)。
+* 了解如何 [部署云服务](cloud-services-how-to-create-deploy-portal.md)。
+* 配置 [自定义域名](cloud-services-custom-domain-name-portal.md)。
 * [管理云服务](cloud-services-how-to-manage-portal.md)。
-* 配置 [SSL 证书](cloud-services-configure-ssl-certificate-portal.md)。
+* 配置 [TLS/SSL 证书](cloud-services-configure-ssl-certificate-portal.md)。
+
+
+

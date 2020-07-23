@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell 脚本示例 - 从快照创建 VM | Microsoft Docs
+title: 从快照创建 VM - PowerShell 示例
 description: Azure PowerShell 脚本示例 - 从快照创建 VM
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -9,19 +9,18 @@ editor: ramankum
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 88ac53c864ffe8922fc5c1b36bca326d63430e22
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fb10f6c2d8109d240840faf5fa864176c89f24e1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989025"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "75368295"
 ---
 # <a name="create-a-virtual-machine-from-a-snapshot-with-powershell"></a>使用 PowerShell 从快照创建虚拟机
 
@@ -29,7 +28,7 @@ ms.locfileid: "55989025"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+ 
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -47,7 +46,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 此脚本使用以下命令获取快照属性、从快照创建托管磁盘并创建 VM。 表中的每一项均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [Get-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/get-azsnapshot) | 使用快照名称获取快照。 |
 | [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) | 创建磁盘配置。 在磁盘创建过程中将使用此配置。 |

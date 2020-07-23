@@ -1,24 +1,23 @@
 ---
-title: 还原或永久删除最近删除的用户 - Azure Active Directory | Microsoft Docs
+title: 还原或永久删除最近删除的用户 Azure AD
 description: 如何使用 Azure Active Directory 查看可还原的用户、还原已删除的用户或永久删除用户。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/01/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d69bd931f2f8c72fd1e6fc79c16662ea367617d6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 1ad71d75eb80f15c09e0a4dff4edc4a0eaae9e1b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60248211"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603921"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>使用 Azure Active Directory 还原或删除最近删除的用户
 删除用户后，帐户将保持挂起状态 30 天。 在此 30 天期间，可以还原用户帐户及其所有属性。 30 天期限过后，将自动且永久删除用户。
@@ -28,7 +27,7 @@ ms.locfileid: "60248211"
 >[!Important]
 >你本人或 Microsoft 客户支持人员均无法还原已永久删除的用户。
 
-## <a name="required-permissions"></a>所需权限
+## <a name="required-permissions"></a>所需的权限
 必须具有以下角色之一才能还原和永久删除用户。
 
 - 全局管理员
@@ -45,7 +44,7 @@ ms.locfileid: "60248211"
 ### <a name="to-view-your-restorable-users"></a>查看可还原的用户
 1. 使用组织的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 依次选择“Azure Active Directory”、“用户”、“已删除的用户”。
+2. 依次选择“Azure Active Directory”、“用户”、“已删除的用户”************。
 
     查看可还原的用户列表。
 
@@ -59,9 +58,9 @@ ms.locfileid: "60248211"
 > 还原用户后，在删除时已分配到该用户的许可证也会还原，即使这些许可证没有可用的席位。 如果随后使用的许可证超过了购买的许可证数目，则你的组织可能暂时不符合许可证的用法规则。
 
 ### <a name="to-restore-a-user"></a>还原用户
-1. 在“用户 - 已删除的用户”页上，搜索并选择一个可用用户。 例如，Mary Parker。
+1. 在“用户 - 已删除的用户”页上，搜索并选择一个可用用户****。 例如，_Mary Parker_。
 
-2. 选择“还原用户”。
+2. 选择“还原用户”****。
 
     ![“用户 - 已删除的用户”页，其中突出显示“还原用户”选项](media/active-directory-users-restore/users-deleted-users-restore-user.png)
 
@@ -73,9 +72,9 @@ ms.locfileid: "60248211"
 
 ### <a name="to-permanently-delete-a-user"></a>永久删除用户
 
-1. 在“用户 - 已删除的用户”页上，搜索并选择一个可用用户。 例如，Rae Huff。
+1. 在“用户 - 已删除的用户”页上，搜索并选择一个可用用户****。 例如，Rae Huff__。
 
-2. 选择“永久删除”。
+2. 选择“永久删除”****。
 
     ![“用户 - 已删除的用户”页，其中突出显示“还原用户”选项](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
 
@@ -86,7 +85,7 @@ ms.locfileid: "60248211"
 
 - [向用户分配角色](active-directory-users-assign-role-azure-portal.md)
 
-- [添加或更改配置文件信息](active-directory-users-profile-azure-portal.md)
+- [添加或更改个人资料信息](active-directory-users-profile-azure-portal.md)
 
 - [添加另一个组织中的来宾用户](../b2b/what-is-b2b.md)
 

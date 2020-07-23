@@ -1,26 +1,18 @@
 ---
-title: 适用于 Azure VPN 网关的社区建议第三方 VPN 或防火墙设备设置 | Microsoft Docs
+title: 适用于 Azure VPN 网关的社区建议第三方 VPN 或防火墙设备设置
 description: 了解适用于 Azure VPN 网关的社区建议第三方 VPN 或防火墙设备设置。
 services: vpn-gateway
-documentationcenter: ''
 author: chadmath
-manager: cshepard
-editor: ''
-tags: azure-vpn-gateway
-ms.assetid: ''
+manager: dcscontentpm
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: fae790f9b2d5ecc492f7ece5d259809e8664898d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: b87340fbb3f94eee106fc5d0d72117d30e331035
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60457096"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75862707"
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>适用于 Azure VPN 网关的社区建议第三方 VPN 或防火墙设备设置
 
@@ -33,7 +25,7 @@ ms.locfileid: "60457096"
 
 下表列出了几种常见设备和相关帮助：
 
-|产品    |参考                                                |
+|Products    |参考                                                |
 |-----------|-----------------------------------------------------------|
 |Cisco ASA  |[适用于 Azure VPN 上的 Cisco ASA 的社区建议解决方案](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASA&locale=enUS&tab=Cisco)   |
 |Cisco ISR  |[适用于 Azure VPN 上的 Cisco ISR 的社区建议解决方案](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ISR&locale=enUS&tab=Cisco)   |

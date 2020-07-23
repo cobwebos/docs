@@ -1,34 +1,23 @@
 ---
-title: 在 Azure 中创建运行 Windows 的 Service Fabric 群集 | Microsoft Docs
+title: 在 Azure 中创建运行 Windows 的 Service Fabric 群集
 description: 本教程介绍如何通过使用 PowerShell 将 Windows Service Fabric 群集部署到 Azure 虚拟网络和网络安全组。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 03/13/2019
-ms.author: aljo
+ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: dabbefa8ca2073e30948f1c70782f730bceae030
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a7390858e55a456ec5fb2f851be1a7443be97082
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158098"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245018"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>教程：将运行 Windows 的 Service Fabric 群集部署到 Azure 虚拟网络
 
-本教程是一个系列中的第一部分。 其中介绍了如何通过使用 PowerShell 和模板，将运行 Windows 的 Service Fabric 群集部署到 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)和[网络安全组](../virtual-network/virtual-networks-nsg.md)。 完成本教程后，云中会运行一个可在其中部署应用程序的群集。 要创建使用 Azure CLI 的 Linux 群集，请参阅[在 Azure 上创建安全的 Linux 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)。
+本教程是一个系列中的第一部分。 其中介绍了如何通过使用 PowerShell 和模板，将运行 Windows 的 Service Fabric 群集部署到 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)和[网络安全组](../virtual-network/virtual-network-vnet-plan-design-arm.md)。 完成本教程后，云中会运行一个可在其中部署应用程序的群集。 要创建使用 Azure CLI 的 Linux 群集，请参阅[在 Azure 上创建安全的 Linux 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)。
 
 本教程介绍一个生产方案。 要创建小型群集以供测试，请参阅[创建测试群集](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 PowerShell 在 Azure 中创建 VNET
@@ -59,7 +48,7 @@ ms.locfileid: "66158098"
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 安装 [Service Fabric SDK 和 PowerShell 模块](service-fabric-get-started.md)。
-* 安装 [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
+* 安装 [Azure PowerShell](/powershell/azure/install-az-ps)。
 * 回顾 [Azure 群集](service-fabric-azure-clusters-overview.md)的关键概念。
 * 为生产群集部署[计划并准备](service-fabric-cluster-azure-deployment-preparation.md)。
 
@@ -84,8 +73,8 @@ ms.locfileid: "66158098"
 * 证书保护（可在模板参数中配置）。
 * 已启用[反向代理](service-fabric-reverseproxy.md)。
 * 已启用 [DNS 服务](service-fabric-dnsservice.md)。
-* 铜级[持久性级别](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)（可在模板参数中配置）。
-* 银级[可靠性级别](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster)（可在模板参数中配置）。
+* 铜级[持久性级别](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)（可在模板参数中配置）。
+* 银级[可靠性级别](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster)（可在模板参数中配置）。
 * 客户端连接终结点：19000（可在模板参数中配置）。
 * HTTP 网关终结点：19080（可在模板参数中配置）。
 
@@ -99,7 +88,7 @@ ms.locfileid: "66158098"
 * 应用程序端口：443
 * Service Fabric 反向代理：19081
 
-如需其他应用程序端口，则需要调整 Microsoft.Network/loadBalancers 资源和 Microsoft.Network/networkSecurityGroups 资源，以允许传入流量。
+如需其他应用程序端口，则需要调整 Microsoft.Network/loadBalancers 资源和 Microsoft.Network/networkSecurityGroups 资源，以允许传入流量 。
 
 ### <a name="virtual-network-subnet-and-network-security-group"></a>虚拟网络、子网和网络安全组
 
@@ -119,10 +108,10 @@ ms.locfileid: "66158098"
 * 应用程序端口范围：49152 到 65534（用于测试服务间的通信。 其他端口不会在负载平衡器上打开）。
 * 阻止其他所有端口
 
-如需其他应用程序端口，则需要调整 Microsoft.Network/loadBalancers 资源和 Microsoft.Network/networkSecurityGroups 资源，以允许传入流量。
+如需其他应用程序端口，则需要调整 Microsoft.Network/loadBalancers 资源和 Microsoft.Network/networkSecurityGroups 资源，以允许传入流量 。
 
 ### <a name="windows-defender"></a>Windows Defender
-默认情况下，[Windows Defender 防病毒程序](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)已安装在 Windows Server 2016 上并在其上运行。 用户界面默认安装在一些 SKU 上，但不是必需的。 对于在模板中声明的每个节点类型/VM 规模集，将会使用 [Azure VM 防病毒扩展](/azure/virtual-machines/extensions/iaas-antimalware-windows)排除 Service Fabric 目录和进程：
+默认情况下，[Windows Defender 防病毒程序](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)已安装在 Windows Server 2016 上并在其上运行。 用户界面默认安装在一些 SKU 上，但不是必需的。 对于在模板中声明的每个节点类型/VM 规模集，将会使用 [Azure VM 防病毒扩展](../virtual-machines/extensions/iaas-antimalware-windows.md)排除 Service Fabric 目录和进程：
 
 ```json
 {
@@ -156,10 +145,10 @@ ms.locfileid: "66158098"
 
 **Parameter** | **示例值** | **说明** 
 |---|---|---|
-|adminUserName|vmadmin| 群集 VM 的管理员用户名。 [VM 的用户名要求](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm)。 |
-|adminPassword|Password#1234| 群集 VM 的管理员密码。 [VM 的密码要求](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm)。|
+|adminUserName|vmadmin| 群集 VM 的管理员用户名。 [VM 的用户名要求](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)。 |
+|adminPassword|Password#1234| 群集 VM 的管理员密码。 [VM 的密码要求](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。|
 |clusterName|mysfcluster123| 群集的名称。 仅可包含字母和数字。 长度可介于 3 到 23 个字符之间。|
-|位置|southcentralus| 群集的位置。 |
+|location|southcentralus| 群集的位置。 |
 |certificateThumbprint|| <p>如果创建自签名证书或提供证书文件，则值应为空。</p><p>若要使用之前上传到密钥保管库的现有证书，请填写证书 SHA1 指纹值。 例如“6190390162C988701DB5676EB81083EA608DCCF3”。</p> |
 |certificateUrlValue|| <p>如果创建自签名证书或提供证书文件，则值应为空。 </p><p>若要使用之前上传到 Key Vault 的现有证书，请填写证书 URL。 例如，“https:\//mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346”。</p>|
 |sourceVaultValue||<p>如果创建自签名证书或提供证书文件，则值应为空。</p><p>若要使用之前上传到 Key Vault 的现有证书，请填写源保管库值。 例如“/subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT”。</p>|
@@ -167,7 +156,7 @@ ms.locfileid: "66158098"
 ## <a name="set-up-azure-active-directory-client-authentication"></a>设置 Azure Active Directory 客户端身份验证
 如果将 Service Fabric 群集部署在某个公共网络中，而该网络托管在 Azure 上，则对于客户端到节点型相互身份验证，建议如下：
 * 对客户端标识使用 Azure Active Directory。
-* 对服务器标识使用证书，并对 HTTP 通信进行 SSL 加密。
+* 对服务器标识使用证书，并对 HTTP 通信使用 TLS 加密。
 
 必须在[创建群集](#createvaultandcert)之前设置 Azure Active Directory (Azure AD)，以便针对 Service Fabric 群集对客户端进行身份验证。 通过 Azure AD，组织（称为租户）可管理用户对应用程序的访问。 
 
@@ -178,7 +167,7 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 
 本文假设已创建了一个租户。 如果未创建，请先阅读[如何获取 Azure Active Directory 租户](../active-directory/develop/quickstart-create-new-tenant.md)。
 
-为了简化涉及到配置 Azure AD 与 Service Fabric 群集的步骤，我们创建了一组 Windows PowerShell 脚本。 [将脚本下载](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool)到计算机。
+为了简化涉及到配置 Azure AD 与 Service Fabric 群集的步骤，我们创建了一组 Windows PowerShell 脚本。 [将脚本下载](https://github.com/Azure-Samples/service-fabric-aad-helpers)到计算机。
 
 ### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>创建 Azure AD 应用程序并为用户分配角色
 创建两个 Azure AD 应用程序来控制对群集的访问权限：一个 Web 应用程序和一个本机应用程序。 创建用于表示群集的应用程序后，请将用户分配到 [Service Fabric 支持的角色](service-fabric-cluster-security-roles.md)：只读和管理员。
@@ -194,7 +183,7 @@ $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysf
 > [!NOTE]
 > 对于区域云（例如，Azure 政府、Azure 中国、Azure 德国），请指定 `-Location` 参数。
 
-可在 [Azure 门户](https://portal.azure.com)中找到 *TenantId* 或目录 ID。 选择“Azure Active Directory” > “属性”并复制“目录 ID”值。
+可在 [Azure 门户](https://portal.azure.com)中找到 *TenantId* 或目录 ID。 选择“Azure Active Directory” > “属性”并复制“目录 ID”值  。
 
 将 ClusterName 用作脚本创建的 Azure AD 应用程序的前缀。 无需完全匹配实际的群集名称。 只是为了操作更加简便，可将 Azure AD 项目映射到正在使用的 Service Fabric 群集。
 
@@ -280,7 +269,7 @@ https://&lt;cluster_domain&gt;:19080/Explorer
 
 上传和收集日志的方式之一是使用可将日志上传到 Azure 存储、也能选择发送日志到 Azure Application Insights 或事件中心的 Azure 诊断 (WAD) 扩展。 也可以使用外部进程读取存储中的事件，并将其放在分析平台产品（例如 Azure Monitor 日志或其他日志分析解决方案）中。
 
-如果是按照本教程执行的操作，则已在[模板][template] 中配置了诊断集合。
+如果是按照本教程执行的操作，则已在[模板][template]中配置了诊断集合。
 
 如果存在尚未部署诊断的现有群集，可以通过群集模板来添加或更新该扩展。 修改用于创建现有群集的资源管理器模板，或者从门户下载该模板。 执行以下任务来修改 template.json 文件：
 
@@ -332,7 +321,7 @@ https://&lt;cluster_domain&gt;:19080/Explorer
 }
 ```
 
-下一步，将 IaaSDiagnostics 扩展名添加到群集中每个 Microsoft.Compute/virtualMachineScaleSets 资源的 VirtualMachineProfile 属性的扩展数组中。  如果使用的是[示例模板][template]，则有三个虚拟机规模集（每个节点类型对应集群中的一个规模集）。
+下一步，将 IaaSDiagnostics 扩展名添加到群集中每个 Microsoft.Compute/virtualMachineScaleSets 资源的 VirtualMachineProfile 属性的扩展数组中  。  如果使用的是[示例模板][template]，则有三个虚拟机规模集（群集中的每个节点类型对应一个规模集）。
 
 ```json
 "apiVersion": "2018-10-01",
@@ -412,7 +401,7 @@ EventStore 服务是 Service Fabric 中的监视选项。 EventStore 提供了�
 
 
 
-要在群集上启用 EventStore 服务，请将以下内容添加到 Microsoft.ServiceFabric/clusters 资源的 fabricSettings 属性中：
+要在群集上启用 EventStore 服务，请将以下内容添加到 Microsoft.ServiceFabric/clusters 资源的 fabricSettings 属性中 ：
 
 ```json
 "apiVersion": "2018-02-01",
@@ -714,7 +703,7 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="clean-up-resources"></a>清理资源
 
-本教程系列中的其他文章将会使用本文中创建的群集。 如果不立即转到下一篇文章，可能需要[删除该群集](service-fabric-cluster-delete.md)，以避免产生费用。
+本教程系列中的其他文章将会使用本文中创建的群集。 如果不立即转到下一篇文章，可能需要[删除该群集](./service-fabric-tutorial-delete-cluster.md)，以避免产生费用。
 
 ## <a name="next-steps"></a>后续步骤
 

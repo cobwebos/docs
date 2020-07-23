@@ -1,32 +1,32 @@
 ---
-title: 诊断虚拟机网络路由问题 - Azure PowerShell | Microsoft 文档
-description: 本教程介绍如何使用 Azure 网络观察程序的“下一个跃点”功能来诊断虚拟机网络路由问题。
+title: 诊断 VM 网络路由问题 - Azure PowerShell
+titleSuffix: Azure Network Watcher
+description: 本文介绍如何使用 Azure 网络观察程序的“下一个跃点”功能来诊断虚拟机网络路由问题。
 services: network-watcher
 documentationcenter: network-watcher
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose virtual machine (VM) network routing problem that prevents communication to different destinations.
 ms.assetid: ''
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 08d273ce6e6ecb1b10d3c39a0954d430a3cb674a
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 362157f023f7ed4d2da81962acd32e2da968193e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730755"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738764"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>诊断虚拟机网络路由问题 - Azure PowerShell
 
-在本教程中，请先部署虚拟机 (VM)，然后检查到某个 IP 地址和 URL 的通信。 确定通信失败的原因以及解决方法。
+本文首先部署虚拟机 (VM)，然后检查其与 IP 地址和 URL 的通信。 确定通信失败的原因以及解决方法。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -40,7 +40,7 @@ ms.locfileid: "66730755"
 
 ## <a name="create-a-vm"></a>创建 VM
 
-在创建 VM 之前，必须创建该 VM 所属的资源组。 使用 [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) 创建资源组。 以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
+在创建 VM 之前，必须创建该 VM 所属的资源组。 使用 [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) 创建资源组。 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
@@ -63,7 +63,7 @@ $vM = New-AzVm `
 
 ## <a name="enable-network-watcher"></a>启用网络观察程序
 
-如果已在美国东部区域启用了网络观察程序，请使用 [Get-AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher) 来检索网络观察程序。 以下示例检索 NetworkWatcherRG  资源组中名为 NetworkWatcher_eastus  的现有网络观察程序：
+如果已在美国东部区域启用了网络观察程序，请使用 [Get-AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher) 来检索网络观察程序。 以下示例检索 NetworkWatcherRG** 资源组中名为 NetworkWatcher_eastus** 的现有网络观察程序：
 
 ```azurepowershell-interactive
 $networkWatcher = Get-AzNetworkWatcher `
@@ -82,7 +82,7 @@ $networkWatcher = New-AzNetworkWatcher `
 
 ### <a name="use-next-hop"></a>使用下一个跃点
 
-Azure 自动创建到默认目标的路由。 可以创建自定义路由来覆盖默认路由。 有时，自定义路由可能会导致通信故障。 若要测试从 VM 路由，请使用[Get AzNetworkWatcherNextHop](/powershell/module/az.network/get-aznetworkwatchernexthop)命令，以确定下一步的路由跃点时流量发往特定地址。
+Azure 自动创建到默认目标的路由。 可以创建自定义路由来覆盖默认路由。 有时，自定义路由可能会导致通信故障。 若要测试从 VM 的路由，请使用[AzNetworkWatcherNextHop](/powershell/module/az.network/get-aznetworkwatchernexthop)命令来确定流量发送到特定地址时的下一条路由跃点。
 
 测试从 VM 发往 www.bing.com 的某个 IP 地址的出站通信：
 
@@ -131,7 +131,7 @@ Name State  Source  AddressPrefix           NextHopType NextHopIpAddress
      Active Default {172.16.0.0/12}         None        {}              
 ```
 
-正如在之前输出中所看到的，带有 0.0.0.0/0  的 AddressPrefix  的路由会将未指定给地址的所有流量路由到以 Internet 的下一个跃点为前缀的其他路由地址内  。 同时还可在输出结果中看到，虽然有一个到 172.16.0.0/12 前缀的默认路由（其中包括地址 172.31.0.100），但“nextHopType”为“无”。   Azure 会创建到 172.16.0.0/12 的默认路由，但不会无故指定下一个跃点类型。 在特定情况下，例如在已将 172.16.0.0/12 地址范围添加到虚拟网络的地址空间的情况下，Azure 会将路由的“nextHopType”更改为“虚拟网络”。   此时进行检查会将“nextHopType”显示为“虚拟网络”   。
+正如在之前输出中所看到的，带有 0.0.0.0/0 的 AddressPrefix 的路由会将未指定给地址的所有流量路由到以 Internet 的下一个跃点为前缀的其他路由地址内。 同时还可在输出结果中看到，虽然有一个到 172.16.0.0/12 前缀的默认路由（其中包括地址 172.31.0.100），但“nextHopType”为“无”。   Azure 会创建到 172.16.0.0/12 的默认路由，但不会无故指定下一个跃点类型。 在特定情况下，例如在已将 172.16.0.0/12 地址范围添加到虚拟网络的地址空间的情况下，Azure 会将路由的“nextHopType”更改为“虚拟网络”。   此时进行检查会将“nextHopType”显示为“虚拟网络”   。
 
 ## <a name="clean-up-resources"></a>清理资源
 

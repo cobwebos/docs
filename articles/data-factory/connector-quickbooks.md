@@ -1,25 +1,26 @@
 ---
-title: 使用 Azure 数据工厂（预览版）从 QuickBooks Online 复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂（预览版）从 QuickBooks Online 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 QuickBooks Online 复制到受支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+ms.author: jingwang
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: jingwang
-ms.openlocfilehash: 8f5e3958588a597bde04ae1c8e4873006b281458
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: seo-lt-2019
+ms.date: 08/01/2019
+ms.openlocfilehash: e2c9da9c1a37b087a31d1910094f51a39288c192
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405811"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81416705"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 QuickBooks Online 复制数据
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 QuickBooks Online 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
@@ -27,6 +28,11 @@ ms.locfileid: "60405811"
 > 此连接器目前提供预览版。 欢迎试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 客户支持](https://azure.microsoft.com/support/)。
 
 ## <a name="supported-capabilities"></a>支持的功能
+
+以下活动支持此 QuickBooks 连接器：
+
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 QuickBooks Online 复制到任何受支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
@@ -44,9 +50,9 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 QuickBooks 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | Type 属性必须设置为：**QuickBooks** | 是 |
+| type | type 属性必须设置为：**QuickBooks** | 是 |
 | endpoint | QuickBooks Online 服务器的终结点。 （即 quickbooks.api.intuit.com）  | 是 |
 | companyId | QuickBooks 公司授权的公司 ID。 有关如何查找公司 ID 的信息，请参阅[如何查找我的公司 ID？](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551)。 | 是 |
 | consumerKey | OAuth 1.0 身份验证的使用者密钥。 | 是 |
@@ -90,10 +96,10 @@ QuickBooks 链接的服务支持以下属性：
 
 若要从 QuickBooks Online 复制数据，请将数据集的 type 属性设置为 **QuickBooksObject**。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**QuickBooksObject** | 是 |
-| tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
+| tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -102,11 +108,12 @@ QuickBooks 链接的服务支持以下属性：
     "name": "QuickBooksDataset",
     "properties": {
         "type": "QuickBooksObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<QuickBooks linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -117,12 +124,12 @@ QuickBooks 链接的服务支持以下属性：
 
 ### <a name="quickbooks-as-source"></a>QuickBooks 作为源
 
-要从 QuickBooks Online 复制数据，请将复制活动中的源类型设置为 **QuickBooksSource**。 复制活动源部分支持以下属性：
+要从 QuickBooks Online 复制数据，请将复制活动中的源类型设置为 **QuickBooksSource**。 复制活动**source**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**QuickBooksSource** | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM "Bill" WHERE Id = '123'"`。 | 否（如果指定了数据集中的“tableName”） |
+| type | 复制活动 source 的 type 属性必须设置为：**QuickBooksSource** | 是 |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM "Bill" WHERE Id = '123'"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 
@@ -158,6 +165,11 @@ QuickBooks 链接的服务支持以下属性：
 ## <a name="copy-data-from-quickbooks-desktop"></a>从 Quickbooks Desktop 复制数据
 
 Azure 数据工厂中的复制活动不能直接从 Quickbooks Desktop 复制数据。 若要从 Quickbooks Desktop 复制数据，请将 Quickbooks 数据导出到一个逗号分隔值 (CSV) 文件，然后将该文件上传到 Azure Blob 存储。 从该存储中，可以使用数据工厂将数据复制到所选的接收器。
+
+## <a name="lookup-activity-properties"></a>Lookup 活动属性
+
+若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
+
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

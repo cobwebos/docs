@@ -8,77 +8,80 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/21/2019
+ms.date: 05/20/2020
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: 9962874600e259a639c70b7b180e5fc2a940461f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 968f9f1d658e79fb5213355358b91e98c353b07f
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999546"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84985689"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-python-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 Python 生成缩略图
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-python"></a>快速入门：使用计算机视觉 REST API 和 Python 生成缩略图
 
-在本快速入门中，你将使用计算机视觉的 REST API 基于图像生成缩略图。 使用[获取缩略图](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)方法，可以指定所需的高度和宽度，计算机视觉使用智能裁剪来智能识别感兴趣的区域并基于该区域生成裁剪坐标。
-
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/try/cognitive-services/)。
+本快速入门将使用计算机视觉 REST API 基于图像生成缩略图。 使用[获取缩略图](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/56f91f2e778daf14a499f20c)方法，可以指定所需的高度和宽度，计算机视觉使用智能裁剪来智能识别感兴趣的区域并基于该区域生成裁剪坐标。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费的试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。
-- 代码编辑器，如 [Visual Studio Code](https://code.visualstudio.com/download)
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="创建计算机视觉资源"  target="_blank">创建计算机视觉资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到计算机视觉服务。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
+* 为密钥和终结点 URL [创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别将其命名为 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`。
+- 代码编辑器，如 [Visual Studio Code](https://code.visualstudio.com/download)。
 
 ## <a name="create-and-run-the-sample"></a>创建并运行示例
 
 若要创建和运行示例，请将以下代码复制到代码编辑器中。 
 
 ```python
+import os
+import sys
 import requests
-# If you are using a Jupyter notebook, uncomment the following line.
-#%matplotlib inline
-import matplotlib.pyplot as plt
+# If you are using a Jupyter notebook, uncomment the following lines.
+# %matplotlib inline
+# import matplotlib.pyplot as plt
 from PIL import Image
 from io import BytesIO
 
-# Replace <Subscription Key> with your valid subscription key.
-subscription_key = "<Subscription Key>"
-assert subscription_key
+# Add your Computer Vision subscription key and endpoint to your environment variables.
+subscription_key = os.environ['COMPUTER_VISION_SUBSCRIPTION_KEY']
+endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
 
-# You must use the same region in your REST call as you used to get your
-# subscription keys. For example, if you got your subscription keys from
-# westus, replace "westcentralus" in the URI below with "westus".
-#
-# Free trial subscription keys are generated in the "westus" region.
-# If you use a free trial subscription key, you shouldn't need to change
-# this region.
-vision_base_url = "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/"
-
-thumbnail_url = vision_base_url + "generateThumbnail"
+thumbnail_url = endpoint + "vision/v3.0/generateThumbnail"
 
 # Set image_url to the URL of an image that you want to analyze.
 image_url = "https://upload.wikimedia.org/wikipedia/commons/9/94/Bloodhound_Puppy.jpg"
 
+# Construct URL
 headers = {'Ocp-Apim-Subscription-Key': subscription_key}
-params  = {'width': '50', 'height': '50', 'smartCropping': 'true'}
-data    = {'url': image_url}
+params = {'width': '50', 'height': '50', 'smartCropping': 'true'}
+data = {'url': image_url}
+# Call API
 response = requests.post(thumbnail_url, headers=headers, params=params, json=data)
 response.raise_for_status()
 
+# Open the image from bytes
 thumbnail = Image.open(BytesIO(response.content))
-
-# Display the thumbnail.
-plt.imshow(thumbnail)
-plt.axis("off")
 
 # Verify the thumbnail size.
 print("Thumbnail is {0}-by-{1}".format(*thumbnail.size))
+
+# Save thumbnail to file
+thumbnail.save('thumbnail.png')
+
+# Display image
+thumbnail.show()
+
+# Optional. Display the thumbnail from Jupyter.
+# plt.imshow(thumbnail)
+# plt.axis("off")
 ```
 
 接下来，请执行以下操作：
-1. 将 `subscription_key` 的值替换为你的订阅密钥。
-1. 如有必要，请将 `vision_base_url` 的值替换为获取的订阅密钥所在的 Azure 区域中的计算机视觉资源的终结点 URL。
-1. （可选）将 `image_url` 的值替换为你要为其生成缩略图的另一图像的 URL。
+
+1. （可选）将 `image_url` 的值替换为自己的图像的 URL。
 1. 将代码保存为以 `.py` 为扩展名的文件。 例如，`get-thumbnail.py`。
 1. 打开命令提示符窗口。
 1. 在提示符处，使用 `python` 命令运行示例。 例如，`python get-thumbnail.py`。
@@ -95,7 +98,9 @@ print("Thumbnail is {0}-by-{1}".format(*thumbnail.size))
 
 ## <a name="next-steps"></a>后续步骤
 
-接下来，了解有关生成缩略图功能的更多详细信息。
+接下来，了解一款使用计算机视觉执行光学字符识别 (OCR) 功能的 Python 应用程序；创建智能裁剪缩略图；对图像中的视觉特征进行检测、分类、标记和说明。
 
 > [!div class="nextstepaction"]
-> [生成缩略图](../concept-generating-thumbnails.md)
+> [计算机视觉 API Python 教程](../Tutorials/PythonTutorial.md)
+
+* 要快速体验计算机视觉 API，请尝试使用 [Open API 测试控制台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/56f91f2e778daf14a499f20c)。

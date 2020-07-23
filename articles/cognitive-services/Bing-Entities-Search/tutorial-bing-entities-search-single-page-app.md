@@ -1,27 +1,27 @@
 ---
 title: 教程：必应实体搜索单页 Web 应用
-titlesuffix: Azure Cognitive Services
-description: 介绍如何在单页 Web 应用程序中使用必应实体搜索 API。
+titleSuffix: Azure Cognitive Services
+description: 本教程介绍如何在单页 Web 应用程序中使用必应实体搜索 API。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: tutorial
-ms.date: 02/01/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 1b8cf36c631755458bc0c531773a6b2aba7f1038
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 53731540c4a2861c77c02b1a4b25b60fd0e23872
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406382"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184134"
 ---
 # <a name="tutorial-single-page-web-app"></a>教程：单页 Web 应用
 
-必应实体搜索 API 用于在 Web 中搜索实体和场所的信息。 可以在给定查询中请求一种或两种结果。 场所和实体的定义在下面提供。
+必应实体搜索 API 用于在 Web 中搜索实体和场所的信息。  可以在给定查询中请求一种或两种结果。 场所和实体的定义在下面提供。
 
-|||
+| 结果 | 说明 |
 |-|-|
 |实体|按名称查找的知名人物、场所和事物|
 |场所|按名称或类型查找的餐馆、酒店和其他本地商业场所（例如，意大利餐馆）|
@@ -49,12 +49,21 @@ ms.locfileid: "65406382"
 > * 处理必应客户端 ID 和 API 订阅密钥
 > * 处理可能出现的任何错误
 
-教程页是完全独立的；它不使用任何外部框架、样式表，甚至也不使用外部图像文件， 而只使用获得广泛支持的 JavaScript 语言功能，适用于所有主要 Web 浏览器的最新版本。
+教程页是完全独立的；它不使用任何外部框架、样式表，甚至也不使用外部图像文件， 而仅使用广泛支持的 JavaScript 语言功能，并且适用于所有主要 Web 浏览器的当前版本。
 
 在本教程中，我们只讨论源代码的选定部分。 完整的源代码[在单独页上](tutorial-bing-entities-search-single-page-app-source.md)提供。 请将此代码复制并粘贴到文本编辑器中，并将其另存为 `bing.html`。
 
 > [!NOTE]
 > 本教程大致类似于[单页必应 Web 搜索应用教程](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md)，但只涉及实体搜索结果。
+
+## <a name="prerequisites"></a>先决条件
+
+若要继续学习本教程，需要必应搜索 API 和必应地图 API 的订阅密钥。 
+
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 拥有 Azure 订阅后：
+  * 在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="创建必应搜索资源"  target="_blank">创建必应搜索资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。 部署后，单击“转到资源”。
+  * 在 Azure 门户中<a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title="创建计算机视觉资源"  target="_blank">创建必应地图资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。 部署后，单击“转到资源”。
 
 ## <a name="app-components"></a>应用组件
 
@@ -77,16 +86,16 @@ HTML 包含搜索表单，用户可以在其中输入查询并选择搜索选项
 
 搜索分两个阶段执行。 首先，如果用户输入了位置限制，则会通过必应地图查询将其转换为坐标。 该查询的回调然后会启动必应实体搜索查询。
 
-HTML 还包含划分（HTML `<div>` 标记），可以在其中显示搜索结果。
+HTML 还包含部门（HTML `<div>` 标记），其中显示搜索结果。
 
 ## <a name="managing-subscription-keys"></a>管理订阅密钥
 
 > [!NOTE]
-> 不管是对必应搜索 API 还是对必应地图 API，此应用都要求使用订阅密钥。 可以使用[试用型必应搜索密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)和[基本型必应地图密钥](https://www.microsoft.com/maps/create-a-bing-maps-key)。
+> 不管是对必应搜索 API 还是对必应地图 API，此应用都要求使用订阅密钥。
 
 为了避免必须将必应搜索和必应地图 API 订阅密钥包含在代码中这种情形，请使用浏览器的持久性存储来存储它们。 如果任何一种密钥尚未存储，我们会提示你进行存储，以备后用。 如果该密钥随后被 API 拒绝，我们会使已存储的密钥失效，并会在用户下次进行搜索时要求其提供密钥。
 
-我们定义使用 `localStorage` 对象（如果浏览器支持它）或 Cookie 的 `storeValue` 和 `retrieveValue` 函数。 `getSubscriptionKey()` 函数使用这些函数来存储和检索用户的密钥。
+我们定义使用 `localStorage` 对象（如果浏览器支持它）或 Cookie 的 `storeValue` 和 `retrieveValue` 函数。 `getSubscriptionKey()` 函数使用这些函数来存储和检索用户的密钥。 可以使用下面的全局终结点，也可以使用资源的 Azure 门户中显示的[自定义子域](../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
 ```javascript
 // cookie names for data we store
@@ -132,7 +141,7 @@ function getSearchSubscriptionKey() {
 
 HTML 表单包括以下控件：
 
-| | |
+| 控制 | 说明 |
 |-|-|
 |`where`|用于选择市场（位置和语言）进行搜索的下拉菜单。|
 |`query`|用于输入搜索词的文本字段。|
@@ -376,7 +385,7 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> HTTP 请求成功不一定意味着搜索本身成功。 如果搜索操作中出现错误，必应实体搜索 API 将返回非 200 HTTP 状态代码并将错误信息包含在 JSON 响应中。 此外，如果请求速率受限制，该 API 还会返回空响应。
+> 成功的 HTTP 请求不一定意味着搜索本身成功。 如果搜索操作中出现错误，必应实体搜索 API 将返回非 200 HTTP 状态代码并将错误信息包含在 JSON 响应中。 此外，如果请求速率受限制，该 API 还会返回空响应。
 
 上面两个函数中的很多代码专用于错误处理。 以下阶段可能会出现错误：
 
@@ -402,7 +411,7 @@ function handleBingResponse() {
 
 `rankingResponse` 集合中的每个项采用两种不同但却等效的方式来映射实际的搜索结果项。
 
-| | |
+| Item | 说明 |
 |-|-|
 |`id`|`id` 看起来像 URL，但不应将其用于链接。 排名结果的 `id` 类型与答案集合中某个搜索结果项的 `id` 匹配，或者与整个答案集合（例如 `Entities`）匹配。
 |`answerType`<br>`resultIndex`|`answerType` 是指包含结果的顶级答案集合（例如 `Entities`）。 `resultIndex` 是指结果在该集合中的索引。 如果省略 `resultIndex`，则排名结果指整个集合。
@@ -443,9 +452,9 @@ searchItemRenderers = {
 
 呈现器函数可接受以下参数：
 
-| | |
+| 参数 | 说明 |
 |-|-|
-|`item`|包含项目属性（例如其 URL 和说明）的 JavaScript 对象。|
+|`item`|包含项目属性（如其 URL 及其说明）的 JavaScript 对象。|
 |`index`|结果项集合中的结果项的索引。|
 |`count`|搜索结果项集合中的项数。|
 
@@ -507,7 +516,7 @@ searchItemRenderers = {
 > [!div class="checklist"]
 > * 生成 HTML `<img>` 标记以显示图像缩略图（如果有）。 
 > * 生成链接到图像所在页面的 HTML `<a>` 标记。
-> * 生成可显示有关图像及其所在站点的信息的说明。
+> * 可生成显示有关图像及所在站点的信息的说明。
 > * 使用显示提示（如果有）整合实体的分类。
 > * 包括一个必应搜索链接，用于获取有关实体的详细信息。
 > * 显示数据源要求的任何许可或归属信息。
@@ -516,30 +525,33 @@ searchItemRenderers = {
 
 来自必应搜索 API 的响应可能包含应通过后续请求发送回 API 的 `X-MSEdge-ClientID` 标头。 如果正在使用多个必应搜索 API，应将相同客户端 ID 用于所有这些必应搜索 API（如有可能）。
 
-提供 `X-MSEdge-ClientID` 标头可以让必应 API 关联用户的所有搜索，这有两个主要好处。
+提供 `X-MSEdge-ClientID` 标头可让必应 API 关联用户的所有搜索，这有两个主要好处。
 
 首先，它允许必应搜索引擎将过去的上下文应用于搜索来查找更好地满足用户的结果。 例如，如果用户以前搜索过与航海相关的词汇，则稍后搜索“码头”时，系统可能会优先返回可以让帆船停靠的码头的信息。
 
 其次，在新功能广泛应用之前，必应可能会随机选择用户体验该功能。 为每个请求提供相同客户端 ID 可确保被允许看到某个功能的用户可以始终看到该功能。 如果没有客户端 ID，用户可能会看到功能在其搜索结果中随机出现和消失。
 
-浏览器安全策略 (CORS) 可能会阻止将 `X-MSEdge-ClientID` 标头提供给 JavaScript。 当搜索响应的域不同于请求搜索的页面时，会出现此限制。 在生产环境中，应该托管一个服务器端脚本，以便在网页所在的域进行 API 调用，这样就可以解决此策略的问题。 由于脚本与网页的域相同，因此 `X-MSEdge-ClientID` 标头可供 JavaScript 使用。
+浏览器安全策略 (CORS) 可能会阻止将 `X-MSEdge-ClientID` 标头提供给 JavaScript。 当搜索响应的域不同于请求搜索的页面时，会出现此限制。 在生产环境中，应该托管一个服务器端脚本，以便在网页所在的域进行 API 调用，这样就可以解决此策略的问题。 由于脚本具有与网页相同的来源，因此会将 `X-MSEdge-ClientID` 标头提供给 JavaScript。
 
 > [!NOTE]
-> 在生产型 Web 应用程序中，无论如何都应在服务器端执行请求。 否则就必须将必应搜索 API 密钥包含在网页中，这样查看源代码的任何人都可以获得它。 收费取决于 API 订阅密钥下的所有使用量（即使请求是由未经授权的用户发出的，也是如此），因此请确保不要公开你的密钥。
+> 在生产型 Web 应用程序中，无论如何都应在服务器端执行请求。 否则，你的必应搜索 API 密钥必须包含在网页中，该网页可供查看来源的任何人使用。 收费取决于 API 订阅密钥下的所有使用量（即使请求是由未经授权的用户发出的，也是如此），因此请确保不要公开你的密钥。
 
-进行开发时，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 来自此类代理的响应有一个 `Access-Control-Expose-Headers` 标头，此标头将响应头列入允许列表，并将它们提供给 JavaScript。
+进行开发时，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 此类代理的响应有一个 `Access-Control-Expose-Headers` 标头，它允许列出响应标头并使其可供 JavaScript 访问。
 
-安装 CORS 代理很容易，教程应用可以用它来访问客户端 ID 标头。 首先，如果尚未安装 Node.js，请[安装它](https://nodejs.org/en/download/)。 然后，在命令窗口中发出以下命令：
+安装 CORS 代理很容易，教程应用可以用它来访问客户端 ID 标头。 首先，如果尚未安装 Node.js，请先[安装](https://nodejs.org/en/download/)。 然后，在命令窗口中发出以下命令：
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-接下来，在 HTML 文件中将必应 Web 搜索终结点更改为：
+接下来，在 HTML 文件中将必应 Web 搜索终结点更改为：\
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
-    https://localhost:9090/httpss://api.cognitive.microsoft.com/bing/v7.0/search
+最后，运行下面的命令，启动 CORS 代理：
 
-最后，使用以下命令启动 CORS 代理：
-
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 使用教程应用期间，不要关闭命令窗口；关闭窗口会导致代理停止运行。 在搜索结果下的可展开 HTTP 响应头部分中，现在可以看到 `X-MSEdge-ClientID` 响应头（以及其他响应头），并验证此响应头是否对所有请求都相同。
 

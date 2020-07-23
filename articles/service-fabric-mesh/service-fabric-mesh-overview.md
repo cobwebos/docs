@@ -1,20 +1,16 @@
 ---
-title: Azure Service Fabric 网格概述 | Microsoft Docs
+title: Azure Service Fabric 网格概述
 description: 了解 Azure Service Fabric 网格。 使用 Service Fabric 网格可以部署和缩放应用程序，而无需考虑应用程序的基础结构需求。
-services: service-fabric-mesh
-keywords: ''
 author: dkkapur
 ms.author: dekapur
 ms.date: 10/1/2018
 ms.topic: overview
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: d315ca0702b1d76e0f990d4d33a3807a1dc57935
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: e64cc158a18e604cbd022be5c91350c95258272c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428186"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257807"
 ---
 # <a name="what-is-service-fabric-mesh"></a>什么是 Service Fabric 网格？
 
@@ -46,7 +42,7 @@ Service Fabric 网格支持可在容器中运行的任何编程语言或框架�
 
 - 无需显式预配和管理基础结构，即可部署和管理应用程序。  Service Fabric 网格会自动预配、升级、修补和维护底层基础结构。
 - 使用集成式工具设置持续集成，以轻松打包和部署应用程序。
-- 利用 Azure 资源管理器资源的所有功能。 这些功能的示例包括审核线索和[基于角色的访问控制](/azure/role-based-access-control/overview))。 在 Azure 中部署到 Service Fabric 网格服务的所有资源都是 Azure 资源管理器资源。 这些资源包括应用程序、服务、机密，等等。
+- 利用 Azure 资源管理器资源的所有功能。 这些功能的示例包括审核线索和[基于角色的访问控制](../role-based-access-control/overview.md))。 在 Azure 中部署到 Service Fabric 网格服务的所有资源都是 Azure 资源管理器资源。 这些资源包括应用程序、服务、机密，等等。
 - 使用 [Azure 门户](https://portal.azure.com)、资源管理器模板或 Azure CLI/PowerShell 库部署和管理资源。
 - 使用 [Application Insights](/azure/application-insights/)（或所选工具）设置操作监视和警报，以从平台捕获操作和诊断跟踪。
 - 使用 [Application Insights](/azure/application-insights/) 或所选工具访问应用程序模型发出的应用程序诊断信息。
@@ -54,14 +50,14 @@ Service Fabric 网格支持可在容器中运行的任何编程语言或框架�
 
 ## <a name="mission-critical-platform-capabilities"></a>任务关键型平台功能
 
-Service Fabric 网格可创建跨越 [Azure 可用性区域](/azure/availability-zones/az-overview)和/或地缘政治区域边界的群集集合。 Service Fabric 网格使用一组意向（例如规模、硬件要求、持久性要求和安全策略）描述应用程序。  部署应用程序时，Service Fabric 网格会查找该应用程序的最佳运行位置。
+Service Fabric 网格可创建跨越 [Azure 可用性区域](../availability-zones/az-overview.md)和/或地缘政治区域边界的群集集合。 Service Fabric 网格使用一组意向（例如规模、硬件要求、持久性要求和安全策略）描述应用程序。  部署应用程序时，Service Fabric 网格会查找该应用程序的最佳运行位置。
 
 使用 Service Fabric 网格可以：
 
 - 利用高可用性、扩展/缩减功能、可发现性、业务流程、消息路由、可靠消息传递、无需停机升级、安全/机密管理、灾难恢复、状态管理、配置管理和分布式事务。
 - 创建应用程序时在多个应用程序模型之间进行选择。
 - 使用通过 Swagger 生成的语言特定绑定，利用通过 REST 终结点公开的平台功能。
-- 跨[可用性区域](/azure/availability-zones/az-overview)和多个区域部署应用程序，以实现异地可靠性。
+- 跨[可用性区域](../availability-zones/az-overview.md)和多个区域部署应用程序，以实现异地可靠性。
 - 使用 Azure 提供的所有安全性和符合性功能。
 
 ## <a name="next-steps"></a>后续步骤

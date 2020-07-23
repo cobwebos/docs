@@ -8,12 +8,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 12/18/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0f9669d491648ecc621aab27d0908dcc3dc84438
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
-ms.translationtype: MT
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: ac681bb13ccea49c7a2f566a6fcdb6adb8cec5bb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823328"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81683740"
 ---
 # <a name="understand-the-device-model-schema"></a>了解设备模型架构
 
@@ -116,7 +118,7 @@ ms.locfileid: "65823328"
 
 ## <a name="properties"></a>属性
 
-架构的 `Properties` 节定义设备向解决方案报告的属性值。 例如:
+架构的 `Properties` 节定义设备向解决方案报告的属性值。 例如：
 
 ```json
 "Properties": {
@@ -163,7 +165,7 @@ ms.locfileid: "65823328"
 
 * 对象 - 使用 JSON 序列化
 * 二进制 - 使用 base64 序列化
-* Text
+* 文本
 * Boolean
 * Integer
 * Double

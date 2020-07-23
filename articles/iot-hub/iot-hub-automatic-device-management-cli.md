@@ -1,49 +1,55 @@
 ---
-title: 自动设备的管理，使用 Azure IoT 中心 (CLI) |Microsoft Docs
-description: 使用 Azure IoT 中心自动设备管理将配置分配到多个 IoT 设备
-author: ChrisGMsft
-manager: bruz
+title: 使用 Azure IoT 中心进行大规模自动设备管理 (CLI) | Microsoft Docs
+description: 使用 Azure IoT 中心的自动配置来管理多个 IoT 设备或模块
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/13/2018
-ms.author: chrisgre
-ms.openlocfilehash: 0302146634904ccf1d87220d3a24553149e10372
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 12/13/2019
+ms.author: robinsh
+ms.openlocfilehash: 60d0ef30a1c7d948a9e837a8bc37c76ace415545
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61320070"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82024959"
 ---
-# <a name="automatic-iot-device-management-at-scale-using-the-azure-cli"></a>在使用 Azure CLI 进行缩放的自动 IoT 设备管理
+# <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>使用 Azure CLI 进行 IoT 设备和模块的自动管理
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
-Azure IoT 中心中的自动设备管理自动执行许多管理大型设备群的重复且复杂的任务。 使用自动设备管理，可以为目标的一组基于属性对其设备、 定义所需的配置，并让 IoT 中心更新设备时进入作用域。 完成此更新使用_自动配置设备_，从中可以汇总完成和合规性、 句柄合并和冲突，并推出分阶段的方法中的配置。
+Azure IoT 中心的自动设备管理功能可自动完成许多复杂且重复性的大型设备阵列管理任务。 使用自动设备管理，可以根据设备的属性将一组设备指定为目标、定义所需的配置，然后在设备进入管理范畴时让 IoT 中心更新这些设备。 此更新是使用自动设备配置或自动模块配置执行的。使用此项功能还能汇总完整度与符合性、处理合并与冲突，以及分阶段推出配置。  
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-自动设备管理可以通过一组设备孪生更新和所需属性和报告摘要基于设备孪生报告属性。  它引入了新的类和名为 JSON 文档*配置*分为三个部分：
+自动设备管理的工作原理是使用所需属性更新一组设备孪生或模块孪生，并报告基于孪生报告属性的摘要。  它引入了一个新类以及名为 *Configuration* 的 JSON 文档，其中包含三个组成部分：
 
-* **目标条件**定义要更新的设备孪生的范围。 目标条件在设备孪生标记和/或报告属性中指定为查询。
+* **目标条件**定义要更新的设备孪生或模块孪生的范围。 目标条件在设备孪生标记和/或报告属性中指定为查询。
 
-* **目标内容**定义要在目标设备孪生中添加或更新的所需属性。 内容包括要更改的所需属性节的路径。
+* **目标内容**定义要在目标设备孪生或模块孪生中添加或更新的所需属性。 内容包括要更改的所需属性节的路径。
 
-* **指标**定义各种配置状态（例如“成功”、“正在进行中”和“错误”）的摘要计数。 自定义指标指定为设备孪生报告的属性中的查询。  系统指标是衡量孪生更新状态，例如设备孪生，并针对数和已成功更新孪生数的默认度量值。 
+* **指标**定义各种配置状态（例如“成功”、“正在进行中”和“错误”）的摘要计数。    自定义指标指定为孪生报告的属性中的查询。  系统指标是度量孪生更新状态的默认指标，例如，针对的孪生数，以及已成功更新的孪生数。
+
+自动配置在配置创建不久后就首次运行，然后每隔五分钟运行一次。 每次自动配置运行时，都会运行指标查询。
 
 ## <a name="cli-prerequisites"></a>CLI 先决条件
 
 * Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-using-cli.md)。 
-* 环境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI 版本必须至少是 2.0.24 或更高版本。 请使用 `az –-version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。 
-* [适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)。
 
-## <a name="implement-device-twins-to-configure-devices"></a>实施设备孪生以配置设备
+* 环境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI 版本必须至少是 2.0.70 或更高版本。 请使用 `az –-version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。 
 
-自动设备配置需要使用设备孪生来同步云与设备之间的状态。  有关使用设备孪生的指导，请参阅[了解并在 IoT 中心内使用设备孪生](iot-hub-devguide-device-twins.md)。
+* [适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-cli)。
 
-## <a name="identify-devices-using-tags"></a>使用标记标识设备
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-创建一个配置之前，必须指定想要影响哪些的设备。 Azure IoT 中心使用设备孪生中的标记来标识设备。 每个设备均可以拥有多个标记，你可以用适合解决方案的任何方式定义它们。 例如，如果您管理不同的位置中的设备，对设备孪生添加以下标记：
+## <a name="implement-twins"></a>实现孪生
+
+自动设备配置需要使用设备孪生来同步云与设备之间的状态。  有关详细信息，请参阅[了解并在 IoT 中心内使用设备孪生](iot-hub-devguide-device-twins.md)。
+
+自动模块配置需要使用模块孪生来同步云与模块之间的状态。 有关详细信息，请参阅[了解并在 IoT 中心内使用模块孪生](iot-hub-devguide-module-twins.md)。
+
+## <a name="use-tags-to-target-twins"></a>使用标记设置孪生目标
+
+创建配置之前，必须指定想要影响的设备或模块。 Azure IoT 中心使用设备孪生中的标记来标识设备，使用模块孪生中的标记来标识模块。 每个设备或模块均可以拥有多个标记，你可以用适合解决方案的任何方式定义它们。 例如，在管理不同位置中的设备时，请将以下标记添加到设备孪生：
 
 ```json
 "tags": {
@@ -56,9 +62,9 @@ Azure IoT 中心中的自动设备管理自动执行许多管理大型设备群�
 
 ## <a name="define-the-target-content-and-metrics"></a>定义目标内容和指标
 
-目标内容和指标查询为被指定为 JSON 文档，用于描述设备的克隆到集的所需的属性和报告的属性来测量。  若要使用 Azure CLI 创建自动设备配置，请将目标内容和指标在本地保存为 .txt 文件。 在运行命令以将配置应用到你的设备时，可以在后面的部分中使用的文件路径。 
+目标内容和指标查询是作为 JSON 文档指定的，这些文档描述了要设置的设备孪生或模块孪生所需属性和要度量的报告属性。  若要使用 Azure CLI 创建自动配置，请将目标内容和指标在本地保存为 .txt 文件。 在后面的部分中通过运行命令将配置应用到设备时，会用到这些文件路径。
 
-下面是一个基本的目标内容示例：
+下面是自动设备配置的基本目标内容示例：
 
 ```json
 {
@@ -72,14 +78,38 @@ Azure IoT 中心中的自动设备管理自动执行许多管理大型设备群�
 }
 ```
 
+自动模块配置的行为与此十分类似，但你的目标是 `moduleContent` 而不是 `deviceContent`。
+
+```json
+{
+  "content": {
+    "moduleContent": {
+      "properties.desired.chillerWaterSettings": {
+        "temperature": 38,
+        "pressure": 78
+      }
+    }
+}
+```
+
 下面是指标查询的示例：
 
 ```json
 {
   "queries": {
-    "Compliant": "select deviceId from devices where configurations.[[chillersettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='current'",
-    "Error": "select deviceId from devices where configurations.[[chillersettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='error'",
-    "Pending": "select deviceId from devices where configurations.[[chillersettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='pending'"
+    "Compliant": "select deviceId from devices where configurations.[[chillerdevicesettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='current'",
+    "Error": "select deviceId from devices where configurations.[[chillerdevicesettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='error'",
+    "Pending": "select deviceId from devices where configurations.[[chillerdevicesettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='pending'"
+  }
+}
+```
+
+模块的指标查询与设备的查询也类似，但你针对 `devices.modules` 中的 `moduleId` 进行选择。 例如： 
+
+```json
+{
+  "queries": {
+    "Compliant": "select deviceId, moduleId from devices.module where configurations.[[chillermodulesettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='current'"
   }
 }
 ```
@@ -90,62 +120,62 @@ Azure IoT 中心中的自动设备管理自动执行许多管理大型设备群�
 
 可使用以下命令来创建配置：
 
-```cli
+```azurecli
    az iot hub configuration create --config-id [configuration id] \
      --labels [labels] --content [file path] --hub-name [hub name] \
      --target-condition [target query] --priority [int] \
      --metrics [metric queries]
 ```
 
-* --config-id - 将在 IoT 中心内创建的配置的名称。 为配置指定不超过 128 个小写字母的唯一名称。 避免空格和以下无效字符：`& ^ [ ] { } \ | " < > /`。
+* --config-id  - 将在 IoT 中心内创建的配置的名称。 为配置指定不超过 128 个小写字母的唯一名称。 避免空格和以下无效字符：`& ^ [ ] { } \ | " < > /`。
 
-* --labels - 添加标签以帮助跟踪配置。 标签是描述部署的“名称, 值”对。 例如，`HostPlatform, Linux` 或 `Version, 3.0.1`
+* --labels  - 添加标签以帮助跟踪配置。 标签是描述部署的“名称, 值”对。 例如，`HostPlatform, Linux` 或 `Version, 3.0.1`
 
-* --content - 要设置为孪生所需属性的目标内容的内联 JSON 或文件路径。 
+* --content  - 要设置为孪生所需属性的目标内容的内联 JSON 或文件路径。 
 
-* --hub-name - 将在其中创建配置的 IoT 中心的名称。 此中心必须在当前订阅中。 使用 `az account set -s [subscription name]` 命令切换到所需订阅
+* --hub-name  - 将在其中创建配置的 IoT 中心的名称。 此中心必须在当前订阅中。 使用 `az account set -s [subscription name]` 命令切换到所需订阅
 
-* --target-condition - 输入一个目标条件，用于确定哪些设备会成为此配置的目标。 条件基于设备孪生标记或设备孪生所需属性，并且应当与表达式格式匹配。 例如 `tags.environment='test'` 或 `properties.desired.devicemodel='4000x'`。 
+* --target-condition  - 输入一个目标条件，用于确定哪些设备或模块会成为此配置的目标。 对于自动设备配置，条件基于设备孪生标记或设备孪生所需属性，并且应当与表达式格式匹配。 例如 `tags.environment='test'` 或 `properties.desired.devicemodel='4000x'`。 对于自动模块配置，条件基于模块孪生标记或模块孪生所需属性。 例如 `from devices.modules where tags.environment='test'` 或 `from devices.modules where properties.reported.chillerProperties.model='4000x'`。
 
-* --priority - 一个正整数。 如果在同一台设备上设定了两个或更多配置作为目标，将会应用优先级数值最高的配置。
+* --priority  - 一个正整数。 如果在同一设备或模块上设定了两个或更多配置作为目标，将会应用优先级数值最高的配置。
 
-* --metrics - 指标查询的文件路径。 度量值提供设备可能会在应用配置内容后报告的各种状态的汇总的计数。 例如，可以针对挂起的设置更改、错误和成功的设置更改各创建一个指标。 
+* --metrics  - 指标查询的文件路径。 指标提供应用配置内容后设备或模块可能报告回来的各种状态的摘要计数。 例如，可以针对挂起的设置更改、错误和成功的设置更改各创建一个指标。 
 
 ## <a name="monitor-a-configuration"></a>监视配置
 
 使用以下命令显示配置的内容：
 
-```cli
+```azurecli
 az iot hub configuration show --config-id [configuration id] \
   --hub-name [hub name]
 ```
 
-* --config-id - 存在于 IoT 中心内的配置的名称。
+* --**config-id** - 存在于 IoT 中心的配置的名称。
 
-* --hub-name - 配置所在的 IoT 中心的名称。 此中心必须在当前订阅中。 使用 `az account set -s [subscription name]` 命令切换到所需订阅
+* --**hub-name** - 配置所在的 IoT 中心的名称。 此中心必须在当前订阅中。 使用 `az account set -s [subscription name]` 命令切换到所需订阅
 
 在命令窗口中检查配置。 **metrics** 属性列出由每个中心评估的每个指标的计数：
 
-* **targetedCount** - 一个系统指标，它指定 IoT 中心内与目标条件匹配的设备孪生数。
+* **targetedCount** - 一个系统指标，根据目标条件指定 IoT 中心的设备孪生或模块孪生数。
 
-* **appliedCount** - 一个系统指标，它指定已应用了目标内容的设备数。
+* **appliedCount** - 一个系统指标，它指定已应用了目标内容的设备或模块数。
 
-* **自定义指标**-定义了任何指标是用户指标。
+* **你的自定义指标** - 你定义的任何指标都是用户指标。
 
-可以使用以下命令，针对每个指标显示设备 ID 或对象的列表：
+可以使用以下命令，针对每个指标显示设备 ID、模块 ID 或对象的列表：
 
-```cli
+```azurecli
 az iot hub configuration show-metric --config-id [configuration id] \
    --metric-id [metric id] --hub-name [hub name] --metric-type [type] 
 ```
 
-* --config-id - 存在于 IoT 中心内的部署的名称。
+* --config-id  - 存在于 IoT 中心内的部署的名称。
 
-* --metric-id - 需要查看设备 ID 列表时所对应指标的名称，例如 `appliedCount`。
+* --metric-id  - 需要查看设备 ID 或模块 ID 的列表时所对应指标的名称，例如 `appliedCount`。
 
-* --hub-name - 部署所在的 IoT 中心的名称。 此中心必须在当前订阅中。 使用 `az account set -s [subscription name]` 命令切换到所需订阅。
+* --hub-name  - 部署所在的 IoT 中心的名称。 此中心必须在当前订阅中。 使用 `az account set -s [subscription name]` 命令切换到所需订阅。
 
-* --metric-type - 指标类型可以是 `system` 或 `user`。  系统指标为 `targetedCount` 和 `appliedCount`。 所有其他指标都是用户指标。
+* --metric-type  - 指标类型可以是 `system` 或 `user`。  系统指标为 `targetedCount` 和 `appliedCount`。 所有其他指标都是用户指标。
 
 ## <a name="modify-a-configuration"></a>修改配置
 
@@ -153,24 +183,24 @@ az iot hub configuration show-metric --config-id [configuration id] \
 
 如果更新目标条件，将发生以下更新：
 
-* 如果设备孪生不满足旧目标条件，但满足新目标条件，并且此配置是该设备孪生的最高优先级，则会将此配置应用到该设备孪生。 
+* 如果孪生不满足旧目标条件，但满足新目标条件，并且此配置是该孪生的最高优先级，则会应用此配置。 
 
-* 如果设备孪生不再满足目标条件，则会删除配置中的设置，并且设备孪生将被下一个最高优先级配置修改。 
+* 如果当前运行此配置的孪生不再满足目标条件，则会删除配置中的设置，并且孪生会被下一个最高优先级配置修改。 
 
-* 如果当前正在运行此配置的设备孪生不再满足目标条件，且不满足其他任何配置的目标条件，则会删除配置中的设置，并且不会在孪生中进行其他任何更改。 
+* 如果当前正在运行此配置的孪生不再满足目标条件，且不满足其他任何配置的目标条件，则会删除配置中的设置，并且不会在孪生中进行其他任何更改。 
 
 可使用以下命令来更新配置：
 
-```cli
+```azurecli
 az iot hub configuration update --config-id [configuration id] \
    --hub-name [hub name] --set [property1.property2='value']
 ```
 
-* --config-id - 存在于 IoT 中心内的配置的名称。
+* --**config-id** - 存在于 IoT 中心的配置的名称。
 
-* --hub-name - 配置所在的 IoT 中心的名称。 此中心必须在当前订阅中。 使用 `az account set -s [subscription name]` 命令切换到所需订阅。
+* --**hub-name** - 配置所在的 IoT 中心的名称。 此中心必须在当前订阅中。 使用 `az account set -s [subscription name]` 命令切换到所需订阅。
 
-* --set - 更新配置中的属性。 可以更新以下属性：
+* --set  - 更新配置中的属性。 可以更新以下属性：
 
     * targetCondition - 例如 `targetCondition=tags.location.state='Oregon'`
 
@@ -180,21 +210,22 @@ az iot hub configuration update --config-id [configuration id] \
 
 ## <a name="delete-a-configuration"></a>删除配置
 
-删除某个配置时，所有设备孪生将会采用下一个最高优先级的配置。 如果设备孪生不满足其他任何配置的目标条件，则不会应用其他任何设置。 
+删除某个配置时，所有设备孪生或模块孪生会采用下一个最高优先级的配置。 如果孪生不满足其他任何配置的目标条件，则不会应用其他任何设置。 
 
 可使用以下命令来删除配置：
 
-```cli
+```azurecli
 az iot hub configuration delete --config-id [configuration id] \
    --hub-name [hub name] 
 ```
-* --config-id - 存在于 IoT 中心内的配置的名称。
 
-* --hub-name - 配置所在的 IoT 中心的名称。 此中心必须在当前订阅中。 使用 `az account set -s [subscription name]` 命令切换到所需订阅。
+* --**config-id** - 存在于 IoT 中心的配置的名称。
+
+* --**hub-name** - 配置所在的 IoT 中心的名称。 此中心必须在当前订阅中。 使用 `az account set -s [subscription name]` 命令切换到所需订阅。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，您学习了如何配置和监视大规模的 IoT 设备。 若要了解有关如何管理 Azure IoT 中心的详细信息，请参阅以下链接：
+本文介绍了如何大规模配置和监视 IoT 设备。 若要了解有关如何管理 Azure IoT 中心的详细信息，请参阅以下链接：
 
 * [批量管理 IoT 中心设备标识](iot-hub-bulk-identity-mgmt.md)
 * [IoT 中心指标](iot-hub-metrics.md)

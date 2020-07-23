@@ -1,6 +1,6 @@
 ---
 title: 用于 Azure 媒体服务的 Java SDK 使用入门 | Microsoft Docs
-description: 本教程介绍了在 Java 中使用 Azure 媒体服务 (AMS) 应用程序实施基本的视频点播 (VoD) 内容传送服务的步骤。
+description: 本教程引导用户完成相关步骤，利用 Java 和 Azure 媒体服务 (AMS) 应用程序实现基本的点播视频 (VoD) 内容传送服务。
 services: media-services
 documentationcenter: java
 author: juliako
@@ -14,26 +14,26 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: fedec6ea764394d36f5b4d7c883f7cb9f9520a29
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 3adbb9471cc501861b65efd0321b3b4f72b07aea
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869024"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057851"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>用于 Azure 媒体服务的 Java 客户端 SDK 入门  
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 本教程介绍了通过 Java 客户端 SDK 在 Azure 媒体服务中实施基本的视频内容传送服务的步骤。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 以下是完成本教程所要做好的准备：
 
 * 一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
-* 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)。
+* 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅 [如何创建媒体服务帐户](media-services-portal-create-account.md)。
 * 当前的 [Azure 媒体服务 Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest)
 
 ## <a name="how-to-import-the-azure-media-services-java-client-sdk-package"></a>如何：导入 Azure 媒体服务 Java 客户端 SDK 包
@@ -42,7 +42,7 @@ ms.locfileid: "64869024"
 
 例如，如果生成工具为 `gradle`，请向 `build.gradle` 文件添加以下依赖项：
 
-    compile group: 'com.microsoft.azure', name: 'azure-media', version: '0.9.8'
+`compile group: 'com.microsoft.azure', name: 'azure-media', version: '0.9.8'`
 
 >[!IMPORTANT]
 >自 `azure-media` 包的版本 `0.9.8` 开始，SDK 添加了对 Azure Active Directory (AAD) 身份验证的支持，删除了对 Azure 访问控制服务 (ACS) 身份验证的支持。 建议尽快迁移到 Azure AD 身份验证模型。 有关迁移的详细信息，请阅读[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md) 一文。
@@ -53,9 +53,9 @@ ms.locfileid: "64869024"
 ## <a name="how-to-use-azure-media-services-with-java"></a>如何：将 Azure 媒体服务与 Java 配合使用
 
 >[!NOTE]
->创建媒体服务帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。
+>创建媒体服务帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。   若要开始对内容进行流式处理并利用动态打包和动态加密功能，必须确保要从其流式获取内容的流式处理终结点处于“正在运行”状态。
 
-以下代码演示了如何创建资产、将媒体文件上传到该资产、使用任务运行某个作业以转换该资产，以及创建定位符流式传输视频。
+以下代码演示了如何创建资产、如何将媒体文件上传到该资产、如何使用任务运行作业以转换资产，以及如何创建定位符来流式传输视频。
 
 在使用此代码之前，设置一个媒体服务帐户。 有关设置帐户的信息，请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)。
 

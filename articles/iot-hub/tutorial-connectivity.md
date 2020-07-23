@@ -5,16 +5,19 @@ services: iot-hub
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
-ms.custom: mvc
+ms.custom:
+- mvc
+- amqp
+- mqtt
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: caa249dda4215dfcef13df96d2dd4245cae49efd
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: e42b403717eb83db06a9f719a6451cbca74c2929
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595759"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81770046"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>教程：使用模拟设备测试与 IoT 中心的连接
 
@@ -22,7 +25,7 @@ ms.locfileid: "65595759"
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 检查设备身份验证
 > * 检查设备到云的连接性
@@ -36,12 +39,14 @@ ms.locfileid: "65595759"
 本教程中运行的 CLI 脚本使用[适用于 Azure CLI 的 Microsoft Azure IoT 扩展](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md)。 若要安装此扩展，请运行以下 CLI 命令：
 
 ```azurecli-interactive
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 ```
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 本教程中运行的设备模拟器应用程序是使用 Node.js 编写的。 开发计算机上需要有 Node.js v10.x.x 或更高版本。
 
-可从 [nodejs.org](https://nodejs.org) 为下载适用于多个平台的 Node.js。
+可从 [nodejs.org](https://nodejs.org) 下载适用于多个平台的 Node.js。
 
 可以使用以下命令验证开发计算机上 Node.js 当前的版本：
 
@@ -51,6 +56,8 @@ node --version
 
 从 https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip 下载示例设备模拟器 Node.js 项目并提取 ZIP 存档。
 
+确保已在防火墙中打开端口 8883。 本教程中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
 如果已在以前的快速入门或教程中创建免费层或标准层 IoT 中心，则可跳过此步骤。
@@ -59,17 +66,17 @@ node --version
 
 ## <a name="check-device-authentication"></a>检查设备身份验证
 
-设备在与中心交换数据之前，必须通过中心进行身份验证。 可以使用门户的“设备管理”部分的 **IoT 设备**工具来管理设备并检查其使用的身份验证密钥。  在教程的此部分，请添加一个新的测试设备，检索其密钥，并检查此测试设备能否连接到中心。 稍后请重置身份验证密钥，观察在设备尝试使用过期密钥时会发生什么情况。 教程的此部分使用 Azure 门户来创建、管理和监视设备以及示例 Node.js 设备模拟器。
+设备在与中心交换数据之前，必须通过中心进行身份验证。 可以使用门户的“设备管理”部分的 **IoT 设备**工具来管理设备并检查其使用的身份验证密钥。 在教程的此部分，请添加一个新的测试设备，检索其密钥，并检查此测试设备能否连接到中心。 稍后请重置身份验证密钥，观察在设备尝试使用过期密钥时会发生什么情况。 教程的此部分使用 Azure 门户来创建、管理和监视设备以及示例 Node.js 设备模拟器。
 
-登录门户，导航到 IoT 中心。 然后导航到“IoT 设备”工具： 
+登录门户，导航到 IoT 中心。 然后导航到“IoT 设备”工具：
 
 ![“IoT 设备”工具](media/tutorial-connectivity/iot-devices-tool.png)
 
-若要注册新设备，请单击“+ 添加”，将“设备 ID”设置为 **MyTestDevice**，然后单击“保存”：   
+若要注册新设备，请单击“+ 添加”，将“设备 ID”设置为 **MyTestDevice**，然后单击“保存”：  
 
 ![添加新设备](media/tutorial-connectivity/add-device.png)
 
-若要检索 **MyTestDevice** 的连接字符串，请在设备列表中单击它，然后复制“连接字符串-主键”的值。  连接字符串包含设备的共享访问密钥。 
+若要检索 **MyTestDevice** 的连接字符串，请在设备列表中单击它，然后复制“连接字符串-主键”的值。 连接字符串包含设备的共享访问密钥。
 
 ![检索设备连接字符串](media/tutorial-connectivity/copy-connection-string.png)
 
@@ -101,7 +108,7 @@ node SimulatedDevice-1.js "{your device connection string}"
 read key < <(date +%s | sha256sum | base64 | head -c 32)
 
 # Requires the IoT Extension for Azure CLI
-# az extension add --name azure-cli-iot-ext
+# az extension add --name azure-iot
 
 # Reset the primary device key for MyTestDevice
 az iot hub device-identity update --device-id MyTestDevice --set authentication.symmetricKey.primaryKey=$key --hub-name {YourIoTHubName}
@@ -189,7 +196,7 @@ node SimulatedDevice-3.js "{your device connection string}"
 
 ![发送消息的模拟设备](media/tutorial-connectivity/sim-3-sending.png)
 
-可以使用门户中的“指标”来验证遥测消息是否已到达 IoT 中心。  在“资源”下拉列表中选择 IoT 中心，选择“发送的遥测消息数”作为指标，然后将时间范围设置为“过去一小时”。    图表显示模拟设备发送的消息的聚合计数：
+可以使用门户中的“指标”来验证遥测消息是否已到达 IoT 中心。 在“资源”下拉列表中选择 IoT 中心，选择“发送的遥测消息数”作为指标，然后将时间范围设置为“过去一小时”。   图表显示模拟设备发送的消息的聚合计数：
 
 ![显示 IoT 中心指标](media/tutorial-connectivity/metrics-portal.png)
 
@@ -221,7 +228,7 @@ az iot hub invoke-device-method --device-id MyTestDevice --method-name TestMetho
 
 ## <a name="check-twin-synchronization"></a>检查孪生同步
 
-设备使用孪生在设备和中心之间同步状态。 在此部分，请使用 CLI 命令向设备发送所需属性  ，以及读取设备发送的报告属性。 
+设备使用孪生在设备和中心之间同步状态。 在此部分，请使用 CLI 命令向设备发送所需属性，以及读取设备发送的报告属性。
 
 在此部分使用的模拟设备只要一启动就会向中心发送报告属性，并且只要一收到所需属性就会将其列显到控制台。
 
@@ -255,7 +262,7 @@ az iot hub device-twin update --set properties.desired='{"mydesiredproperty":"pr
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要 IoT 中心，请在门户中删除该中心与资源组。 为此，请选择包含 IoT 中心的 **tutorials-iot-hub-rg** 资源组，然后单击“删除”  。
+如果不再需要 IoT 中心，请在门户中删除该中心与资源组。 为此，请选择包含 IoT 中心的 **tutorials-iot-hub-rg** 资源组，然后单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

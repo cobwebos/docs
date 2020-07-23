@@ -1,5 +1,5 @@
 - name: 媒体服务文档
-  href: index.md
+  href: index.yml
 - name: 概述
   href: media-services-overview.md
   items:
@@ -47,10 +47,25 @@
           href: media-services-portal-live-passthrough-get-started.md
         - name: .NET
           href: media-services-dotnet-live-encode-with-onpremises-encoders.md
-- name: 如何
+- name: 操作方式
   items:
+    - name: 旧组件
+      displayName: 'deprecated, deprecation, retired, retirement, legacy'
+      href: legacy-components.md
+      items:
+        - name: 从 Azure 媒体编码器迁移
+          href: migrate-azure-media-encoder.md
+          displayName: AME
+        - name: 从 Windows Azure 媒体编码器迁移
+          href: migrate-windows-azure-media-encoder.md
+          displayName: WAME
+        - name: 从索引器 v1 和 v2 迁移
+          href: migrate-indexer-v1-v2.md
     - name: 管理
       items:
+        - name: 帐户
+          displayName: subscription
+          href: media-services-account-concept.md
         - name: 实体
           items:
             - name: .NET
@@ -69,7 +84,7 @@
             - name: 轮转存储访问密钥后更新媒体服务
               href: media-services-roll-storage-access-keys.md
             - name: 跨多个存储帐户管理资产
-              href: meda-services-managing-multiple-storage-accounts.md
+              href: media-services-managing-multiple-storage-accounts.md
         - name: 配额和限制
           href: media-services-quotas-and-limitations.md
     - name: 配置 Postman
@@ -89,10 +104,10 @@
               href: media-services-portal-upload-files.md
             - name: .NET
               href: media-services-dotnet-upload-files.md
+              displayName: invalid character
             - name: REST
               href: media-services-rest-upload-files.md
-        - name: 使用 Aspera 上传大型文件
-          href: media-services-upload-files-with-aspera.md
+              displayName: invalid character
         - name: 使用 StorSimple 上传文件
           href: media-services-upload-files-from-storsimple.md
         - name: 复制现有 Blob
@@ -214,7 +229,7 @@
               href: media-services-rest-get-media-processor.md
         - name: 错误代码
           href: media-services-encoding-error-codes.md
-        - name: 已放弃
+        - name: 不推荐使用
           items:
             - name: 静态打包和加密
               href: media-services-static-packaging.md
@@ -240,30 +255,14 @@
         - name: 配置与云编码器一起使用的本地编码器
           href: media-services-live-encoders-overview.md
           items:
-            - name: FMLE 编码器
-              href: media-services-configure-fmle-live-encoder.md
             - name: Haivision KB 编码器
               href: media-services-configure-kb-live-encoder.md
-            - name: NewTek TriCaster 编码器
-              href: media-services-configure-tricaster-live-encoder.md
             - name: Wirecast 编码器
               href: media-services-configure-wirecast-live-encoder.md
         - name: 处理长时间运行的操作
           href: media-services-dotnet-long-operations.md
         - name: 碎片化 MP4 实时引入规范
-          href: media-services-fmp4-live-ingest-overview.md
-        - name: 入门
-          href: media-services-azure-media-clipper-getting-started.md
-        - name: 加载视频
-          href: media-services-azure-media-clipper-load-assets.md
-        - name: 配置键盘快捷方式
-          href: media-services-azure-media-clipper-keyboard-shortcuts.md
-        - name: 配置本地化
-          href: media-services-azure-media-clipper-localization.md
-        - name: 提交剪辑作业
-          href: media-services-azure-media-clipper-submit-job.md
-        - name: Azure 门户
-          href: media-services-azure-media-clipper-portal.md
+          href: ../media-services-fmp4-live-ingest-overview.md
     - name: 保护内容
       href: media-services-content-protection-overview.md
       items:
@@ -392,12 +391,11 @@
           href: media-services-deliver-asset-download.md
         - name: 故障转移流式处理方案
           href: media-services-implement-failover.md
+          displayName: 'HA, high availability'
     - name: 使用
       items:
         - name: 使用现有播放器播放媒体
           href: media-services-playback-content-with-existing-players.md
-        - name: 使用媒体播放器播放媒体
-          href: media-services-develop-video-players.md
         - name: 其他播放选项
           items:
             - name: 平滑流式处理 Windows 应用商店应用程序
@@ -430,7 +428,7 @@
           href: media-services-dotnet-check-job-progress-with-queues.md
         - name: 使用 Webhook 监视作业通知
           href: media-services-dotnet-check-job-progress-with-webhooks.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 常见问题
           href: media-services-frequently-asked-questions.md
@@ -440,7 +438,7 @@
           href: media-services-error-codes.md
         - name: 重试逻辑
           href: media-services-retry-logic-in-dotnet-sdk.md
-- name: 引用
+- name: 参考
   items:
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?service=media-services'
@@ -455,11 +453,14 @@
     - name: 规范
       items:
         - name: 实时引入 - 碎片化的 MP4 实时引入规范
-          href: media-services-fmp4-live-ingest-overview.md
+          href: ../media-services-fmp4-live-ingest-overview.md
         - name: 实时引入 - 在实时传送视频流中发出超时元数据信号
-          href: media-services-specifications-live-timed-metadata.md
+          href: ../media-services-specifications-live-timed-metadata.md
         - name: 平滑流式处理 HEVC
-          href: media-services-specifications-ms-sstr-amendment-hevc.md
+          href: ../media-services-specifications-ms-sstr-amendment-hevc.md
+    - name: 旧组件
+      displayName: 'deprecated, deprecation, retired, retirement, legacy'
+      href: legacy-components.md
 - name: 资源
   items:
     - name: Azure 媒体服务社区

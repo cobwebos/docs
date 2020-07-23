@@ -3,7 +3,7 @@ title: 安装 StorSimple Adapter for SharePoint | Microsoft 文档
 description: 介绍如何在 SharePoint 服务器场中安装、配置或删除 StorSimple Adapter for SharePoint。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: 36c20b75-f2e5-4184-a6b5-9c5e618f79b2
@@ -13,13 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
-ms.author: v-sharos
-ms.openlocfilehash: a2f8e75578e396085e7d80f43c1180e158967061
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: twooley
+ms.openlocfilehash: a841ce8b664389ccd8fdf55de9965f09412fecf5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60633047"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75930207"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>安装和配置 StorSimple Adapter for SharePoint
 ## <a name="overview"></a>概述
@@ -137,9 +136,9 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
   
   1. 关闭 Internet Explorer 的所有实例。
   2. 启动服务器管理器。
-  3. 在左窗格中单击“本地服务器”。
-  4. 在右窗格中的“IE 增强的安全配置”旁边单击“打开”。
-  5. 在“管理员”下面，单击“关闭”。
+  3. 在左窗格中，单击 **“本地服务器”**。
+  4. 在 **“IE 增强的安全配置”** 旁边的右窗格中，单击 **“启用”**。
+  5. 在 **“管理员”** 下，单击 **“禁用”**。
   6. 单击“确定”。
 
 ## <a name="remote-blob-storage-rbs-prerequisites"></a>远程 BLOB 存储 (RBS) 先决条件
@@ -162,7 +161,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 安装 StorSimple Adapter for SharePoint 后，请按照以下过程配置 RBS。
 
 > [!TIP]
-> StorSimple Adapter for SharePoint 已插入 SharePoint 管理中心页，因此可以在 SharePoint 场中的每个内容数据库上启用或禁用 RBS。 不过，在内容服务器上启用或禁用 RBS 会导致 IIS 重置，这可能会使 SharePoint Web (WFE) 前端暂时不可用，具体取决于场配置。 （前端负载均衡器的使用、当前服务器工作负荷等多种因素可能会限制或消除这种中断现象的发生。）为了避免用户受到服务中断的影响，我们建议仅在计划的维护时间窗口启用或禁用 RBS。
+> StorSimple Adapter for SharePoint 已插入 SharePoint 管理中心页，因此可以在 SharePoint 场中的每个内容数据库上启用或禁用 RBS。 不过，在内容服务器上启用或禁用 RBS 会导致 IIS 重置，这可能会使 SharePoint Web (WFE) 前端暂时不可用，具体取决于场配置。 （例如，使用前端负载均衡器、当前服务器工作负荷等因素可能会限制或消除这种中断。）为了防止用户中断，我们建议你仅在计划的维护时段内启用或禁用 RBS。
 
 
 [!INCLUDE [storsimple-sharepoint-adapter-configure-rbs](../../includes/storsimple-sharepoint-adapter-configure-rbs.md)]
@@ -196,7 +195,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 > * 以前通过 RBS 转到外部存储的任何文件，必须等到重新安装完成并重新启用 RBS 功能之后才能使用。 为了限制用户受影响的程度，请在规划的维护期间执行任何升级或重新安装。
 > * 升级/重新安装所需的时间取决于 SharePoint 服务器场中的 SharePoint 数据库总数。
 > * 升级/重新安装完成后，需要为内容数据库启用 RBS。 有关详细信息，请参阅[配置 RBS](#configure-rbs)。
-> * 如果要配置 RBS 的 SharePoint 场包含大量的数据库（超过 200 个），“SharePoint 管理中心”页可能会超时。如果发生这种情况，请刷新页面。 这不会影响配置过程。
+> * 如果要为具有大量数据库（大于200）的 SharePoint 场配置 RBS， **Sharepoint 管理中心**页可能会超时。如果出现这种情况，请刷新页面。 这不会影响配置过程。
 
 
 [!INCLUDE [storsimple-upgrade-sharepoint-adapter](../../includes/storsimple-upgrade-sharepoint-adapter.md)]
@@ -221,14 +220,14 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 
 #### <a name="to-move-the-blobs-back-to-the-content-databases"></a>将 BLOB 移回内容数据库
 1. 下载每个外部化对象。
-2. 打开“SharePoint 管理中心”页，浏览到“系统设置”。
-3. 在“Azure StorSimple”下面，单击“配置 StorSimple Adapter”。
-4. 在“配置 StorSimple Adapter”页上，单击每个要从外部 BLOB 存储中删除的内容数据库下面的“禁用”按钮。 
+2. 打开 **“SharePoint 管理中心”** 页，浏览到 **“系统设置”**。
+3. 在 **Azure StorSimple** 下，单击 **“配置 StorSimple 适配器”**。
+4. 在 **“配置 StorSimple 适配器”** 页上，单击每个要从外部 BLOB 存储中移除的内容数据库下面的 **“禁用”** 按钮。 
 5. 从 SharePoint 中删除对象，并将其重新上载。
 
-或者，可以使用 Microsoft `RBS Migrate()` SharePoint 附带的 PowerShell cmdlet。 有关详细信息，请参阅[将内容移入或移出 RBS](https://technet.microsoft.com/library/ff628255.aspx)。
+或者，你可以使用 `RBS Migrate()` SharePoint 随附的 Microsoft PowerShell cmdlet。 有关详细信息，请参阅[将内容移入或移出 RBS](https://technet.microsoft.com/library/ff628255.aspx)。
 
-你将 Blob 移回内容数据库后，请转到下一步：[卸载适配器](#uninstall-the-adapter)。
+将 BLOB 移回内容数据库后，请转到下一步：[卸载适配器](#uninstall-the-adapter)。
 
 ### <a name="uninstall-the-adapter"></a>卸载适配器
 将 BLOB 移回 SQL Server 内容数据库后，请使用以下选项之一卸载 StorSimple Adapter for SharePoint。
@@ -238,20 +237,20 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 2. 双击 StorSimple Adapter for SharePoint 安装程序。 此时会启动安装向导。
    
     ![安装向导](./media/storsimple-adapter-for-sharepoint/sasp2.png)
-3. 单击“下一步”。 将显示以下页。
+3. 单击“下一步” 。 将显示以下页。
    
     ![安装向导删除页](./media/storsimple-adapter-for-sharepoint/sasp3.png)
-4. 单击“删除”开始执行删除过程。 将显示以下页。
+4. 单击 **“删除”** 选择删除过程。 将显示以下页。
    
     ![安装向导确认页](./media/storsimple-adapter-for-sharepoint/sasp4.png)
-5. 单击“删除”确认删除。 此时会显示以下进度页。
+5. 单击 **“删除”** 以确认删除。 此时会显示以下进度页。
    
     ![安装向导进度页](./media/storsimple-adapter-for-sharepoint/sasp5.png)
-6. 删除完成后，会显示完成页。 单击“完成”关闭安装向导。
+6. 删除完成后，会显示完成页。 单击 **“完成”** 关闭安装向导。
 
 #### <a name="to-use-the-control-panel-to-uninstall-the-adapter"></a>使用控制面板卸载适配器
-1. 打开控制面板，并单击“程序和功能”。
-2. 选择“StorSimple Adapter for SharePoint”，并单击“卸载”。
+1. 打开控制面板，然后单击 **“程序和功能”**。
+2. 选择 **“StorSimple Adapter for SharePoint”**，然后单击 **“卸载”**。
 
 ## <a name="next-steps"></a>后续步骤
 [详细了解 StorSimple](storsimple-overview.md)。

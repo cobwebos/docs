@@ -1,26 +1,17 @@
 ---
-title: 教程 - 将应用部署到 Azure Service Fabric 网格 | Microsoft Docs
+title: 教程 - 将应用部署到 Azure Service Fabric 网格
 description: 本教程介绍如何使用模板将应用程序部署到 Service Fabric 网格。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ce063d8a256cbf2507e19d459aafe13150eccce7
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: f7cb3f75dcaaeb6e0304784941dfcfc81ae6d68f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306954"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248384"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>教程：使用模板将应用程序部署到 Service Fabric 网格
 
@@ -43,7 +34,7 @@ ms.locfileid: "66306954"
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
@@ -70,7 +61,7 @@ az account set --subscription "<subscriptionName>"
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用以下命令在 eastus  位置创建名为 myResourceGroup  的资源组。
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用以下命令在 eastus 位置创建名为 myResourceGroup 的资源组。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -180,7 +171,7 @@ Result
 ## <a name="retrieve-credentials-for-the-registry"></a>检索注册表凭据
 
 > [!IMPORTANT]
-> 对于生产方案，建议不要启用 ACR 实例上的管理员用户。 此处这样做是为了方便起见。 对于生产方案，请在生产方案中使用[服务主体](https://docs.microsoft.com/azure/container-registry/container-registry-auth-service-principal)进行用户和系统身份验证。
+> 对于生产方案，建议不要启用 ACR 实例上的管理员用户。 此处这样做是为了方便起见。 对于生产方案，请在生产方案中使用[服务主体](../container-registry/container-registry-auth-service-principal.md)进行用户和系统身份验证。
 
 若要从使用模板创建的注册表中部署容器实例，必须在部署期间提供注册表凭据。 首先，使用以下命令对注册表启用管理员用户：
 
@@ -200,12 +191,12 @@ az acr credential show --name myContainerRegistry --query "passwords[0].value"
 
 ## <a name="download-and-explore-the-template-and-parameters-files"></a>下载并浏览模板和参数文件
 
-Service Fabric 网格应用程序是一种 Azure 资源，可以使用 Azure 资源管理器 (RM) 模板进行部署和管理。 如果不熟悉部署和管理 Azure 解决方案的概念，请参阅 [Azure 资源管理器概述](/azure/azure-resource-manager/resource-group-overview)以及[了解 RM 模板的结构和语法](/azure/azure-resource-manager/resource-group-authoring-templates)。
+Service Fabric 网格应用程序是一种 Azure 资源，可以使用 Azure 资源管理器 (RM) 模板进行部署和管理。 如果不熟悉部署和管理 Azure 解决方案的概念，请参阅 [Azure 资源管理器概述](../azure-resource-manager/management/overview.md)以及[了解 RM 模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)。
 
 本教程使用待办事项示例作为示例。  下载 [mesh_rp.windows.json 部署模板](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json)和 [mesh_rp.windows.parameter.json 参数](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json)文件，而不是生成新的模板和参数文件。
 
 ### <a name="parameters"></a>parameters
-当模板中有希望在部署应用程序后进行更改的值，或者希望可以选择在每个部署的基础上进行更改时（如果计划重用此模板进行其他部署），最佳做法是参数化这些值。 执行此操作的正确方法是在部署模板的顶部创建“参数”部分，在其中可以指定参数名称和属性，稍后将在部署模板中引用这些内容。 每个参数定义包括类型  、defaultValue  和一个带有说明  的可选元数据  部分。
+当模板中有希望在部署应用程序后进行更改的值，或者希望可以选择在每个部署的基础上进行更改时（如果计划重用此模板进行其他部署），最佳做法是参数化这些值。 执行此操作的正确方法是在部署模板的顶部创建“参数”部分，在其中可以指定参数名称和属性，稍后将在部署模板中引用这些内容。 每个参数定义包括类型、defaultValue和一个带有说明的可选元数据部分。
 
 参数部分在部署模板的顶部定义，就在资源  部分之前：
 
@@ -264,7 +255,7 @@ Service Fabric 网格应用程序是一种 Azure 资源，可以使用 Azure 资
                   "endpoints": [
                     {
                       "name": "ServiceAListener",
-                      "port": 20001
+                      "port": 80
                     }
                   ],
                   "resources": {
@@ -347,12 +338,12 @@ Service Fabric 网格应用程序是一种 Azure 资源，可以使用 Azure 资
 
 |参数|值|
 |---|---|
-|位置|要将应用程序部署到的区域。  例如，“eastus”。|
+|location|要将应用程序部署到的区域。  例如，“eastus”。|
 |registryPassword|之前在[检索注册表凭据](#retrieve-credentials-for-the-registry)中获取的密码。 模板中的此参数是安全字符串，不会显示在部署状态或 `az mesh service show` 命令中。|
 |registryUserName|在[检索注册表凭据](#retrieve-credentials-for-the-registry)中获取的用户名。|
 |registryServer|在[检索注册表凭据](#retrieve-credentials-for-the-registry)中获取的注册表服务器名称。|
-|frontEndImage|前端服务的容器映像。  例如，`<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709`。|
-|serviceImage|后端服务的容器映像。  例如，`<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709`。|
+|frontEndImage|前端服务的容器映像。  例如，`<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709` 。|
+|serviceImage|后端服务的容器映像。  例如，`<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709` 。|
 
 若要部署应用程序，请运行以下内容：
 
@@ -384,7 +375,7 @@ az mesh deployment create --resource-group myResourceGroup --template-file c:\te
 
 ## <a name="open-the-application"></a>打开应用程序
 
-在应用程序成功部署后，获取服务终结点的公用 IP 地址。 部署命令将返回服务终结点的公共 IP 地址。 （可选）还可以通过查询网络资源来查找服务终结点的公共 IP 地址。 此应用程序的网络资源名称是 `todolistappNetwork`，使用以下命令提取与其相关的信息。 
+在应用程序成功部署后，获取服务终结点的公共 IP 地址。 部署命令将返回服务终结点的公共 IP 地址。 （可选）还可以通过查询网络资源来查找服务终结点的公共 IP 地址。 此应用程序的网络资源名称是 `todolistappNetwork`，使用以下命令提取与其相关的信息。 
 
 ```azurecli
 az mesh gateway show --resource-group myResourceGroup --name todolistappGateway

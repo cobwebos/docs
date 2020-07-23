@@ -8,18 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 3df6c34420369effe11ae5a7ec58eba595ffa471
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.custom: tracking-python
+ms.openlocfilehash: d13d349978df30b3e2aa7a8646223c37ba272241
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957000"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84985641"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>快速入门：使用人脸 REST API 和 Python 检测图像中的人脸
 
-在本快速入门中，请使用 Azure 人脸 REST API 和 Python 检测图像中的人脸。 此脚本会在图像的人脸、附加性别和年龄信息周围绘制相应的框。
+本快速入门将通过 Python 使用 Azure 人脸 REST API 来检测图像中的人脸。 此脚本会在图像上围绕人脸绘制相应的框，并添加性别和年龄信息。
 
 ![一位男士和一位女士，在图像中，每一位的面部都绘制了矩形并显示了年龄和性别](../images/labelled-faces-python.png)
 
@@ -28,11 +29,14 @@ ms.locfileid: "65957000"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 人脸 API 订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=face-api)获取免费试用的订阅密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸 API 服务并获取密钥。
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="创建人脸资源"  target="_blank">创建人脸资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到人脸 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 
 ## <a name="run-the-jupyter-notebook"></a>运行 Jupyter Notebook
 
-可在 [MyBinder](https://mybinder.org) 上以 Jupyter 笔记本的方式运行本快速入门。 若要启动活页夹，请选择下面的按钮。 然后根据 Notebook 中的说明进行操作。
+可在 [MyBinder](https://mybinder.org) 上以 Jupyter 笔记本的方式运行本快速入门。 若要启动 Binder ，请选择下面的按钮。 然后根据 Notebook 中的说明进行操作。
 
 [![活页夹](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=FaceAPI.ipynb)
 
@@ -43,7 +47,7 @@ ms.locfileid: "65957000"
 1. 将以下代码复制到文本编辑器中。
 1. 必要时在代码中进行如下更改：
     1. 将 `subscription_key` 的值替换为你的订阅密钥。
-    1. 如有必要，请将 `face_api_url` 的值替换为获取的订阅密钥所在的 Azure 区域中的人脸 API 资源的终结点 URL。
+    1. 编辑 `face_api_url` 的值，以包含人脸 API 资源的终结点 URL。
     1. （可选）将 `image_url` 的值替换为要分析的其他图像的 URL。
 1. 将代码保存为以 `.py` 为扩展名的文件。 例如，`detect-face.py`。
 1. 打开命令提示符窗口。
@@ -53,22 +57,25 @@ ms.locfileid: "65957000"
 import requests
 import json
 
+# set to your own subscription key value
 subscription_key = None
 assert subscription_key
 
-face_api_url = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect'
+# replace <My Endpoint String> with the string from your endpoint URL
+face_api_url = 'https://<My Endpoint String>.com/face/v1.0/detect'
 
 image_url = 'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg'
 
-headers = { 'Ocp-Apim-Subscription-Key': subscription_key }
-    
+headers = {'Ocp-Apim-Subscription-Key': subscription_key}
+
 params = {
     'returnFaceId': 'true',
     'returnFaceLandmarks': 'false',
     'returnFaceAttributes': 'age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise',
 }
 
-response = requests.post(face_api_url, params=params, headers=headers, json={"url": image_url})
+response = requests.post(face_api_url, params=params,
+                         headers=headers, json={"url": image_url})
 print(json.dumps(response.json()))
 ```
 

@@ -4,21 +4,20 @@ description: 了解如何排查在没有可用远程桌面许可证服务器的�
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 550b971602d1736e0ba3981a5b7ca546862ea034
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 276be92ea4c03b9ebeb3e13df69ce1b10328dcaf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60318946"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526463"
 ---
 # <a name="remote-desktop-license-server-isnt-available-when-you-connect-to-an-azure-vm"></a>连接到 Azure VM 时，远程桌面许可证服务器不可用
 
@@ -63,7 +62,7 @@ mstsc /v:<Server>[:<Port>] /admin
 
     如果无法使用管理会话连接到 VM，可以使用 [Azure 上的虚拟机串行控制台](serial-console-windows.md)访问 VM，如下所述：
 
-    1. 选择“支持和故障排除” > “串行控制台(预览版)”访问串行控制台。 如果在 VM 上启用了该功能，则可以成功连接 VM。
+    1. 选择“支持和故障排除”“串行控制台(预览版)”访问 串行控制台 >  。******** 如果在 VM 上启用了该功能，则可以成功连接 VM。
 
     2. 为 CMD 实例创建新通道。 输入 **CMD** 启动通道，并获取通道名称。
 
@@ -123,7 +122,7 @@ mstsc /v:<Server>[:<Port>] /admin
        telnet <FQDN / IP License Server> 135
        ```
 
-3. 如果环境中没有远程桌面许可证服务器，而你想要一个此类服务器，可以[安装远程桌面许可角色服务](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731765(v=ws.11))。 然后[配置 RDS 许可](https://blogs.technet.microsoft.com/askperf/2013/09/20/rd-licensing-configuration-on-windows-server-2012/)。
+3. 如果环境中没有远程桌面许可证服务器，而你想要一个此类服务器，可以[安装远程桌面许可角色服务](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc731765(v=ws.11))。 然后[配置 RDS 许可](https://techcommunity.microsoft.com/t5/Ask-The-Performance-Team/RD-Licensing-Configuration-on-Windows-Server-2012/ba-p/375383)。
 
 4. 如果远程桌面许可证服务器已配置且正常运行，请确保使用 CAL 激活远程桌面许可证服务器。
 

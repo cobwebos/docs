@@ -1,30 +1,32 @@
 ---
-title: 版本发布历史记录 - Microsoft 基因组学
-titleSuffix: Azure
-description: Microsoft 基因组学定期更新 Microsoft 基因组学 Python 客户端，以便提供修补程序和新的功能。
+title: 版本发布历史记录
+titleSuffix: Microsoft Genomics
+description: Microsoft 基因组学 Python 客户端更新的发布历史记录，用于修补程序和新功能。
 services: genomics
 author: grhuynh
 manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/11/2019
-ms.openlocfilehash: 2037bcf173951769f1627f809352ef60afce2d50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 20475e2cde1b42790740889cf341b3a0a0afccc0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60780944"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76991076"
 ---
-# <a name="version-release-history"></a>版本发行历史记录
+# <a name="version-release-history"></a>版本发布历史记录
 Microsoft 基因组学团队定期更新 Microsoft 基因组学 Python 客户端，以便提供修补程序和新的功能。 
 
 ## <a name="latest-release"></a>最新发布
-当前 Python 客户端的版本是 0.8.1。 它已于 2018 年 12 月 3 日发布，支持使用 GATK 3.5 和 GATK4 运行工作流。 它还支持 gVCF 输出。
+当前 Python 客户端为版本0.9.0。 它已于 6 2019 年2月发布，并支持通过 GATK 3.5 和 GATK4 运行工作流。 它支持 gVCF 输出，并可接受用于输出压缩的可选参数。
 
 
-## <a name="release-history"></a>发布历史记录 
-Microsoft 基因组学 Python 客户端的新版本每年约发布两次。 当 Microsoft 基因组学 Python 客户端发布新版本时，此处会更新修补程序和功能列表。 发布新版本后，对早期版本的支持应至少持续 90 日。 当早期版本不再受支持时，此页面将进行说明。 
+## <a name="release-history"></a>版本历史记录 
+Microsoft 基因组学 Python 客户端的新版本每年发布一次。 当 Microsoft 基因组学 Python 客户端发布新版本时，此处会更新修补程序和功能列表。 发布新版本后，对早期版本的支持应至少持续 90 日。 当早期版本不再受支持时，此页面将进行说明。 
+
+### <a name="version-090"></a>版本0.9。0
+版本0.9.0 包括对输出压缩的支持。 这等效于 `-bgzip` `-tabix` 在 .vcf 或 gvcf 输出上运行。 有关详细信息，请参阅[常见问题解答](frequently-asked-questions-genomics.md)。 
 
 ### <a name="version-081"></a>版本 0.8.1
 版本 0.8.1 包括小 bug 修复。  

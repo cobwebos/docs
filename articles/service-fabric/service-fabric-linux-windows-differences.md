@@ -1,25 +1,14 @@
 ---
-title: Linux 和 Windows 之间的 Azure Service Fabric 差异 | Microsoft Docs
+title: Linux 和 Windows 之间的 Azure Service Fabric 差异
 description: Linux 上的 Azure Service Fabric 与 Windows 上的 Azure Service Fabric 之间的差异。
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 829a3ea6e8fafa24831f1731e402a3991c0258c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom: sfrev
+ms.openlocfilehash: c064291491110b17c172a561afbd1e65d6c08d06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60719985"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75748534"
 ---
 # <a name="differences-between-service-fabric-on-linux-and-windows"></a>Linux 上的 Service Fabric 与 Windows 上的 Service Fabric 之间的差异
 
@@ -31,6 +20,7 @@ ms.locfileid: "60719985"
 * Linux 上的故障分析服务 (FAS)
 * 用于 Service Fabric 服务的 DNS 服务（Linux 上的容器支持 DNS 服务）
 * 某些 Powershell 命令的 CLI 命令等效项（下面已列出，其中的大多数命令仅适用于独立群集）
+* [可能影响可伸缩性的日志实现差异](service-fabric-concepts-scalability.md#choosing-a-platform)
 
 ## <a name="powershell-cmdlets-that-do-not-work-against-a-linux-service-fabric-cluster"></a>不能对 Linux Service Fabric 群集使用的 Powershell cmdlet
 
@@ -87,9 +77,8 @@ ms.locfileid: "60719985"
 * Stop-ServiceFabricRepairTask
 * Update-ServiceFabricRepairTaskHealthPolicy
 
-
-
 ## <a name="next-steps"></a>后续步骤
+
 * [在 Linux 上准备开发环境](service-fabric-get-started-linux.md)
 * [在 OSX 上准备开发环境](service-fabric-get-started-mac.md)
 * [使用 Yeoman 在 Linux 上创建和部署第一个 Service Fabric Java 应用程序](service-fabric-create-your-first-linux-application-with-java.md)

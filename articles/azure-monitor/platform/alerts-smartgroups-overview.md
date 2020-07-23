@@ -1,21 +1,17 @@
 ---
 title: 智能组
 description: 智能组是警报的聚合，可帮助你降低警报噪音
-author: anantr
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
+ms.subservice: alerts
 ms.date: 05/15/2018
-ms.author: anantr
-ms.component: alerts
-ms.openlocfilehash: e0bef0fc4f4b61add24c243af0dac64933ad5bab
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 05b05f8bc079bb3768ac2f1a03593bc9260b41aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60346310"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77665487"
 ---
 # <a name="smart-groups"></a>智能组
+
 处理警报时面临的一个常见难题是筛选噪音以找出真正重要的事项 - 智能组旨在解决该问题。  
 
 智能组是使用机器学习算法自动创建的，用于将表示单个问题的相关警报组合在一起。  创建某个警报时，算法会根据历史模式、相似属性和相似结构等信息，将其添加到新智能组或现有智能组。 例如，如果某个订阅中多个虚拟机上的 % CPU 同时达到峰值导致生成许多单独的警报，并且如果此类警报在过去的任何时间一起发生，则这些警报可能会被分组到一个智能组中，从而表明存在潜在的共同根本原因。 这意味着，对于对警报进行故障排除的人员来说，智能组不仅可以通过将相关警报作为单个聚合单元进行管理来降低噪音，还可以引导他们找到其警报的可能共同根本原因。
@@ -25,11 +21,12 @@ ms.locfileid: "60346310"
 可以查看智能组的详细信息，并像设置警报状态一样设置智能组的状态。 每个警报是一个（且仅限一个）智能组的成员。 
 
 ## <a name="smart-group-state"></a>智能组状态
-智能组状态与警报状态的概念类似，允许你在智能组级别管理解决过程。 与警报状态类似，创建智能组时，它具有“新建”状态，可以将其更改为“已确认”或“已关闭”。
+
+智能组状态与警报状态的概念类似，允许你在智能组级别管理解决过程。 与警报状态类似，创建智能组时，它具有“新建”  状态，可以将其更改为“已确认”  或“已关闭”  。
 
 支持以下智能组状态。
 
-| 状态 | 描述 |
+| 状态 | 说明 |
 |:---|:---|
 | 新建 | 只是检测到了问题，但尚未审查问题。 |
 | 已确认 | 管理员已审查智能组，并已开始进行处理。 |
@@ -38,7 +35,7 @@ ms.locfileid: "60346310"
 [了解如何更改智能组的状态。](https://aka.ms/managing-alert-smart-group-states)
 
 > [!NOTE]
->  更改智能组状态不会更改单个成员警报状态。
+>  更改智能组状态不会更改各个成员警报的状态。
 
 ## <a name="smart-group-details-page"></a>“智能组详细信息”页
 
@@ -49,7 +46,7 @@ ms.locfileid: "60346310"
 
 “智能组详细信息”页包括以下部分。
 
-| 部分 | 描述 |
+| 部分 | 说明 |
 |:---|:---|
 | 警报 | 列出智能组中包含的各个警报。 选择某个警报会打开它的“警报详细信息”页。 |
 | 历史记录 | 列出智能组执行的每个操作，以及对智能组进行的任何更改。 目前仅限状态更改和警报成员身份更改。 |
@@ -62,4 +59,5 @@ ms.locfileid: "60346310"
 
 - [管理智能组](https://aka.ms/managing-smart-groups)
 - [更改警报和智能组状态](https://aka.ms/managing-alert-smart-group-states)
+
 

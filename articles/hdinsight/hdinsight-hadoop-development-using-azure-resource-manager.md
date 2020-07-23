@@ -1,26 +1,26 @@
 ---
 title: 迁移到适用于 HDInsight 的 Azure 资源管理器工具
-description: 如何迁移到适用于 HDInsight 群集的 Azure 资源管理器开发工具
+description: 如何迁移到适用于 HDInsight 群集的 Azure Resource Manager 开发工具
 ms.reviewer: jasonh
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 36b43ce6636bf918e1e8c42af4c2746865f5ccd1
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: c002f4e0a5a7c780f394a07cdd132c5e198877ed
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523344"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085508"
 ---
-# <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>迁移到适用于 HDInsight 群集的基于 Azure 资源管理器的开发工具
+# <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>迁移到适用于 HDInsight 群集的基于 Azure Resource Manager 的开发工具
 
 HDInsight 即将淘汰适用于 HDInsight 的基于 Azure 服务管理器 (ASM) 的工具。 如果一直在使用 Azure PowerShell、Azure 经典 CLI 或 HDInsight.NET SDK 来处理 HDInsight 群集，我们建议跟随潮流，使用 Azure 资源管理器的 PowerShell、CLI 和 .NET SDK 版本。 本文章提供有关如何迁移到基于资源管理器的新方法的指导。 本文档将重点介绍适用于 HDInsight 的 ASM 与资源管理器方法之间的差异（如果适用）。
 
 > [!IMPORTANT]  
-> **2017 年 1 月 1 日**，对基于 ASM 的 PowerShell CLI 和 .NET SDK 的支持会终止。
+> 2017 年 1 月 1 日  ，对基于 ASM 的 PowerShell、CLI 和 .NET SDK 的支持将会终止。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -32,42 +32,42 @@ HDInsight 即将淘汰适用于 HDInsight 的基于 Azure 服务管理器 (ASM) 
 以下是通过 Azure 经典 CLI 使用 HDInsight 的基本命令：
 
 * `azure hdinsight cluster create` - 创建新的 HDInsight 群集
-* `azure hdinsight cluster delete` - 删除现有的 HDInsight 群集
+* `azure hdinsight cluster delete` - 删除现有 HDInsight 群集
 * `azure hdinsight cluster show` - 显示有关现有群集的信息
 * `azure hdinsight cluster list` - 列出 Azure 订阅的 HDInsight 群集
 
 使用 `-h` 开关可以检查每个命令可用的参数和开关。
 
 ### <a name="new-commands"></a>新命令
-可用于 Azure 资源管理器的新命令包括：
+可用于 Azure Resource Manager 的新命令包括：
 
 * `azure hdinsight cluster resize` - 动态更改群集中的辅助角色节点数目
 * `azure hdinsight cluster enable-http-access` - 启用对群集的 HTTPs 访问（默认为打开）
 * `azure hdinsight cluster disable-http-access` - 禁用对群集的 HTTPs 访问
 * `azure hdinsight script-action` - 在群集上提供用于创建/管理脚本操作的命令
-* `azure hdinsight config` - 提供用于创建配置文件的命令，该配置文件可与 `hdinsight cluster create` 命令一起使用以提供配置信息。
+* `azure hdinsight config` - 提供用于创建配置文件的命令，该配置文件可与 `hdinsight cluster create` 命令一起使用，提供配置信息。
 
-### <a name="deprecated-commands"></a>已过时的命令
+### <a name="deprecated-commands"></a>已弃用的命令
 如果使用 `azure hdinsight job` 命令将作业提交到 HDInsight 群集，则这些命令无法通过资源管理器命令提供。 如果需要以编程方式通过脚本将作业提交到 HDInsight，应改用 HDInsight 提供的 REST API。 有关如何使用 REST API 提交作业的详细信息，请参阅以下文档。
 
-* [使用 cURL 在 HDInsight 上的 Hadoop 上远程运行 MapReduce 作业](hadoop/apache-hadoop-use-mapreduce-curl.md)
+* [使用 cURL 通过 HDInsight 上的 Hadoop 运行 MapReduce 作业](hadoop/apache-hadoop-use-mapreduce-curl.md)
 * [使用 cURL 在 HDInsight 上通过 Apache Hadoop 运行 Apache Hive 查询](hadoop/apache-hadoop-use-hive-curl.md)
-* [使用 cURL 通过 Apache Hadoop on HDInsight 运行 Apache Pig 作业](hadoop/apache-hadoop-use-pig-curl.md)
+
 
 有关以其他交互方式运行 Apache Hadoop MapReduce、Apache Hive 和 Apache Pig 的信息，请参阅[将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](hadoop/hdinsight-use-mapreduce.md)、[将 Apache Hive 与 HDInsight 上的 Apache Hadoop 配合使用](hadoop/hdinsight-use-hive.md)和[将 Apache Pig 与 HDInsight 上的 Apache Hadoop 配合使用](hadoop/hdinsight-use-pig.md)。
 
 ### <a name="examples"></a>示例
-**创建群集**
+创建群集 
 
 * 旧命令 (ASM) - `azure hdinsight cluster create myhdicluster --location northeurope --osType linux --storageAccountName mystorage --storageAccountKey <storagekey> --storageContainer mycontainer --userName admin --password mypassword --sshUserName sshuser --sshPassword mypassword`
 * 新命令 - `azure hdinsight cluster create myhdicluster -g myresourcegroup --location northeurope --osType linux --clusterType hadoop --defaultStorageAccountName mystorage --defaultStorageAccountKey <storagekey> --defaultStorageContainer mycontainer --userName admin -password mypassword --sshUserName sshuser --sshPassword mypassword`
 
-**删除群集**
+删除群集 
 
 * 旧命令 (ASM) - `azure hdinsight cluster delete myhdicluster`
 * 新命令 - `azure hdinsight cluster delete mycluster -g myresourcegroup`
 
-**列出群集**
+列出群集 
 
 * 旧命令 (ASM) - `azure hdinsight cluster list`
 * 新命令 - `azure hdinsight cluster list`
@@ -75,15 +75,15 @@ HDInsight 即将淘汰适用于 HDInsight 的基于 Azure 服务管理器 (ASM) 
 > [!NOTE]  
 > 运行 list 命令时，使用 `-g` 指定资源组只会返回指定资源组中的群集。
 
-**显示群集信息**
+显示群集信息 
 
 * 旧命令 (ASM) - `azure hdinsight cluster show myhdicluster`
 * 新命令 - `azure hdinsight cluster show myhdicluster -g myresourcegroup`
 
-## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>将 Azure PowerShell 迁移到 Azure 资源管理器
+## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>将 Azure PowerShell 迁移到 Azure Resource Manager
 有关处于 Azure 资源管理器模式的 Azure PowerShell 的一般信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../powershell-azure-resource-manager.md)。
 
-Azure PowerShell 资源管理器 cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的 cmdlet 可按其名称来区分。  资源管理器模式下的 cmdlet 名称中包含 AzHDInsight，而在 ASM 模式下则包含 AzureHDInsight。  例如，前者为 New-AzHDInsightCluster，后者为*New-AzureHDInsightCluster*. 某些参数和开关可能有新名称，并且在使用资源管理器时，有许多新参数可供使用。  例如，多个 cmdlet 需要名为 *-ResourceGroupName* 的新开关。 
+Azure PowerShell 资源管理器 cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的 cmdlet 可按其名称来区分。  资源管理器模式下的 cmdlet 名称中包含 AzHDInsight，而在 ASM 模式下则包含 AzureHDInsight   。  例如，前者为 New-AzHDInsightCluster  ，后者为New-AzureHDInsightCluster  。 某些参数和开关可能有新名称，并且在使用资源管理器时，有许多新参数可供使用。  例如，多个 cmdlet 需要名为 -ResourceGroupName 的新开关  。 
 
 在使用这些 HDInsight cmdlet 之前，必须先连接到 Azure 帐户并创建新资源组：
 
@@ -93,7 +93,9 @@ Azure PowerShell 资源管理器 cmdlet 可与 ASM cmdlet 一同安装。 两种
 ### <a name="renamed-cmdlets"></a>已重命名的 cmdlet
 在 Windows PowerShell 控制台中列出 HDInsight ASM cmdlet：
 
-    help *azurehdinsight*
+```powershell
+help *azurehdinsight*
+```
 
 下表列出了 ASM cmdlet 及其在资源管理器模式下的名称：
 
@@ -135,85 +137,98 @@ Azure PowerShell 资源管理器 cmdlet 可与 ASM cmdlet 一同安装。 两种
 * **Get-AzHDInsightPersistedScriptAction**：获取群集的持久性脚本操作，并按时间顺序列出这些操作，或获取有关指定持久性脚本操作的详细信息。 
 * **Get-AzHDInsightScriptActionHistory**：获取群集的脚本操作历史记录，并按时间顺序逆序列出这些操作，或获取有关以前执行的脚本操作的详细信息。 
 * **Remove-AzHDInsightPersistedScriptAction**：从 HDInsight 群集中删除持久性脚本操作。
-* **Set-AzHDInsightPersistedScriptAction**：以前执行的脚本操作设置为持久性脚本操作。
+* **Set-AzHDInsightPersistedScriptAction**：将以前执行的脚本操作设置为持久性脚本操作。
 * **Submit-AzHDInsightScriptAction**：将新的脚本操作提交到 Azure HDInsight 群集。 
 
 有关其他用法信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 
 **与群集标识相关的 cmdlet：**
 
-* **添加 AzHDInsightClusterIdentity**:将群集标识添加到群集配置对象，使 HDInsight 群集能够访问 Azure Data Lake Storage。 请参阅[使用 Azure PowerShell 创建包含 Data Lake Storage 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)。
+* **AzHDInsightClusterIdentity**：将群集标识添加到群集配置对象，以便 HDInsight 群集可以访问 Azure Data Lake Storage。 请参阅[使用 Azure PowerShell 创建包含 Data Lake Storage 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)。
 
 ### <a name="examples"></a>示例
 **创建群集**
 
 旧命令 (ASM)： 
 
-    New-AzureHDInsightCluster `
-        -Name $clusterName `
-        -Location $location `
-        -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" `
-        -DefaultStorageAccountKey $storageAccountKey `
-        -DefaultStorageContainerName $containerName `
-        -ClusterSizeInNodes 2 `
-        -ClusterType Hadoop `
-        -OSType Linux `
-        -Version "3.2" `
-        -Credential $httpCredential `
-        -SshCredential $sshCredential
+```azurepowershell
+New-AzureHDInsightCluster `
+    -Name $clusterName `
+    -Location $location `
+    -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" `
+    -DefaultStorageAccountKey $storageAccountKey `
+    -DefaultStorageContainerName $containerName `
+    -ClusterSizeInNodes 2 `
+    -ClusterType Hadoop `
+    -OSType Linux `
+    -Version "3.2" `
+    -Credential $httpCredential `
+    -SshCredential $sshCredential
+```
 
 新命令：
 
-    New-AzHDInsightCluster `
-        -ClusterName $clusterName `
-        -ResourceGroupName $resourceGroupName `
-        -Location $location `
-        -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" `
-        -DefaultStorageAccountKey $storageAccountKey `
-        -DefaultStorageContainer $containerName  `
-        -ClusterSizeInNodes 2 `
-        -ClusterType Hadoop `
-        -OSType Linux `
-        -Version "3.2" `
-        -HttpCredential $httpcredentials `
-        -SshCredential $sshCredentials
-
+```azurepowershell
+New-AzHDInsightCluster `
+    -ClusterName $clusterName `
+    -ResourceGroupName $resourceGroupName `
+    -Location $location `
+    -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" `
+    -DefaultStorageAccountKey $storageAccountKey `
+    -DefaultStorageContainer $containerName  `
+    -ClusterSizeInNodes 2 `
+    -ClusterType Hadoop `
+    -OSType Linux `
+    -Version "3.2" `
+    -HttpCredential $httpcredentials `
+    -SshCredential $sshCredentials
+```
 
 **删除群集**
 
 旧命令 (ASM)：
 
-    Remove-AzureHDInsightCluster -name $clusterName 
+```azurepowershell
+Remove-AzureHDInsightCluster -name $clusterName 
+```
 
 新命令：
 
-    Remove-AzHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName 
+```azurepowershell
+Remove-AzHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName
+```
 
 **列出群集**
 
 旧命令 (ASM)：
 
-    Get-AzureHDInsightCluster
+```azurepowershell
+Get-AzureHDInsightCluster
+```
 
 新命令：
 
-    Get-AzHDInsightCluster 
+```azurepowershell
+Get-AzHDInsightCluster
+```
 
 **显示群集**
 
 旧命令 (ASM)：
 
-    Get-AzureHDInsightCluster -Name $clusterName
+```azurepowershell
+Get-AzureHDInsightCluster -Name $clusterName
+```
 
 新命令：
 
-    Get-AzHDInsightCluster -ResourceGroupName $resourceGroupName -clusterName $clusterName
-
+```azurepowershell
+Get-AzHDInsightCluster -ResourceGroupName $resourceGroupName -clusterName $clusterName
+```
 
 #### <a name="other-samples"></a>其他示例
 * [创建 HDInsight 群集](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
 * [提交 Apache Hive 作业](hadoop/apache-hadoop-use-hive-powershell.md)
-* [提交 Apache Pig 作业](hadoop/apache-hadoop-use-pig-powershell.md)
 * [提交 Apache Sqoop 作业](hadoop/apache-hadoop-use-sqoop-powershell.md)
 
 ## <a name="migrating-to-the-new-hdinsight-net-sdk"></a>迁移到新的 HDInsight .NET SDK
@@ -226,12 +241,10 @@ Azure PowerShell 资源管理器 cmdlet 可与 ASM cmdlet 一同安装。 两种
 
 | 如何...使用基于资源管理器的 HDInsight SDK | 链接 |
 | --- | --- |
-| 使用 .NET SDK 创建 HDInsight 群集 |请参阅[使用 .NET SDK 创建 HDInsight 群集](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) |
-| 配合使用脚本操作与 .NET SDK 来自定义群集 |请参阅[使用脚本操作自定义 HDInsight Linux 群集](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-script-action) |
+| 用于 .NET 的 Azure HDInsight SDK|请参阅[Azure HDINSIGHT SDK for .net](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet) |
 | 配合使用 Azure Active Directory 与 .NET SDK 以交互方式对应用程序进行身份验证 |请参阅[使用 .NET SDK 运行 Apache Hive 查询](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)。 本文中的代码段使用交互式身份验证方法。 |
 | 配合使用 Azure Active Directory 与 .NET SDK 以非交互方式对应用程序进行身份验证 |请参阅[为 HDInsight 创建非交互式应用程序](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
 | 使用 .NET SDK 提交 Apache Hive 作业 |请参阅[提交 Apache Hive 作业](hadoop/apache-hadoop-use-hive-dotnet-sdk.md) |
-| 使用 .NET SDK 提交 Apache Pig 作业 |请参阅[提交 Apache Pig 作业](hadoop/apache-hadoop-use-pig-dotnet-sdk.md) |
 | 使用 .NET SDK 提交 Apache Sqoop 作业 |请参阅[提交 Apache Sqoop 作业](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md) |
 | 使用 .NET SDK 列出 HDInsight 群集 |请参阅[列出 HDInsight 群集](hdinsight-administer-use-dotnet-sdk.md#list-clusters) |
 | 使用 .NET SDK 缩放 HDInsight 群集 |请参阅[缩放 HDInsight 群集](hdinsight-administer-use-dotnet-sdk.md#scale-clusters) |
@@ -246,112 +259,133 @@ Azure PowerShell 资源管理器 cmdlet 可与 ASM cmdlet 一同安装。 两种
 **创建群集 CRUD 客户端**
 
 * 旧命令 (ASM)
+
+  ```azurecli
+  //Certificate auth
+  //This logs the application in using a subscription administration certificate, which is not offered in Azure Resource Manager
   
-        //Certificate auth
-        //This logs the application in using a subscription administration certificate, which is not offered in Azure Resource Manager
-  
-        const string subid = "454467d4-60ca-4dfd-a556-216eeeeeeee1";
-        var cred = new HDInsightCertificateCredential(new Guid(subid), new X509Certificate2(@"path\to\certificate.cer"));
-        var client = HDInsightClient.Connect(cred);
+  const string subid = "454467d4-60ca-4dfd-a556-216eeeeeeee1";
+  var cred = new HDInsightCertificateCredential(new Guid(subid), new X509Certificate2(@"path\to\certificate.cer"));
+  var client = HDInsightClient.Connect(cred);
+  ```
 * 新命令（服务主体授权）
+
+  ```azurecli
+  //Service principal auth
+  //This will log the application in as itself, rather than on behalf of a specific user.
+  //For details, including how to set up the application, see:
+  //   https://azure.microsoft.com/documentation/articles/hdinsight-create-non-interactive-authentication-dotnet-applications/
   
-        //Service principal auth
-        //This will log the application in as itself, rather than on behalf of a specific user.
-        //For details, including how to set up the application, see:
-        //   https://azure.microsoft.com/documentation/articles/hdinsight-create-non-interactive-authentication-dotnet-applications/
+  var authFactory = new AuthenticationFactory();
   
-        var authFactory = new AuthenticationFactory();
+  var account = new AzureAccount { Type = AzureAccount.AccountType.ServicePrincipal, Id = clientId };
   
-        var account = new AzureAccount { Type = AzureAccount.AccountType.ServicePrincipal, Id = clientId };
+  var env = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
   
-        var env = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
+  var accessToken = authFactory.Authenticate(account, env, tenantId, secretKey, ShowDialog.Never).AccessToken;
   
-        var accessToken = authFactory.Authenticate(account, env, tenantId, secretKey, ShowDialog.Never).AccessToken;
+  var creds = new TokenCloudCredentials(subId.ToString(), accessToken);
   
-        var creds = new TokenCloudCredentials(subId.ToString(), accessToken);
-  
-        _hdiManagementClient = new HDInsightManagementClient(creds);
+  _hdiManagementClient = new HDInsightManagementClient(creds);
+  ```
+
 * 新命令（用户授权）
+
+  ```azurecli
+  //User auth
+  //This will log the application in on behalf of the user.
+  //The end-user will see a login popup.
   
-        //User auth
-        //This will log the application in on behalf of the user.
-        //The end-user will see a login popup.
+  var authFactory = new AuthenticationFactory();
   
-        var authFactory = new AuthenticationFactory();
+  var account = new AzureAccount { Type = AzureAccount.AccountType.User, Id = username };
   
-        var account = new AzureAccount { Type = AzureAccount.AccountType.User, Id = username };
+  var env = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
   
-        var env = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
+  var accessToken = authFactory.Authenticate(account, env, AuthenticationFactory.CommonAdTenant, password, ShowDialog.Auto).AccessToken;
   
-        var accessToken = authFactory.Authenticate(account, env, AuthenticationFactory.CommonAdTenant, password, ShowDialog.Auto).AccessToken;
+  var creds = new TokenCloudCredentials(subId.ToString(), accessToken);
   
-        var creds = new TokenCloudCredentials(subId.ToString(), accessToken);
-  
-        _hdiManagementClient = new HDInsightManagementClient(creds);
+  _hdiManagementClient = new HDInsightManagementClient(creds);
+  ```
 
 **创建群集**
 
 * 旧命令 (ASM)
-  
-        var clusterInfo = new ClusterCreateParameters
-                    {
-                        Name = dnsName,
-                        DefaultStorageAccountKey = key,
-                        DefaultStorageContainer = defaultStorageContainer,
-                        DefaultStorageAccountName = storageAccountDnsName,
-                        ClusterSizeInNodes = 1,
-                        ClusterType = type,
-                        Location = "West US",
-                        UserName = "admin",
-                        Password = "*******",
-                        Version = version,
-                        HeadNodeSize = NodeVMSize.Large,
-                    };
-        clusterInfo.CoreConfiguration.Add(new KeyValuePair<string, string>("config1", "value1"));
-        client.CreateCluster(clusterInfo);
+
+  ```azurecli
+  var clusterInfo = new ClusterCreateParameters
+              {
+                  Name = dnsName,
+                  DefaultStorageAccountKey = key,
+                  DefaultStorageContainer = defaultStorageContainer,
+                  DefaultStorageAccountName = storageAccountDnsName,
+                  ClusterSizeInNodes = 1,
+                  ClusterType = type,
+                  Location = "West US",
+                  UserName = "admin",
+                  Password = "*******",
+                  Version = version,
+                  HeadNodeSize = NodeVMSize.Large,
+              };
+  clusterInfo.CoreConfiguration.Add(new KeyValuePair<string, string>("config1", "value1"));
+  client.CreateCluster(clusterInfo);
+  ```
+
 * 新命令
-  
-        var clusterCreateParameters = new ClusterCreateParameters
-            {
-                Location = "West US",
-                ClusterType = "Hadoop",
-                Version = "3.1",
-                OSType = OSType.Linux,
-                DefaultStorageAccountName = "mystorage.blob.core.windows.net",
-                DefaultStorageAccountKey =
-                    "O9EQvp3A3AjXq/W27rst1GQfLllhp0gUeiUUn2D8zX2lU3taiXSSfqkZlcPv+nQcYUxYw==",
-                UserName = "hadoopuser",
-                Password = "*******",
-                HeadNodeSize = "ExtraLarge",
-                RdpUsername = "hdirp",
-                RdpPassword = ""*******",
-                RdpAccessExpiry = new DateTime(2025, 3, 1),
-                ClusterSizeInNodes = 5
-            };
-        var coreConfigs = new Dictionary<string, string> {{"config1", "value1"}};
-        clusterCreateParameters.Configurations.Add(ConfigurationKey.CoreSite, coreConfigs);
+
+  ```azurecli
+  var clusterCreateParameters = new ClusterCreateParameters
+      {
+          Location = "West US",
+          ClusterType = "Hadoop",
+          Version = "3.1",
+          OSType = OSType.Linux,
+          DefaultStorageAccountName = "mystorage.blob.core.windows.net",
+          DefaultStorageAccountKey =
+              "O9EQvp3A3AjXq/W27rst1GQfLllhp0gUeiUUn2D8zX2lU3taiXSSfqkZlcPv+nQcYUxYw==",
+          UserName = "hadoopuser",
+          Password = "*******",
+          HeadNodeSize = "ExtraLarge",
+          RdpUsername = "hdirp",
+          RdpPassword = ""*******",
+          RdpAccessExpiry = new DateTime(2025, 3, 1),
+          ClusterSizeInNodes = 5
+      };
+  var coreConfigs = new Dictionary<string, string> {{"config1", "value1"}};
+  clusterCreateParameters.Configurations.Add(ConfigurationKey.CoreSite, coreConfigs);
+  ```
 
 **启用 HTTP 访问**
 
 * 旧命令 (ASM)
-  
-        client.EnableHttp(dnsName, "West US", "admin", "*******");
+
+  ```azurecli
+  client.EnableHttp(dnsName, "West US", "admin", "*******");
+  ```
+
 * 新命令
   
-        var httpParams = new HttpSettingsParameters
-        {
-               HttpUserEnabled = true,
-               HttpUsername = "admin",
-               HttpPassword = "*******",
-        };
-        client.Clusters.ConfigureHttpSettings(resourceGroup, dnsname, httpParams);
+  ```azurecli
+  var httpParams = new HttpSettingsParameters
+  {
+         HttpUserEnabled = true,
+         HttpUsername = "admin",
+         HttpPassword = "*******",
+  };
+  client.Clusters.ConfigureHttpSettings(resourceGroup, dnsname, httpParams);
+  ```
 
 **删除群集**
 
 * 旧命令 (ASM)
-  
-        client.DeleteCluster(dnsName);
-* 新命令
-  
-        client.Clusters.Delete(resourceGroup, dnsname);
 
+  ```azurecli
+  client.DeleteCluster(dnsName);
+  ```
+
+* 新命令
+
+  ```azurecli
+  client.Clusters.Delete(resourceGroup, dnsname);
+  ```

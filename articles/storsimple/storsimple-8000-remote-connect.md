@@ -1,32 +1,23 @@
 ---
-title: 远程连接到 StorSimple 设备 | Microsoft Docs
+title: 远程连接到 StorSimple 设备
 description: 介绍如何配置设备进行远程管理，以及如何通过 HTTP 或 HTTPS 连接到 Windows PowerShell for StorSimple。
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: how-to
 ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05bec60f4c56c98e9b910b50e858656a2e5554b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 1da688dfb00b26ca6b561d5aa0fb548c221381c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60631734"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514565"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>远程连接到 StorSimple 8000 系列设备
 
 ## <a name="overview"></a>概述
 
-可以通过 Windows PowerShell 远程连接到设备。 采取这种方式连接时，不会看到菜单。 （仅当在设备上使用串行控制台进行连接时，才会看到菜单。）借助 Windows PowerShell 远程处理，可连接到特定的运行空间。 也可以指定显示语言。
+可以通过 Windows PowerShell 远程连接到设备。 采取这种方式连接时，不会看到菜单。 （只有在设备上使用串行控制台进行连接时，才会看到菜单。）使用 Windows PowerShell 远程处理，可以连接到特定的运行空间。 也可以指定显示语言。
 
 有关使用 Windows PowerShell 远程处理来管理设备的详细信息，请转到 [Use Windows PowerShell for StorSimple to administer your StorSimple device](storsimple-8000-windows-powershell-administration.md)（使用 Windows PowerShell for StorSimple 管理 StorSimple 设备）。
 
@@ -59,15 +50,15 @@ ms.locfileid: "60631734"
 
 #### <a name="to-enable-remote-management-through-the-azure-portal"></a>通过 Azure 门户启用远程管理
 
-1. 转到 StorSimple Device Manager 服务。 选择“设备”，选择并单击要为其配置远程管理的设备。 转到“设备设置”>“安全性”。
-2. 在“安全设置”边栏选项卡中，单击“远程管理”。
-3. 在“远程管理”边栏选项卡中，将“启用远程管理”设置为“是”。
-4. 现在可选择使用 HTTP 进行连接。 （默认为通过 HTTPS 连接。）请确保已选中 HTTP。
+1. 转到 StorSimple Device Manager 服务。 选择“设备”，选择并单击要为其配置远程管理的设备。**** 转到“设备设置”>“安全性”****。
+2. 在“安全设置”**** 边栏选项卡中，单击“远程管理”****。
+3. 在“远程管理”边栏选项卡中，将“启用远程管理”设置为“是”。************
+4. 现在可选择使用 HTTP 进行连接。 （默认为通过 HTTPS 进行连接。）请确保已选择 "HTTP"。
    
    > [!NOTE]
    > 只有受信任的网络才支持通过 HTTP 连接。
    
-5. 单击“保存”，出现确认提示时，选择“是”。
+5. 单击“保存”，出现确认提示时，选择“是”。********
 
 ### <a name="use-the-serial-console-to-enable-remote-management-over-http"></a>使用串行控制台通过 HTTP 启用远程管理
 在设备串行控制台上执行以下步骤以启用远程管理。
@@ -75,9 +66,9 @@ ms.locfileid: "60631734"
 #### <a name="to-enable-remote-management-through-the-device-serial-console"></a>通过设备串行控制台启用远程管理
 1. 在串行控制台菜单上，选择“选项 1”。 有关在设备上使用串行控制台的详细信息，请转到 [Connect to Windows PowerShell for StorSimple via device serial console](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console)（通过设备串行控制台连接到 Windows PowerShell for StorSimple）。
 2. 在提示符下键入：`Enable-HcsRemoteManagement –AllowHttp`
-3. 会收到使用 HTTP 连接到设备的安全漏洞的相关通知。 出现提示时，键入 **Y** 以确认。
+3. 会收到使用 HTTP 连接到设备的安全漏洞的相关通知。 收到提示时，键入 **Y** 确认。
 4. 键入以下内容来验证是否启用了 HTTP：`Get-HcsSystem`
-5. 验证“RemoteManagementMode”字段是否显示为“HttpsAndHttpEnabled”。下图显示了 PuTTY 中的这些设置。
+5. 验证“RemoteManagementMode”**** 字段是否显示为“HttpsAndHttpEnabled”****。下图显示了 PuTTY 中的这些设置。
    
      ![已启用串行 HTTPS 和 HTTP](./media/storsimple-remote-connect/HCS_SerialHttpsAndHttpEnabled.png)
 
@@ -138,12 +129,12 @@ ms.locfileid: "60631734"
 
 #### <a name="to-enable-remote-management-over-https-from-the-azure-portal"></a>在 Azure 门户中通过 HTTPS 启用远程管理
 
-1. 转到 StorSimple Device Manager 服务。 选择“设备”，选择并单击要为其配置远程管理的设备。 转到“设备设置”>“安全性”。
-2. 在“安全设置”边栏选项卡中，单击“远程管理”。
-3. 将“启用远程管理”设置为“是”。
-4. 现在可以选择使用 HTTPS 进行连接。 （默认为通过 HTTPS 连接。）请确保已选中 HTTPS。
-5. 依次单击“...”、“下载远程管理证书”。 指定保存此文件的位置。 需要在用于连接到设备的客户端或主机计算机上安装此证书。
-6. 单击“保存”，出现确认提示时，单击“是”。
+1. 转到 StorSimple Device Manager 服务。 选择“设备”，选择并单击要为其配置远程管理的设备。**** 转到“设备设置”>“安全性”****。
+2. 在“安全设置”**** 边栏选项卡中，单击“远程管理”****。
+3. 将 **“启用远程管理”** 设置为 **“是”**。
+4. 现在可以选择使用 HTTPS 进行连接。 （默认为通过 HTTPS 进行连接。）请确保已选择 "HTTPS"。
+5. 依次单击“...”、“下载远程管理证书”****。 指定保存此文件的位置。 需要在用于连接到设备的客户端或主机计算机上安装此证书。
+6. 单击“保存”，出现确认提示时，单击“是”。********
 
 ### <a name="use-the-serial-console-to-enable-remote-management-over-https"></a>使用串行控制台通过 HTTPS 启用远程管理
 
@@ -160,7 +151,7 @@ ms.locfileid: "60631734"
    
      `Get-HcsSystem`
    
-    请确保“RemoteManagementMode”字段显示为“HttpsEnabled”。下图显示了 PuTTY 中的这些设置。
+    请确保“RemoteManagementMode”**** 字段显示为“HttpsEnabled”****。下图显示了 PuTTY 中的这些设置。
    
      ![已启用串行 HTTPS](./media/storsimple-remote-connect/HCS_SerialHttpsEnabled.png)
 4. 从 `Get-HcsSystem` 的输出中，复制设备的序列号，并将其保存供稍后使用。
@@ -184,13 +175,13 @@ ms.locfileid: "60631734"
 
 若要为使用 HTTPS 会话的远程连接准备主机计算机，请执行以下过程：
 
-* [将 .cer 文件导入到客户端或远程主机的根存储中](#to-import-the-certificate-on-the-remote-host)。
+* 将[.cer 文件导入到客户端或远程主机的根存储中](#to-import-the-certificate-on-the-remote-host)。
 * [将设备序列号添加到远程主机上的 hosts 文件中](#to-add-device-serial-numbers-to-the-remote-host)。
 
 下面描述了上述每个过程。
 
 #### <a name="to-import-the-certificate-on-the-remote-host"></a>在远程主机上导入证书
-1. 右键单击 .cer 文件并选择“安装证书”。 这会启动证书导入向导。
+1. 右键单击 .cer 文件，然后选择 **“安装证书”**。 这会启动证书导入向导。
    
     ![证书导入向导 1](./media/storsimple-remote-connect/HCS_CertificateImportWizard1.png)
 2. 对于“存储位置”，选择“本地计算机”，并单击“下一步”。
@@ -203,19 +194,19 @@ ms.locfileid: "60631734"
 
 #### <a name="to-add-device-serial-numbers-to-the-remote-host"></a>将设备序列号添加到远程主机
 1. 以管理员身份启动记事本，并打开位于 \Windows\System32\Drivers\etc 的主机文件。
-2. 将以下条目添加到主机文件中：DATA 0 IP 地址、控制器 0 固定 IP 地址和控制器 1 固定 IP 地址。
-3. 输入之前保存的设备序列号。 将此设备序列号映射到 IP 地址，如下图所示。 对于控制器 0 和控制器 1，请在序列号末尾追加 **Controller0** 和 **Controller1**（CN 名）。
+2. 将以下三项添加到主机文件中：**DATA 0 IP 地址**、**控制器 0 固定 IP 地址**和**控制器 1 固定 IP 地址**。
+3. 输入之前保存的设备序列号。 将此设备序列号映射到 IP 地址，如下图所示。 对于控制器 0 和控制器 1，请在序列号（CN 名称）末尾附加 **Controller0** 和 **Controller1**。
    
     ![将 CN 名添加到主机文件中](./media/storsimple-remote-connect/HCS_AddingCNNameToHostsFile.png)
 4. 保存主机文件。
 
 ### <a name="connect-to-the-device-from-the-remote-host"></a>从远程主机连接到设备
 
-使用 Windows PowerShell 和 SSL 从远程主机或客户端在设备上输入 SSAdmin 会话。 SSAdmin 会话映射到设备的[串行控制台](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console)菜单中的选项 1。
+使用 Windows PowerShell 和 TLS 从远程主机或客户端进入设备上的 SSAdmin 会话。 SSAdmin 会话映射到设备的[串行控制台](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console)菜单中的选项 1。
 
 在想要从中建立远程 Windows PowerShell 连接的计算机上执行以下过程。
 
-#### <a name="to-enter-an-ssadmin-session-on-the-device-by-using-windows-powershell-and-ssl"></a>通过使用 Windows PowerShell 和 SSL 在设备上输入 SSAdmin 会话
+#### <a name="to-enter-an-ssadmin-session-on-the-device-by-using-windows-powershell-and-tls"></a>使用 Windows PowerShell 和 TLS 进入设备上的 SSAdmin 会话
 1. 以管理员身份启动 Windows PowerShell 会话。 如果使用 Windows 10 客户端，默认情况下，Windows 远程管理服务设置为手动启动。 可能需要通过键入以下命令启动该服务：
 
     `Start-Service WinRM`
@@ -237,12 +228,12 @@ ms.locfileid: "60631734"
      `$session = New-PSSession -UseSSL -ComputerName <Serial number of target device> -Credential $cred -ConfigurationName "SSAdminConsole"`
    
     对于 cmdlet 中的 -ComputerName 参数，请提供 <*目标设备的序列号*>。 已在远程主机上将此序列号映射到 hosts 文件中 DATA 0 的 IP 地址；如下图中所示的 **SHX0991003G44MT**。
-5. 键入：
+5. 类型：
    
      `Enter-PSSession $session`
-6. 等待几分钟后，会在 SSL 上通过 HTTPS 连接到设备。 会看到一条指示已连接到设备的消息。
+6. 需要等待几分钟，然后将通过 TLS 通过 HTTPS 连接到设备。 会看到一条指示已连接到设备的消息。
    
-    ![使用 HTTPS 和 SSL 的 PowerShell 远程处理](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
+    ![使用 HTTPS 和 TLS 的 PowerShell 远程处理](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
 
 ## <a name="next-steps"></a>后续步骤
 

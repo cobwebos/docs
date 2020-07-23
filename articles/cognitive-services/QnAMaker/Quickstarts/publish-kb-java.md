@@ -1,26 +1,20 @@
 ---
-title: 发布知识库、REST 和 Java
-titleSuffix: QnA Maker - Azure Cognitive Services
-description: 此基于 Java REST 的快速入门将指导你完成发布知识库的过程，发布操作会将经过测试的知识库的最新版本推送至代表“已发布”知识库的专用 Azure 搜索索引。 还会创建一个终结点，可在应用程序或聊天机器人中调用此终结点。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: qna-maker
-ms.topic: quickstart
-ms.date: 02/28/2019
-ms.author: diberry
-ms.openlocfilehash: ae94d02b93880b7c81d359e5b2606b720b38b554
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+title: 快速入门：发布知识库、REST、Java QnA Maker
+description: 此基于 Java REST 的快速入门发布你的知识库，并创建可在应用程序或聊天机器人中调用的终结点。
+ms.date: 02/08/2020
+ROBOTS: NOINDEX,NOFOLLOW
+ms.custom: RESTCURL2020FEB27
+ms.topic: how-to
+ms.openlocfilehash: e8df1fcc61d6b838c08f8daca9298e73820590f5
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787939"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342691"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>快速入门：在 QnA Maker 中使用 Java 发布知识库
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>快速入门：在 QnA Maker 中通过 Java 发布知识库
 
-此基于 REST 的快速入门将指导你完成以编程方式发布知识库 (KB) 的过程。 发布操作会将知识库的最新版本推送到一个专用 Azure 搜索引擎，并创建一个可以在应用程序或聊天机器人中调用的终结点。
+此基于 REST 的快速入门将指导你完成以编程方式发布知识库 (KB) 的过程。 发布操作会将知识库的最新版本推送到一个专用 Azure 认知搜索引擎，并创建一个可以在应用程序或聊天机器人中调用的终结点。
 
 本快速入门调用了 QnA Maker API：
 * [发布](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) - 此 API 不需要请求正文中的任何信息。
@@ -28,20 +22,20 @@ ms.locfileid: "65787939"
 ## <a name="prerequisites"></a>先决条件
 
 * [JDK SE](https://aka.ms/azure-jdks)（Java 开发工具包，标准版）
-* 此示例使用 HTTP 组件中的 Apache [HTTP 客户端](https://hc.apache.org/httpcomponents-client-ga/)。 需向项目添加以下 Apache HTTP 客户端库： 
+* 此示例使用 HTTP 组件中的 Apache [HTTP 客户端](https://hc.apache.org/httpcomponents-client-ga/)。 需向项目添加以下 Apache HTTP 客户端库：
     * httpclient-4.5.3.jar
     * httpcore-4.4.6.jar
     * commons-logging-1.2.jar
 * [Visual Studio Code](https://code.visualstudio.com/)
-* 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在适用于 QnA Maker 资源的 Azure 仪表板的“资源管理”下选择“密钥”。 . 
-* 在 kbid 查询字符串参数中的 URL 中找到的 QnA Maker 知识库 (KB) ID，如下所示。
+* 您必须具有[QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥和终结点（包括资源名称），请在 Azure 门户中为资源选择“快速入门”****。
+* 在 `kbid` 查询字符串参数的 URL 中找到的 QnA Maker 知识库 (KB) ID，如下所示。
 
     ![QnA Maker 知识库 ID](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-    如果还没有知识库，可以创建一个用于本快速入门的示例知识库：[创建新的知识库](create-new-kb-csharp.md)。
+    如果还没有知识库，可以创建一个用于此快速入门的示例知识库：[创建新的知识库](create-new-kb-csharp.md)。
 
-> [!NOTE] 
-> 完整的解决方案文件可从 [Azure-Samples/cognitive-services-qnamaker-java GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/tree/master/documentation-samples/quickstarts/publish-knowledge-base)获得。
+> [!NOTE]
+> 完整的解决方案文件可从[ **Azure 示例/认知-qnamaker** GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/tree/master/documentation-samples/quickstarts/publish-knowledge-base)获取。
 
 ## <a name="create-a-java-file"></a>创建 Java 文件
 
@@ -60,7 +54,7 @@ ms.locfileid: "65787939"
 ```Go
 public class PublishKB {
 
-    public static void main(String[] args) 
+    public static void main(String[] args)
     {
     }
 }
@@ -68,7 +62,7 @@ public class PublishKB {
 
 ## <a name="add-required-constants"></a>添加必需的常量
 
-在 **main** 方法中，添加必需的常量来访问 QnA Maker。 将值替换成自己的值。
+在**main**方法中，添加所需的常量以访问 QnA Maker。 将值替换成自己的值。
 
 [!code-java[Add the required constants](~/samples-qnamaker-java/documentation-samples/quickstarts/publish-knowledge-base/PublishKB.java?range=27-30 "Add the required constants")]
 
@@ -98,11 +92,11 @@ public class PublishKB {
     java -cp ".;lib/*" PublishKB
     ```
 
-[!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+[!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-在发布知识库后，需要[生成答案所需的终结点 URL](../Tutorials/create-publish-answer.md#generating-an-answer)。  
+在发布知识库后，需要[生成答案所需的终结点 URL](./get-answer-from-knowledge-base-java.md)。
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API 参考](https://go.microsoft.com/fwlink/?linkid=2092179)

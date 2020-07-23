@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: aahi
-ms.openlocfilehash: 85326ae9166f7ea15ec2f45c01755b8f9ef03aff
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 004bd973651d5903db4254a8883be2c8a83d9b38
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388565"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310574"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>必应自定义搜索 API 的语言和区域支持
 
@@ -23,7 +23,7 @@ ms.locfileid: "66388565"
 
 尽管是可选的，但请求应该指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) 查询参数，它确定你希望结果源自其中的市场。 对于可选查询参数列表，请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)
 
-可以使用 `cc` 查询参数指定国家/地区。 如果指定了国家/地区，还必须使用 `Accept-Language` 标头指定一个或多个语言代码。 支持的语言因国家/地区而异；“市场”表中提供了每个国家/地区适用的语言  。
+可以使用 `cc` 查询参数指定国家/地区。 如果指定了国家/地区，还必须使用 `Accept-Language` 标头指定一个或多个语言代码。 支持的语言因国家/地区而异；“市场”表中提供了每个国家/地区适用的语言****。
 
 `Accept-Language` 标头和 `setLang` 查询参数相互排斥，不可同时指定两者。 有关详细信息，请参阅 [Accept-language](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage)。
 
@@ -42,9 +42,9 @@ ms.locfileid: "66388565"
 |芬兰|FI|
 |法国|FR|
 |德国|DE|
-|中国香港特别行政区|HK|
+|香港特别行政区|HK|
 |印度|IN|
-|印度尼西亚|ID|
+|印度尼西亚|Id|
 |意大利|IT|
 |日本|JP|
 |韩国|KR|
@@ -52,7 +52,7 @@ ms.locfileid: "66388565"
 |墨西哥|MX|
 |荷兰|NL|
 |新西兰|NZ|
-|挪威|否|
+|挪威|是|
 |中国|CN|
 |波兰|PL|
 |葡萄牙|PT|
@@ -63,10 +63,10 @@ ms.locfileid: "66388565"
 |西班牙|ES|
 |瑞典|SE|
 |瑞士|CH|
-|中国台湾|TW|
+|台湾|TW|
 |土耳其|TR|
 |英国|GB|
-|美国|美国|
+|美国|US|
 
 
 ## <a name="markets"></a>市场
@@ -86,7 +86,7 @@ ms.locfileid: "66388565"
 |芬兰|芬兰语|fi-FI|
 |法国|法语|fr-FR|
 |德国|德语|de-DE|
-|中国香港特别行政区|繁体中文|zh-HK|
+|香港特别行政区|繁体中文|zh-HK|
 |印度|英语|en-IN|
 |印度尼西亚|英语|en-ID|
 |意大利|意大利语|it-IT|
@@ -108,8 +108,8 @@ ms.locfileid: "66388565"
 |瑞典|瑞典语|sv-SE|
 |瑞士|法语|fr-CH|
 |瑞士|德语|de-CH|
-|中国台湾|繁体中文|zh-TW|
+|台湾|繁体中文|zh-TW|
 |土耳其|土耳其语|tr-TR|
 |英国|英语|en-GB|
-|美国|英语|en-US|
+|美国|英语|zh-CN|
 |美国|西班牙语|es-US|

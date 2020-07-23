@@ -1,21 +1,21 @@
 ---
 title: 教程：生成单页必应视频搜索应用
-titlesuffix: Azure Cognitive Services
-description: 介绍如何在单页 Web 应用程序中使用必应视频搜索 API。
+titleSuffix: Azure Cognitive Services
+description: 本教程介绍如何在单页 Web 应用程序中使用必应视频搜索 API。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: tutorial
-ms.date: 01/31/2019
+ms.date: 02/03/2020
 ms.author: aahi
-ms.openlocfilehash: 6ba777754990560526d7981ef497ea7f0441e1b0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c6e36bdbb3d58878e6afa28610ab2b214f47de20
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798464"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800719"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>教程：单页视频搜索应用
 使用必应视频搜索 API 可以搜索 Web，并获取与搜索查询相关的视频结果。 本教程将生成一个单页 Web 应用程序，该应用程序使用必应搜索 API 在页面中显示搜索结果。 该应用程序包含 HTML、CSS 和 JavaScript 组件。
@@ -35,7 +35,7 @@ ms.locfileid: "65798464"
 > * 将搜索选项传递到必应搜索 API
 > * 显示视频搜索结果或（可选）包含网页、新闻或图像
 > * 基于 24 小时、过去一周、过去一月或所有可用时间的时间范围进行搜索
-> * 对搜索结果进行分页
+> * 翻页浏览搜索结果
 > * 处理必应客户端 ID 和 API 订阅密钥
 > * 处理可能出现的错误
 
@@ -120,7 +120,7 @@ function bingSearchOptions(form) {
 
     var options = [];
     options.push("mkt=" + form.where.value);
-    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "off"));
+    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "moderate"));
 
     if (form.when.value.length) options.push("freshness=" + form.when.value);
     var what = [];
@@ -138,10 +138,10 @@ function bingSearchOptions(form) {
 }
 ```
 
-例如，实际 API 调用中的 `SafeSearch` 参数可以为 `strict`、`moderate` 或 `off`，并将 `moderate` 作为默认值。 但是，我们的表单会使用仅具有两种状态的复选框。 JavaScript 代码会将此设置转换为 `strict` 或 `off`（不会使用 `moderate`）。
+例如，实际 API 调用中的 `SafeSearch` 参数可以是 `strict` 或 `moderate`，其中 `moderate` 是默认值。
 
 ## <a name="performing-the-request"></a>执行请求
-鉴于查询、选项字符串和 API 密钥，`BingWebSearch` 函数会使用 `XMLHttpRequest` 对象向必应搜索终结点发出请求。
+鉴于查询、选项字符串和 API 密钥，`BingWebSearch` 函数会使用 `XMLHttpRequest` 对象向必应搜索终结点发出请求。 可以使用下面的全局终结点，也可以使用资源的 Azure 门户中显示的[自定义子域](../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
 ```javascript
 // Search on the query, using search options, authenticated by the key.
@@ -306,7 +306,7 @@ function renderSearchResults(results) {
 }
 ```
 
-必应新闻搜索 API 最多返回四种不同类型的相关结果，每个都有其自己的顶级对象。 它们是：
+必应新闻搜索 API 最多返回四种不同类型的相关结果，每个都有其自己的顶级对象。 它们分别是：
 
 |关系|说明|
 |-|-|
@@ -373,7 +373,7 @@ searchItemRenderers = {
 > * 生成链接到图像及所在页面的 HTML `<a>` 标记。
 > * 可生成显示有关图像及所在站点的信息的说明。
 
-`<img>` 标记以及缩略图 URL 的 `h` 和 `w` 字段中均使用了缩略图大小。 然后，[必应缩略图服务](resize-and-crop-thumbnails.md)会提供正好为该大小的缩略图。
+`<img>` 标记以及缩略图 URL 的 `h` 和 `w` 字段中均使用了缩略图大小。 必应将返回恰好该大小的[缩略图](../bing-web-search/resize-and-crop-thumbnails.md)。
 
 ## <a name="persisting-client-id"></a>保留客户端 ID
 来自必应搜索 API 的响应可能包含应通过后续请求发送回 API 的 `X-MSEdge-ClientID` 标头。 如果正在使用多个必应搜索 API，应将相同客户端 ID 用于所有这些必应搜索 API（如有可能）。
@@ -389,19 +389,22 @@ searchItemRenderers = {
 > [!NOTE]
 > 在生产 Web 应用程序中，应执行请求服务器端。 否则，你的必应搜索 API 密钥必须包含在网页中，该网页可供查看来源的任何人使用。 收费取决于 API 订阅密钥下的所有使用量（即使请求是由未经授权的用户发出的，也是如此），因此请确保不要公开你的密钥。
 
-进行开发时，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 来自此类代理的响应有一个 `Access-Control-Expose-Headers` 标头，此标头将响应头列入允许列表，并将它们提供给 JavaScript。
+进行开发时，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 此类代理的响应包含 `Access-Control-Expose-Headers` 标头，该标头允许响应标头并使其可供 JavaScript 访问。
 
-安装 CORS 代理很容易，教程应用可以用它来访问客户端 ID 标头。 首先，如果尚未安装 Node.js，请[安装它](https://nodejs.org/en/download/)。 然后，在命令窗口中发出以下命令：
+安装 CORS 代理很容易，教程应用可以用它来访问客户端 ID 标头。 首先，如果尚未安装 Node.js，请先[安装](https://nodejs.org/en/download/)。 然后，在命令窗口中发出以下命令：
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-接下来，在 HTML 文件中将必应 Web 搜索终结点更改为：
+接下来，在 HTML 文件中将必应 Web 搜索终结点更改为：\
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+最后，运行下面的命令，启动 CORS 代理：
 
-最后，使用以下命令启动 CORS 代理：
-
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 使用教程应用期间，不要关闭命令窗口；关闭窗口会导致代理停止运行。 在搜索结果下的可展开 HTTP 响应头部分中，现在可以看到 `X-MSEdge-ClientID` 响应头（以及其他响应头），并验证此响应头是否对所有请求都相同。
 

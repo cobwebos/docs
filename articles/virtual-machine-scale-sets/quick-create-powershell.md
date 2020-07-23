@@ -1,33 +1,26 @@
 ---
-title: 快速入门 - 使用 Azure PowerShell 创建虚拟机规模集 | Microsoft Docs
-description: 了解如何使用 Azure PowerShell 快速创建虚拟机规模集
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: ''
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: 快速入门 - 使用 Azure PowerShell 创建虚拟机规模集
+description: 通过了解如何使用 Azure PowerShell 快速创建虚拟机规模集来开始部署。
+author: ju-shim
+ms.author: jushiman
 ms.topic: quickstart
-ms.custom: mvc
+ms.service: virtual-machine-scale-sets
+ms.subservice: powershell
 ms.date: 11/08/2018
-ms.author: cynthn
-ms.openlocfilehash: 2e9f850183c0e5ee5ab883848e7b02afbfde2bae
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 3f38933c1b11ffca6a9ac26eb11d29387712067f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66728976"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495085"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建虚拟机规模集
 
 
 
-利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据资源使用情况（如 CPU 使用率、内存需求或网络流量）进行自动缩放。 然后，Azure 负载均衡器会将流量分配到规模集中的 VM 实例。 在本快速入门中，我们将使用 Azure PowerShell 创建虚拟机规模集并部署一个示例应用程序。
+利用虚拟机规模集，可以部署和管理一组自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据资源使用情况（如 CPU 使用率、内存需求或网络流量）进行自动缩放。 然后，Azure 负载均衡器会将流量分配到规模集中的 VM 实例。 在本快速入门中，我们将使用 Azure PowerShell 创建虚拟机规模集并部署一个示例应用程序。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -35,7 +28,13 @@ ms.locfileid: "66728976"
 
 
 ## <a name="create-a-scale-set"></a>创建规模集
-使用 [New-AzVmss](/powershell/module/az.compute/new-azvmss) 创建虚拟机规模集。 以下示例创建名为 *myScaleSet* 且使用 *Windows Server 2016 Datacenter* 平台映像的规模集。 虚拟网络、公共 IP 地址和负载均衡器的 Azure 网络资源均会自动创建。 出现提示时，可以针对规模集中的 VM 实例设置自己的管理凭据：
+创建规模集之前，需使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
+
+```azurepowershell-interactive
+New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "EastUS"
+```
+
+现在，使用 [New-AzVmss](/powershell/module/az.compute/new-azvmss) 创建虚拟机规模集。 以下示例创建名为 *myScaleSet* 且使用 *Windows Server 2016 Datacenter* 平台映像的规模集。 虚拟网络、公共 IP 地址和负载均衡器的 Azure 网络资源均会自动创建。 出现提示时，可以针对规模集中的 VM 实例设置自己的管理凭据：
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -53,7 +52,7 @@ New-AzVmss `
 
 
 ## <a name="deploy-sample-application"></a>部署示例应用程序
-若要测试规模集，请安装一个基本的 Web 应用程序。 使用 Azure 自定义脚本扩展下载并运行一个脚本，以便在 VM 实例上安装 IIS。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 有关详细信息，请参阅[自定义脚本扩展概述](../virtual-machines/windows/extensions-customscript.md)。
+若要测试规模集，请安装一个基本的 Web 应用程序。 使用 Azure 自定义脚本扩展下载并运行一个脚本，以便在 VM 实例上安装 IIS。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 有关详细信息，请参阅[自定义脚本扩展概述](../virtual-machines/extensions/custom-script-windows.md)。
 
 使用自定义脚本扩展安装基本的 IIS Web 服务器。 应用可安装 IIS 的自定义脚本扩展，如下所示：
 

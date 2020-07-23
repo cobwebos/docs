@@ -1,33 +1,34 @@
 ---
 title: 使用 Azure 虚拟机进行高级自动缩放
-description: 使用包含多个规则和配置文件的 Resource Manager 与 VM 规模集，通过缩放操作发送电子邮件和调用 Webhook URL。
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
+description: 使用包含多个规则和配置文件的资源管理器与 VM 规模集，通过缩放操作发送电子邮件和调用 Webhook URL。
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
-ms.date: 02/22/2016
-ms.author: ancav
+ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.openlocfilehash: 6da653bc94c8b549282ab9124dba23b08771c5f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/25/2020
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 37245711008442acd0379a35b393ac88c3775482
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60787758"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505530"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>使用 VM 规模集的 Resource Manager 模板的高级自动缩放配置
 可以根据性能指标阈值，按循环计划或按特定日期扩展和缩减虚拟机规模集。 还可以为缩放操作配置电子邮件和 webhook 通知。 本文演示了在 VM 规模集上使用 Resource Manager 模板配置以上所有对象的示例。
 
 > [!NOTE]
-> 虽然本演练说明了 VM 规模集的步骤，但相同的信息适用于自动缩放[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)。有关基于简单性能指标（如 CPU）的 VM 规模集上的简单缩小/扩大设置，请参阅 [Linux](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-cli.md) 和 [Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) 文档
+> 虽然本演练说明了 VM 规模集的步骤，但相同的信息适用于自动缩放[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](../../api-management/api-management-key-concepts.md)。有关基于简单性能指标（如 CPU）的 VM 规模集上的简单横向缩减/扩展设置，请参阅 [Linux](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) 和 [Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) 文档
 >
 >
 
 ## <a name="walkthrough"></a>演练
-本演练使用 [Azure 资源浏览器](https://resources.azure.com/)来配置和更新规模集的自动缩放设置。 Azure 资源浏览器是通过 Resource Manager 模板轻松管理 Azure 资源的一种方式。 如果不熟悉 Azure 资源浏览器工具，请参阅[此简介](https://azure.microsoft.com/blog/azure-resource-explorer-a-new-tool-to-discover-the-azure-api/)。
+在本演练中，将使用 [Azure 资源浏览器](https://resources.azure.com/)来配置和更新规模集的自动缩放设置。 Azure 资源浏览器是通过 Resource Manager 模板轻松管理 Azure 资源的一种方式。 如果不熟悉 Azure 资源浏览器工具，请参阅[此简介](https://azure.microsoft.com/blog/azure-resource-explorer-a-new-tool-to-discover-the-azure-api/)。
 
 1. 使用基本自动缩放设置部署新的规模集。 本文会使用 Azure 快速入门库中的规模集，该库中具有含基本自动缩放模板的 Windows 规模集。 Linux 规模集的工作方式相同。
-2. 创建规模集后，从 Azure 资源管理器导航到规模集资源。 用户在 Microsoft.Insights 节点下会看到以下内容。
+2. 创建规模集后，从 Azure 资源管理器导航到规模集资源。 会在 Microsoft.Insights 节点下看到以下内容。
 
     ![Azure 资源管理器](media/autoscale-virtual-machine-scale-sets/azure_explorer_navigate.png)
 
@@ -35,7 +36,7 @@ ms.locfileid: "60787758"
 
 3. 现在，可以根据计划或特定要求添加更多配置文件和规则。 我们会创建一个具有三个配置文件的自动缩放设置。 若要了解自动缩放中的配置文件和规则，请查看[自动缩放最佳做法](autoscale-best-practices.md)。  
 
-    | 配置文件和规则 | 描述 |
+    | 配置文件和规则 | 说明 |
     |--- | --- |
     | **配置文件** |**基于性能/指标** |
     | 规则 |服务总线队列消息计数 > x |
@@ -60,7 +61,7 @@ ms.locfileid: "60787758"
 
     ![Autoscalewad，默认自动缩放设置](media/autoscale-virtual-machine-scale-sets/autoscalewad.png)
 
-6. 单击“编辑”。 **替换** 为以下配置：
+6. 单击“编辑”。 将自动缩放设置中的“配置文件”元素**替换**为以下配置：
 
     ![配置文件](media/autoscale-virtual-machine-scale-sets/profiles.png)
 
@@ -194,7 +195,7 @@ ms.locfileid: "60787758"
             }
           }
     ```
-    有关支持的字段及其值，请参阅[自动缩放 REST API 文档](https://msdn.microsoft.com/library/azure/dn931928.aspx)。 现在，自动缩放设置包含了之前说明的三个配置文件。
+    有关支持的字段及其值，请参阅[自动缩放 REST API 文档](/rest/api/monitor/autoscalesettings)。 现在，自动缩放设置包含了之前说明的三个配置文件。
 
 7. 最后，来看一下自动缩放“通知”部分。 自动缩放通知允许在成功触发扩大或缩小操作时执行三项操作。
    - 通知订阅的管理员和共同管理员
@@ -242,9 +243,9 @@ ms.locfileid: "60787758"
 
 [Azure 自动缩放的最佳实践](autoscale-best-practices.md)
 
-[使用 PowerShell 管理自动缩放](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
+[使用 PowerShell 管理自动缩放](../samples/powershell-samples.md#create-and-manage-autoscale-settings)
 
-[使用 CLI 管理自动缩放](cli-samples.md#autoscale)
+[使用 CLI 管理自动缩放](../samples/cli-samples.md#autoscale)
 
 [对自动缩放配置 Webhook 和电子邮件通知](autoscale-webhook-email.md)
 

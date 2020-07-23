@@ -1,35 +1,27 @@
 ---
-title: 创建区域化 Windows VM - Azure PowerShell | Microsoft Docs
+title: 使用 Azure PowerShell 创建分区的 Windows VM
 description: 使用 Azure PowerShell 在可用性区域中创建 Windows 虚拟机
-services: virtual-machines-windows
-documentationcenter: virtual-machines
-author: dlepow
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: cynthn
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/27/2018
-ms.author: danlep
+ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 3cd1026c7a90a4cdaa4fcf3e4c6e9e31ea4ab321
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 58f77eaba7cd0c29899a81352f5550becb0e4128
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64713922"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508587"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>使用 PowerShell 在可用性区域中创建 Windows 虚拟机
 
 本文详细介绍如何使用 Azure PowerShell 在 Azure 可用性区域中创建运行 Windows Server 2016 的 Azure 虚拟机。 [可用性区域](../../availability-zones/az-overview.md)是 Azure 区域中物理上独立的区域。 使用可用性区域可以在整个数据中心发生故障或服务中断（这种情况很少见）时保护应用和数据。
 
-若要使用可用性区域，请在[受支持的 Azure 区域](../../availability-zones/az-overview.md#services-support-by-region)中创建虚拟机。
+若要使用可用性区域，请在[受支持的 Azure 区域](../../availability-zones/az-region.md)中创建虚拟机。
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -42,7 +34,7 @@ Connect-AzAccount
 ## <a name="check-vm-sku-availability"></a>查看 VM SKU 可用性
 VM 大小或 SKU 的可用性可能因地区和区域而异。 可以按 Azure 区域列出可用的 VM SKU，以便规划可用性区域的使用。 此功能可确保选择适当的 VM 大小，并跨区域获取所需的复原能力。 有关不同 VM 类型和大小的详细信息，请参阅 [VM 大小概述](sizes.md)。
 
-可以使用 [Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) 命令来查看可用的 VM SKU。 以下示例列出了 *eastus2* 区域中可用的 VM SKU：
+可以使用 [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) 命令来查看可用的 VM SKU。 以下示例列出了 *eastus2* 区域中可用的 VM SKU：
 
 ```powershell
 Get-AzComputeResourceSku | where {$_.Locations.Contains("eastus2")};
@@ -69,7 +61,7 @@ virtualMachines   Standard_E4_v3   eastus2  {1, 2, 3}
 
 ## <a name="create-resource-group"></a>创建资源组
 
-使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。 本示例在 *eastus2* 区域中创建名为 *myResourceGroup* 的资源组。 
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。 本示例在 *eastus2* 区域中创建名为 *myResourceGroup* 的资源组。 
 
 ```powershell
 New-AzResourceGroup -Name myResourceGroup -Location EastUS2
@@ -90,11 +82,11 @@ $vnet = New-AzVirtualNetwork -ResourceGroupName myResourceGroup -Location eastus
 
 # Create a public IP address in an availability zone and specify a DNS name
 $pip = New-AzPublicIpAddress -ResourceGroupName myResourceGroup -Location eastus2 -Zone 2 `
-    -AllocationMethod Static -IdleTimeoutInMinutes 4 -Name "mypublicdns$(Get-Random)"
+    -AllocationMethod Static -IdleTimeoutInMinutes 4 -Name "mypublicdns$(Get-Random)" -Sku Standard
 ```
 
 ### <a name="create-a-network-security-group-and-a-network-security-group-rule"></a>创建网络安全组和网络安全组规则 
-网络安全组使用入站和出站规则保护虚拟机。 在本例中，将为端口 3389 创建一个入站规则，该规则允许传入的远程桌面连接。 我们还需要为端口 80 创建入站规则，以允许传入的 Web 流量。
+网络安全组使用入站和出站规则保护虚拟机。 在本例中，会为端口 3389 创建一个入站规则，该规则允许传入的远程桌面连接。 我们还需要为端口 80 创建入站规则，以允许传入的 Web 流量。
 
 ```powershell
 # Create an inbound network security group rule for port 3389
@@ -113,7 +105,7 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName myResourceGroup -Location e
 ```
 
 ### <a name="create-a-network-card-for-the-virtual-machine"></a>为虚拟机创建网卡 
-使用 [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) 为虚拟机创建网卡。 网卡将虚拟机连接到子网、网络安全组和公共 IP 地址。
+使用 [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) 为虚拟机创建网卡。 网卡将虚拟机连接到子网、网络安全组和公共 IP 地址。
 
 ```powershell
 # Create a virtual network card and associate with public IP address and NSG
@@ -136,7 +128,7 @@ $vmConfig = New-AzVMConfig -VMName myVM -VMSize Standard_DS1_v2 -Zone 2 | `
     -Skus 2016-Datacenter -Version latest | Add-AzVMNetworkInterface -Id $nic.Id
 ```
 
-使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 创建虚拟机。
+使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 创建虚拟机。
 
 ```powershell
 New-AzVM -ResourceGroupName myResourceGroup -Location eastus2 -VM $vmConfig
@@ -144,7 +136,7 @@ New-AzVM -ResourceGroupName myResourceGroup -Location eastus2 -VM $vmConfig
 
 ## <a name="confirm-zone-for-managed-disk"></a>为托管磁盘确认区域
 
-已在与 VM 相同的可用性区域中创建了 VM 的 IP 地址资源。 在相同的可用性区域中创建了 VM 的托管磁盘资源。 可以使用 [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk) 验证此结果：
+已在与 VM 相同的可用性区域中创建了 VM 的 IP 地址资源。 在相同的可用性区域中创建了 VM 的托管磁盘资源。 可以使用 [Get-AzDisk](/powershell/module/az.compute/get-azdisk) 验证此结果：
 
 ```powershell
 Get-AzDisk -ResourceGroupName myResourceGroup
@@ -178,4 +170,4 @@ Tags               : {}
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何在可用性区域中创建 VM。 详细了解 Azure VM 的[区域和可用性](regions-and-availability.md)。
+本文介绍了如何在可用性区域中创建 VM。 详细了解 Azure Vm 的[可用性](availability.md)。

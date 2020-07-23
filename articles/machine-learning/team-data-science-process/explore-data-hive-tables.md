@@ -3,20 +3,20 @@ title: 使用 Hive 查询在 Hive 表中浏览数据 - Team Data Science Process
 description: 使用用于在 HDInsight Hadoop 群集的 Hive 表中浏览数据的示例 Hive 脚本。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c9761ade493641b6445cf151424f9598ab25e384
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c0dfa06e2ece2ba4631c0d5681b066ab0134daba
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60303633"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085661"
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>使用 Hive 查询在 Hive 表中浏览数据
 
@@ -24,10 +24,10 @@ ms.locfileid: "60303633"
 
 此任务是[团队数据科学过程](overview.md)中的一个步骤。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 本文假设用户具备以下条件：
 
-* 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../../storage/common/storage-quickstart-create-account.md)
+* 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../../storage/common/storage-account-create.md)
 * 已预配具有 HDInsight 服务的自定义 Hadoop 群集。 如果需要说明，请参阅[为高级分析自定义 Azure HDInsight Hadoop 群集](customize-hadoop-cluster.md)。
 * 数据已上传到 Azure HDInsight Hadoop 群集中的 Hive 表。 如果没有，请按照[创建并将数据上传到 Hive 表](move-hive-tables.md)中的说明，先将数据上传到 Hive 表。
 * 已启用群集的远程访问权限。 如果需要说明，请参阅[访问 Hadoop 群集的头节点](customize-hadoop-cluster.md)。
@@ -43,30 +43,32 @@ ms.locfileid: "60303633"
     `SELECT <column_name>, count(*) from <databasename>.<tablename> group by <column_name>`
 6. 从连接的两个表中提取记录
    
-        SELECT
-            a.<common_columnname1> as <new_name1>,
-            a.<common_columnname2> as <new_name2>,
-            a.<a_column_name1> as <new_name3>,
-            a.<a_column_name2> as <new_name4>,
-            b.<b_column_name1> as <new_name5>,
-            b.<b_column_name2> as <new_name6>
-        FROM
-            (
-            SELECT <common_columnname1>,
-                <common_columnname2>,
-                <a_column_name1>,
-                <a_column_name2>,
-            FROM <databasename>.<tablename1>
-            ) a
-            join
-            (
-            SELECT <common_columnname1>,
-                <common_columnname2>,
-                <b_column_name1>,
-                <b_column_name2>,
-            FROM <databasename>.<tablename2>
-            ) b
-            ON a.<common_columnname1>=b.<common_columnname1> and a.<common_columnname2>=b.<common_columnname2>
+    ```hiveql
+    SELECT
+        a.<common_columnname1> as <new_name1>,
+        a.<common_columnname2> as <new_name2>,
+        a.<a_column_name1> as <new_name3>,
+        a.<a_column_name2> as <new_name4>,
+        b.<b_column_name1> as <new_name5>,
+        b.<b_column_name2> as <new_name6>
+    FROM
+        (
+        SELECT <common_columnname1>,
+            <common_columnname2>,
+            <a_column_name1>,
+            <a_column_name2>,
+        FROM <databasename>.<tablename1>
+        ) a
+        join
+        (
+        SELECT <common_columnname1>,
+            <common_columnname2>,
+            <b_column_name1>,
+            <b_column_name2>,
+        FROM <databasename>.<tablename2>
+        ) b
+        ON a.<common_columnname1>=b.<common_columnname1> and a.<common_columnname2>=b.<common_columnname2>
+    ```
 
 ## <a name="additional-query-scripts-for-taxi-trip-data-scenarios"></a>用于出租车行程数据方案的其他查询脚本
 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)中也提供了特定于 [NYC Taxi Trip Data](https://chriswhong.com/open-data/foil_nyc_taxi/)（纽约出租车行程数据）方案的查询示例。 这些查询已具有指定的数据架构，并准备好提交以运行。

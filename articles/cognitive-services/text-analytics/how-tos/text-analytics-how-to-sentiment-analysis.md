@@ -1,152 +1,294 @@
 ---
-title: 使用 Azure 认知服务中的文本分析进行情绪分析 | Microsoft Docs
-description: 了解如何使用文本分析 REST API 检测情绪。
+title: 文本分析 REST API 执行情绪分析
+titleSuffix: Azure Cognitive Services
+description: 本文介绍如何通过 Azure 认知服务文本分析 REST API 检测文本中的情绪。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 02/26/2019
+ms.date: 05/18/2020
 ms.author: aahi
-ms.openlocfilehash: 0c42e7f8b1fffb9cf998f4cee8d30405a8df74a4
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: acd8fae81baa7ad65b8d9c321c55a6311cbf4c72
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011293"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141239"
 ---
-# <a name="example-how-to-detect-sentiment-with-text-analytics"></a>示例：如何使用文本分析检测情绪
+# <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>如何：使用文本分析 API 检测情绪
 
-[情绪分析 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) 评估每个文档的文本输入并返回情绪分数，分数范围从 0（消极）到 1（积极）。
+文本分析 API 的情绪分析功能评估文本并返回每个句子的情绪分数和标签。 这有助于检测社交媒体、客户评价、论坛等内容中的积极和消极情绪。 API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析。
 
-此功能对于检测社交媒体、客户评论和论坛中的积极和消极情绪非常有用。 用户提供内容；服务提供模型和定型数据。
+发送情绪分析请求后，API 会在句子和文档级别返回情绪标签（如“消极”、“中性”和“积极”）和置信度分数。
 
-目前，情绪分析支持英语、德语、西班牙语和法语。 其他语言以预览版提供。 有关详细信息，请参阅[支持的语言](../text-analytics-supported-languages.md)。
+情绪分析支持多种语言，并在预览版中提供了更多的语言。 有关详细信息，请参阅[支持的语言](../text-analytics-supported-languages.md)。
 
-> [!TIP]
-> 文本分析还提供一个基于 Linux 的 Docker 容器映像，用于进行情绪分析，因此可以在靠近数据的位置[安装并运行文本分析容器](text-analytics-how-to-install-containers.md)。
+## <a name="sentiment-analysis-versions-and-features"></a>情绪分析版本和功能
 
-## <a name="concepts"></a>概念
+[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-文本分析使用机器学习分类算法生成介于 0 到 1 之间的情绪分数。 接近 1 的评分表示积极情绪，接近 0 的评分表示消极情绪。 该模型通过大量含有情绪关联的文本进行了预先定型。 目前，不支持提供用户自己的定型数据。 该模型在文本分析过程中使用了多种技术，包括文本处理、词性分析、词序和字词关联。 有关该算法的详细信息，请参阅[文本分析简介](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/)。
+| Feature                                   | 情绪分析 v3 | 情绪分析 v3.1（预览） |
+|-------------------------------------------|-----------------------|-----------------------------------|
+| 用于单个请求和批量请求的方法    | X                     | X                                 |
+| 情绪分数和标记             | X                     | X                                 |
+| 基于 Linux 的 [Docker 容器](text-analytics-how-to-install-containers.md) | X  |  |
+| 观点挖掘                            |                       | X                                 |
 
-对整个文档执行情绪分析，而不是提取文本中特定实体的情绪。 实际上，当文档只包含一个或两个句子而不是大段文本时，评分准确性有提高的趋势。 在客观性评估阶段，模型会确定整个文档是客观内容还是包含情感。 客观内容占主导的文档将不会进入情绪检测阶段，将获得 0.50 分数，不会进行进一步处理。 对于继续处理的文档，下一阶段会得出高于或低于 0.50 的分数，具体取决于文档中检测到的情绪程度。
+### <a name="sentiment-scoring-and-labeling"></a>情绪评分和标记
 
-## <a name="preparation"></a>准备工作
+情绪分析 v3 将情绪标签应用于文本，然后在句子和文档级别返回标签，每个标签都有一个置信度分数。 
 
-当为情绪分析提供较小的文本块时，会得到更高质量的结果。 这与关键短语提取相反，关键短语提取在处理较大的文本块时表现更好。 要从两个操作获取最佳结果，请考虑相应地重建输入。
+标签为 `positive`、`negative` 和 `neutral`。 在文档级别，还可返回 `mixed` 情绪标签。 文档的情绪由以下内容确定：
 
-必须拥有以下格式的 JSON 文档：ID、文本、语言
+| 句子情绪                                                                            | 返回的文档标签 |
+|-----------------------------------------------------------------------------------------------|-------------------------|
+| 文档中至少有一个 `positive` 句子。 剩下的句子为 `neutral`。 | `positive`              |
+| 文档中至少有一个 `negative` 句子。 剩下的句子为 `neutral`。 | `negative`              |
+| 文档中至少有一个 `negative` 句子和一个 `positive` 句子。    | `mixed`                 |
+| 文档中的所有句子为 `neutral`。                                                  | `neutral`               |
 
-每个文档的大小必须少于 5,120 个字符，每个集合最多可包含 1,000 个项目 (ID)。 集合在请求正文中提交。 下面是可能提交用于情绪分析的内容示例。
+置信度分数范围介于 1 到 0 之间。 分数越接近于 1 表示标签分类的置信度越高，分数越低表示置信度越低。 每个文档或句子的置信度分数合计为 1。
 
-```
-    {
-        "documents": [
-            {
-                "language": "en",
-                "id": "1",
-                "text": "We love this trail and make the trip every year. The views are breathtaking and well worth the hike!"
-            },
-            {
-                "language": "en",
-                "id": "2",
-                "text": "Poorly marked trails! I thought we were goners. Worst hike ever."
-            },
-            {
-                "language": "en",
-                "id": "3",
-                "text": "Everyone in my family liked the trail but thought it was too challenging for the less athletic among us. Not necessarily recommended for small children."
-            },
-            {
-                "language": "en",
-                "id": "4",
-                "text": "It was foggy so we missed the spectacular views, but the trail was ok. Worth checking out if you are in the area."
-            },                
-            {
-                "language": "en",
-                "id": "5",
-                "text": "This is my favorite trail. It has beautiful views and many places to stop and rest"
-            }
-        ]
-    }
-```
+### <a name="opinion-mining"></a>观点挖掘
 
-## <a name="step-1-structure-the-request"></a>步骤 1：构造请求
+观点挖掘是情绪分析的一项功能，从版本 3.1-preview.1 开始提供。 此功能在自然语言处理 (NLP) 中也称为基于方面的情绪分析，它更加精细地描述了对文本中某些方面（例如产品或服务的属性）的观点。
 
-有关请求定义的详细信息，请参阅[如何调用文本分析 API](text-analytics-how-to-call-api.md)。 为方便起见，特重申以下几点：
+例如，如果客户评论某个酒店，例如“房间很好，但员工不友好”，观点挖掘将查找文本中的各个方面及其相关的看法和情绪：
 
-+ 创建 POST 请求。 查看此请求的 API 文档：[情绪分析 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
+| 方面 | 观点    | 情绪 |
+|--------|------------|-----------|
+| 房间   | 很好      | 积极  |
+| staff  | 不友好 | 消极  |
 
-+ 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)设置 HTTP 终结点，以便进行情绪分析。 它必须包含 `/sentiment` 资源：`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
+若要在结果中获取观点挖掘，必须在情绪分析请求中包含 `opinionMining=true` 标志。 观点挖掘结果将包含在情绪分析响应中。
 
-+ 设置请求头以包含文本分析操作的访问密钥。 有关详细信息，请参阅[如何查找终结点和访问密钥](text-analytics-how-to-access-key.md)。
+## <a name="sending-a-rest-api-request"></a>发送 REST API 请求 
 
-+ 在请求正文中，提供为此分析准备的 JSON 文档集合。
+### <a name="preparation"></a>准备工作
 
-> [!Tip]
-> 使用 [Postman](text-analytics-how-to-call-api.md) 或打开[文档](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)中的 API 测试控制台来构造请求并将其 POST 到该服务。
+当为情绪分析提供较少的文本时，会得到更高质量的结果。 这与关键短语提取相反，关键短语提取在处理较大的文本块时表现更好。 要从两个操作获取最佳结果，请考虑相应地重建输入。
 
-## <a name="step-2-post-the-request"></a>步骤 2：发布请求
+必须拥有以下格式的 JSON 文档：ID、文本和语言
 
-在收到请求时执行分析。 该服务每分钟最多接受 100 个请求。 每个请求最大为 1 MB。
+每个文档的大小必须少于 5,120 个字符， 每个集合最多可包含 1,000 个项目 (ID)。 集合在请求正文中提交。
 
-记住，该服务是无状态服务。 帐户中未存储任何数据。 结果会立即在响应中返回。
+## <a name="structure-the-request"></a>构造请求
 
+创建 POST 请求。 可[使用 Postman](text-analytics-how-to-call-api.md) 或以下参考链接中的“API 测试控制台”来快速构建并发送请求。 
 
-## <a name="step-3-view-results"></a>步骤 3：查看结果
+#### <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
-情绪分析器将文本分类为积极为主或消极为主，并分配范围在 0 到 1 之间的分数。 接近 0.5 的值表示中性或不确定。 得分 0.5 表示中性。 如果无法分析字符串的情绪或不含情绪，则分数始终为 0.5。 例如，如果传入带有英语语言代码的西班牙语字符串，则分数为 0.5。
+[情绪分析 v3 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Sentiment)
 
-系统会立即返回输出。 可将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中，然后将其导入到允许对数据进行排序、搜索和操作的应用程序。
+#### <a name="version-31-preview1"></a>[版本 3.1-preview.1](#tab/version-3-1)
 
-下方示例展示了本文中文档集合的响应。
+[情绪分析 v3.1 参考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Sentiment)
 
-```
+---
+
+### <a name="request-endpoints"></a>请求终结点
+
+使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)设置 HTTPS 终结点，以便进行情绪分析。 必须包括要使用的版本的正确 URL。 例如：
+
+> [!NOTE]
+> 可以在 Azure 门户上找到文本分析资源的密钥和终结点。 它们将位于资源的“快速启动”页上的“资源管理”下。 
+
+#### <a name="version-30"></a>[版本 3.0](#tab/version-3)
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment`
+
+#### <a name="version-31-preview1"></a>[版本 3.1-preview.1](#tab/version-3-1)
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/sentiment`
+
+若要获取观点挖掘结果，必须包含 `opinionMining=true` 参数。 例如：
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/sentiment?opinionMining=true`
+
+默认情况下，此参数设置为 `false`。 
+
+---
+
+发送请求标头以包括文本分析 API 密钥。 在请求正文中，提供为此分析准备的 JSON 文档集合。
+
+### <a name="example-sentiment-analysis-request"></a>情绪分析请求示例 
+
+下面是可能提交用于情绪分析的内容示例。 两个版本的请求格式相同。
+    
+```json
 {
-    "documents": [
-        {
-            "score": 0.9999237060546875,
-            "id": "1"
-        },
-        {
-            "score": 0.0000540316104888916,
-            "id": "2"
-        },
-        {
-            "score": 0.99990355968475342,
-            "id": "3"
-        },
-        {
-            "score": 0.980544924736023,
-            "id": "4"
-        },
-        {
-            "score": 0.99996328353881836,
-            "id": "5"
-        }
-    ],
-    "errors": []
+  "documents": [
+    {
+      "language": "en",
+      "id": "1",
+      "text": "The restaurant had great food and our waiter was friendly."
+    }
+  ]
 }
 ```
 
-## <a name="summary"></a>摘要
+### <a name="post-the-request"></a>发布请求
 
-本文介绍了使用认知服务中的文本分析进行情绪分析的概念和工作流。 综上所述：
+在收到请求时执行分析。 有关每分钟和每秒可以发送的请求的大小和数量的信息，请参阅概述中的[数据限制](../overview.md#data-limits)部分。
 
-+ [情绪分析 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) 适用于选定的语言。
+文本分析 API 是无状态的。 不会在帐户中存储数据，结果会立即在响应中返回。
+
+
+### <a name="view-the-results"></a>查看结果
+
+情绪分析为整个文档以及其中的每个句子返回情绪标签和置信度分数。 分数越接近于 1 表示标签分类的置信度越高，分数越低表示置信度越低。 一个文档可以有多个句子，每个文档或句子的置信度分数合计为 1。
+
+系统会立即返回输出。 可将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中。 然后，将输出导入到可以用来对数据进行排序、搜索和操作的应用程序。 由于多语言和表情符号支持，响应可能包含文本偏移。 有关详细信息，请参阅[如何处理偏移](../concepts/text-offsets.md)。
+
+#### <a name="version-30"></a>[版本 3.0](#tab/version-3)
+
+### <a name="sentiment-analysis-v30-example-response"></a>情绪分析 v3.0 示例响应
+
+情绪分析 v3 的响应包含每个已分析句子和文档的情绪标签和分数。
+
+```json
+{
+    "documents": [
+        {
+            "id": "1",
+            "sentiment": "positive",
+            "confidenceScores": {
+                "positive": 1.0,
+                "neutral": 0.0,
+                "negative": 0.0
+            },
+            "sentences": [
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 1.0,
+                        "neutral": 0.0,
+                        "negative": 0.0
+                    },
+                    "offset": 0,
+                    "length": 58,
+                    "text": "The restaurant had great food and our waiter was friendly."
+                }
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2020-04-01"
+}
+```
+
+#### <a name="version-31-preview1"></a>[版本 3.1-preview.1](#tab/version-3-1)
+
+### <a name="sentiment-analysis-v31-example-response"></a>情绪分析 v3.1 示例响应
+
+除了“版本 3.0”选项卡中的响应对象之外，情绪分析 v3.1 还提供了观点挖掘。在下面的回复中，“餐厅的食物很好，并且服务员很友好”这句话包括两个方面：食物和服务员  。 每个方面的 `relations` 属性都包含一个 `ref` 值，其中包含对相关 `documents`、`sentences` 和 `opinions` 对象的 URI 引用。
+
+```json
+{
+    "documents": [
+        {
+            "id": "1",
+            "sentiment": "positive",
+            "confidenceScores": {
+                "positive": 1.0,
+                "neutral": 0.0,
+                "negative": 0.0
+            },
+            "sentences": [
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 1.0,
+                        "neutral": 0.0,
+                        "negative": 0.0
+                    },
+                    "offset": 0,
+                    "length": 58,
+                    "text": "The restaurant had great food and our waiter was friendly.",
+                    "aspects": [
+                        {
+                            "sentiment": "positive",
+                            "confidenceScores": {
+                                "positive": 1.0,
+                                "negative": 0.0
+                            },
+                            "offset": 25,
+                            "length": 4,
+                            "text": "food",
+                            "relations": [
+                                {
+                                    "relationType": "opinion",
+                                    "ref": "#/documents/0/sentences/0/opinions/0"
+                                }
+                            ]
+                        },
+                        {
+                            "sentiment": "positive",
+                            "confidenceScores": {
+                                "positive": 1.0,
+                                "negative": 0.0
+                            },
+                            "offset": 38,
+                            "length": 6,
+                            "text": "waiter",
+                            "relations": [
+                                {
+                                    "relationType": "opinion",
+                                    "ref": "#/documents/0/sentences/0/opinions/1"
+                                }
+                            ]
+                        }
+                    ],
+                    "opinions": [
+                        {
+                            "sentiment": "positive",
+                            "confidenceScores": {
+                                "positive": 1.0,
+                                "negative": 0.0
+                            },
+                            "offset": 19,
+                            "length": 5,
+                            "text": "great",
+                            "isNegated": false
+                        },
+                        {
+                            "sentiment": "positive",
+                            "confidenceScores": {
+                                "positive": 1.0,
+                                "negative": 0.0
+                            },
+                            "offset": 49,
+                            "length": 8,
+                            "text": "friendly",
+                            "isNegated": false
+                        }
+                    ]
+                }
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2020-04-01"
+}
+```
+
+---
+
+## <a name="summary"></a>总结
+
+本文介绍了使用文本分析 API 进行情绪分析的概念和工作流。 综上所述：
+
++ 情绪分析适用于选定的语言。
 + 请求正文中的 JSON 文档包括 ID、文本和语言代码。
-+ POST 请求的目标是 `/sentiment` 终结点，方法是使用对订阅有效的个性化[访问密钥和终结点](text-analytics-how-to-access-key.md)。
-+ 响应输出包含每个文档 ID 的情绪得分，可流式传输到接受 JSON 的任何应用，包括 Excel 和 Power BI（仅举几例）。
++ POST 请求的目标是 `/sentiment` 终结点，方法是使用对订阅有效的个性化[访问密钥和终结点](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)。
++ 响应输出包含每个文档 ID 的情绪得分，可流式传输到接受 JSON 的任何应用。 例如，Excel 和 Power BI。
 
-## <a name="see-also"></a>另请参阅 
+## <a name="see-also"></a>另请参阅
 
- [文本分析概述](../overview.md)  
- [常见问题解答 (FAQ)](../text-analytics-resource-faq.md)</br>
- [文本分析产品页](//go.microsoft.com/fwlink/?LinkID=759712) 
-
-## <a name="next-steps"></a>后续步骤
-
-> [!div class="nextstepaction"]
-> [提取关键短语](text-analytics-how-to-keyword-extraction.md)
+* [文本分析概述](../overview.md)
+* [使用文本分析客户端库](../quickstarts/text-analytics-sdk.md)
+* [新增功能](../whats-new.md)

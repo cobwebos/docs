@@ -1,22 +1,18 @@
 ---
-title: 使用 .NET Core 和 VS Code 在云中创建 Kubernetes 开发空间
-titleSuffix: Azure Dev Spaces
+title: 创建 Kubernetes 开发空间：Visual Studio Code 和 .NET Core
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 09/26/2018
 ms.topic: tutorial
-description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
+description: 本教程演示如何使用 Azure Dev Spaces 和 Visual Studio Code 在 Azure Kubernetes 服务上调试并快速迭代 .NET Core 应用程序
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: 323308b52874064658f65cf34abe18cc5ef208ff
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: d4078113f93159ef981a78a9917ed65bd03a304b
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393445"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80240558"
 ---
-# <a name="get-started-on-azure-dev-spaces-with-net-core"></a>通过 .NET Core 开始使用 Azure Dev Spaces
+# <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>创建 Kubernetes 开发空间：将 Visual Studio Code 和 .NET Core 与 Azure Dev Spaces 结合使用
 
 本指南介绍如何：
 
@@ -33,7 +29,7 @@ Azure Dev Spaces 需要进行最基本的本地计算机设置。 开发空间�
 ### <a name="sign-in-to-azure-cli"></a>登录 Azure CLI
 登录 Azure。 在终端窗口中键入以下命令：
 
-```cmd
+```azurecli
 az login
 ```
 
@@ -43,13 +39,14 @@ az login
 #### <a name="if-you-have-multiple-azure-subscriptions"></a>如果有多个 Azure 订阅...
 通过运行以下命令可以查看订阅： 
 
-```cmd
-az account list
+```azurecli
+az account list --output table
 ```
-在 JSON 输出中找到具有 `isDefault: true` 的订阅。
+
+找到 *IsDefault* 为 *True* 的订阅。
 如果这不是你想要使用的订阅，可以更改默认订阅：
 
-```cmd
+```azurecli
 az account set --subscription <subscription ID>
 ```
 
@@ -57,14 +54,14 @@ az account set --subscription <subscription ID>
 
 在命令提示符处，在[支持 Azure Dev Spaces 的区域][supported-regions]中创建资源组。
 
-```cmd
+```azurecli
 az group create --name MyResourceGroup --location <region>
 ```
 
 使用以下命令创建 Kubernetes 群集：
 
-```cmd
-az aks create -g MyResourceGroup -n MyAKS --location <region> --disable-rbac --generate-ssh-keys
+```azurecli
+az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
 ```
 
 创建群集需要几分钟时间。
@@ -73,7 +70,7 @@ az aks create -g MyResourceGroup -n MyAKS --location <region> --disable-rbac --g
 
 使用包含 AKS 群集的资源组和 AKS 群集名称输入以下 Azure CLI 命令。 此命令将群集配置为支持 Azure Dev Spaces。
 
-   ```cmd
+   ```azurecli
    az aks use-dev-spaces -g MyResourceGroup -n MyAKS
    ```
    
@@ -84,7 +81,7 @@ az aks create -g MyResourceGroup -n MyAKS --location <region> --disable-rbac --g
 丰富的功能（如 Kubernetes调试）可供使用 VS Code 的 .NET Core 和 Node.js 开发人员使用。
 
 1. 如果尚未安装 [VS Code](https://code.visualstudio.com/Download)，请安装它。
-1. 下载并安装 [VS Azure Dev Spaces 扩展](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)。 在扩展的“市场”页上单击“安装”一次，然后再在 VS Code 中单击一次。 
+1. 下载并安装 [VS Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) 和 [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) 扩展。 对于每个扩展，在扩展的“市场”页上单击“安装”一次，然后再在 VS Code 中单击一次。
 
 ## <a name="create-a-web-app-running-in-a-container"></a>创建在容器中运行的 Web 应用
 
@@ -101,12 +98,15 @@ az aks create -g MyResourceGroup -n MyAKS --location <region> --disable-rbac --g
 1. 运行此命令（确保 **webfrontend** 是当前文件夹）：
 
     ```cmd
-    azds prep --public
+    azds prep --enable-ingress
     ```
 
 Azure CLI 的 `azds prep` 命令使用默认设置生成 Docker 和 Kubernetes 资产：
 * `./Dockerfile` 描述应用的容器映像，以及如何在容器内生成和运行源代码。
 * `./charts/webfrontend` 下面的 [Helm 图表](https://docs.helm.sh)描述如何将容器部署到 Kubernetes。
+
+> [!TIP]
+> Azure Dev Spaces 使用项目的 [Dockerfile 和 Helm 图表](how-dev-spaces-works-prep.md#prepare-your-code)来生成和运行代码，但是如果要更改项目的生成和运行方式，则可以修改这些文件。
 
 暂无必要了解这些文件的全部内容。 但是，值得指出的是，**相同的 Kubernetes 和 Docker 配置即代码资产可以从开发一直用到生产，从而在不同的环境中提供更好的一致性。**
  
@@ -130,22 +130,46 @@ azds up
 > 第一次运行 `up` 命令时，这些步骤需要较长时间，但后续运行应该会更快。
 
 ### <a name="test-the-web-app"></a>测试 Web 应用
-扫描控制台输出以获取有关由 `up` 命令创建的公共 URL 的信息。 它的形式如下： 
+扫描控制台输出以查找“应用程序已启动”  消息，确认 `up` 命令已完成：
 
 ```
-(pending registration) Service 'webfrontend' port 'http' will be available at <url>
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
+Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890abcdef1234.eus.azds.io/
+Microsoft (R) Build Engine version 15.9.20+g88f5fadfbe for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  webfrontend -> /src/bin/Debug/netcoreapp2.2/webfrontend.dll
+  webfrontend -> /src/bin/Debug/netcoreapp2.2/webfrontend.Views.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:00.94
+[...]
+webfrontend-5798f9dc44-99fsd: Now listening on: http://[::]:80
+webfrontend-5798f9dc44-99fsd: Application started. Press Ctrl+C to shut down.
 ```
 
-在浏览器窗口中打开此 URL，你应看到 Web 应用加载。 在容器执行时，`stdout` 和 `stderr` 输出将流式传输到终端窗口。
+在 `up` 命令的输出中标识服务的公共 URL。 它以 `.azds.io` 结尾。 在上面的示例中，公共 URL 为 `http://webfrontend.1234567890abcdef1234.eus.azds.io/`。
+
+若要查看 Web 应用，请在浏览器中打开公共 URL。 另请注意，当你与 Web 应用交互时，`stdout` 和 `stderr` 输出将流式传输到 azds trace  终端窗口。 你还将看到 HTTP 请求通过系统时的跟踪信息。 这使你可以更轻松地在开发期间跟踪复杂的多服务调用。 Dev Spaces 添加的检测提供了此请求跟踪。
+
+![azds trace 终端窗口](media/get-started-netcore/azds-trace.png)
+
 
 > [!Note]
-> 首次运行时，公共 DNS 可能要花费几分钟时间才能准备就绪。 如果公共 URL 无法解析，可以使用控制台输出中显示的替代 `http://localhost:<portnumber>` URL。 如果使用该 localhost URL，则容器看起来是在本地运行，但实际上是在 AKS 中运行。 为方便操作以及便于与本地计算机中的服务交互，Azure Dev Spaces 将与 Azure 中运行的容器建立临时的 SSH 隧道。 你可以返回，稍后在 DNS 记录准备就绪时再尝试公共 URL。
+> 除了公共 URL 之外，还可以使用控制台输出中显示的备用 `http://localhost:<portnumber>` URL。 如果使用该 localhost URL，则容器看起来是在本地运行，但实际上是在 AKS 中运行。 Azure Dev Spaces 使用 Kubernetes *端口转发*功能将 localhost 端口映射到 AKS 中运行的容器。 这有助于从本地计算机与服务进行交互。
 
 ### <a name="update-a-content-file"></a>更新内容文件
 Azure Dev Spaces 不仅仅是用来让代码在 Kubernetes 中运行，它还可以用来快速地以迭代方式查看所做的代码更改在云的 Kubernetes 环境中的效果。
 
-1. 找到 `./Views/Home/Index.cshtml` 文件，对 HTML 进行编辑。 例如，将第 70 行的 `<h2>Application uses</h2>` 更改为类似 `<h2>Hello k8s in Azure!</h2>` 的内容
+1. 找到 `./Views/Home/Index.cshtml` 文件，对 HTML 进行编辑。 例如，将[读取 `<h2>Application uses</h2>` 的第 73 行](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Views/Home/Index.cshtml#L73)更改为如下内容： 
+
+    ```html
+    <h2>Hello k8s in Azure!</h2>
+    ```
+
 1. 保存文件。 稍后会在终端窗口中看到一条消息，指出正在运行的容器中的文件已更新。
 1. 转到浏览器并刷新页面。 此时会看到网页显示更新的 HTML。
 
@@ -160,7 +184,6 @@ Azure Dev Spaces 不仅仅是用来让代码在 Kubernetes 中运行，它还可
 1. 在终端窗口中运行 `azds up`。 
 
 此命令重新生成容器映像并重新部署 Helm 图表。 若要查看代码更改在运行的应用程序中的效果，请转到 Web 应用中的“关于”菜单。
-
 
 不过，还有一种更快的开发代码的方法，该方法在下一部分介绍。  
 
@@ -199,11 +222,11 @@ Azure Dev Spaces 不仅仅是用来让代码在 Kubernetes 中运行，它还可
 与 `up` 命令一样，代码会同步到开发空间，而容器则会在生成后部署到 Kubernetes。 这次调试程序自然会附加到远程容器。
 
 > [!Tip]
-> VS Code 状态栏会显示一个可点击的 URL。
+> VS Code 状态栏将变为橙色，指示已附加调试器。 它还会显示一个可点击的 URL，你可以使用它打开你的站点。
 
 ![](media/common/vscode-status-bar-url.png)
 
-在服务器端的代码文件中设置一个断点，例如，在 `Controllers/HomeController.cs` 源文件的 `Index()` 函数中设置断点。 刷新浏览器页面即可命中断点。
+在服务器端的代码文件中设置一个断点，例如，在 `Controllers/HomeController.cs` 源文件的 `About()` 函数中设置断点。 刷新浏览器页面即可命中断点。
 
 可以不受限制地访问调试信息（例如调用堆栈、局部变量、异常信息等），就像在本地执行代码一样。
 
@@ -218,9 +241,9 @@ public IActionResult About()
 }
 ```
 
-保存文件，然后在“调试操作”窗格中单击“刷新”按钮。   
+保存文件，然后在“调试操作”窗格中单击“重启”按钮。   
 
-![](media/get-started-netcore/debug-action-refresh.png)
+![](media/common/debug-action-refresh.png)
 
 Azure Dev Spaces 不会在每次进行代码编辑时都重新生成和重新部署新的容器映像（这通常需要很长时间），而是在现有的容器中以增量方式重新编译代码，加快编辑/调试循环速度。
 
@@ -234,4 +257,4 @@ Azure Dev Spaces 不会在每次进行代码编辑时都重新生成和重新部
 > [了解多服务开发](multi-service-netcore.md)
 
 
-[supported-regions]: about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

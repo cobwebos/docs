@@ -1,30 +1,30 @@
 ---
 title: Azure Cosmos DB 简介
 description: 了解 Azure Cosmos DB。 此全球分布式多模型数据库是为了实现低延迟、弹性可伸缩性和高可用性而构建的，提供对 NoSQL 数据的本机支持。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 05/20/2019
-ms.author: rimman
-ms.openlocfilehash: a338cec213b82d54b08f2a11a969ddecf72ea7e5
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.date: 10/23/2019
+ms.openlocfilehash: bfac783fcb8ce88977fc8d97f821a7350f57aab8
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953906"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118570"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>欢迎使用 Azure Cosmos DB
 
 如今的应用程序需要具备高响应能力并始终联机。 若要实现低延迟和高可用性，需要在靠近用户的数据中心部署这些应用程序的实例。 应用程序需要实时对高峰时段使用情况的巨大变化做出响应，存储不断增加的数据量，并在毫秒内将这些数据提供给用户。
 
-Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 只需单击一个按钮，即可通过 Cosmos DB 跨任意数量的全球 Azure 区域弹性且独立地缩放吞吐量和存储。 可以弹性缩放吞吐量和存储，并使用你喜欢的 API 对 SQL、MongoDB、Cassandra、表或 Gremlin 中的数据实现低至个位数毫秒级的快速访问。 Cosmos DB 为吞吐量、延迟、可用性和一致性保证提供综合[服务级别协议](https://aka.ms/acdbsla) (SLA)，这是其他数据库服务无法提供的。
+Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 只需单击一个按钮，即可通过 Cosmos DB 跨任意数量的全球 Azure 区域弹性且独立地缩放吞吐量和存储。 你可以弹性缩放吞吐量和存储，并通过以下常用 API 利用个位数毫秒级的快速数据访问：SQL、MongoDB、Cassandra、表或 Gremlin。 Cosmos DB 为吞吐量、延迟、可用性和一致性保证提供综合[服务级别协议](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) (SLA)，这是其他数据库服务无法提供的。
 
-无需 Azure 订阅即可[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，也无需缴纳费用或承诺金。
+可以在没有 Azure 订阅的情况下[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)（无需支付费用，也无需承诺），或者使用 [Azure Cosmos DB 免费层](optimize-dev-test.md#azure-cosmos-db-free-tier)获取一个每秒的前 400 RU 免费且 5 GB 存储免费的帐户。
 
 > [!div class="nextstepaction"]
 > [免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)
 
-![Azure Cosmos DB 是 Microsoft 的全球分布式数据库服务，可以弹性扩展，已保证低延迟，有五个一致性模型，并提供全面 SLA 的保证](./media/introduction/azure-cosmos-db.png)
+:::image type="content" source="./media/introduction/azure-cosmos-db.png" alt-text="Azure Cosmos DB 是 Microsoft 的全球分布式数据库服务，可以弹性扩展，已保证低延迟，有五个一致性模型，并提供全面 SLA 的保证" border="false":::
 
 ## <a name="key-benefits"></a>主要优势
 
@@ -32,7 +32,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 凭借 Cosmos DB，你可以在全球范围内生成具有高响应性和高可用性的应用程序。 无论用户身处何处，Cosmos DB 均可以透明方式复制数据，因此用户可以与离他们最近的数据副本进行交互。
 
-凭借 Cosmos DB，还可以随时向 Cosmos 帐户添加或删除任何 Azure 区域，只需单击一个按钮即可。 Cosmos DB 将无缝地将数据复制到与 Cosmos 帐户相关联的所有区域，同时，得益于该服务的多导功能，应用程序将继续保持高可用性  。 有关详细信息，请参阅[全局分发](distribute-data-globally.md)一文。
+凭借 Cosmos DB，还可以随时向 Cosmos 帐户添加或删除任何 Azure 区域，只需单击一个按钮即可。 Cosmos DB 将无缝地将数据复制到与 Cosmos 帐户相关联的所有区域，同时，得益于该服务的多导功能，应用程序将继续保持高可用性。 有关详细信息，请参阅[全局分发](distribute-data-globally.md)一文。
 
 ### <a name="always-on"></a>AlwaysOn
 
@@ -44,15 +44,15 @@ Cosmos DB 采用透明的水平分区和多主数据库复制设计，在全球�
 
 ### <a name="guaranteed-low-latency-at-99th-percentile-worldwide"></a>保证第 99 个百分位为低延迟（全球范围内）
 
-使用 Cosmos DB，可以生成响应迅速、具全球规模的应用程序。 凭借其新颖的多主数据库复制协议和免闩锁且[优化了写入的数据库引擎](index-policy.md)，Cosmos DB 可保证全球任意位置第 99 个百分位的读取（已编入索引）和写入延迟均低于 10 毫秒。 此功能可以为高响应能力的应用持续引入数据，并提供快速查询。
+使用 Cosmos DB，可以生成响应迅速、具全球规模的应用程序。 凭借其新颖的多主数据库复制协议、免闩锁及[优化了写入的数据库引擎，](index-policy.md)，Cosmos DB 可保证全球任意位置第 99 个百分位的读取（已编入索引）和写入延迟均低于 10 毫秒。 此功能可以为高响应能力的应用持续引入数据，并提供快速查询。
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>精确定义的多个一致性选择
 
-在 Cosmos DB 中构建全球分布式应用程序时，不再需要[在一致性、可用性、延迟和吞吐量之间进行极端的权衡](consistency-levels-tradeoffs.md)。 Cosmos DB 的多主数据库复制协议经过精心设计，为直观的编程模型提供[五个明确定义的一致性选择](consistency-levels.md) -  强、有限过期、会话、一致前缀和最终，该编程模型针对全球分布式应用程序具有低延迟和高可用性      。
+在 Cosmos DB 中构建全球分布式应用程序时，不再需要[在一致性、可用性、延迟和吞吐量之间进行极端的权衡](consistency-levels-tradeoffs.md)。 Cosmos DB 的多主数据库复制协议经过精心设计，为一个直观的编程模型（其低延迟和高可用性适用于全球分布式应用程序）提供[五个明确定义的一致性选择](consistency-levels.md) - “强”、“有限过期”、“会话”、“一致前缀”和“最终”    。
 
 ### <a name="no-schema-or-index-management"></a>无需架构或索引管理
 
-对于全局分布的应用来说，让数据库架构和索引与应用程序架构保持同步尤其不便。 借助 Cosmos DB，则无需处理架构或索引管理。 数据库引擎完全与架构无关。  由于不需要架构和索引管理，因此迁移架构时也不必担心应用程序故障时间。 Cosmos DB [自动为所有数据编制索引](index-policy.md)，并可快速提供查询服务。
+对于全球分布式应用来说，让数据库架构和索引与应用程序架构保持同步尤其不便。 借助 Cosmos DB，则无需处理架构或索引管理。 数据库引擎完全与架构无关。  由于不需要架构和索引管理，因此迁移架构时也不必担心应用程序停用时间。 Cosmos DB [自动为所有数据编制索引](index-policy.md)，并可快速提供查询服务。
 
 ### <a name="battle-tested-database-service"></a>久经考验的数据库服务
 
@@ -60,7 +60,7 @@ Cosmos DB 是 Azure 中的一项基本服务。 近十年来，Microsoft 的许�
 
 ### <a name="ubiquitous-regional-presence"></a>无处不在、分布广泛
 
-Cosmos DB 已面向全球所有 Azure 区域推出，包括公有云中的区域（超过 54 个）、[中国区 Azure 世纪互联](https://www.azure.cn/en-us/)、Azure 德国、Azure 政府以及适用于美国国防部 (DoD) 的 Azure 政府。 请参阅 [Cosmos DB 的区域性存在](regional-presence.md)。
+Cosmos DB 已面向全球所有 Azure 区域推出，包括公有云中的区域（超过 54 个）、[中国区 Azure 世纪互联](https://www.azure.cn/en-us/)、Azure 德国、Azure 政府以及适用于美国国防部 (DoD) 的 Azure 政府。 请参阅 [Cosmos DB 在各区域的可用性](regional-presence.md)。
 
 ### <a name="secure-by-default-and-enterprise-ready"></a>默认保护和企业就绪
 
@@ -74,11 +74,11 @@ Cosmos DB 已通过[各种符合性标准](compliance.md)认证。 此外，Cosm
 
 Cosmos DB 是第一个也是唯一一个提供[业界领先复合型 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) 的服务，实现了 99.999% 高可用性、第 99 个百分位的读写延迟、可靠吞吐量和一致性。
 
-### <a name="globally-distributed-operational-analytics-with-spark"></a>使用 Spark 的全球分布式运营分析
+### <a name="globally-distributed-operational-analytics-and-ai-with-natively-built-in-apache-spark"></a>具有本机内置 Apache Spark 的全球分布式运营分析和 AI
 
 可以在 Cosmos DB 中存储的数据上直接运行 [Spark](spark-connector.md)。 凭借该功能，你可以在全球范围内执行低延迟的操作分析，而不会影响直接针对 Cosmos DB 进行操作的事务工作负载。 有关详细信息，请参阅[全球分布式运营分析](lambda-architecture.md)。
 
-### <a name="develop-applications-on-cosmos-db-using-popular-nosql-apis"></a>使用常用的 NoSQL API 在 Cosmos DB 上开发应用程序
+### <a name="develop-applications-on-cosmos-db-using-popular-open-source-software-oss-apis"></a>使用常用的开放源代码软件 (OSS) API 在 Cosmos DB 上开发应用程序
 
 Cosmos DB 提供多种 API 来处理存储在 Cosmos 数据库中的数据。 默认情况下，[可以使用 SQL](how-to-sql-query.md)（核心 API）来查询 Cosmos 数据库。 Cosmos DB 还实现用于 [Cassandra](cassandra-introduction.md)、[MongoDB](mongodb-introduction.md)、[Gremlin](graph-introduction.md) 和 [Azure 表存储](table-introduction.md)的 API。 可以将常用 NoSQL（例如，MongoDB、Cassandra、Gremlin）的客户端驱动程序（和工具）直接指向 Cosmos 数据库。 Cosmos DB 支持常用 NoSQL API 的网络协议，因此可用其实现以下目标：
 

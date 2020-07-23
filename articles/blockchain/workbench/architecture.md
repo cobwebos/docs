@@ -1,60 +1,54 @@
 ---
 title: Azure Blockchain Workbench 体系结构
-description: Azure Blockchain Workbench 体系结构及其组件的概述。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/20/2019
-ms.topic: article
-ms.service: azure-blockchain
+description: Azure 区块链工作台预览体系结构及其组件概述。
+ms.date: 09/05/2019
+ms.topic: conceptual
 ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: 989c5c1cd9474999400177293d896b96c79c32b7
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: ef56d0fdac74bf447fce01e772abed8a2b07c27b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955236"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253420"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench 体系结构
 
-Azure Blockchain Workbench 使用多个 Azure 组件提供解决方案，从而简化区块链应用程序的开发。 可以使用 Azure 市场中的解决方案模板部署 Blockchain Workbench。 该模板可用于选择要部署的模块和组件，包括区块链堆栈、客户端应用程序类型，以及对 IoT 集成的支持。 部署后，Blockchain Workbench 会提供对 Web 应用、iOS 应用和 Android 应用的访问权限。
+Azure 区块链工作台预览版通过使用几个 Azure 组件提供解决方案来简化区块链应用程序的开发。 可以使用 Azure 市场中的解决方案模板部署 Blockchain Workbench。 该模板可用于选择要部署的模块和组件，包括区块链堆栈、客户端应用程序类型，以及对 IoT 集成的支持。 部署后，Blockchain Workbench 会提供对 Web 应用、iOS 应用和 Android 应用的访问权限。
 
-![Blockchain Workbench 体系结构](./media/architecture/architecture.png)
+![区块链工作台体系结构](./media/architecture/architecture.png)
 
 ## <a name="identity-and-authentication"></a>标识和身份验证
 
-使用 Blockchain Workbench，联盟可以通过 Azure Active Directory (Azure AD) 联合其企业标识。 Workbench 使用 Azure AD 中存储的企业标识为链中标识生成新用户帐户。 标识映射简化了客户端 API 和应用程序的身份验证登录，并使用组织的身份验证策略。 Workbench 还提供相应的功能用于将企业标识关联到给定智能合同中的特定角色。 此外，Workbench 还提供一个机制用于标识这些角色可以执行的操作，以及何时可以执行这些操作。
+使用 Blockchain Workbench，联盟可以通过 Azure Active Directory (Azure AD) 联合其企业标识。 Workbench 使用 Azure AD 中存储的企业标识为链中标识生成新用户帐户。 标识映射简化了客户端 API 和应用程序的身份验证登录，并使用组织的身份验证策略。 Workbench 还提供相应的功能用于将企业标识关联到给定智能合约中的特定角色。 此外，Workbench 还提供一个机制用于标识这些角色可以执行的操作，以及何时可以执行这些操作。
 
 部署 Blockchain Workbench 后，用户可以通过客户端应用程序、基于 REST 的客户端 API 或消息传递 API 来与 Blockchain Workbench 交互。 在任何情况下，都必须通过 Azure Active Directory (Azure AD) 或特定于设备的凭据对交互进行身份验证。
 
 用户通过向参与者的电子邮件地址发送电子邮件邀请，将其自己的标识联合到联盟 Azure AD。 用户登录时，系统会使用名称、密码和策略对这些用户进行身份验证。 例如，使用其组织的双重身份验证。
 
-Azure AD 用于管理有权访问 Blockchain Workbench 的所有用户。 连接到智能合同的每台设备也与 Azure AD 相关联。
+Azure AD 用于管理有权访问 Blockchain Workbench 的所有用户。 连接到智能合约的每台设备也与 Azure AD 相关联。
 
 Azure AD 还用于将用户分配到特殊的管理员组。 与管理员组关联的用户将被授予对 Blockchain Workbench 中权限和操作的访问权限，包括部署合同以及向用户授予访问合同的权限。 此组外部的用户无权访问管理员操作。
 
 ## <a name="client-applications"></a>客户端应用程序
 
-Workbench 为可用于验证、测试和查看区块链应用程序的 Web 和移动应用（iOS、Android）提供自动生成的客户端应用程序。 应用程序接口根据智能合同元数据动态生成，并可适应任何用例。 客户端应用程序向 Blockchain Workbench 生成的完整区块链应用程序提供面向用户的前端。 客户端应用程序通过 Azure Active Directory (Azure AD) 对用户进行身份验证，然后提供根据智能合同业务上下文定制的用户体验。 用户体验可让获得授权的个人创建新的智能合同实例，然后提供所需的功能用于在智能合同表示的业务流程中的相应阶段执行特定类型的事务。
+Workbench 为可用于验证、测试和查看区块链应用程序的 Web 和移动应用（iOS、Android）提供自动生成的客户端应用程序。 应用程序接口根据智能合约元数据动态生成，并可适应任何用例。 客户端应用程序向 Blockchain Workbench 生成的完整区块链应用程序提供面向用户的前端。 客户端应用程序通过 Azure Active Directory (Azure AD) 对用户进行身份验证，然后提供根据智能合约业务上下文定制的用户体验。 用户体验可让获得授权的个人创建新的智能合约实例，然后提供所需的功能用于在智能合约表示的业务流程中的相应阶段执行特定类型的事务。
 
 在 Web 应用程序中，获得授权的用户可以访问管理员控制台。 控制台可供 Azure AD 管理员组中的用户使用，并提供以下功能的访问权限：
 
-* 为常见方案（例如资产转让方案）部署 Microsoft 提供的 智能合同。
+* 为常见方案（例如资产转让方案）部署 Microsoft 提供的 智能合约。
 * 上传并部署用户自己的智能合约。
 * 在特定角色的上下文中为用户分配智能合约的访问权限。
 
-有关详细信息，请参阅 [GitHub 上的 Azure Blockchain Workbench 示例客户端应用程序](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-development-kit/connect/mobile/blockchain-workbench/workbench-client)。
+有关详细信息，请参阅 [GitHub 上的 Azure Blockchain Workbench 示例客户端应用程序](https://github.com/Azure-Samples/blockchain-devkit/tree/master/connect/mobile)。
 
 ## <a name="gateway-service-api"></a>网关服务 API
 
-Blockchain Workbench 包括基于 REST 的网关服务 API。 写入区块链时，该 API 会生成消息并将其传送到事件中转站。 当 API 请求数据时，会向链外 SQL 数据库发送查询。 SQL 数据库包含链中数据和元数据的副本，这些数据提供受支持智能合同的上下文和配置信息。 查询以合同元数据指定的格式从链外副本返回所需的数据。
+Blockchain Workbench 包括基于 REST 的网关服务 API。 写入区块链时，该 API 会生成消息并将其传送到事件中转站。 当 API 请求数据时，查询将发送到离链数据库。 数据库包含链上数据和元数据的副本，该副本提供支持的智能协定的上下文和配置信息。 查询以合约元数据指定的格式从链外副本返回所需的数据。
 
 开发人员可以访问网关服务 API 来生成或集成区块链解决方案，而无需依赖于 Blockchain Workbench 客户端应用。
 
 > [!NOTE]
-> 若要启用 API 的身份验证访问，必须在 Azure Active Directory 中注册两个客户端应用程序。 Azure Active Directory 要求对每种应用程序类型（本机和 Web）使用不同的应用程序注册。 
+> 若要启用 API 的身份验证访问，必须在 Azure Active Directory 中注册两个客户端应用程序。 Azure Active Directory 要求对每种应用程序类型（本机和 Web）使用不同的应用程序注册。
 
 ## <a name="message-broker-for-incoming-messages"></a>传入消息的消息中转站
 
@@ -76,7 +70,7 @@ Blockchain Workbench 自动部署两种类型的事件使用者。 一种使用�
 
 ### <a name="database-consumer"></a>数据库使用者
 
-数据库使用者从服务总线提取消息，并将数据推送到附加的数据库，例如 SQL 数据库。
+数据库使用者从服务总线接收消息，并将数据推送到附加的数据库，例如 Azure SQL 数据库中的数据库。
 
 ### <a name="storage-consumer"></a>存储使用者
 
@@ -84,7 +78,7 @@ Blockchain Workbench 自动部署两种类型的事件使用者。 一种使用�
 
 ## <a name="transaction-builder-and-signer"></a>事务生成器和签名器
 
-如果需要将入站消息中转站中的消息写入区块链，DLT 使用者会处理此操作。 DLT 使用者是一个服务，它会检索包含需要执行的事务的元数据的消息，然后将信息发送到事务生成器和签名器。 事务生成器和签名器根据数据和所需的区块链目标汇编区块链事务。 汇编后，事务将被签名。 私钥存储在 Azure Key Vault 中。
+如果需要将入站消息中转站中的消息写入区块链，DLT 使用者会处理此操作。 DLT 使用者是一个服务，它会检索包含需要执行的事务的元数据的消息，然后将信息发送到事务生成器和签名器。** 事务生成器和签名器根据数据和所需的区块链目标汇编区块链事务。** 汇编后，事务将被签名。 私钥存储在 Azure Key Vault 中。
 
  Blockchain Workbench 从 Key Vault 检索相应的私钥，并对 Key Vault 外部的事务签名。 签名后，事务将发送到事务路由器和账本。
 
@@ -95,13 +89,13 @@ Blockchain Workbench 自动部署两种类型的事件使用者。 一种使用�
 ## <a name="dlt-watcher"></a>DLT 观察程序
 
 分布式账本技术 (DLT) 观察程序监视已附加到 Blockchain Workbench 的区块链上发生的事件。
-事件反映个人和系统相关的信息。 例如，新合同实例的创建、事务执行和状态更改。 系统会捕获事件并将其发送到出站消息中转站，使其可供下游使用者使用。
+事件反映个人和系统相关的信息。 例如，新合约实例的创建、事务执行和状态更改。 系统会捕获事件并将其发送到出站消息中转站，使其可供下游使用者使用。
 
-例如，SQL 使用者会监视事件、使用事件，并在 SQL 数据库中填充包含的值。 使用复制可在链外存储中重新创建链中数据的副本。
+例如，SQL 使用者监视事件，使用事件，并用包含的值填充数据库。 使用复制可在链外存储中重新创建链中数据的副本。
 
-## <a name="azure-sql-database"></a>Azure SQL 数据库
+## <a name="azure-sql-database"></a>Azure SQL Database
 
-附加到 Blockchain Workbench 的 Azure SQL 数据库存储合约定义、配置元数据，以及区块链中存储的数据的副本（可通过 SQL 访问）。 直接访问数据库即可轻松查询、可视化或分析这些数据。 开发人员和其他用户可以使用该数据库进行报告、分析或其他以数据为中心的集成。 例如，用户可以使用 Power BI 将事务数据可视化。
+附加到区块链工作台的数据库存储协定定义、配置元数据和存储在区块链中的数据的 SQL 可访问副本。 直接访问数据库即可轻松查询、可视化或分析这些数据。 开发人员和其他用户可以使用该数据库进行报告、分析或其他以数据为中心的集成。 例如，用户可以使用 Power BI 将事务数据可视化。
 
 此链外存储可让企业组织查询 SQL 中的数据，但不允许查询区块链账本中的数据。 此外，通过将区块链技术堆栈不可知的架构标准化，链外存储可让用户跨项目、方案和组织重复使用报告和其他项目。
 

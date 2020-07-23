@@ -1,29 +1,29 @@
 ---
-title: 使用 Net# 创建自定义神经网络
-titleSuffix: Azure Machine Learning Studio
-description: Net# 神经网络规范语言的语法指南。 了解如何在 Azure 机器学习工作室中创建自定义神经网络模型。
+title: Net# 自定义神经网络
+titleSuffix: ML Studio (classic) - Azure
+description: Net# 神经网络规范语言的语法指南。 了解如何在 Azure 机器学习工作室（经典）中创建自定义神经网络模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: c352100392a5bf7b590b27b9448f7f37fb105fbe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b297a3f975450b7459895ce7c0abc79e9b2fcdea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60751634"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85129511"
 ---
-# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>有关 Azure 机器学习工作室的 Net# 神经网络规范语言的指南
+# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>有关 Azure 机器学习工作室（经典）的 Net# 神经网络规范语言的指南
 
 Net# 是由 Microsoft 开发的用于定义复杂神经网络体系结构（例如深度神经网络或任意维度的卷积）的语言。 可使用复杂的结构改进图像、视频或音频等数据的学习。
 
 在下列上下文中，可以使用 Net# 体系结构规范：
 
-+ Microsoft Azure 机器学习工作室中的所有神经网络模块：[多类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)[双类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)和[神经网络回归](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
++ Microsoft Azure 机器学习工作室（经典）中的所有神经网络模块：[多类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)[双类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)和[神经网络回归](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
 + Microsoft ML Server 中的神经网络函数：R 语言的 [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) 和 [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)，以及 Python 的 [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network)。
 
 
@@ -56,7 +56,7 @@ Net# 支持各种类型的连接捆绑，可自定义映射到隐藏层和映射
 
 ## <a name="supported-customizations"></a>支持的自定义项
 
-在 Azure 机器学习工作室中创建的神经网络模型的体系结构可通过使用 Net# 广泛自定义。 可以：
+在 Azure 机器学习工作室（经典）中创建的神经网络模型的体系结构可通过使用 Net# 广泛自定义。 方法：
 
 + 创建隐藏层并控制每层的节点数。
 + 指定如何相互连接层。
@@ -213,7 +213,7 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 
     如果维度值为 False，则将定义内核，使留出的每个端上的节点数都相同（最大差值为 1）。 此属性的默认值为一个元组，其所有组件都等于 False。
 
-+ **UpperPad** 和 **LowerPad**：（可选）对大量要使用的填充提供更好的控制。 **重要提示：** 当且仅当“没有”定义上述的“Padding”属性时，才能定义这些属性。 值必须是正整数值的元组，其长度为绑定的实参数量。 指定这些属性后，“虚拟”节点将添加到输入层的每个维度的上下两端。 每个维度的上下两端添加的节点数分别由 **LowerPad**[i] 和 **UpperPad**[i] 确定。
++ **UpperPad** 和 **LowerPad**：（可选）对大量要使用的填充提供更好的控制。 **重要提示：** 当且仅当“没有”定义上述的“Padding”属性时，才能定义这些属性  。 值必须是正整数值的元组，其长度为绑定的实参数量。 指定这些属性后，“虚拟”节点将添加到输入层的每个维度的上下两端。 每个维度的上下两端添加的节点数分别由 **LowerPad**[i] 和 **UpperPad**[i] 确定。
 
     若要确保内核只对应“真实”节点而不是“虚拟”节点，则必须符合以下条件：
   - **LowerPad** 的每个组件必须严格小于 `KernelShape[d]/2`。
@@ -450,7 +450,7 @@ output Digit [10] from Hid3 all;
 + 关键字 `convolve` 指示名为 `Conv1` 和 `Conv2` 的层是卷积层。 每个这些层声明都后跟一个卷积属性列表。
 + Net 具有第三个隐藏层 `Hid3`，该层完全连接到第二个隐藏层 `Conv2`。
 + 输出层 `Digit` 仅连接到第三个隐藏层 `Hid3`。 关键字 `all` 指示输出层完全连接到 `Hid3`。
-+ 卷积的实参数量为 3: 元组的长度`InputShape`， `KernelShape`， `Stride`，和`Sharing`。
++ 卷积的参数数量为 3：元组 `InputShape`、`KernelShape`、`Stride` 和 `Sharing` 的长度。
 + 每个内核的权重数为 `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26` 或 `26 * 50 = 1300`。
 + 可以计算每个隐藏层中的节点，如下所示：
 

@@ -1,31 +1,24 @@
 ---
-title: Azure DNS 疑难解答指南 | Microsoft Docs
-description: 如何排查 Azure DNS 的常见问题
+title: 故障排除指南 - Azure DNS
+description: 在此学习路径中，了解如何对 Azure DNS 的常见问题进行故障排除
 services: dns
-documentationcenter: na
-author: genlin
-manager: cshepard
-editor: ''
-ms.assetid: 95b01dc3-ee69-4575-a259-4227131e4f9c
+author: rohinkoul
 ms.service: dns
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/20/2017
-ms.author: genli
-ms.openlocfilehash: 535e7604915555f32a7636b739c49f72cb0220c8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: troubleshooting
+ms.date: 09/20/2019
+ms.author: rohink
+ms.openlocfilehash: a63a0c1e0044f5dcd6babb4941e1f4409404cdd2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60823889"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711181"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS 疑难解答指南
 
-此页介绍有关 Azure DNS 常见问题的疑难解答信息。
+本文介绍有关 Azure DNS 常见问题的故障排除信息。
 
-如果这些步骤未解决遇到的问题，还可以搜索 [MSDN 上的社区支持论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)或将问题发布在该论坛上。 或打开 Azure 支持请求。
+如果这些步骤未解决遇到的问题，还可以在[用于获取社区支持的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-virtual-network.html)上搜索或发布问题。 或者，可以开立和提交 Azure 支持请求。
 
 
 ## <a name="i-cant-create-a-dns-zone"></a>无法创建 DNS 区域
@@ -35,14 +28,13 @@ ms.locfileid: "60823889"
 1.  查看 Azure DNS 审核日志以确定失败原因。
 2.  每个 DNS 区域名称在其资源组中必须唯一。 即，一个资源组中不能具有名称相同的两个 DNS 区域。 请尝试使用不同的区域名称，或采用不同的资源组。
 3.  可能会显示一个错误“已达到或超过订阅 {订阅 id} 中的区域的最大数量。” 请使用其他 Azure 订阅，删除一些区域，或者联系 Azure 支持部门以提高订阅限制。
-4.  可能会显示一个错误“区域‘{区域名称}’不可用。” 此错误意味着 Azure DNS 无法为此 DNS 区域分配名称服务器。 请尝试使用不同的区域名称。 或者，如果是该域名的所有者，请联系 Azure 支持部门分配名称服务器。
+4.  可能会显示一个错误“区域‘{区域名称}’不可用。” 此错误意味着 Azure DNS 无法为此 DNS 区域分配名称服务器。 请尝试使用不同的区域名称。 或者，如果你是该域名的所有者，可以联系 Azure 支持部门为你分配名称服务器。
 
 
-### <a name="recommended-documents"></a>**建议的文档**
+### <a name="recommended-articles"></a>推荐阅读的文章
 
-[DNS 区域和记录](dns-zones-records.md)
-<br>
-[创建 DNS 区域](dns-getstarted-create-dnszone-portal.md)
+* [DNS 区域和记录](dns-zones-records.md)
+* [创建 DNS 区域](dns-getstarted-create-dnszone-portal.md)
 
 ## <a name="i-cant-create-a-dns-record"></a>无法创建 DNS 记录
 
@@ -55,11 +47,10 @@ ms.locfileid: "60823889"
 5.  是否已达到 DNS 区域中允许的记录集数量上限？ 在 Azure 门户中此区域的“属性”下，显示有当前记录集数和最大记录集数。 如果已达此限制，则可删除一些记录集或联系 Azure 支持来提高此区域的记录集上限，并重试。 
 
 
-### <a name="recommended-documents"></a>**建议的文档**
+### <a name="recommended-articles"></a>推荐阅读的文章
 
-[DNS 区域和记录](dns-zones-records.md)
-<br>
-[创建 DNS 区域](dns-getstarted-create-dnszone-portal.md)
+* [DNS 区域和记录](dns-zones-records.md)
+* [创建 DNS 区域](dns-getstarted-create-dnszone-portal.md)
 
 
 
@@ -76,9 +67,9 @@ DNS 名称解析是一个多步骤过程，该过程失败存在多种原因。 
 4.  完成上述步骤后，现在应可以正确解析 DNS 记录。 若要进行验证，可再次使用 [digwebinterface](https://digwebinterface.com)，这次请使用默认名称服务器设置。
 
 
-### <a name="recommended-documents"></a>**建议的文档**
+### <a name="recommended-articles"></a>推荐阅读的文章
 
-[将域委托给 Azure DNS](dns-domain-delegation.md)
+* [将域委托给 Azure DNS](dns-domain-delegation.md)
 
 
 
@@ -91,13 +82,11 @@ Azure DNS 以记录集方式管理记录，记录集是具有相同名称和类�
 - \_sip.\_tcp（在区域顶点创建一个记录集）
 - \_sip.\_tcp.sipservice（创建名为“sipservice”的记录集）
 
-### <a name="recommended-documents"></a>**建议的文档**
+### <a name="recommended-articles"></a>推荐阅读的文章
 
-[DNS 区域和记录](dns-zones-records.md)
-<br>
-[使用 Azure 门户创建 DNS 记录集和记录](dns-getstarted-create-recordset-portal.md)
-<br>
-[SRV 记录类型 (Wikipedia)](https://en.wikipedia.org/wiki/SRV_record)
+* [DNS 区域和记录](dns-zones-records.md)
+* [使用 Azure 门户创建 DNS 记录集和记录](dns-getstarted-create-recordset-portal.md)
+* [SRV 记录类型 (Wikipedia)](https://en.wikipedia.org/wiki/SRV_record)
 
 
 ## <a name="next-steps"></a>后续步骤

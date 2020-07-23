@@ -2,18 +2,13 @@
 title: 概念 - Azure Kubernetes 服务 (AKS) 中的存储
 description: 了解 Azure Kubernetes 服务 (AKS) 中的存储，其中包括卷、永久性卷、存储类和声明
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: conceptual
-origin.date: 03/01/2019
-ms.date: 04/08/2019
-ms.author: v-yeche
-ms.openlocfilehash: cce38eb12d803c0640d9ee774dbc6c98ab5db219
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 03/01/2019
+ms.openlocfilehash: 643d25e99bef191bfce77f092a9f2218c891a442
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60466782"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84171372"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的应用程序存储选项
 
@@ -34,12 +29,14 @@ ms.locfileid: "60466782"
 
 用于存储和检索数据的传统卷作为 Azure 存储支持的 Kubernetes 资源创建。 你可以手动创建这些数据卷并直接分配给 Pod，也可以让 Kubernetes 自动创建它们。 这些数据卷可以使用 Azure 磁盘或 Azure 文件：
 
-- *Azure 磁盘*可用于创建 Kubernetes *DataDisk* 资源。 Azure 磁盘可以使用由高性能 SSD 支持的 Azure 高级存储，也可以使用由普通 HDD 支持 Azure 标准存储。 对于大部分生产和开发工作负荷，请使用高级存储。 Azure 磁盘以 *ReadWriteOnce* 的形式装载，因此仅可用于单个节点。 对于可以同时由多个节点访问的存储卷，请使用 Azure 文件。
-- *Azure 文件*可用于将 Azure 存储帐户支持的 SMB 3.0 共享装载到 Pod。 借助 Azure 文件,可跨多个节点和 Pod 共享数据。 目前，Azure 文件只能使用普通 HDD 支持的 Azure 标准存储。
+- *Azure 磁盘*可用于创建 Kubernetes *DataDisk* 资源。 Azure 磁盘可以使用由高性能 SSD 支持的 Azure 高级存储，也可以使用由普通 HDD 支持 Azure 标准存储。 对于大部分生产和开发工作负荷，请使用高级存储。 Azure 磁盘以 ReadWriteOnce  的形式装载，因此仅可用于单个 Pod。 对于可同时由多个 Pod 访问的存储卷，请使用 Azure 文件存储。
+- *Azure 文件*可用于将 Azure 存储帐户支持的 SMB 3.0 共享装载到 Pod。 借助 Azure 文件,可跨多个节点和 Pod 共享数据。 文件可以使用由常规 HDD 支持的 Azure 标准存储，也可以使用由高性能 SSD 支持的Azure 高级存储。
+> [!NOTE] 
+> Azure 文件存储支持运行 Kubernetes 1.13 或更高版本的 AKS 群集中的高级存储。
 
 在 Kubernetes 中，卷不仅仅能够表示可以存储和检索信息的传统磁盘。 Kubernetes 卷还可以用于将数据注入 Pod 以供容器使用。 Kubernetes 中常见的其他卷类型包括：
 
-- *emptyDir*：此卷通常用作 Pod 的临时空间。 Pod 中的所有容器都可以访问卷上的数据。 写入此卷类型的数据仅在 Pod 的生命周期内持续保存，当 Pod 被删除时，卷也会删除。 此卷通常使用基础本地节点磁盘存储，但也可以仅存在于节点的内存中。
+- *emptyDir*：此卷通常用作 Pod 的临时空间。 Pod 中的所有容器都可以访问卷上的数据。 写入此卷类型的数据仅在 Pod 的生命周期内持续保存，当 Pod 被删除时，卷也会删除。 此卷通常使用基础本地节点磁盘存储，但它也可以仅存在于节点的内存中。
 - *secret*：此卷用于将敏感数据注入 Pod，例如密码。 首先使用 Kubernetes API 创建机密。 在定义 pod 或部署时，可以请求特定机密。 机密仅提供给所计划的 pod 需要该机密的节点，且机密存储在 *tmpfs* 中，不写入磁盘。 当节点上最后一个需要该机密的 pod 被删除后，将从该节点的 tmpfs 中删除该机密。 机密存储在给定的命名空间中，只有同一命名空间中的 pod 能访问该机密。
 - *configMap*：此卷类型用于将键-值对属性注入 Pod，例如应用程序配置信息。 无需在容器映像中定义应用程序配置信息，而是可以将其定义为 Kubernetes 资源，以便在部署新 Pod 实例时可轻松为其更新并应用。 与使用 secret 一样，必须先使用 Kubernetes API 创建 ConfigMap。 随后可在定义 Pod 或部署时请求此 ConfigMap。 ConfigMap 存储在给定命名空间内，且只能由同一命名空间中的 Pod 访问。
 
@@ -57,10 +54,12 @@ PersistentVolume 可以由群集管理员*静态*创建，或者由 Kubernetes A
 
 若要定义不同的存储层（例如高级和标准），可创建 *StorageClass*。 StorageClass 还定义 *reclaimPolicy*。 删除 Pod 后且可能不再需要永久性卷时，此 reclaimPolicy 可控制基础 Azure 存储资源在此情况下的行为。 可删除基础存储资源，也可保留基础存储资源以便与未来的 Pod 配合使用。
 
-在 AKS 中会创建两个初始 StorageClass：
+在 AKS 中，创建了4个初始 StorageClasses：
 
-- *default*：使用 Azure 标准存储创建托管磁盘。 回收策略会指出，在使用基础 Azure 磁盘的 Pod 被删除时，即应删除该磁盘。
-- *managed-premium*：使用 Azure 高级存储创建托管磁盘。 回收策略同样会指出，在使用基础 Azure 磁盘的 Pod 被删除时，即应删除该磁盘。
+- *默认*-使用 Azure StandardSSD 存储创建托管磁盘。 回收策略指示在删除使用基础 Azure 磁盘的持久卷后，将删除该磁盘。
+- *managed-premium*：使用 Azure 高级存储创建托管磁盘。 回收策略再次指示在删除使用基础 Azure 磁盘的持久卷后，将删除该磁盘。
+- *azurefile* -使用 azure 标准存储创建 Azure 文件共享。 回收策略指示在删除使用它的持久卷时，将删除基础 Azure 文件共享。
+- *azurefile* -使用 azure 高级存储创建 Azure 文件共享。 回收策略指示在删除使用它的持久卷时，将删除基础 Azure 文件共享。
 
 如果没有为永久性卷指定 StorageClass，则会使用默认 StorageClass。 请求永久性卷时应小心，以便它们使用你需要的适当存储。 可使用 `kubectl` 创建 StorageClass 来满足其他需求。 以下示例使用高级托管磁盘并指定在删除 Pod 时应该*保留*基础 Azure 磁盘：
 
@@ -122,7 +121,7 @@ spec:
 
 ## <a name="next-steps"></a>后续步骤
 
-如需相关的最佳做法，请参阅[在 AKS 中存储和备份的最佳做法][operator-best-practices-storage]。
+如需相关的最佳做法，请参阅 [AKS 中存储和备份的最佳做法][operator-best-practices-storage]。
 
 若要了解如何创建使用 Azure 磁盘或 Azure 文件的动态和静态卷，请参阅以下操作指南：
 

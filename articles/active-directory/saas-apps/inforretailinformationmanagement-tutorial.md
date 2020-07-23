@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57764c2c588fd440bf39cfaaa71e9b5ccc738d99
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 91c48772ae50fd34e822c947687c0366e1d179cc
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704323"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85798728"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-retail--information-management"></a>教程：Azure Active Directory 与 Infor Retail - Information Management 集成
 
@@ -102,20 +102,20 @@ ms.locfileid: "64704323"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
 
     ![Infor Retail – Information Management 域和 URL 单一登录信息](common/idp-intiated.png)
 
     a. 在“标识符”文本框中，使用以下模式键入 URL： 
     
-    | |
-    |--|
-    | `https://<company name>.mingle.infor.com` |
-    | `http://<company name>.mingledev.infor.com` |
+    ```http
+    https://<company name>.mingle.infor.com
+    http://<company name>.mingledev.infor.com
+    ```
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<company name>.mingle.infor.com/sp/ACS.saml2`
 
-5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
+5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     ![Infor Retail – Information Management 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
@@ -140,7 +140,7 @@ ms.locfileid: "64704323"
 
 ### <a name="configure-infor-retail--information-management-single-sign-on"></a>配置 Infor Retail - Information Management 单一登录
 
-要在 Infor Retail – Information Management 端配置单一登录，需要将下载的元数据 XML 以及从 Azure 门户复制的相应 URL 发送给 [Infor Retail – Information Management 支持团队](mailto:innovate@infor.com)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+要在 Infor Retail – Information Management 端配置单一登录，需要将下载的元数据 XML 以及从 Azure 门户复制的相应 URL 发送给 [Infor Retail – Information Management 支持团队](mailto:innovate@infor.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -160,7 +160,7 @@ ms.locfileid: "64704323"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -182,7 +182,7 @@ ms.locfileid: "64704323"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

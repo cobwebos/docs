@@ -1,18 +1,17 @@
 ---
-title: 排查 Microsoft Azure Site Recovery 提供程序升级失败问题 | Microsoft Docs
-description: 了解和
-author: vDonGlover
-manager: jarrettr
+title: 排查 Microsoft Azure Site Recovery 提供程序的升级问题
+description: 解决 Microsoft Azure Site Recovery 提供程序升级时出现的常见问题。
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: troubleshooting
-ms.date: 02/05/2019
-ms.author: v-doglov
-ms.openlocfilehash: fc50be2a960784895947f3f154a0251f41716fc7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 11/10/2019
+ms.author: raynew
+ms.openlocfilehash: 5a6e4b415a9fe8ea80a84e415879df9d2f359478
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60565695"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84434370"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>排查 Microsoft Azure Site Recovery 提供程序升级故障
 
@@ -27,8 +26,8 @@ ms.locfileid: "60565695"
 若要升级，请使用以下步骤：
 
 1. 下载 Microsoft Azure Site Recovery 统一安装程序：
-   1. 在 [Azure Site Recovery 中的服务更新](service-updates-how-to.md##links-to-currently-supported-update-rollups)一文的“当前支持的更新汇总链接”部分，选择要升级到的提供程序。
-   2. 在汇总页上找到“更新信息”部分，并下载 Microsoft Azure Site Recovery 统一安装的更新汇总。
+   1. 在 [Azure Site Recovery 中的服务更新](service-updates-how-to.md#links-to-currently-supported-update-rollups)一文的“当前支持的更新汇总链接”部分，选择要升级到的提供程序。
+   2. 在汇总页上找到“更新信息”部分，并下载 Microsoft Azure Site Recovery 统一安装的更新汇总。****
 
 2. 打开命令提示符并导航到下载的统一安装程序文件所在的文件夹。 使用以下命令从下载内容中提取安装程序文件：MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:&lt;提取的文件所在的文件夹路径&gt;。
     
@@ -42,17 +41,17 @@ ms.locfileid: "60565695"
 
 1. 返回到下载的统一安装程序所在的文件夹，并运行 MicrosoftAzureSiteRecoveryUnifiedSetup.exe 以完成升级。 
 
-## <a name="upgrade-failure-due-to-the-3rd-party-folder-being-renamed"></a>升级因要重命名的第三方文件夹失败
+## <a name="upgrade-failure-due-to-the-3rd-party-folder-being-renamed"></a>由于重命名第三方文件夹而导致升级失败
 
-若要成功执行升级，第三方文件夹必须重命名。
+若要成功升级，不能重命名第三方文件夹。
 
 解决问题。
 
 1. 启动注册表编辑器 (regedit.exe) 并打开 HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10 分支。
 1. 检查 `Build_Version` 项值。 如果此项设置为最新版本，请减小版本号。 例如，如果最新版本为 9.22.\*，而 `Build_Version` 项设置为该值，请将它减小为 9.21.\*。
 1. 下载最新的 Microsoft Azure Site Recovery 统一安装程序：
-   1. 在 [Azure Site Recovery 中的服务更新](service-updates-how-to.md##links-to-currently-supported-update-rollups)一文的“当前支持的更新汇总链接”部分，选择要升级到的提供程序。
-   2. 在汇总页上找到“更新信息”部分，并下载 Microsoft Azure Site Recovery 统一安装的更新汇总。
+   1. 在 [Azure Site Recovery 中的服务更新](service-updates-how-to.md#links-to-currently-supported-update-rollups)一文的“当前支持的更新汇总链接”部分，选择要升级到的提供程序。
+   2. 在汇总页上找到“更新信息”部分，并下载 Microsoft Azure Site Recovery 统一安装的更新汇总。****
 1. 打开命令提示符，导航到下载的统一安装程序文件所在的文件夹，然后使用以下命令从下载内容中提取安装程序文件：MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:&lt;提取的文件所在的文件夹路径&gt;。
 
     示例命令：
@@ -65,4 +64,16 @@ ms.locfileid: "60565695"
 
 1. 使用任务管理器监视安装进度。 当 CX_THIRDPARTY_SETUP.EXE 的进程不再显示在任务管理器中时，请转到下一步。
 1. 验证 C:\thirdparty 是否存在，以及该文件夹是否包含 RRD 库。
-1. 返回到下载的统一安装程序所在的文件夹，并运行 MicrosoftAzureSiteRecoveryUnifiedSetup.exe 以完成升级。 
+1. 返回到下载的统一安装程序所在的文件夹，并运行 MicrosoftAzureSiteRecoveryUnifiedSetup.exe 以完成升级。
+
+## <a name="upgrade-failure-due-to-master-target-installation-failure"></a>由于主目标安装失败导致升级失败
+
+升级 Microsoft Azure Site Recovery 提供程序（DRA）时，主目标安装将失败，并出现错误 "安装位置不存在" 和/或 "在固定驱动器上不存在 1 GB 可用空间" 和/或。
+
+这可能是由于注册表项中的某个参数的值为 null 导致的。 解决问题-
+
+1. 启动注册表编辑器（regedit.exe）并打开 HKEY_LOCAL_MACHINE \SOFTWARE\Wow6432Node\InMage Systems\Installed Products\4 分支。
+1. 检查 "InstallDirectory" 键值。如果为 null，则添加当前的安装目录值。
+1. 同样，在注册表编辑器中打开 HKEY_LOCAL_MACHINE \SOFTWARE\Wow6432Node\InMage Systems\Installed Products\5 分支。
+1. 检查 "InstallDirectory" 键值并添加当前的安装目录值。
+1. 重新运行统一安装程序。

@@ -1,27 +1,15 @@
 ---
-title: 使用 Azure CLI 管理用于容器的 Web 应用 - Azure 应用服务 | Microsoft Docs
-description: 使用 Azure CLI 管理用于容器的 Web 应用。
+title: 通过 CLI 管理自定义 Linux 容器
+description: 了解如何在 Azure App Service 从命令行管理自定义 Linux 容器。 自动执行应用预配或维护。
 keywords: azure app service、Web 应用、cli、linux、oss
-services: app-service
-documentationCenter: ''
-author: ahmedelnably
-manager: cfowler
-editor: ''
-ms.assetid: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
-ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 21f6963fbaada4524f27602454d38e7252a5e8b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 5ca5322467402af710df68c82d747f8f8d65e142
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60850078"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78255927"
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>使用 Azure CLI 管理用于容器的 Web 应用
 

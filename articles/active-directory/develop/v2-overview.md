@@ -1,82 +1,85 @@
 ---
-title: Microsoft 标识平台 (v2.0) 概述 - Azure
-description: 了解有关 Microsoft 标识平台 (v2.0) 终结点和平台。
+title: Microsoft 标识平台概述 - Azure
+description: 了解 Microsoft 标识平台的组件以及它们如何帮助你在应用程序中构建标识和访问管理 (IAM) 支持。
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d139efaa8e6de4861dc8e885bd22a426fde6c94
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.custom: identityplatformtop40
+ms.openlocfilehash: 566893a9babc3f771e3198970e0a5ae97592e322
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833054"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231669"
 ---
-# <a name="microsoft-identity-platform-v20-overview"></a>Microsoft 标识平台 (v2.0) 概述
+# <a name="microsoft-identity-platform-overview"></a>Microsoft 标识平台概述
 
-Microsoft 标识平台由 Azure Active Directory (Azure AD) 开发人员平台演变而来。 开发人员可以通过它来生成应用程序，从而可以采用所有 Microsoft 标识登录，以及获取令牌来调用 Microsoft Graph 等 Microsoft API 或开发人员生成的 API。 Microsoft 标识平台包括：
+Microsoft 标识平台有助于你构建这样的应用程序，你的用户和客户登录它们来使用其 Microsoft 标识或社交帐户，并提供对你的 API 或 Microsoft API（例如 Microsoft Graph）的授权访问。
 
-- **符合 OAuth 2.0 和 OpenID Connect 标准的身份验证服务**，使开发人员能够对任何 Microsoft 标识进行身份验证并，包括：
-  - 工作或学校帐户（通过 Azure AD 预配的）
+Microsoft 标识平台由多个组件组成：
+
+- 符合 OAuth 2.0 和 OpenID Connect 标准的身份验证服务，使开发人员能够对多个标识类型进行身份验证并，包括：
+  - 通过 Azure AD 预配的工作或学校帐户
   - 个人 Microsoft 帐户（例如 Skype、Xbox 和 Outlook.com）
   - 社交或本地帐户（通过 Azure AD B2C）
 - **开放源代码库**：Microsoft 身份验证库 (MSAL)，并支持其他符合标准的库
-- **应用程序管理门户**：Azure 门户中内置的注册和配置体验，以及你的所有其他 Azure 管理功能。
-- **应用程序配置 API 和 PowerShell**：允许通过 REST API（Microsoft Graph 和 Azure Active Directory Graph 1.6）和 PowerShell 以编程方式配置你的应用程序，以便可以自动执行 DevOps 任务。
-- **开发人员内容**：概念性和参考文档、快速入门示例、代码示例、教程以及操作指南。
+- **应用程序管理门户**：Azure 门户中注册和配置体验，以及其他 Azure 管理功能。
+- **应用程序配置 API 和 PowerShell**：允许通过 Microsoft Graph API 和 PowerShell 以编程方式配置应用程序，以便自动执行 DevOps 任务。
+- **开发人员内容**：技术文档，包括快速入门、教程、操作指南和代码示例。
 
-对于开发人员而言，Microsoft 标识平台可无缝集成到标识和安全领域的创新中，例如无密码身份验证、升级身份验证和条件访问。  你不需要自己实现这样的功能：集成了 Microsoft 标识平台的应用程序原本就可以利用这样的创新。
+对于开发人员而言，Microsoft 标识平台可集成到标识和安全领域的新式创新中，例如无密码身份验证、升级身份验证和条件访问。 你不需要自己实现这样的功能：集成了 Microsoft 标识平台的应用程序原本就可以利用这样的创新。
 
 使用 Microsoft 标识平台，你可以编写一次代码并影响任何用户。 你可以构建一次应用并使其在许多平台上运行，也可以构建充当客户端以及资源应用程序 (API) 的应用。
 
 ## <a name="getting-started"></a>入门
 
-可以轻松使用标识。 选择适合你的方案 - 每个方案路径都有一个快速入门和一个概述页面，可以通过它们在数分钟内实现正常运转：
+选择要构建的[应用程序方案](authentication-flows-app-scenarios.md)。 这些方案路径中的每一条都以概述和指向快速启动的链接开始，以帮助你启动并运行：
 
-- [构建单页应用](scenario-spa-overview.md)
-- [构建用于让用户登录的 Web 应用](scenario-web-app-sign-user-overview.md)
-- [构建调用 Web API 的 Web 应用](scenario-web-app-call-api-overview.md)
-- [构建受保护的 Web API](scenario-protected-web-api-overview.md)
-- [构建调用 Web API 的 Web 应用](scenario-web-api-call-api-overview.md)
-- [构建桌面应用](scenario-desktop-overview.md)
-- [构建守护程序应用](scenario-daemon-overview.md)
-- [构建移动应用](scenario-mobile-overview.md)
+- [单页应用 (SPA)](scenario-spa-overview.md)
+- [用于登录用户的 Web 应用](scenario-web-app-sign-user-overview.md)
+- [用于调用 Web API 的 Web 应用](scenario-web-app-call-api-overview.md)
+- [受保护的 Web API](scenario-protected-web-api-overview.md)
+- [用于调用 Web API 的 Web API](scenario-web-api-call-api-overview.md)
+- [桌面应用](scenario-desktop-overview.md)
+- [守护程序应用](scenario-daemon-overview.md)
+- [移动应用](scenario-mobile-overview.md)
 
-下图概述了常见的身份验证应用方案 - 将 Microsoft 标识平台与你的应用程序集成时，可以使用它作为参考。
+使用 Microsoft 标识平台在应用程序中集成身份验证和授权时，可以参考此图像，其中概述了最常见的应用方案及其标识组件。 点击图像可查看其完整大小。
 
-[![Microsoft 标识平台中的应用程序方案](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
+[![显示 Microsoft 标识平台中多种应用程序方案的地铁样式图](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
 
-## <a name="next-steps"></a>后续步骤
+## <a name="learn-authentication-concepts"></a>了解身份验证概念
 
-如果要详细了解核心身份验证概念，建议你先阅读以下主题：
+通过以下推荐文章，了解核心身份验证和 Azure AD 概念如何应用于 Microsoft 标识平台：
 
 - [身份验证基础知识](authentication-scenarios.md)
 - [应用程序和服务主体](app-objects-and-service-principals.md)
 - [受众](v2-supported-account-types.md)
 - [权限和许可](v2-permissions-and-consent.md)
-- [ID 令牌](id-tokens.md)和[访问令牌](access-tokens.md)
+- [ID 令牌](id-tokens.md)
+- [访问令牌](access-tokens.md)
+- [身份验证流和应用程序方案](authentication-flows-app-scenarios.md)
 
-构建调用 [Microsoft Graph](https://docs.microsoft.com/graph/overview) 的富数据应用程序。
+## <a name="more-identity-and-access-management-options"></a>更多标识和访问管理选项
 
-当准备好在**生产环境**中启动你的应用后，查看以下最佳做法：
+[Azure AD B2C](../../active-directory-b2c/overview.md) - 构建面向客户的应用程序，使你的用户可以使用 Facebook 或 Google 等社交帐户登录，也可以使用电子邮件地址和密码登录。
 
-- 在你的应用程序中[启用日志记录](msal-logging.md)。
-- 在你的应用程序中启用遥测。
-- 启用[代理并自定义 HTTP 客户端](msal-net-provide-httpclient.md)。
-- 按照 [Microsoft 标识平台集成清单](identity-platform-integration-checklist.md)测试你的集成。
+[Azure AD B2B](../b2b/what-is-b2b.md) - 邀请外部用户加入你的 Azure AD 租户，作为可向其分配权限（用于授权）的“来宾”用户，同时他们可以使用其现有凭据进行身份验证。
 
-## <a name="learn-more"></a>了解详细信息
+> [!TIP]
+> 是否正在寻找 Azure Active Directory 开发人员平台 (v1.0) 文档？ 请参阅[适用于开发人员的 Azure Active Directory (v1.0) 概述](../azuread-dev/v1-overview.md)。
 
-如果你打算构建以社交和本地标识进行登录的面向客户的应用程序，请参阅 [Azure AD B2C 概述](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers)。
+## <a name="next-steps"></a>后续步骤
+
+如果你有一个 Azure 帐户，且有权访问 Azure Active Directory 租户，但大多数 Microsoft 标识平台开发人员在开发应用程序时都需要其自己的 Azure AD 租户，即“开发租户”。
+
+了解如何在构建应用程序时创建自己的租户：
+
+[快速入门：设置 Azure AD 租户](quickstart-create-new-tenant.md)

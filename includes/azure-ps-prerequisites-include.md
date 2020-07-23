@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: victorh
 ms.openlocfilehash: 0c161510d106343d88e7c77c72a1d1750fe25040
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66122277"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67172875"
 ---
-## <a name="prerequisite-install-the-azure-powershell-module"></a>先决条件：安装 Azure Powershell 模块
+## <a name="prerequisite-install-the-azure-powershell-module"></a>先决条件：安装 Azure PowerShell 模块
 
 若要执行本文中的步骤，需要[安装和配置 Azure PowerShell 模块](/powershell/azureps-cmdlets-docs)。 请务必完成所有指令。 安装完成后，请登录到 Azure，然后选择订阅。
 

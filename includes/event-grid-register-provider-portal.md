@@ -2,18 +2,18 @@
 title: include 文件
 description: include 文件
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: include
-ms.date: 07/05/2018
-ms.author: tomfitz
+ms.date: 04/16/2020
+ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: c3677e7897498aa06d7bd547988ad4dc0326f39b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 8833bb75f5f50372deda3e71c1df90bed9a20054
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150436"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605594"
 ---
 ## <a name="enable-event-grid-resource-provider"></a>启用事件网格资源提供程序
 
@@ -21,10 +21,10 @@ ms.locfileid: "66150436"
 
 在 Azure 门户中：
 
-1. 选择 **订阅**。
+1. 在左侧菜单中，选择“订阅”。 
 1. 选择要用于事件网格的订阅。
-1. 在“设置”下，选择“资源提供程序”。
+1. 在左侧菜单中的“设置”下，选择“资源提供程序”。  
 1. 找到 **Microsoft.EventGrid**。
-1. 如果尚未注册，请选择“注册”。 
+1. 如果尚未注册，请选择“注册”。  
 
-完成注册可能需要一些时间。 选择“刷新”可更新状态。 当“状态”为“已注册”后，即可继续。
+完成注册可能需要一些时间。 选择“刷新”可更新状态。  当“状态”为“已注册”后，即可继续。  

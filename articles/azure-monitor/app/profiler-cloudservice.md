@@ -1,23 +1,17 @@
 ---
 title: 使用 Application Insights 分析实时 Azure 云服务 | Microsoft Docs
 description: 对 Azure 云服务启用 Application Insights Profiler。
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 8ad472b9c92e3bc2164146191a63985fd26becab
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: eba250f3ca6a7af8480d24a99e6c3e8278009b82
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306356"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499437"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>使用 Application Insights 分析实时 Azure 云服务
 
@@ -29,11 +23,11 @@ Application Insights Profiler 也可以部署在以下服务上：
 Application Insights Profiler 随 Azure 诊断扩展一同安装。 只需将 Azure 诊断配置为安装 Profiler 并将配置文件发送到 Application Insights 资源即可。
 
 ## <a name="enable-profiler-for-azure-cloud-services"></a>对 Azure 云服务启用 Profiler
-1. 请检查以确保使用的是 [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 或更高版本。 只需要确认 *ServiceConfiguration.\*.cscfg* 文件的 `osFamily` 值至少为“5”即可。
+1. 请进行检查，确保使用的是 [.NET Framework 4.6.1](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 或更新版本。 如果使用的是 OS 系列 4，则需要使用[启动任务](../../cloud-services/cloud-services-dotnet-install-dotnet.md)安装 .NET Framework 4.6.1 或更新版本。 默认情况下，OS 系列 5 包含 .NET Framework 的兼容版本。 
 
 1. [将 Application Insights SDK 添加到 Azure 云服务](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json)。
 
-    **已修复探查器在 WAD 中随附的云服务中的错误。** WAD (1.12.2.0) 为云服务的最新版本适用于所有最新版本的 App Insights SDK。 云服务主机将自动升级 WAD，但它不是即时。 若要强制升级，可以重新部署你的服务或重新启动节点。
+    **云服务 WAD 中附带的探查器中的 bug 已修复。** 用于云服务的最新版本的 WAD (1.12.2.0) 适用于所有最新版本的 App Insights SDK。 云服务主机将自动升级 WAD，但不会立即升级。 若要强制升级，可以重新部署服务或重新启动节点。
 
 1. 使用 Application Insights 跟踪请求：
 
@@ -41,13 +35,13 @@ Application Insights Profiler 随 Azure 诊断扩展一同安装。 只需将 Az
 
     * 对于辅助角色，请[添加代码以跟踪请求](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json)。
 
-1. 配置 Azure 诊断扩展来启用 Profiler:
+1. 配置 Azure 诊断扩展以启用 Profiler：
 
-    a. 找到应用程序角色的 [Azure 诊断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) diagnostics.wadcfgx 文件，如下所示：  
+    a. 找到应用程序角色的 [Azure 诊断](../platform/diagnostics-extension-overview.md) diagnostics.wadcfgx 文件，如下所示：  
 
       ![诊断配置文件的位置](./media/profiler-cloudservice/cloudservice-solutionexplorer.png)  
 
-      如果找不到该文件，请参阅[针对 Azure 云服务和虚拟机设置诊断](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)。
+      如果找不到该文件，请参阅[针对 Azure 云服务和虚拟机设置诊断](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)。
 
     b. 添加以下 `SinksConfig` 部分作为 `WadCfg` 的子元素：  
 

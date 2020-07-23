@@ -4,15 +4,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: d5d1d744b064bc015bf2a4d708f4b227e6d68e5c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: fa13d9bdf73b87597d4eb01830ec2c76538521fe
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66236396"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "73799647"
 ---
 ## <a name="get-the-training-and-prediction-keys"></a>获取定型密钥和预测密钥
 
-项目需要一组有效的订阅密钥才能与服务交互。 若要获得一组免费试用密钥，请转到[自定义视觉网站](https://customvision.ai)并使用 Microsoft 帐户登录。 选择右上角的__齿轮图标__。 在“帐户”  部分中，查看“定型密钥”  和“预测密钥”  字段中的值。 稍后将需要这些项。 
+项目需要一组有效的订阅密钥才能与服务交互。 你可以在[自定义视觉网站](https://customvision.ai)查找这些密钥。 使用与用于创建自定义视觉资源的 Azure 帐户关联的帐户登录。 在主页（该页包含用于添加新项目的选项）上，选择右上角的__齿轮图标__。 在列表中找到你的训练和预测资源并将其展开。 在此处可以找到训练密钥、预测密钥和预测资源 ID 值。 将这些值保存到临时位置。
 
 ![密钥 UI 的图像](../media/csharp-tutorial/training-prediction-keys.png)
+
+或者，可以在 [Azure 门户](https://www.portal.azure.com)中查看“自定义视觉训练和预测”资源并导航到“密钥”选项卡，来获取这些密钥和 ID。  在此处可以找到训练密钥和预测密钥。 导航到“预测”资源的“属性”选项卡，获取预测资源 ID。 
+

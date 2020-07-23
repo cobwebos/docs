@@ -1,6 +1,6 @@
 ---
-title: 快速入门：使用必应拼写检查 REST API 和 C# 检查拼写
-titlesuffix: Azure Cognitive Services
+title: 快速入门：使用 REST API 和 C# 检查拼写 - 必应拼写检查
+titleSuffix: Azure Cognitive Services
 description: 开始使用必应拼写检查 REST API 检查拼写和语法。
 services: cognitive-services
 author: aahill
@@ -8,33 +8,39 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 04/11/2019
+ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: e7a1f2572296015aac2d05b36b9b659c85586ff9
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 104edff35ec4b8cad53242e5f2d5ce4449123409
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390246"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996000"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>快速入门：使用必应拼写检查 REST API 和 C# 检查拼写
 
-根据此快速入门中的说明对必应拼写检查 REST API 进行第一次调用。 此简单的 C# 应用程序将向 API 发送请求并返回一系列建议的更正。 虽然此应用程序是使用 C# 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs) 上提供了此应用程序的源代码。
+根据此快速入门中的说明对必应拼写检查 REST API 进行第一次调用。 此简单的 C# 应用程序将向 API 发送请求并返回一系列建议的更正。 
+
+虽然此应用程序是使用 C# 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs) 上提供了此应用程序的源代码。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 任何版本的 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/downloads/)。
-* 若要在 Visual Studio 中以 NuGet 包的形式安装 `Newtonsoft.Json`，请执行以下操作：
-    1. 在**解决方案资源管理器**中，右键单击解决方案文件。
-    1. 选择“管理解决方案的 NuGet 包”  。
-    1. 搜索 `Newtonsoft.Json` 并安装该包。
-* 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
+* Newtonsoft.Json NuGet 包。 
+     
+   若要在 Visual Studio 中安装此包，请执行以下操作：
+
+     1. 在**解决方案资源管理器**中，右键单击解决方案文件。
+     1. 选择“管理解决方案的 NuGet 包”。
+     1. 搜索 *Newtonsoft.Json* 并安装该包。
+
+* 如果使用的是 Linux/MacOS，则可以通过使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>创建并初始化项目
 
-1. 在 Visual Studio 中创建一个名为 `SpellCheckSample` 的新控制台解决方案。 然后将以下命名空间添加到主代码文件。
+1. 在 Visual Studio 中创建一个名为 SpellCheckSample 的新控制台解决方案。 然后将以下命名空间添加到主代码文件：
     
     ```csharp
     using System;
@@ -46,7 +52,7 @@ ms.locfileid: "66390246"
     using Newtonsoft.Json;
     ```
 
-2. 为 API 终结点、订阅密钥和要进行拼写检查的文本创建变量。
+2. 为 API 终结点、订阅密钥和要进行拼写检查的文本创建变量。 你可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```csharp
     namespace SpellCheckSample
@@ -62,7 +68,11 @@ ms.locfileid: "66390246"
     }
     ```
 
-3. 为搜索参数创建变量。 在 `mkt=` 之后追加​​市场代码。 市场代码指示发出请求的国家/地区。 同样，请在 `&mode=` 之后追加拼写检查模式。 模式为 `proof`（捕获大部分拼写/语法错误）或者 `spell`（捕获大部分拼写错误，但是捕获的语法错误较少）。
+3. 为搜索参数创建字符串： 
+
+   1. 用 `=` 运算符将市场代码分配到 `mkt` 参数。 市场代码指示发出请求的国家/地区的代码。 
+
+   1. 使用 `&` 运算符添加 `mode` 参数，然后分配拼写检查模式。 模式可以是 `proof`（捕获大部分拼写/语法错误）或 `spell`（捕获大部分拼写错误，但是捕获的语法错误较少）。
     
     ```csharp
     static string params_ = "mkt=en-US&mode=proof";
@@ -70,15 +80,15 @@ ms.locfileid: "66390246"
 
 ## <a name="create-and-send-a-spell-check-request"></a>创建和发送拼写检查请求
 
-1. 创建名为 `SpellCheck()` 的异步函数，以便向 API 发送请求。 创建 `HttpClient`，并将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头。 然后在函数中执行以下步骤。
+1. 创建名为 `SpellCheck()` 的异步函数，以便向 API 发送请求。 创建 `HttpClient`，并将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头。 在函数中，按后续步骤执行操作。
 
     ```csharp
     async static void SpellCheck()
     {
-        HttpClient client = new HttpClient();
+        var client = new HttpClient();
         client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
 
-        HttpResponseMessage response = new HttpResponseMessage();
+        HttpResponseMessage response = null;
         // add the rest of the code snippets here (except for main())...
     }
     ```
@@ -92,14 +102,11 @@ ms.locfileid: "66390246"
 3. 创建含有 `KeyValuePair` 对象（其中包含文本）的列表，并将其用于创建 `FormUrlEncodedContent` 对象。 设置标头信息，并使用 `PostAsync()` 发送请求。
 
     ```csharp
-    List<KeyValuePair<string, string>> values = new List<KeyValuePair<string, string>>();
-    values.Add(new KeyValuePair<string, string>("text", text));
-    
-    using (FormUrlEncodedContent content = new FormUrlEncodedContent(values))
-    {
-        content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
-        response = await client.PostAsync(uri, content);
-    }
+    var values = new Dictionary<string, string>();
+    values.Add("text", text);
+    var content = new FormUrlEncodedContent(values);
+    content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
+    response = await client.PostAsync(uri, new FormUrlEncodedContent(values));
     ```
 
 ## <a name="get-and-print-the-api-response"></a>获取和打印 API 响应
@@ -130,7 +137,7 @@ Console.WriteLine(jsonObj);
 
 ## <a name="call-the-spell-check-function"></a>调用拼写检查函数
 
-在项目的主函数中，调用 `SpellCheck()`。
+在项目的 `Main()` 函数中，调用 `SpellCheck()`。
 
 ```csharp
 static void Main(string[] args)
@@ -139,6 +146,10 @@ static void Main(string[] args)
     Console.ReadLine();
 }
 ```
+
+## <a name="run-the-application"></a>运行应用程序
+
+生成并运行项目。 如果使用的是 Visual Studio，请按 **F5** 调试该文件。
 
 ## <a name="example-json-response"></a>示例 JSON 响应
 

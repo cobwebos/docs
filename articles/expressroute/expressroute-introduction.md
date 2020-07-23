@@ -1,22 +1,21 @@
 ---
-title: 通过专用连接将本地网络扩展到 Azure - ExpressRoute 概述：Azure | Microsoft Docs
+title: Azure ExpressRoute 概述：通过专用连接进行连接
 description: 此 ExpressRoute 技术概述介绍了如何使用 ExpressRoute 连接，以便用户通过专用连接将本地网络扩展到 Azure。
 services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: overview
-ms.date: 05/20/2019
+ms.date: 09/18/2019
 ms.author: mialdrid
-ms.custom: seodec18
-ms.openlocfilehash: 6d83cb76abad3923dc7f0473f4a609938093d990
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: d2f31be5e7ece32fb1e0f6d9a2e482688d46eeb3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730491"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "75770945"
 ---
 # <a name="expressroute-overview"></a>ExpressRoute 概述
-使用 ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Microsoft Azure、Office 365 和 Dynamics 365 等 Microsoft 云服务建立连接。
+使用 ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Microsoft Azure 和 Office 365 等 Microsoft 云服务建立连接。
 
 可以从任意位置之间的 (IP VPN) 网络、点到点以太网或在共置设施上通过连接服务提供商的虚拟交叉连接来建立这种连接。 ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连接相比，ExpressRoute 连接提供更高的可靠性、更快的速度、一致的延迟和更高的安全性。 要了解如何使用 ExpressRoute 将网络连接到 Microsoft，请参阅 [ExpressRoute 连接模型](expressroute-connectivity-models.md)。
 
@@ -40,13 +39,12 @@ ms.locfileid: "66730491"
 Microsoft 使用 BGP（一种行业标准动态路由协议），在本地网络、Azure 中的实例和 Microsoft 公共地址之间交换路由。 我们根据不同的流量配置文件来与网络建立多个 BGP 会话。 有关详细信息，请参阅 [ExpressRoute 线路和路由域](expressroute-circuit-peerings.md) 一文。
 
 ### <a name="redundancy"></a>冗余
-每个 ExpressRoute 线路有两道连接，用于从连接服务提供商/网络边缘连接到两个 Microsoft 企业边缘路由器 (MSEE)。 Microsoft 要求通过连接服务提供商/网络边缘建立双重 BGP 连接 – 各自连接到每个 MSEE。 可以选择不要在一端部署冗余设备/以太网路线。 但是，连接服务提供商会使用冗余设备，确保以冗余方式将连接移交给 Microsoft。 冗余的第 3 层连接配置是 Microsoft [SLA](https://azure.microsoft.com/support/legal/sla/) 生效的条件。
+每个 ExpressRoute 线路都有两个连接，用于从连接服务提供商/网络边缘的 [ExpressRoute 位置](https://docs.microsoft.com/azure/expressroute/expressroute-locations#expressroute-locations)连接到两个 Microsoft 企业边缘路由器 (MSEE)。 Microsoft 要求通过连接服务提供商/网络边缘建立双重 BGP 连接 – 各自连接到每个 MSEE。 可以选择不要在一端部署冗余设备/以太网路线。 但是，连接服务提供商会使用冗余设备，确保以冗余方式将连接移交给 Microsoft。 冗余的第 3 层连接配置是 Microsoft [SLA](https://azure.microsoft.com/support/legal/sla/) 生效的条件。
 
 ### <a name="connectivity-to-microsoft-cloud-services"></a>与 Microsoft 云服务建立连接
 通过 ExpressRoute 连接可访问以下服务：
 * Microsoft Azure 服务
 * Microsoft Office 365 服务
-* Microsoft Dynamics 365
 
 > [!NOTE]
 > [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]

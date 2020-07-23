@@ -1,0 +1,171 @@
+### YamlMime:Hub
+title: Azure 消息传送服务文档
+summary: 了解如何使用 Azure 事件网格、Azure 事件中心、Azure 服务总线和 Azure 中继来传送事件消息。
+brand: azure
+metadata:
+  title: Azure 消息传送服务文档
+  description: 了解如何使用 Azure 事件网格、Azure 事件中心、Azure 服务总线和 Azure 中继来传送事件消息。
+  services: multiple
+  ms.service: multiple
+  ms.topic: hub-page
+  author: spelluru
+  ms.author: spelluru
+  ms.date: 03/15/2020
+  ms.openlocfilehash: f70bdf831d5b65aab9d6d01f88122d1a0fdd9957
+  ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/12/2020
+  ms.locfileid: "83200404"
+highlightedContent:
+  items:
+  - title: 在 Azure 消息传送服务之间进行选择
+    itemType: overview
+    url: ../event-grid/compare-messaging-services.md
+  - title: 什么是事件网格？
+    itemType: overview
+    url: ../event-grid/overview.md
+  - title: 什么是事件中心？
+    itemType: overview
+    url: ../event-hubs/event-hubs-about.md
+  - title: 什么是服务总线？
+    itemType: overview
+    url: ../service-bus-messaging/service-bus-messaging-overview.md
+  - title: 什么是中继？
+    itemType: overview
+    url: ../azure-relay/relay-what-is-it.md
+conceptualContent:
+  items:
+  - title: 路由事件
+    links:
+    - url: ../event-grid/blob-event-quickstart-portal.md
+      itemType: quickstart
+      text: 利用 Azure 门户将 Blob 存储事件路由到 Web 终结点
+    - url: ../event-grid/custom-event-to-function.md
+      itemType: quickstart
+      text: 使用事件网格将自定义事件路由到 Azure 函数
+    - url: ../event-grid/custom-event-quickstart-portal.md
+      itemType: quickstart
+      text: 使用 Azure 门户和事件网格将自定义事件路由到 Web 终结点
+    footerLink:
+      url: ../event-grid/index.yml
+      text: 查看详细信息
+  - title: 创建事件中心
+    links:
+    - url: ../event-hubs/event-hubs-create.md
+      itemType: quickstart
+      text: 使用 Azure 门户创建事件中心
+    - url: ../event-hubs/event-hubs-quickstart-cli.md
+      itemType: quickstart
+      text: 使用 Azure CLI 创建事件中心
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: 查看详细信息
+  - title: 与 Apache Kafka 集成
+    links:
+    - url: ../event-hubs/event-hubs-for-kafka-ecosystem-overview.md
+      itemType: overview
+      text: 什么是适用于 Apache Kafka 的事件中心
+    - url: ../event-hubs/event-hubs-quickstart-kafka-enabled-event-hubs.md
+      itemType: quickstart
+      text: 流式传输到用于 Apache Kafka 的事件中心
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: 查看详细信息
+  - title: 发送和接收事件
+    links:
+    - url: ../event-hubs/get-started-dotnet-standard-send-v2.md
+      itemType: quickstart
+      text: 使用 .NET Core 向/从 Azure 事件中心发送/接收事件
+    - url: ../event-hubs/event-hubs-java-get-started-send.md
+      itemType: quickstart
+      text: 使用 Java 向/从 Azure 事件中心发送/接收事件
+    - url: ../event-hubs/get-started-python-send-v2.md
+      itemType: quickstart
+      text: 使用 Python 向/从事件中心发送/接收事件
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: 查看详细信息
+  - title: 捕获事件
+    links:
+    - url: ../event-hubs/event-hubs-dedicated-overview.md
+      itemType: overview
+      text: 将事件捕获到 Azure Blob 存储或 Azure Data Lake Storage 中
+    - url: ../event-hubs/event-hubs-capture-enable-through-portal.md
+      itemType: quickstart
+      text: 启用捕获通过 Azure 事件中心流式处理的事件
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: 查看详细信息
+  - title: 处理事件
+    links:
+    - url: ../event-hubs/event-hubs-tutorial-visualize-anomalies.md
+      itemType: tutorial
+      text: 将发送到 Azure 事件中心的实时事件中的数据异常可视化
+    - url: ../event-hubs/event-hubs-kafka-stream-analytics.md
+      itemType: tutorial
+      text: 使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件
+    footerLink:
+      url: ../event-hubs/index.yml
+      text: 查看详细信息
+  - title: 创建队列
+    links:
+    - url: ../service-bus-messaging/service-bus-quickstart-portal.md
+      itemType: quickstart
+      text: 使用 Azure 门户创建服务总线队列
+    - url: ../service-bus-messaging/service-bus-quickstart-cli.md
+      itemType: quickstart
+      text: 使用 Azure CLI 创建服务总线队列
+    footerLink:
+      url: ../service-bus-messaging/index.yml
+      text: 查看详细信息
+  - title: 创建主题和订阅
+    links:
+    - url: ../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md
+      itemType: quickstart
+      text: 使用 Azure 门户创建一个服务总线主题和多个对该主题的订阅
+    - url: ../service-bus-messaging/service-bus-resource-manager-namespace-topic.md
+      itemType: quickstart
+      text: 使用模板创建包含主题和订阅的服务总线命名空间
+    footerLink:
+      url: ../service-bus-messaging/index.yml
+      text: 查看详细信息
+  - title: 发送和接收消息 - 队列
+    links:
+    - url: ../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md
+      itemType: concept
+      text: Azure 存储队列与服务总线队列的比较
+    - url: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
+      itemType: quickstart
+      text: 服务总线队列入门
+    - url: ../service-bus-messaging/service-bus-java-how-to-use-queues.md
+      itemType: quickstart
+      text: 通过 Java 使用 Azure 服务总线队列以发送和接收消息
+    footerLink:
+      url: ../service-bus-messaging/index.yml
+      text: 查看详细信息
+  - title: 发布和订阅消息
+    links:
+    - url: ../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md
+      itemType: quickstart
+      text: 服务总线主题入门
+    - url: ../service-bus-messaging/service-bus-java-how-to-use-topics-subscriptions.md
+      itemType: quickstart
+      text: 通过 Java 使用服务总线主题和订阅
+    - url: ../service-bus-messaging/service-bus-python-how-to-use-topics-subscriptions.md
+      itemType: quickstart
+      text: 通过 Python 使用服务总线主题和订阅
+    footerLink:
+      url: ../service-bus-messaging/index.yml
+      text: 查看详细信息
+  - title: 混合连接
+    links:
+    - url: ../azure-relay/relay-hybrid-connections-dotnet-get-started.md
+      itemType: tutorial
+      text: 开始在 .NET 中使用中继混合连接 WebSocket
+    - url: ../azure-relay/relay-hybrid-connections-http-requests-dotnet-get-started.md
+      itemType: tutorial
+      text: 开始在 .NET 中使用中继混合连接 HTTP 请求
+    footerLink:
+      url: ../azure-relay/index.yml
+      text: 查看详细信息

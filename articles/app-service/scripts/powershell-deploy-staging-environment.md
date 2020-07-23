@@ -1,26 +1,17 @@
 ---
-title: Azure PowerShell 脚本示例 - 创建应用并将代码部署到过渡槽 | Microsoft Docs
-description: Azure PowerShell 脚本示例 - 创建 Web 应用并将代码部署到过渡环境
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: PowerShell：将代码部署到过渡槽位
+description: 了解如何使用 Azure PowerShell 自动部署和管理应用服务。 此示例演示如何将代码部署到过渡环境。
 tags: azure-service-management
 ms.assetid: 27cf0680-c3a9-4a58-9f71-6dec09f6b874
-ms.service: app-service-web
-ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 03/20/2017
-ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 79d5efc9e30bd5bd12e8ea89da942fd0b5ad160c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7e8ebe28fa7989997b5d3adfd14c582438a00b1b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136421"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74684778"
 ---
 # <a name="create-a-web-app-and-deploy-code-to-a-staging-environment"></a>创建 Web 应用并将代码部署到过渡环境
 
@@ -46,7 +37,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | 创建应用服务计划。 |

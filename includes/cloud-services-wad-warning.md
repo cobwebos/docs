@@ -1,15 +1,15 @@
 ---
-author: jpconnock
+author: tanmaygore
+ms.author: tagore
 ms.service: cloud-services
 ms.topic: include
 ms.date: 11/25/2018
-ms.author: jeconnoc
-ms.openlocfilehash: f23d5246401f23694755e63a51c52da5dbf5ac1b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 5deba9d8968f71ef1b21517e74e6af4c39aa9271
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66125389"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76279403"
 ---
 > [!WARNING]
 > 为现有角色启用诊断时，将禁用部署包时已设置的所有扩展。 其中包括：

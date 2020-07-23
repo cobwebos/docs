@@ -8,25 +8,25 @@ manager: nitinme
 ms.assetid: 7F78B91F-F13B-40A4-B8A7-770FDB793F0F
 ms.service: cognitive-services
 ms.subservice: bing-image-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: e014910bc34d2c6aaf9904c5a3670e7d7b496e84
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: c4c6b95996206cfb38ea3f77b89c3ebe3c2c0026
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384380"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "68883493"
 ---
 # <a name="bing-image-search-api-v7-upgrade-guide"></a>必应图像搜索 API v7 升级指南
 
 此升级指南介绍必应图像搜索 API 的版本 5 与版本 7 之间的更改。 本指南有助于发现需要更新为使用版本 7 的应用部分。
 
-## <a name="breaking-changes"></a>重大变化
+## <a name="breaking-changes"></a>中断性变更
 
 ### <a name="endpoints"></a>终结点
 
-- 终结点的版本号已从 v5 更改为 v7。 例如，https:\//api.cognitive.microsoft.com/bing/\*\*v7.0**/images/search。
+- 终结点的版本号已从 v5 更改为 v7。 例如，https：\//api.cognitive.microsoft.com/bing/\*\*7.0 * */images/search。
 
 ### <a name="error-response-objects-and-error-codes"></a>错误响应对象和错误代码
 
@@ -39,7 +39,7 @@ ms.locfileid: "66384380"
 
 - 已将 v5 错误代码替换为以下可取的 `code` 和 `subCode` 值。
 
-|代码|SubCode|描述
+|代码|SubCode|说明
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|只要出现任何子代码条件，必应就会返回 ServerError。 如果 HTTP 状态代码为 500，响应就会包含这些错误。
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>已阻止|只要请求的任何部分无效，必应就会返回 InvalidRequest。 例如，缺少必需参数或参数值无效。<br/><br/>如果错误是 ParameterMissing 或 ParameterInvalidValue，HTTP 状态代码为 400。<br/><br/>如果错误是 HttpNotAllowed，则 HTTP 状态代码为 410。
@@ -56,7 +56,7 @@ RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
 ResourceAccessDenied|InsufficientAuthorization
 ExceededVolume|RateLimitExceeded
 ExceededQpsLimit|RateLimitExceeded
-已禁用|InsufficientAuthorization.AuthorizationDisabled
+禁用|InsufficientAuthorization.AuthorizationDisabled
 UnexpectedError|ServerError.UnexpectedError
 DataSourceErrors|ServerError.ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
@@ -98,10 +98,10 @@ InsufficientScope|InsufficientAuthorization
 - 现在，以下查询参数仅对 `/images/details` 终结点有效。  
 
     -   [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken)  
-    -   [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)  
+    -   [模块](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)  
     -   [imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imgurl)  
     -   [cab](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cab)  
-    -   [cal](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cal)  
+    -   cal[](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cal)  
     -   [car](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#car)  
     -   [cat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cat)  
     -   [ct](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#ct)  
@@ -132,7 +132,7 @@ InsufficientScope|InsufficientAuthorization
 
 -   已从 [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) 中删除 displayShoppingSourcesBadges 和 displayRecipeSourcesBadges 字段。  
 
--   已将 [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) 的 `nextOffsetAddCount` 字段重命名为 `nextOffset`。 偏移量的使用方式也发生了更改。 以前将[偏移量](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offset)查询参数设置为 `nextOffsetAddCount` 值加上前一个偏移量的值再加上结果中的图像数。 现在将 `offset` 设置为 `nextOffset` 值。  
+-   已将 [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) 的 `nextOffsetAddCount` 字段重命名为 `nextOffset`。 offset 的使用方式也已变化。 以前将[偏移量](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offset)查询参数设置为 `nextOffsetAddCount` 值加上前一个偏移量的值再加上结果中的图像数。 现在将 `offset` 设置为 `nextOffset` 值。  
 
 
 ## <a name="non-breaking-changes"></a>非重大变化
@@ -147,7 +147,7 @@ InsufficientScope|InsufficientAuthorization
 
 - 添加了 [maxHeight](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxheight)、[minHeight](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minheight)、[maxWidth](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxwidth) 和 [minWidth](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minwidth) 查询参数。 使用这些筛选器可返回具有特定范围内高度和宽度的图像。  
 
-### <a name="object-changes"></a>对象更改
+### <a name="object-changes"></a>对象变化
 
 - 向 [Offer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offer) 对象添加了 `description` 和 `lastUpdated` 字段。  
 

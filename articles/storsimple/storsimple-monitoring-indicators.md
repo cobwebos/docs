@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 59dee7b9-ca6d-4fd9-96e6-a0071e8d248e
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: ef8acf1c3c9211168ebacc8d62647f6789c745a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 97209dca7d30de037dbd21f5cc145b2941060e70
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60630538"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512977"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>使用 StorSimple 监视指示器管理设备
 
@@ -36,7 +36,7 @@ StorSimple 设备包括了发光二极管 (LED) 和警报，可以使用它们�
 本文的剩余部分介绍了各种监视指示器 LED、它们在 StorSimple 设备上的位置、基于 LED 状态的设备状态以及任何关联的有声警报。
 
 ## <a name="front-panel-indicator-leds"></a>前面板指示器 LED
-前面板（也称为*操作面板*）显示系统中所有模块的聚合状态。 StorSimple 主机箱和 EBOD 机箱的前面板是完全相同的，如下图所示。  
+前面板（也称为*操作面板***）显示系统中所有模块的聚合状态。 StorSimple 主机箱和 EBOD 机箱的前面板是完全相同的，如下图所示。  
 
    ![设备前面板][1]
 
@@ -92,10 +92,10 @@ PCM 的状态是在 LED 面板上指示的。 设备 PCM LED 面板有六个 LED
 | 没有交流电（仅限此 PCM） |OFF |ON |OFF |ON |
 | 交流电源已向 PCM 供电 - 正常 |ON |OFF |OFF |OFF |
 | PCM 故障（风扇故障） |OFF |OFF |ON |不适用 |
-| PCM 故障（安培数过高、电压过高、电流过大） |OFF |ON |ON |亮起 |
+| PCM 故障（安培数过高、电压过高、电流过大） |OFF |ON |ON |ON |
 | PCM（风扇转速失调） |ON |OFF |OFF |ON |
 | 备用模式 |闪烁 |OFF |OFF |OFF |
-| PCM 固件下载 |熄灭 |闪烁 |闪烁 |闪烁 |
+| PCM 固件下载 |OFF |闪烁 |闪烁 |闪烁 |
 
 ### <a name="pcm-indicator-leds-for-the-backup-battery"></a>备用电池的 PCM 指示器 LED
 | 状态 | 电池良好（绿色） | 电池故障（琥珀色） |
@@ -120,10 +120,10 @@ EBOD 机箱有一个 580W PCM，没有额外的电池。 EBOD 机箱的 PCM 面�
 | 没有交流电（仅限此 PCM） |OFF |ON |OFF |ON |
 | 交流电源已向 PCM 供电 - 正常 |ON |OFF |OFF |OFF |
 | PCM 故障（风扇故障） |OFF |OFF |ON |X |
-| PCM 故障（安培数过高、电压过高、电流过大） |OFF |ON |ON |亮起 |
+| PCM 故障（安培数过高、电压过高、电流过大） |OFF |ON |ON |ON |
 | PCM（风扇转速失调） |ON |OFF |OFF |ON |
 | 备用模式 |闪烁 |OFF |OFF |OFF |
-| PCM 固件下载 |熄灭 |闪烁 |闪烁 |闪烁 |
+| PCM 固件下载 |OFF |闪烁 |闪烁 |闪烁 |
 
 ## <a name="controller-module-indicator-leds"></a>控制器模块指示器 LED
 StorSimple 设备包含了用于主控制器和 EBOD 控制器模块的 LED   
@@ -179,9 +179,9 @@ StorSimple 设备在主机箱和 EBOD 机箱中都有磁盘驱动器。 每个�
 ### <a name="disk-drive-indicator-leds-for-the-ebod-enclosure"></a>EBOD 机箱的磁盘驱动器指示器 LED
 | 状态 | 活动正常 LED（绿色） | 故障 LED（琥珀红） | 关联的操作面板 LED |
 | --- | --- | --- | --- |
-| 未安装驱动器 |OFF |OFF |无 |
-| 驱动器已安装且正常运行 |有活动时闪烁亮起/熄灭 |X |无 |
-| SCSI 机箱服务 (SES) 设备标识已设置 |ON |闪烁亮起 1 秒/熄灭 1 秒 |无 |
+| 未安装驱动器 |OFF |OFF |None |
+| 驱动器已安装且正常运行 |有活动时闪烁亮起/熄灭 |X |None |
+| SCSI 机箱服务 (SES) 设备标识已设置 |ON |闪烁亮起 1 秒/熄灭 1 秒 |None |
 | SES 设备故障位已设置 |ON |ON |逻辑故障（红色） |
 | 电源控制电路故障 |OFF |ON |模块故障（红色） |
 
@@ -203,9 +203,9 @@ StorSimple 设备包含了与主机箱和 EBOD 机箱关联的有声警报。 �
 | 警报状态 | 操作 | 按下了静音按钮时的操作 |
 | --- | --- | --- |
 | S0 |正常模式：静音 |鸣叫两声 |
-| S1 |故障模式：1 秒上/熄灭 1 秒 |转变为 S2 或 S3（请参阅“注意”部分） |
-| S2 |提醒模式：间歇性鸣叫 |无 |
-| S3 |静音模式：静音 |无 |
+| S1 |故障模式：亮起 1 秒/熄灭 1 秒 |转变为 S2 或 S3（请参阅“注意”部分） |
+| S2 |提醒模式：间歇性鸣叫 |None |
+| S3 |静音模式：静音 |None |
 | S4 |严重故障模式：持续告警 |不可用：静音未处于活动状态 |
 
 > [!NOTE]
@@ -225,7 +225,7 @@ StorSimple 设备包含了与主机箱和 EBOD 机箱关联的有声警报。 �
 | PCM 警报 – 单个 PCM 的直流电源断开 |故障 – 损失了冗余 |S1 |模块故障 |
 | PCM 风扇故障 |故障 – 损失了冗余 |S1 |模块故障 |
 | SBB 模块检测到 PCM 故障 |故障 |S1 |模块故障 |
-| 移除了 PCM |配置错误 |无 |模块故障 |
+| 移除了 PCM |配置错误 |None |模块故障 |
 | 机箱配置错误 |故障 – 严重 |S1 |模块故障 |
 | 低等警告温度警报 |警告 |S1 |模块故障 |
 | 高等警告温度警报 |警告 |S1 |模块故障 |
@@ -235,10 +235,10 @@ StorSimple 设备包含了与主机箱和 EBOD 机箱关联的有声警报。 �
 | 控制器错误 |故障 – 严重 |S1 |模块故障 |
 | SBB 接口模块故障 |故障 – 严重 |S1 |模块故障 |
 | SBB 接口模块故障 – 未剩余可以正常运行的模块 |故障 – 严重 |S4 |模块故障 |
-| 移除了 SBB 接口模块 |警告 |无 |模块故障 |
+| 移除了 SBB 接口模块 |警告 |None |模块故障 |
 | 驱动器电源控制故障 |警告 – 驱动器电源未断开 |S1 |模块故障 |
 | 驱动器电源控制故障 |故障 – 严重；驱动器电源断开 |S1 |模块故障 |
-| 移除了驱动器 |警告 |无 |模块故障 |
+| 移除了驱动器 |警告 |None |模块故障 |
 | 电力不足 |警告 |无 |模块故障 |
 
 ## <a name="next-steps"></a>后续步骤

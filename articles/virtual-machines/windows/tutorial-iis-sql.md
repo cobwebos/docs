@@ -1,26 +1,19 @@
 ---
-title: 教程 - 在 Azure 中创建运行 SQL、IIS、.NET 堆栈的 VM | Microsoft Docs
+title: 教程 - 在 Azure 中创建运行 SQL、IIS、.NET 堆栈的 VM
 description: 本教程介绍如何在 Azure 中的 Windows 虚拟机上安装 Azure SQL、IIS、.NET 堆栈。
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 770fa89bc08b448482b4a74d21ee307df8a9f836
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3e44236f74a5448c540c58ba730d65b412d48bd0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58167909"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82101699"
 ---
 # <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>教程：使用 Azure PowerShell 在 Windows VM 中安装 SQL、IIS、.NET 堆栈
 
@@ -36,7 +29,7 @@ ms.locfileid: "58167909"
 
 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 
 
-若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
+若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。  也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。 
 
 ## <a name="create-an-iis-vm"></a>创建 IIS VM 
 
@@ -130,7 +123,7 @@ Set-AzVMSqlServerExtension `
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已使用 Azure PowerShell 安装 SQL&#92;IIS&#92;.NET 堆栈。 你已了解如何：
+在本教程中，已使用 Azure PowerShell 安装 SQL&#92;IIS&#92;.NET 堆栈。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 VM 
@@ -138,8 +131,8 @@ Set-AzVMSqlServerExtension `
 > * 创建运行 SQL Server 的 VM
 > * 安装 SQL Server 扩展
 
-转到下一教程，了解如何使用 SSL 证书保护 IIS Web 服务器。
+转到下一教程，了解如何使用 TLS/SSL 证书保护 IIS Web 服务器。
 
 > [!div class="nextstepaction"]
-> [使用 SSL 证书保护 IIS Web 服务器](tutorial-secure-web-server.md)
+> [使用 TLS/SSL 证书保护 IIS Web 服务器](tutorial-secure-web-server.md)
 

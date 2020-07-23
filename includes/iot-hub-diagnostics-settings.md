@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 3893b79cee96c3928897f64f3601ebe4c490ebdd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: f3cab4909937bbf5ccb0f72b194b08810c0487c2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146317"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84792008"
 ---
 ### <a name="enable-logging-with-diagnostics-settings"></a>通过诊断设置启用日志记录
 
@@ -63,4 +63,4 @@ Select-AzSubscription -SubscriptionName <subscription that includes your IoT Hub
 Set-AzDiagnosticSetting -ResourceId <your resource Id> -ServiceBusRuleId <your service bus rule Id> -Enabled $true
 ```
 
-新设置在大约 10 分钟后生效。 在此之后，日志将出现在“诊断设置”边栏选项卡上配置的存档目标中。 有关配置诊断的详细信息，请参阅[从 Azure 资源收集和使用日志数据](../articles/azure-monitor/platform/diagnostic-logs-overview.md)。
+新设置在大约 10 分钟后生效。 在此之后，日志将出现在“诊断设置”**** 边栏选项卡上配置的存档目标中。 有关配置诊断的详细信息，请参阅[从 Azure 资源收集和使用日志数据](../articles/azure-monitor/platform/platform-logs-overview.md)。

@@ -1,6 +1,6 @@
 ---
 title: 远程监视解决方案加速器常见问题解答 - Azure| Microsoft Docs
-description: 远程监视解决方案加速器的常见问题解答
+description: 本文解答了远程监视解决方案加速器的常见问题。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,12 +8,11 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 746d21c7ff4d5b939eea7690193ac07425b4001c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: c410ac7f41adb623a7198320a1edced097778569
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61447897"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73826237"
 ---
 # <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>远程监视解决方案加速器的常见问题解答
 
@@ -23,8 +22,8 @@ ms.locfileid: "61447897"
 
 新的解决方案加速器提供两个部署选项：
 
-* 基本选项适用于寻求更低开发成本的开发人员，或想要生成演示或概念证明的客户。
-* 标准选项适用于想要部署生产就绪基础结构的企业。
+* 基本选项适用于寻求更低开发成本的开发人员，或想要生成演示或概念证明的客户。**
+* 标准选项适用于想要部署生产就绪基础结构的企业。**
 
 ### <a name="how-can-i-ensure-i-keep-my-costs-down-while-i-develop-my-solution"></a>如何确保在开发解决方案的同时不断降低成本？
 
@@ -40,7 +39,7 @@ ms.locfileid: "61447897"
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>在哪里可以找到有关以前版本的远程监视解决方案的信息？
 
-以前版本的远程监视解决方案加速器称为 IoT 套件远程监视预配置解决方案。 可以在 [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) 中找到已存档文档。
+以前版本的远程监视解决方案加速器称为 IoT 套件远程监视预配置解决方案。 可以在中找到存档的文档 [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) 。
 
 ### <a name="next-steps"></a>后续步骤
 

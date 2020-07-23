@@ -1,27 +1,19 @@
 ---
 title: Azure Application Insights - 依赖项自动收集 | Microsoft Docs
 description: Application Insights 自动收集和可视化依赖项
-services: application-insights
-documentationcenter: .net
-author: nikmd23
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: reference
-ms.date: 04/29/2019
-ms.reviewer: mbullwin
-ms.author: nimolnar
-ms.openlocfilehash: 832f927f81b57fd16c202b855d8f1dbe0617ad56
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+author: mrbullwinkle
+ms.author: mbullwin
+ms.date: 05/06/2020
+ms.openlocfilehash: 21e98ee9dc59e7520fb715f1146e492b9198f883
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149898"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82891598"
 ---
 # <a name="dependency-auto-collection"></a>依赖项自动收集
 
-下面是当前支持的依赖项调用的列表，系统会自动将其检测为依赖项，不需对应用程序的代码进行额外的修改。 这包括对通信库、存储客户端、日志记录和指标库的传出调用，以及对应用程序框架和服务器的传入调用。 这些依赖项在 Application Insights 的[应用程序映射](https://docs.microsoft.com/azure/application-insights/app-insights-app-map)和[事务诊断](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics)视图中可视化。 如果依赖项不在下面的列表中，仍可通过[跟踪依赖项调用](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)手动跟踪它。
+下面是当前支持的依赖项调用的列表，系统会自动将其检测为依赖项，不需对应用程序的代码进行额外的修改。 这些依赖项在 Application Insights 的[应用程序映射](https://docs.microsoft.com/azure/application-insights/app-insights-app-map)和[事务诊断](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics)视图中可视化。 如果依赖项不在下面的列表中，仍可通过[跟踪依赖项调用](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)手动跟踪它。
 
 ## <a name="net"></a>.NET
 
@@ -34,15 +26,15 @@ ms.locfileid: "65149898"
 | <b> 通信库</b> |
 | [HttpClient](https://www.microsoft.com/net/) | 4.5+、.NET Core 1.1+ |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0+、NuGet 4.3.0 |
+| [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient/1.1.2)| 1.1.0 - 最新稳定版本。 （请参阅下面的说明。）
 | [EventHubs 客户端 SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 1.1.0 |
 | [ServiceBus 客户端 SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) | 3.0.0 |
 | <b>存储客户端</b>|  |
 | ADO.NET | 4.5+ |
-| <b>日志记录库</b> |  |
-| ILogger | 1.1+ |
-| System.Diagnostics.Trace | 4.5+ |
-| [nLog](https://www.nuget.org/packages/NLog/) | 4.4.12+ |
-| [log4net](https://www.nuget.org/packages/log4net/) | NetStandard 1.3 上的 2.0.8+、.NET 4.5+ 上的 2.0.6+ |
+
+> [!NOTE]
+> 早期版本的 Microsoft.Data.SqlClient 存在一个[已知问题](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1347)。 建议使用 1.1.0 或更高版本来缓解此问题。 Entity Framework Core 不一定随附 Microsoft.Data.SqlClient 的最新稳定版本，因此我们建议你确认所使用的最低版本是 1.1.0 版本以避免此问题。   
+
 
 ## <a name="java"></a>Java
 | 应用服务器 | 版本 |
@@ -58,7 +50,7 @@ ms.locfileid: "65149898"
 | [Apache Http 客户端](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) | 4.3+<sup>†</sup> |
 | <b>存储客户端</b> | |
 | [SQL Server]( https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc) | 1+<sup>†</sup> |
-| [PostgreSQL （测试版支持）](https://github.com/Microsoft/ApplicationInsights-Java/blob/master/CHANGELOG.md#version-240-beta) | |
+| [PostgreSQL（Beta 版本支持）](https://github.com/Microsoft/ApplicationInsights-Java/blob/master/CHANGELOG.md#version-240-beta) | |
 | [Oracle]( https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html) | 1+<sup>†</sup> |
 | [MySql]( https://mvnrepository.com/artifact/mysql/mysql-connector-java) | 1+<sup>†</sup> |
 | <b>日志记录库</b> | |
@@ -87,7 +79,7 @@ ms.locfileid: "65149898"
 | [Bunyan](https://www.npmjs.com/package/bunyan) | 1.x |
 | [Winston](https://www.npmjs.com/package/winston) | 2.x - 3.x |
 
-## <a name="javascript"></a>JavaScript
+## <a name="javascript"></a>Javascript
 
 | 通信库 | 版本 |
 | ------------------------|----------|
@@ -97,6 +89,7 @@ ms.locfileid: "65149898"
 
 - 为 [.NET](../../azure-monitor/app/asp-net-dependencies.md) 设置自定义依赖项跟踪。
 - 为 [Java](../../azure-monitor/app/java-agent.md) 设置自定义依赖项跟踪。
+- 为 [OpenCensus Python](../../azure-monitor/app/opencensus-python-dependency.md) 设置自定义依赖项跟踪。
 - [编写自定义依赖项遥测](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
 - 有关 Application Insights 的类型和数据模型，请参阅[数据模型](../../azure-monitor/app/data-model.md)。
 - 查看 Application Insights 支持的[平台](../../azure-monitor/app/platforms.md)。

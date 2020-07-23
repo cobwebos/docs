@@ -3,23 +3,22 @@ title: 什么是基于组的许可 - Azure Active Directory | Microsoft Docs
 description: 了解 Azure Active Directory 基于组的许可，包括其工作原理和最佳做法。
 services: active-directory
 keywords: Azure AD 许可
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/29/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be7094db14f53af939ded2313823bf2749e59a46
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 9eec896e6cccaf58c83820161c54c4f10cfadadd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60248300"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77561555"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Azure Active Directory 中基于组的许可是什么？
 
@@ -32,9 +31,9 @@ Microsoft 付费云服务（如 Office 365、企业移动性 + 安全性、Dynam
 ## <a name="licensing-requirements"></a>许可要求
 必须具有以下许可证之一才能使用基于组的许可：
 
-- Azure AD Basic 的付费版或试用版订阅
+- Azure AD Premium P1 和更高版本的付费或试用订阅
 
-- Office 365 企业版 E3 或 Office 365 A3 及更高版本的付费版或试用版版本
+- 付费或试用版 Office 365 企业版 E3 或 Office 365 A3 或 office 365 GCC G3 或 Office 365 E3 for GCCH 或 Office 365 E3 for DOD 及更高版本
 
 ### <a name="required-number-of-licenses"></a>所需许可证数
 对于分配了许可证的任何组，你还必须具有用于每个唯一成员的许可证。 虽然不是必须为组的每个成员分配一个许可证，但是你必须至少具有足够的许可证来包括所有成员。 例如，如果你的租户中经许可的组有 1,000 个唯一成员，则必须至少具有 1,000 个许可证才满足许可协议。
@@ -49,7 +48,7 @@ Microsoft 付费云服务（如 Office 365、企业移动性 + 安全性、Dynam
 
 - 支持需要用户级许可的所有 Microsoft 云服务。 此支持包括所有 Office 365 产品、企业移动性 + 安全性和 Dynamics 365。
 
-- 基于组的许可目前仅通过[Azure 门户](https://portal.azure.com)。 如果您主要使用其他管理门户的用户和组管理，如[Microsoft 365 管理中心内](https://admin.microsoft.com)，可以继续执行此操作。 但是，应该使用 Azure 门户在组级别管理许可证。
+- 基于组的许可目前仅通过 [Azure 门户](https://portal.azure.com)提供。 如果你主要使用其他管理门户进行用户和组管理（如[Microsoft 365 管理中心](https://admin.microsoft.com)），则可以继续执行此操作。 但是，应该使用 Azure 门户在组级别管理许可证。
 
 - Azure AD 会自动管理由组成员身份更改导致的许可证修改。 通常，在组成员身份发生更改时，许可证修改在几分钟内就会生效。
 

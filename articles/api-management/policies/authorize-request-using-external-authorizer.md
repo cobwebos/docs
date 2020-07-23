@@ -1,5 +1,6 @@
 ---
-title: Azure API 管理策略示例 - 使用外部授权程序授权请求 | Microsoft Docs
+title: API 管理策略示例-使用外部授权者授权请求
+titleSuffix: Azure API Management
 description: Azure API 管理策略示例 - 展示了如何使用封装自定义或旧身份验证/授权逻辑的外部授权程序授权请求。
 services: api-management
 documentationcenter: ''
@@ -9,16 +10,14 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: apimpm
-ms.openlocfilehash: 65ea8622187d0665e4680f4162ddff0bc01e6eb9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 99bf1068042eb7ab0c43e2a683ca7116d2e426f3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306760"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75442501"
 ---
 # <a name="authorize-requests-using-external-authorizer"></a>使用外部授权程序授权请求
 
@@ -26,7 +25,7 @@ ms.locfileid: "60306760"
 
 ## <a name="policy"></a>策略
 
-将代码粘贴到“入站”块中。
+将代码粘贴到“入站”块中  。
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Authorize requests using external authorizer.policy.xml)]
 

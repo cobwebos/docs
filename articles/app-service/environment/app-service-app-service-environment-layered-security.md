@@ -1,29 +1,20 @@
 ---
-title: 使用应用服务环境实现分层的安全体系结构 - Azure
-description: 使用应用服务环境实现分层的安全体系结构。
-services: app-service
-documentationcenter: ''
+title: 分层安全性 v1
+description: 了解如何在应用服务环境中实现分层安全体系结构。 本文档仅供使用旧版 v1 ASE 的用户使用。
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: 73ce0213-bd3e-4876-b1ed-5ecad4ad5601
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 5e25de1ad2042ac978c3698165b9d9baba20e816
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 49f63207e40ea94620b4acd1465b61c5e46d80a6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130681"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832468"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>使用应用服务环境实现分层的安全体系结构
-## <a name="overview"></a>概述
 由于应用服务环境提供部署到虚拟网络的隔离运行时环境，因此开发人员能够创建分层的安全体系结构，针对每个物理应用层提供不同级别的网络访问权限。
 
 常见的需求之一是要隐藏对 API 后端的常规 Internet 访问，而只允许由上游 Web 应用调用 API。  可以在包含应用服务环境的子网上使用[网络安全组 (NSG)][NetworkSecurityGroups]，来限制对 API 应用程序的公共访问。
@@ -45,38 +36,48 @@ ms.locfileid: "62130681"
 * **后端 API 应用是否需要调用本身？**  后端应用程序有时候需要调用本身，这是常被忽略且难以察觉的情况。  如果应用服务环境中的后端 API 应用程序需要调用本身，这也被视为“Internet”调用。  在示例体系结构中，这还需要允许从“apiase”应用服务环境的出站 IP 地址进行访问。
 
 ## <a name="setting-up-the-network-security-group"></a>设置网络安全组
-知道出站 IP 地址集后，下一步是构建网络安全组。  可以为这两个基于 Resource Manager 的虚拟网络以及经典虚拟网络创建网络安全组。  下面的示例显示了如何使用 Powershell 在经典虚拟网络中创建和配置 NSG。
+知道出站 IP 地址集后，下一步是构建网络安全组。  可以为这两个基于 Resource Manager 的虚拟网络以及经典虚拟网络创建网络安全组。  下面的示例演示如何使用 PowerShell 在经典虚拟网络上创建和配置 NSG。
 
 在示例体系结构中，环境位于美国中南部，因此请在该区域中创建空的 NSG：
 
-    New-AzureNetworkSecurityGroup -Name "RestrictBackendApi" -Location "South Central US" -Label "Only allow web frontend and loopback traffic"
+```azurepowershell-interactive
+New-AzureNetworkSecurityGroup -Name "RestrictBackendApi" -Location "South Central US" -Label "Only allow web frontend and loopback traffic"
+```
 
 首先要为 Azure 管理基础结构添加显式允许规则，如应用服务环境的[入站流量][InboundTraffic]相关文章中所述。
 
-    #Open ports for access by Azure management infrastructure
-    Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" -Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET' -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP
+```azurepowershell-interactive
+#Open ports for access by Azure management infrastructure
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" -Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET' -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP
+```
 
 接下来，添加两个规则以允许从第一个上游应用服务环境（“fe1ase”）进行 HTTP 和 HTTPS 调用。
 
-    #Grant access to requests from the first upstream web front-end
-    Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe1ase" -Type Inbound -Priority 200 -Action Allow -SourceAddressPrefix '65.52.xx.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
-    Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe1ase" -Type Inbound -Priority 300 -Action Allow -SourceAddressPrefix '65.52.xx.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
+```azurepowershell-interactive
+#Grant access to requests from the first upstream web front-end
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe1ase" -Type Inbound -Priority 200 -Action Allow -SourceAddressPrefix '65.52.xx.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe1ase" -Type Inbound -Priority 300 -Action Allow -SourceAddressPrefix '65.52.xx.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
+```
 
 对第二个和第三个上游应用服务环境（“fe2ase”和“fe3ase”）重复上述步骤。
 
-    #Grant access to requests from the second upstream web front-end
-    Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe2ase" -Type Inbound -Priority 400 -Action Allow -SourceAddressPrefix '191.238.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
-    Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe2ase" -Type Inbound -Priority 500 -Action Allow -SourceAddressPrefix '191.238.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
+```azurepowershell-interactive
+#Grant access to requests from the second upstream web front-end
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe2ase" -Type Inbound -Priority 400 -Action Allow -SourceAddressPrefix '191.238.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe2ase" -Type Inbound -Priority 500 -Action Allow -SourceAddressPrefix '191.238.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
 
-    #Grant access to requests from the third upstream web front-end
-    Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe3ase" -Type Inbound -Priority 600 -Action Allow -SourceAddressPrefix '23.98.abc.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
-    Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe3ase" -Type Inbound -Priority 700 -Action Allow -SourceAddressPrefix '23.98.abc.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
+#Grant access to requests from the third upstream web front-end
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe3ase" -Type Inbound -Priority 600 -Action Allow -SourceAddressPrefix '23.98.abc.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe3ase" -Type Inbound -Priority 700 -Action Allow -SourceAddressPrefix '23.98.abc.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
+```
 
 最后，授予后端 API 对应用服务环境出站 IP 地址的访问权限，使其能够回调本身。
 
-    #Allow apps on the apiase environment to call back into itself
-    Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP apiase" -Type Inbound -Priority 800 -Action Allow -SourceAddressPrefix '70.37.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
-    Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS apiase" -Type Inbound -Priority 900 -Action Allow -SourceAddressPrefix '70.37.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
+```azurepowershell-interactive
+#Allow apps on the apiase environment to call back into itself
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP apiase" -Type Inbound -Priority 800 -Action Allow -SourceAddressPrefix '70.37.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS apiase" -Type Inbound -Priority 900 -Action Allow -SourceAddressPrefix '70.37.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
+```
 
 不需要其他网络安全规则，因为默认情况下每个 NSG 都有一组默认规则阻止来自 Internet 的入站访问。
 
@@ -86,8 +87,10 @@ ms.locfileid: "62130681"
 
 最后一步是将 NSG 应用到包含“apiase”应用服务环境的子网。
 
-     #Apply the NSG to the backend API subnet
-    Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityGroupToSubnet -VirtualNetworkName 'yourvnetnamehere' -SubnetName 'API-ASE-Subnet'
+```azurepowershell-interactive
+#Apply the NSG to the backend API subnet
+Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityGroupToSubnet -VirtualNetworkName 'yourvnetnamehere' -SubnetName 'API-ASE-Subnet'
+```
 
 将 NSG 应用到子网后，只有三个上游应用服务环境以及包含 API 后端的应用服务环境能够调用“apiase”环境。
 

@@ -1,18 +1,14 @@
 ---
 title: Azure 事件网格事件筛选
 description: 介绍如何在创建 Azure 事件网格订阅时筛选事件。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/21/2019
-ms.author: spelluru
-ms.openlocfilehash: 76a4c16afc9edef0a88ac9f2892de9738fd30289
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.date: 07/07/2020
+ms.openlocfilehash: 837209d4197c271598155776b8d171a705e1f454
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305057"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120086"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解事件网格订阅的事件筛选
 
@@ -61,28 +57,45 @@ ms.locfileid: "66305057"
 * 键 - 用于筛选的事件数据中的字段。 它可以是数字、布尔值或字符串。
 * 值 - 要与键进行比较的值。
 
-使用高级筛选器的 JSON 语法是：
+如果指定具有多个值的单个筛选器，则将执行 **OR** 操作，因此键字段的值必须是这些值之一。 以下是示例：
 
 ```json
-"filter": {
-  "advancedFilters": [
+"advancedFilters": [
     {
-      "operatorType": "NumberGreaterThanOrEquals",
-      "key": "Data.Key1",
-      "value": 5
-    },
-    {
-      "operatorType": "StringContains",
-      "key": "Subject",
-      "values": ["container1", "container2"]
+        "operatorType": "StringContains",
+        "key": "Subject",
+        "values": [
+            "/providers/microsoft.devtestlab/",
+            "/providers/Microsoft.Compute/virtualMachines/"
+        ]
     }
-  ]
-}
+]
 ```
 
-### <a name="operator"></a>运算符
+如果指定多个不同的筛选器，则将执行 **AND** 操作，因此必须满足每个筛选器条件。 以下是示例： 
 
-可用的数字运算符为：
+```json
+"advancedFilters": [
+    {
+        "operatorType": "StringContains",
+        "key": "Subject",
+        "values": [
+            "/providers/microsoft.devtestlab/"
+        ]
+    },
+    {
+        "operatorType": "StringContains",
+        "key": "Subject",
+        "values": [
+            "/providers/Microsoft.Compute/virtualMachines/"
+        ]
+    }
+]
+```
+
+### <a name="operators"></a>运算符
+
+可用的数字**** 运算符为：
 
 * NumberGreaterThan
 * NumberGreaterThanOrEquals
@@ -91,9 +104,10 @@ ms.locfileid: "66305057"
 * NumberIn
 * NumberNotIn
 
-可用的布尔值运算符为：BoolEquals
+可用的布尔值**** 运算符为： 
+- BoolEquals
 
-可用的字符串运算符为：
+可用的字符串**** 运算符为：
 
 * StringContains
 * StringBeginsWith
@@ -101,15 +115,15 @@ ms.locfileid: "66305057"
 * StringIn
 * StringNotIn
 
-所有字符串比较都不区分大小写。
+所有字符串比较均不**** 区分大小写。
 
-### <a name="key"></a>密钥
+### <a name="key"></a>键
 
 对于事件网格架构中的事件，请使用以下键值：
 
-* Id
+* ID
 * 主题
-* Subject
+* 使用者
 * EventType
 * DataVersion
 * 事件数据（如 Data.key1）
@@ -117,7 +131,7 @@ ms.locfileid: "66305057"
 对于云事件架构中的事件，请使用以下键值：
 
 * EventId
-* 源
+* Source
 * EventType
 * EventTypeVersion
 * 事件数据（如 Data.key1）
@@ -128,20 +142,170 @@ ms.locfileid: "66305057"
 
 值可以是：
 
-* 数字
+* number
 * string
 * boolean
-* 数组
+* array
 
 ### <a name="limitations"></a>限制
 
 高级筛选具有以下限制：
 
-* 每个事件网格订阅有五个高级筛选器
+* 5每个事件网格订阅的所有筛选器中的高级筛选器和25个筛选器值
 * 每个字符串值有 512 个字符
-* “in”和“not in”运算符有 5 个值  
+* “in”和“not in”运算符有 5 个值**** ****
+* 具有 `.`（点）**** 字符的键。 例如： `http://schemas.microsoft.com/claims/authnclassreference` 或 `john.doe@contoso.com` 。 目前不支持键中使用转义字符。 
 
 可以在多个筛选器中使用相同的键。
+
+### <a name="examples"></a>示例
+
+### <a name="stringcontains"></a>StringContains
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringContains",
+    "key": "data.key1",
+    "values": [
+        "microsoft", 
+        "azure"
+    ]
+}]
+```
+
+### <a name="stringbeginswith"></a>StringBeginsWith
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringBeginsWith",
+    "key": "data.key1",
+    "values": [
+        "event", 
+        "grid"
+    ]
+}]
+```
+
+### <a name="stringendswith"></a>StringEndsWith
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringEndsWith",
+    "key": "data.key1",
+    "values": [
+        "jpg", 
+        "jpeg", 
+        "png"
+    ]
+}]
+```
+
+### <a name="stringin"></a>StringIn
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringIn",
+    "key": "data.key1",
+    "values": [
+        "exact", 
+        "string", 
+        "matches"
+    ]
+}]
+```
+
+### <a name="stringnotin"></a>StringNotIn
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringNotIn",
+    "key": "data.key1",
+    "values": [
+        "aws", 
+        "bridge"
+    ]
+}]
+```
+
+### <a name="numberin"></a>NumberIn
+
+```json
+
+"advancedFilters": [{
+    "operatorType": "NumberIn",
+    "key": "data.counter",
+    "values": [
+        5,
+        1
+    ]
+}]
+
+```
+
+### <a name="numbernotin"></a>NumberNotIn
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberNotIn",
+    "key": "data.counter",
+    "values": [
+        41,
+        0,
+        0
+    ]
+}]
+```
+
+### <a name="numberlessthan"></a>NumberLessThan
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberLessThan",
+    "key": "data.counter",
+    "value": 100
+}]
+```
+
+### <a name="numbergreaterthan"></a>NumberGreaterThan
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberGreaterThan",
+    "key": "data.counter",
+    "value": 20
+}]
+```
+
+### <a name="numberlessthanorequals"></a>NumberLessThanOrEquals
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberLessThanOrEquals",
+    "key": "data.counter",
+    "value": 100
+}]
+```
+
+### <a name="numbergreaterthanorequals"></a>NumberGreaterThanOrEquals
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberGreaterThanOrEquals",
+    "key": "data.counter",
+    "value": 30
+}]
+```
+
+### <a name="boolequals"></a>BoolEquals
+
+```json
+"advancedFilters": [{
+    "operatorType": "BoolEquals",
+    "key": "data.isEnabled",
+    "value": true
+}]
+```
+
 
 ## <a name="next-steps"></a>后续步骤
 

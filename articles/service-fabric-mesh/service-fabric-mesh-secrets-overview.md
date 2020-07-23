@@ -1,20 +1,15 @@
 ---
-title: 存储和使用 Azure Service Fabric 网格应用程序机密 | Microsoft Docs
-description: 存储和使用 Service Fabric 网格机密。
-services: service-fabric-mesh
-keywords: secrets
-author: v-steg
-ms.author: v-steg
+title: 存储和使用 Azure Service Fabric 网格应用程序机密
+description: Service Fabric 网格支持将机密作为 Azure 资源。 下面介绍如何在 Service Fabric 网格应用程序中存储和管理机密。
+author: erikadoyle
+ms.author: edoyle
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: jeanpaul.connock
-ms.openlocfilehash: 4268356db5f46e92862e19d6391cfe5a94511270
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: da4eaa34840f14714616b85e24fd62cf65602b84
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810661"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76277634"
 ---
 # <a name="service-fabric-mesh-application-secrets"></a>Service Fabric 网格应用程序机密
 Service Fabric 网格支持将机密作为 Azure 资源。 Service Fabric 网格机密可以是任何敏感文本信息，例如存储连接字符串、密码或应该安全存储和传输的其他值。

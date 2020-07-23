@@ -1,5 +1,5 @@
 ---
-title: Azure Database for MariaDB 的 Azure CLI 示例
+title: Azure CLI 示例 - Azure Database for MariaDB
 description: 本文列出了可用于与 Azure Database for MariaDB 交互的 Azure CLI 代码示例。
 author: ajlam
 ms.author: andrela
@@ -7,18 +7,18 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 11/27/2018
-ms.openlocfilehash: 8b38c5b94a3019b0c4ccaaa5c0cb86f74380469e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 3/18/2020
+ms.openlocfilehash: 8579f9294f55293cd32c8dfc1c13f9d4570aed67
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545050"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110328"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mariadb"></a>Azure Database for MariaDB 的 Azure CLI 示例 
 下表包含指向示例 Azure CLI 脚本的链接，这些脚本针对 Azure Database for MariaDB。
 
-| |  |
+| 示例链接 | 说明  |
 |---|---|
 |**创建服务器**||
 | [创建服务器和防火墙规则](./scripts/sample-create-server-and-firewall-rule.md?toc=%2fcli%2fazure%2ftoc.json) | 此 Azure CLI 脚本创建单个 Azure Database for MariaDB 服务器，并配置服务器级防火墙规则。 |

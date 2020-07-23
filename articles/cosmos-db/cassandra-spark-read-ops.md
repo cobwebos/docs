@@ -2,23 +2,21 @@
 title: 使用 Spark 读取 Cassandra API 表数据
 titleSufix: Azure Cosmos DB
 description: 本文介绍如何读取 Azure Cosmos DB 中的 Cassandra API 表中的数据。
-author: rockboyfor
-ms.author: v-yeche
+author: TheovanKraay
+ms.author: thvankra
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
-origin.date: 12/06/2018
-ms.date: 03/18/2019
+ms.topic: how-to
+ms.date: 06/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 01a9582062d8eb0d039473a03901fc83fe179020
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4ecb7758ee5f58345fccc2c490cee4d23043a20c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60893380"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85257408"
 ---
-<!--Verify sucessfully-->
 # <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>使用 Spark 读取 Azure Cosmos DB Cassandra API 表中的数据
 
  本文介绍如何从 Spark 读取存储在 Azure Cosmos DB Cassandra API 中的数据。
@@ -34,7 +32,7 @@ import com.datastax.spark.connector.cql.CassandraConnector
 import com.microsoft.azure.cosmosdb.cassandra
 
 //Connection-related
-spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.cn")
+spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.com")
 spark.conf.set("spark.cassandra.connection.port","10350")
 spark.conf.set("spark.cassandra.connection.ssl.enabled","true")
 spark.conf.set("spark.cassandra.auth.username","YOUR_ACCOUNT_NAME")
@@ -85,7 +83,7 @@ readBooksDF.show
 
 ### <a name="apply-filters"></a>应用筛选器
 
-目前不支持谓词下推，下面的示例反映客户端筛选。 
+可以将谓词向下推送到数据库，以便更好地优化 Spark 查询。 谓词是返回 true 或 false 的查询的条件，通常位于 WHERE 子句中。 谓词向下推送会筛选数据库查询中的数据，减少从数据库中检索到的条目数，提高查询性能。 默认情况下，Spark 数据集 API 会自动将有效的 WHERE 子句向下推送到数据库。 
 
 ```scala
 val readBooksDF = spark
@@ -104,6 +102,10 @@ readBooksDF.printSchema
 readBooksDF.explain
 readBooksDF.show
 ```
+
+物理计划的 PushedFilters 节包括 GreaterThan 向下推送筛选器。 
+
+:::image type="content" source="./media/cassandra-spark-read-ops/pushdown-predicates.png" alt-text="分区":::
 
 ## <a name="rdd-api"></a>RDD API
 
@@ -141,12 +143,9 @@ select * from books_vw where book_pub_year > 1891
 ## <a name="next-steps"></a>后续步骤
 
 以下是有关从 Spark 使用 Azure Cosmos DB Cassandra API 的其他文章：
-
+ 
  * [upsert 操作](cassandra-spark-upsert-ops.md)
  * [删除操作](cassandra-spark-delete-ops.md)
  * [聚合操作](cassandra-spark-aggregation-ops.md)
  * [表复制操作](cassandra-spark-table-copy-ops.md)
 
-<!--Verify sucessfully-->
-<!--Update_Description: new articles on  -->
-<!--ms.date: 03/18/2019-->

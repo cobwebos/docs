@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell 脚本示例 - 为多层应用程序创建网络 | Microsoft Docs
+title: 为多层应用程序创建 VNet - Azure PowerShell 脚本示例
 description: Azure PowerShell 脚本示例 - 为多层应用程序创建虚拟网络。
 services: virtual-network
 documentationcenter: virtual-network
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: 2fad78db4fdc92f3dc9c0f320c36d12dea554a61
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 32140429d96d73100c4bd5a2ae274e508a15b7a8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725394"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74091308"
 ---
 # <a name="create-a-network-for-multi-tier-applications-script-sample"></a>为多层应用程序创建网络脚本示例
 
@@ -51,7 +51,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 此脚本使用以下命令创建资源组、虚拟网络和网络安全组。 下表中的每条命令均链接到特定于命令的文档：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 创建 Azure 虚拟网络和前端子网。 |

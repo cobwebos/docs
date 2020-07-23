@@ -1,20 +1,16 @@
 ---
-title: 将条件语句添加到工作流 - Azure 逻辑应用 | Microsoft Docs
+title: 将条件语句添加到工作流
 description: 如何在 Azure 逻辑应用中创建控制工作流操作的条件
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: 9ee484971e217b0ca4dd7ad855e9e6dc3313e5d4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: a7f9ab478067cecbac6f01a5a969bf48653b6dd1
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60684736"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831494"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>在 Azure 逻辑应用中创建控制工作流操作的条件语句
 
@@ -25,7 +21,7 @@ ms.locfileid: "60684736"
 > [!TIP]
 > 若要基于不同的特定值运行不同步骤，请改用 [*switch 语句*](../logic-apps/logic-apps-control-flow-switch-statement.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -39,7 +35,7 @@ ms.locfileid: "60684736"
 
 1. 在所需的位置添加条件。 
 
-   若要在步骤之间添加条件，请将指针移到要添加条件的箭头上。 选择出现的**加号** (**+**)，然后选择“添加操作”。 例如：
+   若要在步骤之间添加条件，请将指针移到要添加条件的箭头上。 选择出现的**加号** ( **+** )，然后选择“添加操作”。 例如：
 
    ![在步骤之间添加操作](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
@@ -72,12 +68,12 @@ ms.locfileid: "60684736"
    若要添加包含子条件的组，请选择“添加” > “添加组”。 
    若要对现有行进行分组，请选中这些行的复选框，选择任意行的省略号 (...) 按钮，然后选择“生成组”。
 
-1. 在“如果为 true”和“如果为 false”下，根据是否符合条件添加要执行的步骤。 例如：
+1. 在“如果为 true”和“如果为 false”下，根据是否符合条件添加要执行的步骤 。 例如：
 
    ![具有“如果为 true”和“如果为 false”路径的条件](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
 
    > [!TIP]
-   > 可将现有操作拖动到“如果为 true”和“如果为 false”路径。
+   > 可将现有操作拖动到“如果为 true”和“如果为 false”路径 。
 
 1. 保存逻辑应用。
 
@@ -113,7 +109,7 @@ ms.locfileid: "60684736"
 
 ## <a name="get-support"></a>获取支持
 
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 * 若要提交功能和建议或者为其投票，请访问 [Azure 逻辑应用用户反馈站点](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤

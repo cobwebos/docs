@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 REST API 创建 Azure 数据工厂管道 | Microsoft Docs
+title: '教程：使用 REST API 创建 Azure 数据工厂管道 '
 description: 本教程使用 REST API 创建带复制活动的 Azure 数据工厂管道，以便将数据从 Azure Blob 存储复制到 Azure SQL 数据库。
 services: data-factory
 documentationcenter: ''
@@ -9,26 +9,24 @@ editor: ''
 ms.assetid: 1704cdf8-30ad-49bc-a71c-4057e26e7350
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d83b659cc04218fad66ea95216e69682b265dc83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3007aa1fab8797d77e1edde83f22e359196641cc
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66151623"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248567"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>教程：使用 REST API 创建用于复制数据的 Azure 数据工厂管道 
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [复制向导](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-> * [Azure 资源管理器模板](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+> * [Azure Resource Manager 模板](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 > 
@@ -105,7 +103,7 @@ ms.locfileid: "66151623"
 
 ### <a name="azurestoragelinkedservicejson"></a>azurestoragelinkedservice.json
 > [!IMPORTANT]
-> 将 **accountname** 和 **accountkey** 分别替换为 Azure 存储帐户的名称和密钥。 若要了解如何获取存储访问密钥，请参阅 [View, copy and regenerate storage access keys](../../storage/common/storage-account-manage.md#access-keys)（查看、复制和重新生成存储访问密钥）。
+> 将 **accountname** 和 **accountkey** 分别替换为 Azure 存储帐户的名称和密钥。 若要了解如何获取存储访问密钥，请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
 
 ```JSON
 {
@@ -123,7 +121,7 @@ ms.locfileid: "66151623"
 
 ### <a name="azuresqllinkedservicejson"></a>azuresqllinkedservice.json
 > [!IMPORTANT]
-> 将 **servername**、**databasename**、**username** 和 **password** 分别替换为 Azure SQL 服务器名称、SQL 数据库名称、用户帐户和帐户密码。  
+> 将 servername、databasename、username 和 password 分别替换为服务器名称、SQL 数据库名称、用户帐户和帐户密码   。  
 > 
 >
 
@@ -179,7 +177,7 @@ ms.locfileid: "66151623"
 
 下表提供了代码片段中使用的 JSON 属性的描述：
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | type | type 属性设置为 **AzureBlob**，因为数据驻留在 Azure Blob 存储中。 |
 | linkedServiceName | 表示前面创建的 **AzureStorageLinkedService**。 |
@@ -222,11 +220,11 @@ ms.locfileid: "66151623"
 ```
 下表提供了代码片段中使用的 JSON 属性的描述：
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
-| type | type 属性设置为 **AzureSqlTable**，因为数据复制到 Azure SQL 数据库中的表。 |
+| type | type 属性设置为“AzureSqlTable”，因为数据复制到 Azure SQL 数据库中的表。 |
 | linkedServiceName | 表示前面创建的 **AzureSqlLinkedService**。 |
-| tableName | 指定一个表  ，以便将数据复制到其中。 | 
+| tableName | 指定一个**表**，以便将数据复制到其中。 | 
 | frequency/interval | frequency 设置为 **Hour**，interval 设置为 **1**，表示输出切片在管道开始和结束时间范围内（而不是范围外）**每小时**生成一次。  |
 
 数据库的 emp 表包含三列 – **ID**、**FirstName** 和 **LastName**。 ID 是标识列，因此只需在此处指定 **FirstName** 和 **LastName**。
@@ -243,7 +241,7 @@ ms.locfileid: "66151623"
     "activities": [
       {
         "name": "CopyFromBlobToSQL",
-        "description": "Push Regional Effectiveness Campaign data to Azure SQL database",
+        "description": "Push Regional Effectiveness Campaign data to Azure SQL Database",
         "type": "Copy",
         "inputs": [
           {
@@ -338,7 +336,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
     > 确认此处指定的名称 (ADFCopyTutorialDF) 与 **datafactory.json**中指定的名称匹配。 
    
     ```PowerShell
-    $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@datafactory.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/ADFCopyTutorialDF0411?api-version=2015-10-01};
+    $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@datafactory.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/ADFCopyTutorialDF0411?api-version=2015-10-01};
     ```
 2. 使用 **Invoke-Command**运行命令。
    
@@ -353,7 +351,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 请注意以下几点：
 
-* Azure 数据工厂的名称必须全局唯一。 如果在结果中看到错误：“数据工厂名称 ‘ADFCopyTutorialDF’ 不可用”，请执行以下步骤：   
+* Azure 数据工厂的名称必须全局唯一。 如果在结果中看到错误：“数据工厂名称 ‘ADFCopyTutorialDF’ 不可用”，请执行以下步骤：  
   
   1. 在 **datafactory.json** 文件中更改名称（例如，yournameADFCopyTutorialDF）。
   2. 在分配 **$cmd** 变量值的第一个命令中，将 ADFCopyTutorialDF 替换为新名称，然后运行该命令。 
@@ -362,7 +360,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
      有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
 * 只有 Azure 订阅的参与者/管理员才可以创建数据工厂实例
 * 数据工厂名称可能在将来被注册为 DNS 名称，因此将公开可见。
-* 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”  ，请执行下列操作之一，再尝试重新发布： 
+* 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”，请执行下列操作之一，再尝试重新发布： 
   
   * 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。 
 
@@ -405,12 +403,12 @@ AzureSqlLinkedService 将 Azure SQL 数据库链接到数据工厂。 从 Blob �
     ```
 
 ### <a name="create-azure-sql-linked-service"></a>创建 Azure SQL 链接服务
-在此步骤中，将 Azure SQL 数据库链接到数据工厂。 在本部分中指定 Azure SQL 服务器名称、数据库名称、用户名和用户密码。 有关用于定义 Azure SQL 链接服务的 JSON 属性的详细信息。请参阅 [Azure SQL linked service](data-factory-azure-sql-connector.md#linked-service-properties)（Azure SQL 链接服务）。
+此步骤将 Azure SQL 数据库链接到数据工厂。 在本部分中指定逻辑 SQL Server 名称、数据库名称、用户名和用户密码。 有关用于定义 Azure SQL 链接服务的 JSON 属性的详细信息。请参阅 [Azure SQL linked service](data-factory-azure-sql-connector.md#linked-service-properties)（Azure SQL 链接服务）。
 
 1. 将命令分配到名为 **cmd**的变量。 
    
     ```PowerShell
-    $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@azuresqllinkedservice.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/AzureSqlLinkedService?api-version=2015-10-01};
+    $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@azuresqllinkedservice.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/AzureSqlLinkedService?api-version=2015-10-01};
     ```
 2. 使用 **Invoke-Command**运行命令。
    
@@ -489,7 +487,7 @@ Azure SQL 数据库链接服务指定一个连接字符串，数据工厂服务�
     Write-Host $results
     ```
 
-祝贺你！   现已成功创建 Azure 数据工厂，其中包含可将数据从 Azure Blob 存储复制到 Azure SQL 数据库的管道。
+祝贺你！ 现已成功创建 Azure 数据工厂，其中包含可将数据从 Azure Blob 存储复制到 Azure SQL 数据库的管道。
 
 ## <a name="monitor-pipeline"></a>监视管道
 本步骤使用数据工厂 REST API 来监视管道生成的切片。
@@ -517,17 +515,17 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 }
 ```
 
-运行 Invoke-Command 和下一条命令，直到切片进入“就绪”或“失败”状态。   当切片处于就绪状态，请查看 Azure SQL 数据库中的 **emp** 表是否包含输出数据。 
+运行 Invoke-Command 和下一条命令，直到切片进入“就绪”或“失败”状态。  当切片处于就绪状态，请查看 Azure SQL 数据库中的 emp 表是否包含输出数据。 
 
-对于每个切片，源文件中有两行数据已复制到 Azure SQL 数据库中的 emp 表。 因此，成功处理所有切片（处于“就绪”状态）后，emp 表中有 24 条新记录。 
+对于每个切片，源文件中有两行数据复制到 Azure SQL 数据库中的 emp 表。 因此，成功处理所有切片（处于“就绪”状态）后，emp 表中有 24 条新记录。 
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 本教程使用 REST API 创建了一个 Azure 数据工厂，用于将数据从 Azure Blob 复制到 Azure SQL 数据库。 下面是本教程中执行的高级步骤：  
 
 1. 创建了 Azure **数据工厂**。
-2. 创建了 **链接服务**：
+2. 创建 **链接服务**：
    1. 一个 Azure 存储链接服务，用于链接保存输入数据的 Azure 存储帐户。     
-   2. 一个 Azure SQL 链接服务，用于链接保存输出数据的 Azure SQL 数据库。 
+   2. 一个 Azure SQL 链接服务，用于链接保存输出数据的数据库。 
 3. 创建了 **数据集**，用于描述管道的输入和输出数据。
 4. 创建了包含复制活动的 **管道** ，其中 BlobSource 为源，SqlSink 为接收器。 
 

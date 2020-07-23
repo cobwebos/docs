@@ -1,32 +1,19 @@
 ---
 title: Azure Service Fabric Docker Compose 部署预览版
 description: Azure Service Fabric 接受 Docker Compose 格式，因此可以更轻松地安排使用 Service Fabric 的现有容器。 这种支持目前处于预览状态。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-origin.date: 02/23/2018
-ms.date: 04/29/2019
-ms.author: v-yeche
-ms.openlocfilehash: da86ed9a3e6979bd1dc05aef6ef70c7b8533a8c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 2/23/2018
+ms.openlocfilehash: f84dd0ecb7a4002182c8455bfd86354d794a6f7c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60948828"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84691282"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Azure Service Fabric 中的 Docker Compose 部署支持（预览版）
 
 Docker 使用 [docker-compose.yml](https://docs.docker.com/compose) 文件定义多容器应用程序。 为了让客户轻松地熟练使用 Docker 来安排 Azure Service Fabric 中的现有容器应用程序，我们在平台中添加了对 Docker Compose 部署的本机预览支持。 Service Fabric 可接受 `docker-compose.yml` 文件的版本 3 和更高版本。 
 
-由于这种支持处于预览状态，因此仅支持一部分 Compose 指令。 例如，不支持应用程序升级。 但是，始终可以删除并部署应用程序，而不是对其进行升级。
+由于这种支持处于预览状态，因此仅支持一部分 Compose 指令。
 
 若要使用此预览版，请通过 Azure 门户以及相应的 SDK 使用 5.7 版本或更高版本的 Service Fabric 运行时创建群集。 
 
@@ -81,37 +68,37 @@ Get-ServiceFabricComposeDeploymentUpgrade -DeploymentName TestContainerApp
 
 或者，可以使用以下 Service Fabric CLI 命令：
 
-```azurecli
+```shell
 sfctl compose create --deployment-name TestContainerApp --file-path docker-compose.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [ --timeout ]
 ```
 
 创建部署后，可以使用以下命令检查其状态：
 
-```azurecli
+```shell
 sfctl compose status --deployment-name TestContainerApp [ --timeout ]
 ```
 
 若要删除 Compose 部署，请使用以下命令：
 
-```azurecli
+```shell
 sfctl compose remove  --deployment-name TestContainerApp [ --timeout ]
 ```
 
 若要启动 Compose 部署升级，请使用以下命令：
 
-```azurecli
+```shell
 sfctl compose upgrade --deployment-name TestContainerApp --file-path docker-compose-v2.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [--upgrade-mode Monitored] [--failure-action Rollback] [ --timeout ]
 ```
 
 若要回滚 Compose 部署升级，请使用以下命令：
 
-```azurecli
+```shell
 sfctl compose upgrade-rollback --deployment-name TestContainerApp [ --timeout ]
 ```
 
 接受升级之后，可以使用以下命令跟踪升级进度：
 
-```azurecli
+```shell
 sfctl compose upgrade-status --deployment-name TestContainerApp
 ```
 
@@ -139,8 +126,8 @@ sfctl compose upgrade-status --deployment-name TestContainerApp
 ### <a name="ports-section"></a>端口部分
 
 指定 Service Fabric 侦听程序将使用“端口”部分中的 http 还是 https 协议。 这将确保使用命名服务正确发布终结点协议，以允许反向代理转发请求：
-* 若要路由到不安全的 Service Fabric Compose 服务，请指定 /http。 例如“80:80/http”。
-* 若要路由到安全的 Service Fabric Compose 服务，请指定 /https。 例如“443:443/https”。
+* 若要路由到不安全的 Service Fabric Compose 服务，请指定 /http  。 例如“80:80/http”  。
+* 若要路由到安全的 Service Fabric Compose 服务，请指定 /https  。 例如“443:443/https”  。
 
 > [!NOTE]
 > /http 和 /https 端口部分语法特定于 Service Fabric，用于注册正确的 Service Fabric 侦听程序 URL。  如果以编程方式验证 Docker Compose 文件语法，则可能导致验证错误。
@@ -166,5 +153,3 @@ docker-compose.yml 文件描述一组包括属性和配置在内的可部署容�
 
 * 了解 [Service Fabric 应用程序模型](service-fabric-application-model.md)
 * [Service Fabric CLI 入门](service-fabric-cli.md)
-
-<!-- Update_Description: wording update -->

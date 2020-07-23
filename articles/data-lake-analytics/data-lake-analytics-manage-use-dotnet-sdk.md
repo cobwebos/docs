@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure .NET SDK 管理 Azure Data Lake Analytics
-description: 本文介绍如何使用 Azure.NET SDK 编写管理 Data Lake Analytics 作业、 数据源和用户的应用。
+description: 本文介绍如何使用 Azure .NET SDK 编写管理 Data Lake Analytics 作业、数据源 & 用户的应用。
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: 811d172d-9873-4ce9-a6d5-c1a26b374c79
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/18/2017
-ms.openlocfilehash: 0a10af73d754596e9b5bb34b2974d7f1647d06f8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aa2a128e25e3751813f056286fff4eb6caa24437
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60617701"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121378"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>通过 .NET 应用管理 Azure Data Lake Analytics
 
@@ -22,15 +22,15 @@ ms.locfileid: "60617701"
 
 本文介绍如何通过使用 Azure .NET SDK 编写的应用管理 Azure Data Lake Analytics 帐户、数据源、用户和作业。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* **Visual Studio 2015、Visual Studio 2013 Update 4 或安装有 Visual C++ 的 Visual Studio 2012**。
-* **用于 .NET 的 Microsoft Azure SDK 2.5 或更高版本**。  可以使用 [Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx)安装它。
+* **安装了 Visual C++ 的 Visual studio 2015、Visual Studio 2013 更新4或 Visual studio 2012**。
+* **用于 .NET 的 Microsoft Azure SDK 2.5 或更高版本**。  使用[Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx)安装它。
 * **所需的 NuGet 包**
 
 ### <a name="install-nuget-packages"></a>安装 NuGet 包
 
-|程序包|Version|
+|程序包|版本|
 |-------|-------|
 |[Microsoft.Rest.ClientRuntime.Azure.Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication)| 2.3.1|
 |[Microsoft.Azure.Management.DataLake.Analytics](https://www.nuget.org/packages/Microsoft.Azure.Management.DataLake.Analytics)|3.0.0|
@@ -57,7 +57,7 @@ string rg == "<value>"; // Resource  group name
 string clientid = "1950a258-227b-4e31-a9cf-717495945fc2"; // Sample client ID (this will work, but you should pick your own)
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
 可以通过多种方法登录到 Azure Data Lake Analytics。 下面的代码片段显示使用弹出窗口通过交互用户身份验证进行身份验证的示例。
 
@@ -445,4 +445,4 @@ adlaAccountClient.ComputePolicies.CreateOrUpdate(rg, adla, "GaryMcDaniel", newPo
 
 * [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
 * [使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)
-* [使用 Azure 门户监视 Azure Data Lake Analytics 作业以及对其进行故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+* [使用 Azure 门户监视 Azure Data Lake Analytics 作业并对其进行故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

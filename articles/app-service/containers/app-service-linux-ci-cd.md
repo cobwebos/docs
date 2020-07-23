@@ -1,27 +1,18 @@
 ---
-title: 用于容器的 Web 应用的持续部署 - Azure 应用服务 | Microsoft Docs
-description: 如何在用于容器的 Web 应用中设置持续部署。
+title: CI/CD 到自定义 Linux 容器
+description: 了解如何在 Azure App Service 中设置自定义 Linux 容器的持续部署。 Docker 中心和 ACR 支持连续部署。
 keywords: azure 应用服务, linux, docker, acr,oss
-services: app-service
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+author: msangapu-msft
 ms.assetid: a47fb43a-bbbd-4751-bdc1-cd382eae49f8
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2018
-ms.author: yili
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 4acadc4c08ef50e7d52303689c38c43f81187669
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: d43491de7500204ed470757a1b744017a8180b57
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60852483"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74687635"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>使用用于容器的 Web 应用进行持续部署
 
@@ -32,12 +23,12 @@ ms.locfileid: "60852483"
 ![ACR Webhook 的屏幕截图](./media/app-service-webapp-service-linux-ci-cd/ci-cd-acr-02.png)
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择页面左侧的“应用服务”选项。
+2. 选择页面左侧的“应用服务”选项。****
 3. 选择要为其配置持续部署的应用的名称。
-4. 在“容器设置”页上，选择“单个容器”
-5. 选择“Azure 容器注册表”
-6. 选择“持续部署”>“启用”
-7. 选择“保存”以启用持续部署。
+4. 在“容器设置”**** 页上，选择“单个容器”****
+5. 选择“Azure 容器注册表”****
+6. 选择“持续部署”>“启用”****
+7. 选择“保存”**** 以启用持续部署。
 
 ## <a name="use-the-acr-webhook"></a>使用 ACR Webhook
 
@@ -50,12 +41,12 @@ ms.locfileid: "60852483"
 ## <a name="enable-continuous-deployment-with-docker-hub-optional"></a>使用 Docker 中心启用持续部署（可选）
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择页面左侧的“应用服务”选项。
+2. 选择页面左侧的“应用服务”选项。****
 3. 选择要为其配置持续部署的应用的名称。
-4. 在“容器设置”页上，选择“单个容器”
-5. 选择“Docker 中心”
-6. 选择“持续部署”>“启用”
-7. 选择“保存”以启用持续部署。
+4. 在“容器设置”**** 页上，选择“单个容器”****
+5. 选择“Docker 中心”****
+6. 选择“持续部署”>“启用”****
+7. 选择“保存”**** 以启用持续部署。
 
 ![应用设置的屏幕截图](./media/app-service-webapp-service-linux-ci-cd/ci-cd-docker-02.png)
 

@@ -1,25 +1,23 @@
 ---
-title: 使用 Azure 网络观察程序管理数据包捕获 - PowerShell | Microsoft 文档
+title: 管理数据包捕获 - Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: 本页说明如何使用 PowerShell 管理网络观察程序的数据包捕获功能
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 04d82085-c9ea-4ea1-b050-a3dd4960f3aa
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 81b02cc7c7683bcd9abac2ad1b554644035991c6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: 100a8ed1987b2edbc0aea1708c8a60b48bf391b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710098"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737914"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>在 PowerShell 中使用 Azure 网络观察程序管理数据包捕获
 
@@ -41,7 +39,7 @@ ms.locfileid: "64710098"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文假定你拥有以下资源：
 
@@ -99,7 +97,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 Get-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -VMName $VM.Name -Name $ExtensionName
 ```
 
-以下示例是运行 `Get-AzVMExtension` 后的响应示例
+以下示例是运行 `Get-AzVMExtension` 后的响应的实例
 
 ```
 ResourceGroupName       : testrg
@@ -130,8 +128,7 @@ ForceUpdateTag          :
 下一步是检索网络观察程序实例。 将此变量传递给步骤 4 中的 `New-AzNetworkWatcherPacketCapture` cmdlet。
 
 ```powershell
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
-$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName  
+$networkWatcher = Get-AzResource -ResourceType "Microsoft.Network/networkWatchers" | Where {$_.Location -eq "WestCentralUS" }
 ```
 
 ### <a name="step-2"></a>步骤 2
@@ -152,7 +149,7 @@ $filter2 = New-AzPacketCaptureFilterConfig -Protocol UDP
 ```
 
 > [!NOTE]
-> 可为数据包捕获定义多个筛选器。
+> 可以为数据包捕获定义多个筛选器。
 
 ### <a name="step-4"></a>步骤 4
 
@@ -269,7 +266,7 @@ Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCapt
 
 ## <a name="download-a-packet-capture"></a>下载数据包捕获
 
-完成数据包捕获会话后，可以将捕获文件上传到 blob 存储或 VM 上的本地文件。 数据包捕获的存储位置是在创建会话时定义的。 用于访问这些保存到存储帐户的捕获文件的便利工具是 Microsoft Azure 存储资源管理器，下载地址为： https://storageexplorer.com/
+完成数据包捕获会话后，可以将捕获文件上传到 blob 存储或 VM 上的本地文件。 数据包捕获的存储位置是在创建会话时定义的。 用于访问这些保存到存储帐户的捕获文件的便利工具是 Microsoft Azure 存储资源管理器，下载地址为：https://storageexplorer.com/
 
 如果指定了存储帐户，则数据包捕获文件将保存到以下位置的存储帐户：
 

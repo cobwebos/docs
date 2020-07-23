@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9accb41cdb4d780bf137d6872cca022226f902e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom: has-adal-ref
+ms.openlocfilehash: e41d3b47408d29a0463eed5f23117801be107c27
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61443047"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920717"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>在远程监视解决方案加速器中配置基于角色的访问控制
 
@@ -21,7 +21,7 @@ ms.locfileid: "61443047"
 
 ## <a name="default-settings"></a>默认设置
 
-首次部署远程监视解决方案时，有两个角色：“管理员”和“只读”。
+首次部署远程监视解决方案时，有两个角色：“管理员”和“只读” 。
 
 具有**管理员**角色的任何用户对解决方案都具有完全访问权限，包括以下权限。 具有**只读**角色的用户将仅有权查看解决方案。
 
@@ -49,9 +49,9 @@ ms.locfileid: "61443047"
 
 ## <a name="add-or-remove-users"></a>添加或删除用户
 
-Azure Active Directory 应用程序所有者可以使用 Azure 门户在远程监视解决方案中的角色中添加或删除用户。 以下步骤使用在你部署远程监视解决方案时创建的 [Azure Active Directory 企业应用程序](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application)。
+Azure Active Directory 应用程序所有者可以使用 Azure 门户在远程监视解决方案中的角色中添加或删除用户。 以下步骤使用在你部署远程监视解决方案时创建的 [Azure Active Directory 企业应用程序](../active-directory/manage-apps/view-applications-portal.md)。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 检查[用户是否在所用的目录中](../active-directory/fundamentals/add-users-azure-active-directory.md)。 登录到 [Microsoft Azure IoT 解决方案加速器](https://www.azureiotsolutions.com/Accelerators)站点时，已选择要使用的目录。 目录名称显示在[页面](https://www.azureiotsolutions.com/Accelerators)的右上角。
 
@@ -63,13 +63,13 @@ Azure Active Directory 应用程序所有者可以使用 Azure 门户在远程�
 
     ![所有者](media/iot-accelerators-remote-monitoring-rbac/owners.png)
 
-    如果你不是所有者，则需要请求现有的所有者将你添加到列表。 只有所有者才能将“管理员”或“只读”等应用程序角色分配到其他用户。
+    如果你不是所有者，则需要请求现有的所有者将你添加到列表。 只有所有者才能将“管理员”或“只读”等应用程序角色分配到其他用户。 
 
 1. 若要查看应用程序中已分配到角色的用户列表，请单击“用户和组”。
 
-1. 若要添加用户，请单击“+ 添加用户”，然后单击“用户和组，未选择”，以便从目录中选择用户。
+1. 若要添加用户，请单击“+ 添加用户”，然后单击“用户和组，未选择”，以便从目录中选择用户。 
 
-1. 若要将用户分配到角色，请单击“选择角色，未选择”，然后为用户选择“管理员”或“只读”角色。 依次单击“选择”、“分配”。
+1. 若要将用户分配到角色，请单击“选择角色，未选择”，然后为用户选择“管理员”或“只读”角色。   依次单击“选择”、“分配” 。
 
     ![选择角色](media/iot-accelerators-remote-monitoring-rbac/selectrole.png)
 
@@ -79,7 +79,7 @@ Azure Active Directory 应用程序所有者可以使用 Azure 门户在远程�
 
 ## <a name="create-a-custom-role"></a>创建自定义角色
 
-首次部署远程监视解决方案时，它包含“管理员”和“只读”角色。 可以添加具有不同权限集的自定义角色。 若要定义自定义角色，需要：
+首次部署远程监视解决方案时，它包含“管理员”和“只读”角色。  可以添加具有不同权限集的自定义角色。 若要定义自定义角色，需要：
 
 - 在 Azure 门户中将新角色添加到应用程序。
 - 为身份验证和授权微服务中的新角色定义策略。
@@ -91,11 +91,11 @@ Azure Active Directory 应用程序所有者可以使用 Azure 门户在远程�
 
 1. 在 Azure 门户中找到解决方案的“应用注册”。 应用程序名称即是远程监视解决方案的名称。 在以下屏幕截图中，解决方案和应用程序显示名称为 **contoso-rm4**。
 
-    ![应用注册](media/iot-accelerators-remote-monitoring-rbac/appregistration2.png)
+    ![应用注册](media/iot-accelerators-remote-monitoring-rbac/app-registration-2.png)
 
 1. 选择应用程序，然后单击“清单”。 可以看到，为应用程序定义了两个现有的[应用角色](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles)：
 
-    ![查看清单](media/iot-accelerators-remote-monitoring-rbac/viewmanifest.png)
+    ![查看清单](media/iot-accelerators-remote-monitoring-rbac/view-manifest.png)
 
 1. 按以下代码片段中所示编辑清单，以添加名为 **ManageDevices** 的角色。 需要为新角色 ID 指定一个唯一的字符串，例如 GUID。 可以使用 [Online GUID Generator](https://www.guidgenerator.com/) 等服务生成新 GUID：
 
@@ -142,7 +142,7 @@ Azure Active Directory 应用程序所有者可以使用 Azure 门户在远程�
 
 1. 将[远程监视微服务](https://github.com/Azure/remote-monitoring-services-dotnet)存储库从 GitHub 克隆到本地计算机。
 
-1. 按以下代码片段中所示编辑 Sauth/Services/data/policies/roles.json 文件，为 ManageDevices 角色添加策略。 **ID** 和 **Role** 值必须与前一部分所述应用清单中的角色定义相匹配。 充当 **ManageDevices** 角色的人员可以使用允许的操作列表来创建、更新设备，以及删除已连接到解决方案的设备：
+1. 按以下代码片段中所示编辑 Sauth/Services/data/policies/roles.json 文件，为 ManageDevices 角色添加策略 。 **ID** 和 **Role** 值必须与前一部分所述应用清单中的角色定义相匹配。 充当 **ManageDevices** 角色的人员可以使用允许的操作列表来创建、更新设备，以及删除已连接到解决方案的设备：
 
     ```json
     {

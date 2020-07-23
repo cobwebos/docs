@@ -1,28 +1,23 @@
 ---
-title: Azure PowerShell 脚本示例 - 计算 blob 容器大小 | Microsoft Docs
+title: 使用 PowerShell 计算 blob 容器的大小
+titleSuffix: Azure Storage
 description: 通过计算容器各 blob 的总大小来计算 Azure Blob 存储中容器的大小。
 services: storage
-documentationcenter: na
 author: tamram
-manager: jeconnoc
-editor: tysonn
-ms.assetid: ''
-ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
+ms.subservice: blobs
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 11/07/2017
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: d8baec875c25556f1080cdd105c7fa466ffce74e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: de51ed7d91ba1102f5a9cd376ab95f49dd54d9f3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094001"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067074"
 ---
-# <a name="calculate-the-size-of-a-blob-storage-container"></a>计算 Blob 存储容器的大小
+# <a name="calculate-the-size-of-a-blob-container-with-powershell"></a>使用 PowerShell 计算 blob 容器的大小
 
 此脚本通过计算容器中 blob 的总大小来计算 Azure Blob 存储中容器的大小。
 
@@ -31,13 +26,13 @@ ms.locfileid: "58094001"
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 > [!IMPORTANT]
-> 此 PowerShell 脚本提供容器的估计大小，不应该用于计费计算。 有关为计费目的计算容器大小的脚本，请参阅[为计费目的计算 Blob 存储容器的大小](../scripts/storage-blobs-container-calculate-billing-size-powershell.md)。 
+> 此 PowerShell 脚本提供容器的估计大小，不应该用于计费计算。 有关为计费目的计算容器大小的脚本，请参阅[为计费目的计算 Blob 存储容器的大小](../scripts/storage-blobs-container-calculate-billing-size-powershell.md)。
 
 ## <a name="sample-script"></a>示例脚本
 
 [!code-powershell[main](../../../powershell_scripts/storage/calculate-container-size/calculate-container-size.ps1 "Calculate container size")]
 
-## <a name="clean-up-deployment"></a>清理部署 
+## <a name="clean-up-deployment"></a>清理部署
 
 运行以下命令来删除资源组、容器和所有相关资源。
 
@@ -49,7 +44,7 @@ Remove-AzResourceGroup -Name bloblisttestrg
 
 此脚本使用以下命令来计算 Blob 存储容器的大小。 表中的每一项均链接到命令特定的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) | 获取资源组或订阅中的指定存储帐户或所有存储帐户。 |
 | [Get-AzStorageBlob](/powershell/module/az.storage/Get-AzStorageBlob) | 列出容器中的 Blob。 |

@@ -1,6 +1,6 @@
 ---
 title: 在视频索引器中自定义品牌模型 - Azure
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: 本文概述了什么是视频索引器中的品牌模型，以及如何自定义它。
 services: media-services
 author: anikaz
@@ -10,12 +10,11 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 863dbd9a6044ee33ae39ac9693a7d4f74382b9c7
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: MT
+ms.openlocfilehash: ca3d825fb2f4184448cc279d9408f47ad4ad004a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799675"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73838360"
 ---
 # <a name="customize-a-brands-model-in-video-indexer"></a>在视频索引器中自定义品牌模型
 

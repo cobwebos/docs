@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用用于 C# 的必应拼写检查 SDK 进行拼写检查
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 开始使用必应拼写检查 REST API 检查拼写和语法。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: adbb60c7ddbc72b8b7e5cb31c6909117ce3a10cb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 1cda7032d5bfe58e9f8bcbdb8b18dd597a691441
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798362"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "78273532"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>快速入门：使用用于 C# 的必应拼写检查 SDK 进行拼写检查
 
@@ -70,9 +70,10 @@ ms.locfileid: "65798362"
 2. 获取第一个拼写检查结果（如果有）。 打印返回的第一个拼写错误的字词（令牌）、令牌类型和建议数字。
 
     ```csharp
-    if (firstspellCheckResult != null){
-        var firstspellCheckResult = result.Body.FlaggedTokens.FirstOrDefault();
+    var firstspellCheckResult = result.Body.FlaggedTokens.FirstOrDefault();
     
+    if (firstspellCheckResult != null)
+    {
         Console.WriteLine("SpellCheck Results#{0}", result.Body.FlaggedTokens.Count);
         Console.WriteLine("First SpellCheck Result token: {0} ", firstspellCheckResult.Token);
         Console.WriteLine("First SpellCheck Result Type: {0} ", firstspellCheckResult.Type);
@@ -80,23 +81,27 @@ ms.locfileid: "65798362"
     }
     ```
 
-3. 获取第一个建议的更正（如果有）。打印建议分数和建议字词。 
+3. 获取第一个建议的更正（如果有）。 输出建议分数和建议字词。 
 
     ```csharp
-            var suggestions = firstspellCheckResult.Suggestions;
+    var suggestions = firstspellCheckResult.Suggestions;
 
-            if (suggestions?.Count > 0)
-            {
-                var firstSuggestion = suggestions.FirstOrDefault();
-                Console.WriteLine("First SpellCheck Suggestion Score: {0} ", firstSuggestion.Score);
-                Console.WriteLine("First SpellCheck Suggestion : {0} ", firstSuggestion.Suggestion);
-            }
-   }
+    if (suggestions?.Count > 0)
+    {
+        var firstSuggestion = suggestions.FirstOrDefault();
+        Console.WriteLine("First SpellCheck Suggestion Score: {0} ", firstSuggestion.Score);
+        Console.WriteLine("First SpellCheck Suggestion : {0} ", firstSuggestion.Suggestion);
+    }
+    ```
 
-## Next steps
+## <a name="run-the-application"></a>运行应用程序
+
+生成并运行项目。 如果使用的是 Visual Studio，请按 **F5** 调试该文件。
+
+## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [Create a single page web-app](tutorials/spellcheck.md)
+> [创建单页 Web 应用](tutorials/spellcheck.md)
 
-- [What is the Bing Spell Check API?](overview.md)
-- [Bing Spell Check C# SDK reference guide](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet)
+- [什么是必应拼写检查 API？](overview.md)
+- [必应拼写检查 C# SDK 参考指南](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet)

@@ -1,22 +1,21 @@
 ---
-title: 适用于 Linux VM 的超级磁盘 - Azure 托管磁盘 | Microsoft Docs
-description: 了解适用于 Azure VM 的超级托管磁盘
-services: virtual-machines-linux
+title: 适用于 Linux Vm 的 Ultra 磁盘-Azure 托管磁盘
+description: 了解 Azure Vm 的 ultra 磁盘
 author: roygara
-ms.service: virtual-machines-linux
-ms.workload: storage
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
-ms.topic: article
-ms.date: 05/10/2019
+ms.service: virtual-machines
+ms.topic: how-to
+ms.date: 05/11/2020
 ms.author: rogarana
-ms.custom: seodec18
 ms.subservice: disks
-ms.openlocfilehash: 8683515f9b56990028f43d6f131e68efe102b435
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 900781efa2a000c1062db45c6b8d0543f3939443
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65550299"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84659242"
 ---
+# <a name="using-azure-ultra-disks"></a>使用 Azure 超磁盘
+
+本文介绍如何部署和使用超磁盘有关 ultra 磁盘的概念信息，请参阅[Azure 中的可用磁盘类型](disks-types.md#ultra-disk)
+
 [!INCLUDE [virtual-machines-disks-ultra-ssd](../../../includes/virtual-machines-disks-getting-started-ultra-ssd.md)]

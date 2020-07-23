@@ -5,21 +5,21 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 05/23/2019
+ms.date: 02/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 20f0d6a88fead155225cff69ab89635de587a46d
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: a3c10ca35ee2f085d4ce41e862a895ff17ff63a0
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66455184"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84317603"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>在我的点到站点配置中，可以有多少 VPN 客户端终结点？
 
 这取决于网关 SKU。 有关支持的连接数的详细信息，请参阅[网关 SKU](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku)。
 
-### <a name="supportedclientos"></a>点到站点连接可以用于哪些客户端操作系统？
+### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a><a name="supportedclientos"></a>点到站点连接可以用于哪些客户端操作系统？
 
 支持以下客户端操作系统：
 
@@ -29,6 +29,7 @@ ms.locfileid: "66455184"
 * Windows Server 2012（仅 64 位）
 * Windows Server 2012 R2（仅 64 位）
 * Windows Server 2016（仅 64 位）
+* Windows Server 2019（仅限 64 位）
 * Windows 10
 * Mac OS X 版本 10.11 或更高版本
 * Linux (StrongSwan)
@@ -40,11 +41,11 @@ ms.locfileid: "66455184"
 
 Azure 支持三种类型的点到站点 VPN 选项：
 
-* 安全套接字隧道协议 (SSTP)。 SSTP 是 Microsoft 专有的基于 SSL 的解决方案，它可以穿透防火墙，因为大多数防火墙都打开了 443 SSL 使用的 TCP 端口。
+* 安全套接字隧道协议 (SSTP)。 SSTP 是 Microsoft 专有的基于 SSL 的解决方案，它可以穿透防火墙，因为大多数防火墙都打开了 443 SSL 使用的出站 TCP 端口。
 
-* OpenVPN。 OpenVPN 是一个可以穿透防火墙，因为大多数防火墙打开 TCP 端口 443 SSL 使用的基于 SSL 的解决方案。
+* OpenVPN。 OpenVPN 是基于 SSL 的解决方案，它可以穿透防火墙，因为大多数防火墙都打开了 443 SSL 使用的出站 TCP 端口。
 
-* IKEv2 VPN。 IKEv2 VPN 是一个基于标准的 IPsec VPN 解决方案，它使用 UDP 端口 500 和 4500 以及 IP 协议号 50。 防火墙并非始终打开这些端口，因此，IKEv2 VPN 有可能无法穿过代理和防火墙。
+* IKEv2 VPN。 IKEv2 VPN 是一个基于标准的 IPsec VPN 解决方案，它使用出站 UDP 端口 500 和 4500 以及 IP 协议号。 50。 防火墙并非始终打开这些端口，因此，IKEv2 VPN 有可能无法穿过代理和防火墙。
 
 ### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>如果重新启动进行过点到站点配置的客户端计算机，是否会自动重新连接 VPN？
 
@@ -58,9 +59,13 @@ Azure 支持三种类型的点到站点 VPN 选项：
 
 是的。 对于资源管理器部署模型，必须为网关使用 RouteBased VPN 类型。 对于经典部署模型，需要一个动态网关。 不支持将点到站点配置用于静态路由 VPN 网关或 PolicyBased VPN 网关。
 
+### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-network-gateways-at-the-same-time"></a>能否将点到站点客户端配置为同时连接到多个虚拟网络网关？
+
+根据所使用的 VPN 客户端软件，你可能可以连接到多个虚拟网络网关，前提是，要连接到的虚拟网络在它们或客户端要从中进行连接的网络之间不存在冲突的地址空间。  尽管 Azure VPN 客户端支持多个 VPN 连接，但在任何给定时间，都只能建立一个连接。
+
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>能否将点到站点客户端配置为同时连接到多个虚拟网络？
 
-不。 点到站点客户端只能连接到虚拟网络网关所在的 VNet 中的资源。
+可以。与其他 VNet 对等互连的 VNet 中部署的虚拟网络网关之间的点到站点连接可能可以访问其他对等互连 VNet。  如果对等互连 VNet 使用 UseRemoteGateway/AllowGatewayTransit 功能，点到站点客户端将能够连接到这些对等互连 VNet。  有关详细信息，请参阅[此文](../articles/vpn-gateway/vpn-gateway-about-point-to-site-routing.md)。
 
 ### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections"></a>预计通过站点到站点连接或点到站点连接的吞吐量有多少？
 
@@ -68,11 +73,11 @@ Azure 支持三种类型的点到站点 VPN 选项：
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>是否可以将任何软件 VPN 客户端用于支持 SSTP 和/或 IKEv2 的点到站点配置？
 
-不。 只能将 Windows 上的本机 VPN 客户端用于 SSTP，只能将 Mac 上的本机 VPN 客户端用于 IKEv2。 但是，可以在所有平台上使用 OpenVPN 客户端通过 OpenVPN 协议进行连接。 请参阅支持的客户端操作系统的列表。
+不是。 只能将 Windows 上的本机 VPN 客户端用于 SSTP，只能将 Mac 上的本机 VPN 客户端用于 IKEv2。 但是，可以在所有平台上使用 OpenVPN 客户端，以便通过 OpenVPN 协议进行连接。 请参阅支持的客户端操作系统的列表。
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Azure 是否支持使用 Windows 的 IKEv2 VPN？
 
-在 Windows 10 和 Server 2016 上支持 IKEv2。 但是，若要使用 IKEv2，必须在本地安装更新并设置注册表项值。 在 Windows 10 之前的操作系统版本不受支持，并且只能使用 SSTP 或**OpenVPN® 协议**。
+在 Windows 10 和 Server 2016 上支持 IKEv2。 但是，若要使用 IKEv2，必须在本地安装更新并设置注册表项值。 Windows 10 以前的 OS 版本不受支持，并且只能使用 SSTP 或 **OpenVPN® 协议**。
 
 为运行 IKEv2 准备 Windows 10 或 Server 2016：
 
@@ -98,3 +103,21 @@ Azure 支持将 Windows、Mac 和 Linux 用于 P2S VPN。
 ### <a name="i-already-have-an-azure-vpn-gateway-deployed-can-i-enable-radius-andor-ikev2-vpn-on-it"></a>我已部署 Azure VPN 网关。 是否可在该网关上启用 RADIUS 和/或 IKEv2 VPN？
 
 是的，可以使用 Powershell 或 Azure 门户在已部署的网关上启用这些新功能，前提是所用网关 SKU 支持 RADIUS 和/或 IKEv2。 例如，VPN 网关基本 SKU 不支持 RADIUS 或 IKEv2。
+
+### <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a><a name="removeconfig"></a>如何删除 P2S 连接的配置？
+
+可以通过 Azure CLI 和 PowerShell 使用以下命令删除 P2S 配置：
+
+#### <a name="azure-powershell"></a>Azure PowerShell
+
+```azurepowershell-interactive
+$gw=Get-AzVirtualNetworkGateway -name <gateway-name>`  
+$gw.VPNClientConfiguration = $null`  
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw`
+```
+
+#### <a name="azure-cli"></a>Azure CLI
+
+```azurecli-interactive
+az network vnet-gateway update --name <gateway-name> --resource-group <resource-group name> --remove "vpnClientConfiguration"
+```

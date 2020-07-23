@@ -1,32 +1,18 @@
 ---
 title: Azure Monitor 日志中的搜索查询 | Microsoft Docs
 description: 本文提供有关在 Azure Monitor 日志中使用搜索查询的入门教程。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/06/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: b5860243b6b605288aaf8d6dffe2260bc031a592
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
-ms.translationtype: MT
+ms.date: 08/06/2018
+ms.openlocfilehash: e13f4abc37e348759e7d0b8a2f7d890c82fe0d15
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65560826"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77660234"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Azure Monitor 日志中的搜索查询
-
-> [!NOTE]
-> 在完成本课程之前，应先完成 [Azure Monitor 日志查询入门](get-started-queries.md)。
-
-[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
-
 Azure Monitor 日志查询可以从表名或 search 命令开始。 本教程介绍基于搜索的查询。 每种方法各有优势。
 
 基于表的查询首先限定查询范围，因此往往比搜索查询更加高效。 搜索查询的结构化程度不高，因此，在跨列或表搜索特定的值时，它是更好的选择。 **搜索**可以在给定表或所有表的所有列中扫描指定的值。 处理的数据量可能十分巨大，正因如此，这些查询可能需要更长的时间才能完成，并且可能返回极大的结果集。
@@ -56,7 +42,7 @@ search in (Event, SecurityEvent) "error"
 ```
 
 ### <a name="table-and-column-scoping"></a>表和列范围限定
-默认情况下，**search** 将评估数据集中的所有列。 如果只想搜索特定的列，请使用以下语法：
+默认情况下，**search** 将评估数据集中的所有列。 若要仅搜索特定列（在以下示例中名为“Source”  ），请使用以下语法：
 
 ```Kusto
 search in (Event) Source:"error"
@@ -64,7 +50,7 @@ search in (Event) Source:"error"
 ```
 
 > [!TIP]
-> 如果使用 `==` 而不是 `:`，则结果将包含如下所述的记录：其中的 *Source* 列包含确切值“error”（大小写完全与此相同）。 使用: 将包括记录其中*源*具有值，例如"错误代码 404"或"错误"。
+> 如果使用 `==` 而不是 `:`，则结果将包含如下所述的记录：其中的 *Source* 列包含确切值“error”（大小写完全与此相同）。 使用“:”将包括其 *Source* 具有“错误代码 404”或“错误”等值的记录。
 
 ## <a name="case-sensitivity"></a>区分大小写
 默认情况下，词语搜索不区分大小写，因此，搜索“dns”可能会产生“DNS”、“dns”或“Dns”等结果。 若要执行区分大小写的搜索，请使用 `kind` 选项：
@@ -107,7 +93,7 @@ search in (Event) "corp*.com"
 > [!TIP]
 > 尽管可以使用 `search *` 来获取每个表中的每个列，但我们建议始终将查询范围限定为特定的表。 无范围查询可能需要花费一段时间才能完成，并且可能返回过多的结果。
 
-## <a name="add-and--or-to-search-queries"></a>将 *and* / *or* 添加到搜索查询
+## <a name="add-and--or-to-search-queries"></a>将“and”  /“or”  添加到搜索查询
 使用 **and** 可以搜索包含多个词语的记录：
 
 ```Kusto

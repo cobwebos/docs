@@ -1,6 +1,6 @@
 ---
 title: Azure 媒体服务动态打包概述 | Microsoft 文档
-description: 本主题概述动态打包。
+description: 本文概述 Microsoft Azure 媒体服务动态打包。
 author: Juliako
 manager: femila
 editor: ''
@@ -13,21 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: juliako
-ms.openlocfilehash: 4b4f2ec779c37f78b371c27df80c354eccb41e7a
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
-ms.translationtype: MT
+ms.openlocfilehash: 079094965775c140c0343da98e40fd008995d45a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869437"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74901184"
 ---
 # <a name="dynamic-packaging"></a>动态打包
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="选择所使用的媒体服务版本："]
 > * [第 3 版](../latest/dynamic-packaging-overview.md)
 > * [第 2 版](media-services-dynamic-packaging-overview.md)
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 Microsoft Azure 媒体服务可用于向多种客户端技术（例如，iOS、XBOX、Silverlight、Windows 8）传送多种媒体源文件格式、媒体流格式和内容保护格式。 这些客户端可识别不同的协议，例如，iOS 需要 HTTP 实时流 (HLS) V4 格式，Silverlight 和 Xbox 需要平滑流。 如果有一组自适应比特率（多码率）MP4（ISO 基媒体 14496-12）文件或平滑流文件要提供给了解 MPEG DASH、HLS 或平滑流的客户端，则应利用媒体服务动态打包。
 

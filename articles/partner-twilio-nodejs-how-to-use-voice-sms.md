@@ -1,30 +1,25 @@
 ---
 title: 在 Azure 中使用 Twilio for Voice、VoIP 和 SMS 消息传递
 description: 了解如何在 Azure 中使用 Twilio API 服务发起电话呼叫和发送短信。 代码示例用 Node.js 编写。
-services: ''
 documentationcenter: nodejs
-author: devinrader
-manager: wpickett
-editor: ''
+author: georgewallace
 ms.assetid: f558cbbd-13d2-416f-b9b1-33a99c426af9
 ms.service: multiple
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/25/2014
-ms.author: wpickett
-ms.openlocfilehash: d9f419c48f64ba697e031dfc680bc9cb12bba5c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: gwallace
+ms.openlocfilehash: 6ac47bec2f14e14fcb83f79ea26b1514abc36f8f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60422899"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519824"
 ---
 # <a name="using-twilio-for-voice-voip-and-sms-messaging-in-azure"></a>在 Azure 中使用 Twilio for Voice、VoIP 和 SMS 消息传递
 本指南演示如何构建与 Azure 上的 Twilio 和 node.js 进行通信的应用程序。
 
-<a id="whatis"/>
+<a name="whatis"></a>
 
 ## <a name="what-is-twilio"></a>什么是 Twilio？
 Twilio 是一种 API 平台，借助于该平台，开发人员能够轻松地收发电话呼叫、收发短信以及将 VoIP 呼叫嵌入到基于浏览器的应用程序和本机移动应用程序中。 在我们深入探讨其功能之前先简要看一下它的工作方式。
@@ -36,14 +31,14 @@ Twilio 是一种 API 平台，借助于该平台，开发人员能够轻松地�
 通过向 Twilio Web 服务 API 发出 HTTP 请求，开发人员可以发送短信或发起传出电话呼叫。 对于传出呼叫，开发人员必须还指定一个 URL，该 URL 返回有关在其连接后如何处理该传出呼叫的 TwiML 说明。
 
 ### <a name="embedding-voip-capabilities-in-ui-code-javascript-ios-or-android"></a>在 UI 代码中嵌入 VoIP 功能（JavaScript、iOS 或 Android）
-Twilio 提供一个客户端 SDK，它可以将任何桌面 Web 浏览器、iOS 应用程序或 Android 应用程序转换为 VoIP 电话。 在本文中，我们将重点介绍如何在浏览器中使用 VoIP 呼叫。 除了在浏览器中运行的 *Twilio JavaScript SDK* 以外，还必须使用服务器端应用程序（我们的 node.js 应用程序）向 JavaScript 客户端发布一个“功能标记”。 可以[在 Twilio 开发人员博客][voipnode]上了解有关如何将 VoIP 用于 node.js 的更多信息。
+Twilio 提供一个客户端 SDK，它可以将任何桌面 Web 浏览器、iOS 应用程序或 Android 应用程序转换为 VoIP 电话。 在本文中，我们将重点介绍如何在浏览器中使用 VoIP 呼叫。 除了在浏览器中运行的*Twilio JAVASCRIPT SDK*外，还必须使用服务器端应用程序（node.js 应用程序）向 JavaScript 客户端发出 "功能标记"。 可以[在 Twilio 开发人员博客][voipnode]上了解有关如何将 VoIP 用于 node.js 的更多信息。
 
-<a id="signup"/>
+<a name="signup"></a>
 
 ## <a name="sign-up-for-twilio-microsoft-discount"></a>注册 Twilio (Microsoft Discount)
 在使用 Twilio 服务之前，必须首先[注册帐户][signup]。 Microsoft Azure 客户可享受特别折扣 - [请务必在此处注册][signup]！
 
-<a id="azuresite"/>
+<a name="azuresite"></a>
 
 ## <a name="create-and-deploy-a-nodejs-azure-website"></a>创建和部署 node.js Azure 网站
 接下来，需要创建在 Azure 上运行的 node.js 网站。 [此处提供有关如何执行此操作的正式文档][azure_new_site]。 概括地说，将执行以下操作：
@@ -54,7 +49,7 @@ Twilio 提供一个客户端 SDK，它可以将任何桌面 Web 浏览器、iOS 
 * 使用一个简单的 node.js Web 应用程序创建文件 `server.js`
 * 将这个简单的应用程序部署到 Azure
 
-<a id="twiliomodule"/>
+<a name="twiliomodule"></a>
 
 ## <a name="configure-the-twilio-module"></a>配置 Twilio 模块
 接下来，我们将开始编写一个可使用 Twilio API 的简单的 node.js 应用程序。 在开始前，我们需要配置我们的 Twilio 帐户凭据。
@@ -92,7 +87,7 @@ Twilio 提供一个客户端 SDK，它可以将任何桌面 Web 浏览器、iOS 
 
 这会将该 twilio 模块声明为一个依赖项，以及常见的 [Express Web 框架][express]和 EJS 模板引擎。  好了，现在全都设置好了 - 我们就来编写一些代码吧！
 
-<a id="makecall"/>
+<a name="makecall"></a>
 
 ## <a name="make-an-outbound-call"></a>发起传出呼叫
 我们将创建一个简单的表单，它将向我们选择的号码发出呼叫。 打开 `server.js`，并输入以下代码。 请注意，在出现“CHANGE_ME”的地方放置 azure 网站的名称：
@@ -191,7 +186,7 @@ app.listen(app.get('port'), function(){
 
 现在，将网站部署到 Azure 并打开主页。 应该能够在文本字段中输入电话号码，并收到来自 Twilio 号码的呼叫！
 
-<a id="sendmessage"/>
+<a name="sendmessage"></a>
 
 ## <a name="send-an-sms-message"></a>发送 SMS 消息
 现在，我们将设置一个用户界面并且构建用于发送短信的处理逻辑。 打开 `server.js`，然后将以下代码添加到对 `app.post` 的最后一个调用后：
@@ -232,7 +227,7 @@ app.post('/sms', (request, response) => {
 
 将应用程序重新部署到 Azure，现在你应该能够提交该表单并且亲自（或者任何密友）发送短信了！
 
-<a id="nextsteps"/>
+<a name="nextsteps"></a>
 
 ## <a name="next-steps"></a>后续步骤
 现在了解了使用 node.js 和 Twilio 生成进行通信的应用程序的基础知识。 但这些示例还只是涉及了 Twilio 和 node.js 的一些浅显的功能。 有关使用 Twilio 和 node.js 的详细信息，请参阅下列资源：

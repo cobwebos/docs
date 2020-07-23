@@ -5,23 +5,23 @@ services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 04/13/2018
+ms.date: 08/07/2019
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 127d67cc3b5dcd0ddd585470821eb1baa08c2388
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: f80efbac256871af073354f23317c447d6a85f1e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151363"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "70020173"
 ---
-现在可以使用数据资源管理器将数据添加到新集合。
+现在可以使用数据资源管理器将数据添加到新容器。
 
-1. 在数据资源管理器中，新数据库会显示在“集合”窗格中。 展开 **Tasks** 数据库，展开 **Items** 集合，单击“文档”，然后单击“新建文档”。 
+1. 在“数据资源管理器”中展开“Tasks”数据库，然后展开“Items”容器。    依次选择“项”、“新建项”。  
 
    ![在 Azure 门户的数据资源管理器中创建新文档](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-new-document.png)
   
-2. 现在，将文档添加到具有以下结构的集合。
+2. 现在，将文档添加到具有以下结构的容器。
 
      ```json
      {
@@ -33,8 +33,8 @@ ms.locfileid: "66151363"
      }
      ```
 
-3. 将 json 添加到“文档”选项卡以后，即可单击“保存”。
+3. 将 json 添加到“文档”选项卡以后，即可选择“保存”。  
 
-    ![通过复制添加 json 数据，然后在 Azure 门户的数据资源管理器中单击“保存”](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-save-document.png)
+    ![通过复制添加 JSON 数据，然后在 Azure 门户上的数据资源管理器中选择“保存”](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-save-document.png)
 
 4.  再创建并保存一个文档，在其中插入 `id` 属性的唯一值，并将其他属性更改为适当值。 新文档可以具有所需的任何结构，因为 Azure Cosmos DB 不对数据施加任何架构。

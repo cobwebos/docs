@@ -1,22 +1,22 @@
 ---
-title: 教程：使用 Azure 数据库迁移服务将 MongoDB 联机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API | Microsoft Docs
-description: 了解如何使用 Azure 数据库迁移服务从本地 MongoDB 联机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API。
+title: 教程：将 MongoDB 联机迁移到用于 MongoDB 的 Azure Cosmos DB API
+titleSuffix: Azure Database Migration Service
+description: 了解如何使用 Azure 数据库迁移服务从本地 MongoDB 联机迁移到 Azure Cosmos DB API for MongoDB。
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 05/29/2019
-ms.openlocfilehash: 0bd271dbf173885cbd5f7835c5dc6b672a3e6035
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
-ms.translationtype: HT
+ms.date: 09/25/2019
+ms.openlocfilehash: 66375d83dca4edef17919e3b493d5e45be37cc40
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66298967"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78255624"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>教程：使用 DMS 将 MongoDB 联机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API
 
@@ -49,10 +49,10 @@ ms.locfileid: "66298967"
 
 * [完成迁移前](../cosmos-db/mongodb-pre-migration.md)步骤，例如估计吞吐量、选择分区键和索引策略。
 * [创建 Azure Cosmos DB 的用于 MongoDB 的 API 帐户](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)。
-* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络 (VNet)，它将使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。
+* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，该模型通过使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)提供与本地源服务器的站点到站点连接。
 
     > [!NOTE]
-    > 在 VNet 设置期间，如果将 ExpressRoute 与 Microsoft 的网络对等互连一起使用，请将以下服务[终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网：
+    > 在虚拟网络安装期间，如果将 ExpressRoute 与 Microsoft 的网络对等互连一起使用，请将以下服务[终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网中：
     >
     > * 目标数据库终结点（例如，SQL 终结点、Cosmos DB 终结点等）
     > * 存储终结点
@@ -60,7 +60,7 @@ ms.locfileid: "66298967"
     >
     > Azure 数据库迁移服务缺少 Internet 连接，因此必须提供此配置。
 
-* 请确保 VNet 网络安全组 (NSG) 规则未阻止以下通信端口：53、443、445、9354 以及 10000-20000。 有关 Azure VNet NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
+* 确保虚拟网络的网络安全组 (NSG) 规则未阻止以下通信端口：53、443、445、9354 以及 10000-20000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 MongoDB 服务器（默认情况下为 TCP 端口 27017）。
 * 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
 
@@ -74,7 +74,7 @@ ms.locfileid: "66298967"
 
     ![显示资源提供程序](media/tutorial-mongodb-to-cosmosdb-online/portal-select-resource-provider.png)
 
-3. 搜索迁移服务，再选择“Microsoft.DataMigration”右侧的“注册”   。
+3. 搜索迁移服务，再选择“Microsoft.DataMigration”右侧的“注册” 。
 
     ![注册资源提供程序](media/tutorial-mongodb-to-cosmosdb-online/portal-register-resource-provider.png)    
 
@@ -92,11 +92,11 @@ ms.locfileid: "66298967"
 
 4. 选择要在其中创建 Azure 数据库迁移服务实例的位置。
 
-5. 选择现有的 VNet，或新建一个 VNet。
+5. 选择现有虚拟网络或新建一个。
 
-   VNet 为 Azure 数据库迁移服务提供了对源 MongoDB 实例和目标 Azure Cosmos DB 帐户的访问权限。
+   虚拟网络为 Azure 数据库迁移服务提供了对源 MongoDB 实例和目标 Azure Cosmos DB 帐户的访问权限。
 
-   若要详细了解如何在 Azure 门户中创建 VNet，请参阅[使用 Azure 门户创建虚拟网络](https://aka.ms/DMSVnet)一文。
+   有关如何在 Azure 门户中创建虚拟网络的详细信息，请参阅[使用 Azure 门户创建虚拟网络](https://aka.ms/DMSVnet)一文。
 
 6. 从“高级”定价层选择 SKU。
 
@@ -133,6 +133,9 @@ ms.locfileid: "66298967"
 
 1. 在“源详细信息”  屏幕上，指定源 MongoDB 服务器的连接详细信息。
 
+   > [!IMPORTANT]
+   > Azure 数据库迁移服务不支持将 Azure Cosmos DB 作为源。
+
     可通过三种模式连接到源：
    * **标准模式**：接受完全限定的域名或 IP 地址、端口号和连接凭据。
    * **连接字符串模式**：接受[连接字符串 URI 格式](https://docs.mongodb.com/manual/reference/connection-string/)一文中所述的 MongoDB 连接字符串。
@@ -150,11 +153,18 @@ ms.locfileid: "66298967"
 
      * 对于 JSON 转储，blob 容器中的文件必须放置到以包含数据库命名的文件夹中。 在每个数据库文件夹中，数据文件必须放置到名为“数据”且采用 collection.json 格式命名的子文件夹中  。 元数据文件（如有）必须放置到名为“元数据”且同样采用 collection.json 格式命名的子文件夹中  。 元数据文件必须采用由 MongoDB bsondump 工具所生成的相同格式。
 
-   如果无法进行 DNS 名称解析，可以使用 IP 地址。
+    > [!IMPORTANT]
+    > 建议不要在 mongo 服务器上使用自签名证书。 但是，如果使用了自签名证书，请使用**连接字符串模式**连接到服务器，并确保连接字符串包含 “”
+    >
+    >```
+    >&sslVerifyCertificate=false
+    >```
+
+    如果无法进行 DNS 名称解析，可以使用 IP 地址。
 
    ![指定源详细信息](media/tutorial-mongodb-to-cosmosdb-online/dms-specify-source1.png)
 
-2. 选择“保存”。 
+2. 选择“保存”  。
 
    > [!NOTE]
    > 如果源是副本集，则源服务器地址应是主节点的地址；如果源是分片的 MongoDB 群集，则源服务器地址应是路由器的地址。 对于分片的 MongoDB 群集，Azure 数据库迁移服务必须能够连接到该群集中的各个分片，这可能需要在其他计算机上打开防火墙。
@@ -165,7 +175,7 @@ ms.locfileid: "66298967"
 
     ![指定目标详细信息](media/tutorial-mongodb-to-cosmosdb-online/dms-specify-target1.png)
 
-2. 选择“保存”。 
+2. 选择“保存”  。
 
 ## <a name="map-to-target-databases"></a>映射到目标数据库
 
@@ -179,7 +189,7 @@ ms.locfileid: "66298967"
 
    ![映射到目标数据库](media/tutorial-mongodb-to-cosmosdb-online/dms-map-target-databases1.png)
 
-2. 选择“保存”。 
+2. 选择“保存”  。
 
 3. 在“集合设置”屏幕上，展开集合列表，然后查看要迁移的集合的列表。 
 
@@ -194,7 +204,7 @@ ms.locfileid: "66298967"
 
    ![选择集合表](media/tutorial-mongodb-to-cosmosdb-online/dms-collection-setting1.png)
 
-4. 选择“保存”。 
+4. 选择“保存”  。
 
 5. 在“迁移摘要”屏幕的“活动名称”文本框中指定迁移活动的名称。  
 

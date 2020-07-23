@@ -1,19 +1,17 @@
 ---
-title: 关于使用 Site Recovery 进行 Hyper-V VM（使用 VMM）灾难恢复到 Azure 的网络映射 | Microsoft Docs
+title: 关于 Hyper-v （带有 VMM）与 Site Recovery 的网络映射
 description: 介绍如何使用 Azure Site Recovery 为 Hyper-V VM（在 VMM 云中托管）到 Azure 的灾难恢复设置网络映射。
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 05/30/2019
+ms.topic: conceptual
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: d2f7f83654f397cc6b93adbbebc25193155bcedb
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
-ms.translationtype: MT
+ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399374"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74082561"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>为 Hyper-V VM 灾难恢复到 Azure 准备网络映射
 
@@ -89,7 +87,7 @@ SilverCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwor
 
 根据这些设置，选择目标 VM 网络时，下表显示将可用的选项。
 
-**选择** | **受保护的云** | **提供保护的云** | **可用目标网络**
+**Select** | **受保护的云** | **提供保护的云** | **可用目标网络**
 ---|---|---|---
 VMNetwork1-Chicago | SilverCloud1 | SilverCloud2 | 可用
  | GoldCloud1 | GoldCloud2 | 可用

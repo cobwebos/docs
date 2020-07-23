@@ -1,11 +1,11 @@
 ---
-ms.openlocfilehash: bcf03c7d342c6d9ad39fa6327f566f191133fd40
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: MT
+ms.openlocfilehash: 9758cdf07d1ad56e6300e89eed2aa0b1da29e081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66110649"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "76694190"
 ---
 ## <a name="create-a-cloud-spatial-anchor"></a>创建云空间定位点
 
-若要创建云定位点，您首先在平台的 AR 系统中，创建一个定位点，，然后创建云对应。 您使用`CreateAnchorAsync()`方法。
+若要创建云空间定位点，请先在平台的 AR 系统中创建一个定位点，然后创建一个云对应项。 我们使用 `CreateAnchorAsync()` 方法。

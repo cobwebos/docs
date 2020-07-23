@@ -1,30 +1,30 @@
 ---
-title: 使用 Azure 流量管理器配置子网流量路由方法
-description: 本文介绍了如何配置流量管理器以将流量从用户子网路由到特定终结点。
+title: 教程 - 使用 Azure 流量管理器配置子网流量路由
+description: 本教程介绍如何配置流量管理器以将流量从用户子网路由到特定终结点。
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
-ms.author: allensu
-ms.openlocfilehash: da2d4816f3f7a99ac2d213d72d7e801cf630e165
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.author: rohink
+ms.openlocfilehash: 49e0bce6eea8fac32f49bb905c225e898e709af0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304938"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "77136284"
 ---
-# <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>使用流量管理器，基于用户子网，将流量定向到特定终结点
+# <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>教程：使用流量管理器，基于用户子网，将流量定向到特定终结点
 
 本文介绍如何配置子网流量路由方法。 借助子网流量路由方法，可以将一组 IP 地址范围映射到特定终结点，当流量管理器接收到请求后，它会检查请求的源 IP 并返回相关的终结点  。
 
 在本教程中，使用子网路由，流量路由到内部网站或生产网站，具体取决于用户查询的 IP 地址。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 IIS 上创建两个运行基本网站的 VM
@@ -47,7 +47,7 @@ ms.locfileid: "66304938"
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
-通过 https://portal.azure.com 登录到 Azure 门户。
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ### <a name="create-websites"></a>创建网站
 
@@ -173,7 +173,7 @@ ms.locfileid: "66304938"
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | Type                    | Azure 终结点                                   |
+    | 类型                    | Azure 终结点                                   |
     | 名称           | myInternalWebSiteEndpoint                                        |
     | 目标资源类型           | 公共 IP 地址                          |
     | 目标资源          | **选择公共 IP 地址**以显示同一订阅下具有公共 IP 地址的资源列表。 在“资源”中，选择名为 *myIISVMEastUS-ip* 的公共 IP 地址。  这是美国东部的 IIS 服务器 VM 的公共 IP 地址。|

@@ -4,13 +4,22 @@
   items:
     - name: 什么是用于 MariaDB 的 Azure DB？
       href: overview.md
+    - name: 我应选择哪个 MariaDB 选项？
+      href: select-right-deployment-type.md
 - name: 快速入门
   expanded: true
   items:
-    - name: 创建 DB - 门户
-      href: quickstart-create-mariadb-server-database-using-azure-portal.md
-    - name: 创建 DB - Azure CLI
-      href: quickstart-create-mariadb-server-database-using-azure-cli.md
+    - name: 创建 DB
+      items:
+        - name: 创建 DB - 门户
+          href: quickstart-create-mariadb-server-database-using-azure-portal.md
+        - name: 创建 DB - Azure CLI
+          href: quickstart-create-mariadb-server-database-using-azure-cli.md
+        - name: 创建 DB - Azure PowerShell
+          href: quickstart-create-mariadb-server-database-using-azure-powershell.md
+        - name: 创建 DB - ARM 模板
+          href: quickstart-create-mariadb-server-database-arm-template.md
+          displayName: deploy azure resource manager template
     - name: 连接和查询
       items:
         - name: MySQL Workbench
@@ -23,10 +32,15 @@
           href: tutorial-design-database-using-portal.md
         - name: Azure CLI
           href: tutorial-design-database-cli.md
+        - name: Azure PowerShell
+          href: tutorial-design-database-using-powershell.md
 - name: 示例
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 数据库和服务器
@@ -41,30 +55,51 @@
       items:
         - name: 定价层
           href: concepts-pricing-tiers.md
+        - name: 为预留容量预付费
+          href: concept-reserved-pricing.md
         - name: 限制
           href: concepts-limits.md
     - name: 数据访问和安全性
       items:
-        - name: 防火墙规则
-          href: concepts-firewall-rules.md
+        - name: 安全概述
+          href: concepts-security.md
         - name: 配置 SSL
           href: concepts-ssl-connection-security.md
-        - name: VNet
-          href: concepts-data-access-security-vnet.md
         - name: 连接体系结构
           href: concepts-connectivity-architecture.md
+        - name: 防火墙规则
+          href: concepts-firewall-rules.md
+        - name: 虚拟网络
+          href: concepts-data-access-security-vnet.md
+        - name: 专用链接
+          href: concepts-data-access-security-private-link.md
+        - name: 高级威胁防护
+          href: concepts-data-access-and-security-threat-protection.md
+        - name: 安全基线
+          href: security-baseline.md
     - name: 业务连续性
       items:
-        - name: 概述
+        - name: 业务连续性简介
+          displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
           href: concepts-business-continuity.md
         - name: 备份和还原
           href: concepts-backup.md
-    - name: 监视
+    - name: 监视和优化
       items:
         - name: 监视
           href: concepts-monitoring.md
-        - name: 服务器日志
+        - name: 慢查询日志
           href: concepts-server-logs.md
+        - name: 审核日志
+          href: concepts-audit-logs.md
+        - name: 查询存储
+          href: concepts-query-store.md
+        - name: 查询性能见解
+          href: concepts-query-performance-insight.md
+        - name: 性能建议
+          href: concepts-performance-recommendations.md
+        - name: 服务器参数
+          href: concepts-server-parameters.md
     - name: 开发
       items:
         - name: 驱动程序和工具兼容性
@@ -75,8 +110,18 @@
       items:
         - name: 复制中数据
           href: concepts-data-in-replication.md
+        - name: 只读副本
+          href: concepts-read-replicas.md
+    - name: 在区域之间移动
+      items:
+        - name: Azure 门户
+          href: howto-move-regions-portal.md
 - name: 操作指南
   items:
+    - name: 管理服务器
+      items:
+        - name: Azure 门户
+          href: howto-create-manage-server-portal.md
     - name: 防火墙规则
       items:
         - name: Azure 门户
@@ -89,6 +134,8 @@
           href: howto-restore-server-portal.md
         - name: Azure CLI
           href: howto-restore-server-cli.md
+        - name: Azure PowerShell
+          href: howto-restore-server-powershell.md
     - name: 迁移数据库
       items:
         - name: 转储和还原
@@ -101,22 +148,44 @@
           href: howto-connection-string.md
         - name: 配置 SSL
           href: howto-configure-ssl.md
+        - name: 配置 TLS
+          href: howto-tls-configurations.md
+        - name: 通过重定向进行连接
+          href: howto-redirection.md
     - name: 配置服务器参数
       items:
         - name: Azure 门户
           href: howto-server-parameters.md
         - name: Azure CLI
           href: howto-configure-server-parameters-cli.md
+        - name: Azure PowerShell
+          href: howto-configure-server-parameters-using-powershell.md
     - name: 自动增长存储
       items:
         - name: Azure 门户
           href: howto-auto-grow-storage-portal.md
-    - name: 访问服务器日志
+        - name: Azure CLI
+          href: howto-auto-grow-storage-cli.md
+        - name: Azure PowerShell
+          href: howto-auto-grow-storage-powershell.md
+    - name: 拒绝公用网络访问
       items:
         - name: Azure 门户
-          href: howto-configure-server-logs-portal.md
-        - name: Azure CLI
-          href: howto-configure-server-logs-cli.md
+          href: howto-deny-public-network-access.md
+    - name: 访问服务器日志
+      items:
+        - name: 慢查询日志
+          items:
+            - name: Azure 门户
+              href: howto-configure-server-logs-portal.md
+            - name: Azure CLI
+              href: howto-configure-server-logs-cli.md
+        - name: 审核日志
+          items:
+            - name: Azure 门户
+              href: howto-configure-audit-logs-portal.md
+            - name: Azure CLI
+              href: howto-configure-audit-logs-cli.md
     - name: 监视
       items:
         - name: 针对指标创建警报
@@ -125,25 +194,43 @@
       items:
         - name: 配置复制中数据
           href: howto-data-in-replication.md
-    - name: 故障排除
+        - name: 创建只读副本 Azure 门户
+          href: howto-read-replicas-portal.md
+        - name: 使用 Azure CLI、REST API 创建只读副本
+          href: howto-read-replicas-cli.md
+        - name: 创建只读副本 - Azure PowerShell
+          href: howto-read-replicas-powershell.md
+    - name: 疑难解答
       items:
         - name: 排查连接错误
           href: howto-troubleshoot-common-connection-issues.md
         - name: 查询性能故障排除
           href: howto-troubleshoot-query-performance.md
+    - name: 高级威胁防护
+      items:
+        - name: Azure 门户
+          href: howto-database-threat-protection-portal.md
     - name: 虚拟网络
       items:
         - name: Azure 门户
           href: howto-manage-vnet-portal.md
         - name: Azure CLI
           href: howto-manage-vnet-cli.md
+    - name: 专用链接
+      items:
+        - name: Azure 门户
+          href: howto-configure-privatelink-portal.md
+        - name: Azure CLI
+          href: howto-configure-privatelink-cli.md
     - name: 重新启动服务器
       items:
         - name: Azure 门户
           href: howto-restart-server-portal.md
         - name: Azure CLI
           href: howto-restart-server-cli.md
-- name: 引用
+        - name: Azure PowerShell
+          href: howto-restart-server-powershell.md
+- name: 参考
   items:
     - name: Azure CLI
       href: /cli/azure/mariadb
@@ -151,8 +238,8 @@
       href: /rest/api/mariadb
     - name: 资源管理器模板
       href: /azure/templates/microsoft.dbformariadb/allversions
-    - name: 复制中数据存储过程
-      href: reference-data-in-stored-procedures.md
+    - name: 管理存储过程
+      href: reference-stored-procedures.md
 - name: 资源
   items:
     - name: 部署模板
@@ -161,9 +248,9 @@
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/mariadb/'
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/forums/en-US/home?forum=AzureDatabaseforMariaDB'
-    - name: 堆栈溢出
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-database-mariadb.html'
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-mariadb'
     - name: 请求功能
       href: 'https://feedback.azure.com/forums/915439-azure-database-for-mariadb'

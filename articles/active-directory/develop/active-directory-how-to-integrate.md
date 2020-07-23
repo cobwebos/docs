@@ -1,35 +1,28 @@
 ---
-title: 如何与 Azure Active Directory 集成 | Microsoft Docs
-description: 了解将你的应用程序与 Azure Active Directory 集成的优势和获取资源的功能，如简化登录、 身份管理、 多重身份验证和访问控制。
+title: 如何与 Azure Active Directory 集成
+description: 了解将你的应用程序与 Azure Active Directory 进行集成的优势，并获取诸如简化登录、标识管理、多重身份验证和访问控制等功能的资源。
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: d13bba54-96bd-4b81-bee9-c8025ffa1648
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/08/2019
 ms.author: ryanwi
-ms.reviewer: bryanla
+ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8804988387ba4a6cdc8dff5d93077de42ea2051
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
-ms.translationtype: MT
+ms.openlocfilehash: 4eaca7350ac006a2fcf2eed8d3eb0cb8ef274841
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546180"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80885695"
 ---
 # <a name="integrating-with-azure-active-directory"></a>与 Azure Active Directory 集成
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-在本文中，将了解如何将你的应用程序集成与 Azure Active Directory (Azure AD) 的好处和获取资源的集成。 Azure AD 提供云应用程序的企业级标识管理的组织。 Azure AD 集成可以简化用户登录体验，并帮助应用程序符合 IT 策略。
+在本文中，你将了解将你的应用程序与 Azure Active Directory (Azure AD) 进行集成的优势，并获取用于集成的资源。 Azure AD 为组织的云应用程序提供企业级标识管理。 Azure AD 集成可以简化用户登录体验，并帮助应用程序符合 IT 策略。
 
 ## <a name="how-to-integrate"></a>如何集成
 
@@ -43,17 +36,17 @@ ms.locfileid: "65546180"
 
 ### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>浏览用户，管理用户预配，以及控制对应用程序的访问
 
-**浏览目录中的用户。**  在邀请其他人或授予访问权限时，可以使用 Graph API 来帮助用户搜索和浏览其组织中的其他人员，而无需键入电子邮件地址。 用户可以使用熟悉的通讯簿样式界面进行浏览，包括查看组织层次结构的详细信息。 深入了解[图形 API](active-directory-graph-api.md)。
+**浏览目录中的用户。**  在邀请其他人或授予访问权限时，可以使用 Microsoft Graph API 来帮助用户搜索和浏览其组织中的其他人员，而无需用户键入电子邮件地址。 用户可以使用熟悉的通讯簿样式界面进行浏览，包括查看组织层次结构的详细信息。 详细了解 [Microsoft Graph API](https://docs.microsoft.com/graph/overview)。
 
-**重复使用客户正在管理的 Active Directory 组和通讯组列表。**  Azure AD 包含客户已用于电子邮件分发和管理访问权限的组。 使用 Graph API 时，可以重复使用这些组，而无需要求客户在应用程序中创建并管理一系列不同的组。 还可以在登录令牌中向应用程序发送组信息。 了解有关 [图形 API](active-directory-graph-api.md)的详细信息。
+**重复使用客户正在管理的 Active Directory 组和通讯组列表。**  Azure AD 包含客户已用于电子邮件分发和管理访问权限的组。 使用 Microsoft Graph API 时，可以重复使用这些组，而无需要求客户在应用程序中创建并管理一系列不同的组。 还可以在登录令牌中向应用程序发送组信息。 详细了解 [Microsoft Graph API](https://docs.microsoft.com/graph/overview)。
 
-**使用 Azure AD 控制谁有权访问应用程序。**  Azure AD 中的管理员和应用程序所有者可以将应用程序访问权限分配给特定的用户和组。 使用 Graph API，可以读取此列表并使用它来控制资源的设置和取消设置，以及应用程序中的访问权限。
+**使用 Azure AD 控制有权访问应用程序的用户。**  Azure AD 中的管理员和应用程序所有者可以将应用程序访问权限分配给特定的用户和组。 使用 Microsoft Graph API，可以读取此列表并使用它来控制资源的预配和取消预配，以及应用程序中的访问权限。
 
-**利用 Azure AD 实现基于角色的访问控制。**  管理员和应用程序所有者可以向在 Azure AD 中注册应用程序时定义的角色分配用户和组。 角色信息会在登录令牌中发送到应用程序，并可使用图形 API 来读取。 深入了解如何[使用 Azure AD 进行授权](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/)。
+**利用 Azure AD 实现基于角色的访问控制。**  管理员和应用程序所有者可以向在 Azure AD 中注册应用程序时定义的角色分配用户和组。 角色信息会在登录令牌中发送到应用程序，并可使用 Microsoft Graph API 来读取。 深入了解如何[使用 Azure AD 进行授权](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/)。
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>获取对用户配置文件、日历、电子邮件、联系人、文件等的访问权限
 
-**Azure AD 是一款面向 Office 365 和其他 Microsoft 业务服务的授权服务器。**  如果支持使用 Azure AD 登录到应用程序，或者支持将当前用户帐户链接到使用 OAuth 2.0 的 Azure AD 用户帐户，则可以请求对用户配置文件、日历、电子邮件、联系人、文件和其他信息的读取和写入访问权限。 可以一气呵成地将事件写入用户日历，并在其 OneDrive 中读取或写入文件。 深入了解如何[访问 Office 365 API](https://msdn.microsoft.com/office/office365/howto/platform-development-overview)。
+**Azure AD 是一款面向 Office 365 和其他 Microsoft 业务服务的授权服务器。**  如果支持使用 Azure AD 登录到应用程序，或者支持将当前用户帐户链接到使用 OAuth 2.0 的 Azure AD 用户帐户，则可以请求对用户配置文件、日历、电子邮件、联系人、文件和其他信息的读取和写入访问权限。 可以顺利地将事件写入用户日历，以及在其 OneDrive 中读取或写入文件。 深入了解如何[访问 Office 365 API](https://msdn.microsoft.com/office/office365/howto/platform-development-overview)。
 
 ### <a name="promote-your-application-in-the-azure-and-office-365-marketplaces"></a>在 Azure 和 Office 365 市场中推广你的应用程序
 
@@ -73,21 +66,21 @@ ms.locfileid: "65546180"
 
 **帮助应用程序符合 IT 策略。**  组织可将其企业标识管理系统与 Azure AD 集成，这样，在员工离开组织后，他们会自动失去对应用程序的访问权限，而不需要 IT 人员采取额外的措施。 IT 人员可以控制谁可以访问应用程序，并确定需要哪些访问策略（例如多重身份验证），这就减少了为遵守复杂的企业策略而要编写的代码量。 Azure AD 为管理员提供详细的审核日志，其中记录了哪些人登录了应用程序，使 IT 人员可以跟踪使用情况。
 
-**Azure AD 已将 Active Directory 扩展到云中，以便应用程序可与 AD 集成。**  世界各地的许多组织都在使用 Active Directory 作为首要登录和标识管理系统，并要求它们的应用程序使用 AD。 与 Azure AD 集成可将应用与 Active Directory 相集成。
+**Azure AD 已将 Active Directory 扩展到云中，便于应用程序与 AD 集成。**  世界各地的许多组织都在使用 Active Directory 作为首要登录和标识管理系统，并要求它们的应用程序使用 AD。 与 Azure AD 集成可将应用与 Active Directory 相集成。
 
-### <a name="advanced-security-features"></a>先进的安全功能
+### <a name="advanced-security-features"></a>高级安全功能
 
-**多重身份验证。**  Azure AD 提供本机多重身份验证。 IT 管理员可以要求访问应用程序之前经过多重身份验证，因此，无需编写此项支持的代码。 深入了解[多重身份验证](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)。
+**多重身份验证。**  Azure AD 提供本机多重身份验证。 IT 管理员可以要求访问应用程序之前经过多重身份验证，因此，无需编写此项支持的代码。 了解有关[多重身份验证](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)的详细信息。
 
 **异常登录检测。**  Azure AD 每天要处理十亿次以上的登录，同时，使用机器学习算法来检测可疑活动，并通知 IT 管理员可能存在的问题。 通过支持 Azure AD 登录，应用程序将从这种保护中受益。 深入了解如何[查看 Azure Active Directory 访问报告](../active-directory-view-access-usage-reports.md)。
 
-**条件性访问。**  除了多重身份验证以外，管理员可以要求用户在登录应用程序之前满足特定的条件。 可设置的条件包括客户端设备的 IP 地址范围、指定的组中的成员资格，以及用于访问的设备的状态。 深入了解 [Azure Active Directory 条件访问](../active-directory-conditional-access-azure-portal.md)。
+**条件性访问。**  除了多重身份验证以外，管理员可以要求用户在登录应用程序之前满足特定的条件。 可设置的条件包括客户端设备的 IP 地址范围、指定的组中的成员资格，以及用于访问的设备的状态。 详细了解[Azure Active Directory 的条件性访问](../active-directory-conditional-access-azure-portal.md)。
 
 ### <a name="easy-development"></a>易于开发
 
-**行业标准协议。**  Microsoft 承诺支持行业标准。 Microsoft 标识平台支持行业标准 OAuth 2.0 和 OpenID Connect 1.0 协议。 详细了解如何[Microsoft 标识平台身份验证协议](active-directory-v2-protocols.md)。
+**行业标准协议。**  Microsoft 承诺支持行业标准。 Microsoft 标识平台支持行业标准协议 OAuth 2.0 和 OpenID Connect 1.0。 详细了解 [Microsoft 标识平台身份验证协议](active-directory-v2-protocols.md)。
 
-**开放源代码库。**  Microsoft 为主流语言和平台提供完全受支持的开放源代码库以加速开发。 这些源代码已获 Apache 2.0 的授权，可以在项目中任意衍生和改写。 详细了解如何[Microsoft 身份验证库 (MSAL)](reference-v2-libraries.md)。
+**开放源代码库。**  Microsoft 为主流语言和平台提供完全受支持的开放源代码库以加速开发。 这些源代码已获 Apache 2.0 的授权，可以在项目中任意衍生和改写。 详细了解 [Microsoft 身份验证库 (MSAL)](reference-v2-libraries.md)。
 
 ### <a name="worldwide-presence-and-high-availability"></a>全球存在和高可用性
 
@@ -97,5 +90,5 @@ ms.locfileid: "65546180"
 
 [开始编写代码](v2-overview.md#getting-started)。
 
-[使用 Microsoft 标识平台登录用户](authentication-scenarios.md)
+[使用 Microsoft 标识平台将用户登录](authentication-scenarios.md)
 

@@ -1,26 +1,17 @@
 ---
-title: 教程 - 清理 Azure Service Fabric 网格资源 | Microsoft Docs
+title: 教程 - 清理 Azure Service Fabric 网格资源
 description: 了解如何删除 Azure Service Fabric 网格资源，避免为不再使用的资源付费。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a60c42310f0698b8290e7ba6195eeed44fe0b95e
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: b8ce3c795bc9ad212331ce1c1f413fe7fd6da909
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56815784"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246737"
 ---
 # <a name="tutorial-remove-azure-resources"></a>教程：删除 Azure 资源
 
@@ -48,7 +39,7 @@ ms.locfileid: "56815784"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-本教程到此结束。 使用完创建的资源时，请删除它们，以免为不再使用的资源付费。 这非常重要，因为网格是一种按秒计费的无服务器服务。 若要了解有关网格定价的详细信息，请查看 https://aka.ms/sfmeshpricing。
+本教程到此结束。 使用完创建的资源时，请删除它们，以免为不再使用的资源付费。 这非常重要，因为网格是一种按秒计费的无服务器服务。 若要了解有关网格定价的详细信息，请查看 https://aka.ms/sfmeshpricing 。
 
 Azure 提供的一项便利是：若创建的资源与特定资源组关联，则删除该资源组即可删除所有关联的资源。 这样，就无需逐个删除。
 
@@ -62,7 +53,7 @@ az group delete --resource-group sfmeshTutorial1RG
 Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 ```
 
-或者，可以从[门户](../azure-resource-manager/manage-resource-groups-portal.md#delete-resource-groups)删除 sfmeshTutorial1RG 资源组。 
+或者，可以从[门户](../azure-resource-manager/management/manage-resource-groups-portal.md#delete-resource-groups)删除 sfmeshTutorial1RG 资源组。 
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -71,4 +62,4 @@ Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 * 浏览[投票应用示例](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/votingapp)，查看有关服务到服务通信的另一个示例
 * 要详细了解 Service Fabric 资源模型，请参阅 [Service Fabric 网格资源模型](service-fabric-mesh-service-fabric-resources.md)。
 * 若要详细了解 Service Fabric 网格，请阅读 [Service Fabric 网格概述](service-fabric-mesh-overview.md)。
-* 了解 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)
+* 了解 [Cloud Shell](../cloud-shell/overview.md)

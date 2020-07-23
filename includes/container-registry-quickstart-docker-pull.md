@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: cd97c61e7493249785293ae331713ba1a98efee3
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: d7c813c748d2af60ace71f61ba3efa43a18da00d
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66149031"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752186"
 ---
 ## <a name="run-image-from-registry"></a>从注册表运行映像
 
 现在，可以使用 [docker run][docker-run] 从容器注册表拉取并运行 `hello-world:v1` 容器映像：
 
 ```
-docker run <acrLoginServer>/hello-world:v1  
+docker run <login-server>/hello-world:v1  
 ```
 
 示例输出： 

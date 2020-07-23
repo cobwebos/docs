@@ -1,27 +1,17 @@
 ---
-title: Azure PowerShell 脚本示例 - 使用 Web 服务器日志监视 Web 应用 | Microsoft Docs
-description: Azure PowerShell 脚本示例 - 使用 Web 服务器日志监视 Web 应用
-services: app-service\web
-documentationcenter: ''
-author: syntaxc4
-manager: erikre
-editor: ''
+title: PowerShell：使用 Web 服务器日志进行监视
+description: 了解如何使用 Azure PowerShell 自动部署和管理应用服务。 此示例演示如何使用 Web 服务器日志监视应用。
 tags: azure-service-management
 ms.assetid: 5805d7cd-9e56-4eba-bd85-75b013690ff5
-ms.service: app-service
-ms.devlang: multiple
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 03/20/2017
-ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: ac503c4408432da4e2c0c9281ee5cdd6e5d9e984
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: c9b3ab6f8115f68ead478c0de21e4661d3ca032c
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198606"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437931"
 ---
 # <a name="monitor-a-web-appwith-web-server-logs"></a>使用 Web 服务器日志监视 Web 应用
 
@@ -47,13 +37,12 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | 创建应用服务计划。 |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | 创建 Web 应用。 |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | 修改 Web 应用的配置。 |
-| [Get-AzWebAppMetric](/powershell/module/az.websites/get-azwebappmetric) | 获取 Web 应用的指标。 |
 
 ## <a name="next-steps"></a>后续步骤
 

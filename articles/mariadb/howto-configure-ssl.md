@@ -1,17 +1,17 @@
 ---
-title: 配置 SSL 连接性以安全连接到 Azure Database for MariaDB
+title: 配置 SSL - Azure Database for MariaDB
 description: 介绍了如何正确配置 Azure Database for MariaDB 和关联的应用程序，以正确使用 SSL 连接
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
-ms.date: 01/24/2019
-ms.openlocfilehash: 6de16b7264c7ae7ead06b4e131e7fa46c664cedd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.topic: how-to
+ms.date: 07/08/2020
+ms.openlocfilehash: ca1129f0ef4f341773ebb7fea89ff9ec0881ca5b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573355"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143062"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>配置应用程序的 SSL 连接性以安全连接到 Azure Database for MariaDB
 Azure Database for MariaDB 支持使用安全套接字层 (SSL) 将 Azure Database for MariaDB 服务器连接到客户端应用程序。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。
@@ -20,10 +20,22 @@ Azure Database for MariaDB 支持使用安全套接字层 (SSL) 将 Azure Databa
 从 [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) 下载通过 SSL 与 Azure Database for MariaDB 服务器通信所需的证书，再将证书文件保存到本地驱动器（例如，本教程使用 c:\ssl）。
 **对于 Microsoft Internet Explorer 和 Microsoft Edge：** 下载完成之后，将证书重命名为 BaltimoreCyberTrustRoot.crt.pem。
 
+请参阅以下链接，了解主权云中服务器的证书： [Azure 政府](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)版、 [azure 中国](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)版和[azure 德国](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt)版。
+
 ## <a name="bind-ssl"></a>绑定 SSL
-### <a name="connecting-to-server-using-the-mysql-workbench-over-ssl"></a>使用 MySQL Workbench 通过 SSL 连接到服务器
-配置 MySQL Workbench，以便安全地通过 SSL 连接。 从“设置新连接”对话框，导航到“SSL”选项卡。在“SSL CA 文件:”字段中输入 BaltimoreCyberTrustRoot.crt.pem 的文件位置。 
-![保存自定义磁贴](./media/howto-configure-ssl/mysql-workbench-ssl.png) 对于现有连接，可以通过右键单击“连接”图标并选择“编辑”来绑定 SSL。 然后导航到“SSL”选项卡，并绑定证书文件。
+
+### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>使用 MySQL Workbench 通过 SSL 连接到服务器
+配置 MySQL Workbench，以便安全地通过 SSL 连接。 
+
+1. 从“设置新连接”对话框，导航到“SSL”选项卡  。 
+
+1. 将“使用 SSL”  字段更新为“必需”。
+
+1. 在“SSL CA 文件:”字段中输入 BaltimoreCyberTrustRoot.crt.pem 的文件位置********。 
+    
+    ![保存 SSL 配置](./media/howto-configure-ssl/mysql-workbench-ssl.png)
+
+对于现有连接，可以通过右键单击“连接”图标并选择“编辑”来绑定 SSL。 然后导航到“SSL”选项卡，并绑定证书文件。
 
 ### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>使用 MySQL CLI 通过 SSL 连接到服务器
 绑定 SSL 证书的另一种方法是使用 MySQL 命令行接口执行以下命令。 
@@ -37,21 +49,21 @@ mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p
 
 ## <a name="enforcing-ssl-connections-in-azure"></a>在 Azure 中强制实施 SSL 连接 
 ### <a name="using-the-azure-portal"></a>使用 Azure 门户
-在 Azure 门户中，访问 Azure Database for MariaDB 服务器，并单击“连接安全性”。 使用切换按钮来启用或禁用“强制实施 SSL 连接”设置，并单击“保存”。 Microsoft 建议始终启用“强制实施 SSL 连接”设置，以增强安全性。
+在 Azure 门户中，访问 Azure Database for MariaDB 服务器，并单击“连接安全性”  。 使用切换按钮来启用或禁用“强制实施 SSL 连接”设置，并单击“保存”   。 Microsoft 建议始终启用“强制实施 SSL 连接”设置，以增强安全性****。
 ![enable-ssl](./media/howto-configure-ssl/enable-ssl.png)
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
-可以通过在 Azure CLI 中分别使用“Enabled”或“Disabled”值来启用或禁用“ssl-enforcement”参数。
+可以通过在 Azure CLI 中分别使用“Enabled”或“Disabled”值来启用或禁用“ssl-enforcement”参数  。
 ```azurecli-interactive
 az mariadb server update --resource-group myresource --name mydemoserver --ssl-enforcement Enabled
 ```
 
 ## <a name="verify-the-ssl-connection"></a>验证 SSL 连接
-执行 mysql status 命令，验证是否已使用 SSL 连接到 MariaDB 服务器：
+执行 mysql status 命令，验证是否已使用 SSL 连接到 MariaDB 服务器： 
 ```sql
 status
 ```
-查看输出以确认连接是否已加密，如果已加密，输出应显示为：“SSL: 使用中的密码为 AES256-SHA” 
+查看输出以确认连接是否已加密，如果已加密，输出应显示为：“SSL:  使用中的密码为 AES256-SHA” 
 
 ## <a name="sample-code"></a>代码示例
 若要从应用程序通过 SSL 与 Azure Database for MariaDB 建立安全连接，请参阅以下代码示例：
@@ -68,22 +80,23 @@ die('Failed to connect to MySQL: '.mysqli_connect_error());
 ### <a name="python-mysqlconnector-python"></a>Python (MySQLConnector Python)
 ```python
 try:
-    conn=mysql.connector.connect(user='myadmin@mydemoserver', 
-        password='yourpassword', 
-        database='quickstartdb', 
-        host='mydemoserver.mariadb.database.azure.com', 
-        ssl_ca='/var/www/html/BaltimoreCyberTrustRoot.crt.pem')
+    conn = mysql.connector.connect(user='myadmin@mydemoserver',
+                                   password='yourpassword',
+                                   database='quickstartdb',
+                                   host='mydemoserver.mariadb.database.azure.com',
+                                   ssl_ca='/var/www/html/BaltimoreCyberTrustRoot.crt.pem')
 except mysql.connector.Error as err:
     print(err)
 ```
 ### <a name="python-pymysql"></a>Python (PyMySQL)
 ```python
-conn = pymysql.connect(user = 'myadmin@mydemoserver', 
-        password = 'yourpassword', 
-        database = 'quickstartdb', 
-        host = 'mydemoserver.mariadb.database.azure.com', 
-        ssl = {'ssl': {'ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'}})
+conn = pymysql.connect(user='myadmin@mydemoserver',
+                       password='yourpassword',
+                       database='quickstartdb',
+                       host='mydemoserver.mariadb.database.azure.com',
+                       ssl={'ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'})
 ```
+
 ### <a name="ruby"></a>Ruby
 ```ruby
 client = Mysql2::Client.new(
@@ -91,9 +104,21 @@ client = Mysql2::Client.new(
         :username => 'myadmin@mydemoserver',      
         :password => 'yourpassword',    
         :database => 'quickstartdb',
-        :ssl_ca => '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'
+        :sslca => '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'
+        :ssl_mode => 'required'
     )
 ```
+#### <a name="ruby-on-rails"></a>Ruby on Rails
+```ruby
+default: &default
+  adapter: mysql2
+  username: username@mydemoserver
+  password: yourpassword
+  host: mydemoserver.mariadb.database.azure.com
+  sslca: BaltimoreCyberTrustRoot.crt.pem
+  sslverify: true
+```
+
 ### <a name="golang"></a>Golang
 ```go
 rootCertPool := x509.NewCertPool()

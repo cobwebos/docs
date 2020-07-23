@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: d4e9e26f2c6764cc179826266891d861514e23f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 01d6fa30fc781ffe2a9f387f7c9eb4c27eaacc77
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344083"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67338244"
 ---
 # <a name="microsoft-azure-documentation"></a>Microsoft Azure 文档
 
@@ -34,10 +34,9 @@ ms.locfileid: "60344083"
 
 ## <a name="license"></a>许可
 
-请参阅 [LICENSE](.github/LICENSE)、[LICENSE-CODE](.github/LICENSE-CODE) 和 [ThirdPartyNotices](.github/ThirdPartyNotices.md) 了解所有许可信息。
+请参阅 [LICENSE](LICENSE)、[LICENSE-CODE](LICENSE-CODE) 和 [ThirdPartyNotices](ThirdPartyNotices.md) 了解所有许可信息。
 
 ## <a name="code-of-conduct"></a>行为准则
 
 本项目采用 [Microsoft 开源行为准则](https://opensource.microsoft.com/codeofconduct/)。
 有关详细信息，请参阅[行为准则常见问题解答](https://opensource.microsoft.com/codeofconduct/faq/)；若有其他任何问题或意见，请联系 [opencode@microsoft.com](mailto:opencode@microsoft.com)。
-

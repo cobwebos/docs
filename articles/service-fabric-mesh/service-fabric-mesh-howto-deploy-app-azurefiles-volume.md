@@ -1,34 +1,36 @@
 ---
-title: 在 Service Fabric 网格应用程序中使用基于 Azure 文件的卷 | Microsoft Docs
+title: 在 Service Fabric 网格应用中使用基于 Azure 文件的卷
 description: 了解如何使用 Azure CLI，通过将基于 Azure 文件的卷装载到服务，在 Azure Service Fabric 网格应用程序中存储状态。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: azure-cli
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fa078f17768d4885403f2f3e3d6b91251f0aaced
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 54edc242260479a8f48cc4aae91845041fc2d376
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60419367"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260104"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>在 Service Fabric 网格应用程序中装载基于 Azure 文件的卷 
 
 本文介绍了如何将基于 Azure 文件的卷装载到 Service Fabric 网格应用程序的服务中。  Azure 文件卷驱动程序是将 Azure 文件共享装载到容器的 Docker 卷驱动程序，可使用它来保存服务状态。 卷提供常规用途文件存储，并允许使用正常磁盘 I/O 文件 API 读取/写入文件。  有关卷和应用程序数据存储选项的详细信息，请参阅[存储状态](service-fabric-mesh-storing-state.md)。
 
-若要将卷装载到服务，需在 Service Fabric 网格应用程序中创建卷资源，然后在服务中引用该卷。  可在[基于 YAML 的资源文件](#declare-a-volume-resource-and-update-the-service-resource-yaml)或[基于 JSON 的部署模板](#declare-a-volume-resource-and-update-the-service-resource-json)中完成声明该卷资源并在服务资源中引用它。 必须先创建 Azure 存储帐户和 [Azure 文件共享](/azure/storage/files/storage-how-to-create-file-share)，然后才能装载此卷。
+若要将卷装载到服务，需在 Service Fabric 网格应用程序中创建卷资源，然后在服务中引用该卷。  可在[基于 YAML 的资源文件](#declare-a-volume-resource-and-update-the-service-resource-yaml)或[基于 JSON 的部署模板](#declare-a-volume-resource-and-update-the-service-resource-json)中完成声明该卷资源并在服务资源中引用它。 必须先创建 Azure 存储帐户和 [Azure 文件共享](../storage/files/storage-how-to-create-file-share.md)，然后才能装载此卷。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
+> [!NOTE]
+> **WINDOWS RS5 开发计算机上的部署的已知问题：** RS5 Windows 计算机上的 Powershell cmdlet SmbGlobalMapping 的公开 bug 阻止装载 Azurefile 卷。 下面是在本地开发计算机上装载基于 AzureFile 的卷时遇到的示例错误。
+```
+Error event: SourceId='System.Hosting', Property='CodePackageActivation:counterService:EntryPoint:131884291000691067'.
+There was an error during CodePackage activation.System.Fabric.FabricException (-2147017731)
+Failed to start Container. ContainerName=sf-2-63fc668f-362d-4220-873d-85abaaacc83e_6d6879cf-dd43-4092-887d-17d23ed9cc78, ApplicationId=SingleInstance_0_App2, ApplicationName=fabric:/counterApp. DockerRequest returned StatusCode=InternalServerError with ResponseBody={"message":"error while mounting volume '': mount failed"}
+```
+此问题的解决方法是 1) 以 Powershell 管理员身份运行以下命令，2) 重新启动计算机。
+```powershell
+PS C:\WINDOWS\system32> Mofcomp c:\windows\system32\wbem\smbwmiv2.mof
+```
 
 可以使用 Azure Cloud Shell 或 Azure CLI 的本地安装完成本文的内容。 
 
@@ -73,9 +75,9 @@ az storage account keys list --account-name <storageAccountName> --query "[?keyN
 ```
 
 也可以在 [Azure 门户](https://portal.azure.com)中找到这些值：
-* `<storageAccountName>` - 位于“存储帐户”下，它是在创建文件共享时使用的存储帐户的名称。
-* `<storageAccountKey>` - 在“存储帐户”下选择自己的存储帐户，然后选择“访问密钥”并使用“密钥 1”下面的值。
-* `<fileShareName>` - 在“存储帐户”下选择自己的存储帐户，然后选择“文件”。 要使用的名称是创建的文件共享的名称。
+* `<storageAccountName>` - 位于“存储帐户”下，它是在创建文件共享时使用的存储帐户的名称。****
+* `<storageAccountKey>` - 在“存储帐户”下选择自己的存储帐户，然后选择“访问密钥”并使用“密钥 1”下面的值。************
+* `<fileShareName>` - 在“存储帐户”下选择自己的存储帐户，然后选择“文件”。******** 要使用的名称是创建的文件共享的名称。
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>声明卷资源并更新服务资源 (JSON)
 
@@ -193,7 +195,7 @@ az storage account keys list --account-name <storageAccountName> --query "[?keyN
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-yaml"></a>声明卷资源并更新服务资源 (YAML)
 
-在应用程序的“应用资源”目录中添加新的 volume.yaml 文件。  指定名称和提供程序（“SFAzureFile”，以使用基于 Azure 文件的卷）。 `<fileShareName>`、`<storageAccountName>` 和 `<storageAccountKey>` 是在上一步中找到的值。
+在应用程序的“应用资源”目录中添加新的 volume.yaml 文件。****  指定名称和提供程序（“SFAzureFile”，以使用基于 Azure 文件的卷）。 `<fileShareName>`、`<storageAccountName>` 和 `<storageAccountKey>` 是在上一步中找到的值。
 
 ```yaml
 volume:
@@ -208,7 +210,7 @@ volume:
         accountKey: <storageAccountKey>
 ```
 
-更新“服务资源”目录中的 service.yaml 文件，以将卷装载到服务中。  将 `volumeRefs` 元素添加到 `codePackages` 元素。  `name` 是卷的资源 ID（或卷资源的部署模板参数）及在 volume.yaml 资源文件中声明的卷的名称。  `destinationPath` 是卷要装载到的本地目录。
+更新“服务资源”目录中的 service.yaml 文件，以将卷装载到服务中。****  将 `volumeRefs` 元素添加到 `codePackages` 元素。  `name` 是卷的资源 ID（或卷资源的部署模板参数）及在 volume.yaml 资源文件中声明的卷的名称。  `destinationPath` 是卷要装载到的本地目录。
 
 ```yaml
 ## Service definition ##

@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: 880b630ae48eda086f6454f0d7108d27d3403b77
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66161169"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67173618"
 ---
-如果在非 DHCP 环境中启动时，请按照以下步骤来为数据框网关部署虚拟机。
+如果在非 DHCP 环境中启动，请按照以下步骤部署 Data Box Gateway 的虚拟机。
 
-1. [连接到设备的 Windows PowerShell 界面](#connect-to-the-powershell-interface)。
-2. 使用`Get-HcsIpAddress`cmdlet 可列出在虚拟设备上启用的网络接口。 如果设备启用了单个网络接口，则分配到该接口的默认名称为 `Ethernet`。
+1. [连接到设备的 Windows PowerShell 接口](#connect-to-the-powershell-interface)。
+2. 使用 `Get-HcsIpAddress` cmdlet 列出虚拟设备上启用的网络接口。 如果设备启用了单个网络接口，则分配到该接口的默认名称为 `Ethernet`。
 
-    下面的示例显示了此 cmdlet 的用法：
+    以下示例显示了此 cmdlet 的用法：
 
     ```
     [10.100.10.10]: PS>Get-HcsIpAddress

@@ -8,12 +8,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 7082ebc4ca3066f84ca9790797cfa04e437f78a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 433e4160972a06ee3652410e062f6602e9ca6767
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60626173"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82996924"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>参考 - 选择通信协议
 
@@ -37,9 +39,9 @@ IoT 中心允许设备使用以下协议进行设备端通信：
 
 在选择设备端通信协议时，请考虑以下几点：
 
-* **从云到设备模式**。 HTTPS 没有用于实现服务器推送的有效方法。 因此，使用 HTTPS 时，设备会在 IoT 中心轮询从云到设备的消息。 此方法对于设备和 IoT 中心而言是低效的。 根据当前 HTTPS 准则，每台设备应每 25 分钟或更长时间轮询一次消息。 MQTT 和 AMQP 支持在收到云到设备的消息时进行服务器推送。 它们将启用从 IoT 中心到设备的直接消息推送。 如果传送延迟是考虑因素，最好使用 MQTT 或 AMQP 协议。 对于很少连接的设备，HTTPS 也适用。
+* **云到设备模式**。 HTTPS 没有用于实现服务器推送的有效方法。 因此，使用 HTTPS 时，设备会在 IoT 中心轮询从云到设备的消息。 此方法对于设备和 IoT 中心而言是低效的。 根据当前 HTTPS 准则，每台设备应每 25 分钟或更长时间轮询一次消息。 MQTT 和 AMQP 支持在收到云到设备的消息时进行服务器推送。 它们会启用从 IoT 中心到设备的直接消息推送。 如果传送延迟是考虑因素，最好使用 MQTT 或 AMQP 协议。 对于很少连接的设备，HTTPS 也适用。
 
-* **现场网关**。 使用 MQTT 和 HTTPS 时，无法使用相同的 TLS 连接来连接多台设备（各有自己的设备凭据）。 对于需要对每个已连接设备在现场网关和 IoT 中心之间建立一个 TLS 连接的[现场网关方案](iot-hub-devguide-endpoints.md#field-gateways)，这些协议并不理想。
+* **现场网关**。 MQTT 和 HTTPS 仅支持每个 TLS 连接使用单个设备标识（设备 ID 加上凭据）。 因此，[现场网关方案](iot-hub-devguide-endpoints.md#field-gateways)不支持这些协议，这些方案要求在到 IoT 中心的单个上游连接或一个上游连接池中使用多个设备标识多路复用消息。 此类网关可以将一个支持每个连接使用多个设备标识的协议（例如 AMQP）用于其上游流量。
 
 * **低资源设备**。 相比 AMQP 库的占用空间，MQTT 和 HTTPS 库的占用空间更小。 因此，如果设备的资源很少（如低于 1 MB RAM），可能只可实现这些协议。
 
@@ -48,7 +50,7 @@ IoT 中心允许设备使用以下协议进行设备端通信：
 * **有效负载大小**。 MQTT 和 AMQP 是二进制协议，因此，其有效负载比 HTTPS 的有效负载更精简。
 
 > [!WARNING]
-> 使用 HTTPS 时，每台设备应每 25 分钟或更长时间轮询一次从云到设备的消息。 但在开发期间，可按低于 25 分钟的更高频率进行轮询。
+> 使用 HTTPS 时，每台设备应每 25 分钟或更短时间轮询一次云到设备消息。 在开发中，每台设备都可以根据需要更频繁地轮询。
 
 ## <a name="port-numbers"></a>端口号
 
@@ -62,7 +64,7 @@ IoT 中心允许设备使用以下协议进行设备端通信：
 | 基于 WebSockets 的 AMQP |443 |
 | HTTPS |443 |
 
-在 Azure 区域创建 IoT 中心后，该 IoT 中心会在生存期内保留同一 IP 地址。 但如果 Microsoft 将 IoT 中心移到其他缩放单元以保持服务质量，则向其分配新的 IP 地址。
+在 Azure 区域创建 IoT 中心后，该 IoT 中心在其生存期内会保留同一 IP 地址。 但如果 Microsoft 将 IoT 中心移到其他缩放单元以保持服务质量，则向其分配新的 IP 地址。
 
 ## <a name="next-steps"></a>后续步骤
 

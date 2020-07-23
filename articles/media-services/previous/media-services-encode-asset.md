@@ -1,41 +1,37 @@
 ---
-title: 概述并比较 Azure 点播媒体编码器 | Microsoft Docs
-description: 本主题简要介绍并比较了 Azure 点播媒体编码器。
+title: Azure 点播媒体编码器概述 | Microsoft Docs
+description: Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项。 本文提供 Azure 点播媒体编码器的概述。
 services: media-services
 documentationcenter: ''
 author: juliako
 manager: femila
 editor: ''
-ms.assetid: e6bfc068-fa46-4d68-b1ce-9092c8f3a3c9
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: a976b7c1f697c09082ca0f7978bb23bb4e467e5d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: d5d5b8a7328ee82e94d494795617832cb0258667
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61464175"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712320"
 ---
-# <a name="overview-and-comparison-of-azure-on-demand-media-encoders"></a>概述并比较 Azure 点播媒体编码器 
-
-## <a name="encoding-overview"></a>编码概述
+# <a name="overview-of-azure-on-demand-media-encoders"></a>Azure 点播媒体编码器概述 
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项。
 
-一开始使用媒体服务时，了解编解码器与文件格式之间的区别很重要。
+开始使用媒体服务时，了解编解码器与文件格式之间的区别很重要。
 编解码器是实现压缩/解压缩算法的软件，而文件格式是用于保存压缩视频的容器。
 
-媒体服务所提供的动态打包，允许以媒体服务支持的流格式（MPEG DASH、HLS、平滑流式处理）传送自适应比特率 MP4 或平滑流式处理编码内容，而无须重新打包成这些流格式。
+媒体服务所提供的动态打包允许以媒体服务支持的流格式（MPEG DASH、HLS、平滑流式处理）传送自适应比特率 MP4 或平滑流式处理编码内容，而无须重新打包成这些流格式。
 
-创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
+创建媒体服务帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。  若要开始对内容进行流式处理并利用动态打包和动态加密功能，必须确保要从其流式获取内容的流式处理终结点处于“正在运行”状态。 每当流式处理终结点处于“正在运行”**** 状态时，就会对该终结点进行计费。
 
 媒体服务支持会在本文中介绍的以下按需编码器：
 
@@ -46,7 +42,8 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 
 默认情况下每个媒体服务帐户同时只能有一个活动的编码任务。 可以预留编码单元，使用它们可以同时运行多个编码任务，购买的每个编码预留单位对应一个任务。 有关信息，请参阅[缩放编码单位](media-services-scale-media-processing-overview.md)。
 
-## <a name="media-encoder-standard"></a>媒体编码器标准版
+## <a name="media-encoder-standard"></a>Media Encoder Standard
+
 ### <a name="how-to-use"></a>如何使用
 [如何使用 Media Encoder Standard 进行编码](media-services-dotnet-encode-with-media-encoder-standard.md)
 
@@ -54,7 +51,7 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 [格式和编解码器](media-services-media-encoder-standard-formats.md)
 
 ### <a name="presets"></a>预设
-Media Encoder Standard 使用 [此处](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)所述的编码器预设之一进行配置。
+Media Encoder Standard 使用[此处](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)所述的编码器预设之一进行配置。
 
 ### <a name="input-and-output-metadata"></a>输入和输出元数据
 [此处](media-services-input-metadata-schema.md)说明了编码器输入元数据。
@@ -70,7 +67,7 @@ Media Encoder Standard 使用 [此处](https://go.microsoft.com/fwlink/?linkid=6
 ### <a name="create-overlays"></a>创建覆盖层
 有关信息，请参阅[如何使用 Media Encoder Standard 创建覆盖层](media-services-advanced-encoding-with-mes.md#overlay)。
 
-### <a name="see-also"></a>另请参阅
+### <a name="see-also"></a>请参阅
 [媒体服务博客](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
 
 ## <a name="media-encoder-premium-workflow"></a>媒体编码器高级工作流
@@ -84,7 +81,6 @@ Media Encoder Standard 使用 [此处](https://go.microsoft.com/fwlink/?linkid=6
 
 ### <a name="known-issues"></a>已知问题
 如果输入视频不包含隐藏式字幕，输出资产仍将包含一个空的 TTML 文件。
-
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

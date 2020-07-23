@@ -1,24 +1,20 @@
 ---
-title: 使用 NET Core 和 Visual Studio 运行多个依赖的服务
-titleSuffix: Azure Dev Spaces
+title: 运行多个依赖服务：.NET Core 和 Visual Studio
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
-author: zr-msft
-ms.author: zarhoads
 ms.date: 07/09/2018
 ms.topic: tutorial
-description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
-keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 487ad5c4f68f2fd965384a33aa9f6c0e8da351a4
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+description: 本教程演示如何使用 Azure Dev Spaces 和 Visual Studio 在 Azure Kubernetes 服务上调试多服务 .NET Core 应用程序
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
+ms.openlocfilehash: 7f95c21c2cf5b7adcdb34d7bbe2b1f8314c20333
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800745"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75438403"
 ---
-# <a name="multi-service-development-with-azure-dev-spaces"></a>使用 Azure Dev Spaces 进行多服务开发
+# <a name="running-multiple-dependent-services-net-core-and-visual-studio-with-azure-dev-spaces"></a>运行多个依赖服务：通过 Azure Dev Spaces 使用 .NET Core 和 Visual Studio 运行
 
 在本教程中，你将了解如何使用 Azure Dev Spaces 开发多服务应用程序，并了解 Dev Spaces 提供的一些附加优势。
 
@@ -28,20 +24,20 @@ ms.locfileid: "65800745"
 ![](media/common/multi-container.png)
 
 ### <a name="download-sample-code-for-mywebapi"></a>下载 *mywebapi* 的示例代码
-为节省时间，让我们从 GitHub 存储库下载示例代码。 转到 https://github.com/Azure/dev-spaces，选择“克隆或下载”以下载 GitHub 存储库。 本部分的代码位于 `samples/dotnetcore/getting-started/mywebapi` 中。
+为节省时间，让我们从 GitHub 存储库下载示例代码。 转到 https://github.com/Azure/dev-spaces ，选择“克隆或下载”以下载 GitHub 存储库。  本部分的代码位于 `samples/dotnetcore/getting-started/mywebapi` 中。
 
 ### <a name="run-mywebapi"></a>运行 *mywebapi*
-1. 在单独的 Visual Studio 窗口中打开项目 `mywebapi`。
-1. 像前面针对 `webfrontend` 项目所做的一样，从启动设置下拉列表中选择“Azure Dev Spaces”。 这次不要创建新的 AKS 群集，而是选择已创建的群集。 如前所述，将“空间”保留默认值 `default`，并单击“确定”。 在“输出”窗口中可以看到，Visual Studio 开始在开发空间中“预热”此新服务，以便在开始调试时加速操作。
+1. 在单独的 Visual Studio 窗口中打开项目 `mywebapi`。 
+1. 像前面针对 `webfrontend` 项目所做的一样，从启动设置下拉列表中选择“Azure Dev Spaces”。 这次不要创建新的 AKS 群集，而是选择已创建的群集。 如前所述，将“空间”保留默认值 `default`，并单击“确定”。  在“输出”窗口中可以看到，Visual Studio 开始在开发空间中“预热”此新服务，以便在开始调试时加速操作。
 1. 按 F5，等待服务生成和部署。 如果 Visual Studio 状态栏变为橙色，则表示服务已准备就绪
-1. 记下“输出”窗口中“Azre Dev Spaces for AKS”窗格内显示的终结点 URL。 该 URL 应类似于 `http://localhost:<portnumber>`。 容器看起来像是在本地运行，但实际上是在 Azure 的开发空间中运行。
+1. 记下“输出”窗口中“Azre Dev Spaces for AKS”窗格内显示的终结点 URL。   该 URL 应类似于 `http://localhost:<portnumber>`。 容器看起来像是在本地运行，但实际上是在 Azure 的开发空间中运行。
 2. `mywebapi` 准备就绪后，在浏览器中打开 localhost 地址，并在 URL 后面追加 `/api/values` 以针对 `ValuesController` 调用默认的 GET API。 
 3. 如果成功执行所有步骤，应会看到 `mywebapi` 服务发出的响应，如下所示。
 
     ![](media/get-started-netcore-visualstudio/WebAPIResponse.png)
 
 ### <a name="make-a-request-from-webfrontend-to-mywebapi"></a>从 *webfrontend* 向 *mywebapi* 发出请求
-现在，让我们在 `webfrontend` 中编写用于向 `mywebapi` 发出请求的代码。 切换到包含 `webfrontend` 项目的 Visual Studio 窗口。 在 `HomeController.cs` 文件中，将 About 方法的代码替换为以下代码：
+现在，让我们在 `webfrontend` 中编写用于向 `mywebapi` 发出请求的代码。 切换到包含 `webfrontend` 项目的 Visual Studio 窗口。 在 `HomeController.cs` 文件中，将 About 方法的代码替换为以下代码： 
 
    ```csharp
    public async Task<IActionResult> About()
@@ -77,35 +73,6 @@ ms.locfileid: "65800745"
 1. 按 F10 继续。 随即会触发 `mywebapi` 项目中的断点。
 1. 按 F5 继续，然后返回到 `webfrontend` 项目中的代码。
 1. 再次按 F5 完成请求，并返回到浏览器中的某个页面。 在 Web 应用中，“关于”页将会显示一条由两个服务串联的消息：“Hello from webfrontend and Hello from mywebapi”。
-
-干得不错！ 现已创建一个多容器应用程序，其中的每个容器可单独进行开发或部署。
-
-### <a name="automatic-tracing-for-http-messages"></a>自动跟踪 HTTP 消息
-你可能已注意到，虽然 *webfrontend* 未包含任何特殊代码来输出它对 *mywebapi* 的 HTTP 调用，但是你可以在输出窗口中看到 HTTP 跟踪消息：
-```
-// The request from your browser
-default.webfrontend.856bb3af715744c6810b.eus.azds.io --gyk-> webfrontend:
-   GET /Home/About HTTP/1.1
-
-// *webfrontend* reaching out to *mywebapi*
-webfrontend-668b7ddb9f-n5rhj --pu5-> mywebapi:
-   GET /api/values/1 HTTP/1.1
-
-// Response from *mywebapi*
-webfrontend-668b7ddb9f-n5rhj <-pu5-- mywebapi:
-   HTTP/1.1 200 OK
-   Hello from mywebapi
-
-// Response from *webfrontend* to your browser
-default.webfrontend.856bb3af715744c6810b.eus.azds.io <-gyk-- webfrontend:
-   HTTP/1.1 200 OK
-   <!DOCTYPE html>
-   <html>
-   <head>
-       <meta charset="utf-8" />
-       <meta name="viewport" content="width=device-width, initial-sc...<[TRUNCATED]>
-```
-这是可以从 Dev Spaces 获得的“免费”权益之一。 我们插入了一些组件，用于在 HTTP 请求通过系统时对其进行跟踪，以便你在开发期间更轻松地跟踪复杂的多服务调用。
 
 ### <a name="well-done"></a>干得不错！
 现已创建一个多容器应用程序，其中的每个容器可单独进行开发或部署。

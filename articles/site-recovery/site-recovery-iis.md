@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 为基于 IIS 的多层 Web 应用程序设置灾难恢复 | Microsoft Docs
+title: 使用 Azure Site Recovery 为 IIS Web 应用设置灾难恢复
 description: 了解如何使用 Azure Site Recovery 复制 IIS Web 场虚拟机。
 author: mayurigupta13
 manager: rochakm
@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 66b9342f1a67c4c9d35fda447a297cc64d048c1e
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: aece41329d6481b8ad15090a834c8758f86abdc2
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480289"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131329"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>为基于 IIS 的多层 Web 应用程序设置灾难恢复
 
 应用程序软件是组织中业务生产力的引擎。 各种 Web 应用程序可在组织中发挥不同的作用。 某些应用程序，例如工资单处理应用程序、财务应用程序和面向客户的网站，对于组织而言可能至关重要。 组织必须不间断地运转这些应用程序以防止工作中断。 更重要的是，使这些应用程序保持连续运行有助于防止组织的品牌形象受到损害。
 
-关键的 Web 应用程序通常设置为多层应用程序，其 Web、数据库和应用程序分别位于不同的层。 除了分散在不同的层以外，应用程序还可以在每个层中使用多个服务器来对流量进行负载均衡。 此外，各个层之间以及 Web 服务器上的映射可以基于静态 IP 地址。 故障转移时，其中的某些映射需要更新，尤其是在 Web 服务器上配置了多个网站时。 如果 Web 应用程序使用 SSL，则必须更新证书绑定。
+关键的 Web 应用程序通常设置为多层应用程序，其 Web、数据库和应用程序分别位于不同的层。 除了分散在不同的层以外，应用程序还可以在每个层中使用多个服务器来对流量进行负载均衡。 此外，各个层之间以及 Web 服务器上的映射可以基于静态 IP 地址。 故障转移时，其中的某些映射需要更新，尤其是在 Web 服务器上配置了多个网站时。 如果 Web 应用程序使用 TLS，则必须更新证书绑定。
 
 不是以复制为基础的传统恢复方法涉及到备份各种配置文件、注册表设置、绑定、自定义组件（COM 或 .NET）、内容和证书。 此外，需要通过一系列手动步骤恢复文件。 传统的文件备份和手动恢复方法非常繁琐、容易出错且没有弹性。 例如，我们经常忘记备份证书。 故障转移后，我们别无他法，只能为服务器购买新证书。
 
@@ -26,12 +26,12 @@ ms.locfileid: "66480289"
 
 本文介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 保护基于 Internet Information Services (IIS) 的 Web 应用程序。 内容包括如何将基于 IIS 的三层 Web 应用程序复制到 Azure、如何执行灾难恢复演练，以及如何将应用程序故障转移到 Azure 的最佳做法。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 开始之前，请确保自己知道如何执行以下任务：
 
 * [将虚拟机复制到 Azure](vmware-azure-tutorial.md)
-* [设计恢复网络](site-recovery-network-design.md)
+* [设计恢复网络](./concepts-on-premises-to-azure-networking.md)
 * [执行到 Azure 的测试故障转移](site-recovery-test-failover-to-azure.md)
 * [执行到 Azure 的故障转移](site-recovery-failover.md)
 * [复制域控制器](site-recovery-active-directory.md)
@@ -58,18 +58,18 @@ ms.locfileid: "66480289"
 
 ### <a name="source-and-target"></a>源和目标
 
-场景 | 到辅助站点 | 到 Azure
+方案 | 到辅助站点 | 到 Azure
 --- | --- | ---
 Hyper-V | 是 | 是
 VMware | 是 | 是
 物理服务器 | 否 | 是
-Azure|NA|是
+Azure|不可用|是
 
 ## <a name="replicate-virtual-machines"></a>复制虚拟机
 
 若要开始将所有 IIS Web 场虚拟机复制到 Azure，请遵照[在 Site Recovery 中执行到 Azure 的测试故障转移](site-recovery-test-failover-to-azure.md)中的指导。
 
-如果使用的是静态 IP，可以指定希望虚拟机采用的 IP 地址。 若要设置 IP 地址，请转到“计算和网络设置” > “目标 IP”   。
+如果使用的是静态 IP，可以指定希望虚拟机采用的 IP 地址。 若要设置 IP 地址，请转到“计算和网络设置” > “目标 IP” 。
 
 ![演示如何在 Site Recovery 的“计算和网络”窗格中设置目标 IP 的屏幕截图](./media/site-recovery-active-directory/dns-target-ip.png)
 
@@ -92,7 +92,7 @@ Azure|NA|是
 
 
 ### <a name="add-a-script-to-the-recovery-plan"></a>将脚本添加到恢复计划
-在故障转移后或测试故障转移期间，可能需要在 Azure 虚拟机上执行一些操作才能让 IIS Web 场正常工作。 可将某些故障转移后的操作自动化。 例如，可在恢复计划中添加相应的脚本，来更新 DNS 条目、更改站点绑定或更改连接字符串。 [将 VMM 脚本添加到恢复计划](site-recovery-how-to-add-vmmscript.md)介绍了如何使用脚本来设置自动化任务。
+在故障转移后或测试故障转移期间，可能需要在 Azure 虚拟机上执行一些操作才能让 IIS Web 场正常工作。 可将某些故障转移后的操作自动化。 例如，可在恢复计划中添加相应的脚本，来更新 DNS 条目、更改站点绑定或更改连接字符串。 [将 VMM 脚本添加到恢复计划](./hyper-v-vmm-recovery-script.md)介绍了如何使用脚本来设置自动化任务。
 
 #### <a name="dns-update"></a>DNS 更新
 如果为 DNS 配置了动态 DNS 更新，则虚拟机在启动时，通常会使用新的 IP 地址更新 DNS。 如果想要添加一个明确的步骤来使用虚拟机的新 IP 地址更新 DNS，请添加这个[用于更新 DNS 中的 IP 的脚本](https://aka.ms/asr-dns-update)，作为恢复计划组中的故障转移后操作。  
@@ -116,24 +116,24 @@ Azure|NA|是
 
 > [!NOTE]
 >
-> 如果将站点绑定设置为“全部取消分配”，则故障转移后不需要更新此绑定。  此外，如果与站点关联的 IP 地址在故障转移后未发生未更改，则不需要更新站点绑定。 （能否保留 IP 地址取决于网络体系结构以及分配给主站点和恢复站点的子网。 因此，在组织中不一定能够使用绑定。）
+> 如果将站点绑定设置为“全部取消分配”，则故障转移后不需要更新此绑定。 此外，如果与站点关联的 IP 地址在故障转移后未发生未更改，则不需要更新站点绑定。 （能否保留 IP 地址取决于网络体系结构以及分配给主站点和恢复站点的子网。 因此，在组织中不一定能够使用绑定。）
 
-![演示如何设置 SSL 绑定的屏幕截图](./media/site-recovery-iis/sslbinding.png)
+![演示如何设置 TLS/SSL 绑定的屏幕截图](./media/site-recovery-iis/sslbinding.png)
 
 如果将 IP 地址关联到了某个站点，请使用新 IP 地址更新所有站点绑定。 若要更改站点绑定，请在恢复计划中的“组 3”后面添加 [IIS Web 层更新脚本](https://aka.ms/asr-web-tier-update-runbook-classic)。
 
 #### <a name="update-the-load-balancer-ip-address"></a>更新负载均衡器 IP 地址
 如果使用 ARR 虚拟机，请在“组 4”后面添加 [IIS ARR 故障转移脚本](https://aka.ms/asr-iis-arrtier-failover-script-classic)来更新 IP 地址。
 
-#### <a name="ssl-certificate-binding-for-an-https-connection"></a>用于 HTTPS 连接的 SSL 证书绑定
-网站可与 SSL 证书关联，帮助确保在 Web 服务器与用户浏览器之间实现安全通信。 如果网站有一个 HTTPS 连接，并且将一个 HTTPS 站点绑定关联到了具有 SSL 证书绑定的 IIS 服务器的 IP 地址，则故障转移后，必须使用 IIS 虚拟机的 IP 地址来为证书添加新的站点绑定。
+#### <a name="tlsssl-certificate-binding-for-an-https-connection"></a>用于 HTTPS 连接的 TLS/SSL 证书绑定
+网站可能具有关联的 TLS/SSL 证书，有助于确保 web 服务器与用户浏览器之间的安全通信。 如果网站有一个 HTTPS 连接，并且将一个 HTTPS 站点绑定关联到了具有 TLS/SSL 证书绑定的 IIS 服务器的 IP 地址，则故障转移后，必须使用 IIS 虚拟机的 IP 地址来为证书添加新的站点绑定。
 
-可针对以下组件颁发 SSL 证书：
+可针对以下组件颁发 TLS/SSL 证书：
 
 * 网站的完全限定域名。
 * 服务器的名称。
 * 域名的通配符证书。  
-* IP 地址。 如果 SSL 证书是针对 IIS 服务器的 IP 地址颁发的，则需要针对 Azure 站点上 IIS 服务器的 IP 地址颁发另一个 SSL 证书。 需要为此证书创建另一个 SSL 绑定。 因此，我们建议不要使用针对 IP 地址颁发的 SSL 证书。 此选项不太常用，根据新证书颁发机构/浏览器论坛中所述的更改，此选项即将停用。
+* IP 地址。 如果 TLS/SSL 证书是针对 IIS 服务器的 IP 地址颁发的，则需要针对 Azure 站点上 IIS 服务器的 IP 地址颁发另一个 TLS/SSL 证书。 需要为此证书创建另一个 TLS 绑定。 因此，我们建议不要使用针对 IP 地址颁发的 TLS/SSL 证书。 此选项不太常用，根据新证书颁发机构/浏览器论坛中所述的更改，此选项即将停用。
 
 #### <a name="update-the-dependency-between-the-web-tier-and-the-application-tier"></a>更新 Web 层与应用层之间的依赖关系
 如果存在基于虚拟机 IP 地址的应用程序特定依赖关系，则故障转移后必须更新此依赖关系。
@@ -142,10 +142,10 @@ Azure|NA|是
 
 1. 在 Azure 门户中，选择恢复服务保管库。
 2. 选择针对 IIS Web 场创建的恢复计划。
-3. 选择“测试故障转移”  。
+3. 选择“测试故障转移”。
 4. 若要启动测试故障转移过程，请选择恢复点和 Azure 虚拟网络。
 5. 当辅助环境启动时，可以执行验证。
-6. 完成验证后，选择“验证完成”可清理测试故障转移环境。 
+6. 完成验证后，选择“验证完成”可清理测试故障转移环境。
 
 有关详细信息，请参阅[在 Site Recovery 中执行到 Azure 的测试故障转移](site-recovery-test-failover-to-azure.md)。
 
@@ -153,7 +153,7 @@ Azure|NA|是
 
 1. 在 Azure 门户中，选择恢复服务保管库。
 1. 选择针对 IIS Web 场创建的恢复计划。
-1. 选择“故障转移”。 
+1. 选择“故障转移”。
 1. 若要启动故障转移过程，请选择恢复点。
 
 有关详细信息，请参阅 [Site Recovery 中的故障转移](site-recovery-failover.md)。

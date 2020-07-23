@@ -1,5 +1,5 @@
 ---
-title: 有关 Azure Monitor 中的网络监视日志 |Microsoft Docs
+title: 关于 Azure Monitor 日志中的网络监视 |Microsoft Docs
 description: 概述了网络监视解决方案，包括 NPM，它们用来在云、本地和混合环境中管理网络。
 services: monitoring-and-diagnostics
 documentationcenter: na
@@ -8,19 +8,19 @@ manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: monitoring-and-diagnostics
+ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
-ms.author: ajaycode
-ms.openlocfilehash: b112771e8c0f08e6b9a02c2fc5b7e1887b3f2588
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.author: agummadi
+ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65620414"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67672181"
 ---
 # <a name="network-monitoring-solutions"></a>网络监视解决方案 
 
@@ -37,7 +37,7 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 
 性能监视器、ExpressRoute 监视器和服务连接监视器是 NPM 中的监视功能，如下所述。
 
-## <a name="performance-monitor"></a>性能监视
+## <a name="performance-monitor"></a>性能监视器
 
 性能监视器是 NPM 的一部分，是适用于云、混合和本地环境的网络监视功能。 你可以跨远程分支和现场办事处、门店位置、数据中心和云来监视网络连接。 可以在你的用户产生抱怨之前检测到网络问题。 主要优势包括：
 
@@ -70,7 +70,7 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 
 ![显示各区域流量的地图](./media/network-monitoring-overview/expressroute-topology-map.png) 
 
-有关详细信息，请参阅以下文章：
+有关详细信息，请参阅下列文章：
 
 * [为 ExpressRoute 配置网络性能监视器](../expressroute/how-to-npm.md)
 * [博客文章](https://aka.ms/NPMExRmonitorGA)
@@ -86,7 +86,7 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 * 确定网络上可能会导致应用程序性能变差的热点
 * 使用针对 Microsoft Office 365、Dynamics 365、Skype for Business 和其他 Microsoft 服务的内置测试来监视 Office 365 应用程序的可访问性。
 
-有关详细信息，请参阅以下文章：
+有关详细信息，请参阅下列文章：
 
 * [配置用于监视服务终结点的网络性能监视器](../azure-monitor/insights/network-performance-monitor-service-connectivity.md#configuration)
 * [博客文章](https://aka.ms/svcendptmonitor)
@@ -122,6 +122,6 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 相关链接：
 * [博客文章](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/)、[文档](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
 
-## <a name="miscellaneous"></a>其他
+## <a name="miscellaneous"></a>杂项
 
 * [新定价](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor-pricing-faq)

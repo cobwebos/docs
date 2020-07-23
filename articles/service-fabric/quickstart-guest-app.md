@@ -1,37 +1,25 @@
 ---
-title: 将现有应用快速部署到 Azure Service Fabric 群集
+title: 将现有应用快速部署到群集
 description: 通过 Visual Studio 使用 Azure Service Fabric 群集来托管现有的 Node.js 应用程序。
-services: service-fabric
-documentationcenter: nodejs
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
-ms.author: aljo
-ms.openlocfilehash: bd19aba68f8b847e8f4800d348197f9c2b1c1289
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
-ms.translationtype: MT
+ms.openlocfilehash: 9153fc4cd60cb892532db49bf4339b517320b1a6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428232"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75614836"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>在 Azure Service Fabric 上托管 Node.js 应用程序
 
 本快速入门教程帮助你将现有的应用程序（本示例中为 Node.js）部署到在 Azure 上运行的 Service Fabric 群集。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
-开始之前，请确保已 [设置开发环境](service-fabric-get-started.md)。 其中包括安装 Service Fabric SDK 和 Visual Studio 2019 或 2015年。
+开始之前，请确保已 [设置开发环境](service-fabric-get-started.md)。 其中包括安装 Service Fabric SDK 和 Visual Studio 2019 或 2015。
 
-此外还需一个用于部署的现有 Node.js 应用程序。 本快速入门教程使用简单的 Node.js 网站，可从[此处][download-sample]下载。 在下一步骤中，请在创建项目后将此文件提取到 `<path-to-project>\ApplicationPackageRoot\<package-name>\Code\` 文件夹。
+此外还需一个用于部署的现有 Node.js 应用程序。 本快速入门使用简单的 Node.js 网站，可从[此处][download-sample]下载。 在下一步骤中，请在创建项目后将此文件提取到 `<path-to-project>\ApplicationPackageRoot\<package-name>\Code\` 文件夹。
 
-如果还没有 Azure 订阅，请创建一个[免费帐户][create-account]。
+如果还没有 Azure 订阅，可以创建一个[免费帐户][create-account]。
 
 ## <a name="create-the-service"></a>创建服务
 
@@ -66,7 +54,7 @@ ms.locfileid: "66428232"
 
 Visual Studio 会创建应用程序项目和执行组件服务项目，并在解决方案资源管理器中显示它们。
 
-应用程序项目 (**MyGuestApp**) 不直接包含任何代码。 项目引用一组服务项目。 此外，它还包含三个其他类型的内容：
+应用程序项目 (**MyGuestApp**) 不直接包含任何代码。 该项目引用一组服务项目。 此外，它还包含三种其他类型的内容：
 
 * 发布配置文件   
 针对不同环境的工具首选项。
@@ -83,7 +71,7 @@ Visual Studio 会创建应用程序项目和执行组件服务项目，并在解
 
 要部署的示例 Node.js 应用使用端口 80  ，我们需告知 Service Fabric：我们需公开该端口。
 
-打开项目中的 ServiceManifest.xml  文件。 在清单底部有`<Resources> \ <Endpoints>`已定义的条目。 修改该条目，添加 `Port`、`Protocol` 和 `Type`。 
+打开项目中的 ServiceManifest.xml  文件。 在清单的底部，有一个已定义了条目的 `<Resources> \ <Endpoints>`。 修改该条目，添加 `Port`、`Protocol` 和 `Type`。 
 
 ```xml
   <Resources>
@@ -98,7 +86,7 @@ Visual Studio 会创建应用程序项目和执行组件服务项目，并在解
 
 ## <a name="deploy-to-azure"></a>“部署到 Azure”
 
-如果按下**F5**并运行项目，请部署到本地群集。 但请将其部署到 Azure。
+如果通过按 **F5** 来运行项目，则会将其部署到本地群集。 但请将其部署到 Azure。
 
 右键单击项目，选择“发布...”，此时会打开一个将内容发布到 Azure 所需的对话框。 
 
@@ -106,9 +94,9 @@ Visual Studio 会创建应用程序项目和执行组件服务项目，并在解
 
 选择 PublishProfiles\Cloud.xml  目标配置文件。
 
-选择要将内容部署到其中的 Azure 帐户（如果尚未这样做）。 如果还没有该帐户，请[在此注册一个][create-account]。
+选择要将内容部署到其中的 Azure 帐户（如果尚未这样做）。 如果还没有该帐户，请[注册一个][create-account]。
 
-在“连接终结点”下，选择要将内容部署到其中的 Service Fabric 群集。  如果你没有帐户，请选择 **&lt;创建新群集...&gt;** 这会打开到 Azure 门户的 web 浏览器窗口。 有关详细信息，请参阅[在门户中创建群集](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal)。 
+在“连接终结点”下，选择要将内容部署到其中的 Service Fabric 群集。  如果没有该群集，请选择“&lt;新建群集...&gt;”，此时会打开通往 Azure 门户的 Web 浏览器窗口。 有关详细信息，请参阅[在门户中创建群集](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal)。 
 
 创建 Service Fabric 群集时，请确保将“自定义终结点”设置设为“80”。  
 
@@ -126,15 +114,15 @@ Visual Studio 会创建应用程序项目和执行组件服务项目，并在解
 
 首先，打开 Azure 门户并找到 Service Fabric 服务。
 
-检查服务地址的概览边栏选项卡。 使用“客户端连接终结点”  属性中的域名。 例如，`http://mysvcfab1.westus2.cloudapp.azure.com`。
+检查服务地址的概览边栏选项卡。 使用“客户端连接终结点”  属性中的域名。 例如，`http://mysvcfab1.westus2.cloudapp.azure.com` 。
 
 ![Azure 门户中的 Service Fabric 概览边栏选项卡][overview]
 
-导航到此地址，你将看到`HELLO WORLD`响应。
+导航到该地址，可以在其中看到 `HELLO WORLD` 响应。
 
 ## <a name="delete-the-cluster"></a>删除群集
 
-别忘了删除所有已为本快速入门创建的资源，因为正在对这些资源收费。
+请勿忘记删除为本快速入门创建的所有资源，因为系统会对这些资源收费。
 
 ## <a name="next-steps"></a>后续步骤
 阅读更多有关[来宾可执行文件](service-fabric-guest-executables-introduction.md)的内容。

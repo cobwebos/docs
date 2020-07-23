@@ -1,25 +1,19 @@
 ---
-title: 将基础结构自动化工具用于 Azure 中的 Windows VM | Microsoft Docs
+title: 在 Azure 中将基础结构自动化工具用于 Windows VM
 description: 了解如何使用 PowerShell DSC、Ansible、Chef、Puppet 和 Azure 自动化等基础结构自动化工具来创建和管理 Azure 中的 Windows 虚拟机
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 882c7b44d3ea1a6a9cb44f463f139f6737caa25d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: ac425ad7d2aea9046fbb3a0c59a1571622c4e33e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60711333"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81866220"
 ---
+# <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>在 Azure 中将基础结构自动化工具与虚拟机配合使用
 [!INCLUDE [virtual-machines-common-infrastructure-automation](../../../includes/virtual-machines-common-infrastructure-automation.md)]

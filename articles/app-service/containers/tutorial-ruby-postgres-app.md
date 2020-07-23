@@ -1,23 +1,16 @@
 ---
-title: 在 Linux 上将 Ruby (Rails) 与 Postgres 配合使用 - Azure 应用服务 | Microsoft Docs
-description: 了解如何创建一个可在 Azure 中运行的 Ruby 应用，并将其连接到 PostgreSQL 数据库。 本教程中使用 Rails。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-ms.service: app-service-web
-ms.workload: web
+title: 教程：将 Linux Ruby 应用与 Postgres 配合使用
+description: 了解如何在 Azure 应用服务中运行 Linux Ruby 应用，同时使其连接到 Azure 中的 PostgreSQL 数据库。 本教程中使用 Rails。
 ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 3ec19b1c564c09406ab1f29c38aef6332d80f8f1
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 92432966808583c28f31e47173dd4c62b5a0e8bb
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544682"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906201"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>在基于 Linux 上的 Azure 应用服务中生成 Ruby 和 Postgres 应用
 
@@ -25,7 +18,7 @@ ms.locfileid: "59544682"
 
 ![Azure 应用服务中运行的 Ruby on Rails 应用](./media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建 PostgreSQL 数据库
@@ -39,7 +32,7 @@ ms.locfileid: "59544682"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
 * [安装 Git](https://git-scm.com/)
 * [安装 Ruby 2.3](https://www.ruby-lang.org/en/documentation/installation/)
@@ -125,7 +118,7 @@ rails server
 
 使用 [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) 命令创建 PostgreSQL 服务器。
 
-在 Cloud Shell 中运行以下命令，使用唯一的服务器名称来替换 *\<postgres-server-name>* 占位符。 服务器名称在 Azure 中的所有服务器中必须是唯一的。 
+在 Cloud Shell 中运行以下命令，使用唯一的服务器名称来替换 \<postgres-server-name> 占位符。 服务器名称在 Azure 中的所有服务器中必须是唯一的。 
 
 ```azurecli-interactive
 az postgres server create --location "West Europe" --resource-group myResourceGroup --name <postgres-server-name> --admin-user adminuser --admin-password My5up3r$tr0ngPa$w0rd! --sku-name GP_Gen4_2
@@ -133,14 +126,14 @@ az postgres server create --location "West Europe" --resource-group myResourceGr
 
 创建用于 PostgreSQL 的 Azure 数据库服务器后，Azure CLI 会显示类似于以下示例的信息：
 
-```json
+<pre>
 {
   "administratorLogin": "adminuser",
   "earliestRestoreDate": "2018-06-15T12:38:25.280000+00:00",
-  "fullyQualifiedDomainName": "<postgres-server-name>.postgres.database.azure.com",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgres-server-name>",
+  "fullyQualifiedDomainName": "&lt;postgres-server-name&gt;.postgres.database.azure.com",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/&lt;postgres-server-name&gt;",
   "location": "westeurope",
-  "name": "<postgres-server-name>",
+  "name": "&lt;postgres-server-name&gt;",
   "resourceGroup": "myResourceGroup",
   "sku": {
     "capacity": 2,
@@ -149,16 +142,16 @@ az postgres server create --location "West Europe" --resource-group myResourceGr
     "size": null,
     "tier": "GeneralPurpose"
   },
-  < Output has been truncated for readability >
+  &lt; Output has been truncated for readability &gt;
 }
-```
+</pre>
 
 ### <a name="configure-server-firewall"></a>配置服务器防火墙
 
-在 Cloud Shell 中，使用 [`az postgres server firewall-rule create`](/cli/azure/postgres/server/firewall-rule?view=azure-cli-latest#az-postgres-server-firewall-rule-create) 命令创建 Postgres 服务器的防火墙规则，以便建立客户端连接。 若同时将起始 IP 和结束 IP 设置为 0.0.0.0，防火墙将仅对其他 Azure 资源开启。 使用唯一的服务器名称来替换 *\<postgres-server-name>* 占位符。
+在 Cloud Shell 中，使用 [`az postgres server firewall-rule create`](/cli/azure/postgres/server/firewall-rule?view=azure-cli-latest#az-postgres-server-firewall-rule-create) 命令创建 Postgres 服务器的防火墙规则，以便建立客户端连接。 若同时将起始 IP 和结束 IP 设置为 0.0.0.0，防火墙将仅对其他 Azure 资源开启。 使用唯一的服务器名称来替换 \<postgres-server-name> 占位符。
 
 ```azurecli-interactive
-az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres-server-name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
+az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres-server-name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
 > [!TIP] 
@@ -173,7 +166,7 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 psql -U adminuser@<postgres-server-name> -h <postgres-server-name>.postgres.database.azure.com postgres
 ```
 
-当提示输入密码时，请使用在创建数据库服务器时指定的 _My5up3r$tr0ngPa$w0rd!_。
+当提示输入密码时，请使用在创建数据库服务器时指定的 _My5up3r$tr0ngPa$w0rd!_ 。
 
 ### <a name="create-a-production-database"></a>创建生产数据库
 
@@ -302,7 +295,7 @@ git commit -m "database.yml updates"
 
 在应用服务的 Cloud Shell 中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令将环境变量设置为应用设置。
 
-以下 Cloud Shell 命令配置应用设置 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME` 和 `DB_PASSWORD`。 替换占位符 _&lt;appname>_ 和 _&lt;postgres-server-name>_。
+以下 Cloud Shell 命令配置应用设置 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME` 和 `DB_PASSWORD`。 替换占位符 _&lt;appname>_ 和 _&lt;postgres-server-name>_ 。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<postgres-server-name>.postgres.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="railsappuser@<postgres-server-name>" DB_PASSWORD="MyPostgresAzure2017"
@@ -342,7 +335,7 @@ git push azure master
 
 在部署期间，Azure 应用服务会向 Git 告知其进度。
 
-```bash
+<pre>
 Counting objects: 3, done.
 Delta compression using up to 8 threads.
 Compressing objects: 100% (3/3), done.
@@ -354,10 +347,10 @@ remote: Preparing deployment for commit id 'a5e076db9c'.
 remote: Running custom deployment command...
 remote: Running deployment command...
 ...
-< Output has been truncated for readability >
-```
+&lt; Output has been truncated for readability &gt;
+</pre>
 
-### <a name="browse-to-the-azure-app"></a>浏览到 Azure 应用
+### <a name="browse-to-the-azure-app"></a>转到 Azure 应用
 
 浏览到 `http://<app-name>.azurewebsites.net` 并在列表中添加一些任务。
 
@@ -478,13 +471,13 @@ git push azure master
 
 ## <a name="stream-diagnostic-logs"></a>流式传输诊断日志
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="manage-the-azure-app"></a>管理 Azure 应用
 
 转到 [Azure 门户](https://portal.azure.com)管理已创建的应用。
 
-在左侧菜单中单击“应用程序服务”，然后单击 Azure 应用的名称。
+在左侧菜单中单击**应用程序服务**，然后单击 Azure 应用的名称。
 
 ![在门户中导航到 Azure 应用](./media/tutorial-php-mysql-app/access-portal.png)
 
@@ -500,7 +493,7 @@ git push azure master
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建一个 Postgres 数据库

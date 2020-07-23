@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 3331db51f4d141cf142d1bd0578043ca6681f3cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61454486"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>将 Raspberry Pi 设备连接到远程监视解决方案加速器 (C)
@@ -21,7 +21,7 @@ ms.locfileid: "61454486"
 
 本教程介绍如何将真实设备连接到远程监视解决方案加速器。 与受约束设备上运行的大多数嵌入式应用程序一样，Raspberry Pi 设备应用程序的客户端代码是用 C 语言编写的。在本教程中，将在运行 Raspbian OS 的 Raspberry Pi 上生成应用程序。
 
-如果更喜欢模拟某个设备，请参见[创建和测试新的模拟设备](iot-accelerators-remote-monitoring-create-simulated-device.md)。
+如果更喜欢模拟某个设备，请参阅[创建和测试新的模拟设备](iot-accelerators-remote-monitoring-create-simulated-device.md)。
 
 ### <a name="required-hardware"></a>所需硬件
 
@@ -47,7 +47,7 @@ ms.locfileid: "61454486"
 
 以下步骤演示如何准备 Raspberry Pi 以生成可连接到解决方案加速器的 C 应用程序：
 
-1. 使用 ssh 连接到 Raspberry Pi。 有关详细信息，请参阅 [Raspberry Pi 网站](https://www.raspberrypi.org/)上的 [SSH（安全外壳）](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md)。
+1. 使用 ssh 连接到 Raspberry Pi****。 有关详细信息，请参阅 [Raspberry Pi 网站](https://www.raspberrypi.org/)上的 [SSH（安全外壳）](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md)。
 
 1. 使用以下命令更新 Raspberry Pi：
 
@@ -65,17 +65,17 @@ ms.locfileid: "61454486"
 
 若要准备项目，请从 GitHub 克隆或下载 [Azure IoT C SDK 存储库](https://github.com/Azure/azure-iot-sdk-c)。
 
-该示例位于 samples/solutions/remote_monitoring_client 文件夹中。
+该示例位于 samples/solutions/remote_monitoring_client**** 文件夹中。
 
-在文本编辑器中打开 samples/solutions/remote_monitoring_client 文件夹中的 remote_monitoring.c 文件。
+在文本编辑器中打开 **** samples/solutions/remote_monitoring_client 文件夹中的 **** remote_monitoring.c 文件。
 
 [!INCLUDE [iot-accelerators-connecting-code](../../includes/iot-accelerators-connecting-code.md)]
 
-## <a name="build-and-run-the-application"></a>构建并运行应用程序
+## <a name="build-and-run-the-application"></a>生成并运行应用程序
 
-以下步骤描述如何使用 CMake 生成客户端应用程序。 远程监视客户端应用程序是在构建 SDK 的过程中构建的。
+以下步骤描述如何使用 CMake** 生成客户端应用程序。 远程监视客户端应用程序是在构建 SDK 的过程中构建的。
 
-1. 编辑 remote_monitoring.c 文件，使用本操作指南开头在将设备添加到解决方案加速器时记下的设备连接字符串替换 `<connectionstring>`。
+1. 编辑 remote_monitoring.c**** 文件，使用本操作指南开头在将设备添加到解决方案加速器时记下的设备连接字符串替换 `<connectionstring>`。
 
 1. 导航到 [Azure IoT C SDK 存储库](https://github.com/Azure/azure-iot-sdk-c)的克隆副本的根目录，然后运行以下命令来生成客户端应用程序：
 

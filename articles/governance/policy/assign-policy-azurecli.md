@@ -1,19 +1,14 @@
 ---
-title: 使用 Azure CLI 创建策略以识别不符合的资源
-description: 使用 Azure CLI 创建 Azure Policy 分配以识别不符合的资源。
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 01/23/2019
+title: 快速入门：通过 Azure CLI 进行新策略分配
+description: 本快速入门介绍如何使用 Azure CLI 创建 Azure Policy 分配以识别不合规的资源。
+ms.date: 06/29/2020
 ms.topic: quickstart
-ms.service: azure-policy
-manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 76f457b7d577fb2a08bbcc386328ce4d8e59f902
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 33db6b4098dc0a69f4dabbea62fc9627cdc948eb
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979616"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85558937"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>快速入门：使用 Azure CLI 创建策略分配以识别不符合的资源
 
@@ -24,23 +19,23 @@ ms.locfileid: "65979616"
 
 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南使用 Azure CLI 创建策略分配，并识别 Azure 环境中的不合规资源。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-本快速入门需要运行 Azure CLI 2.0.4 版或更高版本，以便在本地安装并使用 CLI。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
-
 ## <a name="prerequisites"></a>先决条件
 
-使用 Azure CLI 注册 Azure Policy Insights 资源提供程序。 注册此资源提供程序可确保订阅能够使用它。 要注册资源提供程序，必须具有注册资源提供程序操作的权限。 此操作包含在“参与者”和“所有者”角色中。 运行以下命令，注册资源提供程序：
+- 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
-```azurecli-interactive
-az provider register --namespace 'Microsoft.PolicyInsights'
-```
+- 本快速入门需要运行 Azure CLI 版本 2.0.76 或更高版本，以便在本地安装并使用 CLI。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-有关注册和查看资源提供程序的详细信息，请参阅[资源提供程序和类型](../../azure-resource-manager/resource-manager-supported-services.md)
+- 使用 Azure CLI 注册 Azure Policy Insights 资源提供程序。 注册此资源提供程序可确保订阅能够使用它。 要注册资源提供程序，必须具有注册资源提供程序操作的权限。 此操作包含在“参与者”和“所有者”角色中。 运行以下命令，注册资源提供程序：
 
-安装 [ARMClient](https://github.com/projectkudu/ARMClient)（如果尚未安装）。 该工具可将 HTTP 请求发送到基于 Azure 资源管理器的 API。
+  ```azurecli-interactive
+  az provider register --namespace 'Microsoft.PolicyInsights'
+  ```
+
+  有关注册和查看资源提供程序的详细信息，请参阅[资源提供程序和类型](../../azure-resource-manager/management/resource-providers-and-types.md)
+
+- 安装 [ARMClient](https://github.com/projectkudu/ARMClient)（如果尚未安装）。 该工具可将 HTTP 请求发送到基于 Azure 资源管理器的 API。
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-policy-assignment"></a>创建策略分配
 
@@ -54,7 +49,7 @@ az policy assignment create --name 'audit-vm-manageddisks' --display-name 'Audit
 
 上述命令使用以下信息：
 
-- **名称** - 分配的实际名称。 对于此示例，使用 *audit-vm-manageddisks*。
+- **名称** - 分配的实际名称。 对于此示例，使用 _audit-vm-manageddisks_。
 - **显示名称** - 策略分配的显示名称。 本例使用了“审核未使用托管磁盘分配的虚拟机”  。
 - **策略** - 策略定义 ID，用作创建分配的依据。 在本例中，它为策略定义“审核未使用托管磁盘的 VM”的 ID  。 若要获取策略定义 ID，请运行以下命令：`az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`
 - **范围** - 范围确定在其中实施策略分配的资源或资源组。 它可以从订阅延伸至资源组。 请务必将 &lt;scope&gt; 替换为资源组的名称。
@@ -63,17 +58,16 @@ az policy assignment create --name 'audit-vm-manageddisks' --display-name 'Audit
 
 若要查看此新分配下不合规的资源，请运行以下命令获取策略分配 ID：
 
-```azurepowershell-interactive
-$policyAssignment = Get-AzPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit VMs without managed disks Assignment' }
-$policyAssignment.PolicyAssignmentId
+```azurecli-interactive
+az policy assignment list --query "[?displayName=='Audit VMs without managed disks Assignment'].id"
 ```
 
-有关策略分配 ID 的详细信息，请参阅 [Get-AzPolicyAssignment](/powershell/module/az.resources/get-azpolicyassignment)。
+有关策略分配 ID 的详细信息，请参阅 [az policy assignment](/cli/azure/policy/assignment)。
 
 接下来，运行以下命令，获取输出到 JSON 文件中的不合规资源的资源 ID：
 
 ```console
-armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2017-12-12-preview&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>
+armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>
 ```
 
 结果应如以下示例所示：

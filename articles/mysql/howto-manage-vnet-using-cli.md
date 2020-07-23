@@ -1,24 +1,23 @@
 ---
-title: 使用 Azure CLI 创建和管理 Azure Database for MySQL VNet 服务终结点和规则 | Microsoft Docs
+title: 管理 VNet 终结点 - Azure CLI - Azure Database for MySQL
 description: 本文介绍如何使用 Azure CLI 命令行创建和管理 Azure Database for MySQL VNet 服务终结点和规则。
-author: bolzmj
-ms.author: mbolz
-manager: jhubbard
+author: kummanish
+ms.author: manishku
 ms.service: mysql
 ms.devlang: azurecli
-ms.topic: conceptual
-ms.date: 10/23/2018
-ms.openlocfilehash: 199a5ead9856c5f9cba404ce89611efe2d78de8d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.topic: how-to
+ms.date: 3/18/2020
+ms.openlocfilehash: 3c4dced2177252daedc36c5a78707e47cf194d77
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66160454"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118743"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-using-azure-cli"></a>使用 Azure CLI 创建和管理 Azure Database for MySQL VNet 服务终结点
-虚拟网络 (VNet) 服务终结点和规则可将虚拟网络的专用地址空间扩展到 Azure Database for MySQL 服务器。 使用便捷的 Azure 命令行接口 (CLI) 命令，可创建、更新、删除、列出和显示 VNet 服务终结点和规则，用于管理服务器。 若要概览 Azure Database for MySQL VNet 服务终结点（包括限制），请参阅 [Azure Database for MySQL 服务器 VNet 服务终结点](concepts-data-access-and-security-vnet.md)。 在 Azure Database for MySQL 的所有支持区域中，VNet 服务终结点均可用。
+虚拟网络 (VNet) 服务终结点和规则将虚拟网络的专用地址空间扩展到 Azure Database for MySQL 服务器。 使用便捷的 Azure 命令行接口 (CLI) 命令，可创建、更新、删除、列出和显示 VNet 服务终结点和规则，用于管理服务器。 若要概览 Azure Database for MySQL VNet 服务终结点（包括限制），请参阅 [Azure Database for MySQL 服务器 VNet 服务终结点](concepts-data-access-and-security-vnet.md)。 在 Azure Database for MySQL 的所有支持区域中，VNet 服务终结点均可用。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 若要逐步执行本操作方法指南，需要：
 - 安装 [Azure CLI](/cli/azure/install-azure-cli)，或在浏览器中使用 Azure Cloud Shell。
 - [Azure Database for MySQL 服务器和数据库](quickstart-create-mysql-server-database-using-azure-cli.md)。
@@ -51,10 +50,10 @@ az login
 
 详细了解[内置角色](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)以及将特定的权限分配到[自定义角色](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles)。
 
-VNet 和 Azure 服务资源可以位于相同或不同的订阅中。 如果 VNet 和 Azure 服务资源位于不同的订阅中，资源应在相同的 Active Directory (AD) 租户下。
+VNet 和 Azure 服务资源可以位于相同或不同的订阅中。 如果 VNet 和 Azure 服务资源位于不同的订阅中，资源应在相同的 Active Directory (AD) 租户下。 确保两个订阅都注册了 Microsoft.Sql 资源提供程序。 有关详细信息，请参阅[资源管理器注册][resource-manager-portal]
 
 > [!IMPORTANT]
-> 强烈建议在运行下面的示例脚本或配置服务终结点前先阅读本文有关服务终结点配置和注意事项的内容。 **虚拟网络服务终结点：** [虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 VNet 服务终结点使用服务类型名称 Microsoft.Sql  ，可引用名为“SQL 数据库”的 Azure 服务。 此服务标记也适用于 Azure SQL 数据库、Azure Database for PostgreSQL 和 MySQL 服务。 务必要注意的一点是，将 Microsoft.Sql  服务标记应用到 VNet 服务终结点时，它将为子网上的所有 Azure 数据库服务（包括 Azure SQL 数据库、Azure Database for PostgreSQL 和 Azure Database for MySQL 服务器）配置服务终结点流量。 
+> 强烈建议在运行下面的示例脚本或配置服务终结点前先阅读本文有关服务终结点配置和注意事项的内容。 **虚拟网络服务终结点：** [虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 VNet 服务终结点使用服务类型名称 Microsoft.Sql，可引用名为“SQL 数据库”的 Azure 服务。 此服务标记也适用于 Azure SQL 数据库、Azure Database for PostgreSQL 和 MySQL 服务。 请务必要注意，对 VNet 服务终结点应用 Microsoft.Sql 服务标记时，它会为所有 Azure 数据库服务配置服务终结点流量，其中包括 Azure SQL 数据库、Azure Database for PostgreSQL 和子网上的 Azure Database for MySQL 服务器。 
 > 
 
 ### <a name="sample-script-to-create-an-azure-database-for-mysql-database-create-a-vnet-vnet-service-endpoint-and-secure-the-server-to-the-subnet-with-a-vnet-rule"></a>此示例脚本演示了如何创建 Azure Database for MySQL 数据库、创建 VNet 和 VNet 服务终结点，以及如何使用 VNet 规则在子网中保护服务器
@@ -64,3 +63,7 @@ VNet 和 Azure 服务资源可以位于相同或不同的订阅中。 如果 VNe
 ## <a name="clean-up-deployment"></a>清理部署
 运行脚本示例后，可以使用以下命令删除资源组以及与其关联的所有资源。
 [!code-azurecli-interactive[main](../../cli_scripts/mysql/create-mysql-server-vnet/delete-mysql.sh "Delete the resource group.")]
+
+<!-- Link references, to text, Within this same GitHub repo. --> 
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md
+

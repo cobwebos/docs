@@ -1,6 +1,6 @@
 ---
 title: 响应 Azure 媒体服务事件 | Microsoft Docs
-description: 使用 Azure 事件网格订阅媒体服务事件。
+description: 本文介绍如何使用 Azure 事件网格订阅媒体服务事件。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,14 +9,13 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 08/08/2019
 ms.author: juliako
-ms.openlocfilehash: cb5d6474a0c830933c712e1008015b5220617c96
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: e24bacb0ea7ab406442022915872fc77e9cc1a5e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60996095"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74887878"
 ---
 # <a name="handling-event-grid-events"></a>处理事件网格事件
 
@@ -26,7 +25,7 @@ ms.locfileid: "60996095"
 
 ## <a name="media-services-events-and-schemas"></a>媒体服务事件和架构
 
-事件网格使用[事件订阅](../../event-grid/concepts.md#event-subscriptions)将事件消息路由到订阅方。 媒体服务事件包含响应数据中的更改所需的所有信息。 可以识别媒体服务事件，因为 eventType 属性以“Microsoft.Media”开头。
+事件网格使用[事件订阅](../../event-grid/concepts.md#event-subscriptions)将事件消息路由到订阅服务器。 媒体服务事件包含响应数据中的更改所需的所有信息。 可以识别媒体服务事件，因为 eventType 属性以“Microsoft.Media”开头。
 
 有关详细信息，请参阅[媒体服务事件架构](media-services-event-schemas.md)。
 
@@ -39,6 +38,10 @@ ms.locfileid: "60996095"
 * 忽略不了解的字段。  此做法有助于适应将来可能添加的新功能。
 * 使用“subject”前缀和后缀匹配项，将事件限制为特定事件。
 
+> [!NOTE]
+> 事件取决于事件网格[服务级别协议（SLA）](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/)。 如果要使用 Api 获取事件通知，请参阅使用[.NET sdk](https://github.com/Azure-Samples/media-services-v3-dotnet)或[Java sdk](https://github.com/Azure-Samples/media-services-v3-java)时如何使用事件的示例。
+
 ## <a name="next-steps"></a>后续步骤
 
-[获取作业状态事件](job-state-events-cli-how-to.md)
+* [监视事件-门户](monitor-events-portal-how-to.md)
+* [监视事件 - CLI](job-state-events-cli-how-to.md)

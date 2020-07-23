@@ -1,19 +1,18 @@
 ---
-title: 修改 ExpressRoute 线路：PowerShell：Azure 经典部署模型 | Microsoft Docs
+title: Azure ExpressRoute：修改线路：PowerShell：经典
 description: 本文逐步讲解检查状态以及更新或删除并预配 ExpressRoute 经典部署模型线路的步骤。
 services: expressroute
-author: ganesr
+author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: ganesr;cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 1d6fc4a54ca600bd094a68e5eaab1306e7e831ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 11/05/2019
+ms.author: cherylmc
+ms.openlocfilehash: 2f2aac6dd7e073634d4114d33fae6bebd51fe176
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60370254"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736316"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>使用 PowerShell 修改 ExpressRoute 线路（经典）
 
@@ -21,8 +20,9 @@ ms.locfileid: "60370254"
 > * [Azure 门户](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [视频 - Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
-> * [PowerShell（经典）](expressroute-howto-circuit-classic.md)
+> * [Azure Resource Manager 模板](expressroute-howto-circuit-resource-manager-template.md)
+> * [视频-Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
+> * [PowerShell （经典）](expressroute-howto-circuit-classic.md)
 >
 
 本文逐步讲解检查状态以及更新或删除并预配 ExpressRoute 经典部署模型线路的步骤。 本文适用于经典部署模型。
@@ -33,43 +33,9 @@ ms.locfileid: "60370254"
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="before-you-begin"></a>开始之前
 
-安装最新版本的 Azure 服务管理 (SM) PowerShell 模块和 ExpressRoute 模块。  使用以下示例时，请注意，当更新版本的 cmdlet 发布时，版本号（在此示例中为 5.1.1）将更改。
-
-```powershell
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
-```
-
-如果需要有关 Azure PowerShell 的更多信息，请参阅 [Azure PowerShell cmdlet 入门](/powershell/azure/overview)来获取有关如何配置计算机以使用 Azure PowerShell 模块的分步指导。
-
-若要登录到 Azure 帐户，请使用以下示例：
-
-1. 使用提升的权限打开 PowerShell 控制台，并连接到帐户。 使用下面的示例来帮助连接：
-
-   ```powershell
-   Connect-AzAccount
-   ```
-2. 检查该帐户的订阅。
-
-   ```powershell
-   Get-AzSubscription
-   ```
-3. 如果有多个订阅，请选择要使用的订阅。
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-4. 接下来，使用以下 cmdlet 将 Azure 订阅添加到经典部署模型的 PowerShell。
-
-   ```powershell
-   Add-AzureAccount
-   ```
+[!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
 ## <a name="get-the-status-of-a-circuit"></a>获取线路的状态
 
@@ -125,9 +91,9 @@ get-help get-azurededicatedcircuit -detailed
 可以在不停机的情况下执行以下任务：
 
 * 为 ExpressRoute 线路启用或禁用 ExpressRoute 高级版外接程序。
-* 增加 ExpressRoute 线路的带宽，前提是端口上有可用容量。 不支持对线路的带宽进行降级。 
+* 增加 ExpressRoute 线路的带宽，前提是端口上有可用容量。 不支持对线路的带宽进行降级。
 * 将计量套餐从数据流量套餐更改为无限制流量套餐。 不支持将计量套餐从无限制流量套餐更改为数据流量套餐。
-* 可以启用和禁用允许经典操作。
+* 可以启用和禁用允许经典操作**。
 
 有关限制和局限性的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。
 
@@ -154,8 +120,8 @@ Status                           : Enabled
 
 > [!IMPORTANT]
 > 如果使用的资源超出了标准线路允许的范围，此操作可能会失败。
-> 
-> 
+>
+>
 
 #### <a name="considerations"></a>注意事项
 
@@ -189,8 +155,8 @@ Status                           : Enabled
 > 如果现有端口上的容量不足，可能需要重新创建 ExpressRoute 线路。 如果该位置没有额外的可用容量，则不能升级线路。
 >
 > 但是，无法在不中断的情况下降低 ExpressRoute 线路的带宽。 带宽降级需要取消对 ExpressRoute 线路的预配，并重新预配新的 ExpressRoute 线路。
-> 
-> 
+>
+>
 
 #### <a name="resize-a-circuit"></a>调整线路大小
 
@@ -228,8 +194,8 @@ At line:1 char:1
 ### <a name="considerations"></a>注意事项
 
 * 必须取消所有虚拟网络与 ExpressRoute 线路的链接，此操作才能成功。 如果此操作失败，请查看是否有虚拟网络链接到了此线路。
-* 如果 ExpressRoute 线路服务提供商预配状态为“正在预配”或“已预配”，则必须与服务提供商合作，在他们一端取消预配线路。 在服务提供商完成取消设置线路并通知我们之前，我们会继续保留资源并向你收费。
-* 如果服务提供商已取消预配线路（服务提供商预配状态设置为“未预配”），则可以删除线路。 这样就会停止对线路的计费。
+* 如果 ExpressRoute 线路服务提供商预配状态为 "正在**预配**" 或 "已**设置**"，则必须与服务提供商合作，以便在其端取消预配线路。 在服务提供商完成取消设置线路并通知我们之前，我们会继续保留资源并向你收费。
+* 如果服务提供商已取消预配线路（服务提供商预配状态设置为“未预配”****），则可以删除线路。 这样就会停止对线路的计费。
 
 #### <a name="delete-a-circuit"></a>删除线路
 

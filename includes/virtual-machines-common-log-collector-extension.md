@@ -4,24 +4,24 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 072864d565e2edbddd4b7df851ad0e30daf7e5fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 09c4420647043fccc408631fec75854667923721
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387925"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74085223"
 ---
 若要诊断 Microsoft Azure 云服务的问题，需要在问题发生时收集虚拟机上该服务的日志文件。 可以使用 AzureLogCollector 扩展按需从一个或多个云服务 VM（通过 Web 角色和辅助角色）执行一次性日志收集，并将收集到的文件传输到 Azure 存储帐户 - 所有这些操作都无需远程登录到任何 VM。
 
 > [!NOTE]
-> 有关大多数记录的信息的说明，请参阅 http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp。
+> 有关大多数记录的信息的说明，请参阅https://blogs.msdn.microsoft.com/kwill/2013/08/09/windows-azure-paas-compute-diagnostics-data/
 > 
 > 
 
 有两种收集模式，其使用取决于要收集的文件的类型。
 
-* **仅 Azure 来宾代理日志 (GA)**。 此收集模式包括与 Azure 来宾代理以及其他 Azure 组件相关的所有日志。
-* **所有日志（完整）**。 此收集模式会收集 GA 模式下的所有文件以及：
+* **仅 Azure 来宾代理日志 (GA)** 。 此收集模式包括与 Azure 来宾代理以及其他 Azure 组件相关的所有日志。
+* **所有日志（完整）** 。 此收集模式会收集 GA 模式下的所有文件以及：
   
   * 系统和应用程序事件日志
   * HTTP 错误日志
@@ -31,24 +31,24 @@ ms.locfileid: "60387925"
 
 在两种收集模式下，均可使用以下结构的集合来指定额外的数据收集文件夹：
 
-* **名称**：集合的名称，用作包含已收集文件的 zip 文件中子文件夹的名称。
-* **位置**：要收集的文件所在虚拟机上的文件夹路径。
-* **SearchPattern**：要收集的文件的名称模式。 默认为“\*”
+* **Name**：集合的名称，用作已收集文件所在的 zip 文件中子文件夹的名称。
+* **Location**：要收集文件所在虚拟机上的文件夹路径。
+* **SearchPattern**：要收集的文件名的样式。 默认为“\*”
 * **Recursive**：如果要收集的文件以递归方式列于指定位置下。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](./updated-for-az.md)]
 
 * 有一个用于扩展的存储帐户，保存生成的 zip 文件。
-* Azure PowerShell。 请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)] 有关安装说明。
+* Azure PowerShell。 有关安装说明，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。
 
 ## <a name="add-the-extension"></a>添加扩展
 可以使用 [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) cmdlet 或[服务管理 REST API](https://msdn.microsoft.com/library/ee460799.aspx) 添加 AzureLogCollector 扩展。
 
 对于云服务，可以使用现有的 Azure Powershell cmdlet **Set-AzureServiceExtension** 启用云服务角色实例上的扩展。 每次通过此 cmdlet 启用此扩展时，都会在所选角色的所选角色实例上触发日志收集。
 
-对于虚拟机，可以使用现有的 Azure Powershell cmdlet **Set-AzureVMExtension**来启用虚拟机上的扩展。 每次通过 cmdlet 启用此扩展时，都会在每个实例上触发日志收集。
+对于虚拟机，可以使用现有的 Azure Powershell cmdlet **Set-AzureVMExtension** 启用虚拟机上的扩展。 每次通过 cmdlet 启用此扩展时，都会在每个实例上触发日志收集。
 
 在内部，此扩展使用基于 JSON 的 PublicConfiguration 和 PrivateConfiguration。 下面是公共和私有配置的示例 JSON 的布局。
 
@@ -86,7 +86,7 @@ ms.locfileid: "60387925"
 ```
 
 > [!NOTE]
-> 此扩展不需要 **privateConfiguration**。 可以只为 **–PrivateConfiguration** 参数提供一个空的结构。
+> 此扩展不需要 privateConfiguration****。 可以只为 **–PrivateConfiguration** 参数提供一个空的结构。
 > 
 > 
 
@@ -181,7 +181,7 @@ param (
 * **Roles**：角色列表，例如“WebRole1”或“WorkerRole1”。
 * **Instances**：逗号分隔的角色实例名称的列表 -- 使用通配符字符串（“*”）代表所有角色实例。
 * **Slot**：槽名称。 “生产”或“过渡”。
-* **模式**：收集模式。 “完整”或“GA”。
+* **Mode**：收集模式。 “完整”或“GA”。
 * **StorageAccountName**：用于存储所收集数据的 Azure 存储帐户的名称。
 * **StorageAccountKey**：Azure 存储帐户密钥的名称。
 * **AdditionalDataLocationList**：以下结构的列表：
@@ -261,7 +261,7 @@ param (
 
 * **ServiceName**：云服务名称。
 * **VMName**：VM 的名称。
-* **模式**：收集模式。 “完整”或“GA”。
+* **Mode**：收集模式。 “完整”或“GA”。
 * **StorageAccountName**：用于存储所收集数据的 Azure 存储帐户的名称。
 * **StorageAccountKey**：Azure 存储帐户密钥的名称。
 * **AdditionalDataLocationList**：以下结构的列表：

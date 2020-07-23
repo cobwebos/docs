@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/05/2018
+ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83e172e61411c7c1c098706b5ff4566f565d6bf1
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 3e40eecce3ff0ea5b252fd135ae553fa20e0a77b
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66253859"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386345"
 ---
 # <a name="what-is-password-hash-synchronization-with-azure-ad"></a>什么是与 Azure AD 的密码哈希同步？
 密码哈希同步是用来实现混合标识的登录方法之一。 Azure AD Connect 将用户密码的哈希从本地 Active Directory 实例同步到基于云的 Azure AD 实例。
@@ -29,6 +29,12 @@ ms.locfileid: "66253859"
 
 * 提升用户的生产力。
 * 减少技术支持成本。  
+
+密码哈希同步还为混合帐户启用了[泄露凭据监测](../identity-protection/concept-identity-protection-risks.md#user-risk)。 Microsoft 与暗网研究人员和执法机构合作，查找公开提供的用户名/密码对。 如果这些对中的任何一对与我们的用户匹配，则关联的帐户将被移动到高风险区域。 
+
+>[!NOTE]
+> 只有在启用 PHS 后找到的新泄漏凭据将针对你的租户进行处理。 不会对先前找到的凭据对执行验证。
+
 
 （可选）如果决定使用[通过 Active Directory 联合身份验证服务 (AD FS) 进行的联合身份验证](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect)作为登录方法，则可以将密码哈希同步设置为备用身份验证方式。
 

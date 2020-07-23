@@ -1,24 +1,17 @@
 ---
 title: Azure Monitor 中的 DNS Analytics 解决方案 | Microsoft Docs
 description: 在 Azure Monitor 中设置并使用 DNS Analytics 解决方案，收集有关 DNS 基础结构安全性、性能和操作的见解。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: f44a40c4-820a-406e-8c40-70bd8dc67ae7
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 03/20/2018
-ms.author: magoedte
-ms.openlocfilehash: 6dd5872d5ec3e79e3c76b1807aea946015fb0eac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 947b509468857b98b868881bdd48adf67a5d60db
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60496280"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498995"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>使用 DNS Analytics 预览解决方案收集有关 DNS 基础结构的见解
 
@@ -45,13 +38,13 @@ DNS Analytics 可帮助：
 | [Windows 代理](../platform/agent-windows.md) | 是 | 解决方案会从 Windows 代理收集 DNS 信息。 |
 | [Linux 代理](../learn/quick-collect-linux-computer.md) | 否 | 解决方案不会从直接 Linux 代理收集 DNS 信息。 |
 | [System Center Operations Manager 管理组](../platform/om-agents.md) | 是 | 解决方案会从连接的 Operations Manager 管理组中的代理收集 DNS 信息。 从 Operations Manager 代理到 Azure Monitor 的直接连接不是必需的。 数据将从管理组转发到 Log Analytics 工作区。 |
-| [Azure 存储帐户](../platform/collect-azure-metrics-logs.md) | 否 | 解决方案不会使用 Azure 存储。 |
+| [Azure 存储帐户](../platform/resource-logs.md#send-to-log-analytics-workspace) | 否 | 解决方案不会使用 Azure 存储。 |
 
 ### <a name="data-collection-details"></a>数据收集详细信息
 
-解决方案从安装有 Log Analytics 代理的 DNS 服务器收集 DNS 清单以及与 DNS 事件相关的数据。 此数据稍后将上传到 Azure Monitor，之后会显示在解决方案仪表板中。 通过运行 DNS PowerShell cmdlet 收集与清单相关的数据，如 DNS 服务器的数量、区域和资源记录。 该数据每两天更新一次。 与事件相关的数据几乎是从由 Windows Server 2012 R2 中增强的 DNS 日志记录和诊断提供的[分析和审核日志](https://technet.microsoft.com/library/dn800669.aspx#enhanc)中实时收集的。
+解决方案从安装有 Log Analytics 代理的 DNS 服务器收集 DNS 清单以及与 DNS 事件相关的数据。 此数据稍后将上传到 Azure Monitor，之后会显示在解决方案仪表板中。 通过运行 DNS PowerShell cmdlet 收集与清单相关的数据，如 DNS 服务器的数量、区域和资源记录。 该数据每两天更新一次。 与事件相关的数据几乎是从由 Windows Server 2012 R2 中增强的 DNS 日志记录和诊断提供的[分析和审核日志](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11)#enhanc)中实时收集的。
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 使用以下信息配置解决方案：
 
@@ -62,13 +55,13 @@ DNS Analytics 可帮助：
 
 ### <a name="configure-the-solution"></a>配置解决方案
 
-在解决方案仪表板上，单击“配置”打开 DNS Analytics 配置页面。 可进行两种类型的配置更改：
+在解决方案仪表板上，单击“配置”**** 打开 DNS Analytics 配置页面。 可进行两种类型的配置更改：
 
 - **列入允许列表的域名**。 解决方案不会处理所有查找查询。 这样可保留域名后缀允许列表。 查找查询会解析为匹配此允许列表中域名后缀的域名，但不由解决方案处理。 不处理列入允许列表的域名有助于优化发送到 Azure Monitor 的数据。 默认允许列表包括常用的公共域名，例如 www.google.com 和 www.facebook.com。 可以滚动查看完整的默认列表。
 
   可以修改列表，添加任何想要查看的域名后缀，从而查看查找见解。 还可以删除任何不感兴趣的域名后缀，从而查看查找见解。
 
-- **频繁通信的客户端阈值**。 DNS 客户端超出查找请求数的阈值时，将突出显示在“DNS 客户端”边栏选项卡中。 默认阈值为 1,000。 可以编辑该阈值。
+- **频繁通信的客户端阈值**。 DNS 客户端超出查找请求数的阈值时，将突出显示在“DNS 客户端”边栏选项卡中。**** 默认阈值为 1,000。 可以编辑该阈值。
 
     ![列入允许列表的域名](./media/dns-analytics/dns-config.png)
 
@@ -106,7 +99,7 @@ DNS 磁贴包括在其中收集数据的 DNS 服务器的数量。 它还包括�
 
 ![“DNS 安全性”边栏选项卡](./media/dns-analytics/dns-security-blade.png)
 
-单击列表中的客户端 IP 时，将打开日志搜索，显示相应查询的查找详细信息。 在以下示例中，DNS Analytics 检测到与 [IRCbot](https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Backdoor:Win32/IRCbot) 的通信已完成：
+单击列表中的客户端 IP 时，将打开日志搜索，显示相应查询的查找详细信息。 在以下示例中，DNS Analytics 检测到与 [IRCbot](https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Backdoor:Win32/IRCbot&threatId=2621) 的通信已完成：
 
 ![显示 ircbot 的日志搜索结果](./media/dns-analytics/ircbot.png)
 
@@ -154,11 +147,11 @@ DNS 磁贴包括在其中收集数据的 DNS 服务器的数量。 它还包括�
 - **DNS 服务器列表**。 显示所有 DNS 服务器及其关联的 FQDN、域名、林名和服务器 IP 的列表。
 - **DNS 区域列表**。 显示所有 DNS 区域及其关联的区域名称、动态更新状态、名称服务器和 DNSSEC 签名状态的的列表。
 - **未使用的资源记录**。 显示所有未使用/过时的资源记录的列表。 此列表包含资源记录名称、资源记录类型、关联的 DNS 服务器、记录生成时间和区域名称。 可使用此列表确定不再使用的 DNS 资源记录。 然后可以根据此信息从 DNS 服务器中删除这些条目。
-- **DNS 服务器查询负载**。 显示可从中了解 DNS 服务器上的 DNS 负载的信息。 此信息可帮助你规划服务器的容量。 可以转到“指标”选项卡，将视图更改为图形可视化效果。 此视图可帮助了解 DNS 负载在 DNS 服务器上的分布方式。 它显示每个服务器的 DNS 查询速率趋势。
+- **DNS 服务器查询负载**。 显示可从中了解 DNS 服务器上的 DNS 负载的信息。 此信息可帮助你规划服务器的容量。 可以转到“指标”**** 选项卡，将视图更改为图形可视化效果。 此视图可帮助了解 DNS 负载在 DNS 服务器上的分布方式。 它显示每个服务器的 DNS 查询速率趋势。
 
     ![DNS 服务器查询日志搜索结果](./media/dns-analytics/dns-servers-query-load.png)
 
-- **DNS 区域查询负载**。 显示该解决方案管理的 DNS 服务器上所有区域的 DNS 每秒区域查询统计信息。 单击“指标”选项卡，将视图从详细记录更改为结果的图形可视化效果。
+- **DNS 区域查询负载**。 显示该解决方案管理的 DNS 服务器上所有区域的 DNS 每秒区域查询统计信息。 单击“指标”**** 选项卡，将视图从详细记录更改为结果的图形可视化效果。
 - **配置事件**。 显示所有 DNS 配置更改事件和相关消息。 然后可以按照事件时间、事件 ID、DNS 服务器或任务类别筛选这些事件。 该数据有助于审核在特定时间对特定的 DNS 服务器所做的更改。
 - **DNS 分析日志**。 显示解决方案管理的所有 DNS 服务器上的所有分析事件。 然后可以按照事件时间、事件 ID、DNS 服务器、进行查找查询的客户端 IP 和查询类型任务类别，对这些事件进行筛选。 DNS 服务器分析事件允许对 DNS 服务器进行活动跟踪。 每次服务器发送或接收 DNS 信息时，都将记录一个分析事件。
 
@@ -166,26 +159,29 @@ DNS 磁贴包括在其中收集数据的 DNS 服务器的数量。 它还包括�
 
 可在“日志搜索”页上创建查询。 可使用分面控件筛选搜索结果。 还可创建高级查询以转换、筛选和报告结果。 通过执行以下查询进行启动：
 
-1. 在“搜索查询”框中，键入 `DnsEvents`，查看由该解决方案托管的 DNS 服务器生成的所有 DNS 事件。 结果中将列出与查找查询、动态注册和配置更改相关的所有事件的日志数据。
+1. 在“搜索查询”框中****，键入 `DnsEvents`，查看由该解决方案托管的 DNS 服务器生成的所有 DNS 事件。 结果中将列出与查找查询、动态注册和配置更改相关的所有事件的日志数据。
 
     ![DnsEvents 日志搜索](./media/dns-analytics/log-search-dnsevents.png)  
 
-    a. 若要查看查找查询的日志数据，请在左侧的分面控件中选择“LookUpQuery”作为“子类型”筛选器。 此时会显示一个表格，其中列出了所选时间段内的所有查找查询事件。
+    a. 若要查看查找查询的日志数据，请在左侧的分面控件中选择“LookUpQuery”作为“子类型”筛选器。******** 此时会显示一个表格，其中列出了所选时间段内的所有查找查询事件。
 
-    b. 若要查看动态注册的日志数据，请在左侧的分面控件中选择“DynamicRegistration”作为“子类型”筛选器。 此时会显示一个表格，其中列出了所选时间段内的所有动态注册事件。
+    b. 若要查看动态注册的日志数据，请在左侧的分面控件中选择“DynamicRegistration”作为“子类型”筛选器。******** 此时会显示一个表格，其中列出了所选时间段内的所有动态注册事件。
 
-    c. 若要查看配置更改的日志数据，请在左侧的分面控件中选择“ConfigurationChange”作为“子类型”筛选器。 此时会显示一个表格，其中列出了所选时间段内的所有配置更改事件。
+    c. 若要查看配置更改的日志数据，请在左侧的分面控件中选择“ConfigurationChange”作为“子类型”筛选器。******** 此时会显示一个表格，其中列出了所选时间段内的所有配置更改事件。
 
-1. 在“搜索查询”框中，键入 `DnsInventory`，查看由该解决方案托管的 DNS 服务器中所有与 DNS 清单相关数据。 结果中列出 DNS 服务器的日志数据、DNS 区域和资源记录。
+1. 在“搜索查询”框中，**** 键入 `DnsInventory`，查看由该解决方案托管的 DNS 服务器中所有与 DNS 清单相关数据。 结果中列出 DNS 服务器的日志数据、DNS 区域和资源记录。
 
     ![DnsInventory 日志搜索](./media/dns-analytics/log-search-dnsinventory.png)
+    
+## <a name="troubleshooting"></a>疑难解答
 
-## <a name="feedback"></a>反馈
+常见故障排除步骤：
 
-可通过两种方式提供反馈：
+1. 缺少 DNS 查找数据 - 要解决此问题，请尝试在门户中重置配置或仅加载一次配置页。 若要重置，只需将设置更改为其他值，然后将其更改回原始值并保存配置。
 
-- **UserVoice**。 发布有关 DNS Analytics 功能的建议。 访问 [Log Analytics UserVoice 页](https://aka.ms/dnsanalyticsuservoice)。
-- **加入我们的队列**。 我们始终欢迎新客户加入我们的队列，提前访问新功能，并帮助我们改进 DNS Analytics。 如有兴趣加入我们的队列，请填写[此快速调查](https://aka.ms/dnsanalyticssurvey)。
+## <a name="suggestions"></a>建议
+
+若要提供反馈，请访问 [Log Analytics UserVoice 页](https://aka.ms/dnsanalyticsuservoice)以发布有关要使用的 DNS Analytics 功能的想法。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: 快速入门：分析远程图像 - REST、Node.js
+title: 快速入门：使用 REST API 和 Node.js 分析远程图像
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 API 和 Node.js 分析图像。
 services: cognitive-services
@@ -8,27 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: f8b89b9a1354345235bacd227270c214f1a65799
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.custom: seodec18, seo-javascript-september2018, seo-javascript-october2019
+ms.openlocfilehash: 2ed27f92617992e50160d96f25132b1ff9625acc
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007419"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986759"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-with-nodejs-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 Node.js 分析远程图像
+# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-with-nodejs"></a>快速入门：使用计算机视觉 REST API 和 Node.js 分析远程图像
 
-在本快速入门中，你将使用计算机视觉的 REST API 分析远程存储的图像以提取视觉特征。 使用[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)方法，可以根据图像内容提取视觉特征。
-
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services)。
+本快速入门将使用 Node.js 通过计算机视觉 REST API 分析远程存储的图像以提取视觉特征。 使用[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)方法，可以根据图像内容提取视觉特征。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 必须安装有 [Node.js](https://nodejs.org) 4.x 或更高版本。
-- 必须安装有 [npm](https://www.npmjs.com/)。
-- 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* [Node.js](https://nodejs.org) 4.x 或更高版本 
+* [npm](https://www.npmjs.com/) 
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="创建计算机视觉资源"  target="_blank">创建计算机视觉资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到计算机视觉服务。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
+* 为密钥和终结点 URL [创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别将其命名为 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`。
 
 ## <a name="create-and-run-the-sample"></a>创建并运行示例
 
@@ -45,11 +47,8 @@ ms.locfileid: "60007419"
    1. 包安装成功后，关闭命令提示符窗口。
 
 1. 将以下代码复制到文本编辑器中。
-1. 必要时在代码中进行如下更改：
-    1. 将 `subscriptionKey` 的值替换为你的订阅密钥。
-    1. 如有必要，请将 `uriBase` 的值替换为获取的订阅密钥所在的 Azure 区域中的[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)方法的终结点 URL。
-    1. （可选）将 `imageUrl` 的值替换为要分析的其他图像的 URL。
-    1. （可选）将 `language` 请求参数的值替换为其他语言。
+1. （可选）将 `imageUrl` 的值替换为要分析的其他图像的 URL。
+1. （可选）将 `language` 请求参数的值替换为其他语言。
 1. 将代码保存为以 `.js` 为扩展名的文件。 例如，`analyze-image.js`。
 1. 打开命令提示符窗口。
 1. 在提示符处，使用 `node` 命令运行文件。 例如，`node analyze-image.js`。
@@ -59,14 +58,11 @@ ms.locfileid: "60007419"
 
 const request = require('request');
 
-// Replace <Subscription Key> with your valid subscription key.
-const subscriptionKey = '<Subscription Key>';
+let subscriptionKey = process.env['COMPUTER_VISION_SUBSCRIPTION_KEY'];
+let endpoint = process.env['COMPUTER_VISION_ENDPOINT']
+if (!subscriptionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
 
-// You must use the same location in your REST call as you used to get your
-// subscription keys. For example, if you got your subscription keys from
-// westus, replace "westcentralus" in the URL below with "westus".
-const uriBase =
-    'https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze';
+var uriBase = endpoint + 'vision/v3.0/analyze';
 
 const imageUrl =
     'https://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg';
@@ -184,7 +180,7 @@ request.post(options, (error, response, body) => {
 
 ## <a name="next-steps"></a>后续步骤
 
-探索用于分析图像、检测名人和地标、创建缩略图以及提取印刷体文本和手写文本的计算机视觉 API。 要快速体验计算机视觉 API，请尝试使用 [Open API 测试控制台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)。
+接下来，了解用于分析图像、检测名人和地标、创建缩略图以及提取印刷体文本和手写文本的计算机视觉 API。
 
 > [!div class="nextstepaction"]
 > [探索计算机视觉 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

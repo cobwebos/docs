@@ -1,6 +1,6 @@
 ---
-title: LUIS 预构建实体电子邮件参考 - Azure | Microsoft Docs
-titleSuffix: Azure
+title: LUIS 预生成实体电子邮件参考
+titleSuffix: Azure Cognitive Services
 description: 本文包含了语言理解 (LUIS) 中的电子邮件预构建实体信息。
 services: cognitive-services
 author: diberry
@@ -8,111 +8,83 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 05/07/2019
+ms.topic: reference
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 2b11446c84ede0e8ecfce23eda1026919777fc66
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: f7aa2a341a82d30f7022af49e626a3cd358854b7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65072083"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "78273484"
 ---
 # <a name="email-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的电子邮件预生成实体
-电子邮件提取包括陈述中的整个电子邮件地址。 此实体已定型，因此不需要将包含电子邮件的陈述示例添加到应用程序意向中。 只有 `en-us` 语言区域中支持电子邮件实体。 
+电子邮件提取包括陈述中的整个电子邮件地址。 此实体已定型，因此不需要将包含电子邮件的陈述示例添加到应用程序意向中。 只有 `en-us` 语言区域中支持电子邮件实体。
 
 ## <a name="resolution-for-prebuilt-email"></a>预构建电子邮件解析
 
-### <a name="api-version-2x"></a>API 版本 2.x
+查询返回以下实体对象：
 
-以下示例显示了 **builtin.email** 实体的解析。
+`please send the information to patti@contoso.com`
 
-```json
-{
-  "query": "please send the information to patti.owens@microsoft.com",
-  "topScoringIntent": {
-    "intent": "None",
-    "score": 0.811592042
-  },
-  "intents": [
-    {
-      "intent": "None",
-      "score": 0.811592042
-    }
-  ],
-  "entities": [
-    {
-      "entity": "patti.owens@microsoft.com",
-      "type": "builtin.email",
-      "startIndex": 31,
-      "endIndex": 55,
-      "resolution": {
-        "value": "patti.owens@microsoft.com"
-      }
-    }
-  ]
-}
-```
-
-### <a name="preview-api-version-3x"></a>预览版 API 版本 3.x
+#### <a name="v3-response"></a>[V3 响应](#tab/V3)
 
 以下 JSON 的 `verbose` 参数设置为 `false`：
 
 ```json
-{
-    "query": "please send the information to patti.owens@microsoft.com",
-    "prediction": {
-        "normalizedQuery": "please send the information to patti.owens@microsoft.com",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.5023781
-            }
-        },
-        "entities": {
-            "email": [
-                "patti.owens@microsoft.com"
-            ]
-        }
-    }
+"entities": {
+    "email": [
+        "patti@contoso.com"
+    ]
 }
 ```
-
+#### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/V3-verbose)
 
 以下 JSON 的 `verbose` 参数设置为 `true`：
 
 ```json
-{
-    "query": "please send the information to patti.owens@microsoft.com",
-    "prediction": {
-        "normalizedQuery": "please send the information to patti.owens@microsoft.com",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.5023781
-            }
-        },
-        "entities": {
-            "email": [
-                "patti.owens@microsoft.com"
-            ],
-            "$instance": {
-                "email": [
-                    {
-                        "type": "builtin.email",
-                        "text": "patti.owens@microsoft.com",
-                        "startIndex": 31,
-                        "length": 25,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
+"entities": {
+    "email": [
+        "patti@contoso.com"
+    ],
+    "$instance": {
+        "email": [
+            {
+                "type": "builtin.email",
+                "text": "patti@contoso.com",
+                "startIndex": 31,
+                "length": 17,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
                 ]
             }
-        }
+        ]
     }
 }
 ```
+#### <a name="v2-response"></a>[V2 响应](#tab/V2)
+
+以下示例显示了 **builtin.email** 实体的解析。
+
+```json
+"entities": [
+    {
+        "entity": "patti@contoso.com",
+        "type": "builtin.email",
+        "startIndex": 31,
+        "endIndex": 55,
+        "resolution": {
+        "value": "patti@contoso.com"
+        }
+    }
+]
+```
+* * *
 
 ## <a name="next-steps"></a>后续步骤
 
-了解[数字](luis-reference-prebuilt-number.md)、[序号](luis-reference-prebuilt-ordinal.md)和[百分比](luis-reference-prebuilt-percentage.md)。 
+详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
+
+了解[数字](luis-reference-prebuilt-number.md)、[序号](luis-reference-prebuilt-ordinal.md)和[百分比](luis-reference-prebuilt-percentage.md)。

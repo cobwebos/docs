@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell 脚本-帐户密钥和连接字符串的 Azure Cosmos 帐户的操作
-description: Azure PowerShell 脚本示例-Azure Cosmos 帐户的帐户密钥和连接字符串操作
+title: PowerShell 脚本：获取 Azure Cosmos DB 帐户的密钥和连接字符串操作
+description: Azure PowerShell 脚本示例 - Azure Cosmos DB 帐户的帐户密钥和连接字符串操作
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
-ms.date: 05/20/2019
+ms.topic: sample
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: a7f86bfee0ee2472260b622dc709dc437e53414c
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: f6dd9d1290ea9d18fc6a5f18196585926b2ab91a
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247854"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366106"
 ---
-# <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-account-using-powershell"></a>连接字符串和帐户密钥用于使用 PowerShell 的 Azure Cosmos 帐户的操作
+# <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-db-account-using-powershell"></a>使用 PowerShell 的 Azure Cosmos DB 帐户的连接字符串和帐户密钥操作
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -21,7 +21,8 @@ ms.locfileid: "66247854"
 
 ## <a name="sample-script"></a>示例脚本
 
-此示例需要资源组和帐户存在。 使用现有的 PowerShell 创建示例首先设置一个帐户。
+> [!NOTE]
+> 此示例演示如何使用 SQL API 帐户。 若要将此示例用于其他 API，请复制相关属性，并将其应用于 API 特定的脚本
 
 [!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-keys-connection-strings.ps1 "Connection strings and account keys for Azure Cosmos account")]
 
@@ -37,10 +38,11 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction) | 针对资源调用操作。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccountKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccountkey) | 获取 Cosmos DB 帐户的连接字符串或密钥（读写或只读）。 |
+| [New-AzCosmosDBAccountKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccountkey) | 为 Cosmos DB 帐户重新生成指定的密钥。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||

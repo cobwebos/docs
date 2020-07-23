@@ -1,32 +1,27 @@
 ---
-title: 如何配置新的多租户应用程序 | Microsoft Docs
+title: 配置应用程序单一登录
 description: 如何为正在使用 Azure AD 开发和注册的自定义应用程序配置单一登录。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 07/15/2019
 ms.author: ryanwi
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83fae56dd0cf7157575b7c5a07e33ca1888d8560
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
-ms.translationtype: MT
+ms.openlocfilehash: 9b6451d29a3a874e09d74cbe664662a395b647f9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545454"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82890465"
 ---
-# <a name="how-to-configure-a-new-multi-tenant-application"></a>如何配置新的多租户应用程序
+# <a name="how-to-configure-single-sign-on-for-an-application"></a>如何为应用程序配置单一登录
 
-通过用于 OpenID Connect、SAML 2.0 或 WS-Fed 的 Azure AD 进行联合身份验证时，可以在应用中自动启用联合单一登录 (SSO)。 如果与 Azure AD 已有一个现有会话，但是最终用户仍然需要登录，这有可能是应用配置错误。
+通过适用于 OpenID Connect 的 Azure AD、SAML 2.0 或 WS-Fed 联合时，会自动启用应用中的联合单一登录 (SSO)。 如果与 Azure AD 已有一个现有会话，但是最终用户仍然需要登录，这有可能是应用配置错误。
 
-* 如果使用 ADAL/MSAL，请确保将 **PromptBehavior** 设置为“自动”而不是“始终”。
+* 如果使用 ADAL/MSAL，请确保将 **PromptBehavior** 设置为“自动”**** 而不是“始终”****。
 
 * 如果生成移动应用，可能需要进行额外配置以启用中转或非中转 SSO。
 
@@ -44,6 +39,6 @@ ms.locfileid: "65545454"
 
 [将应用与 AzureAD 集成](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
 
-[同意并为 AzureAD v2.0 聚合应用授予权限](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
+[Microsoft 标识平台终结点中的权限和许可](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
 
 [AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

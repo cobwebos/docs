@@ -1,19 +1,14 @@
 ---
 title: 查询 Azure 事件网格订阅
-description: 介绍了如何列出 Azure 事件网格订阅。
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
+description: 本文介绍如何列出 Azure 订阅中的事件网格订阅。 可以根据订阅类型提供不同的参数。
 ms.topic: conceptual
-ms.date: 01/04/2019
-ms.author: spelluru
-ms.openlocfilehash: ad9c2d492f70a697ef0e7dc3b7ed03b9938f2468
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 07/07/2020
+ms.openlocfilehash: 3d700f543bc5e3c7add2a346c10acf975e1c2462
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66162018"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120443"
 ---
 # <a name="query-event-grid-subscriptions"></a>查询事件网格订阅 
 
@@ -46,7 +41,7 @@ Get-AzEventGridSubscription
 对于 Azure CLI，请使用：
 
 ```azurecli-interactive
-az eventgrid event-subscription list --topic-type-name "Microsoft.Resources.Subscriptions"
+az eventgrid event-subscription list --topic-type-name "Microsoft.Resources.Subscriptions" --location global
 ```
 
 对于 PowerShell，请使用：
@@ -60,7 +55,7 @@ Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.Subscriptions"
 对于 Azure CLI，请使用：
 
 ```azurecli-interactive
-az eventgrid event-subscription list --topic-type-name "Microsoft.Resources.ResourceGroups"
+az eventgrid event-subscription list --topic-type-name "Microsoft.Resources.ResourceGroups" --location global
 ```
 
 对于 PowerShell，请使用：
@@ -74,7 +69,7 @@ Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.ResourceGroups"
 对于 Azure CLI，请使用：
 
 ```azurecli-interactive
-az eventgrid event-subscription list --resource-group myResourceGroup
+az eventgrid event-subscription list --resource-group myResourceGroup --location global
 ```
 
 对于 PowerShell，请使用：

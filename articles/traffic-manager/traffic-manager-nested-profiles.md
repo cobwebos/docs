@@ -1,10 +1,10 @@
 ---
 title: Azure 中的嵌套式流量管理器配置文件
-titlesuffix: Azure Traffic Manager
+titleSuffix: Azure Traffic Manager
 description: 本文介绍了 Azure 流量管理器的“嵌套式配置文件”功能
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -12,19 +12,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/22/2018
-ms.author: kumud
-ms.openlocfilehash: 6fb6b3e4476efec87b15d175d354afab777e6830
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: rohink
+ms.openlocfilehash: 282099cb274c1ea872a0df9c2753a939ef31421f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60330135"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76938573"
 ---
 # <a name="nested-traffic-manager-profiles"></a>嵌套式流量管理器配置文件
 
-流量管理器包含一系列流量路由方法，可用于控制流量管理器如何选择具体的终结点来从每个最终用户处接收流量。 有关详细信息，请参阅[流量管理器流量路由方法](traffic-manager-routing-methods.md)。
+流量管理器包含一系列流量路由方法，可用于控制流量管理器如何选择具体的终结点来从每个最终用户处接收流量。 有关详细信息，请参阅 [流量管理器流量路由方法](traffic-manager-routing-methods.md)。
 
-每个流量管理器配置文件都会指定一个流量路由方法。 但是，有些方案要求的流量路由复杂程度高于单个流量管理器配置文件所能提供的路由。 可以嵌套流量管理器配置文件以结合一种以上的流量路由方法的优势。 使用嵌套式配置文件可以重写默认的流量管理器行为，支持更大、更复杂的应用程序部署。
+每个流量管理器配置文件都会指定一个流量路由方法。 但在某些情况下，所需的流量路由方法比单个流量管理器配置文件所提供的方法更复杂。 可以嵌套流量管理器配置文件，将多个流量路由方法的优势结合在一起。 使用嵌套式配置文件可以重写默认的流量管理器行为，支持更大、更复杂的应用程序部署。
 
 以下示例演示如何在不同的方案中使用嵌套式流量管理器配置文件。
 
@@ -34,7 +33,7 @@ ms.locfileid: "60330135"
 
 ![单个流量管理器配置文件][4]
 
-现在，假设要针对服务的某项更新进行测试，再推广该更新。 想要使用“加权”流量路由方法，以便将少部分流量定向到测试部署。 在西欧设置了测试部署以及现有的生产部署。
+现在，假设用户要针对服务的某项更新进行测试，再推广该更新。 你想要使用“加权”流量路由方法，以便将少部分流量定向到测试部署。 在西欧设置了测试部署以及现有的生产部署。
 
 无法在单个配置文件中结合使用“加权”和“性能”流量路由方法。 若要支持此方案，可以使用位于西欧的两个终结点和“加权”流量路由方法创建流量管理器配置文件。 接下来，将此“子”配置文件作为终结点添加到“父”配置文件。 父配置文件仍使用“性能”流量路由方法，并且仍包含终结点形式的其他全局部署。
 
@@ -48,7 +47,7 @@ ms.locfileid: "60330135"
 
 ## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>示例 2：嵌套式配置文件中的终结点监视
 
-流量管理器会主动监视每个服务终结点的运行状况。 如果终结点不正常，流量管理器会将用户定向到替代终结点，保持服务的可用性。 这种终结点监视和故障转移行为适用于所有流量路由方法。 有关详细信息，请参阅[流量管理器终结点监视](traffic-manager-monitoring.md)。 终结点监视的工作方式不同于嵌套式配置文件。 对于嵌套式配置文件，父配置文件不会针对子配置文件直接执行运行状况检查。 子配置文件的终结点运行状况用于计算子配置文件的总体运行状况。 此运行状况信息会在嵌套式配置文件层次结构中向上传播。 父配置文件使用聚合运行状况信息确定是否将流量定向到子配置文件。 有关嵌套式配置文件运行状况监视的完整详细信息，请参阅[常见问题解答](traffic-manager-FAQs.md#traffic-manager-nested-profiles)。
+流量管理器会主动监视每个服务终结点的运行状况。 如果终结点不正常，流量管理器会将用户定向到替代终结点，保持服务的可用性。 这种终结点监视和故障转移行为适用于所有流量路由方法。 有关详细信息，请参阅 [Traffic Manager Endpoint Monitoring](traffic-manager-monitoring.md)（流量管理器终结点监视）。 终结点监视的工作方式不同于嵌套式配置文件。 对于嵌套式配置文件，父配置文件不会针对子配置文件直接执行运行状况检查。 子配置文件的终结点运行状况用于计算子配置文件的总体运行状况。 此运行状况信息会在嵌套式配置文件层次结构中向上传播。 父配置文件使用聚合运行状况信息确定是否将流量定向到子配置文件。 有关嵌套式配置文件运行状况监视的完整详细信息，请参阅[常见问题解答](traffic-manager-FAQs.md#traffic-manager-nested-profiles)。
 
 回到前面的示例，假设西欧的生产部署发生故障。 默认情况下，“子”配置文件会将所有流量定向到测试部署。 如果测试部署也发生故障，父配置文件将确定子配置文件是否不应接收流量，因为所有子终结点都不正常。 然后，父配置文件将流量分发到其他区域。
 
@@ -87,13 +86,27 @@ ms.locfileid: "60330135"
 
 ## <a name="example-5-per-endpoint-monitoring-settings"></a>示例 5：基于终结点的监视设置
 
-假设希望使用流量管理器来顺利地将流量从旧的本地网站迁移到基于云的新版网站（托管在 Azure 中）。 对于旧站点，想要使用主页 URI 监视站点运行状况。 但对于基于云的新版站点，你要实现一个包含附加检查的自定义监视页面（路径为“/monitor.aspx”）。
+假设希望使用流量管理器来顺利地将流量从旧的本地网站迁移到基于云的新版网站（托管在 Azure 中）。 对于旧站点，你想要使用主页 URI 监视站点运行状况。 但对于基于云的新版站点，你要实现一个包含附加检查的自定义监视页面（路径为“/monitor.aspx”）。
 
 ![流量管理器终结点监视（默认行为）][9]
 
-流量管理器配置文件中的监视设置将应用到单个配置文件中的所有终结点。 使用嵌套式配置文件时，可为每个站点使用一个不同的子配置文件来定义不同的监视设置。
+流量管理器配置文件中的监视设置应用到单个配置文件中的所有终结点。 使用嵌套式配置文件时，可为每个站点使用一个不同的子配置文件来定义不同的监视设置。
 
 ![按终结点进行设置的流量管理器终结点监视][10]
+
+## <a name="faqs"></a>常见问题
+
+* [如何配置嵌套式配置文件？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#traffic-manager-endpoint-monitoring)
+
+* [流量管理器支持多少层嵌套？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-layers-of-nesting-does-traffic-manger-support)
+
+* [能否在同一流量管理器配置文件中将其他终结点类型与嵌套式子配置文件混合在一起使用？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
+
+* [嵌套式配置文件如何应用计费模型？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-billing-model-apply-for-nested-profiles)
+
+* [嵌套式配置文件是否会造成性能影响？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-performance-impact-for-nested-profiles)
+
+* [在父配置文件中，流量管理器如何计算嵌套式终结点的运行状况？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,23 +1,14 @@
 ---
 title: Azure Application Insights 遥测数据模型 - 遥测上下文 | Microsoft Docs
 description: Application Insights 遥测上下文数据模型
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 7c1f47c9b88bd68b326b3c8923ba5b81d425c3e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 8a2e3296643b13a54c4fceb11f044a2808cf2877
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60900704"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77671857"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>遥测上下文：Application Insights 数据模型
 
@@ -121,7 +112,7 @@ ms.locfileid: "60900704"
 
 ## <a name="internal-sdk-version"></a>内部：SDK 版本
 
-SDK 版本。 请参阅 https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SDK-AUTHORING.md#sdk-version-specification 获取相关信息。
+SDK 版本。 有关信息，请参阅[此文](https://github.com/microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/SDK-VERSIONS.md)。
 
 最大长度：64
 

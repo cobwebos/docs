@@ -1,22 +1,17 @@
 ---
-title: 从 Azure 逻辑应用连接到 Trello | Microsoft Docs
+title: 从 Azure 逻辑应用连接到 Trello
 description: 使用 Azure 逻辑应用自动执行任务和工作流，用以监视和管理你的 Trello 帐户中的列表、仪表板和卡
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: fe7a4377-5c24-4f72-ab1a-6d9d23e8d895
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 31357fa313cfa31c0f8a90c0f7722f627e4394d1
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+tags: connectors
+ms.openlocfilehash: d1426bbe2064067b26f53a8f8e5d4aa842ede8c0
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62106161"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829692"
 ---
 # <a name="monitor-and-manage-trello-with-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 Trello
 
@@ -30,9 +25,9 @@ ms.locfileid: "62106161"
 
 可以使用触发器从 Trello 帐户获取响应，并使输出可用于其他操作。 可以使用通过 Trello 帐户执行任务的操作。 还可以让其他操作使用来自 Trello 操作的输出。 例如，当向仪表板或列表中添加了新卡时，可以通过 Slack 连接器发送消息。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
 * Trello 帐户和用户凭据
 
@@ -46,7 +41,7 @@ ms.locfileid: "62106161"
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. 登录到 [Azure门户](https://portal.azure.com)，然后在逻辑应用设计器中打开你的逻辑应用（如果尚未打开）。
+1. 登录到 [Azure 门户](https://portal.azure.com)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
 1. 对于空白逻辑应用，请在搜索框中输入“trello”作为筛选器。 在触发器列表下，选择所需的触发器。 
 
@@ -57,7 +52,7 @@ ms.locfileid: "62106161"
    在操作列表下，选择所需的操作。
 
    若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 
-   选择出现的加号 (**+**)，然后选择“添加操作”。
+   选择出现的加号 ( **+** )，然后选择“添加操作”。
 
 1. 如果提示你登录到 Trello，请授权你的逻辑应用进行访问并登录。
 
@@ -69,7 +64,7 @@ ms.locfileid: "62106161"
 
 ## <a name="get-support"></a>获取支持
 
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 * 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤

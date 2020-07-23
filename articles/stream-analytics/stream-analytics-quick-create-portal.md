@@ -1,37 +1,36 @@
 ---
-title: 使用 Azure 门户创建流分析作业 | Microsoft Docs
+title: 快速入门 - 使用 Azure 门户创建流分析作业
 description: 本快速入门介绍如何开始创建流分析作业、配置输入和输出，以及定义查询。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 06/03/2019
+ms.date: 06/21/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 4efb8aa21622abddca1add3d8b2fcb523cf45da5
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 4abf5078a005f9d928397d9666e7f2bc55d65f19
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66493383"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "75431554"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建流分析作业
 
-本快速入门介绍如何开始创建流分析作业。 在本快速入门中，请定义一个流分析作业，以便读取实时流数据并筛选温度高于 27 的消息。 流分析作业会从 IoT 中心设备读取数据，对数据进行转换，然后将数据写回到 Blob 存储中的容器。 在本快速入门中使用的输入数据由 Raspberry Pi 联机模拟器生成。 
+本快速入门介绍如何开始创建流分析作业。 在本快速入门中，请定义一个流分析作业，以便读取实时流数据并筛选温度高于 27 的消息。 流分析作业会从 IoT 中心读取数据，对数据进行转换，然后将数据写回到 Blob 存储中的容器。 在本快速入门中使用的输入数据由 Raspberry Pi 联机模拟器生成。 
 
 ## <a name="before-you-begin"></a>开始之前
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
-* 登录到 [Azure 门户](https://portal.azure.com/)。
+* 登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="prepare-the-input-data"></a>对输入数据进行准备
 
-在定义流分析作业之前，应该对稍后会配置为作业输入的数据进行准备。 若要对作业所需的输入数据进行准备，请完成以下步骤：
+在定义流分析作业之前，应该准备输入数据。 实时传感器数据将引入到 IoT 中心，随后配置为作业输入。 若要对作业所需的输入数据进行准备，请完成以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
-2. 选择“创建资源” > “物联网” > “IoT 中心”    。
+2. 选择“创建资源” > “物联网” > “IoT 中心”。
 
 3. 在“IoT 中心”窗格中，输入以下信息： 
    
@@ -44,7 +43,7 @@ ms.locfileid: "66493383"
 
    ![创建 IoT 中心](./media/stream-analytics-quick-create-portal/create-iot-hub.png)
 
-4. 在完成时选择“下一步:  设置大小和规模”。
+4. 选择“下一步: 设置大小和规模”。 
 
 5. 选择“定价和缩放层”  。 就本快速入门来说，请选择“F1 - 免费”层（前提是此层在订阅上仍然可用）  。 有关详细信息，请参阅 [IoT 中心定价](https://azure.microsoft.com/pricing/details/iot-hub/)。
 
@@ -163,7 +162,7 @@ ms.locfileid: "66493383"
 
 2. 将第 15 行的占位符替换为在上一部分保存的 Azure IoT 中心设备连接字符串。
 
-3. 单击“运行”  。 输出会显示传感器数据和发送到 IoT 中心的消息。
+3. 单击 **“运行”** 。 输出会显示传感器数据和发送到 IoT 中心的消息。
 
    ![Raspberry Pi Azure IoT 联机模拟器](./media/stream-analytics-quick-create-portal/ras-pi-connection-string.png)
 
@@ -179,7 +178,7 @@ ms.locfileid: "66493383"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-若不再需要资源组、流式处理作业以及所有相关资源，请将其删除。 删除作业可避免对作业使用的流单元进行计费。 如果计划在将来使用该作业，可以先停止它，等到以后需要时再重启它。 如果不打算继续使用该作业，请按照以下步骤删除本快速入门创建的所有资源：
+若不再需要资源组、流分析作业以及所有相关资源，请将其删除。 删除作业可避免对作业使用的流单元进行计费。 如果计划在将来使用该作业，可以先停止它，等到以后需要时再重启它。 如果不打算继续使用该作业，请按照以下步骤删除本快速入门创建的所有资源：
 
 1. 在 Azure 门户的左侧菜单中选择“资源组”  ，然后选择已创建资源的名称。  
 
@@ -193,4 +192,3 @@ ms.locfileid: "66493383"
 
 > [!div class="nextstepaction"]
 > [使用 Azure 流分析实时检测欺诈行为](stream-analytics-real-time-fraud-detection.md)
-

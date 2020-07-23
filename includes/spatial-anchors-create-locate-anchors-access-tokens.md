@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 02/21/2019
 ms.author: rgarcia
 ms.openlocfilehash: 63725d55e2b2935ec6a899789249259b096865c3
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66110638"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "67172645"
 ---
 ### <a name="access-tokens"></a>访问令牌
 
-访问令牌是更可靠的方法来使用 Azure 空间的定位点进行身份验证。 尤其是当你准备进行生产部署时应用程序。 此方法的摘要是设置你的客户端应用程序可以安全地进行身份验证与后端服务。 您的后端服务接口与 AAD 在运行时和 Azure 空间的定位点安全令牌服务来请求访问令牌。 此令牌是然后传送到客户端应用程序，用于在 SDK 中使用 Azure 空间的定位点进行身份验证。
+访问令牌是一种更可靠的方法，用于使用 Azure 空间定位点进行身份验证。 为生产部署准备应用程序时，它尤其有用。 概括而言，此方法设置客户端应用程序可以用来安全地进行身份验证的后端服务。 后端服务在运行时与 AAD 进行交互并与 Azure 空间定位点安全令牌服务进行交互来请求访问令牌。 然后，该令牌将被传递给客户端应用程序，并在 SDK 中用来通过 Azure 空间定位点进行身份验证。

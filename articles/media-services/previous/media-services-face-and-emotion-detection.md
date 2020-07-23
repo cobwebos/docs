@@ -13,16 +13,22 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: milanga;juliako;
-ms.openlocfilehash: 46e60583da79006c133c8d9fac63e27f28bd699f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: juliako
+ms.reviewer: milanga
+ms.openlocfilehash: b8f100d253dc5ecb321934eb49a1aba60595a5e8
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61217150"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232570"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>使用 Azure 媒体分析检测面部和情绪
+
+> [!NOTE]
+> Azure Media Face Detector  媒体处理器将停用。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。
+
 ## <a name="overview"></a>概述
+
 借助 **Azure Media Face Detector** 媒体处理器 (MP)，可通过面部表情来统计、跟踪动作，甚至计量受众的参与和反应。 此服务包含两项功能： 
 
 * **人脸检测**
@@ -35,7 +41,7 @@ ms.locfileid: "61217150"
   > 
 * **情绪检测**
   
-    情绪检测是人脸检测媒体处理器的可选组件，它根据检测到的面部返回多个情绪属性的分析，包括快乐、悲伤、恐惧、愤怒等等。 
+    情绪检测是面部检测媒体处理器的可选组件，它根据检测到的面部返回多个情绪属性的分析，包括快乐、悲伤、恐惧、愤怒等等。 
 
 **Azure Media Face Detector** MP 目前提供预览版。
 
@@ -49,11 +55,11 @@ ms.locfileid: "61217150"
 
 已检测到并已跟踪的面部会在坐标（左侧、顶部、宽度和高度）中返回，其中会在以像素为单位的图像中指明面部的位置，以及表示正在跟踪该人员的面部 ID 编号。 在正面面部长时间于帧中消失或重叠的情况下，面部 ID 编号很容易重置，导致某些人员被分配多个 ID。
 
-## <a id="output_elements"></a>输出 JSON 文件的元素
+## <a name="elements-of-the-output-json-file"></a><a id="output_elements"></a>输出 JSON 文件的元素
 
 [!INCLUDE [media-services-analytics-output-json](../../../includes/media-services-analytics-output-json.md)]
 
-人脸检测器使用分片（元数据可以分解为基于时间的区块，可以只下载需要的部分）和分段（可以在事件数过于庞大的情况下对事件进行分解）技术。 一些简单的计算可帮助转换数据。 例如，如果事件从 6300（刻度）开始，其时间刻度为 2997（刻度/秒），帧速率为 29.97（帧/秒），那么：
+人脸检测器使用分片（元数据可以分解为基于时间的区块，可以只下载需要的部分）和分段（可以在事件数过于庞大的情况下对事件进行分解）技术。 一些简单的计算可帮助你转换数据。 例如，如果事件从 6300（刻度）开始，其时间刻度为 2997（刻度/秒），帧速率为 29.97（帧/秒），那么：
 
 * 开始时间/时间刻度 = 2.1 秒
 * 秒数 x 帧速率 = 63 帧
@@ -75,9 +81,9 @@ ms.locfileid: "61217150"
 ```
 
 #### <a name="attribute-descriptions"></a>属性说明
-| 属性名称 | 描述 |
+| 属性名称 | 说明 |
 | --- | --- |
-| Mode |快速 - 处理速度快，但准确度较低（默认）。|
+| “模式” |快速 - 处理速度快，但准确度较低（默认）。|
 
 ### <a name="json-output"></a>JSON 输出
 下面是 JSON 输出被截断的示例。
@@ -150,9 +156,9 @@ ms.locfileid: "61217150"
 
 
 #### <a name="attribute-descriptions"></a>属性说明
-| 属性名称 | 描述 |
+| 属性名称 | 说明 |
 | --- | --- |
-| Mode |Faces：仅人脸检测。<br/>PerFaceEmotion：独立返回每个人脸检测的情绪。<br/>AggregateEmotion：返回帧中所有面部的平均情绪值。 |
+| “模式” |Faces：仅人脸检测。<br/>PerFaceEmotion：独立返回每个人脸检测的情绪。<br/>AggregateEmotion：返回帧中所有面部的平均情绪值。 |
 | AggregateEmotionWindowMs |在已选择 AggregateEmotion 模式时使用。 指定用于生成每个聚合结果的视频的长度，以毫秒为单位。 |
 | AggregateEmotionIntervalMs |在已选择 AggregateEmotion 模式时使用。 指定生成聚合结果的频率。 |
 
@@ -161,8 +167,8 @@ ms.locfileid: "61217150"
 
 || 默认值 | 最大值 | 最小值 |
 |--- | --- | --- | --- |
-| AggregateEmotionWindowMs |0.5 |2 |0.25|
-| AggregateEmotionIntervalMs |0.5 |第 |0.25|
+| **AggregateEmotionWindowMs** |0.5 |2 |0.25|
+| **AggregateEmotionIntervalMs** |0.5 |1 |0.25|
 
 ### <a name="json-output"></a>JSON 输出
 聚合情绪的 JSON 输出（已截断）：

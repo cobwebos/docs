@@ -1,55 +1,73 @@
 ---
-title: 为基于 Linux 的 HDInsight 群集配置 OS 修补计划 - Azure
+title: 为 Azure HDInsight 群集配置 OS 修补计划
 description: 了解如何为基于 Linux 的 HDInsight 群集配置 OS 修补计划。
-author: omidm1
-ms.author: omidm
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
+ms.topic: how-to
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 01/24/2019
-ms.openlocfilehash: cfbd68e66730fc338130bc16849fe0b2f4abd6be
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 01/21/2020
+ms.openlocfilehash: ddc70ccbbb5c964f16b078470517ce667bc878f1
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244412"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082635"
 ---
-# <a name="os-patching-for-hdinsight"></a>针对 HDInsight 的 OS 修补 
+# <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>为基于 Linux 的 HDInsight 群集配置 OS 修补计划
 
 > [!IMPORTANT]
-> Ubuntu 映像可在发布后的 3 个月内用于创建新的 HDInsight 群集。 自 2019 年 1 月起，系统**不**会自动修补正在运行的群集。 客户必须使用脚本操作或其他机制来修补正在运行的群集。 新创建的群集将始终包含最新的可用更新，其中包括最新的安全修补程序。
+> Ubuntu 映像可在发布后的三 个月内用于创建新的 Azure HDInsight 群集。 自 2019 年 1 月起，系统不会自动修补正在运行的群集。 客户必须使用脚本操作或其他机制来修补正在运行的群集。 新创建的群集将始终包含最新的可用更新，其中包括最新的安全修补程序。
 
-## <a name="how-to-configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>如何为基于 Linux 的 HDInsight 群集配置 OS 修补计划
-需不定期重启 HDInsight 群集中的虚拟机，以便安装重要的安全修补程序。 
+HDInsight 为你提供支持，允许你在群集上执行常见任务，例如安装 OS 修补程序、安全更新，以及重启节点。 这些任务使用下述两个脚本来完成，这两个脚本可以作为[脚本操作](hdinsight-hadoop-customize-cluster-linux.md)运行，并且可以配置参数：
 
-使用本文中描述的脚本操作，可以按如下所示修改 OS 修补计划：
-1. 安装完整的 OS 更新或安装安全更新程序
-2. 重新启动 VM
+- `schedule-reboots.sh` - 在群集节点上立即重启或计划重启。
+- `install-updates-schedule-reboots.sh` - 安装所有更新、仅安装内核 + 安全更新，或者仅安装内核更新。
 
 > [!NOTE]  
-> 此脚本操作仅适用于 2016 年 8 月 1 日后创建的基于 Linux 的 HDInsight 群集。 仅在重启 VM 后，修补程序才生效。 此脚本不会自动应用更新的所有将来的更新周期。 运行每个时间的新更新需要安装更新并重启 VM 才能应用该脚本。
+> 脚本操作不会自动应用所有未来更新周期的更新。 每次必须应用新更新以安装更新并重启 VM 时，请运行这些脚本。
 
-## <a name="how-to-use-the-script"></a>如何使用脚本 
+## <a name="preparation"></a>准备工作
 
-使用此脚本需要以下信息：
-1. 脚本位置： https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/os-patching-reboot-config.sh。HDInsight 使用此 URI 在群集中的所有虚拟机上查找并运行脚本。
+在部署到生产环境之前，在具有代表性的非生产环境中打补丁。 制定计划，以便在实际打补丁之前对系统进行充分测试。
+
+在与群集的 ssh 会话中，你可能会不时收到“可以升级”消息。 该消息可能如下所示：
+
+```
+New release '18.04.3 LTS' available.
+Run 'do-release-upgrade' to upgrade it
+```
+
+打补丁是可选的，由你自行决定。
+
+## <a name="restart-nodes"></a>重启节点
   
-2. 应用该脚本的群集节点类型：头节点、辅助节点、zookeeper。 此脚本必须应用于群集中的所有节点类型。 如果它不应用于一个节点类型，则将不会更新该节点类型的虚拟机。
+脚本 [schedule-reboots](https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/schedule-reboots.sh) 设置将要在群集中的计算机上执行的重启的类型。 提交脚本操作时，请将其设置为应用到所有三个节点类型：头节点、辅助角色节点和 zookeeper。 如果未将此脚本应用于某个节点类型，则不会更新或重启该节点类型的 VM。
 
+`schedule-reboots script` 接受一个数字参数：
 
-3.  参数：此脚本接受一个数字参数：
+| 参数 | 接受的值 | 定义 |
+| --- | --- | --- |
+| 要执行的重启类型 | 1 或 2 | 值为 1 表示启用计划重启（计划在 12-24 小时内重启）。 值为 2 表示启用即时重启（在 5 分钟内重启） 如果未提供任何参数，则默认值为 1。 |  
 
-    | 参数 | 定义 |
-    | --- | --- |
-    | 安装完整的 OS 更新/安装仅安全更新 |0 或 1。 值为 0 1 表示安装完整的 OS 更新时才安装安全更新。 如果没有提供任何参数，默认值为 0。 |
+## <a name="install-updates-and-restart-nodes"></a>安装更新并重启节点
 
-> [!NOTE]  
-> 将其应用于现有群集时，必须将此脚本标记为持久化。 否则，通过缩放操作创建的任何新节点都将使用默认修补计划。  如果在群集创建过程中应用该脚本，则其会自动持久化。
+脚本 [install-updates-schedule-reboots.sh](https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/install-updates-schedule-reboots.sh) 提供的选项用于安装不同类型的更新并重启 VM。
 
+`install-updates-schedule-reboots` 脚本接受两个数字参数，如下表所述：
+
+| 参数 | 接受的值 | 定义 |
+| --- | --- | --- |
+| 要安装的更新的类型 | 0、1 或 2 | 值为 0 表示仅安装内核更新。 值为 1 表示安装所有更新，为 2 表示仅安装内核 + 安全更新。 如果未提供任何参数，则默认值为 0。 |
+| 要执行的重启类型 | 0、1 或 2 | 值为 0 表示禁用重启。 值为 1 表示启用计划重启，为 2 表示启用即时重启。 如果未提供任何参数，则默认值为 0。 用户必须更改输入参数 1 才能输入参数 2。 |
+
+> [!NOTE]
+> 在将某个脚本应用到现有群集后，必须将其标记为持久性脚本。 否则，通过缩放操作创建的任何新节点都将使用默认修补计划。 如果在群集创建过程中应用该脚本，则其会自动持久化。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解使用脚本操作的具体步骤，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)中的以下部分：
+若要了解使用脚本操作的具体步骤，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)中的以下部分:
 
-* [在创建群集期间使用脚本操作](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
-* [将脚本操作应用到正在运行的群集](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)
+- [在创建群集期间使用脚本操作](hdinsight-hadoop-customize-cluster-linux.md#script-action-during-cluster-creation)
+- [将脚本操作应用到正在运行的群集](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster)

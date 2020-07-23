@@ -3,23 +3,23 @@ title: 管理 Azure CDN 中 Web 内容的过期问题 | Microsoft Docs
 description: 了解如何管理 Azure CDN 中 Azure Web 应用/云服务、ASP.NET 或 IIS 内容的过期问题。
 services: cdn
 documentationcenter: .NET
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: bef53fcc-bb13-4002-9324-9edee9da8288
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/15/2018
-ms.author: magattus
-ms.openlocfilehash: c21ae227d74442be5701dd906180392b1e0fdf8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 21ff3e456a587a7d676de379987c86f154878c61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60636647"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887639"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>在 Azure CDN 中管理 Web 内容的到期时间
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "60636647"
 
 来自可公开访问的源 Web 服务器的文件均可缓存在 Azure 内容分发网络 (CDN) 中，直到其生存时间 (TTL) 结束。 TTL 由来自源服务器的 HTTP 响应中的 `Cache-Control` 标头决定。 本文介绍如何为 Microsoft Azure 应用服务的 Web 应用功能、Azure 云服务、ASP.NET 应用程序和 Internet Information Services (IIS) 网站设置 `Cache-Control` 标头，所有标头的配置方式都类似。 可以使用配置文件或以编程方式设置 `Cache-Control` 标头。 
 
-此外，还可以通过设置 [CDN 缓存规则](cdn-caching-rules.md)从 Azure 门户控制缓存设置。 如果创建了一个或多个缓存规则并将其缓存行为设置为“替代”或“绕过缓存”，则将忽略本文中讨论的源提供的缓存设置。 有关一般缓存概念的信息，请参阅[缓存工作原理](cdn-how-caching-works.md)。
+此外，还可以通过设置 [CDN 缓存规则](cdn-caching-rules.md)从 Azure 门户控制缓存设置。 如果创建了一个或多个缓存规则并将其缓存行为设置为“替代”**** 或“绕过缓存”****，则将忽略本文中讨论的源提供的缓存设置。 有关一般缓存概念的信息，请参阅[缓存工作原理](cdn-how-caching-works.md)。
 
 > [!TIP]
 > 可以选择不对文件设置 TTL。 在这种情况下，Azure CDN 将自动应用默认 TTL（七天），除非已在 Azure 门户中设置了缓存规则。 此默认 TTL 仅适用于常规 Web 交付优化。 对于大型文件优化，默认 TTL 为一天；对于媒体流优化，默认 TTL 为一年。
@@ -58,9 +58,9 @@ ms.locfileid: "60636647"
 
 **使用全局缓存规则设置 Web 服务器的 Cache-Control 标头：**
 
-1. 在“全局缓存规则”下，将“查询字符串缓存行为”设置为“忽略查询字符串”，将“缓存行为”设置为“覆盖”。
+1. 在“全局缓存规则”下，将“查询字符串缓存行为”设置为“忽略查询字符串”，将“缓存行为”设置为“覆盖”。********************
       
-1. 对于“缓存过期持续时间”，在“秒”框中输入 3600，或者在“小时”框中输入 1。 
+1. 对于“缓存过期持续时间”****，在“秒”**** 框中输入 3600，或者在“小时”**** 框中输入 1。 
 
    ![CDN 全局缓存规则示例](./media/cdn-manage-expiration-of-cloud-service-content/cdn-global-caching-rules-example.png)
 
@@ -70,11 +70,11 @@ ms.locfileid: "60636647"
 
 **使用自定义缓存规则设置 Web 服务器文件的 Cache-Control 标头：**
 
-1. 在“自定义缓存规则”下，创建两个匹配条件：
+1. 在“自定义缓存规则”**** 下，创建两个匹配条件：
 
-     a. 对于第一个匹配条件，将“匹配条件”设置为“路径”，对于“匹配值”输入 `/webfolder1/*`。 将“缓存行为”设置为“替代”，并在“小时”框中输入 4。
+     a. 对于第一个匹配条件，将“匹配条件”**** 设置为“路径”****，对于“匹配值”输入 `/webfolder1/*`。**** 将“缓存行为”**** 设置为“替代”****，并在“小时”**** 框中输入 4。
 
-     b. 对于第二个匹配条件，将“匹配条件”设置为“路径”，对于“匹配值”输入 `/webfolder1/file1.txt`。 将“缓存行为”设置为“替代”，并在“小时”框中输入 2。
+     b. 对于第二个匹配条件，将“匹配条件”**** 设置为“路径”****，对于“匹配值”输入 `/webfolder1/file1.txt`。**** 将“缓存行为”**** 设置为“替代”****，并在“小时”**** 框中输入 2。
 
     ![CDN 自定义缓存规则示例](./media/cdn-manage-expiration-of-cloud-service-content/cdn-custom-caching-rules-example.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "60636647"
 </configuration>
 ```
 
-若要使用 **cacheControlMaxAge** 属性，必须将 **cacheControlMode** 属性的值设为 `UseMaxAge`。 此设置导致了 HTTP 标头和指令 `Cache-Control: max-age=<nnn>` 添加到响应中。 **cacheControlMaxAge** 属性的时间跨度值格式为 `<days>.<hours>:<min>:<sec>`。 其值将转换为秒，并且会作为 `Cache-Control` `max-age` 指令的值使用。 有关详细信息`<clientCache>`元素，请参阅[客户端缓存\<clientCache >](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)。  
+若要使用 **cacheControlMaxAge** 属性，必须将 **cacheControlMode** 属性的值设为 `UseMaxAge`。 此设置导致了 HTTP 标头和指令 `Cache-Control: max-age=<nnn>` 添加到响应中。 **cacheControlMaxAge** 属性的时间跨度值格式为 `<days>.<hours>:<min>:<sec>`。 其值将转换为秒，并用作指令的值 `Cache-Control` `max-age` 。 有关 `<clientCache>` 元素的详细信息，请参阅[客户端缓存\<clientCache>](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)。  
 
 ## <a name="setting-cache-control-headers-programmatically"></a>以编程方式设置 Cache-Control 标头
 对于 ASP.NET 应用程序，可以通过设置 .NET API 的 **HttpResponse.Cache** 属性，以编程方式控制 CDN 缓存行为。 有关 **HttpResponse.Cache** 属性的信息，请参阅 [HttpResponse.Cache 属性](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache)和 [HttpCachePolicy 类](/dotnet/api/system.web.httpcachepolicy)。  

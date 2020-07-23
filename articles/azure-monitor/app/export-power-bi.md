@@ -1,23 +1,13 @@
 ---
 title: 从 Azure Application Insights 导出到 Power BI | Microsoft Docs
 description: 可以在 Power BI 中显示分析查询。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 7f13ea66-09dc-450f-b8f9-f40fdad239f2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.author: mbullwin
-ms.openlocfilehash: a57393918992019844e2ff4ccc13d671f0b90ed5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 0e17ca6e07ec76f0a7a1cb04f7aa13619fb9970c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60900095"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77663991"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>从 Application Insights 向 Power BI 馈送数据
 [Power BI](https://www.powerbi.com/) 是一套商业工具，可帮助分析数据及分享见解。 每个设备上都提供了丰富的仪表板。 可以结合许多源的数据，包括来自 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 的数据。
@@ -42,10 +32,10 @@ ms.locfileid: "60900095"
 ### <a name="export-an-analytics-query"></a>导出 Analytics 查询
 1. [打开 Analytics 并编写查询](../../azure-monitor/log-query/get-started-portal.md)。
 2. 测试并优化查询，直到对结果满意。 导出之前，请确保查询在 Analytics 中正常运行。
-3. 在“导出”菜单中，选择“Power BI (M)”。 保存文本文件。
+3. 在“导出”菜单中，选择“Power BI (M)”。  保存文本文件。
    
     ![Analytics 屏幕截图，其中突出显示了“导出”菜单](./media/export-power-bi/analytics-export-power-bi.png)
-4. 在 Power BI Desktop 中，选择“获取数据” > “空白查询”。 然后，在查询编辑器中的“视图”下面，选择“高级查询编辑器”。
+4. 在 Power BI Desktop 中，选择“获取数据” > “空白查询”。 然后，在查询编辑器中的“视图”下面，选择“高级查询编辑器”。 
 
     将导出的 M 语言脚本粘贴到高级编辑器中。
 
@@ -70,7 +60,7 @@ ms.locfileid: "60900095"
 
    ![Power BI 按钮的屏幕截图](./media/export-power-bi/button.png)
 
-3. 在 Power BI Desktop 中，选择“获取数据” > “空白查询”。 然后，在查询编辑器中的“视图”下面，选择“高级查询编辑器”。
+3. 在 Power BI Desktop 中，选择“获取数据” > “空白查询”。 然后，在查询编辑器中的“视图”下面，选择“高级查询编辑器”。 
 
    ![Power BI Desktop 的屏幕截图，其中突出显示了“空白查询”按钮](./media/export-power-bi/blankquery.png)
 
@@ -93,8 +83,10 @@ ms.locfileid: "60900095"
 ### <a name="unauthorized-401-or-403"></a>未授权（401 或 403）
 若未更新过刷新令牌，可能会出现此问题。 请尝试以下步骤，确保仍拥有访问权限：
 
-1. 登录到 Azure 门户，确保可访问资源。
+1. 登录 Azure 门户，确保可访问资源。
 2. 尝试刷新仪表板的凭据。
+3. 尝试从 PowerBI Desktop 清除缓存。
+
 
    如果具有访问权限且刷新凭据不起作用，请开具支持票证。
 
@@ -105,8 +97,8 @@ ms.locfileid: "60900095"
 
 1. 创建 [API 密钥](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)。
 2. 通过将 Azure 资源管理器 URL 替换为 Application Insights API，更新从分析中导出的 Power BI M 脚本。
-   * 替换**https:\//management.azure.com/subscriptions/...**
-   * 与**https:\//api.applicationinsights.io/beta/apps/...**
+   * 替换**https： \/ /management.azure.com/subscriptions/**
+   * 替换为 **https:\//api.applicationinsights.io/beta/apps/...**
 3. 最后，将凭据更新为基本凭据，再使用 API 密钥。
 
 **现有脚本**
@@ -125,8 +117,8 @@ ms.locfileid: "60900095"
 此方法可以自动创建完整的遥测仪表板。 初始数据集是预定义的，但可以在其中添加更多数据。
 
 ### <a name="get-the-adapter"></a>获取适配器
-1. 登录到 [Power BI](https://app.powerbi.com/)。
-2. 打开“获取数据”![左下角的“获取数据”图标的屏幕截图](./media/export-power-bi/001.png)，“服务”。
+1. 登录 [Power BI](https://app.powerbi.com/)。
+2. 打开“获取数据”![左下角的“获取数据”图标的屏幕截图](./media/export-power-bi/001.png)，然后选择“服务” 。
 
     ![从 Application Insights 数据源获取数据的屏幕截图](./media/export-power-bi/002.png)
 

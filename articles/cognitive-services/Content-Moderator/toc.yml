@@ -1,6 +1,7 @@
 - name: 内容审查器文档
   href: index.yml
 - name: 概述
+  expanded: true
   items:
     - name: 什么是内容审查器？
       href: overview.md
@@ -9,18 +10,8 @@
   items:
     - name: 尝试在 Web 上使用内容审查器
       href: quick-start.md
-    - name: 使用客户端 SDK
-      items:
-        - name: 'C#'
-          items:
-            - name: 分析图像内容
-              href: image-moderation-quickstart-dotnet.md
-            - name: 分析文本内容
-              href: text-moderation-quickstart-dotnet.md
-        - name: Python
-          items:
-            - name: 分析文本内容
-              href: text-moderation-quickstart-python.md
+    - name: 使用客户端库
+      href: client-libraries.md
 - name: 教程
   items:
     - name: 审查电子商务映像
@@ -69,8 +60,6 @@
           href: Review-Tool-User-Guide/Review-Moderated-Images.md
         - name: REST API
           href: try-review-api-review.md
-        - name: .NET SDK
-          href: moderation-reviews-quickstart-dotnet.md
         - name: 视频审阅 (.NET)
           href: video-reviews-quickstart-dotnet.md
         - name: 视频脚本审阅 (.NET)
@@ -91,7 +80,7 @@
       href: Review-Tool-User-Guide/Configure.md
     - name: 导出或删除帐户数据
       href: ./export-delete-data.md
-- name: 引用
+- name: 参考
   items:
     - name: 内容审查器 API
       href: api-reference.md
@@ -102,7 +91,7 @@
         - name: Java
           href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable'
         - name: Node.js
-          href: 'https://docs.microsoft.com/javascript/api/azure-cognitiveservices-contentmoderator/?view=azure-node-latest'
+          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-contentmoderator/?view=azure-node-latest'
         - name: Python
           href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python'
         - name: Go
@@ -120,7 +109,7 @@
         - name: '以 C# 编写的 REST API 示例'
           href: samples-rest.md
         - name: 其他 Azure 示例
-          href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=content+moderator'
+          href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=content-moderator'
     - name: Azure 网络研讨会系列
       href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
     - name: 定价和限制
@@ -131,7 +120,7 @@
       href: 'https://cognitive.uservoice.com/knowledgebase/topics/132073-content-moderator'
     - name: 语言支持
       href: language-support.md
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: 区域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
@@ -139,3 +128,5 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 加密
+      href: content-moderator-encryption-of-data-at-rest.md

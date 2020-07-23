@@ -1,11 +1,10 @@
 ---
-title: Azure CLI 脚本示例 — 重新启动 VM | Microsoft Docs
+title: Azure CLI 脚本示例 — 重启 VM
 description: Azure CLI 脚本示例 — 按标记和 ID 重新启动 VM
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: allclark
-manager: douge
-editor: tysonn
+author: cynthn
+manager: gwallace
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -14,14 +13,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2017
-ms.author: allclark
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 94845573461d99fda9318f303d822abb6ca3f257
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: cac918f369a10a8084cdc7d0c66d5c0c4c400cc2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751134"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458533"
 ---
 # <a name="restart-vms"></a>重新启动 VM
 
@@ -33,13 +32,13 @@ ms.locfileid: "55751134"
 
 第一种方法重新启动资源组中的所有 VM。
 
-```bash
+```azurecli
 az vm restart --ids $(az vm list --resource-group myResourceGroup --query "[].id" -o tsv)
 ```
 
 第二种方法使用 `az resource list` 获取带标记的 VM，筛选出是 VM 的资源，并重新启动那些 VM。
 
-```bash
+```azurecli
 az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Microsoft.Compute/virtualMachines'].id" -o tsv)
 ```
 
@@ -77,7 +76,7 @@ az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Mic
 
 运行脚本示例后，可以使用以下命令删除资源组、VM 以及所有相关的资源。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete -n myResourceGroup --no-wait --yes
 ```
 
@@ -85,7 +84,7 @@ az group delete -n myResourceGroup --no-wait --yes
 
 此脚本使用以下命令创建资源组、虚拟机、可用性集、负载均衡器和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | 创建用于存储所有资源的资源组。 |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | 创建虚拟机。  |

@@ -1,26 +1,14 @@
 ---
-title: 提交大量的任务 - Azure Batch | Microsoft Docs
+title: 提交大量任务
 description: 如何有效地将巨量的任务提交到单个 Azure Batch 作业中
-services: batch
-documentationcenter: ''
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
+ms.topic: how-to
 ms.date: 08/24/2018
-ms.author: lahugh
-ms.custom: ''
-ms.openlocfilehash: ed04774969f72f1d6037a350f019d81d812d73f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 73d81624eea43e85b7fb2526d922a34446610d84
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60549659"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84553351"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>将大量的任务提交到 Batch 作业
 
@@ -38,7 +26,7 @@ Batch API 提供所需的方法用于高效地将任务作为集合添加到作�
 
     * [REST API](/rest/api/batchservice/task/addcollection)
     * [Python API](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python)
-    * [Node.js API](/javascript/api/azure-batch/task?view=azure-node-latest)
+    * [Node.js API](/javascript/api/@azure/batch/task?view=azure-node-latest)
 
   使用这些 API 时，需要提供逻辑来分割任务数目以符合集合限制，以及在添加任务失败时处理错误并重试。 如果任务集合太大，以致无法添加，则请求会生成错误，并在减少任务后重试。
 
@@ -53,7 +41,7 @@ Batch API 提供所需的方法用于高效地将任务作为集合添加到作�
 
 将大型任务集合提交到作业可能需要一段时间 - 例如，通过 .NET API 添加 20,000 个任务最长需要 1 分钟时间。 根据具体的 Batch API 和工作负荷，可以通过修改以下一项或多项来提高任务吞吐量：
 
-* **任务大小** - 添加大型任务所需的时间比添加小型任务更长。 若要减小集合中每个任务的大小，可以简化任务命令行、减少环境变量的数目，或者更有效地处理任务执行要求。 例如，不要使用大量的资源文件，而是使用池中的[启动任务](batch-api-basics.md#start-task)来安装任务依赖项，或使用[应用程序包](batch-application-packages.md)或 [Docker 容器](batch-docker-container-workloads.md)。
+* **任务大小** - 添加大型任务所需的时间比添加小型任务更长。 若要减小集合中每个任务的大小，可以简化任务命令行、减少环境变量的数目，或者更有效地处理任务执行要求。 例如，不要使用大量的资源文件，而是使用池中的[启动任务](jobs-and-tasks.md#start-task)来安装任务依赖项，或使用[应用程序包](batch-application-packages.md)或 [Docker 容器](batch-docker-container-workloads.md)。
 
 * **并行操作数目** - 根据具体的 Batch API，通过增加 Batch 客户端的最大并发操作数目来提高吞吐量。 在 .NET API 中使用 [BatchClientParallelOptions.MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) 属性，或者在 Batch Python SDK 扩展中使用 [TaskOperations.add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python) 等方法的 `threads` 参数来配置此项设置。 （此属性在本机 Batch Python SDK 中不可用。）此属性默认设置为 1，但将其设置为更大的值可提高操作吞吐量。 提高吞吐量的代价是会消耗网络带宽，并在一定程度上降低 CPU 的性能。 最高可按 `MaxDegreeOfParallelism` 或 `threads` 的 100 倍提高任务吞吐量。 在实践中，应将并发操作数目设置为 100 以下。 
  
@@ -61,7 +49,7 @@ Batch API 提供所需的方法用于高效地将任务作为集合添加到作�
 
 * **HTTP 连接限制** - 当 Batch 客户端添加大量的任务时，并发 HTTP 连接数可能会限制该客户端的性能。 可以使用某些 API 限制 HTTP 连接数。 例如，使用 .NET API 进行开发时，[ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) 属性默认设置为 2。 我们建议将该值增大到接近或大于并行操作数目。
 
-## <a name="example-batch-net"></a>示例：批处理 .NET
+## <a name="example-batch-net"></a>示例：Batch .NET
 
 以下 C# 代码片段演示了在使用 Batch .NET API 添加大量任务时要配置的设置。
 
@@ -141,7 +129,8 @@ pip install azure-batch-extensions
 
 ```python
 
-client = batch.BatchExtensionsClient(base_url=BATCH_ACCOUNT_URL, resource_group=RESOURCE_GROUP_NAME, batch_account=BATCH_ACCOUNT_NAME)
+client = batch.BatchExtensionsClient(
+    base_url=BATCH_ACCOUNT_URL, resource_group=RESOURCE_GROUP_NAME, batch_account=BATCH_ACCOUNT_NAME)
 ...
 ```
 
@@ -149,10 +138,9 @@ client = batch.BatchExtensionsClient(base_url=BATCH_ACCOUNT_URL, resource_group=
 
 
 ```python
-tasks=list()
+tasks = list()
 # Populate the list with your tasks
 ...
-
 ```
 
 使用 [task.add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python) 添加任务集合。 设置 `threads` 参数以增加并发操作数目：
@@ -188,7 +176,7 @@ parameter_sweep = {
                 "repeatTask": {
                     "commandLine": "/bin/bash -c 'echo Hello world from task {0}'",
                     "constraints": {
-                        "retentionTime":"PT1H"
+                        "retentionTime": "PT1H"
                     }
                 }
             },

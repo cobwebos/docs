@@ -1,20 +1,20 @@
 ---
-title: Azure Data Lake Analytics U-SQL 目录入门
-description: 了解如何使用 U-SQL 目录共享代码和数据。
+title: 在 Azure Data Lake Analytics 中使用 U-SQL 目录
+description: 了解如何使用 U-SQL 目录共享代码和数据。 创建表值函数、创建视图、创建表并对其进行查询。
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/09/2017
-ms.openlocfilehash: a6faa7037ccbacc0547401dd52bb3b19abd1c474
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 78bd7f446b7716031e3eef02639acc8bb729719e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60813354"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119559"
 ---
 # <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics U-SQL 目录入门
 
@@ -24,7 +24,7 @@ ms.locfileid: "60813354"
 
 以下脚本在默认数据库和架构中创建名为 `Searchlog()` 的 TVF：
 
-```
+```usql
 DROP FUNCTION IF EXISTS Searchlog;
 
 CREATE FUNCTION Searchlog()
@@ -55,7 +55,7 @@ END;
 
 以下脚本演示如何使用在前面的脚本中定义的 TVF：
 
-```
+```usql
 @res =
     SELECT
         Region,
@@ -76,7 +76,7 @@ OUTPUT @res
 
 以下脚本在默认数据库和架构中创建名为 `SearchlogView` 的视图：
 
-```
+```usql
 DROP VIEW IF EXISTS SearchlogView;
 
 CREATE VIEW SearchlogView AS  
@@ -93,7 +93,7 @@ USING Extractors.Tsv();
 
 以下脚本演示如何使用定义的视图：
 
-```
+```usql
 @res =
     SELECT
         Region,
@@ -113,7 +113,7 @@ OUTPUT @res
 
 使用以下脚本创建一个数据库和两个表：
 
-```
+```usql
 DROP DATABASE IF EXISTS SearchLogDb;
 CREATE DATABASE SearchLogDb;
 USE DATABASE SearchLogDb;
@@ -147,7 +147,7 @@ CREATE TABLE SearchLog2(
 
 若要从表中读取，请修改前面使用的转换脚本：
 
-```
+```usql
 @rs1 =
     SELECT
         Region,
@@ -173,4 +173,4 @@ OUTPUT @res
 ## <a name="next-steps"></a>后续步骤
 * [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
 * [使用用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
-* [使用 Azure 门户监视 Azure Data Lake Analytics 作业以及对其进行故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+* [使用 Azure 门户监视 Azure Data Lake Analytics 作业并对其进行故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

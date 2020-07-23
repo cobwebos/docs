@@ -1,33 +1,31 @@
 ---
-title: 教程：使用 .NET API 创建包含复制活动的管道 | Microsoft Docs
+title: '教程：使用 .NET API 创建包含复制活动的管道 '
 description: 本教程使用 .NET API 创建包含复制活动的 Azure 数据工厂管道。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 58fc4007-b46d-4c8e-a279-cb9e479b3e2b
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 49d6a06c2cd13c240a0843ef29fd6cc832c30384
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7b925a25e1e246008f393f7b15160417c3b3d7a1
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66122577"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254848"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>教程：使用 .NET API 创建包含复制活动的管道
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [复制向导](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-> * [Azure 资源管理器模板](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+> * [Azure Resource Manager 模板](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
@@ -124,8 +122,8 @@ ms.locfileid: "66122577"
 ## <a name="walkthrough"></a>演练
 1. 使用 Visual Studio 2012/2013/2015 创建 C# .NET 控制台应用程序。
    1. 启动 **Visual Studio** 2012/2013/2015。
-   2. 单击“文件”，指向“新建”并单击“项目”。
-   3. 展开“模板”，并选择“Visual C#”。 本演练中使用的是 C#，但可以使用任何 .NET 语言。
+   2. 单击“文件”，指向“新建”并单击“项目”。  
+   3. 展开“模板”，并选择“Visual C#”。  本演练中使用的是 C#，但可以使用任何 .NET 语言。
    4. 从右侧项目类型列表中选择“控制台应用程序”。
    5. 在“名称”中输入 **DataFactoryAPITestApp** 。
    6. 在“位置”中选择“C:\ADFGetStarted”。
@@ -136,7 +134,7 @@ ms.locfileid: "66122577"
    2. 运行以下命令安装 Azure Active Directory 包（因为要在代码中使用 Active Directory API）：`Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
 4. 将以下 **appSettings** 节添加到 **App.config** 文件。 这些设置由以下帮助器方法使用：**GetAuthorizationHeader**。
 
-    将 **&lt;Application ID&gt;**、**&lt;Password&gt;**、**&lt;Subscription ID&gt;** 和 **&lt;tenant ID&gt;** 的值替换为自己的值。
+    将 **&lt;Application ID&gt;** 、 **&lt;Password&gt;** 、 **&lt;Subscription ID&gt;** 和 **&lt;tenant ID&gt;** 的值替换为自己的值。
 
     ```xml
     <?xml version="1.0" encoding="utf-8" ?>
@@ -242,7 +240,7 @@ ms.locfileid: "66122577"
 9. 将以下用于创建 **Azure SQL 链接服务**的代码添加到 **Main** 方法。
 
    > [!IMPORTANT]
-   > 将 **servername**、**databasename**、**username** 和 **password** 分别替换为 Azure SQL 服务器名称、数据库名称、用户名和密码。
+   > 将“servername”、“databasename”、“username”和“password”分别替换为服务器名称、数据库名称、用户名和密码   。
 
     ```csharp
     // create a linked service for output data store: Azure SQL Database
@@ -343,11 +341,11 @@ ms.locfileid: "66122577"
 
     Azure 存储链接服务指定一个连接字符串，数据工厂服务在运行时使用该字符串连接到 Azure 存储帐户。 输入 Blob 数据集 (InputDataset) 指定容器以及包含输入数据的文件夹。  
 
-    类似地，Azure SQL 数据库链接服务指定一个连接字符串，数据工厂服务在运行时使用该字符串连接到 Azure SQL 数据库。 输出 SQL 表数据集 (OututDataset) 在数据库中指定一个表，数据将从 Blob 存储复制到该表中。
+    类似地，Azure SQL 数据库链接服务指定一个连接字符串，数据工厂服务在运行时使用该字符串连接到数据库。 输出 SQL 表数据集 (OututDataset) 在数据库中指定一个表，数据将从 Blob 存储复制到该表中。
 
     本步骤在 AzureStorageLinkedService 链接服务代表的 Azure 存储中创建名为 InputDataset 的数据集，该数据集指向 Blob 容器 (adftutorial) 根文件夹中的 Blob 文件 (emp.txt)。 如果不指定 fileName 的值（或者跳过此步骤），则会将输入文件夹中的所有 Blob 复制到目标。 在本教程中，请为 fileName 指定一个值。    
 
-    本步骤创建名为 **OutputDataset** 的输出数据集。 此数据集指向 Azure SQL 数据库中 **AzureSqlLinkedService**所代表的 SQL 表。
+    本步骤创建名为 **OutputDataset** 的输出数据集。 此数据集指向数据库中 AzureSqlLinkedService 所代表的 SQL 表。
 11. 将以下用于**创建和激活管道**的代码添加到 **Main** 方法。 本步骤创建管道，其中包含使用 InputDataset 作为输入和使用 OutputDataset 作为输出的复制活动。
 
     ```csharp
@@ -505,20 +503,20 @@ ms.locfileid: "66122577"
     }
     ```
 
-15. 在解决方案资源管理器中展开项目 (DataFactoryAPITestApp)，右键单击“引用”，并单击“添加引用”。 选中“System.Configuration”程序集对应的复选框。 然后单击“确定”。
-16. 生成控制台应用程序。 在菜单中单击“生成”，并单击“生成解决方案”。
+15. 在解决方案资源管理器中展开项目 (DataFactoryAPITestApp)，右键单击“引用”，并单击“添加引用”。  选中“System.Configuration”程序集对应的复选框。 然后单击“确定”。
+16. 生成控制台应用程序。 在菜单中单击“生成”，并单击“生成解决方案”。 
 17. 确认 Azure Blob 存储中的 **adftutorial** 容器内至少有一个文件。 如果没有，请在记事本中创建包含以下内容的 **Emp.txt** 文件，然后将它上传到 adftutorial 容器。
 
     ```
     John, Doe
     Jane, Doe
     ```
-18. 在菜单中单击“调试” -> “开始调试”运行示例。 看到“正在获取数据切片的运行详细信息”时，请等待几分钟，并按 **ENTER**。
+18. 在菜单中单击“调试” -> “开始调试”运行示例。  看到“正在获取数据切片的运行详细信息”时，请等待几分钟，并按 **ENTER**。
 19. 使用 Azure 门户验证是否创建了包含以下项目的数据工厂 **APITutorialFactory** ：
     * 链接服务：**LinkedService_AzureStorage**
     * 数据集：InputDataset 和 OutputDataset。
     * 管道：**PipelineBlobSample**
-20. 验证是否在指定的 Azure SQL 数据库中的“emp”表内创建了两条员工记录。
+20. 验证是否在指定数据库的“emp”表中创建了两条员工记录。
 
 ## <a name="next-steps"></a>后续步骤
 有关数据工厂 .NET API 的完整文档，请参阅[数据工厂 .NET API 参考](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1)。

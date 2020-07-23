@@ -1,11 +1,10 @@
 ---
 title: 在 Azure 安全中心内实现租户级公开范围 | Microsoft Docs
-description: 了解如何在 Azure 安全中心内实现租户级公开范围。
+description: 本文介绍如何通过将策略应用于关联到 Azure Active Directory 租户的所有订阅来大规模管理安全状况。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: b85c0e93-9982-48ad-b23f-53b367f22b10
 ms.service: security-center
 ms.devlang: na
@@ -13,17 +12,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
-ms.author: rkarlin
-ms.openlocfilehash: 7e26dc37c5c4f85e3db634bd961bf9308e418a03
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: memildin
+ms.openlocfilehash: 236153612f6056e90cb9b5af128f49ed550e3fe9
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66147922"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080867"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>在 Azure 安全中心内实现租户级公开范围
-本文介绍了如何执行一些操作来最大限度地利用 Azure 安全中心提供的优势，从而帮助读者入门。 执行这些操作，可以在所有与 Azure Active Directory 租户相关联的 Azure 订阅中实现公开范围，并能以聚合方式跨多个订阅应用安全策略，从而大规模、有效地管理组织的安全状态。
-
+本文介绍如何通过将安全策略应用到链接到 Azure Active Directory 租户的所有 Azure 订阅来大规模管理组织的安全状况。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -42,7 +40,7 @@ ms.locfileid: "66147922"
 
  
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务” > “管理组”。
+2. 选择“所有服务” > “管理组”。 
 3. 在主页上，选择“新建管理组”。 
 
     ![主要组](./media/security-center-management-groups/main.png) 
@@ -54,7 +52,7 @@ ms.locfileid: "66147922"
 5.  选择“保存”
 
 ### <a name="view-management-groups-in-the-azure-portal"></a>在 Azure 门户中查看管理组
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 若要查看管理组，请选择 Azure 主菜单下的“所有服务”。
 3. 选择“通用”下的“管理组”。
 
@@ -70,13 +68,13 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 
 1. 登录 [Azure 门户](https://portal.azure.com)或 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。
 
-2. 在导航列表中，单击“Azure Active Directory”，然后单击“属性”。
+2. 在导航列表中，单击“Azure Active Directory”，然后单击“属性” 。
 
    ![Azure AD 属性 - 屏幕截图](./media/security-center-management-groups/aad-properties.png)
 
-3. 在“Azure 资源的访问管理”下，将开关设置为“是”。
+3. 在“Azure 资源的访问管理”下，将开关设置为“是” 。
 
-   ![全局管理员可管理 Azure 订阅和管理组 - 屏幕截图](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
+   ![Azure 资源的访问管理 - 屏幕截图](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
 
    - 将开关设为“是”时，将分配到 Azure RBAC 中根范围 (/) 的用户访问管理员角色。 这将授予你在与此 Azure AD 目录关联的所有 Azure 订阅和管理组中分配角色的权限。 此开关仅适用于分配到 Azure AD 中全局管理员角色的用户。
 
@@ -150,26 +148,26 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 1. 在 Azure 主菜单下，依次选择“所有服务”和“安全中心”。
 2. 在“概述”中，没有订阅覆盖率图表。
 
-    ![订阅覆盖范围图屏幕截图](./media/security-center-management-groups/security-center-subscription-coverage.png)
+    ![“订阅覆盖范围”图表屏幕截图](./media/security-center-management-groups/security-center-subscription-coverage.png)
 
 3. 单击“覆盖率”，查看所覆盖的订阅列表。 
 
-    ![订阅覆盖范围列表屏幕快照](./media/security-center-management-groups/security-center-coverage.png)
+    ![“订阅覆盖范围”列表屏幕截图](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="remove-elevated-access"></a>撤消提升的访问权限 
 向用户分配 RBAC 角色后，租户管理员应将自己从用户访问管理员角色中删除。
 
 1. 登录 [Azure 门户](https://portal.azure.com)或 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。
 
-2. 在导航列表中，单击“Azure Active Directory”，然后单击“属性”。
+2. 在导航列表中，单击“Azure Active Directory”，然后单击“属性” 。
 
-3. 在“全局管理员可管理 Azure 订阅和管理组”下，将开关设置为“否”。
+3. 在 " **Azure 资源的访问管理**" 下，将开关设置为 "**否**"。
 
 4. 单击“保存”，保存设置。
 
 
 
-## <a name="adding-subscriptions-to-a-management-groups"></a>向管理组添加订阅
+## <a name="adding-subscriptions-to-a-management-group"></a>向管理组添加订阅
 可以向创建的管理组添加订阅。 这些步骤不是实现租户级公开范围以及全局策略和访问管理的必需步骤。
 
 1. 在“管理组”下，选择要向其中添加订阅的管理组。

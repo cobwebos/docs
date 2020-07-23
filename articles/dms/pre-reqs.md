@@ -1,26 +1,25 @@
 ---
-title: 使用 Azure 数据库迁移服务的先决条件概述 | Microsoft Docs
+title: 使用 Azure 数据库迁移服务的先决条件
 description: 了解使用 Azure 数据库迁移服务执行数据库迁移的先决条件的概述。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 05/29/2019
-ms.openlocfilehash: 4e21014f7b4ed86846a100ed9a2b1cd4b0400974
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
-ms.translationtype: MT
+ms.date: 02/25/2020
+ms.openlocfilehash: 8d87052ecfe85fa35c41c8b306bb48551fd06be9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304261"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322850"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>使用 Azure 数据库迁移服务的先决条件概述
 
-有多个确保 Azure 数据库迁移服务顺利执行数据库迁移时所需的先决条件。 某些先决条件适用于该服务支持的所有方案（源/目标对），而其他先决条件则是特定方案所特有的。
+若要确保 Azure 数据库迁移服务在执行数据库迁移时顺利运行，需要满足几个先决条件。 某些先决条件适用于该服务支持的所有方案（源/目标对），而其他先决条件则是特定方案所特有的。
 
 以下各部分列出了与使用 Azure 数据库迁移服务关联的先决条件。
 
@@ -28,25 +27,32 @@ ms.locfileid: "66304261"
 
 在所有支持的迁移方案中通用的 Azure 数据库迁移服务先决条件包括需要：
 
-* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络 (VNet)，它将使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。
-* 请确保你的 VNet 网络安全组 (NSG) 规则不会阻止以下通信端口 443、 53、 9354、 445、 12000。 有关 Azure VNet NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
+* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，该模型通过使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)为本地源服务器提供站点到站点连接。
+* 确保虚拟网络的网络安全组 (NSG) 规则未阻止以下通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
 * 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
 * 配置[针对数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 按照[启用或禁用服务器网络协议](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)一文中的说明启用 TCP/IP 协议（在安装 SQL Server Express 时，会默认禁用它）。
 
     > [!IMPORTANT]
-    > 创建的 Azure 数据库迁移服务实例需要访问通常不在同一资源组内的 VNet 设置。 因此，创建的 DMS 实例的用户需要在订阅级别的权限。 若要创建所需的角色，你可以将根据需要分配，请运行以下脚本：
+    > 创建 Azure 数据库迁移服务实例需要访问通常不在同一资源组中的虚拟网络设置。 因此，创建 DMS 实例的用户需要订阅级别的权限。 若要创建所需的角色（你可以根据需要分配这些角色），请运行以下脚本：
     >
     > ```
     >
     > $readerActions = `
-    > "Microsoft.DataMigration/services/*/read", `
-    > "Microsoft.Network/networkInterfaces/ipConfigurations/read"
+    > "Microsoft.Network/networkInterfaces/ipConfigurations/read", `
+    > "Microsoft.DataMigration/*/read", `
+    > "Microsoft.Resources/subscriptions/resourceGroups/read"
     >
     > $writerActions = `
     > "Microsoft.DataMigration/services/*/write", `
     > "Microsoft.DataMigration/services/*/delete", `
-    > "Microsoft.DataMigration/services/*/action"
+    > "Microsoft.DataMigration/services/*/action", `
+    > "Microsoft.Network/virtualNetworks/subnets/join/action", `
+    > "Microsoft.Network/virtualNetworks/write", `
+    > "Microsoft.Network/virtualNetworks/read", `
+    > "Microsoft.Resources/deployments/validate/action", `
+    > "Microsoft.Resources/deployments/*/read", `
+    > "Microsoft.Resources/deployments/*/write"
     >
     > $writerActions += $readerActions
     >
@@ -106,21 +112,21 @@ ms.locfileid: "66304261"
 
 使用 Azure 数据库迁移服务执行 SQL Server 到 Azure SQL 数据库的迁移时，除了普遍适用于所有迁移方案的先决条件外，还必须满足以下附加先决条件：
 
-* 按照[在 Azure 门户中创建 Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)一文中的详细信息创建 Azure SQL 数据库实例。
+* 按照在[Azure 门户中创建 AZURE Sql 数据库中的数据库](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)中的详细信息创建 Azure sql 数据库实例的实例。
 * 下载并安装[数据迁移助手](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 或更高版本。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 SQL Server（默认情况下为 TCP 端口 1433）。
 * 如果使用动态端口运行多个命名 SQL Server 实例，则可能需要启用 SQL Browser 服务并允许通过防火墙访问 UDP 端口 1434，以便 Azure 数据库迁移服务可连接到源服务器上的命名实例。
-* 为 Azure SQL 数据库服务器创建服务器级[防火墙规则](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的 VNET 子网范围。
+* 为 SQL 数据库创建服务器级[防火墙规则](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的虚拟网络子网范围。
 * 确保用于连接到源 SQL Server 实例的凭据具有 [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) 权限。
-* 确保用于连接到目标 Azure SQL 数据库实例的凭据具有目标 Azure SQL 数据库的 CONTROL DATABASE 权限。
+* 确保用于连接到目标数据库的凭据具有对目标数据库的 CONTROL DATABASE 权限。
 
    > [!NOTE]
    > 有关使用 Azure 数据库迁移服务执行从 SQL Server 到 Azure SQL 数据库的迁移所需的先决条件的完整列表，请参阅教程[将 SQL Server 迁移到 Azure SQL 数据库](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql)。
-   > 
+   >
 
-## <a name="prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance"></a>将 SQL Server 迁移到 Azure SQL 数据库托管实例的先决条件
+## <a name="prerequisites-for-migrating-sql-server-to-azure-sql-managed-instance"></a>将 SQL Server 迁移到 Azure SQL 托管实例的先决条件
 
-* 按照本文中的详细信息创建 Azure SQL 数据库托管的实例[Azure 门户中创建 Azure SQL 数据库托管实例](https://aka.ms/sqldbmi)。
+* 按照[在 Azure 门户中创建 Azure SQL 托管实例](https://aka.ms/sqldbmi)一文中的详述创建 SQL 托管实例。
 * 打开防火墙以允许 Azure 数据库迁移服务 IP 地址或子网范围的端口 445 上的 SMB 流量。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 SQL Server（默认情况下为 TCP 端口 1433）。
 * 如果使用动态端口运行多个命名 SQL Server 实例，则可能需要启用 SQL Browser 服务并允许通过防火墙访问 UDP 端口 1434，以便 Azure 数据库迁移服务可连接到源服务器上的命名实例。
@@ -131,7 +137,7 @@ ms.locfileid: "66304261"
 * 通过采用[使用存储资源管理器管理 Azure Blob 存储资源](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)一文中的步骤，创建 blob 容器并检索其 SAS URI。 在创建 SAS URI 时，务必在策略窗口选择所有权限（读取、写入、删除、列出）。
 
    > [!NOTE]
-   > 有关使用 Azure 数据库迁移服务执行从 SQL Server 到 Azure SQL 数据库托管实例的迁移所需的先决条件的完整列表，请参阅教程[将 SQL Server 迁移到 Azure SQL 数据库托管实例](https://aka.ms/migratetomiusingdms)。
+   > 有关使用 Azure 数据库迁移服务执行从 SQL Server 到 SQL 托管实例的迁移所需的先决条件的完整列表，请参阅教程[将 SQL Server 迁移到 SQL 托管实例](https://aka.ms/migratetomiusingdms)。
 
 ## <a name="next-steps"></a>后续步骤
 

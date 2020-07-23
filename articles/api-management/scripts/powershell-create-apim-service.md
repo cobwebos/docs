@@ -8,17 +8,16 @@ manager: cfowler
 editor: ''
 ms.service: api-management
 ms.workload: mobile
-ms.devlang: na
 ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 94c1555736b83d642587f100c0e484fc7f7e458d
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: d42a691ba93549dc26374b606c5a1c49871e67c3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729772"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253018"
 ---
 # <a name="create-an-api-management-service"></a>创建 API 管理服务
 
@@ -44,6 +43,6 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/overview)。
+有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
 
 可以在 [PowerShell 示例](../powershell-samples.md)中找到 Azure API 管理的其他 Azure Powershell 示例。

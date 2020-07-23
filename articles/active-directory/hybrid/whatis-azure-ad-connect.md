@@ -6,27 +6,27 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 02/26/2019
+ms.topic: overview
+ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48b81d508711f35a75efe1c93fe0a5556c5bb960
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: MT
+ms.openlocfilehash: 1e60c35a32152d4adec72fb507becc0db535036f
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784460"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80631725"
 ---
 # <a name="what-is-azure-ad-connect"></a>什么是 Azure AD Connect？
 
 Azure AD Connect 专用于满足和完成混合标识目标的 Microsoft 工具。  它提供以下功能：
-    
+     
 - [密码哈希同步](whatis-phs.md) - 一种登录方法，它将用户的本地 AD 密码与 Azure AD 进行同步。
 - [直通身份验证](how-to-connect-pta.md) - 另一种登录方法，它允许用户在本地和云中使用相同的密码，但不要求额外提供联合环境的基础结构。
 - [联合身份验证集成](how-to-connect-fed-whatis.md) - 联合身份验证是 Azure AD Connect 的可选部件，可用于使用本地 AD FS 基础结构配置混合环境。 它还提供了 AD FS 管理功能，例如证书续订和其他 AD FS 服务器部署。
 - [同步](how-to-connect-sync-whatis.md) - 负责创建用户、组和其他对象。  另外，它还负责确保本地用户和组的标识信息与云匹配。  此同步还包括密码哈希。
--   [运行状况监视](whatis-hybrid-identity-health.md) - Azure AD Connect Health 提供可靠监视，并在 Azure 门户中提供一个中心位置，用于查看此活动。 
+- [运行状况监视](whatis-hybrid-identity-health.md) - Azure AD Connect Health 提供可靠监视，并在 Azure 门户中提供一个中心位置，用于查看此活动。 
 
 
 ![什么是 Azure AD Connect](./media/whatis-hybrid-identity/arch.png)
@@ -68,8 +68,8 @@ Azure Active Directory (Azure AD) Connect Health 为本地标识基础结构提�
 
 [!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-free-license.md)]
 
-
-
+## <a name="license-requirements-for-using-azure-ad-connect-health"></a>使用 Azure AD Connect Health 的许可证要求
+[!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

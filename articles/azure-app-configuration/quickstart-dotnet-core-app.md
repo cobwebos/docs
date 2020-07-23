@@ -2,70 +2,66 @@
 title: 将 Azure 应用配置与 .NET Core 结合使用的快速入门| Microsoft Docs
 description: 将 Azure 应用配置与 .NET Core 应用结合使用的快速入门
 services: azure-app-configuration
-documentationcenter: ''
-author: yegu-ms
-manager: balans
-editor: ''
-ms.assetid: ''
+author: lisaguthrie
 ms.service: azure-app-configuration
-ms.devlang: csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: .NET Core
-ms.workload: tbd
-ms.date: 02/24/2019
-ms.author: yegu
-ms.openlocfilehash: 0bf4aff8e0bae3e84e6383ec560dbfe67e30b994
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.date: 1/9/2019
+ms.author: lcozzens
+ms.openlocfilehash: 7cabe5b0564ec63335800a999bebec67ec970587
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408720"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856779"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>快速入门：使用应用程序配置创建 .NET Core 应用
 
-Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码即可在一个位置轻松存储和管理所有应用程序设置。 本快速入门将介绍如何将服务合并到 .NET Core 控制台应用中。
-
-你可使用任意代码编辑器来执行该快速入门中的步骤。 [Visual Studio Code](https://code.visualstudio.com/) 是 Windows、macOS 和 Linux 平台上提供的一个卓越选项。
-
-![快速入门应用运行](./media/quickstarts/dotnet-core-app-run.png)
+在本快速入门中，会将 Azure 应用程序配置合并到 .NET Core 控制台应用中，以集中存储和管理与代码分离的应用程序设置。
 
 ## <a name="prerequisites"></a>先决条件
 
-要完成本快速入门，请安装 [.NET Core SDK](https://dotnet.microsoft.com/download)。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+- Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
+- [.NET Core SDK](https://dotnet.microsoft.com/download) - 也可在 [Azure Cloud Shell](https://shell.azure.com) 中使用。
 
 ## <a name="create-an-app-configuration-store"></a>创建应用配置存储区
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 选择“配置资源管理器” > “+创建”来添加以下键值对：
+6. 选择“配置资源管理器” > “创建” > “键-值”来添加以下键值对    ：
 
     | 密钥 | 值 |
     |---|---|
     | TestApp:Settings:Message | Azure 应用配置的数据 |
 
-    暂时将“标签”和“内容类型”保留为空。
+    暂时将“标签”和“内容类型”保留为空   。
+
+7. 选择“应用”。 
 
 ## <a name="create-a-net-core-console-app"></a>创建 .NET Core 控制台应用
 
-你使用 [.NET Core 命令行接口 (CLI)](https://docs.microsoft.com/dotnet/core/tools/) 创建新的 .NET Core 控制台应用项目。 通过 Visual Studio 使用 .NET Core CLI 的优点是，它可用于 Windows、macOS 和 Linux 平台。
+你使用 [.NET Core 命令行接口 (CLI)](https://docs.microsoft.com/dotnet/core/tools/) 创建新的 .NET Core 控制台应用项目。 通过 Visual Studio 使用 .NET Core CLI 的优点是，它可用于 Windows、macOS 和 Linux 平台。  或者，使用 [Azure Cloud Shell](https://shell.azure.com) 中提供的预安装工具。
 
 1. 为项目新建一个文件夹。
 
-2. 在新文件夹中，运行以下命令，创建新的 ASP.NET Core MVC Web 应用项目：
+2. 在新文件夹中，运行以下命令以创建新的 ASP.NET Core 控制台应用项目：
 
-        dotnet new console
+    ```dotnetcli
+    dotnet new console
+    ```
 
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 
 1. 通过运行以下命令，添加对 `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet 包的引用：
 
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-008520001
+    ```dotnetcli
+    dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration
+    ```
 
 2. 运行以下命令，还原项目包：
 
-        dotnet restore
+    ```dotnetcli
+    dotnet restore
+    ```
 
 3. 打开 *Program.cs*，并添加对 .NET Core 应用程序配置提供程序的引用。
 
@@ -89,25 +85,37 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 
 ## <a name="build-and-run-the-app-locally"></a>在本地生成并运行应用
 
-1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问键。 如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
+1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问密钥  。 在命令行中运行以下命令：
 
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```cmd
+    setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     如果使用 Windows PowerShell，请运行以下命令：
 
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```azurepowershell
+    $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
     如果使用 macOS 或 Linux，则请运行以下命令：
 
-        export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```console
+    export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
+
+    重启命令提示符以使更改生效。 输出环境变量的值以验证其设置是否正确。
 
 2. 运行以下命令以生成控制台应用：
 
-        dotnet build
+    ```dotnetcli
+    dotnet build
+    ```
 
 3. 生成成功完成后，请运行以下命令以在本地运行应用：
 
-        dotnet run
+    ```dotnetcli
+    dotnet run
+    ```
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -115,7 +123,7 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你创建了一个新的应用配置存储区，并通过[应用配置提供程序](https://go.microsoft.com/fwlink/?linkid=2074664)将其用于 .NET Core 控制台应用。 若要深入了解如何使用应用程序配置，请继续学习下一个教程，其中将介绍如何进行身份验证。
+本快速入门介绍了如何创建新的应用程序配置存储区，以及如何通过[应用程序配置提供程序](https://go.microsoft.com/fwlink/?linkid=2074664)将其与 .NET Core 控制台应用配合使用。 若要了解如何配置 .NET Core 应用来动态刷新配置设置，请继续学习下一个教程。
 
 > [!div class="nextstepaction"]
-> [托管标识集成](./howto-integrate-azure-managed-service-identity.md)
+> [启用动态配置](./enable-dynamic-configuration-dotnet-core.md)

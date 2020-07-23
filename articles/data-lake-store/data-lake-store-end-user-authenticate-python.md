@@ -1,22 +1,18 @@
 ---
-title: 最终用户身份验证：通过 Azure Active Directory 将 Python 与 Azure 数据湖存储 Gen1 |Microsoft Docs
+title: 最终用户身份验证-Data Lake Storage Gen1-Azure 的 Python
 description: 了解如何通过 Python 使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 最终用户身份验证
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 8b72604d7e736230911d0a0987b88d372be4ddf3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: has-adal-ref, tracking-python
+ms.openlocfilehash: 848ee67fd0a8c75308265cd39f5c5040cbac51fe
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60878044"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984974"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>通过 Python 使用 Azure Data Lake Storage Gen1 进行最终用户身份验证
 > [!div class="op_single_selector"]
@@ -24,8 +20,8 @@ ms.locfileid: "60878044"
 > * [使用 .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md)
 > * [使用 Python](data-lake-store-end-user-authenticate-python.md)
 > * [使用 REST API](data-lake-store-end-user-authenticate-rest-api.md)
-> 
-> 
+>
+>
 
 本文介绍如何使用 Python SDK 进行 Azure Data Lake Storage Gen1 最终用户身份验证。 最终用户身份验证可以进一步拆分为两个类别：
 
@@ -34,7 +30,7 @@ ms.locfileid: "60878044"
 
 本文将讨论这两个选项。 若要了解使用 Python 的 Data Lake Storage Gen1 服务到服务身份验证，请参阅[使用 Python 进行 Data Lake Storage Gen1 的服务到服务身份验证](data-lake-store-service-to-service-authenticate-python.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * **Python**。 可以从[此处](https://www.python.org/downloads/)下载 Python。 本文使用的是 Python 3.6.2。
 
@@ -47,12 +43,12 @@ ms.locfileid: "60878044"
 若要通过 Python 使用 Data Lake Storage Gen1，需要安装三个模块。
 
 * `azure-mgmt-resource` 模块，包括用于 Active Directory 的 Azure 模块，等等。
-* `azure-mgmt-datalake-store` 模块，包括 Azure Data Lake Storage Gen1 帐户管理操作。 有关此模块的详细信息，请参阅 [Azure Data Lake Storage Gen1 管理模块参考](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python)。
-* `azure-datalake-store` 模块，包括 Azure Data Lake Storage Gen1 文件系统操作。 有关此模块的详细信息，请参阅 [azure-datalake-store 文件系统模块参考](https://azure-datalake-store.readthedocs.io/en/latest/)。
+* `azure-mgmt-datalake-store` 模块，包括 Azure Data Lake Storage Gen1 帐户管理操作。 有关此模块的详细信息，请参阅 [Azure Data Lake Storage Gen1 管理模块参考](/python/api/azure-mgmt-datalake-store/)。
+* `azure-datalake-store` 模块，包括 Azure Data Lake Storage Gen1 文件系统操作。 有关此模块的详细信息，请参阅[datalake-存储文件系统模块参考](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/)。
 
 使用以下命令安装这些模块。
 
-```
+```console
 pip install azure-mgmt-resource
 pip install azure-mgmt-datalake-store
 pip install azure-datalake-store
@@ -92,32 +88,35 @@ pip install azure-datalake-store
 
 使用以下代码片段可对 Data Lake Storage Gen1 帐户的帐户管理操作进行 Azure AD 身份验证。 可以使用以下代码片段通过多重身份验证在应用程序中进行身份验证。 为现有 Azure AD **本机**应用程序提供以下值。
 
-    authority_host_url = "https://login.microsoftonline.com"
-    tenant = "FILL-IN-HERE"
-    authority_url = authority_host_url + '/' + tenant
-    client_id = 'FILL-IN-HERE'
-    redirect = 'urn:ietf:wg:oauth:2.0:oob'
-    RESOURCE = 'https://management.core.windows.net/'
-    
-    context = adal.AuthenticationContext(authority_url)
-    code = context.acquire_user_code(RESOURCE, client_id)
-    print(code['message'])
-    mgmt_token = context.acquire_token_with_device_code(RESOURCE, code, client_id)
-    armCreds = AADTokenCredentials(mgmt_token, client_id, resource = RESOURCE)
+```python
+authority_host_url = "https://login.microsoftonline.com"
+tenant = "FILL-IN-HERE"
+authority_url = authority_host_url + '/' + tenant
+client_id = 'FILL-IN-HERE'
+redirect = 'urn:ietf:wg:oauth:2.0:oob'
+RESOURCE = 'https://management.core.windows.net/'
+
+context = adal.AuthenticationContext(authority_url)
+code = context.acquire_user_code(RESOURCE, client_id)
+print(code['message'])
+mgmt_token = context.acquire_token_with_device_code(RESOURCE, code, client_id)
+armCreds = AADTokenCredentials(mgmt_token, client_id, resource = RESOURCE)
+```
 
 ### <a name="for-filesystem-operations"></a>适用于文件系统操作
 
 使用此方法可对 Data Lake Storage Gen1 帐户的文件系统操作进行 Azure AD 身份验证。 可以使用以下代码片段通过多重身份验证在应用程序中进行身份验证。 为现有 Azure AD **本机**应用程序提供以下值。
 
-    adlCreds = lib.auth(tenant_id='FILL-IN-HERE', resource = 'https://datalake.azure.net/')
+```console
+adlCreds = lib.auth(tenant_id='FILL-IN-HERE', resource = 'https://datalake.azure.net/')
+```
 
 ## <a name="end-user-authentication-without-multi-factor-authentication"></a>无需多重身份验证的最终用户身份验证
 
-此方法已弃用。 有关详细信息，请参阅[使用 Python SDK 的 Azure 身份验证](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python#mgmt-auth-token)。
-   
+此方法已弃用。 有关详细信息，请参阅[使用 Python SDK 的 Azure 身份验证](/azure/python/python-sdk-azure-authenticate)。
+
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何使用 Python 通过最终用户身份验证进行 Azure Data Lake Storage Gen1 身份验证。 接下来，可以查看以下介绍如何使用 Python 在 Azure Data Lake Storage Gen1 中执行操作的文章。
 
 * [使用 Python 在 Data Lake Storage Gen1 中进行的帐户管理操作](data-lake-store-get-started-python.md)
 * [使用 Python 在 Data Lake Storage Gen1 中进行的数据操作](data-lake-store-data-operations-python.md)
-

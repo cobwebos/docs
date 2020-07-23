@@ -1,45 +1,38 @@
 ---
-title: 使用自动化脚本创建要与 Azure 中的 IT 服务管理连接器连接的 Service Manager Web 应用 | Microsoft Docs
+title: 为服务管理连接器创建 web 应用
 description: 使用自动化脚本创建要与 Azure 中的 IT 服务管理连接器连接的 Service Manager Web 应用，集中监视和管理 ITSM 工作项。
-services: log-analytics
-documentationcenter: ''
-author: jyothirmaisuri
-manager: riyazp
-editor: ''
-ms.assetid: 879e819f-d880-41c8-9775-a30907e42059
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 01/23/2018
+author: nolavime
 ms.author: v-jysur
-ms.openlocfilehash: 64769ebb1bd9a5fb0f051cc6eca4e59cd41fccc9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 01/23/2018
+ms.openlocfilehash: bb21bcefa0f9fb6f691ebfb578177c64543c1403
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60395010"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549644"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>使用自动化脚本创建 Service Manager Web 应用
 
-使用以下脚本创建用于 Service Manager 实例的 Web 应用。 有关 Service Manager 连接的更多信息，请访问：[Service Manager Web 应用](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+使用以下脚本创建用于 Service Manager 实例的 Web 应用。 此处提供了有关 Service Manager 连接的详细信息：[Service Manager Web 应用](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
 通过提供以下所需详细信息来运行脚本：
 
 - Azure 订阅详细信息
 - 资源组名称
-- Location
+- 位置
 - Service Manager 服务器详细信息（服务器名称、域、用户名和密码）
 - Web 应用的站点名称前缀
 - ServiceBus 命名空间。
 
-该脚本将使用指定的名称（以及使该名称保持唯一的其他几个字符串）创建 Web 应用。 它将生成 **Web 应用 URL**、**客户端 ID** 和**客户端密码**。
+该脚本将使用指定的名称（以及使该名称保持唯一的其他几个字符串）创建 Web 应用。 它将生成**Web 应用 URL**、**客户端 ID**和**客户端密码**。
 
 请保存这些值，因为在使用 IT 服务管理连接器创建连接时将需要这些值。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
  Windows Management Framework 5.0 或更高版本。
 默认情况下，Windows 10 包含 5.1。 可以从 [此处](https://www.microsoft.com/download/details.aspx?id=50395)下载该框架：
@@ -121,7 +114,7 @@ Write-Host "Requirement check complete!!"
 
 $errorActionPreference = "Stop"
 
-$templateUri = "https://raw.githubusercontent.com/SystemCenterServiceManager/SMOMSConnector/master/azuredeploy.json"
+$templateUri = "https://raw.githubusercontent.com/Azure/SMOMSConnector/master/azuredeploy.json"
 
 if(!$siteNamePrefix)
 {
@@ -152,8 +145,8 @@ do
     $rand = Get-Random -Maximum 32000
 
     $siteName = $siteNamePrefix + $rand
-
-    $resource = Find-AzResource -ResourceNameContains $siteName -ResourceType Microsoft.Web/sites
+    
+    $resource = Get-AzResource -Name $siteName -ResourceType Microsoft.Web/sites
 
 }while($resource)
 
@@ -192,9 +185,9 @@ Write-Output "Web App Deployed successfully!!"
 
 Add-Type -AssemblyName System.Web
 
-$clientSecret = [System.Web.Security.Membership]::GeneratePassword(30,2).ToString()
+$secret = [System.Web.Security.Membership]::GeneratePassword(30,2).ToString()
+$clientSecret = $secret | ConvertTo-SecureString -AsPlainText -Force
 
-$clientSecret = $clientSecret | ConvertTo-SecureString -AsPlainText -Force
 
 try
 {
@@ -234,11 +227,13 @@ try
     ForEach ($item in $appSettingList) {
         $appSettings[$item.Name] = $item.Value
     }
+
     $appSettings['ida:Tenant'] = $tenant
     $appSettings['ida:Audience'] = $azureSite
     $appSettings['ida:ServerName'] = $serverName
     $appSettings['ida:Domain'] = $domain
     $appSettings['ida:Username'] = $userName
+    $appSettings['ida:WhitelistedClientId'] = $clientId
 
     $connStrings = @{}
     $kvp = @{"Type"="Custom"; "Value"=$password}
@@ -284,7 +279,7 @@ if(!$resourceProvider -or $resourceProvider[0].RegistrationState -ne "Registered
     }   
 }
 
-$resource = Find-AzResource -ResourceNameContains $serviceName -ResourceType Microsoft.Relay/namespaces
+$resource = Get-AzResource -Name $serviceName -ResourceType Microsoft.Relay/namespaces
 
 if(!$resource)
 {
@@ -314,13 +309,13 @@ Write-Host "App Details"
 Write-Host "============"
 Write-Host "App Name:"  $siteName
 Write-Host "Client Id:"  $clientId
-Write-Host "Client Secret:"  $clientSecret
+Write-Host "Client Secret:"  $secret
 Write-Host "URI:"  $azureSite
 if(!$err)
 {
     Write-Host "ServiceBus Namespace:"  $serviceName  
 }
-
 ```
+
 ## <a name="next-steps"></a>后续步骤
 [配置混合连接](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection)。

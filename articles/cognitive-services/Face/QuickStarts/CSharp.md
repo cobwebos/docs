@@ -8,29 +8,32 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 40c9fac27f45699d4c56e57480dcfde1b0ffb64d
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: ed64ae799dab570b168a91b236b1c4be8be8bee1
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629920"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986636"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>快速入门：使用人脸 REST API 和 C# 检测图像中的人脸
 
-在本快速入门中，请使用 Azure 人脸 REST API 和 C# 检测图像中的人脸。
+本快速入门将通过 C# 使用 Azure 人脸 REST API 来检测图像中的人脸。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 人脸 API 订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=face-api)获取免费试用的订阅密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸 API 服务并获取密钥。
-- 任何版本的 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/)。
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="创建人脸资源"  target="_blank">创建人脸资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到人脸 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
+- 任何版本的 [Visual Studio](https://www.visualstudio.com/downloads/)。
 
 ## <a name="create-the-visual-studio-project"></a>创建 Visual Studio 项目
 
-1. 在 Visual Studio 中创建新的**控制台应用 (.NET Framework)** 项目并将其命名为 **FaceDetection**。 
+1. 在 Visual Studio 中创建新的**控制台应用 (.NET Framework)** 项目并将其命名为 **FaceDetection**。
 1. 如果解决方案中有其他项目，请将此项目选为单一启动项目。
 
 ## <a name="add-face-detection-code"></a>添加人脸检测代码
@@ -44,6 +47,7 @@ ms.locfileid: "58629920"
 ```csharp
 using System;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -51,8 +55,9 @@ using System.Text;
 
 ### <a name="add-essential-fields"></a>添加必要的字段
 
-添加包含以下字段的 **Program** 类。 该数据指定如何连接到人脸服务，以及在何处获取输入数据。 需使用订阅密钥的值更新 `subscriptionKey` 字段，并且可能需要更改 `uriBase` 字符串，使之包含正确的区域标识符（如需包含所有区域终结点的列表，请参阅[人脸 API 文档](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)）。
+添加包含以下字段的 **Program** 类。 该数据指定如何连接到人脸服务，以及在何处获取输入数据。 需使用订阅密钥的值更新 `subscriptionKey` 字段，并且可能需要更改 `uriBase` 字符串，使之包含资源终结点字符串。
 
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ```csharp
 namespace DetectFace
@@ -63,26 +68,18 @@ namespace DetectFace
         // Replace <Subscription Key> with your valid subscription key.
         const string subscriptionKey = "<Subscription Key>";
 
-        // NOTE: You must use the same region in your REST call as you used to
-        // obtain your subscription keys. For example, if you obtained your
-        // subscription keys from westus, replace "westcentralus" in the URL
-        // below with "westus".
-        //
-        // Free trial subscription keys are generated in the "westus" region.
-        // If you use a free trial subscription key, you shouldn't need to change
-        // this region.
+        // replace <myresourcename> with the string found in your endpoint URL
         const string uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+            "https://<myresourcename>.cognitive.microsoft.com/face/v1.0/detect";
 ```
 
 ### <a name="receive-image-input"></a>接收图像输入
 
-将以下代码添加到 **Program** 类的 **Main** 方法。 这样会将一个提示写入到控制台，要求用户输入图像 URL。 然后，它会调用另一方法 (**MakeAnalysisRequest**)，在该位置处理图像。
+将以下代码添加到 **Program** 类的 **Main** 方法。 此代码会将一个提示写入到控制台，要求用户输入图像 URL。 然后，它会调用另一方法 (**MakeAnalysisRequest**)，在该位置处理图像。
 
 ```csharp
         static void Main(string[] args)
         {
-
             // Get the path and filename to process from the user.
             Console.WriteLine("Detect faces:");
             Console.Write(
@@ -162,7 +159,7 @@ namespace DetectFace
 
 ### <a name="process-the-input-image-data"></a>处理输入图像数据
 
-将以下方法添加到 **Program** 类。 这会将指定 URL 中的图像转换为字节数组。
+将以下方法添加到 **Program** 类。 此方法会将指定 URL 中的图像转换为字节数组。
 
 ```csharp
         // Returns the contents of the specified file as a byte array.
@@ -179,7 +176,7 @@ namespace DetectFace
 
 ### <a name="parse-the-json-response"></a>分析 JSON 响应
 
-将以下方法添加到 **Program** 类。 这会格式化 JSON 输入，使之更加易于读取。 应用会将该字符串数据写入到控制台。 然后即可关闭类和命名空间。
+将以下方法添加到 **Program** 类。 此方法会格式化 JSON 输入，使之更加易于读取。 应用会将该字符串数据写入到控制台。 然后即可关闭类和命名空间。
 
 ```csharp
         // Formats the given JSON string by adding line breaks and indents.
@@ -348,7 +345,7 @@ namespace DetectFace
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你创建了一个简单的 .NET 控制台应用程序，该应用程序可以将 REST 调用与 Azure 人脸 API 配合使用，以便检测图像中的人脸并返回其属性。 接下来，请浏览人脸 API 参考文档，详细了解支持的方案。
+在本快速入门中，你创建了一个简单的 .NET 控制台应用程序，该应用程序将 REST 调用与 Azure 人脸服务配合使用，以便检测图像中的人脸并返回其属性。 接下来，请浏览人脸 API 参考文档，详细了解支持的方案。
 
 > [!div class="nextstepaction"]
 > [人脸 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

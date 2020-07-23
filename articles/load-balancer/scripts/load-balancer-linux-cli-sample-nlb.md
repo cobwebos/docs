@@ -1,26 +1,22 @@
 ---
-title: CLI 示例 - 对传入 VM 的流量进行负载均衡以实现高可用性 - Azure | Microsoft Docs
+title: 到 HA 的 VM 的负载均衡流量 - Azure CLI - Azure 负载均衡器
 description: 本 Azure CLI 脚本示例演示如何对传入 VM 的流量进行负载均衡以实现高可用性
 services: load-balancer
 documentationcenter: load-balancer
-author: KumudD
-manager: jeconnoc
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: asudbring
+manager: kumudD
 ms.service: load-balancer
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
-ms.openlocfilehash: cc4af6e00660684345f21125509b471dbdf2a641
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: c0bfb5705989c99d3626d6e728b764e94f83fffe
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60507128"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74048914"
 ---
 # <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Azure CLI 脚本示例：对传入 VM 的流量进行负载均衡以实现高可用性
 
@@ -46,7 +42,7 @@ az group delete --name myResourceGroup
 
 此脚本使用以下命令创建资源组、虚拟机、可用性集、负载均衡器和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) | 创建 Azure 虚拟网络和子网。 |

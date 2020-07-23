@@ -1,27 +1,26 @@
 ---
-title: 使用 SSL 终端创建应用程序网关 - Azure PowerShell
-description: 了解如何使用 Azure PowerShell 创建应用程序网关并为 SSL 终端添加证书。
+title: 使用 PowerShell 实现 TLS 终止
+titleSuffix: Azure Application Gateway
+description: 了解如何使用 Azure PowerShell 创建应用程序网关并为 TLS 终端添加证书。
 services: application-gateway
 author: vhorne
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 7/13/2018
+ms.topic: how-to
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a5f9797572e0f78ce8cc83c5c1a1aadd46a234a1
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
-ms.translationtype: HT
+ms.openlocfilehash: af1ba6bdf8edc3ce8653c9ecf196a599fb984ae4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198364"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84805933"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-azure-powershell"></a>通过 Azure PowerShell 使用 SSL 终端创建应用程序网关
+# <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>通过 Azure PowerShell 使用 TLS 终端创建应用程序网关
 
-可通过 Azure PowerShell 使用 [SSL 终端](ssl-overview.md)的证书创建使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)作为后端服务器的[应用程序网关](overview.md)。 在此示例中，规模集包含两个添加到应用程序网关的默认后端池的虚拟机实例。 
+可通过 Azure PowerShell 使用 [TLS/SSL 终端](ssl-overview.md)的证书创建使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)作为后端服务器的[应用程序网关](overview.md)。 在此示例中，规模集包含两个添加到应用程序网关的默认后端池的虚拟机实例。 
 
-本教程介绍如何执行下列操作：
+在本文中，学习如何：
 
 > [!div class="checklist"]
 > * 创建自签名证书
@@ -33,11 +32,11 @@ ms.locfileid: "65198364"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 来创建与 Azure 的连接。
+本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 
-为供生产使用，应导入由受信任的提供程序签名的有效证书。 对于本教程，请使用 [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) 创建自签名证书。 可以结合返回的指纹使用 [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate)，从证书导出 pfx 文件。
+为供生产使用，应导入由受信任的提供程序签名的有效证书。 对于本文，请使用 [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) 创建自签名证书。 可以结合返回的指纹使用 [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate)，从证书导出 pfx 文件。
 
 ```powershell
 New-SelfSignedCertificate `
@@ -76,7 +75,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>创建网络资源
 
-使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 配置名为 *myBackendSubnet* 和 *myAGSubnet* 的子网。 使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 和子网配置创建名为 *myVNet* 的虚拟网络。 最后使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 创建名为 myAGPublicIPAddress 的公共 IP 地址。 这些资源用于提供与应用程序网关及其关联资源的网络连接。
+使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 配置名为 *myBackendSubnet* 和 *myAGSubnet* 的子网。 使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 和子网配置创建名为 *myVNet* 的虚拟网络。 最后使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。 这些资源用于提供与应用程序网关及其关联资源的网络连接。
 
 ```powershell
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -98,14 +97,15 @@ $pip = New-AzPublicIpAddress `
   -ResourceGroupName myResourceGroupAG `
   -Location eastus `
   -Name myAGPublicIPAddress `
-  -AllocationMethod Dynamic
+  -AllocationMethod Static `
+  -Sku Standard
 ```
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>创建 IP 配置和前端端口
 
-使用 [New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration) 将前面创建的 myAGSubnet 关联到应用程序网关。 使用 [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig) 将 *myAGPublicIPAddress* 分配给应用程序网关。
+使用 [New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration) 将前面创建的 *myAGSubnet* 关联到应用程序网关。 使用 [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig) 将 *myAGPublicIPAddress* 分配给应用程序网关。
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `
@@ -183,8 +183,8 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
-  -Name Standard_Medium `
-  -Tier Standard `
+  -Name Standard_v2 `
+  -Tier Standard_v2 `
   -Capacity 2
 
 $appgw = New-AzApplicationGateway `
@@ -285,7 +285,7 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![安全警告](./media/tutorial-ssl-powershell/application-gateway-secure.png)
 
-若要接受有关使用自签名证书的安全警告，请依次选择“详细信息”和“继续转到网页”。 随即显示受保护的 IIS 网站，如下例所示：
+若要接受有关使用自签名证书的安全警告，请依次选择“详细信息”和“继续转到网页”。   随即显示受保护的 IIS 网站，如下例所示：
 
 ![在应用程序网关中测试基 URL](./media/tutorial-ssl-powershell/application-gateway-iistest.png)
 
@@ -299,13 +299,4 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
-
-> [!div class="checklist"]
-> * 创建自签名证书
-> * 设置网络
-> * 使用证书创建应用程序网关
-> * 使用默认后端池创建虚拟机规模集
-
-> [!div class="nextstepaction"]
-> [创建托管多个网站的应用程序网关](./tutorial-multiple-sites-powershell.md)
+[创建托管多个网站的应用程序网关](./tutorial-multiple-sites-powershell.md)

@@ -1,27 +1,23 @@
 ---
-title: 了解 Azure AD 应用程序许可体验 | Microsoft Docs
+title: Azure AD 应用同意体验
+titleSuffix: Microsoft identity platform
 description: 详细了解 Azure AD 许可体验，以便了解如何在 Azure AD 上管理和开发应用程序时使用它
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d71bfd5e560bb1509337ac371fbe101b4c6d63b5
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
-ms.translationtype: MT
+ms.openlocfilehash: e96442be50a075ebf2cd81bf1b6fb0f58f883bad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540645"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80885576"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>了解 Azure AD 应用程序许可体验
 
@@ -31,7 +27,7 @@ ms.locfileid: "65540645"
 
 许可是指用户授权应用程序代表他们访问受保护资源的过程。 可以要求管理员或用户同意访问其组织/个人数据。
 
-授予许可的实际用户体验将根据在用户租户上设置的策略、用户的授权范围（或角色）以及客户端应用程序请求的[权限](https://docs.microsoft.com/azure/active-directory/develop/active-directory-permissions)类型而有所不同。 这意味着应用程序开发人员和租户管理员可以对许可体验进行一些控制。 管理员可以在租户或应用上灵活地设置和禁用策略，以控制其租户中的许可体验。 应用程序开发人员可以指示正在请求的权限类型以及是否希望引导用户完成用户许可流或管理员许可流。
+授予许可的实际用户体验将根据在用户租户上设置的策略、用户的授权范围（或角色）以及客户端应用程序请求的[权限](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent)类型而有所不同。 这意味着应用程序开发人员和租户管理员可以对许可体验进行一些控制。 管理员可以在租户或应用上灵活地设置和禁用策略，以控制其租户中的许可体验。 应用程序开发人员可以指示正在请求的权限类型以及是否希望引导用户完成用户许可流或管理员许可流。
 
 - **用户许可流**是指应用程序开发人员将用户定向到授权终结点，意图仅记录当前用户的许可。
 - **管理员许可流**是指应用程序开发人员将用户定向到管理员许可终结点，意图记录整个租户的许可。 若要确保管理员许可流正常工作，应用程序开发人员必须列出应用程序清单中 `RequiredResourceAccess` 属性中的所有权限。 有关详细信息，请参阅[应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)。
@@ -46,7 +42,7 @@ ms.locfileid: "65540645"
 
 | # | 组件 | 目的 |
 | ----- | ----- | ----- |
-| 第 | 用户标识符 | 此标识符表示客户端应用程序正在请求代表其访问受保护资源的用户。 |
+| 1 | 用户标识符 | 此标识符表示客户端应用程序正在请求代表其访问受保护资源的用户。 |
 | 2 | 标题 | 标题根据用户是完成用户许可流还是管理员许可流而变化。 在用户许可流中，标题将为“请求的权限”，而在管理员许可流中，标题还有额外的一行“为组织接受”。 |
 | 3 | 应用徽标 | 此图像应帮助用户直观地了解此应用是否是他们打算访问的应用。 此图像由应用程序开发人员提供，并且未验证此图像的所有权。 |
 | 4 | 应用程序名称 | 此值应告知用户哪个应用程序正在请求访问其数据。 请注意，此名称由开发人员提供，并且未验证此应用名称的所有权。 |
@@ -86,4 +82,4 @@ ms.locfileid: "65540645"
 ## <a name="next-steps"></a>后续步骤
 - 获取有关 [Azure AD 同意框架如何实现同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)的分步概述。
 - 有关详细信息，请参阅[多租户应用程序如何使用同意框架](active-directory-devhowto-multi-tenant-overview.md)实现“用户”和“管理员”同意（支持更多高级多层应用程序模式）。
-- 了解[如何配置应用程序的发行者域](howto-configure-publisher-domain.md)。
+- 了解[如何配置应用的发布者域](howto-configure-publisher-domain.md)。

@@ -1,20 +1,19 @@
 ---
 title: 使用 Python 针对 Azure 文件进行开发 | Microsoft Docs
 description: 了解如何开发使用 Azure 文件存储文件数据的 Python 应用程序和服务。
-services: storage
 author: roygara
 ms.service: storage
-ms.devlang: python
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/14/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ecb3ef82196c3b6febd44850b47f467ba37facc2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: tracking-python
+ms.openlocfilehash: c612ddc324144a818dd738b440660d473ec3a1bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701606"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509636"
 ---
 # <a name="develop-for-azure-files-with-python"></a>使用 Python 针对 Azure 文件进行开发
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -49,7 +48,7 @@ pip install azure-storage-file
 有关备用安装方法，请访问 [Github 上用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python/)。
 
 ## <a name="view-the-sample-application"></a>查看示例应用程序
-若要查看和运行示例应用程序，该应用程序演示如何将 Python 与 Azure 文件存储配合使用，请参阅 [Azure Storage:Getting Started with Azure Files in Python](https://github.com/Azure-Samples/storage-file-python-getting-started)（Azure 存储：开始在 Python 中使用 Azure 文件存储）。 
+若要查看和运行示例应用程序，了解如何将 Python 与 Azure 文件存储配合使用，请参阅 [Azure Storage:Getting Started with Azure Files in Python](https://github.com/Azure-Samples/storage-file-python-getting-started)（Azure 存储：开始在 Python 中使用 Azure 文件存储）。 
 
 若要运行示例应用程序，请确保已安装 `azure-storage-file` 和 `azure-storage-common` 软件包。
 
@@ -75,7 +74,7 @@ file_service.create_share('myshare')
 ```
 
 ## <a name="create-a-directory"></a>创建目录
-也可以将文件置于子目录中，不必将其全部置于根目录中，以便对存储进行有效的组织。 使用 Azure 文件可以创建帐户允许的任意数目的目录。 以下代码会在根目录下创建名为 **sampledir** 的子目录。
+也可将文件置于子目录中，而不是将其全部置于根目录中，以便对存储进行有效的组织。 使用 Azure 文件可以创建帐户允许的任意数目的目录。 以下代码在根目录下创建名为 **sampledir** 的子目录。
 
 ```python
 file_service.create_directory('myshare', 'sampledir')
@@ -91,11 +90,11 @@ for file_or_dir in generator:
 ```
 
 ## <a name="upload-a-file"></a>上传文件 
-Azure 文件共享至少包含文件可以驻留的根目录。 在本部分，学习如何将文件从本地存储上传到共享所在的根目录。
+Azure 文件共享至少包含文件可以驻留的根目录。 本部分会介绍如何将文件从本地存储上传到共享所在的根目录。
 
-若要创建文件并上传数据，请使用 `create_file_from_path`、`create_file_from_stream`、`create_file_from_bytes` 或 `create_file_from_text` 方法。 这些方法属于高级方法，用于在数据大小超过 64 MB 时执行必要的分块。
+若要创建文件并上传数据，请使用 `create_file_from_path`、`create_file_from_stream`、`create_file_from_bytes` 或 `create_file_from_text` 方法。 这些方法属于高级方法，在数据大小超过 64 MB 时执行必要的分块。
 
-`create_file_from_path` 从指定位置上传文件内容，`create_file_from_stream` 从已经打开的文件/流上传内容。 `create_file_from_bytes` 上传字节数组，`create_file_from_text` 使用指定的编码（默认为 UTF-8）上传指定的文本值。
+`create_file_from_path` 从指定路径上传文件内容，`create_file_from_stream` 从已经打开的文件/流上传内容。 `create_file_from_bytes` 上传字节数组，`create_file_from_text` 使用指定的编码（默认为 UTF-8）上传指定的文本值。
 
 下面的示例将 **sunset.png** 文件的内容上传到 **myfile** 文件中。
 
@@ -103,14 +102,14 @@ Azure 文件共享至少包含文件可以驻留的根目录。 在本部分，�
 from azure.storage.file import ContentSettings
 file_service.create_file_from_path(
     'myshare',
-    None, # We want to create this blob in the root directory, so we specify None for the directory_name
+    None,  # We want to create this blob in the root directory, so we specify None for the directory_name
     'myfile',
     'sunset.png',
     content_settings=ContentSettings(content_type='image/png'))
 ```
 
 ## <a name="download-a-file"></a>下载文件
-若要从文件中下载数据，请使用 `get_file_to_path`、`get_file_to_stream`、`get_file_to_bytes` 或 `get_file_to_text`。 这些方法属于高级方法，用于在数据大小超过 64 MB 时执行必要的分块。
+若要从文件中下载数据，请使用 `get_file_to_path`、`get_file_to_stream`、`get_file_to_bytes` 或 `get_file_to_text`。 这些方法属于高级方法，在数据大小超过 64 MB 时执行必要的分块。
 
 以下示例演示如何使用 `get_file_to_path` 下载 **myfile** 文件的内容，并将其存储到 **out-sunset.png** 文件。
 
@@ -151,7 +150,8 @@ shares = list(file_service.list_shares(include_snapshots=True))
 可以浏览每个共享快照的内容来检索相应时间点的文件和目录。
 
 ```python
-directories_and_files = list(file_service.list_directories_and_files(share_name, snapshot=snapshot_id))
+directories_and_files = list(
+    file_service.list_directories_and_files(share_name, snapshot=snapshot_id))
 ```
 
 ## <a name="get-file-from-share-snapshot"></a>从共享快照获取文件
@@ -159,7 +159,8 @@ directories_and_files = list(file_service.list_directories_and_files(share_name,
 
 ```python
 with open(FILE_PATH, 'wb') as stream:
-    file = file_service.get_file_to_stream(share_name, directory_name, file_name, stream, snapshot=snapshot_id)
+    file = file_service.get_file_to_stream(
+        share_name, directory_name, file_name, stream, snapshot=snapshot_id)
 ```
 
 ## <a name="delete-a-single-share-snapshot"></a>删除单个共享快照  
@@ -180,5 +181,5 @@ file_service.delete_share(share_name, delete_snapshots=DeleteSnapshot.Include)
 了解如何使用 Python 操作 Azure 文件后，请单击以下链接了解更多信息。
 
 * [Python 开发人员中心](https://azure.microsoft.com/develop/python/)
-* [Azure 存储空间服务 REST API](https://msdn.microsoft.com/library/azure/dd179355)
+* [Azure 存储服务 REST API](https://msdn.microsoft.com/library/azure/dd179355)
 * [Microsoft Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python)

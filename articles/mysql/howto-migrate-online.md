@@ -1,17 +1,17 @@
 ---
-title: 在最短的停机时间内迁移到 Azure Database for MySQL
+title: 停机时间最短的迁移-Azure Database for MySQL
 description: 本文介绍如何使用 Azure 数据库迁移服务执行 MySQL 数据库到 Azure Database for MySQL 的最短停机时间迁移。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 12/07/2018
-ms.openlocfilehash: 49e2662f215d845d416e46246b03e4408fae118b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.topic: how-to
+ms.date: 3/18/2020
+ms.openlocfilehash: 587e50393102d1d7791f5ddac904d525f1af36a3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "61424151"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118250"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>在最短的停机时间内迁移到 Azure Database for MySQL
 可以使用为 [Azure 数据库迁移服务](https://aka.ms/get-dms) (DMS) 新引入的**连续同步功能**以最短停机时间执行 MySQL 到 Azure Database for MySQL 的迁移。 此功能可限制应用程序引起的停机时间量。

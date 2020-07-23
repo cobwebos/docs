@@ -5,11 +5,11 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 01279ea83b9f2c2c02629949abeec0afc3110678
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146406"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "67173055"
 ---
 > [!div class="op_single_selector"]
 > * [.NET](../articles/iot-hub/iot-hub-csharp-csharp-file-upload.md)

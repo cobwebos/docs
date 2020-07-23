@@ -1,29 +1,121 @@
 ---
-title: SAP 工作负荷的 IBM Db2 Azure 虚拟机 DBMS 部署 |Microsoft Docs
+title: 适用于 SAP 工作负载的 IBM DB2 Azure 虚拟机 DBMS 部署 | Microsoft Docs
 description: 适用于 SAP 工作负荷的 IBM Db2 Azure 虚拟机 DBMS 部署
 services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: ''
 author: msjuergent
 manager: patfilot
-editor: ''
 tags: azure-resource-manager
-keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7d1de50e6b1b673a2613a893c19633bbd4bd43fd
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 110e8d3be88fb2e1bd958f40d5defa23f8c679f3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409269"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525392"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 IBM Db2 Azure 虚拟机 DBMS 部署
+
+使用 Microsoft Azure，可以将运行于 IBM DB2 for Linux、UNIX 和 Windows (LUW) 的现有 SAP 应用程序迁移到 Azure 虚拟机。 借助 IBM DB2 for LUW 上的 SAP，管理员和开发人员仍然可以使用在本地可用的相同开发和管理工具。
+有关在 IBM DB2 for LUW 上运行 SAP Business Suite 的常规信息，请参阅 SAP 社区网络 (SCN)，网址为 <https://www.sap.com/community/topic/db2-for-linux-unix-and-windows.html>。
+
+有关 Azure 中 DB2 for LUW 上的 SAP 的其他信息和更新，请参阅 SAP 说明 [2233094]。 
+
+已发布有关 Azure 上 SAP 工作负荷的各种文章。  建议从 [Azure 上的 SAP 工作负荷 - 入门](./get-started.md)开始，然后选择感兴趣的领域
+
+以下 SAP 说明与 Azure 上的 SAP 有关，涉及本文档中介绍的领域：
+
+| 说明文档编号 | 标题 |
+| --- | --- |
+| [1928533] |Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型 |
+| [2015553] |Microsoft Azure 上的 SAP：支持先决条件 |
+| [1999351] |适用于 SAP 的增强型 Azure 监视故障排除 |
+| [2178632] |Microsoft Azure 上的 SAP 关键监视度量值 |
+| [1409604] |Windows 上的虚拟化：增强型监视 |
+| [2191498] |Azure 的 Linux 上的 SAP：增强型监视 |
+| [2233094] |DB6：Azure 上使用 IBM DB2 for Linux、UNIX 和 Windows 的 SAP 应用程序 - 附加信息 |
+| [2243692] |Microsoft Azure (IaaS) VM 上的 Linux：SAP 许可证问题 |
+| [1984787] |SUSE LINUX Enterprise Server 12：安装说明 |
+| [2002167] |Red Hat Enterprise Linux 7.x：安装和升级 |
+| [1597355] |适用于 Linux 的交换空间建议 |
+
+在阅读本文档之前，应已经阅读了[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)文档以及 [Azure 文档上的 SAP 工作负荷](./get-started.md)中的其他指南。 
+
+
+## <a name="ibm-db2-for-linux-unix-and-windows-version-support"></a>IBM DB2 for Linux、UNIX 和 Windows 版本支持
+自 DB2 版本 10.5 起，支持 Microsoft Azure 虚拟机服务中 IBM DB2 for LUW 上的 SAP。
+
+有关支持的 SAP 产品和 Azure VM 类型的信息，请参阅 SAP 说明 [1928533]。
+
+## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>在 Azure VM 中安装 SAP 的 IBM DB2 for Linux、UNIX 和 Windows 配置准则
+### <a name="storage-configuration"></a>存储配置
+所有数据库文件都必须存储在基于直接附加磁盘的 NTFS 文件系统上。 这些磁盘装载到 Azure VM，基于 Azure 页 BLOB 存储 (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) 或托管磁盘 (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>)。 任何类型的网络驱动器或远程共享（例如以下 Azure 文件服务）都**不**支持数据库文件： 
+
+* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
+* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
+
+使用基于 Azure 页 BLOB 存储或托管磁盘的磁盘时，[适用于 SAP 工作负载的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中的表述也适用于利用 DB2 DBMS 进行的部署。
+
+如先前在文档通用部分中所述，Azure 磁盘的 IOPS 吞吐量存在配额。 确切的配额因所用 VM 类型而异。 可以在[此处 (Linux)][virtual-machines-sizes-linux] 和[此处 (Windows)][virtual-machines-sizes-windows] 找到 VM 类型及其配额的列表。
+
+只要每个磁盘当前的 IOPS 配额够用，就可以将所有数据库文件存储在装载的单个磁盘上。 但应该始终在不同的磁盘/VHD 上分隔数据文件和事务日志文件。
+
+有关性能注意事项，另请参阅 SAP 安装指南中的“数据库目录的数据安全和性能注意事项”一章。
+
+或者如[适用于 SAP 工作负载的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中所述，使用 Windows 存储池（仅适用于 Windows Server 2012 及更高版本），在多个磁盘上创建一个大型逻辑设备。
+
+<!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
+
+如果磁盘包含 sapdata 和 saptmp 目录的 DB2 存储路径，则必须将物理磁盘扇区的大小指定为 512 KB。 使用 Windows 存储池时，必须通过命令行界面使用参数 `-LogicalSectorSizeDefault`，以手动方式创建存储池。 有关详细信息，请参阅 <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>。
+
+对于 Azure M 系列 VM，使用 Azure 写入加速器时，与 Azure 高级存储性能相比，可通过多种因素减少写入事务日志的延迟。 因此，应该为形成 DB2 事务日志卷的 VHD 部署 Azure 写入加速器。 有关详细信息，请阅读文档[写入加速器](../../windows/how-to-enable-write-accelerator.md)。
+
+### <a name="backuprestore"></a>备份/还原
+支持通过 IBM DB2 for LUW 提供备份/还原功能，其方式与在标准 Windows Server 操作系统和 Hyper-V 上一样。
+
+必须确保制定了有效的数据库备份策略。 
+
+与裸机部署一样，备份/还原的性能取决于可以并行读取的卷数目，以及这些卷可能的吞吐量。 此外，备份压缩所使用的 CPU 使用率可能会在最多只有八个 CPU 线程的 VM 上扮演重要角色。 因此，可以假设：
+
+* 存储数据库设备所用的磁盘数目越少，读取的总体吞吐量就越小
+* VM 中的 CPU 线程数目越少，备份压缩的影响就越大
+* 要写入备份的目标（带区目录、磁盘）越少，吞吐量就越低
+
+要增加要写入的目标数目，可以使用/结合使用以下两个选项，具体视需求而定：
+
+* 基于多个磁盘对备份目标卷划分带区，以改善该带区卷上的 IOPS 吞吐量
+* 使用多个目标目录来写入备份
+
+>[!NOTE]
+>Windows 上的 DB2 不支持 Windows VSS 技术。 因此，Azure 备份服务的应用程序一致 VM 备份不适用于 DB2 DBMS 所部署到的 VM。
+
+### <a name="high-availability-and-disaster-recovery"></a>高可用性和灾难恢复
+不支持 Microsoft 群集服务器 (MSCS)。
+
+支持 DB2 高可用性灾难恢复 (HADR)。 如果 HA 配置的虚拟机具有有效的名称解析，Azure 中的设置将与任何本地设置无任何差别。 建议不要完全依赖于 IP 解析。
+
+请勿将异地复制用于存储数据库磁盘的存储帐户。 有关详细信息，请参阅[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)文档。 
+
+### <a name="accelerated-networking"></a>加速网络
+对于 Window 上的 DB2 部署，强烈建议使用加速网络的 Azure 功能，如 [Azure 加速网络](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)所述。 也可考虑[适用于 SAP 工作负载的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中的建议。 
+
+
+### <a name="specifics-for-linux-deployments"></a>Linux 部署的详细信息
+只要每个磁盘当前的 IOPS 配额够用，就可以将所有数据库文件存储在单个磁盘上。 但应该始终在不同的磁盘/VHD 上分隔数据文件和事务日志文件。
+
+或者如果单个 Azure VHD 的 IOPS 或 I/O 吞吐量不足，可使用 LVM（逻辑卷管理器）或 MDADM（如[适用于 SAP 工作负载的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中所述），在多个磁盘上创建一个大型逻辑设备。
+如果磁盘包含 sapdata 和 saptmp 目录的 DB2 存储路径，则必须将物理磁盘扇区的大小指定为 512 KB。
+
+<!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
+
+
+### <a name="other"></a>其他
+如[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)所述，Azure 可用性集或 SAP 监视等所有其他常规领域也适用于使用 IBM Database 进行的 VM 部署。
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
@@ -78,8 +170,8 @@ ms.locfileid: "65409269"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide.md 
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 
@@ -237,7 +329,7 @@ ms.locfileid: "65409269"
 
 [powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -251,7 +343,7 @@ ms.locfileid: "65409269"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -283,9 +375,9 @@ ms.locfileid: "65409269"
 [virtual-machines-sizes-windows]:../../windows/sizes.md
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[virtual-machines-sql-server-infrastructure-services]:./../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
+[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+[virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+[virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/resources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
@@ -307,101 +399,3 @@ ms.locfileid: "65409269"
 [vpn-gateway-vpn-faq]:../../../vpn-gateway/vpn-gateway-vpn-faq.md
 [xplat-cli]:../../../cli-install-nodejs.md
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
-
-
-
-借助 Microsoft Azure，你可以迁移现有 SAP 应用程序运行于 IBM Db2 for Linux、 UNIX 和 Windows (LUW) 到 Azure 虚拟机。 借助 IBM Db2 for LUW 上的 SAP，管理员和开发人员可以仍使用的相同开发和管理工具，可在本地。
-LUW 可查找在 SAP 社区网络 (SCN) 在 IBM Db2 上运行 SAP Business Suite 的常规信息<https://www.sap.com/community/topic/db2-for-linux-unix-and-windows.html>。
-
-有关详细信息和有关 Db2 for LUW 上 Azure 上的 SAP 的更新，请参阅 SAP 说明[2233094]。 
-
-已发布有关 Azure 上 SAP 工作负荷的各种文章。  建议从 [Azure 上的 SAP 工作负荷 - 入门](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)开始，然后选择感兴趣的领域
-
-以下 SAP 说明与 Azure 上的 SAP 有关，涉及本文档中介绍的领域：
-
-| 说明文档编号 | 标题 |
-| --- | --- |
-| [1928533] |Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型 |
-| [2015553] |Microsoft Azure 上的 SAP：支持先决条件 |
-| [1999351] |适用于 SAP 的增强型 Azure 监视故障排除 |
-| [2178632] |Microsoft Azure 上的 SAP 关键监视度量值 |
-| [1409604] |Windows 上的虚拟化：增强型监视 |
-| [2191498] |Azure 的 Linux 上的 SAP：增强型监视 |
-| [2233094] |DB6：Azure 上使用 IBM DB2 for Linux、UNIX 和 Windows 的 SAP 应用程序 - 附加信息 |
-| [2243692] |Microsoft Azure (IaaS) VM 上的 Linux：SAP 许可证问题 |
-| [1984787] |SUSE LINUX Enterprise Server 12：安装说明 |
-| [2002167] |Red Hat Enterprise Linux 7.x：安装和升级 |
-| [1597355] |适用于 Linux 的交换空间建议 |
-
-在阅读本文档之前，应已经阅读了[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)文档以及 [Azure 文档上的 SAP 工作负荷](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)中的其他指南。 
-
-
-## <a name="ibm-db2-for-linux-unix-and-windows-version-support"></a>IBM Db2 for Linux、 UNIX 和 Windows 版本支持
-自 Db2 版本 10.5 起，支持 IBM Db2 for LUW 上 Microsoft Azure 虚拟机服务上的 SAP。
-
-有关支持的 SAP 产品和 Azure VM 类型的信息，请参阅 SAP 说明 [1928533]。
-
-## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>IBM Db2 for Linux、 UNIX 和 Windows Azure Vm 中安装 SAP 配置准则
-### <a name="storage-configuration"></a>存储配置
-所有数据库文件都必须存储在基于直接附加磁盘的 NTFS 文件系统上。 这些磁盘装载到 Azure VM，基于 Azure 页 BLOB 存储 (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) 或托管磁盘 (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>)。 任何类型的网络驱动器或远程共享（例如以下 Azure 文件服务）都**不**支持数据库文件： 
-
-* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
-* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
-
-使用基于 Azure 页 BLOB 存储或托管磁盘的磁盘，这些语句中所做[SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)适用于 Db2 DBMS 也利用部署。
-
-如先前在文档通用部分中所述，Azure 磁盘的 IOPS 吞吐量存在配额。 确切的配额因所用 VM 类型而异。 可以在[此处 (Linux)][virtual-machines-sizes-linux] 和[此处 (Windows)][virtual-machines-sizes-windows] 找到 VM 类型及其配额的列表。
-
-只要每个磁盘当前的 IOPS 配额够用，就可以将所有数据库文件存储在装载的单个磁盘上。 但应该始终在不同的磁盘/VHD 上分隔数据文件和事务日志文件。
-
-有关性能注意事项，另请参阅 SAP 安装指南中的“数据库目录的数据安全和性能注意事项”一章。
-
-或者如[适用于 SAP 工作负载的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中所述，使用 Windows 存储池（仅适用于 Windows Server 2012 及更高版本），在多个磁盘上创建一个大型逻辑设备。
-
-<!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
-
-如果磁盘包含 sapdata 和 saptmp 目录的 Db2 存储路径，必须指定的物理磁盘扇区大小为 512 KB。 使用 Windows 存储池时，必须通过命令行界面使用参数 `-LogicalSectorSizeDefault`，以手动方式创建存储池。 有关详细信息，请参阅 <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool> 。
-
-对于 Azure M 系列 VM，使用 Azure 写入加速器时，与 Azure 高级存储性能相比，可通过多种因素减少写入事务日志的延迟。 因此，您应该对窗体为 Db2 事务日志卷的 vhd 部署 Azure 写入加速器。 有关详细信息，请阅读文档[写入加速器](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)。
-
-### <a name="backuprestore"></a>备份/还原
-IBM db2 for luw 提供备份/还原功能是相同的方式与标准 Windows Server 操作系统和 HYPER-V 上支持。
-
-必须确保制定了有效的数据库备份策略。 
-
-与裸机部署一样，备份/还原的性能取决于可以并行读取的卷数目，以及这些卷可能的吞吐量。 此外，备份压缩所使用的 CPU 使用率可能会在最多只有八个 CPU 线程的 VM 上扮演重要角色。 因此，可以假设：
-
-* 存储数据库设备所用的磁盘数目越少，读取的总体吞吐量就越小
-* VM 中的 CPU 线程数目越少，备份压缩的影响就越大
-* 要写入备份的目标（带区目录、磁盘）越少，吞吐量就越低
-
-要增加要写入的目标数目，可以使用/结合使用以下两个选项，具体视需求而定：
-
-* 基于多个磁盘对备份目标卷划分带区，以改善该带区卷上的 IOPS 吞吐量
-* 使用多个目标目录来写入备份
-
->[!NOTE]
->Windows 上的 Db2 不支持 Windows VSS 技术。 因此，Azure 备份服务的应用程序一致性 VM 备份不能用于 Db2 DBMS 部署中的 Vm。
-
-### <a name="high-availability-and-disaster-recovery"></a>高可用性和灾难恢复
-不支持 Microsoft 群集服务器 (MSCS)。
-
-支持 Db2 高可用性灾难恢复 (HADR)。 如果 HA 配置的虚拟机具有有效的名称解析，Azure 中的设置将与任何本地设置无任何差别。 建议不要完全依赖于 IP 解析。
-
-请勿将异地复制用于存储数据库磁盘的存储帐户。 有关详细信息，请参阅[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)文档。 
-
-### <a name="accelerated-networking"></a>加速网络
-对于在 Windows 上的 Db2 部署，强烈建议使用加速网络的 Azure 功能，如文档中所述[Azure 加速网络](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)。 也可考虑[适用于 SAP 工作负载的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中的建议。 
-
-
-### <a name="specifics-for-linux-deployments"></a>Linux 部署的详细信息
-只要每个磁盘当前的 IOPS 配额够用，就可以将所有数据库文件存储在单个磁盘上。 但应该始终在不同的磁盘/VHD 上分隔数据文件和事务日志文件。
-
-或者如果单个 Azure VHD 的 IOPS 或 I/O 吞吐量不足，可使用 LVM（逻辑卷管理器）或 MDADM（如[适用于 SAP 工作负载的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中所述），在多个磁盘上创建一个大型逻辑设备。
-如果磁盘包含 sapdata 和 saptmp 目录的 Db2 存储路径，必须指定的物理磁盘扇区大小为 512 KB。
-
-<!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
-
-
-### <a name="other"></a>其他
-如[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)所述，Azure 可用性集或 SAP 监视等所有其他常规领域也适用于使用 IBM Database 进行的 VM 部署。

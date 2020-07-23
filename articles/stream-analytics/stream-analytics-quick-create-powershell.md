@@ -1,19 +1,18 @@
 ---
-title: 使用 Azure PowerShell 创建流分析作业
+title: 快速入门 - 使用 Azure PowerShell 创建流分析作业
 description: 本快速入门演示如何使用 Azure PowerShell 模块来部署并运行 Azure 流分析作业。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: f46f437ffd79ae9d0457606a72719ef13314aa1c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a12f74e1b96cd305ec7b7a89f8ad77725122ac75
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66117001"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724575"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建流分析作业
 
@@ -29,7 +28,7 @@ Azure PowerShell 模块用于通过 PowerShell cmdlet 或脚本创建和管理 A
 
 * 本快速入门需要 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可找到在本地计算机上安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
 
-* 某些 IoT 中心操作不受 Azure PowerShell 的支持，必须使用 Azure CLI 2.0.24 或更高版本以及 Azure CLI 的 IoT 扩展来完成。 [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，并使用 `az extension add --name azure-cli-iot-ext` 来安装 IoT 扩展。
+* 某些 IoT 中心操作不受 Azure PowerShell 支持，必须使用 Azure CLI 2.0.70 或更高版本以及 Azure CLI 的 IoT 扩展来完成。 [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，并使用 `az extension add --name azure-iot` 来安装 IoT 扩展。
 
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
@@ -97,7 +96,7 @@ New-AzResourceGroup `
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"
     ```
 
-4. 使用 [az iot hub device-identity show-connection-string](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-show-connection-string) 命令获取设备连接字符串。 复制整个连接字符串并将其保存。这样，在创建 Raspberry Pi 模拟器时，就可以使用该字符串。
+4. 使用 [az iot hub device-identity show-connection-string](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-show-connection-string) 命令获取设备连接字符串。 复制整个连接字符串并将其保存。这样，在创建 Raspberry Pi 模拟器时，就可以使用该字符串。
 
     ```azurecli
     az iot hub device-identity show-connection-string --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice" --output table
@@ -105,7 +104,7 @@ New-AzResourceGroup `
 
     **输出示例：**
 
-    ```azurecli
+    ```output
     HostName=MyASAIoTHub.azure-devices.net;DeviceId=MyASAIoTDevice;SharedAccessKey=a2mnUsg52+NIgYudxYYUNXI67r0JmNubmfVafojG8=
     ```
 
@@ -298,13 +297,14 @@ New-AzStreamAnalyticsTransformation `
   -File $jobTransformationDefinitionFile `
   -Name $jobTransformationName -Force
 ```
+
 ## <a name="run-the-iot-simulator"></a>运行 IoT 模拟器
 
 1. 打开 [Raspberry Pi Azure IoT 联机模拟器](https://azure-samples.github.io/raspberry-pi-web-simulator/)。
 
 2. 将第 15 行的占位符替换为在上一部分保存的整个 Azure IoT 中心设备连接字符串。
 
-3. 单击“运行”。 输出会显示传感器数据和发送到 IoT 中心的消息。
+3. 单击 **“运行”** 。 输出会显示传感器数据和发送到 IoT 中心的消息。
 
     ![Raspberry Pi Azure IoT 联机模拟器](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
 

@@ -1,22 +1,22 @@
 ---
 author: rothja
-ms.service: billing
+ms.service: active-directory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: a8ee7cc28985d905a0d158745145ce7ffaa5ba6e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 57c64173ee3f307feb7bd879098f41505f5c5e32
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238827"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85838847"
 ---
-| Resource | 默认限制 | 最大限制 |
+| 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
 | 每个订阅的可信 IP 地址或范围的最大数目</a> |0 |50 |
 | 记住我的设备、天数 |14 |60 |
 | 应用密码的最大数目 |0 |无限制 |
-| MFA 调用期间允许 **X** 次尝试 |第 |99 |
+| MFA 调用期间允许 **X** 次尝试 |1 |99 |
 | 双向短信超时秒数 |60 |600 |
 | 默认一次性跳过秒数 |300 |1,800 |
 | **X** 次连续 MFA 拒绝后锁定用户帐户 |未设置 |99 |

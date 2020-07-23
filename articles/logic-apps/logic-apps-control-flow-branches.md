@@ -1,20 +1,16 @@
 ---
-title: 创建或联接并行分支 - Azure 逻辑应用 | Microsoft Docs
-description: 如何创建或联接 Azure 逻辑应用中的工作流的并行分支
+title: 创建或联接工作流中操作的并行分支
+description: 了解如何在 Azure 逻辑应用中创建和合并独立工作流操作正在运行的并行分支
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 2e1c155a371fa96e4f772f632a9585948b012e54
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: f857449d4511b6ae0a5a25bf7aca9e1abc1ae7c0
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60685018"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833687"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>创建或联接 Azure 逻辑应用中的工作流的并行分支
 
@@ -23,7 +19,7 @@ ms.locfileid: "60685018"
 > [!TIP] 
 > 如果你有接收数组的触发器并且希望针对每个数组项运行工作流，则可以使用 [**SplitOn** 触发器属性](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)“分离”该数组。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。 
 
@@ -44,7 +40,7 @@ ms.locfileid: "60685018"
 
 1. 在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>的逻辑应用设计器中打开逻辑应用。
 
-1. 将指针悬停在要添加平行分支的步骤上方的箭头上。 选择出现的加号 (+)，然后选择“添加并行分支”。 
+1. 将指针悬停在要添加平行分支的步骤上方的箭头上。 选择出现的加号 (+)，然后选择“添加并行分支”  。 
 
    ![添加并行分支](media/logic-apps-control-flow-branches/add-parallel-branch.png)
 
@@ -56,7 +52,7 @@ ms.locfileid: "60685018"
 
    ![查找并选择所需的操作](media/logic-apps-control-flow-branches/added-parallel-branch.png)
 
-1. 现在，在每个并行分支中添加所需的步骤。 若要将其他操作添加到分支，请将指针移动到要添加顺序操作的操作下。 选择出现的加号 (+)，然后选择“添加操作”。
+1. 现在，在每个并行分支中添加所需的步骤。 若要将其他操作添加到分支，请将指针移动到要添加顺序操作的操作下。 选择出现的加号 (+)，然后选择“添加操作”。 
 
    ![将顺序操作添加到并行分支](media/logic-apps-control-flow-branches/add-sequential-action.png)
 
@@ -186,7 +182,7 @@ ms.locfileid: "60685018"
 
 ## <a name="get-support"></a>获取支持
 
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 * 若要提交功能和建议或者为其投票，请访问 [Azure 逻辑应用用户反馈站点](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤

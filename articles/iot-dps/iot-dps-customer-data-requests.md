@@ -1,18 +1,17 @@
 ---
-title: 客户数据请求功能
+title: Azure DPS 设备的客户数据请求功能
+description: 对于在 Azure 设备预配服务 (DPS) 中管理的个人设备，本文向管理员介绍如何导出或删除个人数据。
 author: dominicbetts
 ms.author: dobett
-manager: timlt
 ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 5dd027c886e8102e77ddefe93817daee0e1ec29b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 1dcf1b9f62f94b8f75ef2fe77f3e237a387c53eb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60626428"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73890649"
 ---
 # <a name="summary-of-customer-data-request-features"></a>客户数据请求功能摘要
 

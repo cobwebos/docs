@@ -8,12 +8,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: bb402a5a059fb6f2836bddbd951220271ca77ba3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 2e1167c92dccdfa7600a4827c0081647c190d7d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60400588"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85252128"
 ---
 # <a name="control-access-to-iot-hub"></a>控制对 IoT 中心的访问
 
@@ -57,14 +60,14 @@ ms.locfileid: "60400588"
 > [!NOTE]
 > 有关详细信息，请参阅[权限](#iot-hub-permissions)。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
 Azure IoT 中心可根据共享访问策略和标识注册表安全凭据来验证令牌，以授予对终结点的访问权限。
 
 安全凭据（例如对称密钥）永远不会通过网络发送。
 
 > [!NOTE]
-> 如同 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)中的所有提供程序一样，Azure IoT 中心资源提供程序也通过 Azure 订阅受到保护。
+> 如同 [Azure 资源管理器](../azure-resource-manager/management/overview.md)中的所有提供程序一样，Azure IoT 中心资源提供程序也通过 Azure 订阅受到保护。
 
 有关如何构造和使用安全令牌的详细信息，请参阅 [IoT 中心安全令牌](iot-hub-devguide-security.md#security-tokens)。
 
@@ -91,7 +94,7 @@ HTTPS 通过在 Authorization 请求标头中包含有效的令牌来实施身�
 
 用户名（DeviceId 区分大小写）：`iothubname.azure-devices.net/DeviceId`
 
-密码（可使用[设备资源管理器](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer)工具、CLI 扩展命令 [az iot hub generate-sas-token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token) 或[用于 Visual Studio Code 的 Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)来生成 SAS 令牌）：
+密码（可使用 CLI 扩展命令 [az iot hub generate-sas-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token) 或[用于 Visual Studio Code 的 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 来生成 SAS 令牌）：
 
 `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
@@ -134,10 +137,10 @@ IoT 中心还允许设备使用 [X.509 证书](iot-hub-devguide-security.md#supp
 
 以下是预期值：
 
-| Value | 描述 |
+| 值 | 说明 |
 | --- | --- |
 | {signature} |HMAC-SHA256 签名字符串的格式为：`{URL-encoded-resourceURI} + "\n" + expiry`。 **重要说明**：密钥是从 base64 解码得出的，用作执行 HMAC-SHA256 计算的密钥。 |
-| {resourceURI} |此令牌可以访问的终结点的 URI 前缀（根据分段）以 IoT 中心的主机名开始（无协议）。 例如 `myHub.azure-devices.net/devices/device1` |
+| {resourceURI} |此令牌可以访问的终结点的 URI 前缀（根据分段）以 IoT 中心的主机名开始（无协议）。 例如： `myHub.azure-devices.net/devices/device1` |
 | {expiry} |从纪元 1970 年 1 月 1日 00:00:00 UTC 时间至今秒数的 UTF8 字符串。 |
 | {URL-encoded-resourceURI} |小写资源 URI 的小写 URL 编码 |
 | {policyName} |此令牌所引用的共享访问策略名称。 如果此令牌引用设备注册表凭据，则空缺。 |
@@ -156,7 +159,7 @@ var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMi
     var toSign = resourceUri + '\n' + expires;
 
     // Use crypto
-    var hmac = crypto.createHmac('sha256', new Buffer(signingKey, 'base64'));
+    var hmac = crypto.createHmac('sha256', Buffer.from(signingKey, 'base64'));
     hmac.update(toSign);
     var base64UriEncoded = encodeURIComponent(hmac.digest('base64'));
 
@@ -174,14 +177,14 @@ var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMi
 from base64 import b64encode, b64decode
 from hashlib import sha256
 from time import time
-from urllib import quote_plus, urlencode
+from urllib import parse
 from hmac import HMAC
 
 def generate_sas_token(uri, key, policy_name, expiry=3600):
     ttl = time() + expiry
-    sign_key = "%s\n%d" % ((quote_plus(uri)), int(ttl))
+    sign_key = "%s\n%d" % ((parse.quote_plus(uri)), int(ttl))
     print sign_key
-    signature = b64encode(HMAC(b64decode(key), sign_key, sha256).digest())
+    signature = b64encode(HMAC(b64decode(key), sign_key.encode('utf-8'), sha256).digest())
 
     rawtoken = {
         'sr' :  uri,
@@ -192,7 +195,7 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
     if policy_name is not None:
         rawtoken['skn'] = policy_name
 
-    return 'SharedAccessSignature ' + urlencode(rawtoken)
+    return 'SharedAccessSignature ' + parse.urlencode(rawtoken)
 ```
 
 C# 中用于生成安全令牌的功能是：
@@ -227,7 +230,6 @@ public static string generateSasToken(string resourceUri, string key, string pol
 
 ```
 
-
 > [!NOTE]
 > 由于 IoT 中心计算机会验证令牌的有效期，因此生成令牌的计算机的时间偏差必须很小。
 
@@ -253,7 +255,7 @@ public static string generateSasToken(string resourceUri, string key, string pol
 
 例如，创建的用于访问所有设备功能的令牌应具有以下参数：
 
-* 资源 URI： `{IoT hub name}.azure-devices.net/devices/{device id}`，
+* 资源 URI：`{IoT hub name}.azure-devices.net/devices/{device id}`，
 * 签名密钥：`{device id}` 标识的任何对称密钥，
 * 无策略名称；
 * 任何过期时间。
@@ -272,7 +274,7 @@ var token = generateSasToken(endpoint, deviceKey, null, 60);
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> 可使用[设备资源管理器](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer)工具、CLI 扩展命令 [az iot hub generate-sas-token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token) 或[用于 Visual Studio Code 的 Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)来生成 SAS 令牌。
+> 可以使用 CLI 扩展命令 [az iot hub generate-sas-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token) 或[用于 Visual Studio Code 的 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 来生成 SAS 令牌。
 
 ### <a name="use-a-shared-access-policy"></a>使用共享访问策略
 
@@ -287,7 +289,7 @@ var token = generateSasToken(endpoint, deviceKey, null, 60);
 
 例如，使用名为 **device** 的预创建共享访问策略的令牌服务会使用以下参数创建令牌：
 
-* 资源 URI： `{IoT hub name}.azure-devices.net/devices/{device id}`，
+* 资源 URI：`{IoT hub name}.azure-devices.net/devices/{device id}`，
 * 签名密钥：`device` 策略的密钥之一，
 * 策略名称：`device`，
 * 任何过期时间。
@@ -342,7 +344,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 ## <a name="supported-x509-certificates"></a>支持的 X.509 证书
 
-可以通过将证书指纹或证书颁发机构 (CA) 上传到 Azure IoT 中心，从而借助 IoT 中心使用任何 X.509 证书对设备进行身份验证。 使用证书指纹的身份验证，仅验证提供的指纹是否与配置的指纹匹配。 使用证书颁发机构的身份验证会验证证书链。 
+可以通过将证书指纹或证书颁发机构 (CA) 上传到 Azure IoT 中心，从而借助 IoT 中心使用任何 X.509 证书对设备进行身份验证。 使用证书指纹的身份验证可验证提供的指纹是否与配置的指纹相匹配。 使用证书颁发机构的身份验证会验证证书链。 无论采用哪种方式，TLS 握手都要求设备具有有效的证书和私钥。 有关详细信息，请参阅 TLS 规范，例如：[RFC 5246 - 传输层安全性 (TLS) 协议版本 1.2](https://tools.ietf.org/html/rfc5246/)。
 
 支持的证书包括：
 
@@ -358,9 +360,9 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>为设备注册 X.509 证书
 
-[用于 C# 的 Azure IoT 服务 SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/service)（版本 1.0.8+）支持注册使用 X.509 证书进行身份验证的设备。 其他 API（例如设备的导入/导出）也支持 X.509 证书。
+[用于 C# 的 Azure IoT 服务 SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service)（版本 1.0.8+）支持注册使用 X.509 证书进行身份验证的设备。 其他 API（例如设备的导入/导出）也支持 X.509 证书。
 
-此外，还可使用 CLI 扩展命令 [az iot hub device-identity](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) 配置设备的 X.509 证书。
+此外，还可使用 CLI 扩展命令 [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) 配置设备的 X.509 证书。
 
 ### <a name="c-support"></a>C\# 支持
 
@@ -385,7 +387,7 @@ await registryManager.AddDeviceAsync(device);
 
 ### <a name="use-an-x509-certificate-during-run-time-operations"></a>在运行时操作期间使用 X.509 证书
 
-[用于 .NET 的 Azure IoT 设备 SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/device)（版本 1.0.11+）支持使用 X.509 证书。
+[用于 .NET 的 Azure IoT 设备 SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device)（版本 1.0.11+）支持使用 X.509 证书。
 
 ### <a name="c-support"></a>C\# 支持
 
@@ -456,6 +458,8 @@ IoT 中心开发人员指南中的其他参考主题包括：
 * [IoT 中心查询语言](iot-hub-devguide-query-language.md)介绍了可用来从 IoT 中心检索设备孪生和作业相关信息的查询语言。
 
 * [IoT 中心 MQTT 支持](iot-hub-mqtt-support.md)提供了有关 IoT 中心对 MQTT 协议的支持的详细信息。
+
+* [RFC 5246 - 传输层安全性 (TLS) 协议版本 1.2](https://tools.ietf.org/html/rfc5246/) 提供了有关 TLS 身份验证的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

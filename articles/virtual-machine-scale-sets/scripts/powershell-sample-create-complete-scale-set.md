@@ -1,27 +1,20 @@
 ---
-title: Azure PowerShell 示例 - 创建完整的虚拟机规模集 | Microsoft Docs
-description: Azure PowerShell 示例
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.devlang: na
+title: Azure PowerShell 示例 - 创建完整的虚拟机规模集
+description: 此脚本创建一个运行 Windows Server 2016 的虚拟机规模集，其中配置并创建了各个资源。
+author: mimckitt
+ms.author: mimckitt
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: virtual-machine-scale-sets
+ms.subservice: powershell
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: ebbc47739b2be72d0dd98c0659bfcaba512e79e9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: df2c1b10f0d63e3cafbd6f20805a296710219461
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448906"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699549"
 ---
 # <a name="create-a-complete-virtual-machine-scale-set-with-powershell"></a>使用 PowerShell 创建完整的虚拟机规模集
 
@@ -30,7 +23,7 @@ ms.locfileid: "57448906"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -46,7 +39,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 ## <a name="script-explanation"></a>脚本说明
 此脚本使用以下命令创建部署。 表中的每一项均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | 创建子网配置。 在虚拟网络创建过程中将使用此配置。 |
@@ -69,5 +62,3 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
-
-可以在 [Azure 虚拟机规模集文档](../powershell-samples.md)中找到其他虚拟机规模集 PowerShell 脚本示例。

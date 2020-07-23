@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 3934dbb01c3b9f3219c5e649d97371850b8daadc
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 85fa79cdfc7036be5b0ab20e49986a1d075152c5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230621"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254650"
 ---
 # <a name="about-api-management"></a>关于 API 管理
 
@@ -61,7 +60,7 @@ API 管理有助于组织将 API 发布给外部、合作伙伴和内部开发�
   * 创建帐户并可以订阅以获取 API 密钥。
   * 访问他们自己的使用情况分析。
 
-有关详细信息，请参阅[基于云的 API 管理：利用 API 的强大功能](https://j.mp/ms-apim-whitepaper) PDF 白皮书。 由 CITO Research 编撰的有关 API 管理的简介白皮书包括︰ 
+有关详细信息，请参阅 PDF 版的 [基于云的 API 管理：利用 API 的强大功能](https://j.mp/ms-apim-whitepaper) 白皮书。 由 CITO Research 编撰的有关 API 管理的简介白皮书包括︰ 
  
  * 常见 API 需求和挑战
  * 分离 API 和呈现外观
@@ -72,17 +71,17 @@ API 管理有助于组织将 API 发布给外部、合作伙伴和内部开发�
  * 云解决方案与本地解决方案使用对比
  * Azure API 管理
  
-## <a name="apis"> </a>API 和操作
+## <a name="apis-and-operations"></a><a name="apis"> </a>API 和操作
 API 是 API 管理服务实例的基础。 每个 API 表示一组可供开发人员使用的操作。 每个 API 包含对实施 API 的后端服务的引用，而其操作映射到后端服务实施的操作。 API 管理中的操作高度可配置，可控制 URL 映射、查询和路径参数、请求和响应内容以及操作响应缓存。 速率限制、配额和 IP 限制策略还可以在 API 或单个操作级别实施。
 
 有关详细信息，请参阅[如何创建 API][How to create APIs] 和[如何将操作添加到 API][How to add operations to an API]。
 
-## <a name="products"> </a> 产品
+## <a name="products"></a><a name="products"> </a> 产品
 产品是如何将 API 提供给开发人员。 API 管理中的产品有一个或多个 API，并且配置为包含一个标题、说明和使用条款。 产品可以**公开**或**受保护**。 必须先订阅受保护的产品，才能使用它们，但公开的产品无需订阅即可使用。 产品可以供开发人员使用时，就会发布。 产品一旦发布，开发人员就可以查看（如果是受保护的产品，应先进行订阅）。 在产品级别配置订阅批准，也可由管理员批准或被自动批准。
 
 组用于管理产品对开发人员的可见性。 产品向组授予可见性，并且开发人员可以查看和订阅对他们所属的组可见的产品。 
 
-## <a name="groups"> </a> 组
+## <a name="groups"></a><a name="groups"> </a> 组
 组用于管理产品对开发人员的可见性。 API 管理具有下列不可变的系统组：
 
 * **管理员** - Azure 订阅管理员是此组的成员。 管理员管理 API 管理服务实例、创建 API、操作，以及开发人员所使用的产品。
@@ -93,23 +92,23 @@ API 是 API 管理服务实例的基础。 每个 API 表示一组可供开发�
 
 有关详细信息，请参阅[如何创建和使用组][How to create and use groups]。
 
-## <a name="developers"> </a> 开发人员
-开发人员表示 API 管理服务实例中的用户帐户。 可以让管理员创建或邀请开发人员加入，也可以让开发人员从[开发人员门户][Developer portal]注册。 每个开发人员是一个或多个组的成员，并且可以订阅授予这些组的可见性的产品。
+## <a name="developers"></a><a name="developers"> </a> 开发人员
+开发人员表示 API 管理服务实例中的用户帐户。 管理员可以创建或邀请开发人员加入，或他们可以从“ [开发人员门户][Developer portal]”注册。 每个开发人员是一个或多个组的成员，并且可以订阅授予这些组的可见性的产品。
 
 当开发人员订阅某个产品时，会向其授予该产品的主密钥和辅助密钥。 在调用产品的 API 时使用此键。
 
 有关详细信息，请参阅[如何创建或邀请开发人员][How to create or invite developers]和[如何将组与开发人员关联][How to associate groups with developers]。
 
-## <a name="policies"></a> 策略
+## <a name="policies"></a><a name="policies"> </a> 策略
 策略是 API 管理的一项强大功能，允许 Azure 门户通过配置更改 API 的行为。 策略是一组语句，在请求或 API 的响应时按顺序执行。 流行的语句包含 XML 格式转换为 JSON 和调用速率限制，以限制从开发人员传入的呼叫数，还有许多其他策略可用。
 
-在任何 API 管理策略中，策略表达式可以用作属性值或文本值，除非该策略另外指定。 某些策略（如[控制流](/azure/api-management/api-management-advanced-policies#choose)和[设置变量](/azure/api-management/api-management-advanced-policies#set-variable)策略）基于策略表达式。 有关详细信息，请参阅[高级策略](/azure/api-management/api-management-advanced-policies#AdvancedPolicies)和[策略表达式](/azure/api-management/api-management-policy-expressions)。
+在任何 API 管理策略中，策略表达式可以用作属性值或文本值，除非该策略另外指定。 某些策略（如[控制流](./api-management-advanced-policies.md#choose)和[设置变量](./api-management-advanced-policies.md#set-variable)策略）基于策略表达式。 有关详细信息，请参阅[高级策略](./api-management-advanced-policies.md#AdvancedPolicies)和[策略表达式](./api-management-policy-expressions.md)。
 
 
-有关 API 管理策略的完整列表，请参阅[策略参考][Policy reference]。 有关使用和配置策略的详细信息，请参阅 [API 管理策略][API Management policies]。 有关使用速率限制和配额策略创建产品的教程，请参阅[如何创建和配置高级产品设置][How create and configure advanced product settings]。
+有关 API 管理策略的完整列表，请参阅 [策略参考][Policy reference]。 有关使用和配置策略的详细信息，请参阅 [API 管理策略][API Management policies]。 有关使用速率限制和配额策略创建产品的教程，请参阅 [如何创建和配置高级产品设置][How create and configure advanced product settings]。
 
 
-## <a name="developer-portal"> </a> 开发人员门户
+## <a name="developer-portal"></a><a name="developer-portal"> </a> 开发人员门户
 开发人员门户是开发人员可以了解 API、视图和调用操作以及订阅产品的位置。 潜在客户可以访问开发人员门户，查看 API 和操作并注册。 开发人员门户的 URL 位于 API 管理服务实例的 Azure 门户中的仪表板上。
 
 可以通过添加自定义内容、自定义样式并添加品牌定制开发人员门户的外观。
@@ -136,17 +135,13 @@ API 是 API 管理服务实例的基础。 每个 API 表示一组可供开发�
 [Policies]: #policies
 [Developer portal]: #developer-portal
 
-[How to create APIs]: api-management-howto-create-apis.md
-[How to add operations to an API]: api-management-howto-add-operations.md
+[How to create APIs]: ./import-and-publish.md
+[How to add operations to an API]: ./mock-api-responses.md
 [How to create and publish a product]: api-management-howto-add-products.md
 [How to create and use groups]: api-management-howto-create-groups.md
 [How to associate groups with developers]: api-management-howto-create-groups.md#associate-group-developer
 [How create and configure advanced product settings]: transform-api.md
 [How to create or invite developers]: api-management-howto-create-or-invite-developers.md
-[Policy reference]: api-management-policy-reference.md
+[Policy reference]: ./api-management-policies.md
 [API Management policies]: api-management-howto-policies.md
 [Create an API Management service instance]: get-started-create-service-instance.md
-
-
-
-

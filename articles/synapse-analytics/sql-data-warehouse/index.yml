@@ -1,0 +1,113 @@
+### YamlMime:Landing
+title: Azure Synapse Analytics
+summary: Azure Synapse 是一种无限制的分析服务，它将企业数据仓库和大数据分析结合在一起。 借助它可以使用无服务器的按需资源或预配资源，任意执行自己定义的大规模数据查询。
+metadata:
+  title: Azure Synapse Analytics
+  description: Azure Synapse 是一种无限制的分析服务，它将企业数据仓库和大数据分析结合在一起。 借助它可以使用无服务器的按需资源或预配资源，任意执行自己定义的大规模数据查询。
+  services: synapse-analytics
+  ms.service: synapse-analytics
+  ms.subservice: sql-dw
+  ms.topic: landing-page
+  ms.collection: collection
+  author: julieMSFT
+  ms.author: jrasnick
+  ms.date: 04/15/2020
+  ms.openlocfilehash: 178ae3234eb5ed41d008aa438e628937c0c53dcb
+  ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/23/2020
+  ms.locfileid: "85209498"
+landingContent:
+- title: 关于 Azure Synapse Analytics（以前称为 Azure SQL 数据仓库）
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Synapse？ （以前称为 Azure SQL 数据仓库）
+      url: sql-data-warehouse-overview-what-is.md
+    - text: 提示和最佳实践
+      url: cheat-sheet.md
+  - linkListType: architecture
+    links:
+    - text: Azure Synapse 体系结构
+      url: massively-parallel-processing-mpp-architecture.md
+    - text: 参考体系结构
+      url: https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/data/enterprise-bi-synapse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+- title: 关于 Azure Synapse Analytics（工作区预览版）
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Synapse（工作区预览版）
+      url: ../overview-what-is.md
+    - text: 提示和最佳实践
+      url: ../overview-cheat-sheet.md
+    - text: 常见问题解答
+      url: ../overview-faq.md
+    - text: 发行说明
+      url: ../release-notes.md
+- title: 入门
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: 创建 SQL 池（数据仓库）
+      url: create-data-warehouse-portal.md
+- title: 加载数据
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 COPY 语句快速引入数据
+      url: quickstart-bulk-load-copy-tsql.md
+    - text: COPY 语句示例
+      url: quickstart-bulk-load-copy-tsql-examples.md
+  - linkListType: concept
+    links:
+    - text: 设计数据加载策略
+      url: design-elt-data-loading.md
+    - text: 最佳做法
+      url: guidance-for-loading-data.md
+  - linkListType: how-to-guide
+    links:
+    - text: 从 Azure Data Lake Storage 加载数据
+      url: sql-data-warehouse-load-from-azure-data-lake-store.md
+  - linkListType: tutorial
+    links:
+    - text: 从 Azure Blob 存储加载数据
+      url: load-data-from-azure-blob-storage-using-polybase.md
+- title: 性能调优
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 有序聚集列存储索引优化
+      url: performance-tuning-ordered-cci.md
+  - linkListType: how-to-guide
+    links:
+    - text: 分析工作负荷
+      url: analyze-your-workload.md
+- title: 管理和监视
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 了解如何管理和监视数据仓库
+      url: sql-data-warehouse-overview-manageability-monitoring.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 DMV 监视工作负荷
+      url: sql-data-warehouse-manage-monitor.md
+    - text: 管理和监视工作负荷重要性
+      url: sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md
+- title: 保护数据仓库
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 了解保护数据仓库的基础知识
+      url: sql-data-warehouse-overview-manage-security.md
+  - linkListType: how-to-guide
+    links:
+    - text: 配置 Azure Active Directory 身份验证
+      url: /azure/sql-database/sql-database-aad-authentication-configure?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+- title: 资源
+  linkLists:
+  - linkListType: video
+    links:
+    - text: 观看最新的 Synapse SQL 视频
+      url: sql-data-warehouse-videos.md

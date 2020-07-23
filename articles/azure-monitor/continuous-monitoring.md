@@ -1,23 +1,17 @@
 ---
 title: 使用 Azure Monitor 进行持续监视 | Microsoft Docs
 description: 介绍使用 Azure Monitor 在整个工作流中启用持续监视的具体步骤。
-author: bwren
-manager: carmonm
-editor: ''
-services: azure-monitor
-documentationcenter: azure-monitor
-ms.service: azure-monitor
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: ''
 ms.topic: conceptual
-ms.date: 10/12/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 1b86bc015b187fe75e79ba04df60a6bc5257a9b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 10/12/2018
+ms.openlocfilehash: fb216f164e02dfa4dbc4ad11774569b2e8ea970f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60497414"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539680"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>使用 Azure Monitor 进行持续监视
 
@@ -34,7 +28,7 @@ ms.locfileid: "60497414"
 - [Azure DevOps Projects](../devops-project/overview.md) 提供一种简化的体验，在其中可以使用现有的代码和 Git 存储库，或者选择一个示例应用程序，来与 Azure 建立持续集成 (CI) 和持续交付 (CD) 管道。
 - 使用 [DevOps 发布管道中的持续监视](../azure-monitor/app/continuous-monitoring.md)可以基于监视数据限制或回滚部署。
 - 使用 [Status Monitor](../azure-monitor/app/monitor-performance-live-website-now.md) 可以配合 Azure Application Insights 检测 Windows 上的实时 .NET 应用，而无需修改或重新部署代码。
-- 如果你有权访问应用程序的代码，则可以通过安装适用于 [.NET](../azure-monitor/learn/quick-monitor-portal.md)、[Java](../azure-monitor/learn/java-quick-start.md)、[Node.js](../azure-monitor/learn/nodejs-quick-start.md)或[其他任何编程语言](../azure-monitor/app/platforms.md)的 Azure Monitor Application Insights SDK，使用 [Application Insights](../azure-monitor/app/app-insights-overview.md) 启用完全监视。 这样可以指定与应用程序和业务相关的自定义事件、指标或页面视图。
+- 如果你有权访问应用程序的代码，则可以通过安装适用于 [.NET](../azure-monitor/learn/quick-monitor-portal.md)、[Java](../azure-monitor/app/java-get-started.md)、[Node.js](../azure-monitor/learn/nodejs-quick-start.md)或[其他任何编程语言](../azure-monitor/app/platforms.md)的 Azure Monitor Application Insights SDK，使用 [Application Insights](../azure-monitor/app/app-insights-overview.md) 启用完全监视。 这样可以指定与应用程序和业务相关的自定义事件、指标或页面视图。
 
 
 
@@ -44,7 +38,7 @@ ms.locfileid: "60497414"
 - 无需进行任何配置，即可自动从大多数 Azure 资源获取[平台指标、活动日志和诊断日志](platform/data-sources.md)。
 - 使用[用于 VM 的 Azure Monitor](insights/vminsights-overview.md) 为 VM 启用更深入的监视。
 -  使用[用于容器的 Azure Monitor](insights/container-insights-overview.md) 为 AKS 群集启用更深入的监视。
-- 为环境中的不同应用程序和服务添加[监视解决方案](insights/solutions-inventory.md)。
+- 为环境中的不同应用程序和服务添加[监视解决方案](./monitor-reference.md)。
 
 
 [基础结构即代码](/azure/devops/learn/what-is-infrastructure-as-code)是描述性模型中的基础结构的管理系统，它使用版本控制方式与 DevOps 团队用于源代码管理的方式相同。 它提高了环境的可靠性和可伸缩性，并让你利用管理应用程序时所用的类似流程。
@@ -72,7 +66,7 @@ ms.locfileid: "60497414"
 
 - 基于日志和指标[在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-overview.md)可以识别到可预测的故障状态。 在使所有警报可操作方面应有一个目标，即，这些警报表示实际的关键状况，并且应该尽量减少误报。 使用[动态阈值](platform/alerts-dynamic-thresholds.md)可基于指标数据自动计算基线，而无需定义自己的静态阈值。 
 - 为警报定义操作可以使用最有效的方式来通知管理员。 可用的[通知操作](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal)包括短信、电子邮件、推送通知或语音呼叫。
-- 使用更高级的操作可以通过 [Webhook](platform/activity-log-alerts-webhook.md) [连接到 ITSM 工具](platform/itsmc-overview.md)或其他警报管理系统。
+- 使用更高级的操作可以通过 [Webhook](platform/activity-log-alerts-webhook.md)[连接到 ITSM 工具](platform/itsmc-overview.md)或其他警报管理系统。
 - 还可以使用 [Azure 自动化 Runbook](../automation/automation-webhooks.md) 或[逻辑应用](/connectors/custom-connectors/create-webhook-trigger)（可以通过 Webhook 从警报启动）来修正警报中识别到的问题。 
 - 使用[自动缩放](../azure-monitor/learn/tutorial-autoscale-performance-schedule.md)可以根据收集的指标动态增加和减少计算资源。
 
@@ -80,7 +74,7 @@ ms.locfileid: "60497414"
 确保开发和运营部门有权访问相同的遥测功能和工具可让他们查看整个环境中的模式，并最大程度地减小平均检测时间 (MTTD) 和平均还原时间 (MTTR)。
 
 - 根据组织中不同角色的通用指标和日志准备[自定义仪表板](../azure-monitor/learn/tutorial-app-dashboards.md)。 仪表板可以合并所有 Azure 资源的数据。
-- 准备[工作簿](../azure-monitor/app/usage-workbooks.md)以确保在开发与运营部门之间分享知识。 可将这些工作簿准备为包含指标图表和日志查询的动态报表，甚至可由开发人员准备为故障排除指南，以帮助客户支持或运营人员处理基本问题。
+- 准备[工作簿](../azure-monitor/platform/workbooks-overview.md)以确保在开发与运营部门之间分享知识。 可将这些工作簿准备为包含指标图表和日志查询的动态报表，甚至可由开发人员准备为故障排除指南，以帮助客户支持或运营人员处理基本问题。
 
 ## <a name="continuously-optimize"></a>持续优化
  监视是热门的“构建-度量-学习”理念的基本方面，该理念鼓励持续跟踪 KPI 和用户行为指标，然后努力通过规划迭代对其进行优化。 Azure Monitor 可以帮助收集业务相关的指标和日志，并在下一次部署中按需添加新的数据点。

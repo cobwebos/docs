@@ -1,29 +1,23 @@
 ---
-title: Azure 备份：管理备份作业使用 REST API
-description: 使用 REST API 管理 Azure 备份的备份和还原作业
-services: backup
-author: pvrk
-manager: shivamg
-keywords: REST API、Azure VM 备份、Azure VM 还原；
-ms.service: backup
+title: 使用 REST API 管理备份作业
+description: 本文介绍如何使用 REST API 跟踪和管理 Azure 备份的备份和还原作业。
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: pullabhk
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: eb8b7dc77d180eb56c2585e93e60a36742f6c84c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 628569c547aa776ec2fbb7ec7e32edad7c1fe7dd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60646616"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847779"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>使用 REST API 跟踪备份和还原作业
 
-Azure 备份服务会触发在各种情况下在后台运行的作业，例如触发备份、执行还原操作以及禁用备份。 可以使用作业的 ID 跟踪这些作业。
+Azure 备份服务会触发各种情况下在后台运行的作业，例如触发备份、执行还原操作以及禁用备份。 可以使用作业的 ID 跟踪这些作业。
 
 ## <a name="fetch-job-information-from-operations"></a>从操作中提取作业信息
 
-操作（例如触发备份）将始终返回 jobID。 有关例如：最终的响应[触发备份 REST API 操作](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3)如下所示：
+操作（例如触发备份）将始终返回 jobID。 例如：[触发备份 REST API 操作](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3)的最终响应如下所示：
 
 ```http
 {
@@ -44,14 +38,14 @@ Azure VM 备份作业由“jobId”字段予以标识，并且可以如[此处](
 ## <a name="tracking-the-job"></a>跟踪作业
 
 ```http
-GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2017-07-01
+GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2019-05-13
 ```
 
 `{jobName}` 是上面提到的“jobId”。 响应始终为 200 OK，并且始终包含指示作业的当前状态的“status”字段。 当状态为“Completed”或“CompletedWithWarnings”之后，“extendedInfo”部分将显示关于作业的更多详细信息。
 
 ### <a name="response"></a>响应
 
-|名称  |类型  |描述  |
+|名称  |类型  |说明  |
 |---------|---------|---------|
 |200 正常     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | OK        |
 

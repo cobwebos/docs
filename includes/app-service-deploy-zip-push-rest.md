@@ -2,16 +2,16 @@
 author: cephalin
 ms.service: app-service
 ms.topic: include
-ms.date: 11/03/2016
+ms.date: 08/12/2019
 ms.author: cephalin
-ms.openlocfilehash: 7aa0d232cf53eef9bd28c36b66e8fdae22a28db9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 92e39f128e90ba83a919388e217f0edc86f81770
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66132570"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75769654"
 ---
-## <a name="rest"></a>使用 REST API 部署 ZIP 文件 
+## <a name="deploy-zip-file-with-rest-apis"></a><a name="rest"></a>使用 REST API 部署 ZIP 文件 
 
 可以使用[部署服务 REST API](https://github.com/projectkudu/kudu/wiki/REST-API) 将 .zip 文件部署到 Azure 中的应用。 若要部署，请将 POST 请求发送到 https://<app_name>.scm.azurewebsites.net/api/zipdeploy。 POST 请求必须在消息正文中包含此 .zip 文件。 应用的部署凭据是通过使用 HTTP BASIC 身份验证在请求中提供的。 有关详细信息，请参阅 [.zip 推送部署参考](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)。 
 
@@ -19,7 +19,7 @@ ms.locfileid: "66132570"
 
 ### <a name="with-curl"></a>使用 cURL
 
-以下示例使用 cURL 工具部署 .zip 文件。 替换占位符 `<username>`、`<password>`、`<zip_file_path>` 和 `<app_name>`。 出现 cURL 提示时，键入密码。
+以下示例使用 cURL 工具部署 .zip 文件。 替换占位符 `<deployment_user>`、`<zip_file_path>` 和 `<app_name>`。 出现 cURL 提示时，键入密码。
 
 ```bash
 curl -X POST -u <deployment_user> --data-binary @"<zip_file_path>" https://<app_name>.scm.azurewebsites.net/api/zipdeploy
@@ -33,22 +33,21 @@ curl -u <deployment_user> https://<app_name>.scm.azurewebsites.net/api/deploymen
 
 ### <a name="with-powershell"></a>使用 PowerShell
 
-以下示例使用 [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) 发送包含 .zip 文件的请求。 替换占位符 `<deployment_user>`、`<deployment_password>`、`<zip_file_path>` 和 `<app_name>`。
+下面的示例使用 [Publish-AzWebapp](/powershell/module/az.websites/publish-azwebapp) 上传 .zip 文件。 替换占位符 `<group-name>`、`<app-name>` 和 `<zip-file-path>`。
 
 ```powershell
-#PowerShell
-$username = "<deployment_user>"
-$password = "<deployment_password>"
-$filePath = "<zip_file_path>"
-$apiUrl = "https://<app_name>.scm.azurewebsites.net/api/zipdeploy"
-$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
-$userAgent = "powershell/1.0"
-Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -UserAgent $userAgent -Method POST -InFile $filePath -ContentType "multipart/form-data"
+Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <zip-file-path>
 ```
 
-此请求从已上传的 .zip 文件触发推送部署。 若要查看当前和之前的部署，请运行以下命令。 同样，请替换 `<app_name>` 占位符。
+此请求从已上传的 .zip 文件触发推送部署。 
+
+若要查看当前和之前的部署，请运行以下命令。 再次替换 `<deployment-user>`、`<deployment-password>` 和 `<app-name>` 占位符。
 
 ```bash
-$apiUrl = "https://<app_name>.scm.azurewebsites.net/api/deployments"
+$username = "<deployment-user>"
+$password = "<deployment-password>"
+$apiUrl = "https://<app-name>.scm.azurewebsites.net/api/deployments"
+$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
+$userAgent = "powershell/1.0"
 Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -UserAgent $userAgent -Method GET
 ```

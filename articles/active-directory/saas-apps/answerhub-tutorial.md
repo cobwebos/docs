@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 818b91d7-01df-4b36-9706-f167c710a73c
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52c49bdd51bda7876d19a681bde79c9dbeeb4ea7
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: a124832bd42a0a144ebc6000b818fb825aa422ef
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901280"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "73152988"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>教程：Azure Active Directory 与 AnswerHub 集成
 
@@ -34,11 +35,11 @@ ms.locfileid: "65901280"
 若要了解有关 SaaS 应用程序与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure Active Directory 中的应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 AnswerHub 的集成，需要具有以下项：
 
-* 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可开始使用[一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以先使用[一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 启用了单一登录的 AnswerHub 订阅。
 
 ## <a name="scenario-description"></a>方案描述
@@ -72,7 +73,7 @@ ms.locfileid: "65901280"
 ## <a name="set-up-and-test-azure-ad-single-sign-on"></a>设置和测试 Azure AD 单一登录
 
 在本部分，我们使用名为 Britta Simon 的测试用户来配置并测试 AnswerHub 的 Azure AD 单一登录。
-对于单一登录，需要建立 Azure AD 用户与 AnswerHub 中对应用户之间的链接。
+对于单一登录，需要建立 Azure AD 用户与 AnswerHub 中对应用户之间的关联。
 
 若要配置和测试 AnswerHub 的 Azure AD 单一登录，需要完成以下任务：
 
@@ -105,9 +106,9 @@ ms.locfileid: "65901280"
 
     ![“基本 SAML 配置”部分](common/sp-identifier.png)
 
-    a. 在“登录 URL”框中，输入以下模式的 URL：`https://<company>.answerhub.com` 
+    a. 在“登录 URL”框中，输入以下模式的 URL：`https://<company>.answerhub.com`
 
-    b. 在“标识符(实体 ID)”框中，输入以下模式的 URL：`https://<company>.answerhub.com` 
+    b. 在“标识符(实体 ID)”框中，输入以下模式的 URL：`https://<company>.answerhub.com`
 
     > [!NOTE]
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 若要获取该值，请与 [AnswerHub 支持团队](mailto:success@answerhub.com)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -156,7 +157,7 @@ ms.locfileid: "65901280"
 
 5. 在“密钥和证书”部分中，完成以下步骤  ：
 
-    ![“密钥和证书”部分](./media/answerhub-tutorial/ic785173.png "密钥和证书")  
+    ![密钥和证书部分](./media/answerhub-tutorial/ic785173.png "密钥和证书")  
 
     a. 在记事本中打开从 Azure 门户下载的 Base64 编码证书，复制其内容，然后粘贴到“IDP 公钥(x509 格式)”框中  。
   
@@ -184,8 +185,8 @@ ms.locfileid: "65901280"
 
     a. 在“姓名”  框中，输入 **BrittaSimon**。
   
-    b. 在“用户名”框中，输入“brittasimon\@<yourcompanydomain.extension>”   。  
-    例如，BrittaSimon@contoso.com。
+    b. 在“用户名”框中，输入“brittasimon\@<yourcompanydomain.extension>”。  
+    例如，BrittaSimon@contoso.com 。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
 
@@ -193,7 +194,7 @@ ms.locfileid: "65901280"
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，通过授予 Britta Simon 访问 AnswerHub 的权限，将她设置为使用 Azure 单一登录。
+在本部分中，通过授予用户 Britta Simon 访问 AnswerHub 的权限，将其设置为使用 Azure AD 单一登录。
 
 分配 Azure AD 测试用户： 
 

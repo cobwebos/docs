@@ -1,39 +1,40 @@
 ---
-title: 快速入门 - 使用 C# 将查询发送到必应当地企业搜索 API | Microsoft Docs
+title: 快速入门 - 使用必应当地企业搜索通过 C# 将查询发送到 API
 titleSuffix: Azure Cognitive Services
-description: 使用本文开始在 C# 中使用必应当地企业搜索 API。
+description: 使用此快速入门开始向必应当地企业搜索 API 发送请求，该 API 是一项 Azure 认知服务。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 04/26/2019
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 39ec68beaa1550b955c4605947896b48bd6565ed
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
-ms.translationtype: MT
+ms.subservice: bing-local-business
+ms.topic: quickstart
+ms.date: 05/12/2020
+ms.author: aahi
+ms.openlocfilehash: 812061bf161a33e4151b7b23265196895e039414
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65884669"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611231"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>快速入门：使用 C# 将查询发送到必应当地企业搜索 API
 
-使用此快速入门开始向必应当地企业搜索 API 发送请求，该 API 是一项 Azure 认知服务。 虽然这个简单的应用程序是用 C# 编写的，但 API 是一种 RESTful Web 服务，可以与任何能够发出 HTTP 请求并解析 JSON 的编程语言兼容。
+使用此快速入门了解如何向必应当地企业搜索 API 发送请求，该 API 是一项 Azure 认知服务。 虽然这个简单的应用程序是用 C# 编写的，但 API 是一种 RESTful Web 服务，可以与任何能够发出 HTTP 请求并解析 JSON 的编程语言兼容。
 
-此示例应用程序从 API 获取搜索查询 `hotel in Bellevue` 的本地响应数据。
+此示例应用程序从 API 获取搜索查询的本地响应数据。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* 任何版本的[Visual Studio 2019](https://www.visualstudio.com/downloads/)。
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 任何版本的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
 * 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
-
-必须创建一个具有必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="创建必应搜索资源"  target="_blank">创建必应搜索资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。 部署后，单击“转到资源”。
 
 ## <a name="create-the-request"></a>创建请求 
 
 下面的代码创建 `WebRequest`、设置访问密钥标头，并添加针对“restaurant in Bellevue”的查询字符串。  然后发送请求，并将响应分配到包含 JSON 文本的字符串。
 
-```
+```csharp
     // Replace the accessKey string value with your valid access key.
     const string accessKey = "enter key here";
 
@@ -53,13 +54,13 @@ ms.locfileid: "65884669"
 
 ## <a name="run-the-complete-application"></a>运行完整应用程序
 
-必应当地企业搜索 API 从必应搜索引擎返回本地化的搜索结果。
-1. 在 Visual Studio 中（用社区版就可以）创建一个新的控制台解决方案。
+以下代码使用必应当地企业搜索 API 从必应搜索引擎返回本地化的搜索结果。 可按照以下步骤使用此代码：
+1. 在 Visual Studio 中（用社区版就足够）创建一个新的控制台解决方案。
 2. 将 Program.cs 替换为下面提供的代码。
-3. 将 accessKey 值替换为对你的订阅有效的访问密钥。
+3. 使用对订阅有效的访问密钥替换 `accessKey` 值。
 4. 运行该程序。
 
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -209,5 +210,5 @@ namespace localSearch
 
 ## <a name="next-steps"></a>后续步骤
 - [当地企业搜索 Java 快速入门](local-search-java-quickstart.md)
-- [当地企业搜索 Node 快速入门](local-search-node-quickstart.md)
+- [当地企业搜索 Node.js 快速入门](local-search-node-quickstart.md)
 - [当地企业搜索 Python 快速入门](local-search-python-quickstart.md)

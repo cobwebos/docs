@@ -1,24 +1,16 @@
 ---
 title: Log Analytics 智能分析示例 | Microsoft Docs
 description: 使用 Log Analytics 中的智能分析函数执行用户活动分析的示例。
-services: log-analytics
-documentationcenter: ''
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 01/15/2019
 ms.author: bwren
-ms.openlocfilehash: f6617a504bbda666ce9ece018ccb0cf02635c360
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 01/15/2019
+ms.openlocfilehash: 51584ccf5f845be8a06b1e049cae11e636edef11
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61425792"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77659826"
 ---
 # <a name="log-analytics-smart-analytics-examples"></a>Log Analytics 智能分析示例
 本文包含使用 Log Analytics 中的智能分析函数执行用户活动分析的示例。 可以使用这些示例来分析你自己的由 Application Insights 监视的应用程序，或者使用这些查询中的概念来对其他数据进行类似的分析。 
@@ -95,7 +87,7 @@ week
 ![队列分析输出](media/smart-analytics/cohorts.png)
 
 ## <a name="rolling-monthly-active-users-and-user-stickiness"></a>滚动每月活动用户数和用户粘性
-以下示例结合 [series_fir](/azure/kusto/query/series-firfunction) 函数使用时序分析，该函数用于执行滑动窗口计算。 受监视的示例应用程序是一个通过自定义事件跟踪用户活动的网上商店。 查询跟踪两种类型的用户活动：_AddToCart_和 _Checkout_，并将活动用户定义为在给定的一天内至少执行了一次结算的用户。
+以下示例结合 [series_fir](/azure/kusto/query/series-firfunction) 函数使用时序分析，该函数用于执行滑动窗口计算。 受监视的示例应用程序是一个通过自定义事件跟踪用户活动的网上商店。 查询跟踪两种类型的用户活动：_AddToCart_和 _Checkout_，并将活动用户定义为在给定的一天内至少执行了一次结算的用户。 
 
 
 

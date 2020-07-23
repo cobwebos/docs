@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 67c8dcfffd78d4c0114a96622235d6548627fa92
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 448d46cd21a63488c4f567d5555fe6406fc0fa73
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236961"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67089094"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>教程：Azure Active Directory 与 ThirdLight 集成
 
@@ -134,11 +134,11 @@ ms.locfileid: "66236961"
 
 1. 转到“配置”   > “系统管理”   >   “SAML2”：
 
-    ![系统管理](./media/thirdlight-tutorial/ic805843.png "Administration")
+    ![系统管理](./media/thirdlight-tutorial/ic805843.png "系统管理")
 
 1. 在 SAML2 配置部分中，执行以下步骤。
   
-    ![SAML2 配置部分](./media/thirdlight-tutorial/ic805844.png "SAML2 配置部分")
+    ![“SAML2 配置”部分](./media/thirdlight-tutorial/ic805844.png "“SAML2 配置”部分")
 
     1. 选择“启用 SAML2 单一登录”  。
 

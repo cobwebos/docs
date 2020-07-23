@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 68c516ee7ca2d76339760ce0ad95590686250603
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 4c3cc572dd9629605414cd88d7735c2b31f92249
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521931"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851255"
 ---
 # <a name="transform-and-protect-your-api"></a>转换和保护 API
 
@@ -27,7 +26,7 @@ ms.locfileid: "59521931"
 
 本教程介绍如何使用 Azure API 管理配置速率限制，轻松为后端 API 添加保护。 例如，可以限制 API 的调用次数，以防开发人员过度使用它。 有关详细信息，请参阅 [API 管理策略](api-management-policies.md)
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 >
@@ -77,14 +76,16 @@ ms.locfileid: "59521931"
 3. 选择“所有操作”。
 4. 在“出站处理”部分，单击 **</>** 图标。
 5. 将光标置于 **&lt;outbound&gt;** 元素内。
-6. 在右侧窗口中的“转换策略”下面，单击“+ 设置 HTTP 标头”两次（以插入两个策略代码片段）。
+6. 在右侧窗口中的“转换策略”下面，单击“+ 设置 HTTP 标头”两次（以插入两个策略代码片段）。 
 
    ![策略](./media/transform-api/transform-api.png)
 
-7. 按如下所示修改 \<outbound> 代码：
+7. 按如下所示修改 **\<outbound>** 代码：
 
-       <set-header name="X-Powered-By" exists-action="delete" />
-       <set-header name="X-AspNet-Version" exists-action="delete" />
+   ```
+   <set-header name="X-Powered-By" exists-action="delete" />
+   <set-header name="X-AspNet-Version" exists-action="delete" />
+   ```
 
    ![策略](./media/transform-api/set-policy.png)
 
@@ -113,11 +114,8 @@ ms.locfileid: "59521931"
 2.  选择“所有操作”。
 3.  选择屏幕顶部的“设计”选项卡。
 4.  在“出站处理”部分，单击 **</>** 图标。
-5.  将光标置于 **&lt;outbound&gt;** 元素内。
-6.  在右侧窗口中的“转换策略”下面，单击“+ 查找并替换正文中的字符串”。
-7.  修改 **find-and-replace** 代码（在 **\<outbound\>** 元素中）以替换 URL，使之与 APIM 网关匹配。 例如：
-
-        <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
+5.  将光标置于 &lt;outbound&gt; 元素内，然后单击右上角的“显示片段”按钮 。
+6.  在右侧窗口中的“转换策略”下面，单击“在内容中屏蔽 URL” 。
 
 ## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>通过添加速率限制策略（限制）来保护 API
 
@@ -130,34 +128,38 @@ ms.locfileid: "59521931"
 3.  选择屏幕顶部的“设计”选项卡。
 4.  在“入站处理”部分中，单击 **</>** 图标。
 5.  将光标置于 **&lt;inbound&gt;** 元素内。
-6.  在右侧窗口中的“访问限制策略”下面，单击“+ 限制每个键的调用速率”。
-7.  将 **rate-limit-by-key** 代码（在 **\<inbound\>** 元素中）修改为以下代码：
+6.  在右侧窗口中的“访问限制策略”下面，单击“+ 限制每个键的调用速率”。 
+7.  将 rate-limit-by-key 代码（在 \<inbound\> 元素中）修改为以下代码 ：
 
-        <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
+    ```
+    <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
+    ```
 
 ## <a name="test-the-transformations"></a>测试转换
 
 此时如果查看代码编辑器中的代码，则会发现策略如下所示：
 
-    <policies>
-        <inbound>
-            <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
-            <base />
-        </inbound>
-        <backend>
-            <base />
-        </backend>
-        <outbound>
-            <set-header name="X-Powered-By" exists-action="delete" />
-            <set-header name="X-AspNet-Version" exists-action="delete" />
-            <find-and-replace from="://conferenceapi.azurewebsites.net:443" to="://apiphany.azure-api.net/conference"/>
-            <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
-            <base />
-        </outbound>
-        <on-error>
-            <base />
-        </on-error>
-    </policies>
+   ```
+   <policies>
+      <inbound>
+        <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
+        <base />
+      </inbound>
+      <backend>
+        <base />
+      </backend>
+      <outbound>
+        <set-header name="X-Powered-By" exists-action="delete" />
+        <set-header name="X-AspNet-Version" exists-action="delete" />
+        <find-and-replace from="://conferenceapi.azurewebsites.net:443" to="://apiphany.azure-api.net/conference"/>
+        <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
+        <base />
+      </outbound>
+      <on-error>
+        <base />
+      </on-error>
+   </policies>
+   ```
 
 本部分的余下内容介绍如何测试本文中设置的策略转换。
 
@@ -202,7 +204,7 @@ ms.locfileid: "59521931"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 >

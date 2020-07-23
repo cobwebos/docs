@@ -1,26 +1,19 @@
 ---
-title: 从 Azure 的 Jupyter Notebook 访问数据资源
-description: 如何从 Jupyter Notebook 中访问文件、REST API、数据库和不同的 Azure 存储资源。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: douge
-ms.assetid: ee867303-a5e5-4686-b2da-8a0108247d18
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+title: 访问 Jupyter 笔记本中的数据-Azure Notebooks 预览
+description: 了解如何从 Jupyter 笔记本访问文件、REST Api、数据库和不同的 Azure 存储资源。
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 14a4191612a5d42836ae4be3ff902ca47a6b06d4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: tracking-python
+ms.openlocfilehash: e0473a885860fad71c066f9d129f859528fa16e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60634333"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833479"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>在笔记本中访问云数据
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 在 Jupyter Notebook 中进行一些有趣的工作需要数据。 实际上，数据是 Notebook 的命脉。
 
@@ -42,18 +35,18 @@ import requests
 data_url = 'https://data.cityofnewyork.us/resource/gkne-dk5s.json'
 
 # General data request; include other API keys and credentials as needed in the data argument
-response = requests.get(data_url, data={"limit" : "20"})
+response = requests.get(data_url, data={"limit": "20"})
 
 if response.status_code == 200:
     dataframe_rest2 = pandas.DataFrame.from_records(response.json())
     print(dataframe_rest2)
 ```
 
-## <a name="azure-sql-databases"></a>Azure SQL 数据库
+## <a name="azure-sql-database-and-sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例
 
-可借助 pyodbc 或 pymssql 库访问 SQL Server 数据库。
+您可以使用 pyodbc 或 pymssql 库的帮助访问 SQL 数据库或 SQL 托管实例中的数据库。
 
-[使用 Python 查询 Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python)介绍了如何创建包含 AdventureWorks 数据的数据库，并演示了如何查询该数据。 本文的示例 Notebook 中显示了相同的代码。
+[使用 Python 查询 AZURE sql 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python)提供有关在 sql 数据库中创建包含 AdventureWorks 数据的数据库的说明，并演示如何查询这些数据。 本文的示例 Notebook 中显示了相同的代码。
 
 ## <a name="azure-storage"></a>Azure 存储
 
@@ -71,7 +64,7 @@ Azure Cosmos DB 为 JSON 文档提供了完全索引的 NoSQL 存储。 以下�
 - [使用 Python 生成 SQL API 应用](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
 - [使用 Azure Cosmos DB 的 API for MongoDB 构建 Flask 应用](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
 - [使用 Python 和 Gremlin API 创建图形数据库](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
-- [使用 Python 和 Azure Cosmos DB 生成 Cassandra 应用](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
+- [使用 Python 和 Azure Cosmos DB 构建 Cassandra 应用](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
 - [使用 Python 和 Azure Cosmos DB 生成表 API 应用](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
 
 使用 Cosmos DB 时，可以使用 [azure-cosmosdb-table](https://pypi.org/project/azure-cosmosdb-table/) 库。
@@ -80,9 +73,9 @@ Azure Cosmos DB 为 JSON 文档提供了完全索引的 NoSQL 存储。 以下�
 
 Azure 提供了许多可以使用的其他数据库类型。 以下文章提供了从 Python 访问这些数据库的指导：
 
-- [Azure Database for PostgreSQL：使用 Python 连接和查询数据](https://docs.microsoft.com/azure/postgresql/connect-python)
+- [Azure Database for PostgreSQL：使用 Python 进行连接并查询数据](https://docs.microsoft.com/azure/postgresql/connect-python)
 - [快速入门：将 Azure Redis 缓存与 Python 配合使用](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
-- [Azure Database for MySQL：使用 Python 连接和查询数据](https://docs.microsoft.com/azure/mysql/connect-python)
+- [Azure Database for MySQL：使用 Python 进行连接并查询数据](https://docs.microsoft.com/azure/mysql/connect-python)
 - [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/)
   - [Azure 数据工厂的复制向导](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 

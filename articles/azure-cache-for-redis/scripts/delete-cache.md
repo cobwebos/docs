@@ -1,26 +1,19 @@
 ---
-title: Azure CLI 脚本示例 - 删除 Azure Redis 缓存 | Microsoft Docs
-description: Azure CLI 脚本示例 - 删除 Azure Redis 缓存
-services: cache
-documentationcenter: ''
+title: 删除 Azure Cache for Redis - Azure CLI
+description: 此 Azure CLI 代码示例演示如何使用命令 az redis delete 删除 Azure Cache for Redis 实例。
 author: yegu-ms
-manager: jhubbard
-editor: ''
+ms.author: yegu
 tags: azure-service-management
-ms.assetid: 7beded7a-d2c9-43a6-b3b4-b8079c11de4a
 ms.service: cache
 ms.devlang: azurecli
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
+ms.topic: sample
 ms.date: 08/30/2017
-ms.author: yegu
-ms.openlocfilehash: d02d3196c2cbc130a2e88061df514b0bf681b1bf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: e5178ab4069cc5ffa8607c5feea6ffac86284a5b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60240773"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "75411081"
 ---
 # <a name="delete-an-azure-cache-for-redis"></a>删除 Azure Redis 缓存
 
@@ -38,7 +31,7 @@ ms.locfileid: "60240773"
 
 此脚本使用以下命令删除 Azure Redis 缓存实例。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az redis 删除](https://docs.microsoft.com/cli/azure/redis) | 删除 Azure Redis 缓存实例。 |
 

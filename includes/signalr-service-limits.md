@@ -11,24 +11,27 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/24/2018
+ms.date: 05/11/2020
 ms.author: zhshang
-ms.openlocfilehash: 1d87439b7afeb946fd37c468a0853adcb674ee5a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 496d98c5faebfcef511152476b58dd6257dbbedc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238313"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673537"
 ---
-| Resource | 默认限制 | 最大限制 | 
+| 资源 | 默认限制 | 最大限制 | 
 | --- | --- | --- |
-| Azure SignalR 服务单位，每个实例免费层 |第 |第 |
-| Azure SignalR 服务单位，每个实例用于标准层 |100 |100 |
-| Azure SignalR 服务单位，每个订阅每个区域免费层|5 |5 |
-| Azure SignalR 服务单位总量对每个订阅每个区域进行计数 |150 |不受限制 |
+| 免费层每个实例的 Azure SignalR 服务单元数 |1 |1 |
+| 标准层每个实例的 Azure SignalR 服务单元数 |100 |100 |
+| 免费层每个区域每个订阅的 Azure SignalR 服务单元数|5 |5 |
+| 每个区域每个订阅的 Azure SignalR 服务单元总数 |150 |无限制 |
 | 免费层每天每个单元的连接数 |20 |20 |
 | 标准层每天每个单元的连接数 |1,000 |1,000|
 | 免费层每天每个单元包含的消息数|20,000 |20,000 |
+| 免费层每天每个单元的其他消息数|0 |0 |
 | 标准层每天每个单元包含的消息数|1,000,000 |1,000,000 |
+| 标准层每天每个单元的其他消息数|无限制 |无限制 |
 
-若要请求更新订阅的默认限制，请开具支持票证。 
+若要请求更新订阅的默认限制，请开具支持票证。
+

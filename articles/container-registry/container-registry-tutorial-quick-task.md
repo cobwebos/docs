@@ -1,19 +1,15 @@
 ---
-title: 教程 - 在云中生成容器映像 - Azure 容器注册表任务
+title: 教程 - 快速容器映像生成
 description: 本教程介绍如何使用 Azure 容器注册表任务（ACR 任务）在 Azure 中生成 Docker 容器映像，然后将其部署到 Azure 容器实例。
-services: container-registry
-author: dlepow
-ms.service: container-registry
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: ed5df09d492bbf6123e76f73717a1738a23a066c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7178d7171d4c9c0183eb744f19776f6b2fac09ef
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66152142"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259487"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>教程：使用 Azure 容器注册表任务在云中生成并部署容器映像
 
@@ -54,15 +50,15 @@ ms.locfileid: "66152142"
 
 创建存储库分支后，克隆分支然后输入包含本地克隆的目录。
 
-使用 `git` 克隆存储库，将“\<your-github-username\>”替换为你的 GitHub 用户名：
+使用 `git` 克隆存储库，将 \<your-github-username\> 替换为你的 GitHub 用户名：
 
-```azurecli-interactive
+```console
 git clone https://github.com/<your-github-username>/acr-build-helloworld-node
 ```
 
 输入包含源代码的目录：
 
-```azurecli-interactive
+```console
 cd acr-build-helloworld-node
 ```
 
@@ -74,9 +70,11 @@ cd acr-build-helloworld-node
 
 现已将源代码拉取到计算机中，请执行以下步骤来创建容器注册表并使用 ACR 任务生成容器映像。
 
-为使执行示例命令更轻松，本系列教程使用 shell 环境变量。 执行以下命令来设置 `ACR_NAME` 变量。 将“\<registry-name\>”替换为新容器注册表的唯一名称。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 本教程中创建的其他资源都基于该名称，因此仅需要修改该第一个变量。
+为使执行示例命令更轻松，本系列教程使用 shell 环境变量。 执行以下命令来设置 `ACR_NAME` 变量。 将 \<registry-name\> 替换为新容器注册表的唯一名称。 注册表名称在 Azure 中必须唯一，仅包含小写字母，并且包含 5-50 个字母数字字符。 本教程中创建的其他资源都基于该名称，因此仅需要修改该第一个变量。
 
-```azurecli-interactive
+[![嵌入式启动](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
+
+```console
 ACR_NAME=<registry-name>
 ```
 
@@ -97,8 +95,7 @@ az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
 
 [az acr build][az-acr-build] 命令的输出类似于以下示例。 可以看到源代码（“上下文”）已上传到 Azure，同时可以看到 ACR 任务在云中运行的 `docker build` 操作的详细信息。 由于 ACR 任务使用 `docker build` 生成映像，因此无需对 Dockerfile 进行任何更改即可立即开始使用 ACR 任务。
 
-```console
-$ az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
+```output
 Packing source code into tar file to upload...
 Sending build context (4.813 KiB) to ACR...
 Queued a build with build ID: da1
@@ -179,7 +176,7 @@ ACR 任务默认将成功生成的映像自动推送到注册表，这样即可�
 
 #### <a name="create-a-key-vault"></a>创建 key vault
 
-如果 [Azure Key Vault](/azure/key-vault/) 中没有保管库，请在 Azure CLI 中使用以下命令创建一个保管库。
+如果 [Azure Key Vault](../key-vault/index.yml) 中没有保管库，请在 Azure CLI 中使用以下命令创建一个保管库。
 
 ```azurecli-interactive
 AKV_NAME=$ACR_NAME-vault
@@ -191,7 +188,7 @@ az keyvault create --resource-group $RES_GROUP --name $AKV_NAME
 
 现在需要创建服务主体，并将其凭据存储在 Key Vault 中。
 
-请使用 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] 命令创建服务主体，使用 [az keyvault secret set][az-keyvault-secret-set] 将服务主体的密码存储在保管库中：
+请使用 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] 命令创建服务主体，使用 [az keyvault secret set][az-keyvault-secret-set] 将服务主体的**密码**存储在保管库中：
 
 ```azurecli-interactive
 # Create service principal, store its password in AKV (the registry *password*)
@@ -246,17 +243,7 @@ az container create \
 
 `--dns-name-label` 值必须在 Azure 中唯一，因此，上述命令会将容器注册表名称追加到容器的 DNS 名称标签。 该命令的输出显示容器的完全限定域名 (FQDN)，例如：
 
-```console
-$ az container create \
->     --resource-group $RES_GROUP \
->     --name acr-tasks \
->     --image $ACR_NAME.azurecr.io/helloacrtasks:v1 \
->     --registry-login-server $ACR_NAME.azurecr.io \
->     --registry-username $(az keyvault secret show --vault-name $AKV_NAME --name $ACR_NAME-pull-usr --query value -o tsv) \
->     --registry-password $(az keyvault secret show --vault-name $AKV_NAME --name $ACR_NAME-pull-pwd --query value -o tsv) \
->     --dns-name-label acr-tasks-$ACR_NAME \
->     --query "{FQDN:ipAddress.fqdn}" \
->     --output table
+```output
 FQDN
 ----------------------------------------------
 acr-tasks-myregistry.eastus.azurecontainer.io
@@ -266,7 +253,7 @@ acr-tasks-myregistry.eastus.azurecontainer.io
 
 ### <a name="verify-the-deployment"></a>验证部署
 
-若要观看容器的启动过程，请使用 [az container attach][az-container-attach] 命令：
+若要查看容器的启动过程，请使用 [az container attach][az-container-attach] 命令：
 
 ```azurecli-interactive
 az container attach --resource-group $RES_GROUP --name acr-tasks
@@ -274,8 +261,7 @@ az container attach --resource-group $RES_GROUP --name acr-tasks
 
 `az container attach` 输出在拉取映像和启动时会首先显示容器状态，然后将本地控制台的 STDOUT 和 STDERR 绑定到容器的 STDOUT 和 STDERR。
 
-```console
-$ az container attach --resource-group $RES_GROUP --name acr-tasks
+```output
 Container 'acr-tasks' is in state 'Running'...
 (count: 1) (last timestamp: 2018-08-22 18:39:10+00:00) pulling image "myregistry.azurecr.io/helloacrtasks:v1"
 (count: 1) (last timestamp: 2018-08-22 18:39:15+00:00) Successfully pulled image "myregistry.azurecr.io/helloacrtasks:v1"

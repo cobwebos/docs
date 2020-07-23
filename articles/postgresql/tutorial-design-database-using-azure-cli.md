@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 Azure CLI 设计 Azure Database for PostgreSQL - 单个服务器
+title: 教程：设计 Azure Database for PostgreSQL - 单一服务器 - Azure CLI
 description: 本教程演示如何使用 Azure CLI 创建、配置和查询你的第一个 Azure Database for PostgreSQL - 单个服务器。
 author: rachel-msft
 ms.author: raagyema
@@ -7,20 +7,20 @@ ms.service: postgresql
 ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 5/6/2019
-ms.openlocfilehash: ed272afcfedaf6c781d2a96e5732fe2368914a67
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 06/25/2019
+ms.openlocfilehash: c79e64fddaf404b459dd2215e4a2e9236f1bc221
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073071"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75460009"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>教程：使用 Azure CLI 设计 Azure Database for PostgreSQL - 单个服务器 
 在本教程中，需使用 Azure CLI（命令行接口）以及其他实用工具了解如何完成以下操作：
 > [!div class="checklist"]
 > * 创建 Azure Database for PostgreSQL 服务器
 > * 配置服务器防火墙
-> * 使用 [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) 实用工具创建数据库
+> * 使用 [psql  ](https://www.postgresql.org/docs/9.6/static/app-psql.html) 实用工具创建数据库
 > * 加载示例数据
 > * 查询数据
 > * 更新数据
@@ -38,7 +38,7 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
 ## <a name="create-a-resource-group"></a>创建资源组
-使用 [az group create](/cli/azure/group) 命令创建 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 以下示例在 `westus` 位置创建名为 `myresourcegroup` 的资源组。
+使用 [az group create](/cli/azure/group) 命令创建 [Azure 资源组](../azure-resource-manager/management/overview.md)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 以下示例在 `westus` 位置创建名为 `myresourcegroup` 的资源组。
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
@@ -60,7 +60,7 @@ sku-name 参数值遵循 {定价层}\_{计算层代}\_{vCore 数} 约定，如�
 > [!IMPORTANT]
 > 此处指定的服务器管理员登录名和密码是以后在本快速入门中登录到服务器及其数据库所必需的。 请牢记或记录此信息，以后会使用到它。
 
-默认情况下，在服务器下创建 postgres 数据库。 [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) 是供用户、实用工具和第三方应用程序使用的默认数据库。 
+默认情况下，会在服务器下创建 **postgres** 数据库。 [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) 是供用户、实用工具和第三方应用程序使用的默认数据库。 
 
 
 ## <a name="configure-a-server-level-firewall-rule"></a>配置服务器级防火墙规则
@@ -86,7 +86,7 @@ az postgres server firewall-rule create --resource-group myresourcegroup --serve
 az postgres server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-结果采用 JSON 格式。 记下 administratorLogin 和 fullyQualifiedDomainName。
+结果采用 JSON 格式。 记下 administratorLogin  和 fullyQualifiedDomainName  。
 ```json
 {
   "administratorLogin": "myadmin",
@@ -121,22 +121,28 @@ az postgres server show --resource-group myresourcegroup --name mydemoserver
 如果客户端计算机已安装 PostgreSQL，则可使用 [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) 的本地实例，或 Azure 云控制台连接到 Azure PostgreSQL 服务器。 现在，使用 psql 命令行实用工具连接到“用于 PostgreSQL 的 Azure 数据库”服务器。
 
 1. 运行以下 psql 命令连接到 Azure Database for PostgreSQL 数据库：
-   ```azurecli-interactive
+   ```
    psql --host=<servername> --port=<port> --username=<user@servername> --dbname=<dbname>
    ```
 
-   例如，以下命令使用访问凭据连接到 PostgreSQL 服务器 mydemoserver.postgres.database.azure.com 上名为“postgres”的默认数据库。 提示输入密码时，输入之前选择的 `<server_admin_password>`。
+   例如，以下命令使用访问凭据连接到 PostgreSQL 服务器 mydemoserver.postgres.database.azure.com  上名为“postgres”  的默认数据库。 提示输入密码时，输入之前选择的 `<server_admin_password>`。
   
-   ```azurecli-interactive
+   ```
    psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
    ```
+
+   > [!TIP]
+   > 如果更喜欢使用 URL 路径连接到 Postgres，则 URL 会使用 `%40` 对用户名中的 @ 符号进行编码。 例如，psql 的连接字符串将是：
+   > ```
+   > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
+   > ```
 
 2. 连接到服务器后，在出现提示时创建空数据库：
    ```sql
    CREATE DATABASE mypgsqldb;
    ```
 
-3. 出现提示时，请执行以下命令，将连接切换到新建的数据库 mypgsqldb：
+3. 出现提示时，请执行以下命令，将连接切换到新建的数据库 mypgsqldb  ：
    ```sql
    \c mypgsqldb
    ```
@@ -196,7 +202,7 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 | 设置 | 建议的值 | 说明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  源服务器所在的资源组。  |
-| 名称 | mydemoserver-restored | 通过还原命令创建的新服务器的名称。 |
+| name | mydemoserver-restored | 通过还原命令创建的新服务器的名称。 |
 | restore-point-in-time | 2017-04-13T13:59:00Z | 选择要还原到的时间点。 此日期和时间必须在源服务器的备份保留期限内。 使用 ISO8601 日期和时间格式。 例如，可使用自己的本地时区（如 `2017-04-13T05:59:00-08:00`），或使用 UTC Zulu 格式 `2017-04-13T13:59:00Z`。 |
 | source-server | mydemoserver | 要从其还原的源服务器的名称或 ID。 |
 
@@ -210,7 +216,7 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 > [!div class="checklist"]
 > * 创建 Azure Database for PostgreSQL 服务器
 > * 配置服务器防火墙
-> * 使用 [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) 实用工具创建数据库
+> * 使用 [psql  ](https://www.postgresql.org/docs/9.6/static/app-psql.html) 实用工具创建数据库
 > * 加载示例数据
 > * 查询数据
 > * 更新数据

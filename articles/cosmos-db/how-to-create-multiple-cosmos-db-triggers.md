@@ -1,33 +1,33 @@
 ---
-title: 如何创建多个独立的 Azure Cosmos DB 触发器
-description: 了解如何配置多个独立的 Azure Cosmos DB 触发器以创建事件驱动的 Azure Functions 体系结构。
+title: 为 Cosmos DB 创建多个独立的 Azure Functions 触发器
+description: 了解如何配置多个独立的适用于 Cosmos DB 的 Azure Functions 触发器以创建事件驱动的体系结构。
 author: ealsur
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 05/23/2019
+ms.topic: how-to
+ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 722da9f0112d63af52be8c9c3a746f6da9638bac
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: HT
+ms.openlocfilehash: 695513bb572f5931ee1f0fa54a330cfa0574fc21
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241949"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261590"
 ---
-# <a name="create-multiple-azure-cosmos-db-triggers"></a>创建多个 Azure Cosmos DB 触发器
+# <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>创建多个适用于 Cosmos DB 的 Azure Functions 触发器
 
-本文介绍如何配置多个 Cosmos DB 触发器，以并行工作并独立地对更改做出反应。
+本文介绍如何配置多个适用于 Cosmos DB 的 Azure Functions 触发器，以并行工作并独立地对更改做出反应。
 
-![基于事件的无服务器 Functions 使用 Azure Cosmos DB 触发器并共享租用容器](./media/change-feed-functions/multi-trigger.png)
+:::image type="content" source="./media/change-feed-functions/multi-trigger.png" alt-text="基于事件的无服务器 Functions 使用适用于 Cosmos DB 的 Azure Functions 触发器并共享租用容器" border="false":::
 
 ## <a name="event-based-architecture-requirements"></a>基于事件的体系结构要求
 
 使用 [Azure Functions](../azure-functions/functions-overview.md) 生成无服务器体系结构时，[建议](../azure-functions/functions-best-practices.md#avoid-long-running-functions)创建协同工作的小型函数集，而不是长时间运行的大型函数。
 
-在使用 [Azure Cosmos DB 触发器](./change-feed-functions.md)生成基于事件的无服务器的流时，只要特定 [Azure Cosmos 容器](./databases-containers-items.md#azure-cosmos-containers)中存在新事件，就会遇到要执行多项操作的方案。 如果要触发的操作彼此独立，理想的解决方案是为每个要执行的操作创建一个 Cosmos DB 触发器，同时侦听同一 Azure Cosmos 容器上的更改  。
+在使用[适用于 Cosmos DB 的 Azure Functions 触发器](./change-feed-functions.md)生成基于事件的无服务器流时，只要特定 [Azure Cosmos 容器](./databases-containers-items.md#azure-cosmos-containers)中存在新事件，就会遇到要执行多项操作的方案。 如果要触发的操作彼此独立，理想的解决方案是为每个要执行的操作创建一个适用于 Cosmos DB 的 Azure Functions 触发器，所有触发器侦听同一 Azure Cosmos 容器上的更改  。
 
 ## <a name="optimizing-containers-for-multiple-triggers"></a>优化多个触发器的容器
 
-鉴于 Cosmos DB 触发器的要求，我们需要第二个容器来存储状态，也称为租用容器   。 这是否意味着每个 Azure 函数需要一个单独的租用容器？
+鉴于适用于 Cosmos DB 的 Azure Functions 触发器的要求，我们需要第二个容器来存储状态，也称为租用容器   。 这是否意味着每个 Azure 函数需要一个单独的租用容器？
 
 可以使用以下两个选项：
 
@@ -38,7 +38,7 @@ ms.locfileid: "66241949"
 
 ## <a name="configuring-a-shared-leases-container"></a>配置共享的租用容器
 
-若要配置共享的租用容器，需要在触发器上进行的唯一额外配置是在使用 C# 时添加 `LeaseCollectionPrefix` [属性](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---c-attributes)，或在使用 JavaScript 时添加 `leaseCollectionPrefix` [属性](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---javascript-example)。 属性的值应是特定触发器的逻辑描述符。
+若要配置共享的租用容器，需要在触发器上进行的唯一额外配置是在使用 C# 时添加 `LeaseCollectionPrefix` [属性](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations)，或在使用 JavaScript 时添加 `leaseCollectionPrefix` [属性](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md)。 属性的值应是特定触发器的逻辑描述符。
 
 例如，如果有三个触发器：一个发送电子邮件，一个执行聚合以创建具体化视图，一个将更改发送到另一个存储，供以后分析，那么可以将“电子邮件”的 `LeaseCollectionPrefix` 分配到第一个触发器，“具体化”分配到第二个触发器，“分析”分配到第三个触发器。
 
@@ -108,6 +108,6 @@ public static void MaterializedViews([CosmosDBTrigger(
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅 [Azure Cosmos DB 触发器](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)的完整配置
-* 检查所有语言的扩展[示例列表](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---example)。
+* 请参阅[适用于 Cosmos DB 的 Azure Functions 触发器](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)的完整配置
+* 检查所有语言的扩展[示例列表](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md)。
 * 使用 Azure Cosmos DB 和 Azure Functions [GitHub 存储库](https://github.com/ealsur/serverless-recipes/tree/master/cosmosdbtriggerscenarios)访问无服务器方案以获取更多示例。

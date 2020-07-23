@@ -4,28 +4,28 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: 22f16a7382cb0fe1f3fe2a6ef5e7c00a6989623c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: e0ff4e91ed55a37e710a5655e7da9ec76b7d1dd5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66165306"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84014684"
 ---
 ## <a name="next-steps"></a>后续步骤
 
-启用 Azure 密钥保管库集成之后，可以在 SQL VM 上启用 SQL Server 加密。 首先，需要在密钥保管库内创建一个非对称密钥，并在 VM 上的 SQL Server 中创建一个对称密钥。 然后，将能够执行 T-SQL 语句，启用对数据库和备份的加密。
+启用 Azure 密钥保管库集成之后，可以在 SQL VM 上启用 SQL Server 加密。 首先，需要在密钥保管库内创建一个非对称密钥，并在 VM 上的 SQL Server 中创建一个对称密钥。 然后，能够执行的 T-SQL 语句，以启用对数据库和备份的加密。
 
 可以利用以下几种形式的加密：
 
-* [透明数据加密 (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
-* [加密备份](https://msdn.microsoft.com/library/dn449489.aspx)
-* [列级加密 (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)
+* [透明数据加密 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption)
+* [加密备份](/sql/relational-databases/backup-restore/backup-encryption)
+* [列级加密 (CLE)](/sql/t-sql/functions/cryptographic-functions-transact-sql)
 
 以下 Transact-SQL 脚本提供针对每种形式的示例。
 
 ### <a name="prerequisites-for-examples"></a>先决条件示例
 
-每个示例基于两个先决条件：密钥保管库中名为 **CONTOSO_KEY** 的非对称密钥，以及 AKV 集成功能创建的名为 **Azure_EKM_TDE_cred** 的凭据。 以下 Transact-SQL 命令设置这些运行示例所需的先决条件。
+每个示例基于以下两个先决条件：密钥保管库中名为**CONTOSO_KEY**的非对称密钥，以及由名为**Azure_EKM_cred**的 AKV 集成功能创建的凭据。 以下 Transact-SQL 命令设置这些运行示例所需的先决条件。
 
 ``` sql
 USE master;
@@ -33,7 +33,7 @@ GO
 
 --create credential
 --The <<SECRET>> here requires the <Application ID> (without hyphens) and <Secret> to be passed together without a space between them.
-CREATE CREDENTIAL sysadmin_ekm_cred
+CREATE CREDENTIAL Azure_EKM_cred
     WITH IDENTITY = 'keytestvault', --keyvault
     SECRET = '<<SECRET>>'
 FOR CRYPTOGRAPHIC PROVIDER AzureKeyVault_EKM_Prov;
@@ -41,7 +41,7 @@ FOR CRYPTOGRAPHIC PROVIDER AzureKeyVault_EKM_Prov;
 
 --Map the credential to a SQL login that has sysadmin permissions. This allows the SQL login to access the key vault when creating the asymmetric key in the next step.
 ALTER LOGIN [SQL_Login]
-ADD CREDENTIAL sysadmin_ekm_cred;
+ADD CREDENTIAL Azure_EKM_cred;
 
 
 CREATE ASYMMETRIC KEY CONTOSO_KEY
@@ -52,7 +52,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
 
 ### <a name="transparent-data-encryption-tde"></a>透明数据加密 (TDE)
 
-1. 创建数据库引擎将用于 TDE 的 SQL Server 登录名，然后向其添加凭据。
+1. 创建数据库引擎用于 TDE 的 SQL Server 登录名，然后向其添加凭据。
 
    ``` sql
    USE master;
@@ -70,7 +70,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-1. 创建将用于 TDE 的数据库加密密钥。
+1. 创建用于 TDE 的数据库加密密钥。
 
    ``` sql
    USE ContosoDatabase;
@@ -89,7 +89,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
 
 ### <a name="encrypted-backups"></a>加密备份
 
-1. 创建数据库引擎将用于加密备份的 SQL Server 登录名，然后向其添加凭据。
+1. 创建数据库引擎用于加密备份的 SQL Server 登录名，然后向其添加凭据。
 
    ``` sql
    USE master;
@@ -119,7 +119,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
 
 ### <a name="column-level-encryption-cle"></a>列级加密 (CLE)
 
-此脚本创建一个受密钥保管库中的非对称密钥保护的对称密钥，然后使用该对称密钥对数据库中的数据进行加密。
+此脚本创建一个受密钥保管库中的非对称密钥保护的对称密钥，并使用该对称密钥对数据库中的数据进行加密。
 
 ``` sql
 CREATE SYMMETRIC KEY DATA_ENCRYPTION_KEY
@@ -146,4 +146,4 @@ CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 
 有关如何使用这些加密功能的详细信息，请参阅[将 EKM 用于 SQL Server 加密功能](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM)。
 
-请注意，本文中的步骤假定用户已经具有在 Azure 虚拟机上运行的 SQL Server。 如果没有，请参阅[在 Azure 中预配 SQL Server 虚拟机](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md)。 有关在 Azure VM 中运行 SQL Server 的其他指南，请参阅 [Azure 虚拟机上的 SQL Server 概述](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)。
+请注意，本文中的步骤假定已经具有在 Azure 虚拟机上运行的 SQL Server。 如果没有，请参阅[在 Azure 中预配 SQL Server 虚拟机](../articles/azure-sql/virtual-machines/windows/create-sql-vm-portal.md)。 有关在 Azure VM 中运行 SQL Server 的其他指南，请参阅 [Azure 虚拟机上的 SQL Server 概述](../articles/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)。

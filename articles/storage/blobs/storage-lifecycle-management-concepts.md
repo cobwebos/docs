@@ -1,69 +1,100 @@
 ---
 title: 管理 Azure 存储生命周期
 description: 了解如何创建生命周期策略规则，以将陈旧数据从热存储转移到冷存储和存档层。
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.topic: conceptual
-ms.date: 05/21/2019
 ms.author: mhopkins
-ms.reviewer: yzheng
+ms.date: 04/24/2020
+ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: ce2559f62d29c7b062cfd1ad1dcb61146adfd91c
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.topic: conceptual
+ms.reviewer: yzheng
+ms.openlocfilehash: 6285c25c44b7b8c5b2c1d9c148424fc36912b57c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001756"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528686"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 存储生命周期
 
-数据集具有独特的生命周期。 在生命周期的早期，人们经常访问某些数据。 但随着数据的老化，访问需求急剧下降。 有些数据在云中保持空闲状态，并且在存储后很少被访问。 有些数据在创建后的数日或者数月即会过期，还有一些数据集在其整个生存期会频繁受到读取和修改。 Azure Blob 存储生命周期管理提供 GPv2 和 Blob 存储帐户的丰富的、 基于规则的策略。 可使用该策略将数据转移到适当的访问层，或在数据的生命周期结束时使数据过期。
+数据集具有独特的生命周期。 在生命周期的早期，人们经常访问某些数据。 但随着数据的老化，访问需求急剧下降。 有些数据在云中保持空闲状态，并且在存储后很少被访问。 有些数据在创建后的数日或者数月即会过期，还有一些数据集在其整个生存期会频繁受到读取和修改。 Azure Blob 存储生命周期管理为 GPv2 和 Blob 存储帐户提供丰富的基于规则的策略。 可使用该策略将数据转移到适当的访问层，或在数据的生命周期结束时使数据过期。
 
 生命周期管理策略允许：
 
 - 将 Blob 转移到较冷的存储层（从热到冷、从热到存档，或者从冷到存档），以便针对性能和成本进行优化
 - 删除生命周期已结束的 Blob
 - 在存储帐户级别定义每天运行一次的规则
-- 将规则应用到容器或 Blob 子集（使用前缀作为筛选器）
+- 将规则应用于容器或 blob 的一个子集（使用名称前缀或[blob 索引标记](storage-manage-find-blobs.md)作为筛选器）
 
-请考虑数据生命周期中，但仅的早期阶段获取的频繁访问的位置的方案有时后两周。 一个月以后，该数据集很少被访问。 在这种场景下，早期阶段最适合使用热存储。 冷存储是最适合于偶尔访问权限。 存档存储是超过一个月的数据变旧之后将最佳层选项。 通过根据数据陈旧程度调整存储层，可根据需求设计出最具性价比的存储选项。 若要实现这种过渡，可以使用生命周期管理策略规则将陈旧数据转移到较冷的存储层。
+假设某个数据集在生命周期的早期阶段频繁被访问，两周后只是偶尔被访问。 一个月以后，该数据集很少被访问。 在这种场景下，早期阶段最适合使用热存储。 在偶尔访问阶段最适合使用冷存储。 在一个月后数据陈旧时，存档存储便是最佳的层选项。 通过根据数据陈旧程度调整存储层，可根据需求设计出最具性价比的存储选项。 若要实现这种过渡，可以使用生命周期管理策略规则将陈旧数据转移到较冷的存储层。
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="storage-account-support"></a>存储帐户支持
 
-生命周期管理策略适用于常规用途 v2 (GPv2) 帐户和 Blob 存储帐户。 在 Azure 门户中，你可以升级到 GPv2 帐户的现有的常规用途 (GPv1) 帐户。 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。  
+生命周期管理策略可用于常规用途 v2 （GPv2）帐户、Blob 存储帐户和高级块 Blob 存储帐户。 在 Azure 门户中，可将现有的常规用途 (GPv1) 帐户升级为 GPv2 帐户。 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。  
 
 ## <a name="pricing"></a>定价
 
-生命周期管理功能是免费。 客户需要支付[列出 Blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 和[设置 Blob 层](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API 调用的常规操作费用。 删除操作是免费的。 有关定价的详细信息，请参阅[块 Blob 定价](https://azure.microsoft.com/pricing/details/storage/blobs/)。
+生命周期管理功能是免费的。 客户将按[集 Blob 层](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier)API 调用的常规操作成本收费。 删除操作是免费的。 有关定价的详细信息，请参阅[块 Blob 定价](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
 ## <a name="regional-availability"></a>区域可用性
 
-生命周期管理功能目前在所有全局 Azure 区域。
+生命周期管理功能在所有 Azure 区域中均可用。
 
 ## <a name="add-or-remove-a-policy"></a>添加或删除策略
 
-您可以添加、 编辑或删除策略通过使用任何以下方法：
+可以使用以下任一方法来添加、编辑或删除策略：
 
 * [Azure 门户](https://portal.azure.com)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 * [REST API](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
 
-本文介绍如何使用门户和 PowerShell 方法管理策略。  
+可以完整读取或写入策略。 不支持部分更新。 
 
 > [!NOTE]
-> 如果为存储帐户启用了防火墙规则，生命周期管理请求可能会被阻止。 可以通过提供例外来取消阻止这些请求。 需要绕过是： `Logging,  Metrics,  AzureServices`。 有关详细信息，请参阅[配置防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)中的“例外”部分。
+> 如果为存储帐户启用了防火墙规则，生命周期管理请求可能会被阻止。 可以通过为受信任的 Microsoft 服务提供例外，来取消阻止这些请求。 有关详细信息，请参阅[配置防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)中的“例外”部分。
 
-### <a name="azure-portal"></a>Azure 门户
+本文介绍如何使用门户和 PowerShell 方法管理策略。  
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+可以在 Azure 门户中通过两种方式添加策略。 
+
+* [Azure 门户列表视图](#azure-portal-list-view)
+* [Azure 门户代码视图](#azure-portal-code-view)
+
+#### <a name="azure-portal-list-view"></a>Azure 门户列表视图
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 选择**的所有资源**，然后选择你的存储帐户。
+2. 在 Azure 门户中，搜索并选择你的存储帐户。 
 
-3. 下**Blob 服务**，选择**生命周期管理**若要查看或更改你的策略。
+3. 在“Blob 服务”下，选择“生命周期管理”以查看或更改规则 。
 
-4. 以下 JSON 是可以粘贴到规则的一个例子**生命周期管理**门户页。
+4. 选择“列表视图”选项卡。
+
+5. 选择“添加规则”，然后填写“操作集”窗体字段。  在以下示例中，如果 Blob 有 30 天未修改，它们将转移到冷存储。
+
+   ![Azure 门户中的生命周期管理操作集页](media/storage-lifecycle-management-concepts/lifecycle-management-action-set.png)
+
+6. 选择“筛选器集”添加可选的筛选器。 然后，选择“浏览”以指定作为筛选依据的容器和文件夹。
+
+   ![Azure 门户中的生命周期管理筛选器集页](media/storage-lifecycle-management-concepts/lifecycle-management-filter-set-browse.png)
+
+8. 选择“查看 + 添加”以查看策略设置。
+
+9. 选择“添加”以添加新策略。
+
+#### <a name="azure-portal-code-view"></a>Azure 门户代码视图
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+
+2. 在 Azure 门户中，搜索并选择你的存储帐户。
+
+3. 在“Blob 服务”下，选择“生命周期管理”以查看或更改策略 。
+
+4. 以下 JSON 是可粘贴到“代码视图”选项卡中的策略示例。
 
    ```json
    {
@@ -93,11 +124,13 @@ ms.locfileid: "66001756"
    }
    ```
 
-5. 有关此 JSON 示例的详细信息，请参阅[策略](#policy)并[规则](#rules)部分。
+5. 选择“保存” 。
 
-### <a name="powershell"></a>PowerShell
+6. 有关此 JSON 示例的详细信息，请参阅[策略](#policy)和[规则](#rules)部分。
 
-以下 PowerShell 脚本可用于将策略添加到你的存储帐户。 `$rgname`必须使用资源组名称初始化变量。 `$accountName`必须使用你的存储帐户名称初始化变量。
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+使用以下 PowerShell 脚本可将策略添加到存储帐户。 必须使用资源组名称初始化 `$rgname` 变量。 必须使用存储帐户名称初始化 `$accountName` 变量。
 
 ```powershell
 #Install the latest module
@@ -125,13 +158,13 @@ $rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Fi
 $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
 ```
 
-## <a name="azure-resource-manager-template-with-lifecycle-management-policy"></a>使用生命周期管理策略的 azure 资源管理器模板
+# <a name="template"></a>[模板](#tab/template)
 
-可以通过使用 Azure 资源管理器模板定义生命周期管理。 下面是示例模板，部署生命周期管理策略与 RA-GRS GPv2 存储帐户。
+可以使用 Azure 资源管理器模板定义生命周期管理。 以下示例模板可以使用生命周期管理策略部署 RA-GRS GPv2 存储帐户。
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {
@@ -167,6 +200,8 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 }
 ```
 
+---
+
 ## <a name="policy"></a>策略
 
 生命周期管理策略是 JSON 文档中的规则集合：
@@ -189,19 +224,19 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 }
 ```
 
-策略是一系列规则：
+策略是规则的集合：
 
-| 参数名称 | 参数类型 | 说明 |
+| 参数名称 | 参数类型 | 注释 |
 |----------------|----------------|-------|
-| `rules`        | 规则对象的数组 | 在策略中需要至少一个规则。 您可以在策略中定义最多 100 个规则。|
+| `rules`        | 规则对象的数组 | 一个策略至少需要包含一个规则。 最多可在一个策略中定义 100 个规则。|
 
-每个规则在策略中的有几个参数：
+策略中的每个规则具有多个参数：
 
-| 参数名称 | 参数类型 | 说明 | 需要 |
+| 参数名称 | 参数类型 | 注释 | 必须 |
 |----------------|----------------|-------|----------|
-| `name`         | String |规则名称可以包含最多 256 个字母数字字符。 规则名称区分大小写。  该名称必须在策略中唯一。 | True |
-| `enabled`      | Boolean | 可选的布尔值，以允许规则以将临时禁用。 默认值为 true，如果未设置。 | False | 
-| `type`         | 枚举值 | 当前的有效类型是`Lifecycle`。 | True |
+| `name`         | String |规则名称最多只能包含 256 个字母数字字符。 规则名称区分大小写。  该名称必须在策略中唯一。 | True |
+| `enabled`      | 布尔 | 一个允许暂时禁用规则的可选布尔值。 如果未设置，则默认值为 true。 | False | 
+| `type`         | 枚举值 | 当前的有效类型为 `Lifecycle`。 | True |
 | `definition`   | 定义生命周期规则的对象 | 每个定义均由筛选器集和操作集组成。 | True |
 
 ## <a name="rules"></a>规则
@@ -210,7 +245,10 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 ### <a name="sample-rule"></a>示例规则
 
-下面的示例规则筛选器的帐户存在于内的对象上运行操作`container1`并且开头`foo`。  
+以下示例规则将筛选帐户，以针对 `container1` 中存在的、以 `foo` 开头的对象运行操作。  
+
+>[!NOTE]
+>生命周期管理仅支持块 blob 类型。  
 
 - 在上次修改后的 30 天后，将 Blob 分层到冷层
 - 在上次修改后的 90 天后，将 Blob 分层到存档层
@@ -251,32 +289,36 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 筛选器包括：
 
-| 筛选器名称 | 筛选类型 | 说明 | 必需 |
+| 筛选器名称 | 筛选器类型 | 注释 | 是否必需 |
 |-------------|-------------|-------|-------------|
-| blobTypes   | 预定义枚举值的数组。 | 当前版本支持`blockBlob`。 | “是” |
-| prefixMatch | 要匹配的前缀字符串数组。 每个规则可以定义最多 10 个前缀。 前缀字符串必须以容器名称开头。 例如，如果您希望匹配下的所有 blob`https://myaccount.blob.core.windows.net/container1/foo/...`的规则是 prefixMatch `container1/foo`。 | 如果未定义 prefixMatch，规则将适用于存储帐户中的所有 blob。  | “否” |
+| blobTypes   | 预定义枚举值的数组。 | 当前版本支持 `blockBlob`。 | 是 |
+| prefixMatch | 要匹配的前缀字符串数组。 每个规则最多可定义 10 个前缀。 前缀字符串必须以容器名称开头。 例如，如果要为某个规则匹配 `https://myaccount.blob.core.windows.net/container1/foo/...` 下的所有 Blob，则 prefixMatch 为 `container1/foo`。 | 如果未定义 prefixMatch，规则将应用到存储帐户中的所有 Blob。  | 否 |
+| blobIndexMatch | 由要匹配的 Blob 索引标记键和值条件组成的字典值的数组。 每个规则最多可以定义10个 Blob 索引标记条件。 例如，如果想要将的所有 blob 与 `Project = Contoso` 下的 `https://myaccount.blob.core.windows.net/` 规则进行匹配，则 blobIndexMatch 为 `{"name": "Project","op": "==","value": "Contoso"}` 。 | 如果未定义 blobIndexMatch，则规则将应用于存储帐户中的所有 blob。 | 否 |
+
+> [!NOTE]
+> Blob 索引为公共预览版，在**法国中部**和**法国南部**区域可用。 若要详细了解此功能以及已知问题和限制，请参阅[通过 Blob 索引（预览版）管理和查找 Azure Blob 存储上的数据](storage-manage-find-blobs.md)。
 
 ### <a name="rule-actions"></a>规则操作
 
-当满足运行的条件操作应用于已筛选的 blob。
+满足运行条件时，操作将应用到筛选的 Blob。
 
-生命周期管理支持分层和删除的 blob 以及删除的 blob 快照。 在 Blob 或 Blob 快照中为每个规则至少定义一个操作。
+生命周期管理支持 Blob 的分层和删除，以及 Blob 快照的删除。 在 Blob 或 Blob 快照中为每个规则至少定义一个操作。
 
 | 操作        | 基本 Blob                                   | 快照      |
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | 目前支持位于热层的 Blob         | 不支持 |
 | tierToArchive | 目前支持位于热层或冷层的 Blob | 不支持 |
-| delete        | 支持                                   | 支持     |
+| 删除        | 支持                                   | 支持     |
 
 >[!NOTE]
 >如果在同一 Blob 中定义了多个操作，生命周期管理将对该 Blob 应用开销最低的操作。 例如，操作 `delete` 的开销比 `tierToArchive` 更低。 操作 `tierToArchive` 的开销比 `tierToCool` 更低。
 
-运行的条件根据存在时间。 基本 Blob 使用上次修改时间来跟踪陈旧程度，Blob 快照使用快照创建时间来跟踪陈旧程度。
+运行条件基于期限。 基本 Blob 使用上次修改时间来跟踪陈旧程度，Blob 快照使用快照创建时间来跟踪陈旧程度。
 
-| 操作以运行条件             | 条件值                          | 描述                             |
+| 操作运行条件             | 条件值                          | 说明                             |
 |----------------------------------|------------------------------------------|-----------------------------------------|
-| daysAfterModificationGreaterThan | 指示陈旧程度（天）的整数值 | 基本 blob 操作的条件     |
-| daysAfterCreationGreaterThan     | 指示陈旧程度（天）的整数值 | Blob 快照操作条件 |
+| daysAfterModificationGreaterThan | 指示陈旧程度（天）的整数值 | 基本 Blob 操作的条件     |
+| daysAfterCreationGreaterThan     | 指示陈旧程度（天）的整数值 | Blob 快照操作的条件 |
 
 ## <a name="examples"></a>示例
 
@@ -310,9 +352,12 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 }
 ```
 
-### <a name="archive-data-at-ingest"></a>引入时存档数据
+### <a name="archive-data-after-ingest"></a>引入数据后对其进行存档
 
-某些数据在云中保持空闲状态，并且在存储后很少（如果有）被访问。 下面的生命周期策略被配置为将数据存档后引入。 此示例中转换的块 blob 容器中的存储帐户中`archivecontainer`到存档层。 转换通过对 blob 进行操作上次修改时间之后的 0 天：
+某些数据在云中保持空闲状态，并且在存储后很少（如果有）被访问。 以下生命周期策略已配置为在引入数据后立即对其进行存档。 此示例将容器 `archivecontainer` 中的存储帐户中的块 Blob 转移到存档层。 转移是通过在上次修改后的 0 天内处理 Blob 实现的：
+
+> [!NOTE] 
+> 建议将 blob 直接上传到存档层以提高效率。 可以将[PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob)或[PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list)的 x ms 访问层标头与 REST 版本2018-11-09 及更高版本或最新的 blob 存储客户端库配合使用。 
 
 ```json
 {
@@ -340,7 +385,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 ### <a name="expire-data-based-on-age"></a>基于陈旧程度使数据过期
 
-某些数据应过期天或数月后创建。 可以将生命周期管理策略配置为：根据数据陈旧程度删除数据，以使数据过期。 下面的示例显示了一个策略以删除早于 365 天的所有块 blob。
+某些数据预期在创建后的数日或数月内过期。 可以将生命周期管理策略配置为：根据数据陈旧程度删除数据，以使数据过期。 以下示例中演示的策略删除超过 365 天的所有块 Blob。
 
 ```json
 {
@@ -361,6 +406,42 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
       }
     }
   ]
+}
+```
+
+### <a name="delete-data-with-blob-index-tags"></a>删除包含 Blob 索引标记的数据
+某些数据应仅在明确标记为删除时过期。 你可以配置生命周期管理策略，使标记有 blob 索引键/值属性的数据过期。 下面的示例演示了一个策略，该策略删除标记有的所有块 blob `Project = Contoso` 。 若要详细了解 Blob 索引，请参阅[通过 Blob 索引（预览版）管理和查找 Azure Blob 存储上的数据](storage-manage-find-blobs.md)。
+
+```json
+{
+    "rules": [
+        {
+            "enabled": true,
+            "name": "DeleteContosoData",
+            "type": "Lifecycle",
+            "definition": {
+                "actions": {
+                    "baseBlob": {
+                        "delete": {
+                            "daysAfterModificationGreaterThan": 0
+                        }
+                    }
+                },
+                "filters": {
+                    "blobIndexMatch": [
+                        {
+                            "name": "Project",
+                            "op": "==",
+                            "value": "Contoso"
+                        }
+                    ],
+                    "blobTypes": [
+                        "blockBlob"
+                    ]
+                }
+            }
+        }
+    ]
 }
 ```
 
@@ -391,17 +472,23 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 }
 ```
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
-**我创建了新的策略，为什么要执行的操作不立即运行？**  
-平台每天运行一次生命周期策略。 一旦配置策略时，它可能需要最多 24 小时的第一次运行的某些操作。  
+**我创建了一个新策略，但操作为什么没有立即运行？**  
+平台每天运行一次生命周期策略。 配置策略后，某些操作可能需要在长达 24 小时之后才能首次运行。  
 
-**我手动解除冻结存档的 blob，如何防止其被移回到存档层暂时吗？**  
-当从一个访问层中 blob 移动到另一个访问层时，不会更改其上次修改时间。 如果您手动解除冻结为热层已存档的 blob，它会移回到存档层的生命周期管理引擎。 您可以通过禁用的规则，这会影响此 blob 暂时阻止它。 如果需要永久保留在热层，可以将 blob 复制到另一个位置。 Blob 可以安全地移回到存档层时，可以重新启用该规则。 
+**如果更新现有策略，运行操作需要多长时间？**  
+已更新的策略最多需要 24 小时才能生效。 策略生效后，最多可能需要 24 小时才能执行操作。 因此，策略操作最多可能需要 48 小时才能完成。   
 
+**我手动解冻了某个存档的 Blob，如何防止它暂时性地移回到存档层？**  
+将 Blob 从一个访问层移到另一个访问层后，其上次修改时间不会更改。 如果手动将存档的 Blob 解冻到热层，生命周期管理引擎会将它移回到存档层。 暂时禁用影响此 Blob 的规则可防止该 Blob 再次存档。 可以安全地将 Blob 移回到存档层时，重新启用该规则即可。 如果需要将 Blob 永久保留在热层或冷层，也可以将其复制到另一个位置。
 
 ## <a name="next-steps"></a>后续步骤
 
 了解如何在意外删除数据后恢复数据：
 
-- [Azure 存储 blob 的软删除](../blobs/storage-blob-soft-delete.md)
+- [Azure 存储 Blob 的软删除](../blobs/storage-blob-soft-delete.md)
+
+了解如何通过 Blob 索引管理和查找数据：
+
+- [在 Azure Blob 存储中管理和查找数据（包含 Blob 索引）](storage-manage-find-blobs.md)

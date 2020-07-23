@@ -1,31 +1,29 @@
 ---
-title: 教程 - 为 Linux VM 创建和管理 Azure 虚拟网络 | Microsoft Docs
+title: 教程 - 为 Linux VM 创建和管理 Azure 虚拟网络
 description: 本教程介绍如何使用 Azure CLI 为 Linux 虚拟机创建和管理 Azure 虚拟网络
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e90880aeaae17c80d6714f917f2ea849c953711f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8e5c03876de8ca078c6e89b8ca101602e4e4cf52
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66169317"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045733"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>教程：使用 Azure CLI 为 Linux 虚拟机创建和管理 Azure 虚拟网络
 
-Azure 虚拟机使用 Azure 网络进行内部和外部网络通信。 本教程会指导读者部署两个虚拟机，并为这些 VM 配置 Azure 网络。 本教程中的示例假设 VM 将要托管包含数据库后端的 Web 应用程序，但本教程并未介绍如何部署应用程序。 本教程介绍如何执行下列操作：
+Azure 虚拟机使用 Azure 网络进行内部和外部网络通信。 本教程会指导读者部署两个虚拟机，并为这些 VM 配置 Azure 网络。 本教程中的示例假设 VM 将要托管包含数据库后端的 Web 应用程序，但本教程并未介绍如何部署应用程序。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建虚拟网络和子网
@@ -34,7 +32,7 @@ Azure 虚拟机使用 Azure 网络进行内部和外部网络通信。 本教程
 > * 保护网络流量的安全
 > * 创建后端 VM
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+本教程在 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 中使用 CLI，后者已不断更新到最新版本。 若要打开 Cloud Shell，请从任何代码块的顶部选择“试一试”。
 
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
@@ -293,7 +291,7 @@ az network nsg rule list --resource-group myRGNetwork --nsg-name myBackendNSG --
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何创建和保护与虚拟机相关的 Azure 网络。 你已了解如何：
+本教程介绍了如何创建和保护与虚拟机相关的 Azure 网络。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建虚拟网络和子网

@@ -1,19 +1,20 @@
 ---
-title: Azure PowerShell 脚本-Azure Cosmos DB 创建 Gremlin API 数据库和图形
-description: Azure PowerShell 脚本-Azure Cosmos DB 创建 Gremlin API 数据库和图形
+title: 用于创建 Azure Cosmos DB Gremlin API 数据库和图的 PowerShell 脚本
+description: Azure PowerShell 脚本 - Azure Cosmos DB 创建 Gremlin API 数据库和图
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
-ms.date: 05/18/2019
+ms.subservice: cosmosdb-graph
+ms.topic: sample
+ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 9b4fecc7648d1fe19c28599be7ef2c0b5dcab423
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: b8fb4bee9e31915d1ff88ffdc73b4fae9eb5caf8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247809"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659742"
 ---
-# <a name="create-a-database-and-graph-for-azure-cosmos-db---gremlin-api"></a>为 Azure Cosmos DB 的 Gremlin API 创建数据库和图形
+# <a name="create-a-database-and-graph-for-azure-cosmos-db---gremlin-api"></a>创建 Azure Cosmos DB 的数据库和图 - Gremlin API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -35,10 +36,13 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
+|**Azure Cosmos DB**| |
+| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | 创建 Cosmos DB 帐户。 |
+| [New-AzCosmosDBGremlinDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbgremlindatabase) | 创建 Gremlin API 数据库。 |
+| [New-AzCosmosDBGremlinConflictResolutionPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbgremlinconflictresolutionpolicy) | 创建 Gremlin API 写入冲突解决策略。 |
+| [New-AzCosmosDBGremlinGraph](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbgremlingraph) | 创建 Gremlin API 图。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||

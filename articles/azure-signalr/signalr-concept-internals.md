@@ -1,25 +1,23 @@
 ---
 title: Azure SignalR 服务内部
-description: Azure SignalR 服务内部概述。
+description: 了解 Azure SignalR 服务内部机制、体系结构、连接以及数据的传输方式。
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: cbcdfccfdca1dbed3b766b3f50295b1d355b3478
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f06b8f9a2d41fc5400aa0fa610a2be3f31e21f1c
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61401741"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169793"
 ---
 # <a name="azure-signalr-service-internals"></a>Azure SignalR 服务内部
 
-Azure SignalR 服务构建于 ASP.NET Core SignalR 框架的基础之上。 它还支持预览版功能 ASP.NET SignalR。
+Azure SignalR 服务构建于 ASP.NET Core SignalR 框架的基础之上。 它还通过在 ASP.NET Core 框架之上重新实现 ASP.NET SignalR 的数据协议来支持 ASP.NET SignalR。
 
-> 为了支持 ASP.NET SignalR，Azure SignalR 服务将在 ASP.NET Core 框架的顶层重新实现 ASP.NET SignalR 数据协议
-
-只需更改少量的几行代码，即可轻松迁移本地 ASP.NET Core SignalR 应用程序以使用 SignalR 服务。
+只需更改少量的几行代码，即可轻松迁移本地 ASP.NET Core SignalR 应用程序或 ASP.NET SignalR 应用程序以使用 SignalR 服务。
 
 下图描绘了在应用程序服务器上使用 SignalR 服务时的典型体系结构。
 
@@ -86,7 +84,9 @@ Azure SignalR 服务构建于 ASP.NET Core SignalR 框架的基础之上。 它�
 
 此时，应用程序服务器会收到一个事件，其中包含来自新客户端的信息。 在应用程序服务器中与客户端建立逻辑连接。 通过 SignalR 服务建立从客户端到应用程序服务器的数据通道。
 
-SignalR 服务将客户端中的数据传输到配对的应用程序服务器。 应用程序服务器中的数据将发送到映射的客户端。
+SignalR 服务将数据从客户端传输到配对应用程序服务器。 应用程序服务器中的数据将发送到映射的客户端。
+
+SignalR 服务不会保存或存储客户数据，接收的所有客户数据会实时传输到目标服务器或客户端。
 
 可以看出，Azure SignalR 服务本质上是应用程序服务器与客户端之间的逻辑传输层。 所有持久性连接将卸载到 SignalR 服务。
 应用程序服务器只需处理中心类中的业务逻辑，而无需担心客户端连接。

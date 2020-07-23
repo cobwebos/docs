@@ -6,16 +6,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 08/25/2017
+ms.date: 08/26/2019
 ms.author: elioda
-ms.openlocfilehash: 20b804f3d15543d0cf415d00dc81a6f55a348260
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
-ms.translationtype: MT
+ms.custom: mqtt
+ms.openlocfilehash: e65c781bd5cb62bdaa693b854caafd5f91fd497e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597413"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81732281"
 ---
-# <a name="get-started-with-device-twins-node"></a>设备孪生入门 (Node)
+# <a name="get-started-with-device-twins-nodejs"></a>设备孪生入门 (Node.js)
 
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
@@ -29,48 +29,56 @@ ms.locfileid: "65597413"
 > [Azure IoT SDK](iot-hub-devguide-sdks.md) 一文介绍了可用于构建设备和后端应用的 Azure IoT SDK。
 >
 
-要完成本教程，需要以下各项：
+## <a name="prerequisites"></a>先决条件
+
+要完成本教程，需要：
 
 * Node.js 版本 10.0.x 或更高版本。
 
 * 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
 
+* 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>检索 IoT 中心的连接字符串
-
-[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
+## <a name="register-a-new-device-in-the-iot-hub"></a>在 IoT 中心内注册新设备
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
+
+## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
+
+[!INCLUDE [iot-hub-howto-twin-shared-access-policy-text](../../includes/iot-hub-howto-twin-shared-access-policy-text.md)]
+
+[!INCLUDE [iot-hub-include-find-custom-connection-string](../../includes/iot-hub-include-find-custom-connection-string.md)]
 
 ## <a name="create-the-service-app"></a>创建服务应用
 
 在本部分中，将创建一个 Node.js 控制台应用，该应用将位置元数据添加到与 **myDeviceId** 关联的设备孪生。 然后，该应用将选择位于美国的设备来查询存储在 IoT 中心的设备孪生，然后查询报告移动电话网络连接的设备孪生。
 
-1. 新建名为 **addtagsandqueryapp** 的空文件夹。 在命令提示符下的**addtagsandqueryapp** 文件夹中，使用以下命令创建新的 package.json 文件。 接受所有默认值：
+1. 新建名为 **addtagsandqueryapp** 的空文件夹。 在命令提示符下的**addtagsandqueryapp** 文件夹中，使用以下命令创建新的 package.json 文件。 `--yes` 参数接受所有默认值。
 
-    ```
-    npm init
+    ```cmd/sh
+    npm init --yes
     ```
 
 2. 在 **addtagsandqueryapp** 文件夹中，在命令提示符下运行以下命令以安装 **azure-iothub** 包：
-   
-    ```
+
+    ```cmd/sh
     npm install azure-iothub --save
     ```
 
 3. 使用文本编辑器，在 **addtagsandqueryapp** 文件夹中创建一个新的 **AddTagsAndQuery.js** 文件。
 
-4. 将以下代码添加到 **AddTagsAndQuery.js** 文件，并将 **{iot hub connection string}** 占位符替换为创建中心时复制的 IoT 中心连接字符串：
+4. 将以下代码添加到 AddTagsAndQuery.js 文件。 将 `{iot hub connection string}` 替换为在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串。
 
    ``` javascript
         'use strict';
         var iothub = require('azure-iothub');
         var connectionString = '{iot hub connection string}';
         var registry = iothub.Registry.fromConnectionString(connectionString);
-   
+
         registry.getTwin('myDeviceId', function(err, twin){
             if (err) {
                 console.error(err.constructor.name + ': ' + err.message);
@@ -83,7 +91,7 @@ ms.locfileid: "65597413"
                       }
                     }
                 };
-   
+
                 twin.update(patch, function(err) {
                   if (err) {
                     console.error('Could not update twin: ' + err.constructor.name + ': ' + err.message);
@@ -96,7 +104,7 @@ ms.locfileid: "65597413"
         });
    ```
 
-    **Registry** 对象公开从服务与设备孪生进行交互所需的所有方法。 前面的代码首先初始化 **Registry** 对象，并检索 **myDeviceId** 的设备孪生，最后使用所需位置信息更新其标记。
+    **Registry** 对象公开从该服务与设备孪生交互所需的所有方法。 前面的代码首先初始化 **Registry** 对象，并检索 **myDeviceId** 的设备孪生，最后使用所需位置信息更新其标记。
 
     更新标记后，它将调用 queryTwins 函数。
 
@@ -112,7 +120,7 @@ ms.locfileid: "65597413"
                     console.log("Devices in Redmond43: " + results.map(function(twin) {return twin.deviceId}).join(','));
                 }
             });
-   
+
             query = registry.createQuery("SELECT * FROM devices WHERE tags.location.plant = 'Redmond43' AND properties.reported.connectivity.type = 'cellular'", 100);
             query.nextAsTwin(function(err, results) {
                 if (err) {
@@ -126,17 +134,17 @@ ms.locfileid: "65597413"
 
     上面的代码执行两个查询：第一个仅选择位于 **Redmond43** 工厂的设备孪生，第二个将查询细化为仅选择还要通过蜂窝网络连接的设备。
 
-    上面的代码创建 query 对象时，会指定返回的最大文档数。 **query** 对象包含 **hasMoreResults** 布尔值属性，可以使用它多次调用 **nextAsTwin** 方法来检索所有结果。 名为 next 的方法可用于非设备孪生的结果（例如聚合查询的结果）。
+    当代码创建 query 对象时，它在第二个参数中指定返回的最大文档数。 **query** 对象包含 **hasMoreResults** 布尔值属性，可以使用它多次调用 **nextAsTwin** 方法来检索所有结果。 名为 next 的方法可用于非设备孪生的结果（例如聚合查询的结果）。
 
 6. 使用以下方法运行应用程序：
 
-    ```
+    ```cmd/sh
         node AddTagsAndQuery.js
     ```
 
    在查询位于 **Redmond43** 的所有设备的查询结果中，应该会看到一个设备，而在将结果限制为使用蜂窝网络的设备的查询结果中没有任何设备。
-   
-    ![请参阅查询结果中的一个设备](media/iot-hub-node-node-twin-getstarted/service1.png)
+
+   ![在查询结果中看到一个设备](media/iot-hub-node-node-twin-getstarted/service1.png)
 
 在下一部分中，创建的设备应用将报告连接信息，并更改上一部分中查询的结果。
 
@@ -144,36 +152,36 @@ ms.locfileid: "65597413"
 
 在本部分中，将创建一个 Node.js 控制台应用作为 **myDeviceId** 连接到中心，然后更新其设备孪生的报告属性，说明它是使用手机网络进行连接的。
 
-1. 新建名为 **reportconnectivity** 的空文件夹。 在 **reportconnectivity** 文件夹中，在命令提示符下使用以下命令创建新的 package.json 文件。 接受所有默认值：
-   
-    ```
-    npm init
+1. 新建名为 **reportconnectivity** 的空文件夹。 在 **reportconnectivity** 文件夹中，在命令提示符下使用以下命令创建新的 package.json 文件。 `--yes` 参数接受所有默认值。
+
+    ```cmd/sh
+    npm init --yes
     ```
 
-2. 在 **reportconnectivity** 文件夹中，在命令提示符下运行以下命令以安装 **azure-iot-device** 包和 **azure-iot-device-mqtt** 包：
-   
-    ```
+2. 在 reportconnectivity 文件夹中，在命令提示符下运行以下命令以安装 azure-iot-device 包和 azure-iot-device-mqtt 包  ：
+
+    ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
 3. 使用文本编辑器，在 **reportconnectivity** 文件夹中创建一个新的 **ReportConnectivity.js** 文件。
 
-4. 将以下代码添加到 **ReportConnectivity.js** 文件，并将 **{device connection string}** 占位符替换为创建 **myDeviceId** 设备标识时复制的设备连接字符串：
+4. 向 ReportConnectivity.js 文件添加以下代码。 将 `{device connection string}` 替换为在创建 myDeviceId 设备标识（[在 IoT 中心内注册新设备](#register-a-new-device-in-the-iot-hub)中）时复制的设备连接字符串。
 
-    ```
+    ```javascript
         'use strict';
         var Client = require('azure-iot-device').Client;
         var Protocol = require('azure-iot-device-mqtt').Mqtt;
-   
+
         var connectionString = '{device connection string}';
         var client = Client.fromConnectionString(connectionString, Protocol);
-   
+
         client.open(function(err) {
         if (err) {
             console.error('could not open IotHub client');
         }  else {
             console.log('client opened');
-   
+
             client.getTwin(function(err, twin) {
             if (err) {
                 console.error('could not get twin');
@@ -183,7 +191,7 @@ ms.locfileid: "65597413"
                         type: 'cellular'
                     }
                 };
-   
+
                 twin.properties.reported.update(patch, function(err) {
                     if (err) {
                         console.error('could not update twin');
@@ -202,7 +210,7 @@ ms.locfileid: "65597413"
 
 5. 运行设备应用
 
-    ```   
+    ```cmd/sh
         node ReportConnectivity.js
     ```
 
@@ -210,22 +218,22 @@ ms.locfileid: "65597413"
 
 6. 既然设备报告其连接的信息，该信息应显示在两个查询中。 转回到 **addtagsandqueryapp** 文件夹，并再次运行查询：
 
-    ```   
+    ```cmd/sh
         node AddTagsAndQuery.js
     ```
 
     这一次 **myDeviceId** 应显示在两个查询结果中。
 
-    ![在这两个查询结果中显示 myDeviceId](media/iot-hub-node-node-twin-getstarted/service2.png)
+    ![在两个查询结果中显示 myDeviceId](media/iot-hub-node-node-twin-getstarted/service2.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已在 Azure 门户中配置了新的 IoT 中心，并在 IoT 中心的标识注册表中创建了设备标识。 已从后端应用以标记形式添加了设备元数据，并编写了模拟的设备应用，用于报告设备孪生中的设备连接信息。 还学习了如何使用类似 SQL 的 IoT 中心查询语言来查询此信息。
+在本教程中，你已在 Azure 门户中配置了新的 IoT 中心，并在 IoT 中心的标识注册表中创建了设备标识。 已从后端应用以标记形式添加了设备元数据，并编写了模拟的设备应用，用于报告设备孪生中的设备连接信息。 还学习了如何使用类似于 SQL 的 IoT 中心查询语言查询此信息。
 
 使用下列资源了解如何执行以下操作：
 
-* 从使用的设备发送遥测[IoT 中心入门](quickstart-send-telemetry-node.md)教程中，
+* 通过 [IoT 中心入门](quickstart-send-telemetry-node.md)教程学习如何从设备发送遥测数据，
 
 * 按照[使用所需属性配置设备](tutorial-device-twins.md)教程使用设备孪生的所需属性配置设备，
 
-* 控制设备以交互方式 （例如打开风扇从用户控制的应用），与[使用直接方法](quickstart-control-device-node.md)教程。
+* 按照[使用直接方法](quickstart-control-device-node.md)教程以交互方式控制设备（例如从用户控制的应用打开风扇）。

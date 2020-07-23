@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: afd43bbf6f52f498ad8f56d5a48b960d45d84137
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 137cbec270b40042503fc7687c9deb39b0df1aa4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243258"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243284"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Azure API 管理中的订阅
 
@@ -28,13 +27,13 @@ ms.locfileid: "66243258"
 
 通过 API 管理发布 API 时，使用订阅密钥保护对这些 API 的访问容易且常见。 需要使用已发布 API 的开发人员在调用这些 API 时必须在 HTTP 请求中包括一个有效的订阅密钥。 否则，API 管理网关会立即拒绝调用。 不会将它们转发到后端服务。
 
-若要获取访问 API 所需的订阅密钥，必须有一个订阅。 订阅实质上是一个已命名的容器，该容器包含一对订阅密钥。 需要使用已发布 API 的开发人员可以获取订阅。 不需要 API 发布者批准。 API 发布者也可以直接为 API 使用者创建订阅。
+若要获取访问 API 所需的订阅密钥，必须拥有订阅。 订阅实质上是一个已命名的容器，该容器包含一对订阅密钥。 需要使用已发布 API 的开发人员可以获取订阅。 不需要 API 发布者批准。 API 发布者也可以直接为 API 使用者创建订阅。
 
 > [!TIP]
 > API 管理还支持使用其他机制来保护对 API 的访问，包括以下示例：
 > - [OAuth2.0](api-management-howto-protect-backend-with-aad.md)
 > - [客户端证书](api-management-howto-mutual-certificates-for-clients.md)
-> - [IP 允许列表](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#RestrictCallerIPs)
+> - [IP 允许列表](./api-management-access-restriction-policies.md#RestrictCallerIPs)
 
 ## <a name="scope-of-subscriptions"></a>订阅范围
 
@@ -42,7 +41,7 @@ ms.locfileid: "66243258"
 
 ### <a name="subscriptions-for-a-product"></a>产品的订阅
 
-传统上，API 管理中的订阅始终与单个 [API 产品](api-management-terminology.md)范围相关联。 开发人员在开发人员门户上找到产品列表。 然后，它们将提交对要使用的产品的订阅请求。 批准，自动或 API 发布者发布的订阅请求后开发人员可以使用这些密钥在其中访问产品中的所有 Api。目前，开发人员门户仅显示产品范围内订阅在用户配置文件部分下。 
+传统上，API 管理中的订阅始终与单个 [API 产品](api-management-terminology.md)范围相关联。 开发人员在开发人员门户上找到产品列表。 然后，它们将提交对要使用的产品的订阅请求。 在订阅请求获得批准后（不管是自动批准还是由 API 发布者批准），开发人员可以使用其中的密钥来访问产品中的所有 API。目前，开发人员门户仅在“用户配置文件”部分下显示产品范围订阅。 
 
 ![产品订阅](./media/api-management-subscriptions/product-subscription.png)
 

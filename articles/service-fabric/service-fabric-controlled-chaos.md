@@ -1,30 +1,21 @@
 ---
-title: 在 Service Fabric 群集中引入混沌测试 | Microsoft 文档
+title: 在 Service Fabric 群集中引入混沌测试
 description: 使用故障注入和群集分析服务 API 管理群集中的混沌测试。
-services: service-fabric
-documentationcenter: .net
 author: motanv
-manager: anmola
-editor: motanv
-ms.assetid: 2bd13443-3478-4382-9a5a-1f6c6b32bfc9
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/05/2018
 ms.author: motanv
-ms.openlocfilehash: a1b334b34e8e234d9ce5cc5ad5cd77bf5ba7118c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 33ad837195c747a4e7f9a4609d745659be69dc9a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60583858"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246174"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>在 Service Fabric 群集中引入受控的混沌测试
 大规模分布式系统，例如云基础结构，在本质上都是不可靠的。 Azure Service Fabric 可让开发人员在不可靠的基础结构之上编写可靠的分布式服务。 若要在不可靠的基础结构之上编写可靠的分布式服务，开发人员应能够在不可靠的底层基础结构因故障而进行复杂的状态转换时，测试其服务的稳定性。
 
-[故障注入和群集分析服务](https://docs.microsoft.com/azure/service-fabric/service-fabric-testability-overview)（也称为故障分析服务）使开发人员能够引入故障来测试其服务。 这些定向模拟故障（如[重新启动分区](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps)）可以帮助执行最常见的状态转换。 但是，定向模拟故障易被定义左右，因此可能会漏掉仅在一系列难以预测、持续时间长且复杂的状态转换中出现的 bug。 若要进行无偏测试，可以使用混沌测试。
+[故障注入和群集分析服务](./service-fabric-testability-overview.md)（也称为故障分析服务）使开发人员能够引入故障来测试其服务。 这些定向模拟故障（如[重新启动分区](/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps)）可以帮助执行最常见的状态转换。 但是，定向模拟故障易被定义左右，因此可能会漏掉仅在一系列难以预测、持续时间长且复杂的状态转换中出现的 bug。 若要进行无偏测试，可以使用混沌测试。
 
 混沌测试在整个群集模拟定期交叉出现的故障，包括常规故障和非常规故障，时间跨度很长。 常规故障由一组 Service Fabric API 调用组成，例如，重启副本故障是常规故障，因为这次关闭后接着副本打开。 删除副本、移动主要副本和移动次要副本是混沌测试执行的其他常规故障。 非常规故障是进程退出，例如重启节点和重启代码包。 
 
@@ -34,7 +25,7 @@ ms.locfileid: "60583858"
 > 从目前来看，混沌测试只会引入安全的故障，这意味着，在没有外部故障的情况下，绝对不会发生仲裁丢失或数据丢失。
 >
 
-混沌测试在运行时，将生成不同的事件来捕获当前的运行状态。 例如，ExecutingFaultsEvent 包含混沌测试决定在该迭代中执行的所有故障。 ValidationFailedEvent 包含群集验证期间发现的验证故障（运行状况或稳定性问题）的详细信息。 可以调用 GetChaosReport API（C#、Powershell 或 REST）来获取混沌测试运行报告。 这些事件持久保存在[可靠字典](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections)中，该字典具有由两个配置控制的截断策略：**MaxStoredChaosEventCount**（默认值为 25000）和 **StoredActionCleanupIntervalInSeconds**（默认值为 3600）。 混沌测试每隔 *StoredActionCleanupIntervalInSeconds* 进行一次检查，从 Reliable Dictionary 中清除除最新 *MaxStoredChaosEventCount* 事件以外的所有事件。
+混沌测试在运行时，将生成不同的事件来捕获当前的运行状态。 例如，ExecutingFaultsEvent 包含混沌测试决定在该迭代中执行的所有故障。 ValidationFailedEvent 包含群集验证期间发现的验证故障（运行状况或稳定性问题）的详细信息。 可以调用 GetChaosReport API（C#、Powershell 或 REST）来获取混沌测试运行报告。 这些事件保存在一个 [Reliable Dictionary](./service-fabric-reliable-services-reliable-collections.md) 中，该字典的截断策略由两项配置决定：**MaxStoredChaosEventCount**（默认值为 25000）和 **StoredActionCleanupIntervalInSeconds**（默认值为 3600）。 混沌测试每隔 *StoredActionCleanupIntervalInSeconds* 进行一次检查，从 Reliable Dictionary 中清除除最新 *MaxStoredChaosEventCount* 事件以外的所有事件。
 
 ## <a name="faults-induced-in-chaos"></a>在混沌测试中引入的故障
 混沌测试在整个 Service Fabric 群集中生成故障，将几个月或几年内出现的故障压缩成几小时。 通过将各种具有高故障率的交叉故障组合在一起，能够找出很有可能被忽视的极端状况。 运行这种混沌测试会使服务的代码质量得到显著提高。
@@ -108,28 +99,34 @@ class Program
             var startTimeUtc = DateTime.UtcNow;
 
             // The maximum amount of time to wait for all cluster entities to become stable and healthy. 
-            // Chaos executes in iterations and at the start of each iteration it validates the health of cluster entities. 
-            // During validation if a cluster entity is not stable and healthy within MaxClusterStabilizationTimeoutInSeconds, Chaos generates a validation failed event.
+            // Chaos executes in iterations and at the start of each iteration it validates the health of cluster
+            // entities. 
+            // During validation if a cluster entity is not stable and healthy within
+            // MaxClusterStabilizationTimeoutInSeconds, Chaos generates a validation failed event.
             var maxClusterStabilizationTimeout = TimeSpan.FromSeconds(30.0);
 
             var timeToRun = TimeSpan.FromMinutes(60.0);
 
             // MaxConcurrentFaults is the maximum number of concurrent faults induced per iteration. 
-            // Chaos executes in iterations and two consecutive iterations are separated by a validation phase. 
-            // The higher the concurrency, the more aggressive the injection of faults -- inducing more complex series of states to uncover bugs. 
+            // Chaos executes in iterations and two consecutive iterations are separated by a validation phase.
+            // The higher the concurrency, the more aggressive the injection of faults -- inducing more complex
+            // series of states to uncover bugs.
             // The recommendation is to start with a value of 2 or 3 and to exercise caution while moving up.
             var maxConcurrentFaults = 3;
 
-            // Describes a map, which is a collection of (string, string) type key-value pairs. The map can be used to record information about
-            // the Chaos run. There cannot be more than 100 such pairs and each string (key or value) can be at most 4095 characters long.
+            // Describes a map, which is a collection of (string, string) type key-value pairs. The map can be
+            // used to record information about the Chaos run. There cannot be more than 100 such pairs and
+            // each string (key or value) can be at most 4095 characters long.
             // This map is set by the starter of the Chaos run to optionally store the context about the specific run.
             var startContext = new Dictionary<string, string>{{"ReasonForStart", "Testing"}};
 
-            // Time-separation (in seconds) between two consecutive iterations of Chaos. The larger the value, the lower the fault injection rate.
+            // Time-separation (in seconds) between two consecutive iterations of Chaos. The larger the value, the
+            // lower the fault injection rate.
             var waitTimeBetweenIterations = TimeSpan.FromSeconds(10);
 
-            // Wait time (in seconds) between consecutive faults within a single iteration. 
-            // The larger the value, the lower the overlapping between faults and the simpler the sequence of state transitions that the cluster goes through. 
+            // Wait time (in seconds) between consecutive faults within a single iteration.
+            // The larger the value, the lower the overlapping between faults and the simpler the sequence of
+            // state transitions that the cluster goes through. 
             // The recommendation is to start with a value between 1 and 5 and exercise caution while moving up.
             var waitTimeBetweenFaults = TimeSpan.Zero;
 
@@ -141,13 +138,14 @@ class Program
                 MaxPercentUnhealthyNodes = 100
             };
 
-            // All types of faults, restart node, restart code package, restart replica, move primary replica, and move secondary replica will happen
-            // for nodes of type 'FrontEndType'
+            // All types of faults, restart node, restart code package, restart replica, move primary replica,
+            // and move secondary replica will happen for nodes of type 'FrontEndType'
             var nodetypeInclusionList = new List<string> { "FrontEndType"};
 
-            // In addition to the faults included by nodetypeInclusionList, 
-            // restart code package, restart replica, move primary replica, move secondary replica faults will happen for 'fabric:/TestApp2'
-            // even if a replica or code package from 'fabric:/TestApp2' is residing on a node which is not of type included in nodeypeInclusionList.
+            // In addition to the faults included by nodetypeInclusionList,
+            // restart code package, restart replica, move primary replica, move secondary replica faults will
+            // happen for 'fabric:/TestApp2' even if a replica or code package from 'fabric:/TestApp2' is residing
+            // on a node which is not of type included in nodeypeInclusionList.
             var applicationInclusionList = new List<string> { "fabric:/TestApp2" };
 
             // List of cluster entities to target for Chaos faults.
@@ -240,22 +238,26 @@ class Program
 $clusterConnectionString = "localhost:19000"
 $timeToRunMinute = 60
 
-# The maximum amount of time to wait for all cluster entities to become stable and healthy. 
-# Chaos executes in iterations and at the start of each iteration it validates the health of cluster entities. 
-# During validation if a cluster entity is not stable and healthy within MaxClusterStabilizationTimeoutInSeconds, Chaos generates a validation failed event.
+# The maximum amount of time to wait for all cluster entities to become stable and healthy.
+# Chaos executes in iterations and at the start of each iteration it validates the health of cluster entities.
+# During validation if a cluster entity is not stable and healthy within MaxClusterStabilizationTimeoutInSeconds,
+# Chaos generates a validation failed event.
 $maxClusterStabilizationTimeSecs = 30
 
-# MaxConcurrentFaults is the maximum number of concurrent faults induced per iteration. 
-# Chaos executes in iterations and two consecutive iterations are separated by a validation phase. 
-# The higher the concurrency, the more aggressive the injection of faults -- inducing more complex series of states to uncover bugs. 
+# MaxConcurrentFaults is the maximum number of concurrent faults induced per iteration.
+# Chaos executes in iterations and two consecutive iterations are separated by a validation phase.
+# The higher the concurrency, the more aggressive the injection of faults -- inducing more complex series of
+# states to uncover bugs.
 # The recommendation is to start with a value of 2 or 3 and to exercise caution while moving up.
 $maxConcurrentFaults = 3
 
-# Time-separation (in seconds) between two consecutive iterations of Chaos. The larger the value, the lower the fault injection rate.
+# Time-separation (in seconds) between two consecutive iterations of Chaos. The larger the value, the lower the
+# fault injection rate.
 $waitTimeBetweenIterationsSec = 10
 
-# Wait time (in seconds) between consecutive faults within a single iteration. 
-# The larger the value, the lower the overlapping between faults and the simpler the sequence of state transitions that the cluster goes through. 
+# Wait time (in seconds) between consecutive faults within a single iteration.
+# The larger the value, the lower the overlapping between faults and the simpler the sequence of state
+# transitions that the cluster goes through.
 # The recommendation is to start with a value between 1 and 5 and exercise caution while moving up.
 $waitTimeBetweenFaultsSec = 0
 
@@ -265,8 +267,9 @@ $clusterHealthPolicy.MaxPercentUnhealthyNodes = 100
 $clusterHealthPolicy.MaxPercentUnhealthyApplications = 100
 $clusterHealthPolicy.ConsiderWarningAsError = $False
 
-# Describes a map, which is a collection of (string, string) type key-value pairs. The map can be used to record information about
-# the Chaos run. There cannot be more than 100 such pairs and each string (key or value) can be at most 4095 characters long.
+# Describes a map, which is a collection of (string, string) type key-value pairs. The map can be used to record
+# information about the Chaos run.
+# There cannot be more than 100 such pairs and each string (key or value) can be at most 4095 characters long.
 # This map is set by the starter of the Chaos run to optionally store the context about the specific run.
 $context = @{"ReasonForStart" = "Testing"}
 
@@ -274,14 +277,15 @@ $context = @{"ReasonForStart" = "Testing"}
 $chaosTargetFilter = new-object -TypeName System.Fabric.Chaos.DataStructures.ChaosTargetFilter
 $chaosTargetFilter.NodeTypeInclusionList = new-object -TypeName "System.Collections.Generic.List[String]"
 
-# All types of faults, restart node, restart code package, restart replica, move primary replica, and move secondary replica will happen
-# for nodes of type 'FrontEndType'
+# All types of faults, restart node, restart code package, restart replica, move primary replica, and move
+# secondary replica will happen for nodes of type 'FrontEndType'
 $chaosTargetFilter.NodeTypeInclusionList.AddRange( [string[]]@("FrontEndType") )
 $chaosTargetFilter.ApplicationInclusionList = new-object -TypeName "System.Collections.Generic.List[String]"
 
 # In addition to the faults included by nodetypeInclusionList, 
-# restart code package, restart replica, move primary replica, move secondary replica faults will happen for 'fabric:/TestApp2'
-# even if a replica or code package from 'fabric:/TestApp2' is residing on a node which is not of type included in nodeypeInclusionList.
+# restart code package, restart replica, move primary replica, move secondary replica faults will happen for
+# 'fabric:/TestApp2' even if a replica or code package from 'fabric:/TestApp2' is residing on a node which is
+# not of type included in nodeypeInclusionList.
 $chaosTargetFilter.ApplicationInclusionList.Add("fabric:/TestApp2")
 
 Connect-ServiceFabricCluster $clusterConnectionString

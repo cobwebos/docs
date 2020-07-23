@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: sample
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 63996d5e654f22235ab1c243067389653bfaabd8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 36719fc8370c04e9c2d01422536502f90e124c12
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798432"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735243"
 ---
 # <a name="bing-web-search-sdk-samples"></a>必应 Web 搜索 SDK 示例
 
@@ -31,11 +31,11 @@ ms.locfileid: "65798432"
 使用以下链接访问适用于首选语言的 SDK。
 
 * 开始使用 [Python 示例](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
-  * 有关定义和依赖项，另请参阅 [Python 库](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-cognitiveservices-search-websearch)。
+  * 有关定义和依赖项，另请参阅 [Python 库](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-websearch)。
 * 开始使用 [ 示例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
   * 另请参阅 [Node.js Web 搜索](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesWebSearch)。
 * 开始使用 [.NET 示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
   * [NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0)
-  * 有关定义和依赖项，另请参阅 [.NET 库](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Search/BingWebSearch)。
+  * 有关定义和依赖项，另请参阅 [.NET 库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingWebSearch)。
 * 开始使用 [Java 示例](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
   * 有关定义和依赖项，另请参阅 [Java 库](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingWebSearch)。

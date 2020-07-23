@@ -1,6 +1,6 @@
 ---
 title: 使用排名显示答案 - 必应实体搜索
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何使用排名显示必应实体搜索 API 返回的答案。
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 9e2a4075436145a0cc185b7ab1b406fa8d27b8e3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 110cef117683b20170649a231226c8193496edf3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60309328"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "68423919"
 ---
 # <a name="using-ranking-to-display-entity-search-results"></a>使用排名显示实体搜索结果  
 
@@ -24,14 +24,14 @@ ms.locfileid: "60309328"
 在每个组中，[项](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankinggroup-items)数组标识了内容必须显示的顺序。 每个项提供两种方法来标识答案中的结果。  
  
 
-|字段 | 描述  |
+|字段 | 说明  |
 |---------|---------|
 |`answerType` 和 `resultIndex` | `answerType` 标识答案（实体或位置），`resultIndex` 标识该答案中的结果（例如某个实体）。 索引从 0 开始。|
 |`value`    | `value` 包含一个 ID，它与答案或答案中结果的 ID 匹配。 答案或结果包含 ID，而不是同时包含。 |
   
-使用 `answerType` 和 `resultIndex` 的过程分为两步。 首先，使用 `answerType` 来标识包含要显示的结果的答案。 然后，使用 `resultIndex` 对答案的结果进行索引，以获取要显示的结果。 （`answerType` 值是 [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) 对象中字段的名称。）如果不应一起显示答案的所有结果，则排名响应项不应包含 `resultIndex` 字段。
+使用 `answerType` 和 `resultIndex` 的过程分为两步。 首先，使用 `answerType` 来标识包含要显示的结果的答案。 然后，使用 `resultIndex` 对答案的结果进行索引，以获取要显示的结果。 （ `answerType`值是[SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse)对象中的字段的名称。）如果希望将答案的结果一起显示，则排名响应项目不包含该`resultIndex`字段。
 
-使用 ID 必须使排名 ID 与答案或其结果之一的 ID 匹配。 如果答案对象包含 `id` 字段，则同时显示答案的结果。 例如，如果 `Entities` 对象包含 `id` 字段，则同时显示所有实体项目。 如果 `Entities` 对象不包含 `id` 字段，则每个实体包含 `id` 字段，排名响应将实体与位置结果混合。  
+使用 ID 必须使排名 ID 与答案或其结果之一的 ID 匹配。 如果答案对象包含 `id` 字段，则同时显示答案的所有结果。 例如，如果 `Entities` 对象包含 `id` 字段，则同时显示所有实体项目。 如果 `Entities` 对象不包含 `id` 字段，则每个实体包含 `id` 字段，排名响应将实体与位置结果混合。  
   
 ## <a name="ranking-response-example"></a>排名响应示例
 

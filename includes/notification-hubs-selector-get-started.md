@@ -4,22 +4,21 @@ ms.service: service-bus
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
-ms.openlocfilehash: a2556da32761d72ea264e5e7043c0fb5585fb3a2
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
-ms.translationtype: HT
+ms.openlocfilehash: 9ad64f5342ecf7c07880f5c5565ae4d2a9bc9a46
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735957"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85249222"
 ---
 > [!div class="op_single_selector"]
 > * [Android](../articles/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)
 > * [百度](../articles/notification-hubs/notification-hubs-baidu-china-android-notifications-get-started.md)
-> * [iOS](../articles/notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md)
+> * [iOS](../articles/notification-hubs/ios-sdk-get-started.md)
 > * [Kindle](../articles/notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md)
 > * [Windows Phone Silverlight 8.x](../articles/notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md)
 > * [通用 Windows 平台](../articles/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
 > * [Xamarin.Android](../articles/notification-hubs/xamarin-notification-hubs-push-notifications-android-gcm.md)
 > * [Xamarin.iOS](../articles/notification-hubs/xamarin-notification-hubs-ios-push-notification-apns-get-started.md)
 > 
-> 
-
+>

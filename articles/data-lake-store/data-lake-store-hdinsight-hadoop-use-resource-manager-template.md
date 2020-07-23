@@ -1,23 +1,17 @@
 ---
-title: 使用 Azure 模板来创建包含 Data Lake Storage Gen1 的 HDInsight | Microsoft Docs
-description: 使用 Azure 资源管理器模板创建和使用包含 Azure Data Lake Storage Gen1 的 HDInsight 群集
-services: data-lake-store,hdinsight
-documentationcenter: ''
+title: 模板-具有 Data Lake Storage Gen1 的 HDInsight 群集
+description: 使用 Azure 资源管理器模板创建和使用 Azure Data Lake Storage Gen1 的 Azure HDInsight 群集。
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 8ef8152f-2121-461e-956c-51c55144919d
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b09ca2cc358107c5f95fe3426351d380380db3c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 593edecd2cc1bbdd3627430af41c64be4d6a022b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66161374"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508633"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建包含 Azure Data Lake Storage Gen1 的 HDInsight 群集
 > [!div class="op_single_selector"]
@@ -28,9 +22,9 @@ ms.locfileid: "66161374"
 >
 >
 
-了解如何使用 Azure PowerShell 来配置包含 Azure Data Lake Storage Gen1（用作额外存储）的 HDInsight 群集。
+了解如何使用 Azure PowerShell 来配置包含 Azure Data Lake Storage Gen1（用作额外存储）的 HDInsight 群集****。
 
-对于支持的群集类型，Data Lake Storage Gen1 可用作默认存储或额外存储帐户。 在 Data Lake Storage Gen1 用作额外存储时，该群集的默认存储帐户仍将是 Azure 存储 Blob (WASB)，与群集相关的文件（例如日志等）仍会写入到默认存储，而要处理的数据可以存储在 Data Lake Storage Gen1 帐户中。 使用 Data Lake Storage Gen1 作为额外存储帐户不会影响读/写到此群集的存储的性能或能力。
+对于支持的群集类型，可以将 Data Lake Storage Gen1 用作默认存储或其他存储帐户。 在 Data Lake Storage Gen1 用作额外存储时，该群集的默认存储帐户仍将是 Azure 存储 Blob (WASB)，与群集相关的文件（例如日志等）仍会写入到默认存储，而要处理的数据可以存储在 Data Lake Storage Gen1 帐户中。 使用 Data Lake Storage Gen1 作为额外存储帐户不会影响读/写到此群集的存储的性能或能力。
 
 ## <a name="using-data-lake-storage-gen1-for-hdinsight-cluster-storage"></a>将 Data Lake Storage Gen1 用于 HDInsight 群集存储
 
@@ -40,9 +34,9 @@ ms.locfileid: "66161374"
 
 * HDInsight 版本 3.2、3.4、3.5 和 3.6 提供创建 HDInsight 群集（可访问作为额外存储的 Data Lake Storage Gen1）的选项。
 
-本文中，我们使用 Data Lake Storage Gen1 作为额外存储来预配 Hadoop 集群。 有关如何创建包含 Data Lake Store Gen1（用作默认存储）的 Hadoop 群集的说明，请参阅[使用 Azure 门户创建包含 Data Lake Store Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。
+本文中，我们使用 Data Lake Storage Gen1 作为额外存储来预配 Hadoop 集群。 有关如何使用 Data Lake Storage Gen1 作为默认存储创建 Hadoop 群集的说明，请参阅[使用 Azure 门户创建具有 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -74,7 +68,7 @@ Set-AzContext -SubscriptionId <subscription ID>
 
 * [Microsoft.DataLakeStore/accounts](/azure/templates/microsoft.datalakestore/accounts)
 * [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
-* [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/clusters)
+* [Microsoft HDInsight/群集](/azure/templates/microsoft.hdinsight/clusters)
 
 ## <a name="upload-sample-data-to-data-lake-storage-gen1"></a>向 Data Lake Storage Gen1 上传示例数据
 该资源管理器模板模板会创建一个新的 Data Lake Storage Gen1 帐户，并将其与此 HDInsight 群集关联。 现在必须要将示例数据上传到 Data Lake Storage Gen1。 此教程中之后需要这些数据从访问 Data Lake Storage Gen1 帐户中数据的 HDInsight 群集运行作业。 有关如何上传数据的说明，请参阅[上传文件到 Data Lake Storage Gen1 帐户](data-lake-store-get-started-portal.md#uploaddata)。 如果正在查找一些示例数据进行上传，可以从 **Azure Data Lake Git 存储库** 获取 [Ambulance Data](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData)文件夹。
@@ -82,13 +76,13 @@ Set-AzContext -SubscriptionId <subscription ID>
 ## <a name="set-relevant-acls-on-the-sample-data"></a>对示例数据设置相关 ACL
 若要确保上传的示例数据可从 HDInsight 群集访问，必须确保用于在 HDInsight 群集和 Data Lake Store Gen1 之间建立标识的 Azure AD 应用程序可以访问你尝试访问的文件/文件夹。 为此，请执行以下步骤。
 
-1. 找到与 HDInsight 群集和 Data Lake Store Gen1 帐户关联的 Azure AD 应用程序的名称。 查找该名称的一个方式是打开使用 Resource Manager 模板创建的 HDInsight 群集的边栏选项卡，单击“群集 AAD 标识”选项卡，并查找“服务主体显示名称”的值。
+1. 找到与 HDInsight 群集和 Data Lake Store Gen1 帐户关联的 Azure AD 应用程序的名称。 查找该名称的一个方式是打开使用 Resource Manager 模板创建的 HDInsight 群集的边栏选项卡，单击“群集 AAD 标识”**** 选项卡，并查找“服务主体显示名称”**** 的值。
 2. 现在，在要从该 HDInsight 群集访问的文件/文件夹上向此 Azure AD 应用程序提供访问权限。 若要对 Data Lake Storage Gen1 中的文件/文件夹设置正确的 ACL，请参阅[保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md#filepermissions)。
 
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>在 HDInsight 群集上运行测试作业以使用 Data Lake Storage Gen1
 配置 HDInsight 群集后，可在该群集上运行测试作业来测试该 HDInsight 群集是否可访问 Data Lake Storage Gen1。 为此，我们将运行示例 Hive 作业，该作业使用先前已上传至 Data Lake Storage Gen1 帐户的示例数据创建一个表。
 
-在本部分中，通过 SSH 连接到 HDInsight Linux 群集，并运行示例 Hive 查询。 如果正在使用 Windows 客户端，建议使用 PuTTY，它可从 [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 下载。
+在本部分中，将通过 SSH 连接到 HDInsight Linux 群集并运行示例 Hive 查询。 如果正在使用 Windows 客户端，建议使用 PuTTY，它可从 [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 下载****。
 
 有关使用 PuTTY 的详细信息，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)。
 
@@ -97,7 +91,7 @@ Set-AzContext -SubscriptionId <subscription ID>
    ```
    hive
    ```
-2. 使用该 CLI 输入以下语句，通过使用 Data Lake Storage Gen1 中的示例数据创建一个名为 vehicles 的新表：
+2. 使用该 CLI 输入以下语句，通过使用 Data Lake Storage Gen1 中的示例数据创建一个名为 vehicles 的新表****：
 
    ```
    DROP TABLE vehicles;
@@ -124,7 +118,7 @@ Set-AzContext -SubscriptionId <subscription ID>
 ## <a name="access-data-lake-storage-gen1-using-hdfs-commands"></a>使用 HDFS 命令访问 Data Lake Storage Gen1
 将 HDInsight 群集配置为使用 Data Lake Storage Gen1 后，可使用 HDFS shell 命令访问此存储。
 
-在本部分中，通过 SSH 连接到 HDInsight Linux 群集，并运行 HDFS 命令。 如果正在使用 Windows 客户端，建议使用 PuTTY，它可从 [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 下载。
+在本部分中，将通过 SSH 连接到 HDInsight Linux 群集，并运行 HDFS 命令。 如果正在使用 Windows 客户端，建议使用 PuTTY，它可从 [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 下载****。
 
 有关使用 PuTTY 的详细信息，请参阅[在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)。
 

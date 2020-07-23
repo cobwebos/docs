@@ -1,6 +1,6 @@
 ---
-title: include 文件
-description: include 文件
+title: 包含文件
+description: 包含文件
 services: active-directory
 author: eross-msft
 ms.service: active-directory
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/01/2018
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: 236ba117fd324a75ecc20ea7f94e110d75e3ee63
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 968ebe89de65de5fa49e56a90a1bc92109a16861
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113047"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75613749"
 ---
 >[!Note]
->若要查看或删除个人数据，请参阅 [Windows Data Subject Requests for the GDPR](https://docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-windows)（GDPR 下的 Windows 数据主体请求）网站中的 Microsoft 指南。 如需关于 GDPR 的常规信息，请参阅[服务信任门户的 GDPR 部分](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted)。
+>如果你对查看或删除个人数据感兴趣，请查看 [GDPR 的 Windows 数据主体请求](https://docs.microsoft.com/microsoft-365/compliance/gdpr-data-subject-requests)网站中的 Microsoft 指南。 如果要寻找有关一般数据保护条例的一般信息，请参阅[服务信任门户的一般数据保护条例部分](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted)。

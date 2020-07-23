@@ -1,5 +1,5 @@
 ---
-title: 更改签名哈希算法适用于 Office 365 信赖方信任-Azure
+title: 更改 Office 365 信赖方信任的签名哈希算法 - Azure
 description: 本页面提供有关更改 Office 365 联合身份验证信任 SHA 算法的指导
 keywords: SHA1,SHA256,O365,联合,aadconnect,adfs,ad fs,更改 sha,联合身份验证信任,信赖方信任
 services: active-directory
@@ -9,19 +9,20 @@ manager: daveba
 editor: ''
 ms.assetid: cf6880e2-af78-4cc9-91bc-b64de4428bbd
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b6c81343d52f016dc779f9e08176a0d909684c0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: db4327f77d466ee66ef7fdbdaa60ef7ebd51f2d0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138626"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85359652"
 ---
 # <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>更改 Office 365 信赖方信任的签名哈希算法
 ## <a name="overview"></a>概述
@@ -35,10 +36,10 @@ Active Directory 联合身份验证服务 (AD FS) 会在 Microsoft Azure Active 
 
 ### <a name="ad-fs-management-console"></a>AD FS 管理控制台
 1. 在 AD FS 主服务器上打开 AD FS 管理控制台。
-2. 展开 AD FS 节点，并单击“信赖方信任”。
-3. 右键单击 Office 365/Azure 信赖方信任并选择“属性”。
-4. 选择“高级”选项卡，并选择安全哈希算法 SHA256。
-5. 单击“确定”。
+2. 展开 AD FS 节点，并单击“信赖方信任”  。
+3. 右键单击 Office 365/Azure 信赖方信任并选择“属性”  。
+4. 选择“高级”  选项卡，并选择安全哈希算法 SHA256。
+5. 单击“确定”。 
 
 ![SHA256 签名算法--MMC](./media/how-to-connect-fed-sha256-guidance/mmc.png)
 

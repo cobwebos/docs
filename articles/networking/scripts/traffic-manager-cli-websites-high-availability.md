@@ -3,26 +3,22 @@ title: Azure CLI 脚本示例 - 为实现应用程序的高可用性路由流量
 description: Azure CLI 脚本示例 - 为实现应用程序的高可用性路由流量
 services: traffic-manager
 documentationcenter: traffic-manager
-author: KumudD
-manager: timlt
-editor: tysonn
-tags: azure-infrastructure
-ms.assetid: ''
+author: asudbring
+manager: KumudD
 ms.service: traffic-manager
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 06/26/2018
-ms.author: kumud
-ms.openlocfilehash: 3922eb76fa0954b9c02cc86f98acb142cc1d1fee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: allensu
+ms.openlocfilehash: 2a083520a0da324d7033d4597a6b734b43c025b7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60565303"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74049254"
 ---
-# <a name="route-traffic-for-high-availability-of-applications"></a>为实现应用程序的高可用性路由流量
+# <a name="route-traffic-for-high-availability-of-applications---azure-cli"></a>为实现应用程序的高可用性路由流量 - Azure CLI
 
 此脚本将创建一个资源组、两个应用服务计划、两个 Web 应用、一个流量管理器配置文件和两个流量管理器终结点。 流量管理器将流量引导到一个区域（作为主要区域）中的应用程序；主要区域中的应用程序不可用时，引导到次要区域。 执行脚本前，必须将 MyWebApp、MyWebAppL1 和 MyWebAppL2 值更改为 Azure 内的唯一值。 运行脚本后，可以使用 URL mywebapp.trafficmanager.net 访问主要区域中的应用。
 
@@ -48,7 +44,7 @@ az group delete --name myResourceGroup2 --yes
 
 此脚本使用以下命令创建资源组、Web 应用、流量管理器配置文件和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | 创建用于存储所有资源的资源组。 |
 | [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan) | 创建应用服务计划。 这与 Azure Web 应用的服务器场类似。 |

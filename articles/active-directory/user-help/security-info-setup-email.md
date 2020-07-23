@@ -1,32 +1,46 @@
 ---
-title: 设置安全信息（预览）以使用电子邮件地址 - Azure Active Directory | Microsoft Docs
-description: 如何设置安全信息，以使用电子邮件地址验证身份。
+title: 设置电子邮件地址作为验证方法 - Azure AD
+description: 如何设置“安全信息”（预览版）页，以使用电子邮件地址作为验证方法来验证身份。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/13/2019
-ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 720aafac79a67f64b0974dba0dd60c6aa24a8c54
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: curtand
+ms.openlocfilehash: 4f0ea55149fc8cfeeb6ef719d67346019b81078a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60480555"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744466"
 ---
-# <a name="set-up-security-info-preview-to-use-your-email-address"></a>设置安全信息（预览）以使用电子邮件地址
-可以按照以下步骤添加密码重置方法。 在首次设置此项后，可以返回到“安全信息”页以添加、更新或删除安全信息。
+# <a name="set-up-an-email-address-as-your-verification-method"></a>将电子邮件地址设置为验证方法
 
-设置密码重置方法后，还必须使用[验证器应用](security-info-setup-auth-app.md)[短信](security-info-setup-text-msg.md)或[电话](security-info-setup-phone-number.md)设置双重验证方法。
+可以按照以下步骤添加密码重置方法。 在首次设置此项后，可以返回到“安全信息”页以添加、更新或删除安全信息。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
+>[!Note]
+>如果看不到电子邮件选项，则可能是因为组织不允许你将此选项用于密码重置方法。 在这种情况下，需选择另一种方法，或者与组织的支持人员联系以获取进一步帮助。
+
+## <a name="security-vs-password-reset-verification"></a>安全性与密码重置验证
+
+安全信息方法既用于双因素安全验证，又用于密码重置。 但是，并非所有方法都可以用于这二者。
+
+| 方法 | 用于 |
+| ------ | -------- |
+| Authenticator 应用 | 双重验证和密码重置身份验证。 |
+| 短信 | 双重验证和密码重置身份验证。 |
+| 电话呼叫 | 双重验证和密码重置身份验证。 |
+| 安全密钥 | 双重验证和密码重置身份验证。 |
+| 电子邮件帐户 | 仅密码重置身份验证。 需选择另一种方法进行双重验证。 |
+| 安全提问 | 仅密码重置身份验证。 需选择另一种方法进行双重验证。 |
+
 ## <a name="set-up-your-email-address-from-the-security-info-page"></a>在安全信息页面设置电子邮件地址
+
 根据组织的设置，可以将电子邮件地址用作安全信息方法之一。
 
 >[!Note]
@@ -34,19 +48,19 @@ ms.locfileid: "60480555"
 
 ### <a name="to-set-up-your-email-address"></a>设置电子邮件地址
 
-1. 登录到工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页。
+1. 登录到工作或学校帐户，然后转到 https://myaccount.microsoft.com/ 页。
 
     ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile-page.png)
 
-2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
+2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”   。
 
     ![“安全信息”页，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. 在“添加方法”页上，从下拉列表中选择“电子邮件”，然后选择“添加”。
+3. 在“添加方法”页上，从下拉列表中选择“电子邮件”，然后选择“添加”  。
 
     ![“添加方法”框，已选中“电子邮件”](media/security-info/securityinfo-myprofile-addemail.png)
 
-4. 在“电子邮件”页，键入电子邮件地址（例如 alain@gmail.com）并选择“下一步”。
+4. 在“电子邮件”页，键入电子邮件地址（例如 alain@gmail.com）并选择“下一步” 。
 
     ![添加电话号码并选择电话呼叫](media/security-info/securityinfo-myprofile-emailaddress.png)
 
@@ -60,6 +74,7 @@ ms.locfileid: "60480555"
     已更新安全信息，以便在使用密码重置时通过电子邮件地址验证身份。
 
 ## <a name="delete-your-email-address-from-your-security-info-methods"></a>从安全信息方法中删除电子邮件地址
+
 如果不想再将电子邮件地址用作安全信息方法，可以从“安全信息”页将其删除。
 
 >[!Important]
@@ -67,13 +82,14 @@ ms.locfileid: "60480555"
 
 ### <a name="to-delete-your-email-address"></a>删除电子邮件地址
 
-1. 在“安全信息”页上，选择“电子邮件”选项旁边的“删除”链接。
+1. 在“安全信息”页上，选择“电子邮件”选项旁边的“删除”链接  。
 
     ![从安全信息中删除电话方法的链接](media/security-info/securityinfo-myprofile-emaildelete.png)
 
-2. 从确认框中选择“是”，以删除“电子邮件”帐户。 删除电子邮件帐户后，该帐户将从安全信息中删除，并从“安全信息”页消失。
+2. 从确认框中选择“是”，以删除“电子邮件”帐户 。 删除电子邮件帐户后，该帐户将从安全信息中删除，并从“安全信息”页消失。
 
 ## <a name="additional-security-info-methods"></a>其他安全信息方法
+
 基于你想要执行的操作，还可以选择组织如何联系你以验证你的身份的其他选项。 选项包括：
 
 - **Authenticator 应用。** 下载并使用验证器应用，获取双重验证或密码重置的审批通知或随机生成的审核代码。 有关如何设置和使用 Microsoft Authenticator 应用的分步说明，请参阅[设置安全信息以使用验证器应用](security-info-setup-auth-app.md)。
@@ -82,13 +98,15 @@ ms.locfileid: "60480555"
 
 - **移动设备或工作电话。** 输入移动设备号码，获取将用于双重验证或密码重置的电话。 有关如何使用电话号码验证身份的分步说明，请参阅[设置安全信息以使用电话](security-info-setup-phone-number.md)。
 
+- **安全密钥。** 注册与 Microsoft 兼容的安全密钥，并将其与 PIN 一起使用来进行双重验证或密码重置。 有关如何使用安全密钥验证身份的分步说明，请参阅[设置安全信息以使用安全密钥](security-info-setup-security-key.md)。
+
 - **安全性问题。** 回答管理员为组织创建的一些安全性问题。 此选项仅适用于密码重置，不可用于双重验证。 有关如何设置安全问题的分步说明，请参阅[设置安全信息以使用安全性问题](security-info-setup-questions.md)一文。
-    
+
     >[!Note]
     >如果缺少其中某些选项，则很可能是因为组织不允许使用这些方法。 如果是这样，则将需要选择可用的方法，或与管理员联系以获取进一步帮助。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果丢失或忘记密码，请通过[密码重置门户](https://passwordreset.microsoftonline.com/)或遵循[重置工作或学校帐户密码](user-help-reset-password.md)一文中的步骤重置密码。
+- 如果丢失或忘记密码，请通过[密码重置门户](https://passwordreset.microsoftonline.com/)或遵循[重置工作或学校帐户密码](active-directory-passwords-update-your-own-password.md)一文中的步骤重置密码。
 
 - 在[无法登录 Microsoft 帐户](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)一文中获取登录问题的故障排除提示和帮助。

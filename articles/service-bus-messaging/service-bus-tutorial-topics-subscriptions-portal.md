@@ -1,26 +1,22 @@
 ---
-title: 教程 - 通过 Azure 门户使用发布/订阅渠道和主题筛选器更新零售库存分类 | Microsoft Docs
+title: 使用 Azure 门户和主题/订阅更新清单
 description: 本教程介绍如何从主题和订阅发送和接收消息，以及如何使用 .NET 添加和使用筛选器规则
-services: service-bus-messaging
 author: spelluru
-manager: timlt
 ms.author: spelluru
-ms.date: 09/22/2018
+ms.date: 06/23/2020
 ms.topic: tutorial
-ms.service: service-bus-messaging
-ms.custom: mvc
-ms.openlocfilehash: 5424a07f8ecd7eab962a4f865fac91741810e4b1
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 77a8ef9c96219d2deb08126dc68eafe08d5262d4
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991922"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341695"
 ---
-# <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>教程：使用 Azure 门户和主题/订阅更新清单
+# <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>教程：使用 Azure 门户和主题/订阅更新库存
 
 Microsoft Azure 服务总线是一种多租户云消息传送服务，可以在应用程序和服务之间发送信息。 异步操作可实现灵活的中转消息传送、结构化的先进先出 (FIFO) 消息传送以及发布/订阅功能。 本教程介绍如何通过 Azure 门户和 .NET 将零售库存方案中的服务总线主题和订阅与发布/订阅渠道配合使用。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 使用 Azure 门户创建一个服务总线主题和一个或多个对该主题的订阅
 > * 使用 .NET 代码添加主题筛选器
@@ -34,7 +30,7 @@ Microsoft Azure 服务总线是一种多租户云消息传送服务，可以在�
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户][]。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，请确保已安装：
 
@@ -55,7 +51,7 @@ Microsoft Azure 服务总线是一种多租户云消息传送服务，可以在�
 
 预配命名空间和主题/订阅并且拥有所需的凭据后，便可以在订阅上创建筛选规则，然后发送和接收消息。 可以在[此 GitHub 示例文件夹](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters)中检查代码。
 
-### <a name="send-and-receive-messages"></a>发送和接收消息
+## <a name="send-and-receive-messages"></a>发送和接收消息
 
 若要运行此代码，请执行以下操作：
 
@@ -399,7 +395,7 @@ private async Task ReceiveMessages(string subscription)
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何使用 Azure 门户预配资源，然后从服务总线主题及其订阅发送并接收消息。 你已了解如何：
+本教程介绍了如何使用 Azure 门户预配资源，然后从服务总线主题及其订阅发送并接收消息。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 Azure 门户创建一个服务总线主题和一个或多个对该主题的订阅

@@ -1,25 +1,13 @@
 ---
-title: Service Fabric 群集安全性：客户端角色 | Microsoft Docs
+title: Service Fabric 群集安全性：客户端角色
 description: 本文介绍两个客户端角色以及提供给这些角色的权限。
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: coreysa
-editor: ''
-ms.assetid: 7bc808d9-3609-46a1-ac12-b4f53bff98dd
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: ed000dc4be1ae45382d688d4a596ec745c69d0bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: abca19e686d39338fcaa2e0b0c8126913135170b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60711147"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75451904"
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>适用于 Service Fabric 客户端的基于角色的访问控制
 Azure Service Fabric 针对连接到 Service Fabric 群集的客户端支持两种不同的访问控制类型：管理员和用户。 访问控制可让群集管理员针对不同的用户组限制特定群集操作的访问权限，使群集更加安全。  
@@ -52,16 +40,16 @@ Azure Service Fabric 针对连接到 Service Fabric 群集的客户端支持两�
 * **RecoverSystemPartitions**：恢复系统服务分区                             
 
 ### <a name="cluster-operations"></a>群集操作
-* **ProvisionFabric**:MSI 和/或群集清单预配                             
+* **ProvisionFabric**：预配 MSI 和/或群集清单                             
 * **UpgradeFabric**：启动群集升级                             
-* **UnprovisionFabric**:MSI 和/或群集清单取消预配                         
+* **UnprovisionFabric**：取消预配 MSI 和/或群集清单                         
 * **MoveNextFabricUpgradeDomain**：使用显式更新域恢复群集升级                             
 * **ReportFabricUpgradeHealth**：恢复群集升级并提供当前升级进度                             
 * **StartInfrastructureTask**：启动基础结构任务                             
 * **FinishInfrastructureTask**：完成基础结构任务                             
 * **InvokeInfrastructureCommand**：基础结构任务管理命令                              
 * **ActivateNode**：激活一个节点                             
-* **DeactivateNode**停用一个节点                             
+* **DeactivateNode**：停用一个节点                             
 * **DeactivateNodesBatch**：停用多个节点                             
 * **RemoveNodeDeactivations**：在多个节点上还原停用操作                             
 * **GetNodeDeactivationStatus**：检查停用状态                             
@@ -71,7 +59,7 @@ Azure Service Fabric 针对连接到 Service Fabric 群集的客户端支持两�
 * **FileDownload**：启动映像存储客户端文件下载（群集外部）                             
 * **InternalList**：映像存储客户端文件列表操作（内部）                             
 * **Delete**：映像存储客户端删除操作                              
-* **Upload**：映像存储客户端上传操作                             
+* Upload：映像存储客户端上传操作                             
 * **NodeControl**：启动、停止和重新启动节点                             
 * **MoveReplicaControl**：将副本从一个节点移到另一个节点                             
 

@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 04/19/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: a7a86c6a2661a8a1f30491391fc76f4dc5d71f54
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 367a0b1d17f8d5ebe4f46835ace963b00e75354e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66163541"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "68229178"
 ---
 若要使用 Azure 门户创建 IoT 中心，请执行以下操作：
 
-1. 登录到 [Azure 门户](http://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
-1. 选择“创建资源” > “物联网” > “IoT 中心”。
+1. 选择“创建资源” > “物联网” > “IoT 中心”  。
 
     ![选择安装 IoT 中心](media/iot-hub-tutorials-create-free-hub/selectiothub.png)
 

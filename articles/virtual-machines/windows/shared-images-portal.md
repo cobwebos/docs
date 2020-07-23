@@ -1,29 +1,21 @@
 ---
-title: 为 Windows 使用门户创建共享的 Azure 虚拟机映像 |Microsoft Docs
-description: 了解如何使用 Azure 门户创建和共享的虚拟机映像。
-services: virtual-machines-windows
-documentationcenter: virtual-machines
+title: 使用门户创建 Azure 共享映像库
+description: 了解如何使用 Azure 门户创建和共享虚拟机映像。
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.subservice: imaging
+ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 05/06/2019
+ms.date: 11/06/2019
 ms.author: cynthn
-ms.custom: ''
-ms.openlocfilehash: f63b705f7967eeddaf522941d6db9be5d9f2719d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: e484cccb2dc15266fb7889c335a0acc981053e5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244990"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82792133"
 ---
-# <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>创建共享的映像库使用 Azure 门户
+# <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>使用门户创建 Azure 共享映像库
 
 [共享映像库](shared-image-galleries.md)大大简化了整个组织中的自定义映像共享。 自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动部署任务，例如预加载应用程序、应用程序配置和其他 OS 配置。 
 
@@ -33,48 +25,40 @@ ms.locfileid: "66244990"
 
 共享映像库功能具有多种资源类型。 我们将在本文中使用或生成这些资源类型：
 
-| Resource | 描述|
-|----------|------------|
-| **托管映像** | 这是基本映像，可以单独使用，也可用于在映像库中创建“映像版本”  。 托管映像是从通用 VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
-| **映像库** | 与 Azure 市场一样，**映像库**是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |
-| **映像定义** | 映像在库中定义，携带有关该映像及其在内部使用的要求的信息。 这包括了该映像是 Windows 还是 Linux 映像、发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 |
-| **映像版本** | 使用库时，将使用**映像版本**来创建 VM。 可根据环境的需要创建多个映像版本。 与托管映像一样，在使用**映像版本**创建 VM 时，将使用映像版本来创建 VM 的新磁盘。 可以多次使用映像版本。 |
 
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
-## <a name="before-you-begin"></a>开始之前
+<br>
 
-完成本文中的示例，必须具有现有托管映像。 可以按照[教程：使用 Azure PowerShell 创建 Azure VM 的自定义映像](tutorial-custom-images.md)来创建映像（如有需要）。 如果托管映像包含数据磁盘，则数据磁盘大小不能超过 1 TB。
 
 通过本文进行操作时，请根据需要替换资源组和 VM 名称。
 
 
 [!INCLUDE [virtual-machines-common-shared-images-portal](../../../includes/virtual-machines-common-shared-images-portal.md)]
  
-## <a name="create-vms-from-an-image"></a>根据映像创建 VM
+## <a name="create-vms"></a>创建 VM
 
-映像版本完成后，可以创建一个或多个新的 VM。 
+现在，可以创建一个或多个新的 VM。 此示例在*美国东部*数据中心的*myResourceGroup*中创建名为*myVM*的 VM。
 
-本示例在美国东部数据中心的“myResourceGroup”中创建名为“myVMfromImage”的 VM    。
-
-1. 在你的映像版本上，选择**创建 VM**从页面顶部的菜单。
-1. 有关**资源组**，选择**新建**并键入*myResourceGroup*的名称。
-1. 在中**虚拟机名称**，类型*myVM*。
-1. 有关**地区**，选择*美国东部*。
-1. 有关**可用性选项**，保留默认值为*没有所需的基础结构冗余*。
-1. 值**图像**如果从映像版本的页中启动，应会自动填写。
-1. 有关**大小**，从可用大小的列表中选择 VM 大小，然后单击"Select"。
-1. 在“管理员帐户”  下，提供用户名（例如 *azureuser*）和密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。
-1. 如果你想要允许远程访问 VM 下,**公共入站的端口**，选择**允许所选的端口**，然后选择**RDP (3389)** 从下拉列表。 如果不想要允许远程访问 VM，请将**无**为所选**公共入站的端口**。
-1. 在完成后，请选择**查看 + 创建**在页面底部的按钮。
-1. VM 通过验证后，选择**创建**底部的页后，可以开始部署。
-
+1. 转到映像定义。 可以使用资源筛选器显示所有可用的映像定义。
+1. 在映像定义的页面顶部，从菜单中选择“创建 VM”。****
+1. 对于“资源组”，请选择“新建”并键入 *myResourceGroup* 作为名称。**** ****
+1. 在“虚拟机名称”中键入 *myVM*。****
+1. 对于“区域”，请选择“美国东部”。 
+1. 对于“可用性选项”，请保留默认设置“无需基础结构冗余”。******
+1. 如果你是从映像定义的页面开始操作的，系统会自动使用 `latest` 映像版本填充“映像”的值。****
+1. 对于“大小”，请从可用大小列表中选择一种 VM 大小，然后选择“选择”。  
+1. 在“管理员帐户”  下，如果映像已通用化，则需提供用户名（例如 *azureuser*）和密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。 如果映像已专用化，则用户名和密码字段会灰显，因为使用的是源 VM 的用户名和密码。
+1. 若要允许远程访问 VM，请在“公共入站端口”下选择“允许所选端口”，然后从下拉列表中选择“RDP (3389)”。    如果你不希望允许远程访问 VM，请为“公共入站端口”保留选择“无”。  
+1. 完成后，选择页面底部的“查看 + 创建”按钮。****
+1. VM 通过验证后，选择页面底部的“创建”以开始部署。****
 
 
 ## <a name="clean-up-resources"></a>清理资源
 
-当不再需要时，可以删除资源组、虚拟机和所有相关资源。 为此，请选择虚拟机的资源组，选择“删除”  ，然后确认要删除的资源组的名称。
+当不再需要时，可以删除资源组、虚拟机和所有相关资源。 为此，请选择虚拟机的资源组，选择“删除”****，然后确认要删除的资源组的名称。
 
-如果你想要删除单个资源，你需要按相反的顺序将其删除。 例如，若要删除图像定义，您需要删除所有从该映像创建的映像版本。
+若要删除单个资源，需要按相反的顺序删除。 例如，若要删除某个映像定义，需要先删除基于该映像创建的所有映像版本。
 
 ## <a name="next-steps"></a>后续步骤
 

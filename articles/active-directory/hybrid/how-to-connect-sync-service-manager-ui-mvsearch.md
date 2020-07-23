@@ -1,33 +1,33 @@
 ---
-title: Azure AD Connect Sync Service Manager Metaverse 搜索 | Microsoft 文档
-description: 了解 Azure AD Connect 的 Synchronization Service Manager 中的“Metaverse 搜索”选项卡。
+title: Azure AD Connect Sync Service Manager Metaverse 搜索 | Microsoft Docs
+description: 了解用于 Azure AD Connect 的 Synchronization Service Manager 中的“Metaverse 搜索”选项卡。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 20234dd4-3328-4817-b7ff-268f953d376d
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-origin.date: 07/13/2017
-ms.date: 11/12/2018
-ms.component: hybrid
-ms.author: v-junlch
-ms.openlocfilehash: 59a52fa1b67d37abfc79fd5738d70afb8aecf670
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 07/13/2017
+ms.subservice: hybrid
+ms.author: billmath
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 963c59cc002fec7ad0d882db19a83f4299a506c6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60382908"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357148"
 ---
 # <a name="sync-service-manager-metaverse-search"></a>Sync Service Manager Metaverse 搜索
 
 ![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-mvsearch/mvsearch.png)
 
-排查与数据相关的问题时，“Metaverse 搜索”选项卡非常有用。 在上半部分，可以基于属性组合创建查询。 如果对查询结果满意，请单击“搜索”。 结果显示在底部网格中。 可以利用“列设置”来选择应显示的列。
+排查与数据相关的问题时，“Metaverse 搜索”选项卡非常有用。 在上半部分，可以基于属性组合创建查询。 如果对查询结果满意，请单击“搜索”。  结果显示在底部网格中。 可以利用“列设置”来选择应显示的列。 
 
 在搜索结果中，选择对象，并选择“属性”查看 [Metaverse 对象属性](tshoot-connect-object-not-syncing.md#metaverse-object-properties)。
 
@@ -35,4 +35,3 @@ ms.locfileid: "60382908"
 了解有关 [Azure AD Connect 同步](how-to-connect-sync-whatis.md)配置的详细信息。
 
 了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
-

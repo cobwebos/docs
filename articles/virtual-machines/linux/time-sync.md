@@ -1,99 +1,96 @@
 ---
-title: Azure 中 Linux VM 的时间同步 | Microsoft Docs
+title: Azure 中 Linux VM 的时间同步
 description: Linux 虚拟机的时间同步。
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 075fc48d4db4c4cfcc6f45f5fe93e8cfb38d5559
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
-ms.translationtype: MT
+ms.openlocfilehash: 25e8be28903d490a7a8c17e16d2beddc44c95c41
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991839"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84782766"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure 中 Linux VM 的时间同步
 
-时间同步对于安全性和事件关联非常重要。 有时，它用于分布式的事务实现。 可通过同步实现多个计算机系统之间的时间准确性。 同步可能受到多种因素的影响，包括重新启动以及时间源和获取时间的计算机之间的流量。 
+时间同步对于安全性和事件相关性来说很重要。 有时候，它用于分布式事务实现。 多个计算机系统之间的时间准确性通过同步来实现。 同步可能受多种因素影响，包括重启以及时间源和提取时间的计算机之间的网络流量。 
 
-Azure 由运行 Windows Server 2016 的基础结构提供支持。 Windows Server 2016 改进了用于校正时间的算法和本地时钟与 UTC 同步的条件。  Windows Server 2016 Accurate Time 功能还大幅改进了 VMICTimeSync 服务，该服务管理 VM 如何与主机同步以获得准确时间。 改进包括 VM 启动或 VM 还原的更精确的初始时间以及中断延迟校正。 
+Azure 受运行 Windows Server 2016 的基础设施的支持。 Windows Server 2016 已改进用于纠正时间和条件的算法，方便本地时钟与 UTC 同步。  Windows Server 2016 的准确时间功能大大改进了 VMICTimeSync 服务的控制方式，可以通过控制 VM 与主机的同步来确保时间准确。 改进包括增强 VM 启动或 VM 还原的初始时间的准确性，以及纠正中断延迟。 
 
->[!NOTE]
->有关 Windows 时间服务的快速概述，请参阅此[高级概述视频](https://aka.ms/WS2016TimeVideo)。
+> [!NOTE]
+> 若要快速了解 Windows 时间服务，请参阅此[高级概述视频](https://aka.ms/WS2016TimeVideo)。
 >
-> 有关详细信息，请参阅 [Windows Server 2016 的准确时间](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)。 
+> 有关详细信息，请参阅 [Windows Server 2016 的准确时间](/windows-server/networking/windows-time-service/accurate-time)。 
 
 ## <a name="overview"></a>概述
 
-计算机时钟的准确性根据计算机时钟与协调世界时 (UTC) 时间标准的接近程度来测量。 UTC 由多国的精确原子钟示例定义，300 年误差仅一秒。 但是，直接读取 UTC 需要专用的硬件。 相反，时间服务器与 UTC 同步，并可从其他计算机访问，以提供可伸缩性和可靠性。 每台计算机都运行时间同步服务，该服务知道要使用什么时间服务器，并定期检查计算机时钟是否需要校正以及在需要时调整时间。 
+计算机时钟的准确性根据计算机时钟与协调世界时 (UTC) 时间标准的接近程度来测量。 UTC 通过精确原子钟的跨国样本来定义，此类原子钟 300 年的偏差只有 1 秒。 但是，直接读取 UTC 需要专用硬件。 而时间服务器与 UTC 同步，可以从其他计算机访问，因此具备可伸缩性和可靠性。 每个计算机都有时间同步服务运行，该服务知道使用什么时间服务器，并定期检查计算机时钟是否需纠正，然后根据需要调整时间。 
 
-Azure 主机与内部 Microsoft 时间服务器同步，这些服务器从 Microsoft 拥有的带 GPS 天线的 Stratum 1 设备获取时间。 Azure 中的虚拟机可以依赖其主机将准确时间（主机时间）传递给 VM，也可以直接从时间服务器中获取时间，或结合使用这两种方式。 
+Azure 主机与内部 Microsoft 时间服务器同步，这些服务器从 Microsoft 拥有的带 GPS 天线的 Stratum 1 设备获取时间。 Azure 中的虚拟机可以依赖其主机来获取准确的时间（主机时间）  ，也可以直接从时间服务器获取时间，或者同时采用这两种方法。 
 
-在独立硬件上，Linux OS 仅在启动时读取主机硬件时钟。 在此之后，使用 Linux 内核中的中断计时器维护时钟。 在此配置中，时钟将随时间推移发生偏移。 在 Azure 上较新的 Linux 发行版中，VM 可以使用 Linux 集成服务 (LIS) 中包含的 VMICTimeSync 提供程序来更频繁地查询来自主机的时钟更新。
+在独立硬件上，Linux OS 仅在启动时读取主机硬件时钟数据。 然后，时钟会通过 Linux 内核中的中断计时器来维护。 在此配置中，时钟会随着时间的推移而出现偏差。 在 Azure 上的较新的 Linux 发行版中，VM 可以使用 Linux Integration Services (LIS) 中随附的 VMICTimeSync 提供程序，从主机更频繁地查询时钟更新。
 
-虚拟机与主机的交互也会影响时钟。 在[内存保留维护](maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)期间，VM 最多暂停 30 秒。 例如，在维护开始之前，VM 时钟显示上午 10:00:00 并持续 28 秒。 VM 恢复后，VM 上的时钟仍显示上午 10:00:00，也就是差了 28 秒。 为了校正这种情况，VMICTimeSync 服务会监视主机上发生的情况，并提示在 VM 上进行更改以进行补偿。
+虚拟机与主机的交互也可能影响时钟。 在[内存保留维护](../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)期间，VM 会暂停最多 30 秒的时间。 例如，在维护开始之前，VM 时钟显示上午 10:00:00，这种状态会持续 28 秒。 在 VM 恢复后，VM 上的时钟仍显示上午 10:00:00，这样就造成 28 秒的偏差。 为了进行纠正，VMICTimeSync 服务会监视主机上发生的情况，并会提示用户在 VM 上进行更改以纠正时间偏差。
 
-如果没有进行时间同步，则 VM 上的时钟会累积错误。 当只有一个 VM 时，除非工作负载需要高度准确的计时，否则效果可能不会很明显。 但在大多数情况下，我们有多个相互关联的 VM，它们使用时间来跟踪事务，并且需要在整个部署中保持一致的时间。 VM 之间的时间不同时，可能会产生以下影响：
+如果不进行时间同步，VM 上的时钟会累积错误。 只有一个 VM 时，效果可能不明显，除非工作负荷要求极为准确的计时。 但在大多数情况下，我们有多个互连的 VM，这些 VM 使用时间来跟踪事务，因此需确保整个部署的时间一致。 当 VM 之间的时间不同时，可能会造成以下影响：
 
-- 身份验证将会失败。 Kerberos 等安全协议或依赖于证书的技术依赖于系统间的时间一致性。
-- 如果日志（或其他数据）在时间上不一致，则很难弄清楚系统中发生了什么。 同一事件看起来好像发生在不同的时间，这使关联变得困难。
-- 如果时钟关闭，则可能无法正确计费。
+- 身份验证会失败。 安全协议（如 Kerberos）或依赖于证书的技术要求跨系统确保时间一致性。
+- 如果日志（或其他数据）在时间上不一致，则很难弄清楚系统中发生了什么。 同一事件看起来就像是在不同的时间发生，难以进行关联。
+- 如果时钟存在偏差，则可能造成计费不正确。
 
 
 
 ## <a name="configuration-options"></a>配置选项
 
-通常可通过三种方法 Azure 中托管的 Linux VM 配置时间同步：
+一般情况下，可以通过三种方式为托管在 Azure 中的 Linux VM 配置时间同步：
 
-- Azure 市场映像的默认配置同时使用 NTP 时间和 VMICTimeSync 主机时间。 
-- 使用 VMICTimeSync（仅限主机）。
-- 使用其他外部时间服务器，使用或不使用 VMICTimeSync 主机时间。
+- Azure 市场映像的默认配置使用 NTP 时间和 VMICTimeSync 主机时间。 
+- 仅主机（使用 VMICTimeSync）。
+- 在使用或不使用 VMICTimeSync 主机时间的情况下，使用另一外部时间服务器。
 
 
-### <a name="use-the-default"></a>使用默认配置
+### <a name="use-the-default"></a>使用默认值
 
-默认情况下，大多数适用于 Linux 的 Azure 市场映像都配置为从两个源同步： 
+默认情况下，大多数适用于 Linux 的 Azure 市场映像配置为与两个源同步： 
 
-- NTP 作为主服务器，从 NTP 服务器获取时间。 例如，Ubuntu 16.04 LTS 市场映像使用 ntp.ubuntu.com。
-- VMICTimeSync 服务作为辅助服务器，用于将主机时间传递给 VM，并在 VM 暂停以进行维护后进行校正。 Azure 主机使用 Microsoft 拥有的 Stratum 1 设备来保持准确的时间。
+- NTP 充当主要源，可以从 NTP 服务器获取时间。 例如，Ubuntu 16.04 LTS 市场映像使用 **ntp.ubuntu.com**。
+- VMICTimeSync 服务充当次要源，用于将主机时间传递给 VM，并在 VM 因维护而暂停后进行纠正。 Azure 主机使用 Microsoft 拥有的 Stratum 1 设备来保持准确的时间。
 
-在较新的 Linux 发行版中，VMICTimeSync 服务使用精确时间协议 (PTP)，但早期发行版可能不支持 PTP，将回退到 NTP 以从主机获取时间。
+在较新的 Linux 发行版中，VMICTimeSync 服务使用精度时间协议 (PTP)，但较早的发行版可能不支持 PTP，因此会求助于 NTP 从主机获取时间。
 
-要确认 NTP 是否正确同步，请运行 `ntpq -p` 命令。
+若要确认 NTP 是否正确同步，请运行 `ntpq -p` 命令。
 
-### <a name="host-only"></a>仅限主机 
+### <a name="host-only"></a>仅主机 
 
-由于诸如 time.windows.com 和 ntp.ubuntu.com 等 NTP 服务器是公共服务器，因此与它们同步时间需要通过 Internet 发送流量。 不同的数据包延迟会对时间同步的质量产生负面影响。通过切换到仅限主机同步来删除 NTP 有时可以改善时间同步结果。
+由于 NTP 服务器（例如 time.windows.com 和 ntp.ubuntu.com）是公共的，因此与其同步时间需要通过 Internet 发送流量。 数据包的延迟各不相同，可能会对时间同步的质量造成负面影响。通过切换到“仅主机”同步来删除 NTP 有时候可以改善时间同步结果。
 
-如果使用默认配置时遇到时间同步问题，切换到仅限主机时间同步可解决问题。 请尝试仅限主机同步，看看是否会改善 VM 上的时间同步。 
+如果在使用默认配置时遇到时间同步问题，则可切换到“仅主机”时间同步。 尝试“仅主机”同步，看是否会改进 VM 上的时间同步。 
 
 ### <a name="external-time-server"></a>外部时间服务器
 
-如果有特定的时间同步要求，还可以选择使用外部时间服务器。 外部时间服务器可以提供特定的时间，这对于测试方案非常有用，可确保与非 Microsoft 数据中心托管的计算机的时间一致性，或以特殊方式处理闰秒。
+如果有特定的时间同步要求，则可使用另一选项，即，使用外部时间服务器。 外部时间服务器可以提供特定的时间，这可以用于测试方案，确保时间在非 Microsoft 数据中心托管的计算机中的一致性，或者以特殊方式来处理闰秒问题。
 
-可以结合使用外部服务器与 VMICTimeSync 服务，以提供与默认配置类似的结果。 将外部时间服务器与 VMICTimeSync 相结合是处理暂停 VM 进行维护时可能引起的问题的最佳选择。 
+可以将外部时间服务器与 VMICTimeSync 服务组合使用，提供类似于默认配置的结果。 若要处理因维护而暂停 VM 所导致的问题，最好是将外部时间服务器与 VMICTimeSync 组合使用。 
 
 ## <a name="tools-and-resources"></a>工具和资源
 
-可通过基本命令检查时间同步配置。 Linux 发行版文档将更详细地介绍针对发行版配置时间同步的最佳方法。
+可以通过一些基本的命令来检查时间同步配置。 Linux 发行版的文档更详细地说明了如何才能以最佳方式为该发行版配置时间同步。
 
 ### <a name="integration-services"></a>集成服务
 
-检查是否已加载集成服务 (hv_utils)。
+查看集成服务 (hv_utils) 是否已加载。
 
 ```bash
 lsmod | grep hv_utils
 ```
-应可看到类似于下面的内容：
+看到的内容应该如下所示：
 
 ```
 hv_utils               24418  0
@@ -106,7 +103,7 @@ hv_vmbus              397185  7 hv_balloon,hyperv_keyboard,hv_netvsc,hid_hyperv,
 ps -ef | grep hv
 ```
 
-应可看到类似于下面的内容：
+看到的内容应该如下所示：
 
 ```
 root        229      2  0 17:52 ?        00:00:00 [hv_vmbus_con]
@@ -114,47 +111,58 @@ root        391      2  0 17:52 ?        00:00:00 [hv_balloon]
 ```
 
 
-### <a name="check-for-ptp"></a>检查 PTP
+### <a name="check-for-ptp"></a>查看 PTP
 
-对于较新版本的 Linux，可在 VMICTimeSync 提供程序中提供精确时间协议 (PTP) 时钟源。 在较旧版本的 Red Hat Enterprise Linux 或 CentOS 7.x 上，可以下载 [Linux Integration Services ](https://github.com/LIS/lis-next)，并将其用于安装更新的驱动程序。 使用 PTP 时，Linux 设备的格式为 /dev/ptp *x*。 
+使用较新版的 Linux 时，可以在 VMICTimeSync 提供程序中获得精度时间协议 (PTP) 时钟源。 在较旧版本的 Red Hat Enterprise Linux 或 CentOS 7.x 上，可以下载 [Linux Integration Services ](https://github.com/LIS/lis-next)，并将其用于安装更新的驱动程序。 使用 PTP 时，Linux 设备的表示形式为 /dev/ptp*x*。 
 
-查看可用的 PTP 时钟源。
+查看哪些 PTP 时钟源可用。
 
 ```bash
 ls /sys/class/ptp
 ```
 
-在此示例中，返回的值为 ptp0，因此我们使用它来检查时钟名称。 要验证设备，请检查时钟名称。
+在此示例中，返回的值为 *ptp0*，因此我们使用它来检查时钟名称。 若要验证设备，请检查时钟名称。
 
 ```bash
 cat /sys/class/ptp/ptp0/clock_name
 ```
 
-这应返回 hyperv。
+应该会返回 **hyperv**。
 
 ### <a name="chrony"></a>chrony
 
-在 Red Hat Enterprise Linux 和 CentOS 7.x 上，[chrony](https://chrony.tuxfamily.org/) 配置为使用 PTP 源时钟。 网络时间协议守护程序 (ntpd) 不支持 PTP 源，因此建议使用 chronyd。 要启用 PTP，请更新 chrony.conf。
+在 Ubuntu 19.10 及更高版本中，Red Hat Enterprise Linux 和 CentOS [chrony](https://chrony.tuxfamily.org/)配置为使用 PTP 源时钟。 旧的 Linux 发行版使用网络时间协议守护程序 (ntpd)（不支持 PTP 源），而不是使用 chrony。 要在这些版本中启用 PTP，必须使用以下代码手动安装并配置 chrony（在 chrony.conf 中）：
 
 ```bash
 refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 ```
 
-有关 Red Hat 和 NTP 的详细信息，请参阅[配置 NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/s1-configure_ntp)。 
+有关 Ubuntu 和 NTP 的详细信息，请参阅[时间同步](https://help.ubuntu.com/lts/serverguide/NTP.html)。
 
-有关 chrony 的详细信息，请参阅[使用 chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony)。
+有关 Red Hat 和 NTP 的详细信息，请参阅[配置 NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_ntpd#s1-Configure_NTP)。 
 
-如果同时启用了 chrony 和 TimeSync 源，则可以将其中一个源标记为“首选”，将另一个源设置为备份。 由于 NTP 服务只会在很长一段时间后才会更新偏差较大的时钟，因此与仅基于 NTP 的工具相比，VMICTimeSync 可更快地从暂停的 VM 事件中恢复时钟。
+有关 chrony 的详细信息，请参阅[使用 chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite#sect-Using_chrony)。
 
+如果同时启用了 chrony 和 TimeSync 源，则可将一个源标记为“首选”，这样就会将另一个源设置为“备用”。  由于 NTP 服务在遇到大偏差时更新时钟需要很长时间，因此可以使用 VMICTimeSync，后者在出现 VM 暂停事件时恢复时钟的速度远远快于单独使用基于 NTP 的工具的速度。
+
+默认情况下，chronyd 会加快或减慢系统时钟以修复任何时间偏移。 如果偏移量过大，chrony 将无法修复偏移。 若要解决此问题，可以更改 /etc/chrony.conf  中的 `makestep` 参数，以便在偏移量超过指定的阈值时强制进行时间同步。
+
+ ```bash
+makestep 1.0 -1
+```
+
+在这里，如果偏移量大于 1 秒，chrony 会强制进行时间更新。 若要应用更改，请重启 chronyd 服务：
+
+```bash
+systemctl restart chronyd
+```
 
 ### <a name="systemd"></a>systemd 
 
-在 Ubuntu 和 SUSE 上，使用 [systemd](https://www.freedesktop.org/wiki/Software/systemd/) 配置时间同步。 有关 Ubuntu 的详细信息，请参阅[时间同步](https://help.ubuntu.com/lts/serverguide/NTP.html)。 有关 SUSE 的详细信息，请参阅 [SUSE Linux Enterprise Server 12 SP3 发行说明](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement)中的第 4.5.8 节。
-
-
+在 19.10 以前的 SUSE 和 Ubuntu 版本中，使用 [systemd](https://www.freedesktop.org/wiki/Software/systemd/) 配置时间同步。 有关 Ubuntu 的详细信息，请参阅[时间同步](https://help.ubuntu.com/lts/serverguide/NTP.html)。 有关 SUSE 的详细信息，请参阅 [SUSE Linux Enterprise Server 12 SP3 发行说明](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement)中的第 4.5.8 节。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅 [Windows Server 2016 的准确时间](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)。
+有关详细信息，请参阅 [Windows Server 2016 的准确时间](/windows-server/networking/windows-time-service/accurate-time)。
 
 

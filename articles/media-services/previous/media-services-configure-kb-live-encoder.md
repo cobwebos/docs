@@ -13,42 +13,39 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: juliako;dbgeorge
-ms.openlocfilehash: 058a1f964eb14d89628c92cbadd80511b7a27bae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: juliako
+ms.openlocfilehash: babb5a10818c8108bae34402962fd2503dbecbdc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61230443"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81641686"
 ---
 # <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>使用 Haivision KB 实时编码器发送单比特率实时流  
 > [!div class="op_single_selector"]
-> * [FMLE](media-services-configure-fmle-live-encoder.md)
 > * [Haivision](media-services-configure-kb-live-encoder.md)
-> * [Tricaster](media-services-configure-tricaster-live-encoder.md)
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
 
-本主题说明如何配置 [Haivision KB 实时编码器](https://www.haivision.com/products/kb-series/)，以便将单比特率流发送到用于实时编码的 AMS 频道。 有关详细信息，请参阅 [使用能够通过 Azure 媒体服务执行实时编码的频道](media-services-manage-live-encoder-enabled-channels.md)。
+本主题说明如何配置 [Haivision KB 实时编码器](https://www.haivision.com/products/kb-series/)，以便将单比特率流发送到用于实时编码的 AMS 频道。 有关详细信息，请参阅[使用能够通过 Azure 媒体服务执行实时编码的频道](media-services-manage-live-encoder-enabled-channels.md)。
 
 本教程演示了如何通过 Azure 媒体服务浏览器 (AMSE) 工具管理 Azure 媒体服务 (AMS)。 此工具仅在 Windows 电脑上运行。 如果使用的是 Mac 或 Linux，则可使用 Azure 门户创建[频道](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)和[节目](media-services-portal-creating-live-encoder-enabled-channel.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 *   访问运行 SW v5.01 或更高版本的 Haivision KB 编码器。
 * [创建 Azure 媒体服务帐户](media-services-portal-create-account.md)
-* 确保流式处理终结点正在运行。 有关详细信息，请参阅[在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)
+* 确保运行流式处理终结点。 有关详细信息，请参阅 [在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)
 * 安装最新版本的 [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) 工具。
 * 启动该工具并连接到 AMS 帐户。
 
 ## <a name="tips"></a>提示
 * 尽可能使用硬编码的 Internet 连接。
-* 在确定带宽要求时，可以认为它就是将流式处理比特率翻倍。 虽然此要求不是强制性要求，但它可以减轻网络拥塞的影响。
+* 确定带宽要求时，可以认为它就是将流式处理比特率翻倍。 虽然此要求不是强制性要求，但它可以减轻网络拥塞的影响。
 * 使用基于软件的编码器时，请关闭任何不需要的程序。
 
-## <a name="create-a-channel"></a>创建通道
-1. 在 AMSE 工具中，导航到“实时”选项卡，并右键单击频道区域。 从菜单中选择“创建频道…” 从菜单中。
+## <a name="create-a-channel"></a>创建频道
+1. 在 AMSE 工具中，导航到“实时”选项卡，并右键单击频道区域。 从菜单中选择“创建频道…”  。
 [Haivision](./media/media-services-configure-kb-live-encoder/channel.png)
-2. 指定频道名称，说明字段为可选字段。 在“频道设置”下针对“实时编码”选项选择“标准”，将“输入协议”设置为“RTMP”。 所有其他设置可保留原样。 确保选中“立即启动新频道”。
-3. 单击“创建频道”。
+2. 指定频道名称，说明字段为选填字段。 在“频道设置”下针对“实时编码”选项选择“标准”，将“输入协议”设置为“RTMP”。 所有其他设置可保留原样。 确保选中“立即启动新频道”  。
+3. 单击“创建频道” 。
 [Haivision](./media/media-services-configure-kb-live-encoder/livechannel.png)
 
 > [!NOTE]
@@ -71,17 +68,17 @@ ms.locfileid: "61230443"
 
 ## <a name="configuration-steps"></a>配置步骤
 1.  登录到 Haivision KB 用户界面。
-2.  单击频道控制中心的“菜单按钮”，然后选择“添加频道”  
+2.  单击频道控制中心的“菜单按钮”，然后选择“添加频道”   
     ![2017-08-14 上午 9:15:09 屏幕截图](./media/media-services-configure-kb-live-encoder/step2.png)
 3.  在“名称”字段中键入“频道名”，然后单击“下一步”。  
     ![2017-08-14 上午 9:19:07 屏幕截图](./media/media-services-configure-kb-live-encoder/step3.png)
-4.  从“输入源”下拉列表中选择“频道输入源”，然后单击“下一步”。
+4.  从“输入源”下拉列表中选择“频道输入源”，然后单击“下一步” 。
     ![2017-08-14 上午 9:20:44 屏幕截图](./media/media-services-configure-kb-live-encoder/step4.png)
-5.  从“编码器模板”下拉列表中选择“H264-720-AAC-192”，然后单击“下一步”。
+5.  从“编码器模板”下拉列表中选择“H264-720-AAC-192”，然后单击“下一步” 。
     ![2017-08-14 上午 9:23:15 屏幕截图](./media/media-services-configure-kb-live-encoder/step5.png)
-6.  从“选择新输出”下拉列表中选择“RTMP”，然后单击“下一步”。  
+6.  从“选择新输出”下拉列表中选择“RTMP”，然后单击“下一步” 。  
     ![2017-08-14 上午 9:27:51 屏幕截图](./media/media-services-configure-kb-live-encoder/step6.png)
-7.  在“频道输出”窗口，填充 Azure 流信息。 粘贴“服务器”区域中初始频道设置中的 RTMP 链接。 在“输出名”区域键入频道名。 在“流名称模板”区域中，使用模板 RTMPStreamName_％video_bitrate％ 命名流。
+7.  在“频道输出”窗口，填充 Azure 流信息。 粘贴“服务器”区域中初始频道设置中的 RTMP 链接 。 在“输出名”区域键入频道名。 在“流名称模板”区域中，使用模板 RTMPStreamName_％video_bitrate％ 命名流。
     ![2017-08-14 上午 9:33:17 屏幕截图](./media/media-services-configure-kb-live-encoder/step7.png)
 8.  单击“下一步”，然后单击“完成”。
 9.  单击“播放按钮”启动编码器频道。  
@@ -95,7 +92,7 @@ ms.locfileid: "61230443"
 如果收到错误，则需重置频道并调整编码器设置。 有关指南，请参阅《疑难解答》一文。
 
 ## <a name="create-a-program"></a>创建节目
-1.  一旦确认频道可以播放，则可创建节目。 在 AMSE 工具的“实时”选项卡下，右键单击节目区域，并选择“创建新节目”。
+1.  确认频道可以播放后，即可创建节目。 在 AMSE 工具的“实时”选项卡下，右键单击节目区域，并选择“创建新节目”。
 [Haivision](./media/media-services-configure-kb-live-encoder/program.png)
 1.  为节目命名，并根据需要调整“存档时段长度”（默认为 4 小时）。 还可以指定存储位置，也可以将其保留为默认值。
 2.  选中“立即启动节目”框。

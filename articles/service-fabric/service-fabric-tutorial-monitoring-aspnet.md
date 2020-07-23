@@ -1,26 +1,17 @@
 ---
-title: 在 Azure 中监视和诊断 Service Fabric 上的 ASP.NET Core 服务 |Microsoft Docs
+title: 监视和诊断 ASP.NET Core 服务
 description: 在本教程中，你会学习如何为 Azure Service Fabric ASP.NET Core 应用程序设置监视和诊断。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 3/21/2019
+ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 9de11c0049cf3db3feea311a2541640437ba8632
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f06387ea317029f5648ab0884cea80262e8640a2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665196"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245001"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>教程：使用 Application Insights 在 Service Fabric 上监视和诊断 ASP.NET Core 应用程序
 
@@ -46,7 +37,7 @@ ms.locfileid: "58665196"
 在开始学习本教程之前：
 
 * 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [安装 Visual Studio 2017](https://www.visualstudio.com/)，并安装 **Azure 开发**以及 **ASP.NET 和 Web 开发**工作负荷。
+* [安装 Visual Studio 2019](https://www.visualstudio.com/)，并安装 **Azure 开发**以及 **ASP.NET 和 Web 开发**工作负荷。
 * [安装 Service Fabric SDK](service-fabric-get-started.md)
 
 ## <a name="download-the-voting-sample-application"></a>下载投票示例应用程序
@@ -61,11 +52,11 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 Application Insights 是 Azure 的应用程序性能管理平台，也是 Service Fabric 建议用于应用程序监视和诊断的平台。
 
-若要创建 Application Insights 资源，请导航到 [Azure 门户](https://portal.azure.com)。 单击左侧导航菜单中的“创建资源”，打开 Azure 市场。 单击“监视 + 管理”，然后单击“Application Insights”。
+若要创建 Application Insights 资源，请导航到 [Azure 门户](https://portal.azure.com)。 单击左侧导航菜单中的“创建资源”，打开 Azure 市场。 单击“监视 + 管理”，然后单击“Application Insights”。 
 
 ![创建新的 AI 资源](./media/service-fabric-tutorial-monitoring-aspnet/new-ai-resource.png)
 
-此时需填写要创建的资源的必要属性信息。 输入适当的“名称”、“资源组”和“订阅”。 设置“位置”，以便在将来部署 Service Fabric 群集。 在本教程中，需将应用部署到本地群集，因此与“位置”字段无关。 “应用程序类型”应保留为“ASP.NET Web 应用程序”。
+此时需填写要创建的资源的必要属性信息。 输入适当的“名称”、“资源组”和“订阅”。   设置“位置”，以便在将来部署 Service Fabric 群集。 在本教程中，需将应用部署到本地群集，因此与“位置”字段无关。 “应用程序类型”应保留为“ASP.NET Web 应用程序”。
 
 ![AI 资源属性](./media/service-fabric-tutorial-monitoring-aspnet/new-ai-resource-attrib.png)
 
@@ -74,7 +65,7 @@ Application Insights 是 Azure 的应用程序性能管理平台，也是 Servic
 
 ## <a name="add-application-insights-to-the-applications-services"></a>将 Application Insights 添加到应用程序的服务
 
-使用提升的权限启动 Visual Studio 2017，方法是：右键单击“开始”菜单中的 Visual Studio 图标，然后选择“以管理员身份运行”。 单击“文件” > “打开” > “项目/解决方案”，导航到 Voting 应用程序（在本教程第一部分创建，也可以进行 Git 克隆）。 打开 *Voting.sln*。 如果系统提示你还原应用程序的 NuGet 包，请单击“是”。
+使用提升的权限启动 Visual Studio 2019，方法是：右键单击“开始”菜单中的 Visual Studio 图标，然后选择“以管理员身份运行”。 单击“文件” > “打开” > “项目/解决方案”，导航到 Voting 应用程序（在本教程第一部分创建，也可以进行 Git 克隆）。 打开 *Voting.sln*。 如果系统提示你还原应用程序的 NuGet 包，请单击“是”。
 
 执行以下步骤，为 VotingWeb 和 VotingData 服务配置 Application Insights：
 
@@ -101,17 +92,17 @@ Application Insights 有两个特定于 Service Fabric 的 NuGet，可以根据�
 
 下面是设置 NuGet 包的步骤：
 
-1. 右键单击解决方案资源管理器顶部的“解决方案 'Voting'”，然后单击“为解决方案管理 NuGet 包...”。
-2. 单击“NuGet - 解决方案”窗口顶部浏览菜单中的“浏览”，然后勾选搜索栏旁边的“包括预发行版”框。
+1. 右键单击解决方案资源管理器顶部的“解决方案 'Voting'”，然后单击“为解决方案管理 NuGet 包...” 。
+2. 单击“NuGet - 解决方案”窗口顶部浏览菜单中的“浏览”，然后勾选搜索栏旁边的“包括预发行版”框。 
 >[!NOTE]
 >可能需要采用类似的方式安装 Microsoft.ServiceFabric.Diagnostics.Internal 包，前提是此包在安装 Application Insights 包之前未预先安装
 
 3. 搜索 `Microsoft.ApplicationInsights.ServiceFabric.Native`，然后单击相应的 NuGet 包。
-4. 在右侧单击应用程序中两项服务旁边的复选框“VotingWeb”和“VotingData”，然后单击“安装”。
+4. 在右侧单击应用程序中两项服务旁边的复选框“VotingWeb”和“VotingData”，然后单击“安装”。  
     ![AI sdk Nuget](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
-5. 在显示的“审阅更改”对话框中单击“确定”，接受“接受许可证”中的条款。 这样即可将 NuGet 添加到服务。
-6. 现在需在两个服务中设置遥测初始值设定项。 为此，请打开“VotingWeb.cs”和“VotingData.cs”。 对这两个文件执行下述两项步骤：
-    1. 在每个 \<ServiceName>.cs 顶部的现有 *using* 语句之后添加下面这两个 using 语句：
+5. 在显示的“审阅更改”对话框中单击“确定”，接受“接受许可证”中的条款。  这样即可将 NuGet 添加到服务。
+6. 现在需在两个服务中设置遥测初始值设定项。 为此，请打开“VotingWeb.cs”和“VotingData.cs”。  对这两个文件执行下述两项步骤：
+    1. 在每个 \<ServiceName>.cs 顶部的现有 using 语句之后添加下面这两个 using 语句  ：
 
     ```csharp
     using Microsoft.ApplicationInsights.Extensibility;
@@ -177,7 +168,7 @@ ConfigureServices(services => services
 >[!NOTE]
 >如果未安装 .NET Core SDK 的最新版本，可能会出现生成错误。
 
-应用程序部署完以后，请访问 [localhost:8080](localhost:8080)，其中应该可以看到 Voting 单页应用程序示例。 投票选择各种不同的项目，以便创建一些示例数据和遥测 - 我投票选择甜点！
+应用程序部署完后，请访问 `localhost:8080`，其中应该可以看到 Voting 示例单页应用程序。 投票选择各种不同的项目，以便创建一些示例数据和遥测 - 我投票选择甜点！
 
 ![AI 示例投票](./media/service-fabric-tutorial-monitoring-aspnet/vote-sample.png)
 
@@ -194,7 +185,7 @@ ConfigureServices(services => services
 
 ![AI 示例请求跟踪](./media/service-fabric-tutorial-monitoring-aspnet/sample-request.png)
 
-单击其中一个跟踪即可查看其详细信息。 Application Insights 提供了该请求的有用信息，其中包括“响应时间”和“请求 URL”。 另外，由于添加了特定于 Service Fabric 的 NuGet，因此还会在底部的“自定义数据”部分提供 Service Fabric 群集上下文中的应用程序数据。 这其中包括服务上下文，因此可以查看请求源的“PartitionID”和“ReplicaId”。在对应用程序中的错误进行诊断时，这样能够更好地查找问题。
+单击其中一个跟踪即可查看其详细信息。 Application Insights 提供了该请求的有用信息，其中包括“响应时间”和“请求 URL”。  另外，由于添加了特定于 Service Fabric 的 NuGet，因此还会在底部的“自定义数据”部分提供 Service Fabric 群集上下文中的应用程序数据。 这其中包括服务上下文，因此可以查看请求源的“PartitionID”和“ReplicaId”。在对应用程序中的错误进行诊断时，这样能够更好地查找问题。 
 
 ![AI 跟踪详细信息](./media/service-fabric-tutorial-monitoring-aspnet/trace-details.png)
 
@@ -260,13 +251,13 @@ public async Task<IActionResult> Delete(string name)
 }
 ```
 
-进行这些更改以后，请启动应用程序，以便生成和部署最新版本。 应用程序部署完以后，请访问 [localhost:8080](localhost:8080)，添加和删除一些投票选项。 然后回到 Application Insights 资源，查看最新运行的跟踪（与前面一样，跟踪可能需要 1-2 分钟才会显示在 Application Insights 中）。 不管是添加的还是删除的投票，此时都会看到一个“自定义事件”\*，以及所有响应遥测。
+进行这些更改以后，请启动应用程序，以便生成和部署最新版本。 应用程序部署完后，请访问 `localhost:8080`，添加和删除一些投票选项。 然后回到 Application Insights 资源，查看最新运行的跟踪（与前面一样，跟踪可能需要 1-2 分钟才会显示在 Application Insights 中）。 不管是添加的还是删除的投票，此时都会看到一个“自定义事件”\*，以及所有响应遥测。
 
 ![自定义事件](./media/service-fabric-tutorial-monitoring-aspnet/custom-events.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了以下操作：
+在本教程中，你了解了如何执行以下操作：
 > [!div class="checklist"]
 > * 为应用程序配置 Application Insights
 > * 收集响应遥测数据，跟踪服务之间基于 HTTP 的通信
@@ -277,4 +268,4 @@ public async Task<IActionResult> Delete(string name)
 
 * [在 Service Fabric 中进一步浏览监视和诊断](service-fabric-diagnostics-overview.md)
 * [使用 Application Insights 进行 Service Fabric 事件分析](service-fabric-diagnostics-event-analysis-appinsights.md)
-* 若要详细了解 Application Insights，请参阅 [Application Insights Documentation](https://docs.microsoft.com/azure/application-insights/)（Application Insights 文档）
+* 若要详细了解 Application Insights，请参阅 [Application Insights Documentation](/azure/application-insights/)（Application Insights 文档）

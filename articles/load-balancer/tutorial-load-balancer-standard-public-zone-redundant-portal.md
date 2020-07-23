@@ -1,10 +1,10 @@
 ---
-title: 教程：跨可用性区域的负载均衡器 VM - Azure 门户
-titlesuffix: Azure Load Balancer
+title: 教程：跨可用性区域对 VM 进行负载均衡 - Azure 门户
+titleSuffix: Azure Load Balancer
 description: 本指南演示了如何使用 Azure 门户创建包含区域冗余前端的标准负载均衡器，以便对跨可用性区域的 VM 进行负载均衡
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines across availability zones in a region, so that the customers can still access the web service if a datacenter is unavailable.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 912307e6509ea66be887838e875076b7a895ca94
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d9f16b612b508a6237c748bd135ff32618015b0b
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57888140"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057001"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>教程：在 Azure 门户中使用标准负载均衡器对跨可用性区域的 VM 进行负载均衡
 
@@ -50,15 +50,15 @@ ms.locfileid: "57888140"
 标准负载均衡器仅支持标准公共 IP 地址。 在创建负载均衡器过程中创建新的公共 IP 时，该负载均衡器会自动配置为标准 SKU 版本，并自动实现区域冗余。
 
 1. 在屏幕的左上方，单击“创建资源” > “网络” > “负载均衡器”。
-2. 在“创建负载均衡器”页的“基本”选项卡中输入或选择以下信息，接受其余的默认设置，然后选择“查看 + 创建”：
+2. 在“创建负载均衡器”页的“基本”选项卡中输入或选择以下信息，接受其余的默认设置，然后选择“查看 + 创建”  ：
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
     | 资源组         | 选择“新建”并在文本框中键入 MyResourceGroupLBAZ。|
-    | Name                   | *myLoadBalancer*                                   |
+    | 名称                   | *myLoadBalancer*                                   |
     | 区域         | 选择“西欧”。                                        |
-    | Type          | 选择“公共”。                                        |
+    | 类型          | 选择“公共”。                                        |
     | SKU           | 选择“标准”。                          |
     | 公共 IP 地址 | 选择“新建”。 |
     | 公共 IP 地址名称              | 在文本框中键入 myPublicIP。   |
@@ -69,16 +69,20 @@ ms.locfileid: "57888140"
 
 在本部分中，将创建一个虚拟网络，在地区中的不同区域中创建虚拟机，然后在虚拟机上安装 IIS，以便对区域冗余负载均衡器进行测试。 因此，如果某个区域发生故障，则同一区域中 VM 的运行状况探测将会失败，而流量可继续由其他区域中的 VM 提供服务。
 
-### <a name="create-a-virtual-network"></a>创建虚拟网络
-创建用于部署后端服务器的虚拟网络。
+## <a name="virtual-network-and-parameters"></a>虚拟网络和参数
 
-1. 在屏幕的左上方，单击“创建资源” > “网络” > “虚拟网络”，然后输入虚拟网络的以下值：
-    - *myVnet* - 虚拟网络的名称。
-    - *myResourceGroupLBAZ* - 现有资源组的名称。
-    - *myBackendSubnet* - 子网名称。
-2. 单击“创建”以创建虚拟网络。
+在本部分中，你需要将步骤中的以下参数替换为以下信息：
 
-    ![创建虚拟网络](./media/load-balancer-standard-public-availability-zones-portal/2-load-balancer-virtual-network.png)
+| 参数                   | 值                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupLBAZ（选择现有资源组） |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | 西欧      |
+| **\<IPv4-address-space>**   | 10.0.0.0/16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.0.0.0/24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="create-a-network-security-group"></a>创建网络安全组
 
@@ -96,7 +100,7 @@ ms.locfileid: "57888140"
 在本部分中，将使用 Azure 门户创建网络安全组规则以允许使用 HTTP 和 RDP 建立入站连接。
 
 1. 在 Azure 门户的左侧菜单中单击“所有资源”，然后在 **myResourceGroupLBAZ** 资源组中搜索 **myNetworkSecurityGroup** 并单击它。
-2. 在“设置”下单击“入站安全规则”，然后单击“添加”。
+2. 在“设置”下单击“入站安全规则”，然后单击“添加”。  
 3. 为名为 *myHTTPRule* 的入站安全规则输入以下值，以允许来自端口 80 的入站 HTTP 连接：
     - 服务标记 - **源**。
     - *Internet* - **源服务标记**
@@ -123,12 +127,12 @@ ms.locfileid: "57888140"
 
 在地区中的不同区域（区域 1、区域 2 和区域 3）中创建可以充当负载均衡器的后端服务器的虚拟机。
 
-1. 在屏幕的左上方，单击“创建资源” > “计算” > “Windows Server 2016 Datacenter”，然后输入虚拟机的以下值：
+1. 在屏幕的左上方，单击“创建资源” > “计算” > “Windows Server 2016 Datacenter”，然后输入虚拟机的以下值：  
     - *myVM1* - 虚拟机的名称。        
     - *azureuser* - 管理员用户名。    
     - *myResourceGroupLBAZ* - 对于“资源组”，请选择“使用现有”，然后选择“myResourceGroupLBAZ”。
 2. 单击“确定”。
-3. 选择“DS1_V2”作为虚拟机的大小，然后单击“选择”。
+3. 选择“DS1_V2”作为虚拟机的大小，然后单击“选择” 。
 4. 为 VM 设置输入以下值：
     - *区域 1* - 放置 VM 的区域。
     -  *myVNet* - 确保选择它作为虚拟网络。
@@ -136,15 +140,12 @@ ms.locfileid: "57888140"
     - *myNetworkSecurityGroup* - 网络安全组（防火墙）的名称。
 5. 单击“禁用”以禁用启动诊断。
 6. 创建“确定”，检查“摘要”页上的设置，然后单击“创建”。
-  
-   ![创建虚拟机](./media/load-balancer-standard-public-availability-zones-portal/create-vm-standard-ip.png)
-
 7. 执行步骤 1-6，在区域 2 中创建名为 *VM2* 的第二个 VM，在区域 3 中创建第三个 VM，并使用 *myVnet* 作为虚拟网络名称，使用 *myBackendSubnet* 作为子网名称，使用 **myNetworkSecurityGroup* 作为网络安全组名称。
 
 ### <a name="install-iis-on-vms"></a>在 VM 上安装 IIS
 
 1. 在左侧菜单中单击“所有资源”，在资源列表中，单击位于 *myResourceGroupLBAZ* 资源组中的“myVM1”。
-2. 在“概览”页上单击“连接”，以便通过 RDP 连接到 VM 中。
+2. 在“概览”页上单击“连接”，以便通过 RDP 连接到 VM 中。 
 3. 使用用户名 *azureuser* 登录到 VM。
 4. 在服务器桌面上，导航到“Windows 管理工具”>“Windows PowerShell”。
 5. 在 PowerShell 窗口中，运行以下命令安装 IIS 服务器，删除默认 iisstart.htm 文件，然后添加显示 VM 名称的新 iisstart.htm 文件：
@@ -172,11 +173,11 @@ ms.locfileid: "57888140"
 若要向 VM 分发流量，后端地址池需包含连接到负载均衡器的虚拟 NIC 的 IP 地址。 创建后端地址池 *myBackendPool* 来包括 *VM1*、*VM2* 和 *VM3*。
 
 1. 单击左侧菜单中的“所有资源”，然后在资源列表中单击“myLoadBalancer”。
-2. 在“设置”下单击“后端池”，然后单击“添加”。
+2. 在“设置”下单击“后端池”，然后单击“添加”。  
 3. 在“添加后端池”页上执行以下操作：
     - 对于“名称”，请键入 *myBackEndPool* 作为后端池的名称。
-    - 在下拉菜单中，针对“虚拟网络”单击“myVNet”。
-    - 在下拉菜单中，针对“虚拟机”单击“myVM1”。
+    - 在下拉菜单中，针对“虚拟网络”单击“myVNet”。 
+    - 在下拉菜单中，针对“虚拟机”单击“myVM1”。 
     - 在下拉菜单中，针对“IP 地址”单击 myVM1 的 IP 地址。
 4. 单击“添加新后端资源”，将每个虚拟机（*myVM2* 和 *myVM3*）添加到负载均衡器的后端池。
 5. 单击“添加”。
@@ -190,7 +191,7 @@ ms.locfileid: "57888140"
 若要允许负载均衡器监视应用的状态，可以使用运行状况探测器。 运行状况探测器基于其对运行状况检查的响应，从负载均衡器中动态添加或删除 VM。 创建运行状况探测 *myHealthProbe* 以监视 VM 的运行状况。
 
 1. 单击左侧菜单中的“所有资源”，然后在资源列表中单击“myLoadBalancer”。
-2. 在“设置”下单击“运行状况探测”，然后单击“添加”。
+2. 在“设置”下单击“运行状况探测”，然后单击“添加”。  
 3. 使用以下值创建运行状况探测：
     - *myHealthProbe* - 运行状况探测的名称。
     - **HTTP** - 协议类型。
@@ -206,7 +207,7 @@ ms.locfileid: "57888140"
 负载均衡器规则用于定义将流量分配给 VM 的方式。 定义传入流量的前端 IP 配置和后端 IP 池以接收流量，同时定义所需源和目标端口。 创建负载均衡器规则 *myLoadBalancerRuleWeb*，以便侦听前端 *FrontendLoadBalancer* 中的端口 80，并将经过负载均衡的网络流量发送到也使用端口 80 的后端地址池 *myBackEndPool*。 
 
 1. 单击左侧菜单中的“所有资源”，然后在资源列表中单击“myLoadBalancer”。
-2. 在“设置”下单击“负载均衡规则”，然后单击“添加”。
+2. 在“设置”下单击“负载均衡规则”，然后单击“添加”  。
 3. 请使用以下值配置负载均衡规则：
     - *myHTTPRule* - 负载均衡规则的名称。
     - **TCP** - 协议类型。
@@ -215,6 +216,7 @@ ms.locfileid: "57888140"
     - *myBackendPool* - 后端池的名称。
     - *myHealthProbe* - 运行状况探测的名称。
 4. 单击“确定”。
+    
     
     ![添加负载均衡规则](./media/load-balancer-standard-public-availability-zones-portal/load-balancing-rule.png)
 

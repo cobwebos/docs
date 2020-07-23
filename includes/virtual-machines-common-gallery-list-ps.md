@@ -5,19 +5,17 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/07/2018
+ms.date: 04/28/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: a55653c0f23be594fe65e7a322c11edc37ee1ce6
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: fc60d1266f4aad4c337611f0fa32fe8293744559
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145795"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82792269"
 ---
-## <a name="shared-image-management"></a>共享映像管理 
-
-下面是一些常见的管理任务示例，并说明如何使用 PowerShell 完成这些任务。
+## <a name="list-information"></a>列出信息
 
 按名称列出所有库。
 

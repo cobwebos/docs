@@ -18,17 +18,17 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84b786a1701892823554a83fa2015ac88d6eff4d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60295137"
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的访问控制要求
 组织在设计混合标识解决方案时，也可以借机评审正在规划中的、用户对资源的访问权限要求。 数据访问权限涉及到标识的所有四个重要组成部分：
 
 * 管理
-* Authentication
+* 身份验证
 * 授权
 * 审核
 
@@ -60,7 +60,7 @@ ms.locfileid: "60295137"
 * 组织是否针对本地或云中的应用使用单一登录？
   * 如果是，采用混合标识模型是否会影响此过程？
 
-## <a name="access-control"></a>Access Control
+## <a name="access-control"></a>访问控制
 尽管身份验证和授权是核心元素，可通过用户的身份验证来实现对企业数据的访问，但控制这些用户拥有的访问级别以及管理员对其管理的资源拥有的访问级别也同样重要。 混合标识解决方案必须能够对资源、委托和基于角色的访问控制提供更细微的访问权限。 请务必回答以下有关访问控制的问题：
 
 * 公司中是否指派了多个拥有提升权限的用户来管理标识系统？

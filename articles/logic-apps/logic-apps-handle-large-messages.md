@@ -1,25 +1,17 @@
 ---
-title: 处理大型消息 - Azure 逻辑应用 | Microsoft Docs
-description: 了解如何在 Azure 逻辑应用中使用分块处理大型消息
+title: 使用分块处理大型消息
+description: 了解如何在使用 Azure 逻辑应用创建的自动任务和工作流中使用分块处理大型消息大小
 services: logic-apps
-documentationcenter: ''
-author: shae-hurst
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: logic-apps
-ms.workload: logic-apps
-ms.devlang: ''
-ms.tgt_pltfrm: ''
+ms.suite: integration
+author: DavidCBerry13
+ms.author: daberry
 ms.topic: article
-ms.date: 4/27/2018
-ms.author: shhurst
-ms.openlocfilehash: 5aa5ea2a39a0fb9f969e965fed14063522197cda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 12/03/2019
+ms.openlocfilehash: 54828dded5196c86946d99a9cd8cec7a42533661
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60303755"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117557"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用分块处理大型消息
 
@@ -47,6 +39,9 @@ ms.locfileid: "60303755"
 
 支持分块的连接器的基础分块协议对最终用户不可见。 但是，并非所有连接器都支持分块，因此当传入消息超出连接器的大小限制时，这些不支持分块的连接器就会生成运行时错误。
 
+> [!NOTE]
+> 对于使用分块的操作，无法在这些操作中传递触发器正文或使用表达式（如 `@triggerBody()?['Content']`）。 相反，对于文本或 JSON 文件内容，可以尝试使用[撰写操作](../logic-apps/logic-apps-perform-data-operations.md#compose-action)或[创建变量](../logic-apps/logic-apps-create-variables-store-values.md)来处理该内容。 如果触发器正文包含其他内容类型（如媒体文件），则需要执行其他步骤来处理该内容。
+
 <a name="set-up-chunking"></a>
 
 ## <a name="set-up-chunking-over-http"></a>设置基于 HTTP 的分块
@@ -57,11 +52,11 @@ ms.locfileid: "60303755"
 
 另外，如果某个 HTTP 操作尚未启用分块功能，则还必须在操作的 `runTimeConfiguration` 属性中设置分块。 可以在操作中设置此属性，可以按照后面的说明在代码视图编辑器中直接进行，也可以按下述说明在逻辑应用设计器中进行：
 
-1. 在 HTTP 操作的右上角选择省略号按钮 (**...**)，然后选择“设置”。
+1. 在 HTTP 操作的右上角选择省略号按钮 ( **...** )，然后选择“设置”。
 
    ![在操作中打开设置菜单](./media/logic-apps-handle-large-messages/http-settings.png)
 
-2. 在“内容传输”下将“允许分块”设置为“启用”。
+2. 在“内容传输”下将“允许分块”设置为“启用”。  
 
    ![启用分块](./media/logic-apps-handle-large-messages/set-up-chunking.png)
 
@@ -117,18 +112,18 @@ GET 请求将表示字节范围的 "Range" 标头设置为 "bytes=0-1023"。 如
 
 1. 你的逻辑应用使用空的消息正文发送初始的 HTTP POST 或 PUT 请求。 请求标头包括与逻辑应用需要以区块形式上传的内容的以下信息：
 
-   | 逻辑应用请求标头字段 | Value | Type | 描述 |
+   | 逻辑应用请求标头字段 | 值 | 类型 | 说明 |
    |---------------------------------|-------|------|-------------|
-   | **x-ms-transfer-mode** | 分块 | String | 指示内容以区块形式上传 |
+   | **x-ms-transfer-mode** | 分块 | 字符串 | 指示内容以区块形式上传 |
    | **x-ms-content-length** | <*content-length*> | Integer | 整个内容在分块之前的大小（以字节为单位） |
    ||||
 
 2. 终结点以“200”成功状态代码和以下可选信息进行响应：
 
-   | 终结点响应标头字段 | Type | 需要 | 描述 |
+   | 终结点响应标头字段 | 类型 | 必选 | 说明 |
    |--------------------------------|------|----------|-------------|
    | **x-ms-chunk-size** | Integer | 否 | 建议的区块大小（以字节为单位） |
-   | **位置** | String | 否 | 要向其发送 HTTP PATCH 消息的 URL 位置 |
+   | **位置** | 字符串 | 是 | 要向其发送 HTTP PATCH 消息的 URL 位置 |
    ||||
 
 3. 逻辑应用创建并发送后续 HTTP PATCH 消息 - 每条消息包含以下信息：
@@ -137,14 +132,20 @@ GET 请求将表示字节范围的 "Range" 标头设置为 "bytes=0-1023"。 如
 
    * 这些标头详述了在每个 PATCH 消息中发送的内容区块：
 
-     | 逻辑应用请求标头字段 | Value | Type | 描述 |
+     | 逻辑应用请求标头字段 | 值 | 类型 | 说明 |
      |---------------------------------|-------|------|-------------|
-     | **Content-Range** | <*range*> | String | 当前内容区块的字节范围，包括起始值、结束值、内容总大小，例如："bytes=0-1023/10100" |
-     | **Content-Type** | <*content-type*> | String | 分块内容的类型 |
-     | **Content-Length** | <*content-length*> | String | 当前区块的大小长度（以字节为单位） |
+     | **Content-Range** | <*range*> | 字符串 | 当前内容区块的字节范围，包括起始值、结束值、内容总大小，例如："bytes=0-1023/10100" |
+     | **Content-Type** | <*content-type*> | 字符串 | 分块内容的类型 |
+     | **Content-Length** | <*content-length*> | 字符串 | 当前区块的大小长度（以字节为单位） |
      |||||
 
-4. 每次进行 PATCH 请求之后，终结点会以“200”状态代码进行响应，以此确认每个区块的接收情况。
+4. 每次进行 PATCH 请求之后，终结点会以“200”状态代码和以下响应标头进行响应，以此确认每个区块的接收情况：
+
+   | 终结点响应标头字段 | 类型 | 必选 | 说明 |
+   |--------------------------------|------|----------|-------------|
+   | **范围** | 字符串 | 是 | 终结点收到的内容的字节范围，例如：“bytes=0-1023” |   
+   | **x-ms-chunk-size** | Integer | 否 | 建议的区块大小（以字节为单位） |
+   ||||
 
 例如，此操作定义显示一个要求将分块内容上传到终结点的 HTTP POST 请求。 在操作的 `runTimeConfiguration` 属性中，`contentTransfer` 属性将 `transferMode` 设置为 `chunked`：
 

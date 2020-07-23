@@ -1,18 +1,14 @@
 ---
 title: Azure 事件网格传送和重试
 description: 介绍 Azure 事件网格如何传送事件以及如何处理未送达的消息。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/15/2019
-ms.author: spelluru
-ms.openlocfilehash: b4bfdd3e9cdf99314dc55907ba163adc6cd39423
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.date: 07/07/2020
+ms.openlocfilehash: e565bbc8592dc2818e3573672e6e3035c3c8983a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65952880"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113830"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>事件网格消息传送和重试
 
@@ -20,11 +16,43 @@ ms.locfileid: "65952880"
 
 事件网格提供持久传送。 它会将每个订阅的每条消息至少发送一次。 事件会立即发送到每个订阅的已注册终结点。 如果终结点未确认收到事件，事件网格会重试传送事件。
 
-目前，事件网格单独将每个事件发送到订阅者。 订阅者接收包含单个事件的数组。
+## <a name="batched-event-delivery"></a>批量事件传送
+
+默认情况下，事件网格单独将每个事件发送给订阅者。 订阅者接收包含单个事件的数组。 你可以将事件网格配置为批量处理要传送的事件，以在高吞吐量方案中提高 HTTP 性能。
+
+批量传送有两个设置：
+
+* **每批最大事件数** - 事件网格每批将传送的最大事件数。 永远不会超过此数目，但是，如果在发布时没有更多事件，则可能会传送较少的事件。 如果只有较少的事件，事件网格不会为了创建某个批而延迟事件传送。 必须介于 1 到 5,000 之间。
+* **首选批大小(KB)** - 批大小的目标上限 (KB)。 与最大事件数类似，如果发布时没有更多的事件，则批大小可能会较小。 *如果*单个事件大于首选大小，则批可能会大于首选批大小。 例如，如果首选大小为 4 KB，并且一个 10 KB 的事件推送到了事件网格，则 10 KB 事件将会在其自己的批中传送，而不会被删除。
+
+可以通过门户、CLI、PowerShell 或 SDK 以每事件订阅为基础配置批量传送。
+
+### <a name="azure-portal"></a>Azure 门户： 
+![文件传送设置](./media/delivery-and-retry/batch-settings.png)
+
+### <a name="azure-cli"></a>Azure CLI
+创建事件订阅时，请使用以下参数： 
+
+- **max-events-per-batch** - 每批的最大事件数。 必须是介于 1 和 5000 之间的数字。
+- **preferred-batch-size-in-kilobytes** - 首选批大小 (KB)。 必须是介于 1 和 1024 之间的数字。
+
+```azurecli
+storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
+endpoint=https://$sitename.azurewebsites.net/api/updates
+
+az eventgrid event-subscription create \
+  --resource-id $storageid \
+  --name <event_subscription_name> \
+  --endpoint $endpoint \
+  --max-events-per-batch 1000 \
+  --preferred-batch-size-in-kilobytes 512
+```
+
+有关将 Azure CLI 与事件网格配合使用的详细信息，请参阅[使用 Azure CLI 将存储事件路由到 Web 终结点](../storage/blobs/storage-blob-event-quickstart.md)。
 
 ## <a name="retry-schedule-and-duration"></a>重试计划和持续时间
 
-事件网格将等待 30 秒，获取响应之后消息传送。 30 秒后，如果终结点未作出响应，该消息将排队等待重试。 对于事件传送，事件网格使用指数性的回退重试策略。 事件网格会重试根据以下计划上最大努力来传送：
+传送消息后，事件网格将等待 30 秒以接收响应。 30秒后，如果终结点未响应，则该消息将排队等待重试。 对于事件传送，事件网格使用指数性的回退重试策略。 事件网格会尽量按以下计划重试传送：
 
 - 10 秒
 - 30 秒
@@ -32,16 +60,22 @@ ms.locfileid: "65952880"
 - 5 分钟
 - 10 分钟
 - 30 分钟
-- 1 小时	
-- 每小时的最多 24 小时
+- 1 小时
+- 按小时论的话，最多 24 小时
 
-如果终结点响应 3 分钟内，事件网格会尝试从上最大努力来重试队列中删除该事件，但仍可能会收到重复项。
+如果终结点在 3 分钟内做出了响应，则事件网格会尽量尝试从重试队列中删除事件，但仍可能会收到重复项。
 
-事件网格将略微随机添加到重试的所有步骤，并可以适时地跳过某些重试如果终结点不一致地正常，向下长一段，或可能过载。
+事件网格为所有重试步骤添加小的随机性，在某个终结点持续运行不正常、停机很长时间，或者看起来已过载的情况下，会适时跳过某些重试。
 
-对于具有确定性行为设置生存事件时间和最大传送尝试中[订阅重试策略](manage-event-delivery.md)。
+对于确定性行为，请在[订阅重试策略](manage-event-delivery.md)中设置事件生存时间和最大传递尝试次数。
 
 默认情况下，事件网格会使所有在 24 小时内未送达的事件过期。 创建事件订阅时，可[自定义重试策略](manage-event-delivery.md)。 提供最大传递尝试次数（默认值为 30）和事件生存时间（默认为 1440 分钟）。
+
+## <a name="delayed-delivery"></a>延迟传送
+
+当终结点遇到传送失败时，事件网格将开始延迟向该终结点传送和重试事件。 例如，如果发布到某个终结点的前 10 个事件失败，事件网格将假设该终结点遇到问题，并将所有后续重试和新的传送操作延迟一段时间 - 在某些情况下，会延迟几个小时。 
+
+从功能上讲，延迟传送的目的是保护不正常的终结点以及事件网格系统。 如果不采用退让机制并延迟向不正常的终结点传送事件，事件网格的重试策略和卷功能可能很容易使系统瘫痪。
 
 ## <a name="dead-letter-events"></a>死信事件
 
@@ -63,25 +97,29 @@ ms.locfileid: "65952880"
 
 ### <a name="success-codes"></a>成功代码
 
-以下 HTTP 响应代码表示事件已成功发送至 webhook。 事件网格会视为传送已完成。
+事件网格**仅**将以下 HTTP 响应代码视为传送成功。 所有其他状态代码被视为传送失败，将会相应地重试传送或将事件加入死信队列。 收到成功状态代码后，事件网格认为传送已完成。
 
 - 200 正常
+- 201 Created
 - 202 已接受
+- 203 非权威信息
+- 204 无内容
 
 ### <a name="failure-codes"></a>失败代码
 
-以下 HTTP 响应代码表示事件传送尝试失败。
+不在上述集 (200-204) 内的所有其他代码被视为失败，将会重试。 某些代码已关联到下面所述的特定重试策略，所有其他代码遵循标准的指数退让模型。 请务必注意，由于事件网格体系结构的高度并行化特性，重试行为是不确定的。 
 
-- 400 错误请求
-- 401 未授权
-- 404 未找到
-- 408 请求超时
-- 413 请求实体太大
-- 414 URI 太长
-- 429 请求过多
-- 500 内部服务器错误
-- 503 服务不可用
-- 504 网关超时
+| 状态代码 | 重试行为 |
+| ------------|----------------|
+| 400 错误的请求 | 在 5 分钟或更长时间后重试（如果设置了死信，则立即加入死信队列） |
+| 401 未授权 | 5 分钟或更长时间后重试 |
+| 403 禁止访问 | 5 分钟或更长时间后重试 |
+| 404 未找到 | 5 分钟或更长时间后重试 |
+| 408 请求超时 | 2 分钟或更长时间后重试 |
+| 413 请求实体太大 | 在 10 秒或更长时间后重试（如果设置了死信，则立即加入死信队列） |
+| 503 服务不可用 | 30 秒或更长时间后重试 |
+| 所有其他 | 10 秒或更长时间后重试 |
+
 
 ## <a name="next-steps"></a>后续步骤
 

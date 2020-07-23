@@ -1,26 +1,17 @@
 ---
-title: 将 Java 应用部署到 Azure 中的 Service Fabric 群集 | Microsoft Docs
+title: 将 Java 应用部署到 Azure 中的 Service Fabric 群集
 description: 本教程介绍如何将 Java Service Fabric 应用程序部署到 Azure Service Fabric 群集。
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: c836fd122d9dba0cd7eb20fe405e63c3ca3f59eb
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 672f8916749362e7145799bdefa3bbd628fc9116
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306793"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244814"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>教程：将 Java 应用程序部署到 Azure 中的 Service Fabric 群集
 
@@ -46,7 +37,7 @@ ms.locfileid: "66306793"
 在开始学习本教程之前：
 
 * 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
 * 安装用于 [Mac](service-fabric-get-started-mac.md) 或 [Linux](service-fabric-get-started-linux.md) 的 Service Fabric SDK
 * [安装 Python 3](https://wiki.python.org/moin/BeginnersGuide/Download)
 
@@ -62,13 +53,13 @@ ms.locfileid: "66306793"
 
 2. 登录到 Azure 帐户
 
-    ```bash
+    ```azurecli
     az login
     ```
 
 3. 设置需要用于创建资源的 Azure 订阅
 
-    ```bash
+    ```azurecli
     az account set --subscription [SUBSCRIPTION-ID]
     ```
 
@@ -82,7 +73,7 @@ ms.locfileid: "66306793"
 
     上述命令返回以下信息，该信息应该记下来供以后使用。
 
-    ```
+    ```output
     Source Vault Resource Id: /subscriptions/<subscription_id>/resourceGroups/testkeyvaultrg/providers/Microsoft.KeyVault/vaults/<name>
     Certificate URL: https://<name>.vault.azure.net/secrets/<cluster-dns-name-for-certificate>/<guid>
     Certificate Thumbprint: <THUMBPRINT>
@@ -90,7 +81,7 @@ ms.locfileid: "66306793"
 
 5. 为存储日志的存储帐户创建一个资源组
 
-    ```bash
+    ```azurecli
     az group create --location [REGION] --name [RESOURCE-GROUP-NAME]
 
     Example: az group create --location westus --name teststorageaccountrg
@@ -98,25 +89,25 @@ ms.locfileid: "66306793"
 
 6. 创建一个存储帐户，用来存储要生成的日志
 
-    ```bash
+    ```azurecli
     az storage account create -g [RESOURCE-GROUP-NAME] -l [REGION] --name [STORAGE-ACCOUNT-NAME] --kind Storage
 
     Example: az storage account create -g teststorageaccountrg -l westus --name teststorageaccount --kind Storage
     ```
 
-7. 访问 [Azure 门户](https://portal.azure.com)，导航到供存储帐户使用的“共享访问签名”选项卡。  生成 SAS 令牌，如下所示。
+7. 访问 [Azure 门户](https://portal.azure.com)，导航到供存储帐户使用的“共享访问签名”选项卡。 生成 SAS 令牌，如下所示。
 
     ![生成用于存储的 SAS](./media/service-fabric-tutorial-java-deploy-azure/storagesas.png)
 
 8. 复制帐户 SAS URL，留待创建 Service Fabric 群集之用。 它类似于以下 URL：
 
-    ```
+    ```output
     ?sv=2017-04-17&ss=bfqt&srt=sco&sp=rwdlacup&se=2018-01-31T03:24:04Z&st=2018-01-30T19:24:04Z&spr=https,http&sig=IrkO1bVQCHcaKaTiJ5gilLSC5Wxtghu%2FJAeeY5HR%2BPU%3D
     ```
 
 9. 创建包含事件中心资源的资源组。 事件中心用于将消息从 Service Fabric 发送到运行 ELK 资源的服务器。
 
-    ```bash
+    ```azurecli
     az group create --location [REGION] --name [RESOURCE-GROUP-NAME]
 
     Example: az group create --location westus --name testeventhubsrg
@@ -124,7 +115,7 @@ ms.locfileid: "66306793"
 
 10. 使用以下命令创建事件中心资源。 按提示输入 namespaceName、eventHubName、consumerGroupName、sendAuthorizationRule 和 receiveAuthorizationRule 的详细信息。
 
-    ```bash
+    ```azurecli
     az group deployment create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
 
     Example:
@@ -136,7 +127,7 @@ ms.locfileid: "66306793"
     Please provide string value for 'receiveAuthorizationRuleName' (? for help): receiver
     ```
 
-    将“输出”字段的内容复制到上一命令的 JSON 输出中。  创建 Service Fabric 群集时，使用发送方信息。 接收方名称和密钥应该保存，供下一教程使用。在下一教程中，Logstash 服务配置为接收事件中心的消息。 以下 Blob 为 JSON 输出示例：
+    将“输出”字段的内容复制到上一命令的 JSON 输出中。 创建 Service Fabric 群集时，使用发送方信息。 接收方名称和密钥应该保存，供下一教程使用。在下一教程中，Logstash 服务配置为接收事件中心的消息。 以下 Blob 为 JSON 输出示例：
 
     ```json
     "outputs": {
@@ -167,7 +158,7 @@ ms.locfileid: "66306793"
 
     复制返回的 JSON 中的 **sr** 字段的值。 **sr** 字段值是 EventHubs 的 SAS 令牌。 以下 URL 是 **sr** 字段的示例：
 
-    ```bash
+    ```output
     https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
     ```
 
@@ -194,13 +185,13 @@ ms.locfileid: "66306793"
 
 14. 运行以下命令，创建 Service Fabric 群集
 
-    ```bash
+    ```azurecli
     az sf cluster create --location 'westus' --resource-group 'testlinux' --template-file sfdeploy.json --parameter-file sfdeploy.parameters.json --secret-identifier <certificate_url_from_step4>
     ```
 
 ## <a name="deploy-your-application-to-the-cluster"></a>将应用程序部署到群集
 
-1. 在部署应用程序之前，需将以下代码片段添加到 *Voting/VotingApplication/ApplicationManifest.xml* 文件。 **X509FindValue** 字段是从“在 Azure 中创建 Service Fabric 群集”  部分的步骤 4 返回的指纹。 此代码片段嵌套在 **ApplicationManifest** 字段（根字段）下。
+1. 在部署应用程序之前，需将以下代码片段添加到 *Voting/VotingApplication/ApplicationManifest.xml* 文件。 **X509FindValue** 字段是从“在 Azure 中创建 Service Fabric 群集”部分的步骤 4 返回的指纹。 此代码片段嵌套在 **ApplicationManifest** 字段（根字段）下。
 
     ```xml
     <Certificates>
@@ -226,11 +217,11 @@ ms.locfileid: "66306793"
     ./install.sh
     ```
 
-5. 若要访问 Service Fabric Explorer，请打开最常用的浏览器，然后键入 https://testlinuxcluster.westus.cloudapp.azure.com:19080。 从证书存储中选择需要用来连接到此终结点的证书。 如果使用 Linux 计算机，则必须将通过 *new-service-fabric-cluster-certificate.sh* 脚本生成的证书导入到 Chrome 中，然后才能查看 Service Fabric Explorer。 如果使用 Mac，则必须将 PFX 文件安装到密钥链中。 你注意到应用程序已安装到群集上。
+5. 若要访问 Service Fabric Explorer，请打开最常用的浏览器，然后键入 `https://testlinuxcluster.westus.cloudapp.azure.com:19080` 。 从证书存储中选择需要用来连接到此终结点的证书。 如果使用 Linux 计算机，则必须将通过 *new-service-fabric-cluster-certificate.sh* 脚本生成的证书导入到 Chrome 中，然后才能查看 Service Fabric Explorer。 如果使用 Mac，则必须将 PFX 文件安装到密钥链中。 你注意到应用程序已安装到群集上。
 
     ![SFX Java Azure](./media/service-fabric-tutorial-java-deploy-azure/sfxjavaonazure.png)
 
-6. 若要访问应用程序，请键入 https://testlinuxcluster.westus.cloudapp.azure.com:8080
+6. 若要访问应用程序，请键入 `https://testlinuxcluster.westus.cloudapp.azure.com:8080`
 
     ![Voting 应用 Java Azure](./media/service-fabric-tutorial-java-deploy-azure/votingappjavaazure.png)
 
@@ -242,7 +233,7 @@ ms.locfileid: "66306793"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建安全的 Linux 群集

@@ -11,16 +11,16 @@ ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/26/2019
+ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3e4172cd149726e28e0c7dff435ec1f7a59ee169
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: fa9fbf3bac55ca0b26c3644b7f6818fa96088612
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65550170"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "69639395"
 ---
-# <a name="tutorial-stream-video-files---nodejs"></a>教程：流式处理视频文件 - Node.js
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - Node.js
 
 本教程展示了使用 Azure 媒体服务在各种浏览器和设备上对视频进行编码和流式处理有多轻松。 可以使用 HTTPS、URL、SAS URL 或位于 Azure Blob 存储中的文件路径来指定输入内容。
 
@@ -57,7 +57,7 @@ ms.locfileid: "65550170"
 3. 创建基于 HTTPS URL 的**作业**输入。
 4. 使用先前创建的输入和输出提交编码**作业**。
 5. 检查作业的状态。
-6. 创建**流式处理定位符**。
+6. 创建**流定位符**。
 7. 生成流式处理 URL。
 
 ## <a name="run-the-sample-app"></a>运行示例应用

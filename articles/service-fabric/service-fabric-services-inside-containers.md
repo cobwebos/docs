@@ -1,25 +1,14 @@
 ---
 title: 在 Windows 上容器化 Azure Service Fabric 服务
 description: 了解如何在 Windows 上容器化 Service Fabric Reliable Services 和 Reliable Actors 服务。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: anmolah
-editor: roroutra
-ms.assetid: 0b41efb3-4063-4600-89f5-b077ea81fa3a
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 5/23/2018
-ms.author: aljo, anmola
-ms.openlocfilehash: 147607bbea65199ff97459711ad6301a4ae93aa4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: anmola
+ms.openlocfilehash: 9fe5980c13f655f8f30cc42771971a5015460420
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60837515"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75466182"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>在 Windows 上容器化 Service Fabric Reliable Services 和 Reliable Actors
 
@@ -55,7 +44,7 @@ Service Fabric 支持容器化 Service Fabric 微服务（基于 Reliable Servic
           {
    ```
 
-4. 生成并[打包](service-fabric-package-apps.md#Package-App)项目。 若要生成并创建包，请在解决方案资源管理器中右键单击应用程序项目，选择“包”命令。
+4. 生成并[打包](service-fabric-package-apps.md#Package-App)项目。 若要生成并创建包，请在解决方案资源管理器中右键单击应用程序项目，选择“包”命令  。
 
 5. 对于每个需要容器化的代码包，运行 PowerShell 脚本 [CreateDockerPackage.ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1)。 用法如下：
 
@@ -77,7 +66,7 @@ Service Fabric 支持容器化 Service Fabric 微服务（基于 Reliable Servic
 
 6. 接下来需要[生成](service-fabric-get-started-containers.md#Build-Containers) Docker 容器包并将其[推送](service-fabric-get-started-containers.md#Push-Containers)到存储库。
 
-7. 修改 ApplicationManifest.xml 和 ServiceManifest.xml，添加容器映像、存储库信息、注册表身份验证和端口到主机映射。 有关修改清单的信息，请参阅[创建 Azure Service Fabric 容器应用程序](service-fabric-get-started-containers.md)。 服务清单中的代码包定义需要替换为相应的容器映像。 请确保将入口点更改为 ContainerHost 类型。
+7. 修改 ApplicationManifest.xml 和 ServiceManifest.xml{1}，{2}添加容器映像、存储库信息、注册表身份验证和端口到主机映射。 有关修改清单的信息，请参阅[创建 Azure Service Fabric 容器应用程序](service-fabric-get-started-containers.md)。 服务清单中的代码包定义需要替换为相应的容器映像。 请确保将入口点更改为 ContainerHost 类型。
 
    ```xml
    <!-- Code package is your service executable. -->
@@ -119,6 +108,16 @@ Service Fabric 支持容器化 Service Fabric 微服务（基于 Reliable Servic
    </ContainerHostPolicies>
    </Policies>
    ```
+
+> [!NOTE] 
+> 默认情况下，Service Fabric 应用程序可以以接受特定于应用程序的请求的终结点的形式访问 Service Fabric 运行时。 当应用程序托管不受信任的代码时，请考虑禁用此访问。 有关详细信息，请参阅 [Service Fabric 中的安全最佳做法](service-fabric-best-practices-security.md#platform-isolation)。 若要禁用对 Service Fabric 运行时的访问，请在与导入的服务清单对应的应用程序清单的“策略”部分中添加以下设置，如下所示：
+>
+```xml
+  <Policies>
+      <ServiceFabricRuntimeAccessPolicy RemoveServiceFabricRuntimeAccess="true"/>
+  </Policies>
+```
+>
 
 10. 若要测试此应用程序，需要将其部署到正在运行版本 5.7 或更高版本的群集。 对于运行时版本 6.1 或更低版本，你需要编辑并更新群集设置来启用此预览版功能。 请按照[本文](service-fabric-cluster-fabric-settings.md)中的步骤操作，添加下一步所示的设置。
     ```

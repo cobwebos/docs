@@ -1,28 +1,25 @@
 ---
-title: Azure CLI 脚本示例 - 为多层应用程序创建网络 | Microsoft Docs
+title: Azure CLI 脚本示例 - 为多层应用程序创建网络
 description: Azure CLI 脚本示例 - 为多层应用程序创建虚拟网络。
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: KumudD
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
-ms.author: jdial
-ms.openlocfilehash: 685896cdbd74788f138b8b9dc09efbcd68a5b565
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: kumud
+ms.openlocfilehash: bcfe82dedcac01c60e93788b78fec779f0da7dbc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60624439"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530246"
 ---
-# <a name="create-a-network-for-multi-tier-applications"></a>为多层应用程序创建网络
+# <a name="use-an-azure-cli-script-sample-to-create-a-network-for-multi-tier-applications"></a>使用 Azure CLI 脚本示例为多层应用程序创建网络
 
 该脚本示例创建了包含前端和后端子网的虚拟网络。 传入前端子网的流量仅限 HTTP 和 SSH，而传入后端子网的流量限于 MySQL、端口 3306。 运行该脚本后，将具有两个虚拟机（在可向其中部署 Web 服务器和 MySQL 软件的每个子网中各具有一个虚拟机）。
 
@@ -46,7 +43,7 @@ az group delete --name MyResourceGroup --yes
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令创建资源组、虚拟网络和网络安全组。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令创建资源组、虚拟网络和网络安全组。 表中的每条命令链接到特定于命令的文档。
 
 | 命令 | 说明 |
 |---|---|

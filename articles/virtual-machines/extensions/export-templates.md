@@ -1,30 +1,29 @@
 ---
-title: 导出包含 VM 扩展的 Azure 资源组 | Microsoft 文档
+title: 导出包含 VM 扩展的 Azure 资源组
 description: 导出包含虚拟机扩展的 Resource Manager 模板。
 services: virtual-machines-windows
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 7f4e2ca6-f1c7-4f59-a2cc-8f63132de279
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
-ms.author: roiyz
-ms.openlocfilehash: f56cfeeede393dbdb9632ea4120d3a81e89f3f7c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: akjosh
+ms.openlocfilehash: 529024256b8b3f6da7146787d3a37c59a13b5bd3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61484003"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494745"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>导出包含 VM 扩展的资源组
 
-可以将 Azure 资源组导出到新的 Resource Manager 模板，并重新部署该模板。 导出过程会对现有资源进行解释，并创建一个 Resource Manager 模板，该模板在部署后会生成类似的资源组。 针对包含虚拟机扩展的资源组使用资源组导出选项时，需考虑多个事项，例如扩展兼容性和受保护设置。
+可以将 Azure 资源组导出到新的 Resource Manager 模板，然后重新部署该模板。 导出过程会对现有资源进行解释，并创建一个 Resource Manager 模板，该模板在部署后会生成类似的资源组。 针对包含虚拟机扩展的资源组使用资源组导出选项时，需考虑多个事项，例如扩展兼容性和受保护设置。
 
 本文档详细介绍在使用虚拟机扩展（包括支持的扩展的列表）时如何实施资源组导出过程，以及如何处理受保护的数据。
 
@@ -34,18 +33,7 @@ ms.locfileid: "61484003"
 
 以下扩展可以使用自动化脚本功能导出。
 
-| 分机 ||||
-|---|---|---|---|
-| Acronis 备份 | Datadog Windows 代理 | 针对 Linux 进行的 OS 修补 | VM 快照 Linux
-| Acronis 备份 Linux | Docker 扩展 | Puppet 代理 |
-| Bg 信息 | DSC 扩展 | 站点全天候运行 Apm Insight |
-| BMC CTM 代理 Linux | Dynatrace Linux | 站点全天候运行 Linux 服务器 |
-| BMC CTM 代理 Windows | Dynatrace Windows | 站点全天候运行 Windows Server |
-| Chef 客户端 | HPE Security Application Defender | Trend Micro DSA |
-| 自定义脚本 | IaaS 反恶意软件 | Trend Micro DSA Linux |
-| 自定义脚本扩展 | IaaS 诊断 | 适用于 Linux 的 VM 访问权限 |
-| 适用于 Linux 的自定义脚本 | Linux Chef 客户端 | 适用于 Linux 的 VM 访问权限 |
-| Datadog Linux 代理 | Linux 诊断 | VM 快照 |
+> Acronis 备份，Acronis 备份 Linux，Bg Info，BMC CTM 代理 Linux，BMC CTM Agent Windows，Chef 客户端，自定义脚本，自定义脚本扩展，适用于 Linux 的自定义脚本，Datadog Linux Agent，Datadog Windows 代理，Docker 扩展，DSC 扩展，Dynatrace Linux，Dynatrace Windows，HPE 安全应用程序，Linux 诊断，适用于 Linux 的 OS 修补程序，、Site 24x7 Linux 服务器、站点 24x7 Windows Server、趋势微 DSA、趋势微 DSA Linux、适用于 Linux 的 VM 访问、适用于 Linux 的 VM 访问、VM 快照、vm 快照 Linux
 
 ## <a name="export-the-resource-group"></a>导出资源组
 
@@ -149,7 +137,7 @@ Azure 资源管理器自动化脚本生成一个资源管理器模板、一个�
 }
 ```
 
-如果使用模板参数提供属性值，则需创建这些参数。 为受保护的设置值创建模板参数时，请确保使用 `SecureString` 参数类型，以便保护敏感值。 如需详细了解如何使用参数，请参阅[创作 Azure 资源管理器模板](../../resource-group-authoring-templates.md)。
+如果使用模板参数提供属性值，则需创建这些参数。 为受保护的设置值创建模板参数时，请确保使用 `SecureString` 参数类型，以便保护敏感值。 如需详细了解如何使用参数，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)。
 
 以 `IaasDiagnostic` 扩展为例，会在 Resource Manager 模板的参数部分创建以下参数。
 

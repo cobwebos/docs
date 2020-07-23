@@ -1,25 +1,19 @@
 ---
-title: 使用增量快照备份和恢复非托管的 Azure Windows VM 磁盘 | Microsoft Docs
-description: 创建自定义解决方案，使用增量快照备份和恢复 Azure Windows 虚拟机磁盘。
-services: virtual-machines-windows
-documentationcenter: na
+title: 使用增量快照备份和恢复非托管 Azure Windows VM 磁盘
+description: 创建自定义解决方案，以使用增量快照备份和恢复 Azure Windows 虚拟机磁盘。
 author: roygara
 manager: twooley
-editor: tysonn
-ms.assetid: 3524b987-bd65-4e35-83e7-fbc2136643e5
-ms.service: virtual-machines-windows
-ms.workload: storage
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
+ms.service: virtual-machines
+ms.workload: infrastructure
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 1de366486d0f9765be2c615ce1be6e10c813922a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 5ace6017ce66bbaa8be71e23196823c1c1318902
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725592"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81869482"
 ---
+# <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>通过递增快照备份 Azure 非托管 VM 磁盘
 [!INCLUDE [virtual-machines-incremental-snapshots](../../../includes/virtual-machines-incremental-snapshots.md)]

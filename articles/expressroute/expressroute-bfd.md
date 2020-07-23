@@ -1,23 +1,22 @@
 ---
-title: 配置基于 ExpressRoute 的 BFD - Azure| Microsoft Docs
+title: Azure ExpressRoute：配置 BFD
 description: 本文说明如何通过 ExpressRoute 线路的专用对等互连配置 BFD（双向转发检测）。
 services: expressroute
 author: rambk
 ms.service: expressroute
 ms.topic: article
-ms.date: 8/17/2018
+ms.date: 11/1/2018
 ms.author: rambala
-ms.custom: seodec18
-ms.openlocfilehash: 14f65851e50ed25024524f6d988ba2b2f2b3aeba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ec9c6248f4054329bd3cd9b74855964c4acf72c4
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60367655"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855154"
 ---
 # <a name="configure-bfd-over-expressroute"></a>配置基于 ExpressRoute 的 BFD
 
-ExpressRoute 支持基于专用对等互连的双向转发检测 (BFD)。 启用基于 ExpressRoute 的 BFD 后，可在 Microsoft 企业边缘 (MSEE) 设备与终止 ExpressRoute 线路 (PE) 的路由器之间加速链路故障检测。 可以通过客户边缘路由设备或合作伙伴边缘路由设备终止 ExpressRoute（如果使用托管的第 3 层连接服务）。 本文档将逐步讲解 BFD 的需求，以及如何启用基于 ExpressRoute 的 BFD。
+ExpressRoute 支持基于专用对等互连和 Microsoft 对等互连的双向转发检测 (BFD)。 启用基于 ExpressRoute 的 BFD 后，可在 Microsoft 企业边缘 (MSEE) 设备与终止 ExpressRoute 线路 (CE/PE) 的路由器之间加速链路故障检测。 可以通过客户边缘路由设备或合作伙伴边缘路由设备终止 ExpressRoute（如果使用托管的第 3 层连接服务）。 本文档将逐步讲解 BFD 的需求，以及如何启用基于 ExpressRoute 的 BFD。
 
 ## <a name="need-for-bfd"></a>BFD 的需求
 
@@ -34,26 +33,28 @@ ExpressRoute 支持基于专用对等互连的双向转发检测 (BFD)。 启用
 
 ## <a name="enabling-bfd"></a>启用 BFD
 
-在 MSEE 上所有新建的 ExpressRoute 专用对等互连接口中，默认已配置 BFD。 因此，若要启用 BFD，只需在 PE 上配置 BFD 即可。 配置 BFD 的过程包括两个步骤：需在接口上配置 BFD，然后将其链接到 BGP 会话。
+在 MSEE 上所有新建的 ExpressRoute 专用对等互连接口中，默认已配置 BFD。 因此，若要启用 BFD，只需在 CE/PE（二者都在主设备和辅助设备上）上配置 BFD 即可。 配置 BFD 的过程包括两个步骤：需在接口上配置 BFD，然后将其链接到 BGP 会话。
 
-下面显示了 PE 配置示例（使用 Cisco IOS XE）。 
+下面显示了 CE/PE 配置示例（使用 Cisco IOS XE）。 
 
-    interface TenGigabitEthernet2/0/0.150
-      description private peering to Azure
-      encapsulation dot1Q 15 second-dot1q 150
-      ip vrf forwarding 15
-      ip address 192.168.15.17 255.255.255.252
-      bfd interval 300 min_rx 300 multiplier 3
+```console
+interface TenGigabitEthernet2/0/0.150
+   description private peering to Azure
+   encapsulation dot1Q 15 second-dot1q 150
+   ip vrf forwarding 15
+   ip address 192.168.15.17 255.255.255.252
+   bfd interval 300 min_rx 300 multiplier 3
 
 
-    router bgp 65020
-      address-family ipv4 vrf 15
-        network 10.1.15.0 mask 255.255.255.128
-        neighbor 192.168.15.18 remote-as 12076
-        neighbor 192.168.15.18 fall-over bfd
-        neighbor 192.168.15.18 activate
-        neighbor 192.168.15.18 soft-reconfiguration inbound
-      exit-address-family
+router bgp 65020
+   address-family ipv4 vrf 15
+      network 10.1.15.0 mask 255.255.255.128
+      neighbor 192.168.15.18 remote-as 12076
+      neighbor 192.168.15.18 fall-over bfd
+      neighbor 192.168.15.18 activate
+      neighbor 192.168.15.18 soft-reconfiguration inbound
+   exit-address-family
+```
 
 >[!NOTE]
 >若要在现有的专用对等互连中启用 BFD，需要重置该对等互连。 请参阅[重置 ExpressRoute 对等互连][ResetPeering]
@@ -64,7 +65,7 @@ ExpressRoute 支持基于专用对等互连的双向转发检测 (BFD)。 启用
 在两个 BFD 对等方之间，速度较慢的对等方决定了传输速率。 MSEE BFD 传输/接收间隔设置为 300 毫秒。 在某些情况下，可以将间隔设置为 750 毫秒的较高值。 通过配置较高的值，可以强制这些间隔变得更长；但无法变得更短。
 
 >[!NOTE]
->如果已配置异地冗余的 ExpressRoute 专用对等互连线路，或使用站点到站点 IPSec VPN 连接作为 ExpressRoute 专用对等互连的备用连接，则启用基于专用对等互连的 BFD 有助于在发生 ExpressRoute 连接故障后加快故障转移的速度。 
+>如果已配置异地冗余的 ExpressRoute 线路，或使用站点到站点 IPSec VPN 连接作为备用连接，则启用 BFD 有助于在发生 ExpressRoute 连接故障后加快故障转移的速度。 
 >
 
 ## <a name="next-steps"></a>后续步骤

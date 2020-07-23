@@ -1,31 +1,29 @@
 ---
 title: 管理 Azure Analysis Services 中的服务器管理员 | Microsoft Docs
-description: 了解如何在 Azure 中管理 Analysis Services 服务器的服务器管理员。
+description: 本文介绍如何使用 Azure 门户、PowerShell 或 REST API 管理 Azure Analysis Services 服务器的服务器管理员。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/19/2018
+ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 25eb111871bbe3b18f59b0d6c123c72f3e55c859
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9edc43f9b2b62a3d9da9d6fba5ab52318e8b6427
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60498676"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077501"
 ---
 # <a name="manage-server-administrators"></a>管理服务器管理员
 
-服务器管理员必须是 Azure Active Directory (Azure AD) 中服务器所在租户的有效用户或安全组。 可以对 Azure 门户中的服务器使用“Analysis Services 管理员”，或使用 SSMS、PowerShell 或 REST API 中的“服务器属性”来管理服务器管理员。 
+服务器管理员必须是服务器所在的租户的 Azure Active Directory （Azure AD）中有效的用户、服务主体或安全组。 可以使用 **Analysis Services 管理员**来管理 Azure 门户中的服务器，在 SSMS、PowerShell 或 REST API 中使用“服务器属性”来管理服务器管理员。 
 
-> [!NOTE]
-> 安全组必须已将 `MailEnabled` 属性设为 `True`。
+添加“安全组”时，请使用 `obj:groupid@tenantid`。 添加到服务器管理员角色的安全组不支持服务主体。
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>使用 Azure 门户添加服务器管理员
 
 1. 在门户中，对于服务器，单击“Analysis Services 管理员”。
-2. 在“\<servername> - Analysis Services 管理员”中，单击“添加”。
+2. ** \<servername> Analysis Services 管理员**"中，单击"**添加**"。
 3. 在“添加服务器管理员”中，从 Azure AD 选择用户帐户，或使用电子邮件地址邀请外部用户。
 
     ![Azure 门户中的服务器管理员](./media/analysis-services-server-admins/aas-manage-users-admins.png)
@@ -47,8 +45,8 @@ ms.locfileid: "60498676"
 
 ## <a name="rest-api"></a>REST API
 
-使用 [Create](https://docs.microsoft.com/rest/api/analysisservices/servers/create) 在创建新服务器时指定 asAdministrator 属性。 <br>
-使用 [Update](https://docs.microsoft.com/rest/api/analysisservices/servers/update) 在修改现有服务器时指定 asAdministrator 属性。 <br>
+创建新服务器时，使用 [Create](https://docs.microsoft.com/rest/api/analysisservices/servers/create) 指定 asAdministrator 属性。 <br>
+修改现有服务器时，使用 [Update](https://docs.microsoft.com/rest/api/analysisservices/servers/update)指定 asAdministrator 属性。 <br>
 
 
 

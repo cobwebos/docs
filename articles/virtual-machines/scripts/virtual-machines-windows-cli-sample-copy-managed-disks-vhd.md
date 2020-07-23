@@ -1,11 +1,10 @@
 ---
-title: Azure CLI 示例 - 将托管磁盘复制到存储帐户
+title: 将托管磁盘复制到存储帐户 - CLI 示例
 description: Azure CLI 示例 - 将托管磁盘导出或复制到存储帐户。
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
 manager: kavithag
-editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -16,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/17/2018
 ms.author: ramankum
 ms.custom: mvc,seodec18
-ms.openlocfilehash: d6009a723297d03dc854d06529315b22b2f4de16
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 64db152c6ebd2e8be4dc8034222eb5f1610946ae
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57249458"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459604"
 ---
 # <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>使用 Azure CLI 将托管磁盘导出/复制到存储帐户
 
@@ -39,7 +38,7 @@ ms.locfileid: "57249458"
 
 此脚本使用以下命令生成托管磁盘的 SAS URI，然后使用该 SAS URI 将基础 VHD 复制到存储帐户。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az disk grant-access](https://docs.microsoft.com/cli/azure/disk?view=azure-cli-latest#az-disk-grant-access) | 生成只读 SAS，使用该 SAS 可以将基础 VHD 文件复制到存储帐户或将其下载到本地  |
 | [az storage blob copy start](https://docs.microsoft.com/cli/azure/storage/blob/copy) | 将 blob 从一个存储帐户异步复制到另一个存储帐户 |

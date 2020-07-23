@@ -1,27 +1,17 @@
 ---
-title: 使用 PowerShell 将数据磁盘附加到 Azure 中的 Windows VM | Microsoft Docs
+title: 使用 PowerShell 将数据磁盘附加到 Azure 中的 Windows VM
 description: 如何配合使用 PowerShell 和 Resource Manager 部署模型将新磁盘或现有数据磁盘附加到 Windows VM。
-services: virtual-machines-windows
-documentationcenter: ''
 author: roygara
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 6a20dac0f89390f1229c7a71793814dc9f9397c1
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
-ms.translationtype: MT
+ms.openlocfilehash: 6f16784d89d1f3edec491d5c7ae312dbd46212f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66727851"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84658138"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>使用 PowerShell 将数据磁盘附加到 Windows VM
 
@@ -32,9 +22,7 @@ ms.locfileid: "66727851"
 * 虚拟机的大小决定了可以附加多少个磁盘。 有关详细信息，请参阅[虚拟机的大小](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 * 若要使用高级 SSD，则需要使用[支持高级存储的 VM 类型](sizes-memory.md)，例如 DS 系列或 GS 系列虚拟机。
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+本文在[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)中使用 PowerShell，它不断更新到最新版本。 若要打开 Cloud Shell，请从任何代码块的顶部选择“试一试”。
 
 ## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>将空数据磁盘添加到虚拟机
 
@@ -128,4 +116,4 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ## <a name="next-steps"></a>后续步骤
 
-创建[快照](snapshot-copy-managed-disk.md)。
+还可以使用模板部署托管磁盘。 有关详细信息，请参阅[使用 Azure 资源管理器模板中的托管磁盘](using-managed-disks-template-deployments.md)或[快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-data-disk)以部署多个数据磁盘。

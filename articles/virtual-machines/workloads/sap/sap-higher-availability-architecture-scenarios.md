@@ -1,28 +1,27 @@
 ---
-title: 利用 Azure 基础结构 VM 重启来实现 SAP 系统的“更高可用性”| Microsoft Docs
+title: 利用 Azure Vm 重启以实现 SAP 系统的 "更高可用性" |Microsoft Docs
 description: 利用 Azure 基础结构 VM 重启来实现 SAP 应用程序的“更高可用性”
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: jeconnoc
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: f0b2f8f0-e798-4176-8217-017afe147917
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cda0b1c0774ed33bf550e0edf329cc22a2807be3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f43ba78bc9c48b003d4718945dc47b0a076a048f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60825625"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134538"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>利用 Azure 基础结构 VM 重启来实现 SAP 系统的“更高可用性”
 
@@ -35,8 +34,8 @@ ms.locfileid: "60825625"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -205,7 +204,7 @@ ms.locfileid: "60825625"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -217,7 +216,7 @@ ms.locfileid: "60825625"
 如果决定不在 Linux（目前仅支持 SUSE Linux Enterprise Server [SLES] 12 和更高版本）上使用 Windows Server 故障转移群集 (WSFC) 或 Pacemaker 等功能，则可利用 Azure 虚拟机重启。 它可以保护 SAP 系统不受 Azure 物理服务器基础结构和整个基础 Azure 平台的计划和非计划停机的影响。
 
 > [!NOTE]
-> Azure VM 重启主要是保护 VM 而不是应用程序。 虽然 VM 重启不提供 SAP 应用程序的高可用性，但确实提供某种程度的基础结构可用性。 它还间接提供 SAP 系统的“更高可用性”。 此外，对于在计划内或计划外主机故障后重启 VM 所需的时间，没有 SLA，因此这种方法的高可用性不适用于 SAP 系统的关键组件。 例如，ASCS/SCS 实例或数据库管理系统 (DBMS) 可能是关键组件。
+> Azure VM 重启主要是保护 VM 而不是应用程序。** 虽然 VM 重启不提供 SAP 应用程序的高可用性，但确实提供某种程度的基础结构可用性。 它还间接提供 SAP 系统的“更高可用性”。 此外，对于在计划内或计划外主机故障后重启 VM 所需的时间，没有 SLA，因此这种方法的高可用性不适用于 SAP 系统的关键组件。 例如，ASCS/SCS 实例或数据库管理系统 (DBMS) 可能是关键组件。
 >
 >
 
@@ -251,13 +250,13 @@ Azure 托管磁盘自动放置在其附加到的虚拟机的容错域中。 如�
 
     即使使用托管磁盘，这些磁盘也会存储在 Azure 存储帐户中，并可能在出现存储中断时不可用。
 
-* SAP ASCS/SCS 实例的更高可用性
+* SAP ASCS/SCS 实例的** 更高可用性
 
-    在此方案中，使用 Azure VM 重新启动，来保护已安装 SAP ASCS/SCS 实例的 VM。 如果 Azure 服务器发生计划内或计划外的停机，则在另一个可用的服务器上重启 VM。 如前所述，在此 ASCS/SCS 实例方案中，Azure VM 重启主要是保护 VM 而不是应用程序。 通过 VM 重启，可以间接实现 SAP ASCS/SCS 实例的“更高可用性”。 
+    在此方案中，使用 Azure VM 重新启动，来保护已安装 SAP ASCS/SCS 实例的 VM。 如果 Azure 服务器发生计划内或计划外的停机，则在另一个可用的服务器上重启 VM。 如前所述，在此 ASCS/SCS 实例方案中，Azure VM 重启主要是保护 VM 而不是应用程序。** 通过 VM 重启，可以间接实现 SAP ASCS/SCS 实例的“更高可用性”。 
 
     为了确保在 VM 重启后自动启动 ASCS/SCS 实例，请设置[对 SAP 实例使用 Autostart][planning-guide-11.5] 部分所述的 ASCS/SCS 实例启动配置文件中的 Autostart 参数。 此设置意味着，在单个 VM 上作为单一故障点 (SPOF) 运行的 ASCS/SCS 实例将决定整个 SAP 布局的可用性。
 
-* DBMS 服务器的更高可用性
+* DBMS 服务器的** 更高可用性
 
     就像在前述 SAP ASCS/SCS 实例用例中一样，可以使用 Azure VM 重启来保护已安装 DBMS 软件的 VM，并通过 VM 重启实现 DBMS 软件的“更高可用性”。
   
@@ -268,7 +267,7 @@ SAP 提供了一项设置，用于在启动 VM 中的 OS 后立即启动 SAP 实
 
 假设这是一个 VM 中有一个 SAP 应用程序服务器实例的典型 Azure 方案，并且最终重启了单个 VM，则 Autostart 并不重要。 不过，可以通过适当方式来启用它，只需将以下参数添加到 SAP 高级业务应用程序编程 (ABAP) 或 Java 实例的启动配置文件中即可：
 
-      Autostart = 1
+`Autostart = 1`
 
 
   > [!NOTE]
@@ -279,8 +278,7 @@ SAP 提供了一项设置，用于在启动 VM 中的 OS 后立即启动 SAP 实
   有关 SAP 实例的 Autostart 的详细信息，请参阅以下文章：
 
   * [Start or stop SAP along with your Unix Server Start/Stop](https://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)（在 Unix 服务器启动/停止时也启动或停止 SAP）
-  * [Starting and stopping SAP NetWeaver management agents](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)（启动和停止 SAP NetWeaver 管理代理）
-  * [How to enable autostart of the HANA database](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html)（如何启用 HANA 数据库的自动启动）
+  * [启动和停止 SAP NetWeaver 管理代理](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
 
 ## <a name="next-steps"></a>后续步骤
 

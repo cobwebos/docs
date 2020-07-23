@@ -1,19 +1,18 @@
 ---
 title: 在 Azure 市场中生成登陆页 | Azure
 description: 了解如何在 Azure 市场和 Microsoft AppSource 中为应用和服务发布者创建登陆页。
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: jm-aditi-ms
-manager: pabutler
 ms.service: marketplace
-ms.topic: article
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 06/04/2018
-ms.author: ellacroi
-ms.openlocfilehash: 1b3f987ff54a4b5eeeb1034d1e99302d0d6d43d6
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: b7f80910e19348dfa3540f141424205a7531f5e7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935614"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102814"
 ---
 # <a name="build-your-landing-page"></a>生成登陆页
 
@@ -24,7 +23,7 @@ ms.locfileid: "64935614"
 *   立即获取解决方案
 
 可以通过多种市场营销策略引用登陆页。 可以使用以下市场营销策略： 
-*   活动
+*   事件
 *   网络广播
 *   社交媒体
 *   白皮书
@@ -46,7 +45,7 @@ ms.locfileid: "64935614"
 | **将行动号召设置在顶部或非常显眼的位置** | 将链接嵌入至市场商品信息中的一段文本中。 |
 | **研究最佳关键字并对页面进行搜索优化** | 想当然地认为产品名称可以获得更高的搜索排名。 |
 | **使用广告推广活动中的关键字** | 在 Web 属性中使用许多不同的关键字会削弱广告投资的效果。 |
-| **将相关的产品名称和关键字放在显眼位置** | 使用户需要滚动才能看到所展示的产品或解决方案。 |
+| **将相关的产品名称和关键字置于折叠上方** | 使用户需要滚动才能看到所展示的产品或解决方案。 |
 | **使用品牌图像来验证解决方案，同时遵循 Microsoft 品牌准则，例如 Azure 认证** | 使用未获批准的 Microsoft 品牌图像。 |
 
 ## <a name="next-steps"></a>后续步骤

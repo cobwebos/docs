@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 9f7e2760ef8bf06a2e680dce90c323672ca9d491
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 091e4dc0759ce1b227349d5d1b6b08b9eda66ee0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416060"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84237660"
 ---
 * 该转换需要重启 VM，因此请在预先存在的维护时段内计划 VM 迁移。 
 
@@ -19,6 +19,6 @@ ms.locfileid: "66416060"
 
 * 请务必测试转换。 在生产环境中执行迁移之前迁移测试性虚拟机。
 
-* 在转换期间，将解除分配 VM。 转换完成后，VM 在启动时会接收新的 IP 地址。 如果需要，可向 VM [分配静态 IP 地址](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md)。
+* 在转换期间，将解除分配 VM。 转换完成后，VM 在启动时会接收新的 IP 地址。 如果需要，可向 VM [分配静态 IP 地址](../articles/virtual-network/public-ip-addresses.md)。
 
 * 查看 Azure VM 代理支持转换过程所需的最低版本。 有关如何检查和更新代理版本的信息，请参阅 [Azure 中 VM 代理的最低版本支持](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)

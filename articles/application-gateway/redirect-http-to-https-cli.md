@@ -1,25 +1,23 @@
 ---
-title: 使用证书创建应用程序网关 - Azure CLI | Microsoft Docs
-description: 了解如何使用 Azure CLI 创建应用程序网关并为 SSL 终端添加证书。
+title: 使用 CLI 进行 HTTP 到 HTTPS 重定向
+titleSuffix: Azure Application Gateway
+description: 了解如何使用 Azure CLI 创建应用程序网关并为 TLS 终端添加证书。
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.topic: how-to
+ms.date: 11/15/2019
 ms.author: victorh
-ms.openlocfilehash: 1a5479cb54e15c0e740d800c8ee248a67e5ec5fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 19bfaf611093f6ca178a627123d4d0f9c8ccf3ca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66133918"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84804411"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>使用 Azure CLI 创建支持 HTTP 到 HTTPS 重定向的应用程序网关
 
-可以通过 Azure CLI 使用 SSL 终端的证书创建[应用程序网关](overview.md)。 路由规则用于将 HTTP 流量重定向到应用程序网关中的 HTTPS 端口。 在此示例中，还会为包含两个虚拟机实例的应用程序网关的后端池创建一个[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。
+可以通过 Azure CLI 使用 TLS/SSL 终端的证书创建[应用程序网关](overview.md)。 路由规则用于将 HTTP 流量重定向到应用程序网关中的 HTTPS 端口。 在此示例中，还会为包含两个虚拟机实例的应用程序网关的后端池创建一个[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。
 
 在本文中，学习如何：
 
@@ -34,19 +32,19 @@ ms.locfileid: "66133918"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 
 为供生产使用，应导入由受信任的提供程序签名的有效证书。 对于本教程，请使用 openssl 命令创建自签名证书和 pfx 文件。
 
-```azurecli-interactive
+```console
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
 ```
 
 输入对证书有意义的值。 可接受默认值。
 
-```azurecli-interactive
+```console
 openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.crt
 ```
 
@@ -56,7 +54,7 @@ openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.cr
 
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/azure/group) 创建资源组。
 
-以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组。
+以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组****。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -210,7 +208,7 @@ az vmss extension set \
 
 若要获取应用程序网关的公共 IP 地址，可以使用 [az network public-ip show](/cli/azure/network/public-ip)。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。
 
-```azurepowershell-interactive
+```azurecli-interactive
 az network public-ip show \
   --resource-group myResourceGroupAG \
   --name myAGPublicIPAddress \
@@ -220,13 +218,13 @@ az network public-ip show \
 
 ![安全警告](./media/redirect-http-to-https-cli/application-gateway-secure.png)
 
-若要接受有关使用自签名证书的安全警告，请依次选择“详细信息”和“继续转到网页”。 随即显示受保护的 NGINX 站点，如下例所示：
+若要接受有关使用自签名证书的安全警告，请依次选择“详细信息”和“继续转到网页”。   随即显示受保护的 NGINX 站点，如下例所示：
 
 ![在应用程序网关中测试基 URL](./media/redirect-http-to-https-cli/application-gateway-nginxtest.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你将了解：
+在本教程中，你已学习了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建自签名证书

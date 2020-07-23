@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
-ms.date: 09/24/2018
+ms.topic: conceptual
+ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 3e871b8d4de8ff83e260aded89e09ad5b17b3297
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.openlocfilehash: 3ec5889d952e2836f1d112e38b8248f667cab586
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799228"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200411"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box 安全性和数据保护
 
@@ -30,11 +30,14 @@ Microsoft Azure Data Box 解决方案由四个彼此交互的主要组件构成�
 - **连接到设备的客户端/主机** – 基础结构中的客户端，它们连接到 Data Box 设备，并包含需要保护的数据。
 - **云存储** – Azure 云中存储数据的位置。 这通常是链接到所创建的 Azure Data Box 资源的存储帐户。
 
-下图指示了通过 Azure Data Box 解决方案运行的从本地到 Azure 的数据流。
+下图指示了通过 Azure Data Box 解决方案运行的从本地到 Azure 的数据流。 此流适用于你的 Data Box 的导入顺序。
 
 ![Data Box 安全性](media/data-box-security/data-box-security-2.png)
 
-在数据流经此解决方案时，将会记录事件并生成日志。 有关详细信息，请转到 [Azure Data Box 的跟踪和事件日志记录](data-box-logs.md)。
+在数据流经此解决方案时，将会记录事件并生成日志。 有关详细信息，请转到：
+
+- [Azure Data Box 导入订单的跟踪和事件日志记录](data-box-logs.md)。
+- [Azure Data Box 导出订单的跟踪和事件日志记录](data-box-export-logs.md)
 
 ## <a name="security-features"></a>安全功能
 
@@ -45,20 +48,19 @@ Data Box 确保只有经过授权的实体能够查看、修改或删除你的�
 Data Box 设备由以下功能提供保护：
 
 - 坚固的装置外壳，能够承受冲击、不利的运输和环境条件。 
-- 防篡改封条，可以看出在运输途中发生的任何设备篡改。
 - 硬件和软件篡改检测，可以防止进一步的设备操作。
 - 仅运行 Data Box 特定的软件。
 - 在锁定状态下启动。
 - 通过设备解锁密码控制设备访问。
-- 访问凭据，用于将数据复制到和复制出设备。 对 Azure 门户中的“设备凭据”  页面的所有访问都将记录在[活动日志](data-box-logs.md#query-activity-logs-during-setup)中。
+- 访问凭据，用于将数据复制到和复制出设备。 对 Azure 门户中的“设备凭据”**** 页面的所有访问都将记录在[活动日志](data-box-logs.md#query-activity-logs-during-setup)中。
 
 ### <a name="data-box-data-protection"></a>Data Box 数据保护
 
 流入和流出 Data Box 的数据由以下功能提供保护：
 
 - 用于静态数据的 AES 256 位加密。
-- 可以为传输中数据使用加密的协议。
-- 将数据上传到 Azure 后，从设备中安全擦除数据。 数据擦除根据 NIST 800-88r1 标准进行。 数据擦除事件将记录在[订单历史记录](data-box-logs.md#download-order-history)中。
+- 可以为传输中数据使用加密的协议。 建议你在将数据从数据服务器复制时，将 SMB 3.0 与加密配合使用来保护数据。
+- 将数据上传到 Azure 后，从设备中安全擦除数据。 数据擦除符合 [NIST 800-88r1 标准中 ATA 硬盘驱动器的附录 A](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf) 中的准则。 数据擦除事件将记录在[订单历史记录](data-box-logs.md#download-order-history)中。
 
 ### <a name="data-box-service-protection"></a>Data Box 服务保护
 
@@ -106,7 +108,7 @@ Data Box 中实现了以下安全准则：
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | 对不利运输条件的承受力          |
 |[NIST SP 800-147](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-147.pdf)      | 安全的固件更新         |
 |[FIPS 140-2 级别 2](https://csrc.nist.gov/csrc/media/publications/fips/140/2/final/documents/fips1402.pdf)      | 数据保护         |
-|[NIST SP 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | 数据清理         |
+|[NIST SP 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf) 中 ATA 硬盘驱动器的附录 A      | 数据清理         |
 
 ## <a name="next-steps"></a>后续步骤
 

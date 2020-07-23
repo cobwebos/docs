@@ -1,26 +1,22 @@
 ---
-title: Azure PowerShell 脚本示例：对传入 VM 的流量进行负载均衡以实现高可用性 | Microsoft Docs
+title: 对传入 VM 的流量进行负载均衡以实现高可用性 - Azure PowerShell
 description: Azure PowerShell 脚本示例：对传入 VM 的流量进行负载均衡以实现高可用性
 services: load-balancer
 documentationcenter: load-balancer
-author: georgewallace
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: asudbring
+manager: KumudD
 ms.service: load-balancer
 ms.devlang: powershell
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
-ms.author: gwallace
-ms.openlocfilehash: 282a9d0b1ae5afb873d9f3736550dff52e16bc12
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: allensu
+ms.openlocfilehash: 1f0ff6cad90a4e5578a4f0c578a7da5cbbb75457
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66160537"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74067071"
 ---
 # <a name="load-balance-traffic-to-vms-for-high-availability"></a>对传入 VM 的流量进行负载均衡以实现高可用性
 
@@ -48,7 +44,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 此脚本使用以下命令创建资源组、虚拟机、可用性集、负载均衡器和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | 创建子网配置。 在虚拟网络创建过程中将使用此配置。 |

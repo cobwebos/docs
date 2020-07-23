@@ -1,25 +1,25 @@
 ---
 title: Verizon 中的自定义报表 | Microsoft Docs
-description: 您可以通过使用以下报表来查看 CDN 使用模式：带宽、 传输的数据命中，缓存状态、 缓存命中率，IPV4/IPV6 传输的数据。
+description: 可以通过下列报告查看 CDN 的使用模式：带宽报告、已传输数据报告、命中数报告、缓存状态报告、缓存命中率报告、已传输 IPV4/IPV6 数据报告。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/11/2017
-ms.author: magattus
-ms.openlocfilehash: 75a1fb4beb4025dc3ec63d29944331d07be35d8a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: cff355aeb74efc9dec2780840ae57fea4c5764cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60323548"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888711"
 ---
 # <a name="custom-reports-from-verizon"></a>Verizon 中的自定义报表
 
@@ -34,7 +34,7 @@ ms.locfileid: "60323548"
     ![CDN 配置文件管理按钮](./media/cdn-reports/cdn-manage-btn.png)
    
     CDN 管理门户打开。
-2. 将鼠标悬停在“分析”选项卡，然后悬停在“自定义报表”浮出控件。 单击“边缘 CNAME”。
+2. 将鼠标悬停在“分析”选项卡，然后悬停在“自定义报表”浮出控件********。 单击“边缘 CNAME”****。
    
     ![CDN 管理门户 - 自定义报表菜单](./media/cdn-reports/cdn-custom-reports.png)
 
@@ -45,24 +45,24 @@ ms.locfileid: "60323548"
 
 通过定义以下报表选项生成自定义报表：
 
-- 指标：可以使用以下选项：
+- 指标：支持使用以下选项：
 
-   - 命中数:指示定向到在其启用自定义报表功能的边缘 CNAME 的请求总数。 该指标不包括返回到客户端的状态代码。
+   - 命中数：指示定向到启用自定义报表功能的边缘 CNAME 的请求总数。 该指标不包括返回到客户端的状态代码。
 
-   - 传输的数据：指示从边缘服务器传输到 HTTP 客户端 （例如，web 浏览器） 的数据总量为定向到在其启用自定义报表功能的边缘 CNAME 的请求。 通过将 HTTP 响应标头添加到响应正文来计算数据的传输量。 因此，向每个资产传输的数据量大于其实际文件大小。
+   - 数据传输：指示从边缘服务器到 HTTP 客户端（例如，Web 浏览器）传输的数据总量，且该数据针对的请求需要定向到启用自定义报告功能的边缘 CNAME。 通过将 HTTP 响应标头添加到响应正文来计算数据的传输量。 因此，向每个资产传输的数据量大于其实际文件大小。
 
-- 分组：确定条形图如下所示的统计信息的类型。 可以使用以下选项：
+- 分组：确定条形图下方显示的统计信息类型。 可以使用以下选项：
 
-   - HTTP 响应代码：通过 HTTP 响应代码来组织统计信息 （例如，200、 403 等） 返回到客户端。 
+   - HTTP 响应代码：通过返回到客户端的 HTTP 响应代码（例如，200、403 等）来组织统计信息。 
 
    - 缓存状态：按缓存状态组织统计信息。
 
 
-若要为报表设置日期范围，可从下拉列表中选择预定义的日期范围，例如“今天”或“本周”，也可选择“自定义”，并通过单击日历图标手动输入日期范围。 
+若要为报表设置日期范围，可从下拉列表中选择预定义的日期范围，例如“今天”或“本周”，也可选择“自定义”，并通过单击日历图标手动输入日期范围************。 
 
-选择日期范围后，单击“开始”生成报表。
+选择日期范围后，单击“开始”生成报表****。
 
-单击“开始”按钮右侧的 Excel 符号，可以 Excel 格式导出数据。
+单击“开始”按钮右侧的 Excel 符号，可以 Excel 格式导出数据****。
 
 ![CNAME 报表](./media/cdn-reports/cdn-cnames-report.png)
 

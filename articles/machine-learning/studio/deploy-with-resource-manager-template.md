@@ -1,30 +1,29 @@
 ---
-title: 使用 Azure 资源管理器部署工作室工作区
-titleSuffix: Azure Machine Learning Studio
-description: 如何使用 Azure 资源管理器模板为 Azure 机器学习工作室部署工作区
+title: 使用 Azure 资源管理器部署工作室（经典）工作区
+titleSuffix: ML Studio (classic) - Azure
+description: 如何使用 Azure 资源管理器模板为 Azure 机器学习工作室（经典）部署工作区
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+ms.topic: how-to
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/05/2018
-ms.openlocfilehash: 91413aa461261824782717ae4edacc2757ad5405
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 8a6ec4c8f5e59546c0ec5ee3cdd128e70d89802b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66121340"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84696246"
 ---
-# <a name="deploy-azure-machine-learning-studio-workspace-using-azure-resource-manager"></a>使用 Azure 资源管理器部署 Azure 机器学习工作室工作区
+# <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>使用 Azure 资源管理器部署 Azure 机器学习工作室（经典）工作区
 
-通过提供部署带有验证和重试机制的互连组件的可扩展方法，使用 Azure 资源管理器部署模板可节约时间。 例如，若要设置 Azure 机器学习工作室工作区，需要先配置 Azure 存储帐户，然后再部署工作区。 想象为数百个工作区手动执行此操作的样子。 更轻松的替代方法是使用 Azure 资源管理器模板部署工作室工作区及其所有依赖项。 本文将引导逐步完成此过程。 有关 Azure 资源管理器的整体概述，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)。
+通过提供部署带有验证和重试机制的互连组件的可扩展方法，使用 Azure 资源管理器部署模板可节约时间。 例如，若要设置 Azure 机器学习工作室（经典）工作区，需要先配置 Azure 存储帐户，然后再部署工作区。 想象为数百个工作区手动执行此操作的样子。 更轻松的替代方法是使用 Azure 资源管理器模板部署工作室（经典）工作区及其所有依赖项。 本文将引导逐步完成此过程。 有关 Azure 资源管理器的整体概述，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="step-by-step-create-a-machine-learning-workspace"></a>分布说明：创建机器学习工作区
-我们将创建 Azure 资源组，然后使用资源管理器模板部署新的 Azure 存储帐户和新的 Azure 机器学习工作室工作区。 部署完成后，我们将打印有关所创建工作区的重要信息（主密钥、workspaceID 和该工作区的 URL）。
+我们将创建 Azure 资源组，然后使用资源管理器模板部署新的 Azure 存储帐户和新的 Azure 机器学习工作室（经典）工作区。 部署完成后，我们将打印有关所创建工作区的重要信息（主密钥、workspaceID 和该工作区的 URL）。
 
 ### <a name="create-an-azure-resource-manager-template"></a>创建 Azure 资源管理器模板
 
@@ -84,10 +83,10 @@ ms.locfileid: "66121340"
 * 为 Azure 资源管理器和 Azure 服务管理安装模块
 
 ```powershell
-# Install the Azure Resource Manager modules from the PowerShell Gallery (press “A”)
+# Install the Azure Resource Manager modules from the PowerShell Gallery (press "A")
 Install-Module Az -Scope CurrentUser
 
-# Install the Azure Service Management modules from the PowerShell Gallery (press “A”)
+# Install the Azure Service Management modules from the PowerShell Gallery (press "A")
 Install-Module Azure -Scope CurrentUser
 ```
 
@@ -112,7 +111,7 @@ $rg = New-AzResourceGroup -Name "uniquenamerequired523" -Location "South Central
 $rg
 ```
 
-验证资源组是否预配正确。 **ProvisioningState** 应为“成功”。
+验证资源组是否预配正确。 **ProvisioningState** 应为“Succeeded”。
 资源组名称由模板使用，用于生成存储帐户名称。 存储帐户名称长度必须为 3 到 24 个字符，并且只能使用数字和小写字母。
 
 ![资源组](./media/deploy-with-resource-manager-template/resourcegroupprovisioning.png)
@@ -127,21 +126,21 @@ $rgd = New-AzResourceGroupDeployment -Name "demo" -TemplateFile "C:\temp\mlworks
 完成部署后，可直接访问所部属工作区的属性。 例如，可访问主密钥令牌。
 
 ```powershell
-# Access Azure Machine Learning studio Workspace Token after its deployment.
+# Access Azure Machine Learning Studio Workspace Token after its deployment.
 $rgd.Outputs.mlWorkspaceToken.Value
 ```
 
-检索现有工作区的另一种方法是使用 Invoke AzResourceAction 命令。 例如，可列出所有工作区的主要和辅助令牌。
+另一种检索现有工作区令牌的方法是使用 Invoke-AzResourceAction 命令。 例如，可列出所有工作区的主要和辅助令牌。
 
 ```powershell
 # List the primary and secondary tokens of all workspaces
 Get-AzResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |ForEach-Object { Invoke-AzResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}
 ```
-预配工作区后，还可使用[适用于 Azure 机器学习工作室的 PowerShell 模块](https://aka.ms/amlps)自动化许多 Azure 机器学习工作室任务。
+预配工作区后，还可使用[适用于 Azure 机器学习工作室（经典）的 PowerShell 模块](https://aka.ms/amlps)自动执行许多 Azure 机器学习工作室（经典）任务。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解有关[编写 Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)的详细信息
+* 了解有关[编写 Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)的详细信息
 * 请查看 [Azure 快速启动模板存储库](https://github.com/Azure/azure-quickstart-templates)。
 * 观看有关 [Azure 资源管理器](https://channel9.msdn.com/Events/Ignite/2015/C9-39)的视频。
 * 请参阅[资源管理器模板参考帮助](https://docs.microsoft.com/azure/templates/microsoft.machinelearning/allversions)

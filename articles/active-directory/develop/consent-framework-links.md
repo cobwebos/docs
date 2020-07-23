@@ -1,26 +1,21 @@
 ---
-title: 应用程序同意操作的工作原理 |Microsoft 文档
+title: 应用程序同意操作的工作原理
 description: 详细了解 Azure AD 同意框架的工作原理以便了解如何在 Azure AD上开发应用程序时使用该框架
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 766b7572ed54cc194dc28fce1ad7e4979f1af5a5
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
-ms.translationtype: MT
+ms.openlocfilehash: 86b592ecf5485654ab6860addbfde48cee4df077
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540136"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80885542"
 ---
 # <a name="how-application-consent-works"></a>应用程序同意操作的工作原理
 

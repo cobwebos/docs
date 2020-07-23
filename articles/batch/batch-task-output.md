@@ -1,27 +1,17 @@
 ---
-title: 将已完成作业和任务的结果或日志保存到数据存储 - Azure Batch | Microsoft Docs
+title: 将作业和任务输出保存到数据存储
 description: 了解用于保存批处理任务和作业的输出数据的不同选项。 可以将数据保存到 Azure 存储，或保存到其他数据存储。
-services: batch
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
-ms.service: batch
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
+ms.topic: how-to
 ms.date: 11/14/2018
-ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bc579cd372616563b61e5ba04fe32612f3efb1c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4ebe0b6d57225eff9f3f1251d5e491c95e9b7ffc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60549933"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965104"
 ---
-# <a name="persist-job-and-task-output"></a>持久保存作业和任务输出
+# <a name="persist-job-and-task-output"></a>持久性作业和任务输出
 
 [!INCLUDE [batch-task-output-include](../../includes/batch-task-output-include.md)]
 
@@ -45,23 +35,23 @@ ms.locfileid: "60549933"
 
 ### <a name="use-the-batch-service-api"></a>使用批处理服务 API
 
-Batch 服务支持在[向作业添加任务](https://docs.microsoft.com/rest/api/batchservice/add-a-task-to-a-job)或在[向作业添加任务集合](https://docs.microsoft.com/rest/api/batchservice/add-a-collection-of-tasks-to-a-job)时指定任务数据在 Azure 存储中的输出文件。
+Batch 服务支持在[向作业添加任务](/rest/api/batchservice/add-a-task-to-a-job)或在[向作业添加任务集合](/rest/api/batchservice/add-a-collection-of-tasks-to-a-job)时指定任务数据在 Azure 存储中的输出文件。
 
 有关使用批处理服务 API 保存任务输出的详细信息，请参阅[使用批处理服务 API 将任务数据保存到 Azure 存储](batch-task-output-files.md)。
 
 ### <a name="use-the-batch-file-conventions-library-for-net"></a>使用适用于 .NET 的批处理文件约定库
 
-批处理定义了用于为 Azure 存储中的任务输出文件命名的一组可选的约定。 [批处理文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)介绍了这些约定。 文件约定标准根据作业和任务的名称确定 Azure 存储中用于给定输出文件的目标容器和 blob 路径的名称。
+批处理定义了用于为 Azure 存储中的任务输出文件命名的一组可选的约定。 [批处理文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files#conventions)介绍了这些约定。 文件约定标准根据作业和任务的名称确定 Azure 存储中用于给定输出文件的目标容器和 blob 路径的名称。
 
-是否要使用文件约定标准为输出数据文件命名由你决定。 也可以根据自己的需要为目标容器和 blob 命名。 如果使用文件约定标准为输出文件命名，则输出文件可在 [Azure 门户][portal]中进行查看。
+是否要使用文件约定标准为输出数据文件命名由你决定。 也可以根据自己的需要为目标容器和 blob 命名。 如果使用文件约定标准为输出文件命名，则可以在 [Azure 门户][portal]中查看输出文件。
 
-使用 C# 和 .NET 生成批处理解决方案的开发人员可以使用[适用于 .NET 的文件约定库][nuget_package]，按照[批处理文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)将任务数据保存到 Azure 存储帐户。 文件约定库以众所周知的方法处理将输出文件移动到 Azure 存储并为目标容器和 blob 命名的过程。
+使用 C# 和 .NET 生成批处理解决方案的开发人员可以使用[适用于 .NET 的文件约定库][nuget_package]，按照[批处理文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files#conventions)将任务数据保存到 Azure 存储帐户。 文件约定库以众所周知的方法处理将输出文件移动到 Azure 存储并为目标容器和 blob 命名的过程。
 
 有关使用适用于 .NET 的文件约定库保存任务输出的详细信息，请参阅[使用适用于 .NET 的 Batch 文件约定库将作业和任务数据保存到 Azure 存储](batch-task-output-file-conventions.md)。
 
 ### <a name="implement-the-batch-file-conventions-standard"></a>实现批处理文件约定标准
 
-如果使用的是除 .NET 之外的语言，则可以在自己的应用程序中实现[批处理文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)。
+如果使用的是除 .NET 之外的语言，则可以在自己的应用程序中实现[批处理文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files#conventions)。
 
 在需要经认证的命名方案或想要在 Azure 门户中查看任务输出时，可能需要自行实现文件约定命名标准。
 
@@ -70,7 +60,7 @@ Batch 服务支持在[向作业添加任务](https://docs.microsoft.com/rest/api
 也可实现自己的完整文件移动解决方案。 在以下情况下使用此方法：
 
 - 想要将任务数据保存到除 Azure 存储之外的数据存储。 若要将文件上传到 Azure SQL 或 Azure Data Lake 等数据存储，可以创建自定义脚本或可执行文件来上传到该位置。 然后，在运行主要的可执行文件后，可在命令行上调用它。 例如，在 Windows 节点上，可以调用以下两个命令：`doMyWork.exe && uploadMyFilesToSql.exe`
-- 需对初始结果执行检查点或提前上传操作。
+- 想要执行检查点或初始结果的早期上传。
 - 想要维持对错误处理的具体控制。 例如，在想要使用任务相关性操作根据特定任务退出代码执行某些上传操作时，可能需要实现自己的解决方案。 有关任务相关性操作的详细信息，请参阅[创建任务相关性以运行依赖于其他任务的任务](batch-task-dependencies.md)。
 
 ## <a name="design-considerations-for-persisting-output"></a>保存输出的设计注意事项

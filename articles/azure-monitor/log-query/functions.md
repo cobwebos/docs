@@ -1,51 +1,32 @@
 ---
 title: Azure Monitor 日志查询中的函数 | Microsoft Docs
 description: 本文介绍了如何在 Azure Monitor 中从一个日志查询中使用函数调用另一个查询。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 11/15/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 7eb5f090026b415e3c980116a9317594f4ca8115
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 05/18/2018
+ms.openlocfilehash: 5fb9e48a6d6a0b95b61478a7877e9b46dd8963e9
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60728060"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649399"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用函数
-
-> [!NOTE]
-> 在学习本课程之前，需完成 [Analytics 门户入门](get-started-portal.md)和[查询入门](get-started-queries.md)。
-
-[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
-
 
 若要将某个日志查询用于其他查询，可以将其保存为函数。 这使你能够通过分解复杂查询将其简化，并能够对多个查询重用通用代码。
 
 ## <a name="create-a-function"></a>创建函数
 
-创建函数与 Log Analytics 在 Azure 门户中通过单击**保存**然后提供下表中的信息。
+通过 Azure 门户中的 Log Analytics，单击“保存”然后提供下表中的信息来创建一个函数。
 
-| 设置 | 描述 |
+| 设置 | 说明 |
 |:---|:---|
 | 名称           | 查询资源管理器中查询的显示名称。 |
 | 另存为        | 函数 |
 | 函数别名 | 在其他查询中使用该函数的短名称。 不可包含空格，必须唯一。 |
 | 类别       | 用于在查询资源管理器中整理已保存的查询和函数的类别。 |
 
-> [!NOTE]
-> Azure Monitor 中的函数不能包含其他函数。
-
-> [!NOTE]
-> 可以在 Azure Monitor 日志查询中保存函数，但目前无法将这些函数用于 Application Insights 查询。
 
 
 

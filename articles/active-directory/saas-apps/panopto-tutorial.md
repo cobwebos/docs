@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 23830d6ae2ba020a77402d3e2b7acc2f50f75733
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a1d4836586bac359c3208147ec7bf59061cf0928
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65869880"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648591"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panopto"></a>教程：Azure Active Directory 与 Panopto 的集成
 
@@ -39,15 +39,15 @@ ms.locfileid: "65869880"
 若要配置 Azure AD 与 Panopto 的集成，需要以下项：
 
 * 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 启用了 Panopto 单一登录的订阅
+* 启用了单一登录的 Panopto 订阅
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Panopto 支持 SP 发起的 SSO
+* Panopto 支持 SP 发起的 SSO 
 
-* Panopto 支持“恰时”用户预配
+* Panopto 支持“恰时”用户预配 
 
 ## <a name="adding-panopto-from-the-gallery"></a>从库中添加 Panopto
 
@@ -55,26 +55,26 @@ ms.locfileid: "65869880"
 
 **若要从库中添加 Panopto，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Panopto**，在结果面板中选择“Panopto”，并单击“添加”按钮添加该应用程序。
+4. 在搜索框中键入 **Panopto**，在结果面板中选择“Panopto”，并单击“添加”按钮添加该应用程序   。
 
      ![结果列表中的 Panopto](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 Panopto 的 Azure AD 单一登录。
-若要使单一登录有效，需要在 Azure AD 用户与 Panopto 相关用户之间建立链接关系。
+在本部分中，我们基于名为“Britta Simon”的测试用户为 Panopto 配置和测试 Azure AD 单一登录。 
+若要使单一登录有效，需要在 Azure AD 用户与 Panopto 相关用户之间建立关联。
 
 若要配置并测试 Panopto 的 Azure AD 单一登录，需要完成以下构建基块：
 
@@ -82,16 +82,16 @@ ms.locfileid: "65869880"
 2. **[配置 Panopto 单一登录](#configure-panopto-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Panopto 测试用户](#create-panopto-test-user)** - 在 Panopto 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
+5. **[创建 Panopto 测试用户](#create-panopto-test-user)** - 在 Panopto 中创建 Britta Simon 的对应用户，并将其关联到用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
-若要配置 Panopto 的 Azure AD 单一登录，请执行以下步骤：
+要为 Panopto 配置 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Panopto”应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Panopto”  应用程序集成页上，选择“单一登录”  。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -99,24 +99,24 @@ ms.locfileid: "65869880"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
 
     ![Panopto 域和 URL 单一登录信息](common/sp-signonurl.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.panopto.com`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<tenant-name>.panopto.com`
 
     > [!NOTE]
-    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Panopto 客户端支持团队](mailto:support@panopto.com%E2%80%8E)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Panopto 客户端支持团队](mailto:support@panopto.com)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Panopto”部分，根据要求复制相应 URL。
+6. 在“设置 Panopto”部分，根据要求复制相应 URL  。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -130,11 +130,11 @@ ms.locfileid: "65869880"
 
 1. 在另一 Web 浏览器窗口中，以管理员身份登录到 Panopto 公司站点。
 
-2. 在左侧工具栏中，单击“系统”，并单击“标识提供者”。
+2. 在左侧工具栏中，单击“系统”，并单击“标识提供者”。  
    
     ![系统](./media/panopto-tutorial/ic777670.png "系统")
 
-3. 单击“添加提供者”。
+3. 单击“添加提供者”。 
    
     ![标识提供者](./media/panopto-tutorial/ic777671.png "标识提供者")
    
@@ -142,17 +142,17 @@ ms.locfileid: "65869880"
    
     ![SaaS 配置](./media/panopto-tutorial/ic777672.png "SaaS 配置")
     
-    a. 在“提供者类型”列表中，选择“SAML20”。    
+    a. 在“提供者类型”列表中，选择“SAML20”   。    
     
-    b. 在“实例名称”文本框中，键入实例的名称。
+    b. 在“实例名称”文本框中，键入实例的名称。 
 
-    c. 在“易懂描述”文本框中，键入通俗易懂的描述。
+    c. 在“易懂描述”文本框中，键入通俗易懂的描述。 
     
-    d. 在“跳出页面 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
+    d. 在“跳出页面 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
-    e. 在“颁发者”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。
+    e. 在“颁发者”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。
 
-    f. 打开从 Azure 门户中下载的 base-64 编码证书，将其内容复制到剪贴板，然后再粘贴到“公钥”文本框中。
+    f. 打开从 Azure 门户中下载的 base-64 编码证书，将其内容复制到剪贴板，然后再粘贴到“公钥”文本框中  。
 
 5. 单击“ **保存**”。
 
@@ -160,11 +160,11 @@ ms.locfileid: "65869880"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”。
+2. 选择屏幕顶部的“新建用户”  。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -172,40 +172,40 @@ ms.locfileid: "65869880"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”  字段中键入 brittasimon@yourcompanydomain.extension   
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。
+    d. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Panopto 的权限，允许使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Panopto”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Panopto”    。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Panopto”。
+2. 在应用程序列表中，选择“Panopto”  。
 
     ![应用程序列表中的 Panopto 链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在左侧菜单中，选择“用户和组”  。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-panopto-test-user"></a>创建 Panopto 测试用户
 

@@ -1,28 +1,27 @@
 ---
-title: 限制对 PaaS 资源的网络访问 - Azure CLI | Microsoft Docs
+title: 限制对 PaaS 资源的网络访问-Azure CLI
 description: 本文介绍如何使用 Azure CLI 通过虚拟网络服务终结点限制对 Azure 资源（例如 Azure 存储和 Azure SQL 数据库）的网络访问。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: e52829723b41f9274251ebe7432aa659251c0da4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 5d08dd2705c69f3fa8f8e0830e487833f7cf96f8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695120"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689327"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>使用 Azure CLI 通过虚拟网络服务终结点限制对 PaaS 资源的网络访问
 
@@ -39,7 +38,7 @@ ms.locfileid: "64695120"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.28 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.28 或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
@@ -103,7 +102,7 @@ az network vnet subnet update \
   --network-security-group myNsgPrivate
 ```
 
-使用 [az network nsg rule create](/cli/azure/network/nsg/rule) 创建安全规则。 下面的规则允许对分配给 Azure 存储服务的公用 IP 地址进行出站访问： 
+使用 [az network nsg rule create](/cli/azure/network/nsg/rule) 创建安全规则。 下面的规则允许对分配给 Azure 存储服务的公共 IP 地址进行出站访问： 
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -120,7 +119,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-每个网络安全组包含多个[默认安全规则](security-overview.md#default-security-rules)。 下面的规则替代允许对所有公共 IP 地址的出站访问的默认安全规则。 `destination-address-prefix "Internet"`选项拒绝对所有公共 IP 地址的出站访问。 上一个规则将替代此规则，因为它的优先级更高，上一个规则允许对 Azure 存储的公用 IP 地址进行访问。
+每个网络安全组包含多个[默认安全规则](security-overview.md#default-security-rules)。 以下规则将替代允许对所有公共 IP 地址进行出站访问的默认安全规则。 `destination-address-prefix "Internet"` 选项拒绝对所有公共 IP 地址进行出站访问。 上一个规则将替代此规则，因为它的优先级更高，上一个规则允许对 Azure 存储的公共 IP 地址进行访问。
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -137,7 +136,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-以下规则允许 SSH 流量传入到子网从任何位置。 该规则将替代拒绝来自 Internet 的所有入站流量的默认安全规则。 SSH 被允许子网，以便可以在更高版本的步骤中测试连接。
+以下规则允许 SSH 流量从任何位置入站到子网。 该规则将替代拒绝来自 Internet 的所有入站流量的默认安全规则。 允许通过 SSH 访问子网，以便在稍后的步骤中测试连接。
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -272,7 +271,7 @@ az vm create \
 
 ## <a name="confirm-access-to-storage-account"></a>确认对存储帐户的访问
 
-通过 SSH 登录到 *myVmPrivate* VM。 替换 *\<publicIpAddress >* 的公共 IP 地址与你*myVmPrivate* VM。
+通过 SSH 登录到 *myVmPrivate* VM。 将替换 *\<publicIpAddress>* 为*myVmPrivate* VM 的公共 IP 地址。
 
 ```bash 
 ssh <publicIpAddress>
@@ -292,19 +291,19 @@ sudo mount --types cifs //<storage-account-name>.file.core.windows.net/my-file-s
 
 你将收到 `user@myVmPrivate:~$` 提示。 Azure 文件共享已成功装载到 */mnt/MyAzureFileShare*。
 
-确认 VM 没有到任何其他公用 IP 地址的出站连接：
+确认 VM 没有到任何其他公共 IP 地址的出站连接：
 
 ```bash
 ping bing.com -c 4
 ```
 
-你不会收到回复，因为除了分配给 Azure 存储服务的地址之外，关联到 *Private* 子网的网络安全组不允许对其他公用 IP 地址的出站访问。
+你不会收到回复，因为除了分配给 Azure 存储服务的地址之外，关联到 *Private* 子网的网络安全组不允许对其他公共 IP 地址的出站访问。
 
 退出与 *myVmPrivate* VM 建立的 SSH 会话。
 
 ## <a name="confirm-access-is-denied-to-storage-account"></a>确认已拒绝对存储帐户的访问
 
-使用以下命令来与 *myVmPublic* VM 建立 SSH 会话。 将 `<publicIpAddress>` 替换为 *myVmPublic* VM 的公用 IP 地址： 
+使用以下命令来与 *myVmPublic* VM 建立 SSH 会话。 将 `<publicIpAddress>` 替换为 *myVmPublic* VM 的公共 IP 地址： 
 
 ```bash 
 ssh <publicIpAddress>
@@ -322,7 +321,7 @@ sudo mkdir /mnt/MyAzureFileShare
 sudo mount --types cifs //storage-account-name>.file.core.windows.net/my-file-share /mnt/MyAzureFileShare --options vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
 ```
 
-访问被拒绝，并且你将收到一个 `mount error(13): Permission denied` 错误，因为 *myVmPublic* VM 部署在 *Public* 子网内。 *Public* 子网没有为 Azure 存储启用服务终结点，并且存储帐户仅允许来自 *Private* 子网的网络访问，不允许来自 *Public* 子网的网络访问。
+访问被拒绝，并且你将收到一个 `mount error(13): Permission denied` 错误，因为 *myVmPublic* VM 部署在 *Public* 子网内。 “公共”子网没有为 Azure 存储启用服务终结点，并且存储帐户仅允许来自“专用”子网的网络访问，不允许来自“公共”子网的网络访问。   
 
 退出与 *myVmPublic* VM 建立的 SSH 会话。
 

@@ -9,11 +9,11 @@ ms.date: 04/26/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: a10e4fc96f475fe26ca27ddec2e805086d661a50
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170585"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "67172831"
 ---
 | **部署模型/方法** | **Azure 门户** | **PowerShell** | 
 | --- | --- | --- |

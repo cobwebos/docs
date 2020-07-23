@@ -16,6 +16,8 @@
       href: quickstart-migrate-local-jupyter-notebook.md
     - name: 使用自定义环境
       href: quickstart-create-jupyter-notebook-project-environment.md
+    - name: 导出你的项目
+      href: quickstart-export-jupyter-notebook-project.md
 - name: 教程
   items:
     - name: 创建和运行笔记本
@@ -46,5 +48,3 @@
       href: access-data-resources-jupyter-notebooks.md
     - name: 使用数据科学虚拟机
       href: use-data-science-virtual-machine.md
-    - name: 使用 Azure 机器学习服务
-      href: use-machine-learning-services-jupyter-notebooks.md

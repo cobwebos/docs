@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
 ms.openlocfilehash: 8fe095433f85f2709a17bfb913066a766d3fbae7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66152288"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67173197"
 ---
 > [!div class="op_single_selector"]
 > * [Java](../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md)

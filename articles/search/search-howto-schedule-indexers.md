@@ -1,72 +1,75 @@
 ---
-title: 如何计划索引器-Azure 搜索
-description: 计划对索引内容的 Azure 搜索索引器定期或在特定时间。
-ms.date: 05/31/2019
-author: RobDixon22
-manager: HeidiSteen
-ms.author: v-rodixo
-services: search
-ms.service: search
-ms.devlang: rest-api
+title: 计划索引器执行
+titleSuffix: Azure Cognitive Search
+description: 计划 Azure 认知搜索索引器，以定期或在特定时间为内容编制索引。
+author: HeidiSteen
+manager: nitinme
+ms.author: heidist
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 764fca8d3cb4cd9c40d7880043637f89ef1a8578
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.date: 11/04/2019
+ms.openlocfilehash: f85645d8c77d2317807bb02a19a308070acb6007
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66755375"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143554"
 ---
-# <a name="how-to-schedule-indexers-for-azure-search"></a>如何计划 Azure 搜索索引器
-索引器在创建后立即正常运行一次。 您可以使用门户、 REST API 或.NET SDK 按需再次运行它。 此外可以配置索引器以按计划定期运行。
+# <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>如何计划 Azure 认知搜索中的索引器
 
-某些情况下，索引器计划时很有用：
+通常，在创建索引器后，该索引器会紧接着运行一次。 可以使用门户、REST API 或 .NET SDK 按需再次运行该索引器。 还可以将索引器配置为按计划定期运行。
 
-* 源数据会随时间，并且您希望 Azure 搜索索引器可自动处理已更改的数据。
-* 将多个数据源填充索引，并且你想要确保索引器运行在不同的时间来减少冲突。
-* 源数据量非常大，并且你想要传播索引器处理随着时间的推移。 有关索引的大量数据的详细信息，请参阅[如何在 Azure 搜索中的大型数据集编制索引](search-howto-large-index.md)。
+在某些情况下，计划索引器会很有作用：
 
-计划程序是 Azure 搜索的内置功能。 不能使用外部计划程序来控制搜索索引器。
+* 源数据随时更改，你希望 Azure 认知搜索索引器自动处理更改的数据。
+* 索引从多个数据源填充，你想要确保索引器在不同的时间运行，以减少冲突。
+* 源数据极大，你想要将索引器的处理负载分散到不同的时间。 有关对大量数据编制索引的详细信息，请参阅[如何在 Azure 认知搜索中为大型数据集编制索引](search-howto-large-index.md)。
+
+计划程序是 Azure 认知搜索的内置功能。 无法使用外部计划程序来控制搜索索引器。
 
 ## <a name="define-schedule-properties"></a>定义计划属性
 
 索引器计划有两个属性：
-* **间隔**，之间定义的时间计划索引器执行。 允许的最小间隔为 5 分钟，并最大为 24 小时。
-* **启动时 (UTC)** ，指示应在其中运行索引器的第一个时间。
+* **间隔**：定义按计划执行索引器的间隔时间。 允许的最小间隔为 5 分钟，最大间隔为 24 小时。
+* **开始时间 (UTC)** ：指示首次运行索引器的时间。
 
-首次创建索引器时或更高版本更新索引器的属性，可以指定一个计划。 可以使用设置索引器计划[门户](#portal)，则[REST API](#restApi)，或[.NET SDK](#dotNetSdk)。
+可以在首次创建索引器时指定计划，以后也可以通过更新索引器的属性来指定计划。 可以使用[门户](#portal)、[REST API](#restApi) 或 [.NET SDK](#dotNetSdk) 设置索引器计划。
 
-一次只能运行一个索引器执行。 如果已在其下一次执行计划时运行索引器，该执行将推迟到下一个计划时间。
+一次只能运行一个索引器执行。 如果在计划索引器的下一次执行时该索引器已运行，该执行将推迟到下一个计划时间。
 
-让我们考虑更具体的示例。 假设我们配置索引器计划，其中**间隔**的每小时和一个**开始时间**的 2019 年 6 月 1 日上午 8:00:00 utc。 下面是运行索引器花费的时间超过一小时时，可能发生什么情况：
+让我们考虑更具体的示例。 假设我们要使用每小时**间隔**和**开始时间** 2019 年 6 月 1 日上午 8:00 (UTC) 来配置索引器计划。 下面是索引器运行时间超过一小时时可能出现的情况：
 
-* 第一次索引器执行启动或大约 2019 年 6 月 1 日上午 8:00 utc。 假设此执行需要 20 分钟（或小于 1 小时的任何时间）。
-* 第二次执行启动或大约上午 9:00 2019 年 6 月 1 日 UTC。 假设此执行需要 70 分钟-超过一小时 – 它将无法完成之前 UTC 时间上午 10:10。
-* 第三个执行计划在上午 10:00 UTC 开始，但在该时间上一次执行仍在运行。 此计划然后跳过执行。 之前 UTC 时间上午 11:00，不会开始的索引器的下一次执行。
+* 第一次索引器执行的开始时间为 2019 年 6 月 1 日上午 8:00 (UTC) 或近似时间。 假设此执行需要 20 分钟（或小于 1 小时的任何时间）。
+* 第二次索引器执行的开始时间为 2019 年 6 月 1 日上午 9:00 (UTC) 或近似时间。 假设此执行耗时 70 分钟（超过 1 小时），并且在上午 10:10 (UTC) 之前无法完成。
+* 第三次执行的计划开始时间为上午 10:00 (UTC)，但此时上一次执行仍在运行。 那么，将会跳过此计划的执行。 索引器的下一次执行在上午 11:00 (UTC) 之前不会开始。
+
+> [!NOTE]
+> 如果将索引器设置为某个计划，但每次运行时一次又一次地在同一文档上反复失败，则索引器将以不那么频繁的时间间隔开始运行（最多每 24 小时至少一次），直到它成功地再次取得进展。  如果你认为你已修复了导致索引器在某一点停滞的任何问题，则可以按需运行索引器，如果成功取得进展，索引器将再次回到其设置的计划间隔。
 
 <a name="portal"></a>
 
-## <a name="define-a-schedule-in-the-portal"></a>在门户中定义的计划
+## <a name="schedule-in-the-portal"></a>在门户中计划
 
-在门户中的导入数据向导，可以在创建时定义索引器计划。 默认计划设置是**每小时**，这意味着索引器运行一次之后它将创建并运行再次每隔一小时之后。
+在创建时，可以使用门户中的“导入数据”向导来定义索引器的计划。 默认的“计划”设置为“小时”，即，索引器在创建后将运行一次，然后每隔一小时再次运行。 
 
-您可以将计划设置更改为**一旦**如果不想要再次自动运行的索引器或设置为**每日**以每天运行一次。 将其设置为**自定义**如果你想要指定其他时间间隔或特定将来开始时间。
+如果你不希望索引器再次自动运行，可将“计划”设置更改为“一次”；或者更改为“每日”以每日运行一次。   若要指定不同的间隔或特定的将来开始时间，请将其设置为“自定义”。 
 
-将计划设置为**自定义**，使你能够指定显示字段**间隔**并**开始时间 (UTC)** 。 允许的间隔为 5 分钟，且时间最长的时间最短为 1440 分钟 （24 小时）。
+将计划设置为“自定义”时，会显示相应的字段让你指定“间隔”和“开始时间(UTC)”。    允许的最短时间间隔为 5 分钟，最长为 1440 分钟（24 小时）。
 
-   ![在导入数据向导中设置索引器计划](media/search-howto-schedule-indexers/schedule-import-data.png "导入数据向导中的设置索引器计划")
+   ![在导入数据向导中设置索引器计划](media/search-howto-schedule-indexers/schedule-import-data.png "在导入数据向导中设置索引器计划")
 
-创建索引器后，你可以使用索引器的编辑面板的计划设置。 计划字段是与导入数据向导中的相同。
+创建索引器后，可以使用索引器的“编辑”面板更改计划设置。 “计划”字段与“导入数据”向导中的字段相同。
 
-   ![索引器在编辑面板中设置计划](media/search-howto-schedule-indexers/schedule-edit.png "索引器在编辑面板中设置计划")
+   ![在索引器的“编辑”面板中设置计划](media/search-howto-schedule-indexers/schedule-edit.png "在索引器的“编辑”面板中设置计划")
 
 <a name="restApi"></a>
 
-## <a name="define-a-schedule-using-the-rest-api"></a>使用 REST API 将计划定义
+## <a name="schedule-using-rest-apis"></a>使用 REST API 进行计划
 
-可以定义索引器使用 REST API 的计划。 若要执行此操作，包括**计划**属性创建或更新索引器时。 下面的示例显示了用于更新现有索引器的 PUT 请求：
+可以使用 REST API 定义索引器的计划。 为此，请在创建或更新索引器时包含 **schedule** 属性。 以下示例演示了用于更新现有索引器的 PUT 请求：
 
-    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2019-05-06
+```http
+    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
 
@@ -75,20 +78,21 @@ ms.locfileid: "66755375"
         "targetIndexName" : "target index name",
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
+```
 
 **间隔**参数是必需的。 间隔是指开始两个连续的索引器执行之间的时间。 允许的最小间隔为 5 分钟；最长为一天。 必须将其格式化为 XSD“dayTimeDuration”值（[ISO 8601 持续时间](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)值的受限子集）。 它的模式为：`P(nD)(T(nH)(nM))`。 示例：`PT15M` 为每隔 15 分钟，`PT2H` 为每隔 2 小时。
 
-可选**startTime**指示应开始计划的执行的时间。 如果省略，则使用当前 UTC 时间。 这一次可以是过去，因为如果具有原始之后连续运行索引器用例第一次执行计划**startTime**。
+可选的 **startTime** 指示计划的执行何时开始。 如果省略，则使用当前 UTC 时间。 此时间可以是过去的时间，在此情况下，计划的第一次执行的运行方式如同索引器在原始 **startTime** 之后连续运行。
 
-此外可以按需在任何时候使用运行索引器调用运行索引器。 有关运行索引器和设置索引器计划的详细信息，请参阅[运行索引器](https://docs.microsoft.com/rest/api/searchservice/run-indexer)，[获取索引器](https://docs.microsoft.com/rest/api/searchservice/get-indexer)，并[更新索引器](https://docs.microsoft.com/rest/api/searchservice/update-indexer)REST API 参考。
+还可以使用“运行索引器”调用随时按需运行索引器。 有关运行索引器和设置索引器计划的详细信息，请参阅“REST API 参考”中的[运行索引器](https://docs.microsoft.com/rest/api/searchservice/run-indexer)、[获取索引器](https://docs.microsoft.com/rest/api/searchservice/get-indexer)和[更新索引器](https://docs.microsoft.com/rest/api/searchservice/update-indexer)。
 
 <a name="dotNetSdk"></a>
 
-## <a name="define-a-schedule-using-the-net-sdk"></a>使用.NET SDK 将计划定义
+## <a name="schedule-using-the-net-sdk"></a>使用 .NET SDK 进行计划
 
-可以定义索引器使用 Azure 搜索.NET SDK 的计划。 若要执行此操作，包括**计划**属性创建或更新索引器时。
+可以使用 Azure 认知搜索 .NET SDK 定义索引器的计划。 为此，请在创建或更新索引器时包含 **schedule** 属性。
 
-以下C#示例创建一个索引器，使用一个预定义的数据源和索引，并设置其计划运行从现在开始 30 分钟内每日一次：
+以下 C# 示例使用预定义的数据源和索引创建一个索引器，并将其计划设置为从现在起的 30 分钟开始每天运行一次：
 
 ```
     Indexer indexer = new Indexer(
@@ -102,14 +106,14 @@ ms.locfileid: "66755375"
         );
     await searchService.Indexers.CreateOrUpdateAsync(indexer);
 ```
-如果**计划**省略参数、 索引器将只运行一次，在创建后立即。
+如果省略 **schedule** 参数，则索引器将在创建后立即运行一次。
 
-**StartTime**参数可设置过去的时间。 在这种情况下，计划第一次执行像索引器运行连续开始从给定**startTime**。
+**startTime** 参数可设置为过去的时间。 在此情况下，计划的第一次执行的运行方式如同索引器在给定 **startTime** 之后连续运行。
 
-使用定义计划[IndexingSchedule](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingschedule?view=azure-dotnet)类。 **IndexingSchedule**构造函数需要**间隔**使用指定的参数**TimeSpan**对象。 允许的最小时间间隔值为 5 分钟，并最大为 24 小时。 第二个**startTime**参数，指定为**DateTimeOffset**对象，则可选。
+计划是使用 [IndexingSchedule](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingschedule?view=azure-dotnet) 类定义的。 **IndexingSchedule** 构造函数需要一个使用 **TimeSpan** 对象指定的 **interval** 参数。 允许的最小间隔值为 5 分钟，最大间隔值为 24 小时。 指定为 **DateTimeOffset** 对象的第二个 **startTime** 参数是可选的。
 
-.NET SDK，可以使用的控件索引器操作[SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient)类并将其[索引器](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexers)属性，用于实现从方法**IIndexersOperations**接口。 
+.NET SDK 允许使用 [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) 类及其 [Indexers](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexers) 属性（实现 **IIndexersOperations** 接口中的方法）来控制索引器操作。 
 
-您可以在任何时候使用之一根据需要运行索引器[运行](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexersoperationsextensions.run)， [RunAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexersoperationsextensions.runasync)，或[RunWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations.runwithhttpmessagesasync)方法。
+随时可以使用 [Run](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexersoperationsextensions.run)、[RunAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexersoperationsextensions.runasync) 或 [RunWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations.runwithhttpmessagesasync) 方法按需运行索引器。
 
-有关创建的详细信息，更新和运行索引器，请参阅[IIindexersOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations?view=azure-dotnet)。
+有关创建、更新和运行索引器的详细信息，请参阅 [IIindexersOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations?view=azure-dotnet)。

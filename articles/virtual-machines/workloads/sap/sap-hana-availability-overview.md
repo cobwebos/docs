@@ -9,25 +9,24 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1db56ad31991b85ffad415818c7c67f0ee30808d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bccaf45cf617bd31a584b6c73f3dd08877bc8587
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60708441"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "71266063"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Azure 虚拟机的 SAP HANA 高可用性
 
 可以使用许多 Azure 功能在 Azure VM 上部署 SAP HANA 等任务关键型数据库。 本文提供了有关如何实现 Azure VM 中承载的 SAP HANA 实例的可用性的指南。 本文介绍了几个方案，可以使用 Azure 基础结构实现这些方案来提高 Azure 中 SAP HANA 的可用性。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本文假定你熟悉 Azure 上的基础结构即服务 (IaaS) 基础知识，包括： 
 
@@ -38,7 +37,7 @@ ms.locfileid: "60708441"
 
 以下文章很好地概述了如何在 Azure 中使用 SAP HANA：
 
-- [在 Azure VM 上手动安装单实例 SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-get-started)
+- [在 Azure Vm 上手动安装单实例 SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-get-started)
 - [在 Azure VM 中设置 SAP HANA 系统复制](sap-hana-high-availability.md)
 - [备份 Azure VM 上的 SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
 
@@ -59,10 +58,11 @@ ms.locfileid: "60708441"
 
 Azure 针对不同组件（如网络、存储和 VM）提供了不同的可用性 SLA。 所有 SLA 都有文档记录。 有关详细信息，请参阅 [Microsoft Azure 服务级别协议](https://azure.microsoft.com/support/legal/sla/)。 
 
-[虚拟机的 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_6/) 介绍了针对以下两种不同配置的两个不同 SLA：
+[虚拟机的 sla](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)为三种不同的配置描述三个不同的 sla：
 
-- 将 [Azure 高级 SSD](../../windows/disks-types.md) 用于 OS 磁盘和所有数据磁盘的单个 VM。 此选项提供每月 99.9% 的正常运行时间。
+- 将 [Azure 高级 SSD](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) 用于 OS 磁盘和所有数据磁盘的单个 VM。 此选项提供每月 99.9% 的正常运行时间。
 - 组织到 [Azure 可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)中的多个（至少两个）VM。 此选项提供每月 99.95% 的正常运行时间。
+- 在[可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview)中组织的多个（至少两个） vm。 此选项提供每月99.99% 的运行时间。
 
 对照 Azure 组件可以提供的 SLA 度量你的可用性要求。 然后，选择你的 SAP HANA 方案来实现所需级别的可用性。
 

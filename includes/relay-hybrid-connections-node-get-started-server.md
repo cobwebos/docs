@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: 531866ece1c4acacb926c9e9c6598158c1aa077f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150341"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67173540"
 ---
 ### <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 

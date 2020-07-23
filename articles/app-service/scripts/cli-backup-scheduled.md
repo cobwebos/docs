@@ -1,25 +1,20 @@
 ---
-title: Azure CLI 脚本示例 - 为应用创建计划备份 | Microsoft Docs
-description: Azure CLI 脚本示例 - 为应用创建计划备份
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI：创建计划的备份
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 此示例演示如何为应用创建计划的备份。
+author: msangapu-msft
 tags: azure-service-management
-ms.service: app-service-web
-ms.workload: web
-ms.devlang: na
+ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
-ms.author: msangapu;cephalin
-ms.custom: seodec18
-ms.openlocfilehash: b5f75ded0b51b78d56354bf97b5ebb0488022509
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: msangapu
+ms.reviewer: cephalin
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 327b48052e0134ae97f0a97f0a43f36e75f2e003
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136900"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80058771"
 ---
 # <a name="create-a-scheduled-backup-for-an-app-service-app-using-cli"></a>使用 CLI 为应用服务应用创建计划备份
 
@@ -41,7 +36,7 @@ ms.locfileid: "66136900"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [`az storage account create`](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) | 创建存储帐户。 |

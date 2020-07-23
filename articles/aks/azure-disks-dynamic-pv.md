@@ -1,29 +1,27 @@
 ---
-title: 在 Azure Kubernetes 服务 (AKS) 中为多个 Pod 动态创建磁盘卷
-description: 了解如何使用 Azure 磁盘动态创建永久性卷，以便与 Azure Kubernetes 服务 (AKS) 中的多个并发 Pod 一起使用
+title: 动态创建 Azure 磁盘卷
+titleSuffix: Azure Kubernetes Service
+description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Azure 磁盘动态创建永久性卷
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: article
-ms.date: 03/01/2019
-ms.author: iainfou
-ms.openlocfilehash: 334e56db97213206d9ab7ed5ef4d1d96ab9325d6
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.date: 07/10/2020
+ms.openlocfilehash: 0e7bc057d756215b1aa155f0e227c75c99c8737c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956470"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518005"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中动态创建永久性卷并将其用于 Azure 磁盘
 
 永久性卷表示已经过预配可以用于 Kubernetes Pod 的存储块。 永久性卷可供一个或多个 Pod 使用，并可动态或静态预配。 本文介绍如何使用 Azure 磁盘动态创建永久性卷，以供 Azure Kubernetes 服务 (AKS) 群集中的单个 Pod 使用。
 
 > [!NOTE]
-> Azure 磁盘只能使用“访问模式”类型 ReadWriteOnce 装载，这使其只可供 AKS 中的单个 Pod 使用。 如果需要在多个 Pod 之间共享永久性卷，请使用 [Azure 文件][azure-files-pvc]。
+> Azure 磁盘只能使用“访问模式”类型 ReadWriteOnce 装载，这使其只可供 AKS 中的单个 Pod 使用。 如果需要在多个 Pod 之间共享永久性卷，请使用 [Azure 文件存储][azure-files-pvc]。
 
 有关 Kubernetes 卷的详细信息，请参阅 [AKS 中应用程序的存储选项][concepts-storage]。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
@@ -33,14 +31,18 @@ ms.locfileid: "65956470"
 
 存储类用于定义使用永久性卷动态创建存储单位的方式。 有关 Kubernetes 存储类的详细信息，请参阅 [Kubernetes 存储类][kubernetes-storage-classes]。
 
-每个 AKS 群集包含两个预先创建的存储类，两者均配置为使用 Azure 磁盘：
+每个 AKS 群集都包含四个预先创建的存储类，两个类配置为使用 Azure 磁盘：
 
-* default 存储类可预配标准 Azure 磁盘。
-    * 标准存储受 HDD 支持，可以在确保性能的同时提供经济高效的存储。 标准磁盘适用于经济高效的开发和测试工作负荷。
+* *默认*存储类预配标准 SSD Azure 磁盘。
+    * 标准存储由标准 Ssd 提供支持，并提供经济高效的存储，同时仍然提供可靠的性能。 
 * managed-premium 存储类可预配高级 Azure 磁盘。
     * 高级磁盘由基于 SSD 的高性能、低延迟磁盘提供支持。 完美适用于运行生产工作负荷的 VM。 如果群集中的 AKS 节点使用高级存储，请选择 managed-premium 类。
     
-这些默认存储类不允许你更新一次创建的卷大小。 若要启用此功能，请添加*allowVolumeExpansion: true*到默认存储类之一的行或创建自己的自定义存储类。 您可以编辑现有的存储类使用`kubectl edit sc`命令。 存储类和创建 youor 自己的详细信息，请参阅[AKS 中的应用程序的存储选项][storage-class-concepts]。
+如果使用默认存储类之一，则创建存储类后将无法更新卷大小。 若要能够在创建存储类后更新卷大小，请将行 `allowVolumeExpansion: true` 添加到其中一个默认存储类，或者也可以创建自己的自定义存储类。 请注意，不支持减小 PVC 大小（以防数据丢失）。 可以使用 `kubectl edit sc` 命令编辑现有存储类。 
+
+例如，如果要使用大小为 4 TiB 的磁盘，需要创建一个定义 `cachingmode: None` 的存储类，因为[磁盘缓存不支持 4 TiB 及更大的磁盘](../virtual-machines/windows/premium-storage-performance.md#disk-caching)。
+
+有关存储类和创建自己的存储类的详细信息，请参阅 [AKS 中应用程序的存储选项][storage-class-concepts]。
 
 使用 [kubectl get sc][kubectl-get] 命令查看预先创建的存储类。 以下示例显示了 AKS 群集中可用的预先创建存储类：
 
@@ -53,7 +55,7 @@ managed-premium     kubernetes.io/azure-disk   1h
 ```
 
 > [!NOTE]
-> 永久卷声明在 GiB 中指定，但 Azure 托管磁盘由 SKU 针对特定大小计费。 这些 Sku 的范围从 S4 或 P4 磁盘的 32GiB 到 32TiB S80 或 P80 （处于预览状态） 的磁盘。 高级托管磁盘的吞吐量和 IOPS 性能取决于 SKU 和 AKS 群集中节点的实例大小。 有关详细信息，请参阅[托管磁盘的定价和性能][managed-disk-pricing-performance]。
+> 永久卷声明在 GiB 中指定，但 Azure 托管磁盘由 SKU 针对特定大小计费。 这些 SKU 的范围从用于 S4 或 P4 磁盘的 32 GiB 到用于 S80 或 P80 磁盘的 32 TiB（预览版）。 高级托管磁盘的吞吐量和 IOPS 性能取决于 SKU 和 AKS 群集中节点的实例大小。 有关详细信息，请参阅[托管磁盘的定价和性能][managed-disk-pricing-performance]。
 
 ## <a name="create-a-persistent-volume-claim"></a>创建永久性卷声明
 
@@ -88,7 +90,7 @@ persistentvolumeclaim/azure-managed-disk created
 
 ## <a name="use-the-persistent-volume"></a>使用永久性卷
 
-创建永久性卷声明并成功预配磁盘以后，即可创建可以访问磁盘的 Pod。 以下清单创建的基本 NGINX Pod 使用名为 *azure-managed-disk* 的永久性卷声明将 Azure 磁盘装载到 `/mnt/azure` 路径。 对于 Windows Server 容器 （目前以预览版在 AKS 中），指定*mountPath*使用 Windows 路径约定，如*d:*。
+创建永久性卷声明并成功预配磁盘以后，即可创建可以访问磁盘的 Pod。 以下清单创建的基本 NGINX Pod 使用名为 *azure-managed-disk* 的永久性卷声明将 Azure 磁盘装载到 `/mnt/azure` 路径。 对于 Windows Server 容器，请使用 Windows 路径约定指定 mountPath，例如“D:”。
 
 创建名为 `azure-pvc-disk.yaml` 的文件，并将其复制到以下清单中。
 
@@ -149,6 +151,9 @@ Events:
   Normal  SuccessfulMountVolume  1m    kubelet, aks-nodepool1-79590246-0  MountVolume.SetUp succeeded for volume "pvc-faf0f176-8b8d-11e8-923b-deb28c58d242"
 [...]
 ```
+
+## <a name="use-ultra-disks"></a>使用超磁盘
+若要利用超磁盘，请参阅[在 Azure Kubernetes Service 上使用 Ultra 磁盘（AKS）](use-ultra-disks.md)。
 
 ## <a name="back-up-a-persistent-volume"></a>备份永久性卷
 
@@ -282,3 +287,11 @@ Volumes:
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

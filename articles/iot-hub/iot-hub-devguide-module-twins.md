@@ -1,24 +1,24 @@
 ---
 title: 了解 Azure IoT 中心模块孪生 | Microsoft Docs
 description: 开发人员指南 - 使用模块孪生在 IoT 中心与设备之间同步状态和配置数据
-author: chrissie926
+author: ash2017
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/26/2018
-ms.author: menchi
-ms.openlocfilehash: cd0a9a66f3014a39a73cf04badfc67cd2ff4c3de
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/29/2020
+ms.author: asrastog
+ms.openlocfilehash: ef622d950595752e616608ef56d8df66b8a9813f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61363176"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610143"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>在 IoT 中心内了解并使用模块孪生
 
-本文假设读者事先已阅读[了解并在 IoT 中心内使用设备孪生](iot-hub-devguide-device-twins.md)。 在 IoT 中心的每个设备标识下，最多可以创建 20 个模块标识。 每个模块标识隐式生成模块孪生。 模块孪生与设备孪生类似，是存储模块状态信息（例如元数据、配置和条件）的 JSON 文档。 Azure IoT 中心为连接到 IoT 中心的每个模块保留一个模块孪生。 
+本文假设读者事先已阅读[了解并在 IoT 中心内使用设备孪生](iot-hub-devguide-device-twins.md)。 在 IoT 中心的每个设备标识下，可创建多达50个模块标识。 每个模块标识隐式生成模块孪生。 模块孪生与设备孪生类似，是存储模块状态信息（例如元数据、配置和条件）的 JSON 文档。 Azure IoT 中心为连接到 IoT 中心的每个模块保留一个模块孪生。 
 
-在设备端，可以使用 IoT 中心设备 SDK 创建模块，其中每个模块与 IoT 中心单独建立连接。 通过此功能，可对设备上的不同组件使用不同的命名空间。 例如，某个自动贩卖机包含三个不同的传感器。 每个传感器由公司的不同部门控制。 可为每个传感器创建一个模块。 这样，每个部门只能向他们控制的传感器发送作业或直接方法，避免发生冲突和用户失误。
+在设备端，可以使用 IoT 中心设备 SDK 创建模块，其中每个模块与 IoT 中心建立独立连接。 通过此功能，可对设备上的不同组件使用不同的命名空间。 例如，某个自动贩卖机包含三个不同的传感器。 每个传感器由公司的不同部门控制。 可为每个传感器创建一个模块。 这样，每个部门只能向他们控制的传感器发送作业或直接方法，避免发生冲突和用户失误。
 
  模块标识和模块孪生提供的功能与设备标识和设备孪生相同，但前者的粒度更细。 这种更高的粒度级可让有能力的设备（例如基于操作系统的设备，或管理多个组件的固件设备）隔离其中每个组件的配置和状态。 与包含模块化软件组件的 IoT 设备结合使用时，模块标识和模块孪生能够提供管理关注点分离。 推出模块孪生的正式版后，我们将会支持模块孪生级别的所有设备孪生功能。 
 
@@ -26,7 +26,7 @@ ms.locfileid: "61363176"
 
 本文介绍：
 
-* 模块孪生的结构：标记、所需的属性和报告的属性。
+* 模块孪生的结构：标记、所需的属性和报告的属性    。
 * 模块和后端可在模块孪生上执行的操作。
 
 有关使用报告的属性、设备到云的消息或文件上传的指导，请参阅[设备到云的通信指南](iot-hub-devguide-d2c-guidance.md)。
@@ -47,13 +47,13 @@ ms.locfileid: "61363176"
 
 * **标记**。 解决方案后端可从中读取和写入数据的 JSON 文档的某个部分。 标记对设备上的模块不可见。 设置的标记用于查询目的。
 
-* **所需属性**。 与报告的属性结合使用，同步模块配置或状态。 解决方案后端可设置所需的属性，并且模块应用可进行读取。 此外，当所需的属性发生更改时，模块应用可收到通知。
+* **所需的属性**。 与报告的属性结合使用，同步模块配置或状态。 解决方案后端可设置所需的属性，并且模块应用可进行读取。 此外，当所需的属性发生更改时，模块应用可收到通知。
 
-* **报告属性**。 与所需的属性结合使用，同步模块配置或状态。 模块应用可设置报告的属性，并且解决方案后端可进行读取和查询。
+* **报告的属性**。 与所需的属性结合使用，同步模块配置或状态。 模块应用可设置报告的属性，并且解决方案后端可进行读取和查询。
 
 * **模块标识属性**。 模块孪生 JSON 文档的根包含[标识注册表](iot-hub-devguide-identity-registry.md)中存储的相应模块标识的只读属性。
 
-![设备孪生的架构表示形式](./media/iot-hub-devguide-device-twins/module-twin.jpg)
+![设备孪生的体系结构表示形式](./media/iot-hub-devguide-device-twins/module-twin.jpg)
 
 以下示例显示了一个模块孪生 JSON 文档：
 
@@ -152,7 +152,7 @@ ms.locfileid: "61363176"
 
 * **按 ID 检索模块孪生**。 此操作返回模块孪生文档，包括标记、所需的系统属性和报告的系统属性。
 
-* **部分更新模块孪生**。 解决方案后端可以使用此操作部分更新模块孪生中的标记或所需属性。 部分更新以 JSON 文档的形式表示，可添加或更新任何属性。 将删除设置为 `null` 的属性。 以下示例将创建值为 `{"newProperty": "newValue"}` 的新所需属性，将现有值 `existingProperty` 覆盖为 `"otherNewValue"`，并删除 `otherOldProperty`。 不会对现有的所需属性或标记进行其他任何更改：
+* **部分更新模块孪生**。 解决方案后端可以使用此操作部分更新模块孪生中的标记或所需属性。 部分更新以 JSON 文档的形式表示，可添加或更新任何属性。 将删除设置为 `null` 的属性。 以下示例创建值为 `{"newProperty": "newValue"}` 的新所需属性，将现有值 `existingProperty` 覆盖为 `"otherNewValue"`，并删除 `otherOldProperty`。 不会对现有的所需属性或标记进行其他任何更改：
 
     ```json
     {
@@ -176,7 +176,7 @@ ms.locfileid: "61363176"
 
   - 属性
 
-    | 名称 | 值 |
+    | 名称 | Value |
     | --- | --- |
     $content-type | application/json |
     $iothub-enqueuedtime |  发送通知的时间 |
@@ -186,14 +186,14 @@ ms.locfileid: "61363176"
     moduleId | 模块 的 ID |
     hubName | IoT 中心的名称 |
     operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) 操作时间戳 |
-    iothub-message-schema | deviceLifecycleNotification |
+    iothub-message-schema | twinChangeNotification |
     opType | “replaceTwin”或“updateTwin” |
 
-    消息系统属性以 `$` 符号为前缀。
+    消息系统属性以 `$` 符号作为前缀。
 
-  - Body
+  - 正文
         
-    本部分包括 JSON 格式的所有孪生更改。 它使用与修补程序相同的格式，不同的是它包含所有孪生节：标记、properties.reported、properties.desired，并且它包含“$metadata”元素。 例如，
+    本部分包括 JSON 格式的所有孪生更改。 它使用与修补程序相同的格式，不同的是它可以包含所有孪生节：标记、properties.reported、properties.desired，并且它包含“$metadata”元素。 例如，
 
     ```json
     {
@@ -214,7 +214,7 @@ ms.locfileid: "61363176"
     }
     ```
 
-上述所有操作均支持[乐观并发](iot-hub-devguide-device-twins.md#optimistic-concurrency)，并且需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)文章中定义的 ServiceConnect 权限。
+上述所有操作均支持[乐观并发](iot-hub-devguide-device-twins.md#optimistic-concurrency)，并且需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)文章中定义的 ServiceConnect 权限  。
 
 除了上述操作以外，解决方案后端还可以使用类似于 SQL 的 [IoT 中心查询语言](iot-hub-devguide-query-language.md)查询模块孪生。
 
@@ -228,7 +228,7 @@ ms.locfileid: "61363176"
 
 * **观察所需属性**。 当前连接的模块可以选择在所需属性发生更新时接收通知。 模块收到的更新格式与解决方案后端执行的更新格式相同（部分或完全替换）。
 
-上述所有操作都需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)文章中定义的 ModuleConnect 权限。
+上述所有操作都需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)一文中定义的 **ModuleConnect** 权限。
 
 借助 [Azure IoT 设备 SDK](iot-hub-devguide-sdks.md)，可通过多种语言和平台轻松使用上述操作。
 
@@ -236,39 +236,61 @@ ms.locfileid: "61363176"
 
 标记、所需的属性和报告的属性是具有以下限制的 JSON 对象：
 
-* JSON 对象中的所有键是区分大小写的 64 字节 UTF-8 UNICODE 字符串。 允许的字符不包括 UNICODE 控制字符（段 C0 和 C1）以及 `.`、SP 和 `$`。
+* **密钥**：JSON 对象中的所有键都是 UTF-8 编码、区分大小写且长度不超过 1 KB。 允许的字符不包括 UNICODE 控制字符（段 C0 和 C1）以及 `.`、`$` 和 SP。
 
-* JSON 对象中的所有值可采用以下 JSON 类型：布尔值、数字、字符串、对象。 不允许数组。 最大整数值为 4503599627370495，而最小整数值为 -4503599627370496。
+* **值**：JSON 对象中的所有值可采用以下 JSON 类型：布尔值、数字、字符串、对象。 不允许数组。
 
-* 标记、所需属性和报告属性中的所有 JSON 对象的最大嵌套深度为 5 层。 例如，以下对象是有效的：
+    * 整数的最小值可以为 -4503599627370496，最大值可以为 4503599627370495。
 
-    ```json
-    {
-        ...
-        "tags": {
-            "one": {
-                "two": {
-                    "three": {
-                        "four": {
-                            "five": {
-                                "property": "value"
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        ...
-    }
-    ```
+    * 字符串值是 UTF-8 编码的，最大长度为 4 KB。
 
-* 所有字符串的值的长度最多为 512 个字节。
+* **深度**：标记、所需属性和报告属性中的 JSON 对象的最大深度为 10 层。 例如，以下对象是有效的：
+
+   ```json
+   {
+       ...
+       "tags": {
+           "one": {
+               "two": {
+                   "three": {
+                       "four": {
+                           "five": {
+                               "six": {
+                                   "seven": {
+                                       "eight": {
+                                           "nine": {
+                                               "ten": {
+                                                   "property": "value"
+                                               }
+                                           }
+                                       }
+                                   }
+                               }
+                           }
+                       }
+                   }
+               }
+           }
+       },
+       ...
+   }
+   ```
 
 ## <a name="module-twin-size"></a>模块孪生大小
 
-IoT 中心对 `tags`、`properties/desired` 和 `properties/reported`（不包括只读元素）的各个总值强制实施 8KB 大小限制。
+IoT 中心对 `tags` 的值实施 8 KB 大小限制，对 `properties/desired` 和 `properties/reported` 的值分别实施 32 KB 大小限制。 这些总计不包含只读元素（如 `$etag`、`$version` 和 `$metadata/$lastUpdated`）。
 
-该大小的计算考虑到了所有字符，但不包括 UNICODE 控制字符（段 C0 和 C1），以及出现在字符串常量外部的空格。
+孪生大小按如下所示计算：
+
+* 对于 JSON 文档中的每个属性，IoT 中心会累积计算并添加属性的键和值的长度。
+
+* 属性键将视为 UTF8 编码的字符串。
+
+* 简单属性值将视为 UTF8 编码的字符串、数值（8 字节）或布尔值（4 字节）。
+
+* UTF8 编码字符串的大小通过对所有字符进行计数来计算，不包括 UNICODE 控制字符（段 C0 和 C1）。
+
+* 复杂属性值（嵌套对象）根据它们所包含的属性键和属性值的聚合大小进行计算。
 
 IoT 中心拒绝将这些文档的大小增加到超出限制的所有操作，在这种情况下还会返回错误。
 
@@ -322,7 +344,7 @@ IoT 中心保留模块孪生所需属性和报告属性中每个 JSON 对象的�
 }
 ```
 
-将在每个级别（而不仅仅是 JSON 结构的叶级别）保留此信息，以便保留删除了对象键的更新。
+会在每个级别（而不仅仅是 JSON 结构的叶级别）保留此信息，以便保留删除了对象键的更新。
 
 ## <a name="optimistic-concurrency"></a>乐观并发
 

@@ -1,21 +1,21 @@
 ---
 title: 优化 Azure Cosmos DB 中的存储成本
 description: 本文介绍如何管理 Azure Cosmos DB 中存储的数据的存储成本
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: 71f1f8896126728277ba6f0bf2c0ded1b2a608b7
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 1508adda761fcba7ba70df3bb212d3eb4e32f242
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967255"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "72754939"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>优化 Azure Cosmos DB 中的存储成本
 
-Azure Cosmos DB 提供无限的存储和吞吐量。 与必须在 Azure Cosmos 容器或数据库上预配/配置的吞吐量不同，存储将根据使用情况进行计费。 仅需为使用的逻辑存储计费，并且不必提前预留任何存储空间。 存储会根据添加或删除到 Azure Cosmos DB 容器的数据自动纵向扩展和缩减。
+Azure Cosmos DB 提供无限的存储和吞吐量。 与必须在 Azure Cosmos 容器或数据库上预配/配置的吞吐量不同，存储将根据使用情况进行计费。 仅需为使用的逻辑存储计费，并且不必提前预留任何存储空间。 存储会根据在 Azure Cosmos 容器中添加或删除的数据自动纵向扩展和缩减。
 
 ## <a name="storage-cost"></a>存储成本
 
@@ -39,7 +39,7 @@ Azure Cosmos DB 希望项目大小不超过 2 MB，以获得最佳性能和成�
 
 ## <a name="check-storage-consumed"></a>检查使用的存储
 
-要检查 Azure Cosmos 容器的存储消耗情况，可以在容器上运行 HEAD 或 GET请求，并检查 `x-ms-request-quota` 和 `x-ms-request-usage` 标头。 或者，在使用.NET SDK，你可以使用[DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))，并[DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx)获取占用的存储空间的属性。
+要检查 Azure Cosmos 容器的存储消耗情况，可以在容器上运行 HEAD 或 GET请求，并检查 `x-ms-request-quota` 和 `x-ms-request-usage` 标头。 或者，在使用 .NET SDK 时，可以使用[DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))和[DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx)属性来获取所使用的存储。
 
 ## <a name="using-sdk"></a>使用 SDK
 

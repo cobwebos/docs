@@ -1,228 +1,291 @@
 ---
-title: Azure Active Directory 域服务：将 Ubuntu VM 加入托管域 | Microsoft Docs
-description: 将 Ubuntu Linux 虚拟机加入 Azure AD 域服务
+title: 将 Ubuntu VM 加入 Azure AD 域服务 |Microsoft Docs
+description: 了解如何配置 Ubuntu Linux 虚拟机并将其加入 Azure AD 域服务托管域。
 services: active-directory-ds
-documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 804438c4-51a1-497d-8ccc-5be775980203
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 05/20/2019
-ms.author: mstephen
-ms.openlocfilehash: 9b1ad1b70258f623219ca171797aac4cdd33b310
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.topic: how-to
+ms.date: 01/22/2020
+ms.author: iainfou
+ms.openlocfilehash: 7cbd9250ecfb05e52204e1754046e02e4045fa6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245934"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84734701"
 ---
-# <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>将 Azure 中的 Ubuntu 虚拟机加入托管域
-本文介绍如何将 Ubuntu Linux 虚拟机加入 Azure AD 域服务托管域。
+# <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>将 Ubuntu Linux 虚拟机加入 Azure Active Directory 域服务托管域
 
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
+若要让用户使用一组凭据登录到 Azure 中的虚拟机（Vm），可以将 Vm 加入到 Azure Active Directory 域服务（Azure AD DS）托管域。 将 VM 加入到 Azure AD DS 托管域时，可以使用域中的用户帐户和凭据来登录和管理服务器。 还会应用托管域中的组成员身份，以便控制对 VM 上的文件或服务的访问。
 
-## <a name="before-you-begin"></a>开始之前
-若要执行本文中所列的任务，需要：  
-1. 一个有效的 **Azure 订阅**。
-2. 一个 **Azure AD 目录** - 已与本地目录或仅限云的目录同步。
-3. 必须为 Azure AD 目录启用 **Azure AD 域服务**。 如果未启用，请遵循[入门指南](create-instance.md)中所述的所有任务。
-4. 请确保已将托管域的 IP 地址配置为虚拟网络的 DNS 服务器。 有关详细信息，请参阅[如何更新 Azure 虚拟网络的 DNS 设置](active-directory-ds-getting-started-dns.md)
-5. 完成[将密码同步到 Azure AD 域服务托管域](active-directory-ds-getting-started-password-sync.md)所要执行的步骤。
+本文介绍如何将 Ubuntu Linux VM 加入托管域。
 
+## <a name="prerequisites"></a>先决条件
 
-## <a name="provision-an-ubuntu-linux-virtual-machine"></a>预配 Ubuntu Linux 虚拟机
-使用以下任一方法在 Azure 中预配 Ubuntu Linux 虚拟机：
+需有以下资源和特权才能完成本教程：
+
+* 一个有效的 Azure 订阅。
+    * 如果你没有 Azure 订阅，请[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* 与订阅关联的 Azure Active Directory 租户，可以与本地目录或仅限云的目录同步。
+    * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
+* 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
+    * 如果需要，请参考第一篇教程[创建并配置 Azure Active Directory 域服务托管域][create-azure-ad-ds-instance]。
+* 属于托管域的用户帐户。
+
+## <a name="create-and-connect-to-an-ubuntu-linux-vm"></a>创建并连接到 Ubuntu Linux VM
+
+如果 Azure 中有现有的 Ubuntu Linux VM，请使用 SSH 连接到该 VM，然后继续执行下一步，[开始配置 VM](#configure-the-hosts-file)。
+
+如果需要创建 Ubuntu Linux VM，或者想要创建一个用于本文的测试 VM，可以使用以下方法之一：
+
 * [Azure 门户](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
-> [!IMPORTANT]
-> * 将虚拟机部署到**已在其中启用了 Azure AD 域服务的同一个虚拟网络**。
-> * 选取与已启用 Azure AD 域服务的子网**不同的子网**。
->
+创建 VM 时，请注意虚拟网络设置，确保 VM 可以与托管域通信：
 
+* 将 VM 部署到相同的或对等互连的虚拟网络，在该网络中已启用 Azure AD 域服务。
+* 将 VM 部署到与 Azure AD 域服务托管域不同的子网中。
 
-## <a name="connect-remotely-to-the-ubuntu-linux-virtual-machine"></a>远程连接到 Ubuntu Linux 虚拟机
-Ubuntu 虚拟机已在 Azure 中预配。 下一个任务是使用在预配 VM 时创建的本地管理员帐户远程连接到虚拟机。
+部署 VM 后，请遵循使用 SSH 连接到 VM 的步骤。
 
-请遵循[如何登录到运行 Linux 的虚拟机](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)一文中的说明。
+## <a name="configure-the-hosts-file"></a>配置主机文件
 
+若要确保为托管域正确配置了 VM 主机名，请编辑 */etc/hosts*文件，并设置主机名：
 
-## <a name="configure-the-hosts-file-on-the-linux-virtual-machine"></a>配置 Linux 虚拟机上的 hosts 文件
-在 SSH 终端中编辑 /etc/hosts 文件，并更新计算机的 IP 地址和主机名。
-
-```
+```console
 sudo vi /etc/hosts
 ```
 
-在 hosts 文件中输入以下值：
+在*hosts*文件中，更新*localhost*地址。 如下示例中：
 
-```
-127.0.0.1 contoso-ubuntu.contoso100.com contoso-ubuntu
-```
-此处，“contoso100.com”是托管域的 DNS 域名。 “contoso-ubuntu”是要加入托管域的 Ubuntu 虚拟机的主机名。
+* *aaddscontoso.com*是托管域的 DNS 域名。
+* *ubuntu*是你要加入到托管域的 ubuntu VM 的主机名。
 
+请用自己的值更新这些名称：
 
-## <a name="install-required-packages-on-the-linux-virtual-machine"></a>在 Linux 虚拟机上安装所需的包
-接下来，在虚拟机上安装加入域所需的包。 执行以下步骤：
-
-1.  在 SSH 终端中键入以下命令，从存储库下载包列表。 此命令会更新包列表，以获取有关最新版的包及其依赖项的信息。
-
-    ```
-    sudo apt-get update
-    ```
-
-2. 键入以下命令安装所需的包。
-    ```
-      sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp ntpdate realmd adcli
-    ```
-
-3. 在 Kerberos 安装期间，会出现一个粉红色的屏幕。 安装“krb5-user”包时会出现输入领域名的提示（以全大写的形式输入）。 安装过程会在 /etc/krb5.conf 中写入 [realm] 和 [domain_realm] 节。
-
-    > [!TIP]
-    > 如果托管域的名称为 contoso100.com，请输入 CONTOSO100.COM 作为领域。 请记住，必须以大写形式指定领域名。
-    >
-    >
-
-
-## <a name="configure-the-ntp-network-time-protocol-settings-on-the-linux-virtual-machine"></a>在 Linux 虚拟机上配置的 NTP（网络时间协议）设置
-Ubuntu VM 的日期和时间必须与托管域同步。 在 /etc/ntp.conf 文件中添加托管域的 NTP 主机名。
-
-```
-sudo vi /etc/ntp.conf
+```console
+127.0.0.1 ubuntu.aaddscontoso.com ubuntu
 ```
 
-在 ntp.conf 文件中，输入以下值并保存文件：
+完成后，使用编辑器的命令保存并退出*hosts*文件 `:wq` 。
 
-```
-server contoso100.com
-```
-此处，“contoso100.com”是托管域的 DNS 域名。
+## <a name="install-required-packages"></a>安装所需程序包
 
-现在，请将 Ubuntu VM 的日期和时间与 NTP 服务器同步，然后启动 NTP 服务：
+VM 需要其他一些包才能将 VM 加入托管域。 若要安装和配置这些包，请使用更新和安装域加入工具`apt-get`
 
-```
-sudo systemctl stop ntp
-sudo ntpdate contoso100.com
-sudo systemctl start ntp
+在 Kerberos 安装过程中， *krb5.conf*包会提示所有大写的领域名称。 例如，如果托管域的名称为*aaddscontoso.com*，请输入*AADDSCONTOSO.COM*作为领域。 安装会 `[realm]` `[domain_realm]` 在 */etc/krb5.conf*配置文件中写入和节。 请确保将整个领域指定为全部大写：
+
+```console
+sudo apt-get update
+sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp ntpdate realmd adcli
 ```
 
+## <a name="configure-network-time-protocol-ntp"></a>配置网络时间协议（NTP）
 
-## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>将 Linux 虚拟机加入托管域
-在 Linux 虚拟机上安装所需的包后，下一个任务是将虚拟机加入托管域。
+为了使域通信正常工作，Ubuntu VM 的日期和时间必须与托管域同步。 将托管域的 NTP 主机名添加到 */etc/ntp.conf*文件。
 
-1. 发现 AAD 域服务托管域。 在 SSH 终端中键入以下命令：
+1. 使用编辑器打开*ntp*文件：
 
-    ```
-    sudo realm discover CONTOSO100.COM
-    ```
-
-   > [!NOTE]
-   > **故障排除：** 如果“领域发现”找不到托管域： 
-   >   * 确保域可从虚拟机（请尝试 ping）进行访问。
-   >   * 检查虚拟机是否已确实部署到提供托管域的同一个虚拟网络。
-   >   * 检查是否已将虚拟网络的 DNS 服务器设置更新为指向托管域的域控制器。
-
-2. 初始化 Kerberos。 在 SSH 终端中键入以下命令：
-
-    > [!TIP]
-    > * 请确保指定属于“AAD DC 管理员”组的用户。
-    > * 以大写字母指定域名，否则 kinit 会失败。
-    >
-
-    ```
-    kinit bob@CONTOSO100.COM
+    ```console
+    sudo vi /etc/ntp.conf
     ```
 
-3. 将计算机加入域。 在 SSH 终端中键入以下命令：
+1. 在*ntp*文件中，创建一个行以添加托管域的 DNS 名称。 在下面的示例中，添加了*aaddscontoso.com*的条目。 使用自己的 DNS 名称：
 
-    > [!TIP]
-    > 使用在前一步骤中指定的同一用户帐户（“kinit”）。
-    >
-
-    ```
-    sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM' --install=/
+    ```console
+    server aaddscontoso.com
     ```
 
-计算机成功加入托管域后，应会显示一条消息（“已在领域中成功注册计算机”）。
+    完成后，使用编辑器的命令保存并退出*ntp*文件。 `:wq`
 
+1. 若要确保 VM 与托管域同步，需要执行以下步骤：
 
-## <a name="update-the-sssd-configuration-and-restart-the-service"></a>更新 SSSD 配置并重启服务
-1. 在 SSH 终端中键入以下命令。 打开 sssd.conf 文件并进行以下更改
+    * 停止 NTP 服务器
+    * 更新托管域中的日期和时间
+    * 启动 NTP 服务
+
+    运行以下命令来完成这些步骤。 在命令中使用自己的 DNS 名称 `ntpdate` ：
+
+    ```console
+    sudo systemctl stop ntp
+    sudo ntpdate aaddscontoso.com
+    sudo systemctl start ntp
     ```
+
+## <a name="join-vm-to-the-managed-domain"></a>将 VM 加入托管域
+
+既然已在 VM 上安装了所需的包，并且已配置了 NTP，请将 VM 加入托管域。
+
+1. 使用 `realm discover` 命令发现托管域。 以下示例发现领域*AADDSCONTOSO.COM*。 以大写形式指定你自己的托管域名：
+
+    ```console
+    sudo realm discover AADDSCONTOSO.COM
+    ```
+
+   如果 `realm discover` 命令找不到托管域，请查看以下故障排除步骤：
+
+    * 请确保可从 VM 访问域。 尝试 `ping aaddscontoso.com` 查看是否返回了正答复。
+    * 检查是否已将 VM 部署到相同的或对等互连的虚拟网络，托管域在该网络中可用。
+    * 确认已将虚拟网络的 DNS 服务器设置更新为指向托管域的域控制器。
+
+1. 现在使用命令初始化 Kerberos `kinit` 。 指定属于托管域的用户。 如果需要，请[将用户帐户添加到 Azure AD 中的组](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
+
+    同样，必须以全部大写的形式输入托管域名。 在下面的示例中，名为的帐户 `contosoadmin@aaddscontoso.com` 用于初始化 Kerberos。 输入您自己的属于托管域的用户帐户：
+
+    ```console
+    kinit contosoadmin@AADDSCONTOSO.COM
+    ```
+
+1. 最后，使用命令将计算机加入托管域 `realm join` 。 使用在前面的命令中指定的托管域的一部分的相同用户帐户 `kinit` ，例如 `contosoadmin@AADDSCONTOSO.COM` ：
+
+    ```console
+    sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM' --install=/
+    ```
+
+将 VM 加入托管域需要一段时间。 以下示例输出显示 VM 已成功加入托管域：
+
+```output
+Successfully enrolled machine in realm
+```
+
+如果 VM 无法成功完成域加入过程，请确保 VM 的网络安全组允许 TCP + UDP 端口464上的出站 Kerberos 流量发送到托管域的虚拟网络子网。
+
+如果收到错误 " *GSS 失败"。 次要代码可能提供详细信息（在 Kerberos 数据库中找不到服务器）*，打开文件 */etc/krb5.conf* ，并在部分中添加以下代码 `[libdefaults]` ，然后重试：
+
+```console
+rdns=false
+```
+
+## <a name="update-the-sssd-configuration"></a>更新 SSSD 配置
+
+上一步中安装的其中一个包适用于系统安全服务守护程序（SSSD）。 当用户尝试使用域凭据登录到 VM 时，SSSD 会将请求中继到身份验证提供程序。 在此方案中，SSSD 使用 Azure AD DS 来对请求进行身份验证。
+
+1. 使用编辑器打开*sssd*文件：
+
+    ```console
     sudo vi /etc/sssd/sssd.conf
     ```
 
-2. 注释禁止 **use_fully_qualified_names = True** 行并保存文件。
-    ```
+1. 注释掉*use_fully_qualified_names*的行，如下所示：
+
+    ```console
     # use_fully_qualified_names = True
     ```
 
-3. 重启 SSSD 服务。
-    ```
+    完成后，使用编辑器的命令保存并退出*sssd*文件。 `:wq`
+
+1. 若要应用更改，请重新启动 SSSD 服务：
+
+    ```console
     sudo service sssd restart
     ```
 
+## <a name="configure-user-account-and-group-settings"></a>配置用户帐户和组设置
 
-## <a name="configure-automatic-home-directory-creation"></a>配置自动主目录创建
-若要在用户登录后自动创建主目录，请在 PuTTY 终端中键入以下命令：
-```
-sudo vi /etc/pam.d/common-session
-```
+将 VM 加入托管域并配置为进行身份验证时，需要完成一些用户配置选项。 这些配置更改包括允许基于密码的身份验证，并在域用户首次登录时在本地 VM 上自动创建主目录。
 
-在此文件中的“session optional pam_sss.so”行下面添加以下行，并保存此文件：
-```
-session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
-```
+### <a name="allow-password-authentication-for-ssh"></a>允许对 SSH 进行密码身份验证
 
+默认情况下，用户只能使用基于 SSH 公钥的身份验证登录到 VM。 基于密码的身份验证失败。 将 VM 加入托管域时，这些域帐户需要使用基于密码的身份验证。 更新 SSH 配置，以允许基于密码的身份验证，如下所示。
 
-## <a name="verify-domain-join"></a>验证域加入
-验证计算机是否已成功加入托管域。 使用不同的 SSH 连接连接到已加入域的 Ubuntu VM。 使用域用户帐户连接，并检查该用户帐户是否正确解析。
+1. 使用编辑器打开*sshd_conf*文件：
 
-1. 在 SSH 终端中键入以下命令，使用 SSH 连接到已加入域的 Ubuntu 虚拟机。 使用属于托管域的域帐户（例如，在本例中为“bob@CONTOSO100.COM”）。
-    ```
-    ssh -l bob@CONTOSO100.COM contoso-ubuntu.contoso100.com
+    ```console
+    sudo vi /etc/ssh/sshd_config
     ```
 
-2. 在 SSH 终端中键入以下命令，查看是否已正确初始化主目录。
-    ```
-    pwd
+1. 将*PasswordAuthentication*的行更新为 *"是"*：
+
+    ```console
+    PasswordAuthentication yes
     ```
 
-3. 在 SSH 终端中键入以下命令，查看组成员身份是否正确解析。
-    ```
-    id
+    完成后，使用编辑器的命令保存并退出*sshd_conf*的文件 `:wq` 。
+
+1. 若要应用更改并让用户使用密码进行登录，请重新启动 SSH 服务：
+
+    ```console
+    sudo systemctl restart ssh
     ```
 
+### <a name="configure-automatic-home-directory-creation"></a>配置自动主目录创建
 
-## <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>为“AAD DC 管理员”组授予 sudo 特权
-可为“AAD DC 管理员”组的成员授予 Ubuntu VM 上的管理特权。 sudo 文件位于 /etc/sudoers 中。 在 sudoers 中添加的 AD 组成员可以执行 sudo。
+若要在用户首次登录时启用主目录的自动创建，请完成以下步骤：
 
-1. 在 SSH 终端中，请确保使用超级用户特权登录。 可以使用创建 VM 时指定的本地管理员帐户。 请执行以下命令：
-    ```
-    sudo vi /etc/sudoers
+1. 在编辑器中打开 */etc/pam.d/common-session*文件：
+
+    ```console
+    sudo vi /etc/pam.d/common-session
     ```
 
-2. 将以下条目添加到 /etc/sudoers 文件并保存该文件：
+1. 将以下行添加到此文件中的行下面 `session optional pam_sss.so` ：
+
+    ```console
+    session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
     ```
+
+    完成后，使用编辑器的命令保存并退出*公用会话*文件 `:wq` 。
+
+### <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>为“AAD DC 管理员”组授予 sudo 特权
+
+若要授予*AAD DC Administrators*组成员对 Ubuntu VM 的管理权限，请向 */etc/sudoers*添加一个条目。 添加后， *AAD DC 管理员*组的成员可以 `sudo` 在 Ubuntu VM 上使用命令。
+
+1. 打开*sudoers*文件进行编辑：
+
+    ```console
+    sudo visudo
+    ```
+
+1. 将以下条目添加到 */etc/sudoers*文件的末尾：
+
+    ```console
     # Add 'AAD DC Administrators' group members as admins.
     %AAD\ DC\ Administrators ALL=(ALL) NOPASSWD:ALL
     ```
 
-3. 现在，可以“AAD DC 管理员”组成员的身份登录，并且应在 VM 上拥有管理特权。
+    完成后，使用命令保存并退出编辑器 `Ctrl-X` 。
 
+## <a name="sign-in-to-the-vm-using-a-domain-account"></a>使用域帐户登录到 VM
 
-## <a name="troubleshooting-domain-join"></a>排查域加入问题
-请参阅[排查域加入问题](join-windows-vm.md#troubleshoot-joining-a-domain)一文。
+若要验证 VM 是否已成功加入托管域，请使用域用户帐户启动新的 SSH 连接。 确认已创建主目录，并且已应用域的组成员身份。
 
+1. 从控制台创建新的 SSH 连接。 使用命令（如）使用属于托管域的域帐户 `ssh -l` ， `contosoadmin@aaddscontoso.com` 然后输入 VM 的地址，例如*ubuntu.aaddscontoso.com*。 如果使用 Azure Cloud Shell，请使用 VM 的公共 IP 地址，而不使用内部 DNS 名称。
 
-## <a name="related-content"></a>相关内容
-* [Azure AD 域服务 - 入门指南](create-instance.md)
-* [将 Windows Server 虚拟机加入 Azure AD 域服务托管域](active-directory-ds-admin-guide-join-windows-vm.md)
-* [如何登录到运行 Linux 的虚拟机](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+    ```console
+    ssh -l contosoadmin@AADDSCONTOSO.com ubuntu.aaddscontoso.com
+    ```
+
+1. 成功连接到 VM 后，验证是否已正确初始化主目录：
+
+    ```console
+    pwd
+    ```
+
+    你应在 */home*目录中，并将你自己的目录与用户帐户相匹配。
+
+1. 现在请检查是否已正确解析组成员身份：
+
+    ```console
+    id
+    ```
+
+    应会看到托管域中的组成员身份。
+
+1. 如果以*AAD DC Administrators*组成员的身份登录到 VM，请检查是否可以正确使用 `sudo` 命令：
+
+    ```console
+    sudo apt-get update
+    ```
+
+## <a name="next-steps"></a>后续步骤
+
+如果在将 VM 连接到托管域或使用域帐户登录时遇到问题，请参阅[排查域加入问题](join-windows-vm.md#troubleshoot-domain-join-issues)。
+
+<!-- INTERNAL LINKS -->
+[create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
+[associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
+[create-azure-ad-ds-instance]: tutorial-create-instance.md

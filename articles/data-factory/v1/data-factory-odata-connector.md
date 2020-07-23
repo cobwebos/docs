@@ -1,27 +1,26 @@
 ---
-title: 从 OData 源移动数据 | Microsoft Docs
+title: 从 OData 源移动数据
 description: 了解如何使用 Azure 数据工厂从 OData 源移动数据。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: de28fa56-3204-4546-a4df-21a21de43ed7
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b2c665de94750c4c6f41bda47960fdb9ba17e819
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 95f92d4e5616d7754c355610685701a8e089b84e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60824025"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847575"
 ---
-# <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>移动数据使用 Azure 数据工厂从 OData 源
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+# <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>使用 Azure 数据工厂从 OData 源移动数据
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-odata-connector.md)
 > * [版本 2（当前版本）](../connector-odata.md)
 
@@ -44,15 +43,15 @@ ms.locfileid: "60824025"
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从 OData 源移动数据。
 
-创建管道的最简单方法是使用  复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+创建管道的最简单方法是使用**** 复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-还可以使用以下工具来创建管道：Azure 门户  、Visual Studio  、Azure PowerShell  、Azure 资源管理器模板  、.NET API  和 REST API  。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API**和**REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
-1. 创建链接服务可将输入和输出数据存储链接到数据工厂  。
-2. 创建数据集以表示复制操作的输入和输出数据  。
-3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出  。
+1. 创建**链接服务**以将输入和输出数据存储链接到数据工厂。
+2. 创建用于表示复制操作的输入和输出数据的**数据集**。
+3. 创建包含复制活动的**管道**，该活动将数据集作为输入，并将数据集作为输出。
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于从 OData 源复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 OData 源复制到 Azure Blob](#json-example-copy-data-from-odata-source-to-azure-blob) 部分。
 
@@ -61,15 +60,15 @@ ms.locfileid: "60824025"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供 OData 链接服务专属 JSON 元素的说明。
 
-| 属性 | 说明 | 必选 |
+| Property | 说明 | 必需 |
 | --- | --- | --- |
 | type |type 属性必须设置为：**OData** |是 |
 | url |OData 服务的 URL。 |是 |
 | authenticationType |用于连接 OData 源的身份验证类型。 <br/><br/> 对于云 OData，可能的值为 Anonymous、Basic 和 OAuth（请注意：Azure 数据工厂目前仅支持基于 Azure Active Directory 的 OAuth）。 <br/><br/> 对于本地 OData，可能的值为 Anonymous、Basic 和 Windows。 |是 |
 | username |如果使用基本身份验证，请指定用户名。 |是（仅在使用基本身份验证时适用） |
 | password |指定为用户名指定的用户帐户的密码。 |是（仅在使用基本身份验证时适用） |
-| authorizedCredential |如果使用 OAuth，请在数据工厂复制向导或编辑器中单击“授权”  按钮，并输入凭据，此时会自动生成此属性的值。 |是（仅在使用 OAuth 身份验证时适用） |
-| gatewayName |网关名称 - 数据工厂服务应使用此网关连接到本地 OData 服务。 仅指定是否要将数据从本地 OData 源上的进行复制。 |否 |
+| authorizedCredential |如果使用 OAuth，请在数据工厂复制向导或编辑器中单击“授权”**** 按钮，并输入凭据，此时会自动生成此属性的值。 |是（仅在使用 OAuth 身份验证时适用） |
+| gatewayName |网关名称 - 数据工厂服务应使用此网关连接到本地 OData 服务。 仅当从本地 OData 源复制数据时才指定。 |否 |
 
 ### <a name="using-basic-authentication"></a>使用基本身份验证
 ```json
@@ -144,9 +143,9 @@ ms.locfileid: "60824025"
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
 
-每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息  。 **ODataResource** 类型数据集（包括 OData 数据集）的 typeProperties 节具有以下属性
+每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息****。 **ODataResource** 类型数据集（包括 OData 数据集）的 typeProperties 节具有以下属性
 
-| 属性 | 说明 | 需要 |
+| Property | 说明 | 必需 |
 | --- | --- | --- |
 | path |OData 资源路径 |否 |
 
@@ -157,9 +156,9 @@ ms.locfileid: "60824025"
 
 源属于 **RelationalSource** 类型（包括 OData）时，以下属性在 typeProperties 节可用：
 
-| 属性 | 描述 | 示例 | 需要 |
+| Property | 描述 | 示例 | 必需 |
 | --- | --- | --- | --- |
-| query |使用自定义查询读取数据。 |"?$select=Name, Description&$top=5" |否 |
+| 查询 |使用自定义查询读取数据。 |"?$select=Name, Description&$top=5" |否 |
 
 ## <a name="type-mapping-for-odata"></a>OData 的类型映射
 如[数据移动活动](data-factory-data-movement-activities.md)一文中所述，复制活动使用以下 2 步方法执行从源类型到接收器类型的自动类型转换。
@@ -175,7 +174,7 @@ ms.locfileid: "60824025"
 | Edm.Boolean |Bool |
 | Edm.Byte |Byte[] |
 | Edm.DateTime |DateTime |
-| Edm.Decimal |Decimal |
+| Edm.Decimal |小数 |
 | Edm.Double |Double |
 | Edm.Single |Single |
 | Edm.Guid |Guid |
@@ -191,13 +190,13 @@ ms.locfileid: "60824025"
 > OData 复杂数据类型，例如不支持对象。
 
 ## <a name="json-example-copy-data-from-odata-source-to-azure-blob"></a>JSON 示例：将数据从 OData 源复制到 Azure Blob
-此示例提供示例 JSON 定义，可使用这些定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它们演示如何将数据从 OData 源复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。 此示例具有以下数据工厂实体：
+此示例提供示例 JSON 定义，可用于通过使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 它们演示如何将数据从 OData 源复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。 此示例具有以下数据工厂实体：
 
 1. [OData](#linked-service-properties) 类型的链接服务。
-2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)类型的链接服务。
 3. [ODataResource](#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
-5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [RelationalSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)类型的输出[数据集](data-factory-create-datasets.md)。
+5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用[RelationalSource](#copy-activity-properties)和[BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
 此示例每小时将数据从针对 OData 源的查询复制到 Azure Blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
@@ -266,7 +265,7 @@ ms.locfileid: "60824025"
 
 **Azure Blob 输出数据集：**
 
-数据将写入到新 blob，每隔一小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
+数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```json
 {

@@ -2,24 +2,23 @@
 title: 重置用户的密码 - Azure Active Directory | Microsoft Docs
 description: 有关如何使用 Azure Active Directory 重置用户密码的说明。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.assetid: fad5624b-2f13-4abc-b3d4-b347903a8f16
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/05/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4db6554e86cef61f2fc8e7a466919d2ce723f0e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: f5639909c3cece627ffba105edd23d943ad966df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60248033"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603938"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>使用 Azure Active Directory 重置用户的密码
 
@@ -33,17 +32,18 @@ ms.locfileid: "60248033"
 
 ## <a name="to-reset-a-password"></a>重置密码
 
-1. 登录到[Azure 门户](https://portal.azure.com/)作为用户管理员或密码管理员。 有关可用角色的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](../users-groups-roles/directory-assign-admin-roles.md#available-roles)
+1. 以用户管理员或密码管理员身份登录到 [Azure 门户](https://portal.azure.com/)。 有关可用角色的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](../users-groups-roles/directory-assign-admin-roles.md#available-roles)
 
-2. 选择“Azure Active Directory”，选择“用户”，搜索并选择需要重置的用户，然后选择“重置密码”。
+2. 选择“Azure Active Directory”，选择“用户”，搜索并选择需要重置的用户，然后选择“重置密码”************。
 
-    将显示“Alain Charon - 配置文件”页面，其中包含“重置密码”选项。
+    将显示“Alain Charon - 配置文件”页面，其中包含“重置密码”选项********。
 
     ![用户的配置文件页面，其中突出显示“重置密码”选项](media/active-directory-users-reset-password-azure-portal/user-profile-reset-password-link.png)
 
-3. 在“重置密码”页面中，选择“重置密码”。
+3. 在“重置密码”页面中，选择“重置密码”********。
 
-    临时密码是自动为用户生成的。
+    > [!Note]
+    > 使用 Azure Active Directory 时，会自动为用户生成临时密码。 使用本地 Active Directory 时，会为用户创建密码。
 
 4. 复制密码并将其提供给用户。 在下次登录过程中，用户需要更改密码。
 
@@ -58,8 +58,8 @@ ms.locfileid: "60248033"
 
 - [向用户分配角色](active-directory-users-assign-role-azure-portal.md)
 
-- [添加或更改配置文件信息](active-directory-users-profile-azure-portal.md)
+- [添加或更改个人资料信息](active-directory-users-profile-azure-portal.md)
 
 - [创建基本组并添加成员](active-directory-groups-create-azure-portal.md)
 
-也可以执行更复杂的用户方案，例如分配委托、使用策略以及共享用户帐户。 有关其他可用操作的详细信息，请参阅 [Azure Active Directory 用户管理文档](../users-groups-roles/index.yml)。
+也可以执行更复杂的用户方案，例如分配委托、使用策略以及共享用户帐户。 有关其他可用操作的详细信息，请参阅 [Azure Active Directory 用户管理和文档](../users-groups-roles/index.yml)。

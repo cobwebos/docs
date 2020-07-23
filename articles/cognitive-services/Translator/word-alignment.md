@@ -1,22 +1,21 @@
 ---
-title: 词对齐 - 文本翻译 API
-titlesuffix: Azure Cognitive Services
-description: 从文本翻译 API 接收词对齐信息。
+title: Word 对齐方式-转换器
+titleSuffix: Azure Cognitive Services
+description: 若要接收对齐信息，请使用 Translate 方法，并包含可选的 includeAlignment 参数。
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/04/2019
-ms.author: v-pawal
-ms.custom: seodec18
-ms.openlocfilehash: 040d122810529daafcebc2e66f2fa7b2730a6a0d
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.date: 05/26/2020
+ms.author: swmachan
+ms.openlocfilehash: 7288087bfe7d2a7bb03ce8a99831ad8b7f5b549f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514668"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995609"
 ---
 # <a name="how-to-receive-word-alignment-information"></a>如何接收词对齐信息
 
@@ -26,11 +25,11 @@ ms.locfileid: "66514668"
 ## <a name="alignment-information-format"></a>对齐信息格式
 对齐将作为以下格式的字符串值返回给源的每个词。 每个词的信息由一个空格分隔，其中包括非空格分隔的语言（脚本），比如中文：
 
-[[SourceTextStartIndex]:\[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]] *
+[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]] *
 
 对齐字符串示例：“0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21”。
 
-换而言之，冒号分隔开始和结束索引，连字符分隔语言，空格分隔词。 一个词可能与另一种语言中的 0 个、1 个或多个词对齐，而对齐的词可能是非连续的。 当没有可用的对齐信息时，Alignment 元素将为空。 在这种情况下，该方法不会返回任何错误。
+换而言之，冒号分隔开始和结束索引，连字符分隔语言，空格分隔词。 一个单词可能与另一种语言中的 0 个、1 个或多个单词比对，而比对的词可能是不连续的。 当没有可用的对齐信息时，Alignment 元素将为空。 在这种情况下，该方法不会返回任何错误。
 
 ## <a name="restrictions"></a>限制
 目前，仅针对语言对的子集返回对齐：

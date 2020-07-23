@@ -1,19 +1,20 @@
 ---
-title: Azure PowerShell 脚本-MongoDB API 的 Azure Cosmos DB Update RU/秒
-description: Azure PowerShell 脚本-MongoDB API 的 Azure Cosmos DB Update RU/秒
+title: 用于更新 RU/秒的 PowerShell 脚本 - Azure Cosmos DB 的 API for MongoDB
+description: 了解如何使用 PowerShell 脚本更新 Azure Cosmos DB 的 API for MongoDB 中数据库或容器的吞吐量
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
-ms.date: 05/18/2019
+ms.subservice: cosmosdb-mongo
+ms.topic: sample
+ms.date: 05/01/2020
 ms.author: mjbrown
-ms.openlocfilehash: 4fc8a8c8cc8e5d516ace4a1523a0d1845b6f7edf
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: cde83572c87ef3eba5d68cf619c3bee0f353d023
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247419"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652981"
 ---
-# <a name="update-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>为数据库或 Azure Cosmos DB 的 MongoDB API 的集合更新 RU/秒
+# <a name="update-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>更新 Azure Cosmos DB 的数据库或集合的 RU/秒 - MongoDB API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -35,10 +36,11 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBMongoDBCollectionThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbcollectionthroughput) | 获取 MongoDB API 集合的吞吐量值。 |
+| [Update-AzCosmosDBMongoDBCollectionThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbmongodbcollectionthroughput) | 更新 MongoDB API 集合的吞吐量值。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||

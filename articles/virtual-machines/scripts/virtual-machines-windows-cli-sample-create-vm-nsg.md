@@ -1,11 +1,10 @@
 ---
-title: Azure CLI 脚本示例 - 使用内部和外部 NSG 创建两个 VM | Microsoft 文档
+title: Azure CLI 脚本示例 - 使用内部和外部 NSG 创建两个 VM
 description: Azure CLI 脚本示例 - 使用内部和外部 NSG 创建两个 VM
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: rickstercdn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -16,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc
-ms.openlocfilehash: 0afdcef546d53c2caf13828576338c47e03c4fc9
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 2cf571d0c965e308ef18cdc1be1eb9fc5797e782
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894819"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459485"
 ---
 # <a name="secure-network-traffic-between-virtual-machines"></a>保护虚拟机之间的网络流量
 
@@ -47,7 +46,7 @@ az group delete --name myResourceGroup --yes
 
 此脚本使用以下命令创建资源组、虚拟机和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | 创建 Azure 虚拟网络和子网。 |

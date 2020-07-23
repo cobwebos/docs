@@ -9,11 +9,11 @@ ms.date: 03/19/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 317a480c13c5c6e00653fd61878a379df3f65ac4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170698"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67172686"
 ---
 ### <a name="what-is-expressroute-global-reach"></a>什么是 ExpressRoute Global Reach？
 
@@ -33,23 +33,23 @@ ExpressRoute 可在本地网络与 Microsoft 云服务之间建立连接。 Expr
 
 ### <a name="where-is-expressroute-global-reach-supported"></a>哪些区域支持 ExpressRoute Global Reach？
 
-支持 ExpressRoute 全球覆盖[选择国家/地区或位置](../articles/expressroute/expressroute-global-reach.md)。 必须在这些国家/地区或位置中的对等互连位置创建 ExpressRoute 线路。
+[选择的国家/地区或地点](../articles/expressroute/expressroute-global-reach.md)支持 ExpressRoute Global Reach。 必须在这些国家/地区或地点的对等互连位置创建 ExpressRoute 线路。
 
 ### <a name="i-have-more-than-two-on-premises-networks-each-connected-to-an-expressroute-circuit-can-i-enable-expressroute-global-reach-to-connect-all-of-my-on-premises-networks-together"></a>我有两个以上的本地网络，每个网络连接到 ExpressRoute 线路。 是否可以启用 ExpressRoute Global Reach，以将所有本地网络连接到一起？
 
-可以，你可以，只要这些电路中支持的国家/地区。 需要一次性连接两个 ExpressRoute 线路。 若要创建全网格式网络，需要枚举所有线路对并重复配置。 
+是的，只要线路位于支持的国家/地区即可。 需要一次性连接两个 ExpressRoute 线路。 若要创建全网格式网络，需要枚举所有线路对并重复配置。 
 
 ### <a name="can-i-enable-expressroute-global-reach-between-two-expressroute-circuits-at-the-same-peering-location"></a>是否可以在同一对等位置中的两条 ExpressRoute 线路之间启用 ExpressRoute Global Reach？
 
-不。 两条线路必须来自不同的对等位置。 如果在受支持的国家/地区市内具有多个 ExpressRoute 对等互连位置，您可以在不同对等互连位置该 metro 中创建 ExpressRoute 线路连接起来。 
+不能。 两条线路必须来自不同的对等位置。 如果受支持的国家/地区中的地铁具有多个 ExpressRoute 对等位置，则可以将在该地铁中不同对等位置创建的 ExpressRoute 线路连接在一起。 
 
 ### <a name="if-expressroute-global-reach-is-enabled-between-circuit-x-and-circuit-y-and-between-circuit-y-and-circuit-z-will-my-on-premises-networks-connected-to-circuit-x-and-circuit-z-talk-to-each-other-via-microsofts-network"></a>如果在线路 X 和 Y 之间以及线路 Y 和线路 Z 之间启用 ExpressRoute Global Reach，连接到线路 X 和线路 Z 的本地网络是否可以通过 Microsoft 的网络相互通信？
 
-不。 若要在任意两个本地网络之间实现连接，必须显式连接对应的 ExpressRoute 线路。 在上述示例中，必须连接线路 X 和线路 Z。 
+不能。 若要在任意两个本地网络之间实现连接，必须显式连接对应的 ExpressRoute 线路。 在上述示例中，必须连接线路 X 和线路 Z。 
 
 ### <a name="what-is-the-network-throughput-i-can-expect-between-my-on-premises-networks-after-i-enable-expressroute-global-reach"></a>启用 ExpressRoute Global Reach 后，本地网络之间的网络吞吐量预期有多少？
 
-ExpressRoute Global Reach 启用的本地网络之间的网络吞吐量以两条 ExpressRoute 线路中吞吐量较小者为准。 本地到 Azure 流量和内部部署的本地流量共享相同的线路并受到相同的带宽上限。 
+ExpressRoute Global Reach 启用的本地网络之间的网络吞吐量以两条 ExpressRoute 线路中吞吐量较小者为准。 从本地到 Azure 的流量和本地到本地的流量共享同一线路，并受到相同的带宽上限。 
 
 ### <a name="with-expressroute-global-reach-what-are-the-limits-on-the-number-of-routes-i-can-advertise-and-the-number-of-routes-i-will-receive"></a>使用 ExpressRoute Global Reach 时，对于我可以播发的路由数和我将收到的路由数的限制是多少？
 

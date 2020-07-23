@@ -1,5 +1,5 @@
 ---
-title: Azure 后端连接功能中的互操作性：测试设置 | Microsoft Docs
+title: Azure 中的互操作性：测试设置 | Microsoft Docs
 description: 本文介绍可用于分析 ExpressRoute、站点到站点 VPN 与 Azure 中虚拟网络对等互连之间的互操作性的测试设置。
 documentationcenter: na
 services: networking
@@ -10,14 +10,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 8be546c5dba4c6c694c8cef03a4bdd6005d68189
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3aec41a145d2c94a45a453393831902069b9c41b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60811131"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80518192"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-test-setup"></a>Azure 后端连接功能中的互操作性：测试设置
+# <a name="interoperability-in-azure--test-setup"></a>Azure 中的互操作性：测试设置
 
 本文介绍可用于分析 Azure 网络服务如何在控制平面级别和数据平面级别进行互操作的测试设置。 下面是 Azure 网络组件的概观：
 
@@ -29,7 +29,7 @@ ms.locfileid: "60811131"
 
 下图演示了测试设置：
 
-[![1]][1]
+![1][1]
 
 测试设置的中心部分是 Azure 区域 1 中的中心 VNet。 中心 VNet 按以下方式连接到不同的网络：
 
@@ -75,10 +75,10 @@ ExpressRoute 充当冗余的线路对，可确保高可用性。 可在不同的
 
 了解测试设置的[数据平面分析][Data-Analysis]，以及 Azure 网络监视功能视图。
 
-参阅 [ExpressRoute 常见问题解答][ExR-FAQ]，了解：
+请参阅 [ExpressRoute 常见问题解答][ExR-FAQ]：
 -   了解可将多少条 ExpressRoute 线路连接到一个 ExpressRoute 网关。
 -   了解可将多少个 ExpressRoute 网关连接到一条 ExpressRoute 线路。
--   ExpressRoute 的其他缩放限制。
+-   了解 ExpressRoute 的其他缩放限制。
 
 
 <!--Image References-->

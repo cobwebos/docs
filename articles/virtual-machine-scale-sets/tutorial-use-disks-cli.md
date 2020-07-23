@@ -1,27 +1,19 @@
 ---
-title: 教程 - 通过 Azure CLI 创建和使用规模集的磁盘 | Microsoft Docs
+title: 教程 - 通过 Azure CLI 创建和使用规模集的磁盘
 description: 了解如何通过 Azure CLI 对虚拟机规模集创建和使用托管磁盘，包括如何添加、准备、列出和分离磁盘。
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
+author: ju-shim
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 58090e860b79d59021d467fcf73596271c91c7f6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 3759fa426a712308e1956376d559c1ac84eadbd7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751151"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81008822"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>教程：通过 Azure CLI 对虚拟机规模集创建和使用磁盘
 虚拟机规模集使用磁盘来存储 VM 实例的操作系统、应用程序和数据。 创建和管理规模集时，请务必选择适用于所需工作负荷的磁盘大小和配置。 本教程介绍如何创建和管理 VM 磁盘。 本教程介绍如何执行下列操作：
@@ -43,12 +35,12 @@ ms.locfileid: "55751151"
 ## <a name="default-azure-disks"></a>默认 Azure 磁盘
 创建或缩放规模集时，会自动将两个磁盘附加到每个 VM 实例。
 
-**操作系统磁盘** - 操作系统磁盘大小可达 2 TB，并可托管 VM 实例的操作系统。 默认情况下，OS 磁盘标记为“/dev/sda”。 已针对 OS 性能优化了 OS 磁盘的磁盘缓存配置。 由于此配置，OS 磁盘不应托管应用程序或数据。 对于应用程序和数据，请使用数据磁盘，本文后面会对其进行详细介绍。
+**操作系统磁盘** - 操作系统磁盘大小可达 2 TB，并可托管 VM 实例的操作系统。 默认情况下，OS 磁盘标记为“/dev/sda”  。 已针对 OS 性能优化了 OS 磁盘的磁盘缓存配置。 由于此配置，OS 磁盘不应  托管应用程序或数据。 对于应用程序和数据，请使用数据磁盘，本文后面会对其进行详细介绍。
 
-**临时磁盘** - 临时磁盘使用 VM 实例所在的 Azure 主机上的固态硬盘。 这些磁盘具有高性能，可用于临时数据处理等操作。 但是，如果将 VM 实例移到新的主机，临时磁盘上存储的数据都会删除。 临时磁盘的大小由 VM 实例大小决定。 临时磁盘标记为“/dev/sdb”，且装载点为 /mnt。
+**临时磁盘** - 临时磁盘使用 VM 实例所在的 Azure 主机上的固态硬盘。 这些磁盘具有高性能，可用于临时数据处理等操作。 但是，如果将 VM 实例移到新的主机，临时磁盘上存储的数据都会删除。 临时磁盘的大小由 VM 实例大小决定。 临时磁盘标记为“/dev/sdb”  ，且装载点为 /mnt  。
 
 ### <a name="temporary-disk-sizes"></a>临时磁盘大小
-| Type | 常见大小 | 临时磁盘大小上限 (GiB) |
+| 类型 | 常见大小 | 临时磁盘大小上限 (GiB) |
 |----|----|----|
 | [常规用途](../virtual-machines/linux/sizes-general.md) | A、B、D 系列 | 1600 |
 | [计算优化](../virtual-machines/linux/sizes-compute.md) | F 系列 | 576 |
@@ -59,18 +51,7 @@ ms.locfileid: "55751151"
 
 
 ## <a name="azure-data-disks"></a>Azure 数据磁盘
-可添加额外的数据磁盘，用于安装应用程序和存储数据。 在任何需要持久和响应性数据存储的情况下，都应使用数据磁盘。 每个数据磁盘的最大容量为 4 TB。 VM 实例的大小决定可附加的数据磁盘数。 对于每个 VM vCPU，都可以附加两个数据磁盘。
-
-### <a name="max-data-disks-per-vm"></a>每个 VM 的最大数据磁盘数
-| Type | 常见大小 | 每个 VM 的最大数据磁盘数 |
-|----|----|----|
-| [常规用途](../virtual-machines/linux/sizes-general.md) | A、B、D 系列 | 64 |
-| [计算优化](../virtual-machines/linux/sizes-compute.md) | F 系列 | 64 |
-| [内存优化](../virtual-machines/linux/sizes-memory.md) | D、E、G、M 系列 | 64 |
-| [存储优化](../virtual-machines/linux/sizes-storage.md) | L 系列 | 64 |
-| [GPU](../virtual-machines/linux/sizes-gpu.md) | N 系列 | 64 |
-| [高性能](../virtual-machines/linux/sizes-hpc.md) | A 和 H 系列 | 64 |
-
+可添加额外的数据磁盘，用于安装应用程序和存储数据。 在任何需要持久和响应性数据存储的情况下，都应使用数据磁盘。 每个数据磁盘的最大容量为 4 TB。 VM 实例的大小决定可附加的数据磁盘数。 可以为每个 VM vCPU 附加两个数据磁盘，直至达到每个虚拟机 64 个磁盘的绝对上限。
 
 ## <a name="vm-disk-types"></a>VM 磁盘类型
 Azure 提供两种类型的磁盘。
@@ -101,7 +82,7 @@ Azure 提供两种类型的磁盘。
 az group create --name myResourceGroup --location eastus
 ```
 
-请使用 [az vmss create](/cli/azure/vmss) 命令创建虚拟机规模集。 以下示例创建名为“myScaleSet”的规模集，并生成 SSH 密钥（如果不存在）。 两个磁盘都是 `--data-disk-sizes-gb` 参数创建的。 第一个磁盘的大小为 *64* GB，第二个磁盘的大小为 *128* GB：
+请使用 [az vmss create](/cli/azure/vmss) 命令创建虚拟机规模集。 以下示例创建名为“myScaleSet”  的规模集，并生成 SSH 密钥（如果不存在）。 两个磁盘都是 `--data-disk-sizes-gb` 参数创建的。 第一个磁盘的大小为 *64* GB，第二个磁盘的大小为 *128* GB：
 
 ```azurecli-interactive
 az vmss create \
@@ -154,7 +135,7 @@ az vmss list-instance-connection-info \
 
 使用自己的公共 IP 地址和端口号连接到第一个 VM 实例，如以下示例所示：
 
-```azurecli-interactive
+```console
 ssh azureuser@52.226.67.166 -p 50001
 ```
 
@@ -164,7 +145,7 @@ ssh azureuser@52.226.67.166 -p 50001
 sudo fdisk -l
 ```
 
-以下示例输出显示附加到 VM 实例的有三个磁盘 - */dev/sdc*、*/dev/sdd* 和 */dev/sde*。 每个这样的磁盘都是单个分区使用所有的可用空间：
+以下示例输出显示附加到 VM 实例的有三个磁盘 - */dev/sdc*、 */dev/sdd* 和 */dev/sde*。 每个这样的磁盘都是单个分区使用所有的可用空间：
 
 ```bash
 Disk /dev/sdc: 64 GiB, 68719476736 bytes, 134217728 sectors
@@ -206,7 +187,7 @@ sudo df -h
 
 以下示例输出表明，三个磁盘已将其文件系统正确地装载在 */datadisks* 下：
 
-```bash
+```output
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/sda1        30G  1.3G   28G   5% /
 /dev/sdb1        50G   52M   47G   1% /mnt
@@ -215,7 +196,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 /dev/sde1       126G   60M  120G   1% /datadisks/disk3
 ```
 
-规模集中每个 VM 实例上的磁盘采用同一方式自动进行准备。 规模集进行纵向扩展时，所需数据磁盘会附加到新的 VM 实例。 自定义脚本扩展也会运行，以便自动准备磁盘。
+规模集中每个 VM 实例上的磁盘是以同一方式自动准备的。 规模集进行纵向扩展时，所需数据磁盘会附加到新的 VM 实例。 自定义脚本扩展也会运行，以便自动准备磁盘。
 
 关闭与 VM 实例的 SSH 连接：
 
@@ -234,7 +215,7 @@ az vmss show \
   --query virtualMachineProfile.storageProfile.dataDisks
 ```
 
-显示了有关磁盘大小、存储层和 LUN（逻辑单元号）的信息。 以下示例输出显示了有关三个附加到规模集的数据磁盘的详细信息：
+还会显示有关磁盘大小、存储层和 LUN（逻辑单元号）的信息。 以下示例输出显示了有关三个附加到规模集的数据磁盘的详细信息：
 
 ```json
 [

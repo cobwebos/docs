@@ -1,21 +1,21 @@
 ---
-title: 教程：使用必应图像搜索 API 和 C# 提取图像详细信息
+title: 教程：使用 REST API 和 C# 提取图像详细信息 - 必应图像搜索
 titleSuffix: Azure Cognitive Services
-description: 使用本文创建可利用必应图像搜索 API 提取图像详细信息的 C# 应用程序。
+description: 使用本教程创建使用必应图像搜索 API 提取图像详细信息的 C# 应用程序。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 05/15/2019
+ms.date: 12/06/2019
 ms.author: aahi
-ms.openlocfilehash: 995ccc8ffeb436526608803362cc361c74a75316
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 69c5fc9805bed8fdfde3dd208e7fb66254e82c3c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790034"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "75383869"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>教程：使用必应图像搜索 API 和 C# 提取图像详细信息
 
@@ -42,7 +42,7 @@ ms.locfileid: "65790034"
 
 ## <a name="construct-an-image-details-search-request"></a>构造图像详细信息搜索请求
 
-以下为 `/details` 终结点，它接受请求正文中包含图像数据的 POST 请求。
+以下为 `/details` 终结点，它接受请求正文中包含图像数据的 POST 请求。 可以使用下面的全局终结点，也可以使用资源的 Azure 门户中显示的[自定义子域](../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details
 ```

@@ -14,22 +14,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.author: v-ant-msft
-ms.openlocfilehash: 837014fde6962f64d7da023a001a4c41089a0097
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.author: jeedes
+ms.openlocfilehash: 364b106e7c1f01269ac02b0c2851f8824ea0f58c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578255"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "77062687"
 ---
 # <a name="tutorial-configure-zscaler-two-for-automatic-user-provisioning"></a>教程：为 Zscaler Two 配置自动用户预配
 
 本教程介绍如何将 Azure Active Directory (Azure AD) 配置为自动为 Zscaler Two 预配和取消预配用户和/或组。
 
 > [!NOTE]
-> 本教程将介绍构建在 Azure AD 用户预配服务基础之上的连接器。 有关此服务的功能、工作原理的重要详细信息以及常见问题解答，请参阅[使用 Azure Active Directory 为 SaaS 应用程序自动化用户预配和取消预配](../active-directory-saas-app-provisioning.md)。
->
-> 此连接器目前以公共预览版提供。 若要详细了解 Azure 预览版功能的一般使用条款，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 本教程介绍在 Azure AD 用户预配服务基础上构建的连接器。 有关此服务的功能、工作原理的重要详细信息以及常见问题解答，请参阅[使用 Azure Active Directory 为 SaaS 应用程序自动化用户预配和取消预配](../active-directory-saas-app-provisioning.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -155,7 +153,7 @@ ms.locfileid: "59578255"
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤

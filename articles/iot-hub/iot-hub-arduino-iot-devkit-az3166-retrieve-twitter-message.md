@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: dc4ff35ff04680e8635d54c25212c8ae639ae472
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 464e2c14fa238160ca198b9f1c8a9808e70933f9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60779695"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560977"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>摇一摇，摇一条推文 - 使用 Azure Functions 检索 Twitter 消息
 
@@ -30,7 +30,7 @@ ms.locfileid: "60779695"
 一个有效的 Azure 订阅。 如果没有订阅，可通过以下方法之一进行注册：
 
 * 激活 [30 天免费试用版 Microsoft Azure 帐户](https://azure.microsoft.com/free/)
-* 如果你是 MSDN 或 Visual Studio 的订阅者，请索取你的 [Azure 额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)
+* 如果你是 MSDN 或 Visual Studio 订阅者，请声明你的[Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)
 
 ## <a name="open-the-project-folder"></a>打开项目文件夹
 
@@ -49,10 +49,10 @@ ms.locfileid: "60779695"
 
 ### <a name="open-the-arduino-examples-folder"></a>打开 Arduino 示例文件夹
 
-展开左侧的“ARDUINO 示例”部分，浏览到 MXCHIP AZ3166 的示例”>“AzureIoT”，然后选择“ShakeShake”。 此时会打开一个新的 VS Code 窗口，其中显示项目文件夹。 如果看不到“MXCHIP AZ3166”部分，请确保设备已正确连接，并重启 Visual Studio Code。  
+展开左侧的“ARDUINO 示例”部分，浏览到 MXCHIP AZ3166 的示例”>“AzureIoT”，然后选择“ShakeShake”************。 此时会打开一个新的 VS Code 窗口，其中显示项目文件夹。 如果看不到“MXCHIP AZ3166”部分，请确保设备已正确连接，并重启 Visual Studio Code。  
 ![mini-solution-examples](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-也可从命令面板打开示例项目。 单击 `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) 打开命令面板，键入“Arduino”，然后找到并选择“Arduino:Examples”。
+也可从命令面板打开示例项目。 单击 `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) 打开命令面板，键入“Arduino”，然后找到并选择“Arduino: Examples”********。
 
 ## <a name="provision-azure-services"></a>预配 Azure 服务
 
@@ -118,7 +118,7 @@ static const char* iot_event = "{\"topic\":\"iot\"}";
 
 2. DevKit 将重新启动并开始运行代码。
 
-你可能会收到“错误:AZ3166:未知程序包”错误消息。 如果未正确刷新开发板包索引，则会出现此错误。 要解决此问题，请查看 [IoT DevKit 常见问题解答中的“unknown package”（未知程序包）错误](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)。
+可能会出现“错误: AZ3166: 未知的包”错误消息。 如果未正确刷新开发板包索引，则会出现此错误。 要解决此问题，请查看 [IoT DevKit 常见问题解答中的“unknown package”（未知程序包）错误](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)。
 
 ## <a name="test-the-project"></a>测试项目
 
@@ -167,7 +167,7 @@ Arduino 草图将事件发送到 Azure IoT 中心。 此事件触发 Azure Funct
 
 3. 使用[某种实用工具](https://gearside.com/nebula/utilities/twitter-bearer-token-generator/)，通过这两个密钥生成 Twitter 持有者令牌。
 
-4. 在 [Azure 门户](https://portal.azure.com/){:target="_blank"} 中，转到“资源组”并找到“Shake, Shake”项目的 Azure 函数（类型：应用服务）。 名称始终包含“shake...”字符串。
+4. 在 [Azure 门户](https://portal.azure.com/){:target="_blank"} 中，转到“资源组”并找到“Shake, Shake”项目的 Azure 函数（类型：应用服务）。**** 名称始终包含“shake...”字符串。
 
    ![azure-function](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
 
@@ -179,7 +179,7 @@ Arduino 草图将事件发送到 Azure IoT 中心。 此事件触发 Azure Funct
   
    ![twitter-token](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
 
-6. 保存文件并单击“运行”。
+6. 保存文件并单击“运行”。****
 
 ## <a name="problems-and-feedback"></a>问题和反馈
 
@@ -196,8 +196,6 @@ Arduino 草图将事件发送到 Azure IoT 中心。 此事件触发 Azure Funct
 2. 在 [Azure 门户](https://portal.azure.com/)中，找到创建的 Azure Functions 应用并将其重启：
 
    ![azure-function-restart](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
-
-### <a name="feedback"></a>反馈
 
 如果遇到其他问题，请参阅 [IoT DevKit 常见问题解答](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)，或通过以下渠道联系我们：
 

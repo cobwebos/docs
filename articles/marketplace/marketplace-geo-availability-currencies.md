@@ -1,22 +1,22 @@
 ---
-title: 上市地区和货币支持 |Azure
-description: Azure Marketplace 和 AppSource 中上市
-services: Azure, Marketplace, Compute, Storage, Networking
-author: qianw211
+title: Microsoft 商业市场的地域可用性和货币支持
+description: 商业市场中交易的地域可用性和货币支持
 ms.service: marketplace
-ms.topic: article
-ms.date: 02/28/2019
-ms.author: ellacroi
-ms.openlocfilehash: 215a15da2868a4543ba1108899981f40f7bf4e07
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+author: keferna
+ms.author: keferna
+ms.date: 01/29/2020
+ms.openlocfilehash: 57d1564c155a553571499a47a5c1d83c80c074b3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938260"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120001"
 ---
-# <a name="geographic-availability-and-currency-support"></a>上市地区和货币支持
+# <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>商业市场的地域可用性和货币支持
 
-141 地理位置中定义的客户的帐单邮寄地址，可购买 azure Marketplace 产品/服务和 17 种货币，即可完成事务。 下的表列出每个受支持的地理位置，其[ISO 3166 两位数字法典](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)，以及已分配的货币。
+可在按客户的帐单地址定义的 141 个地理位置购买商业市场产品/服务，并可使用 17 个币种完成交易。 下表列出了每个受支持的地理位置、[ISO 3166 2 位 alpha 代码](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)以及分配的货币。
 
 |   国家/地区名称               |   ISO-2   |   货币   |
 |-------------------------------------|-----------|--------------|
@@ -44,10 +44,11 @@ ms.locfileid: "64938260"
 | 文莱                              | BN        | USD          |
 | 保加利亚                            | BG        | EUR          |
 | 喀麦隆                            | CM        | USD          |
-| 加拿大                              | CA        | CAD          |
+| Canada                              | CA        | CAD          |
 | 佛得角                          | CV        | USD          |
 | 开曼群岛                      | KY        | USD          |
 | 智利                               | CL        | USD          |
+| 中国\**                            | CN        | 空值          |
 | 哥伦比亚                            | CO        | USD          |
 | 哥斯达黎加                          | CR        | USD          |
 | 科特迪瓦                       | CI        | USD          |
@@ -72,7 +73,7 @@ ms.locfileid: "64938260"
 | 希腊                              | GR        | EUR          |
 | 危地马拉                           | GT        | USD          |
 | 洪都拉斯                            | HN        | USD          |
-| 中国香港特别行政区                       | HK        | USD          |
+| 香港特别行政区                       | HK        | USD          |
 | 匈牙利                             | HU        | EUR          |
 | 冰岛                             | IS        | EUR          |
 | 印度                               | IN        | INR          |
@@ -86,7 +87,7 @@ ms.locfileid: "64938260"
 | 约旦                              | JO        | USD          |
 | 哈萨克斯坦                          | KZ        | USD          |
 | 肯尼亚                               | KE        | USD          |
-| 韩国                       | KR        | KRW          |
+| 韩国（南部）                       | KR        | KRW          |
 | 科威特                              | KW        | USD          |
 | 吉尔吉斯斯坦                          | KG        | USD          |
 | 拉脱维亚                              | LV        | EUR          |
@@ -112,7 +113,7 @@ ms.locfileid: "64938260"
 | 尼加拉瓜                           | NI        | USD          |
 | 新西兰                         | NZ        | NZD          |
 | 尼日利亚                             | NG        | USD          |
-| 挪威                              | 否        | NOK          |
+| 挪威                              | 是        | NOK          |
 | 阿曼                                | OM        | USD          |
 | 巴基斯坦                            | PK        | USD          |
 | 巴勒斯坦民族权力机构               | PS        | USD          |
@@ -147,13 +148,13 @@ ms.locfileid: "64938260"
 | 突尼斯                             | TN        | USD          |
 | 土耳其                              | TR        | USD          |
 | 土库曼斯坦                        | TM        | USD          |
-| 梵蒂冈 （教区）             | VA        | EUR          |
-| 美属维尔京群岛 | VI        | USD          |
+| 梵蒂冈（教区）             | VA        | EUR          |
+| 维尔京群岛（美属） | VI        | USD          |
 | 乌干达                              | UG        | USD          |
 | 乌克兰                             | UA        | USD          |
 | 阿拉伯联合酋长国                | AE        | USD          |
-| 英国                      | GB        | GBP          |
-| 美国                       | 美国        | USD          |
+| United Kingdom                      | GB        | GBP          |
+| United States                       | 美国        | USD          |
 | 乌拉圭                             | UY        | USD          |
 | 乌兹别克斯坦                          | UZ        | USD          |
 | 委内瑞拉                           | VE        | USD          |
@@ -163,4 +164,6 @@ ms.locfileid: "64938260"
 | 津巴布韦                            | ZW        | USD          |
 |   |   |   |
 
-\* 对于在巴西的客户，Marketplace 通过云解决方案提供商 (CSP) 使用美元。
+\* 对于巴西的客户，市场通过云解决方案提供商 (CSP) 使用 USD。
+
+\** 仅适用于免费和 BYOL VM 映像。

@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: rli; juliako;
-ms.openlocfilehash: 3e4844c3174e41ca7f6f5667a2777aba11f70f11
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: ril
+ms.reviewer: juliako
+ms.openlocfilehash: a8db8de6ef062dcf757f3d264379677d6550ea3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60874839"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "69997680"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>使用 Azure 媒体分析进行面部修订演练
 
@@ -39,7 +40,7 @@ ms.locfileid: "60874839"
 
 ### <a name="download-and-setup"></a>下载和安装
 
-1. 从[此处](https://github.com/Azure/Azure-Media-Services-Explorer)下载 AMSE 工具。
+1. 从[此处](https://aka.ms/amseforv2)下载 AMSE for AMS v2 工具。
 1. 使用服务密钥登录媒体服务帐户。
 
     若要获取帐户名称和密钥信息，请转到 [Azure 门户](https://portal.azure.com/)并选择 AMS 帐户。 然后，选择“设置”>“密钥”。 “管理密钥”窗口显示帐户名称、主密钥和辅助密钥。 复制帐户名称和主密钥的值。
@@ -71,13 +72,13 @@ ms.locfileid: "60874839"
     ![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
 
 3. （可选）编辑 annotations.json 文件，例如增加边界框边界。 
-4. 右键单击第一步中的输出资产，选择“Redactor”，在“修正”模式下运行。 
+4. 右键单击第一步中的输出资产，选择“Redactor”，在“修正”  模式下运行。 
 
     ![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
 
 5. 下载或共享最终修正的输出资产。 
 
-    ![面部修正](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
+    ![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
 
 ## <a name="azure-media-redactor-visualizer-open-source-tool"></a>Azure Media Redactor Visualizer 开源工具
 

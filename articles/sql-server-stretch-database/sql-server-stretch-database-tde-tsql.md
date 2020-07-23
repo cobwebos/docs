@@ -1,5 +1,5 @@
 ---
-title: 为 Stretch Database TSQL 启用透明数据加密 - Azure | Microsoft Docs
+title: 为 Stretch Database 启用透明数据加密 (T-SQL)
 description: 为 Azure TSQL 上的 SQL Server Stretch Database 启用透明数据加密 (TDE)
 services: sql-server-stretch-database
 documentationcenter: ''
@@ -13,12 +13,12 @@ author: blazem-msft
 ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
-ms.openlocfilehash: 9718db18ea675fa744262f0736aff3c07732e1d1
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
-ms.translationtype: MT
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 6f1f5f55348069dbfe11b4d5857d93f8ba8c9b19
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002875"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74033957"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure-transact-sql"></a>为 Azure 上的 Stretch Database 启用透明数据加密 (TDE) (Transact-SQL)
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "66002875"
 
 透明数据加密 (TDE) 无需更改应用程序，即可对静止的数据库、关联的备份和事务日志执行实时加密和解密，帮助防止恶意活动的威胁。
 
-TDE 使用称为数据库加密密钥的对称密钥来加密整个数据库的存储。 数据库加密密钥由内置服务器证书保护。 内置服务器证书对每个 Azure 服务器都是唯一的。 Microsoft 每隔 90 天自动轮换这些证书至少一次。 有关 TDE 的一般描述，请参阅[透明数据加密 (TDE)]。
+TDE 使用称为数据库加密密钥的对称密钥来加密整个数据库的存储。 数据库加密密钥由内置服务器证书保护。 内置服务器证书对每个 Azure 服务器都是唯一的。 Microsoft 至少每 90 天自动轮换这些证书。 有关 TDE 的一般说明，请参阅[透明数据加密 (TDE)]。
 
 ## <a name="enabling-encryption"></a>启用加密
 对于存储从启用延伸的 SQL Server 数据库迁移的数据的 Azure 数据库，若要启用 TDE，请执行以下操作：
@@ -54,7 +54,7 @@ ALTER DATABASE [database_name] SET ENCRYPTION OFF;
 ## <a name="verifying-encryption"></a>验证加密
 若要验证存储从启用延伸的 SQL Server 数据库迁移的数据的 Azure 数据库的加密状态，请执行以下操作：
 
-1. 使用在 master 数据库中充当管理员或 *dbmanager* 角色成员的登录名，连接到 **master** 数据库或实例数据库
+1. 使用在 master 数据库中充当管理员或 **dbmanager** 角色成员的登录名，连接到 *master* 数据库或实例数据库
 2. 执行以下语句来加密数据库。
 
 ```sql

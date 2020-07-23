@@ -1,25 +1,25 @@
 ---
-title: 教程 - 将流量路由到加权终结点 - Azure 流量管理器
+title: 教程：将流量路由到加权终结点 - Azure 流量管理器
 description: 本教程文章介绍如何使用流量管理器将流量路由到加权终结点。
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 Customer intent: As an IT Admin, I want to distribute traffic based on the weight assigned to a website endpoint so that I can control the user traffic to a given website.
 ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
-ms.author: allensu
-ms.openlocfilehash: f9e2b6f6a45279c52e19a63509c57fb34e739330
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.author: rohink
+ms.openlocfilehash: a4738b2e36786cd627f53af3e36bd8f1e3fbc375
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258374"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "76939483"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>教程：使用流量管理器控制加权终结点的流量路由
 
 本教程介绍如何通过 Azure 流量管理器使用加权路由方法控制用户流量在终结点之间的路由。 在此路由方法中，需要为流量管理器配置文件配置中的每个终结点分配权重。 然后，系统会根据分配给每个终结点的权重进行用户流量路由。 该权重是从 1 到 1,000 的整数。 分配给终结点的权重值越高，其优先级就越高。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 IIS 上创建两个运行基本网站的 VM。
@@ -40,7 +40,7 @@ ms.locfileid: "66258374"
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 ### <a name="create-websites"></a>创建网站
 
@@ -64,7 +64,7 @@ ms.locfileid: "66258374"
    - “入站端口规则”   >   “公共入站端口”：选择“允许所选端口”  。
    - “入站端口规则”   >   “选择入站端口”：在下拉框中选择“RDP”和“HTTP”。  
 
-3. 选择“管理”选项卡，或者选择“下一步:   磁盘”，然后选择“下一步:  网络”，然后选择“下一步:  管理”。 在“监视”  下，将“启动诊断”  设置为“关闭”。 
+3. 选择“管理”选项卡，或者选择“下一步:  **磁盘”，然后选择“下一步:**  网络”，然后选择“下一步:  管理”。 在“监视”  下，将“启动诊断”  设置为“关闭”。 
 4. 选择“查看 + 创建”  。
 5. 查看设置，并单击“创建”。   
 6. 按步骤创建另一个 VM，其名称为 *myIISVMWestEurope*，其“资源组”名称为 *myResourceGroupTM2*，其“位置”为“西欧”，所有其他设置与 *myIISVMEastUS* 相同。   
@@ -157,7 +157,7 @@ ms.locfileid: "66258374"
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | Type                    | 输入 Azure 终结点。                                   |
+    | 类型                    | 输入 Azure 终结点。                                   |
     | 名称           | 输入 **myEastUSEndpoint**。                                        |
     | 目标资源类型           | 选择“公共 IP 地址”。                           |
     | 目标资源          | 选择一个公共 IP 地址，以显示同一订阅下具有公共 IP 地址的资源的列表。 在“资源”中，选择名为 **myIISVMEastUS-ip** 的公共 IP 地址。  这是美国东部的 IIS 服务器 VM 的公共 IP 地址。|

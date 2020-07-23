@@ -4,7 +4,7 @@ description: 在 Azure 中如何通过重新部署 Linux 虚拟机来缓解 SSH 
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: genlin
-manager: jeconnoc
+manager: dcscontentpm
 tags: azure-resource-manager,top-support-issue
 ms.assetid: e9530dd6-f5b0-4160-b36b-d75151d99eb7
 ms.service: virtual-machines-linux
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 1c1ac1a20c1c06db10c1462c95f4d924c5ec09d1
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 18e96f9463176b0fce04252492eea6dbede416c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62116935"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79531101"
 ---
 # <a name="redeploy-linux-virtual-machine-to-new-azure-node"></a>将 Linux 虚拟机重新部署到新的 Azure 节点
 如果在对 SSH 或应用程序访问 Azure 中 Linux 虚拟机 (VM) 进行故障排除时遇到困难，重新部署 VM 可能会有帮助。 重新部署 VM 时，将 VM 移到 Azure 基础结构中的新节点，然后重新提供支持。 所有配置选项和关联资源均保留。 本文介绍如何使用 Azure CLI 或 Azure 门户重新部署 VM。
@@ -30,18 +30,22 @@ ms.locfileid: "62116935"
 ## <a name="use-the-azure-cli"></a>使用 Azure CLI
 安装最新的 [Azure CLI](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户。
 
-使用 [az vm redeploy](/cli/azure/vm) 重新部署 VM。 以下示例在名为“myResourceGroup”的资源组中重新部署名为“myVM”的 VM：
+使用 [az vm redeploy](/cli/azure/vm) 重新部署 VM。 以下示例在名为“myResourceGroup”  的资源组中重新部署名为“myVM”  的 VM：
 
 ```azurecli
 az vm redeploy --resource-group myResourceGroup --name myVM 
 ```
 
 ## <a name="use-the-azure-classic-cli"></a>使用 Azure 经典 CLI
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
+
 安装[最新的 Azure 经典 CLI](../../cli-install-nodejs.md) 并登录到 Azure 帐户。 请确保处于资源管理器模式 (`azure config mode arm`)。
 
-以下示例在名为“myResourceGroup”的资源组中重新部署名为“myVM”的 VM：
+以下示例在名为“myResourceGroup”  的资源组中重新部署名为“myVM”  的 VM：
 
-```azurecli
+```console
 azure vm redeploy --resource-group myResourceGroup --vm-name myVM 
 ```
 

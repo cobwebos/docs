@@ -1,20 +1,16 @@
 ---
 title: Azure Functions 的 Microsoft Graph 绑定
 description: 了解如何在 Azure Functions 中使用 Microsoft Graph 触发器和绑定。
-services: functions
 author: craigshoemaker
-manager: jeconnoc
-ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: f112bdf9eacf51852659ab49a5673b0c8bfb0e46
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 290765b17cf34417176930dc9116309bdfd754c8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61438102"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506530"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions 的 Microsoft Graph 绑定
 
@@ -32,7 +28,7 @@ Microsoft Graph 扩展提供了以下绑定：
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!Note]
-> Azure Functions 2.x 版的 Microsoft Graph 绑定目前处于预览状态。 Functions 1.x 版不支持这些绑定。
+> Azure Functions 2.x 版及更高版本的 Microsoft Graph 绑定目前处于预览状态。 Functions 1.x 版不支持这些绑定。
 
 ## <a name="packages"></a>包
 
@@ -44,11 +40,11 @@ Microsoft Graph 扩展提供了以下绑定：
 
 可通过绑定扩展获取 Microsoft Graph 绑定。 绑定扩展是 Azure Functions 运行时的可选组件。 本部分介绍如何设置 Microsoft Graph 扩展和身份验证令牌扩展。
 
-### <a name="enabling-functions-20-preview"></a>启用 Functions 2.0 预览版
+### <a name="enabling-functions-20"></a>启用 Functions 2.0
 
-绑定扩展仅适用于 Azure Functions 2.0 预览版。 
+绑定扩展仅适用于 Azure Functions 2.0。 
 
-有关如何将函数应用设置为使用 Functions 运行时预览版 2.0 的信息，请参阅[如何面向 Azure Functions 运行时版本](set-runtime-version.md)。
+有关如何将函数应用设置为使用 2.0 版的 Functions 运行时的信息，请参阅[如何面向 Azure Functions 运行时版本](set-runtime-version.md)。
 
 ### <a name="installing-the-extension"></a>安装扩展
 
@@ -63,7 +59,7 @@ Microsoft Graph 扩展提供了以下绑定：
 
 ### <a name="configuring-authentication--authorization"></a>配置身份验证/授权
 
-本文介绍的绑定需要使用一个标识。 这样 Microsoft Graph 就可以强制执行权限并审核交互。 此标识可以是访问你的应用程序的用户或应用程序本身。 若要配置此标识，请使用 Azure Active Directory 设置[应用服务身份验证/授权](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)。 还需要请求你的函数所需的任意资源权限。
+本文介绍的绑定需要使用一个标识。 这样 Microsoft Graph 就可以强制执行权限并审核交互。 此标识可以是访问你的应用程序的用户或应用程序本身。 若要配置此标识，请使用 Azure Active Directory 设置[应用服务身份验证/授权](../app-service/overview-authentication-authorization.md)。 还需要请求你的函数所需的任意资源权限。
 
 > [!Note] 
 > Microsoft Graph 扩展仅支持 Azure AD 身份验证。 用户需要使用工作或学校帐户登录。
@@ -209,11 +205,11 @@ module.exports = function (context, req) {
 
 下表解释了在 function.json 文件和 `Token` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|name||必需 - 在身份验证令牌的函数代码中使用的变量名称。 请参阅[在代码中使用身份验证令牌输入绑定](#token-input-code)。|
-|type||必需 - 必须设置为 `token`。|
-|direction||必需 - 必须设置为 `in`。|
+|**name**| 不适用 |必需 - 在身份验证令牌的函数代码中使用的变量名称。 请参阅[在代码中使用身份验证令牌输入绑定](#token-input-code)。|
+|**type**| 不适用 |必需 - 必须设置为 `token`。|
+|**direction**| 不适用 |必需 - 必须设置为 `in`。|
 |**identity**|**标识**|必需 - 将用于执行操作的标识。 可以是以下值之一：<ul><li><code>userFromRequest</code> - 仅对 [HTTP 触发器] 有效。 使用调用者的标识。</li><li><code>userFromId</code> - 使用具有指定 ID 的已登录用户的标识。 请参阅 <code>userId</code> 属性。</li><li><code>userFromToken</code> - 使用指定令牌代表的标识。 请参阅 <code>userToken</code> 属性。</li><li><code>clientCredentials</code> - 使用函数应用的标识。</li></ul>|
 |**userId**|**UserId**  |仅在将 _identity_ 设置为 时为必需`userFromId`。 与已登录用户关联的用户主体 ID。|
 |**userToken**|**UserToken**|仅在将 _identity_ 设置为 时为必需`userFromToken`。 函数应用的有效令牌。 |
@@ -344,11 +340,11 @@ module.exports = function (context, req) {
 
 下表解释了在 function.json 文件和 `Excel` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|name||必需 - 在 Excel 表的函数代码中使用的变量名称。 请参阅[在代码中使用 Excel 表输入绑定](#excel-input-code)。|
-|type||必需 - 必须设置为 `excel`。|
-|direction||必需 - 必须设置为 `in`。|
+|**name**| 不适用 |必需 - 在 Excel 表的函数代码中使用的变量名称。 请参阅[在代码中使用 Excel 表输入绑定](#excel-input-code)。|
+|**type**| 不适用 |必需 - 必须设置为 `excel`。|
+|**direction**| 不适用 |必需 - 必须设置为 `in`。|
 |**identity**|**标识**|必需 - 将用于执行操作的标识。 可以是以下值之一：<ul><li><code>userFromRequest</code> - 仅对 [HTTP 触发器] 有效。 使用调用者的标识。</li><li><code>userFromId</code> - 使用具有指定 ID 的已登录用户的标识。 请参阅 <code>userId</code> 属性。</li><li><code>userFromToken</code> - 使用指定令牌代表的标识。 请参阅 <code>userToken</code> 属性。</li><li><code>clientCredentials</code> - 使用函数应用的标识。</li></ul>|
 |**userId**|**UserId**  |仅在将 _identity_ 设置为 时为必需`userFromId`。 与已登录用户关联的用户主体 ID。|
 |**userToken**|**UserToken**|仅在将 _identity_ 设置为 时为必需`userFromToken`。 函数应用的有效令牌。 |
@@ -506,11 +502,11 @@ module.exports = function (context, req) {
 
 下表解释了在 function.json 文件和 `Excel` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|name||必需 - 在身份验证令牌的函数代码中使用的变量名称。 请参阅[在代码中使用 Excel 表输出绑定](#excel-output-code)。|
-|type||必需 - 必须设置为 `excel`。|
-|direction||必需 - 必须设置为 `out`。|
+|**name**| 不适用 |必需 - 在身份验证令牌的函数代码中使用的变量名称。 请参阅[在代码中使用 Excel 表输出绑定](#excel-output-code)。|
+|**type**| 不适用 |必需 - 必须设置为 `excel`。|
+|**direction**| 不适用 |必需 - 必须设置为 `out`。|
 |**identity**|**标识**|必需 - 将用于执行操作的标识。 可以是以下值之一：<ul><li><code>userFromRequest</code> - 仅对 [HTTP 触发器] 有效。 使用调用者的标识。</li><li><code>userFromId</code> - 使用具有指定 ID 的已登录用户的标识。 请参阅 <code>userId</code> 属性。</li><li><code>userFromToken</code> - 使用指定令牌代表的标识。 请参阅 <code>userToken</code> 属性。</li><li><code>clientCredentials</code> - 使用函数应用的标识。</li></ul>|
 |**UserId** |**userId** |仅在将 _identity_ 设置为 时为必需`userFromId`。 与已登录用户关联的用户主体 ID。|
 |**userToken**|**UserToken**|仅在将 _identity_ 设置为 时为必需`userFromToken`。 函数应用的有效令牌。 |
@@ -652,11 +648,11 @@ module.exports = function (context, req) {
 
 下表解释了在 function.json 文件和 `OneDrive` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|name||必需 - 在文件的函数代码中使用的变量名称。 请参阅[在代码中使用 OneDrive 文件输入绑定](#onedrive-input-code)。|
-|type||必需 - 必须设置为 `onedrive`。|
-|direction||必需 - 必须设置为 `in`。|
+|**name**| 不适用 |必需 - 在文件的函数代码中使用的变量名称。 请参阅[在代码中使用 OneDrive 文件输入绑定](#onedrive-input-code)。|
+|**type**| 不适用 |必需 - 必须设置为 `onedrive`。|
+|**direction**| 不适用 |必需 - 必须设置为 `in`。|
 |**identity**|**标识**|必需 - 将用于执行操作的标识。 可以是以下值之一：<ul><li><code>userFromRequest</code> - 仅对 [HTTP 触发器] 有效。 使用调用者的标识。</li><li><code>userFromId</code> - 使用具有指定 ID 的已登录用户的标识。 请参阅 <code>userId</code> 属性。</li><li><code>userFromToken</code> - 使用指定令牌代表的标识。 请参阅 <code>userToken</code> 属性。</li><li><code>clientCredentials</code> - 使用函数应用的标识。</li></ul>|
 |**userId**|**UserId**  |仅在将 _identity_ 设置为 时为必需`userFromId`。 与已登录用户关联的用户主体 ID。|
 |**userToken**|**UserToken**|仅在将 _identity_ 设置为 时为必需`userFromToken`。 函数应用的有效令牌。 |
@@ -674,7 +670,7 @@ module.exports = function (context, req) {
 此绑定将向 .NET 函数公开以下类型：
 - byte[]
 - Stream
-- 字符串
+- string
 - Microsoft.Graph.DriveItem
 
 
@@ -800,11 +796,11 @@ module.exports = function (context, req) {
 
 下表解释了在 function.json 文件和 `OneDrive` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|name||必需 - 在文件的函数代码中使用的变量名称。 请参阅[在代码中使用 OneDrive 文件输出绑定](#onedrive-output-code)。|
-|type||必需 - 必须设置为 `onedrive`。|
-|direction||必需 - 必须设置为 `out`。|
+|**name**| 不适用 |必需 - 在文件的函数代码中使用的变量名称。 请参阅[在代码中使用 OneDrive 文件输出绑定](#onedrive-output-code)。|
+|**type**| 不适用 |必需 - 必须设置为 `onedrive`。|
+|**direction**| 不适用 |必需 - 必须设置为 `out`。|
 |**identity**|**标识**|必需 - 将用于执行操作的标识。 可以是以下值之一：<ul><li><code>userFromRequest</code> - 仅对 [HTTP 触发器] 有效。 使用调用者的标识。</li><li><code>userFromId</code> - 使用具有指定 ID 的已登录用户的标识。 请参阅 <code>userId</code> 属性。</li><li><code>userFromToken</code> - 使用指定令牌代表的标识。 请参阅 <code>userToken</code> 属性。</li><li><code>clientCredentials</code> - 使用函数应用的标识。</li></ul>|
 |**UserId** |**userId** |仅在将 _identity_ 设置为 时为必需`userFromId`。 与已登录用户关联的用户主体 ID。|
 |**userToken**|**UserToken**|仅在将 _identity_ 设置为 时为必需`userFromToken`。 函数应用的有效令牌。 |
@@ -822,7 +818,7 @@ module.exports = function (context, req) {
 此绑定将向 .NET 函数公开以下类型：
 - byte[]
 - Stream
-- 字符串
+- string
 - Microsoft.Graph.DriveItem
 
 
@@ -951,11 +947,11 @@ module.exports = function (context, req) {
 
 下表解释了在 function.json 文件和 `Outlook` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|name||必需 - 在邮件的函数代码中使用的变量名称。 请参阅[在代码中使用 Outlook 邮件输出绑定](#outlook-output-code)。|
-|type||必需 - 必须设置为 `outlook`。|
-|direction||必需 - 必须设置为 `out`。|
+|**name**| 不适用 |必需 - 在邮件的函数代码中使用的变量名称。 请参阅[在代码中使用 Outlook 邮件输出绑定](#outlook-output-code)。|
+|**type**| 不适用 |必需 - 必须设置为 `outlook`。|
+|**direction**| 不适用 |必需 - 必须设置为 `out`。|
 |**identity**|**标识**|必需 - 将用于执行操作的标识。 可以是以下值之一：<ul><li><code>userFromRequest</code> - 仅对 [HTTP 触发器] 有效。 使用调用者的标识。</li><li><code>userFromId</code> - 使用具有指定 ID 的已登录用户的标识。 请参阅 <code>userId</code> 属性。</li><li><code>userFromToken</code> - 使用指定令牌代表的标识。 请参阅 <code>userToken</code> 属性。</li><li><code>clientCredentials</code> - 使用函数应用的标识。</li></ul>|
 |**userId**|**UserId**  |仅在将 _identity_ 设置为 时为必需`userFromId`。 与已登录用户关联的用户主体 ID。|
 |**userToken**|**UserToken**|仅在将 _identity_ 设置为 时为必需`userFromToken`。 函数应用的有效令牌。 |
@@ -972,7 +968,7 @@ module.exports = function (context, req) {
 此绑定将向 .NET 函数公开以下类型：
 - Microsoft.Graph.Message
 - Newtonsoft.Json.Linq.JObject
-- 字符串
+- string
 - 自定义对象类型（使用结构化模型绑定）
 
 
@@ -987,7 +983,7 @@ module.exports = function (context, req) {
 - [Microsoft Graph webhook 订阅输入绑定](#webhook-input)，使你可以列出现有的订阅并选择性地更新这些订阅。
 - [Microsoft Graph webhook 订阅输出绑定](#webhook-output)，使你可以创建或删除 webhook 订阅。
 
-这些绑定本身不需要任何 Azure AD 权限，但是你需要请求你想要响应的资源类型的相关权限。 有关每种资源类型所需的权限列表，请参阅[订阅权限](https://docs.microsoft.com/graph/api/subscription-post-subscriptions?view=graph-rest-1.0)。
+这些绑定本身不需要任何 Azure AD 权限，但是你需要请求你想要响应的资源类型的相关权限。 有关每种资源类型所需的权限列表，请参阅[订阅权限](/graph/api/subscription-post-subscriptions?view=graph-rest-1.0)。
 
 有关 webhook 的详细信息，请参阅[使用 Microsoft Graph 中的 webhook]。
 
@@ -1088,17 +1084,17 @@ module.exports = function (context) {
 
 ### <a name="webhook-trigger---attributes"></a>Webhook 触发器 - 属性
 
-在 [C# 类库](functions-dotnet-class-library.md)中，使用 [GraphWebHookTrigger](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookTriggerAttribute.cs) 特性。
+在 [C# 类库](functions-dotnet-class-library.md)中，使用 [GraphWebhookTrigger](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebhookTriggerAttribute.cs) 特性。
 
 ### <a name="webhook-trigger---configuration"></a>Webhook 触发器 - 配置
 
-下表解释了在 function.json 文件和 `GraphWebHookTrigger` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `GraphWebhookTrigger` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|name||必需 - 在邮件的函数代码中使用的变量名称。 请参阅[在代码中使用 Outlook 邮件输出绑定](#outlook-output-code)。|
-|type||必需 - 必须设置为 `graphWebhook`。|
-|direction||必需 - 必须设置为 `trigger`。|
+|**name**| 不适用 |必需 - 在邮件的函数代码中使用的变量名称。 请参阅[在代码中使用 Outlook 邮件输出绑定](#outlook-output-code)。|
+|**type**| 不适用 |必需 - 必须设置为 `graphWebhook`。|
+|**direction**| 不适用 |必需 - 必须设置为 `trigger`。|
 |**resourceType**|**ResourceType**|必需 - 此函数应为其响应 webhook 的图表资源。 可以是以下值之一：<ul><li><code>#Microsoft.Graph.Message</code> - 对 Outlook 邮件进行的更改。</li><li><code>#Microsoft.Graph.DriveItem</code> - 对 OneDrive 根项目进行的更改。</li><li><code>#Microsoft.Graph.Contact</code> - 对 Outlook 中的联系人所做的更改。</li><li><code>#Microsoft.Graph.Event</code> - 对 Outlook 日历项所做的更改。</li></ul>|
 
 > [!Note]
@@ -1240,18 +1236,18 @@ module.exports = function (context, req) {
 
 ### <a name="webhook-input---attributes"></a>Webhook 输入 - 属性
 
-在 [C# 类库](functions-dotnet-class-library.md)中，使用 [GraphWebHookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) 特性。
+在 [C# 类库](functions-dotnet-class-library.md)中，使用 [GraphWebhookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebhookSubscriptionAttribute.cs) 特性。
 
 ### <a name="webhook-input---configuration"></a>Webhook 输入 - 配置
 
-下表解释了在 function.json 文件和 `GraphWebHookSubscription` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `GraphWebhookSubscription` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|name||必需 - 在邮件的函数代码中使用的变量名称。 请参阅[在代码中使用 Outlook 邮件输出绑定](#outlook-output-code)。|
-|type||必需 - 必须设置为 `graphWebhookSubscription`。|
-|direction||必需 - 必须设置为 `in`。|
-|**filter**|**筛选器**| 如果设置为 `userFromRequest`，则此绑定将只检索调用者所拥有的订阅（仅对 [HTTP 触发器]）。| 
+|**name**| 不适用 |必需 - 在邮件的函数代码中使用的变量名称。 请参阅[在代码中使用 Outlook 邮件输出绑定](#outlook-output-code)。|
+|**type**| 不适用 |必需 - 必须设置为 `graphWebhookSubscription`。|
+|**direction**| 不适用 |必需 - 必须设置为 `in`。|
+|**filter**|**Filter**| 如果设置为 `userFromRequest`，则此绑定将只检索调用者所拥有的订阅（仅对 [HTTP 触发器]有效）。| 
 
 ### <a name="webhook-input---usage"></a>Webhook 输入 - 用法
 
@@ -1381,28 +1377,28 @@ module.exports = function (context, req) {
 
 ### <a name="webhook-output---attributes"></a>Webhook 输出 - 属性
 
-在 [C# 类库](functions-dotnet-class-library.md)中，使用 [GraphWebHookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) 特性。
+在 [C# 类库](functions-dotnet-class-library.md)中，使用 [GraphWebhookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebhookSubscriptionAttribute.cs) 特性。
 
 ### <a name="webhook-output---configuration"></a>Webhook 输出 - 配置
 
-下表解释了在 function.json 文件和 `GraphWebHookSubscription` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `GraphWebhookSubscription` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|name||必需 - 在邮件的函数代码中使用的变量名称。 请参阅[在代码中使用 Outlook 邮件输出绑定](#outlook-output-code)。|
-|type||必需 - 必须设置为 `graphWebhookSubscription`。|
-|direction||必需 - 必须设置为 `out`。|
+|**name**| 不适用 |必需 - 在邮件的函数代码中使用的变量名称。 请参阅[在代码中使用 Outlook 邮件输出绑定](#outlook-output-code)。|
+|**type**| 不适用 |必需 - 必须设置为 `graphWebhookSubscription`。|
+|**direction**| 不适用 |必需 - 必须设置为 `out`。|
 |**identity**|**标识**|必需 - 将用于执行操作的标识。 可以是以下值之一：<ul><li><code>userFromRequest</code> - 仅对 [HTTP 触发器] 有效。 使用调用者的标识。</li><li><code>userFromId</code> - 使用具有指定 ID 的已登录用户的标识。 请参阅 <code>userId</code> 属性。</li><li><code>userFromToken</code> - 使用指定令牌代表的标识。 请参阅 <code>userToken</code> 属性。</li><li><code>clientCredentials</code> - 使用函数应用的标识。</li></ul>|
 |**userId**|**UserId**  |仅在将 _identity_ 设置为 时为必需`userFromId`。 与已登录用户关联的用户主体 ID。|
 |**userToken**|**UserToken**|仅在将 _identity_ 设置为 时为必需`userFromToken`。 函数应用的有效令牌。 |
-|**action**|**Action**|必需 - 指定绑定应执行的操作。 可以是以下值之一：<ul><li><code>create</code> - 注册新订阅。</li><li><code>delete</code> - 删除指定订阅。</li><li><code>refresh</code> - 刷新指定订阅，避免它过期。</li></ul>|
+|**action**|**操作**|必需 - 指定绑定应执行的操作。 可以是以下值之一：<ul><li><code>create</code> - 注册新订阅。</li><li><code>delete</code> - 删除指定订阅。</li><li><code>refresh</code> - 刷新指定订阅，避免它过期。</li></ul>|
 |**subscriptionResource**|**SubscriptionResource**|仅在将 _action_ 设置为 `create` 时为必需。 指定 Microsoft Graph 资源，以监视其更改。 请参阅[使用 Microsoft Graph 中的 webhook]。 |
 |**changeType**|**ChangeType**|仅在将 _action_ 设置为 `create` 时为必需。 指示订阅资源中将触发通知的更改类型。 支持的值为：`created`、`updated`、`deleted`。 可以使用逗号分隔的列表组合多个值。|
 
 ### <a name="webhook-output---usage"></a>Webhook 输出 - 用法
 
 此绑定将向 .NET 函数公开以下类型：
-- 字符串
+- string
 - Microsoft.Graph.Subscription
 
 
@@ -1426,7 +1422,7 @@ module.exports = function (context, req) {
 参阅语言特定的示例：
 
 * [C# 脚本 (.csx)](#app-identity-refresh---c-script-example)
-* JavaScript
+* Javascript
 
 ### <a name="app-identity-refresh---c-script-example"></a>应用标识刷新 - C# 脚本示例
 

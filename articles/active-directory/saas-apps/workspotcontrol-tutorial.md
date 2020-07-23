@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 41d8d05cf5f900c7fcd5640f8896c715640ebcab
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 086ec95531b01477be56d4b1a19d189f167a020f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65772801"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67086678"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>教程：Azure Active Directory 与 Workspot Control 集成
 
@@ -90,7 +90,7 @@ ms.locfileid: "65772801"
 
 若要配置 Workspot Control 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Workspot Control”  应用程序集成页上，选择“单一登录”  。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Workspot Control”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -142,7 +142,7 @@ ms.locfileid: "65772801"
 
 2. 在页面顶部的工具栏中，选择“设置”。  ，然后选择“SAML”  。
 
-    ![设置选项](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_setup.png)
+    ![安装选项](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_setup.png)
 
 3. 在“安全断言标记语言配置”窗口中，执行以下步骤  ：
  
@@ -176,7 +176,7 @@ ms.locfileid: "65772801"
 
     1. 在“姓名”  字段中，输入“BrittaSimon”  。
   
-    1. 在“用户名”  字段中，输入“brittasimon@yourcompanydomain.extension”*  ***。 例如，输入“BrittaSimon@contoso<i></i>com”  。
+    1. 在“用户名”  字段中，输入“brittasimon@yourcompanydomain.extension”*  ***。 例如，输入“BrittaSimon@contoso<i></i>com”。
 
     1. 选中“显示密码”复选框  。 然后记下“密码”框中显示的值  。
 
@@ -228,7 +228,7 @@ ms.locfileid: "65772801"
 
     1. 在“姓氏”框中，输入用户的姓氏，例如 Simon   。
 
-    1. 在“电子邮件”  框中，输入用户的电子邮件地址，如 Brittasimon@contoso.<i></i>com  。
+    1. 在“电子邮件”框中，输入用户的电子邮件地址，如 Brittasimon@contoso.<i></i>com。
 
     1. 从“角色”下拉列表中选择相应的用户角色  。
 

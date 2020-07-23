@@ -1,24 +1,17 @@
 ---
-title: 在 Azure Application Insights 中进行用户、会话和事件分析 | Microsoft docs
+title: 在 Azure Application Insights 中进行用户、会话和事件分析
 description: 对 Web 应用的用户进行人口统计学分析。
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 7d378c2f72035c3584e1f5cd3c1f0fb9a5d5c2ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0d605286df70988852d1650be58cfb2c395de814
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60372273"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539799"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>在 Application Insights 中进行用户、会话和事件分析
 
@@ -26,7 +19,7 @@ ms.locfileid: "60372273"
 
 ![Application Insights 用户的屏幕截图](./media/usage-segmentation/0001-users.png)
 
-## <a name="get-started"></a>开始使用
+## <a name="get-started"></a>入门
 
 如果在 Application Insights 门户的“用户”、“会话”或“事件”边栏选项卡中没有看到数据，请[了解如何开始使用“使用情况”工具](usage-overview.md)。
 
@@ -54,20 +47,20 @@ ms.locfileid: "60372273"
 ## <a name="saving-and-sharing-reports"></a>保存和共享报表 
 可以将用户报表保存为在“我的报表”部分中专供你使用的报表，或者将其保存为在“共享报表”部分中可供对此 Application Insights 资源具有访问权限的其他所有人访问的共享报表。
 
-若要共享“用户”、“会话”或“事件”报表的链接，请单击工具栏中的“共享”，然后复制该链接。
+若要共享“用户”、“会话”或“事件”报表的链接，请单击工具栏中的“共享”  ，然后复制该链接。
 
-若要共享“用户”、“会话”或“事件”报表中的数据副本，请单击工具栏中的“共享”，然后单击“Word 图标”使用该数据创建一个 Word 文档。 或者，单击主图表上方的“Word 图标”。
+若要共享“用户”、“会话”或“事件”报表中的数据副本，请单击工具栏中的“共享”  ，然后单击“Word 图标”  使用该数据创建一个 Word 文档。 或者，单击主图表上方的“Word 图标”  。
 
 ## <a name="meet-your-users"></a>了解用户
 
-“了解用户”部分显示与当前查询匹配的五个示例用户的相关信息。 除了聚合之外，考虑并探究个体的行为可以洞察人们使用应用的实际方式。
+“了解用户”  部分显示与当前查询匹配的五个示例用户的相关信息。 除了聚合之外，考虑并探究个体的行为可以洞察人们使用应用的实际方式。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要启用使用体验，请首先发送[自定义事件](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent)或[页面视图](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)。
+- 若要启用使用体验，请首先发送[自定义事件](./api-custom-events-metrics.md#trackevent)或[页面视图](./api-custom-events-metrics.md#page-views)。
 - 如果已经发送自定义事件或页面视图，请浏览使用情况工具，了解用户如何使用服务。
     - [漏斗图](usage-funnels.md)
     - [保留](usage-retention.md)
     - [用户流](usage-flows.md)
-    - [工作簿](../../azure-monitor/app/usage-workbooks.md)
+    - [工作簿](../../azure-monitor/platform/workbooks-overview.md)
     - [添加用户上下文](usage-send-user-context.md)

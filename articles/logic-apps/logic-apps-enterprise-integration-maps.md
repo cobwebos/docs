@@ -1,49 +1,45 @@
 ---
-title: 使用 XSLT 映射转换 XML - Azure 逻辑应用 | Microsoft 文档
+title: 使用 XSLT 映射转换 XML
 description: 在带有 Enterprise Integration Pack 的 Azure 逻辑应用中添加用于转换 XML 的 XSLT 映射
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
-manager: carmonm
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: 90f5cfc4-46b2-4ef7-8ac4-486bb0e3f289
 ms.date: 02/06/2019
-ms.openlocfilehash: d0d40ca0ae6ccd4f709d7d94d52764d4affcc215
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: e186b9713c8464f8f37e1e0bf112c4118621925c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244701"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75979410"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>使用带有 Enterprise Integration Pack 的 Azure 逻辑应用中的映射转换 XML
 
-若要将 XML 数据传输格式用于 Azure 逻辑应用中的企业集成方案之间，逻辑应用可以使用映射或更具体地说，可扩展样式表语言转换 (XSLT) 映射。 映射是一个 XML 文档，描述如何将 XML 文档中的数据转换为另一种格式。 
+若要在 Azure 逻辑应用中的企业集成方案格式之间传输 XML 数据，逻辑应用可以使用映射，或者更具体地说，使用可扩展样式表语言转换 (XSLT) 映射。 映射是一个 XML 文档，描述如何将 XML 文档中的数据转换为另一种格式。 
 
 例如，假设你从使用 YYYMMDD 日期格式的客户定期接收 B2B 订单或发票。 但是，你的组织使用 MMDDYYY 日期格式。 在将订单或发票详细信息存储在客户活动数据库中之前，可以定义并使用一个映射将 YYYMMDD 日期格式转换为 MMDDYYY 格式。
 
 有关集成帐户和映射等项目的限制，请参阅 [Azure 逻辑应用的限制和配置信息](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。
 
 * 一个[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，用于存储映射以及企业集成与企业到企业 (B2B) 解决方案的其他项目。
 
-* 如果映射引用了外部程序集，必须将该程序集和映射上传到集成帐户。  请确保您[*首先上载您的程序集*](#add-assembly)，然后上传引用程序集的映射。
+* 如果映射引用了外部程序集，必须将该程序集和映射上传到集成帐户。  请务必[先上传程序集](#add-assembly)，然后再上传引用程序集的映射。 
 
   如果程序集为 2 MB 或更小，可以直接从 Azure 门户将程序集添加到集成帐户。  但是，如果程序集或映射大于 2 MB 但不超过[程序集或映射的大小限制](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)，则可以使用以下选项：
 
   * 对于程序集，需要一个可在其中上传程序集的 Azure Blob 容器，并规划好该容器的位置。 这样，在将程序集添加到集成帐户时，便可以提供该位置。 
   对于此任务，需要提供以下各项：
 
-    | Item | 描述 |
+    | 项目 | 说明 |
     |------|-------------|
-    | [Azure 存储帐户](../storage/common/storage-account-overview.md) | 在此帐户中创建程序集的 Azure Blob 容器。 了解[如何创建存储帐户](../storage/common/storage-quickstart-create-account.md)。 |
+    | [Azure 存储帐户](../storage/common/storage-account-overview.md) | 在此帐户中创建程序集的 Azure Blob 容器。 了解[如何创建存储帐户](../storage/common/storage-account-create.md)。 |
     | Blob 容器 | 可在此容器中上传程序集。 将程序集添加到集成帐户时，也需要此容器的位置。 了解如何[创建 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md)。 |
-    | [Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md) | 借助此工具可以更轻松地管理存储帐户和 Blob 容器。 若要使用存储资源管理器，请[下载并安装 Azure 存储资源管理器](https://www.storageexplorer.com/)。 然后，遵循[存储资源管理器入门](../vs-azure-tools-storage-manage-with-storage-explorer.md)中的步骤将存储资源管理器连接到存储帐户。 要了解详细信息，请参阅[快速入门：使用 Azure 存储资源管理器在对象存储中创建 Blob](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)。 <p>或者，在 Azure 门户中找到并选择你的存储帐户。 在存储帐户菜单中选择“存储资源管理器”。  |
+    | [Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md) | 借助此工具可以更轻松地管理存储帐户和 Blob 容器。 若要使用存储资源管理器，请[下载并安装 Azure 存储资源管理器](https://www.storageexplorer.com/)。 然后，遵循[存储资源管理器入门](../vs-azure-tools-storage-manage-with-storage-explorer.md)中的步骤将存储资源管理器连接到存储帐户。 若要了解详细信息，请参阅[快速入门：使用 Azure 存储资源管理器在对象存储中创建 Blob](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)。 <p>或者，在 Azure 门户中找到并选择你的存储帐户。 在存储帐户菜单中选择“存储资源管理器”。  |
     |||
 
   * 对于映射，目前可以使用 [Azure 逻辑应用 REST API - 映射](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)添加较大的映射。
@@ -78,7 +74,7 @@ ms.locfileid: "66244701"
 有关集成帐户中程序集数量的限制，请参阅 [Azure 逻辑应用的限制和配置](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)。
 
 > [!NOTE]
-> 如果更改您的程序集，还必须更新您的映射映射的更改。
+> 如果更改程序集，则无论映射是否有更改，都必须更新映射。
 
 <a name="smaller-assembly"></a>
 
@@ -104,7 +100,7 @@ ms.locfileid: "66244701"
 
 ### <a name="add-assemblies-more-than-2-mb"></a>添加 2 MB 以上的程序集
 
-若要添加更大的程序集，可将程序集上传到 Azure 存储帐户中的 Azure Blob 容器。 你添加的程序集的步骤因有所不同是否 blob 容器具有公共读取访问权限。 因此，首先请执行以下步骤检查 Blob 容器是否具有公共读取访问权限：[为 Blob 容器设置公共访问级别](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
+若要添加更大的程序集，可将程序集上传到 Azure 存储帐户中的 Azure Blob 容器。 添加程序集的步骤因 Blob 容器是否具有公共读取访问权限而异。 因此，首先请执行以下步骤检查 Blob 容器是否具有公共读取访问权限：[为 Blob 容器设置公共访问级别](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
 
 #### <a name="check-container-access-level"></a>检查容器访问级别
 

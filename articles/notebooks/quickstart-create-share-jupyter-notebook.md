@@ -1,34 +1,34 @@
 ---
-title: 在 Azure 上创建并共享 Jupyter Notebook
-description: 在 Azure Notebooks 上快速创建并运行 Jupyter Notebook，然后与他人共享该笔记本。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: douge
-ms.assetid: 5add60ad-0b4b-4fd5-adf5-eb50ce072d00
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: 在 Azure Notebooks 预览版上创建并共享 Jupyter 笔记本
+description: 在 Azure Notebooks 预览版上快速创建并运行 Jupyter 笔记本，然后与他人共享该笔记本。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 42f5d3abda715d83d58b0d341aed784de639e460
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.custom: tracking-python
+ms.openlocfilehash: 809cb006e1ea40e31d079b40febee6a09714731f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66751795"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832094"
 ---
-# <a name="quickstart-create-and-share-a-notebook"></a>快速入门：创建和共享笔记本
+# <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>快速入门：在 Azure Notebooks 预览版中创建和共享笔记本
 
-1. 转到 [Azure Notebooks](https://notebooks.azure.com) 并登录。 （有关详细信息，请参阅[快速入门 - 登录 Azure Notebooks](quickstart-sign-in-azure-notebooks.md)）。
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+在本快速入门中，你将在 Azure Notebooks 上创建并运行 Jupyter 笔记本，然后与其他人共享该笔记本。 Jupyter 可让你轻松地将 Markdown 文本、可执行代码、持久性数据、图形和可视化效果组合到一个可共享的画布（笔记本）上。 Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyter 笔记本而无需进行安装。
+
+## <a name="prerequisites"></a>先决条件
+无。
+
+## <a name="create-a-new-project-and-notebook"></a>创建新项目和笔记本
+
+1. 转到 [Azure Notebooks 站点 (https://notebooks.azure.com)](https://notebooks.azure.com) 并登录。 有关详细信息，请参阅[快速入门 - 登录到 Azure Notebooks](quickstart-sign-in-azure-notebooks.md)。
 
 1. 在公用个人资料页面中，选择页面顶部的“我的项目”  ：
 
     ![浏览器窗口顶部的“我的项目”链接](media/quickstarts/my-projects-link.png)
 
-1. 在“我的项目”页面上，选择“+ 新建项目”（键盘快捷方式：N）；如果浏览器窗口较窄，该按钮可能仅显示为 +    ：
+1. 在“我的项目”页上，选择“+ 新建项目”（键盘快捷方式：n）。   如果浏览器窗口较窄，则该按钮可能仅显示为“+”  ：
 
     ![“我的项目”页面上的“新建项目”命令](media/quickstarts/new-project-command.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "66751795"
 
 1. 几分钟后，Azure Notebooks 导航到新项目。 通过选择“+ 新建”下拉列表（可能仅显示为 +）并选择“笔记本”，向该项目添加笔记本    ：
 
-    [![](media/quickstarts/empty-project-new-notebook-button.png "新的空项目和添加笔记本命令")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
+    [![](media/quickstarts/empty-project-new-notebook-button.png "A new, empty project and add notebook command")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
 
 1. 在出现的“创建新笔记本”弹出窗口中，输入笔记本的文件名，例如 HelloWorldInPython.ipynb（.ipynb 表示 IronPython (Jupyter) Notebook），并为语言（也称为内核）选择“Python 3.6”      ：
 
@@ -106,4 +106,4 @@ ms.locfileid: "66751795"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [教程：创建并运行 Jupyter Notebook 以执行线性回归](tutorial-create-run-jupyter-notebook.md)
+> [教程：创建并运行 Jupyter 笔记本以执行线性回归](tutorial-create-run-jupyter-notebook.md)

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 03/04/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 10bcbb4c1957735b0ddad6c97325c32be19ddcdb
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 3d4ccc6ecf18eb2eecc3ccc69ed97bf1094b2035
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383405"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206462"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>教程：使用必应图像搜索 API 创建单页应用
 
@@ -40,7 +40,7 @@ ms.locfileid: "66383405"
 
 ## <a name="manage-and-store-user-subscription-keys"></a>管理和存储用户订阅密钥
 
-此应用程序使用 Web 浏览器的一致性存储来存储 API 订阅密钥。 如果尚未存储任何密钥，网页将提示用户输入其密钥进行存储，以备后用。 如果密钥在之后被 API 拒绝，应用会将其从存储中删除。
+此应用程序使用 Web 浏览器的一致性存储来存储 API 订阅密钥。 如果尚未存储任何密钥，网页将提示用户输入其密钥进行存储，以备后用。 如果密钥在之后被 API 拒绝，应用会将其从存储中删除。 此示例使用全局终结点。 也可以使用资源的 Azure 门户中显示的[自定义子域](../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
 
 定义 `storeValue` 和 `retrieveValue` 函数以使用 `localStorage` 对象（如果浏览器支持它）或 Cookie。
@@ -118,7 +118,7 @@ bingSearchOptions(this), getSubscriptionKey())">
 
 必应图像搜索 API 提供若干个[筛选器查询参数](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters)来缩小范围和筛选搜索结果。 此应用程序中的 HTML 表单使用并显示以下参数选项：
 
-|              |                                                                                                                                                                                    |
+| 选项 | 说明 |
 |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `where`      | 用于选择市场（位置和语言）进行搜索的下拉菜单。                                                                                             |
 | `query`      | 用于输入搜索词的文本字段。                                                                                                                                 |
@@ -347,7 +347,7 @@ searchItemRenderers = {
 `index` 和 `count` 参数用于为结果编号，为集合生成 HTML，以及整理内容。 具体而言，它：
 
 * 计算图像缩略图大小（宽度可变，至少为 120 像素，高度则固定为 90 像素）。
-* 生成 HTML `<img>` 标记以显示图像缩略图。
+* 可生成 HTML `<img>` 标记以显示图像缩略图。
 * 生成链接到图像及所在页面的 HTML `<a>` 标记。
 * 可生成显示有关图像及所在站点的信息的说明。
 
@@ -369,7 +369,7 @@ searchItemRenderers = {
     }, // relatedSearches renderer omitted
 ```
 
-`<img>` 标记以及缩略图 URL 的 `h` 和 `w` 字段中均使用了缩略图图像的 `height` 和 `width`。 这使得必应可以返回大小恰好的[缩略图](resize-and-crop-thumbnails.md)。
+`<img>` 标记以及缩略图 URL 的 `h` 和 `w` 字段中均使用了缩略图图像的 `height` 和 `width`。 这使得必应可以返回大小恰好的[缩略图](../bing-web-search/resize-and-crop-thumbnails.md)。
 
 ## <a name="persisting-client-id"></a>保留客户端 ID
 
@@ -381,24 +381,27 @@ searchItemRenderers = {
 
 其次，在新功能广泛应用之前，必应可能会随机选择用户体验该功能。 为每个请求提供相同客户端 ID 可确保被允许看到某个功能的用户可以始终看到该功能。 如果没有客户端 ID，用户可能会看到功能在其搜索结果中随机出现和消失。
 
-浏览器安全策略 (CORS) 可能会阻止将 `X-MSEdge-ClientID` 标头提供给 JavaScript。 当搜索响应的域不同于请求搜索的页面时，会出现此限制。 在生产环境中，应该托管一个服务器端脚本，以便在网页所在的域进行 API 调用，这样就可以解决此策略的问题。 由于脚本与网页的域相同，因此 `X-MSEdge-ClientID` 标头可供 JavaScript 使用。
+浏览器安全策略 (CORS) 可能会阻止将 `X-MSEdge-ClientID` 标头提供给 JavaScript。 当搜索响应的域不同于请求搜索的页面时，会出现此限制。 在生产环境中，应该托管一个服务器端脚本，以便在网页所在的域进行 API 调用，这样就可以解决此策略的问题。 由于脚本具有与网页相同的来源，因此会将 `X-MSEdge-ClientID` 标头提供给 JavaScript。
 
 > [!NOTE]
-> 在生产型 Web 应用程序中，无论如何都应在服务器端执行请求。 否则就必须将必应搜索 API 密钥包含在网页中，这样查看源代码的任何人都可以获得它。 收费取决于 API 订阅密钥下的所有使用量（即使请求是由未经授权的用户发出的，也是如此），因此请确保不要公开你的密钥。
+> 在生产型 Web 应用程序中，无论如何都应在服务器端执行请求。 否则，你的必应搜索 API 密钥必须包含在网页中，该网页可供查看来源的任何人使用。 收费取决于 API 订阅密钥下的所有使用量（即使请求是由未经授权的用户发出的，也是如此），因此请确保不要公开你的密钥。
 
-进行开发时，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 来自此类代理的响应有一个 `Access-Control-Expose-Headers` 标头，此标头将响应头列入允许列表，并将它们提供给 JavaScript。
+进行开发时，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 此类代理的响应包含 `Access-Control-Expose-Headers` 标头，该标头允许响应标头并使其可供 JavaScript 访问。
 
-安装 CORS 代理很容易，教程应用可以用它来访问客户端 ID 标头。 首先，如果尚未安装 Node.js，请[安装它](https://nodejs.org/en/download/)。 然后，在命令窗口中发出以下命令：
+安装 CORS 代理很容易，教程应用可以用它来访问客户端 ID 标头。 首先，如果尚未安装 Node.js，请先[安装](https://nodejs.org/en/download/)。 然后，在命令窗口中发出以下命令：
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-接下来，在 HTML 文件中将必应 Web 搜索终结点更改为：
+接下来，在 HTML 文件中将必应 Web 搜索终结点更改为：\
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+最后，运行下面的命令，启动 CORS 代理：
 
-最后，使用以下命令启动 CORS 代理：
-
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 使用教程应用期间，不要关闭命令窗口；关闭窗口会导致代理停止运行。 在搜索结果下的可展开 HTTP 响应头部分中，现在可以看到 `X-MSEdge-ClientID` 响应头（以及其他响应头），并验证此响应头是否对所有请求都相同。
 

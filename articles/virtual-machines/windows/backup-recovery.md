@@ -1,26 +1,20 @@
 ---
-title: 概述 Azure Windows VM 的备份选项 | Microsoft Docs
+title: 备份选项概述
 description: 概述 Azure Windows 虚拟机的备份选项。
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-windows
-ms.devlang: na
+ms.service: virtual-machines
+ms.subservice: recovery
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/13/2017
 ms.author: cynthn
-ms.openlocfilehash: b8f63d2a0f69f1eb1b8a1b9c645b1a0bcb3d9469
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 79ce6ee6b15b0e9bdf5e0f48c44731c476069d93
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61456302"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82083557"
 ---
 # <a name="backup-and-restore-options-for-virtual-machines-in-azure"></a>Azure 中虚拟机的备份和还原选项
 可以通过定期创建备份来保护数据。 有多个备份选项可用于 VM，具体取决于使用案例。

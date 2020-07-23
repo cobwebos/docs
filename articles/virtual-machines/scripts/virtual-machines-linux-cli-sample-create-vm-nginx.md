@@ -1,11 +1,10 @@
 ---
-title: Azure CLI 脚本示例 - 使用 NGINX 创建 Linux VM | Microsoft 文档
+title: Azure CLI 脚本示例 - 使用 NGINX 创建 Linux VM
 description: Azure CLI 脚本示例 - 使用 NGINX 创建 Linux VM
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -16,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5aa682af11744389739a539e900924ed93a3bbd6
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4cea4fa293083298858a775eff01b9acf17d6c7c
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691144"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458601"
 ---
 # <a name="create-a-vm-with-nginx"></a>使用 NGINX 创建 VM
 
@@ -61,7 +60,7 @@ az group delete --name myResourceGroup
 
 此脚本使用以下命令创建资源组、虚拟机和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | 创建用于存储所有资源的资源组。 |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | 创建虚拟机。 此命令还指定要使用的虚拟机映像和管理凭据。  |

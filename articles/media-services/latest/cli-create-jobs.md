@@ -14,18 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: e4f2d4f0e7dd9380ba708d84dfe7588043fd4a68
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 08caf4b78b1042d5753dba2bc73e93fa3a250a17
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236698"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "71122377"
 ---
 # <a name="cli-example-create-and-submit-a-job"></a>CLI 示例：创建并提交作业
 
 在媒体服务 v3 中提交作业来处理视频时，必须告知媒体服务查找输入视频的位置。 其中一个选项是指定 HTTPS URL 作为作业输入（如本文中所示）。 
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 [创建媒体服务帐户](create-account-cli-how-to.md)。
 
@@ -87,4 +87,4 @@ az ams job start \
 
 ## <a name="next-steps"></a>后续步骤
 
-[媒体服务概述](media-services-overview.md)
+[az ams job (CLI)](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)

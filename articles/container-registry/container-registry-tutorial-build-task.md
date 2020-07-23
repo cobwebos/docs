@@ -1,23 +1,22 @@
 ---
-title: 教程 - 自动化容器映像生成 - Azure 容器注册表任务
+title: 教程 - 在代码提交时构建映像
 description: 本教程介绍如何配置一个 Azure 容器注册表任务，以便在向 Git 存储库提交源代码时在云中自动触发容器映像生成。
-services: container-registry
-author: dlepow
-ms.service: container-registry
 ms.topic: tutorial
 ms.date: 05/04/2019
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7a9a1e3d3c92f43d19a75e7cd0e10b3fd395a9b5
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 2f70b829e2202c3d28adcfbbb07338923c43e8a8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545000"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "78402842"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>教程：提交源代码时，在云中自动化容器映像生成
 
-除了[快速任务](container-registry-tutorial-quick-task.md)之外，ACR 任务还支持在将源代码提交到 Git 存储库时自动在云中生成 Docker 容器映像。
+除了[快速任务](container-registry-tutorial-quick-task.md)之外，ACR 任务还支持在将源代码提交到 Git 存储库时自动在云中生成 Docker 容器映像。 ACR 任务支持的 Git 上下文包括公共或专用 GitHub 或 Azure Repos。
+
+> [!NOTE]
+> 目前，ACR 任务不支持 GitHub Enterprise 存储库中的提交或拉取请求触发器。
 
 在本教程中，在你将源代码提交到 Git 存储库时，ACR 任务会生成并推送在 Dockerfile 中指定的单一容器映像。 要创建[多步骤任务](container-registry-tasks-multi-step.md)并让其使用 YAML 文件来定义相关步骤，以便在提交代码时生成、推送和测试（可选）多个容器，请参阅[教程：提交源代码时在云中运行多步骤容器工作流](container-registry-tutorial-multistep-task.md)。 有关 ACR 任务的概述，请参阅[使用 ACR 任务自动执行 OS 和框架修补](container-registry-tasks-overview.md)
 
@@ -43,7 +42,9 @@ ms.locfileid: "65545000"
 
 首先，使用适用于环境的值填充这些 shell 环境变量。 此步骤并非必须执行的步骤，但它能让在此教程中执行多个 Azure CLI 命令更容易。 如果未填充这些环境变量，则每当示例命令中出现每个值，都必须手动替换该值。
 
-```azurecli-interactive
+[![嵌入式启动](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
+
+```console
 ACR_NAME=<registry-name>        # The name of your Azure container registry
 GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
@@ -57,7 +58,6 @@ az acr task create \
     --name taskhelloworld \
     --image helloworld:{{.Run.ID}} \
     --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
-    --branch master \
     --file Dockerfile \
     --git-access-token $GIT_PAT
 ```
@@ -69,7 +69,7 @@ az acr task create \
 
 成功的 [az acr task create][az-acr-task-create] 命令的输出应如下所示：
 
-```console
+```output
 {
   "agentConfiguration": {
     "cpu": 2
@@ -136,9 +136,7 @@ az acr task run --registry $ACR_NAME --name taskhelloworld
 
 默认情况下，执行此命令时，`az acr task run` 命令会将日志流式传输到控制台。
 
-```console
-$ az acr task run --registry $ACR_NAME --name taskhelloworld
-
+```output
 2018/09/17 22:51:00 Using acb_vol_9ee1f28c-4fd4-43c8-a651-f0ed027bbf0e as the home volume
 2018/09/17 22:51:00 Setting up Docker configuration...
 2018/09/17 22:51:02 Successfully set up Docker configuration
@@ -208,15 +206,15 @@ Run ID: da2 was successful after 27s
 
 通过手动运行任务对其进行测试后，可通过更改源代码手动触发该任务。
 
-首先，确保目录中包含[存储库][sample-repo]的本地克隆：
+首先，确保你位于包含[存储库][sample-repo]的本地克隆的目录中：
 
-```azurecli-interactive
+```console
 cd acr-build-helloworld-node
 ```
 
 接下来执行以下命令，创建新文件，并将其提交和推送给你在 GitHub 上的存储库分支：
 
-```azurecli-interactive
+```console
 echo "Hello World!" > hello.txt
 git add hello.txt
 git commit -m "Testing ACR Tasks"
@@ -225,8 +223,7 @@ git push origin master
 
 执行 `git push` 命令时可能需要提供 GitHub 凭据。 提供 GitHub 用户名并输入之前为密码创建的个人访问令牌 (PAT)。
 
-```console
-$ git push origin master
+```azurecli-interactive
 Username for 'https://github.com': <github-username>
 Password for 'https://githubuser@github.com': <personal-access-token>
 ```
@@ -239,8 +236,7 @@ az acr task logs --registry $ACR_NAME
 
 输出结果类似于以下内容，显示当前执行（或最近执行）的任务：
 
-```console
-$ az acr task logs --registry $ACR_NAME
+```output
 Showing logs of the last created run.
 Run ID: da4
 
@@ -259,9 +255,7 @@ az acr task list-runs --registry $ACR_NAME --output table
 
 该命令产生的输出应如下所示。 将显示 ACR 任务已执行的运行，并在最近执行的任务的 TRIGGER 列中显示“Git Commit”：
 
-```console
-$ az acr task list-runs --registry $ACR_NAME --output table
-
+```output
 RUN ID    TASK             PLATFORM    STATUS     TRIGGER     STARTED               DURATION
 --------  --------------  ----------  ---------  ----------  --------------------  ----------
 da4       taskhelloworld  Linux       Succeeded  Git Commit  2018-09-17T23:03:45Z  00:00:44

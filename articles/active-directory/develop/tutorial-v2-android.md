@@ -1,96 +1,125 @@
 ---
-title: Android 入门 - Microsoft 标识平台 | Azure
-description: Android 应用如何从 Microsoft 标识平台获取访问令牌并调用 Microsoft 图形 API 或需要访问令牌的 API。
+title: 登录/登出用户并调用 Microsoft Graph (Android) - Microsoft 标识平台 | Azure
+description: 从 Microsoft 标识平台 (Android) 获取访问令牌并调用需要访问令牌的 Microsoft Graph 或 API
 services: active-directory
-documentationcenter: dev-center-name
-author: danieldobalian
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/26/2019
-ms.author: jmprieur
-ms.reviwer: brandwe
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6112facfc0c10d7a0a0495cd778fa6c3cb6130a7
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.date: 11/26/2019
+ms.author: hahamil
+ms.reviewer: brandwe
+ms.custom: aaddev, identityplatformtop40
+ms.openlocfilehash: b899e1d651f41c9c1e1e54af1b5ec19162dfc28d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962155"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81380063"
 ---
-# <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>从 Android 应用将用户登录并调用 Microsoft Graph
+# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>教程：从 Android 应用程序将用户登录并调用 Microsoft Graph 
 
-在本教程中，你将了解如何将 Android 应用集成到 Microsoft 标识平台中。 具体而言，此应用会将用户登录，获取用于调用 Microsoft 图形 API 的访问令牌，并针对 Microsoft 图形 API 发出请求。  
+>[!NOTE]
+>本教程演示简化的示例，介绍如何使用面向 Android 的 MSAL。 简单起见，本教程仅使用“单帐户模式”。 你还可以查看存储库并克隆[预配置的示例应用](https://github.com/Azure-Samples/ms-identity-android-java/)，以探索更复杂的场景。 有关示例应用、配置和注册的详细信息，请查看[快速入门](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-android)。 
 
-完成本指南后，应用程序将接受个人 Microsoft 帐户（包括 outlook.com、live.com 和其他帐户）进行登录，还能够接受使用 Azure Active Directory 的任何公司或组织的工作或学校帐户进行登录。
+在本教程中，你将了解如何使用面向 Android 的 Microsoft 身份验证库将 android 应用与 Microsoft 标识平台集成。 你将了解如何登录/登出用户，获取用于调用 Microsoft Graph API 的访问令牌，以及针对 Graph API 发出请求。 
+
+> [!div class="checklist"]
+> * 将 Android 应用与 Microsoft 标识平台集成 
+> * 将用户登录 
+> * 获取用于调用 Microsoft Graph API 的访问令牌 
+> * 调用 Microsoft Graph API 
+> * 将用户注销 
+
+完成本教程后，应用程序将接受个人 Microsoft 帐户（包括 outlook.com、live.com 和其他帐户）进行登录，还能够接受使用 Azure Active Directory 的任何公司或组织的工作或学校帐户进行登录。
+
+如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="how-this-tutorial-works"></a>本教程工作原理
 
 ![显示本教程生成的示例应用的工作原理](../../../includes/media/active-directory-develop-guidedsetup-android-intro/android-intro.svg)
 
-此示例中的应用会将用户登录并代表他们获取数据。  此数据可通过需要授权的受保护 API（在本例中为 Microsoft 图形 API）进行访问。
+本教程中的应用会将用户登录并代表他们获取数据。 该数据可通过一个受保护的 API (Microsoft 图形 API) 进行访问，该 API 需要授权并且受 Microsoft 标识平台保护。
 
 更具体说来：
 
 * 你的应用将通过浏览器或 Microsoft Authenticator 和 Intune 公司门户登录用户。
-* 最终用户将接受应用程序请求的权限。 
+* 最终用户将接受应用程序请求的权限。
 * 将为你的应用颁发 Microsoft Graph API 的一个访问令牌。
 * 该访问令牌将包括在对 Web API 的 HTTP 请求中。
 * 处理 Microsoft Graph 响应。
 
-该示例使用 Android 的 Microsoft 身份验证库 (MSAL) 来实现身份验证。MSAL 将自动续订令牌，在设备上的其他应用之间提供 SSO，并管理帐户。
+该示例使用 Android 的 Microsoft 身份验证库 (MSAL) 来实现身份验证：[com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)。
 
-## <a name="prerequisites"></a>先决条件
+ MSAL 将自动续订令牌，在设备上的其他应用之间提供单一登录 (SSO)，并管理帐户。
 
-* 此指导式设置使用 Android Studio。
-* 必须使用 Android 16 或更高版本（建议使用版本 19 及更高版本）。
+### <a name="prerequisites"></a>先决条件
 
-## <a name="library"></a>库
+* 本教程需要 Android Studio 版本 3.5+
 
-本指南使用以下身份验证库：
+## <a name="create-a-project"></a>创建项目
+如果你还没有 Android 应用程序，请按照以下步骤设置新项目。 
 
-|库|说明|
-|---|---|
-|[com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)|Microsoft 身份验证库 (MSAL)|
+1. 打开 Android Studio，然后选择“启动新的 Android Studio 项目”  。
+2. 选择“基本活动”，再选择“下一步”   。
+3. 命名应用程序。
+4. 保存包名称。 以后需将它输入 Azure 门户中。
+5. 将语言从“Kotlin”  更改为“Java”  。
+6. 将“最低 API 级别”  设置为 **API 19** 或更高，然后单击“完成”。 
+7. 在项目视图的下拉列表中选择“项目”  ，以便显示源和非源的项目文件，然后打开 **app/build.gradle**，将 `targetSdkVersion` 设置为 `28`。
 
-## <a name="set-up-your-project"></a>设置项目
+## <a name="integrate-with-microsoft-authentication-library"></a>与 Microsoft 身份验证库集成 
 
-本教程将创建新项目。 如果想要下载完整教程，请[下载代码](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)。
+### <a name="register-your-application"></a>注册应用程序
 
-### <a name="create-a-new-project"></a>创建新项目
+1. 转到 [Azure 门户](https://aka.ms/MobileAppReg)。
+2. 打开[“应用注册”边栏选项卡](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)，单击“+新建注册”。 
+3. 输入应用的“名称”，然后在不设置重定向 URI 的情况下单击“注册”    。
+4. 在显示的窗格的“管理”部分，  选择“身份验证”   > “+ 添加平台”   >   “Android”。 （可能必须选择边栏选项卡顶部附近的“切换到新体验”才能看到此部分）
+5. 输入项目的包名称。 如果下载了代码，则该值为 `com.azuresamples.msalandroidapp`。
+6. 在“配置 Android 应用”页的“签名哈希”部分，单击“生成开发签名哈希”。    然后复制用于平台的 KeyTool 命令。
 
-1. 打开 Android Studio，然后选择“启动新的 Android Studio 项目”。
-    - 如果已打开 Android Studio，请选择“文件” > “新建” > “新建项目”。
-2. 将“空活动”保留原样，选择“下一步”。
-3. 命名应用，将 `Minimum API level` 设置为“API 19 或更高版本”，点击“完成”。
-5. 在 `app/build.gradle` 中，将 `targetedSdkVersion` 设置为 27。 
+   > [!Note]
+   > 安装 KeyTool.exe，使其作为 Java 开发工具包 (JDK) 的一部分。 还必须安装 OpenSSL 工具才能执行 KeyTool 命令。 有关详细信息，请参阅[有关如何生成密钥的 Android 文档](https://developer.android.com/studio/publish/app-signing#generate-key)。 
 
-## <a name="register-your-application"></a>注册应用程序
+7. 生成由 KeyTool 生成的**签名哈希**。
+8. 单击 `Configure` 并保存出现在“Android 配置”页中的“MSAL 配置”   ，以便在稍后配置应用时输入它。  单击“完成”  。
 
-如接下来的两部分中所述，可以采用两种方式之一注册应用程序。
+### <a name="configure-your-application"></a>配置应用程序 
 
-### <a name="register-your-app"></a>注册应用
+1. 在 Android Studio 的项目窗格中，导航到 **app\src\main\res**。
+2. 右键单击“res”  ，选择“新建”   >   “目录”。 输入 `raw` 作为新目录名称，然后单击“确定”。 
+3. 在 **app** > **src** > **main** > **res** > **raw** 中，新建名为 `auth_config_single_account.json` 的 JSON 文件，然后粘贴以前保存的 MSAL 配置。 
 
-1. 转到 [Azure 门户](https://aka.ms/MobileAppReg)，然后选择 `New registration`。 
-2. 为你的应用输入名称，然后选择 `Register`。 在此阶段不设置重定向 URI。 
-3. 在 `Manage` 部分，转到 `Authentication` > `Add a platform` > `Android`
-    - 输入项目的包名称。 如果下载了代码，则该值为 `com.azuresamples.msalandroidapp`。 
-    - 输入调试/开发签名哈希。 使用门户中的 KeyTool 命令生成签名哈希。 
-4. 点击 `Configure` 并存储“MSAL 配置”以供稍后使用。 
-
-## <a name="build-your-app"></a>生成应用
-
-### <a name="configure-your-android-app"></a>配置 Android 应用
-
-1. 右键单击“res” > “新建” > “文件夹” > “原始资源文件夹”
-2. 在“应用” > res” > “原始”中，创建名为 `auth_config.json` 的新 JSON 文件并粘贴“MSAL 配置”。 有关详细信息，请参阅 [MSAL 配置](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app)。
-   <!-- Workaround for Docs conversion bug -->
-3. 在“应用” > “清单” > “AndroidManifest.xml”的下方添加 `BrowserTabActivity` 活动。 该条目允许 Microsoft 在完成身份验证后回调应用程序：
+    在“重定向 URI”下方，粘贴： 
+    ```json
+      "account_mode" : "SINGLE",
+    ```
+    配置文件应与如下示例类似： 
+    ```json   
+    {
+      "client_id" : "0984a7b6-bc13-4141-8b0d-8f767e136bb7",
+      "authorization_user_agent" : "DEFAULT",
+      "redirect_uri" : "msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D",
+      "account_mode" : "SINGLE",
+      "authorities" : [
+        {
+          "type": "AAD",
+          "audience": {
+            "type": "AzureADandPersonalMicrosoftAccount",
+            "tenant_id": "common"
+          }
+        }
+      ]
+    }
+   ```
+    
+   >[!NOTE]
+   >本教程仅演示如何在单帐户模式下配置应用。 查看文档，详细了解[单帐户模式与多帐户模式](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account)以及[配置应用](https://docs.microsoft.com/azure/active-directory/develop/msal-configuration)
+   
+4. 在 **app** > **src** > **main** > **AndroidManifest.xml** 中，将以下 `BrowserTabActivity` 活动添加到应用程序主体。 该条目允许 Microsoft 在完成身份验证后回调应用程序：
 
     ```xml
     <!--Intent filter to capture System Browser or Authenticator calling back to our app after sign-in-->
@@ -107,45 +136,406 @@ ms.locfileid: "65962155"
     </activity>
     ```
 
-    请注意，使用的签名哈希不应在 AndroidManifest.xml 中进行 URL 编码。 
+    将 `android:host=` 值替换为在 Azure 门户中注册的包名称。
+    将 `android:path=` 值替换为在 Azure 门户中注册的密钥哈希。 签名哈希不应进行 URL 编码  。 确保签名哈希的开头有前导 `/`。 
+    >[!NOTE]
+    >将替换 `android:host` 值的“包名称”应如下所示：“com.azuresamples.msalandroidapp”将替换 `android:path` 值的“签名哈希”应如下所示：“/1wIqXSqBj7w+h11ZifsnqwgyKrY=”还可以在应用注册的“身份验证”边栏选项卡中找到这些值。 请注意，重定向 URI 将如下所示：“msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D”。 尽管签名哈希会在此值末尾进行 URL 编码，但签名哈希不应在 `android:path` 值中进行 URL 编码  。 
 
-4. 在 AndroidManifest.xml 内的 `<application>` 标记上方，添加以下权限：
+## <a name="use-msal"></a>使用 MSAL 
 
-    ```xml
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+### <a name="add-msal-to-your-project"></a>将 MSAL 添加到项目
+
+1. 在 Android Studio 项目窗口中，导航到 app > src > build.gradle，然后添加以下内容    ： 
+
+    ```gradle
+    repositories{
+        jcenter()
+    }  
+    dependencies{
+        implementation 'com.microsoft.identity.client:msal:1.+'
+        implementation 'com.microsoft.graph:microsoft-graph:1.5.+'
+    }
+    packagingOptions{
+        exclude("META-INF/jersey-module-version") 
+    }
     ```
+    [有关 Microsoft Graph SDK 的详细信息](https://github.com/microsoftgraph/msgraph-sdk-java/)
 
-5. 在 `BrowserTabActivity` 中，将“包名称”和“签名哈希”替换为 Azure 门户中注册的值。
+### <a name="required-imports"></a>要求的导入 
 
-### <a name="create-the-apps-ui"></a>创建应用的 UI
+将以下内容添加到 app > src > main> java > com.example(yourapp) > MainActivity.java 的顶部       
 
-1. 转到“资源” > “布局”，然后打开 **activity_main.xml**。
-2. 将活动布局从 `android.support.constraint.ConstraintLayout` 或其他布局更改为 `LinearLayout`。
-3. 将 `android:orientation="vertical"` 属性添加到 `LinearLayout` 节点。
-4. 将以下代码粘贴到 `LinearLayout` 节点，替换当前内容：
+```java
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import com.google.gson.JsonObject;
+import com.microsoft.graph.authentication.IAuthenticationProvider; //Imports the Graph sdk Auth interface
+import com.microsoft.graph.concurrency.ICallback;
+import com.microsoft.graph.core.ClientException;
+import com.microsoft.graph.http.IHttpRequest;
+import com.microsoft.graph.models.extensions.*;
+import com.microsoft.graph.requests.extensions.GraphServiceClient;
+import com.microsoft.identity.client.AuthenticationCallback; // Imports MSAL auth methods
+import com.microsoft.identity.client.*;
+import com.microsoft.identity.client.exception.*;
+```
 
-    ```xml
-    <TextView
-        android:text="Welcome, "
-        android:textColor="#3f3f3f"
-        android:textSize="50px"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="15dp"
-        android:id="@+id/welcome"
-        android:visibility="invisible"/>
+## <a name="instantiate-publicclientapplication"></a>实例化 PublicClientApplication
+#### <a name="initialize-variables"></a>初始化变量 
+```java
+private final static String[] SCOPES = {"Files.Read"};
+/* Azure AD v2 Configs */
+final static String AUTHORITY = "https://login.microsoftonline.com/common";
+private ISingleAccountPublicClientApplication mSingleAccountApp;
 
-    <Button
-        android:id="@+id/callGraph"
-        android:text="Call Microsoft Graph"
-        android:textColor="#FFFFFF"
-        android:background="#00a1f1"
+private static final String TAG = MainActivity.class.getSimpleName();
+
+/* UI & Debugging Variables */
+Button signInButton;
+Button signOutButton;
+Button callGraphApiInteractiveButton;
+Button callGraphApiSilentButton;
+TextView logTextView;
+TextView currentUserTextView;
+```
+
+### <a name="oncreate"></a>onCreate
+在 `MainActivity` 类中，参阅下方的 onCreate() 方法以使用 `SingleAccountPublicClientApplication` 实例化 MSAL。
+
+```java
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+
+    initializeUI();
+
+    PublicClientApplication.createSingleAccountPublicClientApplication(getApplicationContext(),
+            R.raw.auth_config_single_account, new IPublicClientApplication.ISingleAccountApplicationCreatedListener() {
+                @Override
+                public void onCreated(ISingleAccountPublicClientApplication application) {
+                    mSingleAccountApp = application;
+                    loadAccount();
+                }
+                @Override
+                public void onError(MsalException exception) {
+                    displayError(exception);
+                }
+            });
+}
+```
+
+### <a name="loadaccount"></a>loadAccount 
+
+```java
+//When app comes to the foreground, load existing account to determine if user is signed in 
+private void loadAccount() {
+    if (mSingleAccountApp == null) {
+        return;
+    }
+
+    mSingleAccountApp.getCurrentAccountAsync(new ISingleAccountPublicClientApplication.CurrentAccountCallback() {
+        @Override
+        public void onAccountLoaded(@Nullable IAccount activeAccount) {
+            // You can use the account data to update your UI or your app database.
+            updateUI(activeAccount);
+        }
+        
+        @Override
+        public void onAccountChanged(@Nullable IAccount priorAccount, @Nullable IAccount currentAccount) {
+            if (currentAccount == null) {
+                // Perform a cleanup task as the signed-in account changed.
+                performOperationOnSignOut();
+            }
+        }
+
+        @Override
+        public void onError(@NonNull MsalException exception) {
+            displayError(exception);
+        }
+    });
+}
+```
+
+### <a name="initializeui"></a>initializeUI
+侦听按钮并相应地调用方法或日志错误。 
+```java
+private void initializeUI(){
+        signInButton = findViewById(R.id.signIn);
+        callGraphApiSilentButton = findViewById(R.id.callGraphSilent);
+        callGraphApiInteractiveButton = findViewById(R.id.callGraphInteractive);
+        signOutButton = findViewById(R.id.clearCache);
+        logTextView = findViewById(R.id.txt_log);
+        currentUserTextView = findViewById(R.id.current_user);
+        
+        //Sign in user 
+        signInButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                if (mSingleAccountApp == null) {
+                    return;
+                }
+                mSingleAccountApp.signIn(MainActivity.this, null, SCOPES, getAuthInteractiveCallback());
+            }
+        });
+        
+        //Sign out user
+        signOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mSingleAccountApp == null){
+                    return;
+                }
+                mSingleAccountApp.signOut(new ISingleAccountPublicClientApplication.SignOutCallback() {
+                    @Override
+                    public void onSignOut() {
+                        updateUI(null);
+                        performOperationOnSignOut();
+                    }
+                    @Override
+                    public void onError(@NonNull MsalException exception){
+                        displayError(exception);
+                    }
+                });
+            }
+        });
+        
+        //Interactive 
+        callGraphApiInteractiveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mSingleAccountApp == null) {
+                    return;
+                }
+                mSingleAccountApp.acquireToken(MainActivity.this, SCOPES, getAuthInteractiveCallback());
+            }
+        });
+
+        //Silent
+        callGraphApiSilentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mSingleAccountApp == null){
+                    return;
+                }
+                mSingleAccountApp.acquireTokenSilentAsync(SCOPES, AUTHORITY, getAuthSilentCallback());
+            }
+        });
+    }
+```
+
+> [!Important]
+> 使用 MSAL 注销会从应用程序中删除有关用户的所有已知信息，但是用户的设备上仍然有一个活动会话。 如果用户尝试再次登录，则可能会看到登录 UI，但由于设备会话仍处于活动状态，可能无需重新输入其凭据。 
+
+### <a name="getauthinteractivecallback"></a>getAuthInteractiveCallback
+用于交互式请求的回调。
+
+```java 
+private AuthenticationCallback getAuthInteractiveCallback() {
+    return new AuthenticationCallback() {
+        @Override
+        public void onSuccess(IAuthenticationResult authenticationResult) {
+            /* Successfully got a token, use it to call a protected resource - MSGraph */
+            Log.d(TAG, "Successfully authenticated");
+            /* Update UI */
+            updateUI(authenticationResult.getAccount());
+            /* call graph */
+            callGraphAPI(authenticationResult);
+        }
+
+        @Override
+        public void onError(MsalException exception) {
+            /* Failed to acquireToken */
+            Log.d(TAG, "Authentication failed: " + exception.toString());
+            displayError(exception);
+        }
+        @Override
+        public void onCancel() {
+            /* User canceled the authentication */
+            Log.d(TAG, "User cancelled login.");
+        }
+    };
+}
+```
+
+### <a name="getauthsilentcallback"></a>getAuthSilentCallback
+用于无提示请求的回调 
+```java 
+private SilentAuthenticationCallback getAuthSilentCallback() {
+    return new SilentAuthenticationCallback() {
+        @Override
+        public void onSuccess(IAuthenticationResult authenticationResult) {
+            Log.d(TAG, "Successfully authenticated");
+            callGraphAPI(authenticationResult);
+        }
+        @Override
+        public void onError(MsalException exception) {
+            Log.d(TAG, "Authentication failed: " + exception.toString());
+            displayError(exception);
+        }
+    };
+}
+```
+
+## <a name="call-microsoft-graph-api"></a>调用 Microsoft Graph API 
+
+以下代码演示如何使用 Graph SDK 调用 GraphAPI。 
+
+### <a name="callgraphapi"></a>callGraphAPI 
+
+```java
+private void callGraphAPI(IAuthenticationResult authenticationResult) {
+
+    final String accessToken = authenticationResult.getAccessToken();
+
+    IGraphServiceClient graphClient =
+            GraphServiceClient
+                    .builder()
+                    .authenticationProvider(new IAuthenticationProvider() {
+                        @Override
+                        public void authenticateRequest(IHttpRequest request) {
+                            Log.d(TAG, "Authenticating request," + request.getRequestUrl());
+                            request.addHeader("Authorization", "Bearer " + accessToken);
+                        }
+                    })
+                    .buildClient();
+    graphClient
+            .me()
+            .drive()
+            .buildRequest()
+            .get(new ICallback<Drive>() {
+                @Override
+                public void success(final Drive drive) {
+                    Log.d(TAG, "Found Drive " + drive.id);
+                    displayGraphResult(drive.getRawObject());
+                }
+
+                @Override
+                public void failure(ClientException ex) {
+                    displayError(ex);
+                }
+            });
+}
+```
+
+## <a name="add-ui"></a>添加 UI
+### <a name="activity"></a>活动 
+如果要根据本教程为 UI 建模，则以下方法可提供有关更新文本和侦听按钮的指导。
+
+#### <a name="updateui"></a>updateUI
+根据登录状态启用/禁用按钮，并设置文本。  
+```java 
+private void updateUI(@Nullable final IAccount account) {
+    if (account != null) {
+        signInButton.setEnabled(false);
+        signOutButton.setEnabled(true);
+        callGraphApiInteractiveButton.setEnabled(true);
+        callGraphApiSilentButton.setEnabled(true);
+        currentUserTextView.setText(account.getUsername());
+    } else {
+        signInButton.setEnabled(true);
+        signOutButton.setEnabled(false);
+        callGraphApiInteractiveButton.setEnabled(false);
+        callGraphApiSilentButton.setEnabled(false);
+        currentUserTextView.setText("");
+        logTextView.setText("");
+    }
+}
+```
+#### <a name="displayerror"></a>displayError
+```java 
+private void displayError(@NonNull final Exception exception) {
+       logTextView.setText(exception.toString());
+   }
+```
+
+#### <a name="displaygraphresult"></a>displayGraphResult
+
+```java
+private void displayGraphResult(@NonNull final JsonObject graphResponse) {
+      logTextView.setText(graphResponse.toString());
+  }
+```
+#### <a name="performoperationonsignout"></a>performOperationOnSignOut
+在 UI 中更新文本以表示注销的方法。 
+
+```java
+private void performOperationOnSignOut() {
+    final String signOutText = "Signed Out.";
+    currentUserTextView.setText("");
+    Toast.makeText(getApplicationContext(), signOutText, Toast.LENGTH_SHORT)
+            .show();
+}
+```
+### <a name="layout"></a>布局 
+
+示例 `activity_main.xml` 文件，显示按钮和文本框。 
+
+```xml 
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:textAllCaps="false" />
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:weightSum="10">
+
+        <Button
+            android:id="@+id/signIn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:text="Sign In"/>
+
+        <Button
+            android:id="@+id/clearCache"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:text="Sign Out"
+            android:enabled="false"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/callGraphInteractive"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="Get Graph Data Interactively"
+            android:enabled="false"/>
+
+        <Button
+            android:id="@+id/callGraphSilent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="Get Graph Data Silently"
+            android:enabled="false"/>
+    </LinearLayout>
 
     <TextView
         android:text="Getting Graph Data..."
@@ -156,392 +546,40 @@ ms.locfileid: "65962155"
         android:id="@+id/graphData"
         android:visibility="invisible"/>
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/current_user"
         android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1"
-        android:gravity="center|bottom"
-        android:orientation="vertical" >
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="0.8"
+        android:text="Account info goes here..." />
 
-        <Button
-            android:text="Sign Out"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:textColor="#FFFFFF"
-            android:background="#00a1f1"
-            android:textAllCaps="false"
-            android:id="@+id/clearCache"
-            android:visibility="invisible" />
-    </LinearLayout>
-    ```
-
-### <a name="add-msal-to-your-project"></a>将 MSAL 添加到项目
-
-1. 在 Android Studio 中，选择“Gradle 脚本” > “build.gradle (模块: 应用)”。
-2. 在“依存关系”下，粘贴以下代码：
-
-    ```gradle  
-    implementation 'com.android.volley:volley:1.1.1'
-    implementation 'com.microsoft.identity.client:msal:0.3.+'
-    ```
-
-### <a name="use-msal"></a>使用 MSAL 
-
-接下来的几节将在 `MainAcitivty.java` 内进行更改。 我们将逐步介绍在你的应用中添加和使用 MSAL 所需的每个步骤。
-
-#### <a name="required-imports"></a>要求的导入
-
-将以下导入内容添加到项目中： 
-
-```java
-import android.app.Activity;
-import android.content.Intent;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.android.volley.*;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-import org.json.JSONObject;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import com.microsoft.identity.client.*;
-import com.microsoft.identity.client.exception.*;
+    <TextView
+        android:id="@+id/txt_log"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="0.8"
+        android:text="Output goes here..." />
+</LinearLayout>
 ```
-
-#### <a name="instantiating-msal"></a>实例化 MSAL 
-
-在 `MainActivity` 类中，我们需要实例化 MSAL 以及关于应用将执行的一些配置，包括我们想要访问的作用域和 Web API。 
-
-在 `MainActivity` 中复制以下变量：
-
-```java
-final static String SCOPES [] = {"https://graph.microsoft.com/User.Read"};
-final static String MSGRAPH_URL = "https://graph.microsoft.com/v1.0/me";
-
-/* UI & Debugging Variables */
-private static final String TAG = MainActivity.class.getSimpleName();
-Button callGraphButton;
-Button signOutButton;
-
-/* Azure AD Variables */
-private PublicClientApplication sampleApp;
-private IAuthenticationResult authResult;
-```
-
-现在要实例化 MSAL，请在 `onCreate(...)` 方法中复制以下代码：
-
-```java
-super.onCreate(savedInstanceState);
-setContentView(R.layout.activity_main);
-
-callGraphButton = (Button) findViewById(R.id.callGraph);
-signOutButton = (Button) findViewById(R.id.clearCache);
-
-callGraphButton.setOnClickListener(new View.OnClickListener() {
-    public void onClick(View v) {
-        onCallGraphClicked();
-    }
-});
-
-signOutButton.setOnClickListener(new View.OnClickListener() {
-    public void onClick(View v) {
-        onSignOutClicked();
-    }
-});
-
-/* Configure your sample app and save state for this activity */
-sampleApp = new PublicClientApplication(
-        this.getApplicationContext(),
-        R.raw.auth_config);
-
-/* Attempt to get a user and acquireTokenSilent */
-sampleApp.getAccounts(new PublicClientApplication.AccountsLoadedCallback() {
-    @Override
-    public void onAccountsLoaded(final List<IAccount> accounts) {
-        if (!accounts.isEmpty()) {
-            /* This sample doesn't support multi-account scenarios, use the first account */
-            sampleApp.acquireTokenSilentAsync(SCOPES, accounts.get(0), getAuthSilentCallback());
-        } else {
-            /* No accounts */
-        }
-    }
-});
-```
-
-上面的代码块尝试在用户通过 `getAccounts(...)` 打开应用程序时以静默方式登录，若成功则为 `acquireTokenSilentAsync(...)`。  在接下来的几节中，我们将为没有登录帐户的情况实现回叫处理程序。 
-
-#### <a name="use-msal-to-get-tokens"></a>使用 MSAL 获取令牌
-
-现在，我们可以实现应用的 UI 处理逻辑并通过 MSAL 以交互方式获取令牌。 
-
-MSAL 公开了获取令牌的两种主要方法：`acquireTokenSilentAsync` 和 `acquireToken`。  
-
-如果有帐户，`acquireTokenSilentAsync` 将登录用户并获取令牌，而无需任何用户交互。 如果成功，MSAL 会将令牌切换到你的应用，如果失败，将生成 `MsalUiRequiredException`。  如果生成此异常或你希望用户具有交互式登录体验（可能需要或可能不需要凭据、mfa 或其他条件访问策略），则可以使用 `acquireToken`。  
-
-`acquireToken` 在尝试登录用户并获取令牌时将始终显示用户界面；但是，它可能会使用浏览器中的会话 cookie 或 Microsoft Authenticator 中的帐户来提供交互式 SSO 体验。 
-
-首先，在 `MainActivity` 类中创建以下三个 UI 方法：
-
-```java
-/* Set the UI for successful token acquisition data */
-private void updateSuccessUI() {
-    callGraphButton.setVisibility(View.INVISIBLE);
-    signOutButton.setVisibility(View.VISIBLE);
-    findViewById(R.id.welcome).setVisibility(View.VISIBLE);
-    ((TextView) findViewById(R.id.welcome)).setText("Welcome, " +
-            authResult.getAccount().getUsername());
-    findViewById(R.id.graphData).setVisibility(View.VISIBLE);
-}
-
-/* Set the UI for signed out account */
-private void updateSignedOutUI() {
-    callGraphButton.setVisibility(View.VISIBLE);
-    signOutButton.setVisibility(View.INVISIBLE);
-    findViewById(R.id.welcome).setVisibility(View.INVISIBLE);
-    findViewById(R.id.graphData).setVisibility(View.INVISIBLE);
-    ((TextView) findViewById(R.id.graphData)).setText("No Data");
-
-    Toast.makeText(getBaseContext(), "Signed Out!", Toast.LENGTH_SHORT)
-            .show();
-}
-
-/* Use MSAL to acquireToken for the end-user
- * Callback will call Graph api w/ access token & update UI
- */
-private void onCallGraphClicked() {
-    sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());
-}
-```
-
-接下来，添加一个方法来获取当前活动并处理静默和交互式回叫：
-
-```java
-public Activity getActivity() {
-    return this;
-}
-
-/* Callback used in for silent acquireToken calls.
- * Looks if tokens are in the cache (refreshes if necessary and if we don't forceRefresh)
- * else errors that we need to do an interactive request.
- */
-private AuthenticationCallback getAuthSilentCallback() {
-    return new AuthenticationCallback() {
-
-        @Override
-        public void onSuccess(IAuthenticationResult authenticationResult) {
-            /* Successfully got a token, call graph now */
-            Log.d(TAG, "Successfully authenticated");
-
-            /* Store the authResult */
-            authResult = authenticationResult;
-
-            /* call graph */
-            callGraphAPI();
-
-            /* update the UI to post call graph state */
-            updateSuccessUI();
-        }
-
-        @Override
-        public void onError(MsalException exception) {
-            /* Failed to acquireToken */
-            Log.d(TAG, "Authentication failed: " + exception.toString());
-
-            if (exception instanceof MsalClientException) {
-                /* Exception inside MSAL, more info inside the exception */
-            } else if (exception instanceof MsalServiceException) {
-                /* Exception when communicating with the STS, likely config issue */
-            } else if (exception instanceof MsalUiRequiredException) {
-                /* Tokens expired or no session, retry with interactive */
-            }
-        }
-
-        @Override
-        public void onCancel() {
-            /* User cancelled the authentication */
-            Log.d(TAG, "User cancelled login.");
-        }
-    };
-}
-
-/* Callback used for interactive request.  If succeeds we use the access
- * token to call the Microsoft Graph. Does not check cache
- */
-private AuthenticationCallback getAuthInteractiveCallback() {
-    return new AuthenticationCallback() {
-
-        @Override
-        public void onSuccess(IAuthenticationResult authenticationResult) {
-            /* Successfully got a token, call graph now */
-            Log.d(TAG, "Successfully authenticated");
-            Log.d(TAG, "ID Token: " + authenticationResult.getIdToken());
-
-            /* Store the auth result */
-            authResult = authenticationResult;
-
-            /* call graph */
-            callGraphAPI();
-
-            /* update the UI to post call graph state */
-            updateSuccessUI();
-        }
-
-        @Override
-        public void onError(MsalException exception) {
-            /* Failed to acquireToken */
-            Log.d(TAG, "Authentication failed: " + exception.toString());
-
-            if (exception instanceof MsalClientException) {
-                /* Exception inside MSAL, more info inside the exception */
-            } else if (exception instanceof MsalServiceException) {
-                /* Exception when communicating with the STS, likely config issue */
-            }
-        }
-
-        @Override
-        public void onCancel() {
-            /* User cancelled the authentication */
-            Log.d(TAG, "User cancelled login.");
-        }
-    };
-}
-```
-
-#### <a name="use-msal-for-sign-out"></a>使用 MSAL 进行注销
-
-接下来，我们将添加对注销应用的支持。 
-
-需要注意的是，使用 MSAL 注销会从此应用程序中删除有关用户的所有已知信息，但是用户的设备上仍然有一个活动会话。 如果用户尝试再次登录，则可能会看到交互，但由于设备会话处于活动状态，可能无需重新输入其凭据。 
-
-要添加注销，请将以下方法复制到应用中，该应用会遍历所有帐户并将其删除：
-
-```java
-/* Clears an account's tokens from the cache.
- * Logically similar to "sign out" but only signs out of this app.
- * User will get interactive SSO if trying to sign back-in.
- */
-private void onSignOutClicked() {
-    /* Attempt to get a user and acquireTokenSilent
-     * If this fails we do an interactive request
-     */
-    sampleApp.getAccounts(new PublicClientApplication.AccountsLoadedCallback() {
-        @Override
-        public void onAccountsLoaded(final List<IAccount> accounts) {
-
-            if (accounts.isEmpty()) {
-                /* No accounts to remove */
-
-            } else {
-                for (final IAccount account : accounts) {
-                    sampleApp.removeAccount(
-                            account,
-                            new PublicClientApplication.AccountsRemovedCallback() {
-                        @Override
-                        public void onAccountsRemoved(Boolean isSuccess) {
-                            if (isSuccess) {
-                                /* successfully removed account */
-                            } else {
-                                /* failed to remove account */
-                            }
-                        }
-                    });
-                }
-            }
-
-            updateSignedOutUI();
-        }
-    });
-}
-```
-
-#### <a name="call-the-microsoft-graph-api"></a>调用 Microsoft Graph API
-
-成功获取令牌后，我们可以向 Microsoft 图形 API 发出请求。 访问令牌将位于身份验证回叫的 `onSuccess(...)` 方法内的 `AuthenticationResult` 中。 要构建授权请求，应用需要将访问令牌添加到 HTTP 标头：
-
-| 标头密钥    | 值                 |
-| ------------- | --------------------- |
-| 授权 | 持有者 <access-token> |
-
-要在代码中执行此操作，请将以下两种方法添加到应用以调用图形并更新 UI： 
-
-```java
-    /* Use Volley to make an HTTP request to the /me endpoint from MS Graph using an access token */
-private void callGraphAPI() {
-    Log.d(TAG, "Starting volley request to graph");
-
-    /* Make sure we have a token to send to graph */
-    if (authResult.getAccessToken() == null) {return;}
-
-    RequestQueue queue = Volley.newRequestQueue(this);
-    JSONObject parameters = new JSONObject();
-
-    try {
-        parameters.put("key", "value");
-    } catch (Exception e) {
-        Log.d(TAG, "Failed to put parameters: " + e.toString());
-    }
-    JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, MSGRAPH_URL,
-            parameters,new Response.Listener<JSONObject>() {
-        @Override
-        public void onResponse(JSONObject response) {
-            /* Successfully called graph, process data and send to UI */
-            Log.d(TAG, "Response: " + response.toString());
-
-            updateGraphUI(response);
-        }
-    }, new Response.ErrorListener() {
-        @Override
-        public void onErrorResponse(VolleyError error) {
-            Log.d(TAG, "Error: " + error.toString());
-        }
-    }) {
-        @Override
-        public Map<String, String> getHeaders() {
-            Map<String, String> headers = new HashMap<>();
-            headers.put("Authorization", "Bearer " + authResult.getAccessToken());
-            return headers;
-        }
-    };
-
-    Log.d(TAG, "Adding HTTP GET to Queue, Request: " + request.toString());
-
-    request.setRetryPolicy(new DefaultRetryPolicy(
-            3000,
-            DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-    queue.add(request);
-}
-
-/* Sets the graph response */
-private void updateGraphUI(JSONObject graphResponse) {
-    TextView graphText = findViewById(R.id.graphData);
-    graphText.setText(graphResponse.toString());
-}
-```
-
-了解有关 [Microsoft 图形 API](https://graph.microsoft.com) 的详细信息！
-
-#### <a name="multi-account-applications"></a>多帐户应用程序
-
-该应用针对单个帐户方案生成。 MSAL 也支持多帐户方案，但它需要应用的一些额外工作。 需要创建 UI 来帮助用户选择他们想要为每个需要令牌的操作使用的帐户。 或者，你的应用可以通过 `getAccounts(...)` 方法实现启发式选择要使用的帐户。 
 
 ## <a name="test-your-app"></a>测试应用
 
 ### <a name="run-locally"></a>在本地运行
 
-如果已遵循上述代码，请尝试构建应用并将其部署到测试设备或模拟器。 你应能够登录并获取 Azure AD 或个人 Microsoft 帐户的令牌！ 用户登录后，此应用将显示从 Microsoft Graph `/me` 终结点返回的数据。 
+构建应用并将其部署到测试设备或模拟器。 你应能够登录并获取 Azure AD 或个人 Microsoft 帐户的令牌。
 
-若有任何问题，请随时打开此文档或 MSAL 库中的问题并告知我们。 
+你登录后，此应用将显示从 Microsoft Graph `/me` 终结点返回的数据。
 
-### <a name="consent-to-your-app"></a>许可应用
+### <a name="consent"></a>同意
 
-任何用户首次登录你的应用时，Microsoft 标识都将提示他们同意所请求的权限。  虽然大多数用户都能够同意，但某些 Azure AD 租户已禁用用户同意功能，这要求管理员代表所有用户同意。  要支持此方案，请务必在 Azure 门户中注册应用的作用域。
+任何用户首次登录你的应用时，Microsoft 标识都将提示他们同意所请求的权限。 某些 Azure AD 租户已禁用用户同意功能，这要求管理员代表所有用户同意。 若要支持此场景，需创建自己的租户或获得管理员的同意。 
 
-## <a name="help-and-support"></a>帮助和支持
+## <a name="clean-up-resources"></a>清理资源
 
-对本教程或 Microsoft 标识平台有任何问题吗？ 请参阅[帮助与支持](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options)
+如果不再需要，请删除[注册应用程序](#register-your-application) 步骤中创建的应用对象。
+
+## <a name="get-help"></a>获取帮助
+
+如果对本教程或 Microsoft 标识平台有疑问，请访问[帮助和支持](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options)。

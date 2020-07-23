@@ -1,98 +1,124 @@
 ---
-title: 请求对 Azure AD 授权管理 （预览版）-Azure Active Directory 中的访问包
-description: 了解如何使用我访问门户来请求访问 Azure Active Directory 权利管理 （预览版） 中的访问包。
+title: 请求访问包-Azure AD 的权利管理
+description: 了解如何使用 "我的访问门户" 请求访问 Azure Active Directory 授权管理中的访问包。
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: mamtakumar
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 04/19/2019
-ms.author: rolyon
+ms.date: 06/18/2020
+ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39a50240b4360c5b4adcd6020c2b80b0f06315f7
-ms.sourcegitcommit: 9ad75f83bbf0fc4623b7995794f33bbf823b31c0
-ms.translationtype: MT
+ms.openlocfilehash: e744adeae55252ec70c8f766db1e29a3898886c7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64541550"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85078110"
 ---
-# <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>请求对 Azure AD 授权管理 （预览版） 中的访问包
+# <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>请求访问 Azure AD 权限管理中的访问包
 
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) 授权管理当前处于公共预览状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+使用 Azure AD 的权利管理，访问包可以一次性设置资源和策略，在访问包的整个生命周期中自动管理访问权限。 
 
-## <a name="sign-in-to-the-my-access-portal"></a>登录到我访问门户
+访问包管理器可以配置策略，以要求用户获得访问访问包的批准。 需要访问访问包的用户可以提交请求来获得访问权限。 本文介绍如何提交访问请求。
 
-第一步是登录到我访问门户，可以请求对访问包访问权限。
+## <a name="sign-in-to-the-my-access-portal"></a>登录到“我的访问权限”门户
 
-**必备角色：** 请求者
+第一步是登录到“我的访问权限”门户，然后即可在其中请求访问某个访问包。
 
-1. 你正在使用的项目或企业管理器从查找电子邮件或一条消息。 电子邮件应包含你将需要访问访问包的链接。 该链接将开始：
+**必备角色：** 者
 
-    `https://myaccess.microsoft.com`
+1. 查找与你合作的项目经理或业务经理发出的电子邮件或消息。 该电子邮件应该包含需访问的访问包的链接。 链接以开头 `myaccess` ，包含一个目录提示，并以访问包 ID 结尾。  （对于美国政府版，可以改为域 `https://myaccess.microsoft.us` 。）
+ 
+    `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
-1. 打开该链接。
+1. 打开链接。
 
-1. 登录到我访问门户。
+1. 登录到“我的访问权限”门户。
 
-    请确保使用你的组织帐户。 如果您不确定，请咨询你的项目或业务经理。
+    请确保使用组织（工作或学校）帐户。 如果不确定，请咨询项目或业务经理。
 
 ## <a name="request-an-access-package"></a>请求访问包
 
-一旦我访问门户中找到访问包，你可以提交请求。
+在“我的访问权限”门户中找到访问包以后，即可提交请求。
 
-**必备角色：** 请求者
+**必备角色：** 者
+
+1. 在列表中查找访问包。  如有必要，可以键入搜索字符串，然后选择“名称”****、“目录”**** 或“资源”**** 筛选器进行搜索。
+
+    ![“我的访问权限”门户 - 资源搜索](./media/entitlement-management-request-access/my-access-resource-search.png)
+
+1. 单击复选标记，选中该访问包。
+
+1. 单击“请求访问”打开“请求访问”面板。 
+
+    ![我的访问权限门户 - 访问包](./media/entitlement-management-request-access/my-access-request-access-button.png)
+
+1. 如果显示“业务理由”框，请键入需要访问的理由。****
+
+1. 如果“请求在特定的时间段访问”已启用，请选择“是”或“否”。************
+
+1. 必要时指定开始日期和结束日期。
+
+    ![我的访问权限门户 - 请求访问](./media/entitlement-management-shared/my-access-request-access.png)
+
+1. 完成后，单击“提交”以提交请求。****
+
+1. 单击“请求历史记录”，查看请求和状态的列表。****
+
+    如果访问包需要审批，则请求现在为等待审批状态。
+
+### <a name="select-a-policy"></a>选择策略
+
+如果你请求访问具有多个应用策略的访问包，则可能会要求你选择策略。 例如，访问包管理员可能会为两组内部员工配置一个使用两个策略的访问包。 第一个策略可能允许访问 60 天，但需要批准。 第二个策略可能允许访问 2 天，但不需要批准。 如果遇到这种情况，则必须选择要使用的策略。
+
+![我的访问门户-请求访问-多个策略](./media/entitlement-management-request-access/my-access-multiple-policies.png)
+
+## <a name="resubmit-a-request"></a>重新提交请求
+
+当你请求访问访问包时，你的请求可能会被拒绝，或者当审批者未及时响应时，你的请求可能会过期。 如果需要访问权限，可以重试，并重新提交请求。 以下过程说明如何重新提交访问请求：
+
+**必备角色：** 者
+
+1. 登录到 "**我的访问**门户"。
+
+1. 单击左侧导航菜单中的 "**请求历史记录**"。
+
+1. 查找要重新提交请求的访问包。
 
 1. 单击复选标记以选择访问包。
 
-    ![我访问门户的访问包](./media/entitlement-management-shared/my-access-access-packages.png)
+1. 单击所选访问包右侧的蓝色**视图**链接。
+    
+    ![选择访问包和视图链接](./media/entitlement-management-request-access/resubmit-request-select-request-and-view.png)
 
-1. 单击**请求访问**以打开请求访问面板。
+    将使用访问包的请求历史记录向右打开一个窗格。
+    
+    ![选择 "重新提交" 按钮](./media/entitlement-management-request-access/resubmit-request-select-resubmit.png)
 
-1. 如果**业务理由**显示框中，键入需要进行访问的理由。
-
-1. 如果**请求指定的时间段？** 的已启用，请选择**是**或**否**。
-
-1. 如有必要，指定开始日期和结束日期。
-
-    ![我访问门户-请求访问权限](./media/entitlement-management-shared/my-access-request-access.png)
-
-1. 完成后，单击**提交**提交请求。
-
-1. 单击**请求历史记录**若要查看你的请求和状态的列表。
-
-    如果访问包需要审批，请求现在都处于挂起的审批状态。
+1. 单击窗格底部的 "**重新提交**" 按钮。
 
 ## <a name="cancel-a-request"></a>取消请求
 
-如果提交访问请求并且该请求仍在**挂起的审批**状态中时，您可以取消请求。
+如果在提交访问请求后请求仍为“待审批”状态，可以取消请求。****
 
-**必备角色：** 请求者
+**必备角色：** 者
 
-1. 在我访问门户中，在左侧，单击**请求历史记录**若要查看你的请求和状态的列表。
+1. 在“我的访问权限”门户左侧，单击“请求历史记录”，查看请求和状态的列表。****
 
-1. 单击**视图**你想要取消请求的链接。
+1. 单击要取消的请求的“查看”链接。****
 
-1. 如果请求仍处于**挂起的审批**状态，则可以单击**取消请求**取消请求。
+1. 如果请求仍为“待审批”状态，则可单击“取消请求”，将请求取消。********
 
-    ![我访问门户-取消请求](./media/entitlement-management-request-access/my-access-cancel-request.png)
+    ![“我的访问权限”门户 - 取消请求](./media/entitlement-management-request-access/my-access-cancel-request.png)
 
-1. 单击**请求历史记录**以确认请求已取消。
-
-## <a name="select-a-policy"></a>选择策略
-
-如果你要请求对具有多个适用策略的访问包的访问，您可能需要选择一个策略。 例如，访问包管理器可访问包使用配置两个策略的两个内部员工组。 第一个策略可能 60 天内允许访问，需要批准。 第二个策略可能允许访问 2 天，不需要批准。 如果遇到这种情况下，必须选择你想要使用的策略。
-
-**必备角色：** 请求者
+1. 单击“请求历史记录”，确认请求已取消。****
 
 ## <a name="next-steps"></a>后续步骤
 

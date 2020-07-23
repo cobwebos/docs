@@ -2,20 +2,19 @@
 title: 在生产中部署模型 - Team Data Science Process
 description: 如何将模型部署到生产环境使其在进行业务决策方面能够发挥积极作用。
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1a75c842989cfbaf7bb1880831fda2bc6994622b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: e3e2ef3340ca836f56176c21cf3d221f0bf172b9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60238347"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76722231"
 ---
 # <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>将模型部署到生产中，使这些模型在制定业务决策方面能够发挥积极作用
 
@@ -25,7 +24,7 @@ ms.locfileid: "60238347"
 
 可通过多种方法和平台将模型投入生产。 下面是几个选项：
 
-- [使用 Azure 机器学习服务部署模型的位置](../service/how-to-deploy-and-where.md)
+- [使用 Azure 机器学习部署模型的位置](../how-to-deploy-and-where.md)
 - [SQL-Server 中的模型部署](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
@@ -34,12 +33,12 @@ ms.locfileid: "60238347"
 >
 
 >[!NOTE]
->对于使用 Azure 机器学习工作室的部署，请参阅[部署 Azure 机器学习 Web 服务](../studio/publish-a-machine-learning-web-service.md)。
+>对于使用 Azure 机器学习工作室的部署，请参阅[部署 Azure 机器学习 Web 服务](../studio/deploy-a-machine-learning-web-service.md)。
 >
 
 ## <a name="ab-testing"></a>A/B 测试
 
-如果在生产环境中部署了多个模型，执行 [A/B 测试](https://en.wikipedia.org/wiki/A/B_testing)来比较模型的性能可能很有用。 
+当生产中有多个模型时，可以使用[A/B 测试](https://en.wikipedia.org/wiki/A/B_testing)来比较模型的性能。 
  
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,28 +3,28 @@ title: 比较 Azure 内容分发网络 (CDN) 产品功能 | Microsoft Docs
 description: 了解每个 Azure 内容分发网络 (CDN) 产品支持的功能。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: mdgattuso
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 06/05/2019
-ms.author: magattus
+ms.date: 11/15/2019
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 5aa342700c8440e67987cd9d1b45574c02a45f47
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 0e57ae691bf4b07b8161bc343929510d6be041a8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729805"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260507"
 ---
 # <a name="compare-azure-cdn-product-features"></a>比较 Azure CDN 产品功能
 
-Azure 内容分发网络 (CDN) 包括四个产品：“来自 Microsoft 的 Azure CDN Standard”、“来自 Akamai 的 Azure CDN Standard”、“来自 Verizon 的 Azure CDN Standard”和“来自 Verizon 的 Azure CDN Premium”     。 有关将**来自 Verizon 的标准 Azure CDN** 配置文件迁移到**来自 Verizon 的高级 Azure CDN** 的信息，请参阅[将 Azure CDN 配置文件从标准 Verizon 迁移到高级 Verizon](cdn-migrate.md)。
+Azure 内容分发网络 (CDN) 包括四个产品：“来自 Microsoft 的 Azure CDN Standard”、“来自 Akamai 的 Azure CDN Standard”、“来自 Verizon 的 Azure CDN Standard”和“来自 Verizon 的 Azure CDN Premium”     。 有关将**来自 Verizon 的标准 Azure CDN** 配置文件迁移到**来自 Verizon 的高级 Azure CDN** 的信息，请参阅[将 Azure CDN 配置文件从标准 Verizon 迁移到高级 Verizon](cdn-migrate.md)。 请注意，虽然存在从标准 Verizon 到高级 Verizon 的升级路径，但目前没有其他产品之间的转换机制。
 
 下表比较了每个产品的可用功能。
 
@@ -41,11 +41,11 @@ Azure 内容分发网络 (CDN) 包括四个产品：“来自 Microsoft 的 Azur
 | [全局服务器负载均衡 (GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [快速清除](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;** ，目前 Akamai 的 Azure CDN 不支持全部清除和通配符清除 |**&#x2713;** |**&#x2713;** |
 | [资产预加载](cdn-preload-endpoint.md)  |  | |**&#x2713;** |**&#x2713;** |
-| 缓存/标头设置（使用[缓存规则](cdn-caching-rules.md)）  |  |**&#x2713;** |**&#x2713;** | |
-| 可自定义的基于规则的内容交付引擎（使用[规则引擎](cdn-rules-engine.md)）  |  | | |**&#x2713;** |
-| 缓存/标头设置（使用 [规则引擎](cdn-rules-engine.md)）  |  | | |**&#x2713;** |
-| URL 重定向/重写（使用 [规则引擎](cdn-rules-engine.md)）  |  | | |**&#x2713;** |
-| 移动设备规则（使用 [规则引擎](cdn-rules-engine.md)）  |  | | |**&#x2713;** |
+| 缓存/标头设置（使用[缓存规则](cdn-caching-rules.md)）  |**&#x2713;** 使用[标准规则引擎](cdn-standard-rules-engine.md)  |**&#x2713;** |**&#x2713;** | |
+| 可自定义的、基于规则的内容分发引擎 |**&#x2713;** 使用[标准规则引擎](cdn-standard-rules-engine.md)  | | |**&#x2713;** 使用[规则引擎](cdn-rules-engine.md) |
+| 缓存/标头设置  |**&#x2713;** 使用[标准规则引擎](cdn-standard-rules-engine.md) | | |**&#x2713;** 使用[高级规则引擎](cdn-rules-engine.md) |
+| URL 重定向/重写 |**&#x2713;** 使用[标准规则引擎](cdn-standard-rules-engine.md)  | | |**&#x2713;** 使用[高级规则引擎](cdn-rules-engine.md) |
+| 移动设备规则  |**&#x2713;** 使用[标准规则引擎](cdn-standard-rules-engine.md) | | |**&#x2713;** 使用[高级规则引擎](cdn-rules-engine.md) |
 | [查询字符串缓存](cdn-query-string.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | IPv4/IPv6 双协议栈 | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [HTTP/2 支持](cdn-http2.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
@@ -57,7 +57,8 @@ Azure 内容分发网络 (CDN) 包括四个产品：“来自 Microsoft 的 Azur
 | [地理筛选](cdn-restrict-access-by-country.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [令牌身份验证](cdn-token-auth.md)  |  |  |  |**&#x2713;**| 
 | [DDOS 保护](https://www.us-cert.gov/ncas/tips/ST04-015)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [使用自己的证书](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#ssl-certificates) |**&#x2713;** |  | **&#x2713;** | **&#x2713;** |
+| [使用自己的证书](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#tlsssl-certificates) |**&#x2713;** |  | **&#x2713;** | **&#x2713;** |
+| 支持的 TLS 版本 | TLS 1.2、TLS 1.0/1.1 - [可配置](https://docs.microsoft.com/rest/api/cdn/customdomains/enablecustomhttps#usermanagedhttpsparameters) | TLS 1.2 | TLS 1.2 | TLS 1.2 |
 ||||
 | **分析和报告** | **标准版 Microsoft** | **标准 Akamai** | **标准 Verizon** | **高级 Verizon** | 
 | [Azure 诊断日志](cdn-azure-diagnostic-logs.md)  | **&#x2713;** | **&#x2713;** |**&#x2713;** |**&#x2713;** |

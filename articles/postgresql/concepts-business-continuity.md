@@ -1,21 +1,21 @@
 ---
-title: 使用 Azure Database for PostgreSQL-单个服务器的业务连续性概述
-description: 有关使用 Azure Database for PostgreSQL 确保业务连续性的概述。
+title: 业务连续性 - Azure Database for PostgreSQL（单一服务器）
+description: 本文介绍使用 Azure Database for PostgreSQL 时的业务连续性（时间点还原、数据中心服务中断、异地还原）。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: a31112f3b6f7bd79785f89822e2881b152708254
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 08/21/2019
+ms.openlocfilehash: 35b2236ae6ffd3df3e458cdbd4bc01e89a1da2b2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65068930"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245293"
 ---
-# <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>使用 Azure Database for PostgreSQL-单个服务器的业务连续性概述
+# <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>有关使用 Azure Database for PostgreSQL - 单一服务器确保业务连续性的概述
 
-本概述介绍了 Azure Database for PostgreSQL 针对业务连续性和灾难恢复所提供的功能。 了解在发生破坏性事件后用于进行恢复的选项，破坏性事件可能导致数据丢失或者数据库和应用程序无法使用。 了解对一些情况的处理方式，包括用户或应用程序错误影响数据完整性、Azure 区域服务中断，或者应用程序需要维护。
+本概述介绍了 Azure Database for PostgreSQL 针对业务连续性和灾难恢复所提供的功能。 了解在发生破坏性事件后用于进行恢复的选项，破坏性事件可能导致数据丢失或者数据库和应用程序无法使用。 了解对一些情况的处理方式，包括用户或应用程序错误影响数据完整性、Azure 区域发生服务中断，或者应用程序需要维护。
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>可用来提供业务连续性的功能
 
@@ -29,24 +29,34 @@ Azure Database for PostgreSQL 提供了业务连续性功能，这包括自动�
 | 从异地复制的备份执行异地还原 | 不支持 | ERT < 12 小时<br/>RPO < 1 小时 | ERT < 12 小时<br/>RPO < 1 小时 |
 
 > [!IMPORTANT]
-> 删除的服务器无法还原。 如果删除服务器，则属于该服务器的所有数据库也会被删除且不可恢复。
+> 已删除的服务器**无法**还原。 如果删除服务器，则属于该服务器的所有数据库也会被删除且不可恢复。 使用 [Azure 资源锁](../azure-resource-manager/management/lock-resources.md)帮助防止意外删除服务器。
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>在发生用户或应用程序错误之后恢复服务器
 
 可以使用服务的备份在发生各种破坏性事件后对服务器进行恢复。 用户可能会不小心删除某些数据、无意中删除重要的表，甚至删除整个数据库。 应用程序可能因为自身缺陷，意外以错误数据覆盖正确数据，等等。
 
-可以执行时间点还原来创建服务器在已知良好的时间点的副本。 此时间点必须在为服务器配置的备份保留期内。 在将数据还原到新服务器后，可以将原始服务器替换为新还原的服务器，或者将所需的数据从还原的服务器复制到原始服务器。
+你可以执行**时间点还原**，以创建服务器到已知良好时间点的副本。 此时间点必须在为服务器配置的备份保留期内。 在将数据还原到新服务器后，可以将原始服务器替换为新还原的服务器，或者将所需的数据从还原的服务器复制到原始服务器。
 
-## <a name="recover-from-an-azure-regional-data-center-outage"></a>在 Azure 发生区域性数据中心中断后进行恢复
+## <a name="recover-from-an-azure-data-center-outage"></a>从 Azure 数据中心服务中断进行恢复
 
 Azure 数据中心会罕见地发生中断。 发生中断时，可能仅导致业务中断持续几分钟，也可能持续数小时。
 
-一个选项是等待数据中心中断结束时，服务器重新联机。 这适用于可以承受服务器脱机一段时间的应用程序，例如开发环境。 数据中心中断时，不知道中断会持续多久，因此该选项仅适用于暂时不需要服务器的情况。
+一个选项是等待数据中心中断结束时，服务器重新联机。 这适用于可以承受服务器脱机一段时间的应用程序，例如开发环境。 当数据中心发生服务中断时，你不知道中断可能会持续多长时间，因此该选项仅在一段时间不需要服务器时才有效。
 
-另一个选项是使用 Azure Database for PostgreSQL 的异地还原功能，该功能使用异地冗余备份来还原服务器。 即使托管你的服务器的区域处于脱机状态，也可访问这些备份。 可以使用这些备份还原到任何其他区域并使服务器恢复联机。
+## <a name="geo-restore"></a>异地还原
+
+异地还原功能使用异地冗余备份来还原服务器。 备份托管在服务器的[配对区域](../best-practices-availability-paired-regions.md)中。 可以使用这些备份还原到任何其他区域。 异地还原使用备份中的数据创建新的服务器。 从[备份和还原概念文章](concepts-backup.md)详细了解异地还原。
 
 > [!IMPORTANT]
-> 只有当为服务器预配了异地冗余备份存储时，异地还原才是可行的。 如果要从现有服务器的本地冗余切换到异地冗余备份，必须使用现有服务器的 pg_dump 进行转储，然后将其还原到配置了异地冗余备份的新建服务器中。
+> 只有当为服务器预配了异地冗余备份存储时，异地还原才是可行的。 如果要从现有服务器的本地冗余切换到异地冗余备份，必须使用现有服务器的 pg_dump 进行转储，然后将其还原到配置了异地冗余的新建服务器中。
+
+## <a name="cross-region-read-replicas"></a>跨区域只读副本
+可以使用跨区域只读副本来增强业务连续性和灾难恢复规划。 只读副本使用 PostgreSQL 的物理复制技术进行异步更新。 从[只读副本概念文章](concepts-read-replicas.md)详细了解有关只读副本、可用区域以及如何进行故障转移的信息。 
+
+## <a name="faq"></a>常见问题解答
+### <a name="where-does-azure-database-for-postgresql-store-customer-data"></a>Azure Database for PostgreSQL 将客户数据存储在何处？
+默认情况下，Azure Database for PostgreSQL 不会将客户数据从其部署到的区域中移出或存储。 但是，客户可以选择启用[异地冗余备份](concepts-backup.md#backup-redundancy-options)，或创建[跨区域读取副本](concepts-read-replicas.md#cross-region-replication)以便将数据存储在另一个区域中。
+
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解 [Azure Database for PostgreSQL 中的自动备份](concepts-backup.md)。 

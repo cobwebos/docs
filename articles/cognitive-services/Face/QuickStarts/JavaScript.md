@@ -8,23 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: d1aa3e3a23acf82af8435cbb075fac38353500e5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e94dc53fa5c0a6f44417324c9a7d7c1496d18f17
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538725"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986629"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>快速入门：使用 REST API 和 JavaScript 检测图像中的人脸
 
-在本快速入门中，将使用 Azure 人脸 REST API 和 JavaScript 来检测图像中的人脸。
+本快速入门将通过 JavaScript 使用 Azure 人脸 REST API 来检测图像中的人脸。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 人脸 API 订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=face-api)获取免费试用的订阅密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸 API 服务并获取密钥。
-- 代码编辑器，如 [Visual Studio Code](https://code.visualstudio.com/download)
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="创建人脸资源"  target="_blank">创建人脸资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到人脸 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
+* 代码编辑器，如 [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="initialize-the-html-file"></a>初始化 HTML 文件
 
@@ -41,7 +44,7 @@ ms.locfileid: "57538725"
 </html>
 ```
 
-然后在该文档的 `body` 元素中添加以下代码。 这将设置一个基本用户界面，其中包含 URL 字段、“分析人脸”按钮、响应窗格和图像显示窗格。
+然后在该文档的 `body` 元素中添加以下代码。 此代码将设置一个基本用户界面，其中包含 URL 字段、“分析人脸”按钮、响应窗格和图像显示窗格。
 
 ```html
 <h1>Detect Faces:</h1>
@@ -65,7 +68,7 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 
 ## <a name="write-the-javascript-script"></a>编写 JavaScript 脚本
 
-在该文档中 `h1` 元素的正上方添加以下代码。 这会设置调用人脸 API 的 JavaScript 代码。
+在该文档中 `h1` 元素的正上方添加以下代码。 此代码会设置调用人脸 API 的 JavaScript 代码。
 
 ```html
 <script type="text/javascript">
@@ -73,16 +76,8 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
         // Replace <Subscription Key> with your valid subscription key.
         var subscriptionKey = "<Subscription Key>";
     
-        // NOTE: You must use the same region in your REST call as you used to
-        // obtain your subscription keys. For example, if you obtained your
-        // subscription keys from westus, replace "westcentralus" in the URL
-        // below with "westus".
-        //
-        // Free trial subscription keys are generated in the "westus" region.
-        // If you use a free trial subscription key, you shouldn't need to change 
-        // this region.
         var uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+            "https://<My Endpoint String>.com/face/v1.0/detect";
     
         // Request parameters.
         var params = {
@@ -132,7 +127,9 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 </script>
 ```
 
-需使用订阅密钥的值更新 `subscriptionKey` 字段，并且可能需要更改 `uriBase` 字符串，使之包含正确的区域标识符（如需包含所有区域终结点的列表，请参阅[人脸 API 文档](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)）。 `returnFaceAttributes` 字段指定要检索的人脸属性；你可能希望根据自己的预期用途更改此字符串。
+需使用订阅密钥的值更新 `subscriptionKey` 字段，并且可能需要更改 `uriBase` 字符串，使之包含正确的终结点字符串。 `returnFaceAttributes` 字段指定要检索的人脸属性；你可能希望根据自己的预期用途更改此字符串。
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="run-the-script"></a>运行脚本
 
@@ -140,7 +137,7 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 
 ![GettingStartCSharpScreenshot](../Images/face-detect-javascript.png)
 
-下面是成功的 JSON 响应的示例。
+以下文本是成功的 JSON 响应的示例。
 
 ```json
 [
@@ -236,7 +233,7 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你编写了一个 JavaScript 脚本，该脚本调用 Azure 人脸 API，以便检测图像中的人脸并返回其属性。 接下来，请浏览人脸 API 参考文档，以便进行详细的了解。
+在本快速入门中，你编写了一个 JavaScript 脚本，该脚本调用 Azure 人脸服务检测图像中的人脸并返回其属性。 接下来，请浏览人脸 API 参考文档，以便进行详细的了解。
 
 > [!div class="nextstepaction"]
 > [人脸 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

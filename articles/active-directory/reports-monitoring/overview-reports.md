@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66ccf8014938e813676e9338e9bfc4eaa18f63f9
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 6c2ae9e7654fa468d499ca6ef8543b98b1e372ca
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436942"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481385"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>什么是 Azure Active Directory 报表？
 
@@ -37,7 +37,7 @@ ms.locfileid: "58436942"
 - [安全报表](#security-reports)
 - [活动报告](#activity-reports)
 
-![报告](./media/overview-reports/01.png)
+![报表](./media/overview-reports/01.png)
 
 
 ## <a name="security-reports"></a>安全报表
@@ -54,9 +54,9 @@ ms.locfileid: "58436942"
 
 - 在“Azure Active Directory 免费版和基本版”中，获取一个列表，其中包含标记为存在风险的用户和风险登录。 
 
-- Azure Active Directory Premium 1 版本还允许你检查每个报表中检测到的部分潜在性风险事件，从而扩展了该模型。 
+- Azure Active Directory Premium 1 版本扩展了这个模型，它还允许你检查每个报告检测到的一些潜在风险检测。 
 
-- Azure Active Directory Premium 2 版本提供有关潜在风险事件的最详细信息，并且还允许配置可自动响应已配置风险级别的安全策略。
+- Azure Active Directory Premium 2 版本提供有关潜在风险检测的最详细信息，并且还允许配置可自动响应已配置风险级别的安全策略。
 
 
 ## <a name="activity-reports"></a>活动报表
@@ -81,7 +81,7 @@ ms.locfileid: "58436942"
 
 #### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>访问审核日志报表需要什么 Azure AD 许可证？  
 
-对于你有其许可证的功能，会提供审核日志报表。 如果有特定功能的许可证，则还可以访问其审核日志信息。 有关更多详细信息，请参阅 [Azure Active Directory 特性和功能](https://www.microsoft.com/cloud-platform/azure-active-directory-features)。   
+对于你有其许可证的功能，会提供审核日志报表。 如果有特定功能的许可证，则还可以访问其审核日志信息。 [不同类型的许可证的](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#what-are-the-azure-ad-licenses)特征详细比较可以在 [Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory/)上查看。 有关更多详细信息，请参阅 [Azure Active Directory 特性和功能](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#which-features-work-in-azure-ad)。
 
 ### <a name="sign-ins-report"></a>登录报告
 
