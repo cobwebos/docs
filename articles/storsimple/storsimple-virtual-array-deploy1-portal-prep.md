@@ -8,15 +8,16 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f2c7a6f9c1146627f81dc20386c59a91724b245
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1a3d0b05f04ad8c182d428843479160666b96ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698948"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070318"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>部署 StorSimple 虚拟阵列 - 准备 Azure 门户
 
-![](./media/storsimple-virtual-array-deploy1-portal-prep/getstarted4.png)
+![显示部署虚拟数组所需步骤的关系图。 第一步标记为 "入门"，并突出显示。](./media/storsimple-virtual-array-deploy1-portal-prep/getstarted4.png)
 
 
 ## <a name="overview"></a>概述
@@ -161,7 +162,7 @@ StorSimple Device Manager 服务的单个实例可以管理多个 StorSimple 虚
    
       ![添加现有的存储帐户凭据](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-step"></a>下一步
 
 下一步是针对 StorSimple 虚拟阵列预配虚拟机。 根据主机操作系统参阅以下操作的详细说明：
 

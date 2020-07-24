@@ -7,11 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: victorh
-ms.openlocfilehash: f021eed959ef88a1ef3671e1d0ace8080710c92a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 560d836f99f7a1be85007bb9d488f80a68d7999b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80810227"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067971"
 ---
 # <a name="azure-application-gateway-features"></a>Azure 应用程序网关功能
 
@@ -34,7 +35,7 @@ ms.locfileid: "80810227"
 - [Websocket 和 HTTP/2 流量](#websocket-and-http2-traffic)
 - [连接清空](#connection-draining)
 - [自定义错误页](#custom-error-pages)
-- [重写 HTTP 标头](#rewrite-http-headers)
+- [重写 HTTP 标头和 URL](#rewrite-http-headers-and-url)
 - [大小调整](#sizing)
 
 ## <a name="secure-sockets-layer-ssltls-termination"></a>安全套接字层 (SSL/TLS) 终止
@@ -82,13 +83,13 @@ Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标�
 
 ## <a name="multiple-site-hosting"></a>多站点托管
 
-使用多站点托管可以在同一应用程序网关实例上配置多个网站。 此功能可以将多达 100 个网站添加到一个应用程序网关中（以获得最佳性能），从而为部署配置更有效的拓扑。 每个网站都可以定向到自己的池。 例如，应用程序网关可以通过两个名为 ContosoServerPool 和 FabrikamServerPool 的服务器池分别处理 `contoso.com` 和 `fabrikam.com` 的流量。
+利用应用程序网关，可以根据主机名或域名为同一应用程序网关上的多个 web 应用程序配置路由。 它允许您为部署配置更有效的拓扑，方法是将最多100个网站添加到一个应用程序网关。 每个网站都可以定向到自己的后端池。 例如，三个域、contoso.com、fabrikam.com 和 adatum.com，指向应用程序网关的 IP 地址。 可以创建三个多站点侦听器，并为每个侦听器配置相应的端口和协议设置。 
 
-对 `http://contoso.com` 的请求路由到 ContosoServerPool，对 `http://fabrikam.com` 的请求路由到 FabrikamServerPool。
+的请求 `http://contoso.com` 路由到 ContosoServerPool， `http://fabrikam.com` 并路由到 FabrikamServerPool，依此类推。
 
-同样，可以将同一父域的两个子域托管在同一应用程序网关部署中。 例如，在单个应用程序网关部署中托管的 `http://blog.contoso.com` 和 `http://app.contoso.com` 都是使用子域。
+同样，可以将同一父域的两个子域托管在同一应用程序网关部署中。 例如，在单个应用程序网关部署中托管的 `http://blog.contoso.com` 和 `http://app.contoso.com` 都是使用子域。 有关详细信息，请参阅[应用程序网关多站点托管](multiple-site-overview.md)。
 
-有关详细信息，请参阅[应用程序网关多站点托管](multiple-site-overview.md)。
+你还可以在多站点侦听器中定义通配符主机名，每个侦听器最多可定义5个主机名。 若要了解详细信息，请参阅[侦听程序（预览版）中的通配符主机名](multiple-site-overview.md#wildcard-host-names-in-listener-preview)。
 
 ## <a name="redirection"></a>重定向
 
@@ -130,7 +131,7 @@ WebSocket 和 HTTP/2 协议通过长时间运行的 TCP 连接，在服务器和
 
 有关详细信息，请参阅[自定义错误](custom-error.md)。
 
-## <a name="rewrite-http-headers"></a>重写 HTTP 标头
+## <a name="rewrite-http-headers-and-url"></a>重写 HTTP 标头和 URL
 
 HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的信息。 重写这些 HTTP 标头可帮助实现多个重要方案，例如：
 
@@ -138,9 +139,11 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 - 删除可能会透露敏感信息的响应标头字段。
 - 从 X-Forwarded-For 标头中去除端口信息。
 
-当请求和响应数据包在客户端与后端池之间移动时，可以通过应用程序网关添加、删除或更新 HTTP 请求和响应标头。 它还允许你添加条件，确保只有在满足特定条件的情况下才能重写指定标头。
+应用程序网关和 WAF v2 SKU 支持添加、删除或更新 HTTP 请求和响应标头的功能，而请求和响应数据包则在客户端和后端池之间移动。 还可以重写 Url、查询字符串参数和主机名。 使用 URL 重写和基于 URL 路径的路由，可以选择使用重新评估路径映射选项将请求路由到基于原始路径或重写路径的后端池。 
 
-有关详细信息，请参阅[重写 HTTP 标头](rewrite-http-headers.md)。
+它还提供了添加条件以确保仅在满足某些条件时重写指定标头或 URL 的功能。 这些条件基于请求和响应信息。
+
+有关详细信息，请参阅[重写 HTTP 标头和 URL](rewrite-http-headers-url.md)。
 
 ## <a name="sizing"></a>大小调整
 

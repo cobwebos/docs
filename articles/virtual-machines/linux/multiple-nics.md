@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: ecbff4beadd9d10a8489c89cc322c0bb67ec5f40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 054462834d2712b8db10b40f2d7befdf330eec48
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706675"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069512"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>如何在 Azure 中创建具有多个网络接口卡的 Linux 虚拟机
 
@@ -167,7 +167,7 @@ Azure 资源管理器模板使用声明性 JSON 文件来定义环境。 可以�
 }
 ```
 
-阅读有关[使用 *copy* 创建多个实例](../../resource-group-create-multiple.md)的详细信息。 
+阅读有关[使用 *copy* 创建多个实例](../../azure-resource-manager/templates/copy-resources.md)的详细信息。 
 
 你还可以使用 `copyIndex()` 来向资源名称追加一个数字，从而允许你创建 `myNic1` 、等 `myNic2` 。下面显示了追加索引值的示例：
 

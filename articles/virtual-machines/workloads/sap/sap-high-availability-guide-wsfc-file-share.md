@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2df092d49f2dfe9153b52be677e8ee6314dd9b60
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf9e00e8acba241f1445977dcc53724b9981039f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982966"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068688"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>使用 Azure 中的文件共享在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例
 
@@ -113,7 +114,7 @@ SAP \<SID\> 群集角色不包含群集共享磁盘或通用文件共享群集�
 选择存储空间直通时，请考虑以下用例：
 
 - 需要在 Azure 可用性集中部署用于构建存储空间直通群集的虚拟机。
-- 对于存储空间直通群集的灾难恢复，可以使用[Azure Site Recovery 服务](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines---storage)。
+- 对于存储空间直通群集的灾难恢复，可以使用[Azure Site Recovery 服务](../../../site-recovery/azure-to-azure-support-matrix.md#replicated-machines---storage)。
 - 不支持将存储空间直通群集延伸到不同的 Azure 可用性区域。
 
 ### <a name="sap-prerequisites-for-scale-out-file-shares-in-azure"></a>Azure 中的横向扩展文件共享的 SAP 先决条件

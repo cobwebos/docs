@@ -7,18 +7,19 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 4625a0fa75f992ac18eeb91629af373a426aa955
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5e621cc3763cfa7fe28790baf2f5d9866c8d618
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676567"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069800"
 ---
 # <a name="error-messages-for-spot-vms-and-scale-sets"></a>用于发现点 Vm 和规模集的错误消息
 
 下面是在使用点 Vm 和规模集时可能会收到的一些错误代码。
 
 
-| 键 | 消息 | 说明 |
+| 键 | Message | 说明 |
 |-----|---------|-------------|
 | SkuNotAvailable | 资源 "" 的请求层 \<resource\> 当前在订阅 "" 的位置 "" 中不可用 \<location\> \<subscriptionID\> 。 请尝试另一层或部署到其他位置。 | 此位置没有足够的 Azure 污点容量来创建 VM 或规模集实例。 |
 | EvictionPolicyCanBeSetOnlyOnAzureSpotVirtualMachines  |  只能在 Azure 点虚拟机上设置逐出策略。 | 此 VM 不是一个点 VM，因此无法设置逐出策略。 |
@@ -34,7 +35,6 @@ ms.locfileid: "84676567"
 | MaxPriceIsSupportedOnlyForAzureSpotVirtualMachines  |  仅 Azure 点虚拟机支持最大价格。 | 有关详细信息，请参阅 "[发现虚拟机](./linux/spot-vms.md)"。 |
 | MoveResourcesWithAzureSpotVMNotSupported  |  移动资源请求包含一个 Azure 点虚拟机。 目前不支持。 请查看虚拟机 Id 的错误详细信息。 | 不能移动专色 Vm。 |
 | MoveResourcesWithAzureSpotVmssNotSupported  |  移动资源请求包含一个 Azure 点虚拟机规模集。 目前不支持。 请查看虚拟机规模集 Id 的错误详细信息。 | 不能移动位置规模集实例。 |
-| EphemeralOSDisksNotSupportedForSpotVMs | 对于污点 Vm，不支持临时 OS 磁盘。 | 为你的专色 VM 使用常规 OS 磁盘。 |
 | AzureSpotVMNotSupportedInVmssWithVMOrchestrationMode | 虚拟机规模集不支持 Azure 点虚拟机与 VM 业务流程模式。 | 将业务流程模式设置为虚拟机规模集，以便使用位置实例。 |
 
 

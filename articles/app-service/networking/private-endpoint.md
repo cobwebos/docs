@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: fdad2f7c2ce4f82529866b4235ebebab8da664d3
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 4fab75aef2a94ba7108085e9d5b5dbbf190342f6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054570"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068302"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>为 Azure Web 应用使用专用终结点（预览版）
 
@@ -127,7 +127,7 @@ ms.locfileid: "86054570"
 - 若要通过门户部署 Web 应用的专用终结点，请参阅[如何使用门户将专用连接到 Web 应用][howtoguide1]
 - 若要使用 Azure CLI 为 Web 应用部署专用终结点，请参阅[如何使用 Azure CLI 私下连接到 Web 应用][howtoguide2]
 - 若要使用 PowerShell 为你的 Web 应用部署专用终结点，请参阅[如何使用 powershell 通过专用连接到 Web 应用][howtoguide3]
-
+- 若要使用 Azure 模板为你的 Web 应用部署专用终结点，请参阅[如何使用 azure 模板私下连接到 Web 应用][howtoguide4]
 
 
 <!--Links-->
@@ -143,3 +143,4 @@ ms.locfileid: "86054570"
 [howtoguide1]: https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal
 [howtoguide2]: https://docs.microsoft.com/azure/app-service/scripts/cli-deploy-privateendpoint
 [howtoguide3]: https://docs.microsoft.com/azure/app-service/scripts/powershell-deploy-private-endpoint
+[howtoguide4]: https://docs.microsoft.com/azure/app-service/scripts/template-deploy-private-endpoint

@@ -1,6 +1,6 @@
 ---
 title: Windows 虚拟桌面主机池负载平衡-Azure
-description: Windows 虚拟桌面环境的主机池负载平衡方法。
+description: 了解 Windows 虚拟桌面环境的主机池负载平衡方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 15d50033a1316601dd8c36bd5748c659f4397d66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72a7c275cfc30a8ebaae5325ce003f5f274ce190
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82612038"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069978"
 ---
 # <a name="host-pool-load-balancing-methods"></a>主机池负载均衡方法
 

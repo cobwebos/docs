@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 策略限制 VM 扩展安装
+title: 使用 Azure 策略限制 VM 扩展安装（Windows）
 description: 使用 Azure Policy 限制扩展部署。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 96cd16c08421a4e365391c0db0b257f71a06551f
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: e4959c9dca909afde4bf6d351d79ecca1e4022a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919806"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069762"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>使用 Azure Policy 限制 Windows VM 上的扩展安装
 
-如果要阻止在 Windows Vm 上使用或安装某些扩展，可以使用 PowerShell 创建 Azure 策略定义，以限制资源组中 Vm 的扩展。 
+如果想要阻止用户在 Windows VM 上使用或安装某些扩展，可以使用 PowerShell 创建 Azure Policy 定义以限制资源组中的 VM 扩展。 
 
 本教程在 Cloud Shell 中使用 Azure PowerShell，后者已不断更新到最新版本。 
 
@@ -98,7 +98,7 @@ nano $home/clouddrive/parameters.json
 
 ## <a name="create-the-policy"></a>创建策略
 
-策略定义是用于存储想要使用的配置的对象。 策略定义使用规则和参数文件定义策略。 使用 [New-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicydefinition) cmdlet 创建策略定义。
+策略定义是用于存储想要使用的配置的对象。 策略定义使用规则和参数文件定义策略。 使用 [New-AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition) cmdlet 创建策略定义。
 
  策略规则和参数是在 cloud shell 中创建并存储为 .json 文件的文件。
 
@@ -117,9 +117,9 @@ $definition = New-AzPolicyDefinition `
 
 ## <a name="assign-the-policy"></a>分配策略
 
-此示例使用 [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment) 将策略分配给资源组。 **myResourceGroup** 资源组中创建的任何 VM 将不能安装 VM 访问代理扩展或自定义脚本扩展。 
+此示例使用 [New-AzPolicyAssignment](/powershell/module/az.resources/new-azpolicyassignment) 将策略分配给资源组。 **myResourceGroup** 资源组中创建的任何 VM 将不能安装 VM 访问代理扩展或自定义脚本扩展。 
 
-使用 [Get-AzSubscription | Format-Table](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription) cmdlet 获取你的订阅 ID，以替换此示例中的订阅 ID。
+使用 [Get-AzSubscription | Format-Table](/powershell/module/az.accounts/get-azsubscription) cmdlet 获取你的订阅 ID，以替换此示例中的订阅 ID。
 
 ```azurepowershell-interactive
 $scope = "/subscriptions/<subscription id>/resourceGroups/myResourceGroup"
@@ -140,7 +140,7 @@ $assignment
 
 ## <a name="test-the-policy"></a>测试策略
 
-若要测试策略，请尝试使用 VM 访问扩展。 以下内容应失败，并出现消息 "AzVMAccessExtension：资源 ' myVMAccess ' 被策略禁止 '"。
+若要测试策略，请尝试使用 VM 访问扩展。 以下命令应失败并显示消息“Set-AzVMAccessExtension:策略不允许使用资源 'myVMAccess'”。
 
 ```azurepowershell-interactive
 Set-AzVMAccessExtension `
@@ -150,7 +150,7 @@ Set-AzVMAccessExtension `
    -Location EastUS 
 ```
 
-在门户中，密码更改将失败并显示消息“由于违反策略，模板部署失败” 消息。
+在门户中，密码更改将失败并显示消息“由于违反策略，模板部署失败” 。
 
 ## <a name="remove-the-assignment"></a>删除分配
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 0245a23e46770840295904685c913826950c0642
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 892ace66c4994f4c2e263d529d69e505ed9c1c1f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517835"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068027"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -286,7 +286,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 标头和 URL 参数可以设置为静态值，也可以设置为其他标头和服务器变量。 这有助于处理重要的用例，例如提取客户端 IP 地址、删除有关后端的敏感信息、添加更多安全性等。
 有关详细信息，请参阅：
 
- - [重写 HTTP 标头概述](rewrite-http-headers-url.md)
+ - [重写 HTTP 标头和 URL 概述](rewrite-http-headers-url.md)
  - [配置 HTTP 标头重写](rewrite-http-headers-portal.md)
  - [配置 URL 重写](rewrite-url-portal.md)
 

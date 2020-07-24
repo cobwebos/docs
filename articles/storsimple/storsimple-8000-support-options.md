@@ -6,11 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: alkohli
-ms.openlocfilehash: d9a75cde58062061149fa4304eace587b1480dd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55cc3049e437cc18eac6dc537de3ee1c0d894c23
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76277037"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070334"
 ---
 # <a name="storsimple-solution-support"></a>StorSimple 解决方案支持
 
@@ -27,8 +28,8 @@ Microsoft 为 StorSimple 企业存储客户提供灵活的支持选项。 我们
 
 ## <a name="storsimple-support-plans"></a>StorSimple 支持计划
 
-|                                                                                                                                                     | **标准** <sup>2                                                 |  **高级** <sup>1                                                                         |
-|---------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| 支持功能 | 标准 <sup> 1 | 高级 <sup> 1 |
+| --------------- | --------------- | -------------- |
 | 计费和订阅管理                                                                     | ✓                                                                               | ✓                                                                              |
 | Azure 门户票证提交                                                                          | ✓                                                                               | ✓                                                                              |
 | 在线支持门户访问                                                                            | ✓                                                                               | ✓                                                                              |
