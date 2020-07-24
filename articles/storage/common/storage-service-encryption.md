@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b6244b3ab72f7fa8ea375ff67a08e8d1d241df4a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 002eeaedf4ae479408cd1ba0c7a373d8a2661cdc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527891"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089390"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>静态数据的 Azure 存储加密
 
@@ -39,7 +39,7 @@ Azure 存储中的数据将使用 256 位 [AES 加密法](https://en.wikipedia.o
 新存储帐户中的数据使用 Microsoft 托管密钥加密。 可以依赖于使用 Microsoft 托管的密钥来加密数据，也可以使用你自己的密钥来管理加密。 如果你选择使用自己的密钥来管理加密，则可以采用两种做法：
 
 - 你可以为 Azure Key Vault 指定“客户管理的密钥”，以用于加密和解密 Blob 存储和 Azure 文件中的数据。<sup>1,2</sup> 有关客户管理的密钥的详细信息，请参阅[将客户管理的密钥与 Azure Key Vault 配合使用来管理 Azure 存储加密](encryption-customer-managed-keys.md)。
-- 可以在 Blob 存储操作中指定客户提供的密钥。 对 Blob 存储发出读取或写入请求的客户端可以在请求中包含加密密钥，以便精细控制 Blob 数据的加密和解密方式。 有关客户提供的密钥的详细信息，请参阅[在对 Blob 存储的请求中提供加密密钥（预览版）](encryption-customer-provided-keys.md)。
+- 可以在 Blob 存储操作中指定客户提供的密钥。 对 Blob 存储发出读取或写入请求的客户端可以在请求中包含加密密钥，以便精细控制 Blob 数据的加密和解密方式。 有关客户提供的密钥的详细信息，请参阅[在对 Blob 存储的请求中提供加密密钥](encryption-customer-provided-keys.md)。
 
 下表比较了 Azure 存储加密的密钥管理选项。
 

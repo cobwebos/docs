@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1a8023a700e83892fae9a16bb2bfbe2a2eb0b307
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e66af8e55f7b60347d9577c64b7183c6ef8b44f4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193407"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089305"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>保护 Synapse 工作区（预览）
 
@@ -112,7 +112,7 @@ Synapse 工作区需要访问 STG1 和 CNT1，以便能够运行管道并执行�
 
 每个角色的用户都需要完成以下步骤：
 
-|   | 步骤 | 工作区管理员 | Spark 管理员 | SQL 管理员 |
+| Number | 步骤 | 工作区管理员 | Spark 管理员 | SQL 管理员 |
 | --- | --- | --- | --- | --- |
 | 1 | 将 parquet 文件上传到 CNT1 中 | YES | YES | YES |
 | 2 | 使用 SQL 按需版本读取 parquet 文件 | YES | 是 | YES |

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 06/19/2020
+ms.date: 07/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c666a11f8d5e13d022309eddab16edb6aab76381
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5fb992edea38c3dff9beffab1f131d3e7a6fdbf6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527755"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087214"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>自定义主机池远程桌面协议（RDP）属性
 
@@ -30,18 +30,6 @@ ms.locfileid: "86527755"
 ## <a name="prerequisites"></a>先决条件
 
 在开始之前，请按照[设置 Windows 虚拟桌面 PowerShell 模块](powershell-module.md)中的说明设置 PowerShell 模块并登录到 Azure。
-
-## <a name="default-rdp-properties"></a>默认 RDP 属性
-
-默认情况下，已发布的 RDP 文件包含以下属性：
-
-|RDP 属性 | 台式机 | RemoteApps |
-|---|---| --- |
-| 多监视器模式 | 已启用 | 不可用 |
-| 已启用驱动器重定向 | 驱动器、剪贴板、打印机、COM 端口、USB 设备和智能卡| 驱动器、剪贴板和打印机 |
-| 远程音频模式 | 本地播放 | 本地播放 |
-
-你为主机池定义的任何自定义属性都将覆盖这些默认值。
 
 ## <a name="configure-rdp-properties-in-the-azure-portal"></a>在 Azure 门户中配置 RDP 属性
 

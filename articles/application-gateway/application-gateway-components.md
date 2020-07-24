@@ -5,14 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 798137a74f22824dbfec9653bff327d3a0a1f3b4
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 20d43666919f8528c25735592c2727601af10bbb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186752"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088081"
 ---
 # <a name="application-gateway-components"></a>应用程序网关组件
 
@@ -69,13 +69,13 @@ V1 SKU 可以配置为支持静态或动态内部 IP 地址和动态公共 IP �
 
 - **基本**。 此类侦听器侦听单个域站点，该站点中的单个 DNS 映射到应用程序网关的 IP 地址。 在应用程序网关后面托管单个站点时，需要使用此侦听器配置。
 
-- **多站点**。 在同一个应用程序网关实例上配置多个 Web 应用程序时，需要使用此侦听器配置。 这样可以将最多 100 个网站添加到一个应用程序网关，为部署配置更有效的拓扑。 每个网站都可以定向到自己的后端池。 例如，有三个子域（abc.alpha.com、xyz.alpha.com 和 pqr.alpha.com）指向应用程序网关 IP 地址。 可以创建三个多站点侦听器，并为每个侦听器配置相应的端口和协议设置。
+- **多站点**。 如果要基于同一应用程序网关上的多个 web 应用程序的主机名或域名配置路由，则需要此侦听器配置。 它允许您为部署配置更有效的拓扑，方法是将最多100个网站添加到一个应用程序网关。 每个网站都可以定向到自己的后端池。 例如，三个域、contoso.com、fabrikam.com 和 adatum.com，指向应用程序网关的 IP 地址。 你将创建三个[多站点侦听器](multiple-site-overview.md)，并为各自的端口和协议设置配置每个侦听器。 
 
-    有关详细信息，请参阅[多站点托管](application-gateway-web-app-overview.md)。
+    你还可以在多站点侦听器中定义通配符主机名，每个侦听器最多可定义5个主机名。 若要了解详细信息，请参阅[侦听程序（预览版）中的通配符主机名](multiple-site-overview.md#wildcard-host-names-in-listener-preview)。
 
-创建侦听器后，请将它关联到某个请求路由规则。 该规则确定如何将侦听器上收到的请求路由到后端。
+    有关如何配置多站点侦听器的详细信息，请参阅[使用 Azure 门户在应用程序网关上托管多个站点](create-multiple-sites-portal.md)。
 
-应用程序网关按[显示顺序](configuration-overview.md#order-of-processing-listeners)处理侦听器。
+创建侦听器后，请将它关联到某个请求路由规则。 该规则确定如何将侦听器上收到的请求路由到后端。 请求路由规则还包含要路由到的后端池，以及在其中提到后端端口、协议等的 HTTP 设置。
 
 ## <a name="request-routing-rules"></a>请求路由规则
 
@@ -99,19 +99,19 @@ V1 SKU 可以配置为支持静态或动态内部 IP 地址和动态公共 IP �
 
 有关详细信息，请参阅[重定向应用程序网关上的流量](redirect-overview.md)。
 
-### <a name="rewrite-http-headers"></a>重写 HTTP 标头
+### <a name="rewrite-http-headers-and-url"></a>重写 HTTP 标头和 URL
 
-通过使用请求路由规则，当请求和响应数据包通过应用程序网关在客户端和后端池之间移动时，你可以添加、删除或更新 HTTP(S) 请求和响应标头。
+通过使用重写规则，你可以添加、删除或更新 HTTP （S）请求和响应标头以及 URL 路径和查询字符串参数，因为请求和响应数据包将通过应用程序网关在客户端和后端池之间移动。
 
-这些标头可以设置为静态值，也可以设置为其他标头和服务器变量。 这有助于处理重要的用例，例如提取客户端 IP 地址、删除有关后端的敏感信息、添加更多安全性等。
+标头和 URL 参数可以设置为静态值，也可以设置为其他标头和服务器变量。 这有助于处理重要的用例，例如提取客户端 IP 地址、删除有关后端的敏感信息、添加更多安全性等。
 
-有关详细信息，请参阅[在应用程序网关上重写 HTTP 标头](rewrite-http-headers.md)。
+有关详细信息，请参阅[在应用程序网关上重写 HTTP 标头和 URL](rewrite-http-headers-url.md)。
 
 ## <a name="http-settings"></a>HTTP 设置
 
 应用程序网关使用此组件中详细指定的端口号、协议和其他设置，将流量路由到后端服务器（在包含 HTTP 设置的请求路由规则中指定）。
 
-HTTP 设置中使用的端口和协议确定应用程序网关与后端服务器之间的通信已加密（提供端到端 TLS）还是未加密。
+HTTP 设置中使用的端口和协议确定是否对应用程序网关和后端服务器之间的流量进行加密（提供端到端 TLS）或未加密。
 
 此组件还用于：
 

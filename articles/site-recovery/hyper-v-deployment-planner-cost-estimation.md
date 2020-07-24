@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: bced6a9e6c59dc32657dbabef986e29e0447b28b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29457f2f5021fed9d8785f5764c4119de4be1fa9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60947184"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089543"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery 部署规划器成本估算报表 
 
@@ -119,7 +119,7 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 
     f. **每次 DR 演练的持续时间（天）**
 
-    如， **OS 类型**
+    g. **OS 类型**
 
     h.如果该值不存在，请单击“添加行”。 **数据冗余**
 
@@ -167,16 +167,16 @@ eastus、eastus2、westus、centralus、northcentralus、southcentralus、northe
 ## <a name="supported-currencies"></a>支持的货币
 Site Recovery 部署规划器可以使用以下任何货币生成成本报表。
 
-|货币|名称||货币|名称||货币|名称|
+|货币|名称|货币|名称|货币|名称|
 |---|---|---|---|---|---|---|---|
-|ARS|阿根廷比索 ($)||AUD|澳大利亚元 ($)||BRL|巴西雷亚尔 (R$)|
-|CAD|加拿大元 ($)||CHF|瑞士法郎 (chf)||DKK|丹麦克朗 (kr)|
-|EUR|欧元 (€)||GBP|英镑 (£)||HKD|港元 (HK$)|
-|IDR|印度尼西亚卢比 (Rp)||INR|印度卢比 (₹)||JPY|日元 (¥)|
-|KRW|韩元 (₩)||MXN|墨西哥比索 (MX$)||MYR|马来西亚林吉特 (RM$)|
+|ARS|阿根廷比索 ($)|AUD|澳大利亚元 ($)|BRL|巴西雷亚尔 (R$)|
+|CAD|加拿大元 ($)|CHF|瑞士法郎 (chf)|DKK|丹麦克朗 (kr)|
+|EUR|欧元 (€)|GBP|英镑 (£)|HKD|港元 (HK$)|
+|IDR|印度尼西亚卢比 (Rp)|INR|印度卢比 (₹)|JPY|日元 (¥)|
+|KRW|韩元 (₩)|MXN|墨西哥比索 (MX$)|MYR|马来西亚林吉特 (RM$)|
 |NOK|挪威克朗 (kr)||NZD|新西兰元 ($)||RUB|俄罗斯卢布 (руб)|
-|SAR|沙特里亚尔 (SR)||SEK|瑞典克朗 (kr)||TWD|台币 (NT$)|
-|TRY|土耳其里拉 (TL)||USD| 美元 ($)||ZAR|南非兰特 (R)|
+|SAR|沙特里亚尔 (SR)|SEK|瑞典克朗 (kr)|TWD|台币 (NT$)|
+|TRY|土耳其里拉 (TL)|USD| 美元 ($)|ZAR|南非兰特 (R)|
 
 ## <a name="next-steps"></a>后续步骤
 详细了解如何[使用 Site Recovery 将 Hyper-V VM 转移到 Azure 进行保护](hyper-v-azure-tutorial.md)。

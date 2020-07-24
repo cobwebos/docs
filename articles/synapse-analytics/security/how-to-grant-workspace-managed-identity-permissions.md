@@ -1,5 +1,5 @@
 ---
-title: 如何向 Azure Synapse 工作区中的托管标识授予权限
+title: 向 Synapse 工作区中的托管标识授予权限
 description: 本文介绍如何在 Azure Synapse 工作区中配置托管标识的权限。
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8e33bd127fca9ddce7b15d144fd287ec4a6bf0e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cb1ddceff30b247caf3ecd9ee3bc21d5addb519
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193458"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089441"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>向工作区托管标识授予权限（预览）
 
@@ -80,7 +80,7 @@ ms.locfileid: "85193458"
 
 #### <a name="step-4-add-a-new-role-assignment"></a>步骤4：添加新的角色分配
 
-选择“+ 添加”****。
+选择“+ 添加”。
 
 ![添加新的角色分配](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-9.png)
 

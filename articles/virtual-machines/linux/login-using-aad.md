@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure Active Directory 凭据登录到 Linux VM
 description: 了解如何创建和配置 Linux VM，以使用 Azure Active Directory 身份验证进行登录。
-author: iainfoulds
+author: SanDeo-MSFT
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.workload: infrastructure
 ms.date: 08/29/2019
-ms.author: iainfou
-ms.openlocfilehash: c5275a979cbffe7fb6600978487454ac11cd2002
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: sandeo
+ms.openlocfilehash: 89b89d30de46727f4d5b52a236a4b0133e663bb9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510423"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088761"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>预览：使用 Azure Active Directory 身份验证登录到 Azure 中的 Linux 虚拟机
 
@@ -113,7 +113,7 @@ az vm extension set \
 
 ## <a name="configure-role-assignments-for-the-vm"></a>为 VM 配置角色分配
 
-Azure 基于角色的访问控制 (RBAC) 策略决定了谁能登录到 VM。 使用两个 RBAC 角色来授权 VM 登录：
+Azure 基于角色的访问控制（Azure RBAC）策略确定可以登录到 VM 的用户。 使用两个 RBAC 角色来授权 VM 登录：
 
 - **虚拟机管理员登录名**：分配了此角色的用户可以使用 Windows 管理员或 Linux root 用户权限登录到 Azure 虚拟机。
 - **虚拟机用户登录名**：分配了此角色的用户可以使用常规用户权限登录到 Azure 虚拟机。

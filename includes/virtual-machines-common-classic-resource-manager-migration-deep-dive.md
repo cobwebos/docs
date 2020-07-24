@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tagore
-ms.openlocfilehash: d7019d673bd8dfda31c5073fb7f37e26768dcc1d
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 82c081ee4bbe78a534f0ad7bca949e9a50142e35
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83778158"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088779"
 ---
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 首先，必须了解在基础结构即服务 (IaaS) 资源上进行的数据平面操作和管理平面操作的差异。
@@ -151,11 +151,11 @@ ms.locfileid: "83778158"
 | 入站 NAT 规则 |入站 NAT 规则 |在迁移期间，VM 上定义的输入终结点将转换成负载均衡器下的入站网络地址转换规则。 |
 | VIP 地址 |具有 DNS 名称的公共 IP 地址 |虚拟 IP 地址会变成公共 IP 地址并与负载均衡器关联。 虚拟机 IP 仅在已向其分配了输入终结点的情况下才能迁移。 |
 | 虚拟网络 |虚拟网络 |虚拟网络将连同其所有属性一起迁移到 Resource Manager 部署模型。 将创建名为 `-migrated` 的新资源组。 |
-| 保留 IP |具有静态分配方法的公共 IP 地址 |与负载均衡器关联的保留 IP 会在迁移云服务或虚拟机的过程中一起迁移。 可以使用 [Move-AzureReservedIP](https://docs.microsoft.com/powershell/module/servicemanagement/azure/move-azurereservedip?view=azuresmps-4.0.0) 迁移未关联的保留 IP。  |
+| 保留 IP |具有静态分配方法的公共 IP 地址 |与负载均衡器关联的保留 IP 会在迁移云服务或虚拟机的过程中一起迁移。 可以使用 [Move-AzureReservedIP](/powershell/module/servicemanagement/azure.service/move-azurereservedip?view=azuresmps-4.0.0) 迁移未关联的保留 IP。  |
 | 每个 VM 的公共 IP 地址 |具有动态分配方法的公共 IP 地址 |与 VM 关联的公共 IP 地址将转换为公共 IP 地址资源，分配方法将设置为静态。 |
-| NSG |NSG |在迁移到 Resource Manager 部署模型的过程中，将克隆与子网关联的网络安全组。 在迁移期间不会删除经典部署模型中的 NSG。 但是，当迁移正在进行时，会阻止 NSG 的管理平面操作。 可以使用 [Move-AzureNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/servicemanagement/azure/move-azurenetworksecuritygroup?view=azuresmps-4.0.0) 迁移未关联的 NSG。|
+| NSG |NSG |在迁移到 Resource Manager 部署模型的过程中，将克隆与子网关联的网络安全组。 在迁移期间不会删除经典部署模型中的 NSG。 但是，当迁移正在进行时，会阻止 NSG 的管理平面操作。 可以使用 [Move-AzureNetworkSecurityGroup](/powershell/module/servicemanagement/azure.service/move-azurenetworksecuritygroup?view=azuresmps-4.0.0) 迁移未关联的 NSG。|
 | DNS 服务器 |DNS 服务器 |与虚拟网络或 VM 关联的 DNS 服务器会在迁移相应资源的过程中连同所有属性一起迁移。 |
-| UDR |UDR |在迁移到 Resource Manager 部署模型的过程中，将克隆与子网关联的用户定义路由。 在迁移期间不会删除经典部署模型中的 UDR。 但是，当迁移正在进行时，会阻止 UDR 的管理平面操作。 可以使用 [Move-AzureRouteTable](https://docs.microsoft.com/powershell/module/servicemanagement/azure/Move-AzureRouteTable?view=azuresmps-4.0.0) 迁移未关联的 UDR。 |
+| UDR |UDR |在迁移到 Resource Manager 部署模型的过程中，将克隆与子网关联的用户定义路由。 在迁移期间不会删除经典部署模型中的 UDR。 但是，当迁移正在进行时，会阻止 UDR 的管理平面操作。 可以使用 [Move-AzureRouteTable](/powershell/module/servicemanagement/azure.service/Move-AzureRouteTable?view=azuresmps-4.0.0) 迁移未关联的 UDR。 |
 | VM 网络配置中的 IP 转发属性 |NIC 中的 IP 转发属性 |VM 上的 IP 转发属性在迁移期间将转换为网络接口上的属性。 |
 | 具有多个 IP 的负载均衡器 |具有多个公共 IP 资源的负载均衡器 |与负载均衡器关联的每个公共 IP 都会转换为公共 IP 资源，并在迁移后与负载均衡器关联。 |
 | VM 上的内部 DNS 名称 |NIC 上的内部 DNS 名称 |在迁移期间，VM 的内部 DNS 后缀将迁移到 NIC 上名为“InternalDomainNameSuffix”的只读属性。 在迁移后，该后缀会保持不变，并且 VM 解决方案会继续像以前一样正常工作。 |

@@ -6,12 +6,12 @@ ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: 005cb0044cb4d225c8b94602fb907fee09fb00b2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f9b7b92fd21e12f1d86c5d5878e48c6ec6b0e748
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249183"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088013"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 开发人员参考
 
@@ -90,7 +90,7 @@ let Run(input: string, item: byref<Item>) =
 ```
 
 ## <a name="logging"></a>日志记录
-若要使用 F# 将输出记录到[流式处理日志](../app-service/troubleshoot-diagnostic-logs.md)中，函数应带有 [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 类型的参数。 为了保持一致，我们建议参数名为 `log`。 例如：
+若要使用 F# 将输出记录到[流式处理日志](../app-service/troubleshoot-diagnostic-logs.md)中，函数应带有 [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) 类型的参数。 为了保持一致，我们建议参数名为 `log`。 例如：
 
 ```fsharp
 let Run(blob: string, output: byref<string>, log: ILogger) =
@@ -285,7 +285,7 @@ let mylog(log: ILogger, text: string) =
 `#load` 指令只适用于 `.fsx`（F # 脚本）文件，而不适用于 `.fs` 文件。
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅以下资源：
+有关更多信息，请参见以下资源：
 
 * [F# 指南](/dotnet/articles/fsharp/index)
 * [Azure Functions 最佳实践](functions-best-practices.md)
@@ -293,4 +293,3 @@ let mylog(log: ILogger, text: string) =
 * [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 * [ Azure Functions 测试](functions-test-a-function.md)
 * [Azure Functions 缩放](functions-scale.md)
-

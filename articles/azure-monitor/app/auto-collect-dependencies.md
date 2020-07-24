@@ -5,15 +5,16 @@ ms.topic: reference
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/06/2020
-ms.openlocfilehash: 21e98ee9dc59e7520fb715f1146e492b9198f883
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba7830cc1c0a3e6a563b4343b37ec07f7d508af4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891598"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087979"
 ---
 # <a name="dependency-auto-collection"></a>依赖项自动收集
 
-下面是当前支持的依赖项调用的列表，系统会自动将其检测为依赖项，不需对应用程序的代码进行额外的修改。 这些依赖项在 Application Insights 的[应用程序映射](https://docs.microsoft.com/azure/application-insights/app-insights-app-map)和[事务诊断](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics)视图中可视化。 如果依赖项不在下面的列表中，仍可通过[跟踪依赖项调用](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)手动跟踪它。
+下面是当前支持的依赖项调用的列表，系统会自动将其检测为依赖项，不需对应用程序的代码进行额外的修改。 这些依赖项在 Application Insights 的[应用程序映射](./app-map.md)和[事务诊断](./transaction-diagnostics.md)视图中可视化。 如果依赖项不在下面的列表中，仍可通过[跟踪依赖项调用](./api-custom-events-metrics.md#trackdependency)手动跟踪它。
 
 ## <a name="net"></a>.NET
 
@@ -61,7 +62,7 @@ ms.locfileid: "82891598"
 
 > [!NOTE]
 > *响应式编程支持除外。
-> <br>†需安装 [JVM 代理](https://docs.microsoft.com/azure/application-insights/app-insights-java-agent#install-the-application-insights-agent-for-java)。
+> <br>†需安装 [JVM 代理](./java-agent.md#install-the-application-insights-agent-for-java)。
 
 ## <a name="nodejs"></a>Node.js
 

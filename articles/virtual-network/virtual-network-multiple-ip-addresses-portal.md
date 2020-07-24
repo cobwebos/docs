@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
-ms.openlocfilehash: 6118763bf76795e30e862826f8f5b847f3382a5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cec3e3ad4934ce368baa44984d252dc981d5d81
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687967"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088200"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>使用 Azure 门户将多个 IP 地址分配给虚拟机
 
@@ -30,7 +30,7 @@ ms.locfileid: "84687967"
 
 ## <a name="create-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>创建具有多个 IP 地址的 VM
 
-若要创建具有多个 IP 地址或一个静态专用 IP 地址的 VM，则必须使用 PowerShell 或 Azure CLI 来创建。 相关操作步骤，请单击本文顶部的 PowerShell 或 CLI 选项。 可使用单个动态专用 IP 地址和（可选）单个公共 IP 地址创建 VM。 请按照[创建 Windows VM](../virtual-machines/virtual-machines-windows-hero-tutorial.md) 或[创建 Linux VM](../virtual-machines/linux/quick-create-portal.md) 文章中的步骤使用门户。 创建 VM 后，可以按照本文[向 VM 添加 IP 地址](#add)部分中的以下步骤，可使用门户将 IP 地址类型从动态更改为静态并添加其他 IP 地址。
+若要创建具有多个 IP 地址或一个静态专用 IP 地址的 VM，则必须使用 PowerShell 或 Azure CLI 来创建。 相关操作步骤，请单击本文顶部的 PowerShell 或 CLI 选项。 可使用单个动态专用 IP 地址和（可选）单个公共 IP 地址创建 VM。 请按照[创建 Windows VM](../virtual-machines/windows/quick-create-portal.md) 或[创建 Linux VM](../virtual-machines/linux/quick-create-portal.md) 文章中的步骤使用门户。 创建 VM 后，可以按照本文[向 VM 添加 IP 地址](#add)部分中的以下步骤，可使用门户将 IP 地址类型从动态更改为静态并添加其他 IP 地址。
 
 ## <a name="add-ip-addresses-to-a-vm"></a><a name="add"></a>将 IP 地址添加到 VM
 

@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 9f5d5bd9775507a663a4171faa8b8892357f65b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9fbaff76b390fe76ed79aeba9fecaa0602e6fbe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736537"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088635"
 ---
 # <a name="nvv3-series"></a>NVv3 系列
 
@@ -27,13 +27,15 @@ NVv3 实例中的每个 GPU 都附带了网格许可证。 使用此许可证，
 
 内存保留更新：不支持
 
-| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数 | 虚拟工作站 | 虚拟应用程序 |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数/预期网络带宽 (MBps) | 虚拟工作站 | 虚拟应用程序 |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Standard_NV12s_v3 |12 | 112 | 320  | 1 | 8  | 12 | 20000/200 | 4 | 1 | 25  |
-| Standard_NV24s_v3 |24 | 224 | 640  | 2 | 16 | 24 | 40000/400 | 8 | 2 | 50  |
-| Standard_NV48s_v3 |48 | 448 | 1280 | 4 | 32 | 32 | 80000/800 | 8 | 4 | 100 |
+| Standard_NV12s_v3 |12 | 112 | 320  | 1 | 8  | 12 | 20000/200 | 4 / 6000 | 1 | 25  |
+| Standard_NV24s_v3 |24 | 224 | 640  | 2 | 16 | 24 | 40000/400 | 8 / 12000 | 2 | 50  |
+| Standard_NV48s_v3 |48 | 448 | 1280 | 4 | 32 | 32 | 80000/800 | 8/24000 | 4 | 100 |
 
-1 GPU = 半块 M60 卡。
+<sup>1</sup> 1 GPU = 单半 M60 卡。
+
+<sup>2</sup>此时此 VM 系列不支持加速网络，因此实际的网络性能可能低于此处捕获的最大理论数量。
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

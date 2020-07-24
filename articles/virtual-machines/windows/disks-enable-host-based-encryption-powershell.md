@@ -8,12 +8,12 @@ ms.date: 07/10/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: a13c17b2fcd6a42947b2f7d97f087735a5b18204
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 6cb6235c5c1a34cb3f48d315adee565591bb72c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86235799"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088455"
 ---
 # <a name="enable-end-to-end-encryption-using-encryption-at-host---azure-powershell"></a>使用主机上的加密启用端到端加密-Azure PowerShell
 
@@ -33,7 +33,7 @@ ms.locfileid: "86235799"
 
 你还可以通过编程方式找到 VM 大小。 若要了解如何以编程方式检索它们，请参阅[查找支持的 VM 大小](#finding-supported-vm-sizes)部分。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 为了能够在 Vm 或虚拟机规模集的主机上使用加密，必须在订阅上启用该功能。 encryptionAtHost@microsoft使用你的订阅 id 向 .com 发送电子邮件，以便为你的订阅启用该功能。
 
@@ -86,7 +86,7 @@ New-AzResourceGroupDeployment -ResourceGroupName <yourResourceGroupName> `
 
 不支持旧的 VM 大小。 可以通过以下任一方法查找受支持的 VM 大小列表：
 
-调用[资源 SKU API](https://docs.microsoft.com/rest/api/compute/resourceskus/list)并检查 `EncryptionAtHostSupported` 功能是否设置为**True**。
+调用[资源 SKU API](/rest/api/compute/resourceskus/list)并检查 `EncryptionAtHostSupported` 功能是否设置为**True**。
 
 ```json
     {
@@ -107,7 +107,7 @@ New-AzResourceGroupDeployment -ResourceGroupName <yourResourceGroupName> `
     }
 ```
 
-或调用[AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku?view=azps-3.8.0) PowerShell cmdlet。
+或调用[AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku?view=azps-3.8.0) PowerShell cmdlet。
 
 ```powershell
 $vmSizes=Get-AzComputeResourceSku | where{$_.ResourceType -eq 'virtualMachines' -and $_.Locations.Contains('CentralUSEUAP')} 

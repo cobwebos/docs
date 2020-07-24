@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/28/2020
-ms.openlocfilehash: d39dbc640dc89febc29c7b6c4942da88837c670a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: 789e288c1069e2a642cae2f8974190da1c129e8a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506579"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087860"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 SQL Server 复制数据
 
@@ -64,7 +64,7 @@ ms.locfileid: "85506579"
 
 SQL Server 链接服务支持以下属性：
 
-| Property | 描述 | 必需 |
+| properties | 描述 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **SqlServer**。 | 是 |
 | connectionString |指定使用 SQL 身份验证或 Windows 身份验证连接到 SQL Server 数据库时所需的 **connectionString** 信息。 请参阅以下示例。<br/>还可以在 Azure Key Vault 中输入密码。 如果使用 SQL 身份验证，请从连接字符串中提取 `password` 配置。 有关详细信息，请参阅表格后面的 JSON 示例，以及[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
@@ -148,10 +148,10 @@ SQL Server 链接服务支持以下属性：
 
 从/向 SQL Server 数据库复制数据时支持以下属性：
 
-| Property | 描述 | 必需 |
+| properties | 描述 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 SqlServerTable。 | 是 |
-| 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| schema | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | 表 | 表/视图的名称。 |对于源为“否”，对于接收器为“是”  |
 | tableName | 具有架构的表/视图的名称。 此属性支持后向兼容性。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 对于源为“No”，对于接收器为“Yes” |
 
@@ -184,7 +184,7 @@ SQL Server 链接服务支持以下属性：
 
 要从 SQL Server 复制数据，请将复制活动中的源类型设置为 SqlSource。 复制活动的 source 节支持以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 描述 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 节的 type 属性必须设置为 SqlSource。 | 是 |
 | sqlReaderQuery |使用自定义 SQL 查询读取数据。 例如 `select * from MyTable`。 |否 |
@@ -291,11 +291,11 @@ GO
 
 要向 SQL Server 复制数据，请将复制活动中的接收器类型设置为 SqlSink。 复制活动的 sink 节支持以下属性：
 
-| 属性 | 描述 | 必需 |
+| 属性 | 描述 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动的 sink 的 type 属性必须设置为 SqlSink。 | 是 |
 | preCopyScript |此属性指定将数据写入到 SQL Server 中之前复制活动要运行的 SQL 查询。 每次运行复制仅调用该查询一次。 可以使用此属性清除预加载的数据。 |否 |
-| tableOption | 指定是否根据源架构自动创建接收器表（如果不存在）。 当接收器指定存储过程或在复制活动中配置了暂存复制时，不支持自动表创建。 允许的值为：`none`（默认值）、`autoCreate`。 |否 |
+| tableOption | 指定是否根据源架构[自动创建接收器表](copy-activity-overview.md#auto-create-sink-tables)（如果不存在）。 当接收器指定存储过程或在复制活动中配置了暂存复制时，不支持自动表创建。 允许的值为：`none`（默认值）、`autoCreate`。 |否 |
 | sqlWriterStoredProcedureName | 定义如何将源数据应用于目标表的存储过程的名称。 <br/>此存储过程由每个批处理调用。 若要执行仅运行一次且与源数据无关的操作（例如删除或截断），请使用 `preCopyScript` 属性。<br>请参阅[调用 SQL 接收器的存储过程](#invoke-a-stored-procedure-from-a-sql-sink)中的示例。 | 否 |
 | storedProcedureTableTypeParameterName |存储过程中指定的表类型的参数名称。  |否 |
 | sqlWriterTableType |要在存储过程中使用的表类型名称。 通过复制活动，使移动数据在具备此表类型的临时表中可用。 然后，存储过程代码可合并复制数据和现有数据。 |否 |

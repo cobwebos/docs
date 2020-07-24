@@ -3,8 +3,8 @@ title: 教程：将 MySQL 联机迁移到 Azure Database for MySQL
 titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 数据库迁移服务执行从本地 MySQL 到 Azure Database for MySQL 的联机迁移。
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: e9fc2913a526e01ea5279c476e3deab779db88c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ea351fb6b88a020a466849181fed0381baa7f04
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609227"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087741"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>教程：使用 DMS 以联机方式将 MySQL 迁移到 Azure Database for MySQL
 
@@ -138,6 +139,11 @@ SET group_concat_max_len = 8192;
  ```
 
 运行查询结果中的 DROP FOREIGN KEY（第二列），以便删除外键。
+
+> [!NOTE]
+> Azure DMS 不支持级联引用操作，这有助于在父表中删除或更新行时，自动删除或更新子表中的匹配行。 有关详细信息，请参阅 MySQL 文档中的 "引用操作"[部分。](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)
+> Azure DMS 要求在初始数据加载过程中在目标数据库服务器中删除外键约束，并且不能使用引用操作。 如果工作负载依赖于通过此引用操作更新相关子表，则建议改为执行[转储和还原](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore)。 
+
 
 > [!IMPORTANT]
 > 如果使用备份导入数据，请在执行 mysqldump 时手动删除或使用 --skip-definer 命令删除 CREATE DEFINER 命令。 DEFINER 需要使用超级特权来创建，并在 Azure Database for MySQL 中受到限制。

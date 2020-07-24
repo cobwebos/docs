@@ -7,15 +7,15 @@ ms.topic: article
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 7ce816aba6bee36cd20eed6d31b0642dc8931e0b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 502883a0c4eb36be9e89ba8693f4d32ba7f16ebd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503024"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088863"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>不带本地临时磁盘的 Azure VM 大小 
-本文提供了有关 Azure VM 大小（即没有本地临时磁盘，即没有本地临时磁盘）的常见问题解答（FAQ）的解答。 有关这些 VM 大小的详细信息，请参阅[Dv4 和 Dsv4 系列的规范（常规用途工作负荷）](dv4-dsv4-series.md)或[Ev4 和 Esv4 系列（内存优化工作负荷）的规范](ev4-esv4-series.md)。
+本文提供了有关 Azure VM 大小（即，没有本地临时磁盘）的常见问题（即没有本地临时磁盘）的解答。 有关这些 VM 大小的详细信息，请参阅[Dv4 和 Dsv4 系列的规范（常规用途工作负荷）](dv4-dsv4-series.md)或[Ev4 和 Esv4 系列（内存优化工作负荷）的规范](ev4-esv4-series.md)。
 
 > [!IMPORTANT]
 > Dv4、Dsv4、Ev4 和 Esv4 的 VM 大小现为公共预览版。 若要注册公共预览版，请填写此[窗体](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)。 
@@ -38,7 +38,7 @@ ms.locfileid: "86503024"
 | Esv3 | Edsv4 |    Esv4 | 
 
 ## <a name="can-i-resize-a-vm-size-that-has-a-local-temp-disk-to-a-vm-size-with-no-local-temp-disk"></a>是否可以将具有本地临时磁盘的 VM 大小调整为不带本地临时磁盘的 VM 大小？  
-不是。 允许调整大小的唯一组合如下： 
+否。 允许调整大小的唯一组合如下： 
 
 1. VM （包含本地临时磁盘）-> VM （包含本地临时磁盘）;与 
 2. VM （没有本地临时磁盘）-> VM （没有本地临时磁盘）。 
@@ -47,7 +47,7 @@ ms.locfileid: "86503024"
 > 如果映像依赖于资源磁盘，或者本地临时磁盘上存在页面文件或交换文件，则无盘映像将不起作用-改为使用 "使用磁盘" 替代项。 
 
 ## <a name="do-these-vm-sizes-support-both-linux-and-windows-operating-systems-os"></a>这些 VM 大小是否支持 Linux 和 Windows 操作系统（OS）？
-是。
+是的。
 
 ## <a name="will-this-break-my-custom-scripts-custom-images-or-os-images-that-have-scratch-files-or-page-files-on-a-local-temp-disk"></a>这是否会中断自定义脚本、自定义映像或在本地临时磁盘上具有暂存文件或页面文件的操作系统映像？
 如果自定义 OS 映像指向本地临时磁盘，则该映像可能无法正常使用此无磁盘大小。

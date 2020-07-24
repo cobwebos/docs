@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 60d06fa4cf6d116f9c802cda544a356e469755b5
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 5ed99fd6a16743846033313fcf13702f69f3e728
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223068"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088353"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>在 Azure Linux VM 上实现 Oracle Golden Gate 
 
@@ -27,7 +27,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南�
 
 本文档逐步演示如何在 Azure VM 上创建、安装和配置 Oracle Golden Gate。 在本教程中，将在单个区域中的可用性集中设置两个虚拟机。 同一教程可用于为单个 Azure 区域中不同可用性区域的 Vm 或两个不同区域中的 Vm 设置 OracleGolden 入口。
 
-在开始之前，请确保已安装 Azure CLI。 有关详细信息，请参阅 [Azure CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+在开始之前，请确保已安装 Azure CLI。 有关详细信息，请参阅 [Azure CLI 安装指南](/cli/azure/install-azure-cli)。
 
 ## <a name="prepare-the-environment"></a>准备环境
 
@@ -58,7 +58,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署 Azure 资源以及可以从中管理这些资源的逻辑容器。 
+使用“[az group create](/cli/azure/group)”命令创建资源组。 Azure 资源组是在其中部署 Azure 资源以及可以从中管理这些资源的逻辑容器。 
 
 以下示例在 `westus` 位置创建名为 `myResourceGroup` 的资源组。
 
@@ -68,7 +68,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>创建可用性集
 
-以下步骤是可选的，但建议执行。 有关详细信息，请参阅 [Azure 可用性集指南](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)。
+以下步骤是可选的，但建议执行。 有关详细信息，请参阅 [Azure 可用性集指南](../../windows/infrastructure-example.md)。
 
 ```azurecli
 az vm availability-set create \
@@ -396,7 +396,7 @@ SQL> EXIT;
 3. 在 PuTTY 密钥生成器中：
 
    - 若要生成密钥，请选择“生成”按钮。****
-   - 将密钥内容复制 (**Ctrl + C**) 。
+   - 复制密钥的内容（**Ctrl + C**）。
    - 选择“保存私钥”按钮。****
    - 忽略显示的警告，并选择“确定”。****
 
@@ -432,7 +432,7 @@ SQL> EXIT;
 
 若要安装 Oracle Golden Gate，请完成以下步骤：
 
-1. 以 oracle 身份登录。  (你应该能够在不提示输入密码的情况下登录。 ) 确保在开始安装之前运行 Xming。
+1. 以 oracle 身份登录。 （你应该能够在不提示输入密码的情况下登录。）在开始安装之前，请确保 Xming 正在运行。
 
    ```bash
    $ cd /opt/fbo_ggs_Linux_x64_shiphome/Disk1
@@ -443,7 +443,7 @@ SQL> EXIT;
 
    ![安装程序中的“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_01.png)
 
-3. 更改软件位置。 然后选中“启动管理器”**** 框，并输入数据库位置。 选择“下一步”继续。
+3. 更改软件位置。 然后选中“启动管理器”**** 框，并输入数据库位置。 选择“下一步”继续操作。
 
    ![“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_02.png)
 
@@ -732,7 +732,7 @@ SQL> EXIT;
 
 ### <a name="set-up-the-replication-myvm1-and-myvm2"></a>设置复制（myVM1 和 myVM2）
 
-#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1. 在 myVM2 上设置复制 (复制) 
+#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1. 在 myVM2 上设置复制（复制）
 
   ```bash
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -755,7 +755,7 @@ SQL> EXIT;
   GGSCI> EXIT
   ```
 
-#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2. 在 myVM1 上设置复制 (主) 
+#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2. 在 myVM1 （主）上设置复制
 
 启动初始加载，并检查错误：
 
@@ -766,7 +766,7 @@ GGSCI> START EXTRACT INITEXT
 GGSCI> VIEW REPORT INITEXT
 ```
 
-#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3. 在 myVM2 上设置复制 (复制) 
+#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3. 在 myVM2 上设置复制（复制）
 
 使用之前获取的编号更改 SCN 编号：
 
@@ -781,7 +781,7 @@ GGSCI> VIEW REPORT INITEXT
 
 ### <a name="view-job-status-and-troubleshooting"></a>查看作业状态和故障排除
 
-#### <a name="view-reports"></a>查看报表
+#### <a name="view-reports"></a>查看报告
 若要在 myVM1 上查看报告，请运行以下命令：
 
   ```bash

@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/21/2020
 ms.author: radeltch
-ms.openlocfilehash: ed53b77587e307926689b2c20d7223212f3394d4
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 2ce3a4116c12065bbaee8e11d5ada3b8c89b1a9d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800265"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088217"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上 Azure VM 中 SAP HANA 的高可用性
 
@@ -107,7 +108,7 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
     * **SAP 系统大小**：输入新系统将提供的 SAPS 数量。 如果不确定系统需要多少 SAPS，请咨询 SAP 技术合作伙伴或系统集成商。
     * **系统可用性**：选择“HA”。
     * **管理员用户名、管理员密码或 SSH 密钥**：创建可用于登录计算机的新用户。
-    * **子网 ID**：如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示： **/subscriptions/\<订阅 ID>/resourceGroups/\<资源组名称>/providers/Microsoft.Network/virtualNetworks/\<虚拟网络名称>/subnets/\<子网名称>** 。 如果要创建新的虚拟网络，请将其留空
+    * **子网 ID**：如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示： **/Subscriptions/ \<subscription ID> /resourceGroups/ \<resource group name> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name> /subnets/ \<subnet name> **。 如果要创建新的虚拟网络，请将其留空
 
 ### <a name="manual-deployment"></a>手动部署
 
@@ -115,7 +116,7 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 1. 创建虚拟网络。
 1. 创建可用性集。  
    设置最大更新域。
-1. 创建负载均衡器（内部）。 建议使用[标准负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。
+1. 创建负载均衡器（内部）。 建议使用[标准负载均衡器](../../../load-balancer/load-balancer-overview.md)。
    * 选择在步骤 2 中创建的虚拟网络。
 1. 创建虚拟机 1。  
    最低使用 Red Hat Enterprise Linux 7.4 for SAP HANA。 本示例使用 Red Hat Enterprise Linux 7.4 for SAP HANA 映像 <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> 选择在步骤 3 中创建的可用性集。
@@ -158,7 +159,7 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
       1. 选择“确定”。
 
    > [!Note]
-   > 如果没有公共 IP 地址的 VM 被放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，就不会有出站 Internet 连接，除非执行额外的配置来允许路由到公共终结点。 有关如何实现出站连接的详细信息，请参阅 [SAP 高可用性方案中使用 Azure 标准负载均衡器的虚拟机的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)。  
+   > 如果没有公共 IP 地址的 VM 被放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，就不会有出站 Internet 连接，除非执行额外的配置来允许路由到公共终结点。 有关如何实现出站连接的详细信息，请参阅 [SAP 高可用性方案中使用 Azure 标准负载均衡器的虚拟机的公共终结点连接](./high-availability-guide-standard-load-balancer-outbound-connections.md)。  
 
 1. 或者，如果你的方案指示使用基本负载均衡器，请执行以下配置步骤：
    1. 配置负载均衡器。 首先创建前端 IP 池：
@@ -221,7 +222,7 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 有关 SAP HANA 所需端口的详细信息，请参阅 [SAP HANA 租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6)指南中的[连接到租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html)一章或 [SAP 说明 2388694][2388694]。
 
 > [!IMPORTANT]
-> 请勿在放置于 Azure 负载均衡器之后的 Azure VM 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数“net.ipv4.tcp_timestamps”设置为“0”。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
+> 请勿在放置于 Azure 负载均衡器之后的 Azure VM 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数“net.ipv4.tcp_timestamps”设置为“0”。 有关详细信息，请参阅[负载均衡器运行状况探测](../../../load-balancer/load-balancer-custom-probe-overview.md)。
 > 另请参阅 SAP 说明 [2382421](https://launchpad.support.sap.com/#/notes/2382421)。 
 
 ## <a name="install-sap-hana"></a>安装 SAP HANA
@@ -262,11 +263,11 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
    sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   创建逻辑卷。 线性卷是使用不带 `-i` 开关的 `lvcreate` 创建的。 我们建议你创建一个带区卷，以获得更好的 I/O 性能，并将带区大小与 [SAP HANA VM 存储配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)中记录的值保持一致。 `-i` 参数应表示基础物理卷的数量，`-I` 参数则表示带区大小。 在本文档中，两个物理卷用于数据卷，因此 `-i` 开关参数设置为 **2**。 数据卷的带区大小为 256 KiB。 一个物理卷用于日志卷，因此，`-i` 或 `-I` 开关不会显式用于日志卷命令。  
+   创建逻辑卷。 线性卷是使用不带 `-i` 开关的 `lvcreate` 创建的。 我们建议你创建一个带区卷，以获得更好的 I/O 性能，并将带区大小与 [SAP HANA VM 存储配置](./hana-vm-operations-storage.md)中记录的值保持一致。 `-i` 参数应表示基础物理卷的数量，`-I` 参数则表示带区大小。 在本文档中，两个物理卷用于数据卷，因此 `-i` 开关参数设置为 **2**。 数据卷的带区大小为 256 KiB。 一个物理卷用于日志卷，因此，`-i` 或 `-I` 开关不会显式用于日志卷命令。  
 
    > [!IMPORTANT]
    > 对每个数据、日志或共享卷使用多个物理卷时，请使用 `-i` 开关，并将其设置为基础物理卷的数量。 创建带区卷时，请使用 `-I` 开关来指定带区大小。  
-   > 有关建议的存储配置，包括带区大小和磁盘数量，请参阅 [SAP HANA VM 存储配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)。  
+   > 有关建议的存储配置，包括带区大小和磁盘数量，请参阅 [SAP HANA VM 存储配置](./hana-vm-operations-storage.md)。  
 
    <pre><code>sudo lvcreate <b>-i 2</b> <b>-I 256</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_<b>HN1</b>
@@ -801,4 +802,4 @@ Resource Group: g_ip_HN1_03
 * [适用于 SAP 的 Azure 虚拟机规划和实施][planning-guide]
 * [适用于 SAP 的 Azure 虚拟机部署][deployment-guide]
 * [适用于 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
-* [SAP HANA VM 存储配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
+* [SAP HANA VM 存储配置](./hana-vm-operations-storage.md)

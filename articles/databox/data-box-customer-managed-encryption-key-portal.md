@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 4bcd8deef28f8e0123e6e2171b3ab24d6ac49292
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60e621b34250b036888b233b084ba1ddff939048
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84634993"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087792"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>将 Azure 密钥保管库中的客户管理的密钥用于 Azure Data Box
 
@@ -106,13 +107,13 @@ Azure Data Box 可通过加密密钥保护用于锁定设备的设备解锁密�
 |-------------|--------------|---------|
 | SsemUserErrorEncryptionKeyDisabled| 无法提取密钥，因为客户管理的密钥已被禁用。| 是，通过启用密钥版本。|
 | SsemUserErrorEncryptionKeyExpired| 无法提取密钥，因为客户管理的密钥已到期。| 是，通过启用密钥版本。|
-| SsemUserErrorKeyDetailsNotFound| 无法提取密钥，因为无法找客户管理的密钥。| 如果删除了密钥保管库，则无法恢复客户管理的密钥。  如果将密钥保管库迁移到了其他租户，请参阅[订阅移动后更改密钥保管库租户 ID](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix)。 如果删除了密钥保管库：<ol><li>是，如果它处于清除保护期内，请使用[恢复密钥保管库](https://docs.microsoft.com/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault)中的步骤。</li><li>否，如果超出了清除保护期。</li></ol><br>如果密钥保管库进行了租户迁移，则可以使用以下步骤之一进行恢复： <ol><li>将密钥保管库还原回旧租户。</li><li>设置 `Identity = None`，然后将值设置回 `Identity = SystemAssigned`。 这将在新标识创建后删除并重新创建该标识。 在密钥保管库的“访问策略”中为新标识启用 `Get`、`Wrap` 和 `Unwrap` 权限。</li></ol> |
+| SsemUserErrorKeyDetailsNotFound| 无法提取密钥，因为无法找客户管理的密钥。| 如果删除了密钥保管库，则无法恢复客户管理的密钥。  如果将密钥保管库迁移到了其他租户，请参阅[订阅移动后更改密钥保管库租户 ID](../key-vault/general/move-subscription.md)。 如果删除了密钥保管库：<ol><li>是，如果它处于清除保护期内，请使用[恢复密钥保管库](../key-vault/general/soft-delete-powershell.md#recovering-a-key-vault)中的步骤。</li><li>否，如果超出了清除保护期。</li></ol><br>如果密钥保管库进行了租户迁移，则可以使用以下步骤之一进行恢复： <ol><li>将密钥保管库还原回旧租户。</li><li>设置 `Identity = None`，然后将值设置回 `Identity = SystemAssigned`。 这将在新标识创建后删除并重新创建该标识。 在密钥保管库的“访问策略”中为新标识启用 `Get`、`Wrap` 和 `Unwrap` 权限。</li></ol> |
 | SsemUserErrorKeyVaultBadRequestException| 无法提取密钥，因为对客户管理的密钥的访问权限已被撤销。| 是，检查以下事项： <ol><li>密钥保管库在访问策略中是否仍具有 MSI。</li><li>访问策略提供 Get、Wrap、Unwrap 权限。</li><li>如果密钥保管库位于防火墙后面的 VNet 中，请检查是否启用了“允许 Microsoft 信任的服务”。</li></ol>|
-| SsemUserErrorKeyVaultDetailsNotFound| 无法提取密钥，因为找不到与客户管理的密钥关联的密钥保管库。 | 如果删除了密钥保管库，则无法恢复客户管理的密钥。  如果将密钥保管库迁移到了其他租户，请参阅[订阅移动后更改密钥保管库租户 ID](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix)。 如果删除了密钥保管库：<ol><li>是，如果它处于清除保护期内，请使用[恢复密钥保管库](https://docs.microsoft.com/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault)中的步骤。</li><li>否，如果超出了清除保护期。</li></ol><br>如果密钥保管库进行了租户迁移，则可以使用以下步骤之一进行恢复： <ol><li>将密钥保管库还原回旧租户。</li><li>设置 `Identity = None`，然后将值设置回 `Identity = SystemAssigned`。 这将在新标识创建后删除并重新创建该标识。 在密钥保管库的“访问策略”中为新标识启用 `Get`、`Wrap` 和 `Unwrap` 权限。</li></ol> |
+| SsemUserErrorKeyVaultDetailsNotFound| 无法提取密钥，因为找不到与客户管理的密钥关联的密钥保管库。 | 如果删除了密钥保管库，则无法恢复客户管理的密钥。  如果将密钥保管库迁移到了其他租户，请参阅[订阅移动后更改密钥保管库租户 ID](../key-vault/general/move-subscription.md)。 如果删除了密钥保管库：<ol><li>是，如果它处于清除保护期内，请使用[恢复密钥保管库](../key-vault/general/soft-delete-powershell.md#recovering-a-key-vault)中的步骤。</li><li>否，如果超出了清除保护期。</li></ol><br>如果密钥保管库进行了租户迁移，则可以使用以下步骤之一进行恢复： <ol><li>将密钥保管库还原回旧租户。</li><li>设置 `Identity = None`，然后将值设置回 `Identity = SystemAssigned`。 这将在新标识创建后删除并重新创建该标识。 在密钥保管库的“访问策略”中为新标识启用 `Get`、`Wrap` 和 `Unwrap` 权限。</li></ol> |
 | SsemUserErrorSystemAssignedIdentityAbsent  | 无法提取密钥，因为无法找客户管理的密钥。| 是，检查以下事项： <ol><li>密钥保管库在访问策略中是否仍具有 MSI。</li><li>标识的类型为“系统分配”。</li><li>对密钥保管库的访问策略中的标识启用获取、包装和解包权限。</li></ol>|
 | 常规错误  | 无法提取密钥。| 这是一般性错误。 请联系 Microsoft 支持部门以解决此错误并确定后续步骤。|
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [什么是 Azure Key Vault？](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+- [什么是 Azure Key Vault？](../key-vault/general/overview.md)

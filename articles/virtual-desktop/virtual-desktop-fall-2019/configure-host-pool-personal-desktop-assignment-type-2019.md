@@ -1,6 +1,6 @@
 ---
-title: Windows 虚拟桌面个人桌面分配类型 - Azure
-description: 如何为 Windows 虚拟桌面个人桌面主机池配置分配类型。
+title: Windows 虚拟桌面个人桌面分配（秋季2019）-Azure
+description: 了解如何为 Windows 虚拟桌面（秋季2019版）个人桌面主机池配置分配类型。
 services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6f4ee0a6ba028a6359a83f5130aca7c6f05ba08b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 036e144922fcb49c486813b8668d944dd771536e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259799"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087180"
 ---
-# <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>配置个人桌面主机池分配类型
+# <a name="configure-the-personal-desktop-host-pool-assignment-type-fall-2019-release"></a>配置个人桌面主机池分配类型（秋季2019发行版）
 
 >[!IMPORTANT]
 >本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。 如果要尝试管理 2020 年春季版更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../configure-host-pool-personal-desktop-assignment-type.md)。

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
-ms.openlocfilehash: ba06350a564990899a593714a1f49d1e00ea544a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f91b5879922fc473ff1e46f817b3d649b1b30a9c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262100"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088727"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure 元数据服务：适用于 Linux VM 的计划事件
 
@@ -39,7 +39,7 @@ ms.locfileid: "85262100"
 
 预定事件提供以下用例中的事件：
 
-- [平台启动的维护](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates)（例如，VM 重新启动、实时迁移或主机的内存保留更新）
+- [平台启动的维护](../maintenance-and-updates.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json)（例如，VM 重新启动、实时迁移或主机的内存保留更新）
 - 虚拟机正在根据预测很快会出现故障的[降级主机硬件](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)上运行
 - 用户启动的维护（例如，用户重启或重新部署 VM）
 - [现成 VM](spot-vms.md) 和[现成规模集](../../virtual-machine-scale-sets/use-spot.md)实例逐出。
@@ -78,8 +78,8 @@ ms.locfileid: "85262100"
 | 2019-08-01 | 正式版 | 全部 | <li> 添加了对 EventSource 的支持 |
 | 2019-04-01 | 正式版 | 全部 | <li> 添加了对事件说明的支持 |
 | 2019-01-01 | 正式版 | 全部 | <li> 已添加对虚拟机规模集 EventType“Terminate”的支持 |
-| 2017-11-01 | 正式版 | All | <li> 已添加对现成 VM 逐出 EventType“Preempt”的支持<br> | 
-| 2017-08-01 | 正式版 | All | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
+| 2017-11-01 | 正式版 | 全部 | <li> 已添加对现成 VM 逐出 EventType“Preempt”的支持<br> | 
+| 2017-08-01 | 正式版 | 全部 | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
 | 2017-03-01 | 预览 | All | <li>初始版本 |
 
 
@@ -153,7 +153,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 | Terminate | [用户可配置](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications)：5 - 15 分钟 |
 
 > [!NOTE] 
-> 在某些情况下，由于硬件降级，Azure 能够预测主机故障，并会尝试通过对迁移进行计划来缓解服务中断。 受影响的虚拟机会收到计划事件，该事件的 `NotBefore` 通常是将来几天的时间。 实际时间因预测的故障风险评估而异。 Azure 会尝试尽可能提前 7 天发出通知，但实际时间会有所不同，如果预测硬件即将发生故障的可能性很大，则实际时间可能会更短。 为了在系统启动迁移之前硬件出现故障时将服务风险降至最低，我们建议你尽快自行重新部署虚拟机。
+> 在某些情况下，由于硬件降级，Azure 能够预测主机故障，并会尝试通过对迁移进行计划来缓解服务中断。 受影响的虚拟机会收到计划事件，该事件的 `NotBefore` 通常是将来几天的时间。 实际时间因预测的故障风险评估而异。 Azure 会尽可能提前 7 天发出通知，但实际时间可能会有变化，如果预测硬件即将发生故障的可能性很大，则实际时间可能更早。 为了在系统启动迁移之前硬件出现故障时将服务风险降至最低，我们建议你尽快自行重新部署虚拟机。
 
 ### <a name="start-an-event"></a>启动事件 
 
@@ -189,7 +189,7 @@ import json
 import socket
 import urllib2
 
-metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01"
+metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01"
 this_host = socket.gethostname()
 
 
@@ -233,4 +233,4 @@ if __name__ == '__main__':
 - 观看 [Azure Friday 上的计划事件](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance)以查看演示。 
 - 在 [Azure 实例元数据计划事件 GitHub 存储库](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)中查看计划事件代码示例。
 - 详细了解[实例元数据服务](instance-metadata-service.md)中提供的 API。
-- [Azure 中 Linux 虚拟机的计划内维护](planned-maintenance.md)。
+- [Azure 中 Linux 虚拟机的计划内维护](../maintenance-and-updates.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json)。

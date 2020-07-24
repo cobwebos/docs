@@ -1,5 +1,5 @@
 ---
-title: 为 Windows 虚拟桌面配置 GPU - Azure
+title: 为 Windows 虚拟桌面秋季2019配置 GPU-Azure
 description: 如何在 Windows 虚拟桌面中启用 GPU 加速的渲染和编码。
 services: virtual-desktop
 author: gundarev
@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: denisgun
-ms.openlocfilehash: 33bc63887b73adaf570b385d2a289fcd97ff1632
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bbb0985e309601562587f3f1b26427f46a4a8987
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85206098"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087163"
 ---
-# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>为 Windows 虚拟桌面配置图形处理单元 (GPU) 加速
+# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop-fall-2019"></a>配置 Windows 虚拟桌面秋季2019的图形处理单元（GPU）加速
 
 >[!IMPORTANT]
 >本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。 如果要尝试管理 2020 年春季版更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../configure-vm-gpu.md)。

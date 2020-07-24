@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: aa662dfbd98be5ec16a30e690f28196ca3868390
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 35fd95272530ed31f8ee197679e9368ca74ebef1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855905"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089662"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 
@@ -216,7 +216,7 @@ ms.locfileid: "85855905"
 * 段管理组：用于范围有限的团队（通常是由于法规或其他组织边界所致）
 
 **最佳做法**：向具有直接运营职责的安全团队授予适当的权限。
-**详细信息**：审阅 RBAC 内置角色，以进行适当的角色分配。 如果内置角色无法满足组织的特定需求，你可以[为 Azure 资源创建自定义角色](/azure/role-based-access-control/custom-roles)。 与内置角色一样，可以在订阅、资源组和资源范围内向用户、组和服务主体分配自定义角色。
+**详细信息**：审阅 RBAC 内置角色，以进行适当的角色分配。 如果内置角色不满足组织的特定需求，则可以创建[Azure 自定义角色](/azure/role-based-access-control/custom-roles)。 与内置角色一样，可以在订阅、资源组和资源范围内向用户、组和服务主体分配自定义角色。
 
 **最佳做法**：向需要的安全角色授予 Azure 安全中心访问权限。 使用安全中心，安全团队可以快速发现和修正风险。
 **详细信息**：将具有这些需求的安全团队添加到 RBAC [安全管理员](/azure/role-based-access-control/built-in-roles#security-admin)角色，这样他们就可以查看安全策略、查看安全状态、编辑安全策略、查看警报和建议，并能消除警报和建议。 为此，可以使用根管理组或段管理组，具体视职责范围而定。

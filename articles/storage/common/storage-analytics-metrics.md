@@ -9,11 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 5613453667e3bb278f4da22ebed4502def70235b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: b4bb17fce7be7aeff2a6978177106201e4c80aee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675897"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087265"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure 存储分析指标（经典）
 
@@ -28,7 +29,7 @@ Azure 存储使用存储分析解决方案存储一些指标，这些指标包�
 > 存储分析指标可用于 Azure Blob 存储、Azure 队列存储、Azure 表存储以及 Azure 文件。
 > 存储分析指标现在是经典指标。 建议你使用 [Azure Monitor 中的存储指标](monitor-storage.md)，而不是存储分析指标。
 
-## <a name="transaction-metrics"></a>事务度量值  
+## <a name="transaction-metrics"></a>事务指标  
  对于每个存储服务和请求的 API 操作，将按小时或分钟为间隔记录一组可靠的数据，其中包括入口和出口、可用性、错误和分类请求百分比。 有关事务详细信息的完整列表，请参阅[存储分析指标表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema)。  
 
  事务数据在服务级别和 API 操作级别记录。 在服务级别，汇总所有请求的 API 操作的统计信息将每小时写入一次表实体，即使未向服务发出请求也是如此。 在 API 操作级别，仅当在该小时内请求操作时才将统计信息写入实体。  
@@ -42,7 +43,7 @@ Azure 存储使用存储分析解决方案存储一些指标，这些指标包�
 > [!NOTE]
 >  目前，容量指标仅适用于 blob 服务。
 
- 每天记录存储帐户的 Blob 服务的容量数据，并写入两个表实体。 一个实体提供用户数据的统计信息，另一个实体提供有关存储分析所使用的 `$logs` Blob 容器的统计信息。 $MetricsCapacityBlob 表包括以下统计信息：  
+ 每天记录存储帐户的 Blob 服务的容量数据，并写入两个表实体。 一个条目提供用户数据的统计信息，另一个条目提供有关存储分析所使用的 `$logs` Blob 容器的统计信息。 *$MetricsCapacityBlob* 表包含以下统计信息：  
 
 - **容量**：存储帐户的 Blob 服务使用的存储量（以字节为单位）。  
 - **ContainerCount**：存储帐户的 Blob 服务中的 blob 容器数。  
@@ -50,17 +51,17 @@ Azure 存储使用存储分析解决方案存储一些指标，这些指标包�
 
   有关容量指标的详细信息，请参阅[存储分析指标表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema)。  
 
-## <a name="how-metrics-are-stored"></a>如何存储度量值  
+## <a name="how-metrics-are-stored"></a>如何存储指标  
 
  每个存储服务的所有指标数据都存储在为该服务保留的三个表中。 一个表存储事务信息，一个表存储分钟事务信息，还有一个表存储容量信息。 事务和分钟事务信息由请求和响应数据组成。 容量信息由存储使用情况数据组成。 存储帐户的 Blob 服务的小时指标、分钟指标和容量可在按下表所述命名的表中访问。  
 
-|度量值级别|表名|支持的版本|  
+|指标级别|表名|支持的版本|  
 |-------------------|-----------------|----------------------------|  
-|每小时度量值，主位置|-   $MetricsTransactionsBlob<br />-   $MetricsTransactionsTable<br />-   $MetricsTransactionsQueue|仅 2013 年 8 月 15 日之前的版本。 虽然仍然支持这些名称，但还是建议改用下面列出的表。|  
-|每小时度量值，主位置|-   $MetricsHourPrimaryTransactionsBlob<br />-   $MetricsHourPrimaryTransactionsTable<br />-   $MetricsHourPrimaryTransactionsQueue<br />-   $MetricsHourPrimaryTransactionsFile|所有版本。 仅在 2015 年 4 月 5 日版及更高版本中提供对文件服务指标的支持。|  
-|分钟度量值，主位置|-   $MetricsMinutePrimaryTransactionsBlob<br />-   $MetricsMinutePrimaryTransactionsTable<br />-   $MetricsMinutePrimaryTransactionsQueue<br />-   $MetricsMinutePrimaryTransactionsFile|所有版本。 仅在 2015 年 4 月 5 日版及更高版本中提供对文件服务指标的支持。|  
-|每小时度量值，辅助位置|-   $MetricsHourSecondaryTransactionsBlob<br />-   $MetricsHourSecondaryTransactionsTable<br />-   $MetricsHourSecondaryTransactionsQueue|所有版本。 必须启用读访问的异地冗余复制。|  
-|分钟度量值，辅助位置|-   $MetricsMinuteSecondaryTransactionsBlob<br />-   $MetricsMinuteSecondaryTransactionsTable<br />-   $MetricsMinuteSecondaryTransactionsQueue|所有版本。 必须启用读访问的异地冗余复制。|  
+|小时指标，主位置|-   $MetricsTransactionsBlob<br />-   $MetricsTransactionsTable<br />-   $MetricsTransactionsQueue|仅 2013 年 8 月 15 日之前的版本。 虽然仍然支持这些名称，但还是建议改用下面列出的表。|  
+|小时指标，主位置|-   $MetricsHourPrimaryTransactionsBlob<br />-   $MetricsHourPrimaryTransactionsTable<br />-   $MetricsHourPrimaryTransactionsQueue<br />-   $MetricsHourPrimaryTransactionsFile|所有版本。 仅在 2015 年 4 月 5 日版及更高版本中提供对文件服务指标的支持。|  
+|分钟指标，主位置|-   $MetricsMinutePrimaryTransactionsBlob<br />-   $MetricsMinutePrimaryTransactionsTable<br />-   $MetricsMinutePrimaryTransactionsQueue<br />-   $MetricsMinutePrimaryTransactionsFile|所有版本。 仅在 2015 年 4 月 5 日版及更高版本中提供对文件服务指标的支持。|  
+|小时指标，辅助位置|-   $MetricsHourSecondaryTransactionsBlob<br />-   $MetricsHourSecondaryTransactionsTable<br />-   $MetricsHourSecondaryTransactionsQueue|所有版本。 必须启用读访问的地域冗余复制。|  
+|分钟指标，辅助位置|-   $MetricsMinuteSecondaryTransactionsBlob<br />-   $MetricsMinuteSecondaryTransactionsTable<br />-   $MetricsMinuteSecondaryTransactionsQueue|所有版本。 必须启用读访问的地域冗余复制。|  
 |容量（仅限 Blob 服务）|$MetricsCapacityBlob|所有版本。|  
 
  为存储服务终结点启用存储分析时，会自动创建这些表。 这些指标可通过存储帐户的命名空间进行访问，例如：`https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")`。 指标表不会显示在列表操作中，必须直接通过表名称进行访问。
@@ -73,7 +74,7 @@ Azure 存储使用存储分析解决方案存储一些指标，这些指标包�
 1. 确保“状态”设置为“打开”。
 1. 选择要监视的服务指标。
 1. 指定用来指示保留度量值和日志数据的时间长度的保留期策略。
-1. 选择“保存”。
+1. 选择“保存” 。
 
 [Azure 门户](https://portal.azure.com)目前不允许你在存储帐户中配置分钟指标。 必须使用 PowerShell 或以编程方式启用分钟指标。
 
@@ -85,11 +86,11 @@ Azure 存储使用存储分析解决方案存储一些指标，这些指标包�
 * ServiceType：可能值为 Blob、Queue、Table 和 File。
 * MetricsType：可能值为 Hour 和 Minute。  
 * MetricsLevel：可能的值包括：
-   * **无**：关闭监视。
+   * **无**：禁用监视。
    * **服务**：收集经过汇总的有关 Blob、队列、表和文件服务的入口和出口、可用性、延迟及成功百分比等指标。
    * ServiceAndApi：除服务指标外，在 Azure 存储服务 API 中为每项存储操作收集一组相同的指标。
 
-例如，以下命令在保留期设为 5 天的情况下，在存储帐户中为 Blob 服务打开分钟指标： 
+例如，以下命令在存储帐户中打开 blob 服务的分钟指标，并将保留期设置为五天： 
 
 > [!NOTE]
 > 此命令假设你已使用 `Connect-AzAccount` 命令登录到 Azure 订阅。
@@ -134,29 +135,27 @@ queueClient.SetServiceProperties(serviceProperties);
 有关使用 REST API 配置存储指标的一般信息，请参阅[启用和配置存储分析](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics)。  
 
 ##  <a name="view-storage-metrics"></a>查看存储指标  
-在将存储分析度量值配置为监视存储帐户后，存储分析将使用存储帐户在一组已知表中记录度量值。 可以将图表配置为每小时查看 [Azure 门户](https://portal.azure.com)中的指标：
+在将存储分析指标配置为监视存储帐户后，存储分析将使用存储帐户在一组已知表中记录指标。 可以将图表配置为每小时查看 [Azure 门户](https://portal.azure.com)中的指标：
 
 1. 在 [Azure 门户](https://portal.azure.com)中转到自己的存储帐户。
 1. 在要查看其指标的服务的“菜单”窗格中，选择“指标（经典）”。
 1. 选择要配置的图表。
 1. 在“编辑图表”窗格中，选择“时间范围”、“图表类型”，以及想要在图表中显示的指标。
 
-在 Azure 门户的存储帐户菜单窗格的“监视（经典）”部分中，你可以配置“警报规则”[](#metrics-alerts)。 例如，你可以发送电子邮件警报，以在特定指标达到某值时通知你。
+在 Azure 门户的存储帐户菜单窗格的“监视（经典）”部分中，你可以配置[警报规则](#metrics-alerts)。 例如，你可以发送电子邮件警报，以在特定指标达到某值时通知你。
 
-如果要为长期存储下载指标或在本地分析这些指标，则需要使用工具或编写一些代码来读取表。 必须下载分析用的分钟度量值。 如果在存储帐户中列出所有表，则这些表不会显示，但可以按名称直接访问。 很多存储浏览工具可识别这些表，并可用于直接查看这些表。 有关可用工具的列表，请参阅 [Azure 存储客户端工具](/azure/storage/storage-explorers)。
+如果要为长期存储下载指标或在本地分析这些指标，则需要使用工具或编写一些代码来读取表。 必须下载分析用的分钟指标。 如果在存储帐户中列出所有表，则这些表不会显示，但可以按名称直接访问。 很多存储浏览工具可识别这些表，并可用于直接查看这些表。 有关可用工具的列表，请参阅 [Azure 存储客户端工具](/azure/storage/storage-explorers)。
 
-||||  
+|指标|表名|注释| 
 |-|-|-|  
-|**指标**|**表名称**|**说明**|  
-|每小时度量值|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|在 2013 年 8 月 15 日之前的版本中，这些表称为：<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> 从 2015 年 4 月 5 日的版本开始，可以使用文件服务指标。|  
+|小时指标|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|在 2013 年 8 月 15 日之前的版本中，这些表称为：<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> 从 2015 年 4 月 5 日的版本开始，可以使用文件服务指标。|  
 |分钟度量值|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|只能通过 PowerShell 或以编程方式启用。<br /><br /> 从 2015 年 4 月 5 日的版本开始，可以使用文件服务指标。|  
 |容量|$MetricsCapacityBlob|仅限 Blob 服务。|  
 
 有关这些表的完整架构详细信息，请参阅[存储分析指标表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema)。 以下示例行仅显示一部分可用列，但也说明了存储指标在采用相应方式保存这些指标时展现的一些重要功能：  
 
-||||||||||||  
+|PartitionKey|RowKey|Timestamp|TotalRequests|TotalBillableRequests|TotalIngress|TotalEgress|可用性|AverageE2ELatency|AverageServerLatency|PercentSuccess| 
 |-|-|-|-|-|-|-|-|-|-|-|  
-|**PartitionKey**|**RowKey**|**Timestamp**|**TotalRequests**|**TotalBillableRequests**|**TotalIngress**|**TotalEgress**|**可用性**|**AverageE2ELatency**|**AverageServerLatency**|**PercentSuccess**|  
 |20140522T1100|user;All|2014-05-22T11:01:16.7650250Z|7|7|4003|46801|100|104.4286|6.857143|100|  
 |20140522T1100|user;QueryEntities|2014-05-22T11:01:16.7640250Z|5|5|2694|45951|100|143.8|7.8|100|  
 |20140522T1100|user;QueryEntity|2014-05-22T11:01:16.7650250Z|1|1|538|633|100|3|3|100|  

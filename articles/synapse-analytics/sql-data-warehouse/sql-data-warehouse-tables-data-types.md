@@ -1,5 +1,5 @@
 ---
-title: 定义数据类型
+title: Synapse SQL 池中的表数据类型
 description: 有关在 Synapse SQL 池中定义表数据类型的建议。
 services: synapse-analytics
 author: filippopovic
@@ -11,12 +11,12 @@ ms.date: 01/06/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 8313a26c32620c3077433a8cc0570b360bc5b6bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8118329564bbf8193797be0db619f821c064429a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204959"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089152"
 ---
 # <a name="table-data-types-in-synapse-sql-pool"></a>Synapse SQL 池中的表数据类型
 

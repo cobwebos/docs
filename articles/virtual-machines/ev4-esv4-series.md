@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: ccb6bbcddaa5ce76e9dbb04d737830fbaf5c2d9f
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 025d41724a88b4060d2dd22308641283992a68fa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134336"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088880"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4 和 Esv4 系列
 
@@ -42,7 +42,7 @@ ACU：195 - 210
 
 内存保留更新：支持
 
-| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大 NIC 数/预期网络带宽 (Mbps) |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大 NIC 数/预期网络带宽 (MBps) |
 |---|---|---|---|---|---|
 | Standard_E2_v4  | 2 | 16   | 仅远程存储 | 4 | 2/1000  |
 | Standard_E4_v4  | 4 | 32  | 仅远程存储 | 8 | 2/2000  |
@@ -71,7 +71,7 @@ ACU：195-210
 
 内存保留更新：支持
 
-| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 缓存的最大吞吐量： IOPS/MBps （GiB 中的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数/预期网络带宽 (Mbps) |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 缓存的最大吞吐量： IOPS/MBps （GiB 中的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数/预期网络带宽 (MBps) |
 |---|---|---|---|---|---|---|---|
 | Standard_E2s_v4  | 2 | 16  | 仅远程存储 | 4 | 19000/120 （50） | 3200/48 | 2/1000  |
 | Standard_E4s_v4  | 4 | 32  | 仅远程存储 | 8 | 38500/242 （100） | 6400/96 | 2/2000  |
@@ -82,7 +82,7 @@ ACU：195-210
 | Standard_E48s_v4 | 48 | 384 | 仅远程存储 | 32 | 462000/2904 （1200） | 76800/1152 | 8/24000 |
 | Standard_E64s_v4 <sup>1</sup> | 64 | 504| 仅远程存储 | 32 | 615000/3872 （1600） | 80000/1200 | 8/30000 |
 
-<sup>1</sup>个[受约束的可用核心大小](https://docs.microsoft.com/azure/virtual-machines/windows/constrained-vcpu)。
+<sup>1</sup>个[受约束的可用核心大小](./windows/constrained-vcpu.md)。
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

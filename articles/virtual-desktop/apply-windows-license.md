@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 08/14/2019
 ms.author: chrimo
-ms.openlocfilehash: c60303d2306ca167a4d90b0cc27c1d265f2e2db8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53e70fbb1321f33849073bbd6b2176f5d88a1f8b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204415"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088991"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>将 Windows 许可证应用到会话主机虚拟机
 
@@ -27,7 +27,7 @@ ms.locfileid: "85204415"
 - 可以将许可证应用到现有的会话主机虚拟机。 为此，请首先按照[使用 PowerShell 创建主机池](./create-host-pools-powershell.md)中的说明创建主机池和关联的 vm，然后返回到本文了解如何应用许可证。
 
 ## <a name="apply-a-windows-license-to-a-session-host-vm"></a>将 Windows 许可证应用到会话主机 VM
-确保[已安装并配置最新的 Azure PowerShell](/powershell/azure/overview)。 运行以下 PowerShell cmdlet 以应用 Windows 许可证：
+确保[已安装并配置最新的 Azure PowerShell](/powershell/azure/)。 运行以下 PowerShell cmdlet 以应用 Windows 许可证：
 
 ```powershell
 $vm = Get-AzVM -ResourceGroup <resourceGroupName> -Name <vmName>

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 6da9490d5d9a876922fb9c2ba5d908db411adb1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 877d1442c346b321562cb396a77224a6b40c7df2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512407"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087231"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure 导入/导出系统要求
 
@@ -33,7 +33,7 @@ ms.locfileid: "85512407"
 
 |平台 |版本 |
 |---------|---------|
-|.NET Framework    | 4.5.1       |
+|.NET framework    | 4.5.1       |
 | BitLocker        |  _          |
 
 
@@ -47,10 +47,10 @@ Azure 导入/导出服务支持以下类型的存储帐户：
 
 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](storage-account-overview.md)。
 
-每个作业只能用于将数据传输到一个存储帐户或者从一个存储帐户传输数据。 换言之，一个导入/导出作业不能跨多个存储帐户。 有关创建新存储帐户的信息，请参阅[如何创建存储帐户](storage-account-create.md)。
+每个作业只能用于将数据传入/传出一个存储帐户。 换言之，一个导入/导出作业不能跨多个存储帐户。 有关创建新存储帐户的信息，请参阅[如何创建存储帐户](storage-account-create.md)。
 
 > [!IMPORTANT]
-> Azure 导入导出服务不支持已启用[虚拟网络服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md) 功能的存储帐户。 
+> 对于已启用[虚拟网络服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)功能的存储帐户   ，请使用 "**允许受信任的 Microsoft 服务 ...** " 设置，[使导入/导出](/storage-network-security.md)服务能够执行从 Azure 导入/导出数据。
 
 ## <a name="supported-storage-types"></a>受支持的存储类型
 
@@ -59,8 +59,8 @@ Azure 导入/导出服务支持以下类型的存储帐户：
 
 |作业  |存储服务 |支持  |不支持  |
 |---------|---------|---------|---------|
-|Import     |  Azure Blob 存储 <br><br> Azure 文件存储       | 支持块 Blob 和页 Blob <br><br> 支持文件          |
-|Export     |   Azure Blob 存储       | 支持块 Blob、页 Blob 和追加 Blob         | 不支持 Azure 文件
+|导入     |  Azure Blob 存储 <br><br> Azure 文件存储       | 支持块 Blob 和页 Blob <br><br> 支持文件          |
+|导出     |   Azure Blob 存储       | 支持块 Blob、页 Blob 和追加 Blob         | 不支持 Azure 文件
 
 
 ## <a name="supported-hardware"></a>支持的硬件
@@ -88,10 +88,10 @@ Azure 导入/导出服务支持以下类型的存储帐户：
 - 最多 10 个 HDD/SSD。
 - 任意大小的 HDD/SSD 的组合。
 
-大量驱动器可以分布在多个作业上，并且可创建的作业数没有限制。 对于导入作业，仅处理驱动器上的第一个数据卷。 该数据卷必须使用 NTFS 进行格式化。
+大量驱动器可在多个作业中分布，且对可创建的作业数量没有限制。 对于导入作业，仅处理驱动器上的第一个数据卷。 该数据卷必须使用 NTFS 进行格式化。
 
 当使用 WAImportExport 工具准备硬盘驱动器并复制数据时，可以使用外部 USB 适配器。 大多数现成的 USB 3.0 或更高版本的适配器应可以工作。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [通过 AzCopy 命令行实用工具传输数据](storage-use-azcopy.md)
+* [使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: 817f9e362e639cbb8f0cc79607c376c0e8216ec7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3677d67f55cfccdc80245b2ec870ffa76b0a1940
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663725"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088659"
 ---
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>排查 Windows 启动管理器错误 - 0xC0000225“找不到状态”
  
@@ -26,7 +27,7 @@ ms.locfileid: "83663725"
 
 ## <a name="symptoms"></a>症状
 
-使用[启动诊断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)查看 VM 的屏幕截图时，将看到屏幕截图显示 Windows 无法启动错误，状态代码为 0xc0000225。
+使用[启动诊断](./boot-diagnostics.md)查看 VM 的屏幕截图时，将看到屏幕截图显示 Windows 无法启动错误，状态代码为 0xc0000225。
 
 与此错误代码关联的文件将通知你采取哪些步骤来解决问题。 找到“文件:”部分的文本，以确定相应的操作方法。
 
@@ -89,7 +90,7 @@ ms.locfileid: "83663725"
 
 ### <a name="create-and-access-a-repair-vm"></a>创建并访问修复 VM
 
-1. 使用 [VM 修复命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)的步骤 1-3 来准备一个修复 VM。
+1. 使用 [VM 修复命令](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 的步骤 1-3 准备一个修复 VM。
 1. 使用远程桌面连接来连接到修复 VM。
 
 ### <a name="select-a-solution"></a>选择解决方案
@@ -177,7 +178,7 @@ ms.locfileid: "83663725"
          sel disk <DISK #>
          ```
 
-         下图显示了列出和选择磁盘的结果。 列出了 Disk 0 (127 GB | Online)、Disk 1 (32 GB | Online) 和 Disk 2 (127 GB | Online)，并使用 `sel disk 2` 命令选择了 Disk 2。
+         下图显示了列出和选择磁盘的结果。 列出磁盘0（127 GB/联机）、磁盘1（32 GB/联机）和磁盘2（127 GB/联机），并使用命令选择磁盘 2 `sel disk 2` 。
 
          ![列出并选择磁盘的结果。 列出了 Disk 0 (127 GB | Online)、Disk 1 (32 GB | Online) 和 Disk 2 (127 GB | Online)，并选择了 Disk 2。](./media/troubleshoot-boot-error-status-not-found/9.png)
 
@@ -188,7 +189,7 @@ ms.locfileid: "83663725"
          sel partition <PARTITION #>
          ```
 
-         下图显示了列出和选择分区的结果。 列出了 Partition 1 (Reserved | 16MB)、Partition 2 (System | 100MB) 和 Partition 3 (Primary | 126 GB)，并使用 `sel part 2` 命令选择了 Partition 2。
+         下图显示了列出和选择分区的结果。 列出了分区1（保留/16MB）、分区2（系统/100 MB）和分区3（主/126 GB），并使用命令选择分区 2 `sel part 2` 。
 
          ![列出并选择分区的结果。 列出了 Partition 1 (Reserved | 16MB)、Partition 2 (System | 100MB) 和 Partition 3 (Primary | 126 GB)，并选择了 Partition 2。](./media/troubleshoot-boot-error-status-not-found/10.png)
 
@@ -302,4 +303,4 @@ ms.locfileid: "83663725"
    
 ### <a name="rebuild-the-vm"></a>重新生成 VM
 
-使用 [VM 修复命令的步骤 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) 重新生成 VM。
+使用 [VM 修复命令的步骤 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重新生成 VM。

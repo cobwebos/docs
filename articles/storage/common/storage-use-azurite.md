@@ -1,22 +1,22 @@
 ---
 title: 使用 Azurite 模拟器进行本地 Azure 存储开发
-description: Azurite 开源模拟器（预览版）提供一个免费的本地环境用于测试 Azure 存储应用程序。
+description: Azurite 开源模拟器提供了一个免费的本地环境，用于测试 Azure 存储应用程序。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/01/2020
+ms.date: 07/15/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: af846b0c203934468b7f6282234819142093286f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c850fccf5a86df4c35ce4db53b5b40d5e8588210
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512137"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089407"
 ---
-# <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>使用 Azurite 模拟器进行本地 Azure 存储开发和测试（预览）
+# <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>将 Azurite 模拟器用于本地 Azure 存储开发
 
-Azurite 版本 3.2 开源模拟器（预览版）提供一个免费的本地环境用于测试 Azure blob 和队列存储应用程序。 如果你对应用程序在本地的工作状况感到满意，可以改用云中的 Azure 存储帐户。 该仿真器在 Windows、Linux 和 macOS 上提供跨平台支持。 Azurite v3 支持 Azure Blob 服务实现的 API。
+Azurite 开源模拟器提供了一个免费的本地环境，用于测试 Azure blob 和队列存储应用程序。 如果你对应用程序在本地的工作状况感到满意，可以改用云中的 Azure 存储帐户。 该仿真器在 Windows、Linux 和 macOS 上提供跨平台支持。
 
 Azurite 是未来的存储仿真器平台。 Azurite 取代了 [Azure 存储仿真器](storage-use-emulator.md)。 Azurite 将持续更新，以支持最新版本的 Azure 存储 API。
 
@@ -34,8 +34,6 @@ Azurite 是未来的存储仿真器平台。 Azurite 取代了 [Azure 存储仿�
 ![Visual Studio Code 扩展市场](media/storage-use-azurite/azurite-vs-code-extension.png)
 
 也可在浏览器中导航到 [Visual Studio Code 扩展市场](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite)。 选择“安装”按钮打开 Visual Studio Code，并直接转到 Azurite 扩展页。
-
-可以在 Visual Studio Code 状态栏中快速启动或关闭 Azurite。 单击“[Azurite Blob 服务]”或“[Azurite 队列服务]”。
 
 该扩展支持以下 Visual Studio Code 命令。 若要打开命令面板，请在 Visual Studio Code 中按 F1。 
 
@@ -67,6 +65,7 @@ Azurite 是未来的存储仿真器平台。 Azurite 取代了 [Azure 存储仿�
    - **Azurite:队列主机** - 队列服务的侦听终结点。 默认设置为 127.0.0.1。
    - **Azurite:队列端口** - 队列服务的侦听端口。 默认端口为 10001。
    - **Azurite:无提示** - 无提示模式会禁用访问日志。 默认值是 **false**秒。
+   - **Azurite：跳过 Api 版本检查**-跳过请求 api 版本检查。 默认值是 **false**秒。
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>使用 NPM 安装并运行 Azurite
 
@@ -311,6 +310,15 @@ azurite --oauth basic --cert path/server.pem --key path/key.pem
 
 Azurite 通过为 `--oauth` 开关指定 `basic` 参数来支持基本身份验证。 Azurite 会执行基本身份验证，例如验证传入的持有者令牌；检查颁发者、受众和到期时间。 Azurite 不会检查令牌签名或权限。
 
+### <a name="skip-api-version-check"></a>跳过 API 版本检查
+
+**可选**-启动时，Azurite 检查请求的 API 版本是否有效。 以下命令跳过 API 版本检查：
+
+```console
+azurite --skipApiVersionCheck
+```
+
+
 ## <a name="authorization-for-tools-and-sdks"></a>工具和 SDK 的授权
 
 使用任何身份验证策略从 Azure 存储 SDK 或工具（例如 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)）连接到 Azurite。 需要身份验证。 Azurite 支持使用 OAuth、共享密钥和共享访问签名 (SAS) 进行授权。 Azurite 还支持匿名访问公共容器。
@@ -554,4 +562,4 @@ Azurite 支持读取访问异地冗余复制 (RA-GRS)。 对于存储资源，�
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 Azure 存储仿真器进行开发和测试](storage-use-emulator.md)介绍了旧式 Azure 存储仿真器（现已由 Azurite 取代）。
-- [配置 Azure 存储连接字符串](storage-configure-connection-string.md)介绍了如何汇编有效的 Azure 存储连接字符串。
+- [配置 Azure 存储连接字符串](storage-configure-connection-string.md)说明了如何汇编有效的 Azure 存储连接字符串。

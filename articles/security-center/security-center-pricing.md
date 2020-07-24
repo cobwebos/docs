@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2020
 ms.author: memildin
-ms.openlocfilehash: 4487d1452611b269eec756cdbc76e8e55c466cd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 882f8ab7e4f55809759f3a94fd04fb2c410fe188
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801132"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089713"
 ---
 # <a name="upgrade-to-standard-tier-for-enhanced-security"></a>升级到标准层以增强安全性
 
@@ -69,7 +69,7 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了安全中心定价。 要详细了解标准层的增强安全性和高级威胁防护功能，请参阅：
+本文介绍了安全中心定价。 若要详细了解标准级别的增强安全性和高级威胁防护，请参阅：
 
 - [Azure 安全中心的威胁防护](threat-protection.md)
 - [实时 VM 访问控制](security-center-just-in-time.md)

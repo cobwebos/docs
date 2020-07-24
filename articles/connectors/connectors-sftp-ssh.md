@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 06/17/2020
+ms.date: 07/20/2020
 tags: connectors
-ms.openlocfilehash: c2f3af4b0e2fafdd95798b412f37ed20204cd42f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a277c6205dfb9dfa04565fb3ebcb3da589669764
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807745"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087877"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
@@ -23,6 +23,7 @@ ms.locfileid: "84807745"
 > SFTP SSH 连接器目前不支持这些 SFTP 服务器：
 > 
 > * IBM DataPower
+> * MessageWay
 > * OpenText 安全 MFT
 > * OpenText GXS
 
