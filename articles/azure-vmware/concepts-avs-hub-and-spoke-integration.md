@@ -3,16 +3,16 @@ title: 概念-在中心辐射型体系结构中集成 Azure VMware 解决方案�
 description: 了解有关在 Azure 上的现有或新的中心和辐射型体系结构中集成 Azure VMware 解决方案（AVS）部署的建议。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 82937e04fc0a5101c353702b92b6b068d027d7ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d95ed81c5188eab0dc508f5320549c4a402e151
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374949"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062918"
 ---
 # <a name="integrate-azure-vmware-solution-avs-in-a-hub-and-spoke-architecture"></a>集成中心和辐射型体系结构中的 Azure VMware 解决方案（AVS）
 
-本文介绍如何在 Azure 上的现有或新的[中心和辐射型体系结构](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/shared-services)中集成 Azure VMware 解决方案（AVS）部署。 
+本文介绍如何在 Azure 上的现有或新的[中心和辐射型体系结构](/azure/architecture/reference-architectures/hybrid-networking/shared-services)中集成 Azure VMware 解决方案（AVS）部署。 
 
 中心辐射型方案假设混合云环境中的工作负荷已开启：
 
@@ -24,7 +24,7 @@ ms.locfileid: "85374949"
 
 该*中心*是一种 Azure 虚拟网络，它充当本地和 AVS 私有云的中心连接点。 *轮辐*是与中心对等互连的虚拟网络，用于启用跨虚拟网络通信。
 
-本地数据中心、AVS 私有云和中心之间的流量通过 ExpressRoute 连接。 轮辐虚拟网络通常包含基于 IaaS 的工作负载，但可以具有 PaaS 服务（如[应用服务环境](../app-service/environment/intro.md)）、直接与虚拟网络集成或启用了[Azure 专用链接](https://docs.microsoft.com/azure/private-link/)的其他 PaaS 服务。 
+本地数据中心、AVS 私有云和中心之间的流量通过 ExpressRoute 连接。 轮辐虚拟网络通常包含基于 IaaS 的工作负载，但可以具有 PaaS 服务（如[应用服务环境](../app-service/environment/intro.md)）、直接与虚拟网络集成或启用了[Azure 专用链接](../private-link/index.yml)的其他 PaaS 服务。 
 
 此图显示了 Azure 中通过 ExpressRoute 连接到本地和 AVS 的中心和分支部署的示例。
 
@@ -50,7 +50,7 @@ ms.locfileid: "85374949"
 
     -   **IaaS 分支：** IaaS 辐射将托管基于 Azure IaaS 的工作负载，包括 VM 可用性集和虚拟机规模集，以及相应的网络组件。
 
-    -   **PaaS 分支：** PaaS 分支使用专用寻址来托管 Azure PaaS 服务，感谢[专用终结点](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)和[专用链接](https://docs.microsoft.com/azure/private-link/private-link-overview)。
+    -   **PaaS 分支：** PaaS 分支使用专用寻址来托管 Azure PaaS 服务，感谢[专用终结点](../private-link/private-endpoint-overview.md)和[专用链接](../private-link/private-link-overview.md)。
 
 -   **Azure 防火墙：** 充当辐射、本地和 AVS 之间的流量分段。
 
@@ -58,7 +58,7 @@ ms.locfileid: "85374949"
 
 ## <a name="network-and-security-considerations"></a>网络和安全注意事项
 
-ExpressRoute 连接使流量能够在本地、AVS 和 Azure 网络结构之间流动。 AVS 使用[ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)来实现这种连接。
+ExpressRoute 连接使流量能够在本地、AVS 和 Azure 网络结构之间流动。 AVS 使用[ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md)来实现这种连接。
 
 本地连接还可以使用 ExpressRoute Global Reach，但这不是必需的。
 
@@ -72,11 +72,11 @@ ExpressRoute 连接使流量能够在本地、AVS 和 Azure 网络结构之间�
   :::image type="content" source="media/hub-spoke/avs-to-hub-vnet-traffic-flow.png" alt-text="AVS 到中心虚拟网络流量流":::
 
 
-有关 avs[产品文档](https://docs.microsoft.com/azure/azure-vmware/concepts-networking)的更多详细信息，请参阅互连。
+有关 avs[产品文档](./concepts-networking.md)的更多详细信息，请参阅互连。
 
 ### <a name="traffic-segmentation"></a>流量分段
 
-[Azure 防火墙](https://docs.microsoft.com/azure/firewall/)是中心和辐射拓扑的核心拓扑，部署在中心虚拟网络上。 使用 Azure 防火墙或其他受 Azure 支持的网络虚拟设备来建立流量规则，并分段不同辐射型、本地和 AVS 工作负载之间的通信。
+[Azure 防火墙](../firewall/index.yml)是中心和辐射拓扑的核心拓扑，部署在中心虚拟网络上。 使用 Azure 防火墙或其他受 Azure 支持的网络虚拟设备来建立流量规则，并分段不同辐射型、本地和 AVS 工作负载之间的通信。
 
 创建路由表以将流量定向到 Azure 防火墙。  对于辐射虚拟网络，请创建将默认路由设置为 Azure 防火墙内部接口的路由，这种情况下，当虚拟网络中的工作负荷需要访问 AVS 地址空间时，防火墙可对其进行评估，并应用相应的流量规则以允许或拒绝它。  
 
@@ -104,7 +104,7 @@ ExpressRoute 连接使流量能够在本地、AVS 和 Azure 网络结构之间�
 
 使用 Jumpbox 访问 AVS 环境，该环境是在中心虚拟网络中的共享服务子网中部署的 Windows 10 或 Windows Server VM。
 
-作为最佳安全方案，请在中心虚拟网络中部署[Microsoft Azure 堡垒](https://docs.microsoft.com/azure/bastion/)服务。 Azure 堡垒提供对 Azure 中部署的 Vm 的无缝 RDP 和 SSH 访问，无需为这些资源预配公共 IP 地址。 预配 Azure 堡垒服务后，可以从 Azure 门户访问所选 VM。 建立连接后，会打开一个新的选项卡，显示 Jumpbox 桌面，并从该桌面访问 AVS 私有云管理平面。
+作为最佳安全方案，请在中心虚拟网络中部署[Microsoft Azure 堡垒](../bastion/index.yml)服务。 Azure 堡垒提供对 Azure 中部署的 Vm 的无缝 RDP 和 SSH 访问，无需为这些资源预配公共 IP 地址。 预配 Azure 堡垒服务后，可以从 Azure 门户访问所选 VM。 建立连接后，会打开一个新的选项卡，显示 Jumpbox 桌面，并从该桌面访问 AVS 私有云管理平面。
 
 > [!IMPORTANT]
 > 不要向 Jumpbox VM 提供公共 IP 地址，也不要向公共 internet 公开 3389/TCP 端口。 
@@ -137,21 +137,19 @@ Azure DNS 专用区域需要考虑几个注意事项：
 
 ## <a name="identity-considerations"></a>标识注意事项
 
-出于标识目的，最佳方法是在中心部署至少一个 AD 域控制器，使用共享服务子网，理想情况下使用共享服务子网或 VM 可用性集。 请参阅[Azure 体系结构中心](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain)将本地 AD 域扩展到 Azure。
+出于标识目的，最佳方法是在中心部署至少一个 AD 域控制器，使用共享服务子网，理想情况下使用共享服务子网或 VM 可用性集。 请参阅[Azure 体系结构中心](/azure/architecture/reference-architectures/identity/adds-extend-domain)将本地 AD 域扩展到 Azure。
 
 此外，在 AVS 端部署另一个域控制器，在 vSphere 环境中充当标识和 DNS 源。
 
 对于 vCenter 和 SSO，请在 "**管理 \> 标识 \> 标识源**" 中设置 Azure 门户中的标识源。
 
-作为推荐的最佳做法，将[AD 域与 Azure Active Directory](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/azure-ad)集成。
+作为推荐的最佳做法，将[AD 域与 Azure Active Directory](/azure/architecture/reference-architectures/identity/azure-ad)集成。
 
 <!-- LINKS - external -->
-[Azure Architecture Center]: https://docs.microsoft.com/azure/architecture/
+[Azure Architecture Center]: /azure/architecture/
 
-[Hub & Spoke topology]: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke
+[Hub & Spoke topology]: /azure/architecture/reference-architectures/hybrid-networking/hub-spoke
 
-[Azure networking documentation]: https://docs.microsoft.com/azure/networking/
+[Azure networking documentation]: ../networking/index.yml
 
 <!-- LINKS - internal -->
-
-
