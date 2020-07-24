@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 9ae0aec6b87a746ed1f141dcf98f599acd20ab3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a454d04701160492539f5c9caba57c9e617401e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82864243"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067480"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>优化 Azure Monitor 中的日志查询
 Azure Monitor 日志使用 [Azure 数据资源管理器 (ADX)](/azure/data-explorer/) 来存储日志数据，并运行查询来分析这些数据。 它为你创建、管理和维护 ADX 群集，并针对你的日志分析工作负荷优化它们。 运行查询时，将对其进行优化，并将其路由到存储着工作区数据的相应 ADX 群集。 Azure Monitor 日志和 Azure 数据资源管理器都使用许多自动查询优化机制。 虽然自动优化已提供了显著的性能提升，但在某些情况下，你还可以显著提高查询性能。 本文介绍了性能注意事项和解决相关问题的几种方法。
@@ -156,7 +157,7 @@ Heartbeat
 > 此指标仅显示来自紧邻群集的 CPU。 在多区域查询中，它仅显示其中一个区域。 在多工作区查询中，它可能不包括所有工作区。
 
 ### <a name="avoid-full-xml-and-json-parsing-when-string-parsing-works"></a>当字符串分析有效时，请避免使用完全 XML 和 JSON 分析
-完全分析某个 XML 或 JSON 对象可能会消耗大量 CPU 和内存资源。 在许多情况下，当只需要一两个参数并且 XML 或 JSON 对象很简单时，可以使用 [parse 运算符](/azure/kusto/query/parseoperator)或其他[文本分析技术](/azure/azure-monitor/log-query/parse-text)将它们分析为字符串，这样更简单。 随着 XML 或 JSON 对象中的记录数增加，性能提升会更明显。 当记录的数量达到数千万时，这一点至关重要。
+完全分析某个 XML 或 JSON 对象可能会消耗大量 CPU 和内存资源。 在许多情况下，当只需要一两个参数并且 XML 或 JSON 对象很简单时，可以使用 [parse 运算符](/azure/kusto/query/parseoperator)或其他[文本分析技术](./parse-text.md)将它们分析为字符串，这样更简单。 随着 XML 或 JSON 对象中的记录数增加，性能提升会更明显。 当记录的数量达到数千万时，这一点至关重要。
 
 例如，下面的查询将返回与上面的查询完全相同的结果，但不执行完全 XML 分析。 请注意，它对 XML 文件结构做了一些假设，例如，FilePath 元素位于 FileHash 之后，并且它们都没有属性。 
 
@@ -218,6 +219,64 @@ SecurityEvent
 | where EventID == 4624 //Logon GUID is relevant only for logon event
 | summarize LoginSessions = dcount(LogonGuid) by Account
 ```
+
+### <a name="avoid-multiple-scans-of-same-source-data-using-conditional-aggregation-functions-and-materialize-function"></a>避免使用条件聚合函数和具体化函数对相同源数据进行多次扫描
+如果查询包含多个使用联接运算符或联合运算符合并的子查询，则每个子查询将单独扫描整个源，然后合并结果。 这会将数据扫描的次数与非常大的数据集中的关键因素进行了乘积。
+
+避免这种情况的一种方法是使用条件聚合函数。 在 summary 运算符中使用的大多数[聚合函数](/azure/data-explorer/kusto/query/summarizeoperator#list-of-aggregation-functions)都有一个有条件的版本，允许您对多个条件使用单个 summary 运算符。 
+
+例如，下面的查询显示了登录事件的数目以及每个帐户的进程执行事件数。 它们返回相同的结果，但第一次扫描数据两次，第二次只扫描一次数据：
+
+```Kusto
+//Scans the SecurityEvent table twice and perform expensive join
+SecurityEvent
+| where EventID == 4624 //Login event
+| summarize LoginCount = count() by Account
+| join 
+(
+    SecurityEvent
+    | where EventID == 4688 //Process execution event
+    | summarize ExecutionCount = count(), ExecutedProcesses = make_set(Process) by Account
+) on Account
+```
+
+```Kusto
+//Scan only once with no join
+SecurityEvent
+| where EventID == 4624 or EventID == 4688 //early filter
+| summarize LoginCount = countif(EventID == 4624), ExecutionCount = countif(EventID == 4688), ExecutedProcesses = make_set_if(Process,EventID == 4688)  by Account
+```
+
+无需子查询的另一种情况是对[分析运算符](/azure/data-explorer/kusto/query/parseoperator?pivots=azuremonitor)进行预筛选，以确保它仅处理与特定模式匹配的记录。 这是不必要的，因为分析运算符和其他类似的运算符在模式不匹配时返回空结果。 下面是两个查询，在第二次查询仅扫描数据一次时返回的结果完全相同。 在第二个查询中，每个 parse 命令仅适用于其事件。 扩展运算符随后显示了如何引用空的数据情况。
+
+```Kusto
+//Scan SecurityEvent table twice
+union(
+SecurityEvent
+| where EventID == 8002 
+| parse EventData with * "<FilePath>" FilePath "</FilePath>" * "<FileHash>" FileHash "</FileHash>" *
+| distinct FilePath
+),(
+SecurityEvent
+| where EventID == 4799
+| parse EventData with * "CallerProcessName\">" CallerProcessName1 "</Data>" * 
+| distinct CallerProcessName1
+)
+```
+
+```Kusto
+//Single scan of the SecurityEvent table
+SecurityEvent
+| where EventID == 8002 or EventID == 4799
+| parse EventData with * "<FilePath>" FilePath "</FilePath>" * "<FileHash>" FileHash "</FileHash>" * //Relevant only for event 8002
+| parse EventData with * "CallerProcessName\">" CallerProcessName1 "</Data>" *  //Relevant only for event 4799
+| extend FilePath = iif(isempty(CallerProcessName1),FilePath,"")
+| distinct FilePath, CallerProcessName1
+```
+
+当上述不允许使用子查询时，另一种方法是提示查询引擎，其中每个源数据都使用[具体化（）函数](/azure/data-explorer/kusto/query/materializefunction?pivots=azuremonitor)。 当源数据来自在查询中多次使用的函数时，这将非常有用。
+
+
 
 ### <a name="reduce-the-number-of-columns-that-is-retrieved"></a>减少检索的列数
 
