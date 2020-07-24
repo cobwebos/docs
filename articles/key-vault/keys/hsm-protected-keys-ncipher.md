@@ -10,18 +10,18 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 4eea0529e88e183ab517e8546e3ec1cb3cd0af7d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e67769d37b45a9e1344ce6aa72bd1e60e6bfe287
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042928"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061279"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>为 Key Vault 导入 HSM 保护的密钥（nCipher）
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-为了提高可靠性，在使用 Azure 密钥保管库时，可以在硬件安全模块 (HSM) 中导入或生成永不离开 HSM 边界的密钥。 这种情况通常被称为*自带密钥*，简称 BYOK。 Azure Key Vault 使用 Hsm （FIPS 140-2 Level 2）的 nCipher nShield 系列来保护密钥。
+为了提高可靠性，在使用 Azure 密钥保管库时，可以在硬件安全模块 (HSM) 中导入或生成永不离开 HSM 边界的密钥。 这种情况通常被称为自带密钥，简称 BYOK。 Azure Key Vault 使用 Hsm （FIPS 140-2 Level 2）的 nCipher nShield 系列来保护密钥。
 
 > [!NOTE]
 > 本文档中所述的 HSM 密钥导入方法仅适用于 nCipher nShield 系列的 Hsm。 若要从其他 Hsm 导入 HSM 密钥，[请参阅此处](hsm-protected-keys-byok.md)。
@@ -62,7 +62,7 @@ Microsoft 与 nCipher 安全性合作，为 Hsm 提高了作品的状态。 这�
 | Azure 订阅 |若要创建 Azure 密钥保管库，需要 Azure 订阅：[注册免费试用版](https://azure.microsoft.com/pricing/free-trial/) |
 | 用于支持受 HSM 保护的密钥的 Azure 密钥保管库“高级”服务层级 |请参阅 [Azure 密钥保管库定价](https://azure.microsoft.com/pricing/details/key-vault/)网站，了解有关 Azure 密钥保管库的服务层级和功能的详细信息。 |
 | nCipher nShield Hsm、智能卡和支持软件 |你必须有权访问 nCipher 硬件安全模块以及 nCipher nShield Hsm 的基本操作知识。 有关兼容模型的列表，请参阅[NCipher NShield 硬件安全模块](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy)，如果没有 HSM，请参阅购买 HSM。 |
-| 以下硬件和软件：<ol><li>一种离线 x64 工作站，windows 操作系统版本最低为 Windows 7，nCipher nShield 软件至少为11.50 版。<br/><br/>如果此工作站运行 Windows 7，则必须[安装 Microsoft.NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)。</li><li>连接到 Internet 的工作站，最低 Windows 操作系统为 Windows 7，最低 [Azure PowerShell 安装版本为 1.1.0。](/powershell/azure/overview?view=azps-1.2.0) ****</li><li>至少拥有 16 MB 可用空间的 USB 驱动器或其他便携式存储设备。</li></ol> |出于安全原因，建议第一个工作站不要连接到网络。 但是，此建议不会以编程方式强制执行。<br/><br/>在后面的说明中，将此工作站称为连接断开的工作站。</p></blockquote><br/>此外，如果租户密钥用于生产网络，建议使用第二个独立的工作站来下载工具集和上传租户密钥。 但出于测试目的，可以使用与第一个相同的工作站。<br/><br/>在后面的说明中，将第二个工作站称为连接到 Internet 的工作站。</p></blockquote><br/> |
+| 以下硬件和软件：<ol><li>一种离线 x64 工作站，windows 操作系统版本最低为 Windows 7，nCipher nShield 软件至少为11.50 版。<br/><br/>如果此工作站运行 Windows 7，则必须[安装 Microsoft.NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)。</li><li>连接到 Internet 的工作站，最低 Windows 操作系统为 Windows 7，最低 [Azure PowerShell 安装版本为 1.1.0。](/powershell/azure/?view=azps-1.2.0) ****</li><li>至少拥有 16 MB 可用空间的 USB 驱动器或其他便携式存储设备。</li></ol> |出于安全原因，建议第一个工作站不要连接到网络。 但是，此建议不会以编程方式强制执行。<br/><br/>在后面的说明中，将此工作站称为连接断开的工作站。</p></blockquote><br/>此外，如果租户密钥用于生产网络，建议使用第二个独立的工作站来下载工具集和上传租户密钥。 但出于测试目的，可以使用与第一个相同的工作站。<br/><br/>在后面的说明中，将第二个工作站称为连接到 Internet 的工作站。</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>生成密钥并将其传输到 Azure 密钥保管库 HSM
 
@@ -80,7 +80,7 @@ Microsoft 与 nCipher 安全性合作，为 Hsm 提高了作品的状态。 这�
 
 ### <a name="step-11-install-azure-powershell"></a>步骤 1.1：安装 Azure PowerShell
 
-从通过 Internet 连接的工作站，下载并安装Azure PowerShell 模块，其包含用于管理 Azure 密钥保管库的 cmdlet。 如需安装说明，请参阅 [How to install and configure Azure PowerShell](/powershell/azure/overview)（如何安装和配置 Azure PowerShell）。
+从通过 Internet 连接的工作站，下载并安装Azure PowerShell 模块，其包含用于管理 Azure 密钥保管库的 cmdlet。 如需安装说明，请参阅 [How to install and configure Azure PowerShell](/powershell/azure/)（如何安装和配置 Azure PowerShell）。
 
 ### <a name="step-12-get-your-azure-subscription-id"></a>步骤 1.2：获取 Azure 订阅 ID
 

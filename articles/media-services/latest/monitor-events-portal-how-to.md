@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 01/21/2020
 ms.author: juliako
-ms.openlocfilehash: 18503e64dc6f38daab61599153cd0e0fb6fadb20
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92a97ddbd9497954b35efa33de7c2f843d4dd934
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76509217"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060690"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>使用门户创建并监视带有事件网格的 Azure 媒体服务事件
 
@@ -32,7 +33,7 @@ Azure 事件网格是针对云的事件处理服务。 此服务使用[事件订
 ## <a name="prerequisites"></a>先决条件 
 
 * 拥有一个有效的 Azure 订阅。
-* 按照[本快速入门](create-account-cli-quickstart.md)所述，创建新的 Azure 媒体服务帐户。
+* 按照[本快速入门](./create-account-howto.md)所述，创建新的 Azure 媒体服务帐户。
 
 ## <a name="create-a-message-endpoint"></a>创建消息终结点
 

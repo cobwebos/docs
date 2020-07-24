@@ -3,12 +3,12 @@ title: 利用 Advisor 提高应用程序的可靠性
 description: 使用 Azure 顾问确保并提高业务关键 Azure 部署的可靠性。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 928e0b098cb2cf117eff40d2257fc79dbe114f85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1eba688a67a8684cdbb6846b389f83e61b349abe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124616"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057671"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>使用 Azure Advisor 提高应用程序的可靠性
 
@@ -59,7 +59,7 @@ Azure 顾问可帮助确保并提高业务关键应用程序的连续性。 可�
 
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>使用 Azure 存储帐户上的软删除在意外覆盖或删除后保存和恢复数据
 
-为存储帐户启用[软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)，以便将删除的 blob 转换为软删除状态，而不是永久删除。 覆盖数据时，会生成软删除快照以保存被覆盖数据的状态。 使用软删除可恢复意外删除或覆盖。 Advisor 标识未启用软删除的 Azure 存储帐户，并建议你启用该帐户。
+为存储帐户启用[软删除](../storage/blobs/soft-delete-overview.md)，以便将删除的 blob 转换为软删除状态，而不是永久删除。 覆盖数据时，会生成软删除快照以保存被覆盖数据的状态。 使用软删除可恢复意外删除或覆盖。 Advisor 标识未启用软删除的 Azure 存储帐户，并建议你启用该帐户。
 
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>配置 VPN 网关为主动-主动以进行连接复原
 
@@ -107,7 +107,7 @@ Azure 顾问会识别使用旧版本 Azure Cosmos DB Spark 连接器 Azure Cosmo
 从2020年7月1日开始，你将无法使用 Spark 2.1 或 2.2 on HDInsight 3.6 创建新的 Spark 群集。 你将无法使用 Spark 2.3 on HDInsight 4.0 创建新的 Spark 群集。 现有群集将在没有 Microsoft 支持的情况下按原样运行。 
 
 ## <a name="enable-virtual-machine-replication"></a>启用虚拟机复制
-未启用复制的虚拟机不能在区域中断后复原。 在 Azure 区域中断期间，复制虚拟机可降低任何不利的业务影响。 Advisor 检测未启用复制的 Vm，并建议启用复制。 启用复制时，如果发生中断，可以快速将虚拟机带入远程 Azure 区域。 [了解有关虚拟机复制的详细信息。](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
+未启用复制的虚拟机不能在区域中断后复原。 在 Azure 区域中断期间，复制虚拟机可降低任何不利的业务影响。 Advisor 检测未启用复制的 Vm，并建议启用复制。 启用复制时，如果发生中断，可以快速将虚拟机带入远程 Azure 区域。 [了解有关虚拟机复制的详细信息。](../site-recovery/azure-to-azure-quickstart.md)
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>如何访问顾问中的高可用性建议
 
@@ -122,5 +122,5 @@ Azure 顾问会识别使用旧版本 Azure Cosmos DB Spark 连接器 Azure Cosmo
 * [顾问入门](advisor-get-started.md)
 * [顾问成本建议](advisor-cost-recommendations.md)
 * [顾问性能建议](advisor-performance-recommendations.md)
-* [顾问安全建议](advisor-security-recommendations.md)
-* [顾问操作优秀建议](advisor-operational-excellence-recommendations.md)
+* [顾问安全性建议](advisor-security-recommendations.md)
+* [顾问卓越运营建议](advisor-operational-excellence-recommendations.md)

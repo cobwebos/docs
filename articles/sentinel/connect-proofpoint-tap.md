@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: e4185de879fa6136531e6d4c64908befa1d3bc45
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: df4292a40335e58c64b8ebc50ffb6ac1ceee8836
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531035"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059896"
 ---
 # <a name="connect-your-proofpoint-tap-to-azure-sentinel-with-azure-function"></a>通过 Azure Function 将 Proofpoint on demand 点击连接到 Azure Sentinel
+
+> [!IMPORTANT]
+> Azure Sentinel 中的 Proofpoint on demand 点击数据连接器目前为公共预览版。
+> 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Proofpoint on demand 目标攻击防护（点击）连接器可让你轻松地将[proofpoint on demand](https://www.proofpoint.com/us/products/advanced-threat-protection/targeted-attack-protection)安全解决方案日志与 Azure Sentinel 连接起来，查看仪表板，创建自定义警报，并改善调查。 Proofpoint on demand 分流和 Azure Sentinel 之间的集成利用 Azure Functions 来使用 REST API 请求日志数据。
 

@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e37c680f6bf9e296230232c0d4e0fab5f50ad3cd
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 48b8175ed5f753ffe7b62d3e97f4fe20f60da5ca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142373"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061608"
 ---
 # <a name="manage-digital-twins"></a>管理数字孪生
 
-环境中的实体由[数字孪生](concepts-twins-graph.md)表示。 管理数字孪生可能包括创建、修改和删除。 若要执行这些操作，可以使用[**DigitalTwins api**](how-to-use-apis-sdks.md)、 [.Net (c # ) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或[Azure 数字孪生 CLI](how-to-use-cli.md)。
+环境中的实体由[数字孪生](concepts-twins-graph.md)表示。 管理数字孪生可能包括创建、修改和删除。 若要执行这些操作，可以使用[**DigitalTwins api**](how-to-use-apis-sdks.md)、 [.Net （c #） SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或[Azure 数字孪生 CLI](how-to-use-cli.md)。
 
-本文重点介绍如何管理数字孪生;若要整体处理关系和整数[关系图](concepts-twins-graph.md)，请参阅[操作方法：管理包含关系的双子关系图](how-to-manage-graph.md)。
+本文重点介绍如何管理数字孪生;若要整体处理关系和整数[关系图](concepts-twins-graph.md)，请参阅[*操作方法：管理包含关系的双子关系图*](how-to-manage-graph.md)。
 
 > [!TIP]
 > 所有 SDK 函数都提供同步和异步版本。
@@ -44,7 +44,7 @@ await client.CreateDigitalTwinAsync("myNewTwinID", initData);
 
 ### <a name="initialize-properties"></a>初始化属性
 
-克隆创建 API 接受一个对象，该对象可以序列化为克隆属性的有效 JSON 说明。 请参阅 "[概念：数字孪生" 和 "克隆图形"](concepts-twins-graph.md) ，以获取对一种对的 JSON 格式的说明。
+克隆创建 API 接受一个对象，该对象可以序列化为克隆属性的有效 JSON 说明。 请参阅 "[*概念：数字孪生" 和 "克隆图形"*](concepts-twins-graph.md) ，以获取对一种对的 JSON 格式的说明。
 
 可以手动创建参数对象，也可以使用提供的帮助器类创建参数对象。 下面是每个的示例。
 
@@ -91,9 +91,9 @@ object result = await client.GetDigitalTwin(id);
 
 此调用返回作为 JSON 字符串的未克隆数据。 
 
-若要使用单个 API 调用检索多个孪生，请参阅[如何：查询双子图](how-to-query-graph.md)中的查询 API 示例。
+若要使用单个 API 调用检索多个孪生，请参阅[*如何：查询双子图*](how-to-query-graph.md)中的查询 API 示例。
 
-请考虑以下模型 (以[数字孪生定义语言编写， (DTDL) ](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)) 定义*月球*：
+考虑定义*月球*的以下模型（以[数字孪生定义语言（DTDL）](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)编写）：
 
 ```json
 {
@@ -150,12 +150,12 @@ object result = await client.GetDigitalTwin(id);
 * `$etag`，由 web 服务器分配的标准 HTTP 字段
 * 节中的其他属性 `$metadata` 。 其中包括：
     - 数字克隆的模型的 DTMI。
-    - 每个可写属性的同步状态。 这对于设备最为有用，在这种情况下，在设备处于) 脱机状态时，服务和设备可能会 (分叉状态。 目前，此属性仅适用于连接到 IoT 中心的物理设备。 使用元数据部分中的数据，可以了解属性的完整状态以及上次修改的时间戳。 有关同步状态的详细信息，请参阅有关同步设备状态的[此 IoT 中心教程](../iot-hub/tutorial-device-twins.md)。
+    - 每个可写属性的同步状态。 这对于设备最为有用，在这种情况下，服务和设备有可能会有分叉状态（例如，当设备处于脱机状态时）。 目前，此属性仅适用于连接到 IoT 中心的物理设备。 使用元数据部分中的数据，可以了解属性的完整状态以及上次修改的时间戳。 有关同步状态的详细信息，请参阅有关同步设备状态的[此 IoT 中心教程](../iot-hub/tutorial-device-twins.md)。
     - 服务特定的元数据，如 IoT 中心或 Azure 数字孪生。 
 
 您可以使用所选的 JSON 分析库（如）分析返回的 JSON `System.Text.Json` 。
 
-你还可以使用 SDK 随附的序列化帮助器类 `BasicDigitalTwin` ，它将返回以预分析形式返回的核心数据和属性。 下面是一个示例：
+你还可以使用 SDK 随附的序列化帮助器类 `BasicDigitalTwin` ，它将返回以预分析形式返回的核心数据和属性。 以下是示例：
 
 ```csharp
 Response<string> res = client.GetDigitalTwin(twin_id);
@@ -168,7 +168,7 @@ foreach (string prop in twin.CustomProperties.Keys)
 }
 ```
 
-有关序列化帮助器类的详细信息，[请参阅如何：使用 Azure 数字孪生 api 和 sdk](how-to-use-apis-sdks.md)。
+有关序列化帮助器类的详细信息，[*请参阅如何：使用 Azure 数字孪生 api 和 sdk*](how-to-use-apis-sdks.md)。
 
 ## <a name="update-a-digital-twin"></a>更新数字克隆
 
@@ -337,13 +337,13 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 
 ### <a name="delete-all-digital-twins"></a>删除所有数字孪生
 
-有关如何一次删除所有孪生的示例，请下载教程中使用的示例应用[：使用示例客户端应用了解基础知识](tutorial-command-line-app.md)。 *CommandLoop.cs*文件在函数中执行此 `CommandDeleteAllTwins` 功能。
+有关如何一次删除所有孪生的示例，请下载教程中使用的示例应用[*：使用示例客户端应用了解基础知识*](tutorial-command-line-app.md)。 *CommandLoop.cs*文件在函数中执行此 `CommandDeleteAllTwins` 功能。
 
 ## <a name="manage-twins-with-cli"></a>用 CLI 管理孪生
 
-还可以使用 Azure 数字孪生 CLI 管理孪生。 有关命令，请参阅[操作方法：使用 Azure 数字孪生 CLI](how-to-use-cli.md)。
+还可以使用 Azure 数字孪生 CLI 管理孪生。 有关命令，请参阅[*操作方法：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 请参阅如何创建和管理数字孪生之间的关系：
-* [如何：管理包含关系的双子图形](how-to-manage-graph.md)
+* [*如何：管理包含关系的双子图形*](how-to-manage-graph.md)

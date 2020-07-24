@@ -1,5 +1,5 @@
 ---
-title: 如何为 Azure Key Vault 生成和传输受 HSM 保护的密钥 - Azure Key Vault | Microsoft Docs
+title: 如何生成 & 传输受 HSM 保护的密钥– BYOK – Azure Key Vault
 description: 使用本文来帮助你规划、生成并传输自己的受 HSM 保护的密钥，以便与 Azure Key Vault 一起使用。 也称为自带密钥（BYOK）。
 services: key-vault
 author: amitbapat
@@ -10,11 +10,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 52214d42467dfa86b5e085a660a9416904b7de59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4df934f38a8fb657fa4a8de5922d96197a3d02cc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84416692"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061103"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>将受 HSM 保护的密钥导入 Key Vault （BYOK）
 
@@ -67,7 +68,7 @@ ms.locfileid: "84416692"
 
 ## <a name="supported-key-types"></a>支持的密钥类型
 
-|项名称|密钥类型|密钥大小|源|描述|
+|项名称|密钥类型|密钥大小|源|说明|
 |---|---|---|---|---|
 |密钥交换密钥（KEK）|RSA| 2048位<br />3072位<br />4096位|Azure Key Vault HSM|在 Azure Key Vault 中生成的 HSM 支持的 RSA 密钥对|
 |目标密钥|RSA|2048位<br />3072位<br />4096位|供应商 HSM|要传输到 Azure Key Vault HSM 的密钥|

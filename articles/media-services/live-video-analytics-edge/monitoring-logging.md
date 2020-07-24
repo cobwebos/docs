@@ -3,11 +3,12 @@ title: 监视和日志记录-Azure
 description: 本文概述了有关 IoT Edge 监视和日志记录的实时视频分析。
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 807b0623159e0b50285b89da2835e9dd6cb037aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82e4a5879e4c88e462edcddb02866ec9b671d7fe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84260570"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060454"
 ---
 # <a name="monitoring-and-logging"></a>监视和日志记录
 
@@ -24,7 +25,7 @@ IoT Edge 上的实时视频分析根据以下分类发出事件或遥测数据�
 * 操作：作为用户执行的操作的一部分生成的事件，或在[媒体图形](media-graph-concept.md)执行过程中生成的事件。
    
    * 卷：应较低（一分钟内几次，甚至越低）。
-   * 示例：
+   * 示例:
 
       记录已启动（如下），记录已停止
       
@@ -46,7 +47,7 @@ IoT Edge 上的实时视频分析根据以下分类发出事件或遥测数据�
 * 诊断：有助于诊断问题和/或性能问题的事件。
 
    * 卷：可能会很长（一分钟时间）。
-   * 示例：
+   * 示例:
    
       RTSP [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol)信息（如下所示），或传入视频源中的间隙。
 
@@ -67,7 +68,7 @@ IoT Edge 上的实时视频分析根据以下分类发出事件或遥测数据�
 * 分析：作为视频分析的一部分生成的事件。
 
    * 卷：可能很高（一分钟或更长时间）。
-   * 示例：
+   * 示例:
       
       检测到的动作（如下所示），推理结果。
    ```      
@@ -97,7 +98,7 @@ IoT Edge 上的实时视频分析根据以下分类发出事件或遥测数据�
      }
    }
    ```
-模块发出的事件将发送到[IoT Edge 集线器](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)，然后可以将其路由到其他目标。 
+模块发出的事件将发送到[IoT Edge 集线器](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)，然后可以将其路由到其他目标。 
 
 ## <a name="controlling-events"></a>控制事件
 
@@ -109,7 +110,7 @@ IoT Edge 上的实时视频分析根据以下分类发出事件或遥测数据�
    
 分析事件由节点（如运动检测处理器或 HTTP 扩展处理器）生成，IoT 中心接收器用于将其发送到 IoT Edge 集线器。 
 
-你可以通过 $edgeHub 模块（在部署清单中）的所需属性控制[以上所有事件的路由](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)：
+你可以通过 $edgeHub 模块（在部署清单中）的所需属性控制[以上所有事件的路由](../../iot-edge/module-composition.md#declare-routes)：
 
 ```
  "$edgeHub": {
@@ -125,30 +126,30 @@ IoT Edge 上的实时视频分析根据以下分类发出事件或遥测数据�
  }
 ```
 
-在上面的 lvaEdge 中，"" 是 IoT Edge 模块上的实时视频分析的名称，路由规则遵循 "[声明路由](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)" 中定义的架构。
+在上面的 lvaEdge 中，"" 是 IoT Edge 模块上的实时视频分析的名称，路由规则遵循 "[声明路由](../../iot-edge/module-composition.md#declare-routes)" 中定义的架构。
 
 > [!NOTE]
 > 为了确保 analytics 事件到达 IoT Edge 中心，需要有任何运动检测处理器节点和/或任何 HTTP 扩展处理器节点的下游的 IoT 中心接收器节点。
 
 ## <a name="event-schema"></a>事件架构
 
-事件源自边缘设备，并可在边缘或云中使用。 IoT Edge 上的实时视频分析所生成的事件符合 Azure IoT 中心建立的[流式消息传递模式](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)，其中包含系统属性、应用程序属性和正文。
+事件源自边缘设备，并可在边缘或云中使用。 IoT Edge 上的实时视频分析所生成的事件符合 Azure IoT 中心建立的[流式消息传递模式](../../iot-hub/iot-hub-devguide-messages-construct.md)，其中包含系统属性、应用程序属性和正文。
 
-### <a name="summary"></a>总结
+### <a name="summary"></a>摘要
 
 通过 IoT 中心观察到的每个事件都将具有一组共同的属性，如下所述。
 
-|Property   |属性类型| 数据类型   |说明|
+|properties   |属性类型| 数据类型   |说明|
 |---|---|---|---|
-|message-id |system |guid|  唯一的事件 ID。|
-|主题| applicationProperty |字符串|    媒体服务帐户的 Azure 资源管理器路径。|
-|subject|   applicationProperty |字符串|    发出事件的实体的子路径。|
-|EventTime| applicationProperty|    字符串| 事件的生成时间。|
-|eventType| applicationProperty |字符串|    事件类型标识符（见下文）。|
+|message-id |system |GUID|  唯一的事件 ID。|
+|主题| applicationProperty |string|    媒体服务帐户的 Azure 资源管理器路径。|
+|subject|   applicationProperty |string|    发出事件的实体的子路径。|
+|EventTime| applicationProperty|    string| 事件的生成时间。|
+|eventType| applicationProperty |string|    事件类型标识符（见下文）。|
 |body|body  |object|    特定事件数据。|
-|dataVersion    |applicationProperty|   字符串  |{主}。微不足道|
+|dataVersion    |applicationProperty|   string  |{主}。微不足道|
 
-### <a name="properties"></a>属性
+### <a name="properties"></a>“属性”
 
 #### <a name="message-id"></a>message-id
 
@@ -179,15 +180,15 @@ Subject 属性允许将一般事件映射到其生成模块。 例如，如果 R
 
 #### <a name="event-classes"></a>事件类
 
-|类名|描述|
+|类名|说明|
 |---|---|
-|Analytics  |作为内容分析的一部分生成的事件。|
+|分析  |作为内容分析的一部分生成的事件。|
 |诊断    |有助于诊断问题和性能的事件。|
 |可运行    |作为资源操作的一部分生成的事件。|
 
 事件类型特定于每个事件类。
 
-示例：
+示例:
 
 * Microsoft. node.js .。。
 * "Authorizationerror)"。
@@ -197,9 +198,9 @@ Subject 属性允许将一般事件映射到其生成模块。 例如，如果 R
 
 事件时间在 ISO8601 字符串和事件发生的时间中进行了描述。
 
-## <a name="logging"></a>Logging
+## <a name="logging"></a>日志记录
 
-与其他 IoT Edge 模块一样，你还可以在边缘设备上[检查容器日志](https://docs.microsoft.com/azure/iot-edge/troubleshoot#check-container-logs-for-issues)。 写入日志的信息可由[以下模块](module-twin-configuration-schema.md)克隆属性控制：
+与其他 IoT Edge 模块一样，你还可以在边缘设备上[检查容器日志](../../iot-edge/troubleshoot.md#check-container-logs-for-issues)。 写入日志的信息可由[以下模块](module-twin-configuration-schema.md)克隆属性控制：
 
 * logLevel
 
@@ -221,7 +222,7 @@ Subject 属性允许将一般事件映射到其生成模块。 例如，如果 R
 
 在某些情况下，可能需要生成比上述步骤更详细的日志，以帮助 Azure 支持人员解决问题。 完成此操作需要执行两个步骤。
 
-首先，通过 createOptions 将[模块存储链接到设备存储](https://docs.microsoft.com/azure/iot-edge/how-to-access-host-storage-from-module#link-module-storage-to-device-storage)。 如果你从快速入门中检查[部署清单模板](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp/blob/master/src/edge/deployment.template.json)，你将看到：
+首先，通过 createOptions 将[模块存储链接到设备存储](../../iot-edge/how-to-access-host-storage-from-module.md#link-module-storage-to-device-storage)。 如果你从快速入门中检查[部署清单模板](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp/blob/master/src/edge/deployment.template.json)，你将看到：
 
 ```
 "createOptions": {
@@ -238,7 +239,7 @@ Subject 属性允许将一般事件映射到其生成模块。 例如，如果 R
 
 然后，该模块将以二进制格式将调试日志写入（设备）存储路径/var/local/mediaservices/debuglogs/，可与 Azure 支持人员共享。
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 [常见问题解答](faq.md#monitoring-and-metrics)
 

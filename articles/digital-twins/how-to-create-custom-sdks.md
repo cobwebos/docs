@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 895e33a111fe5bb881d198ee4995b9534ca3d528
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 2e2a7f09ac6ff3be119a07ed0a2162525801ceef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135876"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061853"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>使用 AutoRest 创建 Azure 数字孪生的自定义 Sdk
 
-目前，用于与 Azure 数字孪生 Api 交互的已发布数据平面 SDK 仅适用于 .NET （c #）。 你可以阅读有关 .NET SDK 和 Api 的一般信息，请参阅[操作方法：使用 Azure 数字孪生 api 和 sdk](how-to-use-apis-sdks.md)。 如果你使用的是另一种语言，本文将演示如何使用 AutoRest 根据你选择的语言生成自己的 SDK。
+目前，用于与 Azure 数字孪生 Api 交互的已发布数据平面 SDK 仅适用于 .NET （c #）。 你可以阅读有关 .NET SDK 和 Api 的一般信息，请参阅[*操作方法：使用 Azure 数字孪生 api 和 sdk*](how-to-use-apis-sdks.md)。 如果你使用的是另一种语言，本文将演示如何使用 AutoRest 根据你选择的语言生成自己的 SDK。
 
 ## <a name="set-up-your-machine"></a>设置计算机
 
@@ -37,19 +37,19 @@ npm install -g autorest@2.0.4413
 若要在 Azure 数字孪生 Swagger 文件中运行 AutoRest，请执行以下步骤：
 1. 将 Azure 数字孪生 Swagger 文件及其随附的示例文件夹复制到工作目录。
 2. 使用命令提示符窗口切换到该工作目录。
-3. 在以下命令中运行 AutoRest。 将 `<language>` 占位符替换为你选择的语言： `--python` 、 `--java` 、 `--go` 等。（你可以在[AutoRest 自述文件](https://github.com/Azure/autorest)中找到完整的选项列表。）
+3. 在以下命令中运行 AutoRest。 将 `<language>` 占位符替换为你选择的语言： `--python` 、 `--java` 、 `--go` 等。 （可在[AUTOREST 自述文件](https://github.com/Azure/autorest)中找到完整的选项列表。）
 
 ```cmd/sh
 autorest --input-file=adtApiSwagger.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
 ```
 
-因此，你将在工作目录中看到一个名为*ADTApi*的新文件夹。 生成的 SDK 文件将具有命名空间*ADTApi*，该命名空间将继续在本文的其余使用示例中使用。
+因此，你将在工作目录中看到一个名为*ADTApi*的新文件夹。 生成的 SDK 文件将具有命名空间*ADTApi*。 您将继续使用该命名空间，这篇文章中的其他用法示例。
 
 AutoRest 支持多种语言代码生成器。
 
 ## <a name="add-the-sdk-to-a-visual-studio-project"></a>将 SDK 添加到 Visual Studio 项目
 
-可以将 AutoRest 生成的文件直接包括到 .NET 解决方案中。 不过，由于你可能需要在多个单独的项目（客户端应用、Azure Functions 应用等）中使用 Azure 数字孪生 SDK，因此从生成的文件生成一个单独的项目（.NET 类库）可能会很有用。 然后，可以将此类库项目作为项目引用包含到多个解决方案中。
+可以将 AutoRest 生成的文件直接包括到 .NET 解决方案中。 不过，您可能需要在多个不同的项目（客户端应用程序、Azure Functions 的应用程序等）中包括 Azure 数字孪生 SDK。 出于此原因，从生成的文件生成一个单独的项目（.NET 类库）可能会很有用。 然后，可以将此类库项目作为项目引用包含到多个解决方案中。
 
 本部分提供有关如何将 SDK 构建为类库的说明，它是其自己的项目，可以包含在其他项目中。 这些步骤依赖于**Visual Studio** （可从[此处](https://visualstudio.microsoft.com/downloads/)安装最新版本）。
 
@@ -73,7 +73,7 @@ AutoRest 支持多种语言代码生成器。
 
 1. 在面板中，确保选中 "*浏览*" 选项卡
 2. 搜索*Microsoft. Rest*
-3. 选择*ClientRuntime*和*ClientRuntime*包，并将其添加到解决方案
+3. 选择 `ClientRuntime` 和 `ClientRuntime.Azure` 包，并将其添加到解决方案
 
 你现在可以生成项目，并将其作为项目引用包含在你编写的任何 Azure 数字孪生应用程序中。
 
@@ -87,7 +87,7 @@ AutoRest 支持多种语言代码生成器。
 
 ### <a name="typed-and-untyped-data"></a>类型化和非类型化数据
 
-REST API 调用通常返回强类型对象。 不过，由于 Azure 数字孪生允许用户定义孪生的自定义类型，因此无法为许多 Azure 数字孪生调用预定义静态返回数据。 相反，Api 将返回强类型的包装器类型（如果适用），并且自定义类型的 "输入数据类型" 是在 Json.NET 对象中（在 API 签名中出现数据类型 "对象" 时使用）。 您可以在代码中适当地强制转换这些对象。
+REST API 调用通常返回强类型对象。 不过，由于 Azure 数字孪生允许用户定义孪生的自定义类型，因此无法为许多 Azure 数字孪生调用预定义静态返回数据。 相反，Api 将返回强类型化包装器类型（如果适用），并且自定义类型的 "输入数据类型" 是在 Json.NET 对象中（在 API 签名中出现数据类型 "对象" 的情况下使用）。 您可以在代码中适当地强制转换这些对象。
 
 ### <a name="error-handling"></a>错误处理。
 
@@ -115,7 +115,7 @@ AutoRest 为 SDK 生成两种类型的分页模式：
 
 在非查询分页模式下，每次调用都有两个版本：
 * 用于初始调用的版本（例如 `DigitalTwins.ListEdges()` ）
-* 用于获取后续页面的版本，带有后缀 "下一步" （如 `DigitalTwins.ListEdgesNext()` ）
+* 用于获取以下页面的版本。 这些调用的后缀为 "Next" （如 `DigitalTwins.ListEdgesNext()` ）
 
 以下代码片段演示了如何从 Azure 数字孪生检索传出关系的分页列表：
 ```csharp
@@ -188,4 +188,4 @@ try
 ## <a name="next-steps"></a>后续步骤
 
 逐步完成创建可使用 SDK 的客户端应用的步骤：
-* [教程：为客户端应用编写代码](tutorial-code.md)
+* [*教程：为客户端应用编写代码*](tutorial-code.md)

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 7ced455e8124abed75dc7b2bbf7f92eb13613347
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1eb430f94ef545fa74ed225c427a121a47f7cf8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556576"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055790"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>使用 Java 和 IntelliJ 创建第一个 Azure 函数
 
@@ -44,7 +44,7 @@ ms.locfileid: "85556576"
 2. 若要登录到你的 Azure 帐户，请打开边栏中的“Azure 资源管理器”，然后单击顶部栏中的“Azure 登录”图标（或者在 IDEA 菜单中选择“工具”>“Azure”>“Azure 登录”）。  
     ![“IntelliJ Azure 登录”命令][intellij-azure-login]
 
-3. 在“Azure 登录”窗口中选择“设备登录”，然后单击“登录”（[其他登录选项](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/sign-in-instructions)）。  
+3. 在“Azure 登录”窗口中选择“设备登录”，然后单击“登录”（[其他登录选项](/azure/developer/java/toolkit-for-intellij/sign-in-instructions)）。  
 
    ![“Azure 登录”窗口，其中已选择“设备登录”][intellij-azure-popup]
 
@@ -156,7 +156,7 @@ ms.locfileid: "85556576"
 我们已使用 HTTP 触发的函数创建 Java 函数项目，在本地计算机上运行该项目，并将其部署到 Azure。 现在，通过以下方式扩展函数
 
 > [!div class="nextstepaction"]
-> [添加 Azure 存储队列输出绑定](/azure/azure-functions/functions-add-output-binding-storage-queue-java)
+> [添加 Azure 存储队列输出绑定](./functions-add-output-binding-storage-queue-java.md)
 
 
 [marketplace]:./media/functions-create-first-java-intellij/marketplace.png

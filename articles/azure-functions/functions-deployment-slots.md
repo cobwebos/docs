@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: f8abc670535f240d436e90c34f7245a3d176f517
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f84dc17c6c074fc4dbda8a13fad3586a397fdf10
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242774"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055422"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions 部署槽
 
@@ -38,7 +38,7 @@ Azure Functions 部署槽使函数应用能够运行不同的实例（称作“�
 
 1. **应用设置：** 目标槽的设置将应用到源槽的所有实例。 例如，生产设置将应用到过渡实例。 应用的设置包括以下类别：
     - [特定于槽的](#manage-settings)应用设置和连接字符串（如果适用）
-    - 如果启用) ，则[持续部署](../app-service/deploy-continuous-deployment.md)设置 (
+    - [持续部署](../app-service/deploy-continuous-deployment.md)设置（如果已启用）
     - [应用服务身份验证](../app-service/overview-authentication-authorization.md)设置（如果已启用）
 
 1. **等待重启和可用性：** 交换操作会等待源槽中的每个实例完成其重启并可用于请求。 如果有任何实例无法重启，交换操作将会还原对源槽所做的所有更改，并停止操作。
@@ -96,7 +96,7 @@ Azure Functions 部署槽使函数应用能够运行不同的实例（称作“�
 
 ## <a name="add-a-slot"></a>添加槽
 
-可以通过 [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) 或门户添加槽。 以下步骤演示如何在门户中创建新槽：
+可以通过 [CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) 或门户添加槽。 以下步骤演示如何在门户中创建新槽：
 
 1. 导航到函数应用。
 
@@ -110,7 +110,7 @@ Azure Functions 部署槽使函数应用能够运行不同的实例（称作“�
 
 ## <a name="swap-slots"></a>交换槽
 
-可以通过 [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap) 或门户交换槽。 以下步骤演示如何在门户中交换槽：
+可以通过 [CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap) 或门户交换槽。 以下步骤演示如何在门户中交换槽：
 
 1. 导航到函数应用。
 1. 选择“部署槽”****，然后选择“交换”****。
@@ -129,7 +129,7 @@ Azure Functions 部署槽使函数应用能够运行不同的实例（称作“�
 
 ## <a name="remove-a-slot"></a>删除槽
 
-可以通过 [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete) 或门户删除槽。 以下步骤演示如何在门户中删除槽：
+可以通过 [CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete) 或门户删除槽。 以下步骤演示如何在门户中删除槽：
 
 1. 在函数应用中导航到“部署槽”****，然后选择槽名称。
 
@@ -149,13 +149,13 @@ Azure Functions 部署槽使函数应用能够运行不同的实例（称作“�
 
 ## <a name="automate-slot-management"></a>自动槽管理
 
-使用 [Azure CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest) 可以针对槽自动执行以下操作：
+使用 [Azure CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest) 可以针对槽自动执行以下操作：
 
-- [create](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
-- [delete](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
-- [list](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
-- [swap](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
-- [auto-swap](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
+- [create](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
+- [delete](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
+- [list](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
+- [swap](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
+- [auto-swap](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
 
 ## <a name="change-app-service-plan"></a>更改应用服务计划
 

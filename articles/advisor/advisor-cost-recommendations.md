@@ -3,16 +3,16 @@ title: 使用 Azure 顾问降低服务成本
 description: 使用 Azure 顾问优化 Azure 部署的成本。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: ad8340595b10ce9c729c9c89f0099434c15a9ff2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6fa57726ee37d78438b4e07d329f1af00f157d7e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078555"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057740"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>使用 Azure 顾问降低服务成本
 
-Azure 顾问通过识别空闲和未充分利用的资源，帮助优化和减少总体 Azure 支出。 可在顾问仪表板的“成本”  选项卡获取成本建议。
+Azure 顾问通过识别空闲和未充分利用的资源，帮助优化和减少总体 Azure 支出。 可在顾问仪表板的“成本”选项卡获取成本建议。
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>通过调整或关闭未充分利用的实例来优化虚拟机花费 
 
@@ -59,13 +59,13 @@ Azure 顾问通过识别空闲和未充分利用的资源，帮助优化和减�
 ### <a name="azure-cosmos-db-reserved-capacity"></a>Azure Cosmos DB 保留的容量
 顾问会在过去30天内分析 Azure Cosmos DB 使用模式，并建议预留的容量购买以优化成本。 通过使用预留容量，你可以预购买 Azure Cosmos DB 小时的使用情况，并通过即用即付成本保存。 预留容量是一项计费权益，并自动应用于新的和现有的部署。 顾问通过使用3年预订定价并推断过去30天内观测到的使用模式，来计算各个订阅的节省估计。 共享范围的建议适用于预留容量购买，并可提高节省费用。
 
-### <a name="sql-paas-reserved-capacity"></a>SQL PaaS 保留容量
+### <a name="sql-paas-reserved-capacity"></a>SQL PaaS 预留容量
 顾问在过去30天内分析 SQL PaaS 弹性数据库池和 SQL 托管实例使用模式。 然后，它建议保留的容量购买，以优化成本。 通过使用预留容量，你可以预购买 SQL DB 每小时使用情况并保存你的 SQL 计算成本。 你的 SQL 许可证将单独收费，且不会按预订折扣。 预留容量是一项计费权益，并自动应用于新的和现有的部署。 顾问通过使用3年预订定价并推断过去30天内观测到的使用模式，来计算各个订阅的节省估计。 共享范围的建议适用于预留容量购买，并可提高节省费用。
 
 ### <a name="app-service-stamp-fee-reserved-capacity"></a>应用服务戳记保留容量
 顾问会在过去30天内分析 Azure App Service 隔离环境的戳记费使用模式，并建议预留容量购买，以优化成本。 通过使用预留容量，你可以为隔离的环境戳记收费预先购买每小时的使用量，并通过即用即付成本节省费用。 请注意，保留容量仅适用于邮票费，不适用于应用服务实例。 预留容量是一项计费权益，并自动应用于新的和现有的部署。 顾问会根据过去30天内的使用情况模式，使用3年保留价格计算各个订阅的节省估计值。
 
-### <a name="blob-storage-reserved-capacity"></a>Blob 存储保留容量
+### <a name="blob-storage-reserved-capacity"></a>Blob 存储预留容量
 顾问会分析你的 Azure Blob 存储，并 Azure Data Lake 过去30天内的存储使用情况。 然后计算用于优化成本的保留容量购买。 利用预留容量，你可以预购买每小时的使用情况，并按你当前按需的成本保存。 Blob 存储保留容量仅适用于 Azure Blob 常规用途 v2 和 Azure Data Lake Storage Gen2 帐户上存储的数据。 预留容量是一项计费权益，并自动应用于新的和现有的部署。 顾问使用3年保留价格和过去30天内观察到的使用模式来计算各个订阅的节省估计值。 共享范围的建议适用于预留容量购买，并可提高节省费用。
 
 ### <a name="mariadb-mysql-and-postgresql-reserved-capacity"></a>MariaDB、MySQL 和 PostgreSQL 保留容量
@@ -89,7 +89,7 @@ Azure 顾问通过识别空闲和未充分利用的资源，帮助优化和减�
 通过使用有关 Azure Blob 存储对象计数、总大小和事务的智能，顾问将检测是否应启用生命周期管理，以便在一个或多个存储帐户上对数据进行分层。 它会提示创建生命周期管理规则，以自动将数据分层到超酷或存档存储，以优化存储成本，同时保留 Azure Blob 存储中的数据以实现应用程序兼容性。
 
 ## <a name="create-an-ephemeral-os-disk-recommendation"></a>创建临时 OS 磁盘的建议
-[临时 OS 磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks)允许执行以下操作： 
+[临时 OS 磁盘](../virtual-machines/windows/ephemeral-os-disks.md)允许执行以下操作： 
 - 节省操作系统磁盘的存储成本。 
 - 获取更低的操作系统磁盘读/写延迟。 
 - 通过将 OS （和临时磁盘）重置为其原始状态，获得更快的 VM 重置操作。
@@ -101,9 +101,9 @@ Azure 顾问通过识别空闲和未充分利用的资源，帮助优化和减�
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 从任意页面搜索并选择 "[**顾问**](https://aka.ms/azureadvisordashboard)"。
+1. 在任意页面中搜索并选择[顾问](https://aka.ms/azureadvisordashboard)。
 
-1. 在**顾问**仪表板上，选择 "**成本**" 选项卡。
+1. 在顾问仪表板中，选择“成本”选项卡 。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -112,6 +112,5 @@ Azure 顾问通过识别空闲和未充分利用的资源，帮助优化和减�
 * [顾问入门](advisor-get-started.md)
 * [顾问性能建议](advisor-performance-recommendations.md)
 * [顾问高可用性建议](advisor-high-availability-recommendations.md)
-* [顾问安全建议](advisor-security-recommendations.md)
-* [顾问操作优秀建议](advisor-operational-excellence-recommendations.md)
-
+* [顾问安全性建议](advisor-security-recommendations.md)
+* [顾问卓越运营建议](advisor-operational-excellence-recommendations.md)

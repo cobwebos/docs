@@ -2,13 +2,13 @@
 title: 与知识库协作-QnA Maker
 description: 通过 QnA Maker，多名人员可针对知识库展开协作。 此功能通过 Azure 基于角色的访问控制提供。
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.openlocfilehash: 1a2908b4b65017f427682627ce5d83b186956a58
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 07/13/2020
+ms.openlocfilehash: 4c550a36dd045873df4bc4a382e1c884466f95ad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650782"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054055"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>与作者和编辑器协作
 
@@ -30,15 +30,15 @@ QnA Maker 允许多人在同一 QnA Maker 资源中协作处理所有知识库�
 
 1. 登录到[Azure](https://portal.azure.com/)门户，并中转到 QnA Maker 资源。
 
-    ![QnA Maker 资源列表](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.PNG)
+    ![QnA Maker 资源列表](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.png)
 
 1. 转到“访问控制 (IAM)”选项卡****。
 
-    ![QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.PNG)
+    ![QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.png)
 
-1. 选择 **添加** 。
+1. 选择“添加”  。
 
-    ![QnA Maker IAM 添加](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.PNG)
+    ![QnA Maker IAM 添加](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.png)
 
 1. 从以下列表中选择一个角色：
 
@@ -46,17 +46,23 @@ QnA Maker 允许多人在同一 QnA Maker 资源中协作处理所有知识库�
     |--|
     |所有者|
     |参与者|
-    |QnA Maker 读取器|
-    |QnA Maker 编辑器|
+    |认知服务 QnA Maker 读者|
+    |认知服务 QnA Maker 编辑器|
     |认知服务用户|
 
-    ![QnA Maker IAM 添加角色](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-role.PNG)
+    :::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-add-role-iam.png" alt-text="QnA Maker IAM 添加角色。":::
 
 1. 输入用户的电子邮件地址，并按 "**保存**"。
 
-    ![QnA Maker IAM 添加电子邮件](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.PNG)
+    ![QnA Maker IAM 添加电子邮件](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.png)
+
+### <a name="view-qna-maker-knowledge-bases"></a>查看 QnA Maker 知识库
 
 当你将 QnA Maker 服务的用户共享到[QnA Maker 门户](https://qnamaker.ai)时，他们可以根据其角色查看该服务中的所有知识库。
+
+当他们选择某一知识库时，该知识库中的 QnA Maker 资源上的当前角色就可见了。
+
+:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="在编辑模式下的知识库中的屏幕截图，其角色名称位于网页左上角的 "知识库名称" 旁边的括号中。":::
 
 ## <a name="next-steps"></a>后续步骤
 

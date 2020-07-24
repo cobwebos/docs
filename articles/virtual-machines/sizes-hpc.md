@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 2d52287d1c343ada58ed4f7e5e1d3e85a4e7162e
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 041300efd9d756f2ef8145adb23d745b2345c7eb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850437"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058770"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>高性能计算 VM 大小
 
@@ -33,7 +33,7 @@ Azure H 系列虚拟机（Vm）旨在为各种真实的 HPC 工作负荷提供�
 
 ## <a name="rdma-capable-instances"></a>支持 RDMA 的实例
 
-大多数 HPC VM 大小（HBv2、HB-ACCT-WC、HC、H16r、H16mr、A8 和 A9）都具有用于远程直接内存访问（RDMA）连接的网络接口。 选择了用 "r" （如 NC24rs 配置（NC24rs_v3、NC24rs_v2 和 NC24r）指定的[N 系列](https://docs.microsoft.com/azure/virtual-machines/nc-series)大小也是支持 RDMA 功能的。 此接口是对其他 VM 大小中可用的标准 Azure 网络接口的补充。
+大多数 HPC VM 大小（HBv2、HB-ACCT-WC、HC、H16r、H16mr、A8 和 A9）都具有用于远程直接内存访问（RDMA）连接的网络接口。 选择了用 "r" （如 NC24rs 配置（NC24rs_v3、NC24rs_v2 和 NC24r）指定的[N 系列](./nc-series.md)大小也是支持 RDMA 功能的。 此接口是对其他 VM 大小中可用的标准 Azure 网络接口的补充。
 
 此接口允许支持 RDMA 的实例通过未使用的（IB）网络进行通信，以 HBv2、HB-ACCT-WC、HC、FDR 速率为 H16r、H16mr 和支持 RDMA 的 N 系列虚拟机进行通信，并为 A8 和 A9 Vm 提供 QDR 速率。 这些 RDMA 功能可以提高某些消息传递接口 (MPI) 应用程序的可伸缩性和性能。 有关速度的详细信息，请参阅本页上的表中的详细信息。
 
@@ -42,14 +42,14 @@ Azure H 系列虚拟机（Vm）旨在为各种真实的 HPC 工作负荷提供�
 > 支持 RDMA 的所有 Vm 都支持 RDMA over IB。
 > 仅支持 SR-IOV 的 Vm 上的 IP over IB。
 
-- **操作系统**-适用于 HPC vm 的 Linux 非常受支持;通常使用发行版，例如 CentOS、RHEL、Ubuntu 和 SUSE。 对于 Windows 支持，所有 HPC 系列 Vm 都支持 Windows Server 2016 和更高版本。 Windows Server 2012 R2、非 SR-IOV 启用的 Vm （H16r、H16mr、A8 和 A9）上也支持 windows Server 2012。 请注意，[在 HBv2 和具有超过64（虚拟或物理）内核的其他 vm 上不支持 Windows Server 2012 R2](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)。
+- **操作系统**-适用于 HPC vm 的 Linux 非常受支持;通常使用发行版，例如 CentOS、RHEL、Ubuntu 和 SUSE。 对于 Windows 支持，所有 HPC 系列 Vm 都支持 Windows Server 2016 和更高版本。 Windows Server 2012 R2、非 SR-IOV 启用的 Vm （H16r、H16mr、A8 和 A9）上也支持 windows Server 2012。 请注意，[在 HBv2 和具有超过64（虚拟或物理）内核的其他 vm 上不支持 Windows Server 2012 R2](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)。
 
 - **MPI** -Azure （HBV2，HB-ACCT-WC，HC，NCv3，NDv2）上启用了 SR-IOV 的 VM 大小，几乎可以使用任何一种与 Mellanox OFED 结合使用的 MPI。
 在非 SR-IOV 启用 Vm 上，支持的 MPI 实现使用 Microsoft Network Direct （ND）接口在 Vm 之间进行通信。 因此，只支持 Microsoft MPI （MS-CHAP） 2012 R2 或更高版本和 Intel MPI 1.x 版本。 Intel MPI 运行时库的更高版本（2017，2018）不一定与 Azure RDMA 驱动程序兼容。
 
 - **InfiniBandDriver<Linux |Windows> VM 扩展**-在支持 RDMA 的 vm 上，添加 InfiniBandDriver<Linux |用于启用无限的 Windows> 扩展。 在 Linux 上，InfiniBandDriverLinux VM 扩展将为 RDMA 连接性安装 Mellanox OFED 驱动程序（位于 SR-IOV Vm 上）。 在 Windows 上，InfiniBandDriverWindows VM 扩展为 RDMA 连接性安装 Windows 网络直接驱动程序（在非 SR-IOV Vm 上）或 Mellanox OFED 驱动程序（在 SR-IOV Vm 上）。
 在某些 A8 和 A9 实例的部署中，会自动添加 HpcVmDrivers 扩展。 请注意，不推荐使用 HpcVmDrivers VM 扩展;它不会更新。
-若要将 VM 扩展添加到 VM，可以使用 [Azure PowerShell](/powershell/azure/overview) cmdlet。 
+若要将 VM 扩展添加到 VM，可以使用 [Azure PowerShell](/powershell/azure/) cmdlet。 
 
   以下命令在 "*美国西部*" 区域中名为 " *myResourceGroup* " 的资源组中的名为 " *MYVM* " 的现有支持 RDMA 的 VM 上安装最新版本 1.0 InfiniBandDriverWindows 扩展：
 
@@ -76,7 +76,7 @@ Azure H 系列虚拟机（Vm）旨在为各种真实的 HPC 工作负荷提供�
   Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -InstanceId "*"
   ```
 
-  有关详细信息，请参阅[虚拟机扩展和功能](./extensions/overview.md)。 还可使用[经典部署模型](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic)中部署的 VM 扩展。
+  有关详细信息，请参阅[虚拟机扩展和功能](./extensions/overview.md)。 还可使用[经典部署模型](/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic)中部署的 VM 扩展。
 
 - **RDMA 网络地址空间** - Azure 中的 RDMA 网络保留地址空间 172.16.0.0/16。 若要在 Azure 虚拟网络中部署的实例上运行 MPI 应用程序，请确保虚拟网络地址空间不与 RDMA 网络重叠。
 
@@ -86,15 +86,15 @@ Azure 提供了多个选项，用于创建可使用 RDMA 网络通信的 Windows
 
 - **虚拟机**-在同一规模集或可用性集中（使用 Azure 资源管理器部署模型时）部署支持 RDMA 的 HPC vm。 如果使用经典部署模型，请在同一云服务中部署 VM。
 
-- **虚拟机规模集**-在虚拟机规模集（VMSS）中，确保将部署限制为单个放置组，以便在 VMSS 内进行不受限制的通信。 例如，在资源管理器模板中，将 `singlePlacementGroup` 属性设置为 `true`。 请注意，默认情况下，可以使用属性设置的最大 VMSS 大小限制 `singlePlacementGroup` `true` 为 100 vm。 如果你的 HPC 作业规模需求高于单个 VMSS 租户中的 100 Vm，则你可以请求增加，免费[打开联机客户支持请求](../azure-supportability/how-to-create-azure-support-request.md)。 单个 VMSS 中的 Vm 数目限制可增加到300。 请注意，使用可用性集部署 Vm 时，最大限制为每个可用性集200个 Vm。
+- **虚拟机规模集**-在虚拟机规模集（VMSS）中，确保将部署限制为单个放置组，以便在 VMSS 内进行不受限制的通信。 例如，在资源管理器模板中，将 `singlePlacementGroup` 属性设置为 `true`。 请注意，默认情况下，可以使用属性设置的最大 VMSS 大小限制 `singlePlacementGroup` `true` 为 100 vm。 如果你的 HPC 作业规模需求高于单个 VMSS 租户中的 100 Vm，则你可以请求增加，免费[打开联机客户支持请求](../azure-portal/supportability/how-to-create-azure-support-request.md)。 单个 VMSS 中的 Vm 数目限制可增加到300。 请注意，使用可用性集部署 Vm 时，最大限制为每个可用性集200个 Vm。
 
 - **虚拟机**之间的 MPI-如果虚拟机（vm）之间需要 RDMA （如使用 MPI 通信），请确保 vm 处于相同的虚拟机规模集或可用性集中。
 
 - **Azure CycleCloud** -在[azure CYCLECLOUD](/azure/cyclecloud/)中创建 HPC 群集来运行 MPI 作业。
 
-- **Azure Batch** -创建[Azure Batch](/azure/batch/)池来运行 MPI 工作负荷。 若要在 Azure Batch 中运行 MPI 应用程序时使用计算密集型实例，请参阅[在 Azure Batch 中使用多实例任务来运行消息传递接口 (MPI) 应用程序](../batch/batch-mpi.md)。
+- **Azure Batch** -创建[Azure Batch](../batch/index.yml)池来运行 MPI 工作负荷。 若要在 Azure Batch 中运行 MPI 应用程序时使用计算密集型实例，请参阅[在 Azure Batch 中使用多实例任务来运行消息传递接口 (MPI) 应用程序](../batch/batch-mpi.md)。
 
-- **MICROSOFT HPC Pack**  - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview)包括用于 MS MPI 的运行时环境，该环境在支持 Rdma 的 Linux vm 上部署时使用 Azure RDMA 网络。 有关示例部署，请参阅[使用 HPC Pack 设置 LINUX RDMA 群集以运行 MPI 应用程序](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam)。
+- **MICROSOFT HPC Pack**  - [HPC Pack](/powershell/high-performance-computing/overview)包括用于 MS MPI 的运行时环境，该环境在支持 Rdma 的 Linux vm 上部署时使用 Azure RDMA 网络。 有关示例部署，请参阅[使用 HPC Pack 设置 LINUX RDMA 群集以运行 MPI 应用程序](/powershell/high-performance-computing/hpcpack-linux-openfoam)。
 
 ## <a name="deployment-considerations"></a>部署注意事项
 
@@ -102,7 +102,7 @@ Azure 提供了多个选项，用于创建可使用 RDMA 网络通信的 Windows
 
 - **定价和可用性** - 只在标准定价层提供 VM 大小。 有关各 Azure 区域推出的产品，请查看 [Products available by region](https://azure.microsoft.com/global-infrastructure/services/)（按区域提供的产品）。
 
-- **核心配额** - 可能需要在 Azure 订阅中在默认值的基础上增加核心配额。 订阅可能也会限制可在特定 VM 大小系列（包括 H 系列）中部署的核心数目。 若要请求提高配额，可免费[提出在线客户支持请求](../azure-supportability/how-to-create-azure-support-request.md)。 （默认限制可能会因订阅类别而异。）
+- **核心配额** - 可能需要在 Azure 订阅中在默认值的基础上增加核心配额。 订阅可能也会限制可在特定 VM 大小系列（包括 H 系列）中部署的核心数目。 若要请求增加配额，可免费 [建立联机客户支持请求](../azure-portal/supportability/how-to-create-azure-support-request.md) 。 （默认限制可能会因订阅类别而异。）
 
   > [!NOTE]
   > 如果有大规模容量需求，请联系 Azure 支持。 Azure 配额为信用额度，而不是容量保障。 不管配额是什么，都只根据所用的核心数计费。
@@ -123,6 +123,6 @@ Azure 提供了多个选项，用于创建可使用 RDMA 网络通信的 Windows
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解如何优化 Azure 的 HPC 应用程序以及[Hpc 工作负荷](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/overview)中的一些示例 
+- 详细了解如何优化 Azure 的 HPC 应用程序以及[Hpc 工作负荷](./workloads/hpc/overview.md)中的一些示例 
 
 - 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。

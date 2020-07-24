@@ -3,12 +3,12 @@ title: 还原 Azure VM 上的 SQL Server 数据库
 description: 本文介绍如何还原 Azure VM 上运行的、使用 Azure 备份服务备份的 SQL Server 数据库。
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 5d7fc52aaaca0bf99955919c954cc22ab0d9d3d8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2c3b81c4d0bc4c7548fec8ec131fea66684a7aa8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538397"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054571"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>还原 Azure VM 上的 SQL Server 数据库
 
@@ -127,7 +127,7 @@ Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所�
     >   - 执行 `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>`
     >   - 使用验证访问`dir \\<storageacct>.file.core.windows.net\<filesharename>`
     >- 将备份保管库中的文件作为路径进行还原 `\\<storageacct>.file.core.windows.net\<filesharename>`<BR>
-    可以通过下载 Psexec<https://docs.microsoft.com/sysinternals/downloads/psexec>
+    可以从[Sysinternals](/sysinternals/downloads/psexec)页下载 PsExec。
 
 1. 选择“确定”。
 

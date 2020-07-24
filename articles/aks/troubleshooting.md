@@ -4,12 +4,12 @@ description: 了解如何排查和解决在使用 Azure Kubernetes 服务 (AKS) 
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: f334f501335e9e384cfcc35b356e61ab66efe7a8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a65e5e2b507f45fe51a8f6406edae4d96affe227
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243675"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056516"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -31,36 +31,36 @@ ms.locfileid: "86243675"
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>在使用高级网络部署 AKS 群集时收到 insufficientSubnetSize 错误。 我该怎么办？
 
-此错误表示某个群集使用的子网在其 CIDR 中不再具有可用的 Ip，因此无法成功分配资源。 对于 Kubenet 群集，要求对于群集中的每个节点都有足够的 IP 空间。 对于 Azure CNI 群集，要求群集中的每个节点和盒的 IP 空间充足。
-详细了解[AZURE CNI 的设计，以便将 ip 分配给](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)pod。
+此错误表示用于群集的子网在其 CIDR 中不再具有用于成功分配资源的可用 IP。 对于 Kubenet 群集，需要为群集中的每个节点提供足够的 IP 空间。 对于 Azure CNI 群集，需要为群集中的每个节点和 Pod 提供足够的 IP 空间。
+阅读并详细了解如何[设计为 Pod 分配 IP 的 Azure CNI](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)。
 
 这些错误还会在[AKS 诊断](./concepts-diagnostics.md)中出现，这会主动地显示子网大小不足等问题。
 
-以下三个 (3) 情况会导致子网大小不足错误：
+以下三 (3) 种情况会导致子网大小不足的错误：
 
-1. AKS Scale 或 AKS Nodepool scale
-   1. 如果使用的是 Kubenet，则在 `number of free IPs in the subnet` **小于**时，会发生这种情况 `number of new nodes requested` 。
-   1. 如果使用 Azure CNI，则在小于时，会发生这种情况 `number of free IPs in the subnet` **less than** `number of nodes requested times (*) the node pool's --max-pod value` 。
+1. AKS 缩放或 AKS Nodepool 缩放
+   1. 如果使用的是 Kubenet，当 `number of free IPs in the subnet` 小于 `number of new nodes requested` 时就会发生这种情况。
+   1. 如果使用的是 Azure CNI，当 `number of free IPs in the subnet` 小于 `number of nodes requested times (*) the node pool's --max-pod value` 时就会发生这种情况。
 
-1. AKS Upgrade 或 AKS Nodepool upgrade
-   1. 如果使用的是 Kubenet，则在 `number of free IPs in the subnet` **小于**时，会发生这种情况 `number of buffer nodes needed to upgrade` 。
-   1. 如果使用 Azure CNI，则在小于时，会发生这种情况 `number of free IPs in the subnet` **less than** `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` 。
+1. AKS 升级或 AKS Nodepool 升级
+   1. 如果使用的是 Kubenet，当 `number of free IPs in the subnet` 小于 `number of buffer nodes needed to upgrade` 时就会发生这种情况。
+   1. 如果使用的是 Azure CNI，当 `number of free IPs in the subnet` 小于 `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` 时就会发生这种情况。
    
-   默认情况下，AKS 群集将最大冲击 (升级缓冲区) 一个 (1) 的值，但可以通过设置[节点池的最大浪涌值](upgrade-cluster.md#customize-node-surge-upgrade-preview)来自定义此升级行为，这将增加完成升级所需的可用 ip 的数目。
+   默认情况下，AKS 群集设置一（1）的 max 电涌（升级缓冲器）值，但可以通过设置[节点池的最大电涌值](upgrade-cluster.md#customize-node-surge-upgrade-preview)来自定义此升级行为，此值将增加完成升级所需的可用 ip 的数量。
 
-1. AKS create 或 AKS Nodepool add
-   1. 如果使用的是 Kubenet，则在 `number of free IPs in the subnet` **小于**时，会发生这种情况 `number of nodes requested for the node pool` 。
-   1. 如果使用 Azure CNI，则在小于时，会发生这种情况 `number of free IPs in the subnet` **less than** `number of nodes requested times (*) the node pool's --max-pod value` 。
+1. AKS 创建或 AKS Nodepool 添加
+   1. 如果使用的是 Kubenet，当 `number of free IPs in the subnet` 小于 `number of nodes requested for the node pool` 时就会发生这种情况。
+   1. 如果使用的是 Azure CNI，当 `number of free IPs in the subnet` 小于 `number of nodes requested times (*) the node pool's --max-pod value` 时就会发生这种情况。
 
-可以通过创建新的子网来执行以下缓解措施。 由于无法更新现有子网的 CIDR 范围，需要创建新的子网的权限才能进行缓解。
+通过创建新的子网，可以应用以下缓解措施。 由于无法更新现有子网的 CIDR 范围，因此需要获取创建新子网的权限才能应用缓解措施。
 
-1. 重建更大 CIDR 范围的新子网是否足以满足操作目标：
-   1. 使用新的所需非重叠范围创建新的子网。
+1. 使用足以实现操作目标的更大的 CIDR 范围来重建新子网：
+   1. 创建具有所需的无重叠新范围的新子网。
    1. 在新子网上创建新的 nodepool。
-   1. 排出旧子网中的旧 nodepool 的箱，以将其替换。
+   1. 从驻留在要替换的旧子网中的旧 nodepool 中清空 Pod。
    1. 删除旧的子网和旧的 nodepool。
 
-## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>我的 Pod 停滞在 CrashLoopBackOff 模式。 我该怎么办？
+## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>我的 Pod 停滞在 CrashLoopBackOff 模式。   应采取何种操作？
 
 可能有多种原因导致 Pod 停滞在该模式。 可能通过以下方式查看：
 
@@ -69,18 +69,22 @@ ms.locfileid: "86243675"
 
 有关如何对 Pod 的问题进行故障排除的详细信息，请参阅[调试应用程序](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods)。
 
-## <a name="im-receiving-tcp-timeouts-when-using-kubectl-or-other-third-party-tools-connecting-to-the-api-server"></a>`TCP timeouts`当使用 `kubectl` 或其他第三方工具连接到 API 服务器时接收
-AKS 有 HA 控制平面，可根据内核数垂直缩放，确保其服务级别目标 (Slo) 和服务级别协议 (Sla) 。 如果连接超时，请检查以下内容：
+## <a name="im-receiving-tcp-timeouts-when-using-kubectl-or-other-third-party-tools-connecting-to-the-api-server"></a>当我使用连接到 API 服务器的 `kubectl` 或其他第三方工具时，会收到 `TCP timeouts`
+AKS 具有 HA 控制平面，可以根据内核数进行垂直缩放，以确保维持其服务级别目标 (SLO) 和服务级别协议 (SLA)。 如果遇到连接超时，请检查以下内容：
 
-- **所有 API 命令的超时时间是否一致，或只是几次？** 如果只是少数是 `tunnelfront` pod 或 `aks-link` pod，负责节点 > 的控制平面通信，则可能不处于运行状态。 请确保托管此 pod 的节点不会过度使用或在压力下。 请考虑将它们移动到其自己的[ `system` 节点池](use-system-pools.md)。
-- **是否打开了[AKS 限制传出流量文档](limit-egress-traffic.md)中所述的所有所需端口、Fqdn 和 ip？** 否则，多个命令调用可能会失败。
-- **当前 IP 是否包含在[API Ip 授权范围内](api-server-authorized-ip-ranges.md)？** 如果你正在使用此功能，并且你的 IP 未包含在你的调用将被阻止的范围内。 
-- **你的客户端或应用程序是否泄漏了对 API 服务器的调用？** 请确保使用监视而不是频繁的 get 调用，并且第三方应用程序不会泄露此类调用。 例如，Istio 混音器中的 bug 会导致在每次读取机密时都会创建一个新的 API 服务器监视连接。 由于此行为是定期发生的，因此，手表连接会迅速累积，并最终导致 API 服务器无论缩放模式如何都处于过载状态。 https://github.com/istio/istio/issues/19481
-- **Helm 部署中是否有多个发布？** 这种情况可能会导致 tiller 在节点上使用过多的内存，以及大量的 `configmaps` ，这会导致 API 服务器上出现不必要的高峰。 请考虑 `--history-max` 配置 `helm init` ，并利用新的 Helm 3。 有关以下问题的详细信息： 
+- **是所有 API 命令一致超时还是只有少数几个超时？** 如果只是少数几个超时，那么负责节点与控制平面之间通信的 `tunnelfront` Pod 或 `aks-link` Pod 可能未运行。 确保托管此 Pod 的节点没有过度利用或压力过大。 考虑将它们移动到自己的 [`system` 节点池](use-system-pools.md)。
+- 是否已打开 [AKS 限制出口流量文档](limit-egress-traffic.md)中注明的所有所需端口、FQDN 和 IP？ 否则，多个命令调用可能会失败。
+- 当前的 IP 是否在 [API IP 授权范围](api-server-authorized-ip-ranges.md)内？ 如果正在使用此功能，而 IP 不在范围内，会导致调用被阻止。 
+- 是否有客户端或应用程序泄漏了对 API 服务器的调用？ 确保使用监视而不是频繁的 get 调用，以及第三方应用程序不会泄漏此类调用。 例如，每次在内部读取机密时，Istio mixer 中的一个 bug 会导致创建新的 API 服务器监视连接。 因为这种行为是定期发生的，所以监视连接会迅速累积，最终导致 API 服务器过载，且不管采用什么扩展模式都会如此。 https://github.com/istio/istio/issues/19481
+- Helm 部署中是否有多个版本？ 这种情况会导致 tiller 在节点上使用过多的内存，同时导致大量的 `configmaps`，这会在 API 服务器上造成不必要的峰值。 请考虑在 `helm init` 配置 `--history-max`，并利用新的 Helm 3。 有关以下问题的详细信息： 
     - https://github.com/helm/helm/issues/4821
     - https://github.com/helm/helm/issues/3500
     - https://github.com/helm/helm/issues/4543
+- **[节点之间的内部流量是否被阻止？](#im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout)**
 
+## <a name="im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout"></a>我正在接收 `TCP timeouts` ，如`dial tcp <Node_IP>:10250: i/o timeout`
+
+这些超时可能与被阻止节点之间的内部通信有关。 验证此流量是否未被阻止，如群集节点的子网上的[网络安全组](concepts-security.md#azure-network-security-groups)。
 
 ## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>我想尝试在现有群集上启用基于角色的访问控制 (RBAC)。 该如何操作？
 
@@ -90,7 +94,7 @@ AKS 有 HA 控制平面，可根据内核数垂直缩放，确保其服务级别
 
 出现警告的原因是群集启用了 RBAC，并且现在默认限制对仪表板的访问。 一般来说，此方法比较棒，因为仪表板默认公开给群集的所有用户可能会导致安全威胁。 如果仍想要启用仪表板，请遵循此[博客文章](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/)中的步骤进行操作。
 
-## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>无法使用 Kubectl 日志获取日志或无法连接到 API 服务器。 我收到“来自服务器的错误: 后端拨号错误: 拨打 tcp...”。 我该怎么办？
+## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>无法使用 Kubectl 日志获取日志或无法连接到 API 服务器。 我收到“来自服务器的错误：拨号后端时出错: 拨打 tcp...”。 我该怎么办？
 
 确保端口 22、9000 和 1194 已打开，以便连接到 API 服务器。 使用 `kubectl get pods --namespace kube-system` 命令检查 `tunnelfront` 或 `aks-link` Pod 是否正在 kube-system 命名空间中运行。 如果没有，请强制删除 Pod，它会重启。
 
@@ -102,12 +106,12 @@ AKS 有 HA 控制平面，可根据内核数垂直缩放，确保其服务级别
 
 以下故障排除帮助参考自 https://aka.ms/aks-cluster-failed
 
-当群集由于多种原因进入失败状态时，会发生此错误。 请按照以下步骤操作，解决群集处于失败状态的问题，然后再重试先前失败的操作：
+当群集由于多种原因进入失败状态时，会发生此错误。 请遵循以下步骤解决群集故障状态，然后重试先前失败的操作：
 
-1. 只有在群集不再处于 `failed` 状态时，`upgrade` 和 `scale` 操作才会成功。 常见的根本问题和解决方法如下：
-    * 在计算 (CRP) 配额不足的情况下进行缩放。 为解决此问题，请先将群集缩放回配额内的稳定目标状态。 然后，先按照[请求增加计算配额的步骤](../azure-portal/supportability/resource-manager-core-quotas-request.md)操作，再尝试再次纵向扩展到超出初始配额限制的状态。
-    * 在使用高级网络和子网（网络）资源不足的情况下缩放群集。 为解决此问题，请先将群集缩放回配额内的稳定目标状态。 然后，按照[请求增加资源配额的步骤](../azure-resource-manager/templates/error-resource-quota.md#solution)操作，再尝试再次纵向扩展到超出初始配额限制的状态。
-2. 解决了升级失败的根本原因后，群集就应该会处于成功状态了。 确认成功状态后，请重试原始操作。
+1. 除非群集摆脱 `failed` 状态，否则 `upgrade` 和 `scale` 操作不会成功。 常见的根本问题和解决方法包括：
+    * 使用**不足的计算 (CRP) 配额**进行缩放。 若要解决此问题，请先将群集缩放回到配额内的稳定目标状态。 遵循[这些步骤请求提高计算配额](../azure-portal/supportability/resource-manager-core-quotas-request.md)，然后尝试扩展到超出初始配额限制。
+    * 使用高级网络和**不足的子网（网络）资源**缩放群集。 若要解决此问题，请先将群集缩放回到配额内的稳定目标状态。 遵循[这些步骤请求提高资源配额](../azure-resource-manager/templates/error-resource-quota.md#solution)，然后尝试扩展到超出初始配额限制。
+2. 解决升级失败的根本原因后，群集应会进入成功状态。 确认成功状态后，请重试原始操作。
 
 ## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-upgraded-or-has-failed-upgrade"></a>在尝试升级或缩放时收到错误，指示群集正在升级或升级失败
 
@@ -118,7 +122,7 @@ AKS 有 HA 控制平面，可根据内核数垂直缩放，确保其服务级别
 为帮助诊断此问题，请运行 `az aks show -g myResourceGroup -n myAKSCluster -o table` 以检索群集的详细状态。 根据结果执行相应的操作：
 
 * 如果群集正在升级，请等待操作完成。 如果群集升级成功，请再次重试先前失败的操作。
-* 如果群集升级失败，请按照上一部分中所述的步骤操作。
+* 如果群集升级失败，请按前面部分所述的步骤操作。
 
 ## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>是否可以将我的群集移到不同的订阅，或将包含我的群集的订阅移动到新的租户？
 
@@ -141,9 +145,9 @@ AgentPool `<agentpoolname>` 已将自动缩放设置为启用状态，但它不�
  
 ## <a name="what-naming-restrictions-are-enforced-for-aks-resources-and-parameters"></a>对 AKS 资源和参数强制实施哪些命名限制？
 
-以下故障排除帮助参考自 aka.ms/aks-naming-rules
+*此故障排除帮助来自 aka.ms/aks-naming-rules*
 
-命名限制由 Azure 平台和 AKS 共同实现。 如果某个资源名称或参数违反了其中任一限制，则会返回错误，要求你提供其他输入。 将应用以下通用命名规则：
+Azure 平台和 AKS 都实施了命名限制。 如果资源名称或参数违反了这些限制之一，则会返回一个错误，要求你提供不同的输入。 将应用以下通用命名规则：
 
 * 群集名称必须为 1-63 个字符。 仅允许使用字母、数字、短划线和下划线字符。 第一个和最后一个字符必须是字母或数字。
 * AKS 节点/MC_ 资源组名称由资源组名称和资源名称组成。 自动生成的 `MC_resourceGroupName_resourceName_AzureRegion` 语法长度不能超过 80 个字符。 如果需要，请缩短资源组名称或 AKS 群集名称的长度。 也可以[自定义节点资源组名称](cluster-configuration.md#custom-resource-group-name)
@@ -184,7 +188,7 @@ AgentPool `<agentpoolname>` 已将自动缩放设置为启用状态，但它不�
 
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Azure 存储和 AKS 疑难解答
 
-### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-disk"></a>用于 Azure 磁盘的 Kubernetes 有哪些建议的稳定版本？ 
+### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-disk"></a>适用于 Azure 磁盘的 Kubernetes 的建议稳定版本是什么？ 
 
 | Kubernetes 版本 | 建议的版本 |
 |--|:--:|
@@ -211,18 +215,18 @@ Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.Wait
 1102-dynamic-pvc-6c526c51-4a18-11e8-ab5c-000d3af7b38e) lun:(4)
 ```
 
-此问题在以下版本的 Kubernetes 中已得到修复：
+此问题已在以下版本的 Kubernetes 中得到解决：
 
-| Kubernetes 版本 | 已修复问题的版本 |
+| Kubernetes 版本 | 已修复的版本 |
 |--|:--:|
 | 1.10 | 1.10.2 或更高版本 |
 | 1.11 | 1.11.0 或更高版本 |
 | 1.12 和更高版本 | 空值 |
 
 
-### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>在 Azure 磁盘的 mountOptions 中设置 uid 和 gid 时失败
+### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>在 Azure 磁盘的 mountOptions 中设置 uid 和 gid 失败
 
-Azure 磁盘默认使用 ext4 和 xfs 文件系统，无法在装载时设置 uid=x、gid=x 等 mountOptions。 例如，如果尝试设置 mountpoptions uid=999、gid=999，将看到如下错误：
+Azure 磁盘默认使用 ext4,xfs 文件系统，在装载时无法设置 uid=x,gid=x 之类的 mountOptions。 例如，如果尝试设置 mountpoptions uid=999、gid=999，将看到如下错误：
 
 ```console
 Warning  FailedMount             63s                  kubelet, aks-nodepool1-29460110-0  MountVolume.MountDevice failed for volume "pvc-d783d0e4-85a1-11e9-8a90-369885447933" : azureDisk - mountDevice:FormatAndMount failed with mount failed: exit status 32
@@ -235,7 +239,7 @@ mount: wrong fs type, bad option, bad superblock on /dev/sde,
 
 可以通过执行以下选项之一来缓解此问题：
 
-* 通过在 runAsUser 中设置 uid 和在 fsGroup 中设置 gid [为 Pod 配置安全上下文](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)。 例如，以下设置会将 Pod 运行设置为根，使其可供任何文件访问：
+* 通过在 runAsUser 中设置 uid 和在 fsGroup 中设置 gid [为 Pod 配置安全上下文](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)。 例如，以下设置将 pod 设置为作为根运行，使其可供任何文件访问：
 
 ```yaml
 apiVersion: v1
@@ -249,9 +253,9 @@ spec:
 ```
 
   >[!NOTE]
-  > 由于 gid 和 uid 在装载时默认为根或 0。 因此，如果 gid 或 uid 设置为非根（例如 1000），Kubernetes 将使用 `chown` 更改该磁盘下的所有目录和文件。 此操作可能非常耗时，并且可能会导致装载磁盘的速度非常缓慢。
+  > 因为 gid 和 uid 默认作为根或 0 装载。 如果 gid 或 uid 设置为非根（例如 1000），Kubernetes 将使用 `chown` 来更改该磁盘中的所有目录和文件。 此操作可能非常耗时，并可能导致磁盘装载速度变得很慢。
 
-* 在 initContainers 中使用 `chown` 设置 gid 和 uid。 例如：
+* 使用 initContainers 中的 `chown` 来设置 gid 和 uid。 例如：
 
 ```yaml
 initContainers:
@@ -265,11 +269,11 @@ initContainers:
 
 ### <a name="azure-disk-detach-failure-leading-to-potential-race-condition-issue-and-invalid-data-disk-list"></a>Azure 磁盘分离失败可能导致争用条件问题和数据磁盘列表无效
 
-如果 Azure 磁盘分离失败，它将重试最多六次，使用指数退避分离磁盘。 它还会在数据磁盘列表上保留一个节点级锁约 3 分钟。 如果在这段时间内手动更新磁盘列表，会导致节点级锁保留的磁盘列表过时，并导致节点不稳定。
+当 Azure 磁盘无法分离时，它会重试最多六次，以使用指数回退来分离磁盘。 它还会在数据磁盘列表上保留一个节点级锁约 3 分钟。 如果在这段时间内手动更新磁盘列表，会导致节点级锁保留的磁盘列表过时，并导致节点不稳定。
 
 此问题在以下版本的 Kubernetes 中已得到修复：
 
-| Kubernetes 版本 | 已修复问题的版本 |
+| Kubernetes 版本 | 已修复的版本 |
 |--|:--:|
 | 1.12 | 1.12.9 或更高版本 |
 | 1.13 | 1.13.6 或更高版本 |
@@ -284,11 +288,11 @@ initContainers:
 
 ### <a name="azure-disk-detach-failure-leading-to-potential-node-vm-in-failed-state"></a>Azure 磁盘分离失败可能导致节点 VM 处于失败状态
 
-在某些边界情况下，Azure 磁盘分离可能会部分失败，并导致节点 VM 处于失败状态。
+在某些极端情况下，Azure 磁盘分离操作可能部分失败，导致节点 VM 处于故障状态。
 
 此问题已在以下版本的 Kubernetes 中得到解决：
 
-| Kubernetes 版本 | 已修复问题的版本 |
+| Kubernetes 版本 | 已修复的版本 |
 |--|:--:|
 | 1.12 | 1.12.10 或更高版本 |
 | 1.13 | 1.13.8 或更高版本 |
@@ -302,14 +306,14 @@ initContainers:
     az vm update -n <VM_NAME> -g <RESOURCE_GROUP_NAME>
     ```
 
-* 对于基于 VMSS 的群集，使用以下代码：
+* 对于基于 VMSS 的群集：
     ```azurecli
     az vmss update-instances -g <RESOURCE_GROUP_NAME> --name <VMSS_NAME> --instance-id <ID>
     ```
 
 ## <a name="azure-files-and-aks-troubleshooting"></a>Azure 文件存储和 AKS 疑难解答
 
-### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-files"></a>用于 Azure 文件存储的 Kubernetes 有哪些建议的稳定版本？
+### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-files"></a>适用于 Azure 文件存储的 Kubernetes 的建议稳定版本是什么？
  
 | Kubernetes 版本 | 建议的版本 |
 |--|:--:|
@@ -346,33 +350,33 @@ parameters:
   skuName: Standard_LRS
 ```
 
-下面是一些其他有用的 mountOptions 设置：
+其他一些有用的 *mountOptions* 设置：
 
-* mfsymlinks 可使 Azure 文件存储装载 (cifs) 支持符号链接
-* nobrl 可阻止向服务器发送字节范围锁请求。 对于使用 cifs 样式的强制字节范围锁中断的某些应用程序，此设置是必需的。 大多数 cifs 服务器尚不支持请求建议字节范围锁。 如果不使用 nobrl，则使用 cifs 样式的强制字节范围锁中断的应用程序可能会导致以下类似错误消息：
+* *mfsymlinks* 将使 Azure 文件存储装入点 (cifs) 支持符号链接
+* *nobrl* 将阻止向服务器发送字节范围锁请求。 对于使用 cifs 样式的强制字节范围锁中断的某些应用程序，此设置是必需的。 大多数 cifs 服务器尚不支持请求建议字节范围锁。 如果不使用 nobrl，则使用 cifs 样式的强制字节范围锁中断的应用程序可能会导致以下类似错误消息：
     ```console
     Error: SQLITE_BUSY: database is locked
     ```
 
-### <a name="error-could-not-change-permissions-when-using-azure-files"></a>使用 Azure 文件存储时出现错误“无法更改权限”
+### <a name="error-could-not-change-permissions-when-using-azure-files"></a>使用 Azure 文件存储时出现“无法更改权限”错误
 
-在 Azure 文件存储插件上运行 PostgreSQL 时，可能会看到类似于以下内容的错误：
+在 Azure 文件存储插件中运行 PostgreSQL 时，可能会出现如下所示的错误：
 
 ```console
 initdb: could not change permissions of directory "/var/lib/postgresql/data": Operation not permitted
 fixing permissions on existing directory /var/lib/postgresql/data
 ```
 
-此错误是由使用 cifs/SMB 协议的 Azure 文件存储插件导致的。 使用 cifs/SMB 协议时，无法在装载后更改文件和目录权限。
+此错误是由使用 cifs/SMB 协议的 Azure 文件存储插件造成的。 使用 cifs/SMB 协议时，在装载后无法更改文件和目录权限。
 
-为解决此问题，请将 subPath 与 Azure 磁盘插件一起使用。 
+若要解决此问题，请结合 Azure 磁盘插件使用 *subPath*。 
 
 > [!NOTE] 
-> 对于 ext3/4 磁盘类型，格式化磁盘后会出现一个“lost+found”目录。
+> 对于 ext3/4 磁盘类型，格式化磁盘后会出现一个 lost+found 目录。
 
-### <a name="azure-files-has-high-latency-compared-to-azure-disk-when-handling-many-small-files"></a>在处理多个小型文件时，与 Azure 磁盘相比，Azure 文件存储具有较高的延迟
+### <a name="azure-files-has-high-latency-compared-to-azure-disk-when-handling-many-small-files"></a>处理许多小型文件时，Azure 文件存储的延迟高于 Azure 磁盘
 
-在某些情况下（如处理多个小型文件时），与 Azure 磁盘相比，使用 Azure 文件存储可能会出现较高的延迟。
+在某些情况下（例如处理许多的小型文件时），使用 Azure 文件存储时出现的延迟可能高于 Azure 磁盘。
 
 ### <a name="error-when-enabling-allow-access-allow-access-from-selected-network-setting-on-storage-account"></a>对存储帐户启用“允许从所选网络进行访问”设置时出错
 
@@ -398,11 +402,11 @@ E0118 08:15:52.041014    2112 nestedpendingoperations.go:267] Operation for "\"k
 
 此问题在以下版本的 Kubernetes 中已得到修复：
 
-| Kubernetes 版本 | 已修复问题的版本 |
+| Kubernetes 版本 | 已修复的版本 |
 |--|:--:|
 | 1.12 | 1.12.6 或更高版本 |
 | 1.13 | 1.13.4 或更高版本 |
-| 1.14 和更高版本 | 空值 |
+| 1.14 或更高版本 | 空值 |
 
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>由于存储帐户密钥已更改导致 Azure 文件存储装载失败
 

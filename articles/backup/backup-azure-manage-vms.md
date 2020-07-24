@@ -4,11 +4,12 @@ description: 了解如何使用 Azure 备份服务管理和监视 Azure VM 备�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 6e49d1eed81d15970519299fb6f662c650116d6e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e3fb05b054ea682c315654e6df262e49d592597
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248577"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054746"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>使用 Azure 备份服务管理 Azure VM 备份
 
@@ -53,6 +54,17 @@ ms.locfileid: "84248577"
 
 ## <a name="manage-backup-policy-for-a-vm"></a>管理 VM 的备份策略
 
+### <a name="modify-backup-policy"></a>修改备份策略
+
+修改现有的备份策略：
+
+1. 登录到 [Azure 门户](https://portal.azure.com/)。 打开保管库仪表板。
+2. 从 "**管理 > 备份策略**中，选择 Azure 虚拟机类型的备份策略。
+3.  单击 "修改" 并更改设置。
+
+
+### <a name="switch-backup-policy"></a>切换备份策略 
+
 若要管理备份策略，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。 打开保管库仪表板。
@@ -77,6 +89,9 @@ ms.locfileid: "84248577"
 * 如果初始备份已挂起，则按需备份会在恢复服务保管库中创建 VM 的完整副本。
 * 如果初始备份已完成，按需备份仅将以前快照的更改发送到恢复服务保管库。 也就是说，后续备份始终是增量备份。
 * 按需备份的保留期范围是你在触发备份时指定的保留期值。
+
+> [!NOTE]
+> Azure 备份服务每天最多支持9个按需备份，但 Microsoft 建议不超过四个每日按需备份，以确保获得最佳性能。
 
 若要触发按需备份，请执行以下操作：
 
@@ -125,6 +140,9 @@ ms.locfileid: "84248577"
 
     ![删除备份数据](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
+> [!NOTE]
+> 完成删除操作后，备份的数据将保留14天（[软删除状态](./soft-delete-virtual-machines.md)）。 <br>此外，还可以[启用或禁用软删除](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)。
+
 ## <a name="resume-protection-of-a-vm"></a>恢复对 VM 的保护
 
 如果在停止 VM 保护期间选择了“[停止保护并保留备份数据](#stop-protection-and-retain-backup-data)”选项，则可以使用“恢复备份”。 如果选择了“[停止保护并删除备份数据](#stop-protection-and-delete-backup-data)”选项或“[删除备份数据](#delete-backup-data)”，则此选项不可用。
@@ -157,7 +175,7 @@ ms.locfileid: "84248577"
 
   * 若要删除项的备份数据，请选择“删除”。 一条通知消息将让你获悉备份数据已删除。
 
-为保护数据，Azure 备份包含了软件删除功能。 使用软删除，即使在删除 VM 的备份（所有恢复点）后，备份数据也会额外保留 14 天。 有关详细信息，请参阅[软删除文档](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud)。
+为保护数据，Azure 备份包含了软件删除功能。 使用软删除，即使在删除 VM 的备份（所有恢复点）后，备份数据也会额外保留 14 天。 有关详细信息，请参阅[软删除文档](./backup-azure-security-feature-cloud.md)。
 
   > [!NOTE]
   > 删除备份数据时，将删除所有关联的恢复点。 无法选择要删除的特定恢复点。
@@ -166,10 +184,10 @@ ms.locfileid: "84248577"
 
 * 如果为 Azure 备份配置的 Azure VM 在没有停止保护的情况下被删除或移动，则计划备份作业和按需（临时）备份作业都将失败，并出现 UserErrorVmNotFoundV2 错误。 备份预检查将仅对失败的按需备份作业显示为“严重”（不会显示失败的计划作业）。
 * 这些备份项在系统中保持活动状态，并遵守用户设置的备份和保留策略。 这些 Azure VM 的备份数据将根据保留策略保留。 过期的恢复点（最后一个恢复点除外）将根据备份策略中设置的保留范围进行清理。
-* 建议用户删除主数据源不再存在的备份项，以避免任何额外成本，如果不再需要删除资源的备份项/数据，因为最后一个恢复点将被永久保留，并且根据适用的备份定价向用户收费。
+* 如果用户不再需要已删除资源的备份项/数据，由于最后一个恢复点会永久保留，并且会按适用的备份定价向用户收费，建议用户删除主数据源不再存在的备份项目，从而避免产生任何额外费用。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 了解如何[通过 VM 的设置备份 Azure VM](backup-azure-vms-first-look-arm.md)。
 * 了解如何[还原 VM](backup-azure-arm-restore-vms.md)。
-* 了解如何[监视 Azure VM 备份](backup-azure-monitor-vms.md)。
+* 了解如何[监视 Azure VM 备份](./backup-azure-monitoring-built-in-monitor.md)。

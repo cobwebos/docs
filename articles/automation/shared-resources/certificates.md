@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 918e34114faa7a57e54ec45c1cca8036462a8fa1
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 61e2cdf63e5553ba8d796115284dad9a538c2b81
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187381"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056278"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>在 Azure 自动化中管理证书
 
@@ -34,7 +34,7 @@ Azure 自动化使用适用于 Azure 资源管理器资源的 [Get-AzAutomationC
 |[Remove-AzAutomationCertificate](/powershell/module/Az.Automation/Remove-AzAutomationCertificate?view=azps-3.7.0)|从自动化中删除证书。|
 |[Set-AzAutomationCertificate](/powershell/module/Az.Automation/Set-AzAutomationCertificate?view=azps-3.7.0)|设置现有证书的属性，包括上传证书文件和设置 .pfx 文件的密码。|
 
-还可以使用 [Add-AzureCertificate](/powershell/module/servicemanagement/azure/add-azurecertificate) cmdlet 为指定的云服务上传服务证书。
+还可以使用 [Add-AzureCertificate](/powershell/module/servicemanagement/azure.service/add-azurecertificate) cmdlet 为指定的云服务上传服务证书。
 
 ## <a name="internal-cmdlets-to-access-certificates"></a>用于访问证书的内部 cmdlet
 

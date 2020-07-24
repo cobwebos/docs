@@ -3,15 +3,16 @@ title: 备份 Azure 文件常见问题解答
 description: 本文介绍有关如何使用 Azure 备份服务保护 Azure 文件共享的常见问题解答。
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ded1551dad1be34c116e61b9bf59f372169bca5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 134d9520a3c2348b23ec27c6e14eb56468f2002d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488692"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054977"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>有关如何备份 Azure 文件的问题
 
-本文回答了有关如何备份 Azure 文件的常见问题。 某些答案提供内含全面信息的文章的链接。 也可以在[供讨论的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-backup.html)中发布有关 Azure 备份服务的问题。
+本文回答了有关如何备份 Azure 文件的常见问题。 某些答案提供内含全面信息的文章的链接。 也可以在[供讨论的 Microsoft Q&A 问题页面](/answers/topics/azure-backup.html)中发布有关 Azure 备份服务的问题。
 
 若要快速浏览本文的各个部分，请使用右侧“本文内容”下的链接。
 
@@ -55,7 +56,7 @@ ms.locfileid: "84488692"
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share"></a>能否从已删除的 Azure 文件共享进行恢复？
 
-如果文件共享处于软删除状态，则需要首先撤消删除文件共享以执行还原操作。 取消删除操作会使文件共享进入活动状态，您可以在其中还原到任何时间点。 若要了解如何撤消删除文件共享，请访问[此链接](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal#restore-soft-deleted-file-share)或查看[删除文件共享脚本](./scripts/backup-powershell-script-undelete-file-share.md)。 如果文件共享已被永久删除，将无法还原内容和快照。
+如果文件共享处于软删除状态，则需要首先撤消删除文件共享以执行还原操作。 取消删除操作会使文件共享进入活动状态，您可以在其中还原到任何时间点。 若要了解如何撤消删除文件共享，请访问[此链接](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal#restore-soft-deleted-file-share)或查看[删除文件共享脚本](./scripts/backup-powershell-script-undelete-file-share.md)。 如果文件共享已被永久删除，将无法还原内容和快照。
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share"></a>在停止对 Azure 文件共享进行保护的情况下，是否能从备份还原？
 

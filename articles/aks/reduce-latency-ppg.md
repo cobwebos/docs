@@ -1,29 +1,30 @@
 ---
-title: 使用邻近组来减少 Azure Kubernetes Service (AKS) 群集的延迟
+title: 使用邻近组来减少 Azure Kubernetes 服务（AKS）群集的延迟
 description: 了解如何使用邻近组来减少 AKS 群集工作负荷的延迟。
 services: container-service
 manager: gwallace
 ms.topic: article
-ms.date: 06/22/2020
-ms.openlocfilehash: 1bcdfb4bb3c910feeac0521308e1e7d733fbd959
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/10/2020
+author: jluk
+ms.openlocfilehash: f6cb370d258a79420b03baf17ec964b091cdebb7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244066"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056582"
 ---
-# <a name="reduce-latency-with-proximity-placement-groups-preview"></a>通过邻近组 (预览降低延迟) 
+# <a name="reduce-latency-with-proximity-placement-groups-preview"></a>通过邻近组（预览）减少延迟
 
 > [!Note]
-> 使用 AKS 的邻近组时，归置仅适用于代理节点。 节点到节点和对应的托管 pod 到 pod 的延迟得到改进。 归置不会影响群集的控制平面的放置。
+> 在 AKS 上使用邻近位置组时，归置仅适用于代理节点。 节点到节点和对应的托管 pod 到 pod 的延迟得到改进。 归置不会影响群集的控制平面的放置。
 
-在 Azure 中部署应用程序时，跨区域或可用性区域 (VM) 实例分配虚拟机将产生网络延迟，这可能会影响应用程序的总体性能。 邻近性放置组是一种逻辑分组，用于确保 Azure 计算资源的物理位置彼此接近。 有些应用程序（如游戏、工程模拟和高频交易） (HFT) 需要较低的延迟和快速完成的任务。 为实现高性能计算 (HPC) 方案，请考虑使用群集的节点池的[邻近性放置组](../virtual-machines/linux/co-location.md#proximity-placement-groups)。
+在 Azure 中部署应用程序时，跨区域或可用性区域传播虚拟机（VM）实例会产生网络延迟，这可能会影响应用程序的总体性能。 邻近性放置组是一种逻辑分组，用于确保 Azure 计算资源的物理位置彼此接近。 有些应用程序（如游戏、工程模拟和高频交易（HFT））需要较低的延迟和更快完成的任务。 对于这样的高性能计算（HPC）方案，请考虑对群集的节点池使用[邻近的放置组](../virtual-machines/linux/co-location.md#proximity-placement-groups)（PPG）。
 
 ## <a name="limitations"></a>限制
 
-* 邻近性放置组跨越单个可用性区域。
-* 目前尚不支持使用虚拟机可用性集的 AKS 群集。
-* 不能修改现有节点池以使用邻近位置组。
+* 邻近位置组最多只能映射到一个可用性区域。
+* 节点池必须使用虚拟机规模集来关联邻近位置组。
+* 节点池只能在节点池创建时间关联邻近位置组。
 
 > [!IMPORTANT]
 > AKS 预览功能是可选择启用的自助功能。 预览功能是“按现状”和“按可用”提供的，不包括在服务级别协议和有限保证中。 AKS 预览功能是由客户支持尽最大努力部分覆盖。 因此，这些功能并不适合用于生产。 有关详细信息，请参阅以下支持文章：
@@ -40,7 +41,7 @@ ms.locfileid: "86244066"
 ### <a name="set-up-the-preview-feature-for-proximity-placement-groups"></a>设置邻近位置组的预览功能
 
 > [!IMPORTANT]
-> 使用 AKS 的邻近组时，归置仅适用于代理节点。 节点到节点和对应的托管 pod 到 pod 的延迟得到改进。 归置不会影响群集的控制平面的放置。
+> 使用 AKS 节点池的邻近组时，归置仅适用于代理节点。 节点到节点和对应的托管 pod 到 pod 的延迟得到改进。 归置不会影响群集的控制平面的放置。
 
 ```azurecli-interactive
 # register the preview feature
@@ -63,20 +64,31 @@ az extension add --name aks-preview
 # Update the extension to make sure you have the latest version installed
 az extension update --name aks-preview
 ```
+
 ## <a name="node-pools-and-proximity-placement-groups"></a>节点池和邻近位置组
 
-使用邻近位置组部署的第一个资源会附加到特定的数据中心。 部署了相同邻近位置组的其他资源将在同一数据中心中进行定位。 使用邻近位置组的所有资源停止 (释放) 或删除后，就不再附加。
+使用邻近位置组部署的第一个资源会附加到特定的数据中心。 部署了相同邻近位置组的其他资源将在同一数据中心中进行定位。 使用邻近位置组的所有资源停止（释放）或删除后，就不再附加。
 
 * 许多节点池可以与单个邻近布局组相关联。
 * 节点池只能与单个邻近布局组相关联。
 
+### <a name="configure-proximity-placement-groups-with-availability-zones"></a>通过可用性区域配置邻近位置组
+
+> [!NOTE]
+> 尽管近程布局组要求一个节点池使用最多一个可用性区域，但对于单个区域中的 Vm， [99.9% 的基准 AZURE VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/)仍有效。
+
+邻近性放置组是一个节点池概念，并与每个单独的节点池相关联。 使用 PPG 资源对 AKS 控制面可用性没有影响。 这可能会影响使用区域设计群集的方式。 若要确保群集跨多个区域分布，建议采用以下设计。
+
+* 使用3个区域预配具有第一个系统池的群集，而不会对任何邻近的放置组进行关联。 这可确保在专用节点池中的系统箱土地分散到多个区域。
+* 添加具有唯一区域的其他用户节点池和与每个池关联的邻近位置组。 例如，区域1中的 nodepool1、区域2中的 PPG1、nodepool2 和区域3中的 PPG2、nodepool3 和 PPG3。 这可以确保在群集级别，节点分散到多个区域，而每个单独的节点池在指定的区域中与专用 PPG 资源协同工作。
+
 ## <a name="create-a-new-aks-cluster-with-a-proximity-placement-group"></a>使用邻近位置组创建新的 AKS 群集
 
-以下示例使用[az group create][az-group-create]命令在*centralus*区域中创建名为*myResourceGroup*的资源组。 然后使用 [az AKS create][az-aks-create] 命令创建名为 *myAKSCluster* 的 AKS 群集。 
+以下示例使用[az group create][az-group-create]命令在*centralus*区域中创建名为*myResourceGroup*的资源组。 然后使用 [az AKS create][az-aks-create] 命令创建名为 *myAKSCluster* 的 AKS 群集。
 
 加速网络极大地提高了虚拟机的网络性能。 理想情况下，将邻近组与加速网络结合使用。 默认情况下，AKS 使用支持的[虚拟机实例](../virtual-network/create-vm-accelerated-networking-cli.md?toc=/azure/virtual-machines/linux/toc.json#limitations-and-constraints)上的加速网络，其中包含具有两个或更多个 vcpu 的大多数 Azure 虚拟机。
 
-使用邻近位置组创建新的 AKS 群集：
+使用与第一个系统节点池关联的邻近位置组创建新的 AKS 群集：
 
 ```azurecli-interactive
 # Create an Azure resource group
@@ -110,7 +122,7 @@ az ppg create -n myPPG -g myResourceGroup -l centralus -t standard
 在下面的命令中，使用 " *myPPGResourceID* " 值的邻近位置组资源 ID：
 
 ```azurecli-interactive
-# Create an AKS cluster that uses a proximity placement group for the initial node pool
+# Create an AKS cluster that uses a proximity placement group for the initial system node pool only. The PPG has no effect on the cluster control plane.
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \

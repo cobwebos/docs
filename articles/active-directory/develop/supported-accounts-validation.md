@@ -4,18 +4,18 @@ description: 了解向 Microsoft 标识平台注册应用时，不同受支持�
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 10/12/2019
+ms.date: 07/21/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 2a1507b008903085886f9392f3f4e5461997b6e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82b721d14d114b358939bebecff00bc762b075a6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80128855"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058335"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>按受支持帐户类型列出的验证差异 (signInAudience)
 
@@ -39,7 +39,7 @@ ms.locfileid: "80128855"
 | 证书 (`keyCredentials`) | 对称签名密钥 | 对称签名密钥 | 加密和非对称签名密钥 | 
 | 客户端密码 (`passwordCredentials`) | 无限制* | 无限制* | 如果启用 liveSDK：最多2个客户端密码 | 
 | 重定向 URI (`replyURLs`) | 有关详细信息，请参阅[重定向 URI/回复 URL 的局限性和限制](reply-url.md)。 | | | 
-| API 权限 (`requiredResourceAccess`) | 无限制* | 无限制* | 每个资源最多允许30个权限（例如 Microsoft Graph） | 
+| API 权限 (`requiredResourceAccess`) | 无限制* | 无限制* | 每个应用程序最多50个资源，每个资源30个权限（例如 Microsoft Graph）。 每个应用程序200的总限制（资源 x 权限）。 | 
 | 此 API 定义的作用域 (`oauth2Permissions`) | 最大作用域名称长度为 120 个字符 <br><br> 对定义的作用域数没有限制* | 最大作用域名称长度为 120 个字符 <br><br> 对定义的作用域数没有限制* |  最大作用域名称长度为40个字符 <br><br> 最多定义100个作用域 | 
 | 授权客户端应用程序 (`preautorizedApplications`) | 无限制* | 无限制* | 总最大值为500 <br><br> 最多定义100个客户端应用 <br><br> 每个客户端最多定义30个作用域 | 
 | appRoles | 支持 <br> 无限制* | 支持 <br> 无限制* | 不支持 | 

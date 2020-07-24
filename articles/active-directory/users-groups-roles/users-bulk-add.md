@@ -13,11 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a2c9500ecefed02b28c066de80137d8f0882fd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41329f2f5500db35ee76c9880bdbef984413004b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731493"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057898"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>在 Azure Active Directory 中批量创建用户
 
@@ -47,6 +48,7 @@ Azure Active Directory (Azure AD) 支持批量用户创建和删除操作，并�
 - 所需的列会先列出。
 - 建议不要将新列添加到模板。 所添加的任何其他列都会被忽略，不进行处理。
 - 建议尽可能经常下载 CSV 模板的最新版本。
+- 请确保检查任何字段前面/后面没有任何意外的空格。 对于**用户主体名称**，具有此类空格会导致导入失败。
 
 ## <a name="to-create-users-in-bulk"></a>批量创建用户
 

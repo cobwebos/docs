@@ -3,12 +3,12 @@ title: 利用 Advisor 提高操作 excellency
 description: 使用 Azure 顾问优化和成熟你的 Azure 订阅的卓越运营。
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 1cac5a3f93df8422a3896b1251857bf552731fb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b4c4726400134e4eec3868e155da47cb8c515b5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85125389"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057634"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>使用 Azure 顾问实现卓越运营
 
@@ -26,7 +26,7 @@ Azure 顾问中的卓越运营建议可以帮助你：
 
 ## <a name="design-your-storage-accounts-to-prevent-reaching-the-maximum-subscription-limit"></a>设计存储帐户以避免达到最大订阅限制
 
-对于每个订阅，Azure 区域最多支持250个存储帐户。 达到该限制后，将无法在该区域/订阅组合中创建存储帐户。 顾问会检查你的订阅，并提供建议，以便为接近达到限制的任何区域/订阅设计更少的存储帐户。
+一个 Azure 区域可以支持每个订阅最多 250 个存储帐户。 达到该限制后，将无法在该区域/订阅组合中创建存储帐户。 顾问会检查你的订阅，并提供建议，以便为接近达到限制的任何区域/订阅设计更少的存储帐户。
 
 ## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>确保在需要时有权访问 Azure 云专家
 
@@ -62,5 +62,5 @@ Azure 策略是 Azure 中的一项服务，可用于创建、分配和管理策�
 * [顾问成本建议](advisor-cost-recommendations.md)
 * [顾问性能建议](advisor-performance-recommendations.md)
 * [顾问可靠性建议](advisor-high-availability-recommendations.md)
-* [顾问安全建议](advisor-security-recommendations.md)
-* [顾问 REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [顾问安全性建议](advisor-security-recommendations.md)
+* [顾问 REST API](/rest/api/advisor/)

@@ -11,16 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: f0ce0f7d90540274d24a7e0248e6f197b74033a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a8da2355b62d7be36b10ac9a1ce4b53e87b4b288
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416982"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059214"
 ---
-# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>使用 C# 管理 Azure 时序见解环境的 GA 参考数据
+# <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c"></a>使用 C 管理 Azure 时序见解第1代环境的引用数据#
 
-本文演示了如何组合 C#、[MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) 和 Azure Active Directory 来向 Azure 时序见解 GA [参考数据管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) 发出编程性 API 请求。
+本文演示了如何合并 c #、 [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)和 Azure Active Directory，以对 Azure 时序见解第1代[数据管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)的编程 API 请求进行编程。
 
 > [!TIP]
 > 查看 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) 上的 GA C# 代码示例。
@@ -30,7 +30,7 @@ ms.locfileid: "81416982"
 下面的示例代码演示了以下功能：
 
 * 使用 [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) PublicClientApplication 获取访问令牌。
-* 针对 GA [参考数据管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) 的顺序创建、读取、更新和删除操作。
+* 针对第1代[引用数据管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)顺序创建、读取、更新和删除操作。
 * 常见的响应代码，包括[常见错误代码](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling)。
     
     参考数据管理 API 单独处理每个项，一个项出现错误不会阻止其他项成功完成。 例如，如果你的请求包含 100 个项，其中一个项发生错误，则会写入 99 个项，并拒绝一个项。
@@ -39,7 +39,7 @@ ms.locfileid: "81416982"
 
 在编译和运行示例代码之前，请完成以下步骤：
 
-1. [预配 GA Azure 时序见解](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
+1. [预配第1代 Azure 时序见解](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
 )环境。
 
 1. 在环境中[创建参考数据集](time-series-insights-add-reference-data-set.md)。 使用以下参考数据方案：
@@ -309,4 +309,4 @@ namespace CsharpTsiMsalGaSample
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读 GA [参考数据管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) 参考文档。
+- 请参阅第1代[参考数据管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)参考文档。

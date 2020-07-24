@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: 3833b27e9f90cbffa2320c84877d4eb5bb6520f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7d83c327eb1c37478c0c2e5725136d43a91a009
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82613262"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061214"
 ---
 # <a name="ingest-historical-telemetry-data"></a>引入历史遥测数据
 
@@ -19,7 +19,7 @@ ms.locfileid: "82613262"
 
 在 FarmBeats 中，引入（IoT）资源（如设备和传感器）的历史物联网数据是常见的方案。 为设备和传感器创建元数据，然后将历史数据以规范格式引入 FarmBeats。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 在继续阅读本文之前，请确保已安装 FarmBeats 并从 IoT 设备收集的历史数据。 还需要启用合作伙伴访问权限，如以下步骤中所述。
 
@@ -61,8 +61,14 @@ ms.locfileid: "82613262"
     ```azurepowershell-interactive 
     cd
     ```
+    
+6. 运行以下命令。 这会连接经过身份验证的帐户以用于 Azure AD 请求
 
-6. 运行以下命令。 这会将脚本下载到主目录。
+    ```azurepowershell-interactive 
+    Connect-AzureAD
+    ```
+
+7. 运行以下命令。 这会将脚本下载到主目录。
 
     ```azurepowershell-interactive 
 
@@ -70,7 +76,7 @@ ms.locfileid: "82613262"
 
     ```
 
-7. 运行以下脚本。 该脚本要求提供租户 ID，该 ID 可从**Azure Active Directory**  >  **概述**"页获取。
+8. 运行以下脚本。 该脚本要求提供租户 ID，该 ID 可从**Azure Active Directory**  >  **概述**"页获取。
 
     ```azurepowershell-interactive 
 
@@ -78,7 +84,7 @@ ms.locfileid: "82613262"
 
     ```
 
-8. 按照屏幕上的说明来捕获**API 终结点**、**租户 ID**、**客户端 ID**、**客户端密钥**和**EventHub 连接字符串**的值。
+9. 按照屏幕上的说明来捕获**API 终结点**、**租户 ID**、**客户端 ID**、**客户端密钥**和**EventHub 连接字符串**的值。
 
 
 ## <a name="create-device-or-sensor-metadata"></a>创建设备或传感器元数据
@@ -421,7 +427,7 @@ write_client.stop()
 }
 ```
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 ### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>从传感器引入历史/流数据后无法查看遥测数据
 

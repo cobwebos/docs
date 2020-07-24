@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6e2a3e6c7fd5ecd305d00278668ad0bfb9a66001
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 34624358a26fbd52db5832cf3531a6f1d3b91e5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142436"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061758"
 ---
 # <a name="understand-event-data"></a>了解事件数据
 
@@ -28,7 +28,7 @@ Azure 数字孪生中的不同事件会生成**通知**，这使解决方案后�
 
 ### <a name="event-notification-headers"></a>事件通知标头
 
-通知消息标头用键值对表示。 根据 (MQTT、AMQP 或 HTTP) 使用的协议，将以不同的方式序列化消息标头。 本部分讨论通知消息的常规标头信息，而不考虑所选的特定协议和序列化。
+通知消息标头用键值对表示。 根据所使用的协议（MQTT、AMQP 或 HTTP），将以不同的方式序列化消息标头。 本部分讨论通知消息的常规标头信息，而不考虑所选的特定协议和序列化。
 
 某些通知符合 CloudEvents 标准。 CloudEvents 一致性如下所示。
 * 从设备发出的通知继续遵循现有的通知规范
@@ -44,7 +44,7 @@ Azure 数字孪生向事件网格发出的通知将自动格式化为 CloudEvent
 
 ### <a name="event-notification-bodies"></a>事件通知正文
 
-此处的 JSON 中描述了通知消息的正文。 根据消息正文所需的序列化 (例如，对于 JSON、CBOR、Protobuf 等 ) ，消息正文可能会以不同方式进行序列化。
+此处的 JSON 中描述了通知消息的正文。 根据消息正文（如 JSON、CBOR、Protobuf 等）所需的序列化，消息正文可能会以不同方式进行序列化。
 
 正文包含的一组字段随不同的通知类型而变化。 下面是两个示例消息正文，用于大致了解和可能包括的内容。
 
@@ -89,7 +89,7 @@ Azure 数字孪生向事件网格发出的通知将自动格式化为 CloudEvent
 
 ## <a name="message-format-detail-for-different-event-types"></a>不同事件类型的消息格式详细信息
 
-本部分详细介绍 IoT 中心和 Azure 数字孪生 (或其他 Azure IoT 服务) 发出的不同类型的通知。 你将了解触发每个通知类型的相关信息，以及每种类型的通知正文中包含的字段集。
+本部分详细介绍 IoT 中心和 Azure 数字孪生（或其他 Azure IoT 服务）发出的不同类型的通知。 你将了解触发每个通知类型的相关信息，以及每种类型的通知正文中包含的字段集。
 
 ### <a name="digital-twin-life-cycle-notifications"></a>数字克隆生命周期通知
 
@@ -99,7 +99,7 @@ Azure 数字孪生向事件网格发出的通知将自动格式化为 CloudEvent
 * 创建数字克隆
 * 删除数字克隆
 
-#### <a name="properties"></a>属性
+#### <a name="properties"></a>“属性”
 
 下面是生命周期通知正文中的字段。
 
@@ -120,7 +120,7 @@ Azure 数字孪生向事件网格发出的通知将自动格式化为 CloudEvent
 
 对于创建事件，负载会反映创建资源后的克隆状态，因此它应包括所有系统生成的元素，就像 `GET` 调用一样。
 
-下面是[IoT 即插即用 (PnP) ](../iot-pnp/overview-iot-plug-and-play.md)设备的主体的示例，其中包含组件，无顶级属性。 对于设备 (（例如报告属性) ）无意义的属性，应忽略这些属性。
+下面是[IoT 即插即用（PnP）](../iot-pnp/overview-iot-plug-and-play.md)设备（包含组件，无顶级属性）的正文的示例。 应该省略对设备没有意义的属性（如报告的属性）。
 
 ```json
 {
@@ -185,7 +185,7 @@ Azure 数字孪生向事件网格发出的通知将自动格式化为 CloudEvent
 
 当创建、更新或删除数字克隆的任何关系时，将触发**关系更改通知**。 
 
-#### <a name="properties"></a>属性
+#### <a name="properties"></a>“属性”
 
 下面是边缘更改通知正文中的字段。
 
@@ -241,7 +241,7 @@ Azure 数字孪生向事件网格发出的通知将自动格式化为 CloudEvent
 * 属性值或元数据的更改时间。
 * 数字克隆或组件元数据发生更改时。 这种情况的一个示例是，更改数字克隆的模型。
 
-#### <a name="properties"></a>属性
+#### <a name="properties"></a>“属性”
 
 下面是数字克隆更改通知正文中的字段。
 
@@ -277,7 +277,7 @@ Azure 数字孪生向事件网格发出的通知将自动格式化为 CloudEvent
 ]
 ```
 
-如果服务同步执行，则相应的通知 (例如，更新数字克隆) 的 Azure 数字孪生将具有如下所示的正文：
+对应的通知（如果是由服务同步执行的（如 Azure 数字孪生更新数字克隆），其正文如下所示：
 
 ```json
 {
@@ -300,7 +300,7 @@ Azure 数字孪生向事件网格发出的通知将自动格式化为 CloudEvent
 ## <a name="next-steps"></a>后续步骤
 
 请参阅如何创建用于传递事件的终结点和路由：
-* [操作说明：管理终结点和路由](how-to-manage-routes.md)
+* [*操作说明：管理终结点和路由*](how-to-manage-routes.md)
 
 或者，详细了解 Azure 数字孪生 Api 和 SDK 选项：
-* [操作说明：使用 Azure 数字孪生 Api 和 Sdk](how-to-use-apis-sdks.md)
+* [*操作说明：使用 Azure 数字孪生 Api 和 Sdk*](how-to-use-apis-sdks.md)

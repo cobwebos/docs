@@ -2,13 +2,13 @@
 title: 编辑知识库 - QnA Maker
 description: QnA Maker 允许你通过提供易于使用的编辑体验来管理知识库的内容。
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 66adf9e1fe227f11514276147de32e8691db7fab
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.date: 07/16/2020
+ms.openlocfilehash: 52aaaf630806ed6c71101860a1286f88a23ec3fa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993569"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054011"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>编辑知识库中的 QnA 对
 
@@ -111,6 +111,10 @@ QnA 对是从数据源（如文件或 URL）添加的，或作为编辑源添加
 ## <a name="add-metadata"></a>添加元数据
 
 首先选择 "**查看选项**"，然后选择 "**显示元数据**"，添加元数据对。 这会显示元数据列。 接下来，选择 **+** 签名以添加元数据对。 此对包含一个键和一个值。
+
+有关元数据的详细信息，请参阅 QnA Maker 门户中的元数据：
+* [创作-将元数据添加到 QnA 对](../quickstarts/add-question-metadata-portal.md#add-metadata-to-filter-the-answers)
+* [查询预测-按元数据筛选应答](../quickstarts/get-answer-from-knowledge-base-using-url-tool.md)
 
 ## <a name="save-changes-to-the-qna-pairs"></a>保存对 QnA 对的更改
 
