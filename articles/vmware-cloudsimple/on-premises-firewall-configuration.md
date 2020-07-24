@@ -9,11 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 539665c4756a7dc87078922421b45a88404f58f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ff057d99e29c7c6fe30e77f38a0bff265dbe7bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81868146"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998879"
 ---
 # <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>从本地访问你的 CloudSimple 私有云环境和应用程序
 
@@ -23,7 +24,7 @@ ms.locfileid: "81868146"
 
 若要访问私有云 vCenter 和 NSX-T 管理器，必须在本地防火墙上打开下表中定义的端口。  
 
-| Port       | 源                           | 目标                      | 目标                                                                                                                |
+| Port       | 源                           | 目标                      | 目的                                                                                                                |
 |------------|----------------------------------|----------------------------------|------------------------------------------------------------------------------------------------------------------------|
 | 53（UDP）   | 本地 DNS 服务器          | 私有云 DNS 服务器        | 需要将*az.cloudsimple.io*的 dns 查找从本地网络转发到私有云 DNS 服务器。       |
 | 53（UDP）   | 私有云 DNS 服务器        | 本地 DNS 服务器          | 需要将 DNS 查找从私有云 vCenter 到本地 DNS 服务器的本地域名。 |
@@ -34,9 +35,9 @@ ms.locfileid: "81868146"
 
 ## <a name="ports-required-for-using-on-premises-active-directory-as-an-identity-source"></a>使用本地 active directory 作为标识源所需的端口
 
-若要在私有云 vCenter 上将本地 active directory 配置为标识源，必须打开表中定义的端口。  有关配置步骤，请参阅[使用 Azure AD 作为 CloudSimple 私有云上的 vCenter 的标识提供者](https://docs.microsoft.com/azure/vmware-cloudsimple/azure-ad/)。
+若要在私有云 vCenter 上将本地 active directory 配置为标识源，必须打开表中定义的端口。  有关配置步骤，请参阅[使用 Azure AD 作为 CloudSimple 私有云上的 vCenter 的标识提供者](./azure-ad.md)。
 
-| Port         | 源                           | 目标                                         | 目标                                                                                                                                          |
+| Port         | 源                           | 目标                                         | 目的                                                                                                                                          |
 |--------------|----------------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
 | 53（UDP）      | 私有云 DNS 服务器        | 本地 DNS 服务器                             | 需要将 DNS 查找从私有云 vCenter 到本地 DNS 服务器的本地 active directory 域名。          |
 | 389 (TCP/UDP) | 私有云管理网络 | 本地 active directory 域控制器     | 从私有云 vCenter 服务器到 active directory 域控制器的 LDAP 通信需要进行用户身份验证。                |
@@ -48,7 +49,7 @@ ms.locfileid: "81868146"
 
 访问工作负荷在私有云上运行的虚拟机需要在本地防火墙上打开端口。  下表显示了所需的一些常用端口及其用途。  有关任何特定于应用程序的端口要求，请参阅应用程序文档。
 
-| Port         | 源                         | 目标                          | 目标                                                                              |
+| Port         | 源                         | 目标                          | 目的                                                                              |
 |--------------|--------------------------------|--------------------------------------|--------------------------------------------------------------------------------------|
 | 22（TCP）      | 本地网络            | 私有云工作负荷网络       | 安全外壳访问私有云上运行的 Linux 虚拟机。              |
 | 3389（TCP）    | 本地网络            | 私有云工作负荷网络       | 远程桌面到在私有云上运行的 windows 虚拟机。                 |
@@ -59,6 +60,6 @@ ms.locfileid: "81868146"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [创建和管理 Vlan 和子网](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/)
-* [使用 Azure ExpressRoute 连接到本地网络](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-connection/)
-* [从本地设置站点到站点 VPN](https://docs.microsoft.com/azure/vmware-cloudsimple/vpn-gateway/)
+* [创建和管理 Vlan 和子网](./create-vlan-subnet.md)
+* [使用 Azure ExpressRoute 连接到本地网络](./on-premises-connection.md)
+* [从本地设置站点到站点 VPN](./vpn-gateway.md)

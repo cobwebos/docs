@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
-ms.openlocfilehash: afd2735bae2a79ad942c347219019ef200b61070
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec2225633e5621c51067b64af2968a0dc0f5da87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75428709"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001411"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>使用 Azure Functions 和 Azure 服务总线调用或触发逻辑应用
 
@@ -118,11 +119,11 @@ ms.locfileid: "75428709"
 
    * 此示例使用 `application/json` 消息内容类型，不过可以根据需要更改此类型。
    
-   * 考虑到函数可能并发运行、量大或负载大，请避免使用 `using` 语句实例化 [HTTPClient 类](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient)，并避免直接按请求创建 HTTPClient 实例。 有关详细信息，请参阅[使用 HttpClientFactory 实现可复原的 HTTP 请求](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core)。
+   * 考虑到函数可能并发运行、量大或负载大，请避免使用 `using` 语句实例化 [HTTPClient 类](/dotnet/api/system.net.http.httpclient)，并避免直接按请求创建 HTTPClient 实例。 有关详细信息，请参阅[使用 HttpClientFactory 实现可复原的 HTTP 请求](/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core)。
    
    * 可能情况下，重复使用 HTTP 客户端的实例。 有关详细信息，请参阅[在 Azure Functions 中管理连接](../azure-functions/manage-connections.md)。
 
-   此示例以[异步](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async)模式使用 [`Task.Run` 方法](https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.run)。 有关详细信息，请参阅[使用 async 和 await 进行异步编程](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)。
+   此示例以[异步](/dotnet/csharp/language-reference/keywords/async)模式使用 [`Task.Run` 方法](/dotnet/api/system.threading.tasks.task.run)。 有关详细信息，请参阅[使用 async 和 await 进行异步编程](/dotnet/csharp/programming-guide/concepts/async/)。
 
    ```csharp
    using System;

@@ -7,11 +7,12 @@ ms.date: 05/21/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 2d5009086a24a54c9a2ec4734d3c4dcbebb04475
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e90a4e9ec88e074ec7b30d78bc99cfa8bf39ba2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418637"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002346"
 ---
 # <a name="what-are-device-templates"></a>什么是设备模板？
 
@@ -163,7 +164,7 @@ DTDL 可让你描述设备的功能。 相关功能分组为接口。 接口描�
 
 可选字段（如显示名称和说明）使你可以向界面和功能添加更多详细信息。
 
-### <a name="properties"></a>属性
+### <a name="properties"></a>“属性”
 
 默认情况下，属性是只读的。 只读属性意味着设备将属性值更新报告给你的 IoT Central 应用程序。 IoT Central 应用程序无法设置只读属性的值。
 
@@ -220,6 +221,6 @@ IoT Central 允许你查看仪表板和图表上的遥测，并使用规则在�
 
 ## <a name="next-steps"></a>后续步骤
 
-作为设备开发人员，现在你已了解设备模板，接下来是了解有关如何将设备注册到[Azure IoT Central](./concepts-get-connected.md)的详细信息，以了解有关如何使用 IoT Central 注册设备的详细信息，以及 IoT Central 如何保护设备连接。
+作为设备开发人员，现在你已了解设备模板，接下来要做的后续步骤是阅读[遥测、属性和命令有效负载](./concepts-telemetry-properties-commands.md)，了解有关与 IoT Central 设备交换的数据的详细信息。
 
 作为解决方案开发人员，建议的下一步是[在 Azure IoT Central 应用程序中阅读定义新的 IoT 设备类型](./howto-set-up-template.md)，以了解有关如何创建设备模板的详细信息。

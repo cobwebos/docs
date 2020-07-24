@@ -14,17 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: bb7b641a7169c6577320f07a964d278ac1727b1c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 596303223554589ef26938486ccfd2281ccd46f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663305"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999099"
 ---
 # <a name="troubleshoot-os-start-up--windows-update-installation-capacity"></a>操作系统启动疑难解答 - Windows 更新安装容量
 
 本文提供了相关步骤来解决 Azure 虚拟机 (VM) 中 Windows 更新 (KB) 收到错误且无响应的问题。
 
-## <a name="symptom"></a>故障描述
+## <a name="symptom"></a>症状
 
 使用引导诊断查看 VM 的屏幕截图时，将看到屏幕截图显示 Windows 更新 (KB) 正在进行中，但却失败并显示错误代码：C01A001D。 下图显示 Windows 更新 (KB) 停滞且出现“错误 C01A001D: 正在应用更新操作 #####/##### (######)”消息：
 
@@ -48,7 +49,7 @@ ms.locfileid: "83663305"
 
 ### <a name="create-and-access-a-repair-vm"></a>创建和访问修复 VM
 
-1. 使用 [VM 修复命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 的步骤 1-3 准备一个修复 VM。
+1. 使用 [VM 修复命令](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 的步骤 1-3 准备一个修复 VM。
 1. 使用远程桌面连接来连接到修复 VM。
 
 ### <a name="free-up-space-on-the-disk"></a>释放磁盘上的空间
@@ -59,10 +60,10 @@ ms.locfileid: "83663305"
 - 执行磁盘清理。
 - 对驱动器进行碎片整理。
 
-1. 检查磁盘是否已满。 如果磁盘大小小于 1 TB，请[使用 PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk) 将其扩展到最大 1 TB。
+1. 检查磁盘是否已满。 如果磁盘大小小于 1 TB，请[使用 PowerShell](../windows/expand-os-disk.md) 将其扩展到最大 1 TB。
 1. 如果磁盘已是 1 TB，则需要执行磁盘清理。
-   1. [从已损坏的 VM 中](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk)分离数据磁盘。
-   1. 将数据磁盘附加[到正常运行的 VM](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm)。
+   1. [从已损坏的 VM 中](../windows/detach-disk.md)分离数据磁盘。
+   1. 将数据磁盘附加[到正常运行的 VM](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm)。
    1. 使用[磁盘清理工具](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup)来释放空间。
 1. 完成大小调整和清理后，使用以下命令对驱动器进行碎片整理：
 
@@ -74,9 +75,9 @@ ms.locfileid: "83663305"
 
 ### <a name="enable-the-serial-console-and-memory-dump-collection"></a>启用串行控制台和内存转储集合
 
-**建议**：在重新生成 VM 之前，请通过运行以下脚本启用串行控制台和内存转储集合：
+**建议**：在重新生成 VM 之前，通过运行以下脚本来启用串行控制台和内存转储收集：
 
-1. 以管理员身份打开提升的命令提示符会话。
+1. 以管理员身份打开权限提升的命令提示符会话。
 1. 运行以下命令：
 
    **启用串行控制台**：
@@ -86,9 +87,9 @@ ms.locfileid: "83663305"
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
    ```
 
-1. 验证 OS 磁盘上的可用空间是否大于 VM 上的内存大小 (RAM)。
+1. 验 OS 磁盘上的可用空间是否大于 VM 上的内存大小 (RAM)。
 
-   如果 OS 磁盘上没有足够的空间，请更改将要创建内存转储文件的位置，并将该位置转到具有足够可用空间的 VM 上附加的任何数据磁盘。 若要更改位置，请在以下命令中将 %SystemRoot% 替换为数据磁盘的驱动器号（例如 F:） 。
+   如果 OS 磁盘上没有足够的空间，请更改将要创建内存转储文件的位置，并将该位置引用到具有足够可用空间的 VM 上附加的任何数据磁盘。 若要更改位置，请在以下命令中将 %SystemRoot% 替换为数据磁盘的驱动器号（例如，F:）。
 
    用于启用 OS 转储的建议配置：
 
@@ -122,4 +123,4 @@ ms.locfileid: "83663305"
    
 ### <a name="rebuild-the-vm"></a>重新生成 VM
 
-使用 [VM 修复命令的步骤 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) 重新生成 VM。
+使用 [VM 修复命令的步骤 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重新生成 VM。

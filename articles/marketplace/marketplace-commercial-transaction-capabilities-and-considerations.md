@@ -4,13 +4,13 @@ description: 本文介绍商业市场交易选项的定价、计费、开票和�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 653c55fa7476fa5fed077002db226297a33dfef6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/22/2020
+ms.openlocfilehash: 29fa4126d8d0b4f3419c729ee3a73ae315b13122
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119423"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001360"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>商业市场交易功能
 
@@ -134,7 +134,7 @@ BYOL 的成本构成如下：
 |Microsoft 将许可证费用的 80% 支付给你 <br> \* 对于所有符合资格的 SaaS 应用，Microsoft 将为你垫付许可证费用的 90%   |   80.00 美元/月 <br> \* 90.00 美元/月    |
 |Microsoft 保留许可证费用的 20% <br> \* 对于所有符合资格的 SaaS 应用，Microsoft 保留许可证费用的 10%。  |  20.00 美元/月 <br> \* 10.00 美元     |
 
-对于在商业市场上发布的某些 SaaS 产品，Microsoft 将其**Marketplace 服务费用**从20% 降低到10%。 若要让产品/服务符合资格，Microsoft 必须已将至少一个产品/服务指定为 IP 联合销售就绪或 IP 联合销售优先。 必须在上一个日历月结束前至少五个工作日获得资格，才能减少当月的市场服务费。 降低 Marketplace 服务费用不适用于 Vm、托管应用或通过商业市场提供的任何其他产品。 此项费用减少仅适用于 Microsoft 在 2019 年 5 月 1 日至 2020 年 6 月 30 日之间收取许可证费用的符合资格的产品/服务。 此时间点过后，此项费用将恢复为正常价格。
+对于在商业市场上发布的特定产品/服务，Microsoft 会将其 Marketplace 服务费用从20% 降低到10% （如 Microsoft 发布者协议中所述）。 对于你的产品/服务，你的产品/服务必须已由 Microsoft 指定为 Azure IP 共同销售 incetivized。 在每个日历月结束之前，资格必须至少满足五（5）个工作日，才能获得该月降低的 Marketplace 服务费用。 降低的 Marketplace 服务费用适用于 Azure IP 共同销售 incentivized SaaS、Vm、托管应用以及通过商业市场提供的任何其他合格事务 IaaS 产品/服务。
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>客户开具发票、付款、计费和费用收集
 
@@ -180,7 +180,7 @@ Microsoft 作为代理收集的所有软件许可费用将收取 20% 的手续�
 
 交易发布选项仅适用于以下市场产品/服务类型：
 
-- **虚拟机**–选择免费、自带许可证或即用即付定价模型，并在服务级别定义为 sku。 在客户的 Azure 帐单上，Microsoft 将发布者软件许可证费用与隐含的 Azure 基础结构费用分开显示。 Azure 基础结构费用取决于发布者软件使用情况。
+- **虚拟机**–从免费、自带许可证或即用即付定价模型中进行选择，并以服务级别定义的计划形式提供。 在客户的 Azure 帐单上，Microsoft 将发布者软件许可证费用与隐含的 Azure 基础结构费用分开显示。 Azure 基础结构费用取决于发布者软件使用情况。
 
 - **Azure 应用程序：解决方案模板或托管应用**–必须预配一个或多个虚拟机，并提取虚拟机定价的总和。 对于单个计划的托管应用，可以选择固定费率每月订阅作为定价模型，而不是虚拟机定价。 在部分情况下，Azure 基础结构使用费将与软件许可证费用分开，单独传递给客户，但位于相同的账单上。 但是，如果你配置了托管应用产品/服务以实现 ISV 基础结构费用，则会向发布者计费 Azure 资源，并且客户会收到包含基础结构、软件许可证和管理服务成本的固定费用。
 

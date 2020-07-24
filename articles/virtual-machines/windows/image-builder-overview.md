@@ -7,12 +7,13 @@ ms.date: 05/02/2019
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 8b8634d601a89ff0014d33921f20b2683b2ef12e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16d67116ad1247b8cb1a8fa11ef5e4af9db265b8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869549"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999218"
 ---
-# <a name="preview-azure-image-builder-overview"></a>预览： Azure 映像生成器概述
+# <a name="preview-azure-image-builder-overview-in-windows"></a>预览： Windows 中的 Azure 映像生成器概述
 
 [!INCLUDE [virtual-machines-image-builder-overview](../../../includes/virtual-machines-image-builder-overview.md)]

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/4/2020
 ms.author: inhenkel
-ms.openlocfilehash: e039a240465478e86ce816890219e5dfaa07dfbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f86c157652f6219afdf1df1da9b8ad385f059aa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82791045"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000945"
 ---
 # <a name="media-services-live-event-error-codes"></a>媒体服务实时事件错误代码
 
@@ -26,7 +26,7 @@ ms.locfileid: "82791045"
 
 ## <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
 
-当你订阅实时事件的[事件网格](https://docs.microsoft.com/azure/event-grid/)事件时，可能会看到[LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected)事件出现以下错误之一。
+当你订阅实时事件的[事件网格](../../event-grid/index.yml)事件时，可能会看到[LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected)事件出现以下错误之一。
 
 | 结果代码 | 说明 |
 | ----------- | ----------- |

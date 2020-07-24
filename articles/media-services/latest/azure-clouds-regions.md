@@ -12,11 +12,12 @@ ms.topic: article
 ms.date: 5/28/2020
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: cefd366e29fe1c6f68ec38816247f78bb53cd6e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ecc8cad4480528477f6bb470c7bc32ee2a20e11
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196240"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001343"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>存在 Azure 媒体服务 v3 的云和区域
 
@@ -37,14 +38,14 @@ Azure 媒体服务 v3 可通过 Azure资源管理器清单在全球 Azure、Azur
 
 [LiveTranscription](live-transcription.md)在以下区域中提供：
 
-- 东南亚
+- Southeast Asia
 - 西欧
 - 北欧
 - 美国东部
 - 美国中部
 - 美国中南部
 - 美国西部 2
-- 巴西南部
+- Brazil South
 
 ## <a name="regionsgeographieslocations"></a>区域/地域/位置
 
@@ -52,7 +53,7 @@ Azure 媒体服务 v3 可通过 Azure资源管理器清单在全球 Azure、Azur
 
 ### <a name="region-code-name"></a>区域代码名
 
-如果需要提供**位置**参数，则需要提供区域代码名称作为**位置**值。 若要获取你的帐户所在的并且应当将你的调用路由到的区域的代码名称，可以在 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 中运行以下命令行
+如果需要提供**位置**参数，则需要提供区域代码名称作为**位置**值。 若要获取你的帐户所在的并且应当将你的调用路由到的区域的代码名称，可以在 [Azure CLI](/cli/azure/?view=azure-cli-latest) 中运行以下命令行
 
 ```azurecli-interactive
 az account list-locations
@@ -79,32 +80,32 @@ az account list-locations
 
 ### <a name="global-azure"></a>全球 Azure
 
-|终结点||
-| --- | --- |
+| 服务 | 端点 |
+| ------- | -------- |
 | Azure Resource Manager |  `https://management.azure.com/` |
 | 身份验证 | `https://login.microsoftonline.com/` |
 | 令牌受众 | `https://management.core.windows.net/` |
 
 ### <a name="azure-government"></a>Azure Government
 
-|终结点||
-| --- | --- |
+| 服务 | 端点 |
+| ------- | -------- |
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
 | 身份验证 | `https://login.microsoftonline.us/` |
 | 令牌受众 | `https://management.core.usgovcloudapi.net/` |
 
 ### <a name="azure-germany"></a>Azure 德国
 
-| 终结点 ||
-| --- | --- |  
+| 服务 | 端点 |
+| ------- | -------- |
 | Azure Resource Manager | `https://management.cloudapi.de/` |
 | 身份验证 | `https://login.microsoftonline.de/` |
 | 令牌受众 | `https://management.core.cloudapi.de/`|
 
 ### <a name="azure-china-21vianet"></a>Azure 中国世纪互联
 
-|终结点||
-| --- | --- |
+| 服务 | 端点 |
+| ------- | -------- |
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
 | 身份验证 | `https://login.chinacloudapi.cn/` |
 | 令牌受众 |  `https://management.core.chinacloudapi.cn/` |

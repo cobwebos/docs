@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6d86c90828c081a542fa5574493a46e8a2e44640
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7310c037511fdf1a7d6f3763fd61d292078ea83e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82187471"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998880"
 ---
 # <a name="cloudsimple-security-overview"></a>CloudSimple 安全性概述
 
@@ -29,7 +29,7 @@ Azure 基础结构安全注意事项包括数据中心和设备位置。
 
 ### <a name="datacenter-security"></a>数据中心安全性
 
-Microsoft 拥有一个用于设计、构建和运营支持 Azure 的物理设施的整个部门。 此团队在维持一流物理安全性方面投入了大量的人力物力。 有关物理安全的详细信息，请参阅[Azure 设施、本地和物理安全性](../security/azure-physical-security.md)。
+Microsoft 拥有一个用于设计、构建和运营支持 Azure 的物理设施的整个部门。 此团队在维持一流物理安全性方面投入了大量的人力物力。 有关物理安全的详细信息，请参阅[Azure 设施、本地和物理安全性](../security/fundamentals/physical-security.md)。
 
 ### <a name="equipment-location"></a>设备位置
 
@@ -39,7 +39,7 @@ Microsoft 拥有一个用于设计、构建和运营支持 Azure 的物理设施
 
 作为 CloudSimple 服务的一部分，所有 CloudSimple 客户都将获得具有本地附加磁盘的专用裸机主机，这些主机与其他租户硬件物理隔离。 在每个节点上运行包含 vSAN 的 ESXi 虚拟机监控程序。 节点通过客户专用 VMware vCenter 和 NSX 进行管理。 不在租户之间共享硬件还能提供额外的隔离和安全保护层。
 
-## <a name="data-security"></a>数据安全性
+## <a name="data-security"></a>数据安全
 
 客户保持其数据的控制和所有权。 客户数据的数据保管是客户的责任。
 

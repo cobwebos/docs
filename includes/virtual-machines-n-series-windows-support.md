@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 40e5a1bf940e46aed566a1e3fa6dcb4e6b2d9230
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04b085d2e990a580ddc99acb3b83ac8bd8ac2db3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77135069"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998965"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
 
@@ -34,12 +34,14 @@ ms.locfileid: "77135069"
 
 Microsoft 为用作虚拟工作站或虚拟应用程序的 NV 和 NVv3 系列 Vm 重新分发 NVIDIA 网格驱动程序安装程序。 仅在 Azure NV 系列 Vm 上安装这些网格驱动程序，且仅在下表中列出的操作系统上安装。 这些驱动程序包括 Azure 中 GRID Virtual GPU Software 的许可。 无需设置 NVIDIA vGPU 软件许可证服务器。
 
+Azure 重新分发的网格驱动程序不适用于非 NV 系列 Vm，如 NC、NCv2、NCv3、ND 和 NDv2 系列 Vm。
+
 请注意，Nvidia 扩展将始终安装最新的驱动程序。 我们在此处提供了与旧版本相关的客户的以前版本的链接。
 
-对于 Windows Server 2019、Windows Server 2016 和 Windows 10 （最多生成1909）：
-- [网格10.1 （442.06）](https://go.microsoft.com/fwlink/?linkid=874181) （.exe）
-- [网格10.0 （441.66）](https://download.microsoft.com/download/2/a/3/2a316e62-3be9-4ddb-ae8e-c04b6df6e22d/441.66_grid_win10_server2016_server2019_64bit_international.exe) （.exe） 
+对于 Windows Server 2019、Windows Server 2016 和 Windows 10 （最多生成2004）：
+- [GRID 11 （451.48）](https://go.microsoft.com/fwlink/?linkid=874181) （.exe）
+- [网格10.1 （442.06）](https://download.microsoft.com/download/b/8/f/b8f5ecec-b8f9-47de-b007-ac40adc88dc8/442.06_grid_win10_64bit_international_whql.exe) （.exe） 
 
-对于 Windows Server 2012 R2、Windows Server 2008 R2、Windows 8 和 Windows 7： 
-- [网格10.1 （442.06）](https://go.microsoft.com/fwlink/?linkid=874184) （.exe）
-- [网格10.0 （441.66）](https://download.microsoft.com/download/d/8/0/d80091f8-0d55-47c2-958a-bacd136f432a/441.66_grid_win7_win8_server2008R2_server2012R2_64bit_international.exe) （.exe）  
+对于 Windows Server 2012 R2： 
+- [GRID 11 （451.48）](https://go.microsoft.com/fwlink/?linkid=874184) （.exe）
+- [网格10.1 （442.66）](https://download.microsoft.com/download/4/3/3/4330fd5c-c685-4ca1-abca-3b2fb3c11d2e/442.06_grid_win8_win7_64bit_international_whql.exe) （.exe）  

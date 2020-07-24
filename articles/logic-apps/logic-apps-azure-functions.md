@@ -6,15 +6,16 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 6240b0813132f4a14dbe94b870774ebe7a0663aa
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 0ac35fde59479ffc13c17f8e63d6fccf65c3be27
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714570"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001700"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>从 Azure 逻辑应用调用 Azure 函数
 
-若要运行在逻辑应用中执行特定作业的代码，可以使用 [Azure Functions](../azure-functions/functions-overview.md) 创建你自己的函数。 此服务有助于创建 Node.js、C# 和 F# 函数，这样你就无需生成完整的应用或基础结构来运行代码。 还能[从 Azure Functions 内部调用逻辑应用](#call-logic-app)。 Azure Functions 在云中提供无服务器计算，且对执行任务非常有用，如以下示例：
+若要在逻辑应用中运行执行特定作业的代码，可以使用 [Azure Functions](../azure-functions/functions-overview.md) 创建自己的函数。 该服务有助于创建 Node.js、C# 和 F# 函数，使你无需为运行代码而构建完整的应用或基础结构。 还能[从 Azure Functions 内部调用逻辑应用](#call-logic-app)。 Azure Functions 在云中提供无服务器计算，且对执行任务非常有用，如以下示例：
 
 * 通过 Node.js 或 C# 函数扩展逻辑应用的行为。
 * 在逻辑应用工作流中执行计算。
@@ -29,15 +30,15 @@ ms.locfileid: "83714570"
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* 作为 Azure 函数容器的 Azure 函数应用，以及 Azure 函数。 若没有函数应用，请先[创建函数应用](../azure-functions/functions-create-first-azure-function.md)。 然后，可以在 Azure 门户中在逻辑应用外部创建函数，也可以在逻辑应用设计器中在[逻辑应用内部](#create-function-designer)创建函数。
+* 作为 Azure 函数容器的 Azure 函数应用，以及 Azure 函数。 若没有函数应用，请先[创建函数应用](../azure-functions/functions-create-first-azure-function.md)。 然后才可以在逻辑应用外部（在 Azure 门户中）或[逻辑应用内部](#create-function-designer)（在逻辑应用设计器中）创建函数。
 
-* 在使用逻辑应用时，同样的要求也适用于函数应用和函数，无论它们是现有的还是新的：
+* 使用逻辑应用时，同样的要求适用于函数应用和函数，不管它们是现有的还是全新的：
 
-  * 函数应用和逻辑应用必须使用相同的 Azure 订阅。
+  * 函数应用和逻辑应用必须使用同一 Azure 订阅。
 
-  * 新的函数应用必须使用 .NET 或 JavaScript 作为运行时堆栈。 在向现有的函数应用添加新函数时，可以选择 C# 或 JavaScript。
+  * 新的函数应用必须使用 .NET 或 JavaScript 作为运行时堆栈。 将新函数添加到现有的函数应用时，可以选择 C# 或 JavaScript。
 
-  * 函数使用“HTTP 触发器”模板。
+  * 你的函数使用 **HTTP 触发器**模板。
 
     此 HTTP 触发器模板可从逻辑应用接受具有 `application/json` 类型的内容。 当你向逻辑应用添加 Azure 函数时，逻辑应用设计器会显示 Azure 订阅内基于此模板创建的自定义函数。
 
@@ -47,7 +48,7 @@ ms.locfileid: "83714570"
 
 * 要在其中添加函数的逻辑应用（加入[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)是逻辑应用中的第一步）
 
-  逻辑应用必须先从触发器开始，然后你才能添加运行函数的操作。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+  在添加运行函数的操作之前，必须使用触发器启动逻辑应用。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 <a name="function-swagger"></a>
 
@@ -57,9 +58,9 @@ ms.locfileid: "83714570"
 
 1. 确保函数应用正在运行。
 
-1. 在函数应用中，按照以下步骤操作来设置[跨源资源共享 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)，以便允许所有源：
+1. 按照以下步骤，在函数应用中，设置[跨源资源共享 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) 以便允许所有来源：
 
-   1. 在“函数应用”列表中，选择你的函数应用。 在右侧窗格中，依次选择“平台功能” > “CORS”。
+   1. 从“函数应用”列表中选择自己的函数应用。 在右侧窗格中，选择“平台功能” > “CORS”。
 
       ![选择函数应用 >“平台功能”>“CORS”](./media/logic-apps-azure-functions/function-platform-features-cors.png)
 
@@ -108,15 +109,15 @@ function convertToDateString(request, response){
 
 1. 按照适用于自身方案的步骤，创建并添加函数：
 
-   * 在逻辑应用的工作流中的最后一个步骤下，选择“新建步骤”。
+   * 如果处于逻辑应用工作流最后一步，请选择“新建步骤”。
 
-   * 在逻辑应用的工作流中的现有步骤之间，将鼠标移至箭头上，然后依次选择加号 (+) 和“添加操作”。
+   * 如果介于逻辑应用工作流中现有步骤之间，请将鼠标移至箭头上，选择加号 (+)，然后选择“添加操作”。
 
 1. 在搜索框中输入“Azure Functions”作为筛选器。 在操作列表中，选择“选择 Azure 函数”操作，例如：
 
    ![找到“Azure Functions”](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
-1. 从函数应用列表中选择自己的函数应用。 在操作列表打开后，选择此操作：新建函数
+1. 从函数应用列表中选择自己的函数应用。 在操作列表打开后，选择此操作：**创建新函数**
 
    ![选择函数应用](./media/logic-apps-azure-functions/select-function-app-create-function.png)
 
@@ -145,15 +146,15 @@ function convertToDateString(request, response){
 
 1. 在“请求正文”框中，提供函数的输入，其格式必须为 JavaScript 对象表示法 (JSON) 对象。
 
-   此输入是逻辑应用发送到函数的上下文对象或消息。 点击“请求正文”字段时，界面会显示动态内容列表，以便你可以为先前步骤中的输出选择令牌。 此示例指定上下文有效负载包含名为 `content` 的属性，其中有来自电子邮件触发器的“发件人”标记的值。
+   此输入是逻辑应用发送到函数的上下文对象或消息。 点击“请求正文”字段时，界面会显示动态内容列表，以便你可以为先前步骤中的输出选择令牌。 本示例指定上下文有效负载包含一个名为 `content` 的属性，该属性具有来自电子邮件触发器的 **From** 标记的值。
 
    ![“请求正文”示例 - 上下文对象有效负载](./media/logic-apps-azure-functions/function-request-body-example.png)
 
-   此处的上下文对象没有强制转换为字符串，因此对象的内容被直接添加到 JSON 有效负载中。 但是，如果该上下文对象不是传递字符串、JSON 对象或 JSON 数组的 JSON 令牌，则会出现错误。 所以，如果此示例改用“接收时间”标记，则可以通过添加双引号将上下文对象强制转换为字符串。
+   此处的上下文对象没有强制转换为字符串，因此对象的内容被直接添加到 JSON 有效负载中。 但是，如果该上下文对象不是传递字符串、JSON 对象或 JSON 数组的 JSON 令牌，则会出现错误。 因此，如果本示例使用了 **Received Time** 标记，则可通过添加双引号将此上下文对象强制转换为字符串。
 
    ![将对象强制转换为字符串](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
-1. 若要指定其他详细信息（如要使用的方法、请求头、查询参数或身份验证），请打开“添加新参数”列表，然后选择所需的选项。 对于身份验证，选项因所选函数而异。 请参阅[为 Azure 函数启用身份验证](#enable-authentication-functions)。
+1. 若要指定其他详细信息，例如要使用的方法、请求标头、查询参数或身份验证，请打开“添加新参数”列表，然后选择所需选项。 身份验证的选项因所选函数而异。 请参阅[为 Azure 函数启用身份验证](#enable-authentication-functions)。
 
 <a name="add-function-logic-app"></a>
 
@@ -165,7 +166,7 @@ function convertToDateString(request, response){
 
 1. 在要添加函数的步骤下，选择“新建步骤”。
 
-1. 在“选择操作”下的搜索框中，输入“azure functions”作为筛选器。 在操作列表中，选择“选择 Azure 函数”操作。
+1. 在“选择操作”下的搜索框中，输入“azure 函数”作为筛选器。 在操作列表中，选择“选择 Azure 函数”操作。
 
    ![找到“Azure Functions”](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
@@ -173,13 +174,13 @@ function convertToDateString(request, response){
 
    ![选择函数应用和 Azure 函数](./media/logic-apps-azure-functions/select-function-app-existing-function.png)
 
-   对于具有 API 定义（Swagger 说明）且[设置为可供逻辑应用查找和访问](#function-swagger)的函数，可以选择“Swagger 操作”。
+   对于具备 API 定义（Swagger 描述）的函数以及那些[设置为可供逻辑应用查找和访问](#function-swagger)的函数，可以选择“Swagger 操作”。
 
-   ![依次选择函数应用、“Swagger 操作”和 Azure 函数](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
+   ![选择函数应用、“Swagger 操作”和 Azure 函数](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
 
 1. 在“请求正文”框中，提供函数的输入，其格式必须为 JavaScript 对象表示法 (JSON) 对象。
 
-   此输入是逻辑应用发送到函数的上下文对象或消息。 单击“请求正文”字段时，会看到动态内容列表，这样就可以为前面步骤的输出选择标记。 此示例指定上下文有效负载包含名为 `content` 的属性，其中有来自电子邮件触发器的“发件人”标记的值。
+   此输入是逻辑应用发送到函数的上下文对象或消息。 单击“请求正文”字段时，会看到动态内容列表，这样就可以为前面步骤的输出选择标记。 本示例指定上下文有效负载包含一个名为 `content` 的属性，该属性具有来自电子邮件触发器的 **From** 标记的值。
 
    ![“请求正文”示例 - 上下文对象有效负载](./media/logic-apps-azure-functions/function-request-body-example.png)
 
@@ -187,7 +188,7 @@ function convertToDateString(request, response){
 
    ![将对象强制转换为字符串](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
-1. 若要指定其他详细信息（如要使用的方法、请求头、查询参数或身份验证），请打开“添加新参数”列表，然后选择所需的选项。 对于身份验证，选项因所选函数而异。 请参阅[在 Azure 函数中启用身份验证](#enable-authentication-functions)。
+1. 若要指定其他详细信息，例如要使用的方法、请求标头、查询参数或身份验证，请打开“添加新参数”列表，然后选择所需选项。 身份验证的选项因所选函数而异。 请参阅[在 Azure Functions 中启用身份验证](#enable-authentication-functions)。
 
 <a name="call-logic-app"></a>
 
@@ -207,7 +208,7 @@ function convertToDateString(request, response){
 
 1. 在逻辑应用上启用托管标识，并设置此标识对目标资源的访问权限。 请参阅[在 Azure 逻辑应用中使用托管标识验证对 Azure 资源的访问](../logic-apps/create-managed-service-identity.md)。
 
-1. 若要在 Azure 函数和函数应用中启用身份验证，请按照以下步骤操作：
+1. 执行以下步骤，在 Azure 函数和函数应用中启用身份验证：
 
    * [在函数中设置匿名身份验证](#set-authentication-function-app)
    * [在函数应用中设置 Azure AD 身份验证](#set-azure-ad-authentication)
@@ -220,96 +221,96 @@ function convertToDateString(request, response){
 
 1. 在 [Azure 门户](https://portal.azure.com)中，找到并选择你的函数应用。 这些步骤使用“FabrikamFunctionApp”作为示例函数应用。
 
-1. 在“函数应用”窗格中，选择“平台功能”。 在“开发工具”下，选择“高级工具(Kudu)”。
+1. 在函数应用窗格中选择“平台功能”。 在“开发工具”下，选择“高级工具(Kudu)”。 
 
-   ![打开 Kudu 的高级工具](./media/logic-apps-azure-functions/open-advanced-tools-kudu.png)
+   ![打开 Kudu 高级工具](./media/logic-apps-azure-functions/open-advanced-tools-kudu.png)
 
-1. 在 Kudu 网站的标题栏中，选择“调试控制台”菜单中的“CMD”。
+1. 在 Kudu 网站的标题栏上，从“调试控制台”菜单中选择“CMD”。 
 
-   ![选择“调试控制台”菜单中的“CMD”选项](./media/logic-apps-azure-functions/open-debug-console-kudu.png)
+   ![在调试控制台菜单中选择“CMD”选项](./media/logic-apps-azure-functions/open-debug-console-kudu.png)
 
-1. 在下一页显示后，在文件夹列表中依次选择“site” > “wwwroot” >  你的函数。 这些步骤使用“FabrikamAzureFunction”作为示例函数。
+1. 下一页出现后，从文件夹列表中选择“站点” > “wwwroot” > “<你的函数>”。  这些步骤使用“FabrikamAzureFunction”作为示例函数。
 
-   ![依次选择“site”>“wwwroot”> 你的函数](./media/logic-apps-azure-functions/select-site-wwwroot-function-folder.png)
+   ![选择“站点”>“wwwroot”> 你的函数](./media/logic-apps-azure-functions/select-site-wwwroot-function-folder.png)
 
 1. 打开 `function.json` 文件进行编辑。
 
-   ![单击“function.json”文件对应的“编辑”按钮](./media/logic-apps-azure-functions/edit-function-json-file.png)
+   ![单击“function.json”文件对应的编辑图标](./media/logic-apps-azure-functions/edit-function-json-file.png)
 
-1. 在 `bindings` 对象中，检查是否有 `authLevel` 属性。 若有此属性，将属性值设置为“`anonymous`”。 否则，请添加此属性并设置值。
+1. 在 `bindings` 对象中，检查 `authLevel` 属性是否存在。 如果该属性存在，请将属性值设置为 `anonymous`。 否则，请添加该属性并设置值。
 
-   ![添加“authLevel”属性，并将值设置为“anonymous”](./media/logic-apps-azure-functions/set-authentication-level-function-app.png)
+   ![添加“authLevel”属性并将其设置为“anonymous”](./media/logic-apps-azure-functions/set-authentication-level-function-app.png)
 
-1. 完成后，保存设置，然后继续下一部分。
+1. 完成后，保存设置，然后转到下一部分。
 
 <a name="set-azure-ad-authentication"></a>
 
 ### <a name="set-up-azure-ad-authentication-for-your-function-app"></a>为函数应用设置 Azure AD 身份验证
 
-开始执行此任务之前，请先查找下面这些值，并将它们放在一边以供稍后使用：
+在开始此任务之前，请找到以下值并将其复制到某个位置，供稍后使用：
 
 * 为表示逻辑应用的系统分配标识生成的对象 ID
 
   * 若要生成此对象 ID，请[启用逻辑应用的系统分配标识](../logic-apps/create-managed-service-identity.md#azure-portal-system-logic-app)。
 
-  * 否则，若要查找此对象 ID，请在逻辑应用设计器中打开逻辑应用。 在逻辑应用菜单上的“设置”下，依次选择“标识” > “系统分配”。
+  * 否则，若要查找此对象 ID，请在逻辑应用设计器中打开逻辑应用。 在逻辑应用菜单中的“设置”下，选择“标识” > “系统分配”。  
 
 * Azure Active Directory (Azure AD) 中租户的目录 ID
 
-  若要获取租户的目录 ID，可以运行 [`Get-AzureAccount`](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureaccount) Powershell 命令。 或者，在 Azure 门户中按照以下步骤操作：
+  若要获取租户的目录 ID，可以运行 [`Get-AzureAccount`](/powershell/module/servicemanagement/azure.service/get-azureaccount) Powershell 命令。 或者，在 Azure 门户中执行以下步骤：
 
   1. 在 [Azure 门户](https://portal.azure.com)中，找到并选择你的函数应用。
 
-  1. 找到并选择你的 Azure AD 租户。 这些步骤使用“Fabrikam”作为示例租户。
+  1. 查找并选择你的 Azure AD 租户。 这些步骤使用“Fabrikam”作为示例租户。
 
-  1. 在租户菜单上的“管理”下，选择“属性”。
+  1. 在租户菜单中的“管理”下，选择“属性”。 
 
-  1. 例如，复制租户的目录 ID，然后保存此 ID 以供稍后使用。
+  1. 复制租户的目录 ID，并保存该 ID 供稍后使用。
 
-     ![查找并复制 Azure AD 租户的目录 ID](./media/logic-apps-azure-functions/azure-active-directory-tenant-id.png)
+     ![找到并复制 Azure AD 租户的目录 ID](./media/logic-apps-azure-functions/azure-active-directory-tenant-id.png)
 
 * 要访问的目标资源的资源 ID
 
-  * 若要查找这些资源 ID，请查阅[支持 Azure AD 的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
+  * 若要查找这些资源 ID，请查看[支持 Azure AD 的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 
   > [!IMPORTANT]
-  > 此资源 ID 必须与 Azure AD 所需的值完全匹配，包括任何必需的尾随斜线。
+  > 此资源 ID 必须与 Azure AD 所需的值完全匹配，包括所有必需的尾部斜杠。
 
-  此资源 ID 也是稍后在[设置函数操作以使用系统分配标识](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)时在“受众”属性中使用的值。
+  稍后在[设置函数操作以使用系统分配的标识](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)时，也要在“受众”属性中使用此资源 ID。
 
-现在可以为函数应用设置 Azure AD 身份验证了。
+现已准备好为函数应用设置 Azure AD 身份验证。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，找到并选择你的函数应用。
 
-1. 在“函数应用”窗格中，选择“平台功能”。 在“网络”下，选择“身份验证/授权”。
+1. 在函数应用窗格中选择“平台功能”。 在“网络”下，选择“身份验证/授权”。 
 
    ![查看身份验证和授权设置](./media/logic-apps-azure-functions/view-authentication-authorization-settings.png)
 
-1. 将“应用服务身份验证”设置更改为“开”。 在“请求未经验证时需执行的操作”列表中，选择“使用 Azure Active Directory 登录”。 在“身份验证提供程序”下，选择“Azure Active Directory”。
+1. 将“应用服务身份验证”设置更改为“打开”。  在“请求未经身份验证时需执行的操作”列表中，选择“使用 Azure Active Directory 登录” 。 在“验证提供程序”下，选择“Azure Active Directory” 。
 
-   ![启用使用 Azure AD 进行身份验证](./media/logic-apps-azure-functions/turn-on-authentication-azure-active-directory.png)
+   ![打开使用 Azure AD 进行身份验证](./media/logic-apps-azure-functions/turn-on-authentication-azure-active-directory.png)
 
-1. 在“Azure Active Directory 设置”窗格上，按照以下步骤操作：
+1. 在“Azure Active Directory 设置”窗格中执行以下步骤：
 
    1. 将“管理模式”设置为“高级”。
 
    1. 在“客户端 ID”属性中，输入逻辑应用的系统分配标识的对象 ID。
 
-   1. 在“颁发者 URL”属性中，输入 `https://sts.windows.net/` URL，并追加 Azure AD 租户的目录 ID。
+   1. 在“颁发者 URL”属性中输入 `https://sts.windows.net/` URL，并追加 Azure AD 租户的目录 ID。
 
       `https://sts.windows.net/<Azure-AD-tenant-directory-ID>`
 
-   1. 在“允许的标记受众”属性中，输入要访问的目标资源的资源 ID。
+   1. 在“允许的令牌受众”属性中，输入要访问的目标资源的资源 ID。
 
-      此资源 ID 也是稍后在[设置函数操作以使用系统分配标识](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)时在“受众”属性中使用的值。
+      稍后在[设置函数操作以使用系统分配的标识](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)时，需在“受众”属性中使用此同一个资源 ID 值。
 
-   此时，你的版本类似于以下示例：
+   现在，你的版本如以下示例所示：
 
    ![Azure Active Directory 身份验证设置](./media/logic-apps-azure-functions/azure-active-directory-authentication-settings.png)
 
 1. 完成后，请选择“确定”。
 
-1. 返回到逻辑应用设计器，并按照[使用托管标识验证访问的步骤](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)操作。
+1. 返回逻辑应用设计器，并遵循[使用托管标识对访问进行身份验证的步骤](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)操作。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,16 +7,16 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: rogarana
-ms.openlocfilehash: 0f2f0def9a23437dff57dda2d1a57950cef86275
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1ea1bfdf2c3b2dcfd49f87a5a75597a464b07913
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496122"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999575"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>概述-本地 Active Directory 域服务针对 Azure 文件共享的 SMB 进行身份验证
 
-[Azure 文件](storage-files-introduction.md)  通过以下两种类型的域服务，支持通过服务器消息块（SMB）进行基于身份的身份验证： Azure Active Directory 域服务（Azure AD DS）和本地 Active Directory 域服务（AD DS）。 使用基于身份的身份验证方法，可以将访问 Azure 文件共享的过程与现有的基于标识的身份验证过程相集成，而无需单独进行管理。 本系列文章重点介绍如何启用和配置本地 AD DS 以通过 Azure 文件共享进行身份验证。
+[Azure 文件](storage-files-introduction.md)  支持通过以下两种类型的域服务通过服务器消息块（SMB）进行基于身份的身份验证：本地 Active Directory 域服务（AD DS）和 Azure Active Directory 域服务（Azure AD DS）。强烈建议查看[其工作原理部分](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works)，为身份验证选择适当的域服务。 安装程序不同，具体取决于所选的域服务。 本系列文章重点介绍如何启用和配置本地 AD DS 以通过 Azure 文件共享进行身份验证。
 
 如果你不熟悉 Azure 文件共享，我们建议在阅读以下文章之前阅读我们的[规划指南](storage-files-planning.md)。
 
