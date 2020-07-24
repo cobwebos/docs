@@ -4,11 +4,12 @@ description: 提供有关 Azure VMware 解决方案 (AVS) 的某些常见问题�
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: 1649b5649bd18b7ab53f3cc0196d7dff0f6f5b2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f160e617163f11c02e4d661cbf1c14f63a6772f8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84112686"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003417"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>有关 Azure VMware 解决方案 (AVS) 预览版的常见问题解答
 
@@ -84,7 +85,7 @@ Azure VMware Solution by CloudSimple 没有任何更改。 我们继续支持 Az
 
 **每个主机的存储容量是多少？**
 
-每个 ESXi 主机都有两个 VSAN 磁盘组，采用 15.2 TB 的容量层和 3.2 TB 的 NVMe 缓存层（每个磁盘组 1.6 TB）。
+每个 ESXi 主机都有两个 vSAN diskgroups，容量层为 15.2 TB，有 3.2 TB 个 NVMe 缓存层（每个 diskgroup 中 1.6 TB）。
 
 **每个 ESXi 主机中提供多少网络带宽？**
 
@@ -92,7 +93,7 @@ ESXi 主机支持最大 25 Gbps 的连接带宽。
 
 **VSAN 数据存储上存储的数据是否静态加密？**
 
-是的，默认情况下所有 VSAN 数据均使用 Azure Key Vault 中存储的密钥加密。
+是的，默认情况下，使用存储在 Azure Key Vault 中的密钥加密所有 vSAN 数据。
 
 ## <a name="hosts-clusters-and-private-clouds"></a>主机、群集和私有云
 
@@ -114,7 +115,7 @@ ESXi 主机支持最大 25 Gbps 的连接带宽。
 
 **可以为试用群集使用高端主机吗？**
 
-不能。 高端 ESXi 主机保留用于生产群集。
+否。 高端 ESXi 主机保留用于生产群集。
 
 ## <a name="avs-and-vmware-software"></a>AVS 和 VMware 软件
 
@@ -136,7 +137,7 @@ ESXi 主机支持最大 25 Gbps 的连接带宽。
 
 **在私有云中，VMware 软件的升级和更新计划是什么？**
 
-私有云软件捆绑升级的目的是将软件保存到 VMware 的软件捆绑版本的最新版本中。 私有云软件版本可能不同于各个软件组件（ESXi、NSX-T、vCenter、VSAN）的最新版本。
+私有云软件捆绑升级的目的是将软件保存到 VMware 的软件捆绑版本的最新版本中。 私有云软件版本可能不同于各个软件组件的最新版本（ESXi、NSX-T、vCenter、vSAN）。
 
 **私有云软件堆栈的更新频率是多少？**
 
@@ -215,7 +216,7 @@ ESXi 主机支持最大 25 Gbps 的连接带宽。
 > ```azurecli-interactive
 > az provider register -n Microsoft.AVS --subscription <your subscription ID>
 > ```
-> 有关注册资源提供程序的其他方式，请参阅 [Azure 资源提供程序和类型](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)。
+> 有关注册资源提供程序的其他方式，请参阅 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)。
 
 1. 在 Azure 门户中的“帮助 + 支持”下，创建“新支持请求”并为票证提供以下信息 ：
    - **问题类型：** 技术方面

@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 16a5e0bb3e50e3a90951572e8d2847d379c1b114
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e544d135883d0c936b3f23b3e50e385268c992c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80297646"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006290"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>部署 StorSimple 虚拟阵列 - 通过 Azure 门户设置为文件服务器
-![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
+![显示部署虚拟阵列所需步骤的关系图。 第三个步骤中的第一部分标记为 "文件服务器"，并突出显示。](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
 
 ## <a name="introduction"></a>简介
 
@@ -45,22 +45,22 @@ ms.locfileid: "80297646"
 
 ## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>步骤 1：完成本地 Web UI 设置并注册设备
 #### <a name="to-complete-the-setup-and-register-the-device"></a>完成设备设置和注册
-1. 打开浏览器窗口并连接到本地 Web UI。 类型：
+1. 打开浏览器窗口并连接到本地 Web UI。 键入：
    
    `https://<ip-address of network interface>`
    
    使用在上一步中记下的连接 URL。 此时会出现一个错误，指出网站的安全证书有问题。 单击“继续访问此网页”。****
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image2.png)
+   ![报告安全证书问题的浏览器窗口的屏幕截图。 显示两个链接，一个用于网站，另一个用于用户的主页。](./media/storsimple-virtual-array-deploy3-fs-setup/image2.png)
 2. 以 **StorSimpleAdmin** 身份登录到虚拟阵列的 Web UI。 输入在“步骤 3：启动虚拟阵列”中更改的设备管理员密码，详见[在 Hyper-V 中预配 StorSimple 虚拟阵列](storsimple-virtual-array-deploy2-provision-hyperv.md)或[在 VMware 中预配 StorSimple 虚拟阵列](storsimple-virtual-array-deploy2-provision-vmware.md)。
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image3.png)
+   ![StorSimple 登录页的屏幕截图。 Storsimpleadmin 身份用户名可见，并使用不确定的字符填充密码框。](./media/storsimple-virtual-array-deploy3-fs-setup/image3.png)
 3. 此时会转到“主页”。**** 该页介绍配置虚拟阵列并将其注册到 StorSimple Device Manager 服务所需的各种设置。 “网络设置”、“Web 代理设置”和“时间设置”为可选设置。************ 仅“设备设置”和“云设置”为必需设置。********
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image4.png)
+   ![主页的屏幕截图。 文本表明未配置设备。 指向几种不同类型的设置的链接是可见的。](./media/storsimple-virtual-array-deploy3-fs-setup/image4.png)
 4. 在“网络接口”下的“网络设置”页中，系统会自动为用户配置 DATA 0。******** 每个网络接口均默认设置为自动获取 IP 地址 (DHCP)。 因此，系统会自动分配 IP 地址、子网和网关（适用于 IPv4 和 IPv6）。
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image5.png)
+   !["网络设置" 页的屏幕截图，其中显示了为各种版本的 Internet 协议配置的 IP 地址。](./media/storsimple-virtual-array-deploy3-fs-setup/image5.png)
    
    如果在预配设备的过程中添加了多个网络接口，可在此处配置这些接口。 注意，可将网络接口配置为仅限 IPv4，或者同时支持 IPv4 和 IPv6。 不支持仅限 IPv6 的配置。
 5. DNS 服务器是必需的，因为在设备尝试与云存储服务提供程序通信时，需要用到这些服务器；在按名称解析设备时，也需要用到这些配置为文件服务器的服务器。 在“DNS 服务器”下的“网络设置”页中：********
@@ -70,15 +70,15 @@ ms.locfileid: "80297646"
 6. 在“设备设置”页中：****
    
    1. 为设备指定唯一“名称”。**** 该名称长度为 1-15 个字符，并可包含字母、数字和连字符。
-   2. 选择要创建的设备的“类型”时，请单击“文件服务器”图标 ![](./media/storsimple-virtual-array-deploy3-fs-setup/image6.png)。******** 文件服务器可用于创建共享文件夹。
+   2. 选择要创建的设备的“类型”时，请单击“文件服务器”图标 :::image type="icon" source="./media/storsimple-virtual-array-deploy3-fs-setup/image6.png":::。******** 文件服务器可用于创建共享文件夹。
    3. 由于设备是文件服务器，因此需将其加入域。 输入**域名**。
    4. 单击“应用”。
 7. 随即将显示一个对话框。 按指定格式输入域凭据。 单击选中图标。 此时会验证域凭据。 如果凭据不正确，则会显示错误消息。
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image7.png)
+   ![显示一个对话框，其中包含已填写用户名和密码的对话框。](./media/storsimple-virtual-array-deploy3-fs-setup/image7.png)
 8. 单击“应用”。 此时会应用和验证设备设置。
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image8.png)
+   ![设备设置页的屏幕截图。 填写设备名称和域名。](./media/storsimple-virtual-array-deploy3-fs-setup/image8.png)
    
    > [!NOTE]
    > 请确保虚拟阵列采用其自身的适用于 Active Directory 的组织单位 (OU)，没有对其应用或让其继承任何组策略对象 (GPO)。 组策略可能会在 StorSimple 虚拟阵列上安装防病毒软件等应用程序。 不支持安装其他软件，否则容易导致数据损坏。 
@@ -86,7 +86,7 @@ ms.locfileid: "80297646"
    > 
 9. （可选）配置 Web 代理服务器。 尽管 Web 代理服务器配置是可选项，仍应注意，在使用 Web 代理时，只能在此处配置它。
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image9.png)
+   ![Web 代理设置页的屏幕截图。 禁用 "启用 web 代理" 选项，并将身份验证设置为 "无"。 不设置其他值。](./media/storsimple-virtual-array-deploy3-fs-setup/image9.png)
    
    在“Web 代理”页中：****
    
@@ -96,7 +96,7 @@ ms.locfileid: "80297646"
    4. 单击“应用”。 此时会验证并应用配置的 Web 代理设置。
 10. （可选）配置设备的时间设置，例如时区以及主 NTP 服务器和辅助 NTP 服务器。 NTP 服务器是必需的，因为设备必须同步时间，才能通过云服务提供程序进行身份验证。
     
-    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image10.png)
+    ![时间设置页的屏幕截图。 填写时区和主 N T P 服务器。 辅助 N T P 服务器为空白。](./media/storsimple-virtual-array-deploy3-fs-setup/image10.png)
     
     在“时间设置”页中：****
     
@@ -112,10 +112,10 @@ ms.locfileid: "80297646"
        如果这不是注册到此服务的第一个设备，则需提供服务数据加密密钥。 有关详细信息，请参阅在本地 web UI 上获取[服务数据加密密钥](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)。
     3. 单击“注册”。 此时会重新启动设备。 可能需要等待 2-3 分钟才能成功注册设备。 重新启动设备后，会转到登录页。
        
-       ![](./media/storsimple-virtual-array-deploy3-fs-setup/image13.png)
+       !["云设置" 页的屏幕截图。 已填写 "注册密钥" 和 "加密密钥" 框，但值为修正。](./media/storsimple-virtual-array-deploy3-fs-setup/image13.png)
 12. 返回到 Azure 门户。 转到“所有资源”****，搜索 StorSimple Device Manager 服务。
     
-    ![](./media/storsimple-virtual-array-deploy3-fs-setup/searchdevicemanagerservice1.png) 
+    ![Azure 门户的 "所有资源" 页的屏幕截图。 将突出显示设备管理器服务。](./media/storsimple-virtual-array-deploy3-fs-setup/searchdevicemanagerservice1.png) 
 13. 在筛选列表中，选择 StorSimple Device Manager 服务，并导航到“管理”>“设备”****。 在“设备”**** 边栏选项卡中，验证设备是否已成功连接到服务，并且其状态是否为“已准备好设置”****。
     
     ![配置文件服务器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
@@ -203,12 +203,12 @@ ms.locfileid: "80297646"
 现在需连接到上一步所创建的一个或多个共享。 已连接到 StorSimple 虚拟阵列的 Windows Server 主机上执行这些步骤。
 
 #### <a name="to-connect-to-the-share"></a>连接到共享
-1. 按 ![](./media/storsimple-virtual-array-deploy3-fs-setup/image22.png) + R。在“运行”窗口中，指定“&#92;&#92;&lt;文件服务器名称&gt;”** 作为路径，将“文件服务器名称”** 替换为分配给文件服务器的设备名称。 单击" **确定**"。
+1. 按 :::image type="icon" source="./media/storsimple-virtual-array-deploy3-fs-setup/image22.png"::: + R。在“运行”窗口中，指定“&#92;&#92;&lt;文件服务器名称&gt;”** 作为路径，将“文件服务器名称”** 替换为分配给文件服务器的设备名称。 单击“确定”  。
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image23.png)
+   !["运行" 对话框的屏幕截图。 "打开" 框中填充的路径为指向文件服务器的路径。](./media/storsimple-virtual-array-deploy3-fs-setup/image23.png)
 2. 这会打开文件资源管理器。 此时应能看到作为文件夹创建的共享。 选择并双击要查看其内容的共享（文件夹）。
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image24.png)
+   ![文件资源管理器的屏幕截图。 多个文件夹可见，它们表示新创建的共享。](./media/storsimple-virtual-array-deploy3-fs-setup/image24.png)
 3. 此时可向这些共享添加文件并进行备份。
 
 ## <a name="next-steps"></a>后续步骤

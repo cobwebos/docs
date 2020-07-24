@@ -13,13 +13,13 @@ author: swinarko
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 07/09/2020
-ms.openlocfilehash: 172a2ae863714b54e052819df93f872385b9c77a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.date: 07/20/2020
+ms.openlocfilehash: 2f8706fa8b272075ec64e2d36475509732914acf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183335"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003167"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用“执行 SSIS 包”活动运行 SSIS 包
 
@@ -57,7 +57,7 @@ ms.locfileid: "86183335"
 
 在“执行 SSIS 包”活动的“常规”选项卡上，完成以下步骤。
 
-   ![在“常规”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+![在“常规”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 
    1. 对于“名称”，请输入你的“执行 SSIS 包”活动的名称。
 
@@ -77,7 +77,7 @@ ms.locfileid: "86183335"
 
 在“执行 SSIS 包”活动的“设置”选项卡上，完成以下步骤。
 
-   ![在“设置”选项卡上设置属性 - 自动](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
+![在“设置”选项卡上设置属性 - 自动](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
 
    1. 对于“Azure-SSIS IR”，请选择指定的 Azure-SSIS IR 以运行“执行 SSIS 包”活动。
 
@@ -103,13 +103,13 @@ ms.locfileid: "86183335"
 
    1. 如果 Azure-SSIS IR 未在运行或“手动输入内容”复选框处于选中状态，请采用以下格式直接在 SSISDB 中输入你的包和环境路径：`<folder name>/<project name>/<package name>.dtsx` 和 `<folder name>/<environment name>`。
 
-   ![在“设置”选项卡上设置属性 - 手动](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
+      ![在“设置”选项卡上设置属性 - 手动](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
 
 ##### <a name="package-location-file-system-package"></a>包位置：文件系统(包)
 
 如果没有为 Azure-SSIS IR 预配 SSISDB，则会自动选择“文件系统(包)”作为包位置，否则，你可以自己选择它。 如果选择了该位置，请完成以下步骤。
 
-   ![在“设置”选项卡上设置属性 - 文件系统(包)](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
+![在“设置”选项卡上设置属性 - 文件系统(包)](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
    
    1. 指定要运行的包，方法是在“包路径”框中提供包文件（带扩展名 `.dtsx`）的通用命名约定 (UNC) 路径。 你可以通过选择“浏览文件存储”来浏览并选择包，也可以手动输入其路径。 例如，如果你将包存储在 Azure 文件存储中，则其路径为 `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`。 
    
@@ -133,13 +133,13 @@ ms.locfileid: "86183335"
    
    1. 指定用于访问日志文件夹的凭据。 如果先前已输入包访问凭据的值（参阅上文），则可以通过选中“与包访问凭据相同”复选框来重复使用这些值。 否则，请在“域”、“用户名”和“密码”框中输入日志记录访问凭据的值。   例如，如果将日志存储在 Azure 文件存储中，则域为 `Azure`，用户名为 `<storage account name>`，密码为 `<storage account key>`。 另外，还可以将 Azure Key Vault 中存储的机密用作其值（参阅上文）。
    
-   对于上述所有 UNC 路径，完全限定的文件名必须短于 260 个字符。 目录名称必须短于 248 个字符。
+对于上述所有 UNC 路径，完全限定的文件名必须短于 260 个字符。 目录名称必须短于 248 个字符。
 
 ##### <a name="package-location-file-system-project"></a>包位置：文件系统(项目)
 
 如果选择“文件系统(项目)”作为包位置，请完成以下步骤。
 
-   ![在“设置”选项卡上设置属性 - 文件系统(项目)](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
+![在“设置”选项卡上设置属性 - 文件系统(项目)](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
 
    1. 通过在“项目路径”框中提供项目文件（带 `.ispac` 扩展名）的 UNC 路径，并在“包名称”框中提供项目中某个包文件（带 `.dtsx` 扩展名）的 UNC 路径，来指定要运行的包。  你可以通过选择“浏览文件存储”来浏览并选择项目，也可以手动输入其路径。 例如，如果将项目存储在 Azure 文件存储中，则其路径为 `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac`。
 
@@ -161,19 +161,19 @@ ms.locfileid: "86183335"
    
    1. 指定用于访问日志文件夹的凭据。 如果先前已输入包访问凭据的值（参阅上文），则可以通过选中“与包访问凭据相同”复选框来重复使用这些值。 否则，请在“域”、“用户名”和“密码”框中输入日志记录访问凭据的值。   例如，如果将日志存储在 Azure 文件存储中，则域为 `Azure`，用户名为 `<storage account name>`，密码为 `<storage account key>`。 另外，还可以将 Azure Key Vault 中存储的机密用作其值（参阅上文）。
    
-   对于上述所有 UNC 路径，完全限定的文件名必须短于 260 个字符。 目录名称必须短于 248 个字符。
+对于上述所有 UNC 路径，完全限定的文件名必须短于 260 个字符。 目录名称必须短于 248 个字符。
 
 ##### <a name="package-location-embedded-package"></a>包位置：嵌入包
 
 如果选择“嵌入包”作为包位置，请完成以下步骤。
 
-   ![在“设置”选项卡上设置属性 - 嵌入包](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
+![在“设置”选项卡上设置属性 - 嵌入包](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
 
-   1. 通过拖放你的包来运行包，或将其从文件夹“上传”到提供的框中。 包会自动压缩并嵌入到活动有效负载中。 嵌入后，可以“下载”包供以后编辑。 你还可以通过将嵌入包分配给可在多个活动中使用的管道参数来**参数化**它，从而优化管道有效负载的大小。 
+   1. 拖放包文件（使用 `.dtsx` ）或将其从文件文件夹**上传**到提供的框中。 包会自动压缩并嵌入到活动有效负载中。 嵌入后，可以“下载”包供以后编辑。 你还可以通过将嵌入包分配给可在多个活动中使用的管道参数来**参数化**它，从而优化管道有效负载的大小。 当前不支持嵌入项目文件（with `.ispac` ），因此你不能在嵌入包中将 SSIS 参数/连接管理器与项目级别的作用域一起使用。
    
-   1. 如果嵌入包不是全部加密的，并且我们检测到其中使用了“执行包任务”，则系统会自动选择“执行包任务”复选框，并自动添加相关子包及其文件系统引用，以便你也嵌入它们。 
+   1. 如果你的嵌入式包未全部加密并且我们检测到其中的执行包任务（EPT），则将自动选择 "**执行包任务**" 复选框，并将自动添加其文件系统路径引用的子包，因此你也可以嵌入它们。
    
-      如果无法检测到“执行包任务”的使用，则必须手动选中“执行包任务”复选框，并添加相关子包，其文件系统会逐个引用它们，这样你就也可以嵌入它们。 如果子包使用 SQL Server 引用，请确保 Azure-SSIS IR 可以访问 SQL Server。  当前不支持为子包使用项目引用。
+      如果我们无法检测到 EPT 的使用，则需要手动选中 "**执行包任务**" 复选框，并逐个添加由其文件系统路径引用的子包，以便您还可以嵌入它们。 如果子包存储在 SQL Server 数据库（MSDB）中，则不能嵌入这些包，因此，需要确保 Azure-SSIS IR 可以访问 MSDB，使其能够使用其 SQL Server 引用获取它们。 当前不支持嵌入项目文件（with `.ispac` ），因此不能为子包使用基于项目的引用。
    
    1. 如果在通过 SSDT 创建包时使用了 **EncryptAllWithPassword** 或 **EncryptSensitiveWithPassword** 保护级别，请在“加密密码”框中输入密码的值。 
    
@@ -189,13 +189,13 @@ ms.locfileid: "86183335"
    
    1. 通过在“域”、“用户名”和“密码”框中输入值来指定用于访问日志文件夹的凭据。 例如，如果将日志存储在 Azure 文件存储中，则域为 `Azure`，用户名为 `<storage account name>`，密码为 `<storage account key>`。 另外，还可以将 Azure Key Vault 中存储的机密用作其值（参阅上文）。
    
-   对于上述所有 UNC 路径，完全限定的文件名必须短于 260 个字符。 目录名称必须短于 248 个字符。
+对于上述所有 UNC 路径，完全限定的文件名必须短于 260 个字符。 目录名称必须短于 248 个字符。
 
 ##### <a name="package-location-package-store"></a>包位置：包存储
 
 如果选择“包存储”作为包位置，请完成以下步骤。
 
-   ![在“设置”选项卡上设置属性 - 包存储](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings6.png)
+![在“设置”选项卡上设置属性 - 包存储](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings6.png)
    
    1. 对于“包存储名称”，请选择附加到你的 Azure-SSIS IR 的一个现有包存储。
 
@@ -221,49 +221,73 @@ ms.locfileid: "86183335"
    
    1. 通过在“域”、“用户名”和“密码”框中输入值来指定用于访问日志文件夹的凭据。 例如，如果将日志存储在 Azure 文件存储中，则域为 `Azure`，用户名为 `<storage account name>`，密码为 `<storage account key>`。 另外，还可以将 Azure Key Vault 中存储的机密用作其值（参阅上文）。
    
-   对于上述所有 UNC 路径，完全限定的文件名必须短于 260 个字符。 目录名称必须短于 248 个字符。
+对于上述所有 UNC 路径，完全限定的文件名必须短于 260 个字符。 目录名称必须短于 248 个字符。
 
 #### <a name="ssis-parameters-tab"></a>“SSIS 参数”选项卡
 
 在“执行 SSIS 包”活动的“SSIS 参数”选项卡上，完成以下步骤。
 
-   ![在“SSIS 参数”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
+![在“SSIS 参数”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
 
    1. 如果 Azure-SSIS IR 正在运行，而你已选择“SSISDB”作为包位置，并已清除“设置”选项卡上的“手动输入内容”复选框，则会显示 SSISDB 中选定项目和包中现有的 SSIS 参数，方便你为它们赋值  。 否则，可以逐个输入以便手动为它们赋值。 为了使包成功执行，请确保它们存在并已正确输入。 
    
    1. 如果通过 SSDT 创建包时使用了 **EncryptSensitiveWithUserKey** 保护级别，并且选择了“文件系统(包)”、“文件系统(项目)”、“嵌入包”或“包存储”作为包位置，则还需要重新输入敏感参数，以便在此选项卡上为它们赋值。    
    
-   为参数赋值时，可以使用表达式、函数、数据工厂系统变量和数据工厂管道参数或变量添加动态内容。
+为参数赋值时，可以使用表达式、函数、数据工厂系统变量和数据工厂管道参数或变量添加动态内容。
 
-   另外，还可以将 Azure Key Vault 中存储的机密用作其值。 为此，请选中它们旁边的“AZURE KEY VAULT”复选框。 选择或编辑现有的 Key Vault 链接服务，或创建新的链接服务。 然后，针对你的值选择机密名称和版本。 创建或编辑 Key Vault 链接服务时，可以选择或编辑现有的 Key Vault，或创建新的 Key Vault。 请务必授予数据工厂托管标识对 Key Vault 的访问权限（如果尚未这样做）。 此外，还可以采用以下格式直接输入机密：`<key vault linked service name>/<secret name>/<secret version>`。 
+另外，还可以将 Azure Key Vault 中存储的机密用作其值。 为此，请选中它们旁边的“AZURE KEY VAULT”复选框。 选择或编辑现有的 Key Vault 链接服务，或创建新的链接服务。 然后，针对你的值选择机密名称和版本。 创建或编辑 Key Vault 链接服务时，可以选择或编辑现有的 Key Vault，或创建新的 Key Vault。 请务必授予数据工厂托管标识对 Key Vault 的访问权限（如果尚未这样做）。 此外，还可以采用以下格式直接输入机密：`<key vault linked service name>/<secret name>/<secret version>`。 
 
 #### <a name="connection-managers-tab"></a>“连接管理器”选项卡
 
 在“执行 SSIS 包”活动的“连接管理器”选项卡上，完成以下步骤。
 
-   ![在“连接管理器”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png)
+![在“连接管理器”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png)
 
    1. 如果 Azure-SSIS IR 正在运行，而你已选择“SSISDB”作为包位置，并已清除“设置”选项卡上的“手动输入内容”复选框，则会显示 SSISDB 中选定项目和包中现有的连接管理器，方便你为它们的属性赋值  。 否则，可以逐个输入以便手动为其属性赋值。 为了使包成功执行，请确保它们存在并已正确输入。 
    
-   1. 如果通过 SSDT 创建包时使用了 **EncryptSensitiveWithUserKey** 保护级别，并且选择了“文件系统(包)”、“文件系统(项目)”、“嵌入包”或“包存储”作为包位置，则还需要重新输入敏感的连接管理器属性，以便在此选项卡上为它们赋值。    
-   
-   为连接管理器属性赋值时，可以使用表达式、函数、数据工厂系统变量和数据工厂管道参数或变量添加动态内容。 
+      您可以通过在 SSDT 上打开包含任何连接管理器的包来获取该连接管理器的正确**作用域**、**名称**和**属性**名称。 打开包后，选择相关的连接管理器，以在 SSDT 的 "**属性**" 窗口中显示其所有属性的名称和值。 利用此信息，你可以在运行时覆盖任何连接管理器属性的值。 
 
-   另外，还可以将 Azure Key Vault 中存储的机密用作其值。 为此，请选中它们旁边的“AZURE KEY VAULT”复选框。 选择或编辑现有的 Key Vault 链接服务，或创建新的链接服务。 然后，针对你的值选择机密名称和版本。 创建或编辑 Key Vault 链接服务时，可以选择或编辑现有的 Key Vault，或创建新的 Key Vault。 请务必授予数据工厂托管标识对 Key Vault 的访问权限（如果尚未这样做）。 此外，还可以采用以下格式直接输入机密：`<key vault linked service name>/<secret name>/<secret version>`。 
+      ![从 SSDT 获取连接管理器属性](media/how-to-invoke-ssis-package-ssis-activity/ssdt-connection-manager-properties.png)
+
+      例如，如果不在 SSDT 上修改原始包，可以通过在运行时覆盖现有连接管理器中的**ConnectByProxy**、 **ConnectionString**和**ConnectUsingManagedIdentity**属性的值，将 SQL Server 上运行的本地数据流数据流转换为在 ADF 中运行的本地到云的数据流。
+      
+      在访问本地数据时，这些运行时重写可以启用自承载 IR （SHIR）作为 SSIS IR 的代理，请参阅将[SHIR 配置为 SSIS ir 的代理](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)，以及使用最新 MSOLEDBSQL 驱动程序的 Azure SQL 数据库/托管实例连接，进而允许使用 adf 托管标识进行 AZURE ACTIVE DIRECTORY （aad）身份验证，请参阅使用[OLEDB 连接的 Adf 托管标识配置 AAD 身份验证](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)。
+
+      ![在 "连接管理器" 选项卡上设置 SSDT 的属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers2.png)
+   
+   1. 如果通过 SSDT 创建包时使用了 **EncryptSensitiveWithUserKey** 保护级别，并且选择了“文件系统(包)”、“文件系统(项目)”、“嵌入包”或“包存储”作为包位置，则还需要重新输入敏感的连接管理器属性，以便在此选项卡上为它们赋值。    
+
+为连接管理器属性赋值时，可以使用表达式、函数、数据工厂系统变量和数据工厂管道参数或变量添加动态内容。 
+
+另外，还可以将 Azure Key Vault 中存储的机密用作其值。 为此，请选中它们旁边的“AZURE KEY VAULT”复选框。 选择或编辑现有的 Key Vault 链接服务，或创建新的链接服务。 然后，针对你的值选择机密名称和版本。 创建或编辑 Key Vault 链接服务时，可以选择或编辑现有的 Key Vault，或创建新的 Key Vault。 请务必授予数据工厂托管标识对 Key Vault 的访问权限（如果尚未这样做）。 此外，还可以采用以下格式直接输入机密：`<key vault linked service name>/<secret name>/<secret version>`。 
 
 #### <a name="property-overrides-tab"></a>“属性替代”选项卡
 
 在“执行 SSIS 包”活动的“属性替代”选项卡上，完成以下步骤。
 
-   ![在“属性替代”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-property-overrides.png)
+![在“属性替代”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-property-overrides.png)
 
    1. 逐个输入选定包的现有属性的路径，以便手动为其赋值。 为了使包成功执行，请确保它们存在并已正确输入。 例如，若要替代用户变量的值，请按以下格式输入其路径：`\Package.Variables[User::<variable name>].Value`。 
+
+      您可以通过在 SSDT 上打开包含包属性的包来获取该属性的正确**路径**。 打开包后，在 SSDT 的 "**属性**" 窗口中选择其控制流和**配置**属性。 接下来，选择 "**配置**" 属性旁的**省略号（"..."**）按钮以打开通常用于[在包部署模型中创建包配置](https://docs.microsoft.com/sql/integration-services/create-package-configurations?view=sql-server-2014)的 "**包配置组织**程序"。 
+
+      ![从 SSDT 获取包属性-配置属性](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties.png)
+
+      在 "**包配置组织**程序" 中，选中 "**启用包配置**" 复选框和 "**添加 ...** " 按钮以打开**包配置向导**。 
+      
+      在**包配置向导**中，选择 "**配置类型**" 下拉菜单中的 " **XML 配置文件**" 项，并选择 "**直接指定配置设置**" 按钮，输入配置文件名称，然后选择 "**下一步" >** 按钮。 
+
+      ![从 SSDT 获取包属性-配置管理器](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties2.png)
+
+      最后，选择要选择其路径的包属性，然后选择**下一个 >** 按钮。  现在可以看到，请复制 & 粘贴所需的包属性路径，并将其保存在配置文件中。 利用此信息，你可以在运行时重写任何包属性的值。 
+
+      ![从 SSDT 获取包属性-配置向导](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties3.png)
    
    1. 如果通过 SSDT 创建包时使用了 **EncryptSensitiveWithUserKey** 保护级别，并且选择了“文件系统(包)”、“文件系统(项目)”、“嵌入包”或“包存储”作为包位置，则还需要重新输入敏感的包属性，以便在此选项卡上为它们赋值。    
    
-   为包属性赋值时，可以使用表达式、函数、数据工厂系统变量和数据工厂管道参数或变量添加动态内容。
+为包属性赋值时，可以使用表达式、函数、数据工厂系统变量和数据工厂管道参数或变量添加动态内容。
 
-   可以使用“连接管理器”或“属性替代”选项卡替代配置文件中和“SSIS 参数”选项卡上的赋值。   还可以使用“属性替代”选项卡替代“连接管理器”选项卡上的赋值。 
+可以使用“连接管理器”或“属性替代”选项卡替代配置文件中和“SSIS 参数”选项卡上的赋值。   还可以使用“属性替代”选项卡替代“连接管理器”选项卡上的赋值。 
 
 若要验证管道配置，请在工具栏中选择“验证”。 若要关闭“管道验证报告”，请选择 **>>** 。
 

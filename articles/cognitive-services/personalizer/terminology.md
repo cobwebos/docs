@@ -3,14 +3,14 @@ title: 术语-Personalizer
 description: Personalizer 使用强化学习中的术语。 这些术语用于 Azure 门户和 Api。
 ms.topic: conceptual
 ms.date: 04/23/2020
-ms.openlocfilehash: 3f819ff3305a7c7302eb56c83b98340946613a92
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8177606ac6e968bd287a23554be7b9dd06d880a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586297"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002856"
 ---
-# <a name="terminology"></a>术语
+# <a name="personalizer-terminology"></a>Personalizer 术语
 
 Personalizer 使用强化学习中的术语。 这些术语用于 Azure 门户和 Api。
 

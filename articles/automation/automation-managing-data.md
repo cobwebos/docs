@@ -3,14 +3,14 @@ title: Azure 自动化数据安全性
 description: 本文将帮助你了解 Azure 自动化如何保护你的隐私并保护你的数据。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 06/03/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: cc96f2dd81b618b4170acd4b415a09248adbb7d5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 610c2050150a533e246bc74ed7750ce87f7cf617
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186157"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004641"
 ---
 # <a name="management-of-azure-automation-data"></a>管理 Azure 自动化数据
 
@@ -18,7 +18,7 @@ ms.locfileid: "86186157"
 
 ## <a name="tls-12-enforcement-for-azure-automation"></a>Azure 自动化的 TLS 1.2 强制实施
 
-为了保证数据在传输到 Azure 自动化时的安全性，我们强烈建议你配置 (TLS) 1.2 的传输层安全性。 下面列出了通过 HTTPS 与自动化服务进行通信的方法或客户端：
+为了确保传输到 Azure 自动化的数据的安全性，我们强烈建议你配置传输层安全性（TLS）1.2 的使用。 下面列出了通过 HTTPS 与自动化服务进行通信的方法或客户端：
 
 * Webhook 调用
 
@@ -50,7 +50,7 @@ ms.locfileid: "86186157"
 | 数据 | 策略 |
 |:--- |:--- |
 | 帐户 |在帐户被用户删除 30 天后将其永久删除。 |
-| 资产 |在资产被用户删除 30 天后或者在包含该资产的帐户被用户删除 30 天后将其永久删除。 |
+| 资产 |在资产被用户删除 30 天后或者在包含该资产的帐户被用户删除 30 天后将其永久删除。 资产包括变量、计划、凭据、证书、Python 2 包和连接。 |
 | DSC 节点 |在使用 Azure 门户或 Windows PowerShell 中的 [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) cmdlet 从自动化帐户中取消注册 DSC 节点 30 天后，将永久删除该节点。 在用户删除保存节点的帐户 30 天后，也会永久删除该节点。 |
 | 作业 |作业在修改之后（例如在作业完成、停止或暂停之后）删除，并在 30 天后永久删除。 |
 | 模块 |在模块被用户删除 30 天后或者在包含该模块的帐户被用户删除 30 天后将其永久删除。 |
@@ -66,7 +66,7 @@ ms.locfileid: "86186157"
 
 ### <a name="runbooks"></a>Runbook
 
-可以使用 Azure 门户或 Windows PowerShell 中的 [Get-AzureAutomationRunbookDefinition](/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) cmdlet 将 Runbook 导出到脚本文件。 可以将这些脚本文件导入到另一个自动化帐户中，如 [在 Azure 自动化中管理 runbook](manage-runbooks.md) 中所述。
+可以使用 Azure 门户或 Windows PowerShell 中的 [Get-AzureAutomationRunbookDefinition](/powershell/module/servicemanagement/azure.service/get-azureautomationrunbookdefinition) cmdlet 将 Runbook 导出到脚本文件。 可以将这些脚本文件导入到另一个自动化帐户中，如 [在 Azure 自动化中管理 runbook](manage-runbooks.md) 中所述。
 
 ### <a name="integration-modules"></a>集成模块
 

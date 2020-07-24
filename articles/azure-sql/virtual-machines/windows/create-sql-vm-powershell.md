@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure PowerShell 在 Azure VM 上预配 SQL Server 的指南
-description: 提供了用于使用 SQL Server 虚拟机库映像创建 Azure VM 的步骤和 PowerShell 命令。
+description: 提供使用 SQL Server 虚拟机库映像创建 Azure VM 的步骤和 PowerShell 命令。
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -14,18 +14,18 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2c5ef71059fd3ba96299624818a13ebe1ae0929b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a25625e085ee07a2dc036fd40f70e6b0376b42a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737846"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003876"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>如何使用 Azure PowerShell 在 Azure 虚拟机上预配 SQL Server
 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-本指南介绍使用 PowerShell 在 Azure 虚拟机（Vm）上设置 SQL Server 的选项。 有关依赖于默认值的简化 Azure PowerShell 示例，请参阅[SQL VM Azure PowerShell 快速入门](sql-vm-create-powershell-quickstart.md)。
+本指南介绍使用 PowerShell 在 Azure 虚拟机 (VM) 上预配 SQL Server 选项。 有关依赖于默认值的简化的 Azure PowerShell 示例，请参阅 [SQL VM Azure PowerShell 快速入门](sql-vm-create-powershell-quickstart.md)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -47,7 +47,7 @@ ms.locfileid: "84737846"
 
 ### <a name="location-and-resource-group"></a>位置和资源组
 
-定义要在其中创建其他 VM 资源的数据区域和资源组。
+定义数据区域，以及要在其中创建其他 VM 资源的资源组。
 
 根据需要进行修改，然后运行这些 cmdlet 以初始化这些变量。
 
@@ -60,7 +60,7 @@ $ResourceGroupName = "sqlvm2"
 
 定义存储帐户，以及虚拟机使用的存储类型。
 
-根据需要进行修改，然后运行以下 cmdlet 来初始化这些变量。 我们建议将[高级 SSD](../../../virtual-machines/windows/disks-types.md#premium-ssd) 用于生产工作负载。
+根据需要进行修改，然后运行以下 cmdlet 以初始化这些变量。 我们建议将[高级 SSD](../../../virtual-machines/windows/disks-types.md#premium-ssd) 用于生产工作负载。
 
 ```powershell
 $StorageName = $ResourceGroupName + "storage"
@@ -71,7 +71,7 @@ $StorageSku = "Premium_LRS"
 
 在虚拟机中定义网络使用的属性。 
 
-- 网络接口
+- Linux
 - TCP/IP 分配方法
 - 虚拟网络名称
 - 虚拟子网名称
@@ -110,11 +110,11 @@ $VMSize = "Standard_DS13"
 $OSDiskName = $VMName + "OSDisk"
 ```
 
-### <a name="choose-a-sql-server-image"></a>选择 SQL Server 映像
+### <a name="choose-a-sql-server-image"></a>选择 SQL Server 映像。
 
 使用以下变量来定义要用于虚拟机的 SQL Server 映像。 
 
-1. 首先，通过命令列出所有 SQL Server 映像产品/服务 `Get-AzVMImageOffer` 。 此命令列出了 Azure 门户中可用的当前映像以及仅可使用 PowerShell 安装的旧版映像：
+1. 首先，使用 `Get-AzVMImageOffer` 命令列出所有 SQL Server 映像产品/服务。 此命令将列出 Azure 门户中当前提供的映像，以及只能通过 PowerShell 安装的早期映像：
 
    ```powershell
    Get-AzVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
@@ -142,7 +142,7 @@ $OSDiskName = $VMName + "OSDisk"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-在 Resource Manager 部署模型中，创建的第一个对象是资源组。 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) cmdlet 创建 Azure 资源组及其资源。 指定前面初始化的资源组名称和位置变量。
+若使用 Resource Manager 部署模型，创建的第一个对象就是资源组。 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) cmdlet 创建 Azure 资源组及其资源。 指定前面初始化的资源组名称和位置变量。
 
 运行此 cmdlet 来创建新的资源组。
 
@@ -152,7 +152,7 @@ New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-虚拟机需要使用存储资源来存储操作系统磁盘及 SQL Server 数据和日志文件。 为简单起见，我们将为两者创建单个磁盘。 稍后可以使用 [Add-Azure Disk](https://docs.microsoft.com/powershell/module/servicemanagement/azure/add-azuredisk) cmdlet 来附加其他磁盘，以便将 SQL Server 数据和日志文件放在专用磁盘上。 使用 [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) cmdlet 在新资源组中创建标准存储帐户。 为存储帐户名称、存储 SKU 名称和位置指定先前初始化的变量。
+虚拟机需要使用存储资源来存储操作系统磁盘及 SQL Server 数据和日志文件。 为简单起见，我们将为两者创建单个磁盘。 稍后可以使用 [Add-Azure Disk](/powershell/module/servicemanagement/azure.service/add-azuredisk) cmdlet 来附加其他磁盘，以便将 SQL Server 数据和日志文件放在专用磁盘上。 使用 [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) cmdlet 在新资源组中创建标准存储帐户。 指定前面初始化的存储帐户名称、存储 SKU 名称和位置变量。
 
 运行此 cmdlet 来创建新的存储帐户。
 
@@ -163,11 +163,11 @@ $StorageAccount = New-AzStorageAccount -ResourceGroupName $ResourceGroupName `
 ```
 
 > [!TIP]
-> 创建存储帐户可能需要花费几分钟时间。
+> 创建存储帐户可能需要几分钟时间。
 
 ## <a name="create-network-resources"></a>创建网络资源
 
-虚拟机需要使用多个网络资源来建立网络连接。
+虚拟机需要使用多个网络资源才能建立网络连接。
 
 * 每个虚拟机需要一个虚拟网络。
 * 必须为每个虚拟网络至少定义一个子网。
@@ -215,16 +215,16 @@ $PublicIp = New-AzPublicIpAddress -Name $InterfaceName `
 
 ### <a name="create-the-network-security-group"></a>创建网络安全组
 
-为确保 VM 和 SQL Server 流量安全，请创建网络安全组。
+为了保护 VM 和 SQL Server 流量，请创建网络安全组。
 
-1. 首先，创建远程桌面（RDP）的网络安全组规则以允许 RDP 连接。
+1. 首先，为远程桌面 (RDP) 创建网络完全组规则，以允许 RDP 连接。
 
    ```powershell
    $NsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name "RDPRule" -Protocol Tcp `
       -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * `
       -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow
    ```
-1. 配置一个网络安全组规则以允许 TCP 端口 1433 上的流量。 这样就可以通过 Internet 连接到 SQL Server。
+1. 配置一个允许 TCP 端口 1433 上的流量的网络安全组规则。 这样就可以通过 Internet 连接到 SQL Server。
 
    ```powershell
    $NsgRuleSQL = New-AzNetworkSecurityRuleConfig -Name "MSSQLRule"  -Protocol Tcp `
@@ -242,7 +242,7 @@ $PublicIp = New-AzPublicIpAddress -Name $InterfaceName `
 
 ### <a name="create-the-network-interface"></a>创建网络接口
 
-现在，你已准备好为虚拟机创建网络接口。 使用[AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) cmdlet 在新资源组中创建网络接口。 指定前面定义的名称、位置、子网和公共 IP 地址。
+现在，可为虚拟机创建网络接口。 使用 [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) cmdlet 在新资源组中创建网络接口。 指定前面定义的名称、位置、子网和公共 IP 地址。
 
 运行此 cmdlet 来创建网络接口。
 
@@ -274,9 +274,9 @@ $VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
 
 ### <a name="create-a-credential-object-to-hold-the-name-and-password-for-the-local-administrator-credentials"></a>创建一个凭据对象，以保留本地管理员凭据的名称和密码
 
-必须先提供本地管理员帐户的凭据作为安全字符串，才能设置虚拟机的操作系统属性。 为实现此目的，请使用 [Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) cmdlet。
+必须先提供本地管理员帐户的凭据作为安全字符串，才能设置虚拟机的操作系统属性。 若要实现此目的，可使用 [Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) cmdlet。
 
-运行以下 cmdlet。 需要在 PowerShell 凭据请求窗口中键入 VM 的本地管理员名称和密码。
+运行以下 cmdlet。 需要在 PowerShell 凭据请求窗口中键入 VM 的本地管理员用户名和密码。
 
 ```powershell
 $Credential = Get-Credential -Message "Type the name and password of the local administrator account."
@@ -309,9 +309,9 @@ $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine `
 $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $Interface.Id
 ```
 
-### <a name="set-the-blob-storage-location-for-the-disk-to-be-used-by-the-virtual-machine"></a>设置虚拟机所要使用的磁盘的 Blob 存储位置
+### <a name="set-the-blob-storage-location-for-the-disk-to-be-used-by-the-virtual-machine"></a>为虚拟机要使用的磁盘设置 Blob 存储位置
 
-接下来，用前面定义的变量为 VM 磁盘设置 blob 存储位置。
+接下来，使用前面定义的变量设置 VM 磁盘的 Blob 存储位置。
 
 运行此 cmdlet 来设置 Blob 存储位置。
 
@@ -366,7 +366,7 @@ New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualM
 
 ## <a name="install-the-sql-iaas-agent"></a>安装 SQL IaaS 代理
 
-SQL Server 虚拟机通过 [SQL Server IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md)支持自动化管理功能。 若要在新 VM 上安装代理并将其注册到资源提供程序，请在创建虚拟机后运行[AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm)命令。 指定 SQL Server VM 的许可类型，通过 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)在即用即付或自带许可之间进行选择。 有关许可的详细信息，请参阅[许可模式](licensing-model-azure-hybrid-benefit-ahb-change.md)。 
+SQL Server 虚拟机支持 [SQL Server IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md)的自动管理功能。 若要在新 VM 上安装代理，并将其注册到资源提供程序，请在创建虚拟机后运行 [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) 命令。 指定 SQL Server VM 的许可类型，通过 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)在即用即付或自带许可之间进行选择。 有关许可的详细信息，请参阅[许可模式](licensing-model-azure-hybrid-benefit-ahb-change.md)。 
 
 
    ```powershell
@@ -376,7 +376,7 @@ SQL Server 虚拟机通过 [SQL Server IaaS 代理扩展](sql-server-iaas-agent-
 
 ## <a name="stop-or-remove-a-vm"></a>停止或删除 VM
 
-如果不需要让 VM 持续运行，可以在不使用它时将它停止，以免产生不必要的费用。 以下命令可停止 VM，但保留它供将来使用。
+如果不需要让 VM 持续运行，可以在不使用它时将它停止，以免产生不必要的费用。 以下命令可停止 VM，但会保留它供将来使用。
 
 ```powershell
 Stop-AzVM -Name $VMName -ResourceGroupName $ResourceGroupName
@@ -456,11 +456,11 @@ New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Locat
 
 ## <a name="next-steps"></a>后续步骤
 
-在创建虚拟机后，可以：
+创建虚拟机后，可以：
 
 - 使用 RDP 连接到虚拟机
-- 在门户中配置 VM 的 SQL Server 设置，包括：
+- 在门户中为 VM 配置 SQL Server 设置，包括：
    - [存储设置](storage-configuration.md) 
-   - [自动化管理任务](sql-server-iaas-agent-extension-automate-management.md)
+   - [自动管理任务](sql-server-iaas-agent-extension-automate-management.md)
 - [配置连接](ways-to-connect-to-sql.md)
 - 将客户端和应用程序连接到新的 SQL Server 实例

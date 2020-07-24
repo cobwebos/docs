@@ -3,21 +3,25 @@ title: OptionsGroup UI 元素
 description: 介绍了 Azure 门户的 Microsoft.Common.OptionsGroup UI 元素。 使用户能够在部署托管应用程序时从可用选项中进行选择。
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 07/09/2020
 ms.author: tomfitz
-ms.openlocfilehash: c1da0b0082bfe046adf9596a10397e9063c888be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa73b4cbded98291a14792a7151df9fdfb885b53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75652341"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004178"
 ---
 # <a name="microsoftcommonoptionsgroup-ui-element"></a>Microsoft.Common.OptionsGroup UI 元素
 
-一个具有一行可用选项的选择控件。
+Microsoft.common.optionsgroup 控件使用户可以从两个或更多个选项中选择一个选项。 用户只能选择一个选项。
+
+> [!NOTE]
+> 过去，此控件水平呈现选项。 现在，控件将选项垂直显示为单选按钮。
 
 ## <a name="ui-sample"></a>UI 示例
 
-![Microsoft.Common.OptionsGroup](./media/managed-application-elements/microsoft.common.optionsgroup.png)
+:::image type="content" source="./media/managed-application-elements/microsoft-common-optionsgroup-2.png" alt-text="Microsoft.Common.OptionsGroup":::
 
 ## <a name="schema"></a>架构
 

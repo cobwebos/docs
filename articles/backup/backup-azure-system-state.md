@@ -3,12 +3,12 @@ title: 将 Windows 系统状态备份到 Azure
 description: 了解如何将 Windows Server 的系统状态和/或 Windows 计算机备份到 Azure。
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 4319e03f9673baa2be01c1650ac1929204741087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea38b76d9a8b7b8ccc1898ed9450177da2cb2458
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611435"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003705"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>将 Windows 系统状态备份到 Azure
 
@@ -24,7 +24,7 @@ ms.locfileid: "85611435"
 
 在创建恢复服务保管库时，请确保存储冗余配置为所希望的方式。
 
-1. 在“恢复服务保管库”边栏选项卡中，单击新保管库。
+1. 从“恢复服务保管库”边栏选项卡中，单击新保管库  。
 
     ![在恢复服务保管库列表中选择新保管库](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
 
@@ -40,7 +40,7 @@ ms.locfileid: "85611435"
 
     ![存储配置选择](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
-    默认情况下，保管库具有异地冗余存储。 如果使用 Azure 作为主要备份存储终结点，请继续使用“异地冗余”****。 如果不使用 Azure 作为主要备份存储终结点，则选择“本地冗余” ，以减少 Azure 存储成本。 请在此[存储冗余概述](../storage/common/storage-redundancy.md)中深入了解[异地冗余](../storage/common/storage-redundancy-grs.md)和[本地冗余](../storage/common/storage-redundancy-lrs.md)存储选项。
+    默认情况下，保管库具有异地冗余存储。 如果使用 Azure 作为主要备份存储终结点，请继续使用“异地冗余”****。 如果不使用 Azure 作为主要备份存储终结点，则选择“本地冗余” ，以减少 Azure 存储成本。 请在此[存储冗余概述](../storage/common/storage-redundancy.md)中深入了解[异地冗余](../storage/common/storage-redundancy.md)和[本地冗余](../storage/common/storage-redundancy.md)存储选项。
 
 创建保管库之后，即可对其进行配置，以便备份 Windows 系统状态。
 
@@ -152,7 +152,7 @@ ms.locfileid: "85611435"
 
 5. 选择“系统状态”，并单击“确定”********。
 
-6. 单击“下一步” 。
+6. 单击“下一步”。
 
 7. 在后续页中选择系统状态备份所需的备份频率和保留策略。
 
@@ -174,14 +174,14 @@ ms.locfileid: "85611435"
 
 5. 单击“**关闭**”以关闭向导。 如果在备份过程完成之前关闭向导，向导将继续在后台运行。
     > [!NOTE]
-    > 在每次系统状态备份之前，MARS 代理都会在预检查过程中触发 SFC /verifyonly。 这是为了确保作为系统状态一部分备份的文件具有与 Windows 版本相对应的正确版本。 在[本文](https://docs.microsoft.com/windows-server/administration/windows-commands/sfc)中详细了解系统文件检查器 (SFC)。
+    > 在每次系统状态备份之前，MARS 代理都会在预检查过程中触发 SFC /verifyonly。 这是为了确保作为系统状态一部分备份的文件具有与 Windows 版本相对应的正确版本。 在[本文](/windows-server/administration/windows-commands/sfc)中详细了解系统文件检查器 (SFC)。
     >
 
 完成初始备份后，备份控制台中会显示“**作业已完成**”状态。
 
   ![IR 完成](./media/backup-try-azure-backup-in-10-mins/ircomplete.png)
 
-## <a name="questions"></a>是否有任何问题?
+## <a name="questions"></a>有疑问？
 
 如果有疑问，或者希望包含某种功能，请 [给我们反馈](https://feedback.azure.com/forums/258995-azure-backup)。
 

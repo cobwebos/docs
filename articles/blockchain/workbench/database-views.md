@@ -4,15 +4,16 @@ description: 可用 Azure 区块链工作台概述 SQL DB 数据库视图的概�
 ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: mmercuri
-ms.openlocfilehash: 585084b4c85c48533bdad96d4f99813ef2e418b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e715bd2297c1e051ae92b15d73c945c9e80c3d94
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74325985"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003315"
 ---
 # <a name="azure-blockchain-workbench-database-views"></a>Azure 区块链工作台数据库视图
 
-Azure 区块链工作台预览版将数据从分布式分类帐传递到*脱离链*的 SQL DB 数据库。 使用脱离链数据库可以使用 SQL 和现有工具（如[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)）与区块链数据进行交互。
+Azure 区块链工作台预览版将数据从分布式分类帐传递到*脱离链*的 SQL DB 数据库。 使用脱离链数据库可以使用 SQL 和现有工具（如[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)）与区块链数据进行交互。
 
 Azure Blockchain Workbench 提供一组数据库视图用于访问有助于执行查询的数据。 这些视图经过很大力度的非规范化，因此，可以快速轻松地使用它们开始生成报告、分析，或者结合现有工具使用区块链数据，而无需重新培训数据库工作人员。
 
@@ -36,7 +37,7 @@ Azure Blockchain Workbench 提供一组数据库视图用于访问有助于执�
 | UploadedDtTm                     | datetime2(7)  | 否          | 上传合同的日期和时间 |
 | UploadedByUserId                 | int           | 否          | 上传应用程序的用户的 ID |
 | UploadedByUserExternalId         | nvarchar(255) | 否          | 上传应用程序的用户的外部标识符。 默认情况下，此 ID 是来自联合会的 Azure Active Directory 中的用户。                                                                                                |
-| UploadedByUserProvisioningStatus | int           | 否          | 标识用户的当前预配过程状态。 可能的值有： <br />0 – API 已创建用户<br />1 – 已将密钥与数据库中的用户相关联<br />2 – 已完全预配用户                         |
+| UploadedByUserProvisioningStatus | int           | 否          | 标识用户的当前预配过程状态。 可能的值包括： <br />0 – API 已创建用户<br />1 – 已将密钥与数据库中的用户相关联<br />2 – 已完全预配用户                         |
 | UploadedByUserFirstName          | nvarchar(50)  | 是         | 上传合同的用户的名字 |
 | UploadedByUserLastName           | nvarchar(50)  | 是         | 上传合同的用户的姓氏 |
 | UploadedByUserEmailAddress       | nvarchar(255) | 是         | 上传合同的用户的电子邮件地址 |
@@ -74,7 +75,7 @@ Azure Blockchain Workbench 提供一组数据库视图用于访问有助于执�
 | ApplicationRoleDescription | nvarchar(255) | 是         | 角色的说明                                                                                                                                                                                                             |
 | UserId                     | int           | 否          | 与角色关联的用户的 ID |
 | UserExternalId             | nvarchar(255) | 否          | 与角色关联的用户的外部标识符。 默认情况下，此 ID 是来自联合会的 Azure Active Directory 中的用户。                                                                     |
-| UserProvisioningStatus     | int           | 否          | 标识用户的当前预配过程状态。 可能的值有： <br />0 – API 已创建用户<br />1 – 已将密钥与数据库中的用户相关联<br />2 – 已完全预配用户 |
+| UserProvisioningStatus     | int           | 否          | 标识用户的当前预配过程状态。 可能的值包括： <br />0 – API 已创建用户<br />1 – 已将密钥与数据库中的用户相关联<br />2 – 已完全预配用户 |
 | UserFirstName              | nvarchar(50)  | 是         | 与角色关联的用户的名字 |
 | UserLastName               | nvarchar(255) | 是         | 与角色关联的用户的姓氏 |
 | UserEmailAddress           | nvarchar(255) | 是         | 与角色关联的用户的电子邮件地址 |
@@ -96,7 +97,7 @@ Azure Blockchain Workbench 提供一组数据库视图用于访问有助于执�
 | LedgerDisplayName        | nvarchar(255) | 否          | 在 UI 中显示的账本名称 |
 | UserId                   | int           | 否          | 与连接关联的用户的 ID |
 | UserExternalId           | nvarchar(255) | 否          | 与连接关联的用户的外部标识符。 默认情况下，此 ID 是来自联合会的 Azure Active Directory 中的用户。 |
-| UserProvisioningStatus   | int           | 否          |标识用户的当前预配过程状态。 可能的值有： <br />0 – API 已创建用户<br />1 – 已将密钥与数据库中的用户相关联<br />2 – 已完全预配用户 |
+| UserProvisioningStatus   | int           | 否          |标识用户的当前预配过程状态。 可能的值包括： <br />0 – API 已创建用户<br />1 – 已将密钥与数据库中的用户相关联<br />2 – 已完全预配用户 |
 | UserFirstName            | nvarchar(50)  | 是         | 与连接关联的用户的名字 |
 | UserLastName             | nvarchar(255) | 是         | 与连接关联的用户的姓氏 |
 | UserEmailAddress         | nvarchar(255) | 是         | 与连接关联的用户的电子邮件地址 |
@@ -131,11 +132,11 @@ Azure Blockchain Workbench 提供一组数据库视图用于访问有助于执�
 | ContractFileName                         | int            | 否          | 包含此工作流的智能合同代码的文件的名称。 |
 | ContractUploadedDtTm                     | int            | 否          | 上传合同代码的日期和时间 |
 | ContractId                               | int            | 否          | 合同的唯一标识符 |
-| ContractProvisioningStatus               | int            | 否          | 标识合同的当前预配过程状态。 可能的值有： <br />0 – API 已在数据库中创建合同<br />1 – 合同已发送到账本<br />2 – 合同已成功部署到账本<br />3 或 4 - 合同无法部署到账本<br />5 – 合同已成功部署到账本 <br /><br />从版本 1.5 开始，支持值 0 到 5。 为了在当前版本中向后兼容，提供了仅支持值 0 到 2 的视图 **vwContractV0**。 |
+| ContractProvisioningStatus               | int            | 否          | 标识合同的当前预配过程状态。 可能的值包括： <br />0 – API 已在数据库中创建合同<br />1 – 合同已发送到账本<br />2 – 合同已成功部署到账本<br />3 或 4 - 合同无法部署到账本<br />5 – 合同已成功部署到账本 <br /><br />从版本 1.5 开始，支持值 0 到 5。 为了在当前版本中向后兼容，提供了仅支持值 0 到 2 的视图 **vwContractV0**。 |
 | ContractLedgerIdentifier                 | nvarchar (255) |             | 部署合同的用户的电子邮件地址 |
 | ContractDeployedByUserId                 | int            | 否          | 部署合同的用户的外部标识符。 默认情况下，此 ID 是表示用户 Azure Active Directory ID 的 guid。                                                                                                          |
 | ContractDeployedByUserExternalId         | nvarchar(255)  | 否          | 部署合同的用户的外部标识符。 默认情况下，此 ID 是表示用户 Azure Active Directory ID 的 guid。                                                                                                         |
-| ContractDeployedByUserProvisioningStatus | int            | 否          | 标识用户的当前预配过程状态。 可能的值有： <br />0 – API 已创建用户<br />1 – 已将密钥与数据库中的用户相关联 <br />2 – 已完全预配用户                     |
+| ContractDeployedByUserProvisioningStatus | int            | 否          | 标识用户的当前预配过程状态。 可能的值包括： <br />0 – API 已创建用户<br />1 – 已将密钥与数据库中的用户相关联 <br />2 – 已完全预配用户                     |
 | ContractDeployedByUserFirstName          | nvarchar(50)   | 是         | 部署合同的用户的名字 |
 | ContractDeployedByUserLastName           | nvarchar(255)  | 是         | 部署合同的用户的姓氏 |
 | ContractDeployedByUserEmailAddress       | nvarchar(255)  | 是         | 部署合同的用户的电子邮件地址 |
@@ -163,7 +164,7 @@ Azure Blockchain Workbench 提供一组数据库视图用于访问有助于执�
 | WorkflowDisplayName                      | nvarchar(255) | 否          | 在用户界面中显示的工作流名称 |
 | WorkflowDescription                      | nvarchar(255) | 是         | 工作流的说明 |
 | ContractId                               | int           | 否          | 合同的唯一标识符 |
-| ContractProvisioningStatus               | int           | 否          | 标识合同的当前预配过程状态。 可能的值有： <br />0 – API 已在数据库中创建合同<br />1 – 合同已发送到账本<br />2 – 合同已成功部署到账本<br />3 或 4 - 合同无法部署到账本<br />5 – 合同已成功部署到账本 <br /><br />从版本 1.5 开始，支持值 0 到 5。 为了在当前版本中向后兼容，提供了仅支持值 0 到 2 的视图 **vwContractActionV0**。 |
+| ContractProvisioningStatus               | int           | 否          | 标识合同的当前预配过程状态。 可能的值包括： <br />0 – API 已在数据库中创建合同<br />1 – 合同已发送到账本<br />2 – 合同已成功部署到账本<br />3 或 4 - 合同无法部署到账本<br />5 – 合同已成功部署到账本 <br /><br />从版本 1.5 开始，支持值 0 到 5。 为了在当前版本中向后兼容，提供了仅支持值 0 到 2 的视图 **vwContractActionV0**。 |
 | ContractCodeId                           | int           | 否          | 合同代码实现的唯一标识符 |
 | ContractLedgerIdentifier                 | nvarchar(255) | 是         | 与特定分布式账本的已部署智能合同版本关联的唯一标识符。 例如 Ethereum。 |
 | ContractDeployedByUserId                 | int           | 否          | 部署合同的用户的唯一标识符 |
@@ -176,7 +177,7 @@ Azure Blockchain Workbench 提供一组数据库视图用于访问有助于执�
 | WorkflowFunctionDisplayName              | nvarchar(255) | 否          | 在用户界面中显示的函数名称 |
 | WorkflowFunctionDescription              | nvarchar(255) | 否          | 函数的说明 |
 | ContractActionId                         | int           | 否          | 合同操作的唯一标识符 |
-| ContractActionProvisioningStatus         | int           | 否          | 标识合同操作的当前预配过程状态。 可能的值有： <br />0 – API 已在数据库中创建合同操作<br />1 – 合同操作已发送到账本<br />2 – 合同操作已成功部署到账本<br />3 或 4 - 合同无法部署到账本<br />5 – 合同已成功部署到账本 <br /><br />从版本 1.5 开始，支持值 0 到 5。 为了在当前版本中向后兼容，提供了仅支持值 0 到 2 的视图 **vwContractActionV0**。 |
+| ContractActionProvisioningStatus         | int           | 否          | 标识合同操作的当前预配过程状态。 可能的值包括： <br />0 – API 已在数据库中创建合同操作<br />1 – 合同操作已发送到账本<br />2 – 合同操作已成功部署到账本<br />3 或 4 - 合同无法部署到账本<br />5 – 合同已成功部署到账本 <br /><br />从版本 1.5 开始，支持值 0 到 5。 为了在当前版本中向后兼容，提供了仅支持值 0 到 2 的视图 **vwContractActionV0**。 |
 | ContractActionTimestamp                  | datetime(2,7) | 否          | 合同操作的时间戳 |
 | ContractActionExecutedByUserId           | int           | 否          | 执行合同操作的用户的唯一标识符 |
 | ContractActionExecutedByUserFirstName    | int           | 是         | 执行合同操作的用户的名字 |
@@ -197,7 +198,7 @@ Azure Blockchain Workbench 提供一组数据库视图用于访问有助于执�
 | TransactionTo                            | nvarchar(255) | 是         | 事务的另一方 |
 | TransactionHash                          | nvarchar(255) | 是         | 事务的哈希 |
 | TransactionIsWorkbenchTransaction        | bit           | 是         | 标识事务是否为 Azure 区块链工作台事务的位 |
-| TransactionProvisioningStatus            | int           | 是         | 标识事务的当前预配过程状态。 可能的值有： <br />0 – API 已在数据库中创建事务<br />1 – 事务已发送到账本<br />2 – 事务已成功部署到账本                 |
+| TransactionProvisioningStatus            | int           | 是         | 标识事务的当前预配过程状态。 可能的值包括： <br />0 – API 已在数据库中创建事务<br />1 – 事务已发送到账本<br />2 – 事务已成功部署到账本                 |
 | TransactionValue                         | decimal(32,2) | 是         | 事务的值 |
 
 ## <a name="vwcontractproperty"></a>vwContractProperty
@@ -222,7 +223,7 @@ Azure Blockchain Workbench 提供一组数据库视图用于访问有助于执�
 | WorkflowDisplayName                | nvarchar(255) | 否          | 在用户界面中显示的工作流名称 |
 | WorkflowDescription                | nvarchar(255) | 是         | 工作流的说明 |
 | ContractId                         | int           | 否          | 合同的唯一标识符 |
-| ContractProvisioningStatus         | int           | 否          | 标识合同的当前预配过程状态。 可能的值有： <br />0 – API 已在数据库中创建合同<br />1 – 合同已发送到账本<br />2 – 合同已成功部署到账本<br />3 或 4 - 合同无法部署到账本<br />5 – 合同已成功部署到账本 <br /><br />从版本 1.5 开始，支持值 0 到 5。 为了在当前版本中向后兼容，提供了仅支持值 0 到 2 的视图 **vwContractPropertyV0**。 |
+| ContractProvisioningStatus         | int           | 否          | 标识合同的当前预配过程状态。 可能的值包括： <br />0 – API 已在数据库中创建合同<br />1 – 合同已发送到账本<br />2 – 合同已成功部署到账本<br />3 或 4 - 合同无法部署到账本<br />5 – 合同已成功部署到账本 <br /><br />从版本 1.5 开始，支持值 0 到 5。 为了在当前版本中向后兼容，提供了仅支持值 0 到 2 的视图 **vwContractPropertyV0**。 |
 | ContractCodeId                     | int           | 否          | 合同代码实现的唯一标识符 |
 | ContractLedgerIdentifier           | nvarchar(255) | 是         | 与特定分布式账本的已部署智能合同版本关联的唯一标识符。 例如 Ethereum。 |
 | ContractDeployedByUserId           | int           | 否          | 部署合同的用户的唯一标识符 |
@@ -263,7 +264,7 @@ Azure Blockchain Workbench 提供一组数据库视图用于访问有助于执�
 | WorkflowDescription                | nvarchar(255) | 是         | 工作流的说明 |
 | ContractLedgerImplementationId     | nvarchar(255) | 是         | 与特定分布式账本的已部署智能合同版本关联的唯一标识符。 例如 Ethereum。 |
 | ContractId                         | int           | 否          | 合同的唯一标识符 |
-| ContractProvisioningStatus         | int           | 否          |标识合同的当前预配过程状态。 可能的值有： <br />0 – API 已在数据库中创建合同<br />1 – 合同已发送到账本<br />2 – 合同已成功部署到账本<br />3 或 4 - 合同无法部署到账本<br />5 – 合同已成功部署到账本 <br /><br />从版本 1.5 开始，支持值 0 到 5。 为了在当前版本中向后兼容，提供了仅支持值 0 到 2 的视图 **vwContractStateV0**。 |
+| ContractProvisioningStatus         | int           | 否          |标识合同的当前预配过程状态。 可能的值包括： <br />0 – API 已在数据库中创建合同<br />1 – 合同已发送到账本<br />2 – 合同已成功部署到账本<br />3 或 4 - 合同无法部署到账本<br />5 – 合同已成功部署到账本 <br /><br />从版本 1.5 开始，支持值 0 到 5。 为了在当前版本中向后兼容，提供了仅支持值 0 到 2 的视图 **vwContractStateV0**。 |
 | ConnectionId                       | int           | 否          | 工作流部署到的区块链实例的唯一标识符 |
 | ContractCodeId                     | int           | 否          | 合同代码实现的唯一标识符 |
 | ContractDeployedByUserId           | int           | 否          | 部署合同的用户的唯一标识符 |
@@ -290,7 +291,7 @@ Azure Blockchain Workbench 提供一组数据库视图用于访问有助于执�
 |--------------------|---------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ID                 | int           | 否          | 用户的唯一标识符 |
 | ExternalID         | nvarchar(255) | 否          | 用户的外部标识符。 默认情况下，此 ID 是表示用户 Azure Active Directory ID 的 guid。 |
-| ProvisioningStatus | int           | 否          |标识用户的当前预配过程状态。 可能的值有： <br />0 – API 已创建用户<br />1 – 已将密钥与数据库中的用户相关联<br />2 – 已完全预配用户 |
+| ProvisioningStatus | int           | 否          |标识用户的当前预配过程状态。 可能的值包括： <br />0 – API 已创建用户<br />1 – 已将密钥与数据库中的用户相关联<br />2 – 已完全预配用户 |
 | FirstName          | nvarchar(50)  | 是         | 用户的名字 |
 | LastName           | nvarchar(50)  | 是         | 用户的姓氏 |
 | EmailAddress       | nvarchar(255) | 是         | 用户的电子邮件地址 |

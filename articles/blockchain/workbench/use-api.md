@@ -4,12 +4,12 @@ description: 有关如何使用 Azure 区块链工作台 Preview 的方案 REST 
 ms.date: 03/05/2020
 ms.topic: how-to
 ms.reviewer: brendal
-ms.openlocfilehash: 7c96e45c8bcc9834df7ef2a0b2a59f53fd8315cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 696f1f2f96034f7a044f6a39182774c02804518f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210056"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003060"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>使用 Azure 区块链工作台预览版 REST API
 
@@ -19,7 +19,7 @@ Azure 区块链工作台预览版 REST API 向开发人员和信息工作者提�
 
 区块链工作台 Api 可通过部署的终结点进行访问。 获取部署的 API 终结点 URL：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左侧导航窗格中，选择 "**资源组**"。
 1. 选择部署的区块链工作台的资源组名称。
 1. 选择“类型”列标题，按类型的字母顺序将列表排序。****
@@ -32,7 +32,7 @@ Azure 区块链工作台预览版 REST API 向开发人员和信息工作者提�
 
 对区块链工作台 REST API 的请求受到 Azure Active Directory （Azure AD）的保护。
 
-若要向 REST Api 发出经过身份验证的请求，客户端代码需要使用有效凭据进行身份验证，然后才能调用 API。 身份验证通过 Azure AD 在各种执行组件之间进行协调，并为客户端提供[访问令牌](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#access-token)作为身份验证的证明。 然后在 REST API 请求的 HTTP 授权标头中发送令牌。 若要详细了解 Azure AD 身份验证，请参阅[开发人员 Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)。
+若要向 REST Api 发出经过身份验证的请求，客户端代码需要使用有效凭据进行身份验证，然后才能调用 API。 身份验证通过 Azure AD 在各种执行组件之间进行协调，并为客户端提供[访问令牌](../../active-directory/develop/developer-glossary.md#access-token)作为身份验证的证明。 然后在 REST API 请求的 HTTP 授权标头中发送令牌。 若要详细了解 Azure AD 身份验证，请参阅[开发人员 Azure Active Directory](../../active-directory/develop/index.yml)。
 
 有关如何进行身份验证的示例，请参阅[REST API 示例](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples)。
 
@@ -44,7 +44,7 @@ Azure 区块链工作台预览版 REST API 向开发人员和信息工作者提�
 
 使用两个 API 调用创建区块链工作台应用程序。 此方法只能由作为工作台管理员的用户执行。
 
-使用[应用程序 POST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationspost)上传应用程序的 JSON 文件并获取应用程序 ID。
+使用[应用程序 POST API](/rest/api/azure-blockchain-workbench/applications/applicationspost)上传应用程序的 JSON 文件并获取应用程序 ID。
 
 ### <a name="applications-post-request"></a>应用程序 POST 请求
 
@@ -70,7 +70,7 @@ Content-Type: "application/json"
 
 ### <a name="contract-code-post-request"></a>协定代码 POST 请求
 
-通过传递应用程序 ID 来上传应用程序的密度代码文件，使用[应用程序协定代码 POST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/contractcodepost) 。 有效负载可以是单个的 "密度文件"，也可以是包含 "密度" 文件的压缩文件。
+通过传递应用程序 ID 来上传应用程序的密度代码文件，使用[应用程序协定代码 POST API](/rest/api/azure-blockchain-workbench/applications/contractcodepost) 。 有效负载可以是单个的 "密度文件"，也可以是包含 "密度" 文件的压缩文件。
 
 请替换以下值：
 
@@ -98,7 +98,7 @@ Content-Type: "application/json"
 
 ## <a name="assign-roles-to-users"></a>向用户分配角色
 
-通过传递应用程序 ID、用户 ID 和应用程序角色 ID，使用[应用程序角色分配 POST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/roleassignmentspost)在指定的区块链应用程序中创建用户到角色的映射。 此方法只能由作为工作台管理员的用户执行。
+通过传递应用程序 ID、用户 ID 和应用程序角色 ID，使用[应用程序角色分配 POST API](/rest/api/azure-blockchain-workbench/applications/roleassignmentspost)在指定的区块链应用程序中创建用户到角色的映射。 此方法只能由作为工作台管理员的用户执行。
 
 ### <a name="role-assignments-post-request"></a>角色分配 POST 请求
 
@@ -132,7 +132,7 @@ HTTP/1.1 200
 
 ## <a name="list-applications"></a>列出应用程序
 
-使用[应用程序获取 API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget)检索用户的所有区块链工作台应用程序。 在此示例中，已登录的用户可以访问两个应用程序：
+使用[应用程序获取 API](/rest/api/azure-blockchain-workbench/applications/applicationsget)检索用户的所有区块链工作台应用程序。 在此示例中，已登录的用户可以访问两个应用程序：
 
 - [资产转移](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
 - [冷藏运输](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
@@ -180,7 +180,7 @@ Content-type: application/json
 
 ## <a name="list-workflows-for-an-application"></a>列出应用程序的工作流
 
-使用[应用程序工作流获取 API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget)来列出用户在区块链工作台中具有访问权限的指定区块链应用程序的所有工作流。 每个区块链应用程序有一个或多个工作流，每个工作流有零个或多个智能合同实例。 对于只有一个工作流的区块链客户端应用程序，建议跳过允许用户选择相应工作流的用户体验流。
+使用[应用程序工作流获取 API](/rest/api/azure-blockchain-workbench/applications/workflowsget)来列出用户在区块链工作台中具有访问权限的指定区块链应用程序的所有工作流。 每个区块链应用程序有一个或多个工作流，每个工作流有零个或多个智能合同实例。 对于只有一个工作流的区块链客户端应用程序，建议跳过允许用户选择相应工作流的用户体验流。
 
 ### <a name="application-workflows-request"></a>应用程序工作流请求
 
@@ -214,7 +214,7 @@ Content-type: application/json
 
 ## <a name="create-a-contract-instance"></a>创建协定实例
 
-使用[约定 V2 POST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/contractsv2/contractpost)为工作流创建新的智能协定实例。 如果用户与应用程序角色关联，而用户可以启动工作流的智能协定实例，则用户只能创建新的智能协定实例。
+使用[约定 V2 POST API](/rest/api/azure-blockchain-workbench/contractsv2/contractpost)为工作流创建新的智能协定实例。 如果用户与应用程序角色关联，而用户可以启动工作流的智能协定实例，则用户只能创建新的智能协定实例。
 
 > [!NOTE]
 > 在此示例中，使用了 API 的版本2。 版本2协定 Api 为关联的 ProvisioningStatus 字段提供更多粒度。
@@ -477,4 +477,4 @@ Content-type: application/json
 
 ## <a name="next-steps"></a>后续步骤
 
-有关区块链工作台 Api 的参考信息，请参阅[Azure 区块链工作台 REST API 参考](https://docs.microsoft.com/rest/api/azure-blockchain-workbench)。
+有关区块链工作台 Api 的参考信息，请参阅[Azure 区块链工作台 REST API 参考](/rest/api/azure-blockchain-workbench)。

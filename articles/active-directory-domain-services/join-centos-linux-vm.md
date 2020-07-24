@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/23/2020
+ms.date: 07/13/2020
 ms.author: iainfou
-ms.openlocfilehash: 062150c5d19a97a13fdd5567c2875bc69c839639
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9eb6a43557da43e8f792bcc3858e7123f2b6c607
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734752"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005151"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>将 CentOS Linux 虚拟机加入 Azure Active Directory 域服务托管域
 
@@ -106,7 +106,7 @@ sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir 
     kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. 最后，使用命令将计算机加入托管域 `realm join` 。 使用在前面的命令中指定的托管域的一部分的相同用户帐户 `kinit` ，例如 `contosoadmin@AADDSCONTOSO.COM` ：
+1. 最后，使用命令将 VM 加入到托管域 `realm join` 。 使用在前面的命令中指定的托管域的一部分的相同用户帐户 `kinit` ，例如 `contosoadmin@AADDSCONTOSO.COM` ：
 
     ```console
     sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM'

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/27/2019
 ms.author: mlottner
-ms.openlocfilehash: fe117cf8d05ba3392b71858acf94d1fc88c1a527
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98afd1eb1f8a73c2d6dd3f293a07cdb70780d238
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311569"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004760"
 ---
 # <a name="pricing-and-associated-costs"></a>定价和关联的成本
 
@@ -50,11 +50,11 @@ ms.locfileid: "81311569"
 
 1. 在 "**安全**" 下，单击 "**概述**"。
 
-1. 单击“设置”****。
+1. 单击**设置**。
 
 下表提供了每个选项的相关成本和影响的摘要。
 
-|     | 使用情况 | 评论 |
+| 选项 | 用法 | 注释 |
 | --- | --- | --- |
 | **Log Analytics 存储** |  |
 | 设备建议和警报| 服务生成的安全建议和警报 | 不可选 |

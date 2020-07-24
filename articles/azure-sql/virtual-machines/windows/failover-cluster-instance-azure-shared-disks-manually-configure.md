@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 4e704a25e0c9700afbe4fa85031d7ff4d6a8d0c1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e1a4a366b3e4fa045df69683d6e72b157ccf0a1f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965441"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003621"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>使用 Azure 共享磁盘（SQL Server 在 Azure Vm 中）创建 FCI
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -118,12 +118,12 @@ ms.locfileid: "85965441"
 
 - 将成为群集节点的虚拟机的名称。
 - 故障转移群集的名称。
-- 故障转移群集的 IP 地址。 你可以使用未在群集节点所在的 Azure 虚拟网络和子网上使用的 IP 地址。
+- 故障转移群集的 IP 地址。 可以使用群集节点所在的同一 Azure 虚拟网络和子网中未使用的 IP 地址。
 
 
 # <a name="windows-server-2012-2016"></a>[Windows Server 2012-2016](#tab/windows2012)
 
-下面的 PowerShell 脚本将创建一个故障转移群集。 使用节点的名称（即虚拟机名称）以及 Azure 虚拟网络中可用的 IP 地址更新脚本。
+下面的 PowerShell 脚本将创建一个故障转移群集。 使用节点的名称（虚拟机名称）以及 Azure 虚拟网络中可用的 IP 地址更新脚本。
 
 ```powershell
 New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
@@ -131,13 +131,13 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 # <a name="windows-server-2019"></a>[Windows Server 2019](#tab/windows2019)
 
-下面的 PowerShell 脚本将创建一个故障转移群集。 使用节点的名称（即虚拟机名称）以及 Azure 虚拟网络中可用的 IP 地址更新脚本。
+下面的 PowerShell 脚本将创建一个故障转移群集。 使用节点的名称（虚拟机名称）以及 Azure 虚拟网络中可用的 IP 地址更新脚本。
 
 ```powershell
 New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage -ManagementPointNetworkType Singleton 
 ```
 
-有关详细信息，请参阅[故障转移群集：群集网络对象](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97).
+有关详细信息，请参阅[故障转移群集：群集网络对象](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97)。
 
 ---
 
@@ -151,13 +151,13 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 若要使用 UI 验证群集，请在其中一台虚拟机上执行以下操作：
 
-1. 在“服务器管理器”下选择“工具”，然后选择“故障转移群集管理器”  。
-1. 在“故障转移群集管理器”下选择“操作”，然后选择“验证配置”  。
-1. 选择“**下一页**”。
+1. 在“服务器管理器”下，依次选择“工具”、“故障转移群集管理器”。  
+1. 在“故障转移群集管理器”下，依次选择“操作”、“验证配置”。  
+1. 选择“**下一步**”。
 1. 在“选择服务器或群集”下，输入两个虚拟机的名称。
-1. 在“测试选项”下，选择“仅运行选择的测试” 。 
-1. 选择“**下一页**”。
-1. 在 "**测试选择**" 下，选择 "*除***存储空间直通**以外的所有测试"。
+1. 在“测试选项”下，选择“仅运行选择的测试”。  
+1. 选择“**下一步**”。
+1. 在 "**测试选择**" 下，选择 "**存储**"*以外*的所有测试
 
 ## <a name="test-cluster-failover"></a>测试群集故障转移
 
@@ -167,11 +167,11 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 ## <a name="create-sql-server-fci"></a>创建 SQL Server FCI
 
-配置故障转移群集和所有群集组件（包括存储）后，可创建 SQL Server FCI。
+配置故障转移群集和所有群集组件（包括存储）后，可以创建 SQL Server FCI。
 
 1. 使用远程桌面协议（RDP）连接到第一台虚拟机。
 
-1. 在**故障转移群集管理器**中，请确保所有核心群集资源位于第一个虚拟机上。 如有必要，请将所有资源移到此虚拟机。
+1. 在**故障转移群集管理器**中，请确保所有核心群集资源位于第一个虚拟机上。 如有必要，请将所有资源移到该虚拟机。
 
 1. 找到安装媒体。 如果虚拟机使用某个 Azure 市场映像，该媒体将位于 `C:\SQLServer_<version number>_Full`。 
 
@@ -181,20 +181,18 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 选择“新建 SQL Server 故障转移群集安装”。 遵照向导中的说明安装 SQL Server FCI。
 
-   FCI 数据目录需位于群集存储中。 使用存储空间直通时，该存储不是共享磁盘，而是每个服务器上的卷的装入点。 存储空间直通会在两个节点之间同步该卷。 卷作为群集共享卷（CSV）提供给群集。 使用数据目录的 CSV 装入点。
+FCI 数据目录需位于 Azure 共享磁盘上。 
 
-   ![数据目录](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/20-data-dicrectories.png)
+1. 根据向导中的说明完成操作后，安装程序会在第一个节点上安装 SQL Server FCI。
 
-1. 完成向导中的说明后，安装程序会在第一个节点上安装 SQL Server FCI。
-
-1. 在这之后，请使用 RDP 连接到第二个节点。
+1. 安装程序在第一个节点上安装 FCI 后，请使用 RDP 连接到第二个节点。
 
 1. 打开**SQL Server 安装中心**，然后选择 "**安装**"。
 
-1. 选择“向 SQL Server 故障转移群集添加节点”。 按照向导中的说明安装 SQL Server 并将此服务器添加到 FCI。
+1. 选择“将节点添加到 SQL Server 故障转移群集”。 按照向导中的说明安装 SQL Server 并将此服务器添加到 FCI。
 
    >[!NOTE]
-   >如果使用了包含 SQL Server 的 Azure 市场库映像，该映像已随附 SQL Server 工具。 如果未使用这些映像之一，请单独安装 SQL Server 工具。 有关详细信息，请参阅 [下载 SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)。
+   >如果使用了包含 SQL Server 的 Azure 市场库映像，该映像已随附 SQL Server 工具。 如果未使用其中的某个映像，请单独安装 SQL Server 工具。 有关详细信息，请参阅 [下载 SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)。
    >
 
 ## <a name="register-with-the-sql-vm-rp"></a>向 SQL VM RP 注册

@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: tyao
-ms.openlocfilehash: 077f127648688b25d45b433fa2bc94ee011b3f2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f41dc688996b2431060a3cde209ca1ed4a21fe8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80336077"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005610"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>使用 Azure 前门的 Web 应用程序防火墙配置 IP 限制规则
 
@@ -31,7 +31,7 @@ ms.locfileid: "80336077"
 ### <a name="create-a-waf-policy"></a>创建 WAF 策略
 
 1. 在 Azure 门户上，选择 "**创建资源**"，在搜索框中键入 " **web 应用程序防火墙**"，然后选择 " **WEB 应用程序防火墙（WAF）**"。
-2. 选择“创建”。
+2. 选择“创建” 。
 3. 在 "**创建 WAF 策略**" 页上，使用以下值完成 "**基本**信息" 选项卡：
    
    |设置  |值  |
@@ -55,7 +55,7 @@ ms.locfileid: "80336077"
    |自定义规则名称     |FdWafCustRule|
    |状态     |Enabled|
    |规则类型     |匹配|
-   |优先度    |100|
+   |优先级    |100|
    |匹配类型     |IP 地址|
    |Match 变量|RemoteAddr|
    |操作|不包含|
@@ -64,7 +64,7 @@ ms.locfileid: "80336077"
 
    :::image type="content" source="../media/waf-front-door-configure-ip-restriction/custom-rule.png" alt-text="自定义规则":::
 
-   选择“添加”。
+   选择“添加”  。
 6. 选择**下一步：关联**。
 7. 选择 "**添加前端主机**"。
 8. 对于 "**前端主机**"，请选择前端主机，然后选择 "**添加**"。
@@ -168,7 +168,7 @@ az network front-door waf-policy rule match-condition add \
 #### <a name="set-up-your-powershell-environment"></a>设置 PowerShell 环境
 Azure PowerShell 提供了一组 cmdlet，这些 cmdlet 使用[azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)模型来管理 azure 资源。
 
-可以在本地计算机上安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 并在任何 PowerShell 会话中使用它。 按照页面上的说明使用 Azure 凭据登录到 PowerShell，然后安装 Az 模块。
+可以在本地计算机上安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) 并在任何 PowerShell 会话中使用它。 按照页面上的说明使用 Azure 凭据登录到 PowerShell，然后安装 Az 模块。
 
 1. 使用以下命令连接到 Azure，然后使用交互式对话框进行登录。
     ```

@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 69368ecd7234912bcaf5eb606545f62ddb7b30a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84850b7d44033a2759c51c5c6b9c53d1c945a99d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204177"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005372"
 ---
-# <a name="localization"></a>本地化
+# <a name="localization-element"></a>本地化元素
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -39,7 +39,7 @@ ms.locfileid: "85204177"
 
 **Localization** 元素包含以下属性：
 
-| 特性 | 必需 | 描述 |
+| 特性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | Enabled | 否 | 可能的值：`true` 或 `false`。 |
 
@@ -54,7 +54,7 @@ ms.locfileid: "85204177"
 
 **SupportedLanguages** 元素包含以下属性：
 
-| 特性 | 必需 | 描述 |
+| 特性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | DefaultLanguage | 是 | 用作本地化资源默认值的语言。 |
 | MergeBehavior | 否 | 与父策略中具有相同标识符的任何 ClaimType 合并在一起的值的枚举值。 覆盖基本策略中指定的声明时，请使用此属性。 可能的值：`Append`、`Prepend` 或 `ReplaceAll`。 `Append` 值指定应将现有数据集合追加到父策略中指定的集合的末尾。 `Prepend` 值指定应将现有数据集合添加到父策略中指定的集合的前面。 `ReplaceAll` 值指定应忽略父策略中定义的数据集合，改用当前策略中定义的数据。 |
@@ -71,7 +71,7 @@ ms.locfileid: "85204177"
 
 **LocalizedResources** 元素包含以下属性：
 
-| 特性 | 必需 | 描述 |
+| 特性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于唯一标识本地化资源的标识符。 |
 
@@ -94,7 +94,7 @@ ms.locfileid: "85204177"
 
 **LocalizedCollection** 元素包含以下属性：
 
-| 特性 | 必需 | 描述 |
+| 特性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ElementType | 是 | 引用策略文件中的 ClaimType 元素或用户界面元素。 |
 | ElementId | 是 | 一个字符串，包含当 **ElementType** 设置为 ClaimType 时使用的 ClaimsSchema 节中已定义的声明类型的引用。 |
@@ -108,7 +108,7 @@ ms.locfileid: "85204177"
 
 **Item** 元素包含以下属性：
 
-| 属性 | 必需 | 描述 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | 文本 | 是 | 应在用户界面中向用户显示的此选项的用户友好字符串。 |
 | Value | 是 | 与此选项关联的字符串声明值。 |
@@ -144,7 +144,7 @@ ms.locfileid: "85204177"
 
 **LocalizedString** 元素包含以下属性：
 
-| 属性 | 必需 | 描述 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ElementType | 是 | 可能的值：[ClaimsProvider](#claimsprovider)、[ClaimType](#claimtype)、[ErrorMessage](#errormessage)、[GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype)、[Predicate](#predicate)、[InputValidation](#inputvalidation) 或 [UxElement](#uxelement)。   | 
 | ElementId | 是 | 如果 **ElementType** 设置为 `ClaimType`、`Predicate` 或 `InputValidation`，此元素包含对 ClaimsSchema 节中已定义的声明类型的引用。 |
