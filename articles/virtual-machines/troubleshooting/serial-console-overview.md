@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 2b901c0d77b5bd550e7e98434cf1cba2a61e6bdb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 65679c900baaf0f98a21e4b1f6b1d350c4b945c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656482"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074342"
 ---
 # <a name="azure-serial-console"></a>Azure 串行控制台
 
@@ -33,7 +34,7 @@ ms.locfileid: "83656482"
 若要在 VM 或虚拟机规模集实例上访问串行控制台，将需要以下各项：
 
 - 必须为 VM 启用启动诊断
-- 使用密码身份验证的用户帐户必须存在于 VM 中。 可以使用 VM 访问扩展的[重置密码](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)功能创建基于密码的用户。 在“支持 + 故障排除”部分选择“重置密码”。 
+- 使用密码身份验证的用户帐户必须存在于 VM 中。 可以使用 VM 访问扩展的[重置密码](../extensions/vmaccess.md#reset-password)功能创建基于密码的用户。 在“支持 + 故障排除”部分选择“重置密码”。 
 - 访问串行控制台的 Azure 帐户必须对 VM 和[启动诊断](boot-diagnostics.md)存储帐户拥有[虚拟机参与者角色](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 
 > [!NOTE]
@@ -68,7 +69,7 @@ ms.locfileid: "83656482"
 
 
 ### <a name="tls-12-in-serial-console"></a>串行控制台中的 TLS 1.2
-串行控制台使用 TLS 1.2 端到端来保护服务中的所有通信。 串行控制台依赖于用户管理的启动诊断存储帐户，并且必须为存储帐户单独配置 TLS 1.2。 [此处](https://docs.microsoft.com/azure/storage/common/storage-security-tls)提供了操作说明。
+串行控制台使用 TLS 1.2 端到端来保护服务中的所有通信。 串行控制台依赖于用户管理的启动诊断存储帐户，并且必须为存储帐户单独配置 TLS 1.2。 [此处](../../storage/common/transport-layer-security-configure-minimum-version.md)提供了操作说明。
 
 ## <a name="advanced-uses-for-serial-console"></a>串行控制台的高级用途
 除了通过控制台访问 VM 之外，还可以使用 Azure 串行控制台来执行以下操作：

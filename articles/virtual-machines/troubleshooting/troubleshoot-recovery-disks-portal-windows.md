@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/19/2018
 ms.author: genli
-ms.openlocfilehash: e76fc2da8da2325a8bb0cda47c4405c9eb03c8f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b51205fe67bfe5be46491b0238e987fc14f6737
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79249992"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074345"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>通过使用 Azure 门户将 OS 磁盘附加到恢复 VM，对 Windows VM 进行故障排除
 如果 Windows 虚拟机 (VM) 在 Azure 中遇到启动或磁盘错误，可能需要对虚拟硬盘本身执行故障排除步骤。 一个常见示例是应用程序更新失败，使 VM 无法成功启动。 本文详细介绍如何使用 Azure 门户将虚拟硬盘连接到另一个 Windows VM 来修复所有错误，然后重新创建原始 VM。 
@@ -126,7 +127,7 @@ ms.locfileid: "79249992"
 
 ## <a name="swap-the-os-disk-for-the-vm"></a>交换 VM 的 OS 磁盘
 
-Azure 门户现在支持更改 VM 的 OS 磁盘。 要实现这一点，请执行下列操作：
+Azure 门户现在支持更改 VM 的 OS 磁盘。 为此，请执行以下步骤：
 
 1. 请参阅[Azure 门户](https://portal.azure.com)。 在边栏中选择“虚拟机”，然后选择有问题的 VM。****
 1. 在左窗格中选择“磁盘”，然后选择“交换 OS 磁盘”。********

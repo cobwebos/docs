@@ -13,13 +13,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 3ad68438f5fc015b6a9150d67485b90a095f1a4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 545399e1d7941351ce861ac98d995d5e57006ea1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79250083"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074375"
 ---
-# <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>使用串行控制台发出 SysRq 和 NMI 调用
+# <a name="use-the-azure-serial-console-for-sysrq-and-nmi-calls"></a>使用 Azure 串行控制台进行 SysRq 和 NMI 调用
 
 ## <a name="system-request-sysrq"></a>系统请求 (SysRq)
 SysRq 是 Linux 操作系统内核识别的按键序列，可以触发一组预定义的操作。 当无法通过传统的管理执行虚拟机故障排除或恢复时（例如，如果 VM 未响应），通常使用这些命令。 使用 Azure 串行控制台的 SysRq 功能时，将会模拟 SysRq 按键，以及物理键盘上的字符输入。
@@ -28,11 +29,11 @@ SysRq 是 Linux 操作系统内核识别的按键序列，可以触发一组预�
 
 可以使用下面显示的命令栏上的键盘图标通过 Azure 串行控制台向 Azure 虚拟机发送 SysRq。
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
+![Azure 串行控制台的屏幕截图。 键盘图标突出显示，其菜单可见。 该菜单包含 Send SysRq 命令项。](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
 选择“发送 SysRq 命令”会打开一个对话框，其中提供了常用 SysRq 选项，或者可以接受该对话框中输入的 SysRq 命令序列。  这样，SysRq 序列便可以执行某个高级别的操作，例如，使用 `REISUB` 执行安全重新启动。
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
+!["向来宾发送 SysRq 命令" 对话框的屏幕截图。 选择用于输入命令的选项，并且命令框包含 REISUB。](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
 不能在已停止或者其内核处于无响应状态的虚拟机上使用 SysRq 命令。 （例如内核崩溃）。
 
@@ -101,7 +102,7 @@ echo "1" >/proc/sys/kernel/sysrq
 
 可以使用下面显示的命令栏上的键盘图标通过串行控制台向 Azure 虚拟机发送 NMI。 传送 NMI 后，虚拟机配置将控制系统的响应方式。  可将 Linux 操作系统配置为在收到 NMI 时发生崩溃并创建内存转储。
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
+![串行控制台的屏幕截图。 键盘图标突出显示，其菜单可见。 该菜单包含 "发送不可屏蔽" 中断项。](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
 
 ### <a name="enable-nmi"></a>启用 NMI
 对于支持使用 sysctl 配置内核参数的 Linux 系统，可以使用以下步骤来启用收到此 NMI 时发生崩溃：

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 0588f02c6dfb557f32aae56dc742b9390c3cdbcb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ba4b8de4b8cf1d1d1b8124185a8006eb7695b21e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955074"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074505"
 ---
 # <a name="media-services-v3-with-playready-license-template"></a>带有 PlayReady 许可证模板的媒体服务 v3 
 
@@ -62,7 +62,7 @@ XML 遵循 [PlayReady 许可证模板 XML 架构](#schema)部分中定义的 Pla
 
 媒体服务提供了可用于配置 PlayReady 许可证模板的类型。 
 
-后面的代码片段使用媒体服务 .NET 类来配置 PlayReady 许可证模板。 这些类在 [Microsoft.Azure.Management.Media.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) 命名空间中定义。 此代码片段配置 PlayReady 许可证的 PlayRight。 PlayRight 授权用户播放受许可证中和 PlayRight 本身（用于特定于播放的策略）配置的任何限制所制约的内容。 针对 PlayRight 的策略大部分涉及输出限制，这些限制控制在播放内容时可以使用的输出类型。 它还包括在使用给定输出时必须实施的任何限制。 例如，如果启用了 DigitalVideoOnlyContentRestriction，则 DRM 运行时仅允许以数字输出形式播放视频。 （不允许以模拟视频输出形式来传送内容。）
+后面的代码片段使用媒体服务 .NET 类来配置 PlayReady 许可证模板。 这些类在 [Microsoft.Azure.Management.Media.Models](/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) 命名空间中定义。 此代码片段配置 PlayReady 许可证的 PlayRight。 PlayRight 授权用户播放受许可证中和 PlayRight 本身（用于特定于播放的策略）配置的任何限制所制约的内容。 针对 PlayRight 的策略大部分涉及输出限制，这些限制控制在播放内容时可以使用的输出类型。 它还包括在使用给定输出时必须实施的任何限制。 例如，如果启用了 DigitalVideoOnlyContentRestriction，则 DRM 运行时仅允许以数字输出形式播放视频。 （不允许以模拟视频输出形式来传送内容。）
 
 > [!IMPORTANT]
 > PlayReady 许可证具有功能强大的限制。 如果输出保护施加了太多限制，内容可能会无法在某些客户端上播放。 有关详细信息，请参阅 [PlayReady 符合性规则](https://www.microsoft.com/playready/licensing/compliance/)。

@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: d34481587fd48e2eddfd268c39f6bc4f7c4e0c76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3f3dbd74ef74f091ca923f8c09680c6913ac300
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869422"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074235"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>在 Azure VM 上创建 MATLAB 分布式计算服务器群集
 使用 Microsoft Azure 虚拟机可以创建一个或多个 MATLAB 分布式计算服务器群集，运行计算密集型并行 MATLAB 工作负荷。 在 VM 上安装 MATLAB 分布式计算服务器软件以用作基本映像，并使用 Azure 快速入门模板或 Azure PowerShell 脚本（可在 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster) 上获取）来部署和管理群集。 部署之后，可连接到群集来运行工作负荷。
@@ -24,7 +25,7 @@ ms.locfileid: "81869422"
 
 ## <a name="prerequisites"></a>先决条件
 * **客户端计算机** - 在部署后，需要使用一台基于 Windows 的客户端计算机来与 Azure 和 MATLAB 分布式计算服务器群集通信。
-* **Azure PowerShell** - 请参阅 [How to install and configure Azure PowerShell](/powershell/azure/overview)（如何安装和配置 Azure PowerShell），在客户端计算机上安装该软件。
+* **Azure PowerShell** - 请参阅 [How to install and configure Azure PowerShell](/powershell/azure/)（如何安装和配置 Azure PowerShell），在客户端计算机上安装该软件。
 * **Azure 订阅** - 如果没有订阅，只需要花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/free/)。 对于较大的群集，请考虑即用即付订阅或其他购买选项。
 * **vCPU 配额** - 可能需要增大 vCPU 配额才能部署大型群集或多个 MATLAB 分布式计算服务器群集。 若要增加配额，可免费 [建立联机客户支持请求](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) 。
 * **MATLAB、并行计算工具箱和 MATLAB 分布式计算服务器许可证** - 脚本假设所有许可证都使用 [MathWorks Hosted License Manager](https://www.mathworks.com/help/install/license-management.html) 。  

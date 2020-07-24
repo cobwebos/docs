@@ -3,12 +3,12 @@ title: 在 IoT Edge 设备上部署实时视频分析-Azure
 description: 本文列出了可帮助你在 IoT Edge 设备上部署实时视频分析的步骤。 例如，如果你有权访问本地 Linux 计算机，并且/或者以前创建了 Azure 媒体服务帐户，则可以执行此操作。
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 415d22a47e6563e10a1880429537ab182d1ff7a5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ea7a1026f42cd3d8745559bc195a89b7fbcb69a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519892"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074448"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>在 IoT Edge 设备上部署实时视频分析
 
@@ -18,10 +18,10 @@ ms.locfileid: "86519892"
 ## <a name="prerequisites"></a>先决条件
 
 * 符合实时视频分析的硬件/软件约束的 Linux 计算机
-* 拥有[所有者权限](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)的 Azure 订阅
-* [创建和设置 IoT 中心](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)
-* [注册 IoT Edge 设备](https://docs.microsoft.com/azure/iot-edge/how-to-register-device)
-* [在基于 Debian 的 Linux 系统上安装 Azure IoT Edge 运行时](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
+* 拥有[所有者权限](../../role-based-access-control/built-in-roles.md#owner)的 Azure 订阅
+* [创建和设置 IoT 中心](../../iot-hub/iot-hub-create-through-portal.md)
+* [注册 IoT Edge 设备](../../iot-edge/how-to-register-device.md)
+* [在基于 Debian 的 Linux 系统上安装 Azure IoT Edge 运行时](../../iot-edge/how-to-install-iot-edge-linux.md)
 * [创建 Azure 媒体服务帐户](../latest/create-account-howto.md)
     * 使用以下区域之一：美国东部2、美国中部、美国中北部、日本东部、美国西部2、美国中部、加拿大东部、英国南部、法国中部、法国南部、瑞士北部、瑞士西部和日本西部。
     * 建议使用常规用途 v2 （GPv2）存储帐户
@@ -225,7 +225,7 @@ Azure 门户引导你创建部署清单并将部署推送到 IoT Edge 设备。
 2.  在 "设备详细信息" 中，验证 blob 存储模块是否被列为 "**部署" 中指定的和 "设备报告的**"。
 
 可能需要等待一段时间，该模块才会在设备上启动并向 IoT 中心发回报告。 刷新页面以查看更新的状态。
-状态代码：200–正常表示[IoT Edge 运行时运行](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime)正常，且操作良好。
+状态代码：200–正常表示[IoT Edge 运行时运行](../../iot-edge/iot-edge-runtime.md)正常，且操作良好。
 
 ![状态](./media/deploy-iot-edge-device/status.png)
 

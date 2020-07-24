@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 18e96f9463176b0fce04252492eea6dbede416c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b6abaf10f74b29685309ed5a24a5e6b9f261014
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79531101"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074434"
 ---
 # <a name="redeploy-linux-virtual-machine-to-new-azure-node"></a>将 Linux 虚拟机重新部署到新的 Azure 节点
 如果在对 SSH 或应用程序访问 Azure 中 Linux 虚拟机 (VM) 进行故障排除时遇到困难，重新部署 VM 可能会有帮助。 重新部署 VM 时，将 VM 移到 Azure 基础结构中的新节点，然后重新提供支持。 所有配置选项和关联资源均保留。 本文介绍如何使用 Azure CLI 或 Azure 门户重新部署 VM。
@@ -41,7 +41,7 @@ az vm redeploy --resource-group myResourceGroup --name myVM
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 
-安装[最新的 Azure 经典 CLI](../../cli-install-nodejs.md) 并登录到 Azure 帐户。 请确保处于资源管理器模式 (`azure config mode arm`)。
+安装[最新的 Azure 经典 CLI](/cli/azure/install-classic-cli) 并登录到 Azure 帐户。 请确保处于资源管理器模式 (`azure config mode arm`)。
 
 以下示例在名为“myResourceGroup”  的资源组中重新部署名为“myVM”  的 VM：
 
@@ -53,5 +53,3 @@ azure vm redeploy --resource-group myResourceGroup --vm-name myVM
 
 ## <a name="next-steps"></a>后续步骤
 如果在连接 VM 时遇到问题，可以在 [troubleshooting SSH connections](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（SSH 连接故障排除）或 [detailed SSH troubleshooting steps](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（详细的 SSH 故障排除步骤）中找到特定的帮助。 如果无法访问在 VM 上运行的应用程序，还可以阅读 [application troubleshooting issues](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（应用程序故障排除问题）。
-
-

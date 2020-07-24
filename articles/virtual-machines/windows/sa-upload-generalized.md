@@ -9,11 +9,12 @@ ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
-ms.openlocfilehash: fc2e2ff0edc09e613b1da0a503eff9d53ebcf7a9
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: d340e37cf64961971c03af8d08a669c27d758116
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234621"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074195"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>将通用化 VHD 上传到 Azure，创建新 VM
 
@@ -33,9 +34,9 @@ ms.locfileid: "84234621"
   * 使用 Sysprep 将虚拟机通用化
 
 ### <a name="generalize-a-windows-virtual-machine-using-sysprep"></a>使用 Sysprep 通用化 Windows 虚拟机
-本部分说明如何通用化可用作映像的 Windows 虚拟机。 Sysprep 将删除所有个人帐户信息及其他某些数据，并准备好要用作映像的计算机。 有关 Sysprep 的详细信息，请参阅[如何使用 Sysprep：简介](https://technet.microsoft.com/library/bb457073.aspx)。
+本部分说明如何通用化可用作映像的 Windows 虚拟机。 Sysprep 将删除所有个人帐户信息及其他某些数据，并准备好要用作映像的计算机。 有关 Sysprep 的详细信息，请参阅[如何使用 Sysprep：简介](/previous-versions/windows/it-pro/windows-xp/bb457073(v=technet.10))。
 
-确保 Sysprep 支持计算机上运行的服务器角色。 有关详细信息，请参阅 [Sysprep 对服务器角色的支持](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+确保 Sysprep 支持计算机上运行的服务器角色。 有关详细信息，请参阅 [Sysprep 对服务器角色的支持](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)
 
 > [!IMPORTANT]
 > 如果在首次将 VHD 上传到 Azure 之前运行 Sysprep，请确保先[准备好 VM](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，然后再运行 Sysprep。 
@@ -62,7 +63,7 @@ ms.locfileid: "84234621"
 将 VHD 上传到 Azure 存储帐户。
 
 ### <a name="log-in-to-azure"></a>登录 Azure
-如果尚未安装 Azure PowerShell 1.4 或更高版本，请阅读 [How to install and configure Azure PowerShell](/powershell/azure/overview)（如何安装和配置 Azure PowerShell）。
+如果尚未安装 Azure PowerShell 1.4 或更高版本，请阅读 [How to install and configure Azure PowerShell](/powershell/azure/)（如何安装和配置 Azure PowerShell）。
 
 1. 打开 Azure PowerShell 并登录到 Azure 帐户。 此时会打开一个弹出窗口让输入 Azure 帐户凭据。
    
@@ -105,7 +106,7 @@ Get-AzStorageAccount
     New-AzResourceGroup -Name myResourceGroup -Location "West US"
     ```
 
-2. 使用 [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) cmdlet 在此资源组中创建名为 **mystorageaccount** 的存储帐户：
+2. 使用 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) cmdlet 在此资源组中创建名为 **mystorageaccount** 的存储帐户：
    
     ```powershell
     New-AzStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "West US" `
@@ -114,7 +115,7 @@ Get-AzStorageAccount
  
 ### <a name="start-the-upload"></a>开始上传 
 
-使用 [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) cmdlet 将映像上传到存储帐户中的容器。 本示例将文件 **myVHD.vhd** 从 `"C:\Users\Public\Documents\Virtual hard disks\"` 上传到 **myResourceGroup** 资源组中名为 **mystorageaccount** 的存储帐户。 该文件将放入名为 **mycontainer** 的容器，新文件名为 **myUploadedVHD.vhd**。
+使用 [Add-AzVhd](/powershell/module/az.compute/add-azvhd) cmdlet 将映像上传到存储帐户中的容器。 本示例将文件 **myVHD.vhd** 从 `"C:\Users\Public\Documents\Virtual hard disks\"` 上传到 **myResourceGroup** 资源组中名为 **mystorageaccount** 的存储帐户。 该文件将放入名为 **mycontainer** 的容器，新文件名为 **myUploadedVHD.vhd**。
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -284,5 +285,3 @@ $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 
 ## <a name="next-steps"></a>后续步骤
 若要使用 Azure PowerShell 管理新虚拟机，请参阅[使用 Azure 资源管理器与 PowerShell 来管理虚拟机](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-
-

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 36af0eeb43fb209ed65f950576f2dc9e97ec3633
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: afbea39a080e1dd768a14d6e0eacda1bad23c5a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71058626"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074416"
 ---
 # <a name="redeploy-windows-virtual-machine-to-new-azure-node"></a>将 Windows 虚拟机重新部署到新的 Azure 节点
 如果在对远程桌面 (RDP) 连接或应用程序对基于 Windows 的 Azure 虚拟机 (VM) 的访问进行故障排除时遇到困难，重新部署 VM 可能会有帮助。 重新部署 VM 时，Azure 会关闭该 VM，并将其移到 Azure 基础结构中的新节点，然后重新打开它，同时保留所有配置选项和关联的资源。 本文介绍了如何使用 Azure PowerShell 或 Azure 门户重新部署 VM。
@@ -28,7 +28,7 @@ ms.locfileid: "71058626"
 
 
 ## <a name="using-azure-powershell"></a>使用 Azure PowerShell
-请确保已在计算机上安装最新的 Azure PowerShell 1.x。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+请确保已在计算机上安装最新的 Azure PowerShell 1.x。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/)。
 
 以下示例部署 `myResourceGroup` 资源组中名为 `myVM` 的 VM：
 
@@ -39,5 +39,4 @@ Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
 [!INCLUDE [virtual-machines-common-redeploy-to-new-node](../../../includes/virtual-machines-common-redeploy-to-new-node.md)]
 
 ## <a name="next-steps"></a>后续步骤
-如果在连接 VM 时遇到问题，可以在 [troubleshooting RDP connections](troubleshoot-rdp-connection.md)（RDP 连接故障排除）或 [detailed RDP troubleshooting steps](detailed-troubleshoot-rdp.md)（详细的 RDP 故障排除步骤）中找到具体的帮助信息。 如果无法访问在 VM 上运行的应用程序，还可以阅读 [application troubleshooting issues](../windows/troubleshoot-app-connection.md)（应用程序故障排除问题）。
-
+如果在连接 VM 时遇到问题，可以在 [troubleshooting RDP connections](troubleshoot-rdp-connection.md)（RDP 连接故障排除）或 [detailed RDP troubleshooting steps](detailed-troubleshoot-rdp.md)（详细的 RDP 故障排除步骤）中找到具体的帮助信息。 如果无法访问在 VM 上运行的应用程序，还可以阅读 [application troubleshooting issues](./troubleshoot-app-connection.md)（应用程序故障排除问题）。

@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: f84d4fcd85f1e718f414e63bbe76fd29fa32427d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c87c517a0013fa31ba63ef1f78677fe85f5d287
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869569"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074275"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 的 Azure 混合权益
 对于有软件保障的客户，Windows Server 的 Azure 混合权益可让你使用本地 Windows Server 许可证，并以较低成本在 Azure 中运行 Windows 虚拟机。 可以使用 Windows Server 的 Azure 混合权益部署 Windows OS 的新虚拟机。 本文介绍如何使用 Windows Server 的 Azure 混合权益部署新的 VM 的步骤，以及如何更新现有正在运行的 VM 的步骤。 有关 Windows Server 的 Azure 混合权益许可和成本节约方面的更多信息，请参阅[“Windows Server 的 Azure 混合权益许可”页](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
@@ -65,7 +66,7 @@ az vm create \
 ```
 
 ### <a name="template"></a>模板
-在资源管理器模板中，必须指定附加参数 `licenseType`。 可以阅读有关[创作 Azure 资源管理器模板](../../resource-group-authoring-templates.md)的详细信息
+在资源管理器模板中，必须指定附加参数 `licenseType`。 可以阅读有关[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)的详细信息
 ```json
 "properties": {
     "licenseType": "Windows_Server",
@@ -189,7 +190,7 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
 ## <a name="next-steps"></a>后续步骤
 - 详细了解[如何使用 Azure 混合权益节省资金](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
 - 详细了解 [Azure 混合权益的常见问题解答](https://azure.microsoft.com/pricing/hybrid-use-benefit/faq/)
-- 详细了解 [Windows Server 的 Azure 混合权益许可详细指南](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)。
+- 详细了解 [Windows Server 的 Azure 混合权益许可详细指南](/windows-server/get-started/azure-hybrid-benefit)。
 - 详细了解 [Windows Server 的 Azure 混合权益和 Azure Site Recovery 让应用迁移到 Azure 更具成本效益](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)
-- 详细了解[如何使用多租户托管权限在 Azure 上部署 Windows 10](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)
+- 详细了解[如何使用多租户托管权限在 Azure 上部署 Windows 10](./windows-desktop-multitenant-hosting-deployment.md)
 - 详细了解如何[使用资源管理器模板](../../azure-resource-manager/management/overview.md)
