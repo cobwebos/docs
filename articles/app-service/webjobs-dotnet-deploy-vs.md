@@ -8,12 +8,12 @@ ms.custom: vs-azure
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 971ab39ddf4b383f92f0cd81e5258ad357e76e99
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: cf2437443350cf9b21b6abc0d0dd1dbd5d22e41f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857073"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083185"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>使用 Visual Studio 开发和部署 WebJobs - Azure 应用服务
 
@@ -225,7 +225,7 @@ WebJobs 使用 *settings.job* 文件确定某个 WebJob 是否已运行。 使�
 
 ### <a name="cron-expressions"></a>CRON 表达式
 
-WebJobs 使用的 CRON 计划表达式与 Azure Functions 中的计时器触发器相同。 若要详细了解 CRON 支持，请参阅[计时器触发器参考文章](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)。
+WebJobs 使用的 CRON 计划表达式与 Azure Functions 中的计时器触发器相同。 若要了解有关 CRON 支持的详细信息，请参阅[Azure Functions 的计时器触发器](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)。
 
 [!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
 

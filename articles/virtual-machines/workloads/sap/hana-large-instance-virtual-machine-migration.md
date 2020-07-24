@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 02/11/2020
 ms.author: bentrin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd1267711871b3e55f1a6229e46ae27b360322f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db51ec682f43366f5637c461e3fe4037dec8e364
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617040"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085208"
 ---
 # <a name="sap-hana-on-azure-large-instance-migration-to-azure-virtual-machines"></a>Azure 大型实例上的 SAP HANA 迁移到 Azure 虚拟机
 本文介绍了可能的 Azure 大型实例部署方案，并提供了最小化转换停机时间的规划和迁移方法
@@ -40,7 +41,7 @@ ms.locfileid: "77617040"
 - 客户已验证设计和迁移计划。
 - 规划灾难恢复 VM 以及主站点。  在迁移后，客户不能使用的是 Vm 上运行的主站点的 DR 节点。
 - 客户根据企业可恢复性和合规性要求将所需的备份文件复制到目标 Vm。 利用 VM 辅助功能备份，可以在转换期间进行时点恢复。
-- 对于 HSR HA，客户需要为[SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)和[RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker)按照 SAP HANA ha 指南设置和配置 STONITH 设备。  它不像 $ B-HLI 案例那样预先配置。
+- 对于 HSR HA，客户需要为[SLES](./high-availability-guide-suse-pacemaker.md)和[RHEL](./high-availability-guide-rhel-pacemaker.md)按照 SAP HANA ha 指南设置和配置 STONITH 设备。  它不像 $ B-HLI 案例那样预先配置。
 - 此迁移方法不会涵盖包含 Optane 配置的 B-HLI Sku。
 
 ## <a name="deployment-scenarios"></a>部署方案
@@ -48,21 +49,21 @@ ms.locfileid: "77617040"
 
 | 方案 ID | B-HLI 方案 | 是否逐字迁移到 VM？ | 备注 |
 | --- | --- | --- | --- |
-| 1 | [具有一个 SID 的单节点](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-one-sid) | 是 | - |
-| 2 | [具有 MCOS 的单个节点](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-mcos) | 是 | - |
-| 3 | [使用存储复制进行灾难恢复的单节点](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-storage-replication) | 否 | 存储复制不适用于 Azure 虚拟平台，将当前 DR 解决方案改为 HSR 或备份/还原 |
-| 4 | [使用存储复制的单节点，含 DR （多用途）](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-multipurpose-using-storage-replication) | 否 | 存储复制不适用于 Azure 虚拟平台，将当前 DR 解决方案改为 HSR 或备份/还原 |
-| 5 | [HSR with STONITH 实现高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#hsr-with-stonith-for-high-availability) | 是 | 目标 Vm 没有预先配置的 SBD。  选择并部署 STONITH 解决方案。  可能的选项： Azure 防护代理（ [RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker)、 [SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)支持）、SBD |
-| 6 | [HA 与 HSR，灾难恢复与存储复制](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-with-hsr-and-dr-with-storage-replication) | 否 | 将存储复制替换为 HSR 或备份/还原的 DR 需求 |
-| 7 | [主机自动故障转移 (1+1)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#host-auto-failover-11) | 是 | 将和用于 Azure Vm 的共享存储 |
-| 8 | [使用备用节点的横向扩展](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-standby) | 是 | BW/4HANA，M128s，M416s，M416ms Vm，只使用和进行存储 |
-| 9 | [不使用备用节点的横向扩展](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-without-standby) | 是 | 使用 M128s、M416s、M416ms Vm 的 BW/4HANA （使用或不使用和进行存储） |
-| 10 | [使用存储复制进行 DR 扩展](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-storage-replication) | 否 | 将存储复制替换为 HSR 或备份/还原的 DR 需求 |
-| 11 | [使用 HSR 进行灾难恢复的单节点](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-hsr) | 是 | - |
-| 12 | [单节点 HSR 到 DR （成本优化）](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-hsr-to-dr-cost-optimized) | 是 | - |
-| 13 | [HA 和 DR with HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr) | 是 | - |
-| 14 | [HA 和 DR with HSR （成本优化）](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr-cost-optimized) | 是 | - |
-| 15 | [使用 HSR 通过 DR 扩展](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-hsr) | 是 | 带 M128s 的 BW/4HANA。 M416s、M416ms Vm （使用或不使用和进行存储） |
+| 1 | [具有一个 SID 的单节点](./hana-supported-scenario.md#single-node-with-one-sid) | 是 | - |
+| 2 | [具有 MCOS 的单个节点](./hana-supported-scenario.md#single-node-mcos) | 是 | - |
+| 3 | [使用存储复制进行灾难恢复的单节点](./hana-supported-scenario.md#single-node-with-dr-using-storage-replication) | 否 | 存储复制不适用于 Azure 虚拟平台，将当前 DR 解决方案改为 HSR 或备份/还原 |
+| 4 | [使用存储复制的单节点，含 DR （多用途）](./hana-supported-scenario.md#single-node-with-dr-multipurpose-using-storage-replication) | 否 | 存储复制不适用于 Azure 虚拟平台，将当前 DR 解决方案改为 HSR 或备份/还原 |
+| 5 | [HSR with STONITH 实现高可用性](./hana-supported-scenario.md#hsr-with-stonith-for-high-availability) | 是 | 目标 Vm 没有预先配置的 SBD。  选择并部署 STONITH 解决方案。  可能的选项： Azure 防护代理（ [RHEL](./high-availability-guide-rhel-pacemaker.md)、 [SLES](./high-availability-guide-suse-pacemaker.md)支持）、SBD |
+| 6 | [HA 与 HSR，灾难恢复与存储复制](./hana-supported-scenario.md#high-availability-with-hsr-and-dr-with-storage-replication) | 否 | 将存储复制替换为 HSR 或备份/还原的 DR 需求 |
+| 7 | [主机自动故障转移 (1+1)](./hana-supported-scenario.md#host-auto-failover-11) | 是 | 将和用于 Azure Vm 的共享存储 |
+| 8 | [使用备用节点的横向扩展](./hana-supported-scenario.md#scale-out-with-standby) | 是 | BW/4HANA，M128s，M416s，M416ms Vm，只使用和进行存储 |
+| 9 | [不使用备用节点的横向扩展](./hana-supported-scenario.md#scale-out-without-standby) | 是 | 使用 M128s、M416s、M416ms Vm 的 BW/4HANA （使用或不使用和进行存储） |
+| 10 | [使用存储复制进行 DR 扩展](./hana-supported-scenario.md#scale-out-with-dr-using-storage-replication) | 否 | 将存储复制替换为 HSR 或备份/还原的 DR 需求 |
+| 11 | [使用 HSR 进行灾难恢复的单节点](./hana-supported-scenario.md#single-node-with-dr-using-hsr) | 是 | - |
+| 12 | [单节点 HSR 到 DR （成本优化）](./hana-supported-scenario.md#single-node-hsr-to-dr-cost-optimized) | 是 | - |
+| 13 | [HA 和 DR with HSR](./hana-supported-scenario.md#high-availability-and-disaster-recovery-with-hsr) | 是 | - |
+| 14 | [HA 和 DR with HSR （成本优化）](./hana-supported-scenario.md#high-availability-and-disaster-recovery-with-hsr-cost-optimized) | 是 | - |
+| 15 | [使用 HSR 通过 DR 扩展](./hana-supported-scenario.md#scale-out-with-dr-using-hsr) | 是 | 带 M128s 的 BW/4HANA。 M416s、M416ms Vm （使用或不使用和进行存储） |
 
 
 ## <a name="source-hli-planning"></a>源（B-HLI）规划
@@ -72,7 +73,7 @@ ms.locfileid: "77617040"
 这是一种很好的操作做法，可以整理数据库内容，使不需要的、过时的数据或过时的日志不会迁移到新数据库。  内务处理通常涉及到删除或存档旧数据、过期数据或非活动数据。  应在非生产系统中测试这些 "数据清理" 操作，以在生产使用之前验证其数据剪裁有效性。
 
 ### <a name="allow-network-connectivity-for-new-vms-and-or-virtual-network"></a>允许新 Vm 和虚拟网络的网络连接 
-在客户的[SAP HANA （大型实例）网络体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)一文中描述的信息已设置了网络。 而且，网络流量路由是以 "在 Azure 中路由" 一节中概述的方式完成的。
+在客户的[SAP HANA （大型实例）网络体系结构](./hana-network-architecture.md)一文中描述的信息已设置了网络。 而且，网络流量路由是以 "在 Azure 中路由" 一节中概述的方式完成的。
 - 在将新 VM 设置为迁移目标时，如果将其放置在现有的虚拟网络中，并且已允许 IP 地址范围连接到 B-HLI，则不需要进一步的连接更新。
 - 如果将新的 Azure VM 放置在新的 Microsoft Azure 虚拟网络中，则可以在另一个区域中，对等互连使用现有的虚拟网络时，可以使用 ExpressRoute 服务密钥和来自原机配置的资源 ID 来允许此新虚拟网络 IP 范围的访问。  与 Microsoft 服务管理协调，使虚拟网络能够连接。  注意：若要最大程度地减少应用程序层和数据库层之间的网络延迟，应用程序层和数据库层都必须位于同一虚拟网络上。  
 
@@ -106,7 +107,7 @@ ms.locfileid: "77617040"
 当前的 SAP 应用程序服务器部署区域通常与关联的 HLIs 密切相关。  但是，HLIs 的位置比可用的 Azure 区域少。  将物理机迁移到 Azure VM 时，还可以通过 "微调" 所有相关服务的邻近距离来优化性能。  在执行此操作时，需要考虑的一个重要事项是确保所选区域包含所有必需的资源。  例如，某些 VM 系列或 Azure 区域的产品/服务的可用性，用于实现高可用性设置。
 
 ### <a name="virtual-network"></a>虚拟网络 
-客户需要选择是在现有虚拟网络中运行新的 HANA 数据库，还是创建新的虚拟网络。  主要的决定因素是 SAP 环境的当前网络布局。  此外，当基础结构从一区域部署到两区域部署并使用 PPG 时，它会施加体系结构更改。 有关详细信息，请参阅 Azure PPG 一文，[了解如何通过 SAP 应用程序实现最佳网络延迟](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios)。   
+客户需要选择是在现有虚拟网络中运行新的 HANA 数据库，还是创建新的虚拟网络。  主要的决定因素是 SAP 环境的当前网络布局。  此外，当基础结构从一区域部署到两区域部署并使用 PPG 时，它会施加体系结构更改。 有关详细信息，请参阅 Azure PPG 一文，[了解如何通过 SAP 应用程序实现最佳网络延迟](./sap-proximity-placement-scenarios.md)。   
 
 ### <a name="security"></a>安全性
 无论新 SAP HANA VM 是否在新的或现有的 vnet/子网上登录，它都表示需要保护的新业务关键服务。  应为此新的服务类评估并部署符合公司信息安全策略的访问控制。
@@ -115,7 +116,7 @@ ms.locfileid: "77617040"
 此迁移也是用于正确调整 HANA 计算引擎规模的机会。  可以结合使用 HANA[系统视图](https://help.sap.com/viewer/7c78579ce9b14a669c1f3295b0d8ca16/Cloud/3859e48180bb4cf8a207e15cf25a7e57.html)和 hana Studio 来了解系统资源消耗，这允许适当调整大小以提高支出效率。
 
 ### <a name="storage"></a>存储 
-存储性能是影响 SAP 应用程序用户体验的因素之一。  基于给定 VM SKU，最小存储布局[SAP HANA Azure 虚拟机存储配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)中发布。 建议查看这些最低规格，并与现有的速度系统统计信息进行比较，以确保新 HANA VM 的 IO 容量和性能充足。
+存储性能是影响 SAP 应用程序用户体验的因素之一。  基于给定 VM SKU，最小存储布局[SAP HANA Azure 虚拟机存储配置](./hana-vm-operations-storage.md)中发布。 建议查看这些最低规格，并与现有的速度系统统计信息进行比较，以确保新 HANA VM 的 IO 容量和性能充足。
 
 如果为新 HANA VM 及其关联的服务配置 PPG，请提交支持票证以检查并确保存储和 VM 的共同位置。 由于你的备份解决方案可能需要更改，因此还应再次对存储成本进行更改，以避免操作开支惊喜。
 
@@ -123,13 +124,13 @@ ms.locfileid: "77617040"
 借助 B-HLI，存储复制被提供为灾难恢复的默认选项。 此功能不是 Azure VM 上 SAP HANA 的默认选项。 请考虑 HSR、备份/还原或其他受支持的解决方案，满足你的业务需求。
 
 ### <a name="availability-sets-availability-zones-and-proximity-placement-groups"></a>可用性集、可用性区域和邻近性放置组 
-若要缩短应用程序层之间的距离并 SAP HANA 以尽量减少网络延迟，请将新的数据库 VM 和当前 SAP 应用程序服务器置于 PPG 中。 请参阅[邻近位置组](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios)，了解 Azure 可用性集和可用性区域如何与 SAP 部署的 PPG 配合使用。
+若要缩短应用程序层之间的距离并 SAP HANA 以尽量减少网络延迟，请将新的数据库 VM 和当前 SAP 应用程序服务器置于 PPG 中。 请参阅[邻近位置组](./sap-proximity-placement-scenarios.md)，了解 Azure 可用性集和可用性区域如何与 SAP 部署的 PPG 配合使用。
 如果目标 HANA 系统的成员部署在多个 Azure 区域中，则客户应清楚地了解所选区域的延迟配置文件。 SAP 系统组件的位置对于 SAP 应用程序和数据库之间的最近距离是最佳的。  利用公共域[可用性区域延迟测试工具](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities/tree/master/AvZone-Latency-Test)，可以更轻松地进行测量。  
 
 
 ### <a name="backup-strategy"></a>备份策略
 许多客户已使用第三方备份解决方案进行 SAP HANA。  在这种情况下，只需配置其他受保护的 VM 和 HANA 数据库。  如果在迁移后停止了计算机，则当前的
-虚拟机上的 SAP HANA 的 Azure 备份现已正式发布。  有关详细信息，请参阅以下链接：[备份](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database)、[还原](https://docs.microsoft.com/azure/backup/sap-hana-db-restore)、[管理](https://docs.microsoft.com/azure/backup/sap-hana-db-manage)Azure vm 中的 SAP HANA 备份。
+虚拟机上的 SAP HANA 的 Azure 备份现已正式发布。  有关详细信息，请参阅以下链接：[备份](../../../backup/backup-azure-sap-hana-database.md)、[还原](../../../backup/sap-hana-db-restore.md)、[管理](../../../backup/sap-hana-db-manage.md)Azure vm 中的 SAP HANA 备份。
 
 ### <a name="dr-strategy"></a>DR 策略
 如果服务级别目标达到更长的恢复时间，则简单备份到 blob 存储并就地还原或还原到新的 VM 是最简单且最便宜的 DR 策略。  
@@ -196,5 +197,5 @@ Global Reach 用于使用！ ExpressRoute 网关连接客户的 ExpressRoute 网
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章：
-- [在 Azure 上 SAP HANA 基础结构配置和操作](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)。
-- [Azure 上的 SAP 工作负荷：规划和部署清单](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)。
+- [在 Azure 上 SAP HANA 基础结构配置和操作](./hana-vm-operations.md)。
+- [Azure 上的 SAP 工作负荷：规划和部署清单](./sap-deployment-checklist.md)。

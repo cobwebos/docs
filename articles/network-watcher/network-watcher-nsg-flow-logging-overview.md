@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: e59a985f59da1b6a40a6b583d5e2a490611a702c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: b73727e6bd824b80fbc3897055d71f6b9c632a61
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043846"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084358"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介
 
@@ -357,7 +357,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **流日志记录成本**：NSG 流日志记录按生成的日志量计费。 流量较高时，流日志的量和相关成本可能会增大。 NSG 流日志定价不包括基本的存储成本。 将保留策略功能与 NSG 流日志记录配合使用意味着在较长时间内会产生单独的存储成本。 如果不需要使用保留策略功能，我们建议将此值设置为 0。 有关详细信息，请参阅[网络观察程序定价](https://azure.microsoft.com/pricing/details/network-watcher/)和 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。
 
-**入站流的字节和数据包计数不正确**：[网络安全组（nsg）](https://docs.microsoft.com/azure/virtual-network/security-overview)作为有[状态防火墙](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)实现。 但是，由于平台限制，控制入站流的规则以无状态方式实现。 由于这些字节，不会记录这些流的数据包计数。 因此，NSG Flow 日志中报告的字节数和数据包数（和流量分析）可能不同于实际数字。 此外，入站流现在不会终止。 此限制计划为在12月2020时修复。 
+**用户定义的入站 TCP 规则问题**：[网络安全组（nsg）](https://docs.microsoft.com/azure/virtual-network/security-overview)作为有[状态防火墙](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)实现。 但是，由于当前平台限制，影响入站 TCP 流的用户定义规则以无状态方式实现。 因此，由用户定义的入站规则影响的流将变为非终止。 不会为这些流记录额外的字节和数据包计数。 因此，NSG Flow 日志中报告的字节数和数据包数（和流量分析）可能不同于实际数字。 计划在2020年12月的最新版本中提供了一个用于解决这些问题的选择加入标志。 在这种情况下，由于这种行为而导致严重问题的客户可以通过支持请求选择加入，请 > NSG Flow 日志下的网络观察程序下提出支持请求。  
 
 **入站流被从 Internet IP 记录到了没有公共 IP 的虚拟机**：对于没有通过与 NIC 关联的公共 IP 地址分配公共 IP 地址作为实例级公共 IP 的虚拟机，或者是属于基本负载均衡器后端池的一部分的虚拟机，请使用[默认SNAT](../load-balancer/load-balancer-outbound-connections.md)，并使用由 Azure 分配的 IP 地址以便于进行出站连接。 因此，如果流的目的地是分配给 SNAT 的端口范围内的端口，你可能会看到来自 Internet IP 地址的流的流日志条目。 虽然 Azure 不允许将这些流传输到 VM，但是按照设计，该尝试会被记录并显示在网络观察程序的 NSG 流日志中。 我们建议使用 NSG 来显式阻止不需要的入站 Internet 流量。
 

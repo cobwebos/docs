@@ -21,6 +21,12 @@
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
+- name: 概念
+  items:
+    - name: 安全性
+      items:
+        - name: Azure 安全基准的安全基线
+          href: security-baseline.md
 - name: 如何
   items:
     - name: 管理 Data Lake Analytics
@@ -87,7 +93,7 @@
               href: data-lake-analytics-data-lake-tools-develop-usql-database.md
             - name: 浏览和查看作业
               href: data-lake-analytics-data-lake-tools-view-jobs.md
-            - name: '调试自定义 C# 代码'
+            - name: 调试自定义 C# 代码
               href: data-lake-analytics-debug-u-sql-jobs.md
             - name: 排查定期作业的问题
               href: data-lake-analytics-data-lake-tools-debug-recurring-job.md

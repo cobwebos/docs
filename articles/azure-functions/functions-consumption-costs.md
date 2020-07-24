@@ -3,11 +3,12 @@ title: 估算 Azure Functions 中的消耗计划成本
 description: 了解如何更好地估算在 Azure 的消耗计划中运行函数应用时可能产生的成本。
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0e3177d7c65eb1624441427f123e6f95095bdbbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 880d1c20c75ce297b556ac203e309e446227e97a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76963982"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083032"
 ---
 # <a name="estimating-consumption-plan-costs"></a>估算消耗计划成本
 
@@ -44,7 +45,7 @@ Durable Functions 也可以在消耗计划中运行。 若要详细了解使用 
 
 估算函数应用和相关服务的总体成本时，请使用 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=functions)。 
 
-| 相关成本 | 说明 |
+| 相关成本 | 描述 |
 | ------------ | ----------- |
 | **存储帐户** | 需要为每个函数应用提供一个关联的常规用途 [Azure 存储帐户](../storage/common/storage-introduction.md#types-of-storage-accounts)，该帐户[单独计费](https://azure.microsoft.com/pricing/details/storage/)。 函数运行时在内部使用此帐户，但你也可以将其用于存储触发器和绑定。 如果你没有存储帐户，系统会在创建函数应用时创建一个存储帐户。 有关详细信息，请参阅[存储帐户要求](storage-considerations.md#storage-account-requirements)。|
 | **Application Insights** | 函数依赖于[Application Insights](../azure-monitor/app/app-insights-overview.md)来为函数应用提供高性能的监视体验。 虽然不是必需的，但应[启用 Application Insights 集成](functions-monitoring.md#enable-application-insights-integration)。 每个月都包含遥测数据的免费授予。 若要了解详细信息，请参阅[Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)。 |
@@ -60,7 +61,7 @@ Durable Functions 也可以在消耗计划中运行。 若要详细了解使用 
 
 ## <a name="view-execution-data"></a>查看执行数据
 
-在[您的发票](/azure/billing/billing-download-azure-invoice)中，可以查看所有执行的与成本相关的数据 **-函数**和**执行时间-函数**以及实际计费的成本。 但是，此发票数据是过去发票周期的每月聚合。 
+在[您的发票](../cost-management-billing/understand/download-azure-invoice.md)中，可以查看所有执行的与成本相关的数据 **-函数**和**执行时间-函数**以及实际计费的成本。 但是，此发票数据是过去发票周期的每月聚合。 
 
 若要更好地了解函数对成本的影响，可以使用 Azure Monitor 查看函数应用当前生成的成本相关指标。 可以使用 [Azure 门户]中的 [Azure Monitor 指标资源管理器](../azure-monitor/platform/metrics-getting-started.md)或使用 REST API 来获取此数据。
 
@@ -205,14 +206,14 @@ performanceCounters
 
 结果类似于以下示例：
 
-| 时间戳 \[UTC\]          | name          | value       |
+| 时间戳 \[UTC\]          | name          | 值       |
 |----------------------------|---------------|-------------|
-| 9/12/2019, 1:05:14\.947 AM | 专用字节 | 209,932,288 |
-| 9/12/2019, 1:06:14\.994 AM | 专用字节 | 212,189,184 |
-| 9/12/2019, 1:06:30\.010 AM | 专用字节 | 231,714,816 |
-| 9/12/2019, 1:07:15\.040 AM | 专用字节 | 210,591,744 |
-| 9/12/2019, 1:12:16\.285 AM | 专用字节 | 216,285,184 |
-| 9/12/2019, 1:12:31\.376 AM | 专用字节 | 235,806,720 |
+| 9/12/2019, 1:05:14\.947 AM | 专用字节数 | 209,932,288 |
+| 9/12/2019, 1:06:14\.994 AM | 专用字节数 | 212,189,184 |
+| 9/12/2019, 1:06:30\.010 AM | 专用字节数 | 231,714,816 |
+| 9/12/2019, 1:07:15\.040 AM | 专用字节数 | 210,591,744 |
+| 9/12/2019, 1:12:16\.285 AM | 专用字节数 | 216,285,184 |
+| 9/12/2019, 1:12:31\.376 AM | 专用字节数 | 235,806,720 |
 
 ## <a name="function-level-metrics"></a>函数级指标
 

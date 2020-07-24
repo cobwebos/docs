@@ -6,11 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: dd98d27f5a14d284174dd779ae20b29f534920b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6d8ca41c56239bc994b34119600dfa9db60ada6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559951"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083083"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 表存储绑定
 
@@ -139,7 +140,7 @@ namespace FunctionAppCloudTable2
 }
 ```
 
-有关如何使用 CloudTable 的详细信息，请参阅 [Azure 表存储入门](../cosmos-db/table-storage-how-to-use-dotnet.md)。
+有关如何使用 CloudTable 的详细信息，请参阅 [Azure 表存储入门](../cosmos-db/tutorial-develop-table-dotnet.md)。
 
 如果在尝试绑定到 `CloudTable` 时出现错误消息，请确保引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
@@ -198,7 +199,7 @@ public class Person
 
 以下示例演示 *function.json* 文件中的一个表输入绑定以及使用该绑定的 [C# 脚本](functions-reference-csharp.md)代码。 该函数读取队列消息中指定的分区键的实体。
 
-function.json** 文件如下所示：
+function.json 文件如下所示：
 
 ```json
 {
@@ -305,7 +306,7 @@ public class LogEntity : TableEntity
 }
 ```
 
-有关如何使用 CloudTable 的详细信息，请参阅 [Azure 表存储入门](../cosmos-db/table-storage-how-to-use-dotnet.md)。
+有关如何使用 CloudTable 的详细信息，请参阅 [Azure 表存储入门](../cosmos-db/tutorial-develop-table-dotnet.md)。
 
 如果在尝试绑定到 `CloudTable` 时出现错误消息，请确保引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
@@ -606,7 +607,7 @@ Python 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-使用 [TableInput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableinput) 特性可以访问触发了函数的表行。
+使用 [TableInput](/java/api/com.microsoft.azure.functions.annotation.tableinput) 特性可以访问触发了函数的表行。
 
 ---
 
@@ -977,15 +978,15 @@ Python 不支持特性。
 
 - **返回值**：将 `name` *function.js上*的属性设置为 `$return` 。 使用此配置时，函数的返回值将持久保存为表存储行。
 
-- **命令式**：向声明为[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python)类型的参数的[set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法传递值。 传递给的值 `set` 将持久保存为事件中心消息。
+- **命令式**：向声明为[Out](/python/api/azure-functions/azure.functions.out?view=azure-python)类型的参数的[set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法传递值。 传递给的值 `set` 将持久保存为事件中心消息。
 
 # <a name="java"></a>[Java](#tab/java)
 
-有两个选项可用于使用 [TableStorageOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet) 注释从函数来输出表存储行：
+有两个选项可用于使用 [TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet) 注释从函数来输出表存储行：
 
 - **返回值**：通过将注释应用于函数本身，函数的返回值将持久保存为表存储行。
 
-- **命令性**：若要显式设置消息值，请将注释应用于 [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding) 类型的特定参数，其中 `T` 包括 `PartitionKey` 和 `RowKey` 属性。 实现 `ITableEntity` 或继承 `TableEntity` 时通常会伴随使用这些属性。
+- **命令性**：若要显式设置消息值，请将注释应用于 [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) 类型的特定参数，其中 `T` 包括 `PartitionKey` 和 `RowKey` 属性。 实现 `ITableEntity` 或继承 `TableEntity` 时通常会伴随使用这些属性。
 
 ---
 
@@ -993,9 +994,9 @@ Python 不支持特性。
 
 | 绑定 | 参考 |
 |---|---|
-| 表 | [表错误代码](https://docs.microsoft.com/rest/api/storageservices/fileservices/table-service-error-codes) |
-| Blob、表、队列 | [存储错误代码](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| Blob、表、队列 | [故障排除](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| 表 | [表错误代码](/rest/api/storageservices/fileservices/table-service-error-codes) |
+| Blob、表、队列 | [存储错误代码](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| Blob、表、队列 | [故障排除](/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>后续步骤
 

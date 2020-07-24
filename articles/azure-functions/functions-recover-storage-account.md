@@ -5,11 +5,12 @@ author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 8fcd0661e2c7cab505121cf0d4d7b4c1d29017f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d84e1269fecf3bd85538415b5790c22aaf6eb01e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77063775"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085106"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>排查错误：“Azure Functions 运行时不可访问”
 
@@ -17,7 +18,7 @@ ms.locfileid: "77063775"
 
 > “错误:Azure Functions 运行时不可访问。 单击此处获取存储配置的详细信息。”
 
-当 Azure Functions 运行时无法启动时，会出现此问题。 此问题的最常见原因是函数应用失去了对其存储帐户的访问权限。 有关详细信息，请参阅[存储帐户要求](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)。
+当 Azure Functions 运行时无法启动时，会出现此问题。 此问题的最常见原因是函数应用失去了对其存储帐户的访问权限。 有关详细信息，请参阅[存储帐户要求](./functions-create-function-app-portal.md#storage-account-requirements)。
 
 本文的余下内容将帮助你排查此错误的以下原因，包括如何识别和解决每项原因。
 
@@ -25,7 +26,7 @@ ms.locfileid: "77063775"
 
 每个函数应用都需要存储帐户才能运行。 如果该帐户已被删除，则函数不会正常运行。
 
-首先在应用程序设置中查找你的存储帐户名称。 `AzureWebJobsStorage` 或 `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 包含连接字符串中包装的存储帐户名称。 有关详细信息，请参阅 [Azure Functions 的应用设置参考](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)。
+首先在应用程序设置中查找你的存储帐户名称。 `AzureWebJobsStorage` 或 `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 包含连接字符串中包装的存储帐户名称。 有关详细信息，请参阅 [Azure Functions 的应用设置参考](./functions-app-settings.md#azurewebjobsstorage)。
 
 在 Azure 门户中搜索你的存储帐户，确定它是否仍然存在。 如果它已被删除，请重新创建存储帐户，并替换存储连接字符串。 函数代码已丢失，需要重新部署。
 
@@ -36,12 +37,12 @@ ms.locfileid: "77063775"
 ### <a name="required-application-settings"></a>必需的应用程序设置
 
 * 必需：
-    * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
+    * [`AzureWebJobsStorage`](./functions-app-settings.md#azurewebjobsstorage)
 * 对于消耗计划函数是必需的：
-    * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
-    * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
+    * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](./functions-app-settings.md)
+    * [`WEBSITE_CONTENTSHARE`](./functions-app-settings.md)
 
-有关详细信息，请参阅 [Azure Functions 的应用设置参考](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)。
+有关详细信息，请参阅 [Azure Functions 的应用设置参考](./functions-app-settings.md)。
 
 ### <a name="guidance"></a>指南
 
@@ -51,7 +52,7 @@ ms.locfileid: "77063775"
 
 ## <a name="storage-account-credentials-are-invalid"></a>存储帐户凭据无效
 
-如果重新生成存储密钥，则必须更新上述存储帐户连接字符串。 有关存储密钥管理的详细信息，请参阅[创建 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)。
+如果重新生成存储密钥，则必须更新上述存储帐户连接字符串。 有关存储密钥管理的详细信息，请参阅[创建 Azure 存储帐户](../storage/common/storage-account-create.md)。
 
 ## <a name="storage-account-is-inaccessible"></a>存储帐户不可访问
 
@@ -59,7 +60,7 @@ ms.locfileid: "77063775"
 
 * 将函数应用部署到应用服务环境时，未使用正确的网络规则来允许在存储帐户中传入和传出流量。
 
-* 存储帐户防火墙已启用，但未配置为允许在函数中传入和传出流量。 有关详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+* 存储帐户防火墙已启用，但未配置为允许在函数中传入和传出流量。 有关详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](../storage/common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 ## <a name="daily-execution-quota-is-full"></a>每日执行配额已满
 
@@ -87,7 +88,7 @@ Azure 门户直接调用正在运行的应用以提取函数列表，并对 Kudu
    
 还可以通过连接到运行应用的虚拟网络的计算机或虚拟网络中运行的虚拟机来使用门户。 
 
-有关入站规则配置的详细信息，请参阅[应用服务环境的网络注意事项](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)的“网络安全组”部分。
+有关入站规则配置的详细信息，请参阅[应用服务环境的网络注意事项](../app-service/environment/network-info.md#network-security-groups)的“网络安全组”部分。
 
 ## <a name="next-steps"></a>后续步骤
 

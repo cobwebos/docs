@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: kumud
-ms.openlocfilehash: 26d82d4381649bc86950b1898c5c5351a97ec697
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55993162c4ea3cd5bf60a9ee9acc869cc088a9d0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688766"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085123"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>创建虚拟网络对等互连 - 资源管理器、不同订阅和 Azure Active Directory 租户
 
@@ -180,7 +181,7 @@ ms.locfileid: "84688766"
 
 本教程为每个订阅使用不同的帐户。 如果使用的帐户可访问这两个订阅，则可使用相同帐户完成所有步骤，可跳过注销 Azure 的步骤，并删除创建用户角色分配的脚本行。 将以下所有脚本中的 UserA@azure.com 和 UserB@azure.com 替换为用户 A 和用户 B 使用的用户名。
 
-1. 确认你具有 Azure PowerShell 1.0.0 或更高版本。 为此，可运行 `Get-Module -Name Az`。我们推荐安装最新版本的 PowerShell [Az module](/powershell/azure/install-az-ps)。 如果不熟悉 Azure PowerShell，请参阅 [Azure PowerShell 概述](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json)。 
+1. 确认你具有 Azure PowerShell 1.0.0 或更高版本。 为此，可运行 `Get-Module -Name Az`。我们推荐安装最新版本的 PowerShell [Az module](/powershell/azure/install-az-ps)。 如果不熟悉 Azure PowerShell，请参阅 [Azure PowerShell 概述](/powershell/azure/?toc=%2fazure%2fvirtual-network%2ftoc.json)。 
 2. 启动 PowerShell 会话。
 3. 在 PowerShell 中，输入 `Connect-AzAccount` 命令以用户 A 的身份登录 Azure。 用于登录的帐户必须拥有创建虚拟网络对等互连的必要权限。 有关权限列表，请参阅[虚拟网络对等互连权限](virtual-network-manage-peering.md#permissions)。
 4. 创建资源组和虚拟网络 A。将以下脚本复制到电脑的文本编辑器。 将 `<SubscriptionA-Id>` 替换为订阅 A 的 ID。 如果不知道订阅 ID，请输入 `Get-AzSubscription` 命令查看。 返回的输出中的 ID 值就是订阅 ID。 若要执行该脚本，请复制修改后的脚本，将其粘贴到 PowerShell，然后按 `Enter`。

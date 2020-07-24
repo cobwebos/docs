@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂实体的命名规则
+title: Azure 数据工厂实体的命名规则-版本1
 description: 描述数据工厂实体的命名规则。
 services: data-factory
 documentationcenter: ''
@@ -12,13 +12,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 8fa1340b586434bf98d51437d4dc6b08594f0afa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b6dc5b89b8c5d691b19e9e3368d805eb59b1db1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74931887"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082854"
 ---
-# <a name="azure-data-factory---naming-rules"></a>Azure 数据工厂 - 命名规则
+# <a name="rules-for-naming-azure-data-factory-entities"></a>Azure 数据工厂实体的命名规则
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果使用当前版本的数据工厂服务，请参阅[数据工厂中的命名规则](../naming-rules.md)。
 

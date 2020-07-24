@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: ffbc850c580daee5890f9c75021cc518918d098e
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 073a92f07d17614cb386c5c33a8058af9b59aaea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145379"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084069"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>使用托管标识设置到 Azure 存储帐户的连接（预览）
 
@@ -53,17 +53,19 @@ ms.locfileid: "86145379"
     ![添加角色分配](./media/search-managed-identities/add-role-assignment-storage.png "添加角色分配")
 
 4. 根据要为其编制索引的存储帐户类型选择适当的角色：
-    1. Azure Blob 存储要求将搜索服务添加到“读取器和数据访问”和“存储 Blob 数据读取器”角色 。
-    1. Azure Data Lake Storage Gen2 要求将搜索服务添加到“读取器和数据访问”和“存储 Blob 数据读取器”角色 。
-    1. Azure 表存储要求将搜索服务仅添加到“读取器和数据访问”角色。
+    1. Azure Blob 存储要求你将搜索服务添加到**存储 Blob 数据读取器**角色。
+    1. Azure Data Lake Storage Gen2 要求你将搜索服务添加到**存储 Blob 数据读取器**角色。
+    1. Azure 表存储要求向 "读取者"**和 "数据访问**" 角色添加搜索服务。
 5.  将“分配访问权限至”保留为“Azure AD 用户、组或服务主体” 
 6.  搜索你的搜索服务，选中，然后选择“保存”
 
-    ![添加读取器和数据访问角色分配](./media/search-managed-identities/add-role-assignment-reader-and-data-access.png "添加读取器和数据访问角色分配")
+    Azure Blob 存储和 Azure Data Lake Storage Gen2 的示例：
 
-请注意，连接到 Azure blob 存储和 Azure Data Lake Storage Gen2 时，还必须添加“存储 Blob 数据读取器”角色分配。
+    ![添加存储 Blob 数据读取器角色分配](./media/search-managed-identities/add-role-assignment-storage-blob-data-reader.png "添加存储 Blob 数据读取器角色分配")
 
-![添加存储 Blob 数据读取器角色分配](./media/search-managed-identities/add-role-assignment-storage-blob-data-reader.png "添加存储 Blob 数据读取器角色分配")
+    Azure 表存储的示例：
+
+    ![添加读者和数据访问角色分配](./media/search-managed-identities/add-role-assignment-reader-and-data-access.png "添加读者和数据访问角色分配")
 
 ### <a name="3---create-the-data-source"></a>3 - 创建数据源
 

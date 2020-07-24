@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1fe26a880979a431e456d9a1819dfd1b18d25f77
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 48f0a247ed023583c8489994439a790944b90fdc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221215"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082590"
 ---
 # <a name="copy-an-image-from-another-gallery-using-powershell"></a>使用 PowerShell 从其他库中复制映像
 
@@ -100,7 +100,7 @@ Get-AzGalleryImageDefinition `
 }
 ```
 
-使用 [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) cmdlet 以及上述输出中的信息，在目标库中创建新的映像定义。
+使用 [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) cmdlet 以及上述输出中的信息，在目标库中创建新的映像定义。
 
 
 在本示例中，映像定义在名为 *myDestinationGallery* 的库中命名为 *myDestinationImgDef*。
@@ -123,7 +123,7 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
 
 ## <a name="create-the-image-version"></a>创建映像版本
 
-使用 [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) 创建映像版本。 需要在 `--managed-image` 参数中传递源映像的 ID，用于在目标库中创建映像版本。 
+使用 [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) 创建映像版本。 需要在 `--managed-image` 参数中传递源映像的 ID，用于在目标库中创建映像版本。 
 
 允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
@@ -156,7 +156,7 @@ $job.State
 > [!NOTE]
 > 需等待映像版本彻底生成并复制完毕，然后才能使用同一托管映像来创建另一映像版本。
 >
-> 创建映像版本时，还可以通过添加 `-StorageAccountType Premium_LRS` 在高级存储中存储映像，或者通过添加 `-StorageAccountType Standard_ZRS` 在[区域冗余存储](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)中存储映像。
+> 创建映像版本时，还可以通过添加 `-StorageAccountType Premium_LRS` 在高级存储中存储映像，或者通过添加 `-StorageAccountType Standard_ZRS` 在[区域冗余存储](../storage/common/storage-redundancy.md)中存储映像。
 >
 
 
@@ -164,6 +164,6 @@ $job.State
 
 从[通用化](vm-generalized-image-version-powershell.md)或[专用化](vm-specialized-image-version-powershell.md)映像版本创建 VM。
 
-[Azure 映像生成器 (预览版) ](./linux/image-builder-overview.md)可帮助自动创建映像版本，甚至还可以使用它来更新[现有映像版本并创建新的映像版本](./linux/image-builder-gallery-update-image-version.md)。 
+[Azure 映像生成器（预览版）](./linux/image-builder-overview.md)可帮助自动创建映像版本，甚至还可以使用它来更新[现有映像版本并创建新的映像版本](./linux/image-builder-gallery-update-image-version.md)。 
 
 有关如何提供购买计划信息的信息，请参阅[创建映像时提供 Azure Marketplace 购买计划信息](marketplace-images.md)。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 9b81d58bbb79b05ea54af8b3f06f29b4a45a6555
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 2be430fc032acd94f851072f80d14a43638c8863
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058157"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084579"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>配置内容密钥授权策略
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -57,7 +57,7 @@ ms.locfileid: "86058157"
 ### <a name="token-restriction"></a>令牌限制
 若要选择令牌限制策略，请选择“令牌”  按钮。
 
-令牌受限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持采用简单 Web 令牌 ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 格式和 JSON Web 令牌 (JWT) 格式的令牌。 有关详细信息，请参阅 [JWT 身份验证](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)。
+令牌受限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持采用简单 Web 令牌 ([SWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2)) 格式和 JSON Web 令牌 (JWT) 格式的令牌。 有关详细信息，请参阅 [JWT 身份验证](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)。
 
 媒体服务不提供 STS。 可以创建自定义 STS 来颁发令牌。 必须将 STS 配置为创建令牌，该令牌使用指定密钥以及在令牌限制配置中指定的颁发声明进行签名。 如果令牌有效，并且令牌中的声明与为内容密钥配置的声明相匹配，则媒体服务密钥传送服务会将加密密钥返回到客户端。
 
@@ -94,4 +94,3 @@ ms.locfileid: "86058157"
 
 [open_policy]: ./media/media-services-portal-configure-content-key-auth-policy/media-services-protect-content-with-open-restriction.png
 [token_policy]: ./media/media-services-key-authorization-policy/media-services-protect-content-with-token-restriction.png
-

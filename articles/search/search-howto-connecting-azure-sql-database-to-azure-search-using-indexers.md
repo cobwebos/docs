@@ -8,13 +8,13 @@ ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 862b3056445bddb358e6485ce5fec4de4d53eace
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/12/2020
+ms.openlocfilehash: 725ee57a06d3d547142fdd39ef03e1c7e7c296a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039273"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084137"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>使用 Azure 认知搜索索引器连接到 Azure SQL 内容并为其编制索引
 
@@ -185,7 +185,7 @@ Azure 认知搜索使用****“增量索引编制”来避免索引器每次运�
 + 在数据库上，为表[启用更改跟踪](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server)。 
 + 表上没有组合主键（包含多个列的主键）。  
 
-#### <a name="usage"></a>使用情况
+#### <a name="usage"></a>用法
 
 若要使用此策略，按如下所示创建或更新数据源：
 
@@ -222,7 +222,7 @@ Azure 认知搜索使用****“增量索引编制”来避免索引器每次运�
 > [!IMPORTANT] 
 > 强烈建议为高使用标记列使用 [rowversion](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) 数据类型。 如果使用其他任何数据类型，则当存在与索引器查询并发执行的事务时，不能保证更改跟踪捕获所有更改。 在具有只读副本的配置中使用 **rowversion** 时，必须将索引器指向主副本。 只有主副本可以用于数据同步方案。
 
-#### <a name="usage"></a>使用情况
+#### <a name="usage"></a>用法
 
 若要使用高使用标记策略，请按如下所示创建或更新数据源：
 
@@ -314,7 +314,7 @@ Azure 认知搜索使用****“增量索引编制”来避免索引器每次运�
 <a name="TypeMapping"></a>
 
 ## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>SQL 数据类型与 Azure 认知搜索数据类型之间的映射
-| SQL 数据类型 | 允许的目标索引字段类型 | 说明 |
+| SQL 数据类型 | 允许的目标索引字段类型 | 注释 |
 | --- | --- | --- |
 | bit |Edm.Boolean、Edm.String | |
 | int、smallint、tinyint |Edm.Int32、Edm.Int64、Edm.String | |
@@ -325,15 +325,15 @@ Azure 认知搜索使用****“增量索引编制”来避免索引器每次运�
 | smalldatetime、datetime、datetime2、date、datetimeoffset |Edm.DateTimeOffset、Edm.String | |
 | uniqueidentifer |Edm.String | |
 | geography |Edm.GeographyPoint |仅支持具有 SRID 4326（这是默认值）的类型 POINT 的地理实例 |
-| rowversion |不适用 |行版本列不能存储在搜索索引中，但可用于更改跟踪 |
-| time、timespan、binary、varbinary、image、xml、geometry、CLR 类型 |不适用 |不支持 |
+| rowversion |空值 |行版本列不能存储在搜索索引中，但可用于更改跟踪 |
+| time、timespan、binary、varbinary、image、xml、geometry、CLR 类型 |空值 |不支持 |
 
 ## <a name="configuration-settings"></a>配置设置
 SQL 索引器公开多个配置设置：
 
-| 设置 | 数据类型 | 目标 | 默认值 |
+| 设置 | 数据类型 | 目的 | 默认值 |
 | --- | --- | --- | --- |
-| queryTimeout |字符串 |设置 SQL 查询执行的超时 |5 分钟（“00:05:00”） |
+| queryTimeout |string |设置 SQL 查询执行的超时 |5 分钟（“00:05:00”） |
 | disableOrderByHighWaterMarkColumn |bool |导致高使用标记策略使用的 SQL 查询省略 ORDER BY 子句。 请参阅[高使用标记策略](#HighWaterMarkPolicy) |false |
 
 在索引器定义的 `parameters.configuration` 对象中使用这些设置。 例如，要将查询超时设置为 10 分钟，请使用以下配置创建或更新索引器：
@@ -346,7 +346,7 @@ SQL 索引器公开多个配置设置：
     }
 ```
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 **问：是否可以将 Azure SQL 索引器与在 Azure 中的 IaaS Vm 上运行的 SQL 数据库配合使用？**
 
@@ -358,7 +358,7 @@ SQL 索引器公开多个配置设置：
 
 **问：是否可以将 Azure SQL 索引器与在 Azure 上的 IaaS 中运行 SQL Server 以外的数据库一起使用？**
 
-不能。 我们不支持此方案，因为我们尚未使用除 SQL Server 以外的任何数据库测试该索引器。  
+否。 我们不支持此方案，因为我们尚未使用除 SQL Server 以外的任何数据库测试该索引器。  
 
 **问：我是否可以创建按计划运行的多个索引器？**
 

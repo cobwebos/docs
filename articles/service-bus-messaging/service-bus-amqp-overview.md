@@ -3,11 +3,12 @@ title: Azure 服务总线中 AMQP 1.0 的概述
 description: 了解 Azure 服务总线如何支持高级消息队列协议（AMQP，一种开放标准协议）。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 8ddeadde85e3e0b574c93db0227dcba6ad746f64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1113ffd268c991ba8a9c8f574b90d555a81ae840
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338066"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083865"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>服务总线的 AMQP 1.0 支持
 Azure 服务总线云服务和本地 [Windows Server 服务总线（服务总线 1.1）](https://msdn.microsoft.com/library/dn282144.aspx)均支持高级消息队列协议 (AMQP) 1.0。 AMQP 让你能够使用开放标准协议构建跨平台的混合应用程序。 可以借助使用不同语言和框架构建的且运行在不同操作系统上的组件来构建应用程序。 所有这些组件均可连接到服务总线，并且能够高效且完全无损地无缝交换结构化业务消息。
@@ -53,13 +54,13 @@ Azure 服务总线中对 AMQP 1.0 的支持意味着现在可以通过一系列�
 
 下图显示了一个部署示例，其中 Java 客户端运行在 Linux 上，并使用标准 Java 消息服务 (JMS) API 写入数据；而 .NET 客户端运行在 Windows 上，并通过服务总线使用 AMQP 1.0 交换消息。
 
-![][0]
+![此图显示了一个服务总线，其中包含两个 Linux 环境和两个 Windows 环境的交换消息。][0]
 
 **图 1：演示使用服务总线和 AMQP 1.0 进行跨平台消息传送的部署方案示例**
 
 在这种情况下，已知下列客户端库将使用服务总线：
 
-| 语言 | 库 |
+| Language | 库 |
 | --- | --- |
 | Java |Apache Qpid Java 消息服务 (JMS) 客户端<br/>软件 SwiftMQ IIT Java 客户端 |
 | C |Apache Qpid Proton-C |
@@ -69,7 +70,7 @@ Azure 服务总线中对 AMQP 1.0 的支持意味着现在可以通过一系列�
 
 **图 2：AMQP 1.0 客户端库表**
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 * AMQP 1.0 是一个开放、可靠的消息传递协议，可用于构建跨平台的混合应用程序。 AMQP 1.0 是一种 OASIS 标准。
 * Azure 服务总线和 Windows Server 服务总线（服务总线 1.1）都支持 AMQP 1.0。 定价与现有协议相同。
 

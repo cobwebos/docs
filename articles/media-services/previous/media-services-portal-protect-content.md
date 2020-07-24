@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 0c2a9612fab6c685cbc690aa9bbc12d1c7b7b746
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d0e2487632971579a1a473375eb2200f3a63a46
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74978196"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084528"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>使用 Azure 门户配置内容保护策略
 
 > [!NOTE]
-> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。   > 未向 Media Services v2 添加新功能或功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。   > 未向 Media Services v2 添加新功能或功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 >
 
  使用 Azure 媒体服务，可以在媒体从离开计算机到存储、处理和传送的整个过程中确保其安全。 可以通过媒体服务传送按高级加密标准 (AES)（使用 128 位加密密钥）动态加密的内容。 也可借助 PlayReady 和/或 Widevine 数字版权管理 (DRM) 以及 Apple FairPlay，将其与通用加密 (CENC) 配合使用。 
@@ -72,7 +73,7 @@ PlayReady 许可证模板设置在 PlayReady 许可证上启用的功能。 有�
 ## <a name="widevine-license-template"></a>Widevine 许可证模板
 Widevine 许可证模板设置在 Widevine 许可证上启用的功能。
 
-### <a name="basic"></a>Basic
+### <a name="basic"></a>基本
 如果选择“基本”****，将使用所有默认值创建模板。
 
 ### <a name="advanced"></a>高级
@@ -132,4 +133,3 @@ Widevine 许可证模板设置在 Widevine 许可证上启用的功能。
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

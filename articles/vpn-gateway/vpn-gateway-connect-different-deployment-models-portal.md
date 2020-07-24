@@ -7,11 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 231fbe3a30cc9507ebb9b401bd2fe07a451c59a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3ab49d0ad24c2b2c8859408ed103178cede5b8b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987684"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082097"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>使用门户从不同的部署模型连接虚拟网络
 
@@ -33,7 +34,7 @@ ms.locfileid: "84987684"
 
 * 这些步骤假定已创建了两个 VNet。 如果使用本文进行练习并且还没有 VNet，相关步骤中的链接可以帮助你创建它们。
 * 请确认两个 VNet 的地址范围不相互重叠，也不与网关可能连接到的其他连接的任何范围重叠。
-* 为 Resource Manager 和服务管理（经典）安装最新的 PowerShell cmdlet。 本文中同时使用 Azure 门户和 PowerShell。 若要创建从经典 VNet 到 Resource Manager VNet 的连接，必须使用 PowerShell。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 
+* 为 Resource Manager 和服务管理（经典）安装最新的 PowerShell cmdlet。 本文中同时使用 Azure 门户和 PowerShell。 若要创建从经典 VNet 到 Resource Manager VNet 的连接，必须使用 PowerShell。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/)。 
 
 ### <a name="example-settings"></a><a name="values"></a>示例设置
 
@@ -77,7 +78,7 @@ SKU = VpnGw1 <br>
 | 虚拟网络 | 地址空间 | 区域 | 连接到本地网络站点 |
 |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |美国西部 | RMVNetLocal (192.168.0.0/16) |
-| RMVNet | (192.168.0.0/16) |美国东部 |ClassicVNetLocal (10.0.0.0/24) |
+| RMVNet | (192.168.0.0/16) |East US |ClassicVNetLocal (10.0.0.0/24) |
 
 ## <a name="section-1---configure-the-classic-vnet-settings"></a><a name="classicvnet"></a>第 1 节 - 配置经典 VNet 设置
 
@@ -172,7 +173,7 @@ SKU = VpnGw1 <br>
 | 虚拟网络 | 地址空间 | 区域 | 连接到本地网络站点 |网关公共 IP 地址|
 |:--- |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |美国西部 | RMVNetLocal (192.168.0.0/16) |分配给 ClassicVNet 网关的公共 IP 地址|
-| RMVNet | (192.168.0.0/16) |美国东部 |ClassicVNetLocal (10.0.0.0/24) |分配给 RMVNet 网关的公共 IP 地址。|
+| RMVNet | (192.168.0.0/16) |East US |ClassicVNetLocal (10.0.0.0/24) |分配给 RMVNet 网关的公共 IP 地址。|
 
 本地网关指定与经典 VNet 和其虚拟网关关联的地址范围和公共 IP 地址。 如果执行这些步骤进行练习，可以参考示例值。
 

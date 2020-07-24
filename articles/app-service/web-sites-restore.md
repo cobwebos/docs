@@ -5,11 +5,12 @@ ms.assetid: 4444dbf7-363c-47e2-b24a-dbd45cb08491
 ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 1295080d0eec7a4e88029cdadd85863f5f40d034
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1b0ce62905424032c2100a1a032fa43ba97578f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74689247"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084851"
 ---
 # <a name="restore-an-app-in-azure"></a>在 Azure 中还原应用
 本文将演示如何在 [Azure 应用服务](../app-service/overview.md) 中还原已事先备份的应用（请参阅[在 Azure 中备份应用](manage-backup.md)）。 可以根据需要将应用及其链接的数据库还原到以前的状态，或者基于原始应用的备份之一创建新的应用。 Azure 应用服务支持用于备份和还原的以下数据库：
@@ -28,14 +29,14 @@ ms.locfileid: "74689247"
     ![选择“立即还原”][ChooseRestoreNow]
 2. 在“还原”页中，首先选择备份源****。
    
-    ![](./media/web-sites-restore/021ChooseSource1.png)
+    ![显示在何处选择备份源的屏幕截图。](./media/web-sites-restore/021ChooseSource1.png)
    
     “应用备份”选项显示当前应用的所有现有备份，使你能够轻松地选择一个。****
     “存储”选项使你能够从任何现有 Azure 存储帐户和订阅中的容器中选择任何备份 ZIP 文件。****
     如果正在尝试还原其他应用的备份，请使用“存储”**** 选项。
 3. 然后，在“还原目标”中指定应用还原的目标。****
    
-    ![](./media/web-sites-restore/022ChooseDestination1.png)
+    ![屏幕截图，显示在何处指定应用还原的目标位置。](./media/web-sites-restore/022ChooseDestination1.png)
    
    > [!WARNING]
    > 如果选择“覆盖”****，将清除并覆盖当前应用中所有的现有数据。 在单击“确定”**** 之前，请确保该操作正是想要执行的操作。
@@ -49,7 +50,7 @@ ms.locfileid: "74689247"
    
     可选择“现有应用”将应用备份还原到同一资源组中的其他应用****。 使用此选项之前，应已使用应用备份中定义的镜像数据库配置在资源组中创建了其他应用。 还可以创建“新”**** 应用来将内容还原到其中。
 
-4. 单击“确定”。
+4. 单击“确定”  。
 
 <a name="StorageAccount"></a>
 
@@ -76,7 +77,7 @@ ms.locfileid: "74689247"
 
 ## <a name="automate-with-scripts"></a>使用脚本自动化
 
-可以在 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/overview) 中使用脚本自动备份管理。
+可以在 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/) 中使用脚本自动备份管理。
 
 相关示例如下所示：
 

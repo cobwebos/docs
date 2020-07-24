@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 1594c030839cccdd48c4b032c6ad92f746f78e26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78b11a4d900b8c9cf30a1d37a2b7e6380d6b989a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78970279"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082556"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>使用 REST API 创建使用 SSH 身份验证的 Linux 虚拟机
 
@@ -45,7 +46,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 | 请求标头   | 说明 |
 |------------------|-----------------|
 | Content-Type：   | 必需。 设置为 `application/json`。 |
-| Authorization：  | 必需。 设置为有效的`Bearer` [访问令牌](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
+| Authorization：  | 必需。 设置为有效的`Bearer` [访问令牌](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
 
 有关使用 REST API 请求的一般信息，请参阅 [REST API 请求/响应的组件](/rest/api/azure/#components-of-a-rest-api-requestresponse)。
 
@@ -121,7 +122,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ## <a name="sending-the-request"></a>发送请求
 
-可以使用你喜欢使用的客户端发送此 HTTP 请求。 还可以通过单击“试用”按钮使用某个[浏览器中工具](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate)。 
+可以使用你喜欢使用的客户端发送此 HTTP 请求。 还可以通过单击“试用”按钮使用某个[浏览器中工具](/rest/api/compute/virtualmachines/createorupdate)。 
 
 ### <a name="responses"></a>响应
 
@@ -150,4 +151,4 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 - [Azure 计算提供程序 REST API](/rest/api/compute/)
 - [Azure REST API 入门](/rest/api/azure/)
 - [Azure CLI](/cli/azure/)
-- [Azure PowerShell 模块](/powershell/azure/overview)
+- [Azure PowerShell 模块](/powershell/azure/)

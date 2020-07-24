@@ -6,11 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: 57db2253cbffa8e16313c7613de6d2ddb2f2b0a2
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 1bda235e5f3f867762457d0dc8214bbadc88059e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027233"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084817"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>使用 BI 分析工具和 ODBC 驱动程序连接到 Azure Cosmos DB
 
@@ -127,7 +128,7 @@ Azure Cosmos DB 是一个无架构数据库，可用于快速开发应用程序�
 
     例如，如果包含 City 的 **Attributes** 值，并想要将表限制为仅包含带有 New York 和 Dubai 城市值的行，请在“属性”框中输入 City，在“值”框中输入 New York 和 Dubai。****
 
-1. 单击“确定”。 
+1. 单击“确定”  。 
 
 1. 完成想要采样的容器的映射定义后，请在“架构编辑器”窗口中单击“采样”。********
      可以修改每个列，包括“SQL 名称”、“SQL 类型”、“SQL 长度”（如果适用）、“小数位数”（如果适用）、“精度”（如果适用）和“可为 Null”。
@@ -235,9 +236,9 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 
 1. 要在 Power BI Desktop 中可视化数据，请选中表名称前面的框，并单击“加载”。****
 
-1. 在 Power BI Desktop 中的最左侧，选择“数据”选项卡 ![Power BI Desktop 中的“数据”选项卡](./media/odbc-driver/odbc-driver-data-tab.png) 确认数据是否已导入。
+1. 在 Power BI Desktop 的最左侧，选择 "数据" 选项卡 :::image type="icon" source="./media/odbc-driver/odbc-driver-data-tab.png"::: 以确认数据已导入。 
 
-1. 现在，可以使用 Power BI 创建视觉对象：单击“报表”选项卡![Power BI Desktop 中的“报表”选项卡](./media/odbc-driver/odbc-driver-report-tab.png)，单击“新建视觉对象”，并自定义磁贴。**** 有关在 Power BI Desktop 中创建可视化效果的详细信息，请参阅 [Power BI 中的可视化效果类型](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/)。
+1. 你现在可以使用 Power BI 创建视觉对象：单击 "报表" 选项卡 :::image type="icon" source="./media/odbc-driver/odbc-driver-report-tab.png"::: ，单击 "**新建视觉对象**"，然后自定义磁贴。 有关在 Power BI Desktop 中创建可视化效果的详细信息，请参阅 [Power BI 中的可视化效果类型](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/)。 
 
 ## <a name="troubleshooting"></a>疑难解答
 

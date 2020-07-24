@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
-ms.openlocfilehash: a21b8f2fea7433e9f65fd790321a28ea47a38c79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9391bb4867717b6780b50cf90b998254227d2310
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76544712"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082607"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>适用于 Linux 和 Windows 的 Chef VM 扩展
 
@@ -69,23 +70,23 @@ Chef VM 扩展要求目标虚拟机连接到 Internet 以便从内容分发网�
 | 名称 | 值/示例 | 数据类型
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | 字符串（日期） |
-| publisher | `Chef.Bootstrap.WindowsAzure` | 字符串 |
+| publisher | `Chef.Bootstrap.WindowsAzure` | string |
 | type | `LinuxChefClient` (Linux)、`ChefClient` (Windows) | string |
 | typeHandlerVersion | `1210.13` | 字符串（双精度） |
 
 ### <a name="settings"></a>设置
 
-| 名称 | 值/示例 | 数据类型 | 必需？
+| 名称 | 值/示例 | 数据类型 | 是否必需？
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | 字符串 (url) | Y |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | 字符串 | Y |
-| settings/runlist | `recipe[mycookbook::default]` | 字符串 | Y |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | string | Y |
+| settings/runlist | `recipe[mycookbook::default]` | string | Y |
 
 ### <a name="protected-settings"></a>受保护的设置
 
-| “属性” | 示例 | 数据类型 | 必需？
+| 名称 | 示例 | 数据类型 | 是否必需？
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | 字符串 | Y |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | Y |
 
 <!--
 ### Linux-specific settings
@@ -105,7 +106,7 @@ Chef VM 扩展要求目标虚拟机连接到 Internet 以便从内容分发网�
 
 可以在[Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm)中找到包含 Chef VM 扩展的示例资源管理器模板。
 
-虚拟机扩展的 JSON 配置可以嵌套在虚拟机资源内，或放置在资源管理器 JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/resource-manager-template-child-resource.md)。
+虚拟机扩展的 JSON 配置可以嵌套在虚拟机资源内，或放置在资源管理器 JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/templates/child-resource-name-type.md)。
 
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
 

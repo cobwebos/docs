@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 25e8be28903d490a7a8c17e16d2beddc44c95c41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b47fb242a82097a9fa5c9c41dac99f0a7f8ab2c8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782766"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085429"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure 中 Linux VM 的时间同步
 
@@ -127,7 +128,7 @@ ls /sys/class/ptp
 cat /sys/class/ptp/ptp0/clock_name
 ```
 
-应该会返回 **hyperv**。
+此命令应返回 `hyperv`。
 
 ### <a name="chrony"></a>chrony
 
@@ -143,9 +144,9 @@ refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 
 有关 chrony 的详细信息，请参阅[使用 chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite#sect-Using_chrony)。
 
-如果同时启用了 chrony 和 TimeSync 源，则可将一个源标记为“首选”，这样就会将另一个源设置为“备用”。  由于 NTP 服务在遇到大偏差时更新时钟需要很长时间，因此可以使用 VMICTimeSync，后者在出现 VM 暂停事件时恢复时钟的速度远远快于单独使用基于 NTP 的工具的速度。
+如果同时启用了 chrony 和 VMICTimeSync 源，则可以将其标记为 "按**需**"，这会将其他源设置为备份。 由于 NTP 服务在遇到大偏差时更新时钟需要很长时间，因此可以使用 VMICTimeSync，后者在出现 VM 暂停事件时恢复时钟的速度远远快于单独使用基于 NTP 的工具的速度。
 
-默认情况下，chronyd 会加快或减慢系统时钟以修复任何时间偏移。 如果偏移量过大，chrony 将无法修复偏移。 若要解决此问题，可以更改 /etc/chrony.conf  中的 `makestep` 参数，以便在偏移量超过指定的阈值时强制进行时间同步。
+默认情况下，chronyd 会加快或减慢系统时钟以修复任何时间偏移。 如果偏移量过大，chrony 将无法修复偏移。 若要解决此 `makestep` 情况，可以更改 **/etc/chrony.conf**中的参数，以在偏移超出指定的阈值时强制进行时间同步。
 
  ```bash
 makestep 1.0 -1

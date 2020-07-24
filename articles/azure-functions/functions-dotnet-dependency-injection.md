@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: bb9783b38185940f0e75e888c3bc69a1edcc6cbb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 02cb862c5ec6f75d546aabcd6e8ac97a4de961a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249251"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082947"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入
 
-Azure Functions 支持依赖项注入 (DI) 软件设计模式，这是一种在类与其依赖项之间实现[控制反转 (IoC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) 的方法。
+Azure Functions 支持依赖项注入 (DI) 软件设计模式，这是一种在类与其依赖项之间实现[控制反转 (IoC)](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) 的方法。
 
-- Azure Functions 中的依赖项注入基于 .NET Core 依赖项注入功能构建。 建议熟悉 [.NET Core 依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)。 两者在如何替代依赖项以及如何使用 Azure Functions 对消耗计划读取配置值方面存在差异。
+- Azure Functions 中的依赖项注入基于 .NET Core 依赖项注入功能构建。 建议熟悉 [.NET Core 依赖项注入](/aspnet/core/fundamentals/dependency-injection)。 两者在如何替代依赖项以及如何使用 Azure Functions 对消耗计划读取配置值方面存在差异。
 
 - 从 Azure Functions 2.x 支持依赖项注入。
 
@@ -115,7 +115,7 @@ namespace MyNamespace
 
 ## <a name="service-lifetimes"></a>服务生存期
 
-Azure Functions 应用提供与 [ASP.NET 依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes)相同的服务生存期。 就 Functions 应用来说，不同的服务生存期表现如下：
+Azure Functions 应用提供与 [ASP.NET 依赖项注入](/aspnet/core/fundamentals/dependency-injection#service-lifetimes)相同的服务生存期。 就 Functions 应用来说，不同的服务生存期表现如下：
 
 - **暂时性**：每次请求此服务时，都会创建暂时性服务。
 - **限定范围**：限定范围的服务的生存期与函数执行生存期相匹配。 作用域服务在每次执行时创建一次。 在执行期间对该服务的后续请求会重复使用现有服务实例。
@@ -125,7 +125,7 @@ Azure Functions 应用提供与 [ASP.NET 依赖项注入](https://docs.microsoft
 
 ## <a name="logging-services"></a>日志记录服务
 
-如果需要自己的日志记录提供程序，请将自定义类型注册为的实例 [`ILoggerProvider`](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory) ，该实例可[Microsoft.Extensions.Logging.Abstractions](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/)通过使用
+如果需要自己的日志记录提供程序，请将自定义类型注册为的实例 [`ILoggerProvider`](/dotnet/api/microsoft.extensions.logging.iloggerfactory) ，该实例可[Microsoft.Extensions.Logging.Abstractions](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/)通过使用
 
 Azure Functions 会自动添加 Application Insights。
 
@@ -250,7 +250,7 @@ public class HttpTrigger
 }
 ```
 
-有关使用选项的更多详细信息，请参阅 [ASP.NET Core 中的选项模式](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options)。
+有关使用选项的更多详细信息，请参阅 [ASP.NET Core 中的选项模式](/aspnet/core/fundamentals/configuration/options)。
 
 > [!WARNING]
 > 请避免尝试从有关消耗计划的 local.settings.json 或 appsettings.{environment}.json 等文件中读取值。 从与触发器连接相关的这些文件中读取的值在应用缩放时不可用，因为规模控制器创建应用的新实例时托管基础结构无法访问配置信息。

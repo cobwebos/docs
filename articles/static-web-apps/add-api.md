@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.openlocfilehash: fd4f57350e97ad38c2c78aec29b1e51d775e8a02
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4df1aa53c09777ac2470581df07ac132255b005a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104106"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083661"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>使用 Azure Functions 将 API 添加到 Azure 静态 Web 应用预览版
 
@@ -133,7 +133,7 @@ Visual Studio Code 使用 HTTP 触发的函数生成 Azure Functions 项目。
 
 ## <a name="run-the-api-locally"></a>在本地运行 API
 
-Visual Studio Code 与 [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local) 集成，方便你在将内容发布到 Azure 之前在本地开发计算机上运行此项目。
+Visual Studio Code 与 [Azure Functions Core Tools](../azure-functions/functions-run-local.md) 集成，方便你在将内容发布到 Azure 之前在本地开发计算机上运行此项目。
 
 > [!TIP]
 > 在继续操作之前，请确保已安装[先决条件](#prerequisites)部分中列出的所有资源。
@@ -221,7 +221,7 @@ Visual Studio Code 与 [Azure Functions Core Tools](https://docs.microsoft.com/a
 1. 单击“创建资源”
 1. 搜索**静态 Web 应用**
 1. 单击**静态 Web 应用（预览）**
-1. 单击“创建” 
+1. 单击“创建”
 
 接下来，添加特定于应用的设置。
 

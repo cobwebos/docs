@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 1f08d6b8a2ce2381c3bc85891a292ac05561cf34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be406744dc9752dd3c924c636e85f43e133c1cca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832553"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085072"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>在 Azure Functions 中测试代码的策略
 
@@ -40,13 +40,13 @@ ms.locfileid: "85832553"
 3. [从模板创建计时器函数](./functions-create-scheduled-function.md)，并将其命名为**MyTimerTrigger**。
 4. 在解决方案中[创建 XUnit 测试应用](https://xunit.github.io/docs/getting-started-dotnet-core)，并将其命名为**函数。测试**。
 5. 使用 NuGet 从测试应用添加对 [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) 的引用
-6. [引用函数*Functions*应用](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017)程序的*函数。*
+6. [引用函数*Functions*应用](/visualstudio/ide/managing-references-in-a-project?view=vs-2017)程序的*函数。*
 
 ### <a name="create-test-classes"></a>创建测试类
 
 创建项目后，可以创建用于运行自动测试的类。
 
-每个函数采用 [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 的实例来处理消息日志记录。 有些测试不记录消息，或者与日志记录的实现方式无关。 还有一些测试需要评估记录的消息，以确定是否通过了测试。
+每个函数采用 [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) 的实例来处理消息日志记录。 有些测试不记录消息，或者与日志记录的实现方式无关。 还有一些测试需要评估记录的消息，以确定是否通过了测试。
 
 你将创建一个名为的新类 `ListLogger` ，其中包含要在测试期间计算的内部消息列表。 若要实现所需的 `ILogger` 接口，类需要范围。 下面的类模拟要传递给类的测试用例的作用域 `ListLogger` 。
 
@@ -192,7 +192,7 @@ namespace Functions.Tests
 
 `TestFactory` 类实现以下成员：
 
-- **数据**：此属性返回示例数据的[IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable)集合。 键/值对表示传入查询字符串中的值。
+- **数据**：此属性返回示例数据的[IEnumerable](/dotnet/api/system.collections.ienumerable)集合。 键/值对表示传入查询字符串中的值。
 
 - **CreateDictionary**：此方法接受键/值对作为参数，并返回一个新的， `Dictionary` 用于 `QueryCollection` 表示查询字符串值。
 

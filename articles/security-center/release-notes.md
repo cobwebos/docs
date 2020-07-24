@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2020
 ms.author: memildin
-ms.openlocfilehash: e8dc2edf19279aff05e5d5be6096505acf1b3438
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 66c8db580d0da29aa0be1193bf41b491f388e55a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519571"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083967"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -33,8 +33,8 @@ Azure 安全中心正在积极开发中，并不断得到改进。 为及时了�
 
 7月的更新包括：
 - [针对 Azure 存储的威胁防护已扩展为包括 Azure 文件和 Azure Data Lake Storage Gen2 （预览版）](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
+- [容器安全改进-更快速的注册表扫描和刷新文档](#container-security-improvements---faster-registry-scanning-and-refreshed-documentation)
 - [已弃用六个 SQL 高级数据安全策略](#six-policies-for-sql-advanced-data-security-deprecated)
-
 
 
 ### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>针对 Azure 存储的威胁防护已扩展为包括 Azure 文件和 Azure Data Lake Storage Gen2 （预览版）
@@ -44,6 +44,25 @@ Azure 存储的威胁防护会在 Azure 存储帐户上检测潜在的有害活�
 无论数据存储为 blob 容器、文件共享还是数据 lake，都可以对其进行保护。 
 
 详细了解[Azure 存储的威胁保护](threat-protection.md#threat-protection-for-azure-storage-)。
+
+
+### <a name="container-security-improvements---faster-registry-scanning-and-refreshed-documentation"></a>容器安全改进-更快速的注册表扫描和刷新文档
+
+作为容器安全域中的连续投资的一部分，我们非常乐意在安全中心对 Azure 容器注册表中存储的容器映像进行动态扫描，大大提高性能。 现在，扫描通常在大约两分钟内完成。 在某些情况下，可能需要最多15分钟。
+
+为了改进有关 Azure 安全中心容器安全功能的清晰度和指南，我们还刷新了容器安全文档页。 
+
+若要详细了解安全中心的容器安全性，请参阅以下文章：
+
+- [安全中心容器安全功能概述](https://docs.microsoft.com/azure/security-center/container-security)
+- [与 Azure 容器注册表集成的详细信息](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
+- [与 Azure Kubernetes 服务集成的详细信息](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration)
+- [如何扫描注册表并强化 Docker 主机](https://docs.microsoft.com/azure/security-center/monitor-container-security)
+- [来自 Azure Kubernetes 服务群集的威胁防护功能的安全警报](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-akscluster)
+- [来自 Azure Kubernetes 服务主机的威胁防护功能的安全警报](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost)
+- [容器的安全性建议](https://docs.microsoft.com/azure/security-center/recommendations-reference#recs-containers)
+
+
 
 
 ### <a name="six-policies-for-sql-advanced-data-security-deprecated"></a>已弃用六个 SQL 高级数据安全策略
@@ -230,14 +249,14 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 - 重命名了推荐你在 VM 上启用 JIT 的建议。 之前称为“应在虚拟机上应用实时网络访问控制”，而现在叫做“应通过即时网络访问控制来保护虚拟机的管理端口”。
 
-- 建议已设置为仅在有管理端口打开时才触发。
+- 仅当存在打开的管理端口时，才会触发此建议。
 
 详细了解 [JIT 访问功能](security-center-just-in-time.md)。
 
 
 ### <a name="custom-recommendations-have-been-moved-to-a-separate-security-control"></a>自定义建议已移至单独的安全控件
 
-安全功能分数增强版引入的其中一个安全控件是“实现安全最佳做法”。 为订阅创建的所有自定义建议已自动放入该控件中。 
+增强安全分数引入的一个安全控制是 "实现安全最佳做法"。 为订阅创建的所有自定义建议已自动放入该控件中。 
 
 为便于查找自定义建议，我们已将这些建议移到一个名为“自定义建议”的专用安全控件中。 此控件不会影响你的安全功能分数。
 
@@ -250,7 +269,7 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 若要立即查看组织对每个攻击面的保护情况，请查看每个安全控件的分数。
 
-默认情况下，你的建议显示在安全控件中。 通过本次更新，你还可以列表的形式显示。 若要以简单列表的形式查看它们，且列表按受影响的资源的运行状况排序，请使用新的“按控件分组”开关。 开关位于门户中列表的上面。
+默认情况下，你的建议显示在安全控件中。 在此更新中，还可以将其显示为列表。 若要以简单列表的形式查看它们，且列表按受影响的资源的运行状况排序，请使用新的“按控件分组”开关。 开关位于门户中列表的上面。
 
 安全控件及其开关是新的安全功能分数体验的一部分。 请记得在门户中提供反馈。
 
@@ -260,7 +279,7 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>扩展了“实现安全最佳做法”这一安全控件 
 
-安全功能分数增强版引入的其中一个安全控件是“实现安全最佳做法”。 如果建议在此控件中显示，则不影响安全功能分数。 
+增强安全分数引入的一个安全控制是 "实现安全最佳做法"。 如果建议在此控件中显示，则不影响安全功能分数。 
 
 通过本次更新，已将三项建议从它们原先所在的控件移动到这个最佳做法控件中。 我们采取此步骤的原因是我们判定这三项建议的风险比最初设想的要低。
 

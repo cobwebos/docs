@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 44a0b8fe56477620c0ac47d5c5de8830dac46214
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82aa1ba6ec20e8242568a2725899ddc515a4dc0f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77014991"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082063"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>在 Azure 中管理你的 CloudSimple 私有云虚拟机
 
@@ -22,15 +23,15 @@ ms.locfileid: "77014991"
 
 你选择的虚拟机的 "**概述**" 页中提供了下列控件。
 
-| 控件 | 描述 |
+| 控制 | 描述 |
 | ------------ | ------------- |
 | 连接 | 连接到指定的 VM。  |
-| Start | 启动指定的虚拟机。  |
+| 开始 | 启动指定的虚拟机。  |
 | 重启 | 关闭并打开指定 VM 的电源。  |
 | 停止 | 关闭特定的 VM。  |
-| 捕获 | 捕获指定 VM 的映像，以便将其用作创建其他虚拟机的映像。 请参阅[在 Azure 中创建通用 VM 的托管映像](../virtual-machines/windows/classic/capture-image.md)。   |
+| 捕获 | 捕获指定 VM 的映像，以便将其用作创建其他虚拟机的映像。 请参阅[在 Azure 中创建通用 VM 的托管映像](../virtual-machines/windows/capture-image-resource.md)。   |
 | 移动 | 移动到指定的虚拟机。  |
-| 删除 | 删除指定的 VM。  |
+| Delete | 删除指定的 VM。  |
 | 刷新 | 刷新显示的数据。  |
 
 ### <a name="view-performance-information"></a>查看性能信息
@@ -52,10 +53,10 @@ ms.locfileid: "77014991"
 
    | 项 | 描述 |
    | ------------ | ------------- |
-   | “属性” | 输入一个名称用于标识磁盘。  |
+   | 名称 | 输入一个名称用于标识磁盘。  |
    | 大小 | 选择一种可用大小。  |
    | SCSI 控制器 | 选择 "SCSI 控制器"。 可用控制器因支持的操作系统不同而有所不同。  |
-   | Mode | 确定磁盘如何参与快照。 选择以下选项之一： <br> 独立持久性：写入到磁盘的所有数据都将被永久写入。<br> 独立的非永久性：在关闭或重置虚拟机时，写入磁盘的更改将被丢弃。  此模式允许你始终重启处于相同状态的 VM。 有关详细信息，请参阅 [VMware 文档](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html)。 |
+   | “模式” | 确定磁盘如何参与快照。 选择以下选项之一： <br> 独立持久性：写入到磁盘的所有数据都将被永久写入。<br> 独立的非永久性：在关闭或重置虚拟机时，写入磁盘的更改将被丢弃。  此模式允许你始终重启处于相同状态的 VM。 有关详细信息，请参阅 [VMware 文档](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html)。 |
 
 若要删除磁盘，请选择它，然后单击 "**删除**"。
 
@@ -73,9 +74,9 @@ ms.locfileid: "77014991"
 
 若要添加接口，请单击 "**添加网络接口**"。 通过输入或选择内联选项来配置以下每个设置。 单击“保存” 。
 
-   | 控件 | 描述 |
+   | 控制 | 描述 |
    | ------------ | ------------- |
-   | “属性” | 输入一个名称用于标识接口。  |
+   | 名称 | 输入一个名称用于标识接口。  |
    | 网络 | 从私有云 vSphere 中已配置的网络列表中进行选择。  |
    | 适配器 | 从为 VM 配置的可用类型列表中选择 vSphere 适配器。 有关详细信息，请参阅 VMware 知识库文章[为虚拟机选择网络适配器](https://kb.vmware.com/s/article/1001805)。 |
    | 启动时开机 | 选择是否要在启动 VM 时启用 NIC 硬件。 默认设置为“启用”。**** |

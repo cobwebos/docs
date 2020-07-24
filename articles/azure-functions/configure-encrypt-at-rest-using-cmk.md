@@ -3,13 +3,14 @@ title: 静态加密应用程序源
 description: 加密 Azure 存储中的应用程序数据，并将其部署为包文件。
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 62179e900ace0d6d7b8b1f07e8f0ab685508f991
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6dfb56a5ef6b1ab3cfbd0762bf7816e37ce0aa39
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79408718"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081876"
 ---
-# <a name="encryption-at-rest-using-customer-managed-keys"></a>使用客户管理的密钥进行静态加密
+# <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>使用客户管理的密钥加密静态应用程序数据
 
 静态加密函数应用的应用程序数据需要一个 Azure 存储帐户和一个 Azure Key Vault。 从部署包运行应用时，将使用这些服务。
 

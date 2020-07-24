@@ -4,12 +4,12 @@ description: 在 Azure Service Fabric 上创建第一个 Linux 容器应用程�
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 783f6a06d57a447998710e2c8ff349b23ef751c5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 547030b983dd02e7b65d404188dccdcc24d53a22
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256405"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083831"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>在 Linux 上创建第一个 Service Fabric 容器应用程序
 > [!div class="op_single_selector"]
@@ -26,6 +26,8 @@ ms.locfileid: "86256405"
   * [Service Fabric SDK 和工具](service-fabric-get-started-linux.md)。
   * [适用于 Linux 的 Docker CE](https://docs.docker.com/engine/installation/#prior-releases)。 
   * [Service Fabric CLI](service-fabric-cli.md)
+
+* 包含三个或更多节点的 Linux 群集。
 
 * 一个位于 Azure 容器注册表中的注册表 - 在 Azure 订阅中[创建容器注册表](../container-registry/container-registry-get-started-portal.md)。 
 
@@ -112,7 +114,7 @@ helloworldapp                 latest              86838648aab6        2 minutes 
 docker run -d -p 4000:80 --name my-web-site helloworldapp
 ```
 
-name 用于为运行的容器（而不是容器 ID）命名。 
+name 用于为运行的容器（而不是容器 ID）命名。**
 
 连接到正在运行的容器。 打开 Web 浏览器并指向端口 4000 上返回的 IP 地址，例如“http:\//localhost:4000”。 此时会看到标题“Hello World!” 显示在浏览器中。
 

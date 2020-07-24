@@ -3,11 +3,12 @@ title: Azure 服务总线重复消息检测 | Microsoft Docs
 description: 本文介绍如何检测 Azure 服务总线消息中的重复项。 可以忽略并丢弃重复消息。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c8935fa67dda28bb2fec663c5e714982933f0f22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbca1b4b4f894d35835e7d37e0b4e742a2d3b917
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337915"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083882"
 ---
 # <a name="duplicate-detection"></a>重复检测
 
@@ -32,7 +33,7 @@ ms.locfileid: "85337915"
 
 在门户中，此功能在实体创建期间处于启用状态（即“启用重复检测”复选框已选中）。不过，默认情况下，此功能处于禁用状态。 用于新建主题的设置是等效的。
 
-![][1]
+!["创建队列" 对话框的屏幕截图，其中选择了 "启用重复检测" 选项并以红色列出。][1]
 
 > [!IMPORTANT]
 > 创建队列后，无法启用/禁用重复检测。 只能在创建队列时执行此操作。 
@@ -41,7 +42,7 @@ ms.locfileid: "85337915"
 
 队列和主题的重复检测时间历史记录默认为 30 秒，最大值不得超过 7 天。 可以在 Azure 门户的队列和主题属性窗口中更改此设置。
 
-![][2]
+![服务总线功能的屏幕截图，其中突出显示了 "属性" 设置，"重复检测历史记录" 选项以红色列出。][2]
 
 通过编程方式，可以结合使用 [QueueDescription.DuplicateDetectionHistoryTimeWindow](/dotnet/api/microsoft.servicebus.messaging.queuedescription.duplicatedetectionhistorytimewindow#Microsoft_ServiceBus_Messaging_QueueDescription_DuplicateDetectionHistoryTimeWindow) 和整个 .NET Framework API，配置重复检测窗口大小，即消息 ID 的保留时长。 借助 Azure 资源管理器 API，可以使用 [queueProperties.duplicateDetectionHistoryTimeWindow](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) 属性设置此值。
 

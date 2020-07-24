@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 1ff8281a420eb1e967cb9f1d4db620d8f816794b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e30096e84c31f9e73e0ce02daa5765e98bdcd192
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374230"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085089"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x-and-higher"></a>Azure Functions 2.x 和更高版本的 Azure Cosmos DB 触发器
 
@@ -209,7 +209,7 @@ Python 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-从[Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中， `@CosmosDBInput` 对从 Cosmos DB 读取数据的参数使用批注。
+从[Java 函数运行时库](/java/api/overview/azure/functions/runtime)中， `@CosmosDBInput` 对从 Cosmos DB 读取数据的参数使用批注。
 
 ---
 
@@ -242,7 +242,7 @@ Python 不支持特性。
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="usage"></a>使用情况
+## <a name="usage"></a>用法
 
 触发器需要第二个集合，该集合用于存储各分区的_租用_。 必须提供受监视的集合和包含租用的集合，触发器才能正常工作。
 

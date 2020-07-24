@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: a411fc9a95bef595a8fc49cad77189bb88fb7661
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77dc21b4a04ec5de440b1a17da4747a3dcc711f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699628"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083712"
 ---
 # <a name="remove-servers-and-disable-protection"></a>删除服务器并禁用保护
 
@@ -168,11 +169,11 @@ ms.locfileid: "84699628"
    - **禁用复制并删除(推荐)** - 此选项从 Azure Site Recovery 中删除复制的项，并停止复制计算机。 此外，还将清理本地虚拟机上的复制配置，并停止对这个受保护的服务器收取 Site Recovery 费用。
    - **删除** - 只有在源环境已删除或无法访问（未连接）时，才应使用此选项。 此选项会从 Azure Site Recovery 中删除复制的项（停止计费）。 不过，并不会  清理本地虚拟机上的复制配置。 
 
- > [!NOTE]
-     > 如果选择“删除”  选项，请运行下面的一组脚本，清理本地 Hyper-V 服务器上的复制设置。
+    > [!NOTE]
+    > 如果选择“删除”  选项，请运行下面的一组脚本，清理本地 Hyper-V 服务器上的复制设置。
 
-> [!NOTE]
-> 如果已对 VM 进行了故障转移并且该 VM 正在 Azure 中运行，请注意，禁用保护不会删除/影响故障转移的 VM。
+    > [!NOTE]
+    > 如果已对 VM 进行了故障转移并且该 VM 正在 Azure 中运行，请注意，禁用保护不会删除/影响故障转移的 VM。
 
 1. 在源 Hyper-V 主机服务器上，取消复制虚拟机。 将 SQLVM1 替换为虚拟机名称，并通过管理 PowerShell 运行以下脚本
 
@@ -195,8 +196,11 @@ ms.locfileid: "84699628"
      > 如果选择“删除”  选项，请运行下面的脚本，清理本地 VMM 服务器上的复制设置。
 3. 从源 VMM 服务器上的 VMM 控制台使用 PowerShell（需要管理员权限）运行此脚本。 将占位符 SQLVM1  替换为虚拟机名称。
 
-        $vm = get-scvirtualmachine -Name "SQLVM1"
-        Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```powershell
+    $vm = get-scvirtualmachine -Name "SQLVM1"
+    Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```
+
 4. 上述步骤清理 VMM 服务器上的复制设置。 若要停止运行在 Hyper-V 主机服务器上的虚拟机的复制，请运行以下脚本。 将 SQLVM1 替换为虚拟机的名称，将 host01.contoso.com 替换为 Hyper-V 主机服务器的名称。
 
 ```powershell
@@ -219,17 +223,21 @@ ms.locfileid: "84699628"
 
 3. 从源 VMM 服务器上的 VMM 控制台使用 PowerShell（需要管理员权限）运行此脚本。 将占位符 SQLVM1  替换为虚拟机名称。
 
-        $vm = get-scvirtualmachine -Name "SQLVM1"
-        Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```powershell
+    $vm = get-scvirtualmachine -Name "SQLVM1"
+    Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```
+
 4. 在辅助 VMM 服务器上，运行下面的脚本，清理辅助虚拟机的设置：
 
-        $vm = get-scvirtualmachine -Name "SQLVM1"
-        Remove-SCVirtualMachine -VM $vm -Force
+    ```powershell
+    $vm = get-scvirtualmachine -Name "SQLVM1"
+    Remove-SCVirtualMachine -VM $vm -Force
+    ```
+
 5. 在辅助 VMM 服务器上刷新 Hyper-V 主机服务器上的虚拟机，以便在 VMM 控制台中重新检测辅助 VM。
 6. 上述步骤清理 VMM 服务器上的复制设置。 若要停止虚拟机的复制，请在主 VM 和辅助 VM 上运行以下脚本。 将 SQLVM1 替换为虚拟机名称。
 
-        Remove-VMReplication –VMName “SQLVM1”
-
-
-
-
+    ```powershell
+    Remove-VMReplication –VMName "SQLVM1"
+    ```

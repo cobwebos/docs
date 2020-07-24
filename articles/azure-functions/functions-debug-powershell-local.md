@@ -6,11 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 133e89bd9187ae5e48fa208b407678760d31adfd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51edbc18a929f4f954fb1a582a417bc1600d1a6f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78163754"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082981"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>本地调试 PowerShell Azure Functions
 
@@ -37,7 +38,7 @@ PSFunctionApp
  | - profile.ps1
 ```
 
-此函数应用与完成[PowerShell 快速入门](functions-create-first-function-powershell.md)时获取的应用类似。
+此函数应用与完成[PowerShell 快速入门](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)时获取的应用类似。
 
 中的函数代码 `run.ps1` 类似于以下脚本：
 
@@ -91,10 +92,10 @@ if($name) {
 若要在 Visual Studio Code 中调试 PowerShell 函数，则必须安装以下各项：
 
 * [适用于 Visual Studio Code 的 PowerShell 扩展](/powershell/scripting/components/vscode/using-vscode)
-* [Visual Studio Code 的 Azure Functions 扩展](functions-create-first-function-vs-code.md)
+* [适用于 Visual Studio Code 的 Azure Functions 扩展](functions-create-first-function-vs-code.md)
 * [PowerShell Core 6.2 或更高版本](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-安装这些依赖项后，加载现有的 PowerShell 函数项目，或者[创建第一个 Powershell 函数项目](functions-create-first-function-powershell.md)。
+安装这些依赖项后，加载现有的 PowerShell 函数项目，或者[创建第一个 Powershell 函数项目](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)。
 
 >[!NOTE]
 > 如果你的项目没有所需的配置文件，则系统会提示你添加它们。

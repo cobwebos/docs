@@ -2,14 +2,14 @@
 title: 有关 Azure Site Recovery 服务的一般问题
 description: 本文讨论有关 Azure Site Recovery 的常见问题。
 ms.topic: conceptual
-ms.date: 1/24/2020
+ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: b02d001d6fad905badaf17422bdd0554e3fc8493
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 89a5785811b4f4833a5a5ddcef827b258ce1775a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133671"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083729"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>有关 Azure Site Recovery 的一般问题
 
@@ -39,7 +39,7 @@ Site Recovery 采取各种措施来确保数据完整性。 使用 HTTPS 协议�
 是的，站点恢复同时支持专用与共享的基础结构模型。
 
 ### <a name="for-a-service-provider-is-the-identity-of-my-tenant-shared-with-the-site-recovery-service"></a>对于服务提供商而言，我的租户标识是否与 Site Recovery 服务共享？
-不能。 租户标识是匿名的。 租户不需要访问 Site Recovery 门户。 只有服务提供商管理员才能与门户交互。
+否。 租户标识是匿名的。 租户不需要访问 Site Recovery 门户。 只有服务提供商管理员才能与门户交互。
 
 ### <a name="will-tenant-application-data-ever-go-to-azure"></a>租户应用程序数据是否会发往 Azure？
 在服务提供商拥有的站点之间进行复制时，永远不会将应用程序数据发送到 Azure。 数据进行传输中加密并直接在服务提供商站点之间复制。
@@ -53,7 +53,7 @@ Site Recovery 采取各种措施来确保数据完整性。 使用 HTTPS 协议�
 不需要，数据会复制到订阅中的 Azure 存储。 执行测试故障转移（灾难恢复演练）或实际的故障转移时，站点恢复会在订阅中自动创建虚拟机。
 
 ### <a name="do-you-ensure-tenant-level-isolation-when-i-replicate-to-azure"></a>当我复制到 Azure 时，们确保提供租户级的隔离吗？
-是。
+是的。
 
 ### <a name="what-platforms-do-you-currently-support"></a>目前支持哪些平台？
 我们支持 Azure Pack、云平台系统和基于 System Center 的（2012 和更高版本）的部署。 [了解更多](/previous-versions/azure/windows-server-azure-pack/dn850370(v=technet.10))有关 Azure Pack 和 Site Recovery 集成的信息。
@@ -80,7 +80,7 @@ Site Recovery 采取各种措施来确保数据完整性。 使用 HTTPS 协议�
 
 ### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>我已成为 Azure Site Recovery 用户一个多月。 对于每个受保护的实例，是否仍享受前 31 天免费？
 
-是。 在前 31 天内，每个受保护的实例不会产生任何 Azure Site Recovery 费用。 例如，你在过去 6 个月内保护了 10 个实例，现在你将第 11 个实例连接到 Azure Site Recovery，在连接后的前 31 天内，第 11 个实例不会产生任何费用。 而前 10 个实例将继续产生 Azure Site Recovery 费用，因为它们受到保护的时间已超过 31 天。
+是的。 在前 31 天内，每个受保护的实例不会产生任何 Azure Site Recovery 费用。 例如，你在过去 6 个月内保护了 10 个实例，现在你将第 11 个实例连接到 Azure Site Recovery，在连接后的前 31 天内，第 11 个实例不会产生任何费用。 而前 10 个实例将继续产生 Azure Site Recovery 费用，因为它们受到保护的时间已超过 31 天。
 
 ### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>在前 31 天的期限内，会产生其他 Azure 费用吗？
 
@@ -102,7 +102,7 @@ DR 演练没有单独的费用。 如果在测试故障转移后创建 VM，则�
 站点恢复已通过 ISO 27001:2013、27018、HIPAA、DPA 认证，目前正在接受 SOC2 和 FedRAMP JAB 评估。
 
 ### <a name="for-compliance-reasons-even-our-on-premises-metadata-must-remain-within-the-same-geographic-region-can-site-recovery-help-us"></a>为了遵从法规，即使是本地元数据也必须保留在同一个地理区域。 站点恢复可以帮助我们吗？
-是。 在某个区域中创建站点恢复保管库时，我们确保启用和协调复制与故障转移时所需的一切元数据都保留在该区域的地理边界范围内。
+是的。 在某个区域中创建站点恢复保管库时，我们确保启用和协调复制与故障转移时所需的一切元数据都保留在该区域的地理边界范围内。
 
 ### <a name="does-site-recovery-encrypt-replication"></a>站点恢复是否将复制数据加密？
 在本地站点之间复制虚拟机和物理服务器时，支持传输中加密。 将虚拟机和物理服务器复制到 Azure 时，同时支持传输中加密和[静态加密（Azure 中）](../storage/common/storage-service-encryption.md)。
@@ -115,6 +115,19 @@ DR 演练没有单独的费用。 如果在测试故障转移后创建 VM，则�
 
 ### <a name="how-can-i-enforce-tls-12-on-hyperv-to-azure-site-recovery-scenarios"></a>如何在 HyperV 到 Azure Site Recovery 方案中强制实施 TLS 1.2？
 Azure Site Recovery 的微服务之间的所有通信均通过 TLS 1.2 协议进行。 Site Recovery 使用系统 (OS) 中配置的安全提供程序，并使用可用的最新 TLS 协议。 用户需要在注册表中显式启用 TLS 1.2，然后 Site Recovery 将开始使用 TLS 1.2 与服务进行通信。 
+
+### <a name="how-can-i-enforce-restricted-access-on-my-storage-accounts-which-are-accessed-by-site-recovery-service-for-readingwriting-replication-data"></a>如何对存储帐户强制实施受限访问权限，这些帐户由 Site Recovery 服务访问以读取/写入复制数据？
+可以通过转到 "*标识*" 设置来切换恢复服务保管库的托管标识。 将保管库注册到 Azure Active Directory 后，你可以进入存储帐户，并向保管库提供以下角色分配：
+
+- 基于资源管理器的存储帐户（标准类型）：
+  - [参与者](../role-based-access-control/built-in-roles.md#contributor)
+  - [存储 Blob 数据参与者](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+- 基于资源管理器的存储帐户（高级类型）：
+  - [参与者](../role-based-access-control/built-in-roles.md#contributor)
+  - [存储 Blob 数据所有者](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
+- 经典存储帐户：
+  - [经典存储帐户参与者](../role-based-access-control/built-in-roles.md#classic-storage-account-contributor)
+  - [经典存储帐户密钥操作员服务角色](../role-based-access-control/built-in-roles.md#classic-storage-account-key-operator-service-role)
 
 ## <a name="disaster-recovery"></a>灾难恢复
 
@@ -142,7 +155,7 @@ Azure Site Recovery 的微服务之间的所有通信均通过 TLS 1.2 协议进
 ### <a name="is-disaster-recovery-supported-for-hyper-v-vms"></a>Hyper-V VM 是否支持灾难恢复？
 是，Site Recovery 支持本地 Hyper-V VM 的灾难恢复。 [查看有关 Hyper-V VM 灾难恢复的常见问题](hyper-v-azure-common-questions.md)。
 
-## <a name="is-disaster-recovery-supported-for-physical-servers"></a>物理服务器是否支持灾难恢复？
+### <a name="is-disaster-recovery-supported-for-physical-servers"></a>物理服务器是否支持灾难恢复？
 是，Site Recovery 支持将运行 Windows 和 Linux 的本地物理服务器灾难恢复到 Azure 或辅助站点。 了解灾难恢复到 [Azure](vmware-physical-azure-support-matrix.md#replicated-machines) 和[辅助站点](vmware-physical-secondary-support-matrix.md#replicated-vm-support)的要求。
 请注意，故障转移后，物理服务器将在 Azure 中作为 VM 运行。 当前不支持从 Azure 故障回复到本地物理服务器。 只能故障回复到 VMware 虚拟机。
 
@@ -201,7 +214,7 @@ Azure Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户�
 * [将 Hyper-V VM 复制到 Azure 的容量规划](./hyper-v-deployment-planner-overview.md)
 
 ### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>能否在 Linux 服务器中使用应用一致性启用复制？ 
-是。 Linux 操作系统的 Azure Site Recovery 支持应用程序的自定义脚本，以实现应用程序一致性。 在应用程序一致性期间 Azure Site Recovery 移动代理将使用带有 pre 和 post 选项的自定义脚本。 下面是启用该方法的步骤。
+是的。 Linux 操作系统的 Azure Site Recovery 支持应用程序的自定义脚本，以实现应用程序一致性。 在应用程序一致性期间 Azure Site Recovery 移动代理将使用带有 pre 和 post 选项的自定义脚本。 下面是启用该方法的步骤。
 
 1. 以 root 身份登录计算机。
 2. 将目录更改为 Azure Site Recovery 移动代理安装位置。 默认值为 "/usr/local/ASR"<br>

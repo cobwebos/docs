@@ -3,16 +3,16 @@ title: 云解决方案提供商 - Microsoft 商业市场
 description: 了解如何通过商业市场中的 Microsoft 云解决方案提供商 (CSP) 计划合作伙伴渠道销售产品/服务。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: keferna
 ms.author: keferna
-ms.date: 04/16/2020
-ms.openlocfilehash: d6c3af312717627a1719c5f1029ae638e7d4f827
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 8ac69d7d611aa75584955ed6ed83ab79c70ed73a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104429"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082794"
 ---
 # <a name="cloud-solution-provider-program"></a>云解决方案提供商计划
 
@@ -30,31 +30,31 @@ ms.locfileid: "86104429"
 - 托管应用程序
 
 > [!NOTE]
-> 默认情况下，可以选择让 CSP 计划中的合作伙伴销售“容器”和“自带许可证”(BYOL) VM SKU。
+> 默认情况下，"容器" 和 "自带许可证（BYOL）" VM 计划选择加入 CSP 计划中的合作伙伴。
 
-## <a name="how-to-configure-an-offering"></a>如何配置产品/服务
+## <a name="how-to-configure-an-offer"></a>如何配置产品/服务
 
-在合作伙伴中心或云合作伙伴门户产品/服务创建体验中配置 CSP 计划选择加入设置。 [详细了解发布者体验的变化](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293)。
+在合作伙伴中心创建产品/服务时，配置 CSP 计划选择加入。 [详细了解发布者体验的变化](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293)。
 
 ### <a name="partner-center-opt-in"></a>在合作伙伴中心选择加入
 
-在合作伙伴中心，可以在“CSP 经销商受众”模块下找到选择加入体验。
+选择体验位于 "CSP 分销商受众" 模块下：
 
 ![CSP 经销商受众](media/marketplace-publishers-guide/csp-reseller-audience.png)
 
-在“CSP 经销商受众”模块中，有三个选项可供选择：
+从以下三个选项中进行选择：
 
-- 选项 1：CSP 计划中的任何合作伙伴
-- 选项 2：我选择的 CSP 计划中的特定合作伙伴
-- 选项 3：不包括 CSP 计划中的任何合作伙伴
+1. CSP 计划中的任何合作伙伴。
+2. 我选择的 CSP 程序中的特定合作伙伴。
+3. CSP 计划中没有合作伙伴。
 
-#### <a name="option-one-any-partner-in-the-csp-program"></a>选项 1：CSP 计划中的任何合作伙伴
+#### <a name="option-1-any-partner-in-the-csp-program"></a>选项1： CSP 计划中的任何合作伙伴
 
 ![CSP 计划中的任何合作伙伴](media/marketplace-publishers-guide/csp-reseller-option-one.png)
 
  如果选择此选项，CSP 计划中的所有合作伙伴都有资格向其客户转售你的产品/服务。
 
-#### <a name="option-two-specific-partners-in-the-csp-program-i-select"></a>选项 2：我选择的 CSP 计划中的特定合作伙伴
+#### <a name="option-2-specific-partners-in-the-csp-program-i-select"></a>选项2：我选择的 CSP 程序中的特定合作伙伴
 
 ![我选择的 CSP 计划中的特定合作伙伴](media/marketplace-publishers-guide/csp-reseller-option-two.png)
 
@@ -87,17 +87,11 @@ ms.locfileid: "86104429"
 
 如果某个产品/服务已有一个已授权合作伙伴列表，而你想要对另一个产品/服务使用同一列表，请使用“导入/导出”。 导航到具有 CSP 列表的产品/服务，选择“导出 CSP”。 该功能将制作一个可导入到另一产品/服务的 .csv 文件。
 
-#### <a name="option-three-no-partners-in-the-csp-program"></a>选项 3：不包括 CSP 计划中的任何合作伙伴
+#### <a name="option-3-no-partners-in-the-csp-program"></a>选项3： CSP 计划中没有合作伙伴
 
 ![不包括 CSP 计划中的任何合作伙伴](media/marketplace-publishers-guide/csp-reseller-option-three.png)
 
 选择此选项表示你选择让产品/服务退出 CSP 计划。 随时可以更改此选择。
-
-### <a name="cloud-partner-portal-opt-in"></a>在云合作伙伴门户中选择加入
-
-在云合作伙伴门户中，可以在“市场”或“店面”选项卡上设置选择加入。选择 CSP 计划中特定合作伙伴的功能仅在合作伙伴中心提供。
-
-![CPP 中的 CSP 选择加入体验](media/marketplace-publishers-guide/csp-opt-in.png)
 
 ## <a name="deauthorize-partners-in-the-csp-program"></a>对 CSP 计划中的合作伙伴取消授权
 
@@ -115,9 +109,6 @@ ms.locfileid: "86104429"
 4. 对于“选择最适当地描述了问题的问题”，请选择“更新现有产品/服务”。 
 5. 选择“下一步”转到“问题详细信息页”，在其中输入有关问题的更多详细信息。 
 6. 使用“取消 CSP 授权”作为问题标题，并填写剩余的必填部分。
-
-
-
 
 ## <a name="navigate-between-options"></a>在选项之间导航
 
@@ -175,19 +166,13 @@ ms.locfileid: "86104429"
 
 ## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>与 CSP 计划中的合作伙伴共享销售和支持材料
 
-为了帮助云解决方案提供商计划中的合作伙伴最有效地演示你的产品/服务以及与你的组织接洽，必须提交可供经销商使用的销售和支持材料。 这些资源不会透露给市场店面中的客户。
+若要帮助云解决方案提供商计划中的合作伙伴最有效地表示你的产品/服务并与你的组织合作，你必须提交经销商提供的销售和支持材料。 这些资源不会透露给市场店面中的客户。
 
 ### <a name="partner-center-csp-channel"></a>合作伙伴中心 CSP 渠道
 
 如果你已在合作伙伴中心选择加入 CSP 渠道，则发布者必须在产品/服务列表模块中输入一个 URL，其中存放了有关 CSP 渠道的营销材料和渠道联系信息：
 
 ![合作伙伴中心 CSP 宣传信息](media/marketplace-publishers-guide/pc-csp-channel.png)
-
-### <a name="cloud-partner-portal-csp-channel"></a>云合作伙伴门户 CSP 渠道
-
-如果你已在云合作伙伴门户中选择加入 CSP 渠道，则发布者必须输入一个 URL，其中存放了有关 CSP 渠道的营销材料和渠道联系信息：
-
-![云合作伙伴门户 CSP 宣传信息](media/marketplace-publishers-guide/cpp-csp-information.png)
 
 ## <a name="next-steps"></a>后续步骤
 

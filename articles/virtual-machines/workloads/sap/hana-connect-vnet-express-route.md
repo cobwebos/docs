@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f7ac8e69c4e149fdd0f365e19f7a0282a547af43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c7e8d4875a8bf3f53ac536ae95ac7499a74d45c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617189"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082148"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>将虚拟网络连接到 HANA 大型实例
 
@@ -95,7 +96,7 @@ New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 ```
 
 > [!NOTE]
-> 命令 AzVirtualNetworkGatewayConnection， **ExpressRouteGatewayBypass**中的最后一个参数是启用 ExpressRoute 快速路径的新参数。 此功能减少了 HANA 大型实例单元和 Azure Vm 之间的网络延迟。 此功能已在5月2019中添加。 有关更多详细信息，请查看[SAP HANA （大型实例）网络体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)一文。 运行命令之前，请确保运行最新版本的 PowerShell cmdlet。
+> 命令 AzVirtualNetworkGatewayConnection， **ExpressRouteGatewayBypass**中的最后一个参数是启用 ExpressRoute 快速路径的新参数。 此功能减少了 HANA 大型实例单元和 Azure Vm 之间的网络延迟。 此功能已在5月2019中添加。 有关更多详细信息，请查看[SAP HANA （大型实例）网络体系结构](./hana-network-architecture.md)一文。 运行命令之前，请确保运行最新版本的 PowerShell cmdlet。
 
 若要将网关连接到与订阅关联的多个 ExpressRoute 线路，建议多次运行这一步骤。 例如，可能要将同一个虚拟网络网关连接到将虚拟网络连接到本地网络的 ExpressRoute 线路。
 
@@ -138,7 +139,7 @@ New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 - Asn （自治系统编号）存在限制，可用于将本地路由播发到 HANA 大型实例。 在65000–65020或65515范围内，你的本地不能播发具有 private Asn 的任何路由。 
 - 对于将本地直接访问连接到 HANA 大型实例的方案，需要为连接到 Azure 的线路计算费用。 对于价格，请查看[Global Reach 外接程序](https://azure.microsoft.com/pricing/details/expressroute/)的价格。
 
-若要获取应用于部署的一个或两个方案，请使用 Azure 打开支持消息，如为[HANA 大型实例提供支持请求](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#open-a-support-request-for-hana-large-instances)中所述。
+若要获取应用于部署的一个或两个方案，请使用 Azure 打开支持消息，如为[HANA 大型实例提供支持请求](./hana-li-portal.md#open-a-support-request-for-hana-large-instances)中所述。
 
 所需的数据和需要用于按请求进行路由和执行的关键字，如下所示：
 

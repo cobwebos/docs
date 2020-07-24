@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c1ed731943abf0efdd99ea54d2318fa402835e08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bcbbd9378b6ea861c926eed16d2ceed8131b913
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76720004"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082743"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Team Data Science Process 角色和任务
 
@@ -116,7 +117,7 @@ Team Data Science Process (TDSP) 是由 Microsoft 开发的一个框架，其提
 
 - 项目主管执行冲刺 (sprint) 规划
 - 数据科学家在 `git` 分支上开发项目，以处理工作项
-- 项目主管或其他团队成员执行代码评审，并将工作分支合并到主分支
+- 项目主管或其他团队成员执行代码评审并将工作分支合并到主分支
 
 有关项目执行工作流的详细说明，请参阅[数据科学项目的敏捷开发](agile-development.md)。
 

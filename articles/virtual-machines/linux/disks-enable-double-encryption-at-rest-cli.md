@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 52a52f6f7bca99d662a68ae48276062969b194f0
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 25f4f99d2bd80034d2f337aa649417d2d06026be
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86235825"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082522"
 ---
 # <a name="azure-cli---enable-double-encryption-at-rest-on-your-managed-disks"></a>Azure CLI-在托管磁盘上启用静态加密
 
@@ -50,7 +50,7 @@ Azure 磁盘存储支持将静态加密用于托管磁盘。 有关静态加密�
     az keyvault key create --vault-name $keyVaultName -n $keyName --protection software
     ```
 
-1.    创建 DiskEncryptionSet，并将 encryptionType 设置为 EncryptionAtRestWithPlatformAndCustomerKeys。 使用 Azure 资源管理器 (ARM) 模板中的 API 版本**2020-05-01** 。 
+1.    创建 DiskEncryptionSet，并将 encryptionType 设置为 EncryptionAtRestWithPlatformAndCustomerKeys。 使用 Azure 资源管理器（ARM）模板中的 API **2020-05-01**版。 
     
         ```azurecli
         az group deployment create -g $rgName \
@@ -73,5 +73,5 @@ Azure 磁盘存储支持将静态加密用于托管磁盘。 有关静态加密�
 
 现在，已创建并配置了这些资源，可以使用它们来保护托管磁盘。 以下链接包含示例脚本，每个脚本都有各自的方案，可用于保护托管磁盘。
 
-[Azure 资源管理器模板示例](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/DoubleEncryption) 
-[使用服务器端加密启用客户管理的密钥-示例](disks-enable-customer-managed-keys-cli.md#examples)
+- [Azure 资源管理器模板示例](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/DoubleEncryption)
+- [使用服务器端加密启用客户管理的密钥-示例](disks-enable-customer-managed-keys-cli.md#examples)

@@ -7,16 +7,16 @@ ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 6ab1b92e67c6e98e8c675c1ba4474cd854b98021
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bc1948adeeb7988c7e1aabb276d2f2f79b93cdc8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509879"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085361"
 ---
 # <a name="ncv2-series"></a>NCv2 系列
 
-NCv2 系列 VM 采用 [NVIDIA Tesla P100](https://www.nvidia.com/data-center/tesla-p100/) GPU。 这些 GPU 可提供比 NC 系列高 2 倍以上的计算性能。 客户可将这些更新的 GPU 用于传统的 HPC 工作负荷，例如油藏模拟、DNA 测序、蛋白质分析、Monte Carlo 模拟和其他工作负荷。 除了 Gpu 外，NCv2 系列 Vm 还由 Intel 强 2690 v4 （Broadwell） Cpu 提供支持。
+NCv2 系列 VM 采用 NVIDIA Tesla P100 GPU。 这些 GPU 可提供比 NC 系列高 2 倍以上的计算性能。 客户可将这些更新的 GPU 用于传统的 HPC 工作负荷，例如油藏模拟、DNA 测序、蛋白质分析、Monte Carlo 模拟和其他工作负荷。 除了 Gpu 外，NCv2 系列 Vm 还由 Intel 强 2690 v4 （Broadwell） Cpu 提供支持。
 
 NC24rs v2 配置提供了针对紧密耦合的并行计算工作负荷优化的低延迟、高吞吐量网络接口。
 

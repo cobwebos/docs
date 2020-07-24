@@ -5,26 +5,25 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 07/13/2020
 ms.author: victorh
-ms.openlocfilehash: 58f670f3f55a63f0c1823adc13c98f5863d4d650
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23a7682d8a64de57db4ff9ae785ada90d4a06944
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77444545"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084664"
 ---
 # <a name="azure-firewall-central-management"></a>Azure 防火墙中央管理
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
-
 如果你管理多个防火墙，你会知道不断变化的防火墙规则使它们难以保持同步。中心 IT 团队需要一种方法来定义基本防火墙策略并跨多个业务单位实施这些策略。 同时，DevOps 团队想要创建自己的本地派生防火墙策略，以获得更好的灵活性。
 
-Azure 防火墙管理器预览版可帮助解决这些问题。
+Azure 防火墙管理器可帮助解决这些问题。
 
 
-## <a name="azure-firewall-manager-preview"></a>Azure 防火墙管理器预览
+## <a name="azure-firewall-manager"></a>Azure 防火墙管理器
 
-Azure 防火墙管理器预览版是一项网络安全管理服务，为基于云的安全外围网络提供中心安全策略和路由管理。 企业 IT 团队可通过它来集中定义跨多个 Azure 防火墙实例进行的流量筛选的网络和应用程序级别规则。 你可以跨不同的 Azure 区域以及中心和辐射型体系结构中的订阅来实现流量管理和保护。 它还通过在组织中实现的派生本地防火墙安全策略，为 DevOps 提供更好的灵活性。
+Azure 防火墙管理器是一种网络安全管理服务，为基于云的安全外围网络提供中心安全策略和路由管理。 企业 IT 团队可通过它来集中定义跨多个 Azure 防火墙实例进行的流量筛选的网络和应用程序级别规则。 你可以跨不同的 Azure 区域以及中心和辐射型体系结构中的订阅来实现流量管理和保护。 它还通过在组织中实现的派生本地防火墙安全策略，为 DevOps 提供更好的灵活性。
 
 ### <a name="firewall-policy"></a>防火墙策略
 
@@ -47,4 +46,4 @@ Azure 防火墙管理器预览版是一项网络安全管理服务，为基于�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure 防火墙管理器预览版的详细信息，请参阅[什么是 Azure 防火墙管理器预览版？](../firewall-manager/overview.md)
+有关 Azure 防火墙管理器的详细信息，请参阅[什么是 Azure 防火墙管理器？](../firewall-manager/overview.md)

@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 8a68c793d9aaf94ad28f2e478254e42ede4800de
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 611cb5b94ee2ad458fa00a61af673696d7e7a212
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170354"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085140"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -35,7 +35,7 @@ Azure Functions Core Tools 有三个版本。 使用的版本取决于本地开�
 
 + **版本 1.x**：支持 1.x 版的 Azure Functions 运行时。 此 Tools 版本仅在 Windows 计算机上受支持，需从 [npm 包](https://www.npmjs.com/package/azure-functions-core-tools)安装。
 
-+ [**版本 1.x/**](#v2)2.X：支持[Azure Functions 运行时的版本1.x 或](functions-versions.md)2.x。 这些版本支持 [Windows](/azure/azure-functions/functions-run-local?tabs=windows#v2)、[macOS](/azure/azure-functions/functions-run-local?tabs=macos#v2) 和 [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2)，并使用特定于平台的包管理器或 npm 进行安装。
++ [**版本 1.x/**](#v2)2.X：支持[Azure Functions 运行时的版本1.x 或](functions-versions.md)2.x。 这些版本支持 [Windows](?tabs=windows#v2)、[macOS](?tabs=macos#v2) 和 [Linux](?tabs=linux#v2)，并使用特定于平台的包管理器或 npm 进行安装。
 
 除非另有说明，否则本文中的示例适用于版本 3.x。
 
@@ -48,7 +48,7 @@ Azure Functions Core Tools 有三个版本。 使用的版本取决于本地开�
 
 ### <a name="version-3x-and-2x"></a><a name="v2"></a>版本1.x 和2。x
 
-版本2.x （x/2. x）使用基于 .NET Core 构建的 Azure Functions 运行时。 .NET Core 支持的所有平台（包括 [Windows](/azure/azure-functions/functions-run-local?tabs=windows#v2)、[macOS](/azure/azure-functions/functions-run-local?tabs=macos#v2) 和 [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2)）都支持此版本。 
+版本2.x （x/2. x）使用基于 .NET Core 构建的 Azure Functions 运行时。 .NET Core 支持的所有平台（包括 [Windows](?tabs=windows#v2)、[macOS](?tabs=macos#v2) 和 [Linux](?tabs=linux#v2)）都支持此版本。 
 
 > [!IMPORTANT]
 > 可以使用[扩展捆绑包]绕过安装 .NET Core SDK 的要求。
@@ -63,7 +63,7 @@ Azure Functions Core Tools 有三个版本。 使用的版本取决于本地开�
 
 1. 安装 Core Tools 包：
 
-    ##### <a name="v3x-recommended"></a> (建议使用 v3. x) 
+    ##### <a name="v3x-recommended"></a>v3. x （推荐）
 
     ```cmd
     npm install -g azure-functions-core-tools@3
@@ -87,7 +87,7 @@ Azure Functions Core Tools 有三个版本。 使用的版本取决于本地开�
 
 1. 安装 Core Tools 包：
 
-    ##### <a name="v3x-recommended"></a> (建议使用 v3. x) 
+    ##### <a name="v3x-recommended"></a>v3. x （推荐）
 
     ```bash
     brew tap azure/functions
@@ -151,7 +151,7 @@ Azure Functions Core Tools 有三个版本。 使用的版本取决于本地开�
 
 1. 安装 Core Tools 包：
 
-    ##### <a name="v3x-recommended"></a> (建议使用 v3. x) 
+    ##### <a name="v3x-recommended"></a>v3. x （推荐）
     ```bash
     sudo apt-get update
     sudo apt-get install azure-functions-core-tools-3
@@ -214,10 +214,10 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 | **`--language`** | 初始化语言特定的项目。 当前在设置为时受支持 `--worker-runtime` `node` 。 选项包括 `typescript` 和 `javascript`。 你还可以使用 `--worker-runtime javascript` 或 `--worker-runtime typescript` 。  |
 | **`--managed-dependencies`**  | 安装托管依赖项。 目前，只有 PowerShell 辅助运行时支持此功能。 |
 | **`--source-control`** | 控制是否创建 git 存储库。 默认不会创建存储库。 如果为 `true`，则会创建存储库。 |
-| **`--worker-runtime`** | 设置项目的语言运行时。 支持的值包括： `csharp` 、 `dotnet` 、 `javascript` 、 `node` (JavaScript) 、 `powershell` 、 `python` 和 `typescript` 。 对于 Java，请使用[Maven](functions-reference-java.md#create-java-functions)。如果未设置，则系统会提示你在初始化期间选择运行时。 |
+| **`--worker-runtime`** | 设置项目的语言运行时。 支持的值包括： `csharp` 、 `dotnet` 、 `javascript` 、 `node` （JavaScript）、、 `powershell` `python` 和 `typescript` 。 对于 Java，请使用[Maven](functions-reference-java.md#create-java-functions)。如果未设置，则系统会提示你在初始化期间选择运行时。 |
 |
 > [!IMPORTANT]
-> 默认情况下，版本2.x 和更高版本的核心工具会将 .NET 运行时的函数应用项目创建为[c # 类项目](functions-dotnet-class-library.md)， ( .csproj) 。 这些 C# 项目可以与 Visual Studio 或 Visual Studio Code 结合使用，在测试期间以及发布到 Azure 时进行编译。 如果希望创建并使用在版本 1.x 和门户中创建的相同 C# 脚本 (.csx) 文件，则在创建和部署函数时必须包含 `--csx` 参数。
+> 默认情况下，版本2.x 和更高版本的核心工具会将 .NET 运行时的函数应用项目创建为[c # 类项目](functions-dotnet-class-library.md)（.csproj）。 这些 C# 项目可以与 Visual Studio 或 Visual Studio Code 结合使用，在测试期间以及发布到 Azure 时进行编译。 如果希望创建并使用在版本 1.x 和门户中创建的相同 C# 脚本 (.csx) 文件，则在创建和部署函数时必须包含 `--csx` 参数。
 
 [!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
@@ -240,7 +240,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 ### <a name="get-your-storage-connection-strings"></a>获取存储连接字符串
 
-即使使用 Microsoft Azure 存储模拟器进行开发，也可能需要使用实际的存储连接进行测试。 假设已[创建了存储帐户](../storage/common/storage-create-storage-account.md)，则可以通过下列方式之一获取有效的存储连接字符串：
+即使使用 Microsoft Azure 存储模拟器进行开发，也可能需要使用实际的存储连接进行测试。 假设已[创建了存储帐户](../storage/common/storage-account-create.md)，则可以通过下列方式之一获取有效的存储连接字符串：
 
 - 在 [Azure 门户]中，搜索并选择“存储帐户”****。 
   ![从 Azure 门户选择存储帐户](./media/functions-run-local/select-storage-accounts.png)
@@ -305,7 +305,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 | 参数     | 描述                            |
 | ------------------------------------------ | -------------------------------------- |
-| **`--csx`** |  (版本2.x 及更高版本。 ) 会生成在版本1.x 和门户中使用的相同的 c # 脚本 () 模板。 |
+| **`--csx`** | （版本2.x 及更高版本。）生成在版本1.x 和门户中使用的相同 c # 脚本（. run.csx）模板。 |
 | **`--language`** , **`-l`**| C#、F# 或 JavaScript 等模板编程语言。 此选项在版本 1.x 中是必需的。 在版本2.x 和更高版本中，请不要使用此选项或选择与工作运行时匹配的语言。 |
 | **`--name`**, **`-n`** | 函数名称。 |
 | **`--template`**, **`-t`** | 使用 `func templates list` 命令查看每种受支持语言的可用模板的完整列表。   |
@@ -343,7 +343,7 @@ func start
 ```
 func start
 ```
-此命令必须[在虚拟环境中运行](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv)。
+此命令必须[在虚拟环境中运行](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#create-venv)。
 
 # <a name="typescript"></a>[TypeScript](#tab/ts)
 
@@ -366,7 +366,7 @@ npm start
 | 选项     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | 在运行之前请勿生成当前项目。 仅限于 dotnet 项目。 默认设置为 false。 版本 1.x 不支持。 |
-| **`--cors-credentials`** | 允许跨域身份验证请求 (例如，cookie 和身份验证标头) 版本1.x 不支持。 |
+| **`--cors-credentials`** | 允许跨域身份验证请求（即 cookie 和身份验证标头），而不支持版本1.x。 |
 | **`--cors`** | 以逗号分隔的 CORS 来源列表，其中不包含空格。 |
 | **`--language-worker`** | 用于配置语言辅助角色的参数。 例如，可以通过提供[调试端口和其他所需参数](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)，为语言辅助角色启用调试。 版本1.x 不支持。 |
 | **`--cert`** | 包含私钥的 .pfx 文件的路径。 仅与 `--useHttps` 结合使用。 版本1.x 不支持。 |
@@ -463,7 +463,7 @@ curl --request POST -H "Content-Type:application/json" --data "{'input':'sample 
 ```
 ---
 
-#### <a name="using-the-func-run-command-version-1x-only"></a>使用 `func run` 命令 (仅限版本 1.x) 
+#### <a name="using-the-func-run-command-version-1x-only"></a>使用 `func run` 命令（仅限版本1.x）
 
 >[!IMPORTANT]
 > 此 `func run` 命令仅在工具的版本1.x 中受支持。 有关详细信息，请参阅主题[如何指向 Azure Functions 运行时版本](set-runtime-version.md)。
@@ -526,7 +526,7 @@ func azure functionapp publish <FunctionAppName>
 | **`--nozip`** | 关闭默认的 `Run-From-Package` 模式。 |
 | **`--build-native-deps`** | 发布 Python 函数应用时跳过生成车轮文件夹。 |
 | **`--build`**, **`-b`** | 部署到 Linux 函数应用时执行生成操作。 接受：`remote` 和 `local`。 |
-| **`--additional-packages`** | 构建本机依赖项时要安装的包列表。 例如：`python3-dev libevent-dev`。 |
+| **`--additional-packages`** | 构建本机依赖项时要安装的包列表。 例如： `python3-dev libevent-dev`。 |
 | **`--force`** | 在某些情况下会忽略预发布验证。 |
 | **`--csx`** | 发布 C# 脚本 (.csx) 项目。 |
 | **`--no-build`** | 项目不是在发布过程中生成的。 对于 Python，则 `pip install` 不执行。 |
@@ -574,14 +574,14 @@ func deploy
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何使用 Azure Functions Core Tools 开发、测试和发布 Azure Functions [Microsoft 学习模块](https://docs.microsoft.com/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) Azure Functions Core Tools 是[开源工具，托管在 GitHub 上](https://github.com/azure/azure-functions-cli)。  
+了解如何使用 Azure Functions Core Tools 开发、测试和发布 Azure Functions [Microsoft 学习模块](/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) Azure Functions Core Tools 是[开源工具，托管在 GitHub 上](https://github.com/azure/azure-functions-cli)。  
 若要提交 bug 或功能请求，[请打开 GitHub 问题](https://github.com/azure/azure-functions-cli/issues)。
 
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
 [Azure 门户]: https://portal.azure.com 
-Node.js
+[Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage
 [扩展捆绑]: functions-bindings-register.md#extension-bundles

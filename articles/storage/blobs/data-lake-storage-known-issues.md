@@ -5,19 +5,19 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 07/21/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: f3861ab8839ba0483c5096e29cd09b6268bd765e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44d58b4e68e9f846b6bdb87765e96bcab90274a3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563913"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083593"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
-本文介绍了 Azure Data Lake Storage Gen2 的限制和已知问题。
+本文介绍 Azure Data Lake Storage Gen2 的限制和已知问题。
 
 ## <a name="supported-blob-storage-features"></a>支持的 Blob 存储功能
 
@@ -41,20 +41,20 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 
 本部分介绍了同时使用 blob API 和 Data Lake Storage Gen2 API 对相同的数据执行操作时的问题和限制。
 
-* 不能同时使用 Blob API 和 Data Lake Storage API 写入到文件的同一实例。 如果使用 Data Lake Storage Gen2 API 向某个文件进行写入，则调用[获取 Block 列表](https://docs.microsoft.com/rest/api/storageservices/get-block-list) blob API 时看不到该文件的块。 可以使用 Data Lake Storage Gen2 API 或 Blob API 来覆盖文件。 这不会影响文件属性。
+* 不能同时使用 Blob API 和 Data Lake Storage API 写入到文件的同一实例。 如果使用 Data Lake Storage Gen2 API 向某个文件进行写入，则调用[获取 Block 列表](https://docs.microsoft.com/rest/api/storageservices/get-block-list) blob API 时看不到该文件的块。 覆盖某个文件时，可以使用 Data Lake Storage Gen2 API 或 Blob API。 这不会影响文件属性。
 
-* 如果在不指定分隔符的情况下使用[列出 Blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 操作，则结果会同时包括目录和 blob。 如果选择使用分隔符，请只使用正斜杠 (`/`)。 这是唯一受支持的分隔符。
+* 如果在使用[列出 Blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 操作时不指定分隔符，则结果会包含目录和 Blob。 如果选择使用分隔符，请只使用正斜杠 (`/`)。 这是唯一支持的分隔符。
 
-* 如果使用[删除 Blob](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API 来删除某个目录，则仅当该目录为空时才会将其删除。 这意味着不能使用该 Blob API 以递归方式删除目录。
+* 如果使用[删除 Blob](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API 来删除目录，则只能在该目录为空的情况下将其删除。 这意味着，不能使用 Blob API 以递归方式删除目录。
 
-不支持以下 Blob REST API：
+这些 Blob REST API 不受支持：
 
 * [放置 Blob（页）](https://docs.microsoft.com/rest/api/storageservices/put-blob)
 * [放置页](https://docs.microsoft.com/rest/api/storageservices/put-page)
-* [获取页范围](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
+* [获取页面范围](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
 * [增量复制 Blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
-* [通过 URL 放置页](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
-* [放置 Blob（追加​​）](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [从 URL 放置页](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
+* [放置 Blob（追加）](https://docs.microsoft.com/rest/api/storageservices/put-blob)
 * [追加块](https://docs.microsoft.com/rest/api/storageservices/append-block)
 * [通过 URL 追加块](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
 
@@ -64,7 +64,7 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 
 ## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>SDK、PowerShell 和 Azure CLI 中的文件系统支持
 
-- 当前不能以递归方式获取和设置 ACL 操作。
+- 获取和设置 ACL 的操作当前不是递归的。
 
 <a id="known-issues-tools"></a>
 
@@ -110,6 +110,8 @@ Set-AzCurrentStorageAccount -Name premiumGen2Account -ResourceGroupName PremiumG
 #Enable logging
 Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays 14
 ```
+
+尚不支持保留天数设置，但你可以使用任何支持的工具（例如 Azure 存储资源管理器、REST 或 SDK）手动删除日志。
 
 ### <a name="lifecycle-management-policies"></a>生命周期管理策略
 

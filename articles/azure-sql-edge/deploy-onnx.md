@@ -1,6 +1,6 @@
 ---
-title: 在 Azure SQL Edge（预览版）中通过 ONNX 进行部署和预测
-description: 了解如何训练模型，将其转换为 ONNX 并部署到 Azure SQL Edge（预览版），然后使用上传的 ONNX 模型对数据运行本机 PREDICT。
+title: 部署并通过 ONNX 进行预测
+description: 了解如何训练模型、将其转换为 ONNX、将其部署到 Azure SQL Edge （预览版）或 Azure SQL 托管实例（预览版），然后使用上传的 ONNX 模型对数据运行本机预测。
 keywords: 部署 SQL Edge
 services: sql-edge
 ms.service: sql-edge
@@ -8,32 +8,40 @@ ms.subservice: machine-learning
 ms.topic: conceptual
 author: dphansen
 ms.author: davidph
-ms.date: 05/19/2020
-ms.openlocfilehash: b5cd655aaf9992c6908a7f9287f691fd36d84871
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: fe1e4a195903803d3103da5f350de30a016e614b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476727"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085007"
 ---
-# <a name="deploy-and-make-predictions-with-an-onnx-model-in-azure-sql-edge-preview"></a>在 Azure SQL Edge（预览版）中部署 ONNX 模型并用它进行预测
+# <a name="deploy-and-make-predictions-with-an-onnx-model"></a>使用 ONNX 模型进行部署和预测
 
-在本快速入门中，你将了解如何训练模型，将其转换为 ONNX 并部署到 Azure SQL Edge（预览版），然后使用上传的 ONNX 模型对数据运行本机 PREDICT。 有关详细信息，请参阅[在 SQL Edge（预览版）中将机器学习和 AI 与 ONNX 结合使用](onnx-overview.md)。
+在本快速入门中，你将了解如何定型模型，如何将其转换为 ONNX，将其部署到[AZURE Sql Edge （预览版）](onnx-overview.md)或[azure sql 托管实例（预览版）](../azure-sql/managed-instance/machine-learning-services-overview.md)，然后使用上传的 ONNX 模型对数据运行本机预测。
 
 本快速入门基于 **scikit-learn** 并使用 [Boston Housing 数据集](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html)。
 
 ## <a name="before-you-begin"></a>开始之前
 
-* 如果尚未部署 Azure SQL Edge 模块，请按照[使用 Azure 门户部署 SQL Edge（预览版）](deploy-portal.md)中的步骤进行操作。
+* 如果你使用的是 Azure SQL Edge，但尚未部署 Azure SQL Edge 模块，请按照[使用 Azure 门户部署 SQL edge （预览版）](deploy-portal.md)中的步骤进行操作。
 
 * 安装 [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download)。
 
-* 打开 Azure Data Studio，并按照以下步骤安装此快速入门所需的包：
+* 安装此快速入门所需的 Python 包：
 
-    1. 打开连接到 Python 3 Kernel 的[新笔记本](https://docs.microsoft.com/sql/azure-data-studio/sql-notebooks)。 
-    1. 单击“管理包”并在“添加新包”下，搜索“scikit-learn”，并安装 scikit-learn 包。 
-    1. 此外，安装 setuptools、numpy、onnxmltools、onnxruntime、skl2onnx、pyodbc 和 sqlalchemy 包。
-    
+  1. 打开连接到 Python 3 Kernel 的[新笔记本](https://docs.microsoft.com/sql/azure-data-studio/sql-notebooks)。 
+  1. 单击 "**管理包**"
+  1. 在 "**已安装**" 选项卡中，在已安装的包列表中查找以下 Python 包。 如果未安装这些包中的任何一个，请选择 "**添加新**" 选项卡，搜索包，然后单击 "**安装**"。
+     - **scikit-learn**
+     - **numpy**
+     - **onnxmltools**
+     - **onnxruntime**
+     - **pyodbc**
+     - **setuptools**
+     - **skl2onnx**
+     - **sqlalchemy**
+
 * 对于下面的每个脚本部分，请将其输入到 Azure Data Studio 笔记本的单元格中，然后运行单元格。
 
 ## <a name="train-a-pipeline"></a>训练管道
@@ -219,7 +227,7 @@ MSE are equal
 
 ## <a name="insert-the-onnx-model"></a>插入 ONNX 模型
 
-将模型存储在 Azure SQL Edge 数据库 `onnx` 中的表 `models` 中。 在连接字符串中，指定“服务器地址”、“用户名”和“密码”。
+在数据库的表中的 Azure SQL Edge 或 Azure SQL 托管实例中存储模型 `models` `onnx` 。 在连接字符串中，指定“服务器地址”、“用户名”和“密码”。
 
 ```python
 import pyodbc
@@ -277,7 +285,7 @@ conn.commit()
 
 ## <a name="load-the-data"></a>加载数据
 
-将数据载入 Azure SQL Edge。
+将数据加载到 SQL 中。
 
 首先，创建两个表，“功能”和“目标”，以存储 Boston housing 数据集的子集。
 
@@ -350,7 +358,7 @@ y_train.to_sql(target_table_name, sql_engine, if_exists='append', index=False)
 
 ## <a name="run-predict-using-the-onnx-model"></a>使用 ONNX 模型运行 PREDICT
 
-使用 Azure SQL Edge 中的模型，使用上传的 ONNX 模型对数据运行本机 PREDICT。
+使用 SQL 中的模型，使用上传的 ONNX 模型对数据运行本机预测。
 
 > [!NOTE]
 > 将笔记本内核更改为 SQL，以运行剩余单元格。
@@ -390,3 +398,4 @@ FROM PREDICT(MODEL = @model, DATA = predict_input, RUNTIME=ONNX) WITH (variable1
 ## <a name="next-steps"></a>后续步骤
 
 * [在 SQL Edge 中将机器学习和 AI 与 ONNX 结合使用](onnx-overview.md)
+* [Azure SQL 托管实例（预览版）中的机器学习服务](../azure-sql/managed-instance/machine-learning-services-overview.md)

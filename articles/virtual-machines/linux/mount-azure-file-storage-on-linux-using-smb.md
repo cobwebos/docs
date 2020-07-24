@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 7ab798ccbbbfc9cfc11ae85fd698ecedcb5e8e73
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a5d4f388d9e5f47a13812687489525590c520c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658158"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085480"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>使用 SMB 在 Linux VM 上装载 Azure 文件存储
 
@@ -62,7 +63,7 @@ STORAGEKEY=$(az storage account keys list \
 
 使用 [az storage share create](/cli/azure/storage/share) 创建文件存储共享。 
 
-共享名必须全部采用小写字母、数字和单个连字符，但不能以连字符开头。 有关命名文件共享和文件的完整详细信息，请参阅 [命名和引用共享、目录、文件和元数据](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)。
+共享名必须全部采用小写字母、数字和单个连字符，但不能以连字符开头。 有关命名文件共享和文件的完整详细信息，请参阅 [命名和引用共享、目录、文件和元数据](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)。
 
 此示例创建名为 *myshare* 且具有 10-GiB 配额的共享。 
 
@@ -110,4 +111,3 @@ sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFile
 - [在创建期间使用 cloud-init 自定义 Linux VM](using-cloud-init.md)
 - [将磁盘添加到 Linux VM](add-disk.md)
 - [适用于 Linux VM 的 Azure 磁盘加密](disk-encryption-overview.md)
-
