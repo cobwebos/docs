@@ -3,18 +3,16 @@ title: 认知服务和机器学习
 titleSuffix: Azure Cognitive Services
 description: 了解在哪些情况下适合将 Azure 认知服务与其他用于机器学习的 Azure 产品/服务配合使用。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.author: diberry
-ms.openlocfilehash: c8480557d0f27594fa369e4e2451a5d0fe7ad3cc
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 0b034d0135c66852b07e0a2ed2fd69e8c3fdc4a6
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856734"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132834"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>认知服务和机器学习
 
@@ -22,11 +20,11 @@ ms.locfileid: "85856734"
 
 [认知服务](welcome.md)是一组服务，每个服务支持不同的通用化预测功能。 服务分为不同的类别，以帮助你找到正确的服务。 
 
-|服务类别|目标|
+|服务类别|目的|
 |--|--|
 |[决策](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|构建应用，用于呈现有助于做出明智和高效决策的建议。|
-|[语言](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|让应用能够通过预建的脚本处理自然语言、评估情绪，并了解如何识别用户需求。|
-|[搜索](https://azure.microsoft.com/services/cognitive-services/directory/search/)|将必应搜索 API 添加到应用，并利用该功能通过单个 API 调用实现数十亿网页、图像、视频和新闻的梳理。|
+|[语言](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|允许应用使用预建脚本处理自然语言、评估情绪及学习如何识别用户想要的内容。|
+|[搜索](https://azure.microsoft.com/services/cognitive-services/directory/search/)|将必应搜索 API 添加到应用中，并利用单一 API 调用梳理数十亿网页、图像、视频和新闻的能力。|
 |[语音](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|将语音转换为文本，将文本转换为自然语音。 从一种语言翻译成另一种语言，并启用说话人验证和识别。|
 |[影像](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|识别和确定你的图片、视频和数字墨迹内容，为它们添加描述文字和编制索引，并审查这些内容。|
 ||||
@@ -91,7 +89,7 @@ _利用_服务，你可以提供数据来增强其自身的数据。 服务可�
 
 |认知服务|无需定型数据|提供了部分或全部定型数据|实时或近乎实时的数据收集|
 |--|--|--|--|
-|[异常探测器](./Anomaly-Detector/overview.md)|x|x|x|
+|[异常检测器](./Anomaly-Detector/overview.md)|x|x|x|
 |必应搜索 |x|||
 |[计算机视觉](./Computer-vision/Home.md)|x|||
 |[内容审查器](./Content-Moderator/overview.md)|x||x|
@@ -131,7 +129,7 @@ _利用_服务，你可以提供数据来增强其自身的数据。 服务可�
 |--|--|
 |[自定义视觉](./custom-vision-service/home.md)|适用于 Android 的 Tensorflow[导出](./Custom-Vision-Service/export-model-python.md)，CoreML for IOS11，ONNX FOR Windows ML|
 
-## <a name="learn-more"></a>了解详细信息
+## <a name="learn-more"></a>了解更多信息
 
 * [体系结构指南-Microsoft 的机器学习产品有哪些？](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
 * [机器学习-深度学习和机器学习简介](../machine-learning/concept-deep-learning-vs-machine-learning.md)

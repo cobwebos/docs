@@ -1,19 +1,19 @@
 ---
 title: Azure Maps 中的移动服务数据结构 |Microsoft Azure 映射
 description: 在本文中，你将了解通过 Microsoft Azure 映射移动服务返回的公共字段和数据结构。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/05/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4dfc6793bba473c4046863937baa292dde7bf421
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c2033557d14a25c786f3f6b08dc5bd54956f7e1
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80478704"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131270"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Azure Maps 移动服务中的数据结构
 

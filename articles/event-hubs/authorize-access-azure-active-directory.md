@@ -3,12 +3,12 @@ title: 使用 Azure Active Directory 授予访问权限
 description: 本文提供有关使用 Azure Active Directory 授权访问事件中心资源的信息。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 734c95f6f26dbb646f641e4446287df52c86be6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e529a1b72e364514d00c3b7ba84ba26490a9a0bb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317982"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131899"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>使用 Azure Active Directory 授权访问事件中心资源
 Azure 事件中心支持使用 Azure Active Directory (Azure AD) 授权对事件中心资源的请求。 可以通过 Azure AD 使用基于角色的访问控制 (RBAC) 授予对服务主体的访问权限，该服务主体可能是用户或应用程序服务主体。 若要详细了解角色和角色分配，请参阅[了解不同的角色](../role-based-access-control/overview.md)。
@@ -34,8 +34,8 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 Azure 提供以下内置 RBAC 角色，用于授权使用 Azure AD 和 OAuth 访问事件中心数据：
 
 - [Azure 事件中心数据所有者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner)：使用此角色可以授予对事件中心资源的完全访问权限。
-- [Azure 事件中心数据发送者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver)：使用此角色可以授予对事件中心资源的发送访问权限。
-- [Azure 事件中心数据接收者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)：使用此角色可以授予对事件中心资源的使用/接收访问权限。
+- [Azure 事件中心数据发送者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)：使用此角色可以授予对事件中心资源的发送访问权限。
+- [Azure 事件中心数据接收者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver)：使用此角色可以授予对事件中心资源的使用/接收访问权限。
 
 ## <a name="resource-scope"></a>资源范围 
 在将 RBAC 角色分配到某个安全主体之前，请确定该安全主体应该获取的访问范围。 最佳做法指出，最好是授予尽可能小的范围。
@@ -53,7 +53,7 @@ Azure 提供以下内置 RBAC 角色，用于授权使用 Azure AD 和 OAuth 访
 > - 此内容适用于事件中心及用于 Apache Kafka 的事件中心。 有关用于 Kafka 的事件中心支持的详细信息，请参阅[用于 Kafka 的事件中心 - 安全性和身份验证](event-hubs-for-kafka-ecosystem-overview.md#security-and-authentication)。
 
 
-有关如何定义内置角色的详细信息，请参阅[了解角色定义](../role-based-access-control/role-definitions.md#management-and-data-operations)。 若要了解如何创建自定义 RBAC 角色，请参阅[针对 Azure 基于角色的访问控制创建自定义角色](../role-based-access-control/custom-roles.md)。
+有关如何定义内置角色的详细信息，请参阅[了解角色定义](../role-based-access-control/role-definitions.md#management-and-data-operations)。 有关创建 Azure 自定义角色的详细信息，请参阅[azure 自定义角色](../role-based-access-control/custom-roles.md)。
 
 
 

@@ -4,12 +4,12 @@ description: 了解如何使用群集自动缩放程序自动缩放群集以满�
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 9aa06ea2fbc3aff218a4940fa60da767fabca500
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: af09d594dd745b64901965499df4245fa2e6a85f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252022"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130828"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>自动缩放群集以满足 Azure Kubernetes 服务 (AKS) 中的应用程序需求
 
@@ -44,7 +44,7 @@ ms.locfileid: "86252022"
 
 有关群集自动缩放程序如何可能无法减少的详细信息，请参阅[哪些类型的 Pod 可能会阻止群集自动缩放程序删除节点？][autoscaler-scaledown]
 
-群集自动缩放程序对诸如缩放事件与资源阈值之间的时间间隔等内容使用启动参数。 若要详细了解群集自动缩放程序使用的参数，请参阅[群集自动缩放程序参数是什么？][autoscaler-parameters]
+群集自动缩放程序对诸如缩放事件与资源阈值之间的时间间隔等内容使用启动参数。 有关群集自动缩放程序使用的参数的详细信息，请参阅[什么是群集自动缩放程序参数？][autoscaler-parameters]
 
 群集和水平 Pod 自动缩放程序可以协同工作，通常部署在一个群集中。 结合使用时，水平 Pod 自动缩放程序侧重于运行满足应用程序需求所需的 Pod 数。 群集自动缩放程序侧重于运行支持计划 Pod 所需的节点数。
 
@@ -56,7 +56,7 @@ ms.locfileid: "86252022"
 如果需要创建 AKS 群集，请使用 [az aks create][az-aks-create] 命令。 若要在群集的节点池中启用和配置群集自动缩放程序，请使用 *--enable-cluster-autoscaler* 参数，并指定节点 *--min-count* 和 *--max-count*。
 
 > [!IMPORTANT]
-> 群集自动缩放程序是 Kubernetes 组件。 虽然 AKS 群集对节点使用虚拟机规模集，但请勿在 Azure 门户中或使用 Azure CLI 手动启用或编辑规模集自动缩放设置。 让 Kubernetes 群集自动缩放程序管理所需的规模设置。 有关详细信息，请参阅[我可以修改节点资源组中的 AKS 资源吗？](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group)
+> 群集自动缩放程序是 Kubernetes 组件。 虽然 AKS 群集对节点使用虚拟机规模集，但请勿在 Azure 门户中或使用 Azure CLI 手动启用或编辑规模集自动缩放设置。 让 Kubernetes 群集自动缩放程序管理所需的规模设置。 有关详细信息，请参阅[我可以修改节点资源组中的 AKS 资源吗？][aks-faq-node-resource-group]
 
 以下示例使用虚拟机规模集支持的单个节点池创建 AKS 群集。 它还会在群集的节点池中启用群集自动缩放程序，并将最小节点数设置为 1，将最大节点数设置为 3： 
 
@@ -77,6 +77,26 @@ az aks create \
 ```
 
 创建群集并配置群集自动缩放程序设置需要几分钟时间。
+
+## <a name="update-an-existing-aks-cluster-to-enable-the-cluster-autoscaler"></a>更新现有的 AKS 群集以启用群集自动缩放程序
+
+使用[az aks update][az-aks-update]命令为现有群集启用和配置节点池上的群集自动缩放程序。 使用 *--自动缩放程序*参数，并指定一个节点*最小计数*和*最大值*。
+
+> [!IMPORTANT]
+> 群集自动缩放程序是 Kubernetes 组件。 虽然 AKS 群集对节点使用虚拟机规模集，但请勿在 Azure 门户中或使用 Azure CLI 手动启用或编辑规模集自动缩放设置。 让 Kubernetes 群集自动缩放程序管理所需的规模设置。 有关详细信息，请参阅[我可以修改节点资源组中的 AKS 资源吗？][aks-faq-node-resource-group]
+
+以下示例更新现有的 AKS 群集，以便在群集的节点池中启用群集自动缩放程序，并将最小值设置为*1* ，最大值为*3*个节点：
+
+```azurecli-interactive
+az aks update \
+  --resource-group myResourceGroup \
+  --name myAKSCluster \
+  --enable-cluster-autoscaler \
+  --min-count 1 \
+  --max-count 3
+```
+
+更新群集需要几分钟时间，并配置群集自动缩放程序设置。
 
 ## <a name="change-the-cluster-autoscaler-settings"></a>更改群集自动缩放程序设置
 
@@ -107,7 +127,7 @@ az aks update \
 
 还可以通过更改群集范围的自动缩放程序配置文件中的默认值，来配置群集自动缩放程序的更高粒度详细信息。 例如，在节点未充分利用 10 分钟后，将发生纵向缩减事件。 如果你的工作负荷每 15 分钟运行一次，则可能需要更改自动缩放程序配置文件，以便在 15 到 20 分钟后纵向缩减未充分利用的节点。 启用群集自动缩放程序后，除非指定不同的设置，否则将使用默认配置文件。 可以更新群集自动缩放程序配置文件中的以下设置：
 
-| 设置                          | 说明                                                                              | 默认值 |
+| 设置                          | 描述                                                                              | 默认值 |
 |----------------------------------|------------------------------------------------------------------------------------------|---------------|
 | scan-interval                    | 重新评估群集纵向扩展或缩减的频率                                    | 10 秒    |
 | scale-down-delay-after-add       | 纵向扩展后经过多长时间恢复评估纵向缩减                               | 10 分钟    |
@@ -124,7 +144,7 @@ az aks update \
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 
-若要设置群集自动缩放程序设置配置文件，需要安装 *aks-preview* CLI 扩展 0.4.30 或更高版本。 使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展，然后使用 [az extension update][az-extension-update] 命令检查是否有任何可用的更新：
+若要设置群集自动缩放程序设置配置文件，需要安装 *aks-preview* CLI 扩展 0.4.30 或更高版本。 使用 [az extension add][az-extension-add] 命令安装 *aks-preview* Azure CLI 扩展，然后使用 [az extension update][az-extension-update] 命令检查是否有任何可用的更新：
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -136,7 +156,7 @@ az extension update --name aks-preview
 
 ### <a name="set-the-cluster-autoscaler-profile-on-an-existing-aks-cluster"></a>在现有 AKS 群集上设置群集自动缩放程序配置文件
 
-结合 *cluster-autoscaler-profile* 参数使用 [az aks update][az-aks-update] 命令在群集上设置群集自动缩放程序配置文件。 以下示例在配置文件中将扫描间隔设置配置为 30 秒。
+结合 *cluster-autoscaler-profile* 参数使用 [az aks update][az-aks-update-preview] 命令在群集上设置群集自动缩放程序配置文件。 以下示例在配置文件中将扫描间隔设置配置为 30 秒。
 
 ```azurecli-interactive
 az aks update \
@@ -179,7 +199,7 @@ az aks create \
 
 ### <a name="reset-cluster-autoscaler-profile-to-default-values"></a>将群集自动缩放程序配置文件重置为默认值
 
-使用 [az aks update][az-aks-update] 命令在群集上重置群集自动缩放程序配置文件。
+使用 [az aks update][az-aks-update-preview] 命令在群集上重置群集自动缩放程序配置文件。
 
 ```azurecli-interactive
 az aks update \
@@ -190,7 +210,7 @@ az aks update \
 
 ## <a name="disable-the-cluster-autoscaler"></a>禁用群集自动缩放程序
 
-如果你不再想要使用群集自动缩放程序，可以使用 [az aks update][az-aks-update] 命令并指定 *--disable-cluster-autoscaler* 参数将其禁用。 群集自动缩放程序处于禁用状态时，不会删除节点。
+如果你不再想要使用群集自动缩放程序，可以使用 [az aks update][az-aks-update-preview] 命令并指定 *--disable-cluster-autoscaler* 参数将其禁用。 群集自动缩放程序处于禁用状态时，不会删除节点。
 
 ```azurecli-interactive
 az aks update \
@@ -203,7 +223,7 @@ az aks update \
 
 ## <a name="re-enable-a-disabled-cluster-autoscaler"></a>重新启用已禁用的群集自动缩放程序
 
-若要对现有的群集重新启用群集自动缩放程序，可以使用 [az aks update][az-aks-update] 命令并指定 *--enable-cluster-autoscaler*、 *--min-count* 和 *--max-count* 参数。
+若要对现有的群集重新启用群集自动缩放程序，可以使用 [az aks update][az-aks-update-preview] 命令并指定 *--enable-cluster-autoscaler*、 *--min-count* 和 *--max-count* 参数。
 
 ## <a name="retrieve-cluster-autoscaler-logs-and-status"></a>检索群集自动缩放程序日志和状态
 
@@ -213,7 +233,7 @@ AKS 将代你管理群集自动缩放程序，并在托管控制平面中运行�
 
 若要配置将从群集自动缩放程序推送到 Log Analytics 的日志，请执行以下步骤。
 
-1. 设置一条资源日志规则，以便将群集自动缩放程序日志推送到 Log Analytics。 [此处提供了详细说明](./view-master-logs.md#enable-resource-logs)，请确保在选择“日志”的选项时选中 `cluster-autoscaler` 的复选框。
+1. 设置一条资源日志规则，以便将群集自动缩放程序日志推送到 Log Analytics。 [此处提供了详细说明][aks-view-master-logs]，请确保在选择“日志”的选项时选中 `cluster-autoscaler` 的复选框。
 1. 在 Azure 门户中单击群集上的“日志”部分。
 1. 将以下示例查询输入 Log Analytics：
 
@@ -232,11 +252,11 @@ AzureDiagnostics
 kubectl get configmap -n kube-system cluster-autoscaler-status -o yaml
 ```
 
-若要详细了解通过自动缩放程序记录的内容，请阅读有关 [Kubernetes/自动缩放程序 GitHub 项目](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#ca-doesnt-work-but-it-used-to-work-yesterday-why)的常见问题解答。
+若要详细了解通过自动缩放程序记录的内容，请阅读有关 [Kubernetes/自动缩放程序 GitHub 项目][kubernetes-faq]的常见问题解答。
 
 ## <a name="use-the-cluster-autoscaler-with-multiple-node-pools-enabled"></a>使用启用了多个节点池的群集自动缩放程序
 
-群集自动缩放程序可与启用的[多个节点池](use-multiple-node-pools.md)结合使用。 参阅该文档了解如何启用多个节点池，以及如何将其他节点池添加到现有群集。 将这两个功能结合使用时，可对群集中的每个节点池启用群集自动缩放程序，并可将唯一的自动缩放规则传递到每个节点池。
+群集自动缩放程序可与启用的[多个节点池][aks-multiple-node-pools]结合使用。 参阅该文档了解如何启用多个节点池，以及如何将其他节点池添加到现有群集。 将这两个功能结合使用时，可对群集中的每个节点池启用群集自动缩放程序，并可将唯一的自动缩放规则传递到每个节点池。
 
 以下命令假设已按照本文档前面提供的[初始说明](#create-an-aks-cluster-and-enable-the-cluster-autoscaler)操作，并且你要将现有节点池的最大计数从 *3* 更新为 *5*。 使用 [az aks nodepool update][az-aks-nodepool-update] 命令更新现有节点池的设置。
 
@@ -268,22 +288,27 @@ az aks nodepool update \
 
 <!-- LINKS - internal -->
 [aks-faq]: faq.md
+[aks-faq-node-resource-group]: faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group
+[aks-multiple-node-pools]: use-multiple-node-pools.md
 [aks-scale-apps]: tutorial-kubernetes-scale.md
 [aks-support-policies]: support-policies.md
 [aks-upgrade]: upgrade-cluster.md
+[aks-view-master-logs]: ./view-master-logs.md#enable-resource-logs
 [autoscaler-profile-properties]: #using-the-autoscaler-profile
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-update]: /cli/azure/aks#az-aks-update
 [az-aks-scale]: /cli/azure/aks#az-aks-scale
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
 
 <!-- LINKS - external -->
-[az-aks-update]: https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview
+[az-aks-update-preview]: https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview
 [az-aks-nodepool-update]: https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview#enable-cluster-auto-scaler-for-a-node-pool
 [autoscaler-scaledown]: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-types-of-pods-can-prevent-ca-from-removing-a-node
 [autoscaler-parameters]: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-the-parameters-to-ca
+[kubernetes-faq]: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#ca-doesnt-work-but-it-used-to-work-yesterday-why

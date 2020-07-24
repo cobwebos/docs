@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 923ae652872246916b2a4c5e8be95871983dbe95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc22cf5a21709ccacafe068a60541cc9990d1131
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559830"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132256"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>在 Azure 数字孪生中管理终结点和路由
 
@@ -23,14 +23,9 @@ ms.locfileid: "85559830"
 * [事件网格](../event-grid/overview.md)
 * [服务总线](../service-bus-messaging/service-bus-messaging-overview.md)
 
-有关不同终结点的详细信息，请参阅在[Azure 消息服务之间选择](https://docs.microsoft.com/azure/event-grid/compare-messaging-services)。
+有关不同终结点的详细信息，请参阅在[*Azure 消息服务之间选择*](https://docs.microsoft.com/azure/event-grid/compare-messaging-services)。
 
 终结点和路由通过[**EventRoutes api**](how-to-use-apis-sdks.md)、 [.Net （c #） SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或[Azure 数字孪生 CLI](how-to-use-cli.md)进行管理。 还可以通过[Azure 门户](https://portal.azure.com)进行管理。
-
-> [!NOTE]
-> 通过 Azure 门户管理事件路由目前仅适用于企业域帐户中的 Azure 用户。 
->
->如果使用的是个人[Microsoft 帐户（MSA）](https://account.microsoft.com/account/Account)（如帐户）， @outlook.com 请使用 Azure 数字孪生 api 或 CLI 来管理事件路由，如本文中所述。
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>为 Azure 数字孪生创建终结点
 
@@ -70,7 +65,14 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 ## <a name="manage-event-routes-with-apis"></a>用 Api 管理事件路由
 
-若要将数据从 Azure 数字孪生实际发送到终结点，需要定义事件路由。 通过 Azure 数字孪生**EventRoutes api** ，开发人员可以将事件流连接到整个系统和下游服务。 有关事件路由的详细信息，请参阅[概念：路由 Azure 数字孪生事件](concepts-route-events.md)。
+若要将数据从 Azure 数字孪生实际发送到终结点，需要定义事件路由。 通过 Azure 数字孪生**EventRoutes api** ，开发人员可以将事件流连接到整个系统和下游服务。 有关事件路由的详细信息，请参阅[*概念：路由 Azure 数字孪生事件*](concepts-route-events.md)。
+
+终结点完成设置后，可以继续创建事件路由。
+
+>[!NOTE]
+>如果你最近部署了终结点，请验证它们是否已完成部署，**然后再**尝试将它们用于新的事件路由。 如果由于终结点尚未准备好而导致路由部署失败，请等待几分钟，然后重试。
+>
+> 如果要编写此流脚本，可能需要在2-3 分钟的等待时间内生成终结点服务，然后再继续进行路由设置。
 
 本文中的示例使用 c # SDK。
 
@@ -148,8 +150,8 @@ catch (RequestFailedException e)
 | 筛选器名称 | 描述 | 筛选架构 | 支持的值 | 
 | --- | --- | --- | --- |
 | 类型 | 通过数字克隆实例流动的[事件类型](./concepts-route-events.md#types-of-event-messages) | `"filter" : "type = '<eventType>'"` | `Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
-| 源 | Azure 数字孪生实例的名称 | `"filter" : "source = '<hostname>'"`|  **对于通知**：`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **对于遥测**：`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/digitaltwins/<twinId>`|
-| 使用者 | 上述事件源上下文中事件的说明 | `"filter": " subject = '<subject>'"` | **对于通知**：使用者为`<twinid>` <br> 或主题的 URI 格式，由多个部件或 Id 唯一标识：<br>`<twinid>/relationships/<relationshipid>`<br> **对于遥测**： "主题" 是组件路径（如果从 "克隆" 组件发出遥测数据），例如 `comp1.comp2` 。 如果未从组件发出遥测数据，则其 "使用者" 字段为空。 |
+| Source | Azure 数字孪生实例的名称 | `"filter" : "source = '<hostname>'"`|  **对于通知**：`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **对于遥测**：`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/digitaltwins/<twinId>`|
+| 主题 | 上述事件源上下文中事件的说明 | `"filter": " subject = '<subject>'"` | **对于通知**：使用者为`<twinid>` <br> 或主题的 URI 格式，由多个部件或 Id 唯一标识：<br>`<twinid>/relationships/<relationshipid>`<br> **对于遥测**： "主题" 是组件路径（如果从 "克隆" 组件发出遥测数据），例如 `comp1.comp2` 。 如果未从组件发出遥测数据，则其 "使用者" 字段为空。 |
 | 数据架构 | DTDL 模型 ID | `"filter": "dataschema = 'dtmi:example:com:floor4;2'"` | **对于遥测**：数据架构是克隆或发出遥测数据的组件的模型 ID <br>**对于通知**：不支持数据架构|
 | 内容类型 | 数据值的内容类型 | `"filter": "datacontenttype = '<contentType>'"` | `application/json` |
 | 规范版本 | 你使用的事件架构的版本 | `"filter": "specversion = '<version>'"` | 必须是 `1.0`。 这表示 CloudEvents 架构版本1。0 |
@@ -174,7 +176,7 @@ catch (RequestFailedException e)
 
 ## <a name="manage-endpoints-and-routes-with-cli"></a>用 CLI 管理终结点和路由
 
-还可以使用 Azure 数字孪生 CLI 管理终结点和路由。 有关命令，请参阅[操作方法：使用 Azure 数字孪生 CLI](how-to-use-cli.md)。
+还可以使用 Azure 数字孪生 CLI 管理终结点和路由。 有关命令，请参阅[*操作方法：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)。
 
 ## <a name="monitor-event-routes"></a>监视事件路由
 
@@ -189,4 +191,4 @@ catch (RequestFailedException e)
 ## <a name="next-steps"></a>后续步骤
 
 阅读可接收的不同类型的事件消息：
-* [操作说明：解释事件数据](how-to-interpret-event-data.md)
+* [*操作说明：解释事件数据*](how-to-interpret-event-data.md)

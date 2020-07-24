@@ -3,20 +3,18 @@ title: 置信度分数-QnA Maker
 titleSuffix: Azure Cognitive Services
 description: 必须发布知识库。 发布后，将使用 generateAnswer API 在运行时预测终结点上查询知识库。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: d901a803311805825c22503af6098e805a67e8f6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: faf24f11763ca2bcd9bb872b09b5d1b69e78bd06
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76843446"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131151"
 ---
 # <a name="the-confidence-score-of-an-answer"></a>答案的置信度分数
 如果用户查询的匹配依据为知识库，QnA Maker 会返回相关答案和置信度分数。 此分数指明了答案是给定用户查询的正确匹配答案的置信度。
@@ -61,7 +59,7 @@ ms.locfileid: "76843446"
 
 将阈值评分设置为[GENERATEANSWER API JSON 主体](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)的属性。 这意味着你将其设置为每次调用 GenerateAnswer。
 
-在机器人框架中，将分数设置为带有[c #](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c)或 node.js 的选项对象的[一部分。](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs)
+通过机器人框架，用[c #](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c)或[Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs)将分数设置为 options 对象的一部分。
 
 ## <a name="improve-confidence-scores"></a>提高置信度分数
 若要提高对用户查询的特定响应的置信度分数，可以将用户查询添加到知识库，作为该响应的备用问题。 还可以使用区分大小写的[字变更](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace)向知识库中的关键字添加同义词。
@@ -90,5 +88,5 @@ ms.locfileid: "76843446"
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
-> [最佳做法](./best-practices.md)
+> [最佳实践](./best-practices.md)
 

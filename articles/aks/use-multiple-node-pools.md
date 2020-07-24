@@ -4,12 +4,12 @@ description: 了解如何为 Azure Kubernetes 服务 (AKS) 中的群集创建和
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: c35b3cdbde79a771eccc42c7c3a60b0ab4e08e8a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 400e595d51f08428b01337e63f6c6e8ba5836794
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250849"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133089"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的群集创建和管理多个节点池
 
@@ -121,20 +121,20 @@ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluste
 ```
 
 > [!TIP]
-> 如果在添加节点池时未指定*VmSize* ，则 Windows 节点池的默认大小和 Linux 节点池的*Standard_DS2_v2* *Standard_D2s_v3* 。 如果未指定 OrchestratorVersion，则它将默认为与控制平面相同的版本。
+> 如果在添加节点池时未指定 VmSize ，则 Windows 节点池的默认大小为 Standard_D2s_v3，Linux 节点池的默认大小为 Standard_DS2_v2  。 如果未指定 OrchestratorVersion，则它将默认为与控制平面相同的版本。
 
-### <a name="add-a-node-pool-with-a-unique-subnet-preview"></a>添加具有唯一子网 (预览的节点池) 
+### <a name="add-a-node-pool-with-a-unique-subnet-preview"></a>添加一个具有唯一子网的节点池（预览）
 
-工作负荷可能需要将群集的节点拆分为单独的池，以便进行逻辑隔离。 对于群集中每个节点池专用的单独子网，可以支持此隔离。 这可以满足要求，例如，在节点池中拆分非连续的虚拟网络地址空间。
+某个工作负载可能会要求将群集的节点拆分为单独的池以进行逻辑隔离。 可使用专用于群集中每个节点池的单独子网来支持这种隔离。 这可以满足例如在节点池中拆分非连续的虚拟网络地址空间的要求。
 
 #### <a name="limitations"></a>限制
 
-* 分配给 nodepools 的所有子网都必须属于同一虚拟网络。
-* 系统箱必须有权访问群集中的所有节点，以通过 coreDNS 提供关键功能，如 DNS 解析。
-* 在预览期间，按节点池分配唯一子网仅限于 Azure CNI。
-* 在预览期间，不支持将网络策略用于每个节点池的唯一子网。
+* 分配给节点池的所有子网都必须属于同一虚拟网络。
+* 系统 Pod 必须有权访问群集中的所有节点以提供关键功能，例如通过 coreDNS 进行 DNS 解析。
+* 在预览版期间，为每个节点池分配唯一子网仅限于 Azure CNI。
+* 预览期间不支持将网络策略与每个节点池的唯一子网一起使用。
 
-若要创建具有专用子网的节点池，请在创建节点池时传递子网资源 ID 作为附加参数。
+若要创建具有专用子网的节点池，请在创建节点池时将子网资源 ID 作为附加参数传递。
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -155,13 +155,13 @@ az aks nodepool add \
 > [!NOTE]
 > 节点池的 OS 映像版本与群集的 Kubernetes 版本相关联。 只能先升级 OS 映像，然后再升级群集。
 
-由于本示例包含两个节点池，因此必须使用 [az aks nodepool upgrade][az-aks-nodepool-upgrade] 来升级节点池。 若要查看可用的升级，请使用[az aks get 升级][az-aks-get-upgrades]
+由于本示例包含两个节点池，因此必须使用 [az aks nodepool upgrade][az-aks-nodepool-upgrade] 来升级节点池。 若要查看可用的升级，请使用 [az aks get-upgrades][az-aks-get-upgrades]
 
 ```azurecli-interactive
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
-让我们升级*mynodepool*。 如以下示例中所示，使用 [az aks nodepool upgrade][az-aks-nodepool-upgrade] 命令升级节点池：
+现在升级 mynodepool。 如以下示例中所示，使用 [az aks nodepool upgrade][az-aks-nodepool-upgrade] 命令升级节点池：
 
 ```azurecli-interactive
 az aks nodepool upgrade \
@@ -172,7 +172,7 @@ az aks nodepool upgrade \
     --no-wait
 ```
 
-使用 [az aks node pool list][az-aks-nodepool-list] 命令再次列出节点池的状态。 下面的示例演示*mynodepool*处于*升级*状态，以便*KUBERNETES_VERSION*：
+使用 [az aks node pool list][az-aks-nodepool-list] 命令再次列出节点池的状态。 以下示例显示“mynodepool”处于“升级”状态，正在升级到 KUBERNETES_VERSION  ：
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -367,7 +367,7 @@ az aks nodepool add \
     --no-wait
 ```
 
-[az aks node pool list ][az-aks-nodepool-list] 命令的以下示例输出显示 *gpunodepool* 正在创建具有指定 *VmSize* 的节点：**
+[az aks node pool list ][az-aks-nodepool-list] 命令的以下示例输出显示 *gpunodepool* 正在创建具有指定 *VmSize* 的节点：
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -503,7 +503,10 @@ az aks nodepool add \
     --no-wait
 ```
 
-以下来自[az aks nodepool list][az-aks-nodepool-list]命令的示例输出显示*taintnp*正在*创建*具有指定*nodeTaints*的节点：
+> [!NOTE]
+> 仅可在创建节点池期间为节点池设置破坏。
+
+[az aks nodepool list][az-aks-nodepool-list] 命令的以下示例输出显示 taintnp 正在创建具有指定 nodeTaints 的节点：  
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -546,7 +549,7 @@ az aks nodepool add \
 > [!NOTE]
 > 只能在创建节点池期间为节点池设置标签。 此外，标签必须是键/值对，并采用[有效的语法][kubernetes-label-syntax]。
 
-以下来自[az aks nodepool list][az-aks-nodepool-list]命令的示例输出显示*labelnp*正在*创建*具有指定*nodeLabels*的节点：
+[az aks nodepool list][az-aks-nodepool-list] 命令的以下示例输出显示 labelnp 正在创建具有指定 nodeLabels 的节点：  
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -588,7 +591,7 @@ az aks nodepool add \
 > [!NOTE]
 > 在使用 [az aks nodepool update][az-aks-nodepool-update] 命令时以及在创建群集期间，也可以使用 `--tags` 参数。 在创建群集期间，`--tags` 参数会将标记应用到连同群集一起创建的初始节点池。 所有标记名称必须遵守[使用标记来组织 Azure 资源][tag-limitation]中所述的限制。 使用 `--tags` 参数更新节点池会更新所有现有标记值，并追加任何新标记。 例如，如果节点池对标记使用了 dept=IT 和 costcenter=9999，而你使用标记的 team=dev 和 costcenter=111 更新了该节点池，则该节点池将对标记使用 dept=IT、costcenter=111 和 team=dev。      
 
-以下来自[az aks nodepool list][az-aks-nodepool-list]命令的示例输出显示*tagnodepool*正在*创建*具有指定*标记*的节点：
+[az aks nodepool list][az-aks-nodepool-list] 命令的以下示例输出显示 tagnodepool 正在创建具有指定标记的节点：  
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -723,12 +726,12 @@ az group deployment create \
 
 更新 AKS 群集可能需要花费几分钟时间，具体取决于资源管理器模板中定义的节点池设置和操作。
 
-## <a name="assign-a-public-ip-per-node-for-your-node-pools-preview"></a> (预览为节点池分配每个节点的公共 IP) 
+## <a name="assign-a-public-ip-per-node-for-your-node-pools-preview"></a>为节点池分配每个节点一个公共 IP （预览）
 
 > [!WARNING]
 > 必须安装 CLI 预览版扩展0.4.43 或更高版本，才能使用公共 IP 每节点功能。
 
-AKS 节点无需使用自身的公共 IP 地址进行通信。 但是，方案可能需要节点池中的节点接收其自己的专用公共 IP 地址。 常见的情况是，游戏工作负荷，控制台需要直接连接到云虚拟机以最大程度地减少跃点。 此方案可通过注册预览功能、节点公共 IP (preview) 来实现 AKS。
+AKS 节点无需使用自身的公共 IP 地址进行通信。 但是，方案可能需要节点池中的节点接收其自己的专用公共 IP 地址。 常见的情况是，游戏工作负荷，控制台需要直接连接到云虚拟机以最大程度地减少跃点。 此方案可通过注册预览功能 "节点公共 IP （预览版）" AKS 来实现。
 
 若要安装和更新最新的 aks 扩展，请使用以下 Azure CLI 命令：
 
@@ -811,7 +814,7 @@ az group delete --name myResourceGroup2 --yes --no-wait
 
 本文已介绍如何在 AKS 群集中创建和管理多个节点池。 有关如何跨节点池控制 pod 的详细信息，请参阅[有关 AKS 中的高级计划程序功能的最佳做法][operator-best-practices-advanced-scheduler]。
 
-若要创建和使用 Windows Server 容器节点池，请参阅[在 AKS 中创建 Windows server 容器][aks-windows]。
+要创建和使用 Windows Server 容器节点池，请参阅[在 AKS 中创建 Windows Server 容器][aks-windows]。
 
 使用[邻近组][reduce-latency-ppg]可减少 AKS 应用程序的延迟。
 

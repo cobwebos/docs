@@ -10,11 +10,12 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 2b4eef6a992915e934e69a93d440bc6fa60aa690
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f245b1baddad52f18f66e99fa98d9ec5f73c8011
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84803523"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130896"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>使用 PowerShell 为容器或 blob 创建用户委托 SAS
 
@@ -24,7 +25,7 @@ ms.locfileid: "84803523"
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
-## <a name="install-the-powershell-module"></a>安装 PowerShell 模块
+## <a name="install-the-powershell-module"></a>安装 Powershell 模块
 
 若要使用 PowerShell 创建用户委托 SAS，请安装1.10.0 模块的版本或更高版本。 按照以下步骤安装最新版本的模块：
 
@@ -89,7 +90,7 @@ New-AzRoleAssignment -SignInName <email> `
     -Scope  "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>"
 ```
 
-有关包含 storageAccounts/ **blobServices/generateUserDelegationKey**操作的内置角色的详细信息，请参阅[Azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)。
+有关内置角色的详细信息，包括**storageAccounts//blobServices/generateUserDelegationKey**操作，请参阅[Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
 
 ## <a name="use-azure-ad-credentials-to-secure-a-sas"></a>使用 Azure AD 凭据来保护 SAS
 

@@ -1,16 +1,16 @@
 ---
-title: Microsoft 商业市场分析中的使用情况仪表板
+title: Microsoft 商业 marketplace 分析、Azure Marketplace 和 Microsoft AppSource 中的使用情况仪表板
 description: 了解如何访问所有 VM 套餐使用情况和按流量计费指标。 在合作伙伴中心内转到商业市场下的使用情况仪表板。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 8747ff98cd2b53773d9e0a95436d90fef74fda55
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/22/2020
+ms.openlocfilehash: a03ef316b409fdeff687f0ee7bbbf6316857c54b
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120664"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131739"
 ---
 # <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Microsoft 商业市场分析中的使用情况仪表板
 
@@ -30,14 +30,13 @@ ms.locfileid: "86120664"
 - [使用情况摘要](#usage-summary)
 - [按地域的使用情况](#usage-by-geography)
 - [按套餐的使用情况](#usage-by-offers)
-- [按套餐和 SKU 的使用趋势](#usage-trend-by-offers-and-skus)
+- [按产品/服务和计划的使用趋势](#usage-trend-by-offers-and-plans)
 - [按套餐类型的使用情况](#usage-by-offer-type)
 - [按 VM 大小的使用情况](#usage-by-vm-size)
 - [按销售渠道的使用情况](#usage-by-sales-channel)
 - [详细使用情况数据](#detailed-usage-data)
 
-> [!NOTE]
-> 分析报告在云合作伙伴门户 (CPP) 和合作伙伴中心内以不同的方式显示。 CPP 中的 Seller insights 具有订单和使用情况选项卡，该选项卡显示基于使用情况的套餐和非基于使用情况的套餐的数据。 在合作伙伴中心内，使用情况指标显示在单独页面上。
+伙伴中心中的使用事件生成和报告之间的最大延迟为48小时。
 
 ### <a name="usage-summary"></a>使用情况摘要
 
@@ -52,7 +51,7 @@ ms.locfileid: "86120664"
 
 ### <a name="usage-by-geography"></a>按地域的使用情况
 
-按地域的规范化使用情况热度地图显示根据客户国家/地区映射的使用小时数。 国家/地区颜色变化表示规范化使用情况集中程度。 按地图上的主页按钮可还原为原始视图。
+"**按地理位置划分的规范化使用量**" 热图显示根据客户所在国家/地区映射的使用小时数。 国家/地区颜色变化表示规范化使用情况集中程度。 按地图上的主页按钮可还原为原始视图。
 
 ### <a name="usage-by-offers"></a>按套餐的使用情况
 
@@ -60,9 +59,9 @@ ms.locfileid: "86120664"
 - 条形图描绘所选日期范围的逐月增长趋势。 月份列表示套餐的使用小时数，以及相应月份的最高使用小时数。 折线图描绘在辅助 Y 轴上绘制的增长百分比趋势。
 - 使用图表顶部的滑块沿 x 轴向右滚动，并且/或是将焦点置于特定数据点上。
 
-### <a name="usage-trend-by-offers-and-skus"></a>按套餐和 SKU 的使用趋势
+### <a name="usage-trend-by-offers-and-plans"></a>按产品/服务和计划的使用趋势
 
-此图表显示套餐的所选 SKU 的规范化使用趋势。 套餐排行榜显示使用量最高的前 50 个套餐，按使用小时数排序。 SKU 排行榜显示所选套餐使用量最高的前 50 个 SKU。
+此图显示了产品/服务的所选计划（以前称为 Sku）的规范化使用趋势。 套餐排行榜显示使用量最高的前 50 个套餐，按使用小时数排序。 计划排行榜显示最高的50计划，其中包含所选产品/服务的最高使用量。
 
 ### <a name="usage-by-offer-type"></a>按套餐类型的使用情况
 
@@ -72,7 +71,7 @@ ms.locfileid: "86120664"
 
 ### <a name="usage-by-vm-size"></a>按 VM 大小的使用情况
 
-此图表显示所有套餐/SKU 的所选 VM 大小（最多 5 个）的使用趋势。 柱形图使用所选 VM 大小的使用小时数进行堆叠。
+此图显示了所有产品/服务的所选 VM 大小（最多5个）的使用趋势。 柱形图随所选 VM 大小的使用时间堆积。
 
 排行榜显示使用量最高的前 50 个 VM 大小，按使用小时数排序。
 
@@ -90,7 +89,7 @@ ms.locfileid: "86120664"
 - 网格中的每列都可进行排序。
 - 如果记录计数小于 1000，则可以将数据提取到 CSV 文件中。
 - 如果记录计数超过 1000，则导出数据会异步放置在将在接下来 30 天内可用的下载页面中。
-- 筛选器可应用于详细使用情况数据，以便只显示你感兴趣的数据。 数据可以按国家/地区、销售渠道、市场许可证类型、使用类型、套餐名称、套餐类型、免费试用版、市场订阅 ID、客户 ID 和公司名称进行筛选。
+- 将筛选器应用于**详细使用情况数据**以仅显示你感兴趣的数据。 按国家/地区、销售渠道、Marketplace 许可证类型、使用类型、产品名称、产品类型、免费试用版、Marketplace 订阅 ID、客户 ID 和公司名称筛选数据。
 
 > [!NOTE]
 > 在页面筛选器中选择“使用类型”，以在“规范化视图”或“原始视图”中查看页面上的图表。 这些图表的默认视图为“规范化视图”。
@@ -107,7 +106,7 @@ ms.locfileid: "86120664"
 “按流量计费使用情况”选项卡提供按计量维度度量使用情况的套餐类型的使用情况信息。 当前提供 SaaS 套餐类型超额。 该选项卡显示 SaaS 按流量计费使用情况的超额趋势的图形表示形式：
 
 - 按计量维度的超额趋势：显示套餐的所选计量维度的每月超额趋势。 X 轴表示月份，Y 轴表示使用数量。 自定义计量的度量单位也显示在 Y 轴上。
-- 按 SKU 的超额趋势：按 SKU 表示所选计量维度的使用数量趋势。 显示的 SKU 会为所选套餐表示使用量最高的前 5 个 SKU。
+- **按计划的超额趋势**：按计划表示所选计量维度的使用情况的趋势。 显示的计划将代表所选产品/服务的最高使用量的前5个计划。
 - 按前 50 个客户的超额趋势：使用小时数最高的前 50 个套餐会显示在排行榜上，并按自定义计量的最高使用量进行排名。 在排行榜中选择一个客户可查看所选计量维度的使用趋势。
 - 按排名靠前客户的超额趋势：显示占总体使用量百分比的排名靠前客户百分点值。 排名靠前客户百分点值沿 X 轴显示，由客户的使用数量确定。 Y 轴显示使用数量。 可以通过将鼠标悬停在折线图的各个点上方来显示详细信息。
 
@@ -117,7 +116,7 @@ ms.locfileid: "86120664"
 ## <a name="next-steps"></a>后续步骤
 
 - 有关合作伙伴中心商业市场内可用的分析报表的概述，请参阅[合作伙伴中心内的商业市场分析](./analytics.md)。
-- 有关为套餐汇总市场活动的聚合数据的图、趋势和值，请参阅[商业市场分析中的“摘要”仪表板](./summary-dashboard.md)。
+- 有关为产品/服务汇总市场活动的聚合数据的图表、趋势和值，请参阅[商业市场分析中的“摘要”仪表板](./summary-dashboard.md)。
 - 有关采用图形和可下载格式的订单的信息，请参阅[商业市场分析中的“订单”仪表板](./orders-dashboard.md)。
 - 有关客户的详细信息（包括增长趋势），请参阅[商业市场分析中的“客户”仪表板](./customer-dashboard.md)。
 - 有关过去 30 天内的下载请求列表，请参阅[商业市场分析中的“下载”仪表板](./downloads-dashboard.md)。

@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 0847f2360a3562f96454992470e3cc2000f66b11
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fba16f9245c8d438268338329ebadad7a57ef206
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502718"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131916"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure 磁盘存储的服务器端加密
 
@@ -80,8 +80,7 @@ Azure 托管磁盘中的数据使用 256 位 [AES 加密](https://en.wikipedia.o
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用主机上的加密启用端到端加密-CLI](disks-enable-host-based-encryption-cli.md)
-- [为托管磁盘启用静态静态加密-CLI](disks-enable-double-encryption-at-rest-cli.md)
-- [为托管磁盘启用客户托管的密钥-CLI](disks-enable-customer-managed-keys-cli.md)
-- [为托管磁盘启用客户托管的密钥-门户](disks-enable-customer-managed-keys-portal.md)
+- 使用[CLI](disks-enable-host-based-encryption-cli.md)或[Azure 门户](disks-enable-host-based-encryption-portal.md)在主机上启用端到端加密。
+- 使用[CLI](disks-enable-double-encryption-at-rest-cli.md)或[Azure 门户](disks-enable-double-encryption-at-rest-portal.md)为托管磁盘启用静态加密。
+- 使用[CLI](disks-enable-customer-managed-keys-cli.md)或[Azure 门户](disks-enable-customer-managed-keys-portal.md)为托管磁盘启用客户管理的密钥。
 - [什么是 Azure 密钥保管库？](../../key-vault/general/overview.md)

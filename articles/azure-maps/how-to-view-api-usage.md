@@ -1,19 +1,19 @@
 ---
 title: 查看 Azure Maps API 使用情况指标 |Microsoft Azure 映射
 description: 本文介绍如何在 Azure 门户中查看 Microsoft Azure 映射 API 调用的指标。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 0eb117af712b3b1f63a3f99c96cba9775f8e3996
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57fb699a7225a53af1f093520855e8e2ef132f42
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335153"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130726"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>查看 Azure Maps API 使用情况指标
 

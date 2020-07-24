@@ -1,19 +1,17 @@
 ---
 title: 了解 Azure Data Lake Analytics 的 SQL 开发人员 Apache Spark 代码概念。
 description: 本文介绍 Apache Spark 的概念，以帮助 SQL 开发人员了解 Spark 代码概念。
-author: guyhay
-ms.author: guyhay
 ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
-ms.openlocfilehash: d7cdcd5a3b176b60bb7801b37a831f8feb08c21f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7b5be20bb8b5eb1d56c1214104037d5d824445b3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106486"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132341"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>了解适用于 SQL 开发人员的 Apache Spark 代码
 
@@ -128,10 +126,10 @@ Spark 分别提供自己的 Python 和 R 集成、pySpark 和 SparkR，并提供
 |`SQL.MAP<K,V>`   |`MapType(keyType, valueType, valueContainsNull)` |`scala.collection.Map` | `MapType(keyType, valueType, valueContainsNull=True)`|
 |`SQL.ARRAY<T>`   |`ArrayType(elementType, containsNull)` |`scala.collection.Seq` | `ArrayType(elementType, containsNull=True)`|
 
-有关详情，请参阅：
+有关详细信息，请参阅：
 
 - [org. .sql. 类型](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.types.package)
-- [Spark SQL 和 DataFrames 类型](https://spark.apache.org/docs/latest/sql-reference.html#data-types)
+- [Spark SQL 和 DataFrames 类型](https://spark.apache.org/docs/latest/sql-ref-datatypes.html)
 - [Scala 值类型](https://www.scala-lang.org/api/current/scala/AnyVal.html)
 - [pyspark](https://spark.apache.org/docs/latest/api/python/pyspark.sql.html#module-pyspark.sql.types)
 

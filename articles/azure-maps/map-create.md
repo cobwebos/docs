@@ -1,19 +1,20 @@
 ---
 title: 使用 Azure Maps 创建地图 |Microsoft Azure 映射
 description: 在本文中，你将了解如何使用 Microsoft Azure map Web SDK 在网页上呈现地图。
-author: Philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 97eb1ebb61e5ff78ed918fded8107f5775b533c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4d3784bda1ba5a94dad1cae45513120b3686869
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124017"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130488"
 ---
 # <a name="create-a-map"></a>创建地图
 

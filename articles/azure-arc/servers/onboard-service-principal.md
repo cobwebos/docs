@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/04/2020
+ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: ac6a00efa7db848e4c05703c81ba835fbf5f77e3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7ac04b29853ce0d4f6ac4004bdfad4effd283170
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103783"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132987"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>将混合计算机大规模连接到 Azure
 
@@ -76,7 +76,7 @@ ms.locfileid: "86103783"
 
 ## <a name="install-the-agent-and-connect-to-azure"></a>安装代理并连接到 Azure
 
-以下步骤使用脚本模板在混合计算机上安装并配置 Connected Machine 代理，该模板执行的步骤与[从 Azure 门户将混合计算机连接到 Azure](onboard-portal.md) 一文中所述的步骤类似。 不同之处在于，最后一步是通过 `azcmagent` 命令使用服务主体与 Azure Arc 建立连接。 
+以下步骤使用脚本模板在混合计算机上安装并配置 Connected Machine 代理，该模板执行的步骤与[从 Azure 门户将混合计算机连接到 Azure](onboard-portal.md) 一文中所述的步骤类似。 不同之处在于，最后一步是通过 `azcmagent` 命令使用服务主体与 Azure Arc 建立连接。
 
 下面是配置用于服务主体的 `azcmagent` 命令时需要指定的设置。
 
@@ -110,6 +110,10 @@ msiexec /i AzureConnectedMachineAgent.msi /l*v installationlog.txt /qn | Out-Str
   --subscription-id "{subscriptionID}"
 ```
 
+>[!NOTE]
+>此脚本仅支持在64位版本的 Windows PowerShell 中运行。
+>
+
 ### <a name="linux-installation-script"></a>Linux 安装脚本
 
 下面是适用于 Linux 的 Connected Machine 代理安装脚本示例，该脚本已修改为使用服务主体来支持完全自动化的非交互式代理安装。
@@ -131,12 +135,15 @@ azcmagent connect \
   --subscription-id "{subscriptionID}"
 ```
 
+>[!NOTE]
+>若要运行**azcmagent**，必须具有 Linux 计算机上的*根*访问权限。
+
 安装代理并将其配置为连接到 Azure Arc for servers（预览版）后，请转到 Azure 门户，以验证是否已成功连接服务器。 在 [Azure 门户](https://aka.ms/hybridmachineportal)中查看计算机。
 
 ![服务器连接成功](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 来管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)、验证计算机是否向预期的 Log Analytics 工作区报告、使用[用于 VM 的 Azure Monitor](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md) 启用监视，等等。
+- 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区报告，使用[用于 VM 的 Azure Monitor](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md) 启用监视等。
 
 - 详细了解 [Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)。 若要主动监视计算机上运行的 OS 和工作负荷、使用自动化 Runbook 或更新管理等解决方案对其进行管理，或使用其他 Azure 服务（例如 [Azure 安全中心](../../security-center/security-center-intro.md)），需要安装适用于 Windows 和 Linux 的 Log Analytics 代理。

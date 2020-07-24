@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 01bb5f9ae6d8c7a6374a8b1392b061f31fdb63a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fec93169a8c49422c9e310cddc08ae3412b89166
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390578"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132273"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 数字孪生模型
 
@@ -66,7 +66,7 @@ Azure 数字孪生的模型以 DTDL 编写，并保存为*json*文件。 还有�
 按照此方法，你可以继续为医院的 wards、区域或医院本身定义模型。
 
 > [!TIP]
-> 有一个可用于分析和验证 DTDL 的客户端库。 它生成 DTDL 内容的 c # 对象模型，该模型可用于模型驱动开发方案，如生成 UI 元素。 你还可以使用此库来确保模型在上传之前没有语法错误。 有关此库的详细信息以及对 DTDL 验证程序构建的示例的访问权限，请参阅[操作方法：分析和验证模型](how-to-use-parser.md)。
+> 有一个可用于分析和验证 DTDL 的客户端库。 它生成 DTDL 内容的 c # 对象模型，该模型可用于模型驱动开发方案，如生成 UI 元素。 你还可以使用此库来确保模型在上传之前没有语法错误。 有关此库的详细信息以及对 DTDL 验证程序构建的示例的访问权限，请参阅[*操作方法：分析和验证模型*](how-to-use-parser.md)。
 
 ## <a name="manage-models-with-apis"></a>利用 Api 管理模型。
 
@@ -190,7 +190,7 @@ client.DecommissionModel(dtmiOfPlanetInterface);
 
 您可以一次删除实例中的所有模型，也可以单独执行此操作。
 
-有关如何删除所有模型的示例，请下载教程中使用的示例应用[：使用示例客户端应用浏览基础知识](tutorial-command-line-app.md)。 *CommandLoop.cs*文件在函数中执行此 `CommandDeleteAllModels` 功能。
+有关如何删除所有模型的示例，请下载教程中使用的示例应用[*：使用示例客户端应用浏览基础知识*](tutorial-command-line-app.md)。 *CommandLoop.cs*文件在函数中执行此 `CommandDeleteAllModels` 功能。
 
 本部分的其余部分将删除模型删除详细信息，并演示如何针对单个模型执行此操作。
 
@@ -247,9 +247,9 @@ Azure 数字孪生不会阻止此状态，因此请小心地修补孪生，以�
 
 ## <a name="manage-models-with-cli"></a>用 CLI 管理模型
 
-还可以使用 Azure 数字孪生 CLI 来管理模型。 有关命令，请参阅[操作方法：使用 Azure 数字孪生 CLI](how-to-use-cli.md)。
+还可以使用 Azure 数字孪生 CLI 来管理模型。 有关命令，请参阅[*操作方法：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 请参阅如何基于模型创建和管理数字孪生：
-* [操作说明：管理数字孪生](how-to-manage-twin.md)
+* [*操作说明：管理数字孪生*](how-to-manage-twin.md)

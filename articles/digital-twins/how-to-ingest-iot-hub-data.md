@@ -7,11 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 351f7ed131d545d2aa83df753cac3f26e76e4ccb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c73f007f85a963a09de4e05222082fd52f784c0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725845"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131559"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>将 IoT 中心遥测数据引入 Azure 数字孪生
 
@@ -41,7 +42,7 @@ Azure 数字孪生由 IoT 设备和其他来源的数据驱动。 要在 Azure �
 
 继续此示例之前，需要完成以下先决条件。
 1. 创建 IoT 中心。 有关说明，请参阅[此 Iot 中心快速入门](../iot-hub/quickstart-send-telemetry-cli.md)的*创建 iot 中心*部分。
-2. 创建至少一个 Azure 函数，用于处理 IoT 中心的事件。 请参阅[如何：设置用于处理数据的 azure 函数](how-to-create-azure-function.md)以构建可连接到 Azure 数字孪生并调用 Azure 数字孪生 API 函数的基本 azure 功能。 本操作方法的其余部分将基于此函数构建。
+2. 创建至少一个 Azure 函数，用于处理 IoT 中心的事件。 请参阅[*如何：设置用于处理数据的 azure 函数*](how-to-create-azure-function.md)以构建可连接到 Azure 数字孪生并调用 Azure 数字孪生 API 函数的基本 azure 功能。 本操作方法的其余部分将基于此函数构建。
 3. 设置中心数据的事件目标。 在[Azure 门户](https://portal.azure.com/)中，导航到 IoT 中心实例。 在 "*事件*" 下，为 Azure 函数创建订阅。 
 
     :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Azure 门户：添加事件订阅":::
@@ -54,7 +55,7 @@ Azure 数字孪生由 IoT 设备和其他来源的数据驱动。 要在 Azure �
 
 ## <a name="create-an-azure-function-in-visual-studio"></a>在 Visual Studio 中创建 Azure 函数
 
-本部分使用相同的 Visual Studio 启动步骤和 Azure 函数主干中的[操作方法：设置用于处理数据的 azure 函数](how-to-create-azure-function.md)。 该主干处理身份验证并创建服务客户端，使你可以处理数据，并在响应中调用 Azure 数字孪生 Api。 
+本部分使用相同的 Visual Studio 启动步骤和 Azure 函数主干中的[*操作方法：设置用于处理数据的 azure 函数*](how-to-create-azure-function.md)。 该主干处理身份验证并创建服务客户端，使你可以处理数据，并在响应中调用 Azure 数字孪生 Api。 
 
 主干函数的核心是：
 
@@ -267,9 +268,9 @@ public static async Task UpdateTwinProperty(DigitalTwinsClient client, string tw
 
 ## <a name="debug-azure-function-apps-locally"></a>在本地调试 Azure function apps
 
-可以在本地调试包含事件网格触发器的 Azure 函数。 有关此内容的详细信息，请参阅在[本地调试事件网格触发器](../azure-functions/functions-debug-event-grid-trigger-local.md)。
+可以在本地调试包含事件网格触发器的 Azure 函数。 有关此内容的详细信息，请参阅在[*本地调试事件网格触发器*](../azure-functions/functions-debug-event-grid-trigger-local.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 阅读有关 Azure 数字孪生的数据入口和出口：
-* [概念：与其他服务集成](concepts-integration.md)
+* [*概念：与其他服务集成*](concepts-integration.md)

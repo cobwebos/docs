@@ -3,13 +3,12 @@ title: 故障排除-QnA Maker
 description: 有关 QnA Maker 服务的最常见问题的特选列表将有助于更快地采用服务，并获得更好的结果。
 ms.topic: troubleshooting
 ms.date: 03/25/2020
-ms.author: diberry
-ms.openlocfilehash: 7847e21dbcf07f669d6802fffdd1e43623a72340
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec994677b17ee21dbf4ee6091be3bdf943572b2e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80804344"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131984"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker 疑难解答
 
@@ -30,7 +29,7 @@ ms.locfileid: "80804344"
 <details>
 <summary><b>如何获取 QnAMaker 服务终结点</b></summary>
 
-**答**：当你联系 QnAMaker 支持部门或 UserVoice 时，QnAMaker service 终结点对于调试很有用。 此终结点是采用以下格式的 URL `https://your-resource-name.azurewebsites.net`：。
+**答**：当你联系 QnAMaker 支持部门或 UserVoice 时，QnAMaker service 终结点对于调试很有用。 此终结点是采用以下格式的 URL： `https://your-resource-name.azurewebsites.net` 。
 
 1. 在 [Azure 门户](https://portal.azure.com)中转到 QnAMaker 服务（资源组）
 
@@ -173,7 +172,7 @@ QnA 对在知识库中，可以编辑答案的 markdown 文本，使其包含可
 </details>
 
 <details>
-<summary><b>我删除了`testkb`搜索服务中的索引。如何解决此问题？</b></summary>
+<summary><b>我删除了 `testkb` 搜索服务中的索引。如何解决此问题？</b></summary>
 
 **答**：无法恢复你的旧数据。 创建新的 QnA Maker 资源并再次创建知识库。
 
@@ -201,7 +200,7 @@ QnA 对在知识库中，可以编辑答案的 markdown 文本，使其包含可
 </details>
 
 <details>
-<summary><b>当 QnA Maker 返回`Runtime core is not initialized,`如何修复它？</b></summary>
+<summary><b>当 QnA Maker 返回 `Runtime core is not initialized,` 如何修复它？</b></summary>
 
 **答**：应用服务的磁盘空间可能已满。 修复磁盘空间的步骤：
 
@@ -209,12 +208,12 @@ QnA 对在知识库中，可以编辑答案的 markdown 文本，使其包含可
 1. 仍在应用服务中，选择 "**开发工具**"，然后依次选择 "**高级工具**"、"**开始**"。 这将打开一个新的浏览器窗口。
 1. 选择 "**调试控制台**"，然后选择 " **CMD** " 以打开命令行工具。
 1. 导航到_site/wwwroot/Data/QnAMaker/_ directory。
-1. 删除名称以开头的所有文件夹`rd`。
+1. 删除名称以开头的所有文件夹 `rd` 。
 
     **请勿删除**以下内容：
 
-    * KbIdToRankerMappings 文件
-    * EndpointSettings 文件
+    * KbIdToRankerMappings.txt 文件
+    * 文件 EndpointSettings.js
     * EndpointKeys 文件夹
 
 1. 启动应用服务。
@@ -244,12 +243,12 @@ QnA 对在知识库中，可以编辑答案的 markdown 文本，使其包含可
 **答**：您需要了解有关知识库的下列信息：
 
 * 知识库 ID。
-* 在发布后，在 "**设置**" 页上找到`host`了知识库的已发布终结点自定义子域名称（称为）。
+* 在发布后，在 "设置" 页上找到了知识库的已发布终结点自定义子域名称（称为 `host` ）。 **Settings**
 * 知识库的已发布终结点项-发布后在 "**设置**" 页上找到。
 
 有关此信息，请在 Azure 门户中转到机器人的应用服务。 在**设置-> 配置-> 应用程序设置**中，更改这些值。
 
-知识库的终结点键在 ABS 服务`QnAAuthkey`中进行了标记。
+知识库的终结点键 `QnAAuthkey` 在 ABS 服务中进行了标记。
 
 </details>
 

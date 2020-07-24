@@ -13,11 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 60f1f2d20ec2989f73098a18392b936593b85656
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ead7eb19e49574073f038648ca1d247b2dab98f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764020"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131695"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>通过使用基于角色的访问控制来共享 Azure 仪表板
 
@@ -86,6 +87,5 @@ ms.locfileid: "84764020"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关角色列表，请参阅 [Azure 资源的内置角色](../role-based-access-control/built-in-roles.md)。
+* 有关角色的列表，请参阅[Azure 内置角色](../role-based-access-control/built-in-roles.md)。
 * 若要了解有关如何管理资源，请参阅[使用 Azure 门户管理 Azure 资源](resource-group-portal.md)。
-

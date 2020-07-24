@@ -2,20 +2,20 @@
 title: 如何为 Azure Data Lake Analytics 设置 CI/CD 管道
 description: 了解如何为 Azure Data Lake Analytics 设置持续集成和持续部署。
 services: data-lake-analytics
-author: yanancai
-ms.author: yanacai
-ms.reviewer: jasonwhowell
+author: liudan66
+ms.author: liud
+ms.reviewer: jasonh
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: cd696539cda5b24d801da692822b13de143249dd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 09b4f36a5c97b6bcc0a8d11d2fb1ee0893fae80a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121514"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130131"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>如何为 Azure Data Lake Analytics 设置 CI/CD 管道  
 
@@ -302,7 +302,7 @@ UploadResources
 
 MSBuild 不提供对 U-SQL 数据库项目的内置支持。 若要获取此功能，需将对解决方案的引用添加到添加所需语言服务的 [Microsoft.Azure.DataLake.USQL.SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) NuGet 包。
 
-若要添加 NuGet 包引用，请在 Visual Studio 解决方案资源管理器中右键单击该解决方案。 选择“管理 NuGet 程序包”****。 然后搜索并安装该 NuGet 包。 也可以在解决方案文件夹中添加一个名为 **packages.config** 的文件并将以下内容添加到其中：
+若要添加 NuGet 包引用，请在 Visual Studio 解决方案资源管理器中右键单击该解决方案。 选择“管理 NuGet 包”。 然后搜索并安装该 NuGet 包。 也可以在解决方案文件夹中添加一个名为 **packages.config** 的文件并将以下内容添加到其中：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -453,32 +453,32 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
 
 #### <a name="common-parameters"></a>通用参数
 
-| 参数 | 说明 | 默认值 | 必选 |
+| 参数 | 说明 | 默认值 | 必填 |
 |---------|-----------|-------------|--------|
-|包|要部署的 U-SQL 数据库部署包的路径。|null|true|
+|程序包|要部署的 U-SQL 数据库部署包的路径。|Null|true|
 |数据库|要部署到或创建的数据库名称。|主|false|
 |LogFile|日志记录文件的路径。 默认为标准输出（控制台）。|null|false|
 |LogLevel|日志级别：Verbose、Normal、Warning 或 Error|LogLevel.Normal|false|
 
 #### <a name="parameter-for-local-deployment"></a>本地部署的参数
 
-|参数|说明|默认值|必选|
+|参数|说明|默认值|必填|
 |---------|-----------|-------------|--------|
-|DataRoot|本地数据根文件夹的路径。|null|true|
+|DataRoot|本地数据根文件夹的路径。|Null|true|
 
 #### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Azure Data Lake Analytics 部署的参数
 
-|参数|说明|默认值|必选|
+|参数|说明|默认值|必填|
 |---------|-----------|-------------|--------|
-|帐户|按帐户名称指定部署到哪个 Azure Data Lake Analytics 帐户。|null|true|
-|ResourceGroup|Azure Data Lake Analytics 帐户的 Azure 资源组名称。|null|true|
-|SubscriptionId|Azure Data Lake Analytics 帐户的 Azure 订阅 ID。|null|true|
-|租户|租户名称是 Azure Active Directory (Azure AD) 域名。 可在 Azure 门户的订阅管理页面中找到它。|null|true|
-|AzureSDKPath|要在 Azure SDK 中搜索依赖程序集的路径。|null|true|
+|帐户|按帐户名称指定部署到哪个 Azure Data Lake Analytics 帐户。|Null|true|
+|resourceGroup|Azure Data Lake Analytics 帐户的 Azure 资源组名称。|Null|true|
+|SubscriptionId|Azure Data Lake Analytics 帐户的 Azure 订阅 ID。|Null|true|
+|租户|租户名称是 Azure Active Directory (Azure AD) 域名。 可在 Azure 门户的订阅管理页面中找到它。|Null|true|
+|AzureSDKPath|要在 Azure SDK 中搜索依赖程序集的路径。|Null|true|
 |交互|是否使用交互模式进行身份验证。|false|false|
-|ClientId|非交互式身份验证所需的 Azure AD 应用程序 ID。|null|非交互式身份验证需要此参数。|
-|机密|用于非交互式身份验证的机密或密码。 仅应在受信任和安全的环境中使用。|null|非交互式身份验证需要此参数，或使用 SecreteFile。|
-|SecreteFile|该文件保存用于非交互式身份验证的机密或密码。 请确保只有当前用户可以读取它。|null|非交互式身份验证需要此参数，或使用机密。|
+|ClientId|非交互式身份验证所需的 Azure AD 应用程序 ID。|Null|非交互式身份验证需要此参数。|
+|机密|用于非交互式身份验证的机密或密码。 仅应在受信任和安全的环境中使用。|Null|非交互式身份验证需要此参数，或使用 SecreteFile。|
+|SecreteFile|该文件保存用于非交互式身份验证的机密或密码。 请确保只有当前用户可以读取它。|Null|非交互式身份验证需要此参数，或使用机密。|
 |CertFile|该文件保存用于非交互式身份验证的 X.509 证书。 默认使用客户端机密身份验证。|null|false|
 | JobPrefix | U-SQL DDL 作业的数据库部署前缀。 | Deploy_ + DateTime.Now | false |
 

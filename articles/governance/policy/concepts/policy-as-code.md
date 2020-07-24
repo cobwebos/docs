@@ -1,14 +1,14 @@
 ---
 title: 将策略设计为代码工作流
 description: 了解如何设计工作流以将 Azure Policy 定义部署为代码并自动验证资源。
-ms.date: 05/20/2020
+ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 17964459c6c06e6d7df09da4d3f0813350f209ec
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 02ff979feac1afb5f1664e6387e0abcde69b60eb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970937"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131491"
 ---
 # <a name="design-policy-as-code-workflows"></a>将策略设计为代码工作流
 
@@ -20,6 +20,24 @@ ms.locfileid: "85970937"
 策略即代码是这些概念的组合。 实质上，是将策略定义保留在源代码管理中，并在每次进行更改后，都测试并验证更改。 但是，这不应是涉及基础结构即代码或 DevOps 的策略的范围。
 
 验证步骤还应是其他持续集成或持续部署工作流的组成部分。 示例包括部署应用程序环境或虚拟基础结构。 通过使 Azure 策略验证成为生成和部署过程的早期组件，应用程序和运营团队会发现他们的更改是否不符合要求，长时间太晚，它们正在尝试在生产环境中进行部署。
+
+## <a name="definitions-and-foundational-information"></a>定义和基础信息
+
+在将策略详细信息作为代码工作流获取之前，请查看以下定义和示例：
+
+- [策略定义](./definition-structure.md)
+- [计划定义](./initiative-definition-structure.md)
+
+文件名称与策略或计划定义的部分保持一致：
+- `policy(set).json`-整个定义
+- `policy(set).parameters.json`- `properties.parameters` 定义的部分
+- `policy.rules.json`- `properties.policyRule` 定义的部分
+- `policyset.definitions.json`- `properties.policyDefinitions` 定义的部分
+
+[Azure 策略 GitHub](https://github.com/Azure/azure-policy/)存储库中提供了这些文件格式的示例：
+
+- 策略定义：[向资源添加标记](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
+- 计划定义：[计费标记](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
 
 ## <a name="workflow-overview"></a>工作流概述
 
@@ -128,6 +146,6 @@ ms.locfileid: "85970937"
 - 了解[策略定义结构](./definition-structure.md)。
 - 了解[策略分配结构](./assignment-structure.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取合规性数据](../how-to/get-compliance-data.md)。
-- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
+- 了解如何[获取符合性数据](../how-to/get-compliance-data.md)。
+- 了解如何[修正不符合的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

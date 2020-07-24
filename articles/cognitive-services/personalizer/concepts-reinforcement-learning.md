@@ -3,19 +3,17 @@ title: 强化学习 - 个性化体验创建服务
 titleSuffix: Azure Cognitive Services
 description: 个性化体验创建服务使用有关操作和上下文的信息来做出更好的排名建议。 有关这些操作和上下文的信息是称作“特征”的特性或属性。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
-ms.author: diberry
-ms.openlocfilehash: 36071cdee25cfa99fc54b0e5c0c0aa822cb5fe2f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8b97221de4921e06ddfab610618f37683b990181
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68662836"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132732"
 ---
 # <a name="what-is-reinforcement-learning"></a>什么是强化学习？
 
@@ -59,7 +57,7 @@ John 还曾经编写了几篇教程来阐述联合预测 (ICML 2015)、上下文
 
 个性化体验创建服务目前使用 [Vowpal Wabbit](https://github.com/VowpalWabbit/vowpal_wabbit/wiki) 作为机器学习的基础。 使用所有事件做出个性化排名和训练模型时，此框架可以实现最大的吞吐量和最低的延迟。
 
-## <a name="references"></a>参考
+## <a name="references"></a>参考资料
 
 * [Making Contextual Decisions with Low Technical Debt](https://arxiv.org/abs/1606.03966)（做出上下文决策并降低技术债务）
 * [A Reductions Approach to Fair Classification](https://arxiv.org/abs/1803.02453)（公平分类的化简方法）

@@ -3,19 +3,17 @@ title: 道德和负责任的使用 - 个性化体验创建服务
 titleSuffix: Azure Cognitive Services
 description: 这些指南旨在帮助你以特定方式实现个性化，而该方式有助于你培养他人对你的公司和服务的信任。 请务必暂停，了解个性化对人员生活的影响的信息。 如有疑问，请寻求指导。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.author: diberry
-ms.openlocfilehash: e422284b871214dbeca31b5dd17b9177a18ad3c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 602da28f0c235fb0e797a493bc1160631c042a9d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80478108"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132715"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>有关如何以负责任的方式实现个性化体验创建服务的指南
 
@@ -121,7 +119,7 @@ Microsoft 始终致力于优化其工具和文档，帮助你履行这些责任�
 
 ![AI 在未来计算中的价值](media/ethics-and-responsible-use/ai-values-future-computed.png)
 
-### <a name="accountability"></a>问责制
+### <a name="accountability"></a>问责
 设计和部署 AI 系统的人必须对其系统的运行负责。**
 
 * 就个性化体验创建服务和文档的实现方式制定内部准则，并将其传达给团队、高管和供应商。
@@ -129,7 +127,7 @@ Microsoft 始终致力于优化其工具和文档，帮助你履行这些责任�
 * 向用户清楚地说明个性化体验创建服务的使用方式、使用目的和使用数据。
 * 存档供个性化体验创建服务正常运行以生成结果所需使用的信息和资产，例如模型、学习策略以及其他数据。
 
-### <a name="transparency"></a>透明度
+### <a name="transparency"></a>透明
 AI 系统应该是允许用户了解的**。 使用个性化体验创建服务时，请确保：
 
 * 告知用户内容是如何个性化的。** 例如，可以向用户显示一个标记为 `Why These Suggestions?` 的按钮，说明用户和操作的哪些排名靠前的特征在个性化体验创建服务的结果中起着重要作用。
@@ -162,7 +160,7 @@ AI 系统应该既安全又尊重隐私**。 使用个性化体验创建服务�
 
 在某些情况下，根据法律的要求，可能必须这样做。 考虑一下，如果定期对模型重新进行训练，使之不包含已删除数据的跟踪，会有什么利弊。
 
-### <a name="inclusiveness"></a>包容性
+### <a name="inclusiveness"></a>包容
 满足范围广泛的人类需求和体验。**
 * 为启用了辅助功能的界面提供个性化的体验。** 良好的个性化（应用以后可以在交互时减少工作量、移动量和不必要的重复）所带来的效率可能对残障人士尤其有用。
 * 根据上下文调整应用程序行为。** 例如，可以通过个性化体验创建服务消除聊天机器人意向之间的歧义，因为正确的解释取决于上下文，不能一概而论。
