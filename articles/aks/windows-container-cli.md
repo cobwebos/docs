@@ -1,15 +1,15 @@
 ---
-title: 在 Azure Kubernetes 服务 (AKS) 群集上创建 Windows Server 容器
+title: 使用 Azure CLI 在 AKS 群集上创建 Windows Server 容器
 description: 了解如何使用 Azure CLI 在 Azure Kubernetes 服务 (AKS) 的 Windows Server 容器中快速创建 Kubernetes 群集并部署应用程序。
 services: container-service
 ms.topic: article
-ms.date: 05/06/2020
-ms.openlocfilehash: 29ee22cb4b28726b25ead6ff78d90de99847666b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/16/2020
+ms.openlocfilehash: 5baa4f807002cc39428eb46e5a86cf59bd022cb2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84886961"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015623"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Kubernetes 服务 (AKS) 群集上创建 Windows Server 容器
 
@@ -69,14 +69,14 @@ az group create --name myResourceGroup --location eastus
 
 若要运行支持 Windows Server 容器的节点池的 AKS 群集，群集需要采用使用 [Azure CNI][azure-cni-about]（高级）网络插件的网络策略。 有关帮助计划所需子网范围和网络注意事项的更多详细信息，请参阅[配置 Azure CNI 网络][use-advanced-networking]。 使用 [az aks create][az-aks-create] 命令创建名为 *myAKSCluster* 的 AKS 群集。 此命令将创建必要的网络资源（如果这些资源不存在）。
 
-* 群集配置了两个节点
-* *Windows 管理员密码*和*windows 管理员-用户名*参数为群集上创建的任何 windows Server 容器设置管理员凭据。
-* 节点池使用`VirtualMachineScaleSets`
+* 集群配置了两个节点
+* *Windows 管理员密码*和*windows 管理员用户名*参数设置在群集上创建的任何 windows server 容器的管理员凭据，并且必须满足[windows server 密码要求][windows-server-password]。
+* 节点池使用 `VirtualMachineScaleSets`
 
 > [!NOTE]
 > 为确保群集可靠运行，应在默认节点池中至少运行 2（两）个节点。
 
-提供自己的安全*PASSWORD_WIN* （请注意，本文中的命令已输入到 BASH shell 中）：
+提供自己的安全 PASSWORD_WIN（请注意，本文中的命令是输入到 BASH shell 中）：
 
 ```azurecli-interactive
 PASSWORD_WIN="P@ssw0rd1234"
@@ -112,7 +112,7 @@ az aks nodepool add \
     --node-count 1
 ```
 
-上述命令将创建名为 npwin 的新节点池，并将其添加到 myAKSCluster** **。 创建节点池以运行 Windows Server 容器时，node-vm-size 的默认值为 Standard_D2s_v3** **。 如果选择设置 node-vm-size 参数，请检查[受限 VM 大小][restricted-vm-sizes]的列表**。 最小推荐大小为 Standard_D2s_v3**。 上述命令还使用运行 `az aks create` 时创建的默认 VNet 中的默认子网。
+上述命令将创建名为 npwin 的新节点池，并将其添加到 myAKSCluster 。 创建节点池以运行 Windows Server 容器时，node-vm-size 的默认值为 Standard_D2s_v3 。 如果选择设置 node-vm-size 参数，请检查[受限 VM 大小][restricted-vm-sizes]的列表。 最小推荐大小为 Standard_D2s_v3。 上述命令还使用运行 `az aks create` 时创建的默认 VNet 中的默认子网。
 
 ## <a name="connect-to-the-cluster"></a>连接至群集
 
@@ -134,7 +134,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 kubectl get nodes
 ```
 
-以下示例输出显示了群集中的所有节点。 请确保所有节点的状态均为“就绪”**：
+以下示例输出显示了群集中的所有节点。 请确保所有节点的状态均为“就绪”：
 
 ```output
 NAME                                STATUS   ROLES   AGE    VERSION
@@ -146,7 +146,7 @@ aksnpwin987654                      Ready    agent   108s   v1.16.9
 
 Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容器映像。 在本文中，清单用于创建在 Windows Server 容器中运行 ASP.NET 示例应用程序所需的所有对象。 此清单包括用于 ASP.NET 示例应用程序的 [Kubernetes 部署][kubernetes-deployment]，以及用于从 Internet 访问应用程序的外部 [Kubernetes 服务][kubernetes-service]。
 
-ASP.NET 示例应用程序作为 [.NET Framework 示例][dotnet-samples]的一部分提供并在 Windows Server 容器中运行。 AKS 要求 Windows Server 容器基于 Windows Server 2019 或更高版本的映像**。 Kubernetes 清单文件还必须定义[节点选择器][node-selector]，以指示 AKS 群集在可运行 Windows Server 容器的节点上运行 ASP.NET 示例应用程序的 Pod。
+ASP.NET 示例应用程序作为 [.NET Framework 示例][dotnet-samples]的一部分提供并在 Windows Server 容器中运行。 AKS 要求 Windows Server 容器基于 Windows Server 2019 或更高版本的映像。 Kubernetes 清单文件还必须定义[节点选择器][node-selector]，以指示 AKS 群集在可运行 Windows Server 容器的节点上运行 ASP.NET 示例应用程序的 Pod。
 
 创建名为 `sample.yaml` 的文件，并将其复制到以下 YAML 定义中。 如果使用 Azure Cloud Shell，则可以使用 `vi` 或 `nano` 来创建此文件，就像在虚拟或物理系统中操作一样：
 
@@ -219,7 +219,7 @@ service/sample created
 kubectl get service sample --watch
 ```
 
-最初，示例服务的 EXTERNAL-IP 显示为“挂起”** ** **。
+最初，示例服务的 EXTERNAL-IP 显示为“挂起”  。
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
@@ -294,3 +294,4 @@ az group delete --name myResourceGroup --yes --no-wait
 [aks-faq]: faq.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[windows-server-password]: /windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference

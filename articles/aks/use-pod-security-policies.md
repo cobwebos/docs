@@ -3,13 +3,13 @@ title: 在 Azure Kubernetes Service （AKS）中使用 pod 安全策略
 description: 了解如何使用 Azure Kubernetes 服务（AKS）中的 PodSecurityPolicy 控制 pod 招生
 services: container-service
 ms.topic: article
-ms.date: 06/30/2020
-ms.openlocfilehash: dd526b7825279d886c60fbb1820222a75abab03e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/21/2020
+ms.openlocfilehash: b5e9ec19392056115ae739d40c429d93d6ac810e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507074"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015572"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>预览-在 Azure Kubernetes Service （AKS）中使用 pod 安全策略保护群集
 
@@ -348,7 +348,7 @@ kubectl apply -f psp-deny-privileged-clusterrole.yaml
 现在，创建 ClusterRoleBinding 以使用上一步中创建的 ClusterRole。 创建名为 `psp-deny-privileged-clusterrolebinding.yaml` 的文件并粘贴以下 YAML 清单：
 
 ```yaml
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: psp-deny-privileged-clusterrolebinding

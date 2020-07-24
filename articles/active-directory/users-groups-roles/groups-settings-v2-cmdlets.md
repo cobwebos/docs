@@ -14,11 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03c5e3fe7fe84b968b59d0668619b3feddacc4f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce3a97678dea7e7b26caa3b1b091b023eca1a555
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727817"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015691"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>用于组管理的 Azure Active Directory 版本 2 cmdlet
 
@@ -49,7 +50,7 @@ ms.locfileid: "84727817"
     Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
 ```
 
-现在可以开始使用模块中的 cmdlet 了。 有关 Azure AD 模块中 cmdlet 的完整说明，请参阅 [Azure Active Directory PowerShell 版本 2](/powershell/azure/install-adv2?view=azureadps-2.0) 的联机参考文档。
+现在可以开始使用模块中的 cmdlet 了。 有关 Azure AD 模块中 cmdlet 的完整说明，请参阅 [Azure Active Directory PowerShell 版本 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) 的联机参考文档。
 
 > [!NOTE]
 > Azure AD PowerShell cmdlet 不适用于新版 Powershell 7，因为它基于 .Net Core。 我们意识到这一点，此 cmdlet 正在更新过程中。 从现在开始，我们建议使用 Windows Powershell 5.x 模块来执行 Azure AD PowerShell 操作。 
@@ -337,7 +338,7 @@ Office 365 组写回是 Azure Active Directory （Azure AD）的公共预览功�
 
 ## <a name="next-steps"></a>后续步骤
 
-如需更多 Azure Active Directory PowerShell 文档，可参阅 [Azure Active Directory Cmdlet](/powershell/azure/install-adv2?view=azureadps-2.0)。
+如需更多 Azure Active Directory PowerShell 文档，可参阅 [Azure Active Directory Cmdlet](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)。
 
 * [使用 Azure Active Directory 组管理对资源的访问](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [将本地标识与 Azure Active Directory 集成](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)

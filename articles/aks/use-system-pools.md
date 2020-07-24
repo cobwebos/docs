@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
-ms.openlocfilehash: 01dcd6b7b366b7a1ada581ec154409ee7598e7a6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 2994a616d60258e81cbd5a409690abc18538183a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250832"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015521"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中管理系统节点池
 
@@ -28,14 +28,16 @@ ms.locfileid: "86250832"
 创建和管理支持系统节点池的 AKS 群集时存在以下限制。
 
 * 请参阅 [Azure Kubernetes 服务 (AKS) 中可用的配额、虚拟机大小限制和区域][quotas-skus-regions]。
-* 必须使用虚拟机规模集作为 VM 类型来构建 AKS 群集。
-* 节点池的名称只能包含小写字母数字字符，且必须以小写字母开头。 对于 Linux 节点池，长度必须为 1 到 12 个字符。 对于 Windows 节点池，长度必须介于1到6个字符之间。
-* 必须使用 2020-03-01 版或更高版的 API 版本设置节点池模式。 在超过2020-03-01 的 API 版本上创建的群集只包含用户节点池，但可以按照 "[更新池模式" 步骤](#update-existing-cluster-system-and-user-node-pools)迁移到包含系统节点池。
+* AKS 群集必须构建为虚拟机规模集，作为 VM 类型和*标准*SKU 负载均衡器。
+* 节点池的名称只能包含小写字母数字字符，且必须以小写字母开头。 对于 Linux 节点池，长度必须为 1 到 12 个字符。 对于 Windows 节点池，长度必须在 1 到 6 个字符之间。
+* 必须使用 2020-03-01 版或更高版的 API 版本设置节点池模式。 在 2020-03-01 之前的 API 版本上创建的集群仅包含用户节点池，但可以按照[更新池模式步骤](#update-existing-cluster-system-and-user-node-pools)进行迁移，通过这种方式包含系统节点池。
 * 节点池模式是必需属性，当使用 ARM 模板或直接 API 调用时，必须显式设置该属性。
 
 ## <a name="system-and-user-node-pools"></a>系统节点池和用户节点池
 
-每个系统节点池节点的标签为 **kubernetes.azure.com/mode: system**。 每个 AKS 群集至少包含一个系统节点池。 系统节点池存在以下限制：
+对于系统节点池，AKS 会自动将标签**kubernetes.azure.com/mode： system**分配给其节点。 这会导致 AKS 在包含此标签的节点池上计划系统盒。 此标签不会阻止你计划系统节点池上的应用程序箱。 但是，我们建议你将关键系统箱从应用程序盒中隔离开来，以防意外地终止系统箱配置错误或恶意应用程序箱。 可以通过创建专用系统节点池来强制执行此行为。 使用 `CriticalAddonsOnly=true:NoSchedule` 破坏可防止在系统节点池上计划应用程序箱。
+
+系统节点池存在以下限制：
 
 * 系统池 osType 必须为 Linux。
 * 用户节点池 osType 可以是 Linux 或 Windows。
@@ -46,6 +48,7 @@ ms.locfileid: "86250832"
 
 对于节点池，可以执行以下操作：
 
+* 创建专用系统节点池（更倾向于将系统盒计划给的节点池 `mode:system` ）
 * 将系统节点池更改为用户节点池，但前提是 AKS 群集中有另一个可以取代它的系统节点池。
 * 将用户节点池更改为系统节点池。
 * 删除用户节点池。
@@ -55,7 +58,7 @@ ms.locfileid: "86250832"
 
 ## <a name="create-a-new-aks-cluster-with-a-system-node-pool"></a>创建包含系统节点池的新 AKS 群集
 
-创建新的 AKS 群集时，会自动创建包含单个节点的系统节点池。 初始节点池默认为某种类型模式的系统。 使用 az aks nodepool add 创建新节点池时，除非显式指定模式参数，否则这些节点池为用户节点池。
+创建新的 AKS 群集时，会自动创建包含单个节点的系统节点池。 初始节点池默认为某种类型模式的系统。 当你用创建新的节点池时 `az aks nodepool add` ，这些节点池是用户节点池，除非显式指定模式参数。
 
 以下示例在“eastus”区域创建名为“myResourceGroup”的资源组 。
 
@@ -63,63 +66,82 @@ ms.locfileid: "86250832"
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建包含一个系统池的名为 *myAKSCluster* 的群集，该系统池包含一个节点。 对于生产工作负荷，请确保使用至少包含三个节点的系统节点池。 此操作可能需要几分钟才能完成。
+使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建一个名为*myAKSCluster*的群集，其中包含一个包含一个节点的专用系统池。 对于生产工作负荷，请确保使用至少包含三个节点的系统节点池。 此操作可能需要几分钟才能完成。
 
 ```azurecli-interactive
+# Create a new AKS cluster with a single system pool
 az aks create -g myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
 ```
 
-## <a name="add-a-system-node-pool-to-an-existing-aks-cluster"></a>将系统节点池添加到现有 AKS 群集
+## <a name="add-a-dedicated-system-node-pool-to-an-existing-aks-cluster"></a>将专用系统节点池添加到现有 AKS 群集
 
-可将一个或多个系统节点池添加到现有 AKS 群集。 以下命令将添加模式类型系统的节点池，其默认计数为三个节点。
+> [!Important]
+> 创建节点池后，无法通过 CLI 更改节点 taints。
+
+可将一个或多个系统节点池添加到现有 AKS 群集。 建议将应用程序 pod 计划在用户节点池上，并专门将系统节点池专用于关键系统箱。 这可以防止恶意应用程序箱意外终止系统箱。 将此行为与 `CriticalAddonsOnly=true:NoSchedule` 系统节点池的[破坏][aks-taints]强制执行。 
+
+以下命令将添加默认计数为三个节点的模式类型系统专用节点池。
 
 ```azurecli-interactive
-az aks nodepool add -g myResourceGroup --cluster-name myAKSCluster -n mynodepool --mode system
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name systempool \
+    --node-count 3 \
+    --node-taints CriticalAddonsOnly=true:NoSchedule \
+    --mode system
 ```
 ## <a name="show-details-for-your-node-pool"></a>显示节点池的详细信息
 
 可以使用以下命令查看节点池的详细信息。  
 
 ```azurecli-interactive
-az aks nodepool show -g myResourceGroup --cluster-name myAKSCluster -n mynodepool
+az aks nodepool show -g myResourceGroup --cluster-name myAKSCluster -n systempool
 ```
 
-将为系统节点池定义“系统”类型的模式，并为用户节点池定义“用户”类型的模式。 
+将为系统节点池定义“系统”类型的模式，并为用户节点池定义“用户”类型的模式。  对于系统池，验证破坏是否设置为 `CriticalAddonsOnly=true:NoSchedule` ，这将阻止在此节点池上按计划运行应用程序箱。
 
 ```output
 {
   "agentPoolType": "VirtualMachineScaleSets",
   "availabilityZones": null,
-  "count": 3,
+  "count": 1,
   "enableAutoScaling": null,
   "enableNodePublicIp": false,
-  "id": "/subscriptions/666d66d8-1e43-4136-be25-f25bb5de5883/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster/agentPools/mynodepool",
+  "id": "/subscriptions/yourSubscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster/agentPools/systempool",
   "maxCount": null,
   "maxPods": 110,
   "minCount": null,
   "mode": "System",
-  "name": "mynodepool",
+  "name": "systempool",
+  "nodeImageVersion": "AKSUbuntu-1604-2020.06.30",
   "nodeLabels": {},
-  "nodeTaints": null,
-  "orchestratorVersion": "1.15.10",
-  "osDiskSizeGb": 100,
+  "nodeTaints": [
+    "CriticalAddonsOnly=true:NoSchedule"
+  ],
+  "orchestratorVersion": "1.16.10",
+  "osDiskSizeGb": 128,
   "osType": "Linux",
-  "provisioningState": "Succeeded",
+  "provisioningState": "Failed",
+  "proximityPlacementGroupId": null,
   "resourceGroup": "myResourceGroup",
   "scaleSetEvictionPolicy": null,
   "scaleSetPriority": null,
   "spotMaxPrice": null,
   "tags": null,
   "type": "Microsoft.ContainerService/managedClusters/agentPools",
+  "upgradeSettings": {
+    "maxSurge": null
+  },
   "vmSize": "Standard_DS2_v2",
   "vnetSubnetId": null
 }
 ```
 
-## <a name="update-existing-cluster-system-and-user-node-pools"></a>更新现有群集系统和用户节点池
+## <a name="update-existing-cluster-system-and-user-node-pools"></a>更新现有的群集系统和用户节点池
 
 > [!NOTE]
-> 必须使用 API 版本2020-03-01 或更高版本来设置系统节点池模式。 在超过2020-03-01 的 API 版本上创建的群集只包含用户节点池。 若要接收系统节点池功能并使其受益于较旧的群集，请在最新的 Azure CLI 版本上，用以下命令更新现有节点池的模式。
+> 必须使用 2020-03-01 或更高版本的 API 版本设置系统节点池模式。 而在 2020-03-01 之前的 API 版本上创建的集群仅包含用户节点池。 若要在较旧的群集上获得系统节点池功能和权益，请在最新的 Azure CLI 版本上，用以下命令更新现有节点池的模式。
 
 可以更改系统节点池和用户节点池的模式。 仅当 AKS 群集上已存在另一个系统节点池时，才能将系统节点池更改为用户池。
 
@@ -146,6 +168,16 @@ az aks nodepool update -g myResourceGroup --cluster-name myAKSCluster -n mynodep
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodepool
 ```
 
+## <a name="clean-up-resources"></a>清理资源
+
+若要删除群集，请使用[az group delete][az-group-delete]命令删除 AKS 资源组：
+
+```azurecli-interactive
+az group delete --name myResourceGroup --yes --no-wait
+```
+
+
+
 ## <a name="next-steps"></a>后续步骤
 
 本文介绍了如何在 AKS 群集中创建和管理系统节点池。 若要详细了解如何使用多个节点池，请参阅[使用多个节点池][use-multiple-node-pools]。
@@ -159,6 +191,7 @@ az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodep
 [kubernetes-label-syntax]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
 
 <!-- INTERNAL LINKS -->
+[aks-taints]: use-multiple-node-pools.md#schedule-pods-using-taints-and-tolerations
 [aks-windows]: windows-container-cli.md
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-aks-create]: /cli/azure/aks#az-aks-create
