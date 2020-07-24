@@ -3,17 +3,17 @@ title: 为点到站点生成和导出证书： Linux： CLI
 description: 使用 Linux (strongSwan) CLI 创建自签名根证书、导出公钥和生成客户端证书。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 08/14/2019
 ms.author: alzam
-ms.openlocfilehash: 89f6014b548bd3dd66622d15149051e6b28e94b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c55c304ae71cba396266c83bcaaa727351dcd677
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984601"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064622"
 ---
 # <a name="generate-and-export-certificates"></a>生成并导出证书
 

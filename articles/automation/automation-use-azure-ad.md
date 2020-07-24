@@ -4,12 +4,12 @@ description: 本文介绍如何使用 Azure 自动化中的 Azure AD 作为向 A
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9c81e3389f2cc96f2581b8edee5f528237cb9eca
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: c17c9cdc02c87037a39b8d6029bc4506afa8ad28
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185664"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064386"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>使用 Azure AD 向 Azure 进行身份验证
 
@@ -92,11 +92,11 @@ Azure 自动化使用 [PSCredential](/dotnet/api/system.management.automation.ps
 
 ### <a name="create-the-credential-asset-with-windows-powershell"></a>使用 Windows PowerShell 创建凭据资产
 
-若要在 Windows PowerShell 中准备新的凭据资产，脚本应首先使用分配的用户名和密码创建 `PSCredential` 对象。 然后，脚本使用此对象通过调用 [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) cmdlet 来创建资产。 或者，脚本可以调用 [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) cmdlet 来提示用户键入名称和密码。 请参阅 [Azure 自动化中的凭据资产](shared-resources/credentials.md)。 
+若要在 Windows PowerShell 中准备新的凭据资产，脚本应首先使用分配的用户名和密码创建 `PSCredential` 对象。 然后，脚本使用此对象通过调用 [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure.service/new-azureautomationcredential?view=azuresmps-4.0.0) cmdlet 来创建资产。 或者，脚本可以调用 [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) cmdlet 来提示用户键入名称和密码。 请参阅 [Azure 自动化中的凭据资产](shared-resources/credentials.md)。 
 
 ## <a name="manage-azure-resources-from-an-azure-automation-runbook"></a>通过 Azure 自动化 runbook 管理 Azure 资源
 
-可以使用凭据资产通过 Azure 自动化 runbook 管理 Azure 资源。 下面是一个示例 PowerShell runbook，它收集用于停止和启动 Azure 订阅中的虚拟机的凭据资产。 此 runbook 首先使用 `Get-AutomationPSCredential` 来检索用于向 Azure 进行身份验证的凭据。 然后，它会调用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.6.1) cmdlet，以使用凭据连接到 Azure。 此脚本使用 [Select-AzureSubscription](/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0) cmdlet 来选择要使用的订阅。 
+可以使用凭据资产通过 Azure 自动化 runbook 管理 Azure 资源。 下面是一个示例 PowerShell runbook，它收集用于停止和启动 Azure 订阅中的虚拟机的凭据资产。 此 runbook 首先使用 `Get-AutomationPSCredential` 来检索用于向 Azure 进行身份验证的凭据。 然后，它会调用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.6.1) cmdlet，以使用凭据连接到 Azure。 此脚本使用 [Select-AzureSubscription](/powershell/module/servicemanagement/azure.service/select-azuresubscription?view=azuresmps-4.0.0) cmdlet 来选择要使用的订阅。 
 
 ```azurepowershell
 Workflow Stop-Start-AzureVM 

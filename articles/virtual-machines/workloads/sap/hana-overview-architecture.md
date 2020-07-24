@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 39fcf5d0fe2273c4debd3ae5ebe5fd1190ddc959
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d413b2babda4c73f9f29ce3750bf7d0461db43c1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77616955"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065100"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>什么是 Azure 上的 SAP HANA（大型实例）？
 
@@ -38,7 +39,7 @@ Azure 上的 SAP HANA（大型实例）是一种针对 Azure 的独特解决方�
 - "修订版本 3" （修订版3）：是在2019年7月之前供客户部署的 stamp
 - "修订版本 4" （Rev 4）：在接近 Azure VM 主机的情况中部署的新的戳记设计，到目前为止，在 Azure 区域中发布：
     -  美国西部 2 
-    -  美国东部 
+    -  East US 
     -  西欧
     -  北欧
 
@@ -53,8 +54,8 @@ HANA 大型实例指南的不同文档涵盖以下几个方面：
 - [安装和配置 Azure 上的 SAP HANA（大型实例）](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Azure 上的 SAP HANA （大型实例）高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Azure 上的 SAP HANA（大型实例）的故障排除和监视](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [使用 STONITH 在 SUSE 中进行高可用性设置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
-- [修订版3中的 II 类 Sku 的操作系统备份和还原](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
+- [使用 STONITH 在 SUSE 中进行高可用性设置](./ha-setup-with-stonith.md)
+- [修订版3中的 II 类 Sku 的操作系统备份和还原](./os-backup-type-ii-skus.md)
 
 **后续步骤**
 - 请参阅[了解术语](hana-know-terms.md)

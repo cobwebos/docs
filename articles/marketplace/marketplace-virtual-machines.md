@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/15/2020
-ms.openlocfilehash: 2d615e81891d68327b3225138495262d4eab9aa3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dac67c6dae801d11866f7c4978a050a0cb2fa1dd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116720"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065651"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>虚拟机产品/服务的发布指南
 
@@ -47,7 +47,7 @@ ms.locfileid: "86116720"
 > 目前，与企业协议关联的货币承诺可用于 VM 的 Azure 使用情况，而不是针对你的软件许可费用。  
 > 
 > [!NOTE]
-> 可以通过将映像和定价作为专用产品/服务进行发布，将 VM 的发现和部署限制为一组特定的客户。 专用产品/服务可让你为最接近的客户创建专用产品/服务，并提供自定义的软件和条款。 这些自定义条款可在一系列场景中提供助力，包括使用特殊定价和条款的现场导向型交易以及对限制性版本软件的早期访问。 通过专用产品/服务，您可以通过使用这些详细信息创建新的 SKU，为一组有限的客户提供具体的定价或产品。  
+> 可以通过将映像和定价作为专用产品/服务进行发布，将 VM 的发现和部署限制为一组特定的客户。 专用产品/服务可让你为最接近的客户创建专用产品/服务，并提供自定义的软件和条款。 这些自定义条款可在一系列场景中提供助力，包括使用特殊定价和条款的现场导向型交易以及对限制性版本软件的早期访问。 通过专用产品/服务，您可以通过使用这些详细信息创建新计划，为一组有限的客户提供具体的定价或产品。  
 >
 > 有关详细信息，请参阅[Azure Marketplace 上的专用产品/服务](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace)。  
 

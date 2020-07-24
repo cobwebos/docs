@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 02/14/2020
-ms.openlocfilehash: 096943ff796f9c12c7f8715cadce5c3085965d4d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b216fa668483ef6fc30c1054dd4f65361ad17934
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80657138"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065956"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到本地数据源
 
@@ -40,14 +41,14 @@ ms.locfileid: "80657138"
 * IBM Informix
 * IBM MQ
 * MySQL
-* Oracle Database
+* Oracle 数据库
 * PostgreSQL
 * SAP
 * SharePoint Server
 * SQL Server
 * Teradata
 
-Azure 逻辑应用支持通过数据网关进行的读取和写入操作。 但是，这些操作存在[有效负载大小限制](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)。 虽然网关本身不额外收费，但[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md)适用于这些连接器以及 Azure 逻辑应用中的其他操作。
+Azure 逻辑应用支持通过数据网关进行的读取和写入操作。 但是，这些操作存在[有效负载大小限制](/data-integration/gateway/service-gateway-onprem#considerations)。 虽然网关本身不额外收费，但[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md)适用于这些连接器以及 Azure 逻辑应用中的其他操作。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -78,9 +79,9 @@ Azure 逻辑应用支持通过数据网关进行的读取和写入操作。 但�
 
    ![为数据网关添加新的 Azure 资源](./media/logic-apps-gateway-connection/add-azure-data-gateway-resource.png)
 
-1. 在“创建连接网关”下，提供网关资源的以下信息。**** 完成后，选择“创建”。
+1. 在“创建连接网关”下，提供网关资源的以下信息。**** 完成操作后，选择“创建”。
 
-   | Property | 说明 |
+   | properties | 说明 |
    |----------|-------------|
    | 资源名称 | 为网关资源提供一个名称，其中只包含字母、数字、连字符 (`-`)、下划线 (`_`)、括号（`(`、`)`）或句点 (`.`)。 |
    | **订阅** | 选择曾用于网关安装的 Azure 帐户的 Azure 订阅。 默认订阅取决于用来登录的 Azure 帐户。 |
@@ -103,7 +104,7 @@ Azure 逻辑应用支持通过数据网关进行的读取和写入操作。 但�
 
 1. 添加支持本地连接的连接器，例如 **SQL Server**。
 
-1. 选择“通过本地数据网关连接”。****
+1. 选择“通过本地数据网关连接”。
 
 1. 在“网关”下，从“订阅”列表中选择******** 你的 Azure 订阅，该订阅有你需要的网关资源。
 
@@ -120,7 +121,7 @@ Azure 逻辑应用支持通过数据网关进行的读取和写入操作。 但�
 
    ![在逻辑应用和数据网关之间创建连接](./media/logic-apps-gateway-connection/logic-app-gateway-connection.png)
 
-1. 完成后，选择“创建”。
+1. 完成操作后，选择“创建”。
 
 网关连接现在已准备就绪，可供逻辑应用使用。
 
@@ -158,7 +159,7 @@ Azure 逻辑应用支持通过数据网关进行的读取和写入操作。 但�
 
 <a name="faq"></a>
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
 **问**：为什么我的网关安装在 Azure 中创建网关资源时未显示？ <br/>
 **答**：此问题的可能原因如下：

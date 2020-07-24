@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/01/2019
-ms.openlocfilehash: 432e22879ce0eba89f04a1084e2d4a93a487dd45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 814cc1116ca8ac924beaaea8c7bb3dbb8d6ae1ad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82086430"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066040"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>为 Azure 逻辑应用部署 Azure 资源管理器模板
 
@@ -64,8 +64,8 @@ New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -Te
 
 有关详细信息，请参阅以下主题：
 
-* [使用 Resource Manager 模板和 Azure PowerShell 部署资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
-* [`New-AzResourceGroupDeployment`](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment)
+* [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../azure-resource-manager/templates/deploy-powershell.md)
+* [`New-AzResourceGroupDeployment`](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment)
 
 <a name="cli"></a>
 
@@ -80,23 +80,23 @@ az group deployment create -g <Azure-resource-group-name> --template-uri https:/
 有关详细信息，请参阅以下主题：
 
 * [使用 Resource Manager 模板和 Azure CLI 部署资源](../azure-resource-manager/templates/deploy-cli.md)
-* [`az group deployment create`](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)
+* [`az group deployment create`](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)
 
 <a name="azure-pipelines"></a>
 
 ## <a name="deploy-with-azure-devops"></a>使用 Azure DevOps 进行部署
 
-若要部署逻辑应用模板并管理环境，团队通常会使用 [Azure DevOps](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops-services) 中的 [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/what-is-azure-pipelines) 等工具。 Azure Pipelines 提供一个可以添加到任何生成管道或发布管道的 [Azure 资源组部署任务](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzureResourceGroupDeploymentV2)。 若要授权部署和生成发布管道，还需要一个 Azure Active Directory (AD) [服务主体](../active-directory/develop/app-objects-and-service-principals.md)。 详细了解如何[在 Azure Pipelines 中使用服务主体](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure)。
+若要部署逻辑应用模板并管理环境，团队通常会使用 [Azure DevOps](/azure/devops/user-guide/what-is-azure-devops-services) 中的 [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) 等工具。 Azure Pipelines 提供一个可以添加到任何生成管道或发布管道的 [Azure 资源组部署任务](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzureResourceGroupDeploymentV2)。 若要授权部署和生成发布管道，还需要一个 Azure Active Directory (AD) [服务主体](../active-directory/develop/app-objects-and-service-principals.md)。 详细了解如何[在 Azure Pipelines 中使用服务主体](/azure/devops/pipelines/library/connect-to-azure)。
 
 若要详细了解如何使用 Azure Pipelines 进行与 Azure 资源管理器模板相对应的持续集成和持续部署 (CI/CD)，请参阅以下主题和示例：
 
 * [将资源管理器模板与 Azure Pipelines 集成](../azure-resource-manager/templates/add-template-to-azure-pipelines.md)
 * [教程：使用 Azure Pipelines 持续集成 Azure 资源管理器模板](../azure-resource-manager/templates/deployment-tutorial-pipeline.md)
-* [示例：从 Azure 逻辑应用连接到 Azure 服务总线队列并在 Azure DevOps 中使用 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [示例：从 Azure 逻辑应用连接到 Azure 存储帐户并在 Azure DevOps 中使用 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [示例：为 Azure 逻辑应用设置函数应用操作并在 Azure DevOps 中使用 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [示例：从 Azure 逻辑应用连接到集成帐户并在 Azure DevOps 中使用 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
-* [示例：使用 Azure 逻辑应用协调 Azure Pipelines](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-pipeline-orchestration/azure-devops-orchestration-with-logic-apps/)
+* [示例：从 Azure 逻辑应用连接到 Azure 服务总线队列并在 Azure DevOps 中使用 Azure Pipelines 进行部署](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [示例：从 Azure 逻辑应用连接到 Azure 存储帐户并在 Azure DevOps 中使用 Azure Pipelines 进行部署](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [示例：为 Azure 逻辑应用设置函数应用操作并在 Azure DevOps 中使用 Azure Pipelines 进行部署](/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [示例：从 Azure 逻辑应用连接到集成帐户并在 Azure DevOps 中使用 Azure Pipelines 进行部署](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
+* [示例：使用 Azure 逻辑应用协调 Azure Pipelines](/samples/azure-samples/azure-logic-apps-pipeline-orchestration/azure-devops-orchestration-with-logic-apps/)
 
 下面是有关使用 Azure Pipelines 的一般性概要步骤：
 
@@ -108,7 +108,7 @@ az group deployment create -g <Azure-resource-group-name> --template-uri https:/
 
    ![添加“Azure 资源组部署”任务](./media/logic-apps-deploy-azure-resource-manager-templates/add-azure-resource-group-deployment-task.png)
 
-1. 使用[服务主体](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure)进行配置。
+1. 使用[服务主体](/azure/devops/pipelines/library/connect-to-azure)进行配置。
 
 1. 添加对逻辑应用模板和模板参数文件的引用。
 
@@ -118,7 +118,7 @@ az group deployment create -g <Azure-resource-group-name> --template-uri https:/
 
 ## <a name="authorize-oauth-connections"></a>授权 OAuth 连接
 
-部署后，逻辑应用将使用有效参数进行端到端的运行。 但是，仍然必须授权任何 OAuth 连接，以生成用于[对凭据进行身份验证](../active-directory/develop/authentication-scenarios.md)的有效访问令牌。 下面是可以用来授权 OAuth 连接的方式：
+部署后，逻辑应用将使用有效参数进行端到端的运行。 但是，仍然必须授权任何 OAuth 连接，以生成用于[对凭据进行身份验证](../active-directory/develop/authentication-vs-authorization.md)的有效访问令牌。 下面是可以用来授权 OAuth 连接的方式：
 
 * 若要进行自动部署，可以使用脚本为每个 OAuth 连接提供许可。 下面是 GitHub 中的一个示例脚本，位于 [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) 项目中。
 

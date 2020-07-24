@@ -1,16 +1,17 @@
 ---
-title: 支持的版本-Azure Database for MariaDB
+title: 支持的版本 - Azure Database for MariaDB
 description: 了解 Azure Database for MariaDB 服务支持哪些版本的 MariaDB 服务器。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/3/2020
-ms.openlocfilehash: a6d340543289fa07370e053681599348a86940cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/20/2020
+ms.openlocfilehash: 0b495bf21b1f78e5e6a9285f67e1769d2d2a0db1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343398"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065703"
 ---
 # <a name="supported-azure-database-for-mariadb-server-versions"></a>支持的 Azure Database for MariaDB 服务器版本
 
@@ -25,21 +26,21 @@ Azure Database for MariaDB 目前支持以下版本：
 
 ## <a name="mariadb-version-102"></a>MariaDB 版本 10.2
 
-修补程序版本：10.2.31
+修补程序版本：10.2.32
 
-若要详细了解此版本中的改进和修复，请参阅 [MariaDB 文档](https://mariadb.com/kb/en/mariadb-10231-release-notes/)。
+若要详细了解此版本中的改进和修复，请参阅 [MariaDB 文档](https://mariadb.com/kb/en/mariadb-10232-release-notes/)。
 
 ## <a name="mariadb-version-103"></a>MariaDB 版本 10.3
 
-修补程序版本：10.3.22
+修补程序版本：10.3.23
 
-若要详细了解此版本中的改进和修复，请参阅 [MariaDB 文档](https://mariadb.com/kb/en/mariadb-10322-release-notes/)。
+若要详细了解此版本中的改进和修复，请参阅 [MariaDB 文档](https://mariadb.com/kb/en/mariadb-10323-release-notes/)。
 
 ## <a name="managing-updates-and-upgrades"></a>管理更新和升级
 该服务自动管理修补程序更新的升级。 例如，10.2.21 到 10.2.23。  
 
-目前，不支持次版本和主版本升级。 例如，不支持从 MariaDB 10.2 升级到 MariaDB 10.3。 如果要从10.2 升级到10.3，请创建[转储，并](./howto-migrate-dump-restore.md)将其还原到使用新引擎版本创建的服务器。
+目前，不支持次版本和主版本升级。 例如，不支持从 MariaDB 10.2 升级到 MariaDB 10.3。 如果要从 10.2 升级到 10.3，请将其[转储和还原](./howto-migrate-dump-restore.md)到使用新引擎版本创建的服务器。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关基于**服务层**的具体资源配额和限制的信息，请参阅[服务层](./concepts-pricing-tiers.md)。
+- 有关基于服务层级的具体资源配额和限制的信息，请参阅[服务层级](./concepts-pricing-tiers.md)。

@@ -2,13 +2,13 @@
 title: 虚拟网络服务终结点 - Azure 事件中心 | Microsoft Docs
 description: 本文提供了有关如何将 Microsoft EventHub 服务终结点添加到虚拟网络的信息。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: cf8b956a38f0b22581da3608cd64219aba484988
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/16/2020
+ms.openlocfilehash: 134e310e0859bb6c0a50630f467513e07e6ff390
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315426"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066692"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>将虚拟网络服务终结点与 Azure 事件中心配合使用
 
@@ -24,7 +24,6 @@ ms.locfileid: "85315426"
 > 实现虚拟网络时，受信任的 Microsoft 服务不受支持。
 >
 > 不适用于虚拟网络常见 Azure 方案（请注意，该列表内容并不详尽）-
-> - Azure Monitor（诊断设置）
 > - Azure 流分析
 > - 与 Azure 事件网格的集成
 > - Azure IoT 中心路由
@@ -94,7 +93,7 @@ ms.locfileid: "85315426"
 > 虽然不可能具有拒绝规则，但 Azure 资源管理器模板的默认操作设置为“允许”，不限制连接。
 > 制定虚拟网络或防火墙规则时，必须更改“defaultAction”
 > 
-> from
+> 从
 > ```json
 > "defaultAction": "Allow"
 > ```

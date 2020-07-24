@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 06/18/2020
-ms.openlocfilehash: 3643092cf867fb49a24d5c1961d1a10834d5d3a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/22/2020
+ms.openlocfilehash: b1290a17c93043ffbedb7a641e1a0afad6ae79d1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298848"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066482"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
@@ -44,7 +44,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
   > [!IMPORTANT]
   > 在 ISE 中运行的逻辑应用、内置触发器、内置操作和连接器使用与基于消费的定价计划不同的定价计划。 要了解 ISE 的定价和计费原理，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有关定价费率，请参阅[逻辑应用定价](../logic-apps/logic-apps-pricing.md)。
 
-* [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)。 虚拟网络需要有四个*空*子网，这些子网不会委托给在 ISE 中创建和部署资源的任何服务。 每个子网都支持 ISE 中使用的不同逻辑应用组件。 你可以提前创建子网，也可以等待，直到创建了你可以在其中创建子网的 ISE。 详细了解[子网要求](#create-subnet)。
+* [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)。 虚拟网络需要四个*空*子网，这些子网是在 ISE 中创建和部署资源所必需的，由内部逻辑应用组件（如连接器和缓存）用于性能。 可以提前创建子网，也可以等待，直到创建了 ISE，以便可以同时创建子网。 但是，在创建子网之前，请查看[子网要求](#create-subnet)。
 
   > [!IMPORTANT]
   >
@@ -55,8 +55,6 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
   > * 127.0.0.0/8
   > * 168.63.129.16/32
   > * 169.254.169.254/32
-  > 
-  > 子网名称必须以字母字符或下划线开头，并且不能使用以下字符：`<`、`>`、`%`、`&`、`\\`、`?` 和 `/`。 若要通过 Azure 资源管理器模板部署 ISE，请首先确保将一个空子网委托给 `Microsoft.Logic/integrationServiceEnvironment` 。 通过 Azure 门户进行部署时，无需执行此委派。
 
   * 确保你的虚拟网络[为 ISE 启用访问权限](#enable-access)，以便 ISE 能够正常运行并保持可访问性。
 
@@ -134,6 +132,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 | Azure 资源运行状况 | **VirtualNetwork** | * | **AzureMonitor** | 1886 | 将运行状况发布到资源运行状况时需要。 |
 | “记录到事件中心”策略和监视代理中的依赖项 | **VirtualNetwork** | * | **EventHub** | 5672 ||
 | 访问角色实例之间的 Azure Redis 缓存实例 | **VirtualNetwork** | * | **VirtualNetwork** | 6379 - 6383，另请参阅“说明”| 为了使 ISE 与 Azure Cache for Redis 一起使用，必须打开 [Azure Cache for Redis 常见问题解答中所述的出站和入站端口](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements)。 |
+| DNS 名称解析 | **VirtualNetwork** | * | 虚拟网络上的任何自定义域名系统（DNS）服务器的 IP 地址 | 53 | 仅当你在虚拟网络中使用自定义 DNS 服务器时才需要 |
 |||||||
 
 此外，还需要为[应用服务环境（ASE）](../app-service/environment/intro.md)添加出站规则：
@@ -158,7 +157,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
    ![提供环境详细信息](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | properties | 必须 | 值 | 说明 |
+   | properties | 必须 | 值 | 描述 |
    |----------|----------|-------|-------------|
    | **订阅** | 是 | <*Azure-subscription-name*> | 用于环境的 Azure 订阅 |
    | **资源组** | 是 | <*Azure-resource-group-name*> | 要在其中创建环境的新的或现有的 Azure 资源组 |
@@ -168,18 +167,30 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
    | **额外容量** | 高级： <br>是 <p><p>开发人员： <br>不适用 | 高级： <br>0 到 10 <p><p>开发人员： <br>不适用 | 用于此 ISE 资源的额外处理单元的数量。 若要在创建后添加容量，请参阅[添加 ISE 容量](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)。 |
    | 访问终结点 | 是 | “内部”或“外部”  | 用于 ISE 的访问终结点的类型。 这些终结点确定 ISE 中逻辑应用上的请求或 Webhook 触发器是否可以接收来自虚拟网络外部的调用。 <p><p>你的选择还会影响在逻辑应用运行历史记录中查看和访问输入和输出的方式。 有关详细信息，请参阅 [ISE 终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 <p><p>**重要说明**：只能在创建 ISE 的过程中选择访问终结点，以后不能更改此选项。 |
    | **虚拟网络** | 是 | <Azure-virtual-network-name> | 要注入环境以便该环境中的逻辑应用可以访问虚拟网络的 Azure 虚拟网络。 如果没有网络，请先[创建 Azure 虚拟网络](../virtual-network/quick-create-portal.md)。 <p><p>**重要说明**：创建 ISE 时可以仅执行此注入。 |
-   | **子网** | 是 | <*subnet-resource-list*> | ISE 需要四个空子网，用于在环境中创建和部署资源。 要创建每个子网，请[按照此表下方的步骤操作](#create-subnet)。 |
+   | **子网** | 是 | <*subnet-resource-list*> | ISE 需要四个*空白*子网，这些子网是在 ISE 中创建和部署资源所必需的，由内部逻辑应用组件（如连接器和缓存）用于性能。 <p>**重要提示**：请确保[先查看子网要求，然后再继续执行这些步骤，以创建子网](#create-subnet)。 |
    |||||
 
    <a name="create-subnet"></a>
 
    **创建子网**
 
-   要在环境中创建和部署资源，ISE 需要四个未委托给任何服务的空子网。 每个子网都支持 ISE 中使用的不同逻辑应用组件。 创建环境后无法更改这些子网地址。 每个子网都需要满足以下要求：
+   ISE 需要四个*空*子网，这些子网是在 ISE 中创建和部署资源所必需的，由内部逻辑应用组件（如连接器和缓存）用于性能。 创建环境后无法更改这些子网地址。 如果通过 Azure 门户创建并部署了 ISE，请确保不要将这些子网委托给任何 Azure 服务。 但是，如果通过 REST API、Azure PowerShell 或 Azure 资源管理器模板创建并部署了 ISE，则需要将一个空子网[委托](../virtual-network/manage-subnet-delegation.md)给 `Microsoft.integrationServiceEnvironment` 。 有关详细信息，请参阅[添加子网委派](../virtual-network/manage-subnet-delegation.md)。
 
-   * 名称以字母字符或下划线开头（不带数字），并且不使用以下字符：`<`、`>`、`%`、`&`、`\\`、`?` 和 `/`。
+   每个子网都需要满足以下要求：
+
+   * 使用以字母字符或下划线（无数字）开头的名称，并且不使用以下字符： `<` 、 `>` 、 `%` 、 `&` 、、 `\\` `?` 、 `/` 。
 
    * 使用[无类别域际路由 (CIDR) 格式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)和 B 类地址空间。
+   
+     > [!IMPORTANT]
+     >
+     > 不要为虚拟网络或子网使用以下 IP 地址空间，因为它们无法通过 Azure 逻辑应用解析：<p>
+     > 
+     > * 0.0.0.0/8
+     > * 100.64.0.0/10
+     > * 127.0.0.0/8
+     > * 168.63.129.16/32
+     > * 169.254.169.254/32
 
    * 使用地址空间中的 `/27`，因为每个子网都需要 32 个地址。 例如，`10.0.0.0/27` 有 32 个地址，因为 2<sup>(32-27)</sup> 是 2<sup>5</sup> 或 32。 增加地址数量不会带来更多好处。 若要详细了解如何计算地址，请参阅 [IPv4 CIDR 块](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks)。
 

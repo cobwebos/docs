@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: e9f084badda9ea1905e43c6f00b29aaf957a6dbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 547b3ed84c8e4406b65ee8cf51c0db10b6878793
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75652276"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063820"
 ---
 # <a name="microsoftcommontextbox-ui-element"></a>Microsoft.Common.TextBox UI 元素
 
@@ -17,38 +18,79 @@ ms.locfileid: "75652276"
 
 ## <a name="ui-sample"></a>UI 示例
 
-![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft.common.textbox.png)
+![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft-common-textbox.png)
 
 ## <a name="schema"></a>架构
 
 ```json
 {
-  "name": "element1",
-  "type": "Microsoft.Common.TextBox",
-  "label": "Example text box 1",
-  "defaultValue": "my text value",
-  "toolTip": "Use only allowed characters",
-  "constraints": {
-    "required": true,
-    "regex": "^[a-z0-9A-Z]{1,30}$",
-    "validationMessage": "Only alphanumeric characters are allowed, and the value must be 1-30 characters long."
-  },
-  "visible": true
+    "name": "nameInstance",
+    "type": "Microsoft.Common.TextBox",
+    "label": "Name",
+    "defaultValue": "contoso123",
+    "toolTip": "Use only allowed characters",
+    "constraints": {
+        "required": true,
+        "validations": [
+            {
+                "regex": "^[a-z0-9A-Z]{1,30}$",
+                "message": "Only alphanumeric characters are allowed, and the value must be 1-30 characters long."
+            },
+            {
+                "isValid": "[startsWith(steps('resourceConfig').nameInstance, 'contoso')]",
+                "message": "Must start with 'contoso'."
+            }
+        ]
+    },
+    "visible": true
 }
 ```
 
 ## <a name="sample-output"></a>示例输出
 
 ```json
-"my text value"
+"contoso123"
 ```
 
 ## <a name="remarks"></a>备注
 
 - 如果 `constraints.required` 设置为 true，则文本框必须包含值才能成功通过验证  。 默认值是 **false**秒。
-- `constraints.regex` 是一个 JavaScript 正则表达式模式。 如果指定，则文本框的值必须与模式完全匹配才能成功通过验证。 默认值为 **null**。
-- `constraints.validationMessage` 是当文本框的值未通过验证时会显示的一个字符串。 如果未指定，则会使用文本框的内置验证消息。 默认值为 **null**。
-- 当 `constraints.required` 设置为 **false** 时可以为 `constraints.regex` 指定值。 在这种情况下，文本框并非必须具有值才能成功通过验证。 如果指定了一个值，则它必须与正则表达式模式匹配。
+- `validations`属性是一个数组，您可以在其中添加条件以检查文本框中提供的值。
+- `regex`属性为 JavaScript 正则表达式模式。 如果指定，则文本框的值必须与模式完全匹配才能成功通过验证。 默认值为 **null**。
+- `isValid`属性包含计算结果为 true 或 false 的表达式。 在表达式中，定义确定文本框是否有效的条件。
+- `message`属性是当文本框的值未通过验证时要显示的字符串。
+- 当 `required` 设置为 **false** 时可以为 `regex` 指定值。 在这种情况下，文本框并非必须具有值才能成功通过验证。 如果指定了一个值，则它必须与正则表达式模式匹配。
+
+## <a name="example"></a>示例
+
+下面的示例使用带有[ArmApiControl](microsoft-solutions-armapicontrol.md)控件的文本框来检查资源名称的可用性。
+
+```json
+"basics": [
+    {
+        "name": "nameApi",
+        "type": "Microsoft.Solutions.ArmApiControl",
+        "request": {
+            "method": "POST",
+            "path": "[concat(subscription().id, '/providers/Microsoft.Storage/checkNameAvailability?api-version=2019-06-01')]",
+            "body": "[parse(concat('{\"name\": \"', basics('txtStorageName'), '\", \"type\": \"Microsoft.Storage/storageAccounts\"}'))]"
+        }
+    },
+    {
+        "name": "txtStorageName",
+        "type": "Microsoft.Common.TextBox",
+        "label": "Storage account name",
+        "constraints": {
+            "validations": [
+                {
+                    "isValid": "[not(equals(basics('nameApi').nameAvailable, false))]",
+                    "message": "[concat('Name unavailable: ', basics('txtStorageName'))]"
+                }
+            ]
+        }
+    }
+]
+```
 
 ## <a name="next-steps"></a>后续步骤
 

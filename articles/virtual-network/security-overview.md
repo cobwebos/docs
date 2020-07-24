@@ -13,16 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 7464a9d13e1ffccbc3fab3256fe6c7ab1cb10495
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60c350b10fb3db82af47551591d95e87cacd63a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84321490"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065022"
 ---
 # <a name="network-security-groups"></a>网络安全组
 <a name="network-security-groups"></a>
 
-可以使用 Azure 网络安全组来筛选 Azure 虚拟网络中出入 Azure 资源的网络流量。 网络安全组包含[安全规则](#security-rules)，这些规则可允许或拒绝多种 Azure 资源的入站和出站网络流量。 可以为每项规则指定源和目标、端口以及协议。
+可以使用 Azure 网络安全组来筛选进出 Azure 虚拟网络中的 Azure 资源的网络流量。 网络安全组包含[安全规则](#security-rules)，这些规则可允许或拒绝多种 Azure 资源的入站和出站网络流量。 可以为每项规则指定源和目标、端口以及协议。
 
 本文介绍网络安全组规则的属性、应用的[默认安全规则](#default-security-rules)，以及可以修改以创建[扩充安全规则](#augmented-security-rules)的规则属性。
 
@@ -41,6 +42,7 @@ ms.locfileid: "84321490"
 |操作     | 允许或拒绝        |
 
 在允许或拒绝流量之前，将使用 5 元组信息（源、源端口、目标、目标端口和协议）按优先级对网络安全组安全规则进行评估。 将为现有连接创建流记录。 是允许还是拒绝通信取决于流记录的连接状态。 流记录允许网络安全组有状态。 例如，如果针对通过端口 80 访问的任何地址指定了出站安全规则，则不需要指定入站安全规则来响应出站流量。 如果通信是从外部发起的，则只需指定入站安全规则。 反之亦然。 如果允许通过某个端口发送入站流量，则不需要指定出站安全规则来响应通过该端口发送的流量。
+
 删除启用了流的安全规则时，现有连接不一定会中断。 当连接停止并且至少几分钟内在任一方向都没有流量流过时，流量流会中断。
 
 在网络安全组中创建的安全规则存在数量限制。 有关详细信息，请参阅 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
@@ -53,19 +55,19 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 ##### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|优先级|源|源端口|目标|目标端口|协议|访问|
+|优先级|Source|源端口|目标|目标端口|协议|访问|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|任意|允许|
 
 ##### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|优先级|源|源端口|目标|目标端口|协议|访问|
+|优先级|Source|源端口|目标|目标端口|协议|访问|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|任意|允许|
 
 ##### <a name="denyallinbound"></a>DenyAllInbound
 
-|优先级|源|源端口|目标|目标端口|协议|访问|
+|优先级|Source|源端口|目标|目标端口|协议|访问|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|任意|拒绝|
 
@@ -73,19 +75,19 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 ##### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|优先级|源|源端口| 目标 | 目标端口 | 协议 | 访问 |
+|优先级|Source|源端口| 目标 | 目标端口 | 协议 | 访问 |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | 任意 | 允许 |
 
 ##### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|优先级|源|源端口| 目标 | 目标端口 | 协议 | 访问 |
+|优先级|Source|源端口| 目标 | 目标端口 | 协议 | 访问 |
 |---|---|---|---|---|---|---|
 | 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | 任意 | 允许 |
 
 ##### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|优先级|源|源端口| 目标 | 目标端口 | 协议 | 访问 |
+|优先级|Source|源端口| 目标 | 目标端口 | 协议 | 访问 |
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | 任意 | 拒绝 |
 
@@ -99,7 +101,7 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 #### <a name="service-tags"></a>服务标记
 
-服务标记表示给定 Azure 服务中的一组 IP 地址前缀。 它有助于将频繁更新网络安全规则的复杂性降至最低。
+服务标记表示给定 Azure 服务中的一组 IP 地址前缀。 它有助于最大程度地减少对网络安全规则的频繁更新的复杂性。
 
 有关详细信息，请参阅 [Azure 服务标记](service-tags-overview.md)。 有关如何使用存储服务标记限制网络访问的示例，请参阅[限制对 PaaS 资源的网络访问](tutorial-restrict-network-access-to-resources.md)。
 
@@ -140,9 +142,7 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 需要注意的是，与子网关联的 NSG 中的安全规则可能会影响子网中 VM 之间的连接。 例如，如果将规则添加到拒绝所有入站和出站流量的 NSG1**，则 VM1** 和 VM2** 将无法再相互通信。 必须专门添加另一个规则来允许此通信。 
 
-
-
-可以通过查看网络接口的[有效安全规则](virtual-network-network-interface.md#view-effective-security-rules)，轻松查看已应用到网络接口的聚合规则。 还可以使用 Azure 网络观察程序中的 [IP 流验证](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json)功能来确定是否允许发往或发自网络接口的通信。 IP 流验证会告知你系统是允许还是拒绝通信，以及哪条网络安全规则允许或拒绝该流量。
+可以通过查看网络接口的[有效安全规则](virtual-network-network-interface.md#view-effective-security-rules)，轻松查看已应用到网络接口的聚合规则。 还可以使用 Azure 网络观察程序中的 [IP 流验证](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json)功能来确定是否允许发往或发自网络接口的通信。 "IP 流验证" 告诉你是允许还是拒绝通信，以及哪些网络安全规则允许或拒绝流量。
 
 > [!NOTE]
 > 网络安全组关联到子网或关联到部署在经典部署模型中的虚拟机和云服务，以及关联到资源管理器部署模型中的子网或网络接口。 若要详细了解 Azure 部署模型，请参阅[了解 Azure 部署模型](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
@@ -160,7 +160,7 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
   如果是在 2017 年 11 月 15 日之前创建的 Azure 订阅，则除了能够使用 SMTP 中继服务，还可以直接通过 TCP 端口 25 发送电子邮件。 如果是在 2017 年 11 月 15 日之后创建的订阅，则可能无法直接通过端口 25 发送电子邮件。 经端口 25 的出站通信行为取决于订阅类型，如下所示：
 
-     - **企业协议**：允许端口 25 的出站通信。 可以将出站电子邮件直接从虚拟机发送到外部电子邮件提供商，不受 Azure 平台的限制。 
+     - **企业协议**：允许端口 25 的出站通信。 你可以直接从虚拟机向外部电子邮件提供商发送出站电子邮件，而不会受到 Azure 平台的限制。 
      - **即用即付：** 阻止所有资源通过端口 25 进行出站通信。 如需将电子邮件从虚拟机直接发送到外部电子邮件提供商（不使用经身份验证的 SMTP 中继），可以请求去除该限制。 Microsoft 会自行审核和批准此类请求，并且只在进行防欺诈检查后授予相关权限。 若要提交请求，请建立一个问题类型为“技术”、“虚拟网络连接”、“无法发送电子邮件（SMTP/端口 25）”的支持案例。** ** ** 在支持案例中，请详细说明为何你的订阅需要将电子邮件直接发送到邮件提供商，而不经过经身份验证的 SMTP 中继。 如果订阅得到豁免，则只有在豁免日期之后创建的虚拟机能够经端口 25 进行出站通信。
      - **MSDN、Azure Pass、Azure 开放许可、教育、BizSpark 和免费试用版**：阻止所有资源经端口 25 进行出站通信。 不能请求去除该限制，因为不会针对请求授予相关权限。 若需从虚拟机发送电子邮件，则需使用 SMTP 中继服务。
      - **云服务提供商**：如果无法使用安全的 SMTP 中继，通过云服务提供商消耗 Azure 资源的客户可以通过其云服务提供商创建支持案例，并请求提供商代表他们创建取消阻止案例。

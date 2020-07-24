@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 999a7386ee7c5b3ef76f87280cc2d0cd45f143cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 924aff8f2ba3d796b65f52494845f3b10018065c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75652250"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063964"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Microsoft.Common.Section UI 元素
 
@@ -17,7 +18,7 @@ ms.locfileid: "75652250"
 
 ## <a name="ui-sample"></a>UI 示例
 
-![Microsoft.Common.Section](./media/managed-application-elements/microsoft.common.section.png)
+![Microsoft.Common.Section](./media/managed-application-elements/microsoft-common-section.png)
 
 ## <a name="schema"></a>架构
 
@@ -48,7 +49,7 @@ ms.locfileid: "75652250"
 - 此元素不支持 `toolTip` 属性。
 
 ## <a name="sample-output"></a>示例输出
-若要访问 `elements` 中的元素的输出值，请使用 [basics()](create-uidefinition-functions.md#basics) 或 [steps()](create-uidefinition-functions.md#steps) 函数和点表示法：
+若要访问 `elements` 中的元素的输出值，请使用 [basics()](create-ui-definition-referencing-functions.md#basics) 或 [steps()](create-ui-definition-referencing-functions.md#steps) 函数和点表示法：
 
 ```json
 steps('configuration').section1.text1

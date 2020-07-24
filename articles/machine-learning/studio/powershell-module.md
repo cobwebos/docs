@@ -9,11 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 04/25/2019
-ms.openlocfilehash: 21bb8253d94ca91ee1baffb6de1f47ca34e9a7d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3977bd13d0d3300126e06626e33fde753acc964f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117548"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065787"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>Azure 机器学习工作室（经典）PowerShell 模块
 
@@ -50,7 +51,7 @@ PowerShell 经典版可与 Az 或 AzureRM 一起安装，以处理新的和经�
 ## <a name="powershell-support-table"></a><a name="support-table"></a> PowerShell 支持表
 
 
-| | **Az** |  **PowerShell 经典** |
+|  **Az** |  **PowerShell 经典** |
 | --- | --- | --- |
 | 创建/删除工作区 | [资源管理器模板](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) |  |
 | 管理工作区承诺计划 | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | |

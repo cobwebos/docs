@@ -8,11 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: 8f9513c3ac28b8f65d9023fc529927b208323ca1
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7eca9b4a8cf09f2f35d56dc22fc25169be192f47
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834452"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066234"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>从预构建的模板创建逻辑应用工作流
 
@@ -49,7 +50,7 @@ ms.locfileid: "83834452"
    | **订阅** | your-Azure-subscription-name | 选择要使用的 Azure 订阅。 | 
    | **资源组** | your-Azure-resource-group-name | 创建或选择一个用于此逻辑应用的 [Azure 资源组](../azure-resource-manager/management/overview.md)，以便组织与此应用相关联的所有资源。 | 
    | **位置** | your-Azure-datacenter-region | 选择用于部署逻辑应用的数据中心区域，例如“美国西部”。 | 
-   | **Log Analytics** | 关闭（默认）或者打开  | 使用 [Azure Monitor 日志](../log-analytics/log-analytics-overview.md)为逻辑应用设置[诊断日志记录](../logic-apps/monitor-logic-apps-log-analytics.md)。 需要已具有 Log Analytics 工作区。 | 
+   | **Log Analytics** | 关闭（默认）或者打开  | 使用 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)为逻辑应用设置[诊断日志记录](../logic-apps/monitor-logic-apps-log-analytics.md)。 需要已具有 Log Analytics 工作区。 | 
    |||| 
 
 4. 准备就绪后，请选择“固定到仪表板”。 这样一来，逻辑应用就会自动显示在 Azure 仪表板上，并在部署后打开。 选择“创建”。
@@ -145,7 +146,7 @@ ms.locfileid: "83834452"
 
 ## <a name="get-support"></a>获取支持
 
-* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
+* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](/answers/topics/azure-logic-apps.html)。
 * 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤

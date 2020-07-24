@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: c94fa6b851dfc9923628a738a15f7c245204f73f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4755d3ac30a4f6fdc0568dd88fa0e362d7d140a9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975323"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066570"
 ---
 # <a name="auto-provisioning-concepts"></a>自动预配的概念
 
@@ -102,10 +103,10 @@ ms.locfileid: "74975323"
 
 然后继续学习最适合你偏好的设备认证机制和设备预配服务 SDK/语言的“自动预配模拟设备”快速入门。 此快速入门逐步讲解“设备登记”与“设备注册和配置”阶段： 
 
-|  | 模拟设备认证机制 | 快速入门 SDK/语言 |  |
-|--|--|--|--|
-|  | 受信任的平台模块 (TPM) | [C](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C#](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |  |
-|  | X.509 证书 | [C](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |  |
+| 模拟设备认证机制 | 快速入门 SDK/语言 |
+| -------------------------------------- | ----------------------- |
+| 受信任的平台模块 (TPM) | [C](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C#](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |
+| X.509 证书 | [C](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |
 
 
 

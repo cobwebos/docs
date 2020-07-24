@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5f7d3a47482ccec9778b102d3509b5f8ef343185
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7902ea2e30dec20e57d88344dc9507aec3993600
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75652302"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064082"
 ---
 # <a name="microsoftcommonpasswordbox-ui-element"></a>Microsoft.Common.PasswordBox UI 元素
 
@@ -17,7 +18,7 @@ ms.locfileid: "75652302"
 
 ## <a name="ui-sample"></a>UI 示例
 
-![Microsoft.Common.PasswordBox](./media/managed-application-elements/microsoft.common.passwordbox.png)
+![Microsoft.Common.PasswordBox](./media/managed-application-elements/microsoft-common-passwordbox.png)
 
 ## <a name="schema"></a>架构
 
