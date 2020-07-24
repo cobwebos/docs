@@ -13,13 +13,14 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5c1c03a407315fc4f1b3eb967531e2800fc7497f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 8895e52209622025f943aaa6a4261b68a7e2899c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738041"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034833"
 ---
-# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问开发人员指南
+# <a name="developer-guidance-for-the-azure-active-directory-conditional-access-feature"></a>Azure Active Directory 条件性访问功能的开发人员指南
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
@@ -33,7 +34,7 @@ ms.locfileid: "83738041"
 
 对于生成 Azure AD 应用的开发人员，本文演示了条件访问的使用方法，并介绍了访问应用了条件访问策略且你无法控制的资源将产生的影响。 此外，本文还探讨了条件访问对代理流、Web 应用、访问 Microsoft Graph 和调用 API 的影响。
 
-本文假定已了解[单租户和多租户](../develop/howto-convert-app-to-be-multi-tenant.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)应用以及[常见的身份验证模式](v1-authentication-scenarios.md)。
+本文假定你了解[单租户和多租户](../develop/howto-convert-app-to-be-multi-tenant.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)应用以及[常见的身份验证模式](v1-authentication-scenarios.md)。
 
 ## <a name="how-does-conditional-access-impact-an-app"></a>条件访问对应用有何影响？
 
@@ -61,17 +62,17 @@ ms.locfileid: "83738041"
 
 #### <a name="microsoft-graph"></a>Microsoft Graph
 
-在条件访问环境中生成应用时，Microsoft Graph 具有特殊注意事项。 一般来说，条件访问的机制是相同的，但是用户看到的策略将基于应用程序从图形中请求的基础数据。 
+在条件访问环境中构建应用时，需要考虑到 Microsoft Graph 方面的一些特殊注意事项。 通常，条件访问机制的行为相同，但用户看到的策略取决于应用从图形请求的基础数据。 
 
-具体来说，所有 Microsoft Graph 范围都表示可以单独应用策略的某些数据集。 由于条件访问策略分配给了特定的数据集，Azure AD 将基于图形背后的数据而不是图形本身强制实施条件访问策略。
+具体而言，所有 Microsoft Graph 范围都表示某个可单独应用策略的数据集。 由于为条件访问策略分配了特定的数据集，因此 Azure AD 会根据 Graph 后面的数据（而非 Graph 本身）强制实施条件访问策略。
 
-例如，如果某个应用程序请求下列 Microsoft Graph 范围，
+例如，如果某个应用请求以下 Microsoft Graph 范围，
 
 ```
 scopes="Bookings.Read.All Mail.Read"
 ```
 
-应用可能期望其用户完成所有关于 Bookings 和 Exchange 的策略。 如果授予访问权限，某些范围可能映射到多个数据集。 
+应用可能期望其用户满足针对 Bookings 和 Exchange 设置的所有策略。 某些范围可能会映射到多个数据集（如果授予了访问权限）。 
 
 ### <a name="complying-with-a-conditional-access-policy"></a>符合条件访问策略
 
@@ -103,7 +104,7 @@ Azure AD 条件访问是 [Azure AD Premium](https://docs.microsoft.com/azure/act
 
 ## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>方案：执行代理流的应用
 
-在此应用场景中，我们将演示本机应用调用 Web 服务/API 时的场景。 相反的是，此服务将执行“代理”流来调用下游服务。 在本示例中，我们已向下游服务 (Web API 2) 应用条件访问策略，并且使用的是本机应用，而非服务器/守护程序应用。 
+在此应用场景中，我们将演示本机应用调用 Web 服务/API 时的场景。 而此服务将执行“代理”流来调用下游服务。 在本示例中，我们已向下游服务 (Web API 2) 应用条件访问策略，并且使用的是本机应用，而非服务器/守护程序应用。 
 
 ![执行代理流的应用示意图](./media/conditional-access-dev-guide/app-performing-on-behalf-of-scenario.png)
 
@@ -133,7 +134,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ![访问多个服务流的应用示意图](./media/conditional-access-dev-guide/app-accessing-multiple-services-scenario.png)
 
-或者，如果应用最初请求 Web 服务 A 的令牌，则最终用户将不会调用条件访问策略。 这样应用开发人员可以控制最终用户体验，且无需在所有情况下强制调用条件访问策略。 最复杂的情况是应用随后请求 Web 服务 B 的令牌。此时，最终用户需要符合条件访问策略。 应用尝试 `acquireToken` 时，可能会生成以下错误（如下图所示）：
+或者，如果应用最初请求 Web 服务 A 的令牌，则最终用户将不会调用条件访问策略。 这样，应用开发人员就可以控制最终用户体验，且无需在所有情况下强制调用条件访问策略。 最复杂的情况是应用随后请求 Web 服务 B 的令牌。此时，最终用户需要符合条件访问策略。 应用尝试 `acquireToken` 时，可能会生成以下错误（如下图所示）：
 
 ```
 HTTP 400; Bad Request
@@ -156,11 +157,11 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 * 然后可以使用 `acquireToken(…)` 以无提示方式获取访问令牌，这意味着在任何情况下它都不会显示 UI。
 * `acquireTokenPopup(…)` 和 `acquireTokenRedirect(…)` 用于以交互方式请求资源的令牌，这意味着它们始终会显示登录 UI。
 
-应用需要访问令牌来调用 Web API 时，它尝试 `acquireToken(…)`。 如果令牌会话过期或我们需要符合条件访问策略时，则 acquireToken 函数失败，应用将使用 `acquireTokenPopup()` 或 `acquireTokenRedirect()`。
+应用需要访问令牌来调用 Web API 时，它尝试 `acquireToken(…)`。 如果令牌会话过期或我们需要符合条件访问策略时，则 *acquireToken* 函数失败，应用将使用 `acquireTokenPopup()` 或 `acquireTokenRedirect()`。
 
 ![使用 ADAL 流的单页应用示意图](./media/conditional-access-dev-guide/spa-using-adal-scenario.png)
 
-我们来演示一个使用条件访问应用场景的示例。 最终用户刚刚登录网站，且没有会话。 我们执行一个 `login()` 调用，未通过多重身份验证获取了 ID 令牌。 然后用户点击一个按钮，要求应用从 Web API 请求数据。 该应用将尝试执行一个 `acquireToken()` 调用，但是失败，因为用户尚未执行多重身份验证，且需要符合条件访问策略。
+我们来演示一个使用条件访问应用场景的示例。 最终用户刚刚登录站点且未建立会话。 我们执行一个 `login()` 调用，未通过多重身份验证获取了 ID 令牌。 然后用户点击一个按钮，要求应用从 Web API 请求数据。 该应用将尝试执行一个 `acquireToken()` 调用，但是失败，因为用户尚未执行多重身份验证，且需要符合条件访问策略。
 
 Azure AD 发送回以下 HTTP 响应：
 

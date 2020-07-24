@@ -11,11 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 348082ad96a5efa4d8f866c3675044edf7b6f8a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e3425407fdb131fb1499b2cd085fbe6d427804a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652157"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035292"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>用于 Azure AD 密码管理的报告选项
 
@@ -50,9 +51,9 @@ ms.locfileid: "80652157"
 6. 从窗格顶部的“筛选”  菜单中，选择“服务”  下拉列表，并将其更改为“自助服务密码管理”  服务类型。
 7. （可选）通过选择所需的特定“活动”  进一步筛选该列表。
 
-### <a name="converged-registration-preview"></a>聚合注册（预览版）
+### <a name="combined-registration"></a>合并注册
 
-如果使用的是聚合注册的公共预览版，则将在“安全性”   > “身份验证方法”  下找到有关审核日志中用户活动的信息。
+如果已启用[组合注册](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)，则在 "**安全**  >  **身份验证方法**" 下会找到有关审核日志中的用户活动的信息。
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Azure 门户中报表列的说明
 

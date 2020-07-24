@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: e917c261392da6044391efc98a81c8f90b619514
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee58f21881c9799eba27dec3e71c601e94401deb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513762"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036703"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>使用 AzCopy 将数据从 Amazon S3 复制到 Azure 存储
 
@@ -127,7 +127,7 @@ AzCopy 会处理可能出现的两个最常见问题：包含句点的桶，以�
 
 AWS S3 和 Azure 允许在对象键名称中使用不同的字符集。 可在[此处](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)了解 AWS S3 使用的字符。 在 Azure 端，Blob 对象键遵守 [C# 标识符](https://docs.microsoft.com/dotnet/csharp/language-reference/)的命名规则。
 
-在 AzCopy `copy` 命令中，可为 `s2s-invalid-metadata-handle` 可选标志提供一个值，用于指定如何处理其中的元数据包含不兼容键名称的文件。 下表描述了每个标志值。
+在 AzCopy `copy` 命令中，可为 `s2s-handle-invalid-metadata` 可选标志提供一个值，用于指定如何处理其中的元数据包含不兼容键名称的文件。 下表描述了每个标志值。
 
 | 标志值 | 说明  |
 |--------|-----------|

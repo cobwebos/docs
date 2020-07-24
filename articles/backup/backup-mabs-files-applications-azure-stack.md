@@ -3,11 +3,12 @@ title: 在 Azure Stack VM 中备份文件
 description: 使用 Azure 备份将 Azure Stack 文件与应用程序备份和恢复到 Azure Stack 环境。
 ms.topic: conceptual
 ms.date: 06/05/2018
-ms.openlocfilehash: 2bcdf7f720708db1487d7d5cdaee41dc93c05728
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07a64e5457963ea4a6d3b39b3f2326dbcfc5e63a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74172322"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032759"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>在 Azure Stack 上备份文件和应用程序
 
@@ -43,7 +44,7 @@ ms.locfileid: "74172322"
 
     ![“新建保护组”向导打开](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
-    Microsoft 建议将共用保护策略的所有数据放入同一个保护组。 有关规划和部署保护组的完整信息，请参阅 System Center DPM 文章[部署保护组](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801)。
+    Microsoft 建议将共用保护策略的所有数据放入同一个保护组。 有关规划和部署保护组的完整信息，请参阅 System Center DPM 文章[部署保护组](/system-center/dpm/create-dpm-protection-groups)。
 
 4. 在“选择数据保护方法”屏幕中，键入保护组的名称。  选中“我想使用以下介质进行短期保护:”和“我需要在线保护”对应的复选框。   单击“下一步”。 
 
@@ -132,5 +133,5 @@ ms.locfileid: "74172322"
 
 有关使用 Azure 备份服务器保护其他工作负荷的信息，请参阅以下文章之一：
 
-* [备份 SharePoint 场](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
-* [备份 SQL Server](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
+* [备份 SharePoint 场](./backup-mabs-sharepoint-azure-stack.md)
+* [备份 SQL Server](./backup-mabs-sql-azure-stack.md)

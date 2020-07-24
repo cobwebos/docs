@@ -3,11 +3,12 @@ title: Web 应用性能监视 - Azure Application Insights
 description: Application Insights 如何适应 devOps 周期
 ms.topic: conceptual
 ms.date: 12/21/2018
-ms.openlocfilehash: 24095aade80022d1e1ebb38357971512bfc873c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa62e8840c14e87d24db029d6bb7a215124a0511
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669686"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033676"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>使用 Application Insights 对 Web 应用和服务进行深度诊断
 ## <a name="why-do-i-need-application-insights"></a>为什么需要 Application Insights？
@@ -109,7 +110,7 @@ Web 系统中的故障通常由配置问题或系统中许多组件之间的交�
 ![应用程序地图](./media/devops/0050.png)
 
 ## <a name="application-insights-analytics"></a>Application Insights Analytics
-借助 [Analytics](../../azure-monitor/app/analytics.md) 可以使用类似于 SQL 的强大语言编写任意查询。  将各种不同的观点链接到一起后，跨整个应用程序堆栈的诊断就会变得很容易。可以提出正确的问题，将服务性能与业务指标和客户体验相关联。 
+借助 [Analytics](../log-query/log-query-overview.md) 可以使用类似于 SQL 的强大语言编写任意查询。  将各种不同的观点链接到一起后，跨整个应用程序堆栈的诊断就会变得很容易。可以提出正确的问题，将服务性能与业务指标和客户体验相关联。 
 
 可以查询门户中存储的所有遥测实例和指标原始数据。 语言包括筛选、联接、聚合与其他操作。 可以计算字段并执行统计分析。 目前提供表格式和图形可视化效果。
 
@@ -159,4 +160,3 @@ Application Insights 入门非常简单。 主要选项包括：
 * [IIS 服务器](../../azure-monitor/app/monitor-performance-live-website-now.md)，以及 [Azure 应用服务](../../azure-monitor/app/app-insights-overview.md)。
 * 在开发期间检测项目。 可以针对 [ASP.NET](../../azure-monitor/app/asp-net.md) 或 [Java](../../azure-monitor/app/java-get-started.md) 应用以及 [Node.js](../../azure-monitor/app/nodejs.md) 和很多[其他类型](../../azure-monitor/app/platforms.md)的应用执行此操作。 
 * 通过添加简短的代码片段来检测[任何网页](../../azure-monitor/app/javascript.md)。
-

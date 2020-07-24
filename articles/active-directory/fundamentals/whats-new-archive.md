@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f04fcae1ba218949019637e9a101492a487b430f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e27adde84f62f8c8d79389e1de4e867439d5a3be
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603734"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034731"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能存档
 
@@ -2768,7 +2768,7 @@ Criterion HCM、[FiscalNote](https://docs.microsoft.com/azure/active-directory/a
 
 对于配置了基于 SAML 的单一登录的企业应用程序，某些用户无法收到通知。 此问题已解决。 如果证书在 7、30 和 60 天内过期，Azure AD 会发送通知。 可以在审核日志中查看此事件。
 
-有关详情，请参阅：
+有关详细信息，请参阅：
 
 - [在 Azure Active Directory 中管理用于联合单一登录的证书](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs)
 - [Azure Active Directory 门户中的“审核活动”报表](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)
@@ -3114,7 +3114,7 @@ Azure AD Connect 是在 Azure AD 与本地数据源（包括 Windows Server Acti
 
 - Microsoft Invoicing
 
-有关详情，请参阅：
+有关详细信息，请参阅：
 
 - [批准的客户端应用要求](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [基于 Azure AD 应用的条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
@@ -3323,7 +3323,7 @@ Azure AD 目录角色的审批工作流程已正式发布。
 
 **类型：** 已更改的功能**服务类别：** Privileged Identity Management **产品功能：** Privileged Identity Management
 
-通过 Azure 基于角色的访问控制 (RBAC) 的 Azure AD Privileged Identity Management (PIM) 公共预览版刷新，现在可以：
+使用 Azure 基于角色的访问控制（Azure RBAC）的 Azure AD Privileged Identity Management （PIM）公共预览版刷新，现在可以：
 
 * 使用 Just Enough Administration。
 * 需要批准才能激活资源角色。
@@ -3372,7 +3372,7 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 - [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - Microsoft StaffHub
 
-有关详情，请参阅：
+有关详细信息，请参阅：
 
 - [批准的客户端应用要求](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [基于 Azure AD 应用的条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)

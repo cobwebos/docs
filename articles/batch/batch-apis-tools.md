@@ -4,17 +4,18 @@ description: 了解通过 Azure Batch 服务开发解决方案时可以使用的
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1a3b2bb080e80e5ddc5ac12413f312dcd930d03f
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c7484e59391be8f4853c2394bff20c6d9676dec9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958015"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032186"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>批处理 API 和工具概述
 
-使用 Azure Batch 处理并行工作负荷通常是使用批处理 API 之一以编程方式实现的。 客户端应用程序或服务使用批处理 API 与批处理服务通信。 使用批处理 API 可以创建和管理计算节点池（不管是虚拟机还是云服务）。 然后即可计划作业和任务，使之在这些节点上运行。
+使用 Azure Batch 处理并行工作负荷通常是使用批处理 API 之一以编程方式实现的。 客户端应用程序或服务可使用 Batch API 与 Batch 服务通信。 Batch API 允许用户创建和管理计算节点（虚拟机或云服务）池。 随后可将作业和任务计划为在这些节点上运行。
 
-可以为组织高效处理大量工作负荷，或提供服务前端给客户，让他们可以在一个、数百个甚至数千个节点上，按需要或按计划运行作业和任务。 还可以在 [Azure 数据工厂](../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json)等工具管理的大型工作流中使用 Azure Batch。
+可以为组织高效处理大量工作负荷，或提供服务前端给客户，让他们可以在一个、数百个甚至数千个节点上，按需要或按计划运行作业和任务。 还可以在 [Azure 数据工厂](../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json)等工具管理的大型工作流中使用 Azure Batch 。
 
 > [!TIP]
 > 若要详细了解 Azure Batch 中所用的功能和工作流，请参阅 [Batch 服务工作流和资源](batch-service-workflow-features.md)。
@@ -24,7 +25,7 @@ ms.locfileid: "85958015"
 开发 Batch 解决方案时，请在 Azure 订阅中使用以下帐户：
 
 - **Batch 帐户** - Azure Batch 资源（包括池、计算节点、作业和任务）与 Azure [Batch 帐户](accounts.md)相关联。 当应用程序针对 Batch 服务提出请求时，会使用 Azure Batch 帐户名称、帐户的 URL 以及访问密钥或 Azure Active Directory 令牌对请求进行身份验证。 可以通过 Azure 门户或编程方式[创建 Batch 帐户](batch-account-create-portal.md)。
-- **存储帐户** - Batch 提供的内置支持允许处理 [Azure 存储](../storage/index.yml)中的文件。 几乎每个批处理方案都使用 Azure Blob 存储来暂存任务所运行的程序及其处理的数据，以及存储任务生成的输出数据。 每个 Batch 帐户通常与相应的存储帐户关联。
+- **存储帐户** - Batch 提供的内置支持允许处理 [Azure 存储](../storage/index.yml)中的文件。 几乎每个 Batch 方案都使用 Azure Blob 存储暂存任务所运行的程序及其处理的数据，以及存储任务生成的输出数据。 每个 Batch 帐户通常与相应的存储帐户关联。
 
 ## <a name="service-level-and-management-level-apis"></a>服务级别和管理级 API
 
@@ -38,7 +39,7 @@ Azure Batch 具有两组 API，一个用于服务级别，另一个用于管理�
 
 ## <a name="batch-service-apis"></a>批处理服务 API
 
-应用程序和服务可以发出直接 REST API 调用或使用一个或多个下述客户端库，以便运行和管理 Azure Batch 工作负荷。
+应用程序和服务可发出直接的 REST API 调用，或使用以下一个或多个客户端库，运行和管理 Azure Batch 工作负荷。
 
 | API | API 参考 | 下载 | 教程 | 代码示例 | 更多信息 |
 | --- | --- | --- | --- | --- | --- |
@@ -50,7 +51,7 @@ Azure Batch 具有两组 API，一个用于服务级别，另一个用于管理�
 
 ## <a name="batch-management-apis"></a>批处理管理 API
 
-适用于 Batch 的 Azure 资源管理器 API 允许通过编程方式访问批处理帐户。 可以使用这些 API 通过 Microsoft.Batch 提供程序以编程方式管理 Batch 帐户、配额、应用程序包和其他资源。  
+通过用于 Batch 的 Azure Resource Manager API，可以编程方式访问批处理帐户。 可以使用这些 API 通过 Microsoft.Batch 提供程序以编程方式管理 Batch 帐户、配额、应用程序包和其他资源。  
 
 | API | API 参考 | 下载 | 教程 | 代码示例 |
 | --- | --- | --- | --- | --- |
@@ -64,7 +65,7 @@ Azure Batch 具有两组 API，一个用于服务级别，另一个用于管理�
 
 这些命令行工具提供的功能与批处理服务和批处理管理 API 相同： 
 
-- [Batch PowerShell cmdlets](/powershell/module/az.batch/)：[Azure PowerShell](/powershell/azure/overview) 模块中的 Azure Batch cmdlet 可让用户使用 PowerShell 管理 Batch 资源。
+- [Batch PowerShell cmdlet](/powershell/module/az.batch/)：[Azure PowerShell](/powershell/azure/) 模块中的 Azure Batch cmdlet 可让用户使用 PowerShell 管理 Batch 资源。
 - [Azure CLI](/cli/azure)：Azure CLI 是一个跨平台工具集，提供用来与许多 Azure 服务（包括 Batch 服务和 Batch 管理服务）交互的 shell 命令。 请参阅[使用 Azure CLI 管理批处理资源](batch-cli-get-started.md)，详细了解如何将 Azure CLI 与批处理配合使用。
 
 ## <a name="other-tools-for-application-development"></a>适合应用程序开发的其他工具
@@ -86,4 +87,4 @@ Azure Batch 具有两组 API，一个用于服务级别，另一个用于管理�
 
 - 了解 [Batch 服务工作流和主要资源](batch-service-workflow-features.md)，例如池、节点、作业和任务。
 - [Get started with the Azure Batch library for .NET](tutorial-parallel-dotnet.md) （适用于 .NET 的 Azure Batch 库入门），了解如何使用 C# 和 Batch .NET 库在常见的 Batch 工作流中执行简单的工作负荷。 也提供 [Python 版](tutorial-parallel-python.md)和 [Node.js 教程](batch-nodejs-get-started.md)。
-- 下载 [GitHub 上的代码示例](https://github.com/Azure-Samples/azure-batch-samples)，了解如何通过综合使用 C# 和 Python 与 Batch 来计划和处理示例工作负荷。
+- 下载 [GitHub 上的代码示例](https://github.com/Azure-Samples/azure-batch-samples)，了解 C# 和 Python 如何与 Batch 交互以计划和处理示例工作负荷。

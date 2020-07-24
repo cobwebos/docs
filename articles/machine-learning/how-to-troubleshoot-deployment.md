@@ -11,11 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 13ce9204ad09d2ecb4b149cf50696aa73d927314
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68c328bde853bbf4e48ab7ab1a6e2c7b51198f59
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214360"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030685"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>排查通过 Azure Kubernetes 服务和 Azure 容器实例进行的模型 Docker 部署 
 
@@ -100,6 +101,8 @@ ms.locfileid: "85214360"
 
 如果将模型部署到 ACI 或 AKS 时遇到问题，请尝试将其部署为本地 Web 服务。 使用本地 Web 服务可以更容易地排除问题。 包含模型的 Docker 映像将下载到本地系统，并在本地系统上启动。
 
+可以在[MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks)存储库中找到示例[本地部署笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb)，以浏览可运行的示例。
+
 > [!WARNING]
 > 生产方案不支持本地 Web 服务部署。
 
@@ -181,6 +184,7 @@ print(service.get_logs())
 # if you only know the name of the service (note there might be multiple services with the same name but different version number)
 print(ws.webservices['mysvc'].get_logs())
 ```
+
 ## <a name="container-cannot-be-scheduled"></a>无法计划容器
 
 将服务部署到 Azure Kubernetes Service 计算目标时，Azure 机器学习将尝试使用请求的资源量来计划服务。 如果在5分钟后，群集中没有可用的可用资源量的节点，则部署将失败，并显示消息 `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` 。 可通过添加更多节点、更改节点的 SKU 或更改服务的资源要求来解决此错误。 

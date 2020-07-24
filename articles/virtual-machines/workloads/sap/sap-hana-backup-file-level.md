@@ -12,19 +12,20 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: 93b67936166eb73db5e9a15db42c2c6135794108
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9d66dc4f0e2e637ac8512022336f257f5d585a9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78271389"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035734"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>文件级别的 SAP HANA Azure 备份
 
 ## <a name="introduction"></a>简介
 
-本文是有关[Azure 虚拟机上 SAP HANA 的备份指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)的相关文章，其中提供了有关 azure 备份服务和存储快照的入门和详细信息。 
+本文是有关[Azure 虚拟机上 SAP HANA 的备份指南](./sap-hana-backup-guide.md)的相关文章，其中提供了有关 azure 备份服务和存储快照的入门和详细信息。 
 
-Azure 中的不同 VM 类型允许附加不同数量的 VHD。 确切的详细信息记录在 [Azure 中 Linux 虚拟机的大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)中。 对于本文档中所述的测试，我们使用了 GS5 Azure VM，这允许使用64附加的数据磁盘。 在大型 SAP HANA 系统中，可能已经为数据和日志文件准备了大量的磁盘，这些磁盘可能与软件条带化相结合，目的是提供最佳的磁盘 IO 吞吐量。 有关 Azure Vm 上 SAP HANA 部署的建议磁盘配置的详细信息，请参阅[SAP HANA azure 虚拟机存储配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)一文。 提供的建议还包括本地备份的磁盘空间建议。
+Azure 中的不同 VM 类型允许附加不同数量的 VHD。 确切的详细信息记录在 [Azure 中 Linux 虚拟机的大小](../../linux/sizes.md)中。 对于本文档中所述的测试，我们使用了 GS5 Azure VM，这允许使用64附加的数据磁盘。 在大型 SAP HANA 系统中，可能已经为数据和日志文件准备了大量的磁盘，这些磁盘可能与软件条带化相结合，目的是提供最佳的磁盘 IO 吞吐量。 有关 Azure Vm 上 SAP HANA 部署的建议磁盘配置的详细信息，请参阅[SAP HANA azure 虚拟机存储配置](./hana-vm-operations-storage.md)一文。 提供的建议还包括本地备份的磁盘空间建议。
 
 管理文件级备份/还原的标准方法是通过 SAP HANA Studio 或 SAP HANA SQL 语句使用基于文件的备份。 有关详细信息，请参阅[SQL 和系统视图参考 SAP HANA](https://help.sap.com/hana/SAP_HANA_SQL_and_System_Views_Reference_en.pdf)一文。
 
@@ -34,15 +35,15 @@ Azure 中的不同 VM 类型允许附加不同数量的 VHD。 确切的详细�
 
 尽管此选项看上去简单而直接，但仍然需要注意一些事项。 Azure VM 限制了可附加的数据磁盘数。 根据数据库和磁盘吞吐量的要求，VM 文件系统上可能没有足够的容量用于存储 SAP HANA 备份文件，因此，可能涉及跨多个数据磁盘进行软件条带化。 本文稍后会提供用于移动这些备份文件，以及在处理 TB 量级的数据时管理文件大小限制和性能的选项。
 
-在总容量方面能够提供更高自由度的另一个选项是 Azure Blob 存储。 尽管单个 Blob 的容量也限制为 1 TB，但是，单个 Blob 容器的总容量目前可以达到 500 TB。 此外，该选项可让客户选择性价比较高的所谓&quot;冷&quot; Blob 存储。 有关冷 Blob 存储的详细信息，请参阅[Azure Blob 存储：热、冷和存档访问层](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal)。
+在总容量方面能够提供更高自由度的另一个选项是 Azure Blob 存储。 尽管单个 Blob 的容量也限制为 1 TB，但是，单个 Blob 容器的总容量目前可以达到 500 TB。 此外，该选项可让客户选择性价比较高的所谓&quot;冷&quot; Blob 存储。 有关冷 Blob 存储的详细信息，请参阅[Azure Blob 存储：热、冷和存档访问层](../../../storage/blobs/storage-blob-storage-tiers.md?tabs=azure-portal)。
 
-为进一步提高安全性，可以使用异地复制的存储帐户来存储 SAP HANA 备份。 有关存储冗余和存储复制的详细信息，请参阅[Azure 存储冗余](https://docs.microsoft.com/azure/storage/common/storage-redundancy)。
+为进一步提高安全性，可以使用异地复制的存储帐户来存储 SAP HANA 备份。 有关存储冗余和存储复制的详细信息，请参阅[Azure 存储冗余](../../../storage/common/storage-redundancy.md)。
 
 可将专门用于 SAP HANA 备份的 VHD 放在异地复制的专用备份存储帐户中。 或者，可将保存 SAP HANA 备份的 VHD 复制到异地复制的存储帐户或位于不同区域的存储帐户。
 
 ## <a name="azure-blobxfer-utility-details"></a>Azure blobxfer 实用工具详细信息
 
-若要在 Azure 存储中存储目录和文件，可以使用 CLI 或 PowerShell，或者使用某个 [Azure SDK](https://azure.microsoft.com/downloads/) 开发一个工具。 还有一个可供使用的实用程序，AzCopy，用于将数据复制到 Azure 存储。 （请参阅[通过 AzCopy 命令行实用工具传输数据](../../../storage/common/storage-use-azcopy.md)）。
+若要在 Azure 存储中存储目录和文件，可以使用 CLI 或 PowerShell，或者使用某个 [Azure SDK](https://azure.microsoft.com/downloads/) 开发一个工具。 还有一个可供使用的实用程序，AzCopy，用于将数据复制到 Azure 存储。 （请参阅[通过 AzCopy 命令行实用工具传输数据](../../../storage/common/storage-use-azcopy-v10.md)）。
 
 因此，我们使用了 blobxfer 来复制 SAP HANA 备份文件。 blobxfer 是许多客户在生产环境中使用的开源工具，可在 [GitHub](https://github.com/Azure/blobxfer) 上获取。 使用此工具可将数据直接复制到 Azure Blob 存储或 Azure 文件共享。 它还提供了一系列有用的功能，如 md5 哈希或自动并行复制包含多个文件的目录。
 
@@ -64,7 +65,7 @@ Azure 中的不同 VM 类型允许附加不同数量的 VHD。 确切的详细�
 ## <a name="copy-sap-hana-backup-files-to-azure-blob-storage"></a>将 SAP HANA 备份文件复制到 Azure Blob 存储
 提到的性能号、备份持续时间号和复制持续时间数可能不代表 Azure 技术的最新状态。 Microsoft 不断改进 Azure 存储，以提供更高的吞吐量和更低的延迟。 因此，数字仅用于演示目的。 你需要在所选的 Azure 区域中测试你的个人需求，才能通过方法判断最适合你的方法。
 
-快速存储 SAP HANA 备份文件的另一个选项是 Azure Blob 存储。 单个 blob 容器的限制为大约 500 TB （对于 SAP HANA 系统而言，使用 M32ts、M32ls、M64ls 和 GS5 VM 类型的 Azure）可以保持足够的 SAP HANA 备份。 客户可选择 " &quot; 热" &quot; 和 "冷" &quot; &quot; blob 存储（请参阅[Azure blob 存储： "热"、"冷" 和 "存档" 访问层](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal)）。
+快速存储 SAP HANA 备份文件的另一个选项是 Azure Blob 存储。 单个 blob 容器的限制为大约 500 TB （对于 SAP HANA 系统而言，使用 M32ts、M32ls、M64ls 和 GS5 VM 类型的 Azure）可以保持足够的 SAP HANA 备份。 客户可选择 " &quot; 热" &quot; 和 "冷" &quot; &quot; blob 存储（请参阅[Azure blob 存储： "热"、"冷" 和 "存档" 访问层](../../../storage/blobs/storage-blob-storage-tiers.md?tabs=azure-portal)）。
 
 使用 blobxfer 工具可以轻松地将 SAP HANA 备份文件直接复制到 Azure Blob 存储。
 
@@ -89,12 +90,12 @@ Azure 中的不同 VM 类型允许附加不同数量的 VHD。 确切的详细�
 
 ## <a name="copy-sap-hana-backup-files-to-nfs-share"></a>将 SAP HANA 备份文件复制到 NFS 共享
 
-Microsoft Azure 通过[Azure NetApp 文件](https://azure.microsoft.com/services/netapp/)提供本机 NFS 共享。 可在容量中创建不同的容量来存储和管理备份。 还可以基于 NetApp 的技术来快照这些卷。 Azure NetApp 文件（和）以三个不同的服务级别提供，它们提供不同的存储吞吐量。 有关更多详细信息，请参阅[Azure NetApp 文件的服务级别](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)一文。 可以按照文章[快速入门：设置 Azure NetApp 文件和创建 nfs 卷](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes?tabs=azure-portal)一文中所述，从和创建和装载 nfs 卷。
+Microsoft Azure 通过[Azure NetApp 文件](https://azure.microsoft.com/services/netapp/)提供本机 NFS 共享。 可在容量中创建不同的容量来存储和管理备份。 还可以基于 NetApp 的技术来快照这些卷。 Azure NetApp 文件（和）以三个不同的服务级别提供，它们提供不同的存储吞吐量。 有关更多详细信息，请参阅[Azure NetApp 文件的服务级别](../../../azure-netapp-files/azure-netapp-files-service-levels.md)一文。 可以按照文章[快速入门：设置 Azure NetApp 文件和创建 nfs 卷](../../../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md?tabs=azure-portal)一文中所述，从和创建和装载 nfs 卷。
 
 除了通过和使用 Azure 的本机 NFS 卷外，还可以通过多种方式创建在 Azure 上提供 NFS 共享的部署。 所有这些解决方案都具有自己部署和管理这些解决方案所需的缺点。 这些文章中介绍了其中的某些可能性：
 
-- [SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)
-- [适用于 SAP NetWeaver 的 Red Hat Enterprise Linux 上的 Azure VM 上的 GlusterFS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)
+- [SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性](./high-availability-guide-suse-nfs.md)
+- [适用于 SAP NetWeaver 的 Red Hat Enterprise Linux 上的 Azure VM 上的 GlusterFS](./high-availability-guide-rhel-glusterfs.md)
 
 通过上述方式创建的 NFS 共享可用于直接执行 HANA 备份，或将对本地磁盘执行的备份复制到这些 NFS 共享。
 
@@ -103,7 +104,7 @@ Microsoft Azure 通过[Azure NetApp 文件](https://azure.microsoft.com/services
 
 ## <a name="copy-sap-hana-backup-files-to-azure-files"></a>将 SAP HANA 备份文件复制到 Azure 文件
 
-可在 Azure Linux VM 内部装入 Azure 文件共享。 [如何将 Azure 文件存储与 Linux 配合使用](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-linux)一文提供了有关如何执行此配置的详细信息。 有关 Azure 文件或 Azure 高级文件的限制，请参阅[Azure 文件可伸缩性和性能目标](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets)一文。
+可在 Azure Linux VM 内部装入 Azure 文件共享。 [如何将 Azure 文件存储与 Linux 配合使用](../../../storage/files/storage-how-to-use-files-linux.md)一文提供了有关如何执行此配置的详细信息。 有关 Azure 文件或 Azure 高级文件的限制，请参阅[Azure 文件可伸缩性和性能目标](../../../storage/files/storage-files-scale-targets.md)一文。
 
 > [!NOTE]
 > SAP HANA 为写入 HANA 备份，不支持具有 CIFS 文件系统的 SMB。 另请参阅[SAP 支持说明 #1820529](https://launchpad.support.sap.com/#/notes/1820529)。 因此，你只能将此解决方案用作已直接针对本地附加磁盘进行的 HANA 数据库备份的最终目标

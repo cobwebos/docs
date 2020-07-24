@@ -1,20 +1,20 @@
 ---
-title: Azure 安全基准 Service Fabric 安全基线
+title: 适用于 Service Fabric 的 Azure 安全基线
 description: Service Fabric 安全基线为实现 Azure 安全基准中指定的安全建议提供过程指南和资源。
 author: msmbaldwin
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d9d5d686c692c45acfff4fa811ed668c17f19861
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 97285ae9eadee3717f0b1a1510627392250424b7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531093"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037859"
 ---
-# <a name="service-fabric-security-baseline-for-azure-security-benchmark"></a>Azure 安全基准 Service Fabric 安全基线
+# <a name="azure-security-baseline-for-service-fabric"></a>适用于 Service Fabric 的 Azure 安全基线
 
 适用于 Service Fabric 的 Azure 安全基线包含有助于改进部署安全状况的建议。
 

@@ -16,25 +16,26 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a7a92bef85cd4ee7530940a065135e88c7530781
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78a4a22771f7880c48722f410f3a2fae0c66e9c8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78675607"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035785"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>使用 Azure 可用性区域的 SAP 工作负荷配置
-[Azure 可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview)是 Azure 提供的高可用性功能之一。 使用可用性区域可提高 Azure 上 SAP 工作负荷的整体可用性。 此功能已在某些 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中推出。 今后会在更多的区域中推出。
+[Azure 可用性区域](../../../availability-zones/az-overview.md)是 Azure 提供的高可用性功能之一。 使用可用性区域可提高 Azure 上 SAP 工作负荷的整体可用性。 此功能已在某些 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中推出。 今后会在更多的区域中推出。
 
 下图显示了 SAP 高可用性的基本体系结构：
 
 ![标准高可用性配置](./media/sap-ha-availability-zones/standard-ha-config.png)
 
-SAP 应用程序层部署在一个 Azure[可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)内。 若要实现 SAP Central Services 的高可用性，可在单独的可用性集中部署两个 VM。 使用 Windows Server 故障转移群集或 Pacemaker (Linux) 作为高可用性框架，并在出现基础结构或软件问题时自动进行故障转移。 若要了解有关这些部署的详细信息，请参阅：
+SAP 应用程序层部署在一个 Azure[可用性集](../../windows/manage-availability.md)内。 若要实现 SAP Central Services 的高可用性，可在单独的可用性集中部署两个 VM。 使用 Windows Server 故障转移群集或 Pacemaker (Linux) 作为高可用性框架，并在出现基础结构或软件问题时自动进行故障转移。 若要了解有关这些部署的详细信息，请参阅：
 
-- [使用群集共享磁盘在 Windows 故障转移群集上群集 SAP ASCS/SCS 实例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
-- [使用文件共享在 Windows 故障转移群集上组建 SAP ASCS/SCS 实例的群集](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)
-- [SUSE Linux Enterprise Server for SAP Applications 上 Azure VM 中的 SAP NetWeaver 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)
-- [Azure 虚拟机在 Red Hat Enterprise Linux 上为 SAP NetWeaver 提供的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
+- [使用群集共享磁盘在 Windows 故障转移群集上群集 SAP ASCS/SCS 实例](./sap-high-availability-guide-wsfc-shared-disk.md)
+- [使用文件共享在 Windows 故障转移群集上组建 SAP ASCS/SCS 实例的群集](./sap-high-availability-guide-wsfc-file-share.md)
+- [SUSE Linux Enterprise Server for SAP Applications 上 Azure VM 中的 SAP NetWeaver 的高可用性](./high-availability-guide-suse.md)
+- [Azure 虚拟机在 Red Hat Enterprise Linux 上为 SAP NetWeaver 提供的高可用性](./high-availability-guide-rhel.md)
 
 类似的体系结构适用于 SAP NetWeaver、S/4HANA 或混合系统的 DBMS 层。 可以使用故障转移群集解决方案以主动/被动模式部署 DBMS 层，防止基础结构或软件出现故障。 故障转移群集解决方案可以是特定于 DBMS 的故障转移框架、Windows Server 故障转移群集或 Pacemaker。
 
@@ -56,8 +57,8 @@ SAP 应用程序层部署在一个 Azure[可用性集](https://docs.microsoft.co
 
 - 部署到 Azure 可用性区域时必须使用 [Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)。 
 - 区域枚举到物理区域的映射限定为 Azure 订阅。 如果使用不同的订阅部署 SAP 系统，则需要为每个订阅定义理想的区域。
-- 除非使用[Azure 邻近度放置组](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)，否则无法在 Azure 可用性区域内部署 azure 可用性集。 如何跨区域部署 SAP DBMS 层和中心服务以及同时部署 SAP 应用程序层（使用可用性集）和仍可实现虚拟机的密切接近，请参阅[Azure 邻近度布局组，以实现 sap 应用程序的最佳网络延迟](sap-proximity-placement-scenarios.md)。 如果不使用 Azure 邻近性放置组，则需要选择其中一项作为虚拟机的部署框架。
-- 不能使用 [Azure 基本负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)基于 Windows Server 故障转移群集或 Linux Pacemaker 创建故障转移群集解决方案。 相反，你需要使用[Azure 标准负载均衡器 SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)。
+- 除非使用[Azure 邻近度放置组](../../linux/co-location.md)，否则无法在 Azure 可用性区域内部署 azure 可用性集。 如何跨区域部署 SAP DBMS 层和中心服务以及同时部署 SAP 应用程序层（使用可用性集）和仍可实现虚拟机的密切接近，请参阅[Azure 邻近度布局组，以实现 sap 应用程序的最佳网络延迟](sap-proximity-placement-scenarios.md)。 如果不使用 Azure 邻近性放置组，则需要选择其中一项作为虚拟机的部署框架。
+- 不能使用 [Azure 基本负载均衡器](../../../load-balancer/load-balancer-overview.md)基于 Windows Server 故障转移群集或 Linux Pacemaker 创建故障转移群集解决方案。 相反，你需要使用[Azure 标准负载均衡器 SKU](../../../load-balancer/load-balancer-standard-availability-zones.md)。
 
 
 
@@ -90,7 +91,7 @@ SAP 应用程序层部署在一个 Azure[可用性集](https://docs.microsoft.co
 
 
 > [!IMPORTANT]
-> 按如上述执行的测量预期会在支持[可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview)的每个 Azure 区域中显示不同的结果。 即使网络延迟要求不变，也仍可能需要在不同 Azure 区域中采用不同的部署策略，因为区域之间的网络延迟可能不同。 在某些 Azure 区域中，三个不同区域之间的网络延迟可能会存在很大的差异。 在其他区域中，三个不同区域之间的网络延迟可能较为一致。 指出区域之间始终存在 1 毫秒到 2 毫秒网络延迟的声明是错误的。 Azure 区域中可用性区域之间的网络延迟不能一般化。
+> 按如上述执行的测量预期会在支持[可用性区域](../../../availability-zones/az-overview.md)的每个 Azure 区域中显示不同的结果。 即使网络延迟要求不变，也仍可能需要在不同 Azure 区域中采用不同的部署策略，因为区域之间的网络延迟可能不同。 在某些 Azure 区域中，三个不同区域之间的网络延迟可能会存在很大的差异。 在其他区域中，三个不同区域之间的网络延迟可能较为一致。 指出区域之间始终存在 1 毫秒到 2 毫秒网络延迟的声明是错误的。 Azure 区域中可用性区域之间的网络延迟不能一般化。
 
 ## <a name="activeactive-deployment"></a>主动/主动部署
 此部署体系结构称为活动/活动，因为你将活动的 SAP 应用程序服务器部署到两个或三个区域。 使用排队复制的 SAP Central Services 实例将部署在两个区域之间。 这同样适用于 DBMS 层，它将部署在 SAP Central Service 所在的相同区域中。
@@ -103,18 +104,18 @@ SAP 应用程序层部署在一个 Azure[可用性集](https://docs.microsoft.co
 
 以下注意事项适用于此配置：
 
-- 如果不使用[Azure 邻近性放置组](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)，则会将 Azure 可用性区域视为所有 vm 的容错域和更新域，因为可用性集不能部署在 Azure 可用性区域中。
+- 如果不使用[Azure 邻近性放置组](../../linux/co-location.md)，则会将 Azure 可用性区域视为所有 vm 的容错域和更新域，因为可用性集不能部署在 Azure 可用性区域中。
 - 如果要合并 DBMS 层和中心服务的区域部署，但要为应用程序层使用 Azure 可用性集，则需要使用 azure 邻近性组一文中所述的 Azure 邻近组，以[实现 SAP 应用程序的最佳网络延迟](sap-proximity-placement-scenarios.md)。
-- 对于 SAP Central Services 故障转移群集以及 DBMS 层的负载均衡器，需要使用[标准 SKU Azure 负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)。 基本负载均衡器不能跨区域工作。
+- 对于 SAP Central Services 故障转移群集以及 DBMS 层的负载均衡器，需要使用[标准 SKU Azure 负载均衡器](../../../load-balancer/load-balancer-standard-availability-zones.md)。 基本负载均衡器不能跨区域工作。
 - 所部署的用于托管 SAP 系统的 Azure 虚拟网络及其子网将跨区域延伸。 不需要隔离每个区域的虚拟网络。
 - 对于部署的所有虚拟机，需要使用[Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)。 区域部署不支持非托管磁盘。
-- Azure 高级存储和[超级 SSD 存储](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd)不支持跨区域的任何存储复制类型。 应用程序（DBMS 或 SAP Central Services）必须复制重要数据。
+- Azure 高级存储和[超级 SSD 存储](../../windows/disks-types.md#ultra-disk)不支持跨区域的任何存储复制类型。 应用程序（DBMS 或 SAP Central Services）必须复制重要数据。
 - 这一点同样适用于共享的 sapmnt 目录，包括共享磁盘 (Windows)、CIFS 共享 (Windows) 或 NFS 共享 (Linux)。 需要采用某种技术来复制此类共享磁盘或者在区域之间共享。 支持以下技术：
-  - 对于 Windows，支持使用 SIOS DataKeeper 的群集解决方案，具体请参阅[使用 Azure 中的群集共享磁盘在 Windows 故障转移群集上组建 SAP ASCS/SCS 实例群集](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)。
-  - 对于 SUSE Linux，支持根据 [SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)中所述构建的 NFS 共享。
+  - 对于 Windows，支持使用 SIOS DataKeeper 的群集解决方案，具体请参阅[使用 Azure 中的群集共享磁盘在 Windows 故障转移群集上组建 SAP ASCS/SCS 实例群集](./sap-high-availability-guide-wsfc-shared-disk.md)。
+  - 对于 SUSE Linux，支持根据 [SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性](./high-availability-guide-suse-nfs.md)中所述构建的 NFS 共享。
     
-    目前，不支持使用[针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)中所述的 Microsoft 横向扩展文件服务的跨区域解决方案。
-- 构建 [SUSE Linux Pacemaker 群集](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device)或其他应用程序实例时，第三个区域用于托管 SBD 设备。
+    目前，不支持使用[针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构](./sap-high-availability-infrastructure-wsfc-file-share.md)中所述的 Microsoft 横向扩展文件服务的跨区域解决方案。
+- 构建 [SUSE Linux Pacemaker 群集](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device)或其他应用程序实例时，第三个区域用于托管 SBD 设备。
 - 若要为关键业务流程实现运行时一致性，可以尝试使用 SAP batch 服务器组、SAP 登录组或 RFC 组将某些批处理作业和用户定向到具有活动 DBMS 实例的区域中的应用程序实例。 但是，发生区域性故障转移时，需要手动将这些组移动到在活动 DB VM 所在区域内的 VM 上运行的实例。  
 - 你可能想要在每个区域中部署一些休眠对话实例。 这样，在使用了一部分应用程序实例的区域出现服务中断时，可以立即恢复以前的资源容量。
 
@@ -133,16 +134,16 @@ SAP 应用程序层部署在一个 Azure[可用性集](https://docs.microsoft.co
 
 - 不能在 Azure 可用性区域中部署可用性集。 若要弥补这一点，可以使用 azure 近程放置组一文中所述的 Azure 邻近性组，以[实现 SAP 应用程序的最佳网络延迟](sap-proximity-placement-scenarios.md)。
 - 使用此体系结构时，需要进行密切监视状态，并尝试使主动 DBMS 和 SAP Central Services 实例与所部署的应用层位于同一区域。 故障转移 SAP Central Services 或 DBMS 实例时，请确保能够尽快手动故障回复到包含所部署的 SAP 应用层的区域。
-- 对于 SAP Central Services 故障转移群集以及 DBMS 层的负载均衡器，需要使用[标准 SKU Azure 负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)。 基本负载均衡器不能跨区域工作。
+- 对于 SAP Central Services 故障转移群集以及 DBMS 层的负载均衡器，需要使用[标准 SKU Azure 负载均衡器](../../../load-balancer/load-balancer-standard-availability-zones.md)。 基本负载均衡器不能跨区域工作。
 - 所部署的用于托管 SAP 系统的 Azure 虚拟网络及其子网将跨区域延伸。 不需要隔离每个区域的虚拟网络。
 - 对于部署的所有虚拟机，需要使用[Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)。 区域部署不支持非托管磁盘。
-- Azure 高级存储和[超级 SSD 存储](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd)不支持跨区域的任何存储复制类型。 应用程序（DBMS 或 SAP Central Services）必须复制重要数据。
+- Azure 高级存储和[超级 SSD 存储](../../windows/disks-types.md#ultra-disk)不支持跨区域的任何存储复制类型。 应用程序（DBMS 或 SAP Central Services）必须复制重要数据。
 - 这一点同样适用于共享的 sapmnt 目录，包括共享磁盘 (Windows)、CIFS 共享 (Windows) 或 NFS 共享 (Linux)。 需要采用某种技术来复制此类共享磁盘或者在区域之间共享。 支持以下技术：
-    - 对于 Windows，支持使用 SIOS DataKeeper 的群集解决方案，具体请参阅[使用 Azure 中的群集共享磁盘在 Windows 故障转移群集上组建 SAP ASCS/SCS 实例群集](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)。
-    - 对于 SUSE Linux，支持根据 [SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)中所述构建的 NFS 共享。
+    - 对于 Windows，支持使用 SIOS DataKeeper 的群集解决方案，具体请参阅[使用 Azure 中的群集共享磁盘在 Windows 故障转移群集上组建 SAP ASCS/SCS 实例群集](./sap-high-availability-guide-wsfc-shared-disk.md)。
+    - 对于 SUSE Linux，支持根据 [SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性](./high-availability-guide-suse-nfs.md)中所述构建的 NFS 共享。
     
-  目前，不支持使用[针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)中所述的 Microsoft 横向扩展文件服务的跨区域解决方案。
-- 构建 [SUSE Linux Pacemaker 群集](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device)或其他应用程序实例时，第三个区域用于托管 SBD 设备。
+  目前，不支持使用[针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构](./sap-high-availability-infrastructure-wsfc-file-share.md)中所述的 Microsoft 横向扩展文件服务的跨区域解决方案。
+- 构建 [SUSE Linux Pacemaker 群集](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device)或其他应用程序实例时，第三个区域用于托管 SBD 设备。
 - 应在被动区域中部署休眠 VM（从 DBMS 角度看），以便在发生区域故障时能够启动应用程序资源。
     - [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) 目前无法在区域之间将主动 VM 复制到休眠 VM。 
 - 应该投资购买自动化功能，以便在某个区域发生故障时，自动在另一区域中启动 SAP 应用层。
@@ -163,16 +164,16 @@ Microsoft 不会共享有关托管 Azure 区域中不同 Azure 可用性区域�
 - 使用此体系结构时，需要进行密切监视状态，并尝试使主动 DBMS 和 SAP Central Services 实例与所部署的应用层位于同一区域。 故障转移 SAP Central Services 或 DBMS 实例时，请确保能够尽快手动故障回复到包含所部署的 SAP 应用层的区域。
 - VM 中应该预装了运行主动 QA 应用程序实例的生产应用程序实例。
 - 发生区域性故障时，需要关闭 QA 应用程序实例并启动生产实例。 请注意，需要使用应用程序实例的虚拟名称才能进行此操作。
-- 对于 SAP Central Services 故障转移群集以及 DBMS 层的负载均衡器，需要使用[标准 SKU Azure 负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)。 基本负载均衡器不能跨区域工作。
+- 对于 SAP Central Services 故障转移群集以及 DBMS 层的负载均衡器，需要使用[标准 SKU Azure 负载均衡器](../../../load-balancer/load-balancer-standard-availability-zones.md)。 基本负载均衡器不能跨区域工作。
 - 所部署的用于托管 SAP 系统的 Azure 虚拟网络及其子网将跨区域延伸。 不需要隔离每个区域的虚拟网络。
 - 对于部署的所有虚拟机，需要使用[Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)。 区域部署不支持非托管磁盘。
-- Azure 高级存储和[超级 SSD 存储](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd)不支持跨区域的任何存储复制类型。 应用程序（DBMS 或 SAP Central Services）必须复制重要数据。
+- Azure 高级存储和[超级 SSD 存储](../../windows/disks-types.md#ultra-disk)不支持跨区域的任何存储复制类型。 应用程序（DBMS 或 SAP Central Services）必须复制重要数据。
 - 这一点同样适用于共享的 sapmnt 目录，包括共享磁盘 (Windows)、CIFS 共享 (Windows) 或 NFS 共享 (Linux)。 需要采用某种技术来复制此类共享磁盘或者在区域之间共享。 支持以下技术：
-    - 对于 Windows，支持使用 SIOS DataKeeper 的群集解决方案，具体请参阅[使用 Azure 中的群集共享磁盘在 Windows 故障转移群集上组建 SAP ASCS/SCS 实例群集](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)。
-    - 对于 SUSE Linux，支持根据 [SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)中所述构建的 NFS 共享。
+    - 对于 Windows，支持使用 SIOS DataKeeper 的群集解决方案，具体请参阅[使用 Azure 中的群集共享磁盘在 Windows 故障转移群集上组建 SAP ASCS/SCS 实例群集](./sap-high-availability-guide-wsfc-shared-disk.md)。
+    - 对于 SUSE Linux，支持根据 [SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性](./high-availability-guide-suse-nfs.md)中所述构建的 NFS 共享。
 
-  目前，不支持使用[针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)中所述的 Microsoft 横向扩展文件服务的跨区域解决方案。
-- 构建 [SUSE Linux Pacemaker 群集](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device)或其他应用程序实例时，第三个区域用于托管 SBD 设备。
+  目前，不支持使用[针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构](./sap-high-availability-infrastructure-wsfc-file-share.md)中所述的 Microsoft 横向扩展文件服务的跨区域解决方案。
+- 构建 [SUSE Linux Pacemaker 群集](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device)或其他应用程序实例时，第三个区域用于托管 SBD 设备。
 
 
 
@@ -181,11 +182,5 @@ Microsoft 不会共享有关托管 Azure 区域中不同 Azure 可用性区域�
 ## <a name="next-steps"></a>后续步骤
 下面是跨 Azure 可用性区域进行部署的后续步骤：
 
-- [使用 Azure 中的群集共享磁盘在 Windows 故障转移群集上组建 SAP ASCS/SCS 实例群集](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
-- [针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)
-
-
-
-
-
-
+- [使用 Azure 中的群集共享磁盘在 Windows 故障转移群集上组建 SAP ASCS/SCS 实例群集](./sap-high-availability-guide-wsfc-shared-disk.md)
+- [针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构](./sap-high-availability-infrastructure-wsfc-file-share.md)

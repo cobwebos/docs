@@ -3,7 +3,7 @@ title: 授权管理中的委派和角色-Azure AD
 description: 了解如何将 IT 管理员的访问管理委派给部门经理和项目经理，使他们能够自行管理访问权限。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,15 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/07/2019
-ms.author: ajburnle
+ms.date: 07/22/2020
+ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86d924860e97b15a0a4af46c5bc35b0e0050292b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa18b55884a22f6c64f1c08bd5be8a71b265029a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692132"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034377"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>委托和角色 Azure AD 的权利管理
 
@@ -75,7 +76,7 @@ ms.locfileid: "84692132"
 
 权利管理具有以下特定的角色。
 
-| 权利管理角色 | 描述 |
+| 权利管理角色 | 说明 |
 | --- | --- |
 | 目录创建者 | 创建和管理目录。 通常，该角色是不充当全局管理员的 IT 管理员，或者是资源集合的资源所有者。 创建目录的人员将自动成为该目录的第一个目录所有者，并可以添加其他目录所有者。 目录创建者无法管理或查看他们不拥有的目录，也无法将他们不拥有的资源添加到目录中。 如果目录创建者需要管理其他目录或添加不拥有的资源，则他们可以请求成为该目录或资源的共同所有者。 |
 | 目录所有者 | 编辑和管理现有目录。 通常，该角色是 IT 管理员或资源所有者，或者是目录所有者指定的用户。 |
@@ -83,7 +84,7 @@ ms.locfileid: "84692132"
 
 此外，访问包的指定审批者和请求者也拥有权限，但他们不是角色。
 
-| 权限 | 描述 |
+| Right | 说明 |
 | --- | --- |
 | 审批者 | 由策略授权，可以批准或拒绝对访问包的请求，但无法更改访问包定义。 |
 | 请求者 | 由访问包的策略授权，可以请求该访问包。 |

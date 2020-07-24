@@ -6,12 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 04/23/2020
-ms.openlocfilehash: 8d002fae52fec1fafb2ad8e63bd8e3b779a1537c
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.custom: devx-track-java
+ms.openlocfilehash: 2e001e5e927d9d4c5dc4c3eb74f7b5ad33617b99
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984817"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037570"
 ---
 # <a name="security-controls-for-azure-spring-cloud-service"></a>Azure Spring Cloud 服务的安全控制
 安全控制内置于 Azure 春季云服务中。
@@ -30,4 +31,4 @@ ms.locfileid: "85984817"
 
 | 安全控制 | Yes/No | 注释 | 文档 |
 |:-------------|:-------|:-------------------------------|:----------------------|
-| 服务标记 | 是 | 使用**AzureSpringCloud**服务标记来定义[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)或[azure 防火墙](https://docs.microsoft.com/azure/firewall/service-tags)上的出站网络访问控制，以允许到 Azure 春季云应用程序的流量。<br><br>*注意：* 目前，2020/07/07 之后创建的新的 Azure 春季云服务实例支持**AzureSpringCloud**服务标记。 | [服务标记](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) |
+| 服务标记 | 是 | 使用**AzureSpringCloud**服务标记来定义[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)或[azure 防火墙](https://docs.microsoft.com/azure/firewall/service-tags)上的出站网络访问控制，以允许到 Azure 春季云应用程序的流量。<br><br>*注意：* 目前，2020/07/14 之后创建的新的 Azure 春季云服务实例支持**AzureSpringCloud**服务标记。 | [服务标记](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) |

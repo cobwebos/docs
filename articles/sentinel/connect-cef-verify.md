@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 07a6b84569fe0356267440e38b31ac738b2659d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6892f4ebb250290a0faad546fd000530baf4479
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260825"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038165"
 ---
 # <a name="step-3-validate-connectivity"></a>步骤3：验证连接性
 
@@ -54,21 +54,23 @@ ms.locfileid: "85260825"
 
 1. 检查文件是否包含以下文本：
 
-        <source>
-            type syslog
-            port 25226
-            bind 127.0.0.1
-            protocol_type tcp
-            tag oms.security
-            format /(?<time>(?:\w+ +){2,3}(?:\d+:){2}\d+|\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.[\w\-\:\+]{3,12}):?\s*(?:(?<host>[^: ]+) ?:?)?\s*(?<ident>.*CEF.+?(?=0\|)|%ASA[0-9\-]{8,10})\s*:?(?<message>0\|.*|.*)/
-            <parse>
-                message_format auto
-            </parse>
-        </source>
+    ```console
+    <source>
+        type syslog
+        port 25226
+        bind 127.0.0.1
+        protocol_type tcp
+        tag oms.security
+        format /(?<time>(?:\w+ +){2,3}(?:\d+:){2}\d+|\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.[\w\-\:\+]{3,12}):?\s*(?:(?<host>[^: ]+) ?:?)?\s*(?<ident>.*CEF.+?(?=0\|)|%ASA[0-9\-]{8,10})\s*:?(?<message>0\|.*|.*)/
+        <parse>
+            message_format auto
+        </parse>
+    </source>
 
-        <filter oms.security.**>
-            type filter_syslog_security
-        </filter>
+    <filter oms.security.**>
+        type filter_syslog_security
+    </filter>
+    ```
 
 1. 检查计算机上是否存在可能阻止网络流量的安全增强功能（如主机防火墙）。
 
@@ -76,17 +78,21 @@ ms.locfileid: "85260825"
 
     - 配置文件：`/etc/rsyslog.d/security-config-omsagent.conf`
 
-            :rawmsg, regex, "CEF"|"ASA"
-            *.* @@127.0.0.1:25226
-
+        ```console
+        :rawmsg, regex, "CEF"|"ASA"
+        *.* @@127.0.0.1:25226
+        ```
+  
 1. 检查 syslog 后台程序是否正在接收端口514上的数据
 
 1. 检查是否建立了必需的连接：用于接收数据的 tcp 514、用于 syslog 守护程序和 Log Analytics 代理之间的内部通信的 tcp 25226
 
 1. 向 localhost 上的端口514发送模拟数据。 通过运行以下查询，在 Azure Sentinel 工作区中可观察到此数据：
 
-        CommonSecurityLog
-        | where DeviceProduct == "MOCK"
+    ```console
+    CommonSecurityLog
+    | where DeviceProduct == "MOCK"
+    ```
 
 # <a name="syslog-ng-daemon"></a>[syslog-ng 守护程序](#tab/syslogng)
 
@@ -96,21 +102,23 @@ ms.locfileid: "85260825"
 
 1. 检查文件是否包含以下文本：
 
-        <source>
-            type syslog
-            port 25226
-            bind 127.0.0.1
-            protocol_type tcp
-            tag oms.security
-            format /(?<time>(?:\w+ +){2,3}(?:\d+:){2}\d+|\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.[\w\-\:\+]{3,12}):?\s*(?:(?<host>[^: ]+) ?:?)?\s*(?<ident>.*CEF.+?(?=0\|)|%ASA[0-9\-]{8,10})\s*:?(?<message>0\|.*|.*)/
-            <parse>
-                message_format auto
-            </parse>
-        </source>
+    ```console
+    <source>
+        type syslog
+        port 25226
+        bind 127.0.0.1
+        protocol_type tcp
+        tag oms.security
+        format /(?<time>(?:\w+ +){2,3}(?:\d+:){2}\d+|\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.[\w\-\:\+]{3,12}):?\s*(?:(?<host>[^: ]+) ?:?)?\s*(?<ident>.*CEF.+?(?=0\|)|%ASA[0-9\-]{8,10})\s*:?(?<message>0\|.*|.*)/
+        <parse>
+            message_format auto
+        </parse>
+    </source>
 
-        <filter oms.security.**>
-            type filter_syslog_security
-        </filter>
+    <filter oms.security.**>
+        type filter_syslog_security
+    </filter>
+    ```
 
 1. 检查计算机上是否存在可能阻止网络流量的安全增强功能（如主机防火墙）。
 
@@ -118,9 +126,11 @@ ms.locfileid: "85260825"
 
     - 配置文件：`/etc/syslog-ng/conf.d/security-config-omsagent.conf`
 
-            filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
-            destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
-            log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
+        ```console
+        filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
+        destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
+        log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
+        ```
 
 1. 检查 syslog 后台程序是否正在接收端口514上的数据
 
@@ -128,9 +138,10 @@ ms.locfileid: "85260825"
 
 1. 向 localhost 上的端口514发送模拟数据。 通过运行以下查询，在 Azure Sentinel 工作区中可观察到此数据：
 
-        CommonSecurityLog
-        | where DeviceProduct == "MOCK"
-
+    ```console
+    CommonSecurityLog
+    | where DeviceProduct == "MOCK"
+    ```
 ---
 
 ## <a name="next-steps"></a>后续步骤

@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 53c9653b44a6c9d26d49d37b351cf6000676e2d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 711f5293b205c1f500c6d9e08154342285ef959b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75651964"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033186"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft.Network.VirtualNetworkCombo UI 元素
 
@@ -19,11 +20,11 @@ ms.locfileid: "75651964"
 
 当用户选取一个新的虚拟网络时，用户可以自定义每个子网的名称和地址前缀。 配置子网是可选的。
 
-![Microsoft.Network.VirtualNetworkCombo 新](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-new.png)
+![Microsoft.Network.VirtualNetworkCombo 新](./media/managed-application-elements/microsoft-network-virtualnetworkcombo-new.png)
 
 当用户选取一个现有虚拟网络时，用户必须将部署模板所需的每个子网映射到现有子网。 在此情况下，配置子网是必需的。
 
-![Microsoft.Network.VirtualNetworkCombo 现有](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-existing.png)
+![Microsoft.Network.VirtualNetworkCombo 现有](./media/managed-application-elements/microsoft-network-virtualnetworkcombo-existing.png)
 
 ## <a name="schema"></a>架构
 

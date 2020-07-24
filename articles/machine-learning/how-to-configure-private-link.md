@@ -9,17 +9,20 @@ ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 03/13/2020
-ms.openlocfilehash: ed3b59b9e6aecb91f4ecb9d569b989b6b2396c48
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.date: 07/14/2020
+ms.openlocfilehash: 4e76a7adf7435cc1bdee3bb4e64f8cc699a16724
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134880"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031212"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>为 Azure 机器学习工作区配置 Azure 专用链接（预览）
 
-本文档介绍如何将 Azure 专用链接与 Azure 机器学习工作区配合使用。 此功能目前以预览版形式在“美国东部”、“美国西部 2”、“美国中南部”区域提供。 
+本文档介绍如何将 Azure 专用链接与 Azure 机器学习工作区配合使用。 
+
+> [!IMPORTANT]
+> 将 Azure Private Link 与 Azure 机器学习工作区结合使用目前为公共预览版。 此功能仅在**美国东部**、**美国西部 2**和**美国中南部**区域提供。 此预览版在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 使用 Azure 专用链接，可以通过专用终结点连接到工作区。 专用终结点是虚拟网络中的一组专用 IP 地址。 然后，你可以限制工作区访问权限，只允许通过专用 IP 地址访问你的工作区。 专用链接有助于降低数据外泄风险。 若要详细了解专用终结点，请参阅 [Azure 专用链接](/azure/private-link/private-link-overview)一文。
 
@@ -112,6 +115,9 @@ az group deployment create \
 若要保护工作区使用的 Azure 存储帐户，请将其置于虚拟网络中。
 
 若要了解如何将存储帐户置于虚拟网络中，请参阅[对工作区使用存储帐户](how-to-enable-virtual-network.md#use-a-storage-account-for-your-workspace)。
+
+> [!WARNING]
+> Azure 机器学习不支持使用启用了专用链接的 Azure 存储帐户。
 
 ## <a name="using-azure-key-vault"></a>使用 Azure Key Vault
 

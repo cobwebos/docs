@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: terrylan
-ms.openlocfilehash: 3925e39824d1702ff43a6b981ac997ddab658b96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6058b0d72eafe3a44ebdbabf291af05c08e772b3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80548658"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038267"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>适用于 Azure 市场映像的安全建议
 
@@ -27,9 +27,8 @@ ms.locfileid: "80548658"
 
 ## <a name="open-source-based-images"></a>打开基于源的映像
 
-|||
-|--------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **类别**                                                 | **检查**                                                                                                                                                                                                                                                                              |
+| Category | 检查 |
+| -------- | ----- |
 | 安全性                                                     | 安装适用于 Linux 分发版的所有最新安全修补程序。                                                                                                                                                                                                              |
 | 安全性                                                     | 遵循行业准则，保护特定 Linux 分发版的 VM 映像。                                                                                                                                                                                     |
 | 安全性                                                     | 限制攻击面，仅保留必要的 Windows Server 角色、功能、服务和网络端口来保持最小的占用空间。                                                                                                                                               |
@@ -50,9 +49,8 @@ ms.locfileid: "80548658"
 
 ## <a name="windows-server-based-images"></a>基于 Windows Server 的映像
 
-|||
-|-------------| -------------------------|
-| **类别**                                                     | **检查**                                                                                                                                                                |
+| Category | 检查 |
+|--------- | ----- |
 | 安全性                                                         | 使用安全 OS 的基础映像。 用于任何基于 Windows Server 的映像源的 VHD 必须来自 Microsoft Azure 所提供的 Windows Server OS 映像。 |
 | 安全性                                                         | 安装所有最新的安全更新。                                                                                                                                     |
 | 安全性                                                         | 应用程序不应依赖于受限用户名，如管理员、root 或 admin。                                                                |

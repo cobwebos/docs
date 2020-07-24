@@ -5,17 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/13/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa25cffd84ee9255fed8bbaa0f2fb6adf762b47e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6f5cabace81d53edf36ac6be0a2eb8830e6cc5f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84483789"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035071"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题
 
@@ -55,6 +56,8 @@ ms.locfileid: "84483789"
 
 验证结果（成功或拒绝）和任何拒绝原因（如果有）与身份验证数据一起存储。 可在身份验证和使用情况报告中使用这些数据。
 
+有关详细信息，请参阅[Azure 多重身份验证的数据驻留和客户数据](concept-mfa-data-residency.md)。
+
 ### <a name="what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users"></a>哪些短信简短代码用于向用户发送短信？
 
 在美国中，我们将使用以下短信短代码：
@@ -69,7 +72,9 @@ ms.locfileid: "84483789"
 * *759731*
 * *673801*
 
-不保证基于短信或基于语音的多重身份验证提示传递相同的数字。 为了用户的利益，我们在做出路线调整期间可能随时添加或删除简短代码，以提高短信传送能力。 除美国和加拿大以外的国家或地区，我们不支持短代码。
+不保证基于短信或基于语音的多重身份验证提示传递相同的数字。 为了用户的利益，我们在做出路线调整期间可能随时添加或删除简短代码，以提高短信传送能力。
+
+除美国和加拿大以外的国家或地区，我们不支持短代码。
 
 ## <a name="billing"></a>计费
 
@@ -185,7 +190,7 @@ ms.locfileid: "84483789"
 
 对于使用 Azure MFA 服务器 v7.0 或更高版本的单向短信，可以通过设置注册表项来配置超时设置。 在 MFA 云服务发送短信后，验证码（或一次性密码）将返回给 MFA 服务器。 默认情况下，MFA 服务器将验证码存储在内存中，保持期为 300 秒。 如果用户在 300 秒后未输入验证码，身份验证将遭拒。 若要更改默认超时设置，请按照以下步骤操作：
 
-1. 转到  `HKLM\Software\Wow6432Node\Positive Networks\PhoneFactor` 。
+1. 转到 `HKLM\Software\Wow6432Node\Positive Networks\PhoneFactor`。
 2. 创建一个名为*pfsvc_pendingSmsTimeoutSeconds*的**DWORD**注册表项，并设置想要 Azure MFA 服务器存储一次密码的时间（以秒为单位）。
 
 >[!TIP]

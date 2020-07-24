@@ -11,19 +11,19 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/08/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: d6b1d5c66c1dd15fa12638dd451d1ce2fa8fa79f
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 194864d223d908cc2d8b1d7f14efe81e16bbd058
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146731"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031501"
 ---
 # <a name="connect-to-azure-storage-services"></a>连接到 Azure 存储服务
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍如何**通过 Azure 机器学习数据存储连接到 Azure 存储服务**。 数据存储会存储连接信息，例如与工作区关联的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 中的订阅 ID 和令牌授权，让你能够安全地访问存储，而无需在脚本中对其进行硬编码。 
 
-**对于不支持的存储解决方案**，以及在 ML 试验期间节省数据出口成本，请[将数据移动](#move)到受支持的 Azure 存储解决方案。  可从[这些 Azure 存储解决方案](#matrix)创建数据存储。 
+**对于不受支持的存储解决方案**，以及在 ML 试验期间节省数据出口成本，请[将数据移](#move)到支持的 Azure 存储解决方案。  可从[这些 Azure 存储解决方案](#matrix)创建数据存储。 
 
 若要了解在 Azure 机器学习总体数据访问工作流中的哪些位置使用数据存储，请参阅[安全地访问数据](concept-data.md#data-workflow)一文。
 
@@ -92,8 +92,9 @@ ms.locfileid: "86146731"
 ### <a name="python-sdk"></a>Python SDK
 
 所有注册方法都位于 [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) 类，并具有窗体 `register_azure_*`。
+
 > [!IMPORTANT]
-> 如果计划为虚拟网络中的存储帐户创建数据存储，请参阅访问虚拟网络中的数据部分。
+> 如果计划为虚拟网络中的存储帐户创建数据存储，请参阅[访问虚拟网络中的数据](#access-data-in-a-virtual-network)部分。
 
 可在 [Azure 门户](https://portal.azure.com)上找到填充 `register_azure_*()` 方法所需的信息。
 
@@ -185,7 +186,7 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 在 Azure 机器学习工作室中，通过几个步骤创建新的数据存储：
 
 > [!IMPORTANT]
-> 如果你的数据存储帐户位于虚拟网络中，则需要执行其他配置步骤以确保 studio 可以访问你的数据。 请参阅 [网络隔离 & 隐私] (操作方法 "操作方法" "操作方法"。) ，以确保应用适当的配置步骤。 
+> 如果你的数据存储帐户位于虚拟网络中，则需要执行其他配置步骤以确保 studio 可以访问你的数据。 请参阅[网络隔离 & 隐私性](how-to-enable-virtual-network.md#machine-learning-studio)，以确保应用适当的配置步骤。 
 
 1. 登录到 [Azure 机器学习工作室](https://ml.azure.com/)。
 1. 在左窗格中的“管理”下，选择“数据存储” 。

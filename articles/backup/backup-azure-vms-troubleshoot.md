@@ -4,12 +4,12 @@ description: 在本文中，学习如何排查在备份和还原 Azure 虚拟机
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: e40b74cc5bf995e943b20ddcd21127ed4f7d7ead
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 5393ba1b7c604ef49cee83f759ed798cfc473417
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184185"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032827"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上的备份失败问题
 
@@ -21,13 +21,13 @@ ms.locfileid: "86184185"
 
 ### <a name="basic-troubleshooting"></a>基本故障排除
 
-* 确保 VM 代理（WA 代理）为[最新版本](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent)。
-* 确保 Windows 或 Linux VM OS 版本受支持，详见 [IaaS VM 备份支持矩阵](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas)。
+* 确保 VM 代理（WA 代理）为[最新版本](./backup-azure-arm-vms-prepare.md#install-the-vm-agent)。
+* 确保 Windows 或 Linux VM OS 版本受支持，详见 [IaaS VM 备份支持矩阵](./backup-support-matrix-iaas.md)。
 * 验证另一备份服务是否在运行。
-  * 若要确保没有快照扩展问题，请[卸载扩展，然后强制重新加载并重试备份](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout)。
+  * 若要确保没有快照扩展问题，请[卸载扩展，然后强制重新加载并重试备份](./backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)。
 * 验证 VM 是否已建立 Internet 连接。
   * 确保另一备份服务未运行。
-* 在 `Services.msc` 中确保 **Windows Azure 来宾代理**服务处于“正在运行”状态。 如果 **Windows Azure 来宾代理**服务缺失，请按照[在恢复服务保管库中备份 Azure VM](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent) 中的说明来安装它。
+* 在 `Services.msc` 中确保 **Windows Azure 来宾代理**服务处于“正在运行”状态。 如果 **Windows Azure 来宾代理**服务缺失，请按照[在恢复服务保管库中备份 Azure VM](./backup-azure-arm-vms-prepare.md#install-the-vm-agent) 中的说明来安装它。
 * **事件日志**可能会显示其他备份产品（例如 Windows Server 备份）的备份故障，而不是因 Azure 备份导致的故障。 通过以下步骤确定问题是否来自 Azure 备份：
   * 如果事件源或消息的“备份”条目出现错误，请检查 Azure IaaS VM Backup 备份是否已成功，以及是否已使用所需快照类型创建一个还原点。
   * 如果 Azure 备份正常运行，则问题可能出在其他备份解决方案。
@@ -133,7 +133,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
    * 读取权限
 2. 删除其中发布对象为经典部署模式或“Windows Azure CRP 证书生成器”的所有证书 ：
 
-   * [在本地计算机控制台上打开证书](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)。
+   * [在本地计算机控制台上打开证书](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)。
    * 在“个人” > “证书”下，删除其中发布对象为经典部署模式或 Windows Azure CRP 证书生成器的所有证书   。
 3. 触发 VM 备份作业。
 
@@ -193,7 +193,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 找不到 Azure 虚拟机。
 
 删除主 VM 时会发生此错误，但备份策略仍会查找要备份的 VM。 要修复此错误，请执行以下步骤：
-- 重新创建具有相同名称和相同资源组名称的虚拟机，“云服务名称”<br>或
+- 重新创建具有相同名称和相同资源组名称的虚拟机，“云服务名称”<br>or
 - 通过删除或不删除备份数据来停止保护虚拟机。 有关更多信息，请参阅[停止保护虚拟机](backup-azure-manage-vms.md#stop-protecting-a-vm)。</li></ol>
 
 ## <a name="usererrorbcmpremiumstoragequotaerror---could-not-copy-the-snapshot-of-the-virtual-machine-due-to-insufficient-free-space-in-the-storage-account"></a>UserErrorBCMPremiumStorageQuotaError-由于存储帐户中的可用空间不足，无法复制虚拟机的快照
@@ -208,8 +208,8 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 VM 代理是 Azure 恢复服务扩展的先决条件。 安装 Azure 虚拟机代理并重启注册操作。 <br> <ol> <li>检查 VM 代理是否安装正确。 <li>确保已正确设置 VM 配置中的标志。</ol> 阅读有关安装 VM 代理以及如何验证 VM 代理安装的详细信息。
 
-## <a name="extensionsnapshotbitlockererror---the-snapshot-operation-failed-with-the-volume-shadow-copy-service-vss-operation-error"></a>ExtensionSnapshotBitlockerError-快照操作失败，出现卷影复制服务 (VSS) 操作错误
-错误代码：ExtensionSnapshotBitlockerError <br/> 错误消息：快照操作失败，卷影复制服务 (VSS) 操作错误**此驱动器已被 BitLocker 驱动器加密锁定。必须通过控制面板解锁此驱动器。**
+## <a name="extensionsnapshotbitlockererror---the-snapshot-operation-failed-with-the-volume-shadow-copy-service-vss-operation-error"></a>ExtensionSnapshotBitlockerError-快照操作失败，出现卷影复制服务（VSS）操作错误
+错误代码：ExtensionSnapshotBitlockerError <br/> 错误消息：快照操作失败，出现卷影复制服务（VSS）操作错误：**此驱动器已由 BitLocker 驱动器加密锁定。必须通过控制面板解锁此驱动器。**
 
 关闭 VM 上的所有驱动器的 BitLocker，并检查 VSS 问题是否得到解决。
 
@@ -237,7 +237,7 @@ VM 代理是 Azure 恢复服务扩展的先决条件。 安装 Azure 虚拟机�
 ## <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy-在 VM 上配置了无效的策略，该策略将阻止快照操作
 错误代码：UserErrorRequestDisallowedByPolicy <BR> 错误消息：在 VM 上配置了防止快照操作的无效策略。
 
-如果你的 Azure 策略[控制环境中的标记](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags)，请考虑将该策略从 [Deny 效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny)更改为 [Modify 效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify)，或者按照 [Azure 备份所需的命名架构](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)要求手动创建资源组。
+如果你的 Azure 策略[控制环境中的标记](../governance/policy/tutorials/govern-tags.md)，请考虑将该策略从 [Deny 效果](../governance/policy/concepts/effects.md#deny)更改为 [Modify 效果](../governance/policy/concepts/effects.md#modify)，或者按照 [Azure 备份所需的命名架构](./backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines)要求手动创建资源组。
 
 ## <a name="jobs"></a>作业
 
@@ -254,13 +254,13 @@ VM 代理是 Azure 恢复服务扩展的先决条件。 安装 Azure 虚拟机�
 | --- | --- |
 | 还原失败，发生云内部错误。 |<ol><li>尝试还原的云服务使用 DNS 设置进行配置。 可以检查： <br>“$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production"     Get-AzureDns -DnsSettings $deployment.DnsSettings”。<br>如果配置了“地址”，则配置了 DNS 设置。<br> <li>尝试还原的云服务配置了“ReservedIP”，且云服务中的现有 VM 处于停止状态。 可以使用以下 PowerShell cmdlet 检查云服务是否已保留 IP：$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName。 <br><li>正在尝试将具有以下特殊网络配置的虚拟机还原到同一个云服务中： <ul><li>采用负载均衡器配置的虚拟机（内部和外部）。<li>具有多个保留 IP 的虚拟机。 <li>具有多个 NIC 的虚拟机。 </ul><li>请在 UI 中选择新的云服务，或参阅[还原注意事项](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations)，了解具有特殊网络配置的 VM。</ol> |
 | 已存在所选的 DNS 名称： <br>请指定其他 DNS 名称，然后重试。 |此 DNS 名称是指云服务名称，通常以 “cloudapp.net”结尾。 此名称必须是唯一名称。 如果出现此错误，则需在还原期间选择其他 VM 名称。 <br><br> 此错误仅向 Azure 门户用户显示。 通过 PowerShell 进行的还原操作成功，因为它仅还原磁盘而不创建 VM。 如果在磁盘还原操作之后显式创建 VM，则会遇到该错误。 |
-| 指定的虚拟网络配置不正确： <br>指定其他虚拟网络配置，然后重试。 |无 |
-| 指定的云服务使用与要还原的虚拟机的配置不匹配的保留 IP： <br>指定不使用保留的 IP 的其他云服务。 或者选择要还原的其他恢复点。 |无 |
-| 云服务已达到其输入终结点数量的限制： <br>通过指定其他云服务或使用现有终结点重试该操作。 |无 |
-| 恢复服务保管库和目标存储帐户位于两个不同的区域： <br>确保还原操作中指定的存储帐户与恢复服务保管库位于同一 Azure 区域中。 |无 |
-| 为还原操作指定的存储帐户不受支持： <br>仅支持具有本地冗余或异地冗余复制设置的基本或标准存储帐户。 选择受支持的存储帐户。 |无 |
+| 指定的虚拟网络配置不正确： <br>指定其他虚拟网络配置，然后重试。 |None |
+| 指定的云服务使用与要还原的虚拟机的配置不匹配的保留 IP： <br>指定不使用保留的 IP 的其他云服务。 或者选择要还原的其他恢复点。 |None |
+| 云服务已达到其输入终结点数量的限制： <br>通过指定其他云服务或使用现有终结点重试该操作。 |None |
+| 恢复服务保管库和目标存储帐户位于两个不同的区域： <br>确保还原操作中指定的存储帐户与恢复服务保管库位于同一 Azure 区域中。 |None |
+| 为还原操作指定的存储帐户不受支持： <br>仅支持具有本地冗余或异地冗余复制设置的基本或标准存储帐户。 选择受支持的存储帐户。 |None |
 | 为还原操作指定的存储帐户的类型不是联机状态： <br>确保还原操作中指定的存储帐户处于联机状态。 |如果 Azure 存储中出现暂时性错误或中断，可能会发生此错误。 请选择另一个存储帐户。 |
-| 资源组配额已达限制： <br>请从 Azure 门户中删除某些资源组，或者与 Azure 支持部门联系，以提高限额。 |无 |
+| 资源组配额已达限制： <br>请从 Azure 门户中删除某些资源组，或者与 Azure 支持部门联系，以提高限额。 |None |
 | 所选子网不存在： <br>选择存在的子网。 |无 |
 | 备份服务无权访问订阅中的资源。 |要修复此错误，请首先使用[还原备份磁盘](backup-azure-arm-restore-vms.md#restore-disks)中的步骤来还原磁盘。 然后使用[从已还原的磁盘创建 VM](backup-azure-vms-automation.md#restore-an-azure-vm) 中的 PowerShell 步骤。 |
 
@@ -277,12 +277,12 @@ VM 代理是 Azure 恢复服务扩展的先决条件。 安装 Azure 虚拟机�
 #### <a name="windows-vms"></a>Windows VM
 
 * 下载并安装 [代理 MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 需要有管理员权限才能完成安装。
-* 对于使用经典部署模型创建的虚拟机，请[更新 VM 属性](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms)以指示已安装代理。 Azure 资源管理器虚拟机不需要此步骤。
+* 对于使用经典部署模型创建的虚拟机，请[更新 VM 属性](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms)以指示已安装代理。 Azure 资源管理器虚拟机不需要此步骤。
 
 #### <a name="linux-vms"></a>Linux VM
 
 * 从分发存储库安装最新版本的代理。 有关包名称的详细信息，请参阅 [Linux 代理存储库](https://github.com/Azure/WALinuxAgent)。
-* 对于使用经典部署模型创建的 VM，请[更新 VM 属性](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms)并验证是否已安装代理。 无需对资源管理器虚拟机执行此步骤。
+* 对于使用经典部署模型创建的 VM，请[更新 VM 属性](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms)并验证是否已安装代理。 无需对资源管理器虚拟机执行此步骤。
 
 ### <a name="update-the-vm-agent"></a>更新 VM 代理
 
@@ -292,7 +292,7 @@ VM 代理是 Azure 恢复服务扩展的先决条件。 安装 Azure 虚拟机�
 
 #### <a name="linux-vms"></a>Linux VM
 
-* 要更新 Linux VM 代理，请按照[更新 Linux VM 代理](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)一文中的说明进行操作。
+* 要更新 Linux VM 代理，请按照[更新 Linux VM 代理](../virtual-machines/extensions/update-linux-agent.md?toc=/azure/virtual-machines/linux/toc.json)一文中的说明进行操作。
 
     > [!NOTE]
     > 始终使用分发存储库来更新代理。
@@ -326,5 +326,5 @@ VM 备份依赖于向底层存储发出快照命令。 如果无法访问存储�
 必须在来宾内启用 DHCP，才能正常进行 IaaS VM 备份。 如果需要静态专用 IP，请通过 Azure 门户或 PowerShell 配置该 IP。 请确保已启用 VM 内的 DHCP 选项。
 获取有关如何通过 PowerShell 设置静态 IP 的详细信息：
 
-* [如何向现有 VM 添加静态内部 IP](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkinterfaceipconfig?view=azps-3.5.0#description)
+* [如何向现有 VM 添加静态内部 IP](/powershell/module/az.network/set-aznetworkinterfaceipconfig#description)
 * [更改分配给网络接口的专用 IP 地址的分配方法](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)

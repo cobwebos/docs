@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 06/29/2020
-ms.openlocfilehash: baa238f36c41b5f494e8748cd5cd563bd212f483
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c082c74ab448fda0926b5aab52088bf00fb719bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610704"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031144"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集
 
@@ -33,7 +33,8 @@ ms.locfileid: "85610704"
 * 与其他用户共享数据和展开协作。
 
 ## <a name="prerequisites"></a>先决条件
-' 若要创建和使用数据集，需要：
+
+若要创建和使用数据集，需要做好以下准备：
 
 * Azure 订阅。 如果还没有该订阅，可以在开始前创建一个免费帐户。 试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
@@ -42,13 +43,13 @@ ms.locfileid: "85610704"
 * [已安装适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)，其中包含 azureml-datasets 包。
 
 > [!NOTE]
-> 某些数据集类依赖于[dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py)包，此包仅兼容64位 Python。 对于 Linux 用户，只有以下分发版支持这些类：Red Hat Enterprise Linux、Ubuntu、Fedora 和 CentOS。
+> 某些数据集类依赖于[dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py)包，此包仅兼容64位 Python。 对于 Linux 用户，仅以下分发版支持这些类： Red Hat Enterprise Linux （7、8）、Ubuntu （14.04、16.04、18.04）、Fedora （27，28）、Debian （8、9）和 CentOS （7）。
 
 ## <a name="compute-size-guidance"></a>计算大小指南
 
 创建数据集时，请检查计算处理能力和内存中的数据大小。 存储中的数据大小不同于数据帧中的数据大小。 例如，CSV 文件中的数据在数据帧中最多可以扩展到 10 倍，因此，1 GB 的 CSV 文件在数据帧中可能会变成 10 GB。 
 
-主要因素是数据集（即作为数据帧的数据集）在内存中的大小。 建议将计算大小和处理能力设置为包含 2 倍大小的 RAM。 因此，如果数据帧为 10 GB，则需要一个 20+ GB RAM 的计算目标，确保可以将数据帧恰当地置于内存中并对其进行处理。 如果数据已压缩，则可进一步让其扩展；以压缩 parquet 格式存储的 20 GB 相对稀疏的数据可以在内存中扩展到大约 800 GB。 由于 Parquet 文件以纵栏格式存储数据，因此，如果只需要一半的列，则只需在内存中加载大约 400 GB。
+主要因素是数据集（即作为数据帧的数据集）在内存中的大小。 建议将计算大小和处理能力设置为包含 2 倍大小的 RAM。 因此，如果你的数据帧为10GB，则需要具有 20 GB RAM 的计算目标，以确保数据帧可以容纳在内存中并进行处理。 如果数据已压缩，则可进一步让其扩展；以压缩 parquet 格式存储的 20 GB 相对稀疏的数据可以在内存中扩展到大约 800 GB。 由于 Parquet 文件以纵栏格式存储数据，因此，如果只需要一半的列，则只需在内存中加载大约 400 GB。
  
 如果使用的是 Pandas，则没有理由使用超过 1 个 vCPU，因为它只需要使用这么多。 只需将 `import pandas as pd` 改为 `import modin.pandas as pd`，即可根据需要通过 Modin 和 Dask/Ray 轻松地在单个 Azure 机器学习计算实例/节点上并行化为多个 vCPU，并横向扩展成大群集。 
  
@@ -121,10 +122,10 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |PassengerId|Survived|Pclass|名称|Sex|Age|SibSp|Parch|Ticket|Fare|Cabin|Embarked
+|编入|PassengerId|Survived|Pclass|名称|Sex|Age|SibSp|Parch|Ticket|Fare|Cabin|Embarked
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|False|3|Braund, Mr. Owen Harris|男|22.0|1|0|A/5 21171|7.2500||S
-1|2|True|1|Cumings, Mrs. John Bradley (Florence Briggs Th...|female|38.0|1|0|PC 17599|71.2833|C85|C
+1|2|正确|1|Cumings, Mrs. John Bradley (Florence Briggs Th...|女|38.0|1|0|PC 17599|71.2833|C85|C
 2|3|True|3|Heikkinen, Miss. Laina|女|26.0|0|0|STON/O2. 3101282|7.9250||S
 
 若要从内存中 pandas 数据帧创建数据集，请将数据写入本地文件（例如 csv），然后从该文件创建数据集。 下面的代码演示了此工作流。
@@ -158,7 +159,7 @@ dataset = Dataset.Tabular.from_delimited_files(datastore.path('data/prepared.csv
 
 from azureml.core import Dataset, Datastore
 
-# create tabular dataset from a SQL database in datastore
+# create tabular dataset from a SQL database in datastore. Take note of double parenthesis.
 sql_datastore = Datastore.get(workspace, 'mssql')
 sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'))
 ```
@@ -186,7 +187,7 @@ data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 
 #### <a name="create-a-filedataset"></a>创建 FileDataset
 
-使用 `FileDatasetFactory` 类中的 [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) 方法可以加载任意格式的文件并创建未注册的 FileDataset。 如果存储位于虚拟网络或防火墙后面，请在 `from_files()` 方法中设置参数 `validate =False`。 这会绕过初始验证步骤，确保可以从这些安全文件创建数据集。
+使用 `FileDatasetFactory` 类中的 [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) 方法可以加载任意格式的文件并创建未注册的 FileDataset。 如果存储位于虚拟网络或防火墙后面，请 `validate=False` 在方法中设置参数 `from_files()` 。 这会绕过初始验证步骤，确保可以从这些安全文件创建数据集。
 
 ```Python
 # create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
@@ -210,6 +211,7 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 1. 选择“创建数据集”以选择数据集的源。 此源可以是本地文件、数据存储或公共 URL。
 1. 为“数据集类型”选择“表格”或“文件”。 
 1. 选择“下一步”，打开“数据存储和文件选择”窗体。 在此窗体上，可以选择在创建数据集后保留数据集的位置，还可以选择要用于数据集的具体数据文件。 
+    1. 如果数据位于虚拟网络中，请启用 "跳过验证"。 了解有关[虚拟网络隔离和隐私](how-to-enable-virtual-network.md#machine-learning-studio)的详细信息。
 1. 选择“下一步”以填充“设置和预览”以及“架构”窗体；它们是根据文件类型智能填充的。在这些窗体上进行创建之前，可以进一步配置数据集。   
 1. 选择“下一步”，查看“确认详细信息”窗体。 检查所做的选择，为数据集创建可选的数据配置文件。 详细了解[数据分析](how-to-use-automated-ml-for-ml-models.md#profile)。 
 1. 选择“创建”以完成数据集的创建。

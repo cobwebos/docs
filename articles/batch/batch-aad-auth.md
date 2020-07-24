@@ -4,12 +4,12 @@ description: Batch 支持 Azure AD 在 Batch 服务中进行身份验证。 了�
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: a8601c69c37e973118a7ec9521070864caffb101
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 7daf26d7c52e07be999bb93edd6fe694f79d1be2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170303"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032453"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>使用 Active Directory 对 Batch 服务解决方案进行身份验证
 
@@ -193,7 +193,7 @@ Azure Batch 资源终结点用于获取对 Batch 服务的请求进行身份验�
 }
 ```
 
-有关创建自定义角色的更多常规信息，请参阅 [Azure 资源的自定义角色](../role-based-access-control/custom-roles.md)。
+有关创建自定义角色的更多常规信息，请参阅[Azure 自定义角色](../role-based-access-control/custom-roles.md)。
 
 ### <a name="get-the-tenant-id-for-your-azure-active-directory"></a>获取 Azure Active Directory 的租户 ID
 

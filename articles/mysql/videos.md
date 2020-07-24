@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: c18604a9f4b95f4b586efaf3201dd0a679d8d316
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b306bc55c97b977d0f06fa3e7a56f734f2f9db9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60342604"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030634"
 ---
 # <a name="azure-database-for-mysql-videos"></a>Azure Database for MySQL 视频
 
@@ -19,7 +19,7 @@ ms.locfileid: "60342604"
 
 >[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T147/player]
 
-Azure Database for PostgreSQL 和 Azure Database for MySQL 将社区版数据库引擎和完全托管服务的功能组合在一起，因此你可以专注于应用而无需管理数据库。 收看以快速了解使用该服务的优点，并查看运行中的一些功能。
+Azure Database for PostgreSQL 和 Azure Database for MySQL 将社区版数据库引擎和完全托管服务的功能组合在一起，因此你可以专注于应用而无需管理数据库。 收看以快速了解使用该服务的优点，并查看运行中的一些功能。 请参阅如何创建[Azure Database for PostgreSQL](https://azure.microsoft.com/resources/videos/create-an-azure-database-for-postgresql-server-in-the-azure-portal)和[Azure Database for MySQL](https://azure.microsoft.com/resources/videos/create-an-azure-database-for-mysql-server-by-using-the-azure-portal)。
 
 [深入了解 MySQL 和 PostgreSQL 的托管服务功能](https://channel9.msdn.com/Events/Connect/2017/T148)
 

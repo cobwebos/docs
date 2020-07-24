@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: na
 ms.date: 10/04/2016
 ms.author: sedusch
-ms.openlocfilehash: 9525f339861b5de8dc22da753f7c36dcc6eede8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ceeb20b138307b40fcd6f8c03d614fc3e811473
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70078995"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035768"
 ---
 # <a name="using-sap-on-linux-virtual-machines-in-azure"></a>在 Azure 中的 Linux 虚拟机上使用 SAP
 云计算是一个广泛使用的术语，它在 IT 行业（从小公司到大型跨国企业）中受到越来越多的重视。 Microsoft Azure 是 Microsoft 提供的一个云服务平台，它提供了各种新的可能性。 现在客户能够快速将应用程序预配为云服务并可取消预配，因此他们不会受到技术或预算方面的限制。 公司不用在硬件基础结构中投入时间和预算，而是可以重点关注应用程序、业务流程以及它为客户和用户带来的好处。
 
-借助 Microsoft Azure 虚拟机，Microsoft 提供全面的基础结构即服务 (IaaS) 平台。 Azure 虚拟机 (IaaS) 支持基于 SAP NetWeaver 的应用程序。 以下白皮书介绍如何在 Azure 中的 Windows 虚拟机上规划和实现基于 SAP NetWeaver 的应用程序。 也可以在 [Windows 虚拟机](../../virtual-machines-windows-classic-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)上实现基于 SAP NetWeaver 的应用程序。
+借助 Microsoft Azure 虚拟机，Microsoft 提供全面的基础结构即服务 (IaaS) 平台。 Azure 虚拟机 (IaaS) 支持基于 SAP NetWeaver 的应用程序。 以下白皮书介绍如何在 Azure 中的 Windows 虚拟机上规划和实现基于 SAP NetWeaver 的应用程序。 也可以在 [Windows 虚拟机](./get-started.md?toc=/azure/virtual-machines/windows/classic/toc.json)上实现基于 SAP NetWeaver 的应用程序。
 
 [!INCLUDE [virtual-machines-common-classic-sap-get-started](../../../../includes/virtual-machines-common-classic-sap-get-started.md)]
 
@@ -36,5 +36,4 @@ ms.locfileid: "70078995"
 
 更新时间：2015 年 12 月
 
-[此文可在此处找到](suse-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
+[此文可在此处找到](./sap-deployment-checklist.md?toc=/azure/virtual-machines/linux/toc.json)

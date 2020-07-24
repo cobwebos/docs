@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 4253e496aca4cbf71fab7ef0ee388b1356df5c16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82103da3f2547baab62d0d95cf9a6084ef099cba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84456787"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033761"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>在 IoT 设备上选择并部署安全代理
 
@@ -43,19 +44,18 @@ ms.locfileid: "84456787"
 
 |     | 基于 C 的安全代理 | 基于 c # 的安全代理 |
 | --- | ----------- | --------- |
-| 开源 | [GitHub](https://aka.ms/iot-security-github-c)中的[MIT 许可证](https://en.wikipedia.org/wiki/MIT_License)下提供 | [GitHub](https://aka.ms/iot-security-github-cs)中的[MIT 许可证](https://en.wikipedia.org/wiki/MIT_License)下提供 |
-| 开发语言    | C | C# |
-| 支持的 Windows 平台？ | 否 | 是 |
-| Windows 先决条件 | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
-| 支持的 Linux 平台？ | 是、x64 和 x86 | 是，仅 x64 |
-| Linux 先决条件 | libunwind8、libcurl3、uuid-runtime、审核、audispd-插件 | libunwind8，libcurl3，uuid-runtime，审核，audispd-插件，sudo，netstat，iptables |
-| 磁盘占用量 | 10.5 MB | 90 MB |
-| 内存占用量（平均） | 5.5 MB | 33 MB |
-| 向 IoT 中心进行[身份验证](concept-security-agent-authentication-methods.md) | 是 | 是 |
-| 安全数据[收集](how-to-agent-configuration.md#supported-security-events) | 是 | 是 |
-| 事件聚合 | 是 | 是 |
-| 通过[安全模块](concept-security-module.md)克隆远程配置 | 是 | 是 |
-|
+| **开源** | [GitHub](https://aka.ms/iot-security-github-c)中的[MIT 许可证](https://en.wikipedia.org/wiki/MIT_License)下提供 | [GitHub](https://aka.ms/iot-security-github-cs)中的[MIT 许可证](https://en.wikipedia.org/wiki/MIT_License)下提供 |
+| **开发语言**    | C | C# |
+| **支持的 Windows 平台？** | 否 | 是 |
+| **Windows 先决条件** | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
+| **支持的 Linux 平台？** | 是、x64 和 x86 | 是，仅 x64 |
+| **Linux 先决条件** | libunwind8、libcurl3、uuid-runtime、审核、audispd-插件 | libunwind8，libcurl3，uuid-runtime，审核，audispd-插件，sudo，netstat，iptables |
+| **磁盘占用量** | 10.5 MB | 90 MB |
+| **内存占用量（平均）** | 5.5 MB | 33 MB |
+| **向 IoT 中心进行[身份验证](concept-security-agent-authentication-methods.md)** | 是 | 是 |
+| **安全数据[收集](how-to-agent-configuration.md#supported-security-events)** | 是 | 是 |
+| **事件聚合** | 是 | 是 |
+| **通过[安全模块](concept-security-module.md)克隆远程配置** | 是 | 是 |
 
 ## <a name="security-agent-installation-guidelines"></a>安全代理安装指南
 

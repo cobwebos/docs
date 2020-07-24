@@ -3,12 +3,12 @@ title: Azure 服务总线 - 暂停消息实体
 description: 本文介绍如何暂时暂停和重新激活 Azure 服务总线消息实体（队列、主题和订阅）。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 4c4e554ada8c66b56d5d466c7becfc813701402a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da7c25c8ef9f3daa32984ac26aa62710ab775951
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339995"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038131"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>暂停（禁用）和重新激活消息实体
 
@@ -20,7 +20,7 @@ ms.locfileid: "85339995"
 
 在门户中，相应实体的“属性”  部分允许更改状态；下面的屏幕截图显示了队列状态的切换开关：
 
-![][1]
+![服务总线功能的屏幕截图，其中突出显示了 "属性" 设置，"队列状态" 选项设置为 "活动" 并以红色列出。][1]
 
 门户只容许完全禁用队列。 也可以单独禁用发送和接收操作，方法是在 .NET Framework SDK 中使用服务总线 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API，或通过 Azure CLI 或 Azure PowerShell 使用 Azure 资源管理器模板。
 
@@ -35,9 +35,9 @@ ms.locfileid: "85339995"
 -   **SendDisabled**：队列部分处于暂停状态，允许执行接收操作。
 -   **ReceiveDisabled**：队列部分处于暂停状态，允许执行发送操作。
 
-对于订阅和主题，只能设置“Active”  和“Disabled”  。
+对于订阅和主题，只能设置“Active”**** 和“Disabled”****。
 
-[EntityStatus](/dotnet/api/microsoft.servicebus.messaging.entitystatus) 枚举还定义了一组只能由系统设置的过渡状态。 下面的示例展示了用于禁用队列的 PowerShell 命令。 重新激活命令等同于以下示例，只需将 `Status` 设置为“Active”  即可。
+[EntityStatus](/dotnet/api/microsoft.servicebus.messaging.entitystatus) 枚举还定义了一组只能由系统设置的过渡状态。 下面的示例展示了用于禁用队列的 PowerShell 命令。 重新激活命令等同于以下示例，只需将 `Status` 设置为“Active”**** 即可。
 
 ```powershell
 $q = Get-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue

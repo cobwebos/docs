@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 07/17/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 67a54a2cd4fa071fd47bcebb9aa53fd11fefd61e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 001de375edab7505ed4687d848aca0ad0965dbfb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80154910"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034901"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>为何更新为 Microsoft 标识平台 (v2.0)？
 
@@ -141,34 +141,7 @@ Microsoft 标识平台终结点将演变为消除此处列出的限制，因此�
 
 ### <a name="restrictions-on-redirect-urls"></a>重定向 URL 的限制
 
-为 Microsoft 标识平台注册的应用限制为一组有限的重定向 URL 值。 Web 应用和服务的重定向 URL 必须以方案 `https` 开头，并且所有重定向 URL 值必须共享一个 DNS 域。  注册系统会将现有重定向 URL 的完整 DNS 名称与要添加的重定向 URL 的 DNS 名称相比较。 也支持将 `http://localhost` 用作重定向 URL。  
-
-如果满足以下任一条件，添加 DNS 名称的请求会失败：  
-
-* 新的重定向 URL 的完整 DNS 名称与现有的重定向 URL 的 DNS 名称不匹配。
-* 新重定向 URL 的完整 DNS 名称不是现有重定向 URL 的子域。
-
-#### <a name="example-1"></a>示例 1
-
-如果应用的重定向 URL 为 `https://login.contoso.com`，则你可以添加 DNS 名称完全匹配的重定向 URL，如以下示例所示：
-
-`https://login.contoso.com/new`
-
-或者，可以引用 login.contoso.com 的 DNS 子域，如以下示例所示：
-
-`https://new.login.contoso.com`
-
-#### <a name="example-2"></a>示例 2
-
-若要在应用中包含 `login-east.contoso.com` 和 `login-west.contoso.com` 作为重定向 URL，必须按以下顺序添加这些重定向 URL：
-
-`https://contoso.com`  
-`https://login-east.contoso.com`  
-`https://login-west.contoso.com`  
-
-可以添加后两个重定向 URL，因为它们是第一个重定向 URL (contoso.com) 的子域。
-
-一个特定应用程序只能有 20 个回复 URL - 此限制适用于注册支持的所有应用类型（单页应用程序 (SPA)、本机客户端、Web 应用和服务）。  
+有关注册到 Microsoft 标识平台的应用的重定向 Url 限制的最新信息，请参阅 Microsoft 标识平台文档中的[重定向 URI/回复 url 限制和限制](https://docs.microsoft.com/azure/active-directory/develop/reply-url)。
 
 若要了解如何注册应用以配合 Microsoft 标识平台使用，请参阅[使用新的应用注册体验来注册应用](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
 

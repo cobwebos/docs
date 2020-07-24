@@ -3,11 +3,12 @@ title: 在创建 Azure VM 时启用备份
 description: 介绍了如何在创建 Azure VM 时通过 Azure 备份启用备份。
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 7739109eb8bad88c9b723e67e13adc78c127499a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7fb6fd25f5031669633641ea02f34180f6f795d4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80672810"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032844"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>在创建 Azure VM 时启用备份
 
@@ -29,7 +30,7 @@ ms.locfileid: "80672810"
 
 2. 在 Azure 市场中，单击“计算”，然后选择一个 VM 映像。
 
-3. 根据适用于 [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) 或 [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) 的说明设置 VM。
+3. 根据适用于 [Windows](../virtual-machines/windows/quick-create-portal.md) 或 [Linux](../virtual-machines/linux/quick-create-portal.md) 的说明设置 VM。
 
 4. 在“管理”选项卡上，在“启用备份”中，单击“开启”。
 5. Azure 备份将备份到恢复服务保管库。 如果没有现有的保管库，请单击“新建”。

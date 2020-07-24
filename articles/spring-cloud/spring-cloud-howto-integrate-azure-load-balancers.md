@@ -6,12 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.openlocfilehash: 7022c4587b425168fc5bd2182ed65c281633aabf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 3a7ed148c4bc8d58b2dcbc344656137a403c62eb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82177076"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037536"
 ---
 # <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>将 Azure Spring Cloud 与 Azure 负载均衡解决方案集成
 
@@ -38,7 +39,7 @@ Azure 已提供不同的负载均衡解决方案。 有三个选项可用于将 
 在流量管理器中添加终结点：
 1.  指定要为*外部终结点*的**类型**。
 1.  输入每个 Azure 春季 cloud 公共终结点的完全限定的域名（FQDN）。
-1. 单击" **确定**"。
+1. 单击“确定”  。
 
     ![流量管理器 1 ](media/spring-cloud-load-balancers/traffic-manager-1.png) ![ 流量管理器2](media/spring-cloud-load-balancers/traffic-manager-2.png)
 

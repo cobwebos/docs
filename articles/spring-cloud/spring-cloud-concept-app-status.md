@@ -6,12 +6,13 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: brendm
-ms.openlocfilehash: 70a9e6392e21422d7513197fbf7a1a75e1f6ab8f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: e3ef202a1a98b8193b55bcc4c2cb616d4a2000d8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82568999"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037757"
 ---
 # <a name="understanding-app-status-in-azure-spring-cloud"></a>了解 Azure Spring Cloud 中的应用状态
 
@@ -31,7 +32,7 @@ Azure 春季云 UI 提供有关正在运行的应用程序的状态的信息。 
 
 | 枚举 | 定义 |
 |:--:|:----------------:|
-| 正在运行 | 部署应正在运行。 |
+| 运行 | 部署应正在运行。 |
 | 已停止 | 部署应停止。 |
 
 **只能从 CLI 访问设置状态。 它被报告为以下值之一：**
@@ -41,7 +42,7 @@ Azure 春季云 UI 提供有关正在运行的应用程序的状态的信息。 
 | Creating | 正在创建资源。 |
 | 更新 | 正在更新资源。 |
 | 成功 | 已成功提供资源并部署二进制文件。 |
-| 已失败 | 未能实现*成功*目标。 |
+| 失败 | 未能实现*成功*目标。 |
 | 正在删除 | 正在删除资源。 这会阻止操作，并且资源在此状态下不可用。 |
 
 ## <a name="app-instances-status"></a>应用程序实例状态
@@ -57,8 +58,8 @@ Azure 春季云 UI 提供有关正在运行的应用程序的状态的信息。 
 | 枚举 | 定义 |
 |:--:|:----------------:|
 | 正在启动 | 该二进制文件已成功部署到给定的实例。 启动 jar 文件的实例可能会失败，因为 jar 无法正常运行。 |
-| 正在运行 | 实例有效。 |
-| 已失败 | 应用实例多次重试后未能启动用户的二进制文件。 |
+| 运行 | 实例有效。 |
+| 失败 | 应用实例多次重试后未能启动用户的二进制文件。 |
 | 因 | 正在关闭应用程序实例。 |
 
 **实例的发现状态将报告为以下值之一：**

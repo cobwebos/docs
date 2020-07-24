@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/09/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 4ba48e5beb8ce4b4ae126dd23acbe0dec650f655
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 49a1b190ece4ae4e937757e88af325a29f4825c5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232145"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031110"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure 资源管理器模板为 Azure 机器学习创建工作区
 
@@ -30,7 +30,7 @@ ms.locfileid: "86232145"
 
 * 一个 **Azure 订阅**。 如果没有订阅，可试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
-* 若要在 CLI 中使用模板，需要安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* 若要在 CLI 中使用模板，需要安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.2.0) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="workspace-resource-manager-template"></a>工作区资源管理器模板
 
@@ -154,6 +154,9 @@ New-AzResourceGroupDeployment `
 * 为工作区启用高机密性设置
 * 启用工作区加密
 * 使用现有的 Azure Key Vault 检索客户管理的密钥
+
+> [!IMPORTANT]
+> 创建工作区后，无法更改机密数据、加密、密钥保管库 ID 或密钥标识符的设置。 要更改这些值，必须使用新值创建新工作区。
 
 有关详细信息，请参阅[静态加密](concept-enterprise-security.md#encryption-at-rest)。
 
@@ -353,6 +356,9 @@ New-AzResourceGroupDeployment `
 * 清除运行之间的本地暂存磁盘。
 * 使用 key vault，将存储帐户、容器注册表和 SSH 帐户的凭据从执行层安全传递到计算群集。
 * 启用 IP 筛选，以确保不会由 AzureMachineLearningService 以外的任何外部服务调用基础批处理池。
+
+    > [!IMPORTANT]
+    > 创建工作区后，无法更改机密数据、加密、密钥保管库 ID 或密钥标识符的设置。 要更改这些值，必须使用新值创建新工作区。
 
   有关详细信息，请参阅[静态加密](concept-enterprise-security.md#encryption-at-rest)。
 
