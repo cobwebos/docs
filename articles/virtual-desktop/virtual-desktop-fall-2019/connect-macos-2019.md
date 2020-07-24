@@ -1,5 +1,5 @@
 ---
-title: 从 macOS 连接到 Windows 虚拟桌面-Azure
+title: 从 macOS 连接到 Windows 虚拟桌面秋季 2019-Azure
 description: 如何使用 macOS 客户端连接到 Windows 虚拟桌面。
 services: virtual-desktop
 author: heidilohr
@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 024a1ab1a7fef58bd5fd8f9e7e0fc743a4ecee71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d8f9e3a5f4c529e3574be7dbeae8bd385f85367
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213153"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087101"
 ---
 # <a name="connect-with-the-macos-client"></a>使用 macOS 客户端进行连接
 
@@ -37,7 +38,7 @@ ms.locfileid: "85213153"
 2. 输入源 URL。 该项可以是 URL 或电子邮件地址：
    - 如果使用 URL，请输入管理员提供给你的 URL。 此 URL 通常是 <https://rdweb.wvd.microsoft.com>。
    - 若要使用电子邮件地址，请输入你的电子邮件地址。 这会指示客户端搜索与你的电子邮件地址关联的 URL，前提是管理员已采用这种方式配置了服务器。
-3. 选择 **添加** 。
+3. 选择“添加”  。
 4. 出现提示时，请使用用户帐户登录。
 
 登录后，应该会看到可用资源的列表。

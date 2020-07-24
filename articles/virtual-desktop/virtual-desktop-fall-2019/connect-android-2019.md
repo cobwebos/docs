@@ -1,5 +1,5 @@
 ---
-title: 从 Android 连接到 Windows 虚拟桌面-Azure
+title: 从 Android 连接到 Windows 虚拟桌面秋季 2019-Azure
 description: 如何使用 Android 客户端连接到 Windows 虚拟桌面。
 services: virtual-desktop
 author: heidilohr
@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 802e957c9473276dfa73a3ffd93fdd7c526dbf26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccea4e39146500cb9d3796c4ca99725e2e2ac429
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213238"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087146"
 ---
 # <a name="connect-with-the-android-client"></a>使用 Android 客户端进行连接
 
@@ -36,7 +37,7 @@ ms.locfileid: "85213238"
 
 若要订阅源，请执行以下操作：
 
-1. 在“连接中心”点击“+”  ，然后点击“远程资源源”  。
+1. 在“连接中心”点击“+”，然后点击“远程资源源”。
 2. 在 "**源 url** " 字段中输入源 url。 源 URL 可以是 URL，也可以是电子邮件地址。
    - 如果使用 URL，请使用管理员为你提供的（通常为） <https://rdweb.wvd.microsoft.com> 。
    - 若要使用电子邮件地址，请输入你的电子邮件地址。 如果管理员配置了服务器，则客户端将搜索与你的电子邮件地址关联的 URL。

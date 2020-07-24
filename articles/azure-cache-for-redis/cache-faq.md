@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: 9a6ee4f5b18c6747796f33bc433d1d40982205a3
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 89a87e1658f413b0a8cd757525450de30277d943
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185001"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086874"
 ---
 # <a name="azure-cache-for-redis-faq"></a>用于 Redis 的 Azure 缓存常见问题解答
 了解 Azure Redis 缓存的常见问题、模式和最佳做法。
@@ -19,7 +19,6 @@ ms.locfileid: "86185001"
 ## <a name="what-if-my-question-isnt-answered-here"></a>如果未在此处找到相关问题怎么办？
 如果未在此处找到相关问题，请联系我们获取帮助。
 
-* 可在此常见问题解答末尾的评论处发布问题，并与 Azure 缓存团队和其他社区成员就本文进行讨论。
 * 若希望更多的人看到问题，可以将问题发布在[有关 Azure 缓存的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-cache-redis.html)并与 Azure 缓存团队和社区的其他成员讨论。
 * 如果想要发出功能请求，可将请求和意见提交到 [Azure Redis 缓存 User Voice](https://feedback.azure.com/forums/169382-cache)。
 * 还可通过 [Azure 缓存外部反馈](mailto:azurecache@microsoft.com)向我们发送电子邮件。
@@ -43,9 +42,9 @@ ms.locfileid: "86185001"
 * [我应该将缓存放在哪个区域？](#in-what-region-should-i-locate-my-cache)
 * [缓存数据驻留在何处？](#where-do-my-cached-data-reside)
 * [Azure Redis 缓存如何计费？](#how-am-i-billed-for-azure-cache-for-redis)
-* [能否将 Azure Redis 缓存用于 Azure 政府云、Azure 中国云或 Microsoft Azure 德国？](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany)
+* [是否可以将 Azure Cache 用于 Redis 与 Azure 政府云、Azure 中国世纪互联云或 Microsoft Azure 德国？](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-21vianet-cloud-or-microsoft-azure-germany)
 
-## <a name="development-faqs"></a>开发常见问题
+## <a name="development-faqs"></a>有关开发的常见问题
 * [StackExchange.Redis 配置选项有什么作用？](#what-do-the-stackexchangeredis-configuration-options-do)
 * [可以使用哪些 Azure Redis 缓存客户端？](#what-azure-cache-for-redis-clients-can-i-use)
 * [Azure Redis 缓存是否有本地模拟器？](#is-there-a-local-emulator-for-azure-cache-for-redis)
@@ -73,10 +72,10 @@ ms.locfileid: "86185001"
 * [客户端为何与缓存断开连接？](#why-was-my-client-disconnected-from-the-cache)
 
 ## <a name="prior-cache-offering-faqs"></a>有关之前缓存产品的常见问题
-* [哪种 Azure 缓存产品适合我？](#which-azure-cache-offering-is-right-for-me)
+* [哪种 Azure 缓存产品适合我？](#which-azure-cache-offerings-is-right-for-me)
 
 ### <a name="what-is-azure-cache-for-redis"></a>什么是 Azure Redis 缓存？
-Azure Redis 缓存基于热门开源软件 [Redis](https://redis.io/)。 这使用户可以访问安全、专用的 Azure Redis 缓存，该缓存由 Microsoft 托管并可从 Azure 内的任何应用程序进行访问。 有关更详细的概述，请参阅 Azure.com 上的 [Azure Redis 缓存](https://azure.microsoft.com/services/cache/)产品页。
+[适用于 Redis 的 Azure 缓存](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-overview)基于流行的开源软件[Redis](https://redis.io/)。 这使用户可以访问安全、专用的 Azure Redis 缓存，该缓存由 Microsoft 托管并可从 Azure 内的任何应用程序进行访问。 有关更详细的概述，请参阅[Azure Cache For Redis](https://azure.microsoft.com/services/cache/)产品页。
 
 ### <a name="how-can-i-get-started-with-azure-cache-for-redis"></a>如何开始使用 Azure Redis 缓存？
 有几种开始使用 Azure Redis 缓存的方法。
@@ -101,7 +100,7 @@ Azure Redis 缓存基于热门开源软件 [Redis](https://redis.io/)。 这使�
 * **网络性能**：如果工作负荷需要较高的吞吐量，则可使用高级层，该层可提供比标准层或基本层更高的带宽。 另外，在每个层中，缓存大小越大，带宽越高，因为是由基础 VM 托管缓存。 有关详细信息，请参阅[下表](#cache-performance)。
 * **吞吐量**：高级级别提供的可用吞吐量最大。 如果缓存服务器或客户端达到带宽限制，客户端可能会出现超时。 有关详细信息，请参阅下表。
 * **高可用性/SLA**：Azure Redis 缓存保证标准/高级缓存在至少 99.9% 的时间内都可用。 若要了解有关 SLA 的详细信息，请参阅 [Azure Redis 缓存定价](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)。 SLA 仅涉及与缓存终结点的连接。 SLA 不涉及对数据丢失的防护。 我们建议使用高级层中的 Redis 数据暂留功能来增加灵活性，防止数据丢失。
-* **Redis 数据持久性**：高级层允许你将缓存数据暂留在 Azure 存储帐户中。 在基本/标准缓存中，所有数据只存储在内存中。 底层基础结构问题可能会导致潜在的数据丢失。 我们建议使用高级层中的 Redis 数据暂留功能来增加灵活性，防止数据丢失。 适用于 Redis 的 Azure Cache 提供 RDB 和 AOF (预览) Redis 暂留中的选项。 有关详细信息，请参阅[如何为高级 Azure Redis 缓存配置持久性](cache-how-to-premium-persistence.md)。
+* **Redis 数据持久性**：高级层允许你将缓存数据暂留在 Azure 存储帐户中。 在基本/标准缓存中，所有数据只存储在内存中。 底层基础结构问题可能会导致潜在的数据丢失。 我们建议使用高级层中的 Redis 数据暂留功能来增加灵活性，防止数据丢失。 Azure Cache for Redis 提供可在 Redis 暂留中使用的 RDB 和 AOF（预览版）选项。 有关详细信息，请参阅[如何为高级 Azure Redis 缓存配置持久性](cache-how-to-premium-persistence.md)。
 * **Redis 群集**：若要创建大于 120 GB 的缓存，或要将数据通过分片的方式分散到多个 Redis 节点，可以使用在高级层中提供的 Redis 群集功能。 每个节点都包含一个主/副缓存对，目的是提高可用性。 有关详细信息，请参阅[如何为高级 Azure Redis 缓存配置群集功能](cache-how-to-premium-clustering.md)。
 * **增强的安全性和网络隔离**：Azure 虚拟网络 (VNET) 部署为 Azure Redis 缓存提供增强的安全性和隔离性，并提供子网、访问控制策略以及其他进一步限制访问的功能。 有关详细信息，请参阅 [如何为高级 Azure Redis 缓存配置虚拟网络支持](cache-how-to-premium-vnet.md)。
 * **配置 Redis**：在标准级别和高级级别，都可以针对 Keyspace 通知来配置 Redis。
@@ -160,9 +159,9 @@ Azure Redis 缓存基于热门开源软件 [Redis](https://redis.io/)。 这使�
 <a name="cache-billing"></a>
 
 ### <a name="how-am-i-billed-for-azure-cache-for-redis"></a>Azure Redis 缓存如何计费？
-Azure Redis 缓存的定价在[此处](https://azure.microsoft.com/pricing/details/cache/)。 定价页列出了每小时费率。 缓存按分钟计费，从创建缓存时开始，到删除缓存时为止。 没有提供用于停止或暂停缓存的计费选项。
+Azure Redis 缓存的定价在[此处](https://azure.microsoft.com/pricing/details/cache/)。 定价页以每小时和每月费率列出定价。 缓存按分钟计费，从创建缓存时开始，到删除缓存时为止。 没有提供用于停止或暂停缓存的计费选项。
 
-### <a name="can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany"></a>能否将 Azure Redis 缓存用于 Azure 政府云、Azure 中国云或 Microsoft Azure 德国？
+### <a name="can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-21vianet-cloud-or-microsoft-azure-germany"></a>是否可以将 Azure Cache 用于 Redis 与 Azure 政府云、Azure 中国世纪互联云或 Microsoft Azure 德国？
 可以，Azure Cache for Redis 可用于 Azure 政府云、Azure 中国世纪互联云和 Microsoft Azure 德国。 与 Azure 公有云相比，这些云中用于访问和管理 Azure Redis 缓存的 URL 有所不同。
 
 | 云   | Redis 的 Dns 后缀            |
@@ -260,7 +259,7 @@ public static ConnectionMultiplexer Connection
 <a name="cache-reference"></a>
 
 ### <a name="why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services"></a>Azure Redis 缓存为何不像某些其他 Azure 服务一样提供 MSDN 类库参考？
-Microsoft Azure Redis 缓存基于主流的开源 Azure Redis 缓存。 对于许多编程语言而言，可以通过各种 [Redis 客户端](https://redis.io/clients) 来访问它。 每个客户端有自身的 API，用于通过 [Redis 命令](https://redis.io/commands)调用 Azure Redis 缓存实例。
+Redis Microsoft Azure 缓存基于流行的开源内存中数据存储 Redis。 它可以通过各种 [Redis 客户端](https://redis.io/clients) 进行访问，这些客户端适用于许多编程语言。 每个客户端有自身的 API，用于通过 [Redis 命令](https://redis.io/commands)调用 Azure Redis 缓存实例。
 
 由于客户端各不相同，因此 MSDN 上未提供统一的类引用，每个客户端都有自己的参考文档。 除了参考文档以外，还可以参阅多个教程，这些教程介绍了如何通过不同的语言和缓存客户端来开始使用 Azure Redis 缓存。 若要访问这些教程，请参阅[如何使用 Azure Redis 缓存](cache-dotnet-how-to-use-azure-redis-cache.md)以及它在内容列表中的同级文章。
 
@@ -298,7 +297,7 @@ Redis 服务器本身不支持 TLS，但 Azure Cache for Redis 可提供此支�
 >
 >
 
-`redis-cli` 等 Redis 工具对 TLS 端口不起作用，但是，可以根据[适用于 Redis 预览版的 ASP.NET 会话状态提供程序通告](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/)中的说明，使用 `stunnel` 等实用工具安全地将这些工具连接到 TLS。
+`redis-cli` 等 Redis 工具对 TLS 端口不起作用，但是，可以根据 [Announcing ASP.NET Session State Provider for Redis Preview Release](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/)（适用于 Redis 预览版的 ASP.NET 会话状态提供程序通告）博客文章中的说明，使用 `stunnel` 等实用程序安全地将这些工具连接到 TLS 端口。
 
 有关下载 Redis 工具的说明，请参阅[如何运行 Redis 命令？](#cache-commands)部分。
 
@@ -467,9 +466,9 @@ Azure Redis 缓存**资源菜单**中还包含了用于对缓存进行监视和�
   * Azure 正在修补已部署缓存的实例
     * 原因可能是 Redis 服务器更新或常规 VM 维护。
 
-### <a name="which-azure-cache-offering-is-right-for-me"></a>哪种 Azure 缓存产品适合我？
+### <a name="which-azure-cache-offerings-is-right-for-me"></a>哪种 Azure 缓存产品适合我？
 > [!IMPORTANT]
-> 按照去年的 [公告](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)，已于 2016 年 11 月 30 日 **停用** Azure 托管缓存服务和 Azure 角色中缓存服务。 我们建议使用 [Azure Redis 缓存](https://azure.microsoft.com/services/cache/)。 有关迁移的信息，请参阅[从托管缓存服务迁移到 Azure Redis 缓存](cache-migrate-to-redis.md)。
+> 根据 2016[公告](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)，Azure 托管缓存服务和 azure 角色中缓存服务已于2016年11月30日**停用**。 我们建议使用 [Azure Redis 缓存](https://azure.microsoft.com/services/cache/)。 有关迁移的信息，请参阅[从托管缓存服务迁移到 Azure Redis 缓存](cache-migrate-to-redis.md)。
 >
 >
 
