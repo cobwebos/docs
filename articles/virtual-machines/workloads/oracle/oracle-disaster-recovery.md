@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: e519010f902e99a3118485b3c8bc57cd47188a1f
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 6d1c7a48332aa49bc5c506ceeae287bc3affef16
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224547"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074084"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>在 Azure 环境下的 Oracle Database 12c 数据库灾难恢复
 
@@ -78,7 +78,7 @@ ms.locfileid: "86224547"
 ![“DR 拓扑”页屏幕截图](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
 ### <a name="approach-2-site-to-site-vpn"></a>方式 2：站点到站点 VPN
-使用站点到站点 VPN 是一个比较好的做法。 有关安装 VPN 的详细信息，请参阅[使用 CLI 创建具有站点到站点 VPN 连接的虚拟网络](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)。
+使用站点到站点 VPN 是一个比较好的做法。 有关安装 VPN 的详细信息，请参阅[使用 CLI 创建具有站点到站点 VPN 连接的虚拟网络](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)。
 
 #### <a name="topology"></a>拓扑
 
@@ -95,7 +95,7 @@ ms.locfileid: "86224547"
 
 ![“DR 拓扑”页屏幕截图](./media/oracle-disaster-recovery/oracle_topology_03.png)
 
-## <a name="additional-reading"></a>其他阅读材料
+## <a name="additional-reading"></a>附加阅读材料
 
 - [在 Azure 上设计和实现 Oracle 数据库](oracle-design.md)
 - [配置 Oracle Data Guard](configure-oracle-dataguard.md)
