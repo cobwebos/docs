@@ -9,12 +9,12 @@ ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 0f8075af53752da0e0abc2dec7ab49c28af2e3ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f63bcbb26752dc787d508260cce0b0518cdc7c38
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374723"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080397"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的网络
 
@@ -44,7 +44,7 @@ Azure 加速网络可以实现对虚拟机的单根 I/O 虚拟化 (SR-IOV)，从
 
 ## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>带 Azure 负载均衡器的 Azure 虚拟机规模集
 
-使用虚拟机规模集和负载均衡器时，应考虑以下各项：
+使用虚拟机规模集和负载均衡器时，应考虑以下事项：
 
 * **多个虚拟机规模集不能使用同一负载均衡器**。
 * **端口转发和入站 NAT 规则**：
@@ -56,15 +56,15 @@ Azure 加速网络可以实现对虚拟机的单根 I/O 虚拟化 (SR-IOV)，从
 * **负载均衡规则**：
   * 在负载均衡器的后端池中使用虚拟机规模集时，会自动创建默认的负载均衡规则。
 * **出站规则**：
-  *  若要为已被负载均衡规则引用的后端池创建出站规则，需要先在创建入站负载均衡规则时在门户中将“创建隐式出站规则”标记为“否”。  
+  *  若要为已被负载均衡规则引用的后端池创建出站规则，需要先在创建入站负载均衡规则时在门户中将“创建隐式出站规则”标记为“否”。 
 
   :::image type="content" source="./media/vmsslb.png" alt-text="创建负载均衡规则" border="true":::
 
 可以使用以下方法部署一个包含现有 Azure 负载均衡器的虚拟机规模集。
 
-* [使用 Azure 门户配置包含现有 Azure 负载均衡器的虚拟机规模集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-portal)。
-* [使用 Azure PowerShell 配置包含现有 Azure 负载均衡器的虚拟机规模集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-powershell)。
-* [使用 Azure CLI 配置包含现有 Azure 负载均衡器的虚拟机规模集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-cli)。
+* [使用 Azure 门户配置包含现有 Azure 负载均衡器的虚拟机规模集](../load-balancer/configure-vm-scale-set-portal.md)。
+* [使用 Azure PowerShell 配置包含现有 Azure 负载均衡器的虚拟机规模集](../load-balancer/configure-vm-scale-set-powershell.md)。
+* [使用 Azure CLI 配置包含现有 Azure 负载均衡器的虚拟机规模集](../load-balancer/configure-vm-scale-set-cli.md)。
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>创建引用应用程序网关的规模集
 若要创建使用应用程序网关的规模集，请在规模集的 ipConfigurations 节中引用应用程序网关的后端地址池，如此 ARM 模板配置所示：

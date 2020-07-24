@@ -10,12 +10,12 @@ ms.author: magoedte
 ms.date: 06/22/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6a1c6bb39e743a96ad110a60e41cc59306e7a2ae
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 437a917e0f9b6e7a7370e828c8e3ee95218cea3f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186378"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079734"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration 概述
 
@@ -73,7 +73,7 @@ Azure Automation State Configuration 向 [PowerShell Desired State Configuration
 >[!NOTE]
 >[Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) 独立产品 SKU 不包含 DSC 的实现。 因此，它不能由 PowerShell DSC 或 Azure Automation State Configuration 进行管理。
 
-对于运行 Linux 的节点，DSC Linux 扩展支持[支持的 Linux 分发](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions)下列出的所有 Linux 分发。
+对于运行 Linux 的节点，DSC Linux 扩展支持[POWERSHELL DSC 文档](/powershell/scripting/dsc/getting-started/lnxgettingstarted)中列出的所有 Linux 分发版。
 
 ### <a name="dsc-requirements"></a>DSC 要求
 

@@ -4,12 +4,12 @@ description: 了解如何在 Azure 备份中使用安全功能，使备份更加
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: 24dc108ce4d9c991b1e062c0435b38a63899a249
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d8f8d6937cd93a9da9c82b2ed501c9fbb815b11
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186764"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079343"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>有助于保护使用 Azure 备份的混合备份的安全功能
 
@@ -48,7 +48,7 @@ ms.locfileid: "82186764"
     ![恢复服务保管库属性的屏幕截图](./media/backup-azure-security-feature/security-settings-update.png)
 
     更新链接将打开“安全设置”边栏选项卡，其中提供功能摘要，并允许启用它们。 
-5. 从下拉列表“是否已配置 Azure 多重身份验证?”  中选择一个值，确认是否已启用 [Azure 多重身份验证](../active-directory/authentication/multi-factor-authentication.md)。 如果已启用，则在登录到 Azure 门户时，系统会要求从另一设备（例如移动电话）进行身份验证。
+5. 从下拉列表“是否已配置 Azure 多重身份验证?”  中选择一个值，确认是否已启用 [Azure 多重身份验证](../active-directory/authentication/concept-mfa-howitworks.md)。 如果已启用，则在登录到 Azure 门户时，系统会要求从另一设备（例如移动电话）进行身份验证。
 
    在备份中执行关键操作时，必须输入 Azure 门户中提供的安全 PIN。 启用多重身份验证相当于增加了一个安全层。 只有获得授权、具有有效 Azure 凭据且通过第二台设备进行身份验证的用户能够访问 Azure 门户。
 6. 要保存安全设置，请选择“启用”，  并单击“保存”  。 只有从上一步的“是否已配置 Azure 多重身份验证?”列表中选择值后，才可选择“启用”。  

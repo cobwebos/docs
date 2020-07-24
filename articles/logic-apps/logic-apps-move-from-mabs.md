@@ -8,11 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: 97399635399c12022006ac95e60c5828bf2a9dc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 975dcc357e244469f33385f84f2e15a89997597b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905432"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078208"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>将应用和解决方案从 BizTalk 服务迁移到 Azure 逻辑应用
 
@@ -52,13 +53,13 @@ BizTalk 服务有几种类型的项目。
 
 BizTalk 服务连接器帮助网桥发送和接收数据，包括启用了基于 HTTP 的请求/响应交互的双向网桥。 逻辑应用使用相同的术语，并具有数百个连接器，这些连接器通过连接到各种技术和服务来达到相同的目的。 例如，连接器可用于云 SaaS 和 PaaS 服务（例如 OneDrive、Office365、Dynamics CRM 及其他服务）并可通过本地数据网关用于本地系统，本地数据网关替代了 BizTalk 服务的 BizTalk 适配器服务。 BizTalk 服务中的源仅限于 FTP、SFTP 和服务总线队列或主题订阅。
 
-![](media/logic-apps-move-from-mabs/sources.png)
+![显示 BizTalk 服务流的关系图。](media/logic-apps-move-from-mabs/sources.png)
 
 默认情况下，每个网桥都有一个 HTTP 终结点，这是通过网桥的“运行时地址”和“相对地址”属性配置的。 若要通过逻辑应用实现相同结果，请使用[请求和响应](../connectors/connectors-native-reqres.md)操作。
 
 ## <a name="xml-processing-and-bridges"></a>XML 处理和网桥
 
-在 BizTalk 服务中，网桥类似于处理管道。 网桥可以获得从连接器接收的数据，对数据执行某些操作，然后将结果发送到另一个系统。 逻辑应用通过支持与 BizTalk 服务相同的基于管道的集成并提供其他集成模式来执行相同的操作。 在 BizTalk 服务中，[XML 请求-答复网桥](https://msdn.microsoft.com/library/azure/hh689781.aspx)称为 VETER 管道，它包括执行以下任务的各个阶段：
+在 BizTalk 服务中，网桥类似于处理管道。 网桥可以获得从连接器接收的数据，对数据执行某些操作，然后将结果发送到另一个系统。 逻辑应用通过支持与 BizTalk 服务相同的基于管道的集成并提供其他集成模式来执行相同的操作。 在 BizTalk 服务中，[XML 请求-答复网桥](/previous-versions/azure/hh689781(v=azure.100))称为 VETER 管道，它包括执行以下任务的各个阶段：
 
 * (V) 验证
 * (E) 扩充
@@ -68,13 +69,13 @@ BizTalk 服务连接器帮助网桥发送和接收数据，包括启用了基于
 
 下图显示了处理在请求和答复之间的拆分情况，这允许分别对请求和答复路径进行控制，例如，通过为每个路径使用不同的映射：
 
-![](media/logic-apps-move-from-mabs/xml-request-reply.png)
+![显示处理在请求和答复之间的拆分方式的屏幕截图。](media/logic-apps-move-from-mabs/xml-request-reply.png)
 
 另外，XML 单向网桥还在处理开头和末尾添加了解码和编码阶段。 直通网桥包含单个扩充阶段。
 
 ### <a name="message-processing-decoding-and-encoding"></a>消息处理、解码和编码
 
-在 BizTalk 服务中，可以接收不同类型的 XML 消息，并确定所接收消息的匹配架构。 此工作是在接收处理管道的“消息类型”  阶段执行的。 然后，解码阶段通过提供的架构，使用检测到的消息类型对消息进行解码。 如果架构为平面文件架构，则此阶段会将传入的平面文件转换为 XML。 
+在 BizTalk 服务中，可以接收不同类型的 XML 消息，并确定所接收消息的匹配架构。 此工作是在接收处理管道的“消息类型”** 阶段执行的。 然后，解码阶段通过提供的架构，使用检测到的消息类型对消息进行解码。 如果架构为平面文件架构，则此阶段会将传入的平面文件转换为 XML。 
 
 逻辑应用提供类似的功能。 你使用不同的连接器触发器通过不同的协议（文件系统、FTP、HTTP，等等）接收平面文件，并使用[平面文件解码](../logic-apps/logic-apps-enterprise-integration-flatfile.md)操作将传入的数据转换为 XML。 无需进行任何更改即可将现有的平面文件架构直接移动到逻辑应用，然后再将架构上传到集成帐户。
 
@@ -90,9 +91,9 @@ BizTalk 服务连接器帮助网桥发送和接收数据，包括启用了基于
 
 BizTalk 服务会做出路由决策，决定由哪个终结点或连接器来发送传入的消息或数据。 可以使用路由筛选器选项从预配置的终结点中进行选择：
 
-![](media/logic-apps-move-from-mabs/route-filter.png)
+![显示路由筛选器选项的屏幕截图。](media/logic-apps-move-from-mabs/route-filter.png)
 
-在 BizTalk 服务中，如果只有两个选项，则使用“条件”  是用于转换 BizTalk 服务中的路由筛选器的最佳方式。 如果不止两个选项，则使用“切换”  。
+在 BizTalk 服务中，如果只有两个选项，则使用“条件”** 是用于转换 BizTalk 服务中的路由筛选器的最佳方式。 如果不止两个选项，则使用“切换”****。
 
 逻辑应用通过[条件语句](../logic-apps/logic-apps-control-flow-conditional-statement.md)和 [switch 语句](../logic-apps/logic-apps-control-flow-switch-statement.md)提供更复杂的逻辑功能以及高级控制流和路由。
 
@@ -102,7 +103,7 @@ BizTalk 服务会做出路由决策，决定由哪个终结点或连接器来发
 
 ### <a name="run-custom-code"></a>运行自定义代码
 
-BizTalk 服务允许你运行在你自己的程序集中上传的[自定义代码](https://msdn.microsoft.com/library/azure/dn232389.aspx)。 此功能是通过 [IMessageInspector](https://msdn.microsoft.com/library/microsoft.biztalk.services.imessageinspector) 接口实现的。 网桥中的每个阶段都包括两个属性（On Enter Inspector 和 On Exit Inspector），它们提供你创建的实现了此接口的 .NET 类型。 通过自定义代码，可以对数据执行更复杂的处理，还可以重复使用程序集中执行常见业务逻辑的现有代码。 
+BizTalk 服务允许你运行在你自己的程序集中上传的[自定义代码](/previous-versions/azure/dn232389(v=azure.100))。 此功能是通过 [IMessageInspector](/azure/logic-apps/logic-apps-move-from-mabs) 接口实现的。 网桥中的每个阶段都包括两个属性（On Enter Inspector 和 On Exit Inspector），它们提供你创建的实现了此接口的 .NET 类型。 通过自定义代码，可以对数据执行更复杂的处理，还可以重复使用程序集中执行常见业务逻辑的现有代码。 
 
 逻辑应用提供两种主要方式来执行自定义代码：Azure Functions 和 API 应用。 可以创建 Azure Functions，也可以从逻辑应用中调用。 请参阅[通过 Azure Functions 为逻辑应用添加和运行自定义代码](../logic-apps/logic-apps-azure-functions.md)。 使用 API 应用（Azure 应用服务的一部分）创建自己的触发器和操作。 了解有关[创建用于逻辑应用的自定义 API](../logic-apps/logic-apps-create-api-app.md) 的详细信息。 
 
@@ -124,7 +125,7 @@ BizTalk 服务和逻辑应用包括 EDI 和 B2B 处理，并支持 AS2（适用�
 
 ## <a name="manage-and-monitor"></a>管理和监视
 
-在 BizTalk 服务中，专用门户提供了跟踪功能来监视和解决问题。 逻辑应用提供了更丰富的跟踪和监视功能来[监视 Azure 门户中的逻辑应用](../logic-apps/monitor-logic-apps.md)，包括用于在移动时监视事物的一款移动应用。
+在 BizTalk 服务中，专用门户提供了跟踪功能来监视和解决问题。 逻辑应用提供了更丰富的跟踪和监视功能，用于[监视 Azure 门户中的逻辑应用](../logic-apps/monitor-logic-apps.md)，并包含一个移动应用，用于在移动时保持注意力。
 
 ## <a name="high-availability"></a>高可用性
 

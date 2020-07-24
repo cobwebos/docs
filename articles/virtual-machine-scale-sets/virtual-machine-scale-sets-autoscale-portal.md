@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: cfbd5af7063a4764820b5ce892a9a2b8a305b1b7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ac42fe3265163a5a967524fe11063803c9ca91d3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494932"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080584"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>在 Azure 门户中自动缩放虚拟机规模集
 创建规模集时，可定义想运行的 VM 实例数。 若应用程序需要更改，可自动增加或减少 VM 实例数。 通过自动缩放功能，可随客户需求的改变而进行调整，或在应用的整个生命周期内响应应用程序性能更改。
@@ -48,8 +48,8 @@ ms.locfileid: "86494932"
     | 时间粒度统计信息 | 定义如何聚合每个时间粒度中收集的指标，以便进行分析。                             | 平均值        |
     | *“运算符”*             | 用于比较指标数据和阈值的运算符。                                                     | 大于   |
     | *阈值*            | 使自动缩放规则触发操作的百分比。                                                 | 70             |
-    | *Duration*             | 比较指标与阈值之前监视的时长。                                   | 10 分钟     |
-    | *操作*            | 定义应用规则时应纵向扩展还是缩减规模集，以及扩展或缩减的量                        | 增加百分比 |
+    | *Duration*             | 比较指标与阈值之前监视的时长。 不包含冷却时间段。                                   | 10 分钟     |
+    | *操作*            | 定义在规则应用和增量时规模集是否应增加或减少。                        | 增加百分比 |
     | *实例计数*       | 规则触发时，应更改 VM 实例的百分比。                                            | 20             |
     | 冷却（分钟）  | 为使自动缩放操作有时间生效，再次应用规则前需要等待的时间。 | 5 分钟      |
 

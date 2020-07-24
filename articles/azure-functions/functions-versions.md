@@ -3,18 +3,19 @@ title: Azure Functions 运行时版本概述
 description: Azure Functions 支持多个版本的运行时。 了解这些版本之间的差异以及如何选择最适合你的版本。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 0989795d802b21e07ad9fea3bd417f0408df706c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29dd4a1ea60c463655c5b9a17fedcf6d51eee927
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996714"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081672"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 运行时版本概述
 
-Azure Functions 当前支持三个版本的运行时主机：1.x、2.x 和3.x。 生产方案支持所有三个版本。  
+Azure Functions 当前支持三个版本的运行时主机：1.x、2.x 和 3.x。 生产方案支持所有三个版本。  
 
 > [!IMPORTANT]
-> 版本1.x 处于维护模式，仅支持在 Azure 门户或本地 Windows 计算机上进行开发。 仅在更高版本中提供增强功能。 
+> 版本 1.x 处于维护模式，仅支持在 Azure 门户或本地 Windows 计算机上进行开发。 仅在更高版本中提供增强功能。 
 
 本文详细介绍了不同版本之间的一些差异、如何创建每个版本，以及如何更改版本。
 
@@ -90,7 +91,7 @@ Azure Functions 版本 3.x 向后高度兼容版本 2.x。  许多应用应该�
 
 #### <a name="net"></a>.NET
 
-* [默认情况下会禁用同步服务器操作](https://docs.microsoft.com/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers)。
+* [默认情况下会禁用同步服务器操作](/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers)。
 
 ### <a name="changing-version-of-apps-in-azure"></a>在 Azure 中更改应用版本
 

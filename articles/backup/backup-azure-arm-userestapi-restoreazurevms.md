@@ -4,11 +4,12 @@ description: 本文介绍如何使用 REST API 管理 Azure 虚拟机备份的�
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 87e3d75d925968b6521324f5b776cf8df1f6af11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aabf687fb1f21473c7239d3fab26819b2ea2bea6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84247793"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079292"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>使用 REST API 还原 Azure 虚拟机
 
@@ -18,7 +19,7 @@ ms.locfileid: "84247793"
 
 ## <a name="select-recovery-point"></a>选择恢复点
 
-可以使用[列出恢复点 REST API](https://docs.microsoft.com/rest/api/backup/recoverypoints/list) 列出备份项的可用恢复点。 这是一个使用所有相关值执行的 *GET* 操作。
+可以使用[列出恢复点 REST API](/rest/api/backup/recoverypoints/list) 列出备份项的可用恢复点。 这是一个使用所有相关值执行的 *GET* 操作。
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13
@@ -32,7 +33,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 |名称  |类型  |说明  |
 |---------|---------|---------|
-|200 正常     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
+|200 正常     |   [RecoveryPointResourceList](/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
 #### <a name="example-response"></a>示例响应
 
@@ -116,9 +117,9 @@ X-Powered-By: ASP.NET
 
 ## <a name="restore-disks"></a>还原磁盘
 
-如果需要自定义从备份数据创建 VM 的过程，可以只将磁盘还原到所选存储帐户，并根据其要求从这些磁盘创建 VM。 存储帐户应与恢复服务保管库位于同一区域，并且不应采用区域冗余。 磁盘以及已备份 VM 的配置（“vmconfig.json”）将存储在给定的存储帐户中。
+如果需要自定义从备份数据创建 VM 的过程，只需将磁盘还原到所选的存储帐户，然后根据要求从这些磁盘创建 VM 即可。 存储帐户应与恢复服务保管库位于同一区域，并且不应采用区域冗余。 磁盘以及已备份 VM 的配置（“vmconfig.json”）将存储在给定的存储帐户中。
 
-触发磁盘还原是一个 *POST* 请求。 若要详细了解“还原磁盘”操作，请参阅[“触发还原”REST API](https://docs.microsoft.com/rest/api/backup/restores/trigger)。
+触发磁盘还原是一个 *POST* 请求。 若要详细了解“还原磁盘”操作，请参阅[“触发还原”REST API](/rest/api/backup/restores/trigger)。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
@@ -132,9 +133,9 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 |名称  |类型  |说明  |
 |---------|---------|---------|
-|properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+|properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
-有关请求正文的完整定义列表和其他详细信息，请参阅[“触发还原”REST API 文档](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body)。
+有关请求正文的完整定义列表和其他详细信息，请参阅[“触发还原”REST API 文档](/rest/api/backup/restores/trigger#request-body)。
 
 #### <a name="example-request"></a>示例请求
 
@@ -160,9 +161,9 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 ### <a name="response"></a>响应
 
-触发磁盘还原是一个[异步操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 这意味着，此操作会创建另一个需要单独跟踪的操作。
+触发磁盘还原是一个[异步操作](../azure-resource-manager/management/async-operations.md)。 这意味着，此操作会创建另一个需要单独跟踪的操作。
 
-它将返回两个响应：创建另一个操作时为 202（已接受），该操作完成时为 200（确定）。
+它将返回两个响应：创建另一个操作时为 202（已接受），该操作完成时为 200（正常）。
 
 |名称  |类型  |说明  |
 |---------|---------|---------|
@@ -190,7 +191,7 @@ Location: https://management.azure.com/subscriptions//subscriptions/00000000-000
 X-Powered-By: ASP.NET
 ```
 
-然后通过简单的 GET 命令并使用 location 标头或 Azure-AsyncOperation 标头跟踪生成的操作  。
+然后通过简单的 GET 命令并使用 location 标头或 Azure-AsyncOperation 标头跟踪生成的操作。
 
 ```http
 GET https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2019-05-13

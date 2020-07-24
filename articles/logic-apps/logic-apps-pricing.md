@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 9ce807238e1e373701305f8b6bb03451e0202633
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a5511d7cd4b5bb0f3fe901a735535f8db9036ee7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964628"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078166"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure 逻辑应用的定价模型
 
@@ -77,27 +77,27 @@ ms.locfileid: "85964628"
 
 ## <a name="connectors"></a>连接器
 
-Azure 逻辑应用连接器通过提供[触发器](#triggers)和/或[操作](#actions)，帮助逻辑应用访问云中或本地的应用、服务和系统。 连接器分类为“标准”或“企业”连接器。 有关这些连接器的概述，请参阅[适用于 Azure 逻辑应用的连接器](../connectors/apis-list.md)。 如果没有预生成的连接器可用于要在逻辑应用中使用的 REST API，则可以创建[自定义连接器](https://docs.microsoft.com/connectors/custom-connectors)，这些连接器只是这些 REST API 的包装器。 自定义连接器按标准连接器计费。 以下部分提供有关触发器和操作的计费方式的详细信息。
+Azure 逻辑应用连接器通过提供[触发器](#triggers)和/或[操作](#actions)，帮助逻辑应用访问云中或本地的应用、服务和系统。 连接器分类为“标准”或“企业”连接器。 有关这些连接器的概述，请参阅[适用于 Azure 逻辑应用的连接器](../connectors/apis-list.md)。 如果没有预生成的连接器可用于要在逻辑应用中使用的 REST API，则可以创建[自定义连接器](/connectors/custom-connectors)，这些连接器只是这些 REST API 的包装器。 自定义连接器按标准连接器计费。 以下部分提供有关触发器和操作的计费方式的详细信息。
 
 <a name="triggers"></a>
 
 ## <a name="triggers"></a>触发器
 
-触发器是发生特定事件时创建逻辑应用实例的特殊操作。 触发器以不同方式起作用，从而影响逻辑应用的计量方式。 下面是 Azure 逻辑应用中存在的各种触发器：
+触发器始终是逻辑应用工作流中的第一步，是在满足特定条件或发生特定事件时创建并运行逻辑应用实例的特殊操作。 触发器以不同方式起作用，从而影响逻辑应用的计量方式。 下面是 Azure 逻辑应用中存在的各种触发器：
 
-* **轮询触发器**：此触发器持续检查终结点是否有满足创建逻辑应用实例和启动工作流的条件的消息。 即使没有创建逻辑应用实例，逻辑应用也会将每个轮询请求计量为执行。 若要指定轮询间隔，请通过逻辑应用程序设计器设置触发器。
+* **定期触发器**：你可以使用不特定于任何服务或系统的此泛型触发器来启动任何逻辑应用工作流，并创建一个基于在触发器中设置的重复间隔运行的逻辑应用实例。 例如，可以设置每隔三天运行的，或者根据更复杂的计划运行的定期触发器。
+
+* **轮询触发器**：你可以使用这种更为专用的重复触发器，该触发器通常与特定服务或系统的托管连接器相关联，以根据在触发器中设置的重复间隔来检查符合用于创建和运行逻辑应用实例的条件的事件或消息。 即使未创建任何逻辑应用实例，例如，跳过触发器时，逻辑应用服务会将每个轮询请求作为一个执行。 若要指定轮询间隔，请通过逻辑应用程序设计器设置触发器。
 
   [!INCLUDE [logic-apps-polling-trigger-non-standard-metering](../../includes/logic-apps-polling-trigger-non-standard-metering.md)]
 
-* **Webhook 触发器**：此触发器等待客户端将请求发送到特定终结点。 发送到 webhook 终结点的每个请求都会计为操作执行。 例如，请求和 HTTP Webhook 触发器都是 Webhook 触发器。
-
-* **定期触发器**：此触发器根据你在触发器中设置的重复间隔创建逻辑应用实例。 例如，可以设置每隔三天运行的，或者根据更复杂的计划运行的定期触发器。
+* **Webhook 触发器**：可使用 webhook 触发器等待客户端将请求发送到特定终结点 URL 中的逻辑应用，而不使用轮询触发器。 发送到 webhook 终结点的每个请求计为一个操作执行。 例如，请求和 HTTP Webhook 触发器都是泛型 Webhook 触发器。 某些服务或系统连接器还具有 webhook 触发器。
 
 <a name="actions"></a>
 
-## <a name="actions"></a>操作
+## <a name="actions"></a>“操作”
 
-Azure 逻辑应用将 HTTP 等“内置”操作作为本机操作进行计量。 例如，内置操作包括 HTTP 调用、来自 Azure Functions 或 API 管理的调用，以及条件、循环和开关语句等控制流步骤。 每个操作具有自身的操作类型。 例如，调用[连接器](https://docs.microsoft.com/connectors)的操作为“ApiConnection”类型。 这些连接器分类为标准或企业连接器，根据各自的[定价](https://azure.microsoft.com/pricing/details/logic-apps)进行计费。 *预览版*中的企业连接器按标准连接器收费。
+Azure 逻辑应用将 HTTP 等“内置”操作作为本机操作进行计量。 例如，内置操作包括 HTTP 调用、来自 Azure Functions 或 API 管理的调用，以及条件、循环和开关语句等控制流步骤。 每个操作具有自身的操作类型。 例如，调用[连接器](/connectors)的操作为“ApiConnection”类型。 这些连接器分类为标准或企业连接器，根据各自的[定价](https://azure.microsoft.com/pricing/details/logic-apps)进行计费。 *预览版*中的企业连接器按标准连接器收费。
 
 Azure 逻辑应用将所有成功和不成功的操作作为执行进行计量。 但是，逻辑应用不会计量以下操作：
 
@@ -122,7 +122,7 @@ Azure 逻辑应用提供免费、基本和标准集成帐户。 逻辑应用服�
 
 若要在免费、基本或标准集成帐户之间进行选择，请查看这些用例说明：
 
-* **免费**：要尝试探索方案，而不是生产方案。 此级别仅适用于 Azure 中的公共区域，例如 "美国西部" 或 "东南亚"，但不适用于[Azure 中国世纪互联](https://docs.microsoft.com/azure/china/overview-operations)或[azure 政府](../azure-government/documentation-government-welcome.md)版。
+* **免费**：要尝试探索方案，而不是生产方案。 此级别仅适用于 Azure 中的公共区域，例如 "美国西部" 或 "东南亚"，但不适用于[Azure 中国世纪互联](/azure/china/overview-operations)或[azure 政府](../azure-government/documentation-government-welcome.md)版。
 
 * **基本**：仅当你只希望消息处理或充当与较大业务实体的贸易合作伙伴关系的小型企业合作伙伴时，
 
@@ -130,7 +130,7 @@ Azure 逻辑应用提供免费、基本和标准集成帐户。 逻辑应用服�
 
 <a name="data-retention"></a>
 
-## <a name="data-retention"></a>数据保留
+## <a name="data-retention"></a>数据保留期
 
 除了在 integration service 环境（ISE）中运行的逻辑应用，逻辑应用的运行历史记录中存储的所有输入和输出都基于逻辑应用的[运行保持期](logic-apps-limits-and-config.md#run-duration-retention-limits)进行计费。 在 ISE 中运行的逻辑应用不会产生数据保留成本。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps)。
 

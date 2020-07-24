@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 06/19/2020
-ms.openlocfilehash: 6563f3e263867387332940db58abff62e085cded
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 0ba95969d8bb6987d2e3685f937170f97e1af68f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187687"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078701"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>阻止 Azure 逻辑应用中的连接器创建的连接
 
@@ -31,7 +31,7 @@ ms.locfileid: "86187687"
 
 如果已经有了一个具有要阻止的连接的逻辑应用，请按照 Azure 门户的[步骤进行](#connector-ID-portal)操作。 否则，请执行以下步骤：
 
-1. 请访问[逻辑应用连接器列表](https://docs.microsoft.com/connectors/connector-reference/connector-reference-logicapps-connectors)。
+1. 请访问[逻辑应用连接器列表](/connectors/connector-reference/connector-reference-logicapps-connectors)。
 
 1. 查找要阻止的连接器的 "引用" 页。
 
@@ -39,7 +39,7 @@ ms.locfileid: "86187687"
    
    `https://docs.microsoft.com/connectors/instagram/`
 
-1. 在该页的 URL 中，复制并保存末尾处的连接器引用 ID，而不是正斜杠 (`/`) ，例如， `instagram` 。
+1. 从该页的 URL，复制并保存结尾处的连接器引用 ID，而不是正斜杠（ `/` ），例如 `instagram` 。
 
    稍后，在创建策略定义时，将在定义的条件语句中使用此 ID，例如：
 
@@ -123,13 +123,13 @@ ms.locfileid: "86187687"
 
    ![策略定义属性](./media/block-connections-connectors/policy-definition-create-connections-1.png)
 
-   | 属性 | 必须 | 值 | 描述 |
+   | properties | 必须 | 值 | 描述 |
    |----------|----------|-------|-------------|
-   | **定义位置** | 是 | <*Azure-subscription-name*> | 用于策略定义的 Azure 订阅 <p><p>1. 若要查找你的订阅，请选择省略号 (**...**) "按钮。 <br>2. 从 "**订阅**" 列表中，找到并选择你的订阅。 <br>3. 完成后，选择 "**选择**"。 |
+   | **定义位置** | 是 | <*Azure-subscription-name*> | 用于策略定义的 Azure 订阅 <p><p>1. 若要查找你的订阅，请选择省略号（**...**）按钮。 <br>2. 从 "**订阅**" 列表中，找到并选择你的订阅。 <br>3. 完成后，选择 "**选择**"。 |
    | **名称** | 是 | <*策略定义-名称*> | 要用于策略定义的名称 |
-   | **说明** | 不适合 | <*策略定义-名称*> | 策略定义的说明 |
-   | **类别** | 适合 | **逻辑应用** | 策略定义的现有类别或新类别的名称 |
-   | **策略强制** | 适合 | **已启用** | 此设置指定在保存工作时是否启用或禁用策略定义。 |
+   | **描述** | 否 | <*策略定义-名称*> | 策略定义的说明 |
+   | **类别** | 是 | **逻辑应用** | 策略定义的现有类别或新类别的名称 |
+   | **策略实施** | 是 | **已启用** | 此设置指定在保存工作时是否启用或禁用策略定义。 |
    ||||
 
 1. 在 "**策略规则**" 下，将使用策略定义模板预先填充 JSON 编辑框。 根据下表中所述的属性将此模板替换为[策略定义](../governance/policy/concepts/definition-structure.md)，并遵循以下语法：
@@ -150,12 +150,12 @@ ms.locfileid: "86187687"
     }
     ```
 
-   | 属性 | “值” | 描述 |
+   | properties | Value | 描述 |
    |----------|-------|-------------|
    | `mode` | `All` | 确定策略计算的资源类型的模式。 <p><p>此方案将设置 `mode` 为 `All` ，这会将策略应用到 Azure 资源组、订阅和所有资源类型。 <p><p>有关详细信息，请参阅[策略定义结构-模式](../governance/policy/concepts/definition-structure.md#mode)。 |
-   | `if` | `{condition-to-evaluate}` | 确定何时强制实施策略规则的条件 <p><p>在此方案中， `{condition-to-evaluate}` 确定中的 `api.id` 值是否 `Microsoft.Web/connections/api.id` 与匹配 `*managedApis/{connector-name}` ，后者指定了通配符 ( * ) 值。 <p><p>有关详细信息，请参阅[策略定义结构-策略规则](../governance/policy/concepts/definition-structure.md#policy-rule)。 |
+   | `if` | `{condition-to-evaluate}` | 确定何时强制实施策略规则的条件 <p><p>在此方案中， `{condition-to-evaluate}` 确定中的 `api.id` 值是否 `Microsoft.Web/connections/api.id` 与 `*managedApis/{connector-name}` 指定了通配符（*）值的匹配。 <p><p>有关详细信息，请参阅[策略定义结构-策略规则](../governance/policy/concepts/definition-structure.md#policy-rule)。 |
    | `field` | `Microsoft.Web/connections/api.id` | `field`要与条件进行比较的值 <p><p>在此方案中， `field` 使用[*别名*](../governance/policy/concepts/definition-structure.md#aliases) `Microsoft.Web/connections/api.id` 访问连接器属性中的值 `api.id` 。 |
-   | `like` | `*managedApis/{connector-name}` | 用于比较值的逻辑运算符和值 `field` <p><p>在此方案中， `like` 运算符和通配符 ( * ) 字符均可确保规则正常运行，而不考虑区域，字符串 `*managedApis/{connector-name}` 是要匹配的值，其中 `{connector-name}` 是要阻止的连接器的 ID。 <p><p>例如，假设要阻止创建到社交媒体平台或数据库的连接： <p><p>Twitter`twitter` <br>Instagram`instagram` <br>Facebook`facebook` <br>Pinterest`pinterest` <br>-SQL Server 或 Azure SQL：`sql` <p><p>若要查找这些连接器 Id，请参阅本主题前面的[查找连接器引用 ID](#connector-reference-ID) 。 |
+   | `like` | `*managedApis/{connector-name}` | 用于比较值的逻辑运算符和值 `field` <p><p>在此方案中， `like` 运算符和通配符（*）字符都确保规则的工作方式与区域无关，字符串 `*managedApis/{connector-name}` 是要匹配的值，其中 `{connector-name}` 是要阻止的连接器的 ID。 <p><p>例如，假设要阻止创建到社交媒体平台或数据库的连接： <p><p>Twitter`twitter` <br>Instagram`instagram` <br>Facebook`facebook` <br>Pinterest`pinterest` <br>-SQL Server 或 Azure SQL：`sql` <p><p>若要查找这些连接器 Id，请参阅本主题前面的[查找连接器引用 ID](#connector-reference-ID) 。 |
    | `then` | `{effect-to-apply}` | 满足条件时要应用的效果 `if` <p><p>在这种情况下，将 `{effect-to-apply}` 阻止和失败不符合策略的请求或操作。 <p><p>有关详细信息，请参阅[策略定义结构-策略规则](../governance/policy/concepts/definition-structure.md#policy-rule)。 |
    | `effect` | `deny` | `effect`用于阻止请求，即创建指定的连接 <p><p>有关详细信息，请参阅[了解 Azure 策略影响-拒绝](../governance/policy/concepts/effects.md#deny)。 |
    ||||
@@ -244,13 +244,13 @@ ms.locfileid: "86187687"
 
    ![策略定义属性](./media/block-connections-connectors/policy-definition-using-connections-1.png)
 
-   | 属性 | 必选 | 值 | 说明 |
+   | properties | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
-   | **定义位置** | 是 | <*Azure-subscription-name*> | 用于策略定义的 Azure 订阅 <p><p>1. 若要查找你的订阅，请选择省略号 (**...**) "按钮。 <br>2. 从 "**订阅**" 列表中，找到并选择你的订阅。 <br>3. 完成后，选择 "**选择**"。 |
+   | **定义位置** | 是 | <*Azure-subscription-name*> | 用于策略定义的 Azure 订阅 <p><p>1. 若要查找你的订阅，请选择省略号（**...**）按钮。 <br>2. 从 "**订阅**" 列表中，找到并选择你的订阅。 <br>3. 完成后，选择 "**选择**"。 |
    | **名称** | 是 | <*策略定义-名称*> | 要用于策略定义的名称 |
-   | **说明** | 不适合 | <*策略定义-名称*> | 策略定义的说明 |
-   | **类别** | 适合 | **逻辑应用** | 策略定义的现有类别或新类别的名称 |
-   | **策略强制** | 适合 | **已启用** | 此设置指定在保存工作时是否启用或禁用策略定义。 |
+   | **描述** | 否 | <*策略定义-名称*> | 策略定义的说明 |
+   | **类别** | 是 | **逻辑应用** | 策略定义的现有类别或新类别的名称 |
+   | **策略实施** | 是 | **已启用** | 此设置指定在保存工作时是否启用或禁用策略定义。 |
    ||||
 
 1. 在 "**策略规则**" 下，将使用策略定义模板预先填充 JSON 编辑框。 根据下表中所述的属性将此模板替换为[策略定义](../governance/policy/concepts/definition-structure.md)，并遵循以下语法：
@@ -271,7 +271,7 @@ ms.locfileid: "86187687"
     }
     ```
 
-   | 属性 | “值” | 说明 |
+   | properties | Value | 说明 |
    |----------|-------|-------------|
    | `mode` | `All` | 确定策略计算的资源类型的模式。 <p><p>此方案将设置 `mode` 为 `All` ，这会将策略应用到 Azure 资源组、订阅和所有资源类型。 <p><p>有关详细信息，请参阅[策略定义结构-模式](../governance/policy/concepts/definition-structure.md#mode)。 |
    | `if` | `{condition-to-evaluate}` | 确定何时强制实施策略规则的条件 <p><p>在此方案中， `{condition-to-evaluate}` 确定的字符串输出是否 `[string(field('Microsoft.Logic/workflows/parameters'))]` 包含字符串 `{connector-name}` 。 <p><p>有关详细信息，请参阅[策略定义结构-策略规则](../governance/policy/concepts/definition-structure.md#policy-rule)。 |
@@ -317,7 +317,7 @@ ms.locfileid: "86187687"
 
 ## <a name="create-policy-assignment"></a>创建策略分配
 
-接下来，需要分配要在其中强制执行策略的策略定义，例如，分配给单个资源组、多个资源组、Azure Active Directory (Azure AD) 租户或 Azure 订阅。 对于此任务，请按照以下步骤创建策略分配：
+接下来，需要分配要在其中强制执行策略的策略定义，例如，分配给单个资源组、多个资源组、Azure Active Directory （Azure AD）租户或 Azure 订阅。 对于此任务，请按照以下步骤创建策略分配：
 
 1. 如果已注销，请重新登录到[Azure 门户](https://portal.azure.com)。 在门户的搜索框中，输入 `policy` ，然后选择 "**策略**"。
 
@@ -329,16 +329,16 @@ ms.locfileid: "86187687"
 
 1. 在 "**基本**信息" 下，为策略分配提供以下信息：
 
-   | 属性 | 必须 | 描述 |
+   | properties | 必须 | 描述 |
    |----------|----------|-------------|
-   | **范围** | 适合 | 要在其中实施策略分配的资源。 <p><p>1. 在 "**作用域**" 框的旁边，选择省略号 (**...**) "按钮。 <br>2. 从 "**订阅**" 列表中，选择 "Azure 订阅"。 <br>3. 根据需要，从**资源组**列表中选择资源组。 <br>4. 完成后，选择 "**选择**"。 |
-   | **排除项** | 不适合 | 要从策略分配中排除的任何 Azure 资源。 <p><p>1. 在 "**排除**" 框的旁边，选择省略号 (**...**) "按钮。 <br>2. 从 "**资源**" 列表中，选择 >**添加到所选作用域**的资源。 <br>3. 完成后，选择 "**保存**"。 |
-   | **策略定义** | 适合 | 要分配和强制实施的策略定义的名称。 此示例将继续执行示例 Instagram 策略 "阻止 Instagram 连接"。 <p><p>1. 在 "**策略定义**" 框的旁边，选择省略号 (**...**) "按钮。 <br>2. 使用 "**类型**筛选器" 或 "**搜索**" 框查找并选择策略定义。 <br>3. 完成后，选择 "**选择**"。 |
-   | **分配名称** | 适合 | 用于策略分配的名称（如果不同于策略定义） |
-   | **分配 ID** | 适合 | 为策略分配自动生成的 ID |
-   | **说明** | 不适合 | 策略分配的说明 |
-   | **策略强制** | 适合 | 启用或禁用策略分配的设置 |
-   | **分配者** | 不适合 | 创建和应用策略分配的人员的姓名 |
+   | **范围** | 是 | 要在其中实施策略分配的资源。 <p><p>1. 在 "**作用域**" 框的旁边，选择**省略号（"..."**）按钮。 <br>2. 从 "**订阅**" 列表中，选择 "Azure 订阅"。 <br>3. 根据需要，从**资源组**列表中选择资源组。 <br>4. 完成后，选择 "**选择**"。 |
+   | **排除项** | 否 | 要从策略分配中排除的任何 Azure 资源。 <p><p>1. 在 "**排除**" 框的旁边，选择省略号 **（"..."**）按钮。 <br>2. 从 "**资源**" 列表中，选择 >**添加到所选作用域**的资源。 <br>3. 完成后，选择 "**保存**"。 |
+   | **策略定义** | 是 | 要分配和强制实施的策略定义的名称。 此示例将继续执行示例 Instagram 策略 "阻止 Instagram 连接"。 <p><p>1. 在 "**策略定义**" 框的旁边，选择省略号（**...**）按钮。 <br>2. 使用 "**类型**筛选器" 或 "**搜索**" 框查找并选择策略定义。 <br>3. 完成后，选择 "**选择**"。 |
+   | **分配名称** | 是 | 用于策略分配的名称（如果不同于策略定义） |
+   | **分配 ID** | 是 | 为策略分配自动生成的 ID |
+   | **描述** | 否 | 策略分配的说明 |
+   | **策略实施** | 是 | 启用或禁用策略分配的设置 |
+   | **分配者** | 否 | 创建和应用策略分配的人员的姓名 |
    ||||
 
    例如，使用 Instagram 示例将策略分配给 Azure 资源组：

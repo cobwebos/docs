@@ -3,12 +3,12 @@ title: 设置 Azure VMware 解决方案的 Azure 备份服务器
 description: 使用 Azure 备份服务器设置 Azure VMware 解决方案环境以备份虚拟机。
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: c56ebaff6b08f3d6586dfe025fdb2a5bfc708fa4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c45d2030e282057c487d142669ab634cd81f6929
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84816859"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079530"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>设置 Azure VMware 解决方案的 Azure 备份服务器
 
@@ -192,7 +192,7 @@ VM 必须安装 .NET Framework 3.5 SP1 或更高版本。
 
 ### <a name="download-the-software-package"></a>下载软件包
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 1. 如果已打开恢复服务保管库，则继续执行下一步。 如果未打开恢复服务保管库，但正在 Azure 门户，请在主菜单上选择 "**浏览**"。
 
@@ -248,7 +248,7 @@ VM 必须安装 .NET Framework 3.5 SP1 或更高版本。
 如果已将软件包下载到其他服务器，请将文件复制到创建的虚拟机以部署 Azure 备份服务器。
 
 > [!WARNING]
-> 至少需要有 4 GB 的可用空间才能解压缩安装程序文件。
+> 至少需要有 4GB 的可用空间才能解压缩安装程序文件。
 
 1. 下载所有文件之后，双击**MicrosoftAzureBackupInstaller.exe**打开 " **Microsoft Azure 备份**安装向导"，然后选择 "**下一步**"。
 
@@ -280,7 +280,7 @@ VM 必须安装 .NET Framework 3.5 SP1 或更高版本。
    ![Azure 备份服务器 SQL Server 检查](../backup/media/backup-azure-microsoft-azure-backup/sql/01.png)
 
    > [!NOTE]
-   > 如果要使用自己的 SQL Server 实例，则支持的 SQL Server 版本 SQL Server 2014 SP1 或更高版本、2016和2017。 所有 SQL Server 版本都应当是 Standard 或 Enterprise 64 位。 Azure 备份服务器不适用于远程 SQL Server 实例。 Azure 备份服务器使用的实例必须在本地。 如果对 Azure 备份服务器使用现有 SQL Server 实例，则安装程序仅支持 SQL Server 的*命名实例*的使用。
+   > 如果要使用自己的 SQL Server 实例，则支持的 SQL Server 版本 SQL Server 2014 SP1 或更高版本、2016和2017。 所有 SQL Server 版本应为标准版或企业版 64 位。 Azure 备份服务器不适用于远程 SQL Server 实例。 Azure 备份服务器使用的实例必须在本地。 如果对 Azure 备份服务器使用现有 SQL Server 实例，则安装程序仅支持 SQL Server 的*命名实例*的使用。
 
    如果出现故障，并建议重新启动计算机，请执行此操作，然后选择 "**再次检查**"。 如果存在任何 SQL Server 配置问题，请根据 SQL Server 准则重新配置 SQL Server。 然后，使用 SQL Server 的现有实例重试安装或升级 Azure 备份服务器。
 
@@ -309,7 +309,7 @@ VM 必须安装 .NET Framework 3.5 SP1 或更高版本。
    * **数据库**： **DatabaseName**应为**ReportServer $ \<SQLInstanceName> **。
    * **Web 门户 URL**：应**Reports_ \<SQLInstanceName> ****虚拟目录**。
 
-   [详细了解](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) SSRS 配置。
+   [详细了解](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) SSRS 配置。
 
    > [!NOTE]
    > [Microsoft Online Services 条款](https://www.microsoft.com/licensing/product-licensing/products)（OST）控制用作 Azure 备份服务器数据库的 SQL Server 的许可。 根据 OST，与 Azure 备份服务器捆绑 SQL Server 只能用作 Azure 备份服务器的数据库。
@@ -319,7 +319,7 @@ VM 必须安装 .NET Framework 3.5 SP1 或更高版本。
 1. 提供安装 Microsoft Azure 备份 Server 文件的位置，然后选择 "**下一步**"。
 
    > [!NOTE]
-   > 备份到 Azure 需要暂存位置。 请确保暂存位置的空间至少为要备份到云的数据的 5%。 对于磁盘保护，需要在安装完成后配置单独的磁盘。 有关存储池的详细信息，请参阅[配置存储池和磁盘存储](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12))。
+   > 备份到 Azure 需要暂存位置。 请确保暂存位置的空间至少为要备份到云的数据的 5%。 对于磁盘保护，需要在安装完成后配置单独的磁盘。 有关存储池的详细信息，请参阅[配置存储池和磁盘存储](/previous-versions/system-center/system-center-2012-r2/hh758075(v=sc.12))。
 
    ![Microsoft Azure 备份安装程序安装设置](../backup/media/backup-azure-microsoft-azure-backup/space-screen.png)
 
@@ -393,4 +393,3 @@ Azure 备份服务器 v3 仅接受存储卷。 添加卷时，Azure 备份服务
 
 > [!div class="nextstepaction"]
 > [配置 Azure VMware 解决方案 Vm 的备份](backup-avs-vms-with-mabs.md)
-

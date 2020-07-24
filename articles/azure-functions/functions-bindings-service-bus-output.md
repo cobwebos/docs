@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 6159ea7c9e00e822019a0d6542be2e84dbbdc335
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 559198c4ecbbc86cc82ce8b286d9608170e161c5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603632"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079717"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>适用于 Azure Functions 的 Azure 服务总线输出绑定
 
@@ -311,7 +311,7 @@ Python 不支持特性。
 
 * 异步函数需要返回值或 `IAsyncCollector` 而不是 `out` 参数。
 
-* 若要访问会话 ID，请绑定到 [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) 类型并使用 `sessionId` 属性。
+* 若要访问会话 ID，请绑定到 [`Message`](/dotnet/api/microsoft.azure.servicebus.message) 类型并使用 `sessionId` 属性。
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
@@ -328,7 +328,7 @@ Python 不支持特性。
 
 * 异步函数需要返回值或 `IAsyncCollector` 而不是 `out` 参数。
 
-* 若要访问会话 ID，请绑定到 [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) 类型并使用 `sessionId` 属性。
+* 若要访问会话 ID，请绑定到 [`Message`](/dotnet/api/microsoft.azure.servicebus.message) 类型并使用 `sessionId` 属性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -336,11 +336,11 @@ Python 不支持特性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-使用 [Azure 服务总线 SDK](https://docs.microsoft.com/azure/service-bus-messaging) 而不是内置的输出绑定。
+使用 [Azure 服务总线 SDK](../service-bus-messaging/index.yml) 而不是内置的输出绑定。
 
 # <a name="java"></a>[Java](#tab/java)
 
-使用 [Azure 服务总线 SDK](https://docs.microsoft.com/azure/service-bus-messaging) 而不是内置的输出绑定。
+使用 [Azure 服务总线 SDK](../service-bus-messaging/index.yml) 而不是内置的输出绑定。
 
 ---
 
@@ -348,8 +348,8 @@ Python 不支持特性。
 
 | 绑定 | 参考 |
 |---|---|
-| 服务总线 | [服务总线错误代码](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-exceptions) |
-| 服务总线 | [服务总线限制](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas) |
+| 服务总线 | [服务总线错误代码](../service-bus-messaging/service-bus-messaging-exceptions.md) |
+| 服务总线 | [服务总线限制](../service-bus-messaging/service-bus-quotas.md) |
 
 <a name="host-json"></a>  
 
@@ -388,7 +388,7 @@ Python 不支持特性。
 |---------|---------|---------|
 |prefetchCount|0|获取或设置消息接收方可以同时请求的消息数。|
 |maxAutoRenewDuration|00:05:00|自动续订消息锁的最长持续时间。|
-|autoComplete|是|是触发器在处理后自动调用 complete，还是函数代码手动调用 complete。<br><br>`false`仅在 c # 中支持将设置为。<br><br>如果设置为 `true` ，则触发器会在函数执行成功完成时自动完成该消息，否则将放弃该消息。<br><br>如果设置为 `false` ，则负责调用[MessageReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet)方法来完成、放弃或死信消息。 如果引发了异常（并且未 `MessageReceiver` 调用任何方法），则锁定会保持不变。 锁过期后，消息将重新排队 `DeliveryCount` 并递增，并且会自动续订锁定。<br><br>在非 C # 函数中，函数中的异常会导致运行时在 `abandonAsync` 后台调用。 如果未发生异常，则 `completeAsync` 在后台调用。 |
+|autoComplete|是|是触发器在处理后自动调用 complete，还是函数代码手动调用 complete。<br><br>`false`仅在 c # 中支持将设置为。<br><br>如果设置为 `true` ，则触发器会在函数执行成功完成时自动完成该消息，否则将放弃该消息。<br><br>如果设置为 `false` ，则负责调用[MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet)方法来完成、放弃或死信消息。 如果引发了异常（并且未 `MessageReceiver` 调用任何方法），则锁定会保持不变。 锁过期后，消息将重新排队 `DeliveryCount` 并递增，并且会自动续订锁定。<br><br>在非 C # 函数中，函数中的异常会导致运行时在 `abandonAsync` 后台调用。 如果未发生异常，则 `completeAsync` 在后台调用。 |
 |maxConcurrentCalls|16|对于每个缩放实例，消息泵应对回调发起的最大并发调用数。 默认情况下，Functions 运行时同时处理多条消息。|
 |maxConcurrentSessions|2000|每个缩放实例可以并发处理的最大会话数。|
 

@@ -5,11 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4cb832f8fe11ac2581e97d9cdcc777eaff702ee9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcd92f1f134b79d23da6848cbb04894b242fcec0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84697996"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081808"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure Durable Functions 中的诊断
 
@@ -19,7 +20,7 @@ ms.locfileid: "84697996"
 
 使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 是在 Azure Functions 中执行诊断和监视的建议方法。 这同样适用于 Durable Functions。 有关如何在函数应用中利用 Application Insights 的概述，请参阅[监视 Azure Functions](../functions-monitoring.md)。
 
-Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流程的端到端执行。** 可以在 Azure 门户中使用[Application Insights 分析](../../azure-monitor/app/analytics.md)工具找到并查询这些跟踪事件。
+Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流程的端到端执行。** 可以在 Azure 门户中使用[Application Insights 分析](../../azure-monitor/log-query/log-query-overview.md)工具找到并查询这些跟踪事件。
 
 ### <a name="tracking-data"></a>跟踪数据
 
@@ -149,7 +150,7 @@ traces
 
 ![Application Insights 查询](./media/durable-functions-diagnostics/app-insights-single-summary-query.png)
 
-## <a name="logging"></a>Logging
+## <a name="logging"></a>日志记录
 
 直接从业务流程协调程序函数写入日志时，必须注意业务流程协调程序的重播行为。 例如，考虑以下业务流程协调程序函数：
 
@@ -382,7 +383,7 @@ Azure Functions 支持直接调试函数代码，Durable Functions 承袭了这�
 
 ## <a name="storage"></a>存储
 
-默认情况下，Durable Functions 在 Azure 存储中存储状态。 此行为意味着可以使用[Microsoft Azure 存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)的工具检查业务流程的状态。
+默认情况下，Durable Functions 在 Azure 存储中存储状态。 此行为意味着可以使用[Microsoft Azure 存储资源管理器](../../vs-azure-tools-storage-manage-with-storage-explorer.md)的工具检查业务流程的状态。
 
 ![Azure 存储资源管理器屏幕快照](./media/durable-functions-diagnostics/storage-explorer.png)
 

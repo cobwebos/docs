@@ -5,11 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 37a387b93f1c6b3796b66993405787cf43990bc4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 88a8dcb53ab2f845f52121b11c96c23ad0a3e791
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684021"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078917"
 ---
 # <a name="sensor-partner-integration"></a>传感器合作伙伴集成
 
@@ -100,7 +101,7 @@ Accept | 响应格式。 对于 FarmBeats 数据中心 API，格式为 JSON。 A
 
 **API 请求**
 
-若要发出 REST API 请求，请将 HTTP（GET、POST 或 PUT）方法、API 服务的 URL、用于查询、提交数据、更新或删除的资源的统一资源标识符 (URI) 以及一个或多个 HTTP 请求标头组合在一起。 API 服务的 URL 是提供的 API 终结点。 下面是一个示例： https://\<yourdatahub-website-name>.azurewebsites.net
+若要发出 REST API 请求，请将 HTTP（GET、POST 或 PUT）方法、API 服务的 URL、用于查询、提交数据、更新或删除的资源的统一资源标识符 (URI) 以及一个或多个 HTTP 请求标头组合在一起。 API 服务的 URL 是提供的 API 终结点。 下面是一个示例： https:// \<yourdatahub-website-name> . azurewebsites.net
 
 或者，可在 GET 调用中包含查询参数以筛选数据、限制数据的大小，并对响应中的数据进行排序。
 
@@ -130,16 +131,16 @@ FarmBeats 数据中心具有以下 API，设备合作伙伴可通过这些 API �
 - /**SensorModel**：SensorModel 对应于传感器的元数据，如制造商、传感器类型（模拟或数字）以及传感器度量值（如环境温度和压力）。
 - /**Sensor**：Sensor 对应于记录值的物理传感器。 传感器通常连接到具有设备 ID 的设备。
 
-  **DeviceModel** |  |
+  DeviceModel | 描述 |
   --- | ---
   类型（节点、网关）  | 设备类型 - 节点或网关 |
   制造商  | 制造商的名称 |
   ProductCode  | 设备产品代码或模型名称或编号。 例如 EnviroMonitor#6800。 |
   端口  | 端口名称和类型（数字或模拟）。  |
   名称  | 用于标识资源的名称。 例如，模型名称或产品名称。 |
-  说明  | 提供对模型的有意义说明。 |
+  描述  | 提供对模型的有意义说明。 |
   属性  | 制造商提供的其他属性。 |
-  **设备** |  |
+  **设备** | **描述** |
   DeviceModelId  |关联的设备模型的 ID。 |
   HardwareId   |设备的唯一 ID，如 MAC 地址。  |
   ReportingInterval |以秒为单位的报告间隔。 |
@@ -148,7 +149,7 @@ FarmBeats 数据中心具有以下 API，设备合作伙伴可通过这些 API �
   名称  | 用于标识资源的名称。 设备合作伙伴需要发送与设备伙伴端的设备名称一致的名称。 如果设备伙伴端的设备名称是用户定义的，则应将同一用户定义的名称传播到 FarmBeats。  |
   说明  | 提供有意义的说明。  |
   属性  |制造商提供的其他属性。  |
-  **SensorModel** |  |
+  **SensorModel** | **描述** |
   类型（模拟、数字）  |提及模拟或数字传感器。|
   制造商  | 制造商的名称。 |
   ProductCode  | 产品代码或模型名称或编号。 例如 RS-CO2-N01。  |
@@ -160,9 +161,9 @@ FarmBeats 数据中心具有以下 API，设备合作伙伴可通过这些 API �
   SensorMeasures > 深度  | 传感器的深度（以厘米为单位）。 例如，地下 10 厘米的湿度度量。
   SensorMeasures > 说明  | 提供对度量的有意义说明。
   名称  | 用于标识资源的名称。 例如，模型名称或产品名称。
-  说明  | 提供对模型的有意义说明。
+  描述  | 提供对模型的有意义说明。
   属性  | 制造商提供的其他属性。
-  **传感器**  |  |
+  **传感器**  | **描述** |
   HardwareId  | 制造商设置的传感器的唯一 ID。
   SensorModelId  | 关联的传感器模型的 ID。
   位置  | 传感器纬度（-90 到 +90）、经度（-180 到 180）和海拔（以米为单位）。

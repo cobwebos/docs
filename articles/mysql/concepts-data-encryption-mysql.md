@@ -6,11 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: e2f732a8cf51c51de1b6125717eafb672d7fff74
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 90ca46ace5f774e288b40a969f8f7e9802e79857
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027403"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080873"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>使用客户托管密钥进行 Azure Database for MySQL 数据加密
 
@@ -51,7 +52,7 @@ DEK 使用 KEK 加密且单独存储。 只有有权访问 KEK 的实体才能�
 * **wrapKey**：可加密 DEK。
 * **unwrapKey**：可解密 DEK。
 
-Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure-monitor/insights/azure-key-vault.md)，便于稍后对其进行审核。
+Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure-monitor/insights/key-vault-insights-overview.md)，便于稍后对其进行审核。
 
 当服务器配置为使用存储在 Key Vault 中的客户管理的密钥时，该服务器会将 DEK 发送到 Key Vault 进行加密。 Key Vault 返回存储在用户数据库中已加密的 DEK。 同样在必要时，服务器会将受保护的 DEK 发送到 Key Vault 进行解密。 如果启用了日志记录，则审核员可以使用 Azure Monitor 查看 Key Vault 审核事件日志。
 

@@ -4,13 +4,14 @@ description: 操作方法文章强调如何在 Azure 数据目录中批注数据
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: c1e022591ce1aee073330055744fbd78d97c0b1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61a91ca8a51886c28beee77853d1ae67911e00e7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68950265"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081230"
 ---
 # <a name="how-to-annotate-data-sources-in-azure-data-catalog"></a>如何在 Azure 数据目录中批注数据源
 
@@ -20,7 +21,7 @@ ms.locfileid: "68950265"
 
 ## <a name="annotation-and-crowdsourcing"></a>批注和众包
 每个人都有自己的观点。 这是一件好事。
-数据目录意识到不同的用户对于企业数据源有不同的观点，而且每个观点都很有价值。 请参考以下方案：
+数据目录意识到不同的用户对于企业数据源有不同的观点，而且每个观点都很有价值。 请考虑下列方案：
 
 * 系统管理员知道服务器或托管数据源的服务的服务级别协议。
 * 数据库管理员知道每个数据库的备份计划和允许的 ETL 处理窗口。
@@ -33,7 +34,7 @@ ms.locfileid: "68950265"
 ## <a name="different-types-of-annotations"></a>不同类型的批注
 数据目录支持以下类型的批注：
 
-| Annotation | 说明 |
+| Annotation | 注释 |
 | --- | --- |
 | 友好名称 |可在数据资产级别提供友好名称让数据资产更易于理解。 基础对象名称有隐晦的含义、缩写形式或对于用户来说无意义时，友好名称会非常有用。 |
 | 描述 |可在数据资产和属性/列级别中提供说明。 说明可为任意格式的简短文本批注，说明用户在数据资产及其用法方面的观点。 |
@@ -56,8 +57,8 @@ ms.locfileid: "68950265"
 ## <a name="annotations-and-discovery"></a>批注和发现
 与注册过程从数据源提取的元数据添加到数据目录搜索索引一样，用户提供的元数据也会创建索引。 这意味着批注可让用户更易理解他们发现的数据，还可帮助用户根据对他们来说有意义的术语进行搜索发现批注的数据资产。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 使用“数据目录”注册数据源，将结构性和描述性元数据从数据源复制到目录服务，从而使数据可被检测到。 注册数据源后，用户可提供批注帮助自己在数据目录门户内进行发现和理解。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [Azure 数据目录入门](data-catalog-get-started.md)教程提供有关如何批注数据源的分步详细说明。

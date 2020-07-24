@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 437cbb87694adf89054161a7b0d40f6528b94199
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: d1b545129312e2954c76e296560d9476f37f4424
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224088"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081757"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 触发器
 
@@ -674,7 +674,7 @@ public class HttpTriggerJava {
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-有关经过身份验证的客户端的信息以 [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal) 的形式提供。 ClaimsPrincipal 作为请求上下文的一部分提供，如以下示例中所示：
+有关经过身份验证的客户端的信息以 [ClaimsPrincipal](/dotnet/api/system.security.claims.claimsprincipal) 的形式提供。 ClaimsPrincipal 作为请求上下文的一部分提供，如以下示例中所示：
 
 ```csharp
 using System.Net;
@@ -706,7 +706,7 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-有关经过身份验证的客户端的信息以 [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal) 的形式提供。 ClaimsPrincipal 作为请求上下文的一部分提供，如以下示例中所示：
+有关经过身份验证的客户端的信息以 [ClaimsPrincipal](/dotnet/api/system.security.claims.claimsprincipal) 的形式提供。 ClaimsPrincipal 作为请求上下文的一部分提供，如以下示例中所示：
 
 ```csharp
 using System.Net;

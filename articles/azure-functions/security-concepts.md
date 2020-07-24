@@ -3,19 +3,20 @@ title: 保护 Azure Functions
 description: 了解如何使 Azure 中运行的函数代码更安全，使其免遭常见攻击的威胁。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 692e8420bda1e7baa8521dd6caaf5eef183823fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bdb012c3f379b1e0314364f79ccc4aa49eba4bd3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259416"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079683"
 ---
 # <a name="securing-azure-functions"></a>保护 Azure Functions
 
-对于 Web 或云托管应用程序来说，无服务器函数的安全开发、部署和操作的规划在诸多方面都几乎相同。 [Azure 应用服务](/azure/app-service/)提供函数应用的托管基础结构。 本文介绍了运行函数代码的安全策略，以及应用服务如何帮助你保护函数。 
+对于 Web 或云托管应用程序来说，无服务器函数的安全开发、部署和操作的规划在诸多方面都几乎相同。 [Azure 应用服务](../app-service/index.yml)提供函数应用的托管基础结构。 本文介绍了运行函数代码的安全策略，以及应用服务如何帮助你保护函数。 
 
 [!INCLUDE [app-service-security-intro](../../includes/app-service-security-intro.md)]
 
-如需查看遵循 [Azure 安全基准检验](/azure/security/benchmarks/overview)的一组安全建议，请参阅 [Azure Functions 的 Azure 安全基线](security-baseline.md)。
+如需查看遵循 [Azure 安全基准检验](../security/benchmarks/overview.md)的一组安全建议，请参阅 [Azure Functions 的 Azure 安全基线](security-baseline.md)。
 
 ## <a name="secure-operation"></a>安全操作 
 
@@ -82,7 +83,7 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 
 #### <a name="user-management-permissions"></a>用户管理权限
 
-函数支持内置的[Azure 基于角色的访问控制（RBAC）](../role-based-access-control/overview.md)。 函数支持的 RBAC 角色有[参与者](../role-based-access-control/built-in-roles.md#contributor)、[所有者](../role-based-access-control/built-in-roles.md#owner)和[读者](../role-based-access-control/built-in-roles.md#owner)。 
+函数支持内置 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md)。 函数支持的 RBAC 角色有[参与者](../role-based-access-control/built-in-roles.md#contributor)、[所有者](../role-based-access-control/built-in-roles.md#owner)和[读者](../role-based-access-control/built-in-roles.md#owner)。 
 
 权限在函数应用级别有效。 参与者角色是执行大多数函数应用级任务所必需的。 只有所有者角色才能删除函数应用。 
 

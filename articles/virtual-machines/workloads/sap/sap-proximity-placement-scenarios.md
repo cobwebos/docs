@@ -15,11 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01ce1599f86082aef3ff53d298cc53896074af66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7aa71062c86d57cabe8579e13011956137804f74
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76277597"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079785"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>适用于 SAP 应用程序的最佳网络延迟的 Azure 邻近性放置组
 基于 SAP NetWeaver 或 SAP S/4HANA 体系结构的 SAP 应用程序对于 SAP 应用程序层和 SAP 数据库层之间的网络延迟很敏感。 此敏感度是指在应用程序层中运行的大多数业务逻辑的结果。 因为 SAP 应用程序层运行业务逻辑，所以它将以较高的频率向数据库层发出查询，每秒的速率为上千或数万。 在大多数情况下，这些查询的性质很简单。 它们通常可以在500微秒内或更短的时间内在数据库层上运行。
@@ -28,7 +29,7 @@ ms.locfileid: "76277597"
 
 在许多 Azure 区域中，数据中心的数量越来越多。 此增长也是通过引入可用性区域来触发的。 同时，客户（尤其是对于高端 SAP 系统）使用 M 系列系列或 HANA 大型实例中的更多特殊 VM Sku。 这些 Azure 虚拟机类型在特定 Azure 区域的所有数据中心中都不可用。 由于这两个倾向，客户遇到了不在最佳范围内的网络延迟。 在某些情况下，这种延迟会导致其 SAP 系统的性能不佳。
 
-为了避免这些问题，Azure 提供了[邻近的放置组](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)。 此新功能已用于部署各种 SAP 系统。 有关邻近位置组的限制，请参阅本段落开头处提到的文章。 本文介绍 Azure 邻近性放置组可以或应该使用的 SAP 方案。
+为了避免这些问题，Azure 提供了[邻近的放置组](../../linux/co-location.md)。 此新功能已用于部署各种 SAP 系统。 有关邻近位置组的限制，请参阅本段落开头处提到的文章。 本文介绍 Azure 邻近性放置组可以或应该使用的 SAP 方案。
 
 ## <a name="what-are-proximity-placement-groups"></a>什么是邻近性放置组？ 
 Azure 邻近度布局组是一种逻辑构造。 定义后，它将绑定到 Azure 区域和 Azure 资源组。 部署 Vm 时，将引用邻近的放置组：
@@ -39,7 +40,7 @@ Azure 邻近度布局组是一种逻辑构造。 定义后，它将绑定到 Azu
 > [!NOTE]
 > 如果没有部署可在放置第一个 VM 的数据中心中运行特定 VM 类型的主机硬件，则所请求的 VM 类型的部署将失败。 你将收到失败消息。
 
-单个[Azure 资源组](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal)可以有多个分配给它的邻近位置组。 但邻近的放置组只能分配给一个 Azure 资源组。
+单个[Azure 资源组](../../../azure-resource-manager/management/manage-resources-portal.md)可以有多个分配给它的邻近位置组。 但邻近的放置组只能分配给一个 Azure 资源组。
 
 使用邻近位置组时，请记住以下注意事项：
 
@@ -48,9 +49,9 @@ Azure 邻近度布局组是一种逻辑构造。 定义后，它将绑定到 Azu
 - 由于硬件退役，Microsoft 可能会为你在不同数据中心使用的 VM 类型（而不是你最初使用的数据中心）构建容量。 在这种情况下，可能需要将所有邻近位置组的 Vm 移到另一个数据中心。
 
 ## <a name="proximity-placement-groups-with-sap-systems-that-use-only-azure-vms"></a>仅使用 Azure Vm 的 SAP 系统的邻近性放置组
-Azure 上的大多数 SAP NetWeaver 和 S/4HANA 系统部署不使用[HANA 大型实例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。 对于不使用 HANA 大型实例的部署，必须在 SAP 应用程序层和 DBMS 层之间提供最佳性能。 为此，请仅为系统定义 Azure 邻近性放置组。
+Azure 上的大多数 SAP NetWeaver 和 S/4HANA 系统部署不使用[HANA 大型实例](./hana-overview-architecture.md)。 对于不使用 HANA 大型实例的部署，必须在 SAP 应用程序层和 DBMS 层之间提供最佳性能。 为此，请仅为系统定义 Azure 邻近性放置组。
 
-在大多数客户部署中，客户会为 SAP 系统生成单个[Azure 资源组](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal)。 在这种情况下，之间存在一对一的关系，例如，生产 ERP 系统资源组及其邻近位置组。 在其他情况下，客户会水平组织其资源组，并在单个资源组中收集所有生产系统。 在这种情况下，在生产 SAP 系统的资源组和生产 SAP ERP 的多个邻近性放置组之间建立了一对多关系，SAP BW 等。
+在大多数客户部署中，客户会为 SAP 系统生成单个[Azure 资源组](../../../azure-resource-manager/management/manage-resources-portal.md)。 在这种情况下，之间存在一对一的关系，例如，生产 ERP 系统资源组及其邻近位置组。 在其他情况下，客户会水平组织其资源组，并在单个资源组中收集所有生产系统。 在这种情况下，在生产 SAP 系统的资源组和生产 SAP ERP 的多个邻近性放置组之间建立了一对多关系，SAP BW 等。
 
 避免将多个 SAP 生产系统或非生产系统捆绑到单个邻近位置组中。 当少量 SAP 系统或 SAP 系统以及某些应用程序需要较低的延迟网络通信时，可以考虑将这些系统移到一个邻近的放置组。 你应避免系统的捆绑包，因为更多的系统会在邻近的放置组中进行分组，因此机会越大：
 
@@ -64,11 +65,11 @@ Azure 上的大多数 SAP NetWeaver 和 S/4HANA 系统部署不使用[HANA 大�
 在这种情况下，单个 SAP 系统每个资源组中分组，每个资源组一个邻近的放置组。 无论你使用 HANA 横向扩展配置还是 DBMS 扩展配置，都没有任何依赖关系。
 
 ## <a name="proximity-placement-groups-and-hana-large-instances"></a>邻近位置组和 HANA 大型实例
-如果某些 SAP 系统依赖于应用程序层的[HANA 大型实例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)，则当你使用在[修订版4行或 stamp](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)中部署的 hana 大型实例单元时，你可以在 hana 大型实例单元和 Azure vm 之间显著改进网络延迟。 其中一项改进是，在部署时，HANA 大型实例单元使用邻近位置组进行部署。 你可以使用该邻近布局组来部署你的应用程序层虚拟机。 因此，这些 Vm 将部署在托管 HANA 大型实例单元的同一数据中心内。
+如果某些 SAP 系统依赖于应用程序层的[HANA 大型实例](./hana-overview-architecture.md)，则当你使用在[修订版4行或 stamp](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)中部署的 hana 大型实例单元时，你可以在 hana 大型实例单元和 Azure vm 之间显著改进网络延迟。 其中一项改进是，在部署时，HANA 大型实例单元使用邻近位置组进行部署。 你可以使用该邻近布局组来部署你的应用程序层虚拟机。 因此，这些 Vm 将部署在托管 HANA 大型实例单元的同一数据中心内。
 
-若要确定 HANA 大型实例单元是否部署在修订版本4的 stamp 或行中，请[通过 Azure 门户查看 AZURE HANA 大型实例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#look-at-attributes-of-single-hli-unit)的文章。 在 HANA 大型实例单元的特性概述中，还可以确定邻近位置组的名称，因为它是在部署 HANA 大型实例单元时创建的。 "属性概述" 中显示的名称是应该将应用程序层 Vm 部署到的邻近感应位置组的名称。
+若要确定 HANA 大型实例单元是否部署在修订版本4的 stamp 或行中，请[通过 Azure 门户查看 AZURE HANA 大型实例](./hana-li-portal.md#look-at-attributes-of-single-hli-unit)的文章。 在 HANA 大型实例单元的特性概述中，还可以确定邻近位置组的名称，因为它是在部署 HANA 大型实例单元时创建的。 "属性概述" 中显示的名称是应该将应用程序层 Vm 部署到的邻近感应位置组的名称。
 
-与仅使用 Azure 虚拟机的 SAP 系统相比，在使用 HANA 大型实例时，在决定要使用的[Azure 资源组](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal)数量上，灵活性更小。 [Hana 大型实例租户](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-know-terms)的所有 Hana 大型实例单元按[本文](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#display-of-hana-large-instance-units-in-the-azure-portal)中的说明分组。 除非你将部署到不同的租户，例如生产系统和非生产系统或其他系统，否则，所有 HANA 大型实例单元都将部署在一个 HANA 大型实例租户中。 此租户与资源组具有一对一关系。 但将为每个单位定义单独的邻近位置组。
+与仅使用 Azure 虚拟机的 SAP 系统相比，在使用 HANA 大型实例时，在决定要使用的[Azure 资源组](../../../azure-resource-manager/management/manage-resources-portal.md)数量上，灵活性更小。 [Hana 大型实例租户](./hana-know-terms.md)的所有 Hana 大型实例单元按[本文](./hana-li-portal.md#display-of-hana-large-instance-units-in-the-azure-portal)中的说明分组。 除非你将部署到不同的租户，例如生产系统和非生产系统或其他系统，否则，所有 HANA 大型实例单元都将部署在一个 HANA 大型实例租户中。 此租户与资源组具有一对一关系。 但将为每个单位定义单独的邻近位置组。
 
 因此，单个租户的 Azure 资源组和邻近位置组之间的关系如下所示：
 
@@ -161,8 +162,7 @@ New-AzVm -ResourceGroupName "myfirstppgexercise" -Name "myppgavsetappvm" -Locati
 ## <a name="next-steps"></a>后续步骤
 查看文档：
 
-- [Azure 上的 SAP 工作负荷：规划和部署清单](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
-- [预览：使用 Azure CLI 将 Vm 部署到邻近位置组](https://docs.microsoft.com/azure/virtual-machines/linux/proximity-placement-groups)
-- [预览：使用 PowerShell 将 Vm 部署到邻近位置组](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups)
-- [适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
-
+- [Azure 上的 SAP 工作负荷：规划和部署清单](./sap-deployment-checklist.md)
+- [预览：使用 Azure CLI 将 Vm 部署到邻近位置组](../../linux/proximity-placement-groups.md)
+- [预览：使用 PowerShell 将 Vm 部署到邻近位置组](../../windows/proximity-placement-groups.md)
+- [适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](./dbms_guide_general.md)

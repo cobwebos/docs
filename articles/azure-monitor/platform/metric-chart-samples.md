@@ -7,15 +7,16 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 00935762a5e19ec47074021aff59992fd3b801bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 762264cfe7e0441671411e2c277a0796cd527399
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797448"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081519"
 ---
 # <a name="metric-chart-examples"></a>指标图表示例 
 
-Azure 平台提供了[一千多个指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)，其中许多指标具有维度。 通过使用[维度筛选器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)、应用[拆分](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)、控制图表类型和调整图表设置，可以创建功能强大的诊断视图和仪表板，以深入了解基础结构和应用程序的运行状况。 本文介绍了一些可以使用[指标资源管理器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)生成的图表示例，并说明了配置每个图表的必要步骤。
+Azure 平台提供了[一千多个指标](./metrics-supported.md)，其中许多指标具有维度。 通过使用[维度筛选器](./metrics-charts.md)、应用[拆分](./metrics-charts.md)、控制图表类型和调整图表设置，可以创建功能强大的诊断视图和仪表板，以深入了解基础结构和应用程序的运行状况。 本文介绍了一些可以使用[指标资源管理器](./metrics-charts.md)生成的图表示例，并说明了配置每个图表的必要步骤。
 
 想和全世界分享你出色的图表示例吗？ 在 GitHub 上参与撰写此页面，并在此处分享你自己的图表示例！
 
@@ -37,7 +38,7 @@ Azure 平台提供了[一千多个指标](https://docs.microsoft.com/azure/azure
 
 ### <a name="how-to-configure-this-chart"></a>如何配置此图表？
 
-首先需要启用网站的 [Application Insights 可用性](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability)监视。 在此之后，选择 Application Insights 资源并选择可用性指标。 在“运行位置”  维度上应用拆分。
+首先需要启用网站的 [Application Insights 可用性](../app/monitor-web-app-availability.md)监视。 在此之后，选择 Application Insights 资源并选择可用性指标。 在“运行位置”  维度上应用拆分。
 
 ## <a name="volume-of-storage-account-transactions-by-api-name"></a>按 API 名称划分的存储帐户事务量
 

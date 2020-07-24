@@ -3,11 +3,12 @@ title: Azure Functions 的存储注意事项
 description: 了解 Azure Functions 的要求和存储数据加密。
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 324516240d09a5443908cbffec514e4caba2b604
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2efd583b319e3f3b1fa3db307ea4a3cf53710165
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648787"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079598"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions 的存储注意事项
 
@@ -40,7 +41,7 @@ ms.locfileid: "83648787"
 
 存储帐户连接在 [AzureWebJobsStorage 应用程序设置](./functions-app-settings.md#azurewebjobsstorage)中进行维护。 
 
-重新生成存储密钥时，必须更新存储帐户连接字符串。 [在此处阅读有关存储密钥管理的详细信息](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)。
+重新生成存储密钥时，必须更新存储帐户连接字符串。 [在此处阅读有关存储密钥管理的详细信息](../storage/common/storage-account-create.md)。
 
 ### <a name="shared-storage-accounts"></a>共享存储帐户
 
@@ -79,5 +80,3 @@ files_in_share = os.listdir("/path/to/mount")
 
 > [!div class="nextstepaction"]
 > [Azure Functions 的缩放和托管](functions-scale.md)
-
-

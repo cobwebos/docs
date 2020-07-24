@@ -5,11 +5,12 @@ author: MS-Santi
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 7951f216143bef0d48a6b751beff3f8f4316b9bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1bddb6af777f36d04bae4a8b68c476789048be1b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75433334"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081774"
 ---
 # <a name="disaster-recovery-and-geo-distribution-in-azure-durable-functions"></a>Azure Durable Functions 中的灾难恢复和异地分布
 
@@ -82,4 +83,4 @@ ms.locfileid: "75433334"
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解如何[使用 RA-GRS 设计高度可用的应用程序](../../storage/common/storage-designing-ha-apps-with-ragrs.md)
+详细了解如何[使用 RA-GRS 设计高度可用的应用程序](../../storage/common/geo-redundant-design.md)

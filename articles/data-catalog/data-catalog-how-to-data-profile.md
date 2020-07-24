@@ -4,13 +4,14 @@ description: 操作指南文章重点说明在“Azure 数据目录”中注册�
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 698da509be2f375925459bbdd4a35d21c6ff4407
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d0f3a45842638915947f5df04e06e2c81a7f5f1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84171219"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081179"
 ---
 # <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>如何在 Azure 数据目录中进行数据配置文件数据源
 
@@ -83,7 +84,7 @@ ms.locfileid: "84171219"
 * 值为 NULL 的行数
 * 列值的最小值、最大值、平均值和标准偏差
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 数据分析提供有关已注册数据资产的统计信息和信息，帮助确定数据是否适用于解决业务问题。 连同批注和记录数据源一起，数据配置文件可以让用户深入了解数据。
 

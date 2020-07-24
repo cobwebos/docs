@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 21ecf33291924097f076aa28088eb4eac652ce67
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f97b4877d87acec923812fd0289d5161529dbe7a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849661"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081026"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 群集的可用性和可靠性
 
@@ -268,7 +268,7 @@ get *
 
 只能在创建群集期间选择节点大小。 可以在 [HDInsight 定价页](https://azure.microsoft.com/pricing/details/hdinsight/)上找到 HDInsight 可用的不同 VM 大小的列表。
 
-创建群集时，可以指定节点的大小。 以下信息介绍了如何使用 [Azure 门户](https://portal.azure.com/)、[Azure PowerShell 模块 Az](/powershell/azureps-cmdlets-docs) 和 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 指定大小：
+创建群集时，可以指定节点的大小。 以下信息介绍了如何使用 [Azure 门户](https://portal.azure.com/)、[Azure PowerShell 模块 Az](/powershell/azure/) 和 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 指定大小：
 
 * **Azure 门户**：创建群集时，可以设置群集所用节点的大小：
 
@@ -284,6 +284,6 @@ get *
 
 * [Apache Ambari REST 参考](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
 * [安装和配置 Azure CLI](https://docs.microsoft.com//cli/azure/install-azure-cli?view=azure-cli-latest)
-* [安装和配置 Azure PowerShell 模块 Az](/powershell/azure/overview)
+* [安装和配置 Azure PowerShell 模块 Az](/powershell/azure/)
 * [使用 Apache Ambari 管理 HDInsight](hdinsight-hadoop-manage-ambari.md)
 * [配置基于 Linux 的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)

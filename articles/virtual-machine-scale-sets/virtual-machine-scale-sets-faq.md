@@ -9,12 +9,12 @@ ms.subservice: faq
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: cf58b62001ce5d193e3a06973215d82138ad4b59
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 8170cfcbbf200c6ba5030aff5716f46b537d8c97
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855587"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080465"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虚拟机规模集常见问题解答
 
@@ -64,22 +64,22 @@ ms.locfileid: "85855587"
 
 ### <a name="do-scale-sets-work-with-azure-availability-zones"></a>规模集是否可以与 Azure 可用性区域配合使用？
 
-可以！ 有关详细信息，请参阅[规模集区域文档](./virtual-machine-scale-sets-use-availability-zones.md)。
+正确！ 有关详细信息，请参阅[规模集区域文档](./virtual-machine-scale-sets-use-availability-zones.md)。
 
 
 ## <a name="autoscale"></a>自动缩放
 
 ### <a name="what-are-best-practices-for-azure-autoscale"></a>Azure 自动缩放的最佳做法是什么？
 
-有关自动缩放的最佳做法，请参阅[自动缩放虚拟机的最佳做法](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-autoscale-best-practices)。
+有关自动缩放的最佳做法，请参阅[自动缩放虚拟机的最佳做法](../azure-monitor/platform/autoscale-best-practices.md)。
 
 ### <a name="where-do-i-find-metric-names-for-autoscaling-that-uses-host-based-metrics"></a>在哪里可以找到使用基于主机的指标执行自动缩放时的相关指标名称？
 
-有关使用基于主机的指标执行自动缩放时的相关指标名称，请参阅 [Azure Monitor 支持的指标](https://azure.microsoft.com/documentation/articles/monitoring-supported-metrics/)。
+有关使用基于主机的指标执行自动缩放时的相关指标名称，请参阅 [Azure Monitor 支持的指标](../azure-monitor/platform/metrics-supported.md)。
 
 ### <a name="are-there-any-examples-of-autoscaling-based-on-an-azure-service-bus-topic-and-queue-length"></a>基于 Azure 服务总线主题和队列长度的自动缩放是否有任何示例可供参考？
 
-是的。 有关基于 Azure 服务总线主题和队列长度的自动缩放示例，请参阅 [Azure Monitor 自动缩放常用指标](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/)。
+是的。 有关基于 Azure 服务总线主题和队列长度的自动缩放示例，请参阅 [Azure Monitor 自动缩放常用指标](../azure-monitor/platform/autoscale-common-metrics.md)。
 
 对于服务总线队列，请使用以下 JSON：
 
@@ -104,9 +104,9 @@ ms.locfileid: "85855587"
 
 可以在 VM 上创建自动缩放设置，以使用主机级指标或基于来宾 OS 的指标。
 
-关于受支持的指标列表，请参阅 [Azure Monitor 自动缩放常用指标](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-autoscale-common-metrics)。
+关于受支持的指标列表，请参阅 [Azure Monitor 自动缩放常用指标](../azure-monitor/platform/autoscale-common-metrics.md)。
 
-关于虚拟机规模集的完整示例，请参阅[使用虚拟机规模集的 Resource Manager 模板的高级自动缩放配置](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets)。
+关于虚拟机规模集的完整示例，请参阅[使用虚拟机规模集的 Resource Manager 模板的高级自动缩放配置](../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md)。
 
 此示例使用主机级 CPU 指标和消息计数指标。
 
@@ -114,13 +114,13 @@ ms.locfileid: "85855587"
 
 ### <a name="how-do-i-set-alert-rules-on-a-virtual-machine-scale-set"></a>如何对虚拟机规模集设置警报规则？
 
-通过 PowerShell 或 Azure CLI，可以为虚拟机规模集创建指标警报。 有关详细信息，请参阅 [Azure Monitor PowerShell 快速入门示例](https://azure.microsoft.com/documentation/articles/insights-powershell-samples/#create-alert-rules)和 [Azure Monitor 跨平台 CLI 快速入门示例](https://azure.microsoft.com/documentation/articles/insights-cli-samples/#work-with-alerts)。
+通过 PowerShell 或 Azure CLI，可以为虚拟机规模集创建指标警报。 有关详细信息，请参阅 [Azure Monitor PowerShell 快速入门示例](../azure-monitor/samples/powershell-samples.md#create-metric-alerts)和 [Azure Monitor 跨平台 CLI 快速入门示例](../azure-monitor/samples/cli-samples.md#work-with-alerts)。
 
 虚拟机规模集的 TargetResourceId 如下所示：
 
 /subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.Compute/virtualMachineScaleSets/yourvmssname
 
-可以选择任何 VM 性能计数器作为要对其设置警报的指标。 有关详细信息，请参阅 [Azure Monitor 自动缩放常用指标](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/)中的[基于 Resource Manager 的 Windows VM 的来宾 OS 指标](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-resource-manager-based-windows-vms)和 [Linux VM 的来宾 OS 指标](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-linux-vms)。
+可以选择任何 VM 性能计数器作为要对其设置警报的指标。 有关详细信息，请参阅 [Azure Monitor 自动缩放常用指标](../azure-monitor/platform/autoscale-common-metrics.md)中的[基于 Resource Manager 的 Windows VM 的来宾 OS 指标](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-for-resource-manager-based-windows-vms)和 [Linux VM 的来宾 OS 指标](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-linux-vms)。
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>如何使用 PowerShell 对虚拟机规模集设置自动缩放？
 
@@ -159,7 +159,7 @@ ms.locfileid: "85855587"
 
 该代码支持 Windows 和 Linux。
 
-有关详细信息，请参阅[创建或更新虚拟机规模集](https://msdn.microsoft.com/library/mt589035.aspx)。
+有关详细信息，请参阅[创建或更新虚拟机规模集](/rest/api/compute/virtualmachinescalesets/createorupdate)。
 
 
 ### <a name="how-do-i-use-self-signed-certificates-provisioned-for-azure-service-fabric-clusters"></a>如何使用为 Azure Service Fabric 群集预配的自签名证书？
@@ -169,7 +169,7 @@ ms.locfileid: "85855587"
 az sf cluster create -h
 ```
 
-自签名证书不能用于证书颁发机构提供的分布式信任，也不应用于任何旨在托管企业生产解决方案的 Service Fabric 群集；有关其他 Service Fabric 安全指南，请查看 [Azure Service Fabric 安全最佳做法](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices)和 [Service Fabric 群集安全方案](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)。
+自签名证书不能用于证书颁发机构提供的分布式信任，也不应用于任何旨在托管企业生产解决方案的 Service Fabric 群集；有关其他 Service Fabric 安全指南，请查看 [Azure Service Fabric 安全最佳做法](../security/fundamentals/service-fabric-best-practices.md)和 [Service Fabric 群集安全方案](../service-fabric/service-fabric-cluster-security.md)。
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>是否可以通过 Resource Manager 模板指定一个 SSH 密钥对，用于对 Linux 虚拟机规模集进行 SSH 身份验证？
 
@@ -197,7 +197,7 @@ az sf cluster create -h
 
 此 JSON 块用于[此 Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)。
 
-有关详细信息，请参阅[创建或更新虚拟机规模集](https://msdn.microsoft.com/library/azure/mt589035.aspx#linuxconfiguration)。
+有关详细信息，请参阅[创建或更新虚拟机规模集](/rest/api/compute/virtualmachinescalesets/createorupdate#linuxconfiguration)。
 
 ### <a name="how-do-i-remove-deprecated-certificates"></a>如何删除已弃用的证书？
 
@@ -227,7 +227,7 @@ az sf cluster create -h
 linuxConfiguration 元素名称 | 必须 | 类型 | 说明
 --- | --- | --- | ---
 ssh | 否 | 集合 | 指定 Linux OS 的 SSH 密钥配置
-path | 是 | String | 指定 SSH 密钥或证书应放置到的 Linux 文件路径
+path | 是 | 字符串 | 指定 SSH 密钥或证书应放置到的 Linux 文件路径
 keyData | 是 | String | 指定 base64 编码的 SSH 公钥
 
 有关示例，请参阅 [101-vm-sshkey GitHub 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)。
@@ -240,7 +240,7 @@ keyData | 是 | String | 指定 base64 编码的 SSH 公钥
 
 若要添加同一密钥保管库中的其他机密，请更新 $vmss.properties.osProfile.secrets[0].vaultCertificates 列表。
 
-对于预期的输入结构，请参阅[创建或更新虚拟机集](https://msdn.microsoft.com/library/azure/mt589035.aspx)。
+对于预期的输入结构，请参阅[创建或更新虚拟机集](/rest/api/compute/virtualmachinescalesets/createorupdate)。
 
 在密钥保管库中的虚拟机规模集对象中找到该机密。 然后，将证书引用（URL 以及机密存储名称）添加到与保管库关联的列表中。
 
@@ -268,7 +268,7 @@ Windows 远程管理 (WinRM) 证书引用必须在 OS 配置文件的 Secrets �
 
 ### <a name="where-do-i-put-certificates-for-linux-vms"></a>在 Linux VM 上，证书放在哪个位置？
 
-若要了解如何部署 Linux VM 的证书，请参阅[将证书从客户管理的 Key Vault 部署到 VM](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/)。
+若要了解如何部署 Linux VM 的证书，请参阅[将证书从客户管理的 Key Vault 部署到 VM](/archive/blogs/kv/deploy-certificates-to-vms-from-customer-managed-key-vault)。
 
 ### <a name="how-do-i-add-a-new-vault-certificate-to-a-new-certificate-object"></a>如何将新的保管库证书添加到新的证书对象？
 
@@ -304,7 +304,7 @@ Key Vault 要求指定证书版本的目的是为了使用户清楚地了解哪�
 
 要将 .cer 公钥部署到虚拟机规模集，可以生成仅包含 .cer 文件的 .pfx 文件。 为此，请使用 `X509ContentType = Pfx`。 例如，将 .cer 文件作为 x509Certificate2 对象加载到 C# 或 PowerShell 中，然后调用该方法。
 
-有关详细信息，请参阅 [X509Certificate.Export 方法 (X509ContentType, String)](https://msdn.microsoft.com/library/24ww6yzk(v=vs.110.aspx))。
+有关详细信息，请参阅 [X509Certificate.Export 方法 (X509ContentType, String)](/dotnet/api/system.security.cryptography.x509certificates.x509certificate.export?view=netcore-3.1#system_security_cryptography_x509certificates_x509certificate_export_system_security_cryptography_x509certificates_x509contenttype_system_string_)。
 
 ### <a name="how-do-i-pass-in-certificates-as-base64-strings"></a>如何以 base64 字符串形式传入证书？
 
@@ -334,7 +334,7 @@ Key Vault 要求指定证书版本的目的是为了使用户清楚地了解哪�
 
 有关详细信息，请参阅 [Microsoft 信任中心](https://www.microsoft.com/TrustCenter/Compliance/PCI)。
 
-### <a name="does-managed-identities-for-azure-resources-work-with-virtual-machine-scale-sets"></a>是否可以将 [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/msi-overview)用于虚拟机规模集？
+### <a name="does-managed-identities-for-azure-resources-work-with-virtual-machine-scale-sets"></a>是否可以将 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)用于虚拟机规模集？
 
 是的。 可在适用于 [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) 和 [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) 的“Azure 快速入门”模板中查看一些示例 MSI 模板。
 
@@ -436,7 +436,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 ### <a name="how-do-i-execute-a-custom-script-thats-hosted-in-a-private-storage-account"></a>如何执行一个在专用存储帐户中托管的自定义脚本？
 
-若要执行在私有存储帐户中托管的自定义脚本，请通过存储帐户密钥和名称来设置受保护的设置。 有关详细信息，请参阅[自定义脚本扩展](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/#template-example-for-a-windows-vm-with-protected-settings)。
+若要执行在私有存储帐户中托管的自定义脚本，请通过存储帐户密钥和名称来设置受保护的设置。 有关详细信息，请参阅[自定义脚本扩展](../virtual-machines/extensions/custom-script-windows.md?toc=/azure/virtual-machines/windows/toc.json#property-managedidentity)。
 
 ## <a name="passwords"></a>密码
 
@@ -448,7 +448,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
     直接在规模集模型中更新管理凭据（例如，使用 Azure 资源浏览器、PowerShell 或 CLI）。 规模集完成更新后，所有新的 VM 将获得全新凭据。 现有 VM 只有被重置映像时才获得新凭据。
 
-- 使用 VM 访问扩展重置密码。 请确保遵循[此处](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm)所述的密码要求。
+- 使用 VM 访问扩展重置密码。 请确保遵循[此处](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)所述的密码要求。
 
     使用以下 PowerShell 示例：
 
@@ -635,7 +635,7 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="how-to-i-update-my-virtual-machine-scale-set-to-a-new-image-how-do-i-manage-patching"></a>如何将虚拟机规模集更新为新映像？ 如何管理修补？
 
-若要将虚拟机规模集更新为新映像，或管理修补，请参阅[升级虚拟机规模集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set)。
+若要将虚拟机规模集更新为新映像，或管理修补，请参阅[升级虚拟机规模集](./virtual-machine-scale-sets-upgrade-scale-set.md)。
 
 ### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>是否可以在不更改映像的情况下，使用重置映像操作来重置 VM？ （也就是说，将 VM 重置为出厂设置而不是重置为新映像）
 

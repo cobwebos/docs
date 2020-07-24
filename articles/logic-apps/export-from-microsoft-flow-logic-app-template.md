@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: b8bf409d759b74e6a5ef0d840aebbe807a04448a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2a45218118282f4f1cadb29c9022fc05b30f907
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324785"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078733"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>从 Power Automate 导出流并将其部署到 Azure 逻辑应用
 
@@ -19,9 +20,9 @@ ms.locfileid: "84324785"
 > [!NOTE]
 > 在 Azure 逻辑应用中，并不是所有电源自动连接器都可用。 只能迁移在 Azure 逻辑应用中具有等效连接器的电源自动执行流。 例如，按钮触发器、审批连接器和通知连接器特定于电源自动执行。 目前，OpenAPI 中基于的流不支持作为逻辑应用模板的导出和部署。
 >
-> * 若要找出哪些电源自动连接器没有逻辑应用等效项，请参阅[电源自动连接器](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors)。
+> * 若要找出哪些电源自动连接器没有逻辑应用等效项，请参阅[电源自动连接器](/connectors/connector-reference/connector-reference-powerautomate-connectors)。
 >
-> * 若要找出哪些逻辑应用连接器没有电源自动执行等效功能，请参阅[逻辑应用连接器](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors)。
+> * 若要找出哪些逻辑应用连接器没有电源自动执行等效功能，请参阅[逻辑应用连接器](/connectors/connector-reference/connector-reference-powerautomate-connectors)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -65,7 +66,7 @@ ms.locfileid: "84324785"
 
    1. 选择或指定模板的输入参数值。
 
-      | Property | 说明 |
+      | properties | 描述 |
       |----------|-------------|
       | **订阅** | 用于计费的 Azure 订阅 |
       | **资源组** | 要用于逻辑应用的 Azure 资源组。 您可以使用现有组或创建新组。 |

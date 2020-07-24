@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: 6624cd0ff70ab359f4af36ca2f1f107d8f0b5fd9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7c52e8dfa3cda40cc663b5d7f27b67c7d2ad0b60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659273"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078657"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
 
@@ -21,7 +22,7 @@ ms.locfileid: "83659273"
 * [Microsoft Power Apps 本地数据网关](/powerapps/maker/canvas-apps/gateway-reference)
 * [Azure Analysis Services 本地数据网关](../analysis-services/analysis-services-gateway.md)
 
-本文介绍如何下载、安装和设置本地数据网关，以便可以从 Azure 逻辑应用访问本地数据源。 还可以在本主题的后面部分了解有关[数据网关工作原理](#gateway-cloud-service)的详细信息。 有关网关的详细信息，请参阅[什么是本地网关](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)？ 若要自动执行网关安装和管理任务，请访问 [DataGateway PowerShell cmdlet](https://www.powershellgallery.com/packages/DataGateway/3000.15.15) 的 PowerShell 库。
+本文介绍如何下载、安装和设置本地数据网关，以便可以从 Azure 逻辑应用访问本地数据源。 还可以在本主题的后面部分了解有关[数据网关工作原理](#gateway-cloud-service)的详细信息。 有关网关的详细信息，请参阅[什么是本地网关](/data-integration/gateway/service-gateway-onprem)？ 若要自动执行网关安装和管理任务，请访问 [DataGateway PowerShell cmdlet](https://www.powershellgallery.com/packages/DataGateway/3000.15.15) 的 PowerShell 库。
 
 <a name="requirements"></a>
 
@@ -79,7 +80,7 @@ ms.locfileid: "83659273"
 
   * 网关有两种模式：标准模式和个人模式，个人模式仅适用于 Power BI。 无法在同一台计算机上以相同模式运行多个网关。
 
-  * Azure 逻辑应用支持通过网关进行读取和写入操作。 但是，这些操作存在[有效负载大小限制](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)。
+  * Azure 逻辑应用支持通过网关进行读取和写入操作。 但是，这些操作存在[有效负载大小限制](/data-integration/gateway/service-gateway-onprem#considerations)。
 
 <a name="install-gateway"></a>
 
@@ -142,8 +143,8 @@ ms.locfileid: "83659273"
 
 本地数据网关依赖于 [Azure 服务总线](../service-bus-messaging/service-bus-messaging-overview.md)进行云连接，并建立与网关的关联 Azure 区域相应的出站连接。 如果工作环境要求流量通过代理或防火墙来访问 Internet，此限制可能会阻止本地数据网关连接到网关云服务和 Azure 服务总线。 网关具有多个可调整的通信设置。 有关详细信息，请参阅以下主题：
 
-* [为本地数据网关调整通信设置](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)
-* [为本地数据网关配置代理设置](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)
+* [为本地数据网关调整通信设置](/data-integration/gateway/service-gateway-communication)
+* [为本地数据网关配置代理设置](/data-integration/gateway/service-gateway-proxy)
 
 <a name="high-availability"></a>
 
@@ -155,7 +156,7 @@ ms.locfileid: "83659273"
 
 * 主网关必须运行网关 2017 年 11 月更新版或更高版本。
 
-设置主网关后，当你安装其他网关时，请选择“添加到现有的网关群集”，然后选择主网关（安装的第一个网关），并提供该网关的恢复密钥。 有关详细信息，请参阅[本地数据网关的高可用性群集](https://docs.microsoft.com/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster)。
+设置主网关后，当你安装其他网关时，请选择“添加到现有的网关群集”，然后选择主网关（安装的第一个网关），并提供该网关的恢复密钥。 有关详细信息，请参阅[本地数据网关的高可用性群集](/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster)。
 
 <a name="update-gateway-installation"></a>
 
@@ -185,7 +186,7 @@ ms.locfileid: "83659273"
 
 ## <a name="tenant-level-administration"></a>租户级别管理
 
-若要查看 Azure AD 租户中的所有本地数据网关，该租户中的全局管理员可以以租户管理员身份登录到 [Power Platform 管理中心](https://powerplatform.microsoft.com)，并选择“数据网关”选项。 有关详细信息，请参阅[本地数据网关的租户级别管理](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin)。
+若要查看 Azure AD 租户中的所有本地数据网关，该租户中的全局管理员可以以租户管理员身份登录到 [Power Platform 管理中心](https://powerplatform.microsoft.com)，并选择“数据网关”选项。 有关详细信息，请参阅[本地数据网关的租户级别管理](/data-integration/gateway/service-gateway-tenant-level-admin)。
 
 <a name="restart-gateway"></a>
 
@@ -196,7 +197,7 @@ ms.locfileid: "83659273"
 > [!NOTE]
 > Windows 服务帐户与用于连接到本地数据源的帐户或登录云服务时使用的 Azure 帐户不同。
 
-与任何其他 Windows 服务一样，可以通过各种方式启动和停止该网关。 有关详细信息，请参阅[重启本地数据网关](https://docs.microsoft.com/data-integration/gateway/service-gateway-restart)。
+与任何其他 Windows 服务一样，可以通过各种方式启动和停止该网关。 有关详细信息，请参阅[重启本地数据网关](/data-integration/gateway/service-gateway-restart)。
 
 <a name="gateway-cloud-service"></a>
 
@@ -260,9 +261,9 @@ Microsoft 云服务使用 [Azure AD](../active-directory/fundamentals/active-dir
 
 ## <a name="faq-and-troubleshooting"></a>常见问题解答和故障排除
 
-* [本地数据网关常见问题解答](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
-* [排查本地数据网关问题](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
-* [监视和优化网关性能](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [本地数据网关常见问题解答](/data-integration/gateway/service-gateway-onprem-faq)
+* [排查本地数据网关问题](/data-integration/gateway/service-gateway-tshoot)
+* [监视和优化网关性能](/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: Windows 虚拟桌面的数据位置-Azure
+title: Windows 虚拟桌面春季2020的数据位置-Azure
 description: 对 Windows 虚拟机的数据和元数据的存储位置的简要概述。
 services: virtual-desktop
 author: Heidilohr
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 853f5766c4fd6344eecfd7be1d7911163133a8a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 96072b8008f42f58ec6a3aff32728c087b8e3290
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82611528"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080567"
 ---
-# <a name="data-locations-for-windows-virtual-desktop"></a>Windows 虚拟桌面的数据位置
+# <a name="data-and-metadata-locations-for-windows-virtual-desktop"></a>Windows 虚拟桌面的数据和元数据位置
 
 >[!IMPORTANT]
 >本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面 2019 秋季版，请参阅[此文](./virtual-desktop-fall-2019/data-locations-2019.md)。

@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7ca4df620739b2ab55b8ba986031cc48fe87f1fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a4cb788a24252a2de7b9d669b166b25ed48be1c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80294918"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081587"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Application Insights 智能检测规则
 
@@ -22,7 +22,7 @@ ms.locfileid: "80294918"
 
 可以配置智能检测规则的以下设置：
 - 是否已启用该规则（默认值为 **true**。）
-- 发现检测时是否应向与订阅的[监视读者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)和[监视参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)角色关联的用户发送电子邮件（默认值为 **true**）。
+- 发现检测时是否应向与订阅的[监视读者](../../role-based-access-control/built-in-roles.md#monitoring-reader)和[监视参与者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)角色关联的用户发送电子邮件（默认值为 **true**）。
 - 找到检测项时，应收到通知的其他任何电子邮件收件人。
     -  电子邮件配置不适用于标记为“预览”的智能检测规则  。
 

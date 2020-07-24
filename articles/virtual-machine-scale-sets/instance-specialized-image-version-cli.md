@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: e1b260b1249af25ac5a8364798c532dcb3885cb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e47ed9b5505966973644bee0578d5b13d1659766
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887881"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080550"
 ---
 # <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>使用 Azure CLI 通过专用化映像版本创建规模集
 
-从共享映像库中存储的[专用化映像版本](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images)创建规模集。 如果要使用通用化映像版本创建规模集，请参阅[从一般化映像创建规模集](instance-generalized-image-version-cli.md)。
+从共享映像库中存储的[专用化映像版本](../virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images)创建规模集。 若要使用通用化映像版本创建规模集，请参阅[从通用化映像创建规模集](instance-generalized-image-version-cli.md)。
 
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.4.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
@@ -60,6 +60,3 @@ az vmss create \
 - [创建共享映像库](https://azure.microsoft.com/resources/templates/101-sig-create/)
 - [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-
-
-

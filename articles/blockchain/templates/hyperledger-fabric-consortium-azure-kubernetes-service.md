@@ -4,12 +4,12 @@ description: 如何在 Azure Kubernetes Service 上部署和配置 Hyperledger F
 ms.date: 07/07/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: e1cbfa56f1e4ea9f8cbaa0ad973d06e8b8d486ca
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1e90eeccb015b4d5ef78b79297565ddde9cfa305
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085792"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081265"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务（AKS）上的 Hyperledger 结构联合会
 
@@ -28,9 +28,9 @@ ms.locfileid: "86085792"
 
 选项 | 服务模型 | 常见用例
 -------|---------------|-----------------
-解决方案模板 | IaaS | 解决方案模板是 Azure 资源管理器模板，可用于预配完全配置的区块链网络拓扑。 模板为给定区块链网络类型部署和配置 Microsoft Azure 计算、网络和存储服务。 提供解决方案模板时没有服务级别协议。 使用[Microsoft 问答&问题页面](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)获取支持。
+解决方案模板 | IaaS | 解决方案模板是 Azure 资源管理器模板，可用于预配完全配置的区块链网络拓扑。 模板为给定区块链网络类型部署和配置 Microsoft Azure 计算、网络和存储服务。 提供解决方案模板时没有服务级别协议。 使用[Microsoft 问答&问题页面](/answers/topics/azure-blockchain-workbench.html)获取支持。
 [Azure 区块链服务](../service/overview.md) | PaaS | Azure 区块链服务预览版简化了联合会区块链网络的构成、管理和监管。 将 Azure 区块链服务用于需要 PaaS、联合会管理或合同和事务隐私的解决方案。
-[Azure Blockchain Workbench](../workbench/overview.md) | IaaS 和 PaaS | Azure Blockchain Workbench 预览版是 Azure 服务和功能的集合，旨在帮助创建和部署区块链应用程序，以便与其他组织共享业务流程和数据。 使用 Azure 区块链工作台为区块链解决方案或区块链应用程序概念证明。 服务级别协议未随 Azure Blockchain Workbench 一起提供。 使用[Microsoft 问答&问题页面](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)获取支持。
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS 和 PaaS | Azure Blockchain Workbench 预览版是 Azure 服务和功能的集合，旨在帮助创建和部署区块链应用程序，以便与其他组织共享业务流程和数据。 使用 Azure 区块链工作台为区块链解决方案或区块链应用程序概念证明。 服务级别协议未随 Azure Blockchain Workbench 一起提供。 使用[Microsoft 问答&问题页面](/answers/topics/azure-blockchain-workbench.html)获取支持。
 
 ## <a name="hyperledger-fabric-consortium-architecture"></a>Hyperledger 结构联合会体系结构
 
@@ -113,7 +113,7 @@ ms.locfileid: "86085792"
     - **DNS 前缀**： AKS 群集的域名系统（DNS）名称前缀。 创建群集后管理容器时，你将使用 DNS 连接到 Kubernetes API。
     - **节点大小**： Kubernetes 节点的大小，可以从 Azure 上提供的 VM 库存单位（sku）列表中进行选择。 为了获得最佳性能，建议采用标准 DS3 v2。
     - **节点计数**：要在群集中部署的 Kubernetes 节点数。 建议将此节点数至少设置为等于或大于 Fabric 设置中指定的 HLF 节点数。
-    - **服务主体客户端 id**：输入现有服务主体的客户端 id，或创建 AKS authentication 所需的新的。 请参阅[创建服务主体](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal)的步骤。
+    - **服务主体客户端 id**：输入现有服务主体的客户端 id，或创建 AKS authentication 所需的新的。 请参阅[创建服务主体](/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal)的步骤。
     - **服务主体客户端机密**：输入服务主体客户端 ID 中提供的服务主体的客户端机密。
     - **确认客户端密码**：确认服务主体客户端密码中提供的客户端密码。
     - **启用容器监视**：选择启用 AKS 监视，使 AKS 日志推送到指定的 Log Analytics 工作区。
@@ -138,7 +138,7 @@ ms.locfileid: "86085792"
 
 运行 Azure HLF 脚本的所有命令都可以通过 Azure Bash 命令行执行。 接口（CLI）。 可以通过登录到 Azure shell web 版本  ![Azure Kubernetes 服务模板上的 Hyperledger 结构](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) 选项位于 Azure 门户的右上角。 在命令提示符下，键入 bash，然后输入切换到 bash CLI。
 
-有关详细信息，请参阅[Azure shell](https://docs.microsoft.com/azure/cloud-shell/overview) 。
+有关详细信息，请参阅[Azure shell](../../cloud-shell/overview.md) 。
 
 ![Azure Kubernetes 服务模板上的 Hyperledger 结构](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-powershell.png)
 
@@ -441,6 +441,6 @@ kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
 
 与 Microsoft 工程师和 Azure 区块链社区专家交流。
 
-- [Microsoft Q&问题页面](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)。 针对区块链模板的工程支持仅限于部署问题。
+- [Microsoft Q&问题页面](/answers/topics/azure-blockchain-workbench.html)。 针对区块链模板的工程支持仅限于部署问题。
 - [Microsoft 技术社区](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)

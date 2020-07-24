@@ -7,16 +7,16 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: 930e32cfc57cb5b48180c7695b7b6c7d11df8caa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9581bb17e29a25b618a90aece5675d132c14a97c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506967"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081485"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Monitor 中的自定义指标（预览版）
 
-在 Azure 中部署资源和应用程序时，需要开始收集遥测数据，以洞察它们的性能和运行状况。 Azure 提供一些现成的指标。 这些指标称为[标准指标或平台指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)。 但是，它们在性质上有限制。 
+在 Azure 中部署资源和应用程序时，需要开始收集遥测数据，以洞察它们的性能和运行状况。 Azure 提供一些现成的指标。 这些指标称为[标准指标或平台指标](./metrics-supported.md)。 但是，它们在性质上有限制。 
 
 可能需要收集一些自定义性能指标或特定于业务的指标才能提供更深入的见解。 可以通过应用程序遥测、Azure 资源上运行的代理甚至从外到内的监视系统收集这些**自定义**指标，然后将其直接提交给 Azure Monitor。 发布到 Azure Monitor 之后，可以连同 Azure 发出的标准指标一起浏览、查询 Azure 资源和应用程序的自定义指标，并针对其发出警报。
 
@@ -37,7 +37,7 @@ Azure Monitor 自定义指标目前为公开预览版。
 自定义指标的保留时间[与平台指标的保留时间相同](data-platform-metrics.md#retention-of-metrics)。 
 
 > [!NOTE]  
-> 通过 Application Insights SDK 发送到 Azure Monitor 的指标将按引入的日志数据计费。 仅当选择了 Application Insights 功能[在自定义指标维度上启用警报](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation)时，它们才会产生额外的指标费用。 此复选框使用自定义指标 API 将数据发送到 Azure Monitor 指标数据库，以允许更复杂的警报。  详细了解 [Application Insights 定价模型](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model)和[你所在区域的定价](https://azure.microsoft.com/pricing/details/monitor/)。
+> 通过 Application Insights SDK 发送到 Azure Monitor 的指标将按引入的日志数据计费。 仅当选择了 Application Insights 功能[在自定义指标维度上启用警报](../app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)时，它们才会产生额外的指标费用。 此复选框使用自定义指标 API 将数据发送到 Azure Monitor 指标数据库，以允许更复杂的警报。  详细了解 [Application Insights 定价模型](../app/pricing.md#pricing-model)和[你所在区域的定价](https://azure.microsoft.com/pricing/details/monitor/)。
 
 
 ## <a name="how-to-send-custom-metrics"></a>如何发送自定义指标
@@ -46,8 +46,8 @@ Azure Monitor 自定义指标目前为公开预览版。
 
 ### <a name="authentication"></a>身份验证
 若要将自定义指标提交到 Azure Monitor，提交指标的实体需在请求的 **Bearer** 标头中提供有效的 Azure Active Directory (Azure AD) 令牌。 可通过几种支持的方法获取有效的持有者令牌：
-1. [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 为 Azure 资源本身（例如 VM）提供一个标识。 托管服务标识 (MSI) 旨在授予资源权限来执行特定的操作。 例如，允许资源发出有关其自身的指标。 可为某个资源或其 MSI 授予针对另一个资源的“监视指标发布者”权限。 获取此权限后，该 MSI 也能发出其他资源的指标。
-2. [Azure AD 服务主体](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)。 在此方案中，可向某个 Azure AD 应用程序或服务分配发出有关 Azure 资源的指标的权限。
+1. [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md) 为 Azure 资源本身（例如 VM）提供一个标识。 托管服务标识 (MSI) 旨在授予资源权限来执行特定的操作。 例如，允许资源发出有关其自身的指标。 可为某个资源或其 MSI 授予针对另一个资源的“监视指标发布者”权限。 获取此权限后，该 MSI 也能发出其他资源的指标。
+2. [Azure AD 服务主体](../../active-directory/develop/app-objects-and-service-principals.md)。 在此方案中，可向某个 Azure AD 应用程序或服务分配发出有关 Azure 资源的指标的权限。
 为了对请求进行身份验证，Azure Monitor 将使用 Azure AD 公钥来验证应用程序令牌。 现有的“监视指标发布者”角色已拥有此权限。 可在 Azure 门户中使用此权限。 可以根据服务主体要发出哪些资源的自定义指标，在所需的范围为该服务主体授予“监视指标发布者”角色。 范围的示例包括订阅、资源组或特定资源。
 
 > [!TIP]  
@@ -192,10 +192,10 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 |美国中西部 | https： \/ /westcentralus.monitoring.azure.com |
 |美国西部 2       | https： \/ /westus2.monitoring.azure.com |
 |美国中北部 | https： \/ /northcentralus.monitoring.azure.com
-|美国中南部| https： \/ /southcentralus.monitoring.azure.com |
+|South Central US| https： \/ /southcentralus.monitoring.azure.com |
 |美国中部      | https： \/ /centralus.monitoring.azure.com |
 |加拿大中部 | https： \/ /canadacentral.monitoring.azure.com |
-|美国东部| https： \/ /eastus.monitoring.azure.com |
+|East US| https： \/ /eastus.monitoring.azure.com |
 |美国东部 2 | https： \/ /eastus2.monitoring.azure.com |
 | **欧洲** | |
 |北欧    | https： \/ /northeurope.monitoring.azure.com |
@@ -207,8 +207,8 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 | **亚洲** | |
 |印度中部 | https： \/ /centralindia.monitoring.azure.com |
 |澳大利亚东部 | https： \/ /australiaeast.monitoring.azure.com |
-|日本东部 | https： \/ /japaneast.monitoring.azure.com |
-|东南亚  | https： \/ /southeastasia.monitoring.azure.com |
+|Japan East | https： \/ /japaneast.monitoring.azure.com |
+|Southeast Asia  | https： \/ /southeastasia.monitoring.azure.com |
 |东亚 | https： \/ /eastasia.monitoring.azure.com |
 |韩国中部   | https： \/ /koreacentral.monitoring.azure.com |
 

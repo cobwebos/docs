@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 3adb94709d089e2f1d106680acc00c08d2203a4d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e49f9caaeb1b16daa49fabb217b6fc40fff17f53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340883"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081468"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>面向服务提供商的 Azure Monitor 日志
 
@@ -20,7 +21,7 @@ Azure Monitor 中的 Log Analytics 工作区可以帮助托管服务提供商 (M
 
 对于属于[云解决方案提供商（CSP）](https://partner.microsoft.com/en-US/membership/cloud-solution-provider)计划的合作伙伴和服务提供商，Azure Monitor 中 Log Analytics 是 azure CSP 订阅中可用的 azure 服务之一。
 
-Log Analytics 在 Azure Monitor 中，服务提供商还可以通过[Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview)中的 azure 委托资源管理功能来管理客户资源。
+Log Analytics 在 Azure Monitor 中，服务提供商还可以通过[Azure Lighthouse](../../lighthouse/overview.md)中的 azure 委托资源管理功能来管理客户资源。
 
 ## <a name="architectures-for-service-providers"></a>适用于服务提供商的体系结构
 
@@ -34,12 +35,12 @@ Log Analytics 在 Azure Monitor 中，服务提供商还可以通过[Azure Light
 
 服务提供商管理员可以通过两种方式访问客户租户中的 Log Analytics 工作区：
 
-- 客户可将服务提供商的个人用户作为[Azure Active Directory 来宾用户（B2B）](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)添加。 服务提供商管理员必须登录到 Azure 门户中的每个客户的目录，才能访问这些工作区。 这还要求客户管理每个服务提供商管理员的个人访问权限。
-- 为了获得更好的可伸缩性和灵活性，服务提供商可以使用[Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview)的[azure 委托资源管理](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management)功能来访问客户的租户。 使用此方法时，服务提供商管理员包含在服务提供商的租户中的 Azure AD 用户组中，此组在每个客户的载入过程中被授予访问权限。 然后，这些管理员可以从自己的服务提供商租户内访问每个客户的工作区，而无需单独登录到每个客户的租户。 以这种方式访问客户的 Log Analytics 工作区资源可以减少客户端所需的工作，并且可以更轻松地收集和分析通过[Azure Monitor 工作簿](https://docs.microsoft.com/azure//azure-monitor/platform/workbooks-overview)等工具由同一服务提供商管理的多个客户的数据。 有关详细信息，请参阅[按比例监视客户资源](https://docs.microsoft.com/azure/lighthouse/how-to/monitor-at-scale)。
+- 客户可将服务提供商的个人用户作为[Azure Active Directory 来宾用户（B2B）](../../active-directory/b2b/what-is-b2b.md)添加。 服务提供商管理员必须登录到 Azure 门户中的每个客户的目录，才能访问这些工作区。 这还要求客户管理每个服务提供商管理员的个人访问权限。
+- 为了获得更好的可伸缩性和灵活性，服务提供商可以使用[Azure Lighthouse](../../lighthouse/overview.md)的[azure 委托资源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)功能来访问客户的租户。 使用此方法时，服务提供商管理员包含在服务提供商的租户中的 Azure AD 用户组中，此组在每个客户的载入过程中被授予访问权限。 然后，这些管理员可以从自己的服务提供商租户内访问每个客户的工作区，而无需单独登录到每个客户的租户。 以这种方式访问客户的 Log Analytics 工作区资源可以减少客户端所需的工作，并且可以更轻松地收集和分析通过[Azure Monitor 工作簿](../..//azure-monitor/platform/workbooks-overview.md)等工具由同一服务提供商管理的多个客户的数据。 有关详细信息，请参阅[按比例监视客户资源](../../lighthouse/how-to/monitor-at-scale.md)。
 
 分布式体系结构的优点是：
 
-* 客户可以通过[Azure 委派的资源管理](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management)来确认特定级别的权限，也可以使用自己的[基于角色的访问](https://docs.microsoft.com/azure/role-based-access-control/overview)权限管理对日志的访问权限。
+* 客户可以通过[Azure 委派的资源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)来确认特定级别的权限，也可以使用自己的[基于角色的访问](../../role-based-access-control/overview.md)权限管理对日志的访问权限。
 * 可以从所有类型的资源（而不仅仅是基于代理的 VM 数据）收集日志。 例如，Azure 审核日志。
 * 每个客户都可以为其工作区设置不同的设置，例如保留期和数据上限。
 * 在客户之间进行隔离以遵守监管和合规要求。
@@ -74,7 +75,7 @@ Log Analytics 在 Azure Monitor 中，服务提供商还可以通过[Azure Light
 
 在中心位置实现日志有两种选择：
 
-1. 中心工作区：服务提供商可以在其租户中创建工作区，并使用利用[查询 API](https://dev.loganalytics.io/) 和[数据收集 API](../../azure-monitor/platform/data-collector-api.md) 的脚本将来自各个工作区的数据提取到此中心位置。 脚本之外的另一种选择是使用 [Azure 逻辑应用](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)。
+1. 中心工作区：服务提供商可以在其租户中创建工作区，并使用利用[查询 API](https://dev.loganalytics.io/) 和[数据收集 API](../../azure-monitor/platform/data-collector-api.md) 的脚本将来自各个工作区的数据提取到此中心位置。 脚本之外的另一种选择是使用 [Azure 逻辑应用](../../logic-apps/logic-apps-overview.md)。
 
 2. 作为中心位置 Power BI：当不同工作区使用 Log Analytics 工作区和[Power BI](../../azure-monitor/platform/powerbi.md)之间的集成将数据导出到其中时，Power BI 可充当中心位置。
 
@@ -88,4 +89,4 @@ Log Analytics 在 Azure Monitor 中，服务提供商还可以通过[Azure Light
 
 * 使用 [Power BI](../../azure-monitor/platform/powerbi.md) 生成摘要报告
 
-* 将客户加入[Azure 委托的资源管理](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management)。
+* 将客户加入[Azure 委托的资源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)。

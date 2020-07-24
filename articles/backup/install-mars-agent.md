@@ -3,12 +3,12 @@ title: 安装 Microsoft Azure 恢复服务（MARS）代理
 description: 了解如何安装 Microsoft Azure 恢复服务（MARS）代理来备份 Windows 计算机。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 7a43f585e978b7d6974ac89fbb5d93f15aebb1d7
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: b9842f6b07621301a0a8a32f5eb7fae5ece153bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855232"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079360"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>安装 Azure 备份 MARS 代理
 
@@ -42,10 +42,10 @@ Azure 备份使用 MARS 代理备份本地计算机和 Azure VM 中的文件、�
 
 ## <a name="modify-storage-replication"></a>修复存储复制
 
-默认情况下，保管库使用[异地冗余存储 (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。
+默认情况下，保管库使用[异地冗余存储 (GRS)](../storage/common/storage-redundancy.md)。
 
 * 如果保管库是主要备份机制，建议使用 GRS。
-* 可以使用[本地冗余存储 (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 来降低 Azure 存储成本。
+* 可以使用[本地冗余存储 (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) 来降低 Azure 存储成本。
 
 若要修改存储复制类型，请执行以下操作：
 
@@ -95,7 +95,7 @@ Azure 备份使用 MARS 代理备份本地计算机和 Azure VM 中的文件、�
 * Azure 区域（取决于你的恢复服务保管库的位置）
 * Azure 存储（取决于你的恢复服务保管库的位置）
 
-有关详细信息，请参阅 [ExpressRoute 路由要求](https://docs.microsoft.com/azure/expressroute/expressroute-routing)。
+有关详细信息，请参阅 [ExpressRoute 路由要求](../expressroute/expressroute-routing.md)。
 
 > [!NOTE]
 > 对于新线路，公共对等互连已弃用。
@@ -136,13 +136,13 @@ Azure 备份使用 MARS 代理备份本地计算机和 Azure VM 中的文件、�
 ## <a name="install-and-register-the-agent"></a>安装并注册代理
 
 1. 在要备份的计算机上运行 *MARSagentinstaller.exe* 文件。
-1. 在 MARS 代理安装向导中选择“安装设置”。 在此处选择代理的安装位置以及缓存位置。 然后，选择“下一步”。
+1. 在 MARS 代理安装向导中选择“安装设置”。 在此处选择代理的安装位置以及缓存位置。 然后选择“下一步”。
    * Azure 备份在将数据快照发送到 Azure 之前，会使用缓存来存储这些快照。
    * 缓存位置的可用空间应该至少为所要备份的数据大小的 5%。
 
     ![在 MARS 代理安装向导中选择安装设置](./media/backup-configure-vault/mars1.png)
 
-1. 对于“代理配置”中，请指定 Windows 计算机上运行的代理如何连接到 Internet。 然后，选择“下一步”。
+1. 对于“代理配置”中，请指定 Windows 计算机上运行的代理如何连接到 Internet。 然后选择“下一步”。
 
    * 如果使用自定义代理，请指定任何所需的代理设置和凭据。
    * 请记住，代理需要有权访问[特定的 URL](#before-you-start)。

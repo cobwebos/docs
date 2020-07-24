@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: a75be23e2e8215d86aebcfd7f4317f2f597d3c5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d12df01fe1506f7f5ade9cce60ae7af0412e3010
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80385072"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080805"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure 安全中心内的自适应网络强化
 了解如何在 Azure 安全中心内配置自适应网络强化。
@@ -45,7 +45,7 @@ ms.locfileid: "80385072"
    * **未扫描的资源**：由于以下原因之一而无法运行自适应网络强化算法的 VM：
       * **VM 是经典 VM**：只有 Azure 资源管理器 VM 受支持。
       * **没有足够的数据可用**：为了生成准确的流量强化建议，安全中心至少需要 30 天的流量数据。
-      * **VM 不受 ASC 标准保护**：只有设置为安全中心标准定价层的 VM 才有资格运行此功能。
+      * **VM 未按 ASC 标准进行保护**：仅设置为安全中心标准定价层的 vm 有资格使用此功能。
 
      ![不正常的资源](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
 

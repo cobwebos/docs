@@ -3,11 +3,12 @@ title: 使用逻辑应用自动执行 Azure 应用程序 Insights 过程
 description: 了解如何通过将 Application Insights 连接器添加到逻辑应用来快速自动执行可重复的过程。
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: 4a0944e661932d86fac75f78c4faf5be751806c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76a199023ef37fbda27be59fdf70f6ca5d8481bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79473160"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079615"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>使用逻辑应用自动执行 Application Insights 过程
 
@@ -18,14 +19,14 @@ ms.locfileid: "79473160"
 
 通过这种集成，无需编写任何代码就可以自动执行许多过程。 可以使用 Application Insights 连接器创建逻辑应用，快速自动执行任何 Application Insights 过程。 
 
-也可以添加其他操作。 Azure 应用服务的逻辑应用功能提供数百个操作。 例如，可使用逻辑应用在 Azure DevOps 中自动发送电子邮件通知或创建 bug。 还可使用多个可用[模板](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates)帮助加快逻辑应用的创建过程。 
+也可以添加其他操作。 Azure 应用服务的逻辑应用功能提供数百个操作。 例如，可使用逻辑应用在 Azure DevOps 中自动发送电子邮件通知或创建 bug。 还可使用多个可用[模板](../../logic-apps/logic-apps-create-logic-apps-from-templates.md)帮助加快逻辑应用的创建过程。 
 
 ## <a name="create-a-logic-app-for-application-insights"></a>为 Application Insights 创建逻辑应用
 
 本教程介绍如何创建使用 Analytics autocluster 算法对 Web 应用程序的数据中的属性进行分组的逻辑应用。 此流自动通过电子邮件发送结果，这只是如何结合使用 Application Insights Analytics 和逻辑应用的一个示例。 
 
 ### <a name="step-1-create-a-logic-app"></a>步骤 1：创建逻辑应用
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 单击“创建资源”****，选择“Web + 移动”****，然后选择“逻辑应用”****。
 
     ![新建逻辑应用窗口](./media/automate-with-logic-apps/1createlogicapp.png)
@@ -130,13 +131,8 @@ ms.locfileid: "79473160"
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解如何创建 [Analytics 查询](../../azure-monitor/log-query/get-started-queries.md)。
-- 了解有关[逻辑应用](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps)的详细信息。
+- 了解有关[逻辑应用](../../logic-apps/logic-apps-overview.md)的详细信息。
 
 
 
 <!--Link references-->
-
-
-
-
-
