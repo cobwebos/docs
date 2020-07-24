@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: dd04087db32f0bbfa75dafa7e12c355e5ab7b515
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da75498d6e4616b287ddb11c69df2469baaf2655
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670060"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067638"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>如何将 Micrometer 与 Azure Application Insights Java SDK 配合使用
 Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码的指标，并可用于将数据导出到偏爱的监视系统。 本文介绍如何对 Spring Boot 和非 Spring Boot 应用程序配合使用 Micrometer 与 Application Insights。
@@ -270,4 +271,4 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解有关 Micrometer 的详细信息，请参阅官方[Micrometer 文档](https://micrometer.io/docs)。
-* 若要了解有关 Azure 的弹簧，请参阅[azure 上的官方春季文档](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable)。
+* 若要了解有关 Azure 的弹簧，请参阅[azure 上的官方春季文档](/java/azure/spring-framework/?view=azure-java-stable)。

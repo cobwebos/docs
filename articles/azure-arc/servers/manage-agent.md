@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/18/2020
+ms.date: 07/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 086491484592c8015bdb519bb498e73da3836f6f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 122f88e8bf14d3e3b082930716cffc3621afd336
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103902"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067701"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理并维护 Connected Machine 代理
 
@@ -142,6 +142,9 @@ Azcmagent 工具 (Azcmagent.exe) 用于在安装过程中配置 Azure Arc for se
 * **-v or --verbose** - 启用详细日志记录
 
 你可以在以交互方式登录时手动执行“Connect”、“Disconnect”和“Reconnect”，也可以使用用于加入多个代理的相同服务主体或使用 Microsoft 标识平台[访问令牌](../../active-directory/develop/access-tokens.md)自动执行这些参数  。 如果未使用服务主体向 Azure Arc for servers（预览版）注册计算机，请参阅以下[文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)来创建服务主体。
+
+>[!NOTE]
+>若要运行**azcmagent**，必须具有 Linux 计算机上的*根*访问权限。
 
 ### <a name="connect"></a>连接
 

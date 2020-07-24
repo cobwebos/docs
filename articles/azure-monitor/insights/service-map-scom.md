@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: dc9425b25fa594d06473865f1add9c91c7760a97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1756bd72dc78bfafc8959c4ff1c8f95d255c931
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557233"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067565"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>将 System Center Operations Manager 与用于 VM 的 Azure Monitor 的映射功能集成
 
@@ -138,9 +138,9 @@ ms.locfileid: "85557233"
 
 有关创建服务主体的 Azure 正式文档，请参阅：
 
-* [使用 PowerShell 创建服务主体](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)
-* [使用 Azure CLI 创建服务主体](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
-* [使用 Azure 门户创建服务主体](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
+* [使用 PowerShell 创建服务主体](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
+* [使用 Azure CLI 创建服务主体](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
+* [使用 Azure 门户创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)
 
 ### <a name="suggestions"></a>建议
 
