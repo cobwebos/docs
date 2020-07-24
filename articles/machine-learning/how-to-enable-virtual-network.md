@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/07/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 2193584996ed9f2c4cf5e858b8855c6878159a84
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fa99a5c78fb533d17cb7f70b3545aa9ef6439b32
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520692"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072608"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>在定型过程中进行网络隔离 & 专用虚拟网络的推理
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -126,7 +126,7 @@ Studio 支持从虚拟网络中的以下数据存储类型读取数据：
 1. 展开 "**输出设置**" 部分。
 1. 选择 "**替代默认输出设置**"。
 1. 选择 "**设置输出设置**"。
-1. 指定新的 datstore。
+1. 指定新的数据存储。
 
 ### <a name="azure-data-lake-storage-gen2-access-control"></a>Azure Data Lake Storage Gen2 访问控制
 
@@ -429,6 +429,8 @@ except ComputeTargetException:
 ```
 
 创建过程完成后，通过在试验中使用群集来训练模型。 有关详细信息，请参阅[选择并使用用于训练的计算目标](how-to-set-up-training-targets.md)。
+
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
 ### <a name="access-data-in-a-compute-instance-notebook"></a>访问计算实例笔记本中的数据
 

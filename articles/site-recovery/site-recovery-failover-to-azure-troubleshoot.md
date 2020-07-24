@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 09a4700ce794458ee4dcad2291a93e0b13ca5feb
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 39a92dbdc0bdcd0fdd2bb06efe3fbd4bfe33069d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133769"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071197"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>解决将 VMware VM 或物理计算机故障转移到 Azure 时出现的错误
 
@@ -54,9 +54,11 @@ Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 发生此情�
 
     如果需要混合，则它提供以下结果：
 
-        REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
+    ```output
+    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
-        This system doesn't meet no-hydration requirement.
+    This system doesn't meet no-hydration requirement.
+    ```
 
     如果 VM 满足“非混合”要求，则脚本将提供结果“此系统满足‘非混合’要求”。 在此情况下，所有驱动程序和服务都处于 Azure 所需的状态并且不需要在 VM 上进行混合。
 
@@ -65,12 +67,14 @@ Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 发生此情�
     `.\Script-no-hydration.ps1 -set`
     
     这将转换驱动程序的启动类型并提供如下所示的结果：
-    
-        REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0 
 
-        Updating registry:  REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc   start =  0 
+    ```output
+    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
-        This system is now no-hydration compatible. 
+    Updating registry:  REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc   start =  0
+
+    This system is now no-hydration compatible.
+    ```
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>由于虚拟机上的“连接”按钮已灰显，无法连接/通过 RDP/SSH 连接到已故障转移的虚拟机
 
@@ -116,11 +120,15 @@ Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 发生此情�
 
 * 如果计算机操作系统是 Red Hat 或 Oracle Linux 7.*/8.0，请在具有根权限的故障转移 Azure 虚拟机上运行以下命令。 在执行命令后重启 VM。
 
-        grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+  ```console
+  grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+  ```
 
 * 如果计算机操作系统是 CentOS 7.*，请在具有根权限的故障转移 Azure 虚拟机上运行以下命令。 在执行命令后重启 VM。
 
-        grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+  ```console
+  grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+  ```
 
 ## <a name="unexpected-shutdown-message-event-id-6008"></a>意外关闭消息（事件 ID 6008）
 

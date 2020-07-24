@@ -7,17 +7,18 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 12bc51e800ef5ccd4ad3c72d3860fb22bac5b749
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca8aa62c4119b9b0b7bbed53cf722c694696ef5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77664909"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073569"
 ---
 # <a name="application-insights-log-based-metrics"></a>基于 Application Insights 日志的指标
 
 使用基于 Application Insights 日志的指标可以分析受监视应用的运行状况、创建功能强大的仪表板，以及配置警报。 有两种类型的指标：
 
-* [基于日志的指标](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)在幕后转换为存储的事件中的 [Kusto 查询](https://docs.microsoft.com/azure/kusto/query/)。
+* [基于日志的指标](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)在幕后转换为存储的事件中的 [Kusto 查询](/azure/kusto/query/)。
 * [标准指标](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)存储为预先聚合的时序。
 
 由于标准指标在收集期间会预先聚合，因此它们在查询时具有更好的性能。  因此它们更适合在仪表板和实时警报中显示。 基于日志的指标具有更多的维度，因此，它们特别适合用于数据分析和即席诊断。  在[指标资源管理器](metrics-getting-started.md)中使用[命名空间选择器](metrics-getting-started.md#create-your-first-metric-chart)可以在基于日志的指标与标准指标之间切换。

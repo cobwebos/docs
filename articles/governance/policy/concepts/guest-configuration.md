@@ -3,12 +3,12 @@ title: 了解如何审核虚拟机的内容
 description: 了解 Azure Policy 如何使用来宾配置代理审核虚拟机内部的设置。
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: ec2a9f53fbe2ad0201af0250b0dcfa8dc4d519f0
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: f2f07a3e88984a84ca1529052d5899ad8570a268
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971090"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072820"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -35,9 +35,8 @@ Azure 策略可以审核虚拟机中运行的计算机的设置，这二者都�
 若要审核计算机中的设置，请启用[虚拟机扩展](../../../virtual-machines/extensions/overview.md)，并且该计算机必须具有系统管理的标识。 该扩展下载适用的策略分配和相应的配置定义。 标识用于在计算机读取和写入来宾配置服务时对计算机进行身份验证。 对于 Arc 连接的计算机，不需要扩展，因为它包含在连接了 Arc 的计算机代理中。
 
 > [!IMPORTANT]
-> 必须有来宾配置扩展，才能在 Azure 虚拟机中执行审核。 若要大规模部署此扩展，请分配以下策略定义： 
->  - [部署必备组件以在 Windows VM 上启用 Guest Configuration 策略](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
->  - [部署必备组件以在 Linux VM 上启用 Guest Configuration 策略](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+> 若要审核 Azure 虚拟机，需要使用来宾配置扩展和托管标识。 若要 > 在 Azure 虚拟机中执行审核需要来宾配置扩展。 若要大规模部署扩展，请分配以下策略计划： > 大规模部署扩展，请分配以下策略定义： 
+>  - [部署先决条件以在虚拟机上启用来宾配置策略](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
 
 ### <a name="limits-set-on-the-extension"></a>对扩展设置的限制
 
@@ -49,7 +48,7 @@ Azure 策略可以审核虚拟机中运行的计算机的设置，这二者都�
 
 下表显示了在每个受支持的操作系统上使用的本地工具的列表。 对于内置内容，来宾配置会自动处理这些工具。
 
-|操作系统|验证工具|说明|
+|操作系统|验证工具|注释|
 |-|-|-|
 |Windows|[PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| 将加载到仅由 Azure 策略使用的文件夹。 不会与 Windows PowerShell DSC 冲突。 PowerShell Core 不会添加到系统路径。|
 |Linux|[Chef InSpec](https://www.chef.io/inspec/)| 在默认位置安装 Chef InSpec 版本2.2.61，并将其添加到系统路径。 还会安装 InSpec 包的依赖项，包括 Ruby 和 Python。 |
@@ -81,10 +80,11 @@ Azure 策略可以审核虚拟机中运行的计算机的设置，这二者都�
 
 ## <a name="managed-identity-requirements"></a>托管标识要求
 
-将扩展添加到虚拟机的 DeployIfNotExists 策略还启用了系统分配的托管标识（如果不存在）。
+如果在[虚拟机上启用来宾配置策略](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)，则该计划中的策略将启用系统分配的托管标识（如果不存在）。 计划中有两个管理标识创建的策略定义。 策略定义中的 IF 条件基于 Azure 中的计算机资源的当前状态确保正确的行为。
 
-> [!WARNING]
-> 在启用系统分配的托管标识的策略范围内，避免为虚拟机启用用户分配的托管标识。 用户分配的标识将被替换，并且计算机可能会变得无响应。
+如果计算机当前没有任何托管标识，则有效策略将为： [ \[ 预览版 \] ：添加系统分配的托管标识，以在没有标识的虚拟机上启用来宾配置分配](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
+
+如果计算机当前具有用户分配的系统标识，则有效策略将为： [ \[ 预览版 \] ：添加系统分配的托管标识，以在虚拟机上使用用户分配的标识启用来宾配置分配](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
 
 ## <a name="guest-configuration-definition-requirements"></a>来宾配置定义要求
 
@@ -137,7 +137,7 @@ Azure Policy 的最新功能可用于配置计算机内部的设置。 “在 Wi
 
 来宾配置扩展将日志文件写入以下位置：
 
-Windows：`C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
+Windows： `C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
 
 Linux：`/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
 

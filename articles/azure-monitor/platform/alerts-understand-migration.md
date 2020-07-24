@@ -6,11 +6,12 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: d31c856e17348c23ad61130869af6ae440d3050d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9696167d9addc3029a53f25e289d17bd3add263
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114304"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073626"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>了解迁移工具的工作原理
 
@@ -63,7 +64,7 @@ ms.locfileid: "81114304"
 - SASThrottlingError
 - ThrottlingError
 
-必须基于[旧的和新的存储指标之间的映射](https://docs.microsoft.com/azure/storage/common/storage-metrics-migration#metrics-mapping-between-old-metrics-and-new-metrics)迁移针对 Percent 指标的经典警报规则。 需要相应地修改阈值，因为提供的新指标是绝对指标。
+必须基于[旧的和新的存储指标之间的映射](../../storage/common/storage-metrics-migration.md#metrics-mapping-between-old-metrics-and-new-metrics)迁移针对 Percent 指标的经典警报规则。 需要相应地修改阈值，因为提供的新指标是绝对指标。
 
 必须将针对 AnonymousThrottlingError、SASThrottlingError 和 ThrottlingError 的经典警报规则拆分为两个新警报，因为没有任何合并的指标可提供相同的功能。 需要相应地调整阈值。
 
@@ -160,7 +161,7 @@ Mongo 失败请求的警报必须拆分为多个警报，因为没有提供相�
 | SASSuccess | 包含维度 "ResponseType"="Success" 和 "Authentication"="SAS" 的事务指标 | |
 | ServerOtherError | 包含维度 "ResponseType"="ServerOtherError" 的事务指标 | |
 | ServerTimeOutError | 包含维度 "ResponseType"="ServerTimeOutError" 的事务指标  | |
-| 成功 | 包含维度 "ResponseType"="Success" 的事务指标 | |
+| Success | 包含维度 "ResponseType"="Success" 的事务指标 | |
 | TotalBillableRequests| 事务 | |
 | TotalEgress | 流出量 | |
 | TotalIngress | 流入量 | |

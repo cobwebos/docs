@@ -6,20 +6,21 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: 0e81d48f4e709a9a0bb8ebb33c7029d3841167b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d080c18a1af9549373750b787093fec03b32006
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609040"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073612"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor 中的日志警报
 
 日志警报是[Azure 警报](../../azure-monitor/platform/alerts-overview.md)支持的警报类型之一。 日志警报允许用户使用 Azure analytics 平台作为警报的基础。
 
-日志警报包含为 [Azure Monitor 日志](../../azure-monitor/learn/tutorial-viewdata.md)或 [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events) 创建的日志搜索规则。 若要详细了解其用法，请参阅[在 Azure 中创建日志警报](../../azure-monitor/platform/alerts-log.md)
+日志警报包含为 [Azure Monitor 日志](../log-query/get-started-portal.md)或 [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events) 创建的日志搜索规则。 若要详细了解其用法，请参阅[在 Azure 中创建日志警报](../../azure-monitor/platform/alerts-log.md)
 
 > [!NOTE]
-> [Azure Monitor 日志](../../azure-monitor/learn/tutorial-viewdata.md)中的常见日志数据现在也可以在 Azure Monitor 中的指标平台上查看。 有关详细信息，请查看[日志的指标警报](../../azure-monitor/platform/alerts-metric-logs.md)
+> [Azure Monitor 日志](../log-query/get-started-portal.md)中的常见日志数据现在也可以在 Azure Monitor 中的指标平台上查看。 有关详细信息，请查看[日志的指标警报](../../azure-monitor/platform/alerts-metric-logs.md)
 
 
 ## <a name="log-search-alert-rule---definition-and-types"></a>日志搜索警报规则 - 定义和类型
@@ -40,7 +41,7 @@ ms.locfileid: "84609040"
 
 - **阈值**。  对日志搜索的结果进行评估，确定是否应创建警报。  不同类型的日志搜索警报规则的阈值不同。
 
-针对 [Azure Monitor 日志](../../azure-monitor/learn/tutorial-viewdata.md)或 [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events) 的日志搜索规则可以分为两种类型。 这些类型中的每一种都在随后的相应部分进行了详细介绍。
+针对 [Azure Monitor 日志](../log-query/get-started-portal.md)或 [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events) 的日志搜索规则可以分为两种类型。 这些类型中的每一种都在随后的相应部分进行了详细介绍。
 
 - **[结果数](#number-of-results-alert-rules)** 。 当日志搜索返回的记录数超出指定数目时，将创建单个警报。
 - **[指标度量值](#metric-measurement-alert-rules)** 。  为日志搜索结果中其值超出指定阈值的每个对象创建警报。
@@ -89,7 +90,7 @@ ms.locfileid: "84609040"
     
 - **阈值**：“指标度量”警报规则的阈值通过一个聚合值和一个违规次数来定义。  如果日志搜索中的某数据点超出该值，则被视为违规。  如果结果中某对象的违规次数超出指定值，则会针对该对象创建警报。
 
-*聚合依据*或 *metricColumn* 选项配置错误可能会导致警报规则误触发。 有关详细信息，请参阅[当指标度量警报规则不正确时进行故障排除](alert-log-troubleshoot.md#metric-measurement-alert-rule-is-incorrect)。
+*聚合依据*或 *metricColumn* 选项配置错误可能会导致警报规则误触发。 有关详细信息，请参阅[当指标度量警报规则不正确时进行故障排除](./alerts-troubleshoot-log.md#metric-measurement-alert-rule-is-incorrect)。
 
 #### <a name="example-of-metric-measurement-type-log-alert"></a>指标度量类型日志警报的示例
 
@@ -149,7 +150,7 @@ Azure 警报系统按下面的每个时间间隔评估 *Contoso-Log-Alert* 的�
 适用于日志警报的定价在 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)页中有说明。 在 Azure 帐单中，日志警报表示为 `microsoft.insights/scheduledqueryrules`，并且：
 
 - Application Insights 上的日志警报显示确切的警报名称以及资源组和警报属性
-- 如果是使用 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 创建的，则 Log Analytics 上的日志警报显示确切的警报名称以及资源组和警报属性
+- 如果是使用 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 创建的，则 Log Analytics 上的日志警报显示确切的警报名称以及资源组和警报属性
 
 [旧 Log Analytics API](../../azure-monitor/platform/api-alerts.md) 将警报操作和计划作为 Log Analytics 保存的搜索的一部分，而不是相应 [Azure 资源](../../azure-resource-manager/management/overview.md)的一部分。 因此，为了对使用 Azure 门户（**未** [切换到新的 API](../../azure-monitor/platform/alerts-log-api-switch.md)）或通过[旧 Log Analytics API](../../azure-monitor/platform/api-alerts.md) 为 Log Analytics 创建的此类旧日志警报启用计费 - `microsoft.insights/scheduledqueryrules` 上会创建用于在 Azure 上计费的隐藏伪警报规则。 在 `microsoft.insights/scheduledqueryrules` 上创建的用于计费的隐藏伪警报规则将随资源组和警报属性一起显示，格式为 `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>`。
 
@@ -158,15 +159,15 @@ Azure 警报系统按下面的每个时间间隔评估 *Contoso-Log-Alert* 的�
 
 若要删除使用[旧 Log Analytics API](api-alerts.md) 为警报规则的计费创建的隐藏 scheduleQueryRules 资源，用户可以执行以下任一操作：
 
-- 用户可以[在 Log Analytics 工作区上切换警报规则的 API 首选项](../../azure-monitor/platform/alerts-log-api-switch.md)，并且可以切换到 Azure 资源管理器兼容的 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 而不丢失其警报规则或监视功能。 因此，这不需要创建用于计费的隐藏伪警报规则。
+- 用户可以[在 Log Analytics 工作区上切换警报规则的 API 首选项](../../azure-monitor/platform/alerts-log-api-switch.md)，并且可以切换到 Azure 资源管理器兼容的 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 而不丢失其警报规则或监视功能。 因此，这不需要创建用于计费的隐藏伪警报规则。
 - 或者，如果用户不希望切换 API 首选项，则用户将需要使用[旧 Log Analytics API](api-alerts.md)**删除**原始计划和警报操作，或者[在 Azure 门户中删除原始日志警报规则](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal)
 
-此外，对于使用[旧版 Log Analytics API](api-alerts.md) 为警报规则计费创建的隐藏 scheduleQueryRules 资源，任何修改操作（例如 PUT）将会失败。 作为 `microsoft.insights/scheduledqueryrules` 类型，伪规则可以满足使用[旧版 Log Analytics API](api-alerts.md) 创建的警报规则的计费目的。 应该使用[旧版 Log Analytics API](api-alerts.md) 进行任何警报规则修改，（或者）用户可以[切换警报规则的 API 首选项](../../azure-monitor/platform/alerts-log-api-switch.md)，以改用 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)。
+此外，对于使用[旧版 Log Analytics API](api-alerts.md) 为警报规则计费创建的隐藏 scheduleQueryRules 资源，任何修改操作（例如 PUT）将会失败。 作为 `microsoft.insights/scheduledqueryrules` 类型，伪规则可以满足使用[旧版 Log Analytics API](api-alerts.md) 创建的警报规则的计费目的。 应该使用[旧版 Log Analytics API](api-alerts.md) 进行任何警报规则修改，（或者）用户可以[切换警报规则的 API 首选项](../../azure-monitor/platform/alerts-log-api-switch.md)，以改用 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 了解如何[在 Azure 中创建日志警报](../../azure-monitor/platform/alerts-log.md)。
 * 了解 [Azure 日志警报中的 Webhook](alerts-log-webhook.md)。
 * 了解 [Azure 警报](../../azure-monitor/platform/alerts-overview.md)。
-* 详细了解 [Application Insights](../../azure-monitor/app/analytics.md)。
+* 详细了解 [Application Insights](../log-query/log-query-overview.md)。
 * 详细了解 [Log Analytics](../../azure-monitor/log-query/log-query-overview.md)。

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: bb6c540573ecd3163e9200be66edb58ed2ca4751
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8fd42169ab6ccb144215e1b6ad2ece09ff55c07f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079201"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072842"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>将 Apache Pig 与 Apache Hadoop on HDInsight 配合使用
 
@@ -111,7 +111,7 @@ HDInsight 可以使用各种方法来运行 Pig Latin 作业。 使用下表来�
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md#mapreduce-sdk
 
-[Powershell-install-configure]: /powershell/azureps-cmdlets-docs
+[Powershell-install-configure]: /powershell/azure/
 
 [powershell-start]: https://technet.microsoft.com/library/hh847889.aspx
 

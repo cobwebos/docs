@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: mihansen
-ms.openlocfilehash: 4eb4c10a6c98aa847c9fa6c239aacde891db5aae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bdecf0dafa80f72eb528b4771c00befff8355e83
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871137"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072859"
 ---
 # <a name="get-access-token-for-azure-api-for-fhir-using-azure-cli"></a>使用 Azure CLI 获取 Azure API for FHIR 的访问令牌
 
@@ -34,7 +34,7 @@ az login
 Azure API for FHIR 结合与 FHIR 服务器的 URI `https://<FHIR ACCOUNT NAME>.azurehealthcareapis.com` 相同的 URI 使用 `resource` 或 `Audience`。 可以使用以下命令获取令牌并将其存储在变量（名为 `$token`）中：
 
 ```azurecli-interactive
-token=$(az account get-access-token --resource=https://<FHIR ACCOUNT NAME>.azurehealthcareapis.com | jq -r .accessToken)
+token=$(az account get-access-token --resource=https://<FHIR ACCOUNT NAME>.azurehealthcareapis.com --query accessToken --output tsv)
 ```
 
 ## <a name="use-with-azure-api-for-fhir"></a>与 Azure API for FHIR 配合使用

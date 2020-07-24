@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 6e283ff140e02d604fdf5e20d69fff96aab94f71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d5158bbb32635ebf030879f4d0290a1feba0ec93
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260587"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072926"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>使用 Bulk Executor Java 库针对 Azure Cosmos DB 数据执行批量操作
 
@@ -43,7 +43,7 @@ ms.locfileid: "85260587"
 
 现在，我们从 GitHub 下载示例 Java 应用程序来接着处理代码。 此应用程序针对 Azure Cosmos DB 数据执行批量操作。 若要克隆该应用程序，请打开命令提示符，导航到要将该应用程序复制到的目录，然后运行以下命令：
 
-```
+```bash
  git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started.git 
 ```
 
@@ -105,7 +105,7 @@ ms.locfileid: "85260587"
 
    importAll 方法接受以下参数：
  
-   |**Parameter**  |**说明**  |
+   |**参数**  |**说明**  |
    |---------|---------|
    |isUpsert    |   用于启用文档更新插入的标志。 如果已存在具有给定 ID 的文档，则会更新该文档。  |
    |disableAutomaticIdGeneration     |   用于禁用自动生成 ID 的标志。 此值默认设置为 true。   |
@@ -113,7 +113,7 @@ ms.locfileid: "85260587"
 
    **批量导入响应对象定义**批量导入 API 调用的结果包含以下 get 方法：
 
-   |**Parameter**  |**说明**  |
+   |**参数**  |**说明**  |
    |---------|---------|
    |int getNumberOfDocumentsImported()  |   从提供给批量导入 API 调用的文档中成功导入的文档总数。      |
    |double getTotalRequestUnitsConsumed()   |  批量导入 API 调用消耗的请求单位 (RU) 总数。       |
@@ -123,13 +123,13 @@ ms.locfileid: "85260587"
 
 5. 准备好批量导入应用程序后，请使用“mvn clean package”命令从源代码生成命令行工具。 此命令在目标文件夹中生成一个 jar 文件：  
 
-   ```java
+   ```bash
    mvn clean package
    ```
 
 6. 生成目标依赖关系后，可使用以下命令调用批量导入程序应用程序：  
 
-   ```java
+   ```bash
    java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB's endpoint>*  -masterKey *<Fill in your Azure Cosmos DB's master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
@@ -177,7 +177,7 @@ ms.locfileid: "85260587"
  
    **批量导入响应对象定义**批量导入 API 调用的结果包含以下 get 方法：
 
-   |**Parameter** |**说明**  |
+   |**参数** |**说明**  |
    |---------|---------|
    |int getNumberOfDocumentsUpdated()  |   从提供给批量更新 API 调用的文档中成功更新的文档总数。      |
    |double getTotalRequestUnitsConsumed() |  批量更新 API 调用消耗的请求单位 (RU) 总数。       |
@@ -186,13 +186,13 @@ ms.locfileid: "85260587"
 
 3. 准备好批量更新应用程序后，请使用“mvn clean package”命令从源代码生成命令行工具。 此命令在目标文件夹中生成一个 jar 文件：  
 
-   ```
+   ```bash
    mvn clean package
    ```
 
 4. 生成目标依赖关系后，可使用以下命令调用批量更新应用程序：
 
-   ```
+   ```bash
    java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB's endpoint>* -masterKey **<Fill in your Azure Cosmos DB's master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 

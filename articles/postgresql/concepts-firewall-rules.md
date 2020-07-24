@@ -5,12 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/15/2020
-ms.openlocfilehash: 5d462be1caa3787cb7ff9a455be595ec5784eefe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: 38edbfcb8800843b43678e99d6817595ccba3235
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76157264"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071538"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的防火墙规则
 在指定哪些计算机具有访问权限之前，Azure Database for PostgreSQL 服务器防火墙将禁止所有对数据库服务器的访问。 防火墙基于每个请求的起始 IP 地址授予对服务器的访问权限。
@@ -36,7 +37,7 @@ ms.locfileid: "76157264"
 如果某个固定的传出 IP 地址不适用于 Azure 服务，可以考虑启用来自所有 Azure 数据中心 IP 地址的连接。 可以从 Azure 门户启用此设置，方法是：从“连接安全性”**** 窗格将“允许访问 Azure 服务”**** 选项设为“启用”**** 并点击“保存”****。 在 Azure CLI 中，起始和结束地址为 0.0.0.0 的防火墙规则设置执行等效操作。 如果不允许该连接尝试，则该请求将不会访问 Azure Database for PostgreSQL 服务器。
 
 > [!IMPORTANT]
-> “允许访问 Azure 服务”选项将防火墙配置为允许来自 Azure 的所有连接，包括来自其他客户的订阅的连接。**** 选择该选项时，请确保登录名和用户权限将访问权限限制为仅已授权用户使用。
+> “允许访问 Azure 服务”选项将防火墙配置为允许来自 Azure 的所有连接，包括来自其他客户的订阅的连接。**** 选择该选项时，请确保登录名和用户权限将访问限制为仅允许授权用户访问。
 > 
 
 ![在门户中配置“允许访问 Azure 服务”](media/concepts-firewall-rules/allow-azure-services.png)
@@ -64,10 +65,13 @@ ms.locfileid: "76157264"
 
    * 改为获取客户端计算机的静态 IP 地址，然后将该静态 IP 地址作为防火墙规则添加。
 
-* **服务器的 IP 似乎是公共的：** 与 Azure Database for PostgreSQL 服务器的连接通过可公开访问的 Azure 网关进行路由。 但是，实际的服务器 IP 受防火墙保护。 有关详细信息，请参阅[连接体系结构文章](concepts-connectivity-architecture.md)。 
+* **服务器的 IP 似乎是公共的：** 与 Azure Database for PostgreSQL 服务器的连接通过可公开访问的 Azure 网关进行路由。 但是，实际的服务器 IP 受防火墙保护。 有关详细信息，请参阅[连接体系结构文章](concepts-connectivity-architecture.md)。
+
+* **无法使用允许的 IP 从 Azure 资源进行连接：** 检查是否为要连接的子网启用了**Microsoft .sql**服务终结点。 如果启用了**Sql** ，则表明你只希望在该子网上使用[VNet 服务终结点规则](concepts-data-access-and-security-vnet.md)。
+
+   例如，如果要从已启用了**Microsoft .sql**但没有相应 VNet 规则的子网中的 Azure VM 进行连接，则可能会看到以下错误：`FATAL: Client from Azure Virtual Networks is not allowed to access the server`
 
 ## <a name="next-steps"></a>后续步骤
-有关如何创建服务器级和数据库级防火墙规则的文章，请参阅：
 * [使用 Azure 门户创建和管理 Azure Database for PostgreSQL 防火墙规则](howto-manage-firewall-using-portal.md)
 * [使用 Azure CLI 创建和管理 Azure Database for PostgreSQL 防火墙规则](howto-manage-firewall-using-cli.md)
-- [Azure Database for PostgreSQL 中的 VNet 服务终结点](./concepts-data-access-and-security-vnet.md)
+* [Azure Database for PostgreSQL 中的 VNet 服务终结点](./concepts-data-access-and-security-vnet.md)

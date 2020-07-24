@@ -3,15 +3,16 @@ title: 管理 Azure 文件共享备份
 description: 本文介绍了用于管理和监视 Azure 备份所备份的 Azure 文件共享的常见任务。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: cb764fa441c063328dc350cf26f42c5bc7a0ca99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6684cb348c9edb35b5f3e46fb7922e9aa265c725
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712082"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073304"
 ---
 # <a name="manage-azure-file-share-backups"></a>管理 Azure 文件共享备份
 
-本文介绍了用于管理和监视[Azure 备份](https://docs.microsoft.com/azure/backup/backup-overview)所备份的 azure 文件共享的常见任务。 你将了解如何在恢复服务保管库中执行管理任务。
+本文介绍了用于管理和监视[Azure 备份](./backup-overview.md)所备份的 azure 文件共享的常见任务。 你将了解如何在恢复服务保管库中执行管理任务。
 
 ## <a name="monitor-jobs"></a>监视作业
 
@@ -164,4 +165,4 @@ ms.locfileid: "84712082"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅[排查 Azure 文件共享备份问题](https://docs.microsoft.com/azure/backup/troubleshoot-azure-files)。
+有关详细信息，请参阅[排查 Azure 文件共享备份问题](./troubleshoot-azure-files.md)。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 65e1fa07d2af15e9ccb5f85ce4645e3e6c287952
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 44f10bd49a768004fc63a3287799e6b79dd5bae1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960361"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071898"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>如何生成平滑流式处理 Windows 应用商店应用程序  
 
@@ -53,7 +53,7 @@ ms.locfileid: "85960361"
 
 ![平滑流式处理 Windows 应用商店应用程序示例][PlayerApplication]
 
-有关开发 Windows 应用商店应用程序的详细信息，请参阅 [开发适用于 Windows 8 的极佳应用](https://msdn.microsoft.com/windows/apps/br229512.aspx)。 本课包含以下过程：
+有关开发 Windows 应用商店应用程序的详细信息，请参阅 [开发适用于 Windows 8 的极佳应用](https://developer.microsoft.com/en-us/windows/)。 本课包含以下过程：
 
 1. 创建 Windows 应用商店项目
 2. 设计用户界面 (XAML)
@@ -1045,4 +1045,3 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
-

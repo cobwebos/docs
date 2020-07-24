@@ -1,14 +1,14 @@
 ---
 title: 大规模监视委托的资源
 description: 了解如何在你管理的客户租户之间以可伸缩方式有效地使用 Azure Monitor 日志。
-ms.date: 07/07/2020
+ms.date: 07/15/2020
 ms.topic: how-to
-ms.openlocfilehash: 3be7494f929fc91e2b01bde0b4f26f7c2e4b907b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 758437fdc7a32fd5937434ce10f16a8c792423d3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133461"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072715"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>大规模监视委托的资源
 
@@ -34,10 +34,11 @@ ms.locfileid: "86133461"
 
 ## <a name="analyze-the-gathered-data"></a>分析收集的数据
 
-部署策略后，数据将记录在每个客户租户中创建的 Log Analytics 工作区中。 若要深入了解所有托管客户，可以使用[Azure Monitor 工作簿](../../azure-monitor/platform/workbooks-overview.md)之类的工具从多个数据源收集和分析信息。
+部署策略后，数据将记录在每个客户租户中创建的 Log Analytics 工作区中。 若要深入了解所有托管客户，可以使用[Azure Monitor 工作簿](../../azure-monitor/platform/workbooks-overview.md)之类的工具从多个数据源收集和分析信息。 
 
 ## <a name="next-steps"></a>后续步骤
 
+- 探索这[一通过 MVP 构建的示例工作簿](https://github.com/scautomation/Azure-Automation-Update-Management-Workbooks)，通过在多个 Log Analytics 工作区中[查询更新管理日志](../../automation/automation-update-management-query-logs.md)来跟踪修补程序相容性报告。 
 - 了解有关 [Azure Monitor](../../azure-monitor/index.yml) 的信息。
 - 了解[Azure Monitor 日志](../../azure-monitor/platform/data-platform-logs.md)。
 - 了解[跨租户管理体验](../concepts/cross-tenant-management-experience.md)。

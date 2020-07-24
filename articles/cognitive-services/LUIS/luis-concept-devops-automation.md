@@ -1,14 +1,14 @@
 ---
-title: 针对 DevOps 的测试-LUIS
+title: LUIS 应用的连续工作流
 description: 如何为语言理解（LUIS）实现 DevOps 的 CI/CD 工作流。
 ms.topic: conceptual
 ms.date: 06/5/2020
-ms.openlocfilehash: 87b922d176f3ef11f25e46c8e076c88d5f3854c3
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 4cedf0cbe3f9ab675c191f8e4639688bb7916ee0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84783680"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072999"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>LUIS DevOps 的持续集成和持续交付工作流
 
@@ -78,7 +78,7 @@ ms.locfileid: "84783680"
   * 标记存储库中的源。
   * 运行持续交付（CD）作业，将 LUIS 应用程序版本部署到环境中，以便进行进一步的测试。
 
-### <a name="continuous-delivery-cd"></a>持续交付（CD）
+### <a name="continuous-delivery-cd"></a>持续交付 (CD)
 
 CI/CD 工作流中的 CD 作业在生成和自动单元测试成功时运行。 其工作是自动将 LUIS 应用程序部署到可以执行更多测试的环境。
 

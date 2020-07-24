@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: 513c3da8031774f5f111ee357b5a3c43e1d09d95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0cfd428e1bd380d17049cbc229bb8850793056e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75832474"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073032"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell 的概述
 Azure Cloud Shell 是一个用于管理 Azure 资源的、可通过浏览器访问的交互式经验证 shell。
@@ -26,7 +27,7 @@ Azure Cloud Shell 是一个用于管理 Azure 资源的、可通过浏览器访�
 
 单击以下图标，前往 shell.azure.com 试用。
 
-[![嵌入启动](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
+[![嵌入式启动](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
 
 尝试从 Azure 门户使用 Cloud Shell 图标。
 
@@ -60,14 +61,14 @@ Cloud Shell 提供基于开源 Monaco Editor 的集成图形文本编辑器。 �
 
 ### <a name="integrated-with-docsmicrosoftcom"></a>已与 docs.microsoft.com 集成
 
-可以直接从 [docs.microsoft.com](https://docs.microsoft.com) 上托管的文档中使用 Cloud Shell。 它已集成在 [Microsoft Learn](https://docs.microsoft.com/learn/)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 和 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)中 - 单击代码片段中的“试用”按钮即可开启沉浸式 shell 体验。 
+可以直接从 [docs.microsoft.com](https://docs.microsoft.com) 上托管的文档中使用 Cloud Shell。 它已集成在 [Microsoft Learn](https://docs.microsoft.com/learn/)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) 和 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)中 - 单击代码片段中的“试用”按钮即可开启沉浸式 shell 体验。 
 
 ### <a name="multiple-access-points"></a>多个访问点
 Cloud Shell 是一个灵活的工具，可以通过以下项使用：
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
 * [Azure CLI 文档](https://docs.microsoft.com/cli/azure)
-* [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/overview)
+* [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/)
 * [Azure 移动应用](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [Visual Studio Code Azure 帐户扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 

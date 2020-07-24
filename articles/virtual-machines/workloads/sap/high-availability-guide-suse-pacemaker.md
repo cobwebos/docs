@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: radeltch
-ms.openlocfilehash: ed754e3f69feaf6d5415db8f71cb5c1bb65632e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28e53c5ca53f5be4aafc685445e67dcf4d558773
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368238"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073995"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -41,7 +41,7 @@ Azure 隔离代理不需要部署其他虚拟机。
 ![SLES 上的 Pacemaker 概述](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 >[!IMPORTANT]
-> 在规划和部署 Linux Pacemaker 群集节点与 SBD 设备时，若要实现整个群集配置的整体可靠性，必须做到：所涉及的 VM 与托管 SBD 设备的 VM 之间的路由不通过任何其他设备（例如 [NVA](https://azure.microsoft.com/solutions/network-appliances/)）。 否则，NVA 的问题和维护事件可能会对整个群集配置的稳定性和可靠性产生负面影响。 为了避免此类障碍，在规划和部署 Linux Pacemaker 群集节点与 SBD 设备时，请勿定义通过 NVA 和类似设备路由群集节点与 SBD 设备之间的流量的 NVA 路由规则或[用户定义路由规则](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)。 
+> 在规划和部署 Linux Pacemaker 群集节点与 SBD 设备时，若要实现整个群集配置的整体可靠性，必须做到：所涉及的 VM 与托管 SBD 设备的 VM 之间的路由不通过任何其他设备（例如 [NVA](https://azure.microsoft.com/solutions/network-appliances/)）。 否则，NVA 的问题和维护事件可能会对整个群集配置的稳定性和可靠性产生负面影响。 为了避免此类障碍，在规划和部署 Linux Pacemaker 群集节点与 SBD 设备时，请勿定义通过 NVA 和类似设备路由群集节点与 SBD 设备之间的流量的 NVA 路由规则或[用户定义路由规则](../../../virtual-network/virtual-networks-udr-overview.md)。 
 >
 
 ## <a name="sbd-fencing"></a>SBD 隔离
@@ -583,7 +583,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** 为隔离代理创建自定义角色
 
-默认情况下，服务主体无权访问 Azure 资源。 需要为服务主体授予启动和停止（解除分配）群集所有虚拟机的权限。 如果尚未创建自定义角色，可以使用 [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) 或 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli) 来创建它
+默认情况下，服务主体无权访问 Azure 资源。 需要为服务主体授予启动和停止（解除分配）群集所有虚拟机的权限。 如果尚未创建自定义角色，可以使用 [PowerShell](../../../role-based-access-control/custom-roles-powershell.md#create-a-custom-role) 或 [Azure CLI](../../../role-based-access-control/custom-roles-cli.md) 来创建它
 
 将以下内容用于输入文件。 你需要调整内容以适应你的订阅，也就是说，将 c276fc76-9cd4-44c9-99a7-4fd71546436e 和 e91d47c4-76f3-4271-a796-21b4ecfe3624 替换为你的订阅的 ID。 如果只有一个订阅，请删除 AssignableScopes 中的第二个条目。
 
@@ -647,11 +647,11 @@ sudo crm configure property stonith-timeout=900
 > 对监视和防护操作进行反序列化。 因此，如果存在运行时间较长的监视操作和同时发生的防护事件，则群集故障转移不会延迟，因为已在运行监视操作。
 
 > [!TIP]
->Azure 隔离代理要求与[使用标准 ILB 的 VM 的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)中所述的公共终结点建立出站连接并提供可能的解决方案。  
+>Azure 隔离代理要求与[使用标准 ILB 的 VM 的公共终结点连接](./high-availability-guide-standard-load-balancer-outbound-connections.md)中所述的公共终结点建立出站连接并提供可能的解决方案。  
 
 ## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>用于 Azure 计划事件的 Pacemaker 配置
 
-Azure 提供[计划事件](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events)。 计划事件通过元数据服务提供，可为应用程序留出时间来准备 VM 关闭、VM 重新部署等事件。资源代理 [azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161) 可监视计划的 Azure 事件。 如果检测到事件，该代理将尝试停止受影响 VM 上的所有资源，并将它们移至群集中的另一个节点。 若要实现这一点，必须配置其他 Pacemaker 资源。 
+Azure 提供[计划事件](../../linux/scheduled-events.md)。 计划事件通过元数据服务提供，可为应用程序留出时间来准备 VM 关闭、VM 重新部署等事件。资源代理 [azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161) 可监视计划的 Azure 事件。 如果检测到事件，该代理将尝试停止受影响 VM 上的所有资源，并将它们移至群集中的另一个节点。 若要实现这一点，必须配置其他 Pacemaker 资源。 
 
 1. **[A]** 确保已安装 azure-events 代理包，并且其版本是最新的。 
 

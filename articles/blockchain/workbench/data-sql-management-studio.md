@@ -5,11 +5,12 @@ ms.date: 11/20/2019
 ms.topic: how-to
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
-ms.openlocfilehash: b316d2579e1dde98b04a2dc7652a9721c7f8de77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16e7f9a6c36ea42e1d0a4144e680baebee5a6c21
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214207"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073099"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>通过 SQL Server Management Studio 使用 Azure Blockchain Workbench 数据
 
@@ -17,12 +18,12 @@ ms.locfileid: "85214207"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 下载[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)。
+* 下载[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)。
 
 ## <a name="connecting-sql-server-management-studio-to-data-in-azure-blockchain-workbench"></a>将 SQL Server Management Studio 连接到 Azure Blockchain Workbench 中的数据
 
 1. 打开 SQL Server Management Studio 并选择“连接”。****
-2. 选择“数据库引擎”。****
+2. 选择“数据库引擎”。
 
     ![数据库引擎](./media/data-sql-management-studio/database-engine.png)
 
@@ -40,7 +41,7 @@ ms.locfileid: "85214207"
 6. 右键单击对象资源管理器中的任何数据库视图。
 7. 选择“编写视图脚本为”。****
 8. 选择“SELECT to”。****
-9. 选择“新建查询编辑器窗口”****。
+9. 选择“新建查询编辑器窗口”。
 10. 可以通过选择“新建查询”来创建新查询。****
 
 ## <a name="next-steps"></a>后续步骤

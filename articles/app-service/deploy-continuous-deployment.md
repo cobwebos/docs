@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/20/2020
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 847de2c2c8916558d542473d9b7c80fd5552dbf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51b6be8b4deffd81da6c0b714bc6afeff4b06ab2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80437229"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073937"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>持续部署到 Azure 应用服务
 
@@ -78,7 +78,7 @@ ms.locfileid: "80437229"
      > [!NOTE]
      > 如果未列出 Azure DevOps 组织，请确保已将它链接到 Azure 订阅。 有关详细信息，请参阅[设置 Azure DevOps Services 帐户，以便它可以部署到 web 应用](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops)。
      
-1. 选择“继续”。
+1. 选择**继续**。
    
    ![填写 "存储库信息"，然后选择 "继续"。](media/app-service-continuous-deployment/configure-kudu.png)
    
@@ -177,7 +177,7 @@ ms.locfileid: "80437229"
 ## <a name="additional-resources"></a>其他资源
 
 * [调查连续部署的常见问题](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
-* [使用 Azure PowerShell](/powershell/azureps-cmdlets-docs)
+* [使用 Azure PowerShell](/powershell/azure/)
 * [Git 文档](https://git-scm.com/documentation)
 * [项目 Kudu](https://github.com/projectkudu/kudu/wiki)
 

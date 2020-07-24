@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: how-to
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: c41e14490842068895aea383d384007f308e9e1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49748b3d77d097e655ee6ec5777022c038841a6d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887671"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073124"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>在 Azure CDN 中管理 Azure Blob 存储的到期时间
 > [!div class="op_single_selector"]
@@ -70,7 +70,7 @@ ms.locfileid: "84887671"
 
    此全局缓存规则设置为期一小时的缓存持续时间，并会影响发送到终结点的所有请求。 它会替代由终结点指定的源服务器发送的所有 `Cache-Control` 或 `Expires` HTTP 标头。   
 
-3. 选择“保存”。
+3. 选择“保存” 。
  
 **使用自定义缓存规则设置 Blob 文件的 Cache-Control 标头：**
 
@@ -84,14 +84,14 @@ ms.locfileid: "84887671"
 
     第一个自定义缓存规则为终结点指定的源服务器上的 `/blobcontainer1` 文件夹中的所有 blob 文件设置为期四小时的缓存持续时间。 第二个规则仅替代 `blob1.txt` blob 文件的第一个规则，并且为它设置为期两小时的缓存持续时间。
 
-2. 选择“保存”。
+2. 选择“保存” 。
 
 
 ## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>使用 Azure PowerShell 设置 Cache-Control 标头
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure PowerShell](/powershell/azure/overview) 是管理 Azure 服务的最快捷且最强大的方式之一。 使用 `Get-AzStorageBlob`cmdlet 来获取对 blob 的引用，并设置 `.ICloudBlob.Properties.CacheControl` 属性。 
+[Azure PowerShell](/powershell/azure/) 是管理 Azure 服务的最快捷且最强大的方式之一。 使用 `Get-AzStorageBlob`cmdlet 来获取对 blob 的引用，并设置 `.ICloudBlob.Properties.CacheControl` 属性。 
 
 例如：
 

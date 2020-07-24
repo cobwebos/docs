@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: 1596503f5f0a333bf061015827596464aed7558e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd82f7dd821991bbcf57cc7d8105575e0baa4d12
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513643"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070692"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>从 StorSimple 虚拟阵列的备份克隆
 
@@ -33,7 +33,7 @@ ms.locfileid: "85513643"
 
 #### <a name="to-clone-a-share"></a>克隆共享
 
-1. 浏览到“设备”**** 边栏选项卡。 选择并单击你的设备，并单击“共享”****。 选择要克隆的共享，右键单击该共享以调用上下文菜单。 选择“克隆”****。
+1. 浏览到“设备”**** 边栏选项卡。 选择并单击你的设备，并单击“共享”****。 选择要克隆的共享，右键单击该共享以调用上下文菜单。 选择“克隆”。
    
    ![克隆备份](./media/storsimple-virtual-array-clone/cloneshare1.png)
 2. 在“克隆”**** 边栏选项卡中，单击“备份”>“选择”****，并执行以下操作： 
@@ -42,7 +42,7 @@ ms.locfileid: "85513643"
    
    b.    在显示的已筛选备份列表中，选择要从中克隆的备份。
    
-   c.    单击“确定”。
+   c.    单击“确定”  。
    
    ![克隆备份](./media/storsimple-virtual-array-clone/cloneshare3.png)
 3. 在“克隆”**** 边栏选项卡中，单击“目标设置”****，并执行以下操作：
@@ -57,7 +57,7 @@ ms.locfileid: "85513643"
    
    e.    为此共享分配管理员。 克隆完成后，能够通过文件资源管理器修改共享属性。
    
-   f.    单击“确定”。
+   f.    单击“确定”  。
    
    ![克隆备份](./media/storsimple-virtual-array-clone/cloneshare6.png)
 
@@ -73,7 +73,7 @@ ms.locfileid: "85513643"
 
 #### <a name="to-clone-a-volume"></a>克隆卷
 
-1. 浏览到“设备”**** 边栏选项卡。 选择并单击设备，然后单击“卷”****。 选择要克隆的卷，右键单击该卷以调用上下文菜单。 选择“克隆”****。
+1. 浏览到“设备”**** 边栏选项卡。 选择并单击设备，然后单击“卷”****。 选择要克隆的卷，右键单击该卷以调用上下文菜单。 选择“克隆”。
    
    ![克隆卷](./media/storsimple-virtual-array-clone/clonevolume1.png)
 2. 在“克隆”**** 边栏选项卡中，单击“备份”****，并执行以下操作： 
@@ -82,7 +82,7 @@ ms.locfileid: "85513643"
    
    b.    在显示的已筛选备份列表中，选择要从中克隆的备份。
    
-   c.    单击“确定”。
+   c.    单击“确定”  。
    
    ![克隆备份](./media/storsimple-virtual-array-clone/clonevolume3.png)
 3. 在“克隆”**** 边栏选项卡中，单击“目标卷设置”****，并执行以下操作：
@@ -127,7 +127,7 @@ ms.locfileid: "85513643"
    * **计划备份**的名称为 &lt;设备名&gt;DailySchedule-YYYYMMDD-HHMMSS-UTC。
    * **手动备份** 的名称为 Ad-hoc-YYYYMMDD-HHMMSS-UTC。
      
-     ![](./media/storsimple-virtual-array-clone/image14.png)
+     ![显示备份文件夹的文件资源管理器的屏幕截图。 在该文件夹中，选择 "手动备份" 文件夹。](./media/storsimple-virtual-array-clone/image14.png)
 
 2. 识别包含最新版本的已删除文件的备份。 尽管文件夹名称包含上述每种情况中的 UTC 时间戳，但该文件夹的创建时间是备份开始时的实际设备时间。 使用文件夹时间戳查找和标识备份。
 

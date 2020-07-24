@@ -7,27 +7,27 @@ ms.topic: reference
 ms.date: 06/09/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 553492a3ca6868279b1aec9446e2ce04ca673ab0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d7085f54634ab1175fc0f916e24b7f03dc1bc9b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945352"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073672"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活动日志事件架构
 [Azure 活动日志](platform-logs-overview.md)可以方便用户深入了解 Azure 中发生的任何订阅级别事件。 本文介绍活动日志类别以及每个类别的架构。 
 
 根据访问日志的方式，架构会有所不同：
  
-- 本文中所述的架构是从[REST API](https://docs.microsoft.com/rest/api/monitor/activitylogs)访问活动日志时得到的。 这也是在 Azure 门户中查看事件时选择**JSON**选项时使用的架构。
+- 本文中所述的架构是从[REST API](/rest/api/monitor/activitylogs)访问活动日志时得到的。 这也是在 Azure 门户中查看事件时选择**JSON**选项时使用的架构。
 - 当你使用[诊断设置](diagnostic-settings.md)将活动日志发送到 azure 存储或 Azure 事件中心时，请参阅架构的 "[存储帐户" 和 "事件中心" 中](#schema-from-storage-account-and-event-hubs)的最终部分架构。
-- 当使用[诊断设置](diagnostic-settings.md)将活动日志发送到 Log Analytics 工作区时，请参阅架构的[Azure Monitor 数据参考](https://docs.microsoft.com/azure/azure-monitor/reference/)。
+- 当使用[诊断设置](diagnostic-settings.md)将活动日志发送到 Log Analytics 工作区时，请参阅架构的[Azure Monitor 数据参考](/azure/azure-monitor/reference/)。
 
 
 ## <a name="categories"></a>类别
-活动日志中的每个事件都具有下表中描述的特定类别。 从门户、PowerShell、CLI 和 REST API 访问活动日志时，请参阅以下部分，了解每个类别及其架构的详细信息。 [将活动日志流式传输到存储或事件中心](resource-logs-stream-event-hubs.md)时，架构是不同的。 在本文的最后一节中提供了到[资源日志架构](diagnostic-logs-schema.md)的属性映射。
+活动日志中的每个事件都具有下表中描述的特定类别。 从门户、PowerShell、CLI 和 REST API 访问活动日志时，请参阅以下部分，了解每个类别及其架构的详细信息。 [将活动日志流式传输到存储或事件中心](./resource-logs.md#send-to-azure-event-hubs)时，架构是不同的。 在本文的最后一节中提供了到[资源日志架构](./resource-logs-schema.md)的属性映射。
 
-| 类别 | 说明 |
+| Category | 说明 |
 |:---|:---|
 | [管理](#administrative-category) | 包含对通过资源管理器执行的所有创建、更新、删除和操作的记录。 管理事件示例包括创建虚拟机和删除网络安全组。<br><br>使用资源管理器的用户或应用程序执行的每个操作都作为对特定资源类型的操作进行建模。 如果操作类型为写入、删除或操作，则会在“管理”类别中记录该操作的启动和成功或失败记录。 管理事件还包括对订阅中基于角色的访问控制进行的任何更改。 |
 | [服务运行状况](#service-health-category) | 包含在 Azure 中发生的任何服务运行状况事件的记录。 SQL Azure 在美国东部的一个服务运行状况事件示例是遭遇停机。 <br><br>服务运行状况事件有 6 种：需要采取行动、辅助恢复、事件、维护、信息或安全。 仅当订阅中有某个资源受事件影响时，才会创建这些事件。
@@ -137,7 +137,7 @@ ms.locfileid: "84945352"
 | channels |以下值之一：“Admin”、“Operation” |
 | 声明 |Active Directory 使用 JWT 令牌来验证用户或应用程序，以在资源管理器中执行此操作。 |
 | correlationId |通常为字符串格式的 GUID。 共享 correlationId 的事件属于同一 uber 操作。 |
-| description |事件的静态文本说明。 |
+| 说明 |事件的静态文本说明。 |
 | eventDataId |事件的唯一标识符。 |
 | eventName | 管理事件的易记名称。 |
 | category | 始终为“Administrative” |
@@ -150,7 +150,7 @@ ms.locfileid: "84945352"
 | operationId |在多个事件（对应于单个操作）之间共享的 GUID。 |
 | operationName |操作的名称。 |
 | properties |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 |
-| 状态 |描述操作状态的字符串。 部分常用值包括：Started、In Progress、Succeeded、Failed、Active、Resolved。 |
+| status |描述操作状态的字符串。 部分常用值包括：Started、In Progress、Succeeded、Failed、Active、Resolved。 |
 | subStatus |通常为相应 REST 调用的 HTTP 状态代码，但也可能包括用于描述子状态的其他字符串，例如以下常用值：OK（HTTP 状态代码：200）、Created（HTTP 状态代码：201）、Accepted（HTTP 状态代码：202）、No Content（HTTP 状态代码：204）、Bad Request（HTTP 状态代码：400）、Not Found（HTTP 状态代码：404）、Conflict（HTTP 状态代码：409）、Internal Server Error（HTTP 状态代码：500）、Service Unavailable（HTTP 状态代码：503）、Gateway Timeout（HTTP 状态代码：504）。 |
 | eventTimestamp |处理与事件对应的请求的 Azure 服务生成事件时的时间戳。 |
 | submissionTimestamp |事件可供查询的时间戳。 |
@@ -214,7 +214,7 @@ ms.locfileid: "84945352"
   }
 }
 ```
-请参阅[服务运行状况通知](./../../azure-monitor/platform/service-notifications.md)一文，获取有关属性的值的说明。
+请参阅[服务运行状况通知](../../service-health/service-notifications.md)一文，获取有关属性的值的说明。
 
 ## <a name="resource-health-category"></a>资源运行状况类别
 此类别包含 Azure 资源发生的任何资源运行状况事件的记录。 你将在此类别中看到的事件类型的示例是“虚拟机运行状况已更改为不可用”。 资源运行状况事件可以表示四种运行状况之一：“可用”、“不可用”、“已降级”和“未知”。 此外，资源运行状况事件可以分为“平台启动”或“用户启动”。
@@ -281,7 +281,7 @@ ms.locfileid: "84945352"
 | --- | --- |
 | channels | 始终是“Admin, Operation” |
 | correlationId | 字符串格式的 GUID。 |
-| description |警报事件的静态文本说明。 |
+| 说明 |警报事件的静态文本说明。 |
 | eventDataId |警报事件的唯一标识符。 |
 | category | 始终为“ResourceHealth” |
 | eventTimestamp |处理与事件对应的请求的 Azure 服务生成事件时的时间戳。 |
@@ -292,7 +292,7 @@ ms.locfileid: "84945352"
 | resourceProviderName |始终为“Microsoft.Resourcehealth/healthevent/action”。 |
 | resourceType | 受“资源运行状况”事件影响的资源类型。 |
 | ResourceId | 受影响资源的资源 ID 的名称。 |
-| 状态 |描述运行状况事件状态的字符串。 值可以是：Active、Resolved、InProgress、Updated。 |
+| status |描述运行状况事件状态的字符串。 值可以是：Active、Resolved、InProgress、Updated。 |
 | subStatus | 对警报而言通常为 NULL。 |
 | submissionTimestamp |事件可供查询的时间戳。 |
 | subscriptionId |Azure 订阅 ID。 |
@@ -376,7 +376,7 @@ ms.locfileid: "84945352"
 | channels | 始终是“Admin, Operation” |
 | 声明 | 具有 SPN（服务主体名称）的 JSON blob，或警报引擎资源类型。 |
 | correlationId | 字符串格式的 GUID。 |
-| description |警报事件的静态文本说明。 |
+| 说明 |警报事件的静态文本说明。 |
 | eventDataId |警报事件的唯一标识符。 |
 | category | 始终为“Alert” |
 | 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”和“Informational” |
@@ -386,7 +386,7 @@ ms.locfileid: "84945352"
 | operationId |在多个事件（对应于单个操作）之间共享的 GUID。 |
 | operationName |操作的名称。 |
 | properties |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 |
-| 状态 |描述操作状态的字符串。 部分常用值包括：Started、In Progress、Succeeded、Failed、Active、Resolved。 |
+| status |描述操作状态的字符串。 部分常用值包括：Started、In Progress、Succeeded、Failed、Active、Resolved。 |
 | subStatus | 对警报而言通常为 NULL。 |
 | eventTimestamp |处理与事件对应的请求的 Azure 服务生成事件时的时间戳。 |
 | submissionTimestamp |事件可供查询的时间戳。 |
@@ -486,7 +486,7 @@ ms.locfileid: "84945352"
 | channels | 始终是“Admin, Operation” |
 | 声明 | 具有 SPN（服务主体名称）的 JSON blob，或自动缩放引擎资源类型。 |
 | correlationId | 字符串格式的 GUID。 |
-| description |自动缩放事件的静态文本说明。 |
+| 说明 |自动缩放事件的静态文本说明。 |
 | eventDataId |自动缩放事件的唯一标识符。 |
 | 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”和“Informational” |
 | resourceGroupName |自动缩放设置的资源组名称。 |
@@ -500,7 +500,7 @@ ms.locfileid: "84945352"
 | properties.OldInstancesCount | 自动缩放操作生效前的实例数量。 |
 | properties.NewInstancesCount | 自动缩放操作生效后的实例数量。 |
 | properties.LastScaleActionTime | 自动缩放操作发生时的时间戳。 |
-| 状态 |描述操作状态的字符串。 部分常用值包括：Started、In Progress、Succeeded、Failed、Active、Resolved。 |
+| status |描述操作状态的字符串。 部分常用值包括：Started、In Progress、Succeeded、Failed、Active、Resolved。 |
 | subStatus | 对自动缩放而言通常为 NULL。 |
 | eventTimestamp |处理与事件对应的请求的 Azure 服务生成事件时的时间戳。 |
 | submissionTimestamp |事件可供查询的时间戳。 |
@@ -574,7 +574,7 @@ ms.locfileid: "84945352"
 | --- | --- |
 | channels | 始终为“运行” |
 | correlationId | 字符串格式的 GUID。 |
-| description |安全事件的静态文本说明。 |
+| 说明 |安全事件的静态文本说明。 |
 | eventDataId |安全事件的唯一标识符。 |
 | eventName |安全事件的友好名称。 |
 | category | 始终为“Security” |
@@ -588,7 +588,7 @@ ms.locfileid: "84945352"
 | operationName |操作的名称。 |
 | properties |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 这些属性将因安全警报的类型而异。 有关来自安全中心的警报类型的说明，请参阅[此页](../../security-center/security-center-alerts-overview.md)。 |
 | properties.Severity |严重性级别。 可能的值为“High”、“Medium”或“Low”。 |
-| 状态 |描述操作状态的字符串。 部分常用值包括：Started、In Progress、Succeeded、Failed、Active、Resolved。 |
+| status |描述操作状态的字符串。 部分常用值包括：Started、In Progress、Succeeded、Failed、Active、Resolved。 |
 | subStatus | 对于安全事件通常为 null。 |
 | eventTimestamp |处理与事件对应的请求的 Azure 服务生成事件时的时间戳。 |
 | submissionTimestamp |事件可供查询的时间戳。 |
@@ -655,7 +655,7 @@ ms.locfileid: "84945352"
 | --- | --- |
 | channels | 始终为“运行” |
 | correlationId | 字符串格式的 GUID。 |
-| description |建议事件的静态文本说明 |
+| 说明 |建议事件的静态文本说明 |
 | eventDataId | 建议事件的唯一标识符。 |
 | category | 始终为“Recommendation” |
 | ID |建议事件的唯一资源标识符。 |
@@ -665,7 +665,7 @@ ms.locfileid: "84945352"
 | resourceProviderName |此建议适用的资源的资源提供程序名称，例如“MICROSOFT.COMPUTE” |
 | resourceType |此建议适用的资源的资源类型名称，例如“MICROSOFT.COMPUTE/virtualmachines” |
 | ResourceId |此建议适用的资源的资源 ID |
-| 状态 | 始终为“Active” |
+| status | 始终为“Active” |
 | submissionTimestamp |事件可供查询的时间戳。 |
 | subscriptionId |Azure 订阅 ID。 |
 | properties |`<Key, Value>` 对集（即字典），描述建议的详细信息。|
@@ -768,7 +768,7 @@ ms.locfileid: "84945352"
 | channels | Policy 事件仅使用“操作”通道。 |
 | 声明 | Active Directory 使用 JWT 令牌来验证用户或应用程序，以在资源管理器中执行此操作。 |
 | correlationId | 通常为字符串格式的 GUID。 共享 correlationId 的事件属于同一 uber 操作。 |
-| description | 对于 Policy 事件，此字段是空白的。 |
+| 说明 | 对于 Policy 事件，此字段是空白的。 |
 | eventDataId | 事件的唯一标识符。 |
 | eventName | “BeginRequest”或“EndRequest”。 “BeginRequest”用于延迟的 auditIfNotExists 和 deployIfNotExists 评估，并且在 deployIfNotExists 效果启动模板部署时使用。 所有其他操作返回“EndRequest”。 |
 | category | 将活动日志事件声明为属于“Policy”。 |
@@ -781,7 +781,7 @@ ms.locfileid: "84945352"
 | resourceProviderName | 评估的资源的资源提供程序名称。 |
 | resourceType | 对于新资源，它是评估的类型。 对于现有资源，返回“Microsoft.Resources/checkPolicyCompliance”。 |
 | ResourceId | 评估的资源的资源 ID。 |
-| 状态 | 用于描述 Policy 评估结果状态的字符串。 大多数 Policy 评估返回“成功”，但拒绝效果返回“失败”。 auditIfNotExists 或 deployIfNotExists 中的错误也返回“失败”。 |
+| status | 用于描述 Policy 评估结果状态的字符串。 大多数 Policy 评估返回“成功”，但拒绝效果返回“失败”。 auditIfNotExists 或 deployIfNotExists 中的错误也返回“失败”。 |
 | subStatus | 对于 Policy 事件，此字段是空白的。 |
 | submissionTimestamp | 事件可供查询的时间戳。 |
 | subscriptionId | Azure 订阅 ID。 |
@@ -793,13 +793,13 @@ ms.locfileid: "84945352"
 
 
 ## <a name="schema-from-storage-account-and-event-hubs"></a>来自存储帐户和事件中心的架构
-将 Azure 活动日志流式传输到存储帐户或事件中心时，数据遵循[资源日志架构](diagnostic-logs-schema.md)。 下表提供了从上述架构到资源日志架构的属性的映射。
+将 Azure 活动日志流式传输到存储帐户或事件中心时，数据遵循[资源日志架构](./resource-logs-schema.md)。 下表提供了从上述架构到资源日志架构的属性的映射。
 
 > [!IMPORTANT]
-> 写入到存储帐户的活动日志数据的格式已在 2018 年 11 月 1 日更改为 JSON Lines。 若要详细了解此格式更改，请参阅[为存档到存储帐户的 Azure Monitor 资源日志的格式更改做准备](diagnostic-logs-append-blobs.md)。
+> 写入到存储帐户的活动日志数据的格式已在 2018 年 11 月 1 日更改为 JSON Lines。 若要详细了解此格式更改，请参阅[为存档到存储帐户的 Azure Monitor 资源日志的格式更改做准备](./resource-logs-append-blobs.md)。
 
 
-| 资源日志架构属性 | 活动日志 REST API 架构属性 | 说明 |
+| 资源日志架构属性 | 活动日志 REST API 架构属性 | 注释 |
 | --- | --- | --- |
 | time | eventTimestamp |  |
 | ResourceId | ResourceId | subscriptionId、resourceType 和 resourceGroupName 都是从 resourceId 推断而来。 |
@@ -807,14 +807,14 @@ ms.locfileid: "84945352"
 | category | 操作名称的一部分 | 操作类型分类：“写入”/“删除”/“操作” |
 | resultType | status.value | |
 | resultSignature | substatus.value | |
-| resultDescription | description |  |
-| durationMs | 不适用 | 始终为 0 |
+| resultDescription | 说明 |  |
+| durationMs | 空值 | 始终为 0 |
 | callerIpAddress | httpRequest.clientIpAddress |  |
 | correlationId | correlationId |  |
-| 标识 | 声明和授权属性 |  |
+| identity | 声明和授权属性 |  |
 | Level | Level |  |
-| location | 不适用 | 处理事件的位置。 *这不是资源的位置，而是处理事件的位置。此属性将在将来的更新中删除。* |
-| 属性 | properties.eventProperties |  |
+| location | 空值 | 处理事件的位置。 *这不是资源的位置，而是处理事件的位置。此属性将在将来的更新中删除。* |
+| “属性” | properties.eventProperties |  |
 | properties.eventCategory | category | 如果不存在 properties.eventCategory，则 category 是“管理” |
 | properties.eventName | eventName |  |
 | properties.operationId | operationId |  |
@@ -885,4 +885,3 @@ ms.locfileid: "84945352"
 ## <a name="next-steps"></a>后续步骤
 * [了解有关活动日志的详细信息](platform-logs-overview.md)
 * [创建用于将活动日志发送到 Log Analytics 工作区、Azure 存储或事件中心的诊断设置](diagnostic-settings.md)
-

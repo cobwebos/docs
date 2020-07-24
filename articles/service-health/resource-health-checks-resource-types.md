@@ -3,11 +3,12 @@ title: 通过 Azure 资源运行状况支持的资源类型 | Microsoft Docs
 description: 通过 Azure 资源运行状况支持的资源类型
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 38c7e0754649d650521cc510bcac326496bcec38
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: f4d622ac6d37059731b51a679e13f824670b9dc8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816092"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071291"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure 资源运行状况中的资源类型和运行状况检查
 下面是通过资源运行状况执行的所有检查（按资源类型）的完整列表。
@@ -25,7 +26,7 @@ ms.locfileid: "83816092"
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 |执行的检查|
 |---|
-|<ul><li>批处理帐户是否已启动并正在运行？</li><li>是否已超出此批处理帐户的池配额？</li></ul>|
+|<ul><li>Batch 帐户是否已启动并正在运行？</li><li>是否已超出此批处理帐户的池配额？</li></ul>|
 
 ## <a name="microsoftcacheredis"></a>Microsoft.Cache/Redis
 |执行的检查|
@@ -50,7 +51,7 @@ ms.locfileid: "83816092"
 ## <a name="microsoftcomputehostgroupshosts"></a>Microsoft.compute/hostgroups/hosts
 |执行的检查|
 |---|
-|<ul><li>主机是否已启动并正在运行</li><li>主机硬件是否已降级？</li><li>主机是否已解除分配？</li><li>主机硬件服务是否已修复到其他硬件？</li></ul>|
+|<ul><li>主机是否已启动且正在运行？</li><li>主机硬件是否已降级？</li><li>主机是否已解除分配？</li><li>主机硬件服务是否已修复到不同的硬件？</li></ul>|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |执行的检查|
@@ -60,7 +61,7 @@ ms.locfileid: "83816092"
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft.datafactory/factories
 |执行的检查|
 |---|
-|<ul><li>是否存在管道运行故障？</li><li>托管数据工厂的群集是否正常？</li></ul>|
+|<ul><li>是否有管道运行失败？</li><li>托管数据工厂的群集是否正常？</li></ul>|
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/accounts
 |执行的检查|
@@ -76,12 +77,12 @@ ms.locfileid: "83816092"
 ## <a name="microsoftdatamigrationservices"></a>Microsoft.datamigration/services
 |执行的检查|
 |---|
-|<ul><li>是否未能预配数据库迁移服务？</li><li>数据库迁移服务是否因处于不活动状态或用户请求而停止？</li></ul>|
+|<ul><li>数据库迁移服务是否无法预配？</li><li>数据库迁移服务是否由于不活动或用户请求而已停止？</li></ul>|
 
 ## <a name="microsoftdatashareaccounts"></a>Microsoft.DataShare/accounts
 |执行的检查|
 |---|
-|<ul><li>数据共享帐户是否已启动并正在运行？</li><li>托管数据共享的群集是否可用？</li></ul>|
+|<ul><li>Data Share 帐户是否已启动且正在运行？</li><li>托管 Data Share 的群集是否可用？</li></ul>|
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
 |执行的检查|
@@ -116,7 +117,7 @@ ms.locfileid: "83816092"
 ## <a name="microsofthdinsightclusters"></a>Microsoft.hdinsight/clusters
 |执行的检查|
 |---|
-|<ul><li>核心服务在 HDInsight 群集上是否可用？</li><li>HDInsight 群集是否可以访问静态 BYOK 加密的密钥？</li></ul>|
+|<ul><li>HDInsight 群集上是否提供核心服务？</li><li>HDInsight 群集是否可以访问用于 BYOK 静态加密的密钥？</li></ul>|
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 |执行的检查|
@@ -136,7 +137,7 @@ ms.locfileid: "83816092"
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.network/applicationgateways
 |执行的检查|
 |---|
-|<ul><li>应用程序网关的性能是否已降级？</li><li>应用程序网关是否可用？</li></ul>|
+|<ul><li>应用程序网关的性能是否下降了？</li><li>应用程序网关是否可用？</li></ul>|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |执行的检查|
@@ -146,12 +147,12 @@ ms.locfileid: "83816092"
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.network/expressroutecircuits
 |执行的检查|
 |---|
-|<ul><li>ExpressRoute 线路是否正常？</li></ul>|
+|<ul><li>ExpressRoute 线路是否正常运行？</li></ul>|
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft.network/frontdoors
 |执行的检查|
 |---|
-|<ul><li>Front Door 后端是否在响应运行状况探测时出现错误？</li><li>配置更改是否已延迟？</li></ul>|
+|<ul><li>Front Door 后端是否以错误向运行状况探测做出响应？</li><li>配置更改是否已延迟？</li></ul>|
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft.network/LoadBalancers
 |执行的检查|
@@ -196,7 +197,7 @@ ms.locfileid: "83816092"
 ## <a name="microsoftservicefabricclusters"></a>Microsoft.ServiceFabric/clusters
 |执行的检查|
 |---|
-|<ul><li>Service Fabric 群集是否已启动并正在运行？</li><li>是否可以通过 Azure 资源管理器管理 Service Fabric 群集？</li></ul>|
+|<ul><li>Service Fabric 群集是否已启动且正在运行？</li><li>Service Fabric 群集是否可以通过 Azure 资源管理器进行管理？</li></ul>|
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft.SQL/managedInstances/databases
 |执行的检查|
@@ -231,4 +232,4 @@ ms.locfileid: "83816092"
 ## <a name="next-steps"></a>后续步骤
 -  请参阅 [Azure 服务运行状况仪表板简介](service-health-overview.md)和 [Azure 资源运行状况简介](resource-health-overview.md)，了解更多相关信息。 
 -  [有关 Azure 资源运行状况的常见问题解答](resource-health-faq.md)
-- 设置警报，以便收到运行状况问题的通知。 有关详细信息，请参阅[配置服务运行状况事件的警报](../azure-monitor/platform/alerts-activity-log-service-notifications.md)。 
+- 设置警报，以便收到运行状况问题的通知。 有关详细信息，请参阅[配置服务运行状况事件的警报](./alerts-activity-log-service-notifications-portal.md)。 

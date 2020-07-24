@@ -1,23 +1,23 @@
 ---
-title: '模型 interpretability Azure 机器学习 (预览版) '
+title: Azure 机器学习中的模型 interpretability （预览版）
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure 机器学习 SDK 解释模型做出预测的原因。 可以在训练和推理期间使用该 SDK 来了解模型做出预测的原因。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.author: mesameki
-author: mesameki
+ms.author: mithigpe
+author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: 83fc13362a373686ee027fd642f03003b411cd63
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: deeb47b55253b9bf1659dd5eba7bc3465602583b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201437"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072217"
 ---
-# <a name="model-interpretability-in-azure-machine-learning-preview"></a>模型 interpretability Azure 机器学习 (预览版) 
+# <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure 机器学习中的模型 interpretability （预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 ## <a name="overview-of-model-interpretability"></a>模型可解释性概述
@@ -44,12 +44,12 @@ ms.locfileid: "86201437"
 
 * `azureml.contrib.interpret`，可以尝试的预览版和试验性功能。
 
-将 `pip install azureml-interpret` 和 `pip install azureml-interpret-contrib` 用于常规用途，将 `pip install azureml-contrib-interpret` 用于自动化机器学习用途来获取可解释性包。
+使用 `pip install azureml-interpret` 和 `pip install azureml-contrib-interpret` 进行一般使用。
 
 
 > [!IMPORTANT]
 > `contrib` 命名空间中的内容不完全受支持。 试验性功能变成熟后，会逐渐转移到主命名空间。
-.
+上获取。
 
 
 
