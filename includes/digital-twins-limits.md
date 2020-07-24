@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 21d910fb0e0992b35aa19ce65fc216734e30265c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3035bd71a91f7cad6fb951d74081b77d8445a81f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515838"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133778"
 ---
 ### <a name="functional-limits"></a>功能限制
 
@@ -45,6 +45,6 @@ ms.locfileid: "86515838"
 
 ### <a name="other-limits"></a>其他限制
 
-可在 GitHub 中的规范文档中找到有关 Azure 数字孪生模型的 DTDL 文档中的数据类型和字段的限制：[数字孪生定义语言（DTDL）-版本 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
+可在 GitHub 中的规范文档中找到有关 Azure 数字孪生模型的 DTDL 文档中的数据类型和字段的限制：[*数字孪生定义语言（DTDL）-版本 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
  
 在预览期间，查询延迟的详细信息和其他有关编写查询的准则可在[*如何：查询克隆图形*](../articles/digital-twins/how-to-query-graph.md)中找到。

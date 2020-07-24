@@ -2,19 +2,20 @@
 title: 身份验证方法
 titleSuffix: Azure Maps
 description: 本文介绍 Azure Active Directory 和共享密钥身份验证。 两者均用于 Microsoft Azure Maps 服务。 了解如何获取 Azure Maps 订阅密钥。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: fe79b630291959ce4dc8b4743127986088a876ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e270a9a1a773442a4d1d28d9bbfe37639cac7c65
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987541"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133378"
 ---
 # <a name="authentication-with-azure-maps"></a>使用 Azure Maps 进行身份验证
 
@@ -58,7 +59,7 @@ Azure Maps 为每个 Azure Maps 帐户生成一个唯一的标识符（客户端
 
 在应用程序收到访问令牌后，SDK 和/或应用程序将使用以下一组所需的 HTTP 标头以及其他 REST API HTTP 标头发送 HTTPS 请求：
 
-| 标头名称    | “值”               |
+| 标头名称    | 值               |
 | :------------- | :------------------ |
 | x-ms-client-id | 30d7cc….9f55        |
 | 授权  | Bearer eyJ0e….HNIVN |

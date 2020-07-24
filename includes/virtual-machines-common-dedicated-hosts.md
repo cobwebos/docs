@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 7cf03de2efdb1026934985c225a2a9eecbfbb5a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24e4554e2202c8b5452193e1b0f48cf6c8ada5dd
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84902685"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133785"
 ---
 ## <a name="limitations"></a>限制
 
@@ -79,7 +79,15 @@ ms.locfileid: "84902685"
 
 ## <a name="quotas"></a>配额
 
-对于每个区域的专用主机，默认配额限制为 3000 个 vCPU。 但是，可以部署的主机数还受主机使用的 VM 大小系列的配额限制。 例如，"即**用即付**" 订阅在 "美国东部" 区域中只能有10个个 vcpu 的配额，适用于 Dsv3 大小系列。 在这种情况下，需要请求将配额提高到至少 64 个 vCPU，才能部署专用主机。 如果需要，请选择右上角的“请求增加”按钮提出请求  。
+部署专用主机时，会使用两种类型的配额。
+
+1. 专用主机 vCPU 配额。 每个区域的默认配额限制为3000个 vcpu。
+1. VM 大小系列配额。 例如，"即**用即付**" 订阅在 "美国东部" 区域中只能有10个个 vcpu 的配额，适用于 Dsv3 大小系列。 若要部署 Dsv3 专用主机，需要将配额增加到至少64个 vcpu，然后才能部署专用主机。 
+
+若要请求增加配额，请在[Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)中创建支持请求。
+
+预配专用主机会消耗专用主机 vCPU 和 VM 家族 vCPU 配额，但不会使用区域 vCPU。
+
 
 ![门户中的用量和配额页的屏幕截图](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 

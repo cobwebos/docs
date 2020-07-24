@@ -6,27 +6,29 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 07/23/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 24d726f7600c3ba80833640be8036bf0daa2c014
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e30c4142232a2d695204f5c8f612eb44791c847c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518718"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133157"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>阻止对容器和 blob 的匿名公共读取访问
 
 对 Azure 存储中容器和 blob 的匿名公共读取访问是共享数据的一种简便方法，但也可能会带来安全风险。 非常重要的是，必须谨慎管理匿名访问，并了解如何评估匿名访问数据。 对于可公开访问的数据，操作复杂性、人为错误或恶意攻击会导致成本高昂的数据泄露。 Microsoft 建议仅在需要时为应用程序方案启用匿名访问。
 
-默认情况下，具有适当权限的用户可以配置对容器和 blob 的公共访问权限。 可以在存储帐户级别阻止所有公共访问。 如果你禁止访问存储帐户的公共 blob，则不能为帐户中的容器配置公共访问权限。 已配置为公开访问的所有容器将不再接受匿名请求。 有关详细信息，请参阅[配置容器和 blob 的匿名公共读取访问](anonymous-read-access-configure.md)。
+默认情况下，始终禁止对 blob 数据进行公共访问。 但是，存储帐户的默认配置允许具有适当权限的用户配置对存储帐户中的容器和 blob 的公共访问。 为增强安全性，无论单独容器的公共访问设置如何，都可以禁止对存储帐户进行所有公共访问。 不允许对存储帐户进行公共访问会阻止用户在帐户中启用容器的公共访问权限。 如果你的方案需要存储帐户，Microsoft 建议你禁止对其进行公共访问。 禁用公共访问有助于防止意外的匿名访问导致的数据泄露。
+
+当你禁止访问存储帐户的公共 blob 时，Azure 存储将拒绝对该帐户的所有匿名请求。 帐户不允许公共访问后，该帐户中的容器以后无法进行公共访问。 已配置为公开访问的所有容器将不再接受匿名请求。 有关详细信息，请参阅[配置容器和 blob 的匿名公共读取访问](anonymous-read-access-configure.md)。
 
 本文介绍如何针对存储帐户分析匿名请求，以及如何防止对整个存储帐户或单独容器的匿名访问。
 
 ## <a name="detect-anonymous-requests-from-client-applications"></a>检测来自客户端应用程序的匿名请求
 
-如果你不允许对存储帐户进行公共读取访问，则可能会拒绝对当前配置为公开访问的容器和 blob 的请求。 禁用存储帐户的公共访问权限会替代该存储帐户中所有容器的公共访问设置。 如果不允许对存储帐户进行公共访问，以后对该帐户的任何匿名请求都将失败。
+如果你不允许对存储帐户进行公共读取访问，则可能会拒绝对当前配置为公开访问的容器和 blob 的请求。 禁用存储帐户的公共访问权限会替代该存储帐户中各个容器的公共访问设置。 如果不允许对存储帐户进行公共访问，以后对该帐户的任何匿名请求都将失败。
 
 为了理解禁止公共访问可能会对客户端应用程序产生何种影响，Microsoft 建议你启用该帐户的日志记录和度量值，并在时间间隔内分析匿名请求的模式。 使用度量值来确定对存储帐户的匿名请求数，并使用日志来确定要匿名访问的容器。
 
