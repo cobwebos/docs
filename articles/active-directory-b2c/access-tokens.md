@@ -8,53 +8,54 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/12/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: de5c478ac6641fe5b1e342c063d134f70084b2ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be43b74e7128f9b250d25f8bdb2642c6f7b41d2a
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201440"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115534"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中请求访问令牌
 
-访问令牌包含可在 Azure Active Directory B2C (Azure AD B2C) 中使用的声明，用于标识已授予的对 API 的权限。 调用资源服务器时，必须在 HTTP 请求中提供访问令牌。 访问令牌在 Azure AD B2C 的响应中表示为 access_token。
+访问令牌包含的声明可在 Azure Active Directory B2C (Azure AD B2C) 中用于识别已授予的对 API 的权限。 调用资源服务器时，必须在 HTTP 请求中提供访问令牌。 访问令牌在 Azure AD B2C 的响应中以 **access_token** 表示。
 
-本文介绍如何请求 Web 应用和 Web API 的访问令牌。 有关 Azure AD B2C 中的令牌的详细信息，请参阅 [Azure Active Directory B2C 中的令牌概述](tokens-overview.md)。
+本文介绍如何请求 Web 应用程序和 Web API 的访问令牌。 有关 Azure AD B2C 中令牌的详细信息，请参阅 [Azure Active Directory B2C 中的令牌概述](tokens-overview.md)。
 
 > [!NOTE]
-> **Web API 链（代理）不受 Azure AD B2C 支持。** - 许多体系结构包含需要调用另一个下游 Web API 的 Web API，这两者都受 Azure AD B2C 的保护。 此方案常见于包含 Web API 后端的客户端，该后端调用另一个服务。 可以使用 OAuth 2.0 JWT 持有者凭据授权（也称为代理流）来支持这种链接的 Web API 方案。 但是，Azure AD B2C 中目前尚未实现代理流。
+> **Web API 链（代理）不受 Azure AD B2C 支持。** - 许多体系结构包含需要调用另一个下游 Web API 的 Web API，这两者都受 Azure AD B2C 的保护。 此方案常见于包含 Web API 后端的客户端，该后端反过来会调用另一服务。 可以使用 OAuth 2.0 JWT 持有者凭据授权（也称为代理流）来支持这种链接的 Web API 方案。 但是，Azure AD B2C 中目前尚未实现代理流。
 
 ## <a name="prerequisites"></a>先决条件
 
 - [创建用户流](tutorial-create-user-flows.md)，以便用户能够注册并登录应用程序。
-- 如果尚未执行此操作，请[向 Azure Active Directory B2C 租户添加 Web API 应用程序](add-web-api-application.md)。
+- 请[向 Azure Active Directory B2C 租户添加 Web API 应用程序](add-web-api-application.md)（如果尚未这样做）。
 
 ## <a name="scopes"></a>作用域
 
-可通过作用域管理对受保护资源的权限。 在请求访问令牌时，客户端应用程序需要在请求的 scope 参数中指定所需的权限。 例如，若要指定具有 `https://contoso.onmicrosoft.com/api`“应用 ID URI”的 API“作用域值”`read`，该作用域将是 `https://contoso.onmicrosoft.com/api/read` 。
+可以通过作用域管理对受保护资源的权限。 在请求访问令牌时，客户端应用程序需要在请求的 scope 参数中指定所需的权限。 例如，对于其“应用 ID URI”为 `https://contoso.onmicrosoft.com/api` 的 API，若将“作用域值”指定为 `read`，则作用域为 `https://contoso.onmicrosoft.com/api/read`。 
 
-Web API 使用作用域实施基于作用域的访问控制。 例如，可以让 Web API 用户拥有读取和写入访问权限，或者只拥有读取访问权限。 若要在同一请求中获取多个权限，可在请求的单个 scope 参数中添加多个条目并用空格分隔。
+Web API 使用作用域实施基于作用域的访问控制。 例如，可以让 Web API 用户拥有读取和写入访问权限，或者只拥有读取访问权限。 若要在同一请求中获取多个权限，可在请求的单个 **scope** 参数中添加多个条目并用空格分隔。
 
-以下示例显示了已在 URL 中解码的作用域：
+以下示例显示了在 URL 中解码的作用域：
 
 ```
 scope=https://contoso.onmicrosoft.com/api/read openid offline_access
 ```
 
-以下示例显示了已在 URL 中编码的作用域：
+以下示例显示了在 URL 中编码的作用域：
 
 ```
 scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_access
 ```
 
-如果请求的作用域数超过为客户端应用程序授予的数目，则在至少授予一个权限时调用将成功。 生成的访问令牌中的 scp 声明将仅使用已成功授予的权限进行填充。 OpenID Connect 标准指定了多个特殊的 scope 值。 以下作用域表示访问用户配置文件的权限：
+如果请求的作用域数超过为客户端应用程序授予的数目，则只有在授予至少一个权限的情况下，调用才会成功。 生成的访问令牌的 **scp** 声明中只会填充已成功授予的权限。 OpenID Connect 标准指定了多个特殊的作用域值。 以下作用域表示访问用户配置文件的权限：
 
 - **openid** - 请求 ID 令牌。
 - **offline_access** - 使用[授权代码流](authorization-code-flow.md)请求刷新令牌。
 
-如果 `/authorize` 请求中的 response_type 参数包含 `token`，那么 scope 参数必须包含至少一个将被授予的资源作用域（`openid` 和 `offline_access` 除外） 。 否则，`/authorize` 请求将失败。
+如果 `/authorize` 请求中的 **response_type** 参数包含 `token`，那么 **scope** 参数必须包含至少一个将被授予的资源作用域（除 `openid` 和 `offline_access` 以外）。 否则，`/authorize` 请求会失败。
 
 ## <a name="request-a-token"></a>请求令牌
 
@@ -64,7 +65,7 @@ scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_acce
 
 - `<tenant-name>` - Azure AD B2C 租户的名称。
 - `<policy-name>` - 自定义策略或用户流的名称。
-- `<application-ID>` - 为支持用户流而注册的 Web 应用的应用程序标识符。
+- `<application-ID>` - 注册用于支持用户流的 Web 应用程序的应用程序标识符。
 - `<redirect-uri>` - 注册客户端应用程序时输入的重定向 URI。
 
 ```http
@@ -76,13 +77,13 @@ client_id=<application-ID>
 &response_type=code
 ```
 
-授权代码的响应类似于以下示例：
+包含授权代码的响应应类似于以下示例：
 
 ```
 https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 ```
 
-成功收到授权码后，可以使用它来请求访问令牌：
+成功接收授权代码以后，可以将其用于请求访问令牌：
 
 ```http
 POST <tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
@@ -97,7 +98,7 @@ grant_type=authorization_code
 &client_secret=2hMG2-_:y12n10vwH...
 ```
 
-应会看到类似于下面的响应：
+看到的内容应该类似于以下响应：
 
 ```json
 {
@@ -111,7 +112,7 @@ grant_type=authorization_code
 }
 ```
 
-使用 https://jwt.ms 检查返回的访问令牌时，应会看到类似于以下示例的内容：
+使用 https://jwt.ms 检查返回的访问令牌时，看到的内容应该类似于以下示例：
 
 ```json
 {

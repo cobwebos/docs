@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 8af8db6b6853d6b8cbd4ba1105f05ebb9bcf771b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4ea8db464c7cae57b80837ced9f8886a8b3cf4a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84974834"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093011"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>预付 Azure Cache for Redis 计算资源的预留容量
 
@@ -32,7 +32,7 @@ ms.locfileid: "84974834"
 
 保留的大小应基于特定区域中现有或即将部署的缓存所使用的内存总大小，并使用相同的服务层。
 
-例如，假设你正在运行两个缓存-一个为 13 GB，另一个为 26 GB。 至少需要一年的时间。 接下来，假设你计划将现有的 13 GB 缓存缩放到 26 GB，以满足季节性需求，然后再进行缩减。 在这种情况下，可以在一年的保留期内购买1个 P1 缓存和1个 P2 缓存或3个 P1 缓存，以最大限度地节省成本。 你将在保留的缓存内存总量上收到折扣，这与在缓存中分配该空间的方式无关。
+例如，假设你正在运行两个缓存-一个为 13 GB，另一个为 26 GB。 至少需要一年的时间。 接下来，假设你计划将现有的 13 GB 缓存缩放到 26 GB，以满足季节性需求，然后再进行缩减。 在这种情况下，可以在一年的保留期内购买1个 P2 缓存和1个 P3 缓存或3个 P2 缓存，以最大限度地节省成本。 你将在保留的缓存内存总量上收到折扣，这与在缓存中分配该空间的方式无关。
 
 
 ## <a name="buy-azure-cache-for-redis-reserved-capacity"></a>为 Redis 保留容量购买 Azure 缓存
@@ -55,7 +55,7 @@ ms.locfileid: "84974834"
 | 区域 | Azure Cache 为 Redis 保留容量保留提供的 Azure 区域。
 | 定价层 | 适用于 Redis 服务器的 Azure 缓存的服务层。
 | 术语 | 一年或三年
-| 数量 | 在 Azure 缓存中为 Redis 保留容量预留购买的计算资源量。 该数量是所选 Azure 区域中的大量缓存和正在保留的服务层，并将获得计费折扣。 例如，如果你正在运行或计划为 Redis 服务器运行 Azure Cache，其中的总缓存容量为 26 GB，在美国东部区域中，你可以将 "数量" 指定为26，以最大限度地提高所有缓存的权益。
+| 数量 | 在 Azure 缓存中为 Redis 保留容量预留购买的计算资源量。 该数量是所选 Azure 区域中的大量缓存和正在保留的服务层，并将获得计费折扣。 例如，如果你正在运行或计划在 "美国东部" 区域中运行包含 26 GB 总容量的 Redis 服务器的 Azure 缓存，则指定的数量等于 26 GB，以最大限度地提高所有缓存的权益。 这可能是 1 P3 或2个 P2 缓存。
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>对预留执行取消、交换或退款操作
 

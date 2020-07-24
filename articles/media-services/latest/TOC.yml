@@ -52,7 +52,7 @@
   items:
     - name: 媒体服务 v3 示例
       displayName: '.NET, Java'
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-media-services'
+      href: /samples/browse/?products=azure-media-services
     - name: 媒体服务 v3 REST 示例
       href: 'https://github.com/Azure-Samples/media-services-v3-rest-postman'
 - name: 概念
@@ -197,9 +197,6 @@
         - name: 点播视频
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-encoding.md
-        - name: 流式处理
-          displayName: 'failover, bcdr, HA, high availability'
-          href: media-services-high-availability-streaming.md
     - name: 疑难解答
       items:
         - name: 常见问题
@@ -337,7 +334,7 @@
           href: offline-plaready-streaming-for-windows-10.md
     - name: 创建筛选器
       items:
-        - name: 使用 .NET
+        - name: （使用 .NET）
           href: filters-dynamic-manifest-dotnet-howto.md
           displayName: filters
         - name: 使用 REST
@@ -376,7 +373,7 @@
         - name: Python
           href: 'https://aka.ms/ams-v3-python-ref'
         - name: Node.js
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/mediaservices/management'
+          href: /javascript/api/overview/azure/mediaservices/management
         - name: Go
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: 资源管理器模板

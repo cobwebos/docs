@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 45f87898f7da432e5bdd09061e74c33a1a8fe41b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 11bbc30179cc27f4799b1fd2869cb312dfa34473
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165696"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093062"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Durable Functions 的零停机时间部署
 
-Durable Functions 的[可靠执行模型](durable-functions-checkpointing-and-replay.md)要求业务流程是确定性的，这就需要在部署更新时考虑到更多的挑战。 如果部署包含对活动函数签名或业务流程协调程序逻辑的更改，运行中的业务流程实例将发生故障。 对于长时间运行的业务流程实例（要运行数小时甚至数天），此问题尤为严重。
+Durable Functions 的[可靠执行模型](./durable-functions-orchestrations.md)要求业务流程是确定性的，这就需要在部署更新时考虑到更多的挑战。 如果部署包含对活动函数签名或业务流程协调程序逻辑的更改，运行中的业务流程实例将发生故障。 对于长时间运行的业务流程实例（要运行数小时甚至数天），此问题尤为严重。
 
 为了防止发生这些故障，可以执行两个选项： 
 - 延迟部署，直到所有正在运行的业务流程实例都已完成。
@@ -52,7 +52,7 @@ Durable Functions 的[可靠执行模型](durable-functions-checkpointing-and-re
 
 1. 对于每个槽，请将 [AzureWebJobsStorage 应用程序设置](../functions-app-settings.md#azurewebjobsstorage)指定为共享存储帐户的连接字符串。 此存储帐户连接字符串由 Azure Functions 运行时使用。 此帐户由 Azure Functions 运行时使用，可以管理函数的密钥。
 
-1. 对于每个槽，请创建新的应用设置，例如 `DurableManagementStorage`。 将其值设置为不同存储帐户的连接字符串。 Durable Functions 扩展使用这些存储帐户来实现[可靠执行](durable-functions-checkpointing-and-replay.md)。 对每个槽使用单独的存储帐户。 不要将此设置标记为部署槽设置。
+1. 对于每个槽，请创建新的应用设置，例如 `DurableManagementStorage`。 将其值设置为不同存储帐户的连接字符串。 Durable Functions 扩展使用这些存储帐户来实现[可靠执行](./durable-functions-orchestrations.md)。 对每个槽使用单独的存储帐户。 不要将此设置标记为部署槽设置。
 
 1. 在函数应用的 [host.json 文件的 durableTask 节](durable-functions-bindings.md#hostjson-settings)中，将 `azureStorageConnectionStringName` 指定为在步骤 3 中创建的应用设置的名称。
 
@@ -110,7 +110,7 @@ public static async Task<IActionResult> StatusCheck(
 
 接下来，将过渡门限配置为等到没有任何业务流程运行为止。 有关详细信息，请参阅[使用入口发布部署控制](/azure/devops/pipelines/release/approvals/gates?view=azure-devops)
 
-![部署门限](media/durable-functions-zero-downtime-deployment/deployment-gate.png)
+![部署入口](media/durable-functions-zero-downtime-deployment/deployment-gate.png)
 
 Azure Pipelines 会在部署开始之前检查函数应用是否存在正在运行的业务流程实例。
 
@@ -172,4 +172,3 @@ Azure Pipelines 会在部署开始之前检查函数应用是否存在正在运�
 
 > [!div class="nextstepaction"]
 > [Durable Functions 版本控制](durable-functions-versioning.md)
-
