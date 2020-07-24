@@ -2,19 +2,19 @@
 title: 为用户授予基于角色的访问权限
 titleSuffix: Azure Maps
 description: 使用基于角色的访问控制向用户授予授权 Azure Maps
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/17/2020
 ms.topic: include
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 86f89397f3685443071788580253ee11ce4b70be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b138dab2a97537a93b8d873f79b6ee9c00b4af4
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988319"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126733"
 ---
 ## <a name="grant-role-based-access-for-users-to-azure-maps"></a>向用户授予 Azure Maps 的基于角色的访问权限
 
@@ -29,7 +29,7 @@ ms.locfileid: "84988319"
 
     ![授予 RBAC](../media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. 在 "**角色分配**" 选项卡上的 "**角色**" 下，选择内置 Azure Maps 角色定义，如**Azure Maps 数据读取器**或**Azure Maps 数据参与者**。 在“分配访问权限至”下，选择“Azure AD 用户、组或服务主体”********。 按名称选择主体。 然后，选择“保存”。
+2. 在 "**角色分配**" 选项卡上的 "**角色**" 下，选择内置 Azure Maps 角色定义，如**Azure Maps 数据读取器**或**Azure Maps 数据参与者**。 在“分配访问权限至”下，选择“Azure AD 用户、组或服务主体”********。 按名称选择主体。 再选择“保存”。
 
    * 有关[添加或删除角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)的详细信息，请参阅。
 

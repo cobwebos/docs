@@ -2,19 +2,19 @@
 title: 如何保护守护程序应用程序
 titleSuffix: Azure Maps
 description: 使用 Azure 门户管理身份验证以配置受信任的后台应用程序。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 4fa3492b0cd71e61900dc4be150cd0f0169379ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 066118622f19d7efac71ddd66ac1abe058008b55
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988346"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126765"
 ---
 # <a name="secure-a-daemon-application"></a>保护后台应用程序
 
@@ -114,7 +114,7 @@ ms.locfileid: "84988346"
 > [!div class="mx-imgBorder"]
 > ![查看可用的角色](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
-1. 中转到你的**Azure Maps 帐户**。 选择 "**访问控制（IAM）**"  >  **角色分配**。
+1. 中转到你的**Azure Maps 帐户**。 选择“访问控制(IAM)” > “角色分配”。
 
     > [!div class="mx-imgBorder"]
     > ![授予 RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
@@ -124,7 +124,7 @@ ms.locfileid: "84988346"
     > [!div class="mx-imgBorder"]
     > ![添加角色分配](./media/how-to-manage-authentication/add-role-assignment.png)
 
-3. 选择内置 Azure Maps 角色定义，如**Azure Maps 数据读取器**或**Azure Maps 数据参与者**。 在 "**分配访问权限**" 下，选择 "使用**用户分配**的托管标识系统**Azure AD 用户、组或服务主体**或托管标识" 分配的托管标识  /  **System assigned Managed identity**。 选择主体。 然后，选择“保存”。
+3. 选择内置 Azure Maps 角色定义，如**Azure Maps 数据读取器**或**Azure Maps 数据参与者**。 在 "**分配访问权限**" 下，选择 "使用**用户分配**的托管标识系统**Azure AD 用户、组或服务主体**或托管标识" 分配的托管标识  /  **System assigned Managed identity**。 选择主体。 再选择“保存”。
 
     > [!div class="mx-imgBorder"]
     > ![添加角色分配](./media/how-to-manage-authentication/how-to-add-role-assignment.png)
