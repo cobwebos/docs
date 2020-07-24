@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, tracking-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a748b9284407b5ecd8cc8f6225c6762e7017d4d9
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: d5a332acbf6550fcc3a4256e1bc0531b31dd6c6a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026111"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012248"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Team Data Science Process 实务：使用 Azure Synapse Analytics
 本教程逐步介绍如何使用 Azure Synapse Analytics 为某个公开提供的数据集（[纽约市出租车行程](https://www.andresmh.com/nyctaxitrips/)数据集）生成和部署机器学习模型。 构造的二元分类模型可预测是否为某个行程支付了小费。  模型包括多类分类（是否有小费）和回归（已付小费金额的分布）。
@@ -602,7 +602,7 @@ AND pickup_longitude != '0' AND dropoff_longitude != '0'
 
 **输出：** 此查询生成一个表（包含 2,803,538 行），其中包含上下车的经纬度以及相应的直接距离（以英里计）。 下面是前三行的结果：
 
-|  | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
+| （行号） | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
 | --- | --- | --- | --- | --- | --- |
 | 1 |40.731804 |-74.001083 |40.736622 |-73.988953 |.7169601222 |
 | 2 |40.715794 |-74,010635 |40.725338 |-74.00399 |.7448343721 |

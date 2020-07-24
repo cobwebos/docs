@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: d86858f8d7f09628457b718ca3c481934d720081
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 736504febea16af53c2c05bc367513b2dde93ccf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708002"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012308"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>数据科学虚拟机数据引入工具
 
@@ -25,7 +25,7 @@ ms.locfileid: "84708002"
 
 ## <a name="adlcopy"></a>AdlCopy
 
-|    |           |
+| Category | 值 |
 | ------------- | ------------- |
 | 它是什么？   | 可将数据从 Azure Blob 存储复制到 Azure Data Lake Store 的工具。 此外，也可在两个 Azure Data Lake Store 帐户之间复制数据。      |
 | 支持的 DSVM 版本      | Windows      |
@@ -36,7 +36,7 @@ ms.locfileid: "84708002"
 
 ## <a name="azure-cli"></a>Azure CLI
 
-|    |           |
+| Category | 值 |
 | ------------- | ------------- |
 | 它是什么？   | Azure 的管理工具。 它还包含可从 Azure 数据平台（如 Azure Blob 存储和 Azure Data Lake Storage）移动数据的命令谓词。     |
 | 支持的 DSVM 版本      | Windows、Linux     |
@@ -48,19 +48,19 @@ ms.locfileid: "84708002"
 
 ## <a name="azcopy"></a>AzCopy
 
-|    |           |
+| Category | 值 |
 | ------------- | ------------- |
 | 它是什么？   | 用于从本地文件、Azure BLob 存储、文件和表复制数据以及将数据复制到其中的工具。      |
 | 支持的 DSVM 版本      | Windows      |
 | 典型用途      | 将文件复制到 Azure Blob 存储以及在帐户之间复制 Blob。      |
 |  如何使用/运行它？    |   打开命令提示符，键入 `azcopy` 可获取帮助。    |
-| 指向示例的链接      | [Windows 上的 AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)      |
+| 指向示例的链接      | [AzCopy on Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)      |
 | DSVM 上的相关工具      | AdlCopy     |
 
 
 ## <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB 数据迁移工具
 
-|    |           |
+| Category | 值 |
 | ------------- | ------------- |
 | 它是什么？   | 将不同来源的数据导入 Azure Cosmos DB（一种云中的 NoSQL 数据库）的工具。 这些数据可以来源于 JSON 文件、CSV 文件、SQL、MongoDB、Azure 表存储、Amazon DynamoDB 以及 Azure Cosmos DB SQL API 集合。      |
 | 支持的 DSVM 版本      | Windows      |
@@ -71,18 +71,18 @@ ms.locfileid: "84708002"
 
 ## <a name="azure-storage-explorer"></a>Azure 存储资源管理器
 
-|    |           |
+| Category | 值 |
 | ------------- | ------------- |
 | 它是什么？   | 用于与 Azure 云中存储的文件进行交互的图形用户界面。 |
 | 支持的 DSVM 版本      | Windows      |
 | 典型用途      | 从 DSVM 导出数据或将数据导入其中。    |
 |  如何使用/运行它？    | 在“开始”菜单中搜索“Azure 存储资源管理器”。 |
-| 指向示例的链接      | [Azure 存储浏览器](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
+| 指向示例的链接      | [Azure 存储资源管理器](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
 
 
 ## <a name="bcp"></a>bcp
 
-|    |           |
+| Category | 值 |
 | ------------- | ------------- |
 | 它是什么？   | 在 SQL Server 和数据文件之间复制数据的 SQL Server 工具。      |
 | 支持的 DSVM 版本      | Windows      |
@@ -93,7 +93,7 @@ ms.locfileid: "84708002"
 
 ## <a name="blobfuse"></a>blobfuse
 
-|    |           |
+| Category | 值 |
 | ------------- | ------------- |
 | 它是什么？   | 用于在 Linux 文件系统中装载 Azure Blob 存储容器的工具。      |
 | 支持的 DSVM 版本      | Linux      |

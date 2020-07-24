@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/08/2020
-ms.openlocfilehash: 415c624153971e88afac3b18920a3ba3a8f2cfae
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 118c80b27d10714703d631f0e2560540eb2d39cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147031"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012546"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什么是 Azure 机器学习工作区？
 
@@ -47,13 +47,18 @@ ms.locfileid: "86147031"
 
 可以通过以下方式与工作区交互：
 
+> [!IMPORTANT]
+> 以下标记为（预览版）的工具当前公开预览版。
+> 提供的预览版本没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 + 在 Web 上：
     + [Azure 机器学习工作室](https://ml.azure.com) 
     + [Azure 机器学习设计器（预览版）](concept-designer.md)- 仅在[企业版](overview-what-is-azure-ml.md#sku)工作区中可用。
 + 在任何 Python 环境中使用[适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。
-+ 在任何 R 环境中使用[适用于 R 的 Azure 机器学习 SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html)。
++ 在带有[用于 R 的 AZURE 机器学习 SDK （预览版）](https://azure.github.io/azureml-sdk-for-r/reference/index.html)的任何 R 环境中。
 + 在命令行上使用 Azure 机器学习 [CLI 扩展](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)
 + [Azure 机器学习 VS Code 扩展](how-to-manage-resources-vscode.md#workspaces)
+
 
 ## <a name="machine-learning-with-a-workspace"></a>使用工作区进行机器学习
 
@@ -80,9 +85,9 @@ ms.locfileid: "86147031"
 | 创建笔记本 VM |   | **&check;** | |     ||
 
 > [!WARNING]
-> 不支持将 Azure 机器学习工作区移到另一个订阅，也不支持将拥有的订阅移到新租户。 这样做可能会导致错误。
+> 不支持将 Azure 机器学习工作区移动到另一个订阅，或将拥有的订阅移到新租户。 这样做可能会导致错误。
 
-## <a name="create-a-workspace"></a><a name='create-workspace'></a>创建工作区
+## <a name="create-a-workspace"></a><a name='create-workspace'></a> 创建工作区
 
 创建工作区时，可以选择使用[基本版或企业版](overview-what-is-azure-ml.md#sku)来创建工作区。 版本确定工作区中可用的功能。 企业版的突出功能包括可以访问 [Azure 机器学习设计器](concept-designer.md)和提供工作室版本的[自动机器学习试验](tutorial-first-experiment-automated-ml.md)构建功能。  有关详细信息和定价信息，请参阅 [Azure 机器学习定价](https://azure.microsoft.com/pricing/details/machine-learning/)。
 
@@ -96,7 +101,7 @@ ms.locfileid: "86147031"
 > [!NOTE]
 > 工作区名称不区分大小写。
 
-## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a>升级到 Enterprise edition
+## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a> 升级到企业版
 
 可使用 Azure 门户将[工作区从基本版升级到企业版](how-to-manage-workspace.md#upgrade)。 不能将企业版工作区降级为基本版工作区。 
 
@@ -104,10 +109,10 @@ ms.locfileid: "86147031"
 
 创建新工作区时，它会自动创建工作区使用的几个 Azure 资源：
 
-+ [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)：注册在训练和部署模型时使用的 docker 容器。 要最大程度地降低成本，ACR 在创建部署映像之前会“延迟加载”****。
-+ [Azure 存储帐户](https://azure.microsoft.com/services/storage/)：用作工作区的默认数据存储。  与 Azure 机器学习计算实例一起使用的 Jupyter 笔记本也存储在此处。
-+ [Azure 应用程序 Insights](https://azure.microsoft.com/services/application-insights/)：存储有关模型的监视信息。
-+ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)：存储工作区所需的计算目标和其他敏感信息所使用的机密。
++ [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)：注册在训练期间和部署模型时使用的 Docker 容器。 要最大程度地降低成本，ACR 在创建部署映像之前会“延迟加载”。
++ [Azure 存储帐户](https://azure.microsoft.com/services/storage/)，用作工作区的默认数据存储。  与 Azure 机器学习计算实例一起使用的 Jupyter 笔记本也存储在此处。
++ [Azure Application Insights](https://azure.microsoft.com/services/application-insights/)：存储有关模型的监视信息。
++ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)：存储计算目标使用的机密和工作区所需的其他敏感信息。
 
 > [!NOTE]
 > 除创建新版本以外，还可以使用现有的 Azure 服务。
@@ -120,6 +125,6 @@ ms.locfileid: "86147031"
 + [创建工作区](how-to-manage-workspace.md)
 + [管理工作区](how-to-manage-workspace.md)
 + [教程：开始使用 Python SDK 创建第一个 ML 试验](tutorial-1st-experiment-sdk-setup.md)
-+ [教程：通过 R SDK 开始 Azure 机器学习](tutorial-1st-r-experiment.md)
-+ [教程：使用自动机器学习创建您的第一个分类模型，](tutorial-first-experiment-automated-ml.md) (仅适用于[企业版](overview-what-is-azure-ml.md#sku)工作区) 
-+ [教程：使用设计器预测汽车价格](tutorial-designer-automobile-price-train-score.md) (仅适用于[企业版](overview-what-is-azure-ml.md#sku)工作区) 
++ [教程：通过 R SDK 开始使用 Azure 机器学习](tutorial-1st-r-experiment.md)
++ [教程：使用自动化机器学习创建第一个分类模型](tutorial-first-experiment-automated-ml.md)（仅在[企业版](overview-what-is-azure-ml.md#sku)工作区可用）
++ [教程：使用设计器预测汽车价格](tutorial-designer-automobile-price-train-score.md)（仅在[企业版](overview-what-is-azure-ml.md#sku)工作区可用）

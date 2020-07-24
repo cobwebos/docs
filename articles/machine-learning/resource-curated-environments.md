@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 9d0964fb28451abe0a77276d6f9d605fcaac2514
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 72ccf2a765f50358635e4a803ed0b92e60bd7d19
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156412"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012206"
 ---
 # <a name="azure-machine-learning-curated-environments"></a>Azure 机器学习特选环境
 
-本文列出了 Azure 机器学习中的特选环境，以及其中预装的包和频道。
+本文列出了 Azure 机器学习中的特选环境，以及其中预装的包和频道。 特选环境由 Azure 机器学习提供，且默认可用于你的工作区。 它们由缓存的 Docker 映像提供支持，从而减少了运行准备成本，并允许更快的部署时间。 使用这些环境快速开始使用各种机器学习框架。
 
 > [!NOTE]
 > 此列表已在2020年6月更新。 使用 Python SDK 获取最新列表。 有关详细信息，请参阅[环境一文](./how-to-use-environments.md#use-a-curated-environment)。

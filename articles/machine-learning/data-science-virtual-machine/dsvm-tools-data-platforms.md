@@ -10,11 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: ccb95064f756ef035b7da92d029680f1c195982b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3e1cfa13a3fd568ab2f1253c015880c57f99ce7e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958729"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012479"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine 支持的数据平台
 
@@ -24,13 +25,13 @@ DSVM 支持以下数据平台工具。
 
 ## <a name="sql-server-developer-edition"></a>SQL Server Developer Edition
 
-| | |
+| Category | 值 |
 | ------------- | ------------- |
 | 它是什么？   | 本地关系数据库实例      |
 | 支持的 DSVM 版本      | Windows 2016：SQL Server 2017、Windows 2019：SQL Server 2019      |
-| 典型用途      | 使用小型数据集在本地进行快速开发 <br/> 运行数据库内 R   |
-| 指向示例的链接      |    将 New York City 数据集加载进 SQL 数据库的小型示例：<br/>  `nyctaxi` <br/> 可在以下位置找到显示 Microsoft Machine Learning Server 和数据库内分析的 Jupyter 示例：<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`  |
-| DSVM 上的相关工具       | SQL Server Management Studio <br/> ODBC/JDBC 驱动程序<br/> pyodbc, RODBC<br />Apache Drill      |
+| 典型用途      | <ul><li>使用小型数据集在本地进行快速开发</li><li>运行数据库内 R</li></ul> |
+| 指向示例的链接      | <ul><li>将 New York City 数据集加载进 SQL 数据库的小型示例：<br/>  `nyctaxi`</li><li>可在以下位置找到显示 Microsoft Machine Learning Server 和数据库内分析的 Jupyter 示例：<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`</li></ul> |
+| DSVM 上的相关工具       | <ul><li>SQL Server Management Studio</li><li>ODBC/JDBC 驱动程序</li><li>pyodbc, RODBC</li><li>Apache Drill</li></ul> |
 
 > [!NOTE]
 > SQL Server Developer Edition 只能用于开发和测试。 需要许可证或一个 SQL Server VM 才能在生产中运行。
@@ -61,13 +62,13 @@ ODBC 驱动程序和 JDBC 驱动程序随附的 DSVM 还会通过使用多种语
 
 ## <a name="apache-spark-2x-standalone"></a>Apache Spark 2.x (Standalone)
 
-| | |
+| Category | 值 |
 | ------------- | ------------- |
 | 它是什么？   | 它是流行的 Apache Spark 平台的独立（单个进程内节点）实例，是快速进行大规模数据处理和机器学习的系统     |
 | 支持的 DSVM 版本      | Linux     |
-| 典型用途      | * 使用小型数据集在本地快速开发 Spark/PySpark 应用程序，然后在大型 Spark 群集（例如 Azure HDInsight）上进行部署<br/> * 测试 Microsoft Machine Learning Server Spark 上下文 <br />* 使用 SparkML 或 Microsoft 的开放源代码 [MMLSpark](https://github.com/Azure/mmlspark) 库来生成 ML 应用程序 |
-| 指向示例的链接      |    Jupyter 示例： <br />&nbsp;&nbsp;* ~/notebooks/SparkML/pySpark <br /> &nbsp;&nbsp;* ~/notebooks/MMLSpark <br /> Microsoft Machine Learning Server（Spark 上下文）：/dsvm/samples/MRS/MRSSparkContextSample.R |
-| DSVM 上的相关工具       | PySpark、Scala<br/>Jupyter（Spark/PySpark 内核）<br/>Microsoft Machine Learning Server、SparkR、Sparklyr <br />Apache Drill      |
+| 典型用途      | <ul><li>使用较小的数据集在本地快速开发 Spark/PySpark 应用程序，并在较大的 Spark 群集（例如 Azure HDInsight）上进行部署</li><li>测试 Microsoft Machine Learning Server Spark 上下文</li><li>使用 SparkML 或 Microsoft 的开源[MMLSpark](https://github.com/Azure/mmlspark)库生成 ML 应用程序</li></ul> |
+| 指向示例的链接      |    Jupyter 示例：<ul><li>~/notebooks/SparkML/pySpark</li><li>~/notebooks/MMLSpark</li></ul><p>Microsoft Machine Learning Server（Spark 上下文）：/dsvm/samples/MRS/MRSSparkContextSample.R</p> |
+| DSVM 上的相关工具       | <ul><li>PySpark、Scala</li><li>Jupyter（Spark/PySpark 内核）</li><li>Microsoft Machine Learning Server、SparkR、Sparklyr</li><li>Apache Drill</li></ul> |
 
 ### <a name="how-to-use-it"></a>如何使用
 可以通过运行 `spark-submit` 或 `pyspark` 命令在命令行上提交 Spark 作业。 还可通过使用 Spark 内核新建笔记本来创建 Jupyter 笔记本。
