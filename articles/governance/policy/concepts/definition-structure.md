@@ -3,12 +3,12 @@ title: 策略定义结构的详细信息
 description: 介绍如何使用策略定义为组织中的 Azure 资源建立约定。
 ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 28f4e3a99b7241711e46ce92fdfd2d7689b4527b
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 87cdca414a04d287f02fec5b3510c4f561cab8c0
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971107"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117002"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -25,7 +25,7 @@ Azure Policy 可为资源建立多种约定。 策略定义描述资源符合性
 - description
 - mode
 - metadata
-- 参数
+- parameters
 - 策略规则
   - 逻辑评估
   - 效果
@@ -186,7 +186,7 @@ Azure 策略内置和模式位于[Azure 策略示例](../samples/index.md)中。
 
 ### <a name="strongtype"></a>strongType
 
-在 `metadata` 属性中，可以使用 **strongType** 提供 Azure 门户中的选项多选列表。 strongType 可以是受支持的资源类型，也可以是允许值。 若要确定资源类型是否对 strongType有效，请使用 [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)。
+在 `metadata` 属性中，可以使用 **strongType** 提供 Azure 门户中的选项多选列表。 strongType 可以是受支持的资源类型，也可以是允许值。 若要确定资源类型是否对 strongType有效，请使用 [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)。 _资源类型_ **strongType**的格式为 `<Resource Provider>/<Resource Type>` 。 例如，`Microsoft.Network/virtualNetworks/subnets`。
 
 支持部分不是由 **Get-AzResourceProvider** 返回的资源类型。 这些资源类型包括：
 
@@ -254,7 +254,7 @@ strongType 的非资源类型允许值包括：
 },
 ```
 
-### <a name="conditions"></a>Conditions
+### <a name="conditions"></a>条件
 
 条件用于评估 **field** 或 **value** 访问器是否符合特定标准。 支持的条件有：
 
@@ -513,37 +513,7 @@ Count 表达式的结构如下：
 }
 ```
 
-示例 5：检查是否所有字符串数组成员都符合条件表达式
-
-```json
-{
-    "count": {
-        "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
-        "where": {
-            "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
-            "like": "*@contoso.com"
-        }
-    },
-    "equals": "[length(field('Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]'))]"
-}
-```
-
-示例 6：在 value 中使用 field，检查所有数组成员是否都符合条件表达式
-
-```json
-{
-    "count": {
-        "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
-        "where": {
-            "value": "[last(split(first(field('Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]')), '@'))]",
-            "equals": "contoso.com"
-        }
-    },
-    "equals": "[length(field('Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]'))]"
-}
-```
-
-示例 7：检查是否至少有一个数组成员符合条件表达式中的多个属性
+示例5：检查是否至少有一个数组成员与条件表达式中的多个属性相匹配
 
 ```json
 {

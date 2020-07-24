@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 07/03/2020
-ms.openlocfilehash: 902c48f2edcca6eb25958a9f22d6760faf1fcbc2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5b25c56591e64d66901dbcf79dc629f0beb2bbb0
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248707"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117005"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>保护 Azure 逻辑应用中的访问和数据
 
-Azure 逻辑应用依赖[Azure 存储](https://docs.microsoft.com/azure/storage/)来存储和自动[加密静态数据](../security/fundamentals/encryption-atrest.md)。 此加密可保护你的数据，并可帮助你满足组织的安全性和符合性承诺。 默认情况下，Azure 存储使用 Microsoft 托管的密钥来加密数据。 有关详细信息，请参阅[静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md)。
+Azure 逻辑应用依赖[Azure 存储](../storage/index.yml)来存储和自动[加密静态数据](../security/fundamentals/encryption-atrest.md)。 此加密可保护你的数据，并可帮助你满足组织的安全性和符合性承诺。 默认情况下，Azure 存储使用 Microsoft 托管的密钥来加密数据。 有关详细信息，请参阅[静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md)。
 
 若要在 Azure 逻辑应用中进一步控制访问和保护敏感数据，你可以在以下方面设置其他安全性：
 
@@ -38,7 +38,7 @@ Azure 逻辑应用依赖[Azure 存储](https://docs.microsoft.com/azure/storage/
 
 ## <a name="access-to-request-based-triggers"></a>对基于请求的触发器的访问
 
-如果逻辑应用使用基于请求的接收传入调用或请求的触发器（如[请求](../connectors/connectors-native-reqres.md)或 [Webhook](../connectors/connectors-native-webhook.md) 触发器）时，你可以限制访问权限，以便只有经过授权的客户端才能调用逻辑应用。 逻辑应用收到的所有请求都使用传输层安全性 (TLS) 协议进行加密和保护，之前称为安全套接字层 (SSL) 。
+如果逻辑应用使用基于请求的接收传入调用或请求的触发器（如[请求](../connectors/connectors-native-reqres.md)或 [Webhook](../connectors/connectors-native-webhook.md) 触发器）时，你可以限制访问权限，以便只有经过授权的客户端才能调用逻辑应用。 逻辑应用收到的所有请求都使用传输层安全性（TLS）协议进行加密和保护，以前称为安全套接字层（SSL）。
 
 以下选项可帮助你保护对此触发器类型的访问：
 
@@ -51,7 +51,7 @@ Azure 逻辑应用依赖[Azure 存储](https://docs.microsoft.com/azure/storage/
 
 ### <a name="generate-shared-access-signatures-sas"></a>生成共享访问签名 (SAS)
 
-逻辑应用的每个请求终结点在终结点的 URL 中都包含一个[共享访问签名 (SAS)](https://docs.microsoft.com/rest/api/storageservices/constructing-a-service-sas)，该 URL 的格式如下：
+逻辑应用的每个请求终结点在终结点的 URL 中都包含一个[共享访问签名 (SAS)](/rest/api/storageservices/constructing-a-service-sas)，该 URL 的格式如下：
 
 `https://<request-endpoint-URI>sp=<permissions>sv=<SAS-version>sig=<signature>`
 
@@ -86,7 +86,7 @@ Azure 逻辑应用依赖[Azure 存储](https://docs.microsoft.com/azure/storage/
 
 #### <a name="create-expiring-callback-urls"></a>创建具有到期日期的回调 URL
 
-如果与其他各方共享基于请求的触发器的终结点 URL，可以生成使用特定密钥并具有过期日期的回调 URL。 这样，便可以无缝地滚动密钥，或基于特定的时间范围限制对触发逻辑应用的访问。 若要为 URL 指定过期日期，请使用[逻辑应用 REST API](https://docs.microsoft.com/rest/api/logic/workflowtriggers)，例如：
+如果与其他各方共享基于请求的触发器的终结点 URL，可以生成使用特定密钥并具有过期日期的回调 URL。 这样，便可以无缝地滚动密钥，或基于特定的时间范围限制对触发逻辑应用的访问。 若要为 URL 指定过期日期，请使用[逻辑应用 REST API](/rest/api/logic/workflowtriggers)，例如：
 
 ```http
 POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
@@ -98,7 +98,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 #### <a name="create-urls-with-primary-or-secondary-secret-key"></a>创建附带主密钥或辅助密钥的 URL
 
-生成或列出基于请求的触发器的回调 URL 时，可以指定用于对 URL 进行签名的密钥。 若要生成由特定密钥签名的 URL，请使用[逻辑应用 REST API](https://docs.microsoft.com/rest/api/logic/workflowtriggers)，例如：
+生成或列出基于请求的触发器的回调 URL 时，可以指定用于对 URL 进行签名的密钥。 若要生成由特定密钥签名的 URL，请使用[逻辑应用 REST API](/rest/api/logic/workflowtriggers)，例如：
 
 ```http
 POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
@@ -110,13 +110,13 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 ### <a name="enable-azure-active-directory-oauth"></a>启用 Azure Active Directory OAuth
 
-如果逻辑应用以[请求触发器](../connectors/connectors-native-reqres.md)开始，则可以通过创建对请求触发器的入站调用的授权策略，启用[Azure Active Directory 开放身份验证](/azure/active-directory/develop/) (Azure AD OAuth) 。 在启用此身份验证之前，请查看以下注意事项：
+如果逻辑应用以[请求触发器](../connectors/connectors-native-reqres.md)开始，则可以通过创建对请求触发器的入站调用的授权策略来启用[Azure Active Directory 开放身份验证](../active-directory/develop/index.yml)（Azure AD OAuth）。 在启用此身份验证之前，请查看以下注意事项：
 
 * 对逻辑应用的入站调用只能使用一个授权方案，Azure AD OAuth 或[共享访问签名 (SAS)](#sas)。 只有请求触发器支持的[持有者类型](../active-directory/develop/active-directory-v2-protocols.md#tokens)授权方案仅受支持。
 
 * 逻辑应用限制为最大授权策略数。 每个授权策略还具有最大[声明](../active-directory/develop/developer-glossary.md#claim)数。 有关详细信息，请参阅 [Azure 逻辑应用的限制和配置](../logic-apps/logic-apps-limits-and-config.md#authentication-limits)。
 
-* 授权策略必须至少包含**颁发者**声明，该声明的值以 `https://sts.windows.net/` 或 `https://login.microsoftonline.com/` (OAuth V2) 作为 Azure AD 颁发者 ID。 有关访问令牌的详细信息，请参阅[Microsoft 标识平台访问令牌](../active-directory/develop/access-tokens.md)。
+* 授权策略必须至少包含**颁发者**声明，该声明具有以或开头的值 `https://sts.windows.net/` `https://login.microsoftonline.com/` （OAuth V2）作为 Azure AD 颁发者 ID。 有关访问令牌的详细信息，请参阅[Microsoft 标识平台访问令牌](../active-directory/develop/access-tokens.md)。
 
 若要启用 Azure AD OAuth，请按照以下步骤将一个或多个授权策略添加到逻辑应用。
 
@@ -130,9 +130,9 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
    ![提供授权策略的信息](./media/logic-apps-securing-a-logic-app/set-up-authorization-policy.png)
 
-   | 属性 | 必须 | 说明 |
+   | properties | 必须 | 描述 |
    |----------|----------|-------------|
-   | 策略名称**** | 适合 | 要用于授权策略的名称 |
+   | 策略名称**** | 是 | 要用于授权策略的名称 |
    | **申请** | 是 | 逻辑应用从入站调用接受的声明类型和值。 下面是可用的声明类型： <p><p>- 颁发者**** <br>- 受众**** <br>- **主题** <br>- JWT ID（JSON Web 令牌 ID）**** <p><p>**声明**列表必须至少包含**颁发者**声明，该声明的值以或开头， `https://sts.windows.net/` `https://login.microsoftonline.com/` 作为 Azure AD 颁发者 ID。 有关这些声明类型的详细信息，请参阅 [Azure AD 安全令牌中的声明](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)。 你还可以指定自己的声明类型和值。 |
    |||
 
@@ -212,7 +212,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 如果想让逻辑应用仅作为嵌套逻辑应用触发，请从“允许的入站 IP 地址”列表中选择“仅限其他逻辑应用”**** ****。 此选项会将空数组写入逻辑应用资源。 这样，只有来自逻辑应用服务（父逻辑应用）的调用才能触发嵌套逻辑应用。
 
 > [!NOTE]
-> 无论 IP 地址如何，你仍可以使用[逻辑应用 REST API：工作流触发器-运行](https://docs.microsoft.com/rest/api/logic/workflowtriggers/run)请求或使用 API 管理，来运行具有基于请求的触发器的逻辑应用。 不过，这种情况下仍需要针对 Azure REST API 进行[身份验证](../active-directory/develop/authentication-scenarios.md)。 所有事件都会显示在 Azure 审核日志中。 请确保相应地设置访问控制策略。
+> 无论 IP 地址如何，你仍可以使用[逻辑应用 REST API：工作流触发器-运行](/rest/api/logic/workflowtriggers/run)请求或使用 API 管理，来运行具有基于请求的触发器的逻辑应用。 不过，这种情况下仍需要针对 Azure REST API 进行[身份验证](../active-directory/develop/authentication-vs-authorization.md)。 所有事件都会显示在 Azure 审核日志中。 请确保相应地设置访问控制策略。
 
 #### <a name="restrict-inbound-ip-ranges-in-azure-resource-manager-template"></a>在 Azure 资源管理器模板中限制入站 IP 范围
 
@@ -263,13 +263,13 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 ### <a name="add-azure-active-directory-open-authentication-or-other-security"></a>添加 Azure Active Directory 开放式身份验证或其他安全性
 
-若要向逻辑应用添加更多[身份验证](../active-directory/develop/authentication-scenarios.md)协议，请考虑使用 [Azure API 管理](../api-management/api-management-key-concepts.md)服务。 此服务可帮助你将逻辑应用公开为 API，并为所有终结点提供丰富的监视信息、安全性、策略和文档。 API 管理可以公开逻辑应用的公共或专用终结点。 若要授予对此终结点的访问权限，可以使用 [Azure Active Directory 开放式身份验证](#azure-active-directory-oauth-authentication) (Azure AD OAuth)、[客户端证书](#client-certificate-authentication)或其他安全标准来授权对该终结点的访问权限。 当 API 管理收到请求时，此服务会将请求发送到逻辑应用，同时也会进行任何必要的转换或限制。 要仅让 API 管理触发逻辑应用，可以使用逻辑应用的入站 IP 范围设置。
+若要向逻辑应用添加更多[身份验证](../active-directory/develop/authentication-vs-authorization.md)协议，请考虑使用 [Azure API 管理](../api-management/api-management-key-concepts.md)服务。 此服务可帮助你将逻辑应用公开为 API，并为所有终结点提供丰富的监视信息、安全性、策略和文档。 API 管理可以公开逻辑应用的公共或专用终结点。 若要授予对此终结点的访问权限，可以使用 [Azure Active Directory 开放式身份验证](#azure-active-directory-oauth-authentication) (Azure AD OAuth)、[客户端证书](#client-certificate-authentication)或其他安全标准来授权对该终结点的访问权限。 当 API 管理收到请求时，此服务会将请求发送到逻辑应用，同时也会进行任何必要的转换或限制。 要仅让 API 管理触发逻辑应用，可以使用逻辑应用的入站 IP 范围设置。
 
 <a name="secure-operations"></a>
 
 ## <a name="access-to-logic-app-operations"></a>对逻辑应用操作的访问
 
-可以仅允许特定的用户或组运行特定的任务，例如管理、编辑和查看逻辑应用。 若要控制其权限，请使用 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md)，以便能够为 Azure 订阅中的成员分配自定义角色或内置角色：
+可以仅允许特定的用户或组运行特定的任务，例如管理、编辑和查看逻辑应用。 要控制其权限，请使用[azure 基于角色的访问控制（AZURE RBAC）](../role-based-access-control/role-assignments-portal.md) ，以便可以将自定义或内置角色分配给 azure 订阅中的成员：
 
 * [逻辑应用参与者](../role-based-access-control/built-in-roles.md#logic-app-contributor)：允许管理逻辑应用，但不允许更改其访问权限。
 
@@ -427,7 +427,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 * 遮盖触发器或操作的输入或输出时，逻辑应用不会将安全数据发送到 Azure Log Analytics。 此外，不能将[跟踪的属性](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)添加到该触发器或操作进行监视。
 
-* [用于处理工作流历史记录的逻辑应用 API](https://docs.microsoft.com/rest/api/logic/) 不会返回受保护的输出。
+* [用于处理工作流历史记录的逻辑应用 API](/rest/api/logic/) 不会返回受保护的输出。
 
 * 若要保护可遮盖输入或显式遮盖输出的操作的输出，请在该操作中手动打开“安全输出”****。
 
@@ -613,7 +613,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
          "apiVersion": "2016-06-01",
          "properties": {
             "definition": {
-               "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-0601/workflowdefinition.json#",
+               "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
                "actions": {
                   "HTTP": {
                      "type": "Http",
@@ -750,9 +750,9 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 在用于将出站调用或�
 
 | 属性（设计器） | 属性 (JSON) | 必须 | 值 | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
-| **身份验证** | `type` | 适合 | 基本 | 要使用的身份验证类型 |
+| **身份验证** | `type` | 是 | 基本 | 要使用的身份验证类型 |
 | **用户名** | `username` | 是 | <*user-name*>| 用于对目标服务终结点访问进行身份验证的用户名 |
-| **密码** | `password` | 适合 | <*password*> | 用于对目标服务终结点访问进行身份验证的密码 |
+| **密码** | `password` | 是 | <*password*> | 用于对目标服务终结点访问进行身份验证的密码 |
 ||||||
 
 使用[安全参数](#secure-action-parameters)处理和保护敏感信息时，例如，在[用于自动执行部署的 Azure 资源管理器模板](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)中，可以使用表达式在运行时访问这些参数值。 此示例 HTTP 操作定义将身份验证 `type` 指定为 `Basic` 并使用 [parameters() function](../logic-apps/workflow-definition-language-functions-reference.md#parameters) 获取参数值：
@@ -781,8 +781,8 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 在用于将出站调用或�
 
 | 属性（设计器） | 属性 (JSON) | 必须 | 值 | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
-| **身份验证** | `type` | 适合 | **客户端证书** <br>或 <br>`ClientCertificate` | 可使用的身份验证类型。 可以通过[AZURE API 管理](../api-management/api-management-howto-mutual-certificates.md)来管理证书。 <p></p>**注意**：对于入站和出站调用，自定义连接器不支持基于证书的身份验证。 |
-| **Pfx** | `pfx` | 适合 | <*encoded-pfx-file-content*> | 个人信息交换 (PFX) 文件中的 base64 编码内容 <p><p>若要将 PFX 文件转换为 base64 编码格式，可以使用 PowerShell 并执行以下步骤： <p>1.将证书内容保存到某个变量中： <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2.使用 `ToBase64String()` 函数转换证书内容，并将该内容保存到某个文本文件中： <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
+| **身份验证** | `type` | 是 | **客户端证书** <br>或 <br>`ClientCertificate` | 可使用的身份验证类型。 可以通过[AZURE API 管理](../api-management/api-management-howto-mutual-certificates.md)来管理证书。 <p></p>**注意**：对于入站和出站调用，自定义连接器不支持基于证书的身份验证。 |
+| **Pfx** | `pfx` | 是 | <*encoded-pfx-file-content*> | 个人信息交换 (PFX) 文件中的 base64 编码内容 <p><p>若要将 PFX 文件转换为 base64 编码格式，可以使用 PowerShell 并执行以下步骤： <p>1.将证书内容保存到某个变量中： <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2.使用 `ToBase64String()` 函数转换证书内容，并将该内容保存到某个文本文件中： <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **密码** | `password`| 否 | <password-for-pfx-file>** | 用于访问 PFX 文件的密码 |
 |||||
 
@@ -816,16 +816,16 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 在用于将出站调用或�
 
 ### <a name="azure-active-directory-open-authentication"></a>Azure Active Directory 开放式身份验证
 
-在请求触发器上，可以使用 [Azure Active Directory 开放式身份验证](/azure/active-directory/develop/) (Azure AD OAuth)，在为逻辑应用[设置 Azure AD 授权策略](#enable-oauth)后对传入调用进行身份验证。 对于提供 Active Directory OAuth 身份验证类型供你选择的所有其他触发器和操作，请指定以下属性值****：
+在请求触发器上，可以使用 [Azure Active Directory 开放式身份验证](../active-directory/develop/index.yml) (Azure AD OAuth)，在为逻辑应用[设置 Azure AD 授权策略](#enable-oauth)后对传入调用进行身份验证。 对于提供 Active Directory OAuth 身份验证类型供你选择的所有其他触发器和操作，请指定以下属性值****：
 
 | 属性（设计器） | 属性 (JSON) | 必须 | 值 | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
-| **身份验证** | `type` | 适合 | **Active Directory OAuth** <br>或 <br>`ActiveDirectoryOAuth` | 可使用的身份验证类型。 逻辑应用当前遵循 [OAuth 2.0 协议](../active-directory/develop/v2-overview.md)。 |
+| **身份验证** | `type` | 是 | **Active Directory OAuth** <br>或 <br>`ActiveDirectoryOAuth` | 可使用的身份验证类型。 逻辑应用当前遵循 [OAuth 2.0 协议](../active-directory/develop/v2-overview.md)。 |
 | 颁发机构**** | `authority` | 否 | <*URL-for-authority-token-issuer*> | 提供身份验证令牌的颁发机构的 URL。 此值默认为 `https://login.windows.net`。 |
-| 租户**** | `tenant` | 适合 | <*tenant-ID*> | Azure AD 租户的租户 ID |
-| **受众** | `audience` | 适合 | <*resource-to-authorize*> | 要用于授权的资源，例如 `https://management.core.windows.net/` |
+| 租户**** | `tenant` | 是 | <*tenant-ID*> | Azure AD 租户的租户 ID |
+| **受众** | `audience` | 是 | <*resource-to-authorize*> | 要用于授权的资源，例如 `https://management.core.windows.net/` |
 | **客户端 ID** | `clientId` | 是 | <*client-ID*> | 请求授权的应用的客户端 ID |
-| 凭据类型**** | `credentialType` | 适合 | 证书 <br>或 <br>机密 | 客户端用来请求授权的凭据类型。 此属性和值不会显示在逻辑应用的基础定义中，但确定了为选定凭据类型显示的属性。 |
+| 凭据类型**** | `credentialType` | 是 | 证书 <br>or <br>机密 | 客户端用来请求授权的凭据类型。 此属性和值不会显示在逻辑应用的基础定义中，但确定了为选定凭据类型显示的属性。 |
 | **机密** | `secret` | 是，但仅适用于“机密”凭据类型 | <*client-secret*> | 用于请求授权的客户端密码 |
 | **Pfx** | `pfx` | 是，但仅适用于“证书”凭据类型 | <*encoded-pfx-file-content*> | 个人信息交换 (PFX) 文件中的 base64 编码内容 |
 | **密码** | `password` | 是，但仅适用于“证书”凭据类型 | <*password-for-pfx-file*> | 用于访问 PFX 文件的密码 |
@@ -874,8 +874,8 @@ Authorization: OAuth realm="Photos",
 
 | 属性（设计器） | 属性 (JSON) | 必须 | 值 | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
-| **身份验证** | `type` | 适合 | 原始 | 要使用的身份验证类型 |
-| **值** | `value` | 适合 | <*authorization-header-value*> | 要用于身份验证的授权标头值 |
+| **身份验证** | `type` | 是 | 原始 | 要使用的身份验证类型 |
+| **值** | `value` | 是 | <*authorization-header-value*> | 要用于身份验证的授权标头值 |
 ||||||
 
 使用[安全参数](#secure-action-parameters)处理和保护敏感信息时，例如，在[用于自动执行部署的 Azure 资源管理器模板](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)中，可以使用表达式在运行时访问这些参数值。 此示例 HTTP 操作定义将身份验证 `type` 指定为 `Raw` 并使用 [parameters() function](../logic-apps/workflow-definition-language-functions-reference.md#parameters) 获取参数值：
@@ -899,7 +899,7 @@ Authorization: OAuth realm="Photos",
 
 ### <a name="managed-identity-authentication"></a>托管标识身份验证
 
-如果 "[托管标识](../active-directory/managed-identities-azure-resources/overview.md)" 选项可用，则逻辑应用可以使用系统分配的标识，也可以使用*单个*手动创建的用户分配的标识来验证对受 Azure Active Directory (的其他资源的访问权限，而无需登录即可 Azure AD) 。 由于无需提供或轮换机密，因此 Azure 会为你管理此标识，并且会帮助保护凭据。 详细了解[支持 Azure AD 身份验证的托管标识的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
+如果 "[托管标识](../active-directory/managed-identities-azure-resources/overview.md)" 选项可用，则逻辑应用可以使用系统分配的标识，也可以使用*单个*手动创建的用户分配的标识来验证对受 Azure Active Directory （Azure AD）保护的其他资源的访问权限，而无需登录。 由于无需提供或轮换机密，因此 Azure 会为你管理此标识，并且会帮助保护凭据。 详细了解[支持 Azure AD 身份验证的托管标识的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 
 1. 在逻辑应用可以使用托管标识之前，请按照[使用 Azure 逻辑应用中的托管标识对 Azure 资源的访问进行身份验证](../logic-apps/create-managed-service-identity.md)中的步骤进行操作。 这些步骤将在逻辑应用上启用托管标识，并设置该标识对目标 Azure 资源的访问权限。
 
@@ -909,9 +909,9 @@ Authorization: OAuth realm="Photos",
 
    | 属性（设计器） | 属性 (JSON) | 必须 | 值 | 说明 |
    |---------------------|-----------------|----------|-------|-------------|
-   | **身份验证** | `type` | 适合 | **托管标识** <br>或 <br>`ManagedServiceIdentity` | 要使用的身份验证类型 |
+   | **身份验证** | `type` | 是 | **托管标识** <br>or <br>`ManagedServiceIdentity` | 要使用的身份验证类型 |
    | **托管标识** | `identity` | 是 | * 系统分配的托管标识**** <br>或 <br>`SystemAssigned` <p><p>* <user-assigned-identity-name>** | 要使用的托管标识 |
-   | **受众** | `audience` | 适合 | <*target-resource-ID*> | 要访问的目标资源的资源 ID。 <p>例如，`https://storage.azure.com/` 使用于身份验证的[访问令牌](../active-directory/develop/access-tokens.md)对所有存储帐户都有效。 但是，还可以为特定存储帐户指定根服务 URL，如 `https://fabrikamstorageaccount.blob.core.windows.net`。 <p>**注意**：“受众”属性可能已在某些触发器或操作中隐藏****。 若要显示此属性，请在触发器或操作中打开“添加新参数”列表，然后选择“受众”**** ****。 <p><p>**重要说明**：请确保此目标资源 ID 完全匹配 Azure AD 所需的值，包括任何必需的尾部反斜杠**。 因此，所有 Azure Blob 存储帐户的 `https://storage.azure.com/` 资源 ID 都需要尾部反斜杠。 但是，特定存储帐户的资源 ID 不需要尾部斜杠。 若要查找这些资源 ID，请参阅[支持 Azure AD 的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。 |
+   | **受众** | `audience` | 是 | <*target-resource-ID*> | 要访问的目标资源的资源 ID。 <p>例如，`https://storage.azure.com/` 使用于身份验证的[访问令牌](../active-directory/develop/access-tokens.md)对所有存储帐户都有效。 但是，还可以为特定存储帐户指定根服务 URL，如 `https://fabrikamstorageaccount.blob.core.windows.net`。 <p>**注意**：“受众”属性可能已在某些触发器或操作中隐藏****。 若要显示此属性，请在触发器或操作中打开“添加新参数”列表，然后选择“受众”**** ****。 <p><p>**重要说明**：请确保此目标资源 ID 完全匹配 Azure AD 所需的值，包括任何必需的尾部反斜杠**。 因此，所有 Azure Blob 存储帐户的 `https://storage.azure.com/` 资源 ID 都需要尾部反斜杠。 但是，特定存储帐户的资源 ID 不需要尾部斜杠。 若要查找这些资源 ID，请参阅[支持 Azure AD 的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。 |
    |||||
 
    使用[安全参数](#secure-action-parameters)处理和保护敏感信息时，例如，在[用于自动执行部署的 Azure 资源管理器模板](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)中，可以使用表达式在运行时访问这些参数值。 此示例 HTTP 操作定义将身份验证 `type` 指定为 `ManagedServiceIdentity` 并使用 [parameters() function](../logic-apps/workflow-definition-language-functions-reference.md#parameters) 获取参数值：
@@ -942,30 +942,30 @@ Authorization: OAuth realm="Photos",
 
 ## <a name="isolation-guidance-for-logic-apps"></a>逻辑应用的隔离指南
 
-可以使用 azure[政府](../azure-government/documentation-government-welcome.md)版中的 Azure 逻辑应用，支持[Azure 政府影响级别5隔离指南](../azure-government/documentation-government-impact-level-5.md#azure-logic-apps)和[美国国防部云计算安全要求指南 (SRG) ](https://dl.dod.cyber.mil/wp-content/uploads/cloud/SRG/index.html)中描述的区域中的所有影响级别。 为了满足这些要求，逻辑应用支持在具有专用资源的环境中创建和运行工作流的功能，因此可以降低逻辑应用上其他 Azure 租户对性能的影响，并避免与其他租户共享计算资源。
+可以使用 azure[政府](../azure-government/documentation-government-welcome.md)版中的 Azure 逻辑应用，支持[Azure 政府影响级别5隔离指南](../azure-government/documentation-government-impact-level-5.md#azure-logic-apps)和[美国国防部云计算安全要求指南（SRG）](https://dl.dod.cyber.mil/wp-content/uploads/cloud/SRG/index.html)中描述的区域中的所有影响级别。 为了满足这些要求，逻辑应用支持在具有专用资源的环境中创建和运行工作流的功能，因此可以降低逻辑应用上其他 Azure 租户对性能的影响，并避免与其他租户共享计算资源。
 
 * 若要运行自己的代码或执行 XML 转换，请[创建并调用 Azure 函数](../logic-apps/logic-apps-azure-functions.md)，而不是使用[内联代码功能](../logic-apps/logic-apps-add-run-inline-code.md)，或提供要分别用作[映射的程序集](../logic-apps/logic-apps-enterprise-integration-maps.md)。 此外，为 function app 设置托管环境，以符合隔离要求。
 
-  例如，若要满足影响级别5的要求，请使用[**独立**定价层](../app-service/overview-hosting-plans.md)以及同时使用**独立**定价层的[应用服务环境 (ASE) ](../app-service/environment/intro.md) ，在[应用服务计划](../azure-functions/functions-scale.md#app-service-plan)中创建 function app。 在此环境中，函数应用在专用的 Azure 虚拟机和专用的 Azure 虚拟网络上运行，这些虚拟网络在计算隔离之上为你的应用提供网络隔离，并提供最大的横向扩展功能。 有关详细信息，请参阅[Azure 政府影响级别5隔离指南-Azure Functions](../azure-government/documentation-government-impact-level-5.md#azure-functions)。
+  例如，若要满足影响级别5的要求，请使用[**独立**定价层](../app-service/overview-hosting-plans.md)和也使用**独立**定价层的[应用服务环境（ASE）](../app-service/environment/intro.md)在[应用服务计划](../azure-functions/functions-scale.md#app-service-plan)中创建 function app。 在此环境中，函数应用在专用的 Azure 虚拟机和专用的 Azure 虚拟网络上运行，这些虚拟网络在计算隔离之上为你的应用提供网络隔离，并提供最大的横向扩展功能。 有关详细信息，请参阅[Azure 政府影响级别5隔离指南-Azure Functions](../azure-government/documentation-government-impact-level-5.md#azure-functions)。
 
   有关详细信息，请参阅以下主题：<p>
 
   * [Azure App Service 计划](../app-service/overview-hosting-plans.md)
   * [Azure Functions 网络选项](../azure-functions/functions-networking-options.md)
   * [适用于虚拟机的 Azure 专用主机](../virtual-machines/windows/dedicated-hosts.md)
-  * [Azure 中的虚拟机隔离](../virtual-machines/windows/isolation.md)
+  * [Azure 中的虚拟机隔离](../virtual-machines/isolation.md)
   * [将专用 Azure 服务部署到虚拟网络](../virtual-network/virtual-network-for-azure-services.md)
 
-* 若要创建在专用资源上运行的逻辑应用，并可访问受 Azure 虚拟网络保护的资源，可以[ (ISE) 创建 integration service 环境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)。
+* 若要创建在专用资源上运行并可访问受 Azure 虚拟网络保护的资源的逻辑应用，可以创建[集成服务环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)。
 
-  * 某些 Azure 虚拟网络使用专用终结点 ([Azure 专用链接](../private-link/private-link-overview.md)) 以便提供对 azure PaaS 服务（例如 azure 存储、Azure Cosmos DB 或 Azure SQL 数据库、合作伙伴服务或托管在 azure 上的客户服务）的访问权限。 如果逻辑应用需要访问使用专用终结点的虚拟网络，则必须在 ISE 中创建、部署和运行这些逻辑应用。
+  * 某些 Azure 虚拟网络使用专用终结点（[Azure 专用链接](../private-link/private-link-overview.md)）来提供对 azure PaaS 服务（例如 azure 存储、Azure Cosmos DB 或 Azure SQL 数据库、合作伙伴服务或托管在 azure 上的客户服务）的访问权限。 如果逻辑应用需要访问使用专用终结点的虚拟网络，则必须在 ISE 中创建、部署和运行这些逻辑应用。
 
-  * 为了更好地控制 Azure 存储使用的加密密钥，可以使用[Azure Key Vault](../key-vault/general/overview.md)设置、使用和管理你自己的密钥。 此功能也称为 "创建自己的密钥" (BYOK) ，密钥称为 "客户托管密钥"。 有关详细信息，请参阅[设置客户管理的密钥，以便在 Azure 逻辑应用中 (ISEs) 为 integration service 环境加密静态数据](../logic-apps/customer-managed-keys-integration-service-environment.md)。
+  * 为了更好地控制 Azure 存储使用的加密密钥，可以使用[Azure Key Vault](../key-vault/general/overview.md)设置、使用和管理你自己的密钥。 此功能也称为 "创建自己的密钥" （BYOK），你的密钥称为 "客户管理的密钥"。 有关详细信息，请参阅[设置客户管理的密钥，以便在 Azure 逻辑应用中为集成服务环境（ISEs）加密静态数据](../logic-apps/customer-managed-keys-integration-service-environment.md)。
 
 有关详细信息，请参阅以下主题：
 
 * [Azure 公有云中的隔离](../security/fundamentals/isolation-choices.md)
-* [Azure 中高度敏感的 IaaS 应用的安全性](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/high-security-iaas)
+* [Azure 中高度敏感的 IaaS 应用的安全性](/azure/architecture/reference-architectures/n-tier/high-security-iaas)
 
 ## <a name="next-steps"></a>后续步骤
 

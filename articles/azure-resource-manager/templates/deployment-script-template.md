@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/08/2020
+ms.date: 07/16/2020
 ms.author: jgao
-ms.openlocfilehash: 8906ac7a00a349e2312eb80f5e25e32292a089ab
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: fcdcf563cd88cbf6604877636432a406c1960cff
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134562"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117051"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在模板中使用部署脚本（预览版）
 
@@ -138,7 +138,7 @@ ms.locfileid: "86134562"
 - **标识**：部署脚本服务使用用户分配的托管标识来执行脚本。 当前，仅支持用户分配的托管标识。
 - **kind**：指定脚本类型。 当前，支持 Azure PowerShell 和 Azure CLI 脚本。 值为 AzurePowerShell 和 AzureCLI**** ****。
 - **forceUpdateTag**：在模板部署之间更改此值将强制重新执行部署脚本。 使用需要设置为参数的 defaultValue 的 newGuid() 或 utcNow() 函数。 若要了解详细信息，请参阅[多次运行脚本](#run-script-more-than-once)。
-- **containerSettings**：指定该设置，用于自定义 Azure 容器实例。  containerGroupName 用于指定容器组名称****。  如果未指定，将自动生成组名称。
+- **containerSettings**：指定该设置，用于自定义 Azure 容器实例。  containerGroupName 用于指定容器组名称****。  如果未指定，则将自动生成组名称。
 - **storageAccountSettings**：指定设置以使用现有的存储帐户。 如果未指定，将自动创建存储帐户。 请参阅[使用现有的存储帐户](#use-existing-storage-account)。
 - **azPowerShellVersion**/**azCliVersion**：指定要使用的模块版本。 有关支持的 PowerShell 和 CLI 版本的列表，请参阅[先决条件](#prerequisites)。
 - **arguments**：指定参数值。 请以空格分隔这些值。
@@ -600,6 +600,34 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
     ![资源管理器模板部署脚本 docker cmd](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
 
 脚本成功测试后，可以将其作为模板中的部署脚本使用。
+
+## <a name="deployment-script-error-codes"></a>部署脚本错误代码
+
+| 错误代码 | 说明 |
+|------------|-------------|
+| DeploymentScriptInvalidOperation | 模板中的部署脚本资源定义包含无效的属性名称。 |
+| DeploymentScriptResourceConflict | 无法删除处于非终端状态且执行未超过1小时的部署脚本资源。 或者，无法同时用相同的资源标识符（相同的订阅、资源组名称和资源名称）重新运行相同的部署脚本，但不能同时执行不同的脚本正文内容。 |
+| DeploymentScriptOperationFailed | 部署脚本操作在内部失败。 请联系 Microsoft 支持部门。 |
+| DeploymentScriptStorageAccountAccessKeyNotSpecified | 尚未为现有存储帐户指定访问密钥。|
+| DeploymentScriptContainerGroupContainsInvalidContainers | 由部署脚本服务创建的容器组已从外部修改，并添加了无效的容器。 |
+| DeploymentScriptContainerGroupInNonterminalState | 两个或多个部署脚本资源在同一资源组中使用相同的 Azure 容器实例名称，其中一个资源尚未完成其执行。 |
+| DeploymentScriptStorageAccountInvalidKind | BlobBlobStorage 或 BlobStorage 类型的现有存储帐户不支持文件共享，因此不能使用。 |
+| DeploymentScriptStorageAccountInvalidKindAndSku | 现有的存储帐户不支持文件共享。 有关支持的存储帐户类型的列表，请参阅[使用现有存储帐户](#use-existing-storage-account)。 |
+| DeploymentScriptStorageAccountNotFound | 存储帐户不存在或者已被外部进程或工具删除。 |
+| DeploymentScriptStorageAccountWithServiceEndpointEnabled | 指定的存储帐户包含一个服务终结点。 不支持具有服务终结点的存储帐户。 |
+| DeploymentScriptStorageAccountInvalidAccessKey | 为现有存储帐户指定的访问密钥无效。 |
+| DeploymentScriptStorageAccountInvalidAccessKeyFormat | 存储帐户密钥格式无效。 请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。 |
+| DeploymentScriptExceededMaxAllowedTime | 部署脚本执行时间超过了部署脚本资源定义中指定的超时值。 |
+| DeploymentScriptInvalidOutputs | 部署脚本输出不是有效的 JSON 对象。 |
+| DeploymentScriptContainerInstancesServiceLoginFailure | 用户分配的托管标识在10次尝试后无法登录，间隔为1分钟。 |
+| DeploymentScriptContainerGroupNotFound | 由部署脚本服务创建的容器组已由外部工具或进程删除。 |
+| DeploymentScriptDownloadFailure | 下载支持脚本失败。 请参阅[使用支持脚本](#use-supporting-scripts)。|
+| DeploymentScriptError | 用户脚本出现错误。 |
+| DeploymentScriptBootstrapScriptExecutionFailed | 启动脚本出现错误。 启动脚本是协调部署脚本执行的系统脚本。 |
+| DeploymentScriptExecutionFailed | 执行部署脚本时出现未知错误。 |
+| DeploymentScriptContainerInstancesServiceUnavailable | 创建 Azure 容器实例（ACI）时，ACI 引发了服务不可用错误。 |
+| DeploymentScriptContainerGroupInNonterminalState | 当创建 Azure 容器实例（ACI）时，另一个部署脚本正在同一作用域（同一订阅、资源组名称和资源名称）中使用相同的 ACI 名称。 |
+| DeploymentScriptContainerGroupNameInvalid | 指定的 Azure 容器实例名称（ACI）不符合 ACI 要求。 请参阅[排查 Azure 容器实例中的常见问题](../../container-instances/container-instances-troubleshooting.md#issues-during-container-group-deployment)。|
 
 ## <a name="next-steps"></a>后续步骤
 

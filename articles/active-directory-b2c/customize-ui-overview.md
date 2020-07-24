@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 04/04/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ebf83807629cc56aa381c97a9ce36d90c94d61f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6bcf268ba45ee8fefa027263a25ff411344b4669
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388895"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116437"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>自定义 Azure Active Directory B2C 中的用户界面
 
@@ -169,7 +170,7 @@ Azure AD B2C 使用称作[跨源资源共享 (CORS)](https://www.w3.org/TR/cors/
 
 首先在**公司品牌**内设置横幅徽标、背景图像和背景色。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 在 "**管理**" 下，选择 "**公司品牌**"。
@@ -186,11 +187,11 @@ Azure AD B2C 使用称作[跨源资源共享 (CORS)](https://www.w3.org/TR/cors/
 配置公司品牌后，请在用户流中启用它。
 
 1. 在 Azure 门户的左侧菜单中，选择 " **Azure AD B2C**"。
-1. 在“策略”下，选择“用户流(策略)” 。
+1. 在“策略”下，选择“用户流(策略)”。 
 1. 选择要为其启用公司品牌的用户流。 对于*登录版本 v1*和*配置文件编辑 v1*用户流类型，**不支持**公司品牌。
 1. 在 "**自定义**" 下，选择 "**页面布局**"，然后选择想要品牌的布局。 例如，选择 "**统一注册" 或 "登录" 页**。
 1. 对于 "**页面布局版本（预览）**"，选择 "版本**1.2.0** " 或更高版本。
-1. 选择“保存”。
+1. 选择“保存” 。
 
 如果要在用户流中标记所有页面，请在用户流中为每个页面布局设置页面布局版本。
 
