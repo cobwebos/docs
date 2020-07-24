@@ -3,11 +3,12 @@ title: Azure Application Insights IP 地址收集 | Microsoft Docs
 description: 了解如何使用 Azure Application Insights 处理 IP 地址和地理位置
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: c7a4506c6a4246edc007a5ea2158998b472ec316
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1576207eb267166a33b84009407ec119de471e6e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807122"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014433"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>地理位置和 IP 地址处理
 
@@ -26,7 +27,7 @@ IP 地址作为遥测数据的一部分发送到 Application Insights。 IP 地�
 
 ## <a name="overriding-default-behavior"></a>重写默认行为
 
-尽管默认行为是尽量避免收集个人数据，但我们仍然可以让用户灵活收集和存储 IP 地址数据。 在存储任何个人数据（例如 IP 地址）之前，我们强烈建议确认此行为不会违反任何需要遵守的合规要求或当地法规。 若要详细了解 Application Insights 中的个人数据处理，请参阅[个人数据指南](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt)。
+尽管默认行为是尽量避免收集个人数据，但我们仍然可以让用户灵活收集和存储 IP 地址数据。 在存储任何个人数据（例如 IP 地址）之前，我们强烈建议确认此行为不会违反任何需要遵守的合规要求或当地法规。 若要详细了解 Application Insights 中的个人数据处理，请参阅[个人数据指南](../platform/personal-data-mgmt.md)。
 
 ## <a name="storing-ip-address-data"></a>存储 IP 地址数据
 
@@ -98,7 +99,7 @@ IP 地址作为遥测数据的一部分发送到 Application Insights。 IP 地�
 
 ### <a name="rest-api"></a>REST API
 
-用于做出相同修改的 [REST API](https://docs.microsoft.com/rest/api/azure/) 有效负载如下：
+用于做出相同修改的 [REST API](/rest/api/azure/) 有效负载如下：
 
 ```
 PATCH https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/microsoft.insights/components/<resource-name>?api-version=2018-05-01-preview HTTP/1.1
@@ -119,7 +120,7 @@ Content-Length: 54
 
 ## <a name="telemetry-initializer"></a>遥测初始化程序
 
-如果需要通过比 `DisableIpMasking` 更灵活的方式来记录所有或一部分 IP 地址，可以使用[遥测初始化表达式](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer)将所有或一部分 IP 复制到自定义字段。 
+如果需要通过比 `DisableIpMasking` 更灵活的方式来记录所有或一部分 IP 地址，可以使用[遥测初始化表达式](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)将所有或一部分 IP 复制到自定义字段。 
 
 ### <a name="aspnet--aspnet-core"></a>ASP.NET / ASP.NET Core
 
@@ -232,6 +233,6 @@ requests
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解 Application Insights 中的[个人数据收集](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt)。
+* 详细了解 Application Insights 中的[个人数据收集](../platform/personal-data-mgmt.md)。
 
 * 详细了解 Application Insights 中 [IP 地址收集](https://apmtips.com/posts/2016-07-05-client-ip-address/)的工作原理。 （这是我们的某位工程师在较早前撰写的一篇外部博客文章。 其中所述的机制不同当前的默认行为，现在，IP 地址将记录为 `0.0.0.0`，不过此文更深入地描述了内置 `ClientIpHeaderTelemetryInitializer` 的机制。）

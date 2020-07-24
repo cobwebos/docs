@@ -6,12 +6,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: d9906e43bad296cc850942c01c83c6bfee2651fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81e27c0f62e921eb468c78521e426c8917da250a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482116"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014132"
 ---
 # <a name="connection-strings"></a>连接字符串
 
@@ -31,12 +31,12 @@ ms.locfileid: "85482116"
 
 - 防火墙例外或代理重定向 
 
-    如果需要监视 Intranet Web 服务器，我们的早期解决方案会要求客户将各个服务终结点添加到你的配置中。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server)。 
+    如果需要监视 Intranet Web 服务器，我们的早期解决方案会要求客户将各个服务终结点添加到你的配置中。 有关详细信息，请参阅[此文](../faq.md#can-i-monitor-an-intranet-web-server)。 
     连接字符串只需进行单个设置，简化了此工作，因此是一种更好的选择。 简单的前缀后缀修正，允许自动填充所有终结点并将其重定向到正确的服务。 
 
 - 主权云或混合云环境
 
-    用户可以将数据发送到定义的[Azure 政府区域](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)。
+    用户可以将数据发送到定义的[Azure 政府区域](../../azure-government/compare-azure-government-global-azure.md#application-insights)。
     使用连接字符串可以定义 Intranet 服务器或混合云设置的终结点设置。 
 
 ## <a name="getting-started"></a>入门

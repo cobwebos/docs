@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 04/16/2020
-ms.openlocfilehash: aadc9c7bfaa9ad6338015f5dd085b5ab865673f2
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 6c083e24ce44272ef9394b8418d3dc66771ceb8a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697204"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014263"
 ---
 # <a name="java-codeless-application-monitoring-on-premises---azure-monitor-application-insights---public-preview"></a>Java 无代码应用程序本地监视 - Azure Monitor Application Insights -公 共预览版
 
@@ -19,10 +20,10 @@ Java 无代码应用程序监视非常简单 - 不需要更改代码，只需更
 
 启用后，Java 代理将自动从最广泛使用的库和框架收集大量请求、依赖项、日志和指标。
 
-请遵循所有环境（包括本地）的相关[详细说明](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)。
+请遵循所有环境（包括本地）的相关[详细说明](./java-in-process-agent.md)。
 
  ## <a name="next-steps"></a>后续步骤
 
-* [获取下载 Java 代理的说明](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
+* [获取下载 Java 代理的说明](./java-in-process-agent.md)
 * [配置 JVM 参数](https://github.com/microsoft/ApplicationInsights-Java/wiki/3.0-Preview:-Tips-for-updating-your-JVM-args)
 * [自定义配置](https://github.com/microsoft/ApplicationInsights-Java/wiki/3.0-Preview:-Configuration-Options)

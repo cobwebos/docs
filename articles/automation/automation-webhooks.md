@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2d73b87248fff2e99f05d2d6d6263f2bb3abba57
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4338bc4a11b785b27f6316748f9cbc4eeaaddbea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185630"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015096"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>从 Webhook 启动 Runbook
 
@@ -27,7 +27,7 @@ ms.locfileid: "86185630"
 
 下表介绍了必须为 webhook 配置的属性。
 
-| 属性 | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | 名称 |Webhook 的名称。 可以提供任何名称，因为该名称不会公开给客户端。 它只用来标识 Azure 自动化中的 Runbook。 最好是为 Webhook 提供一个名称，该名称需要与使用它的客户端相关。 |
 | URL |Webhook 的 URL。 这是客户端通过 HTTP POST 来调用的唯一地址，用于启动链接到 Webhook 的 Runbook。 它是在创建 Webhook 时自动生成的。 无法指定自定义 URL。 <br> <br> URL 包含一个允许第三方系统调用 Runbook 的安全令牌，不需要进一步进行身份验证。 因此，应该将 URL 视为密码。 出于安全原因，只能在创建 Webhook 时通过 Azure 门户查看该 URL。 请将保存在安全位置的 URL 记下来，供将来使用。 |
@@ -44,7 +44,7 @@ Webhook 可以定义 Runbook 参数的值，当 Runbook 启动时会用到这些
 
 `WebhookData` 参数具有以下属性：
 
-| 属性 | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | `WebhookName` | Webhook 的名称。 |
 | `RequestHeader` | 包含传入 POST 请求标头的哈希表。 |
@@ -133,7 +133,7 @@ http://<Webhook Server>/token?=<Token Value>
 {"JobIds":["<JobId>"]}
 ```
 
-客户端无法从 Webhook 确定 Runbook 的作业何时完成或其完成状态。 可以使用作业 ID 并配合其他机制（例如 [Windows PowerShell](/powershell/module/servicemanagement/azure/get-azureautomationjob) 或 [Azure 自动化 API](/rest/api/automation/job)）来了解此信息。
+客户端无法从 Webhook 确定 Runbook 的作业何时完成或其完成状态。 可以使用作业 ID 并配合其他机制（例如 [Windows PowerShell](/powershell/module/servicemanagement/azure.service/get-azureautomationjob) 或 [Azure 自动化 API](/rest/api/automation/job)）来了解此信息。
 
 ## <a name="renew-a-webhook"></a>续订 Webhook
 

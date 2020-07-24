@@ -3,12 +3,12 @@ title: 在 Azure 开发测试实验室中将项目存储库添加到实验室 |M
 description: 了解如何在 Azure 开发测试实验室中将项目存储库添加到实验室。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0c2c1b5f93e2b4dcaae818b3f529dc16440c3c75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d823f437cddef0a33c7d7ea3b4c4fbdaad90fb8e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483901"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013413"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>在开发测试实验室中将项目存储库添加到实验室
 开发测试实验室允许指定在创建 VM 时或创建 VM 之后要添加到 VM 的项目。 此项目可能是要在 VM 上安装的工具或应用程序。 项目在从 GitHub 或 Azure DevOps Git 存储库加载的 JSON 文件中定义。
@@ -48,14 +48,14 @@ ms.locfileid: "85483901"
    2. 在 "**组织**" 列表中，选择 "**所有可访问的组织**"。
    3. 在 "**过期时间（UTC）** " 列表中，选择 " **90 天**" 或自定义的 "有效期"。
    4. 为作用域选择 "**完全访问**" 选项。
-   5. 选择“创建”。
+   5. 选择“创建” 。
 9. 随后“个人访问令牌”列表中会出现新的令牌****。 选择“复制令牌”****，并保存令牌值以备后用。
 10. 继续转到将实验室连接到存储库部分。
 
 ## <a name="use-azure-portal"></a>使用 Azure 门户
 本部分提供将项目存储库添加到 Azure 门户中的实验室的步骤。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 选择“更多服务”，并从服务列表中选择“开发测试实验室”********。
 3. 在实验室列表中，选择实验室。
 4. 在左侧菜单中选择 "**配置和策略**"。
@@ -64,14 +64,14 @@ ms.locfileid: "85483901"
 
     ![“添加存储库”按钮](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. 在 "**存储库**" 页上，指定下列信息：
-   1. “名称”。 输入存储库的名称。
+   1. **名称**。 输入存储库的名称。
    2. **Git 克隆 URL**。 输入之前从 GitHub 或 Azure DevOps Services 复制的 Git HTTPS 克隆 URL。
    3. **分支**。 输入分支以获取定义。
    4. **个人访问令牌**。 输入之前从 GitHub 或 Azure DevOps Services 获取的个人访问令牌。
    5. **文件夹路径**。 输入至少一个与包含项目定义或资源管理器模板定义的克隆 URL 有关的文件夹路径。 指定子目录时，请确保在文件夹路径中包含正斜杠。
 
         ![“存储库”区域](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
-6. 选择“保存”。
+6. 选择“保存” 。
 
 ## <a name="use-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板
 Azure 资源管理（Azure 资源管理器）模板是描述 Azure 中要创建的资源的 JSON 文件。 有关这些模板的详细信息，请参阅[创作 Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)。
@@ -183,7 +183,7 @@ New-AzResourceGroupDeployment `
 AzResourceGroupDeployment 成功运行后，该命令将输出预配状态（应为 "已成功"）和模板的任何输出等重要信息。
 
 ## <a name="use-azure-powershell"></a>使用 Azure PowerShell
-本部分提供了一个示例 PowerShell 脚本，可用于将项目存储库添加到实验室。 如果没有 Azure PowerShell，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) ，以了解有关安装的详细说明。
+本部分提供了一个示例 PowerShell 脚本，可用于将项目存储库添加到实验室。 如果没有 Azure PowerShell，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/?view=azps-1.2.0) ，以了解有关安装的详细说明。
 
 ### <a name="full-script"></a>完整脚本
 下面是完整的脚本，包括一些详细的消息和注释：
@@ -360,7 +360,7 @@ if ($ArtifactRepositoryName -eq $null){
 
 ### <a name="powershell-commands-used-in-the-script"></a>脚本中使用的 PowerShell 命令
 
-| PowerShell 命令 | 说明 |
+| PowerShell 命令 | 注释 |
 | ------------------ | ----- |
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | 此命令用于获取有关实验室的详细信息，例如其位置。 |
 | [New-AzResource](/powershell/module/az.resources/new-azresource) | 没有用于添加项目存储库的特定命令。 一般的[AzResource](/powershell/module/az.resources/new-azresource) cmdlet 执行该作业。 此 cmdlet 需要**ResourceId**或资源类型和**ResourceType** **对，以**了解要创建的资源类型。 此示例脚本使用资源名称和资源类型对。 <br/><br/>请注意，要在与实验室相同的资源组下创建项目存储库源。|

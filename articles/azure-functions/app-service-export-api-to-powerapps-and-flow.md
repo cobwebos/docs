@@ -4,11 +4,12 @@ description: 有关如何将应用服务中托管的 API 向 PowerApps 和 Micro
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.reviewer: sunayv
-ms.openlocfilehash: 8ded1c5fba902adeaeb883894452c00c4ae1d617
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d968c62afbfc92952f747e1e7627c98fe07436d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83115808"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015079"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>将 Azure 托管的 API 导出到 PowerApps 和 Microsoft Flow
 
@@ -57,7 +58,7 @@ ms.locfileid: "83115808"
 
 2. 使用表中指定的设置。
 
-    |设置|描述|
+    |设置|说明|
     |--------|------------|
     |**环境**|选择自定义连接器应保存到的环境。 有关详细信息，请参阅[环境概述](https://powerapps.microsoft.com/tutorials/environments-overview/)。|
     |**自定义 API 名称**|输入名称，PowerApps 和 Microsoft Flow 生成器将在其连接器列表中看到。|
@@ -65,7 +66,7 @@ ms.locfileid: "83115808"
  
     ![快速导出到 PowerApps 和 Microsoft Flow](media/app-service-export-api-to-powerapps-and-flow/export-express.png)
 
-3. 单击“确定”。 现在自定义连接器已生成并添加到了指定的环境中。
+3. 单击“确定”  。 现在自定义连接器已生成并添加到了指定的环境中。
 
 <a name="manual"></a>
 ## <a name="use-manual-export"></a>使用手动导出
@@ -145,9 +146,9 @@ PowerApps 和 Microsoft Flow 支持一系列标识提供程序，它们都可为
 
 - 若要配置 API 注册，请使用[应用服务身份验证/授权](../app-service/configure-authentication-provider-aad.md)功能。
 
-- 若要配置连接器注册，请执行[添加 Azure AD 应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)中的步骤。 该注册必须对你的 API 拥有委派访问权限，并且其答复 URL 应为 `https://msmanaged-na.consent.azure-apim.net/redirect`。 
+- 若要配置连接器注册，请执行[添加 Azure AD 应用程序](../active-directory/develop/quickstart-register-app.md)中的步骤。 该注册必须对你的 API 拥有委派访问权限，并且其答复 URL 应为 `https://msmanaged-na.consent.azure-apim.net/redirect`。 
 
-有关详细信息，请参阅 [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) 和 [Microsoft Flow](https://docs.microsoft.com/connectors/custom-connectors/azure-active-directory-authentication) 的 Azure AD 注册示例。 这些示例都使用 Azure 资源管理器作为 API；请在按步骤操作时替换你的 API。
+有关详细信息，请参阅 [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) 和 [Microsoft Flow](/connectors/custom-connectors/azure-active-directory-authentication) 的 Azure AD 注册示例。 这些示例都使用 Azure 资源管理器作为 API；请在按步骤操作时替换你的 API。
 
 需要以下配置值：
 - **客户端 ID** - 连接器 Azure AD 注册的客户端 ID
@@ -168,5 +169,3 @@ PowerApps 和 Microsoft Flow 支持一系列标识提供程序，它们都可为
 - **授权 URL** - OAuth 2.0 授权 URL
 - **令牌 URL** - OAuth 2.0 令牌 URL
 - **刷新 URL** - OAuth 2.0 刷新 URL
-
-

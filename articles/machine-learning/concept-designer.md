@@ -1,5 +1,5 @@
 ---
-title: '利用设计器 (预览生成 ML 模型) '
+title: 用设计器生成 ML 模型（预览）
 titleSuffix: Azure Machine Learning
 description: 了解组成 Azure 机器学习设计器的术语、概念和工作流。
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: a2074b1ecd37fd18a9a0ac9091f05e734765e40b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 181f0d62f160a6644e0423be052012521752525f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86199991"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012937"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>什么是 Azure 机器学习设计器（预览版）？ 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -116,26 +116,7 @@ ms.locfileid: "86199991"
 
 设计器创建与 SDK 相同的 [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) 对象。
 
-
-## <a name="moving-from-the-visual-interface-to-the-designer"></a>从可视化界面移动到设计器
-
-可视化界面（预览）已更新，现在是 Azure 机器学习设计器（预览）。 设计器经过重建，可使用基于管道的后端，与 Azure 机器学习的其他功能完全集成。 
-
-通过这些更新，可视化界面的一些概念和术语已产生变化或更改了名称。 请参阅下表，了解最关键的概念更改。 
-
-| 设计器中的概念 | 旧版（在可视化界面中） |
-| ---- |:----:|
-| 管道草稿 | 试验 |
-| 实时终结点 | Web 服务 |
-
-### <a name="migrating-to-the-designer"></a>迁移到设计器
-
-可将现有可视化界面试验和 Web 服务转换为设计器中的管道和实时终结点。 要迁移可视化界面资产，请执行以下步骤：
-
-[!INCLUDE [migrate from the visual interface](../../includes/aml-vi-designer-migration.md)]
-
-
 ## <a name="next-steps"></a>后续步骤
 
-* 要了解预测分析和机器学习的基本知识，请参考[教程：使用设计器预测汽车价格](tutorial-designer-automobile-price-train-score.md)
+* 若要了解有关预测分析和机器学习的基本知识，请参阅[教程：使用设计器预测汽车价格](tutorial-designer-automobile-price-train-score.md)
 * 了解如何根据自己的需求修改现有的[设计器示例](samples-designer.md)。

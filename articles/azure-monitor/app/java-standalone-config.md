@@ -3,12 +3,12 @@ title: 在任意位置监视 Java 应用程序 - Azure Monitor Application Insig
 description: 对在任何环境中运行的 Java 应用程序进行无代码应用程序性能监视，而不需要检测该应用。 使用分布式跟踪和应用程序映射查找问题的根本原因。
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 0c66ad01f265dde7da2f48b17b3ad4438d59a0ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a01f2e9339f3ba4f8f50fc41617fabf9da9d8cd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319680"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014195"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>配置选项 - Azure Monitor Application Insights 的 Java 独立代理
 
@@ -216,7 +216,7 @@ Application Insights Java 3.0 Preview 通过 Log4j、Logback 和 java.util.loggi
 
 ## <a name="http-proxy"></a>HTTP 代理
 
-如果应用程序位于防火墙后面，无法直接连接到 Application Insights（请参阅 [Application Insights 使用的 IP 地址](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses)），则可将 Application Insights Java 3.0 Preview 配置为使用 HTTP 代理：
+如果应用程序位于防火墙后面，无法直接连接到 Application Insights（请参阅 [Application Insights 使用的 IP 地址](./ip-addresses.md)），则可将 Application Insights Java 3.0 Preview 配置为使用 HTTP 代理：
 
 ```json
 {

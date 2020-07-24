@@ -3,12 +3,12 @@ title: 监视任何环境中的 Java 应用程序 - Azure Monitor Application In
 description: 对在任何环境中运行的 Java 应用程序进行应用程序性能监视，而不需要检测该应用。 分布式跟踪和应用程序映射。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 3e3d108603ad6210143deea58049ff7b230bb6fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ca6e7050b1c7649298d2417f9f7f66ef8898816
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319697"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014331"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java 无代码应用程序监视 Azure Monitor Application Insights - 公共预览版
 
@@ -32,11 +32,11 @@ Java 无代码应用程序监视只是为了简化操作 - 无需更改代码，
 
 典型的 JVM 参数包括 `-Xmx512m` 和 `-XX:+UseG1GC`。 如果你知道在何处添加这些参数，则你已知道要将此项添加到何处。
 
-有关配置应用程序 JVM 参数的其他帮助，请参阅 [3.0 预览版：更新 JVM 参数的技巧](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments)。
+有关配置应用程序 JVM 参数的其他帮助，请参阅 [3.0 预览版：更新 JVM 参数的技巧](./java-standalone-arguments.md)。
 
 **3.将代理指向 Application Insights 资源**
 
-如果还没有 Application Insights 资源，可以按照[资源创建指南](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)中的步骤创建一个新资源。
+如果还没有 Application Insights 资源，可以按照[资源创建指南](./create-new-resource.md)中的步骤创建一个新资源。
 
 通过设置环境变量，将代理指向 Application Insights 资源：
 
@@ -80,7 +80,7 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 * HTTP 代理
 * 自我诊断
 
-有关详细信息，请参阅 [3.0 公共预览版：配置选项](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config)。
+有关详细信息，请参阅 [3.0 公共预览版：配置选项](./java-standalone-config.md)。
 
 ## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>自动收集的请求、依赖项、日志和指标
 

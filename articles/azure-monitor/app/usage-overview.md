@@ -3,11 +3,12 @@ title: 使用 Azure Application Insights 进行使用情况分析 | Microsoft do
 description: 了解用户，以及他们将应用用于哪些目的。
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 7f4f46f183291684fa59e5aa35b65c8ac3352563
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 1acc803d66bef29a77266d4e38e1605ffd75f36f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797795"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014059"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights 使用分析
 
@@ -33,7 +34,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
     </script>
     ```
 
-    若要了解更多用于监视网站的高级配置，请查看 [JavaScript SDK 参考](https://docs.microsoft.com/azure/azure-monitor/app/javascript)一文。
+    若要了解更多用于监视网站的高级配置，请查看 [JavaScript SDK 参考](./javascript.md)一文。
 
 3. **移动应用代码：** 通过[按照此指南操作](../../azure-monitor/learn/mobile-center-quickstart.md)，使用 App Center SDK 收集应用中的事件，然后将这些事件的副本发送到 Application Insights 进行分析。
 
@@ -44,7 +45,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 ## <a name="include-user-and-session-id-in-your-telemetry"></a>在遥测中包括用户和会话 ID
 若要持续跟踪用户，Application Insights 需要识别用户的方法。 事件工具是唯一不需要用户 ID 或会话 ID 的使用情况工具。
 
-开始使用[此过程](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context)发送用户 ID 和会话 ID。
+开始使用[此过程](./usage-send-user-context.md)发送用户 ID 和会话 ID。
 
 ## <a name="explore-usage-demographics-and-statistics"></a>浏览用户人口和统计信息
 查明人们何时使用应用，他们对哪些页面最感兴趣，用户在哪里以及他们使用什么浏览器和操作系统。 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6913ae8cbd8c73bd2763bd89172280feee9df973
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 31c769039009889559b6aa05bb76139d63c42feb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185613"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015011"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合 Runbook 辅助角色
 
@@ -18,7 +18,7 @@ ms.locfileid: "86185613"
 
 成功部署 Runbook 辅助角色后，请查看[在混合 Runbook 辅助角色上运行 Runbook](automation-hrw-run-runbooks.md)，了解如何配置 Runbook，使本地数据中心或其他云环境中的过程实现自动化。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保你具有以下各项。
 
@@ -84,7 +84,7 @@ Windows 混合 Runbook 辅助角色的最低要求如下：
 有关启用使用 Azure 自动化状态配置进行管理的计算机的信息，请参阅[启用虚拟机以通过 Azure Automation 状态配置进行管理](automation-dsc-onboarding.md)。
 
 > [!NOTE]
-> 若要管理支持混合 Runbook 辅助角色的计算机的配置 (DSC) ，你必须将计算机添加为 DSC 节点。
+> 若要管理支持混合 Runbook 辅助角色和所需状态配置（DSC）的计算机的配置，你必须将计算机添加为 DSC 节点。
 
 ## <a name="windows-hybrid-runbook-worker-installation-options"></a>Windows 混合 Runbook Worker 安装选项
 
@@ -173,7 +173,7 @@ Heartbeat
 
 2. 若要确认混合 Runbook 辅助角色的版本，请浏览到 `C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\` **版本**子文件夹并记下它。
 
-### <a name="step-3---install-the-runbook-environment-and-connect-to-azure-automation"></a>步骤 3-安装 runbook 环境并连接到 Azure 自动化
+### <a name="step-2---install-the-runbook-environment-and-connect-to-azure-automation"></a>步骤 2-安装 runbook 环境并连接到 Azure 自动化
 
 将代理配置为向 Log Analytics 工作区报告时，Azure 自动化功能会向下推送 `HybridRegistration` PowerShell 模块，其中包含 `Add-HybridRunbookWorker` cmdlet。 使用此 cmdlet 在计算机上安装 runbook 环境，并将其注册到 Azure 自动化。
 
@@ -202,7 +202,7 @@ Add-HybridRunbookWorker –GroupName <String> -Url <Url> -Key <String>
 
 * 如果需要，请设置 `Verbose` 参数以接收有关安装的详细信息。
 
-### <a name="step-4----install-powershell-modules"></a>步骤 4-安装 PowerShell 模块
+### <a name="step-3----install-powershell-modules"></a>步骤 3-安装 PowerShell 模块
 
 Runbook 可以使用在 Azure 自动化环境中安装的模块中定义的任何活动和 cmdlet。 由于这些模块不会自动部署到本地计算机，因此必须手动安装它们。 例外情况是 Azure 模块。 此模块是默认安装的，并可用于访问所有 Azure 服务的 cmdlet 以及 Azure 自动化的活动。
 

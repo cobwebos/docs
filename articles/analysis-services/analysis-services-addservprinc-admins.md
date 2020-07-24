@@ -8,12 +8,12 @@ ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4ce23e9da84d01a288c1c37c6a6d884db2ed3969
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ce8f7347e4813e72ede426ab17f09221ab859136
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077552"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015402"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>将服务主体添加到服务器管理员角色 
 
@@ -22,7 +22,7 @@ ms.locfileid: "86077552"
 > [!NOTE]
 > 必须直接将服务主体添加到服务器管理员角色。 不支持将服务主体添加到安全组，然后将该安全组添加到服务器管理员角色。 
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 在完成此项任务之前，必须有一个在 Azure Active Directory 中注册的服务主体。
 
 [创建服务主体 - Azure 门户](../active-directory/develop/howto-create-service-principal-portal.md)   
@@ -44,7 +44,7 @@ ms.locfileid: "86077552"
 
 ## <a name="using-a-resource-manager-template"></a>使用资源管理器模板
 
-还可以通过使用 Azure 资源管理器模板部署 Analysis Services 服务器来配置服务器管理员。 运行部署的标识必须属于 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 中资源的“参与者”角色。
+还可以通过使用 Azure 资源管理器模板部署 Analysis Services 服务器来配置服务器管理员。 运行部署的标识必须属于[azure 基于角色的访问控制（AZURE RBAC）](../role-based-access-control/overview.md)中资源的**参与者**角色。
 
 > [!IMPORTANT]
 > 必须使用格式 `app:{service-principal-client-id}@{azure-ad-tenant-id}` 来添加服务主体。
@@ -119,5 +119,3 @@ az ad sp show --id <ManagedIdentityServicePrincipalObjectId> --query appId -o ts
 
 * [下载 SQL Server PowerShell 模块](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
 * [下载 SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
-
-

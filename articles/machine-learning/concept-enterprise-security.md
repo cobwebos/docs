@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: 5afa6b9127317fcd1a683651be86cdfe078cfcd6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 94724ea44b52ae885594fe55b67d74a03e339dab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259435"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012845"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure 机器学习的企业安全性
 
@@ -34,7 +34,7 @@ ms.locfileid: "86259435"
 1. 客户端将令牌提供给 Azure 资源管理器和所有 Azure 机器学习服务。
 1. 机器学习服务将机器学习服务令牌提供给用户计算目标（例如机器学习计算）。 运行完成后，用户计算目标使用此令牌回调机器学习服务。 范围限制为工作区。
 
-[![Azure 机器学习中的身份验证](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication-expanded.png#lightbox)
+[![Azure 机器学习中的身份验证](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication.png#lightbox)
 
 有关详细信息，请参阅[为 Azure 机器学习资源和工作流设置身份验证](how-to-setup-authentication.md)。 本文提供有关身份验证的信息和示例，包括如何使用服务主体和自动化工作流。
 
@@ -128,6 +128,8 @@ Azure 机器学习依赖于其他 Azure 服务提供计算资源。 计算资源
 * 使用密钥保管库，将存储帐户、容器注册表和 SSH 帐户的凭据从执行层安全传递到计算群集
 * 启用 IP 筛选，以确保基础批处理池不会由除 AzureMachineLearningService 以外的任何外部服务调用
 
+> [!WARNING]
+> `hbi_workspace`标志只能在创建工作区时设置。 不能更改现有工作区的。
 
 有关 Azure 中静态加密工作原理的详细信息，请参阅 [Azure 数据静态加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)。
 
@@ -317,7 +319,7 @@ Microsoft 还建议不要在环境变量中存储敏感信息（如帐户密钥�
 
 用户还可根据需要预配附加到工作区的其他计算目标（例如 Azure Kubernetes 服务或 VM）。
 
-[![创建工作区工作流](media/concept-enterprise-security/create-workspace.png)](media/concept-enterprise-security/create-workspace-expanded.png#lightbox)
+[![创建工作区工作流](media/concept-enterprise-security/create-workspace.png)](media/concept-enterprise-security/create-workspace.png#lightbox)
 
 ### <a name="save-source-code-training-scripts"></a>保存源代码（训练脚本）
 
@@ -325,7 +327,7 @@ Microsoft 还建议不要在环境变量中存储敏感信息（如帐户密钥�
 
 与 Azure 机器学习工作区关联的是包含源代码（训练脚本）的目录（试验）。 这些脚本存储在本地计算机和云中（位于订阅的 Azure Blob 存储中）。 代码快照用于执行或检查历史审核。
 
-[![代码快照工作流](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot-expanded.png#lightbox)
+[![代码快照工作流](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot.png#lightbox)
 
 ### <a name="training"></a>培训
 
@@ -352,7 +354,7 @@ Microsoft 还建议不要在环境变量中存储敏感信息（如帐户密钥�
 
 在以下流示意图中，当训练计算目标将运行指标从 Cosmos DB 数据库中的存储写回到 Azure 机器学习时，将执行此步骤。 客户端可以调用 Azure 机器学习。 而机器学习又会从 Cosmos DB 数据库提取指标，然后将指标返回给客户端。
 
-[![训练工作流](media/concept-enterprise-security/training-and-metrics.png)](media/concept-enterprise-security/training-and-metrics-expanded.png#lightbox)
+[![训练工作流](media/concept-enterprise-security/training-and-metrics.png)](media/concept-enterprise-security/training-and-metrics.png#lightbox)
 
 ### <a name="creating-web-services"></a>创建 Web 服务
 
@@ -367,7 +369,7 @@ Microsoft 还建议不要在环境变量中存储敏感信息（如帐户密钥�
 * 将评分请求详细信息存储在用户订阅的 Application Insights 中。
 * 此外，将遥测推送到 Microsoft/Azure 订阅。
 
-[![推理工作流](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing-expanded.png#lightbox)
+[![推理工作流](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 

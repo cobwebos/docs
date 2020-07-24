@@ -3,28 +3,28 @@ title: 从 Application Insights 连续导出遥测数据 | Microsoft Docs
 description: 将诊断和使用情况数据导出到 Microsoft Azure 中的存储，然后从中下载这些数据。
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 8ca2dc30b6e0681b5ee10fa3c77fab15ffb18b1d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 54cd6db6de4aa9c1b8f8894c03a8803ee4aa2b00
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110209"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014518"
 ---
 # <a name="export-telemetry-from-application-insights"></a>从 Application Insights 导出遥测数据
 想要将遥测数据保留超过标准保留期限？ 或者要以某种专业方式处理这些数据？ 连续导出很适合此目的。 可以使用 JSON 格式将 Application Insights 门户中显示的事件导出到 Microsoft Azure 中的存储。 可以从该存储中下载这些数据，并编写所需的代码来处理这些数据。  
 
 > [!NOTE]
-> 只有经典 Application Insights 资源支持连续导出。 [基于工作区的 Application Insights 资源](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource)必须使用[诊断设置](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource#export-telemetry)。
+> 只有经典 Application Insights 资源支持连续导出。 [基于工作区的 Application Insights 资源](./create-workspace-resource.md)必须使用[诊断设置](./create-workspace-resource.md#export-telemetry)。
 >
 
 在设置连续导出之前，请考虑一些备选方法：
 
 * 通过“指标”或“搜索”选项卡顶部的“导出”按钮，可将表格和图表发送到 Excel 电子表格。
 
-* [Analytics](../../azure-monitor/app/analytics.md) 提供功能强大的遥测查询语言。 它还可以导出结果。
+* [Analytics](../log-query/log-query-overview.md) 提供功能强大的遥测查询语言。 它还可以导出结果。
 * 如果想要[在 Power BI 中浏览数据](../../azure-monitor/app/export-power-bi.md )，无需使用连续导出也可以做到。
 * 使用[数据访问 REST API](https://dev.applicationinsights.io/) 能够以编程方式访问遥测数据。
-* 还可以[通过 PowerShell 访问设置连续导出](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)。
+* 还可以[通过 PowerShell 访问设置连续导出](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)。
 
 连续导出将数据复制到存储后（数据可在其中保存任意长的时间），在正常[保留期](../../azure-monitor/app/data-retention-privacy.md)内，这些数据仍可在 Application Insights 中使用。
 
@@ -32,9 +32,9 @@ ms.locfileid: "86110209"
 
 连续导出不支持以下 Azure 存储功能/配置：
 
-* 将 [VNET/Azure 存储防火墙](https://docs.microsoft.com/azure/storage/common/storage-network-security)与 Azure Blob 存储一起使用。
+* 将 [VNET/Azure 存储防火墙](../../storage/common/storage-network-security.md)与 Azure Blob 存储一起使用。
 
-* [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)。
+* [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md)。
 
 ## <a name="create-a-continuous-export"></a><a name="setup"></a> 创建连续导出
 

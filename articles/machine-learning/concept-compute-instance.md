@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 06/22/2020
-ms.openlocfilehash: b53a2c0cb3c709a6f22b57b45bef8b2894594a4d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3edb8da6d535ac7817c29db254aa84efd92321b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85602443"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012971"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什么是 Azure 机器学习计算实例？
 
@@ -30,7 +30,7 @@ Azure 机器学习计算实例是一种基于云的托管数据科学家工作�
 
 计算实例是完全托管式基于云的工作站，已针对机器学习开发环境进行优化。 它提供以下优势：
 
-|主要优点||
+|主要优点|说明|
 |----|----|
 |工作效率|您可以使用集成笔记本和 Azure 机器学习 studio 中的以下工具生成和部署模型：<br/>-  Jupyter<br/>-  JupyterLab<br/>-RStudio （预览版）<br/>计算实例与 Azure 机器学习工作区和工作室完全集成。 你可以与工作区中的其他数据科学家共享笔记本和数据。 你还可以使用[SSH](how-to-set-up-vs-code-remote.md)设置 VS Code 远程开发 |
 |无需自行管理且安全|减少安全保护工作，增强企业的安全要求合规性。 计算实例提供可靠的管理策略和安全网络配置，例如：<br/><br/>- 通过资源管理器模板或 Azure 机器学习 SDK 自动预配<br/>- [基于角色的访问控制 (RBAC)](/azure/role-based-access-control/overview)<br/>- [虚拟网络支持](how-to-enable-virtual-network.md#compute-instance)<br/>- 用于启用/禁用 SSH 访问的 SSH 策略<br/>已启用 TLS 1。2 |
@@ -39,8 +39,11 @@ Azure 机器学习计算实例是一种基于云的托管数据科学家工作�
 
 ## <a name="tools-and-environments"></a><a name="contents"></a>工具和环境
 
-使用 Azure 机器学习计算实例可以在工作区中的完全集成式笔记本体验中创作、训练和部署模型。
+> [!IMPORTANT]
+> 以下标记为（预览版）的工具当前公开预览版。
+> 提供的预览版本没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
+使用 Azure 机器学习计算实例可以在工作区中的完全集成式笔记本体验中创作、训练和部署模型。
 
 以下工具和环境安装在计算实例上： 
 

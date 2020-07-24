@@ -9,11 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: 4f1e8602c55329f88460921446ebaa05ed640e39
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4a89816202953a15c4ad4586692dacd3f12993fa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041755"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013022"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -21,6 +22,45 @@ ms.locfileid: "86041755"
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
 
+## <a name="2020-07-20"></a>2020-07-20
+
+### <a name="azure-machine-learning-sdk-for-python-v1100"></a>用于 Python 的 Azure 机器学习 SDK 1.10。0
+
++ **Bug 修复与改进**
+  + **azureml-automl-core**
+    + 当使用 AutoML 时，如果路径传递到 AutoMLConfig 对象，并且它尚不存在，则会自动创建该路径。
+    + 用户现在可以使用参数指定预测任务的时序频率 `freq` 。
+  + **azureml-automl-runtime**
+    + 当使用 AutoML 时，如果路径传递到 AutoMLConfig 对象，并且它尚不存在，则会自动创建该路径。
+    + 用户现在可以使用参数指定预测任务的时序频率 `freq` 。
+    + AutoML 预测现在支持滚动计算，这种评估适用于测试或验证集长度超过输入范围的用例，已知 y_pred 值用作预测上下文。
+  + **azureml-core**
+    + 如果未从运行中的数据存储下载任何文件，则将打印警告消息。
+    + `skip_validation`向添加了的文档 `Datastore.register_azure_sql_database method` 。
+    + 用户需要升级到 sdk v 1.10.0 或更高版本，才能创建自动批准的专用终结点。 这包括在 VNet 后面可用的笔记本资源。
+    + 在获取工作区的响应中公开 NotebookInfo。
+    + 对的更改具有对列出计算目标的调用，并使计算目标在远程运行上成功。 用于获取计算目标和列表工作区计算目标的 Sdk 函数现在可在远程运行中运行。
+    + 将弃用消息添加到 azureml 类的类说明。
+    + 如果工作区专用终结点创建失败，则会引发异常并清除工作区和依赖的资源。
+    + 支持工作区 sku 升级工作区更新方法。
+  + **azureml-datadrift**
+    + 将 matplotlib 版本从3.0.2 更新为3.2.1 以支持 python 3.8。
+  + **azureml-dataprep**
+    + 添加了对具有或请求的 web url 数据源的支持 `Range` `Head` 。 
+    + 提高了文件数据集装载和下载的稳定性。
+  + **azureml-train-automl-client**
+    + 修复了与从 setuptools 中删除相关的问题 `RequirementParseError` 。
+    + 使用 "compute_target = ' local '" 提交的本地运行的 docker 而不是 conda
+    + 已更正打印到控制台的迭代持续时间。 以前，迭代持续时间有时打印为运行结束时间减去运行创建时间。 它已更正为等于运行结束时间减去运行开始时间。
+    + 当使用 AutoML 时，如果路径传递到 AutoMLConfig 对象，并且它尚不存在，则会自动创建该路径。
+    + 用户现在可以使用参数指定预测任务的时序频率 `freq` 。
+  + **azureml-train-automl-runtime**
+    + 最佳模型解释失败时改进的控制台输出。
+    + 已将 "backlist_models" 输入参数重命名为 "blocked_models"。
+      + 已将 "whitelist_models" 输入参数重命名为 "allowed_models"。
+    + 用户现在可以使用参数指定预测任务的时序频率 `freq` 。
+
+  
 ## <a name="2020-07-06"></a>2020-07-06
 
 ### <a name="azure-machine-learning-sdk-for-python-v190"></a>用于 Python 的 Azure 机器学习 SDK 1.9。0
@@ -385,7 +425,7 @@ ms.locfileid: "86041755"
     + 当使用一个嵌入到 ModuleStep 中的模块时，允许使用 regenerate_outputs 选项。
   + **azureml-train-automl-client**
     + 弃用了 AutoML 的 Tensorflow 模型。
-    + 修复了用户在本地模式下将不受支持的算法列入白名单的问题
+    + 修补用户允许列出本地模式下不支持的算法
     + 修复了 AutoMLConfig 的文档。
     + 在 AutoMLConfig 中对 cv_split_indices 输入强制执行数据类型检查。
     + 修复了 show_output 中的 AutoML 运行失败问题
@@ -971,7 +1011,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
   + 我们还增强了 Azure 机器学习计算 - 现在，可以在 Azure Monitor 中查看群集的指标（例如节点总数、正在运行的节点、总核心配额），并可以查看用于调试的诊断日志。 此外，还可以查看群集上当前正在运行或已排队的运行，以及群集中各个节点的 IP 等详细信息。 可以在门户中查看这些信息，或者使用 SDK 或 CLI 中的相应函数来查看。
 
   + **预览功能**
-    + 我们正在发布 Azure 机器学习计算中本地 SSD 磁盘加密的预览版支持。 若要将你的订阅加入允许列表以便能够使用此功能，请提交技术支持票证。
+    + 我们正在发布 Azure 机器学习计算中本地 SSD 磁盘加密的预览版支持。 请提供技术支持票证，使订阅允许列表使用此功能。
     + Azure 机器学习批量推理公共预览版。 Azure 机器学习批量推理面向非时间敏感型的大型推理作业。 批量推理提供经济高效的推理计算缩放功能，并为异步应用程序提供无可比拟的吞吐量。 它已针对高吞吐量进行优化，可针对大型数据集合实现即发即弃的推理。
     + [**azureml-contrib-dataset**](https://docs.microsoft.com/python/api/azureml-contrib-dataset)
         + 已实现标记数据集的功能
@@ -1651,7 +1691,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
     + 修复了在转换后丢失列类型的 bug。
     + 修复了 bug，允许 y_query 是开头包含 None 的对象类型。
     + 修复了系综选择过程中的以下问题：即使评分保持恒定，此 bug 也会不必要地增大生成的系综。
-    + 修复了 AutoMLStep 中的 whitelist_models 和 blacklist_models 设置问题。
+    + 解决了在 AutoMLStep 中允许 list_models 和块 list_models 设置的问题。
     + 修复了在 Azure ML 管道上下文中使用 AutoML 时阻止使用预处理的问题。
   + **azureml-opendatasets**
     + 已将 azureml-contrib-opendatasets 移到 azureml-opendatasets。
