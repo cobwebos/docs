@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 292ba1d52b107acd164408767747e5a33cb0c67d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94a4b2a44902dde798f760f970ccff2c1e8f15c5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252689"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025620"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>如何：在 Azure AD 中管理过时设备
 
@@ -56,7 +57,7 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 
     ![活动时间戳](./media/manage-stale-devices/01.png)
 
-- [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet
+- [Get-azureaddevice](/powershell/module/azuread/Get-AzureADDevice) cmdlet
 
     ![活动时间戳](./media/manage-stale-devices/02.png)
 
@@ -88,9 +89,9 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 
 ### <a name="system-managed-devices"></a>系统管理的设备
 
-不要删除系统管理的设备。 这些是通常的设备，如 Autopilot。 删除后，这些设备将无法重新预配。 默认情况下，新的 `get-msoldevice` cmdlet 可以排除系统管理的设备。 
+不要删除系统管理的设备。 这些是通常的设备，如 Autopilot。 删除后，这些设备将无法重新预配。 默认情况下，新的 `Get-AzureADDevice` cmdlet 可以排除系统管理的设备。 
 
-### <a name="hybrid-azure-ad-joined-devices"></a>混合 Azure AD 加入设备
+### <a name="hybrid-azure-ad-joined-devices"></a>已加入混合 Azure AD 的设备
 
 加入混合 Azure AD 的设备应该遵循本地陈旧设备管理的策略。 
 
@@ -128,26 +129,25 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 
 典型的例程包括以下步骤：
 
-1. 使用 [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) cmdlet 连接到 Azure Active Directory
+1. 使用[AzureAD](/powershell/module/azuread/connect-azuread) cmdlet 连接到 Azure Active Directory
 1. 获取设备列表
-1. 使用 [Disable-MsolDevice](/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) cmdlet 禁用设备。 
+1. 使用[get-azureaddevice](/powershell/module/azuread/Set-AzureADDevice) cmdlet 禁用设备（通过使用-AccountEnabled 选项禁用）。 
 1. 在删除设备之前，将等待所选天数的宽限期。
-1. 使用 [Remove-MsolDevice](/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0) cmdlet 删除设备。
+1. 使用[get-azureaddevice](/powershell/module/azuread/Remove-AzureADDevice) cmdlet 删除设备。
 
 ### <a name="get-the-list-of-devices"></a>获取设备列表
 
 获取所有设备并将返回的数据存储在 CSV 文件中：
 
 ```PowerShell
-Get-MsolDevice -all | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, Approxi
-mateLastLogonTimestamp | export-csv devicelist-summary.csv
+Get-AzureADDevice -All:$true | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-summary.csv
 ```
 
 如果目录中有大量设备，请使用时间戳筛选器来缩小返回的设备的数量。 获取时间戳超过特定日期的所有设备并将返回的数据存储在 CSV 文件中： 
 
 ```PowerShell
 $dt = [datetime]’2017/01/01’
-Get-MsolDevice -all -LogonTimeBefore $dt | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
+Get-AzureADDevice | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
 ```
 
 ## <a name="what-you-should-know"></a>要点

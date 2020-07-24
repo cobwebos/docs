@@ -2,16 +2,17 @@
 title: 教程 - 删除 Azure Red Hat OpenShift 群集
 description: 在本教程中，了解如何使用 Azure CLI 删除 Azure Red Hat OpenShift 群集
 author: sakthi-vetrivel
+ms.custom: fasttrack-edit
 ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 2de60b90eb6fb75ef013a2fd8785f1b8b616fba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6fdc36dbf270be61457dcd00dd1988808a80d062
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82232132"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030090"
 ---
 # <a name="tutorial-delete-an-azure-red-hat-openshift-4-cluster"></a>教程：删除 Azure Red Hat OpenShift 4 群集
 
@@ -49,7 +50,7 @@ RESOURCE_GROUP=yourresourcegroup
 使用这些值来删除群集：
 
 ```bash
-az aro delete --resource-group $RESOURCEGROUP --name $CLUSTER
+az aro delete --resource-group $RESOURCE_GROUP --name $CLUSTER
 ```
 
 系统将提示你确认是否要删除该群集。 通过 `y` 进行确认后，删除群集需要几分钟。 此命令完成后，整个资源组以及其中所有资源都将被删除，包括该群集。

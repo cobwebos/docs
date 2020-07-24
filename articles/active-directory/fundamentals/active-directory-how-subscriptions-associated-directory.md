@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc81cca10bacc581e72c7caa70a0b74b7ae99f9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 347232d452b5d309da7cdb7c8fe34f0e41abde00
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604210"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025332"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>将 Azure 订阅关联或添加到 Azure Active Directory 租户
 
@@ -28,7 +28,7 @@ Azure 订阅与 Azure Active Directory (Azure AD) 之间存在信任关系。 �
 
 如果订阅过期，则将失去与该订阅关联的所有其他资源的访问权限。 但是，Azure AD 目录保留在 Azure 中。 可以使用不同的 Azure 订阅来关联和管理该目录。
 
-所有用户都有一个用于身份验证的“主”目录  。 用户还可以充当其他目录中的来宾。 可在 Azure AD 中查看每位用户的主目录和来宾目录。
+所有用户都有一个用于身份验证的“主”目录。 用户还可以充当其他目录中的来宾。 可在 Azure AD 中查看每位用户的主目录和来宾目录。
 
 > [!Important]
 > 当你将订阅与其他目录关联时，具有使用[基于角色的访问控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md) 分配的角色的用户将失去其访问权限。 经典订阅管理员（包括服务管理员和共同管理员）也将失去其访问权限。
@@ -42,7 +42,7 @@ Azure 订阅与 Azure Active Directory (Azure AD) 之间存在信任关系。 �
 
 在关联或添加订阅之前，请执行以下任务：
 
-- 查看以下更改，这些更改将在你关联或添加你的订阅之后发生，以及你可能会受到怎样的影响：
+- 查看下述在关联或添加订阅后会发生的更改的列表，以及你可能受到的具体影响：
 
   - 已使用 RBAC 为其分配了角色的用户将失去其访问权限
   - 服务管理员和共同管理员将失去其访问权限
@@ -53,7 +53,7 @@ Azure 订阅与 Azure Active Directory (Azure AD) 之间存在信任关系。 �
 - 使用符合以下条件的帐户登录：
 
   - 具有该订阅的[所有者](../../role-based-access-control/built-in-roles.md#owner)角色分配。 有关如何分配“所有者”角色的详细信息，请参阅[使用 RBAC 和 Azure 门户管理对 Azure 资源的访问权限](../../role-based-access-control/role-assignments-portal.md)。
-  - 在当前目录和新目录中存在。 当前目录已与订阅相关联。 要将新目录与订阅相关联。 有关获取对其他目录的访问权限的详细信息，请参阅[在 Azure 门户中添加 AZURE ACTIVE DIRECTORY B2B 协作用户](../b2b/add-users-administrator.md)。
+  - 在当前目录和新目录中存在。 当前目录已与订阅相关联。 要将新目录与订阅相关联。 若要详细了解如何获取其他目录的访问权限，请参阅[在 Azure 门户中添加 Azure Active Directory B2B 协作用户](../b2b/add-users-administrator.md)。
 
 - 请确保未使用 Azure 云服务提供商 (CSP) 订阅（MS-AZR-0145P、MS-AZR-0146P、MS-AZR-159P）、Microsoft 内部订阅 (MS-AZR-0015P) 或 Microsoft Imagine 订阅 (MS-AZR-0144P)。
 
@@ -85,7 +85,7 @@ Azure 订阅与 Azure Active Directory (Azure AD) 之间存在信任关系。 �
 
 将订阅关联到不同的目录后，可能需要执行以下任务来恢复操作：
 
-- 如果有任何密钥保管库，则必须更改该密钥保管库租户 ID。 有关详细信息，请参阅[在订阅移动后更改密钥保管库租户 ID](../../key-vault/general/subscription-move-fix.md)。
+- 如果有任何密钥保管库，则必须更改该密钥保管库租户 ID。 有关详细信息，请参阅[在订阅移动后更改密钥保管库租户 ID](../../key-vault/general/move-subscription.md)。
 
 - 如果对资源使用了系统分配的托管标识，则必须重新启用这些标识。 如果使用了用户分配的托管标识，则必须重新创建这些标识。 重新启用或重新创建托管标识后，必须重新建立分配给这些标识的权限。 有关详细信息，请参阅[什么是 Azure 资源的托管标识？](../managed-identities-azure-resources/overview.md)。
 

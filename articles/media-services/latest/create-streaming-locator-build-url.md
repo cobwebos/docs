@@ -11,15 +11,16 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
-ms.openlocfilehash: 2972c60aa5874c21a6f7bce21020ad58b5f3b556
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e6e0d18665ac5fc28da2935c20b467f9d7662d8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78304558"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023239"
 ---
 # <a name="create-a-streaming-locator-and-build-urls"></a>创建流定位器并生成 URL
 
-在 Azure 媒体服务中，若要生成流式处理 URL，首先需要创建[流式处理定位符](streaming-locators-concept.md)。 然后连接[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)主机名和流式处理定位符  路径。 此示例使用默认的**流式处理终结点**  。 首次创建媒体服务帐户时，此默认的流式处理终结点  将处于停止状态，因此需要调用“Start”   来启动流式处理。
+在 Azure 媒体服务中，若要生成流式处理 URL，首先需要创建[流式处理定位符](streaming-locators-concept.md)。 然后连接[流式处理终结点](/rest/api/media/streamingendpoints)主机名和流式处理定位符  路径。 此示例使用默认的**流式处理终结点**  。 首次创建媒体服务帐户时，此默认的流式处理终结点  将处于停止状态，因此需要调用“Start”   来启动流式处理。
 
 本文演示如何使用 Java 和 .NET SDK 创建流式处理定位符并生成流式处理 URL。
 

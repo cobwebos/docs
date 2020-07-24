@@ -1,7 +1,7 @@
 ---
 title: 教程：将 SQL 托管实例添加到故障转移组
 titleSuffix: Azure SQL Managed Instance
-description: 本教程介绍如何在主和辅助 Azure SQL 托管实例之间创建故障转移组。
+description: 在本教程中，学习如何在主要和辅助 Azure SQL 托管实例之间创建故障转移组。
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: high-availability
@@ -12,16 +12,17 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: f1bf8eff4a6f518fc24c87c5fbd24984ef8f8b29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad0079a0a48178f1e662e2fdf1daa685ae768857
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718880"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024180"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>教程：将 SQL 托管实例添加到故障转移组
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-将 Azure SQL 托管实例的托管实例添加到故障转移组。 本文介绍如何执行以下操作：
+将 Azure SQL 托管实例服务的托管实例添加到故障转移组。 在本文中，你将学习如何：
 
 > [!div class="checklist"]
 > - 创建主托管实例。
@@ -29,14 +30,14 @@ ms.locfileid: "84718880"
 > - 测试故障转移。
 
   > [!NOTE]
-  > - 在学习本教程时，请确保使用[为 SQL 托管实例设置故障转移组的先决条件](../database/auto-failover-group-overview.md#enabling-geo-replication-between-managed-instances-and-their-vnets)来配置资源。 
-  > - 创建托管实例可能需要花费很长时间。 因此，本教程可能需要几个小时才能完成。 有关预配时间的详细信息，请参阅[SQL 托管实例管理操作](sql-managed-instance-paas-overview.md#management-operations)。 
-  > - 参与故障转移组的托管实例需要[Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)或两个连接的 VPN 网关。 本教程提供创建和连接 VPN 网关的步骤。 如果已配置 ExpressRoute，请跳过这些步骤。 
+  > - 学习本教程时，请确保按照[为 SQL 托管实例设置故障转移组的先决条件](../database/auto-failover-group-overview.md#enabling-geo-replication-between-managed-instances-and-their-vnets)来配置资源。 
+  > - 创建托管实例可能需要花费很长时间。 因此，本教程可能需要几个小时才能完成。 要详细了解预配时间，请参阅 [SQL 托管实例管理操作](sql-managed-instance-paas-overview.md#management-operations)。 
+  > - 参与故障转移组的托管实例需要 [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 或两个连接的 VPN 网关。 本教程提供创建和连接 VPN 网关的步骤。 如果已配置 ExpressRoute，请跳过这些步骤。 
 
 
 ## <a name="prerequisites"></a>先决条件
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 若要完成本教程，请确保做好以下准备： 
 
 - Azure 订阅。 如果还没有帐户，请[创建一个免费帐户](https://azure.microsoft.com/free/)。
@@ -46,17 +47,17 @@ ms.locfileid: "84718880"
 若要完成本教程，请确保准备好以下各项：
 
 - Azure 订阅。 如果还没有帐户，请[创建一个免费帐户](https://azure.microsoft.com/free/)。
-- [Azure PowerShell](/powershell/azureps-cmdlets-docs)
+- [Azure PowerShell](/powershell/azure/)
 
 ---
 
 
-## <a name="1---create-a-resource-group-and-primary-managed-instance"></a>1-创建资源组和主托管实例
+## <a name="1---create-a-resource-group-and-primary-managed-instance"></a>1 - 创建资源组和主托管实例
 
 此步骤将使用 Azure 门户或 PowerShell 为故障转移组创建资源组和主托管实例。 
 
 
-# <a name="portal"></a>[Portal](#tab/azure-portal) 
+# <a name="portal"></a>[门户](#tab/azure-portal) 
 
 使用 Azure 门户创建资源组和主托管实例。 
 
@@ -67,14 +68,14 @@ ms.locfileid: "84718880"
     ![选择 SQL 托管实例](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
 
 1. 在 "**创建 AZURE SQL 托管实例**" 页上的 "**基本**信息" 选项卡上：
-    1. 在“项目详细信息”下，从下拉列表中选择你的订阅，然后选择“创建新资源组”。    键入资源组的名称，例如 `myResourceGroup`。 
-    1. 在 " **SQL 托管实例详细信息**" 下，提供托管实例的名称，以及要将托管实例部署到的区域。 将**计算 + 存储**保留为默认值。 
-    1. 在“管理员帐户”下，提供管理员登录名（例如 `azureuser`）和复杂的管理员密码。  
+    1. 在“项目详细信息”下，从下拉列表中选择你的订阅，然后选择“创建新资源组”。   键入资源组的名称，例如 `myResourceGroup`。 
+    1. 在“SQL 托管实例详细信息”下，提供托管实例的名称以及要将该实例部署到的区域。 将“计算 + 存储”保留为默认值。 
+    1. 在“管理员帐户”下，提供管理员登录名（例如 `azureuser`）和复杂的管理员密码。 
 
-    ![创建主托管实例](./media/failover-group-add-instance-tutorial/primary-sql-mi-values.png)
+    ![创建辅助托管实例](./media/failover-group-add-instance-tutorial/primary-sql-mi-values.png)
 
-1. 将其余设置保留为默认值，然后选择 "**查看 + 创建**" 以查看 SQL 托管实例设置。 
-1. 选择“创建”以创建主托管实例。  
+1. 将其余设置保留为默认值，然后选择“查看 + 创建”，检查 SQL 托管实例设置。 
+1. 选择“创建”以创建主托管实例。 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -383,7 +384,7 @@ ms.locfileid: "84718880"
 
 本教程部分使用以下 PowerShell cmdlet：
 
-| 命令 | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建 Azure 资源组。  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 创建虚拟网络。  |
@@ -412,16 +413,16 @@ ms.locfileid: "84718880"
 若要验证主虚拟网络的子网范围，请执行以下步骤：
 
 1. 在 [Azure 门户](https://portal.azure.com)中导航到你的资源组，并选择主实例的虚拟网络。  
-2. 在“设置”下选择“子网”，并记下“地址范围”。    辅助托管实例的虚拟网络的子网地址范围不能与此重叠。 
+2. 在“设置”下选择“子网”，并记下“地址范围”。   辅助托管实例的虚拟网络的子网地址范围不能与此重叠。 
 
 
    ![主子网](./media/failover-group-add-instance-tutorial/verify-primary-subnet-range.png)
 
 若要创建虚拟网络，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源”并搜索“虚拟网络”。   
-1. 选择 Microsoft 发布的“虚拟网络”选项，然后在下一页选择“创建”。   
-1. 填写必需字段以配置辅助托管实例的虚拟网络，然后选择“创建”。  
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源”并搜索“虚拟网络”。 
+1. 选择 Microsoft 发布的“虚拟网络”选项，然后在下一页选择“创建”。  
+1. 填写必填字段以配置辅助托管实例的虚拟网络，然后选择“创建”。 
 
    下表显示了辅助虚拟网络所需的值：
 
@@ -439,7 +440,7 @@ ms.locfileid: "84718880"
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-只有在使用 Azure 门户部署 SQL 托管实例时，才需要执行此步骤。 如果使用 PowerShell，请直接跳到步骤 3。 
+仅当使用 Azure 门户部署 SQL 托管实例时，才需要执行此步骤。 如果使用 PowerShell，请直接跳到步骤 3。 
 
 ---
 
@@ -450,7 +451,7 @@ ms.locfileid: "84718880"
 - 是空的。 
 - 与主托管实例的子网和 IP 范围不同。 
 
-# <a name="portal"></a>[Portal](#tab/azure-portal) 
+# <a name="portal"></a>[门户](#tab/azure-portal) 
 
 使用 Azure 门户创建辅助托管实例。 
 
@@ -460,7 +461,7 @@ ms.locfileid: "84718880"
 
     ![选择 SQL 托管实例](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
 
-1. 在 "**创建 AZURE SQL 托管实例**" 页的 "**基本**信息" 选项卡上，填写必填字段以配置辅助托管实例。 
+1. 在“创建 Azure SQL 托管实例”页面的“基本信息”选项卡上，填写必填字段来配置辅助托管实例 。 
 
    下表显示了辅助托管实例所需的值：
  
@@ -468,24 +469,24 @@ ms.locfileid: "84718880"
     | --- | --- |
     | **订阅** |  主托管实例所在的订阅。 |
     | **资源组**| 主托管实例所在的资源组。 |
-    | **SQL 托管实例名称** | 新的辅助托管实例的名称，例如 `sql-mi-secondary` 。  | 
+    | **SQL 托管实例名称** | 新的辅助托管实例的名称，例如 `sql-mi-secondary`。  | 
     | **区域**| 辅助托管实例的位置。  |
     | **SQL 托管实例管理员登录名** | 要用于新辅助托管实例的登录名，例如 `azureuser`。 |
     | **密码** | 新辅助托管实例的管理员登录名使用的复杂密码。  |
     | &nbsp; | &nbsp; |
 
-1. 在“网络”选项卡下，对于“虚拟网络”，请从下拉列表中选择为辅助托管实例创建的虚拟网络。  
+1. 在“网络”选项卡下，对于“虚拟网络”，请从下拉列表中选择为辅助托管实例创建的虚拟网络。 
 
    ![辅助托管实例网络](./media/failover-group-add-instance-tutorial/networking-settings-for-secondary-mi.png)
 
-1. 在 "**其他设置**" 选项卡下，对于 "**异地复制**"，选择 **"是"** 以_用作故障转移辅助数据库_。 从下拉列表中选择主托管实例。 
+1. 在“其他设置”选项卡下，对于“异地复制”，请选择“用作故障转移辅助实例”旁边的“是”  。 从下拉列表中选择主托管实例。 
     
-   请确保排序规则和时区与主托管实例的排序规则和时区匹配。 在本教程中创建的主托管实例使用排序规则和时区的默认值 `SQL_Latin1_General_CP1_CI_AS` `(UTC) Coordinated Universal Time` 。 
+   确保排序规则和时区与主托管实例匹配。 在本教程中创建的主托管实例使用了默认的 `SQL_Latin1_General_CP1_CI_AS` 排序规则和 `(UTC) Coordinated Universal Time` 时区。 
 
-   ![辅助托管实例网络](./media/failover-group-add-instance-tutorial/secondary-mi-failover.png)
+   ![辅助托管实例网络连接](./media/failover-group-add-instance-tutorial/secondary-mi-failover.png)
 
-1. 选择“查看 + 创建”以检查辅助托管实例的设置。  
-1. 选择“创建”以创建辅助托管实例。  
+1. 选择“查看 + 创建”以检查辅助托管实例的设置。 
+1. 选择“创建”以创建辅助托管实例。 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -713,7 +714,7 @@ ms.locfileid: "84718880"
 
 本教程部分使用以下 PowerShell cmdlet：
 
-| 命令 | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建 Azure 资源组。  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 创建虚拟网络。  |
@@ -733,7 +734,7 @@ ms.locfileid: "84718880"
 
 ---
 
-## <a name="4---create-a-primary-gateway"></a>4-创建主网关 
+## <a name="4---create-a-primary-gateway"></a>4 - 创建主网关 
 
 对于要参与故障转移组的两个托管实例，必须在这两个托管实例的虚拟网络之间配置 ExpressRoute 或网关，以便能够进行网络通信。 如果选择配置 [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 而不是连接两个 VPN 网关，请跳到[步骤 7](#7---create-a-failover-group)。  
 
@@ -745,12 +746,12 @@ ms.locfileid: "84718880"
 使用 Azure 门户为主托管实例的虚拟网络创建网关。 
 
 
-1. 在 [Azure 门户](https://portal.azure.com)中转到你的资源组，并选择主托管实例的“虚拟网络”资源。  
-1. 在“设置”下选择“子网”，然后选择添加新的“网关子网”。    保留默认值。 
+1. 在 [Azure 门户](https://portal.azure.com)中转到你的资源组，并选择主托管实例的“虚拟网络”资源。 
+1. 在“设置”下选择“子网”，然后选择添加新的“网关子网”。   保留默认值。 
 
    ![为主托管实例添加网关](./media/failover-group-add-instance-tutorial/add-subnet-gateway-primary-vnet.png)
 
-1. 创建子网网关后，在左侧导航窗格中选择“创建资源”，然后在搜索框中键入 `Virtual network gateway`。  选择“Microsoft”发布的“虚拟网络网关”资源。******** 
+1. 创建子网网关后，在左侧导航窗格中选择“创建资源”，然后在搜索框中键入 `Virtual network gateway`。 选择“Microsoft”发布的“虚拟网络网关”资源。  
 
    ![创建新的虚拟网络网关](./media/failover-group-add-instance-tutorial/create-virtual-network-gateway.png)
 
@@ -763,20 +764,20 @@ ms.locfileid: "84718880"
     | **订阅** |  主托管实例所在的订阅。 |
     | **名称** | 虚拟网络网关的名称，例如 `primary-mi-gateway`。 | 
     | **区域** | 主托管实例所在的区域。 |
-    | **网关类型** | 选择“VPN”。  |
+    | **网关类型** | 选择“VPN”。 |
     | **VPN 类型** | 选择“基于路由”。 |
     | **SKU**| 保留默认值 `VpnGw1`。 |
     | **位置**| 主托管实例和主虚拟网络所在的位置。   |
     | **虚拟网络**| 选择在第 2 部分创建的虚拟网络，例如 `vnet-sql-mi-primary`。 |
-    | **公共 IP 地址**| 选择“新建”。  |
+    | **公共 IP 地址**| 选择“新建”。 |
     | **公共 IP 地址名称**| 输入 IP 地址的名称，例如 `primary-gateway-IP`。 |
     | &nbsp; | &nbsp; |
 
-1. 将其他值保留为默认值，然后选择“查看 + 创建”以检查虚拟网络网关的设置。 
+1. 将其他值保留为默认值，然后选择“查看 + 创建”以检查虚拟网络网关的设置。
 
    ![主网关设置](./media/failover-group-add-instance-tutorial/settings-for-primary-gateway.png)
 
-1. 选择“创建”以创建新的虚拟网络网关。  
+1. 选择“创建”以创建新的虚拟网络网关。 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -831,12 +832,12 @@ ms.locfileid: "84718880"
 
 
 ## <a name="5---create-secondary-gateway"></a>5 - 创建辅助网关 
-在此步骤中，使用 Azure 门户为辅助托管实例的虚拟网络创建网关。 
+此步骤使用 Azure 门户为辅助托管实例的虚拟网络创建网关。 
 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-使用 Azure 门户重复上一部分中的步骤，为辅助托管实例创建虚拟网络子网和网关。 填写必需字段，为辅助托管实例配置网关。 
+使用 Azure 门户重复上一部分中的步骤，为辅助托管实例创建虚拟网络子网和网关。 填写必填字段，为辅助托管实例配置网关。 
 
    下表显示了辅助托管实例的网关所需的值：
 
@@ -845,12 +846,12 @@ ms.locfileid: "84718880"
    | **订阅** |  辅助托管实例所在的订阅。 |
    | **名称** | 虚拟网络网关的名称，例如 `secondary-mi-gateway`。 | 
    | **区域** | 辅助托管实例所在的区域。 |
-   | **网关类型** | 选择“VPN”。  |
+   | **网关类型** | 选择“VPN”。 |
    | **VPN 类型** | 选择“基于路由”。 |
    | **SKU**| 保留默认值 `VpnGw1`。 |
    | **位置**| 辅助托管实例和辅助虚拟网络所在的位置。   |
    | **虚拟网络**| 选择在第 2 部分创建的虚拟网络，例如 `vnet-sql-mi-secondary`。 |
-   | **公共 IP 地址**| 选择“新建”。  |
+   | **公共 IP 地址**| 选择“新建”。 |
    | **公共 IP 地址名称**| 输入 IP 地址的名称，例如 `secondary-gateway-IP`。 |
    | &nbsp; | &nbsp; |
 
@@ -919,24 +920,24 @@ ms.locfileid: "84718880"
 使用 Azure 门户连接两个网关。 
 
 
-1. 在 [Azure 门户](https://portal.azure.com)中选择“创建资源”。 
-1. 在搜索框中键入 `connection`，然后按 Enter 进行搜索；随后你会转到 Microsoft 发布的“连接”资源。 
-1. 选择“创建”以创建连接。  
-1. 在“基本信息”选项卡上选择以下值，然后选择“确定”。   
-    1. 为“连接类型”选择 `VNet-to-VNet`。  
+1. 在 [Azure 门户](https://portal.azure.com)中选择“创建资源”。
+1. 在搜索框中键入 `connection`，然后按 Enter 进行搜索；随后你会转到 Microsoft 发布的“连接”资源。
+1. 选择“创建”以创建连接。 
+1. 在“基本信息”选项卡上选择以下值，然后选择“确定”。  
+    1. 为“连接类型”选择 `VNet-to-VNet`。 
     1. 从下拉列表中选择订阅。 
-    1. 在下拉托管实例中，选择 "SQL 的资源组"。 
-    1. 从下拉位置中选择主托管实例的位置。 
-1. 在“设置”选项卡上选择或输入以下值，然后选择“确定”：  
-    1. 为“第一个虚拟网络网关”选择主网络网关，例如 `Primary-Gateway`。   
-    1. 为“第二个虚拟网络网关”选择辅助网络网关，例如 `Secondary-Gateway`。  
-    1. 选中“建立双向连接”旁边的复选框。  
+    1. 在下拉列表中选择 SQL 托管实例的资源组。 
+    1. 在下拉列表中选择主托管实例的位置。 
+1. 在“设置”选项卡上选择或输入以下值，然后选择“确定”： 
+    1. 为“第一个虚拟网络网关”选择主网络网关，例如 `Primary-Gateway`。  
+    1. 为“第二个虚拟网络网关”选择辅助网络网关，例如 `Secondary-Gateway`。 
+    1. 选中“建立双向连接”旁边的复选框。 
     1. 保留默认的主连接名称，或将其重命名为所选的值。 
-    1. 提供连接的“共享密钥(PSK)”，例如 `mi1m2psk`。  
+    1. 提供连接的“共享密钥(PSK)”，例如 `mi1m2psk`。 
 
    ![创建网关连接](./media/failover-group-add-instance-tutorial/create-gateway-connection.png)
 
-1. 在“摘要”选项卡上查看双向连接的设置，然后选择“确定”以创建连接。   
+1. 在“摘要”选项卡上查看双向连接的设置，然后选择“确定”以创建连接。  
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -962,7 +963,7 @@ ms.locfileid: "84718880"
 
 本教程部分使用以下 PowerShell cmdlet：
 
-| 命令 | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | 创建两个虚拟网络网关之间的连接。   |
 
@@ -977,17 +978,17 @@ ms.locfileid: "84718880"
 使用 Azure 门户创建故障转移组。 
 
 
-1. 在[Azure 门户](https://portal.azure.com)的左侧菜单中选择 " **Azure SQL** "。 如果**AZURE SQL**不在列表中，请选择 "**所有服务**"，然后 `Azure SQL` 在 "搜索" 框中键入。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
+1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”。 如果**AZURE SQL**不在列表中，请选择 "**所有服务**"，然后 `Azure SQL` 在 "搜索" 框中键入。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
 1. 选择在第一部分中创建的主托管实例，例如 `sql-mi-primary`。 
-1. 在 "**设置**" 下，导航到 "**实例故障转移组**"，然后选择 "**添加组**" 打开 "**实例故障转移组**" 页。 
+1. 在“设置”下，导航到“实例故障转移组”，然后选择“添加组”，打开“实例故障转移组”页面   。 
 
    ![添加故障转移组](./media/failover-group-add-instance-tutorial/add-failover-group.png)
 
-1. 在 "**实例故障转移组**" 页上，键入故障转移组的名称，例如 `failovergrouptutorial` 。 然后从下拉菜单中选择辅助托管实例，如 `sql-mi-secondary` 。 选择“创建”以创建故障转移组。  
+1. 在“实例故障转移组”页面上，键入故障转移组的名称，例如 `failovergrouptutorial`。 然后，从下拉列表中选择辅助托管实例，例如 `sql-mi-secondary`。 选择“创建”以创建故障转移组。 
 
    ![创建故障转移组](./media/failover-group-add-instance-tutorial/create-failover-group.png)
 
-1. 故障转移组部署完成后，你将返回到“故障转移组”页。  
+1. 故障转移组部署完成后，你将返回到“故障转移组”页。 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -1002,9 +1003,9 @@ ms.locfileid: "84718880"
    $failoverGroup
    ```
 
-本教程部分使用以下 PowerShell cmdlet：
+本教程的此部分使用以下 PowerShell cmdlet：
 
-| 命令 | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| 创建新的 Azure SQL 托管实例故障转移组。  |
 
@@ -1020,17 +1021,17 @@ ms.locfileid: "84718880"
 使用 Azure 门户测试故障转移。 
 
 
-1. 在 [Azure 门户](https://portal.azure.com)中导航到你的辅助托管实例，然后在“设置”下选择“实例故障转移组”   。 
+1. 在 [Azure 门户](https://portal.azure.com)中导航到你的辅助托管实例，然后在“设置”下选择“实例故障转移组”。 
 1. 查看哪个托管实例是主实例，哪个托管实例是辅助实例。 
-1. 选择“故障转移”，然后在有关正在断开 TDS 会话的警告中选择“是”。   
+1. 选择“故障转移”，然后在有关正在断开 TDS 会话的警告中选择“是”。  
 
    ![将故障转移组故障转移](./media/failover-group-add-instance-tutorial/failover-mi-failover-group.png)
 
-1. 查看哪个托管实例是主实例，哪个托管实例是辅助数据库。 如果故障转移成功，这两个实例的角色应会交换。 
+1. 查看哪个托管实例是主实例，哪个是辅助实例。 如果故障转移成功，这两个实例的角色应会交换。 
 
    ![故障转移后托管实例的角色已交换](./media/failover-group-add-instance-tutorial/mi-switched-after-failover.png)
 
-1. 转到新的_辅助_托管实例，再次选择“故障转移”，将主实例故障回复为主角色  。 
+1. 转到新的_辅助_托管实例，再次选择“故障转移”，将主实例故障回复为主角色。 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -1050,7 +1051,7 @@ ms.locfileid: "84718880"
    ```
 
 
-将故障转移组还原回主服务器：
+将故障转移组还原到主服务器：
 
    ```powershell-interactive
    # Verify the current primary role
@@ -1070,7 +1071,7 @@ ms.locfileid: "84718880"
 
 本教程的此部分使用以下 PowerShell cmdlet：
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | 获取或列出 SQL 托管实例故障转移组。| 
 | [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | 执行 SQL 托管实例故障转移组的故障转移。 | 
@@ -1080,18 +1081,18 @@ ms.locfileid: "84718880"
 
 
 ## <a name="clean-up-resources"></a>清理资源
-清除资源，方法是先删除托管实例，然后依次删除虚拟群集，然后是资源组。 
+若要清理资源，请依次删除托管实例、虚拟群集、所有剩余资源和资源组。 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 1. 在 [Azure 门户](https://portal.azure.com)中导航到你的资源组。 
-1. 选择托管实例，然后选择“删除”。 在文本框中键入 `yes` 以确认要删除该资源，然后选择“删除”。 此过程可能需要一段时间才能在后台完成，在完成之前，你将无法删除“虚拟群集”或任何其他从属资源。 监视 "**活动**" 选项卡中的 "删除"，确认已删除托管实例。 
-1. 删除托管实例后，请将虚拟群集删除，方法是：在资源组中选择“虚拟群集”，然后选择“删除”。 在文本框中键入 `yes` 以确认要删除该资源，然后选择“删除”。 
-1. 删除所有剩余资源。 在文本框中键入 `yes` 以确认要删除该资源，然后选择“删除”。 
-1. 删除资源组：选择“删除资源组”，键入资源组的名称 `myResourceGroup`，然后选择“删除”。   
+1. 选择托管实例，然后选择“删除”。 在文本框中键入 `yes` 以确认你要删除该资源，然后选择“删除”。 此过程可能需要一段时间才能在后台完成，在完成之前，你将无法删除“虚拟群集”或任何其他从属资源。 在“活动”选项卡中监视删除过程，确认托管实例已被删除。 
+1. 删除托管实例后，请将虚拟群集删除，方法是：在资源组中选择“虚拟群集”，然后选择“删除”。 在文本框中键入 `yes` 以确认你要删除该资源，然后选择“删除”。 
+1. 删除任何剩余资源。 在文本框中键入 `yes` 以确认你要删除该资源，然后选择“删除”。 
+1. 删除资源组：选择“删除资源组”，键入资源组的名称 `myResourceGroup`，然后选择“删除”。  
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-需要删除资源组两次。 第一次删除资源组将删除托管实例和虚拟群集，但随后会失败，并出现错误消息 `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'` 。 再次运行 Remove-AzResourceGroup 命令，删除所有残留资源以及资源组。
+需要删除资源组两次。 首次删除资源组时将一并删除托管实例和虚拟群集，但随后会失败，并显示错误消息 `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'`。 再次运行 Remove-AzResourceGroup 命令，删除所有残留资源以及资源组。
 
 ```powershell-interactive
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
@@ -1113,7 +1114,7 @@ Write-host "Removing residual resources and resource group..."
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 [!code-powershell-interactive[main](../../../powershell_scripts/sql-database/failover-groups/add-managed-instance-to-failover-group-az-ps.ps1 "Add SQL Managed Instance to a failover group")]
 
-此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令。 表中的每条命令链接到特定于命令的文档。
 
 | Command | 说明 |
 |---|---|
@@ -1157,10 +1158,10 @@ Write-host "Removing residual resources and resource group..."
 > - 创建辅助托管实例作为[故障转移组](../database/auto-failover-group-overview.md)的一部分。 
 > - 测试故障转移。
 
-转到下一个快速入门，了解如何连接到 SQL 托管实例，以及如何将数据库还原到 SQL 托管实例： 
+继续学习下一篇快速入门，了解如何连接到 SQL 托管实例，以及如何将数据库还原到 SQL 托管实例： 
 
 > [!div class="nextstepaction"]
-> [连接到 SQL 托管实例](connect-vm-instance-configure.md) 
+> [连接到 SQL 托管实例](connect-vm-instance-configure.md)
 > [将数据库还原到 SQL 托管实例](restore-sample-database-quickstart.md)
 
 

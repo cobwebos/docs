@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: daberry
-ms.openlocfilehash: f85389d8fc2269b346df22854bb7ddce08844a88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f48963a4d18e80cb67bfbbdc532d34f89b8b5d8a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83118218"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028441"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>排查在 Azure 中新建 Linux 虚拟机时遇到的 Resource Manager 部署问题
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -35,7 +36,7 @@ ms.locfileid: "83118218"
 
 [查看部署操作](../../azure-resource-manager/templates/deployment-history.md)
 
-[通过查看活动日志管理 Azure 资源](../../resource-group-audit.md)
+[通过查看活动日志管理 Azure 资源](../../azure-resource-manager/management/view-activity-logs.md)
 
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
@@ -87,5 +88,4 @@ ms.locfileid: "83118218"
   * 将新 VM 添加到同一虚拟网络。
 
 ## <a name="next-steps"></a>后续步骤
-如果在 Azure 中启动已停止的 Linux VM 或调整现有 Linux VM 的大小时遇到问题，请参阅[排查在 Azure 中重新启动现有 Linux 虚拟机或调整其大小时遇到的 Resource Manager 部署问题](../linux/restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-
+如果在 Azure 中启动已停止的 Linux VM 或调整现有 Linux VM 的大小时遇到问题，请参阅[排查在 Azure 中重新启动现有 Linux 虚拟机或调整其大小时遇到的 Resource Manager 部署问题](./troubleshoot-deploy-vm-linux.md?toc=/azure/virtual-machines/linux/toc.json)。

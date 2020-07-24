@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
-ms.openlocfilehash: fd4a93f4c0b2f052fe5c9890bee01e5da0dcead2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 171b362cee2696375611d7967649889a74ca5f71
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81460947"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028837"
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>如何在 Azure 中标记 Linux 虚拟机
 本文介绍在 Azure 中通过 Resource Manager 部署模型标记 Linux 虚拟机的不同方式。 标记是用户定义的键/值对，可直接放置在资源或资源组中。 针对每个资源和资源组，Azure 当前支持最多 50 个标记。 标记可以在创建时放置在资源中或添加到现有资源中。 请注意，只有通过 Resource Manager 部署模型创建的资源支持标记。
@@ -58,7 +58,7 @@ az vm update --resource-group MyResourceGroup --name MyTestVM --remove tags.myNe
 * 若要详细了解如何标记 Azure 资源，请参阅 [Azure 资源管理器概述][Azure Resource Manager Overview]和 [使用标记来组织 Azure 资源][Using Tags to organize your Azure Resources]。
 * 要了解标记如何帮助你管理 Azure 资源的使用，请参阅 [Understanding your Azure Bill][Understanding your Azure Bill]（了解 Azure 帐单）和 [Gain insights into your Microsoft Azure resource consumption][Gain insights into your Microsoft Azure resource consumption]（深入了解 Microsoft Azure 资源消耗）。
 
-[Azure CLI environment]: ../../azure-resource-manager/xplat-cli-azure-resource-manager.md
+[Azure CLI environment]: ../../azure-resource-manager/management/manage-resources-cli.md
 [Azure Resource Manager Overview]: ../../azure-resource-manager/management/overview.md
 [Using Tags to organize your Azure Resources]: ../../azure-resource-manager/management/tag-resources.md
 [Understanding your Azure Bill]:../../cost-management-billing/understand/review-individual-bill.md

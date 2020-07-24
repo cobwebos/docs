@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: f594d4467e64ead40ff3c26aaf3e3a44cb673a98
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e2bf63558b4bbd55262aa16f70bfba934a42c3ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250288"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024956"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>如何在 Azure API 管理中将事件记录到 Azure 事件中心
 事件中心是一个高度可缩放的引入服务，每秒可以引入数百万的事件，使用户能够处理和分析连接设备和应用程序生成的海量数据。 事件中心充当事件管道的“前门”，将数据收集到事件中心后，可以使用任何实时分析提供程序或批处理/存储适配器来转换和存储这些数据。 事件中心可将事件流的生成与这些事件的使用分离开来，因此，事件使用者可以根据自己的计划访问事件。
@@ -66,6 +66,9 @@ ms.locfileid: "86250288"
 可使用返回字符串作为 `log-to-eventhub` 元素值的任何表达式。 在此示例中，JSON 格式的字符串包含记录的日期和时间、服务名称、请求 ID、请求 IP 地址和操作名称。
 
 单击“保存”保存更新后的策略配置。 保存后，策略立即处于活动状态，并且事件记录到指定的事件中心。
+
+> [!NOTE]
+> 此 API 管理策略可向事件中心发送的最大受支持消息大小为 200 kb。 如果发送到事件中心的消息大于 200 KB，将自动截断该消息，并且截断的消息将传输到事件中心。
 
 ## <a name="preview-the-log-in-event-hubs-by-using-azure-stream-analytics"></a>使用 Azure 流分析在事件中心预览日志
 

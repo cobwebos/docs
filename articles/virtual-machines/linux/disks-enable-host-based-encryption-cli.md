@@ -8,12 +8,12 @@ ms.date: 07/10/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: e0773515809ffdc50167a3cba1f767ac8635bcee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9f61835887c26e41b3338286065df4ca9d05f513
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502565"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029002"
 ---
 # <a name="enable-end-to-end-encryption-using-encryption-at-host---azure-cli"></a>使用主机上的加密启用端到端加密-Azure CLI
 
@@ -43,34 +43,144 @@ ms.locfileid: "86502565"
 
 [!INCLUDE [virtual-machines-disks-encryption-create-key-vault-cli](../../../includes/virtual-machines-disks-encryption-create-key-vault-cli.md)]
 
-## <a name="enable-encryption-at-host-for-disks-attached-to-vm-and-virtual-machine-scale-sets"></a>在主机上为附加到 VM 和虚拟机规模集的磁盘启用加密
+## <a name="examples"></a>示例
 
-可以通过在 Vm 或虚拟机规模集 securityProfile 下使用 API 版本**2020-06-01**及更高版本设置新的属性 EncryptionAtHost，在主机上启用加密。
+### <a name="create-a-vm-with-encryption-at-host-enabled-with-customer-managed-keys"></a>在启用了客户管理密钥的主机上创建具有加密的 VM。 
 
-`"securityProfile": { "encryptionAtHost": "true" }`
-
-## <a name="example-scripts"></a>示例脚本
-
-### <a name="enable-encryption-at-host-for-disks-attached-to-a-vm-with-customer-managed-keys"></a>在主机上为使用客户托管密钥连接到 VM 的磁盘启用加密
-
-使用前面创建的 DiskEncryptionSet 的资源 URI 创建具有托管磁盘的 VM。
-
-替换 `<yourPassword>` 、 `<yourVMName>` 、 `<yourVMSize>` 、 `<yourDESName>` 、 `<yoursubscriptionID>` 、 `<yourResourceGroupName>` 和 `<yourRegion>` ，然后运行该脚本。
+使用之前创建的 DiskEncryptionSet 的资源 URI 创建具有托管磁盘的 VM，以使用客户管理的密钥加密 OS 和数据磁盘的缓存。 临时磁盘用平台托管密钥进行加密。 
 
 ```azurecli
-az group deployment create -g <yourResourceGroupName> \
---template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/EncryptionAtHost/CreateVMWithDisksEncryptedAtHostWithCMK.json" \
---parameters "virtualMachineName=<yourVMName>" "adminPassword=<yourPassword>" "vmSize=<yourVMSize>" "diskEncryptionSetId=/subscriptions/<yoursubscriptionID>/resourceGroups/<yourResourceGroupName>/providers/Microsoft.Compute/diskEncryptionSets/<yourDESName>" "region=<yourRegion>"
+rgName=yourRGName
+vmName=yourVMName
+location=eastus
+vmSize=Standard_DS2_v2
+image=UbuntuLTS 
+diskEncryptionSetName=yourDiskEncryptionSetName
+
+diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
+
+az vm create -g $rgName \
+-n $vmName \
+-l $location \
+--encryption-at-host \
+--image $image \
+--size $vmSize \
+--generate-ssh-keys \
+--os-disk-encryption-set $diskEncryptionSetId \
+--data-disk-sizes-gb 128 128 \
+--data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
 ```
 
-### <a name="enable-encryption-at-host-for-disks-attached-to-a-vm-with-platform-managed-keys"></a>在主机上为使用平台管理密钥连接到 VM 的磁盘启用加密
+### <a name="create-a-vm-with-encryption-at-host-enabled-with-platform-managed-keys"></a>在启用了平台管理的密钥的主机上创建具有加密的 VM。 
 
-请替换 `<yourPassword>` 、、 `<yourVMName>` `<yourVMSize>` 、 `<yourResourceGroupName>` 和 `<yourRegion>` ，然后运行该脚本。
+创建一个在主机上启用了加密的 VM，以便使用平台管理的密钥加密 OS/数据磁盘和临时磁盘的缓存。 
 
 ```azurecli
-az group deployment create -g <yourResourceGroupName> \
---template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/EncryptionAtHost/CreateVMWithDisksEncryptedAtHostWithPMK.json" \
---parameters "virtualMachineName=<yourVMName>" "adminPassword=<yourPassword>" "vmSize=<yourVMSize>" "region=<yourRegion>"
+rgName=yourRGName
+vmName=yourVMName
+location=eastus
+vmSize=Standard_DS2_v2
+image=UbuntuLTS 
+
+az vm create -g $rgName \
+-n $vmName \
+-l $location \
+--encryption-at-host \
+--image $image \
+--size $vmSize \
+--generate-ssh-keys \
+--data-disk-sizes-gb 128 128 \
+```
+
+### <a name="update-a-vm-to-enable-encryption-at-host"></a>更新 VM 以便在主机上启用加密。 
+
+```azurecli
+rgName=yourRGName
+vmName=yourVMName
+
+az vm update -n $vmName \
+-g $rgName \
+--set securityProfile.encryptionAtHost=true
+```
+
+### <a name="check-the-status-of-encryption-at-host-for-a-vm"></a>在主机上检查 VM 的加密状态
+
+```azurecli
+rgName=yourRGName
+vmName=yourVMName
+
+az vm show -n $vmName \
+-g $rgName \
+--query [securityProfile.encryptionAtHost] -o tsv
+```
+
+### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-customer-managed-keys"></a>使用客户托管密钥启用的主机上的加密创建虚拟机规模集。 
+
+使用之前创建的 DiskEncryptionSet 的资源 URI 创建具有托管磁盘的虚拟机规模集，以便使用客户管理的密钥加密 OS 和数据磁盘的缓存。 临时磁盘用平台托管密钥进行加密。 
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMSSName
+location=westus2
+vmSize=Standard_DS3_V2
+image=UbuntuLTS 
+diskEncryptionSetName=yourDiskEncryptionSetName
+
+diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
+
+az vmss create -g $rgName \
+-n $vmssName \
+--encryption-at-host \
+--image UbuntuLTS \
+--upgrade-policy automatic \
+--admin-username azureuser \
+--generate-ssh-keys \
+--os-disk-encryption-set $diskEncryptionSetId \
+--data-disk-sizes-gb 64 128 \
+--data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
+```
+
+### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-platform-managed-keys"></a>使用启用了平台托管密钥的主机上的加密创建虚拟机规模集。 
+
+创建在主机上启用了加密的虚拟机规模集，以便使用平台管理的密钥加密 OS/数据磁盘和临时磁盘的缓存。 
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMSSName
+location=westus2
+vmSize=Standard_DS3_V2
+image=UbuntuLTS 
+
+az vmss create -g $rgName \
+-n $vmssName \
+--encryption-at-host \
+--image UbuntuLTS \
+--upgrade-policy automatic \
+--admin-username azureuser \
+--generate-ssh-keys \
+--data-disk-sizes-gb 64 128 \
+```
+
+### <a name="update-a-virtual-machine-scale-set-to-enable-encryption-at-host"></a>更新虚拟机规模集以便在主机上启用加密。 
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMName
+
+az vmss update -n $vmssName \
+-g $rgName \
+--set virtualMachineProfile.securityProfile.encryptionAtHost=true
+```
+
+### <a name="check-the-status-of-encryption-at-host-for-a-virtual-machine-scale-set"></a>在主机上检查虚拟机规模集的加密状态
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMName
+
+az vmss show -n $vmssName \
+-g $rgName \
+--query [virtualMachineProfile.securityProfile.encryptionAtHost] -o tsv
 ```
 
 ## <a name="finding-supported-vm-sizes"></a>查找支持的 VM 大小

@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 78899f44ba6610f17d19b025f61d968a629c8ad6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b7a81357cc6ee2608d2acd3051dcac3e5d0e07e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565891"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023460"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT 中心术语表
 
@@ -64,7 +64,7 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-[Azure PowerShell](/powershell/azure/overview) 是一个 cmdlet 集合，可用于通过 Windows PowerShell 管理 Azure。 可以使用 cmdlet 来创建、测试、部署和管理通过 Azure 平台传送的解决方案和服务。
+[Azure PowerShell](/powershell/azure/) 是一个 cmdlet 集合，可用于通过 Windows PowerShell 管理 Azure。 可以使用 cmdlet 来创建、测试、部署和管理通过 Azure 平台传送的解决方案和服务。
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 

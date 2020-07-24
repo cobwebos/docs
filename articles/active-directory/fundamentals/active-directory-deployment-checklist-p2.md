@@ -3,19 +3,20 @@ title: Azure AD 部署清单
 description: Azure Active Directory 功能部署清单
 services: active-directory
 ms.service: active-directory
-ms.subservice: ''
+ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f84226a631014b51338d47887fe3bafc969dc571
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 082e4a35582e9fe643aefc13c0c46a1c75f443e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77063639"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025381"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 功能部署指南
 
@@ -52,10 +53,11 @@ ms.locfileid: "77063639"
 | [对基于云的用户帐户禁用定期密码重置](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | 定期密码重置会促使用户增加其现有密码。 使用 Microsoft 密码指导文档中的指导原则，并将相同的本地策略运用到仅限云的用户。 | Azure AD Free |
 | [自定义 Azure Active Directory 智能锁定](../authentication/howto-password-smart-lockout.md) | 停止锁定从基于云的用户复制到本地 Active Directory 用户 | |
 | [为 AD FS 启用 Extranet 智能锁定](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) | AD FS Extranet 锁定可以防范暴力密码猜测攻击，同时可让有效的 AD FS 用户继续使用其帐户。 | |
+| [使用条件性访问阻止旧身份验证 Azure AD](../conditional-access/block-legacy-authentication.md) | 阻止旧的身份验证协议，如 POP、SMTP、IMAP 和 MAPI，它们不能强制实施多重身份验证，使其成为攻击者的首选入口点。 | Azure AD Premium P1 |
 | [使用条件访问策略部署 Azure AD 多重身份验证](../authentication/howto-mfa-getstarted.md) | 要求用户在使用条件访问策略访问敏感应用程序时执行双重验证。 | Azure AD Premium P1 |
 | [Azure Active Directory 标识保护](../identity-protection/overview-identity-protection.md) | 针对组织中的用户启用有风险登录和已泄密凭据的跟踪。 | Azure AD Premium P2 |
 | [使用风险检测来触发多重身份验证和密码更改](../authentication/tutorial-risk-based-sspr-mfa.md) | 启用可以触发多重身份验证、密码重置和基于风险阻止登录等事件的自动化功能。 | Azure AD Premium P2 |
-| [启用自助密码重置和 Azure AD 多重身份验证的聚合注册（预览版）](../authentication/concept-registration-mfa-sspr-converged.md) | 允许用户从 Azure 多重身份验证和自助式密码重置的一个常用体验进行注册。 | Azure AD Premium P1 |
+| [启用用于自助服务密码重置和 Azure AD 多重身份验证的组合注册](../authentication/concept-registration-mfa-sspr-combined.md) | 允许用户从 Azure 多重身份验证和自助式密码重置的一个常用体验进行注册。 | Azure AD Premium P1 |
 
 ## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>阶段 2：导入用户、启用同步和管理设备
 

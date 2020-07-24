@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b40c284c8d034d92f29eb25d754d9294ac2e3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d1a4495b1d637b1cf8592f8c17e63ad456ea3c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386770"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027455"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>将自定义审批工作流添加到自助注册
 
@@ -61,11 +61,11 @@ ms.locfileid: "85386770"
 
 接下来，你将为自助注册用户流[创建 API 连接器](self-service-sign-up-add-api-connector.md#create-an-api-connector)。 你的审批系统 API 需要两个连接器和对应的终结点，如下面所示的示例。 这些 API 连接器执行以下操作：
 
-- **检查审批状态**。 用户使用标识提供者登录后立即向审批系统发送调用，以检查用户是否具有现有审批请求或已被拒绝。 如果批准系统仅执行自动批准决策，则可能不需要此 API 连接器。 下面是 "检查批准状态" API 连接器的示例。
+- **检查审批状态**。 用户使用标识提供者登录后立即向审批系统发送调用，以检查用户是否具有现有审批请求或已被拒绝。 如果批准系统仅执行自动批准决策，则可能不需要此 API 连接器。 "检查批准状态" API 连接器的示例。
 
   ![检查审批状态 API 连接器配置](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
 
-- **请求批准**-在用户完成 "属性收集" 页后，但在创建用户帐户之前，向审批系统发送调用以请求批准。 可以自动授予或手动查看批准请求。 下面是 "请求批准" API 连接器的示例。 选择**要发送**的任何声明，批准系统需要做出批准决定。
+- **请求批准**-在用户完成 "属性收集" 页后，但在创建用户帐户之前，向审批系统发送调用以请求批准。 可以自动授予或手动查看批准请求。 "请求批准" API 连接器的示例。 选择**要发送**的任何声明，批准系统需要做出批准决定。
 
   ![请求审批 API 连接器配置](./media/self-service-sign-up-add-approvals/create-approval-request-api-connector-config-alt.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "85386770"
 
    ![向用户流添加 Api](./media/self-service-sign-up-add-approvals/api-connectors-user-flow-api.png)
 
-6. 选择“保存”。
+6. 选择“保存” 。
 
 ## <a name="control-the-sign-up-flow-with-api-responses"></a>用 API 响应控制注册流
 
@@ -94,14 +94,14 @@ ms.locfileid: "85386770"
 
 ### <a name="request-and-responses-for-the-check-approval-status-api-connector"></a>"检查批准状态" API 连接器的请求和响应
 
-下面是 API 从 "检查批准状态" API 连接器接收的请求的示例：
+API 从 "检查批准状态" API 连接器接收的请求的示例：
 
 ```http
 POST <Approvals-API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@outlook.com",
+ "email": "johnsmith@outlook.com",
  "identities": [
      {
      "signInType":"federated",
@@ -119,7 +119,7 @@ Content-type: application/json
 
 - 用户以前没有请求批准。
 
-下面是继续响应的一个示例：
+继续响应示例：
 
 ```http
 HTTP/1.1 200 OK
@@ -166,14 +166,14 @@ Content-type: application/json
 
 ### <a name="request-and-responses-for-the-request-approval-api-connector"></a>请求和响应 "请求批准" API 连接器
 
-下面是 API 从 "请求批准" API 连接器接收的 HTTP 请求的示例：
+来自 "请求批准" API 连接器的 API 收到的 HTTP 请求示例：
 
 ```http
 POST <Approvals-API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@outlook.com",
+ "email": "johnsmith@outlook.com",
  "identities": [
      {
      "signInType":"federated",
@@ -194,7 +194,7 @@ Content-type: application/json
 
 - 用户可以**_自动获得批准_**。
 
-下面是继续响应的一个示例：
+继续响应示例：
 
 ```http
 HTTP/1.1 200 OK
@@ -257,14 +257,14 @@ Content-type: application/json
 
 如果用户使用 Google 或 Facebook 帐户登录，则可以使用[用户创建 API](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0&tabs=http)。
 
-1. 审批系统使用将从用户流接收 HTTP 请求。
+1. 审批系统从用户流接收 HTTP 请求。
 
 ```http
 POST <Approvals-API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@outlook.com",
+ "email": "johnsmith@outlook.com",
  "identities": [
      {
      "signInType":"federated",
@@ -303,11 +303,11 @@ Content-type: application/json
 }
 ```
 
-| 参数                                           | 必需 | 描述                                                                                                                                                            |
+| 参数                                           | 必须 | 说明                                                                                                                                                            |
 | --------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| userPrincipalName                                   | 是      | 可以通过将 `email_address` 声明发送到 API，将该 `@` 字符替换 `_` 为，并预先将其挂起到来生成 `#EXT@<tenant-name>.onmicrosoft.com` 。 |
+| userPrincipalName                                   | 是      | 可以通过将 `email` 声明发送到 API，将该 `@` 字符替换 `_` 为，并预先将其挂起到来生成 `#EXT@<tenant-name>.onmicrosoft.com` 。 |
 | accountEnabled                                      | 是      | 必须设置为 `true`。                                                                                                                                                 |
-| mail                                                | 是      | 等效于 `email_address` 发送到 API 的声明。                                                                                                               |
+| mail                                                | 是      | 等效于 `email` 发送到 API 的声明。                                                                                                               |
 | userType                                            | 是      | 必须是 `Guest`。 将此用户指定为来宾用户。                                                                                                                 |
 | identities                                          | 是      | 联合标识信息。                                                                                                                                    |
 | \<otherBuiltInAttribute>                            | 否       | 其他内置属性 `displayName` ，如、 `city` 和其他。 参数名称与 API 连接器发送的参数相同。                            |
@@ -324,7 +324,7 @@ POST <Approvals-API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@fabrikam.onmicrosoft.com",
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
  "displayName": "John Smith",
  "city": "Redmond",
  "extension_<extensions-app-id>_CustomAttribute": "custom attribute value",
@@ -332,7 +332,7 @@ Content-type: application/json
 }
 ```
 
-2. 审批系统使用 `email_address` API 连接器提供的来创建邀请。
+2. 审批系统使用 `email` API 连接器提供的来创建邀请。
 
 ```http
 POST https://graph.microsoft.com/v1.0/invitations
@@ -344,7 +344,7 @@ Content-type: application/json
 }
 ```
 
-下面是响应的示例：
+响应示例：
 
 ```http
 HTTP/1.1 201 OK

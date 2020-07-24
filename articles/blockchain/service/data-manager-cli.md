@@ -4,12 +4,12 @@ description: 使用 Azure CLI 创建和管理 Azure 区块链服务的区块链�
 ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: b7b897f35cb864e2a1fa904bbb3ec13b56986598
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f067f4413f6ad8541cd36a7581f9243bed4e195f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200454"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023732"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>使用 Azure CLI 配置区块链数据管理器
 
@@ -25,7 +25,7 @@ ms.locfileid: "85200454"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 安装最新的[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)并使用登录 `az login` 。
+* 安装最新的[Azure CLI](/cli/azure/install-azure-cli)并使用登录 `az login` 。
 * 完成[快速入门：使用 Visual Studio Code 连接到 Azure 区块链 Service 联合会网络](connect-vscode.md)。 使用区块链数据管理器时，建议使用 Azure 区块链服务*标准*层。
 * 创建[事件网格主题](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
 * 了解 [Azure 事件网格中的事件处理程序](../../event-grid/event-handlers.md)
@@ -36,11 +36,11 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/bash](https://shell.azure.com/bash) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。 
 
-如果希望在本地安装并使用 CLI，则本快速入门需要 Azure CLI 2.0.51 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+如果希望在本地安装并使用 CLI，则本快速入门需要 Azure CLI 2.0.51 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](https://docs.microsoft.com/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
+使用“[az group create](/cli/azure/group)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
 
 ```azurecli-interactive
 az group create --name myRG --location eastus
@@ -79,7 +79,7 @@ az resource create \
 }
 ```
 
-| 元素 | 描述 |
+| 元素 | 说明 |
 |---------|-------------|
 | location | 要在其中创建观察程序资源的区域 |
 | properties | 创建观察程序资源时要设置的属性 |
@@ -125,7 +125,7 @@ az resource create \
 |-----------|-------------|
 | resource-group | 要在其中创建输入资源的资源组名称。 |
 | name | 输入的名称。 |
-| 命名空间 | 使用**区块链**提供程序命名空间。 |
+| namespace | 使用**区块链**提供程序命名空间。 |
 | 资源类型 | 区块链数据管理器输入的资源类型为**输入**。 |
 | 父级 (parent) | 与输入关联的观察程序的路径。 例如，**观察程序/mywatcher**。 |
 | is-full-object | 指示属性包含用于输入资源的选项。 |
@@ -147,7 +147,7 @@ az resource create \
 }
 ```
 
-| 元素 | 描述 |
+| 元素 | 说明 |
 |---------|-------------|
 | location | 要在其中创建输入资源的区域。 |
 | #a2 | Azure 区块链服务成员的分类帐类型。 目前支持**以太坊**。 |
@@ -197,7 +197,7 @@ az resource create \
 |-----------|-------------|
 | resource-group | 要在其中创建输出资源的资源组名称。 |
 | name | 输出的名称。 |
-| 命名空间 | 使用**区块链**提供程序命名空间。 |
+| namespace | 使用**区块链**提供程序命名空间。 |
 | 资源类型 | 区块链数据管理器输出的资源类型为**输出**。 |
 | 父级 (parent) | 与输出关联的观察程序的路径。 例如，**观察程序/mywatcher**。 |
 | is-full-object | 指示属性包含用于输出资源的选项。 |
@@ -219,7 +219,7 @@ az resource create \
 }
 ```
 
-| 元素 | 描述 |
+| 元素 | 说明 |
 |---------|-------------|
 | location | 要在其中创建输出资源的区域。 |
 | outputType | 输出类型。 目前支持**EventGrid** 。 |
@@ -274,7 +274,7 @@ az resource create \
 |-----------|-------------|
 | resource-group | 要在其中创建应用程序资源的资源组名称。 |
 | name | 应用程序的名称。 |
-| 命名空间 | 使用**区块链**提供程序命名空间。 |
+| namespace | 使用**区块链**提供程序命名空间。 |
 | 资源类型 | 区块链数据管理器应用程序的资源类型是**项目**。 |
 | 父级 (parent) | 与应用程序关联的观察程序的路径。 例如，**观察程序/mywatcher**。 |
 | is-full-object | 指示属性包含应用程序资源的选项。 |
@@ -301,7 +301,7 @@ az resource create \
 }
 ```
 
-| 元素 | 描述 |
+| 元素 | 说明 |
 |---------|-------------|
 | location | 要在其中创建应用程序资源的区域。 |
 | artifactType | 应用程序类型。 目前支持**EthereumSmartContract** 。 |
@@ -347,7 +347,7 @@ az resource invoke-action \
 
 | 参数 | 说明 |
 |-----------|-------------|
-| action | 使用 "**开始**" 运行观察程序。 |
+| 操作 | 使用 "**开始**" 运行观察程序。 |
 | ids | 观察程序资源 ID。 将 \<Subscription ID\> 、 \<Resource group\> 和替换 \<Watcher name\> 为观察程序资源的值。|
 
 ### <a name="start-instance-example"></a>启动实例示例
@@ -372,7 +372,7 @@ az resource invoke-action \
 
 | 参数 | 说明 |
 |-----------|-------------|
-| action | 使用**stop**停止观察程序。 |
+| 操作 | 使用**stop**停止观察程序。 |
 | ids | 观察程序的名称。 将 \<Subscription ID\> 、 \<Resource group\> 和替换 \<Watcher name\> 为观察程序资源的值。 |
 
 ### <a name="stop-watcher-example"></a>停止观察程序示例

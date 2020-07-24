@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/05/2020
 ms.author: v-miegge
-ms.openlocfilehash: 118c81dd52951729bfbbb97a510e693861666ee6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 909481964f8aa3272715e235fa011562225a9422
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663935"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028356"
 ---
 # <a name="troubleshoot-windows-stop-error--directory-service-initialization-failure"></a>对“Windows 停止错误”进行排除故障 - 目录服务初始化失败
 
@@ -26,7 +27,7 @@ ms.locfileid: "83663935"
 
 ## <a name="symptom"></a>症状
 
-当使用[启动诊断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)查看 VM 的屏幕截图时，屏幕截图显示 VM 因错误而需要重启，并在 Windows Server 2008 R2 中显示停止代码“0xC00002E1”，在 Windows Server 2012 或更高版本中显示停止代码“0xC00002E2” 。
+当使用[启动诊断](./boot-diagnostics.md)查看 VM 的屏幕截图时，屏幕截图显示 VM 因错误而需要重启，并在 Windows Server 2008 R2 中显示停止代码“0xC00002E1”，在 Windows Server 2012 或更高版本中显示停止代码“0xC00002E2” 。
 
 ![Windows Server 2012 启动屏幕显示“你的电脑遇到问题，需要重启。 我们将收集一些错误信息，然后为你重启电脑。”](./media/troubleshoot-directory-service-initialization-failure/1.png)
 
@@ -52,7 +53,7 @@ ms.locfileid: "83663935"
 1. 磁盘上的可用空间。
 1. 检查确认是否已附加包含 AD 数据库的驱动器。
 1. 目录服务还原模式。
-1. **建议**：在重新生成 VM 之前，启用串行控制台和内存转储收集。
+1. **建议**：在重建 VM 之前，启用串行控制台和内存转储收集。
 1. 重新生成 VM。
 1. 重新配置 SAN 策略。
 
@@ -61,7 +62,7 @@ ms.locfileid: "83663935"
 
 ### <a name="create-and-access-a-repair-vm"></a>创建和访问修复 VM
 
-1. 使用 [VM 修复命令的步骤 1-3](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) 来准备一个修复 VM。
+1. 使用 [VM 修复命令的步骤 1-3](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 来准备一个修复 VM。
 1. 使用远程桌面连接来连接到修复 VM。
 
 ### <a name="free-up-space-on-disk"></a>释放磁盘上的空间
@@ -69,11 +70,11 @@ ms.locfileid: "83663935"
 由于磁盘现在连接到修复 VM，请验证托管 Active Directory 内部数据库的磁盘是否有足够的空间来正确执行操作。
 
 1. 右键单击该驱动器并选择“属性”，检查磁盘是否已满。
-1. 如果磁盘的可用空间少于 300 Mb，[请使用 PowerShell 将其最大扩展到 1 Tb](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk)。
+1. 如果磁盘的可用空间少于 300 Mb，[请使用 PowerShell 将其最大扩展到 1 Tb](../windows/expand-os-disk.md)。
 1. 如果磁盘已用空间达到 1 Tb，请清理磁盘。
 
-   1. 使用 PowerShell 从损坏的 VM 中[分离数据磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell)。
-   1. 从损坏的 VM 上分离数据磁盘后，[附加数据磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm)到正常运行的 VM。
+   1. 使用 PowerShell 从损坏的 VM 中[分离数据磁盘](../windows/detach-disk.md#detach-a-data-disk-using-powershell)。
+   1. 从损坏的 VM 上分离数据磁盘后，[附加数据磁盘](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm)到正常运行的 VM。
    1. 使用[磁盘清理工具](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup)释放更多空间。
 
 1. **可选** - 如果需要更多空间，请打开 CMD 实例并输入 `defrag <LETTER ASSIGNED TO THE OS DISK>: /u /x /g` 命令以在驱动器上执行碎片整理：
@@ -182,7 +183,7 @@ ms.locfileid: "83663935"
 
 ### <a name="rebuild-the-vm"></a>重新生成 VM
 
-1. 使用 [VM 修复命令的步骤 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) 重新装配 VM。
+1. 使用 [VM 修复命令的步骤 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重新装配 VM。
 
 ### <a name="reconfigure-the-storage-area-network-policy"></a>重新配置存储区域网络策略
 
@@ -231,4 +232,4 @@ ms.locfileid: "83663935"
    > [!NOTE]
    > 如果 VM 刚刚从本地迁移，并且想要将更多域控制器从本地迁移到 Azure，则应考虑执行以下文章中的步骤，以防止在以后的迁移中发生此问题：
    >
-   > [如何通过使用 Azure PowerShell 上传到 Azure 的现有内部部署 Hyper-V 域控制器](https://support.microsoft.com/help/2904015)
+   > [如何使用 Azure PowerShell 将现有本地 Hyper-V 域控制器上传到 Azure](https://support.microsoft.com/help/2904015)

@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 915b6430378cfff2a847e31de26950fcb9de6ff5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ee4c8a52098bfa7c012e85f25371c306b106b86
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374587"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029427"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>疑难解答使用虚拟机规模集的自动缩放问题
 问题 - 已使用虚拟机规模集在 Azure 资源管理器中创建自动缩放基础结构（例如，通过部署一个与此类似的模板： https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale ）。已定义了缩放规则，其效果良好，但无论在 VM 中施放多少负载，它都不会自动缩放。
@@ -73,7 +73,7 @@ ms.locfileid: "85374587"
     如果数据不存在，则意味着问题与在 VM 中运行的诊断扩展相关。 如果数据存在，则意味着问题与缩放规则或 Insights 服务相关。 检查 [Azure 状态](https://azure.microsoft.com/status/)。
     
     完成这些步骤后，如果仍然存在自动缩放问题，则可以尝试使用以下资源： 
-    * 访问 [Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-virtual-machines.html)或 [Stack overflow](https://stackoverflow.com/questions/tagged/azure) 论坛 
+    * 访问 [Microsoft Q&A 问题页面](/answers/topics/azure-virtual-machines.html)或 [Stack overflow](https://stackoverflow.com/questions/tagged/azure) 论坛 
     * 记录支持人员电话。 准备共享模板和性能数据的视图。
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png

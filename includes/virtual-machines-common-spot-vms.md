@@ -4,15 +4,15 @@ description: include 文件
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/26/2020
+ms.date: 07/20/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8ee5973afb9312688178abd9a186c5319032c493
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df78133f602466681da64d2666a311e1649c598f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506033"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028783"
 ---
 使用污点 Vm，你可以显著节省成本。 当 Azure 需要恢复容量时，Azure 基础结构将逐出点 Vm。 因此，专色 Vm 非常适合用于处理中断的工作负荷，如批处理作业、开发/测试环境、大型计算工作负荷等。
 
@@ -26,10 +26,6 @@ Vm 可根据容量或设置的最大价格进行逐出。 创建点 VM 时，可
 *解除分配*策略会将 VM 移到停止解除分配状态，以便以后重新部署它。 但是，不保证分配将成功。 已释放的 Vm 将计入你的配额，并将对基础磁盘的存储成本进行收费。 
 
 如果希望在逐出 VM 时删除 VM，可以将逐出策略设置为 "*删除*"。 逐出的 Vm 将连同它们的基础磁盘一起删除，因此你不会继续为存储付费。 
-
-> [!NOTE]
->
-> 门户目前不支持 `Delete` 作为逐出选项，只能 `Delete` 使用 POWERSHELL、CLI 和模板进行设置。
 
 你可以选择通过[Azure Scheduled Events](../articles/virtual-machines/linux/scheduled-events.md)接收 VM 内通知。 这样，系统就会在你的 VM 被逐出时向你发送通知。在逐出之前，你将有 30 秒的时间来完成任何作业并执行关闭任务。 
 
@@ -54,19 +50,14 @@ Vm 可根据容量或设置的最大价格进行逐出。 创建点 VM 时，可
 
 污点 Vm 可以部署到任何区域，但 Microsoft Azure 中国世纪互联。
 
-不支持某些订阅通道：
-
 <a name="channel"></a>
 
-| Azure 渠道               | Azure Spot VM 的可用性       |
-|------------------------------|-----------------------------------|
-| 企业协议         | 是                               |
-| 即用即付                | 是                               |
-| 云服务提供商 (CSP) | [联系你的合作伙伴](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| 优点                     | 不可用                     |
-| 赞助                    | 是                               |
-| 免费试用版                   | 不可用                     |
+目前支持以下[产品/服务类型](https://azure.microsoft.com/support/legal/offer-details/)：
 
+-   企业协议
+-   即用即付
+-   赞助
+- 对于云服务提供商（CSP），请联系你的合作伙伴
 
 
 ## <a name="pricing"></a>定价
@@ -77,7 +68,7 @@ Vm 可根据容量或设置的最大价格进行逐出。 创建点 VM 时，可
 使用可变定价，你可以设置最高价格，以美元 (USD) 为单位，最多可使用 5 个小数位。 例如，值 `0.98765` 表示最高价格为 0.98765 美元/小时。 如果将最大价格设置为 `-1` ，则不会根据价格收回 VM。 VM 的价格将是当前的价格价格或标准 VM 的价格，只要容量和配额可用，此价格就越小。
 
 
-##  <a name="frequently-asked-questions"></a>常见问题
+##  <a name="frequently-asked-questions"></a>常见问题解答
 
 **问：** 创建后，点 VM 与常规标准 VM 是否相同？
 

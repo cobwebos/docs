@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf21f2ea5aacb36f3a76034e99b748bf4c6c363b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16203ab972f6117cec41e43ee5dd89cda7e95ede
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554764"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025688"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入的实施
 
@@ -92,12 +92,12 @@ ms.locfileid: "85554764"
 ### <a name="handling-devices-with-azure-ad-registered-state"></a>处理 Azure AD 注册状态的设备
 如果已加入 Windows 10 域的设备[Azure AD 注册](overview.md#getting-devices-in-azure-ad)到你的租户，则可能会导致混合 Azure AD 加入和 Azure AD 注册设备的双重状态。 建议升级到 Windows 10 1803 （应用了 KB4489894）或更高版本来自动处理此方案。 在1803之前的版本中，你将需要手动删除 Azure AD 注册状态，然后才能启用混合 Azure AD join。 在1803及更高版本中，已进行了以下更改，以避免这种双重状态：
 
-- 在<i>设备混合 Azure AD 加入并且同一用户登录后</i>，将自动删除用户的任何现有 Azure AD 注册状态。 例如，如果用户 A 在设备上有 Azure AD 的注册状态，则只有当用户 A 登录到设备时，才会清除用户 A 的双重状态。 如果同一设备上有多个用户，则当用户登录时，会单独清除双重状态。
+- 在<i>设备混合 Azure AD 加入并且同一用户登录后</i>，将自动删除用户的任何现有 Azure AD 注册状态。 例如，如果用户 A 在设备上有 Azure AD 的注册状态，则只有当用户 A 登录到设备时，才会清除用户 A 的双重状态。 如果同一设备上有多个用户，则当用户登录时，会单独清除双重状态。 除了删除 Azure AD 注册状态，Windows 10 还会从 Intune 或其他 MDM 取消注册该设备，前提是该注册是通过自动注册在 Azure AD 注册过程中进行的。
 - 可以通过将以下注册表值添加到 HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin 来阻止已加入域的设备 Azure AD 注册： "BlockAADWorkplaceJoin" = dword：00000001。
 - 在 Windows 10 1803 中，如果已配置 Windows Hello 企业版，则用户需要在双重状态清理后重新设置 Windows Hello 企业版。此问题已通过 KB4512509 解决。
 
 > [!NOTE]
-> 如果 Azure AD 注册的设备由 Intune 管理，则将不会自动将其删除。
+> 即使 Windows 10 会在本地自动删除 Azure AD 的注册状态，如果 Azure AD 中的设备对象由 Intune 管理，则不会立即将其删除。 可以通过运行 dsregcmd.exe/status 来验证 Azure AD 已注册状态的删除，并考虑设备不会根据该设备注册 Azure AD。
 
 ### <a name="additional-considerations"></a>其他注意事项
 - 如果你的环境使用虚拟桌面基础结构（VDI），请参阅[设备标识和桌面虚拟化](/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure)。
@@ -159,7 +159,7 @@ ms.locfileid: "85554764"
 
 下表提供了 Windows 10 混合 Azure AD 加入中对这些本地 AD UPN 的支持情况的详细信息
 
-| 本地 AD UPN 类型 | 域类型 | Windows 10 版本 | 描述 |
+| 本地 AD UPN 类型 | 域类型 | Windows 10 版本 | 说明 |
 | ----- | ----- | ----- | ----- |
 | 可路由的 | 联合 | 从 1703 版本开始 | 正式发布 |
 | 非可路由的 | 联合 | 从 1803 版本开始 | 正式发布 |

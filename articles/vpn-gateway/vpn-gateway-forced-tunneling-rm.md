@@ -8,11 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/01/2018
 ms.author: cherylmc
-ms.openlocfilehash: bd1022079b382353591857eacdedff344ed49f63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 028ac730396c71549bfc338d3496109c98dfdc73
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984155"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027829"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>使用 Azure 资源管理器部署模型配置强制隧道
 
@@ -61,7 +62,7 @@ ms.locfileid: "84984155"
 
 ## <a name="before-you-begin"></a><a name="before"></a>准备工作
 
-安装最新版本的 Azure 资源管理器 PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview) 。
+安装最新版本的 Azure 资源管理器 PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/) 。
 
 > [!IMPORTANT]
 > 需要安装 PowerShell cmdlet 的最新版本。 否则，运行某些 cmdlet 时可能会收到验证错误。

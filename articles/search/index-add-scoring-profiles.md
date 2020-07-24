@@ -8,12 +8,12 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 4bc5897401a62d45e8b1c987d7ef50e0c8a6de08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae41cc620960bd49603e6712759585796e76fe67
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565364"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029937"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>将计分概要文件添加到 Azure 认知搜索索引
 
@@ -227,7 +227,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 > [!NOTE]  
 >  计分函数仅可应用于可筛选的字段。  
 
-|属性|描述|  
+|属性|说明|  
 |---------------|-----------------|  
 |`name`|必需。 这是计分概要文件的名称。 它遵循与字段相同的命名约定。 它必须以字母开头，不能包含点、冒号或 @ 符号，并且不能以短语“azureSearch”（区分大小写）开头。|  
 |`text`|包含 weights 属性。|  
@@ -254,7 +254,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 ##  <a name="set-interpolations"></a><a name="bkmk_interpolation"></a> 设置内插  
  通过内插，可设置用于计分的坡度形状。 由于评分从高到低，坡度总是在下降，但内插决定了下坡的曲线。 可以使用以下内插：  
 
-|||  
+| 内插 | 说明 |  
 |-|-|  
 |`linear`|对于在最大和最小范围内的项目，将按递减的方式进行提升。 Linear 是计分概要文件的默认内插。|  
 |`constant`|对于起始和结束范围内的项，将对排名结果应用恒定提升。|  

@@ -3,15 +3,16 @@ title: Application Insights 中的性能计数器 | Microsoft 文档
 description: 监视 Application Insights 中的系统和自定义的 .NET 性能计数器。
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.openlocfilehash: 274e02c484c091cbb13ac2cf69bf99672f579f33
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: e60663d9e767db020fc93eba1f4c1c6babb32294
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701475"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024412"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 中的系统性能计数器
 
-Windows 提供了各种[性能计数器](https://docs.microsoft.com/windows/desktop/PerfCtrs/about-performance-counters)，例如 CPU 占用、内存、磁盘和网络使用情况。 你还可以定义自己的性能计数器。 只要应用程序在你具有管理权限的本地主机或虚拟机上的 IIS 下运行，就支持性能计数器集合。 虽然作为 Azure Web 应用运行的应用程序无法直接访问性能计数器，但 Application Insights 仍会收集一部分可用的计数器。
+Windows 提供了各种[性能计数器](/windows/desktop/perfctrs/about-performance-counters)，例如 CPU 占用、内存、磁盘和网络使用情况。 你还可以定义自己的性能计数器。 只要应用程序在你具有管理权限的本地主机或虚拟机上的 IIS 下运行，就支持性能计数器集合。 虽然作为 Azure Web 应用运行的应用程序无法直接访问性能计数器，但 Application Insights 仍会收集一部分可用的计数器。
 
 ## <a name="view-counters"></a>查看计数器
 
@@ -39,7 +40,7 @@ Windows 提供了各种[性能计数器](https://docs.microsoft.com/windows/desk
 
     `Get-Counter -ListSet *`
 
-    （请参阅 [`Get-Counter`](https://technet.microsoft.com/library/hh849685.aspx)。）
+    （请参阅 [`Get-Counter`](/powershell/module/microsoft.powershell.diagnostics/get-counter?view=powershell-5.1)。）
 2. 打开 ApplicationInsights.config。
 
    * 如果在开发期间已将 Application Insights 添加到了应用，请在项目中编辑 ApplicationInsights.config，然后将它重新部署到服务器。
@@ -108,7 +109,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 ```
 
 ## <a name="performance-counters-in-analytics"></a>分析中的性能计数器
-可以在[分析](../../azure-monitor/app/analytics.md)中搜索并显示性能计数器报告。
+可以在[分析](../log-query/log-query-overview.md)中搜索并显示性能计数器报告。
 
 **PerformanceCounters** 架构公开每个性能计数器的 `category`、`counter` 名称和 `instance` 名称。  在每个应用程序的遥测中，将仅看到该应用程序的计数器。 例如，若要查看哪些计数器可用： 
 
@@ -152,4 +153,3 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 
 * [依赖关系跟踪](../../azure-monitor/app/asp-net-dependencies.md)
 * [异常跟踪](../../azure-monitor/app/asp-net-exceptions.md)
-

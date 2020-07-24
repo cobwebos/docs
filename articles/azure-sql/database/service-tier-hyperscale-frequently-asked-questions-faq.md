@@ -1,6 +1,6 @@
 ---
 title: Azure SQL 数据库“超大规模”常见问题解答
-description: 客户在超大规模服务层-通常称为超大规模数据库中的 SQL 数据库中询问有关数据库的常见问题的解答。
+description: 对客户关于“超大规模”服务层级中 SQL 数据库中的数据库（通常称为超大规模数据库）提出的常见问题的回答。
 services: sql-database
 ms.service: sql-database
 ms.subservice: ''
@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: dbb1d73fc2b19ef701cb08ced24c634bbbadb235
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 983bf848b3be2501b70ba1c0396207e514b7b8d6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231584"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024011"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL 数据库“超大规模”常见问题解答
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "86231584"
 
 ### <a name="what-is-a-hyperscale-database"></a>什么是“超大规模”数据库
 
-超大规模数据库是超大规模服务层中的 SQL 数据库中的数据库，由超大规模横向扩展存储技术支持。 一个“超大规模”数据库支持最多 100 TB 的数据，提供高吞吐量和高性能，可以快速缩放以适应工作负荷要求。 缩放对应用程序（连接性、查询处理等）是透明的，与 Azure SQL 数据库中的任何其他数据库的工作方式相同。
+超大规模数据库是“超大规模”服务层级中 SQL 数据库中的数据库，由超大规模横向扩展存储技术提供支持。 一个“超大规模”数据库支持最多 100 TB 的数据，提供高吞吐量和高性能，可以快速缩放以适应工作负荷要求。 缩放对应用程序透明 - 连接、查询处理等都与 SQL 数据库中的其他任何数据库一样工作。
 
 ### <a name="what-resource-types-and-purchasing-models-support-hyperscale"></a>哪些资源类型和购买模型支持“超大规模”
 
@@ -43,7 +43,7 @@ ms.locfileid: "86231584"
 | | 资源类型 | 常规用途 |  超大规模 | 业务关键 |
 |:---:|:---:|:---:|:---:|:---:|
 | **最适用于** |全部|提供以预算导向的、均衡的计算和存储选项。|大多数业务工作负荷。 自动缩放存储大小，最大可达 100 TB，快速的垂直和水平计算缩放，快速数据库还原。|事务率较高、IO 延迟较低的 OLTP 应用程序。 使用多个同步更新的副本提供最高故障复原能力和快速故障转移。|
-|  **资源类型** ||SQL 数据库/SQL 托管实例 | 单一数据库 | SQL 数据库/SQL 托管实例 |
+|  **资源类型** ||SQL 数据库/ SQL 托管实例 | 单一数据库 | SQL 数据库/ SQL 托管实例 |
 | **计算大小**|SQL 数据库 * | 1 - 80 个 vCore | 1 - 80 个 vCore* | 1 - 80 个 vCore |
 | **计算大小**|SQL 托管实例 | 8、16、24、32、40、64、80 个 vCore | 空值 | 8、16、24、32、40、64、80 个 vCore |
 | **存储类型** | 全部 |高级远程存储（每个实例） | 具有本地 SSD 缓存的分离的存储（每个实例） | 超快的本地 SSD 存储（每个实例） |
@@ -65,15 +65,15 @@ ms.locfileid: "86231584"
 - 快速进行数据库还原，无需考虑数据库大小（从存储快照还原）
 - 无论数据库大小和 vCore 数目如何，都可提高日志吞吐量
 - 使用一个或多个只读副本的读取扩展，用于卸载读取工作负荷，并用作热备用服务器。
-- 在恒定时间内快速纵向扩展计算，以便提高适应繁重工作负荷的能力；然后在恒定时间内减少。 例如，这与在 P6 和 P11 之间来回缩放类似，但速度更快，因为这不是一种数据大小操作。
+- 在恒定时间内快速纵向扩展计算，以便提高适应繁重工作负荷的能力；然后在恒定时间内纵向缩减。 例如，这与在 P6 和 P11 之间来回缩放类似，但速度更快，因为这不是一种数据大小操作。
 
 ### <a name="what-regions-currently-support-hyperscale"></a>哪些区域当前支持“超大规模”
 
 “超大规模”服务层级目前已在 [Azure SQL 数据库“超大规模”概述](service-tier-hyperscale.md#regions)下面列出的区域中推出。
 
-### <a name="can-i-create-multiple-hyperscale-databases-per-server"></a>能否为每个服务器创建多个超大规模数据库
+### <a name="can-i-create-multiple-hyperscale-databases-per-server"></a>能否为每个服务器创建多个“超大规模”数据库
 
-是的。 有关每台服务器的超大规模数据库数量的详细信息和限制，请参阅[服务器上单个和共用数据库的 SQL 数据库资源限制](resource-limits-logical-server.md)。
+是的。 有关每个服务器的“超大规模”数据库数量的详细信息和限制，请参阅[服务器上单一和共用数据库的 SQL 数据库资源限制](resource-limits-logical-server.md)。
 
 ### <a name="what-are-the-performance-characteristics-of-a-hyperscale-database"></a>“超大规模”数据库的性能特征有哪些
 
@@ -94,7 +94,7 @@ ms.locfileid: "86231584"
 
 ## <a name="deep-dive-questions"></a>深入的问题
 
-### <a name="can-i-mix-hyperscale-and-single-databases-in-a-single-server"></a>能否在一台服务器中混合使用超大规模和单一数据库
+### <a name="can-i-mix-hyperscale-and-single-databases-in-a-single-server"></a>是否可以在单个服务器中混合使用超大规模数据库和单一数据库
 
 可以。
 
@@ -120,7 +120,7 @@ ms.locfileid: "86231584"
 
 如果大规模运行包含复杂查询且持续引入速率超过 100 MB/秒的数据分析，并使用并行数据仓库 (PDW)、Teradata 或其他大规模并行处理 (MPP) 数据仓库，则 SQL 数据仓库可能是最佳选择。
   
-## <a name="hyperscale-compute-questions"></a>超大规模计算问题
+## <a name="hyperscale-compute-questions"></a>“超大规模”计算问题
 
 ### <a name="can-i-pause-my-compute-at-any-time"></a>能不能随时暂停计算
 
@@ -202,9 +202,11 @@ ms.locfileid: "86231584"
 
 ## <a name="data-migration-questions"></a>数据迁移问题
 
-### <a name="can-i-move-my-existing-databases-in-azure-sql-database-to-the-hyperscale-service-tier"></a>能否将 Azure SQL 数据库中的现有数据库移动到超大规模服务层
+### <a name="can-i-move-my-existing-databases-in-azure-sql-database-to-the-hyperscale-service-tier"></a>能否将 Azure SQL 数据库中的现有数据库迁移到“超大规模”服务层级
 
-是的。 可将 Azure SQL 数据库中的现有数据库移动到超大规模。 这是一种单向迁移。 无法将数据库从“超大规模”层级移到另一个服务层级。 对于概念证明 (POC)，我们建议创建数据库的副本，并将副本迁移到“超大规模”。
+是的。 可以将 Azure SQL 数据库中的现有数据库迁移到“超大规模”服务层级。 这是一种单向迁移。 无法将数据库从“超大规模”层级移到另一个服务层级。 对于概念证明 (POC)，我们建议创建数据库的副本，并将副本迁移到“超大规模”。 
+
+将现有数据库移动到超大规模所需的时间由复制数据所需的时间和在复制数据时重播在源数据库中所做的更改所需的时间。 数据复制时间与数据大小成正比。 如果移动是在较低写入活动期间完成的，则重播更改的时间将较短。
   
 ### <a name="can-i-move-my-hyperscale-databases-to-other-service-tiers"></a>能否将“超大规模”数据库迁移到其他服务层级
 
@@ -212,11 +214,11 @@ ms.locfileid: "86231584"
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>迁移到“超大规模”服务层级后，是否会丢失一些功能
 
-是的。 一些 Azure SQL 数据库功能在超大规模中不受支持，包括但不限于长期备份保留。 将数据库迁移到“超大规模”服务层级后，这些功能将停止运行。  我们预期这些限制是暂时性的。
+是的。 目前，部分 Azure SQL 数据库功能在“超大规模”中不受支持，包括但不限于长期备份保留。 将数据库迁移到“超大规模”服务层级后，这些功能将停止运行。  我们预期这些限制是暂时性的。
 
 ### <a name="can-i-move-my-on-premises-sql-server-database-or-my-sql-server-database-in-a-cloud-virtual-machine-to-hyperscale"></a>能否将我的本地 SQL Server 数据库或云虚拟机中的 SQL Server 数据库迁移到“超大规模”
 
-是的。 你可以使用所有现有迁移技术迁移到超大规模，包括事务复制，以及 (大容量复制、Azure 数据工厂、Azure Databricks、SSIS) 的任何其他数据移动技术。 另请参阅支持许多迁移方案的 [Azure 数据库迁移服务](../../dms/dms-overview.md)。
+是的。 你可以使用所有现有迁移技术迁移到超大规模，包括事务复制和任何其他数据移动技术（大容量复制、Azure 数据工厂、Azure Databricks、SSIS）。 另请参阅支持许多迁移方案的 [Azure 数据库迁移服务](../../dms/dms-overview.md)。
 
 ### <a name="what-is-my-downtime-during-migration-from-an-on-premises-or-virtual-machine-environment-to-hyperscale-and-how-can-i-minimize-it"></a>从本地或虚拟机环境迁移到“超大规模”期间，我的停机时间有多长，如何尽量减少停机时间
 
@@ -225,13 +227,13 @@ ms.locfileid: "86231584"
 
 ### <a name="how-much-time-would-it-take-to-bring-in-x-amount-of-data-to-hyperscale"></a>向“超大规模”引入 X 数据量需要多少时间
 
-超大规模能够消耗 100 MB/s 的新数据/更改数据，但将数据移入 Azure SQL 数据库中的数据库所需的时间也会受到可用网络吞吐量、源读取速度和目标数据库服务级别目标的影响。
+“超大规模”每秒能够使用 100 MB 的新数据/更改的数据，但将数据移入 Azure SQL 数据库中的数据库所需的时间也会受到可用网络吞吐量、源读取速度和目标数据库服务级别目标的影响。
 
 ### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-in-sql-data-warehouse"></a>能否从 blob 存储读取数据并执行快速加载（如 SQL 数据仓库中的 Polybase）
 
-可以让客户端应用程序从 Azure 存储中读取数据，并将数据加载加载到超大规模数据库中， (就像使用 Azure SQL 数据库中的任何其他数据库) 一样。 Azure SQL 数据库当前不支持 Polybase。 作为提供快速负载的替代方法，你可以使用[Azure 数据工厂](https://docs.microsoft.com/azure/data-factory/)，或在[SQL 的 spark 连接器](spark-connector.md) [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/)中使用 spark 作业。 SQL 的 Spark 连接器支持批量插入。
+可让客户端应用程序从 Azure 存储中读取数据并将数据加载到“超大规模”数据库（就像对 Azure SQL 数据库中的任何其他数据库执行的操作一样）。 Azure SQL 数据库当前不支持 Polybase。 作为提供快速负载的替代方法，你可以使用[Azure 数据工厂](https://docs.microsoft.com/azure/data-factory/)，或在[SQL 的 spark 连接器](spark-connector.md) [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/)中使用 spark 作业。 SQL 的 Spark 连接器支持批量插入。
 
-还可以使用 BULK INSERT 或 OPENROWSET 批量从 Azure Blob 存储区中读取数据：[对 Azure Blob 存储中的数据进行大容量访问的示例](https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location)。
+还可以使用 BULK INSERT 或 OPENROWSET 从 Azure Blob 存储批量读取数据：[批量访问 Azure Blob 存储中的数据的示例](https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location)。
 
 “超大规模”数据库中不支持简单恢复或批量日志记录模式。 提供高可用性和时点恢复需要完整恢复模式。 但是，相比于其他 Azure SQL 数据库服务层级而言，“超大规模”日志体系结构提供更佳的数据引入速率。
 
@@ -253,7 +255,7 @@ SQL Server 2005。 有关详细信息，请参阅[迁移到单一数据库或共
 
 请参阅 [Azure SQL 数据库的 SLA](https://azure.microsoft.com/support/legal/sla/sql-database/v1_4/)。 更多的次要计算副本可提高可用性，对于包含两个或更多个次要计算副本的数据库，SLA 高达 99.99%。
 
-### <a name="are-the-database-backups-managed-for-me-by-azure-sql-database"></a>由 Azure SQL 数据库为我管理的数据库备份
+### <a name="are-the-database-backups-managed-for-me-by-azure-sql-database"></a>Azure SQL 数据库是否托管我的数据库备份
 
 是的。
 
@@ -261,7 +263,7 @@ SQL Server 2005。 有关详细信息，请参阅[迁移到单一数据库或共
 
 “超大规模”数据库没有传统的完整、差异和日志备份。 但有数据文件的定期存储快照。 生成的日志只是按配置的保留期按原样保留，因此可以还原到保留期内的任意时间点。
 
-### <a name="does-hyperscale-support-point-in-time-restore"></a>超大规模支持时间点还原
+### <a name="does-hyperscale-support-point-in-time-restore"></a>“超大规模”是否支持时间点还原
 
 是的。
 
@@ -275,7 +277,7 @@ SQL Server 2005。 有关详细信息，请参阅[迁移到单一数据库或共
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>能否对“超大规模”数据库执行异地还原
 
-是的。 完全支持异地还原。 与时间点还原不同，异地还原需要数据大小的操作。 数据文件是并行复制的，因此此操作的持续时间主要取决于数据库中的最大文件的大小，而不是数据库总大小。 如果将数据库还原到与源数据库的区域[配对](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)的 Azure 区域中，则异地还原时间会明显缩短。
+是的。 完全支持异地还原。 与时间点还原不同，异地还原需要数据大小操作。 将并行复制数据文件，因此此操作的持续时间主要取决于数据库中最大文件的大小，而不是数据库总大小。 如果将数据库还原到与源数据库的区域[配对](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)的 Azure 区域中，则异地还原时间会明显缩短。
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>能否对“超大规模”数据库设置异地复制
 
@@ -289,7 +291,7 @@ SQL Server 2005。 有关详细信息，请参阅[迁移到单一数据库或共
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>迁移到“超大规模”服务层级后，是否会丢失一些功能
 
-是的。 一些 Azure SQL 数据库功能在超大规模中不受支持，包括但不限于长期备份保留。 将数据库迁移到“超大规模”服务层级后，这些功能将停止运行。
+是的。 部分 Azure SQL 数据库功能在“超大规模”中不受支持，包括但不限于长期备份保留。 将数据库迁移到“超大规模”服务层级后，这些功能将停止运行。
 
 ### <a name="will-polybase-work-with-hyperscale"></a>Polybase 是否适用于“超大规模”
 
@@ -301,7 +303,7 @@ SQL Server 2005。 有关详细信息，请参阅[迁移到单一数据库或共
 
 ### <a name="are-compute-nodes-containerized"></a>计算节点是否是容器化的
 
-否。 超大规模进程在[Service Fabric](https://azure.microsoft.com/services/service-fabric/)节点 (vm) ，而不是在容器中运行。
+否。 超大规模进程在[Service Fabric](https://azure.microsoft.com/services/service-fabric/)节点（vm）上运行，而不是在容器中运行。
 
 ## <a name="performance-questions"></a>性能问题
 
@@ -323,7 +325,7 @@ IOPS 和 IO 延迟根据工作负荷模式而异。 如果访问的数据缓存�
 
 ### <a name="how-do-i-diagnose-and-troubleshoot-performance-problems-in-a-hyperscale-database"></a>如何诊断和排查“超大规模”数据库中的性能问题
 
-对于大多数性能问题，特别是不是以存储性能为根的问题，适用的常见 SQL 诊断和故障排除步骤。 有关特定于“超大规模”的存储诊断，请参阅 [SQL 超大规模服务层级性能故障排除诊断](hyperscale-performance-diagnostics.md)。
+对于大多数性能问题，尤其是根本原因与存储无关的性能问题，可以采取常用的 SQL 诊断和故障排除步骤。 有关特定于“超大规模”的存储诊断，请参阅 [SQL 超大规模服务层级性能故障排除诊断](hyperscale-performance-diagnostics.md)。
 
 ## <a name="scalability-questions"></a>可伸缩性问题
 
@@ -351,7 +353,7 @@ IOPS 和 IO 延迟根据工作负荷模式而异。 如果访问的数据缓存�
 
 否。 只有主要计算副本接受读/写请求。 次要计算副本只接受只读请求。
 
-## <a name="read-scale-out-questions"></a>阅读横向扩展问题
+## <a name="read-scale-out-questions"></a>读取扩展问题
 
 ### <a name="how-many-secondary-compute-replicas-can-i-provision"></a>可以预配多少个次要计算副本
 

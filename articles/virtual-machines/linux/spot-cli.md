@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: d6560f11d26200bdd9f39c4cbae643022872d362
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 653106c54644749174fd8530fccf30329c7751ff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506066"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028764"
 ---
 # <a name="deploy-spot-vms-using-the-azure-cli"></a>使用 Azure CLI 部署专色 Vm
 
@@ -23,7 +23,7 @@ ms.locfileid: "85506066"
 
 你可以选择为 VM 设置你愿意支付的最大价格（每小时）。 可使用最多5个小数位来设置专色 VM 的最大价格（美元）。 例如，值 `0.98765` 表示最高价格为 0.98765 美元/小时。 如果将最大价格设置为 `-1` ，则不会根据价格收回 VM。 VM 的价格将是当前的价格价格或标准 VM 的价格，只要容量和配额可用，此价格就越小。 有关设置最大价格的详细信息，请参阅[污点 vm-定价](spot-vms.md#pricing)。
 
-使用 Azure CLI 创建具有点的 VM 的过程与[快速入门文章](/azure/virtual-machines/linux/quick-create-cli)中详述的过程相同。 只需添加 "--priority 污点" 参数，将设置 `--eviction-policy` 为 "取消分配" （这是默认值）或 `Delete` ，并提供最大价格或 `-1` 。 
+使用 Azure CLI 创建具有点的 VM 的过程与[快速入门文章](./quick-create-cli.md)中详述的过程相同。 只需添加 "--priority 污点" 参数，将设置 `--eviction-policy` 为 "取消分配" （这是默认值）或 `Delete` ，并提供最大价格或 `-1` 。 
 
 
 ## <a name="install-azure-cli"></a>安装 Azure CLI

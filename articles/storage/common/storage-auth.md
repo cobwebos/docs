@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 1db26e6e1308299325e15b4c856fc2ebbaed8326
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a56fdf8bc3bfa93c12cce66664e68b223fa97ff2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807617"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029529"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>授权访问 Azure 存储中的数据
 
@@ -23,12 +23,12 @@ ms.locfileid: "84807617"
 
 下表介绍了多个选项，Azure 存储提供这些选项，用于授权对资源的访问：
 
-|  |共享密钥（存储帐户密钥）  |共享访问签名 (SAS)  |Azure Active Directory (Azure AD)  |本地 Active Directory 域服务（预览） |匿名公共读取访问权限  |
-|---------|---------|---------|---------|---------|---------|
+| Azure 项目 | 共享密钥（存储帐户密钥） | 共享访问签名 (SAS) | Azure Active Directory (Azure AD) | 本地 Active Directory 域服务（预览） | 匿名公共读取访问权限 |
+| -------------- | -------------------------------- | ----------------------------- | --------------------------------- | ------------------------------------------------------ | ---------------------------- |
 |Azure Blob     |[支持](/rest/api/storageservices/authorize-with-shared-key/)         |[支持](storage-sas-overview.md)         |[支持](storage-auth-aad.md)         |不支持|[支持](../blobs/storage-manage-access-to-resources.md)         |
 |Azure 文件存储 (SMB)     |[支持](/rest/api/storageservices/authorize-with-shared-key/)         |不支持         |[支持，仅适用于 AAD 域服务](../files/storage-files-active-directory-overview.md)         |[支持，凭据必须同步到 Azure AD](../files/storage-files-active-directory-overview.md)|不支持         |
 |Azure 文件存储 (REST)     |[支持](/rest/api/storageservices/authorize-with-shared-key/)         |[支持](storage-sas-overview.md)         |不支持         |不支持 |不支持         |
-|Azure 队列     |[支持](/rest/api/storageservices/authorize-with-shared-key/)         |[支持](storage-sas-overview.md)         |[支持](storage-auth-aad.md)         |不支持 | 不支持         |
+|Azure 队列     |[支持](/rest/api/storageservices/authorize-with-shared-key/)         |[支持](storage-sas-overview.md)         |[支持](storage-auth-aad.md)         |不受支持 | 不支持         |
 |Azure 表     |[支持](/rest/api/storageservices/authorize-with-shared-key/)         |[支持](storage-sas-overview.md)         |不支持         |不支持| 不支持         |
 
 下面简要介绍每个授权选项：

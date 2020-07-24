@@ -4,11 +4,12 @@ description: 适用于 Application Insights 的语言、平台和集成
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.reviewer: olegan
-ms.openlocfilehash: 153d4ad3d95c182dcc4f2aa3bad857d7e1984cc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5403162a2511862dd1c649dc273a35a550abaaf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891108"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024276"
 ---
 # <a name="supported-languages"></a>支持的语言
 
@@ -25,7 +26,7 @@ ms.locfileid: "82891108"
 * [Azure 应用服务](../../azure-monitor/app/azure-web-apps.md)
 * [ASP.NET - 适用于已处于活动状态的应用](../../azure-monitor/app/monitor-performance-live-website-now.md)
 * [Azure 云服务](../../azure-monitor/app/cloudservices.md)，包括 Web 角色和辅助角色
-* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
+* [Azure Functions](../../azure-functions/functions-monitoring.md)
 ### <a name="instrumentation-through-code-sdks"></a>通过代码进行检测 (SDK)
 * [ASP.NET](../../azure-monitor/app/asp-net.md)
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
@@ -38,11 +39,11 @@ ms.locfileid: "82891108"
 * [Windows 桌面应用程序、服务和辅助角色](../../azure-monitor/app/windows-desktop.md)
 
 ## <a name="logging-frameworks"></a>记录框架
-* [ILogger](https://docs.microsoft.com/azure/azure-monitor/app/ilogger)
+* [ILogger](./ilogger.md)
 * [Log4Net、NLog 或 System.Diagnostics.Trace](../../azure-monitor/app/asp-net-trace-logs.md)
 * [Java、Log4J 或 Logback](../../azure-monitor/app/java-trace-logs.md)
 * [LogStash 插件](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-output-applicationinsights)
-* [Azure Monitor](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)
+* [Azure Monitor](/archive/blogs/msoms/application-insights-connector-in-oms)
 
 ## <a name="export-and-data-analysis"></a>导出和数据分析
 * [Power BI](https://powerbi.microsoft.com/blog/explore-your-application-insights-data-with-power-bi/)

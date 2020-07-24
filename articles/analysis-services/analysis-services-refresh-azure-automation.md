@@ -6,12 +6,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: c3c9827814b7d638745761dbb5f3c7d2e581491b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5314c933b01a1fb9c4ea9902a6fbb698c104d195
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389966"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025398"
 ---
 # <a name="refresh-with-azure-automation"></a>使用 Azure 自动化进行刷新
 
@@ -65,6 +65,9 @@ ms.locfileid: "85389966"
     ![导入 Runbook](./media/analysis-services-refresh-azure-automation/8.png)
 
 4. 以浏览方式找到“Refresh-Model.ps1”文件，提供“名称”和“说明”，然后单击“创建”。
+
+    > [!NOTE]
+    > 使用本文档底部的 "[示例 Powershell Runbook](#sample-powershell-runbook) " 部分中的 "脚本" 创建名为 Refresh-Model.ps1 的文件，并将其保存到本地计算机以导入 Runbook。
 
     ![导入 Runbook](./media/analysis-services-refresh-azure-automation/9.png)
 

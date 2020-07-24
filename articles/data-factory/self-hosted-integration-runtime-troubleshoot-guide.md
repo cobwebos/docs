@@ -5,20 +5,46 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 06/24/2020
+ms.date: 07/19/2020
 ms.author: abnarain
-ms.openlocfilehash: e77d621d5699c434e691de0a523e58e49166d8d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 521756081db938e749849e6f3630dbd60700d24f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315055"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023804"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>排查自承载集成运行时问题
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文探讨 Azure 数据工厂中的自承载集成运行时的常用故障排除方法。
+
+## <a name="gather-self-hosted-integration-runtime-logs-from-azure-data-factory"></a>从 Azure 数据工厂收集自承载集成运行时日志
+
+对于在自承载 IR/共享 IR 上运行的失败的活动，Azure 数据工厂支持查看和上载错误日志。 你可以执行以下步骤来获取错误报告 ID，然后输入报表 ID 以查找相关的已知问题。
+
+1. "中转到**活动运行**" 页。
+
+1. 在 "**错误**" 列下，单击 "下一按钮"。
+
+    !["活动运行" 页](media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page.png)
+
+1. 你会看到失败的活动运行的相关日志。 单击 "**发送日志**" 按钮以获得进一步帮助。
+
+    ![发送日志](media/self-hosted-integration-runtime-troubleshoot-guide/send-logs.png)
+
+1. 您可以选择要发送的日志。 对于*自承载 ir*，你可以上载与失败的活动或自承载 ir 节点上的所有日志相关的日志。 对于*共享 IR*，只能上载与失败的活动相关的日志。
+
+    ![选择日志](media/self-hosted-integration-runtime-troubleshoot-guide/choose-logs.png)
+
+1. 当上载日志时，如果需要进一步的帮助来解决此问题，请保留报表 ID 记录。
+
+    ![上传日志](media/self-hosted-integration-runtime-troubleshoot-guide/upload-logs.png)
+
+> [!NOTE]
+> 将对所有联机的自承载 IR 实例执行日志查看和上载请求。 请确保所有自承载 IR 实例都处于联机状态，以防丢失任何日志。 
+
 
 ## <a name="common-errors-and-resolutions"></a>常见错误和解决方案
 
@@ -84,9 +110,9 @@ ms.locfileid: "85315055"
 
 > [!NOTE] 
 > 代理注意事项：
-> *    检查是否需要将代理服务器放在“安全接收方”列表中。 如果需要，请确保[这些域](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network)在“安全接收方”列表中。
+> *    检查是否需要将代理服务器放在“安全接收方”列表中。 如果是，请确保“安全接收方”列表中包含[这些域](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network)。
 > *    检查 TLS/SSL 证书“wu2.frontend.clouddatahub.net/”在代理服务器上是否受信任。
-> *    如果在代理上使用 Active Directory 身份验证，请将服务帐户更改为可作为“Integration Runtime 服务”访问该代理的用户帐户。
+> *    如果在代理上使用 Active Directory 身份验证，请将服务帐户更改为能够以“Integration Runtime 服务”身份访问代理的用户帐户。
 
 ### <a name="error-message"></a>错误消息： 
 `Self-hosted integration runtime node/ logical SHIR is in Inactive/ "Running (Limited)" state`

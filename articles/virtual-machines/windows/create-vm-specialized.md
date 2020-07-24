@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 7d378f111104feb678d3d89f4a4c51998c67f2e1
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 49554c053af0ceecf2b7f0b1162b7212694239db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234538"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028084"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>使用 PowerShell 从专用磁盘创建 Windows VM
 
@@ -28,11 +29,11 @@ ms.locfileid: "84234538"
 
 本文介绍如何使用托管磁盘。 如果有需要使用存储帐户的旧版部署，请参阅[从存储帐户中的专用 VHD 创建 VM](sa-create-vm-specialized.md)。
 
-我们建议你将单个 VHD 或快照的并发部署数量限制为 20 个 VM。 
+我们建议你将单个 VHD 或快照的并发部署数限制为 20 个 VM。 
 
 ## <a name="option-1-use-an-existing-disk"></a>选项 1：使用现有磁盘
 
-如果你的 VM 已删除，并且你希望重复使用 OS 磁盘创建新 VM，请使用 [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)。
+如果你的 VM 已删除，并且你希望重复使用 OS 磁盘创建新 VM，请使用 [Get-AzDisk](/powershell/module/az.compute/get-azdisk)。
 
 ```powershell
 $resourceGroupName = 'myResourceGroup'
@@ -57,17 +58,17 @@ $osDisk = Get-AzDisk `
 
 ### <a name="upload-the-vhd"></a>上传 VHD
 
-现在可以将 VHD 直接上传到托管磁盘。 有关说明，请参阅[使用 Azure PowerShell 将 VHD 上传到 Azure](disks-upload-vhd-to-managed-disk-powershell.md)。
+现在可以直接将 VHD 上传到托管磁盘中。 有关说明，请参阅[使用 Azure PowerShell 将 VHD 上传到 Azure](disks-upload-vhd-to-managed-disk-powershell.md)。
 
 ## <a name="option-3-copy-an-existing-azure-vm"></a>选项 3：复制现有的 Azure VM
 
-通过拍摄 VM 快照来创建使用托管磁盘的 VM 副本，然后使用该快照创建一个新的托管磁盘和一个新 VM。
+通过创建 VM 快照来创建使用托管磁盘的 VM 副本，然后使用该快照创建一个新的托管磁盘和一个新 VM。
 
-如果要将现有 VM 复制到其他区域，可能想要使用 azcopy [在另一个区域中创建磁盘的副本](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)。 
+如果要将现有 VM 复制到其他区域，可能需要使用 azcopy [在其他区域中创建磁盘副本](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)。 
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>拍摄 OS 磁盘快照
 
-可创建整个 VM（包括所有磁盘）的快照或仅创建单个磁盘的快照。 以下步骤说明了如何使用 [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) cmdlet 仅创建 VM OS 磁盘的快照。 
+可创建整个 VM（包括所有磁盘）的快照或仅创建单个磁盘的快照。 以下步骤说明了如何使用 [New-AzSnapshot](/powershell/module/az.compute/new-azsnapshot) cmdlet 仅创建 VM OS 磁盘的快照。 
 
 首先设置一些参数。 
 
@@ -101,7 +102,7 @@ $snapshotConfig =  New-AzSnapshotConfig `
    -Location $location 
 ```
 
-拍摄快照。
+创建快照。
 
 ```powershell
 $snapShot = New-AzSnapshot `
@@ -115,7 +116,7 @@ $snapShot = New-AzSnapshot `
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>从快照创建新磁盘
 
-使用 [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk) 基于快照创建托管磁盘。 此示例使用“myOSDisk”作为磁盘名称。
+使用 [New-AzDisk](/powershell/module/az.compute/new-azdisk) 基于快照创建托管磁盘。 此示例使用“myOSDisk”作为磁盘名称。
 
 创建适用于新 VM 的新资源组。
 
@@ -194,7 +195,7 @@ $nsg = New-AzNetworkSecurityGroup `
 ### <a name="create-a-public-ip-address-and-nic"></a>创建公共 IP 地址和 NIC
 若要与虚拟网络中的虚拟机通信，需要一个 [公共 IP 地址](../../virtual-network/public-ip-addresses.md)和网络接口。
 
-1. 创建公共 IP 地址。 在本示例中，公共 IP 地址名称设置为 *myIP*。
+1. 创建公共 IP。 在此示例中，公共 IP 地址名称设置为 *myIP*。
    
     ```powershell
     $ipName = "myIP"
@@ -204,7 +205,7 @@ $nsg = New-AzNetworkSecurityGroup `
        -AllocationMethod Dynamic
     ```       
     
-2. 创建 NIC。 在本示例中，NIC 名称设置为 *myNicName*。
+2. 创建 NIC。 在此示例中，NIC 名称设置为 *myNicName*。
    
     ```powershell
     $nicName = "myNicName"
@@ -235,16 +236,16 @@ $vm = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
 
 ### <a name="add-the-os-disk"></a>添加 OS 磁盘 
 
-使用 [Set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk) 向配置中添加 OS 磁盘。 此示例将磁盘大小设置为 *128 GB* 并附加托管磁盘作为 *Windows* OS 磁盘。
+使用 [Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) 向配置中添加 OS 磁盘。 此示例将磁盘大小设置为 *128 GB* 并附加托管磁盘作为 *Windows* OS 磁盘。
  
 ```powershell
 $vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Standard_LRS `
     -DiskSizeInGB 128 -CreateOption Attach -Windows
 ```
 
-### <a name="complete-the-vm"></a>完成 VM 
+### <a name="complete-the-vm"></a>完成该 VM 
 
-使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 以及刚才创建的配置创建 VM。
+使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 以及刚才创建的配置创建 VM。
 
 ```powershell
 New-AzVM -ResourceGroupName $destinationResourceGroup -Location $location -VM $vm
@@ -269,4 +270,3 @@ $vmList.Name
 
 ## <a name="next-steps"></a>后续步骤
 登录新虚拟机。 有关详细信息，请参阅 [How to connect and log on to an Azure virtual machine running Windows](connect-logon.md)（如何连接并登录到运行 Windows 的 Azure 虚拟机）。
-

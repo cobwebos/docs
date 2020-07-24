@@ -4,11 +4,12 @@ description: 在 Application Insights 中设置 Web 测试。 当网站不可用
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 61358051a8ddc32bc01ec5e231f4c28ebfa18ee0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6daa2e4abb1b6580fd70f104e85f3a917f47dcdc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670026"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024582"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>监视任意网站的可用性
 
@@ -22,7 +23,7 @@ ms.locfileid: "77670026"
 
 * [URL ping 测试](#create-a-url-ping-test)：可以在 Azure 门户中创建的简单测试。
 * [多步骤 Web 测试](availability-multistep.md)：记录一系列 Web 请求，这些请求可以通过再现来测试更复杂的场景。 多步骤 Web 测试在 Visual Studio Enterprise 中创建并上传到门户执行。
-* [自定义跟踪可用性测试](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet)：如果决定创建自定义应用程序以运行可用性测试，则可以使用 `TrackAvailability()` 方法将结果发送到 Application Insights。
+* [自定义跟踪可用性测试](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet)：如果决定创建自定义应用程序以运行可用性测试，则可以使用 `TrackAvailability()` 方法将结果发送到 Application Insights。
 
 **对于每个 Application Insights 资源，最多可以创建 100 个可用性测试。**
 
@@ -50,7 +51,7 @@ ms.locfileid: "77670026"
 |**测试频率**| 设置从每个测试位置运行测试的频率。 如果有五个测试位置，且默认频率为五分钟，则平均每隔一分钟测试站点一次。|
 |**测试位置**| 是服务器从其将 Web 请求发送到 URL 的位置。 **建议最低测试位置数目为 5**，以确保可以将网站中的问题与网络问题区分开来。 最多可以选择 16 个位置。
 
-**如果 URL 在公共 Internet 中不可见，可以选择性地打开防火墙，只允许测试事务通过**。 若要详细了解可用性测试代理的防火墙例外，请参阅 [IP 地址指南](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses#availability-tests)。
+**如果 URL 在公共 Internet 中不可见，可以选择性地打开防火墙，只允许测试事务通过**。 若要详细了解可用性测试代理的防火墙例外，请参阅 [IP 地址指南](./ip-addresses.md#availability-tests)。
 
 > [!NOTE]
 > 强烈建议从多个位置进行测试，**至少为 5 个位置**。 这是为了防止可能由特定位置的暂时性问题导致的虚假警报。 此外，我们发现最佳配置是使**测试位置的数目等于警报位置阈值 + 2**。
@@ -112,7 +113,7 @@ ms.locfileid: "77670026"
 
 ![服务器端诊断](./media/monitor-web-app-availability/open-instance-4.png)
 
-除了原始结果外，还可以在[指标资源管理器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)中查看两个关键的可用性指标：
+除了原始结果外，还可以在[指标资源管理器](../platform/metrics-getting-started.md)中查看两个关键的可用性指标：
 
 1. 可用性：已成功的测试占执行的所有测试的百分比。
 2. 测试持续时间：执行的所有测试的平均测试持续时间。
@@ -130,5 +131,3 @@ ms.locfileid: "77670026"
 
 * [可用性警报](availability-alerts.md)
 * [多步骤 Web 测试](availability-multistep.md)
-
-

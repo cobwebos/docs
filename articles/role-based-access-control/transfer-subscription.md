@@ -1,6 +1,6 @@
 ---
-title: " (预览版将 Azure 订阅转移到不同 Azure AD 目录) "
-description: 了解如何将 Azure 订阅和已知相关资源传输到不同的 Azure Active Directory (Azure AD) 目录。
+title: 将 Azure 订阅转移到不同的 Azure AD 目录（预览）
+description: 了解如何将 Azure 订阅和已知相关资源传输到不同的 Azure Active Directory （Azure AD）目录。
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -10,27 +10,27 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: rolyon
-ms.openlocfilehash: db1b030aed34498ade91a195d5ca68725b579ba3
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 664687d096a3a9c6ce9a6c7de0025604e046b0a1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230836"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029971"
 ---
-# <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a> (预览版将 Azure 订阅转移到不同 Azure AD 目录) 
+# <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>将 Azure 订阅转移到不同的 Azure AD 目录（预览）
 
 > [!IMPORTANT]
 > 按照以下步骤将订阅传输到不同的 Azure AD 目录当前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-组织可能具有多个 Azure 订阅。 每个订阅都与特定的 Azure Active Directory (Azure AD) 目录相关联。 为了更轻松地进行管理，你可能需要将订阅转移到不同的 Azure AD 目录。 将订阅传输到不同 Azure AD 目录时，某些资源不会传输到目标目录。 例如，Azure RBAC) 中的所有角色分配和自定义角色 (Azure RBAC 会**永久**从源目录中删除，并且不会传输到目标目录。
+组织可能具有多个 Azure 订阅。 每个订阅都与特定的 Azure Active Directory （Azure AD）目录关联。 为了更轻松地进行管理，你可能需要将订阅转移到不同的 Azure AD 目录。 将订阅传输到不同 Azure AD 目录时，某些资源不会传输到目标目录。 例如，Azure 基于角色的访问控制（Azure RBAC）中的所有角色分配和自定义角色会**永久**从源目录中删除，并且不会传输到目标目录。
 
 本文介绍将订阅传输到不同 Azure AD 目录时可以遵循的基本步骤，并在传输后重新创建某些资源。
 
 ## <a name="overview"></a>概述
 
-将 Azure 订阅转移到不同的 Azure AD 目录是一个复杂的过程，必须仔细计划和执行。 许多 Azure 服务都需要 (标识的安全主体) 才能正常运行，甚至可以管理其他 Azure 资源。 本文将尽力涵盖严重依赖于安全主体的大多数 Azure 服务，但并不是很全面。
+将 Azure 订阅转移到不同的 Azure AD 目录是一个复杂的过程，必须仔细计划和执行。 许多 Azure 服务都需要安全主体（标识）才能正常运行，甚至可以管理其他 Azure 资源。 本文将尽力涵盖严重依赖于安全主体的大多数 Azure 服务，但并不是很全面。
 
 > [!IMPORTANT]
 > 传输订阅需要停机时间才能完成此过程。
@@ -127,7 +127,7 @@ ms.locfileid: "86230836"
 
 ### <a name="save-all-role-assignments"></a>保存所有角色分配
 
-1. 使用[az role 赋值 list](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-list)列出所有角色分配 (包括) 继承的角色分配。
+1. 使用[az role 赋值 list](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-list)列出所有角色分配（包括继承的角色分配）。
 
     为了更轻松地查看列表，可以将输出导出为 JSON、TSV 或表。 有关详细信息，请参阅[使用 AZURE RBAC 和 Azure CLI 列出角色分配](role-assignments-list-cli.md)。
 
@@ -145,7 +145,7 @@ ms.locfileid: "86230836"
 
 ### <a name="save-custom-roles"></a>保存自定义角色
 
-1. 使用[az role definition list](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-list)列出自定义角色。 有关详细信息，请参阅[使用 Azure CLI 为 Azure 资源创建或更新自定义角色](custom-roles-cli.md)。
+1. 使用[az role definition list](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-list)列出自定义角色。 有关详细信息，请参阅[使用 Azure CLI 创建或更新 Azure 自定义角色](custom-roles-cli.md)。
 
     ```azurecli
     az role definition list --custom-role-only true --output json --query '[].{roleName:roleName, roleType:roleType}'
@@ -215,7 +215,7 @@ ms.locfileid: "86230836"
 
 ### <a name="list-key-vaults"></a>列出密钥保管库
 
-创建密钥保管库时，它会自动绑定到创建它的订阅的默认 Azure Active Directory 租户 ID。 所有访问策略条目也都绑定到此租户 ID。 有关详细信息，请参阅[将 Azure Key Vault 移动到另一个订阅](../key-vault/general/keyvault-move-subscription.md)。
+创建密钥保管库时，它会自动绑定到创建它的订阅的默认 Azure Active Directory 租户 ID。 所有访问策略条目也都绑定到此租户 ID。 有关详细信息，请参阅[将 Azure Key Vault 移动到另一个订阅](../key-vault/general/move-subscription.md)。
 
 > [!WARNING]
 > 如果对某个资源（例如存储帐户或 SQL 数据库）使用静态加密来依赖于不在正在传输的同一订阅中的密钥保管库，则可能会导致无法恢复的情况。 如果你有这种情况，应采取措施来使用不同的密钥保管库或暂时禁用客户管理的密钥，以避免这种不可恢复的情况。
@@ -291,7 +291,7 @@ ms.locfileid: "86230836"
 
 ### <a name="create-custom-roles"></a>创建自定义角色
         
-- 使用[az role definition create](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create)创建前面创建的文件中的每个自定义角色。 有关详细信息，请参阅[使用 Azure CLI 为 Azure 资源创建或更新自定义角色](custom-roles-cli.md)。
+- 使用[az role definition create](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create)创建前面创建的文件中的每个自定义角色。 有关详细信息，请参阅[使用 Azure CLI 创建或更新 Azure 自定义角色](custom-roles-cli.md)。
 
     ```azurecli
     az role definition create --role-definition <role_definition>
@@ -339,7 +339,7 @@ ms.locfileid: "86230836"
 
 ### <a name="update-key-vaults"></a>更新密钥保管库
 
-本部分介绍更新密钥保管库的基本步骤。 有关详细信息，请参阅[将 Azure Key Vault 移动到另一个订阅](../key-vault/general/keyvault-move-subscription.md)。
+本部分介绍更新密钥保管库的基本步骤。 有关详细信息，请参阅[将 Azure Key Vault 移动到另一个订阅](../key-vault/general/move-subscription.md)。
 
 1. 将与订阅中的所有现有密钥保管库关联的租户 ID 更新到目标目录。
 

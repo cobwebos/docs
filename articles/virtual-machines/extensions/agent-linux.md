@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4143e049f0a89d1218d9442eaebc1c5ebaf4cc77
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 560ae8d837cf57e471a9f39d5ccdcf152a156b1e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186820"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029070"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>了解和使用 Azure Linux 代理
 
@@ -344,5 +344,4 @@ Ubuntu 云映像利用 [cloud-init](https://launchpad.net/ubuntu/+source/cloud-i
 * 有关详细信息，请参阅以下资源来配置资源磁盘装入点，并在预配期间交换 Ubuntu 云映像上的空间：
   
   * [Ubuntu Wiki：配置交换分区](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
-  * [将自定义数据注入到 Azure 虚拟机](../windows/classic/inject-custom-data.md)
-
+  * [将自定义数据注入到 Azure 虚拟机](../windows/tutorial-automate-vm-deployment.md)

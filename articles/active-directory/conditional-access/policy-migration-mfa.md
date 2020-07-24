@@ -1,5 +1,5 @@
 ---
-title: 迁移条件访问策略 - Azure Active Directory
+title: 使用多重身份验证迁移条件访问策略-Azure Active Directory
 description: 本文演示如何迁移要求在 Azure 门户中进行多重身份验证的经典策略。
 services: active-directory
 ms.service: active-directory
@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1dc7b7227dbaee488726a75fe7120bd26614dbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cc99241f5fa7c09c69db13dcb3f6c3aaa75e376
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83993722"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027387"
 ---
 # <a name="migrate-a-classic-policy-in-the-azure-portal"></a>在 Azure 门户中迁移经典策略
 

@@ -14,15 +14,16 @@ ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d0d83d3b981968949d558cb7ee5672094b00555
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb464f758aca33e0b6547f69e2a9cc842582ea3f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727324"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025211"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 中基于组的许可的 PowerShell 和 Graph 示例
 
-基于组的许可的完整功能可通过 [Azure 门户](https://portal.azure.com)获得，目前 PowerShell 和 Microsoft Graph 支持仅限于只读操作。 但是，可使用现有的 [MSOnline PowerShell cmdlet](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) 和 Microsoft Graph 执行一些有用的任务。 本文档提供了可执行的任务示例。
+基于组的许可的完整功能可通过 [Azure 门户](https://portal.azure.com)获得，目前 PowerShell 和 Microsoft Graph 支持仅限于只读操作。 但是，可使用现有的 [MSOnline PowerShell cmdlet](/powershell/module/msonline) 和 Microsoft Graph 执行一些有用的任务。 本文档提供了可执行的任务示例。
 
 > [!NOTE]
 > 开始运行 cmdlet 前，请先运行 `Connect-MsolService` cmdlet，确保连接到组织。

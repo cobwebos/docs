@@ -12,11 +12,12 @@ ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: dabaecfd31ac9ec6250e7b482fde7699a13df044
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d18a50a21c41830796c913a424707897d277218
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266587"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026758"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 身份验证和授权错误代码
 
@@ -62,12 +63,12 @@ ms.locfileid: "84266587"
 | 错误代码         | 说明        | 客户端操作    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | 协议错误，例如，缺少必需的参数。 | 修复并重新提交请求。|
-| `invalid_grant`    | 部分身份验证材料（身份验证代码、刷新令牌、访问令牌、PKCE 质询）无效、无法分析、缺失或不可用 | 尝试对 `/authorize` 终结点发出新请求来获取新的授权代码。  考虑查看和验证应用程序对协议的使用。 |
+| `invalid_grant`    | 某些身份验证材料（身份验证代码、刷新令牌、访问令牌、PKCE 质询）无效、无法分析、缺失或在其他方面无法使用 | 尝试对 `/authorize` 终结点发出新请求来获取新的授权代码。  考虑查看和验证应用程序对协议的使用。 |
 | `unauthorized_client` | 经过身份验证的客户端无权使用此权限授予类型。 | 客户端应用程序未注册到 Azure AD 中或者未添加到用户的 Azure AD 租户时，通常会出现这种情况。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。 |
 | `invalid_client` | 客户端身份验证失败。  | 客户端凭据无效。 若要修复，应用程序管理员应更新凭据。   |
 | `unsupported_grant_type` | 授权服务器不支持权限授予类型。 | 更改请求中的授权类型。 这种类型的错误应该只在开发过程中发生，并且应该在初始测试过程中检测到。 |
 | `invalid_resource` | 目标资源无效，原因是它不存在，Azure AD 找不到它，或者未正确配置。 | 这表示未在租户中配置该资源（如果存在）。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。  在开发过程中，这通常表示错误地设置了测试租户，或者在所请求范围的名称中有拼写错误。 |
-| `interaction_required` | 请求需要用户交互。 例如，需要额外的身份验证步骤。 | 请以交互方式重试具有相同资源的请求，以便用户能够完成所需的任何挑战。  |
+| `interaction_required` | 请求需要用户交互。 例如，需要额外的身份验证步骤。 | 请以交互方式用同一资源重试请求，以便用户能够完成所需的任何质询。  |
 | `temporarily_unavailable` | 服务器暂时繁忙，无法处理请求。 | 重试请求。 客户端应用程序可向用户说明，其响应由于临时状况而延迟。 |
 
 ## <a name="lookup-current-error-code-information"></a>查找当前错误代码信息
@@ -125,8 +126,8 @@ ms.locfileid: "84266587"
 | AADSTS50059 | MissingTenantRealmAndNoUserInformationProvided - 在请求中未找到租户标识信息，或者任何提供的凭据未隐式指定此信息。 用户可以联系租户管理员来帮助解决此问题。 |
 | AADSTS50061 | SignoutInvalidRequest - 注销请求无效。 |
 | AADSTS50064 | CredentialAuthenticationError - 用户名或密码凭据验证失败。 |
-| AADSTS50068 | SignoutInitiatorNotParticipant-注销失败。 启动注销的应用不是当前会话中的参与者。 |
-| AADSTS50070 | SignoutUnknownSessionIdentifier-注销失败。 注销请求指定的名称标识符与现有会话不匹配。 |
+| AADSTS50068 | SignoutInitiatorNotParticipant - 注销失败。 发起注销的应用不是当前会话中的参与者。 |
+| AADSTS50070 | SignoutUnknownSessionIdentifier - 注销失败。 注销请求指定了与现有会话不匹配的名称标识符。 |
 | AADSTS50071 | SignoutMessageExpired - 注销请求已过期。 |
 | AADSTS50072 | UserStrongAuthEnrollmentRequiredInterrupt - 用户需要注册双重身份验证（交互式）。 |
 | AADSTS50074 | UserStrongAuthClientAuthNRequiredInterrupt - 需要强身份验证，用户未通过 MFA 质询。 |
@@ -172,7 +173,7 @@ ms.locfileid: "84266587"
 | AADSTS50187 | DeviceInformationNotProvided - 服务无法执行设备身份验证。 |
 | AADSTS50196 | LoopDetected - 检测到客户端循环。 检查应用的逻辑，以确保实现了令牌缓存，并且正确处理了错误情况。  该应用在太短的时间内发出了太多相同请求，表明它处于错误状态或滥用请求令牌。 |
 | AADSTS50197 | ConflictingIdentities - 找不到用户。 请尝试再次登录。 |
-| AADSTS50199 | CmsiInterrupt - 出于安全原因，此请求需要用户确认。  由于这是“interaction_required”错误，因此客户端应进行交互式身份验证。之所以发生这种情况，是因为系统 Web 视图已用于请求本机应用程序的令牌，必须提示用户询问此应用是否确实为他们要登录的应用。 若要避免此提示，重定向 URI 应为以下安全列表的一部分： <br />http://<br />https://<br />msauth：//（仅限 iOS）<br />msauthv2：//（仅限 iOS）<br />chrome-扩展：//（仅桌面 Chrome 浏览器） |
+| AADSTS50199 | CmsiInterrupt - 出于安全原因，此请求需要用户确认。  由于这是“interaction_required”错误，因此客户端应进行交互式身份验证。之所以发生这种情况，是因为系统 Web 视图已用于请求本机应用程序的令牌，必须提示用户询问此应用是否确实为他们要登录的应用。 要避免此提示，重定向 URI 应是以下安全列表的一部分： <br />http://<br />https://<br />msauth://（仅限 iOS）<br />msauthv2://（仅限 iOS）<br />chrome-extension://（仅限桌面 Chrome 浏览器） |
 | AADSTS51000 | RequiredFeatureNotEnabled - 已禁用该功能。 |
 | AADSTS51001 | DomainHintMustbePresent - 必须使用本地安全标识符或本地 UPN 提供域提示。 |
 | AADSTS51004 | UserAccountNotInDirectory - 目录中不存在该用户帐户。 |
@@ -263,6 +264,7 @@ ms.locfileid: "84266587"
 | AADSTS90093 | GraphUserUnauthorized - Graph 返回了针对请求的禁止访问错误代码。 |
 | AADSTS90094 | AdminConsentRequired - 需要管理员许可。 |
 | AADSTS900382 | 跨云请求不支持机密客户端。 |
+| AADSTS90099 | 应用程序 "{appId}" （{appName}）未在租户 "{租户}" 中获得授权。 必须授权应用程序访问客户租户，然后合作伙伴委派的管理员才能使用它们。 提供预先同意或执行适当的合作伙伴中心 API 来授权应用程序。 |
 | AADSTS90100 | InvalidRequestParameter - 参数为空或无效。 |
 | AADSTS901002 | AADSTS901002：不支持“resource”请求参数。 |
 | AADSTS90101 | InvalidEmailAddress - 提供的数据不是有效的电子邮件地址。 电子邮件地址必须采用 `someone@example.com` 格式。 |
@@ -313,7 +315,7 @@ ms.locfileid: "84266587"
 | AADSTS700022 | InvalidMultipleResourcesScope - 为输入参数范围提供的值无效，因为它包含多个资源。 |
 | AADSTS700023 | InvalidResourcelessScope - 请求访问令牌时，为输入参数范围提供的值无效。 |
 | AADSTS7000215 | 提供的客户端密码无效。 开发人员错误 - 应用尝试在没有必需的或正确的身份验证参数的情况下登录。|
-| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided - 提供的客户端密钥已过期。 访问 Azure 门户为应用创建新密钥，或考虑使用证书凭据提高安全性：[https://aka.ms/certCreds](https://aka.ms/certCreds) |
+| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided - 提供的客户端密钥已过期。 访问 Azure 门户，为你的应用创建新密钥，或者考虑使用证书凭据提高安全性：[https://aka.ms/certCreds](https://aka.ms/certCreds) |
 | AADSTS700005 | InvalidGrantRedeemAgainstWrongTenant - 提供的授权代码是用于其他租户的，因此已被拒绝。 兑换 OAuth2 授权代码时所针对的租户必须是获取该代码时所针对的租户（根据情况使用 /common 或 {tenant ID} 进行指定） |
 | AADSTS1000000 | UserNotBoundError - 绑定 API 要求 Azure AD 用户同时使用外部 IDP 进行身份验证，但尚未执行此操作。 |
 | AADSTS1000002 | BindCompleteInterruptError - 绑定已成功完成，但必须通知用户。 |

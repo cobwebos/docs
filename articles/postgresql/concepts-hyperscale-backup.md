@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: bcc94b62812f1668bf8c5e5abb268fddf3da1fa5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22bc3d6efca24a88b28217b2e06ac79d33f16b2e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82515438"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030073"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-超大规模（Citus）中的备份和还原
 
@@ -32,12 +32,16 @@ Azure Database for PostgreSQL –超大规模（Citus）自动创建每个节点
 
 ## <a name="restore"></a>还原
 
-在 Azure Database for PostgreSQL 中，还原超大规模（Citus）群集将从原始节点的备份创建新群集。
+在 Azure Database for PostgreSQL 中，还原超大规模（Citus）群集将从原始节点的备份创建新群集。 
+
+> [!IMPORTANT]
+>只能在同一订阅和资源组中以及使用不同的群集名称还原超大规模群集。
+
 
 > [!IMPORTANT]
 > 无法还原已删除的超大规模（Citus）群集。 如果删除群集，则属于该群集的所有节点都将被删除且无法恢复。 若要保护群集资源、部署后、意外删除或意外更改，管理员可以利用[管理锁](/azure/azure-resource-manager/management/lock-resources)。
 
-### <a name="point-in-time-restore-pitr"></a>时间点还原（PITR）
+### <a name="point-in-time-restore-pitr"></a>时间点还原 (PITR)
 
 你可以将群集还原到过去35天内的任何时间点。
 多种情况下可以使用时间点还原。 例如，当用户意外地删除数据、删除重要的表或数据库时，或者如果应用程序意外地使用错误数据覆盖了正确的数据。

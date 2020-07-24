@@ -1,5 +1,5 @@
 ---
-title: Microsoft 标识平台和 OAuth 2.0 代理流 | Azure
+title: Microsoft 标识平台和 OAuth2.0 代理流 | Azure
 titleSuffix: Microsoft identity platform
 description: 本文介绍如何使用 OAuth2.0 代理流通过 HTTP 消息实现服务到服务身份验证。
 services: active-directory
@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/8/2020
+ms.date: 07/16/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3a0d4d205e82f377d6ea02c91fbd6db7820c3868
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: ea207a4584d9f4fad5dee45b3633c306a8d98b3d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165866"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025909"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft 标识平台和 OAuth 2.0 代理流
 
 
 OAuth 2.0 代理流 (OBO) 适用于这样的用例：应用程序调用某个服务/Web API，而后者又需要调用另一个服务/Web API。 思路是通过请求链传播委托用户标识和权限。 要使中间层服务向下游服务发出身份验证请求，该服务需要代表用户保护 Microsoft 标识平台提供的访问令牌。
 
-本文介绍如何直接根据应用程序中的协议编程。  如果可能，建议改为使用受支持的 Microsoft 身份验证库 (MSAL) [获取令牌并调用受保护的 Web API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)。  另请参阅[使用 MSAL 的示例应用](sample-v2-code.md)。
+本文介绍如何在应用程序中直接针对协议进行编程。  如果可能，建议你改用受支持的 Microsoft 身份验证库 (MSAL) 来[获取令牌并调用受保护的 Web API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)。  另请参阅[使用 MSAL 的示例应用](sample-v2-code.md)。
 
 > [!NOTE]
 > 自 2018 年 5 月起，派生 `id_token` 的某些隐式流不能用于 OBO 流。 单页应用 (SPA) 应改为将**访问**令牌传递给中间层机密客户端，才能执行 OBO 流。 有关哪些客户端可以执行 OBO 调用的详细信息，请参阅[限制](#client-limitations)。
@@ -40,9 +40,9 @@ OAuth 2.0 代理流 (OBO) 适用于这样的用例：应用程序调用某个服
 
 1. 客户端应用程序使用令牌 A（其中包含 API A 的 `aud` 声明）向 API A 发出请求。
 1. API A 向 Microsoft 标识平台令牌颁发终结点进行身份验证并请求访问 API B 的令牌。
-1. Microsoft 标识平台令牌颁发终结点验证 API A 的凭据以及令牌 A，并将 API B 的访问令牌（令牌 B）颁发给 API A。
-1. 令牌 B 由 API A 在向 API B 发出的请求的授权标头中设置。
-1. 受保护的资源中的数据由 API B 返回到 API A，并从 API A 返回到客户端。
+1. Microsoft 标识平台令牌颁发终结点使用令牌 A 验证 API A 的凭据，并颁发供 API B（令牌 B）访问 API A 的访问令牌。
+1. 令牌 B 由 API A 在向 API B 发出的请求的 authorization 标头中设置。
+1. 受保护资源中的数据通过 API B 返回到 API A，并从那返回到客户端。
 
 > [!NOTE]
 > 在此方案中，中间层服务无需用户干预，就要获取用户对访问下游 API 的许可。 因此，在身份验证过程的同意步骤中会提前显示授权访问下游 API 的选项。 若要了解如何为应用设置此选项，请参阅[为中间层应用程序获得同意](#gaining-consent-for-the-middle-tier-application)。
@@ -61,14 +61,14 @@ https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 
 使用共享密钥时，服务到服务访问令牌请求包含以下参数：
 
-| 参数 | 类型 | 描述 |
+| 参数 | 类型 | 说明 |
 | --- | --- | --- |
-| `grant_type` | 必需 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须为 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
-| `client_id` | 必需 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页已分配给应用的应用程序（客户端）ID。 |
-| `client_secret` | 必需 | 在“Azure 门户 - 应用注册”页中为应用生成的客户端密码。 |
-| `assertion` | 必需 | 发送到中间层 API 的访问令牌。  此令牌必须使受众 (`aud`) 声明，使此 OBO 请求 (由字段) 表示的应用程序 `client-id` 。 应用程序不能兑换不同应用程序的令牌 (因此，例如，如果客户端发送一个用于 MS Graph 的令牌，则 API 无法使用 OBO 兑换该令牌。  它应改为拒绝令牌) 。  |
-| `scope` | 必选 | 空格分隔的令牌请求作用域的列表。 有关详细信息，请参阅[作用域](v2-permissions-and-consent.md)。 |
-| `requested_token_use` | 必需 | 指定应如何处理请求。 在 OBO 流中，该值必须设置为 `on_behalf_of`。 |
+| `grant_type` | 必须 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须为 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
+| `client_id` | 必须 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端）ID。 |
+| `client_secret` | 必须 | 在“Azure 门户 - 应用注册”页中为应用生成的客户端机密。 |
+| `assertion` | 必须 | 发送到中间层 API 的访问令牌。  此令牌必须拥有对 `aud` 发出此 OBO 请求的应用（由字段表示的应用）的受众（）声明 `client-id` 。 应用程序不能兑换不同应用程序的令牌（例如，如果客户端发送 API，它是一个用于 MS Graph 的令牌，则 API 不能使用 OBO 兑换该令牌。  它应改为拒绝标记）。  |
+| `scope` | 必填 | 空格分隔的令牌请求作用域的列表。 有关详细信息，请参阅[作用域](v2-permissions-and-consent.md)。 |
+| `requested_token_use` | 必填 | 指定应如何处理请求。 在 OBO 流中，该值必须设置为 `on_behalf_of`。 |
 
 #### <a name="example"></a>示例
 
@@ -78,13 +78,13 @@ https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 //line breaks for legibility only
 
 POST /oauth2/v2.0/token HTTP/1.1
-Host: login.microsoftonline.com
+Host: login.microsoftonline.com/<tenant>
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 &client_id=2846f71b-a7a4-4987-bab3-760035b2f389
 &client_secret=BYyVnAt56JpLwUcyo47XODd
-&assertion=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCJ9.eyJhdWQiOiIyODQ2ZjcxYi1hN2E0LTQ5ODctYmFiMy03NjAwMzViMmYzODkiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3L3YyLjAiLCJpYXQiOjE0OTM5MjA5MTYsIm5iZiI6MTQ5MzkyMDkxNiwiZXhwIjoxNDkzOTI0ODE2LCJhaW8iOiJBU1FBMi84REFBQUFnZm8vNk9CR0NaaFV2NjJ6MFFYSEZKR0VVYUIwRUlIV3NhcGducndMMnVrPSIsIm5hbWUiOiJOYXZ5YSBDYW51bWFsbGEiLCJvaWQiOiJkNWU5NzljNy0zZDJkLTQyYWYtOGYzMC03MjdkZDRjMmQzODMiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJuYWNhbnVtYUBtaWNyb3NvZnQuY29tIiwic3ViIjoiZ1Q5a1FMN2hXRUpUUGg1OWJlX1l5dVZNRDFOTEdiREJFWFRhbEQzU3FZYyIsInRpZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsInV0aSI6IjN5U3F4UHJweUVPd0ZsTWFFMU1PQUEiLCJ2ZXIiOiIyLjAifQ.TPPJSvpNCSCyUeIiKQoLMixN1-M-Y5U0QxtxVkpepjyoWNG0i49YFAJC6ADdCs5nJXr6f-ozIRuaiPzy29yRUOdSz_8KqG42luCyC1c951HyeDgqUJSz91Ku150D9kP5B9-2R-jgCerD_VVuxXUdkuPFEl3VEADC_1qkGBiIg0AyLLbz7DTMp5DvmbC09DhrQQiouHQGFSk2TPmksqHm3-b3RgeNM1rJmpLThis2ZWBEIPx662pjxL6NJDmV08cPVIcGX4KkFo54Z3rfwiYg4YssiUc4w-w3NJUBQhnzfTl4_Mtq2d7cVlul9uDzras091vFy32tWkrpa970UvdVfQ
+&assertion=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCJ9.eyJhdWQiOiIyO{a lot of characters here}
 &scope=https://graph.microsoft.com/user.read+offline_access
 &requested_token_use=on_behalf_of
 ```
@@ -96,11 +96,11 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 | 参数 | 类型 | 描述 |
 | --- | --- | --- |
 | `grant_type` | 必需 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须为 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
-| `client_id` | 必选 |  [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页已分配给应用的应用程序（客户端）ID。 |
-| `client_assertion_type` | 必需 | 值必须是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
+| `client_id` | 必须 |  [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端）ID。 |
+| `client_assertion_type` | 必须 | 值必须是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
 | `client_assertion` | 必需 | 断言（JSON Web 令牌），需使用作为凭据向应用程序注册的证书进行创建和签名。 若要了解如何注册证书以及断言的格式，请参阅[证书凭据](active-directory-certificate-credentials.md)。 |
-| `assertion` | 必需 |  发送到中间层 API 的访问令牌。  此令牌必须使受众 (`aud`) 声明，使此 OBO 请求 (由字段) 表示的应用程序 `client-id` 。 应用程序不能兑换不同应用程序的令牌 (因此，例如，如果客户端发送一个用于 MS Graph 的令牌，则 API 无法使用 OBO 兑换该令牌。  它应改为拒绝令牌) 。  |
-| `requested_token_use` | 必需 | 指定应如何处理请求。 在 OBO 流中，该值必须设置为 `on_behalf_of`。 |
+| `assertion` | 必须 |  发送到中间层 API 的访问令牌。  此令牌必须拥有对 `aud` 发出此 OBO 请求的应用（由字段表示的应用）的受众（）声明 `client-id` 。 应用程序不能兑换不同应用程序的令牌（例如，如果客户端发送 API，它是一个用于 MS Graph 的令牌，则 API 不能使用 OBO 兑换该令牌。  它应改为拒绝标记）。  |
+| `requested_token_use` | 必填 | 指定应如何处理请求。 在 OBO 流中，该值必须设置为 `on_behalf_of`。 |
 | `scope` | 必须 | 空格分隔的令牌请求范围的列表。 有关详细信息，请参阅[作用域](v2-permissions-and-consent.md)。|
 
 请注意，这些参数与共享密钥请求的参数几乎相同，只不过 `client_secret` 参数替换为以下两个参数：`client_assertion_type` 和 `client_assertion`。
@@ -113,14 +113,14 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 // line breaks for legibility only
 
 POST /oauth2/v2.0/token HTTP/1.1
-Host: login.microsoftonline.com
+Host: login.microsoftonline.com/<tenant>
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &client_id=625391af-c675-43e5-8e44-edd3e30ceb15
 &client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer
-&client_assertion=eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJ{a lot of characters here}M8U3bSUKKJDEg
-&assertion=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCIsImtpZCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCJ9.eyJhdWQiOiJodHRwczovL2Rkb2JhbGlhbm91dGxvb2sub25taWNyb3NvZnQuY29tLzE5MjNmODYyLWU2ZGMtNDFhMy04MWRhLTgwMmJhZTAwYWY2ZCIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzI2MDM5Y2NlLTQ4OWQtNDAwMi04MjkzLTViMGM1MTM0ZWFjYi8iLCJpYXQiOjE0OTM0MjMxNTIsIm5iZiI6MTQ5MzQyMzE1MiwiZXhwIjoxNDkzNDY2NjUyLCJhY3IiOiIxIiwiYWlvIjoiWTJaZ1lCRFF2aTlVZEc0LzM0L3dpQndqbjhYeVp4YmR1TFhmVE1QeG8yYlN2elgreHBVQSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiJiMzE1MDA3OS03YmViLTQxN2YtYTA2YS0zZmRjNzhjMzI1NDUiLCJhcHBpZGFjciI6IjAiLCJlX2V4cCI6MzAyNDAwLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJnaXZlbl9uYW1lIjoiTmF2eWEiLCJpcGFkZHIiOiIxNjcuMjIwLjEuMTc3IiwibmFtZSI6Ik5hdnlhIFRlc3QiLCJvaWQiOiIxY2Q0YmNhYy1iODA4LTQyM2EtOWUyZi04MjdmYmIxYmI3MzkiLCJwbGF0ZiI6IjMiLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJzdWIiOiJEVXpYbkdKMDJIUk0zRW5pbDFxdjZCakxTNUllQy0tQ2ZpbzRxS1MzNEc4IiwidGlkIjoiMjYwMzljY2UtNDg5ZC00MDAyLTgyOTMtNWIwYzUxMzRlYWNiIiwidW5pcXVlX25hbWUiOiJuYXZ5YUBkZG9iYWxpYW5vdXRsb29rLm9ubWljcm9zb2Z0LmNvbSIsInVwbiI6Im5hdnlhQGRkb2JhbGlhbm91dGxvb2sub25taWNyb3NvZnQuY29tIiwidmVyIjoiMS4wIn0.R-Ke-XO7lK0r5uLwxB8g5CrcPAwRln5SccJCfEjU6IUqpqcjWcDzeDdNOySiVPDU_ZU5knJmzRCF8fcjFtPsaA4R7vdIEbDuOur15FXSvE8FvVSjP_49OH6hBYqoSUAslN3FMfbO6Z8YfCIY4tSOB2I6ahQ_x4ZWFWglC3w5mK-_4iX81bqi95eV4RUKefUuHhQDXtWhrSgIEC0YiluMvA4TnaJdLq_tWXIc4_Tq_KfpkvI004ONKgU7EAMEr1wZ4aDcJV2yf22gQ1sCSig6EGSTmmzDuEPsYiyd4NhidRZJP4HiiQh-hePBQsgcSgYGvz9wC6n57ufYKh2wm_Ti3Q
+&client_assertion=eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJ{a lot of characters here}
+&assertion=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCIsImtpZCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCJ9.eyJhdWQiO{a lot of characters here}
 &requested_token_use=on_behalf_of
 &scope=https://graph.microsoft.com/user.read+offline_access
 ```
@@ -148,12 +148,14 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
   "expires_in": 3269,
   "ext_expires_in": 0,
   "access_token": "eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVGFlN0NkV1c3UWZkQ0NDYy0tY0hGa18wZE50MVEtc2loVzRMd2RwQVZISGpnTVdQZ0tQeVJIaGlDbUN2NkdyMEpmYmRfY1RmMUFxU21TcFJkVXVydVJqX3Nqd0JoN211eHlBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIiwia2lkIjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNDkzOTMwMzA1LCJuYmYiOjE0OTM5MzAzMDUsImV4cCI6MTQ5MzkzMzg3NSwiYWNyIjoiMCIsImFpbyI6IkFTUUEyLzhEQUFBQU9KYnFFWlRNTnEyZFcxYXpKN1RZMDlYeDdOT29EMkJEUlRWMXJ3b2ZRc1k9IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJUb2RvRG90bmV0T2JvIiwiYXBwaWQiOiIyODQ2ZjcxYi1hN2E0LTQ5ODctYmFiMy03NjAwMzViMmYzODkiLCJhcHBpZGFjciI6IjEiLCJmYW1pbHlfbmFtZSI6IkNhbnVtYWxsYSIsImdpdmVuX25hbWUiOiJOYXZ5YSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xOTkiLCJuYW1lIjoiTmF2eWEgQ2FudW1hbGxhIiwib2lkIjoiZDVlOTc5YzctM2QyZC00MmFmLThmMzAtNzI3ZGQ0YzJkMzgzIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIxMjc1MjExODQtMTYwNDAxMjkyMC0xODg3OTI3NTI3LTI2MTE4NDg0IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzM0ZGRkEwNkQxN0M5Iiwic2NwIjoiVXNlci5SZWFkIiwic3ViIjoibWtMMHBiLXlpMXQ1ckRGd2JTZ1JvTWxrZE52b3UzSjNWNm84UFE3alVCRSIsInRpZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsInVuaXF1ZV9uYW1lIjoibmFjYW51bWFAbWljcm9zb2Z0LmNvbSIsInVwbiI6Im5hY2FudW1hQG1pY3Jvc29mdC5jb20iLCJ1dGkiOiJWR1ItdmtEZlBFQ2M1dWFDaENRSkFBIiwidmVyIjoiMS4wIn0.cubh1L2VtruiiwF8ut1m9uNBmnUJeYx4x0G30F7CqSpzHj1Sv5DCgNZXyUz3pEiz77G8IfOF0_U5A_02k-xzwdYvtJUYGH3bFISzdqymiEGmdfCIRKl9KMeoo2llGv0ScCniIhr2U1yxTIkIpp092xcdaDt-2_2q_ql1Ha_HtjvTV1f9XR3t7_Id9bR5BqwVX5zPO7JMYDVhUZRx08eqZcC-F3wi0xd_5ND_mavMuxe2wrpF-EZviO3yg0QVRr59tE3AoWl8lSGpVc97vvRCnp4WVRk26jJhYXFPsdk4yWqOKZqzr3IFGyD08WizD_vPSrXcCPbZP3XWaoTUKZSNJg",
-  "refresh_token": "OAQABAAAAAABnfiG-mA6NTae7CdWW7QfdAALzDWjw6qSn4GUDfxWzJDZ6lk9qRw4AnqPnvFqnzS3GiikHr5wBM1bV1YyjH3nUeIhKhqJWGwqJFRqs2sE_rqUfz7__3J92JDpi6gDdCZNNaXgreQsH89kLCVNYZeN6kGuFGZrjwxp1wS2JYc97E_3reXBxkHrA09K5aR-WsSKCEjf6WI23FhZMTLhk_ZKOe_nWvcvLj13FyvSrTMZV2cmzyCZDqEHtPVLJgSoASuQlD2NXrfmtcmgWfc3uJSrWLIDSn4FEmVDA63X6EikNp9cllH3Gp7Vzapjlnws1NQ1_Ff5QrmBHp_LKEIwfzVKnLLrQXN0EzP8f6AX6fdVTaeKzm7iw6nH0vkPRpUeLc3q_aNsPzqcTOnFfgng7t2CXUsMAGH5wclAyFCAwL_Cds7KnyDLL7kzOS5AVZ3Mqk2tsPlqopAiHijZaJumdTILDudwKYCFAMpUeUwEf9JmyFjl2eIWPmlbwU7cHKWNvuRCOYVqbsTTpJthwh4PvsL5ov5CawH_TaV8omG_tV6RkziHG9urk9yp2PH9gl7Cv9ATa3Vt3PJWUS8LszjRIAJmyw_EhgHBfYCvEZ8U9PYarvgqrtweLcnlO7BfnnXYEC18z_u5wemAzNBFUje2ttpGtRmRic4AzZ708tBHva2ePJWGX6pgQbiWF8esOrvWjfrrlfOvEn1h6YiBW291M022undMdXzum6t1Y1huwxHPHjCAA"
+  "refresh_token": "OAQABAAAAAABnfiG-mA6NTae7CdWW7QfdAALzDWjw6qSn4GUDfxWzJDZ6lk9qRw4An{a lot of characters here}"
 }
 ```
 
 > [!NOTE]
-> 上述访问令牌是 v1.0 格式的令牌。 这是因为该令牌是基于要访问的资源提供的。 Microsoft Graph 设置为接收 v1.0 令牌，因此当客户端请求 Microsoft Graph 的令牌时，Microsoft 标识平台会生成 v1.0 访问令牌。 只有应用程序才能查看访问令牌。 客户端不能检查它们。
+> 上面的访问令牌是 Microosft 图形的1.0 版格式的令牌。 这是因为令牌格式基于所访问的**资源**，并且与用于请求它的终结点无关。 Microsoft Graph 设置为接受 v1.0 令牌，因此当客户端请求 Microsoft Graph 的令牌时，Microsoft 标识平台会生成 v1.0 访问令牌。 其他应用可能表示它们需要 v2.0 格式令牌、1.0 格式令牌，甚至是专用或加密的令牌格式。  V1.0 和 v2.0 终结点都可以发出令牌的格式，这种方式使得资源始终可以获得正确的令牌格式，而不考虑客户端请求令牌的方式或位置。 
+>
+> 只有应用程序才能查看访问令牌。 客户端**不得**检查它们。 在代码中检查其他应用的访问令牌将导致应用在应用更改其令牌的格式或开始对其进行加密时意外中断。 
 
 ### <a name="error-response-example"></a>错误响应示例
 
@@ -173,7 +175,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 ## <a name="use-the-access-token-to-access-the-secured-resource"></a>使用访问令牌访问受保护资源
 
-现在，中间层服务可以通过在 `Authorization` 标头中设置令牌，使用上面获取的令牌向下游 Web API 发 出身份验证请求。
+现在，中间层服务可以通过在 `Authorization` 标头中设置令牌，使用上面获取的令牌向下游 Web API 发出身份验证请求。
 
 ### <a name="example"></a>示例
 
@@ -214,6 +216,6 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 
 详细了解 OAuth 2.0 协议和使用客户端凭据执行服务到服务身份验证的其他方法。
 
-* [在 Microsoft 标识平台中授予的 OAuth 2.0 客户端凭据](v2-oauth2-client-creds-grant-flow.md)
+* [Microsoft 标识平台中的 OAuth 2.0 客户端凭据授予](v2-oauth2-client-creds-grant-flow.md)
 * [Microsoft 标识平台中的 OAuth 2.0 代码流](v2-oauth2-auth-code-flow.md)
 * [使用 `/.default` 范围](v2-permissions-and-consent.md#the-default-scope)

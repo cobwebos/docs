@@ -13,13 +13,14 @@ ms.date: 05/16/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: c4f3c4153e1404a5576427be7ef218f5a669387e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 633166f3bb46212991920d6720737f8268b3f401
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76695851"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026848"
 ---
-# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer 和 Microsoft Edge 浏览器 (MSAL.js) 的已知问题
+# <a name="known-issues-on-internet-explorer-browsers-msaljs"></a>Internet Explorer 浏览器中的已知问题（MSAL.js）
 
 适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 是为 [JavaScript ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) 生成的，因此可以在 Internet Explorer 中运行。 但是，需要注意几个问题。
 

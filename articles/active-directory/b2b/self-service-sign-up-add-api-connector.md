@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0498a2015b75221763ab5fdd4f6e94428922bd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6238e89b3941668f831f3128bb0e723a4097e48
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386736"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027506"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>向用户流添加 API 连接器
 
@@ -44,7 +44,7 @@ ms.locfileid: "85386736"
 
    ![设置 API 连接器声明](./media/self-service-sign-up-add-api-connector/api-connector-claims.png)
 
-10. 选择“保存”。
+10. 选择“保存” 。
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>在用户流中启用 API 连接器
 
@@ -61,7 +61,7 @@ ms.locfileid: "85386736"
 
    ![向用户流添加 Api](./media/self-service-sign-up-add-api-connector/api-connectors-user-flow-select.png)
 
-6. 选择“保存”。
+6. 选择“保存” 。
 
 了解[可在用户流中启用 API 连接器的位置](api-connectors-overview.md#where-you-can-enable-an-api-connector-in-a-user-flow)。
 
@@ -76,7 +76,7 @@ POST <API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@fabrikam.onmicrosoft.com",
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
  "identities": [ //Sent for Google and Facebook identity providers
      {
      "signInType":"federated",
@@ -99,7 +99,7 @@ Content-type: application/json
 可以使用**extension_ \<extensions-app-id> _AttributeName**格式为用户创建自定义属性。 你的 API 应该会接收此相同序列化格式的声明。 API 可以返回带有或不包含的声明 `<extensions-app-id>` 。 有关自定义属性的详细信息，请参阅[定义自助服务注册流的自定义属性](user-flow-add-custom-attributes.md)。
 
 > [!TIP] 
-> [**标识（"标识"）**](https://docs.microsoft.com/graph/api/resources/objectidentity?view=graph-rest-1.0)和**电子邮件地址（"email_address"）** 声明可用于在用户拥有租户中的帐户之前标识该用户。 当用户使用 Google 或 Facebook 进行身份验证，并且始终发送 "email_address" 时，将发送 "标识" 声明。
+> [**标识（"标识"）**](https://docs.microsoft.com/graph/api/resources/objectidentity?view=graph-rest-1.0)和**电子邮件地址（"电子邮件"）** 声明可用于在用户拥有租户中的帐户之前标识该用户。 当用户使用 Google 或 Facebook 进行身份验证时，将发送 "标识" 声明，并且始终发送 "email"。
 
 ## <a name="expected-response-types-from-the-web-api"></a>Web API 中的预期响应类型
 
@@ -133,18 +133,18 @@ Content-type: application/json
 }
 ```
 
-| 参数                                          | 类型              | 必需 | 描述                                                                                                                                                                                                                                                                            |
+| 参数                                          | 类型              | 必须 | 说明                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 版本                                            | String            | 是      | API 的版本。                                                                                                                                                                                                                                                                |
-| action                                             | String            | 是      | 值必须是 `Continue`。                                                                                                                                                                                                                                                              |
+| 版本                                            | 字符串            | 是      | API 的版本。                                                                                                                                                                                                                                                                |
+| 操作                                             | 字符串            | 是      | 值必须是 `Continue`。                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | 否       | 如果值被选为要在 API 连接器配置中**接收的声明**，则这些值可以存储在目录中，并可存储在用户流的**用户属性**中。 如果选择作为**应用程序声明**，则可以在令牌中返回值。                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | 否       | 返回的声明可以选择不包含 `_<extensions-app-id>_` 。 如果值被选为要在 API 连接器配置和用户流的**用户属性**中**接收的声明**，则这些值将存储在目录中。 自定义属性不能在令牌中发回。 |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | 否       | 返回的声明不需要包含 `_<extensions-app-id>_` 。 如果值被选为要在 API 连接器配置和用户流的**用户属性**中**接收的声明**，则这些值将存储在目录中。 自定义属性不能在令牌中发回。 |
 
 ### <a name="blocking-response"></a>阻止响应
 
 阻止响应会退出用户流。 它可以由 API 有意颁发，通过向用户显示块页来停止用户流的继续。 "块" 页显示 `userMessage` API 提供的。
 
-下面是阻止响应的一个示例：
+阻塞响应的示例：
 
 ```http
 HTTP/1.1 200 OK
@@ -159,12 +159,12 @@ Content-type: application/json
 
 ```
 
-| 参数   | 类型   | 必需 | 描述                                                                |
+| 参数   | 类型   | 必须 | 说明                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
-| 版本     | String | 是      | API 的版本。                                                    |
-| action      | String | 是      | 值必须是 `ShowBlockPage`                                              |
-| userMessage | String | 是      | 要向用户显示的消息。                                            |
-| 代码        | String | 否       | 错误代码。 可用于调试目的。 不会向用户显示。 |
+| 版本     | 字符串 | 是      | API 的版本。                                                    |
+| 操作      | 字符串 | 是      | 值必须是 `ShowBlockPage`                                              |
+| userMessage | 字符串 | 是      | 要向用户显示的消息。                                            |
+| code        | 字符串 | 否       | 错误代码。 可用于调试目的。 不会向用户显示。 |
 
 #### <a name="end-user-experience-with-a-blocking-response"></a>阻止响应的最终用户体验
 
@@ -189,15 +189,15 @@ Content-type: application/json
 }
 ```
 
-| 参数   | 类型    | 必需 | 描述                                                                |
+| 参数   | 类型    | 必须 | 说明                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
-| 版本     | String  | 是      | API 的版本。                                                    |
-| action      | String  | 是      | 值必须是 `ValidationError`。                                           |
-| 状态      | Integer | 是      | 必须是 `400` ValidationError 响应的值。                        |
-| userMessage | String  | 是      | 要向用户显示的消息。                                            |
-| 代码        | String  | 否       | 错误代码。 可用于调试目的。 不会向用户显示。 |
+| 版本     | 字符串  | 是      | API 的版本。                                                    |
+| 操作      | 字符串  | 是      | 值必须是 `ValidationError`。                                           |
+| status      | Integer | 是      | 必须是 `400` ValidationError 响应的值。                        |
+| userMessage | 字符串  | 是      | 要向用户显示的消息。                                            |
+| code        | 字符串  | 否       | 错误代码。 可用于调试目的。 不会向用户显示。 |
 
-#### <a name="end-user-experience-with-a-validation-error-response"></a>使用验证错误响应的最终用户体验
+#### <a name="end-user-experience-with-a-validation-error-response"></a>验证-错误响应的最终用户体验
 
 !["验证" 页示例](./media/api-connectors-overview/validation-error-postal-code.png)
 

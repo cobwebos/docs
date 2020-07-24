@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: d240ed426bb270ac4cf09f3806bd36a6a52d3633
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 00f9e4c1ebd162883f62280e753b6e0c4c13a21d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86275387"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027166"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
 
@@ -362,7 +362,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 |TransformationMethod|预期输入|预期输出|说明|
 |-----|-----|-----|-----|
 |联接|string1、string2、分隔符|outputClaim|联接输入字符串（之间使用分隔符）。 例如：string1：“foo@bar.com”、string2：“sandbox”、separator：“.”会生成 outputClaim：“foo@bar.com.sandbox”|
-|ExtractMailPrefix|电子邮件或 UPN|UPN|ExtensionAttributes 1-15 或任何其他为用户存储 UPN 或电子邮件地址值的架构扩展， johndoe@contoso.com 例如。 提取电子邮件地址的本地部分。 例如：mail：“foo@bar.com”会生成 outputClaim：“foo”。 如果未提供 \@ 符号，则按原样返回原始输入字符串。|
+|ExtractMailPrefix|电子邮件或 UPN|提取的字符串|ExtensionAttributes 1-15 或任何其他为用户存储 UPN 或电子邮件地址值的架构扩展， johndoe@contoso.com 例如。 提取电子邮件地址的本地部分。 例如：mail：“foo@bar.com”会生成 outputClaim：“foo”。 如果未提供 \@ 符号，则按原样返回原始输入字符串。|
 
 **InputClaims：** 使用 InputClaims 元素可将数据从声明架构条目传递给转换。 它具有两个属性：**ClaimTypeReferenceId** 和 **TransformationClaimType**。
 
@@ -385,7 +385,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5：允许作为 SAML NameID 数据源的属性
 
-|源|ID|说明|
+|Source|ID|说明|
 |-----|-----|-----|
 | 用户 | mail|电子邮件地址|
 | 用户 | userprincipalname|用户主体名称|

@@ -13,17 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 493340764f507c4fa364a5000f65cc232630b243
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 571df9c07e71682e2be51a73e3837c79cb074c3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77167029"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028458"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows 命令 - CMD 和 PowerShell
 
 本部分包含需要使用 SAC 访问 Windows VM（例如，需要排查 RDP 连接失败问题）时，用于执行常见任务的示例命令。
 
-SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁用。 SAC 依赖于 `sacdrv.sys` 内核驱动程序、`Special Administration Console Helper` 服务 (`sacsvr`) 和 `sacsess.exe` 进程。 有关详细信息，请参阅[紧急管理服务工具和设置](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10))。
+SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁用。 SAC 依赖于 `sacdrv.sys` 内核驱动程序、`Special Administration Console Helper` 服务 (`sacsvr`) 和 `sacsess.exe` 进程。 有关详细信息，请参阅[紧急管理服务工具和设置](/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10))。
 
 使用 SAC 可以通过串行端口连接到正在运行的 OS。 从 SAC 启动 CMD 时，`sacsess.exe` 会从正在运行的 OS 内部启动 `cmd.exe`。 如果通过 RDP 连接到 VM，同时通过串行控制台功能连接到 SAC 的话，可在任务管理器中看到此进程。 通过 SAC 访问的 CMD 也就是通过 RDP 连接时使用的 `cmd.exe`。 可以使用所有相同的命令和工具，包括可以从该 CMD 实例启动 PowerShell。 SAC 与 Windows 恢复环境 (WinRE) 之间的主要差别在于，使用 SAC 可以管理正在运行的 OS，而 WinRE 会引导进入一个不同的精简 OS。 尽管 Azure VM 不支持访问 WinRE，但使用串行控制台功能可以通过 SAC 管理 Azure VM。
 
@@ -69,13 +70,13 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="start-service"></a>启动服务
 `net start termservice`
 
-或
+or
 
 `sc start termservice`
 ### <a name="stop-service"></a>停止服务
 `net stop termservice`
 
-或
+or
 
 `sc stop termservice`
 ## <a name="manage-networking-features"></a>管理网络功能
@@ -90,7 +91,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="set-nic-to-use-dhcp"></a>将 NIC 设置为使用 DHCP
 `netsh interface ip set address name="<interface name>" source=dhcp`
 
-有关 `netsh` 的详细信息，请[单击此处](https://docs.microsoft.com/windows-server/networking/technologies/netsh/netsh-contexts)。
+有关 `netsh` 的详细信息，请[单击此处](/windows-server/networking/technologies/netsh/netsh-contexts)。
 
 应始终在来宾 OS 中将 Azure VM 配置为使用 DHCP 获取 IP 地址。 Azure 静态 IP 设置仍使用 DHCP 向 VM 提供静态 IP。
 ### <a name="ping"></a>Ping
@@ -182,11 +183,11 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="scan-for-system-file-corruption"></a>在系统中扫描文件损坏情况
 `sfc /scannow`
 
-另请参阅[修复 Windows 映像](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image)。
+另请参阅[修复 Windows 映像](/windows-hardware/manufacture/desktop/repair-a-windows-image)。
 ### <a name="scan-for-system-file-corruption"></a>在系统中扫描文件损坏情况
 `dism /online /cleanup-image /scanhealth`
 
-另请参阅[修复 Windows 映像](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image)。
+另请参阅[修复 Windows 映像](/windows-hardware/manufacture/desktop/repair-a-windows-image)。
 ### <a name="export-file-permissions-to-text-file"></a>将文件权限导出到文本文件
 `icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /t /c > %temp%\MachineKeys_permissions_before.txt`
 ### <a name="save-file-permissions-to-acl-file"></a>将文件权限保存到 ACL 文件
@@ -221,7 +222,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="view-os-install-date"></a>查看 OS 安装日期
 `systeminfo | find /i "original"`
 
-或
+or
 
 `wmic os get installdate`
 ### <a name="view-last-boot-time"></a>查看上次启动时间
@@ -229,7 +230,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="view-time-zone"></a>查看时区
 `systeminfo | find /i "time zone"`
 
-或
+or
 
 `wmic timezone get caption,standardname /format:list`
 ### <a name="restart-windows"></a>重启 Windows
@@ -294,7 +295,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="show-nic-properties"></a>显示 NIC 属性
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} |  format-list status,name,ifdesc,macadDresS,driverversion,MediaConNectState,MediaDuplexState`
 
-或
+or
 
 `get-wmiobject win32_networkadapter -filter "servicename='netvsc'" |  format-list netenabled,name,macaddress`
 
@@ -304,7 +305,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="enable-nic"></a>启用 NIC
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} | enable-netadapter`
 
-或
+or
 
 `(get-wmiobject win32_networkadapter -filter "servicename='netvsc'").enable()`
 
@@ -321,7 +322,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 > [!NOTE]
 > 写入进度 cmdlet 可能不适用于此命令。 作为缓解措施，可以 `$ProgressPreference = "SilentlyContinue"` 在 PowerShell 中运行以禁用进度栏。
 
-或
+or
 
 `get-wmiobject Win32_PingStatus -Filter 'Address="8.8.8.8"' | format-table -autosize IPV4Address,ReplySize,ResponseTime`
 
@@ -329,7 +330,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="port-ping"></a>端口 Ping
 `test-netconnection -ComputerName bing.com -Port 80`
 
-或
+or
 
 `(new-object Net.Sockets.TcpClient).BeginConnect('bing.com','80',$null,$null).AsyncWaitHandle.WaitOne(300)`
 
@@ -337,7 +338,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="test-dns-name-resolution"></a>测试 DNS 名称解析
 `resolve-dnsname bing.com`
 
-或
+or
 
 `[System.Net.Dns]::GetHostAddresses('bing.com')`
 
@@ -347,7 +348,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="show-windows-firewall-rule-by-port"></a>按端口显示 Windows 防火墙规则
 `get-netfirewallportfilter | where {$_.localport -eq 3389} | foreach {Get-NetFirewallRule -Name $_.InstanceId} | format-list Name,Enabled,Profile,Direction,Action`
 
-或
+or
 
 `(new-object -ComObject hnetcfg.fwpolicy2).rules | where {$_.localports -eq 3389 -and $_.direction -eq 1} | format-table Name,Enabled`
 
@@ -362,7 +363,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="verify-user-account-is-enabled"></a>验证是否已启用用户帐户
 `(get-localuser | where {$_.SID -like "S-1-5-21-*-500"}).Enabled`
 
-或
+or
 
 `(get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'").Disabled`
 
@@ -376,7 +377,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="view-user-account-properties"></a>查看用户帐户属性
 `get-localuser | where {$_.SID -like "S-1-5-21-*-500"} | format-list *`
 
-或
+or
 
 `get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'" |  format-list Name,Disabled,Status,Lockout,Description,SID`
 
@@ -435,7 +436,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 
 查询实例元数据需要来宾网络连接正常，因为需要通过 Azure 主机向实例元数据服务发出 REST 调用。 因此，如果能够查询实例元数据，则结果会告知来宾能够通过网络来与 Azure 托管服务通信。
 
-有关详细信息，请参阅 [Azure 实例元数据服务](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)。
+有关详细信息，请参阅 [Azure 实例元数据服务](../windows/instance-metadata-service.md)。
 
 ### <a name="instance-metadata"></a>实例元数据
 `$im = invoke-restmethod -headers @{"metadata"="true"} -uri http://169.254.169.254/metadata/instance?api-version=2017-08-01 -method get`

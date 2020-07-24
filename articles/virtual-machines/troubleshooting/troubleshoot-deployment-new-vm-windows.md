@@ -15,11 +15,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: daberry
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78db1ba0eaff0dce83ed13e9f20c3c5a5b96bf9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b2f21cab4740013eb2de1d69f558c95461c493e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83120957"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028390"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>排查在 Azure 中新建 Windows VM 时遇到的部署问题
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -36,7 +37,7 @@ ms.locfileid: "83120957"
 
 [查看部署操作](../../azure-resource-manager/templates/deployment-history.md)
 
-[通过查看活动日志管理 Azure 资源](../../resource-group-audit.md)
+[通过查看活动日志管理 Azure 资源](../../azure-resource-manager/management/view-activity-logs.md)
 
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
@@ -52,7 +53,7 @@ ms.locfileid: "83120957"
 
 **解决方法**
 
-若要解决这两个错误，请[使用 Add-AzVhd 上传原始 VHD](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd)、可用的本地设置、以及与该 OS（通用/专用）相同的设置。 若要以通用设置上传，请记得先运行 sysprep。
+若要解决这两个错误，请[使用 Add-AzVhd 上传原始 VHD](/powershell/module/az.compute/add-azvhd)、可用的本地设置、以及与该 OS（通用/专用）相同的设置。 若要以通用设置上传，请记得先运行 sysprep。
 
 **捕获错误：**
 
@@ -89,5 +90,3 @@ ms.locfileid: "83120957"
 
 ## <a name="next-steps"></a>后续步骤
 如果在 Azure 中启动已停止的 Windows VM 或调整现有 Windows VM 的大小时遇到问题，请参阅[排查在 Azure 中重新启动现有 Windows 虚拟机或调整其大小时遇到的 Resource Manager 部署问题](restart-resize-error-troubleshooting.md)。
-
-

@@ -5,23 +5,23 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 10/29/2019
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 152f7ab6ccb9f01c7fe70553501c8cf8afa1c650
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8c9fbf2d86c2e066566bab11b1701909be64a37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554895"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025840"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Windows 虚拟机
 
-组织现在可以利用运行**Windows Server 2019 Datacenter edition**或**windows 10 1809**及更高版本的 Azure 虚拟机（vm）的 Azure Active Directory （AD）身份验证。 通过使用 Azure AD 向 Vm 进行身份验证，可以集中控制和强制实施策略。 Azure 基于角色的访问控制（RBAC）和 Azure AD 条件性访问等工具可让你控制谁可以访问 VM。 本文介绍如何创建和配置 Windows Server 2019 VM 以使用 Azure AD 身份验证。
+组织现在可以利用运行**Windows Server 2019 Datacenter edition**或**windows 10 1809**及更高版本的 Azure 虚拟机（vm）的 Azure Active Directory （AD）身份验证。 通过使用 Azure AD 向 Vm 进行身份验证，可以集中控制和强制实施策略。 Azure 基于角色的访问控制（Azure RBAC）和 Azure AD 条件性访问等工具可让你控制谁可以访问 VM。 本文介绍如何创建和配置 Windows Server 2019 VM 以使用 Azure AD 身份验证。
 
 > [!NOTE]
 > Azure Windows Vm Azure AD 登录是 Azure Active Directory 的公共预览功能。 有关预览的详细信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
@@ -84,7 +84,7 @@ ms.locfileid: "85554895"
 1. 使用有权创建 Vm 的帐户登录到[Azure 门户](https://portal.azure.com)，并选择 " **+ 创建资源**"。
 1. 在 "搜索 Marketplace" 搜索栏中键入 " **Windows Server** "。
    1. 单击 " **Windows server** "，然后从 "选择软件计划" 下拉列表中选择 " **Windows server 2019 Datacenter** "。
-   1. 单击“创建”。****
+   1. 单击 "**创建**"。
 1. 在 "管理" 选项**卡上，** 在 "Azure Active Directory" 部分中，启用 "**使用 AAD 凭据登录" 选项（预览）** 。
 1. 请确保 "标识" 部分下的 "**系统分配的托管标识**" 设置为 **"开**"。 使用 Azure AD 凭据启用登录后，应会自动执行此操作。
 1. 完成创建虚拟机的其余体验。 在此预览版中，你将需要为 VM 创建管理员用户名和密码。
@@ -201,6 +201,9 @@ az role assignment create \
 
 > [!NOTE]
 > 如果你使用 "需要多重身份验证" 作为授权访问控制来请求访问 "Azure Windows VM 登录" 应用，则必须提供多重身份验证声明作为客户端的一部分，以启动到 Azure 中目标 Windows VM 的 RDP 会话。 在 Windows 10 客户端上实现此目的的唯一方法是将 Windows Hello 企业版 PIN 或生物识别身份验证用于 RDP 客户端。 对生物识别身份验证的支持已添加到 Windows 10 版本1809中的 RDP 客户端。 使用 Windows Hello 企业版身份验证的远程桌面仅适用于使用证书信任模型并且当前不可用于密钥信任模式的部署。
+
+> [!WARNING]
+> 虚拟机登录不支持按用户启用/强制执行的 Azure 多重身份验证。
 
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>使用 Windows VM Azure AD 凭据登录
 

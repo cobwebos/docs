@@ -5,16 +5,17 @@ description: 可以使用自己的加密密钥来保护存储帐户中的数据�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/12/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 5dedd70b51361936808724ef70b96cdf9cfa13f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d53818c91d32bc7435d1328c2ae73a8eb3172cd4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515404"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029784"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>在 Azure Key Vault 中使用客户托管密钥管理 Azure 存储加密
 
@@ -46,13 +47,13 @@ ms.locfileid: "85515404"
 
 ## <a name="enable-customer-managed-keys-for-a-storage-account"></a>为存储帐户启用客户管理的密钥
 
-客户托管密钥只能在现有存储帐户上启用。 必须使用访问策略对密钥保管库进行预配，这些策略将密钥权限授予与存储帐户关联的托管标识。 托管标识仅在存储帐户创建后可用。
-
 在配置客户托管密钥时，Azure 存储会在关联的密钥保管库中使用客户托管密钥来包装帐户的根数据加密密钥。 启用客户托管密钥不影响性能，并且会立即生效。
 
-如果通过启用或禁用客户托管密钥、更新密钥版本或指定其他密钥来修改用于 Azure 存储加密的密钥，则根密钥的加密会更改，但 Azure 存储帐户中的数据不需重新加密。
-
 在启用或禁用客户托管密钥时，或者在修改密钥或密钥版本时，对根加密密钥的保护会变化，但你不需要重新加密 Azure 存储帐户中的数据。
+
+客户托管密钥只能在现有存储帐户上启用。 必须为密钥保管库配置访问策略，以便向与存储帐户关联的托管标识授予权限。 托管标识仅在创建存储帐户后可用。
+
+随时可以在客户托管的密钥与 Microsoft 管理的密钥之间进行切换。 有关 Microsoft 托管密钥的详细信息，请参阅[关于加密密钥管理](storage-service-encryption.md#about-encryption-key-management)。
 
 要了解如何将客户管理的密钥与 Azure 密钥保管库配合使用来对 Azure 存储进行加密，请参阅以下文章之一：
 
@@ -69,11 +70,18 @@ ms.locfileid: "85515404"
 
 Azure 存储加密支持2048、3072和4096大小的 RSA 和 RSA-HSM 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)中的“Key Vault 密钥”。
 
+使用 Azure Key Vault 具有相关的成本。 有关详细信息，请参阅[Key Vault 定价](/pricing/details/key-vault/)。
+
 ## <a name="rotate-customer-managed-keys"></a>轮换客户管理的密钥
 
-可以根据自己的合规性策略，在 Azure 密钥保管库中轮换客户管理的密钥。 轮换密钥后，需要更新存储帐户以使用新的密钥版本 URI。 若要了解如何更新存储帐户以在 Azure 门户中使用新版本的密钥，请参阅[使用 Azure 门户配置 Azure 存储的客户管理的密钥](storage-encryption-keys-portal.md)中标题为“更新密钥版本”的部分。
+可以根据自己的合规性策略，在 Azure 密钥保管库中轮换客户管理的密钥。 有两个选项可用于轮换客户托管的密钥：
 
-轮换密钥不会触发存储帐户中数据的重新加密。 用户无需执行任何其他操作。
+- **自动旋转：** 若要配置客户管理的密钥的自动轮替，请在使用存储帐户的客户托管密钥启用加密时省略密钥版本。 如果省略了密钥版本，Azure 存储每天都会在 Azure Key Vault 中检查是否有新版本的客户托管的密钥。 如果新的密钥版本可用，Azure 存储将自动使用最新版本的密钥。
+- **手动旋转：** 若要使用特定密钥版本进行 Azure 存储加密，请在使用存储帐户的客户托管密钥启用加密时指定该密钥版本。 如果指定密钥版本，Azure 存储将使用该版本进行加密，直到手动更新密钥版本。
+
+    手动轮换密钥时，必须更新存储帐户以使用新的密钥版本 URI。 若要了解如何将存储帐户更新为在 Azure 门户中使用新版本的密钥，请参阅[手动更新密钥版本](storage-encryption-keys-portal.md#manually-update-the-key-version)。
+
+旋转客户托管的密钥不会触发存储帐户中数据的重新加密。 用户无需执行任何其他操作。
 
 ## <a name="revoke-access-to-customer-managed-keys"></a>撤消对客户管理的密钥的访问权限
 

@@ -12,11 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15d2b029937c58d45a2c1148c568cd396cea336a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec20a1bda8021e61f5147142a8e6bddd6cf5d166
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84634636"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027608"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 创建可复原的访问控制管理策略
 
@@ -220,7 +221,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 -   确定 VPN 的主要身份验证是否成功。
 
 一旦该服务已恢复，并且你已准备好在用户上强制执行 MFA，请启用 NPS 扩展： 
--   重要说明 HKEY_LOCAL_MACHINE 备份中的注册表项 \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 
+-   从备份 HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 导入注册表项 
 -   重新启动网络策略服务（IAS）服务，使更改生效 
 -   确定主要身份验证以及 VPN 的辅助身份验证是否成功。
 -   查看 NPS 服务器和 VPN 日志，确定在紧急时段内登录的用户。
@@ -281,7 +282,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 >[!NOTE]
  > 只有使用 [Azure AD Premium 许可证](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing)才能为 Azure MFA 配置[受信任的 IP](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings)。
 
-## <a name="learn-more"></a>了解详细信息
+## <a name="learn-more"></a>了解更多信息
 
 * [Azure AD 身份验证文档](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
 * [在 Azure AD 中管理紧急访问管理账户](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)

@@ -1,20 +1,20 @@
 ---
-title: 用于 Azure 安全基准的 Azure Database for PostgreSQL 超大规模安全基线
+title: 适用于 Azure Database for PostgreSQL 的 Azure 安全基线-超大规模
 description: Azure Database for PostgreSQL 超大规模安全基线为实现 Azure 安全基准中指定的安全建议提供过程指南和资源。
 author: msmbaldwin
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ca08ac30c5d8e925197a0df1d327bf9a0923b046
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dd6d3ef6f610dcbdc511297e459cc5856bebe033
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531056"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030039"
 ---
-# <a name="azure-database-for-postgresql---hyperscale-security-baseline-for-azure-security-benchmark"></a>用于 Azure 安全基准的 Azure Database for PostgreSQL 超大规模安全基线
+# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>适用于 Azure Database for PostgreSQL 的 Azure 安全基线-超大规模
 
 适用于 Azure Database for PostgreSQL 的 Azure 安全基线包含有助于改进部署安全状况的建议。
 

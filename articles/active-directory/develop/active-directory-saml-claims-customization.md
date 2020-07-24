@@ -13,12 +13,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 0b0efc7e5dd4a60e33ddd61c19283a048cf4ab78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f56427dabdee715412596557fa075c5eb4df500
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478291"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027302"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中颁发的声明
 
@@ -164,7 +164,7 @@ ms.locfileid: "85478291"
 
 1. 在**管理声明**中，展开”声明条件”。
 2. 选择用户类型。
-3. 选择用户所属的组。 在给定应用程序的所有声明中，最多可以选择 10 个唯一的组。 
+3. 选择用户所属的组。 在给定应用程序的所有声明中，最多可以选择50个唯一组。 
 4. 选择声明可检索其值的**源**。 可以从“源属性”下拉列表中选择一个用户属性，或者在用户属性作为声明发出之前对其应用转换。
 
 添加条件的顺序很重要。 Azure AD 将按从上到下的顺序评估条件，以确定要在声明中发出的值。 

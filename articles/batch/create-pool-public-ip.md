@@ -2,13 +2,13 @@
 title: 使用指定的公共 IP 地址创建池
 description: 了解如何创建使用自己的公共 IP 地址的 Batch 池。
 ms.topic: how-to
-ms.date: 06/16/2020
-ms.openlocfilehash: 51cb023bf3749233878fa4d544c6fd8ef4703645
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 07/20/2020
+ms.openlocfilehash: 630da3ff9c1f2318c7ed4da0e8f4b5ee8212f389
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961551"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023749"
 ---
 # <a name="create-an-azure-batch-pool-with-specified-public-ip-addresses"></a>使用指定的公共 IP 地址创建 Azure Batch 池
 
@@ -71,9 +71,11 @@ client-request-id: 00000000-0000-0000-0000-000000000000
         "nodeAgentSKUId": "batch.node.ubuntu 16.04"
       },
 "networkConfiguration": {
-          "subnetId": "/subscriptions/subid/resourceGroups/rg1234/providers/Microsoft.Network/virtualNetworks/network1234/subnets/subnet123",
-          "publicIPs": [
-            "/subscriptions/subid1/resourceGroups/rg13/providers/Microsoft.Network/publicIPAddresses/ip135"
+          "subnetId": "/subscriptions/<subId>/resourceGroups/<rgId>/providers/Microsoft.Network/virtualNetworks/<vNetId>/subnets/<subnetId>",
+          "publicIPAddressConfiguration": {
+            "provision": "usermanaged",
+            "ipAddressIds": [
+              "/subscriptions/<subId>/resourceGroups/<rgId>/providers/Microsoft.Network/publicIPAddresses/<publicIpId>"
           ]
         },
 
@@ -95,7 +97,7 @@ client-request-id: 00000000-0000-0000-0000-000000000000
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解 [Batch 服务工作流和主要资源](batch-service-workflow-features.md)，例如池、节点、作业和任务。
+- 了解 [Batch 服务工作流和主要资源](batch-service-workflow-features.md)（如池、节点、作业和任务）。
 - 了解如何[在 Azure 虚拟网络的子网中创建池](batch-virtual-network.md)。
 - 了解如何[创建不带公共 IP 地址的 Azure Batch 池](./batch-pool-no-public-ip-address.md)。
 

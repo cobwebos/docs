@@ -12,16 +12,16 @@ ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 55adff17445639ee5685613b418054075c704449
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fe41cdc6fa1adef96568981df5bb13129fe900f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477237"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026724"
 ---
 # <a name="whats-new-for-authentication"></a>身份验证的新增功能
 
->获取有关此页更新的通知。 只需将[此 URL](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20for%20authentication%22&locale=en-us) 添加到 RSS 源阅读器即可。
+> 通过将此 URL 粘贴到 RSS 源读取器来获得对此页的更新的通知：<br/>`https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20for%20authentication%22&locale=en-us`
 
 身份验证系统会持续更改和添加功能，以增强安全性并提高标准符合性。 为了让大家随时了解最新的开发成果，本文将提供有关以下详细信息的信息：
 

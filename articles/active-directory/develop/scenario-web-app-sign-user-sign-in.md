@@ -8,14 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 41124e7237c2c16034fe8cce1fa89fa0132d09b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7393b0f3d3004c28e0d6befe2fdbbeda7f9a592
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558925"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026146"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>用于登录用户的 Web 应用：登录和注销
 
@@ -32,7 +33,7 @@ ms.locfileid: "84558925"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在 ASP.NET Core 中，对于 Microsoft 标识平台应用程序，“登录”按钮在 `Views\Shared\_LoginPartial.cshtml`（适用于 MVC 应用）或 `Pages\Shared\_LoginPartial.cshtm`（适用于 Razor 应用）中公开。 仅当用户未经过身份验证时才会显示此按钮。 即，仅当用户尚未登录或者已注销时才显示。相反，当用户已登录时，将显示“注销”按钮。 请注意，帐户控制器是在“Microsoft.Identity.Web.UI”NuGet 包（位于名为“MicrosoftIdentity”的区域中）中定义的。
+在 ASP.NET Core 中，对于 Microsoft 标识平台应用程序，“登录”按钮在 `Views\Shared\_LoginPartial.cshtml`（适用于 MVC 应用）或 `Pages\Shared\_LoginPartial.cshtm`（适用于 Razor 应用）中公开。 仅当用户未经过身份验证时才会显示。 即，仅当用户尚未登录或者已注销时才显示。相反，当用户已登录时，将显示“注销”按钮。 请注意，帐户控制器是在“Microsoft.Identity.Web.UI”NuGet 包（位于名为“MicrosoftIdentity”的区域中）中定义的。
 
 ```html
 <ul class="navbar-nav">
@@ -334,7 +335,7 @@ else
 - 调用 `Signout()`，让 OpenID Connect 中间件联系 Microsoft 标识平台 `logout` 终结点。 然后，终结点将会：
 
   - 从浏览器中清除会话 Cookie。
-  - 回调注销 URL。 默认情况下，注销 URL 会显示已注销视图页 [SignedOut.html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml)。 此页也作为 MIcrosoft.Identity.Web 的一部分提供。
+  - 回调注销 URL。 默认情况下，注销 URL 显示注销视图页面[SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs)。 此页也作为 MIcrosoft.Identity.Web 的一部分提供。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

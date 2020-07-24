@@ -5,17 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 05/29/2019
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ccd51bd69c982aeae25dbf52d1e5d076542cf35
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 9971eb554825a968f8cfa72d6a0cf78d7c0bcb76
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771190"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025874"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>什么是主刷新令牌？
 
@@ -64,7 +65,7 @@ PRT 是从 Azure AD 发送的不透明 blob，其内容对于任何客户端组�
 在设备已注册 Azure AD 的方案中，Azure AD WAM 插件是 PRT 的主要颁发机构，因为此 Azure AD 帐户未发生 Windows 登录。
 
 > [!NOTE]
-> 第三方标识提供者需要支持 WS-Trust 协议，才能在 Windows 10 设备上颁发 PRT。 若没有 WS-Trust，则无法将 PRT 颁发给已建立混合 Azure AD 联接或已建立 Azure AD 联接的设备上的用户
+> 第三方标识提供者需要支持 WS-Trust 协议，才能在 Windows 10 设备上颁发 PRT。 在没有 WS-TRUST 的情况下，不能将 PRT 颁发给混合 Azure AD 已加入或已加入 Azure AD 设备上的用户。 仅在 ADFS 上需要 usernamemixed 终结点。 Adfs/services/trust/2005/windowstransport 和 adfs/services/trust/13/windowstransport 都应作为仅面向 intranet 的终结点启用，且不能通过 Web 应用程序代理作为面向 extranet 的终结点**公开**
 
 ## <a name="what-is-the-lifetime-of-a-prt"></a>PRT 的生存期有多长？
 
@@ -166,6 +167,9 @@ Windows 10 维护每个凭据的 PRT 分区列表。 Windows Hello 企业版、�
 | E | CloudAP 插件使用用户的凭据、nonce 和现有 PRT 构造身份验证请求，使用会话密钥对请求进行签名，并将其发送到 Azure AD。 在联合环境中，CloudAP 插件会使用联合身份验证提供程序返回的 SAML 令牌，而不是用户的凭据。 |
 | F | Azure AD 通过将会话密钥签名与 PRT 中嵌入的会话密钥进行比较来验证该签名，验证 nonce，并验证设备在租户中是否有效，然后颁发新的 PRT。 如上所示，PRT 再次附带由传输密钥 (tkpub) 加密的会话密钥。 |
 | G | CloudAP 插件将加密的 PRT 和会话密钥传递到 CloudAP。 CloudAP 请求 TPM 使用传输密钥 (tkpriv) 对会话密钥进行解密，并使用 TPM 自己的密钥对其重新加密。 CloudAP 将加密的会话密钥与 PRT 一起存储在其缓存中。 |
+
+> [!NOTE]
+> PRT 可以在外部续订，无需在外部启用 usernamemixed 终结点时使用 VPN 连接。
 
 ### <a name="prt-usage-during-app-token-requests"></a>应用令牌请求过程中的 PRT 使用
 
