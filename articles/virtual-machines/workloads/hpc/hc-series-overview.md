@@ -12,11 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: a4cd74c9c85ee7413cde9f0fb4cf3ffb54c9b3d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7110f3417937b623260983a9d94e9e6834fc8fc9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906740"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077376"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>HC 系列虚拟机概述
 
@@ -62,6 +63,6 @@ Intel （r）白金、黄金和银 Cpu 还引入了一个片上的2D 网格网�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解适用于 Azure 中[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc)和[WINDOWS](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc)的 HPC VM 大小。
+* 详细了解适用于 Azure 中[Linux](../../sizes-hpc.md)和[WINDOWS](../../sizes-hpc.md)的 HPC VM 大小。
 
-* 详细了解 Azure 中的[HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) 。
+* 详细了解 Azure 中的[HPC](/azure/architecture/topics/high-performance-computing/) 。

@@ -3,14 +3,15 @@ title: 适用于 Azure 云服务的 Application Insights | Microsoft Docs
 description: 使用 Application Insights 有效监视 Web 角色和辅助角色
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: 17813d17a1c40caac5587e37e279be6376992b90
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf75bb145a3b0d7c861d3c92af972b39de11bcdf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537587"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075425"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>适用于 Azure 云服务的 Application Insights
-[Application Insights][start] 可以通过将 Application Insights SDK 提供的数据与云服务提供的 [Azure 诊断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)数据合并，来监视 [Azure 云服务应用](https://azure.microsoft.com/services/cloud-services/)的可用性、性能、故障和使用情况。 通过收到的有关应用在现实中的性能和有效性的反馈，可以针对每个开发生命周期确定合理的设计方向。
+[Application Insights][start] 可以通过将 Application Insights SDK 提供的数据与云服务提供的 [Azure 诊断](../platform/diagnostics-extension-overview.md)数据合并，来监视 [Azure 云服务应用](https://azure.microsoft.com/services/cloud-services/)的可用性、性能、故障和使用情况。 通过收到的有关应用在现实中的性能和有效性的反馈，可以针对每个开发生命周期确定合理的设计方向。
 
 ![“概述”仪表板](./media/cloudservices/overview-graphs.png)
 
@@ -30,7 +31,7 @@ ms.locfileid: "81537587"
 
 如果只需此选项，则操作到此完成。 
 
-后续步骤是[通过应用查看指标](../../azure-monitor/platform/metrics-charts.md)、[使用 Analytics 查询数据](../../azure-monitor/app/analytics.md)。 
+后续步骤是[通过应用查看指标](../../azure-monitor/platform/metrics-charts.md)、[使用 Analytics 查询数据](../log-query/log-query-overview.md)。 
 
 若要在浏览器中监视性能，还可能需要设置[可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)并[将代码添加到网页](../../azure-monitor/app/javascript.md)。
 
@@ -131,7 +132,7 @@ ms.locfileid: "81537587"
 
 仅当你希望在 .NET Framework 上捕获完整的 SQL 查询时，才需要此步骤。 
 
-1. 在 `\*.csdef` 文件中为每个角色添加[启动任务](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)，如下所示 
+1. 在 `\*.csdef` 文件中为每个角色添加[启动任务](../../cloud-services/cloud-services-startup-tasks.md)，如下所示 
 
     ```xml
     <Startup>
@@ -177,7 +178,7 @@ ms.locfileid: "81537587"
 有关详细信息，请参阅 [故障排除][qna]。
 
 ## <a name="view-azure-diagnostics-events"></a>查看 Azure 诊断事件
-可以在 Application Insights 中的以下位置找到 [Azure 诊断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)信息：
+可以在 Application Insights 中的以下位置找到 [Azure 诊断](../platform/diagnostics-extension-overview.md)信息：
 
 * 性能计数器显示为自定义指标。 
 * Windows 事件日志显示为跟踪和自定义事件。
@@ -258,7 +259,7 @@ ms.locfileid: "81537587"
 
 如果系统使用其他 Azure 服务（例如流分析），也可以包含这些服务的监视图表。 
 
-如果有客户端移动应用，请使用 [App Center](../../azure-monitor/learn/mobile-center-quickstart.md)。 在 [Analytics](../../azure-monitor/app/analytics.md) 中创建查询来显示事件计数，并将事件固定到仪表板。
+如果有客户端移动应用，请使用 [App Center](../../azure-monitor/learn/mobile-center-quickstart.md)。 在 [Analytics](../log-query/log-query-overview.md) 中创建查询来显示事件计数，并将事件固定到仪表板。
 
 ## <a name="example"></a>示例
 [该示例](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService)监视包含一个 Web 角色和两个辅助角色的服务。
@@ -283,6 +284,6 @@ ms.locfileid: "81537587"
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [netlogs]: ../../azure-monitor/app/asp-net-trace-logs.md
 [portal]: https://portal.azure.com/
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../faq.md
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md 
+[start]: ../../azure-monitor/app/app-insights-overview.md

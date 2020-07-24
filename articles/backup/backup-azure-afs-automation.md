@@ -3,12 +3,12 @@ title: 使用 PowerShell 备份 Azure 文件共享
 description: 本文介绍如何使用 Azure 备份服务和 PowerShell 备份 Azure 文件文件共享。
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 18c03eda9d9daca3a0fa536843e32f7fc3158287
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 948931764769bc967b88e7942b7e8384b0f93dff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971022"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077004"
 ---
 # <a name="back-up-an-azure-file-share-by-using-powershell"></a>使用 PowerShell 备份 Azure 文件共享
 
@@ -89,13 +89,13 @@ ms.locfileid: "85971022"
 
 按照以下步骤创建恢复服务保管库：
 
-1. 如果没有现有的资源组，请使用[AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-1.4.0) cmdlet 创建一个新的资源组。 在此示例中，我们将在美国西部区域创建一个资源组：
+1. 如果没有现有的资源组，请使用[AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 创建一个新的资源组。 在此示例中，我们将在美国西部区域创建一个资源组：
 
    ```powershell
    New-AzResourceGroup -Name "test-rg" -Location "West US"
    ```
 
-1. 使用 [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) cmdlet 创建保管库。 指定与用于资源组的保管库相同的位置。
+1. 使用 [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) cmdlet 创建保管库。 指定与用于资源组的保管库相同的位置。
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
@@ -103,7 +103,7 @@ ms.locfileid: "85971022"
 
 ### <a name="view-the-vaults-in-a-subscription"></a>在订阅中查看保管库
 
-若要查看订阅中的所有保管库，请使用 [Get-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault?view=azps-1.4.0)：
+若要查看订阅中的所有保管库，请使用 [Get-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/get-azrecoveryservicesvault)：
 
 ```powershell
 Get-AzRecoveryServicesVault
@@ -127,7 +127,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 
 许多 Azure 备份 cmdlet 要求将恢复服务保管库对象用作输入，因此可以方便地在变量中存储保管库对象。
 
-保管库上下文是在保管库中受保护的数据的类型。 使用[AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0)设置。 设置上下文后，它将应用于所有后续 cmdlet。
+保管库上下文是在保管库中受保护的数据的类型。 使用[AzRecoveryServicesVaultContext](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext)设置。 设置上下文后，它将应用于所有后续 cmdlet。
 
 下面的示例为**testvault**设置保管库上下文：
 
@@ -152,9 +152,9 @@ New-AzRecoveryServicesBackupProtectionPolicy -Name "NewAFSPolicy" -WorkloadType 
 
 下面是一些用于备份策略的 cmdlet：
 
-* 使用[AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject?view=azps-1.4.0)查看默认的备份策略保持期。
-* 使用[AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject?view=azps-1.4.0)查看默认备份策略计划。
-* 使用[AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0)创建新的备份策略。 输入计划和保留策略对象作为输入。
+* 使用[AzRecoveryServicesBackupRetentionPolicyObject](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject)查看默认的备份策略保持期。
+* 使用[AzRecoveryServicesBackupSchedulePolicyObject](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject)查看默认备份策略计划。
+* 使用[AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy)创建新的备份策略。 输入计划和保留策略对象作为输入。
 
 默认情况下，在计划策略对象中定义开始时间。 请使用以下示例将开始时间更改为所需的开始时间。 所需的开始时间应为协调世界时（UTC）。 该示例假设每日备份的所需开始时间为 01:00 AM UTC。
 
@@ -190,7 +190,7 @@ NewAFSPolicy           AzureFiles            AzureStorage              10/24/201
 
 ### <a name="retrieve-a-backup-policy"></a>检索备份策略
 
-您可以使用[AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0)提取相关的策略对象。 使用此 cmdlet 可查看与工作负荷类型关联的策略，或获取特定策略。
+您可以使用[AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy)提取相关的策略对象。 使用此 cmdlet 可查看与工作负荷类型关联的策略，或获取特定策略。
 
 #### <a name="retrieve-a-policy-for-a-workload-type"></a>检索针对某个工作负荷类型的策略
 
@@ -221,7 +221,7 @@ $afsPol =  Get-AzRecoveryServicesBackupProtectionPolicy -Name "dailyafs"
 
 ### <a name="enable-protection-and-apply-the-policy"></a>启用保护并应用策略
 
-使用[AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0)启用保护。 将策略与保管库关联后，系统会根据策略计划触发备份。
+使用[AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection)启用保护。 将策略与保管库关联后，系统会根据策略计划触发备份。
 
 下面的示例为存储帐户**testStorageAcct**中的 Azure 文件共享**testAzureFileShare**启用了保护，并提供了策略**dailyafs**：
 
@@ -237,7 +237,7 @@ WorkloadName       Operation            Status                 StartTime        
 testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 PM     11/12/2018 2:16:11 PM     ec7d4f1d-40bd-46a4-9edb-3193c41f6bf6
 ```
 
-有关如何获取存储帐户的文件共享列表的详细信息，请参阅[此文](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageshare?view=azps-4.3.0)。
+有关如何获取存储帐户的文件共享列表的详细信息，请参阅[此文](/powershell/module/az.storage/get-azstorageshare)。
 
 ## <a name="important-notice-backup-item-identification"></a>重要说明：备份项标识
 
@@ -262,7 +262,7 @@ testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 P
 
 ## <a name="trigger-an-on-demand-backup"></a>触发按需备份
 
-使用[AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem?view=azps-1.4.0)为受保护的 Azure 文件共享运行按需备份：
+使用[AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem)为受保护的 Azure 文件共享运行按需备份：
 
 1. 使用[AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer)从保管库中的容器中检索存储帐户，其中保存了备份数据。
 2. 若要启动备份作业，请使用[AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem)获取有关 Azure 文件共享的信息。

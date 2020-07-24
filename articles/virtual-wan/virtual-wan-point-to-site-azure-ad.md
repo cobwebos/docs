@@ -2,17 +2,17 @@
 title: 为用户 VPN 连接配置 Azure AD 身份验证：虚拟广域网
 description: 了解如何为用户 VPN 配置 Azure Active Directory 身份验证。
 services: virtual-wan
-author: anzaman
+author: kumudD
 ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: alzam
-ms.openlocfilehash: dd80724d62c71fdec81965fb4aa6a07a6233a288
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2028cae4908214db28de2545f02f5f2997eeb8af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753963"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077472"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>为用户 VPN 配置 Azure Active Directory 身份验证
 
@@ -34,9 +34,9 @@ ms.locfileid: "84753963"
 
 ![虚拟 WAN 示意图](./media/virtual-wan-about/virtualwanp2s.png)
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
-在开始配置之前，请验证是否符合以下条件：
+在开始配置之前，请验证你是否符合以下条件：
 
 * 你拥有一个要连接到的虚拟网络。 确认本地网络的任何子网都不会与要连接到的虚拟网络重叠。 要在 Azure 门户中创建虚拟网络，请参阅[快速入门](../virtual-network/quick-create-portal.md)。
 

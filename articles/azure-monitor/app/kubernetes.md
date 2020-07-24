@@ -5,17 +5,18 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: a5e73039db541023b1fd4a9b75e7c14030c8e219
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 4bb1af6ca2126b7ae58a6c836624ec78a071a5a5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797884"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075284"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications-with-istio---deprecated"></a>采用 Istio 对 Kubernetes 托管的应用程序进行零检测应用程序监视 - 已弃用
 
 > [!IMPORTANT]
 > 此功能当前正被弃用，在 2020 年 8 月 1 日之后将不再受支持。
-> 目前只能[通过独立代理为 Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) 启用无代码监视。 对于其他语言，请使用 SDK 监视 AKS 上的应用：[ASP.Net Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)、[ASP.Net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)、[Node.js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs)、[JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript) 和 [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)。
+> 目前只能[通过独立代理为 Java](./java-in-process-agent.md) 启用无代码监视。 对于其他语言，请使用 SDK 监视 AKS 上的应用：[ASP.Net Core](./asp-net-core.md)、[ASP.Net](./asp-net.md)、[Node.js](./nodejs.md)、[JavaScript](./javascript.md) 和 [Python](./opencensus-python.md)。
 
 Azure Monitor 现在利用 Kubernetes 群集上的服务网格技术为任何由 Kubernetes 托管的应用提供现成的应用程序监视功能。 使用默认的 Application Insight 功能，例如使用[应用程序映射](../../azure-monitor/app/app-map.md)对依赖关系建模，使用[实时指标流](../../azure-monitor/app/live-stream.md)进行实时监视，使用[默认仪表板](../../azure-monitor/app/overview-dashboard.md)、[指标资源管理器](../../azure-monitor/platform/metrics-getting-started.md)和[工作簿](../../azure-monitor/platform/workbooks-overview.md)进行强大的可视化操作。 此功能可帮助用户查明所选 Kubernetes 命名空间中所有 Kubernetes 工作负荷的性能瓶颈和故障热点。 利用包含 Istio 之类技术的现有服务网格投资，Azure Monitor 可以在不修改应用程序代码的情况下实现自动检测的应用监视。
 
@@ -24,10 +25,10 @@ Azure Monitor 现在利用 Kubernetes 群集上的服务网格技术为任何由
 
 ## <a name="prerequisites"></a>先决条件
 
-- 一个 [Kubernetes 群集](https://docs.microsoft.com/azure/aks/concepts-clusters-workloads)。
+- 一个 [Kubernetes 群集](../../aks/concepts-clusters-workloads.md)。
 - 通过控制台访问群集以运行 *kubectl* 的权限。
 - 一个 [Application Insight 资源](create-new-resource.md)
-- 有一个服务网格。 如果群集未部署 Istio，可以了解如何[在 Azure Kubernetes 服务中安装和使用 Istio](https://docs.microsoft.com/azure/aks/istio-install)。
+- 有一个服务网格。 如果群集未部署 Istio，可以了解如何[在 Azure Kubernetes 服务中安装和使用 Istio](../../aks/servicemesh-istio-install.md)。
 
 ## <a name="capabilities"></a>功能
 

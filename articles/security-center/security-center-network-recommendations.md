@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 792b95b120f67afcd360730acbd783a3071388b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 36118bb99da5f0c7f918009413394d931415886f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77431479"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076372"
 ---
 # <a name="protect-your-network-resources"></a>保护你的网络资源
 Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安全最佳做法。 在安全中心识别出潜在的安全漏洞时，它会创建一些建议，指导完成配置所需控件以强化和保护资源的过程。
@@ -115,7 +116,7 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 
 ## <a name="legacy-networking"></a>旧网络 <a name ="legacy-networking"></a>
 
-如果没有安全中心标准层，则本节介绍如何查看免费的网络建议。
+如果没有安全中心标准层，本部分将介绍如何查看免费网络建议。
 
 要访问此信息，请在“网络”边栏选项卡中单击“查看旧网络”。 
 

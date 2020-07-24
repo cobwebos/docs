@@ -7,11 +7,12 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 65e8818e19ac5ad20bb87fd8eb27a4c36c2839cf
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0db618d63964c6f271f9a14b91849e704cfd7820
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656670"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077509"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>预览版：创建 Windows 映像并将其分发到共享映像库 
 
@@ -23,7 +24,7 @@ ms.locfileid: "83656670"
 
 Azure 映像生成器会自动运行 sysprep 来将映像通用化，这是一个通用的 sysprep 命令，如有必要你可以[重写](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#vms-created-from-aib-images-do-not-create-successfully)它。 
 
-请注意层自定义的次数。 最多可以对单个 Windows 映像运行 Sysprep 命令 8 次。 运行 Sysprep 8 次后，必须重新创建 Windows 映像。 有关详细信息，请参阅[有关 Sysprep 可运行次数的限制](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)。 
+请注意层自定义的次数。 最多可以对单个 Windows 映像运行 Sysprep 命令 8 次。 运行 Sysprep 8 次后，必须重新创建 Windows 映像。 有关详细信息，请参阅[有关 Sysprep 可运行次数的限制](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)。 
 
 > [!IMPORTANT]
 > Azure 映像生成器目前提供公开预览版。
@@ -97,7 +98,7 @@ New-AzResourceGroup `
 
 
 ## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>创建用户分配的标识，并在资源组上设置权限
-映像生成器将使用提供的[用户标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell)，来将映像注入到 Azure 共享映像库 (SIG)。 在此示例中，你将创建一个 Azure 角色定义，其中包含将映像分发到 SIG 的精细操作。 然后将此角色定义分配给用户标识。
+映像生成器将使用提供的[用户标识](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)，来将映像注入到 Azure 共享映像库 (SIG)。 在此示例中，你将创建一个 Azure 角色定义，其中包含将映像分发到 SIG 的精细操作。 然后将此角色定义分配给用户标识。
 
 ```powershell
 # setup role def names, these need to be unique

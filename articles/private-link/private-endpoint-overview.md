@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: c739c6483832c08a91f2a5318853bf48e5d41854
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d61527a7a57c82c0e1485ef249306618def9a57c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496955"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077938"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -78,6 +78,13 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 |**Azure 事件网格** | Microsoft.EventGrid/domains    | 域 |
 |**Azure WebApps** | Microsoft.Web/sites    | sites |
 |**Azure 机器学习** | Microsoft.MachineLearningServices/workspaces    | 工作区 |
+|**SignalR** | Microsoft.SignalRService/SignalR    | signalR |
+|**Azure Monitor** | Microsoft Insights/privateLinkScopes    | azuremonitor |
+|**认知服务** | （Cognitiveservices account/帐户    | account |
+|**Azure 文件同步** | Storagesync.sys/storageSyncServices    | Afs |
+    
+  
+
   
  
 ## <a name="network-security-of-private-endpoints"></a>专用终结点的网络安全性 

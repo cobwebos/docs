@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 评估支持
 description: 了解使用 Azure Migrate 服务器评估时的 VMware VM 评估支持。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4ca59e3b9eaf62a46ca4df3a582e7b8f290e7da6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1c1e349f31f6650c0f0910642d60193ebc0dd3a5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108798"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078003"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 评估支持矩阵 
 
@@ -87,7 +87,7 @@ Azure Migrate 使用 [Azure Migrate 设备](migrate-appliance.md)进行发现和
 **Windows VM** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2（64 位）。
 **vCenter Server 凭据** | 依赖关系可视化需要 vCenter Server 帐户，帐户具有只读访问权限，并需要为“虚拟机”>“来宾操作”启用的特权。
 **Windows VM 权限** |  对于依赖关系分析，Azure Migrate 设备必须有域管理员帐户或本地管理员帐户，才能访问 Windows VM。
-**Linux VM 权限** | Red Hat Enterprise Linux 7、6、5<br/> Ubuntu Linux 14.04、16.04<br/> Debian 7、8<br/> Oracle Linux 6、7<br/> CentOS 5、6、7。
+**Linux VM** | Red Hat Enterprise Linux 7、6、5<br/> Ubuntu Linux 14.04、16.04<br/> Debian 7、8<br/> Oracle Linux 6、7<br/> CentOS 5、6、7。
 **Linux 帐户** | 对于依赖关系分析，在 Linux 虚拟机上，Azure Migrate 设备需要具有根权限的用户帐户。<br/><br/> 或者，用户帐户需要对 /bin/netstat 和 /bin/ls 文件具有以下权限：CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE。
 **必需代理** | 要分析的虚拟机上不需要任何代理。
 **VMware 工具** | 必须在要分析的每个 VM 上安装并运行 VMware 工具（版本高于 10.2）。
@@ -104,7 +104,7 @@ Azure Migrate 使用 [Azure Migrate 设备](migrate-appliance.md)进行发现和
 --- | --- 
 **部署前** | 应有 Azure Migrate 项目（使用 Azure Migrate）：已将服务器评估工具添加到项目中。<br/><br/>  在设置 Azure Migrate 设备来发现本地虚拟机后，就可以部署依赖关系可视化了<br/><br/> [了解如何](create-manage-projects.md)首次创建项目。<br/> [了解如何](how-to-assess.md)向现有项目添加评估工具。<br/> 了解如何设置 Azure Migrate 设备来评估 [Hyper-V](how-to-set-up-appliance-hyper-v.md)、[VMware](how-to-set-up-appliance-vmware.md) 或物理服务器。
 **支持的虚拟机** | 所有计算机都支持。
-**Azure Government** | 依赖关系可视化在 Azure 政府中不可用。
+**Azure 政府** | 依赖关系可视化在 Azure 政府中不可用。
 **Log Analytics** | Azure Migrate 在 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)中使用[服务映射](../azure-monitor/insights/service-map.md)解决方案来进行依赖关系可视化。<br/><br/> 你将新的或现有的 Log Analytics 工作区与 Azure Migrate 项目相关联。 Azure Migrate 项目的工作区在添加后就无法修改了。 <br/><br/> 工作区必须与 Azure Migrate 项目位于同一订阅中。<br/><br/> 工作区必须位于美国东部、东南亚或欧洲西部区域。 其他区域中的工作区无法与项目相关联。<br/><br/> 工作区必须位于[支持服务映射](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)的区域中。<br/><br/> 在 Log Analytics 中，与 Azure Migrate 关联的工作区标记有迁移项目密钥和项目名称。
 **必需代理** | 在要分析的每个虚拟机上，安装以下代理：<br/><br/> [Microsoft Monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md)。<br/> [Dependency Agent](../azure-monitor/platform/agents-overview.md#dependency-agent)。<br/><br/> 如果本地虚拟机没有连接到 Internet，你需要在虚拟机上下载并安装 Log Analytics 网关。<br/><br/> 详细了解如何安装 [Dependency Agent](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) 和 [MMA](how-to-create-group-machine-dependencies.md#install-the-mma)。
 **Log Analytics 工作区** | 工作区必须与 Azure Migrate 项目位于同一订阅中。<br/><br/> Azure Migrate 支持位于美国东部、东南亚和欧洲西部区域的工作区。<br/><br/>  工作区必须位于[支持服务映射](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)的区域中。<br/><br/> Azure Migrate 项目的工作区在添加后就无法修改了。

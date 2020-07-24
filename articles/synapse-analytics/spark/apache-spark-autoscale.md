@@ -1,5 +1,5 @@
 ---
-title: 自动缩放 Azure Synapse Apache Spark 实例
+title: 自动缩放 Apache Spark 实例
 description: 使用 Azure Synapse 自动缩放功能自动缩放 Apache Spark 实例
 author: euangMS
 ms.author: euang
@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 03/31/2020
-ms.openlocfilehash: 86e9b7425c8c75495a17b66af710d2c55e6e59ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c6278d24e52159424c3e346b2382c93f4ab8160
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194274"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075792"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>自动缩放 Azure Synapse Analytics Apache Spark 池
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: cbbdf724b9d7fe4948553e7526410b994f491b49
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9eae210818cf623078090503deefc6295dab7164
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80435261"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076366"
 ---
 # <a name="integrate-azure-security-center-with-windows-admin-center"></a>将 Azure 安全中心与 Windows 管理中心集成
 
@@ -46,7 +46,7 @@ Windows 管理中心是适用于 Windows 服务器的管理工具。 它在一�
 1. 按照说明将服务器连接到安全中心。 输入必要的详细信息并进行确认后，安全中心会进行必要的配置更改，以确保满足以下所有条件：
     * 已注册 Azure 网关。
     * 服务器有可报告的工作区以及关联订阅。
-    * 安全中心的标准层 Log Analytics 解决方案已在工作区中启用。 此解决方案为所有向此工作区报告的服务器和虚拟机提供安全中心的标准层功能。
+    * 安全中心的标准层 Log Analytics 解决方案已在工作区中启用。 此解决方案为向此工作区报告的*所有*服务器和虚拟机提供安全中心的标准层功能。
     * 面向虚拟机的安全中心标准层定价已在订阅上启用。
     * Log Analytics 代理已安装在服务器上并配置为向所选工作区报告。 如果服务器已向另一个工作区报告，则将其配置为也向新选中的工作区报告。
 

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 07/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 73811aa58b09e394468596f42e0ff221b2bb240b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1f813d0ada516f6090b97e5858cefab110636f90
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261704"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077591"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>使用 Windows 桌面客户端进行连接
 
@@ -25,7 +25,7 @@ ms.locfileid: "86261704"
 > Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-使用 windows 桌面客户端，你可以使用 Windows 7、Windows 10 和 Windows 10 IoT Enterprise 在设备上访问 Windows 虚拟桌面资源。
+使用 windows 桌面客户端，你可以使用 Windows 7、Windows 10 和 Windows 10 IoT Enterprise 在设备上访问 Windows 虚拟桌面资源。 客户端不支持窗口8或 Windows 8.1。
 
 >[!NOTE]
 >Windows 客户端自动默认为 Windows 虚拟桌面秋季2019版。 但是，如果客户端检测到用户还具有 Azure 资源管理器资源，则会自动添加资源或通知用户这些资源可用。
@@ -69,7 +69,7 @@ ms.locfileid: "86261704"
      - Windows 虚拟桌面 2019 秋季版：`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
      - Windows 虚拟桌面 2020 春季版：`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
    - 如果你使用的是**电子邮件**字段，请输入你的电子邮件地址。 如果管理员已设置[电子邮件发现](/windows-server/remote/remote-desktop-services/rds-email-discovery)，则这将告知客户端搜索与你的电子邮件地址关联的 URL。
-3. 选择“下一步”。
+3. 选择“**下一步**”。
 4. 出现提示时，请使用用户帐户登录。
 5. 资源应显示在连接中心中，按工作区分组。
 

@@ -3,18 +3,18 @@ title: 在 Azure 门户中备份 Azure 文件共享
 description: 了解如何使用 Azure 门户在恢复服务保管库中备份 Azure 文件共享
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 76bf8e00dede5f227cb862f9c9474844e349e298
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58bcd7ecd7c6fac80f5b78fb2c8b568b63e3e1b2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391141"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077143"
 ---
 # <a name="back-up-azure-file-shares"></a>备份 Azure 文件共享
 
-本文介绍如何使用 Azure 门户备份[Azure 文件共享](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)。
+本文介绍如何使用 Azure 门户备份[Azure 文件共享](../storage/files/storage-files-introduction.md)。
 
-本文将指导如何进行以下操作：
+本文介绍如何执行以下操作：
 
 * 创建恢复服务保管库。
 * 发现文件共享并配置备份。
@@ -132,7 +132,7 @@ ms.locfileid: "85391141"
 >[!NOTE]
 >为相应帐户中的任何文件共享配置保护时，Azure 备份会锁定存储帐户。 这样可以防止意外删除包含备份文件共享的存储帐户。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 * 请勿删除由 Azure 备份创建的快照。 删除快照可能导致恢复点丢失和/或还原失败。
 

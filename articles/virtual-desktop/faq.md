@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 07/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b7ab9e63bfe92967eca22b60dceec0de882768a6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 721f9c623255b964e38da1c0f4b7bbf72d0c721d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531133"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075626"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows 虚拟桌面常见问题解答
 
@@ -121,7 +121,7 @@ FSLogix 中的限制或配额取决于用于存储用户配置文件 VHD （X）
 | 资源 | 要求 |
 |---|---|
 | 稳定状态 IOPS | 10 |
-| 登录/注销 IOPS | 5 |
+| 登录/注销 IOPS | 50 |
 
 此表中的示例是一个用户，但可用于估算环境中用户总数的要求。 例如，对于100用户，需要大约 1000 IOPS，在登录和注销期间大约需要 5000 IOPS。
 

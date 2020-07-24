@@ -1,14 +1,14 @@
 ---
-title: 特征 - LUIS
+title: 具有 LUIS 的机器学习功能
 description: 将特征添加到语言模型，提供有关如何识别需要标记或分类的输入的提示。
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: fbf39382e418bef9a7d39886076a4100a26ce3e7
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 02a6fd27dbe22a40b29b47515edec5506d3b2075
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362452"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075162"
 ---
 # <a name="machine-learning-features"></a>机器学习功能
 

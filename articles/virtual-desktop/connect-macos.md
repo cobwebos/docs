@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 04/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f2b4696886c898eec5895c4ccb59347cf2a49f03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bcd7bf46a3def963a4f9fe8913c4f8afcdce743f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208988"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075637"
 ---
-# <a name="connect-with-the-macos-client"></a>使用 macOS 客户端进行连接
+# <a name="connect-to-windows-virtual-desktop-with-the-macos-client"></a>通过 macOS 客户端连接到 Windows 虚拟桌面
 
 > 适用于： macOS 10.12 或更高版本
 
@@ -41,7 +41,7 @@ ms.locfileid: "85208988"
 2. 输入源 URL。 该项可以是 URL 或电子邮件地址：
    - 如果使用 URL，请输入管理员提供给你的 URL。 此 URL 通常是 <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery>。
    - 若要使用电子邮件地址，请输入你的电子邮件地址。 这会指示客户端搜索与你的电子邮件地址关联的 URL，前提是管理员已采用这种方式配置了服务器。
-3. 选择 **添加** 。
+3. 选择“添加”  。
 4. 出现提示时，请使用用户帐户登录。
 
 登录后，应该会看到可用资源的列表。

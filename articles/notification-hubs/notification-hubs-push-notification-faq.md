@@ -15,12 +15,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 0fe4ae76645ec2a0ae8aae93b9db987ece9a45b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85ebb7f5ac52f4eea25f9e6f1a2b1b5ac6f4caa5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255120"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077914"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题
 
@@ -54,7 +54,7 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>如何将中心升级或降级到不同层的命名空间？
 
-转到 **[Azure 门户]**  > **通知中心命名空间**或**通知中心**。 选择要更新的资源，转到“定价层”。  请注意以下要求：
+转到 **[Azure 门户]**  > **通知中心命名空间**或**通知中心**。 选择要更新的资源，转到“定价层”。 请注意以下要求：
 
 * 更新的定价层应用到正在使用的命名空间中的*所有*中心。
 * 如果设备计数超出所要降级到的层的限制，则需要删除设备才能降级。
@@ -77,7 +77,7 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 
 有关支持的设备数目的详细信息，请参阅[通知中心定价]页。
 
-如果需要支持超过10000000个注册设备，则必须在多个命名空间中对设备进行分区。
+如果需要支持超过 1000 万个注册设备，则必须将设备分布到多个命名空间。
 
 ### <a name="how-many-push-notifications-can-i-send-out"></a>我可以发送多少推送通知？
 
@@ -138,7 +138,7 @@ PNS 对于传递通知不提供任何 SLA 保证。 但是，大多数推送通�
 
 ### <a name="what-is-the-push-notification-delivery-security-model"></a>什么是推送通知传递安全模型？
 
-Azure 通知中心使用基于[共享访问签名](../storage/common/storage-dotnet-shared-access-signature-part-1.md)的安全模型。 可以在根命名空间级别或细粒度通知中心级别使用共享访问签名令牌。 可以使用不同的授权规则（例如，发送消息权限，或侦听通知权限）设置共享访问签名令牌。 有关详细信息，请参阅[通知中心安全模型]文档。
+Azure 通知中心使用基于[共享访问签名](../storage/common/storage-sas-overview.md)的安全模型。 可以在根命名空间级别或细粒度通知中心级别使用共享访问签名令牌。 可以使用不同的授权规则（例如，发送消息权限，或侦听通知权限）设置共享访问签名令牌。 有关详细信息，请参阅[通知中心安全模型]文档。
 
 ### <a name="how-should-i-handle-sensitive-payload-in-push-notifications"></a>如何处理推送通知中的敏感有效负载？
 
@@ -203,15 +203,15 @@ Azure 通知中心允许在 [Azure 门户]中查看遥测数据。 可以在[通
 [Azure 门户]: https://portal.azure.com
 [通知中心定价]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
-[通知中心 REST API]: https://msdn.microsoft.com/library/azure/dn530746.aspx
+[通知中心 REST API]: /previous-versions/azure/reference/dn530746(v=azure.100)
 [Mobile Services Pricing]: https://azure.microsoft.com/pricing/details/mobile-services/
-[后端注册指南]: https://msdn.microsoft.com/library/azure/dn743807.aspx
-[后端注册指南 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx
-[通知中心安全模型]: https://msdn.microsoft.com/library/azure/dn495373.aspx
-[通知中心安全推送教程]: https://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
-[通知中心故障排除]: https://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
+[后端注册指南]: /previous-versions/azure/azure-services/dn743807(v=azure.100)
+[后端注册指南 2]: /previous-versions/azure/azure-services/dn530747(v=azure.100)
+[通知中心安全模型]: /previous-versions/azure/azure-services/dn495373(v=azure.100)
+[通知中心安全推送教程]: ./notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md
+[通知中心故障排除]: ./notification-hubs-push-notification-fixer.md
 [通知中心指标]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
-[注册信息导出/导入]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
+[注册信息导出/导入]: ./export-modify-registrations-bulk.md
 [Azure 门户]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [App Service Pricing]: https://azure.microsoft.com/pricing/details/app-service/

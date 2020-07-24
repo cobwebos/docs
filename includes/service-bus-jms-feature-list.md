@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 6/9/2020
 ms.author: aschhab
 ms.custom: include file
-ms.openlocfilehash: 3fd4c6416241302a4969d9b3de26fa6b8316c1f7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e4b9925459463ff66685c797f0edaba13883f4d5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122262"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076243"
 ---
-下表列出了 Azure 服务总线当前支持和不支持的**Java 消息服务（JMS）** 功能。
+下表列出了 Azure 服务总线当前支持的 Java 消息服务（JMS）功能。 它还显示不支持的功能。
 
 
 | 功能 | 状态 |
@@ -30,5 +30,5 @@ ms.locfileid: "86122262"
 | 非共享持久订阅 | 支持 |
 | 共享的非持久订阅 | 支持 |
 | 非持久订阅 | 支持 |
-| 分布式事务 | **不支持** |
-| 持久终点 | **不支持** |
+| 分布式事务 | 不支持 |
+| 持久终点 | 不支持 |

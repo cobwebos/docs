@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 65c4e5d9e0752379541063c8a80a4316196ad7c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38e47469723d767561dd778b8f175780ab181fd4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565369"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076263"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>使用 Syslog 连接外部解决方案
 
@@ -65,7 +65,7 @@ Syslog 是普遍适用于 Linux 的事件日志记录协议。 应用程序将�
 
 6. 如果已添加要监视的所有设备，并调整每个设备的任何严重性选项，请选中 "**将下面的配置应用到我的计算机**" 复选框。
 
-7. 选择“保存”。 
+7. 选择“保存” 。 
 
 8. 在 syslog 设备上，确保正在发送指定的设施。
 
@@ -94,7 +94,9 @@ Azure Sentinel 可以将机器学习（ML）应用于 syslog 数据，以确定�
 
 2. 留出足够的时间来收集 syslog 信息。 然后，导航到 " **Azure Sentinel 日志**"，复制并粘贴以下查询：
     
-        Syslog |  where Facility in ("authpriv","auth")| extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)| where isnotempty(c) | count 
+    ```console
+    Syslog |  where Facility in ("authpriv","auth")| extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)| where isnotempty(c) | count 
+    ```
     
     更改**时间范围**（如果需要），然后选择 "**运行**"。
     

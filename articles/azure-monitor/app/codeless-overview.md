@@ -6,12 +6,12 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 87342dcd316b0364522baa01e632b704665c998e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9be0808d4edc9662c1d3a4144f3102242560564
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85363720"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075355"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>什么是自动检测或无代码置备的 Azure Monitor Application Insights？
 
@@ -26,11 +26,11 @@ Application Insights 与各种资源提供程序集成，并在不同的环境�
 |环境/资源提供程序 | .NET            | .NET Core       | Java            | Node.js         |
 |------------------------------|-----------------|-----------------|-----------------|-----------------|
 |Windows 上的 Azure App Service  | GA，OnBD *       | GA，选择加入      | 个人预览版 | 个人预览版 |
-|Linux 上的 Azure 应用服务    | 不适用             | 不支持   | 公共预览版  | 公共预览版  |
-|AKS 上的 Azure App Service      | 不适用             | 设计中       | 设计中       | 设计中       |
+|Linux 上的 Azure 应用服务    | 空值             | 不支持   | 公共预览版  | 公共预览版  |
+|AKS 上的 Azure App Service      | 空值             | 设计中       | 设计中       | 设计中       |
 |Azure Functions-基本       | GA，OnBD *       | GA，OnBD *       | GA，OnBD *       | GA，OnBD *       |
 |Azure Functions-依赖项| 不支持   | 不支持   | 公共预览版  | 不支持   |
-|Azure Kubernetes 服务      | 不适用             | 设计中       | 通过代理   | 设计中       |
+|Azure Kubernetes 服务      | 空值             | 设计中       | 通过代理   | 设计中       |
 |Azure Vm Windows             | 公共预览版  | 不支持   | 不支持   | 不支持   |
 |本地 Vm Windows       | GA，选择加入      | 不支持   | 通过代理   | 不支持   |
 |独立代理-任何 env。   | 不支持   | 不支持   | 公共预览版  | 不支持   |
@@ -41,7 +41,7 @@ Application Insights 与各种资源提供程序集成，并在不同的环境�
 
 ### <a name="windows"></a>Windows
 
-[Azure App Service 上的应用程序监视](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=net)适用于 .net 应用程序，并且在默认情况下已启用，可以通过一次单击来启用 .net Core，Java 和 Node.js 处于个人预览状态。
+[Azure App Service 上的应用程序监视](./azure-web-apps.md?tabs=net)适用于 .net 应用程序，并且在默认情况下已启用，可以通过一次单击来启用 .net Core，Java 和 Node.js 处于个人预览状态。
 
 ### <a name="linux"></a>Linux 
 
@@ -49,24 +49,24 @@ Application Insights 与各种资源提供程序集成，并在不同的环境�
 
 ## <a name="azure-functions"></a>Azure Functions
 
-默认情况下，启用了基本监视 Azure Functions 以收集日志、性能、错误数据和 HTTP 请求。 对于 Java 应用程序，可以使用分布式跟踪来启用更丰富的监视，并获取端到端事务的详细信息。 此 Java 功能以公共预览版提供，你可以[在 Azure 门户中启用它](https://docs.microsoft.com/azure/azure-monitor/app/monitor-functions)。
+默认情况下，启用了基本监视 Azure Functions 以收集日志、性能、错误数据和 HTTP 请求。 对于 Java 应用程序，可以使用分布式跟踪来启用更丰富的监视，并获取端到端事务的详细信息。 此 Java 功能以公共预览版提供，你可以[在 Azure 门户中启用它](./monitor-functions.md)。
 
 ## <a name="azure-kubernetes-service"></a>Azure Kubernetes 服务
 
-Azure Kubernetes 服务的无代码置备检测目前可通过[独立代理](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)在 Java 应用程序中使用。 
+Azure Kubernetes 服务的无代码置备检测目前可通过[独立代理](./java-in-process-agent.md)在 Java 应用程序中使用。 
 
 ## <a name="azure-windows-vms-and-virtual-machine-scale-set"></a>Azure Windows Vm 和虚拟机规模集
 
-适用于[Azure vm 和虚拟机规模集的自动检测](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)适用于 .net 应用程序 
+适用于[Azure vm 和虚拟机规模集的自动检测](./azure-vm-vmss-apps.md)适用于 .net 应用程序 
 
 ## <a name="on-premises-servers"></a>本地服务器
-你可以轻松为[适用于 .net 应用程序的本地 Windows 服务器](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)和[Java 应用](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)启用监视。
+你可以轻松为[适用于 .net 应用程序的本地 Windows 服务器](./status-monitor-v2-overview.md)和[Java 应用](./java-in-process-agent.md)启用监视。
 
 ## <a name="other-environments"></a>其他环境
-通用 Java 独立代理适用于任何环境，无需检测代码。 [按照指南进行操作](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)，启用 Application Insights，并阅读有关 Java 代理的惊人功能的信息。 代理以公共预览版提供，在所有区域都可用。 
+通用 Java 独立代理适用于任何环境，无需检测代码。 [按照指南进行操作](./java-in-process-agent.md)，启用 Application Insights，并阅读有关 Java 代理的惊人功能的信息。 代理以公共预览版提供，在所有区域都可用。 
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Application Insights 概述](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)
+* [Application Insights 概述](./app-insights-overview.md)
 * [应用程序映射](./../../azure-monitor/app/app-map.md)
 * [端到端性能监视](./../../azure-monitor/learn/tutorial-performance.md)

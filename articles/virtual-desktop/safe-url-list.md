@@ -5,15 +5,15 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 07/10/2020
+ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9b1bdfc326ff217e68785d823b4af046af3241b7
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 9f7a3b51afa11562123a280da8634e100a22e6b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225068"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075612"
 ---
 # <a name="safe-url-list"></a>安全 URL 列表
 
@@ -33,6 +33,7 @@ ms.locfileid: "86225068"
 |catalogartifact.azureedge.net|443|Azure 市场|AzureCloud|
 |kms.core.windows.net|1688|Windows 激活|Internet|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure 门户支持|AzureCloud|
+| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 空值 |
 
 >[!IMPORTANT]
 >Windows 虚拟桌面现在支持 FQDN 标记。 有关详细信息，请参阅[使用 Azure 防火墙保护 Windows 虚拟桌面部署](../firewall/protect-windows-virtual-desktop.md)。
@@ -43,13 +44,13 @@ ms.locfileid: "86225068"
 
 |地址|出站 TCP 端口|目的|服务标记|
 |---|---|---|---|
-|*.microsoftonline.com|443|向 Microsoft Online Services 进行身份验证|无|
-|*.events.data.microsoft.com|443|遥测服务|无|
-|www.msftconnecttest.com|443|检测 OS 是否已连接到 Internet|无|
-|*.prod.do.dsp.mp.microsoft.com|443|Windows 更新|无|
+|*.microsoftonline.com|443|向 Microsoft Online Services 进行身份验证|None|
+|*.events.data.microsoft.com|443|遥测服务|None|
+|www.msftconnecttest.com|443|检测 OS 是否已连接到 Internet|None|
+|*.prod.do.dsp.mp.microsoft.com|443|Windows 更新|None|
 |login.windows.net|443|登录到 Microsoft 365 等 Microsoft Online Services|无|
 |*.sfx.ms|443|OneDrive 客户端软件更新|无|
-|*.digicert.com|443|证书吊销检查|无|
+|*.digicert.com|443|证书吊销检查|None|
 
 >[!NOTE]
 >Windows 虚拟桌面当前没有 IP 地址范围的列表，你可以取消阻止这些 IP 地址范围以允许网络流量。 目前仅支持取消阻止特定的 Url。
@@ -59,8 +60,8 @@ ms.locfileid: "86225068"
 >对于涉及服务流量的 URL，必须使用通配符 (*)。 如果不希望为代理相关的流量使用 *，下面提供了有关如何在不使用通配符的情况下查找 URL 的信息：
 >
 >1. 向 Windows 虚拟桌面主机池注册你的虚拟机。
->2. 打开**事件查看器**，然后切换到**Windows 日志**  >  **应用程序**  >  **WVD** ，并查找事件 ID 3702。
->3. 将在事件 ID 3702 下找到的 URL 加入允许列表。 事件 ID 3702 下的 URL 是特定于区域的。 需要为要在其中部署虚拟机的每个区域的相关 Url 重复取消阻止进程。
+>2. 打开**事件查看器**，然后切换到**Windows 日志**  >  **应用程序**  >  **WVD** ，并查找事件 ID 3701。
+>3. 将在事件 ID 3701 下找到的 Url 列入白名单。 事件 ID 3701 下的 Url 是特定于区域的。 需要为要在其中部署虚拟机的每个区域的相关 Url 重复取消阻止进程。
 
 ## <a name="remote-desktop-clients"></a>远程桌面客户端
 

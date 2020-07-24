@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c3c34ea9e32e100d5756a3930ce9d0147363e379
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 7ea1995b6d1232b3e4c6371313e5b3d45bdbb756
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027870"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075409"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>使用 Creator 创建室内定位
 
@@ -31,7 +32,7 @@ ms.locfileid: "86027870"
 
 若要创建室内定位，请执行以下操作：
 
-1. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)
+1. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。
 3. [创建 Creator 资源](how-to-manage-creator.md)
 4. 下载[示例绘图包](https://github.com/Azure-Samples/am-creator-indoor-data-examples)。
@@ -51,7 +52,7 @@ ms.locfileid: "86027870"
 
 2. 若要创建请求，请再次选择“新建”。 在“新建”窗口中，选择“请求”。 在“请求名称”中，输入请求名称。 选择在上一步中创建的集合，然后选择“保存”。
 
-3. 在生成器选项卡中选择“POST”HTTP 方法，然后输入下面的 URL，以将绘图包上传到 Azure Maps 服务。 对于此请求和本文中提到的其他请求，请将 `<Azure-Maps-Primary-Subscription-key>` 替换为你的主订阅密钥。
+3. 在生成器选项卡中选择“POST”HTTP 方法，然后输入下面的 URL，以将绘图包上传到 Azure Maps 服务。 对于此请求和本文中提到的其他请求，请将 `{Azure-Maps-Primary-Subscription-key}` 替换为你的主订阅密钥。
 
     ```http
     https://atlas.microsoft.com/mapData/upload?api-version=1.0&dataFormat=zip&subscription-key={Azure-Maps-Primary-Subscription-key}
@@ -66,7 +67,7 @@ ms.locfileid: "86027870"
 6. 若要检查 API 调用的状态，请在上创建**GET** HTTP 请求 `status URL` 。 为了进行身份验证，需要将主订阅密钥追加到 URL 中。 **GET**请求应类似于以下 URL：
 
     ```http
-    https://atlas.microsoft.com/mapData/operations/{operationId}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://atlas.microsoft.com/mapData/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
 7. 当**GET** HTTP 请求成功完成后，它将返回 `resourceLocation` 。 `resourceLocation`包含 `udid` 上传内容的唯一。 或者，你可以 `resourceLocation` 在下一步中使用 URL 从此资源检索元数据。
@@ -169,7 +170,7 @@ ms.locfileid: "86027870"
 4. 在 `statusURL` 处发出 GET 请求，以获取 `datasetId`。 为了进行身份验证，请追加 Azure Maps 主订阅密钥。 请求应如下面的 URL 所示：
 
     ```http
-    https://atlas.microsoft.com/dataset/operations/{operationId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/dataset/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
 5. 当 GET HTTP 请求成功完成时，响应头包含已创建数据集的 `datasetId`。 复制 `datasetId`。 需要使用 `datasetId` 来创建图块集。
@@ -198,7 +199,7 @@ ms.locfileid: "86027870"
 3. 在图块集的 `statusURL` 处发出 GET 请求。 为了进行身份验证，请追加 Azure Maps 主订阅密钥。 请求应如下面的 URL 所示：
 
    ```http
-    https://atlas.microsoft.com/tileset/operations/{operationId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/tileset/operations/<operationId>?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
     ```
 
 4. 当 GET HTTP 请求成功完成时，响应头包含已创建图块集的 `tilesetId`。 复制 `tilesetId`。

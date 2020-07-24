@@ -7,10 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79274679"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075251"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Windows 事件日志数据源
 由于许多应用程序都会写入 Windows 事件日志，因此 Windows 事件日志是使用 Windows 代理收集数据的最常见[数据源](agent-data-sources.md)之一。  除了指定由需要监视的应用程序创建的任何自定义日志，还可以从标准日志（如系统和应用程序）中收集事件。

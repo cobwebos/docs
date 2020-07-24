@@ -7,16 +7,17 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 001dfbc78c0027249143e933684523d47af383d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45b18352d88877a5d611f203d87da83fd0d58c6b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79096774"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077127"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>为存档到存储帐户的 Azure Monitor 平台日志的格式更改做准备
 
 > [!WARNING]
-> 如果[使用诊断设置将 Azure 资源日志或指标发送到存储帐户](resource-logs-collect-storage.md)或[使用日志配置文件将活动日志发送到存储帐户](resource-logs-collect-storage.md)，则存储帐户中的数据格式将于 2018 年 11 月 1 日更改为 JSON Lines。 以下说明介绍了影响以及如何更新工具以处理新格式。
+> 如果[使用诊断设置将 Azure 资源日志或指标发送到存储帐户](./resource-logs.md#send-to-azure-storage)或[使用日志配置文件将活动日志发送到存储帐户](./resource-logs.md#send-to-azure-storage)，则存储帐户中的数据格式将于 2018 年 11 月 1 日更改为 JSON Lines。 以下说明介绍了影响以及如何更新工具以处理新格式。
 >
 
 ## <a name="what-changed"></a>更改内容
@@ -28,9 +29,9 @@ Azure Monitor 提供了一项功能，可用于将资源日志和活动日志发
 * 在 11 月 1 日之前设置诊断设置将继续以当前格式发出数据，直到 11 月 1 日为止。
 * 此更改已同时在所有公有云区域中进行。 但是，由世纪互联、Azure 德国或 Azure 政府云运营的 Microsoft Azure 不会进行此更改。
 * 此更改会影响以下数据类型：
-  * [Azure 资源日志](archive-diagnostic-logs.md)（[请参阅此处的资源列表](diagnostic-logs-schema.md)）
+  * [Azure 资源日志](./resource-logs.md#send-to-azure-storage)（[请参阅此处的资源列表](./resource-logs-schema.md)）
   * [由诊断设置导出的 Azure 资源指标](diagnostic-settings.md)
-  * [由日志配置文件导出的 Azure 活动日志数据](activity-log-collect.md)
+  * [由日志配置文件导出的 Azure 活动日志数据](./activity-log.md)
 * 此更改不会影响：
   * 网络流日志
   * 尚未通过 Azure Monitor 可用的 Azure 服务日志（例如，Azure 应用服务资源日志、存储分析日志）
@@ -122,7 +123,7 @@ Azure blob 存储中 PT1H.json 文件的当前格式使用 JSON 数组记录。 
 {"time": "2016-01-05T01:33:56.5264523Z","resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT","operationName": "VaultGet","operationVersion": "2015-06-01","category": "AuditEvent","resultType": "Success","resultSignature": "OK","resultDescription": "","durationMs": "83","callerIpAddress": "104.40.82.76","correlationId": "","identity": {"claim": {"http://schemas.microsoft.com/identity/claims/objectidentifier": "d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "live.com#username@outlook.com","appid": "1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},"properties": {"clientInfo": "azure-resource-manager/2.0","requestUri": "https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id": "https://contosokeyvault.vault.azure.net/","httpStatusCode": 200}}
 ```
 
-通过此新格式，Azure Monitor 能够使用[追加 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) 来推送日志文件，这对于连续追加新事件数据更加高效。
+通过此新格式，Azure Monitor 能够使用[追加 blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) 来推送日志文件，这对于连续追加新事件数据更加高效。
 
 ## <a name="how-to-update"></a>更新方法
 
@@ -132,6 +133,5 @@ Azure blob 存储中 PT1H.json 文件的当前格式使用 JSON 数组记录。 
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[将资源日志存档到存储帐户](./../../azure-monitor/platform/archive-diagnostic-logs.md)
-* 了解如何[将活动日志数据存档到存储帐户](./../../azure-monitor/platform/archive-activity-log.md)
-
+* 了解如何[将资源日志存档到存储帐户](./resource-logs.md#send-to-azure-storage)
+* 了解如何[将活动日志数据存档到存储帐户](./activity-log.md#legacy-collection-methods)

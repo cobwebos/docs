@@ -4,11 +4,12 @@ description: 了解 Azure 监视器的合作伙伴，以及如何访问相关文
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: be309bf6caeb716fee86e4542363f5554b4568fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f40d38d182e1a8c233b15f711fd557a5d72e8f30
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248965"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077332"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 
@@ -269,8 +270,8 @@ Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优
 
 - [了解有关 Azure Monitor 的详细信息](../../azure-monitor/overview.md)
 - [使用 REST API 访问指标](rest-api-walkthrough.md)
-- [将活动日志流式传输给非 Microsoft 服务](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
-- [将资源日志流式传输到非 Microsoft 服务](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
+- [将活动日志流式传输给非 Microsoft 服务](./activity-log.md#legacy-collection-methods)
+- [将资源日志流式传输到非 Microsoft 服务](./resource-logs.md#send-to-azure-event-hubs)
 
 
 
@@ -301,4 +302,3 @@ Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优
 [splunk-doc]: https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk "Splunk 文档。"
 [sumologic-doc]: https://www.sumologic.com/azure "SumoLogic 文档。"
 [turbonomic-doc]: https://turbonomic.com/ "Turbonomic 简介。"
-

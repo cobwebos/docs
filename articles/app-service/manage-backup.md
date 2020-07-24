@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: d611be27d8d576748019dee46022ca4cb70e966a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b917ef9234ef2e0d36526bc1688dfae2020d6b51
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253437"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075466"
 ---
 # <a name="back-up-your-app-in-azure"></a>在 Azure 中备份应用
 利用 [Azure App Service](overview.md) 中的备份和还原功能，可以轻松地手动或按计划创建应用备份。 可以将备份配置为无限期保留。 通过覆盖现有应用或还原为另一应用可将应用还原为先前状态的快照。
@@ -159,7 +159,7 @@ ms.locfileid: "85253437"
 
 ## <a name="automate-with-scripts"></a>使用脚本自动化
 
-可以在 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/overview) 中使用脚本自动备份管理。
+可以在 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/) 中使用脚本自动备份管理。
 
 相关示例如下所示：
 

@@ -3,18 +3,18 @@ title: Azure Monitor 中的指标 - Azure 事件中心 | Microsoft Docs
 description: 本文介绍如何使用 Azure 监视功能来监视 Azure 事件中心
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 76df9920c517e8370409bca26e5a6533c7253c1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7841007fa1736c88c30108099f86b99d3dad0fb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314598"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074859"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 事件中心指标
 
 事件中心指标可提供 Azure 订阅中的事件中心资源状态。 通过多种指标数据集，可在命名空间和实体级别评估事件中心的总体运行状况。 由于它们能够帮助监视事件中心的状态，因此这些统计信息非常重要。 另外，指标也可帮助解决由根本原因造成的问题，而无需联系 Azure 支持。
 
-Azure Monitor 提供了统一的用户界面，可用于监视各种 Azure 服务。 有关详细信息，请参阅 GitHub 上的[在 Microsoft Azure 中进行监视](../monitoring-and-diagnostics/monitoring-overview.md)和[通过 .NET 检索 Azure Monitor 指标](https://github.com/Azure-Samples/monitor-dotnet-metrics-api)示例。
+Azure Monitor 提供了统一的用户界面，可用于监视各种 Azure 服务。 有关详细信息，请参阅 GitHub 上的[在 Microsoft Azure 中进行监视](../azure-monitor/overview.md)和[通过 .NET 检索 Azure Monitor 指标](https://github.com/Azure-Samples/monitor-dotnet-metrics-api)示例。
 
 ## <a name="access-metrics"></a>访问指标
 
@@ -103,7 +103,7 @@ Azure 事件中心支持对 Azure Monitor 中的指标使用以下维度。 为�
 使用 Azure Monitor 将监视数据（活动日志、诊断日志等）路由到事件中心，可以轻松地与安全信息和事件管理 (SIEM) 工具集成。 有关详细信息，请参阅以下文章/博客文章：
 
 - [将 Azure 监视数据流式传输到事件中心以便外部工具使用](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)
-- [Azure 日志集成简介](../security/fundamentals/azure-log-integration-overview.md)
+- [Azure 日志集成简介](/previous-versions/azure/security/fundamentals/azure-log-integration-overview)
 - [使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
 在 SIEM 工具使用事件中心的日志数据的情况下，如果在指标图中看不到传入消息，或者看到传入消息但看不到传出消息，请按照下列步骤操作：
@@ -114,7 +114,7 @@ Azure 事件中心支持对 Azure Monitor 中的指标使用以下维度。 为�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅 [Azure 监视概述](../monitoring-and-diagnostics/monitoring-overview.md)。
+* 请参阅 [Azure 监视概述](../azure-monitor/overview.md)。
 * [通过 .NET 检索 Azure Monitor 指标](https://github.com/Azure-Samples/monitor-dotnet-metrics-api)示例。 
 
 有关事件中心的详细信息，请访问以下链接：
@@ -129,6 +129,3 @@ Azure 事件中心支持对 Azure Monitor 中的指标使用以下维度。 为�
 
 [1]: ./media/event-hubs-metrics-azure-monitor/event-hubs-monitor1.png
 [2]: ./media/event-hubs-metrics-azure-monitor/event-hubs-monitor2.png
-
-
-

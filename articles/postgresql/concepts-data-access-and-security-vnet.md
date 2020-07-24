@@ -5,12 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: bee705e33267a765c1fb5300c0bfe2d04ff2015d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: f473a4621c6b2214717b5036eae5abeaa564fb72
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85099652"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076614"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>对 Azure Database for PostgreSQL（单一数据库）使用虚拟网络服务终结点和规则
 
@@ -24,11 +25,12 @@ ms.locfileid: "85099652"
 > Azure 公有云中的所有区域均提供此功能，其中 Azure Database for PostgreSQL 部署用于常规用途和内存优化服务器。
 > 在 VNet 对等互连的情况下，如果流量通过具有服务终结点的公共 VNet 网关流动，并且应该流向对等机，请创建 ACL/VNet 规则，以便网关 VNet 中的 Azure 虚拟机能够访问 Azure Database for PostgreSQL 服务器。
 
-<a name="anch-terminology-and-description-82f" />
+还可以考虑使用连接的[专用链接](concepts-data-access-and-security-private-link.md)。 专用链接在 VNet 中为 Azure Database for PostgreSQL 服务器提供专用 IP 地址。
 
+<a name="anch-terminology-and-description-82f"></a>
 ## <a name="terminology-and-description"></a>术语和说明
 
-**虚拟网络：** 可以将虚拟网络与 Azure 订阅关联。
+**虚拟网络：** 可以让虚拟网络与 Azure 订阅相关联。
 
 **子网：** 虚拟网络包含**子网**。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
 
@@ -38,12 +40,6 @@ ms.locfileid: "85099652"
 
 虚拟网络规则要求 Azure Database for PostgreSQL 服务器接受来自该子网上所有节点的通信。
 
-
-
-
-
-
-
 <a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>虚拟网络规则的优势
@@ -52,21 +48,16 @@ ms.locfileid: "85099652"
 
 ### <a name="a-allow-access-to-azure-services"></a>A. 允许访问 Azure 服务
 
-“连接安全性”窗格有一个标签为“允许访问 Azure 服务”的“启用/禁用”按钮。******** “启用”设置允许来自所有 Azure IP 地址和所有 Azure 子网的通信。**** 这些 Azure IP 或子网可能不是你所拥有的。 此“启用”设置可能超出你在开放方面对 Azure Database for PostgreSQL 数据库的需要。**** 虚拟网络规则功能提供精细得多的控制。
+“连接安全性”窗格有一个标签为“允许访问 Azure 服务”的“启用/禁用”按钮。   “启用”设置允许来自所有 Azure IP 地址和所有 Azure 子网的通信。  这些 Azure IP 或子网可能不是你所拥有的。 此“启用”设置可能超出你在开放方面对 Azure Database for PostgreSQL 数据库的需要。**** 虚拟网络规则功能提供精细得多的控制。
 
 ### <a name="b-ip-rules"></a>B. IP 规则
 
-可以通过 Azure Database for PostgreSQL 防火墙指定 IP 地址范围，处于该范围内的通信允许进入 Azure Database for PostgreSQL 数据库。 此方法适用于 Azure 专用网络外部的稳定 IP 地址。 但是，Azure 专用网络内部的许多节点都配置了动态 IP 地址。** 某些情况下（例如重启 VM 时），动态 IP 地址可能会变化。 处于生产环境中时，在防火墙规则中指定一个动态 IP 地址并不明智。
+可以通过 Azure Database for PostgreSQL 防火墙指定 IP 地址范围，处于该范围内的通信允许进入 Azure Database for PostgreSQL 数据库。 此方法适用于 Azure 专用网络外部的稳定 IP 地址。 但是，Azure 专用网络内部的许多节点都配置了动态 IP 地址。  某些情况下（例如重启 VM 时），动态 IP 地址可能会变化。 处于生产环境中时，在防火墙规则中指定一个动态 IP 地址并不明智。
 
-可以通过获取 VM 的静态 IP 地址，对 IP 选项进行“补救”。** 有关详细信息，请参阅[使用 Azure 门户为虚拟机配置专用 IP 地址][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]。
+可以通过获取 VM 的静态 IP 地址，对 IP 选项进行“补救”。  有关详细信息，请参阅[使用 Azure 门户为虚拟机配置专用 IP 地址][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]。
 
 但是，静态 IP 方法可能会变得难以管理，在规模大时操作成本高。 虚拟网络规则更易于制定和管理。
 
-### <a name="c-cannot-yet-have-azure-database-for-postgresql-on-a-subnet-without-defining-a-service-endpoint"></a>C. 在没有定义服务终结点的情况下，子网上还不能有 Azure Database for PostgreSQL
-
-如果 **Microsoft.Sql** 服务器是虚拟网络子网上的一个节点，则该虚拟网络中的所有节点都可以与 Azure Database for PostgreSQL 服务器通信。 在这种情况下，VM 可以与 Azure Database for PostgreSQL 通信，而不需要任何虚拟网络规则或 IP 规则。
-
-但截至 2018 年 8 月，Azure Database for PostgreSQL 服务仍然无法直接分配给子网。
 
 <a name="anch-details-about-vnet-rules-38q"></a>
 
@@ -91,7 +82,7 @@ ms.locfileid: "85099652"
 - **网络管理员：** &nbsp; 启用终结点。
 - **数据库管理员：** &nbsp;更新访问控制列表 (ACL)，将给定的子网添加到 Azure Database for PostgreSQL 服务器。
 
-** RBAC 备用：
+RBAC 备用：
 
 网络管理员和数据库管理员角色的权限超出虚拟网络规则的管理需要， 只有部分权限是必需的。
 
@@ -119,6 +110,8 @@ ms.locfileid: "85099652"
 
 - 只有常规用途和内存优化服务器才支持 VNet 服务终结点。
 
+- 如果在子网中启用了**Sql** ，则表明你只希望使用 VNet 规则进行连接。 该子网中的资源的[非 VNet 防火墙规则](concepts-firewall-rules.md)将不起作用。
+
 - 在防火墙上，IP 地址范围适用于以下网络项，但虚拟网络规则并不适用：
     - [站点到站点 (S2S) 虚拟专用网络 (VPN)][vpn-gateway-indexmd-608y]
     - 通过 [Expressroute][expressroute-indexmd-744v] 进行的本地连接
@@ -129,9 +122,9 @@ ms.locfileid: "85099652"
 
 若要允许从线路到 Azure Database for PostgreSQL 的通信，则必须为线路的公共 IP 地址创建 IP 网络规则。 为查找 ExpressRoute 线路的公共 IP 地址，请使用 Azure 门户开具 ExpressRoute 支持票证。
 
-## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>在未打开 VNET 服务终结点的情况下，将 VNET 防火墙规则添加到服务器
+## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>将 VNET 防火墙规则添加到服务器而不启用 VNET 服务终结点
 
-仅设置防火墙规则无助于保护连接到 VNet 的服务器。 还必须打开 VNet**服务终结点，以使**安全生效。 当**你启用服务终结点**时，VNet 子网会经历停机时间，直到它完成从**Off**到**On**的转换。 这在大型 VNet 的上下文中尤其如此。 可以使用 **IgnoreMissingServiceEndpoint** 标志，减少或消除转换期间的停机时间。
+仅设置 VNet 防火墙规则不会帮助将服务器保护到 VNet。 还必须打开 VNet**服务终结点，以使**安全生效。 当**你启用服务终结点**时，VNet 子网会经历停机时间，直到它完成从**Off**到**On**的转换。 这在大型 VNet 的上下文中尤其如此。 可以使用 **IgnoreMissingServiceEndpoint** 标志，减少或消除转换期间的停机时间。
 
 可使用 Azure CLI 或门户设置 IgnoreMissingServiceEndpoint 标志****。
 

@@ -11,11 +11,12 @@ ms.date: 01/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b984ee7ed662bf089e7bcb6fc7e948fb61ed1209
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b86610910ed532e737720bb3b83e773596987aba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733213"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074667"
 ---
 # <a name="device-to-cloud-communications-guidance"></a>从设备到云通信指南
 
@@ -31,7 +32,7 @@ ms.locfileid: "81733213"
 
 下面是各种设备到云通信选项的详细比较。
 
-|  | 设备到云的消息 | 设备克隆的报告属性 | 文件上传 |
+| 因素 | 设备到云的消息 | 设备克隆的报告属性 | 文件上传 |
 | ---- | ------- | ---------- | ---- |
 | 方案 | 遥测时序和警报。 例如，每隔 5 分钟发送 256-KB 的传感器数据批。 | 可用功能和条件。 例如，当前设备连接模式，诸如手机网络或 WiFi。 同步长时间运行的工作流，如配置和软件更新。 | 媒体文件。 大型（通常为压缩的）遥测批。 |
 | 存储和检索 | 通过 IoT 中心临时进行存储，最多存储 7 天。 仅顺序读取。 | 通过 IoT 中心存储在设备孪生中。 可使用 [IoT 中心查询语言](iot-hub-devguide-query-language.md)进行检索。 | 存储在用户提供的 Azure 存储帐户中。 |

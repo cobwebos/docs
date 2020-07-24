@@ -6,17 +6,17 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: d8c97064af6fecf08af4608cfcd9874ff9bb1936
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff12f8857a7977226f836ec0418f74fb29e02906
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504776"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075119"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>通过 Azure PowerShell 开始使用 Azure Data Lake Storage Gen1
 
 > [!div class="op_single_selector"]
-> * [Portal](data-lake-store-get-started-portal.md)
+> * [门户](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
 > * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 >
@@ -30,8 +30,8 @@ ms.locfileid: "85504776"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure PowerShell 1.0 或更高版本**。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure PowerShell 1.0 或更高版本**。 请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/)。
 
 ## <a name="authentication"></a>身份验证
 

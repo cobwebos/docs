@@ -7,13 +7,14 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: a05fbf6e1908f88014cd8da99fafb875de033f45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0bb7b91cd31761b801ad469b8ce556b29e09fd3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79499310"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074711"
 ---
-# <a name="summary-of-customer-data-request-features"></a>客户数据请求功能摘要
+# <a name="customer-data-request-features-for-azure-iot-hub-devices"></a>Azure IoT 中心设备的客户数据请求功能
 
 Azure IoT 中心是一项基于 REST API 的云服务，其目标是企业客户，可以在数百万台设备和分区的 Azure 服务之间进行安全的双向通信。
 

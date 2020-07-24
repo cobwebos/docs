@@ -2,16 +2,17 @@
 title: 设置基于 Azure VPN 网关指标的警报
 description: 基于 VPN 网关指标配置警报的步骤
 services: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: alzam
-ms.openlocfilehash: ce9ab972d961a9193c3aa568878f9c93ccdcf6b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2c44720853500ad6a9a4af1c8d93d6c8bc3eea2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988010"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075529"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>基于 VPN 网关指标设置警报
 

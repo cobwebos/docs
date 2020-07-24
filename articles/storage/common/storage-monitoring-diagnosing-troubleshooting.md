@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 94d952bcb0693941624199370de092a581d7479b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7af711ebe21c46663ecd8e803b0f636c34c362ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518583"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076047"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>监视、诊断和排查 Microsoft Azure 存储问题
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -24,13 +24,9 @@ ms.locfileid: "86518583"
 
 若要成功管理此类应用程序，应主动监视这些应用程序，并了解如何诊断和排查这些应用程序及其相关技术的所有方面的问题。 作为 Azure 存储服务的用户，应持续监视应用程序所用的存储服务是否出现任何意外的行为更改（如比正常响应时间慢），并使用日志记录收集更详细的数据并深入分析问题。 从监视和日志记录获取的诊断信息将有助于确定应用程序所遇到问题的根本原因。 然后，用户可以排查该问题，并确定可以执行以更正该问题的相应步骤。 Azure 存储是一项核心 Azure 服务，它是客户部署到 Azure 基础结构的大多数解决方案的重要组成部分。 Azure 存储提供的功能可以简化监视、诊断和排查基于云的应用程序中的存储问题的过程。
 
-> [!NOTE]
-> Azure 文件目前不支持日志记录。
->
-
 有关 Azure 存储应用程序中端到端故障排除的动手指南，请参阅[端到端故障排除 - 使用 Azure 存储指标和日志记录、AzCopy 和 Message Analyzer](../storage-e2e-troubleshooting.md)。
 
-* [介绍]
+* [简介]
   * [本指南的组织方式]
 * [监视存储服务]
   * [监视服务运行状况]
@@ -469,7 +465,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 ### <a name="the-client-is-receiving-http-403-forbidden-messages"></a><a name="the-client-is-receiving-403-messages"></a>客户端正在接收“HTTP 403 (禁止访问)”消息
 如果客户端应用程序引发“HTTP 403(禁止)”错误，则可能的原因是客户端在发送存储请求时使用了过期的共享访问签名 (SAS)（虽然其他可能的原因包括时钟偏差、无效密钥和空标头）。 如果已过期的 SAS 密钥是原因，则你不会在服务器端存储日志记录日志数据中看到任何条目。 下表显示了存储客户端库生成的客户端日志的示例，它说明了如何出现此问题：
 
-| 源 | 详细程度 | 详细程度 | 客户端请求 ID | 操作文本 |
+| Source | 详细程度 | 详细程度 | 客户端请求 ID | 操作文本 |
 | --- | --- | --- | --- | --- |
 | Microsoft.Azure.Storage |信息 |3 |85d077ab-... |正在按位置模式 PrimaryOnly 使用主位置启动操作。 |
 | Microsoft.Azure.Storage |信息 |3 |85d077ab -… |开始向 <https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> 发出同步请求 |
@@ -507,7 +503,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 存储客户端库生成的以下客户端日志说明了客户端找不到它创建的 Blob 的容器时的问题。 此日志包含以下存储操作的详细信息：
 
-| 请求 ID | Operation |
+| 请求 ID | 操作 |
 | --- | --- |
 | 07b26a5d-... |**DeleteIfExists** 方法，用于删除 Blob 容器。 请注意，此操作包括 **HEAD** 请求以检查该容器是否存在。 |
 | e2d06d78-... |**CreateIfNotExists** 方法，用于创建 Blob 容器。 请注意，此操作包括 **HEAD** 请求，用于检查该容器是否存在。 **HEAD** 返回了 404 消息，但将继续执行。 |
@@ -628,7 +624,7 @@ client.SetServiceProperties(sp);
 ### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>客户端正在接收“HTTP 409 (冲突)”消息
 下表显示了服务器端日志中针对两个客户端操作的摘录：**DeleteIfExists** 后面紧接使用相同 Blob 容器名称的 **CreateIfNotExists**。 每个客户端操作会导致将两个请求发送到服务器，先是 **GetContainerProperties** 请求（用于检查容器是否存在），后跟 **DeleteContainer** 或 **CreateContainer** 请求。
 
-| Timestamp | Operation | 结果 | 容器名称 | 客户端请求 ID |
+| Timestamp | 操作 | 结果 | 容器名称 | 客户端请求 ID |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-... |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-... |
@@ -822,7 +818,7 @@ Microsoft Message Analyzer 中内置的“Web 代理”  跟踪基于 Fiddler；
 * [存储分析日志格式](/rest/api/storageservices/storage-analytics-log-format)
 
 <!--Anchors-->
-[介绍]: #introduction
+[简介]: #introduction
 [本指南的组织方式]: #how-this-guide-is-organized
 
 [监视存储服务]: #monitoring-your-storage-service

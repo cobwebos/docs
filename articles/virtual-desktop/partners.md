@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 07/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a0853266e4fda4393ba49fb740755e6b8bd03cf5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: d78de3d8e7fadc4b6760fef85fb4b850cc25111e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038049"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075745"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虚拟桌面合作伙伴集成
 
@@ -48,7 +48,22 @@ Microsoft Azure 上的 VMware 范围云是一种本机云服务，可让组织�
 
 10ZiG's 全球市场领导，适用于虚拟桌面的瘦和零客户端终结点设备和管理软件的工作方式由其客户的工作方式举例说明。 它的瘦客户端硬件附带了周全构造的权益功能和选项，旨在确保客户根据其需求接收正确的客户端设备。 10ZiG 通过基于 Windows 和 Linux 的客户端对其设备进行定制，使其能够在虚拟桌面（云内部和外部）提供最佳性能。
 
-- [请参阅合作伙伴网站](https://www.10zig.com/)。
+- [请参阅合作伙伴网站](https://www.10zig.com/about/microsoft-wvd)。
+
+## <a name="automai"></a>Automai
+
+![Automai 徽标](./media/partners/automai.png)
+
+你可以在部署生效之前，使用 Automai 的机器人自动化平台在 Windows 虚拟桌面环境中测试关键业务流程。
+
+通过 Automai 的 ScenarioBuilder 工具和基于 GUI 的工作流引擎，IT 团队可以记录真实的最终用户工作流，并自动将其转换为脚本。 然后，Automai 使用运行来自各个桌面的进程的 bot 来模拟模拟中的最终用户活动，并报告结果。 这极大地简化了测试过程，使 IT 管理员甚至可以在最复杂的情况下进行压力测试。
+
+准备好启动后，可以使用为负载测试创建的所有工作流脚本来持续监视生产中的性能。 Automai 的 bot 不仅能实现可用性监视。 Bot 还可以从密钥位置测试最终用户工作流，并实时地获取屏幕截图和收集错误报告。 这将导致比反应性方法更主动地处理 Windows 虚拟桌面应用程序的 bug 修复。
+
+Automai 使你可以将相同的脚本用于性能测试、功能测试、性能监视甚至机器人流程自动化，一切都在一个平台上。
+
+- [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4B76N)。
+- [请参阅合作伙伴网站](https://www.automai.com/wvd-testing-monitoring?hs_preview=EyZXkOWu-30742040580)。
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -112,6 +127,17 @@ Ekran 系统客户端的唯一浮动终结点授权自动支持动态变化的�
 
 - [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yqY8)。
 - [请中转到 "合作伙伴" 页](https://www.ekransystem.com/product/supported-platforms/windows-virtual-desktop-monitoring)。
+
+## <a name="fabulatech"></a>FabulaTech
+
+![FabulaTech 徽标](./media/partners/fabulatech.png)
+
+FabulaTech 与 Windows 虚拟桌面客户端无缝集成。 安装后，当你建立与远程桌面的连接时，FabulaTech 软件将自动开始工作。
+
+当用户登录到虚拟桌面时，FabulaTech 软件会创建虚拟设备。 例如，可以创建虚拟网络摄像机、扫描仪或指纹读取器。 在远程会话中运行的任何应用都可以访问虚拟设备，就像它是一个物理设备一样。 您可以使用系统托盘图标菜单在 Windows 虚拟桌面中配置虚拟设备，这意味着您还可以在瘦客户端上使用此解决方案。 在此基础上，所有通信都通过现有远程桌面连接进行，这意味着防火墙是为你设置的。 一切都可以立即使用。
+
+- [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4B4zO)。
+- [请参阅合作伙伴网站](https://www.fabulatech.com/partners/microsoft-windows-virtual-desktop/)。
 
 ## <a name="flexxible-it"></a>Flexxible
 

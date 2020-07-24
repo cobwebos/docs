@@ -11,12 +11,12 @@ author: lobrien
 manager: cgronlun
 ms.date: 06/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: f162aca8c30d890ecf662a88fb5f2182edb14c9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b8dfa37047113d84470f86cd67c601ebf48f793
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298236"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078087"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>在 Python 的 Azure 机器学习管道中使用自动化 ML
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -97,6 +97,8 @@ if not compute_name in ws.compute_targets :
 
 compute_target = ws.compute_targets[compute_name]
 ```
+
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
 可将数据准备和自动化 ML 步骤之间的中间数据存储在工作区的默认数据存储中，因此我们只需要在 `Workspace` 对象上调用 `get_default_datastore()`。 
 
@@ -268,7 +270,7 @@ prepped_data = Dataset.get_by_name(ws, 'Data_prepared')
 
 比较这两种方法：
 
-| 方法 |  | 
+| 方法 | 优点和缺点 | 
 |-|-|
 |`PipelineOutputTabularDataset`| 提高性能 | 
 || 从 `PipelineData` 自然路由 | 

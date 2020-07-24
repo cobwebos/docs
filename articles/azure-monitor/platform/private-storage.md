@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: da9ec0fc421f0cb2f2a1e6fa65d8c936cfd5a3c7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 78cdf1798d9176c9d3c7b3705a11dccde5e47e67
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515421"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077106"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Azure Monitor 上客户拥有的用于日志引入的存储帐户
 
@@ -54,7 +54,7 @@ Azure Monitor 在[自定义日志](data-sources-custom-logs.md)和 [Azure 日志
 ## <a name="command-line-and-rest-api"></a>命令行和 REST API
 
 ### <a name="command-line"></a>命令行
-若要创建和管理链接存储帐户，请使用[az monitor log analytics 工作区链接存储](/cli/azure/monitor/log-analytics/workspace/linked-storage)。 此命令可以链接和取消链接工作区中的存储帐户，并列出链接的存储帐户。
+若要创建和管理链接存储帐户，请使用[az monitor log analytics 工作区链接存储](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage)。 此命令可以链接和取消链接工作区中的存储帐户，并列出链接的存储帐户。
 
 ### <a name="request-and-cli-values"></a>请求和 CLI 值
 

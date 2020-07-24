@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: bd74caf391fcf1538bf920f41638b23672b47015
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca74e3aea8a847344c75ca7167c46675e1339459
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512216"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077827"
 ---
-# <a name="setting-up-the-azure-importexport-tool"></a>设置 Azure 导入/导出工具
+# <a name="setting-up-the-azure-importexport-tool-v1"></a>设置 Azure 导入/导出工具 v1
 Microsoft Azure 导入/导出工具是可与 Microsoft Azure 导入/导出服务配合使用的驱动器准备和修复工具。 可以使用该工具实现以下功能：  
 
 -   在创建导入作业之前，可以使用此工具将数据复制到要寄送给 Windows Azure 数据中心的硬盘驱动器。  

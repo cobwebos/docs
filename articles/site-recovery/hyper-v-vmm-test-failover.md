@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 0363911574a076b13cb72591fb2564364e096c76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b6055cdf930c93ba096a21ebc0b74c204540a79
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710671"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076068"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>运行将 Hyper-V VM 灾难恢复到辅助站点的演练
 
@@ -102,17 +103,17 @@ ms.locfileid: "84710671"
 * DHCP  ：如果虚拟机使用 DHCP，则应在测试 DHCP 服务器上更新测试 DNS 的 IP 地址。 如果使用的网络类型为 Windows 网络虚拟化，则 VMM 服务器充当 DHCP 服务器。 因此，应在测试性故障转移网络中更新 DNS 的 IP 地址。 在这种情况下，虚拟机将向相关的 DNS 服务器注册其本身。
 * 静态地址  ：如果虚拟机使用静态 IP 地址，则应在测试故障转移网络中更新测试 DNS 服务器的 IP 地址。 可能需要使用测试虚拟机的 IP 地址更新 DNS。 可以使用以下示例脚本实现此目的：
 
-        Param(
-        [string]$Zone,
-        [string]$name,
-        [string]$IP
-        )
-        $Record = Get-DnsServerResourceRecord -ZoneName $zone -Name $name
-        $newrecord = $record.clone()
-        $newrecord.RecordData[0].IPv4Address  =  $IP
-        Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
-
-
+  ```powershell
+  Param(
+  [string]$Zone,
+  [string]$name,
+  [string]$IP
+  )
+  $Record = Get-DnsServerResourceRecord -ZoneName $zone -Name $name
+  $newrecord = $record.clone()
+  $newrecord.RecordData[0].IPv4Address  =  $IP
+  Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
+  ```
 
 ## <a name="run-a-test-failover"></a>运行测试故障转移
 

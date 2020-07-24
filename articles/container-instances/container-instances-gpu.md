@@ -3,12 +3,12 @@ title: 部署已启用 GPU 的容器实例
 description: 了解如何使用 GPU 资源部署 Azure 容器实例，以运行计算密集型容器应用。
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: a25efc90573eb338b81f4a6532a632a140c7ab7d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3ddeb7da2667b774724fe05227cefeec5227101a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259596"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076867"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>部署使用 GPU 资源的容器实例
 
@@ -63,7 +63,7 @@ ms.locfileid: "86259596"
 
 * **CUDA 驱动程序** - 具有 GPU 资源的容器实例使用 NVIDIA CUDA 驱动程序和容器运行时进行预配，因此可以使用专为 CUDA 工作负载开发的容器映像。
 
-  在此阶段，我们支持 CUDA 9.0。 例如，可以对 Docker 文件使用以下基础映像：
+  在此阶段，我们仅支持 CUDA 9.0。 例如，可以对 Docker 文件使用以下基本映像：
   * [nvidia/cuda:9.0-base-ubuntu16.04](https://hub.docker.com/r/nvidia/cuda/)
   * [tensorflow/tensorflow： 1.12.0-py3](https://hub.docker.com/r/tensorflow/tensorflow)
     

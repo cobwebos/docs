@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 06/10/2020
+ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 41f0c44ad65af5fdf2560da3f977a28f135af878
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3220b9d56ff7107245a0a00aac44bb58f87099f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976704"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075960"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>通过 Azure 静态 Web 应用预览配置前端框架和库
 
@@ -28,7 +28,7 @@ Azure 静态 Web 应用要求在前端框架或库的[生成配置文件](github
 
 - **自定义生成命令**：当框架需要不同于或的命令时 `npm run build` `npm run azure:build` ，可以定义[自定义生成命令](github-actions-workflow.md#custom-build-commands)。
 
-| Framework | 应用项目位置 | 自定义生成命令 |
+| 框架 | 应用项目位置 | 自定义生成命令 |
 |--|--|--|
 | [Alpine.js](https://github.com/alpinejs/alpine/) | `/` | 不适用<sup>2</sup> |
 | [Angular](https://angular.io/) | `dist/<APP_NAME>` | `npm run build -- --prod` |
@@ -55,7 +55,7 @@ Azure 静态 Web 应用要求在前端框架或库的[生成配置文件](github
 | [Svelte](https://svelte.dev/) | `public` | 不适用 |
 | [Three.js](https://threejs.org/) | `/` | 不适用 |
 | [TypeScript](https://www.typescriptlang.org/) | `dist` | 不适用 |
-| [Vue](http://vuejs.com/) | `dist` | 不适用 |
+| [Vue.js](https://vuejs.org/) | `dist` | 不适用 |
 
 <sup>1</sup>上面的表并不是与 Azure 静态 Web 应用配合使用的框架和库的详尽列表。
 
