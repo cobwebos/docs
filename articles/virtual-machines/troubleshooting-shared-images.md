@@ -9,13 +9,14 @@ ms.workload: infrastructure
 ms.date: 04/17/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 8285bc216b5b06a33d481dbca011e44e77df25de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6478438be34ed19897dcde1affbff557093e01fc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678777"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009826"
 ---
-# <a name="troubleshooting-shared-image-galleries"></a>排查共享映像库问题
+# <a name="troubleshooting-shared-image-galleries-in-azure"></a>排查 Azure 中的共享映像库问题
 
 
 [!INCLUDE [virtual-machines-common-shared-image-troubleshooting](../../includes/virtual-machines-common-shared-image-troubleshooting.md)]

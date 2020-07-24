@@ -3,11 +3,12 @@ title: IoT Edge Faq 上的实时视频分析-Azure
 description: 本主题提供有关 IoT Edge 常见问题的实时视频分析的答案。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 0a6c1c0f26116227454fa0968264644ea7a43178
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 705c74b1ba6d3a28911185b82a558099e87dc18d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84260730"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011509"
 ---
 # <a name="frequently-asked-questions-faqs"></a>常见问题 (FAQ)
 
@@ -19,21 +20,21 @@ ms.locfileid: "84260730"
 
 |变量   |说明|
 |---|---|
-|[System.object](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/linq/system-datetime-methods)|表示时间上的一刻，通常以日期和当天的时间表示。|
+|[System.DateTime](/dotnet/framework/data/adonet/sql/linq/system-datetime-methods)|表示时间上的一刻，通常以日期和当天的时间表示。|
 |GraphTopologyName   |表示 media graph 拓扑，它包含图形的蓝图。|
 |GraphInstanceName|  表示 media graph 实例，保留参数值并引用拓扑。|
 
 ## <a name="configuration-and-deployment"></a>配置和部署
 
 是否可以将媒体边缘模块部署到 Windows 10 设备？
-    * 是的。 请参阅[Windows 10 上 Linux 容器](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/linux-containers)上的文章。
+    * 是的。 请参阅[Windows 10 上 Linux 容器](/virtualization/windowscontainers/deploy-containers/linux-containers)上的文章。
 
 ## <a name="capture-from-ip-camera-and-rtsp-settings"></a>从 IP 照相机和 RTSP 设置捕获
 
 * 是否需要在设备上使用特殊的 SDK 来发送视频流？
-    * 不能。 IoT Edge 上的实时视频分析支持使用 RTSP 视频流式处理协议（在大多数 IP 摄像机上支持）捕获媒体。
+    * 否。 IoT Edge 上的实时视频分析支持使用 RTSP 视频流式处理协议（在大多数 IP 摄像机上支持）捕获媒体。
 * 是否可以使用 RTMP 或平滑（如媒体服务实时事件）将媒体推送到 IoT Edge 上的实时视频分析？
-    * 不能。 LVA 仅支持通过 IP 照相机捕获视频。
+    * 否。 LVA 仅支持通过 IP 照相机捕获视频。
     * 支持通过 TCP/HTTP 的 RTSP 流式处理的任何照相机都应正常工作。 
 * 是否可以在图形实例上重置或更新 RTSP 源 URL？
     * 是，当图形实例处于非活动状态时。  
@@ -69,9 +70,9 @@ ms.locfileid: "84260730"
 ## <a name="monitoring-and-metrics"></a>监视和度量值
 
 * 能否使用事件网格在边缘上监视媒体图形？
-    * 不能。 当前不支持事件网格。
+    * 否。 当前不支持事件网格。
 * 是否可以使用 Azure Monitor 查看云中或边缘的媒体图形的运行状况、指标和性能？
-    * 不能。
+    * 否。
 * 是否有任何工具可以更轻松地监视 Media Services IoT Edge 模块？
     * Visual Studio Code 支持 "Azure IoT Tools" 扩展，使你能够轻松监视 LVAEdge 模块终结点。 可以使用此工具快速开始监视 "events" 的 IoT 中心内置终结点，并查看从边缘设备路由到云的推理消息。 
 

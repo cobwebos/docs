@@ -11,18 +11,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/10/2020
 ms.author: vikancha
-ms.openlocfilehash: cbba0401815f6754939cdaeb6e7343cf085dff68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc7bfecbcb387fa0da0809a9a2287b243e861c49
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736962"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010863"
 ---
 # <a name="amd-gpu-driver-extension-for-windows"></a>适用于 Windows 的 AMD GPU 驱动程序扩展
 
-本文概述了用于在 Windows [NVv4 系列](https://docs.microsoft.com/azure/virtual-machines/nvv4-series) VM 上部署 AMD GPU 驱动程序的 VM 扩展。 使用此扩展安装 AMD 驱动程序即表示你接受并同意 [AMD 最终用户许可协议](https://amd.com/radeonsoftwarems)的条款。 在安装过程中，VM 可能会重新启动以完成驱动程序安装。
+本文概述了用于在 Windows [NVv4 系列](../nvv4-series.md) VM 上部署 AMD GPU 驱动程序的 VM 扩展。 使用此扩展安装 AMD 驱动程序即表示你接受并同意 [AMD 最终用户许可协议](https://amd.com/radeonsoftwarems)的条款。 在安装过程中，VM 可能会重新启动以完成驱动程序安装。
 
-[此处](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-amd-driver-setup)提供了有关手动安装驱动程序和当前支持的版本的说明。
+[此处](../windows/n-series-amd-driver-setup.md)提供了有关手动安装驱动程序和当前支持的版本的说明。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -81,7 +81,7 @@ ms.locfileid: "84736962"
 
 可使用 Azure 资源管理器模板部署 Azure VM 扩展。 部署需要部署后配置的一个或多个虚拟机时，模板是理想选择。
 
-虚拟机扩展的 JSON 配置可以嵌套在虚拟机资源内，或放置在资源管理器 JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/resource-manager-template-child-resource.md)。 
+虚拟机扩展的 JSON 配置可以嵌套在虚拟机资源内，或放置在资源管理器 JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/templates/child-resource-name-type.md)。 
 
 以下示例假定扩展嵌套在虚拟机资源内。 嵌套扩展资源时，JSON 放置在虚拟机的 `"resources": []` 对象中。
 
@@ -172,4 +172,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 ## <a name="next-steps"></a>后续步骤
 有关扩展的详细信息，请参阅[适用于 Windows 的虚拟机扩展和功能](features-windows.md)。
 
-有关 N 系列 VM 的详细信息，请参阅 [GPU 优化虚拟机大小](../windows/sizes-gpu.md)。
+有关 N 系列 VM 的详细信息，请参阅 [GPU 优化虚拟机大小](../sizes-gpu.md)。

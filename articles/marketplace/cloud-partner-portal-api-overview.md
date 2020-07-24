@@ -3,19 +3,21 @@ title: 云合作伙伴门户 API 参考-Microsoft 商用 marketplace
 description: 市场 API 操作的说明、要使用的先决条件和列表。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: 56594b41bd0b771d0cb9a2f49611d9b6c6d393db
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: reference
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 51c8b91ccf85087f965d632dee9296076aba0d86
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113575"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011952"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>云合作伙伴门户 API 参考
 
 > [!NOTE]
-> 云合作伙伴门户 API 已与合作伙伴中心集成，在你的产品/服务迁移到合作伙伴中心后，它们仍可运行。 集成造成了少量的更改。 请查看本文档中列出的对[CPP api 所做的更改](#changes-to-cpp-apis-after-the-migration-to-partner-center)，以确保你的代码在迁移到合作伙伴中心后仍能正常工作。
+> 云合作伙伴门户 Api 与集成，并将在合作伙伴中心继续工作。 转换引入了少量更改。 请查看本文档中列出的对[CPP api 所做的更改](#changes-to-cpp-apis-after-the-migration-to-partner-center)，以确保你的代码在转换到合作伙伴中心后继续工作。 CPP Api 仅适用于过渡到合作伙伴中心之前已集成的现有产品;新产品应使用合作伙伴中心提交 Api。
 
 云合作伙伴门户 REST API允许以编程方式检索和操作工作负载、产品/服务和发布者配置文件。 API 使用基于角色的访问控制 (RBAC) 在处理时强制实施正确的权限。
 

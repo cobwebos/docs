@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/19/2020
+ms.date: 07/20/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 4906ea7c3ed3486a4ce089f51916fb8322761fe9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88856a16dbc197be29ddd88311063df4473a1e40
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559546"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007871"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure Monitor 日志管理使用情况和成本    
 
@@ -100,12 +100,18 @@ Azure 在 [Azure 成本管理和计费](https://docs.microsoft.com/azure/cost-ma
 
 在 2018 年 4 月 2 日之前拥有 Log Analytics 工作区或 Application Insights 资源的订阅，或与 2019 年 2 月 1 日之前开始的企业协议链接的订阅，将继续有权使用旧定价层：免费定价层、独立定价层（每 GB）和按节点定价层 (OMS)。    免费定价层中的工作区将每日数据引入限制为 500 MB（[Azure 安全中心](https://docs.microsoft.com/azure/security-center/)收集的安全数据类型除外），数据保留期限制为 7 天。 免费定价层仅用于评估目的。 独立定价层或按节点定价层中的工作区具有用户可配置的 30 至 730 天的保留期。
 
-按节点定价层按小时粒度对每个受监视的 VM（节点）收费。 对于每个受监视的节点，每天为工作区分配 500 MB 的不计费数据。 此分配在工作区级别聚合。 超出每日数据分配聚合的引入数据在数据超额时按 GB 计费。 请注意，如果工作区位于“按节点”定价层中，则在账单上，对于 Log Analytics 使用情况，该服务将是 Insight and Analytics。 
+独立定价层上的使用情况由引入数据量计费。 它在**Log Analytics**服务中报告，计量器名为 "数据已分析"。 
+
+按节点定价层按小时粒度对每个受监视的 VM（节点）收费。 对于每个受监视的节点，每天为工作区分配 500 MB 的不计费数据。 此分配在工作区级别聚合。 超出每日数据分配聚合的引入数据在数据超额时按 GB 计费。 请注意，如果工作区位于“按节点”定价层中，则在账单上，对于 Log Analytics 使用情况，该服务将是 Insight and Analytics。 使用三计量报告：
+
+1. 节点：这是按 node * 个月监视节点数（Vm）的使用情况。
+2. 每个节点的数据超额数：这是超出聚合数据分配的引入的数据量（GB）。
+3. 每个节点包含的数据：这是聚合数据分配所涵盖的引入数据量。 当工作区在所有定价层中时，也可以使用此计数来显示 Azure 安全中心涵盖的数据量。
 
 > [!TIP]
 > 如果你的工作区有权访问“按节点”定价层，但你想知道在即用即付层中成本是否更低，则可以 [使用以下查询](#evaluating-the-legacy-per-node-pricing-tier)轻松获取建议。 
 
-2016 年 4 月之前创建的工作区还可以访问原始“标准”定价层和“高级”定价层，它们分别有 30 天和 365 天的固定数据保留期。  无法在“标准”定价层或“高级”定价层中创建新工作区，并且如果工作区移出了这些层，则无法移回。 
+2016 年 4 月之前创建的工作区还可以访问原始“标准”定价层和“高级”定价层，它们分别有 30 天和 365 天的固定数据保留期。  无法在“标准”定价层或“高级”定价层中创建新工作区，并且如果工作区移出了这些层，则无法移回。  这些旧式层的数据引入计量称为 "数据分析"。
 
 在使用旧 Log Analytics 层和 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/)的使用情况计费方式之间还有一些行为。 
 
@@ -132,15 +138,15 @@ Azure 在 [Azure 成本管理和计费](https://docs.microsoft.com/azure/cost-ma
 
     ![更改工作区数据保留设置](media/manage-cost-storage/manage-cost-change-retention-01.png)
 
-如果保留期减少，则在删除最旧的数据之前，会有几天的宽限期。 
-    
-还可以使用 `retentionInDays` 参数[通过 Azure 资源管理器](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace)设置保留期。 此外，如果将数据保留期设置为 30 天，则可以使用 `immediatePurgeDataOn30Days` 参数触发立即清除旧数据，这对于符合性相关的场景可能很有用。 仅通过 Azure 资源管理器公开此功能。 
+如果保留时间降低，则在删除早于新保留设置的数据之前，会有几天的宽限期。 
 
+还可以使用 `retentionInDays` 参数[通过 Azure 资源管理器](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace)设置保留期。 如果将数据保留设置为30天，则可以使用 `immediatePurgeDataOn30Days` 参数（消除几天的宽限期）触发立即清除旧数据。 这对于符合性相关的方案非常有用，在这种情况下，需要立即删除数据。 这种立即清除功能只能通过 Azure 资源管理器公开。 
+
+保留时间为30天的工作区实际上可能保留了31天的数据。 如果要求仅保留30天的数据，请使用 Azure 资源管理器将保留期设置为30天，并使用 `immediatePurgeDataOn30Days` 参数。  
 
 默认情况下，两种数据类型（`Usage` 和 `AzureActivity`）将保留至少 90 天，并且对于这 90 天的保留期，不收取任何费用。 如果工作区的保留期超过 90 天，则这些数据类型的保留期也将增加。  这些数据类型也不收取数据引入费用。 
 
 默认情况下，基于工作区的 Application Insights 资源（`AppAvailabilityResults`、`AppBrowserTimings`、`AppDependencies`、`AppExceptions`、`AppEvents`、`AppMetrics`、`AppPageViews`、`AppPerformanceCounters`、`AppRequests`、`AppSystemEvents` 和 `AppTraces`）中的数据类型也保留 90 天，并且对于这 90 天的保留期，不收取任何费用。 可以使用按数据类型保留功能调整其保留期。 
-
 
 ### <a name="retention-by-data-type"></a>按数据类型保留
 
@@ -189,14 +195,17 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 ## <a name="manage-your-maximum-daily-data-volume"></a>管理每日最大数据量
 
-可以配置工作区的每日上限并限制每日引入量，但请谨慎设置，因为目标是避免达到每日限制。  否则，会丢失该天剩余时间的数据，这可能会影响其功能依赖于工作区中提供的最新数据的其他 Azure 服务和解决方案。  因此，需要具有在支持 IT 服务的资源的运行状况受到影响时监视和接收警报的能力。  每日上限旨在用作一种调控受管理资源数据量意外增长并使其保留在限制范围内，或者限制工作区产生计划外费用的方式。  
+可以配置工作区的每日上限并限制每日引入量，但请谨慎设置，因为目标是避免达到每日限制。  否则，会丢失该天剩余时间的数据，这可能会影响其功能依赖于工作区中提供的最新数据的其他 Azure 服务和解决方案。  因此，需要具有在支持 IT 服务的资源的运行状况受到影响时监视和接收警报的能力。  每日上限旨在用作一种方法，用于管理来自托管资源的**意外增加**的数据量，并保持在限制范围内，或者当你希望限制工作区的计划外费用时使用。 不适合设置每日上限，以便在工作区中每天都能满足这一要求。
 
 每个工作区在一天中的不同时间应用每日上限。 "重置时间" 显示在 "**每日上限**" 页中（见下文）。 无法配置此 reset 小时。 
 
-达到每日限制后，在当天的剩余时间会停止收集应计费数据类型。 （应用每日上限所固有的延迟意味着不会精确地应用指定的每日上限级别。）页面顶部会显示一个警告横幅，其中显示了所选 Log Analytics 工作区，并将操作事件发送到 " **LogManagement** " 类别下的 "*操作*" 表。 在“每日限制设置时间”定义的重置时间过后，数据收集将会恢复。 我们建议基于此操作事件定义一个警报规则，并将其配置为在达到每日数据限制时发出通知。 
+达到每日限制后，在当天的剩余时间会停止收集应计费数据类型。 应用每日上限所固有的延迟意味着不会精确地在指定的每日上限级别应用 cap。 选定 Log Analytics 工作区的页面顶部会显示警告横幅，同时会将一个操作事件发送到“LogManagement”类别下的“操作”表。****** 在“每日限制设置时间”定义的重置时间过后，数据收集将会恢复。 我们建议基于此操作事件定义一个警报规则，并将其配置为在达到每日数据限制时发出通知。 
+
+> [!NOTE]
+> 每日上限不能正好按指定的 cap 级别停止数据收集，并且需要某些多余的数据，尤其是在工作区接收大量数据的情况下。  
 
 > [!WARNING]
-> 除了在2017年6月19日之前安装了 Azure 安全中心的工作区之外，每日上限不会停止 Azure Sentinel 或 Azure 安全中心的数据收集。 
+> 除了在2017年6月19日之前安装了 Azure 安全中心的工作区之外，每日上限不会停止从 Azure 前哨或 Azure 安全中心收集数据。 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>确定要定义的每日数据限制
 

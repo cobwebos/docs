@@ -4,19 +4,21 @@ description: 用于创建新的或更新现有产品/服务的 API。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 06/19/2020
-ms.openlocfilehash: 5104d11c1eaf9641f1d631db97dcca036308cd45
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 249eb982ee701ea0a442121c02e55ad98e1f6fb9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115717"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011985"
 ---
 <a name="create-or-modify-an-offer"></a>创建或修改产品/服务
 =========================
 
 > [!NOTE]
-> 云合作伙伴门户 API 已与合作伙伴中心集成，在你的产品/服务迁移到合作伙伴中心后，它们仍可运行。 集成造成了少量的更改。 查看[云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md)中列出的更改，以确保你的代码在迁移到合作伙伴中心后仍能正常工作。
+> 云合作伙伴门户 Api 与集成，并将在合作伙伴中心继续工作。 转换引入了少量更改。 查看[云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md)中列出的更改，确保你的代码在转换到合作伙伴中心后继续工作。 CPP Api 仅适用于过渡到合作伙伴中心之前已集成的现有产品;新产品应使用合作伙伴中心提交 Api。
 
 此调用更新发布者命名空间中的特定产品/服务，或创建新的产品/服务。
 
@@ -26,14 +28,14 @@ ms.locfileid: "86115717"
 <a name="uri-parameters"></a>URI 参数
 --------------
 
-|  **名称**         |  **说明**                      |  **Data type**  |
+|  **名称**         |  **描述**                      |  **Data type**  |
 |  --------         |  ----------------                     |  -------------  |
-| publisherId       |  发布者标识符，例如 `contoso` |   String |
-| offerId           |  产品/服务标识符                     |   String        |
+| publisherId       |  发布者标识符，例如 `contoso` |   字符串 |
+| offerId           |  产品/服务标识符                     |   字符串        |
 | api-version       |  API 最新版本            |   日期           |
 |  |  |  |
 
-<a name="header"></a>Header
+<a name="header"></a>标头
 ------
 
 |  **名称**        |  **值**               |
@@ -269,7 +271,7 @@ ms.locfileid: "86115717"
 
 ### <a name="response-status-codes"></a>响应状态代码
 
-| **代码**  |  **说明**                                                                            |
+| **代码**  |  **描述**                                                                            |
 | --------  |  ---------------                                                                            |
 |  200      | `OK`. 请求已成功处理，并且已成功修改产品/服务。           |
 |  201      | `Created`. 请求已成功处理，并且已成功创建产品/服务。   |
@@ -283,4 +285,4 @@ ms.locfileid: "86115717"
 <a name="uploading-artifacts"></a>上传项目
 -------------------
 
-应该通过将项目（例如图像和徽标）上传到 Web 上的可访问位置来共享项目，然后将每个项目作为 URI 包含在 PUT 请求中，如上例所示。 系统将检测到 Azure 市场存储中不存在这些文件，并将这些文件下载到存储中。  因此，你将发现以后的 GET 请求将返回这些文件的 Azure 市场服务 URL。
+应该通过将项目（例如图像和徽标）上传到 Web 上的可访问位置来共享项目，然后将每个项目作为 URI 包含在 PUT 请求中，如上例所示。 系统将检测到这些文件不存在于 Azure Marketplace 存储中，并将这些文件下载到存储中。  因此，你会发现将来的 GET 请求将返回这些文件的 Azure Marketplace 服务 URL。

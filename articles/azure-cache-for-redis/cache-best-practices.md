@@ -6,11 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 6a1dddfbcdbf2bd49586238872db15f1da5d7ce1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ed0009bce18e2b0970b425c31d2f38cef387187
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84457297"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008313"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Azure Redis 缓存的最佳做法 
 遵循这些最佳做法可帮助最大化性能并在 Azure 中经济、高效地利用 Azure Redis 缓存实例。
@@ -82,10 +83,10 @@ ms.locfileid: "84457297"
  
 ### <a name="redis-benchmark-examples"></a>Redis 基准示例
 **测试前的设置**：使用下列延迟和吞吐量测试命令所需的数据准备缓存实例。
-> redis-benchmark.exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t-t 1024 
+> redis--yourcache.redis.cache.windows.net-a yourAccesskey-1024 t 
 
 **测试延迟**：使用 1k 有效负载测试 GET 请求。
-> redis-benchmark.exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t d 1024-P 50-c 4
+> redis-yourcache.redis.cache.windows.net-a yourAccesskey-t d 1024-P 50-c 4
 
 **测试吞吐量：** 管道化的 GET 请求，其有效负载为 1k。
-> redis-benchmark.exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-HELP 1000000-d 1024-P 50-c 50
+> redis-yourcache.redis.cache.windows.net-a yourAccesskey-t GET-n 1000000-d 1024-P 50-c 50

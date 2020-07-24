@@ -3,12 +3,12 @@ title: IoT Edg 术语实时视频分析-Azure
 description: 本文概述了有关 IoT Edge 术语的实时视频分析。
 ms.topic: conceptual
 ms.date: 05/30/2020
-ms.openlocfilehash: 58f3d7b54fd0bd19e6bc0a057ef053bb2c74cd97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d4eff506b2a6f51b9803f827379b9ba0c2b2ff6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84816520"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011492"
 ---
 # <a name="terminology"></a>术语
 
@@ -26,7 +26,7 @@ IoT Edge 上的实时视频分析可以创建资产和/或向现有资产添加�
 
 ## <a name="streaming"></a>流式处理
 
-如果你从 Netflix、YouTube 等服务观看了移动设备上的视频，则已体验到流式处理视频。 播放结束后立即开始播放（如果你有足够的带宽），可以沿视频时间线来回搜索。 使用流式处理时，其思路是只传送正在观看的视频部分，并让查看器在数据仍从服务器传输到播放客户端时开始播放视频。 在 Azure 媒体服务的环境中，[流式处理](https://en.wikipedia.org/wiki/Streaming_media)是指将媒体从[Azure 媒体服务](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview)传送到流式处理客户端的过程（例如 Azure Media Player）。 可以使用 Azure 媒体服务将视频流式传输到使用行业标准的、基于 HTTP 的媒体流式处理协议[（例如 HTTP Live Streaming （HLS）](https://developer.apple.com/streaming/)和[MPEG 破折号](https://dashif.org/about/)）的客户端。 Azure Media Player 和 web 播放器（如[JW Player](https://www.jwplayer.com/)、 [hls.js](https://github.com/video-dev/hls.js/)、 [VideoJS](https://videojs.com/)、 [Google Shaka Player](https://github.com/google/shaka-player)）支持 HLS，或者可以使用 Android 的[Exoplayer](https://github.com/google/ExoPlayer)和 iOS [AV 基础](https://developer.apple.com/av-foundation/)在移动应用中以本机方式呈现。 Azure Media Player 也支持 MPEG-短划线，请[在此页上查找客户端列表](https://dashif.org/clients/)。 
+如果你从 Netflix、YouTube 等服务观看了移动设备上的视频，则已体验到流式处理视频。 播放结束后立即开始播放（如果你有足够的带宽），可以沿视频时间线来回搜索。 使用流式处理时，其思路是只传送正在观看的视频部分，并让查看器在数据仍从服务器传输到播放客户端时开始播放视频。 在 Azure 媒体服务的环境中，[流式处理](https://en.wikipedia.org/wiki/Streaming_media)是指将媒体从[Azure 媒体服务](../azure-media-player/azure-media-player-overview.md)传送到流式处理客户端的过程（例如 Azure Media Player）。 可以使用 Azure 媒体服务将视频流式传输到使用行业标准的、基于 HTTP 的媒体流式处理协议[（例如 HTTP Live Streaming （HLS）](https://developer.apple.com/streaming/)和[MPEG 破折号](https://dashif.org/about/)）的客户端。 Azure Media Player 和 web 播放器（如[JW Player](https://www.jwplayer.com/)、 [hls.js](https://github.com/video-dev/hls.js/)、 [VideoJS](https://videojs.com/)、 [Google Shaka Player](https://github.com/google/shaka-player)）支持 HLS，或者可以使用 Android 的[Exoplayer](https://github.com/google/ExoPlayer)和 iOS [AV 基础](https://developer.apple.com/av-foundation/)在移动应用中以本机方式呈现。 Azure Media Player 也支持 MPEG-短划线，请[在此页上查找客户端列表](https://dashif.org/clients/)。 
 
 通过使用[media graph](#media-graph)s 将视频录制到 Azure 媒体服务中的资产，可以使用媒体服务流式处理功能在 HLS 和短线中传送视频流。 可在[视频播放](video-playback-concept.md)文章中了解更多相关信息。
 

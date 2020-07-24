@@ -3,12 +3,12 @@ title: 配置自定义 Linux 容器
 description: 了解如何在 Azure App Service 中配置自定义 Linux 容器。 本文介绍最常见的配置任务。
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 57281bedb34078dff6878d69be1bfe7f7300f545
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df766c289ac9ece4c1dc1fbdc65d49ae1306a592
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84905793"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008585"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>为 Azure App Service 配置自定义 Linux 容器
 
@@ -18,7 +18,7 @@ ms.locfileid: "84905793"
 
 ## <a name="configure-port-number"></a>配置端口号
 
-自定义映像中的 web 服务器可能使用80以外的端口。 通过使用应用程序设置，通知 Azure 有关自定义容器使用的端口 `WEBSITES_PORT` 。 [本教程中的 Python 示例](https://github.com/Azure-Samples/docker-django-webapp-linux)的 GitHub 页显示，需将 `WEBSITES_PORT` 设置为 _8000_。 可以通过 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 在 Cloud Shell 中运行命令来设置它。 例如：
+默认情况下，应用服务假定自定义容器在端口80上进行侦听。 自定义映像中的 web 服务器可能使用80以外的端口。 通过使用应用程序设置，通知 Azure 有关自定义容器使用的端口 `WEBSITES_PORT` 。 [本教程中的 Python 示例](https://github.com/Azure-Samples/docker-django-webapp-linux)的 GitHub 页显示，需将 `WEBSITES_PORT` 设置为 _8000_。 可以通过 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 在 Cloud Shell 中运行命令来设置它。 例如：
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_PORT=8000
@@ -97,7 +97,7 @@ SSH 实现容器和客户端之间的安全通信。 为了使自定义容器支
 ## <a name="configure-multi-container-apps"></a>配置多容器应用
 
 - [在 Docker Compose 中使用持久性存储](#use-persistent-storage-in-docker-compose)
-- [预览限制](#preview-limitations)
+- [预览版限制](#preview-limitations)
 - [Docker Compose 选项](#docker-compose-options)
 
 ### <a name="use-persistent-storage-in-docker-compose"></a>在 Docker Compose 中使用持久性存储
@@ -138,7 +138,7 @@ wordpress:
 
 - 命令
 - entrypoint
-- 环境
+- environment
 - image
 - ports
 - restart

@@ -1,20 +1,20 @@
 ---
-title: 在 Microsoft 商业市场中创建 Power BI 应用产品/服务
+title: 在 Microsoft AppSource 中创建 Power BI 应用服务
 description: 了解如何创建 Power BI 应用产品/服务并发布到 Microsoft AppSource。
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: 8a4ff5c5bce7774f805130f68d7418a73cb751f8
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/22/2020
+ms.openlocfilehash: fa8c08f5d6f49b12306ea1f4bb82c07747622f48
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85980335"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011934"
 ---
-# <a name="create-a-power-bi-app-for-microsoft-appsource"></a>为 Microsoft AppSource 创建 Power BI 应用
+# <a name="create-a-power-bi-app-offer"></a>创建 Power BI 应用服务
 
 本文介绍如何创建 Power BI 应用程序产品/服务并发布到 Microsoft [AppSource](https://appsource.microsoft.com/)。
 
@@ -142,7 +142,7 @@ ms.locfileid: "85980335"
 6. 使用条款
 7. 隐私策略
 8. 产品名称
-9. 总结
+9. 摘要
 10. 说明
 11. 屏幕截图/视频
 

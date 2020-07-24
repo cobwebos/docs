@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/04/2020
-ms.openlocfilehash: 81040adf6cfbb8820ec7f306c7d614830e3a2613
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1808623821d71169ec35beab1d33d4eb2c32c189
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82791097"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008398"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>使用 Azure Functions 创建和运行自定义可用性测试
 
@@ -23,7 +23,7 @@ ms.locfileid: "82791097"
 
 - 如果有 Application Insights 资源：
     - 默认情况下，Azure Functions 会创建 Application Insights 资源，但如果你想要使用已创建的资源之一，则需在创建过程中指定。
-    - 使用以下选项，按照有关如何[创建 Azure Functions 资源和计时器触发的函数](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function)的说明进行操作（在清理前停止）。
+    - 使用以下选项，按照有关如何[创建 Azure Functions 资源和计时器触发的函数](../../azure-functions/functions-create-scheduled-function.md)的说明进行操作（在清理前停止）。
         -  选择顶部附近的“监视”选项卡。
 
             ![ 使用自己的 App Insights 资源创建 Azure Functions 应用](media/availability-azure-functions/create-function-app.png)
@@ -35,7 +35,7 @@ ms.locfileid: "82791097"
         - 选择“查看 + 创建”
 - 如果尚未为计时器触发的函数创建 Application Insights 资源：
     - 默认情况下，在创建 Azure Functions 应用程序时，它将为你创建一个 Application Insights 资源。
-    - 按照有关如何[创建 Azure Functions 资源和计时器触发的函数](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function)的说明进行操作（在清理前停止）。
+    - 按照有关如何[创建 Azure Functions 资源和计时器触发的函数](../../azure-functions/functions-create-scheduled-function.md)的说明进行操作（在清理前停止）。
 
 ## <a name="sample-code"></a>代码示例
 
@@ -45,7 +45,7 @@ ms.locfileid: "82791097"
 >![Azure 门户中 Azure 函数的 run.csx](media/availability-azure-functions/runcsx.png)
 
 > [!NOTE]
-> 对于“终结点地址”，你将使用 `EndpointAddress= https://dc.services.visualstudio.com/v2/track`。 除非你的资源位于 Azure 政府版或 Azure 中国等区域，否则请参阅此文，了解如何[覆盖默认终结点](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification)，并选择适用于你所在区域的相应遥测通道终结点。
+> 对于“终结点地址”，你将使用 `EndpointAddress= https://dc.services.visualstudio.com/v2/track`。 除非你的资源位于 Azure 政府版或 Azure 中国等区域，否则请参阅此文，了解如何[覆盖默认终结点](./custom-endpoints.md#regions-that-require-endpoint-modification)，并选择适用于你所在区域的相应遥测通道终结点。
 
 ```C#
 #load "runAvailabilityTest.csx"

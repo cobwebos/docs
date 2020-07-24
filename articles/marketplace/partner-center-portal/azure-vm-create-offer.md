@@ -1,18 +1,18 @@
 ---
 title: 在 Azure 市场创建 Azure 虚拟机产品/服务
-description: 了解如何在 Azure 市场上使用所需 SKU 创建虚拟机产品/服务。
+description: 了解如何使用所需的计划在 Azure Marketplace 上创建虚拟机产品/服务。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: emuench
 ms.author: mingshen
-ms.date: 06/17/2020
-ms.openlocfilehash: fe53de2c81f9e9df5fd9270951f943b0b3505f1e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/17/2020
+ms.openlocfilehash: 6df1620f2d1097ac23e5dfa3903fefc74d13fa65
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110968"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012019"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure 市场创建 Azure 虚拟机产品/服务
 
@@ -118,7 +118,7 @@ ms.locfileid: "86110968"
 
 在 "**属性**" 页上，定义用于对 Azure Marketplace 上的产品/服务、应用程序版本以及支持产品/服务的法律合同进行分组的类别。
 
-### <a name="category"></a>类别
+### <a name="category"></a>Category
 
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
@@ -286,7 +286,7 @@ ms.locfileid: "86110968"
 
 ## <a name="plan-overview"></a>计划概述
 
-在合作伙伴中心内，可以在同一产品/服务中提供各种计划选项。 这些计划以前称为 SKU。 产品/服务需要至少一个计划，该计划可能因盈利受众、Azure 区域、功能或 VM 映像而不同。
+在合作伙伴中心内，可以在同一产品/服务中提供各种计划选项。 产品/服务需要至少一个计划（以前称为 SKU），这可能会因盈利受众、Azure 区域、功能或 VM 映像而异。
 
 创建计划后，选择“计划概述”选项卡以显示：
 
@@ -413,7 +413,6 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 >[!Note]
 >通过云解决方案提供商计划（CSP）的分销商建立的 Azure 订阅不支持专用产品/服务。
 
-
 #### <a name="hide-a-plan"></a>隐藏计划
 
 如果虚拟机仅在通过另一个解决方案模板或托管应用程序引用时才被间接使用，请选中此复选框以发布虚拟机，但向可能直接搜索或浏览的客户隐藏它。
@@ -516,10 +515,10 @@ Microsoft 将向你发送电子邮件，让你知道何时有预览版产品/服
 
 此页还包含有助于处理产品/服务的链接（具体取决于其状态）：
 
-- 如果产品/服务是草稿：[删除草稿提议](update-existing-offer.md#delete-a-draft-offer)）
-- 如果产品/服务有效：[停止销售产品/服务](update-existing-offer.md#stop-selling-an-offer-or-plan)）
-- 如果产品/服务为[预览版：上线](publishing-status.md#publisher-approval)）
-- 如果尚未完成发布服务器注销：[取消发布](update-existing-offer.md#cancel-publishing)）
+- 如果产品/服务是草稿：[删除产品/服务草稿](update-existing-offer.md#delete-a-draft-offer)
+- 如果产品/服务已上线：[停止销售产品/服务](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- 如果产品/服务处于预览状态：[上线](publishing-status.md#publisher-approval)
+- 如果尚未完成发布者注销：[取消发布](update-existing-offer.md#cancel-publishing)
 
 ## <a name="marketplace-examples"></a>市场示例
 

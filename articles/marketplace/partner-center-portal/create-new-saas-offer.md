@@ -1,18 +1,18 @@
 ---
-title: 创建面向 Microsoft 商业市场的新 SaaS 产品/服务
-description: 如何使用 Microsoft 合作伙伴中心的 Microsoft 商业市场计划创建新的软件即服务 (SaaS) 产品/服务，以在 Microsoft AppSource、Azure 市场或通过云解决方案提供商 (CSP) 计划列出或销售。
+title: 创建 SaaS 产品/服务、Azure Marketplace 和 Microsoft AppSource
+description: 如何创建 "软件即服务" （SaaS）产品/服务（SaaS）产品/服务，以便使用 Microsoft 合作伙伴中心的 Microsoft 商业市场计划在 Microsoft AppSource、Azure Marketplace 或通过云解决方案提供商（CSP）计划进行列出或销售。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: a233f3594ace74a6bfeca90ffccfbcb233e5d890
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/22/2020
+ms.openlocfilehash: 2c5394dce503a6fa00e2a3e6ff73a683d3d2e76f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121873"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012087"
 ---
-# <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>在商业市场中创建新的 SaaS 产品/服务
+# <a name="create-a-saas-offer"></a>创建 SaaS 产品/服务
 
 若要开始在商业市场中创建软件即服务 (SaaS) 产品/服务，请确保先[创建合作伙伴中心帐户](./create-account.md)，然后打开[商业市场仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)，并选择“概述”选项卡。
 
@@ -96,7 +96,7 @@ SaaS 产品/服务支持根据固定费用、每位用户按月或按年计费�
 - 在此示例中，Microsoft 向客户收取 $100.00 美元的软件许可证费用，并向发布者支付 $80.00 美元。
 
 > [!NOTE]
-> **降低 Marketplace 服务费用**–对于在商业市场上发布的某些 SaaS 产品/服务，microsoft 会将其 Marketplace 服务费用从20% 降低到10% （如 Microsoft 发布者协议中所述）。 对于你的产品/服务，你的产品/服务必须已由 Microsoft 指定为 "IP 共同销售就绪" 或 "IP 共同销售"。 在每个日历月结束之前，资格必须至少满足五（5）个工作日，才能获得该月降低的 Marketplace 服务费用。 降低的 Marketplace 服务费用不适用于 Vm、托管应用或通过商业市场提供的任何其他产品。
+> **降低 Marketplace 服务费用**–对于在商业市场上发布的某些 SaaS 产品/服务，microsoft 会将其 Marketplace 服务费用从20% 降低到10% （如 Microsoft 发布者协议中所述）。 对于你的产品/服务，你的产品/服务必须已由 Microsoft 指定为 Azure IP 共同销售 incentivized。 在每个日历月结束之前，资格必须至少满足五（5）个工作日，才能获得该月降低的 Marketplace 服务费用。 降低的 Marketplace 服务费用还适用于 Azure IP 共同销售 incentivized Vm、托管应用以及通过商业市场提供的任何其他合格事务 IaaS 产品/服务。
 
 ### <a name="list-through-microsoft"></a>通过 Microsoft 列出
 
@@ -136,8 +136,8 @@ SaaS 产品/服务支持根据固定费用、每位用户按月或按年计费�
 5. 使用条款
 6. 隐私策略
 7. 产品名称
-8. 总结
-9. 说明
+8. 摘要
+9. 描述
 10. 屏幕截图/视频
 11. 文档
 
@@ -147,8 +147,8 @@ SaaS 产品/服务支持根据固定费用、每位用户按月或按年计费�
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. 标题
-2. 说明
+1. Title
+2. 描述
 3. 有用链接
 4. 屏幕截图
 
@@ -331,14 +331,14 @@ Microsoft 提供标准协定模板。
 
 - **登陆页面 url** （必需）–定义 `https://contoso.com/signup` 最终客户从 marketplace 获取产品/服务并从新创建的 SaaS 订阅触发配置过程后，最终客户将居住在其上的 SaaS 网站 url （例如：）。  此 URL 将与 marketplace 购买标识令牌参数一起调用，此参数唯一标识特定最终客户的 SaaS 购买。  必须使用[解析](./pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription)API 为相应的 SaaS 订阅详细信息交换此标记。  应将这些详细信息以及要收集的任何其他内容用作客户交互式网页的一部分，以完成最终客户注册并激活其购买。  在此页上，用户应使用 Azure Active Directory （Azure AD）注册一次单击身份验证。 <br> <br> 当最终用户从 Azure 门户或 M365 管理中心启动托管 SaaS 体验时，还将调用具有 marketplace 购买标识令牌参数的 URL。 你应在为新客户购买后首次提供令牌时处理两个流，并为现有客户提供该令牌，以便管理其 SaaS。 <br> <br> 你在此处配置的登录页面应已启动并运行24/7。 这是你在 marketplace 中新购买的 SaaS 产品或产品/服务的活动订阅的配置请求时，你将收到的通知。
 
-- **连接 webhook** （必需）–对于 Microsoft 需要发送给你的所有异步事件（例如，已取消 SaaS 订阅），我们要求你提供连接 webhook URL。 我们将调用此 URL 来通知你事件。 <br> <br> 提供的 webhook 应启动并运行24/7，因为这是你将会收到有关通过 marketplace 购买的客户 SaaS 订阅的更新的通知。  如果尚未准备好 webhook 系统，最简单的配置是创建一个 HTTP 终结点逻辑应用，该应用将侦听任何发送给它的事件，并相应地处理这些事件（例如 `https://prod-1westus.logic.azure.com:443/work` ）。 有关详细信息，请参阅[在逻辑应用中使用 HTTP 终结点调用、触发或嵌套工作流](../../logic-apps/logic-apps-http-endpoint.md)。
+- **连接 webhook** （必需）–对于 Microsoft 需要发送给你的所有异步事件（例如，已取消 SaaS 订阅），我们要求你提供连接 webhook URL。 我们将调用此 URL 来通知你事件。 <br> <br> 提供的 webhook 应启动并运行24/7，因为这是你将会收到有关通过 marketplace 购买的客户 SaaS 订阅的更新的通知。 如果尚未准备好 webhook 系统，最简单的配置是创建一个 HTTP 终结点逻辑应用，该应用将侦听任何发送给它的事件，并相应地处理这些事件（例如 `https://prod-1westus.logic.azure.com:443/work` ）。 有关详细信息，请参阅[在逻辑应用中使用 HTTP 终结点调用、触发或嵌套工作流](../../logic-apps/logic-apps-http-endpoint.md)。
 
 - **Azure AD 租户 ID** （必需）–在 Azure 门户内部，我们要求你[创建 Azure Active Directory （AD）应用](../../active-directory/develop/howto-create-service-principal-portal.md)，以便我们可以验证两个服务之间的连接是否在经过身份验证的通信之后。 若要查找[租户 ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)，请前往 Azure Active Directory，选择 "**属性**"，然后查找列出的**目录 ID**号（如50c464d3-4930-494c-963c-1e951d15360e）。
 
 - **Azure AD 应用 id** （必需）–还需要[应用程序 id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。 若要获取其值，请转到 Azure Active Directory 并选择**应用注册**，然后查找列出的**应用程序 ID**号（例如 `50c464d3-4930-494c-963c-1e951d15360e` ）。
 
 >[!Note]
->Azure AD 应用 ID 关联到合作伙伴中心帐户中的发布者 ID。  请确保你的所有产品/服务中都使用相同的应用程序 ID。
+>Azure AD 应用 ID 关联到合作伙伴中心帐户中的发布者 ID。 请确保在所有产品/服务中使用相同的应用程序 ID。
 
 >[!Note]
 >如果发布者在合作伙伴中心有两个或更多不同的帐户，则应使用两个或多个不同的 Azure AD 应用 Id，每个帐户对应于一个帐户。 对于通过此帐户发布的所有 SaaS 产品/服务，伙伴中心中的每个合作伙伴帐户都应使用唯一 Azure AD 应用 ID。
@@ -347,7 +347,7 @@ Microsoft 提供标准协定模板。
 
 ## <a name="plan-overview"></a>计划概述
 
-借助此页，可以在同一产品/服务中提供各种计划选项。 这些计划（有时称为 SKU）在版本、盈利或服务层级方面可能有所不同。 你必须至少设置一个计划才能在市场上销售你的产品/服务。
+借助此页，可以在同一产品/服务中提供各种计划选项。 这些计划（以前称为 Sku）在版本、盈利或服务层方面可能会有所不同。 你至少必须设置一个计划，以在 marketplace 中销售你的产品/服务。
 
 创建后，你将看到计划名称、ID、定价模型，可用性（公用或专用）、当前发布状态以及任何可用的操作。
 
@@ -380,7 +380,7 @@ Microsoft 提供标准协定模板。
 
 #### <a name="markets-optional"></a>市场（可选）
 
-每个计划必须至少在一个市场中提供。 选择“编辑市场”，然后选中要在其中提供此计划的任何市场位置的复选框。 此页包括用于选择“免税”国家/地区（Microsoft 代表你在这些国家/地区减免销售和使用税）的搜索框和选项。
+每个计划必须至少在一个市场中提供。 选择“编辑市场”，然后选中要在其中提供此计划的任何市场位置的复选框。 此页面包含一个搜索框和选项，用于选择["已汇款的国家/地区](tax-details-paid-transactions.md)"，其中，Microsoft 汇寄的销售额和使用条款。
 
 如果已采用美元 (USD) 为计划设置了价格并添加另一个市场位置，则系统将根据当前汇率计算用于新市场的价格。 发布之前，请查看用于每个市场的价格。 保存更改后，使用“导出价格(xlsx)”链接查看价格。
 

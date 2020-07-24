@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: f051d02ac06163cf1861ab6bfc6afd0dcbb0ad8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7058160819c9b6ccc3f63511f86e930fcbfc413b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82559526"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011645"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>通过 Azure Monitor 监视媒体服务指标和诊断日志
 
@@ -58,7 +58,7 @@ ms.locfileid: "82559526"
 
 ### <a name="streaming-endpoint"></a>流式处理终结点
 
-支持以下媒体服务[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)指标：
+支持以下媒体服务[流式处理终结点](/rest/api/media/streamingendpoints)指标：
 
 |指标名称|Display name|说明|
 |---|---|---|

@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9cb9f1a33c37487f4bfb1419d45d4e42a862d815
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddf9a1309cb4f9156cec3aeb5d2ddd9d22cde485
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888121"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011442"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>为块 blob 配置对象复制（预览）
 
@@ -52,7 +52,7 @@ ms.locfileid: "84888121"
 
     :::image type="content" source="media/object-replication-configure/configure-replication-policy.png" alt-text="展示了 Azure 门户中复制规则的屏幕截图":::
 
-1. 如果需要，指定一个或多个筛选器，以便只复制与前缀模式匹配的 blob。 例如，如果指定前缀 `b`，则只会复制名称以此字母开头的 blob。 可以将虚拟目录指定为前缀的一部分。
+1. 如果需要，指定一个或多个筛选器，以便只复制与前缀模式匹配的 blob。 例如，如果指定前缀 `b`，则只会复制名称以此字母开头的 blob。 可以将虚拟目录指定为前缀的一部分。 前缀字符串不支持通配符。
 
     下图展示了限制在复制规则中复制哪些 blob 的筛选器。
 
@@ -68,7 +68,7 @@ ms.locfileid: "84888121"
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要使用 PowerShell 创建复制策略，请先安装 [2.0.1-preview](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) 版本的 Az.Storage PowerShell 模块。 若要安装预览版模块，请按照以下步骤操作：
+若要使用 PowerShell 创建复制策略，请先安装[2.0.1 版-预览版](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview)或更高版本。 若要安装预览版模块，请按照以下步骤操作：
 
 1. 使用“设置”下的“应用和功能”设置从 Windows 中卸载以前安装的所有 Azure PowerShell。
 

@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: a2569ca3f998030680bd7dbd872d71ccd372a25d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73f2b3ea90cc94fa3411552c7b812fe53eb4dbbb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672423"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008092"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>使用资源管理器模板在 Azure 中创建诊断设置
 Azure Monitor 中的[诊断设置](diagnostic-settings.md)指定 Azure 资源及其依赖的 Azure 平台所收集的[平台日志](platform-logs-overview.md)的发送位置。 本文详细地举例说明了如何使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)将诊断设置创建并配置为将平台日志收集到不同的目标。
@@ -29,7 +30,7 @@ Azure Monitor 中的[诊断设置](diagnostic-settings.md)指定 Azure 资源及
 
 
 ## <a name="resource-logs"></a>资源日志
-对于资源日志，请将类型为 `<resource namespace>/providers/diagnosticSettings` 的资源添加到模板。 “属性”部分遵循[诊断设置 - 创建或更新](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)中所述的格式。 在 `logs` 部分中为要收集的资源提供每个有效类别的 `category`。 如果[资源支持指标](metrics-supported.md)，则添加 `metrics` 属性以将资源指标收集到相同的目标。
+对于资源日志，请将类型为 `<resource namespace>/providers/diagnosticSettings` 的资源添加到模板。 “属性”部分遵循[诊断设置 - 创建或更新](/rest/api/monitor/diagnosticsettings/createorupdate)中所述的格式。 在 `logs` 部分中为要收集的资源提供每个有效类别的 `category`。 如果[资源支持指标](metrics-supported.md)，则添加 `metrics` 属性以将资源指标收集到相同的目标。
 
 下面是一个模板，可将特定资源的资源日志类别收集到 Log Analytics 工作区、存储帐户和事件中心。
 
@@ -143,7 +144,7 @@ Azure Monitor 中的[诊断设置](diagnostic-settings.md)指定 Azure 资源及
 ```
 
 ## <a name="activity-log"></a>活动日志
-对于 Azure 活动日志，请添加一个 `Microsoft.Insights/diagnosticSettings` 类型的资源。 可用类别在[活动日志中的类别](activity-log-view.md#categories-in-the-activity-log)中列出。 下面是一个模板，可将所有活动日志类别收集到 Log Analytics 工作区、存储帐户和事件中心。
+对于 Azure 活动日志，请添加一个 `Microsoft.Insights/diagnosticSettings` 类型的资源。 可用类别在[活动日志中的类别](./activity-log.md#view-the-activity-log)中列出。 下面是一个模板，可将所有活动日志类别收集到 Log Analytics 工作区、存储帐户和事件中心。
 
 
 ```json

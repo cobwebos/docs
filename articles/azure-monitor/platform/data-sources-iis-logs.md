@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 1b3ae6295a639c3d59643b106b920cb606572e0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0bca809d6c25594c1c614f694e71e39a4f61e2a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670570"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008177"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>在 Azure Monitor 中收集 IIS 日志
 Internet 信息服务 (IIS) 会将用户活动存储在日志文件中，并可通过 Azure Monitor 进行收集并将其存储为[日志数据](data-platform.md)。
@@ -18,7 +19,7 @@ Internet 信息服务 (IIS) 会将用户活动存储在日志文件中，并可�
 ![IIS 日志](media/data-sources-iis-logs/overview.png)
 
 ## <a name="configuring-iis-logs"></a>配置 IIS 日志
-Azure Monitor 会从 IIS 创建的日志文件中收集条目，因此，必须[配置 IIS 以进行日志记录](https://technet.microsoft.com/library/hh831775.aspx)。
+Azure Monitor 会从 IIS 创建的日志文件中收集条目，因此，必须[配置 IIS 以进行日志记录](/previous-versions/orphan-topics/ws.11/hh831775(v=ws.11))。
 
 Azure Monitor 仅支持以 W3C 格式存储的 IIS 日志文件，不支持自定义字段或 IIS 高级日志记录。 Azure Monitor 不会收集 NCSA 或 IIS 本机格式的日志。
 
