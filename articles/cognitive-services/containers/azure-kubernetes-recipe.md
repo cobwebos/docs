@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: cdd1cf255c943c8dc6d55a5b749b30357bdcd373
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 24e04e166c13f787f756c97716e2bf0143eecbdb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876719"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128567"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>将文本分析语言检测容器部署到 Azure Kubernetes 服务
 
@@ -46,7 +46,7 @@ ms.locfileid: "80876719"
 
 ### <a name="the-language-frontend-container"></a>语言前端容器
 
-此网站相当于自己的进行语言检测终结点的请求的客户端应用程序。 完成此过程后，使用 `http://<external-IP>/<text-to-analyze>` 在浏览器中访问网站容器，即可获得检测到的字符串语言。 此 URL 的示例为 `http://132.12.23.255/helloworld!`。 浏览器中的结果为 `English`。
+此网站相当于自己的进行语言检测终结点的请求的客户端应用程序。 完成此过程后，使用 `http://<external-IP>/<text-to-analyze>` 在浏览器中访问网站容器，即可获得检测到的字符串语言。 此 URL 的一个示例为 `http://132.12.23.255/helloworld!`。 浏览器中的结果为 `English`。
 
 ### <a name="the-language-container"></a>语言容器
 
@@ -405,15 +405,3 @@ az group delete --name cogserv-container-rg
 
 > [!div class="nextstepaction"]
 > [认知服务容器](../cognitive-services-container-support.md)
-
-<!--
-kubectl get secrets
-
->az aks browse --resource-group diberry-cogserv-container-rg --name diberry-kubernetes-languagedetection
-
-kubectl proxy
-
-http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/pod/default/language-frontend-6d65bdb77c-8f4qv?namespace=default
-
-kubectl describe pod language-frontend-6d65bdb77c
--->

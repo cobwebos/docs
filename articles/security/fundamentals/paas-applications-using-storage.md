@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: 675e10101d01d831aad7652c70cbfcf320085a3c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da59c0d54fa08194f9d77fc79754cbfbaca1a1e8
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70999169"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128397"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>使用 Azure 存储保护 PaaS Web 和移动应用程序的最佳做法
 本文介绍 Azure 存储安全在保护平台即服务 (PaaS) Web 和移动应用程序方面的最佳做法。 这些最佳实践衍生自我们的 Azure 经验和客户经验。
@@ -65,7 +65,7 @@ Azure 存储提供了以下四种服务：Blob 存储、表存储、队列存储
 若要了解有关 RBAC 的详细信息，请参阅：
 
 - [使用 RBAC 和 Azure 门户管理访问权限](/azure/role-based-access-control/role-assignments-portal)
-- [Azure 资源的内置角色](/azure/role-based-access-control/built-in-roles)
+- [Azure 内置角色](/azure/role-based-access-control/built-in-roles)
 - [Azure 存储安全指南](/azure/storage/common/storage-security-guide) 
 
 ## <a name="use-client-side-encryption-for-high-value-data"></a>对高价值数据使用客户端加密

@@ -1,19 +1,19 @@
 ---
 title: 添加开放地理空间信息联盟（OGC）地图层 |Microsoft Azure 映射
 description: 了解如何覆盖地图上的 OGC 地图层，以及如何使用 OgcMapLayer 类中的不同选项。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b753ecfc07cfb3806838f8a05dbe33ef0bb92730
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6efc6b27090ecc7171bb66deb303a4764d9b6f04
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334288"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128550"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>从开放地理空间信息联盟添加地图层（OGC）
 
@@ -28,7 +28,7 @@ ms.locfileid: "80334288"
 - GetFeatureInfo 要求服务支持 `EPSG:4326` 或处理 reprojections。 
 - 支持的操作：
 
-    | | |
+    | 操作 | 说明 |
     | :-- | :-- |
     | GetCapabilities | 检索有关具有支持的功能的服务的元数据 |
     | GetMap | 检索指定区域的地图图像 |
@@ -42,7 +42,7 @@ ms.locfileid: "80334288"
 - TileMatrix 标识符必须是对应于地图上缩放级别的整数值。 在 azure 地图上，缩放级别是介于和之间的 `"0"` 值 `"22"` 。 因此， `"0"` 支持，但 `"00"` 不受支持。
 - 支持的操作：
 
-    | | |
+    | 操作 | 说明 |
     | :-- | :-- |
     | GetCapabilities | 检索支持的操作和功能 |
     | GetTile | 检索特定磁贴的图像 |

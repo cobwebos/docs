@@ -2,19 +2,19 @@
 title: 管理身份验证
 titleSuffix: Azure Maps
 description: 使用 Azure 门户在 Microsoft Azure 映射中管理身份验证。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 174606b4b070b69aba94f438a3f7177f0d5897f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69dda537beda1d1bec4f019e1d5cadd16bdd5b39
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84981705"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126850"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>在 Azure Maps 中管理身份验证
 
@@ -45,11 +45,11 @@ ms.locfileid: "84981705"
 
 | 方案                                                                                    | 身份验证 | 授权 | 开发工作 | 运营工作量 |
 | ------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------------ | ------------------ |
-| [可信守护程序/非交互式客户端应用程序](./how-to-secure-daemon-app.md)        | 共享密钥     | 不适用           | 中             | 高               |
-| [可信守护程序/非交互式客户端应用程序](./how-to-secure-daemon-app.md)        | Azure AD       | 高          | 低                | 中             |
+| [可信守护程序/非交互式客户端应用程序](./how-to-secure-daemon-app.md)        | 共享密钥     | 空值           | 中型             | 高               |
+| [可信守护程序/非交互式客户端应用程序](./how-to-secure-daemon-app.md)        | Azure AD       | 高          | 低                | 中型             |
 | [具有交互式单一登录的 Web 单页面应用程序](./how-to-secure-spa-users.md) | Azure AD       | 高          | 中             | 中             |
 | [具有非交互式登录的 Web 单页面应用程序](./how-to-secure-spa-app.md)      | Azure AD       | 高          | 中             | 中             |
-| [交互式单一登录的 Web 应用程序](./how-to-secure-webapp-users.md)          | Azure AD       | 高          | 高               | 中             |
+| [交互式单一登录的 Web 应用程序](./how-to-secure-webapp-users.md)          | Azure AD       | 高          | 高               | 中等             |
 | [IoT 设备/输入受限制设备](./how-to-secure-device-code.md)                     | Azure AD       | 高          | 中             | 中             |
 
 表中的链接可将你带到每个方案的详细配置信息。

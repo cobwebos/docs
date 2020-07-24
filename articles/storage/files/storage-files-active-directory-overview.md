@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: db256c8361af740ac536e059969a5085e57df485
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb57606259fe674519015fd2de741d6c1d08c5e9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84263327"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127190"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>适用于 SMB 访问的 Azure 文件基于标识的身份验证选项概述
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -46,7 +46,7 @@ ms.locfileid: "84263327"
 
 -   **Azure 基于角色的访问控制 (RBAC)**
 
-    Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访问管理。 使用 RBAC，可通过向用户授予执行其作业所需的最少权限来管理对资源的访问权限。 有关 RBAC 的详细信息，请参阅[什么是 Azure 中基于角色的访问控制（RBAC）？](../../role-based-access-control/overview.md)。
+    Azure 基于角色的访问控制（Azure RBAC）可用于对 Azure 进行细致的访问管理。 使用 RBAC，可通过向用户授予执行其作业所需的最少权限来管理对资源的访问权限。 有关 RBAC 的详细信息，请参阅[什么是 azure 中的 azure 基于角色的访问控制（AZURE RBAC）？](../../role-based-access-control/overview.md)。
 
 ## <a name="common-use-cases"></a>常见用例
 
@@ -146,7 +146,7 @@ Azure 文件共享在目录和文件级别（包括根目录）强制实施标�
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 文件的详细信息以及基于 SMB 的基于身份的身份验证，请参阅以下资源：
 
-- [规划 Azure 文件部署](storage-files-planning.md)
+- [规划 Azure 文件存储部署](storage-files-planning.md)
 - [启用 Azure 文件共享的通过 SMB 进行本地 Active Directory 域服务身份验证](storage-files-identity-auth-active-directory-enable.md)
 - [启用 Azure 文件上 Azure Active Directory 域服务身份验证](storage-files-identity-auth-active-directory-domain-service-enable.md)
 - [常见问题](storage-files-faq.md)

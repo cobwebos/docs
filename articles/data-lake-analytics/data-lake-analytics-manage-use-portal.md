@@ -3,18 +3,16 @@ title: 使用 Azure 门户管理 Azure Data Lake Analytics
 description: 本文介绍如何使用 Azure 门户管理 Data Lake Analytics 帐户、数据源、用户和作业。
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: e9709f8ee700958b310b2fa94a546bb3ea4fc511
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7761da75c16e2f89ae145bad3b04cc179f415751
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121310"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127530"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -29,7 +27,7 @@ ms.locfileid: "86121310"
 
 ### <a name="create-an-account"></a>创建帐户
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 单击 "**创建资源**  >  **智能 + 分析**"  >  **Data Lake Analytics**。
 3. 为以下项选择值： 
    1. 名称****：Data Lake Analytics 帐户的名称。
@@ -114,7 +112,7 @@ Data Lake Analytics 支持以下数据源：
 2. 单击 "**访问控制（IAM）**" "  >  **添加角色分配**"。
 3. 选择角色。
 4. 添加用户。
-5. 单击“确定”。
+5. 单击“确定”  。
 
 >[!NOTE]
 >如果用户或安全组需要提交作业，还需要对存储帐户的权限。 有关详细信息，请参阅[保护 Data Lake Store 中存储的数据](../data-lake-store/data-lake-store-secure-data.md)。

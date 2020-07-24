@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 10/03/2019
+ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 839ce418fa8ad72e18537cf673c8af0479409ba7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b95ae3c7fcf52a732304bb835f91c52b015801e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386277"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128924"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory （Azure AD）应用程序代理常见问题
 
@@ -52,6 +52,9 @@ ms.locfileid: "85386277"
 ### <a name="is-tls-termination-tlshttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>是否支持从连接器服务器到 Azure 的流量进行 TLS 终止（TLS/HTTPS 检查或加速）？
 
 应用程序代理连接器对 Azure 执行基于证书的身份验证。 TLS 终止（TLS/HTTPS 检查或加速）会中断此身份验证方法，并且不受支持。 从连接器到 Azure 的流量必须绕过任何正在执行 TLS 终止的设备。  
+
+### <a name="is-tls-12-required-for-all-connections"></a>是否所有连接都需要 TLS 1.2？
+是的。 为了向我们的客户提供一流的加密，应用程序代理服务将访问限制为仅允许使用 TLS 1.2 协议。 这些更改已自 2019 年 8 月 31 日起逐步推出并生效。 请确保将所有客户端-服务器和浏览器-服务器组合更新为使用 TLS 1.2，以便保持连接到应用程序代理服务。 这包括用户用来访问那些通过应用程序代理发布的应用程序的客户端。 请查看如何为 [Office 365 中的 TLS 1.2](https://docs.microsoft.com/microsoft-365/compliance/prepare-tls-1.2-in-office-365) 做准备，了解有用的参考和资源。
 
 ### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>是否可以在连接器服务器和后端应用程序服务器之间放置转发代理设备？
 是的，从连接器版本1.5.1526.0 开始支持此方案。 请参阅[使用现有的本地代理服务器](application-proxy-configure-connectors-with-proxy-servers.md)。
@@ -93,6 +96,9 @@ ms.locfileid: "85386277"
 
 不是，发布的应用程序没有 IIS 要求。 你可以发布在 Windows Server 之外的服务器上运行的 web 应用程序。 但是，你可能无法对非 Windows Server 使用预身份验证，具体取决于 web 服务器是否支持协商（Kerberos 身份验证）。 安装连接器的服务器上不需要 IIS。
 
+### <a name="can-i-configure-application-proxy-to-add-the-hsts-header"></a>是否可以配置应用程序代理以添加 HSTS 标头？
+应用程序代理不会自动向 HTTPS 响应添加 HTTP 严格传输-安全标头，但如果标头在发布的应用程序发送的原始响应中，它将保留标头。 制定启用此功能的设置在路线图上。 如果你对允许将此内容添加到响应的预览感兴趣，请访问以 aadapfeedback@microsoft.com 获取详细信息。
+
 ## <a name="integrated-windows-authentication"></a>Windows 集成身份验证
 
 ### <a name="when-should-i-use-the-principalsallowedtodelegatetoaccount-method-when-setting-up-kerberos-constrained-delegation-kcd"></a>设置 Kerberos 约束委派（KCD）时，应何时使用 PrincipalsAllowedToDelegateToAccount 方法？
@@ -107,7 +113,7 @@ ms.locfileid: "85386277"
 
 NTLM 身份验证不能用作预身份验证或单一登录方法。 仅当可以直接在客户端和已发布的 web 应用程序之间协商 NTLM 身份验证时，才能使用 NTLM 身份验证。 使用 NTLM 身份验证通常会在浏览器中显示登录提示。
 
-## <a name="pass-through-authentication"></a>直通身份验证
+## <a name="pass-through-authentication"></a>传递身份验证
 
 ### <a name="can-i-use-conditional-access-policies-for-applications-published-with-pass-through-authentication"></a>能否对使用传递身份验证发布的应用程序使用条件性访问策略？
 
@@ -133,7 +139,7 @@ NTLM 身份验证不能用作预身份验证或单一登录方法。 仅当可�
 
 ### <a name="is-the-remote-desktop-web-client-html5-supported"></a>是否支持远程桌面 Web 客户端（HTML5）？
 
-不能，目前不支持此方案。 请访问我们的[UserVoice](https://aka.ms/aadapuservoice)反馈论坛，了解有关此功能的更新。
+是的，此方案目前为公共预览版。 请参阅将[远程桌面与 Azure AD 应用程序代理一起发布](application-proxy-integrate-with-remote-desktop-services.md)。
 
 ### <a name="after-i-configured-the-pre-authentication-scenario-i-realized-that-the-user-has-to-authenticate-twice-first-on-the-azure-ad-sign-in-form-and-then-on-the-rdweb-sign-in-form-is-this-expected-how-can-i-reduce-this-to-one-sign-in"></a>配置预身份验证方案后，我意识到用户必须进行两次身份验证：第一次是 Azure AD 登录表单，然后是 RDWeb 登录窗体。 这是正常情况吗？ 如何将其减少到一个登录？
 
@@ -153,7 +159,7 @@ NTLM 身份验证不能用作预身份验证或单一登录方法。 仅当可�
 
 ### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>能否使用 Azure AD 应用程序代理作为 AD FS 代理（如 Web 应用程序代理）？
 
-不能。 Azure AD 应用程序代理用于处理 Azure AD，并且不满足充当 AD FS 代理的要求。
+否。 Azure AD 应用程序代理用于处理 Azure AD，并且不满足充当 AD FS 代理的要求。
 
 ## <a name="websocket"></a>WebSocket
 

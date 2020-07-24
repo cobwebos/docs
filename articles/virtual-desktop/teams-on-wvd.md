@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d482b3335b31d116846ec64883b43897fcc4e43d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: baab0160247e17556f0928f12f26a5ecca767210
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255653"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129298"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>在 Windows 虚拟桌面上使用 Microsoft 团队
 
@@ -23,7 +23,7 @@ ms.locfileid: "86255653"
 >[!NOTE]
 >Microsoft 团队的媒体优化仅适用于 Windows 10 计算机上的 Windows 桌面客户端。 媒体优化需要 Windows 桌面客户端版本1.2.1026.0 或更高版本。
 
-Windows 虚拟桌面上的 Microsoft 团队支持聊天和协作。 借助媒体优化，它还支持调用和会议功能。 若要详细了解如何在虚拟桌面基础结构 (VDI) 环境中使用 Microsoft 团队，请参阅[虚拟化桌面基础结构团队](/microsoftteams/teams-for-vdi/)。
+Windows 虚拟桌面上的 Microsoft 团队支持聊天和协作。 借助媒体优化，它还支持调用和会议功能。 若要了解有关如何在虚拟桌面基础结构（VDI）环境中使用 Microsoft 团队的详细信息，请参阅[面向虚拟桌面基础结构的团队](/microsoftteams/teams-for-vdi/)。
 
 借助 Microsoft 团队的媒体优化，Windows 桌面客户端会在本地处理音频和视频，以供团队调用和会议。 你仍可将 Windows 虚拟桌面上的 Microsoft 团队与其他客户端配合使用，而无需进行优化的呼叫和会议。 所有平台都支持团队聊天和协作功能。 若要在远程会话中重定向本地设备，请查看[自定义主机池的远程桌面协议属性](#customize-remote-desktop-protocol-properties-for-a-host-pool)。
 
@@ -33,7 +33,7 @@ Windows 虚拟桌面上的 Microsoft 团队支持聊天和协作。 借助媒体
 
 - 为 Microsoft 团队[准备你的网络](/microsoftteams/prepare-network/)。
 - 在 Windows 10 或 Windows 10 IoT 企业设备上安装[Windows 桌面客户端](connect-windows-7-10.md)，该设备满足[Windows 电脑上团队](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)的 Microsoft 团队硬件要求。
--  (VM) 连接到 Windows 10 多会话或 Windows 10 企业版虚拟机。
+- 连接到 Windows 10 多会话或 Windows 10 企业版虚拟机（VM）。
 - 使用每计算机安装在主机上安装 "团队" 桌面应用程序。 Microsoft 团队的媒体优化要求团队桌面应用版本1.3.00.4461 或更高版本。
 
 ## <a name="install-the-teams-desktop-app"></a>安装团队桌面应用
@@ -54,6 +54,14 @@ Windows 虚拟桌面上的 Microsoft 团队支持聊天和协作。 借助媒体
 ### <a name="install-the-teams-websocket-service"></a>安装团队 WebSocket 服务
 
 在 VM 映像上安装[WebSocket 服务](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj0i)。 如果遇到安装错误，请安装[最新的 Microsoft Visual C++ 可再发行组件](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)，然后重试。
+
+#### <a name="latest-websocket-service-versions"></a>最新 WebSocket 服务版本
+
+下表列出了适用于每个用户组的当前版本：
+
+|版本    |发布日期  |
+|-----------|--------------|
+|0.11.0     |05/29/2020    |
 
 ### <a name="install-microsoft-teams"></a>安装 Microsoft 团队
 
@@ -80,7 +88,7 @@ Windows 虚拟桌面上的 Microsoft 团队支持聊天和协作。 借助媒体
         msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1 ALLUSERS=1
         ```
 
-        这会将团队安装到64位操作系统上的程序文件 (x86) 文件夹，并安装32位操作系统上的 Program Files 文件夹。 此时，黄金映像设置已完成。 对于非持久设置，需要为每台计算机安装团队。
+        这会将团队安装到64位操作系统上的 Program Files （x86）文件夹和32位操作系统上的 Program Files 文件夹。 此时，黄金映像设置已完成。 对于非持久设置，需要为每台计算机安装团队。
 
         下次在会话中打开团队时，系统将要求你提供凭据。
 
@@ -93,7 +101,7 @@ Windows 虚拟桌面上的 Microsoft 团队支持聊天和协作。 借助媒体
       msiexec /passive /x <msi_name> /l*v <uninstall_logfile_name>
       ```
 
-      这会根据操作系统环境，从程序文件 (x86) 文件夹或 Program Files 文件夹中卸载团队。
+      这会根据操作系统环境从 Program Files （x86）文件夹或 Program Files 文件夹中卸载团队。
 
       > [!NOTE]
       > 当你安装具有 MSI 设置 ALLUSER = 1 的团队时，将禁用自动更新。 建议确保至少每月更新一次团队。 若要了解有关部署团队桌面应用的详细信息，请参阅将[团队桌面应用部署到 VM](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm/)。
@@ -151,7 +159,7 @@ Windows 虚拟桌面上的 Microsoft 团队支持聊天和协作。 借助媒体
 
 ## <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>自定义主机池远程桌面协议属性
 
-通过自定义主机池的远程桌面协议 (RDP) 属性（例如多监视器体验或启用麦克风和音频重定向），可以根据用户的需要为用户提供最佳体验。
+通过自定义主机池的远程桌面协议（RDP）属性（例如多监视器体验或启用麦克风和音频重定向），可以根据用户的需要为用户提供最佳体验。
 
 使用具有媒体优化的团队时，无需启用设备重定向。 如果使用的是没有媒体优化的团队，请设置以下 RDP 属性以启用麦克风和照相机重定向：
 

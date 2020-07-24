@@ -1,20 +1,20 @@
 ---
-title: 市场见解 - Microsoft 商业市场
+title: Marketplace Insights-Microsoft 商用 marketplace、Microsoft AppSource 和 Azure Marketplace
 description: 访问市场 Web 分析摘要，它可以让你衡量客户在 Microsoft AppSource 和 Azure 市场中的参与度。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/16/2019
-ms.openlocfilehash: 8b5f90449f27007febe93f1193c6d2245b076e7e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/22/2019
+ms.openlocfilehash: c72f3c9cce19896557fa9f4114b935fcc5ca8dc2
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120392"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128941"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>合作伙伴中心内的市场见解仪仪表板
 
-本文提供有关合作伙伴中心内的市场见解仪表板的信息。 此仪表板显示市场 Web 分析摘要，它可以让发布者衡量市场店面：Microsoft AppSource 和 Azure 市场上列出的相应产品详细信息页面的客户参与度。
+本文提供有关合作伙伴中心内的市场见解仪表板的信息。 此仪表板显示 marketplace web analytics 的摘要，使发布者能够度量商业 marketplace 商店商店： Microsoft AppSource 和 Azure Marketplace 上列出的相应产品详细信息页的客户参与情况。
 
 ## <a name="marketplace-insights-dashboard"></a>市场见解仪表板
 
@@ -25,18 +25,20 @@ ms.locfileid: "86120392"
 - [市场见解摘要](#marketplace-insights-summary)
 - [按地理位置列出的页面访问次数](#page-visits-by-geography)  
 - [页面访问次数与唯一访问者数量趋势](#page-visits-versus-unique-visitors-trend)
-- [行动号召单击次数与单击 CTA 的唯一访问者数量](#call-to-action-versus-unique-visitors-with-ctas)
+- [通过 CTAs 调用操作（CTA）与独特的访问者](#call-to-action-versus-unique-visitors-with-ctas)
 - [页面访问次数和按产品/服务列出的行动号召单击次数](#page-visits-and-calls-to-action-by-offers)
 - [行动号召单击次数百分比趋势](#call-to-action-percentage-trend)
 - [页面访问次数和按推荐域列出的行动号召单击次数](#page-visits-and-calls-to-action-by-referral-domains)
 - [市场见解详细信息表](#marketplace-insights-details-table)
+
+用户访问 Azure Marketplace 上的产品/服务和合作伙伴中心的 AppSource 和报表之间的最大延迟为48小时。
 
 >[!NOTE]
 > 有关分析术语的详细定义，请参阅[适用于商业市场分析的常见问题和术语](./faq-terminology.md)。
 
 ### <a name="insights-dashboard-layout"></a>见解仪表板布局
 
-可以通过多种方式查看市场指标：
+以各种方式查看商业市场指标：
 
 - “店面”选项卡
 - 页面筛选器
@@ -74,7 +76,7 @@ ms.locfileid: "86120392"
 
 ### <a name="call-to-action"></a>行动号召
 
-此数字表示在产品/服务页面（产品详细信息页）上完成的行动号召按钮单击计数。 选择“立即获取”、“免费试用”、“与我联系”和“体验版”按钮时，都会计入“行动号召单击次数”    。
+此数字表示在产品/服务页面（产品详细信息页）上完成的行动号召按钮单击计数。 当用户选择 "**立即获取**"、"**免费试用**"、"**与我联系**" 或 "**测试驱动器**" 按钮时，将对**操作**进行计数。
 
 ![合作伙伴中心见解“行动号召”摘要](./media/insights-summary.png)
 
@@ -128,7 +130,7 @@ ms.locfileid: "86120392"
 
 - 如果记录的条数少于 1000，则可以将数据提取到 CSV 文件中。
 - 如果记录的条数超过 1000，则导出的数据在接下来的 30 天会异步放置在下载页面中。
-- 可以应用筛选器来显示你感兴趣的数据。 数据可以按照产品/服务名称和市场活动名称进行筛选。  
+- 按产品名称和活动名称筛选数据，以显示你感兴趣的数据。
 
 ## <a name="next-steps"></a>后续步骤
 
