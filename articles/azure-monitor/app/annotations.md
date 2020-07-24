@@ -3,15 +3,16 @@ title: Application Insights 的版本批注 | Microsoft 文档
 description: 为 Application Insights 中的指标资源管理器图表添加部署或版本标记。
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: 0ad773ca6a7102ac718d43dfbbf6a4f834e681a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f6ffed8ae2039ec36ec8bd86518e6b359da65ec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81010695"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093028"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>为 Application Insights 中的指标图表添加批注
 
-批注显示部署新生成的位置或其他重要事件。 使用批注可让轻松查看更改是否对应用程序的性能产生了任何影响。 [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/tasks/) 生成系统可自动创建批注。 也可以通过 PowerShell 创建批注，用于标记所要处理的任何事件。
+批注显示部署新生成的位置或其他重要事件。 使用批注可让轻松查看更改是否对应用程序的性能产生了任何影响。 [Azure Pipelines](/azure/devops/pipelines/tasks/) 生成系统可自动创建批注。 也可以通过 PowerShell 创建批注，用于标记所要处理的任何事件。
 
 ## <a name="release-annotations-with-azure-pipelines-build"></a>Azure Pipelines 生成中的版本批注
 
