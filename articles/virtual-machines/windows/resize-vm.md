@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: cynthn
-ms.openlocfilehash: f456af143ac6ec21bcb9b0c3ec75635c51f748ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98a0a1a2ce0a5122a953b8cc9916e2bf56955feb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82099880"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020231"
 ---
 # <a name="resize-a-windows-vm"></a>调整 Windows VM 的大小
 
@@ -126,5 +126,4 @@ $vmIds = $as.VirtualMachinesReferences
 
 ## <a name="next-steps"></a>后续步骤
 
-若要提高可伸缩性，请运行多个 VM 实例并进行横向扩展。有关详细信息，请参阅 [自动缩放虚拟机规模集中的 Windows 计算机](../../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md)。
-
+若要提高可伸缩性，请运行多个 VM 实例并进行横向扩展。有关详细信息，请参阅 [自动缩放虚拟机规模集中的 Windows 计算机](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md)。

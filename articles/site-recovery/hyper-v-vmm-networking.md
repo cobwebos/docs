@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a61f7ff69e648262eb721eb61a98b09dbbee924c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0426872c29fa126514f22a5f4fb57f19903c967
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73961429"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021658"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>设置 IP 寻址以在故障转移后连接到辅助本地站点
 
@@ -78,12 +79,12 @@ ms.locfileid: "73961429"
 
 为 VM 启用保护后，可以使用以下示例脚本来验证分配给 VM 的地址。 此 IP 地址将被设为故障转移 IP 地址，并在故障转移期间分配给 VM：
 
-    ```
-    $vm = Get-SCVirtualMachine -Name <VM_NAME>
-    $na = $vm[0].VirtualNetworkAdapters>
-    $ip = Get-SCIPAddress -GrantToObjectID $na[0].id
-    $ip.address 
-    ```
+```powershell
+$vm = Get-SCVirtualMachine -Name <VM_NAME>
+$na = $vm[0].VirtualNetworkAdapters>
+$ip = Get-SCIPAddress -GrantToObjectID $na[0].id
+$ip.address
+```
 
 ## <a name="use-a-different-ip-address"></a>使用不同 IP 地址
 
@@ -92,7 +93,7 @@ ms.locfileid: "73961429"
 - 对 Intranet 应用程序使用低 TTL 值。
 - 在 Site Recovery 恢复计划中使用以下脚本及时更新 DNS 服务器。 如果使用动态 DNS 注册，则不需要该脚本。
 
-    ```
+    ```powershell
     param(
     string]$Zone,
     [string]$name,

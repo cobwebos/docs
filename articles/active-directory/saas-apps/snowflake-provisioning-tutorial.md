@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 99565c8dc8b5cbaea9f449a9f6262a37ae5b66d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46ebb122b0165d469b1c40871d5939e50a8595c9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367183"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016282"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>教程：为自动用户预配配置雪花
 
@@ -52,7 +52,7 @@ ms.locfileid: "85367183"
 2. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)中。
 3. 确定要[在 Azure AD 和雪花型之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
 
-## <a name="step-2-configure-snowflake-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置雪花以支持 Azure AD 的预配
+## <a name="step-2-configure-snowflake-to-support-provisioning-with-azure-ad"></a>步骤 2： 配置雪花以支持 Azure AD 的预配
 
 在将雪花配置为使用 Azure AD 进行自动用户预配之前，需要在雪花上启用 SCIM 预配。
 
@@ -68,7 +68,7 @@ ms.locfileid: "85367183"
 
     ![雪花添加 SCIM](media/Snowflake-provisioning-tutorial/image02.png)
 
-## <a name="step-3-add-snowflake-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加雪花
+## <a name="step-3-add-snowflake-from-the-azure-ad-application-gallery"></a>步骤 3： 从 Azure AD 应用程序库添加雪花
 
 从 "Azure AD" 应用程序库中添加雪花，开始管理到雪花的预配。 如果以前为 SSO 设置了雪花，则可以使用相同的应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)详细了解如何从库中添加应用程序。 
 
@@ -120,13 +120,13 @@ ms.locfileid: "85367183"
    |Attribute|类型|
    |---|---|
    |活动|Boolean|
-   |displayName|String|
-   |emails[type eq "work"].value|String|
+   |displayName|字符串|
+   |emails[type eq "work"].value|字符串|
    |userName|字符串|
-   |name.givenName|String|
-   |name.familyName|String|
-   |urn： ietf： params： scim：架构：扩展： enterprise：2.0： User： defaultRole|String|
-   |urn： ietf： params： scim：架构：扩展： enterprise：2.0： User： defaultWarehouse|String|
+   |name.givenName|字符串|
+   |name.familyName|字符串|
+   |urn： ietf： params： scim：架构：扩展： enterprise：2.0： User： defaultRole|字符串|
+   |urn： ietf： params： scim：架构：扩展： enterprise：2.0： User： defaultWarehouse|字符串|
 
 11. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 组同步到雪花**"。
 
@@ -163,6 +163,10 @@ ms.locfileid: "85367183"
 ## <a name="connector-limitations"></a>连接器限制
 
 * 雪花生成的 SCIM 令牌在6个月后过期。 请注意，这些需要在过期之前进行刷新，以允许预配同步继续工作。 
+
+## <a name="change-log"></a>更改日志
+
+* 07/21/2020-为所有用户启用了软删除（通过活动的属性）。
 
 ## <a name="additional-resources"></a>其他资源
 

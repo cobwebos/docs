@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 5bf397cac26d3cc46e11f8ac60110629a528cd62
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 49692c08787103b09e6e1502f7a9a58736239fdf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229816"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87018989"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -138,7 +138,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 托管标识类型 |所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
-| 系统分配 | 预览 | 不可用 | 不可用 | 不可用 |
+| 系统分配 | 预览 | 预览 | 不可用 | 预览 |
 | 用户分配 | 不可用 | 不可用  | 不可用  | 不可用 |
 
 
@@ -224,7 +224,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="azure-service-fabric"></a>Azure Service Fabric
 
-[Service Fabric 应用程序的托管标识](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)处于预览状态，并在所有区域中均可用。
+所有区域都提供[Service Fabric 应用程序的托管标识](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)。
 
 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
@@ -286,7 +286,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 系统分配 | 不可用 | 不可用 | 不可用 | 不可用 | 
 | 用户分配 | [在支持的区域中可用](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions) | 不可用 | 不可用 | 不可用 |
 
-若要了解如何在可用) 的区域中为 Azure VM 映像生成器 (配置托管标识，请参阅[映像生成器概述](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#permissions)。
+若要了解如何为 Azure VM 映像生成器（在可用的区域中）配置托管标识，请参阅[映像生成器概述](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#permissions)。
 ### <a name="azure-signalr-service"></a>Azure SignalR 服务
 
 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government  | Azure 德国 | Azure 中国世纪互联 |
@@ -294,7 +294,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 系统分配 | 预览 | 预览 | 不可用 | 预览 |
 | 用户分配 | 预览 | 预览 | 不可用 | 预览 |
 
-请参阅以下列表，在可用) 的区域中为 Azure SignalR 服务 (配置托管标识：
+请参阅以下列表，为 Azure SignalR 服务配置托管标识（在可用区域中）：
 
 - [Azure Resource Manager 模板](../../azure-signalr/howto-use-managed-identity.md)
 

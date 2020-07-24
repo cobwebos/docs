@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: a08b59464855b805173fa76d696107f8a7673d39
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0ce6a754ce09e227332309878bdddd3d8c1733be
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529553"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021896"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>使用 PowerShell 管理 Azure 认知搜索服务
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ ms.locfileid: "86529553"
 
 ## <a name="check-versions-and-load-modules"></a>检查版本并加载模块
 
-本文中的示例是交互式，需要提升的权限。 必须安装 Azure PowerShell（**Az** 模块）。 有关详细信息，请参阅[安装 Azure PowerShell](/powershell/azure/overview)。
+本文中的示例是交互式，需要提升的权限。 必须安装 Azure PowerShell（**Az** 模块）。 有关详细信息，请参阅[安装 Azure PowerShell](/powershell/azure/)。
 
 ### <a name="powershell-version-check-51-or-later"></a>PowerShell 版本检查（5.1 或更高版本）
 

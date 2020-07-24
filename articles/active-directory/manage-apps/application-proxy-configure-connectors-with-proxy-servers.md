@@ -12,11 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48727e377c2b6707e570cad103e4b08bcb44a1cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c785e2b13e7d5c57ff6d5ce9161fea1a80da77e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764921"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019533"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>使用现有的本地代理服务器
 
@@ -116,7 +117,7 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | 连接器使用这些 URL 来验证证书 |
 | login.windows.net<br>secure.aadcdn.microsoftonline p.com<br>*.microsoftonline.com<br>* .microsoftonline-p.com<br>*.msauth.net<br>* .msauthimages.net<br>*.msecnd.net<br>* .msftauth.net<br>*.msftauthimages.net<br>* .phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | 在注册过程中，连接器将使用这些 URL。 |
 
-如果防火墙或代理允许你配置 DNS 允许列表，则你可以允许与 \*.msappproxy.net 和 \*.servicebus.windows.net 建立连接。 否则，需要允许访问 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 IP 范围每周更新。
+如果防火墙或代理允许你配置 DNS 允许列表，则你可以允许与 \*.msappproxy.net 和 \*.servicebus.windows.net 建立连接。 如果没有，则需要允许访问[Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 IP 范围每周更新。
 
 如果不能通过 FQDN 允许连接，请使用以下选项改为指定 IP 范围：
 
@@ -152,6 +153,9 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 4.  配置所需的代理设置。 
 
 这些设置使连接器使用同一个转发代理来与 Azure 和后端应用程序进行通信。 如果连接器与 Azure 之间的通信不需要转发代理或需要不同的转发代理，则你可以按照“绕过出站代理”或“使用出站代理服务器”部分中所述，通过修改 ApplicationProxyConnectorService.exe.config 文件进行此项设置。
+
+> [!NOTE]
+> 在操作系统中配置 internet 代理有多种方法。 通过 NETSH WINHTTP 配置的代理设置（运行 `NETSH WINHTTP SHOW PROXY` 以验证）替代在步骤2中配置的代理设置。 
 
 连接器更新程序服务也使用计算机代理。 可以通过修改 ApplicationProxyConnectorUpdaterService.exe.config 文件来更改此行为。
 

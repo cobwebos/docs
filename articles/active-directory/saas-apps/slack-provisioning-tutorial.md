@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 05/06/2020
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8b7fa5aea835329be8f65a3bb1775ba5b0d97d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ca536ddacb0f81459625b733eb79282e145afba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389848"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016286"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>教程：为 Slack 配置自动用户预配
 
@@ -50,11 +50,11 @@ ms.locfileid: "85389848"
 2. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)中。
 3. 确定[Azure AD 和时差之间要映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
 
-## <a name="step-2-add-slack-from-the-azure-ad-application-gallery"></a>步骤 2。 添加 Azure AD 应用程序库中的时差
+## <a name="step-2-add-slack-from-the-azure-ad-application-gallery"></a>步骤 2： 添加 Azure AD 应用程序库中的时差
 
 添加 Azure AD 应用程序库中的时差，开始管理预配到时差。 如果以前为 SSO 设置了时差，则可以使用相同的应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)详细了解如何从库中添加应用程序。 
 
-## <a name="step-3-define-who-will-be-in-scope-for-provisioning"></a>步骤 3. 定义谁在预配范围中 
+## <a name="step-3-define-who-will-be-in-scope-for-provisioning"></a>步骤 3： 定义谁在预配范围中 
 
 使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的范围筛选器。 
 
@@ -62,7 +62,7 @@ ms.locfileid: "85389848"
 
 * 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。
 
-## <a name="step-4-configure-automatic-user-provisioning-to-slack"></a>步骤 4. 配置自动用户预配到时差 
+## <a name="step-4-configure-automatic-user-provisioning-to-slack"></a>步骤 4： 配置自动用户预配到时差 
 
 本部分指导完成将 Azure AD 连接到 Slack 的用户帐户预配 API 和配置预配服务，以便在 Slack 中根据 Azure AD 中的用户和组分配创建、更新和禁用分配的用户帐户。
 
@@ -108,34 +108,34 @@ ms.locfileid: "85389848"
    |Attribute|类型|
    |---|---|
    |活动|Boolean|
-   |externalId|String|
+   |externalId|字符串|
    |displayName|String|
-   |name.familyName|String|
+   |name.familyName|字符串|
    |name.givenName|字符串|
    |title|字符串|
-   |emails[type eq "work"].value|String|
-   |userName|String|
-   |昵称|String|
-   |地址 [type eq "非类型化"]. streetAddress|String|
-   |地址 [类型 eq "非类型化"]。位置|String|
-   |地址 [type eq "非类型化的"]。区域|String|
-   |地址 [type eq "非类型化"]|String|
-   |地址 [类型 eq "非类型化"]。国家/地区|String|
+   |emails[type eq "work"].value|字符串|
+   |userName|字符串|
+   |昵称|字符串|
+   |地址 [type eq "非类型化"]. streetAddress|字符串|
+   |地址 [类型 eq "非类型化"]。位置|字符串|
+   |地址 [type eq "非类型化的"]。区域|字符串|
+   |地址 [type eq "非类型化"]|字符串|
+   |地址 [类型 eq "非类型化"]。国家/地区|字符串|
    |phoneNumbers[type eq "mobile"].value|字符串|
-   |phoneNumbers[type eq "work"].value|String|
-   |role [主 eq "True"]。值|String|
+   |phoneNumbers[type eq "work"].value|字符串|
+   |role [主 eq "True"]。值|字符串|
    |区域设置|字符串|
-   |名称. honorificPrefix|String|
-   |照片 [type eq "photo"]。值|String|
-   |profileUrl|String|
-   |timezone|String|
-   |userType|String|
-   |urn： scim：架构：扩展： enterprise： 1.0. 部门|String|
+   |名称. honorificPrefix|字符串|
+   |照片 [type eq "photo"]。值|字符串|
+   |profileUrl|字符串|
+   |timezone|字符串|
+   |userType|字符串|
+   |urn： scim：架构：扩展： enterprise： 1.0. 部门|字符串|
    |urn： scim：架构：扩展： enterprise： 1.0. manager|参考|
-   |urn： scim：架构：扩展： enterprise： 1.0. employeeNumber|String|
-   |urn： scim：架构：扩展： enterprise： 1.0. costCenter|String|
-   |urn： scim：架构：扩展： enterprise： 1.0. 组织|String|
-   |urn： scim：架构：扩展： enterprise：1。0|String|
+   |urn： scim：架构：扩展： enterprise： 1.0. employeeNumber|字符串|
+   |urn： scim：架构：扩展： enterprise： 1.0. costCenter|字符串|
+   |urn： scim：架构：扩展： enterprise： 1.0. 组织|字符串|
+   |urn： scim：架构：扩展： enterprise：1。0|字符串|
 
 12. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 组同步到时差**"。
 
@@ -162,14 +162,14 @@ ms.locfileid: "85389848"
 
 此操作会对“设置”部分的“范围”中定义的所有用户和组启动初始同步周期 。 初始周期执行的时间比后续周期长，只要 Azure AD 预配服务正在运行，后续周期大约每隔 40 分钟就会进行一次。 
 
-## <a name="step-5-monitor-your-deployment"></a>步骤 5. 监视部署
+## <a name="step-5-monitor-your-deployment"></a>步骤 5。 监视部署
 配置预配后，请使用以下资源来监视部署：
 
 1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
 2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
-3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。
+3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 有关隔离状态的详细信息，请访问[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)。
 
-## <a name="connector-limitations"></a>连接器限制
+## <a name="troubleshooting-tips"></a>故障排查提示
 
 * 配置 Slack 的 **displayName** 属性时，请注意以下行为：
 
@@ -179,11 +179,15 @@ ms.locfileid: "85389848"
   
   * 允许使用的标点符号包括句点、下划线、连字符、撇号、括号（例如 ( [ { } ] )****）和分隔符（例如 , / ;****）。
   
+  * displayName 属性不能包含 "@" 字符。 如果包含 "@"，则可能会在预配日志中找到已跳过的事件，其中描述为 "AttributeValidationFailed"。
+
   * 仅当在 Slack 的工作区/组织中配置了这两个设置时才进行更新 - **启用配置文件同步**和**用户无法更改其显示名称**。
-  
+
 * Slack 的 **userName** 属性必须小于 21 个字符并具有唯一值。
 
 * 时差仅允许与属性 "**用户名**" 和 "**电子邮件**" 匹配。  
+  
+* 常见的错误代码记录在官方可宽延时间文档中-https://api.slack.com/scim#errors
 
 ## <a name="change-log"></a>更改日志
 

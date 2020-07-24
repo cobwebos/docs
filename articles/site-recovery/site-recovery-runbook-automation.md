@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: 25290a66da3d5c8325513b2bea6d27d12ca7da70
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1df17ccb41c974c8939710850b5bb71ee3a5ef1b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134802"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021573"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>将 Azure 自动化 Runbook 添加到恢复计划
 
@@ -43,7 +43,7 @@ ms.locfileid: "86134802"
 
 脚本运行时，会将恢复计划上下文注入 runbook。 上下文包含表中汇总的变量。
 
-| **变量名称** | **说明** |
+| **变量名称** | **描述** |
 | --- | --- |
 | RecoveryPlanName |恢复计划名称。 用于基于名称的操作。 |
 | FailoverType |指定它是测试故障转移还是生产故障转移。 
@@ -199,7 +199,7 @@ Aman Sharma 在[收集云](http://harvestingclouds.com)上的博客提供了一�
 - 例如，SharePoint 恢复有两个前端。 基本业务线 (LOB) 应用程序只有一个前端。
 - 在此方案中，无法为每个恢复计划创建单独的变量。
 
-在下面的示例中，我们在 Azure 自动化帐户中创建一个[复杂变量](/powershell/module/servicemanagement/azure/set-azureautomationvariable)。
+在下面的示例中，我们在 Azure 自动化帐户中创建一个[复杂变量](/powershell/module/servicemanagement/azure.service/set-azureautomationvariable)。
 
 为此，请使用 Azure PowerShell 指定多个值。
 

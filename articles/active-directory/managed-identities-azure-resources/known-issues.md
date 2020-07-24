@@ -17,12 +17,12 @@ ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6f18c9fe43b0b714e5709b014c051520b3722138
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: d8aa6cc7894b13789fe196e32c401128572346bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855138"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019057"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure 资源托管标识的 FAQ 和已知问题
 
@@ -45,7 +45,7 @@ ms.locfileid: "85855138"
 
 ### <a name="do-managed-identities-have-a-backing-app-object"></a>托管标识是否具有后备应用对象？
 
-不能。 托管标识和 Azure AD 应用注册在目录中是不同的。 
+否。 托管标识和 Azure AD 应用注册在目录中是不同的。 
 
 应用注册有两个组件：应用程序对象和服务主体对象。 Azure 资源的托管标识只有其中一个组件：服务主体对象。 
 
@@ -55,9 +55,12 @@ ms.locfileid: "85855138"
 
 否，Azure 云服务中没有支持 Azure 资源托管标识的计划。
 
-### <a name="does-managed-identities-for-azure-resources-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Azure 资源托管标识能否用于 Active Directory 身份验证库 (ADAL) 或 Microsoft 身份验证库 (MSAL)？
+### <a name="what-is-the-credential-associated-with-a-managed-identity-how-long-is-it-valid-and-how-often-is-it-rotated"></a>什么是与托管标识关联的凭据？ 它有多长时间有效以及轮换的频率如何？
 
-否，Azure 资源托管标识尚未与 ADAL 或 MSAL 集成。 有关使用 REST 终结点获取 Azure 资源托管标识的令牌的详细信息，请参阅[如何在 Azure VM 上使用 Azure 资源托管标识来获取访问令牌](how-to-use-vm-token.md)。
+> [!NOTE]
+> 托管标识身份验证的方式是内部实现详细信息，如有更改，恕不另行通知。
+
+托管标识使用基于证书的身份验证。 每个托管标识的凭据的有效期为90天，并且会在45天后滚动。
 
 ### <a name="what-is-the-security-boundary-of-managed-identities-for-azure-resources"></a>什么是 Azure 资源托管标识的安全边界？
 
@@ -73,7 +76,7 @@ ms.locfileid: "85855138"
 
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>如果我将订阅移动到另一个目录中，是否会自动重新创建托管标识？
 
-不能。 如果你将订阅移动到另一个目录中，则必须手动重新创建标识并重新向它们授予 Azure RBAC 角色分配。
+否。 如果你将订阅移动到另一个目录中，则必须手动重新创建标识并重新向它们授予 Azure RBAC 角色分配。
 - 对于系统分配的托管标识：禁用并重新启用。 
 - 对于用户分配的托管标识：删除、重新创建并重新将其附加到所需的资源（例如虚拟机）
 
@@ -133,7 +136,7 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
  - 对于系统分配的托管标识：禁用并重新启用。 
  - 对于用户分配的托管标识：删除、重新创建并重新将其附加到所需的资源（例如虚拟机）
 
-有关详细信息，请参阅将[Azure 订阅转移到不同的 Azure AD 目录（预览版）](../../role-based-access-control/transfer-subscription.md)。
+有关详细信息，请参阅[将 Azure 订阅转移到其他 Azure AD 目录（预览版）](../../role-based-access-control/transfer-subscription.md)。
 
 ### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>将用户分配的托管标识移动到其他资源组/订阅
 

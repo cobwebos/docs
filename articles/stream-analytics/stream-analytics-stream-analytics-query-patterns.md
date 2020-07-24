@@ -8,11 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
-ms.openlocfilehash: 78dde3f6706ecbc54daca162ac718911752fa0ca
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: c79d810979641d1dc128c741c2124d9b5887aa3d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832956"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020740"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Azure 流分析中的常见查询模式
 
@@ -83,7 +84,7 @@ FROM Input
 ```
 ## <a name="data-aggregation-over-time"></a>随时间的数据聚合
 
-若要计算某个时间范围内的信息，可以将数据聚合在一起。 此示例计算了每个特定汽车制造商在过去 10 分钟内的计数。
+若要计算某个时间范围内的信息，可以将数据聚合在一起。 在此示例中，对每个特定汽车发出的过去10秒的时间计算一次计数。
 
 **输入**：
 

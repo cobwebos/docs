@@ -2,25 +2,22 @@
 title: 使用租户限制管理对 SaaS 应用的访问 - Azure AD
 description: 如何使用租户限制来根据用户的 Azure AD 租户管理可访问应用的用户。
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: kenwith
-ms.reviewer: richagi
+ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd302791aa783f1a95d48f666366aa845fcaadbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae90a682ea2d1abb8159ec28ed02ed122494f512
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763017"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019244"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租户限制管理对 SaaS 云应用程序的访问
 
@@ -101,7 +98,7 @@ ms.locfileid: "84763017"
 
 2. 在左窗格中选择“Azure Active Directory”。 随即显示 Azure Active Directory 概述页面。
 
-3. 在“其他功能”标题中，选择“租户限制” 。
+3. 在 "概述" 页上，选择 "**租户限制**"。
 
 Restricted-Access-Context 租户的管理员可以使用此报告来查看由于租户限制策略而被阻止的登录，包括使用的标识和目标目录 ID。 如果设置限制的租户是登录的用户租户或资源租户，则会包含登录。
 

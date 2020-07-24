@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 723329022d748ee18a07fcaeaecc2aff0e5f707b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a1952f6dccf12de4cb1571dacabecf78c65cd01b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528972"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021641"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>启用区域以对 Azure 虚拟机进行灾难恢复
 
@@ -20,7 +20,6 @@ ms.locfileid: "86528972"
 
 >[!NOTE]
 >
->- Site Recovery 当前不支持通过门户对区域到灾难恢复进行区域恢复计划。 请使用 PowerShell 或 REST API 来利用针对区域进行灾难恢复的恢复计划。 
 >- 对区域到区域灾难恢复的支持当前限制为两个区域：东南亚和英国南部。  
 >- 如果客户使用区域进行灾难恢复，则 Site Recovery 不会将客户数据从其部署到的区域中移出或存储。 如果客户选择了不同的区域，则他们可能会选择恢复服务保管库。 恢复服务保管库包含元数据，但没有实际的客户数据。
 
@@ -66,7 +65,7 @@ Site Recovery 服务通过在计划内和计划外的停机期间保持业务应
 
 在将区域部署到 Vm 的区域灾难恢复之前，请务必确保 VM 上启用的其他功能可与区域进行互操作，以便进行灾难恢复。
 
-|Feature  | 支持声明  |
+|功能  | 支持声明  |
 |---------|---------|
 |经典 VM   |     不支持    |
 |ARM Vm    |    支持    |

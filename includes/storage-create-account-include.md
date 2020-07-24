@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/20/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 83d1804aaebb20439f40cc0516b03f436837855c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1295160beac83351f3f5243054f91558ad6e0191
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75968308"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020963"
 ---
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 
@@ -21,5 +21,4 @@ ms.locfileid: "75968308"
 
 还可使用 [Azure PowerShell](../articles/storage/common/storage-powershell-guide-full.md)、[Azure CLI](../articles/storage/common/storage-azure-cli.md) 或[适用于 .NET 的 Azure 存储资源提供程序](https://azure.microsoft.com/resources/samples/storage-dotnet-resource-provider-getting-started/)创建 Azure 存储帐户。
 
-如果暂时不想在 Azure 中创建存储帐户，也可以使用 Azure 存储模拟器在本地环境中运行和测试代码。 有关详细信息，请参阅 [使用 Azure 存储模拟器进行开发和测试](../articles/storage/common/storage-use-emulator.md)。
-
+如果你不希望此时在 Azure 中创建存储帐户，也可以使用 Azurite 存储模拟器在本地环境中运行和测试代码。 有关详细信息，请参阅[将 Azurite 模拟器用于本地 Azure 存储开发](../articles/storage/common/storage-use-azurite.md)。

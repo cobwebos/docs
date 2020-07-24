@@ -13,11 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: f9134dd3bc926e6e2f454e5187e03365e91ed22a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93ef342ecee9bb9e2f32400655db0cacc01835c0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75780328"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023103"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>使用媒体服务 REST API 创建筛选器
 
@@ -25,7 +26,7 @@ ms.locfileid: "75780328"
 
 有关此功能及其使用方案的详细说明，请参阅[动态清单](filters-dynamic-manifest-overview.md)和[筛选器](filters-concept.md)。
 
-本主题展示了如何为点播视频资产定义筛选器，以及如何使用 REST API 创建[帐户筛选器](https://docs.microsoft.com/rest/api/media/accountfilters)和[资产筛选器](https://docs.microsoft.com/rest/api/media/assetfilters)。 
+本主题展示了如何为点播视频资产定义筛选器，以及如何使用 REST API 创建[帐户筛选器](/rest/api/media/accountfilters)和[资产筛选器](/rest/api/media/assetfilters)。 
 
 > [!NOTE]
 > 请确保查看 [presentationTimeRange](filters-concept.md#presentationtimerange)。
@@ -96,7 +97,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 筛选器已创建。
 
-有关详细信息，请参阅[创建或更新](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate)。 此外，请参阅[筛选器的 JSON 示例](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter)。
+有关详细信息，请参阅[创建或更新](/rest/api/media/accountfilters/createorupdate)。 此外，请参阅[筛选器的 JSON 示例](/rest/api/media/accountfilters/createorupdate#create-an-account-filter)。
 
 ## <a name="create-asset-filters"></a>创建资产筛选器  
 
@@ -114,13 +115,13 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 资产筛选器已创建。
 
-有关如何创建或更新资产筛选器的详细信息，请参阅[创建或更新](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate)。 此外，请参阅[筛选器的 JSON 示例](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter)。 
+有关如何创建或更新资产筛选器的详细信息，请参阅[创建或更新](/rest/api/media/assetfilters/createorupdate)。 此外，请参阅[筛选器的 JSON 示例](/rest/api/media/assetfilters/createorupdate#create-an-asset-filter)。 
 
 ## <a name="associate-filters-with-streaming-locator"></a>将筛选器与流定位器关联
 
 可以指定资产或帐户筛选器的列表，这些筛选器将应用于流定位器。 [动态打包程序（流式处理终结点）](dynamic-packaging-overview.md)将此筛选器列表与客户端在 URL 中指定的筛选器一起应用。 此组合将生成[动态清单](filters-dynamic-manifest-overview.md)，该清单基于你在流定位器上指定的“URL + 筛选器”中的筛选器。 如果要应用筛选器，但不希望在 URL 中公开筛选器名称，建议使用此功能。
 
-若要使用 REST 创建筛选器并将其与流定位器关联，请使用[流定位器 - 创建](https://docs.microsoft.com/rest/api/media/streaminglocators/create) API并在[请求正文](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)中指定 `properties.filters`。
+若要使用 REST 创建筛选器并将其与流定位器关联，请使用[流定位器 - 创建](/rest/api/media/streaminglocators/create) API并在[请求正文](/rest/api/media/streaminglocators/create#request-body)中指定 `properties.filters`。
                                 
 ## <a name="stream-using-filters"></a>使用筛选器的流
 

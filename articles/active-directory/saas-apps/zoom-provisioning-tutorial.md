@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 94c261da0c935cb7a41dde768069099b4e5ed251
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb5e51503fa20cd3ace6070cb1b51f5bf32d0e13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80384069"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016250"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>教程：为自动用户预配配置缩放
 
@@ -48,7 +48,7 @@ ms.locfileid: "80384069"
 2. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)中。
 3. 确定要[在 Azure AD 和缩放之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
 
-## <a name="step-2-configure-zoom-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置缩放以支持设置 Azure AD
+## <a name="step-2-configure-zoom-to-support-provisioning-with-azure-ad"></a>步骤 2： 配置缩放以支持设置 Azure AD
 
 1. 登录到[缩放管理控制台](https://zoom.us/signin)。 导航到左侧导航窗格中**的 "高级 > 缩放开发人员**"。
 
@@ -70,7 +70,7 @@ ms.locfileid: "80384069"
 
     ![缩放安装](media/zoom-provisioning-tutorial/zoom05.png)
 
-## <a name="step-3-add-zoom-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加缩放
+## <a name="step-3-add-zoom-from-the-azure-ad-application-gallery"></a>步骤 3： 从 Azure AD 应用程序库添加缩放
 
 添加 Azure AD 应用程序库中的 "缩放"，开始管理预配以进行缩放。 如果以前为 SSO 设置了缩放，则可以使用相同的应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)详细了解如何从库中添加应用程序。 
 
@@ -121,11 +121,11 @@ ms.locfileid: "80384069"
 
    |Attribute|类型|
    |---|---|
-   |userName|String|
+   |userName|字符串|
    |活动|Boolean|
-   |name.givenName|String|
-   |name.familyName|String|
-   |电子邮件 [类型 eq "work"]|String|
+   |name.givenName|字符串|
+   |name.familyName|字符串|
+   |电子邮件 [类型 eq "work"]|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|字符串|
 
 10. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
@@ -153,6 +153,9 @@ ms.locfileid: "80384069"
 
 ## <a name="connector-limitations"></a>连接器限制
 * 缩放最多允许当今最多9999个基本用户。
+
+## <a name="change-log"></a>更改日志
+* 05/14/2020-支持为电子邮件添加的更新操作 [类型 eq "work"] 属性。
 
 ## <a name="additional-resources"></a>其他资源
 

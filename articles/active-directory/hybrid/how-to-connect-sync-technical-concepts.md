@@ -16,19 +16,19 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 251d156afbd367e83945397760a6afe98a1cfb98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01e53b30a4c27296e30e031ffb771697afa8e1e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356927"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019669"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Azure AD Connect 同步：技术概念
 本文是[了解体系结构](how-to-connect-sync-technical-concepts.md)主题的总结。
 
 Azure AD Connect 同步构建在稳固的元目录同步平台基础之上。
 以下部分介绍了元目录同步的概念。
-Azure Active Directory 同步服务基于 MIIS、ILM 和 FIM 进行构建，它提供了下一个平台，用于连接到数据源、同步数据源之间的数据以及设置标识和取消标识设置。
+Azure Active Directory 同步服务基于 MIIS （Microsoft Identity Integration Server）、ILM （标识生命周期管理器）和 FIM （Forefront Identity Manager）进行构建，它提供了下一个平台，用于连接到数据源、同步数据源之间的数据以及设置和取消设置标识。
 
 ![技术概念](./media/how-to-connect-sync-technical-concepts/scenario.png)
 

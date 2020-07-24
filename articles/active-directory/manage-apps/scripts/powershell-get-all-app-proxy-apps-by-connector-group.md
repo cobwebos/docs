@@ -1,5 +1,5 @@
 ---
-title: PowerShell 示例-列出所有应用程序代理连接器组
+title: 列出应用 Azure AD 应用程序代理连接器组
 description: PowerShell 示例，列出所有 Azure Active Directory （Azure AD）应用程序代理连接器组与分配的应用程序。
 services: active-directory
 author: msmimart
@@ -12,11 +12,12 @@ ms.date: 12/05/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dcf2eb6a1904e4a7223a19e598f0c06ddc36f71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f381d64e06d8b7abf67b08297baa616397cc439
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75482161"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019431"
 ---
 # <a name="get-all-application-proxy-apps-and-list-by-connector-group"></a>获取所有应用程序代理应用并按连接器组列出
 
@@ -36,7 +37,7 @@ ms.locfileid: "75482161"
 
 ## <a name="script-explanation"></a>脚本说明
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
 |[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | 获取服务主体。 |
 |[Get-AzureADApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0) | 获取 Azure AD 应用程序。 |

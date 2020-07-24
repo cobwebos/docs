@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 01d41b20c543262280e215cf4e31fd0cccce877f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f7f6de717f0ed9a2e27e15199b6f0ea566e0fdcd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531034"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021624"
 ---
 # <a name="connect-your-pulse-connect-secure-to-azure-sentinel"></a>将脉冲连接安全连接到 Azure Sentinel
+
+> [!IMPORTANT]
+> Azure Sentinel 中的脉冲连接安全数据连接器目前为公共预览版。
+> 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本文介绍如何将[脉冲连接安全](https://www.pulsesecure.net/products/pulse-connect-secure/)设备连接到 Azure Sentinel。 通过脉冲连接安全数据连接器，可以轻松地将脉冲连接安全日志与 Azure Sentinel 连接，以查看仪表板、创建自定义警报和改进调查。 脉冲连接安全与 Azure Sentinel 之间的集成利用 Syslog。
 

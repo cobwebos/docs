@@ -1,6 +1,6 @@
 ---
-title: Azure 网络观察程序中的安全组视图简介 | Microsoft 文档
-description: 此页概述了网络观察程序安全视图功能
+title: Azure 网络观察程序中的有效安全规则视图简介 |Microsoft Docs
+description: 此页概述了网络观察程序-有效的安全规则视图功能
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -11,11 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: damendo
-ms.openlocfilehash: 18619cc0f7a21a39d0802575c484c68c5fa1a624
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4c601184a060c3dfc4f033bcf983bf773f7167f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76840751"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022644"
 ---
 # <a name="introduction-to-effective-security-rules-view-in-azure-network-watcher"></a>Azure 网络观察程序中的有效安全规则视图简介
 
@@ -32,6 +33,11 @@ ms.locfileid: "76840751"
 ![明细][2]
 
 ### <a name="next-steps"></a>后续步骤
+
+还可以通过下面列出的其他方法使用 "*有效安全组*" 功能：
+* [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/NetworkInterfaces/ListEffectiveNetworkSecurityGroups)
+* [PowerShell](https://docs.microsoft.com/powershell/module/az.network/get-azeffectivenetworksecuritygroup?view=azps-4.4.0)
+* [Azure CLI](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-list-effective-nsg)
 
 通过访问[使用 PowerShell 审核网络安全组设置](network-watcher-nsg-auditing-powershell.md)，了解如何审核网络安全组设置
 

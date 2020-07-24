@@ -16,12 +16,12 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3afec7c31488529af9ba15100c914899a0d1d808
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d64bfe66f5fb871ff9f85a5d58d128ac44643846
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357454"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019755"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同步：目录扩展
 通过目录扩展，可以使用本地 Active Directory 中的属性扩展 Azure AD 中的架构。 此功能允许使用继续在本地管理的属性来构建 LOB 应用。 可通过[扩展](https://docs.microsoft.com/graph/extensibility-overview
@@ -33,8 +33,8 @@ ms.locfileid: "85357454"
 
 在安装向导的自定义设置路径中配置要同步的其他属性。
 
->[!NOTE]
->“可用属性”框区分大小写。
+> [!NOTE]
+> 在1.2.65.0 以前的版本 Azure AD Connect 中，**可用属性**的搜索框区分大小写。
 
 ![架构扩展向导](./media/how-to-connect-sync-feature-directory-extensions/extension2.png)  
 

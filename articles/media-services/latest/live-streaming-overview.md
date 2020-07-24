@@ -13,11 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: juliako
-ms.openlocfilehash: 23ee7ba7a5456916eb307e21aa2074924614cb4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd592469a4435504f1eecf1f24e50faf23fad17a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418137"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022967"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
 
@@ -34,7 +35,7 @@ ms.locfileid: "84418137"
 本文提供有关使用媒体服务实时传送视频流的概述和指导，并提供其他相关文章的链接。
  
 > [!NOTE]
-> 你可以使用[Azure 门户](https://portal.azure.com/)来管理 V3[实时事件](live-events-outputs-concept.md)，查看 v3[资产](assets-concept.md)，获取有关访问 api 的信息。 对于其他所有管理任务（例如，转换和作业），请使用 [REST API](https://docs.microsoft.com/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
+> 你可以使用[Azure 门户](https://portal.azure.com/)来管理 V3[实时事件](live-events-outputs-concept.md)，查看 v3[资产](assets-concept.md)，获取有关访问 api 的信息。 对于其他所有管理任务（例如，转换和作业），请使用 [REST API](/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
 
 ## <a name="dynamic-packaging-and-delivery"></a>动态打包和交付
 
@@ -53,7 +54,7 @@ ms.locfileid: "84418137"
 
 ## <a name="live-event-types"></a>实时事件类型
 
-[实时事件](https://docs.microsoft.com/rest/api/media/liveevents)负责引入和处理实时视频源。 直播活动可以设置为“直通”（本地实时编码器发送多比特率流）或“实时编码”（本地实时编码器发送单比特率流）。 有关媒体服务 v3 中的实时流式处理的详细信息，请参阅[实时事件和实时输出](live-events-outputs-concept.md)。
+[实时事件](/rest/api/media/liveevents)负责引入和处理实时视频源。 直播活动可以设置为“直通”（本地实时编码器发送多比特率流）或“实时编码”（本地实时编码器发送单比特率流）。 有关媒体服务 v3 中的实时流式处理的详细信息，请参阅[实时事件和实时输出](live-events-outputs-concept.md)。
 
 ### <a name="pass-through"></a>直通
 
@@ -107,7 +108,7 @@ Live 脚本是一项功能，可将其用于传递或实时编码的实时事件
     * 停止直播活动。 实时事件停止后，不会产生任何费用。 当需要重新启动它时，它会采用相同的引入 URL，因此，无需重新配置编码器。
     * 除非想要继续以点播流形式提供直播活动的存档，否则可以停止流式处理终结点。 如果实时事件处于停止状态，则不会产生任何费用。
 
-实时输出要存档到的资产，在删除实时输出时，会自动成为点播资产。 必须先删除所有实时输出，然后才能停止实时事件。 可以使用可选的标志[removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body)自动删除停止时的实时输出。 
+实时输出要存档到的资产，在删除实时输出时，会自动成为点播资产。 必须先删除所有实时输出，然后才能停止实时事件。 可以使用可选的标志[removeOutputsOnStop](/rest/api/media/liveevents/stop#request-body)自动删除停止时的实时输出。 
 
 > [!TIP]
 > 请参阅[实时传送视频流教程](stream-live-tutorial-with-api.md)，其中介绍了实现上述步骤的代码。
@@ -118,7 +119,7 @@ Live 脚本是一项功能，可将其用于传递或实时编码的实时事件
 - [使用云 DVR](live-event-cloud-dvr.md)
 - [实时事件类型功能比较](live-event-types-comparison.md)
 - [状态和计费](live-event-states-billing.md)
-- [滞后时间](live-event-latency.md)
+- [延迟](live-event-latency.md)
 
 ## <a name="frequently-asked-questions"></a>常见问题
 

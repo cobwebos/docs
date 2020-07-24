@@ -5,22 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 07/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f5e5a4075705e43dc0ac37181bf33b078013177
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81c3715995d0d53cd72acf7277f46a279fa4cfb2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555227"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019652"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory 标识保护和 Microsoft Graph 入门
 
-Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active Directory 标识保护](../active-directory-identityprotection.md) API 的主页。 有四个 Api 公开了有关风险用户和登录的信息。使用第一个 API **riskDetection**，可以查询 Microsoft Graph 以获取用户和登录链接的风险检测的列表以及有关检测的相关信息。 使用第二个 API **riskyUsers** 可以在 Microsoft Graph 中查询有关“标识保护”作为风险检测到的用户的信息。 第三个 API **signIn** 可以通过与风险状态、详细信息和级别相关的特定属性在 Microsoft Graph 中查询有关 Azure AD 登录的信息。 使用第四个 API **identityRiskEvents**可以查询 Microsoft Graph 以获取[风险检测](../reports-monitoring/concept-risk-events.md)和相关信息的列表。 IdentityRiskEvents API 将于2020年1月10日弃用;建议改为使用**riskDetections** API。 本文可帮助你开始连接到 Microsoft Graph 并查询这些 API。 如需深入介绍、完整文档以及访问 Graph 浏览器，请参阅 [Microsoft Graph 站点](https://graph.microsoft.io/)或以下 API 的特定参考文档：
+Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active Directory 标识保护](../active-directory-identityprotection.md) API 的主页。 有三个 Api 公开了有关风险用户和登录的信息。使用第一个 API **riskDetection**，可以查询 Microsoft Graph 以获取用户和登录链接的风险检测的列表以及有关检测的相关信息。 使用第二个 API **riskyUsers** 可以在 Microsoft Graph 中查询有关“标识保护”作为风险检测到的用户的信息。 第三个 API **signIn** 可以通过与风险状态、详细信息和级别相关的特定属性在 Microsoft Graph 中查询有关 Azure AD 登录的信息。 
+
+本文可帮助你开始连接到 Microsoft Graph 并查询这些 API。 如需深入介绍、完整文档以及访问 Graph 浏览器，请参阅 [Microsoft Graph 站点](https://graph.microsoft.io/)或以下 API 的特定参考文档：
 
 * [riskDetection API](/graph/api/resources/riskdetection?view=graph-rest-v1.0)
 * [riskyUsers API](/graph/api/resources/riskyuser?view=graph-rest-v1.0)
@@ -37,7 +39,7 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
 
 ### <a name="retrieve-your-domain-name"></a>检索域名 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。  
+1. 登录 [Azure 门户](https://portal.azure.com)。  
 1. 浏览到**Azure Active Directory**  >  **自定义域名**。 
 1. 记下 `.onmicrosoft.com` 域，稍后的步骤中将需要此信息。
 
@@ -68,7 +70,7 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
 1. 从创建的**应用程序**中，选择 "**证书" & "机密**"。
 1. 在 "**客户端密码**" 下，选择 "**新建客户端密码**"。
    1. 为客户端密码指定一个**描述**，并根据组织策略设置过期时间段。
-   1. 选择 **添加** 。
+   1. 选择“添加”  。
 
    > [!NOTE]
    > 如果丢失此密钥，必须返回到此部分并创建新密钥。 将此密钥保密：持有该密钥的任何人都可以访问数据。

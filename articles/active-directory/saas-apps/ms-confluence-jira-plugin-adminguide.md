@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8679f9a03fded546db68f058bca716ba053aa0fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5884685f12c4697558a008287f446e52e5105d3b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73161205"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016779"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>将 Atlassian Jira 和 Confluence 与 Azure Active Directory 结合使用的管理员指南
 
@@ -139,7 +139,7 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 
 * **启用单一注销**：如果希望在用户从 Jira 或 Confluence 注销时你要从 Azure AD 注销，请选中此选项。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 * **收到多个证书错误**：登录到 Azure AD，并删除针对应用提供的多个证书。 确保只存在一个证书。
 
@@ -147,7 +147,7 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 
 * **如何禁用 WebSudo（禁用安全管理员会话）**：
 
-  * 对于 Jira，安全管理员会话（即，在访问管理功能之前需要确认密码）默认已启用。 如果想要在 Jira 实例中禁用此功能，请在 jira-config.properties 文件中指定以下行：`ira.websudo.is.disabled = true`
+  * 对于 Jira，安全管理员会话（即，在访问管理功能之前需要确认密码）默认已启用。 如果想要在 Jira 实例中禁用此功能，请在 jira-config.properties 文件中指定以下行：`jira.websudo.is.disabled = true`
 
   * 对于 Confluence，请遵循 [Confluence 支持站点](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html)中的步骤。
 

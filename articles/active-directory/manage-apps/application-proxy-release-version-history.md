@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/07/2020
+ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83c41a357ebaf65cca8465bfc48dda3dd065c3e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 042509240eb2b88446d3ac1956d9056d5c39dfc8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759991"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019380"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD 应用程序代理：版本发布历史记录
 本文列出了已发布的 Azure Active Directory （Azure AD）应用程序代理的版本和功能。 Azure AD 团队定期更新具有新特性和功能的应用程序代理。 发布新版本时，应用程序代理连接器会自动更新。 
@@ -36,6 +36,31 @@ ms.locfileid: "84759991"
 了解 Azure AD 应用程序代理连接器 | 了解有关[连接器管理](application-proxy-connectors.md)以及连接器[自动升级](application-proxy-connectors.md#automatic-updates)方式的详细信息。
 Azure AD 应用程序代理连接器下载 |  [下载最新的连接器](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download)。
 
+## <a name="1519750"></a>1.5.1975.0
+
+### <a name="release-status"></a>版本状态
+
+2020年7月22日：已发布以便下载此版本仅可通过下载页面安装。 此版本的自动升级版本将在以后发布。
+
+### <a name="new-features-and-improvements"></a>新增功能和改进
+-   改进了对 Azure 政府云环境的支持。 有关如何正确安装 Azure 政府云连接器的步骤，请查看[先决条件](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls)和[安装步骤](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud)。
+- 支持将远程桌面服务 web 客户端与应用程序代理配合使用。 有关更多详细信息，请参阅[通过 Azure AD 应用程序代理发布远程桌面](application-proxy-integrate-with-remote-desktop-services.md)。
+- 提高了 websocket 扩展协商。 
+
+### <a name="fixed-issues"></a>已修复的问题
+- 修复了强制小写字符串的 websocket 问题。
+- 修复了导致连接器有时无响应的问题。
+
+## <a name="1516260"></a>1.5.1626.0
+
+### <a name="release-status"></a>版本状态
+
+2020年7月17日：已发布以供下载。 此版本仅可通过下载页面安装。 此版本的自动升级版本将在以后发布。
+
+### <a name="fixed-issues"></a>已修复的问题
+- 解决了以前版本中存在的内存泄漏问题
+- Websocket 支持的一般改进
+
 ## <a name="1515260"></a>1.5.1526.0
 
 ### <a name="release-status"></a>版本状态
@@ -47,7 +72,7 @@ Azure AD 应用程序代理连接器下载 |  [下载最新的连接器](https:/
 - 改进了连接器与 Azure 服务之间的信号。 这包括支持用于连接器与 Azure 服务之间的 WCF 通信的可靠会话，以及针对 WebSocket 通信的 DNS 缓存改进。
 - 支持在连接器与后端应用程序之间配置代理。 有关详细信息，请参阅[使用现有的本地代理服务器](application-proxy-configure-connectors-with-proxy-servers.md)。
 
-### <a name="fixed-issues"></a>修复的问题
+### <a name="fixed-issues"></a>已修复的问题
 - 删除了到端口8080的通信，以便从连接器连接到 Azure 服务。
 - 为 WebSocket 通信添加了调试跟踪。 
 - 当在后端应用程序 cookie 上设置时，解析保留 SameSite 属性。
@@ -65,7 +90,7 @@ Azure AD 应用程序代理连接器下载 |  [下载最新的连接器](https:/
 - 将 TLS 1.2 设置为连接器的默认协议。 
 - 添加了新的最终用户许可协议（EULA）。  
 
-### <a name="fixed-issues"></a>修复的问题
+### <a name="fixed-issues"></a>已修复的问题
 
 - 修复了一个 bug，该 bug 导致连接器中的内存泄漏。
 - 更新了 Azure 服务总线版本，其中包括针对连接器超时问题的 bug 修复。
@@ -76,7 +101,7 @@ Azure AD 应用程序代理连接器下载 |  [下载最新的连接器](https:/
 
 2018年1月19日：已发布以供下载
 
-### <a name="fixed-issues"></a>修复的问题
+### <a name="fixed-issues"></a>已修复的问题
 
 - 添加了对需要 cookie 中的域转换的自定义域的支持。
 

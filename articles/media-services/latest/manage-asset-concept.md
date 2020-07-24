@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 9136fd702fad5c12a8ec97a68ff8a592a203d7d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6accd303ba11c4c1406c7a157fa8176972fc7a3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582200"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022901"
 ---
 # <a name="manage-assets"></a>管理资产
 
-在 Azure 媒体服务的[资产](https://docs.microsoft.com/rest/api/media/assets)中可执行以下操作： 
+在 Azure 媒体服务的[资产](/rest/api/media/assets)中可执行以下操作： 
 
 * 将媒体文件上传到资产；
 * 将实时传送流引入和存档到资产；
@@ -56,13 +56,13 @@ ms.locfileid: "80582200"
     ```
 2. 获取具有读写权限的 SAS URL，用于将数字文件上传到资产容器。
 
-    可以使用媒体服务 API [列出资产容器 URL](https://docs.microsoft.com/rest/api/media/assets/listcontainersas)。
+    可以使用媒体服务 API [列出资产容器 URL](/rest/api/media/assets/listcontainersas)。
 
-    AssetContainerSas.listContainerSas 采用 [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) 参数，在此参数中可以设置 `expiryTime`。 时间应设置为小于 24 小时。
+    AssetContainerSas.listContainerSas 采用 [ListContainerSasInput](/rest/api/media/assets/listcontainersas#listcontainersasinput) 参数，在此参数中可以设置 `expiryTime`。 时间应设置为小于 24 小时。
 
-    [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) 返回多个 SAS URL，因为每个存储帐户有两个存储帐户密钥。 存储帐户有两个密钥，因为它有助于进行故障转移并无缝轮换存储帐户密钥。 第一个 SAS URL 表示第一个存储帐户密钥，第二个 SAS URL 表示第二个密钥。
+    [ListContainerSasInput](/rest/api/media/assets/listcontainersas#listcontainersasinput) 返回多个 SAS URL，因为每个存储帐户有两个存储帐户密钥。 存储帐户有两个密钥，因为它有助于进行故障转移并无缝轮换存储帐户密钥。 第一个 SAS URL 表示第一个存储帐户密钥，第二个 SAS URL 表示第二个密钥。
 3. 使用 Azure 存储 API 或 SDK（例如，[存储 REST API](../../storage/common/storage-rest-api-auth.md) 或 [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)）将文件上传到资产容器。
-4. 使用媒体服务 v3 API 创建用于处理“输入”资产的转换和作业。 有关详细信息，请参阅[转换和作业](transform-concept.md)。
+4. 使用媒体服务 v3 API 创建用于处理“输入”资产的转换和作业。 有关详细信息，请参阅[转换和作业](./transforms-jobs-concept.md)。
 5. 从“输出”资产流式传输内容。
 
 ### <a name="create-a-new-asset"></a>创建新资产
@@ -76,7 +76,7 @@ ms.locfileid: "80582200"
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{amsAccountName}/assets/{assetName}?api-version=2018-07-01
 ```
 
-有关 REST 示例，请参阅[使用 REST 创建资产](https://docs.microsoft.com/rest/api/media/assets/createorupdate#examples)示例。
+有关 REST 示例，请参阅[使用 REST 创建资产](/rest/api/media/assets/createorupdate#examples)示例。
 
 该示例演示如何创建**请求正文**，在该正文中可以指定说明、容器名称、存储帐户和其他有用信息。
 
@@ -107,7 +107,7 @@ curl -X PUT \
 
 ## <a name="ingest-and-archive-live-streams-into-an-asset"></a>将实时传送流引入和存档到资产
 
-在媒体服务中，[实时输出](https://docs.microsoft.com/rest/api/media/liveoutputs)对象类似于数字视频录制器，它会捕获实时流并将其记录到媒体服务帐户中的某个资产内。 记录的内容保存在[资产](https://docs.microsoft.com/rest/api/media/assets)资源定义的容器中。
+在媒体服务中，[实时输出](/rest/api/media/liveoutputs)对象类似于数字视频录制器，它会捕获实时流并将其记录到媒体服务帐户中的某个资产内。 记录的内容保存在[资产](/rest/api/media/assets)资源定义的容器中。
 
 有关详细信息，请参阅：
 
@@ -145,6 +145,6 @@ curl -X PUT \
 
 查看演示如何上传、编码、分析、流式传输和按需流式处理的完整代码示例： 
 
-* [Java](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/)； 
-* [.NET](https://docs.microsoft.com/samples/azure-samples/media-services-v3-dotnet/azure-media-services-v3-samples-using-net/)； 
-* [REST](https://docs.microsoft.com/samples/azure-samples/media-services-v3-rest-postman/azure-media-services-postman-collection/)。
+* [Java](/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/)； 
+* [.NET](/samples/azure-samples/media-services-v3-dotnet/azure-media-services-v3-samples-using-net/)； 
+* [REST](/samples/azure-samples/media-services-v3-rest-postman/azure-media-services-postman-collection/)。

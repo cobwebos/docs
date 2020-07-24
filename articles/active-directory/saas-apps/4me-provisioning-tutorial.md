@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 423ba8c7aea9659a4c91f68a01392954c2ba6db2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c83d43fe1a2068fa4c9f24a10c0975610142a84
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77059153"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87018683"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>教程：为4me 配置自动用户预配
 
@@ -127,7 +128,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![4me 用户映射](media/4me-provisioning-tutorial/4me-user-mapping.png)
     
-11. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到4me 的用户属性。 选为 "**匹配**" 属性的特性用于匹配4me 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
+11. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到4me 的用户属性。 选为 "**匹配**" 属性的特性用于匹配4me 中的用户帐户以执行更新操作。 请确保[4me 支持](https://developer.4me.com/v1/scim/users/)对所选的匹配属性进行筛选。 选择“保存”按钮以提交任何更改。
 
     ![4me 用户映射](media/4me-provisioning-tutorial/4me-user-attributes.png)
     

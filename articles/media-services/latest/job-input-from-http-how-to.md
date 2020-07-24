@@ -11,11 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: juliako
-ms.openlocfilehash: a3d4568dd237491f28ae2880bdd78dd236870c3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ff2bc6d4bb4f7b983787b287fbb27e1c33cc179
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74899832"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022984"
 ---
 # <a name="create-a-job-input-from-an-https-url"></a>从 HTTPS URL 创建作业输入
 
@@ -32,7 +33,7 @@ ms.locfileid: "74899832"
 
 ## <a name="job-error-codes"></a>作业错误代码
 
-请参阅[错误代码](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)。
+请参阅[错误代码](/rest/api/media/jobs/get#joberrorcode)。
 
 ## <a name="next-steps"></a>后续步骤
 

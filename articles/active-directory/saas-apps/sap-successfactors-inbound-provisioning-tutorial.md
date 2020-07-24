@@ -1,5 +1,5 @@
 ---
-title: 教程：在 Azure Active Directory 中配置 SuccessFactors 入站预配Microsoft Docs
+title: 教程：在 AD 和 Azure AD 中配置 SuccessFactors 入站预配 |Microsoft Docs
 description: 了解如何从 SuccessFactors 配置入站预配
 services: active-directory
 author: cmmdesai
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2019
 ms.author: chmutali
-ms.openlocfilehash: d9317a68c8967fbe0728e8c47e59dd33367c6163
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77b4336fd9430b523f4f9fa288b7451117f7e0c5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84702169"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016966"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>教程：配置 SAP SuccessFactors 以 Active Directory 用户预配（预览版）
 本教程的目的是说明将用户从 SuccessFactors Employee Central 预配到 Active Directory （AD）和 Azure AD 时需要执行的步骤，并提供对 SuccessFactors 的电子邮件地址的可选写回。 此集成在公共预览版中，支持从 SuccessFactors 员工中心检索70多个以上的[用户属性](../app-provisioning/sap-successfactors-attribute-reference.md)。

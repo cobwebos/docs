@@ -6,11 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 009e8c7e1cb59d68f3d3aa15de32ec47083095f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b9a7bf243931443b8273253dee7618c0e594aaf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513100"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020859"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>使用基于 Azure 资源管理器 SDK 的脚本管理 StorSimple 设备
 
@@ -24,7 +25,7 @@ ms.locfileid: "85513100"
 
 #### <a name="table-of-azure-resource-manager-sdk-based-sample-scripts"></a>基于 Azure 资源管理器 SDK 的示例脚本表
 
-| Azure 资源管理器脚本                    | 描述                                                                                                                                                                                                       |
+| Azure 资源管理器脚本                    | 说明                                                                                                                                                                                                       |
 |--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Authorize-ServiceEncryptionRollover.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Authorize-ServiceEncryptionRollover.ps1)          | 此脚本可用于授权 StorSimple 设备更改服务数据加密密钥。                                                                                                           |
 | [Create-StorSimpleCloudAppliance.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Create-StorSimpleCloudAppliance.ps1)              | 此脚本可用于创建 8010 或 8020 StorSimple 云设备。 然后，可以使用 StorSimple 数据管理器服务配置和注册云设备。                                                       |
@@ -53,8 +54,8 @@ ms.locfileid: "85513100"
 在开始之前，请确保具备以下条件：
 
 *   已安装 Azure PowerShell。 若要安装 Azure PowerShell 模块，请执行以下操作：
-    * 在 Windows 环境中，按照[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) 中的步骤操作。 可以在 StorSimple 的 Windows Server 主机（如果使用）上安装 Azure PowerShell。
-    * 在 Linux 或 MacOS 环境中，按照[在 MacOS 或 Linux 上安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurermps-maclinux) 中的步骤操作。
+    * 在 Windows 环境中，按照[安装和配置 Azure PowerShell](/powershell/azure/install-az-ps) 中的步骤操作。 可以在 StorSimple 的 Windows Server 主机（如果使用）上安装 Azure PowerShell。
+    * 在 Linux 或 MacOS 环境中，按照[在 MacOS 或 Linux 上安装和配置 Azure PowerShell](/powershell/azure/install-az-ps) 中的步骤操作。
 
 若要详细了解如何使用 Azure PowerShell，请转到 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 
