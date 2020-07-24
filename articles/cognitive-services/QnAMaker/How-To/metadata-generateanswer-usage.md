@@ -3,19 +3,17 @@ title: 将元数据与 GenerateAnswer API 配合使用 - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: QnA Maker 使你可以将元数据以键/值对的形式添加到问题/答案对。 你可以将结果筛选为用户查询，并存储可在后续对话中使用的其他信息。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.author: diberry
-ms.openlocfilehash: 171efd0e5750555130588f783c4a858def11afec
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.date: 07/16/2020
+ms.openlocfilehash: 863143cb2ec1085bf03b070c225f2be5e8e4393d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993501"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126170"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>使用 GenerateAnswer API 和元数据获取答案
 
@@ -146,7 +144,7 @@ var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnCont
 
 以前的 JSON 只请求30% 或高于阈值分数的答案。
 
-## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>将 QnA Maker 与 node.js 中的机器人配合使用
+## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>将 QnA Maker 与机器人一起使用 Node.js
 
 机器人框架使用[GETANSWER API](https://docs.microsoft.com/javascript/api/botbuilder-ai/qnamaker?view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-)提供对 QnA Maker 的属性的访问权限：
 
@@ -184,13 +182,40 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 {
     "question": "When does this hotel close?",
     "top": 1,
-    "strictFilters": [
-      {
-        "name": "restaurant",
-        "value": "paradise"
-      }]
+    "strictFilters": [ { "name": "restaurant", "value": "paradise"}]
 }
 ```
+
+### <a name="logical-and-by-default"></a>逻辑与默认值
+
+若要在查询中组合多个元数据筛选器，请将其他元数据筛选器添加到属性的数组 `strictFilters` 。 默认情况下，这些值在逻辑上组合在一起（和）。 逻辑组合要求所有筛选器都与 QnA 对匹配，以便在答案中返回该对。
+
+这等效于将 `strictFiltersCompoundOperationType` 属性与的值一起使用 `AND` 。
+
+### <a name="logical-or-using-strictfilterscompoundoperationtype-property"></a>逻辑或使用 strictFiltersCompoundOperationType 属性
+
+合并多个元数据筛选器时，如果只关心一个或某些筛选器匹配，请使用 `strictFiltersCompoundOperationType` 值为的属性 `OR` 。
+
+这允许您的知识库在任何筛选器匹配但不返回没有元数据的答案时返回答案。
+
+```json
+{
+    "question": "When do facilities in this hotel close?",
+    "top": 1,
+    "strictFilters": [
+      { "name": "type","value": "restaurant"},
+      { "name": "type", "value": "bar"},
+      { "name": "type", "value": "poolbar"}
+    ],
+    "strictFiltersCompoundOperationType": "OR"
+}
+```
+
+### <a name="metadata-examples-in-quickstarts"></a>快速入门中的元数据示例
+
+有关元数据的详细信息，请参阅 QnA Maker 门户中的元数据：
+* [创作-将元数据添加到 QnA 对](../quickstarts/add-question-metadata-portal.md#add-metadata-to-filter-the-answers)
+* [查询预测-按元数据筛选应答](../quickstarts/get-answer-from-knowledge-base-using-url-tool.md)
 
 <a name="keep-context"></a>
 
@@ -243,7 +268,7 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 |代码|说明|
 |:--|--|
-|2xx|成功|
+|2xx|Success|
 |400|请求的参数不正确，这意味着所需的参数缺失、格式错误或太大|
 |400|请求的正文不正确，这意味着 JSON 缺失、格式错误或太大|
 |401|密钥无效|

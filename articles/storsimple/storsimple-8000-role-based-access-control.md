@@ -14,15 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: a6dc55138977727dc5399ec9653340225bcc3901
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec98060a09a1fad4f851689daff3f4b578c164f5
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514642"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124096"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>适用于 StorSimple 的基于角色的访问控制
 
-本文简短地说明了如何对 StorSimple 设备使用 Azure 基于角色的访问控制 (RBAC)。 RBAC 提供针对 Azure 的细化访问管理。 使用 RBAC 只向 StorSimple 用户授予执行作业所需的适当访问量，而不用向每个人授予不受限制的访问。 若要深入了解 Azure 中访问管理的基础知识，请参阅 [Azure 门户中基于角色的访问控制入门](../role-based-access-control/overview.md)。
+本文提供了有关如何将基于 Azure 角色的访问控制（Azure RBAC）用于 StorSimple 设备的简短说明。 RBAC 提供针对 Azure 的细化访问管理。 使用 RBAC 只向 StorSimple 用户授予执行作业所需的适当访问量，而不用向每个人授予不受限制的访问。 若要深入了解 Azure 中访问管理的基础知识，请参阅 [Azure 门户中基于角色的访问控制入门](../role-based-access-control/overview.md)。
 
 本文适用于在 Azure 门户中运行 Update 3.0 或更高版本的 StorSimple 8000 系列设备。
 
@@ -34,7 +35,7 @@ ms.locfileid: "85514642"
 
 * **内置角色** - 内置角色可以是所有者、参与者、读者或用户访问管理员。 有关详细信息，请参阅[Azure 基于角色的访问控制的内置角色](../role-based-access-control/built-in-roles.md)。
 
-* **自定义角色** - 如果内置角色无法满足需求，可创建适用于 StorSimple 的自定义 RBAC 角色。 若要创建自定义 RBAC 角色，首先需使用某个内置角色，对其进行编辑，然后将其导回环境中。 使用 Azure PowerShell 或 Azure CLI 管理角色的下载和上传。 有关详细信息，请参阅[针对基于角色的访问控制创建自定义角色](../role-based-access-control/custom-roles.md)。
+* **自定义角色**-如果内置角色不能满足你的需求，则可以为 StorSimple 创建 Azure 自定义角色。 若要创建 Azure 自定义角色，请先使用内置角色，对其进行编辑，然后将其重新导入到环境中。 使用 Azure PowerShell 或 Azure CLI 管理角色的下载和上传。 有关详细信息，请参阅[针对基于角色的访问控制创建自定义角色](../role-based-access-control/custom-roles.md)。
 
 若要在 Azure 门户中查看可用于 StorSimple 设备用户的不同角色，请转到 StorSimple 设备管理器服务，然后转到“访问控制(IAM)”>“角色”****。
 
@@ -101,7 +102,7 @@ ms.locfileid: "85514642"
     }
     ```
 
-6. 将自定义 RBAC 角色导回环境中。
+6. 将 Azure 自定义角色导回到环境中。
 
     `New-AzRoleDefinition -InputFile "C:\ssrbaccustom.json"`
 

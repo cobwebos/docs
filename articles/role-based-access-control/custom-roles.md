@@ -15,12 +15,12 @@ ms.date: 07/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d973cf47ed691914b22d62e1a99315c6ea9183d8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fd737a22a37d6edc47c2769a470af00537d720eb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511596"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124147"
 ---
 # <a name="azure-custom-roles"></a>Azure 自定义角色
 
@@ -192,7 +192,7 @@ Microsoft.CostManagement/*/query/*
 - 无法在管理组范围内分配具有 `DataActions` 的自定义角色。
 - Azure 资源管理器不验证管理组是否存在于角色定义的可分配范围中。
 
-若要详细了解自定义角色和管理组，请参阅[使用 Azure 管理组来组织资源](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment)。
+若要详细了解自定义角色和管理组，请参阅[使用 Azure 管理组来组织资源](../governance/management-groups/overview.md#azure-custom-role-definition-and-assignment)。
 
 ## <a name="input-and-output-formats"></a>输入和输出格式
 

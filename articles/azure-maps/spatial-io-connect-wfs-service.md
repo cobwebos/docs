@@ -1,19 +1,19 @@
 ---
 title: 连接到 Web 功能服务（WF）服务 |Microsoft Azure 映射
 description: 了解如何连接到 WF 服务，然后使用 Azure Maps web SDK 和空间 IO 模块查询 WF 服务。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8b511395eb61e8845aaa11e5ca7a490dc461424d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42e8356dabc8172ddb75595dc63b01aaf4244958
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334206"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124657"
 ---
 # <a name="connect-to-a-wfs-service"></a>连接到 WFS 服务
 
@@ -26,7 +26,7 @@ Web 功能服务（WF）是一项 web 服务，用于查询具有标准化 API �
 - 仅使用发出的请求 `HTTP GET` 。
 - 支持的操作：
 
-    | | |
+    | 操作 | 说明 |
     | :-- | :-- |
     | GetCapabilities | 使用有效的 WF 操作和参数生成元数据文档 |
     | GetFeature | 返回数据源中的选定功能 |

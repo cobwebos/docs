@@ -7,11 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3b416e6ccb035ede06a360c2697a9b20ca417d98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e284bc76da9ca40341d72f772aa7ee947a11638
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725896"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124300"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>连接 Azure Functions 应用以处理数据
 
@@ -77,7 +78,7 @@ namespace FunctionSample
 
 你现在可以编译和运行函数。 尽管 Azure 函数最终打算在云中运行，但你也可以在本地运行和调试 Azure 函数。
 
-有关此内容的详细信息，请参阅在[本地调试事件网格触发器](../azure-functions/functions-debug-event-grid-trigger-local.md)。
+有关此内容的详细信息，请参阅在[*本地调试事件网格触发器*](../azure-functions/functions-debug-event-grid-trigger-local.md)。
 
 ### <a name="add-the-azure-digital-twins-sdk-to-your-azure-function-app"></a>将 Azure 数字孪生 SDK 添加到 Azure function app
 
@@ -162,9 +163,9 @@ az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(fu
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
-有关托管标识的详细信息，请参阅[如何将托管标识用于应用服务和 Azure Functions](../app-service/overview-managed-identity.md)。
+有关托管标识的详细信息，请参阅[*如何将托管标识用于应用服务和 Azure Functions*](../app-service/overview-managed-identity.md)。
 
-最后，可以通过设置环境变量，使 Azure 数字孪生实例的 URL 可供函数访问。 有关此内容的详细信息，请参阅[环境变量](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables)。
+最后，可以通过设置环境变量，使 Azure 数字孪生实例的 URL 可供函数访问。 有关此内容的详细信息，请参阅[*环境变量*](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables)。
 
 > [!TIP]
 > Azure 数字孪生实例的 URL 是通过将*https://* 添加到 Azure 数字孪生实例的*主机名*的开头来完成的。 若要查看主机名以及实例的所有属性，可以运行 `az dt show --dt-name <your-Azure-Digital-Twins-instance>` 。
@@ -208,7 +209,7 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 
 ### <a name="assign-access-roles"></a>分配访问角色
 
-由于 Azure 数字孪生使用基于角色的访问控制来管理访问（有关详细信息，请参阅[概念： Azure 数字孪生解决方案的安全性](concepts-security.md)），还需要为每个要允许其访问 Azure 数字的应用程序添加一个角色。
+由于 Azure 数字孪生使用基于角色的访问控制来管理访问（有关详细信息，请参阅[*概念： Azure 数字孪生解决方案的安全性*](concepts-security.md)），还需要为每个要允许其访问 Azure 数字的应用程序添加一个角色。
 
 若要分配角色，需要创建的 Azure 数字孪生实例的**资源 ID** 。 如果你之前未记录此实例，则可以使用以下命令检索它：
 
@@ -231,4 +232,4 @@ az role assignment create --role "Azure Digital Twins Owner (Preview)" --assigne
 * 接收来自其他服务的消息的事件网格端点
 
 接下来，请参阅如何在基本 Azure 函数上构建，以将 IoT 中心数据引入 Azure 数字孪生：
-* [如何：从 IoT 中心引入遥测数据](how-to-ingest-iot-hub-data.md)
+* [*如何：从 IoT 中心引入遥测数据*](how-to-ingest-iot-hub-data.md)

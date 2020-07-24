@@ -5,22 +5,22 @@ services: networking
 author: skishen525
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 07/23/2020
 ms.author: sukishen
-ms.openlocfilehash: aa77ac3652d8646a3354cb137ba7cf4240e58e6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9a8b44cc6e78eda4a3e0b18d59d2372e7129c05
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482881"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124165"
 ---
 # <a name="about-azure-networking-msp-partners"></a>关于 Azure 网络 MSP 合作伙伴
 
-通过 [Azure 网络托管服务提供商 (MSP) 合作伙伴计划](https://azure.microsoft.com/blog/enhancing-the-customer-experience-with-the-azure-networking-msp-partner-program/)，专注于网络服务的 MSP、电信公司和系统集成商 (SI) 能够围绕 Azure 的网络产品和服务组合提供云和混合网络服务。
+[Azure 网络托管服务提供商（MSP）合作伙伴计划](https://azure.microsoft.com/blog/enhancing-the-customer-experience-with-the-azure-networking-msp-partner-program/)可让网络服务重点 Msp、Telcos 和系统集成商（si）提供围绕 Azure 的网络产品和服务组合的云和混合网络服务。
 
 Azure 网络 MSP 是一组专门的托管服务提供商，可解决云和混合网络各个方面的企业云网络需求和挑战。 托管网络服务包括以下一项或多项服务：网络体系结构、规划、部署、操作、维护和优化。
 
-![MSP][0]
+:::image type="content" source="./media/networking-partners-msp/msp.jpg" alt-text="群体":::
 
 客户可以在 Azure 市场中或直接从 MSP 购买 MSP 托管服务产品/服务。 MSP 可以使用 [Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/)，在客户的订阅和资源组中部署和管理 Azure 网络资源。
 
@@ -32,6 +32,7 @@ Azure 网络 MSP 是一组专门的托管服务提供商，可解决云和混合
 | ---| ---| ---| ---| ---|
 |[ANS 组 UK](https://www.ans.co.uk/)|[Azure 托管 Svc + ANS Glass 10wk 实现](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.glassms)|[ExpressRoute & 连接：2周评估](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.ans_er)|[Azure 虚拟 WAN + Fortinet：2周评估](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.ans_vw)|||
 |[Aryaka Networks](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)||[Aryaka Azure Connect](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview)|[Aryaka Azure 虚拟 WAN](https://azuremarketplace.microsoft.com/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview) | | |
+|[AXESDN](https://www.axesdn.com/en/azure-msp.html)||[AXESDN 托管 Azure ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/1584591601184.axesdn_managed_azure_expressroute?tab=Overview)|[AXESDN 托管的 Azure 虚拟 WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/1584591601184.axesdn_managed_azure_virtualwan?tab=Overview) | | |
 |[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|[网络转换咨询：1 小时评估](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/bt-americas-inc.network-transformation-consulting)；[BT 云连接 Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-001?tab=Overview)|[BT 云连接 Azure ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-003?tab=Overview)|[BT 云连接 Azure VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-002?tab=Overview)|||
 |[CenturyLink](https://www.centurylink.com/business.html)||[ExpressRoute 咨询 Svcs： 8-wk 实现](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/centurylink2362604-2362604.centurylink_consultingservicesforexpressroute)||||
 |[Coevolve](https://www.coevolve.com/services/azure-networking-services/)|||[托管 VMware SD-WAN 虚拟边缘](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/coevolveptylimited1581027739259.managed-vmware-sdwan-edge?tab=Overview)|||
@@ -53,7 +54,7 @@ Azure 网络 MSP 是一组专门的托管服务提供商，可解决云和混合
 |[Vigilant IT](https://vigilant.it/manage-cloud-service/)|[Azure 运行状况检查：5 日评估](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute：5 日实现](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandis 托管 ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Fortinet 提供支持的 Vandis 托管 VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview)；[Palo Alto Networks 提供支持的 Vandis 托管 VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 
-Azure Marketplace 产品/服务包括新的托管安全服务，以及以下 Azure 网络 MSP 合作伙伴提供的托管 MEC 服务： [Amdocs](https://www.amdocs.com/);[AXESDN](https://www.axesdn.com/en/azure-msp.html);[CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html); [德国 Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406); [IX 范围](https://www.ixreach.com/services/sdn-cloud-connect/); [InterCloud](https://intercloud.com/partners/microsoft-azure/); [KINX](https://www.kinx.net/service/cloud/?lang=en);[OmniClouds](https://omniclouds.com/services/); [Sejong 电信](https://www.sejongtelecom.net/en/pages/service/cloud_ms);[联合无线](https://www.federatedwireless.com/caas/)
+以下 Azure 网络 MSP 合作伙伴提供的 azure Marketplace 适用于托管 ExpressRoute、虚拟 WAN、安全服务和私有边缘区域服务： [Amdocs](https://www.amdocs.com/); [德国 Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406); [IX 范围](https://www.ixreach.com/services/sdn-cloud-connect/); [InterCloud](https://intercloud.com/partners/microsoft-azure/); [KINX](https://www.kinx.net/service/cloud/?lang=en);[OmniClouds](https://omniclouds.com/); [Sejong 电信](https://www.sejongtelecom.net/en/pages/service/cloud_ms);[联合无线](https://www.federatedwireless.com/caas/)
 
 ## <a name="expressroute-partners"></a><a name="expressroute"></a>ExpressRoute 合作伙伴
 
@@ -62,6 +63,3 @@ Azure Marketplace 产品/服务包括新的托管安全服务，以及以下 Azu
 ## <a name="virtual-wan-partners"></a><a name="vwan"></a>虚拟 WAN 合作伙伴
 
 有关合作伙伴的信息，请参阅[虚拟 WAN 合作伙伴和提供商](../virtual-wan/virtual-wan-locations-partners.md)。
-
-<!--Image References-->
-[0]: ./media/networking-partners-msp/msp.png "MSP 程序描述"

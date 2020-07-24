@@ -1,19 +1,19 @@
 ---
 title: 显示 android 地图上的流量数据 |Microsoft Azure 映射
 description: 在本文中，你将学习如何使用 Microsoft Azure map Android SDK 来显示地图上的流量数据。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 92e111a6e76dbe285dd8cc7a93ce75f556142565
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8b07b520dec4e9149c6748777a119b68e56c65e9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540139"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126391"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>使用 Azure Maps 显示地图上的流量数据 Android SDK
 
@@ -53,7 +53,7 @@ import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 
 使用以下代码片段设置流量流数据。 与上一节中的代码类似，我们将方法的返回值传递 `flow` 给 `setTraffic` 方法。 有四个可传递到的值 `flow` ，每个值都将触发 `flow` 以返回各自的值。 然后，将的返回值 `flow` 作为参数传递给 `setTraffic` 。 请参阅下表中的以下四个值：
 
-|流值 | 说明|
+|流值 | 描述|
 | :-- | :-- |
 | TrafficFlow | 不显示地图上的流量数据 |
 | TrafficFlow | 显示相对于旅途的自由流动速度的流量数据 |

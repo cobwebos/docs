@@ -2,19 +2,19 @@
 title: 如何使用非交互式登录保护单页面应用程序
 titleSuffix: Azure Maps
 description: 如何使用非交互式 Azure AD 基于角色的访问控制和 Azure Maps Web SDK 配置单页面应用程序。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d33fbdf2e95faaa82c13b4fc0d52ea3f188c3f86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 96dd1cf6a5d6cea69899bf920c86018384ebbc3c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988318"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126444"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>如何使用非交互式登录保护单页面应用程序
 
@@ -108,7 +108,7 @@ ms.locfileid: "84988318"
     > [!div class="mx-imgBorder"]
     > ![授予 RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. 在 "**角色分配**" 选项卡上的 "**角色**" 下，选择内置 Azure Maps 角色定义，如**Azure Maps 数据读取器**或**Azure Maps 数据参与者**。 在 "**分配访问权限**" 下，选择**Function App**。 按名称选择主体。 然后，选择“保存”。
+2. 在 "**角色分配**" 选项卡上的 "**角色**" 下，选择内置 Azure Maps 角色定义，如**Azure Maps 数据读取器**或**Azure Maps 数据参与者**。 在 "**分配访问权限**" 下，选择**Function App**。 按名称选择主体。 再选择“保存”。
 
    * 有关[添加或删除角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)的详细信息，请参阅。
 

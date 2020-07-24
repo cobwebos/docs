@@ -16,11 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: f61b6193a0d2082296a17128b41d7220f9b7e05f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1440bf2b8af85b81355dbc43b695a85994e4b8d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77565887"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124130"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 标识管理安全概述
 
@@ -90,10 +91,15 @@ Azure 多重身份验证是需要使用多个验证方法的身份验证方法�
 
 RBAC 是在 Azure 资源管理器基础上构建的授权系统，针对 Azure 中的资源提供精细的访问权限管理。 通过 RBAC，可以精确控制用户具有的访问权限级别。 例如，可以限制一位用户仅管理虚拟网络，限制另一位用户管理资源组中的所有资源。 Azure 包含多个可用的内置角色。 下面列出了四个基本的内置角色。 前三个角色适用于所有资源类型。
 
+- [所有者](/azure/role-based-access-control/built-in-roles.md#owner) - 拥有对所有资源的完全访问权限，包括将访问权限委派给其他用户的权限。 
+- [参与者](/azure/role-based-access-control/built-in-roles.md#contributor) - 可以创建和管理所有类型的 Azure 资源，但无法将访问权限授予其他用户。
+- [读取者](/azure/role-based-access-control/built-in-roles.md#reader) - 可以查看现有的 Azure 资源。
+- [用户访问管理员](/azure/role-based-access-control/built-in-roles.md#administrator) - 可以管理用户对 Azure 资源的访问。
+
 了解详细信息：
 
-* [什么是基于角色的访问控制 (RBAC)？](/azure/role-based-access-control/overview)
-* [Azure 资源的内置角色](/azure/role-based-access-control/built-in-roles)
+* [什么是 Azure 基于角色的访问控制 (Azure RBAC)？](/azure/role-based-access-control/overview)
+* [Azure 内置角色](/azure/role-based-access-control/built-in-roles)
 
 ## <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>安全监控、警报和基于机器学习的报告
 

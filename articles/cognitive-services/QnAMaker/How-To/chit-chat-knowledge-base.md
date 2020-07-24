@@ -3,20 +3,18 @@ title: 向 QnA Maker 知识库添加聊天内容
 titleSuffix: Azure Cognitive Services
 description: 在创建 KB 时向机器人中添加个性化聊天内容可使其更健谈而有趣。 使用 QnA Maker，可以轻松将预填充的一组最常用的聊天内容添加到知识库中。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: e06cad8e8ca62330b09e173cf6058905b49f19e4
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 0aca072a9e659d242dec9dd45a12f9568d419599
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992899"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124419"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>向知识库添加聊天内容
 
@@ -29,7 +27,7 @@ ms.locfileid: "83992899"
 对于的用户查询 `When is your birthday?` ，每个用户都有一个有样式的响应：
 
 <!-- added quotes so acrolinx doesn't score these sentences -->
-|个性化|示例|
+|个性|示例|
 |--|--|
 |Professional|年龄并不真正适用于我。|
 |友好|我真的没有时间了。|
@@ -43,7 +41,7 @@ ms.locfileid: "83992899"
 
 Chit-支持以下语言的聊天数据集：
 
-|语言|
+|Language|
 |--|
 |中文|
 |英语|
@@ -74,7 +72,7 @@ Chit-支持以下语言的聊天数据集：
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>添加其他的聊天内容问题和解答
 可以添加不在预定义数据集中的新 chit/聊天 QnA 对。 确保不复制聊天内容集中已涵盖的 QnA 对。 添加任何新的聊天内容 QnA 时，它会添加到“编辑”源。**** 若要确保 ranker 了解这是 chit 聊天，请添加元数据键/值对 "社论： chitchat"，如下图所示：
 
-![![Add chit-chat Qna](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
+![![Add chit-chat Qna](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png）](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
 
 ## <a name="delete-chit-chat-from-an-existing-kb"></a>从现有 KB 中删除聊天内容
 选择 KB，导航到“设置”页。**** 特定的聊天内容源作为文件列出，使用所选的个性名称。 可以将其作为源文件删除。

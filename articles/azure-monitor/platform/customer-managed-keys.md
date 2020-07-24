@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 07/05/2020
-ms.openlocfilehash: ad2e6a05fa8459d8e5a53d9bb8b8e08790a7d8ec
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3835046e50180e1d1091f5083f276c7c1ad56612
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539408"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117375"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
 
@@ -194,7 +194,7 @@ CMK 功能是在专用 Log Analytics 群集上提供的。若要验证在你的�
 
 此资源用作 Key Vault 与 Log Analytics 工作区之间的中间标识连接。 收到允许订阅的确认后，请在工作区所在的区域创建 Log Analytics*群集*资源。
 
-创建群集资源时，必须指定容量预留级别 (sku) 。 容量预留级别可以在每天 1,000 到 2,000 GB 范围内，后续你可以以 100 为幅度对其进行更新。 如果你需要的容量预留级别高于每天 2,000 GB，请通过 LAIngestionRate@microsoft.com 与我们联系。 [了解详细信息](./manage-cost-storage.md#log-analytics-dedicated-clusters)
+创建群集资源时，必须指定容量预留级别 (sku) 。 *容量预留*级别可以在1000到 3000 GB （每天）范围内，你可以在100步骤中对其进行更新。 如果需要的容量预留级别超过 3000 GB，请联系我们 LAIngestionRate@microsoft.com 。 [了解详细信息](./manage-cost-storage.md#log-analytics-dedicated-clusters)
 
 billingType 属性可确定群集资源及其数据的计费归属 ：
 - *群集*（默认值）-群集的容量保留成本属于*群集*资源。
@@ -467,9 +467,9 @@ CMK 的轮换需要使用 Azure Key Vault 中的新密钥版本对群集资源�
 Log Analytics 中使用的查询语言是有意义的，可以在添加到查询或查询语法中的注释中包含敏感信息。 某些组织要求将此类信息作为 CMK 策略的一部分进行保护，并且需要保存用密钥加密的查询。 Azure Monitor 使你能够在连接到工作区时，将*已保存的搜索*和*日志警报*查询存储在你自己的存储帐户中。 
 
 > [!NOTE]
-> 尚不支持用于工作簿和 Azure 仪表板中的查询的 CMK。 这些查询仍将通过 Microsoft 密钥进行加密。  
+> Log Analytics 查询可以保存在不同的存储中，具体取决于所使用的方案。 在以下情况下，查询将在 Microsoft 密钥（MMK）内保持加密，无论 CMK 配置如何： Azure Monitor、Azure 仪表板、Azure 逻辑应用、Azure Notebooks 和自动化 Runbook 中的工作簿。
 
-当你将[自己的存储](./private-storage.md)（BYOS）和关联到工作区时，该服务会将*已保存的搜索*和*日志警报*查询上载到你的存储帐户。 这意味着，你可以使用与加密 Log Analytics 群集中的数据或其他密钥相同的密钥来控制存储帐户和[静态加密策略](../../storage/common/encryption-customer-managed-keys.md)。 但是，你将负责与该存储帐户关联的成本。 
+当你将自己的存储（BYOS）和关联到工作区时，该服务会将*已保存的搜索*和*日志警报*查询上载到你的存储帐户。 这意味着，你可以使用与加密 Log Analytics 群集中的数据或其他密钥相同的密钥来控制存储帐户和[静态加密策略](../../storage/common/encryption-customer-managed-keys.md)。 但是，你将负责与该存储帐户关联的成本。 
 
 **为查询设置 CMK 前的注意事项**
 * 你需要对工作区和存储帐户具有 "写入" 权限
@@ -599,7 +599,7 @@ Content-type: application/json
 
 - 更新群集资源中的容量预留 
 
-  关联工作区的数据量随时间变化时，建议适当地更新容量预留级别。 按照[更新群集资源](#update-cluster-resource-with-key-identifier-details)中的步骤进行操作，并提供新的容量值。 它可以在每天 1,000 到 2,000 GB 范围内，并以 100 为度。 如果级别高于每日 2,000 GB，请联系 Microsoft 联系人实现该级别。 请注意，无需提供完整的 REST 请求正文，但应包含 sku：
+  关联工作区的数据量随时间变化时，建议适当地更新容量预留级别。 按照[更新群集资源](#update-cluster-resource-with-key-identifier-details)中的步骤进行操作，并提供新的容量值。 它可以在1000到 3000 GB 的范围内，在100的范围内。 如果每日级别高于 3000 GB，请联系你的 Microsoft 联系人以启用它。 请注意，不需要提供完整的 REST 请求正文，而应包含 sku：
 
   ```powershell
   Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity "daily-ingestion-gigabyte"

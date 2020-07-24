@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: f289be1b3432d9c62b4841c513088afa16e0e447
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff8d532bf1c19ded9567e8c1e4b63e674c01d0d8
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609242"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125167"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问权限
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,7 +36,7 @@ Azure 机器学习工作区是一种 Azure 资源。 与其他 Azure 资源一�
 > [!IMPORTANT]
 > 在 Azure 中，角色访问的作用域可以限定为多个级别。 例如，对工作区具有所有者访问权限的人可能没有对包含工作区的资源组的所有者访问权限。 有关详细信息信息，请参阅 [RBAC 工作原理](/azure/role-based-access-control/overview#how-rbac-works)。
 
-有关特定内置角色的详细信息，请参阅 [Azure 的内置角色](/azure/role-based-access-control/built-in-roles)。
+有关特定内置角色的详细信息，请参阅[Azure 内置角色](/azure/role-based-access-control/built-in-roles)。
 
 ## <a name="manage-workspace-access"></a>管理工作区访问权限
 
@@ -117,12 +117,12 @@ az role definition create --role-definition data_scientist_role.json
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
-有关自定义角色的详细信息，请参阅 [Azure 资源的自定义角色](/azure/role-based-access-control/custom-roles)。
+有关自定义角色的详细信息，请参阅[Azure 自定义角色](/azure/role-based-access-control/custom-roles)。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
 
-### <a name="q-what-are-the-permissions-needed-to-perform-various-actions-in-the-azure-machine-learning-service"></a>问： 在 Azure 机器学习服务中执行各种操作需要哪些权限？
+### <a name="q-what-are-the-permissions-needed-to-perform-various-actions-in-the-azure-machine-learning-service"></a>Q. 在 Azure 机器学习服务中执行各种操作需要哪些权限？
 
 下表汇总了 Azure 机器学习活动以及在最小作用域内执行它们所需的权限。 例如，如果可以使用工作区作用域（第 4 列）执行某个活动，则具有该权限的所有更高作用域也将自动工作。 此表中的所有路径都是相对于 `Microsoft.MachineLearningServices/` 的**相对路径**。
 
@@ -132,10 +132,10 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 | 新建计算群集 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`workspaces/computes/write` |
 | 新建笔记本 VM | 不是必需 | 所有者或参与者 | 不可能 |
 | 新建计算实例 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`workspaces/computes/write` |
-| 数据平面活动，如提交运行、访问数据、部署模型或发布管道 | 不需要 | 不是必需 | 所有者、参与者或自定义角色允许：`workspaces/*/write` <br/> 还需要一个已注册到工作区的数据存储，使 MSI 能够访问存储帐户中的数据。 |
+| 数据平面活动，如提交运行、访问数据、部署模型或发布管道 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`workspaces/*/write` <br/> 还需要一个已注册到工作区的数据存储，使 MSI 能够访问存储帐户中的数据。 |
 
 
-### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>问： 如何列出我的订阅中的所有自定义角色？
+### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>Q. 如何列出我的订阅中的所有自定义角色？
 
 在 Azure CLI 中运行以下命令。
 
@@ -151,7 +151,7 @@ az role definition list --subscription <sub-id> --custom-role-only true
 az role definition list -n <role-name> --subscription <sub-id>
 ```
 
-### <a name="q-how-do-i-update-a-role-definition"></a>问： 如何更新角色定义？
+### <a name="q-how-do-i-update-a-role-definition"></a>Q. 如何更新角色定义？
 
 在 Azure CLI 中运行以下命令。
 

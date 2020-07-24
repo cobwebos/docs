@@ -1,19 +1,19 @@
 ---
 title: 核心 IO 操作 |Microsoft Azure 映射
 description: 了解如何使用空间 IO 模块中的核心库有效地读取和写入 XML 数据和分隔数据。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0b8fe1b319dc480879944d28f10645025a8cb38e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e142fe348a339e4903d692cad569015edb69f75
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80371444"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124470"
 ---
 # <a name="core-io-operations"></a>核心 IO 操作
 
@@ -30,7 +30,7 @@ ms.locfileid: "80371444"
 
 默认情况下，读取器将使用逗号字符作为分隔符。 但是，分隔符可以更改为任意单个字符或设置为 `'auto'` 。 当设置为时 `'auto'` ，读取器将分析字符串中的第一行文本。 然后，它将从下表中选择最常见的字符作为分隔符。
 
-| | |
+| 分隔符 | 字符 |
 | :-- | :-- |
 | 逗号 | `,` |
 | 选项卡 | `\t` |

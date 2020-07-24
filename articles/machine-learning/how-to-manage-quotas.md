@@ -11,11 +11,12 @@ author: nishankgu
 ms.author: nigup
 ms.date: 05/08/2020
 ms.custom: contperfq4
-ms.openlocfilehash: df636ce1200d8c3744681a60532b22c409dd81dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8be4169a44b2ef57db8aa49b96f6c5fe85ded1c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84430466"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125082"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>管理和增加 Azure 机器学习资源的配额
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -71,7 +72,7 @@ ms.locfileid: "84430466"
 | 单个 Azure 机器学习计算 (AmlCompute) 资源中的最大节数点 | 100 个节点 |
 | 每个节点的最大 GPU MPI 进程数 | 1-4 |
 | 每个节点的最大 GPU 辅助角色数 | 1-4 |
-| 最长作业生存期 | 90 天<sup>1</sup> |
+| 最长作业生存期 | 21天<sup>1</sup> |
 | 低优先级节点上的最大作业生存期 | 7 天<sup>2</sup> |
 | 每个节点的最大参数服务器数 | 1 |
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: caya
-ms.openlocfilehash: 439313f0f42adf0513ce490ab6569171cce7934b
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4634421829cf71c0c5b9476f8ff3d08b9caa7dbd
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037896"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117334"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>教程：使用新的应用程序网关实例为新的 AKS 群集启用入口控制器外接程序（预览版）
 
@@ -22,7 +22,7 @@ ms.locfileid: "86037896"
 
 外接程序提供了一种更快的方法来部署 AKS 群集的 AGIC，而不是[以前的 Helm](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)。 它还提供完全托管的体验。    
 
-在本教程中，你将了解：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建资源组。 
@@ -36,11 +36,11 @@ ms.locfileid: "86037896"
 
 ## <a name="prerequisites"></a>先决条件
 
-如果选择在本地安装并使用 CLI，本教程需要运行 Azure CLI 版本2.0.4 或更高版本。 要查找版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本教程需要运行 Azure CLI 版本2.0.4 或更高版本。 若要查找版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 使用[az feature register](https://docs.microsoft.com/cli/azure/feature#az-feature-register)命令注册*AKS-IngressApplicationGatewayAddon*功能标志，如以下示例中所示。 对于每个订阅，只需执行此操作一次，同时外接程序仍处于预览阶段。
 ```azurecli-interactive
-az feature register --name AKS-IngressApplicationGatewayAddon --namespace microsoft.containerservice
+az feature register --name AKS-IngressApplicationGatewayAddon --namespace Microsoft.ContainerService
 ```
 
 显示状态可能需要几分钟时间 `Registered` 。 可以使用 [az feature list](https://docs.microsoft.com/cli/azure/feature#az-feature-register) 命令来检查注册状态：
@@ -110,7 +110,7 @@ az aks get-credentials -n myCluster -g myResourceGroup
 kubectl apply -f https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/master/docs/examples/aspnetapp.yaml 
 ```
 
-## <a name="check-that-the-application-is-reachable"></a>检查是否可访问应用程序
+## <a name="check-that-the-application-is-reachable"></a>检查应用程序是否可供访问
 
 现在，已将应用程序网关实例设置为向 AKS 群集提供流量，接下来我们验证你的应用程序是否可访问。 首先，获取入口的 IP 地址： 
 
@@ -136,5 +136,5 @@ az group delete --name myResourceGroup
 ## <a name="next-steps"></a>后续步骤
 * [了解如何禁用 AGIC 外接程序](./ingress-controller-disable-addon.md)
 * [了解 AGIC 支持哪些批注](./ingress-controller-annotations.md)
-* [解决 AGIC 问题](./ingress-controller-troubleshoot.md)
+* [排查 AGIC 的问题](./ingress-controller-troubleshoot.md)
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 51111d92e85c6ddbdfac85c333293c2af8b31fbe
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 68be8d08939464d200da588c481447f8206c9117
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498952"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117202"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -65,6 +65,9 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 
 ## <a name="set-up-and-configure"></a>安装和配置
+
+> [!NOTE]
+> 你可能还会看到 Log Analytics 代理称为 Microsoft Monitoring Agent (MMA) 或 OMS Linux 代理。
 
 ### <a name="install-and-configure-agents"></a>安装并配置代理 
 
@@ -155,7 +158,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 1. 选择要监视的节点或清除要停止监视的节点。 
 2. 选中“用于监视”****，或清除它（视情况而定）。 
-3. 选择“保存”。 
+3. 选择“保存” 。 
 
 
 配置所需功能：

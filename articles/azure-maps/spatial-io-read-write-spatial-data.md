@@ -1,19 +1,19 @@
 ---
 title: 读取和写入空间数据 |Microsoft Azure 映射
 description: 了解如何使用 Azure Maps Web SDK 提供的空间 IO 模块来读取和写入数据。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/01/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4c47335689401ebce98224992c74c3396821a1dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 633af1475266e39e9c8dd278a018316c36e6491b
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334159"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124402"
 ---
 # <a name="read-and-write-spatial-data"></a>读取和写入空间数据
 
@@ -40,7 +40,7 @@ ms.locfileid: "80334159"
 
 Read 函数的结果是一个 `SpatialDataSet` 对象。 此对象扩展 GeoJSON FeatureCollection 类。 它可以轻松地按原样传递到， `DataSource` 以在地图上呈现其功能。 `SpatialDataSet`不仅包含功能信息，还可能包括 KML 地面叠加、处理度量值和其他详细信息，如下表中所述。
 
-| 属性名称 | 类型 | 说明 | 
+| 属性名称 | 类型 | 描述 | 
 |---------------|------|-------------|
 | `bbox` | `BoundingBox` | 数据集中所有数据的边界框。 |
 | `features` | `Feature[]` | GeoJSON 数据集内的功能。 |

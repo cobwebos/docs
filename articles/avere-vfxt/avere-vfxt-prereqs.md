@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: c1828bcde5c26c5605b867c115127eb2502bdd86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24c803bd94f56af551f3afa2cb7350219b4fa448
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505335"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124725"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>准备创建 Avere vFXT
 
@@ -38,7 +38,7 @@ ms.locfileid: "85505335"
 |----------|--------|-------|
 | 资源组管理员创建 vFXT | 必须在资源组中创建虚拟网络、群集控制器和群集节点。 | "[用户访问管理员](../role-based-access-control/built-in-roles.md#user-access-administrator)" 和 "[参与者](../role-based-access-control/built-in-roles.md#contributor)" 角色，作用域为目标资源组。 |
 | 使用现有的外部虚拟网络 | 群集控制器和群集节点是在 vFXT 的资源组中创建的，但使用其他资源组中的现有虚拟网络。 | （1） "[用户访问管理员](../role-based-access-control/built-in-roles.md#user-access-administrator)" 和 "[参与者](../role-based-access-control/built-in-roles.md#contributor)" 角色的作用域为 vFXT 资源组;和（2）[虚拟机参与者](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)、[用户访问管理员](../role-based-access-control/built-in-roles.md#user-access-administrator)和[Avere 参与者](../role-based-access-control/built-in-roles.md#avere-contributor)角色，作用域为虚拟网络的资源组。 |
-| 群集创建者的自定义角色 | 无资源放置限制。 此方法提供非所有者重要权限。 | 订阅所有者创建自定义 RBAC 角色，如[本文](avere-vfxt-non-owner.md)所述。 |
+| 群集创建者的自定义角色 | 无资源放置限制。 此方法提供非所有者重要权限。 | 如[本文](avere-vfxt-non-owner.md)中所述，订阅所有者将创建 Azure 自定义角色。 |
 
 ## <a name="quota-for-the-vfxt-cluster"></a>vFXT 群集的配额
 

@@ -1,7 +1,7 @@
 ---
 title: 使用 PowerShell 为数据访问分配 RBAC 角色
 titleSuffix: Azure Storage
-description: 了解如何使用 PowerShell 通过基于角色的访问控制 (RBAC) 向 Azure Active Directory 安全主体分配权限。 Azure 存储支持通过 Azure AD 使用内置和自定义的 RBAC 角色进行身份验证。
+description: 了解如何使用 PowerShell 通过基于角色的访问控制 (RBAC) 向 Azure Active Directory 安全主体分配权限。 Azure 存储通过 Azure AD 支持用于身份验证的内置和 Azure 自定义角色。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a67981e2919854b80479ccc1c27ecf97469eebce
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dab10c8d7c93e130c707f6020309e5dd2440a028
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518669"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124862"
 ---
 # <a name="use-powershell-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>使用 PowerShell 为 blob 和队列数据分配 RBAC 角色
 
@@ -23,7 +23,7 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 
 将 RBAC 角色分配到 Azure AD 安全主体后，Azure 会向该安全主体授予对这些资源的访问权限。 可以将访问权限限定于订阅、资源组、存储帐户、单个容器或队列级别。 Azure AD 安全主体可以是用户、组、应用程序服务主体，也可以是 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
 
-本文介绍如何使用 Azure PowerShell 列出内置的 RBAC 角色并将其分配给用户。 有关使用 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 概述](https://docs.microsoft.com/powershell/azure/overview)。
+本文介绍如何使用 Azure PowerShell 列出内置的 RBAC 角色并将其分配给用户。 有关使用 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 概述](https://docs.microsoft.com/powershell/azure/)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
