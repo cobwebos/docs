@@ -6,11 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 86419811cdf2c11204caae0ca5bf6f65fba063d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7f83d798bbffeb232b45701beee828114ad3db7d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76288908"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042586"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>将大型机存储移到 Azure
 
@@ -44,16 +45,16 @@ IBM 大型机的存储方式有两种。 第一种是直接访问存储设备（
 
 Microsoft 为 Azure 中托管的应用程序提供了 pb 数量的存储空间，并提供了多个存储选项。 这些范围包括从 SSD 存储到高性能，以及用于大容量存储和存档的低成本 blob 存储。 此外，Azure 还为存储提供了一个数据冗余选项，这需要在大型机环境中进行更多的工作。
 
-Azure 存储可用作[Azure 磁盘](/azure/virtual-machines/windows/managed-disks-overview)、 [Azure 文件](/azure/storage/files/storage-files-introduction)和[azure blob](/azure/storage/blobs/storage-blobs-overview) ，如下表所示。 详细了解[何时使用每个](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)。
+Azure 存储可用作[Azure 磁盘](../../../windows/managed-disks-overview.md)、 [Azure 文件](../../../../storage/files/storage-files-introduction.md)和[azure blob](../../../../storage/blobs/storage-blobs-overview.md) ，如下表所示。 详细了解[何时使用每个](../../../../storage/common/storage-introduction.md)。
 
 <!-- markdownlint-disable MD033 -->
 
 <table>
 <thead>
-    <tr><th>类型</th><th>描述</th><th>要执行以下操作时使用：</th></tr>
+    <tr><th>在任务栏的搜索框中键入</th><th>说明</th><th>要执行以下操作时使用：</th></tr>
 </thead>
 <tbody>
-<tr><td>Azure 文件
+<tr><td>Azure 文件存储
 </td>
 <td>
 提供 SMB 接口、客户端库和允许从任意位置访问存储文件的<a href="https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api">REST</a>接口。
@@ -96,7 +97,7 @@ Ssd 在 Azure 上提供最高的存储性能。 提供以下选项（在撰写�
 | 类型         | 大小           | IOPS                  |
 |--------------|----------------|-----------------------|
 | 超级 SSD    | 4 GB 到 64 TB  | 1200到 160000 IOPS |
-| 高级·SSD  | 32 GB 到 32 TB | 12到 15000 IOPS     |
+| 高级 SSD  | 32 GB 到 32 TB | 12到 15000 IOPS     |
 | 标准 SSD | 32 GB 到 32 TB | 12到 2000 IOPS      |
 
 Blob 存储提供了 Azure 上最大的存储量。 除了存储大小以外，Azure 还提供托管和非托管存储。 使用托管存储，Azure 负责管理底层存储帐户。 使用非托管存储时，用户需要负责设置适当大小的 Azure 存储帐户，以满足存储要求。
@@ -104,10 +105,10 @@ Blob 存储提供了 Azure 上最大的存储量。 除了存储大小以外，A
 ## <a name="next-steps"></a>后续步骤
 
 - [大型机迁移](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Azure 虚拟机上的大型机重新承载](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
+- [Azure 虚拟机上的大型机重新承载](../overview.md)
 - [将大型机计算移到 Azure](mainframe-compute-Azure.md)
-- [确定何时使用 Azure Blob、Azure 文件或 Azure 磁盘](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)
-- [标准 SSD Azure VM 工作负荷的托管磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)
+- [确定何时使用 Azure Blob、Azure 文件或 Azure 磁盘](../../../../storage/common/storage-introduction.md)
+- [标准 SSD Azure VM 工作负荷的托管磁盘](../../../windows/disks-types.md#standard-ssd)
 
 ### <a name="ibm-resources"></a>IBM 资源
 

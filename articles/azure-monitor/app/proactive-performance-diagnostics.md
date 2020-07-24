@@ -4,11 +4,12 @@ description: Application Insights 执行应用遥测的智能分析，并在有�
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 22c1eeb00372b9b3c67d6a87f2300225a071438e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5152a3deb73c7069655ff016fbfc03f6b9cee16d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84016842"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045794"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智能检测 - 性能异常
 
@@ -48,7 +49,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 
 ## <a name="configure-email-notifications"></a>配置电子邮件通知
 
-智能检测通知默认已启用，将发送给对 Application Insights 资源所在的订阅具有[监视读取者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)和[监视参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)访问权限的用户。 若要更改此配置，请在电子邮件通知中单击“配置”，或者在 Application Insights 中打开“智能检测”设置。 
+智能检测通知默认已启用，将发送给对 Application Insights 资源所在的订阅具有[监视读取者](../../role-based-access-control/built-in-roles.md#monitoring-reader)和[监视参与者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)访问权限的用户。 若要更改此配置，请在电子邮件通知中单击“配置”，或者在 Application Insights 中打开“智能检测”设置。 
   
   ![智能检测设置](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   
@@ -69,12 +70,12 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 * *是否可以创建自己的异常检测规则或自定义现有的规则？*
 
   * 目前不可以，但可以：
-    * [设置警报](/azure/azure-monitor/platform/alerts-log)，以便在指标超出阈值时告知用户。
+    * [设置警报](../platform/alerts-log.md)，以便在指标超出阈值时告知用户。
     * [将遥测导出](../../azure-monitor/app/export-telemetry.md)到[数据库](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)或 [Power BI](../../azure-monitor/app/export-power-bi.md )，可自行在其中进行分析。
 * *执行分析的频率是多少？*
 
   * 我们每天针对前一天（UTC 时区整天）的遥测数据运行分析。
-* *那么这是否会替换[指标警报](/azure/azure-monitor/platform/alerts-log)？*
+* *那么这是否会替换[指标警报](../platform/alerts-log.md)？*
   * 不是。  我们不确定检测用户视为异常的每个行为。
 
 
@@ -175,9 +176,9 @@ Application Insights 可以找到只会影响一部分用户，或者只会在�
 * [探查器](profiler.md) 
 * [快照调试器](../../azure-monitor/app/snapshot-debugger.md)
 * [分析](../../azure-monitor/log-query/get-started-portal.md)
-* [分析智能诊断](../../azure-monitor/app/analytics.md)
+* [分析智能诊断](../log-query/log-query-overview.md)
 
 智能检测是完全自动执行的。 但是或许你想要设置更多的警报？
 
-* [手动配置的指标警报](/azure/azure-monitor/platform/alerts-log)
+* [手动配置的指标警报](../platform/alerts-log.md)
 * [可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)

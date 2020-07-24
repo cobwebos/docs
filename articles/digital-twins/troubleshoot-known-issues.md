@@ -6,32 +6,16 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 8fce451d9b806d2fa9a4f3d9e1c117de0aaa9fc0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bdde2076039a6f7687e06edef6dfd6f6f5148ce4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531100"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044142"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure 数字孪生中的已知问题
 
 本文介绍与 Azure 数字孪生相关的已知问题。
-
-## <a name="managing-event-routes-in-the-azure-portal"></a>管理 Azure 门户中的事件路由
-
-如果你使用个人[**Microsoft 帐户（MSA）**](https://account.microsoft.com/account/Account)登录到门户，如 *@outlook.com* 帐户，你将看到一个屏幕，提示你在门户中尝试管理事件路由时*需要权限来查看事件路由*，而不考虑你的权限级别。
-
-:::image type="content" source="media/troubleshoot-known-issues/event-route-need-permission.png" alt-text="尝试在 Azure 数字孪生实例上创建事件路由时出现权限错误的 Azure 门户屏幕截图":::
-
-### <a name="troubleshooting-steps"></a>疑难解答步骤
-
-当前不能在门户中管理事件路由的用户仍可以使用 Azure 数字孪生 Api 或 CLI 管理事件路由。 若要缓解此问题，建议使用以下工具之一来进行事件路由管理。
-
-有关此操作的说明，请参阅[*操作方法：管理终结点和路由*](how-to-manage-routes.md)。
-
-### <a name="possible-causes"></a>可能的原因
-
-你使用个人[Microsoft 帐户（MSA）](https://account.microsoft.com/account/Account)登录到门户，例如 *@outlook.com* 帐户。 管理 Azure 门户中的事件路由目前仅适用于企业域帐户中的 Azure 用户。
 
 ## <a name="400-client-error-bad-request-in-cloud-shell"></a>Cloud Shell 中的 "400 客户端错误：错误的请求"
 

@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: 7be1c350af6c9bb84669b45a9bc8a1d9dd808133
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: b8edbbc397a56f4fcf5b3ae070f04ca61659d98d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165628"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045347"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>在 Azure Monitor 中排查日志警报问题  
 
 本文说明如何解决 Azure Monitor 中日志警报的常见问题。 它还提供了有关日志警报的功能和配置的常见问题的解决方案。
 
-术语*日志警报*介绍了基于[Azure Log Analytics 工作区](../learn/tutorial-viewdata.md)中的日志查询或[Azure 应用程序 Insights](../../azure-monitor/app/analytics.md)触发的规则。 在 [Azure Monitor 中的日志警报](../platform/alerts-unified-log.md)中详细了解功能、术语和类型。
+术语*日志警报*介绍了基于[Azure Log Analytics 工作区](../log-query/get-started-portal.md)中的日志查询或[Azure 应用程序 Insights](../log-query/log-query-overview.md)触发的规则。 在 [Azure Monitor 中的日志警报](../platform/alerts-unified-log.md)中详细了解功能、术语和类型。
 
 > [!NOTE]
 > 本文不考虑 Azure 门户中显示警报规则已触发以及不是通过关联的操作组执行通知的情况。 对于此类情况，请参阅[在 Azure 门户中创建和管理操作组](../platform/action-groups.md)中的详细信息。
@@ -28,7 +28,7 @@ ms.locfileid: "86165628"
 
 ### <a name="data-ingestion-time-for-logs"></a>日志的数据引入时间
 
-日志警报基于 [Log Analytics](../learn/tutorial-viewdata.md) 或 [Application Insights](../../azure-monitor/app/analytics.md) 定期运行查询。 由于 Azure Monitor 需要处理来自数千个客户以及全球各种源的若干 TB 的数据，因此，该服务很容易发生不同的时间延迟。 有关详细信息，请参阅 [Azure Monitor 日志中的数据引入时间](../platform/data-ingestion-time.md)。
+日志警报基于 [Log Analytics](../log-query/get-started-portal.md) 或 [Application Insights](../log-query/log-query-overview.md) 定期运行查询。 由于 Azure Monitor 需要处理来自数千个客户以及全球各种源的若干 TB 的数据，因此，该服务很容易发生不同的时间延迟。 有关详细信息，请参阅 [Azure Monitor 日志中的数据引入时间](../platform/data-ingestion-time.md)。
 
 如果系统发现所需的数据尚未引入，为了缓解延迟，它会等待一段时间，并重试警报查询多次。 为系统设置的等待时间呈指数级递增。 日志警报只会在数据可用后才会触发，因此，延迟可能是日志数据引入速度缓慢造成的。
 
@@ -36,7 +36,7 @@ ms.locfileid: "86165628"
 
 根据[日志警报的术语](../platform/alerts-unified-log.md#log-search-alert-rule---definition-and-types)一文中所述，配置中规定的时间段指定查询的时间范围。 查询仅返回在此时间范围内创建的记录。
 
-时间段限制为日志查询提取的数据以防止滥用，并规避日志查询中使用的任何时间命令（例如 **ago**）。 例如，如果时间段设置为 60 分钟，且在下午 1:15 运行查询，则在中午 12:15 和下午 1:15 之间创建的记录将用于日志查询。 如果日志查询使用类似于**前 (1d) **的时间命令，则该查询仍只使用 12:15 pm 和 1:15 pm 之间的数据，因为该时间段设置为该间隔。
+时间段限制为日志查询提取的数据以防止滥用，并规避日志查询中使用的任何时间命令（例如 **ago**）。 例如，如果时间段设置为 60 分钟，且在下午 1:15 运行查询，则在中午 12:15 和下午 1:15 之间创建的记录将用于日志查询。 如果日志查询使用类似于**前（1d）** 的时间命令，则该查询仍只使用 12:15 pm 和 1:15 pm 之间的数据，因为该时间段设置为该间隔。
 
 请检查配置中的时间段是否与查询匹配。 对于前面所述的示例，如果日志查询使用 **ago (1d)**（如绿色标记所示），则时间段应设置为 24 小时或 1440 分钟（如红色标记所示）。 此设置可确保查询按预期方式运行。
 
@@ -99,7 +99,7 @@ Log Analytics 和 Application Insights 可能会发生引入和处理延迟。 �
 
 ![要执行的查询](media/alert-log-troubleshoot/LogAlertPreview.png)
 
-“要执行的查询”框显示日志警报服务运行的操作。**** 如果你想要了解在创建警报之前警报查询输出可能是什么，则可以通过[分析门户](../log-query/portals.md)或[分析 API](https://docs.microsoft.com/rest/api/loganalytics/)运行所述的查询和 timespan。
+“要执行的查询”框显示日志警报服务运行的操作。**** 如果你想要了解在创建警报之前警报查询输出可能是什么，则可以通过[分析门户](../log-query/log-query-overview.md)或[分析 API](/rest/api/loganalytics/)运行所述的查询和 timespan。
 
 ## <a name="log-alert-was-disabled"></a>已禁用日志警报
 
@@ -181,15 +181,48 @@ Azure 活动日志中的以下示例事件适用于因持续失败而被禁用�
 - 该查询已写入到[跨多个资源的运行](../log-query/cross-workspace-query.md)。 一个或多个指定的资源不再存在。
 - 配置的[指标度量类型日志警报](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)具有不符合语法规范的警报查询
 - 没有任何数据流向分析平台。 由于提供的查询没有数据，[查询执行出错](https://dev.loganalytics.io/documentation/Using-the-API/Errors)。
-- [查询语言](https://docs.microsoft.com/azure/kusto/query/)的更改包含命令和函数的已修改格式。 因此，以前在警报规则中提供的查询不再有效。
+- [查询语言](/azure/kusto/query/)的更改包含命令和函数的已修改格式。 因此，以前在警报规则中提供的查询不再有效。
 
 [Azure 顾问](../../advisor/advisor-overview.md)会警告此类行为。 在 Azure 顾问上，针对特定的日志警报规则添加了一个建议，该规则位于具有中等影响的高可用性类别下，以及有关 "修复日志警报规则以确保监视" 的说明。
 
 > [!NOTE]
-> 如果在 Azure 顾问提供了七天的建议后，不会更正日志警报规则中的警报查询，Azure Monitor 将禁用日志警报，并确保在 (7 天) ，如果规则无法连续运行，则不需要进行不必要的收费。 可以通过查看 [Azure 活动日志](../../azure-resource-manager/management/view-activity-logs.md)中的事件，来了解 Azure Monitor 禁用日志警报规则的确切时间。
+> 如果在 Azure 顾问提供了七天的建议后，不会更正日志警报规则中的警报查询，Azure Monitor 将禁用日志警报，并确保在规则不能连续运行时不会产生不必要的计费（7天）。 可以通过查看 [Azure 活动日志](../../azure-resource-manager/management/view-activity-logs.md)中的事件，来了解 Azure Monitor 禁用日志警报规则的确切时间。
+
+## <a name="alert-rule-quota-was-reached"></a>已达到警报规则配额
+
+每个订阅和资源的日志搜索警报规则数受[此处](https://docs.microsoft.com/azure/azure-monitor/service-limits)所述的配额限制的限制。
+
+### <a name="recommended-steps"></a>建议的步骤
+    
+如果已达到配额限制，以下步骤可帮助解决此问题。
+
+1. 请尝试删除或禁用不再使用的日志搜索警报规则。
+2. 如果需要增加配额限制，请继续创建支持请求，并提供以下信息：
+
+    - 需要增加配额限制的订阅 ID
+    - 配额增加的原因
+    - 配额增加的资源类型： **Log Analytics**， **Application Insights** ect。
+    - 请求的配额限制
+
+
+### <a name="to-check-the-current-usage-of-new-log-alert-rules"></a>检查新的日志警报规则的当前使用情况
+    
+#### <a name="from-the-azure-portal"></a>通过 Azure 门户
+
+1. 打开“警报”屏幕，然后单击“管理预警规则” 
+2. 使用“订阅”下拉列表控件筛选到相关订阅
+3. 请勿筛选到特定的资源组、资源类型或资源
+4. 在 "*信号类型*" 下拉控件中，选择 "日志搜索"
+5. 验证“状态”下拉列表控件是否设置为“已启用”
+6. 日志搜索警报规则的总数将显示在规则列表的上方
+
+#### <a name="from-api"></a>通过 API
+
+- PowerShell- [AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule?view=azps-3.7.0)
+- REST API - [按订阅列出](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/listbysubscription)
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解 [Azure 中的日志警报](../platform/alerts-unified-log.md)。
-- 详细了解 [Application Insights](../../azure-monitor/app/analytics.md)。
+- 详细了解 [Application Insights](../log-query/log-query-overview.md)。
 - 了解有关[日志查询](../log-query/log-query-overview.md)的详细信息。

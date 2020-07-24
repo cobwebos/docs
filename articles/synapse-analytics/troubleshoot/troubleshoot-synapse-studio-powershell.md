@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse Studio （预览版）连接 PowerShell 疑难解答
+title: 排查 Synapse Studio （预览版）与 PowerShell 的连接问题
 description: 使用 PowerShell 对 Azure Synapse Studio 连接进行故障排除
 author: julieMSFT
 ms.service: synapse-analytics
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: bbc985407a6cb56f4f1b539f514ab092b5f7d0de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4afaf536a9c65758ad030e5cdeeee5fb97074d7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81431470"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046680"
 ---
 # <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>诊断 PowerShell 脚本的 Azure Synapse Studio （预览版）连接问题
 

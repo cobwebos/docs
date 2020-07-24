@@ -2,13 +2,13 @@
 title: 设置 QnA Maker 服务-QnA Maker
 description: 在创建任何 QnA Maker 知识库之前，必须先在 Azure 中设置 QnA Maker 服务。 任何有权在订阅中创建新资源的人都可以设置 QnA Maker 服务。
 ms.topic: conceptual
-ms.date: 05/28/2020
-ms.openlocfilehash: 0a1b79c91e4e1bd9a57d6dcbb38432125573b9e6
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.date: 07/13/2020
+ms.openlocfilehash: 7ba8134f58a4f0e4e26a3246a44574df295e3c20
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214122"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040385"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 资源
 
@@ -62,7 +62,7 @@ ms.locfileid: "85214122"
 
 ## <a name="find-authoring-keys-in-the-azure-portal"></a>在 Azure 门户中查找创作密钥
 
-你可以从创建 QnA Maker 资源的 Azure 门户查看和重置创作密钥。 这些密钥可能称为订阅密钥。 
+你可以从创建 QnA Maker 资源的 Azure 门户查看和重置创作密钥。 这些密钥可能称为订阅密钥。
 
 1. 中转到 Azure 门户中的 QnA Maker 资源，并选择具有_认知服务_类型的资源：
 
@@ -90,7 +90,11 @@ ms.locfileid: "85214122"
     >[!NOTE]
     >如果你认为密钥已泄露，请刷新你的密钥。 这可能需要相应地更改客户端应用程序或机器人代码。
 
-## <a name="upgrade-qna-maker-sku"></a>升级 QnA Maker SKU
+### <a name="update-the-resources"></a>更新资源
+
+了解如何升级知识库使用的资源。
+
+### <a name="upgrade-qna-maker-sku"></a>升级 QnA Maker SKU
 
 如果你想要在你的知识库中获得更多问题和答案，请将 QnA Maker 服务定价层升级。
 
@@ -104,7 +108,7 @@ ms.locfileid: "85214122"
 
     ![QnA Maker 定价](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
 
-## <a name="upgrade-app-service"></a>升级应用服务
+### <a name="upgrade-app-service"></a>升级应用服务
 
  当您的知识库需要提供客户端应用程序的更多请求时，请升级您的应用服务定价层。
 
@@ -114,11 +118,11 @@ ms.locfileid: "85214122"
 
 ![QnA Maker 应用服务规模](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
-## <a name="upgrade-the-azure-cognitive-search-service"></a>升级 Azure 认知搜索服务
+### <a name="upgrade-the-azure-cognitive-search-service"></a>升级 Azure 认知搜索服务
 
 如果计划有很多知识库，请升级 Azure 认知搜索服务定价层。
 
-目前不能执行 Azure 搜索 SKU 的就地升级。 但是，你可以使用所需的 SKU 创建新的 Azure 搜索资源、将数据还原到新资源，然后将其链接到 QnA Maker 堆栈。 要实现这一点，请执行下列操作：
+目前不能执行 Azure 搜索 SKU 的就地升级。 但是，你可以使用所需的 SKU 创建新的 Azure 搜索资源、将数据还原到新资源，然后将其链接到 QnA Maker 堆栈。 为此，请执行以下步骤：
 
 1. 在 Azure 门户中创建新的 Azure 搜索资源，并选择所需的 SKU。
 
@@ -163,7 +167,11 @@ QnAMaker 运行时是在 Azure 门户中[创建 QnAMaker 服务](./set-up-qnamak
 
     ![QnAMaker 应用服务实例的重新启动](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
 
-## <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>将 QnA Maker 配置为使用不同的认知搜索资源
+## <a name="cognitive-search-consideration"></a>认知搜索注意事项
+
+作为单独的资源认知搜索，你应该注意一些不同的配置。
+
+### <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>将 QnA Maker 配置为使用不同的认知搜索资源
 
 如果通过门户创建 QnA 服务及其依赖项（如搜索），将为你创建一个搜索服务并将其链接到 QnA Maker 服务。 创建这些资源后，你可以更新应用服务设置，以使用以前存在的搜索服务，并删除刚刚创建的搜索服务。
 
@@ -192,6 +200,34 @@ QnA Maker 的**应用服务**资源使用认知搜索资源。 若要更改 QnA 
 
 了解有关如何配置应用服务[应用程序设置](../../../app-service/configure-common.md#configure-app-settings)的详细信息。
 
+### <a name="configuring-cognitive-search-as-a-private-endpoint-inside-a-vnet"></a>将认知搜索配置为 VNET 中的专用终结点
+
+如果在创建 QnA Maker 资源的过程中创建搜索实例，则可以强制认知搜索支持完全在客户 VNet 中创建的专用终结点配置。
+
+必须在同一区域中创建所有资源，才能使用专用终结点。
+
+* QnA Maker 资源
+* 新建认知搜索资源
+* 新建虚拟网络资源
+
+在[Azure 门户](https://portal.azure.com)中完成以下步骤：
+
+1. 创建[QnA Maker 资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)。
+1. 创建新的认知搜索资源，并将终结点连接（数据）设置为 "_专用_"。 在步骤1中创建的 QnA Maker 资源所在的同一区域中创建资源。 详细了解如何[创建认知搜索资源](../../../search/search-create-service-portal.md)，然后使用此链接直接前往[资源的创建页面](https://ms.portal.azure.com/#create/Microsoft.Search)。
+1. 创建新的[虚拟网络资源](https://ms.portal.azure.com/#create/Microsoft.VirtualNetwork-ARM)。
+1. 在此过程的步骤1中创建的应用服务资源上配置 VNET。
+    1. 在 VNET 中为在步骤2中创建的新认知搜索资源创建新的 DNS 条目。 到认知搜索的 IP 地址。
+1. [将应用服务关联到步骤2中创建的新认知搜索资源](#configure-qna-maker-to-use-different-cognitive-search-resource)。 然后，你可以删除在步骤1中创建的原始认知搜索资源。
+
+在[QnA Maker 门户](https://www.qnamaker.ai/)中，创建第一个知识库。
+
+
+### <a name="inactivity-policy-for-free-search-resources"></a>免费搜索资源的非活动策略
+
+如果未使用 QnA maker 资源，则应删除所有资源。 如果不删除未使用的资源，则在创建免费搜索资源时，知识库将停止工作。
+
+免费搜索资源在90天后将被删除，而无需接收 API 调用。
+
 ## <a name="configure-app-service-idle-setting-to-avoid-timeout"></a>配置应用服务空闲设置以避免超时
 
 用于为已发布的知识库提供 QnA Maker 预测运行时的应用服务具有空闲超时配置，默认情况下，如果服务处于空闲状态，则会自动超时。 对于 QnA Maker，这意味着预测运行时 generateAnswer API 有时会在没有流量的时段超时。
@@ -207,14 +243,24 @@ QnA Maker 的**应用服务**资源使用认知搜索资源。 若要更改 QnA 
     > ![在 "配置" 窗格上，选择 "常规设置"，然后查找 * * Always on * *，然后选择 * * On * * 作为值。](../media/qnamaker-how-to-upgrade-qnamaker/configure-app-service-idle-timeout.png)
 
 1. 选择 "**保存**" 以保存配置。
-1. 系统会询问你是否要重新启动应用程序以使用新设置。 选择“继续”。
+1. 系统会询问你是否要重新启动应用程序以使用新设置。 选择**继续**。
 
 详细了解如何配置应用服务[常规设置](../../../app-service/configure-common.md#configure-general-settings)。
-## <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>配置应用服务环境以托管 Qna Maker 应用服务
+
+## <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>配置应用服务环境以承载 QnA Maker 应用服务
 应用服务环境可用于承载 QnA Maker 应用服务。 如果应用服务环境是内部的，则需要执行以下步骤：
-1. 创建应用服务和 azure 搜索服务。
-2. 公开公共 DNS 和白名单上的应用服务 QnA Maker 服务标记： CognitiveServicesManagement，或使其面向 internet。
-3. 使用 Azure 资源管理器创建 QnA Maker 认知服务实例（Cognitiveservices account/帐户），其中 QnA Maker 终结点应设置为应用服务环境。 
+1. 创建应用服务和 Azure 搜索服务。
+2. 公开应用服务并允许 QnA Maker 可用性，如下所示：
+    * 公开可用-默认
+    * DNS 服务标记：
+        * `CognitiveServicesManagement`
+    * 与 QnA Maker 关联的 Ip 包括：
+        * 13.91.138.229
+        * 40.88.22.25
+        * 13.86.184.142
+        * 20.185.105.28
+        * 13.86.178.10
+1. 使用 Azure 资源管理器创建 QnA Maker 认知服务实例（Cognitiveservices account/帐户），其中 QnA Maker 终结点应设置为应用服务环境。
 
 ## <a name="business-continuity-with-traffic-manager"></a>流量管理器的业务连续性
 

@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 04/28/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 8f03099cf2890882a1c1d4ba9d69fcb64d0db600
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8544ad292d9e8982e236566fb53189c70922232c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82233952"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041389"
 ---
 # <a name="troubleshooting"></a>故障排除
 
@@ -35,7 +35,7 @@ ms.locfileid: "82233952"
 |----|---------|
 |连接尝试失败，因为已连接方在一段时间后尚未做出正确的响应  | 某些位置的测试代理正被防火墙阻止。|
 |    |正在通过（负载均衡器、异地流量管理器、Azure Express Route）重新路由某些 IP 地址。 
-|    |如果使用的是 Azure ExpressRoute，则在[发生非对称路由](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing)时，存在着数据包可能被丢弃的情况。|
+|    |如果使用的是 Azure ExpressRoute，则在[发生非对称路由](../../expressroute/expressroute-asymmetric-routing.md)时，存在着数据包可能被丢弃的情况。|
 
 ## <a name="test-failure-with-a-protocol-violation-error"></a>测试失败，出现违反协议错误
 
@@ -66,11 +66,11 @@ ms.locfileid: "82233952"
 
 ### <a name="i-did-not-receive-the-webhook-notification"></a>我尚未收到 Webhook 通知？
 
-检查以确保接收 Webhook 通知的应用程序可用并成功处理 Webhook 请求。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook)。
+检查以确保接收 Webhook 通知的应用程序可用并成功处理 Webhook 请求。 有关详细信息，请参阅[此文](../platform/alerts-log-webhook.md)。
 
 ### <a name="i-am-getting--403-forbidden-errors-what-does-this-mean"></a>我收到了 403 禁止访问的错误，这是什么意思？
 
-此错误表示你需要添加防火墙例外以允许可用性代理测试目标 URL。 有关要允许的代理 IP 地址的完整列表，请参阅 [IP 异常文章](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses#availability-tests)。
+此错误表示你需要添加防火墙例外以允许可用性代理测试目标 URL。 有关要允许的代理 IP 地址的完整列表，请参阅 [IP 异常文章](./ip-addresses.md#availability-tests)。
 
 ### <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>间歇性测试失败，出现违反协议错误？
 
@@ -97,7 +97,7 @@ ms.locfileid: "82233952"
    下面是两种可能的解决方案：
 
    * 请将防火墙配置为允许从[我们的 Web 测试代理 IP 地址](../../azure-monitor/app/ip-addresses.md)发出的传入请求。
-   * 编写自己的代码，定期测试内部服务器。 在防火墙后的测试服务器上以后台进程的方式运行该代码。 测试进程可以通过核心 SDK 包中的 [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API 将其结果发送到 Application Insights。 这要求测试服务器能够以传出访问的方式访问 Application Insights 引入终结点，但与允许传入请求相比，这种方式的安全风险要小得多。 结果将显示在“可用性 Web 测试”边栏选项卡中，但是与通过门户创建的测试相比，体验会略微简化。 自定义可用性测试还会在“分析”、“搜索”和“指标”中显示为可用性结果。
+   * 编写自己的代码，定期测试内部服务器。 在防火墙后的测试服务器上以后台进程的方式运行该代码。 测试进程可以通过核心 SDK 包中的 [TrackAvailability()](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API 将其结果发送到 Application Insights。 这要求测试服务器能够以传出访问的方式访问 Application Insights 引入终结点，但与允许传入请求相比，这种方式的安全风险要小得多。 结果将显示在“可用性 Web 测试”边栏选项卡中，但是与通过门户创建的测试相比，体验会略微简化。 自定义可用性测试还会在“分析”、“搜索”和“指标”中显示为可用性结果。
 
 ### <a name="uploading-a-multi-step-web-test-fails"></a>上传多步骤 Web 测试失败
 

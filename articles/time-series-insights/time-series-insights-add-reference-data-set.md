@@ -5,23 +5,24 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.custom: seodec18~~~~
-ms.openlocfilehash: 010f7b908ceb9c8d07208db1312d8af8d4e27051
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 06/30/2020
+ms.custom: seodec18
+ms.openlocfilehash: 2503a58f7d5fe05240f374fabbe2bf88d34dcf6c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82838512"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046618"
 ---
-# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>使用 Azure 门户为时序见解环境创建引用数据集
+# <a name="create-a-reference-data-set-for-your-azure-time-series-insights-gen1-environment-using-the-azure-portal"></a>使用 Azure 门户为 Azure 时序见解 Gen1 环境创建引用数据集
 
 本文介绍了如何向 Azure 时序见解环境添加引用数据集。 引用数据可用于联接到源数据以增强值。
 
-参考数据集是各种项的集合，这些项对事件源中的事件进行了增强。 时序见解入口引擎将事件源中的每个事件与参考数据集中的相应数据行联接到一起。 然后即可使用此增强的事件进行查询。 该联接基于在参考数据集中定义的主键列。
+参考数据集是各种项的集合，这些项对事件源中的事件进行了增强。 Azure 时序见解入口引擎将事件源中的每个事件与引用数据集中的对应数据行联接。 然后即可使用此增强的事件进行查询。 该联接基于在参考数据集中定义的主键列。
 
 参考数据不以追溯方式进行联接。 因此，在配置并上传数据后，只会将当前和将来的流入数据匹配并联接到参考数据集。
 
@@ -35,15 +36,15 @@ ms.locfileid: "82838512"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 查找现有的 Azure 时序见解环境。 在 Azure 门户左侧的菜单中，选择“所有资源”。 选择时序见解环境。
+1. 查找现有的 Azure 时序见解环境。 在 Azure 门户左侧的菜单中，选择“所有资源”。 选择 Azure 时序见解环境。
 
-1. 选择“概述”页面。 展开页面顶部附近的“概要”部分，找到“时序见解资源管理器 URL”并打开链接。  
+1. 选择“概述”页。 展开页面顶部附近的 "**概要**" 部分，找到 "时序**见解资源管理器 URL** " 并打开链接。  
 
    [![展开“概要”部分](media/add-reference-data-set/essentials.png)](media/add-reference-data-set/essentials.png#lightbox)
 
-   查看时序见解环境的资源管理器。
+   查看 Azure 时序见解环境的资源管理器。
 
-1. 在时序见解资源管理器中展开环境选择器。 选择活动的环境。 选择资源管理器页面右上角的参考数据图标。
+1. 展开 Azure 时序见解资源管理器中的环境选择器。 选择活动的环境。 选择 "资源管理器" 页右上角的 "引用数据" 图标。
 
    [![添加参考数据](media/add-reference-data-set/tsi-select-environment-and-data-icons.png)](media/add-reference-data-set/tsi-select-environment-and-data-icons.png#lightbox)
 

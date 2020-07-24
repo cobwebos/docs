@@ -5,11 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.openlocfilehash: e635c243a887690fb1f7a5dcd017c1130d74a747
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97c1819d665e6964343e853249a0d22aa07c3588
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114582"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045587"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理经典指标警报
 
@@ -51,7 +52,7 @@ Azure Monitor 中的经典指标警报提供了一种在指标超出阈值时获
 
 ## <a name="with-azure-cli"></a>使用 Azure CLI
 
-前面几个部分介绍了如何使用 Azure 门户创建、查看和管理指标警报规则。 本部分将介绍如何使用跨平台 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) 实现相同的结果。 使用 Azure CLI 的最快捷方式是通过 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)。
+前面几个部分介绍了如何使用 Azure 门户创建、查看和管理指标警报规则。 本部分将介绍如何使用跨平台 [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) 实现相同的结果。 使用 Azure CLI 的最快捷方式是通过 [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest)。
 
 ### <a name="get-all-classic-metric-alert-rules-in-a-resource-group"></a>获取某个资源组中的所有经典指标警报规则
 
@@ -87,7 +88,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 本部分展示了如何使用 PowerShell 命令创建、查看和管理经典指标警报。本文中的示例展示了如何将 Azure Monitor cmdlet 用于经典指标警报。
 
-1. 如果尚未安装，请在计算机上安装要运行的 PowerShell。 有关详细信息，请参阅[如何安装和配置 PowerShell](/powershell/azure/overview)。 还可以在 [Azure Monitor (Insights) Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 上查看 Azure Monitor PowerShell cmdlet 的完整列表。
+1. 如果尚未安装，请在计算机上安装要运行的 PowerShell。 有关详细信息，请参阅[如何安装和配置 PowerShell](/powershell/azure/)。 还可以在 [Azure Monitor (Insights) Cmdlet](/powershell/module/az.applicationinsights) 上查看 Azure Monitor PowerShell cmdlet 的完整列表。
 
 2. 首先，登录到 Azure 订阅。
 
@@ -95,7 +96,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
     Connect-AzAccount
     ```
 
-3. 会出现登录界面。 登录帐户后，会出现 TenantID 和默认订阅 ID。 所有 Azure cmdlets 都在默认订阅的上下文中工作。 若要查看有权访问的订阅的列表，请使用以下命令：
+3. 会出现登录界面。 登录帐户后，会出现 TenantID 和默认订阅 ID。 所有 Azure cmdlet 都可用于默认订阅的上下文。 若要查看有权访问的订阅的列表，请使用以下命令：
 
     ```powershell
     Get-AzSubscription

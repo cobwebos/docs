@@ -11,11 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: juliako
-ms.openlocfilehash: 055f651552313732c000a2e91d2862cda22a9c26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e358742635d9ed939bbc62bb0d54e8169382e7de
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82995880"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043488"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Azure 媒体服务的配额和限制
@@ -92,7 +93,7 @@ ms.locfileid: "82995880"
 | [流式处理策略](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
 | 一次与一个资产关联的唯一[流式处理定位符数](streaming-locators-concept.md) | 100<sup>(7)</sup>（固定） |
 
-<sup>6</sup> 使用自定义[流式处理策略](https://docs.microsoft.com/rest/api/media/streamingpolicies)时，应为媒体服务帐户设计有限的一组此类策略，并在需要同样的加密选项和协议时重新将这些策略用于流定位器。 不应为每个流式处理定位符创建新的流式处理策略。
+<sup>6</sup> 使用自定义[流式处理策略](/rest/api/media/streamingpolicies)时，应为媒体服务帐户设计有限的一组此类策略，并在需要同样的加密选项和协议时重新将这些策略用于流定位器。 不应为每个流式处理定位符创建新的流式处理策略。
 
 <sup>7</sup> 流式处理定位符不适用于管理按用户的访问控制。 要为不同用户提供不同的访问权限，请使用数字权限管理 (DRM) 解决方案。
 

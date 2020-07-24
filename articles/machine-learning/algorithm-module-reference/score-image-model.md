@@ -1,5 +1,5 @@
 ---
-title: 为图像模型评分
+title: 使用 "分数图像模型" 模块
 titleSuffix: Azure Machine Learning
 description: 了解如何通过已定型图像模型使用 Azure 机器学习中的“为图像模型评分”模块生成预测。
 services: machine-learning
@@ -9,11 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: 021572aef673cf88f7744a0a210ef794c739448b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b949603b3e6ee51311f9c54f3e1326217f00c82d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84450081"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039103"
 ---
 # <a name="score-image-model"></a>为图像模型评分
 

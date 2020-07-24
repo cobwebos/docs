@@ -11,11 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 5f2c823b0932db42876be6ab04ebcd82783729aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 097c894594987e92038beeaf4b17a3e67538fdad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734415"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046067"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>将范围内的同步从 Azure AD 配置为 Azure Active Directory 域服务
 
@@ -39,8 +40,8 @@ ms.locfileid: "84734415"
 
 使用 Azure 门户或 PowerShell 配置作用域内同步设置：
 
-| 操作 | | |
-|--|--|--|
+| 操作 | 用途<br>Azure 门户 | 用途<br>PowerShell |
+| ------ | ------------------- | ----------------- |
 | 创建托管域并配置作用域同步 | [Azure 门户](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
 | 修改作用域同步 | [Azure 门户](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
 | 禁用范围内同步 | [Azure 门户](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |

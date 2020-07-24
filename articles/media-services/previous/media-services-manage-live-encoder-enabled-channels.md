@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 6210d6ee4877c6ba84178340cf0a6610e402da31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d103e6a0f7a47aadce524325e58fbb7069a1e13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641108"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042818"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>使用 Azure 媒体服务执行实时流式处理以创建多比特率流
 
@@ -359,11 +360,10 @@ Default720p 会将视频编码为以下 6 层。
 
 [创建频道，通过 NET SDK 执行从单比特率到自适应比特率流的实时编码](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 
-[Manage channels with REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
+[Manage channels with REST API](/rest/api/media/operations/channel)
 
 [媒体服务概念](media-services-concepts.md)
 
 [Azure 媒体服务分片 MP4 实时引入规范](../media-services-fmp4-live-ingest-overview.md)
 
 [live-overview]: ./media/media-services-manage-live-encoder-enabled-channels/media-services-live-streaming-new.png
-

@@ -12,15 +12,16 @@ ms.topic: article
 ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 57a8d308955719be0d84b87fb3a23c6f510c2836
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3669919a8ddf4ffcbcf0d3e7e060c62f4c8df1c6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84234898"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039136"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>使用内容感知编码预设来查找给定分辨率的最佳比特率值
 
-若要准备通过[自适应比特率流式处理](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)传送的内容，需以多个比特率（从高到低）编码视频。 这可以确保质量的平稳降级，因为比特率会降低，而视频的分辨率也会降低。 此类多比特率编码利用所谓的编码梯度 – 分辨率和比特率的表；请参阅媒体服务的[内置编码预设](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)。
+若要准备通过[自适应比特率流式处理](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)传送的内容，需以多个比特率（从高到低）编码视频。 这可以确保质量的平稳降级，因为比特率会降低，而视频的分辨率也会降低。 此类多比特率编码利用所谓的编码梯度 – 分辨率和比特率的表；请参阅媒体服务的[内置编码预设](/rest/api/media/transforms/createorupdate#encodernamedpreset)。
 
 应该了解自己正在处理的内容，并根据单个视频的复杂性自定义/优化编码梯度。 在每种分辨率下有一个比特率，超过该比特率会感知不到任何质量提升 – 编码器将以此最佳比特率运行。 下一级优化是基于内容选择分辨率 – 例如，降到 720p 以下不会使 PowerPoint 演示文稿的视频受益。 接下来，可以进一步在编码器中优化视频中每个拍摄画面的设置。 
 

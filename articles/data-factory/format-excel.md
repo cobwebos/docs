@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 46108ed06659d234907c6eaa6841dc18022c73bf
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: a937548c9318d98e8832720706626b74167d32d9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144123"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044396"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure 数据工厂中的 Excel 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -35,8 +35,9 @@ ms.locfileid: "86144123"
 | range            | 给定工作表中用于定位选定数据的单元格范围，例如 `A3:H5`（从 A3 到 H5 的表）、`A3`（从单元格 A3 开始的表）、`A3:A3`（单个单元格）。 如果未指定，则 ADF 以表的形式从整个工作表读取。 | 否       |
 | firstRowAsHeader | 指定是否要将给定工作表/范围内的第一行视为带有列名的标题行。<br>允许的值为 **true** 和 **true**（默认值）。 | 否       |
 | nullValue        | 指定 null 值的字符串表示形式。 <br>默认值为**空字符串**。 | 否       |
-| compressionCodec | 用来读取 Excel 文件的压缩编解码器。 <br>允许的值为 **bzip2**、**gzip**、**deflate**、**ZipDeflate**、**snappy** 或 **lz4**。 默认设置是不压缩。 <br>请注意  ，复制活动目前不支持“snappy”和“lz4”，映射数据流不支持“ZipDeflate”。 <br>**注意**，使用复制活动来解压缩 ZipDeflate 文件并写入到基于文件的接收器数据存储时，会将文件提取到以下文件夹：`<path specified in dataset>/<folder named as source zip file>/`。 | 否       |
-| compressionLevel | 压缩率。 <br>允许的值为 **Optimal** 或 **Fastest**。<br>- **Fastest**：尽快完成压缩操作，不过，无法以最佳方式压缩生成的文件。<br>- **Optimal**：以最佳方式完成压缩操作，不过，需要耗费更长的时间。 有关详细信息，请参阅 [Compression Level](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx)（压缩级别）主题。 | 否       |
+| compression | 用来配置文件压缩的属性组。 如果需要在活动执行期间进行压缩/解压缩，请配置此部分。 | 否 |
+| type<br/>（在 `compression` 下） | 用来读取/写入 JSON 文件的压缩编解码器。 <br>允许的值为 **bzip2**、**gzip**、**deflate**、**ZipDeflate**、**snappy** 或 **lz4**。 保存文件时使用。 默认设置是不压缩。<br>请注意  ，复制活动目前不支持“snappy”和“lz4”，映射数据流不支持“ZipDeflate”。<br>**注意**，使用复制活动来解压缩 ZipDeflate 文件并写入到基于文件的接收器数据存储时，会将文件提取到以下文件夹：`<path specified in dataset>/<folder named as source zip file>/`。 | 否。  |
+| level<br/>（在 `compression` 下） | 压缩率。 <br>允许的值为 **Optimal** 或 **Fastest**。<br>- **Fastest**：尽快完成压缩操作，不过，无法以最佳方式压缩生成的文件。<br>- **Optimal**：以最佳方式完成压缩操作，不过，需要耗费更长的时间。 有关详细信息，请参阅 [Compression Level](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx)（压缩级别）主题。 | 否       |
 
 下面是 Azure Blob 存储上 Excel 数据集的示例：
 
@@ -105,14 +106,14 @@ ms.locfileid: "86144123"
 
 下表列出了 Excel 源支持的属性。 可以在 "**源选项**" 选项卡中编辑这些属性。使用内联数据集时，你将看到与 "[数据集属性](#dataset-properties)" 部分所述的属性相同的其他文件设置。
 
-| 名称                      | 说明                                                  | 必需 | 允许的值                                            | 数据流脚本属性         |
+| 名称                      | 说明                                                  | 必须 | 允许的值                                            | 数据流脚本属性         |
 | ------------------------- | ------------------------------------------------------------ | -------- | --------------------------------------------------------- | --------------------------------- |
 | 通配符路径           | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否       | String[]                                                  | wildcardPaths                     |
 | 分区根路径       | 对于已分区的文件数据，可以输入分区根路径以便将分区文件夹读取为列 | 否       | 字符串                                                    | partitionRootPath                 |
 | 文件列表             | 你的源是否指向列出要处理的文件的文本文件 | 否       | `true` 或 `false`                                         | fileList                          |
 | 要存储文件名的列 | 使用源文件名称和路径创建新列       | 否       | 字符串                                                    | rowUrlColumn                      |
 | 完成后          | 在处理后删除或移动文件。 文件路径从容器根开始 | 否       | 删除： `true` 或`false` <br> 移动`['<from>', '<to>']` | purgeFiles <br> moveFiles         |
-| 按上次修改时间筛选   | 选择根据文件上次更改时间筛选文件 | 否       | 时间戳                                                 | ModifiedAfter <br> modifiedBefore |
+| 按上次修改时间筛选   | 选择根据文件上次更改时间筛选文件 | 否       | Timestamp                                                 | ModifiedAfter <br> modifiedBefore |
 
 ### <a name="source-example"></a>源示例
 

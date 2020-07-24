@@ -2,12 +2,13 @@
 title: 部署模式
 description: 介绍如何使用 Azure 资源管理器指定是使用完整部署模式还是增量部署模式。
 ms.topic: conceptual
-ms.date: 01/17/2020
-ms.openlocfilehash: 1077d92f076797fb03c4fe750b353e2306f9b6de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/22/2020
+ms.openlocfilehash: f20f41e989e1a994b7806aecf6e7cee5a4c27014
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79460239"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040424"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure 资源管理器部署模式
 
@@ -20,6 +21,9 @@ ms.locfileid: "79460239"
 ## <a name="complete-mode"></a>完整模式
 
 在完整模式下，资源管理器删除资源组中已存在但尚未在模板中指定的资源  。
+
+> [!NOTE]
+> 在完整模式下部署模板之前，请始终使用[假设操作](template-deploy-what-if.md)。 假设会显示将创建、删除或修改哪些资源。 使用 "假设" 以避免意外删除资源。
 
 如果模板包含由于[条件](conditional-resource-deployment.md)的计算结果为 false 而未部署的资源，则结果取决于用于部署模板的 REST API 版本。 如果使用 2019-05-10 之前的版本，则**不会删除**该资源。 如果使用 2019-05-10 或更高版本，则**会删除**该资源。 最新版本的 Azure PowerShell 和 Azure CLI 会删除该资源。
 
@@ -45,10 +49,12 @@ ms.locfileid: "79460239"
 
 ## <a name="incremental-mode"></a>增量模式
 
-在增量模式下，资源管理器保留资源组中已存在但尚未在模板中指定的未更改资源  。 模板中的资源添加到资源组。 
+在增量模式下，资源管理器保留资源组中已存在但尚未在模板中指定的未更改资源****。 模板中的资源添加到资源组。****
 
 > [!NOTE]
 > 在增量模式下重新部署现有资源时，所有属性都将重新应用。 **属性不会以增量方式添加**。 一个常见的误解是认为未在模板中指定的属性会保持不变。 如果未指定某些属性，资源管理器会将部署解释为覆盖这些值。 未包含在模板中的属性将重置为默认值。 指定资源的所有非默认值，而不仅仅是要更新的属性。 模板中的资源定义始终包含资源的最终状态。 它不能表示对现有资源的部分更新。
+>
+> 在极少数情况下，为资源指定的属性实际上是作为子资源实现的。 例如，当你为 web 应用提供站点配置值时，将在子资源类型中实现这些值 `Microsoft.Web/sites/config` 。 如果重新部署 web 应用并为站点配置值指定空对象，则子资源不会更新。 但是，如果您提供了新的站点配置值，则子资源类型将会更新。
 
 ## <a name="example-result"></a>示例结果
 
@@ -66,14 +72,14 @@ ms.locfileid: "79460239"
 * 资源 B
 * 资源 D
 
-在“增量”模式下部署时，资源组具有： 
+在“增量”模式下部署时，资源组具有：****
 
 * 资源 A
 * 资源 B
 * 资源 C
 * 资源 D
 
-在“完整”模式下部署时，会删除资源 C。  资源组具有：
+在“完整”模式下部署时，会删除资源 C。**** 资源组具有：
 
 * 资源 A
 * 资源 B

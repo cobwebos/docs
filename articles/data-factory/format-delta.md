@@ -7,12 +7,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: daperlov
-ms.openlocfilehash: 74c2e738153b1afa5c90f4769b6d9b0e982af363
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e9df7b00a384859fb29577be0ad05da233683f46
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225092"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044533"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Azure 数据工厂中的增量格式
 
@@ -23,6 +23,8 @@ ms.locfileid: "86225092"
 > [!NOTE]
 > 用于映射数据流的增量格式连接器目前以公共预览版的形式提供。
 
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4ALTs]
+
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
 此连接器作为[内联数据集](data-flow-source.md#inline-datasets)提供，同时将数据流映射为源和接收器。
@@ -31,13 +33,13 @@ ms.locfileid: "86225092"
 
 下表列出了增量源支持的属性。 可以在 "**源选项**" 选项卡中编辑这些属性。
 
-| 名称 | 描述 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必须 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为`delta` | 是 | `delta` | format |
 | 文件系统 | Delta lake 的容器/文件系统 | 是 | 字符串 | fileSystem |
 | 文件夹路径 | 增量 lake 的直接 | 是 | 字符串 | folderPath |
 | 压缩类型 | 增量表的压缩类型 | 否 | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
-| 压缩级别 | 选择压缩是否尽快完成，或者是否以最佳方式压缩生成的文件。 | 如果 `compressedType` 指定了，则为必需。 | compressionLevel |
+| 压缩级别 | 选择压缩是否尽快完成，或者是否以最佳方式压缩生成的文件。 | 如果 `compressedType` 指定了，则为必需。 | `Optimal` 或 `Fastest` | compressionLevel |
 | 旅行时间 | 选择是否要查询增量表的旧快照 | 否 | 按时间戳查询：时间戳 <br> 按版本查询：整数 | timestampAsOf <br> versionAsOf |
 
 #### <a name="import-schema"></a>导入架构
@@ -67,13 +69,13 @@ source(output(movieId as integer,
 
 下表列出了增量接收器支持的属性。 可以在 "**设置**" 选项卡中编辑这些属性。
 
-| 名称 | 描述 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必须 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为`delta` | 是 | `delta` | format |
 | 文件系统 | Delta lake 的容器/文件系统 | 是 | 字符串 | fileSystem |
 | 文件夹路径 | 增量 lake 的直接 | 是 | 字符串 | folderPath |
 | 压缩类型 | 增量表的压缩类型 | 否 | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
-| 压缩级别 | 选择压缩是否尽快完成，或者是否以最佳方式压缩生成的文件。 | 如果 `compressedType` 指定了，则为必需。 | compressionLevel |
+| 压缩级别 | 选择压缩是否尽快完成，或者是否以最佳方式压缩生成的文件。 | 如果 `compressedType` 指定了，则为必需。 | `Optimal` 或 `Fastest` | compressionLevel |
 | 清空 | 以小时为单位指定旧版本表的保留阈值。 值0或小于30天 | 是 | Integer | 度 |
 | Update 方法 | 指定增量 lake 允许哪些更新操作。 对于不插入的方法，需要执行前面的更改行转换才能标记行。 | 是 | `true` 或 `false` | 删除 <br> 可插入 <br> 更新 <br> upsertable |
 

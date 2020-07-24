@@ -4,12 +4,12 @@ description: 将针对到 Web 应用的失败请求速率的异常变化向用�
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 35c1769672e11cd7d1ec2f628b9d763dc8b90ac3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27cf38a1cfcf8a9f87582ab3e78b48e78f3c63c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254780"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045807"
 ---
 # <a name="smart-detection---failure-anomalies"></a>智能检测 - 失败异常
 如果 Web 应用的失败请求速率出现异常上升，那么 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 会近乎实时地自动通知你。 它会对 HTTP 请求速率或报告为失败的依赖项调用的异常上升进行检测。 对于请求而言，失败的请求通常是响应代码为 400 或更高的请求。 为了帮助会审和诊断问题，通知详情中会提供失败及相关应用程序数据的特征分析。 还提供指向 Application Insights 门户的链接，以供进一步诊断。 该功能不需要任何设置或配置，因为它使用机器学习算法来预测正常的失败率。
@@ -61,13 +61,13 @@ ms.locfileid: "85254780"
 
 ## <a name="configure-alerts"></a>配置警报
 
-可以从端口或者使用 Azure 资源管理器禁用智能检测警报规则（[请参阅模板示例](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)）。
+可以从端口或者使用 Azure 资源管理器禁用智能检测警报规则（[请参阅模板示例](./proactive-arm-config.md)）。
 
-该警报规则是使用名为“Application Insights 智能检测”的关联[操作组](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)创建的（该操作组包含电子邮件和 webhook 操作），并且可以进行扩展以在警报触发时触发其他操作。
+该警报规则是使用名为“Application Insights 智能检测”的关联[操作组](../platform/action-groups.md)创建的（该操作组包含电子邮件和 webhook 操作），并且可以进行扩展以在警报触发时触发其他操作。
 
 > [!NOTE]
-> 该警报规则现在默认向与订阅的监视查阅者和监视参与者角色关联的用户发送电子邮件通知。 [此处](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification)介绍了有关详细信息。
-> 通过该警报规则发送的通知需遵循[常见警报架构](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema)。
+> 该警报规则现在默认向与订阅的监视查阅者和监视参与者角色关联的用户发送电子邮件通知。 [此处](./proactive-email-notification.md)介绍了有关详细信息。
+> 通过该警报规则发送的通知需遵循[常见警报架构](../platform/alerts-common-schema.md)。
 >
 
 打开“警报”页。 包括失败异常警报规则以及已手动设置的任何警报，并可以查看其当前是否处于警报状态。
@@ -348,7 +348,7 @@ ms.locfileid: "85254780"
 
 *一些警报关于已知问题，我不希望接收它们。*
 
-* 你可以使用[警报操作规则](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules)抑制功能。
+* 你可以使用[警报操作规则](../platform/alerts-action-rules.md)抑制功能。
 
 ## <a name="next-steps"></a>后续步骤
 这些诊断工具可帮助检查应用中的数据：

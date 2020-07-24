@@ -4,11 +4,12 @@ description: 启用或禁用数据收集模块，并添加性能计数器和其�
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.reviewer: olegan
-ms.openlocfilehash: dde2cbf227f085b751f6ad22e1f2fa95f38c5915
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c62ed09435c470df606b610a6ce127326d32fb1e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485133"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041506"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>使用 ApplicationInsights.config 或 .xml 配置 Application Insights SDK
 Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](https://www.nuget.org/packages/Microsoft.ApplicationInsights)提供 API，用于将遥测数据发送到 Application Insights。 [其他包](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights)提供遥测*模块*和*初始值设定项*，用于自动从应用程序及其上下文跟踪遥测。 可以通过调整配置文件来启用或禁用遥测模块和初始值设定项并为其设置参数。
@@ -85,7 +86,7 @@ Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](https://w
 * [Microsoft.ApplicationInsights.EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
 
 ### <a name="microsoftapplicationinsights"></a>Microsoft.ApplicationInsights
-Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microsoft.com/library/mt420197.aspx)。 其他遥测模块使用此包，也可以[使用它来定义自己的遥测](../../azure-monitor/app/api-custom-events-metrics.md)。
+Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](/dotnet/api/microsoft.applicationinsights?view=azure-dotnet)。 其他遥测模块使用此包，也可以[使用它来定义自己的遥测](../../azure-monitor/app/api-custom-events-metrics.md)。
 
 * ApplicationInsights.config 中没有条目。
 * [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet 包。 如果只安装此 NuGet，则不会生成任何 .config 文件。

@@ -8,11 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 76bf38c9d15e977b39922fdfbc7d30f533707cda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5f558aaa367d156a8a4fa8633f113c6480236f5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801370"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038608"
 ---
 # <a name="monitor-the-security-of-your-containers"></a>监视容器的安全性
 
@@ -35,13 +36,11 @@ ms.locfileid: "85801370"
 
 1. 若要触发映像的扫描，请将其推送到注册表。 
 
-    扫描完成后（通常在大约 10 分钟后），安全中心建议中会提供发现结果。
-    
+    扫描完成时（通常在大约2分钟后，最长可能需要15分钟），结果将作为安全中心建议提供，如下所示：
 
 1. 若要查看发现结果，请访问“建议”页面。 如果发现问题，你会看到以下建议：
 
     ![解决问题的建议 ](media/monitor-container-security/acr-finding.png)
-
 
 1. 选择建议。 
     “建议详细信息”页随即打开，并且其中包含其他信息。 这些信息包括具有易受攻击映像（“受影响的资源”）的注册表列表以及补救步骤。 

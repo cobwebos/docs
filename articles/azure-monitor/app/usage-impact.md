@@ -6,11 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5d775e876a0cce1ba13964d6d4777307a34fdf3f
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 4481e62fb15b5ec21b48deb00f1438abf01aa27a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797906"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041473"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights 中的 Impact 分析功能
 
@@ -79,7 +80,7 @@ Impact 最终计算方式根据是按指标还是按维护分析而异。 使用
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要启用使用体验，请首先发送[自定义事件](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent)或[页面视图](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)。
+- 若要启用使用体验，请首先发送[自定义事件](./api-custom-events-metrics.md#trackevent)或[页面视图](./api-custom-events-metrics.md#page-views)。
 - 如果已经发送自定义事件或页面视图，请浏览使用情况工具，了解用户如何使用服务。
     - [漏斗图](usage-funnels.md)
     - [保留](usage-retention.md)

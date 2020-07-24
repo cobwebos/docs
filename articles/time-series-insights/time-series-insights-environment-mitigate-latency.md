@@ -5,20 +5,21 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 01/21/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2812b535c7aef7987db7106bfa6b07e15a1b61c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fa47c81aede9de5d083f16f9e1705f687ad39a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81263380"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046431"
 ---
-# <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>监视并缩减限制，以减少 Azure 时序见解中的延迟
+# <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights-gen1"></a>监视和缓解限制以减少 Azure 时序见解中的延迟 Gen1
 
 传入数据量超过环境配置时，Azure 时序见解中可能会出现延迟或限制。
 
@@ -26,14 +27,14 @@ ms.locfileid: "81263380"
 
 以下情况最有可能出现延迟和限制：
 
-- 添加包含超出所分配入口速率（时序见解需要追赶）的旧数据的事件源。
+- 添加一个包含旧数据的事件源，这些数据可能会超出分配的入口速率（Azure 时序见解将需要更新）。
 - 将较多事件源添加到一个环境中，导致其他事件出现激增（可能超过环境容量）。
-- 将大量历史事件推送到一个事件源，导致延迟（时序见解需要追赶）。
+- 将大量历史事件推送到事件源，导致延迟（Azure 时序见解将需要更新）。
 - 将引用数据和遥测结合，导致事件大小较大。 允许的最大数据包大小为 32 KB；大于 32 KB 的数据包会被截断。
 
 ## <a name="video"></a>视频
 
-### <a name="learn-about-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>了解时序见解数据引入行为，以及如何对其进行规划。</br>
+### <a name="learn-about-azure-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>了解 Azure 时序见解数据引入行为，以及如何对其进行规划。</br>
 
 > [!VIDEO https://www.youtube.com/embed/npeZLAd9lxo]
 
@@ -41,9 +42,9 @@ ms.locfileid: "81263380"
 
 警报有助于诊断并缓解环境中出现的延迟问题。
 
-1. 在 Azure 门户中，选择时序见解环境。 然后选择“警报”  。
+1. 在 Azure 门户中，选择你的 Azure 时序见解环境。 然后选择“警报”  。
 
-   [![向时序见解环境添加警报](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
+   [![向 Azure 时序见解环境添加警报](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
 1. 选择“+ 新建警报规则”。  然后将显示“创建规则”  面板。 在“条件”  下选择“添加”  。
 
@@ -73,7 +74,7 @@ ms.locfileid: "81263380"
 
 ## <a name="throttling-and-ingress-management"></a>限制和入口管理
 
-* 如果你受到限制，则会注册“入口收到消息时间延迟”  的值，以通知你消息到达事件源的实际时间比时序见解环境晚多少秒（不包括索引时间，该时间大约为 30-60 秒）。  
+* 如果受到限制，将注册*入口接收的消息时间滞后*值，通知你 Azure 时序见解环境后的秒数从消息到达事件源的实际时间（不包括 appx 的索引时间）。 30-60 秒）。  
 
    入口收到消息计数延迟也应该有一个值，用于确定你在消息数方面落后多少。  若要赶上来，最容易的方式是增加环境的容量，使之达到能够克服此差异的规模。  
 
@@ -83,7 +84,7 @@ ms.locfileid: "81263380"
 
   例如，如果预配了三个 S1 单位（或每分钟入口容量为 2100 个事件），则可以将“入口存储的事件数”警报设置为 2 小时 >= 1900 个事件  。 如果因不断超过该阈值而触发警报，很可能是由于预配不足。  
 
-* 如果怀疑受到限制，可以将“入口收到的消息数”和事件源的出口消息数相比较  。  如果传入事件中心的消息数大于“入口收到的消息数”，时序见解很可能受到了限制  。
+* 如果怀疑受到限制，可以将“入口收到的消息数”和事件源的出口消息数相比较  。  如果进入事件中心的时间大于你的**入口接收的消息**，则可能会限制 Azure 时序见解。
 
 ## <a name="improving-performance"></a>改善性能
 
@@ -93,6 +94,6 @@ ms.locfileid: "81263380"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读[在时序见解环境中诊断并解决问题](time-series-insights-diagnose-and-solve-problems.md)。
+- 阅读有关[在 Azure 时序见解环境中诊断并解决问题的](time-series-insights-diagnose-and-solve-problems.md)信息。
 
-- 了解[如何缩放时序见解环境](time-series-insights-how-to-scale-your-environment.md)。
+- 了解[如何缩放 Azure 时序见解环境](time-series-insights-how-to-scale-your-environment.md)。

@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 05/11/2020
-ms.openlocfilehash: 4d0d56dc4d6e7fa7765439e7387d67bb80a6ec9f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a31c089971b7e70e70c5906480deb2b17c197b9f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124629"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043618"
 ---
 # <a name="known-issues"></a>已知问题 #
 
@@ -50,7 +50,7 @@ ms.locfileid: "83124629"
 
 - 纯音频的资产不会通过 AzureHtml5JS 技术播放。
   - 如果想要播放没有音频的资产，可以使用 [Azure 媒体服务资源管理器工具](https://aka.ms/amse)来插入空白音频
-  - 有关如何插入无声音频的说明，可查看[此文](https://azure.microsoft.com/documentation/articles/media-services-advanced-encoding-with-mes/#silent_audio)
+  - 有关如何插入无声音频的说明，可查看[此文](../previous/media-services-advanced-encoding-with-mes.md#silent_audio)
 
 ## <a name="flash"></a>闪烁 ##
 

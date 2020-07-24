@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: e7055964f9515189450fac5c993f6acda946bfd4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f4bca70fbec5cf847a6bb5c0b97ed3496d6c2f8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524159"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039986"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle 数据库连接器入门
 
@@ -60,7 +60,7 @@ ms.locfileid: "86524159"
 
     ![对话框中有一个用于搜索所有触发器的框。 还有一个触发器，其中显示了 "请求/响应请求"，其中包含选择按钮。](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
-3. 选择“保存”。 保存时，会自动生成请求 URL。 
+3. 选择“保存” 。 保存时，会自动生成请求 URL。 
 
 4. 选择“新步骤”，并选择“添加操作”。 若要查看可用操作，请键入 `oracle`： 
 
@@ -77,7 +77,7 @@ ms.locfileid: "86524159"
 
     在以下示例中，从“人力资源”数据库返回了作业数据： 
 
-    ![标题为 "获取行（预览）" 的对话框具有两个文本框： "表名称"，其中包含 "HRJOBS" 且包含下拉列表和 "行 id"，其中包含 "SA_REP"。](./media/connectors-create-api-oracledatabase/table-rowid.png)
+    ![标题为 "获取行（预览）" 的对话框具有两个文本框： "表名称"，其中包含 "H R 作业" 并且包含下拉列表和 "行 i d"，其中包含 "S A _ 代表"。](./media/connectors-create-api-oracledatabase/table-rowid.png)
 
 7. 在这个后续步骤中，可以使用任何其他连接器来生成工作流。 如果要测试从 Oracle 获取数据，请使用一个发送电子邮件连接器（如 Office 365 Outlook）向自己发送一封包含 Oracle 数据的电子邮件。 使用 Oracle 表中的动态令牌生成电子邮件的 `Subject` 和 `Body`：
 

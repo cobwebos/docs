@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
-ms.openlocfilehash: 8dd54fec963b8f4775a8ade6277b071d62ca3850
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9fe4988b5499943f4b11ec5d640209ceb68e84ec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524194"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040229"
 ---
 # <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用访问和管理 OneDrive 连接器中的文件
 
@@ -40,7 +40,7 @@ ms.locfileid: "86524194"
 
 1. 在逻辑应用设计器中，键入 `onedrive` 以获取触发器列表：  
 
-   ![标题为 "显示 Microsoft 托管的 Api" 的对话框包含一个包含 "onedrive" 的框。 下面是四个触发器的列表。 其中第一个是 "OneDrive-创建文件时"。 选择第二个 "OneDrive-修改文件时"。](./media/connectors-create-api-onedrive/onedrive-1.png)
+   ![标题为 "显示 Microsoft 托管 A P I" 的对话框包含一个包含 "onedrive" 的框。 下面是四个触发器的列表。 其中第一个是 "OneDrive-创建文件时"。 选择第二个 "OneDrive-修改文件时"。](./media/connectors-create-api-onedrive/onedrive-1.png)
 
 2. 选择“修改文件时”****。 如果连接已存在，选择“显示选取器”按钮选择文件夹。
 
@@ -68,7 +68,7 @@ ms.locfileid: "86524194"
 
 3. 在 "搜索" 框中，键入 `onedrive` 以获取所有可用操作的列表。
 
-   ![标题为 "显示 Microsoft 托管的 Api" 的对话框包含一个包含 "onedrive" 的框。 下面是八个操作的列表。 第一个是 "OneDrive-创建文件"，并且已选中。](./media/connectors-create-api-onedrive/onedrive-actions.png) 
+   ![标题为 "显示 Microsoft 托管 A P I" 的对话框包含一个包含 "onedrive" 的框。 下面是八个操作的列表。 第一个是 "OneDrive-创建文件"，并且已选中。](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 
 4. 在我们的示例中，选择“OneDrive - 创建文件”****。 如果连接已存在，选择“文件夹路径”**** 放入文件、输入“文件名”****，并选择所需的“文件内容”****：  
 

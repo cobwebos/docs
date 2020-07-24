@@ -3,11 +3,12 @@ title: 模板函数 - 资源
 description: 介绍可在 Azure Resource Manager 模板中用于检索资源相关值的函数。
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: f79fa3420420a2ff440c3228f227cc71436b4a1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19f5b6c07010c82ba6675e6db031e663ef7c5cdd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85099255"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044964"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 模板的资源函数
 
@@ -137,6 +138,7 @@ ms.locfileid: "85099255"
 | Microsoft.BatchAI/workspaces/experiments/jobs | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
 | Microsoft.Blockchain/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
 | Microsoft.Blockchain/blockchainMembers/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
+| BotService/botServices/通道 | [listChannelWithKeys](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/botservice/resource-manager/Microsoft.BotService/stable/2020-06-02/botservice.json#L553) |
 | Microsoft.Cache/redis | [listKeys](/rest/api/redis/redis/listkeys) |
 | Microsoft.CognitiveServices/accounts | [listKeys](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
 | Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
@@ -322,10 +324,10 @@ ms.locfileid: "85099255"
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |是 |字符串 |提供程序的命名空间 |
-| resourceType |否 |字符串 |指定的命名空间中的资源类型。 |
+| providerNamespace |是 |string |提供程序的命名空间 |
+| resourceType |否 |string |指定的命名空间中的资源类型。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -397,17 +399,17 @@ ms.locfileid: "85099255"
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 描述 |
+| 参数 | 必须 | 类型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| resourceName 或 resourceIdentifier |是 |字符串 |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 当引用以前部署的资源或者资源名称不明确时，请提供资源 ID。 |
-| apiVersion |否 |字符串 |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，则需要此参数。 通常情况下，格式为 **yyyy-mm-dd**。 如需查看适用于你的资源的有效 API 版本，请参阅[模板参考](/azure/templates/)。 |
-| 'Full' |否 |字符串 |一个值，指定是否要返回完整资源对象。 如果未指定 `'Full'`，仅返回资源的属性对象。 完整对象包括资源 ID 和位置等值。 |
+| resourceName 或 resourceIdentifier |是 |string |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 当引用以前部署的资源或者资源名称不明确时，请提供资源 ID。 |
+| apiVersion |否 |string |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，则需要此参数。 通常情况下，格式为 **yyyy-mm-dd**。 如需查看适用于你的资源的有效 API 版本，请参阅[模板参考](/azure/templates/)。 |
+| 'Full' |否 |string |一个值，指定是否要返回完整资源对象。 如果未指定 `'Full'`，仅返回资源的属性对象。 完整对象包括资源 ID 和位置等值。 |
 
 ### <a name="return-value"></a>返回值
 
 每种资源类型返回 reference 函数的不同属性。 该函数不返回单个预定义的格式。 另外，返回的值因 `'Full'` 参数的值而异。 若要查看资源类型的属性，请返回 outputs 节中的对象，如示例所示。
 
-### <a name="remarks"></a>注解
+### <a name="remarks"></a>备注
 
 reference 函数检索以前部署的资源或在当前模板中部署的资源的运行时状态。 本文展示了这两种方案的示例。
 
@@ -720,13 +722,13 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 仅在资源组或订阅的范围内部署时才提供此值。 |
-| resourceGroupName |否 |字符串 |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 仅在资源组的范围内部署时才提供此值。 |
-| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |字符串 |资源的名称。 |
-| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
+| resourceGroupName |否 |string |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 仅在资源组的范围内部署时才提供此值。 |
+| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |string |资源的名称。 |
+| resourceName2 |否 |string |下一个资源名称段（如果需要）。 |
 
 如果资源类型包含更多段，则继续添加资源名称作为参数。
 
@@ -756,7 +758,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 * [subscriptionResourceId](#subscriptionresourceid)
 * [tenantResourceId](#tenantresourceid)
 
-### <a name="remarks"></a>注解
+### <a name="remarks"></a>备注
 
 提供的参数数目各不相同，具体取决于资源是父资源还是子资源，以及资源是否位于同一订阅或资源组中。
 
@@ -862,10 +864,10 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 | 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
-| sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentSubOutput | String | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| nestedResourceOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
+| sameRGOutput | 字符串 | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentRGOutput | 字符串 | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentSubOutput | 字符串 | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| nestedResourceOutput | 字符串 | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 
 ## <a name="subscription"></a>订阅
 
@@ -886,7 +888,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 }
 ```
 
-### <a name="remarks"></a>注解
+### <a name="remarks"></a>备注
 
 使用嵌套模板部署到多个订阅时，可以指定评估 subscription 函数的范围。 有关详细信息，[将 Azure 资源部署到多个订阅或资源组](cross-resource-group-deployment.md)。
 
@@ -916,12 +918,12 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 描述 |
+| 参数 | 必须 | 在任务栏的搜索框中键入 | 描述 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
-| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |字符串 |资源的名称。 |
-| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
+| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |string |资源的名称。 |
+| resourceName2 |否 |string |下一个资源名称段（如果需要）。 |
 
 如果资源类型包含更多段，则继续添加资源名称作为参数。
 
@@ -998,11 +1000,11 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 在任务栏的搜索框中键入 | 说明 |
 |:--- |:--- |:--- |:--- |
-| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |字符串 |资源的名称。 |
-| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
+| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |string |资源的名称。 |
+| resourceName2 |否 |string |下一个资源名称段（如果需要）。 |
 
 如果资源类型包含更多段，则继续添加资源名称作为参数。
 

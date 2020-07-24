@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 03402828720272851f9b74000d5bcb79405885a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a88570805a9fc23904bfe82f91813b3460d0b10
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117219"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045940"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 网络选项
 
@@ -119,7 +119,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 ## <a name="hybrid-connections"></a>混合连接
 
-[混合连接](../service-bus-relay/relay-hybrid-connections-protocol.md)是可用于访问其他网络中的应用程序资源的一项 Azure 中继功能。 使用混合连接可以从应用访问应用程序终结点。 不能使用混合连接来访问应用程序。 在除消耗计划之外的所有计划中，混合连接可用于 Windows 上运行的函数。
+[混合连接](../azure-relay/relay-hybrid-connections-protocol.md)是可用于访问其他网络中的应用程序资源的一项 Azure 中继功能。 使用混合连接可以从应用访问应用程序终结点。 不能使用混合连接来访问应用程序。 在除消耗计划之外的所有计划中，混合连接可用于 Windows 上运行的函数。
 
 在 Azure Functions 中使用时，每个混合连接与单个 TCP 主机和端口组合相关联。 这意味着，混合连接终结点可以位于任何操作系统和任何应用程序上，前提是你能够访问 TCP 侦听端口。 混合连接功能不知道也不关心应用程序协议或者要访问的内容是什么。 它只提供网络访问。
 

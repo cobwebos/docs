@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 09eba483a258c1e88b15a5795d32b3b4a029a175
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 68f7ec9aaffa2bad73d77d730749642a1b57f50b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232706"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044853"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表单识别器的新增功能
 
@@ -26,14 +26,13 @@ ms.locfileid: "86232706"
 ## <a name="july-2020"></a>2020 年 7 月
 
 ### <a name="new-features"></a>新增功能
-* **2.0 版本参考**查看 v2.0 [API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)和更新的适用于[.net](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre)、 [Python](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer)、 [Java](https://docs.microsoft.com/java/api/overview/azure/formrecognizer)和[JavaScript](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/)的 sdk。
+* **2.0 版本参考**查看 v2.0 [API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)和更新的适用于[.net](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer)、 [Python](https://docs.microsoft.com/python/api/overview/azure/formrecognizer)、 [Java](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)和[JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer)的 sdk。
 * **表增强和提取增强**功能包括准确性改进和表提取增强功能，尤其是在不带标签的自定义训练中了解表标头和结构的功能。 
 * **货币支持**全局货币符号的检测和提取。
 * **Azure Gov**表单识别器现已在 Azure Gov 中提供。
-*    **增强的安全功能**： 
-    *    **自带密钥** 表单识别器会在保存到云时自动加密数据，以保护数据，并帮助你满足组织的安全性和符合性承诺。 默认情况下，订阅使用 Microsoft 托管的加密密钥。 你现在可以通过自己的加密密钥来管理你的订阅。 [客户管理的密钥 (CMK) ，也称为自带密钥 (BYOK) ](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest
-)，提供更高的灵活性来创建、轮换、禁用和撤消访问控制。 还可以审核用于保护数据的加密密钥。  
-    *    **专用终结点**–使你能够在虚拟网络 (VNet) [通过专用链接安全地访问数据。](https://docs.microsoft.com/azure/private-link/private-link-overview)
+* **增强的安全功能**： 
+   * **自带密钥** 表单识别器会在保存到云时自动加密数据，以保护数据，并帮助你满足组织的安全性和符合性承诺。 默认情况下，订阅使用 Microsoft 托管的加密密钥。 你现在可以通过自己的加密密钥来管理你的订阅。 [客户托管的密钥（CMK）（也称为自带密钥（BYOK）](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest)）提供了更大的灵活性，可用于创建、轮换、禁用和撤销访问控制。 还可以审核用于保护数据的加密密钥。  
+   * **专用终结点**–使你能够在虚拟网络（VNet）上[通过专用链接安全地访问数据。](https://docs.microsoft.com/azure/private-link/private-link-overview)
 
 
 ## <a name="june-2020"></a>2020 年 6 月
@@ -50,11 +49,11 @@ ms.locfileid: "86232706"
 ## <a name="april-2020"></a>2020 年 4 月
 
 ### <a name="new-features"></a>新增功能
-* **SDK 支持表单识别器 API V2.0 公共预览版**本月，我们已将服务支持扩展为包含用于窗体识别器 v2.0 (预览) 版本的预览版 SDK。 使用以下链接开始使用你选择的语言： 
-   * [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre)
-   * [Java SDK](https://docs.microsoft.com/java/api/overview/azure/formrecognizer)
-   * [Python SDK](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer)
-   * [JavaScript SDK](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/)
+* **SDK 支持表单识别器 API V2.0 公共预览版**本月，我们扩展了服务支持，包括预览版 SDK for 窗体识别器 v2.0 （预览版）。 使用以下链接开始使用你选择的语言： 
+   * [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer)
+   * [Java SDK](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)
+   * [Python SDK](https://docs.microsoft.com/python/api/overview/azure/formrecognizer)
+   * [JavaScript SDK](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer)
 
   新的 SDK 支持用于窗体识别器的 v2.0 REST API 的所有功能。 例如，你可以使用或不带标签来训练模型，并从窗体提取文本、键值对和表、从收据中提取数据以及预先生成的回执服务，并从文档中提取带有布局服务的文本和表。 可以通过[Sdk 反馈窗体](https://aka.ms/FR_SDK_v1_feedback)在 sdk 上共享你的反馈。
  
@@ -112,7 +111,7 @@ ms.locfileid: "86232706"
 
 ## <a name="january-2020"></a>2020 年 1 月
 
-此版本引入了窗体识别器 2.0 (预览) 。 在下面的部分中，你将找到有关新功能、增强功能和更改的详细信息。 
+此版本引入了窗体识别器2.0 （预览版）。 在下面的部分中，你将找到有关新功能、增强功能和更改的详细信息。 
 
 ### <a name="new-features"></a>新增功能
 

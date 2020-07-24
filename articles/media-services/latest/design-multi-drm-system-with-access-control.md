@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 3d02c335f6e950300a7ced36643e6276c3d8d16a
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 79f06bd5d6af05e334faf4e1f6d8cd3e358f89ba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957369"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039185"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>设计带访问控制的多 DRM 内容保护系统 
 
@@ -132,12 +133,12 @@ DRM 子系统可能包含以下组件：
 
 | **构建基块** | **技术** |
 | --- | --- |
-| **播放器** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
+| **球员** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
 | **标识提供者（IDP）** |Azure Active Directory (Azure AD) |
 | **安全令牌服务 (STS)** |Azure AD |
 | **DRM 保护工作流** |Azure 媒体服务动态保护 |
 | **DRM 许可证传送** |* 媒体服务许可证传送（PlayReady、Widevine、FairPlay） <br/>* Axinom 许可证服务器 <br/>* 自定义 PlayReady 许可证服务器 |
-| **源** |Azure 媒体服务流式处理终结点 |
+| **格式** |Azure 媒体服务流式处理终结点 |
 | **密钥管理** |不需要参考实现 |
 | **内容管理** |一个 C# 控制台应用程序 |
 
@@ -213,7 +214,7 @@ DRM 子系统可能包含以下组件：
 有关 Azure AD 的信息：
 
 * 可以在 [Azure Active Directory 开发人员指南](../../active-directory/develop/v2-overview.md)中找到面向开发人员的信息。
-* 可以在[管理 Azure AD 租户目录](../../active-directory/fundamentals/active-directory-administer.md)中找到面向管理员的信息。
+* 可以在[管理 Azure AD 租户目录](../../active-directory/fundamentals/active-directory-whatis.md)中找到面向管理员的信息。
 
 ### <a name="some-issues-in-implementation"></a>实现中的一些问题
 
@@ -281,7 +282,7 @@ DRM 子系统可能包含以下组件：
 
 由于 Azure AD 信任 Microsoft 帐户域，因此可以将以下任何域的任何帐户添加到自定义 Azure AD 租户，并使用该帐户登录：
 
-| **域名** | **域** |
+| **域名** | **Domain** |
 | --- | --- |
 | **自定义 Azure AD 租户域** |somename.onmicrosoft.com |
 | **企业域** |microsoft.com |

@@ -4,14 +4,14 @@ description: Azure Monitor 指标警报和可能的解决方案的常见问题�
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 07/15/2020
+ms.date: 07/21/2020
 ms.subservice: alerts
-ms.openlocfilehash: 0d569facb6c2b58222980cfa1488de3b1f5fb60f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 98cd7a4d31f4d7053426f44dd02a876759688cc7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515761"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045225"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>解决 Azure Monitor 指标警报中的问题 
 
@@ -32,11 +32,11 @@ ms.locfileid: "86515761"
 
 2. 已**激发但无通知**-请查看[触发的警报列表](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2)，查看是否可以找到触发的警报。 如果你可以在列表中看到警报，但某些操作或通知有问题，请参阅[此处](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected)的详细信息。
 
-3. **已处于活动状态**-检查预计要为其获取警报的指标时序是否已触发警报。 指标警报是有状态警报，这意味着，一旦在特定指标时序上触发警报，就不会再激发该时间序列上的其他警报，直到不再发现该问题。 此设计选择减少了干扰。 对于三个连续评估不满足警报条件时，将自动解决警报。
+3. **已处于活动状态**-检查预计要为其获取警报的指标时序是否已触发警报。 指标警报是有状态的，即，一旦在特定的指标时序中触发某个警报，就不会触发该时序中的其他警报，直到相应的问题不再出现。 此设计选择减少了干扰。 对于三个连续评估不满足警报条件时，将自动解决警报。
 
-4. **使用的维度**-如果已经[为某个指标](./alerts-metric-overview.md#using-dimensions)选择了某些维度值，则该警报规则将监视每个指标时间系列（由维度值组合定义），以应对阈值泄露。 若要监视聚合指标时序（没有选择任何维度），请在指标上配置附加警报规则而不选择维度。
+4. **使用的维度**-如果已经[为某个指标](./alerts-metric-overview.md#using-dimensions)选择了某些维度值，则该警报规则将监视每个指标时间系列（由维度值组合定义），以确定阈值是否被破坏。 若要监视聚合指标时序（没有选择任何维度），请在指标上配置附加警报规则而不选择维度。
 
-5. **聚合和时间粒度**-如果要使用[度量值图表](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/metrics)直观呈现指标，请确保：
+5. **聚合和时间粒度**-如果要使用[度量值图表](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/metrics)可视化指标，请确保：
     * 度量值图中的选定**聚合**与警报规则中的**聚合类型**相同
     * 所选**时间粒度**与警报规则中的**聚合粒度（period）** 相同（并且未设置为 "自动"）
 
@@ -47,7 +47,7 @@ ms.locfileid: "86515761"
 1. 查看[触发的警报列表](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2)以查找触发的警报，并单击查看其详细信息。 查看触发**此警报的原因**下提供的信息，以查看触发警报时的指标图表、**指标值**和**阈值**。
 
     > [!NOTE] 
-    > 如果你使用动态阈值条件类型，并且认为使用的阈值不正确，请使用哭脸图标提供反馈。 此反馈将影响机器学习算法研究，并帮助改进未来的检测。
+    > 如果使用的是动态阈值条件类型，并认为使用的阈值不正确，请使用哭脸图标提供反馈。 此反馈将影响机器学习算法研究，并帮助改进未来的检测。
 
 2. 如果已为某个指标选择了多个维度值，则当**任何**指标时间序列（由维度值组合定义）违反阈值时，就会触发警报。 有关在指标警报中使用维度的详细信息， [请参阅](./alerts-metric-overview.md#using-dimensions)。
 
@@ -67,7 +67,7 @@ ms.locfileid: "86515761"
 
 ## <a name="cant-find-the-metric-to-alert-on---virtual-machines-guest-metrics"></a>找不到用于对虚拟机来宾指标发出警报的指标
 
-若要对虚拟机的来宾操作系统指标（例如内存、磁盘空间）发出警报，请确保已安装所需的代理以将此数据收集到 Azure Monitor 度量值：
+若要对虚拟机的来宾操作系统指标（例如：内存、磁盘空间）发出警报，请确保已安装所需的代理以将此数据收集到 Azure Monitor 度量值：
 - [对于 Windows VM](./collect-custom-metrics-guestos-resource-manager-vm.md)
 - [对于 Linux VM](./collect-custom-metrics-linux-telegraf.md)
 
@@ -106,12 +106,35 @@ ms.locfileid: "86515761"
 > [!NOTE] 
 > 将指标警报规则设为无状态可阻止触发警报，因此即使在不再满足条件后，触发的警报也会在30天的保留期内保持为已触发状态。
 
+## <a name="define-an-alert-rule-on-a-custom-metric-that-isnt-emitted-yet"></a>定义尚未发出的自定义指标的警报规则
+
+创建指标警报规则时，将根据[指标定义 API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions/list)验证指标名称，以确保其存在。 在某些情况下，即使在发出之前，也要根据自定义指标创建警报规则。 例如，在创建（使用 ARM 模板）时，将发出自定义指标的 Application Insights 资源以及用于监视该指标的警报规则。
+
+若要避免在尝试验证自定义指标的定义时部署失败，可以在预警规则的 "条件" 部分中使用*skipMetricValidation*参数，这将导致跳过指标验证。 请参阅下面的示例，了解如何在 ARM 模板中使用此参数（有关创建指标警报规则的完整 ARM 模板示例，请参阅[此处]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)）。
+
+```json
+"criteria": {
+    "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria",
+        "allOf": [
+            {
+                    "name" : "condition1",
+                        "metricName": "myCustomMetric",
+                "metricNamespace": "myCustomMetricNamespace",
+                        "dimensions":[],
+                        "operator": "GreaterThan",
+                        "threshold" : 10,
+                        "timeAggregation": "Average",
+                    "skipMetricValidation": true
+        }
+              ]
+        }
+```
 
 ## <a name="metric-alert-rules-quota-too-small"></a>指标警报规则配额太小
 
 每个订阅允许的指标警报规则数取决于[配额限制](../service-limits.md)。
 
-如果已达到配额限制，请执行以下步骤以帮助解决此问题：
+如果已达到配额限制，以下步骤可帮助解决此问题：
 1. 请尝试删除或禁用不再使用的指标警报规则。
 
 2. 切换到使用监视多个资源的指标预警规则。 利用此功能，单个警报规则只能使用一个针对配额计数的警报规则监视多个资源。 要详细了解此功能和支持的资源类型，请参阅[此处](./alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor)。
@@ -133,7 +156,7 @@ ms.locfileid: "86515761"
 3. 请确保不筛选到特定的资源组、资源类型或资源
 4. 在 "**信号类型**" 下拉控件中，选择 "**指标**"
 5. 验证 "**状态**" 下拉列表控件是否已设置为 "**已启用**"
-6. 指标警报规则的总数显示在规则列表的上方
+6. "警报规则" 列表上方显示的指标警报规则总数
 
 ### <a name="from-api"></a>通过 API
 
@@ -145,18 +168,18 @@ ms.locfileid: "86515761"
 
 如果使用资源管理器模板、REST API、PowerShell 或 Azure 命令行接口（CLI）来创建、更新、检索或删除指标警报时遇到问题，以下步骤可帮助解决此问题。
 
-### <a name="resource-manager-templates"></a>Resource Manager 模板
+### <a name="resource-manager-templates"></a>资源管理器模板
 
 - 查看[常见 Azure 部署错误](../../azure-resource-manager/templates/common-deployment-errors.md)列表并相应地进行故障排除
 - 请参阅[指标警报 Azure 资源管理器模板示例](./alerts-metric-create-templates.md)，以确保正确传递所有参数
 
 ### <a name="rest-api"></a>REST API
 
-查看 [REST API 指南](/rest/api/monitor/metricalerts/)来验证是否正确传递了所有参数
+查看[REST API 指南](/rest/api/monitor/metricalerts/)，验证是否已正确传递所有参数
 
 ### <a name="powershell"></a>PowerShell
 
-请确保对指标警报使用正确的 PowerShell cmdlet：
+请确保使用正确的 PowerShell cmdlet 来查找指标警报：
 
 - [Az.Monitor 模块](/powershell/module/az.monitor/?view=azps-3.6.1) 中提供了用于指标警报的 PowerShell cmdlet
 - 请确保对新的（非经典）指标警报（例如， [AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2?view=azps-3.6.1)）使用以 "V2" 结尾的 cmdlet
@@ -173,11 +196,11 @@ ms.locfileid: "86515761"
 
 - 如果收到 `Metric not found` 错误：
 
-   - 对于平台指标：请确保使用的是["Azure Monitor 支持的指标" 页](./metrics-supported.md)中的**指标**名称，而不是**指标显示名称**
+   - 对于平台指标：请确保使用 " [Azure Monitor 支持的指标" 页](./metrics-supported.md)中的**指标**名称，而不是**指标显示名称**
 
    - 对于自定义指标：请确保已发出指标（您不能对不存在的自定义指标创建警报规则），并且提供自定义指标的命名空间（请参阅[此处](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)的 ARM 模板示例）
 
-- 如果要创建[关于日志的指标警报](./alerts-metric-logs.md)，请确保包括相应的依赖项。 参阅[示例模板](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)。
+- 如果要创建[针对日志的指标警报](./alerts-metric-logs.md)，请确保包含适当的依赖项。 参阅[示例模板](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)。
 
 - 如果要创建包含多个条件的警报规则，请注意以下限制：
 
@@ -197,7 +220,7 @@ ms.locfileid: "86515761"
 
 ## <a name="naming-restrictions-for-metric-alert-rules"></a>指标警报规则的命名限制
 
-请注意对指标警报规则名称的以下限制：
+对于指标警报规则名称，请考虑以下限制：
 
 - 指标警报规则名称在创建后无法更改（重命名）
 - 度量警报规则名称在资源组中必须是唯一的
@@ -209,10 +232,10 @@ ms.locfileid: "86515761"
 
 指标警报支持对多维指标发出警报，并支持定义多个条件（每个警报规则最多5个条件）。
 
-在包含多个条件的警报规则中使用维度时，请注意以下约束：
-1. 在每个条件中，只能为每个维度选择一个值。
-2. 不能使用选项 "选择所有当前和未来值" （Select \* ）。
-3. 当在不同条件下配置的度量值支持相同的维度时，必须为所有这些指标（在相关条件下）以相同的方式显式设置配置的维度值。
+在包含多个条件的警报规则中使用维度时，请考虑以下约束：
+- 在每个条件中，只能为每个维度选择一个值。
+- 不能使用选项 "选择所有当前和未来值" （Select \* ）。
+- 当在不同条件下配置的度量值支持相同的维度时，必须为所有这些指标（在相关条件下）以相同的方式显式设置配置的维度值。
 例如：
     - 请考虑在存储帐户上定义的指标警报规则，并监视两个条件：
         * **事务**总数 > 5

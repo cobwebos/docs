@@ -6,11 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.subservice: alerts
-ms.openlocfilehash: cefccd08ea66638f08f00e280fe2704444a7f916
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b535cda8fe7d98748eb0657a599a61ed1f8549d2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79369380"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045361"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理指标警报
 
@@ -89,7 +90,7 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 
 ## <a name="with-azure-cli"></a>使用 Azure CLI
 
-前面的部分介绍了如何使用 Azure 门户创建、查看和管理指标警报规则。 本部分将介绍如何使用跨平台 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) 实现相同的结果。 使用 Azure CLI 的最快捷方式是通过 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)。 对于本文，我们将使用 Cloud Shell。
+前面的部分介绍了如何使用 Azure 门户创建、查看和管理指标警报规则。 本部分将介绍如何使用跨平台 [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) 实现相同的结果。 使用 Azure CLI 的最快捷方式是通过 [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest)。 对于本文，我们将使用 Cloud Shell。
 
 1. 请参阅 Azure 门户，单击**Cloud Shell**。
 
@@ -139,4 +140,3 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 - [了解指标警报的工作原理](alerts-metric-overview.md)。
 - [了解指标警报与动态阈值条件的工作原理](alerts-dynamic-thresholds.md)。
 - [了解指标警报的 Webhook 架构](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)
-

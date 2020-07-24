@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: bb9bc847944a4228a7b583e21d0aa957f1910a29
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7e5f7bd9ec3cc9a66adb8743ce2a56d8b2ead204
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087174"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041552"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
@@ -34,7 +34,7 @@ Azure SQL Analytics 是一种仅限云的监视解决方案，支持所有 Azure
 | 连接的源 | 支持 | 说明 |
 | --- | --- | --- |
 | [诊断设置](../platform/diagnostic-settings.md) | **是** | Azure 指标和日志数据将由 Azure 直接发送到 Azure Monitor 日志。 |
-| [Azure 存储帐户](../platform/collect-azure-metrics-logs.md) | 否 | Azure Monitor 不从存储帐户中读取数据。 |
+| [Azure 存储帐户](../platform/resource-logs.md#send-to-log-analytics-workspace) | 否 | Azure Monitor 不从存储帐户中读取数据。 |
 | [Windows 代理](../platform/agent-windows.md) | 否 | Azure SQL Analytics 不使用直接 Windows 代理。 |
 | [Linux 代理](../learn/quick-collect-linux-computer.md) | 否 | Azure SQL Analytics 不使用直接 Linux 代理。 |
 | [System Center Operations Manager 管理组](../platform/om-agents.md) | 否 | Azure SQL Analytics 不使用从 Operations Manager 代理到 Azure Monitor 的直接连接。 |
@@ -43,7 +43,7 @@ Azure SQL Analytics 是一种仅限云的监视解决方案，支持所有 Azure
 
 下表概述了 Azure SQL Analytics 仪表板的两个版本的支持选项，一个适用于 Azure SQL 数据库，另一个用于 Azure SQL 托管实例数据库。
 
-| Azure SQL Analytics 选项 | 描述 | SQL Database 支持 | SQL 托管实例支持 |
+| Azure SQL Analytics 选项 | 说明 | SQL Database 支持 | SQL 托管实例支持 |
 | --- | ------- | ----- | ----- |
 | 资源（按类型） | 对监视的所有资源进行计数的透视。 | 是 | 是 |
 | 洞察力 | 提供对性能智能见解的分层向下钻取。 | 是 | 是 |

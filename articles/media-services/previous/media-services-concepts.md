@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: dc39ef8f3d72b2b8fc5aa55aacb2e2503b052023
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ca1b8b453be433f7db428f3b256677b9945ce40
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82160216"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038896"
 ---
 # <a name="azure-media-services-concepts"></a>Azure 媒体服务概念 
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 本部分概述最重要的媒体服务概念。
 
-## <a name="assets-and-storage"></a><a id="assets"/>资产和存储
+## <a name="assets-and-storage"></a><a name="assets"></a>资产和存储
 ### <a name="assets"></a>资产
-[资产](https://docs.microsoft.com/rest/api/media/operations/asset)包含数字文件（包括视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件）以及这些文件的相关元数据。 数字文件在上传到资产中后，即可用于媒体服务编码和流式处理工作流。
+[资产](/rest/api/media/operations/asset)包含数字文件（包括视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件）以及这些文件的相关元数据。 数字文件在上传到资产中后，即可用于媒体服务编码和流式处理工作流。
 
 资产将映射到 Azure 存储帐户中的 blob 容器，资产中的文件则作为块 blob 存储在该容器中。 页 blob 不受 Azure 媒体服务支持。
 
@@ -39,7 +39,7 @@ ms.locfileid: "82160216"
 * 资产不应包含多版视听文件或多段视听剪辑。 资产使用不当的示例之一为：尝试在资产中存储多段电视剧、广告或某一作品的不同拍摄角度。 在资产中存储多版或多段视听文件会对提交编码作业、流式处理和保障资产后续在工作流中的传送造成困难。  
 
 ### <a name="asset-file"></a>资产文件
-[AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) 表示 blob 容器中存储的实际视频或音频文件。 一个资产文件始终与一个资产关联，而一个资产则可能包含一个或多个文件。 如果资产文件对象未与 blob 容器中的数字文件关联，则媒体服务编码器任务将失败。
+[AssetFile](/rest/api/media/operations/assetfile) 表示 blob 容器中存储的实际视频或音频文件。 一个资产文件始终与一个资产关联，而一个资产则可能包含一个或多个文件。 如果资产文件对象未与 blob 容器中的数字文件关联，则媒体服务编码器任务将失败。
 
 **AssetFile** 实例和实际媒体文件是两个不同的对象。 AssetFile 实例包含有关媒体文件的元数据，而媒体文件包含实际媒体内容。
 
@@ -62,7 +62,7 @@ ms.locfileid: "82160216"
 **EnvelopeEncryptionProtected** - 如果要保护（或上传已加密的）采用高级加密标准 (AES) 加密的 HTTP Live Streaming (HLS)，请使用此选项。 如果上传已采用 AES 加密的 HLS，则该 HLS 必须已经由 Transform Manager 加密。
 
 ### <a name="access-policy"></a>访问策略
-[AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy) 定义对资产的访问权限（如读取、写入和列出）和持续时间。 通常将 AccessPolicy 对象传递给某个定位符，然后使用该定位符来访问资产中包含的文件。
+[AccessPolicy](/rest/api/media/operations/accesspolicy) 定义对资产的访问权限（如读取、写入和列出）和持续时间。 通常将 AccessPolicy 对象传递给某个定位符，然后使用该定位符来访问资产中包含的文件。
 
 >[!NOTE]
 >不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)主题。
@@ -75,8 +75,8 @@ ms.locfileid: "82160216"
 > 
 > 
 
-### <a name="locators"></a><a id="locators"/>定位符
-[定位符](https://docs.microsoft.com/rest/api/media/operations/locator)提供访问资产中包含的文件的入口点。 访问策略用于定义客户端对给定资产具有的访问权限和持续时间。 定位符与访问策略的关系可以为多对一的关系，因此，不同定位符可以向不同客户端提供不同的开始时间和连接类型，而全部使用相同的权限和持续时间设置；但是，由于 Azure 存储服务设置的共享访问策略限制，一项给定的资产一次最多只能与五个唯一的定位符相关联。 
+### <a name="locators"></a><a name="locators"></a>定位符
+[定位符](/rest/api/media/operations/locator)提供访问资产中包含的文件的入口点。 访问策略用于定义客户端对给定资产具有的访问权限和持续时间。 定位符与访问策略的关系可以为多对一的关系，因此，不同定位符可以向不同客户端提供不同的开始时间和连接类型，而全部使用相同的权限和持续时间设置；但是，由于 Azure 存储服务设置的共享访问策略限制，一项给定的资产一次最多只能与五个唯一的定位符相关联。 
 
 媒体服务支持两种类型的定位符：OnDemandOrigin 定位符，用于对媒体进行流式处理（例如，MPEG DASH、HLS 或平滑流式处理）；渐进式下载媒体和 SAS URL 定位符，用于与 Azure 存储相互上传或下载媒体文件。 
 
@@ -84,12 +84,12 @@ ms.locfileid: "82160216"
 >创建 OnDemandOrigin 定位符时，不应使用列表权限 (AccessPermissions.List)。 
 
 ### <a name="storage-account"></a>存储帐户
-对 Azure 存储进行的所有访问都要通过存储帐户完成。 一个媒体服务帐户可与一个或多个存储帐户相关联。 一个帐户可以包含无限个容器，只要每个存储帐户的容器总大小不超过 500TB 即可。  媒体服务提供 SDK 级工具，可用于管理多个存储帐户，并在上传到这些帐户时基于指标或随机分发使资产分发达到负载均衡。 有关详细信息，请参阅[使用 Azure 存储](https://msdn.microsoft.com/library/azure/dn767951.aspx)。 
+对 Azure 存储进行的所有访问都要通过存储帐户完成。 一个媒体服务帐户可与一个或多个存储帐户相关联。 一个帐户可以包含无限个容器，只要每个存储帐户的容器总大小不超过 500TB 即可。  媒体服务提供 SDK 级工具，可用于管理多个存储帐户，并在上传到这些帐户时基于指标或随机分发使资产分发达到负载均衡。 有关详细信息，请参阅[使用 Azure 存储](/previous-versions/azure/dn767951(v=azure.100))。 
 
 ## <a name="jobs-and-tasks"></a>作业和任务
-[作业](https://docs.microsoft.com/rest/api/media/operations/job)通常用于处理（例如，索引或编码）音频/视频演示。 如果要处理多个视频，应为要编码的每个视频创建一个作业。
+[作业](/rest/api/media/operations/job)通常用于处理（例如，索引或编码）音频/视频演示。 如果要处理多个视频，应为要编码的每个视频创建一个作业。
 
-作业包含有关要执行的处理的元数据。 每个作业包含一个或多个 [任务](https://docs.microsoft.com/rest/api/media/operations/task)，这些任务指定一个原子处理任务、该任务的输入资产和输出资产、一个媒体处理器及其关联的设置。 作业中的各个任务可连接在一起，其中一个任务的输出资产指定为下一任务的输入资产。 因此，一个作业可以包含播放媒体所必需的全部处理过程。
+作业包含有关要执行的处理的元数据。 每个作业包含一个或多个 [任务](/rest/api/media/operations/task)，这些任务指定一个原子处理任务、该任务的输入资产和输出资产、一个媒体处理器及其关联的设置。 作业中的各个任务可连接在一起，其中一个任务的输出资产指定为下一任务的输入资产。 因此，一个作业可以包含播放媒体所必需的全部处理过程。
 
 ## <a name="encoding"></a><a id="encoding"></a>编码
 Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项。
@@ -115,14 +115,14 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 * 将单比特率流（采用以下某种格式：RTMP 或平滑流式处理（分片 MP4））发送到能够使用媒体服务执行实时编码的通道。 然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。 收到请求时，媒体服务会将该流传送给客户。
 
 ### <a name="channel"></a>频道
-在媒体服务中，[频道](https://docs.microsoft.com/rest/api/media/operations/channel)负责处理实时传送视频流内容。 通道提供输入终结点（引入 URL），并将该终结点提供给实时转码器。 频道从实时转码器接收实时输入流，并通过一个或多个 StreamingEndpoints 使其可用于流式处理。 频道还提供可用于预览的预览终结点（预览 URL），并在进一步处理和传递流之前对流进行验证。
+在媒体服务中，[频道](/rest/api/media/operations/channel)负责处理实时传送视频流内容。 通道提供输入终结点（引入 URL），并将该终结点提供给实时转码器。 频道从实时转码器接收实时输入流，并通过一个或多个 StreamingEndpoints 使其可用于流式处理。 频道还提供可用于预览的预览终结点（预览 URL），并在进一步处理和传递流之前对流进行验证。
 
 可以在创建频道时获取引入 URL 和预览 URL。 若要获取这些 URL，频道不一定要处于已启动状态。 准备好开始将数据从实时转码器推送到频道时，频道必须已启动。 实时转码器开始引入数据后，可以预览流。
 
 每个媒体服务帐户均可包含多个频道、多个节目以及多个 StreamingEndpoint。 根据带宽和安全性需求，StreamingEndpoint 服务可专用于一个或多个频道。 任何 StreamingEndpoint 都可以从任何通道拉取。
 
 ### <a name="program-event"></a>节目（事件）
-[节目（事件）](https://docs.microsoft.com/rest/api/media/operations/program)用于控制实时流中片段的发布和存储。 频道管理节目（事件）。 频道和节目的关系类似于传统媒体，其中频道具有恒定的内容流，而节目的范围限定为该频道上的一些定时事件。
+[节目（事件）](/rest/api/media/operations/program)用于控制实时流中片段的发布和存储。 频道管理节目（事件）。 频道和节目的关系类似于传统媒体，其中频道具有恒定的内容流，而节目的范围限定为该频道上的一些定时事件。
 可以通过设置 **ArchiveWindowLength** 属性，指定希望保留多少小时的节目录制内容。 此值的设置范围是最短 5 分钟，最长 25 小时。
 
 ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向后搜索的最长时间。 超出指定时间长度后，节目也能够运行，但落在时段长度后面的内容会全部被丢弃。 此属性的这个值还决定了客户端清单能够增加多长时间。
@@ -160,7 +160,7 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 - [使用 PlayReady/Widevine 进行保护](media-services-protect-with-playready-widevine.md)
 
 ## <a name="delivering"></a>传送
-### <a name="dynamic-packaging"></a><a id="dynamic_packaging"/>动态打包
+### <a name="dynamic-packaging"></a><a name="dynamic_packaging"></a>动态打包
 使用媒体服务时，建议始终将夹层文件编码为自适应比特率 MP4 集，并使用[动态打包](media-services-dynamic-packaging-overview.md)将该集转换为所需格式。
 
 ### <a name="streaming-endpoint"></a>流式处理终结点
@@ -180,7 +180,7 @@ StreamingEndpoint 表示一个流服务，该服务可以直接将内容传递�
 仅当 StreamingEndpoint 处于运行状态时才进行计费。
 
 ### <a name="asset-delivery-policy"></a>资产传送策略
-媒体服务内容传送工作流中的步骤之一是配置[资产传送策略](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)，以便对其进行流式传输。 资产传送策略告知媒体服务希望如何传送资产：应该将资产动态打包成哪种流式处理协议（例如 MPEG DASH、HLS、平滑流或全部），是否要动态加密资产以及如何加密（信封或常用加密）。
+媒体服务内容传送工作流中的步骤之一是配置[资产传送策略](/rest/api/media/operations/assetdeliverypolicy)，以便对其进行流式传输。 资产传送策略告知媒体服务希望如何传送资产：应该将资产动态打包成哪种流式处理协议（例如 MPEG DASH、HLS、平滑流或全部），是否要动态加密资产以及如何加密（信封或常用加密）。
 
 如果有存储加密的资产，在流式传输资产之前，流式处理服务器会删除存储加密，再使用指定的传送策略流式传输内容。 例如，要传送使用高级加密标准 (AES) 加密密钥加密的资产，请将策略类型设为 DynamicEnvelopeEncryption。 要删除存储加密并以明文的形式流式传输资产，请将策略类型设为 NoDynamicEncryption。
 
@@ -237,4 +237,3 @@ http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb2
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

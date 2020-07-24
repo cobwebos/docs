@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 4d4587c701a054828fc34785e2ae680fef47625d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19acd39be11a33424008662eb27cd68ec0005f77
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80382913"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038947"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>监视媒体服务诊断日志
 
@@ -28,7 +28,7 @@ ms.locfileid: "80382913"
 
 ## <a name="prerequisites"></a>先决条件
 
-- [创建媒体服务帐户](create-account-cli-how-to.md)。
+- [创建媒体服务帐户](./create-account-howto.md)。
 - 查看[监视媒体服务指标和诊断日志](media-services-metrics-diagnostic-logs.md)。
 
 ## <a name="route-data-to-the-storage-account-using-the-portal"></a>使用门户将数据路由到存储帐户

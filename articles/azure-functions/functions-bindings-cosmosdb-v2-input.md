@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 5e41f5d2189cce19dab3e0b48943ef0568ddedb8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c3e872dee06ac4fa0c8c37ce8fb77bd34dc78bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807003"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041863"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>Azure Functions 2.x 和更高版本的 Azure Cosmos DB 输入绑定
 
@@ -296,7 +296,7 @@ namespace CosmosDBSamplesV2
 以下示例演示检索文档列表的 [C# 函数](functions-dotnet-class-library.md)。 此函数由 HTTP 请求触发。 此代码使用 Azure Cosmos DB 绑定提供的 `DocumentClient` 实例来读取文档列表。 `DocumentClient` 实例也可用于写入操作。
 
 > [!NOTE]
-> 还可以使用 [IDocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet) 接口来简化测试。
+> 还可以使用 [IDocumentClient](/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet) 接口来简化测试。
 
 ```cs
 using Microsoft.AspNetCore.Http;
@@ -1420,7 +1420,7 @@ Python 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-从[Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中， `@CosmosDBOutput` 对写入到 Cosmos DB 的参数使用批注。 批注参数类型应为 `OutputBinding<T>` ，其中 `T` 是本机 Java 类型或 POJO。
+从[Java 函数运行时库](/java/api/overview/azure/functions/runtime)中， `@CosmosDBOutput` 对写入到 Cosmos DB 的参数使用批注。 批注参数类型应为 `OutputBinding<T>` ，其中 `T` 是本机 Java 类型或 POJO。
 
 ---
 
@@ -1463,7 +1463,7 @@ Python 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-在[Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中， [@CosmosDBInput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.cosmosdbinput) 批注向函数公开 Cosmos DB 数据。 可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
+在[Java 函数运行时库](/java/api/overview/azure/functions/runtime)中， [@CosmosDBInput](/java/api/com.microsoft.azure.functions.annotation.cosmosdbinput) 批注向函数公开 Cosmos DB 数据。 可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
 
 ---
 

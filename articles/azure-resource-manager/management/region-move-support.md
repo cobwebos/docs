@@ -4,13 +4,14 @@ description: 列出可跨 Azure 区域移动的 Azure 资源类型
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 05/31/2020
+ms.date: 07/21/2020
 ms.author: raynew
-ms.openlocfilehash: 0510df504c8de70cfb6a486f394db6da65dbfce2
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 70f981f2763dd36f0f417faec6c81e168e9856e7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057681"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040962"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>跨区域移动 Azure 资源的支持
 
@@ -409,7 +410,7 @@ ms.locfileid: "86057681"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | containerservices | 不能。<br/><br/> 服务已[停](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)用。
+> | containerservices | 否。<br/><br/> 服务已[停](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)用。
 > | managedclusters | 否 | 
 > | openshiftmanagedclusters | 否 | 
 
@@ -542,14 +543,14 @@ ms.locfileid: "86057681"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | servers | 如果为服务预配了异地冗余备份存储，则可以使用异地还原在其他区域中进行还原。 [了解详细信息](../../mariadb/concepts-business-continuity.md#recover-from-an-azure-regional-data-center-outage)
+> | servers | 您可以使用跨区域读取副本来移动现有服务器。 [了解详细信息](../../postgresql/howto-move-regions-portal.md)。<br/><br/> 如果为服务预配了异地冗余备份存储，则可以使用异地还原在其他区域中进行还原。 [了解详细信息](../../mariadb/concepts-business-continuity.md#recover-from-an-azure-regional-data-center-outage)。
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | servers | 否 |  
+> | servers | 您可以使用跨区域读取副本来移动现有服务器。 [了解详细信息](../../mysql/howto-move-regions-portal.md)。
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
@@ -557,7 +558,7 @@ ms.locfileid: "86057681"
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
 > | servergroups | 否 | 
-> | servers | 否 |  
+> | servers | 您可以使用跨区域读取副本来移动现有服务器。 [了解更多](../../postgresql/howto-move-regions-portal.md)。
 > | serversv2 | 否 | 
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
@@ -577,8 +578,8 @@ ms.locfileid: "86057681"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | elasticpools | 不能。 资源未公开。
-> | elasticpools/iothubtenants | 不能。 资源未公开。
+> | elasticpools | 否。 资源未公开。
+> | elasticpools/iothubtenants | 否。 资源未公开。
 > | iothubs | 是的。 [了解详细信息](../../iot-hub/iot-hub-how-to-clone.md)
 > | provisioningservices | 否 | 
 
@@ -714,10 +715,10 @@ ms.locfileid: "86057681"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | checknameavailability |  不能。<br/><br/> IoT Central 适用于地理位置，而不是区域。
+> | checknameavailability |  否。<br/><br/> IoT Central 适用于地理位置，而不是区域。
 > | graph | 否
 
-## <a name="microsoftiothub"></a>IoTHub
+## <a name="microsoftiothub"></a>Microsoft.IoTHub
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 

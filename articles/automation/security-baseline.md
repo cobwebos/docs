@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 88f06bd30c97f857cd5a81068322a95c480a7b34
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 3b86c249630f7bfa5c2d319577c66d750b0f6268
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187415"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045906"
 ---
 # <a name="azure-security-baseline-for-automation"></a>用于自动化的 Azure 安全基线
 
 用于自动化的 Azure 安全基线包含有助于改进部署安全状况的建议。
 
-此服务的基线摘自 [Azure 安全基准版本 1.0](../security/benchmarks/overview.md)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。
+此服务的基线提取自 [Azure 安全基准版本 1.0](../security/benchmarks/overview.md)，该版本提供了有关如何在 Azure 上利用我们的最佳做法指南来保护云解决方案的建议。
 
 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
@@ -30,7 +30,7 @@ ms.locfileid: "86187415"
 
 **指南**： azure Automation 帐户尚不支持 Azure 私有链接，以便通过专用终结点限制对服务的访问。 针对 Azure 中的资源进行身份验证和运行的 runbook 在 Azure 沙箱上运行，并利用共享的后端资源，Microsoft 负责彼此隔离;它们的网络是不受限制的，可以访问公共资源。 除了支持混合 Runbook 辅助角色以外，Azure Automation 目前不具备专用网络的虚拟网络集成。 如果你使用的是无混合 Runbook 辅助角色的现成服务，则此控件不适用。
 
-若要为 runbook 获取进一步隔离，可以使用在 Azure 虚拟机上运行的混合 Runbook 辅助角色。 创建 Azure 虚拟机时，必须 (VNet 创建虚拟网络) 或使用现有 VNet，并使用子网配置 Vm。 确保所有部署的子网均具有一个网络安全组，该安全组与特定于应用程序的受信任端口和源的网络访问控制一起应用。 有关特定于服务的要求，请参阅该服务的安全建议。
+若要为 runbook 获取进一步隔离，可以使用在 Azure 虚拟机上运行的混合 Runbook 辅助角色。 创建 Azure 虚拟机时，必须创建虚拟网络（VNet）或使用现有 VNet，并使用子网配置 Vm。 确保所有部署的子网均具有一个网络安全组，该安全组与特定于应用程序的受信任端口和源的网络访问控制一起应用。 有关特定于服务的要求，请参阅该服务的安全建议。
 
 或者，如果你有特定的要求，还可以使用 Azure 防火墙来满足此要求。
 
@@ -52,7 +52,7 @@ ms.locfileid: "86187415"
 
 **指南**： Azure Automation 目前没有针对混合 Runbook 辅助角色支持的专用网络的虚拟网络集成。 如果你使用的是无混合 Runbook 辅助角色的现成服务，则此控件不适用。
 
-如果你使用的是 Azure 虚拟机支持的混合 Runbook 辅助角色，请确保使用网络安全组 (NSG) 启用了包含这些辅助角色的子网，并将流日志配置为将日志转发到存储帐户进行流量审核。 你还可以将 NSG 流日志转发到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
+如果你使用的是 Azure 虚拟机支持的混合 Runbook 辅助角色，请确保使用网络安全组（NSG）启用了包含这些辅助角色的子网，并将流日志配置为将日志转发到存储帐户以进行流量审核。 你还可以将 NSG 流日志转发到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析具有以下优势：能够直观显示网络活动、识别热点、识别安全威胁、了解流量流模式以及查明网络配置错误。
 
 尽管 NSG 规则和用户定义的路由不适用于专用终结点，但仍支持出站连接的 NSG 流日志和监视信息，并且可以使用它们。
 
@@ -66,7 +66,7 @@ ms.locfileid: "86187415"
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
-**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 Azure 安全中心监视：不适用
 
@@ -76,7 +76,7 @@ Azure 安全中心监视：不适用
 
 **指南**： Azure Automation 目前尚不支持混合 Runbook 辅助角色的虚拟网络集成。 如果你使用的是无混合 Runbook 辅助角色的现成服务，则此控件不适用。
 
-如果你使用的是由 Azure 虚拟机支持的混合 Runbook 辅助角色，请在托管混合 Runbook 辅助角色的虚拟网络上启用分布式拒绝服务 (DDoS) 标准保护，以防范 DDoS 攻击。 使用 Azure 安全中心的威胁智能，可以拒绝与已知的恶意 IP 地址的通信。 在启用了威胁情报的每个虚拟网络段上配置 Azure 防火墙，并将配置为针对恶意网络流量进行**警报和拒绝**。
+如果你使用的是 Azure 虚拟机支持的混合 Runbook 辅助角色，请在托管混合 Runbook 辅助角色的虚拟网络上启用分布式拒绝服务（DDoS）标准保护，以防范 DDoS 攻击。 使用 Azure 安全中心的威胁智能，可以拒绝与已知的恶意 IP 地址的通信。 在启用了威胁情报的每个虚拟网络段上配置 Azure 防火墙，并将配置为针对恶意网络流量进行**警报和拒绝**。
 
 可以使用 Azure 安全中心的实时网络访问权限，在有限的时间段内将 Windows 虚拟机的公开权限限制为已批准的 IP 地址。 同时，使用 Azure 安全中心自适应网络强化建议进行 NSG 配置，以根据实际流量和威胁智能限制端口和源 Ip。
 
@@ -108,7 +108,7 @@ Azure 安全中心监视：不适用
 
 **责任**：客户
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署基于网络的入侵检测/入侵防护系统 (ID/IP) 
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署基于网络的入侵检测/入侵防护系统 (IDS/IPS)
 
 **指南**： Azure Automation 目前尚不支持混合 Runbook 辅助角色的虚拟网络集成。 如果你使用的是无混合 Runbook 辅助角色的现成服务，则此控件不适用。
 
@@ -126,7 +126,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
-**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：目前不可用
 
@@ -134,7 +134,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：最大程度地降低网络安全规则的复杂性和管理开销
 
-**指南**：使用虚拟网络服务标记定义在 azure 中配置的网络安全组或 azure 防火墙上的网络访问控制，这需要访问自动化资源。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 通过在规则的相应 "源" 或 "目标" 字段中指定服务标记名称 (例如 GuestAndHybridManagement) ，可以允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
+**指南**：使用虚拟网络服务标记定义在 azure 中配置的网络安全组或 azure 防火墙上的网络访问控制，这需要访问自动化资源。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 通过在规则的相应 "源" 或 "目标" 字段中指定服务标记名称（例如，GuestAndHybridManagement），可以允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
 
 * [了解和使用服务标记](../virtual-network/service-tags-overview.md)
 
@@ -212,7 +212,7 @@ Azure 安全中心监视：不适用
 
 * [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
 
-* [如何开始将 Azure Monitor 与第三方 SIEM 集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
+* [如何开始使用 Azure Monitor 和第三方 SIEM 集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
 * [将 Azure 自动化作业数据转发到 Azure Monitor 日志](./automation-manage-send-joblogs-log-analytics.md)
 
@@ -388,7 +388,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：对所有基于 Azure Active Directory 的访问使用多重身份验证
 
-**指南**：启用 Azure AD 多重身份验证 (MFA) ，并遵循 Azure 安全中心的标识和访问管理建议。
+**指南**：启用 Azure AD 多重身份验证（MFA）并遵循 Azure 安全中心的标识和访问管理建议。
 
 * [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -414,7 +414,7 @@ Azure 安全中心监视：不适用
 
 **指南**：利用 Azure AD 风险检测来查看警报和报告有风险的用户行为。 客户可以选择将 Azure 安全中心风险检测警报转发到 Azure Monitor 并使用操作组配置自定义警报/通知。
 
-* [了解 Azure 安全中心风险检测 (可疑活动) ](../active-directory/identity-protection/overview-identity-protection.md)
+* [了解 Azure 安全中心风险检测（可疑活动）](../active-directory/identity-protection/overview-identity-protection.md)
 
 * [如何将 Azure 活动日志集成到 Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -436,7 +436,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指南**：使用 Azure AD 作为中心身份验证和授权系统。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。 如果使用混合 Runbook 辅助角色，则可以使用托管标识（而不是运行方式帐户）来启用更无缝的安全权限。
+**指南**：使用 Azure AD 作为中心身份验证和授权系统。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会进行加盐操作、哈希操作并安全地存储用户凭据。 如果使用混合 Runbook 辅助角色，则可以使用托管标识（而不是运行方式帐户）来启用更无缝的安全权限。
 
 * [如何创建和配置 Azure AD 实例](../active-directory-domain-services/tutorial-create-instance.md)
 
@@ -448,7 +448,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期审查和协调用户访问
 
-**指南**：Azure AD 提供日志来帮助发现过时的帐户。 此外，使用 Azure 标识访问评审还可有效管理组成员身份、对企业应用程序的访问权限以及角色分配。 可以定期查看用户访问权限，以确保只有正确的用户才能继续访问。 每次使用 runbook 的自动化帐户运行方式帐户时，还应确保在清单中跟踪这些服务主体，因为他们经常需要提升权限。 删除任何未使用的运行方式帐户，以最大程度地降低公开攻击面。
+**指南**：Azure AD 提供有助于发现陈旧帐户的日志。 此外，使用 Azure 标识访问评审还可有效管理组成员身份、对企业应用程序的访问权限以及角色分配。 可以定期查看用户访问权限，以确保只有正确的用户才能继续访问。 每次使用 runbook 的自动化帐户运行方式帐户时，还应确保在清单中跟踪这些服务主体，因为他们经常需要提升权限。 删除任何未使用的运行方式帐户，以最大程度地降低公开攻击面。
 
 * [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
 
@@ -492,7 +492,7 @@ Azure 安全中心监视：不适用
 
 **指南**：对于 Azure Automation 帐户，Microsoft 支持人员可以在开放支持案例中访问平台资源元数据，而无需使用其他工具。
 
-但是，当使用由 Azure 虚拟机支持的混合 Runbook 辅助角色，而第三方需要访问客户数据时 (如) ，请使用 Azure 虚拟机的客户密码箱 (预览) 来查看和批准或拒绝客户数据访问请求。
+但是，当使用由 Azure 虚拟机支持的混合 Runbook 辅助角色，而第三方需要访问客户数据（例如在支持请求期间）时，请使用 Azure 虚拟机客户密码箱（预览版）来查看和批准或拒绝客户数据访问请求。
 
 * [了解客户密码箱](../security/fundamentals/customer-lockbox-overview.md)
 
@@ -516,7 +516,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指导**：为开发、测试和生产实施单独的订阅和/或管理组。 使用独立的自动化帐户资源隔离环境。 混合 Runbook 辅助角色等资源应该由虚拟网络/子网分开、标记正确，并在网络安全组 (NSG) 或 Azure 防火墙中得到保护。 对于存储或处理敏感数据的虚拟机，执行策略和过程 () 在不使用时将其关闭。
+**指导**：为开发、测试和生产实现单独的订阅和/或管理组。 使用独立的自动化帐户资源隔离环境。 混合 Runbook 辅助角色等资源应该由虚拟网络/子网分开、正确标记并在网络安全组（NSG）或 Azure 防火墙内进行保护。 对于存储或处理敏感数据的虚拟机，请在不使用策略和过程时将其关闭。
 
 * [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
@@ -550,7 +550,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密传输中的所有敏感信息
 
-**指导**：加密传输中的所有敏感信息。 确保连接到 Azure 虚拟网络中的 Azure 资源的任何客户端都能够协商 TLS 1.2 或更高版本。 Azure 自动化通过 webhook、DSC 节点、混合 runbook 辅助角色) 完全支持并强制实施传输层 (TLS) 1.2 以及所有外部 HTPS 终结 (点的所有客户端调用或更高版本。
+**指导**：加密传输中的所有敏感信息。 确保连接到 Azure 虚拟网络中的 Azure 资源的任何客户端都能够协商 TLS 1.2 或更高版本。 Azure 自动化完全支持并强制实施传输层（TLS）1.2 以及所有客户端调用或更高版本的所有外部 HTPS 终结点（通过 webhook、DSC 节点、混合 runbook 辅助角色）。
 
 请按照 Azure 安全中心的建议，了解静态加密和传输中的加密（如果适用）。
 
@@ -598,7 +598,7 @@ Azure 安全中心监视：不适用
 
 **指南**：通过 Azure 自动化使用客户托管的密钥。 Azure 自动化支持使用客户管理的密钥来加密所有使用的安全资产，例如凭据、证书、连接和加密的变量。 将加密变量与 runbook 结合使用，以防止意外的公开。
 
-使用混合 Runbook 辅助角色时，虚拟机上的虚拟磁盘使用服务器端加密或 Azure 磁盘加密 (ADE) 进行静态加密。 Azure 磁盘加密利用 Windows 的 BitLocker 功能，通过来宾 VM 中的客户托管密钥来加密托管磁盘。 使用客户托管密钥的服务器端加密通过加密存储服务中的数据，使你能够将任何 OS 类型和映像用于 VM，从而改进了 ADE。
+使用混合 Runbook 辅助角色时，虚拟机上的虚拟磁盘使用服务器端加密或 Azure 磁盘加密（ADE）加密。 Azure 磁盘加密利用 Windows 的 BitLocker 功能，通过来宾 VM 中的客户托管密钥来加密托管磁盘。 使用客户托管密钥的服务器端加密改进了 ADE，它通过加密存储服务中的数据使你可以为 VM 使用任何 OS 类型和映像。
 
 * [Azure 托管磁盘的服务器端加密](../virtual-machines/windows/disk-encryption.md)
 
@@ -644,7 +644,7 @@ Azure 安全中心监视：不适用
 
 **指南**： Azure Automation 目前不公开基础多租户 runbook 辅助角色的虚拟机，这由平台处理。 如果你使用的是无混合 Runbook 辅助角色的现成服务，则此控件不适用。
 
-如果使用 Azure 虚拟机支持的混合 Runbook 辅助角色，请使用 Azure 更新管理来管理虚拟机的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 利用 System Center Updates Publisher (Updates Publisher) 的工具，您可以将自定义更新发布到 Windows Server Update Services (WSUS) 中。 此方案允许更新管理将使用 Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。
+如果使用 Azure 虚拟机支持的混合 Runbook 辅助角色，请使用 Azure 更新管理来管理虚拟机的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 System Center Updates Publisher （Updates Publisher）等工具允许你将自定义更新发布到 Windows Server Update Services （WSUS）。 此方案允许更新管理将使用 Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。
 
 * [Azure 中的更新管理](./automation-update-management.md)
 
@@ -658,7 +658,7 @@ Azure 安全中心监视：不适用
 
 **指南**： Azure Automation 目前不公开基础多租户 runbook 辅助角色的虚拟机，这由平台处理。 如果你使用的是无混合 Runbook 辅助角色的现成服务，则此控件不适用。
 
-如果你使用的是 Azure 虚拟机支持的混合 Runbook 辅助角色，则可以使用 Azure 更新管理来管理虚拟机的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 System Center Updates Publisher (Updates Publisher) 等工具允许您将自定义更新发布到 Windows Server Update Services (WSUS) 中。 此方案允许更新管理将使用 Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。
+如果你使用的是 Azure 虚拟机支持的混合 Runbook 辅助角色，则可以使用 Azure 更新管理来管理虚拟机的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 System Center Updates Publisher （Updates Publisher）等工具允许你将自定义更新发布到 Windows Server Update Services （WSUS）。 此方案允许更新管理将使用 Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。
 
 * [Azure 中的更新管理解决方案](./automation-update-management.md)
 
@@ -674,13 +674,13 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用风险评级过程来确定已发现漏洞的修正措施的优先级
 
-**指南**：使用默认风险评级 (Azure 安全中心提供的安全分数) ，以帮助确定发现的漏洞的修正。
+**指南**：使用 Azure 安全中心提供的默认风险等级（安全分数）来帮助确定发现的漏洞的修正。
 
-* [了解 Azure 安全中心安全分数](../security-center/secure-score-security-controls.md)
+* [了解 Azure 安全中心安全功能分数](../security-center/secure-score-security-controls.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -846,7 +846,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以物理或逻辑方式隔离高风险应用程序
 
-**指南**：你的 azure 环境中部署的高风险应用程序可使用虚拟网络、子网、订阅和管理组等构造，使用单独的网络和资源容器进行隔离，可以使用 Azure 防火墙、Web 应用程序防火墙 (WAF) 或网络安全组 (NSG) 充分保护这些应用程序。
+**指南**：你的 azure 环境中部署的高风险应用程序可以通过使用虚拟网络、子网、订阅和管理组等构造的单独网络和资源容器来隔离，可以使用 Azure 防火墙、Web 应用程序防火墙（WAF）或网络安全组（NSG）对其进行充分的保护。
 
 * [Azure 中的虚拟网络和虚拟机](../virtual-machines/windows/network-overview.md)
 
@@ -918,13 +918,13 @@ Azure 安全中心监视：不适用
 
 * [了解 Azure Policy 效果](../governance/policy/concepts/effects.md)
 
-* [使用 Azure 资源管理器模板部署自动化帐户](./automation-create-account-template.md#deploy-the-template)
+* [使用 Azure 资源管理器模板部署自动化帐户](./quickstart-create-automation-account-template.md#deploy-the-template)
 
 * [Azure 自动化的 azure 策略示例内置功能](./policy-samples.md)
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4：维护安全的操作系统配置
 
@@ -933,7 +933,7 @@ Azure 安全中心监视：不适用
 使用混合 Runbook 辅助角色功能时，有几个选项可用于为部署 Azure 虚拟机维护安全配置：
 
 - Azure 资源管理器模板：这些是基于 JSON 的文件，用于从 Azure 门户部署 VM，需要维护自定义模板。 Microsoft 对基本模板执行维护。
-- 自定义虚拟硬盘 (VHD) ：在某些情况下，可能需要使用自定义 VHD 文件，如处理无法通过其他方式管理的复杂环境时。
+- 自定义虚拟硬盘（VHD）：在某些情况下，可能需要使用自定义 VHD 文件，如处理无法通过其他方式管理的复杂环境时。
 - Azure 自动化状态配置：部署基本操作系统后，可使用此功能对设置进行更细致的控制，并通过自动化框架进行强制。
 
 在大多数情况下，与 Azure 自动化状态配置结合的 Microsoft 基本 VM 模板可以帮助满足和维护安全要求。
@@ -960,7 +960,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-**责任**：客户
+责任：客户
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全存储自定义操作系统映像
 
@@ -994,7 +994,7 @@ Azure 安全中心监视：不适用
 
 **指南**： Azure Automation 目前不公开基础多租户 runbook 辅助角色的虚拟机或 OS，此操作由平台处理。 如果你使用的是无混合 Runbook 辅助角色的现成服务，则此控件不适用。
 
-使用混合 Runbook 辅助角色功能时，请在 Runbook worker 上使用 Azure 自动化状态配置，该配置管理服务是适用于所需状态配置的配置管理服务 (DSC) 在任何云或本地数据中心内的节点。 它可让你从中心的安全位置快速轻松地扩展到数千台计算机。 可以轻松登记计算机、为其分配声明性配置并查看显示每台计算机是否符合指定的所需状态的报告。
+使用混合 Runbook 辅助角色功能时，请在 Runbook worker 上使用 Azure 自动化状态配置，该服务是适用于任何云或本地数据中心中所需状态配置（DSC）节点的配置管理服务。 它可让你从中心的安全位置快速轻松地扩展到数千台计算机。 可以轻松登记计算机、为其分配声明性配置并查看显示每台计算机是否符合指定的所需状态的报告。
 
 * [加入 Azure Automation State Configuration 管理的计算机](./automation-dsc-onboarding.md)
 
@@ -1024,7 +1024,7 @@ Azure 安全中心监视：不适用
 
 **指南**： Azure 自动化产品/服务当前不公开基础多租户 runbook 辅助角色的虚拟机或 OS，这由平台处理。 如果在没有混合辅助角色的情况下使用现成的服务，则此控件不适用。
 
-使用混合 Runbook 辅助角色功能时，请将 Azure 自动化状态配置用于作为所需状态配置的配置管理服务的 Runbook worker (DSC 或本地数据中心内的 DSC) 节点。 它可让你从中心的安全位置快速轻松地扩展到数千台计算机。 可以轻松登记计算机、为其分配声明性配置并查看显示每台计算机是否符合指定的所需状态的报告。
+使用混合 Runbook 辅助角色功能时，请在任何云或本地数据中心中，为所需状态配置（DSC）节点的 Runbook worker 使用 Azure 自动化状态配置。 它可让你从中心的安全位置快速轻松地扩展到数千台计算机。 可以轻松登记计算机、为其分配声明性配置并查看显示每台计算机是否符合指定的所需状态的报告。
 
 * [加入 Azure Automation State Configuration 管理的计算机](./automation-dsc-onboarding.md)
 
@@ -1064,7 +1064,7 @@ Azure 安全中心监视：不适用
 
 **指南**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据移动到更安全的位置，例如 Azure Key Vault。
 
-* [如何设置凭据扫描程序](https://secdevtools.azurewebsites.net/helpcredscan.htm)
+* [如何设置凭据扫描程序](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -1088,7 +1088,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
 
-**指南**：不适用;Azure 自动化即服务不存储文件。 在支持 Azure 服务 (的基础主机上启用了 Microsoft 反恶意软件，例如，Azure 自动化) ，但它不会在你的内容上运行。
+**指南**：不适用;Azure 自动化即服务不存储文件。 支持 Azure 服务（例如 Azure 自动化）的基础主机上启用了 Microsoft 反恶意软件，但它不会在你的内容上运行。
 
 * [了解适用于 Azure 云服务和虚拟机的 Microsoft Antimalware](../security/fundamentals/antimalware.md)
 
@@ -1124,7 +1124,7 @@ Azure 安全中心监视：不适用
 
 * [Azure 自动化资源的 azure 资源管理器模板参考](/azure/templates/microsoft.automation/allversions)
 
-* [使用 Azure 资源管理器模板创建自动化帐户](./automation-create-account-template.md)
+* [使用 Azure 资源管理器模板创建自动化帐户](./quickstart-create-automation-account-template.md)
 
 * [在 Azure 门户中将单资源和多资源导出到模板](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -1142,7 +1142,7 @@ Azure 安全中心监视：不适用
 
 **责任**：客户
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整的系统备份并备份任何客户托管的密钥
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整系统备份，并备份客户管理的所有密钥
 
 **指南**：使用 azure 资源管理器部署 azure 自动化帐户和相关资源。 Azure 资源管理器提供导出模板的功能，可以将这些模板用作还原 Azure Automation 帐户和相关资源的备份。 使用 Azure 自动化定期调用 Azure 资源管理器模板导出 API。 在 Azure Key Vault 中备份客户托管的密钥。 可以使用 Azure 门户或 PowerShell 将 runbook 导出到脚本文件。
 
@@ -1150,7 +1150,7 @@ Azure 安全中心监视：不适用
 
 * [Azure 自动化资源的 azure 资源管理器模板参考](/azure/templates/microsoft.automation/allversions)
 
-* [使用 Azure 资源管理器模板创建自动化帐户](./automation-create-account-template.md)
+* [使用 Azure 资源管理器模板创建自动化帐户](./quickstart-create-automation-account-template.md)
 
 * [在 Azure 门户中将单资源和多资源导出到模板](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -1166,9 +1166,9 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：验证包括客户托管密钥在内的所有备份
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：验证所有备份，包括客户管理的密钥
 
 **指南**：如果需要，请确保定期定期将 Azure 资源管理器模板部署到隔离的订阅。 测试已备份客户托管密钥的还原。
 
@@ -1180,7 +1180,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
@@ -1220,11 +1220,11 @@ Azure 安全中心监视：不适用
 
 **指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心对用于发出警报的调查结果或分析的置信度，以及导致警报的活动背后存在恶意意图的可信度。
 
-此外，请明确标记订阅（例如 生产或非生产），并创建命名系统以清楚地标识和分类 Azure 资源，尤其是那些用于处理敏感数据的资源。 你要保证根据 Azure 资源以及事件的发生环境的重要性来设置警报修正的优先级。
+此外，使用标记清楚地标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 * [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 
-* [使用标记组织 Azure 资源](../azure-resource-manager/management/tag-resources.md)
+* [使用标记整理 Azure 资源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：是
 
@@ -1232,9 +1232,9 @@ Azure 安全中心监视：不适用
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指南**：定期执行练习来测试系统的事件响应功能，以帮助保护 Azure 资源。 识别弱点和差距，并根据需要修改计划。
+**指导**：定期执行演练来测试系统的事件响应功能，以帮助保护 Azure 资源。 识别弱点和差距，并根据需要修改计划。
 
-* [NIST 出版物 - 适用于 IT 计划和功能的测试、培训和练习计划指南](https://csrc.nist.gov/publications/detail/sp/800-84/final)
+* [NIST 发布 - IT 计划和功能的测试、训练和演练计划指南](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
 **Azure 安全中心监视**：不适用
 
@@ -1242,7 +1242,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全事件联系人详细信息，并针对安全事件配置警报通知
 
-**指导**：如果 Microsoft 安全响应中心 (MSRC) 发现非法或未经授权的一方访问了你的数据，Microsoft 将使用安全事件联系人信息来与你取得联系。 事后审查事件，确保问题得到解决。
+**指导**：如果 Microsoft 安全响应中心 (MSRC) 发现数据被某方非法访问或未经授权访问，Microsoft 会使用安全事件联系信息联系用户。 事后审查事件，确保问题得到解决。
 
 * [如何设置 Azure 安全中心安全联系人](../security-center/security-center-provide-security-contact-details.md)
 
@@ -1252,7 +1252,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
-**指南**：使用连续导出功能导出 Azure 安全中心警报和建议，以帮助识别 Azure 资源的风险。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Azure Sentinel。
+**指南**：使用连续导出功能导出 Azure 安全中心警报和建议，以帮助确定 Azure 资源的风险。 使用连续导出功能可手动或以连续不断的方式导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Azure Sentinel。
 
 * [如何配置连续导出](../security-center/continuous-export.md)
 
@@ -1264,7 +1264,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自动响应安全警报
 
-**指南**：使用 Azure 安全中心的工作流自动化功能，可通过 "逻辑应用" 自动触发有关安全警报和建议的响应，以保护 Azure 资源。
+**指导**：使用 Azure 安全中心内的工作流自动化功能，通过“逻辑应用”针对安全警报和建议自动触发响应，以保护 Azure 资源。
 
 * [如何配置工作流自动化和逻辑应用](../security-center/workflow-automation.md)
 
@@ -1278,7 +1278,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期对 Azure 资源执行渗透测试，确保修正所有发现的关键安全问题
 
-**指南**：遵循 Microsoft 订婚规则确保你的渗透测试不违反 Microsoft 政策。 针对 Microsoft 托管的云基础结构、服务和应用程序，使用 Microsoft 的战略和对红色组合和活动站点渗透测试的执行。
+**指南**：遵循 Microsoft 订婚规则确保你的渗透测试不违反 Microsoft 政策。 使用 Microsoft 红队演练策略和执行，以及针对 Microsoft 托管云基础结构、服务和应用程序执行现场渗透测试。
 
 * [参与的渗透测试规则](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 

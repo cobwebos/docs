@@ -7,11 +7,12 @@ ms.topic: article
 ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fd1ffc8636e11ca20bc32b4b6f600e03d923d8b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9bfd601642ff9d6b5b5c5a1c2c508d1821e19c7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83125802"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042192"
 ---
 # <a name="use-an-app-service-environment"></a>使用应用服务环境
 
@@ -250,6 +251,30 @@ ASE 为其中的所有应用提供 1 TB 存储空间。 “独立”定价 SKU �
     ![ASE 删除][3]
 
 1. 选择“确定” 。
+
+## <a name="ase-cli"></a>ASE CLI
+
+有一些命令行功能可用于管理 ASE。  Az cli 命令如下所示。
+
+```azurecli
+C:\>az appservice ase --help
+
+Group
+    az appservice ase : Manage App Service Environments v2.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    create         : Create app service environment.
+    delete         : Delete app service environment.
+    list           : List app service environments.
+    list-addresses : List VIPs associated with an app service environment.
+    list-plans     : List app service plans associated with an app service environment.
+    show           : Show details of an app service environment.
+    update         : Update app service environment.
+
+For more specific examples, use: az find "az appservice ase"
+```
+
+
 
 <!--Image references-->
 [1]: ./media/using_an_app_service_environment/usingase-appcreate.png

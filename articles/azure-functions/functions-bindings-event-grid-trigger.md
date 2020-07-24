@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit, tracking-python
-ms.openlocfilehash: c86a58c384c7356ecdaf668644f08c011a4c0a40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4d40618c5d1a7200b452268a6b36841a846c6cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832995"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041899"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions 的 Azure 事件网格触发器
 
@@ -413,7 +413,7 @@ Python 不支持特性。
 
 ### <a name="azure-cli"></a>Azure CLI
 
-若要使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) 创建订阅，请运行 [az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create) 命令。
+若要使用 [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) 创建订阅，请运行 [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create) 命令。
 
 该命令需要可调用函数的终结点 URL。 以下示例显示特定于版本的 URL 模式：
 
@@ -508,7 +508,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 1. [生成请求](#generate-a-request)，并从查看器应用复制请求正文。
 1. [将请求手动发布](#manually-post-the-request)到事件网格触发器函数的 localhost URL。
 
-完成测试后，可以更新终结点，将同一订阅用于生产。 使用 [az eventgrid event-subscription update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) Azure CLI 命令。
+完成测试后，可以更新终结点，将同一订阅用于生产。 使用 [az eventgrid event-subscription update](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) Azure CLI 命令。
 
 ### <a name="create-a-viewer-web-app"></a>创建查看器 Web 应用
 

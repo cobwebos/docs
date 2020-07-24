@@ -3,11 +3,12 @@ title: 使用 PowerShell 自动化 Azure Application Insights | Microsoft Docs
 description: 使用 Azure 资源管理器模板在 PowerShell 中自动创建和管理资源、警报和可用性测试。
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: c4e7c4fe14d829338e98a4b7e73726b1e605707c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a0a3a5b186d57e8670201e601eee48ee858c976
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485423"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041626"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>使用 PowerShell 管理 Application Insights 资源
 
@@ -25,7 +26,7 @@ ms.locfileid: "84485423"
 1. 安装 [Microsoft Web 平台安装程序（v5 或更高版本）](https://www.microsoft.com/web/downloads/platform.aspx)。
 2. 使用它来安装 Microsoft Azure PowerShell。
 
-除了可以使用资源管理器模板以外，还有一组丰富的 [Application Insights PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights)，可用于轻松地以编程方式配置 Application Insights 资源。 cmdlet 启用的功能包括：
+除了可以使用资源管理器模板以外，还有一组丰富的 [Application Insights PowerShell cmdlet](/powershell/module/az.applicationinsights)，可用于轻松地以编程方式配置 Application Insights 资源。 cmdlet 启用的功能包括：
 
 * 创建和删除 Application Insights 资源
 * 获取 Application Insights 资源及其属性的列表
@@ -36,7 +37,7 @@ ms.locfileid: "84485423"
 
 ## <a name="create-application-insights-resources-using-a-powershell-cmdlet"></a>使用 PowerShell cmdlet 创建 Application Insights 资源
 
-下面展示了如何使用 [New-AzApplicationInsights](https://docs.microsoft.com/powershell/module/az.applicationinsights/New-AzApplicationInsights) cmdlet 在 Azure 美国东部数据中心内新建 Application Insights 资源：
+下面展示了如何使用 [New-AzApplicationInsights](/powershell/module/az.applicationinsights/new-azapplicationinsights) cmdlet 在 Azure 美国东部数据中心内新建 Application Insights 资源：
 
 ```PS
 New-AzApplicationInsights -ResourceGroupName <resource group> -Name <resource name> -location eastus
@@ -226,7 +227,7 @@ Get-AzApplicationInsights -ResourceGroupName Fabrikam -Name FabrikamProd | Forma
 * `Get-AzApplicationInsightsApiKey`
 * `Get-AzApplicationInsightsContinuousExport`
 
-有关这些 cmdlet 的参数，请参阅[详细文档](https://docs.microsoft.com/powershell/module/az.applicationinsights)。  
+有关这些 cmdlet 的参数，请参阅[详细文档](/powershell/module/az.applicationinsights)。  
 
 ## <a name="set-the-data-retention"></a>设置数据保留期
 
@@ -329,7 +330,7 @@ Set-ApplicationInsightsRetention `
 
 ## <a name="set-the-daily-cap"></a>设置每日上限
 
-若要获取每日上限属性，请运行 [Set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) cmdlet： 
+若要获取每日上限属性，请运行 [Set-AzApplicationInsightsPricingPlan](/powershell/module/az.applicationinsights/set-azapplicationinsightspricingplan) cmdlet： 
 
 ```PS
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> | Format-List
@@ -358,7 +359,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 <a id="price"></a>
 ## <a name="set-the-pricing-plan"></a>设置定价计划 
 
-若要获取当前的定价计划，请运行 [Set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) cmdlet：
+若要获取当前的定价计划，请运行 [Set-AzApplicationInsightsPricingPlan](/powershell/module/az.applicationinsights/set-azapplicationinsightspricingplan) cmdlet：
 
 ```PS
 Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> | Format-List
@@ -403,12 +404,12 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 ## <a name="add-a-metric-alert"></a>添加指标警报
 
-若要自动创建指标警报，请参阅[指标警报模板](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert)一文
+若要自动创建指标警报，请参阅[指标警报模板](../platform/alerts-metric-create-templates.md#template-for-a-simple-static-threshold-metric-alert)一文
 
 
 ## <a name="add-an-availability-test"></a>添加可用性测试
 
-若要自动执行可用性测试，请参阅[指标警报模板](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-an-availability-test-along-with-a-metric-alert)一文。
+若要自动执行可用性测试，请参阅[指标警报模板](../platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert)一文。
 
 ## <a name="add-more-resources"></a>添加更多资源
 
@@ -468,7 +469,7 @@ Azure 应严格按顺序设置资源。 若要确保某一设置在下一设置�
 ## <a name="next-steps"></a>后续步骤
 其他自动化文章：
 
-* [创建 Application Insights 资源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) - 不使用模板的快速方法。
+* [创建 Application Insights 资源](./create-new-resource.md#creating-a-resource-automatically) - 不使用模板的快速方法。
 * [设置警报](powershell-alerts.md)
 * [创建 Web 测试](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [将 Azure 诊断发送到 Application Insights](powershell-azure-diagnostics.md)

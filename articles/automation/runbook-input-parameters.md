@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 13691fe05ca42af3a9d5b09ea36eb58bcdf1df08
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 84e2eaf71326f59102800428479768aeba9ef9ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187466"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042159"
 ---
 # <a name="configure-runbook-input-parameters"></a>配置 Runbook 输入参数
 
@@ -148,7 +148,7 @@ Runbook 有多种启动方式：通过 Azure 门户、Webhook、PowerShell cmdle
      Start-AzAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" –ResourceGroupName $resourceGroupName -Parameters $params
    ```
 
-* **Azure 经典部署模型 cmdlet：** 可使用 [Start-AzureAutomationRunbook](/powershell/module/servicemanagement/azure/start-azureautomationrunbook) 启动在默认资源组中创建的自动化 Runbook。
+* **Azure 经典部署模型 cmdlet：** 可使用 [Start-AzureAutomationRunbook](/powershell/module/servicemanagement/azure.service/start-azureautomationrunbook) 启动在默认资源组中创建的自动化 Runbook。
   
    ```powershell
      $params = @{"VMName"="WSVMClassic"; "ServiceName"="WSVMClassicSG"}
