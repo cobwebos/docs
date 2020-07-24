@@ -1,5 +1,5 @@
 ---
-title: Windows 虚拟桌面诊断问题 - Azure
+title: Windows 虚拟桌面诊断问题–秋季2019– Azure
 description: 如何使用 Windows 虚拟桌面诊断功能来诊断问题。
 services: virtual-desktop
 author: Heidilohr
@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b1822f6a5bf0d3ac4217a43978dfcc739044e812
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0aad1c780c6695c771d3cfea04509acde65c051e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84235549"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085854"
 ---
 # <a name="identify-and-diagnose-issues"></a>识别和诊断问题
 

@@ -9,13 +9,14 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: 9fd8d6428e94007002d524d9ade99f6b368b8201
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 220677df3bd0c221f61efd28a80b05cfd76e2734
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70307229"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086636"
 ---
-# <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>使用 PowerShell 监视发送的数据共享的使用情况
+# <a name="use-a-powershell-script-to-monitor-the-usage-of-a-sent-data-share"></a>使用 PowerShell 脚本监视发送的数据共享的使用情况
 
 此 PowerShell 脚本创建数据共享邀请。
 
@@ -39,7 +40,7 @@ New-AzDataShareInvitation -ResourceGroupName $resourceGroupName -AccountName $da
 
 此脚本使用以下命令： 
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [新-AzDataShareInvitation](/powershell/module/az.datashare/new-azdatashareinvitation?view=azps-2.6.0) | 创建数据共享邀请。 |
 |||

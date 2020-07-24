@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: fbfd52065bc0522668488492de2181f252f86a4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 495847d31682aff64fed3c81b1d5d68cf67dfd38
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81272672"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086432"
 ---
 # <a name="handle-throttling-problems-429---too-many-requests-errors-in-azure-logic-apps"></a>处理 Azure 逻辑应用中的限制问题（429 -“请求过多”错误）
 
@@ -76,7 +77,7 @@ Azure 逻辑应用服务具有自身的[吞吐量限制](../logic-apps/logic-app
 
 ## <a name="connector-throttling"></a>连接器限制
 
-每个连接器具有自身的限制，可以在连接器的技术参考页上找到这些限制。 例如，[Azure 服务总线连接器](https://docs.microsoft.com/connectors/servicebus/)的限制为每分钟最多允许 6000 次调用，而 SQL Server 连接器的[限制因操作类型而异](https://docs.microsoft.com/connectors/sql/)。
+每个连接器具有自身的限制，可以在连接器的技术参考页上找到这些限制。 例如，[Azure 服务总线连接器](/connectors/servicebus/)的限制为每分钟最多允许 6000 次调用，而 SQL Server 连接器的[限制因操作类型而异](/connectors/sql/)。
 
 某些触发器和操作（例如 HTTP）具有[“重试策略”](../logic-apps/logic-apps-exception-handling.md#retry-policies)，可以根据[重试策略限制](../logic-apps/logic-apps-limits-and-config.md#retry-policy-limits)对该策略进行自定义以实现异常处理。 此策略指定当原始请求失败或超时并生成 408、429 或 5xx 响应时，触发器或操作是否以及以何频率重试请求。 因此，当限制开始并返回了 429 错误时，逻辑应用在受支持的情况下将遵循重试策略。
 

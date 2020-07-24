@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mingshen
 ms.author: mingshen
 ms.date: 06/17/2020
-ms.openlocfilehash: cea4a43724629793123098084098299e3915be7c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c659bbe3e5f5645bb42b3a9c94a5e5fb7ebe75f0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109637"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086466"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>在 Azure Marketplace 中创建 Azure 容器服务
 
@@ -250,13 +250,13 @@ ms.locfileid: "86109637"
 
 ### <a name="plan-overview"></a>计划概述
 
-使用此选项卡，可以在相同产品/服务中提供不同的计划选项。 这些计划以前称为 SKU（或库存单位）。 计划可能会因可用的云（如全球云、政府云和由计划引用的映像）而有所不同。 若要在商业市场中列出你的产品/服务，必须至少设置一个计划。
+使用此选项卡，可以在相同产品/服务中提供不同的计划选项。 计划（以前称为 Sku）的不同之处在于可用的云，如全球云、政府云和计划引用的映像。 若要在商业市场中列出你的产品/服务，必须至少设置一个计划。
 
 创建计划后，“计划概述”选项卡将显示：
 
 - 计划名称
 - 定价模型
-- 云可用性（全球云或政府云）
+- Azure 区域（全局或政府）
 - 当前发布状态
 - 任何可用操作
 
@@ -293,7 +293,7 @@ Azure 容器产品/服务的所有计划都将自动提供给**Azure Global**。
 
 #### <a name="azure-government-certifications"></a>Azure 政府认证
 
-仅当在**云可用性**下选择了**Azure 政府**时，才能显示此选项。
+仅当在**azure 区域**下选择了**azure 政府**时，才能显示此选项。
 
 Azure 政府服务处理符合特定政府法规和要求的数据。 例如，FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 1075、DoD L4 和 CJIS。
 

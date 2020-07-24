@@ -6,14 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/05/2020
+ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 0e24bcb54fd26d4a3d983681b3348ef736b277cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ff0bb6d593a199bd249441cf484d1f0580774ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82884340"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086041"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>启用和管理 blob 版本控制
 
@@ -67,7 +68,7 @@ ms.locfileid: "82884340"
 
 ## <a name="modify-a-blob-to-trigger-a-new-version"></a>修改 blob 以触发新版本
 
-下面的代码示例演示如何使用用于 .NET 的 Azure 存储客户端库版本12来触发新版本的创建。 运行此示例之前，请确保已为存储帐户启用了版本控制。
+下面的代码示例演示如何使用适用于 .NET 的 Azure 存储客户端库（版本[12.5.0](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.0-preview.5) ）或更高版本触发创建新版本。 运行此示例之前，请确保已为存储帐户启用了版本控制。
 
 该示例创建一个块 blob，然后更新该 blob 的元数据。 更新 blob 的元数据会触发新版本的创建。 该示例将检索初始版本和当前版本，并显示只有当前版本包括元数据。
 

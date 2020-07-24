@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: JnHs
 ms.author: jenhayes
 ms.date: 07/07/2020
-ms.openlocfilehash: 70f0dbff2530b11e92bd0b0cc55ad92a8679ebe9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3bb663dcdf007bf77d1b9f2b46af532774af22e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121786"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086381"
 ---
 # <a name="create-a-managed-service-offer"></a>创建托管服务产品
 
@@ -85,8 +85,8 @@ ms.locfileid: "86121786"
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. 标题
-2. 说明
+1. Title
+2. 描述
 3. 有用链接
 4. 屏幕截图
 
@@ -177,7 +177,7 @@ ms.locfileid: "86121786"
 
 ## <a name="plan-overview"></a>计划概述
 
-每个产品/服务都必须具有一个或多个计划（有时也称为 SKU）。 可添加多个计划，以不同的价格支持不同的功能集，也可为有限数量的特定客户自定义特定计划。 客户可在父级产品/服务中查看可供其使用的计划。
+每个产品/服务必须有一个或多个计划（以前称为 Sku）。 可添加多个计划，以不同的价格支持不同的功能集，也可为有限数量的特定客户自定义特定计划。 客户可在父级产品/服务中查看可供其使用的计划。
 
 在“计划概述”页，选择“+ 创建新计划”。 然后输入“计划 ID”和“计划名称”。 这两个值只能包含小写的字母数字字符、短划线和下划线，且长度不得超过 50 个字符。 这些值可能会对客户可见，在发布产品/服务后，无法更改这些值。
 

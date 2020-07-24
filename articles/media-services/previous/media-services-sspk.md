@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 7fce1fc529f3af71cac17d8011fe065c6381a419
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d4822f453e27a5e2fa7b97d77056b6bee1041d9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84677146"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086228"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>授权 Microsoft&reg; 平滑流式处理客户端移植工具包 
 ## <a name="overview"></a>概述
@@ -123,6 +124,7 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * 中国香港 Konka 有限公司
 * Innolux 公司
 * Innopia 技术，Inc。
+* Tronics （Suzhou）技术有限公司。 
 * Kaonmedia Co., Ltd.
 * KDDI Corporation
 * 成名电气有限公司

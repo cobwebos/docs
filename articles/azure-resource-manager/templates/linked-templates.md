@@ -2,13 +2,13 @@
 title: 用于部署的链接模板
 description: 介绍如何使用 Azure Resource Manager 模板中的链接模板创建一个模块化的模板的解决方案。 演示如何传递参数值、指定参数文件和动态创建的 URL。
 ms.topic: conceptual
-ms.date: 06/26/2020
-ms.openlocfilehash: 6b28268a522dde4fe16ccf9d0d01738c3b6a9b5d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 07/21/2020
+ms.openlocfilehash: 40da2443828a07f2171922fcc6d8976d464d0ad4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170643"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086806"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
@@ -315,6 +315,11 @@ ms.locfileid: "86170643"
 > 可以使用参数（如 `_artifactsLocation` 参数）来引用模板，例如：`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`，这些参数最终会解析为某个使用“http”或“https”的项
 
 资源管理器必须能够访问模板。 一种做法是将链接模板放入存储帐户，并对该项使用 URI。
+
+[模板规范](./template-specs.md)（目前为个人预览版）可让你与组织中的其他用户共享 ARM 模板。 模板规范还可用于打包主模板及其链接的模板。 有关详细信息，请参阅：
+
+- [教程：创建包含链接模板的模板规范](./template-specs-create-linked.md)。
+- [教程：将模板规范部署为链接模板](./template-specs-deploy-linked-template.md)。
 
 ### <a name="parameters-for-linked-template"></a>链接模板的参数
 

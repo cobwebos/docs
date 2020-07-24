@@ -1,5 +1,5 @@
 ---
-title: 排查 Windows 虚拟桌面服务连接问题 - Azure
+title: 排查服务连接问题 Windows 虚拟桌面秋季 2019-Azure
 description: 如何解决在 Windows 虚拟桌面租户环境中设置客户端连接时遇到的问题。
 services: virtual-desktop
 author: Heidilohr
@@ -8,13 +8,14 @@ ms.topic: troubleshooting
 ms.date: 05/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 356506224a0273eeea65f0f901fbc79c338498d2
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ad5e740a2874d398f3947fe755024bedc897ec73
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743607"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085786"
 ---
-# <a name="windows-virtual-desktop-service-connections"></a>Windows 虚拟桌面服务连接
+# <a name="troubleshoot-windows-virtual-desktop-service-connections"></a>Windows 虚拟桌面服务连接疑难解答
 
 >[!IMPORTANT]
 >本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。 如果要尝试管理 2020 年春季版更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../troubleshoot-service-connection.md)。

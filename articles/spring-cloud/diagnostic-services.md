@@ -6,11 +6,13 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: 57850b45820ec259337a8ad5b67bfebfd6762c24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 56f392210aac6045a9dc8cc3522d36092162f26c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84790579"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086109"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>通过诊断设置分析日志和指标
 
@@ -48,7 +50,7 @@ ms.locfileid: "84790579"
     * **发送到 Log Analytics**
 
 1. 选择要监视的日志类别和指标类别，然后指定保留时间（以天为单位）。 保留时间仅适用于存储帐户。
-1. 选择“保存”。
+1. 选择“保存” 。
 
 > [!NOTE]
 > 1. 发出日志或指标后，或在存储帐户、事件中心或 Log Analytics 中出现日志或指标时，可能会出现长达15分钟的间隔。

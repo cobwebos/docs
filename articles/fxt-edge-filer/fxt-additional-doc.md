@@ -6,14 +6,14 @@ ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: e3205827f9603545b0a99b064a53e50fc94c374e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fe2867343f07a7b1a7dd3d8eb2b44dd1ec1e271
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72254919"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086534"
 ---
-# <a name="additional-documentation"></a>其他文档 
+# <a name="additional-documentation-for-azure-fxt-edge-filer"></a>Azure FXT Edge 文件服务器的其他文档
 
 此 docs.microsoft.com 网站以外的某些资源可能会帮助你了解和使用 Microsoft Azure FXT Edge 文件服务器混合缓存。
 

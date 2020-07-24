@@ -1,20 +1,20 @@
 ---
 title: 静态数据加密 QnA Maker
 titleSuffix: Azure Cognitive Services
-description: 静态数据加密 QnA Maker。
+description: Microsoft 提供了 Microsoft 托管的加密密钥，还可让你通过自己的密钥（称为客户管理的密钥（CMK））管理你的认知服务订阅。 本文介绍了 QnA Maker 静态的数据加密，以及如何启用和管理 CMK。
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 07/10/2020
 ms.author: egeaney
-ms.openlocfilehash: 99c21ece202f8d9867045d506574dd7718bd455e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1ca0dda046329e95c649540fd42f96ca43838c85
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653660"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086699"
 ---
 # <a name="qna-maker-encryption-of-data-at-rest"></a>静态数据加密 QnA Maker
 
@@ -62,4 +62,4 @@ QnA Maker 门户在用户的浏览器中运行。 每个操作都会触发直接
 
 * [在 Azure Key Vault 中使用 Cmk 在 Azure 搜索中进行加密](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys)
 * [静态数据加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
-* [详细了解 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [详细了解 Azure 密钥保管库](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

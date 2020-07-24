@@ -3,17 +3,17 @@ title: 创建 Azure 映像生成器模板（预览版）
 description: 了解如何创建与 Azure 映像生成器配合使用的模板。
 author: danielsollondon
 ms.author: danis
-ms.date: 06/23/2020
+ms.date: 07/09/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 191f0468a01c98ec60b85ea7aca6333807bf4b80
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: d48153fa747ed9757eb8467eaf1d7c17cde3630e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221198"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085582"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>预览版：创建 Azure 映像生成器模板 
 
@@ -24,7 +24,7 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
 ```json
  { 
     "type": "Microsoft.VirtualMachineImages/imageTemplates", 
-    "apiVersion": "2019-05-01-preview", 
+    "apiVersion": "2020-02-14", 
     "location": "<region>", 
     "tags": {
         "<name": "<value>",
@@ -39,9 +39,8 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
             "vmSize": "<vmSize>",
             "osDiskSizeGB": <sizeInGB>,
             "vnetConfig": {
-                "name": "<vnetName>",
-                "subnetName": "<subnetName>",
-                "resourceGroupName": "<vnetRgName>"
+                "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
+                }
             },
         "source": {}, 
         "customize": {}, 
@@ -54,11 +53,11 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
 
 ## <a name="type-and-api-version"></a>类型和 API 版本
 
-`type` 是资源类型，其值必须是 `"Microsoft.VirtualMachineImages/imageTemplates"`。 `apiVersion` 会随着 API 的更改而更改，但对于预览版，其值应是 `"2019-05-01-preview"`。
+`type` 是资源类型，其值必须是 `"Microsoft.VirtualMachineImages/imageTemplates"`。 `apiVersion` 会随着 API 的更改而更改，但对于预览版，其值应是 `"2020-02-14"`。
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
-    "apiVersion": "2019-05-01-preview",
+    "apiVersion": "2020-02-14",
 ```
 
 ## <a name="location"></a>位置
@@ -88,7 +87,7 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
-映像生成器默认不会更改映像的大小，它会使用源映像中的大小。 你**只能**增加操作系统磁盘的大小 (Win 和 Linux) ，这是可选的，值为0表示保留与源映像相同的大小。 不能将 OS 磁盘大小减少到小于源映像的大小。
+映像生成器默认不会更改映像的大小，它会使用源映像中的大小。 **只能**增加操作系统磁盘的大小（Win 和 Linux），这是可选的，值为0表示保留与源映像相同的大小。 不能将 OS 磁盘大小减少到小于源映像的大小。
 
 ```json
  {
@@ -101,9 +100,8 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
 
 ```json
     "vnetConfig": {
-        "name": "<vnetName>",
-        "subnetName": "<subnetName>",
-        "resourceGroupName": "<vnetRgName>"
+        "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
+        }
     }
 ```
 ## <a name="tags"></a>Tags
@@ -121,9 +119,8 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
 有关详细信息，请参阅[定义资源依赖关系](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson)。
 
 ## <a name="identity"></a>标识
-默认情况下，映像生成器支持使用脚本或从多个位置（例如 GitHub 和 Azure 存储）复制文件。 若要使用这些位置，它们必须可公开访问。
 
-你还可以使用由你定义的 Azure 用户分配的托管标识，使映像生成器能够访问 Azure 存储，前提是在 Azure 存储帐户中为标识至少授予“存储 Blob 数据读取者”角色。 这意味着无需使存储 Blob 可供外部访问，也无需设置 SAS 令牌。
+必需-若要使映像生成器有权读取/写入映像，请从 Azure 存储中读取脚本，你必须创建一个拥有单个资源权限的 Azure 用户分配的标识。 有关映像生成器权限如何工作的详细信息以及相关步骤，请查看[文档](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)。
 
 
 ```json
@@ -135,9 +132,10 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
         },
 ```
 
-有关完整示例，请参阅[使用 Azure 用户分配的托管标识访问 Azure 存储中的文件](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)。
 
-映像生成器对用户分配的标识的支持：•   仅支持单个标识 •   不支持自定义域名
+图像生成器支持用户分配的标识：
+* 仅支持单个标识
+* 不支持自定义域名
 
 有关详细信息，请参阅[什么是 Azure 资源的托管标识？](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
 若要详细了解如何部署此功能，请参阅[使用 Azure CLI 在 Azure VM 上配置 Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)。
@@ -153,11 +151,6 @@ API 需要通过一个“SourceType”来定义用于生成映像的源，目前
 
 > [!NOTE]
 > 使用现有的 Windows 自定义映像时，可在单个 Windows 映像上运行 Sysprep 命令最多8次，有关详细信息，请参阅[Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)文档。
-
-### <a name="iso-source"></a>ISO 源
-我们即将在映像生成器中弃用此功能，因为我们现已推出 [RHEL 自带订阅映像](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/byos)。请查看下面的时间线：
-    * 2020 年 3 月 31 日 - 资源提供程序不再接受包含 RHEL ISO 源的映像模板。
-    * 2020 年 4 月 30 日 - 不再处理包含 RHEL ISO 源的映像模板。
 
 ### <a name="platformimage-source"></a>PlatformImage 源 
 Azure 映像生成器支持 Windows Server 和客户端以及 Linux Azure 市场映像。有关完整列表，请参阅[此文](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support)。 
@@ -181,6 +174,21 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 
 可以在版本中使用“latest”，版本评估将在映像生成时进行，而不是在提交模板时进行。 如果对共享映像库目标使用此功能，则可以避免重新提交模板，并按时间间隔重新运行映像生成，以便基于最新的映像重新创建映像。
 
+#### <a name="support-for-market-place-plan-information"></a>支持市场位置计划信息
+您还可以指定计划信息，例如：
+```json
+    "source": {
+        "type": "PlatformImage",
+        "publisher": "RedHat",
+        "offer": "rhel-byos",
+        "sku": "rhel-lvm75",
+        "version": "latest",
+        "planInfo": {
+            "planName": "rhel-lvm75",
+            "planProduct": "rhel-byos",
+            "planPublisher": "redhat"
+       }
+```
 ### <a name="managedimage-source"></a>ManagedImage 源
 
 将源映像设置为通用化 VHD 或 VM 的现有托管映像。 源托管映像必须采用受支持的 OS，并与 Azure 映像生成器模板位于同一区域中。 
@@ -206,6 +214,7 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 ```
 
 `imageVersionId` 应是映像版本的 ResourceId。 使用 [az sig image-version list](/cli/azure/sig/image-version#az-sig-image-version-list) 可以列出映像版本。
+
 
 ## <a name="properties-buildtimeoutinminutes"></a>属性：buildTimeoutInMinutes
 
@@ -254,7 +263,9 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 
  
 customize 节是一个数组。 Azure 映像生成器将按顺序运行各个定制器。 任一定制器发生任何失败都会导致生成过程失败。 
- 
+
+> [!NOTE]
+> 可在映像模板定义中查看内联命令，并通过 Microsoft 支持部门来帮助支持案例。 如果有敏感信息，则应将其移入 Azure 存储中的脚本，访问需要进行身份验证。
  
 ### <a name="shell-customizer"></a>Shell 定制器
 
@@ -293,7 +304,7 @@ Customize 属性：
 要以超级用户特权运行的命令必须带有 `sudo` 前缀。
 
 > [!NOTE]
-> 对 RHEL ISO 源运行 shell 定制器时，需确保在发生任何自定义之前，第一个自定义 shell 能够处理注册到 Red Hat 权利服务器的操作。 自定义完成后，脚本应从权利服务器取消注册。
+> 内联命令作为映像模板定义的一部分进行存储，你可以在转储映像定义时看到这些命令，在进行故障排除时，这些命令也可用于 Microsoft 支持部门。 如果有敏感的命令或值，强烈建议将它们移入脚本，并使用用户标识对 Azure 存储进行身份验证。
 
 ### <a name="windows-restart-customizer"></a>Windows restart 定制器 
 使用 Restart 定制器可以重启 Windows VM 并等待它重新联机，这样，你便可以安装需要重新启动的软件。  
@@ -485,7 +496,7 @@ runOutputName=<runOutputName>
 
 az resource show \
         --ids "/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/$runOutputName"  \
-        --api-version=2019-05-01-preview
+        --api-version=2020-02-14
 ```
 
 输出：
@@ -569,13 +580,22 @@ Azure 共享映像库是一个新的映像管理服务，可用于管理映像�
 共享映像库的 Distribute 属性：
 
 - **type** - sharedImage  
-- **galleryImageId** - 共享映像库的 ID。 格式为：/subscriptions/ \<subscriptionId> /ResourceGroups/ \<resourceGroupName> /providers/Microsoft.Compute/galleries/ \<sharedImageGalleryName> /images/ \<imageGalleryName> 。
+- **galleryImageId** –共享映像库的 ID，可采用以下两种格式指定：
+    * 自动版本控制-映像生成器将为你生成单调版本号，这对于你想要从同一模板中重新生成映像很有用：格式为： `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageGalleryName>` 。
+    * 显式版本控制-可以传入希望映像生成器使用的版本号。 格式为：`/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>`
+
 - **runOutputName** - 用于标识分发的唯一名称。  
 - **artifactTags** -（可选）用户指定的键值对标记。
-- **replicationRegions** - 用于复制的区域数组。 必须有一个区域是部署库的区域。
- 
+- **replicationRegions** - 用于复制的区域数组。 必须有一个区域是部署库的区域。 添加区域意味着生成时间增加，因为在完成复制之前，生成不会完成。
+- **excludeFromLatest** （可选）此选项可让你将所创建的映像版本标记为 SIG 定义中的最新版本，默认值为 "false"。
+- **storageAccountType** （可选） AIB 支持为要创建的映像版本指定以下类型的存储：
+    * "Standard_LRS"
+    * "Standard_ZRS"
+
+
 > [!NOTE]
-> 可以在未部署库的区域中使用 Azure 映像生成器，但是，Azure 映像生成器服务需要在数据中心之间传输映像，如果采取这种做法，传输需要更长时间。 映像生成器将会基于某个单调整数（目前无法指定）自动对映像进行版本控制。 
+> 如果图像模板与所引用的 `image definition` 位置不在同一位置，你将看到创建映像的额外时间。 图像生成器当前没有 `location` 用于映像版本资源的参数，我们从其父代获取参数 `image definition` 。 例如，如果映像定义位于 westus 中，并且你希望将映像版本复制到 eastus，则会将一个 blob 复制到 westus，然后，将在 westus 中创建一个映像版本资源，然后将其复制到 eastus。 若要避免额外的复制时间，请确保 `image definition` 和映像模板位于同一位置。
+
 
 ### <a name="distribute-vhd"></a>Distribute：VHD  
 可以输出到 VHD。 然后可以复制该 VHD 并使用它来发布到 Azure 市场，或者将它与 Azure Stack 配合使用。  
@@ -608,8 +628,45 @@ az resource show \
 
 > [!NOTE]
 > 创建 VHD 后，请尽快将它复制到其他位置。 VHD 存储在将映像模板提交到 Azure 映像生成器服务时创建的临时资源组中的某个存储帐户内。 如果删除该映像模板，将会丢失 VHD。 
- 
+
+## <a name="image-template-operations"></a>映像模板操作
+
+### <a name="starting-an-image-build"></a>启动映像生成
+若要启动生成，需要对映像模板资源调用 "Run"，如命令的示例 `run` ：
+
+```PowerShell
+Invoke-AzResourceAction -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2020-02-14" -Action Run -Force
+```
+
+
+```bash
+az resource invoke-action \
+     --resource-group $imageResourceGroup \
+     --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
+     -n helloImageTemplateLinux01 \
+     --action Run 
+```
+
+### <a name="cancelling-an-image-build"></a>取消映像生成
+如果你运行的是你认为不正确的映像生成，等待用户输入，或者你认为永远不会成功完成，则可以取消生成。
+
+可随时取消生成。 如果分发阶段已开始，你仍可以取消，但你将需要清除可能未完成的任何映像。 "取消" 命令不等待 "取消" 完成，请 `lastrunstatus.runstate` 使用这些状态[命令](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#get-statuserror-of-the-template-submission-or-template-build-status)监视取消进度。
+
+
+命令示例 `cancel` ：
+
+```powerShell
+Invoke-AzResourceAction -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2020-02-14" -Action Cancel -Force
+```
+
+```bash
+az resource invoke-action \
+     --resource-group $imageResourceGroup \
+     --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
+     -n helloImageTemplateLinux01 \
+     --action Cancel 
+```
+
 ## <a name="next-steps"></a>后续步骤
 
 [Azure 映像生成器 GitHub](https://github.com/danielsollondon/azvmimagebuilder) 中提供了适用于不同方案的示例 .json 文件。
- 

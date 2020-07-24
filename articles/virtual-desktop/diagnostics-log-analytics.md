@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7a138308b48a24a78c55bdc0105379e31482456d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ceb58182b34a4eccbed0dc1cdd1c351ae7868da
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209379"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085905"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>使用诊断功能 Log Analytics
 
@@ -85,7 +85,7 @@ Azure Monitor 使你能够分析 Windows 虚拟桌面数据并查看虚拟机（
 
 5. 输入设置配置的名称，然后选择 "**发送到 Log Analytics**"。 你使用的名称不应包含空格，并且应符合[Azure 命名约定](../azure-resource-manager/management/resource-name-rules.md)。 作为日志的一部分，你可以选择想要添加到 Log Analytics 的所有选项，如检查点、错误、管理等。
 
-6. 选择“保存”。
+6. 选择“保存” 。
 
 >[!NOTE]
 >Log Analytics 提供将数据流式传输到[事件中心](../event-hubs/event-hubs-about.md)或将其存档在存储帐户中的选项。 若要了解有关此功能的详细信息，请参阅将[azure 监视数据流式传输到事件中心](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)和[将 Azure 资源日志存档到存储帐户](../azure-monitor/platform/resource-logs-collect-storage.md)。
@@ -133,52 +133,16 @@ Azure Monitor 使你能够分析 Windows 虚拟桌面数据并查看虚拟机（
 
 ## <a name="example-queries"></a>查询示例
 
-以下示例查询显示诊断功能如何为系统中最常见的活动生成报告。
+通过 Azure Monitor Log Analytics UI 访问示例查询：
+1. 中转到 Log Analytics 工作区，然后选择 "**日志**"。 示例查询 UI 将自动显示。
+1. 将筛选器更改为 "**类别**"。
+1. 选择**Windows 虚拟桌面**查看可用查询。
+1. 选择 "**运行**" 以运行所选查询。 
 
-若要获取用户所建立的连接列表，请运行以下 cmdlet：
+请在 Azure Monitor Log Analytics 中详细了解[已保存查询](../azure-monitor/log-query/saved-queries.md)中的示例查询接口。
 
-```kusto
-WVDConnections
-| project-away TenantId,SourceSystem
-| summarize arg_max(TimeGenerated, *), StartTime =  min(iff(State== 'Started', TimeGenerated , datetime(null) )), ConnectTime = min(iff(State== 'Connected', TimeGenerated , datetime(null) ))   by CorrelationId
-| join kind=leftouter (
-    WVDErrors
-    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId
-    ) on CorrelationId
-| join kind=leftouter (
-   WVDCheckpoints
-   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId
-   | mv-apply Checkpoints on
-    (
-        order by todatetime(Checkpoints['Time']) asc
-        | summarize Checkpoints=makelist(Checkpoints)
-    )
-   ) on CorrelationId
-| project-away CorrelationId1, CorrelationId2
-| order by  TimeGenerated desc
-```
+下面的查询列表允许您查看单个用户的连接信息或问题。 可以在[Log Analytics 查询编辑器](../azure-monitor/log-query/get-started-portal.md#write-and-run-basic-queries)中运行这些查询。 对于每个查询， `userupn` 将替换为要查找的用户的 UPN。
 
-查看用户的源活动：
-
-```kusto
-WVDFeeds
-| project-away TenantId,SourceSystem
-| join kind=leftouter (
-    WVDErrors
-    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId
-    ) on CorrelationId
-| join kind=leftouter (
-   WVDCheckpoints
-   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId
-   | mv-apply Checkpoints on
-    (
-        order by todatetime(Checkpoints['Time']) asc
-        | summarize Checkpoints=makelist(Checkpoints)
-    )
-   ) on CorrelationId
-| project-away CorrelationId1, CorrelationId2
-| order by  TimeGenerated desc
-```
 
 查找单个用户的所有连接：
 
@@ -199,7 +163,6 @@ WVDConnections
 |sort by TimeGenerated asc, CorrelationId
 |summarize dcount(CorrelationId) by bin(TimeGenerated, 1d)
 ```
-
 
 按用户查找会话持续时间：
 
@@ -224,7 +187,7 @@ WVDErrors
 |take 100
 ```
 
-确定是否发生了特定错误：
+若要确定是否为其他用户发生了特定错误：
 
 ```kusto
 WVDErrors
@@ -232,27 +195,7 @@ WVDErrors
 | summarize count(UserName) by CodeSymbolic
 ```
 
-查找所有用户的错误发生次数：
 
-```kusto
-WVDErrors
-| where ServiceError =="false"
-| summarize usercount = count(UserName) by CodeSymbolic
-| sort by usercount desc
-| render barchart
-```
-
-若要查询用户已打开的应用，请运行以下查询：
-
-```kusto
-WVDCheckpoints
-| where TimeGenerated > ago(7d)
-| where Name == "LaunchExecutable"
-| extend App = parse_json(Parameters).filename
-| summarize Usage=count(UserName) by tostring(App)
-| sort by Usage desc
-| render columnchart
-```
 >[!NOTE]
 >- 当用户打开完整桌面时，不会在 WVDCheckpoints 表中将其应用程序使用情况作为检查点进行跟踪。
 >- WVDConnections 表中的 ResourcesAlias 列显示用户是连接到完整的桌面还是已发布的应用。 该列只显示在连接期间打开的第一个应用。 用户打开的任何已发布应用都将在 WVDCheckpoints 中进行跟踪。

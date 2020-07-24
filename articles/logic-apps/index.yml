@@ -10,12 +10,12 @@ metadata:
   author: ecfan
   ms.author: estfan; logicappspm
   ms.date: 09/18/2019
-  ms.openlocfilehash: 8c4f701c398e27114844b5a2b95c894044c3a8b2
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 1b3d77631e547038c3efc4589727c0ba2d7a7006
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "71268877"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87086415"
 landingContent:
 - title: 关于 Azure 逻辑应用
   linkLists:
@@ -26,7 +26,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: Azure 逻辑应用的连接器
-      url: /azure/connectors/apis-list
+      url: ../connectors/apis-list.md
     - text: 安排重复工作流
       url: concepts-schedule-automated-recurring-tasks-workflows.md
     - text: B2B 企业集成
@@ -34,7 +34,7 @@ landingContent:
   - linkListType: learn
     links:
     - text: Azure 逻辑应用简介
-      url: https://docs.microsoft.com/learn/modules/intro-to-logic-apps/
+      url: /learn/modules/intro-to-logic-apps/
   - linkListType: video
     links:
     - text: 介绍 Azure 逻辑应用
@@ -56,7 +56,7 @@ landingContent:
   - linkListType: learn
     links:
     - text: 自动路由并处理数据
-      url: https://docs.microsoft.com/learn/modules/route-and-process-data-logic-apps
+      url: /learn/modules/route-and-process-data-logic-apps
   - linkListType: tutorial
     links:
     - text: 创建基于计划的工作流
@@ -74,7 +74,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: 什么是本地数据网关？
-      url: https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem
+      url: /data-integration/gateway/service-gateway-onprem
     - text: 什么是集成服务环境？
       url: connect-virtual-network-vnet-isolated-environment-overview.md
   - linkListType: how-to-guide
@@ -102,11 +102,11 @@ landingContent:
   - linkListType: learn
     links:
     - text: 示例：连接到集成帐户并通过 Azure DevOps 进行部署
-      url: https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/
+      url: /samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/
   - linkListType: architecture
     links:
     - text: 基本企业集成
-      url: https://docs.microsoft.com/azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration
+      url: /azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration
 - title: 管理和保护逻辑应用
   linkLists:
   - linkListType: how-to-guide
@@ -134,11 +134,11 @@ landingContent:
   - linkListType: learn
     links:
     - text: 使用资源管理器模板创建和部署
-      url: https://docs.microsoft.com/learn/modules/create-deploy-logic-apps-using-arm-templates/
+      url: /learn/modules/create-deploy-logic-apps-using-arm-templates/
     - text: 示例：连接到 Azure 存储并通过 Azure DevOps 进行部署
-      url: https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/
+      url: /samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/
     - text: 示例：连接到 Azure 服务总线并通过 Azure DevOps 进行部署
-      url: https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/
+      url: /samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/
 - title: 详细信息
   linkLists:
   - linkListType: reference
@@ -150,6 +150,6 @@ landingContent:
     - text: 工作流定义语言架构
       url: logic-apps-workflow-definition-language.md
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.logicapp/
+      url: /powershell/module/az.logicapp/
     - text: REST API
-      url: https://docs.microsoft.com/rest/api/logic/
+      url: /rest/api/logic/
