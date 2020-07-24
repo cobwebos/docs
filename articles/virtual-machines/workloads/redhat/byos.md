@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/10/2020
 ms.author: alsin
-ms.openlocfilehash: af541faaf9529cec81c60cb1a879161d66e34a7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54d703b8a493610174f00844cd0736f65f3ee541
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84694376"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052158"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>在 Azure 中 Red Hat Enterprise Linux 自带订阅金牌映像
 
@@ -68,7 +69,7 @@ Red Hat Enterprise Linux （RHEL）映像可通过即用即付或自带订阅（
 
 ## <a name="use-the-red-hat-gold-images-from-the-azure-cli"></a>使用 Azure CLI 中的 Red Hat 黄金映像
 
-以下说明将指导你完成使用 Azure CLI 的 RHEL VM 的初始部署过程。 这些说明假定已[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+以下说明将指导你完成使用 Azure CLI 的 RHEL VM 的初始部署过程。 这些说明假定已[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 >[!IMPORTANT]
 >请确保在发布者、产品/服务、计划和映像引用中为以下所有命令使用所有小写字母。
@@ -199,7 +200,7 @@ Red Hat Enterprise Linux （RHEL）映像可通过即用即付或自带订阅（
 
     在这种情况下，请与 Microsoft 或 Red Hat 联系以启用你的订阅。
 
-- 如果从 RHEL BYOS 映像修改快照并尝试将该自定义映像发布到[共享映像库](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries)，则必须提供与快照原始源相匹配的计划信息。 例如，命令可能如下所示：
+- 如果从 RHEL BYOS 映像修改快照并尝试将该自定义映像发布到[共享映像库](../../linux/shared-image-galleries.md)，则必须提供与快照原始源相匹配的计划信息。 例如，命令可能如下所示：
 
     ```azurecli
     az vm create –image \

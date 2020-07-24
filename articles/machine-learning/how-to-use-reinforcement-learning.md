@@ -1,7 +1,7 @@
 ---
-title: " (预览) 训练和部署强化学习模型。"
+title: 训练和部署强化学习模型（预览）。
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习强化学习 (预览版) 训练 RL 代理以 play。
+description: 了解如何使用 Azure 机器学习强化学习（预览版）训练 RL 代理商的游戏。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
 ms.custom: tracking-python
-ms.openlocfilehash: b918369f68c3b0047213c24f1d4666fd0593cf30
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 95a404fd71c79842976bf5f01994f06c04856476
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203281"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047928"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure 机器学习的强化学习（预览版）
 
@@ -168,6 +168,8 @@ else:
      # For a more detailed view of current AmlCompute status, use get_status()
     print(head_compute_target.get_status().serialize())
 ```
+
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
 ### <a name="worker-computing-cluster"></a>工作器节点计算群集
 

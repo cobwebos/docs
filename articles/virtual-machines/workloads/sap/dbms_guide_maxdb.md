@@ -15,11 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a7343bcf6ba4388beda118b242fa47d13baaa89
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 842ab7a1562c731e790ba03b2fd5acdc3987a90d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022584"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051959"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Azure VM 上的 SAP MaxDB、liveCache 和内容服务器部署
 
@@ -73,7 +74,7 @@ ms.locfileid: "84022584"
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
-[azure-ps]:/powershell/azureps-cmdlets-docs
+[azure-ps]:/powershell/azure/
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
@@ -308,7 +309,7 @@ ms.locfileid: "84022584"
 
 
 
-本文档介绍在 Azure IaaS 中部署 MaxDB、liveCache 和内容服务器时要考虑的多个不同领域。 在阅读本文档之前，应该已经阅读了[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署注意事项](dbms_guide_general.md)文档以及 [Azure 上的 SAP 工作负荷文档](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)中的其他指南。 
+本文档介绍在 Azure IaaS 中部署 MaxDB、liveCache 和内容服务器时要考虑的多个不同领域。 在阅读本文档之前，应该已经阅读了[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署注意事项](dbms_guide_general.md)文档以及 [Azure 上的 SAP 工作负荷文档](./get-started.md)中的其他指南。 
 
 ## <a name="specifics-for-the-sap-maxdb-deployments-on-windows"></a>有关 Windows 上的 SAP MaxDB 部署的具体信息
 ### <a name="sap-maxdb-version-support-on-azure"></a>Azure 上的 SAP MaxDB 版本支持
@@ -328,7 +329,7 @@ SAP 目前支持 SAP MaxDB 版本 7.9 或更高版本，该版本可以与 Azure
 
 ### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>在 Azure VM 中安装 SAP 的 SAP MaxDB 配置准则
 #### <a name="storage-configuration"></a><a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>存储配置
-适用于 SAP MaxDB 的 Azure 存储最佳做法遵循[用于 RDBMS 部署的 VM 的存储结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)一章中所述的常规建议。
+适用于 SAP MaxDB 的 Azure 存储最佳做法遵循[用于 RDBMS 部署的 VM 的存储结构](./dbms_guide_general.md#65fa79d6-a85f-47ee-890b-22e794f51a64)一章中所述的常规建议。
 
 > [!IMPORTANT]
 > 与其他数据库一样，SAP MaxDB 也有数据和日志文件。 不过，在 SAP MaxDB 术语中，正确的词汇是“卷”（不是“文件”）。 例如，有 SAP MaxDB 数据卷和日志卷。 请勿与 OS 磁盘卷混淆。 

@@ -1,5 +1,5 @@
 ---
-title: 将 GitOps 用于启用了 Azure Arc 的群集配置（预览版）
+title: 在启用了 Arc 的 Kubernetes 群集（预览版）上使用 GitOps 部署配置
 services: azure-arc
 ms.service: azure-arc
 ms.date: 05/19/2020
@@ -8,24 +8,24 @@ author: mlearned
 ms.author: mlearned
 description: 将 GitOps 用于启用了 Azure Arc 的群集配置（预览版）
 keywords: GitOps, Kubernetes, K8s, Azure, Arc, Azure Kubernetes Service, containers
-ms.openlocfilehash: 890b35aac33a6fa207a71d76143997a1b93116bf
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: e25fdf3a51b3e9264c85707df31d3a4d107b25ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856980"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049975"
 ---
-# <a name="use-gitops-for-an-azure-arc-enabled--configuration-preview"></a>将 GitOps 用于启用了 Azure Arc 的配置（预览版）
+# <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>在启用了 Arc 的 Kubernetes 群集（预览版）上使用 GitOps 部署配置
 
-此体系结构使用 GitOps 工作流来配置群集和部署应用程序。 配置在 yaml 文件中以声明方式进行描述，并存储在 Git 中。 代理监视 Git 存储库中的更改并应用这些更改。  同一代理还定期确保群集状态与 Git 存储库中声明的状态匹配，并在发生任何非管理的更改时将群集返回到所需状态。
+GitOps 是在 Git 存储库中声明所需的 Kubernetes 配置状态（部署、命名空间等），然后使用运算符将这些配置部署到群集的轮询和请求部署。 本文档介绍如何在启用了 Azure Arc 的 Kubernetes 群集上设置此类工作流。
 
-群集与一个或多个 Git 存储库之间的连接在 Azure 资源管理器中作为 `sourceControlConfiguration` 扩展资源进行跟踪。 `sourceControlConfiguration` 资源属性表示 Kubernetes 资源应从 Git 流向群集的位置和方式。 `sourceControlConfiguration` 数据以静态加密方式存储在 CosmosDb 数据库中，以确保数据保密性。
+群集与一个或多个 Git 存储库之间的连接在 Azure 资源管理器中作为 `sourceControlConfiguration` 扩展资源进行跟踪。 `sourceControlConfiguration` 资源属性表示 Kubernetes 资源应从 Git 流向群集的位置和方式。 `sourceControlConfiguration`数据以加密的静态存储在 Azure Cosmos DB 数据库中，以确保数据的保密性。
 
-群集中运行的已启用 Azure Arc 的 Kubernetes `config-agent` 负责监视新的或更新的 `sourceControlConfiguration` 资源，并自动安排添加、更新或删除 Git 存储库链接。
-
-可以使用相同的模式来管理更大的群集集合，这些群集可能部署在各异构环境中。 例如，你可能具有一个存储库，该存储库为组织定义基线配置，并一次性将其应用于数十个 Kubernetes 群集。
+`config-agent`群集中运行的负责在启用了 Azure Arc 的 Kubernetes 资源上监视新的或更新的 `sourceControlConfiguration` 扩展资源，部署 flux 运算符来查看 Git 存储库，以及传播对的任何更新 `sourceControlConfiguration` 。 甚至可以 `sourceControlConfiguration` `namespace` 在启用了同一个 Azure Arc Kubernetes 群集的范围内创建多个资源，以实现多租户。 在这种情况下，每个运算符只能将配置部署到其各自的命名空间。
 
 Git 存储库可以包含任何有效的 Kubernetes 资源，包括命名空间、ConfigMap、部署、Daemonset 等。它还可能包含用于部署应用程序的 Helm 图表。 一组常见的场景包括为组织定义基线配置，其中可能包括常见的 RBAC 角色和绑定、监视或日志记录代理或者群集范围的服务。
+
+可以使用相同的模式来管理更大的群集集合，这些群集可能会在异类环境中进行部署。 例如，你可能具有一个存储库，该存储库为组织定义基线配置，并一次性将其应用于数十个 Kubernetes 群集。 [Azure 策略可以](use-azure-policy.md)在 `sourceControlConfiguration` 作用域（订阅或资源组）下的所有启用了 Azure Arc 的 Kubernetes 资源上自动创建具有一组特定参数的。
 
 本入门指南将指导你应用一组具有群集管理作用域的配置。
 
@@ -39,12 +39,12 @@ Git 存储库可以包含任何有效的 Kubernetes 资源，包括命名空间�
 部署：**** ****`cluster-config/azure-vote`
 ConfigMap：`team-a/endpoints`****
 
-`config-agent` 每隔 30 秒轮询一次 Azure 以查找新的或更新的 `sourceControlConfiguration`。  这是 `config-agent` 选取新配置或更新配置所需的最长时间。
-如果要关联专用存储库，请确保还完成了[应用专用 git 存储库中的配置](#apply-configuration-from-a-private-git-repository)中的步骤
+`config-agent` `sourceControlConfiguration` 每30秒轮询一次 Azure，这是 `config-agent` 选取新的或更新的配置所需的最长时间。
+如果要将专用存储库与相关联 `sourceControlConfiguration` ，请确保还完成了[从私有 git 存储库应用配置](#apply-configuration-from-a-private-git-repository)中的步骤。
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
 
-让我们使用适用于 `k8sconfiguration` 的 Azure CLI 扩展，将已连接的群集链接到[示例 git 存储库](https://github.com/Azure/arc-k8s-demo)。 将此配置命名为 `cluster-config`，指示代理在 `cluster-config` 命名空间中部署运算符，并授予运算符 `cluster-admin` 权限。
+使用的 Azure CLI 扩展 `k8sconfiguration` ，让我们将连接的群集链接到[示例 git 存储库](https://github.com/Azure/arc-k8s-demo)。 将此配置命名为 `cluster-config`，指示代理在 `cluster-config` 命名空间中部署运算符，并授予运算符 `cluster-admin` 权限。
 
 ```console
 az k8sconfiguration create \
@@ -117,7 +117,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 若要自定义配置的创建，可使用以下几个附加参数：
 
-`--enable-helm-operator`：可选开关，用于启用对 Helm 图表部署的支持。 此配置默认已禁用。
+`--enable-helm-operator`：可选开关，用于启用对 Helm 图表部署的支持。
 
 `--helm-operator-chart-values`：Helm 运算符（若已启用）的可选图表值。  例如“--set helm.versions=v3”。
 
@@ -125,7 +125,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 `--operator-namespace`：运算符命名空间的可选名称。 默认值：“default”
 
-`--operator-params`：运算符的可选参数。 必须用单引号括起来。 例如： ```--operator-params='--git-readonly --git-path=releases/prod' ```
+`--operator-params`：运算符的可选参数。 必须用单引号括起来。 例如： ```--operator-params='--git-readonly --git-path=releases' ```
 
 --operator-params 中支持的选项
 
@@ -143,13 +143,16 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 * 如果未设置“--git-user”或“--git-email”（这意味着你不希望 Flux 向存储库进行写入），则将自动设置 --git-readonly（如果尚未设置）。
 
-* 如果 enableHelmOperator 为 true，则 operatorInstanceName + operatorNamespace 字符串的组合长度不能超过 47 个字符。  如果超出此限制，则将出现以下错误：
+* 如果 enableHelmOperator 为 true，则 operatorInstanceName + operatorNamespace 字符串的组合长度不能超过 47 个字符。  如果无法遵守此限制，您将收到以下错误：
 
    ```console
    {"OperatorMessage":"Error: {failed to install chart from path [helm-operator] for release [<operatorInstanceName>-helm-<operatorNamespace>]: err [release name \"<operatorInstanceName>-helm-<operatorNamespace>\" exceeds max length of 53]} occurred while doing the operation : {Installing the operator} on the config","ClusterState":"Installing the operator"}
    ```
 
-有关详细信息，请参阅 [Flux 文档](https://aka.ms/FluxcdReadme)。
+有关详细信息，请参阅[Flux 文档](https://aka.ms/FluxcdReadme)。
+
+> [!TIP]
+> 可以在 Azure 门户上创建 sourceControlConfiguration，也可以在启用了 Azure Arc Kubernetes 资源边栏选项卡的 "**配置**" 选项卡下创建。
 
 ## <a name="validate-the-sourcecontrolconfiguration"></a>验证 sourceControlConfiguration
 
@@ -195,7 +198,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
     * `config-agent` 创建目标命名空间
     * `config-agent` 准备具有适当权限（`cluster` 或 `namespace` 作用域）的 Kubernetes 服务帐户
     * `config-agent` 部署 `flux` 的一个实例
-    * `flux` 生成 SSH 密钥并记录公钥
+    * `flux`生成 SSH 密钥并记录公钥
 1. `config-agent` 将状态报告回 `sourceControlConfiguration`
 
 在预配过程中，`sourceControlConfiguration` 会经历几次状态更改。 使用上面的 `az k8sconfiguration show ...` 命令监视进度：
@@ -206,7 +209,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>应用专用 git 存储库中的配置
 
-如果使用专用 git 存储库，则需要再执行一个任务来关闭循环：需要将 `flux` 生成的公钥添加为存储库中的部署密钥。
+如果你使用的是私有 git 存储库，则需要执行一个以上的任务来关闭循环：将生成的公钥 `flux` 作为**部署密钥**添加到存储库中。
 
 使用 Azure CLI 获取公钥
 
@@ -232,7 +235,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 5. 粘贴公钥（删除任何周围的引号）
 6. 单击“添加密钥”
 
-有关如何管理部署密钥的详细信息，请参阅 GitHub 文档。
+有关如何管理这些密钥的详细信息，请参阅 GitHub 文档。
 
 如果使用 Azure DevOps 存储库，请将密钥添加到 SSH 密钥
 
@@ -292,9 +295,11 @@ kubectl -n itops get all
 
 ## <a name="delete-a-configuration"></a>删除配置
 
-可以使用 Azure CLI 或 Azure 门户删除 `sourceControlConfiguration`。  启动“删除”命令后，将在 Azure 中立即删除 `sourceControlConfiguration` 资源，但从群集中完全删除关联的对象可能需要长达 1 个小时的时间（我们提供的一个积压工作项可缩短此时间）。 如果 `sourceControlConfiguration` 是使用命名空间作用域创建的，则不会从群集中删除该命名空间（以免破坏在该命名空间中创建的任何其他资源）。
+`sourceControlConfiguration`使用 Azure CLI 或 Azure 门户删除。  启动删除命令后， `sourceControlConfiguration` 会立即在 Azure 中删除资源，但从群集中完全删除关联的对象可能需要1小时的时间（我们有一个积压工作（backlog）项来减少此延迟时间）。
 
-请注意，删除 `sourceControlConfiguration` 时，不会删除由于跟踪的 git 存储库部署而对群集所做的任何更改。
+> [!NOTE]
+> 创建具有命名空间作用域的 sourceControlConfiguration 后，具有 `edit` 命名空间上的角色绑定的用户可以在此命名空间上部署工作负荷。 `sourceControlConfiguration`删除具有命名空间作用域的这一命名空间时，命名空间保持不变且不会被删除，以避免破坏这些其他工作负荷。
+> 删除后，不会删除对由跟踪的 git 存储库中的部署所做的任何更改 `sourceControlConfiguration` 。
 
 ```console
 az k8sconfiguration delete --name '<config name>' -g '<resource group name>' --cluster-name '<cluster name>' --cluster-type connectedClusters
@@ -308,5 +313,5 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 ## <a name="next-steps"></a>后续步骤
 
-- [将 GitOps 与 Helm 结合使用以进行群集配置](./use-gitops-with-helm.md)
-- [使用 Azure Policy 来管理群集配置](./use-azure-policy.md)
+- [结合使用 Helm 和源代码管理配置](./use-gitops-with-helm.md)
+- [使用 Azure Policy 控制群集配置](./use-azure-policy.md)

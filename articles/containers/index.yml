@@ -6,12 +6,12 @@ metadata:
   title: Microsoft Azure 容器服务文档 | Microsoft Docs
   description: 了解如何使用 Azure 容器服务来管理和开发基于云的容器应用程序。
   ms.topic: hub-page
-  ms.openlocfilehash: c83db23fda2fe5895a8d4400a26be463ec8d2d6a
-  ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+  ms.openlocfilehash: 7618bedf711554fbd4428ceb6c88817477b82e6d
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/11/2020
-  ms.locfileid: "86260699"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87031875"
 highlightedContent:
   items:
   - itemType: whats-new
@@ -41,7 +41,7 @@ conceptualContent:
       text: 查看详细信息
   - title: 测试和开发 AKS 应用程序
     links:
-    - url: ../dev-spaces/how-dev-spaces-works-local-process-kubernetes.md
+    - url: /visualstudio/containers/overview-local-process-kubernetes
       itemType: concept
       text: 如何通过本地进程使用 Kubernetes
     - url: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md

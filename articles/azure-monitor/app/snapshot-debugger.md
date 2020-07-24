@@ -4,11 +4,12 @@ description: 生产 .NET 应用中出现异常时会自动收集调试快照
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.reviewer: cweining
-ms.openlocfilehash: 18f43ba90157d71ec9488b6858fa9f41b2ee42a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c920ab019d5d802ea862ab923297670da766a456
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692013"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049688"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 应用中发生异常时的调试快照
 发生异常时，可自动从实时 Web 应用程序收集调试快照。 快照显示发生异常时源代码和变量的状态。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的 Snapshot Debugger 可以监视来自 Web 应用的异常遥测。 它可收集常出现的异常的调试快照，为诊断生产中的问题提供所需信息。 请将[快照收集器 NuGet 包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)添加到应用程序，并按需在 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 中配置收集参数。快照显示在 Application Insights 门户中的[异常](../../azure-monitor/app/asp-net-exceptions.md)区域中。
@@ -88,7 +89,7 @@ ms.locfileid: "84692013"
 每次应用程序调用 [TrackException](../../azure-monitor/app/asp-net-exceptions.md#exceptions) 时，快照收集器都会根据引发的异常类型和引发方法计算问题 ID。
 每次应用程序调用 TrackException 时，计数器都会递增以获得相应的问题 ID。 当计数器达到 `ThresholdForSnapshotting` 值时，问题 ID 将添加到收集计划。
 
-快照收集器还通过订阅 [AppDomain.CurrentDomain.FirstChanceException](https://docs.microsoft.com/dotnet/api/system.appdomain.firstchanceexception) 事件来监视引发的异常。 当该事件触发时，将计算异常的问题 ID 并将其与收集计划中的问题 ID 进行比较。
+快照收集器还通过订阅 [AppDomain.CurrentDomain.FirstChanceException](/dotnet/api/system.appdomain.firstchanceexception) 事件来监视引发的异常。 当该事件触发时，将计算异常的问题 ID 并将其与收集计划中的问题 ID 进行比较。
 如果匹配，则将创建正在运行的进程的快照。 将为快照分配一个唯一标识符，并使用该标识符标记异常。 FirstChanceException 处理程序返回后，将按正常方式处理引发的异常。 最终，异常会再次到达 TrackException 方法，该方法将异常与快照标识符一起报告给 Application Insights。
 
 主进程会继续运行并向用户提供流量，几乎没有中断。 同时，快照将传递给快照上传程序进程。 快照上传程序会创建一个小型转储并将其连同任何相关的符号 (.pdb) 文件一起上传到 Application Insights。
@@ -116,7 +117,7 @@ ms.locfileid: "84692013"
 对于 Azure 计算和其他类型，请确保符号文件位于主应用程序 .dll 所在的同一文件夹（通常为 `wwwroot/bin`）中，或者可通过当前路径访问。
 
 > [!NOTE]
-> 有关可用的不同符号选项的详细信息，请参阅[Visual Studio 文档](https://docs.microsoft.com/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
+> 有关可用的不同符号选项的详细信息，请参阅[Visual Studio 文档](/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
 )。 为了获得最佳结果，建议使用 "完整"、"可移植" 或 "嵌入"。
 
 ### <a name="optimized-builds"></a>优化的内部版本
@@ -137,6 +138,6 @@ ms.locfileid: "84692013"
 
 Application Insights 快照调试器之外的功能：
  
-* [在代码中设置捕捉点](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications)，无需等待出现异常即可获取快照。
+* [在代码中设置捕捉点](/visualstudio/debugger/debug-live-azure-applications)，无需等待出现异常即可获取快照。
 * [诊断 Web 应用中的异常](../../azure-monitor/app/asp-net-exceptions.md)介绍了如何在 Application Insights 中显示更多的异常。
 * [智能检测](../../azure-monitor/app/proactive-diagnostics.md)可自动发现性能异常。

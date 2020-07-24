@@ -14,20 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 95d8d819aa1b418b4a7ec736cef64cb989f7e37b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbd460b584789aa7d40de9ba6430ff6202c3764b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74885613"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052521"
 ---
 # <a name="streaming-endpoints-overview"></a>流式处理终结点概述  
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 在 Microsoft Azure 媒体服务 (AMS)中，“流式处理终结点”**** 表示一个流服务，该服务可以直接将内容分发给客户端播放器应用程序，也可以传递给内容分发网络 (CDN) 以进一步分发。 媒体服务还提供无缝 Azure CDN 集成。 StreamingEndpoint 服务的出站流可以是媒体服务帐户中的实时流、点播视频或渐进式下载的资产。 每个 Azure 媒体服务帐户均包括一个默认的流式处理终结点。 可以在帐户下创建其他流式处理终结点。 有两个版本的流式处理终结点：1.0 和 2.0。 从 2017 年 1 月 10 日开始，任何新创建的 AMS 帐户将包括版本 2.0 的**默认**流式处理终结点。 可添加到此帐户的其他流式处理终结点也是版本 2.0。 此更改不会影响现有帐户；现有流式处理终结点将是版本 1.0，可以升级到版本 2.0。 此更改将导致行为、计费和功能更改（有关详细信息，请参阅下面所述的**流式处理类型和版本**部分）。
 
-Azure 媒体服务已将以下属性添加到流式处理终结点实体： **CdnProvider**、 **CdnProfile**、 **StreamingEndpointVersion**。 有关这些属性的详细概述，请参阅[本主题](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)。 
+Azure 媒体服务已将以下属性添加到流式处理终结点实体： **CdnProvider**、 **CdnProfile**、 **StreamingEndpointVersion**。 有关这些属性的详细概述，请参阅[本主题](/rest/api/media/operations/streamingendpoint)。 
 
 用户创建 Azure 媒体服务帐户时，将为用户创建一个处于“已停止”**** 状态的默认标准流式处理终结点。 无法删除默认流式处理终结点。 根据目标区域中的 Azure CDN 可用性，默认情况下新创建的默认流式处理终结点还提供“StandardVerizon”CDN 提供程序集成。 
                 
@@ -76,7 +77,7 @@ Azure 媒体服务已将以下属性添加到流式处理终结点实体： **Cd
 
 |类型|StreamingEndpointVersion|ScaleUnits|CDN|计费|
 |--------------|----------|-----------------|-----------------|-----------------|
-|经典|1.0|0|不可用|免费|
+|经典|1.0|0|NA|免费|
 |标准流式处理终结点（预览版）|2.0|0|是|付费|
 |高级流单元|1.0|>0|是|已付|
 |高级流单元|2.0|>0|是|已付|
@@ -101,7 +102,7 @@ IP 筛选/G20/自定义主机<sup>1</sup>|是|是
 
 ## <a name="migration-between-types"></a>类型之间的迁移
 
-From | 功能 | 操作
+From | 收件人 | 操作
 ---|---|---
 经典|Standard|需要选择加入
 经典|高级| 缩放（额外流单元）
@@ -121,4 +122,3 @@ From | 功能 | 操作
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

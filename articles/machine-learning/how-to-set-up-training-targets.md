@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: c87812e665617f3ccfe48db3a0cca2ceac67f0bc
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 0f3682338c9373f3ba30c8b32ea5cf4132c18949
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147443"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048274"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>设置并使用模型训练的计算目标 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -98,12 +98,11 @@ Azure 机器学习计算群集是一种托管计算基础结构，可让你轻�
 
 可以使用 Azure 机器学习计算在云中的 CPU 或 GPU 计算节点群集之间分配训练进程。 有关包括 GPU 的 VM 大小的详细信息，请参阅 [GPU 优化的虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)。 
 
-Azure 机器学习计算对可以分配的核心数等属性实施默认限制。 有关详细信息，请参阅[管理和请求 Azure 资源的配额](https://docs.microsoft.com/azure/machine-learning/how-to-manage-quotas)。
+Azure 机器学习计算对可以分配的核心数等属性实施默认限制。 有关详细信息，请参阅[管理和请求 Azure 资源的配额](/how-to-manage-quotas.md)。
 
-还可以选择使用低优先级 VM 来运行部分或所有工作负载。 这些 VM 的可用性未得到保证，在使用时可能会被占用。 对于被占用的作业，在重新可用时将重新启动，而不是直接续用。  与普通 VM 相比，低优先级 VM 提供折扣费率，请参阅[计划和管理成本](https://docs.microsoft.com/azure/machine-learning/concept-plan-manage-cost)。
 
 > [!TIP]
-> 一般情况下，只要所需核心数方面的配额足够，群集就可以扩展到多达 100 个节点。 默认情况下，设置群集时会启用群集节点之间的通信（例如，为了支持 MPI 作业）。 但是，还可以将群集扩展到数千个节点，只需[提交支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，并请求将你的订阅、工作区或特定群集加入允许列表以禁用节点间通信即可。 
+> 一般情况下，只要所需核心数方面的配额足够，群集就可以扩展到多达 100 个节点。 默认情况下，设置群集时会启用群集节点之间的通信（例如，为了支持 MPI 作业）。 不过，你可以通过简单地[提出支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)并请求允许列出你的订阅、工作区或特定群集来禁用节点间通信，从而将群集缩放到1000次的节点。 
 
 可在不同的运行中重复使用 Azure 机器学习计算。 计算可与工作区中的其他用户共享，并在每次运行之后保留，它会根据提交的运行数以及群集上设置的 max_nodes 自动纵向扩展或缩减节点。 min_nodes 设置控制可用节点数的下限。
 
@@ -118,14 +117,38 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
 
    还可以在创建 Azure 机器学习计算时配置多个高级属性。 使用这些属性可以创建固定大小的持久性群集，或者在订阅中的现有 Azure 虚拟网络内创建持久性群集。  有关详细信息，请参阅 [AmlCompute 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
     )。
-    
-   或者，可以[在 Azure 机器学习工作室](#portal-create)中创建并附加持久性 Azure 机器学习计算资源。
 
+    或者，可以[在 Azure 机器学习工作室](#portal-create)中创建并附加持久性 Azure 机器学习计算资源。
+
+   
 1. **配置**：为持久性计算目标创建运行配置。
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
 
 附加计算并配置运行后，下一步是[提交训练运行](#submit)。
+
+ ### <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a>降低计算群集成本
+
+你还可以选择使用[低优先级 vm](concept-plan-manage-cost.md#low-pri-vm)来运行部分或全部工作负荷。 这些 VM 的可用性未得到保证，在使用时可能会被占用。 对于被占用的作业，在重新可用时将重新启动，而不是直接续用。 
+
+使用以下任一方法指定低优先级 VM：
+    
+* 在工作室中，在创建 VM 时选择“低优先级”****。
+    
+* 使用 Python SDK，在预配配置中设置 `vm_priority` 属性。  
+    
+    ```python
+    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
+                                                                vm_priority='lowpriority',
+                                                                max_nodes=4)
+    ```
+    
+* 使用 CLI 设置 `vm-priority`：
+    
+    ```azurecli-interactive
+    az ml computetarget create amlcompute --name lowpriocluster --vm-size Standard_NC6 --max-nodes 5 --vm-priority lowpriority
+    ```
+
 
 
 ### <a name="azure-machine-learning-compute-instance"></a><a id="instance"></a>Azure 机器学习计算实例
@@ -138,7 +161,7 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
 
 1. **创建和附加**： 
     
-    [！笔记本-python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb？ name = create_instance) ]
+    [！笔记本-python [] （~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb？ name = create_instance）]
 
 1. **配置**：创建运行配置。
     
@@ -337,7 +360,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 1. 填写表单。 提供必需属性的值，尤其是“VM 系列”，以及用于运转计算的**最大节点数**。  
 
-1. 选择“创建”。
+1. 选择“创建” 。
 
 
 1. 通过在列表中选择计算目标来查看创建操作的状态：

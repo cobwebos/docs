@@ -10,11 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: 8fefeb162dd6f036c21485715dd680972823fbaa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11bcfa21b1a12df945a0dec6dc291c912a0e99c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84677468"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047896"
 ---
 # <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>在 Azure 机器学习训练运行中使用身份验证凭据机密
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -51,7 +52,7 @@ keyvault.set_secret(name="mysecret", value = my_secret)
 
 ## <a name="get-secrets"></a>获取机密
 
-在本地代码中，可以使用 [`get_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#get-secret-name-) 方法通过名称来获取机密值。
+在本地代码中，可以使用 [`get_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#get-secret-name-) 方法通过名称获取机密值。
 
 对于提交了 [`Experiment.submit`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py#submit-config--tags-none----kwargs-) 的运行，请将 [`get_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-secret-name-) 方法与 [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) 类结合使用。 由于提交的运行知晓其工作区，因此此方法会绕过工作区实例化，直接返回密钥值。
 

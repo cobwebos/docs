@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/19/2020
-ms.openlocfilehash: 676a0471ad4321f37cf6dd854d6d98083723f5de
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8f827d3e983a50589975eca59808bd1471fe4810
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116686"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047591"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>合作伙伴中心内的商业市场门户概述
 
@@ -28,9 +28,9 @@ ms.locfileid: "86116686"
 
 ## <a name="migration-from-the-cloud-partner-portal"></a>从云合作伙伴门户迁移
 
-合作伙伴中心在不断发展，以便在我们与软件提供商之间的关系的各个方面进行更好的整合。 在这个发展过程中，我们已经将所有商业市场产品/服务管理从[云合作伙伴门户](https://cloudpartner.azure.com/)迁移到合作伙伴中心。
+合作伙伴中心在不断发展，以便在我们与软件提供商之间的关系的各个方面进行更好的整合。 作为此演化的一部分，我们已将所有商用 marketplace 产品/服务管理从云合作伙伴门户（CPP）迁移到合作伙伴中心。
 
-以前使用云合作伙伴门户的现有发布者将通过合作伙伴中心获得熟悉且更好的直观用户体验。 系统会将用户流畅地引导到适当的位置。 此合作伙伴体验升级不会影响客户。
+以前使用了 CPP 的现有发布者将发现使用合作伙伴中心的熟悉但更直观的用户体验。 系统会将用户流畅地引导到适当的位置。 此合作伙伴体验升级不会影响客户。
 
 ### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>发布和产品/服务管理用户体验方面的改进
 

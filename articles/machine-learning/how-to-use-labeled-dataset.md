@@ -8,14 +8,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 80932ebbedeca3f5e0a1b4cc2e68d73ef5b0d63a
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 9aec584271975982e1d58cc3525faee0d403e1af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025720"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048092"
 ---
-# <a name="create-and-explore-azure-machine-learning-dataset-with-labels-preview"></a>创建和浏览带标签的 Azure 机器学习数据集（预览）
+# <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>创建和浏览带标签的 Azure 机器学习数据集
 
 在本文中，你将学习如何从 Azure 机器学习数据标记项目中导出数据标签，并将其加载为常用格式，例如，加载为 Pandas 数据帧以用于浏览数据，或者加载为 Torchvision 数据集以用于转换图像。 
 

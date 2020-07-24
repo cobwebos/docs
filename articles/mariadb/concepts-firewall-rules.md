@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 743e3f50d747993250399493d97fc2becab19319
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/17/2020
+ms.openlocfilehash: 4b5898629c373e31d94ad09ca4af66de0428a7a2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79532036"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047605"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Azure Database for MariaDB 服务器防火墙规则
 在指定哪些计算机具有访问权限之前，防火墙将禁止所有对数据库服务器的访问。 防火墙基于每个请求的起始 IP 地址授予对服务器的访问权限。
@@ -67,6 +67,11 @@ ms.locfileid: "79532036"
    * 改为获取用户的客户端计算机的静态 IP 地址，并将该 IP 地址作为防火墙规则添加。
 
 * **服务器 IP 似乎为公共 IP：** 到 Azure Database for MariaDB 服务器的连接通过可公开访问的 Azure 网关进行路由。 但是，实际的服务器 IP 受防火墙保护。 有关详细信息，请参阅[连接体系结构文章](concepts-connectivity-architecture.md)。 
+
+* **无法使用允许的 IP 从 Azure 资源进行连接：** 检查是否为要连接的子网启用了**Microsoft .sql**服务终结点。 如果启用了**Sql** ，则表明你只希望在该子网上使用[VNet 服务终结点规则](concepts-data-access-security-vnet.md)。
+
+   例如，如果要从已启用了**Microsoft .sql**但没有相应 VNet 规则的子网中的 Azure VM 进行连接，则可能会看到以下错误：`FATAL: Client from Azure Virtual Networks is not allowed to access the server`
+
 
 ## <a name="next-steps"></a>后续步骤
 - [使用 Azure 门户创建和管理 Azure Database for MariaDB 防火墙规则](./howto-manage-firewall-portal.md)

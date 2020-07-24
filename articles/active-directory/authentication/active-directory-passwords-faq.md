@@ -5,21 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/15/2020
+ms.date: 07/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7997359fb29afc876b184b811e0409cfdbeb265a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 2eff16e0d1aa242ed4ca8b427c7af8e8defa7804
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826462"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051295"
 ---
-# <a name="password-management-frequently-asked-questions"></a>密码管理常见问题
+# <a name="self-service-password-reset-frequently-asked-questions"></a>自助服务密码重置常见问题
 
-下面是与密码重置相关的所有方面的一些常见问题解答 (FAQ)。
+下面是与自助服务密码重置相关的所有方面的一些常见问题（FAQ）。
 
 如果遇到 Azure Active Directory (Azure AD) 和自助密码重置 (SSPR) 的一般性问题，而在本文中又找不到答案，可以在 [Azure Active Directory 的 Microsoft Q&A 问题页](https://docs.microsoft.com/answers/topics/azure-active-directory.html)中请求社区帮助。 社区的成员包括工程师、产品经理、MVP 和其他 IT 专业人员。
 
@@ -37,7 +38,7 @@ ms.locfileid: "83826462"
 
   > **答:** 是的。 只要已经启用密码重置功能并且用户已获得许可，他们就可以访问密码重置注册门户(https://aka.ms/ssprsetup) 来注册其身份验证信息。 用户也可通过访问面板 (https://myapps.microsoft.com) 来注册。 若要通过访问面板来注册，需选择个人资料图片，然后选择“个人资料”，再选择“注册密码重置”选项。 
   >
-  >
+  > 如果启用[组合注册](concept-registration-mfa-sspr-combined.md)，用户可以同时注册 SSPR 和 Azure 多重身份验证。
 * **问：如果为某个组启用密码重置，然后决定为每个人启用它，我的用户是否需要重新注册？**
 
   > **答:** 不是。 已填充身份验证数据的用户不需要重新注册。

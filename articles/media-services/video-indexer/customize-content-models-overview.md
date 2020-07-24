@@ -9,16 +9,17 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
 ms.date: 06/26/2019
-ms.author: anzaman
-ms.openlocfilehash: 09e6fd8530ddb1745a92c6f31f4d5a5843a2ac10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: kumud
+ms.openlocfilehash: 937a73847e867e826b3a577adf0c85184d7a93d0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76513161"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047233"
 ---
 # <a name="customizing-content-models-in-video-indexer"></a>自定义视频索引器中的内容模型
 
-视频索引器允许你自定义其一些模型，使其适应你的特定用例。 这些模型包含[品牌](customize-brands-model-overview.md)、[语言](customize-language-model-overview.md)和[人员](customize-person-model-overview.md)。 可以使用视频索引器网站或 API 轻松地自定义这些模型。
+视频索引器允许你自定义其某些模型，以适合你的特定用例。 这些模型包含[品牌](customize-brands-model-overview.md)、[语言](customize-language-model-overview.md)和[人员](customize-person-model-overview.md)。 可以使用视频索引器网站或 API 轻松自定义这些模型。
 
 本文提供了说明每种类型的自定义优点的文章的链接。 本文还将链接到介绍如何实现每个模型的自定义的操作方法指南。
 
@@ -38,7 +39,7 @@ ms.locfileid: "76513161"
 * [使用视频索引器网站自定义语言模型](customize-language-model-with-website.md)
 * [使用视频索引器 API 自定义语言模型](customize-language-model-with-api.md)
  
-## <a name="person-model"></a>人员模型
+## <a name="person-model"></a>人物模型
 
 * [自定义人员模型概述](customize-person-model-overview.md)
 * [使用视频索引器网站自定义人员模型](customize-person-model-with-website.md)

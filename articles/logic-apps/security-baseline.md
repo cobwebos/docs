@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d27abfda789a9bb1bd5479b059355703388333f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1e547cf3f08e49ce707cd079778588fb6be5acb5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520640"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048430"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>逻辑应用的 Azure 安全基线
 
@@ -643,7 +643,7 @@ Microsoft 管理 Azure 逻辑应用的底层基础结构，并实施了严格控
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用基于角色的访问控制来控制对资源的访问
 
-**指南**：你可以仅允许特定用户或组运行特定任务，如管理、编辑和查看逻辑应用。 若要控制其权限，请使用 Azure 基于角色的访问控制 (RBAC)，以便能够为 Azure 订阅中的成员分配自定义角色或内置角色：
+**指南**：你可以仅允许特定用户或组运行特定任务，如管理、编辑和查看逻辑应用。 要控制其权限，请使用 Azure 基于角色的访问控制（Azure RBAC），以便可以将自定义或内置角色分配给 Azure 订阅中的成员：
 - 逻辑应用参与者：允许管理逻辑应用，但不允许更改其访问权限。
 - 逻辑应用操作员：允许你读取、启用和禁用逻辑应用，但不能对其进行编辑或更新。
 

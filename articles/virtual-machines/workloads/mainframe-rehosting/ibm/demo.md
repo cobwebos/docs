@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 83f7f16d8406744a10451e8d488b7719845c525d
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: b2509539551b3991690e6d0313e069ae015eb892
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135949"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052401"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>在 IBM zD&T v1 中设置应用程序开发人员受控分发（ADCD）
 
@@ -72,7 +72,7 @@ ms.locfileid: "86135949"
 
 2. 选择 " **ssh** " 选项卡，然后将 SSH 命令复制到剪贴板。
 
-3. 使用你的凭据和所选的[SSH 客户端](/azure/virtual-machines/linux/use-remote-desktop)登录到你的 VM。 此演示使用适用于 Windows 10 的 Linux 扩展，将 bash shell 添加到 Windows 命令提示符。 PuTTY 也是如此。
+3. 使用你的凭据和所选的[SSH 客户端](../../../linux/use-remote-desktop.md)登录到你的 VM。 此演示使用适用于 Windows 10 的 Linux 扩展，将 bash shell 添加到 Windows 命令提示符。 PuTTY 也是如此。
 
 4. 登录时，创建一个目录来上传 IBM 包。 请记住，Linux 区分大小写。 例如，此演示假定将包上传到：
 
@@ -184,13 +184,13 @@ ms.locfileid: "86135949"
 > [!NOTE]
 > 如果收到一条错误消息，指出没有足够的磁盘空间，请注意，区域需要 151 Gb。
 
-祝贺你！ 你现在正在 Azure 上运行 IBM 主机环境。
+祝贺！ 你现在正在 Azure 上运行 IBM 主机环境。
 
-## <a name="learn-more"></a>了解更多
+## <a name="learn-more"></a>了解更多信息
 
-- [大型机迁移：误解和事实](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
-- [Azure 上的 IBM DB2 pureScale](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)
-- [故障排除](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [大型机迁移：误解和事实](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
+- [Azure 上的 IBM DB2 pureScale](../../../linux/ibm-db2-purescale-azure.md)
+- [疑难解答](../../../troubleshooting/index.yml)
 - [揭密大型机到 Azure 的迁移](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

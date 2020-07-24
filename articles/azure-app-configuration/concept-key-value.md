@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.openlocfilehash: b8f8bda52be63a4176411855dd9ff9919e9e31f5
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 14ff1a00b40d956f369b1978f15f01f113c50270
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856687"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050145"
 ---
 # <a name="keys-and-values"></a>键和值
 
@@ -77,7 +77,7 @@ Azure 应用配置将配置数据存储为键值对。 键/值对是开发人员
 
 每个键值通过其键以及可以为 `null` 的标签进行唯一标识。 可以通过指定模式来查询应用程序配置存储区中的键值。 应用程序配置存储区会返回与模式及其对应的值和属性匹配的所有键值。 在 REST API 调用应用配置时使用以下键模式：
 
-| 键 | |
+| 键 | 描述 |
 |---|---|
 | 省略 `key` 或 `key=*` | 匹配所有密钥 |
 | `key=abc` | 完全匹配键名称 abc**** |
@@ -86,7 +86,7 @@ Azure 应用配置将配置数据存储为键值对。 键/值对是开发人员
 
 还可以包含以下标签模式：
 
-| Label | |
+| Label | 说明 |
 |---|---|
 | 省略 `label` 或 `label=*` | 匹配任何标签，包括 `null` |
 | `label=%00` | 匹配 `null` 标签 |

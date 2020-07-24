@@ -6,17 +6,17 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7c9dd20aea410aecb34811ca6e08e0f641be292b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa9b186e74ed3b8fe5496afd5b21c54f50537d5f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84148338"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049792"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>排查启用或查看 Application Insights Profiler 时遇到的问题
 
-## <a name="active-issues"></a>未解决的问题
-
-* Azure 应用服务现在支持对 ASP.NET Core 3.x 应用程序的分析。
+> [!CAUTION]
+> Azure App Service 上的 ASP.NET Core 应用程序正在运行探查器 bug。 我们有一个修补程序，但需要花费几周的时间来部署全球。 可以通过将 Application Insights SDK 添加到应用程序中，使用[此处](./asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio)的说明来解决该错误。
 
 ## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>常规故障排除
 
@@ -67,7 +67,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 * Web 应用必须已启用 Application Insights。
 * Web 应用必须具有以下应用设置：
 
-    |应用设置    | Value    |
+    |应用设置    | 值    |
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights 资源的 iKey    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
@@ -75,7 +75,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 
 
 * ApplicationInsightsProfiler3 webjob 必须正在运行。 若要检查 webjob：
-   1. 转到 [Kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/)。
+   1. 转到 [Kudu](/archive/blogs/cdndevs/the-kudu-debug-console-azure-websites-best-kept-secret)。
    1. 在“工具”菜单中，选择“WebJobs 仪表板” 。  
       “WebJobs”窗格随即打开。 
    
@@ -99,7 +99,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 1. 将“Always On”设置为“打开” 。
 1. 创建以下应用设置：
 
-    |应用设置    | Value    |
+    |应用设置    | 值    |
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights 资源的 iKey    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
@@ -193,11 +193,3 @@ Profiler 在 Web 应用中以连续 Web 作业的形式运行。 可以在 [Azur
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png
 [profiler-webjob]:./media/profiler-troubleshooting/Profiler-webjob.png
 [profiler-webjob-log]:./media/profiler-troubleshooting/Profiler-webjob-log.png
-
-
-
-
-
-
-
-

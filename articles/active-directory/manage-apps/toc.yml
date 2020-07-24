@@ -38,48 +38,44 @@
       href: application-management-fundamentals.md
     - name: 应用管理常用方案
       href: common-scenarios.md
-    - name: 云应用和单一登录
+    - name: 计划云应用集成
       items:
-        - name: 计划云应用集成
-          items:
-            - name: 应用集成入门
-              href: plan-an-application-integration.md
-            - name: 规划访问面板部署
-              href: access-panel-deployment-plan.md
-            - name: 开发人员指南
-              href: developer-guidance-for-integrating-applications.md
-        - name: 单一登录
-          items:
-            - name: 为多租户应用程序启用 SSO
-              href: isv-sso-content.md
-            - name: 为多租户应用程序创建 Azure 租户
-              href: isv-tenant-multi-tenant-app.md
-            - name: 选择多租户联合身份验证
-              href: isv-choose-multi-tenant-federation.md
-            - name: 为多租户应用程序创建文档
-              href: isv-create-sso-documentation.md
-            - name: 计划单一登录部署
-              href: plan-sso-deployment.md
+        - name: 应用集成入门
+          href: plan-an-application-integration.md
+        - name: 规划访问面板部署
+          href: access-panel-deployment-plan.md
+        - name: 开发人员指南
+          href: developer-guidance-for-integrating-applications.md
+    - name: 单一登录
+      items:
+        - name: 为多租户应用程序启用 SSO
+          href: isv-sso-content.md
+        - name: 为多租户应用程序创建 Azure 租户
+          href: isv-tenant-multi-tenant-app.md
+        - name: 选择多租户联合身份验证
+          href: isv-choose-multi-tenant-federation.md
+        - name: 为多租户应用程序创建文档
+          href: isv-create-sso-documentation.md
+        - name: 计划单一登录部署
+          href: plan-sso-deployment.md
         - name: 一键式 SSO
-          items:
-            - name: 什么是一键式 SSO
-              href: one-click-sso-tutorial.md
-        - name: 应用程序安全性
-          items:
-            - name: 应用访问选项
-              href: what-is-access-management.md
-            - name: 证书签名选项
-              href: certificate-signing-options.md
-            - name: 管理证书
-              href: manage-certificates-for-federated-single-sign-on.md
-            - name: 租户限制
-              href: tenant-restrictions.md
-            - name: 配置 SAML 令牌加密
-              href: howto-saml-token-encryption.md
-            - name: 最终用户门户
-              href: end-user-experiences.md
-    - name: 云应用可见性和控制
-      href: cloud-app-security.md
+          href: one-click-sso-tutorial.md
+    - name: 应用程序安全性
+      items:
+        - name: 应用访问选项
+          href: what-is-access-management.md
+        - name: 证书签名选项
+          href: certificate-signing-options.md
+        - name: 管理证书
+          href: manage-certificates-for-federated-single-sign-on.md
+        - name: 租户限制
+          href: tenant-restrictions.md
+        - name: 配置 SAML 令牌加密
+          href: howto-saml-token-encryption.md
+        - name: 最终用户门户
+          href: end-user-experiences.md
+        - name: 云应用可见性和控制
+          href: cloud-app-security.md
     - name: 本地应用的应用程序代理
       items:
         - name: 应用程序代理

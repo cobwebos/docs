@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2679bc8a9ddf9f748cd0e9d51e1534d120484d0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29190cee748db17caee32497de5512bee736bae0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84267940"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047716"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>如何规定高级分析数据处理的方案和计划
 
@@ -144,7 +145,7 @@ ms.locfileid: "84267940"
 
 ### <a name="what-tools-should-you-use-for-data-analysis"></a>应使用什么工具进行数据分析？
 
-* [Microsoft Azure PowerShell](/powershell/azure/overview) -一种脚本语言，用于使用脚本语言管理 Azure 资源
+* [Microsoft Azure PowerShell](/powershell/azure/) -一种脚本语言，用于使用脚本语言管理 Azure 资源
 * [Azure 机器学习工作室](../studio/what-is-ml-studio.md)
 * [Revolution Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)

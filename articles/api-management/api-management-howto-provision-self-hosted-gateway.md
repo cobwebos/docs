@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
-ms.openlocfilehash: 2870a654faad4e760a9d022488cb2c4c406cbeab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e79248e16ca21ae84022f8ac7f280d93f489c6a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82203125"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050343"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>在 Azure API 管理中预配自承载网关
 
@@ -31,7 +31,7 @@ ms.locfileid: "82203125"
 
 ## <a name="provision-a-self-hosted-gateway"></a>预配自托管网关
 
-1. 从“设置”下选择“网关”。 
+1. 选择 "**部署和基础结构**" 下的**网关**。
 2. 单击“+ 添加”。
 3. 输入网关的“名称”和“区域”。 
 > [!TIP]

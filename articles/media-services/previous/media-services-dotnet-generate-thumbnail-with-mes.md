@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3c5e22c14d0df46ddac9a503f43df8d54c3c93d5
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d9b4766b42704da8c81704822f263a6ddf46ce5a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964747"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052842"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>如何使 Media Encoder Standard 通过 .NET 来生成缩略图 
 
@@ -282,7 +282,7 @@ ms.locfileid: "85964747"
 上述所有示例都在讨论如何提交仅生成图像的编码任务，但还可以将视频/音频编码与缩略图生成结合起来。 以下的 JSON 和 XML 预设指示 Media Encoder Standard 在编码过程中生成一个缩略图  。
 
 ### <a name="json-preset"></a><a id="json"></a>JSON 预设
-有关架构的信息，请参阅[此](https://msdn.microsoft.com/library/mt269962.aspx)文。
+有关架构的信息，请参阅[此](/azure/media-services/previous/media-services-mes-schema)文。
 
 ```json
     {
@@ -347,7 +347,7 @@ ms.locfileid: "85964747"
 ```
 
 ### <a name="xml-preset"></a><a id="xml"></a>XML 预设
-有关架构的信息，请参阅[此](https://msdn.microsoft.com/library/mt269962.aspx)文。
+有关架构的信息，请参阅[此](/azure/media-services/previous/media-services-mes-schema)文。
 
 ```csharp
     <?xml version="1.0" encoding="utf-16"?>
@@ -576,4 +576,3 @@ namespace EncodeAndGenerateThumbnails
 
 ## <a name="see-also"></a>另请参阅
 [媒体服务编码概述](media-services-encode-asset.md)
-

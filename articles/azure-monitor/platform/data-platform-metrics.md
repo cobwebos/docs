@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 839347ce0a04cc1ca1bf16c68e0ccc36fcf0f7fc
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 2f82d5d4dcb29504abbfa6881fa825b6d8efce0d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200801"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049532"
 ---
 # <a name="metrics-in-azure-monitor"></a>Azure Monitor 中的指标
 
@@ -29,15 +29,15 @@ Azure Monitor 中的指标是轻型数据，能够支持准实时方案，这让
 ## <a name="what-can-you-do-with-azure-monitor-metrics"></a>Azure Monitor 指标有何用途？
 下表列出了 Azure Monitor 中的指标数据的不同使用方式。
 
-|  | 说明 |
+|  | 描述 |
 |:---|:---|
 | **分析** | 使用[指标资源管理器](metrics-charts.md)分析图表上收集的指标，并比较来自不同资源的指标。 |
 | **可视化** | 将指标资源管理器中的图表固定到 [Azure 仪表板](../learn/tutorial-app-dashboards.md)。<br>创建[工作簿](../platform/workbooks-overview.md)，以与交互式报表中的多组数据合并。将查询结果导出到 [Grafana](grafana-plugin.md)，以利用它的仪表板，并与其他数据源合并。 |
 | **警报** | 配置[指标警报规则](alerts-metric.md)，以在指标值超过阈值时发送通知或执行[自动化操作](action-groups.md)。 |
 | **自动化** |  使用[自动缩放](autoscale-overview.md)并根据超过阈值的指标值来增加或减少资源。 |
-| **导出** | [将指标路由到日志](resource-logs-collect-storage.md)，以将 Azure Monitor 指标中的数据与 Azure Monitor 日志中的数据一起进行分析，并将指标值存储超过 93 天。<br>将指标流式传输到[事件中心](stream-monitoring-data-event-hubs.md)，以路由到外部系统。 |
-| **检索** | 使用 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 通过命令行来访问指标值<br>使用 [REST API](rest-api-walkthrough.md) 通过自定义应用来访问指标值。<br>使用 [CLI](/cli/azure/monitor/metrics) 通过命令行来访问指标值。 |
-| **存档** | 出于符合性、审核或脱机报告目的，对资源的性能或运行状况历史记录进行 [存档](..//learn/tutorial-archive-data.md)。 |
+| **导出** | [将指标路由到日志](./resource-logs.md#send-to-azure-storage)，以将 Azure Monitor 指标中的数据与 Azure Monitor 日志中的数据一起进行分析，并将指标值存储超过 93 天。<br>将指标流式传输到[事件中心](stream-monitoring-data-event-hubs.md)，以路由到外部系统。 |
+| **检索** | 使用 [PowerShell cmdlet](/powershell/module/az.applicationinsights) 通过命令行来访问指标值<br>使用 [REST API](rest-api-walkthrough.md) 通过自定义应用来访问指标值。<br>使用 [CLI](/cli/azure/monitor/metrics) 通过命令行来访问指标值。 |
+| **存档** | 出于符合性、审核或脱机报告目的，对资源的性能或运行状况历史记录进行 [存档](./platform-logs-overview.md)。 |
 
 ## <a name="how-is-data-in-azure-monitor-metrics-structured"></a>Azure Monitor 指标的数据结构是怎样的？
 Azure Monitor 指标收集的数据存储在更适合分析带有时间戳的数据的时序数据库中。 每组指标值都是具有以下属性的时序：
@@ -56,7 +56,7 @@ Azure Monitor 指标收集的数据存储在更适合分析带有时间戳的数
 
 ### <a name="network-throughput"></a>网络吞吐量
 
-| 时间戳     | 指标值 |
+| Timestamp     | 指标值 |
 | ------------- |:-------------|
 | 8/9/2017 8:14 | 1,331.8 Kbps |
 | 8/9/2017 8:15 | 1,141.4 Kbps |
@@ -66,7 +66,7 @@ Azure Monitor 指标收集的数据存储在更适合分析带有时间戳的数
 
 ### <a name="network-throughput--two-dimensions-ip-and-direction"></a>网络吞吐量 + 两个维度（“IP 地址”和“方向”）
 
-| 时间戳     | “IP”维度   | “方向”维度 | 指标值|
+| Timestamp     | “IP”维度   | “方向”维度 | 指标值|
 | ------------- |:-----------------|:------------------- |:-----------|
 | 8/9/2017 8:14 | IP="192.168.5.2" | Direction="Send"    | 646.5 Kbps |
 | 8/9/2017 8:14 | IP="192.168.5.2" | Direction="Receive" | 420.1 Kbps |
@@ -108,7 +108,7 @@ Azure Monitor 从三个基本源收集指标。 只要在 Azure Monitor 指标�
 
 
 > [!NOTE]
-> 可以[将 Azure Monitor 资源的平台指标发送到 Log Analytics 工作区](resource-logs-collect-storage.md)，以了解长期趋势。
+> 可以[将 Azure Monitor 资源的平台指标发送到 Log Analytics 工作区](./resource-logs.md#send-to-azure-storage)，以了解长期趋势。
 
 
 

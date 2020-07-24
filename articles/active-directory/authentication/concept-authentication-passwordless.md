@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a0295a73d325d8de7673b9a66c7047a80d82b09
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 105f911b97e01a4b05673fc67b51c677df15eb89
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981849"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051284"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的无密码 authentication 选项
 
-多重身份验证（MFA）是保护组织的一种好方法，但用户通常会在必须记住其密码的情况下使用额外的安全层。 无密码身份验证方法更为方便，因为密码会被删除并替换为你拥有的内容，以及你或你知道的内容。
+多重身份验证（MFA）等功能是保护组织的一种好方法，但用户通常会在必须记住其密码的情况下使用额外的安全层。 无密码身份验证方法更为方便，因为密码会被删除并替换为你拥有的内容，以及你或你知道的内容。
 
 | 身份验证  | 你拥有的东西 | 你或知道的内容 |
 | --- | --- | --- |
@@ -28,19 +28,19 @@ ms.locfileid: "85981849"
 
 当涉及身份验证时，每个组织都有不同的需求。 Microsoft 提供了以下三个无密码 authentication 选项，这些选项与 Azure Active Directory （Azure AD）集成：
 
-- Windows Hello for Business
+- Windows Hello 企业版
 - Microsoft Authenticator 应用
 - FIDO2 安全密钥
 
 ![身份验证：安全性和便利性](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
-## <a name="windows-hello-for-business"></a>Windows Hello for Business
+## <a name="windows-hello-for-business"></a>Windows Hello 企业版
 
-Windows Hello 企业版非常适合拥有自己的指定 Windows PC 的信息工作者。 生物识别和 PIN 直接绑定到用户的 PC，这会阻止除所有者之外的任何人访问。 利用公钥基础结构（PKI）集成和单一登录（SSO）的内置支持，Windows Hello 企业版提供了一种方便的方法，可在本地和云中无缝访问公司资源。
+Windows Hello 企业版非常适合拥有自己的指定 Windows PC 的信息工作者。 生物识别和 PIN 凭据直接绑定到用户的 PC，这会阻止除所有者之外的任何人访问。 利用公钥基础结构（PKI）集成和单一登录（SSO）的内置支持，Windows Hello 企业版提供了一种方便的方法，可在本地和云中无缝访问公司资源。
 
 ![使用 Windows Hello 企业版进行用户登录的示例](./media/concept-authentication-passwordless/windows-hellow-sign-in.jpeg)
 
-以下步骤演示了如何使用 Azure Active Directory 的登录过程。
+以下步骤演示了如何使用 Azure AD 的登录过程：
 
 ![概述用户登录 Windows Hello 企业版所涉及步骤的示意图](./media/concept-authentication-passwordless/windows-hello-flow.png)
 
@@ -56,7 +56,7 @@ Windows Hello 企业版[规划指南](https://docs.microsoft.com/windows/securit
 
 ## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator 应用
 
-允许员工的电话成为无密码的身份验证方法。 除密码外，你可能已使用 Microsoft Authenticator 应用作为便利的多重身份验证选项。 你还可以使用验证器应用作为无密码选项。
+你还可以允许员工的电话成为无密码的身份验证方法。 除密码外，你可能已使用 Microsoft Authenticator 应用作为便利的多重身份验证选项。 你还可以使用验证器应用作为无密码选项。
 
 ![通过 Microsoft Authenticator 应用登录 Microsoft Edge](./media/concept-authentication-passwordless/concept-web-sign-in-microsoft-authenticator-app.png)
 
@@ -75,11 +75,18 @@ Windows Hello 企业版[规划指南](https://docs.microsoft.com/windows/securit
 1. Nonce 用私钥签名并发送回 Azure AD。
 1. Azure AD 执行公钥/私钥验证并返回令牌。
 
+若要开始无密码登录，请完成以下操作方法：
+
+> [!div class="nextstepaction"]
+> [启用使用验证器应用的无密码签名](howto-authentication-passwordless-phone.md)
+
 ## <a name="fido2-security-keys"></a>FIDO2 安全密钥
 
 FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，可采用任何形式。 Fast Identity Online （FIDO）是无密码 authentication 的开放标准。 FIDO 允许用户和组织利用标准登录到其资源，而无需使用外部安全密钥或设备内置的平台密钥。
 
-对于公共预览版，员工可以使用安全密钥登录到其 Azure AD 或混合 Azure AD 加入 Windows 10 设备，并对其云和本地资源进行单一登录。 用户还可以登录到受支持的浏览器。 对于安全敏感的企业而言，FIDO2 安全密钥是一个不错的选择，或者不愿意或无法使用其电话作为第二个因素的方案或员工。
+员工可以使用安全密钥登录到其 Azure AD 或混合 Azure AD 加入 Windows 10 设备，并对其云和本地资源进行单一登录。 用户还可以登录到受支持的浏览器。 对于安全敏感的企业而言，FIDO2 安全密钥是一个不错的选择，或者不愿意或无法使用其电话作为第二个因素的方案或员工。
+
+通过 FIDO2 安全密钥登录到 Azure AD 当前为预览版。
 
 ![使用安全密钥登录 Microsoft Edge](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -127,7 +134,15 @@ FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，�
 
 如果你是供应商，并且想要在此支持的设备列表上获取设备，请联系 [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com) 。
 
+若要开始 FIDO2 安全密钥，请完成以下操作方法：
+
+> [!div class="nextstepaction"]
+> [启用使用 FIDO2 安全密钥的无密码签名](howto-authentication-passwordless-security-key.md)
+
+
 ## <a name="what-scenarios-work-with-the-preview"></a>使用预览版的情况如何？
+
+Azure AD 无密码登录功能当前以预览版提供。 请注意以下事项：
 
 - 管理员可以为其租户启用无密码 authentication 方法
 - 对于每个方法，管理员可面向所有用户或选择其租户中的用户/组
@@ -142,7 +157,7 @@ FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，�
 
 下面是在选择 Microsoft 无密码技术时要考虑的一些因素：
 
-||**Windows Hello for Business**|**无密码 Microsoft Authenticator 应用登录**|**FIDO2 安全密钥**|
+||**Windows Hello 企业版**|**无密码 Microsoft Authenticator 应用登录**|**FIDO2 安全密钥**|
 |:-|:-|:-|:-|
 |**必备组件**| Windows 10 版本 1809 或更高版本<br>Azure Active Directory| Microsoft Authenticator 应用<br>手机（运行 Android 6.0 或更高版本的 iOS 和 Android 设备。）|Windows 10 版本 1809 或更高版本<br>Azure Active Directory|
 |**模式**|平台|软件|硬件|
@@ -162,12 +177,12 @@ FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，�
 
 ## <a name="next-steps"></a>后续步骤
 
-[在组织中启用 FIDO2 security key 无密码选项](howto-authentication-passwordless-security-key.md)
+若要开始 Azure AD 中的无密码，请完成以下操作方法之一：
 
-[在组织中启用基于手机的无密码选项](howto-authentication-passwordless-phone.md)
+* [启用 FIDO2 安全密钥无密码登录](howto-authentication-passwordless-security-key.md)
+* [使用验证器应用启用基于手机的无密码登录](howto-authentication-passwordless-phone.md)
 
 ### <a name="external-links"></a>外部链接
 
-[FIDO 联盟](https://fidoalliance.org/)
-
-[FIDO2 CTAP 规范](https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-client-to-authenticator-protocol-v2.0-id-20180227.html)
+* [FIDO 联盟](https://fidoalliance.org/)
+* [FIDO2 CTAP 规范](https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-client-to-authenticator-protocol-v2.0-id-20180227.html)

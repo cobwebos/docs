@@ -6,15 +6,16 @@ ms.suite: integration
 ms.reviewer: apseth, divswa, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: bd6b05489d13f835de4dce2aa3d885132285efca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c00d2e4f622bcfad7b2468013336f0d936e318c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987602"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048667"
 ---
 # <a name="send-related-messages-in-order-by-using-a-sequential-convoy-in-azure-logic-apps-with-azure-service-bus"></a>使用 azure 服务总线在 Azure 逻辑应用中使用顺序保护按顺序发送相关消息
 
-如果需要按特定顺序发送相关消息，可以[在使用 Azure](../logic-apps/logic-apps-overview.md) [服务总线连接器](../connectors/connectors-create-api-servicebus.md)时遵循[*顺序保护*模式](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy)。 相关消息有一个属性，该属性定义这些消息之间的关系，例如服务总线中[会话](../service-bus-messaging/message-sessions.md)的 ID。
+如果需要按特定顺序发送相关消息，可以[在使用 Azure](../logic-apps/logic-apps-overview.md) [服务总线连接器](../connectors/connectors-create-api-servicebus.md)时遵循[*顺序保护*模式](/azure/architecture/patterns/sequential-convoy)。 相关消息有一个属性，该属性定义这些消息之间的关系，例如服务总线中[会话](../service-bus-messaging/message-sessions.md)的 ID。
 
 例如，假设有10条消息用于名为 "Session 1" 的会话，并且有5个 "会话 2" 会话消息，它们都发送到相同的[服务总线队列](../service-bus-messaging/service-bus-queues-topics-subscriptions.md)。 你可以创建一个逻辑应用，用于处理来自队列的消息，以便来自 "会话 1" 的所有消息都由单个触发器运行处理，而来自 "Session 2" 的所有消息都由下一个触发器运行处理。
 
@@ -28,7 +29,7 @@ ms.locfileid: "84987602"
 
 若要查看此模板的 JSON 文件，请参阅[GitHub： service-bus-sessions.json](https://github.com/Azure/logicapps/blob/master/templates/service-bus-sessions.json)。
 
-有关详细信息，请参阅[顺序保护模式-Azure 体系结构云设计模式](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy)。
+有关详细信息，请参阅[顺序保护模式-Azure 体系结构云设计模式](/azure/architecture/patterns/sequential-convoy)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,7 +47,7 @@ ms.locfileid: "84987602"
 
 如果不确定逻辑应用是否有权访问服务总线命名空间，请确认这些权限。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 找到并选择服务总线*命名空间*。
+1. 登录 [Azure 门户](https://portal.azure.com)。 找到并选择服务总线*命名空间*。
 
 1. 在命名空间菜单上的“设置”下，选择“共享访问策略”。******** 在 "**声明**" 下，检查是否拥有该命名空间的 "**管理**" 权限。
 
@@ -116,7 +117,7 @@ ms.locfileid: "84987602"
 
 ![模板的顶层工作流](./media/send-related-messages-sequential-convoy/template-top-level-flow.png)
 
-| “属性” | 描述 |
+| 名称 | 描述 |
 |------|-------------|
 | **`When a message is received in a queue (peek-lock)`** | 根据指定的重复周期，此 Service Bus 触发器检查指定的服务总线队列中是否有任何消息。 如果队列中存在消息，则触发器将触发，这会创建和运行工作流实例。 <p><p>字词*查看-锁定*意味着触发器发送请求，以从队列中检索消息。 如果消息存在，触发器将检索并锁定消息，以便在锁定期限到期之前，不会对该消息进行其他处理。 有关详细信息，请[初始化会话](#initialize-session)。 |
 | **`Init isDone`** | 此 " [**初始化变量**" 操作](../logic-apps/logic-apps-create-variables-store-values.md#initialize-variable)会创建一个设置为的布尔变量， `false` 并指示何时满足以下条件： <p><p>-会话中没有更多可供读取的消息。 <br>-不再需要续订会话锁，就能完成当前工作流实例。 <p><p>有关详细信息，请参阅[初始化会话](#initialize-session)。 |
@@ -132,7 +133,7 @@ ms.locfileid: "84987602"
 
 !["Try" 作用域操作工作流](./media/send-related-messages-sequential-convoy/try-scope-action.png)
 
-| “属性” | 描述 |
+| 名称 | 描述 |
 |------|-------------|
 | **`Send initial message to topic`** | 您可以将此操作替换为您要处理队列中会话的第一条消息的任何操作。 会话 ID 指定会话。 <p><p>对于此模板，服务总线操作会将第一条消息发送到服务总线主题。 有关详细信息，请参阅[处理初始消息](#handle-initial-message)。 |
 | （并行分支） | 此[并行分支操作](../logic-apps/logic-apps-control-flow-branches.md)创建两个路径： <p><p>-分支 #1：继续处理该消息。 有关详细信息，请参阅[Branch #1：完成队列中的第一条消息](#complete-initial-message)。 <p><p>-分支 #2：如果出现问题，则放弃消息，并通过另一个触发器运行来释放分拣。 有关详细信息，请参阅[Branch #2：放弃队列中的初始消息](#abandon-initial-message)。 <p><p>这两个路径稍后会在**队列的关闭会话中加入，并成功执行**操作，在下一行中进行了介绍。 |
@@ -143,7 +144,7 @@ ms.locfileid: "84987602"
 
 #### <a name="branch-1-complete-initial-message-in-queue"></a>分支 #1：在队列中完成初始消息
 
-| “属性” | 描述 |
+| 名称 | 描述 |
 |------|-------------|
 | `Complete initial message in queue` | 此服务总线操作将成功检索的消息标记为完成，并从队列中删除该消息，以防重新处理。 有关详细信息，请参阅[处理初始消息](#handle-initial-message)。 |
 | `While there are more messages for the session in the queue` | 这[**直到**循环](../logic-apps/logic-apps-control-flow-loops.md#until-loop)在消息存在或一小时后继续获取消息。 有关此循环中的操作的详细信息，请参阅在[队列中存在会话的更多消息](#while-more-messages-for-session)。 |
@@ -167,7 +168,7 @@ ms.locfileid: "84987602"
 
 !["Catch" 范围操作工作流](./media/send-related-messages-sequential-convoy/catch-scope-action.png)
 
-| “属性” | 描述 |
+| 名称 | 描述 |
 |------|-------------|
 | **`Close a session in a queue and fail`** | 此服务总线操作会关闭队列中的会话，以便会话锁定不会保持打开状态。 有关详细信息，请参阅[关闭队列中的会话和失败](#close-session-fail)。 |
 | **`Find failure msg from 'Try' block`** | 此[**筛选数组**操作](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action) `Try` 根据指定的条件，从作用域内的所有操作创建一个数组。 在这种情况下，此操作将返回导致状态的操作的输出 `Failed` 。 有关详细信息，请参阅[从 "Try" 块中查找失败消息](#find-failure-message)。 |
@@ -192,7 +193,7 @@ ms.locfileid: "84987602"
   > [!NOTE]
   > 最初，轮询间隔设置为三分钟，以便逻辑应用不会比预期运行更频繁，从而导致产生意外的计费费用。 理想情况下，将 "间隔" 和 "频率" 设置为30秒，以便逻辑应用在消息到达时立即触发。
 
-  | Property | 此方案需要 | “值” | 说明 |
+  | properties | 此方案需要 | 值 | 说明 |
   |----------|----------------------------|-------|-------------|
   | **队列名称** | 是 | <*队列名称*> | 你以前创建的服务总线队列的名称。 此示例使用 "Fabrikam-服务总线队列"。 |
   | **队列类型** | 是 | **主页** | 主服务总线队列 |
@@ -201,7 +202,7 @@ ms.locfileid: "84987602"
   | **频率** | 是 | “秒”、“分钟”、“小时”、“天”、“周”或“月”************************ | 用于检查消息的重复周期的时间单位。 <p>**提示**：若要添加**时区或****开始时间**，请从 "**添加新参数**" 列表中选择这些属性。 |
   |||||
 
-  有关触发器的详细信息，请参阅[服务总线-在队列中收到消息时（速览-lock）](https://docs.microsoft.com/connectors/servicebus/#when-a-message-is-received-in-a-queue-(peek-lock))。 触发器输出[ServiceBusMessage](https://docs.microsoft.com/connectors/servicebus/#servicebusmessage)。
+  有关触发器的详细信息，请参阅[服务总线-在队列中收到消息时（速览-lock）](/connectors/servicebus/#when-a-message-is-received-in-a-queue-(peek-lock))。 触发器输出[ServiceBusMessage](/connectors/servicebus/#servicebusmessage)。
 
 初始化会话后，工作流将使用 "**初始化变量**" 操作创建一个最初设置为的布尔变量， `false` 并指示何时满足以下条件： 
 
@@ -415,10 +416,10 @@ ms.locfileid: "84987602"
 
 ## <a name="save-and-run-logic-app"></a>保存并运行逻辑应用
 
-完成模板后，现在可以保存逻辑应用。 在设计器工具栏上，选择“保存”。
+完成模板后，现在可以保存逻辑应用。 在设计器工具栏上选择“保存”。
 
 若要测试逻辑应用，请将消息发送到服务总线队列。 
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解有关[服务总线连接器的触发器和操作](https://docs.microsoft.com/connectors/servicebus/)的详细信息
+* 了解有关[服务总线连接器的触发器和操作](/connectors/servicebus/)的详细信息

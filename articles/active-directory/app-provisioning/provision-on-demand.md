@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/23/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 78a56b6a848139c47d7934a47decb126afe00b7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7799e873afb117481cebafd982df59a3267f4405
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85297522"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051552"
 ---
 # <a name="on-demand-provisioning"></a>按需预配
 按需预配允许用户在几秒钟内将用户预配到应用程序。 您可以使用此功能快速排查配置问题、验证您定义的表达式、测试范围筛选器以及更多内容。 
@@ -30,6 +30,8 @@ ms.locfileid: "85297522"
 5. 单击 **"按需预配"**。
 6. 按名字、姓氏、显示名称、用户主体名称或电子邮件搜索用户。
 7. 选择页面底部的 "预配"。
+
+:::image type="content" source="media/provision-on-demand/on-demand-provision-user.jpg" alt-text="按需预配用户。":::
 
 ## <a name="understanding-the-provisioning-steps"></a>了解预配步骤
 按需预配功能尝试在预配用户时显示预配服务所需的步骤。 预配用户通常需要5个步骤，并且按需预配体验中将显示以下一个或多个步骤。
@@ -88,6 +90,8 @@ ms.locfileid: "85297522"
 ### <a name="step-5-perform-action"></a>步骤5：执行操作
 最后，预配服务会采取措施，如创建、更新、删除或跳过用户。 
 
+:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="成功预配用户。":::
+
 **查看详细信息**
 
 "查看详细信息" 部分显示在目标应用程序中修改的属性。 这表示预配服务活动和导出的属性的最终输出。 如果此步骤失败，则显示的属性表示预配服务尝试修改的属性。  
@@ -96,17 +100,17 @@ ms.locfileid: "85297522"
 * 导出更改失败可能会有很大差异。 有关常见故障，请查看配置日志[文档](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs#error-codes)。
 
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 **是否需要关闭预配以使用按需预配？** 对于使用长生存期持有者令牌或用户名和密码进行授权的应用程序，无需执行其他步骤。 使用 OAuth 进行授权的应用程序当前要求在使用按需预配之前停止预配作业。 应用程序（如 G Suite、Box、Workplace by Facebook 和时差）属于此类别。 正在进行的工作使所有应用程序都可以运行按需预配，而不必停止预配。 
 
 **按需预配需要多长时间？** 通常不超过30秒。 
 
 ## <a name="known-limitations"></a>已知限制
-目前有几个已知的限制。 请在[UserVoice](https://aka.ms/appprovisioningfeaturerequest)上发布，以便我们可以更好地确定要进行的改进的优先级。 请注意，这些限制特定于按需预配功能。 有关应用程序是否支持预配组、删除等操作的详细信息，请查看应用程序教程。 
+目前有几个已知的限制。 请在[用户语音](https://aka.ms/appprovisioningfeaturerequest)上发布，以便我们可以更好地确定要进行的改进的优先级。 请注意，这些限制特定于按需预配功能。 有关应用程序是否支持预配组、删除等操作的详细信息，请查看应用程序教程。 
 
 * 应用程序 Workday、AWS 和 SuccessFactors 不支持按需预配。
 * 不支持按需预配组和角色。
-* 不支持禁用或删除用户和组。
+* 按需预配支持禁用从应用程序中取消分配的用户，但不支持禁用或删除已从 Azure Active Directory 中禁用或删除的用户（搜索用户时，这些用户将不会显示）。
 
 ## <a name="next-steps"></a>后续步骤
 

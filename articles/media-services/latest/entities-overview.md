@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 01/21/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 7e4f1141a9d4bd58451782e8412063a22565556d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9f9463cd1cac49e36ea52cafaf4d07f4e709ca7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80584530"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053260"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>媒体服务实体的筛选、排序和分页
 
@@ -158,34 +158,34 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 |实体名称|属性名称|筛选器|订单|
 |---|---|---|---|
-|[资产](https://docs.microsoft.com/rest/api/media/assets/)|name|`eq`、`gt`、`lt`、`ge`、`le`|`asc` 和 `desc`|
+|[资产](/rest/api/media/assets/)|name|`eq`、`gt`、`lt`、`ge`、`le`|`asc` 和 `desc`|
 ||properties.alternateId |`eq`||
 ||properties.assetId |`eq`||
 ||properties.created| `eq`、`gt`、`lt`| `asc` 和 `desc`|
-|[内容密钥策略](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
+|[内容密钥策略](/rest/api/media/contentkeypolicies)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
 ||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
 ||properties.description    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`||
 ||properties.lastModified|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
 ||properties.policyId|`eq`, `ne`||
-|[作业](https://docs.microsoft.com/rest/api/media/jobs)| name  | `eq`            | `asc` 和 `desc`|
+|[作业](/rest/api/media/jobs)| name  | `eq`            | `asc` 和 `desc`|
 ||properties.state        | `eq`, `ne`        |                         |
 ||properties.created      | `gt`、`ge`、`lt`、`le`| `asc` 和 `desc`|
 ||properties.lastModified | `gt`、`ge`、`lt`、`le` | `asc` 和 `desc`| 
-|[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
+|[流式处理定位符](/rest/api/media/streaminglocators)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
 ||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
 ||properties.endTime    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
-|[流式处理策略](https://docs.microsoft.com/rest/api/media/streamingpolicies)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
+|[流式处理策略](/rest/api/media/streamingpolicies)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
 ||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
-|[转换](https://docs.microsoft.com/rest/api/media/transforms)| name | `eq`            | `asc` 和 `desc`|
+|[转换](/rest/api/media/transforms)| name | `eq`            | `asc` 和 `desc`|
 || properties.created      | `gt`、`ge`、`lt`、`le`| `asc` 和 `desc`|
 || properties.lastModified | `gt`、`ge`、`lt`、`le`| `asc` 和 `desc`|
 
 ## <a name="next-steps"></a>后续步骤
 
-* [列出资产](https://docs.microsoft.com/rest/api/media/assets/list)
-* [列出内容密钥策略](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
-* [列出作业](https://docs.microsoft.com/rest/api/media/jobs/list)
-* [列出流式处理策略](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
-* [列出流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
+* [列出资产](/rest/api/media/assets/list)
+* [列出内容密钥策略](/rest/api/media/contentkeypolicies/list)
+* [列出作业](/rest/api/media/jobs/list)
+* [列出流式处理策略](/rest/api/media/streamingpolicies/list)
+* [列出流式处理定位符](/rest/api/media/streaminglocators/list)
 * [流式传输文件](stream-files-dotnet-quickstart.md)
 * [配额和限制](limits-quotas-constraints.md)

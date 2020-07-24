@@ -14,15 +14,16 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: f1d4d4f4006702ebe0d057e56cf24a022e73b83e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd8c38f9f08bbcaccc39d2f0d1843af720c12932
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79251357"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053232"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>标准编码器格式和编解码器
 
-本文包含可与 [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) 配合使用的最常见的导入和导出文件格式列表。 有关如何使用 **StandardEncoderPreset** 创建自定义预设的信息，请参阅[使用自定义预设创建转换](customize-encoder-presets-how-to.md)。
+本文包含可与 [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) 配合使用的最常见的导入和导出文件格式列表。 有关如何使用 **StandardEncoderPreset** 创建自定义预设的信息，请参阅[使用自定义预设创建转换](customize-encoder-presets-how-to.md)。
 
 ## <a name="input-containerfile-formats"></a>输入容器/文件格式
 
@@ -35,7 +36,7 @@ ms.locfileid: "79251357"
 | Windows Media 视频 (WMV)/ASF（.wmv、.asf） |是 |
 | AVI（8 位/10 位未压缩）(.avi) |是 |
 | MP4（.mp4、.m4a、.m4v）/ISMV（.isma、.ismv） |是 |
-| [Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr-ms) |是 |
+| [Microsoft Digital Video Recording(DVR-MS)](/previous-versions/windows/desktop/mstv/about-the-dvr-ms-file-format) (.dvr-ms) |是 |
 | Matroska/WebM (.mkv) |是 |
 | WAVE/WAV (.wav) |是 |
 | QuickTime (.mov) |是 |

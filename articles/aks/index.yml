@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: laurenhughes
   ms.author: lahugh
-  ms.date: 03/25/2020
-  ms.openlocfilehash: c3a5651df8ad1f07f3b9800abfe4b48e829ff27b
-  ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+  ms.date: 07/21/2020
+  ms.openlocfilehash: 0a1efee059f0606248c5514dd37d1568e73897f6
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/11/2020
-  ms.locfileid: "86251648"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87025194"
 landingContent:
 - title: 关于 Azure Kubernetes 服务 (AKS)
   linkLists:
@@ -26,6 +26,8 @@ landingContent:
     links:
     - text: AKS 的 Kubernetes 核心概念
       url: concepts-clusters-workloads.md
+    - text: AKS 群集的基线体系结构
+      url: /azure/architecture/reference-architectures/containers/aks/secure-baseline-aks/
     - text: 群集和工作负荷
       url: concepts-clusters-workloads.md
     - text: 访问和标识
@@ -55,7 +57,7 @@ landingContent:
     - text: 在 Visual Studio Code 中使用 Local Process with Kubernetes（预览版）
       url: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
     - text: 在 Visual Studio 中使用 Local Process with Kubernetes（预览版）
-      url: ../dev-spaces/how-to/local-process-kubernetes-visual-studio.md
+      url: /visualstudio/containers/local-process-kubernetes
 - title: 部署、管理和更新应用程序
   linkLists:
   - linkListType: tutorial

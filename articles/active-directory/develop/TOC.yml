@@ -337,14 +337,12 @@
               href: msal-b2c-overview.md
             - name: 迁移到 MSAL.js
               href: msal-compare-msal-js-and-adal-js.md
-            - name: 使用 MSAL.js 的单一登录
+            - name: 使用 MSAL.js 进行单一登录
               href: msal-js-sso.md
             - name: 注意事项 - IE
               href: msal-js-use-ie-browser.md
             - name: 已知问题 - IE 和 Microsoft Edge
               href: msal-js-known-issues-ie-edge-browsers.md
-            - name: 已知问题 - Safari
-              href: msal-js-known-issues-safari-browser.md
             - name: 处理错误和异常
               href: msal-handling-exceptions.md?tabs=javascript
             - name: 日志记录
@@ -486,7 +484,7 @@
           href: active-directory-authentication-protocols.md
         - name: 委派权限与应用程序权限之间的差异
           href: delegated-and-app-perms.md
-        - name: 应用程序同意操作的工作原理
+        - name: 应用程序许可工作原理
           href: consent-framework-links.md
         - name: 为自定义开发的应用程序查找所需的特定 API
           href: api-find-an-api-how-to.md

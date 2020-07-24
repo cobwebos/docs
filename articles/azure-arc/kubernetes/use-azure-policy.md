@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 使用 Azure 策略大规模应用群集配置
 keywords: Kubernetes、Arc、Azure、K8s、容器
-ms.openlocfilehash: 26b291e2a957047361d4f52eeff58cbe8aa8c633
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e4279f3d89376320116067bf191e3196271918ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111263"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050032"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>使用 Azure 策略大规模应用群集配置（预览版）
 
@@ -23,6 +23,10 @@ ms.locfileid: "86111263"
 
 如果使用多个 Git 存储库作为每个群集的可信源（例如，一个存储库用于中心 IT/群集操作员，而其他存储库用于应用程序团队），则可以通过使用多个策略分配（每个策略分配配置为使用不同的 Git 存储库）来启用此功能。
 
+## <a name="prerequisite"></a>先决条件
+
+确保你对 `Microsoft.Authorization/policyAssignments/write` 要在其中创建此策略分配的作用域（订阅或资源组）具有权限。
+
 ## <a name="create-a-policy-assignment"></a>创建策略分配
 
 1. 在 Azure 门户中，导航到“策略”，并在边栏的“创作”部分中，选择“定义”。
@@ -31,7 +35,7 @@ ms.locfileid: "86111263"
 4. 如果要从策略范围中排除任何资源，请设置“排除”。
 5. 为策略分配提供可以用于轻松识别它的“名称”和“说明”。
 6. 确保“策略实施”设置为“已启用”。
-7. 选择“**下一页**”。
+7. 选择“**下一步**”。
 8. 设置将在 `sourceControlConfiguration` 创建过程中使用的参数值。
 9. 选择“**下一页**”。
 10. 启用“创建修正任务”。
@@ -42,7 +46,7 @@ ms.locfileid: "86111263"
 
 ## <a name="verify-a-policy-assignment"></a>验证策略分配
 
-1. 在 Azure 门户中，导航到你的某个 `connectedCluster` 资源，然后在边栏的“设置”部分中，选择“策略”。 （AKS 托管群集的 UX 尚未实现，但即将推出。）
+1. 在 Azure 门户中，导航到你的某个 `connectedCluster` 资源，然后在边栏的“设置”部分中，选择“策略”。 （AKS 群集的 UX 尚未实现，但即将推出。）
 2. 在列表中，应看到上面创建的策略分配，并且“符合性状态”应是“符合”。
 3. 在边栏的“设置”部分中，选择“配置” 。
 4. 在列表中，应看到策略分配创建的 `sourceControlConfiguration`。

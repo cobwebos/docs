@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 72f9381a320dc0fb946dbf6f48c5bcab5390aed5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c49e92cda89cfc1d72a0550c2a53430f3e6f2844
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243573"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050326"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常见问题解答
 了解有关 Azure API 管理的常见问题解答、模式和最佳做法。
@@ -77,7 +77,7 @@ ms.locfileid: "86243573"
 2. 转到具有要更新的 API 管理实例的资源组。
 3. 在 API 管理中，将“API 管理服务参与者”角色分配给该用户。
 
-现在，新添加的参与者可以使用 Azure PowerShell [cmdlet](/powershell/azure/overview)。 下面是以管理员身份登录的方法：
+现在，新添加的参与者可以使用 Azure PowerShell [cmdlet](/powershell/azure/)。 下面是以管理员身份登录的方法：
 
 1. 使用 `Connect-AzAccount` cmdlet 登录。
 2. 使用 `Set-AzContext -SubscriptionID <subscriptionGUID>` 将上下文设置为具有该服务的订阅。

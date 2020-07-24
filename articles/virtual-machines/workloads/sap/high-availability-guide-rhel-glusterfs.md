@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: radeltch
-ms.openlocfilehash: 388a2db2c888be541d89c5f4274bd38b37e4ca28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6b8708edeeb4b3b69dab82265d13db2a4c22e08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77591908"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051662"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 Red Hat Enterprise Linux 上的 Azure VM 上的 GlusterFS
 
@@ -101,7 +102,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>通过 Azure 门户手动部署 Linux
 
-首先需要为此群集创建虚拟机。 之后，创建一个负载均衡器并使用后端池中的虚拟机。 建议使用[标准负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。  
+首先需要为此群集创建虚拟机。 之后，创建一个负载均衡器并使用后端池中的虚拟机。 建议使用[标准负载均衡器](../../../load-balancer/load-balancer-overview.md)。  
 
 1. 创建资源组。
 1. 创建虚拟网络

@@ -10,11 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
-ms.openlocfilehash: 245eabdf4d77682c87062c2581239a554112d748
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 011f94cf24c6148ee01275541b090ba28d697018
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77468756"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052485"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
@@ -22,31 +23,31 @@ ms.locfileid: "77468756"
 
 * 从 URL 上传视频（首选），
 * 作为请求正文中的字节数组发送视频文件。
-* 通过提供[资产 ID](https://docs.microsoft.com/azure/media-services/latest/assets-concept) （仅在付费帐户中支持）来使用现有的 Azure 媒体服务资产。
+* 提供[资产 ID](../latest/assets-concept.md)，以便使用现有的 Azure 媒体服务资产（仅付费帐户支持此功能）。
 
 视频上传完毕后，视频索引器（可选）会对视频进行编码（如文章中所述）。 创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项时，可以[创建连接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户](connect-to-azure.md)。 需要为编制索引的分钟数付费，此外还需要支付媒体帐户相关的费用。 
 
 本文介绍如何通过以下选项上传和索引视频：
 
 * [视频索引器网站](#website) 
-* [视频索引器 Api](#apis)
+* [视频索引器 API](#apis)
 
 ## <a name="uploading-considerations-and-limitations"></a>上传注意事项和限制
  
 - 视频的名称长度不得超过 80 个字符。
-- 基于 URL 上传视频时（首选），终结点必须通过 TLS 1.2 （或更高版本）进行保护。
-- 带有 URL 选项的上传大小限制为30GB。
-- 请求 URL 长度限制为6144个字符，其中查询字符串 URL 长度限制为4096个字符。
-- 具有字节数组选项的上传大小限制为2GB。
-- 字节数组选项在30分钟后超时。
+- 根据 URL（首选方式）上传视频时，必须使用 TLS 1.2（或更高版本）保护终结点。
+- 对于 URL 选项，上传大小限制为 30GB。
+- 请求 URL 的长度限制为 6144 个字符，其中查询字符串 URL 的长度限制为 4096 个字符。
+- 对于字节数组选项，上传大小限制为 2GB。
+- 字节组选项会在 30 分钟后超时。
 - 参数中提供的 URL `videoURL` 需要进行编码。
 - 为媒体服务资产编制索引与从 URL 进行索引的限制相同。
-- 对于单个文件，视频索引器的最大持续时间限制为4小时。
-- URL 需要可访问（例如，公共 URL）。 
+- 对于单个文件，视频索引器的最大持续时间限制为 4 小时。
+- URL 需要可供访问（例如公共 URL）。 
 
-    如果它是专用 URL，则需要在请求中提供访问令牌。
+    如果是专用 URL，则需要在请求中提供访问令牌。
 - URL 必须指向有效的媒体文件，而不是指向网页的链接，例如指向页面的链接 `www.youtube.com` 。
-- 在付费帐户中，最多可以上传50个电影，每分钟最多上载5个电影。
+- 在付费帐户中，每分钟最多可以上传 50 部电影，试用帐户每分钟最多上传 5 部电影。
 
 > [!Tip]
 > 建议使用 .NET framework 版本 4.6.2. 或更高版本，因为较旧的 .NET framework 不会默认为 TLS 1.2。
@@ -57,7 +58,7 @@ ms.locfileid: "77468756"
 
 有关可用于视频索引器的文件格式列表，请参阅[输入容器/文件格式](../latest/media-encoder-standard-formats.md#input-containerfile-formats)一文。
 
-## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a><a id="website"/>使用视频索引器网站上传视频并为其编制索引
+## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a><a name="website"></a>使用视频索引器网站上传视频并为其编制索引
 
 > [!NOTE]
 > 视频的名称长度不得超过 80 个字符。
@@ -73,7 +74,7 @@ ms.locfileid: "77468756"
 
     当视频索引器分析完以后，你会获得一个通知，其中包含视频链接以及对视频中找到的内容的简短说明。 例如：人物、主题、OCR。
 
-## <a name="upload-and-index-with-api"></a><a id="apis"/>用 API 上传和索引
+## <a name="upload-and-index-with-api"></a><a name="apis"></a>用 API 上传和索引
 
 使用上[传视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)API，根据 URL 上传和索引视频。 下面的代码示例包含注释掉的代码，该代码演示如何上传字节数组。 
 
@@ -90,15 +91,15 @@ ms.locfileid: "77468756"
 一个 URL，用于通知客户（使用 POST 请求）以下事件：
 
 - 索引状态更改： 
-    - 属性:    
+    - 属性：    
     
-        |“属性”|说明|
+        |名称|说明|
         |---|---|
         |id|视频 ID|
         |state|视频状态|  
     - 示例： https： \/ /test.com/notifyme?projectName=MyProject&id = 1234abcd&状态 = 已处理
 - 在视频中标识的人：
-  - 属性
+  - “属性”
     
       |名称|说明|
       |---|---|
@@ -109,7 +110,7 @@ ms.locfileid: "77468756"
         
     - 示例： https： \/ /test.com/notifyme?projectName=MyProject&id = 1234abcd&faceid = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
 
-##### <a name="notes"></a>说明
+##### <a name="notes"></a>注释
 
 - 视频索引器返回在原始 URL 中提供的任何现有参数。
 - 提供的 URL 必须进行编码。
@@ -141,7 +142,7 @@ ms.locfileid: "77468756"
 
 使用[上传视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)或[重新索引视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API 时，一个可选的参数是 `streamingPreset`。 如果将 `streamingPreset` 设置为 `Default`、`SingleBitrate` 或 `AdaptiveBitrate`，则会触发编码过程。 索引编制和编码作业完成以后，视频就会发布，这样你就也可以流式传输视频。 要从其流式传输视频的流式处理终结点必须处于“正在运行”状态。****
 
-为了运行索引编制和编码作业，[连接到视频索引器帐户的 Azure 媒体服务帐户](connect-to-azure.md)需要预留单位。 有关详细信息，请参阅[缩放媒体处理](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview)。 由于这些是计算密集型作业，因此强烈建议使用 S3 单位类型。 RU 数定义可以并行运行的最大作业数。 基线建议是 10 个 S3 RU。 
+为了运行索引编制和编码作业，[连接到视频索引器帐户的 Azure 媒体服务帐户](connect-to-azure.md)需要预留单位。 有关详细信息，请参阅[缩放媒体处理](../previous/media-services-scale-media-processing-overview.md)。 由于这些是计算密集型作业，因此强烈建议使用 S3 单位类型。 RU 数定义可以并行运行的最大作业数。 基线建议是 10 个 S3 RU。 
 
 如果只需对视频进行索引，但不需对其进行编码，请将 `streamingPreset` 设置为 `NoStreaming`。
 

@@ -40,8 +40,6 @@
               href: quickstarts/python-layout.md
 - name: 教程
   items:
-    - name: 将表单识别器与逻辑应用搭配使用
-      href: tutorial-form-recognizer-with-logic-apps.md
     - name: 将表单识别器与认知搜索搭配使用
       href: 'https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-form'
 - name: 操作指南
@@ -66,8 +64,6 @@
   items:
     - name: 表单识别器 API v2.0
       href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm'
-    - name: 表单识别器 API v1.0
-      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel'
     - name: SDK
       items:
         - name: .NET
@@ -75,9 +71,9 @@
         - name: Python
           href: 'https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer'
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/formrecognizer'
+          href: 'https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre'
         - name: JavaScript
-          href: 'https://docs.microsoft.com/azure/cognitive-services/form-recognizer/'
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/ai-form-recognizer-readme-pre'
 - name: 资源
   items:
     - name: 定价和限制

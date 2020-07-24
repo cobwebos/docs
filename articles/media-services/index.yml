@@ -13,12 +13,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 07//2020
-  ms.openlocfilehash: 5d49173a9c06e35c5af3831e504fc6f55a8dfc50
-  ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+  ms.openlocfilehash: da549a54773365d39e3a19179acd6495a6ac1ce5
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/01/2020
-  ms.locfileid: "84259535"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87023358"
 highlightedContent:
   items:
   - title: 关于 Azure 媒体服务 v3
@@ -52,7 +52,7 @@ conceptualContent:
     - url: ./latest/media-services-apis-overview.md
       itemType: concept
       text: 使用媒体服务 v3 进行开发
-    - url: https://docs.microsoft.com/samples/browse/?products=azure-media-services
+    - url: /samples/browse/?products=azure-media-services
       itemType: sample
       text: 代码示例
     - url: ./latest/release-notes.md
@@ -132,4 +132,4 @@ additionalContent:
       url: https://docs.microsoft.com/azure/cdn
     - title: 事件网格
       summary: 了解如何使用 Azure 事件网格响应相关事件
-      url: https://docs.microsoft.com/azure/event-grid/
+      url: ../event-grid/index.yml
