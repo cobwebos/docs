@@ -1,7 +1,7 @@
 ---
 title: vCore 购买模型概述
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
-description: VCore 购买模式使你可以独立缩放计算和存储资源、匹配本地性能，并为 Azure SQL 数据库和 Azure SQL 托管实例优化价格。
+description: 借助 vCore 购买模型，可单独缩放计算和存储资源、匹配本地性能，并优化 Azure SQL 数据库和 Azure SQL 托管实例的价格。
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: features
@@ -9,33 +9,33 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 11/27/2019
-ms.openlocfilehash: 7b5e4174da3ffa0dff5c840e5da1d98435e8d07b
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/21/2020
+ms.openlocfilehash: c54979efbbd164a11614b92d9a337a86e2f221fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985544"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007735"
 ---
-# <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>vCore 模型概述-Azure SQL 数据库和 Azure SQL 托管实例 
+# <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>vCore 模型概述 - Azure SQL 数据库和 Azure SQL 托管实例 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure SQL 数据库和 Azure SQL 托管实例使用的虚拟核心（vCore）购买模型具有以下几个优点：
+Azure SQL 数据库和 Azure SQL 托管实例使用的虚拟核心 (vCore) 购买模型具有下面几个优势：
 
-- 更高的计算、内存、i/o 和存储限制。
+- 更高的计算、内存、I/O 和存储限制。
 - 控制硬件代系，以便更好地符合工作负荷的计算和内存要求。
 - [Azure 混合权益（AHB）](../azure-hybrid-benefit.md)和[预订实例（RI）](reserved-capacity-overview.md)的定价折扣。
-- 为驱动计算的硬件细节提供更高的透明度；有助于规划从本地部署的迁移。
+- 提高计算能力的硬件细节的透明度，有助于规划从本地部署迁移。
 
 ## <a name="service-tiers"></a>服务层
 
-vCore 模型中的服务层级选项包括“常规用途”、“业务关键”和“超大规模”。 服务层通常定义了与可用性和灾难恢复相关的存储体系结构、空间和 i/o 限制以及业务连续性选项。
+vCore 模型中的服务层级选项包括“常规用途”、“业务关键”和“超大规模”。 服务层级通常定义存储体系结构、空间和 I/O 限制，以及与可用性和灾难恢复相关的业务连续性选项。
 
 |-|**常规用途**|**业务关键**|**超大规模**|
 |---|---|---|---|
 |最适用于|大多数业务工作负荷。 提供预算导向的、均衡且可缩放的计算和存储选项。 |它使用多个独立副本为商业应用程序提供最高级别的故障恢复能力，为每个数据库副本提供最高的 I/O 性能。|具有很高的可缩放存储和读取缩放要求的大多数业务工作负荷。  允许配置多个独立的数据库副本，提供更高的故障恢复能力。 |
-|存储|使用远程存储。<br/>**SQL 数据库预配计算**：<br/>5 GB – 4 TB<br/>**无服务器计算**<br/>5 GB - 3 TB<br/>**SQL 托管实例**： 32 GB-8 TB |使用本地 SSD 存储。<br/>**SQL 数据库预配计算**：<br/>5 GB – 4 TB<br/>**SQL 托管实例**：<br/>32 GB - 4 TB |可以根据需要灵活地自动扩展存储。 最多支持 100 TB 存储空间。 使用本地 SSD 存储作为本地缓冲池缓存和本地数据存储。 使用 Azure 远程存储作为最终的长期数据存储。 |
-|IOPS 和吞吐量（近似值）|**SQL 数据库**：请参阅[单一数据库](resource-limits-vcore-single-databases.md)和[弹性池](resource-limits-vcore-elastic-pools.md)的资源限制。<br/>**SQL 托管实例**：请参阅[概述 Azure SQL 托管实例资源限制](../managed-instance/resource-limits.md#service-tier-characteristics)。|请查看[单一数据库](resource-limits-vcore-single-databases.md)和[弹性池](resource-limits-vcore-elastic-pools.md)的资源限制。|超大规模是具有多个级别缓存的多层体系结构。 有效的 IOPS 和吞吐量将取决于工作负载。|
+|存储|使用远程存储。<br/>**SQL 数据库预配计算**：<br/>5 GB – 4 TB<br/>**无服务器计算**<br/>5 GB - 3 TB<br/>**SQL 托管实例**：32 GB - 8 TB |使用本地 SSD 存储。<br/>**SQL 数据库预配计算**：<br/>5 GB – 4 TB<br/>**SQL 托管实例**：<br/>32 GB - 4 TB |可以根据需要灵活地自动扩展存储。 最多支持 100 TB 存储空间。 使用本地 SSD 存储作为本地缓冲池缓存和本地数据存储。 使用 Azure 远程存储作为最终的长期数据存储。 |
+|IOPS 和吞吐量（近似值）|**SQL 数据库**：请查看[单一数据库](resource-limits-vcore-single-databases.md)和[弹性池](resource-limits-vcore-elastic-pools.md)的资源限制。<br/>**SQL 托管实例**：请参阅 [Azure SQL 托管实例资源限制概述](../managed-instance/resource-limits.md#service-tier-characteristics)。|请查看[单一数据库](resource-limits-vcore-single-databases.md)和[弹性池](resource-limits-vcore-elastic-pools.md)的资源限制。|超大规模是具有多个级别缓存的多层体系结构。 有效的 IOPS 和吞吐量将取决于工作负载。|
 |可用性|1 个副本，无读取缩放副本|3个副本，1[个读取缩放副本](read-scale-out.md)，<br/>区域冗余高可用性 (HA)|1 个读写副本加 0-4 个[读取缩放副本](read-scale-out.md)|
 |备份|[读取访问异地冗余存储 (RA-GRS)](../../storage/common/geo-redundant-design.md)，7-35 天（默认为 7 天）|[RA-GRS](../..//storage/common/geo-redundant-design.md)，7-35 天（默认为 7 天）|Azure 远程存储中基于快照的备份。 还原使用这些快照进行快速恢复。 备份瞬间完成，不会影响计算 I/O 性能。 还原速度很快，不基于数据操作的大小（需要几分钟，而不是几小时或几天）。|
 |内存中|不支持|支持|不支持|
@@ -46,7 +46,7 @@ vCore 模型中的服务层级选项包括“常规用途”、“业务关键�
 
 有关为特定工作负荷选择服务层级的信息，请参阅以下文章：
 
-- [何时选择常规用途的服务层](service-tier-general-purpose.md#when-to-choose-this-service-tier)
+- [何时选择“常规用途”服务层级](service-tier-general-purpose.md#when-to-choose-this-service-tier)
 - [何时选择“业务关键”服务层级](service-tier-business-critical.md#when-to-choose-this-service-tier)
 - [何时选择“超大规模”服务层级](service-tier-hyperscale.md#who-should-consider-the-hyperscale-service-tier)
 
@@ -69,7 +69,7 @@ vCore 模型中的计算层级选项包括预配计算层级和无服务器计�
 
 ## <a name="hardware-generations"></a>硬件代系
 
-VCore 模型中的硬件生成选项包括 Gen 4/5、M 系列（预览版）和 Fsv2 （预览版）。 硬件代系通常定义计算和内存限制，以及影响工作负荷性能的其他特征。
+VCore 模型中的硬件生成选项包括 Gen 4/5、M 系列和 Fsv2 系列。 硬件代系通常定义计算和内存限制，以及影响工作负荷性能的其他特征。
 
 ### <a name="gen4gen5"></a>第 4 代/第 5 代
 
@@ -77,21 +77,21 @@ VCore 模型中的硬件生成选项包括 Gen 4/5、M 系列（预览版）和 
 
 有关第 4 代/第 5 代的可用区域，请参阅[第 4 代/第 5 代可用性](#gen4gen5-1)。
 
-### <a name="fsv2-seriespreview"></a>Fsv2 系列（预览）
+### <a name="fsv2-series"></a>Fsv2 系列
 
 - Fsv2 系列是一种计算优化硬件选项，可为大多数 CPU 要求的工作负荷提供低 CPU 延迟和较高的时钟速度。
 - 根据工作负荷的不同，Fsv2 系列可以为每个 vCore 提供比 Gen5 更多的 CPU 性能，72 vCore 大小可提供更多的 CPU 性能，而不是 Vcore 上 80 Gen5。 
 - Fsv2 对每个 vCore 提供的内存和 tempdb 比其他硬件更少，因此，对这些限制敏感的工作负荷可能需要考虑 Gen5 或 M 系列。  
 
-仅常规用途层支持 Fsv2 系列。  对于 Fsv2 系列可用的区域，请参阅[Fsv2 系列的可用性](#fsv2-series)。
+仅常规用途层支持 Fsv2 系列。 对于 Fsv2 系列可用的区域，请参阅[Fsv2 系列的可用性](#fsv2-series)。
 
 
-### <a name="m-seriespreview"></a>M 系列（预览）
+### <a name="m-series"></a>M 系列
 
 - M 系列是内存优化硬件选项，适用于需要更多内存和更高计算限制的工作负荷，而不是由 Gen5 提供。
-- M 系列提供每 vCore 29 GB 和 128 Vcore，这会将相对于 Gen5 的内存限制增加到将近 4 TB。
+- M 系列提供每个 vCore 29 GB 和最多128个 Vcore，这会将相对于 Gen5 的内存限制增加到将近 4 TB。
 
-M 系列仅在业务关键层中受支持，不支持区域冗余。  订阅必须是付费产品/服务类型，包括即用即付或企业协议（EA）。  对于 M 系列可用的区域，请参阅[m 系列可用性](#m-series)。
+M 系列仅在业务关键层中受支持，不支持区域冗余。  订阅必须是付费产品/服务类型，包括即用即付或企业协议（EA）。 对于 M 系列可用的区域，请参阅[m 系列可用性](#m-series)。
 
 <!--
 To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).
@@ -104,8 +104,8 @@ To enable M-series hardware for a subscription and region, a support request mus
 |:---------|:---------|:---------|
 |Gen4     |- Intel E5-2673 v3 (Haswell) 2.4 GHz 处理器<br>- 最多预配 24 个 vCore（1 个 vCore = 1 个物理核心）  |- 每个 vCore 7 GB<br>- 最多预配 168 GB|
 |Gen5     |**预配计算**<br>- Intel E5-2673 v4 (Broadwell) 2.3-GHz 和 Intel SP-8160 (Skylake)* 处理器<br>- 最多预配 80 个 vCore（1 个 vCore = 1 个超线程）<br><br>**无服务器计算**<br>- Intel E5-2673 v4 (Broadwell) 2.3-GHz 和 Intel SP-8160 (Skylake)* 处理器<br>- 自动扩展为 16 个 vCore（1 个 vCore = 1 个超线程）|**预配计算**<br>- 每个 vCore 5.1 GB<br>- 最多预配 408 GB<br><br>**无服务器计算**<br>- 自动扩展为每个vCore 24 GB<br>- 自动扩展为最大 48 GB|
-|Fsv2 系列     |-Intel 至强白金8168（SkyLake）处理器<br>-将所有核心 turbo 时钟速度保持为 3.4 GHz，最大单一核心 turbo 时钟速度为 3.7 GHz。<br>-设置 72 Vcore （1 vCore = 1 个超线程）|-1.9 GB/vCore<br>-预配 136 GB|
-|M 系列     |-Intel E7-8890 v3 2.5 GHz 和 Intel 强白金 8280M 2.7 GHz （级联 Lake）处理器<br>-设置 128 Vcore （1 vCore = 1 个超线程）|-每个 vCore 29 GB<br>-预配 3.7 TB|
+|Fsv2 系列     |-Intel 至强白金8168（Skylake）处理器<br>-将所有核心 turbo 时钟速度保持为 3.4 GHz，最大单一核心 turbo 时钟速度为 3.7 GHz。<br>-预配多达 72 Vcore （1 vCore = 1 个超线程）|-1.9 GB/vCore<br>-预配高达 136 GB|
+|M 系列     |-Intel E7-8890 v3 2.5 GHz 和 Intel 强白金 8280M 2.7 GHz （级联 Lake）处理器<br>-预配多达 128 Vcore （1 vCore = 1 个超线程）|-每个 vCore 29 GB<br>-预配高达 3.7 TB|
 
 \* 在 [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 动态管理视图中，使用 Intel SP-8160 (Skylake) 处理器的 Gen5 数据库的硬件代系会显示为 Gen6。 不管处理器类型如何（Broadwell 或 Skylake），所有 Gen5 数据库的资源限制都相同。
 
@@ -113,13 +113,13 @@ To enable M-series hardware for a subscription and region, a support request mus
 
 ### <a name="selecting-a-hardware-generation"></a>选择硬件代系
 
-在 Azure 门户中，你可以在创建时为 SQL 数据库中的数据库或池选择硬件生成，也可以更改现有数据库或池的硬件生成。
+在 Azure 门户中，可在 SQL 数据库中创建数据库或池时为其选择硬件代系，或者更改现有 SQL 数据库或池的硬件代系。
 
-**创建 SQL 数据库或池时选择硬件生成**
+**创建 SQL 数据库或池时选择硬件代系**
 
 有关详细信息，请参阅[创建 SQL 数据库](single-database-create-quickstart.md)。
 
-在“基本信息”选项卡上，选择“计算 + 存储”部分中的“配置数据库”链接，然后选择“更改配置”链接：**** **** **** ****
+在“基本信息”选项卡上，选择“计算 + 存储”部分中的“配置数据库”链接，然后选择“更改配置”链接：   
 
   ![配置数据库](./media/service-tiers-vcore/configure-sql-database.png)
 
@@ -128,33 +128,33 @@ To enable M-series hardware for a subscription and region, a support request mus
   ![选择硬件](./media/service-tiers-vcore/select-hardware.png)
 
 
-**更改现有 SQL 数据库或池的硬件生成**
+**更改现有 SQL 数据库或池的硬件代系**
 
-对于数据库，请在“概述”页上选择“定价层”链接：****
+对于数据库，请在“概述”页上选择“定价层”链接：
 
   ![更改硬件](./media/service-tiers-vcore/change-hardware.png)
 
-对于池，请在“概述”页上选择“配置”。****
+对于池，请在“概述”页上选择“配置”。
 
 遵循相应的步骤更改配置，然后根据前面的步骤所述选择硬件代系。
 
-**创建 SQL 托管实例时选择硬件生成**
+**创建 SQL 托管实例时选择硬件代系**
 
 有关详细信息，请参阅[创建 SQL 托管实例](../managed-instance/instance-create-quickstart.md)。
 
-在“基本信息”选项卡上，选择“计算 + 存储”部分中的“配置数据库”链接，然后选择所需的硬件代系：**** **** ****
+在“基本信息”选项卡上，选择“计算 + 存储”部分中的“配置数据库”链接，然后选择所需的硬件代系：  
 
   ![配置 SQL 托管实例](./media/service-tiers-vcore/configure-managed-instance.png)
   
-**更改现有 SQL 托管实例的硬件生成**
+**更改现有 SQL 托管实例的硬件代系**
 
 # <a name="the-azure-portal"></a>[Azure 门户](#tab/azure-portal)
 
-从 "SQL 托管实例" 页上，选择 "设置" 部分下的 "**定价层**" 链接
+在“SQL 托管实例”页面上，选择“设置”部分下的“定价层”链接
 
 ![更改 SQL 托管实例硬件](./media/service-tiers-vcore/change-managed-instance-hardware.png)
 
-在“定价层”**** 页上，可以按前面步骤中所述更改硬件代系。
+在 "定价层" 页上，你将能够按前面的步骤所述更改硬件生成。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -164,7 +164,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -ComputeGeneration Gen5
 ```
 
-有关更多详细信息，请查看 [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) 命令。
+有关更多详细信息，请检查[AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)命令。
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -174,7 +174,7 @@ Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" 
 az sql mi update -g mygroup -n myinstance --family Gen5
 ```
 
-有关更多详细信息，请查看 [az sql mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update) 命令。
+有关更多详细信息，请查看[az sql mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)命令。
 
 ---
 
@@ -230,9 +230,9 @@ Approved support requests are typically fulfilled within 5 business days.
 
 有关定价详细信息，请参阅 [Azure SQL 数据库定价页](https://azure.microsoft.com/pricing/details/sql-database/single/)。
 
-有关 "常规用途" 和 "业务关键" 服务层中可用的特定计算和存储大小的详细信息，请参阅：
+若要详细了解“常规用途”和“业务关键”服务层级中提供的特定计算大小和存储大小，请参阅：
 
-- [适用于 AZURE SQL 数据库的基于 vCore 的资源限制](resource-limits-vcore-single-databases.md)。
-- [针对共用 AZURE SQL 数据库的基于 vCore 的资源限制](resource-limits-vcore-elastic-pools.md)。
-- [AZURE SQL 托管实例基于 vCore 的资源限制](../managed-instance/resource-limits.md)。 
+- [Azure SQL 数据库基于 vCore 的资源限制](resource-limits-vcore-single-databases.md)。
+- [共用 Azure SQL 数据库基于 vCore 的资源限制](resource-limits-vcore-elastic-pools.md)。
+- [Azure SQL 托管实例基于 vCore 的资源限制](../managed-instance/resource-limits.md)。 
 
