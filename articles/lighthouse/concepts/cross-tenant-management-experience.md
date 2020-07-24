@@ -3,12 +3,12 @@ title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
 ms.date: 07/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1b3aa15dd968b4cded831934103a02420d020b9a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: be4f9581e8a276b4296faedb65691232dee2ea95
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521031"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090410"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -53,7 +53,7 @@ Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSu
   - 使用 Azure 构造（如Azure Policy 和标记）管理连接的计算机
   - 确保跨客户的混合环境应用相同的一组策略
   - 使用 Azure 安全中心监视客户混合环境中的符合性
-- 大规模管理混合 Kubernetes 群集- [Azure Arc For Kubernetes （预览版）](../../azure-arc/kubernetes/overview.md)：
+- 大规模管理混合 Kubernetes 群集-[启用 Azure Arc Kubernetes （预览版）](../../azure-arc/kubernetes/overview.md)：
   - 将[Kubernetes 群集连接](../../azure-arc/kubernetes/connect-cluster.md)到 azure 中的委托订阅和/或资源组
   - 对连接的群集[使用 GitOps](../../azure-arc/kubernetes/use-gitops-connected-cluster.md)
   - 跨连接群集强制实施策略

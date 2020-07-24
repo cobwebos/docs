@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 9003d35ce2eea18aa912a866802b026bb923aa08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 034a49793d3a3e416f307741e49446979eb33bb3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81272689"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090444"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>通过指标、警报和资源运行状况进行标准负载均衡器诊断
 
@@ -45,6 +46,9 @@ Azure 负载均衡器通过 Azure 门户中的 Azure 指标来提供多维指标
 | 字节计数器 |  公共和内部负载均衡器 | 标准负载均衡器按前端报告处理的数据。 你可能会注意到，这些字节并没有均匀地分布在后端实例中。 这是正常的，因为 Azure 的负载均衡器算法基于流 | 平均值 |
 | 数据包计数器 |  公共和内部负载均衡器 | 标准负载均衡器按前端报告处理的数据包。| 平均值 |
 
+  >[!NOTE]
+  >使用 NVA 或防火墙 Syn 数据包从内部负载均衡器分配流量时，字节计数器和数据包计数器度量值不可用，并将显示为零。 
+  
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>在 Azure 门户中查看负载均衡器指标
 
 Azure 门户通过“指标”页公开负载均衡器指标，可在特定资源的负载均衡器资源页以及 Azure Monitor 页中访问该页。 

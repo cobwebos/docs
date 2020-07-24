@@ -3,12 +3,12 @@ title: 如何停止监视 Azure 和 Red Hat OpenShift v4 群集 |Microsoft Docs
 description: 本文介绍如何通过 Azure Monitor 容器停止监视 Azure Red Hat OpenShift 和 Red Hat OpenShift 版本4群集。
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 768c4db8d72778b555a4f343cf2e23b8fa861991
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf61457b9c8cff40eb3fee2c93c7184fbaae6db5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82196434"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091141"
 ---
 # <a name="how-to-stop-monitoring-your-azure-and-red-hat-openshift-v4-cluster"></a>如何停止监视 Azure 和 Red Hat OpenShift v4 群集
 
@@ -35,7 +35,7 @@ ms.locfileid: "82196434"
 
     `helm delete <releaseName>`
 
-    例如：
+    示例：
 
     `helm delete azmon-containers-release-1`
 
@@ -49,4 +49,4 @@ ms.locfileid: "82196434"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果 Log Analytics 工作区仅用于支持监视群集，并且不再需要它，则必须手动将其删除。 如果你不熟悉如何删除工作区，请参阅[删除 Azure Log Analytics 工作区](../../log-analytics/log-analytics-manage-del-workspace.md)。
+如果 Log Analytics 工作区仅用于支持监视群集，并且不再需要它，则必须手动将其删除。 如果你不熟悉如何删除工作区，请参阅[删除 Azure Log Analytics 工作区](../platform/delete-workspace.md)。

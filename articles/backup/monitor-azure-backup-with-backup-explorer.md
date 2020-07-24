@@ -4,11 +4,12 @@ description: 本文介绍如何使用备份资源管理器跨保管库、订阅�
 ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: e891ee1ccfbe929aaa8ac35518b40f5514da714f
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: f514f899f2db70ecb2924c2e627f3bed28e3dcad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715199"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092790"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>使用备份资源管理器监视备份
 
@@ -93,8 +94,8 @@ ms.locfileid: "83715199"
 
 ## <a name="cross-tenant-views"></a>跨租户视图
 
-如果你是一名 Azure Lighthouse 用户，且具有委托权限可跨多个租户环境访问订阅，那么你可使用默认订阅筛选器。 通过选择 Azure 门户右上方的“筛选器”图标，可显示要查看其数据的订阅。 使用此功能时，备份资源管理器会将跨所选订阅的所有保管库的相关信息聚合在一起。 要了解详细信息，请参阅[什么是 Azure Lighthouse？](https://docs.microsoft.com/azure/lighthouse/overview)。
+如果你是一名 Azure Lighthouse 用户，且具有委托权限可跨多个租户环境访问订阅，那么你可使用默认订阅筛选器。 通过选择 Azure 门户右上方的“筛选器”图标，可显示要查看其数据的订阅。 使用此功能时，备份资源管理器会将跨所选订阅的所有保管库的相关信息聚合在一起。 要了解详细信息，请参阅[什么是 Azure Lighthouse？](../lighthouse/overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-[了解如何使用 Azure Monitor 获取有关备份数据的见解](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)
+[了解如何使用 Azure Monitor 获取有关备份数据的见解](./backup-azure-monitoring-use-azuremonitor.md)

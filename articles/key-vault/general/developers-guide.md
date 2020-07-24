@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2b5c28fccc411a8372ebd6015f796c8309146dfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2edf1574784ec93448495086fdd05c988a3e55a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476761"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090529"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
 
@@ -40,7 +40,7 @@ ms.locfileid: "85476761"
 
 - [使用 CLI 创建和管理 Key Vault](../secrets/quick-create-cli.md)
 - [使用 PowerShell 创建和管理 Key Vault](../secrets/quick-create-powershell.md)
-- [使用 Azure 门户创建和管理 Key Vault](../secrets/quick-create-portal.md)
+- [Azure 门户创建和管理密钥保管库](../secrets/quick-create-portal.md)
 - [使用 Python 创建和管理 Key Vault](../secrets/quick-create-python.md)
 - [使用 Java 创建和管理 Key Vault](../secrets/quick-create-java.md)
 - [使用 Node.js 创建和管理 Key Vault](../secrets/quick-create-node.md)
@@ -75,11 +75,11 @@ ms.locfileid: "85476761"
 
 在 Node.js 中，Key Vault 管理 API 和 Key Vault 对象 API 相互独立。 下面的概述文章介绍了如何访问这两个 API。 
 
-[用于 Node.js 的 Azure Key Vault 模块](/javascript/api/overview/azure/key-vault?view=azure-node-latest)
+[用于 Node.js 的 Azure Key Vault 模块](https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index?view=azure-node-latest)
 
 #### <a name="python"></a>Python
 
-[用于 Python 的 Azure Key Vault 库](/python/api/overview/azure/key-vault?view=azure-python)
+[用于 Python 的 Azure Key Vault 库](https://docs.microsoft.com/python/api/overview/azure/key-vault-index?view=azure-python)
 
 #### <a name="azure-cli"></a>Azure CLI
 
@@ -100,7 +100,7 @@ ms.locfileid: "85476761"
 
 以下文章和方案提供了特定于任务的指导，方便用户使用 Azure Key Vault：
 
-- [订阅移动后更改密钥保管库租户 ID](subscription-move-fix.md) - 将 Azure 订阅从租户 A 移到租户 B 时，租户 B.中的主体（用户和应用程序）无法访问现有的密钥保管库。使用本指南解决此问题。
+- [订阅移动后更改密钥保管库租户 ID](move-subscription.md) - 将 Azure 订阅从租户 A 移到租户 B 时，租户 B.中的主体（用户和应用程序）无法访问现有的密钥保管库。使用本指南解决此问题。
 - [访问防火墙后面的密钥保管库](access-behind-firewall.md) - 若要访问密钥保管库，密钥保管库客户端应用程序需要能够访问多个终结点才能使用各种功能。
 - [如何生成和传输 Azure 密钥保管库的受 HSM 保护的密钥](../keys/hsm-protected-keys.md) -这会帮助你计划、生成和传输自己的用于 Azure 密钥保管库的受 HSM 保护密钥。
 - [如何在部署期间传递安全值（如密码）](../../azure-resource-manager/templates/key-vault-parameter.md) - 需要在部署期间以参数形式传递安全值（例如密码）时，可以将该值存储为 Azure Key Vault 中的机密，并在其他资源管理模板中引用该值。

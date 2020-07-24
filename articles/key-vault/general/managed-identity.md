@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: bb5288d043ab5638bb33c357cea55c64b03fcf1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2d4af5086e3cf4099013969cd359f8e11873c6d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81432120"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090614"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>使用托管标识提供 Key Vault 身份验证
 
@@ -28,14 +28,14 @@ ms.locfileid: "81432120"
 
 ## <a name="prerequisites"></a>先决条件 
 
-若要完成本指南，必须备好以下资源。 
+要完成本指南，必须备好以下资源。 
 
 - 一个 Key Vault。 可以使用现有的 Key Vault，或者遵循以下快速入门之一中的步骤创建一个新的 Key Vault：
    - [使用 Azure CLI 创建 Key Vault](../secrets/quick-create-cli.md)
    - [使用 Azure PowerShell 创建 Key Vault](../secrets/quick-create-powershell.md)
    - [使用 Azure 门户创建 Key Vault](../secrets/quick-create-portal.md)
 - 一个现有的应用服务应用程序，需向其授予密钥保管库访问权限。 可以按[应用服务文档](../../app-service/overview.md)中的步骤快速创建一个。
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Azure PowerShell](/powershell/azure/overview)。 或者，可以使用 [Azure 门户](https://portal.azure.com)。
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Azure PowerShell](/powershell/azure/)。 或者，可以使用 [Azure 门户](https://portal.azure.com)。
 
 
 ## <a name="adding-a-system-assigned-identity"></a>添加系统分配的标识 
@@ -50,9 +50,9 @@ ms.locfileid: "81432120"
 
 1. 选择“托管标识”  。 
 
-1. 在“系统分配的”选项卡中，将“状态”切换为“启用”    。 单击“保存”  。 
+1. 在“系统分配的”选项卡中，将“状态”切换为“启用”    。 单击“保存” 。 
 
-    ![](../media/managed-identity-system-assigned.png)
+   ![显示保存系统分配的标识的屏幕截图。](../media/managed-identity-system-assigned.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -100,7 +100,7 @@ az functionapp identity assign --name myApp --resource-group myResourceGroup
 
 1.  单击“添加”，完成添加新访问策略的操作  。
 
-    ![](../media/managed-identity-access-policy.png)
+    ![屏幕截图，显示在 Azure 门户中添加新的访问策略。](../media/managed-identity-access-policy.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 

@@ -13,21 +13,22 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: a28d4d96f643c12eeb6aa542db2c6af06f4fd954
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 793ddb8c99a4e21c176374f7cb3445d1a7d8fca0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78244644"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090053"
 ---
 # <a name="live-event-types-comparison"></a>实时事件类型比较
 
-在 Azure 媒体服务中，可以将[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)设为“直通”  （本地实时编码器发送多比特率流）或“实时编码”  （本地实时编码器发送单比特率流）。 
+在 Azure 媒体服务中，可以将[直播活动](/rest/api/media/liveevents)设为“直通”  （本地实时编码器发送多比特率流）或“实时编码”  （本地实时编码器发送单比特率流）。 
 
 本文对直播活动类型的功能进行了比较。
 
 ## <a name="types-comparison"></a>类型比较 
 
-下表比较了实时事件类型的功能。 这些类型是在创建期间使用 [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype) 设置的：
+下表比较了实时事件类型的功能。 这些类型是在创建期间使用 [LiveEventEncodingType](/rest/api/media/liveevents/create#liveeventencodingtype) 设置的：
 
 * **LiveEventEncodingType.None** - 本地实时编码器发送多比特率流。 引入的流通过实时事件传递，而不会经过任何进一步的处理。 也称为“直通直播活动”。
 * **LiveEventEncodingType.Standard** - 本地实时编码器将单比特率流发送到实时事件，媒体服务创建多比特率流。 如果贡献源的分辨率为 720p 或更高，则 **Default720p** 预设将编码一组 6 分辨率/比特率对（本文稍后会提供详细信息）。
@@ -64,7 +65,7 @@ ms.locfileid: "78244644"
 
 ## <a name="system-presets"></a>系统预设
 
-实时编码器的输出中包含的分辨率和比特率由 [presetName](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencoding) 确定。 如果使用 **Standard** 实时编码器 (LiveEventEncodingType.Standard)，则 *Default720p* 预设将指定如下所述的一组 6 分辨率/比特率对。 否则，如果使用 **Premium1080p** 实时编码器 (LiveEventEncodingType.Premium1080p)，则 *Default1080p* 预设将指定分辨率/比特率对的输出集。
+实时编码器的输出中包含的分辨率和比特率由 [presetName](/rest/api/media/liveevents/create#liveeventencoding) 确定。 如果使用 **Standard** 实时编码器 (LiveEventEncodingType.Standard)，则 *Default720p* 预设将指定如下所述的一组 6 分辨率/比特率对。 否则，如果使用 **Premium1080p** 实时编码器 (LiveEventEncodingType.Premium1080p)，则 *Default1080p* 预设将指定分辨率/比特率对的输出集。
 
 > [!NOTE]
 > 如果为 Standard 实时编码设置了 Default1080p 预设，则无法将该预设应用到实时事件 - 会出现错误。 如果尝试将 Default720p 预设应用到 Premium1080p 实时编码器，也会出现错误。

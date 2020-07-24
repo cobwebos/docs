@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4f5be29dd42b03e86abb2be392ea42f875536fb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d478723af7d13cc3480f6c2a80bf9b76ba4b84f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84193523"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091345"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制
 
@@ -64,7 +65,7 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 
 若要设置文件和目录级权限，请参阅以下任一文章：
 
-|||
+| 环境 | 项目 |
 |--------|-----------|
 |Azure 存储资源管理器 |[使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-explorer.md#managing-access)|
 |.NET |[使用 .NET 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-dotnet.md)|

@@ -4,18 +4,19 @@ description: 修改 Azure 政府等区域的默认 Azure Monitor Application Ins
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.custom: references_regions
-ms.openlocfilehash: d0c9467497a8bd108d37a340d2cdbb887061e3a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50a072cd7e509642c36c783e3cc0fd78e4d5adc0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194830"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092858"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>替代默认终结点的 Application Insights
 
 若要将 Application Insights 中的数据发送到某些区域，需要替代默认终结点地址。 每个 SDK 都需要进行稍有不同的修改，本文将对所有这些修改进行说明。 这些更改需要调整示例代码，并将 `QuickPulse_Endpoint_Address`、`TelemetryChannel_Endpoint_Address` 和 `Profile_Query_Endpoint_address` 的占位符值替换为特定区域的实际终结点地址。 本文末尾包含指向需要此配置的区域的终结点地址的链接。
 
 > [!NOTE]
-> [连接字符串](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net)是在 Application Insights 中设置自定义终结点的新首选方法。
+> [连接字符串](./sdk-connection-string.md?tabs=net)是在 Application Insights 中设置自定义终结点的新首选方法。
 
 ---
 
@@ -76,7 +77,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
 # <a name="azure-functions"></a>[Azure Functions](#tab/functions)
 
-对于 Azure Functions 现在建议使用在函数的应用程序设置中设置的[连接字符串](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net)。 若要从“函数”窗格中访问函数的应用程序设置，请选择“设置” > “配置” > “应用程序设置”。 
+对于 Azure Functions 现在建议使用在函数的应用程序设置中设置的[连接字符串](./sdk-connection-string.md?tabs=net)。 若要从“函数”窗格中访问函数的应用程序设置，请选择“设置” > “配置” > “应用程序设置”。 
 
 姓名：`APPLICATIONINSIGHTS_CONNECTION_STRING` 值：`Connection String Value`
 
@@ -155,7 +156,7 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 ## <a name="regions-that-require-endpoint-modification"></a>需要修改终结点的区域
 
-目前唯一需要修改终结点的区域是 [Azure 政府](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)和 [Azure 中国](https://docs.microsoft.com/azure/china/resources-developer-guide)。
+目前唯一需要修改终结点的区域是 [Azure 政府](../../azure-government/compare-azure-government-global-azure.md#application-insights)和 [Azure 中国](/azure/china/resources-developer-guide)。
 
 |区域 |  终结点名称 | Value |
 |-----------------|:------------|:-------------|
@@ -179,5 +180,5 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解有关 Azure 政府的自定义修改的更多信息，请参阅有关 [Azure 监视和管理](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)的详细指南。
-- 若要了解有关 Azure 中国的详细信息，请查阅 [Azure 中国 Playbook](https://docs.microsoft.com/azure/china/)。
+- 若要了解有关 Azure 政府的自定义修改的更多信息，请参阅有关 [Azure 监视和管理](../../azure-government/compare-azure-government-global-azure.md#application-insights)的详细指南。
+- 若要了解有关 Azure 中国的详细信息，请查阅 [Azure 中国 Playbook](/azure/china/)。

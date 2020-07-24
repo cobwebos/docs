@@ -8,11 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 8cd9c1ba85666a6556e24e4966e1e6cb9b7ef124
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77cbd5a3c293b137f49a11263580ef45407c6c2b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449299"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090461"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>使用 Key Vault 和 Azure PowerShell 管理存储帐户密钥
 
@@ -45,7 +46,7 @@ Key Vault 是已在所有 Azure AD 租户中预先注册的 Microsoft 应用程�
 | 租户 | 云 | 应用程序 ID |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
-| Azure AD | Azure 公有云 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Azure AD | Azure 公共 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 | 其他  | 任意 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>先决条件
@@ -163,7 +164,7 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>启用密钥重新生成
 
-如果希望 Key Vault 定期重新生成存储帐户密钥，可以使用 Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) cmdlet 设置重新生成周期。 此示例将重新生成周期设置为 3 天。 三天后 Key Vault 将重新生成 "key2"，并将活动密钥从 "key2" 交换为 "key1" （替换为经典存储帐户的 "primary" 和 "辅助"）。
+如果希望 Key Vault 定期重新生成存储帐户密钥，可以使用 Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) cmdlet 设置重新生成周期。 此示例将重新生成周期设置为 3 天。 当需要进行旋转时，Key Vault 会重新生成未激活的密钥，然后将新创建的密钥设置为活动密钥。 一次只使用一个密钥来颁发 SAS 令牌。 这是活动密钥。
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)

@@ -3,11 +3,12 @@ title: IoT Edge 配额的实时视频分析-Azure
 description: 本文介绍 IoT Edge 配额和限制的实时视频分析。
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: 9b01db8f1120174806f4b687f7e9ebc4e2386f3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90141fa850c9ab3e3abbea15001249da0736ac45
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84260340"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091804"
 ---
 # <a name="quotas-and-limitations"></a>配额和限制
 
@@ -46,11 +47,8 @@ ms.locfileid: "84260340"
 * 信号入口处理器
    * 必须从 RTSP 源立即下游。
 * 资产接收器 
-   * 每个图形拓扑最多可以有一个此类节点。
-      * 如果使用资产接收器，则文件接收器不能存在，反之亦然。
    * 必须立即从 RTSP 源或信号入口处理器下游。
 * 文件接收器
-   * 每个图形拓扑最多可以有一个此类节点（请参阅上面有关资产接收器的说明）。
    * 必须立即从信号入口处理器下游。
    * 不能立即成为 HTTP 扩展处理器或动作检测处理器的下游
 * IoT 中心接收器

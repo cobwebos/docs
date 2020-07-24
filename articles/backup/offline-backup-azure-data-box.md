@@ -3,12 +3,12 @@ title: 使用 Azure Data Box 进行脱机备份
 description: 了解如何使用 Azure Data Box 从 MARS 代理脱机将较大的初始备份数据植入恢复服务保管库。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: a60d749f270c9efab0649b49b5c0c41945faddf5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e377ccde714c1486ff731d24d5a0cd64364bca37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513687"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091022"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>使用 Azure Data Box 进行 Azure 备份脱机备份
 
@@ -153,7 +153,7 @@ MARS 代理在本地系统上下文中运行，因此需要向连接 Azure Data 
 若要确保可以使用 NFS 协议将 Data Box 设备装载为本地系统，请执行以下操作：
 
 1. 在安装了 MARS 代理的 Windows server 上启用 NFS 功能的客户端。 指定备用源*WIM： D： \Sources\Install.wim： 4*。
-1. 将 PSExec 从下载 <https://download.sysinternals.com/files/PSTools.zip> 到安装了 MARS 代理的服务器。
+1. 将 PsExec 从[Sysinternals](/sysinternals/downloads/psexec)页下载到安装了 MARS 代理的服务器。
 1. 打开提升的命令提示符，并运行以下命令，并将包含*PSExec.exe*的目录作为当前目录。
 
     ```cmd
@@ -195,7 +195,7 @@ MARS 代理在本地系统上下文中运行，因此需要向连接 Azure Data 
 
     ![获取订阅 ID Data Box 作业](./media/offline-backup-azure-data-box/fetching-databox-jobs.png)
 
-1. 选择已解压缩、已连接并解锁 Data Box 磁盘的正确 Data Box 顺序。 选择“**下一页**”。
+1. 选择已解压缩、已连接并解锁 Data Box 磁盘的正确 Data Box 顺序。 选择“**下一步**”。
 
     ![选择 Data Box 订单](./media/offline-backup-azure-data-box/select-databox-order.png)
 

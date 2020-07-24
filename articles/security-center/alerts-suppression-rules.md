@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 18b1b4cb959603f5898e7c725102f35d7abc90cf
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 2dce179365b2640ade3675f19dbacf6fc27b26c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849020"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089934"
 ---
 # <a name="suppress-alerts-from-azure-security-centers-threat-protection"></a>禁止来自 Azure 安全中心的威胁防护的警报
 
@@ -23,9 +23,7 @@ ms.locfileid: "85849020"
 
 - 发布状态：**预览**
 - 必需的角色：“安全管理员”和“所有者”可以创建/删除规则 。 “安全读取者”和“读取者”可以查看规则 。
-- 云： 
-    - ✔ 商业云
-    - ✔ 国家/主权（US Gov、中国 Gov、其他 Gov）
+- 云：✔国家/地区✔商业云，US Gov，中国 Gov，其他 Gov）
 
 
 ## <a name="what-are-suppression-rules"></a>什么是抑制规则？

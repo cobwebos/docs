@@ -3,23 +3,26 @@ title: 在合作伙伴中心创建商业 marketplace 帐户
 description: 了解如何在合作伙伴中心创建 Microsoft 商业 marketplace 帐户。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: guide
-ms.date: 04/14/2020
-ms.openlocfilehash: 4a178feb4bdf0bc361185e21e47ccdceac3a7f21
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/01/2020
+ms.openlocfilehash: 5a55d66bfed19f6d88d4ff13a9f59d7e791664cc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110004"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092178"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心创建商业 marketplace 帐户
 
-若要将产品/服务发布到[Azure Marketplace](https://azuremarketplace.microsoft.com/)或[Microsoft AppSource](https://appsource.microsoft.com/)，需要在合作伙伴中心的 "商用 Marketplace" 计划中创建一个帐户。 本文介绍如何创建合作伙伴中心帐户，以及如何向商业市场计划添加新的发布者。
+若要将产品/服务发布到[Azure Marketplace](https://azuremarketplace.microsoft.com/)或[Microsoft AppSource](https://appsource.microsoft.com/)，必须在合作伙伴中心的 "商用 Marketplace" 计划中创建一个帐户。 本文介绍如何创建合作伙伴中心帐户，以及如何向商业市场计划添加新的发布者。
 
 >[!IMPORTANT]
->如果[云合作伙伴门户](https://cloudpartner.azure.com)中有一个已移动到合作伙伴中心的帐户，则无需创建新帐户。 有关详细信息，请参阅[适用于从云合作伙伴门户移动的发布服务器](#for-publishers-who-are-moving-from-the-cloud-partner-portal)。
+>若要在商业市场中发布产品/服务，你必须使用与公司或组织关联的工作帐户。 不支持个人帐户。
 
-## <a name="before-you-begin"></a>开始之前
+>[!IMPORTANT]
+>如果在云合作伙伴门户（CPP）中有帐户，则将其移动到合作伙伴中心;不需要创建新帐户。 有关详细信息，请参阅[适用于从云合作伙伴门户移动的发布者](#for-publishers-who-moved-from-the-cloud-partner-portal)。
+
+## <a name="before-you-begin"></a>准备阶段
 
 若要在合作伙伴中心创建帐户，请确保：
 
@@ -43,7 +46,7 @@ ms.locfileid: "86110004"
 - [提供发布者配置文件](#provide-your-publisher-profile)
 
 >[!IMPORTANT]
->如果你有一个已移动到合作伙伴中心的[云合作伙伴门户](https://cloudpartner.azure.com)帐户，则无需创建新帐户。 有关详细信息，请参阅[适用于从云合作伙伴门户移动的发布服务器](#for-publishers-who-are-moving-from-the-cloud-partner-portal)。
+>如果云合作伙伴门户中有帐户，则将其移动到合作伙伴中心;不需要创建新帐户。 有关详细信息，请参阅[适用于从云合作伙伴门户移动的发布者](#for-publishers-who-moved-from-the-cloud-partner-portal)。
 
 ### <a name="register-on-the-partner-center-enrollment-page"></a>在合作伙伴中心注册页面上注册
 
@@ -94,7 +97,7 @@ ms.locfileid: "86110004"
 请确保使用你的帐户信息。
 
 >[!IMPORTANT]
->如果[云合作伙伴门户](https://cloudpartner.azure.com/)中有一个已移动到合作伙伴中心的帐户，则无需创建新帐户。 有关详细信息，请参阅[适用于从云合作伙伴门户移动的发布服务器](#for-publishers-who-are-moving-from-the-cloud-partner-portal)。
+>如果云合作伙伴门户中有帐户，则将其移动到合作伙伴中心;不需要创建新帐户。 有关详细信息，请参阅[适用于从云合作伙伴门户移动的发布者](#for-publishers-who-moved-from-the-cloud-partner-portal)。
 
 ### <a name="what-if-im-already-enrolled-in-the-microsoft-partner-network"></a>如果我已在 Microsoft 合作伙伴网络中注册怎么办？
 
@@ -154,15 +157,13 @@ ms.locfileid: "86110004"
 
 你现在已在合作伙伴中心创建了一个商业应用商店帐户。 有关详细信息，请参阅[商业市场概述](./commercial-marketplace-overview.md)。 有关添加发布服务器的帮助，请参阅[将新发布服务器添加到商用 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
 
-## <a name="for-publishers-who-are-moving-from-the-cloud-partner-portal"></a>对于从云合作伙伴门户移动的出版商
+## <a name="for-publishers-who-moved-from-the-cloud-partner-portal"></a>对于从云合作伙伴门户移动的出版商
 
-如果你的帐户已从[云合作伙伴门户](https://cloudpartner.azure.com)迁移，则无需创建新的合作伙伴中心帐户。 你应该在登录到现有云合作伙伴门户帐户后，在电子邮件和横幅通知中收到指向新合作伙伴中心帐户的自定义链接。
+如果有云合作伙伴门户帐户，我们会将其移动到合作伙伴中心。 不需要创建新的合作伙伴中心帐户。 你应该在登录到现有云合作伙伴门户帐户后，在电子邮件和横幅通知中收到指向新合作伙伴中心帐户的自定义链接。
 
 选择自定义链接并启用了新的合作伙伴中心帐户后，可以通过转到合作伙伴中心的 "[商用 marketplace" 仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)来返回到你的帐户。
 
-发布协议和公司配置文件信息将迁移到新的合作伙伴中心帐户，以及以前设置的帐户付出的配置文件信息、用户帐户和权限以及与云合作伙伴门户帐户关联的活动产品/服务。
-
-将你的帐户信息从云合作伙伴门户移到合作伙伴中心后，你将不能再使用云合作伙伴门户来进行帐户更新，或者管理用户、权限和计费。 在有限的时间内，你在合作伙伴中心进行的任何帐户更新都将在你的只读云合作伙伴门户帐户中自动更新，直到最终不推荐使用。
+发布协议和公司配置文件信息将转换为你的新合作伙伴中心帐户，以及以前设置的帐户付出的配置文件信息、用户帐户和权限，以及与云合作伙伴门户帐户关联的活动产品/服务。
 
 ## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>向商用 marketplace 计划添加新发布者
 

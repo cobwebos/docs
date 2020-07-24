@@ -3,12 +3,12 @@ title: Azure Migrate 常见问题
 description: 获取有关 Azure Migrate 服务的常见问题解答。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 9b71888b284fd9cc125def4758d1e3800a92acf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 307a1d417b54ad9546c6e409ad8b105ea443da0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81530311"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090002"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate：常见问题
 
@@ -17,7 +17,7 @@ ms.locfileid: "81530311"
 - 关于[Azure Migrate 设备](common-questions-appliance.md)的问题
 - 有关[发现、评估和依赖项可视化](common-questions-discovery-assessment.md)的问题
 
-## <a name="what-is-azure-migrate"></a>Azure Migrate 是什么？
+## <a name="what-is-azure-migrate"></a>什么是 Azure Migrate？
 
 Azure Migrate 提供了一个中心，用于跟踪发现、评估和将本地应用、工作负荷和私有云 Vm 迁移到 Azure。 该中心提供用于评估和迁移的 Azure Migrate 工具以及第三方 ISV 产品。 [了解详细信息](migrate-services-overview.md)。
 
@@ -32,6 +32,10 @@ Azure Migrate 提供了一个中心，用于跟踪发现、评估和将本地应
 [Azure Site Recovery](../site-recovery/site-recovery-overview.md)是一种灾难恢复解决方案。 
 
 Azure Migrate：服务器迁移工具使用一些后端 Site Recovery 功能来迁移某些本地计算机的迁移。
+
+## <a name="i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version"></a>我有一个项目，该项目具有以前的经典体验 Azure Migrate。 如何实现开始使用新版本吗？
+
+无法将以前版本中的项目或组件升级到新版本。 你需要[创建一个新的 Azure Migrate 项目](create-manage-projects.md)，并向其[添加评估和迁移工具](how-to-add-tool-first-time.md)。 使用教程了解如何使用可用的评估和迁移工具。 如果已将 Log Analytics 工作区附加到经典项目，则在删除经典项目后，可以将其附加到当前版本的项目。
 
 ## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Azure Migrate：服务器评估和地图工具包之间的区别是什么？
 

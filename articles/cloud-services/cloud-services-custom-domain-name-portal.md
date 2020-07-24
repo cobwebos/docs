@@ -8,11 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: e764e6a474b9843d43f9e8af9cf3b6a8ddf37189
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37189df6b1c9bf3f9fca185226f2ee3eeb3ddd7d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811646"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092722"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>为 Azure 云服务配置自定义域名
 创建云服务时，Azure 会将其分配给 **cloudapp.net** 的子域。 例如，如果云服务名为“contoso”，则用户能够在 URL（如 `http://contoso.cloudapp.net`）上访问应用程序。 Azure 还会分配一个虚拟 IP 地址。
@@ -62,7 +63,7 @@ A 记录将域（例如 **contoso.com** 或 **www\.contoso.com**）或通配符�
        ![显示站点 URL 的速览部分][csurl]
 
        **或者**
-   * 安装并配置 [Azure Powershell](/powershell/azure/overview)，并使用以下命令：
+   * 安装并配置 [Azure Powershell](/powershell/azure/)，并使用以下命令：
 
        ```powershell
        Get-AzureDeployment -ServiceName yourservicename | Select Url
@@ -95,7 +96,7 @@ A 记录将域（例如 **contoso.com** 或 **www\.contoso.com**）或通配符�
        ![显示 VIP 的速览部分][vip]
 
        **或者**
-   * 安装并配置 [Azure Powershell](/powershell/azure/overview)，然后使用以下命令：
+   * 安装并配置 [Azure Powershell](/powershell/azure/)，然后使用以下命令：
 
        ```powershell
        get-azurevm -servicename yourservicename | get-azureendpoint -VM {$_.VM} | select Vip

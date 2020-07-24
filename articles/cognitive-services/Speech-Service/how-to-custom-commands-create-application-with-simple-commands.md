@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 8e0927ccd8c94f589adf6eb11004b728f697b6e1
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 6552d13ab68d8028cd95b18f2d0895d53bba462c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362401"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090954"
 ---
 # <a name="create-application-with-simple-commands"></a>通过简单的命令创建应用程序
 
@@ -84,7 +84,7 @@ ms.locfileid: "85362401"
     | 设置    | 建议的值                          | 描述                                        |
     | ---------- | ---------------------------------------- | -------------------------------------------------- |
     | **Name**       | ConfirmationResponse                  | 描述规则用途的名称          |
-    | **条件** | 无                                     | 确定何时可以运行规则的条件    |
+    | **条件** | None                                     | 确定何时可以运行规则的条件    |
     | **操作**    | > 简单编辑器 > 第一种变体发送语音响应 >`Ok, turning the tv on` | 规则条件为 true 时要执行的操作 |
     
 
@@ -96,11 +96,10 @@ ms.locfileid: "85362401"
 1. 选择 "**保存**" 以保存操作。
 1. 返回 "**完成规则**" 部分，选择 "**保存**" 以保存所有更改。 
 
-
- > [!NOTE]
+    > [!NOTE]
     > 不需要使用命令附带的默认完成规则。 如果需要，可以删除现有的默认完成规则并添加自己的规则。
 
-### <a name="try-it-out"></a>试用
+### <a name="try-it-out"></a>试试看
 
 使用 "测试聊天" 面板测试行为
 1. 选择位于右窗格顶部的 "**定型**" 图标。
@@ -126,8 +125,8 @@ ms.locfileid: "85362401"
 | 设置    | 建议的值                          |
 | ---------- | ---------------------------------------- |
 | 名称  | ConfirmationResponse                  |
-| 条件 | 无                                     |
-| 操作    | > 简单编辑器 > 第一种变体发送语音响应 >`Ok, setting temperature to 40 degrees` |
+| 条件 | None                                     |
+| “操作”    | > 简单编辑器 > 第一种变体发送语音响应 >`Ok, setting temperature to 40 degrees` |
 
 选择 "**保存**" 以保存对命令所做的所有更改。
 
@@ -137,12 +136,12 @@ ms.locfileid: "85362401"
 | 设置    | 建议的值                          |
 | ---------- | ---------------------------------------- |
 | 规则名称  | ConfirmationResponse                  |
-| 条件 | 无                                     |
-| 操作    | > 简单编辑器 > 第一种变体发送语音响应 >`Ok, setting an alarm for 9 am tomorrow` |
+| 条件 | None                                     |
+| “操作”    | > 简单编辑器 > 第一种变体发送语音响应 >`Ok, setting an alarm for 9 am tomorrow` |
 
 选择 "**保存**" 以保存对命令所做的所有更改。
 
-## <a name="try-it-out"></a>试用
+## <a name="try-it-out"></a>试试看
 
 使用 "测试聊天" 面板测试行为
 1. 选择“训练”。 训练成功后，请选择 "**测试**"，然后尝试：

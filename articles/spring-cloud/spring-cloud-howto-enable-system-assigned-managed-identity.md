@@ -6,17 +6,18 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
-ms.openlocfilehash: 2aadc5806f0c5c610dc28b32039ca944af87ab13
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.custom: devx-track-java
+ms.openlocfilehash: 1b9d7326ec13176fbe65ba430a8a33bb93a48f74
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231720"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091447"
 ---
-# <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>如何为 Azure 弹簧 Cloud 应用程序启用系统分配的托管标识
+# <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>如何为 Azure Spring Cloud 应用程序启用系统分配的托管标识
 Azure 资源的托管标识提供了自动管理的标识，可在 Azure Active Directory azure 应用程序之类的 Azure 资源。 此标识可用于通过支持 Azure AD 身份验证的任何服务的身份验证，这样就无需在代码中插入凭据了。
 
-本文介绍如何使用 0.2.4) 版本中提供的 Azure 门户和 CLI (为 Azure 春季云应用启用和禁用系统分配的托管标识。
+本文介绍如何使用 Azure 门户和 CLI （版本0.2.4 中提供）为 Azure 春季云应用启用和禁用系统分配的托管标识。
 
 ## <a name="prerequisites"></a>先决条件
 如果不熟悉 Azure 资源的托管标识，请参阅[概述部分](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
@@ -82,5 +83,5 @@ az spring-cloud app identity remove -n app_name -s service_name -g resource_grou
 ## <a name="next-steps"></a>后续步骤
 * [如何将托管标识用于 Java SDK](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)
 * [使用春季 boot 入门中的托管标识访问 Azure Key Vault](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/spring/azure-spring-boot-starter-keyvault-secrets/README.md#use-msi--managed-identities)
-* [详细了解 Azure 资源的托管标识](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
+* [了解有关 Azure 资源的托管标识的详细信息](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
 

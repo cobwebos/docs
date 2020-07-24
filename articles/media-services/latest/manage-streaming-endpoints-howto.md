@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2020
 ms.author: juliako
-ms.openlocfilehash: 75ba2ad87eabd7ff6b0625ad95ab24a8ae58dd0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb3b319c583422b32798fce9cef4c73a4aa1f8de
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79461038"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090036"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>通过媒体服务 v3 管理流式处理终结点
 
 创建媒体服务帐户后，一个处于“已停止”状态的默认[流式处理终结点](streaming-endpoint-concept.md)会添加到帐户。   若要开始对内容进行流式处理并利用[动态打包](dynamic-packaging-overview.md)和[动态加密](content-protection-overview.md)功能，必须确保要从其流式获取内容的流式处理终结点处于“正在运行”状态。 
 
-本文介绍如何使用不同的技术在流式处理终结点上执行 [start](https://docs.microsoft.com/rest/api/media/streamingendpoints/start) 命令。 
+本文介绍如何使用不同的技术在流式处理终结点上执行 [start](/rest/api/media/streamingendpoints/start) 命令。 
  
 > [!NOTE]
 > 仅当流式处理终结点处于运行状态时才进行计费。
@@ -45,7 +46,7 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 有关详细信息，请参阅： 
 
-* [启动 StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints/start) 参考文档。
+* [启动 StreamingEndpoint](/rest/api/media/streamingendpoints/start) 参考文档。
 * 启动流式处理终结点是一个异步操作。 
 
     若要了解如何监视长时间运行的操作，请参阅[长时间运行的操作](media-services-apis-overview.md)。
@@ -69,7 +70,7 @@ az ams streaming-endpoint start [--account-name]
                                 [--subscription]
 ```
 
-有关详细信息，请参阅 [az ams streaming-endpoint start](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest#az-ams-streaming-endpoint-start)。
+有关详细信息，请参阅 [az ams streaming-endpoint start](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest#az-ams-streaming-endpoint-start)。
 
 ## <a name="use-sdks"></a>使用 SDK
 
@@ -105,4 +106,4 @@ if (streamingEndpoint != null)
 ## <a name="next-steps"></a>后续步骤
 
 * [媒体服务 v3 OpenAPI 规范 (Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)
-* [流式处理终结点操作](https://docs.microsoft.com/rest/api/media/streamingendpoints)
+* [流式处理终结点操作](/rest/api/media/streamingendpoints)

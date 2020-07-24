@@ -3,11 +3,12 @@ title: 通过 PagerDuty 发送 Azure 服务运行状况警报
 description: 获取有关发送到 PagerDuty 实例的服务运行状况事件的个性化通知。
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: bb449a5279f3cea55e6aec2f72edfd11fb26227a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c70af2ad2ded919cda0b174705d1d3245eac627
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77654063"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091532"
 ---
 # <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>使用 Webhook 通过 PagerDuty 发送 Azure 服务运行状况警报
 
@@ -38,7 +39,7 @@ ms.locfileid: "77654063"
 
 ## <a name="create-an-alert-using-pagerduty-in-the-azure-portal"></a>在 Azure 门户中使用 PagerDuty 创建警报
 ### <a name="for-a-new-action-group"></a>对于新操作组：
-1. 执行[使用 Azure 门户为新操作组创建有关服务运行状况通知的警报](../azure-monitor/platform/alerts-activity-log-service-notifications.md)中的步骤 1 到步骤 8。
+1. 执行[使用 Azure 门户为新操作组创建有关服务运行状况通知的警报](./alerts-activity-log-service-notifications-portal.md)中的步骤 1 到步骤 8。
 
 1. 在“操作”  列表中定义：
 
@@ -86,5 +87,5 @@ ms.locfileid: "77654063"
 ## <a name="next-steps"></a>后续步骤
 - 了解如何[为现有问题管理系统配置 Webhook 通知](service-health-alert-webhook-guide.md)。
 - 查看[活动日志警报 webhook 架构](../azure-monitor/platform/activity-log-alerts-webhook.md)。 
-- 了解[服务运行状况通知](../azure-monitor/platform/service-notifications.md)。
+- 了解[服务运行状况通知](./service-notifications.md)。
 - 详细了解[操作组](../azure-monitor/platform/action-groups.md)。

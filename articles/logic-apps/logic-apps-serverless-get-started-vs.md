@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: 2e27958dd9379a26ca7e7f4d7e427e5afa216e29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86ee81f3802b7ec7f8189123192c20143a08cf3d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75981167"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090240"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>在 Visual Studio 中使用 Azure 逻辑应用和 Azure Functions 生成第一个无服务器应用
 
@@ -31,7 +32,7 @@ ms.locfileid: "75981167"
     > 安装 Visual Studio 2019 或 2017 时，请务必选择“Azure 开发”工作负荷。 
 
   * [用于 .NET 的 Microsoft Azure SDK（2.9.1 或更高版本）](https://azure.microsoft.com/downloads/)。 
-  详细了解[用于 .NET 的 Azure SDK](https://docs.microsoft.com/dotnet/azure/dotnet-tools?view=azure-dotnet)。
+  详细了解[用于 .NET 的 Azure SDK](/dotnet/azure/dotnet-tools?view=azure-dotnet)。
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)。
 
@@ -43,7 +44,7 @@ ms.locfileid: "75981167"
 
     * [Visual Studio 2015](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015)
   
-    可以直接从 Visual Studio Marketplace 下载并安装 Azure 逻辑应用工具，或了解[如何从 Visual Studio 内部安装此扩展](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions)。 
+    可以直接从 Visual Studio Marketplace 下载并安装 Azure 逻辑应用工具，或了解[如何从 Visual Studio 内部安装此扩展](/visualstudio/ide/finding-and-using-visual-studio-extensions)。 
     完成安装后，请务必重启 Visual Studio。
 
   * 用于在本地调试 Functions 的 [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools)。
@@ -135,7 +136,7 @@ ms.locfileid: "75981167"
 
 ## <a name="create-your-azure-functions-project"></a>创建 Azure Functions 项目
 
-若要使用 JavaScript、Python、F#、PowerShell、Batch 或 Bash 创建 Functions 项目和函数，请按[使用 Azure Functions Core Tools](../azure-functions/functions-run-local.md) 中的步骤操作。 若要在解决方案中使用 C# 开发 Azure 函数，请按[将 .NET 类库发布为函数应用](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/16/publishing-a-net-class-library-as-a-function-app/)中的步骤使用 C# 类库。
+若要使用 JavaScript、Python、F#、PowerShell、Batch 或 Bash 创建 Functions 项目和函数，请按[使用 Azure Functions Core Tools](../azure-functions/functions-run-local.md) 中的步骤操作。 若要在解决方案中使用 C# 开发 Azure 函数，请按[将 .NET 类库发布为函数应用](https://azure.microsoft.com/blog/)中的步骤使用 C# 类库。
 
 ## <a name="deploy-functions-from-visual-studio"></a>从 Visual Studio 部署函数
 

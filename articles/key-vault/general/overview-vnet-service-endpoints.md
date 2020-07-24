@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: eff74fca5ac21a7df431b55cd5c307d3e994010b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34e1b7e58a3ceb6c1c2d2b6bc4efd34ee93e9e4e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84792126"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090478"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虚拟网络服务终结点
 
@@ -39,10 +39,10 @@ ms.locfileid: "84792126"
 
 以下是配置防火墙和虚拟网络所需的步骤。 无论使用的是 PowerShell、Azure CLI 还是 Azure 门户，上述步骤均适用。
 
-1. 启用[Key Vault 日志记录](logging.md)）以查看详细的访问日志。 当防火墙和虚拟网络规则阻止访问 Key Vault 时，此操作有助于进行诊断。 （此为可选步骤，但强烈建议你执行。）
-2. 为目标虚拟网络和子网启用“Key Vault 的服务终结点”  。
+1. 启用 [Key Vault 日志记录](logging.md)以查看详细的访问日志。 当防火墙和虚拟网络规则阻止访问 Key Vault 时，此操作有助于进行诊断。 （此为可选步骤，但强烈建议你执行。）
+2. 为目标虚拟网络和子网启用“Key Vault 的服务终结点”。
 3. 为 Key Vault 设置防火墙和虚拟网络规则，仅限特定虚拟网络、子网和 IPv4 地址范围能够访问该 Key Vault。
-4. 如果需要所有受信任的 Microsoft 服务都能够访问此 Key Vault，则启用该选项，允许“受信任的 Azure 服务”连接到 Key Vault。 
+4. 如果需要所有受信任的 Microsoft 服务都能够访问此 Key Vault，则启用该选项，允许“受信任的 Azure 服务”连接到 Key Vault。
 
 有关详细信息，请参阅[配置 Azure 密钥保管库防火墙和虚拟网络](network-security.md)。
 
@@ -59,14 +59,14 @@ ms.locfileid: "84792126"
 
 ## <a name="trusted-services"></a>受信服务
 
-以下是允许访问 Key Vault 的受信服务列表（前提是启用了“允许受信任的服务”选项）。 
+以下是允许访问 Key Vault 的受信服务列表（前提是启用了“允许受信任的服务”选项）。
 
 |受信服务|支持的使用方案|
 | --- | --- |
 |Azure 虚拟机部署服务|[将证书从客户托管的 Key Vault 部署到 VM](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/)。|
 |Azure 资源管理器模板部署服务|[在部署期间传递安全值](../../azure-resource-manager/templates/key-vault-parameter.md)。|
 |Azure 应用程序网关 v2 SKU|[使用 Key Vault 证书进行 TLS 终止](/azure/application-gateway/key-vault-certs)|
-|Azure 磁盘加密卷加密服务|允许在虚拟机部署期间访问 BitLocker 密钥 (Windows VM) 或 DM 密码 (Linux VM) 和密钥加密密钥。 这将启用[Azure 磁盘加密](../../security/fundamentals/encryption-overview.md)。|
+|Azure 磁盘加密卷加密服务|允许在虚拟机部署期间访问 BitLocker 密钥 (Windows VM) 或 DM 密码 (Linux VM) 和密钥加密密钥。 这将启用 [Azure 磁盘加密](../../security/fundamentals/encryption-overview.md)。|
 |Azure 备份|允许使用 [Azure 备份](../../backup/backup-introduction-to-azure-backup.md)在 Azure 虚拟机备份期间备份和还原相关密钥和机密。|
 |Exchange Online 和 SharePoint Online|允许使用[客户密钥](/microsoft-365/compliance/customer-key-overview)访问 Azure 存储服务加密的客户密钥。|
 |Azure 信息保护|允许访问 [Azure 信息保护](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)的租户密钥。|
@@ -80,7 +80,7 @@ ms.locfileid: "84792126"
 |Azure 事件中心|[允许访问客户托管密钥方案的密钥保管库](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
 |Azure 服务总线|[允许访问客户托管密钥方案的密钥保管库](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
 |Azure 导入/导出| [将 Azure Key Vault 中的客户管理的密钥用于导入/导出服务](https://docs.microsoft.com/azure/storage/common/storage-import-export-encryption-key-portal)
-|Azure 容器注册表|[使用客户托管密钥的注册表加密](../../container-registry/container-registry-customer-managed-keys.md)
+|Azure 容器注册表|[使用客户托管密钥的注册表加密](../../container-registry/container-registry-customer-managed-keys.md)<br><br/>[将项目传输到另一个注册表](../../container-registry/container-registry-transfer-images.md)
 
 > [!NOTE]
 > 必须设置相关 Key Vault 访问策略，才能允许相应的服务访问 Key Vault。

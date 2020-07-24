@@ -7,11 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: tracking-python
-ms.openlocfilehash: ca186fa62605953bfb90c1a4669fc8283eb78469
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 432ff655ef072d491227d297e620612203f73d3f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559782"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092977"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -301,15 +302,15 @@ logger.warning('After the span')
 ```
 请注意，范围中的日志消息有一个对应的 `spanId`。 它与属于名为 `hello` 的范围的 `spanId` 相同。
 
-可以使用 `AzureLogHandler` 导出日志数据。 有关详细信息，请参阅[此文章](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs)。
+可以使用 `AzureLogHandler` 导出日志数据。 有关详细信息，请参阅[此文章](./opencensus-python.md#logs)。
 
 ## <a name="telemetry-correlation-in-net"></a>.NET 中的遥测关联
 
 .NET 至今已定义了多种方式来关联遥测和诊断日志：
 
-- `System.Diagnostics.CorrelationManager` 允许跟踪 [LogicalOperationStack 和 ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx)。
-- `System.Diagnostics.Tracing.EventSource` 和 Windows 事件跟踪 (ETW) 定义了 [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx) 方法。
-- `ILogger` 使用[日志范围](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes)。
+- `System.Diagnostics.CorrelationManager` 允许跟踪 [LogicalOperationStack 和 ActivityId](/dotnet/api/system.diagnostics.correlationmanager?view=netcore-3.1)。
+- `System.Diagnostics.Tracing.EventSource` 和 Windows 事件跟踪 (ETW) 定义了 [SetCurrentThreadActivityId](/dotnet/api/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid?view=netcore-3.1#overloads) 方法。
+- `ILogger` 使用[日志范围](/aspnet/core/fundamentals/logging#log-scopes)。
 - Windows Communication Foundation (WCF) 和 HTTP 将“当前”上下文传播关联到一起。
 
 但是，这些方法并未实现自动分布式跟踪支持。 `DiagnosticSource` 支持自动跨计算机关联。 .NET 库支持 `DiagnosticSource`，并允许通过 HTTP 等传输方法自动跨计算机传播关联上下文。
@@ -327,7 +328,7 @@ ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-java"></a>Java 中的遥测关联
 
-[Java 代理](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)以及 [Java SDK](../../azure-monitor/app/java-get-started.md) 2.0.0 或更高版本支持自动关联遥测。 对于所有在请求范围内发出的遥测（例如跟踪、异常、自定义事件），它会自动填充 `operation_id`。 对于通过 HTTP 进行的服务到服务调用，它还会传播关联标头（如前所述），前提是 [Java SDK 代理](../../azure-monitor/app/java-agent.md)已配置。
+[Java 代理](./java-in-process-agent.md)以及 [Java SDK](../../azure-monitor/app/java-get-started.md) 2.0.0 或更高版本支持自动关联遥测。 对于所有在请求范围内发出的遥测（例如跟踪、异常、自定义事件），它会自动填充 `operation_id`。 对于通过 HTTP 进行的服务到服务调用，它还会传播关联标头（如前所述），前提是 [Java SDK 代理](../../azure-monitor/app/java-agent.md)已配置。
 
 > [!NOTE]
 > Application Insights Java 代理自动收集 JMS、Kafka、Netty/Webflux 等的请求和依赖项。 对于 Java SDK，关联功能仅支持通过 Apache HttpClient 进行的调用。 该 SDK 不支持跨消息传送技术（例如，Kafka、RabbitMQ 和 Azure 服务总线）自动进行上下文传播。 

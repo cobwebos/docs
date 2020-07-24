@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2020
+ms.date: 07/19/2020
 ms.author: memildin
-ms.openlocfilehash: f3ef633ff0271d74eea7320faadf17685976d3b6
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 2f995f3f6defd73575d9e1bf19326a828f1e6038
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970461"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089900"
 ---
 # <a name="azure-container-registry-integration-with-security-center"></a>Azure 容器注册表与安全中心的集成
 
@@ -30,6 +30,11 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
 
 - 发布状态：**公开上市**
 - 必需的角色：**安全读取器**和[Azure 容器注册表读取器角色](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+- 支持的注册表：
+    - ✔可以从公共 internet 访问并提供外壳访问权限的 Linux 托管 ACR 注册表。
+    - ✘ Windows 承载的 ACR 注册表。
+    - ✘ "Private" 注册表-安全中心要求可以从公共 internet 访问注册表。 如果你使用防火墙、服务终结点或使用专用终结点（例如，Azure 私有链接）限制了对注册表的访问权限，则安全中心当前无法连接或扫描你的注册表。
+    - ✘超级最简单映像，例如[Docker 暂存](https://hub.docker.com/_/scratch/)映像，或仅包含应用程序及其运行时依赖项的 "Distroless" 映像，无需使用包管理器、SHELL 或 OS。
 - 云： 
     - ✔ 商业云
     - ✘美国政府云
@@ -40,7 +45,7 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
 
 每当将映像推送到注册表时，安全中心都会自动扫描该映像。 若要触发映像扫描，请将该映像推送到存储库。
 
-扫描完成时（通常在大约10分钟后，最长可达40分钟），会提供如下所示的安全中心建议：
+扫描完成时（通常在大约2分钟后，最长可能需要15分钟），结果将作为安全中心建议提供，如下所示：
 
 [![有关在 Azure 容器注册表 (ACR) 托管映像中发现的漏洞的 Azure 安全中心建议示例](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
@@ -58,11 +63,6 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
 
 
 ## <a name="acr-with-security-center-faq"></a>具有安全中心常见问题的 ACR
-
-### <a name="what-types-of-images-can-azure-security-center-scan"></a>Azure 安全中心可以扫描哪些类型的映像？
-安全中心扫描基于 Linux OS 的映像，这些映像提供 shell 访问权限。 
-
-Qualys 扫描程序不支持极简映像，例如 [Docker 暂存](https://hub.docker.com/_/scratch/)映像或仅包含应用程序及其运行时依赖项而没有包管理器、shell 或 OS 的“Distroless”映像。
 
 ### <a name="how-does-azure-security-center-scan-an-image"></a>Azure 安全中心如何扫描映像？
 先从注册表中拉取映像。 然后在独立沙盒中运行该映像，沙盒中包含的 Qualys 扫描程序会提取已知漏洞的列表。

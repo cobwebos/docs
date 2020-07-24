@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 734f61c2e96002516e9e15af88d2c6b0fce00e98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 013515e0608bf790ceef8dc13d9d547496306610
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79480736"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092841"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-environment"></a>为混合环境启用用于 VM 的 Azure Monitor
 
@@ -18,7 +19,7 @@ ms.locfileid: "79480736"
 
 本文介绍如何为你的数据中心或其他云环境中托管的虚拟机或物理计算机启用用于 VM 的 Azure Monitor。 在此过程结束时，你将已成功地开始监视环境中的虚拟机，并了解这些虚拟机是否会遇到任何性能或可用性问题。
 
-在开始之前，请务必查看[先决条件](vminsights-enable-overview.md)，并验证你的订阅和资源是否符合要求。 查看 [Log Analytics Linux 和 Windows 代理](../../log-analytics/log-analytics-agent-overview.md)的要求与部署方法。
+在开始之前，请务必查看[先决条件](vminsights-enable-overview.md)，并验证你的订阅和资源是否符合要求。 查看 [Log Analytics Linux 和 Windows 代理](../platform/log-analytics-agent.md)的要求与部署方法。
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -155,7 +156,7 @@ configuration VMInsights {
 * [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../../azure-resource-manager/templates/deploy-powershell.md)
 * [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/templates/deploy-cli.md)
 
-若要使用 Azure CLI，首先需要在本地安装并使用 CLI。 必须运行 Azure CLI 2.0.27 版或更高版本。 若要确定版本，请运行 `az --version`。 若要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+若要使用 Azure CLI，首先需要在本地安装并使用 CLI。 必须运行 Azure CLI 2.0.27 版或更高版本。 若要确定版本，请运行 `az --version`。 若要安装或升级 Azure CLI，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ### <a name="create-and-execute-a-template"></a>创建和执行模板
 
@@ -234,7 +235,7 @@ configuration VMInsights {
 
     **Linux**：查找正在运行的进程 "microsoft 依赖关系代理"。
 
-2. 是否处于 [Log Analytics 的免费定价层](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)？ 免费计划最多允许五台仅有的计算机。 任何后续的计算机都不会出现在映射上，即使之前的五台计算机不再发送数据，也是如此。
+2. 是否处于 [Log Analytics 的免费定价层](./solutions.md)？ 免费计划最多允许五台仅有的计算机。 任何后续的计算机都不会出现在映射上，即使之前的五台计算机不再发送数据，也是如此。
 
 3. 计算机是否正在向 Azure Monitor 日志发送日志和性能数据？ 对计算机执行以下查询：
 

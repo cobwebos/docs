@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 32ff08c62e53384b64981e1c40a3485b17a8ce11
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: f15f0c3f6b442419d3d2e3a253d15465e130eae2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918763"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090597"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT 中心支持具有专用链接和托管标识的虚拟网络
 
@@ -47,6 +47,8 @@ IoT 中心的功能，包括[消息路由](./iot-hub-devguide-messages-d2c.md)�
 * 对于在本地网络中运行的设备，在 Azure VNet 中设置[虚拟专用网络 (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) 或 [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 专用对等互连。
 
 ### <a name="set-up-a-private-endpoint-for-iot-hub-ingress"></a>设置一个用于 IoT 中心入口的专用终结点
+
+专用终结点适用于 IoT 中心设备 Api （如设备到云的消息）和服务 Api （如创建和更新设备）。
 
 1. 在 Azure 门户中，依次选择“网络”、“专用终结点连接”，然后单击 “+专用终结点”  。
 
@@ -180,7 +182,7 @@ IoT 中心可将消息路由到客户拥有的存储帐户。 为了允许路由
 
 5. 导航到“自定义终结点”部分，然后单击“添加” 。 选择“存储”作为终结点类型。
 
-6. 在显示的页面上，为终结点提供名称，选择要在 blob 存储中使用的容器，提供编码，以及文件名格式。 选择“系统分配”作为存储终结点的“身份验证类型” 。 单击“创建”  按钮。
+6. 在显示的页面上，为终结点提供名称，选择要在 blob 存储中使用的容器，提供编码，以及文件名格式。 选择“系统分配”作为存储终结点的“身份验证类型” 。 单击“创建”按钮。
 
 现在，已将自定义存储终结点设置为使用中心的系统分配的标识，且即使存在防火墙限制，它仍有权访问存储资源。 现在可以使用此终结点来设置路由规则。
 
@@ -208,7 +210,7 @@ IoT 中心可将消息路由到客户拥有的存储帐户。 为了允许路由
 
 1. 在 Azure 门户中，导航到服务总线的“访问控制 (IAM)”选项卡，然后在“添加角色分配”部分下，单击“添加”  。
 
-2. 为“角色”选择“服务总线数据发送方”，为“分配访问权限给”选择“Azure AD 用户”、“组”或“服务主体”，并在下拉列表中选择你的 IoT 中心的资源名称   。 单击“保存”按钮。
+2. 为“角色”选择“服务总线数据发送方”，为“分配访问权限给”选择“Azure AD 用户”、“组”或“服务主体”，并在下拉列表中选择你的 IoT 中心的资源名称   。 单击“保存”按钮  。
 
 3. 导航到服务总线中的“防火墙和虚拟网络”选项卡，并启用“允许从所选网络进行访问”选项 。 在“异常”列表中，勾选“允许受信任的 Microsoft 服务访问此服务总线”复选框 。 单击“保存”按钮  。
 
@@ -228,7 +230,7 @@ IoT 中心的文件上传功能允许设备将文件上传到客户拥有的存�
 
 2. 为“角色”选择“存储 Blob 数据参与者”（[而不是“参与者”或“存储帐户参与者”角色](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues)），为“分配访问权限给”选择“Azure AD 用户”、“组”或“服务主体”，并在下拉列表中选择你的 IoT 中心的资源名称  。 单击“保存”按钮。
 
-3. 导航到存储帐户中的“防火墙和虚拟网络”选项卡，并启用“允许从所选网络进行访问”选项 。 在“异常”列表中，勾选“允许受信任的 Microsoft 服务访问此存储帐户”复选框 。 单击“保存”按钮。
+3. 导航到存储帐户中的“防火墙和虚拟网络”选项卡，并启用“允许从所选网络进行访问”选项 。 在“异常”列表中，勾选“允许受信任的 Microsoft 服务访问此存储帐户”复选框 。 单击“保存”按钮  。
 
 4. 在 IoT 中心的“资源”页上，导航到“文件上传”选项卡。
 

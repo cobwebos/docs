@@ -3,11 +3,12 @@ title: 为容器 Azure Monitor 配置 Azure Red Hat OpenShift v3. x |Microsoft D
 description: 本文介绍如何使用 Azure Red Hat OpenShift 版本3和更高版本上托管 Azure Monitor 来配置监视 Kubernetes 群集。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e04ef42971756cffe0906e1ddfb8406e876588bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 438a0513b6aceb876df4f9e3d0f4510c7cf8235e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800505"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092892"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>配置适用于容器 Azure Monitor 的 Azure Red Hat OpenShift v3
 
@@ -20,7 +21,7 @@ ms.locfileid: "85800505"
 可以使用以下受支持的方法，为新的或 Azure Red Hat OpenShift 的一个或多个现有部署启用容器 Azure Monitor：
 
 - 对于来自 Azure 门户或使用 Azure 资源管理器模板的现有群集。
-- 对于使用 Azure 资源管理器模板的新群集，或在使用[Azure CLI](https://docs.microsoft.com/cli/azure/openshift?view=azure-cli-latest#az-openshift-create)创建新群集时使用。
+- 对于使用 Azure 资源管理器模板的新群集，或在使用[Azure CLI](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create)创建新群集时使用。
 
 ## <a name="supported-and-unsupported-features"></a>支持和不支持的功能
 
@@ -105,7 +106,7 @@ ms.locfileid: "85800505"
 
 - [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/templates/deploy-cli.md)
 
-如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 版本2.0.65 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 版本2.0.65 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 1. 下载并保存到本地文件夹、Azure 资源管理器模板和参数文件，使用以下命令通过监视外接程序创建群集：
 
@@ -158,7 +159,7 @@ ms.locfileid: "85800505"
 
 ### <a name="from-the-azure-portal"></a>通过 Azure 门户
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 在 "Azure 门户" 菜单或从 "主页" 中，选择 " **Azure Monitor**"。 在“见解”部分，选择“容器”。 
 
@@ -192,7 +193,7 @@ ms.locfileid: "85800505"
 
 - [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/templates/deploy-cli.md)
 
-如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 版本2.0.65 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 版本2.0.65 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 1. 下载模板和参数文件，使用以下命令通过监视外接程序更新群集：
 
@@ -242,4 +243,4 @@ ms.locfileid: "85800505"
 
 - 若要从群集中擦除和分析 Prometheus 指标，请查看[配置 Prometheus 指标抓取](container-insights-prometheus-integration.md)
 
-- 若要了解如何停止监视包含容器 Azure Monitor 的群集，请参阅[如何停止监视 Azure Red Hat OpenShift 群集](container-insights-optout-openshift.md)。
+- 若要了解如何停止监视包含容器 Azure Monitor 的群集，请参阅[如何停止监视 Azure Red Hat OpenShift 群集](./container-insights-optout-openshift-v3.md)。

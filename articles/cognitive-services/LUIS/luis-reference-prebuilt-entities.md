@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/03/2019
 ms.author: diberry
-ms.openlocfilehash: a49452653f8ac4bcc62758d801a235be0929d314
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 831e766fbb10d616b3fbaf8f878228a9a51ece37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84686624"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090937"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>LUIS 模型中每个区域性的实体
 
@@ -44,8 +44,8 @@ ms.locfileid: "84686624"
 
 支持以下实体：
 
-|预生成实体|```zh-CN``` |
-------|:------:|
+| 预生成实体 | zh-CN |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    V2、V3   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    V2、V3   |
@@ -54,7 +54,7 @@ ms.locfileid: "84686624"
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [关键短语](luis-reference-prebuilt-keyphrase.md)   |    -   |
 [数字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序号](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    V2、V3   |
@@ -66,8 +66,8 @@ ms.locfileid: "84686624"
 
 支持以下实体：
 
-|预生成实体|```nl-NL``` |
-------|:------:|
+| 预生成实体 | nl-NL |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    V2、V3   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    V2、V3   |
 [型](luis-reference-prebuilt-deprecated.md)   |    -   |
@@ -76,7 +76,7 @@ ms.locfileid: "84686624"
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [关键短语](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [数字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序号](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -88,8 +88,8 @@ ms.locfileid: "84686624"
 
 支持以下实体：
 
-|预生成实体|```en-US``` |
-------|:------:|
+| 预生成实体 | en-US |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    V2、V3   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    V2、V3   |
@@ -98,7 +98,7 @@ ms.locfileid: "84686624"
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    V2、V3   |
 [关键短语](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [数字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序号](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    V2、V3   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    V2、V3   |
@@ -110,8 +110,8 @@ ms.locfileid: "84686624"
 
 支持以下实体：
 
-|预生成实体|```fr-FR``` |
-------|:------:|
+| 预生成实体 | fr-FR |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    V2、V3   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    V2、V3   |
@@ -120,7 +120,7 @@ ms.locfileid: "84686624"
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [关键短语](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [数字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序号](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |   -   |
@@ -132,8 +132,8 @@ ms.locfileid: "84686624"
 
 支持以下实体：
 
-|预生成实体|```fr-CA``` |
-------|:------:|
+| 预生成实体 | fr-CA |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    V2、V3   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    V2、V3   |
@@ -142,7 +142,7 @@ ms.locfileid: "84686624"
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [关键短语](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [数字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序号](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -154,8 +154,8 @@ ms.locfileid: "84686624"
 
 支持以下实体：
 
-|预生成实体|```de-DE``` |
-------|:------:|
+|预生成实体 | de-DE |
+| -------------- | :---: |
 [Age](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    V2、V3   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    V2、V3   |
@@ -164,7 +164,7 @@ ms.locfileid: "84686624"
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [关键短语](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [数字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序号](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -178,8 +178,8 @@ ms.locfileid: "84686624"
 
 支持以下实体：
 
-|预生成实体|```it-IT``` |
-------|:------:|
+| 预生成实体 | it-IT |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    V2、V3   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    V2、V3   |
 [型](luis-reference-prebuilt-deprecated.md)   |    -   |
@@ -188,7 +188,7 @@ ms.locfileid: "84686624"
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [关键短语](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [数字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序号](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -200,8 +200,8 @@ ms.locfileid: "84686624"
 
 支持以下实体：
 
-|预生成实体|```ja-JP``` |
-------|:------:|
+|预生成实体 | ja-JP |
+| -------------- | :---: |
 [Age](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    V2、-   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    V2、-   |
 [型](luis-reference-prebuilt-deprecated.md)   |    -   |
@@ -210,7 +210,7 @@ ms.locfileid: "84686624"
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [关键短语](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [数字](luis-reference-prebuilt-number.md)   |    V2、-   |
-[序号](luis-reference-prebuilt-ordinal.md)   |    V2、-   |
+[Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2、-   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    V2、-   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -222,8 +222,8 @@ ms.locfileid: "84686624"
 
 支持以下实体：
 
-|预生成实体|```ko-KR``` |
-------|:------:|
+| 预生成实体 | ko-KR |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    -   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    -   |
 [型](luis-reference-prebuilt-deprecated.md)   |    -   |
@@ -232,7 +232,7 @@ ms.locfileid: "84686624"
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [关键短语](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [数字](luis-reference-prebuilt-number.md)   |    -   |
-[序号](luis-reference-prebuilt-ordinal.md)   |    -   |
+[Ordinal](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    -   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -244,8 +244,8 @@ ms.locfileid: "84686624"
 
 支持以下实体：
 
-|预生成实体|```pt-BR``` |
-------|:------:|
+| 预生成实体 | pt-BR |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    V2、V3   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    V2、V3   |
@@ -254,7 +254,7 @@ ms.locfileid: "84686624"
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [关键短语](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [数字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序号](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -266,8 +266,8 @@ ms.locfileid: "84686624"
 
 支持以下实体：
 
-|预生成实体|```es-ES``` |
-------|:------:|
+| 预生成实体 | es-ES |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    V2、V3   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    V2、V3   |
@@ -276,7 +276,7 @@ ms.locfileid: "84686624"
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [关键短语](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [数字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序号](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -288,8 +288,8 @@ ms.locfileid: "84686624"
 
 支持以下实体：
 
-|预生成实体|```es-MX``` |
-------|:------:|
+| 预生成实体 | es-MX |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    -   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    -   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    -   |
@@ -298,7 +298,7 @@ ms.locfileid: "84686624"
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [关键短语](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [数字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序号](luis-reference-prebuilt-ordinal.md)   |    -   |
+[Ordinal](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    -   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -316,8 +316,8 @@ KeyPhrase 不适用于葡萄牙语（巴西）```pt-BR``` 的所有子区域性�
 
 <!--
 
-|Prebuilt entity|```tr-tr``` |
-------|:------:|
+| Prebuilt entity | tr-tr |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    -   |
 [Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (ex: penny)  |    -   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    -   |

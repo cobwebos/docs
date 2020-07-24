@@ -3,17 +3,18 @@ title: 排查适用于 Apache Kafka 的 Azure 事件中心的问题
 description: 本文介绍如何排查适用于 Apache Kafka 的 Azure 事件中心的问题
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c2403fd51729ef8809b9a70383ad6f9fd91e52b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 034541aa6ea683c0e294ca8790b02f0dc60b5440
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322685"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090563"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>针对事件中心的 Apache Kafka 故障排除指南
 本文提供的故障排除技巧适用于你在使用适用于 Apache Kafka 的事件中心时可能会遇到的问题。 
 
 ## <a name="server-busy-exception"></a>服务器繁忙异常
-由于 Kafka 限制，你可能会收到“服务器忙”异常。 使用 AMQP 客户端时，事件中心会在遇到服务限制时立即返回“服务器忙”异常。 它相当于“稍后重试”消息。 在 Kafka 中，消息在完成前会存在延迟。 将在生成/提取响应中以 `throttle_time_ms` 形式返回延迟时间长度（以毫秒为单位）。 大多数情况下，系统不会在事件中心仪表板上将这些延迟的请求记录为 ServerBusy 异常， 而是使用响应的 `throttle_time_ms` 值来指示吞吐量已超出预配的配额。
+由于 Kafka 限制，你可能会收到 "服务器忙" 异常。 使用 AMQP 客户端时，事件中心会在服务中止时立即返回**服务器忙**例外。 它相当于“稍后重试”消息。 在 Kafka 中，消息在完成前会存在延迟。 将在生成/提取响应中以 `throttle_time_ms` 形式返回延迟时间长度（以毫秒为单位）。 在大多数情况下，这些延迟的请求不会在事件中心仪表板上记录为服务器忙异常。 而是使用响应的 `throttle_time_ms` 值来指示吞吐量已超出预配的配额。
 
 如果流量过多，服务会出现以下行为：
 
@@ -48,13 +49,13 @@ org.apache.kafka.common.errors.UnknownServerException: The server experienced an
 - **防火墙阻止流量** - 确保防火墙未阻止端口 **9093**。
 - **TopicAuthorizationException** - 此异常的最常见原因包括：
     - 配置文件中的连接字符串中有拼写错误，或者
-    - 尝试在“基本”层命名空间中使用用于 Kafka 的事件中心。 [只有“标准”和“专用”层命名空间支持](https://azure.microsoft.com/pricing/details/event-hubs/)用于 Kafka 的事件中心。
+    - 尝试在“基本”层命名空间中使用用于 Kafka 的事件中心。 [仅标准和专用层命名空间支持](https://azure.microsoft.com/pricing/details/event-hubs/)Kafka 功能的事件中心。
 - **Kafka 版本不匹配** - 用于 Kafka 生态系统的事件中心支持 Kafka 1.0 及更高版本。 某些使用 Kafka 0.10 及更高版本的应用程序有时可能会有效，因为 Kafka 协议具有后向兼容性，但我们强烈建议你不要使用旧的 API 版本。 Kafka 0.9 及更低版本不支持必需的 SASL 协议，因此无法连接到事件中心。
 - **与 Kafka 配合使用时，AMQP 标头上出现奇怪的编码** - 通过 AMQP 将事件发送到事件中心时，系统会采用 AMQP 编码来序列化任何 AMQP 有效负载标头。 Kafka 使用者不会反序列化 AMQP 中的标头。 若要读取标头值，请手动解码 AMQP 标头。 或者，如果你知道要通过 Kafka 协议来使用 AMQP 标头，则可避免使用这些标头。 有关详细信息，请参阅[此 GitHub 问题](https://github.com/Azure/azure-event-hubs-for-kafka/issues/56)。
 - **SASL 身份验证** - 将框架与事件中心所需的 SASL 身份验证协议配合使用可能不是看起来那么容易。 看看你是否可以在 SASL 身份验证的基础上使用框架的资源来排查配置问题。 
 
 ## <a name="limits"></a>限制
-我们可以将 Apache Kafka 与事件中心 Kafka 进行比较。 大多数情况下，用于 Kafka 生态系统的事件中心的默认值、属性、错误代码和常规行为与 Apache Kafka 相同。 下面列出了这二者明显不同的情况（或事件中心施加了某个限制而 Kafka 没有施加该限制的情况）：
+我们可以将 Apache Kafka 与事件中心 Kafka 进行比较。 大多数情况下，事件中心 Kafka 具有相同的默认值、属性、错误代码和 Apache Kafka 执行的常规行为。 下面列出了这两个显式不同的实例（或事件中心施加了 Kafka 不存在的限制）：
 
 - `group.id` 属性的最大长度为 256 个字符
 - `offset.metadata.max.bytes` 的最大大小为 1024 个字节
@@ -67,4 +68,4 @@ org.apache.kafka.common.errors.UnknownServerException: The server experienced an
 - [针对事件中心的 Apache Kafka 开发人员指南](apache-kafka-developer-guide.md)
 - [针对事件中心的 Apache Kafka 迁移指南](apache-kafka-migration-guide.md)
 - [常见问题解答 - 用于 Apache Kafka 的事件中心](apache-kafka-frequently-asked-questions.md)
-- [建议的配置](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)
+- [建议的配置](apache-kafka-configurations.md)

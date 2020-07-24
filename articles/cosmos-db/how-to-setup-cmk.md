@@ -4,13 +4,14 @@ description: 了解如何使用 Azure Key Vault 为 Azure Cosmos DB 帐户配置
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 07/16/2020
 ms.author: thweiss
-ms.openlocfilehash: 443e037f89508b0fc3b01ba90f884c139f4c64be
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 989fbb123e39f85aeeb8eba9961f9aeab1e76c84
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027770"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092589"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>使用 Azure Key Vault 为 Azure Cosmos 帐户配置客户管理的密钥
 
@@ -227,7 +228,15 @@ az cosmosdb show \
 
   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-rot.png" alt-text="创建新的密钥版本":::
 
-- 通过更新帐户的 `keyVaultKeyUri` 属性，将当前使用的密钥与完全不同的密钥交换。 下面介绍如何在 PowerShell 中执行此操作：
+- 通过更新帐户中的密钥 URI 来交换当前用于完全不同的密钥。 从 Azure 门户中转到 Azure Cosmos 帐户，并从左侧菜单中选择 "**数据加密**"：
+
+    :::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text=""数据加密" 菜单项":::
+
+    然后，将**密钥 URI**替换为要使用的新密钥，然后选择 "**保存**"：
+
+    :::image type="content" source="./media/how-to-setup-cmk/portal-key-swap.png" alt-text="更新密钥 URI":::
+
+    下面介绍如何在 PowerShell 中实现相同的结果：
 
     ```powershell
     $resourceGroupName = "myResourceGroup"
@@ -286,7 +295,11 @@ Azure Cosmos 帐户中存储的所有数据都将通过客户托管密钥加密�
 
 ### <a name="how-can-i-tell-if-customer-managed-keys-are-enabled-on-my-azure-cosmos-account"></a>如何判断是否在 Azure Cosmos 帐户上启用了客户管理的密钥？
 
-可以通过编程方式提取 Azure Cosmos 帐户的详细信息，并查找 `keyVaultKeyUri` 属性是否存在。 请参阅上面的方法，[在 PowerShell 中](#using-powershell)[使用 Azure CLI](#using-azure-cli). 实现此操作。
+在 Azure 门户中，请在左侧菜单中转到你的 Azure Cosmos 帐户并查看**数据加密**条目;如果此条目存在，则会在你的帐户中启用客户托管的密钥：
+
+:::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text=""数据加密" 菜单项":::
+
+还可以通过编程方式提取 Azure Cosmos 帐户的详细信息，并查找属性是否存在 `keyVaultKeyUri` 。 请参阅上面的方法，[在 PowerShell 中](#using-powershell)[使用 Azure CLI](#using-azure-cli). 实现此操作。
 
 ### <a name="how-do-customer-managed-keys-affect-a-backup"></a>客户管理的密钥如何影响备份？
 

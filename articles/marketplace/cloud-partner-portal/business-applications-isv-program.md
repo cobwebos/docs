@@ -3,19 +3,20 @@ title: Microsoft Business Applications 独立软件供应商 (ISV) Connect 计�
 description: 下面介绍如何载入 Business Applications ISV Connect Program。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 6/25/2020
+ms.topic: article
+author: qianw211
 ms.author: dsindona
-ms.openlocfilehash: 37d8c26bd41f06a39d4404c142aef5faa0bf199c
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 7/14/2020
+ms.openlocfilehash: 65d18bca4f8f7b5d655d91ece1c9d966311b701b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170235"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092212"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications 独立软件供应商 (ISV) Connect 计划加入指南
 
-[BUSINESS APPLICATIONS Isv Connect Program](https://partner.microsoft.com/solutions/business-applications/isv-overview)旨在利用 Dynamics 365 客户参与和 PowerApps) dynamics CE 应用程序 (或 Dynamics 365 财务和运营) dynamics Ops 应用程序 (，加速独立软件供应商 (isv 的增长和整体成功度) 构建新式的基于云的业务线 (LOB) 解决方案。 
+[BUSINESS APPLICATIONS ISV Connect Program](https://partner.microsoft.com/solutions/business-applications/isv-overview)旨在利用 Dynamics 365 客户参与和 PowerApps （dynamics CE 应用程序）或 Dynamics 365 财务和运营（dynamics Ops 应用程序），加速独立软件供应商（isv）构建现代的基于云的业务线（LOB）解决方案的增长和总体成功。 
 
 若要注册并利用 Business Applications ISV Connect 计划的所有技术、营销和销售支持权益，请完成本文中的以下部分。 
 
@@ -37,8 +38,8 @@ ms.locfileid: "86170235"
 > 此步骤要求合作伙伴中心的 "*所有者*" 或 "*经理*" 角色对法律协议进行签名。 
 
 1.  登录[合作伙伴中心](https://partner.microsoft.com/dashboard)。
-2.  选择 "**设置**" (齿轮 "图标) 并选择"**开发人员设置**"。
-3.  选择**协议**。 
+2.  选择 "**设置**" （齿轮图标），然后选择 "**开发人员设置**"。
+3.  选择**协议**。
 4.  选择版本链接并查看协议。
 5.  若要同意并接受协议，请选择 "**接受协议**"。
 
@@ -50,7 +51,7 @@ ms.locfileid: "86170235"
 > 此步骤要求合作伙伴中心的 "*所有者*" 或 "*经理*" 角色更新计费信息。
 
 1.  登录[合作伙伴中心](https://partner.microsoft.com/dashboard)。
-2.  选择 "**设置**" (齿轮 "图标) 并选择"**开发人员设置**"。
+2.  选择 "**设置**" （齿轮图标），然后选择 "**开发人员设置**"。
 3.  在 "**帐户**" 下，选择 "**计费配置文件**"。
 4.  查看从你的法律实体填充的主要联系人和计费信息，并进行任何必要的更新。
 5.  如果适用，请提供税务 ID/VAT ID 设置。
@@ -69,15 +70,14 @@ ms.locfileid: "86170235"
 - [对于财务和运营的 Dynamics 365](https://docs.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)
 
 > [!IMPORTANT]
-> 需要每6个月再次验证应用，以使其保持在 AppSource 上。 有关详细信息，请参阅 marketplace 策略[商业市场认证策略](https://docs.microsoft.com/legal/marketplace/certification-policies)。 
+> 你需要每6个月重新认证你的应用，以使其保持在 AppSource 上。 有关详细信息，请参阅 marketplace 策略[商业市场认证策略](https://docs.microsoft.com/legal/marketplace/certification-policies)。 
 
 ## <a name="next-steps"></a>后续步骤
 
 询问你的客户经理或联系[Microsoft 合作伙伴支持](https://aka.ms/marketplacepublishersupport)部门以获取你的帐户帮助。 有关 Business Applications ISV Connect 程序的一般信息，请参阅：
 
-- **[Isv (online Business Applications) ](https://aka.ms/bizappsisvweb)**
-
-- **[Business Applications Isv (PDF) 的新程序概述](https://aka.ms/bizappsisvprogram)**
-
-- **[ISV Connect 计划策略](https://aka.ms/bizappsisvpolicies)**
-
+- [适用于 isv 的 Business Applications](https://partner.microsoft.com/solutions/business-applications/isv-overview) （联机文章）
+- Business Applications Isv （PDF）的[新程序概述](https://aka.ms/BizAppsISVProgram)
+- [BUSINESS APPLICATIONS ISV Connect 计划常见问题解答](https://assetsprod.microsoft.com/business-applications-partner-faq.pdf)（PDF）
+- [适用于 Business Applications isv 的未来计划](https://cloudblogs.microsoft.com/dynamics365/bdm/2019/04/17/upcoming-program-for-business-applications-isvs/)（博客文章）
+- [ISV Connect 计划策略](https://aka.ms/bizappsisvpolicies)（PDF）

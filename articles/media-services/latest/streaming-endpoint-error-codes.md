@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
-ms.openlocfilehash: 7d3a85e6fcc5b9d1c5ca1511cd7edd05ff5d9ae4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fc201cc1f3d4d26ca7b9e949d2917688e6fea8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582700"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091974"
 ---
 # <a name="streaming-endpoint-origin-errors"></a>流式处理终结点（来源）错误 
 
@@ -200,7 +200,7 @@ ms.locfileid: "80582700"
 
 ## <a name="see-also"></a>另请参阅
 
-- [编码错误代码](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
+- [编码错误代码](/rest/api/media/jobs/get#joberrorcode)
 - [Azure 媒体服务概念](concepts-overview.md)
 - [配额和限制](limits-quotas-constraints.md)
 

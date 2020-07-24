@@ -2,13 +2,13 @@
 title: Service Fabric 和容器概述
 description: 概述 Service Fabric，以及如何使用容器部署微服务应用程序。 本文概述容器的用法以及 Service Fabric 提供的功能。
 ms.topic: conceptual
-ms.date: 8/8/2018
-ms.openlocfilehash: 7c92910a92c8fa3061a1a0d53611734cf681484f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 7/9/2020
+ms.openlocfilehash: cd0ec7dd2247fdd791df362fa34542178c17df4d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259227"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091651"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric 和容器
 
@@ -53,7 +53,7 @@ Docker 提供 API 用于在 Linux 内核容器上创建和管理容器。 Docker
 
 #### <a name="windows-server-containers"></a>Windows Server 容器
 
-Windows Server 2016 提供两种不同类型的容器，它们的隔离程度有所不同。 Windows Server 容器与 Docker 容器相似，因为两者都能提供命名空间和文件系统隔离，但与它们运行所在的主机共享内核。 在 Linux 上，这种隔离一贯是由控制组 (cgroup) 和命名空间提供的，Windows Server 容器的行为与此类似。
+Windows Server 2016 和更高版本提供了两种不同类型的容器，它们的隔离级别不同。 Windows Server 容器与 Docker 容器相似，因为两者都能提供命名空间和文件系统隔离，但与它们运行所在的主机共享内核。 在 Linux 上，这种隔离一贯是由控制组 (cgroup) 和命名空间提供的，Windows Server 容器的行为与此类似。
 
 包含 Hyper 支持的 Windows 容器提供更多隔离性和安全性，因为任何容器都不与其他容器或主机共享操作系统内核。 由于具有这么高的安全隔离性，启用 Hyper-V 的容器适合用于对付潜在恶意的多租户方案。
 有关基于 Windows 的教程，请参阅[在 Windows 上创建第一个 Service Fabric 容器应用程序](service-fabric-get-started-containers.md)。
@@ -73,7 +73,10 @@ Windows Server 2016 提供两种不同类型的容器，它们的隔离程度有
 
 ## <a name="service-fabric-support-for-containers"></a>Service Fabric 对容器的支持
 
-Service Fabric 支持在 Linux 上部署 Docker 容器，在 Windows Server 2016 上部署 Windows Server 容器，同时支持 Hyper-V 隔离模式。 
+Service Fabric 支持在 Linux 上部署 Docker 容器，在 Windows Server 2016 和更高版本上部署 Windows Server 容器，同时支持 Hyper-v 隔离模式。
+
+> [!NOTE]
+> 容器在本地单节点 Service Fabric 群集上不受支持（OneBox 上的 Linux 群集以及本地 Service Fabric 安装上的 Windows 群集都不受支持）。
 
 Service Fabric 提供一个[应用程序模型](service-fabric-application-model.md)，其中的容器表示放置多个服务副本的应用程序主机。 Service Fabric 还支持[来宾可执行方案](service-fabric-guest-executables-introduction.md)，在其中不是使用内置的 Service Fabric 编程模型，而是在容器内打包以任何语言或框架编写的现有应用程序。 此方案是容器的常见用例。
 

@@ -1,21 +1,21 @@
 ---
-title: 安全性
+title: Azure 认知服务安全性
 titleSuffix: Azure Cognitive Services
 description: 了解有关使用认知服务的各种安全注意事项。
 services: cognitive-services
-author: aahill
+author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.author: aahi
+ms.date: 07/10/2020
+ms.author: erhopf
 ms.custom: tracking-python
-ms.openlocfilehash: d97b944d5d18a39d6eaf84b55363f487a2c17dbf
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 51a9829a7ea19665e1081a48207f176b1a8e68c0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611401"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090835"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure 认知服务安全性
 
@@ -203,9 +203,19 @@ NSString* value =
 
 * 翻译工具
 
-对于语言理解，Microsoft 工程师将无法访问 E0 SKU 中的任何客户数据。 若要请求使用 E0 SKU，请填写并提交 [LUIS 服务请求表单](https://aka.ms/cogsvc-cmk)。 大约需要3-5 个工作日内就会收到请求的状态。 根据需要，你可以将置于队列中并在空间可用时进行批准。 批准将 E0 SKU 用于 LUIS 后，需要从 Azure 门户创建新的语言理解资源，并选择 E0 作为定价层。 用户无法从 F0 升级到新的 E0 SKU。
+对于以下服务，Microsoft 工程师将无法访问 E0 层中的任何客户数据： 
 
-语音服务当前不支持客户密码箱。 但是，可以使用 BYOS （"自带存储"）来存储客户数据，从而使你可以实现类似的数据控件来[客户密码箱](../security/fundamentals/customer-lockbox-overview.md)。 请记住，语音服务数据保持不变，并在创建语音资源的区域进行处理。 这适用于任何静态数据和传输中的数据。 使用自定义功能（如自定义语音和自定义语音）时，将在 BYOS （如果使用）和语音服务资源所在的同一区域内传输、存储和处理所有客户数据。
+* 语言理解
+* 人脸
+* 内容审查器
+* 个性化体验创建服务
+
+> [!IMPORTANT]
+> 对于**窗体识别器**，Microsoft 工程师将无法访问2020年7月10日之后创建的资源中的任何客户数据。
+
+若要请求使用 E0 SKU，请填写并提交此 [请求表单](https://aka.ms/cogsvc-cmk)。 大约需要3-5 个工作日内就会收到请求的状态。 根据需要，你可以将置于队列中并在空间可用时进行批准。 批准将 E0 SKU 用于 LUIS 后，需要从 Azure 门户创建新资源，并选择 E0 作为定价层。 用户无法从 F0 升级到新的 E0 SKU。
+
+语音服务当前不支持客户密码箱。 但是，可以使用 "自带存储" （BYOS）来存储客户数据，从而使你可以实现类似的数据控件来客户密码箱。 请记住，语音服务数据保持不变，并在创建语音资源的区域进行处理。 这适用于任何静态数据和传输中的数据。 使用自定义功能（如自定义语音和自定义语音）时，将在 BYOS （如果使用）和语音服务资源所在的同一区域内传输、存储和处理所有客户数据。
 
 > [!IMPORTANT]
 > Microsoft 不**会**使用客户数据来改进其语音模型。 此外，如果禁用了终结点日志记录，并且未使用任何自定义，则不会存储任何客户数据。 

@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 850f4e3754af790e6b9bab5c68c9bd10849bba37
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9fac5d3efabc5d9f796c91d688f35e01aeefdca3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965274"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092756"
 ---
 # <a name="rendering-using-azure"></a>使用 Azure 进行渲染
 
@@ -79,7 +79,7 @@ Azure Batch 可用于许多工作负荷，但以下功能专门用于简化和�
 * API：
   * 使用 [REST](/rest/api/batchservice)、[.NET](/dotnet/api/overview/azure/batch)、[Python](/python/api/overview/azure/batch)、[Java](/java/api/overview/azure/batch) 或其他支持的 API 编写代码。  开发人员可将 Azure Batch 功能集成到其现有应用程序或工作流（不管是在云中还是本地）中。  例如，[Autodesk Maya 插件](https://github.com/Azure/azure-batch-maya)利用 Batch Python API 来调用 Batch、创建和管理池、提交作业和任务，以及监视状态。
 * 命令行工具：
-  * 可以使用 [Azure 命令行](/cli/azure/)或 [Azure PowerShell](/powershell/azure/overview) 来编写 Batch 脚本。
+  * 可以使用 [Azure 命令行](/cli/azure/)或 [Azure PowerShell](/powershell/azure/) 来编写 Batch 脚本。
   * 具体而言，Batch CLI 模板支持可以简化创建池和提交作业的操作。
 * UI：
   * [Batch Explorer](https://github.com/Azure/BatchExplorer) 是一个跨平台客户端工具，可在其中管理和监视 Batch 帐户。此外，与 Azure 门户 UI 相比，它提供的功能更丰富。  我们为每个支持的应用程序提供了一组定制的池和作业模板，用于轻松创建池和提交作业。

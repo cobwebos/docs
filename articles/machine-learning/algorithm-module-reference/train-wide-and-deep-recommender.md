@@ -1,5 +1,5 @@
 ---
-title: 为图像模型评分
+title: 使用 "训练范围 & Deep 推荐器" 模块
 titleSuffix: Azure Machine Learning
 description: 了解如何使用“训练 Wide & Deep 推荐器”模块来训练建议模型。
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: 2ac5e5874ebb34b68cbfe8be1986852c67b97c21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 234217b6571307db04941cc0b9989d3438cde1b7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84739788"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090172"
 ---
 # <a name="train-wide--deep-recommender"></a>训练 Wide & Deep 推荐器
 本文介绍了如何使用 Azure 机器学习设计器（预览版）中的“训练 Wide & Deep 推荐器”模块，来训练建议模型。 本模块基于由 Google 提出的 Wide & Deep 学习。

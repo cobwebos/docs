@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/21/2020
 ms.author: juliako
-ms.openlocfilehash: 9788c4663908497b51fbaaf7f824125d857e7c81
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 33c762e2f2a9bed90991f7b85e0fb83fbb43765c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774410"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090155"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>获取访问媒体服务 API 的凭据  
 
@@ -55,7 +56,7 @@ ms.locfileid: "83774410"
 
 通过“理 AAD 应用和密钥”部分，可选择或创建新的 Azure AD 应用并生成密钥。 出于安全原因，边栏选项卡关闭后密钥无法显示。 应用程序使用应用程序 ID 和密钥进行验证，以便为媒体服务获取有效的令牌。
 
-请确保你拥有足够的权限，可向 Azure AD 租户注册应用程序，并将应用程序分配给 Azure 订阅中的角色。 有关详细信息，请参阅[所需的权限](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)。
+请确保你拥有足够的权限，可向 Azure AD 租户注册应用程序，并将应用程序分配给 Azure 订阅中的角色。 有关详细信息，请参阅[所需的权限](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
 
 #### <a name="connect-to-media-services-api"></a>连接到媒体服务 API
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 48d9990115a0e786d12915acf1eaadc196a00b0b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c9ece4860f8babba110da8536e5028f337fbc772
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170031"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092943"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>适用于 Azure 逻辑应用的连接器
 
@@ -50,7 +50,7 @@ ms.locfileid: "86170031"
 
   也可以使用这些类别来识别连接器，不过，某些连接器可能属于多个类别。 例如，SAP 既是企业连接器，也是本地连接器：
 
-  | 连接器 | 说明 |
+  | 连接器 | 描述 |
   |---|---|
   | [**托管连接器**](#managed-api-connectors) | 创建使用 Azure Blob 存储、Office 365、Dynamics、Power BI、OneDrive、Salesforce、SharePoint Online 等服务的逻辑应用。 |
   | [**本地连接器**](#on-premises-connectors) | 安装并设置[本地数据网关][gateway-doc]后，这些连接器可以帮助逻辑应用访问 SQL Server、SharePoint Server、Oracle DB、文件共享等本地系统。 |
@@ -64,7 +64,7 @@ ms.locfileid: "86170031"
 
 ### <a name="connect-from-an-integration-service-environment"></a>从 integration service 环境连接
 
-对于需要直接访问 Azure 虚拟网络中的资源的逻辑应用，你可以创建一个独立的[integration service 环境 (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ，你可以在该环境中生成、部署和运行针对专用资源的逻辑应用。 在逻辑应用设计器中，当你在 ISE 中浏览要用于逻辑应用的连接器时，会在内置触发器和操作上显示 "**核心**" 标签，而**ISE**标签显示在某些连接器上：
+对于需要直接访问 Azure 虚拟网络中的资源的逻辑应用，你可以创建一个独立的[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ，在其中你可以在专用资源上构建、部署和运行逻辑应用。 在逻辑应用设计器中，当你在 ISE 中浏览要用于逻辑应用的连接器时，会在内置触发器和操作上显示 "**核心**" 标签，而**ISE**标签显示在某些连接器上：
 
 * **核心**：此标签内置触发器和操作与逻辑应用在同一 ISE 中运行，例如：
 
@@ -235,7 +235,7 @@ ms.locfileid: "86170031"
 
 连接到 SharePoint Online，以便可以管理文件、附件、文件夹，等等。
 
-[![API 图标 ][dynamics-365-icon]<br> **Dynamics 365 <br> **][dynamics-365-doc]
+[![API 图标][dynamics-365-icon]<br>**Dynamics 365 <br> **][dynamics-365-doc]
 
 连接到 Dynamics 365 帐户，以便你可以创建和管理记录、项等。
 
@@ -259,14 +259,9 @@ ms.locfileid: "86170031"
 
 监视事件网格发布的事件（例如，当 Azure 资源或第三方资源发生更改时）。
 
-
 [![API 图标][salesforce-icon]<br>**Salesforce**][salesforce-doc]
 
 连接到 Salesforce 帐户，以便可以创建和管理记录、作业、对象，等等。
-
-[![API 图标 ][twitter-icon]<br> **Twitter**][twitter-doc]
-
-连接到 Twitter 帐户，以便管理推文、关注者、时间线等。 将推文保存到 SQL、Excel 或 SharePoint。
 
 <a name="on-premises-connectors"></a>
 
@@ -340,7 +335,7 @@ ms.locfileid: "86170031"
 
 ## <a name="ise-connectors"></a>ISE 连接器
 
-对于在 (ISE) 的情况下创建和运行隔离的[integration service 环境](#integration-service-environment)的逻辑应用，逻辑应用设计器将使用 "**核心**" 标签来标识在 ISE 中运行的内置触发器和操作。 在 ISE 中运行的托管连接器会显示**ISE**标签，而在全局多租户逻辑应用服务中运行的连接器不会显示任何一个标签。 此列表显示当前具有 ISE 版本的连接器：
+对于创建并运行隔离的[integration service 环境（ISE）](#integration-service-environment)的逻辑应用，逻辑应用设计器使用 "**核心**" 标签来标识在 ISE 中运行的内置触发器和操作。 在 ISE 中运行的托管连接器会显示**ISE**标签，而在全局多租户逻辑应用服务中运行的连接器不会显示任何一个标签。 此列表显示当前具有 ISE 版本的连接器：
 
 [![API 图标 ][as2-icon]<br> **AS2**][as2-doc]
 
@@ -400,7 +395,7 @@ ms.locfileid: "86170031"
 
 ## <a name="triggers-and-action-types"></a>触发器和操作类型
 
-连接器可以提供触发器和/或操作。** ** 触发器是任何逻辑应用中的第一个步骤，它通常指定激发触发器并开始运行逻辑应用的事件。** 例如，FTP 连接器中的某个触发器会在“添加或修改某个文件时”启动逻辑应用。 某些触发器定期检查指定的事件或数据，并在检测到指定的事件或数据时激发。 其他触发器会保持等待状态，但一旦发生特定的事件或者有新的数据可用，就会立即激发。 触发器还会将任何所需数据传递给逻辑应用。 在整个工作流中，逻辑应用都可以读取和使用该数据。 例如，Twitter 连接器包含一个触发器“发布新推文时”，该触发器会将推文内容传入逻辑应用的工作流。
+连接器可以提供触发器和/或操作。** ** 触发器是任何逻辑应用中的第一个步骤，它通常指定激发触发器并开始运行逻辑应用的事件。** 例如，FTP 连接器中的某个触发器会在“添加或修改某个文件时”启动逻辑应用。 某些触发器定期检查指定的事件或数据，并在检测到指定的事件或数据时激发。 其他触发器会保持等待状态，但一旦发生特定的事件或者有新的数据可用，就会立即激发。 触发器还会将任何所需数据传递给逻辑应用。 在整个工作流中，逻辑应用都可以读取和使用该数据。 例如，Office 365 Outlook connector 有一个触发器 "当收到新电子邮件时"，它可以将该电子邮件中的内容传递到逻辑应用的工作流中。
 
 触发器激发后，Azure 逻辑应用将创建逻辑应用的实例，并开始运行逻辑应用工作流中的操作。** 操作是激发触发器后的步骤，将执行逻辑应用工作流中的任务。 例如，可以创建一个逻辑应用来获取 SQL 数据库中的客户数据，并在后续的操作中处理该数据。
 
@@ -416,9 +411,9 @@ ms.locfileid: "86170031"
 
 ## <a name="connector-configuration"></a>连接器配置
 
-每个连接器的触发器和操作提供其自身的属性，你可以配置这些属性。 许多连接器还要求先与目标服务或系统建立连接，并提供身份验证凭据或其他配置详细信息，然后，你才能在逻辑应用中使用某个触发器或操作。** 例如，必须授权与 Twitter 帐户建立连接才能访问数据，或者让系统代表你发贴。
+每个连接器的触发器和操作提供其自身的属性，你可以配置这些属性。 许多连接器还要求先与目标服务或系统建立连接，并提供身份验证凭据或其他配置详细信息，然后，你才能在逻辑应用中使用某个触发器或操作。** 例如，在你可以访问和使用你的 Office 365 Outlook 电子邮件帐户之前，你必须为与该帐户的连接授权。
 
-对于使用 Azure Active Directory (Azure AD) OAuth 的连接器，创建连接意味着登录到服务（例如 Office 365、Salesforce 或 GitHub），其中的访问令牌已[加密](../security/fundamentals/encryption-overview.md)，并安全地存储在 Azure 密钥存储中。 其他连接器（例如 FTP 和 SQL）需要提供包含服务器地址、用户名和密码等配置详细信息的连接。 这些连接配置详细信息同样加密并安全存储。 详细了解[Azure 中的加密](../security/fundamentals/encryption-overview.md)。
+对于使用 Azure Active Directory （Azure AD） OAuth 的连接器，创建连接意味着登录到服务（例如 Office 365、Salesforce 或 GitHub），在此服务中，将对访问令牌进行[加密](../security/fundamentals/encryption-overview.md)并将其安全地存储在 Azure 密钥存储中。 其他连接器（例如 FTP 和 SQL）需要提供包含服务器地址、用户名和密码等配置详细信息的连接。 这些连接配置详细信息同样加密并安全存储。 详细了解[Azure 中的加密](../security/fundamentals/encryption-overview.md)。
 
 只要目标服务或系统允许，连接就可以访问该服务或系统。 对于使用 Azure AD OAuth 连接的服务（例如 Office 365 和 Dynamics），Azure 逻辑应用会无限期地刷新访问令牌。 其他服务可能会限制在不刷新令牌的情况下，Azure 逻辑应用能够使用该令牌多长时间。 一般情况下，某些操作（例如更改密码）会使所有访问令牌失效。
 
@@ -429,7 +424,7 @@ ms.locfileid: "86170031"
 若要调用运行自定义代码或者无法作为连接器使用的 API，可以通过[创建自定义 API 应用](../logic-apps/logic-apps-create-api-app.md)来扩展逻辑应用平台。 还可以针对任何基于 REST 或 SOAP 的 API [创建自定义连接器](../logic-apps/custom-connector-overview.md)，使这些 API 可供 Azure 订阅中的任何逻辑应用使用。** 若要使自定义 API 应用或连接器可供任何人在 Azure 中使用，可以[提交连接器进行 Microsoft 认证](../logic-apps/custom-connector-submit-certification.md)。
 
 > [!NOTE]
-> 在 integration service 环境中部署和运行的逻辑应用[ (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)可以直接访问 Azure 虚拟网络中的资源。 如果你有需要本地数据网关的自定义连接器，并且你在 ISE 外部创建了这些连接器，则 ISE 中的逻辑应用还可以使用这些连接器。
+> 在[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中部署和运行的逻辑应用可以直接访问 Azure 虚拟网络中的资源。 如果你有需要本地数据网关的自定义连接器，并且你在 ISE 外部创建了这些连接器，则 ISE 中的逻辑应用还可以使用这些连接器。
 >
 > 在 ISE 中创建的自定义连接器不适用于本地数据网关。 但是，这些连接器可以直接访问连接到托管 ISE 的 Azure 虚拟网络的本地数据源。 因此，在与这些资源通信时，ISE 中的逻辑应用最有可能不需要数据网关。
 >
@@ -479,6 +474,7 @@ ms.locfileid: "86170031"
 [azure-cognitive-services-text-analytics-icon]: ./media/apis-list/azure-cognitive-services-text-analytics.png
 [azure-cosmos-db-icon]: ./media/apis-list/azure-cosmos-db.png
 [azure-data-lake-icon]: ./media/apis-list/azure-data-lake.png
+[azure-devops-icon]: ./media/apis-list/azure-devops.png
 [azure-document-db-icon]: ./media/apis-list/azure-document-db.png
 [azure-event-grid-icon]: ./media/apis-list/azure-event-grid.png
 [azure-event-grid-publish-icon]: ./media/apis-list/azure-event-grid-publish.png
@@ -497,15 +493,11 @@ ms.locfileid: "86170031"
 [bitly-icon]: ./media/apis-list/bitly.png
 [biztalk-server-icon]: ./media/apis-list/biztalk.png
 [blogger-icon]: ./media/apis-list/blogger.png
-[box-icon]: ./media/apis-list/box.png
 [campfire-icon]: ./media/apis-list/campfire.png
 [common-data-service-icon]: ./media/apis-list/common-data-service.png
-[dropbox-icon]: ./media/apis-list/dropbox.png
-[dynamics-365-icon]: ./media/apis-list/dynamics-crm-online.png
 [dynamics-365-financials-icon]: ./media/apis-list/dynamics-365-financials.png
 [dynamics-365-operations-icon]: ./media/apis-list/dynamics-365-operations.png
 [easy-redmine-icon]: ./media/apis-list/easyredmine.png
-[facebook-icon]: ./media/apis-list/facebook.png
 [file-system-icon]: ./media/apis-list/file-system.png
 [ftp-icon]: ./media/apis-list/ftp.png
 [github-icon]: ./media/apis-list/github.png
@@ -522,11 +514,9 @@ ms.locfileid: "86170031"
 [instagram-icon]: ./media/apis-list/instagram.png
 [instapaper-icon]: ./media/apis-list/instapaper.png
 [jira-icon]: ./media/apis-list/jira.png
-[mailchimp-icon]: ./media/apis-list/mailchimp.png
 [mandrill-icon]: ./media/apis-list/mandrill.png
 [mysql-icon]: ./media/apis-list/mysql.png
 [office-365-outlook-icon]: ./media/apis-list/office-365.png
-[office-365-users-icon]: ./media/apis-list/office-365-users.png
 [onedrive-icon]: ./media/apis-list/onedrive.png
 [onedrive-for-business-icon]: ./media/apis-list/onedrive-business.png
 [oracle-db-icon]: ./media/apis-list/oracle-db.png
@@ -536,7 +526,6 @@ ms.locfileid: "86170031"
 [postgre-sql-icon]: ./media/apis-list/postgre-sql.png
 [project-online-icon]: ./media/apis-list/projecton-line.png
 [redmine-icon]: ./media/apis-list/redmine.png
-[rss-icon]: ./media/apis-list/rss.png
 [salesforce-icon]: ./media/apis-list/salesforce.png
 [sap-icon]: ./media/apis-list/sap.png
 [send-grid-icon]: ./media/apis-list/sendgrid.png
@@ -550,13 +539,9 @@ ms.locfileid: "86170031"
 [sql-server-icon]: ./media/apis-list/sql.png
 [teradata-icon]: ./media/apis-list/teradata.png
 [todoist-icon]: ./media/apis-list/todoist.png
-[trello-icon]: ./media/apis-list/trello.png
 [twilio-icon]: ./media/apis-list/twilio.png
-[twitter-icon]: ./media/apis-list/twitter.png
 [vimeo-icon]: ./media/apis-list/vimeo.png
-[visual-studio-team-services-icon]: ./media/apis-list/visual-studio-team-services.png
 [wordpress-icon]: ./media/apis-list/wordpress.png
-[yammer-icon]: ./media/apis-list/yammer.png
 [youtube-icon]: ./media/apis-list/youtube.png
 
 <!-- Enterprise Integration Pack icons -->
@@ -614,15 +599,10 @@ ms.locfileid: "86170031"
 [azure-sql-data-warehouse-doc]: https://docs.microsoft.com/connectors/sqldw/ "连接到 Azure SQL 数据仓库，以便查看数据"
 [azure-table-storage-doc]: https://docs.microsoft.com/connectors/azuretables/ "连接到 Azure 存储帐户，以便创建、更新和查询表与其他对象"
 [biztalk-server-doc]: https://docs.microsoft.com/connectors/biztalk/ "连接到 BizTalk Server，以便将基于 BizTalk 的应用程序与 Azure 逻辑应用一起运行"
-[box-doc]: ./connectors-create-api-box.md "连接到 Box。上传、获取、删除、列出文件，等等"
-[dropbox-doc]: ./connectors-create-api-dropbox.md "连接到 Dropbox。上传、获取、删除、列出文件，等等"
-[dynamics-365-doc]: ./connectors-create-api-crmonline.md "连接到 Dynamics CRM Online，以便能够使用 CRM Online 数据"
-[facebook-doc]: ./connectors-create-api-facebook.md "连接到 Facebook。发布到时间线、获取页面源，等等"
 [file-system-doc]: ../logic-apps/logic-apps-using-file-connector.md "连接到本地文件系统"
 [ftp-doc]: ./connectors-create-api-ftp.md "连接到 FTP/FTPS 服务器以执行 FTP 任务，例如上传、获取、删除文件，等等"
 [github-doc]: ./connectors-create-api-github.md "连接到 GitHub，对问题进行跟踪"
 [google-calendar-doc]: ./connectors-create-api-googlecalendar.md "连接到 Google Calendar，以便管理日历"
-[google-drive-doc]: ./connectors-create-api-googledrive.md "连接到 GoogleDrive，以便处理数据"
 [google-sheets-doc]: ./connectors-create-api-googlesheet.md "连接到 Google Sheets，以便修改工作表"
 [google-tasks-doc]: ./connectors-create-api-googletasks.md "连接到 Google Tasks，以便管理任务"
 [ibm-3270-doc]: ./connectors-run-3270-apps-ibm-mainframe-create-api-3270.md "连接到 IBM 大型机上的 3270 应用"
@@ -630,18 +610,14 @@ ms.locfileid: "86170031"
 [ibm-informix-doc]: ./connectors-create-api-informix.md "连接到云中或本地的 Informix。读取行、列出表，等等"
 [ibm-mq-doc]: ./connectors-create-api-mq.md "连接到本地或 Azure 中的 IBM MQ 以发送和接收消息"
 [instagram-doc]: ./connectors-create-api-instagram.md "连接到 Instagram。触发事件或针对事件进行操作"
-[mailchimp-doc]: ./connectors-create-api-mailchimp.md "连接到 MailChimp 帐户。管理邮件和自动执行邮件操作"
 [mandrill-doc]: ./connectors-create-api-mandrill.md "连接到 Mandrill 进行通信"
 [mysql-doc]: https://docs.microsoft.com/connectors/mysql/ "连接到本地 MySQL 数据库，以便读取和写入数据"
 [office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "连接到 Office 365 帐户，以便发送和接收电子邮件、管理日历和联系人，以及执行其他操作"
-[office-365-users-doc]: ./connectors-create-api-office365-users.md
 [onedrive-doc]: ./connectors-create-api-onedrive.md "连接到个人 Microsoft OneDrive，以便上传、删除、列出文件，等等"
 [onedrive-for-business-doc]: ./connectors-create-api-onedriveforbusiness.md "连接到企业 Microsoft OneDrive，以便上传、删除、列出文件，等等"
 [oracle-db-doc]: ./connectors-create-api-oracledatabase.md "连接到 Oracle 数据库，以便添加、插入、删除行，以及执行其他操作"
 [outlook.com-doc]: ./connectors-create-api-outlook.md "连接到 Outlook 邮箱，以便管理电子邮件、日历、联系人，以及执行其他操作"
 [postgre-sql-doc]: https://docs.microsoft.com/connectors/postgresql/ "连接到 PostgreSQL 数据库，以便从表中读取数据"
-[project-online-doc]: ./connectors-create-api-projectonline.md "连接到 Microsoft Project Online，以便可以管理项目、任务、资源等"
-[rss-doc]: ./connectors-create-api-rss.md "发布和检索源项，在新项发布到 RSS 源时触发操作"
 [salesforce-doc]: ./connectors-create-api-salesforce.md "连接到 Salesforce 帐户。管理帐户、潜在客户、商机等"
 [sap-connector-doc]: ../logic-apps/logic-apps-using-sap-connector.md "连接到本地 SAP 系统"
 [sendgrid-doc]: ./connectors-create-api-sendgrid.md "连接到 SendGrid。发送电子邮件和管理收件人列表"
@@ -653,10 +629,7 @@ ms.locfileid: "86170031"
 [sparkpost-doc]: ./connectors-create-api-sparkpost.md "连接到 SparkPost 进行通信"
 [sql-server-doc]: ./connectors-create-api-sqlazure.md "连接到 Azure SQL 数据库或 SQL Server。在 SQL 数据库表中创建、更新、获取和删除条目"
 [teradata-doc]: https://docs.microsoft.com/connectors/teradata/ "连接到 Teradata 数据库以从表中读取数据"
-[trello-doc]: ./connectors-create-api-trello.md "连接到 Trello。管理项目，与任何人一起组织任何事情"
 [twilio-doc]: ./connectors-create-api-twilio.md "连接到 Twilio。发送和获取消息、获取可用号码，管理来电号码，等等"
-[twitter-doc]: ./connectors-create-api-twitter.md "连接到 Twitter。获取时间线、post 推文等"
-[yammer-doc]: ./connectors-create-api-yammer.md "连接到 Yammer。发布消息、获取新消息，等等"
 [youtube-doc]: ./connectors-create-api-youtube.md "连接到 YouTube。管理视频和频道"
 
 <!--Enterprise Intregation Pack doc links-->

@@ -4,11 +4,12 @@ description: 查找有关使用 Azure 备份在 Azure VM 上备份 SQL Server �
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 11657a5dda79fc550f4c07d4020d75c671335da4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2781646e548f4f530b26ca41466f158597e817d9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248254"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090971"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有关备份 Azure VM 上运行的 SQL Server 数据库的常见问题解答
 
@@ -47,11 +48,11 @@ ms.locfileid: "84248254"
 DefaultBackupTasksThreshold 的默认值为 **20**。
 
 3. 保存更改并关闭该文件。
-4. 在 SQL Server 实例上，打开“任务管理器”。  重启 **AzureWLBackupCoordinatorSvc** 服务。<br/> <br/>
- 尽管在备份应用程序消耗大量资源时此方法有所帮助，但使用 SQL Server [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor?view=sql-server-2017) 可通过更常规的方式来指定传入应用程序请求可以使用的 CPU、物理 IO 和内存量限制。
+4. 在 SQL Server 实例上，打开“任务管理器”。 重启 **AzureWLBackupCoordinatorSvc** 服务。<br/> <br/>
+ 尽管在备份应用程序消耗大量资源时此方法有所帮助，但使用 SQL Server [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) 可通过更常规的方式来指定传入应用程序请求可以使用的 CPU、物理 IO 和内存量限制。
 
 > [!NOTE]
-> 在 UX 中，你仍可以在任何给定时间继续执行并计划任意数量的备份，但是，根据上面的示例，它们将在如5的滑动窗口中进行处理。
+> 在 UX 中，仍可随时继续计划任意数量的备份，但是，这些备份将按某个滑动窗口进行处理，例如，在上述示例中，滑动窗口为 5。
 
 ## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>是否可以从次要副本运行完整备份？
 
@@ -59,7 +60,7 @@ DefaultBackupTasksThreshold 的默认值为 **20**。
 
 ## <a name="can-i-protect-availability-groups-on-premises"></a>是否可以保护本地的可用性组？
 
-不是。 Azure 备份可以保护 Azure 中运行的 SQL Server 数据库。 如果可用性组 (AG) 分散在 Azure 与本地计算机之间，则仅当主要副本在 Azure 中运行时，才可以保护 AG。 此外，Azure 备份只能保护恢复服务保管库所在的同一 Azure 区域中运行的节点。
+否。 Azure 备份可以保护 Azure 中运行的 SQL Server 数据库。 如果可用性组 (AG) 分散在 Azure 与本地计算机之间，则仅当主要副本在 Azure 中运行时，才可以保护 AG。 此外，Azure 备份只能保护恢复服务保管库所在的同一 Azure 区域中运行的节点。
 
 ## <a name="can-i-protect-availability-groups-across-regions"></a>是否可跨区域保护可用性组？
 
@@ -67,11 +68,11 @@ Azure 备份恢复服务保管库可以检测并保护保管库所在的同一�
 
 ## <a name="do-successful-backup-jobs-create-alerts"></a>成功的备份作业是否会创建警报？
 
-不是。 成功的备份作业不会生成警报。 仅针对失败的备份作业发送警报。 [此文](backup-azure-monitoring-built-in-monitor.md)介绍了门户警报的详细行为。 但是，如果你希望同时收到已成功作业的警报，可以[使用 Azure Monitor 进行监视](backup-azure-monitoring-use-azuremonitor.md)。
+否。 成功的备份作业不会生成警报。 仅针对失败的备份作业发送警报。 [此文](backup-azure-monitoring-built-in-monitor.md)介绍了门户警报的详细行为。 但是，如果你希望同时收到已成功作业的警报，可以[使用 Azure Monitor 进行监视](backup-azure-monitoring-use-azuremonitor.md)。
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>“备份作业”菜单中是否会显示计划的备份作业？
 
-“备份作业”菜单只显示按需备份作业。  对于计划的作业，请[使用 Azure Monitor 进行监视](backup-azure-monitoring-use-azuremonitor.md)。
+“备份作业”菜单只显示按需备份作业。 对于计划的作业，请[使用 Azure Monitor 进行监视](backup-azure-monitoring-use-azuremonitor.md)。
 
 ## <a name="are-future-databases-automatically-added-for-backup"></a>未来的数据库会自动添加备份吗？
 
@@ -79,25 +80,25 @@ Azure 备份恢复服务保管库可以检测并保护保管库所在的同一�
 
 ## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>如果从自动保护的实例中删除数据库，备份会发生什么情况？
 
-如果从自动保护的实例中删除某个数据库，仍会尝试数据库备份。 这意味着，已删除的数据库会开始在“备份项”下面显示为不正常状态，但它仍受保护。 
+如果从自动保护的实例中删除某个数据库，仍会尝试数据库备份。 这意味着，已删除的数据库会开始在“备份项”下面显示为不正常状态，但它仍受保护。
 
 停止保护此数据库的正确方法是针对此数据库执行“停止备份”并**删除数据**。  
 
 ## <a name="if-i-do-stop-backup-operation-of-an-autoprotected-database-what-will-be-its-behavior"></a>如果停止受保护数据库的备份操作，将出现怎样的备份行为？
 
-如果**停止备份但保留数据**，则将来的备份不会发生，现有的恢复点将保留不变。 数据库仍被视为受保护，并显示在“备份项”下。 
+如果**停止备份但保留数据**，则将来的备份不会发生，现有的恢复点将保留不变。 数据库仍被视为受保护，并显示在“备份项”下。
 
 如果**停止备份并删除数据**，则将来的备份不会发生，现有的恢复点也会一并删除。 该数据库被视为不受保护，并显示在“配置备份”中的实例下。 但是，与其他可以手动选择或者可以自动保护的受保护数据库不同，此数据库将会灰显，并且不可选择。 重新保护此数据库的唯一方法是对该实例禁用自动保护。 接下来可以选择此数据库并对其配置保护，或者对该实例重新启用自动保护。
 
 ## <a name="if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior"></a>如果在保护数据库后更改其名称，会出现怎样的行为？
 
-已重命名的数据库被视为新数据库。 因此，该服务将处理此情况，就好像找不到数据库，备份失败。
+已重命名的数据库被视为新数据库。 因此，服务将此情况视为找不到数据库，同时会使备份失败。
 
 可以选择现在已重命名的数据库并对其配置保护。 如果对实例启用了自动保护，则会自动检测并保护已重命名的数据库。
 
 ## <a name="why-cant-i-see-an-added-database-for-an-autoprotected-instance"></a>为什么不显示自动保护实例的已添加数据库？
 
-[添加到自动保护实例的数据库](backup-sql-server-database-azure-vms.md#enable-auto-protection)可能不会立即显示在“受保护的项”下。 这是因为，发现功能通常每隔 8 小时运行一次。 但是，如果按下图所示选择“重新发现数据库”来手动运行发现，则可以立即发现并保护新的数据库： 
+[添加到自动保护实例的数据库](backup-sql-server-database-azure-vms.md#enable-auto-protection)可能不会立即显示在“受保护的项”下。 这是因为，发现功能通常每隔 8 小时运行一次。 但是，如果按下图所示选择“重新发现数据库”来手动运行发现，则可以立即发现并保护新的数据库：
 
   ![手动发现新添加的数据库](./media/backup-azure-sql-database/view-newly-added-database.png)
 
