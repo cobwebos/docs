@@ -25,6 +25,11 @@
       href: extension-resource-types.md
     - name: 资源实例限制
       href: resources-without-resource-group-limit.md
+    - name: 安全性
+      items:
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: 如何
   items:
     - name: 移动 - 资源组/订阅

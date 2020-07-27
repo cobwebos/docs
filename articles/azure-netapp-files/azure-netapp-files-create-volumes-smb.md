@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/29/2020
+ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 6bd6ddc8b75b83355f6761ef0567ea949c86b61a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 848a5779538f4754ef038a1e88be63c33177bc82
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483697"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169977"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
@@ -215,6 +215,12 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](https:
         ![创建卷](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![创建子网](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
+
+    * 如果要将现有的快照策略应用到卷，请单击 "**显示高级" 部分**将其展开，然后在下拉菜单中选择一个快照策略。 
+
+        有关创建快照策略的信息，请参阅[管理快照](azure-netapp-files-manage-snapshots.md)。
+
+        ![显示高级选择](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
 4. 单击“协议”，并完成以下信息：  
     * 选择“SMB”作为卷的协议类型。 

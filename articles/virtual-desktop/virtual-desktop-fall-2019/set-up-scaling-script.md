@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 442dfc1667027bd39b138d59a28542138cc4a1ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 690f59c643f1fe8c8cfc74758a0f8f13b129f78a
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085926"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87172061"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>使用 Azure 自动化来改变会话主机规模
 
@@ -60,10 +60,10 @@ ms.locfileid: "87085926"
 
 - 此解决方案仅适用于共用的多会话会话主机 Vm。
 - 此解决方案管理任何区域中的 Vm，但只能在与 Azure 自动化帐户和 Azure 逻辑应用相同的订阅中使用。
-- Runbook 中的作业的最大运行时间为3小时。 如果启动或停止主机池中的 Vm 所用时间超过此时间，则作业将失败。 有关更多详细信息，请参阅[共享资源](../../automation/automation-runbook-execution.md#fair-share)
+- Runbook 中的作业的最大运行时间为3小时。 如果启动或停止主机池中的 Vm 所用时间超过此时间，则作业将失败。 有关更多详细信息，请参阅[共享资源](../../automation/automation-runbook-execution.md#fair-share)。
 
 >[!NOTE]
->缩放工具控制它正在缩放的主机池的负载均衡模式。 它将该模式设置为在高峰和非高峰时段均实施广度优先负载均衡。
+>缩放工具控制其当前正在缩放的主机池的负载平衡模式。 该工具使用广泛的负载均衡模式来实现高峰时间和非高峰时段。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -140,7 +140,7 @@ ms.locfileid: "87085926"
 
 [Azure 自动化运行方式帐户](../../automation/manage-runas-account.md)为使用 azure Cmdlet 管理 azure 中的资源提供身份验证。 创建运行方式帐户时，它会在 Azure Active Directory 中创建新的服务主体用户，并在订阅级别将参与者角色分配给服务主体用户。 Azure 运行方式帐户是使用证书和服务主体名称安全进行身份验证的一种绝佳方式，无需在凭据对象中存储用户名和密码。 若要了解有关运行方式帐户身份验证的详细信息，请参阅[限制运行方式帐户权限](../../automation/manage-runas-account.md#limit-run-as-account-permissions)。
 
-身份为订阅管理员角色成员以及订阅的共同管理员的任何用户均可以按照下一部分中的说明创建运行方式帐户。
+如果任何用户是订阅管理员角色的成员，并且共同管理员订阅，则可以创建运行方式帐户。
 
 在 Azure 自动化帐户中创建运行方式帐户：
 

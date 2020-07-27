@@ -14,12 +14,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 2fbbf5f9d01ed4a469967dac87faa3b130905757
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aca2e0a878470a644aff3a42411b69da9096fc78
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027098"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170514"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft 标识平台 ID 令牌
 
@@ -87,7 +87,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`ver` | 字符串，1.0 或 2.0 | 指示 id_token 的版本。 |
 
 > [!NOTE]
-> Id_token 1.0 和 v 22.0 在上述示例中所示的信息量之间存在差异。 该版本实质上指定了从其颁发它的 Azure AD 平台终结点。 [Azure AD 的 OAuth 实现](about-microsoft-identity-platform.md)已多年来发展。 目前 Azure AD 的应用程序有两个不同的 Outh 终结点。 可以使用归类为 v2.0 或1.0 版的任何新终结点。 这两个终结点的 OAuth 终结点是不同的。 V2.0 终结点较新，而1.0 版终结点的功能将迁移到此终结点。 新开发人员应使用 v2.0 终结点。
+> 与上面的示例中所示，1.0 和 v2.0 id_token 的信息量有所不同。 该版本实质上指定了从其颁发它的 Azure AD 平台终结点。 [Azure AD 的 OAuth 实现](about-microsoft-identity-platform.md)已多年来发展。 目前 Azure AD 的应用程序有两个不同的 Outh 终结点。 可以使用归类为 v2.0 或1.0 版的任何新终结点。 这两个终结点的 OAuth 终结点是不同的。 V2.0 终结点较新，而1.0 版终结点的功能将迁移到此终结点。 新开发人员应使用 v2.0 终结点。
 >
 > - 1.0 版： Azure AD 终结点：`https://login.microsoftonline.com/common/oauth2/authorize`
 > - v2.0： Microsoft identitypPlatform 终结点：`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`

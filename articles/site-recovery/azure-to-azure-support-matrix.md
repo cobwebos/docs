@@ -4,12 +4,12 @@ description: 汇总了使用 Azure Site Recovery 将 Azure VM 灾难恢复到次
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: 91371999429304ab0bf3c124001a282410123a73
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b931519abb1af48ce139193366649ad3f355569
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037825"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87172033"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>在 Azure 区域之间进行 Azure VM 灾难恢复的支持矩阵
 
@@ -120,12 +120,12 @@ Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3�
 14.04 LTS | 9.32、 [9.33](https://support.microsoft.com/help/4564347/)、[9.34](https://support.microsoft.com/help/4570609)、 [9.35](https://support.microsoft.com/help/4573888/)| 3.13.0-24-generic 到 3.13.0-170-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-148-generic、<br/>4.15.0-1023-azure 到 4.15.0-1045-azure |
 14.04 LTS | 9.31 | 3.13.0-24-generic 到 3.13.0-170-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-148-generic、<br/>4.15.0-1023-azure 到 4.15.0-1045-azure |
 |||
-16.04 LTS | [9.34](https://support.microsoft.com/help/4570609)、 [9.35](https://support.microsoft.com/help/4573888/) | 4.4.0-21-泛型到 4.4.0-通用，<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>4.15.0-13-泛型到 4.15.0-106-泛型<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>4.15.0-1012-azure 到 4.15.0-1089-azure |
+16.04 LTS | [9.34](https://support.microsoft.com/help/4570609)、 [9.35](https://support.microsoft.com/help/4573888/) | 4.4.0-21-泛型到 4.4.0-通用，<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>4.15.0-13-泛型到 4.15.0-106-泛型<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>4.15.0-1012-azure 到 4.15.0-1089-azure</br> 4.15.0-107-generic，4.4.0--泛型 & 4.15.0-1091-azure 到9.35 热修复修补程序 * * |
 16.04 LTS | [9.33](https://support.microsoft.com/help/4564347/) | 4.4.0-21-泛型到 4.4.0-泛型，<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>4.15.0-13-泛型到 4.15.0-99-泛型<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>4.15.0-1012-azure 到 4.15.0-1082-azure </br> 4.15.0-101-泛型 & 4.4.0-从到9.33 的热修复修补程序 * *|
 16.04 LTS | 9.32 | 4.4.0-21-generic 到 4.4.0-171-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>4.15.0-13-generic 到 4.15.0-74-generic<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>4.15.0-1012-azure 到 4.15.0-1066-azure|
 16.04 LTS | 9.31 | 4.4.0-21-generic 到 4.4.0-170-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>4.15.0-13-generic 到 4.15.0-72-generic<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>4.15.0-1012-azure 到 4.15.0-1063-azure|
 |||
-18.04 LTS | [9.34](https://support.microsoft.com/help/4570609)、 [9.35](https://support.microsoft.com/help/4573888/) | 4.15.0--4.15.0-泛型到-泛型 </br> 4.18.0-13-generic 到 4.18.0-25-generic </br> 5.0.0-15-泛型到 5.0.0-52-泛型 </br> 5.3.0--5.3.0-61-泛型 </br> 4.15.0-1009-azure 到 4.15.0-1089-azure </br> 4.18.0-1006-azure 到 4.18.0-1025-azure </br> 1012-azure 到 1036-azure </br> 5.3.0-1007-azure 到 5.3.0-1031-azure|
+18.04 LTS | [9.34](https://support.microsoft.com/help/4570609)、 [9.35](https://support.microsoft.com/help/4573888/) | 4.15.0--4.15.0-泛型到-泛型 </br> 4.18.0-13-generic 到 4.18.0-25-generic </br> 5.0.0-15-泛型到 5.0.0-52-泛型 </br> 5.3.0--5.3.0-61-泛型 </br> 4.15.0-1009-azure 到 4.15.0-1089-azure </br> 4.18.0-1006-azure 到 4.18.0-1025-azure </br> 1012-azure 到 1036-azure </br> 5.3.0-1007-azure 到 5.3.0-1031-azure </br> 4.15.0-109-generic，5.0.0-53-泛型，5.3.0-62-泛型，4.15.0 & 5.3.0-1032-azure 到9.35 热修复修补程序 * *|
 18.04 LTS | [9.33](https://support.microsoft.com/help/4564347/) | 4.15.0--4.15.0-一般 </br> 4.18.0-13-generic 到 4.18.0-25-generic </br> 5.0.0-15-泛型到 5.0.0-47-泛型 </br> 5.3.0-19-泛型到 5.3.0-51-泛型 </br> 4.15.0-1009-azure 到 4.15.0-1082-azure </br> 4.18.0-1006-azure 到 4.18.0-1025-azure </br> 1012-azure 到 1036-azure </br> 5.3.0-1007-azure 到5.3。0 </br> 4.15.0-101-泛型，5.0.0-48-泛型，5.3.0--azure & 5.3.0-53-泛型到9.33 热修复修补程序 * *|
 18.04 LTS | 9.32| 4.15.0-20-generic 到 4.15.0-74-generic </br> 4.18.0-13-generic 到 4.18.0-25-generic </br> 5.0.0-15-generic 到 5.0.0-37-generic </br> 5.3.0-19-generic 到 5.3.0-24-generic </br> 4.15.0-1009-azure 到 4.15.0-1037-azure </br> 4.18.0-1006-azure 到 4.18.0-1025-azure </br> 5.0.0-1012-azure 到 5.0.0-1028-azure </br> 5.3.0-1007-azure 到 5.3.0-1009-azure|
 18.04 LTS | 9.31| 4.15.0-20-generic 到 4.15.0-72-generic </br> 4.18.0-13-generic 到 4.18.0-25-generic </br> 5.0.0-15-generic 到 5.0.0-37-generic </br> 5.3.0-19-generic 到 5.3.0-24-generic </br> 4.15.0-1009-azure 到 4.15.0-1037-azure </br> 4.18.0-1006-azure 到 4.18.0-1025-azure </br> 5.0.0-1012-azure 到 5.0.0-1025-azure </br> 5.3.0-1007-azure|
@@ -186,7 +186,7 @@ RBAC 策略 | 不支持 | VM 上基于角色的访问控制 (RBAC) 策略不会�
 
 ## <a name="replicated-machines---disk-actions"></a>复制的计算机 - 磁盘操作
 
-**操作** | **详细信息**
+**Action** | **详细信息**
 -- | ---
 调整复制的 VM 上的磁盘大小 | 故障转移前在源 VM 上受支持。 无需禁用/重新启用复制。<br/><br/> 如果在故障转移后更改源 VM，则不会捕获这些更改。<br/><br/> 如果在故障转移后更改 Azure VM 上的磁盘大小，则 Site Recovery 不会捕获这些更改，将故障回复到原始 VM 大小。
 将磁盘添加到复制的 VM | 支持
@@ -199,7 +199,7 @@ RBAC 策略 | 不支持 | VM 上基于角色的访问控制 (RBAC) 策略不会�
 - 如果使用默认设置进行部署，Site Recovery 会根据源设置自动创建磁盘和存储帐户。
 - 如果自定义，请确保遵循指南。
 
-组件 | **支持** | **详细信息**
+**组件** | **支持** | **详细信息**
 --- | --- | ---
 OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/windows/managed-disks-overview.md)VM 磁盘相关信息。
 临时磁盘 | 不支持 | 始终从复制中排除临时磁盘。<br/><br/> 请勿在临时磁盘上存储任何持久性数据。 [了解详细信息](../virtual-machines/windows/managed-disks-overview.md)。

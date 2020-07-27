@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 3a6162bb381f4e54114e3cabbf138f5b1c6aaae0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e28fc3c5779f2c31abbb48a7ced448cd8f92d1a2
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80373030"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171849"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中进行备份和还原
 
@@ -19,13 +19,30 @@ Azure Database for MySQL 可自动创建服务器备份并将其存储在用户�
 
 ## <a name="backups"></a>备份
 
-Azure Database for MySQL 对数据文件和事务日志进行备份。 根据所支持的最大存储大小，我们会进行完整备份和差异备份（最大 4 TB 存储服务器）或快照备份（最大 16 TB 存储服务器）。 可以通过这些备份将服务器还原到所配置的备份保留期中的任意时间点。 默认的备份保留期为七天。 可以[选择将其配置](howto-restore-server-portal.md#set-backup-configuration)为长达 35 天。 所有备份都使用 AES 256 位加密进行加密。
+Azure Database for MySQL 对数据文件和事务日志进行备份。 根据所支持的最大存储大小，我们可以进行完整备份和差异备份（4 TB 最大存储服务器）或快照备份（最多 16 TB 存储服务器）。 可以通过这些备份将服务器还原到所配置的备份保留期中的任意时间点。 默认的备份保留期为七天。 可以[选择将其配置](howto-restore-server-portal.md#set-backup-configuration)为长达 35 天。 所有备份都使用 AES 256 位加密进行加密。
 
 这些备份文件不公开给用户，因此无法导出。 这些备份只能用于 Azure Database for MySQL 中的还原操作。 可以使用 [mysqldump](concepts-migrate-dump-restore.md) 复制数据库。
 
 ### <a name="backup-frequency"></a>备份频率
 
-通常情况下，完整备份每周进行一次，对于最大支持存储空间为 4 TB 的服务器，每日执行一次差异备份。 对于支持的最大存储为 16 TB 的服务器，快照备份每天至少进行一次。 两种情况下，事务日志备份每五分钟进行一次。 创建服务器后，立即计划完整备份的第一个快照。 在大型还原服务器上，初始完整备份可能需要更长时间。 新服务器可以还原到的最早时间点是完成初始完整备份的时间。 因为快照是瞬时的，所以最多可以将支持 16 TB 存储的服务器还原到创建时间。
+#### <a name="servers-with-up-to-4-tb-storage"></a>具有最多 4 TB 存储空间的服务器
+
+对于支持最多 4 TB 存储空间的服务器，每周进行一次完整备份。 差异备份一天发生两次。 每五分钟执行一次事务日志备份。
+
+#### <a name="servers-with-up-to-16-tb-storage"></a>具有高达 16 TB 存储空间的服务器
+在[Azure 区域](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)的子集中，所有新预配的服务器都可支持高达 16 TB 的存储。 这些大型存储服务器上的备份基于快照。 在创建服务器后立即计划第一次完整的快照备份。 此第一个完整快照备份将保留为服务器的基准备份。 后续的快照备份仅为差异备份。 
+
+差异快照备份每天至少发生一次。 差异快照备份不按固定计划进行。 差异快照备份每24小时进行一次，除非事务日志（MySQL 中的 binlog）在上次差异备份后超过 50 GB。 一天内，最多允许6个差异快照。 
+
+每五分钟执行一次事务日志备份。 
+
+### <a name="backup-retention"></a>备份保留
+
+根据服务器上的 "备份保留期" 设置保留备份。 你可以选择7到35天的保留期。 默认保持期为7天。 可以通过使用[Azure 门户](https://docs.microsoft.com/azure/mysql/howto-restore-server-portal#set-backup-configuration)或[Azure CLI](https://docs.microsoft.com/azure/mysql/howto-restore-server-cli#set-backup-configuration)更新备份配置，在创建服务器或更高版本期间设置保留期。 
+
+备份保留期控制可以往回检索多长时间的时间点还原，因为它基于可用备份。 备份保留期也可以从还原角度被视为恢复窗口。 在备份保留期内执行时间点还原所需的所有备份将保留在备份存储中。 例如，如果 "备份保留期" 设置为 "7 天"，则会将恢复时段视为 "最后7天"。 在这种情况下，将保留在过去7天内还原服务器所需的所有备份。 具有7天的备份保留时段：
+- 具有 4 TB 存储的旧服务器将保留最多2个完整数据库备份、所有差异备份和自最早的完整数据库备份以来执行的事务日志备份。
+-   具有大型存储空间（16 TB）的服务器将保留完整的数据库快照、所有差异快照和事务日志备份，过去8天。
 
 ### <a name="backup-redundancy-options"></a>备份冗余选项
 
@@ -36,9 +53,11 @@ Azure Database for MySQL 对数据文件和事务日志进行备份。 根据所
 
 ### <a name="backup-storage-cost"></a>备份存储成本
 
-Azure Database for MySQL 最高可以提供 100% 的已预配服务器存储作为备份存储，不收取任何额外费用。 通常情况下，这适合将备份保留七天。 超出的备份存储使用量按每月每 GB 标准收费。
+Azure Database for MySQL 最高可以提供 100% 的已预配服务器存储作为备份存储，不收取任何额外费用。 使用的任何其他备份存储按每月 GB 的费率收费。 例如，如果你预配了一个具有 250 GB 存储空间的服务器，则可为服务器备份提供 250 GB 的额外存储，无需额外付费。 对于超过 250 GB 的备份，使用的存储按[定价模式](https://azure.microsoft.com/pricing/details/mysql/)收费。 
 
-例如，如果为服务器预配了 250 GB，则有 250 GB 不额外收费的备份存储。 存储超出 250 GB 就会收费。
+可以通过 Azure 门户使用 Azure Monitor 中的[备份存储使用](concepts-monitoring.md)的指标来监视服务器使用的备份存储空间。 "使用的备份存储" 指标表示根据为服务器设置的备份保留期保留的所有完整数据库备份、差异备份和日志备份占用的存储量。 备份的频率为服务管理，并在前面进行了说明。 服务器上的事务活动繁重会导致备份存储使用量增加，而不考虑总数据库大小。 对于异地冗余存储，备份存储使用情况是本地冗余存储的两倍。 
+
+控制备份存储成本的主要方法是设置适当的备份保留期，并选择适当的备份冗余选项来满足所需的恢复目标。 可以选择 7 到 35 天的保留期。 常规用途和内存优化服务器可以选择使用异地冗余存储进行备份。
 
 ## <a name="restore"></a>还原
 

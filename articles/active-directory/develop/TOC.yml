@@ -618,6 +618,14 @@
           href: vs-active-directory-webapi-what-happened.md
         - name: 诊断身份验证期间的错误
           href: vs-active-directory-error.md
+    - name: 将应用推向市场
+      items:
+        - name: 发布到 App 源
+          href: v2-howto-get-appsource-certified.md
+        - name: 发布到 Azure AD 应用库
+          href: v2-howto-app-gallery-listing.md
+        - name: 发布到 Office 365 卖家仪表板
+          href: 'https://docs.microsoft.com/office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store'
 - name: 参考
   items:
     - name: 应用程序清单

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 12/01/2019
+ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: b8935dd4138095aa9b8e84ddf75c06307f9ce00d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7f14ac279f14feb3f83490ab96965d4355bed125
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483629"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169442"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 NFS 卷
 
@@ -76,7 +76,7 @@ Azure NetApp 文件支持 NFS （NFSv3 和 NFSv 4.1）和 SMBv3 卷。 卷的容
         “可用配额”字段显示了所选容量池中可以用来创建新卷的未使用空间量。 新卷的大小不能超过可用配额。  
 
     * **虚拟网络**  
-        指定要从中访问卷的 Azure 虚拟网络 (Vnet)。  
+        指定要从中访问卷的 Azure 虚拟网络 (VNet)。  
 
         你指定的 Vnet 必须已将子网委托给 Azure NetApp 文件。 只能从同一 Vnet 或者从与卷位于同一区域的 Vnet 通过 Vnet 对等互连来访问 Azure NetApp 文件服务。 还可以从本地网络通过 Express Route 来访问卷。   
 
@@ -89,6 +89,12 @@ Azure NetApp 文件支持 NFS （NFSv3 和 NFSv 4.1）和 SMBv3 卷。 卷的容
         ![创建卷](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![创建子网](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
+
+    * 如果要将现有的快照策略应用到卷，请单击 "**显示高级" 部分**将其展开，然后在下拉菜单中选择一个快照策略。 
+
+        有关创建快照策略的信息，请参阅[管理快照](azure-netapp-files-manage-snapshots.md)。
+
+        ![显示高级选择](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
 4. 单击“协议”****，然后完成以下操作：  
     * 选择“NFS”**** 作为卷的协议类型。   

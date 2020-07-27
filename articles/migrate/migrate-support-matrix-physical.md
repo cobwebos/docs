@@ -3,12 +3,12 @@ title: Azure Migrate 中的物理服务器评估支持
 description: 了解支持 Azure Migrate Server 评估的物理服务器评估
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 226f49dc2a1603aba5eaa2f03ead32b815ac34b5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e28c1fd3dd117491360a1671955a6ec028033c01
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101684"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171621"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>物理服务器评估的支持矩阵 
 
@@ -34,7 +34,7 @@ ms.locfileid: "86101684"
 | **支持**                | **详细信息**               
 | :-------------------       | :------------------- |
 | **物理服务器部署**       | 物理服务器可以是独立服务器，也可以部署到群集中。 |
-| **权限**           | **Windows：** 你需要成为你要发现的所有 Windows 服务器上的域管理员。 应将用户帐户添加到这些组：远程管理用户、性能监视器用户和性能日志用户。 <br/><br/> **Linux：** 需要在要发现的 Linux 服务器上拥有根帐户。 |
+| **权限**           | **Windows：** 将域帐户用于已加入域的计算机，并将本地帐户用于已加入域的计算机。 应将用户帐户添加到这些组：远程管理用户、性能监视器用户和性能日志用户。 <br/><br/> **Linux：** 需要在要发现的 Linux 服务器上拥有根帐户。 |
 | **操作系统** | 所有操作系统（Windows Server 2003 和 SUSE Linux 除外）都可以进行迁移评估。 |
 
 
@@ -60,7 +60,7 @@ Azure Migrate 使用 [Azure Migrate 设备](migrate-appliance.md)进行发现和
 
 [依赖关系分析](concepts-dependency-visualization.md)有助于确定要评估并迁移到 Azure 的本地虚拟机之间的依赖关系。 下表总结了设置基于代理的依赖关系分析所需满足的要求。 物理服务器目前仅支持基于代理的依赖项分析。
 
-要求 | **详细信息** 
+**要求** | **详细信息** 
 --- | --- 
 **部署前** | 应有 Azure Migrate 项目，并已将服务器评估工具添加到项目中。<br/><br/>  在设置 Azure Migrate 设备来发现本地虚拟机后，就可以部署依赖关系可视化了<br/><br/> [了解如何](create-manage-projects.md)首次创建项目。<br/> [了解如何](how-to-assess.md)向现有项目添加评估工具。<br/> 了解如何设置 Azure Migrate 设备来评估 [Hyper-V](how-to-set-up-appliance-hyper-v.md)、[VMware](how-to-set-up-appliance-vmware.md) 或物理服务器。
 **Azure Government** | 依赖关系可视化在 Azure 政府中不可用。

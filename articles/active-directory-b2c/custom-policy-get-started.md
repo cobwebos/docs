@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 65ff0ab03abdbd3b403d37700dc8df4fa5eee73a
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: cb3bb363b1d6be72fe8941cad509b4c3525cfa15
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116580"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169423"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略入门
 
@@ -87,7 +87,7 @@ Azure AD B2C 要求注册两个应用程序，它们分别用于通过本地帐�
 
 接下来，通过添加范围公开 API：
 
-1. 在“管理”下，选择“公开 API” 。
+1. 在左侧菜单中的 "**管理**" 下，选择 "**公开 API**"。
 1. 选择“添加范围”，然后选择“保存并继续”以接受默认的应用程序 ID URI 。
 1. 输入以下值，创建允许在 Azure AD B2C 租户中执行自定义策略的范围：
     * **范围名称**：`user_impersonation`
@@ -110,13 +110,13 @@ Azure AD B2C 要求注册两个应用程序，它们分别用于通过本地帐�
 
 接下来，指定应将应用程序视为公共客户端：
 
-1. 在“管理”下，选择“身份验证”。 
+1. 在左侧菜单中的“管理”下，选择“身份验证” 。
 1. 在“高级设置”下，启用“将应用程序视为公共客户端”（选择“是”）  。 请确保已在应用程序清单中设置 "allowPublicClient": true。 
 1. 选择“保存”。
 
 现在，向你先前在 IdentityExperienceFramework 注册中公开的 API 范围授予权限：
 
-1. 在“管理”下选择“API 权限”。
+1. 在左侧菜单中的 "**管理**" 下，选择 " **API 权限**"。
 1. 在“已配置权限”下，选择“添加权限”。
 1. 选择“我的 API”选项卡，然后选择“IdentityExperienceFramework”应用程序 。
 1. 在“权限”下，选择你先前定义的 user_impersonation 范围 。

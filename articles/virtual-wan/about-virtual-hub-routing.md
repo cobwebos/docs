@@ -8,16 +8,17 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4949d5f2621957d6830625fe798601db4472a75d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 8c52b2141d2f29303939facf89d4a59fb3d333fd
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064917"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171881"
 ---
 # <a name="about-virtual-hub-routing"></a>关于虚拟中心路由
 
-虚拟中心的路由功能由路由器提供，该路由器使用边界网关协议 (BGP) 管理网关之间的所有路由。 虚拟中心可以包含多个网关，例如站点到站点 VPN 网关、ExpressRoute 网关、点到站点网关、Azure 防火墙。 该路由器还提供与虚拟中心连接的虚拟网络之间的传输连接，最高可支持 50 Gbps 的总吞吐量。 这些路由功能适用于标准虚拟 WAN 客户。
+虚拟中心的路由功能由路由器提供，该路由器使用边界网关协议 (BGP) 管理网关之间的所有路由。 虚拟中心可以包含多个网关，例如站点到站点 VPN 网关、ExpressRoute 网关、点到站点网关、Azure 防火墙。 该路由器还提供与虚拟中心连接的虚拟网络之间的传输连接，最高可支持 50 Gbps 的总吞吐量。 这些路由功能适用于标准虚拟 WAN 客户。 
 
 若要配置路由，请参阅[如何配置虚拟中心路由](how-to-virtual-hub-routing.md)。
 
@@ -79,6 +80,15 @@ ms.locfileid: "87064917"
 若要使用新的路由表功能，请等到8月3日起，才能完成 Azure 中的推出。 如果在 Azure 门户中的中心的 "路由" 部分中具有预先存在的路由，则需要先删除它们，然后尝试创建新的路由表（在 Azure 门户中的中心的 "路由表" 部分中提供）
 
 * **在虚拟中心中具有预先存在的路由的基本虚拟 WAN 客户**：若要使用新的路由表功能，请等一下，这些功能在 Azure 中推出要到 8 月第 3 周才能完成。 如果你在 Azure 门户中的中心的“路由”部分具有预先存在的路由，则需要首先删除它们，再将虚拟 WAN 从基本版升级到标准版。 请参阅[将虚拟 WAN 从基本版升级到标准版](upgrade-virtual-wan.md)。
+
+## <a name="virtual-wan-routing-considerations"></a><a name="considerations"></a>虚拟 WAN 路由注意事项
+
+配置虚拟 WAN 路由时，请考虑以下事项：
+
+* 所有分支连接（点到站点、站点到站点和 ExpressRoute）都需要与默认路由表相关联。 这样，所有分支都将学习相同的前缀。
+* 所有分支连接都需要将其路由传播到同一组路由表。 例如，如果您决定分支应传播到默认路由表，则此配置应在所有分支中保持一致。 因此，所有与默认路由表关联的连接都可以访问所有分支。
+* 当前不支持通过 Azure 防火墙进行分支到分支。
+* 在多个区域使用 Azure 防火墙时，所有辐射虚拟网络都必须关联到相同的路由表。 例如，具有 Vnet 的子集，而其他 Vnet 在同一虚拟中心绕过 Azure 防火墙是不可能的。
 
 ## <a name="next-steps"></a>后续步骤
 
