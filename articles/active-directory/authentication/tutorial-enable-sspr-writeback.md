@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 04/24/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: a25fe090c88d2540bdf63cd6479d25b879090a38
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 70a73cb1f855840831f2e1107baa94dfd54868a5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202552"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518481"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>教程：启用到本地环境的 Azure Active Directory 自助式密码重置写回
 
@@ -24,7 +24,12 @@ ms.locfileid: "86202552"
 
 可以使用密码写回将 Azure AD 中的密码更改同步回到本地 AD DS 环境。 Azure AD Connect 提供一种安全机制用于将这些密码更改从 Azure AD 发回到现有本地目录。
 
-在本教程中，你将了解如何执行以下操作：
+> [!IMPORTANT]
+> 本教程向管理员展示如何启用自助式密码重置并重置回本地环境。 如果你是已注册自助式密码重置的最终用户并且需要返回到你的帐户，请转到 https://aka.ms/sspr 。
+>
+> 如果你的 IT 团队尚未启用重置自己密码的功能，请联系支持人员以获得更多帮助。
+
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 为密码写回配置所需的权限
@@ -35,7 +40,7 @@ ms.locfileid: "86202552"
 
 需有以下资源和特权才能完成本教程：
 
-* 一个至少启用了 Azure AD Premium P1 或 P2 试用版许可证的有效 Azure AD 租户。
+* 一个至少启用了 Azure AD Premium P1 试用版许可证的有效 Azure AD 租户。
     * 如果需要，[可免费创建一个](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
     * 有关详细信息，请参阅 [Azure AD SSPR 的许可要求](concept-sspr-licensing.md)。
 * 一个拥有全局管理员特权的帐户。
@@ -54,11 +59,9 @@ Azure AD Connect 可用于在本地 AD DS 环境与 Azure AD 之间同步用户�
 * **重置密码**
 * 对 `lockoutTime` 的写入权限
 * 对 `pwdLastSet` 的写入权限
-* “不过期密码”的扩展权限，针对于：
-   * 相应林中各个域的根对象
-   * 要纳入 SSPR 范围的用户组织单位 (OU)
+* 对该林中每个域的根对象的“不过期密码”的扩展权限（如果尚未设置）。
 
-如果不分配这些权限，写回功能看上去已正确配置，但用户在从云管理其本地密码时会遇到错误。 必须对此对象和所有后代对象应用权限，才会显示“使密码不过期”。  
+如果不分配这些权限，写回功能可能看似已正确配置，但用户在从云管理其本地密码时会遇到错误。 必须对此对象和所有后代对象应用权限，才会显示“使密码不过期”。  
 
 > [!TIP]
 >
@@ -67,14 +70,14 @@ Azure AD Connect 可用于在本地 AD DS 环境与 Azure AD 之间同步用户�
 若要设置密码写回服务正常运行所需的相应权限，请完成以下步骤：
 
 1. 在本地 AD DS 环境中，使用拥有相应域管理员权限的帐户打开“Active Directory 用户和计算机”。
-1. 在“视图”菜单中，确保“高级功能”已启用。 
-1. 在左侧面板中，右键单击表示域根的对象，并选择“属性” > “安全性” > “高级”。  
+1. 在“视图”菜单中，确保“高级功能”已启用。
+1. 在左侧面板中，右键单击表示域根的对象，并选择“属性” > “安全性” > “高级”。
 1. 在“权限”选项卡中，选择“添加”。
 1. 对于“主体”，请选择权限应该应用到的帐户（Azure AD Connect 使用的帐户）。
 1. 在“应用到”下拉列表中，选择“后代用户对象”。
 1. 在“权限”下，选中以下选项所对应的框：
     * **重置密码**
-1. 在“属性”下，选中以下选项对应的框。 需要滚动列表才能看到这些选项，默认情况下可能已设置这些选项：
+1. 在“属性”下，选中以下选项对应的框。 滚动列表才能看到这些选项，默认情况下可能已设置这些选项：
     * **写入 lockoutTime**
     * **写入 pwdLastSet**
 
@@ -89,18 +92,18 @@ Azure AD Connect 可用于在本地 AD DS 环境与 Azure AD 之间同步用户�
 如果更新组策略，请等待更新的策略复制完成，或使用 `gpupdate /force` 命令。
 
 > [!Note]
-> 要使密码立即更改，必须将密码写回设置为 0。 但是，如果用户遵守本地策略，并且将“最短密码期限”设置为大于零的值，则在评估本地策略后，密码写回仍将工作。 
+> 要使密码立即更改，必须将密码写回设置为 0。 但是，如果用户遵守本地策略，并且将“最短密码期限”设置为大于零的值，则在评估本地策略后，密码写回仍然有效。
 
 ## <a name="enable-password-writeback-in-azure-ad-connect"></a>在 Azure AD Connect 中启用密码写回
 
 Azure AD Connect 中有一个配置选项用于密码写回。 启用此选项后，密码更改事件会导致 Azure AD Connect 将更新的凭据同步回到本地 AD DS 环境。
 
-若要启用自助式密码重置写回，请先在 Azure AD Connect 中启用写回选项。 在 Azure AD Connect 服务器中完成以下步骤：
+若要启用 SSPR 写回，请先在 Azure AD Connect 中启用写回选项。 在 Azure AD Connect 服务器中完成以下步骤：
 
 1. 登录到 Azure AD Connect 服务器，并启动“Azure AD Connect”配置向导。
 1. 在“欢迎”页上，选择“配置”。
 1. 在“其他任务”页上，依次选择“自定义同步选项”和“下一步”。
-1. 在“连接到 Azure AD”页上，输入 Azure 租户的全局管理员凭据，然后选择“下一步”。 
+1. 在“连接到 Azure AD”页上，输入 Azure 租户的全局管理员凭据，然后选择“下一步”。
 1. 在“连接目录”和“域/组织单位”筛选页上，选择“下一步”。
 1. 在“可选功能”页上，选中“密码写回”旁边的框，并选择“下一步”。
 
@@ -128,8 +131,8 @@ Azure AD Connect 中有一个配置选项用于密码写回。 启用此选项�
 
 如果你不再想要使用本教程中配置的 SSPR 写回功能，请完成以下步骤：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 搜索并选择“Azure Active Directory”，选择“密码重置”，然后选择“本地集成”。  
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 搜索并选择“Azure Active Directory”，选择“密码重置”，然后选择“本地集成”。
 1. 将“将密码写回到本地目录?”选项设置为“否”。
 1. 将“允许用户在不重置密码的情况下解锁帐户?”选项设置为“否”。
 
@@ -138,9 +141,9 @@ Azure AD Connect 中有一个配置选项用于密码写回。 启用此选项�
 1. 登录到 Azure AD Connect 服务器，并启动“Azure AD Connect”配置向导。
 1. 在“欢迎”页上，选择“配置”。
 1. 在“其他任务”页上，依次选择“自定义同步选项”和“下一步”。
-1. 在“连接到 Azure AD”页上，输入 Azure 租户的全局管理员凭据，然后选择“下一步”。 
+1. 在“连接到 Azure AD”页上，输入 Azure 租户的全局管理员凭据，然后选择“下一步”。
 1. 在“连接目录”和“域/组织单位”筛选页上，选择“下一步”。
-1. 在“可选功能”页上，取消选中“密码写回”旁边的框，然后选择“下一步”。  
+1. 在“可选功能”页上，取消选中“密码写回”旁边的框，然后选择“下一步”。
 1. 在“已准备好进行配置”页上，选择“配置”，并等待进程完成。
 1. 在配置完成后，选择“退出”。
 

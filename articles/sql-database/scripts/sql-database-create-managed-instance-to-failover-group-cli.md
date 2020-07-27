@@ -11,14 +11,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 1f6c178c1f8813300d3473ad3b788ecd7e7b573e
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: bf4e2b04c540ee5672bea6e097496ced5a0d622a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115396"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528870"
 ---
-# <a name="use-cli-to-add-an-azure-sql-managed-instance-to-a-failover-group"></a>使用 CLI 将 Azure SQL 托管实例添加到故障转移组
+# <a name="use-cli-to-create-an-azure-sql-managed-instance-to-a-failover-group"></a>使用 CLI 在故障转移组创建 Azure SQL 托管实例
 
 此 Azure CLI 示例创建两个托管实例，将其添加到故障转移组，然后测试从主托管实例到辅助托管实例的故障转移。
 
@@ -46,7 +46,7 @@ az group delete --name $resource
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| | |
+| 命令 | 说明 |
 |---|---|
 | [az network vnet](/cli/azure/network/vnet) | 虚拟网络命令。  |
 | [az network vnet subnet](/cli/azure/network/vnet/subnet) | 虚拟网络子网命令。 |

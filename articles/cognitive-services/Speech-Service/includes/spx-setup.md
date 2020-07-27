@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: b0f70fccf3f7f4a6856ae64d0946c2c473fed93c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: abfb4f6ba9452581811db1f462089cbafc771266
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86050448"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544584"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,6 +27,11 @@ ms.locfileid: "86050448"
 3. 转到从下载中提取的根目录 `spx-zips`，并提取所需的子目录（`spx-net471` 用于 .NET Framework 4.7，`spx-netcore-win-x64` 用于 x64 CPU 上的 .NET Core 3.0）。
 
 在命令提示符中，将目录更改到此位置，然后键入 `spx` 查看语音 CLI 的帮助。
+
+> [!NOTE]
+> 在 Windows 上，语音 CLI 只能显示本地计算机上命令提示符适用的字体。
+> [Windows 终端](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701)支持通过语音 CLI 以交互方式生成的所有字体。
+> 如果输出到文件，文本编辑器（例如记事本）或 web 浏览器（例如 Microsoft Edge）也可以显示所有字体。
 
 > [!NOTE]
 > 查找命令时，Powershell 不会检查本地目录。 在 Powershell 中，将目录更改为 `spx` 的位置，并通过输入 `.\spx` 调用工具。

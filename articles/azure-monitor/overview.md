@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 9a5c03664205676d53c083bddcfa6833ace641d2
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 21d980bcaa73af6367908b2f24c0c856d6a6c8ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457144"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505816"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor 概述
 
@@ -44,7 +44,7 @@ Azure 门户中的“概述”页会直接显示 Azure Monitor 针对许多 Azur
 
 ![指标](media/overview/metrics.png)
 
-可以使用[查询](log-query/log-query-overview.md)来分析 Azure Monitor 收集的日志数据，这些查询可以快速检索、合并和分析所收集的数据。  可以使用 Azure 门户中的 [Log Analytics](log-query/portals.md) 创建和测试查询，然后可以直接使用这些工具分析数据，或者保存查询以便与[可视化效果](visualizations.md)或[警报规则](platform/alerts-overview.md)配合使用。
+可以使用[查询](log-query/log-query-overview.md)来分析 Azure Monitor 收集的日志数据，这些查询可以快速检索、合并和分析所收集的数据。  可以使用 Azure 门户中的 [Log Analytics](./log-query/log-query-overview.md) 创建和测试查询，然后可以直接使用不同的工具分析数据，或者保存查询以便与[可视化效果](visualizations.md)或[警报规则](platform/alerts-overview.md)配合使用。
 
 Azure Monitor 使用 Azure 数据资源管理器使用的 [Kusto 查询语言](/azure/kusto/query/)的某个版本，该查询语言适用于简单的日志查询，但也包括高级功能，例如聚合、联接和智能分析。 可以通过[多个课程](log-query/get-started-queries.md)快速了解此查询语言。  特定指南提供给已熟悉 [SQL](log-query/sql-cheatsheet.md) 和 [Splunk](log-query/splunk-cheatsheet.md) 的用户。
 
@@ -90,7 +90,7 @@ Azure Monitor 可以使用[数据收集器 API](platform/data-collector-api.md) 
 ![VM Insights](media/overview/vm-insights.png)
 
 ### <a name="monitoring-solutions"></a>监视解决方案
-Azure Monitor 中的[监视解决方案](insights/solutions.md)是打包的逻辑集，提供有关特定应用程序或服务的见解。 它们包括了用于为应用或服务收集监视数据的逻辑、用于分析该数据的[查询](log-query/log-query-overview.md)，以及用于提供可视化效果的[视图](../log-analytics/log-analytics-view-designer.md)。 监视解决方案由 [Microsoft](insights/solutions-inventory.md) 或合作伙伴提供，可针对各种 Azure 服务和其他应用程序提供监视。
+Azure Monitor 中的[监视解决方案](insights/solutions.md)是打包的逻辑集，提供有关特定应用程序或服务的见解。 它们包括了用于为应用或服务收集监视数据的逻辑、用于分析该数据的[查询](log-query/log-query-overview.md)，以及用于提供可视化效果的[视图](./platform/view-designer.md)。 监视解决方案由 [Microsoft](./monitor-reference.md) 或合作伙伴提供，可针对各种 Azure 服务和其他应用程序提供监视。
 
 ![监视解决方案](media/overview/solutions-overview.png)
 
@@ -119,12 +119,12 @@ Azure Monitor 中的警报规则使用[操作组](platform/action-groups.md)，�
 ![仪表板](media/overview/dashboard.png)
 
 ### <a name="views"></a>视图
-[视图](../log-analytics/log-analytics-view-designer.md)在 Azure Monitor 中直观显示日志数据。  每个视图包含单个磁贴，使用该磁贴可以向下钻取到各种可视化效果的组合，例如汇总了关键数据的列表，以及条形图和折线图。  监视解决方案包含的视图汇总了特定应用程序的数据。你可以创建自己的视图来显示来自任何日志查询的数据。 与 Azure Monitor 中的其他元素一样，可将视图添加到 Azure 仪表板。
+[视图](./platform/view-designer.md)在 Azure Monitor 中直观显示日志数据。  每个视图包含单个磁贴，使用该磁贴可以向下钻取到各种可视化效果的组合，例如汇总了关键数据的列表，以及条形图和折线图。  监视解决方案包含的视图汇总了特定应用程序的数据。你可以创建自己的视图来显示来自任何日志查询的数据。 与 Azure Monitor 中的其他元素一样，可将视图添加到 Azure 仪表板。
 
 ![查看](media/overview/view.png)
 
 ### <a name="power-bi"></a>Power BI
-[Power BI](https://powerbi.microsoft.com) 是一个业务分析服务，可针对各种数据源提供交互式可视化效果，并且是将数据提供给组织内部和外部的其他人的有效方式。 可将 Power BI 配置为[自动从 Azure Monitor 导入日志数据](../log-analytics/log-analytics-powerbi.md)，以利用这些附加的可视化效果。
+[Power BI](https://powerbi.microsoft.com) 是一个业务分析服务，可针对各种数据源提供交互式可视化效果，并且是将数据提供给组织内部和外部的其他人的有效方式。 可将 Power BI 配置为[自动从 Azure Monitor 导入日志数据](./platform/powerbi.md)，以利用这些附加的可视化效果。
 
 
 ![Power BI](media/overview/power-bi.png)
@@ -134,7 +134,7 @@ Azure Monitor 中的警报规则使用[操作组](platform/action-groups.md)，�
 通常，我们需要将 Azure Monitor 与其他系统集成，并生成使用监视数据的自定义解决方案。 其他 Azure 服务使用 Azure Monitor 来提供这种集成。
 
 ### <a name="event-hub"></a>事件中心
-[Azure 事件中心](https://docs.microsoft.com/azure/event-hubs)是一个流式传输平台和事件引入服务，可以使用任何实时分析提供程序或批处理/存储适配器来转换和存储数据。 使用事件中心可[将 Azure Monitor 数据流式传输](platform/stream-monitoring-data-event-hubs.md)到合作伙伴 SIEM 和监视工具。
+[Azure 事件中心](../event-hubs/index.yml)是一个流式传输平台和事件引入服务，可以使用任何实时分析提供程序或批处理/存储适配器来转换和存储数据。 使用事件中心可[将 Azure Monitor 数据流式传输](platform/stream-monitoring-data-event-hubs.md)到合作伙伴 SIEM 和监视工具。
 
 
 ### <a name="logic-apps"></a>逻辑应用
@@ -150,4 +150,4 @@ Azure Monitor 中的警报规则使用[操作组](platform/action-groups.md)，�
 * [指标和日志](platform/data-platform.md)，以了解由 Azure Monitor 收集的数据。
 * [数据源](platform/data-sources.md)，了解应用程序的不同组件如何发送遥测数据。
 * [日志查询](log-query/log-query-overview.md)，以便分析所收集的数据。
-* 用于监视云应用程序和服务的[最佳做法](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)。
+* 用于监视云应用程序和服务的[最佳做法](/azure/architecture/best-practices/monitoring)。

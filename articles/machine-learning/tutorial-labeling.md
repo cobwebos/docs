@@ -10,14 +10,14 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 5f3a73ed6c7843c13d35a91a75189fe9dd8d4dbd
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 1665bc42578c189ed27208eb31cc4bdb2e27bbb9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628393"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536158"
 ---
-# <a name="tutorial-create-a-labeling-project-preview-for-multi-class-image-classification"></a>教程：创建用于多类图像分类的标记项目（预览） 
+# <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>教程：创建用于多类图像分类的标记项目 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本教程介绍如何管理在构建机器学习模型时用作数据的图像的标记过程。 Azure 机器学习中的数据标记功能目前为公共预览版。
@@ -69,7 +69,7 @@ Azure 机器学习数据存储用于存储连接信息，例如订阅 ID 和令�
     数据存储名称 | 为数据存储提供一个名称。  此处我们使用 labeling_tutorial。
     数据存储类型 | 选择存储的类型。  此处我们使用“Azure Blob 存储”，这是适用于图像的首选存储。
     帐户选择方法 | 选择“手动输入”。
-    代码 | `https://azureopendatastorage.blob.core.windows.net/openimagescontainer`
+    URL | `https://azureopendatastorage.blob.core.windows.net/openimagescontainer`
     身份验证类型 | 选择“SAS 令牌”。
     帐户密钥 | `?sv=2019-02-02&ss=bfqt&srt=sco&sp=rl&se=2025-03-25T04:51:17Z&st=2020-03-24T20:51:17Z&spr=https&sig=7D7SdkQidGT6pURQ9R4SUzWGxZ%2BHlNPCstoSRRVg8OY%3D`
 
@@ -128,9 +128,9 @@ Azure 机器学习数据存储用于存储连接信息，例如订阅 ID 和令�
 
 1. 还可以直接在窗体中添加任务的简短说明。  键入“标记教程 - 猫和狗”。
 
-1. 选择“**下一页**”。
+1. 选择“**下一步**”。
 
-1. 在“ML 辅助标记”窗体中，将复选框保留未选中状态。 ML 辅助标记所需的数据比在本教程中使用的数据更多。
+1. 如果使用的是企业版工作区，会看到“ML 辅助标记”部分。  将该复选框保留为未选中状态。 ML 辅助标记所需的数据比在本教程中使用的数据更多。
 
 1. 选择“创建项目”。
 

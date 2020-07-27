@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: ad3e005f65b1660bd843bf2819f41eddbed44e9c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: b6829f52cb8aaac6f243d3a4a1fa7f6bc1b150d7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86035731"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544568"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -25,7 +25,7 @@ ms.locfileid: "86035731"
 
 ## <a name="unpack-the-speech-sdk-for-javascript-into-that-folder"></a>将 JavaScript 的语音 SDK 解压缩到文件夹
 
-将语音 SDK 作为 [.zip 包](https://aka.ms/csspeech/jsbrowserpackage)下载，并将其解压缩到新建文件夹。 这导致两个文件（`microsoft.cognitiveservices.speech.sdk.bundle.js` 和 `microsoft.cognitiveservices.speech.sdk.bundle.js.map`）被解压缩。
+将语音 SDK 作为 [.zip 包](https://aka.ms/csspeech/jsbrowserpackage)下载，并将其解压缩到新建文件夹。 这会导致以下五个文件被解压缩，包括 `microsoft.cognitiveservices.speech.sdk.bundle.js` 和 `microsoft.cognitiveservices.speech.sdk.bundle.js.map`。
 后一个文件是可选的，可用于调试到 SDK 代码中。
 
 ## <a name="create-an-indexhtml-page"></a>创建 index.html 页面

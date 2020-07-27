@@ -1,5 +1,5 @@
 ---
-title: 从快照创建 VM - PowerShell 示例
+title: 从快照创建 VM (Windows) - PowerShell 示例
 description: Azure PowerShell 脚本示例 - 从快照创建 VM
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: fb10f6c2d8109d240840faf5fa864176c89f24e1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7f8e7f5e758c916cf7e6b96ab38607ee722152b1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75368295"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509540"
 ---
-# <a name="create-a-virtual-machine-from-a-snapshot-with-powershell"></a>使用 PowerShell 从快照创建虚拟机
+# <a name="create-a-virtual-machine-from-a-snapshot-with-powershell-windows"></a>使用 PowerShell 从快照创建虚拟机 (Windows)
 
 此脚本从 OS 磁盘的快照创建虚拟机。 
 
@@ -48,15 +48,15 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 | Command | 说明 |
 |---|---|
-| [Get-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/get-azsnapshot) | 使用快照名称获取快照。 |
-| [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) | 创建磁盘配置。 在磁盘创建过程中将使用此配置。 |
-| [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk) | 创建托管磁盘。 |
-| [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) | 创建 VM 配置。 此配置包括 VM 名称、操作系统和管理凭据等信息。 在创建 VM 期间将使用此配置。 |
-| [Set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk) | 将托管磁盘作为 OS 磁盘附加到虚拟机 |
-| [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) | 创建公共 IP 地址。 |
-| [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) | 创建网络接口。 |
-| [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | 创建虚拟机。 |
-|[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组及其中包含的所有资源。 |
+| [Get-AzSnapshot](/powershell/module/az.compute/get-azsnapshot) | 使用快照名称获取快照。 |
+| [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) | 创建磁盘配置。 在磁盘创建过程中将使用此配置。 |
+| [New-AzDisk](/powershell/module/az.compute/new-azdisk) | 创建托管磁盘。 |
+| [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) | 创建 VM 配置。 此配置包括 VM 名称、操作系统和管理凭据等信息。 在创建 VM 期间将使用此配置。 |
+| [Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) | 将托管磁盘作为 OS 磁盘附加到虚拟机 |
+| [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | 创建公共 IP 地址。 |
+| [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) | 创建网络接口。 |
+| [New-AzVM](/powershell/module/az.compute/new-azvm) | 创建虚拟机。 |
+|[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组及其中包含的所有资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 

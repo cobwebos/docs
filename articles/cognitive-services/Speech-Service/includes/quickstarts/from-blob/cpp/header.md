@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 2bc38b75a5239e31eb98dab94989e6dc15b3fbf1
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: cf3b67e59abed86062fa71b51b8e7b542d4917ef
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75467171"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544667"
 ---
-如果希望直入正题，请在 GitHub 上查看或下载所有<a href="https://aka.ms/speech/github-cpp">语音 SDK C++ 示例</a>。 否则就开始吧！
+可以在 GitHub 上查看或下载所有<a href="https://aka.ms/speech/github-cpp">语音 SDK C++ 示例</a>。 

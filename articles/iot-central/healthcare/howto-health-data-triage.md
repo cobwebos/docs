@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 99b27ec53d955079b5f73986408e698955c0969b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ed06aef4d494fbdce5a07c5bc50bad9737ba5433
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77021638"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497040"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>教程：构建 Power BI 提供程序仪表板
 
 
 
-构建持续患者监视解决方案时，还可以为医护团队创建一个仪表板，以将患者数据可视化。 本教程介绍如何通过 IoT Central 持续患者监视应用程序模板创建 Power BI 实时流式处理仪表板。
+构建持续患者监视解决方案时，还可以为医护团队创建一个仪表板，以将患者数据可视化。 本教程介绍如何通过 IoT Central 持续患者监视应用程序模板创建 Power BI 实时流式处理仪表板。 如果用例不需要访问实时数据，可以使用 [IoT Central Power BI 仪表板](../core/howto-connect-powerbi.md)，使用经过简化的部署过程。 
 
 >[!div class="mx-imgBorder"]
 >![仪表板 GIF](media/dashboard-gif-3.gif)
@@ -57,7 +57,7 @@ ms.locfileid: "77021638"
 
 1. 登录到你的 Power BI 帐户。
 
-2. 在首选的工作区中，通过选择工具栏右上角的“+ 创建”按钮来创建新的流数据集。  对于你要在仪表板上鉴别分类的每个患者，需要单独创建一个数据集。
+2. 在首选的工作区中，通过选择工具栏右上角的“+ 创建”按钮来创建新的流数据集。 对于你要在仪表板上鉴别分类的每个患者，需要单独创建一个数据集。
 
     >[!div class="mx-imgBorder"] 
     >![创建流数据集](media/create-streaming-dataset.png)
@@ -139,58 +139,58 @@ ms.locfileid: "77021638"
 }
 ```
 
-2. 检查 JSON 有效负载后，请返回到逻辑应用设计器并选择“+ 新建步骤”。  搜索并添加“初始化变量”作为下一步骤，然后输入以下参数： 
+2. 检查 JSON 有效负载后，请返回到逻辑应用设计器并选择“+ 新建步骤”。 搜索并添加“初始化变量”作为下一步骤，然后输入以下参数：
 
     |参数|值|
     |---|---|
     |名称|接口名称|
-    |类型|String|
+    |类型|字符串|
 
-    点击“保存”。  
+    点击“保存”。 
 
-3. 添加名为“身体”、类型为“字符串”的另一个变量。   将在逻辑应用中添加以下操作：
+3. 添加名为“身体”、类型为“字符串”的另一个变量。  将在逻辑应用中添加以下操作：
 
     >[!div class="mx-imgBorder"]
     >![初始化变量](media/initialize-string-variables.png)
     
-4. 选择“+ 新建步骤”并添加一个“分析 JSON”操作。   将此操作重命名为“分析属性”。  对于“内容”，请选择来自事件中心的“属性”。  选择底部的“使用示例有效负载生成架构”，并粘贴上面“属性”部分中的示例有效负载。 
+4. 选择“+ 新建步骤”并添加一个“分析 JSON”操作。  将此操作重命名为“分析属性”。 对于“内容”，请选择来自事件中心的“属性”。 选择底部的“使用示例有效负载生成架构”，并粘贴上面“属性”部分中的示例有效负载。
 
-5. 接下来，选择“设置变量”操作，并使用已分析的 JSON 属性中的 **iothub-interface-name** 更新“接口名称”变量。  
+5. 接下来，选择“设置变量”操作，并使用已分析的 JSON 属性中的 **iothub-interface-name** 更新“接口名称”变量。 
 
-6. 添加一个“拆分”控件作为下一操作，并选择“接口名称”变量作为“打开”参数。   此控件用于将数据传送到正确的数据集。
+6. 添加一个“拆分”控件作为下一操作，并选择“接口名称”变量作为“打开”参数。  此控件用于将数据传送到正确的数据集。
 
-7. 在 Azure IoT Central 应用程序的“设备模板”视图中，找到 Smart Vitals Patch 健康数据和 Smart Knee Brace 健康数据的“接口名称”。  为每个“接口名称”的“切换”控件创建两个不同的案例，并相应地重命名该控件。  可将“默认”案例设置为使用“终止”控件，并选择要显示的状态。 
+7. 在 Azure IoT Central 应用程序的“设备模板”视图中，找到 Smart Vitals Patch 健康数据和 Smart Knee Brace 健康数据的“接口名称”。 为每个“接口名称”的“切换”控件创建两个不同的案例，并相应地重命名该控件。 可将“默认”案例设置为使用“终止”控件，并选择要显示的状态。
 
     >[!div class="mx-imgBorder"] 
     >![拆分控件](media/split-by-interface.png)
 
-8. 对于 **Smart Vitals Patch** 案例，请添加“分析 JSON”操作。  对于“内容”，请选择来自事件中心的“内容”。  复制并粘贴上述 Smart Vitals Patch 的示例有效负载以生成架构。
+8. 对于 **Smart Vitals Patch** 案例，请添加“分析 JSON”操作。 对于“内容”，请选择来自事件中心的“内容”。 复制并粘贴上述 Smart Vitals Patch 的示例有效负载以生成架构。
 
-9. 添加“设置变量”操作，并使用步骤 7 中已分析的 JSON 中的“身体”数据更新“身体”变量。   
+9. 添加“设置变量”操作，并使用步骤 7 中已分析的 JSON 中的“身体”数据更新“身体”变量。  
 
-10. 添加一个“条件”控件作为下一操作，并将条件设置为“身体”、“包含”、“心率”。     这可以确保在填充 Power BI 数据集之前，已获得来自 Smart Vitals Patch 的正确数据集。 步骤 7-9 如下所示：
+10. 添加一个“条件”控件作为下一操作，并将条件设置为“身体”、“包含”、“心率”。    这可以确保在填充 Power BI 数据集之前，已获得来自 Smart Vitals Patch 的正确数据集。 步骤 7-9 如下所示：
 
     >[!div class="mx-imgBorder"] 
     >![Smart Vitals - 添加条件](media/smart-vitals-pbi.png)
 
-11. 对于“条件”的 **True** 案例，请添加一个调用“将行添加到数据集”Power BI 功能的操作。  为此，必须登录到 Power BI。 **False** 案例可以再次使用“终止”控件。 
+11. 对于“条件”的 **True** 案例，请添加一个调用“将行添加到数据集”Power BI 功能的操作。 为此，必须登录到 Power BI。 **False** 案例可以再次使用“终止”控件。
 
-12. 选择适当的“工作区”、“数据集”和“表”。    将在 Power BI 中创建流数据集时指定的参数映射到来自事件中心的已分析 JSON 值。 填充的操作应如下所示：
+12. 选择适当的“工作区”、“数据集”和“表”。   将在 Power BI 中创建流数据集时指定的参数映射到来自事件中心的已分析 JSON 值。 填充的操作应如下所示：
 
     >[!div class="mx-imgBorder"] 
     >![将行添加到 Power BI](media/add-rows-yesenia.png)
 
-13. 对于 **Smart Knee Brace** 切换案例，请添加一个“分析 JSON”操作来分析内容（类似于步骤 7）。  然后选择“将行添加到数据集”，以更新 Power BI 中的 Teddy Silvers 数据集。 
+13. 对于 **Smart Knee Brace** 切换案例，请添加一个“分析 JSON”操作来分析内容（类似于步骤 7）。 然后选择“将行添加到数据集”，以更新 Power BI 中的 Teddy Silvers 数据集。
 
     >[!div class="mx-imgBorder"] 
     >![Smart Vitals - 添加条件](media/knee-brace-pbi.png)
 
-14. 按“保存”，然后运行逻辑应用。 
+14. 按“保存”，然后运行逻辑应用。
 
 ## <a name="build-a-real-time-dashboard-for-patient-vitals"></a>构建患者生命体征数据的实时仪表板
-现在，请返回到 Power BI 并选择“+ 创建”，以创建新的**仪表板**。  为仪表板命名并点击“创建”。 
+现在，请返回到 Power BI 并选择“+ 创建”，以创建新的**仪表板**。 为仪表板命名并点击“创建”。
 
-选择顶部导航栏中的省略号图标，然后选择“+ 添加磁贴”。 
+选择顶部导航栏中的省略号图标，然后选择“+ 添加磁贴”。
 
 >[!div class="mx-imgBorder"] 
 >![将磁贴添加到仪表板](media/add-tile.png)
@@ -203,7 +203,7 @@ ms.locfileid: "77021638"
 
 1. 在 Azure 门户中，可以删除创建的事件中心和逻辑应用资源。
 
-2. 对于 IoT Central 应用程序，请转到“管理”选项卡并选择“删除”。 
+2. 对于 IoT Central 应用程序，请转到“管理”选项卡并选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 
