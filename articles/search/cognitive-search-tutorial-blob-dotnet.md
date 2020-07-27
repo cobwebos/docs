@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: 25df5f37f8aef55bc025b579ec48a2fab7dd6b72
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 0ad3e6dbb63d7c89919d6d341bd62c5d57960a43
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080171"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511647"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>教程：AI 使用 .NET SDK 从 Azure Blob 生成可搜索内容
 
@@ -143,7 +143,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 
 接下来，安装最新的 `Microsoft.Extensions.Configuration.Json` NuGet 包。
 
-1. 选择“工具” > “NuGet 包管理器” > “管理解决方案...的 NuGet 包”。   
+1. 选择“工具” > “NuGet 包管理器” > “管理解决方案...的 NuGet 包”。 
 
 1. 单击“浏览”并搜索 `Microsoft.Extensions.Configuration.Json` NuGet 包。 
 
@@ -151,13 +151,13 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 
 ### <a name="add-service-connection-information"></a>添加服务连接信息
 
-1. 在解决方案资源管理器中右键单击该项目，并选择“添加” > “新建项...”。  
+1. 在解决方案资源管理器中右键单击该项目，并选择“添加” > “新建项...”。 
 
 1. 将文件命名为“`appsettings.json`”，并选择“添加”。 
 
 1. 将此文件包含在输出目录中。
     1. 右键单击 `appsettings.json` 并选择“属性”。 
-    1. 将“复制到输出目录”的值更改为“如果较新则复制”。 
+    1. 将“复制到输出目录”的值更改为“如果较新则复制”。
 
 1. 将以下 JSON 复制到新 JSON 文件中。
 
@@ -560,10 +560,13 @@ private static Skillset CreateOrUpdateDemoSkillSet(SearchServiceClient serviceCl
 
 本演练使用以下字段和字段类型：
 
-| field-names: | `id`       | content   | languageCode | keyPhrases         | 组织     |
-|--------------|----------|-------|----------|--------------------|-------------------|
-| field-types: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
-
+| 字段名 | 字段类型 |
+| --- | --- |
+| id | Edm.String |
+| content | Edm.String |
+| languageCode | Edm.String |
+| keyPhrases | List<Edm.String> |
+| 组织 | List<Edm.String> |
 
 #### <a name="create-demoindex-class"></a>创建 DemoIndex 类
 

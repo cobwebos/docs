@@ -1,7 +1,7 @@
 ---
-title: 快速入门：从麦克风中识别语音，Swift - 语音服务
+title: 快速入门：识别语音，Swift - 语音服务 (iOS)
 titleSuffix: Azure Cognitive Services
-description: 了解如何在 iOS 上使用语音 SDK 通过 Swift 识别语音
+description: 了解如何使用认知服务语音 SDK 为 iOS 设备创建识别 Swift 语音的应用。
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: chlandsi
-ms.openlocfilehash: 95c69aad24ff10b49bdc09411553e6ed43bfdccd
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: c4a66b1581049b90a419a1b62ba837fc832fd748
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391428"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512706"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-ios-by-using-the-speech-sdk"></a>快速入门：在 iOS 上使用语音 SDK 通过 Swift 识别语音
 
@@ -40,7 +40,7 @@ ms.locfileid: "85391428"
 
 ## <a name="create-an-xcode-project"></a>创建 Xcode 项目
 
-启动 Xcode，然后通过选择“文件” > “新建” > “项目”来启动新项目。  
+启动 Xcode，然后通过选择“文件” > “新建” > “项目”来启动新项目。
 在模板选择对话框中，选择“iOS 单一视图应用”模板。
 
 在随后的对话框中，进行以下选择。

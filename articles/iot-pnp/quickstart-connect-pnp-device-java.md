@@ -1,5 +1,5 @@
 ---
-title: 将 IoT 即插即用预览版示例设备代码连接到 IoT 中心 | Microsoft Docs
+title: 将 IoT 即插即用预览代码连接到 IoT 中心 - Java |Microsoft Docs
 description: 使用 Java，生成并运行可连接到 IoT 中心的 IoT 即插即用预览版示例设备代码。 使用 Azure IoT 资源管理器工具查看由设备发送到中心的信息。
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: aa676dd374eccf2a4b5c4622689ed402c8679e5a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c85763ffb12ac93f3aff667c4660afa22ca6a99f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76964815"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521235"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-java"></a>快速入门：将示例 IoT 即插即用预览版设备应用程序连接到 IoT 中心 (Java)
 
@@ -63,7 +63,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-java
     mvn clean install -DskipTests
     ```
 
-1. 配置设备连接字符串： 
+1. 配置设备连接字符串：
 
     ```cmd/sh
     set DIGITAL_TWIN_DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>

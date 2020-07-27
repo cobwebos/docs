@@ -1,7 +1,7 @@
 ---
-title: 快速入门：识别来自麦克风、Objective-C 的语音 - 语音服务
+title: 快速入门：识别语音，Objective-C - 语音服务 (iOS)
 titleSuffix: Azure Cognitive Services
-description: 了解如何在 iOS 上使用语音 SDK 通过 Objective-C 识别语音
+description: 了解如何使用认知服务语音 SDK 为 iOS 设备创建识别 Objective-C 语音的应用。
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: chlandsi
-ms.openlocfilehash: c355071c4bbaff5ddb22b2db5fc4a3a0fdb561d4
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: ba12f258ce7b0db60d3e7343bf12ffc28e8548ab
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391547"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524278"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-by-using-the-speech-sdk"></a>快速入门：在 iOS 上使用语音 SDK 通过 Objective-C 识别语音
 
@@ -40,7 +40,7 @@ ms.locfileid: "85391547"
 
 ## <a name="create-an-xcode-project"></a>创建 Xcode 项目
 
-启动 Xcode，然后通过选择“文件” > “新建” > “项目”来启动新项目。  
+启动 Xcode，然后通过选择“文件” > “新建” > “项目”来启动新项目。
 在模板选择对话框中，选择“iOS 单一视图应用”模板。
 
 在随后的对话框中，进行以下选择。
@@ -60,7 +60,7 @@ ms.locfileid: "85391547"
       1. 在“常规”选项卡的“嵌入式二进制文件”标头下 ，添加 SDK 库作为框架：选择“添加嵌入式二进制文件” > “添加其他”。 转到主目录，然后选择 `MicrosoftCognitiveServicesSpeech.framework` 文件。 此操作会自动将 SDK 库添加到“链接的框架和库”标头。
          ![添加的框架](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-framework.png)
       1. 转到“生成设置”选项卡，选择“所有”设置。
-      1. 将目录 $(SRCROOT)/..添加 到“搜索路径”标头下的“框架搜索路径”。 
+      1. 将目录 $(SRCROOT)/..添加 到“搜索路径”标头下的“框架搜索路径”。
 
       ![“框架搜索路径”设置](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-framework-search-paths.png)
 

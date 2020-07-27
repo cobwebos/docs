@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.reviewer: trbye, jmartens, larryfr
+ms.reviewer: jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 06/23/2020
+ms.date: 07/16/2020
 ms.custom: Build2020, tracking-python
-ms.openlocfilehash: e5665bd5ad2baa35b497c8b4fe19b0cb93bdb2a7
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: bf0aa51c64eea0aa58e679c4f9f44686ce7b9ffb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023357"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520623"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>使用 Azure 机器学习对大量数据运行批处理推理
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,6 +33,7 @@ ms.locfileid: "86023357"
 > * 编写推理脚本。
 > * 创建一个包含 ParallelRunStep 的[机器学习管道](concept-ml-pipelines.md)，并对 MNIST 测试映像运行批量推理。 
 > * 使用新的数据输入和参数重新提交批量推理运行。 
+> * 查看结果。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -159,9 +160,7 @@ input_mnist_ds_consumption = DatasetConsumptionConfig("minist_param_config", pip
 ```python
 from azureml.pipeline.core import Pipeline, PipelineData
 
-output_dir = PipelineData(name="inferences", 
-                          datastore=def_data_store, 
-                          output_path_on_compute="mnist/results")
+output_dir = PipelineData(name="inferences", datastore=def_data_store)
 ```
 
 ## <a name="prepare-the-model"></a>准备模型
@@ -266,17 +265,17 @@ file_path = os.path.join(script_dir, "<file_name>")
 
 ### <a name="prepare-the-environment"></a>准备环境
 
-首先，指定脚本的依赖项。 这样就可以安装 pip 包并配置环境。 请始终包括 azureml-core 和 azureml-dataprep[pandas, fuse] 包 。
+首先，指定脚本的依赖项。 这样就可以安装 pip 包并配置环境。
 
-如果使用自定义 docker 映像 (user_managed_dependencies=True)，则还应该安装 conda。
+始终在 PIP 包列表中含入 **azureml-core** 和 **azureml-dataset-runtime[pandas, fuse]** 。 如果使用自定义 docker 映像 (user_managed_dependencies=True)，则还应该安装 conda。
 
 ```python
 from azureml.core.environment import Environment
 from azureml.core.conda_dependencies import CondaDependencies
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
 
-batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.13.1", "pillow",
-                                                          "azureml-core", "azureml-dataprep[pandas, fuse]"])
+batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.15.2", "pillow", 
+                                                          "azureml-core", "azureml-dataset-runtime[pandas, fuse]"])
 
 batch_env = Environment(name="batch_environment")
 batch_env.python.conda_dependencies = batch_conda_deps
@@ -286,7 +285,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 
 ### <a name="specify-the-parameters-using-parallelrunconfig"></a>使用 ParallelRunConfig 指定参数
 
-`ParallelRunConfig` 是 `ParallelRunStep` 实例在 Azure 机器学习管道中的主要配置。 使用它来包装脚本并配置所需的参数，包括以下所有各项：
+`ParallelRunConfig` 是 `ParallelRunStep` 实例在 Azure 机器学习管道中的主要配置。 使用它来包装脚本并配置所需的参数，包括所有以下条目：
 - `entry_script`：作为将在多个节点上并行运行的本地文件路径的用户脚本。 如果 `source_directory` 存在，则使用相对路径。 否则，请使用计算机上可访问的任何路径。
 - `mini_batch_size`：传递给单个 `run()` 调用的微型批处理的大小。 （可选；对于 FileDataset，默认值为 `10` 文件，对于 TabularDataset，默认值为 `1MB`。）
     - 对于 `FileDataset`，它是最小值为 `1` 的文件数。 可以将多个文件合并成一个微型批处理。
@@ -305,7 +304,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 - `run_invocation_timeout`：`run()` 方法调用超时（以秒为单位）。 （可选；默认值为 `60`）
 - `run_max_try`：微型批处理的 `run()` 的最大尝试次数。 如果引发异常，则 `run()` 失败；如果达到 `run_invocation_timeout`，则不返回任何内容（可选；默认值为 `3`）。 
 
-可以将 `mini_batch_size`、`node_count`、`process_count_per_node`、`logging_level`、`run_invocation_timeout` 和 `run_max_try` 指定为 `PipelineParameter`，以便在重新提交管道运行时，可以微调参数值。 在此示例中，对 `mini_batch_size` 和 `Process_count_per_node` 使用 PipelineParameter，并在稍后重新提交运行时更改这些值。 
+可以指定 `mini_batch_size`、`node_count`、`process_count_per_node`、`logging_level`、`run_invocation_timeout` 和 `run_max_try` 作为 `PipelineParameter` 以便在重新提交管道运行时，可以微调参数值。 在此示例中，对 `mini_batch_size` 和 `Process_count_per_node` 使用 PipelineParameter，并在稍后重新提交运行时更改这些值。 
 
 此示例假设你使用的是之前讨论的 `digit_identification.py` 脚本。 如果你使用自己的脚本，请相应地更改 `source_directory` 和 `entry_script` 参数。
 
@@ -379,7 +378,7 @@ pipeline_run.wait_for_completion(show_output=True)
 
 ## <a name="resubmit-a-run-with-new-data-inputs-and-parameters"></a>使用新的数据输入和参数重新提交运行
 
-由于你已将输入和多个配置设置为 `PipelineParameter`，因此可以使用不同的数据集输入重新提交批量推理运行，并微调参数，而不必创建全新的管道。 你将使用相同的数据存储，但仅使用单个映像作为数据输入。
+由于已将输入和几个配置设置为 `PipelineParameter`，因此可以重新提交一个具有不同数据集输入内容的批量推理运行，以及对参数进行微调，而不必创建全新的管道。 你将使用相同的数据存储，但仅使用单个映像作为数据输入。
 
 ```python
 path_on_datastore = mnist_blob.path('mnist/0.png')
@@ -392,6 +391,28 @@ pipeline_run_2 = experiment.submit(pipeline,
 )
 
 pipeline_run_2.wait_for_completion(show_output=True)
+```
+## <a name="view-the-results"></a>查看结果
+
+以上运行的结果将被写入在 PipelineData 对象中指定的数据存储作为输出数据，此过程在这种情况下称为“推理”。 结果存储在默认 Blob 容器中，可以导航到存储帐户并通过存储资源管理器查看，文件路径为 azureml-blobstore-“GUID”/azureml/“RunId”/“output_dir”  。
+
+也可以下载此数据来查看结果。 下面是用于查看前 10 行内容的示例代码。
+
+```python
+import pandas as pd
+import tempfile
+
+batch_run = pipeline_run.find_step_run(parallelrun_step.name)[0]
+batch_output = batch_run.get_output_data(output_dir.name)
+
+target_dir = tempfile.mkdtemp()
+batch_output.download(local_path=target_dir)
+result_file = os.path.join(target_dir, batch_output.path_on_datastore, parallel_run_config.append_row_file_name)
+
+df = pd.read_csv(result_file, delimiter=":", header=None)
+df.columns = ["Filename", "Prediction"]
+print("Prediction has ", df.shape[0], " rows")
+df.head(10) 
 ```
 
 ## <a name="next-steps"></a>后续步骤

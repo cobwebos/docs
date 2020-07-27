@@ -3,12 +3,12 @@ title: 什么是语言理解 (LUIS)？
 description: 语言理解 (LUIS) 是一种基于云的 API 服务，可在用户对话的自然语言文本中应用自定义机器学习智能，以便预测整体含义并提炼出相关的详细信息。
 ms.topic: overview
 ms.date: 05/05/2020
-ms.openlocfilehash: 26e1dfd5a610be9470d05080ca1559eec47196ab
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 231a6580a6776b82173865744e9e8757c2fa08f1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675990"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538031"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？
 
@@ -24,10 +24,10 @@ LUIS 的客户端应用程序可以是任何传统的应用程序，只要其能
 
 <a name="Accessing-LUIS"></a>
 
-LUIS 应用一旦发布，客户端应用程序即可向 LUIS 自然语言处理终结点 [API][endpoint-apis] 发送话语（文本）并将结果作为 JSON 响应接收。 LUIS 的常用客户端应用程序是聊天机器人。
+LUIS 应用一旦发布，客户端应用程序即可向 LUIS 自然语言处理终结点 [API][endpoint-apis] 发送话语（文本）并接收结果作为 JSON 响应。 LUIS 的常用客户端应用程序是聊天机器人。
 
 
-![LUIS 使用聊天机器人以通过自然语言理解 (NLP) 预测用户文本的概念图](./media/luis-overview/LUIS-chat-bot-request-response.svg "LUIS 使用聊天机器人以通过自然语言理解 (NLP) 预测用户文本的概念图像")
+![LUIS 使用聊天机器人以通过自然语言理解 (NLP) 预测用户文本的概念图](./media/luis-overview/LUIS-chat-bot-request-response.svg "LUIS 使用聊天机器人以通过自然语言理解 (NLP) 预测用户文本的概念图")
 
 |步骤|操作|
 |:--|:--|
@@ -55,13 +55,13 @@ LUIS 模型从称为 **[意向](luis-concept-intent.md)** 的用户意向的类�
 
 |示例用户话语|Intent|提取的数据|
 |-----------|-----------|-----------|
-|`Book a flight to Seattle?`|BookFlight|Seattle|
+|`Book a flight to Seattle?`|BookFlight|西雅图|
 |`When does your store open?`|店铺营业时间和位置|开门|
 |`Schedule a meeting at 1pm with Bob in Distribution`|安排谈话|下午 1 点，何石|
 
 ## <a name="query-prediction-endpoint"></a>查询预测终结点
 
-在训练应用并将其发布到终结点以后，客户端应用程序会将言语发送到预测[终结点](https://go.microsoft.com/fwlink/?linkid=2092356) API。 API 将应用程序应用到言语进行分析，并使用 JSON 格式的预测结果进行响应。
+在训练应用并将其发布到终结点以后，客户端应用程序会将言语发送到预测[终结点](https://go.microsoft.com/fwlink/?linkid=2092356) API。 API 将模型应用到言语进行分析，并使用 JSON 格式的预测结果进行响应。
 
 JSON 终结点响应至少包含查询话语和得分最高的意向。 它还可以提取数据，例如下面的“联系人类型”实体和整体情绪。
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a5829057aed913ea824cbd2fd6b52369b5e70d88
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: fada393dcab61cf00a0a3befcf4af3660bf625dc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801830"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536515"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>快速入门：将第一个 IoT Edge 模块部署到虚拟 Linux 设备
 
@@ -63,7 +63,7 @@ ms.locfileid: "85801830"
 
 免费级的 IoT 中心适用于此快速入门。 如果曾经用过 IoT 中心并且创建了一个中心，则可使用该 IoT 中心。
 
-以下代码在资源组“IoTEdgeResources”中创建免费的“F1”中心 。 将 `{hub_name}` 替换为 IoT 中心的唯一名称。
+以下代码在资源组“IoTEdgeResources”中创建免费的“F1”中心 。 将 `{hub_name}` 替换为 IoT 中心的唯一名称。 创建 IoT 中心可能需要数分钟的时间。
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
@@ -81,7 +81,7 @@ ms.locfileid: "85801830"
 
 由于 IoT Edge 设备的行为和托管方式与典型 IoT 设备不同，请使用 `--edge-enabled` 标志声明此标识，使之用于 IoT Edge 设备。
 
-1. 在 Azure Cloud Shell 中输入以下命令，以便在中心创建名为 **myEdgeDevice** 的设备。
+1. 在 Azure Cloud Shell 中输入以下命令，以便在中心创建名为“myEdgeDevice”的设备。
 
    ```azurecli-interactive
    az iot hub device-identity create --device-id myEdgeDevice --edge-enabled --hub-name {hub_name}
@@ -113,7 +113,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 �
 
 使用以下 CLI 命令基于预生成的 [iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy) 模板创建 IoT Edge 设备。
 
-* 对于 bash 或 cloud shell 用户，请将以下命令复制到文本编辑器中，将占位符文本替换为自己的信息，然后将其复制到 bash 或 cloud shell 窗口中：
+* 对于 bash 或 Cloud Shell 用户，请将以下命令复制到文本编辑器中，将占位符文本替换为自己的信息，然后将其复制到 bash 或 Cloud Shell 窗口中：
 
    ```azurecli-interactive
    az deployment group create \
@@ -233,10 +233,19 @@ IoT Edge 设备现在已配置好。 它可以运行云部署型模块了。
 
 如果是在新资源组中创建的虚拟机和 IoT 中心，则可删除该组以及所有关联的资源。 仔细检查资源组的内容，确保没有要保留的内容。 如果不希望删除整个组，则可改为删除单个资源。
 
-删除 **IoTEdgeResources** 组。
+> [!IMPORTANT]
+> 删除资源组的操作不可逆。
+
+删除 **IoTEdgeResources** 组。 可能需要花费几分钟来删除资源组。
 
 ```azurecli-interactive
 az group delete --name IoTEdgeResources
+```
+
+可以通过查看资源组列表来确认已删除该资源组。
+
+```azurecli-interactive
+az group list
 ```
 
 ## <a name="next-steps"></a>后续步骤

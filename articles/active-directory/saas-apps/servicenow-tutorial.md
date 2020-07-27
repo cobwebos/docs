@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41f42b053181f4115770cd9973621706b248baab
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: a09cc83259a6fbb07b8c88e1d8f82b720400c0d1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86168297"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507703"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ServiceNow 集成
 
@@ -44,6 +44,9 @@ ms.locfileid: "86168297"
 * 对于自动配置，请为 ServiceNow 启用多提供程序插件。
 * 若要安装 ServiceNow Classic（移动版）应用程序，请转到相应的商店并搜索 ServiceNow Classic 应用程序。 然后下载。
 
+> [!NOTE]
+> 此集成也可以通过 Azure AD 美国国家云环境使用。 你可以在“Azure AD 美国国家云应用程序库”中找到此应用程序，并以与在公有云中相同的方式对其进行配置。
+
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD SSO。 
@@ -61,11 +64,11 @@ ms.locfileid: "86168297"
 要配置 ServiceNow 与 Azure AD 的集成，需要从库中将 ServiceNow 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左窗格中，选择“Azure Active Directory”服务。 
-1. 转到“企业应用程序”，并选择“所有应用程序”。  
+1. 在左窗格中，选择“Azure Active Directory”服务。
+1. 转到“企业应用程序”，并选择“所有应用程序”。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，输入“ServiceNow”   。
-1. 从结果面板中选择“ServiceNow”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
+1. 从结果面板中选择“ServiceNow”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-servicenow"></a>配置和测试 ServiceNow 的 Azure AD 单一登录
 
@@ -101,8 +104,10 @@ ms.locfileid: "86168297"
 
     c. 对于“回复 URL”  ，请输入以下 URL 之一：
 
-    - `https://instancename.service-now.com/navpage.do`
-    - `https://instancename.service-now.com/customer.do`
+    | 回复 URL|
+    |----------|
+    | `https://instancename.service-now.com/navpage.do` |
+    | `https://instancename.service-now.com/customer.do` | 
 
     > [!NOTE]
     > 这些不是实际值。 需要使用实际的登录 URL 和标识符（稍后在本教程中介绍）来更新这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -123,11 +128,11 @@ ms.locfileid: "86168297"
 
 在本部分，将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左窗格中，选择“Azure Active Directory” > “用户” > “所有用户”。   
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 对于“名称”  ，请输入 `B.Simon`。  
-   1. 对于“用户名”  ，请输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+1. 在 Azure 门户的左窗格中，选择“Azure Active Directory” > “用户” > “所有用户”。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 对于“名称”，请输入 `B.Simon`。  
+   1. 对于“用户名”，请输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选择“显示密码”，然后记下“密码”框中显示的值   。
    1. 选择“创建”  。
 
@@ -135,31 +140,31 @@ ms.locfileid: "86168297"
 
 在本部分中，通过授予 B.Simon 访问 ServiceNow 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，选择“企业应用程序” > “所有应用程序”。  
+1. 在 Azure 门户中，选择“企业应用程序” > “所有应用程序”。
 1. 在应用程序列表中，选择“ServiceNow”  。
 1. 在应用的概述页中找到“管理”部分，然后选择“用户和组”   。
 
    ![“管理”部分的屏幕截图，其中突出显示了“用户和组”](common/users-groups-blade.png)
 
-1. 选择“添加用户”。  在“添加分配”对话框中选择“用户和组”。  
+1. 选择“添加用户”。 在“添加分配”对话框中选择“用户和组”。
 
     ![用户和组的屏幕截图，其中已突出显示“添加用户”](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从用户列表中选择“B.Simon”，然后选择“选择”。   
-1. 如果希望在 SAML 断言中使用任何角色值，请在“选择角色”对话框中，从列表中为用户选择相应的角色。  然后选择“选择”。 
-1. 在“添加分配”对话框中选择“分配”。  
+1. 在“用户和组”对话框中，从用户列表中选择“B.Simon”，然后选择“选择”。
+1. 如果希望在 SAML 断言中使用任何角色值，请在“选择角色”对话框中，从列表中为用户选择相应的角色。 然后选择“选择”。
+1. 在“添加分配”对话框中选择“分配”。
 
 ### <a name="configure-azure-ad-sso-for-servicenow-express"></a>为 ServiceNow Express 配置 Azure AD SSO
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 ServiceNow 应用程序集成页上，选择“单一登录”。  
+1. 在 [Azure 门户](https://portal.azure.com/)中的 ServiceNow 应用程序集成页上，选择“单一登录”。
 
     ![ServiceNow 应用程序集成页的屏幕截图，其中已突出显示“单一登录”](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择“SAML/WS-Fed”模式以启用单一登录。  
+2. 在“选择单一登录方法”对话框中，选择“SAML/WS-Fed”模式以启用单一登录。
 
     ![选择单一登录方法的屏幕截图，其中突出显示了 SAML](common/select-saml-option.png)
 
-3. 在“设置 SAML 单一登录”页上，选择笔形图标以打开“基本 SAML 配置”对话框。  
+3. 在“设置 SAML 单一登录”页上，选择笔形图标以打开“基本 SAML 配置”对话框。
 
     ![“设置 SAML 单一登录”页的屏幕截图，其中突出显示了笔形图标](common/edit-urls.png)
 
@@ -171,13 +176,15 @@ ms.locfileid: "86168297"
 
     c. 对于“回复 URL”  ，请输入以下 URL 之一：
 
-    - `https://instancename.service-now.com/navpage.do`
-    - `https://instancename.service-now.com/customer.do`
+    | 回复 URL |
+    |-----------|
+    | `https://instancename.service-now.com/navpage.do` |
+    | `https://instancename.service-now.com/customer.do` |
 
     > [!NOTE]
     > 这些不是实际值。 需要使用实际的登录 URL 和标识符（稍后在本教程中介绍）来更新这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. 在“设置 SAML 单一登录”页上的“SAML 签名证书”部分，选择“下载”以根据自己的需要从指定的选项中下载“证书(Base64)”。     然后将其保存在计算机上。
+5. 在“设置 SAML 单一登录”页上的“SAML 签名证书”部分，选择“下载”以根据自己的需要从指定的选项中下载“证书(Base64)”。 然后将其保存在计算机上。
 
     ![“SAML 签名证书”部分的屏幕截图，其中突出显示了“下载”](common/certificatebase64.png)
 
@@ -185,7 +192,7 @@ ms.locfileid: "86168297"
 
     ![“设置 ServiceNow”部分的屏幕截图，其中突出显示了“查看分步说明”](./media/servicenow-tutorial/tutorial_servicenow_configure.png)
 
-7. 在“配置登录”窗体中输入 ServiceNow 实例名称、管理员用户名和管理员密码。  选择“立即配置”  。 为使此操作生效，提供的管理员用户名必须具有在 ServiceNow 中分配的 security_admin  角色。 否则，若要手动配置 ServiceNow 以使用 Azure AD 作为 SAML 标识提供者，请选择“手动配置单一登录”  。 从“快速参考”部分中复制“注销 URL”、“Azure AD 标识符”和“登录 URL”。 
+7. 在“配置登录”窗体中输入 ServiceNow 实例名称、管理员用户名和管理员密码。 选择“立即配置”  。 为使此操作生效，提供的管理员用户名必须具有在 ServiceNow 中分配的 security_admin  角色。 否则，若要手动配置 ServiceNow 以使用 Azure AD 作为 SAML 标识提供者，请选择“手动配置单一登录”  。 从“快速参考”部分中复制“注销 URL”、“Azure AD 标识符”和“登录 URL”。
 
     ![配置登录窗体的屏幕截图，其中突出显示了“立即配置”](./media/servicenow-tutorial/configure.png "配置应用 URL")
 
@@ -211,7 +218,7 @@ ms.locfileid: "86168297"
 
      ![“激活插件”对话框的屏幕截图，其中突出显示了“激活”](./media/servicenow-tutorial/tutorial_activate1.png "激活插件")
 
-1. 在左侧窗格中，通过搜索栏搜索“多提供程序 SSO”部分，然后选择“属性”。  
+1. 在左侧窗格中，通过搜索栏搜索“多提供程序 SSO”部分，然后选择“属性”。
 
     ![“多提供程序 SSO”部分的屏幕截图，其中突出显示了“多提供程序 SSO”和“属性”](./media/servicenow-tutorial/tutorial_servicenow_06.png "配置应用 URL")
 
@@ -221,23 +228,23 @@ ms.locfileid: "86168297"
 
     * 对于“启用多提供程序 SSO”  ，选择“是”  。
   
-    * 对于“启用将所有标识提供者中的用户自动导入用户表”，选择“是”。  
+    * 对于“启用将所有标识提供者中的用户自动导入用户表”，选择“是”。
 
     * 对于“为多提供程序 SSO 集成启用调试日志记录”  ，选择“是”  。
 
     * 对于“...用户表上的字段”  ，输入“email”  。
   
-    * 选择“保存”。 
+    * 选择“保存”。
 
 1. 可以自动或手动配置 ServiceNow。 若要自动配置 ServiceNow，请执行以下步骤：
 
     1. 返回到 Azure 门户中的 ServiceNow 单一登录页  。
 
-    1. 为 ServiceNow 提供一次单击配置服务。 若要启用此服务，请转到“ServiceNow 配置”部分，选择“配置 ServiceNow”以打开“配置登录”窗口。   
+    1. 为 ServiceNow 提供一次单击配置服务。 若要启用此服务，请转到“ServiceNow 配置”部分，选择“配置 ServiceNow”以打开“配置登录”窗口。
 
         ![“设置 ServiceNow”的屏幕截图，其中突出显示了“查看分步说明”](./media/servicenow-tutorial/tutorial_servicenow_configure.png)
 
-    1. 在“配置登录”窗体中输入 ServiceNow 实例名称、管理员用户名和管理员密码。  选择“立即配置”  。 为使此操作生效，提供的管理员用户名必须具有在 ServiceNow 中分配的 security_admin  角色。 否则，若要手动配置 ServiceNow 以使用 Azure AD 作为 SAML 标识提供者，请选择“手动配置单一登录”  。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”  。
+    1. 在“配置登录”窗体中输入 ServiceNow 实例名称、管理员用户名和管理员密码。 选择“立即配置”  。 为使此操作生效，提供的管理员用户名必须具有在 ServiceNow 中分配的 security_admin  角色。 否则，若要手动配置 ServiceNow 以使用 Azure AD 作为 SAML 标识提供者，请选择“手动配置单一登录”  。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”  。
 
         ![配置登录窗体的屏幕截图，其中突出显示了“立即配置”](./media/servicenow-tutorial/configure.png "配置应用 URL")
 
@@ -257,16 +264,16 @@ ms.locfileid: "86168297"
 
              ![“标识提供者”部分的屏幕截图](./media/servicenow-tutorial/automatic_config.png "配置单一登录")
 
-               * 对于“名称”  ，为你的配置输入一个名称（例如，“Microsoft Azure Federated single sign-on”  ）。
+               * 对于“名称”，为你的配置输入一个名称（例如，“Microsoft Azure Federated single sign-on”）。
 
                * 请从文本框中删除已填充的“标识提供者的 SingleLogoutRequest”  值。
 
-               * 复制“ServiceNow 主页”值，将其粘贴到 Azure 门户上“ServiceNow 基本 SAML 配置”部分中的“登录 URL”内。   
+               * 复制“ServiceNow 主页”值，将其粘贴到 Azure 门户上“ServiceNow 基本 SAML 配置”部分中的“登录 URL”内。
 
                   > [!NOTE]
                   > ServiceNow 实例主页是 **ServiceNow 租户 URL** 和 **/navpage.do** 的串联（例如：`https://fabrikam.service-now.com/navpage.do`）。
 
-              * 复制“实体 ID/颁发者”值，将其粘贴到 Azure 门户中“ServiceNow 基本 SAML 配置”部分的“标识符”内。   
+              * 复制“实体 ID/颁发者”值，将其粘贴到 Azure 门户中“ServiceNow 基本 SAML 配置”部分的“标识符”内。
 
               * 确认将“名称 ID 策略”  设置为 `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` 值。 
 
@@ -278,9 +285,9 @@ ms.locfileid: "86168297"
 
             ![“集合”屏幕截图，其中突出显示了“证书”和右箭头图标](./media/servicenow-tutorial/tutorial_servicenow_11.png "配置单一登录")
 
-          1. 选择“保存”。 
+          1. 选择“保存”。
 
-          1. 在页面右上角选择“测试连接”。 
+          1. 在页面右上角选择“测试连接”。
 
              ![页面屏幕截图，其中突出显示了“测试连接”](./media/servicenow-tutorial/tutorial_activate2.png "激活插件")
 
@@ -301,11 +308,11 @@ ms.locfileid: "86168297"
 
         ![“多提供程序 SSO”的屏幕截图，其中突出显示了“标识提供者”](./media/servicenow-tutorial/tutorial_servicenow_07.png "配置单一登录")
 
-    1. 在“标识提供者”  对话框中，选择“新建”。 
+    1. 在“标识提供者”  对话框中，选择“新建”。
 
         ![“标识提供者”对话框的屏幕截图，其中突出显示了“新建”](./media/servicenow-tutorial/ic7694977.png "配置单一登录")
 
-    1. 在“标识提供者”  对话框中，选择“SAML”。 
+    1. 在“标识提供者”  对话框中，选择“SAML”。
 
         ![“标识提供者”对话框的屏幕截图，其中突出显示了“SAML”](./media/servicenow-tutorial/ic7694978.png "配置单一登录")
 
@@ -325,16 +332,16 @@ ms.locfileid: "86168297"
 
         * 从文本框中删除已填充的“标识提供者的 SingleLogoutRequest”  值。
 
-        * 复制“ServiceNow 主页”  值。 将其粘贴到 Azure 门户中“ServiceNow 基本 SAML 配置”部分的“登录 URL”内。  
+        * 复制“ServiceNow 主页”  值。 将其粘贴到 Azure 门户中“ServiceNow 基本 SAML 配置”部分的“登录 URL”内。
 
             > [!NOTE]
             > ServiceNow 实例主页是 **ServiceNow 租户 URL** 和 **/navpage.do** 的串联（例如：`https://fabrikam.service-now.com/navpage.do`）。
 
-        * 复制“实体 ID/颁发者”值  。 将其粘贴到 Azure 门户中“ServiceNow 基本 SAML 配置”部分的“标识符”内。  
+        * 复制“实体 ID/颁发者”值  。 将其粘贴到 Azure 门户中“ServiceNow 基本 SAML 配置”部分的“标识符”内。
 
         * 确认将“名称 ID 策略”  设置为 `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` 值。
 
-        * 选择“高级”。  在“用户字段”  中，输入“email”  。
+        * 选择“高级”。 在“用户字段”  中，输入“email”  。
 
             > [!NOTE]
             > 可以将 Azure AD 配置为发出 Azure AD 用户 ID （用户主体名称）或电子邮件地址作为 SAML 令牌中的唯一标识符。 若要执行此操作，请转到 Azure 门户的“ServiceNow”   > “特性”   > “单一登录”  部分，并将所需字段映射到“nameidentifier”  属性。 Azure AD 中为所选属性存储的值（例如用户主体名称）必须匹配 ServiceNow 中为输入字段存储的值（例如 user_name）。
@@ -393,7 +400,7 @@ ms.locfileid: "86168297"
 
     e. 在记事本中打开从 Azure 门户下载的“Base64 编码证书”。 将其内容复制到剪贴板，然后将其粘贴到“PEM 证书”  文本框。
 
-    f. 选择“更新” 
+    f. 选择“更新”
 
 6. 在“单一登录”  对话框中，选择“添加新 IdP”  。
 
@@ -445,7 +452,7 @@ ms.locfileid: "86168297"
     > [!NOTE]
     > 可以将 Azure AD 配置为发出 Azure AD 用户 ID （用户主体名称）或电子邮件地址作为 SAML 令牌中的唯一标识符。 若要执行此操作，请转到 Azure 门户的“ServiceNow”   > “特性”   > “单一登录”  部分，并将所需字段映射到“nameidentifier”  属性。 Azure AD 中为所选属性存储的值（例如用户主体名称）必须匹配 ServiceNow 中为输入字段存储的值（例如 user_name）。
 
-    f. 选择“保存”。 
+    f. 选择“保存”。
 
 ## <a name="test-sso"></a>测试 SSO
 
@@ -459,11 +466,11 @@ ms.locfileid: "86168297"
 
     ![ServiceNow Classic 应用程序的屏幕截图，其中突出显示了加号](./media/servicenow-tutorial/test03.png)
 
-    b. 输入 ServiceNow 实例名称，然后选择“继续”。 
+    b. 输入 ServiceNow 实例名称，然后选择“继续”。
 
     ![“添加实例”页的屏幕截图，其中突出显示了“继续”](./media/servicenow-tutorial/test04.png)
 
-    c. 在“登录”页面上执行以下步骤： 
+    c. 在“登录”页面上执行以下步骤：
 
     ![“登录”页的屏幕截图，其中突出显示了“使用外部登录”](./media/servicenow-tutorial/test01.png)
 

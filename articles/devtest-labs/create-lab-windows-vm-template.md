@@ -1,21 +1,22 @@
 ---
-title: 使用 Azure 开发测试实验室和资源管理器模板创建实验室
-description: 本教程使用 Azure 资源管理器模板在 Azure 开发测试实验室中创建实验室。 实验室管理员会设置实验室、创建实验室中的 VM 并配置策略。
-ms.topic: tutorial
+title: 使用 Azure 开发测试实验室和 Azure 资源管理器模板创建实验室
+description: 本快速入门使用 Azure 资源管理器模板（ARM 模板）在 Azure 开发测试实验室中创建实验室。 实验室管理员会设置实验室、创建实验室中的 VM 并配置策略。
+ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 06/26/2020
-ms.openlocfilehash: 22ba4ffeec22a45c07b096b0a754d08c8230dd8f
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 8688b8265a8ca00a36a569ff4e067c9f36834c6d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85476200"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537541"
 ---
-# <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs-resource-manager-template"></a>教程：使用 Azure 开发测试实验室（资源管理器模板）设置实验室
-本教程使用 Azure 资源管理器模板创建具有 Windows Server 2019 Datacenter VM 的实验室。 
+# <a name="quickstart-set-up-a-lab-by-using-azure-devtest-labs-arm-template"></a>快速入门：使用 Azure 开发测试实验室 ARM 模板设置实验室
+本快速入门使用 Azure 资源管理器 (ARM) 模板创建具有 Windows Server 2019 Datacenter VM 的实验室。 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-在本教程中，将执行以下操作：
+在本快速入门中，你将执行以下操作：
 
 > [!div class="checklist"]
 > * 查看模板 
@@ -23,15 +24,17 @@ ms.locfileid: "85476200"
 > * 验证模板
 > * 清理资源
 
-如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
+
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-dtl-create-lab-windows-vm%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
-无。
+如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-dtl-create-lab-windows-vm/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-dtl-create-lab-windows-vm/)。
 
 :::code language="json" source="~/quickstart-templates/101-dtl-create-lab-windows-vm/azuredeploy.json" range="1-97" highlight="51-85":::
 
@@ -46,7 +49,7 @@ ms.locfileid: "85476200"
 ## <a name="deploy-the-template"></a>部署模板
 若要自动运行部署，请单击以下按钮。 
 
-[![部署到 Azure](./media/create-lab-windows-vm-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-dtl-create-lab-windows-vm%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-dtl-create-lab-windows-vm%2Fazuredeploy.json)
 
 1. 创建新的资源组，以便之后可以轻松地进行清理。
 1. 选择资源组的位置。 
@@ -59,7 +62,7 @@ ms.locfileid: "85476200"
 
     :::image type="content" source="./media/create-lab-windows-vm-template/deploy-template-page.png" alt-text="部署模板页":::
 
-## <a name="verify-the-deployment"></a>验证部署
+## <a name="validate-the-deployment"></a>验证部署
 1. 选择顶部的“通知”，查看部署状态，并单击“正在进行部署”链接 。
 
     :::image type="content" source="./media/create-lab-windows-vm-template/deployment-notification.png" alt-text="部署通知":::
@@ -76,7 +79,7 @@ ms.locfileid: "85476200"
     > [!IMPORTANT] 
     > 保持此页打开并按照下一部分中的说明清理资源，以避免在 Azure 上运行实验室和 VM 产生成本。 如果想要学习下一个教程来测试在实验室中对 VM 的访问，请在完成该教程后清理资源。 
 
-## <a name="cleanup-resources"></a>清理资源
+## <a name="clean-up-resources"></a>清理资源
 
 1. 首先，删除实验室以便可以删除资源组。 无法删除包含实验室的资源组。 若要删除实验室，请选择工具栏上的“删除”。 
 
@@ -90,8 +93,7 @@ ms.locfileid: "85476200"
     :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="“删除资源组”按钮":::
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，已创建具有 VM 的实验室。 若要了解如何访问实验室，请继续学习下一教程：
+在本快速入门中，你创建了一个包含 VM 的实验室。 若要了解如何访问实验室，请继续学习下一教程：
 
 > [!div class="nextstepaction"]
 > [教程：访问实验室](tutorial-use-custom-lab.md)
-

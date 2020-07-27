@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/24/2020
-ms.openlocfilehash: f802ec10410d0a412e29d9ad51bb409a5d099f31
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.date: 07/14/2020
+ms.openlocfilehash: 18204777a8e61b577b257b67cdd12bed1a5534fa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562529"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529618"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>快速入门：在门户中创建 Azure 认知搜索服务
 
@@ -27,11 +27,11 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 ## <a name="before-you-start"></a>开始之前
 
-以下服务属性在服务生存期内是固定的，更改这些属性需要新的服务。 创建服务时，请考虑将如何使用它：
+以下服务属性在服务生存期内是固定的，更改任何属性都需要新的服务。 因为它们是固定的，所以在填写每个属性时，请考虑以下与用法相关的注意事项：
 
-* 名称（查看有关服务名称的[建议](#name-the-service)）
-* 层（免费层、基本层、标准层会[影响计费](search-sku-tier.md)，因此请设置容量上限）
-* 区域（选择包含相关服务的位置。 对于与认知服务或 Azure 机器学习的集成，需要同一区域的共存的服务）
+* 服务名称变为 URL 终结点的一部分（[查看提示](#name-the-service)，了解有用的服务名称）。
+* 服务层会[影响计费](search-sku-tier.md)，应设置容量上限。
+* 服务区域可能决定某些方案的可用性。 如果你对知识挖掘和 AI 扩充感兴趣，则需要认知服务，可能还需要与 Azure 认知搜索处于相同区域的 Azure 机器学习。
 
 ## <a name="subscribe-free-or-paid"></a>订阅（免费或付费）
 
@@ -41,7 +41,7 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 ## <a name="find-azure-cognitive-search"></a>查找 Azure 认知搜索
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 1. 单击左上角的加号（“+ 创建资源”）。
 

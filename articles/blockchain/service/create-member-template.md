@@ -2,18 +2,16 @@
 title: 使用 Azure 资源管理器模板创建 Azure 区块链服务成员
 description: 了解如何使用 Azure 资源管理器模板创建 Azure 区块链服务成员。
 services: azure-resource-manager
-author: PatAltimore
 ms.service: azure-resource-manager
 ms.topic: quickstart
-ms.custom: subject-armqs
-ms.author: patricka
-ms.date: 06/04/2020
-ms.openlocfilehash: 8eabb6806dee96871648ea419ba36d768d32a2ab
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.custom: subject-armqs, references_regions
+ms.date: 07/16/2020
+ms.openlocfilehash: fb7f91a0670d99170656c0c3a2c1b73d96095762
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078159"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513007"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure 区块链服务成员
 
@@ -51,7 +49,7 @@ ms.locfileid: "86078159"
     --------|------------
     订阅 | 选择要用于你的服务的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的订阅。
     资源组 | 可以创建新的资源组名称，也可以选择订阅中现有的资源组名称。
-    位置 | 选择要创建成员的位置。 联盟中所有成员的位置必须相同。 可用于部署的位置有 westeurope、eastus、southeastasia、westeurope、northeurope、westus2 和 japaneast。
+    位置 | 选择要创建成员的位置。 联盟中所有成员的位置必须相同。 可用于部署的位置有 westeurope、eastus、southeastasia、westeurope、northeurope、westus2 和 japaneast。 功能在某些地区可能不可用。 Azure 区块链数据管理器在以下 Azure 区域提供：“美国东部”和“西欧”。
     成员名称 | 为该 Azure 区块链服务成员选择一个唯一名称。 区块链成员名称只能包含小写字母和数字。 第一个字符必须是字母。 值长度必须介于 2 到 20 个字符之间。
     联盟名称 | 输入唯一名称。 有关联盟的详细信息，请参阅 [Azure 区块链服务联盟](consortium.md)。
     成员密码 | 成员帐户密码用于加密为你的成员创建的 Ethereum 帐户的私钥。 你使用成员帐户和成员帐户密码进行联盟管理。

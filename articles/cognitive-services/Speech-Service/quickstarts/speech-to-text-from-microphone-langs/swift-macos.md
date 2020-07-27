@@ -1,7 +1,7 @@
 ---
-title: 快速入门：从麦克风中识别语音，Swift - 语音服务
+title: 快速入门：识别语音，Swift - 语音服务 (macOS)
 titleSuffix: Azure Cognitive Services
-description: 了解如何在 macOS 上使用语音 SDK 通过 Swift 识别语音
+description: 了解如何使用认知服务语音 SDK 为 macOS 计算机创建识别 Swift 语音的应用。
 services: cognitive-services
 author: cbasoglu
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: cbasoglu
-ms.openlocfilehash: 440addd017e7a819d9d3d02a8b77b9432b68b9af
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 68947446d18ce1632b63ac3ba27311f648f3deea
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391411"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524099"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-macos-using-the-speech-sdk"></a>快速入门：在 macOS 上使用语音 SDK 通过 Swift 识别语音
 
@@ -41,7 +41,7 @@ ms.locfileid: "85391411"
 
 ## <a name="create-an-xcode-project"></a>创建 Xcode 项目
 
-启动 Xcode，然后通过单击“文件” > “新建” > “项目”来启动新项目。  
+启动 Xcode，然后通过单击“文件” > “新建” > “项目”来启动新项目。
 在模板选择对话框中，选择“Cocoa 应用”模板。
 
 在随后的对话框中，进行以下选择：
@@ -87,7 +87,7 @@ ms.locfileid: "85391411"
 
 1. 在 Xcode 中打开 `helloworld.xcworkspace` 工作区。
 1. 使调试输出可见（“视图” > “调试区域” > “激活控制台”）。
-1. 在菜单中选择“产品” > “运行”，或者单击“播放”按钮，以生成并运行示例代码。  
+1. 在菜单中选择“产品” > “运行”，或者单击“播放”按钮，以生成并运行示例代码。
 1. 单击应用中的“识别”按钮并讲几句话后，应会在应用窗口的下部看到讲出的文本。
 
 ## <a name="next-steps"></a>后续步骤

@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: 本快速入门演示如何使用 Azure Dev Spaces 和 Visual Studio Code 在 Azure Kubernetes 服务中对 .NET Core 应用程序进行调试和快速循环访问
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: b38562879fa67d7ee82e3251ea2fcaa57a2075d6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b8ddf2e484b3d1525825f8df3b738091564b0a78
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80240211"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512446"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>快速入门：在 Kubernetes 上进行调试和循环访问：Visual Studio Code 和 .NET Core - Azure Dev Spaces
 
@@ -44,7 +44,7 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>在 AKS 群集上启用 Azure Dev Spaces
 
-使用 `use-dev-spaces` 命令在 AKS 群集上启用 Dev Spaces，然后按提示操作。 以下命令在 *MyResourceGroup* 组中的 *MyAKS* 群集上启用 Dev Spaces，并创建一个默认开发空间。 
+使用 `use-dev-spaces` 命令在 AKS 群集上启用 Dev Spaces，然后按提示操作。 以下命令在 *MyResourceGroup* 组中的 *MyAKS* 群集上启用 Dev Spaces，并创建一个默认开发空间。
 
 > [!NOTE]
 > `use-dev-spaces` 命令还将安装 Azure Dev Spaces CLI（如果尚未安装）。 无法在 Azure Cloud Shell 中安装 Azure Dev Spaces CLI。
@@ -81,11 +81,11 @@ git clone https://github.com/Azure/dev-spaces
 
 ## <a name="prepare-the-sample-application-in-visual-studio-code"></a>在 Visual Studio Code 中准备示例应用程序
 
-打开 Visual Studio Code，依次单击“文件”、“打开...”，导航到 *dev-spaces/samples/dotnetcore/getting-started/webfrontend* 目录，然后单击“打开”。   
+打开 Visual Studio Code，依次单击“文件”、“打开...”，导航到 *dev-spaces/samples/dotnetcore/getting-started/webfrontend* 目录，然后单击“打开”。
 
 现在，*webfrontend* 项目便在 Visual Studio Code 中打开。 若要在开发空间中运行应用程序，请在命令面板中使用 Azure Dev Spaces 扩展生成 Docker 和 Helm chart 资产。
 
-若要在 Visual Studio Code 中打开命令面板，请依次单击“视图”、“命令面板”。   开始键入 `Azure Dev Spaces` 并单击 `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。
+若要在 Visual Studio Code 中打开命令面板，请依次单击“视图”、“命令面板”。 开始键入 `Azure Dev Spaces` 并单击 `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。
 
 ![准备 Azure Dev Spaces 的配置文件](./media/common/command-palette.png)
 
@@ -100,27 +100,27 @@ git clone https://github.com/Azure/dev-spaces
 
 ## <a name="build-and-run-code-in-kubernetes-from-visual-studio-code"></a>通过 Visual Studio Code 在 Kubernetes 中生成并运行代码
 
-单击左侧的“调试”图标，然后单击顶部的“.NET Core 启动(AZDS)”。  
+单击左侧的“调试”图标，然后单击顶部的“.NET Core 启动(AZDS)”。
 
-![](media/get-started-netcore/debug-configuration.png)
+![屏幕截图显示了 Visual Studio Code 窗口的左上角。 调试图标突出显示，左侧面板标题为“调试”，标题右侧的下拉列表显示“dot NET Core Launch (A Z D S)”。](media/get-started-netcore/debug-configuration.png)
 
-此命令会以调试模式在 Azure Dev Spaces 中生成并运行服务。 底部的“终端”  窗口显示在 Azure Dev Spaces 中运行的服务的编译输出和 URL。 “调试控制台”会显示日志输出。 
+此命令会以调试模式在 Azure Dev Spaces 中生成并运行服务。 底部的“终端”窗口显示在 Azure Dev Spaces 中运行的服务的编译输出和 URL。 “调试控制台”会显示日志输出。
 
 > [!Note]
-> 如果在“命令面板”中看不到任何 Azure Dev Spaces 命令，请确保已安装[适用于 Azure Dev Spaces 的 Visual Studio Code 扩展](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)。  另请确认是否在 Visual Studio Code 中打开了 *dev-spaces/samples/dotnetcore/getting-started/webfrontend* 目录。
+> 如果在“命令面板”中看不到任何 Azure Dev Spaces 命令，请确保已安装[适用于 Azure Dev Spaces 的 Visual Studio Code 扩展](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)。 另请确认是否在 Visual Studio Code 中打开了 *dev-spaces/samples/dotnetcore/getting-started/webfrontend* 目录。
 
 可以通过打开公共 URL 来查看服务是否正在运行。
 
 > [!Note]
-> 最初，公共 URL 可能会显示“错误的网关”  错误。 请等待几秒钟，然后再刷新网页，应该会看到你的服务正在运行。
+> 最初，公共 URL 可能会显示“错误的网关”错误。 请等待几秒钟，然后再刷新网页，应该会看到你的服务正在运行。
 
-依次单击“调试”、“停止调试”以停止调试器。  
+依次单击“调试”、“停止调试”以停止调试器。 
 
 ## <a name="update-code"></a>更新代码
 
-若要部署服务的更新版本，可以更新项目中的任何文件，然后重新运行“.NET Core Launch (AZDS)”  。 例如：
+若要部署服务的更新版本，可以更新项目中的任何文件，然后重新运行“.NET Core Launch (AZDS)”。 例如：
 
-1. 如果应用程序仍在运行，请依次单击“调试”  和“停止调试”  来停止该应用程序。
+1. 如果应用程序仍在运行，请依次单击“调试”和“停止调试”来停止该应用程序。
 1. 将 [`Controllers/HomeController.cs` 中的第 22 行](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Controllers/HomeController.cs#L22)更新为：
     
     ```csharp
@@ -128,18 +128,18 @@ git clone https://github.com/Azure/dev-spaces
     ```
 
 1. 保存所做更改。
-1. 重新运行“.NET Core Launch (AZDS)”  。
-1. 导航到正在运行的服务，然后单击“关于”。 
+1. 重新运行“.NET Core Launch (AZDS)”。
+1. 导航到正在运行的服务，然后单击“关于”。
 1. 观察所做的更改。
-1. 依次单击“调试”和“停止调试”以停止应用程序   。
+1. 依次单击“调试”和“停止调试”以停止应用程序 。
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>设置并使用用于调试的断点
 
-在调试模式下使用“.NET Core 启动(AZDS)”启动服务。 
+在调试模式下使用“.NET Core 启动(AZDS)”启动服务。
 
-依次单击“视图”、“资源管理器”，导航回到“资源管理器”视图。    打开 `Controllers/HomeController.cs` 并单击第 22 行中的某个位置，以将光标置于此处。 若要设置断点，请按 *F9*，或者依次单击“调试”、“切换断点”。  
+依次单击“视图”、“资源管理器”，导航回到“资源管理器”视图。   打开 `Controllers/HomeController.cs` 并单击第 22 行中的某个位置，以将光标置于此处。 若要设置断点，请按 *F9*，或者依次单击“调试”、“切换断点”。 
 
-在浏览器中打开服务，你会发现未显示任何消息。 返回 Visual Studio Code，将会看到，第 20 行已突出显示。 设置的断点在第 20 行处暂停了服务。 若要恢复服务，请按 *F5*，或者依次单击“调试”、“继续”。   返回浏览器，你会发现，现在显示了消息。
+在浏览器中打开服务，你会发现未显示任何消息。 返回 Visual Studio Code，将会看到，第 20 行已突出显示。 设置的断点在第 20 行处暂停了服务。 若要恢复服务，请按 *F5*，或者依次单击“调试”、“继续”。 返回浏览器，你会发现，现在显示了消息。
 
 在附加调试器的情况下在 Kubernetes 中运行服务时，你对调试信息（例如调用堆栈、局部变量和异常信息）拥有完全访问权限。
 
@@ -153,9 +153,9 @@ git clone https://github.com/Azure/dev-spaces
 ViewData["Message"] = "Your application description page in Azure while debugging!";
 ```
 
-保存文件。 依次单击“调试”、“重新开始调试”，或者在“调试”工具栏中单击“重新开始调试”按钮。    
+保存文件。 依次单击“调试”、“重新开始调试”，或者在“调试”工具栏中单击“重新开始调试”按钮。   
 
-![](media/common/debug-action-refresh.png)
+![调试工具栏是位于页面顶部中心的一个小窗格（就在页面标题下方）。 重启按钮显示一个圆形箭头，并高亮显示。 按钮的悬停图像是“重启 (Ctrl+Shift+F5)”。](media/common/debug-action-refresh.png)
 
 在浏览器中打开服务，你会发现已显示更新的消息。
 

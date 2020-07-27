@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 96bb624472aa2053599765d5bfedeb96339d0973
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: be124bdde4427113d56f44f0c1fa19c600bd768e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85808040"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496039"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>什么是 Azure Synapse Analytics（工作区预览版）？
 
@@ -24,7 +24,7 @@ ms.locfileid: "85808040"
 
 此类解决方案很难生成、配置、保护和维护，会延迟智能见解的迅速提取。
 
-Azure Synapse 是一个集成式的分析服务，可以缩短在不同的数据仓库和大数据分析系统中对各种任意规模的数据进行见解提取所需的时间。 它汇集了企业数据仓库中所用的 SQL 技术的精华、大数据分析中所用的 Spark 技术，以及用于协调活动和数据移动的 Pipelines。  
+Azure Synapse 是一个集成式的分析服务，可以缩短在不同的数据仓库和大数据分析系统中对各种任意规模的数据进行见解提取所需的时间。 它汇集了企业数据仓库中所用的 SQL 技术的精华、大数据分析中所用的 Spark 技术，以及用于协调活动和数据移动的 Pipelines。
 
 Azure Synapse 随附 Web 原生的 Studio 用户体验，该体验提供用于管理、监视、代码编写与安全保护的单一体验和模型。
 
@@ -38,9 +38,9 @@ Azure Synapse 允许企业使用最熟悉的分析方法，在任意规模的任
 
 * Synapse SQL 是一个分布式查询系统，使企业能够使用数据工程师所熟悉的标准 T-SQL 体验来实现数据仓库和数据虚拟化方案。 它还扩展了 SQL 的功能，可以解决流式处理和机器学习方案的问题。
 
-* Synapse SQL 提供无服务器和预配资源模型，并根据需求提供消耗和计费选项。  要使性能和成本可预测，可以对池进行预配，保留对 SQL 表中存储的数据进行处理的能力。 对于计划外的或突发性的工作负载，可以使用无服务器的、始终可用的 SQL 终结点。
+* Synapse SQL 提供无服务器和预配资源模型，并根据需求提供消耗和计费选项。 要使性能和成本可预测，可以对池进行预配，保留对 SQL 表中存储的数据进行处理的能力。 对于计划外的或突发性的工作负载，可以使用无服务器的、始终可用的 SQL 终结点。
 * 使用内置的流式处理功能可将数据从云数据源载入到 SQL 表中
-* 使用机器学习模型将 AI 与 SQL 集成，并使用 T-SQL PREDICT 函数对数据进行评分
+* 通过使用机器学习模型并使用 [T-SQL PREDICT 函数](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)对数据进行评分，将 AI 与 SQL 集成
 
 ### <a name="industry-standard-apache-spark"></a>行业标准 Apache Spark
 

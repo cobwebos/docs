@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2019
 ms.author: memildin
-ms.openlocfilehash: 285245e499cfe8a5d7e365044c188191325e4267
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: a636acab42d14925f507568e8a9fff4693c8f71c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84782851"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519637"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>教程：提高合规性
 ---
@@ -49,7 +49,7 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 >
 > 通过[动态合规性包（预览版）](update-regulatory-compliance-packages.md)功能，你可以将你的规章合规性仪表板中显示的标准升级到新的动态包  。 你还可以使用相同的预览功能来添加新的合规性包，并监视与其他标准的合规性。 
 
-1.  在“安全中心”主菜单的“策略和符合性”下，选择“法规符合应”。   <br>
+1.  在“安全中心”主菜单的“策略和符合性”下，选择“法规符合应”。 <br>
 在屏幕顶部会显示一个仪表板，其中概述了你的符合性状态以及一组支持的符合性法规。 可以查看总体符合性分数，以及与每个标准相关联的已通过评估和失败的评估的数目。
 
     ![计算机说明高置信度](./media/security-center-compliance-dashboard/compliance-dashboard.png)
@@ -70,11 +70,11 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
 1.  单击在仪表板中显示的失败评估即可查看该建议的详细信息。 每项建议都包含一组修正步骤，遵循这些步骤即可解决问题。
 
-1.  可以选择特定的资源来查看更多的详细信息，然后解决与该资源的建议相关的问题。 <br>例如，在“Azure CIS 标准”选项卡中，  可以单击建议“需要安全地传输到存储帐户”。 
+1.  可以选择特定的资源来查看更多的详细信息，然后解决与该资源的建议相关的问题。 <br>例如，在“Azure CIS 标准”选项卡中，  可以单击建议“需要安全地传输到存储帐户”。
 
     ![符合性建议](./media/security-center-compliance-dashboard/compliance-recommendation.png)
 
-1. 一路单击，直至出现建议信息，然后选择一个运行不正常的资源，此时就会直接转到在 Azure 门户中启用“安全的存储传输”这一体验。 
+1. 一路单击，直至出现建议信息，然后选择一个运行不正常的资源，此时就会直接转到在 Azure 门户中启用“安全的存储传输”这一体验。
 
     有关如何应用建议的详细信息，请参阅[在 Azure 安全中心实施安全建议](security-center-recommendations.md)。
 

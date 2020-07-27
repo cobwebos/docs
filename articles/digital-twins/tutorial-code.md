@@ -7,12 +7,12 @@ ms.author: cschorm
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: deb69f6ca8f1499f43c12d606434719571a1f400
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: b1039bb94626dec35eff040e023a84283d9d3a4a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027883"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537406"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>使用 Azure 数字孪生 API 编写代码
 
@@ -47,7 +47,7 @@ dotnet new console
 接下来，添加两个使用 Azure 数字孪生所必须的依赖项：
 
 ```cmd/sh
-dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.2
+dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
 dotnet add package Azure.identity
 ```
 
@@ -174,7 +174,7 @@ Azure 数字孪生没有内部域词汇。 环境中可在 Azure 数字孪生中
 > 如果在本教程中使用 Visual Studio，建议你选择新创建的 JSON 文件，并将属性检查器中的“复制到输出目录”属性设置为“有更新时才复制”或“始终复制”  。 当你在本教程的其余部分使用 F5 执行程序时，这可让 Visual Studio 找到具有默认路径的 JSON 文件。
 
 > [!TIP] 
-> 有一种与语言无关的 [DTDL 验证程序示例](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)，可用来检查模型文件，以确保 DTDL 有效。 它是在 DTDL 分析程序库的基础上构建的，详情请参阅[操作方法：分析和验证模型](how-to-use-parser.md)。
+> 有一种与语言无关的 [DTDL 验证程序示例](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)，可用来检查模型文件，以确保 DTDL 有效。 它是在 DTDL 分析程序库的基础上构建的，详情请参阅[*操作方法：分析和验证模型*](how-to-use-parser.md)。
 
 接下来，向 Program.cs 添加更多代码，将刚才创建的模型上传到 Azure 数字孪生实例。
 
@@ -185,7 +185,6 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
 using Azure;
-using Azure.DigitalTwins.Core.Models;
 ```
 
 接下来，将 `Main` 方法签名更改为允许异步执行，准备使用 C# 服务 SDK 中的异步方法。 
@@ -531,7 +530,7 @@ namespace minimal
 ```
 ## <a name="clean-up-resources"></a>清理资源
  
-本教程中使用的实例可重复用于下一教程[教程：使用示例客户端应用了解基础知识](tutorial-command-line-app.md)。 如果打算继续学习下一个教程，可以保留在此处设置的 Azure 数字孪生实例。
+本教程中使用的实例可重复用于下一教程[*教程：使用示例客户端应用了解基础知识*](tutorial-command-line-app.md)。 如果打算继续学习下一个教程，可以保留在此处设置的 Azure 数字孪生实例。
  
 如果不再需要本教程中创建的资源，请按照以下步骤将其删除。
 
@@ -561,8 +560,8 @@ az ad app delete --id <your-application-ID>
 请继续学习下一个教程，了解可使用这类示例客户端应用执行的操作： 
 
 > [!div class="nextstepaction"]
-> [教程：使用示例客户端应用了解基础知识](tutorial-command-line-app.md)
+> [*教程：使用示例客户端应用了解基础知识*](tutorial-command-line-app.md)
 
 你也可以在操作说明文章中了解更多管理操作，以增加在本教程中编写的代码，或开始查看概念文档，详细了解教程中使用的元素。
-* [操作说明：管理自定义模型](how-to-manage-model.md)
-* [概念：自定义模型](concepts-models.md)
+* [*操作说明：管理自定义模型*](how-to-manage-model.md)
+* [*概念：自定义模型*](concepts-models.md)

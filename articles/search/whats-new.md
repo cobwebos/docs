@@ -6,19 +6,27 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 07/10/2020
-ms.openlocfilehash: d2567a5a0374fd05f17e1153c3b2d7f3df50e0d9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/15/2020
+ms.openlocfilehash: 238ede3e79b7d7c5a22d24dfc52530fe391b600b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246990"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519620"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
 了解服务中的新增功能。 请将本页加入书签，以随时了解该服务的最新信息。
 
-## <a name="feature-announcements"></a>功能增强
+## <a name="feature-announcements-in-2020"></a>2020 版功能公告
+
+### <a name="july-2020"></a>2020 年 7 月
+
+|功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 类别 | 说明 | 可用性  |
+|---------|------------------|-------------|---------------|
+| [ **.NET 客户端库**](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | Azure SDK | 一个新的客户端库，由 Azure SDK 团队发布，旨在保持与其他 .NET 客户端库的一致性。 版本 11。 | 正式发布。 </br> 从 NuGet 安装 [Azure.Search.Documents 包](https://www.nuget.org/packages/Azure.Search.Documents/)。 |
+| [**Python 客户端库**](https://docs.microsoft.com/python/api/overview/azure/search-documents-readme?view=azure-python)  | Azure SDK | 一个新的客户端库，由 Azure SDK 团队发布，旨在保持与其他 Python 客户端库的一致性。 版本 11。 | 正式发布。 </br> 从 PyPI 安装 [azure-search-documents 包](https://pypi.org/project/azure-search-documents/)。 |
+| [**JavaScript 客户端库**](https://azuresdkdocs.blob.core.windows.net/$web/javascript/azure-search-documents/11.0.0/index.html)  | Azure SDK | 一个新的客户端库，由 Azure SDK 团队发布，旨在保持与其他 JavaScript 客户端库的一致性。 版本 11。 | 正式发布。 </br> 从 npm 安装 [@azure/search-documents 包](https://www.npmjs.com/package/@azure/search-documents)。 |
 
 ### <a name="june-2020"></a>2020 年 6 月
 

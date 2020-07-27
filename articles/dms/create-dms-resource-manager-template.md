@@ -1,30 +1,34 @@
 ---
 title: 创建 DMS 实例（Azure 资源管理器模板）
-description: 了解如何使用 Azure 资源管理器模板创建数据库迁移服务。
+description: 了解如何使用 Azure 资源管理器模板（ARM 模板）创建数据库迁移服务。
 author: MashaMSFT
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: dms
-ms.openlocfilehash: 9e0d537a948e960c90737cc3f367940a0ffca74c
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: dbc09c3fa1dc1878d4feea5c5e7fd8b68e0c11f1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852454"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537439"
 ---
-# <a name="create-instance-of-azure-database-migration-service-azure-resource-manager-template"></a>创建 Azure 数据库迁移服务实例（Azure 资源管理器模板）
+# <a name="quickstart-create-instance-of-azure-database-migration-service-using-arm-template"></a>快速入门：使用 ARM 模板创建 Azure 数据库迁移服务的实例
 
-使用此 Azure 资源管理器模板部署 Azure 数据库迁移服务实例。 
+使用此 Azure 资源管理器模板（ARM 模板）部署 Azure 数据库迁移服务实例。 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
+
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-azure-database-migration-simple-deploy%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
 Azure 数据库迁移服务 ARM 模板需要以下各项： 
 
-- 最新版本的 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 和/或 [PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7)。 
+- 最新版本的 [Azure CLI](/cli/azure/install-azure-cli) 和/或 [PowerShell](/powershell/scripting/install/installing-powershell)。 
 - Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="review-the-template"></a>查看模板
@@ -39,7 +43,7 @@ Azure 数据库迁移服务 ARM 模板需要以下各项：
 - [Microsoft.Network/virtualNetworks/subnets](/azure/templates/microsoft.network/virtualnetworks/subnets)：创建子网。 
 - [Microsoft.DataMigration/services](/azure/templates/microsoft.datamigration/services)：部署 Azure 数据库迁移服务实例。 
 
-可以在[快速入门模板库](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Datamigration)中找到更多 Azure 数据库迁移服务模板。
+可以在[快速入门模板库](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Datamigration&pageNumber=1&sort=Popular)中找到更多 Azure 数据库迁移服务模板。
 
 
 ## <a name="deploy-the-template"></a>部署模板
@@ -105,7 +109,7 @@ Write-Host "Press [ENTER] to continue..."
 有关引导你完成模板创建过程的分步教程，请参阅：
 
 > [!div class="nextstepaction"]
-> [教程：创建和部署你的第一个 Azure 资源管理器模板](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [教程：创建和部署你的第一个 ARM 模板](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
 
 有关部署 Azure 数据库迁移服务的其他方式，请参阅： 
 - [Azure 门户](quickstart-create-data-migration-service-portal.md)

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b827c2e949502ad8bd19378a84ea89947929459d
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 00c2825b78d0774d3c428978ba66c957130d3737
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509357"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499947"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>教程：Azure Active Directory 单一登录 (SSO) 与 DocuSign 的集成
 
@@ -39,6 +39,9 @@ ms.locfileid: "82509357"
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 * 已启用单一登录 (SSO) 的 DocuSign 订阅。
 
+> [!NOTE]
+> 此集成也可以通过 Azure AD 美国国家云环境使用。 你可以在“Azure AD 美国国家云应用程序库”中找到此应用程序，并以与在公有云中相同的方式对其进行配置。
+
 ## <a name="scenario-description"></a>方案描述
 
 本教程将在测试环境中配置并测试 Azure AD SSO，以验证：
@@ -55,11 +58,11 @@ ms.locfileid: "82509357"
 若要配置 DocuSign 与 Azure AD 的集成，必须从库中将 DocuSign 添加到托管 SaaS 应用列表：
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
 1. 转到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **DocuSign**。 
-1. 在结果面板中选择“DocuSign”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入 **DocuSign**。
+1. 在结果面板中选择“DocuSign”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-docusign"></a>配置并测试 DocuSign 的 Azure AD 单一登录
@@ -79,34 +82,34 @@ ms.locfileid: "82509357"
 
 若要在 Azure 门户中启用 Azure AD SSO，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“DocuSign”应用程序集成页上，找到“管理”部分并选择“单一登录”。   
+1. 在 [Azure 门户](https://portal.azure.com/)中的“DocuSign”应用程序集成页上，找到“管理”部分并选择“单一登录”。  
 1. 在“选择单一登录方法”页上选择“SAML”   。
 1. 在“设置 SAML 单一登录”页上，选择“基本 SAML 配置”对应的笔形图标以编辑设置   。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分执行以下步骤： 
+1. 在“基本 SAML 配置”部分执行以下步骤：
 
-    a. 在“登录 URL”文本框中，使用以下模式输入 URL： 
+    a. 在“登录 URL”文本框中，使用以下模式输入 URL：
 
     `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/sp/<IDPID>`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式输入 URL： 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式输入 URL：
 
     `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
 
-    c. 在“回复 URL”  文本框中，使用以下模式输入 URL：
+    c. 在“回复 URL”文本框中，使用以下模式输入 URL：
     
     `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login`
 
     > [!NOTE]
     > 括号中的值是占位符。 请将这些占位符替换为实际登录 URL、标识符和回复 URL。 本教程稍后的“查看 SAML 2.0 终结点”部分将会详细描述相关值。
 
-1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，找到“证书(Base64)”    。 选择“下载”以下载证书，并将其保存在计算机上。 
+1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，找到“证书(Base64)”  。 选择“下载”以下载证书，并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
-1. 在“设置 DocuSign”部分，根据要求复制相应的一个或多个 URL  。
+1. 在“设置 DocuSign”部分，根据要求复制相应的一个或多个 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -114,116 +117,116 @@ ms.locfileid: "82509357"
 
 在本部分，你将在 Azure 门户中创建名为 B. Simon 的测试用户。
 
-1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”。   
-1. 在屏幕顶部选择“新建用户”。 
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“姓名”字段中输入 **B.Simon**。   
-   1. 在“用户名”字段中输入 `<username>@<companydomain>.<extension>`。  例如：`B.Simon@contoso.com`。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值   。
-   1. 选择“创建”  。
+1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”。  
+1. 在屏幕顶部选择“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“姓名”字段中输入 **B.Simon**。  
+   1. 在“用户名”字段中输入 `<username>@<companydomain>.<extension>`。 例如：`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值 。
+   1. 选择“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，你将授予 B.Simon 对 DocuSign 的访问权限，使此用户能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“DocuSign”  。
-1. 在应用的概述页上找到“管理”部分，然后选择“用户和组”   。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“DocuSign”。
+1. 在应用的概述页上找到“管理”部分，然后选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，选择“用户”列表中的“B.Simon”，然后按下屏幕底部的“选择”按钮。    
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后按下屏幕底部的“选择”按钮。  
-1. 在“添加分配”对话框中，选择“分配”按钮。  
+1. 在“用户和组”对话框中，选择“用户”列表中的“B.Simon”，然后按下屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后按下屏幕底部的“选择”按钮。 
+1. 在“添加分配”对话框中，选择“分配”按钮。 
 
 ## <a name="configure-docusign-sso"></a>配置 DocuSign SSO
 
-1. 若要在 DocuSign 中自动完成配置，必须选择“安装扩展”来安装“‘我的应用’安全登录浏览器扩展”。 
+1. 若要在 DocuSign 中自动完成配置，必须选择“安装扩展”来安装“‘我的应用’安全登录浏览器扩展”。
 
     ![我的应用扩展](common/install-myappssecure-extension.png)
 
-2. 将扩展添加到浏览器后，选择“设置 DocuSign”。  随后你将定向到 DocuSign 应用程序。 在此处提供管理员凭据以登录到 DocuSign。 浏览器扩展会自动配置该应用程序，并自动执行步骤 3 至 5。
+2. 将扩展添加到浏览器后，选择“设置 DocuSign”。 随后你将定向到 DocuSign 应用程序。 在此处提供管理员凭据以登录到 DocuSign。 浏览器扩展会自动配置该应用程序，并自动执行步骤 3 至 5。
 
     ![设置配置](common/setup-sso.png)
 
 3. 若要手动设置 DocuSign，请打开新的 Web 浏览器窗口，以管理员身份登录到 DocuSign 公司站点。
 
-4. 在页面右上角选择个人资料徽标，然后选择“转到管理界面”。 
+4. 在页面右上角选择个人资料徽标，然后选择“转到管理界面”。
   
     ![个人资料下的“转到管理界面”][51]
 
-5. 在域解决方案页上选择“域”。 
+5. 在域解决方案页上选择“域”。
 
     ![域解决方案/域][50]
 
-6. 在“域”部分，选择“声明域”。  
+6. 在“域”部分，选择“声明域”。 
 
     ![“声明域”选项][52]
 
-7. 在“声明域”对话框中，在“域名”框中键入公司域，然后选择“声明”    。 确保对域进行验证并且其状态为活动。
+7. 在“声明域”对话框中，在“域名”框中键入公司域，然后选择“声明”  。 确保对域进行验证并且其状态为活动。
 
     ![“声明域”/“域名”对话框][53]
 
-8. 在域解决方案页上，选择“标识提供者”。 
+8. 在域解决方案页上，选择“标识提供者”。
   
     ![“标识提供者”选项][54]
 
-9. 在“标识提供者”部分，选择“添加标识提供者”   。
+9. 在“标识提供者”部分，选择“添加标识提供者” 。
 
     ![“添加标识提供者”选项][55]
 
-10. 在“标识提供者设置”页上执行以下步骤： 
+10. 在“标识提供者设置”页上执行以下步骤：
 
     ![“标识提供者设置”字段][56]
 
-    a. 在“名称”框中，为配置键入唯一的名称。  不要使用空格。
+    a. 在“名称”框中，为配置键入唯一的名称。 不要使用空格。
 
-    b. 在“标识提供者颁发者”框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。
+    b. 在“标识提供者颁发者”框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值 。
 
-    c. 在“标识提供者登录 URL”框中，粘贴从 Azure 门户复制的“登录 URL”值   。
+    c. 在“标识提供者登录 URL”框中，粘贴从 Azure 门户复制的“登录 URL”值 。
 
-    d. 在“标识提供者注销 URL”框中，粘贴从 Azure 门户复制的“注销 URL”值   。
+    d. 在“标识提供者注销 URL”框中，粘贴从 Azure 门户复制的“注销 URL”值 。
 
-    e. 选择“对身份验证请求签名”  。
+    e. 选择“对身份验证请求签名”。
 
-    f. 对于“身份验证请求发送方式”，选择“POST”。  
+    f. 对于“身份验证请求发送方式”，选择“POST”。 
 
-    g. 对于“注销请求发送方式”  ，选择“GET”  。
+    g. 对于“注销请求发送方式”，选择“GET”。
 
-    h. 在“自定义属性映射”部分中，选择“添加新映射”   。
+    h. 在“自定义属性映射”部分中，选择“添加新映射” 。
 
        ![“自定义属性映射”UI][62]
 
-    i. 选择要映射到 Azure AD 声明的字段。 在本示例中，**emailaddress** 声明已映射到 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` 值。 这是 Azure AD 中用于电子邮件声明的默认声明名称。 选择“保存”  。
+    i. 选择要映射到 Azure AD 声明的字段。 在本示例中，**emailaddress** 声明已映射到 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` 值。 这是 Azure AD 中用于电子邮件声明的默认声明名称。 选择“保存”。
 
        ![“自定义属性映射”字段][57]
 
        > [!NOTE]
-       > 请使用合适的“用户标识符”  将用户从 Azure AD 映射到 Docusign 用户映射。 根据组织设置选择正确的字段并输入合适的值。
+       > 请使用合适的“用户标识符”将用户从 Azure AD 映射到 Docusign 用户映射。 根据组织设置选择正确的字段并输入合适的值。
 
-    j. 在“标识提供者证书”部分，选择“添加证书”，上传从 Azure AD 门户下载的证书，然后选择“保存”    。
+    j. 在“标识提供者证书”部分，选择“添加证书”，上传从 Azure AD 门户下载的证书，然后选择“保存”  。
 
        ![标识提供者证书/添加证书][58]
 
-    k. 在“标识提供者”部分选择“操作”，然后选择“终结点”。   
+    k. 在“标识提供者”部分选择“操作”，然后选择“终结点”。  
 
        ![标识提供者/终结点][59]
 
-    l. 在 DocuSign 管理门户的“查看 SAML 2.0 终结点”部分执行以下步骤： 
+    l. 在 DocuSign 管理门户的“查看 SAML 2.0 终结点”部分执行以下步骤：
 
        ![查看 SAML 2.0 终结点][60]
        
-       1. 复制“服务提供程序颁发者 URL”，然后将其粘贴到 Azure 门户上的“基本 SAML 配置”部分的“标识符”框中    。
+       1. 复制“服务提供程序颁发者 URL”，然后将其粘贴到 Azure 门户上的“基本 SAML 配置”部分的“标识符”框中  。
        
-       1. 复制“服务提供商断言使用者服务 URL”，然后将其粘贴到 Azure 门户的“基本 SAML 配置”部分的“回复 URL”框中    。
+       1. 复制“服务提供商断言使用者服务 URL”，然后将其粘贴到 Azure 门户的“基本 SAML 配置”部分的“回复 URL”框中  。
        
-       1. 复制“服务提供程序登录 URL”，然后将其粘贴到 Azure 门户上的“基本 SAML 配置”部分的“登录 URL”框中    。 在“服务提供商登录 URL”  的末尾，你将获得 IDPID 值。
+       1. 复制“服务提供程序登录 URL”，然后将其粘贴到 Azure 门户上的“基本 SAML 配置”部分的“登录 URL”框中  。 在“服务提供商登录 URL”的末尾，你将获得 IDPID 值。
 
-       1. 选择“关闭”  。
+       1. 选择“关闭”。
 
 ### <a name="create-docusign-test-user"></a>创建 DocuSign 测试用户
 
