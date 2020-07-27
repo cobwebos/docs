@@ -110,7 +110,10 @@
                   href: authenticate-application.md
         - name: 内置安全控件
           href: service-bus-messaging-security-controls.md
-        - name: 网络安全
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
+        - name: 网络安全性
           href: network-security.md
 - name: 操作指南
   items:
@@ -267,7 +270,7 @@
       href: service-bus-messaging-sql-rule-action.md
 - name: 资源
   items:
-    - name: 常见问题解答
+    - name: 常见问题
       href: service-bus-faq.md
     - name: 利用 Microsoft Learn 掌握技能
       href: /learn/browse/?products=azure-service-bus

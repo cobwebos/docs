@@ -1,20 +1,28 @@
 - name: 常规
   href: index.yml
 - name: 概述
-  expanded: true
   items:
     - name: 关于 Azure Key Vault
       href: overview.md
     - name: 关于密钥、机密和证书
       href: about-keys-secrets-certificates.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: CLI
+      href: quick-create-cli.md
+    - name: PowerShell
+      href: quick-create-powershell.md
+    - name: 门户
+      href: quick-create-portal.md
 - name: 教程
   items:
     - name: Azure 虚拟机
       items:
-        - name: 将 Azure Key Vault 与通过 .NET 编写的 Windows 虚拟机配合使用
-          href: tutorial-net-windows-virtual-machine.md
-        - name: 将 Azure Key Vault 与通过 Python 编写的 Windows 虚拟机配合使用
-          href: tutorial-python-windows-virtual-machine.md
+        - name: 将 Azure Key Vault 与通过 .NET 编写的虚拟机配合使用
+          href: tutorial-net-virtual-machine.md
+        - name: 将 Azure Key Vault 与通过 Python 编写的虚拟机配合使用
+          href: tutorial-python-virtual-machine.md
     - name: Azure Kubernetes 服务
       items:
         - name: 将 Azure Key Vault 与 Kubernetes 集成
@@ -117,15 +125,11 @@
     - name: 移动 Key Vault
       items:
         - name: 将 Key Vault 移到另一个资源组
-          href: keyvault-moveresourcegroup.md
+          href: move-resourcegroup.md
         - name: 将 Key Vault 移到另一个订阅
-          href: keyvault-move-subscription.md
+          href: move-subscription.md
         - name: 将 Key Vault 移到另一个区域
-          href: keyvault-moveregion.md
-    - name: 疑难解答
-      items:
-        - name: 移动订阅后更改 Key Vault 租户 ID
-          href: subscription-move-fix.md
+          href: move-region.md
 - name: 参考
   items:
     - name: REST API 错误代码 - Azure Key Vault

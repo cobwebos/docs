@@ -53,6 +53,9 @@
       href: develop-locally.md
     - name: 安全性
       items:
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: 安全基线
           href: security-baseline.md
     - name: 作业的输入类型
@@ -291,7 +294,7 @@
             - name: 聚合函数概述
               href: /stream-analytics-query/aggregate-functions-azure-stream-analytics
               maintainContext: true
-            - name: AVG
+            - name: 平均值
               href: /stream-analytics-query/avg-azure-stream-analytics
               maintainContext: true
             - name: COUNT
@@ -306,7 +309,7 @@
             - name: MAX
               href: /stream-analytics-query/max-azure-stream-analytics
               maintainContext: true
-            - name: MIN
+            - name: 最小值
               href: /stream-analytics-query/min-azure-stream-analytics
               maintainContext: true
             - name: Percentile_Cont

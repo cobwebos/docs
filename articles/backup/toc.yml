@@ -89,6 +89,8 @@
           href: backup-azure-monitor-alert-faq.md
     - name: 备份体系结构
       href: backup-architecture.md
+    - name: 指南和最佳做法
+      href: guidance-best-practices.md
 - name: 操作方法指南
   items:
     - name: 恢复服务保管库
@@ -157,7 +159,7 @@
               href: install-mars-agent.md
             - name: 升级 MARS 代理
               href: upgrade-mars-agent.md
-        - name: 备份
+        - name: Backup
           items:
             - name: 备份 Windows Server 文件和文件夹
               href: backup-windows-with-mars-agent.md
@@ -193,7 +195,7 @@
               href: manage-afs-backup-cli.md
         - name: 使用 PowerShell
           items:
-            - name: 备份
+            - name: Backup
               href: backup-azure-afs-automation.md
             - name: 还原
               href: restore-afs-powershell.md
@@ -211,7 +213,7 @@
       items:
         - name: 概述
           href: sap-hana-db-about.md
-        - name: 备份
+        - name: Backup
           href: backup-azure-sap-hana-database.md
         - name: 还原
           href: sap-hana-db-restore.md
@@ -375,6 +377,9 @@
           href: encryption-at-rest-with-cmk.md
         - name: 内置安全控件
           href: backup-security-controls.md
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: 安全基线
           href: security-baseline.md
     - name: 疑难解答

@@ -93,9 +93,14 @@
     - name: 将策略设计为代码工作流
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
-    - name: 适用于 Kubernetes 的 Azure Policy（预览版）
-      displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
-      href: ./concepts/policy-for-kubernetes.md
+    - name: Kubernetes 集成
+      items:
+        - name: 适用于 Kubernetes 的 Azure Policy（预览版）
+          displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
+          href: ./concepts/policy-for-kubernetes.md
+        - name: 使用 Azure Policy 保护 Pod（预览）
+          displayName: 'aks, psp, rego, opa'
+          href: ../../aks/use-pod-security-on-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
     - name: 使用来宾配置审核 VM
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md

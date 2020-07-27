@@ -104,7 +104,7 @@
               href: vpn-gateway-vnet-vnet-rm-ps.md
             - name: Azure CLI
               href: vpn-gateway-howto-vnet-vnet-cli.md
-        - name: 配置部署模型之间的 VNet 到 VNet 连接
+        - name: 在部署模型之间配置 VNet 到 VNet 连接
           items:
             - name: Azure 门户
               href: vpn-gateway-connect-different-deployment-models-portal.md
@@ -210,6 +210,8 @@
           href: vpn-gateway-3rdparty-device-config-cisco-asa.md
     - name: 监视和警报
       items:
+        - name: 查看 VPN 网关指标
+          href: vpn-gateway-howto-view-virtual-network-gateway-metrics.md
         - name: 基于指标设置警报
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
         - name: 基于资源日志设置警报
@@ -260,9 +262,9 @@
 - name: 参考
   items:
     - name: Azure PowerShell
-      href: '/powershell/module/az.network#vpn'
+      href: /powershell/module/az.network#vpn
     - name: Azure PowerShell（经典）
-      href: '/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#azure'
+      href: /powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0#azure
     - name: REST
       href: /rest/api/network/virtualnetworkgateways
     - name: REST（经典）

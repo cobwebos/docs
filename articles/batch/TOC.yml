@@ -51,6 +51,9 @@
   items:
     - name: 安全性
       items:
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: 安全基线
           href: security-baseline.md
     - name: Batch 服务工作流和资源

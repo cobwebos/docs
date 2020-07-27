@@ -157,6 +157,11 @@
       href: visualizations.md
     - name: 合作伙伴集成
       href: platform/partners.md
+    - name: 安全性
+      items:
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./platform/security-controls-policy.md
 - name: 操作指南
   items:
     - name: 方案
@@ -209,7 +214,7 @@
           items:
             - name: 概述
               href: platform/agents-overview.md
-            - name: 常见问题解答
+            - name: 常见问题
               href: faq.md#agents
             - name: Azure 诊断扩展
               items:
@@ -244,8 +249,6 @@
                       href: platform/diagnostics-extension-to-application-insights.md
                     - name: 版本历史记录
                       href: platform/diagnostics-extension-versions.md
-                    - name: JSON Lines 资源日志格式
-                      href: platform/resource-logs-append-blobs.md
                     - name: 疑难解答
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
@@ -264,9 +267,9 @@
                 - name: Linux 代理
                   href: platform/agent-linux.md
                 - name: 适用于 Windows 的 VM 扩展
-                  href: ../virtual-machines/windows/extensions-oms.md?toc=/azure/azure-monitor/toc.json
+                  href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
                 - name: 适用于 Linux 的 VM 扩展
-                  href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
+                  href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
                 - name: Log Analytics 网关
                   href: platform/gateway.md
                 - name: 代理管理
@@ -421,7 +424,7 @@
           href: platform/autoscale-get-started.md
         - name: 配置设置
           href: platform/autoscale-understanding-settings.md
-        - name: 最佳做法
+        - name: 最佳实践
           href: platform/autoscale-best-practices.md
         - name: 常见指标
           href: platform/autoscale-common-metrics.md
@@ -430,7 +433,7 @@
         - name: 使用自定义指标缩放
           href: platform/autoscale-custom-metric.md
         - name: 缩放 VM 规模集
-          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json
+          href: ../virtual-machine-scale-sets/tutorial-autoscale-powershell.md?toc=/azure/azure-monitor/toc.json
         - name: 使用资源管理器模板缩放 VM 规模集
           href: platform/autoscale-virtual-machine-scale-sets.md
         - name: 使用 Webhook 和电子邮件通知
@@ -446,7 +449,7 @@
             - name: 可用性
               href: app/monitor-web-app-availability.md
             - name: 指标警报
-              href: app/alerts.md
+              href: ./platform/alerts-log.md
         - name: 指标警报规则
           items:
             - name: 管理指标警报
@@ -474,19 +477,20 @@
             - name: 基于活动日志事件的警报
               href: platform/alerts-activity-log.md
             - name: 将管理事件迁移到活动日志警报
-              href: platform/migrate-management-alerts.md
+              href: ./platform/activity-log-alerts.md
             - name: Webhook 架构
               href: platform/activity-log-alerts-webhook.md
         - name: 服务运行状况警报
           items:
             - name: 查看通知
-              href: platform/service-notifications.md
+              href: ../service-health/service-notifications.md
             - name: 配置基于通知事件的警报
               href: platform/alerts-activity-log-service-notifications.md
         - name: 通知和操作
           items:
             - name: 操作规则（预览版）
               href: platform/alerts-action-rules.md
+              displayName: 'Azure CLI, az monitor action rule'
             - name: 创建操作组
               href: platform/action-groups.md
             - name: 常见警报架构
@@ -556,7 +560,7 @@
         - name: Application Insights 概述
           href: app/app-insights-overview.md
         - name: 常见问题解答
-          href: app/troubleshoot-faq.md
+          href: ./faq.md
         - name: 基于代码的监视
           items:
             - name: ASP.NET Core
@@ -597,7 +601,7 @@
                 - name: Spring Boot 应用
                   displayname: java
                   href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
-                - name: 疑难解答
+                - name: 故障排除
                   href: app/java-troubleshoot.md
             - name: Node.js
               href: app/nodejs.md
@@ -931,7 +935,7 @@
       items:
         - name: 概述
           href: insights/container-insights-overview.md
-        - name: 常见问题解答
+        - name: 常见问题
           href: faq.md#azure-monitor-for-containers
         - name: 启用监视
           items:
@@ -970,7 +974,11 @@
         - name: 使用日志查询分析数据
           href: insights/container-insights-log-search.md
         - name: 警报
-          href: insights/container-insights-alerts.md
+          items:
+            - name: 创建日志警报规则
+              href: insights/container-insights-log-alerts.md
+            - name: 创建指标警报规则
+              href: insights/container-insights-metric-alerts.md
         - name: 代理管理
           href: insights/container-insights-manage-agent.md
         - name: 配置 Prometheus 指标抓取
@@ -1016,6 +1024,7 @@
       items:
         - name: 概述
           href: insights/solutions.md
+          displayName: 'Azure CLI, az monitor log-analytics'
         - name: 目标解决方案
           href: insights/solution-targeting.md
         - name: 可用解决方案
@@ -1028,8 +1037,6 @@
               href: insights/capacity-performance.md
             - name: Docker 和 Windows 容器监视
               href: insights/containers.md
-            - name: 密钥保管库分析
-              href: insights/azure-key-vault.md
             - name: 网络
               items:
                 - name: 网络分析
@@ -1173,7 +1180,7 @@
     - name: 术语更改
       href: terminology.md
     - name: 数据参考
-      href: 'https://docs.microsoft.com/azure/azure-monitor/reference/'
+      href: /azure/azure-monitor/reference/
     - name: 支持的指标
       items:
         - name: 平台指标
@@ -1288,6 +1295,8 @@
         - name: 更改为 Blob 存储格式
           displayname: Diagnostic settings
           href: platform/resource-logs-blob-format.md
+        - name: Key Vault 分析（已弃用）
+          href: insights/azure-key-vault-deprecated.md
 - name: 资源
   items:
     - name: Azure 路线图

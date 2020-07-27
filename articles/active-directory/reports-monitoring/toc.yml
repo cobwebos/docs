@@ -84,6 +84,8 @@
           href: troubleshoot-missing-data-download.md
         - name: 不能访问用于报告的图形 API
           href: troubleshoot-graph-api.md
+        - name: 针对已验证的域更改审核数据
+          href: troubleshoot-audit-data-verified-domain.md
 - name: 参考
   expanded: true
   items:

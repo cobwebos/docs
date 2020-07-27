@@ -901,7 +901,7 @@
           items:
             - name: 监视拓扑
               href: ./storm/apache-storm-deploy-monitor-topology-linux.md
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: Apache STORM 故障排除
               href: ./storm/apache-troubleshoot-storm.md
@@ -939,8 +939,6 @@
           href: ./control-network-traffic.md
         - name: NSG 和 UDR 所需的 IP 地址
           href: ./hdinsight-management-ip-addresses.md
-        - name: Azure 防火墙的服务标记
-          href: ./hdinsight-service-tags.md
         - name: 客户管理的密钥磁盘加密
           href: ./disk-encryption.md
         - name: Ranger 和 Apache Ambari 中的 LDAP 同步
@@ -967,8 +965,12 @@
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
         - name: 使用防火墙限制出站流量
           href: ./hdinsight-restrict-outbound-traffic.md
+        - name: 创建服务终结点策略
+          href: ./service-endpoint-policies.md
         - name: 配置网络虚拟设备
           href: ./network-virtual-appliance.md
+        - name: Azure 防火墙的服务标记
+          href: ./hdinsight-service-tags.md
         - name: 疑难解答
           items:
             - name: ESP 身份验证问题

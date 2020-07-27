@@ -4,6 +4,8 @@
   items:
     - name: 关于证书
       href: about-certificates.md
+    - name: 关于证书续订
+      href: overview-renew-certificate.md
 - name: 快速入门
   expanded: true
   items:
@@ -42,6 +44,8 @@
   items:
     - name: 将 Key Vault 与 DigiCert CA 集成
       href: how-to-integrate-certificate-authority.md
+    - name: 疑难解答 - 导入证书
+      href: import-cert-faqs.md
 - name: 参考
   items:
     - name: Azure PowerShell
@@ -53,7 +57,7 @@
     - name: Java
       href: /java/api/overview/azure/keyvault?view=azure-java-stable
     - name: Node.js
-      href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
+      href: 'https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index?view=azure-node-latest'
     - name: Python
       href: /python/api/overview/azure/keyvault-certificates-readme?view=azure-python
     - name: REST

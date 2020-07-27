@@ -10,6 +10,8 @@
       href: quickstart-create-templates-use-the-portal.md
     - name: 创建模板 - VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
+    - name: 创建和部署模板规格
+      href: quickstart-create-template-specs.md
     - name: Azure 服务
       items:
         - name: AI + 机器学习
@@ -22,12 +24,14 @@
               href: ../../machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 机器学习
               href: ../../machine-learning/tutorial-resource-manager-workspace.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Analytics
+        - name: 分析
           items:
             - name: Analysis Services
               href: ../../analysis-services/analysis-services-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Databricks
               href: /azure/databricks/scenarios/quickstart-create-databricks-workspace-resource-manager-template?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: 数据工厂
+              href: ../../data-factory/quickstart-create-data-factory-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 事件中心
               href: ../../event-hubs/event-hubs-resource-manager-namespace-event-hub.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: HDInsight - Hadoop
@@ -114,6 +118,8 @@
           items:
             - name: 顾问
               href: ../../advisor/advisor-alerts-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: 自动化
+              href: ../../automation/quickstart-create-automation-account-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 备份
               href: ../../backup/quick-backup-vm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 成本管理 + 计费
@@ -201,6 +207,12 @@
         - name: 3 - 创建管道
           displayName: Devop
           href: deployment-tutorial-pipeline.md
+    - name: 模板规格
+      items:
+        - name: 使用关联的模板进行创建
+          href: template-specs-create-linked.md
+        - name: 部署关联的模板
+          href: template-specs-deploy-linked-template.md
     - name: 高级模板
       items:
         - name: 使用模板参考
@@ -240,6 +252,8 @@
       href: template-best-practices.md
     - name: 常见问题
       href: frequently-asked-questions.md
+    - name: 模板规格
+      href: template-specs.md
     - name: 用于提供云一致性的模板
       href: templates-cloud-consistency.md
     - name: 部署模式

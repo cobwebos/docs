@@ -626,7 +626,7 @@
               href: cassandra-import-data.md
         - name: 概念
           items:
-            - name: 常见问题解答
+            - name: 常见问题
               href: cassandra-faq.md
             - name: 弹性缩放
               href: manage-scale-cassandra.md
@@ -724,7 +724,7 @@
               href: mongodb-feature-support-36.md
             - name: 线路协议支持 (3.2)
               href: mongodb-feature-support.md
-            - name: 常见问题解答
+            - name: 常见问题
               href: mongodb-api-faq.md
         - name: 操作指南
           items:
@@ -794,7 +794,7 @@
               href: tutorial-query-graph.md
         - name: 概念
           items:
-            - name: 常见问题解答
+            - name: 常见问题
               href: gremlin-api-faq.md
         - name: 操作指南
           items:
@@ -879,7 +879,7 @@
               maintainContext: true
         - name: 概念
           items:
-            - name: 常见问题解答
+            - name: 常见问题
               href: table-api-faq.md
         - name: 操作指南
           items:
@@ -1104,6 +1104,8 @@
       items:
         - name: 从备份还原数据
           href: how-to-backup-and-restore.md
+        - name: 请求增加配额
+          href: create-support-request-quota-increase.md
     - name: 监视
       items:
         - name: 监视 Cosmos DB
@@ -1112,6 +1114,8 @@
           items:
             - name: 用于 Cosmos 的 Azure Monitor（预览版）
               href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+            - name: 要监视的方案
+              href: use-metrics.md
             - name: 监视服务器端延迟
               href: monitor-server-side-latency.md
             - name: 监视请求单位使用情况
@@ -1124,8 +1128,8 @@
               href: cosmosdb-monitor-resource-logs.md
             - name: 审核控制平面日志
               href: audit-control-plane-logs.md
-        - name: 从 Cosmos DB 帐户中查看指标
-          href: use-metrics.md
+        - name: 配置警报
+          href: create-alerts.md
         - name: 监视数据参考
           href: monitor-cosmos-db-reference.md
         - name: 使用逻辑应用进行应用程序日志记录
@@ -1251,7 +1255,7 @@
       href: query-cheat-sheet.md
     - name: SQL 演练
       href: 'https://www.documentdb.com/sql/demo'
-    - name: 常见问题解答
+    - name: 常见问题
       href: faq.md
     - name: 白皮书
       href: whitepapers.md

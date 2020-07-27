@@ -139,7 +139,7 @@
                   href: concepts-query-store-scenarios.md
                 - name: 查询存储最佳做法
                   href: concepts-query-store-best-practices.md
-            - name: 查询性能见解
+            - name: Query Performance Insight
               href: concepts-query-performance-insight.md
             - name: 性能建议
               href: concepts-performance-recommendations.md
@@ -351,6 +351,8 @@
           items:
             - name: 针对指标创建警报
               href: howto-hyperscale-alert-on-metric.md
+            - name: Access 数据库日志
+              href: howto-hyperscale-logging.md
         - name: 疑难解答
           items:
             - name: 排查连接错误

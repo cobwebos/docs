@@ -96,6 +96,7 @@
     - name: 企业版与基本版
       href: concept-editions.md
     - name: 计划和管理成本
+      displayName: low priority VM
       href: concept-plan-manage-cost.md
     - name: 设计器（拖放 ML）
       items:
@@ -166,6 +167,9 @@
             - name: 使用 TLS 保护 Web 服务
               displayName: ssl
               href: how-to-secure-web-service.md
+            - name: 提高复原能力
+              displayName: 'high availability, disaster recovery'
+              href: how-to-high-availability-machine-learning.md
             - name: 在 AKS 部署中使用 Azure AD 标识
               href: how-to-use-azure-ad-identity.md
             - name: 重新生成存储访问密钥
@@ -217,6 +221,9 @@
         - name: 设置软件环境
           displayName: 'pip, Conda, anaconda'
           href: how-to-use-environments.md
+        - name: 使用专用 Python 包
+          displayName: 'pip, Conda, anaconda'
+          href: how-to-use-private-python-packages.md
         - name: 启用日志记录
           displayName: 'troubleshoot, log, files, tracing'
           href: how-to-enable-logging.md
@@ -356,6 +363,9 @@
           href: how-to-deploy-and-where.md
         - name: 部署方案
           items:
+            - name: 使用现有模型
+              displayName: publish existing model
+              href: how-to-deploy-existing-model.md
             - name: Azure ML 计算实例
               href: how-to-deploy-local-container-notebook-vm.md
             - name: Azure Kubernetes 服务
@@ -374,18 +384,15 @@
               href: how-to-deploy-functions.md
             - name: Azure 认知搜索
               href: how-to-deploy-model-cognitive-search.md
-            - name: Azure IoT Edge 设备
-              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/context/ml-context
+            - name: 使用自定义 Docker 映像
+              href: how-to-deploy-custom-docker-image.md
+            - name: IoT Edge
+              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
             - name: FPGA 推理
               href: how-to-deploy-fpga-web-service.md
-            - name: 自定义 Docker 映像
-              href: how-to-deploy-custom-docker-image.md
-            - name: 非 Azure ML 模型
-              displayName: publish existing model
-              href: how-to-deploy-existing-model.md
         - name: 排查问题和调试
           href: how-to-troubleshoot-deployment.md
-        - name: 调用服务终结点
+        - name: 创建客户端
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
         - name: 监视模型
@@ -393,8 +400,6 @@
             - name: 收集和评估模型数据
               displayName: track production
               href: how-to-enable-data-collection.md
-            - name: 检测数据偏差
-              href: how-to-monitor-data-drift.md
             - name: 使用 Application Insights 进行监视
               href: how-to-enable-app-insights.md
         - name: 部署加密的推理服务

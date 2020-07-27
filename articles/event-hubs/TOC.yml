@@ -124,6 +124,9 @@
           href: network-security.md
         - name: 内置安全控件
           href: event-hubs-security-controls.md
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: 安全基线
           href: security-baseline.md
     - name: AMQP 1.0 协议指南
@@ -196,7 +199,7 @@
         - name: 设置诊断日志
           href: event-hubs-diagnostic-logs.md
         - name: 使用事件中心流式传输 Azure 诊断数据
-          href: event-hubs-streaming-azure-diags-data.md
+          href: ../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md
         - name: 自动缩放吞吐量单位
           href: event-hubs-auto-inflate.md
         - name: 事件中心管理库
@@ -289,6 +292,8 @@
       href: /azure/templates/microsoft.eventhub/allversions
     - name: 配额
       href: event-hubs-quotas.md
+    - name: Apache Kafka 配置
+      href: apache-kafka-configurations.md
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能

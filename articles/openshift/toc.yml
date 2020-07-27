@@ -18,6 +18,8 @@
   items:
     - name: 创建专用 Azure Red Hat OpenShift 4 群集
       href: howto-create-private-cluster-4x.md
+    - name: 为 Azure Red Hat OpenShift 4 群集更新拉取机密
+      href: howto-add-update-pull-secret.md
     - name: 为 Azure Red Hat OpenShift 4 群集配置 DNS 转发
       href: dns-forwarding.md
     - name: 为 Azure Red Hat OpenShift 4 群集配置 Azure Active Directory 身份验证
@@ -67,6 +69,10 @@
               href: cluster-administration-cluster-admin-role.md
             - name: 2 - 在 Azure Red Hat OpenShift 3.11 中管理安全性上下文约束
               href: cluster-administration-security-context-constraints.md
+- name: 概念
+  items:
+    - name: Azure Red Hat OpenShift 4 群集中的网络
+      href: concepts-networking.md
 - name: 参考
   items:
     - name: Azure Red Hat OpenShift CLI

@@ -60,6 +60,8 @@
         - name: 市场权益
           href: ./gtm-your-marketplace-benefits.md
           items:
+            - name: Azure 使用承诺权益
+              href: ./azure-consumption-commitment-benefit.md
             - name: 联合销售合作伙伴参与
               href: ./marketplace-co-sell.md
             - name: 首选解决方案

@@ -93,6 +93,12 @@
               href: ../../site-recovery/move-vaults-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: 虚拟网络
               href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/management/toc.json
+            - name: Azure Database for PostgreSQL 服务器
+              href: ../../postgresql/howto-move-regions-portal.md?toc=/azure/azure-resource-manager/management/toc.json
+            - name: Azure Database for MariaDB 服务器
+              href: ../../mariadb/howto-move-regions-portal.md?toc=/azure/azure-resource-manager/management/toc.json
+            - name: Azure Database for MySQL 服务器
+              href: ../../mysql/howto-move-regions-portal.md?toc=/azure/azure-resource-manager/management/toc.json
     - name: Tags
       items:
         - name: 决策指南

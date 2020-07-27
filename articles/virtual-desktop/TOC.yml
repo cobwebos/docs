@@ -46,6 +46,8 @@
           href: expand-existing-host-pool.md
         - name: 使用 PowerShell 管理应用组
           href: manage-app-groups-powershell.md
+    - name: 删除主机池
+      href: delete-host-pool.md
     - name: 创建配置文件容器
       items:
         - name: 使用基于 VM 的文件共享
@@ -72,6 +74,8 @@
           href: set-up-customize-master-image.md
         - name: 在主 VHD 映像中安装 Office
           href: install-office-on-wvd-master-image.md
+    - name: 自动缩放会话主机
+      href: set-up-scaling-script.md
     - name: 自定义源
       href: customize-feed-for-virtual-desktop-users.md
     - name: 使用服务诊断
@@ -108,6 +112,8 @@
       href: store-fslogix-profile.md
     - name: 合作伙伴集成
       href: partners.md
+    - name: Windows 虚拟桌面常见问题解答
+      href: faq.md
     - name: Windows 10 Enterprise 多会话常见问题解答
       href: windows-10-multisession-faq.md
     - name: 数据位置

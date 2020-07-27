@@ -18,17 +18,19 @@
       href: quickstart-create-standard-load-balancer-powershell.md
     - name: 创建负载均衡器 - ARM 模板
       href: quickstart-load-balancer-standard-public-template.md
-    - name: 创建内部负载均衡器 - 门户
-      href: tutorial-load-balancer-standard-internal-portal.md
-    - name: 创建内部负载均衡器 - Azure CLI
-      href: load-balancer-get-started-ilb-arm-cli.md
-    - name: 创建内部负载均衡器 - Azure PowerShell
-      href: load-balancer-get-started-ilb-arm-ps.md
-    - name: 创建内部负载均衡器 - ARM 模板
-      href: load-balancer-get-started-ilb-arm-template.md
   expanded: true
 - name: 教程
   items:
+    - name: Internal 负载均衡器（内部负载均衡器）
+      items:
+        - name: 创建内部负载均衡器 - 门户
+          href: tutorial-load-balancer-standard-internal-portal.md
+        - name: 创建内部负载均衡器 - Azure CLI
+          href: load-balancer-get-started-ilb-arm-cli.md
+        - name: 创建内部负载均衡器 - Azure PowerShell
+          href: load-balancer-get-started-ilb-arm-ps.md
+        - name: 创建内部负载均衡器 - ARM 模板
+          href: load-balancer-get-started-ilb-arm-template.md
     - name: 跨可用性区域对 VM 进行负载均衡
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: 在特定的可用性区域中对 VM 进行负载均衡
@@ -73,6 +75,8 @@
       href: load-balancer-security-controls.md
     - name: 后端池管理
       href: backend-pool-management.md
+    - name: 标准负载均衡器和虚拟机规模集
+      href: load-balancer-standard-virtual-machine-scale-sets.md
 - name: 如何
   items:
     - name: 虚拟机规模集
@@ -105,7 +109,7 @@
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli'
         - name: Azure PowerShell
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell'
-        - name: Azure 资源管理器模板
+        - name: Azure Resource Manager 模板
           href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
           displayName: ARM
     - name: 配置负载均衡器的 TCP 空闲超时
@@ -132,7 +136,7 @@
           href: move-across-regions-internal-load-balancer-powershell.md
 - name: 疑难解答
   items:
-    - name: 排查 Azure 负载均衡器问题
+    - name: 对 Azure 负载均衡器进行故障排除
       href: load-balancer-troubleshoot.md
     - name: 排查常见部署错误
       href: load-balancer-common-deployment-errors.md

@@ -6,6 +6,24 @@
   items:
     - name: 什么是 Azure Synapse Analytics？
       href: overview-what-is.md
+    - name: 入门
+      items:
+        - name: 简介
+          href: get-started.md
+        - name: 第 1 步：创建 Synapse 工作区
+          href: get-started-create-workspace.md
+        - name: 第 2 步：使用 SQL 池进行分析
+          href: get-started-analyze-sql-pool.md
+        - name: 第 3 步：使用 Spark 进行分析
+          href: get-started-analyze-spark.md
+        - name: 第 4 步：使用按需 SQL 进行分析
+          href: get-started-analyze-sql-on-demand.md
+        - name: 第 5 步：分析存储帐户中的数据
+          href: get-started-analyze-storage.md
+        - name: 第 6 步：通过管道进行编排
+          href: get-started-pipelines.md
+        - name: 第 7 步：使用 Power BI 进行可视化
+          href: get-started-visualize-power-bi.md
     - name: 备忘单
       href: overview-cheat-sheet.md
     - name: 常见问题解答
@@ -46,8 +64,6 @@
       href: quickstart-connect-synapse-link-cosmos-db.md
 - name: 教程
   items:
-    - name: 入门
-      href: get-started.md
     - name: 运行适用于 Spark 池的 Apache Spark 应用程序
       href: ./spark/intellij-tool-synapse.md
     - name: Spark 作业定义
@@ -226,7 +242,7 @@
           items:
             - name: 概述
               href: ./sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: 最佳做法
+            - name: 最佳实践
               href: sql/data-loading-best-practices.md
             - name: 列存储压缩
               href: sql/data-load-columnstore-compression.md
@@ -698,6 +714,8 @@
               href: ../data-factory/connector-web-table.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Xero
               href: ../data-factory/connector-xero.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: XML 格式
+              href: ../data-factory/format-xml.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Zoho
               href: ../data-factory/connector-zoho.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: 移动数据
@@ -755,9 +773,11 @@
               href: ../data-factory/transform-data-using-spark.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: HDInsight Streaming 活动
               href: ../data-factory/transform-data-using-hadoop-streaming.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: 机器学习批处理执行活动
+            - name: 机器学习执行管道活动
+              href: ../data-factory/transform-data-machine-learning-service.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: 机器学习工作室（经典）批处理执行活动
               href: ../data-factory/transform-data-using-machine-learning.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: 机器学习更新资源活动
+            - name: 机器学习工作室（经典）更新资源活动
               href: ../data-factory/update-machine-learning-models.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 存储过程活动
               href: ../data-factory/transform-data-using-stored-procedure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -856,7 +876,7 @@
     - name: PowerShell
       href: /powershell/module/az.synapse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: REST API
-      href: ./sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+      href: /rest/api/synapse/
     - name: 系统视图
       href: sql/reference-tsql-system-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: T-SQL
