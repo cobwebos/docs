@@ -284,7 +284,7 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 
 在门户主页上，搜索 Azure 数字孪生实例以提取其详细信息。 从 Azure 数字孪生实例的菜单中选择 "**指标**" 选项，打开 "*指标*" 页。
 
-:::image type="content" source="media/how-to-use-apis-sdks/metrics.png" alt-text="Azure 门户中的 Azure 数字孪生实例的 "指标" 页":::
+:::image type="content" source="media/how-to-use-apis-sdks/metrics.png" alt-text="Azure 门户中的 Azure 数字孪生实例的 指标 页":::
 
 在此处，你可以查看实例的度量值并创建自定义视图。
 
