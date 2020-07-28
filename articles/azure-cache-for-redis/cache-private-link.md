@@ -29,11 +29,11 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
 ## <a name="create-a-cache"></a>创建缓存
 1. 若要创建缓存，请登录到 [Azure 门户](https://portal.azure.com)并选择“创建资源”  。 
 
-    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="选择 "创建资源"。":::
+    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="选择 创建资源。":::
    
 1. 在“新建”页上选择“数据库”，然后选择“Azure Cache for Redis”。  
 
-    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="为 Redis 选择 "Azure 缓存"。":::
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="为 Redis 选择 Azure 缓存。":::
    
 1. 在“新建 Redis 缓存”页上配置新缓存的设置。
    
@@ -59,7 +59,7 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
 
 1. 选择“创建资源”。
 
-    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="选择 "创建资源"。":::
+    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="选择 创建资源。":::
 
 2. 在 "**新建**" 页上，选择 "**网络**"，然后选择 "**虚拟网络**"。
 
@@ -110,7 +110,7 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
 
 2. 在屏幕左侧选择 "**专用终结点**"。
 
-    :::image type="content" source="media/cache-private-link/8-select-private-endpoint.png" alt-text="选择 "专用链接"。":::
+    :::image type="content" source="media/cache-private-link/8-select-private-endpoint.png" alt-text="选择 专用链接。":::
 
 3. 选择 " **+ 添加**" 按钮以创建专用终结点。 
 
