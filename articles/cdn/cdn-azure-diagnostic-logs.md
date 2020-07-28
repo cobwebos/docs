@@ -48,11 +48,11 @@ ms.locfileid: "87116975"
 
 2. 选择要为其启用诊断日志的 CDN 终结点：
 
-    :::image type="content" source="./media/cdn-diagnostics-log/02_browse-to-diagnostics-logs.png" alt-text="选择 "CDN 终结点"。" border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/02_browse-to-diagnostics-logs.png" alt-text="选择 CDN 终结点。" border="true":::
 
 3. 在 "**监视**" 部分选择 "**诊断日志**"：
 
-    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="选择 "诊断日志"。" border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="选择 诊断日志。" border="true":::
 
 ### <a name="enable-logging-with-azure-storage"></a>使用 Azure 存储启用日志记录
 
