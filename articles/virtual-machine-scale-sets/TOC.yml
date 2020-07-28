@@ -178,14 +178,14 @@
         - name: 选择磁盘类型
           href: ../virtual-machines/windows/disks-types.md
           maintainContext: true
-        - name: Encryption
+        - name: 加密
           href: ../virtual-machines/windows/disk-encryption.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json
           maintainContext: true
         - name: 高级存储性能
           href: ../virtual-machines/windows/premium-storage-performance.md
           maintainContext: true
         - name: 临时 OS 磁盘
-          href: ephemeral-os-disks.md
+          href: ../virtual-machines/ephemeral-os-disks.md
         - name: 磁盘的可伸缩性目标
           href: ../virtual-machines/windows/disk-scalability-targets.md
           maintainContext: true

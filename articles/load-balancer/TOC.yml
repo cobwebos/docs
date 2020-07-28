@@ -95,21 +95,13 @@
           href: upgrade-basicInternal-standard.md
         - name: 升级内部负载均衡器 - 需要出站连接
           href: upgrade-InternalBasic-To-PublicStandard.md
-    - name: 配置出站规则
-      items:
-        - name: 门户
-          href: configure-load-balancer-outbound-portal.md
-        - name: Azure CLI
-          href: configure-load-balancer-outbound-cli.md
-        - name: Azure PowerShell
-          href: configure-load-balancer-outbound-powershell.md
     - name: 使用 IPv6 创建公共负载均衡器
       items:
         - name: Azure CLI
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli'
         - name: Azure PowerShell
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell'
-        - name: Azure Resource Manager 模板
+        - name: Azure 资源管理器模板
           href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
           displayName: ARM
     - name: 配置负载均衡器的 TCP 空闲超时
@@ -134,7 +126,7 @@
           href: move-across-regions-internal-load-balancer-portal.md
         - name: 内部负载均衡器 - PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
-- name: 疑难解答
+- name: 故障排除
   items:
     - name: 对 Azure 负载均衡器进行故障排除
       href: load-balancer-troubleshoot.md

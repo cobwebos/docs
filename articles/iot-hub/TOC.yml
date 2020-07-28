@@ -133,7 +133,7 @@
               items:
                 - name: 创建和读取 IoT 中心消息
                   href: iot-hub-devguide-messages-construct.md
-                - name: 通过内置终结点读取设备到云的消息
+                - name: 从内置终结点读取设备到云的消息
                   href: iot-hub-devguide-messages-read-builtin.md
                 - name: 对设备到云的消息使用自定义终结点和路由规则
                   href: iot-hub-devguide-messages-read-custom.md
@@ -422,7 +422,7 @@
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
     - name: Azure PowerShell
-      href: /powershell/module/az.iothub#iot
+      href: /powershell/module/az.iothub#iothub
     - name: .NET（设备）
       href: /dotnet/api/microsoft.azure.devices.client
     - name: .NET（服务）
