@@ -62,7 +62,7 @@ QnA Maker 允许多人在同一 QnA Maker 资源中协作处理所有知识库�
 
 当他们选择某一知识库时，该知识库中的 QnA Maker 资源上的当前角色就可见了。
 
-:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="在编辑模式下的知识库中的屏幕截图，其角色名称位于网页左上角的 "知识库名称" 旁边的括号中。":::
+:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="在编辑模式下的知识库中的屏幕截图，其角色名称位于网页左上角的 知识库名称 旁边的括号中。":::
 
 ## <a name="next-steps"></a>后续步骤
 
