@@ -4,15 +4,15 @@ ms.service: azure-blockchain
 ms.topic: include
 ms.date: 07/07/2020
 ms.author: patricka
-ms.openlocfilehash: 1ff45f9c1b64bc98d0e741b589fadb35c91ea432
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
-ms.translationtype: MT
+ms.openlocfilehash: fa5c611a05e8262ead9b08987fa103a3d96b7988
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156620"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003134"
 ---
 > [!IMPORTANT]
 > Azure Blockchain Workbench 目前以公共预览版提供。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 > 服务级别协议未随 Azure Blockchain Workbench 一起提供。
-> 使用[Microsoft 问答&问题页面](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)获取支持。 针对 Azure 区块链工作台的工程支持仅限于部署问题。
+> 使用 [Microsoft Q&A 问题页面](/answers/topics/azure-blockchain-workbench.html)获取支持。 针对 Azure Blockchain Workbench 的工程支持仅限于部署问题。

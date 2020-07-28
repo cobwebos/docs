@@ -8,6 +8,8 @@
       href: overview.md
     - name: 比较消息服务
       href: compare-messaging-services.md
+    - name: 发行说明
+      href: whats-new.md
 - name: 快速入门
   expanded: true
   items:

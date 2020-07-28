@@ -71,6 +71,8 @@
       href: azure-netapp-files-manage-snapshots.md
     - name: 重设容量池或卷的大小
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+    - name: 动态更改卷的服务级别
+      href: dynamic-change-volume-service-level.md
     - name: 开发
       items:
         - name: REST API
