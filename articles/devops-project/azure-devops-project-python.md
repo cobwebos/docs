@@ -15,7 +15,7 @@ ms.author: mlearned
 ms.custom: mvc, tracking-python
 ms.openlocfilehash: e148d50af39e69750c3024d98abc833e40654705
 ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/09/2020
 ms.locfileid: "84558744"
