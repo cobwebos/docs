@@ -24,7 +24,7 @@ ms.locfileid: "87095913"
 1. 在实验室列表中，选择实验室。
 1. 在实验室的 "主页" 页上，选择左侧菜单上的 "**配置和策略**"。 
 
-    :::image type="content" source="./media/activity-logs/configuration-policies-link.png" alt-text="选择左侧菜单中的 "配置和策略"":::
+    :::image type="content" source="./media/activity-logs/configuration-policies-link.png" alt-text="选择左侧菜单中的 配置和策略":::
 1. 在 "**配置和策略**" 页上，在 "**管理**" 下的左侧菜单中选择 "**活动日志**"。 应会看到针对实验室完成的操作的条目。 
 
     :::image type="content" source="./media/activity-logs/activity-log.png" alt-text="活动日志":::    
