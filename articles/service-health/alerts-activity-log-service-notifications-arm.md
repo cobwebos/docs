@@ -6,7 +6,7 @@ ms.custom: subject-armqs
 ms.date: 06/29/2020
 ms.openlocfilehash: 84c888195ab7e2f3288691948706d31160393d25
 ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "85918907"
