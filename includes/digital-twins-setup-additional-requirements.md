@@ -17,7 +17,7 @@ ms.locfileid: "87125764"
 下面是所有者可能需要执行的一些常见潜在活动。 这些操作和其他操作可以从 Azure 门户的 " [*Azure AD 应用注册*](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)" 页中执行。
 * 向管理员授予对应用注册的许可。 你的组织可能需要对订阅中的所有应用注册 Azure AD 全局启用 "*管理员许可*"。 如果是这样，所有者需要在应用注册的 " *API 权限*" 页上为你的公司选择此按钮，以使应用注册有效：
 
-    :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/grant-admin-consent.png" alt-text="API 权限下的 "授予管理员许可" 按钮的门户视图":::
+    :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/grant-admin-consent.png" alt-text="API 权限下的 授予管理员许可 按钮的门户视图":::
   - 如果已成功授予同意，Azure 数字孪生的条目应显示 "同意" _ **（你的公司）** _的*状态*值
    
     :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/granted-admin-consent.png" alt-text="在 API 权限下为公司授予的管理员许可的门户视图":::
