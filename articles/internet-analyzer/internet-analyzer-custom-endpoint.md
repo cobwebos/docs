@@ -9,7 +9,7 @@ ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: 6ca71bce726f16eeacc96e10eb654bb3e21c5924
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "84744079"

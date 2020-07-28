@@ -17,7 +17,7 @@ ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c967e32836586c39131069407fc4808a5f91ae9
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "85609098"

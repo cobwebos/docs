@@ -10,7 +10,7 @@ ms.author: akshanka
 ms.reviewer: sngun
 ms.openlocfilehash: 28c58251d9a30b3bae9d958c32c4d6a71f86aaae
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "85263205"
