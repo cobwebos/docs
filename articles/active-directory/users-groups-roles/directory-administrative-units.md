@@ -16,6 +16,7 @@ ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 44a01bb7d2f4aa3d31204d6235e955e82e471d5d
 ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/12/2020
 ms.locfileid: "84729041"
