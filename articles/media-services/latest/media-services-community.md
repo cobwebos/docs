@@ -15,6 +15,7 @@ ms.date: 01/22/2020
 ms.author: juliako
 ms.openlocfilehash: ab775e8d93111f7494d2bf321216e2725c438fc8
 ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/25/2020
 ms.locfileid: "83828486"

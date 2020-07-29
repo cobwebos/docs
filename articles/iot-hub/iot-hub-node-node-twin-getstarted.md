@@ -11,6 +11,7 @@ ms.author: elioda
 ms.custom: mqtt
 ms.openlocfilehash: e65c781bd5cb62bdaa693b854caafd5f91fd497e
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732281"

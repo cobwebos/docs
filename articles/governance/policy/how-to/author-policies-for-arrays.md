@@ -5,6 +5,7 @@ ms.date: 05/20/2020
 ms.topic: how-to
 ms.openlocfilehash: f3d30f76d555386e5ab8041a0b8cc82b5b60e28e
 ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83684253"
