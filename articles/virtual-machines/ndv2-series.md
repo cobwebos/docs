@@ -4,15 +4,15 @@ description: NDv2 系列 Vm 的规格。
 author: vikancha-MSFT
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: c298ee691b476fb58c567490ab2e62e45aba3e7c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e63cb73b726c495d4124447028b681a81b8fcca9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526939"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286200"
 ---
 # <a name="updated-ndv2-series"></a>更新的 NDv2 系列
 

@@ -4,14 +4,15 @@ description: HBv2 系列 Vm 的规格。
 author: vermagit
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: amverma
-ms.openlocfilehash: 730065333fde7431b7018ef0a6e614e12727d7ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9717105c9241777d72a8943e87f33ab31c8038c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84673847"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288492"
 ---
 # <a name="hbv2-series"></a>HBv2 系列
 
@@ -25,7 +26,7 @@ HBv2 系列 Vm 针对内存带宽驱动的应用程序进行了优化，例如�
 
 | 大小 | vCPU | 处理器 | 内存 (GB) | 内存带宽 GB/秒 | 基本 CPU 频率（GHz） | 所有核心频率（GHz、峰值） | 单核频率（GHz、峰值） | RDMA 性能（Gb/秒） | MPI 支持 | 临时存储（GB） | 最大数据磁盘数 | 最大以太网 Nic |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_HB120rs_v2 | 120 | AMD EPYC 7V12 | 480 | 350 | 2.45 | 3.1 | 3.3 | 200 | All | 480 + 960 | 8 | 1 |
+| Standard_HB120rs_v2 | 120 | AMD EPYC 7V12 | 480 | 350 | 2.45 | 3.1 | 3.3 | 200 | 全部 | 480 + 960 | 8 | 1 |
 
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]

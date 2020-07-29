@@ -3,12 +3,12 @@ title: 开发测试实验室概念 | Microsoft Docs
 description: 了解开发测试实验室的基本概念及其如何轻松地创建、管理和监视 Azure 虚拟机
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8f82f0484caf23d20092318b5bc2a32b0e6b1f1d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 43d62d637686a785cafd29aa311ccf20cb942721
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074972"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283837"
 ---
 # <a name="devtest-labs-concepts"></a>开发测试实验室概念
 ## <a name="overview"></a>概述
@@ -20,7 +20,7 @@ ms.locfileid: "87074972"
 ## <a name="virtual-machine"></a>虚拟机
 Azure VM 是 Azure 提供的多种[可缩放按需分配计算资源](/azure/architecture/guide/technology-choices/compute-decision-tree)之一。 无需购买和维护运行 Azure VM 的物理硬件，Azure VM 即可提供虚拟化灵活性，尽管你仍需要执行某些任务（如配置、修补和安装在 Azure VM 上运行的软件）来维护 VM。
 
-[Azure 中的 Windows 虚拟机概述](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview)提供有关在创建 VM 之前应考虑的信息、如何创建 VM 以及如何管理 VM。
+[Azure 中的 Windows 虚拟机概述](../virtual-machines/windows/overview.md)提供有关在创建 VM 之前应考虑的信息、如何创建 VM 以及如何管理 VM。
 
 ## <a name="claimable-vm"></a>可认领 VM
 Azure 可认领 VM 是可供具备权限的任何实验室用户使用的虚拟机。 实验室管理员可准备具有特定基本映像和项目的 VM，并将其保存到共享池。 此后，在需要这种特定配置时，实验室用户可从池中认领一台有用的 VM。
@@ -28,7 +28,7 @@ Azure 可认领 VM 是可供具备权限的任何实验室用户使用的虚拟�
 可认领 VM 最初并未分配给任何特定用户，但会显示在“可认领虚拟机”下每个用户的列表中。 用户认领 VM 后，该 VM 会移动到“我的虚拟机”区域，并且任何其他用户都无法再对其进行认领。
 
 ## <a name="environment"></a>环境
-在开发测试实验室中，环境是指实验室中 Azure 资源的集合。 [此博客文章](https://blogs.msdn.microsoft.com/devtestlab/2016/11/16/connect-2016-news-for-azure-devtest-labs-azure-resource-manager-template-based-environments-vm-auto-shutdown-and-more/)讨论如何基于 Azure 资源管理器模板创建多 VM 环境。
+在开发测试实验室中，环境是指实验室中 Azure 资源的集合。 [此博客文章](./devtest-lab-faq.md#blog-post)讨论如何基于 Azure 资源管理器模板创建多 VM 环境。
 
 ## <a name="base-images"></a>基础映像
 基础映像为 VM 映像，包含预安装和配置为快速创建 VM 的所有工具和设置。 可通过选取现有基并添加项目来对 VM 进行预配，进而安装测试代理。 然后可将预配的 VM 保存为基，这样无需为每个 VM 的预配重新安装测试代理即可使用该基。
@@ -74,7 +74,7 @@ Azure 可认领 VM 是可供具备权限的任何实验室用户使用的虚拟�
 ## <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
 本文中所述的所有概念都可以使用 Azure 资源管理器模板配置，这些模板可用于定义 Azure 解决方案的基础结构/配置，并以一致的状态反复部署该解决方案。
 
-[了解 Azure 资源管理器模板的结构和语法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates#template-format)描述了 Azure 资源管理器模板的结构，以及模板的不同节中提供的属性。
+[了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md#template-format)描述了 Azure 资源管理器模板的结构，以及模板的不同节中提供的属性。
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

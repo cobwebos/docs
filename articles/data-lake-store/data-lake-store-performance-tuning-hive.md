@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: c49388d50b79b037b0a0923f2c5e9ac72105c54e
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 9e05773955fb79007a5d5899babf8680c69aa654
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855762"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281712"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Hive on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
 
@@ -19,7 +19,7 @@ ms.locfileid: "85855762"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Data Lake Storage Gen1 帐户**。 有关如何创建一个的说明，请参阅[Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
 * 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集****。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
 * **在 HDInsight 上运行 Hive**。  若要了解有关在 HDInsight 上运行 Hive 作业的信息，请参阅[在 HDInsight 上使用 Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
@@ -81,5 +81,5 @@ ms.locfileid: "85855762"
 
 下面是将帮助优化 Hive 查询的几个博客：
 * [在 Hdinsight 中优化 Hadoop 的 Hive 查询](https://azure.microsoft.com/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
-* [Hive 查询性能故障排除](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
+* [编码 Azure HDInsight 中的 Hive 查询文件](https://docs.microsoft.com/archive/blogs/bigdatasupport/encoding-the-hive-query-file-in-azure-hdinsight)
 * [有关优化 Hive on HDInsight 的 Ignite 讨论](https://channel9.msdn.com/events/Machine-Learning-and-Data-Sciences-Conference/Data-Science-Summit-2016/MSDSS25)

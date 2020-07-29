@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: c305a2513a5ace241fe697766b851cd2851e8b78
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 029883ea1ac85bdd1ea256caaa711d6537c06a76
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536013"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287891"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商业市场权益
 
@@ -41,7 +41,7 @@ Rewards 团队成员将在产品/服务上线时联系你，具体取决于你�
 入门很简单：
 
 1. 在 Microsoft AppSource 或 Azure 市场中发布产品/服务。
-2. 请参阅合作伙伴中心的[Marketplace 奖励](https://partner.microsoft.com/en-us/dashboard/mpn/program/commercialmarketplace)，并选择**注册 marketplace 奖励计划**。
+2. 请参阅合作伙伴中心的[Marketplace 奖励](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace)，并选择**注册 marketplace 奖励计划**。
 3. 若要激活销售和市场营销权益，请分配公司营销联系人。 此联系人将收到有关 Marketplace Rewards 的跟进信息。
 4. 若要添加或更新营销联系人信息，请转到“Marketplace Rewards”页顶部的“销售和营销权益”选项卡，然后选择“添加”、“更新”或“更改”。  接下来，请执行以下操作：
 

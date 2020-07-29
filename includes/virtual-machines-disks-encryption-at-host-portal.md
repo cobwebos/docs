@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/07/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c5ea31217bd3088ec123281b36f8578b08ea25b2
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f0a706cc51027bc503da9ee3bc637216e9e52853
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/24/2020
-ms.locfileid: "87136091"
+ms.locfileid: "87171357"
 ---
 ## <a name="restrictions"></a>限制
 
@@ -27,7 +27,7 @@ ms.locfileid: "87136091"
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-suported-sizes](virtual-machines-disks-encryption-at-host-suported-sizes.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 为了能够在 Vm 或虚拟机规模集的主机上使用加密，必须在订阅上启用该功能。 向 encryptionAtHost@microsoft 发送电子邮件。 带有订阅 Id 的 com 用于为你的订阅启用该功能。
 
@@ -50,12 +50,12 @@ ms.locfileid: "87136091"
 1. 创建新的虚拟机，选择适当的区域和受支持的 VM 大小。
 1. 根据需要在 "**基本**" 边栏选项卡中填写其他值，然后转到 "**磁盘**" 边栏选项卡。
 
-    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png" alt-text="示例文本":::
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png" alt-text="将突出显示 "虚拟机创建基本信息" 边栏选项卡、"区域" 和 "V" 大小的屏幕截图。":::
 
 1. 在 "**磁盘**" 边栏选项卡上，选择 **"是"** 以**在主机上加密**。
 1. 根据需要进行剩余选择。
 
-    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="示例文本":::
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="虚拟机 "创建磁盘" 边栏选项卡的屏幕截图会突出显示 "在主机上加密"。":::
 
 1. 完成 VM 部署过程，选择适合你的环境的选项。
 

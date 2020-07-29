@@ -3,12 +3,12 @@ title: 通过 VM 设置备份 Azure VM
 description: 本文介绍如何使用 Azure 备份服务备份单个 Azure VM 或多个 Azure VM。
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 580cb1ad5f611991212bc8cdb48c66339f14d8e8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 722c24ce87edc692156a86338521aa3b2f9c7562
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538881"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286699"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>通过 VM 设置备份 Azure VM
 
@@ -24,7 +24,7 @@ ms.locfileid: "86538881"
 
 ### <a name="azure-vm-agent-installation"></a>Azure VM 代理安装
 
-为了备份 Azure VM，Azure 备份会在 VM 代理上安装一个扩展，该代理在计算机上运行。 如果 VM 是根据 Azure 市场映像创建的，则代理将运行。 在某些情况下（例如创建自定义 VM，或者从本地迁移计算机）， 可能需要手动安装代理。
+为了备份 Azure VM，Azure 备份会在 VM 代理上安装一个扩展，该代理在计算机上运行。 如果 VM 是从 Azure Marketplace 映像创建的，则代理将运行。 在某些情况下（例如创建自定义 VM，或者从本地迁移计算机）， 可能需要手动安装代理。
 
 - 如果需要手动安装 VM 代理，请按 [Windows](../virtual-machines/extensions/agent-windows.md) 或 [Linux](../virtual-machines/extensions/agent-linux.md) VM 的说明操作。
 - 在安装代理后启用备份时，Azure 备份会将备份扩展安装到代理。 它可以在没有用户干预的情况下更新和修补扩展。
@@ -39,15 +39,15 @@ ms.locfileid: "86538881"
    - 如果已有一个保管库，请单击“选择现有”，然后选择一个保管库  。
    - 如果没有保管库，请单击“新建”。  指定保管库的名称。 它在 VM 所在的区域和资源组中创建。 直接通过 VM 设置启用备份时，不能修改这些设置。
 
-   ![启用备份向导](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
+        ![启用备份向导](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
 
-6. 在“选择备份策略”中执行以下操作： 
+6. 在 "**选择备份策略**" 中，执行下列操作之一：
 
    - 保留默认策略。 这样会每天一次在指定的时间备份 VM，并在保管库中保留备份 30 天。
    - 选择现有的备份策略（如果有）。
    - 创建一项新策略，然后定义策略设置。  
 
-   ![选择备份策略](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
+       ![选择备份策略](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
 
 7. 单击“启用备份”。  这样会将备份策略与 VM 相关联。
 
