@@ -7,6 +7,7 @@ ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
 ms.openlocfilehash: c3892cfe3f8bd6966f5bd00c0747590eef3bc50d
 ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/26/2020
 ms.locfileid: "83860507"

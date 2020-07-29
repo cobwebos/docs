@@ -10,6 +10,7 @@ ms.custom: seo-lt-2019
 ms.date: 05/28/2020
 ms.openlocfilehash: a4fcdad0efda1ab2a43be65865e3aac59f7ef3e3
 ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/29/2020
 ms.locfileid: "84187609"
