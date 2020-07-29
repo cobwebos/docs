@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 资源管理器模板部署管理工具 - Azure
-description: 如何使用 Azure 资源管理器模板安装用户界面工具以便管理 Windows 虚拟桌面资源。
+description: 如何使用 Azure 资源管理器模板安装用户界面工具来管理 Windows 虚拟桌面（经典）资源。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3c3e93cf711d4dadfdc2354a297b0588fb637c80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf9fff614f638aec9519c11b2bb558cc77b94814
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514237"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284942"
 ---
-# <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板部署管理工具
+# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板部署 Windows 虚拟桌面（经典）管理工具
 
 >[!IMPORTANT]
->本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。
+>此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。
 
 本文中的说明将告诉你如何使用 Azure 资源管理器模板部署 UI。
 

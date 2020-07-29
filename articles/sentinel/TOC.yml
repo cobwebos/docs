@@ -156,6 +156,8 @@
       href: customer-managed-keys.md
     - name: 从警报创建事件
       href: create-incidents-from-alerts.md
+    - name: 利用事件指标更好地管理 SOC
+      href: manage-soc-with-incident-metrics.md
     - name: 搜寻
       href: hunting.md
       items:

@@ -7,12 +7,13 @@ ms.devlang: java
 ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: ade688c3fe339db864994923d0ff40dfe41b7cb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: c9abc4dc89651eec7df635fb415314b2c12da3a6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263001"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319756"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>使用 Azure Cosmos DB 更改源将实时数据分析可视化
 
@@ -53,7 +54,7 @@ Azure Cosmos DB 更改源是一种机制，用于从 Azure Cosmos 容器获取�
 
 7. **Power BI：** Power BI 用于可视化 Azure 流分析发送的数据。 可以构建一个仪表板来实时了解指标的变化。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Microsoft .NET Framework 4.7.1 或更高版本
 
@@ -208,7 +209,7 @@ Azure 流分析是实时处理流数据的完全托管式云服务。 在此实�
 
 5. 导航回到流分析作业页，并选择“输出”。****  
 
-6. 选择“+ 添加”****。 然后，从下拉菜单中选择“Power BI”。****  
+6. 选择“+ 添加”。 然后，从下拉菜单中选择“Power BI”。****  
 
 7. 若要创建新的 Power BI 输出来可视化平均价格，请执行以下操作：
 

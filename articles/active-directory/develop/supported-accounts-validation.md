@@ -10,12 +10,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 82b721d14d114b358939bebecff00bc762b075a6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e794e277f6731c7b6e57a4710eea437f65be0340
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058335"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336338"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>按受支持帐户类型列出的验证差异 (signInAudience)
 
@@ -41,7 +41,7 @@ ms.locfileid: "87058335"
 | 重定向 URI (`replyURLs`) | 有关详细信息，请参阅[重定向 URI/回复 URL 的局限性和限制](reply-url.md)。 | | | 
 | API 权限 (`requiredResourceAccess`) | 无限制* | 无限制* | 每个应用程序最多50个资源，每个资源30个权限（例如 Microsoft Graph）。 每个应用程序200的总限制（资源 x 权限）。 | 
 | 此 API 定义的作用域 (`oauth2Permissions`) | 最大作用域名称长度为 120 个字符 <br><br> 对定义的作用域数没有限制* | 最大作用域名称长度为 120 个字符 <br><br> 对定义的作用域数没有限制* |  最大作用域名称长度为40个字符 <br><br> 最多定义100个作用域 | 
-| 授权客户端应用程序 (`preautorizedApplications`) | 无限制* | 无限制* | 总最大值为500 <br><br> 最多定义100个客户端应用 <br><br> 每个客户端最多定义30个作用域 | 
+| 授权客户端应用程序 (`preAuthorizedApplications`) | 无限制* | 无限制* | 总最大值为500 <br><br> 最多定义100个客户端应用 <br><br> 每个客户端最多定义30个作用域 | 
 | appRoles | 支持 <br> 无限制* | 支持 <br> 无限制* | 不支持 | 
 | 注销 URL | 允许 http://localhost <br><br> 最大长度为 255 个字符 | 允许 http://localhost <br><br> 最大长度为 255 个字符 | <br><br> https://localhost对于 MSA，允许， http://localhost 失败 <br><br> 最大长度为 255 个字符 <br><br> 不允许使用 HTTP 方案 <br><br> 不支持通配符 | 
 

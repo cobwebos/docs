@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: d5158bbb32635ebf030879f4d0290a1feba0ec93
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-java
+ms.openlocfilehash: a45a47b36ca0e9c426c84bb4b9f87ee5bdeccb84
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072926"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309148"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>使用 Bulk Executor Java 库针对 Azure Cosmos DB 数据执行批量操作
 
@@ -33,7 +34,7 @@ ms.locfileid: "87072926"
 
   - 请确保设置 JAVA_HOME 环境变量，使之指向在其中安装了 JDK 的文件夹。
 
-* [下载](https://maven.apache.org/download.cgi)并[安装](https://maven.apache.org/install.html) [Maven](https://maven.apache.org/)二进制存档  
+* [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html)[Maven](https://maven.apache.org/) 二进制存档  
   
   - 在 Ubuntu 上，可以通过运行 `apt-get install maven` 来安装 Maven。
 
@@ -47,7 +48,7 @@ ms.locfileid: "87072926"
  git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started.git 
 ```
 
-克隆的存储库包含相对于“\azure-cosmosdb-bulkexecutor-java-getting-started\samples\bulkexecutor-sample\src\main\java\com\microsoft\azure\cosmosdb\bulkexecutor”文件夹的两个示例：“bulkimport”和“bulkupdate”。 “bulkimport”应用程序会生成随机文档并将其导入 Azure Cosmos DB。 “bulkupdate”应用程序会更新 Azure Cosmos DB 中的某些文档。 在后续部分，我们将查看其中每个示例应用中的代码。 
+克隆的存储库包含相对于“\azure-cosmosdb-bulkexecutor-java-getting-started\samples\bulkexecutor-sample\src\main\java\com\microsoft\azure\cosmosdb\bulkexecutor”文件夹的两个示例：“bulkimport”和“bulkupdate”。 “bulkimport”应用程序生成随机文档并将其导入 Azure Cosmos DB。 “bulkupdate”应用程序更新 Azure Cosmos DB 中的某些文档。 在后续部分，我们将查看其中每个示例应用中的代码。 
 
 ## <a name="bulk-import-data-to-azure-cosmos-db"></a>将数据批量导入 Azure Cosmos DB
 
