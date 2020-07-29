@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: a3a59b6658e6ea0229f65492b20b5f5f2882d12a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 46b7479df6d087915cfe81895a786a528da6b9bb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499233"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327899"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>发送用户上下文 ID 以启用 Azure Application Insights 中的使用体验
 
@@ -30,7 +30,7 @@ Application Insights 通过一套产品使用工具监视并跟踪用户：
 - 会话：包括会话 ID。
 
 > [!NOTE]
-> 这是一篇高级文章，概述了使用 Application Insights 跟踪用户活动的手动步骤。 对于许多 Web 应用程序，**可能不需要这些步骤**，因为默认的服务器端 SDK 与[客户端/浏览器端 JavaScript SDK](../../azure-monitor/app/website-monitoring.md ) 结合使用，通常足以自动跟踪用户活动。 如果除了服务器端 SDK 之外还没有配置[客户端监视](../../azure-monitor/app/website-monitoring.md )，请先执行该操作并测试用户行为分析工具是否按预期执行。
+> 这是一篇高级文章，概述了使用 Application Insights 跟踪用户活动的手动步骤。 对于许多 Web 应用程序，**可能不需要这些步骤**，因为默认的服务器端 SDK 与[客户端/浏览器端 JavaScript SDK](./website-monitoring.md) 结合使用，通常足以自动跟踪用户活动。 如果除了服务器端 SDK 之外还没有配置[客户端监视](./website-monitoring.md)，请先执行该操作并测试用户行为分析工具是否按预期执行。
 
 ## <a name="choosing-user-ids"></a>选择用户 ID
 
@@ -134,4 +134,5 @@ namespace MvcWebRole.Telemetry
     - [用户、会话和事件](usage-segmentation.md)
     - [漏斗图](usage-funnels.md)
     - [保留](usage-retention.md)
-    - [工作簿](../../azure-monitor/platform/workbooks-overview.md)
+    - [工作簿](../platform/workbooks-overview.md)
+

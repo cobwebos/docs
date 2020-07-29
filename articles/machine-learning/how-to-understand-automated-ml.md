@@ -8,14 +8,15 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.date: 12/05/2019
-ms.openlocfilehash: 18addfc6b7a0002aba26b668481d6bedb612fffc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 89fe1d80fb7282a72bde6bcafa070f2d7461b02f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090342"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320827"
 ---
 # <a name="understand-automated-machine-learning-results"></a>了解自动化机器学习的结果
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -272,7 +273,7 @@ normalized_root_mean_squared_log_error|规范化均方根对数误差指均方�
 有关启用可解释性功能的详细信息，请参阅有关在自动化 ML 试验中启用可解释性的[操作指南](how-to-machine-learning-interpretability-automl.md)。
 
 > [!NOTE]
-> 说明客户端当前不支持 ForecastTCN 模型。 如果此模型作为最佳模型返回，则不会返回 "说明" 仪表板，并且不支持按需说明运行。
+> 解释客户端目前不支持 ForecastTCN 模型。 如果此模型作为最佳模型返回，则不会返回解释仪表板，并且不支持按需解释运行。
 
 ## <a name="next-steps"></a>后续步骤
 

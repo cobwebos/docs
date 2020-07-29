@@ -1,21 +1,21 @@
 ---
-title: " (预览转换设计器中的数据) "
+title: 在设计器中转换数据（预览）
 titleSuffix: Azure Machine Learning
-description: 了解如何在 Azure 机器学习设计器中将数据转换 (预览版) 来创建自己的数据集。
+description: 了解如何转换 Azure 机器学习设计器（预览版）中的数据，以创建自己的数据集。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 06/28/2020
-ms.custom: designer
-ms.openlocfilehash: 68ed1b83b1e82daa9c4578a6b3bec24792a8268d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: conceptual
+ms.custom: how-to, designer
+ms.openlocfilehash: 3858a5a3b39c7ecaaad17a6bb6c313caf7bbc0ae
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203794"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326981"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer-preview"></a>在 Azure 机器学习设计器（预览版）中转换数据
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -31,6 +31,8 @@ ms.locfileid: "86203794"
 1. 查看结果。
 
 此操作说明是[如何重新训练设计器模型](how-to-retrain-designer.md)文章的先决条件。 在该文章中，你将了解如何使用转换的数据集，通过管道参数训练多个模型。
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="transform-a-dataset"></a>转换数据集
 

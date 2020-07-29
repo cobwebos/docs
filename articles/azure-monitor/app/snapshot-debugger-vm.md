@@ -6,11 +6,12 @@ author: brahmnes
 ms.author: bfung
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 194a2da23c8fb405c492df8f6ee173cc97fde4ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1cc9893a309dcdf7ac575494d164052bb0c617c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671330"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325672"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>在 Azure Service Fabric、云服务和虚拟机中为 .NET 应用启用快照调试器
 
@@ -20,11 +21,11 @@ ms.locfileid: "77671330"
     
 ## <a name="configure-snapshot-collection-for-aspnet-applications"></a>为 ASP.NET 应用程序配置快照集合
 
-1. 如果尚未启用，请[在 Web 应用中启用 Application Insights](../../azure-monitor/app/asp-net.md)。
+1. 如果尚未启用，请[在 Web 应用中启用 Application Insights](./asp-net.md)。
 
 2. 将 [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包添加到应用。
 
-3. 如果需要，可自定义添加到 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 的快照调试器配置。默认快照调试器配置大多为空，并且所有设置都是可选的。 以下示例显示与默认配置等效的配置：
+3. 如果需要，可自定义添加到 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 的快照调试器配置。默认快照调试器配置大多为空，并且所有设置都是可选的。 以下示例显示与默认配置等效的配置：
 
     ```xml
     <TelemetryProcessors>
@@ -58,12 +59,12 @@ ms.locfileid: "77671330"
     </TelemetryProcessors>
     ```
 
-4. 仅当向 Application Insights 报告了异常时，才收集快照。 在某些情况下（例如，.NET 平台为较早版本时），可能需要[配置异常收集](../../azure-monitor/app/asp-net-exceptions.md#exceptions)，才能在门户的查看附带快照的异常。
+4. 仅当向 Application Insights 报告了异常时，才收集快照。 在某些情况下（例如，.NET 平台为较早版本时），可能需要[配置异常收集](./asp-net-exceptions.md#exceptions)，才能在门户的查看附带快照的异常。
 
 
 ## <a name="configure-snapshot-collection-for-applications-using-aspnet-core-20-or-above"></a>使用 ASP.NET Core 2.0 或更高版本为应用程序配置快照收集
 
-1. 如果尚未启用，请[在 ASP.NET Core Web 应用中启用 Application Insights](../../azure-monitor/app/asp-net-core.md)。
+1. 如果尚未启用，请[在 ASP.NET Core Web 应用中启用 Application Insights](./asp-net-core.md)。
 
     > [!NOTE]
     > 请确保应用程序引用 2.1.1 版或更新版本的 Microsoft.ApplicationInsights.AspNetCore 包。
@@ -150,7 +151,7 @@ ms.locfileid: "77671330"
 
 ## <a name="configure-snapshot-collection-for-other-net-applications"></a>为其他 .NET 应用程序配置快照集合
 
-1. 如果尚未在 Application Insights 上检测到你的应用程序，请先[启用 Application Insights 并设置检测密钥](../../azure-monitor/app/windows-desktop.md)。
+1. 如果尚未在 Application Insights 上检测到你的应用程序，请先[启用 Application Insights 并设置检测密钥](./windows-desktop.md)。
 
 2. 将 [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包添加到应用。
 
@@ -179,3 +180,4 @@ ms.locfileid: "77671330"
 - 为应用程序生成可触发异常的流量。 然后等待 10 到 15 分钟，这样快照就会发送到 Application Insights 实例。
 - 请参见 Azure 门户中的[快照](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal)。
 - 排查 Snapshot Debugger 问题时如需帮助，请参阅 [ Snapshot Debugger 故障排除](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json)。
+

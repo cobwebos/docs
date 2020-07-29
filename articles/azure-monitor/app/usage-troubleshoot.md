@@ -6,11 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8d2e573f34895207a455838b5fc64f95560943d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02d1bd9d204d88ba90218b1254c66ac0da80be85
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670910"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323496"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Application Insights 中用户行为分析工具的故障排除
 如果对 [Application Insights 中的用户行为分析工具](usage-overview.md)有疑问：[用户、会话、活动](usage-segmentation.md)，[漏斗图](usage-funnels.md)，[用户流](usage-flows.md)，[保留期](usage-retention.md)或队列？ 请参考下面的解答。
@@ -18,13 +19,13 @@ ms.locfileid: "77670910"
 ## <a name="counting-users"></a>对用户进行计数
 **用户行为分析工具显示我的应用具有一个用户/会话，但我的应用实际具有多个用户/会话。应如何校正这些错误的计数？**
 
-Application Insights 中的所有遥测事件都具有[匿名用户 ID](../../azure-monitor/app/data-model-context.md) 和[会话 ID](../../azure-monitor/app/data-model-context.md)，作为这些事件的两个标准属性。 默认情况下，所有使用情况分析工具都基于这些 ID 对用户和会话进行计数。 如果未使用应用中每个用户和会话的唯一 ID 填充这些标准属性，则使用情况分析工具中会显示错误的用户和会话计数。
+Application Insights 中的所有遥测事件都具有[匿名用户 ID](./data-model-context.md) 和[会话 ID](./data-model-context.md)，作为这些事件的两个标准属性。 默认情况下，所有使用情况分析工具都基于这些 ID 对用户和会话进行计数。 如果未使用应用中每个用户和会话的唯一 ID 填充这些标准属性，则使用情况分析工具中会显示错误的用户和会话计数。
 
-如果正在监视 Web 应用，则最简单的解决方案是向应用添加 [Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md)，并确保已在想要监视的每一页上加载脚本代码片段。 JavaScript SDK 自动生成匿名用户和会话 ID，然后在从应用发送这些 ID 后使用这些 ID 填充遥测事件。
+如果正在监视 Web 应用，则最简单的解决方案是向应用添加 [Application Insights JavaScript SDK](./javascript.md)，并确保已在想要监视的每一页上加载脚本代码片段。 JavaScript SDK 自动生成匿名用户和会话 ID，然后在从应用发送这些 ID 后使用这些 ID 填充遥测事件。
 
 如果正在监视 Web 服务（无用户界面），根据服务的唯一用户和会话概念，[创建遥测初始值设定项用于填充匿名用户 ID 和会话 ID 属性](usage-send-user-context.md)。
 
-如果应用正在发送[已经过身份验证的用户 ID](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)，则可以在“用户”工具中基于经过身份验证的用户 ID 进行计数。 在“显示”下拉菜单中，选择“已经过身份验证的用户”。
+如果应用正在发送[已经过身份验证的用户 ID](./api-custom-events-metrics.md#authenticated-users)，则可以在“用户”工具中基于经过身份验证的用户 ID 进行计数。 在“显示”下拉菜单中，选择“已经过身份验证的用户”。
 
 用户行为分析工具当前不支持基于匿名用户 ID、已经过身份验证的用户 ID 或会话 ID 之外的属性对用户或会话进行计数。
 

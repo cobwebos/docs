@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2020
-ms.openlocfilehash: b4882ec9eb8b81ae27a1e8eed2e5b4349fbeac3f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4e36a21e9dbab6f9bf814cdeb86f175ded38ea8e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516186"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327287"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Monitor 日志的结构
 使用[日志查询](log-query-overview.md)快速洞察数据是 Azure Monitor 提供的一项强大功能。 若要创建高效且有用的查询，应该了解一些基本概念，例如，所需数据的位置及其构建方式。 本文将会介绍可帮助你入门的基本概念。
@@ -89,4 +89,5 @@ union withsource = table *
 
 ## <a name="next-steps"></a>后续步骤
 - 了解如何使用 [Log Analytics 来创建并编辑日志搜索](./log-query-overview.md)。
-- 查看使用新查询语言的[查询编写教程](../log-query/get-started-queries.md)。
+- 查看使用新查询语言的[查询编写教程](./get-started-queries.md)。
+

@@ -4,15 +4,15 @@ description: 从云合作伙伴门户向合作伙伴中心转换产品/服务的
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: anbene
+author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: eafa6c4911e934d391a380e5eb494ca8f7766959
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 59f66b88c998a78f5bd3ccf3757cb791aea2521b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012053"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87279298"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>有关从云合作伙伴门户过渡到合作伙伴中心的常见问题
 
@@ -107,19 +107,19 @@ ms.locfileid: "87012053"
 
     如果左侧导航窗格中未显示 "商用 Marketplace 计划"，则可能是错误的帐户。 按照下一部分中的步骤访问正确的帐户。
 
-    [![](media/cpp-pc-faq/overview-menu.png "Shows the Partner Center Overview menu")](media/cpp-pc-faq/overview-menu.png#lightbox)
+    [![显示 "合作伙伴中心概述" 菜单的屏幕截图](media/cpp-pc-faq/overview-menu.png "显示合作伙伴中心概述菜单")](media/cpp-pc-faq/overview-menu.png#lightbox)
 
 ### <a name="access-the-right-account-in-partner-center"></a>访问合作伙伴中心的正确帐户
 
 如果你是多个帐户的一部分，请在合作伙伴中心中看到一个帐户选取器按钮，该按钮由左侧导航菜单中的两个箭头标记。 选择 "帐户选取器" 按钮以查看您所属的所有帐户的列表。 选择列表中的任何帐户以切换到该帐户，并查看与该帐户相关的所有程序和信息。 如果在导航菜单中看不到 "帐户选取器" 按钮，则您是单个帐户的成员。
 
-[![](media/cpp-pc-faq/picker-button.png "Shows the Partner Center account picker button")](media/cpp-pc-faq/picker-button.png#lightbox)
+[![屏幕截图显示 "合作伙伴中心帐户选择器" 按钮。](media/cpp-pc-faq/picker-button.png "显示 "合作伙伴中心帐户选择器" 按钮")](media/cpp-pc-faq/picker-button.png#lightbox)
 
 ## <a name="how-do-i-create-new-offers"></a>如何实现创建新产品/服务？
 
 访问[合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)的 "商用 marketplace" 计划，以创建新产品/服务。 在 "概述" 页上，选择 " **+ 新产品/服务**"。
 
-[![](media/cpp-pc-faq/new-offer.png "Shows the Partner Center Overview menu")](media/cpp-pc-faq/new-offer.png#lightbox)
+[![屏幕截图显示 "合作伙伴中心概述" 菜单。](media/cpp-pc-faq/new-offer.png "显示合作伙伴中心概述菜单")](media/cpp-pc-faq/new-offer.png#lightbox)
 
 ## <a name="i-cant-sign-in-and-need-to-open-a-support-ticket"></a>我无法登录，需要打开支持票证
 
@@ -137,7 +137,7 @@ ms.locfileid: "87012053"
 
 合作伙伴中心提供了一个模块化发布功能，你可用它来选择你想要发布的更改，而不是总是一次性发布所有更新。 例如，下面的屏幕显示，仅选择要发布的更改是对**属性**和**服务列表**的更改。 您在预览页中所做的更改将不会发布。
 
-[![](media/cpp-pc-faq/review-page.png "Shows the Partner Center Review and publish page")](media/cpp-pc-faq/review-page.png#lightbox)
+[![屏幕截图显示合作伙伴中心评审和发布页。](media/cpp-pc-faq/review-page.png "显示合作伙伴中心审阅和发布页")](media/cpp-pc-faq/review-page.png#lightbox)
 
 未发布的更新将保存为草稿。 在上线提供给公众之前，可继续使用产品/服务预览来验证你的产品/服务。
 
@@ -145,24 +145,24 @@ ms.locfileid: "87012053"
 
 合作伙伴中心包含一个[“比较”功能](partner-center-portal/update-existing-offer.md#compare-changes-to-marketplace-offers)，其中有改进后的筛选选项。 这使你能够根据产品/服务的预览版本和上线版本。
 
-[![](media/cpp-pc-faq/compare.png "Shows the Partner Center compare feature")](media/cpp-pc-faq/compare.png#lightbox)
+[![屏幕截图显示合作伙伴中心比较功能。](media/cpp-pc-faq/compare.png "显示合作伙伴中心比较功能")](media/cpp-pc-faq/compare.png#lightbox)
 
 ### <a name="branding-and-navigation-changes"></a>品牌和导航更改
 
 你将注意到有一些品牌方面的更改。 例如， *sku*作为合作伙伴中心中的*计划*进行署名：
 
-[![](media/cpp-pc-faq/plans.png "Shows the Partner Center Plans page")](media/cpp-pc-faq/plans.png#lightbox)
+[![屏幕截图显示 "合作伙伴中心计划" 页。](media/cpp-pc-faq/plans.png "显示 "合作伙伴中心计划" 页")](media/cpp-pc-faq/plans.png#lightbox)
 
 此外，你之前在**Marketplace**或**店面详细**信息中提供的信息（咨询服务、Power BI 应用云合作伙伴门户）将在合作伙伴中心的产品/服务**列表**页上收集：
 
-[![](media/cpp-pc-faq/offer-listing.png "Shows the Partner Center Offer listing page")](media/cpp-pc-faq/offer-listing.png#lightbox)
+[![屏幕截图显示 "合作伙伴中心产品/服务" 列表页。](media/cpp-pc-faq/offer-listing.png "显示合作伙伴中心产品/服务列表页")](media/cpp-pc-faq/offer-listing.png#lightbox)
 
 你之前在云合作伙伴门户中的一个页面中提供的 Sku 信息现在可以在合作伙伴中心的几个页面中收集：
 
 - 计划设置页面
 - 计划列表页面
 - 计划可用性页面
-- 规划技术配置页，如下所示： ![ ！ []（media/cpp-pc-常见问题解答/technical-configuration.png "显示合作伙伴中心技术配置页"）](media/cpp-pc-faq/technical-configuration.png#lightbox)
+- 规划技术配置页，如下所示： ![ ！ [屏幕截图显示 "合作伙伴中心技术配置" 页。]（media/cpp-pc-常见问题解答/technical-configuration.png "显示合作伙伴中心技术配置页"）](media/cpp-pc-faq/technical-configuration.png#lightbox)
 
 产品/服务 ID 现在显示在 "产品/服务" 的左侧导航栏上：
 
@@ -172,7 +172,7 @@ ms.locfileid: "87012053"
 
 你可直接通过合作伙伴中心门户请求在市场上[停止销售某款产品/服务](partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan)。 可在产品/服务的“产品/服务概述”页面上找到该选项。
 
-[![](media/cpp-pc-faq/stop-sell.png "Shows the Partner Center page to stop selling an offer")](media/cpp-pc-faq/stop-sell.png#lightbox)
+[![屏幕截图显示了停止销售产品/服务的 "合作伙伴中心" 页。](media/cpp-pc-faq/stop-sell.png "显示用于停止销售产品/服务的 "合作伙伴中心" 页")](media/cpp-pc-faq/stop-sell.png#lightbox)
 <br><br>
 
 ## <a name="are-the-cloud-partner-portal-rest-apis-still-supported"></a>是否仍支持云合作伙伴门户 REST Api？

@@ -5,16 +5,18 @@ description: 了解如何使用 Azure Kubernetes 服务将 Azure 机器学习模
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 16465ff823fab1b13f43aec33cb41f9b26b5c054
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c927015114bb0e7230dcb96cd16a81e7763f64d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392550"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325876"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes 服务群集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,6 +37,11 @@ ms.locfileid: "85392550"
 
 > [!IMPORTANT]
 > 创建或附加过程是一次性任务。 将 AKS 群集连接到工作区后，便可将其用于部署。 如果不再需要 AKS 群集，可将其拆离或删除。 拆离或删除后，将无法再部署到该群集。
+
+> [!IMPORTANT]
+> 强烈建议在部署到 web 服务之前进行本地调试。有关详细信息，请参阅[本地调试](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)
+>
+> 你还可以参阅 Azure 机器学习-[部署到本地笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)
 
 ## <a name="prerequisites"></a>先决条件
 

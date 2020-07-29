@@ -5,28 +5,28 @@ description: 了解如何使用 Azure 机器学习通过在 FPGA 上运行模型
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: jordane
 author: jpe316
 ms.date: 06/03/2020
-ms.custom: seodec18, contperfq4, tracking-python
-ms.openlocfilehash: ace657efaac323dcf48cfba95629abc59ca0cac3
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.topic: conceptual
+ms.custom: how-to, contperfq4, tracking-python
+ms.openlocfilehash: 9a2a40c97b67de7c76bff19cd0765618aaea42a0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231754"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325808"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>什么是现场可编程门阵列 (FPGA) 以及如何部署
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍现场可编程的入口数组 (FPGA) ，并演示如何使用[Azure 机器学习](overview-what-is-azure-ml.md)到 Azure FPGA 部署模型。
+本文介绍了现场可编程的入口数组（FPGA），并说明了如何使用[Azure 机器学习](overview-what-is-azure-ml.md)向 Azure FPGA 部署模型。
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅。 如果没有，则需要创建一个即[用即付](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go)帐户， (免费 Azure 帐户不符合 FPGA 配额) 的要求。
+- Azure 订阅。 如果没有，则需要创建即[用即付](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go)帐户（免费 Azure 帐户不符合 FPGA 配额的条件）。
 - [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - FPGA 配额。 使用 Azure CLI 检查是否有配额：
 
@@ -89,7 +89,7 @@ Azure FPGA 与 Azure 机器学习集成。 Azure 可以在 FPGA 之间并行化�
 Azure 上的 FPGA 支持：
 
 + 图像分类和识别方案
-+ TensorFlow 部署 (需要 Tensorflow 1.x) 
++ TensorFlow 部署（需要 Tensorflow 1.x）
 + Intel FPGA 硬件
 
 当前提供了以下 DNN 模型：
@@ -416,7 +416,7 @@ converted_model.delete()
 请访问以下笔记本、视频和博客：
 
 + 若干[示例笔记本](https://aka.ms/aml-accel-models-notebooks)
-+ [超大规模硬件：大规模在 Azure + FPGA 上的 ML：生成 2018 (视频) ](https://channel9.msdn.com/events/Build/2018/BRK3202)
++ [超大规模硬件：大规模在 Azure + FPGA 之上的 ML：内部版本2018（视频）](https://channel9.msdn.com/events/Build/2018/BRK3202)
 + [Inside the Microsoft FPGA-based configurable cloud (video)](https://channel9.msdn.com/Events/Build/2017/B8063)（深入了解基于 Microsoft FPGA 的可配置云（视频））
 + [用于实时 AI 的 Project Brainwave：项目主页](https://www.microsoft.com/research/project/project-brainwave/)
 + [自动光纤检查系统](https://blogs.microsoft.com/ai/build-2018-project-brainwave/)

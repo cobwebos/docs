@@ -10,11 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 4b1abe8efb4baaf260005df1a4ee5b6d1645715a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9bd2db8bcc427118a76f87e49ade422a74a11c1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84169213"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87276908"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>灾难恢复和存储帐户故障转移
 
@@ -131,7 +132,7 @@ Microsoft 还建议将应用程序设计为，可以应对可能出现的写入�
 
 ### <a name="azure-virtual-machines"></a>Azure 虚拟机
 
-Azure 虚拟机 (VM) 不会在帐户故障转移过程中进行故障转移。 如果主要区域不可用且你故障转移到次要区域，那么就需要在故障转移完成后重新创建所有 VM。 此外，还可能会丢失与帐户故障转移相关联的数据。 Microsoft 建议特定于 Azure 中的虚拟机的以下[高可用性](../../virtual-machines/windows/manage-availability.md)和[灾难恢复](../../virtual-machines/virtual-machines-disaster-recovery-guidance.md)指南。
+Azure 虚拟机 (VM) 不会在帐户故障转移过程中进行故障转移。 如果主要区域不可用且你故障转移到次要区域，那么就需要在故障转移完成后重新创建所有 VM。 此外，还可能会丢失与帐户故障转移相关联的数据。 Microsoft 建议特定于 Azure 中的虚拟机的以下[高可用性](../../virtual-machines/windows/manage-availability.md)和[灾难恢复](../../virtual-machines/windows/backup-recovery.md)指南。
 
 ### <a name="azure-unmanaged-disks"></a>Azure 非托管磁盘
 

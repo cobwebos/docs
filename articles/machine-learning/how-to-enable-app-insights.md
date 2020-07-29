@@ -5,18 +5,18 @@ description: 使用 Azure Application Insights 监视通过 Azure 机器学习�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: blackmist
-ms.date: 06/09/2020
-ms.custom: tracking-python
-ms.openlocfilehash: d28cd3b1d8722970505eb313bd8e80589ce9ff87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/23/2020
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 2bc3eb72ff0c5d29fd72de848abf87dfe84e2a01
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743500"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320215"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>监视机器学习 Web 服务终结点以及从中收集数据
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -153,15 +153,20 @@ ms.locfileid: "84743500"
 1. 选择“启用 Application Insights 诊断和数据收集”
 
     ![启用 App Insights](./media/how-to-enable-app-insights/enable-app-insights.png)
-## <a name="evaluate-data"></a>评估数据
+
+## <a name="view-metrics-and-logs"></a>查看指标和日志
+
 服务的数据将存储在 Azure Application Insights 帐户中，此帐户与 Azure 机器学习位于同一资源组。
 查看数据：
 
-1. 转到 [Azure 门户](https://ms.portal.azure.com/)中的 Azure 机器学习工作区，然后单击 Application Insights 链接
+1. 在[工作室](https://ml.azure.com/)中中转到 Azure 机器学习工作区。
+1. 选择“终结点”。****
+1. 选择已部署的服务。
+1. 向下滚动以查找**Application Insights url** ，并单击链接。
 
-    [![AppInsightsLoc](./media/how-to-enable-app-insights/AppInsightsLoc.png)](././media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
+    [![定位 Application Insights url](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 
-1. 从“概述”选项卡或左侧列表的“监视”部分中，选择“日志” 。
+1. 在应用程序 Isights 中，从左侧列表中的 "**概述**" 选项卡或 "__监视__" 部分选择 "__日志__"。
 
     [![监视的“概述”选项卡](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
@@ -186,7 +191,7 @@ ms.locfileid: "84743500"
 
 可以根据需要使用 Azure 数据工厂、Azure ML Pipelines 或其他数据处理工具来转换数据。 转换数据后，可以在 Azure 机器学习工作区中将其注册为数据集。 若要执行此操作，请参阅[如何创建和注册数据集](how-to-create-register-datasets.md)。
 
-   [![连续导出](./media/how-to-enable-app-insights/continuous-export-setup.png)](././media/how-to-enable-app-insights/continuous-export-setup.png)
+:::image type="content" source="media/how-to-enable-app-insights/continuous-export-setup.png" alt-text="连续导出":::
 
 
 ## <a name="example-notebook"></a>示例笔记本

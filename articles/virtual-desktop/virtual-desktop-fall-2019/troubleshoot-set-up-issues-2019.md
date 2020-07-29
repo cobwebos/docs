@@ -1,6 +1,6 @@
 ---
-title: Windows 虚拟桌面租户主机池创建-Azure
-description: 如何在 Windows 虚拟桌面租户环境的安装过程中排除和解决租户和主机池问题。
+title: Windows 虚拟桌面（经典）租户主机池创建-Azure
+description: 如何在 Windows 虚拟桌面（经典）租户环境的安装过程中排除和解决租户和主机池问题。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: aad3bffeba4395ba415fb99a3667d04d18769a47
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: bd9a6dd5d11ab69635d610eee3f92a90e942b576
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026689"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87269591"
 ---
-# <a name="tenant-and-host-pool-creation"></a>创建租户和主机池
+# <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>在 Windows 虚拟桌面（经典）中创建租户和主机池
 
 >[!IMPORTANT]
->本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。 如果要尝试管理 2020 年春季版更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../troubleshoot-set-up-issues.md)。
+>此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。 如果尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../troubleshoot-set-up-issues.md)。
 
 本文介绍了 Windows 虚拟桌面租户和相关的会话主机池基础结构的初始安装过程中的问题。
 

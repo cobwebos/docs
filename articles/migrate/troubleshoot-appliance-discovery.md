@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 40bd39299380c400f945585651a7ad99e3eb3fa7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: eafe13adb5b37de2de2bc4eb8bf15c775af0b039
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114051"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171862"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>排查 Azure Migrate 设备和发现问题
 
@@ -164,6 +164,9 @@ ms.locfileid: "86114051"
 
 ## <a name="unable-to-export-application-inventory"></a>无法导出应用程序清单
 确保从门户下载清单的用户对订阅具有参与者权限。
+
+## <a name="no-suitable-authentication-method-found-to-complete-authentication-publickey"></a>找不到合适的身份验证方法来完成身份验证（publickey）
+基于密钥的身份验证将不起作用，请使用密码身份验证。
 
 ## <a name="common-app-discovery-errors"></a>常见的应用发现错误
 

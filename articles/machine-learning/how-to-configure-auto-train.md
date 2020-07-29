@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.date: 05/20/2020
-ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 4815e51d22501d6110f3bc26a878513d6d700ce7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 2d2eb9d95192e73d0a9bc4e7afbb993fccb17b94
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031280"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321507"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>使用 Python 配置自动化 ML 试验
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -74,7 +74,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 ## <a name="data-source-and-format"></a>数据源和格式
 
-自动化机器学习支持驻留在本地桌面上或云中（例如 Azure Blob 存储）的数据。 数据可以读入 Pandas 数据帧或 Azure 机器学习 TabularDataset 中**** ****。  [了解有关数据集的详细信息](how-to-create-register-datasets.md)。
+自动化机器学习支持驻留在本地桌面上或云中（例如 Azure Blob 存储）的数据。 数据可以读入 Pandas 数据帧或 Azure 机器学习 TabularDataset 中 。  [了解有关数据集的详细信息](how-to-create-register-datasets.md)。
 
 训练数据的要求：
 - 数据必须为表格格式。
@@ -115,7 +115,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 ## <a name="train-and-validation-data"></a>训练和验证数据
 
-可以通过以下选项直接在构造函数中指定单独的定型集和验证集 `AutoMLConfig` 。 详细了解如何配置 AutoML 试验的[数据拆分和交叉验证](how-to-configure-cross-validation-data-splits.md)。 
+可以通过以下选项直接在 `AutoMLConfig` 构造函数中指定单独的训练集和验证集。 详细了解[如何配置数据拆分和交叉验证](how-to-configure-cross-validation-data-splits.md)（针对 AutoML 试验）。 
 
 ### <a name="k-folds-cross-validation"></a>K 折交叉验证
 
@@ -195,7 +195,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 ### <a name="data-featurization"></a>数据特征化
 
-在每个自动化机器学习实验中，数据都是[自动缩放和规范化](how-to-configure-auto-features.md#)，以帮助对不同规模上的特征敏感的某些** 算法。  不过，你还可以启用其他特征化，例如缺失值插补、编码和转换。
+在每个自动化机器学习实验中，数据都是[自动缩放和规范化](how-to-configure-auto-features.md#)，以帮助对不同规模上的特征敏感的某些算法。  不过，你还可以启用其他特征化，例如缺失值插补、编码和转换。
 
 在 `AutoMLConfig` 对象中配置试验时，可以启用/禁用设置 `featurization`。 下表列出了 [AutoMLConfig 类](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)中的特征化的已接受设置。
 
@@ -248,16 +248,16 @@ automl_config = AutoMLConfig(task = 'forecasting',
 
 ### <a name="ensemble-configuration"></a><a name="ensemble"></a> 集成配置
 
-默认情况下启用集成模型，并在自动机器化学习运行中显示为最终的运行迭代次数。 目前支持的融合方法是投票和堆叠。 投票是使用加权平均值作为软投票实现的，堆栈实现使用两层实现，其中第一层具有与投票集成相同的模型，第二层模型用于从第一层中查找模型的最佳组合。 如果你使用的是 ONNX 模型，或**** 启用了模型可解释性，那么堆叠会被禁用，只会使用投票。
+默认情况下启用集成模型，并在自动机器化学习运行中显示为最终的运行迭代次数。 目前支持的融合方法是投票和堆叠。 投票是使用加权平均值作为软投票实现的，堆栈实现使用两层实现，其中第一层具有与投票集成相同的模型，第二层模型用于从第一层中查找模型的最佳组合。 如果你使用的是 ONNX 模型，或启用了模型可解释性，那么堆叠会被禁用，只会使用投票。
 
 有多个默认参数可以作为 `kwargs` 在 `AutoMLConfig` 对象中提供，用于更改默认融合行为。
 
-* `ensemble_download_models_timeout_sec`：在 VotingEnsemble**** 和 StackEnsemble**** 模型生成期间，会下载来自先前子运行的多个拟合模型。 如果遇到此错误 `AutoMLEnsembleException: Could not find any models for running ensembling`，则可能需要为要下载的模型提供更多时间。 默认值为 300 秒并行下载这些模型，且没有最大超时限制。 如果需要更多时间，请将此参数配置为大于 300 秒的值。 
+* `ensemble_download_models_timeout_sec`：在 VotingEnsemble 和 StackEnsemble 模型生成期间，会下载来自先前子运行的多个拟合模型。 如果遇到此错误 `AutoMLEnsembleException: Could not find any models for running ensembling`，则可能需要为要下载的模型提供更多时间。 默认值为 300 秒并行下载这些模型，且没有最大超时限制。 如果需要更多时间，请将此参数配置为大于 300 秒的值。 
 
   > [!NOTE]
   >  如果已超时且下载了模型，则融合会使用它下载的多个模型继续执行。 并不需要下载所有模型才能在超时内完成。
 
-以下参数只应用于 StackEnsemble**** 模型： 
+以下参数只应用于 StackEnsemble 模型： 
 
 * `stack_meta_learner_type`：元学习器是针对单个异类模型的输出而训练出来的模型。 默认的元学习器是用于分类任务的 `LogisticRegression`（或为 `LogisticRegressionCV`，如果启用了交叉验证的话），以及用于回归/预测任务的 `ElasticNet`（或为 `ElasticNetCV`，如果启用了交叉验证的话）。 此参数可以是下列字符串之一：`LogisticRegression`、`LogisticRegressionCV`、`LightGBMClassifier`、`ElasticNet`、`ElasticNetCV`、`LightGBMRegressor` 或 `LinearRegression`。
 
@@ -512,7 +512,7 @@ class_prob = fitted_model.predict_proba(X_test)
 有关如何在自动化机器学习之外的其他 SDK 区域中启用模型解释和特征重要性的基本信息，请参阅可解释性方面的[概念](how-to-machine-learning-interpretability.md)文章。
 
 > [!NOTE]
-> 说明客户端当前不支持 ForecastTCN 模型。 如果此模型作为最佳模型返回，则不会返回 "说明" 仪表板，并且不支持按需说明运行。
+> 解释客户端目前不支持 ForecastTCN 模型。 如果此模型作为最佳模型返回，则不会返回解释仪表板，并且不支持按需解释运行。
 
 ## <a name="next-steps"></a>后续步骤
 

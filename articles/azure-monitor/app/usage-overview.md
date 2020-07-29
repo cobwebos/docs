@@ -3,24 +3,24 @@ title: 使用 Azure Application Insights 进行使用情况分析 | Microsoft do
 description: 了解用户，以及他们将应用用于哪些目的。
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 1acc803d66bef29a77266d4e38e1605ffd75f36f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bd0b95fe92171d2c5a1515941dbf86a0e31e04be
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014059"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323547"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights 使用分析
 
-Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现了其目标？ 他们是否中途放弃应用，后来又回头使用了吗？  [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 可帮助你有效地深入分析人们如何使用应用。 每次更新应用时，都可以评估它在用户那里的运行状况。 了解这些信息后，可以针对下一个开发周期做出数据驱动的决策。
+Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现了其目标？ 他们是否中途放弃应用，后来又回头使用了吗？  [Azure Application Insights](./app-insights-overview.md) 可帮助你有效地深入分析人们如何使用应用。 每次更新应用时，都可以评估它在用户那里的运行状况。 了解这些信息后，可以针对下一个开发周期做出数据驱动的决策。
 
 ## <a name="send-telemetry-from-your-app"></a>从应用发送遥测数据
 
 通过在应用服务器代码和网页中安装 Application Insights 来获得最佳体验。 应用的客户端和服务器组件将遥测发送回 Azure 门户进行分析。
 
-1. **服务器代码：** 为 [ASP.NET](../../azure-monitor/app/asp-net.md)、[Azure](../../azure-monitor/app/app-insights-overview.md)、[Java](../../azure-monitor/app/java-get-started.md)、[Node.js](../../azure-monitor/app/nodejs.md) 或[其他](../../azure-monitor/app/platforms.md)应用安装适当的模块。
+1. **服务器代码：** 为 [ASP.NET](./asp-net.md)、[Azure](./app-insights-overview.md)、[Java](./java-get-started.md)、[Node.js](./nodejs.md) 或[其他](./platforms.md)应用安装适当的模块。
 
-    * 不想安装服务器代码？只需[创建 Azure Application Insights 资源](../../azure-monitor/app/create-new-resource.md )。
+    * 不想安装服务器代码？只需[创建 Azure Application Insights 资源](./create-new-resource.md)。
 
 2. **网页代码**：将以下脚本添加到网页的结束标记 ``</head>`` 之前。 将检测密钥替换为 Application Insights 资源的相应值：
     
@@ -36,7 +36,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
     若要了解更多用于监视网站的高级配置，请查看 [JavaScript SDK 参考](./javascript.md)一文。
 
-3. **移动应用代码：** 通过[按照此指南操作](../../azure-monitor/learn/mobile-center-quickstart.md)，使用 App Center SDK 收集应用中的事件，然后将这些事件的副本发送到 Application Insights 进行分析。
+3. **移动应用代码：** 通过[按照此指南操作](../learn/mobile-center-quickstart.md)，使用 App Center SDK 收集应用中的事件，然后将这些事件的副本发送到 Application Insights 进行分析。
 
 4. **获取遥测：** 在调试模式下运行项目几分钟，并在“Application Insights”中的“概述”边栏选项卡中查找结果。
 
@@ -103,7 +103,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 可将属性值附加到这些事件，以便在门户检查事件时可以筛选或拆分事件。 此外，已将一组标准属性（例如匿名用户 ID）附加到每个事件，以便你跟踪单个用户的活动序列。
 
-详细了解[自定义事件](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)和[属性](../../azure-monitor/app/api-custom-events-metrics.md#properties)。
+详细了解[自定义事件](./api-custom-events-metrics.md#trackevent)和[属性](./api-custom-events-metrics.md#properties)。
 
 ### <a name="slice-and-dice-events"></a>分解事件
 
@@ -121,7 +121,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 在 Application Insights 门户中根据属性值筛选和拆分数据，以便比较不同的版本。
 
-为此，请[设置遥测初始值设定项](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)：
+为此，请[设置遥测初始值设定项](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)：
 
 ASP.NET 应用
 
@@ -175,5 +175,6 @@ ASP.NET Core 应用
    - [漏斗图](usage-funnels.md)
    - [保留](usage-retention.md)
    - [用户流](usage-flows.md)
-   - [工作簿](../../azure-monitor/platform/workbooks-overview.md)
+   - [工作簿](../platform/workbooks-overview.md)
    - [添加用户上下文](usage-send-user-context.md)
+

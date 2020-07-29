@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4481e62fb15b5ec21b48deb00f1438abf01aa27a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fffb83fe680572c2448323a61b767a401c9a4834
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041473"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323700"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights 中的 Impact 分析功能
 
@@ -28,7 +28,7 @@ Impact 可以分析加载时间和其他属性对应用的各个部件的转换�
 ![浏览器转换屏幕截图](./media/usage-impact/0004-browsers.png)
 
 > [!NOTE]
-> Application Insights 资源必须包含页面视图或自定义事件才能使用 Impact 工具。 [了解如何使用 Application Insights JavaScript SDK 将应用设置为自动收集页面访问次数](../../azure-monitor/app/javascript.md)。 另请注意，由于分析的是相关性，因此样本大小非常重要。
+> Application Insights 资源必须包含页面视图或自定义事件才能使用 Impact 工具。 [了解如何使用 Application Insights JavaScript SDK 将应用设置为自动收集页面访问次数](./javascript.md)。 另请注意，由于分析的是相关性，因此样本大小非常重要。
 >
 >
 
@@ -39,12 +39,12 @@ Impact 可以分析加载时间和其他属性对应用的各个部件的转换�
 ![Impact 工具](./media/usage-impact/0002-dropdown.png)
 
 1. 从“针对页面视图”下拉列表中选择一个页面视图。
-2. 将“分析依据”下拉列表中的选择保留为“持续时间”（在此上下文中，“持续时间”是“页面加载时间”的别名）。   
+2. 将“分析依据”下拉列表中的选择保留为“持续时间”（在此上下文中，“持续时间”是“页面加载时间”的别名）。
 3. 在“影响以下对象的使用”下拉列表中，选择一个自定义事件。 此事件应该对应于在步骤 1 中选择的页面视图的 UI 元素。
 
 ![结果的屏幕截图](./media/usage-impact/0003-results.png)
 
-在此情况下，随着“产品页面”加载时间的增加，“单击‘购买产品’”的转换率下降。  根据上面的分布，可将最佳页面加载持续时间 3.5 秒指定为目标，以实现潜在的 55% 转换率。 可将加载时间降到 3.5 秒以下的其他性能改进措施目前与带来的其他转换优势没有关联。
+在此情况下，随着“产品页面”加载时间的增加，“单击‘购买产品’”的转换率下降。 根据上面的分布，可将最佳页面加载持续时间 3.5 秒指定为目标，以实现潜在的 55% 转换率。 可将加载时间降到 3.5 秒以下的其他性能改进措施目前与带来的其他转换优势没有关联。
 
 ## <a name="what-if-im-tracking-page-views-or-load-times-in-custom-ways"></a>是否能以自定义的方式跟踪页面视图或加载时间？
 
@@ -85,5 +85,6 @@ Impact 最终计算方式根据是按指标还是按维护分析而异。 使用
     - [漏斗图](usage-funnels.md)
     - [保留](usage-retention.md)
     - [用户流](usage-flows.md)
-    - [工作簿](../../azure-monitor/platform/workbooks-overview.md)
+    - [工作簿](../platform/workbooks-overview.md)
     - [添加用户上下文](usage-send-user-context.md)
+

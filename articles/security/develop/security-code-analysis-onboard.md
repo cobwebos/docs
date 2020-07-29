@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: a7fab9515051180fdb1b894602478768a60177ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd0057c5f5e365d6c91ae221a7add813855bb1ec
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362051"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323581"
 ---
 # <a name="onboarding-and-installing"></a>加入和安装
 
@@ -50,7 +50,7 @@ Microsoft 安全代码分析入门的先决条件：
 
 - 区域–联系详细信息：cloudsupport@zones.com
 - Wortell –联系详细信息：info@wortell.nl
-- Logicalis –联系详细信息：Matthew.Curtis@us.logicalis.com 
+- Logicalis –联系详细信息：logicalisleads@us.logicalis.com
 
 ### <a name="become-a-partner"></a>成为合作伙伴
 

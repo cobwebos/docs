@@ -4,15 +4,15 @@ description: 如何使用合作伙伴中心的商业市场门户创建新的托�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: JnHs
-ms.author: jenhayes
+author: Microsoft-BradleyWright
+ms.author: brwrigh
 ms.date: 07/07/2020
-ms.openlocfilehash: 3bb663dcdf007bf77d1b9f2b46af532774af22e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 193781e078f12dec553d98c15699c7e665966a87
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086381"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326609"
 ---
 # <a name="create-a-managed-service-offer"></a>创建托管服务产品
 

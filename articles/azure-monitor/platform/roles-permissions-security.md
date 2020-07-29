@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 4ffbe10a1f9a1629c74c144b8773a7de89890576
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8e56c4da0eec3338de7863a2ee158e804cf406c0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132001"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325553"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Monitor 中的角色、权限和安全性
 
@@ -188,4 +188,5 @@ Azure Monitor 需要访问 Azure 资源以提供你启用的服务。 如果你�
 
 ## <a name="next-steps"></a>后续步骤
 * [阅读有关 Resource Manager 中的 RBAC 和权限的信息](../../role-based-access-control/overview.md)
-* [阅读 Azure 中的监视概述](../../azure-monitor/overview.md)
+* [阅读 Azure 中的监视概述](../overview.md)
+

@@ -1,6 +1,6 @@
 ---
-title: Windows 虚拟桌面秋季2019的数据位置-Azure
-description: 对 Windows 虚拟机的数据和元数据的存储位置的简要概述。
+title: Windows 虚拟桌面的数据位置（经典）-Azure
+description: Windows 虚拟桌面（经典）数据和元数据的存储位置的简要概述。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fa998ddf8225475bbcf657ed9feee951263d2743
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0e12e17914374a64ecd2d17a8e73c6ebf20328d9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077578"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270033"
 ---
-# <a name="data-locations-for-windows-virtual-desktop"></a>Windows 虚拟桌面的数据位置
+# <a name="data-locations-for-windows-virtual-desktop-classic"></a>Windows 虚拟桌面的数据位置（经典）
 
 >[!IMPORTANT]
->本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。 如果要尝试管理 2020 年春季版更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../data-locations.md)。
+>此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。 如果尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../data-locations.md)。
 
 Windows 虚拟桌面目前可用于所有地理位置。 最初，只能将服务元数据存储在美国（US）地理位置。 管理员可以在创建主机池虚拟机和相关服务（如文件服务器）时选择存储用户数据的位置。 在[azure 数据中心地图](https://azuredatacentermap.azurewebsites.net/)上详细了解 azure 地理位置。
 

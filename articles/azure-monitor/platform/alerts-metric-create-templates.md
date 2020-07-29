@@ -7,21 +7,21 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 7/9/2020
 ms.subservice: alerts
-ms.openlocfilehash: 043ecc07c521f9c1c79835bcd67ff1d81cacfa34
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3b0215ea2f02441f93e6eb9b672744638ae93b11
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539459"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321133"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建指标警报
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本文介绍如何在 Azure Monitor 中使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)配置[较新的指标警报](../../azure-monitor/platform/alerts-metric-near-real-time.md)。 使用资源管理器模板可以通过编程方式在多个环境中设置一致且可重现的警报。 较新的指标警报当前适用于[这套资源类型](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)。
+本文介绍如何在 Azure Monitor 中使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)配置[较新的指标警报](./alerts-metric-near-real-time.md)。 使用资源管理器模板可以通过编程方式在多个环境中设置一致且可重现的警报。 较新的指标警报当前适用于[这套资源类型](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)。
 
 > [!IMPORTANT]
-> 用于针对资源类型创建指标警报的资源模板：Azure Log Analytics 工作区（即 `Microsoft.OperationalInsights/workspaces`）需要执行其他步骤。 有关详细信息，请参阅有关[日志指标警报 - 资源模板](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)的文章。
+> 用于针对资源类型创建指标警报的资源模板：Azure Log Analytics 工作区（即 `Microsoft.OperationalInsights/workspaces`）需要执行其他步骤。 有关详细信息，请参阅有关[日志指标警报 - 资源模板](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)的文章。
 
 基本步骤如下所示：
 
@@ -3464,7 +3464,7 @@ az group deployment create \
 
 ## <a name="template-for-an-availability-test-along-with-a-metric-alert"></a>可用性测试以及指标警报的模板
 
-[Application Insights 可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)可帮助你从全球各地监视网站/应用程序的可用性。 当可用性测试在一定数量的位置失败时，可用性测试警报会通知你。
+[Application Insights 可用性测试](../app/monitor-web-app-availability.md)可帮助你从全球各地监视网站/应用程序的可用性。 当可用性测试在一定数量的位置失败时，可用性测试警报会通知你。
 与指标警报 (Microsoft.Insights/metricAlerts) 的资源类型相同的可用性测试警报。 以下示例 Azure 资源管理器模板可用于设置简单的可用性测试和关联警报。
 
 为进行本次演练，请将下面的 json 保存为 availabilityalert.json。
@@ -3628,3 +3628,4 @@ az group deployment create \
 - 详细了解 [Azure 中的警报](alerts-overview.md)
 - 了解如何[使用资源管理器模板创建操作组](action-groups-create-resource-manager-template.md)
 - 有关 JSON 语法和属性，请参阅 [Microsoft.Insights/metricAlerts](/azure/templates/microsoft.insights/metricalerts) 模板参考。
+

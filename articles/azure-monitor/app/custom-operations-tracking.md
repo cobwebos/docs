@@ -4,12 +4,12 @@ description: 使用 Azure Application Insights .NET SDK 跟踪自定义操作
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 49c2ad44dab5e4f57db2f11c17c269289e56d2d5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bd30f60928df3644b215f185d620393d1edda8c7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540037"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320368"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>使用 Application Insights .NET SDK 跟踪自定义操作
 
@@ -206,7 +206,7 @@ public async Task Process(BrokeredMessage message)
 以下示例显示如何跟踪 [Azure 存储队列](../../storage/queues/storage-dotnet-how-to-use-queues.md)操作，并将生成者、使用者和 Azure 存储之间的遥测相关联。 
 
 存储队列具有一个 HTTP API。 用于 HTTP 请求的 Application Insights Dependency Collector 会跟踪对该队列的所有调用。
-它在 ASP.NET 和 ASP.NET Core 应用程序上默认配置。使用其他类型的应用程序时，可参阅[控制台应用程序文档](../../azure-monitor/app/console.md)
+它在 ASP.NET 和 ASP.NET Core 应用程序上默认配置。使用其他类型的应用程序时，可参阅[控制台应用程序文档](./console.md)
 
 用户可能还想将 Application Insights 操作 ID 与存储请求 ID 相关联。 有关如何设置与获取存储请求客户端和服务器请求 ID 的信息，请参阅[对 Azure 存储进行监视、诊断和故障排除](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing)。
 
@@ -478,8 +478,9 @@ public async Task RunAllTasks()
 ## <a name="next-steps"></a>后续步骤
 
 - 了解 Application Insights 中的[遥测关联](correlation.md)基础知识。
-- 查看相关数据如何支持[事务诊断体验](../../azure-monitor/app/transaction-diagnostics.md)和[应用程序映射](../../azure-monitor/app/app-map.md)。
-- 有关 Application Insights 的类型和数据模型，请参阅[数据模型](../../azure-monitor/app/data-model.md)。
-- 向 Application Insights 报告自定义[事件和指标](../../azure-monitor/app/api-custom-events-metrics.md)。
+- 查看相关数据如何支持[事务诊断体验](./transaction-diagnostics.md)和[应用程序映射](./app-map.md)。
+- 有关 Application Insights 的类型和数据模型，请参阅[数据模型](./data-model.md)。
+- 向 Application Insights 报告自定义[事件和指标](./api-custom-events-metrics.md)。
 - 查看上下文属性集合的标准[配置](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)。
 - 查看 [System.Diagnostics.Activity 用户指南](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)，了解如何关联遥测。
+

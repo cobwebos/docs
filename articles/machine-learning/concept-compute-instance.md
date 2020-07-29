@@ -8,33 +8,33 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 06/22/2020
-ms.openlocfilehash: 3edb8da6d535ac7817c29db254aa84efd92321b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: 4ac95fa81fdbee237cacaa1541e333bb70c370fa
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012971"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323292"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什么是 Azure 机器学习计算实例？
 
-Azure 机器学习计算实例是一种基于云的托管数据科学家工作站。
+Azure 机器学习计算实例是面向数据科学家的基于云的托管式工作站。
 
 计算实例可让客户轻松地开始进行 Azure 机器学习开发，并为 IT 管理员提供管理和企业就绪功能。  
 
-使用计算实例作为云中的完全配置和托管开发环境进行机器学习。 还可以将它们用作定型和推断的计算目标，以用于开发和测试目的。  
+可以使用计算实例作为在云中进行机器学习的完全配置和托管的开发环境。 还可以在开发和测试中将它们用作训练和推理的计算目标。  
 
-对于生产级别模型训练，请使用具有多节点缩放功能的[Azure 机器学习计算群集](how-to-set-up-training-targets.md#amlcompute)。 对于生产级模型部署，使用[Azure Kubernetes 服务群集](how-to-deploy-azure-kubernetes-service.md)。
+对于生产级模型训练，请使用具有多节点缩放功能的 [Azure 机器学习计算群集](how-to-set-up-training-targets.md#amlcompute)。 对于生产级模型部署，请使用 [Azure Kubernetes 服务群集](how-to-deploy-azure-kubernetes-service.md)。
 
-## <a name="why-use-a-compute-instance"></a>为什么要使用计算实例？
+## <a name="why-use-a-compute-instance"></a>为何使用计算实例？
 
 计算实例是完全托管式基于云的工作站，已针对机器学习开发环境进行优化。 它提供以下优势：
 
-|主要优点|说明|
+|主要优点|描述|
 |----|----|
-|工作效率|您可以使用集成笔记本和 Azure 机器学习 studio 中的以下工具生成和部署模型：<br/>-  Jupyter<br/>-  JupyterLab<br/>-RStudio （预览版）<br/>计算实例与 Azure 机器学习工作区和工作室完全集成。 你可以与工作区中的其他数据科学家共享笔记本和数据。 你还可以使用[SSH](how-to-set-up-vs-code-remote.md)设置 VS Code 远程开发 |
-|无需自行管理且安全|减少安全保护工作，增强企业的安全要求合规性。 计算实例提供可靠的管理策略和安全网络配置，例如：<br/><br/>- 通过资源管理器模板或 Azure 机器学习 SDK 自动预配<br/>- [基于角色的访问控制 (RBAC)](/azure/role-based-access-control/overview)<br/>- [虚拟网络支持](how-to-enable-virtual-network.md#compute-instance)<br/>- 用于启用/禁用 SSH 访问的 SSH 策略<br/>已启用 TLS 1。2 |
-|预 &nbsp; 配置 &nbsp; ML|使用预配置的最新 ML 包、深度学习框架和 GPU 驱动程序完成设置任务，可节省时间。|
+|工作效率|可以在 Azure 机器学习工作室中使用集成的笔记本及以下工具来构建和部署模型：<br/>-  Jupyter<br/>-  JupyterLab<br/>-  RStudio（预览版）<br/>计算实例与 Azure 机器学习工作区和工作室完全集成。 你可以与工作区中的其他数据科学家共享笔记本和数据。 你还可以使用 [SSH](how-to-set-up-vs-code-remote.md) 设置 VS Code 远程开发 |
+|无需自行管理且安全|减少安全保护工作，增强企业的安全要求合规性。 计算实例提供可靠的管理策略和安全网络配置，例如：<br/><br/>- 通过资源管理器模板或 Azure 机器学习 SDK 自动预配<br/>- [基于角色的访问控制 (RBAC)](/azure/role-based-access-control/overview)<br/>- [虚拟网络支持](how-to-enable-virtual-network.md#compute-instance)<br/>- 用于启用/禁用 SSH 访问的 SSH 策略<br/>已启用 TLS 1.2 |
+|已针对 ML 进行了预配置|使用预配置的最新 ML 包、深度学习框架和 GPU 驱动程序完成设置任务，可节省时间。|
 |完全可自定义|支持多种 Azure VM 类型，包括 GPU 和持久性低级自定义，例如，安装相应的包和驱动程序可以轻而易举地实现高级方案。 |
 
 ## <a name="tools-and-environments"></a><a name="contents"></a>工具和环境
@@ -60,7 +60,7 @@ Azure 机器学习计算实例是一种基于云的托管数据科学家工作�
 
 |**R** 工具和环境|详细信息|
 |----|:----:|
-|RStudio 服务器开源版（预览版）||
+|RStudio Server 开源版（预览版）||
 |R 内核||
 |适用于 R 的 Azure 机器学习 SDK|[azuremlsdk](https://azure.github.io/azureml-sdk-for-r/reference/index.html)</br>SDK 示例|
 
@@ -102,9 +102,9 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 
 还可以将最新 Azure 机器学习示例克隆到工作区文件共享中“用户文件”目录下的文件夹内。
 
-与写入计算实例本地磁盘本身相比，在网络驱动器上写入小文件可能会更慢。  若要写入许多小文件，请尝试直接在计算实例上使用某个目录，例如 `/tmp` 目录。 请注意，将无法从其他计算实例访问这些文件。 
+与写入到计算实例本地磁盘本身相比，在网络驱动器上写入小文件可能速度更慢。  若要写入许多小文件，请尝试直接在计算实例上使用某个目录，例如 `/tmp` 目录。 请注意，无法从其他计算实例访问这些文件。 
 
-你可以使用 `/tmp` 计算实例上的目录作为临时数据。  但是，不要在计算实例的 OS 磁盘上写入大型文件。  改用[数据存储](concept-azure-machine-learning-architecture.md#datasets-and-datastores)。 如果已安装 JupyterLab git 扩展，还会导致计算实例性能下降。
+你可以使用计算实例上的 `/tmp` 目录来保存临时数据。  但是，不要在计算实例的 OS 磁盘上写入大型数据文件。  请改用[数据存储](concept-azure-machine-learning-architecture.md#datasets-and-datastores)。 如果已安装 JupyterLab git 扩展，它也会导致计算实例性能下降。
 
 ## <a name="managing-a-compute-instance"></a>管理计算实例
 
@@ -115,12 +115,12 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 可执行以下操作：
 
 * [创建计算实例](#create)。 
-* 刷新 "计算实例" 选项卡。
-* 启动、停止和重启计算实例。  每次运行时都要支付实例的费用。 如果不使用计算实例来降低成本，请停止计算实例。 停止计算实例将释放它。 然后在需要时重启。 
+* 刷新“计算实例”选项卡。
+* 启动、停止和重启计算实例。  只要实例在运行，你就需要为其付费。 不使用计算实例时，请将其停止，以便降低成本。 停止计算实例会将其解除分配。 然后在需要时重启。 
 * 删除计算实例。
 * 将计算实例的列表筛选为你创建的实例。  这些是你可以访问的计算实例。
 
-对于你可以访问的工作区中的每个计算实例，你可以：
+对于工作区中你有权访问的每个计算实例，你可以：
 
 * 访问计算实例上的 Jupyter、JupyterLab、RStudio
 * 通过 SSH 连接到计算实例。 默认已禁用 SSH 访问，但可以在创建计算实例时启用。 SSH 访问是通过公钥/私钥机制实现的。 选项卡中将提供 IP 地址、用户名和端口号等 SSH 连接详细信息。
@@ -138,27 +138,27 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 
 ### <a name="create-a-compute-instance"></a><a name="create"></a>创建计算实例
 
-在 Azure 机器学习 studio 的工作区中，当你准备好运行某个笔记本时，请从 "**计算**" 部分或在 "**笔记本**" 部分创建新的计算实例。
+在 Azure 机器学习工作室的工作区中，当你准备好运行某个笔记本时，请从“计算”部分或“笔记本”部分创建新的计算实例。
 
-:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="创建新的计算实例":::
+:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="新建计算实例":::
 
 
 |字段  |说明  |
 |---------|---------|
-|计算名称     |  <li>名称是必需的，长度必须介于3到24个字符之间。</li><li>有效字符为大写字母、小写字母、数字和 **-** 字符。</li><li>名称必须以字母开头</li><li>名称需要在 Azure 区域内的所有现有计算中是唯一的。 如果你选择的名称不是唯一的，你将看到警报</li><li>如果 **-** 使用了字符，则在名称后面至少需要跟一个字母</li>     |
-|虚拟机类型 |  选择 "CPU" 或 "GPU"。 此类型在创建后无法更改     |
-|虚拟机大小     |  受支持的虚拟机大小在你的区域中可能受到限制。 查看[可用性列表](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
-|启用/禁用 SSH 访问     |   默认情况下禁用 SSH 访问。  SSH 访问不能为。 在创建后更改。 如果打算交互式调试[VS Code 远程](how-to-set-up-vs-code-remote.md)，请确保启用访问   |
-|高级设置     |  可选。 配置虚拟网络 指定**资源组**、**虚拟网络**和**子网**，以在 Azure 虚拟网络（vnet）中创建计算实例。 有关详细信息，请参阅 vnet 的这些[网络要求](how-to-enable-virtual-network.md#compute-instance)。        |
+|计算名称     |  <li>名称是必须提供的，且长度必须介于 3 到 24 个字符之间。</li><li>有效字符为大小写字母、数字和 **-** 字符。</li><li>名称必须以字母开头</li><li>名称必须在 Azure 区域内的全部现有计算中都是唯一的。 如果选择的名称不是唯一的，则会显示警报</li><li>如果在名称中使用了 **-** 字符，在此字符之后必须至少跟有一个字母</li>     |
+|虚拟机类型 |  选择“CPU”或“GPU”。 此类型在创建后无法更改     |
+|虚拟机大小     |  在你的区域中，支持的虚拟机大小可能会受到限制。 请查看[可用性列表](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
+|启用/禁用 SSH 访问     |   默认情况下会禁用 SSH 访问。  SSH 访问 在创建后无法更改。 如果计划使用 [VS Code Remote](how-to-set-up-vs-code-remote.md) 以交互模式进行调试，请确保启用访问权限   |
+|高级设置     |  可选。 配置虚拟网络 指定**资源组**、**虚拟网络**和**子网**，以在 Azure 虚拟网络 (vnet) 中创建计算实例。 有关详细信息，请参阅 vnet 的这些[网络要求](how-to-enable-virtual-network.md#compute-instance)。        |
 
 也可以通过以下方式创建实例
-* 直接从[集成笔记本体验](tutorial-1st-experiment-sdk-setup.md#azure)
+* 直接从[集成式笔记本体验](tutorial-1st-experiment-sdk-setup.md#azure)
 * 在 Azure 门户中配置
-* 通过 Azure 资源管理器模板
-* 与[AZURE 机器学习 SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb)
-* [用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md#computeinstance)
+* 从 Azure 资源管理器模板。 有关示例模板，请参阅[创建 Azure 机器学习计算实例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)。
+* 使用 [Azure 机器学习 SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb)
+* 从 [Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md#computeinstance)
 
-每个区域每个虚拟机系列配额的专用核心数和区域总配额，适用于创建计算实例。 与 Azure 机器学习定型计算群集配额统一并共享。 停止计算实例不会释放配额，以确保能够重启计算实例。
+应用于计算实例创建过程的每区域每 VM 系列专用核心数配额和区域总配额 与 Azure 机器学习训练计算群集配额统一并共享。 停止计算实例不会释放配额，因此无法确保你能够重启计算实例。
 
 ## <a name="compute-target"></a>计算目标
 
@@ -166,15 +166,15 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 
 计算实例：
 * 具有作业队列。
-* 安全地运行虚拟网络环境中的作业，而无需企业打开 SSH 端口。 作业在容器化环境中执行，并在 Docker 容器中打包模型依赖项。
-* 可以并行运行多个小作业（预览）。  每个核心的两个作业可以并行运行，而剩余的作业将排队。
+* 在虚拟网络环境中安全地运行作业，无需企业打开 SSH 端口。 作业在容器化环境中执行，并将模型依赖项打包到 Docker 容器中。
+* 可以并行运行多个小型作业（预览版）。  每个核心可以并行运行两个作业，而剩余的作业将排队。
 
-你可以使用计算实例作为测试/调试方案的本地推断部署目标。
+可以使用计算实例作为测试/调试方案的本地推理部署目标。
 
 > [!NOTE]
-> 计算实例不支持分布式培训作业。  对于分布式培训，请使用（计算群集] （"操作方法-amlcompute"）。
+> 计算实例不支持分布式训练作业。  对于分布式训练，请使用[计算群集](how-to-set-up-training-targets.md#amlcompute)。
 
-有关更多详细信息，请参阅笔记本[computeinstance](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb)。 此笔记本还可在 "*培训/computeinstance*" 的 "studio**示例**" 文件夹中找到。
+有关更多详细信息，请参阅笔记本 [train-on-computeinstance](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb)。 此笔记本也可在“training/train-on-computeinstance” 中的工作室 **Samples** 文件夹中找到。
 
 ## <a name="what-happened-to-notebook-vm"></a><a name="notebookvm"></a>Notebook VM 发生了什么情况？
 

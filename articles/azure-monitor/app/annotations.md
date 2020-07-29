@@ -3,12 +3,12 @@ title: Application Insights 的版本批注 | Microsoft 文档
 description: 为 Application Insights 中的指标资源管理器图表添加部署或版本标记。
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: 8f6ffed8ae2039ec36ec8bd86518e6b359da65ec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8e9e0cb49343524e8a45831566cf802b1c8c5d9b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093028"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320657"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>为 Application Insights 中的指标图表添加批注
 
@@ -34,7 +34,7 @@ ms.locfileid: "87093028"
 
 为每个 Azure Pipelines 发布模板单独创建一个 API 密钥。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)并打开负责监视应用程序的 Application Insights 资源。 或者，如果你没有，请[创建一个新的 Application Insights 资源](../../azure-monitor/app/app-insights-overview.md)。
+1. 登录到 [Azure 门户](https://portal.azure.com)并打开负责监视应用程序的 Application Insights 资源。 或者，如果你没有，请[创建一个新的 Application Insights 资源](./app-insights-overview.md)。
    
 1. 打开“API 访问”**** 选项卡并复制 **Application Insights ID**。
    
@@ -115,5 +115,6 @@ ms.locfileid: "87093028"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [创建工作项](../../azure-monitor/app/diagnostic-search.md#create-work-item)
-* [使用 PowerShell 自动化](../../azure-monitor/app/powershell.md)
+* [创建工作项](./diagnostic-search.md#create-work-item)
+* [使用 PowerShell 自动化](./powershell.md)
+

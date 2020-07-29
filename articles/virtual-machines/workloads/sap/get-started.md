@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 03d0367b3794069908b31ee7af1250fd70f1bdf7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7319adfc88eedb007677a78693ab0b2e514e646f
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525205"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171655"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -104,6 +104,7 @@ Azure for SAP HANA 的独特之处在于，它是一款能让 Azure 脱颖而出
 
 ## <a name="change-log"></a>更改日志
 
+- 07/23/2020：[通过 Azure 预订](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)添加了 "保存到 SAP HANA 大型实例" 一文，其中介绍了在购买 SAP HANA 大型实例预约之前需要了解的内容以及如何进行购买
 - 07/16/2020：介绍如何使用 Azure PowerShell 在[部署指南](deployment-guide.md)中安装适用于 SAP 的新 VM 扩展
 - 7/04/2020：发布[适用于 SAP 解决方案的 Azure monitor （预览版）](./azure-monitor-overview.md)
 - 07/01/2020：根据文档[SAP HANA azure 虚拟机存储配置](./hana-vm-operations-storage.md)中的 azure 高级存储突发功能，建议更昂贵的存储配置 

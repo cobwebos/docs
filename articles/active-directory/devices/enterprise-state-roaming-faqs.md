@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ad76835b0c72b691e1ef8810f2c58dedb8f597d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35669a7d80907e2335c68b1da9010f5879aa6c7c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78672379"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87274079"
 ---
 # <a name="settings-and-data-roaming-faq"></a>设置和数据漫游常见问题
 
@@ -23,20 +24,20 @@ ms.locfileid: "78672379"
 
 ## <a name="what-data-roams"></a>什么样的数据可以漫游？
 
-**Windows 设置**：内置于 Windows 操作系统的电脑设置。 通常，这些是对电脑进行个性化的设置，包括以下三大类：
+**Windows 设置**：内置于 windows 操作系统中的电脑设置。 通常，这些是对电脑进行个性化的设置，包括以下三大类：
 
-* 主题**，包括桌面主题和任务栏设置等功能。
-* Internet Explorer 设置**，包括最近打开的选项卡和收藏夹。
+* 主题，包括桌面主题和任务栏设置等功能。
+* Internet Explorer 设置，包括最近打开的选项卡和收藏夹。
 * Microsoft Edge 浏览器设置，如收藏夹和阅读列表**。
-* 密码**，包括 Internet 密码、Wi-fi 配置文件等。
-* *语言首选项*，其中包括键盘布局、系统语言、日期和时间等设置。
-* 轻松访问功能**，如高对比度主题、讲述人和放大镜。
-* *其他 Windows 设置*，例如鼠标设置。
+* *密码*，包括 Internet 密码、wi-fi 配置文件等。
+* 语言首选项，包括键盘布局、系统语言、日期和时间等的设置。
+* 轻松访问功能，如高对比度主题、讲述人和放大镜。
+* 其他 Windows 设置，如鼠标设置。
 
 > [!NOTE]
 > 本文适用于在7月2015中通过 Windows 10 启动的 Microsoft Edge 旧版 HTML 浏览器。 本文不适用于2020年1月15日发布的新的基于 Chromium 的 Microsoft Edge 浏览器。 有关新 Microsoft Edge 的同步行为的详细信息，请参阅[Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)文章。
 
-**应用程序数据**：通用 Windows 应用可将设置数据写入漫游文件夹，并且会自动同步写入到此文件夹中的任何数据。 各应用开发人员可根据需要设计应用，以利用此功能。 有关如何开发使用漫游的通用 Windows 应用的详细信息，请参阅[appdata 存储 API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx)和[Windows 8 appdata 漫游开发人员博客](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx)。
+**应用程序数据**：通用 Windows 应用可将设置数据写入漫游文件夹，并且会自动同步写入到此文件夹中的任何数据。 各应用开发人员可根据需要设计应用，以利用此功能。 有关如何开发使用漫游的通用 Windows 应用的详细信息，请参阅[appdata 存储 API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx)和[Windows 8 appdata 漫游开发人员博客](https://blogs.windows.com/windowsdeveloper/2016/05/04/roaming-app-data-and-the-user-experience/)。
 
 ## <a name="what-account-is-used-for-settings-sync"></a>哪些帐户可用于设置同步？
 

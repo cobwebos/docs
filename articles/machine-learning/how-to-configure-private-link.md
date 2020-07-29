@@ -5,17 +5,18 @@ description: 使用 Azure 专用链接从虚拟网络安全地访问 Azure 机�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/14/2020
-ms.openlocfilehash: 4e76a7adf7435cc1bdee3bb4e64f8cc699a16724
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4a723c76f04c85bffd7ae4d1d1e8bf5b65ad4619
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031212"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326488"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>为 Azure 机器学习工作区配置 Azure 专用链接（预览）
 
@@ -30,6 +31,8 @@ ms.locfileid: "87031212"
 > Azure 专用链接不影响 Azure 控制平面（管理操作），例如删除工作区或管理计算资源。 例如，创建、更新或删除计算目标。 这些操作像往常一样通过公共 Internet 执行。
 >
 > 在已启用专用链接的工作区中，不支持 Azure 机器学习计算实例预览。
+>
+> 如果使用的是 Mozilla Firefox，则在尝试访问工作区的专用终结点时可能会遇到问题。 此问题可能与 Mozilla 中的 HTTPS 上的 DNS 有关。 建议使用 Google Chrome 的 Microsoft Edge 作为解决方法。
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>创建使用专用终结点的工作区
 
@@ -63,7 +66,7 @@ ms.locfileid: "87031212"
 ### <a name="deploy-the-template-using-the-azure-portal"></a>使用 Azure 门户部署模板
 
 1. 遵循[从自定义模板部署资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)中的步骤。 显示“编辑模板”屏幕后，请粘贴本文档末尾提供的模板之一。____
-1. 选择“保存”以使用该模板。____ 提供以下信息并同意列出的条款和条件：
+1. 选择“保存”以使用该模板。 提供以下信息并同意列出的条款和条件：
 
    * 订阅：选择用于这些资源的 Azure 订阅。
    * 资源组：选择或创建一个用于包含服务的资源组。
