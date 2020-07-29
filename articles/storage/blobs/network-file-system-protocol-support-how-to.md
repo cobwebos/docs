@@ -9,12 +9,12 @@ ms.date: 07/21/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 8f4ef046221ae50d2b05525d6cea2d268282551c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d3907967572b22e7a70316080b08a4368a9805ce
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096624"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372903"
 ---
 # <a name="mount-blob-storage-on-linux-using-the-network-file-system-nfs-30-protocol-preview"></a>使用网络文件系统（NFS）3.0 协议（预览版）在 Linux 上装载 Blob 存储
 
@@ -113,7 +113,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 |[AzCopy](../common/storage-use-azcopy-blobs.md#create-a-container)|[Java](data-lake-storage-directory-file-acl-java.md#create-a-container)|
 |[PowerShell](data-lake-storage-directory-file-acl-powershell.md#create-a-container)|[Python](data-lake-storage-directory-file-acl-python.md#create-a-container)|
 |[Azure CLI](data-lake-storage-directory-file-acl-cli.md#create-a-container)|[JavaScript](data-lake-storage-directory-file-acl-javascript.md)|
-||[REST](https://docs.microsoft.com/rest/api/storageservices/create-container)|
+|[Azure 门户](https://portal.azure.com)|[REST](https://docs.microsoft.com/rest/api/storageservices/create-container)|
 
 ## <a name="step-7-mount-the-container"></a>步骤7：装载容器
 
@@ -139,7 +139,6 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 |---|---|
 |`Access denied by server while mounting`|确保你的客户端在受支持的子网中运行。 请参阅[支持的网络位置](network-file-system-protocol-support.md#supported-network-connections)。|
 |`No such file or directory`| 确保在验证该功能已注册之后，确定要装载的容器已创建。 请参阅[步骤2：验证是否已注册该功能](#step-2-verify-that-the-feature-is-registered)。另外，请确保将 mount 命令和它的参数直接输入到终端中。 如果将此命令的任何部分复制并粘贴到另一个应用程序的终端中，则粘贴的信息中的隐藏字符可能会导致出现此错误。|
-|使用非 NFS 3.0 工具上传的文件在目录中不可见。 | 取消装入容器，然后再次装载容器。 |
 
 ## <a name="see-also"></a>另请参阅
 

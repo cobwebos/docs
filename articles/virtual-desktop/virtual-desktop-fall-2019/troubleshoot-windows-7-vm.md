@@ -1,6 +1,6 @@
 ---
-title: Windows 7 虚拟机 Windows 虚拟桌面-Azure
-description: 如何解决 Windows 虚拟桌面环境中 Windows 7 虚拟机（Vm）的问题。
+title: Windows 7 虚拟机 Windows 虚拟机（经典）-Azure
+description: 如何解决 Windows 虚拟桌面（经典）环境中 Windows 7 虚拟机（Vm）的问题。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 74f2e22bcc9d75070e4f7af304f92d9c5640ca7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7f433668c34fb5edc35889adcd604023202ada4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82615274"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286336"
 ---
-# <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop"></a>排查 Windows 虚拟桌面中的 Windows 7 虚拟机问题
+# <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop-classic"></a>Windows 虚拟桌面中的 Windows 7 虚拟机疑难解答（经典）
 
 >[!IMPORTANT]
->本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。
+>此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。
 
 本文介绍配置 Windows 虚拟桌面会话主机虚拟机（Vm）时遇到的问题。
 

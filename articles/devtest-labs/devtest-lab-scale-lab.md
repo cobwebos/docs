@@ -3,12 +3,12 @@ title: Azure 开发测试实验室中自己的实验室的缩放配额和限制 
 description: 本文介绍如何在 Azure 开发测试实验室中缩放实验室。 查看使用量配额和限制，并请求增加。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 9c999760a649d4df4b34221633491b8ece784f52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dacc699a6f4e7663d0f314acfc2212bd69d46d18
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477085"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287312"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>开发测试实验室中的缩放配额和限制
 在开发测试实验室中工作时，可能会注意到，某些 Azure 资源存在某些默认的限制，这可能会影响开发测试实验室服务。 这些限制称为“配额”****。
@@ -20,12 +20,12 @@ ms.locfileid: "85477085"
 
 例如，每个订阅的默认配额为 20 个核心。 因此，如果要在实验室中创建 VM，每个 VM 四个核心，则只能创建五个 VM。
 
-[Azure 订阅和服务限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)列出了某些最常用于 Azure 资源的配额。 最常用于实验室且带配额的资源包括：VM 核心、公共 IP 地址、网络接口、托管磁盘、RBAC 角色分配，以及 ExpressRoute 线路。
+[Azure 订阅和服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md)列出了某些最常用于 Azure 资源的配额。 最常用于实验室且带配额的资源包括：VM 核心、公共 IP 地址、网络接口、托管磁盘、RBAC 角色分配，以及 ExpressRoute 线路。
 
 ## <a name="view-your-usage-and-quotas"></a>查看使用情况和配额
 以下步骤演示了如何查看订阅中特定 Azure 资源的当前配额，以及如何查看每个配额已使用的百分比。
 
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 选择“更多服务”****，并从列表中选择“计费”****。
 1. 在“计费”边栏选项卡中，选择一个订阅。
 4. 选择 "**使用情况 + 配额**"。
@@ -37,7 +37,7 @@ ms.locfileid: "85477085"
    ![配额和使用情况](./media/devtest-lab-scale-lab/devtestlab-view-quotas-new.png)
 
 ## <a name="requesting-more-resources-in-your-subscription"></a>请求在订阅中提供更多资源
-如果达到配额限制，可以将订阅中资源的默认限制提高到最大限制，详见 [Azure 订阅和服务限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
+如果达到配额限制，可以将订阅中资源的默认限制提高到最大限制，详见 [Azure 订阅和服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
 以下步骤演示如何通过 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)请求提高配额。
 

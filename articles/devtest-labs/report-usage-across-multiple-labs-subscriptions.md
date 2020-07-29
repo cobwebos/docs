@@ -3,16 +3,16 @@ title: 跨多个实验室和订阅的 Azure 开发测试实验室使用情况
 description: 了解如何跨多个实验室和订阅报告 Azure 开发测试实验室的使用情况。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8650244df4c8eb08d4ccc87b1e23fe1e3d047c54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d2663113e929145308f5a5712b968f3551668c2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483425"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287270"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>跨多个实验室和订阅报告 Azure 开发测试实验室的使用情况
 
-大多数大型组织希望通过在使用中可视化趋势和离群值，来跟踪资源使用情况，以便更有效地处理这些资源。 根据资源使用情况，实验室所有者或经理可自定义实验室以[提高资源使用和成本](https://docs.microsoft.com/azure/billing/billing-getting-started)。 在 Azure 开发测试实验室中，可以下载每个实验室的资源使用情况，以便更深入地了解使用模式。 这些使用模式可以帮助查明更改以提高效率。 大多数企业需要单独的实验室使用情况和跨[多个实验室和订阅](https://docs.microsoft.com/azure/architecture/cloud-adoption/decision-guides/subscriptions/)的总体使用情况。 
+大多数大型组织希望通过在使用中可视化趋势和离群值，来跟踪资源使用情况，以便更有效地处理这些资源。 根据资源使用情况，实验室所有者或经理可自定义实验室以[提高资源使用和成本](../cost-management-billing/manage/getting-started.md)。 在 Azure 开发测试实验室中，可以下载每个实验室的资源使用情况，以便更深入地了解使用模式。 这些使用模式可以帮助查明更改以提高效率。 大多数企业需要单独的实验室使用情况和跨[多个实验室和订阅](/azure/architecture/cloud-adoption/decision-guides/subscriptions/)的总体使用情况。 
 
 本文介绍如何跨多个实验室和订阅处理资源使用情况信息。
 
@@ -24,8 +24,8 @@ ms.locfileid: "85483425"
 
 必须先设置 Azure 存储帐户，以允许存储包含使用情况数据的不同文件，然后才能导出开发测试实验室的资源使用情况。 可以通过两种常见方法来执行数据导出：
 
-* [开发测试实验室 REST API](https://docs.microsoft.com/rest/api/dtl/labs/exportresourceusage) 
-* PowerShell Az [AzResourceAction 模块调用](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2)，其中包含操作 `exportResourceUsage` 、实验室资源 ID 和所需的参数。 
+* [开发测试实验室 REST API](/rest/api/dtl/labs/exportresourceusage) 
+* PowerShell Az [AzResourceAction 模块调用](/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2)，其中包含操作 `exportResourceUsage` 、实验室资源 ID 和所需的参数。 
 
     [导出或删除个人数据](personal-data-delete-export.md)一文包含一个示例 PowerShell 脚本，其中包含有关导出的数据的详细信息。 
 
@@ -48,8 +48,8 @@ ms.locfileid: "85483425"
 
 若要为多个实验室导出使用情况信息，请考虑使用 
 
-* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/)，可通过多种语言（包括 PowerShell）或 
-* [Azure 自动化 runbook](https://docs.microsoft.com/azure/automation/)，使用 PowerShell、Python 或自定义图形设计器来编写导出代码。
+* [Azure Functions](../azure-functions/index.yml)，可通过多种语言（包括 PowerShell）或 
+* [Azure 自动化 runbook](../automation/index.yml)，使用 PowerShell、Python 或自定义图形设计器来编写导出代码。
 
 使用这些技术，可以在特定的日期和时间对所有实验室执行单个实验室导出。 
 
@@ -69,7 +69,7 @@ Azure 函数应将数据推送到长期存储。 导出多个实验室的数据�
 
 ## <a name="visualizing-data-and-gathering-insights"></a>可视化数据和收集见解
 
-使用所选的数据可视化工具连接到长期存储，以显示使用情况数据并收集见解以验证使用效率。 例如，可以使用[Power BI](https://docs.microsoft.com/power-bi/power-bi-overview)来组织和显示使用情况数据。 
+使用所选的数据可视化工具连接到长期存储，以显示使用情况数据并收集见解以验证使用效率。 例如，可以使用[Power BI](/power-bi/power-bi-overview)来组织和显示使用情况数据。 
 
 可以使用[Azure 数据工厂](https://azure.microsoft.com/services/data-factory/)在单个位置接口中创建、链接和管理资源。 如果需要更多控制，则可以在单个资源组中创建单个资源，并独立于数据工厂服务进行管理。  
 

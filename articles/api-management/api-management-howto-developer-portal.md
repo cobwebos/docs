@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/15/2020
+ms.date: 07/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 7d479f18e8764a69cdc81f99d723534e4895b0e4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f5f4df58a4b147ccb73c7d69f5307a8328803442
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025075"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373141"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理开发人员门户概述
 
@@ -105,7 +105,19 @@ API 管理内容包括 API、操作、产品和订阅等实体。
 
 [GitHub 存储库的 Wiki 部分][2]介绍了该 API。 可以使用该 API 在环境之间自动迁移门户内容（例如，从测试环境迁移到生产环境）。 可以在 GitHub 上的[此文档](https://aka.ms/apimdocs/migrateportal)中详细了解此过程。
 
+### <a name="how-do-i-move-from-the-managed-to-the-self-hosted-version"></a>如何实现从托管版本迁移到自承载版本？
+
+请参阅[GitHub 上的开发人员门户存储库的 Wiki 部分][2]中的详细文章。
+
+### <a name="can-i-have-multiple-developer-portals-in-one-api-management-service"></a>能否在一个 API 管理服务中有多个开发人员门户？
+
+可以有一个托管门户和多个自承载门户。 所有门户的内容都存储在同一个 API 管理服务中，因此它们是相同的。 如果你想要区分门户的外观和功能，你可以将它们自行托管为你自己的自定义小组件，以便在运行时上动态自定义页面（例如基于 URL）。
+
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>门户是否支持 Azure 资源管理器模板，和/或是否与 API 管理 DevOps 资源工具包兼容？
+
+否。
+
+### <a name="is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management"></a>门户的内容是否随 API 管理中的备份/还原功能一起保存？
 
 否。
 

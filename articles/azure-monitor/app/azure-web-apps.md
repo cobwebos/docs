@@ -3,12 +3,13 @@ title: 监视 Azure 应用服务性能 | Microsoft Docs
 description: Azure 应用服务的应用程序性能监视。 对加载和响应时间、依赖项信息绘制图表，并针对性能设置警报。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 042dd67c0e1e5a0ba2f81d5678e191dbfdd60a43
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f96d994f9f88a0debf110de2ca4f6da60e8ea3bc
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067893"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373158"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
@@ -60,10 +61,10 @@ ms.locfileid: "87067893"
         
 | 数据 | .NET 基本集合 | .NET 建议集合 |
 | --- | --- | --- |
-| 添加 CPU、内存和 I/O 使用情况趋势 |是 |是 |
-| 收集使用情况趋势，并启用从可用性结果到事务的关联 | 是 |是 |
-| 收集未经主机进程处理的异常 | 是 |是 |
-| 提高使用采样时，负载下的 APM 指标准确性 | 是 |是 |
+| 添加 CPU、内存和 I/O 使用情况趋势 |是 |“是” |
+| 收集使用情况趋势，并启用从可用性结果到事务的关联 | 是 |“是” |
+| 收集未经主机进程处理的异常 | 是 |“是” |
+| 提高使用采样时，负载下的 APM 指标准确性 | 是 |“是” |
 | 跨请求/依赖项边界关联微服务 | 否（仅单实例 APM 功能） |是 |
 
 3. 若要配置采样等设置（以前可以通过 applicationinsights.config 文件进行控制），现在可以通过应用程序设置使用相应的前缀来与这些设置交互。 
@@ -405,10 +406,11 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 使用无代码监视时，只需要连接字符串。 但是，我们仍然建议设置检测密钥，以便在执行手动检测时保持与旧版 SDK 的后向兼容性。
 
 ## <a name="next-steps"></a>后续步骤
-* [在实时应用上运行探查器](../app/profiler.md)。
+* [在实时应用上运行探查器](./profiler.md)。
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) - 使用 Application Insights 监视 Azure Functions
 * [将 Azure 诊断配置为](../platform/diagnostics-extension-to-application-insights.md)向 Application Insights 发送数据。
 * [监视服务运行状况指标](../platform/data-platform.md)以确保服务可用且做出快速响应。
 * [接收警报通知](../platform/alerts-overview.md) 。
 * 若要从访问网页的浏览器获取客户端遥测数据，请使用[适用于 JavaScript 应用和网页的 Application Insights](javascript.md)。
 * [设置可用性 Web 测试](monitor-web-app-availability.md)，以便在站点关闭时发出警报。
+

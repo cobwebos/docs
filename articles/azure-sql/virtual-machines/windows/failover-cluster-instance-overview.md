@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: a40c5512da40ede84251ec16345a3957c391bb71
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 00c9482eab74003f6a667d52440d4cb6dd21fcfc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965477"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287359"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>在 Azure 虚拟机上具有 SQL Server 的故障转移群集实例
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -48,10 +48,10 @@ Azure Vm 上的 SQL Server 提供各种选项作为部署 SQL Server 故障转�
 
 ||[Azure 共享磁盘](../../../virtual-machines/windows/disks-shared.md)|[高级文件共享](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[存储空间直通 (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
-|**最低操作系统版本**| Windows Server 2016|Windows Server 2012|Windows Server 2016|
-|**最低 SQL Server 版本**|SQL Server 2019|SQL Server 2012|SQL Server 2016|
+|**最低操作系统版本**| 全部 |Windows Server 2012|Windows Server 2016|
+|**最低 SQL Server 版本**|全部|SQL Server 2012|SQL Server 2016|
 |**支持的 VM 可用性** |具有邻近位置组的可用性集 |可用性集和可用性区域|可用性集 |
-|**支持 FileStream**|否|否|是 |
+|**支持 FileStream**|是|否|是 |
 |**Azure blob 缓存**|否|否|是|
 
 本部分的其余部分列出了可用于 Azure Vm 上的 SQL Server 的每个存储选项的优点和限制。 
@@ -60,18 +60,18 @@ Azure Vm 上的 SQL Server 提供各种选项作为部署 SQL Server 故障转�
 
 [Azure 共享磁盘](../../../virtual-machines/windows/disks-shared.md)是[azure 托管磁盘](../../../virtual-machines/windows/managed-disks-overview.md)的一项功能。 Windows Server 故障转移群集支持将 Azure 共享磁盘与故障转移群集实例一起使用。 
 
-**支持的操作系统**： Windows Server 2019   
-**支持的 SQL 版本**： SQL Server 2019   
+**支持的操作系统**：全部   
+**支持的 SQL 版本**：全部     
 
 **优势**： 
 - 适用于希望迁移到 Azure，同时保持高可用性和灾难恢复（HADR）体系结构的应用程序。 
 - 可以根据 SCSI 永久保留（SCSI PR）支持将群集的应用程序迁移到 Azure。 
 - 支持共享 Azure 高级 SSD 适用于所有版本的 SQL Server 并共享 Azure Ultra 磁盘存储 SQL Server 2019。 
 - 可以使用单个共享磁盘或条带化多个共享磁盘来创建共享的存储池。 
+- 支持 Filestream。
 
 
 **限制**： 
-- 仅适用于预览版中的 SQL Server 2019 和 Windows Server 2019。 
 - 虚拟机必须位于同一可用性集和邻近位置组中。
 - 不支持可用性区域。
 - 不支持高级 SSD 磁盘缓存。
@@ -159,14 +159,14 @@ Azure 虚拟机支持 Windows Server 2019 上的 MSDTC，其中存储在群集�
 在 Azure 虚拟机上，Windows Server 2016 或更早版本不支持 MSDTC，原因如下：
 
 - 无法将群集 MSDTC 资源配置为使用共享存储。 在 Windows Server 2016 上，如果创建 MSDTC 资源，即使存储可用，它也不会显示任何可用的共享存储。 Windows Server 2019 中已修复此问题。
-- 基本负载均衡器不处理 RPC 端口。
+- 基本负载均衡器不会处理 RPC 端口。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 查看[群集配置的最佳实践](hadr-cluster-best-practices.md)，然后可以[为 FCI 准备 SQL Server VM](failover-cluster-instance-prepare-vm.md)。 
 
-有关详情，请参阅： 
+有关详细信息，请参阅： 
 
 - [Windows 群集技术](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server 故障转移群集实例](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

@@ -3,12 +3,12 @@ title: 预览版 - 了解适用于 Kubernetes 的 Azure Policy
 description: 了解 Azure Policy 如何使用 Rego 和 Open Policy Agent 来管理在 Azure 或本地运行 Kubernetes 的群集。 这是预览功能。
 ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: a044ea33f1a7710c4bb97d30cf8f11d4de2838b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 461dd467ecda2764c6753ed6eeee0405f8420bbc
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373618"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373753"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>了解适用于 Kubernetes 群集的 Azure Policy（预览版）
 
@@ -373,7 +373,7 @@ kubectl get pods -n gatekeeper-system
 
 ## <a name="assign-a-built-in-policy-definition"></a>分配内置策略定义
 
-若要为 Kubernetes 群集分配策略定义，系统必须为你分配适当的基于角色的访问控制 (RBAC) 策略分配操作。 内置 RBAC 角色“资源策略参与者”和“所有者”可进行这些操作。 若要了解详细信息，请参阅 [Azure Policy 中的 RBAC 权限](../overview.md#rbac-permissions-in-azure-policy)。
+若要为 Kubernetes 群集分配策略定义，系统必须为你分配适当的基于角色的访问控制 (RBAC) 策略分配操作。 Azure 内置角色**资源策略参与者**和**所有者**具有这些操作。 若要了解详细信息，请参阅 [Azure Policy 中的 RBAC 权限](../overview.md#rbac-permissions-in-azure-policy)。
 
 通过以下步骤，使用 Azure 门户查找用于管理群集的内置策略定义：
 

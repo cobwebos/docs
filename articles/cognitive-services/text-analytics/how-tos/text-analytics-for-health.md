@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/28/2020
 ms.author: aahi
-ms.openlocfilehash: cbc950647dc2f7102f20766c22f434526ab66639
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dbd0699924268b38d69bc576a5886e8d31fa1208
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122257"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373464"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>如何：将文本分析用于运行状况（预览版）
 
@@ -23,7 +23,7 @@ ms.locfileid: "86122257"
 > 针对运行状况的文本分析是 "按原样" 和 "所有错误" 提供的预览功能。 因此，**不应在任何生产用途中实现或部署文本分析的运行状况（预览版）。** 针对运行状况的文本分析不是要用作医疗设备、临床支持、诊断工具或其他旨在用于诊断、硬化、缓解、治疗或防范疾病或其他情况的技术，Microsoft 不会授予使用此功能的任何许可或权利。 此功能不是专为实现或部署的，而是作为一种替代专业人员的医疗建议或医疗保健、诊断、治疗或医疗保健专业人员的临床判断，不应如此。 客户独自负责使用文本分析的健康状况。 Microsoft 不保证文本分析的运行状况或与功能连接的任何材料都足以满足任何医疗目的或满足任何人的健康或医疗要求。 
 
 
-Azure 文本分析 for Health 是一种容器化的服务，可从非结构化文本（如医生的说明、解雇摘要、临床文档和电子健康记录）中提取和标记相关的医疗信息。  
+针对运行状况的文本分析是一种容器化的服务，它从非结构化文本（如医生的说明、解雇摘要、临床文档和电子运行状况记录）提取和标记相关的医疗信息。  
 
 ## <a name="features"></a>功能
 
@@ -62,7 +62,7 @@ Azure 文本分析 for Health 是一种容器化的服务，可从非结构化�
 
 ---
 
-有关支持的实体的完整列表，请参阅医疗保健文本分析返回的[实体类别](../named-entity-types.md?tabs=health)。
+有关支持的实体的完整列表，请参阅由文本分析返回的[实体类别](../named-entity-types.md?tabs=health)。
 
 ## <a name="supported-languages"></a>支持的语言
 
@@ -80,8 +80,8 @@ Azure 文本分析 for Health 是一种容器化的服务，可从非结构化�
 
 可以通过多种方式来安装和运行容器。 
 
-1. 使用[Azure 门户](text-analytics-how-to-install-containers.md?tabs=healthcare)创建文本分析资源，并使用 Docker 获取容器。
-2. 使用以下 PowerShell 和[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)脚本来自动执行资源部署容器配置。
+- 使用[Azure 门户](text-analytics-how-to-install-containers.md?tabs=healthcare)创建文本分析资源，并使用 Docker 获取容器。
+- 使用以下 PowerShell 和[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)脚本来自动执行资源部署容器配置。
 
 ### <a name="install-the-container-using-azure-web-app-for-containers"></a>使用 Azure 用于容器的 Web 应用安装容器
 
@@ -223,7 +223,7 @@ docker-compose up
 
 
 ## <a name="example-api-request"></a>示例 API 请求
-容器提供了基于 REST 的查询预测终结点 API。
+该容器提供基于 REST 的查询预测终结点 API。
 
 使用下面的示例卷请求将查询提交到已部署的容器， `serverURL` 并将该变量替换为适当的值。
 

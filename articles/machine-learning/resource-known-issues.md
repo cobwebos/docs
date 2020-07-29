@@ -8,15 +8,15 @@ ms.author: jmartens
 ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: troubleshooting
-ms.custom: contperfq4
+ms.topic: conceptual
+ms.custom: troubleshooting, contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: 56acddda2cf5ae2ef2a94353ec11c3ddf6990e1c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8f58fcef1a35494053803d98b43ce97fed7205e0
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536107"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373685"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure 机器学习中的已知问题和故障排除
 
@@ -225,7 +225,7 @@ ms.locfileid: "86536107"
     1. 在 "**数据集监视器**" 选项卡上，选择 "试验" 链接以检查运行状态。  此链接位于表的最右侧。
     1. 如果运行已成功完成，请检查驱动程序日志以查看已生成的指标数，或者是否有任何警告消息。  单击试验后，在 "**输出 + 日志**" 选项卡中查找驱动程序日志。
 
-* 如果 SDK `backfill()` 函数不生成预期的输出，则可能是由于身份验证问题所致。  创建要传入此函数的计算时，请不要使用 `Run.get_context().experiment.workspace.compute_targets` 。  相反，请使用[ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) （如下所示）创建传递到该函数的计算 `backfill()` ： 
+* 如果 SDK `backfill()` 函数未生成预期的输出，则可能是由于身份验证问题。  创建要传入到此函数中的计算时，请勿使用 `Run.get_context().experiment.workspace.compute_targets`，  而应使用 [ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py)（例如以下代码）来创建要传入到该 `backfill()` 函数中的计算： 
 
   ```python
    auth = ServicePrincipalAuthentication(
@@ -283,7 +283,7 @@ time.sleep(600)
 
 ## <a name="automated-machine-learning"></a>自动化机器学习
 
-* **TensorFlow**：从 SDK 的版本1.5.0 版，自动机器学习默认情况下不安装 TensorFlow 模型。 若要安装 tensorflow 并将其与自动 ML 试验一起使用，请通过 CondaDependecies 安装 tensorflow = = 1.12.0。 
+* **TensorFlow**：从 SDK 1.5.0 版开始，自动化机器学习默认情况下不会安装 tensorflow 模型。 若要安装 tensorflow 并将其用于自动化 ML 试验，请通过 CondaDependecies 安装 tensorflow==1.12.0。 
  
    ```python
    from azureml.core.runconfig import RunConfiguration
@@ -368,6 +368,12 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 ```
 
 例如，如果尝试通过一个为实施远程执行操作而提交的机器学习管道创建或附加计算目标，会收到错误。
+
+## <a name="missing-user-interface-items-in-studio"></a>Studio 中缺少用户界面项
+
+可以使用 Azure 基于角色的访问控制来限制可使用 Azure 机器学习执行的操作。 这些限制可以防止用户界面项显示在 Azure 机器学习 studio 中。 例如，如果分配了无法创建计算实例的角色，则创建计算实例的选项将不会出现在 studio 中。
+
+有关详细信息，请参阅[管理用户和角色](how-to-assign-roles.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

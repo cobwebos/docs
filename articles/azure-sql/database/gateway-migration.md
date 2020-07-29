@@ -10,15 +10,15 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: e9bf1f06b1ec1f99da1ce653b4bc72f4638ba451
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 22bfab5b9f00a392054fa1aef6a93195180fd968
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084947"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373481"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>将 Azure SQL 数据库流量迁移到更新的网关
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Azure 基础结构改进后，Microsoft 会定期刷新硬件，以确保提供最佳的客户体验。 在接下来的几个月中，我们计划添加基于较新的硬件代构建的网关，将流量迁移到这些网关，并最终解除在某些区域中的旧硬件上构建网关。  
 
@@ -27,6 +27,19 @@ Azure 基础结构改进后，Microsoft 会定期刷新硬件，以确保提供�
 ## <a name="status-updates"></a>状态更新
 
 # <a name="in-progress"></a>[正在进行](#tab/in-progress-ip)
+### <a name="september-2020"></a>2020 年 9 月
+
+正在向以下区域添加新的 SQL 网关：
+
+- 北欧：13.74.104.113 
+- 西2：40.78.248.10 
+- 西欧：52.236.184.163 
+- 美国中南部：20.45.121.1、20.49.88。1 
+
+现有 SQL 网关将开始接受以下区域中的流量：
+- 日本东部：40.79.184.8、40.79.192。5
+
+这些 SQL 网关应在2020年9月1日开始接受客户流量。 
 
 ### <a name="august-2020"></a>2020年8月
 
@@ -38,22 +51,22 @@ Azure 基础结构改进后，Microsoft 会定期刷新硬件，以确保提供�
 
 这些 SQL 网关应在2020年8月10日开始接受客户流量。 
 
-# <a name="completed"></a>[完成](#tab/completed-ip)
+# <a name="completed"></a>[已完成](#tab/completed-ip)
 
 以下网关迁移完成： 
 
 ### <a name="october-2019"></a>2019 年 10 月
-- 巴西南部
+- Brazil South
 - 美国西部
 - 西欧
-- 美国东部
+- East US
 - 美国中部
 - 东南亚
 - 美国中南部
 - 北欧
 - 美国中北部
 - 日本西部
-- 日本东部
+- Japan East
 - 美国东部 2
 - 东亚
 

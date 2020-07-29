@@ -10,20 +10,20 @@ ms.custom: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 07/14/2020
-ms.openlocfilehash: 4a723c76f04c85bffd7ae4d1d1e8bf5b65ad4619
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 07/28/2020
+ms.openlocfilehash: 59a82b8d7037fb9f2ca03b99b9e797920644fbd6
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326488"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373719"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>为 Azure 机器学习工作区配置 Azure 专用链接（预览）
 
 本文档介绍如何将 Azure 专用链接与 Azure 机器学习工作区配合使用。 
 
 > [!IMPORTANT]
-> 将 Azure Private Link 与 Azure 机器学习工作区结合使用目前为公共预览版。 此功能仅在**美国东部**、**美国西部 2**和**美国中南部**区域提供。 此预览版在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 将 Azure Private Link 与 Azure 机器学习工作区结合使用目前为公共预览版。 此功能仅在**美国东部**和**美国西部 2**区域提供。 此预览版在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 使用 Azure 专用链接，可以通过专用终结点连接到工作区。 专用终结点是虚拟网络中的一组专用 IP 地址。 然后，你可以限制工作区访问权限，只允许通过专用 IP 地址访问你的工作区。 专用链接有助于降低数据外泄风险。 若要详细了解专用终结点，请参阅 [Azure 专用链接](/azure/private-link/private-link-overview)一文。
 
@@ -134,8 +134,8 @@ az group deployment create \
 
 若要保护工作区使用的 Azure Kubernetes 服务，请将其置于虚拟网络中。 有关详细信息，请参阅[将 Azure Kubernetes 服务与工作区配合使用](how-to-enable-virtual-network.md#aksvnet)。
 
-> [!WARNING]
-> Azure 机器学习不支持使用已启用专用链接的 Azure Kubernetes 服务。
+Azure 机器学习现在支持使用启用了专用链接的 Azure Kubernetes 服务。
+若要创建专用 AKS 群集，请[在此处](https://docs.microsoft.com/azure/aks/private-clusters)执行文档
 
 ## <a name="azure-container-registry"></a>Azure 容器注册表
 

@@ -5,18 +5,18 @@ author: jeffhollan
 ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
-ms.custom: mvc, devcenter
-ms.openlocfilehash: b1eb430f94ef545fa74ed225c427a121a47f7cf8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc, devcenter, devx-track-java
+ms.openlocfilehash: 38ccc99de72af8f989cca0fefae2f962fb178f0e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055790"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373362"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>使用 Java 和 IntelliJ 创建第一个 Azure 函数
 
 本文介绍：
-- 如何使用 IntelliJ 创意创建[无服务器](https://azure.microsoft.com/overview/serverless-computing/)函数项目
+- 如何使用 IntelliJ IDEA 创建[无服务器](https://azure.microsoft.com/overview/serverless-computing/)函数项目
 - 在自己的计算机上的集成开发环境 (IDE) 中测试和调试函数的步骤
 - 将函数项目部署到 Azure Functions 的说明
 
@@ -30,7 +30,7 @@ ms.locfileid: "87055790"
 
 + 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 + [Azure 支持的 Java 开发工具包 (JDK)](https://aka.ms/azure-jdks)（适用于 Java 8）
-+ 已安装的 [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) 旗舰版或社区版
++ 安装了 [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) 旗舰版或社区版
 + [Maven 3.5.0+](https://maven.apache.org/download.cgi)
 + 最新的 [Function Core Tools](https://github.com/Azure/azure-functions-core-tools)
 
@@ -56,7 +56,7 @@ ms.locfileid: "87055790"
 
    ![设备登录浏览器][intellij-azure-link-ms-account]
 
-6. 在“选择订阅”对话框中选择要使用的订阅，并单击“确定”。 
+6. 在“选择订阅”对话框中选择要使用的订阅，然后单击“确定”。 
 
    ![“选择订阅”对话框][intellij-azure-login-select-subs]
    

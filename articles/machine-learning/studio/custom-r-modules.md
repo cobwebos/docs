@@ -1,6 +1,5 @@
 ---
-title: 创建和部署自定义 R 模块
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （经典）：创建 & 部署自定义 R 模块-Azure
 description: 了解如何在 ML 工作室（经典）中创作和部署自定义 R 模块。
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 389290b01848d598ada9ca49bee932a764854088
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 4b4251a426d33c0a3b8cc7584d2bf6375dcd0f79
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957318"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287239"
 ---
-# <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>定义 Azure 机器学习工作室（经典版）的自定义 R 模块
+# <a name="define-custom-r-modules-for-machine-learning-studio-classic"></a>为机器学习 Studio （经典）定义自定义 R 模块
+
+**适用于：** ![不](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-azure-ml.md) ![ 是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） 
 
 本主题介绍如何创作和部署自定义 R 工作室（经典版）。 解释什么是自定义 R 模块以及要使用什么文件来定义此类模块， 并举例说明如何构建定义模块的文件以及如何在机器学习工作区中进行模块部署注册。 随后本主题会详细说明用于定义自定义模块的元素和属性。 本主题还会讨论如何使用辅助功能和文件以及多个输出。 
 

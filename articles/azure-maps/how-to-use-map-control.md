@@ -8,18 +8,19 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bdbdbfada3c7c4cfb4350bb11a33defd743b7195
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 40ae1492084430f7dbca331d1439b4ded099c866
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064217"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287071"
 ---
 # <a name="use-the-azure-maps-map-control"></a>使用 Azure Maps 地图控件
 
 Map Control 客户端 JavaScript 库允许你将地图和嵌入 Azure Maps 功能呈现到你的 web 或移动应用程序中。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要在网页中使用 Map Control，必须具备以下先决条件之一：
 
@@ -269,7 +270,7 @@ var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 > [创建地图](map-create.md)
 
 > [!div class="nextstepaction"]
-> [示例代码](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [代码示例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
 
 有关演示如何将 Azure Active Directory （AAD）与 Azure Maps 集成的示例列表，请参阅：
 

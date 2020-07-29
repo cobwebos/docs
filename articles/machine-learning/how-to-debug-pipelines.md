@@ -5,16 +5,17 @@ description: 使用 Python 调试 Azure 机器学习管道。 了解开发管道
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 3eb0cf85dce02595f3679a96b497e286682840bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: troubleshooting, tracking-python
+ms.openlocfilehash: 6fa75c0c6ec6146ca59f6eaf4593b4912ae823c1
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84557434"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372954"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>对机器学习管道进行调试和故障排除
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,7 +27,7 @@ ms.locfileid: "84557434"
 * 使用 Application Insights 进行调试
 * 使用 Visual Studio Code (VS Code) 和针对 Visual Studio 的 Python 工具 (PTVSD) 以交互方式调试
 
-## <a name="debug-and-troubleshoot-in-the-azure-machine-learning-sdk"></a>在 Azure 机器学习 SDK 中进行调试和故障排除
+## <a name="azure-machine-learning-sdk"></a>Azure 机器学习 SDK
 以下部分概述了生成管道时的常见陷阱，以及用于调试管道中运行的代码的不同策略。 如果在使管道按预期运行时遇到问题，请参考以下提示。
 
 ### <a name="testing-scripts-locally"></a>在本地测试脚本
@@ -126,9 +127,13 @@ logger.warning("I am an OpenCensus warning statement, find me in Application Ins
 logger.error("I am an OpenCensus error statement with custom dimensions", {'step_id': run.id})
 ``` 
 
-## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer-preview"></a>在 Azure 机器学习设计器（预览版）中进行调试和故障排除
+## <a name="azure-machine-learning-designer-preview"></a>Azure 机器学习设计器（预览版）
 
 本部分概述了如何在设计器中对管道进行故障排除。 对于在设计器中创建的管道，可以在创作页或管道运行详细信息页中找到 70_driver_log 文件。
+
+### <a name="enable-logging-for-real-time-endpoints"></a>为实时终结点启用日志记录
+
+若要在设计器中排除和调试实时终结点，必须使用 SDK 启用应用程序见解日志记录。 日志记录可让你排除和调试模型部署和使用问题。 有关详细信息，请参阅[日志记录已部署的模型](how-to-enable-logging.md#logging-for-deployed-models)。 
 
 ### <a name="get-logs-from-the-authoring-page"></a>从创作页获取日志
 
@@ -155,10 +160,10 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 > [!IMPORTANT]
 > 若要从管道运行详细信息页更新管道，必须将管道运行克隆到新管道草稿。 管道运行是管道的快照。 它类似于日志文件，并且无法更改。 
 
-## <a name="debug-and-troubleshoot-in-application-insights"></a>在 Application Insights 中进行调试和故障排除
+## <a name="application-insights"></a>Application Insights
 有关以此方式使用 OpenCensus Python 库的详细信息，请参阅此指南：[在 Application Insights 中对机器学习管道进行调试和故障排除](how-to-debug-pipelines-application-insights.md)
 
-## <a name="debug-and-troubleshoot-in-visual-studio-code"></a>在 Visual Studio Code 中进行调试和故障排除
+## <a name="visual-studio-code"></a>Visual Studio Code
 
 在某些情况下，可能需要以交互方式调试 ML 管道中使用的 Python 代码。 使用 Visual Studio Code (VS Code) 和针对 Visual Studio 的 Python 工具 (PTVSD)，可以在训练环境中运行代码时连接到该代码。
 

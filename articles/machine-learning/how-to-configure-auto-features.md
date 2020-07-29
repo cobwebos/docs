@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 950f258e7380d7fbd25e1a5fe2dd4673ba122c52
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b01d6c36b31ef4f03522d03ca327439cfa31be8d
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321575"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373736"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>自动化机器学习中的特征化
 
@@ -114,13 +114,13 @@ ms.locfileid: "87321575"
 
 你可以自定义特征化设置，以确保用于训练机器学习模型的数据和特征能够产生相关的预测。
 
-若要自定义特征化，请在 `AutoMLConfig` 对象中指定  `"featurization": FeaturizationConfig`。 如果使用 Azure 机器学习工作室进行试验，请参阅[操作方法文章](how-to-use-automated-ml-for-ml-models.md#customize-featurization)。
+若要自定义特征化，请在 `AutoMLConfig` 对象中指定  `"featurization": FeaturizationConfig`。 如果使用 Azure 机器学习工作室进行试验，请参阅[操作方法文章](how-to-use-automated-ml-for-ml-models.md#customize-featurization)。 若要为 forecastings 任务类型自定义特征化，请参阅[预测操作方法](how-to-auto-train-forecast.md#customize-featurization)。
 
 支持的自定义项包括：
 
 |自定义|定义|
 |--|--|
-|列用途更新|替代指定列的特征类型。|
+|列用途更新|重写指定列的自动检测到的功能类型。|
 |转换器参数更新 |更新指定转换器的参数。 当前支持 Imputer（平均值、最频繁使用的值和中值）和 HashOneHotEncoder。 |
 |删除列 |指定要从特征化中删除的列。|
 |阻止转换器| 指定要在特征化过程中使用的块转换器。|

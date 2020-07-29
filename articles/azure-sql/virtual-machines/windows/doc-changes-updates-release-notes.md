@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/06/2020
-ms.openlocfilehash: 8474b49e3e6b12a613de19df055cbf6e43fb0aa2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5a09a30bafa5bc9ef052b14cad29e000bbd09a48
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503774"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287374"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure 虚拟机上 SQL Server 的文档更改
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +37,7 @@ Azure 允许你使用内置的 SQL Server 映像部署虚拟机 (VM)。 本文�
 | 更改 | 详细信息 |
 | --- | --- |
 | **分布式网络名称（DNN）** | Windows Server 2016 上的 SQL Server 2019 现在正在通过使用[分布式网络名称](hadr-distributed-network-name-dnn-configure.md)（而不是使用 Azure 负载均衡器）来预览将流量路由到故障转移群集实例（FCI）的支持。 此支持简化并简化了连接到 Azure 中的高可用性（HA）解决方案的工作。 | 
-| **Azure 共享磁盘的 FCI** | 现在可以通过在 Windows Server 2016 + 虚拟机上使用 SQL Server 2019 的[Azure 共享磁盘](failover-cluster-instance-azure-shared-disks-manually-configure.md)来部署[故障转移群集实例（FCI）](failover-cluster-instance-overview.md) 。 |
+| **Azure 共享磁盘的 FCI** | 现在可以使用[Azure 共享磁盘](failover-cluster-instance-azure-shared-disks-manually-configure.md)部署[故障转移群集实例（FCI）](failover-cluster-instance-overview.md) 。 |
 | **重新组织的 FCI 文档** | 为清楚起见，重写并重新组织了有关[Azure vm 上 SQL Server 的故障转移群集实例](failover-cluster-instance-overview.md)的文档。 我们已将一些配置内容（如[群集配置最佳做法](hadr-cluster-best-practices.md)、如何为[SQL Server FCI 准备虚拟机](failover-cluster-instance-prepare-vm.md)，以及如何配置[Azure 负载均衡器](hadr-vnn-azure-load-balancer-configure.md)）分开。 | 
 | &nbsp; | &nbsp; |
 

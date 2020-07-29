@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ec681d0af132d11e18703dce6105352651a70180
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: bc6b3911ed6d04561d25ef166625f9e73023726d
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131610"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373277"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>使用基于角色的访问控制保护 Azure 数字孪生
 
@@ -45,7 +45,7 @@ RBAC 通过与[Azure Active Directory](../active-directory/fundamentals/active-d
 
 ### <a name="authorization-rbac-roles-for-azure-digital-twins"></a>授权： Azure 数字孪生的 RBAC 角色
 
-Azure 提供以下内置 RBAC 角色，用于授权访问 Azure 数字孪生资源：
+Azure 提供以下 Azure 内置角色，用于授权访问 Azure 数字孪生资源：
 * *Azure 数字孪生所有者（预览版）* -使用此角色授予对 Azure 数字孪生资源的完全访问权限。
 * *Azure 数字孪生读者（预览版）* -使用此角色授予对 Azure 数字孪生资源的只读访问权限。
 

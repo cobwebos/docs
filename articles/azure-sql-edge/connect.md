@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 6d82446a915863e6aa95cc79a421f86b8c4dd3a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/25/2020
+ms.openlocfilehash: bc7410325bbcf3086c4ac2054b7bc663629a29e5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252638"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373107"
 ---
 # <a name="connect-and-query-azure-sql-edge-preview"></a>连接并查询 Azure SQL Edge（预览版）
 
@@ -29,7 +29,7 @@ ms.locfileid: "85252638"
 
 可以通过以下任一常用工具连接到 Azure SQL Edge 实例的实例：
 
-* [sqlcmd](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools)： sqlcmd 客户端工具已包含在 Azure SQL Edge 的容器映像中。 如果使用交互式 bash shell 附加到正在运行的容器，则可以在本地运行这些工具。
+* [sqlcmd](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools)： sqlcmd 客户端工具已包含在 Azure SQL Edge 的容器映像中。 如果使用交互式 bash shell 附加到正在运行的容器，则可以在本地运行这些工具。 SQL 客户端工具在 ARM64 平台上不可用，因为 sql Edge 容器的 ARM64 版本中不包含这些工具。 
 * [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms)
 * [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)
 * [Visual Studio Code](https://docs.microsoft.com/sql/visual-studio-code/sql-server-develop-use-vscode)
@@ -55,7 +55,7 @@ ms.locfileid: "85252638"
 
 ## <a name="connect-to-the-database-engine-from-within-the-container"></a>从容器内连接到数据库引擎
 
-[SQL Server 的命令行工具](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools)包含在 Azure SQL Edge 的容器映像中。 如果使用交互式命令提示符附加到容器，则可以在本地运行这些工具。
+[SQL Server 的命令行工具](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools)包含在 Azure SQL Edge 的容器映像中。 如果使用交互式命令提示符附加到容器，则可以在本地运行这些工具。 SQL 客户端工具在 ARM64 平台上不可用，因为 sql Edge 容器的 ARM64 版本中不包含这些工具。 
 
 1. 使用 `docker exec -it` 命令在运行的容器内部启动交互式 Bash Shell。 在下面的示例中， `e69e056c702d` 是容器 ID。
 

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bc22cf5a21709ccacafe068a60541cc9990d1131
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8c9fbf7bc45ed2070570faf0d1dfdb15b5fd98ee
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132256"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373260"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>在 Azure 数字孪生中管理终结点和路由
 
@@ -147,11 +147,11 @@ catch (RequestFailedException e)
 
 下面是受支持的路由筛选器。
 
-| 筛选器名称 | 描述 | 筛选架构 | 支持的值 | 
+| 筛选器名称 | 说明 | 筛选架构 | 支持的值 | 
 | --- | --- | --- | --- |
 | 类型 | 通过数字克隆实例流动的[事件类型](./concepts-route-events.md#types-of-event-messages) | `"filter" : "type = '<eventType>'"` | `Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
-| Source | Azure 数字孪生实例的名称 | `"filter" : "source = '<hostname>'"`|  **对于通知**：`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **对于遥测**：`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/digitaltwins/<twinId>`|
-| 主题 | 上述事件源上下文中事件的说明 | `"filter": " subject = '<subject>'"` | **对于通知**：使用者为`<twinid>` <br> 或主题的 URI 格式，由多个部件或 Id 唯一标识：<br>`<twinid>/relationships/<relationshipid>`<br> **对于遥测**： "主题" 是组件路径（如果从 "克隆" 组件发出遥测数据），例如 `comp1.comp2` 。 如果未从组件发出遥测数据，则其 "使用者" 字段为空。 |
+| 源 | Azure 数字孪生实例的名称 | `"filter" : "source = '<hostname>'"`|  **对于通知**：`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **对于遥测**：`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/digitaltwins/<twinId>`|
+| 使用者 | 上述事件源上下文中事件的说明 | `"filter": " subject = '<subject>'"` | **对于通知**：使用者为`<twinid>` <br> 或主题的 URI 格式，由多个部件或 Id 唯一标识：<br>`<twinid>/relationships/<relationshipid>`<br> **对于遥测**： "主题" 是组件路径（如果从 "克隆" 组件发出遥测数据），例如 `comp1.comp2` 。 如果未从组件发出遥测数据，则其 "使用者" 字段为空。 |
 | 数据架构 | DTDL 模型 ID | `"filter": "dataschema = 'dtmi:example:com:floor4;2'"` | **对于遥测**：数据架构是克隆或发出遥测数据的组件的模型 ID <br>**对于通知**：不支持数据架构|
 | 内容类型 | 数据值的内容类型 | `"filter": "datacontenttype = '<contentType>'"` | `application/json` |
 | 规范版本 | 你使用的事件架构的版本 | `"filter": "specversion = '<version>'"` | 必须是 `1.0`。 这表示 CloudEvents 架构版本1。0 |
@@ -184,7 +184,7 @@ catch (RequestFailedException e)
 
 在门户主页上，搜索 Azure 数字孪生实例以提取其详细信息。 从 Azure 数字孪生实例的菜单中选择 "**指标**" 选项，打开 "*指标*" 页。
 
-:::image type="content" source="media/how-to-manage-routes/metrics.png" alt-text="Azure 门户中的 Azure 数字孪生实例的 指标 页":::
+:::image type="content" source="media/how-to-view-metrics/azure-digital-twins-metrics.png" alt-text="显示 Azure 数字孪生的 "指标" 页的屏幕截图":::
 
 在此处，你可以查看实例的度量值并创建自定义视图。
 
