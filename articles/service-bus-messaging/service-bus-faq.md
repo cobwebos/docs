@@ -3,12 +3,12 @@ title: Azure 服务总线常见问题解答 (FAQ) | Microsoft Docs
 description: 本文提供了一些有关 Azure 服务总线的常见问题解答 (FAQ)。
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: 01d7869a158a3c2b5418f38f2a5d88fc161796c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 04ff12d28be1dd232c5666b17d8a121f8020ca89
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083848"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371237"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure 服务总线 - 常见问题解答 (FAQ)
 
@@ -78,7 +78,7 @@ ms.locfileid: "87083848"
 3. 为每一个运行 nslookup，使用后缀 s1、s2 和 s3 获取所有三个在三个可用性区域中运行的实例的 IP 地址。 
 
 ### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>在哪里可以找到客户端向/从命名空间发送/接收消息的客户端的 IP 地址？ 
-我们不会记录向/从命名空间发送消息或接收消息的客户端的 IP 地址。 重新生成密钥，以便所有现有的客户端将无法进行身份验证并查看基于角色的访问控制（[RBAC](authenticate-application.md#built-in-rbac-roles-for-azure-service-bus)）设置，以确保仅允许的用户或应用程序可以访问该命名空间。 
+我们不会记录向/从命名空间发送消息或接收消息的客户端的 IP 地址。 重新生成密钥，以便所有现有的客户端将无法进行身份验证并查看基于角色的访问控制（[RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)）设置，以确保仅允许的用户或应用程序可以访问该命名空间。 
 
 如果使用的是**高级**命名空间，请使用[IP 筛选](service-bus-ip-filtering.md)、[虚拟网络服务终结点](service-bus-service-endpoints.md)和[专用终结点](private-link-service.md)限制对命名空间的访问。 
 

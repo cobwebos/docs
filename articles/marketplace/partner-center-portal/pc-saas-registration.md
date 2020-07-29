@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 85bd6f4192f5c1f47856851ab53521a101340007
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 52427cbaa418e0335797fe0a98c26c3fb84cf670
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109257"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87304167"
 ---
 # <a name="register-a-saas-application"></a>注册 SaaS 应用程序
 
@@ -24,7 +26,7 @@ Azure Marketplace 不会对你的 SaaS 服务用于最终用户的身份验证�
 
 任何想要使用 Azure AD 功能的应用程序都必须先在 Azure AD 租户中注册。 此注册过程涉及到提供有关应用程序的 Azure AD 一些详细信息。 若要使用 Azure 门户注册新应用程序，请执行以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 如果你的帐户允许访问多个帐户，请单击右上角的帐户，并将门户会话设置为所需的 Azure AD 租户。
 3. 在左侧导航窗格中，依次单击“Azure Active Directory”服务、“应用注册”、“新建应用程序注册”。************
 
@@ -66,19 +68,19 @@ Azure Marketplace 不会对你的 SaaS 服务用于最终用户的身份验证�
 
 ##### <a name="uri-parameter"></a>*URI 参数*
 
-|  参数名称    |  必选         |  描述 |
+|  参数名称    |  必须         |  说明 |
 |  ---------------   |  ---------------  | ------------ |
 |  `tenantId`        |  True      |  已注册 AAD 应用程序的租户 ID。 |
 
 ##### <a name="request-header"></a>请求标头
 
-|  标头名称       |  必选         |  描述 |
+|  标头名称       |  必须         |  说明 |
 |  ---------------   |  ---------------  | ------------ |
 |  `content-type`    |  True      |  与请求关联的内容类型。 默认值是 `application/x-www-form-urlencoded`。 |
 
 ##### <a name="request-body"></a>*请求正文*
 
-|  属性名称     |  必选         |  描述 |
+|  属性名称     |  必须         |  说明 |
 |  ---------------   |  ---------------  | ------------ |
 |  `grant-type`      |  True      |  授权类型。 改用 `"client_credentials"` |
 |  `client_id`       |  True      |  与 Azure AD 应用关联的客户端/应用标识符。 |

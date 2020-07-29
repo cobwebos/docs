@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: fa4610c925429ea59eae7399094230c1370bf2a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f5b6bfdb523a22fc4dd9593bfec556da7493aa9
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095993"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371186"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>有关配置 LexisNexis 与 Azure Active Directory B2C 的教程
 
@@ -27,7 +27,7 @@ ms.locfileid: "87095993"
 - 电话号码
 - 从用户的计算机收集的分析信息
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始，你将需要：
 
@@ -82,7 +82,7 @@ ThreatMetrix 集成包括以下组件：
 
 可以[在 Azure 中的应用服务中配置](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)应用程序设置。  使用此方法，可以安全地配置设置，而无需将其签入存储库。 需要为 Rest API 提供以下设置：
 
-| 应用程序设置 | Source | 注释 |
+| 应用程序设置 | 源 | 说明 |
 | :-------- | :------------| :-----------|
 |ThreatMetrix： Url | ThreatMetrix 帐户配置 |     |
 |ThreatMetrix： OrgId | ThreatMetrix 帐户配置 |     |
@@ -147,7 +147,7 @@ UI 基于海蓝色页面模板。 UI 中的所有链接都应更新以引用部�
 
 6. 经历登录流  
 
-7. 输入**continue**后，CrossCore 谜会弹出。
+7. 输入**continue**后，ThreatMetrix 谜会弹出。
 
 ## <a name="next-steps"></a>后续步骤
 

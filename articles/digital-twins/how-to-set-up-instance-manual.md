@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8d0e965360caab704bcf6c8f7d29e7bba421207e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d2d5ce0bc988badc6f25726206a953d87de7eaa2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125881"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371443"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-manual"></a>设置 Azure 数字孪生实例和身份验证（手动）
 
@@ -35,7 +35,7 @@ ms.locfileid: "87125881"
     az group create --location <region> --name <name-for-your-resource-group>
     ```
 * 部署的区域。 若要查看哪些区域支持 Azure 数字孪生，请访问[*按区域提供的 azure 产品*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)。
-* 实例的名称。 新实例的名称在该区域中必须是唯一的（也就是说，如果该区域中的另一个 Azure 数字孪生实例已在使用你选择的名称，则系统将要求你选择其他名称）。
+* 实例的名称。 新实例的名称在你的订阅的区域中必须是唯一的（也就是说，如果你的订阅在已使用所选名称的区域中有另一个 Azure 数字孪生实例，则会要求你选择其他名称）。
 
 在以下命令中使用这些值来创建实例：
 
@@ -68,9 +68,8 @@ Azure 数字孪生使用[Azure Active Directory （Azure AD）](../active-direct
 
 若要授予用户管理 Azure 数字孪生实例的权限，必须在实例中为他们分配_**Azure 数字孪生所有者（预览版）**_ 角色。 
 
-请注意，此角色不同于 .。。
-* 整个 Azure 订阅的*所有者*角色。 *Azure 数字孪生所有者（预览版）* 是 Azure 数字孪生中的一个角色，其作用域为此单个 Azure 数字孪生实例。
-* Azure 数字孪生中的*所有者*角色。 它们是两个不同的 Azure 数字孪生管理角色， *Azure 数字孪生所有者（预览版）* 是在预览期间用于管理的角色。
+> [!NOTE]
+> 请注意，此角色与 Azure AD*所有者*角色不同，也可以在 Azure 数字孪生实例的作用域中分配。 它们是两个不同的管理角色，Azure AD*所有者*不会授予对使用*Azure 数字孪生所有者（预览版）* 授予的数据平面功能的访问权限。
 
 使用以下命令分配角色（必须由 Azure 订阅的所有者运行）：
 
@@ -100,7 +99,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 通过此应用注册，你可以配置对[Azure 数字孪生 api](how-to-use-apis-sdks.md)的访问权限。 以后，客户端应用程序将对应用程序注册进行身份验证，因此，会将配置的访问权限授予 Api。
 
 >[!TIP]
-> 作为订阅所有者，你可能更倾向于为每个新的 Azure 数字孪生实例设置新的应用注册，*或*只执行此操作一次，并建立单个应用注册，将在订阅中的所有 Azure 数字孪生实例之间共享。 这就是在 Microsoft 自己的租户中完成此操作的方式。
+> 作为订阅所有者，你可能更倾向于为每个新的 Azure 数字孪生实例设置新的应用注册，*或*只执行此操作一次，并建立单个应用注册，将在订阅中的所有 Azure 数字孪生实例之间共享。
 
 ### <a name="create-the-registration"></a>创建注册
 

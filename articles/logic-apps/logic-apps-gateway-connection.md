@@ -1,26 +1,26 @@
 ---
 title: 访问本地数据源
-description: 通过创建 Azure 本地数据网关资源，从 Azure 逻辑应用连接到本地数据源
+description: 通过在 Azure 中创建数据网关资源从 Azure 逻辑应用连接到本地数据源
 services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, divswa, logicappspm
 ms.topic: article
-ms.date: 07/21/2020
-ms.openlocfilehash: 94fedc5dc6c9f420fbf14f80618a6daeefe908b2
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.date: 07/28/2020
+ms.openlocfilehash: a9ebc6b0cdbaa05c36383fa5126c2672fb19b69c
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172050"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370948"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到本地数据源
 
-[在本地计算机上安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)之后，需创建 Azure 资源，然后才能从逻辑应用访问本地数据源。 逻辑应用然后在用于 Azure 逻辑应用的[本地连接器](../connectors/apis-list.md#on-premises-connectors)提供的触发器和操作中使用该 Azure 网关资源。
+在[本地计算机上安装本地*数据网关*](../logic-apps/logic-apps-gateway-install.md)并在从逻辑应用访问本地数据源之前，需要在 Azure 中创建网关资源，以便安装网关。 然后，你可以在要用于 Azure 逻辑应用中可用的[本地连接器](../connectors/apis-list.md#on-premises-connectors)的触发器和操作中选择此网关资源。
 
 本文介绍如何为以前[安装在本地计算机上的网关](../logic-apps/logic-apps-gateway-install.md)创建 Azure 网关资源。 有关网关的详细信息，请参阅[网关的工作原理](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)。
 
 > [!TIP]
-> 若要连接到 Azure 虚拟网络，请考虑改为创建[*集成服务环境*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)。 
+> 若要在不使用网关的情况下直接访问 Azure 虚拟网络中的本地资源，请考虑改为创建[*集成服务环境*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)。 
 
 有关如何将网关用于其他服务的信息，请参阅以下文章：
 
@@ -54,14 +54,11 @@ Azure 逻辑应用支持通过数据网关进行读取和写入操作。 但是�
 
 * 已经[在本地计算机上安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)。
 
-* 你使用的 [Azure 帐户和订阅](../logic-apps/logic-apps-gateway-install.md#requirements)与安装该数据网关时使用的帐户和订阅相同。 此 Azure 帐户必须属于单个 [Azure Active Directory (Azure AD) 租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)。
+* 你具有与用于网关安装[相同的 Azure 帐户和订阅](../logic-apps/logic-apps-gateway-install.md#requirements)。 此 Azure 帐户必须仅属于单个[Azure Active Directory （Azure AD）租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)。 需要相同的 Azure 帐户和订阅才能在 Azure 中创建网关资源，因为只有网关管理员可以在 Azure 中创建网关资源。 当前不支持服务主体。
 
-* 你的网关安装尚未注册并由 Azure 门户中的另一现有 Azure 网关资源声明。
-
-  在 Azure 门户中创建网关资源时，请选择链接到你的网关资源的网关安装，并且仅连接该网关资源。 每个网关资源只能链接到一个网关安装，只能链接到一个 Azure 帐户。 在 Azure 逻辑应用中，本地触发器和操作将在连接到本地数据源时使用网关资源。 如果你具有订阅访问权限，你可以从与不同的网关资源关联的不同 Azure 订阅中进行选择。 逻辑应用和网关资源不必使用同一个 Azure 订阅。
-
-  > [!NOTE]
-  > 只有网关管理员才能在 Azure 门户中创建网关资源。 当前不支持服务主体。 
+  * 当你在 Azure 中创建网关资源时，请选择要与网关资源一起使用的网关安装，并仅选择该网关资源。 每个网关资源只能链接到一个网关安装，只能链接到一个 Azure 帐户和订阅。 因此，不能选择已与另一网关资源关联的网关安装。
+  
+  * 逻辑应用和网关资源不必存在于同一 Azure 订阅中。 如果你具有订阅访问权限，在可以访问本地数据源的触发器和操作中，你可以从与不同的网关资源关联的不同 Azure 订阅中进行选择。
 
 <a name="create-gateway-resource"></a>
 
@@ -87,7 +84,7 @@ Azure 逻辑应用支持通过数据网关进行读取和写入操作。 但是�
    | **订阅** | 选择曾用于网关安装的 Azure 帐户的 Azure 订阅。 默认订阅取决于用来登录的 Azure 帐户。 |
    | **资源组** | 要使用的 [Azure 资源组](../azure-resource-manager/management/overview.md) |
    | **位置** | 在[网关安装](../logic-apps/logic-apps-gateway-install.md)期间为网关云服务选择的区域或位置。 否则，网关安装不会显示在“安装名称”列表中。 逻辑应用位置可能不同于网关资源位置。 |
-   | **安装名称** | 选择一个网关安装，该安装仅在以下条件满足的情况下显示在列表中： <p><p>- 网关安装使用的区域与要创建的网关资源所在的区域相同。 <br>- 网关安装未关联到另一 Azure 网关资源。 <br>- 网关安装关联到要用来创建网关资源的 Azure 帐户。 <br>- 你的 Azure 帐户属于单个 [Azure Active Directory (Azure AD) 租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)，是用于网关安装的帐户。 <p><p>有关详细信息，请参阅[常见问题解答](#faq)部分。 |
+   | **安装名称** | 选择一个网关安装，该安装仅在以下条件满足的情况下显示在列表中： <p><p>- 网关安装使用的区域与要创建的网关资源所在的区域相同。 <br>- 网关安装未关联到另一 Azure 网关资源。 <br>- 网关安装关联到要用来创建网关资源的 Azure 帐户。 <br>-你的 Azure 帐户属于单个[Azure Active Directory （Azure AD）租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)，并且与用于网关安装的帐户相同。 <p><p>有关详细信息，请参阅[常见问题解答](#faq)部分。 |
    |||
 
    以下示例演示的网关安装位于你的网关资源所在的区域，并关联到同一 Azure 帐户：
@@ -108,7 +105,7 @@ Azure 逻辑应用支持通过数据网关进行读取和写入操作。 但是�
 
 1. 在“网关”下，从“订阅”列表中选择 你的 Azure 订阅，该订阅有你需要的网关资源。
 
-   如果你具有订阅访问权限，你可以从与不同的网关资源关联的不同 Azure 订阅中进行选择。 逻辑应用和网关资源不必使用同一个 Azure 订阅。
+   如果你具有订阅访问权限，你可以从与不同的网关资源关联的不同 Azure 订阅中进行选择。 逻辑应用和网关资源不必存在于同一 Azure 订阅中。
 
 1. 从“连接网关”列表中选择所需网关资源，该列表会显示所选订阅中的可用网关资源。 每个网关资源关联到单个网关安装。
 
@@ -166,11 +163,15 @@ Azure 逻辑应用支持通过数据网关进行读取和写入操作。 但是�
 **问**：在 Azure 中创建我的网关资源时，为何不显示我的网关安装？ <br/>
 **答**：此问题的可能原因如下：
 
-* Azure 帐户必须是关联到本地计算机上的网关安装的帐户。 请检查你是否使用了关联到网关安装的标识登录到 Azure 门户。 另请确保你的 Azure 帐户属于单个 [Azure AD 租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)，并已设置为在网关安装过程中使用过的 Azure AD 租户或目录。
+* 你的 Azure 帐户不同于在本地计算机上安装网关所用的帐户。 检查是否已使用用于网关安装的相同标识登录到 Azure 门户。 仅网关管理员可以在 Azure 中创建网关资源。 当前不支持服务主体。
 
-* 网关资源和网关安装必须使用同一区域。 但是，逻辑应用位置可以不同于网关资源位置。
+* 你的 Azure 帐户不只属于单个[Azure AD 租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)。 检查是否使用的是在网关安装过程中使用的 Azure AD 租户或目录。
 
-* 网关安装已由另一网关资源注册并声明。 这些安装不会显示在“安装名称”列表中。 若要在 Azure 门户中查看网关注册，请找到所有 Azure 订阅的“本地数据网关”类型的所有 Azure 资源。 若要取消关联其他网关资源中的网关安装，请参阅[删除网关资源](#change-delete-gateway-resource)。
+* 你的网关资源和网关安装在同一区域中不存在。 但是，逻辑应用的位置可能与网关资源位置不同。
+
+* 你的网关安装已与另一网关资源关联。 每个网关资源只能链接到一个网关安装，只能链接到一个 Azure 帐户和订阅。 因此，不能选择已与另一网关资源关联的网关安装。 这些安装不会显示在“安装名称”列表中。
+
+  若要查看 Azure 门户中的网关注册，请在*所有*azure 订阅中查找具有**本地数据网关**资源类型的所有 azure 资源。 若要取消关联其他网关资源中的网关安装，请参阅[删除网关资源](#change-delete-gateway-resource)。
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 

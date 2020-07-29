@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 04/03/2019
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 63225f6e6daa6b3cdde7aa505c117b43305a4867
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 921dcb05401c61a9fb581595c20112e67f696c5e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82569077"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371290"
 ---
 # <a name="azure-stack-edge-system-requirements"></a>Azure Stack 边缘系统要求
 
@@ -58,7 +58,7 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 对托管 Azure IoT Edge 运行时的服务器使用下表中的端口配置：
 
-| 端口号。 | 入或出 | 端口范围 | 必需 | 指南 |
+| 端口号。 | 入或出 | 端口范围 | 必须 | 指南 |
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| 出       | WAN        | 是      | 为 IoT Edge 预配打开此出站端口。 使用手动脚本或 Azure IoT 设备预配服务 (DPS) 时，此配置是必需的。|
 
@@ -133,6 +133,6 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 最后，请确保在数据集上验证解决方案并在生产环境中部署之前，量化 Azure Stack Edge 上的性能。
 
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-step"></a>下一步
 
 - [部署 Azure Stack Edge](azure-stack-edge-deploy-prep.md)

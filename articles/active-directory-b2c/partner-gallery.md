@@ -1,7 +1,7 @@
 ---
-title: Azure AD B2C 的合作伙伴库
+title: Azure AD B2C 的 ISV 合作伙伴库
 titleSuffix: Azure AD B2C
-description: 了解如何与合作伙伴集成，以根据你的需求定制你的最终用户体验。 我们的合作伙伴网络扩展了我们的解决方案功能;启用 MFA、安全的客户身份验证、基于角色的访问控制;通过身份验证验证来对付欺诈行为。
+description: 了解如何与 ISV 合作伙伴集成，以根据你的需求定制你的最终用户体验。 我们的合作伙伴网络扩展了我们的解决方案功能;启用 MFA、安全的客户身份验证、基于角色的访问控制;通过身份验证验证来对付欺诈行为。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,23 +11,23 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2336916f7d47b38a12ee0418353a249b5eaa3801
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 986abbe6c124ce1323add5b8e854973416dfcbf4
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042399"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371203"
 ---
-# <a name="azure-active-directory-b2c-partners"></a>Azure Active Directory B2C 合作伙伴
+# <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV 合作伙伴
 
-我们的合作伙伴网络扩展了我们的解决方案功能，可帮助你构建无缝的最终用户体验。 使用 Azure AD B2C，你可以与合作伙伴集成以启用多重身份验证方法，启用安全的客户身份验证（SCA），执行基于角色的访问控制，并通过身份验证和验证来抵御欺诈行为。 使用我们的详细示例演练来了解如何将应用集成到下面列出的合作伙伴。
+我们的 ISV 合作伙伴网络扩展了我们的解决方案功能，可帮助你构建无缝的最终用户体验。 使用 Azure AD B2C，你可以与 ISV 合作伙伴集成，以启用多重身份验证方法，启用安全的客户身份验证（SCA），执行基于角色的访问控制，并通过身份验证和验证来抵御欺诈行为。 使用我们的详细示例演练来了解如何将应用集成到下面列出的 ISV 合作伙伴。
 
 >[!NOTE]
 >[GitHub 上的 Azure Active Directory B2C 社区网站](https://azure-ad-b2c.github.io/azureadb2ccommunity.io/)还提供了社区提供的示例自定义策略。
 
-## <a name="integration-partners"></a>集成合作伙伴
+## <a name="integration-isv-partners"></a>集成 ISV 合作伙伴
 
-| Partner | 说明和集成演练  |
+| ISV 合作伙伴 | 说明和集成演练  |
 | :--- | :--- |
 | ![徽标](./media/partner-gallery/arkose-logo.png) | [Arkose 实验室](./partner-arkose-labs.md)是一种欺诈防御解决方案提供商，可帮助组织防范机器人攻击、帐户接管攻击和欺诈性帐户。
 | ![徽标](./media/partner-gallery/experian-logo.png) | [Experian](./partner-experian.md)是一种身份验证和校对提供程序，它根据用户属性执行风险评估，以防止欺诈。|

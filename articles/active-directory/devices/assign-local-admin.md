@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a76d9ccbf7b83ea28de3ef5bb1d140caa7201ebd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6b04a59da78abc81f7749300dfe34ca176c75c4
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386362"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371169"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>如何管理已加入 Azure AD 的设备上的本地管理员组
 
@@ -66,6 +66,21 @@ Azure AD 还会将 Azure AD 设备管理员角色添加到本地管理员组，�
 
 >[!NOTE]
 > 上述操作不适用于以前未登录到相关设备的用户。 在这种情况下，将在首次登录设备后立即应用管理员权限。 
+
+## <a name="manage-administrator-privileges-using-azure-ad-groups-preview"></a>使用 Azure AD 组管理管理员权限（预览）
+
+>[!NOTE]
+> 此功能目前处于预览状态。
+
+从 Windows 10 2004 update 开始，你可以使用 Azure AD 组来使用 [受限组] （Windows/客户端管理/mdm/restrictedgroups） MDM 策略来管理 Azure AD 联接设备上的管理员权限。 此策略允许你将单个用户或 Azure AD 组分配给加入 Azure AD 设备上的本地管理员组，这为你提供为不同设备组配置不同管理员的粒度。 
+
+目前，Intune 中没有用于管理此策略的 UI，需要使用 [自定义 OMA-URI 设置] （mem/Intune/配置/自定义设置-windows-10）进行配置。 此策略的几个注意事项： 
+
+- 通过策略添加 Azure AD 组需要可通过执行组 API 获取的组的 SID。 SID 由 `securityIdentifier` 组 API 中的属性定义。
+- 强制执行 "限制组" 策略时，将删除组中不在成员列表中的任何当前成员。 因此，对新成员或组强制实施此策略将删除加入设备的用户、设备管理员角色和设备的全局管理员角色的现有管理员。 若要避免删除现有成员，需要在受限制的组策略中将其配置为成员列表的一部分。 
+- 此策略仅适用于 Windows 10 设备管理员、用户、来宾、高级用户、远程桌面用户和远程管理用户上的以下已知组。 
+- 使用 "受限制的组" 策略管理本地管理员不适用于混合 Azure AD 联接或 Azure AD 注册设备。
+- 尽管受限制的组策略在 Windows 10 2004 更新之前存在，但它不支持将 Azure AD 组作为设备的本地管理员组的成员。 
 
 ## <a name="manage-regular-users"></a>管理常规用户
 

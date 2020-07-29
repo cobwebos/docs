@@ -3,12 +3,12 @@ title: 完整模式删除
 description: 显示资源类型如何在 Azure 资源管理器模板中进行完全模式删除。
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.openlocfilehash: 5e247fc20a128b3dd8b3fe646ef956388e0d2c2d
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 48a7758ce706612607b97647bc88238957b118d3
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027828"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371339"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>针对完全模式部署的 Azure 资源删除
 
@@ -18,7 +18,7 @@ ms.locfileid: "86027828"
 
 标记为 **No** 的资源类型不在模板中时不会自动删除；但是，如果删除了父资源，则会删除它们。 有关此行为的完整描述，请参阅 [Azure 资源管理器部署模式](deployment-modes.md)。
 
-如果部署到[模板中的多个资源组](cross-resource-group-deployment.md)，则可以删除部署操作中指定的资源组中的资源。 辅助资源组中的资源不会被删除。
+如果部署到[模板中的多个资源组](cross-scope-deployment.md)，则可以删除部署操作中指定的资源组中的资源。 辅助资源组中的资源不会被删除。
 
 跳转到资源提供程序命名空间：
 > [!div class="op_single_selector"]
@@ -795,13 +795,13 @@ ms.locfileid: "86027828"
 > | registries / buildTasks | 是 |
 > | registries / buildTasks / steps | 否 |
 > | registries / eventGridFilters | 否 |
-> | 注册表/exportPipelines | 否 |
+> | registries/exportPipelines | 否 |
 > | registries / generateCredentials | 否 |
 > | registries / getBuildSourceUploadUrl | 否 |
 > | registries / GetCredentials | 否 |
 > | registries / importImage | 否 |
-> | 注册表/importPipelines | 否 |
-> | 注册表/pipelineRuns | 否 |
+> | registries/importPipelines | 否 |
+> | registries/pipelineRuns | 否 |
 > | registries / privateEndpointConnectionProxies | 否 |
 > | registries / privateEndpointConnectionProxies / validate | 否 |
 > | registries / privateEndpointConnections | 否 |
@@ -815,7 +815,7 @@ ms.locfileid: "86027828"
 > | registries / scheduleRun | 否 |
 > | registries / scopeMaps | 否 |
 > | registries / taskRuns | 否 |
-> | registries/tasks | 是 |
+> | registries / tasks | 是 |
 > | registries / tokens | 否 |
 > | registries / updatePolicies | 否 |
 > | registries / webhooks | 是 |
@@ -842,7 +842,7 @@ ms.locfileid: "86027828"
 > | CloudConnectors | 否 |
 > | 连接器 | 是 |
 > | costAllocationRules | 否 |
-> | Departments | 否 |
+> | 部门 | 否 |
 > | 维度 | 否 |
 > | EnrollmentAccounts | 否 |
 > | 导出 | 否 |
@@ -1295,7 +1295,7 @@ ms.locfileid: "86027828"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
-> | devices | 是 |
+> | 设备 | 是 |
 > | registeredSubscriptions | 否 |
 > | 供应商 | 否 |
 > | 供应商/sku | 否 |
@@ -1533,15 +1533,15 @@ ms.locfileid: "86027828"
 > | mediaservices / liveEventOperations | 否 |
 > | mediaservices / liveEvents | 是 |
 > | mediaservices / liveEvents / liveOutputs | 否 |
-> | windowsazure.mediaservices/liveEvents/privateEndpointConnectionProxies | 否 |
+> | mediaservices/liveEvents/privateEndpointConnectionProxies | 否 |
 > | mediaservices / liveOutputOperations | 否 |
 > | mediaservices / mediaGraphs | 否 |
 > | mediaservices / streamingEndpointOperations | 否 |
 > | mediaservices / streamingEndpoints | 是 |
-> | windowsazure.mediaservices/Streamingendpoint/privateEndpointConnectionProxies | 否 |
+> | mediaservices/streamingEndpoints/privateEndpointConnectionProxies | 否 |
 > | mediaservices / streamingLocators | 否 |
 > | mediaservices / streamingPolicies | 否 |
-> | windowsazure.mediaservices/streamingPrivateEndpointConnectionProxyOperations | 否 |
+> | mediaservices / streamingPrivateEndpointConnectionProxyOperations | 否 |
 > | mediaservices / transforms | 否 |
 > | mediaservices / transforms / jobs | 否 |
 
@@ -1825,7 +1825,7 @@ ms.locfileid: "86027828"
 > | namespaces / authorizationrules | 否 |
 > | namespaces / hybridconnections | 否 |
 > | namespaces / hybridconnections / authorizationrules | 否 |
-> | 命名空间/privateEndpointConnections | 否 |
+> | namespaces / privateEndpointConnections | 否 |
 > | namespaces / wcfrelays | 否 |
 > | namespaces / wcfrelays / authorizationrules | 否 |
 
@@ -1871,7 +1871,7 @@ ms.locfileid: "86027828"
 > | resourceGroups | 否 |
 > | subscriptions | 否 |
 > | templateSpecs | 是 |
-> | templateSpecs/版本 | 是 |
+> | templateSpecs / versions | 是 |
 > | tenants | 否 |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
@@ -2260,7 +2260,7 @@ ms.locfileid: "86027828"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
-> | devices | 是 |
+> | 设备 | 是 |
 > | registeredSubscriptions | 否 |
 > | 供应商 | 否 |
 > | 供应商/sku | 否 |

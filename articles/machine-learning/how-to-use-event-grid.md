@@ -5,21 +5,22 @@ description: 在 Azure 机器学习中设置事件驱动的应用程序、进程
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 5c4eae49b849b7dc5dbf7c27d50e241b2a4f36e4
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 3b6f115e27b5cf956a524bd1a610797c689b5d6c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135953"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319484"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>基于 Azure 机器学习事件触发应用程序、进程或 CI/CD 工作流（预览）
 
-本文介绍如何在 [Azure 事件网格](https://docs.microsoft.com/azure/event-grid/)检测到某些条件时，基于 Azure 机器学习事件（例如，失败通知电子邮件或 ML 管道运行）设置事件驱动的应用程序、进程或 CI/CD 工作流。 
+本文介绍如何在 [Azure 事件网格](https://docs.microsoft.com/azure/event-grid/)检测到某些条件时，基于 Azure 机器学习事件（例如，失败通知电子邮件或 ML 管道运行）设置事件驱动的应用程序、进程或 CI/CD 工作流。
 
 Azure 机器学习管理机器学习进程的整个生命周期，包括模型训练、模型部署和监视。 可以借助现代无服务器体系结构，使用事件网格对 Azure 机器学习事件做出反应，例如完成训练运行、注册和部署模型以及检测数据偏移。 然后，可以订阅和使用事件，例如运行状态更改、运行完成、模型注册、模型部署以及工作区中的数据偏移检测。
 

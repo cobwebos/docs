@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/22/2020
 ms.author: baanders
-ms.openlocfilehash: 3f19674c0e25ebf5cddc2dfb45580a15d04fad46
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dcc616dd8d30bfadb751df9ba24d71d72675428a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095961"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371442"
 ---
 >[!NOTE]
 >这些操作旨在由在 Azure 订阅上具有*所有者*角色的用户完成。 尽管有些部分可以在没有此提升权限的情况下完成，但需要所有者的合作来完全设置一个可用的实例。 有关详细信息，请查看下面的[*先决条件： Required 权限*](#prerequisites-permission-requirements)部分。
@@ -38,6 +38,6 @@ az role assignment list --assignee <your-Azure-email>
 
 :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/owner-role.png" alt-text="显示 az role 赋值 list 命令输出的 Cloud Shell 窗口":::
 
-如果发现值为 "*参与者*" 或 "*所有者*" 之外的其他内容，则可以与订阅所有者联系，并按以下方式之一进行操作：
-* 请求所有者以你的名义完成本文中的步骤
-* 请求所有者还会将您提升为订阅的所有者，这样您就有权自行处理。 这是否合适取决于你的组织和其中的角色。
+如果发现值为 "*参与者*" 或 "*所有者*" 以外的其他内容，则可以通过以下方式之一继续：
+* 请与订阅所有者联系，并请求所有者自行完成本文中所述的步骤
+* 联系你的订阅所有者或订阅上具有用户访问管理员角色的某人，并请求他们将你提升为订阅的所有者，这样你就有权继续操作。 这是否合适取决于你的组织和其中的角色。

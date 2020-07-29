@@ -4,16 +4,16 @@ description: 如何自定义适用于 .NET 和 .NET Core 的 Azure Application I
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6f9e93d477efeee7e1d8a0b0d8704f9c83d2a4f7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b5ae1ee1e4bf9f64eb4587f0ceb76972a4571b2e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539782"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318923"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights 中的遥测通道
 
-遥测通道是 [Azure Application Insights SDK](../../azure-monitor/app/app-insights-overview.md) 不可或缺的组成部分。 它们可以管理缓冲以及将遥测数据传输到 Application Insights 服务的过程。 SDK 的 .NET 和 .NET Core 版本包含两个内置的遥测通道：`InMemoryChannel` 和 `ServerTelemetryChannel`。 本文将详细介绍每个通道，包括如何自定义通道行为。
+遥测通道是 [Azure Application Insights SDK](./app-insights-overview.md) 不可或缺的组成部分。 它们可以管理缓冲以及将遥测数据传输到 Application Insights 服务的过程。 SDK 的 .NET 和 .NET Core 版本包含两个内置的遥测通道：`InMemoryChannel` 和 `ServerTelemetryChannel`。 本文将详细介绍每个通道，包括如何自定义通道行为。
 
 ## <a name="what-are-telemetry-channels"></a>什么是遥测通道？
 
@@ -39,7 +39,7 @@ Application Insights .NET 和 .NET Core SDK 随附了两个内置通道：
 
 可以通过将遥测通道设置为活动的遥测配置来配置该遥测通道。 对于 ASP.NET 应用程序，配置过程涉及到将遥测通道实例设置为 `TelemetryConfiguration.Active`，或修改 `ApplicationInsights.config`。 对于 ASP.NET Core 应用程序，配置过程涉及到将通道添加到依赖项注入容器。
 
-以下部分演示如何在各种应用程序类型中配置通道的 `StorageFolder` 设置。 `StorageFolder` 只是可配置的设置之一。 有关配置设置的完整列表，请参阅本文稍后的[设置部分](telemetry-channels.md#configurable-settings-in-channels)。
+以下部分演示如何在各种应用程序类型中配置通道的 `StorageFolder` 设置。 `StorageFolder` 只是可配置的设置之一。 有关配置设置的完整列表，请参阅本文稍后的[设置部分](#configurable-settings-in-channels)。
 
 ### <a name="configuration-by-using-applicationinsightsconfig-for-aspnet-applications"></a>使用适用于 ASP.NET 应用程序的 ApplicationInsights.Config 进行配置
 
@@ -166,5 +166,6 @@ TelemetryConfiguration.Active.TelemetryChannel = serverTelemetryChannel;
 
 ## <a name="next-steps"></a>后续步骤
 
-* [采样](../../azure-monitor/app/sampling.md)
-* [SDK 故障排除](../../azure-monitor/app/asp-net-troubleshoot-no-data.md)
+* [采样](./sampling.md)
+* [SDK 故障排除](./asp-net-troubleshoot-no-data.md)
+

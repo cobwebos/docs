@@ -3,12 +3,12 @@ title: 充当事件网格源的 Azure Blob 存储
 description: 介绍为 Azure 事件网格 Blob 存储事件提供的属性
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: a226a46dcc85e2bb4940364d2802397edb2c2397
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 792e4b24df5eb374d1e3589629fa8628d6680cf8
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113745"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371271"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>充当事件网格源的 Azure Blob 存储
 
@@ -16,13 +16,16 @@ ms.locfileid: "86113745"
 
 
 >[!NOTE]
-> 只有类型**StorageV2 （常规用途 v2）**、 **BlockBlobStorage**和**BlobStorage**的存储帐户支持事件集成。 **存储（常规用途 v1）** *不*支持与事件网格集成。
+> 只有种类为“StorageV2 (常规用途 v2)”、“BlockBlobStorage”和“BlobStorage”的存储帐户支持事件集成。   “存储(常规用途 v1)”不支持与事件网格集成。
 
 ## <a name="event-grid-event-schema"></a>事件网格事件架构
 
 ### <a name="list-of-events-for-blob-rest-apis"></a>Blob REST API 的事件列表
 
 当客户端通过调用 Blob REST API 创建、替换或删除 Blob 时，将触发这些事件。
+
+> [!NOTE]
+> *`(abfss://URI) `* 为启用非分层命名空间的帐户使用 dfs 终结点将不会生成事件。 对于此类帐户，仅 blob 终结点 *`(wasb:// URI)`* 将生成事件。
 
  |事件名称 |说明|
  |----------|-----------|
@@ -288,14 +291,14 @@ ms.locfileid: "86113745"
 
 事件具有以下顶级数据：
 
-| 属性 | 类型 | 说明 |
+| 属性 | 类型 | 描述 |
 | -------- | ---- | ----------- |
 | 主题 | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | string | 事件主题的发布者定义路径。 |
 | eventType | string | 此事件源的一个注册事件类型。 |
 | EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| id | string | 事件的唯一标识符。 |
-| 数据 | object | Blob 存储事件数据。 |
+| id | 字符串 | 事件的唯一标识符。 |
+| data | object | Blob 存储事件数据。 |
 | dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
@@ -305,7 +308,7 @@ ms.locfileid: "86113745"
 | -------- | ---- | ----------- |
 | api | string | 触发事件的操作。 |
 | ClientRequestId | string | 客户端提供的用于存储 API 操作的请求 ID。 此 ID 可用于通过 Azure 存储诊断日志中的“client-request-id”字段关联到这些日志，并且可以通过“x-ms-client-request-id”标头提供到客户端请求中。 请参阅[日志格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。 |
-| requestId | string | 用于存储 API 操作的服务生成的请求 ID。 可用于通过 Azure 存储诊断日志中的“request-id-header”字段关联到这些日志，并且由“x-ms-request-id”标头中的初始化 API 调用返回。 请参阅[日志格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。 |
+| requestId | 字符串 | 用于存储 API 操作的服务生成的请求 ID。 可用于通过 Azure 存储诊断日志中的“request-id-header”字段关联到这些日志，并且由“x-ms-request-id”标头中的初始化 API 调用返回。 请参阅[日志格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。 |
 | eTag | string | 可用于根据条件执行操作的值。 |
 | contentType | string | 为 Blob 指定的内容类型。 |
 | contentLength | integer | Blob 大小，以字节为单位。 |

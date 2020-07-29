@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: 4f27fc9542d6c4e9027c7a1a0d4daeb7cb079e81
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9b81dbce9f73c76ceea0f7842d731d00f905fb01
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321541"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371509"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -130,7 +130,7 @@ automl_config = AutoMLConfig(task='forecasting',
 
 * 检测时序采样频率（例如每小时、每天、每周），并为缺失的时间点创建新记录以使序列连续。
 * 通过向前填充估算目标列中缺少的值，通过列值中位数估算特征列中缺少的值
-* 创建基于粒度的特征，使其对不同序列具有固定效果
+* 基于时序标识符创建功能，以实现跨不同序列的固定效果
 * 创建基于时间的特征，以帮助学习季节性模式
 * 将分类变量编码为数值数量
 
@@ -139,21 +139,21 @@ automl_config = AutoMLConfig(task='forecasting',
 | 参数&nbsp;名称 | 说明 | 必须 |
 |-------|-------|-------|
 |`time_column_name`|用于指定输入数据中用于生成时序的日期时间列并推断其频率。|✓|
-|`grain_column_names`|定义输入数据中各个序列组的名称。 如果未定义粒度，则假定数据集为一个时序。||
-|`max_horizon`|定义必需预测时间范围上限（以时序频率为单位）。 单位基于预测器应预测出的训练数据的时间间隔，例如每月、每周。|✓|
+|`time_series_id_column_names`|用于唯一标识数据中具有相同时间戳的多行的时间序列的列名称。 如果未定义时序标识符，则假定数据集为一系列时间。||
+|`forecast_horizon`|定义要预测的时间段。 范围为时序频率的单位。 单位基于预测器应预测出的训练数据的时间间隔，例如每月、每周。|✓|
 |`target_lags`|要根据数据频率滞后目标值的行数。 此滞后表示为一个列表或整数。 默认情况下，在独立变量和依赖变量之间的关系不匹配或关联时，应使用滞后。 例如，在尝试预测某产品的需求时，任何月份的需求可能取决于之前 3 个月特定商品的价格。 在此示例中，可将目标（需求）的滞后负 3 个月，以便针对正确的关系训练模型。||
 |`target_rolling_window_size`|要用于生成预测值的 *n* 个历史时间段，该值小于或等于训练集大小。 如果省略，则 *n* 为完整训练集大小。 如果训练模型时只想考虑一定量的历史记录，请指定此参数。||
 |`enable_dnn`|启用预测 DNN。||
 
 请参阅[参考文档](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)以了解详细信息。
 
-将时序设置创建为字典对象。 将 `time_column_name` 设置为数据集中的 `day_datetime` 字段。 定义 `grain_column_names` 参数，确保为数据创建两个单独的时序组（门店 A 和 B 各一个）。最后，将 `max_horizon` 设置为 50，以预测整个测试集****。 使用 `target_rolling_window_size` 将预测时段设置为 10 个时段，并使用 `target_lags` 参数指定目标值滞后两个时段。 建议将 `max_horizon`、`target_rolling_window_size` 和 `target_lags` 设置为“auto”，然后就会自动检测这些值。 在下面的示例中，“auto”设置已用于这些参数。 
+将时序设置创建为字典对象。 将 `time_column_name` 设置为数据集中的 `day_datetime` 字段。 定义 `time_series_id_column_names` 参数，确保为数据创建两个单独的时序组（门店 A 和 B 各一个）。最后，将 `forecast_horizon` 设置为 50，以预测整个测试集****。 使用 `target_rolling_window_size` 将预测时段设置为 10 个时段，并使用 `target_lags` 参数指定目标值滞后两个时段。 建议将 `forecast_horizon`、`target_rolling_window_size` 和 `target_lags` 设置为“auto”，然后就会自动检测这些值。 在下面的示例中，“auto”设置已用于这些参数。 
 
 ```python
 time_series_settings = {
     "time_column_name": "day_datetime",
-    "grain_column_names": ["store"],
-    "max_horizon": "auto",
+    "time_series_id_column_names": ["store"],
+    "forecast_horizon": "auto",
     "target_lags": "auto",
     "target_rolling_window_size": "auto",
     "preprocess": True,
@@ -163,7 +163,7 @@ time_series_settings = {
 > [!NOTE]
 > 自动机器学习预处理步骤（特征规范化、处理缺失数据，将文本转换为数字等）成为基础模型的一部分。 使用模型进行预测时，训练期间应用的相同预处理步骤将自动应用于输入数据。
 
-通过在上述代码片段中定义 `grain_column_names`，AutoML 将创建两个单独的时序组，也称为多时序。 如果未定义任何粒度，AutoML 将假定数据集是单个时序。 要详细了解单个时序，请查看 [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)。
+通过在上述代码片段中定义 `time_series_id_column_names`，AutoML 将创建两个单独的时序组，也称为多时序。 如果未定义时序标识符，AutoML 将假定该数据集是单个时间系列。 要详细了解单个时序，请查看 [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)。
 
 现在创建一个标准 `AutoMLConfig` 对象，指定 `forecasting` 任务类型，然后提交试验。 模型完成后，检索最佳的运行迭代。
 
@@ -221,6 +221,32 @@ automl_config = AutoMLConfig(task='forecasting',
 
 查看[饮料制造预测笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)，获取使用 DNN 的详细代码示例。
 
+### <a name="customize-featurization"></a>自定义特征化
+你可以自定义特征化设置，以确保用于训练机器学习模型的数据和特征能够产生相关的预测。 
+
+若要自定义 featurizations，请 `"featurization": FeaturizationConfig` 在对象中指定 `AutoMLConfig` 。 如果使用 Azure 机器学习工作室进行试验，请参阅[操作方法文章](how-to-use-automated-ml-for-ml-models.md#customize-featurization)。
+
+支持的自定义项包括：
+
+|自定义|定义|
+|--|--|
+|列用途更新|重写指定列的自动检测到的功能类型。|
+|转换器参数更新 |更新指定转换器的参数。 目前支持*Imputer* （fill_value 和中值）。|
+|删除列 |指定要从特征化中删除的列。|
+
+`FeaturizationConfig`通过定义特征化配置创建对象：
+```python
+featurization_config = FeaturizationConfig()
+# `logQuantity` is a leaky feature, so we remove it.
+featurization_config.drop_columns = ['logQuantitity']
+# Force the CPWVOL5 feature to be of numeric type.
+featurization_config.add_column_purpose('CPWVOL5', 'Numeric')
+# Fill missing values in the target column, Quantity, with zeroes.
+featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy": "constant", "fill_value": 0})
+# Fill mising values in the `INCOME` column with median value.
+featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
+```
+
 ### <a name="target-rolling-window-aggregation"></a>目标滚动窗口聚合
 通常，目标的最新值是预测程序能具有的最佳信息。 创建目标的累计统计信息可能会提高预测的准确性。 通过目标滚动窗口聚合，可将数据值的滚动聚合添加为特征。 要启动目标滚动窗口，请将 `target_rolling_window_size` 设置为所需的整数窗口大小。 
 
@@ -271,7 +297,7 @@ rmse = sqrt(mean_squared_error(actual_labels, predict_labels))
 rmse
 ```
 
-现在确定了模型的整体准确性，最现实的下一步是使用模型来预测未知的未来值。 提供与测试集 `test_data` 具有相同格式但具有未来日期时间的数据集，生成的预测集就是每个时序步骤的预测值。 假设数据集中最后的时序记录针对的是 2018/12/31。 若要预测次日的需求（或者小于或等于 `max_horizon` 的待预测时间段），请为每个商店创建 2019/01/01 的一条时序记录。
+现在确定了模型的整体准确性，最现实的下一步是使用模型来预测未知的未来值。 提供与测试集 `test_data` 具有相同格式但具有未来日期时间的数据集，生成的预测集就是每个时序步骤的预测值。 假设数据集中最后的时序记录针对的是 2018/12/31。 若要预测次日的需求（或者小于或等于 `forecast_horizon` 的待预测时间段），请为每个商店创建 2019/01/01 的一条时序记录。
 
 ```output
 day_datetime,store,week_of_year
@@ -282,7 +308,7 @@ day_datetime,store,week_of_year
 重复执行必要的步骤，将此未来数据加载到数据帧，然后运行 `best_run.predict(test_data)` 以预测未来值。
 
 > [!NOTE]
-> 不能预测大于 `max_horizon` 的时间段数的值。 必须使用更大的时间范围对模型进行重新训练，才能预测当前时间范围之外的未来值。
+> 不能预测大于 `forecast_horizon` 的时间段数的值。 必须使用更大的时间范围对模型进行重新训练，才能预测当前时间范围之外的未来值。
 
 ## <a name="next-steps"></a>后续步骤
 

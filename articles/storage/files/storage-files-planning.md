@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d1d36c6f6413a9438063c6fe30403af095ed9a6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e39ec197b0bbce5d963650abd5dc7811647fa01
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659631"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370353"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 可以通过两种主要方式部署[Azure 文件](storage-files-introduction.md)：直接装载无服务器 Azure 文件共享，或使用 Azure 文件同步在本地缓存 azure 文件共享。你选择哪种部署选项会更改你在规划部署时需要考虑的事项。 
@@ -29,9 +30,9 @@ ms.locfileid: "84659631"
 
 - 仅将 Azure 文件共享部署到已包含其他 Azure 文件共享的存储帐户。 尽管 GPv2 存储帐户允许使用混合用途的存储帐户，但由于 Azure 文件共享和 Blob 容器等存储资源共享存储帐户的限制，因此，将资源混合在一起可能会导致将来更难以排查性能问题。 
 
-- 部署 Azure 文件共享时请注意存储帐户的 IOPS 限制。 理想情况下，会将文件共享与存储帐户以 1:1 的比例进行映射，但由于存在来自于你的组织和 Azure 的各种限制，这并非总是可能的。 如果无法做到在一个存储帐户中只部署一个文件共享，可以考虑哪些共享会非常活跃，哪些共享不会那么活跃，以此确保不会将使用率最高的那些文件共享放置在同一存储帐户中。
+- 部署 Azure 文件共享时请注意存储帐户的 IOPS 限制。 理想情况下，应该以 1:1 的形式将文件共享与存储帐户相映射，但由于组织和 Azure 施加的各种限制和制约，不一定总能实现这种映射。 无法在一个存储帐户中部署一个文件共享时，请考虑哪些共享高度活跃，哪些共享不够活跃，以确保不会将访问量最大的文件共享一起放到同一存储帐户中。
 
-- 仅当在环境中找到 GPv2 和 FileStorage 帐户并升级 GPv1 和经典存储帐户时，才部署这些帐户。 
+- 仅部署 GPv2 帐户和 FileStorage 帐户，在环境中找到 GPv1 帐户和经典存储帐户时对其进行升级。 
 
 ## <a name="identity"></a>标识
 若要访问某个 Azure 文件共享，该文件共享的用户必须完成身份验证，并已获得授权。 这种授权是根据访问文件共享的用户的标识完成的。 Azure 文件与三个主要标识提供者集成：
@@ -75,10 +76,34 @@ Azure 文件存储支持两种不同类型的加密：传输中加密（与装�
 ### <a name="encryption-at-rest"></a>静态加密
 [!INCLUDE [storage-files-encryption-at-rest](../../../includes/storage-files-encryption-at-rest.md)]
 
+## <a name="data-protection"></a>数据保护
+Azure 文件具有多层方法，可确保你的数据已备份、可恢复并受安全威胁保护。
+
+### <a name="soft-delete"></a>软删除
+用于文件共享的软删除（预览版）是一种存储帐户级别设置，可用于在意外删除文件共享时恢复文件共享。 删除文件共享时，它会转换为软删除状态，而不会被永久删除。 你可以配置软删除数据在被永久删除之前可恢复的时间量，并在此保留期内随时删除该共享。 
+
+建议为大多数文件共享启用软删除。 如果你的工作流中存在共享删除的常用和预期，你可能会决定保留时间非常短，或者根本没有启用软删除。
+
+有关软删除的详细信息，请参阅[防止意外删除数据](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion)。
+
+### <a name="backup"></a>备份
+可以通过共享快照备份 Azure 文件共享，[共享快照](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)是共享的只读时间点副本。 快照是增量快照，这意味着它们只包含自上一个快照以来已更改的数据量。 每个文件共享最多可以有200个快照，并将其保留长达10年。 你可以通过 PowerShell 或命令行接口（CLI）在 Azure 门户中手动获取这些快照，或者可以使用[Azure 备份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)。 快照存储在文件共享中，这意味着，如果删除文件共享，则还会删除快照。 若要保护快照备份不被意外删除，请确保为共享启用软删除。
+
+Azure[文件共享的 Azure 备份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)处理快照的计划和保留。 它的祖父-父-子（GFS）功能意味着您可以每日、每周、每月和每年的快照，每个快照都有各自的保持期。 Azure 备份还会协调软删除的启用，并在存储帐户中的任何文件共享配置为进行备份时立即对存储帐户执行删除锁定。 最后，Azure 备份提供某些关键的监视和警报功能，使客户能够获得其备份空间的合并视图。
+
+可以使用 Azure 备份在 Azure 门户中执行项级和共享级还原。 只需选择还原点（特定快照）、特定文件或目录（如果相关），然后选择要还原到的位置（原始或备用）即可。 备份服务会处理复制快照数据，并在门户中显示还原进度。
+
+有关备份的详细信息，请参阅[关于 Azure 文件共享备份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)。
+
+### <a name="advanced-threat-protection-for-azure-files-preview"></a>Azure 文件的高级威胁防护（预览版）
+适用于 Azure 存储的高级威胁防护（ATP）提供了额外的安全智能层，当它检测到存储帐户上的异常活动（例如，访问存储帐户的异常尝试）时，它将提供警报。 ATP 还会运行恶意软件哈希信誉分析，并对已知的恶意软件发出警报。 可以通过 Azure 安全中心在订阅或存储帐户级别上配置 ATP。 
+
+有关详细信息，请参阅[Azure 存储的高级威胁防护](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)。
+
 ## <a name="storage-tiers"></a>存储层
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
 
-通常，高级文件共享和标准文件共享之间的 Azure 文件功能和与其他服务的互操作性是相同的，但有几个重要的区别：
+通常，Azure 文件存储功能以及与其他服务的互操作性在高级文件共享和标准文件共享之间是相同的，但有几个重要区别：
 - **计费模式**
     - 高级文件共享使用预配的计费模式进行计费，这意味着你需要为预配的存储量而不是实际请求的存储量付费。 
     - 标准文件共享使用即用即付模型进行计费，其中包括实际使用的存储量的基本成本，并根据使用共享的方式增加事务成本。 使用标准文件共享时，如果你使用（读取/写入/装载） Azure 文件共享，则你的帐单将会增加。
@@ -86,14 +111,14 @@ Azure 文件存储支持两种不同类型的加密：传输中加密（与装�
     - 高级文件共享仅适用于本地冗余（LRS）和区域冗余（ZRS）存储。
     - 标准文件共享可用于本地冗余、区域冗余、异地冗余（GRS）和异地冗余（GZRS）存储。
 - **文件共享的最大大小**
-    - 高级文件共享最多可预配到 100 TiB，无需任何额外的工作。
-    - 默认情况下，标准文件共享仅可跨越最多5个 TiB，不过，通过选择 "*大文件共享*存储帐户" 功能标志，可以将共享限制增加到 100 TiB。 对于本地冗余存储帐户或区域冗余存储帐户，标准文件共享最多只能跨越100个 TiB。 有关增加文件共享大小的详细信息，请参阅[启用和创建大型文件共享](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share)。
+    - 高级文件共享最多可预配 100 TiB，无需任何额外的操作。
+    - 默认情况下，标准文件共享的上限是 5 TiB，但可以通过选择“大文件共享”存储帐户功能标志将共享限制增加到 100 TiB。 对于本地冗余存储帐户或区域冗余存储帐户，标准文件共享的上限是 100 TiB。 有关增加文件共享大小的详细信息，请参阅[启用和创建大文件共享](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share)。
 - **区域可用性**
     - 高级文件共享在每个区域中都不可用，区域冗余支持在一小部分区域中提供。 若要确定高级文件共享目前是否可在你的区域中使用，请参阅 Azure 的[产品的上市区域](https://azure.microsoft.com/global-infrastructure/services/?products=storage)页。 若要找出哪些区域支持 ZRS，请参阅[按区域的 Azure 可用性区域支持](../../availability-zones/az-region.md)。 若要帮助我们确定新的区域和高级层功能的优先级，请填写此[调查](https://aka.ms/pfsfeedback)。
     - 标准文件共享在每个 Azure 区域中可用。
-- Azure Kubernetes Service （AKS）支持版本1.13 及更高版本中的高级文件共享。
+- Azure Kubernetes 服务 (AKS) 在 1.13 及更高版本中支持高级文件共享。
 
-一旦将文件共享创建为高级或标准文件共享，就不能自动将其转换为另一层。 如果要切换到另一层，则必须在该层中创建新的文件共享，并手动将原始共享中的数据复制到所创建的新共享。 建议使用 `robocopy` For Windows 或 `rsync` MacOS 和 Linux 来执行该复制。
+将文件共享创建为高级文件共享或标准文件共享后，便无法自动将其转换为其他层。 若要切换到其他层，必须在该层中创建新的文件共享，并手动将原始共享中的数据复制到所创建的新共享。 建议使用 `robocopy`（适用于 Windows）或 `rsync`（适用于 macOS 和 Linux）来执行该复制。
 
 ### <a name="understanding-provisioning-for-premium-file-shares"></a>了解高级文件共享的预配
 高级文件共享是基于固定的 GiB/IOPS/吞吐量比率预配的。 对于预配的每个 GiB，将向该共享分配 1 IOPS 和 0.1 MiB/秒的吞吐量，最多可达每个共享的最大限制。 允许的最小预配为 100 GiB 以及最小的 IOPS/吞吐量。

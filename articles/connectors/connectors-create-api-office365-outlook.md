@@ -3,15 +3,16 @@ title: 连接到 Office 365 Outlook
 description: 使用 Azure 逻辑应用自动执行用于管理 Office 365 Outlook 中的电子邮件、联系人和日历的任务和工作流
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 01/08/2020
+ms.date: 07/27/2020
 tags: connectors
-ms.openlocfilehash: b0f2b8b9c369fdb42c7e0e7f77fc090424ae3729
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa5be3d58ee1a0a40d0b817e1f5999ccd4bc423d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75732653"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319229"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Office 365 Outlook 中的电子邮件、联系人和日历
 
@@ -28,9 +29,9 @@ ms.locfileid: "75732653"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 一个 [Office 365 帐户](https://www.office.com/)
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
-* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
+* 一个 [Office 365 帐户](https://www.office.com/)
 
 * 你要在其中访问 Office 365 Outlook 帐户的逻辑应用。 若要通过 Office 365 Outlook 触发器启动工作流，需要有一个[空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要向工作流中添加 Office 365 Outlook 操作，逻辑应用需要已有一个触发器。
 
@@ -45,6 +46,9 @@ ms.locfileid: "75732653"
    ![选择用于启动逻辑应用的触发器](./media/connectors-create-api-office365-outlook/office365-trigger.png)
 
 1. 如果系统提示你登录，请提供你的 Office 365 凭据，以便逻辑应用可以连接到你的帐户。 或者，如果连接已存在，请提供触发器属性的信息。
+
+   > [!NOTE]
+   > 即使更改了登录凭据，连接也不会在吊销之前过期。 有关详细信息，请参阅 [Azure Active Directory 中的可配置令牌生存期](../active-directory/active-directory-configurable-token-lifetimes.md)。
 
    此示例选择供触发器检查的日历，例如：
 
@@ -76,6 +80,9 @@ ms.locfileid: "75732653"
 
 1. 如果系统提示你登录，请提供你的 Office 365 凭据，以便逻辑应用可以连接到你的帐户。 或者，如果连接已存在，请提供操作属性的信息。
 
+   > [!NOTE]
+   > 即使更改了登录凭据，连接也不会在吊销之前过期。 有关详细信息，请参阅 [Azure Active Directory 中的可配置令牌生存期](../active-directory/active-directory-configurable-token-lifetimes.md)。
+
    此示例选择可供操作在其中创建新联系人的联系人文件夹，例如：
 
    ![配置操作的属性](./media/connectors-create-api-office365-outlook/select-contacts-folder.png)
@@ -84,9 +91,9 @@ ms.locfileid: "75732653"
 
 1. 在设计器工具栏上选择“保存”。 
 
-## <a name="connector-specific-details"></a>特定于连接器的详细信息
+## <a name="connector-reference"></a>连接器参考
 
-有关连接器的 Swagger 文件所述的触发器、操作和限制的技术详细信息，请参阅[连接器的参考页](/connectors/office365connector/)。 
+有关此连接器的技术详细信息，如连接器的 Swagger 文件所述的触发器、操作和限制，请参阅[连接器的参考页](/connectors/office365/)。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,12 +3,12 @@ title: 使用 Azure Active Directory 授予访问权限
 description: 本文提供有关使用 Azure Active Directory 授权访问事件中心资源的信息。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: e529a1b72e364514d00c3b7ba84ba26490a9a0bb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: cb55a716498bc50dff72c0d98943de407a367d4a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131899"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371492"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>使用 Azure Active Directory 授权访问事件中心资源
 Azure 事件中心支持使用 Azure Active Directory (Azure AD) 授权对事件中心资源的请求。 可以通过 Azure AD 使用基于角色的访问控制 (RBAC) 授予对服务主体的访问权限，该服务主体可能是用户或应用程序服务主体。 若要详细了解角色和角色分配，请参阅[了解不同的角色](../role-based-access-control/overview.md)。
@@ -21,17 +21,17 @@ Azure 事件中心支持使用 Azure Active Directory (Azure AD) 授权对事件
 
 身份验证步骤要求应用程序请求包含在运行时使用的 OAuth 2.0 访问令牌。 如果应用程序在 Azure 实体（如 Azure VM、虚拟机规模集或 Azure 函数应用）中运行，它可以使用托管标识来访问资源。 若要了解如何对托管标识向事件中心服务发出的请求进行身份验证，请参阅[对使用 Azure Active Directory 和 Azure 资源的托管标识访问 Azure 事件中心资源进行身份验证](authenticate-managed-identity.md)。 
 
-授权步骤需要将一个或多个 RBAC 角色分配给安全主体。 Azure 事件中心提供 RBAC 角色，其中包括事件中心资源的权限集。 分配给安全主体的角色确定了该主体拥有的权限。 有关 RBAC 角色的详细信息，请参阅 [Azure 事件中心的内置 RBAC 角色](#built-in-rbac-roles-for-azure-event-hubs)。 
+授权步骤需要将一个或多个 RBAC 角色分配给安全主体。 Azure 事件中心提供 RBAC 角色，其中包括事件中心资源的权限集。 分配给安全主体的角色确定了该主体拥有的权限。 有关 RBAC 角色的详细信息，请参阅[Azure 事件中心的 azure 内置角色](#azure-built-in-roles-for-azure-event-hubs)。 
 
 向事件中心发出请求的本机应用程序和 Web 应用程序也可以使用 Azure AD 进行授权。 若要了解如何请求访问令牌并使用它来授权对事件中心资源的请求，请参阅[对使用 Azure AD 从应用程序访问 Azure 事件中心进行身份验证](authenticate-application.md)。 
 
 ## <a name="assign-rbac-roles-for-access-rights"></a>分配 RBAC 角色以授予访问权限
-Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 授权访问受保护的资源。 Azure 事件中心定义了一组内置的 RBAC 角色，它们包含用于访问事件中心数据的通用权限集。你也可以定义用于访问数据的自定义角色。
+Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 授权访问受保护的资源。 Azure 事件中心定义一组 Azure 内置角色，这些角色包含用于访问事件中心数据的公用权限集，还可以定义用于访问数据的自定义角色。
 
 将 RBAC 角色分配到 Azure AD 安全主体后，Azure 会向该安全主体授予对这些资源的访问权限。 访问权限的范围可限定为订阅、资源组、事件中心命名空间级别或其下的任何资源。 Azure AD 安全主体可以是用户或应用程序服务主体，也可以是 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
 
-## <a name="built-in-rbac-roles-for-azure-event-hubs"></a>Azure 事件中心的内置 RBAC 角色
-Azure 提供以下内置 RBAC 角色，用于授权使用 Azure AD 和 OAuth 访问事件中心数据：
+## <a name="azure-built-in-roles-for-azure-event-hubs"></a>Azure 事件中心的 azure 内置角色
+Azure 提供以下 Azure 内置角色，用于授权使用 Azure AD 和 OAuth 访问事件中心数据：
 
 - [Azure 事件中心数据所有者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner)：使用此角色可以授予对事件中心资源的完全访问权限。
 - [Azure 事件中心数据发送者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)：使用此角色可以授予对事件中心资源的发送访问权限。
