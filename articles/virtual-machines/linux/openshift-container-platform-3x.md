@@ -5,16 +5,16 @@ author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
 ms.subservice: workloads
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: bc30275b2ee24af7bb526b3b43618c706bc027ca
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0c60fdfda0c18f5a8feb11c3d9c5a386025670cd
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502089"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368143"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平台3.11
 
@@ -243,7 +243,7 @@ ms.locfileid: "86502089"
 
 ### <a name="azuredeployparametersjson-file-explained"></a>说明的文件 azuredeploy.Parameters.js
 
-| properties | 说明 | 有效选项 | 默认值 |
+| 属性 | 说明 | 有效选项 | 默认值 |
 |----------|-------------|---------------|---------------|
 | `_artifactsLocation`  | 项目的 URL （json、脚本等） |  |  https： \/ /raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
 | `location` | 要将资源部署到的 Azure 区域 |  |  |
@@ -295,9 +295,9 @@ ms.locfileid: "86502089"
 | `existingInfraSubnetReference` | 对基础节点的现有子网的完整引用。 如果创建新的 vNet/子网，则不需要 |  |  |
 | `existingCnsSubnetReference` | 对 CNS 节点的现有子网的完整引用。 如果创建新的 vNet/子网，则不需要 |  |  |
 | `existingNodeSubnetReference` | 完全引用计算节点的现有子网。 如果创建新的 vNet/子网，则不需要 |  |  |
-| `masterClusterType` | 指定群集是使用专用还是公用主节点。 如果选择了 "专用"，则不会通过公共 IP 向 Internet 公开主节点。 相反，它将使用`masterPrivateClusterIp` | public <br> private | public |
+| `masterClusterType` | 指定群集是使用专用还是公用主节点。 如果选择了 "专用"，则不会通过公共 IP 向 Internet 公开主节点。 相反，它将使用`masterPrivateClusterIp` | 公共 <br> private | 公共 |
 | `masterPrivateClusterIp` | 如果选择了 "专用主节点"，则必须指定专用 IP 地址以供主节点的内部负载均衡器使用。 此静态 IP 必须在子网的 CIDR 块中，但尚未使用。 如果选择了公共主节点，则不会使用此值，但仍必须指定该值 |  | 10.1.0.200 |
-| `routerClusterType` | 指定群集是使用专用节点还是公共基础节点。 如果选择 "专用"，则不会通过公共 IP 向 Internet 公开基础节点。 相反，它将使用`routerPrivateClusterIp` | public <br> private | public |
+| `routerClusterType` | 指定群集是使用专用节点还是公共基础节点。 如果选择 "专用"，则不会通过公共 IP 向 Internet 公开基础节点。 相反，它将使用`routerPrivateClusterIp` | 公共 <br> private | 公共 |
 | `routerPrivateClusterIp` | 如果选择了 "专用" 基础节点，则必须指定专用 IP 地址以供基础节点的内部负载均衡器使用。 此静态 IP 必须位于用于基础子网且尚未使用的 CIDR 块内。 如果选择了公共基础节点，则不会使用此值，但仍必须指定。 |  | 10.2.0.200 |
 | `routingCertType` | 使用自定义证书来路由域或默认的自签名证书-按照 "**自定义证书**" 部分中的说明操作 | selfsigned <br> 自定义 | selfsigned |
 | `masterCertType` | 为主域或默认的自签名证书使用自定义证书-按照**自定义证书**部分中的说明进行操作 | selfsigned <br> 自定义 | selfsigned |

@@ -3,16 +3,16 @@ title: 使用 Azure CLI 复制 Linux VM
 description: 了解如何使用 Azure CLI 和托管磁盘创建 Azure Linux VM 的副本。
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: 8532c0da7d9977b12a4d1099e430584de1e17fe0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ec8fd91dc768b44b027c96efead6924782eb0f75
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502735"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368602"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>使用 Azure CLI 和托管磁盘创建 Azure Linux VM 的副本
 

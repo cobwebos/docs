@@ -5,18 +5,18 @@ description: 了解部署 Azure 机器学习模型（包括 Azure 容器实例�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2020
-ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: ee116d668b9c351ecf5b130a39e418a3da8fc053
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: f592e265cafc3e56dc0616e6eeb748c851084c32
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536379"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317869"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure 机器学习部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,6 +31,11 @@ ms.locfileid: "86536379"
 1. 测试已部署的模型（也称为“Web 服务”）。
 
 有关部署工作流涉及的概念的详细信息，请参阅[使用 Azure 机器学习管理、部署和监视模型](concept-model-management-and-deployment.md)。
+
+> [!IMPORTANT]
+> 强烈建议在部署到 web 服务之前进行本地调试。有关详细信息，请参阅[本地调试](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)
+>
+> 你还可以参阅 Azure 机器学习-[部署到本地笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -222,7 +227,7 @@ myenv.register(workspace=ws)
 
 * `init()`：此函数通常将模型载入全局对象。 此函数只能在 Web 服务的 Docker 容器启动时运行一次。
 
-* `run(input_data)`：此函数使用模型来基于输入数据预测值。 运行的输入和输出通常使用 JSON 进行序列化和反序列化。 也可以处理原始二进制数据。 可以先转换数据，然后再将数据发送到模型或返回给客户端。
+* `run(input_data)`：此函数使用模型来基于输入数据预测值。 运行的输入和输出通常使用 JSON 进行序列化和反序列化。 你也可以使用原始二进制数据。 可以先转换数据，然后再将数据发送到模型或返回给客户端。
 
 #### <a name="load-model-files-in-your-entry-script"></a>在入口脚本中加载模型文件
 

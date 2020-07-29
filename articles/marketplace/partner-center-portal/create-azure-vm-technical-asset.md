@@ -4,15 +4,15 @@ description: 了解如何为 Azure 市场的虚拟机 (VM) 产品/服务创建�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: dannyevers
-ms.author: mingshen
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 04/13/2020
-ms.openlocfilehash: 5bed073799521498efe5302ab9af616dcdf9f9ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 69458a7a3f2555a301c1266addfe7c49cb111ef6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053568"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317750"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>创建 Azure 虚拟机技术资产
 

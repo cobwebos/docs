@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 备份服务管理和监视 Microsoft Azur
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 376e2d53165ab822f75e635b42106e1fe13282a9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 096f47ba4a3d8d490c9cfaf43f4dafec4faf10f9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054982"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317342"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 备份服务管理 Microsoft Azure 恢复服务（MARS）代理备份
 
@@ -112,7 +112,7 @@ ms.locfileid: "87054982"
 1. 在**暂停计划的备份**中，查看信息，然后单击 "**完成**"。
 
     ![修改或停止计划的备份。](./media/backup-azure-manage-mars/pause-schedule-backup.png)
-1. 在 "**修改备份过程**" 中，检查计划备份暂停是否处于成功状态，并单击 "**关闭**" 完成操作。
+1. 在 "**修改备份进度**" 中，检查计划备份暂停是否处于成功状态，并单击 "**关闭**" 完成操作。
 
 ### <a name="stop-protection-and-delete-backup-data"></a>停止保护并删除备份数据
 

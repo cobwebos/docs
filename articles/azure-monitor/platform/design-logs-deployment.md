@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 939a2e67d6d2c215f7a575b6b9bd08660fc03b27
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3a6afd42c12a523523b45861b38b323fa680ecab
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008193"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317278"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>设计 Azure Monitor 日志部署
 
@@ -47,12 +47,12 @@ Log Analytics 工作区可提供：
 
 使用 Log Analytics 代理收集数据时，需要了解以下各项以规划代理部署：
 
-* 要从 Windows 代理收集数据，可以[配置每个代理以向一个或多个工作区报告](../../azure-monitor/platform/agent-windows.md)，即使它向 System Center Operations Manager 管理组报告也是如此。 Windows 代理最多可向四个工作区报告。
+* 要从 Windows 代理收集数据，可以[配置每个代理以向一个或多个工作区报告](./agent-windows.md)，即使它向 System Center Operations Manager 管理组报告也是如此。 Windows 代理最多可向四个工作区报告。
 * Linux 代理不支持多宿主，只能向一个工作区报告。
 
 如果使用 System Center Operations Manager 2012 R2 或更高版本：
 
-* 每个 Operations Manager 管理组[只能连接到一个工作区](../platform/om-agents.md)。 
+* 每个 Operations Manager 管理组[只能连接到一个工作区](./om-agents.md)。 
 * 向管理组报告的 Linux 计算机必须配置为直接向 Log Analytics 工作区报告。 如果 Linux 计算机已经是直接向工作区报告，并且你希望使用 Operations Manager 监视它们，请按照以下步骤[向 Operations Manager 管理组报告](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group)。 
 * 可以在 Windows 计算机上安装 Log Analytics Windows 代理，使其向与工作区集成的 Operations Manager 以及与其他工作区集成的 Operations Manager 报告。
 
@@ -166,3 +166,4 @@ Operation
 ## <a name="next-steps"></a>后续步骤
 
 若要实施本指南中建议的安全权限和控制措施，请查看[管理对日志的访问权限](manage-access.md)。
+

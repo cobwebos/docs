@@ -3,15 +3,15 @@ title: 从 Azure 下载 Linux VHD
 description: 使用 Azure CLI 和 Azure 门户下载 Linux VHD。
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/21/2019
 ms.author: cynthn
-ms.openlocfilehash: 14beeebe15193cbe2ef4684f97e4783810ad77a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6254be55ae2a1ba6d178d330a41903585da2e50a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510542"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289770"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>从 Azure 下载 Linux VHD
 
@@ -60,14 +60,14 @@ ms.locfileid: "86510542"
 若要下载 VHD 文件，需要生成[共享访问签名（SAS）](../../storage/common/storage-sas-overview.md?toc=/azure/virtual-machines/windows/toc.json) URL。 生成 URL 时，将为 URL 分配到期时间。
 
 1.  在 VM 页的菜单上，选择“磁盘”****。
-2.  为 VM 选择操作系统磁盘，然后选择“磁盘导出”****。
-3.  选择“生成 URL”****。
+2.  为 VM 选择操作系统磁盘，然后选择“磁盘导出”。
+3.  选择“生成 URL”。
 
     ![生成 URL](./media/download-vhd/export-generate.png)
 
 ## <a name="download-vhd"></a>下载 VHD
 
-1.  在生成的 URL 下，选择“下载 VHD 文件”****。
+1.  在生成的 URL 下，选择“下载 VHD 文件”。
 **
     ![下载 VHD](./media/download-vhd/export-download.png)
 

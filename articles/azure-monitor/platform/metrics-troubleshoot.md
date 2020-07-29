@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: e1ad4e53596b8228bdef5beb18aa250a9512c49f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2f7e45c7f6092566314e6e4867bc0345683e4eb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659656"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318379"
 ---
 # <a name="troubleshooting-metrics-charts"></a>排查指标图表问题
 
@@ -67,7 +68,7 @@ ms.locfileid: "77659656"
 
 收集**来宾 OS** 指标需要配置 Azure 诊断扩展，或使用资源的“诊断设置”面板来启用该扩展。 
 
-**解决方案：** 如果 Azure 诊断扩展已启用，但你仍然无法看到指标，请遵循 [Azure 诊断扩展故障排除指南](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)中所述的步骤。 另请参阅[无法选取来宾 OS 命名空间和指标](metrics-troubleshoot.md#cannot-pick-guest-os-namespace-and-metrics)的故障排除步骤
+**解决方案：** 如果 Azure 诊断扩展已启用，但你仍然无法看到指标，请遵循 [Azure 诊断扩展故障排除指南](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)中所述的步骤。 另请参阅[无法选取来宾 OS 命名空间和指标](#cannot-pick-guest-os-namespace-and-metrics)的故障排除步骤
 
 ## <a name="error-retrieving-data-message-on-dashboard"></a>仪表板上显示“检索数据时出错”消息
 
@@ -105,7 +106,7 @@ Azure 指标图表使用虚线样式来指示两个已知时间粒度数据点�
     > [!WARNING]
     > 无法使用 [Log Analytics 代理](agents-overview.md#log-analytics-agent)（也称为 Microsoft Monitoring Agent 或“MMA”）将“来宾 OS”指标发送到存储帐户。 
 
-1. 请确保已[为订阅注册](metrics-troubleshoot.md#microsoftinsights-resource-provider-isnt-registered-for-your-subscription) Microsoft.Insights 资源提供程序  。
+1. 请确保已[为订阅注册](#microsoftinsights-resource-provider-isnt-registered-for-your-subscription) Microsoft.Insights 资源提供程序  。
 
 1. 验证存储帐户是否不受防火墙的保护。 Azure 门户需要对存储帐户的访问权限才能检索指标数据和绘制图表。
 
@@ -117,3 +118,4 @@ Azure 指标图表使用虚线样式来指示两个已知时间粒度数据点�
 * [了解指标资源管理器的高级功能](metrics-charts.md)
 * [查看 Azure 服务的可用指标列表](metrics-supported.md)
 * [查看已配置图表的示例](metric-chart-samples.md)
+

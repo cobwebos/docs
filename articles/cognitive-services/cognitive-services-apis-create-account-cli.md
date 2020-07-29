@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 10/04/2019
+ms.date: 07/27/2020
 ms.author: aahi
-ms.openlocfilehash: 72b00d78d19ed0e963b4dad01b82033c659e1efd
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: b77d69248059a494d823afcd149382dd52b0e49d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84704703"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317121"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>使用 Azure 命令行接口 (CLI) 创建认知服务资源
 
@@ -58,9 +58,9 @@ az account list-locations \
     --out table
 ```
 
-选择 Azure 位置后，在 Azure CLI 中使用 [az group create](/cli/azure/group#az-group-create) 命令创建新的资源组。
+获得 Azure 位置之后，使用[az group create](/cli/azure/group#az-group-create)命令在 Azure CLI 中创建新的资源组。
 
-在以下示例中，请将 Azure 位置 `westus2` 替换为你的订阅可用的某个 Azure 位置。
+在下面的示例中，将 Azure 位置替换为 `westus2` 适用于订阅的 azure 位置之一。
 
 ```azurecli-interactive
 az group create \
@@ -151,6 +151,8 @@ az cognitiveservices account create \
     --location westus2 \
     --yes
 ```
+
+[!INCLUDE [Register Azure resource for subscription](./includes/register-resource-subscription.md)]
 
 ## <a name="get-the-keys-for-your-resource"></a>获取资源的密钥
 

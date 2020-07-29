@@ -1,18 +1,18 @@
 ---
 title: 创建咨询服务产品/服务 - Microsoft 商业市场
 description: 了解如何使用合作伙伴中心将咨询服务产品/服务发布到 Microsoft AppSource 或 Azure 市场。
-author: anbene
-ms.author: mingshen
+author: Microsoft-BradleyWright
+ms.author: brwrigh
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: a06f0838f25e771a90fb6dc6f4fcd3bd9bdeda87
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 11f4091489a8ef8c980ece0589945c8e1c7dc8b8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203807"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317767"
 ---
 # <a name="create-a-consulting-service-offer"></a>创建咨询服务套餐
 
@@ -77,8 +77,8 @@ ms.locfileid: "86203807"
 下面是一些其他潜在客户管理资源：
 
 - [潜在客户管理概述](commercial-marketplace-get-customer-leads.md)
-- [潜在客户管理常见问题](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)) 
-- [常见的潜在客户配置错误](../lead-management-for-cloud-marketplace.md#publishing-config-errors)) 
+- [潜在客户管理常见问题](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)）
+- [常见潜在客户配置错误](../lead-management-for-cloud-marketplace.md#publishing-config-errors)）
 - [潜在客户管理概述](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF（确保弹出窗口阻止程序处于关闭状态）
 
 选择“保存草稿”，然后继续。
@@ -129,7 +129,7 @@ ms.locfileid: "86203807"
 > [!NOTE]
 > 如果产品/服务说明的开头是“此应用程序仅以 [非英语语言] 推出”，则产品/服务详细信息不必是英语。&quot;&quot;还可以提供一个有用的链接，来使用与产品/服务列表详细信息中所使用的语言不同的语言提供内容。
 
-下面是一个示例，说明如何在 Azure Marketplace 中显示产品/服务 (任何列出的价格仅用于举例目的，而不用于反映实际成本) ：
+下面是一个示例，说明如何在 Azure Marketplace 中显示提供信息（任何列出的价格仅用于举例目的，而不打算反映实际成本）：
 
 :::image type="content" source="media/example-consulting-service-offer.png" alt-text="说明此产品/服务在 Azure Marketplace 中的显示方式。":::
 
@@ -140,11 +140,11 @@ ms.locfileid: "86203807"
 3. 解决方案领域
 4. 行业
 5. 产品名称
-6. 总结
+6. 摘要
 7. 说明
 8. 屏幕截图/视频
 
-<br>以下示例显示了产品/服务信息在 Microsoft AppSource 中的显示方式， (所有的价格仅用于举例目的，而不用于反映实际成本) ：
+<br>以下示例显示了产品/服务信息在 Microsoft AppSource 中的显示方式（任何列出的价格仅用于举例目的，不打算反映实际成本）：
 
 :::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="说明了此产品/服务在 Microsoft AppSource 中的显示方式。":::
 
@@ -155,7 +155,7 @@ ms.locfileid: "86203807"
 3. 产品
 4. 行业
 5. 产品名称
-6. 总结
+6. 摘要
 7. 说明
 8. 屏幕截图/视频
 9. 文档

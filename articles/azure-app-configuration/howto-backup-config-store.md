@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 6dd485adb71bf05be6499f2fc18572e8a28357d7
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 0b057172c822f893e602d60f77a285f0867cf368
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209289"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367752"
 ---
 # <a name="backup-app-configuration-stores-automatically"></a>自动存储备份应用配置
 
@@ -37,7 +37,7 @@ ms.locfileid: "86209289"
 - Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)。 可以选择使用 Azure Cloud Shell。
 - 适用于 Azure 开发工作负荷的[Visual Studio 2019](https://visualstudio.microsoft.com/vs) 。
 - 下载并安装 [.NET Core SDK](https://dotnet.microsoft.com/download)。
-- 最新版本的 Azure CLI (2.3.1 或更高版本) 。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果使用 Azure CLI，则必须先使用登录 `az login` 。 可以选择使用 Azure Cloud Shell。
+- 最新版本的 Azure CLI （2.3.1 或更高版本）。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果使用 Azure CLI，则必须先使用登录 `az login` 。 可以选择使用 Azure Cloud Shell。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -169,7 +169,7 @@ az functionapp identity assign --name $functionAppName --resource-group $resourc
 ```
 
 > [!NOTE]
-> 若要执行所需的资源创建和角色管理，你 `'Owner'` 的帐户需要 (订阅或资源组) 的适当范围内的权限。 如果需要有关角色分配的帮助，请了解[如何使用 Azure 门户添加或删除 Azure 角色分配](/azure/role-based-access-control/role-assignments-portal)。
+> 若要执行所需的资源创建和角色管理，你 `'Owner'` 的帐户需要在适当的作用域（订阅或资源组）的权限。 如果需要有关角色分配的帮助，请了解[如何使用 Azure 门户添加或删除 Azure 角色分配](/azure/role-based-access-control/role-assignments-portal)。
 
 使用以下命令或[Azure 门户](/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity#grant-access-to-app-configuration)向 Azure Function App 的托管标识授予对应用配置存储的访问权限。
 - `App Configuration Data Reader`在主应用配置存储中分配角色。

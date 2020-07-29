@@ -4,15 +4,15 @@ description: 文件
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
-author: anbene
+author: mingshen-ms
 ms.author: mingshen
 ms.date: 05/19/2020
-ms.openlocfilehash: bf56e9760970a0d9a71d1e94949c36baeb278ee9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b556f23abc54d607a168af256cefd4ba68c4d9d1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121823"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317702"
 ---
 要使产品/服务说明更具吸引力，请使用 RTF 编辑器应用格式设置。
 

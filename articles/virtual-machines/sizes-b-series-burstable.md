@@ -5,14 +5,15 @@ services: virtual-machines
 ms.subservice: sizes
 author: ayshakeen
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: 6e7411f30ac0ef03ecd621f4cf6db5cd9350201b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3a5d2228074ed358244b49bdf283c09f777ddee
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678539"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292072"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列可突增虚拟机大小
 
@@ -89,7 +90,7 @@ B16 特征：
 
 对于具有16个个 vcpu 和 64 GiB 内存的 D16s_v3，每小时费率为 $0.936/小时（每月 $673.92），对于 B16ms 为16个 vcpu，64 GiB 内存为每小时 $0.794 （每月 $547.86）。 <b>这会节省15% 的费用！</b>
 
-## <a name="q--a"></a>问题解答
+## <a name="q--a"></a>问与答
 
 ### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>问：如何从 VM 获得 135% 的基线性能？
 
@@ -134,7 +135,7 @@ B16 特征：
 
 **答**： B1ls 仅支持 Linux 映像，如果部署任何其他操作系统映像，则可能不会获得最佳的客户体验。
 
-## <a name="other-sizes"></a>其他大小
+## <a name="other-sizes-and-information"></a>其他大小和信息
 
 - [常规用途](sizes-general.md)
 - [计算优化](sizes-compute.md)
@@ -142,6 +143,10 @@ B16 特征：
 - [存储优化](sizes-storage.md)
 - [GPU 优化](sizes-gpu.md)
 - [高性能计算](sizes-hpc.md)
+
+定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
+
+有关磁盘类型的详细信息：[磁盘类型](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
 
 ## <a name="next-steps"></a>后续步骤
 
