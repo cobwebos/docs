@@ -6,12 +6,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 81e27c0f62e921eb468c78521e426c8917da250a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 56438389ea8a371335facd3cfd0b2d4161b421c3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014132"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326556"
 ---
 # <a name="connection-strings"></a>连接字符串
 
@@ -274,14 +274,15 @@ tracer = Tracer(exporter=AzureExporter(connection_string='InstrumentationKey=000
 
 在运行时开始使用：
 
-* [Azure VM 和 Azure 虚拟机规模集的托管 IIS 应用](../../azure-monitor/app/azure-vm-vmss-apps.md)
-* [IIS 服务器](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Azure Web 应用](../../azure-monitor/app/azure-web-apps.md)
+* [Azure VM 和 Azure 虚拟机规模集的托管 IIS 应用](./azure-vm-vmss-apps.md)
+* [IIS 服务器](./monitor-performance-live-website-now.md)
+* [Azure Web 应用](./azure-web-apps.md)
 
 在开发时开始使用：
 
-* [ASP.NET](../../azure-monitor/app/asp-net.md)
-* [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
-* [Java](../../azure-monitor/app/java-get-started.md)
-* [Node.js](../../azure-monitor/app/nodejs.md)
-* [Python](../../azure-monitor/app/opencensus-python.md)
+* [ASP.NET](./asp-net.md)
+* [ASP.NET Core](./asp-net-core.md)
+* [Java](./java-get-started.md)
+* [Node.js](./nodejs.md)
+* [Python](./opencensus-python.md)
+

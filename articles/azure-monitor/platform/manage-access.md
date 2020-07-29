@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 2fcf3b4c91e87453e2cf605eb717b75ed7d64d95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9ca2dc9d907e65b2679c08d8d2b6482f02ba53d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85105916"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327882"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>管理对 Azure Monitor 中的日志数据和工作区的访问
 
@@ -310,6 +310,7 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅 [Log Analytics 代理概述](../../azure-monitor/platform/log-analytics-agent.md)，以从数据中心或其他云环境中的计算机收集数据。
+* 请参阅 [Log Analytics 代理概述](./log-analytics-agent.md)，以从数据中心或其他云环境中的计算机收集数据。
 
-* 请参阅[收集有关 Azure 虚拟机的数据](../../azure-monitor/learn/quick-collect-azurevm.md)，以配置 Azure VM 的数据收集。
+* 请参阅[收集有关 Azure 虚拟机的数据](../learn/quick-collect-azurevm.md)，以配置 Azure VM 的数据收集。
+

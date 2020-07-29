@@ -7,12 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/21/2020
 ms.author: robinsh
-ms.custom: amqp
-ms.openlocfilehash: d00e3dc5e43eb6978f6835ac4b7d101e4a42a226
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- amqp
+- 'Role: Cloud Development'
+- 'Role: Technical Support'
+ms.openlocfilehash: 140bbc698db773f851cf03d80e8e51be9c2a21c3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84792009"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327542"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>监视 Azure IoT 中心的运行状况并快速诊断问题
 
@@ -94,7 +98,7 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 
 #### <a name="device-identity-operations"></a>设备标识操作
 
-设备标识操作类别跟踪你尝试在 IoT 中心的标识注册表中创建、更新或删除条目时所发生的错误。 预配方案就很适合跟踪此类别。
+设备标识操作类别跟踪你尝试在其 IoT 中心的标识注册表中创建、更新或删除条目时所发生的错误。 预配方案就很适合跟踪此类别。
 
 ```json
 {
@@ -144,10 +148,10 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 }
 ```
 
-下面是有关路由诊断日志的详细信息：
+以下是有关路由诊断日志的更多详细信息：
 
 * [路由诊断日志错误代码列表](troubleshoot-message-routing.md#diagnostics-error-codes)
-* [路由诊断日志 operationNames 的列表](troubleshoot-message-routing.md#diagnostics-operation-names)
+* [路由诊断日志操作名称列表](troubleshoot-message-routing.md#diagnostics-operation-names)
 
 #### <a name="device-telemetry"></a>设备遥测
 
@@ -347,9 +351,9 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 
 此时不会计算 `durationMs`，因为 IoT 中心的时钟可能不会与设备时钟同步，所以持续时间计算可能产生误导。 我们建议使用 `properties` 部分中的时间戳编写逻辑，以捕获设备到云延迟的峰值。
 
-| Property | 类型 | 描述 |
+| 属性 | 类型 | 描述 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **messageSize** | Integer | 以字节为单位的设备到云消息的大小 |
+| **messageSize** | 整数 | 以字节为单位的设备到云消息的大小 |
 | **deviceId** | ASCII 7 位字母数字字符字符串 | 设备的标识 |
 | **callerLocalTimeUtc** | UTC 时间戳 | 设备本地时钟报告的消息创建时间 |
 | **calleeLocalTimeUtc** | UTC 时间戳 | IoT 中心服务端时钟报告的消息到达 IoT 中心网关的时间 |
@@ -381,10 +385,10 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 
 在 `properties` 部分中，此日志包含有关消息入口的其他信息。
 
-| Property | 类型 | 描述 |
+| 属性 | 类型 | 描述 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **isRoutingEnabled** | String | True 或 false，指示 IoT 中心是否启用了消息路由 |
-| **parentSpanId** | String | 父消息的 [span-id](https://w3c.github.io/trace-context/#parent-id)，在这种情况下为 D2C 消息跟踪 |
+| **isRoutingEnabled** | 字符串 | True 或 false，指示 IoT 中心是否启用了消息路由 |
+| **parentSpanId** | 字符串 | 父消息的 [span-id](https://w3c.github.io/trace-context/#parent-id)，在这种情况下为 D2C 消息跟踪 |
 
 ##### <a name="iot-hub-egress-logs"></a>IoT 中心流出日志
 
@@ -413,11 +417,11 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 
 在 `properties` 部分中，此日志包含有关消息入口的其他信息。
 
-| Property | 类型 | 描述 |
+| 属性 | 类型 | 描述 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **点** | String | 路由终结点的名称 |
-| **endpointType** | String | 路由终结点的类型 |
-| **parentSpanId** | String | 父消息的 [span-id](https://w3c.github.io/trace-context/#parent-id)，在这种情况下为 IoT 中心流入消息跟踪 |
+| **点** | 字符串 | 路由终结点的名称 |
+| **endpointType** | 字符串 | 路由终结点的类型 |
+| **parentSpanId** | 字符串 | 父消息的 [span-id](https://w3c.github.io/trace-context/#parent-id)，在这种情况下为 IoT 中心流入消息跟踪 |
 
 #### <a name="configurations"></a>配置
 

@@ -5,26 +5,26 @@ description: 了解如何使用 Azure 资源管理器模板创建新的 Azure �
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: larryfr
 author: Blackmist
-ms.date: 07/09/2020
-ms.custom: seoapril2019
-ms.openlocfilehash: 49a1b190ece4ae4e937757e88af325a29f4825c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: db0b87787e34796e9dd7c91d6e4b53738145a25a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031110"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326369"
 ---
-# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure 资源管理器模板为 Azure 机器学习创建工作区
+# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure 资源管理器模板创建 Azure 机器学习的工作区
 
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 <br>
 
 本文介绍几种使用 Azure 资源管理器模板创建 Azure 机器学习工作区的方法。 使用资源管理器模板可以轻松地通过单个协调操作创建资源。 模板是一个 JSON 文档，定义部署所需的资源。 它还可以指定部署参数。 使用模板时，参数用于提供输入值。
 
-有关详细信息，请参阅[使用 Azure 资源管理器模板部署应用程序](../azure-resource-manager/templates/deploy-powershell.md)。
+有关详细信息，请参阅[使用 Azure Resource Manager 模板部署应用程序](../azure-resource-manager/templates/deploy-powershell.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -60,16 +60,16 @@ ms.locfileid: "87031110"
     其他服务的名称将随机生成。
 
 > [!TIP]
-> 当与本文档关联的模板创建了新的 Azure 容器注册表时，你还可以在无需创建容器注册表的情况下创建新工作区。 当执行需要容器注册表的操作时，将创建一个容器注册表。 例如，训练或部署模型。
+> 当与本文档关联的模板创建了新的 Azure 容器注册表时，你还可以在无需创建容器注册表的情况下创建新工作区。 当你执行需要容器注册表的操作时，会创建容器注册表。 例如，训练或部署模型。
 >
-> 还可以在 Azure 资源管理器模板中引用现有容器注册表或存储帐户，而不是创建新容器注册表或存储帐户。 但是，必须启用__管理员帐户__才能使用容器注册表。 有关启用管理员帐户的信息，请参阅[管理员帐户](/azure/container-registry/container-registry-authentication#admin-account)。
+> 还可以在 Azure 资源管理器模板中引用现有的容器注册表或存储帐户，而不是创建一个新的。 但是，所用的容器注册表必须已启用管理员帐户。 有关如何启用管理员帐户的信息，请参阅[管理员帐户](/azure/container-registry/container-registry-authentication#admin-account)。
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 有关模板的详细信息，请参阅以下文章：
 
-* [创作 Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)
-* [使用 Azure 资源管理器模板部署应用程序](../azure-resource-manager/templates/deploy-powershell.md)
+* [创作 Azure Resource Manager 模板](../azure-resource-manager/templates/template-syntax.md)
+* [使用 Azure Resource Manager 模板部署应用程序](../azure-resource-manager/templates/deploy-powershell.md)
 * [Microsoft.MachineLearningServices 资源类型](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
 
 ## <a name="deploy-template"></a>部署模板
@@ -119,6 +119,9 @@ New-AzResourceGroupDeployment `
 
 默认情况下，作为模板的一部分创建的所有资源都是新的。 不过，您也可以选择使用现有资源。 通过向模板提供其他参数，可以使用现有资源。 例如，如果你想要使用现有的存储帐户，请将**storageAccountOption**值设置为 "**现有**"，并在**storageAccountName**参数中提供存储帐户的名称。
 
+> [!IMPORTANT]
+> 如果要使用现有的 Azure 存储帐户，则该帐户不能是高级帐户（Premium_LRS 和 Premium_GRS）。 它也不能具有分层命名空间（与 Azure Data Lake Storage Gen2 一起使用）。 工作区的默认存储帐户不支持高级存储或分层命名空间。
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
 ```azurecli
@@ -149,9 +152,9 @@ New-AzResourceGroupDeployment `
 
 ## <a name="deploy-an-encrypted-workspace"></a>部署加密的工作区
 
-以下示例模板演示如何创建具有三个设置的工作区：
+以下示例模板演示如何创建具有三项设置的工作区：
 
-* 为工作区启用高机密性设置
+* 启用工作区的高保密性设置
 * 启用工作区加密
 * 使用现有的 Azure Key Vault 检索客户管理的密钥
 
@@ -374,7 +377,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="only-deploy-workspace-behind-private-endpoint"></a>仅将工作区部署到专用终结点后面
 
-如果关联的资源不在虚拟网络后面，则可以将**privateEndpointType**参数设置为 `AutoAproval` 或， `ManualApproval` 以便将工作区部署到专用终结点之后。
+如果关联的资源不在虚拟网络后面，则可以将**privateEndpointType**参数设置为 `AutoAproval` 或， `ManualApproval` 以便将工作区部署到专用终结点之后。 此操作可用于新的和现有的工作区。 更新现有工作区时，请使用现有工作区中的信息填充模板参数。
 
 > [!IMPORTANT]
 > 部署仅在支持专用终结点的区域内有效。
@@ -658,25 +661,25 @@ New-AzResourceGroupDeployment `
 
 ### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure Key Vault 访问策略和 Azure 资源管理器模板
 
-当使用 Azure 资源管理器模板多次创建工作区和相关资源（包括 Azure Key Vault）时。 例如，将模板多次与作为持续集成和部署管道的一部分的相同参数结合使用。
+使用 Azure 资源管理器模板多次创建工作区和关联的资源（包括 Azure Key Vault）时。 例如，在持续集成和部署管道过程中，对同一参数多次使用模板。
 
-通过模板创建资源的大多数操作都是幂等的，但每次使用模板时，Key Vault 都会清除访问策略。 清除访问策略会破坏为任何正在使用 Key Vault 的工作区而发起的对 Key Vault 的访问。 例如，停止/创建 Azure Notebooks VM 的功能可能会失败。  
+大多数通过模板的资源创建操作都是幂等的，但 Key Vault 每次使用模板时都将清除访问策略。 清除访问策略会中断任何使用该访问的现有工作区对 Key Vault 的访问。 例如，Azure Notebooks VM 的停止/创建功能可能会失败。  
 
-要避免此问题，建议采用以下方法之一：
+若要避免此问题，我们建议运用以下方法之一：
 
-* 不要多次为相同的参数部署模板。 或者在使用模板重新创建现有资源之前删除这些资源。
+* 请不要对同一个参数多次部署模板。 或是在使用模板重新创建之前删除现有资源。
 
-* 检查 Key Vault 访问策略，然后使用这些策略设置模板的 `accessPolicies` 属性。 要查看访问策略，请使用以下 Azure CLI 命令：
+* 检查 Key Vault 访问策略，然后使用这些策略设置模板的 `accessPolicies` 属性。 若要查看访问策略，请使用以下 Azure CLI 命令：
 
     ```azurecli
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query properties.accessPolicies
     ```
 
-    若要详细了解如何使用模板的 `accessPolicies` 部分，请参阅 [AccessPolicyEntry 对象引用](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry)。
+    若要详细了解如何使用模板的 `accessPolicies` 部分，请参阅 [AccessPolicyEntry 对象参考](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry)。
 
-* 查看 Key Vault 资源是否已存在。 如果是这样，请不要通过模板重新创建它。 例如，要使用现有的 Key Vault 而不是创建新 Key Vault，请对模板进行以下更改：
+* 查看 Key Vault 资源是否已存在。 如果是这样，请不要通过模板重新创建它。 例如，若要使用现有 Key Vault 而不是创建一个新的，请对模板进行以下更改：
 
-    * 添加可接受现有 Key Vault 资源的 ID 的参数：
+    * **添加**一个参数，该参数接受现有 Key Vault 资源的 ID：
 
         ```json
         "keyVaultId":{
@@ -687,7 +690,7 @@ New-AzResourceGroupDeployment `
         }
       ```
 
-    * 删除创建 Key Vault 资源的部分：
+    * **删除**用于创建 Key Vault 资源的部分：
 
         ```json
         {
@@ -707,7 +710,7 @@ New-AzResourceGroupDeployment `
         },
         ```
 
-    * 从工作区的 `dependsOn` 部分删除 `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` 行。 并更改工作区 `properties` 部分中的 `keyVault` 项以引用 `keyVaultId` 参数：
+    * 从工作区的 `dependsOn` 部分**删除** `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` 行。 另请**更改**工作区的 `properties` 部分中的 `keyVault` 条目，使之引用 `keyVaultId` 参数：
 
         ```json
         {
@@ -735,15 +738,15 @@ New-AzResourceGroupDeployment `
         }
         ```
 
-    完成这些更改后，可以在运行模板时指定现有 Key Vault 资源的 ID。 然后，模板将通过将工作区 `keyVault` 属性设置为其 ID 来重用 Key Vault。
+    完成这些更改后，可以在运行模板时指定现有 Key Vault 资源的 ID。 然后，模板会通过将工作区的 `keyVault` 属性设置为其 ID 来重用 Key Vault。
 
-    要获取 Key Vault 的 ID，可以引用原始模板运行的输出或使用 Azure CLI。 以下命令演示了如何使用 Azure CLI 获取 Key Vault 资源 ID：
+    若要获取 Key Vault 的 ID，可以引用原始模板运行的输出或使用 Azure CLI。 以下命令是使用 Azure CLI 获取 Key Vault 资源 ID 的示例：
 
     ```azurecli
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query id
     ```
 
-    此命令会返回类似于以下文本的值：
+    此命令返回类似于以下文本的值：
 
     ```text
     /subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault
@@ -753,3 +756,4 @@ New-AzResourceGroupDeployment `
 
 * [使用资源管理器模板和资源管理器 REST API 部署资源](../azure-resource-manager/templates/deploy-rest.md)。
 * [通过 Visual Studio 创建和部署 Azure 资源组](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)。
+* [有关与 Azure 机器学习相关的其他模板，请参阅 Azure 快速入门模板存储库](https://github.com/Azure/azure-quickstart-templates)

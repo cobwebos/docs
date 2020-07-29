@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 013515e0608bf790ceef8dc13d9d547496306610
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ea060ec9ba755a197e2969c0bf58050eb1d62a03
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092841"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325961"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-environment"></a>为混合环境启用用于 VM 的 Azure Monitor
 
@@ -24,7 +24,7 @@ ms.locfileid: "87092841"
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 >[!NOTE]
->用于 VM 的 Azure Monitor 映射依赖项代理本身不传输任何数据，它不需要对防火墙或端口做出任何更改。 映射数据始终由 Log Analytics 代理传输到 Azure Monitor 服务 - 要么采用直接传输的方式，要么通过 [Operations Management Suite 网关](../../azure-monitor/platform/gateway.md)进行传输（如果 IT 安全策略不允许网络中的计算机连接到 Internet）。
+>用于 VM 的 Azure Monitor 映射依赖项代理本身不传输任何数据，它不需要对防火墙或端口做出任何更改。 映射数据始终由 Log Analytics 代理传输到 Azure Monitor 服务 - 要么采用直接传输的方式，要么通过 [Operations Management Suite 网关](../platform/gateway.md)进行传输（如果 IT 安全策略不允许网络中的计算机连接到 Internet）。
 
 完成此任务的步骤概述如下：
 
@@ -48,7 +48,7 @@ ms.locfileid: "87092841"
 
 下表突出显示了通过命令行安装代理时支持的参数。
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 |:--|:--|
 | /? | 返回命令行选项的列表。 |
 | /S | 执行无需用户交互的无提示安装。 |
@@ -145,7 +145,7 @@ configuration VMInsights {
 ## <a name="enable-performance-counters"></a>启用性能计数器
 
 如果解决方案引用的 Log Analytics 工作区尚未配置为收集解决方案所需的性能计数器，则需要启用性能计数器。 为此，可以采用下面两种方式之一：
-* 手动方式，如 [Log Analytics 中的 Windows 和 Linux 性能数据源](../../azure-monitor/platform/data-sources-performance-counters.md)所述
+* 手动方式，如 [Log Analytics 中的 Windows 和 Linux 性能数据源](../platform/data-sources-performance-counters.md)所述
 * 通过下载并运行可从 [Azure PowerShell 库](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)获取的 PowerShell 脚本
 
 ## <a name="deploy-azure-monitor-for-vms"></a>部署用于 VM 的 Azure Monitor
@@ -259,3 +259,4 @@ configuration VMInsights {
 - 若要查看已发现的应用程序依赖项，请参阅[查看用于 VM 的 Azure Monitor 映射](vminsights-maps.md)。
 
 - 若要通过 VM 的性能了解瓶颈和整体利用率，请参阅[查看 Azure VM 性能](vminsights-performance.md)。
+

@@ -5,18 +5,19 @@ description: 了解如何创建 Azure 机器学习数据集以访问机器学习
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 06/29/2020
-ms.openlocfilehash: c082c74ab448fda0926b5aab52088bf00fb719bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a220a7279cbb5ba75c8aa803cb4bd709442a52fe
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031144"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326386"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集
 
@@ -53,7 +54,7 @@ ms.locfileid: "87031144"
  
 如果使用的是 Pandas，则没有理由使用超过 1 个 vCPU，因为它只需要使用这么多。 只需将 `import pandas as pd` 改为 `import modin.pandas as pd`，即可根据需要通过 Modin 和 Dask/Ray 轻松地在单个 Azure 机器学习计算实例/节点上并行化为多个 vCPU，并横向扩展成大群集。 
  
-如果无法为数据获得足够大的虚拟空间，则可使用以下两个选项：使用 Spark 或 Dask 等框架在“内存不足”的情况下对数据进行处理，也就是说，数据帧按分区加载到 RAM 分区中并进行处理，在最后再将最终结果收集到一起。 如果这太慢，则可使用 Spark 或 Dask 横向扩展成仍可以交互方式使用的群集。 
+如果无法为数据获取足够大的虚拟机，则可以使用以下两个选项：使用 Spark 或 Dask 等框架对数据 "内存不足" 执行处理，即，数据帧按分区加载到 RAM 分区并进行处理，并最终收集最终结果。 如果这太慢，则可使用 Spark 或 Dask 横向扩展成仍可以交互方式使用的群集。 
 
 ## <a name="dataset-types"></a>数据集类型
 
@@ -82,7 +83,7 @@ ms.locfileid: "87031144"
 
 #### <a name="create-a-tabulardataset"></a>创建 TabularDataset
 
-使用 `TabularDatasetFactory` 类中的 [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-) 方法可以读取 .csv 或 .tsv 格式的文件，以及创建未注册的 TabularDataset。 如果从多个文件进行读取，结果将聚合为一种表格表示形式。 
+使用 `TabularDatasetFactory` 类中的 [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory) 方法可以读取 .csv 或 .tsv 格式的文件，以及创建未注册的 TabularDataset。 如果从多个文件进行读取，结果将聚合为一种表格表示形式。 
 
 以下代码按名称获取工作区现有工作区和所需的数据存储。 然后将数据存储和文件位置传递给 `path` 参数以创建新的 TabularDataset `weather_ds`。
 
@@ -125,7 +126,7 @@ titanic_ds.take(3).to_pandas_dataframe()
 |编入|PassengerId|Survived|Pclass|名称|Sex|Age|SibSp|Parch|Ticket|Fare|Cabin|Embarked
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|False|3|Braund, Mr. Owen Harris|男|22.0|1|0|A/5 21171|7.2500||S
-1|2|正确|1|Cumings, Mrs. John Bradley (Florence Briggs Th...|女|38.0|1|0|PC 17599|71.2833|C85|C
+1|2|True|1|Cumings, Mrs. John Bradley (Florence Briggs Th...|女|38.0|1|0|PC 17599|71.2833|C85|C
 2|3|True|3|Heikkinen, Miss. Laina|女|26.0|0|0|STON/O2. 3101282|7.9250||S
 
 若要从内存中 pandas 数据帧创建数据集，请将数据写入本地文件（例如 csv），然后从该文件创建数据集。 下面的代码演示了此工作流。
@@ -309,7 +310,7 @@ df = titanic_ds.to_pandas_dataframe()
 
 ## <a name="access-datasets-in-a-virtual-network"></a>访问虚拟网络中的数据集
 
-如果工作区位于虚拟网络中，则必须将数据集配置为跳过验证。 有关如何在虚拟网络中使用数据存储和数据集的详细信息，请参阅[使用专用虚拟网络进行定型 & 推理中的网络隔离](how-to-enable-virtual-network.md#use-datastores-and-datasets)。
+如果工作区位于虚拟网络中，则必须将数据集配置为跳过验证。 若要详细了解如何在虚拟网络中使用数据存储和数据集，请参阅[使用专用虚拟网络进行训练和推理的过程中的网络隔离](how-to-enable-virtual-network.md#use-datastores-and-datasets)。
 
 ## <a name="next-steps"></a>后续步骤
 

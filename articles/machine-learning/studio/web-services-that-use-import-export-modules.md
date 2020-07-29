@@ -1,6 +1,5 @@
 ---
-title: 导入/导出 Web 服务中的数据
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （经典）：导入/导出 web services 中的数据-Azure
 description: 了解如何使用导入数据和导出数据模块从 Web 服务发送和接收数据。
 services: machine-learning
 author: likebupt
@@ -11,18 +10,21 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: b844a18a5acbd7a631bfe3b650dfa155d0e064ba
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2e1395e23ec8fa3bbd787b5b12a810f6e9720392
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076651"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326216"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>部署使用数据导入和数据导出模块的 Azure 机器学习工作室（经典）Web 服务
 
+**适用于：** ![不](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-azure-ml.md) ![ 是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） 
+
+
 创建预测性实验时，通常添加 Web 服务输入和输出。 部署实验时，使用者可通过输入和输出从 Web 服务发送和接收数据。 对于某些应用程序，使用者的数据可能从数据源提供或已经驻留在外部数据源（如 Azure Blob 存储）中。 在这些情况下，它们不需要使用 Web 服务输入和输出读取和写入数据。 它们可以改为使用批处理执行服务 (BES)，使用导入数据模块从数据源读取数据，使用导出数据模块将评分结果写入不同的数据位置。
 
-导入数据和导出数据模块可在各个数据位置（如通过 HTTP 的 Web URL、Hive 查询、Azure SQL 数据库中的数据库、Azure 表存储、Azure Blob 存储、数据源提供或 SQL Server 数据库）进行读取和写入。
+“导入数据”和“导出数据”模块可在各个数据位置（如使用 HTTP 的 Web URL、Hive 查询、Azure SQL 数据库中的数据库、Azure 表存储、Azure Blob 存储、数据馈送提供或 SQL Server 数据库）中读取和写入数据。
 
 本主题使用“示例 5：二元分类的训练、测试、评估：成人数据集”示例并假设数据集已加载到名为 censusdata 的 Azure SQL 表中。
 
