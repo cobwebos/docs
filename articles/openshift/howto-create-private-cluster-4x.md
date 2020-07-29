@@ -10,6 +10,7 @@ keywords: aro、openshift、az aro、red hat、cli
 ms.custom: mvc
 ms.openlocfilehash: 581587382c3bfd03ed329672e5c6ca065554d1c7
 ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83727435"

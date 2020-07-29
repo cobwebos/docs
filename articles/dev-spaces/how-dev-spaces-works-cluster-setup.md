@@ -7,6 +7,7 @@ description: 描述如何为 Azure Dev Spaces 设置 Azure Kubernetes 服务群�
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 ms.openlocfilehash: 60f6c466e7c016ccd07e37b2f0d1ce9989fb8f9f
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "83995881"
