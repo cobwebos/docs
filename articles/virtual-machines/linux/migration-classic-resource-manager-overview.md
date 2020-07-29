@@ -5,15 +5,15 @@ author: tanmaygore
 manager: vashan
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: ff8d514de7c3c1995d5cce8a4afa4219ad33cbce
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8d97be9bf6a97f4cb0c5dba16c9e4acdd09757f1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510457"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87267806"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>平台支持的从经典部署模型到 Azure 资源管理器 Linux 中的 IaaS 资源迁移
 

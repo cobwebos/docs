@@ -3,12 +3,12 @@ title: Application Insights 中的性能计数器 | Microsoft 文档
 description: 监视 Application Insights 中的系统和自定义的 .NET 性能计数器。
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.openlocfilehash: e60663d9e767db020fc93eba1f4c1c6babb32294
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb5e20403cc826619eb1f67de2fc4179e17b5aa4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024412"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322510"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 中的系统性能计数器
 
@@ -131,7 +131,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 
 * *异常率*是系统性能计数器。 CLR 会对所有引发的已处理和未经处理异常进行计数，并将总采样间隔除以间隔长度。 Application Insights SDK 会收集此结果，并将其发送到门户。
 
-* *异常*是在图表的采样间隔内门户所接收的 TrackException 报告的计数。 它仅包括已将 TrackException 调用写入代码的已处理异常，并不包括所有[未经处理的异常](../../azure-monitor/app/asp-net-exceptions.md)。 
+* *异常*是在图表的采样间隔内门户所接收的 TrackException 报告的计数。 它仅包括已将 TrackException 调用写入代码的已处理异常，并不包括所有[未经处理的异常](./asp-net-exceptions.md)。 
 
 ## <a name="performance-counters-for-applications-running-in-azure-web-apps"></a>在 Azure Web 应用运行的应用程序的性能计数器
 
@@ -147,9 +147,10 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 * SDK 2.8.0 及更高版本在 Linux 中支持 cpu/memory 计数器， 但不在 Linux 中支持其他计数器。 在 Linux（及其他非 Windows 环境）中，建议使用 [EventCounters](eventcounters.md) 来获取系统计数器
 
 ## <a name="alerts"></a>警报
-与其他指标一样，可以[设置警报](../../azure-monitor/platform/alerts-log.md)以便在性能计数器超出指定的限制时收到警报。 打开“警报”窗格，并单击“添加警报”。
+与其他指标一样，可以[设置警报](../platform/alerts-log.md)以便在性能计数器超出指定的限制时收到警报。 打开“警报”窗格，并单击“添加警报”。
 
 ## <a name="next-steps"></a><a name="next"></a>后续步骤
 
-* [依赖关系跟踪](../../azure-monitor/app/asp-net-dependencies.md)
-* [异常跟踪](../../azure-monitor/app/asp-net-exceptions.md)
+* [依赖关系跟踪](./asp-net-dependencies.md)
+* [异常跟踪](./asp-net-exceptions.md)
+

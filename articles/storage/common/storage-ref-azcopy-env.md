@@ -4,15 +4,16 @@ description: 本文提供有关 azcopy env 命令的参考信息。
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 2307e510883b0cb7024c61c1b31bf2629ccbecb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 197d8ee1ea1d389a26548fa65adee83c6a92cf96
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84220097"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87275966"
 ---
 # <a name="azcopy-env"></a>azcopy env
 
@@ -45,7 +46,7 @@ azcopy env [flags]
 
 |选项|说明|
 |---|---|
-|--cap-mbps uint32|以兆位/秒为单位限制传输速率。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。|
+|--cap-mbps float|以兆位/秒为单位限制传输速率。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。|
 |--output-type string|命令输出的格式。 选项包括：text、json。 默认值为“text”。|
 |--trusted-microsoft-suffixes 字符串  | 指定可在其中发送 Azure Active Directory 登录令牌的其他域后缀。  默认值为“.core.windows.net;.core.chinacloudapi.cn;.core.cloudapi.de;.core.usgovcloudapi.net” 。 此处列出的任何内容都会添加到默认值。 为安全，你只应在此处放置 Microsoft Azure 域。 用分号分隔多个条目。|
 

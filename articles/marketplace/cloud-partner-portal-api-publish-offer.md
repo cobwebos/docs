@@ -4,15 +4,15 @@ description: 用于发布指定产品/服务的 API。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 1dede788242f858468c00e9f30f70ebdbe60cd1b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 60e75aff79913896bdf1dcdc8754b6ecf5620b06
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086398"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272039"
 ---
 # <a name="publish-an-offer"></a>发布产品/服务
 
@@ -26,17 +26,17 @@ ms.locfileid: "87086398"
 ## <a name="uri-parameters"></a>URI 参数
 --------------
 
-|  **名称**      |    **描述**                               |  **Data type** |
+|  **Name**      |    **说明**                               |  **Data type** |
 |  ------------- |  ------------------------------------            |   -----------  |
 |  publisherId   | 发布者标识符，例如 `contoso`      |   字符串       |
 |  offerId       | 产品/服务标识符                                 |   字符串       |
-|  api-version   | API 最新版本                        |   日期         |
+|  api-version   | API 最新版本                        |   Date         |
 |  |  |
 
 ## <a name="header"></a>标头
 ------
 
-|  **名称**        |    **值**          |
+|  **Name**        |    **值**          |
 |  --------        |    ---------          |
 |  Content-Type    | `application/json`    |
 |  授权   |  `Bearer YOUR_TOKEN`  |
@@ -59,7 +59,7 @@ ms.locfileid: "87086398"
 
 ### <a name="request-body-properties"></a>请求正文属性
 
-|  **名称**               |   **描述**                                                                                 |
+|  **Name**               |   **说明**                                                                                 |
 |  ---------------------  | ------------------------------------------------------------------------------------------------- |
 |  notification-emails    | 逗号分隔的电子邮件地址列表，用于通知发布操作的进度。 |
 |  |  |
@@ -76,14 +76,14 @@ ms.locfileid: "87086398"
 
 ### <a name="response-header"></a>响应标头
 
-|  **名称**             |    **值**                                                                 |
+|  **Name**             |    **值**                                                                 |
 |  -------------------- | ---------------------------------------------------------------------------- |
 | 位置    | 用于检索此操作的状态的相对路径     |
 |  |  |
 
 ### <a name="response-status-codes"></a>响应状态代码
 
-| **代码** |  **描述**                                                                                                                           |
+| **代码** |  **说明**                                                                                                                           |
 | ------   |  ----------------------------------------------------------------------------------------------------------------------------------------- |
 | 202   | `Accepted` - 已成功接受请求。 响应包含一个位置，该位置可用于跟踪已启动的操作。 |
 | 400   | `Bad/Malformed request` - 错误响应正文可以提供更多信息。                                                               |

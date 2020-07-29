@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: bda1acde914aa068fe3a87d307a29583f87af34f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b9d27e602062ff2638d8eea23fe64497fd66512d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091175"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322901"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor 中的 VMware 监视（已弃用）解决方案
 
@@ -27,7 +27,7 @@ Azure Monitor 中的 VMware 监视解决方案是一个有助于针对大型 VMw
 ## <a name="install-and-configure-the-solution"></a>安装和配置解决方案
 使用以下信息安装和配置解决方案。
 
-* 使用[安装监视解决方案](../insights/solutions.md#install-a-monitoring-solution)中所述的过程将 VMware 监视解决方案添加到订阅。
+* 使用[安装监视解决方案](./solutions.md#install-a-monitoring-solution)中所述的过程将 VMware 监视解决方案添加到订阅。
 
 #### <a name="supported-vmware-esxi-hosts"></a>受支持的 VMware ESXi 主机
 vSphere ESXi 主机 5.5、6.0 和 6.5
@@ -200,3 +200,4 @@ syslog 时间戳有一个 ESXi 主机 bug。 有关详细信息，请参阅 [VMw
 * 使用 Log Analytics 中的[日志查询](../log-query/log-query-overview.md)可查看详细的 VMware 主机数据。
 * [创建自己的仪表板](../learn/tutorial-logs-dashboards.md)显示了 VMware 主机数据。
 * 发生特定 VMware 主机事件时[创建警报](../platform/alerts-overview.md)。
+

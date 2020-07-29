@@ -4,12 +4,12 @@ description: 使用 Azure 门户、Azure 资源管理器模板和 Azure PowerShe
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 5019c3111a6e04dd9b7ba6ecbb9f62c7969075ed
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b202e3d47b98c5e395b3a8b525b9b8c0a04c0f76
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516050"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322408"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理活动日志警报  
 
@@ -92,7 +92,7 @@ ms.locfileid: "86516050"
     - **说明**：新警报规则的说明。
     - **将警报保存到资源组**：选择要在其中保存此新规则的资源组。
 
-5. 在“操作组”下，从下拉菜单中指定要分配到此新警报规则的操作组。 或者，[创建新的操作组](../../azure-monitor/platform/action-groups.md)并将其分配到新规则。 若要创建新组，请选择“+ 新建组”。
+5. 在“操作组”下，从下拉菜单中指定要分配到此新警报规则的操作组。 或者，[创建新的操作组](./action-groups.md)并将其分配到新规则。 若要创建新组，请选择“+ 新建组”。
 
 6. 若要在创建规则后启用规则，请选择“创建后启用规则”选项对应的“是”。 
 7. 选择“创建警报规则”。
@@ -285,7 +285,8 @@ set [az monitor activity-log alert](/cli/azure/monitor/activity-log/alert) 下�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[活动日志的 Webhook 架构](../../azure-monitor/platform/activity-log-alerts-webhook.md)。
-- 阅读[活动日志概述](../../azure-monitor/platform/activity-log-alerts.md)。
-- 详细了解[操作组](../../azure-monitor/platform/action-groups.md)。  
+- 了解[活动日志的 Webhook 架构](./activity-log-alerts-webhook.md)。
+- 阅读[活动日志概述](./activity-log-alerts.md)。
+- 详细了解[操作组](./action-groups.md)。  
 - 了解[服务运行状况通知](../../service-health/service-notifications.md)。
+

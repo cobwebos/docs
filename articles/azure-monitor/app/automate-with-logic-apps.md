@@ -3,12 +3,12 @@ title: 使用逻辑应用自动执行 Azure 应用程序 Insights 过程
 description: 了解如何通过将 Application Insights 连接器添加到逻辑应用来快速自动执行可重复的过程。
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: 76a199023ef37fbda27be59fdf70f6ca5d8481bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d023d774c130a9db513fbcf9452b05fa030a967a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079615"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323190"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>使用逻辑应用自动执行 Application Insights 过程
 
@@ -118,7 +118,7 @@ ms.locfileid: "87079615"
       ![“Office 365 电子邮件配置”屏幕](./media/automate-with-logic-apps/12emailattachment.png)
 
 ### <a name="step-7-save-and-test-your-logic-app"></a>步骤 7：保存并测试逻辑应用
-* 单击“保存”以保存更改。
+*  以保存更改。
 
 可以等待触发器运行逻辑应用，也可以通过选择“运行”**** 立即运行逻辑应用。
 
@@ -130,9 +130,10 @@ ms.locfileid: "87079615"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解如何创建 [Analytics 查询](../../azure-monitor/log-query/get-started-queries.md)。
+- 详细了解如何创建 [Analytics 查询](../log-query/get-started-queries.md)。
 - 了解有关[逻辑应用](../../logic-apps/logic-apps-overview.md)的详细信息。
 
 
 
 <!--Link references-->
+

@@ -11,12 +11,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 07/15/2020
-ms.openlocfilehash: d67a050ccd590e220c51e02b827013ace7707ee2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ae0ab6c4279136c0a5ec86c1f8f52baa0fd69763
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523241"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171394"
 ---
 # <a name="copy-data-to-and-from-azure-sql-managed-instance-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 托管实例复制数据
 
@@ -59,7 +59,7 @@ ms.locfileid: "86523241"
 
 SQL 托管实例链接服务支持以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 描述 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureSqlMI**。 | 是 |
 | connectionString |此属性指定通过 SQL 身份验证连接到 SQL 托管实例时所需的 **connectionString** 信息。 有关详细信息，请参阅以下示例。 <br/>默认端口为 1433。 如果将 SQL 托管实例与公共终结点配合使用，请显式指定端口 3342。<br> 还可以在 Azure Key Vault 中输入密码。 如果使用 SQL 身份验证，请从连接字符串中提取 `password` 配置。 有关详细信息，请参阅表格后面的 JSON 示例，以及[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
@@ -228,7 +228,7 @@ SQL 托管实例链接服务支持以下属性：
 
 若要从/向 SQL 托管实例复制数据，以下属性需受支持：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 描述 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 AzureSqlMITable。 | 是 |
 | schema | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
@@ -264,13 +264,13 @@ SQL 托管实例链接服务支持以下属性：
 
 若要从 SQL 托管实例复制数据，复制活动的 source 节需要支持以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 描述 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **SqlMISource**。 | 是 |
 | sqlReaderQuery |此属性使用自定义 SQL 查询来读取数据。 例如 `select * from MyTable`。 |否 |
 | sqlReaderStoredProcedureName |此属性是从源表读取数据的存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 |否 |
 | storedProcedureParameters |这些参数用于存储过程。<br/>允许的值为名称或值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |否 |
-| isolationLevel | 指定 SQL 源的事务锁定行为。 允许的值为：**ReadCommitted**（默认值）、**ReadUncommitted**、**RepeatableRead**、**Serializable**、**Snapshot**。 请参阅[此文档](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)了解更多详细信息。 | 否 |
+| isolationLevel | 指定 SQL 源的事务锁定行为。 允许的值为： **ReadCommitted**、 **ReadUncommitted**、 **RepeatableRead**、 **Serializable**、 **Snapshot**。 如果未指定，则使用数据库的默认隔离级别。 请参阅[此文档](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)了解更多详细信息。 | 否 |
 
 **请注意以下几点：**
 
@@ -371,7 +371,7 @@ GO
 
 若要将数据复制到 SQL 托管实例，复制活动的 sink 节需要支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 描述 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 **SqlMISink**。 | 是 |
 | preCopyScript |此属性指定将数据写入到 SQL 托管实例之前要由复制活动运行的 SQL 查询。 每次运行复制仅调用该查询一次。 可以使用此属性清除预加载的数据。 |否 |
@@ -578,7 +578,7 @@ END
 | 小数 |小数 |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
-| image |Byte[] |
+| 图像 |Byte[] |
 | int |Int32 |
 | money |小数 |
 | nchar |String, Char[] |

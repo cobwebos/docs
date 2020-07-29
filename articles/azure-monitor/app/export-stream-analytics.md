@@ -3,12 +3,12 @@ title: 使用流分析从 Azure Application Insights 进行导出 | Microsoft Do
 description: 流分析可以持续转换、筛选和路由从 Application Insights 导出的数据。
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 70f952dcd6f8d942ac272afed58a7fe0f47d8a6e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d90b965ca65af0acf7032067c77591a2ac4d4b02
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539952"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324346"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>使用流分析处理从 Application Insights 导出的数据
 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)是用于处理[从 Application Insights 导出](export-telemetry.md)的数据的理想工具。 流分析可以从各种源提取数据。 它可以转换和筛选数据，然后将其路由到各种接收器。
@@ -16,7 +16,7 @@ ms.locfileid: "86539952"
 在本示例中，我们将创建一个适配器用于从 Application Insights 提取数据，重命名和处理某些字段，然后通过管道将数据传送到 Power BI。
 
 > [!WARNING]
-> 还有便利得多的[建议方法可在 Power BI 中显示 Application Insights 数据](../../azure-monitor/app/export-power-bi.md )。 本文所述的途径只是一个示例，演示如何处理导出的数据。
+> 还有便利得多的[建议方法可在 Power BI 中显示 Application Insights 数据](./export-power-bi.md)。 本文所述的途径只是一个示例，演示如何处理导出的数据。
 > 
 > 
 
@@ -55,7 +55,7 @@ ms.locfileid: "86539952"
 
     ![选择事件类型](./media/export-stream-analytics/080.png)
 
-1. 让我们累积一些数据。 请休息一下，让其他人先使用该应用程序一段时间。 应用程序中会逐渐传入遥测数据，[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)中会显示统计图表，[诊断搜索](../../azure-monitor/app/diagnostic-search.md)中会显示各个事件。 
+1. 让我们累积一些数据。 请休息一下，让其他人先使用该应用程序一段时间。 应用程序中会逐渐传入遥测数据，[指标资源管理器](../platform/metrics-charts.md)中会显示统计图表，[诊断搜索](./diagnostic-search.md)中会显示各个事件。 
    
     此外，数据将导出到存储。 
 2. 检查导出的数据 在 Visual Studio 中，请选择“查看”>“Cloud Explorer”，并打开“Azure”>“存储”。 （如果没有此菜单选项，则需要安装 Azure SDK：打开“新建项目”对话框，打开 Visual C# /云/获取用于 .NET 的 Microsoft Azure SDK。）
@@ -186,7 +186,7 @@ FROM flat
 
 ## <a name="see-results-in-power-bi"></a>在 Power BI 中查看结果
 > [!WARNING]
-> 还有便利得多的[建议方法可在 Power BI 中显示 Application Insights 数据](../../azure-monitor/app/export-power-bi.md )。 本文所述的途径只是一个示例，演示如何处理导出的数据。
+> 还有便利得多的[建议方法可在 Power BI 中显示 Application Insights 数据](./export-power-bi.md)。 本文所述的途径只是一个示例，演示如何处理导出的数据。
 > 
 > 
 
@@ -211,4 +211,5 @@ Noam Ben Zeev 演示如何使用流分析处理导出的数据。
 ## <a name="next-steps"></a>后续步骤
 * [连续导出](export-telemetry.md)
 * [属性类型和值的详细数据模型参考。](export-data-model.md)
-* [Application Insights](../../azure-monitor/app/app-insights-overview.md)
+* [Application Insights](./app-insights-overview.md)
+

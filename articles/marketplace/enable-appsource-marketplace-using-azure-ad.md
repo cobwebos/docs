@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2020
-ms.openlocfilehash: eab7b556dc45d03bf440a3bc63aa6bf2d799face
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/24/2020
+ms.openlocfilehash: 4c700a61de80968b17585faf92e268fef8d86f0e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103617"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323258"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>将商业市场列表与 Azure Active Directory 集成
 
@@ -34,16 +34,17 @@ Microsoft AppSource 和 Azure 市场客户使用产品内体验来搜索店面�
 | 产品/服务类型    | 需要 Azure AD SSO 才能联系我？  | 需要 Azure AD SSO？ | 需要 Azure AD 用于测试驱动器的 SSO？  | 需要 Azure AD SSO 才能实现 |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
 | 虚拟机 | 空值 | 否 | 否 | 否 |
-| Azure 应用（解决方案模板）  | 不适用 | 空值 | 空值 | 空值 |
-| 托管应用  | 不适用 | 空值 | 空值 | 否 |
+| Azure 应用（解决方案模板）  | 不可用 | 空值 | 空值 | 空值 |
+| 托管应用  | 不可用 | 空值 | 空值 | 否 |
 | SaaS  | No | 是 | 是 | 是 |
 | 容器  | 空值 | 空值 | 空值 | 否 |
 | 咨询服务  | 否 | 不适用 | 空值 | 空值 |
 
-有关 SaaS 技术需求的详细信息，请参阅 [SaaS 应用程序产品/服务发布指南](marketplace-saas-applications-technical-publishing-guide.md)。
+有关 SaaS 技术要求的详细信息，请参阅[商业应用商店中的 Azure AD 和事务 SaaS 产品](./azure-ad-saas.md)。
 
 ## <a name="azure-ad-integration"></a>Azure AD 集成
 
+- 若要详细了解如何集成事务 software services （SaaS）产品/服务的 Azure AD，请参阅[商业应用商店中的 Azure AD 和事务 SaaS 产品](./azure-ad-saas.md)。
 - 有关如何通过将 Azure AD 集成到列表中来启用单一登录的信息，请参阅[针对开发者的 Azure Active Directory](../active-directory/develop/index.yml)。
 - 若要获取有关 Azure AD 单一登录的详细信息，请参阅[Azure Active Directory 的应用程序访问与单一登录是什么？](../active-directory/manage-apps/what-is-single-sign-on.md)。
 

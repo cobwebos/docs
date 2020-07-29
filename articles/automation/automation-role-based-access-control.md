@@ -1,17 +1,17 @@
 ---
 title: 在 Azure 自动化中管理角色权限和安全性
-description: 本文介绍如何使用基于角色的访问控制 (RBAC)，它可用于对 Azure 资源进行访问管理。
+description: 本文介绍如何使用基于角色的访问控制（RBAC）来启用对 Azure 资源的访问管理。
 keywords: 自动化 rbac, 基于角色的访问控制, azure rbac
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 05/17/2018
+ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9e997f80ceee54a1454128c1308032fefa603f5d
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: a970122c5f034e6215d2e829657c9eec99f14371
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186140"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87279876"
 ---
 # <a name="manage-role-permissions-and-security"></a>管理角色权限和安全性
 
@@ -69,7 +69,12 @@ ms.locfileid: "86186140"
 
 ### <a name="automation-operator"></a>自动化运算符
 
-自动化操作员能够针对某个自动化帐户中的所有 Runbook 创建和管理作业，以及读取 Runbook 名称和属性。  注意：如果希望针对个别 Runbook 控制操作员访问权限，则不要设置此角色，而是组合使用“自动化作业操作员”和“自动化 Runbook 操作员”角色。 下表显示了授予角色的权限：
+自动化操作员能够针对某个自动化帐户中的所有 Runbook 创建和管理作业，以及读取 Runbook 名称和属性。
+
+>[!NOTE]
+>如果要控制对各个 runbook 的操作员访问权限，请不要设置此角色。 改为结合使用**自动化作业操作员**和**自动化 Runbook 操作员**角色。
+
+下表显示了授予角色的权限：
 
 |**操作**  |**说明**  |
 |---------|---------|
@@ -96,7 +101,9 @@ ms.locfileid: "86186140"
 
 ### <a name="automation-job-operator"></a>自动化作业操作员
 
-自动化作业操作员角色是在自动化帐户范围内授予的。 这将向操作员授予权限来为帐户中的所有 Runbook 创建和管理作业。 下表显示了授予角色的权限：
+自动化作业操作员角色是在自动化帐户范围内授予的。 这将向操作员授予权限来为帐户中的所有 Runbook 创建和管理作业。 如果为作业操作员角色授予了对包含自动化帐户的资源组的读取权限，则该角色的成员能够启动 runbook。 但是，他们不能创建、编辑或删除它们。
+
+下表显示了授予角色的权限：
 
 |**操作**  |**说明**  |
 |---------|---------|
@@ -114,7 +121,7 @@ ms.locfileid: "86186140"
 
 ### <a name="automation-runbook-operator"></a>自动化 Runbook 操作员
 
-自动化 Runbook 操作员角色在 Runbook 范围授予。 自动化 Runbook 操作员可以查看 Runbook 的名称和属性。  将此角色与“自动化作业操作员”角色组合使用时，也会使操作员能够为 Runbook 创建和管理作业。 下表显示了授予角色的权限：
+自动化 Runbook 操作员角色在 Runbook 范围授予。 自动化 Runbook 操作员可以查看 Runbook 的名称和属性。此角色与**自动化作业操作员**角色结合，使操作员也可以为 runbook 创建和管理作业。 下表显示了授予角色的权限：
 
 |**操作**  |**说明**  |
 |---------|---------|
@@ -170,7 +177,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 |Microsoft.Insights/AlertRules/*|管理警报规则。|
 |Microsoft.Insights/components/*|管理 Application Insights 组件。|
 |Microsoft.Insights/DiagnosticSettings/*|管理诊断设置。|
-|Microsoft.Insights/eventtypes/*|列出订阅中的活动日志事件（管理事件）。 此权限适用于对活动日志的编程和门户访问。|
+|Microsoft.Insights/eventtypes/*|列出订阅中的活动日志事件（管理事件）。 此权限适用于以编程方式和通过门户访问活动日志。|
 |Microsoft.Insights/LogDefinitions/*|此权限对于需要通过门户访问活动日志的用户是必需的。 列出活动日志中的日志类别。|
 |Microsoft.Insights/MetricDefinitions/*|读取指标定义（资源的可用指标类型的列表）。|
 |Microsoft.Insights/Metrics/*|读取资源的指标。|
@@ -184,7 +191,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 |Microsoft.Support/*|创建和管理支持票证。|
 |Microsoft.WorkloadMonitor/workloads/*|管理工作负荷。|
 
-### <a name="monitoring-reader"></a>监视查阅者
+### <a name="monitoring-reader"></a>监视读取者
 
 监视读取者可以读取所有监视数据。 下表显示了授予角色的权限：
 
@@ -290,6 +297,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
    ![列出用户](media/automation-role-based-access-control/automation-05-list-users.png)
 
    也可以通过“角色”页向用户分配角色。
+
 4. 单击“访问控制(IAM)”页中的“角色”打开“角色”页。 可以查看角色的名称以及分配给该角色的用户和组的数目。
 
     ![从用户页分配角色](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)
@@ -353,7 +361,7 @@ ObjectType         : User
 ```
 
 使用 [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) 为特定范围内的用户、组和应用程序分配访问权限。
-    
+
 **示例：** 使用以下命令为“自动化帐户”范围中的用户分配“自动化操作员”角色。
 
 ```azurepowershell-interactive

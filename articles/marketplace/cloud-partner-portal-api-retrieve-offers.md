@@ -4,15 +4,15 @@ description: 用于检索发布服务器命名空间下的产品/服务的汇总
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 22d22feb3931f466647c2c4d94bdf924568f2dc5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 39d07751c708d5555799ecbb3b3bc66d3f44f43a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535886"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87271954"
 ---
 # <a name="retrieve-offers"></a>检索产品/服务
 
@@ -25,15 +25,15 @@ ms.locfileid: "86535886"
 
 ## <a name="uri-parameters"></a>URI 参数
 
-| **名称**         |  **说明**                         |  **Data type** |
+| **Name**         |  **说明**                         |  **Data type** |
 | -------------    |  ------------------------------------    |  -----------   |
 |  publisherId     | 发布者标识符，例如 `contoso` |   字符串    |
-|  api-version     | API 的最新版本                    |    日期        |
+|  api-version     | API 的最新版本                    |    Date        |
 |  |  |
 
 ## <a name="header"></a>标头
 
-|  **名称**        |         **值**       |
+|  **Name**        |         **值**       |
 |  --------------- |       ----------------  |
 |  Content-Type    | `application/json`      |
 |  授权   | `Bearer YOUR_TOKEN`     |
@@ -62,7 +62,7 @@ ms.locfileid: "86535886"
 
 ### <a name="response-body-properties"></a>响应正文属性
 
-|  **名称**       |       **说明**                                                                                                  |
+|  **Name**       |       **说明**                                                                                                  |
 |  -------------  |      --------------------------------------------------------------------------------------------------------------    |
 |  offerTypeId    | 标识产品/服务的类型                                                                                           |
 |  publisherId    | 唯一标识发布者的标识符                                                                      |
@@ -85,13 +85,13 @@ ms.locfileid: "86535886"
 
 ### <a name="offer-status"></a>产品/服务状态
 
-|  **名称**                    | **说明**                                  |
+|  **Name**                    | **说明**                                  |
 |  ------------------------    | -----------------------------------------------  |
 |  NeverPublished              | 产品/服务从未发布过。                  |
 |  NotStarted                  | 产品/服务是新的，但未启动。                 |
 |  WaitingForPublisherReview   | 产品/服务正在等待发布者批准。         |
-|  运行                     | 正在处理产品/服务提交。             |
-|  已成功                   | 产品/服务提交已完成处理。       |
+|  正在运行                     | 正在处理产品/服务提交。             |
+|  成功                   | 产品/服务提交已完成处理。       |
 |  已取消                    | 产品/服务提交已取消。                   |
-|  已失败                      | 产品/服务提交失败。                         |
+|  失败                      | 产品/服务提交失败。                         |
 |  |  |

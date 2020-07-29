@@ -4,15 +4,15 @@ description: 用于检索发布服务器命名空间中指定的产品/服务的
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: bf64645f672e54849064d86f9250a62efeac8d66
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9f3ba6b2f13b9f2bb1d538db84723e3a9baaef12
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087401"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87271835"
 ---
 # <a name="retrieve-a-specific-offer"></a>检索特定产品/服务
 
@@ -37,18 +37,18 @@ ms.locfileid: "87087401"
 
 ## <a name="uri-parameters"></a>URI 参数
 
-| **名称**    | **描述**                                                                          | **Data type** |
+| **Name**    | **说明**                                                                          | **Data type** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
 | publisherId | publisherId。 例如，Contoso                                                        | 字符串        |
 | offerId     | 唯一标识产品/服务的 Guid。                                                 | 字符串        |
-| 版本     | 所检索的产品/服务的版本。 默认情况下，将检索最新的产品/服务版本。 | Integer       |
+| 版本     | 所检索的产品/服务的版本。 默认情况下，将检索最新的产品/服务版本。 | 整数       |
 | slotId      | 要从中检索产品/服务的槽，可以是以下值之一：      <br/>  - `Draft`（默认值）检索当前处于草稿状态的产品/服务版本。  <br/>  -  `Preview` 检索当前处于预览状态的产品/服务版本。     <br/>  -  `Production` 检索当前处于生产状态的产品/服务版本。          |      枚举 |
-| api-version | API 的最新版本                                                                    | 日期          |
+| api-version | API 的最新版本                                                                    | Date          |
 |  |  |  |
 
 ## <a name="header"></a>标头
 
-|  **名称**          |   **值**            |
+|  **Name**          |   **值**            |
 |  ---------------   |  --------------        |
 |  Content-Type      | `application/json`     |
 |  授权     | `Bearer YOUR_TOKEN`    |
@@ -171,7 +171,7 @@ ms.locfileid: "87087401"
 
 ### <a name="response-body-properties"></a>响应正文属性
 
-|  **名称**       |   **描述**                                                                                                               |
+|  **Name**       |   **说明**                                                                                                               |
 |  -------------  |   -----------------------------------------------------------------------------------------------------                         |
 |  offerTypeId    | 标识产品/服务的类型                                                                                                    |
 |  publisherId    | 发布者的唯一标识符                                                                                              |
@@ -184,7 +184,7 @@ ms.locfileid: "87087401"
 
 ### <a name="response-status-codes"></a>响应状态代码
 
-| **代码**  | **描述**                                                                                                                 |
+| **代码**  | **说明**                                                                                                                 |
 |  ------   | ------------------------------------------------------------------------------------------------------------------------------- |
 |  200      | `OK` - 已成功处理请求，发布者下的所有产品/服务都已返回给客户端。               |
 |  400      | `Bad/Malformed request` - 错误响应正文可能包含更多信息。                                                 |
@@ -194,12 +194,12 @@ ms.locfileid: "87087401"
 
 ### <a name="offer-status"></a>产品/服务状态
 
-|  **名称**                   |   **描述**                             |
+|  **Name**                   |   **说明**                             |
 | --------------------------- |  -------------------------------------------- |
 |  NeverPublished             | 产品/服务从未发布过。               |
 |  NotStarted                 | 产品/服务是新的，但未启动。              |
 |  WaitingForPublisherReview  | 产品/服务正在等待发布者批准。      |
-|  运行                    | 正在处理产品/服务提交。          |
+|  正在运行                    | 正在处理产品/服务提交。          |
 |  成功                  | 产品/服务提交已完成处理。    |
 |  已取消                   | 产品/服务提交已取消。                |
 |  失败                     | 产品/服务提交失败。                      |

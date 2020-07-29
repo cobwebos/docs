@@ -3,12 +3,12 @@ title: 在 Azure Migrate 服务器评估中设置基于代理的依赖项分析
 description: 本文介绍如何在 Azure Migrate 服务器评估中设置基于代理的依赖项分析。
 ms.topic: how-to
 ms.date: 6/09/2020
-ms.openlocfilehash: 1a656ec734ff098dd5835f653010c7f298c13b38
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 50061bead9b00ade0defba45691ea8a7c84625dd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109988"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321201"
 ---
 # <a name="set-up-dependency-visualization"></a>设置依赖项可视化
 
@@ -31,7 +31,7 @@ ms.locfileid: "86109988"
     - 仅在设置了 Azure Migrate 设备并在 Azure Migrate 项目中发现计算机后才能附加工作区。
     - 请确保订阅中具有包含 Azure Migrate 项目的工作区。
     - 工作区必须位于美国东部、东南亚或欧洲西部区域。 其他区域中的工作区无法与项目相关联。
-    - 工作区必须位于[支持服务映射](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)的区域中。
+    - 工作区必须位于[支持服务映射](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)的区域中。
     - 可以将新的或现有的 Log Analytics 工作区与 Azure Migrate 项目相关联。
     - 首次为计算机设置依赖项可视化效果时，将附加工作区。 Azure Migrate 项目的工作区在添加后就无法修改了。
     - 在 Log Analytics 中，与 Azure Migrate 关联的工作区标记有迁移项目密钥和项目名称。
@@ -79,7 +79,7 @@ ms.locfileid: "86109988"
 2. 在“欢迎”页面上，单击“下一步”。  在 "**许可条款**" 页上，单击 "**我同意**接受许可"。
 3. 在“目标文件夹”**** 中，保留或修改默认安装文件夹，然后选择“下一步”****。
 4. 在“代理安装选项”**** 中，选择“Azure Log Analytics”**** > “下一步”****。
-5. 单击“添加”**** 以添加 Log Analytics 工作区。 粘贴从门户复制的工作区 ID 和密钥。 单击“下一步” 。
+5. 单击“添加”**** 以添加 Log Analytics 工作区。 粘贴从门户复制的工作区 ID 和密钥。 单击“下一步”。
 
 你可以从命令行安装代理，也可以使用自动方法（如 Configuration Manager 或[Intigua](https://www.intigua.com/intigua-for-azure-migration)）来安装代理。
 - [详细了解](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)如何使用这些方法安装 MMA 代理。

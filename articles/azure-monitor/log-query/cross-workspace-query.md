@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: 5d16c62c14ff6f24e519173b979e11d21d997927
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7cfa3d5652e13ddc88db70674049069a5b391297
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505782"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322119"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>在 Azure Monitor 中执行跨资源日志查询  
 
@@ -120,7 +120,7 @@ app('Contoso-app5').requests
 
 
 
-现可在跨资源查询中[使用此函数](../../azure-monitor/log-query/functions.md#use-a-function)，如下所示。 函数别名 applicationsScoping 返回来自所有已定义应用程序的请求表的并集。 然后，查询筛选失败的请求，并按应用程序显示趋势。 在此示例中，分析运算符是可选的。 该运算符从 SourceApp 属性中提取应用程序名称。
+现可在跨资源查询中[使用此函数](./functions.md#use-a-function)，如下所示。 函数别名 applicationsScoping 返回来自所有已定义应用程序的请求表的并集。 然后，查询筛选失败的请求，并按应用程序显示趋势。 在此示例中，分析运算符是可选的。 该运算符从 SourceApp 属性中提取应用程序名称。
 
 ```Kusto
 applicationsScoping 
@@ -141,3 +141,4 @@ applicationsScoping
 
 - 查看[在 Azure Monitor 中分析日志数据](log-query-overview.md)来大致了解日志查询以及 Azure Monitor 日志数据是如何构造的。
 - 查看 [Azure Monitor 日志查询](query-language.md)来了解适用于 Azure Monitor 日志查询的所有资源。
+

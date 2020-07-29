@@ -3,12 +3,12 @@ title: Application Insights 中的事件计数器 | Microsoft Docs
 description: 监视 Application Insights 中的系统和自定义的 .NET/.NET Core EventCounters。
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 06bf15bf60b1ee5e2c301935a30b3981d5233a08
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 42140f68a5f383a2a60fe8327f5023754366e6b7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539935"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324397"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters 简介
 
@@ -124,7 +124,7 @@ customMetrics
 与其他遥测一样，customMetrics 同样也具有列 `cloud_RoleInstance`，指示正在其上运行应用的主机服务器实例的标识。 上述查询显示每个实例的计数器值，并可用于比较不同服务器实例的性能。
 
 ## <a name="alerts"></a>警报
-与其他指标一样，可以[设置警报](../../azure-monitor/platform/alerts-log.md)以便在事件计数器超出指定的限制时收到警报。 打开“警报”窗格，并单击“添加警报”。
+与其他指标一样，可以[设置警报](../platform/alerts-log.md)以便在事件计数器超出指定的限制时收到警报。 打开“警报”窗格，并单击“添加警报”。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
@@ -148,4 +148,5 @@ EventCounter 无需任何特殊权限，并且在支持 .NET Core 3.0 的所有�
 
 ## <a name="next-steps"></a><a name="next"></a>后续步骤
 
-* [依赖关系跟踪](../../azure-monitor/app/asp-net-dependencies.md)
+* [依赖关系跟踪](./asp-net-dependencies.md)
+

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: e88d51e014244892fc3ac9e2cca242dacdfd9997
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0c090238192b49af00856f6fcd002e95d154d2c0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516169"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321847"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 可以在订阅中最多配置 2,000 个操作组。
@@ -26,7 +26,7 @@ ms.locfileid: "86516169"
 * **操作类型**：已执行的操作。 示例包括发送语音呼叫、短信、电子邮件，或者触发各种类型的自动化操作。 请参阅本文下文中的“类型”。
 * **详细信息**：因“操作类型”而异的相应详细信息。
 
-有关如何使用 Azure 资源管理器模板以配置操作组的信息，请参阅[操作组资源管理器模板](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)。
+有关如何使用 Azure 资源管理器模板以配置操作组的信息，请参阅[操作组资源管理器模板](./action-groups-create-resource-manager-template.md)。
 
 ## <a name="create-an-action-group-by-using-the-azure-portal"></a>使用 Azure 门户创建操作组
 
@@ -86,12 +86,12 @@ ms.locfileid: "86516169"
 - azureemail-noreply@microsoft.com
 - alerts-noreply@mail.windowsazure.com
 
-操作组中的电子邮件操作数可能有限。 请参阅[速率限制信息](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
+操作组中的电子邮件操作数可能有限。 请参阅[速率限制信息](./alerts-rate-limiting.md)一文。
 
 ### <a name="email-azure-resource-manager-role"></a>通过电子邮件发送 Azure 资源管理器角色
 向订阅角色的成员发送电子邮件。 电子邮件将仅发送给该角色的“Azure AD 用户”成员。 不会将电子邮件发送到 Azure AD 组或服务主体。
 
-操作组中的电子邮件操作数可能有限。 请参阅[速率限制信息](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
+操作组中的电子邮件操作数可能有限。 请参阅[速率限制信息](./alerts-rate-limiting.md)一文。
 
 ### <a name="function"></a>函数
 调用 [Azure Functions](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app) 中的现有 HTTP 触发器终结点。
@@ -99,7 +99,7 @@ ms.locfileid: "86516169"
 操作组中的函数操作数可能有限。
 
 ### <a name="itsm"></a>ITSM
-ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](../../azure-monitor/platform/itsmc-overview.md)。
+ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](./itsmc-overview.md)。
 
 操作组中的 ITSM 操作数可能有限。 
 
@@ -109,8 +109,8 @@ ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](../../azure-mo
 ### <a name="secure-webhook"></a>安全 Webhook
 操作组 Webhook 操作使你能够利用 Azure Active Directory 来保护操作组和受保护的 Web API（Webhook 终结点）之间的连接。 下面介绍了利用此功能的整个工作流。 有关 Azure AD 应用程序和服务主体的概述，请参阅 [Microsoft 标识平台 (v2.0) 概述](../../active-directory/develop/v2-overview.md)。
 
-1. 为受保护的 Web API 创建 Azure AD 应用程序。 请参阅[受保护的 WEB API：应用注册](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration)。
-    - 配置要[由后台程序应用调用的](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#if-your-web-api-is-called-by-a-daemon-app)受保护 API。
+1. 为受保护的 Web API 创建 Azure AD 应用程序。 请参阅[受保护的 WEB API：应用注册](../../active-directory/develop/scenario-protected-web-api-app-registration.md)。
+    - 配置要[由后台程序应用调用的](../../active-directory/develop/scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)受保护 API。
     
 2. 启用操作组以使用 Azure AD 应用程序。
 
@@ -196,7 +196,7 @@ Write-Host $myApp.AppRoles
 ```
 
 ### <a name="sms"></a>SMS
-有关其他重要信息，请参阅[速率限制信息](./../../azure-monitor/platform/alerts-rate-limiting.md)和[短信警报行为](../../azure-monitor/platform/alerts-sms-behavior.md)。 
+有关其他重要信息，请参阅[速率限制信息](./alerts-rate-limiting.md)和[短信警报行为](./alerts-sms-behavior.md)。 
 
 操作组中的短信操作数可能有限。
 
@@ -207,7 +207,7 @@ Write-Host $myApp.AppRoles
   
 
 ### <a name="voice"></a>语音
-有关其他重要行为，请参阅[速率限制信息](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
+有关其他重要行为，请参阅[速率限制信息](./alerts-rate-limiting.md)一文。
 
 操作组中的语音操作数可能有限。
 
@@ -248,9 +248,10 @@ Write-Host $myApp.AppRoles
 
 
 ## <a name="next-steps"></a>后续步骤
-* 详细了解[短信警报行为](../../azure-monitor/platform/alerts-sms-behavior.md)。  
-* 获取[对活动日志警报 webhook 架构的了解](../../azure-monitor/platform/activity-log-alerts-webhook.md)。  
-* 详细了解[ITSM 连接器](../../azure-monitor/platform/itsmc-overview.md)。
-* 详细了解有关警报的[速率限制](../../azure-monitor/platform/alerts-rate-limiting.md)。
-* 获取[活动日志警报概述](../../azure-monitor/platform/alerts-overview.md)，了解如何接收警报。  
+* 详细了解[短信警报行为](./alerts-sms-behavior.md)。  
+* 获取[对活动日志警报 webhook 架构的了解](./activity-log-alerts-webhook.md)。  
+* 详细了解[ITSM 连接器](./itsmc-overview.md)。
+* 详细了解有关警报的[速率限制](./alerts-rate-limiting.md)。
+* 获取[活动日志警报概述](./alerts-overview.md)，了解如何接收警报。  
 * 了解如何[配置每次发布服务运行状况通知时的警报](../../service-health/alerts-activity-log-service-notifications-portal.md)。
+

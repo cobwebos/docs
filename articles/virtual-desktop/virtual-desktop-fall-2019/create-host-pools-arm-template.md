@@ -1,6 +1,6 @@
 ---
-title: Windows 虚拟桌面主机池 Azure 资源管理器-Azure
-description: 如何使用 Azure 资源管理器模板在 Windows 虚拟桌面中创建主机池。
+title: Windows 虚拟桌面（经典）主机池 Azure 资源管理器-Azure
+description: 如何使用 Azure 资源管理器模板在 Windows 虚拟桌面（经典）中创建主机池。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 925d3ab7c01ef8dc4a2c5d590a56b4d558170472
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88027db54f9b7d4a7ef2ef32d4ea0434d8a26a10
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204755"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270254"
 ---
-# <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建主机池
+# <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板在 Windows 虚拟桌面（经典）中创建主机池
 
 >[!IMPORTANT]
->本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。
+>此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。
 
 主机池是 Windows 虚拟桌面租户环境中一个或多个相同虚拟机的集合。 每个主机池可以包含一个应用组，用户可以像在物理桌面上一样与该应用组交互。
 

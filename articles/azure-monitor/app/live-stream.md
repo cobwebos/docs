@@ -4,16 +4,16 @@ description: 通过自定义指标实时监视 Web 应用，使用实时失败�
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: e554595a7a88e1455f7426636dc69db99a7d3e94
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 4b84088c1213801e61a4c669bccb1a983c999310
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166478"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321932"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>实时指标流：以 1 秒的延迟进行监视和诊断
 
-使用[Application Insights](../../azure-monitor/app/app-insights-overview.md)中的实时指标流监视实时的生产型 web 应用程序。 选择并筛选指标和性能计数器进行实时监视，且服务不会受到任何干扰。 从失败请求和异常的样本中检查堆栈跟踪。 除了[探查器](../../azure-monitor/app/profiler.md)和[快照调试器](../../azure-monitor/app/snapshot-debugger.md)，实时指标流为您的实时网站提供了一个功能强大的非干扰性诊断工具。
+使用[Application Insights](./app-insights-overview.md)中的实时指标流监视实时的生产型 web 应用程序。 选择并筛选指标和性能计数器进行实时监视，且服务不会受到任何干扰。 从失败请求和异常的样本中检查堆栈跟踪。 除了[探查器](./profiler.md)和[快照调试器](./snapshot-debugger.md)，实时指标流为您的实时网站提供了一个功能强大的非干扰性诊断工具。
 
 使用实时指标流可实现以下操作：
 
@@ -31,7 +31,7 @@ ms.locfileid: "86166478"
 
 ## <a name="get-started"></a>入门
 
-1. 在应用程序中[安装 Application Insights](../../azure-monitor/azure-monitor-app-hub.yml) 。
+1. 在应用程序中[安装 Application Insights](../azure-monitor-app-hub.yml) 。
 2. 若要启用实时指标流，除了标准 Application Insights 包之外，还需要 [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/)。
 3. 更新到最新版本的 Application Insights 包。**** 在 Visual Studio 中，右键单击你的项目，然后选择 "**管理 NuGet 包**"。 打开“更新”**** 选项卡，并选择所有的 Microsoft.ApplicationInsights.* 包。
 
@@ -43,17 +43,17 @@ ms.locfileid: "86166478"
 
 ### <a name="no-data-check-your-server-firewall"></a>没有数据？ 请检查服务器的防火墙
 
-请检查[实时指标流的传出端口](../../azure-monitor/app/ip-addresses.md#outgoing-ports)是否在服务器的防火墙中为打开状态。
+请检查[实时指标流的传出端口](./ip-addresses.md#outgoing-ports)是否在服务器的防火墙中为打开状态。
 
 ## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>实时指标流与指标资源管理器、Analytics 有何差异？
 
 | |实时流 | 指标资源管理器和 Analytics |
 |---|---|---|
 |**延迟**|在一秒内显示数据|在几分钟聚合|
-|**无保留期**|当数据在图表上显示时会得到保留，不显示时将被丢弃。|[数据会保留 90 天](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
+|**无保留期**|当数据在图表上显示时会得到保留，不显示时将被丢弃。|[数据会保留 90 天](./data-retention-privacy.md#how-long-is-the-data-kept)|
 |**“按需”**|仅当打开 "实时指标" 窗格时才流式传输数据 |每当安装并启用 SDK 时会发送数据|
-|**免费**|实时流数据不收取费用|遵从[定价](../../azure-monitor/app/pricing.md)中的标准
-|**采样**|传输所有选择的指标和计数器。 对失败和堆栈跟踪进行采样。 不应用 TelemetryProcessors。|可能会对事件进行[采样](../../azure-monitor/app/api-filtering-sampling.md)|
+|**免费**|实时流数据不收取费用|遵从[定价](./pricing.md)中的标准
+|**采样**|传输所有选择的指标和计数器。 对失败和堆栈跟踪进行采样。 不应用 TelemetryProcessors。|可能会对事件进行[采样](./api-filtering-sampling.md)|
 |**控制通道**|筛选器的控制信号会发送到 SDK。 建议确保此通道的安全。|通信为单向通信，即通向门户|
 
 ## <a name="select-and-filter-your-metrics"></a>选择和筛选指标
@@ -64,7 +64,7 @@ ms.locfileid: "86166478"
 
 ![筛选器请求速率](./media/live-stream/filter-request.png)
 
-可以监视与“计数”不同的值。 可用的选项取决于流的类型，这可能是任何 Application Insights 遥测数据：请求、依赖项、异常、跟踪、事件或指标。 它也可能是自己的[自定义度量值](../../azure-monitor/app/api-custom-events-metrics.md#properties)：
+可以监视与“计数”不同的值。 可用的选项取决于流的类型，这可能是任何 Application Insights 遥测数据：请求、依赖项、异常、跟踪、事件或指标。 它也可能是自己的[自定义度量值](./api-custom-events-metrics.md#properties)：
 
 ![基于请求速率的查询生成器（含自定义指标）](./media/live-stream/query-builder-request.png)
 
@@ -159,7 +159,7 @@ using Microsoft.ApplicationInsights.Extensibility;
 
 从 Application Insights 资源中创建一个 API 密钥，并转到你的 Function App 的**应用程序设置**。 选择“添加新设置”**** 并输入名称 `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` 和与你的 API 密钥对应的值。
 
-### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET Core (需要 Application Insights ASP.NET Core SDK 2.3.0 或更高版本) 
+### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET Core （需要 Application Insights ASP.NET Core SDK 2.3.0 或更高版本）
 
 如下所述修改 startup.cs 文件：
 
@@ -206,10 +206,11 @@ services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => mod
 
 ## <a name="troubleshooting"></a>疑难解答
 
-没有数据？ 如果你的应用程序位于受保护的网络中：实时指标流使用不同于其他 Application Insights 遥测的 IP 地址。 请确保在防火墙中开放[这些 IP 地址](../../azure-monitor/app/ip-addresses.md)。
+没有数据？ 如果你的应用程序位于受保护的网络中：实时指标流使用不同于其他 Application Insights 遥测的 IP 地址。 请确保在防火墙中开放[这些 IP 地址](./ip-addresses.md)。
 
 ## <a name="next-steps"></a>后续步骤
-* [使用 Application Insights 监视使用情况](../../azure-monitor/app/usage-overview.md)
-* [使用诊断搜索](../../azure-monitor/app/diagnostic-search.md)
-* [探查器](../../azure-monitor/app/profiler.md)
-* [快照调试器](../../azure-monitor/app/snapshot-debugger.md)
+* [使用 Application Insights 监视使用情况](./usage-overview.md)
+* [使用诊断搜索](./diagnostic-search.md)
+* [探查器](./profiler.md)
+* [快照调试器](./snapshot-debugger.md)
+

@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17312e44714c8bdb20e22ad9aeb950e46eb71e3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 127d76bedafd4c857686e93f21d3cccdc36b98dd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80755256"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87274657"
 ---
 # <a name="conditional-access-users-and-groups"></a>条件访问：用户和组
 
@@ -39,7 +40,10 @@ ms.locfileid: "80755256"
    - 目录角色
       - 允许管理员选择用于确定分配的特定 Azure AD 目录角色。 例如，组织可以对分配有全局管理员角色的用户创建更严格的策略。
    - 用户和组
-      - 允许以特定用户集为目标。 例如，将某个人力资源应用选作云应用时，组织可以选择包含人力资源部所有成员的组。 某个组可以是 Azure AD 中任何类型的组，包括动态组，或分配的安全组和通讯组。
+      - 允许以特定用户集为目标。 例如，将某个人力资源应用选作云应用时，组织可以选择包含人力资源部所有成员的组。 某个组可以是 Azure AD 中任何类型的组，包括动态组，或分配的安全组和通讯组。 策略将应用于嵌套的用户和组。
+
+> [!WARNING]
+> 如果用户或组是超过2048个组的成员，则他们的访问可能会被阻止。 此限制适用于直接和嵌套组成员身份。
 
 ## <a name="exclude-users"></a>排除用户
 

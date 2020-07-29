@@ -3,12 +3,12 @@ title: ASP.NET Core 应用程序的 Azure 应用程序见解 |Microsoft Docs
 description: 监视 ASP.NET Core Web 应用程序的可用性、性能和使用情况。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 1d5ce4fe2a3ceb3235b77916aa408c681f81b0de
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 770cc3f34487f837631a98c6f652d8746ae2c2df
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517223"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321388"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>适用于 ASP.NET Core 应用程序的 Application Insights
 
@@ -201,7 +201,7 @@ public void ConfigureServices(IServiceCollection services)
 
 `ApplicationInsightsServiceOptions` 中的完整设置列表
 
-|设置 | 说明 | 默认
+|设置 | 描述 | 默认
 |---------------|-------|-------
 |EnablePerformanceCounterCollectionModule  | 启用/禁用 `PerformanceCounterCollectionModule` | true
 |EnableRequestTrackingTelemetryModule   | 启用/禁用 `RequestTrackingTelemetryModule` | true
@@ -221,7 +221,7 @@ public void ConfigureServices(IServiceCollection services)
 
 适用于 ASP.NET Core 的 Application Insights SDK 支持固定频率和自适应采样。 自适应采样默认已启用。 
 
-有关详细信息，请参阅 [配置 ASP.NET Core 应用程序的自适应采样](../../azure-monitor/app/sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications)。
+有关详细信息，请参阅 [配置 ASP.NET Core 应用程序的自适应采样](./sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications)。
 
 ### <a name="adding-telemetryinitializers"></a>添加 TelemetryInitializer
 
@@ -459,8 +459,9 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="next-steps"></a>后续步骤
 
-* [浏览用户流](../../azure-monitor/app/usage-flows.md)，了解用户如何在应用中导航。
+* [浏览用户流](./usage-flows.md)，了解用户如何在应用中导航。
 * [配置快照收集](./snapshot-debugger.md)，以便在引发异常时查看源代码和变量的状态。
-* [使用 API](../../azure-monitor/app/api-custom-events-metrics.md) 发送自己的事件和指标，以获取应用性能和使用情况的详细视图。
-* 使用[可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)从世界各地不断检查应用。
+* [使用 API](./api-custom-events-metrics.md) 发送自己的事件和指标，以获取应用性能和使用情况的详细视图。
+* 使用[可用性测试](./monitor-web-app-availability.md)从世界各地不断检查应用。
 * [ASP.NET Core 中的依赖项注入](/aspnet/core/fundamentals/dependency-injection)
+

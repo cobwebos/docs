@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/09/2020
-ms.openlocfilehash: 3175e43a841334719de80f44a226b1c7b87690d9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1d7275c928b4d25e200a3a8d3d690c7575c056e7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540105"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323173"
 ---
 # <a name="workspace-based-resource-changes-preview"></a>基于工作区的资源更改（预览）
 
@@ -67,7 +67,7 @@ ms.locfileid: "86540105"
 |itemId|string|\_ItemId|string|
 |itemType|string|类型|字符串|
 |location|string|位置|string|
-|message|字符串|Message|string|
+|message|字符串|消息|string|
 |name|string|名称|string|
 |operation_Id|string|OperationId|string|
 |operation_Name|string|OperationName|string|
@@ -148,13 +148,13 @@ ms.locfileid: "86540105"
 |cloud_RoleName|string|AppRoleName|string|
 |customDimensions|动态|属性|动态|
 |customMeasurements|动态|度量|动态|
-|数据|string|数据|string|
+|data|string|数据|string|
 |duration|real|DurationMs|real|
 |`id`|string|`Id`|string|
 |iKey|string|IKey|string|
 |itemCount|int|ItemCount|int|
 |itemId|string|\_ItemId|string|
-|itemType|string|类型|String|
+|itemType|string|类型|字符串|
 |name|string|名称|字符串|
 |operation_Id|string|OperationId|string|
 |operation_Name|string|OperationName|string|
@@ -243,7 +243,7 @@ ms.locfileid: "86540105"
 |user_AccountId|string|UserAccountId|string|
 |user_AuthenticatedId|string|UserAuthenticatedId|string|
 |user_Id|string|UserId|string|
-|值|real|删除||
+|value|real|删除||
 |valueCount|int|ValueCount|int|
 |valueMax|real|ValueMax|real|
 |valueMin|real|ValueMin|real|
@@ -276,7 +276,7 @@ ms.locfileid: "86540105"
 |iKey|string|IKey|string|
 |itemCount|int|ItemCount|int|
 |itemId|string|\_ItemId|string|
-|itemType|string|类型|String|
+|itemType|string|类型|字符串|
 |name|string|名称|字符串|
 |operation_Id|string|OperationId|string|
 |operation_Name|string|OperationName|string|
@@ -328,7 +328,7 @@ ms.locfileid: "86540105"
 |user_AccountId|string|UserAccountId|string|
 |user_AuthenticatedId|string|UserAuthenticatedId|string|
 |user_Id|string|UserId|string|
-|值|real|值|real|
+|value|real|值|real|
 
 ### <a name="apprequests"></a>AppRequests
 
@@ -356,7 +356,7 @@ ms.locfileid: "86540105"
 |iKey|string|IKey|string|
 |itemCount|int|ItemCount|int|
 |itemId|string|\_ItemId|string|
-|itemType|string|类型|String|
+|itemType|string|类型|字符串|
 |name|string|名称|字符串|
 |operation_Id|string|OperationId|string|
 |operation_Name|string|OperationName|string|
@@ -406,7 +406,7 @@ ms.locfileid: "86540105"
 |itemCount|int|ItemCount|int|
 |itemId|string|\_ItemId|string|
 |itemType|string|类型|string|
-|message|string|Message|string|
+|message|string|消息|string|
 |method|string|方法|string|
 |operation_Id|string|OperationId|string|
 |operation_Name|string|OperationName|string|
@@ -451,7 +451,7 @@ ms.locfileid: "86540105"
 |itemCount|int|ItemCount|int|
 |itemId|string|\_ItemId|string|
 |itemType|string|类型|string|
-|message|string|Message|string|
+|message|string|消息|string|
 |operation_Id|string|OperationId|string|
 |operation_Name|string|OperationName|string|
 |operation_ParentId|string|OperationParentId|string|
@@ -466,5 +466,6 @@ ms.locfileid: "86540105"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [探索指标](../../azure-monitor/platform/metrics-charts.md)
+* [探索指标](../platform/metrics-charts.md)
 * [编写分析查询](../log-query/log-query-overview.md)
+

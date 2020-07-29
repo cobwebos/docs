@@ -6,18 +6,18 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: c9d69c0f39d9cad52dc86c3ab33d202c88131ab0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6eae11e2157904b47582f78a601c8d2900e61247
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753210"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324584"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>使用 OpenCensus Python 跟踪传入请求
 
 使用 OpenCensus Python 及其各种集成收集传入请求数据。 跟踪发送到基于常用 Web 框架 `django`、`flask` 和 `pyramid` 构建的 Web 应用程序的传入请求数据。 然后，将数据作为 `requests` 遥测发送到 Azure Monitor 下的 Application Insights。
 
-首先，使用最新版 [OpenCensus Python SDK](../../azure-monitor/app/opencensus-python.md) 检测 Python 应用程序。
+首先，使用最新版 [OpenCensus Python SDK](./opencensus-python.md) 检测 Python 应用程序。
 
 ## <a name="tracking-django-applications"></a>跟踪 Django 应用程序
 
@@ -119,8 +119,9 @@ ms.locfileid: "84753210"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [应用程序映射](../../azure-monitor/app/app-map.md)
-* [可用性](../../azure-monitor/app/monitor-web-app-availability.md)
-* [搜索](../../azure-monitor/app/diagnostic-search.md)
-* [日志（分析）查询](../../azure-monitor/log-query/log-query-overview.md)
-* [事务诊断](../../azure-monitor/app/transaction-diagnostics.md)
+* [应用程序映射](./app-map.md)
+* [可用性](./monitor-web-app-availability.md)
+* [搜索](./diagnostic-search.md)
+* [日志（分析）查询](../log-query/log-query-overview.md)
+* [事务诊断](./transaction-diagnostics.md)
+

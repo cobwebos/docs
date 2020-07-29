@@ -10,12 +10,12 @@ ms.date: 07/13/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d6fa4bbaf9b37c93ef4efbe405087c39395df63d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4d54a8bf9fb5a1f31a29e41ecea545b43dbe58cf
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086007"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87276680"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>通过 Azure CLI 使用 Azure Key Vault 配置客户管理的密钥
 
@@ -97,7 +97,7 @@ Azure 存储加密默认使用 Microsoft 托管的密钥。 在此步骤中，�
 
 ### <a name="configure-encryption-for-automatic-rotation-of-customer-managed-keys"></a>为客户托管密钥的自动轮换配置加密
 
-若要配置加密以自动轮换客户管理的密钥，请安装[Azure CLI 版本 2.4.0](/cli/azure/release-notes-azure-cli#april-21-2020)或更高版本。 有关详细信息，请参阅[安装 Azure CLI](/azure/install-azure-cli)。
+若要配置加密以自动轮换客户管理的密钥，请安装[Azure CLI 版本 2.4.0](/cli/azure/release-notes-azure-cli#april-21-2020)或更高版本。 有关详细信息，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 若要自动轮替客户托管的密钥，请在配置存储帐户的客户托管密钥时省略密钥版本。 调用[az storage account update](/cli/azure/storage/account#az-storage-account-update)以更新存储帐户的加密设置，如以下示例中所示。 包括 `--encryption-key-source` 参数并将其设置为， `Microsoft.Keyvault` 以便为帐户启用客户管理的密钥。 请记得将括号中的占位符值替换为你自己的值。
 

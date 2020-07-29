@@ -5,16 +5,16 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.openlocfilehash: 97c1819d665e6964343e853249a0d22aa07c3588
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 93a86bc035803517ff61c79ae4b8a7fc46dd811f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045587"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322374"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理经典指标警报
 
-Azure Monitor 中的经典指标警报提供了一种在指标超出阈值时获得通知的方法。 经典指标警报是一个较旧的功能，它仅可针对非维度指标发出警报。 有一个称为“指标警报”的较新功能，它具有比经典指标警报改进的功能。 可以在[指标警报概述](../../azure-monitor/platform/alerts-metric-overview.md)中了解新的指标警报功能的详细信息。 在本文中，我们将介绍如何通过 Azure 门户、Azure CLI 和 Powershell 创建、查看和管理经典指标警报规则。
+Azure Monitor 中的经典指标警报提供了一种在指标超出阈值时获得通知的方法。 经典指标警报是一个较旧的功能，它仅可针对非维度指标发出警报。 有一个称为“指标警报”的较新功能，它具有比经典指标警报改进的功能。 可以在[指标警报概述](./alerts-metric-overview.md)中了解新的指标警报功能的详细信息。 在本文中，我们将介绍如何通过 Azure 门户、Azure CLI 和 Powershell 创建、查看和管理经典指标警报规则。
 
 ## <a name="with-azure-portal"></a>使用 Azure 门户
 
@@ -130,5 +130,6 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用资源管理器模板创建经典指标警报](../../azure-monitor/platform/alerts-enable-template.md)。
-- [使用 Webhook 让经典指标警报通知非 Azure 系统](../../azure-monitor/platform/alerts-webhooks.md)。
+- [使用资源管理器模板创建经典指标警报](./alerts-enable-template.md)。
+- [使用 Webhook 让经典指标警报通知非 Azure 系统](./alerts-webhooks.md)。
+

@@ -7,16 +7,17 @@ ms.author: daviste
 ms.date: 07/07/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: 8905222214d58eeba24ecf50da768ffa1d65c39d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1bb18cc43ef306a208500ff49ec41dbfb74b788e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670876"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323462"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>在 Visual Studio 中使用 Azure Application Insights 调试应用程序
-在 Visual Studio（2015 和更高版本）中，可以使用来自 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 的遥测，在调试和生产环境中分析 ASP.NET Web 应用中的性能和诊断问题。
+在 Visual Studio（2015 和更高版本）中，可以使用来自 [Azure Application Insights](./app-insights-overview.md) 的遥测，在调试和生产环境中分析 ASP.NET Web 应用中的性能和诊断问题。
 
-如果使用 Visual Studio 2017 或更高版本创建了 ASP.NET Web 应用，则其中已包含 Application Insights SDK。 否则，如果尚未执行此操作，请[向应用添加 Application Insights](../../azure-monitor/app/asp-net.md)。
+如果使用 Visual Studio 2017 或更高版本创建了 ASP.NET Web 应用，则其中已包含 Application Insights SDK。 否则，如果尚未执行此操作，请[向应用添加 Application Insights](./asp-net.md)。
 
 若要在应用处于实时生产环境中时对其进行监视，通常可以在 [Azure 门户](https://portal.azure.com)中查看 Application Insights 遥测，可以在该门户中设置警报并应用强大的监视工具。 但是对于调试，也可在 Visual Studio 中搜索和分析遥测。 可使用 Visual Studio 来分析遥测，不管是从生产站点还是从开发计算机上的调试运行均可执行该操作。 如果是后一种情况，则可分析调试运行，即使尚未将 SDK 配置为将遥测发送到 Azure 门户。 
 
@@ -51,7 +52,7 @@ Application Insights 的“搜索”窗口显示已记录的事件。 （如果�
 ![在“请求详细信息”下，向下滚动到相关项目](./media/visual-studio/41.png)
 
 ## <a name="view-exceptions-and-failed-requests"></a>查看异常和失败的请求
-异常报告显示在“搜索”窗口中。 （在某些旧式 ASP.NET 应用程序中，必须[设置异常监视](../../azure-monitor/app/asp-net-exceptions.md)才能查看由框架处理的异常。）
+异常报告显示在“搜索”窗口中。 （在某些旧式 ASP.NET 应用程序中，必须[设置异常监视](./asp-net-exceptions.md)才能查看由框架处理的异常。）
 
 单击异常可获得堆栈跟踪。 如果应用的代码在 Visual Studio 中打开，可从堆栈跟踪单击浏览到相关代码行。
 
@@ -63,10 +64,10 @@ Application Insights 的“搜索”窗口显示已记录的事件。 （如果�
 ![异常堆栈跟踪](./media/visual-studio/21.png)
 
 > [!NOTE] 
-> Code Lens 显示 Application Insights 数据的前提是，已[将应用配置为将遥测发送到 Application Insights 门户](../../azure-monitor/app/asp-net.md)。
+> Code Lens 显示 Application Insights 数据的前提是，已[将应用配置为将遥测发送到 Application Insights 门户](./asp-net.md)。
 >
 
-[Code Lens 中的 Application Insights 的详细信息](../../azure-monitor/app/visual-studio-codelens.md)
+[Code Lens 中的 Application Insights 的详细信息](./visual-studio-codelens.md)
 
 ## <a name="trends"></a>趋势
 趋势是用于可视化一段时间内的应用行为的工具。 
@@ -77,14 +78,14 @@ Application Insights 的“搜索”窗口显示已记录的事件。 （如果�
 
 ![趋势](./media/visual-studio/51.png)
 
-[详细了解趋势](../../azure-monitor/app/visual-studio-trends.md)。
+[详细了解趋势](./visual-studio-trends.md)。
 
 ## <a name="local-monitoring"></a>本地监视
 （从 Visual Studio 2015 Update 2 开始）如果未将 SDK 配置为将遥测发送到 Application Insights 门户（从而 ApplicationInsights.config 中没有检测密钥），“诊断”窗口会显示来自最新调试会话的遥测。 
 
 如果已发布过应用的以前版本，这会是比较好的做法。 不会希望来自调试会话的遥测与 Application Insights 门户中来自已发布应用的遥测混在一起。
 
-如果在将遥测发送到门户之前有一些想要调试的 [自定义遥测](../../azure-monitor/app/api-custom-events-metrics.md)，它会很有用。
+如果在将遥测发送到门户之前有一些想要调试的 [自定义遥测](./api-custom-events-metrics.md)，它会很有用。
 
 * *最初，将 Application Insights 完全配置为将遥测发送到门户。但现在只想查看 Visual Studio 中的遥测。*
   
@@ -95,6 +96,6 @@ Application Insights 的“搜索”窗口显示已记录的事件。 （如果�
 ## <a name="next-steps"></a>后续步骤
 |  |  |
 | --- | --- |
-| **[添加更多数据](../../azure-monitor/app/asp-net-more.md)**<br/>监视使用情况、可用性、依赖项、异常。 集成来自记录框架的跟踪。 编写自定义遥测。 |![Visual Studio](./media/visual-studio/64.png) |
-| **[使用 Application Insights 门户](../../azure-monitor/app/overview-dashboard.md)**<br/>查看仪表板、功能强大的诊断和分析工具、警报、应用程序的实时依赖项映射和导出的遥测数据。 |![Visual Studio](./media/visual-studio/62.png) |
+| **[添加更多数据](./asp-net-more.md)**<br/>监视使用情况、可用性、依赖项、异常。 集成来自记录框架的跟踪。 编写自定义遥测。 |![Visual Studio](./media/visual-studio/64.png) |
+| **[使用 Application Insights 门户](./overview-dashboard.md)**<br/>查看仪表板、功能强大的诊断和分析工具、警报、应用程序的实时依赖项映射和导出的遥测数据。 |![Visual Studio](./media/visual-studio/62.png) |
 

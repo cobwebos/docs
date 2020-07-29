@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: 9581bb17e29a25b618a90aece5675d132c14a97c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ca697fe0174a62532f3fa9ffbc5b3fcfc0c06ad7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081485"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321269"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Monitor 中的自定义指标（预览版）
 
@@ -28,7 +28,7 @@ Azure Monitor 自定义指标目前为公开预览版。
 - 使用 Azure Application Insights SDK 检测应用程序并将自定义遥测数据发送到 Azure Monitor。 
 - 在 [Azure VM](collect-custom-metrics-guestos-resource-manager-vm.md)、[虚拟机规模集](collect-custom-metrics-guestos-resource-manager-vmss.md)、[经典 VM](collect-custom-metrics-guestos-vm-classic.md) 或[经典云服务](collect-custom-metrics-guestos-vm-cloud-service-classic.md)上安装 Windows Azure 诊断 (WAD) 扩展，并将性能计数器发送到 Azure Monitor。 
 - 在 Azure Linux VM 上安装 [InfluxData Telegraf 代理](collect-custom-metrics-linux-telegraf.md)，并使用 Azure Monitor 输出插件发送指标。
-- 将自定义指标[直接发送到 Azure Monitor REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)：`https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`。
+- 将自定义指标[直接发送到 Azure Monitor REST API](./metrics-store-custom-rest-api.md)：`https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`。
 
 ## <a name="pricing-model-and-retention"></a>定价模型和保留期
 
@@ -192,7 +192,7 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 |美国中西部 | https： \/ /westcentralus.monitoring.azure.com |
 |美国西部 2       | https： \/ /westus2.monitoring.azure.com |
 |美国中北部 | https： \/ /northcentralus.monitoring.azure.com
-|South Central US| https： \/ /southcentralus.monitoring.azure.com |
+|美国中南部| https： \/ /southcentralus.monitoring.azure.com |
 |美国中部      | https： \/ /centralus.monitoring.azure.com |
 |加拿大中部 | https： \/ /canadacentral.monitoring.azure.com |
 |East US| https： \/ /eastus.monitoring.azure.com |
@@ -235,6 +235,7 @@ Azure Monitor 针对自定义指标实施以下用量限制：
  - [虚拟机规模集](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Azure 虚拟机（经典）](collect-custom-metrics-guestos-vm-classic.md)
  - [使用 Telegraf 代理的 Linux 虚拟机](collect-custom-metrics-linux-telegraf.md)
- - [REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)
+ - [REST API](./metrics-store-custom-rest-api.md)
  - [经典云服务](collect-custom-metrics-guestos-vm-cloud-service-classic.md)
  
+

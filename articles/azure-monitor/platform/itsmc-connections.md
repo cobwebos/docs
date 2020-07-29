@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 7baabe455128bf420a3c3e11ea83bb5357ed35c8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2df7d8273b2b25cd0171b38e5cc0ada557ea9a2d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505153"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325349"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>将 ITSM 产品/服务与 IT 服务管理连接器相连接
-本文介绍如何配置 ITSM 产品/服务与 Log Analytics 中的 IT 服务管理连接器 (ITSMC) 之间的连接，以便集中管理工作项。 有关 ITSMC 的详细信息，请参阅[概述](../../azure-monitor/platform/itsmc-overview.md)。
+本文介绍如何配置 ITSM 产品/服务与 Log Analytics 中的 IT 服务管理连接器 (ITSMC) 之间的连接，以便集中管理工作项。 有关 ITSMC 的详细信息，请参阅[概述](./itsmc-overview.md)。
 
 支持以下 ITSM 产品/服务。 选择产品可查看有关如何将该产品连接到 ITSMC 的详细信息。
 
@@ -35,7 +35,7 @@ ms.locfileid: "86505153"
 
 请确保满足以下先决条件：
 
-- 已安装 ITSMC。 详细信息：[添加 IT 服务管理连接器解决方案](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- 已安装 ITSMC。 详细信息：[添加 IT 服务管理连接器解决方案](./itsmc-overview.md#adding-the-it-service-management-connector-solution)。
 - 已部署并配置 Service Manager Web 应用程序（Web 应用）。 [此处](#create-and-deploy-service-manager-web-app-service)提供了有关 Web 应用的信息。
 - 已创建并配置混合连接。 详细信息：[配置混合连接](#configure-the-hybrid-connection)。
 - 支持的 Service Manager 版本：2012 R2 或 2016。
@@ -64,7 +64,7 @@ ms.locfileid: "86505153"
 | **连接名称**   | 键入要与 ITSMC 连接的 System Center Service Manager 实例的名称。  以后在此实例中配置工作项/查看详细日志分析时，需要使用此名称。 |
 | **合作伙伴类型**   | 选择“System Center Service Manager”。 |
 | **服务器 URL**   | 键入 Service Manager Web 应用的 URL。 [此处](#create-and-deploy-service-manager-web-app-service)提供了有关 Service Manager Web 应用的详细信息。
-| **客户端 ID**   | 键入（使用自动脚本）生成的、用于对 Web 应用进行身份验证的客户端 ID。 [此处](../../azure-monitor/platform/itsmc-service-manager-script.md)提供了有关自动化脚本的详细信息。|
+| **客户端 ID**   | 键入（使用自动脚本）生成的、用于对 Web 应用进行身份验证的客户端 ID。 [此处](./itsmc-service-manager-script.md)提供了有关自动化脚本的详细信息。|
 | **客户端机密**   | 键入为此 ID 生成的客户端机密。   |
 | **同步数据**   | 选择需要通过 ITSMC 同步的 Service Manager 工作项。  这些工作项将导入到 Log Analytics。 **选项：** “事件”、“更改请求”。|
 | **数据同步范围** | 键入检索数据的过去天数。 **最大限制**：120 天。 |
@@ -79,7 +79,7 @@ ms.locfileid: "86505153"
 - 在此 Service Manager 实例中，可以根据 Log Analytics 警报、日志记录或 Azure 警报创建事件。
 
 
-了解详细信息：[根据 Azure 警报创建 ITSM 工作项](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+了解详细信息：[根据 Azure 警报创建 ITSM 工作项](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 ### <a name="create-and-deploy-service-manager-web-app-service"></a>创建和部署 Service Manager Web 应用服务
 
@@ -87,11 +87,11 @@ ms.locfileid: "86505153"
 
 若要为 Service Manager 设置 ITSM Web 应用，请执行以下操作：
 
-- **部署 Web 应用** – 部署 Web 应用，设置属性，并在 Azure AD 上进行身份验证。 可以使用 Microsoft 提供的[自动化脚本](../../azure-monitor/platform/itsmc-service-manager-script.md)部署 Web 应用。
+- **部署 Web 应用** – 部署 Web 应用，设置属性，并在 Azure AD 上进行身份验证。 可以使用 Microsoft 提供的[自动化脚本](./itsmc-service-manager-script.md)部署 Web 应用。
 - 手动**配置混合连接** - [配置此连接](#configure-the-hybrid-connection)。
 
 #### <a name="deploy-the-web-app"></a>部署 Web 应用
-使用自动化[脚本](../../azure-monitor/platform/itsmc-service-manager-script.md)部署 Web 应用，设置属性，并在 Azure AD 上进行身份验证。
+使用自动化[脚本](./itsmc-service-manager-script.md)部署 Web 应用，设置属性，并在 Azure AD 上进行身份验证。
 
 通过提供以下所需详细信息来运行脚本：
 
@@ -178,7 +178,7 @@ ms.locfileid: "86505153"
 
 ### <a name="prerequisites"></a>先决条件
 请确保满足以下先决条件：
-- 已安装 ITSMC。 详细信息：[添加 IT 服务管理连接器解决方案](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- 已安装 ITSMC。 详细信息：[添加 IT 服务管理连接器解决方案](./itsmc-overview.md#adding-the-it-service-management-connector-solution)。
 - ServiceNow 支持的版本：纽约、马德里、伦敦、金斯敦、雅加达、伊斯坦布尔、赫尔辛基、日内瓦。
 > [!NOTE]
 > ITSMC 仅支持 ServiceNow 的官方 SaaS 产品/服务。 当前不支持 ServiceNow 的专用部署。 
@@ -247,7 +247,7 @@ ms.locfileid: "86505153"
 
 - 在此 ServiceNow 实例中，可以根据 Log Analytics 警告、日志记录或 Azure 警报创建事件。
 
-了解详细信息：[根据 Azure 警报创建 ITSM 工作项](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+了解详细信息：[根据 Azure 警报创建 ITSM 工作项](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 
 > [!NOTE]
@@ -303,7 +303,7 @@ ms.locfileid: "86505153"
 请确保满足以下先决条件：
 
 
-- 已安装 ITSMC。 详细信息：[添加 IT 服务管理连接器解决方案](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- 已安装 ITSMC。 详细信息：[添加 IT 服务管理连接器解决方案](./itsmc-overview.md#adding-the-it-service-management-connector-solution)。
 - Provance 应用应已注册到 Azure AD，并且可提供客户端 ID。 有关详细信息，请参阅[如何配置 Active Directory 身份验证](../../app-service/configure-authentication-provider-aad.md)。
 
 - 用户角色：管理员。
@@ -345,7 +345,7 @@ ms.locfileid: "86505153"
 
 - 在此 Provance 实例中，可以根据 Log Analytics 警告、日志记录或 Azure 警报创建事件。
 
-了解详细信息：[根据 Azure 警报创建 ITSM 工作项](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+了解详细信息：[根据 Azure 警报创建 ITSM 工作项](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 ## <a name="connect-cherwell-to-it-service-management-connector-in-azure"></a>将 Cherwell 连接到 Azure 中的 IT 服务管理连接器
 
@@ -355,7 +355,7 @@ ms.locfileid: "86505153"
 
 请确保满足以下先决条件：
 
-- 已安装 ITSMC。 详细信息：[添加 IT 服务管理连接器解决方案](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- 已安装 ITSMC。 详细信息：[添加 IT 服务管理连接器解决方案](./itsmc-overview.md#adding-the-it-service-management-connector-solution)。
 - 已生成客户端 ID。 详细信息：[为 Cherwell 生成客户端 ID](#generate-client-id-for-cherwell)。
 - 用户角色：管理员。
 
@@ -397,7 +397,7 @@ ms.locfileid: "86505153"
 
 - 在此 Cherwell 实例中，可以根据 Log Analytics 警告、日志记录或 Azure 警报创建事件。
 
-了解详细信息：[根据 Azure 警报创建 ITSM 工作项](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+了解详细信息：[根据 Azure 警报创建 ITSM 工作项](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 ### <a name="generate-client-id-for-cherwell"></a>为 Cherwell 生成客户端 ID
 
@@ -411,4 +411,5 @@ ms.locfileid: "86505153"
 
 
 ## <a name="next-steps"></a>后续步骤
- - [根据 Azure 警报日志创建 ITSM 工作项](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
+ - [根据 Azure 警报日志创建 ITSM 工作项](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
+

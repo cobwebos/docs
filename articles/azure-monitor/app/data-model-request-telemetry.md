@@ -4,15 +4,16 @@ description: 适用于请求遥测的 Application Insights 数据模型
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 57cc9c95137facaaf2ddf5bb212121f88e150f5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a352f4ce3528d395599a91b53031c74b0873152
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807649"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320555"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>请求遥测：Application Insights 数据模型
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的请求遥测项表示由应用程序的外部请求触发的执行的逻辑序列。 每个请求执行由包含所有执行参数的唯一 `ID` 和 `url` 标识。 可以按逻辑 `name` 将请求分组，并定义此请求的 `source`。 代码执行的结果可能是 `success` 或 `fail`，并且具有特定的 `duration`。 可以进一步根据 `resultCode` 将成功和失败的执行分组。 请求遥测的开始时间在信封级别定义。
+[Application Insights](./app-insights-overview.md) 中的请求遥测项表示由应用程序的外部请求触发的执行的逻辑序列。 每个请求执行由包含所有执行参数的唯一 `ID` 和 `url` 标识。 可以按逻辑 `name` 将请求分组，并定义此请求的 `source`。 代码执行的结果可能是 `success` 或 `fail`，并且具有特定的 `duration`。 可以进一步根据 `resultCode` 将成功和失败的执行分组。 请求遥测的开始时间在信封级别定义。
 
 请求遥测使用自定义的 `properties` 和 `measurements` 支持标准可扩展性模型。
 
@@ -26,7 +27,7 @@ ms.locfileid: "85807649"
 
 ## <a name="id"></a>ID
 
-请求调用实例的标识符。 用于在请求与其他遥测项之间建立关联。 ID 应该全局唯一。 有关详细信息，请参阅[关联](../../azure-monitor/app/correlation.md)页。
+请求调用实例的标识符。 用于在请求与其他遥测项之间建立关联。 ID 应该全局唯一。 有关详细信息，请参阅[关联](./correlation.md)页。
 
 最大长度：128 个字符
 
@@ -38,7 +39,7 @@ ms.locfileid: "85807649"
 
 ## <a name="source"></a>源
 
-请求的源。 示例包括调用方的检测密钥或调用方的 IP 地址。 有关详细信息，请参阅[关联](../../azure-monitor/app/correlation.md)页。
+请求的源。 示例包括调用方的检测密钥或调用方的 IP 地址。 有关详细信息，请参阅[关联](./correlation.md)页。
 
 最大长度：1024 个字符
 
@@ -72,7 +73,8 @@ ms.locfileid: "85807649"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [编写自定义请求遥测](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)
+- [编写自定义请求遥测](./api-custom-events-metrics.md#trackrequest)
 - 有关 Application Insights 的类型和数据模型，请参阅[数据模型](data-model.md)。
-- 了解如何使用 Application Insights [配置 ASP.NET Core](../../azure-monitor/app/asp-net.md) 应用程序。
-- 查看 Application Insights 支持的[平台](../../azure-monitor/app/platforms.md)。
+- 了解如何使用 Application Insights [配置 ASP.NET Core](./asp-net.md) 应用程序。
+- 查看 Application Insights 支持的[平台](./platforms.md)。
+

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: d90f38f83bd4d2d5311f277fcc928e442d7ea793
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4680d989cc1befe50955af408aec79a14031481e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416383"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321235"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Delete 活动
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -46,9 +46,6 @@ ms.locfileid: "81416383"
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
 -   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
 -   [Azure 文件存储](connector-azure-file-storage.md)
-
-### <a name="file-system-data-stores"></a>文件系统数据存储
-
 -   [文件系统](connector-file-system.md)
 -   [FTP](connector-ftp.md)
 -   [SFTP](connector-sftp.md)
@@ -82,7 +79,7 @@ ms.locfileid: "81416383"
 
 ## <a name="type-properties"></a>Type 属性
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | dataset | 提供数据集引用以确定要删除的文件或文件夹 | 是 |
 | recursive | 表明从子文件夹中以递归方式删除数据，还是只从指定文件夹中删除数据。  | 否。 默认为 `false`。 |

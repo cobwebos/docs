@@ -3,11 +3,12 @@ title: 在 Java Web 项目中排查 Application Insights 问题
 description: 故障排除指南 - 使用 Application Insights 监视实时 Java 应用。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: ecc9a298d122919138683b48527574a1ff3e5edc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74b4bc009158d826955f851f22458e9570a58e7c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484783"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324142"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>用于 Java 的 Application Insights 的故障排除与常见问题解答
 使用 [Java 中的 Azure Application Insights][java] 时有疑问或遇到问题？ 请参考下面的提示。
@@ -23,7 +24,7 @@ ms.locfileid: "84484783"
 * 请稍等片刻，并单击“刷新”。 图表会定期自行刷新，但你也可以手动刷新。 刷新间隔取决于图表的时间范围。
 * 检查是否已在 ApplicationInsights.xml 文件（位于项目的 resources 文件夹）中定义检测密钥或将检测密钥配置为环境变量。
 * 确认 xml 文件中没有 `<DisableTelemetry>true</DisableTelemetry>` 节点。
-* 在防火墙中，可能需要打开 TCP 端口 80 和 443 才能将传出流量发送到 dc.services.visualstudio.com。 请参阅 [full list of firewall exceptions](../../azure-monitor/app/ip-addresses.md)（防火墙例外的完整列表）
+* 在防火墙中，可能需要打开 TCP 端口 80 和 443 才能将传出流量发送到 dc.services.visualstudio.com。 请参阅 [full list of firewall exceptions](./ip-addresses.md)（防火墙例外的完整列表）
 * 在 Microsoft Azure 开始面板中查看服务状态映射。 如果看到警报指示，请等待它们恢复“正常”，关闭再重新打开 Application Insights 应用程序边栏选项卡。
 * [Turn on logging](#debug-data-from-the-sdk)通过在 `<SDKLogger />` ApplicationInsights.xml 文件（在项目的 resources 文件夹中）中的根节点下添加一个元素来打开日志记录，并检查是否有任何可疑日志以 AI： INFO/警告/错误开头的条目。 
 * 查看控制台输出消息中是否包含“已成功找到配置文件”语句，确保 Java SDK 成功加载正确的 ApplicationInsights.xml 文件。
@@ -37,7 +38,7 @@ ms.locfileid: "84484783"
 * 是否正在查看正确的 AI 资源？ 请将应用程序的 iKey 与预期遥测的资源的 iKey 相匹配。 它们应相同。
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>未按预期看到所有数据
-* 打开“使用情况和预估成本”页面并检查[采样](../../azure-monitor/app/sampling.md)是否正在进行。 （100% 传输意味着采样未处于操作中。）可以将 Application Insights 服务设置为仅接受来自应用的一小部分遥测数据。 这有助于保持在每月的遥测配额范围内。
+* 打开“使用情况和预估成本”页面并检查[采样](./sampling.md)是否正在进行。 （100% 传输意味着采样未处于操作中。）可以将 Application Insights 服务设置为仅接受来自应用的一小部分遥测数据。 这有助于保持在每月的遥测配额范围内。
 * 是否已启用 SDK 采样？ 如果是，将按为所有适用类型指定的速率对数据进行采样。
 * 是否正在运行较旧版本的 Java SDK？ 从版本 2.0.1 开始，我们引入了容错机制以处理间歇性网络和后端故障，以及本地驱动器上的数据持久性。
 * 是否由于过度遥测而受到限制？ 如果启用“信息日志记录”，会看到日志消息“应用受到限制”。 当前的限制为 32000 个遥测项/秒。
@@ -68,7 +69,7 @@ ms.locfileid: "84484783"
     config.setTrackingIsDisabled(true);
 ```
 
-**或**
+**Or**
 
 更新 ApplicationInsights.xml（位于项目的 resources 文件夹中）。 在根节点下添加以下代码：
 
@@ -192,11 +193,11 @@ Application Insights 使用 `org.apache.http`。 这将在命名空间 `com.micr
 
 <!--Link references-->
 
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[data]: ../../azure-monitor/app/data-retention-privacy.md
+[availability]: ./monitor-web-app-availability.md
+[data]: ./data-retention-privacy.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[platforms]: ../../azure-monitor/app/platforms.md
-[track]: ../../azure-monitor/app/api-custom-events-metrics.md
+[platforms]: ./platforms.md
+[track]: ./api-custom-events-metrics.md
 [usage]: javascript.md
 

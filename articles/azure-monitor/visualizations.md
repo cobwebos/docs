@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 4c5290d9f5ec47969ae43e5986d31484927a0ac5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 195e606a66b1b49821fc1b46381fdc551f142a6a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081349"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325519"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>可视化 Azure Monitor 中的数据
 本文概述了将 Azure Monitor 中存储的日志和指标数据可视化时可使用的方法。
@@ -19,7 +19,7 @@ ms.locfileid: "87081349"
 图表和图形等可视化效果有助于你分析监视数据，从而深入了解问题并识别模式。 根据使用的工具，你还可以选择与组织内外的其他用户共享可视化效果。
 
 ## <a name="workbooks"></a>工作簿
-[工作簿](../azure-monitor/platform/workbooks-overview.md)是交互式文档，可以让用户深入了解团队内部的数据、调查和协作。 例如，工作簿在故障排查指南和事件分析方面非常有用。
+[工作簿](./platform/workbooks-overview.md)是交互式文档，可以让用户深入了解团队内部的数据、调查和协作。 例如，工作簿在故障排查指南和事件分析方面非常有用。
 
 ![工作簿](media/visualizations/workbook.png)
 
@@ -141,7 +141,7 @@ ms.locfileid: "87081349"
 - 了解[由 Azure Monitor 收集的数据](platform/data-platform.md)。
 - 了解 [Azure 仪表板](../azure-portal/azure-portal-dashboards.md)。
 - 了解 [Azure Monitor 中的视图](platform/view-designer.md)。
-- 了解[工作簿](../azure-monitor/platform/workbooks-overview.md)。
-- 了解如何[将日志数据导入 Power BI](../azure-monitor/platform/powerbi.md)。
-- 了解 [Grafana Azure Monitor 数据源插件](../azure-monitor/platform/grafana-plugin.md)。
+- 了解[工作簿](./platform/workbooks-overview.md)。
+- 了解如何[将日志数据导入 Power BI](./platform/powerbi.md)。
+- 了解 [Grafana Azure Monitor 数据源插件](./platform/grafana-plugin.md)。
 

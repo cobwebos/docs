@@ -4,12 +4,12 @@ description: 有关将 Azure Application Insights ILogger 提供程序与 ASP.NE
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 419813eba371def9eeeb43e45b51b38d1f20c607
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 171aaeb624bfedb9aa7408a736c11faca316b392
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014467"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322629"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>.NET Core ILogger 日志的 ApplicationInsightsLoggerProvider
 
@@ -218,7 +218,7 @@ public class Startup
 ## <a name="console-application"></a>控制台应用程序
 
 > [!NOTE]
-> 有一个名为 [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 的新 Application Insights SDK，可用于为任何控制台应用程序启用 Application Insights（ILogger 和其他 Application Insights 遥测）。 建议在[此处](../../azure-monitor/app/worker-service.md)使用此包和相关说明。
+> 有一个名为 [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 的新 Application Insights SDK，可用于为任何控制台应用程序启用 Application Insights（ILogger 和其他 Application Insights 遥测）。 建议在[此处](./worker-service.md)使用此包和相关说明。
 
 以下代码演示了一个配置为向 Application Insights 发送 ILogger 跟踪的示例控制台应用程序。
 
@@ -392,7 +392,7 @@ ASP.NET Core *ILogger* 基础结构提供一个内置机制用于应用[日志�
 
 ### <a name="i-updated-to-microsoftapplicationinsightsaspnet-sdk-version-271-and-logs-from-ilogger-are-captured-automatically-how-do-i-turn-off-this-feature-completely"></a>我已更新到 [Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) 版本 2.7.1，现在可以自动捕获 ILogger 中的日志。 如何完全禁用此功能？
 
-请参阅[控制日志记录级别](../../azure-monitor/app/ilogger.md#control-logging-level)部分有关如何筛选日志的一般信息。 若要禁用 ApplicationInsightsLoggerProvider，请使用 `LogLevel.None`：
+请参阅[控制日志记录级别](#control-logging-level)部分有关如何筛选日志的一般信息。 若要禁用 ApplicationInsightsLoggerProvider，请使用 `LogLevel.None`：
 
 **在代码中：**
 
@@ -499,4 +499,5 @@ Azure Web 应用中的 Application Insights 扩展使用新提供程序。 可�
 了解有关以下方面的详细信息：
 
 * [ASP.NET Core 中的日志记录](/aspnet/core/fundamentals/logging)
-* [Application Insights 中的 .NET 跟踪日志](../../azure-monitor/app/asp-net-trace-logs.md)
+* [Application Insights 中的 .NET 跟踪日志](./asp-net-trace-logs.md)
+
