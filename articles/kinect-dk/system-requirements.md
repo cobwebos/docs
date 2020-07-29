@@ -13,6 +13,7 @@ ms.topic: article
 keywords: azure, kinect, 系统要求, CPU, GPU, USB, 设置, 安装, 最低, 要求
 ms.openlocfilehash: 5cf313114b62532ee3f2b3d7a5142f79218954c9
 ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "79366675"

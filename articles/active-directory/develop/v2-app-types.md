@@ -14,6 +14,7 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: bdacee476fbc25154fe225700730f1b8f7f872ec
 ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83682275"

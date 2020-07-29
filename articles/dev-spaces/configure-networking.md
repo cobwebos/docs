@@ -7,6 +7,7 @@ description: 描述在 Azure Kubernetes 服务中运行 Azure Dev Spaces 的网�
 keywords: Azure Dev Spaces，Dev 空间，Docker，Kubernetes，Azure，AKS，Azure Kubernetes Service，容器，CNI，kubenet，SDN，网络
 ms.openlocfilehash: c3ee84819172fe28aef779493d01e2433ccca336
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "84300685"

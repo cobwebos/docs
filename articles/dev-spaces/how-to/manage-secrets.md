@@ -7,6 +7,7 @@ description: 了解如何在使用 Azure Dev Spaces 开发应用程序时，在�
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
 ms.openlocfilehash: d9dd0de348612bbb3baf5fb351c1c9af1c228c1f
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "75438458"

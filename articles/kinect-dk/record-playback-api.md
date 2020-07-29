@@ -9,6 +9,7 @@ ms.topic: conceptual
 keywords: kinect, azure, 传感器, sdk, 深度, rgb, 录制, 播放, matroska, mkv
 ms.openlocfilehash: fe403f314c1df415537d090433f34627eb1249e7
 ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "73931698"

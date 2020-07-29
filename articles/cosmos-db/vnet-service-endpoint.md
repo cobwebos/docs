@@ -9,6 +9,7 @@ ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: d264ead87e7fa638830bf25fdb07983b164334b7
 ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83698659"
