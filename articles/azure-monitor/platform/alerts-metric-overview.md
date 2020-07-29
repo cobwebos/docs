@@ -4,16 +4,16 @@ description: 获取指标警报功能的概述，以及它们在 Azure Monitor �
 ms.date: 07/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 05e25a67279786ef4679552503e577b1b1a382ea
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9ac034eb144e5873f8f73ab7b1d7459394ce4775
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539425"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327134"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理
 
-Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些指标可能是[平台指标](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)、[自定义指标](../../azure-monitor/platform/metrics-custom-overview.md)、[Azure Monitor 中已转换为指标的常用日志](../../azure-monitor/platform/alerts-metric-logs.md)，以及 Application Insights 指标。 指标警报定期评估，以检查一个或多个指标时序的条件是否属实，并在符合评估条件时发出通知。 指标警报是有状态的，即，它们只会在状态有更改时才发出通知。
+Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些指标可能是[平台指标](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)、[自定义指标](./metrics-custom-overview.md)、[Azure Monitor 中已转换为指标的常用日志](./alerts-metric-logs.md)，以及 Application Insights 指标。 指标警报定期评估，以检查一个或多个指标时序的条件是否属实，并在符合评估条件时发出通知。 指标警报是有状态的，即，它们只会在状态有更改时才发出通知。
 
 ## <a name="how-do-metric-alerts-work"></a>指标警报的工作原理
 
@@ -152,7 +152,7 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 >
 > 多资源指标警报规则的作用域必须包含至少一个所选资源类型的资源。
 
-创建监视多个资源的指标预警规则类似于[创建监视单个资源的任何其他指标警报](alerts-metric.md)。 唯一区别是，你将选择要监视的所有资源。 也可以通过 [Azure 资源管理器模板](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)创建这些规则。 对于每个受监视资源，你将收到单独的通知。
+创建监视多个资源的指标预警规则类似于[创建监视单个资源的任何其他指标警报](alerts-metric.md)。 唯一区别是，你将选择要监视的所有资源。 也可以通过 [Azure 资源管理器模板](./alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)创建这些规则。 对于每个受监视资源，你将收到单独的通知。
 
 > [!NOTE]
 >
@@ -164,12 +164,13 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 
 ## <a name="supported-resource-types-for-metric-alerts"></a>指标警报支持的资源类型
 
-可在[此文](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)中找到受支持资源类型的完整列表。
+可在[此文](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)中找到受支持资源类型的完整列表。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 - [了解如何在 Azure 中创建、查看和管理指标警报](alerts-metric.md)
-- [了解如何使用 Azure 资源管理器模板部署指标警报](../../azure-monitor/platform/alerts-metric-create-templates.md)
+- [了解如何使用 Azure 资源管理器模板部署指标警报](./alerts-metric-create-templates.md)
 - [详细了解操作组](action-groups.md)
 - [详细了解动态阈值条件类型](alerts-dynamic-thresholds.md)
+

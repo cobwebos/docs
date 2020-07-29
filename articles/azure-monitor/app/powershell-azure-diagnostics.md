@@ -3,16 +3,16 @@ title: 使用 PowerShell 在 Azure 中设置 Application Insights | Microsoft Do
 description: 自动配置 Azure 诊断，通过管道将数据发送到 Application Insights。
 ms.topic: conceptual
 ms.date: 08/06/2019
-ms.openlocfilehash: 20f5a5c61c65b476a98c59b24283a2d15c39ddae
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3d0b7d1e8d4a164d517834eae877844d85b9a256
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111178"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320351"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>使用 PowerShell 为 Azure 云服务设置 Application Insights
 
-可以将 [Microsoft Azure](https://azure.com) 配置为向 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md)[发送 Azure 诊断](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)。 该诊断与 Azure Cloud Service 和 Azure VM 有关。 它们是对使用 Application Insights SDK 从应用内发送的遥测的补充。 作为在 Azure 中自动处理新建资源过程的一部分，可以使用 PowerShell 配置诊断。
+可以将 [Microsoft Azure](https://azure.com) 配置为向 [Azure Application Insights](./app-insights-overview.md)[发送 Azure 诊断](../platform/diagnostics-extension-to-application-insights.md)。 该诊断与 Azure Cloud Service 和 Azure VM 有关。 它们是对使用 Application Insights SDK 从应用内发送的遥测的补充。 作为在 Azure 中自动处理新建资源过程的一部分，可以使用 PowerShell 配置诊断。
 
 ## <a name="azure-template"></a>Azure 模板
 如果 Web 应用在 Azure 中，并且使用 Azure 资源管理器模板创建资源，可以通过将以下内容添加到资源节点来配置 Application Insights：
@@ -124,7 +124,7 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 
 ## <a name="see-also"></a>另请参阅
-* [使用 Application Insights 监视 Azure Cloud Service 应用](../../azure-monitor/app/cloudservices.md)
-* [将 Azure 诊断发送到 Application Insights](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
+* [使用 Application Insights 监视 Azure Cloud Service 应用](./cloudservices.md)
+* [将 Azure 诊断发送到 Application Insights](../platform/diagnostics-extension-to-application-insights.md)
 * [自动配置警报](powershell-alerts.md)
 

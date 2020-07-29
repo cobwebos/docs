@@ -5,21 +5,23 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: c56295f1e56e4ba3b6af9caf8ba38ce1f0552eeb
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 11c1c307d00b9347081a313308ad2467086ec208
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101702"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327389"
 ---
 # <a name="saas-offer-creation-checklist-in-partner-center"></a>在合作伙伴中心的 SaaS 产品/服务创建清单
 
-SaaS 产品/服务创建过程将引导你完成多个页面。  下面是可以在每个页面上提供的详细信息，其中包含用于详细了解每项的链接。
+SaaS 产品创建过程会将你带到多个页面。  本文介绍了可以在每个页面上提供的详细信息，并提供了详细了解每个项目的链接。
 
-下面说明了需要提供或指定的项。  某些区域是可选的或提供默认值（可根据需要进行更改）。  不必按此处列出的顺序处理这些部分。
+> [!NOTE]
+> 如果要创建事务 SaaS 产品/服务，请确保实现与[SaaS 履单 api](./pc-saas-fulfillment-apis.md)的集成。  与 Api 的集成是 transactability 在 Marketplace 中的唯一工作方式。 还需要确保你的应用程序使用通过单一登录（SSO）进行 Azure AD 身份验证。 请参阅[商业应用商店中的 Azure AD 和事务 SaaS 产品](../azure-ad-saas.md)。
 
->[!Note]
->如果要创建事务 SaaS 产品/服务，请确保实现与[SaaS 履单 api](./pc-saas-fulfillment-apis.md)的集成。  与 Api 的集成是 transactability 在 Marketplace 中的唯一工作方式。
+下面说明了你需要提供或指定的项。  某些区域是可选的或提供默认值（可根据需要进行更改）。  不必按此处列出的顺序处理这些部分。
 
 | **项**    | **用途**  |
 | :---------- | :-------------------|
@@ -28,7 +30,7 @@ SaaS 产品/服务创建过程将引导你完成多个页面。  下面是可以
 | [属性页](#properties-page) | 定义用于在市场上对产品/服务进行分组的类别和行业、支持产品/服务的法律合同以及应用版本。 |
 | [产品/服务列表页](#offer-listing-page) | 定义要显示在市场中的产品/服务详细信息，包括产品/服务和市场营销资产的说明。|
 | [预览页](#preview-page) | 在向更广泛的市场受众发布产品/服务之前，定义有限的预览受众来发布产品/服务。|
-| [产品/服务技术配置页](#technical-configuration-page)  |  仅当你选择通过 Microsoft 销售产品/服务时才可用。  定义 marketplace 用于连接到产品/服务的技术详细信息（登录页 URL、连接 webhook URL、Azure AD 租户 ID 和 Azure AD 应用 ID）。  若要正确集成 SaaS 履单和 Marketplace 计费 Api，需要这些参数。|
+| [技术配置页](#technical-configuration-page)  |  仅当你选择通过 Microsoft 销售产品/服务时才可用。  定义 marketplace 用于连接到产品/服务的技术详细信息（登录页 URL、连接 webhook URL、Azure AD 租户 ID 和 Azure AD 应用 ID）。  若要正确集成 SaaS 履单和 Marketplace 计费 Api，需要这些参数。|
 | [新建计划模式](#plan-identity-modal) | 收集计划标识信息。  |
 | [计划列表页](#plan-listing-page)  | 仅当你选择通过 Microsoft 销售产品/服务时才可用。 定义用于在市场中列出计划的详细信息。  |
 | [计划定价和可用性页](#plan-pricing--availability-page)  | 仅当你选择通过 Microsoft 销售产品/服务时才可用。  为产品/服务的每个计划（版本）收集业务特性（定价模型）、受众和市场可用性。  |
@@ -36,10 +38,9 @@ SaaS 产品/服务创建过程将引导你完成多个页面。  下面是可以
 | 体验版技术配置页  | 仅当你选择为产品/服务提供体验版时才可用。 对于使客户可以在提交购买之前试用产品/服务的演示（或“体验版”）定义技术详细信息。  |
 | [查看和发布页](#review-and-publish-page)  | 选择要发布的更改，查看每个页面的状态，以及向认证团队提供备注。  |
 
+## <a name="new-offer-modal"></a>新建产品/服务模式
 
-## <a name="new-offer-modal"></a>新建产品/服务模式 
-
-你需要提供的第一条信息是你的产品/服务的 ID 和别名。 
+你需要提供的第一条信息是你的产品/服务的 ID 和别名。
 
 | **字段名称**    | **说明**   |  
 | :---------------- | :-----------| 
@@ -106,6 +107,9 @@ SaaS 产品/服务创建过程将引导你完成多个页面。  下面是可以
 ## <a name="technical-configuration-page"></a>技术配置页 
 
 在技术配置页上，可指定 Microsoft 用于连接到产品/服务的技术详细信息。 如果你决定不通过 Microsoft 销售，则此页对你不可见。
+
+> [!NOTE]
+> 对于事务产品/服务，必须创建一个登陆页面，应用必须通过单一登录（SSO）使用 Azure AD 身份验证。 有关详细信息，请参阅[商业应用商店中的 Azure AD 和事务 SaaS 产品](../azure-ad-saas.md)。
 
 | **字段名称**    | **说明**   |  
 | :---------------- | :-----------| 

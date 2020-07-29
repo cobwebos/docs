@@ -7,13 +7,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 07/17/2017
+ms.custom: devx-track-java
 ms.author: cynthn
-ms.openlocfilehash: 6f73abe108ca9c33a8ec6865a760400d16393e51
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d4ad1c46aa023f30a2d33ef11e576aa29607b273
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508485"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325417"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>使用 Java 创建和管理 Azure 中的 Windows VM
 
@@ -106,7 +107,7 @@ ms.locfileid: "86508485"
     </dependency>
     ```
 
-3. 保存文件。
+3. 保存该文件。
 
 ## <a name="create-credentials"></a>创建凭据
 

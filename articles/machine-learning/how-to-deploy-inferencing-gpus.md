@@ -5,18 +5,18 @@ description: 本文介绍如何使用 Azure 机器学习将启用 GPU 的 Tensor
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 06/17/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 344112e19adbfaa1b06eebab309f31ed4e070c7d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 5233850ef9656f225caebc10458218eede393ab3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076974"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325774"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>使用 GPU 为推理部署深度学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

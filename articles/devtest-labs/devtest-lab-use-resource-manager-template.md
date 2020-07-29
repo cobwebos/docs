@@ -3,12 +3,12 @@ title: 查看并使用虚拟机的 Azure 资源管理器模板
 description: 了解如何使用虚拟机的 Azure 资源管理器模板创建其他 VM
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a53a6ad44cac59bd925e6d200ca50074a2fcd963
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e58b54d61653f1edba3c3893edb902a94fbf9f2b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476608"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272685"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建虚拟机 
 
@@ -35,7 +35,7 @@ ms.locfileid: "85476608"
 
 本文的其余部分将讨论使用 Microsoft.DevTestLab/labs/virtualmachines 的资源管理器模板。 实验室管理员可使用这些模板自动创建实验室 VM（如可认领 VM）或自动生成黄金映像（如映像工厂）。
 
-[创建 Azure 资源管理器模板的最佳做法](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices)提供许多指导原则和建议，可帮助创建可靠且易用的 Azure 资源管理器模板。
+[创建 Azure 资源管理器模板的最佳做法](../azure-resource-manager/templates/template-best-practices.md)提供许多指导原则和建议，可帮助创建可靠且易用的 Azure 资源管理器模板。
 
 ## <a name="view-and-save-a-virtual-machines-resource-manager-template"></a>查看和保存虚拟机的 Resource Manager 模板
 1. 请遵循[在实验室中创建你的第一个 VM](tutorial-create-custom-lab.md#add-a-vm-to-the-lab)中的步骤，开始创建虚拟机。

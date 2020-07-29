@@ -2,13 +2,13 @@
 title: 将资源部署到租户
 description: 介绍如何在 Azure 资源管理器模板中的租户范围内部署资源。
 ms.topic: conceptual
-ms.date: 05/08/2020
-ms.openlocfilehash: 45541bcbea5a80e55dbc9f80e1eae8e17189bf6e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: a6523ff70dc7307713bb6aecf90e2ea9f8e2bfdd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945437"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321745"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>在租户级别创建资源
 
@@ -16,15 +16,32 @@ ms.locfileid: "84945437"
 
 ## <a name="supported-resources"></a>支持的资源
 
-可在租户级别部署以下资源类型：
+并非所有资源类型都可以部署到租户级别。 此部分列出了支持的资源类型。
 
-* [deployments](/azure/templates/microsoft.resources/deployments) - 适用于部署到管理组或订阅的嵌套模板。
-* [managementGroups](/azure/templates/microsoft.management/managementgroups)
+对于 Azure 策略，请使用：
+
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
+
+对于基于角色的访问控制，请使用：
+
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
+
+对于部署到管理组、订阅或资源组的嵌套模板，请使用：
+
+* [部署](/azure/templates/microsoft.resources/deployments)
+
+若要创建管理组，请使用：
+
+* [managementGroups](/azure/templates/microsoft.management/managementgroups)
+
+若要管理成本，请使用：
+
+* [billingProfiles](/azure/templates/microsoft.billing/billingaccounts/billingprofiles)
+* [说明](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/instructions)
+* [invoiceSections](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/invoicesections)
 
 ### <a name="schema"></a>架构
 
@@ -36,13 +53,13 @@ ms.locfileid: "84945437"
 https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#
 ```
 
-在所有部署范围内，参数文件的架构都是相同的。 对于参数文件，请使用：
+对于所有部署范围，参数文件的架构都相同。 对于参数文件，请使用：
 
 ```json
 https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
 
-## <a name="required-access"></a>必需访问权限
+## <a name="required-access"></a>所需访问权限
 
 部署模板的主体必须具有在租户范围中创建资源的权限。 该主体必须有权执行部署操作 (`Microsoft.Resources/deployments/*`) 和创建模板中定义的资源。 例如，若要创建管理组，主体必须在租户范围内具有参与者权限。 若要创建角色分配，主体则必须具有所有者权限。
 
@@ -88,11 +105,61 @@ New-AzTenantDeployment `
 
 ## <a name="deployment-location-and-name"></a>部署位置和名称
 
-对于租户级别的部署，必须提供部署位置。 部署位置与你部署的资源的位置不同。 部署位置指定的是存储部署数据的位置。
+对于租户级别的部署，必须提供部署位置。 部署位置独立于部署的资源的位置。 部署位置指定何处存储部署数据。
 
-可为部署提供名称，也可使用默认的部署名称。 默认名称就是模板文件的名称。 例如，部署一个名为 **azuredeploy.json** 的模板将创建默认部署名称 **azuredeploy**。
+可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 **azuredeploy.json** 的模板将创建默认部署名称 **azuredeploy**。
 
-每个部署名称对应的位置必须相同。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
+每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
+
+## <a name="deployment-scopes"></a>部署范围
+
+部署到租户时，可以将租户或管理组、订阅和资源组定位到租户中。 部署模板的用户必须具有对指定作用域的访问权限。
+
+在模板的 resources 节中定义的资源将应用于租户。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        tenant-level-resources
+    ],
+    "outputs": {}
+}
+```
+
+若要以租户中的管理组为目标，请添加嵌套部署并指定 `scope` 属性。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "mgName": {
+            "type": "string"
+        }
+    },
+    "variables": {
+        "mgId": "[concat('Microsoft.Management/managementGroups/', parameters('mgName'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "nestedMG",
+            "scope": "[variables('mgId')]",
+            "location": "eastus",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    nested-template
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
 
 ## <a name="use-template-functions"></a>使用模板函数
 
@@ -103,7 +170,7 @@ New-AzTenantDeployment `
 * 支持 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函数。
 * 使用 [tenantResourceId()](template-functions-resource.md#tenantresourceid) 函数可获得在租户级别部署的资源的 ID。
 
-  例如，若要获取策略定义的资源 ID，可使用：
+  例如，若要获取策略定义的资源 ID，请使用：
 
   ```json
   tenantResourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))

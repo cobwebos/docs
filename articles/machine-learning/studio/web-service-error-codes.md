@@ -1,6 +1,5 @@
 ---
-title: REST API 错误代码
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （经典）： REST API 错误代码-Azure
 description: 在 Azure 机器学习 Web 服务中执行操作时，可能会返回这些错误代码。
 keywords: ''
 services: machine-learning
@@ -12,13 +11,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: 8030e44e85958495714f441303461722b6b96bf4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6dd736428e6a3a24de382be34904d78af0168081
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84115437"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326267"
 ---
 # <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure 机器学习工作室（经典）REST API 错误代码
+
+**适用于：** ![不](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-azure-ml.md) ![ 是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） 
+
 
 在 Azure 机器学习工作室（经典）Web 服务中执行操作时，可能会返回以下错误代码。
  
@@ -26,7 +29,7 @@ ms.locfileid: "84115437"
  
 提供的参数无效。
  
-出现此类错误表示某处提供的参数无效。 这可能是某个对象传递给 Web 服务的凭据或 Azure 存储位置。 请查看“details”节中的错误“code”字段，诊断是哪个具体参数无效。
+出现此类错误表示某处提供的参数无效。 这可能是某个对象传递给 Web 服务的凭据或 Azure 存储位置。 请查看 "详细信息" 部分中的错误 "代码" 字段，以诊断哪个特定参数无效。
  
 | 错误代码 | 用户消息 |
 | ---------- |--------------|
@@ -64,7 +67,7 @@ ms.locfileid: "84115437"
 | MissingWebServicePackage | 未提供 Web 服务包。 请提供有效的 Web 服务包，并重试。 |
 | MissingWorkspaceId | 未提供工作区 ID。 请提供有效的工作区 ID，并重试。 |
 | ModelConfigurationInvalid | 模型包中的模型配置无效。 请确保模型配置包含输出终结点定义、std 错误终结点和 std out 终结点，并重试。 |
-| ModelPackageIdInvalid | 模型包 ID 无效。请检查模型包 ID 是否正确，并重试。 |
+| ModelPackageIdInvalid | 模型包 Id 无效。请验证模型包 Id 是否正确，然后重试。 |
 | RequestBodyInvalid | 未提供请求正文，或者反序列化请求正文时出错。 |
 | RequestIsEmpty | 未提供请求。 请提供有效请求，并重试。 |
 | UnexpectedParameter | 提供了意外的参数。 请检查所有参数名称是否拼写正确，只传递所需的参数，并重试。 |

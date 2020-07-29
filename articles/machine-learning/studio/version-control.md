@@ -1,6 +1,5 @@
 ---
-title: 应用程序生命周期管理
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （经典）：应用程序生命周期管理-Azure
 description: 在 Azure 机器学习工作室（经典版）中应用应用程序生命周期管理最佳做法
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +8,17 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 10/27/2016
-ms.openlocfilehash: 2eb5f3acc07f04ba2102ea25fbad89d73514444a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47f72e1844f6fe34f129d40130a3dba0383dd094
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705910"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326284"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Azure 机器学习工作室（经典版）中的应用程序生命周期管理
+
+**适用于：** ![不](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-azure-ml.md) ![ 是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） 
+
 
 Azure 机器学习工作室（经典版）是一个在 Azure 云平台中运行的工具，用于开发机器学习实验。 它类似于将 Visual Studio IDE 和可缩放云服务合并到单个平台。 可以将标准的应用程序生命周期管理 (ALM) 实践（从各种资产的版本管理到自动执行和部署）合并到 Azure 机器学习工作室（经典版）中。 本文介绍一些选项和方法。
 
@@ -26,7 +28,7 @@ Azure 机器学习工作室（经典版）是一个在 Azure 云平台中运行�
 有两种用于控制实验版本的建议方法。 可以依赖内置的运行历史记录，或以 JSON 格式导出实验以在外部管理它。 每种方法各有利弊。
 
 ### <a name="experiment-snapshots-using-run-history"></a>使用运行历史记录的实验快照
-在 Azure 机器学习工作室（经典版）学习实验的执行模型中，每次单击实验编辑器中的“运行”按钮时，都会将该实验的不可变快照提交到作业计划程序  。 要查看此快照列表，单击实验编辑器视图中命令栏上的“运行历史记录”按钮  。
+在 Azure 机器学习工作室（经典版）学习实验的执行模型中，每次单击实验编辑器中的“运行”按钮时，都会将该实验的不可变快照提交到作业计划程序。 要查看此快照列表，单击实验编辑器视图中命令栏上的“运行历史记录”按钮。
 
 ![“运行历史记录”按钮](./media/version-control/runhistory.png)
 

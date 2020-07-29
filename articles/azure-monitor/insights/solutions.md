@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/12/2020
-ms.openlocfilehash: 2da00b44be7018bef80e466231efb75a8eb99754
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a2ece33974e5bb4d8cb6257d3ca68a258f9b8c81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081536"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325995"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的监视解决方案
 
@@ -65,7 +65,7 @@ az monitor log-analytics solution list --resource-group MyResourceGroup
 
 ## <a name="install-a-monitoring-solution"></a>安装监视解决方案
 
-### <a name="portal"></a>[Portal](#tab/portal)
+### <a name="portal"></a>[门户](#tab/portal)
 
 [Azure 市场](https://azuremarketplace.microsoft.com)中提供了 Microsoft 和合作伙伴提供的监视解决方案。 可以搜索可用的解决方案，并使用以下过程进行安装。 安装解决方案时，必须选择要在其中安装该解决方案的 [Log Analytics 工作区](../platform/manage-access.md)，以及要将解决方案数据收集到的位置。
 
@@ -125,7 +125,7 @@ az monitor log-analytics solution list --resource-group MyResourceGroup
 
 ### <a name="install-a-solution-with-the-azure-cli"></a>使用 Azure CLI 安装解决方案
 
-安装解决方案时，必须选择要在其中安装该解决方案的 [Log Analytics 工作区](/azure/azure-monitor/platform/manage-access)，以及要将解决方案数据收集到的位置。  使用 Azure CLI，你可以使用[az monitor log analytics 工作区](/cli/azure/monitor/log-analytics/workspace)引用命令管理工作区。  请遵循 [Log Analytics 工作区和自动化帐户](#log-analytics-workspace-and-automation-account)中所述的过程来链接工作区和帐户。
+安装解决方案时，必须选择要在其中安装该解决方案的 [Log Analytics 工作区](../platform/manage-access.md)，以及要将解决方案数据收集到的位置。  使用 Azure CLI，你可以使用[az monitor log analytics 工作区](/cli/azure/monitor/log-analytics/workspace)引用命令管理工作区。  请遵循 [Log Analytics 工作区和自动化帐户](#log-analytics-workspace-and-automation-account)中所述的过程来链接工作区和帐户。
 
 使用[az monitor log analytics 解决方案 create](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution)安装监视解决方案。  方括号中的参数是可选的。
 
@@ -173,7 +173,7 @@ az monitor log-analytics solution create --resource-group MyResourceGroup \
 
 ## <a name="remove-a-monitoring-solution"></a>删除监视解决方案
 
-### <a name="portal"></a>[Portal](#tab/portal)
+### <a name="portal"></a>[门户](#tab/portal)
 
 若要使用门户删除已安装的解决方案，请在[已安装的解决方案列表](#list-installed-monitoring-solutions)中找到它。 单击解决方案的名称打开其摘要页，然后单击“删除”。
 
@@ -192,6 +192,7 @@ az monitor log-analytics solution delete --name
 
 ## <a name="next-steps"></a>后续步骤
 
-* 获取 [Microsoft 提供的监视解决方案的列表](solutions-inventory.md)。
+* 获取 [Microsoft 提供的监视解决方案的列表](/azure/azure-monitor/monitor-reference)。
 * 了解如何[创建查询](../log-query/log-query-overview.md)来分析监视解决方案收集的数据。
 * 查看[Azure Monitor 的所有 Azure CLI 命令](/cli/azure/azure-cli-reference-for-monitor)。
+

@@ -10,15 +10,15 @@ metadata:
   ms.topic: hub-page
   author: rolyon
   ms.author: rolyon
-  ms.date: 02/27/2020
+  ms.date: 07/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: cddf39ee7b13b8af887ccb424d540cbf482040e9
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: 084dd49726dec837fc4135f272802b1023ba5aac
+  ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87079073"
+  ms.lasthandoff: 07/28/2020
+  ms.locfileid: "87324057"
 highlightedContent:
   items:
   - title: Azure 开发人员入门指南
@@ -53,6 +53,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/search.svg
     azureCategories:
     - ai-machine-learning
+    - mobile
     - web
     url: search/index.yml
   - title: Azure 认知服务
@@ -61,6 +62,7 @@ productDirectory:
     azureCategories:
     - featured
     - ai-machine-learning
+    - mobile
     url: cognitive-services/index.yml
   - title: Azure Databricks
     summary: 基于 Apache Spark 的快速简单的协作分析平台
@@ -394,7 +396,6 @@ productDirectory:
     azureCategories:
     - compute
     - containers
-    - mobile
     - web
     url: app-service/index.yml
   - title: 应用服务
@@ -513,7 +514,6 @@ productDirectory:
     azureCategories:
     - compute
     - containers
-    - mobile
     - web
     url: app-service/index.yml
   - title: Windows 虚拟桌面
@@ -555,7 +555,6 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/web-apps-containers.svg
     azureCategories:
     - containers
-    - mobile
     - web
     url: app-service/containers/index.yml
   - title: 适用于 FHIR 的 Azure API
@@ -1059,6 +1058,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/spatial-anchor-accounts.svg
     azureCategories:
     - mixed-reality
+    - mobile
     url: spatial-anchors/index.yml
   - title: 远程渲染（预览版）
     summary: 渲染高质量的交互式 3D 内容，并实时将内容流式传输到设备

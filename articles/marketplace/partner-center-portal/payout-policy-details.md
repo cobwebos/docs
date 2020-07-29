@@ -4,15 +4,15 @@ description: 有关支出策略的详细信息，包括计划和 recoupment。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: mingshen
+author: mingshen-ms
 ms.author: mingshen
 ms.date: 04/24/2020
-ms.openlocfilehash: f26e006998b0818ba84fa23ee1941a1033ef205b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d72a80298be96d32547737a98e5279da0c5d8ef0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118284"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324822"
 ---
 # <a name="payout-policy-details"></a>付款策略详细信息
 
@@ -40,7 +40,7 @@ ms.locfileid: "86118284"
 > [!NOTE]
 > 如果客户未能支付费用，但我们已向你颁发了费用，请参阅下面的[客户非支付过程](#process-for-customer-non-payment)。
 
-| 事件  | 日期  | 合作伙伴可见性：合作伙伴中心支出报表  |  合作伙伴可见性：合作伙伴中心分析\* |
+| 事件  | Date  | 合作伙伴可见性：合作伙伴中心支出报表  |  合作伙伴可见性：合作伙伴中心分析\* |
 | --- | --- | --- | --- |
 | 事务或使用月份 | 8/1/2020 –8/31/2020 | 空值 | **使用情况报表**：显示的新消耗量（每四小时刷新一次）<br>**订单报表**：暂缺 |
 | 字词结束（月） | 8/31/2020 | 空值 | **使用情况报表**：显示的月结束消耗量<br>**订单报表**：暂缺 |
@@ -57,7 +57,7 @@ ms.locfileid: "86118284"
 
 使用信用卡或月度发票的所有购买都有30天的保留期，以确保清除资金，并且不会有任何退款或嫌疑欺诈行为。
 
-| 事件  | 日期  | 合作伙伴可见性：合作伙伴中心支出报表  |  合作伙伴可见性：合作伙伴中心分析\*  |
+| 事件  | Date  | 合作伙伴可见性：合作伙伴中心支出报表  |  合作伙伴可见性：合作伙伴中心分析\*  |
 | --- | --- | --- | --- |
 | 事务或使用月份 | 8/1/2019 - 8/31/2019 | 空值 | **使用情况报表**：显示的新消耗量（每四小时刷新一次）<br>**订单报表**：暂缺 |
 | 字词结束（月） | 8/31/2019 | 空值 | **使用情况报表**：显示的月结束消耗量<br>**订单报表**：暂缺 |
@@ -74,7 +74,7 @@ ms.locfileid: "86118284"
 
 在 Microsoft 收集客户支付并处理 marketplace 费用后，按下面的计划处理并支付此日期之前发生的所有购买。
 
-| 事件  | 日期  | 合作伙伴可见性：合作伙伴中心支出报表  |  合作伙伴可见性：合作伙伴中心分析\*  |
+| 事件  | Date  | 合作伙伴可见性：合作伙伴中心支出报表  |  合作伙伴可见性：合作伙伴中心分析\*  |
 | --- | --- | --- | --- |
 | 事务或使用月份 | 8/1/2019 –8/31/2019 | 空值 | **使用情况报表**：显示的新消耗量（每四小时刷新一次）<br>**订单报表**：暂缺 |
 | 字词结束（月） | 8/31/2019 | 空值 | **使用情况报表**：显示的月结束消耗量<br>**订单报表**：暂缺 |

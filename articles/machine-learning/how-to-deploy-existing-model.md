@@ -5,17 +5,18 @@ description: 了解如何通过在服务外部训练过的模型来使用 Azure 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/17/2020
-ms.custom: tracking-python
-ms.openlocfilehash: df569ee4a392bae27431f526e0fbe010feab5a5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 7dc58540cf78356021f1fa2d33dd498381f1da7c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84557381"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325825"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning"></a>通过 Azure 机器学习使用现有模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

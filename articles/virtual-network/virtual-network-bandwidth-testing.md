@@ -1,7 +1,7 @@
 ---
 title: 测试 Azure VM 网络吞吐量
 titlesuffix: Azure Virtual Network
-description: 了解如何测试 Azure 虚拟机的网络吞吐量。
+description: 使用 NTTTCP 将网络定位到网络以进行测试，并最大限度地减少可能影响性能的其他资源的使用。
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.openlocfilehash: 964b0bd543e887cce304d785d18a651f50bd4c45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5aa2c1c51fccddc3fb62d7ebdbadee19a2b093e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708240"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265171"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>带宽/吞吐量测试 (NTTTCP)
 

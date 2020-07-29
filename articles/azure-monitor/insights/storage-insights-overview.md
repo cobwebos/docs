@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: d71201da0c4af35720a309fe0dfa068cd2c69630
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7daba35b9247443c84cedad03f252ea6858da236
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081604"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327338"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>使用用于存储的 Azure Monitor 监视存储服务
 
@@ -228,7 +228,7 @@ ms.locfileid: "87081604"
 
 ## <a name="troubleshooting"></a>疑难解答
 
-有关一般故障排除指南，请参阅专用的基于工作簿的 insights[故障排除一文](troubleshoot-workbooks.md)。
+如需常规故障排除指南，请参阅专用的基于工作簿的见解[故障排除文章](troubleshoot-workbooks.md)。
 
 此部分有助于诊断和排查在使用用于存储的 Azure Monitor 时可能会遇到的一些常见问题。 使用下面的列表来查找与具体问题相关的信息。
 
@@ -242,7 +242,7 @@ ms.locfileid: "87081604"
 
 ### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>如何更改可用性着色和阈值？
 
-有关如何更改可用性着色和阈值的详细步骤，请参阅[修改可用性阈值](storage-insights-overview.md#modify-the-availability-threshold)部分。
+有关如何更改可用性着色和阈值的详细步骤，请参阅[修改可用性阈值](#modify-the-availability-threshold)部分。
 
 ### <a name="how-to-analyze-and-troubleshoot-the-data-shown-in-azure-monitor-for-storage"></a>如何对用于存储的 Azure Monitor 中显示的数据进行分析和故障排除？
 
@@ -274,3 +274,4 @@ ms.locfileid: "87081604"
 * 查看[使用 Azure Monitor 工作簿创建交互式报表](../platform/workbooks-overview.md)，了解工作簿旨在支持的方案、创作新报表和自定义现有报表的方式，以及更多信息。
 
 * 有关使用存储分析及其他工具来识别、诊断和排查 Azure 存储相关问题的深入指导，请参阅[监视、诊断和排查 Microsoft Azure 存储问题](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)。
+

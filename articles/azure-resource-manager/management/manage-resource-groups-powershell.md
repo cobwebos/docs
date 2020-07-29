@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 6f18eea697e875cc926e8fbaa0f61cf2d4639be0
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 79674b359bc2058f11895b3291c0ce16ef5b1a16
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057511"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326828"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure 资源管理器资源组
 
@@ -27,7 +27,7 @@ ms.locfileid: "86057511"
 
 ” 资源组存储有关资源的元数据。 因此，当指定资源组的位置时，也就指定了元数据的存储位置。 出于合规性原因，可能需要确保数据存储在某一特定区域。
 
-” 资源组存储与资源有关的元数据。 指定资源组的位置时，也会指定元数据的存储位置。
+” 资源组存储有关资源的元数据。 当指定资源组的位置时，也就指定了元数据的存储位置。
 
 ## <a name="create-resource-groups"></a>创建资源组
 
@@ -78,7 +78,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 ## <a name="deploy-a-resource-group-and-resources"></a>部署资源组和资源
 
-可以使用资源管理器模板创建一个资源组并将资源部署到该组。 有关详细信息，请参阅[创建资源组并部署资源](../templates/deploy-to-subscription.md#resource-group-and-resources)。
+可以使用资源管理器模板创建一个资源组并将资源部署到该组。 有关详细信息，请参阅[创建资源组并部署资源](../templates/deploy-to-subscription.md#resource-groups)。
 
 ## <a name="redeploy-when-deployment-fails"></a>部署失败时，重新部署
 
@@ -217,7 +217,7 @@ Export-AzResourceGroup `
 
 ## <a name="manage-access-to-resource-groups"></a>管理对资源组的访问
 
-[基于角色的访问控制（RBAC）](../../role-based-access-control/overview.md)是在 Azure 中管理对资源的访问权限的方式。 有关详细信息，请参阅[使用 RBAC 和 Azure PowerShell 管理访问权限](../../role-based-access-control/role-assignments-powershell.md)。
+可以在 Azure 中通过[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 这种方式管理对资源的访问。 有关详细信息，请参阅[使用 RBAC 和 Azure PowerShell 管理访问权限](../../role-based-access-control/role-assignments-powershell.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

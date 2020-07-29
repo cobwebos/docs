@@ -6,12 +6,12 @@ ms.author: dukek
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
-ms.openlocfilehash: f592c42bc06c6bcd33ce6e10c506f8af0d8e0cf2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f6d5cbfc8d781e96a4d348f31f4a5d175ebd5a3d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008381"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321881"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>如何使用 Azure Monitor 警报触发复杂操作
 
@@ -19,7 +19,7 @@ ms.locfileid: "87008381"
 
 ## <a name="overview"></a>概述
 
-触发 Azure Monitor 警报时，它将调用[操作组](../../azure-monitor/platform/action-groups.md)。 通过操作组可触发一个或多个操作，以告知其他人发生了警报，以及予以补救。
+触发 Azure Monitor 警报时，它将调用[操作组](./action-groups.md)。 通过操作组可触发一个或多个操作，以告知其他人发生了警报，以及予以补救。
 
 常规过程：
 
@@ -294,6 +294,7 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
 逻辑应用具有大量不同的连接器，可在广泛的应用程序和数据库中触发操作。 Slack、SQL Server、Oracle、Salesforce 只是一些示例。 有关连接器的详细信息，请参阅[逻辑应用连接器](../../connectors/apis-list.md)。  
 
 ## <a name="next-steps"></a>后续步骤
-* 参阅 [Azure 活动日志警报概述](../../azure-monitor/platform/alerts-overview.md)，了解如何接收警报。  
+* 参阅 [Azure 活动日志警报概述](./alerts-overview.md)，了解如何接收警报。  
 * 了解如何[配置发布 Azure 服务运行状况通知时的警报](../../service-health/alerts-activity-log-service-notifications-portal.md)。
-* 详细了解[操作组](../../azure-monitor/platform/action-groups.md)。
+* 详细了解[操作组](./action-groups.md)。
+

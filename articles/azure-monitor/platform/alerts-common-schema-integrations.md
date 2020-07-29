@@ -4,12 +4,12 @@ description: 了解如何创建一个逻辑应用，以利用常见警报架构�
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: 05349554f4c5e076562a75d48d58e0849986d6cc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a7893f41e3e4cce737853fc168c1931f3bf7b532
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539493"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322085"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>如何将常见警报架构与逻辑应用集成
 
@@ -137,5 +137,6 @@ ms.locfileid: "86539493"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [详细了解操作组](../../azure-monitor/platform/action-groups.md)。
+* [详细了解操作组](./action-groups.md)。
 * [了解有关常见警报架构的详细信息](https://aka.ms/commonAlertSchemaDocs)。
+

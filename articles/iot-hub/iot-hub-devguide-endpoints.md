@@ -11,12 +11,14 @@ ms.date: 06/10/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: d054ff893e1bfdc0f48ede2e2aaa6050885ccc0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- 'Role: Cloud Development'
+- 'Role: System Architecture'
+ms.openlocfilehash: 7e59229f6664dc8966aa491e9d2ded1abbd5536f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314030"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323037"
 ---
 # <a name="reference---iot-hub-endpoints"></a>参考 - IoT 中心终结点
 
@@ -42,7 +44,7 @@ Azure IoT 中心属于多租户服务，向各种执行组件公开功能。 下
 
 * **作业管理**。 每个 IoT 中心都会公开一组面向服务的 HTTPS REST 终结点，用于查询和管理[作业](iot-hub-devguide-jobs.md)。
 
-* **设备终结点**。 对于标识注册表中的每个设备，IoT 中心公开一组终结点。 除非注明，否则将使用[MQTT v 3.1.1](https://mqtt.org/)、HTTPS 1.1 和[AMQP 1.0](https://www.amqp.org/)协议公开这些终结点。 还可通过端口 443 上的 [WebSocket](https://tools.ietf.org/html/rfc6455) 使用 AMQP 和 MQTT。
+* **设备终结点**。 对于标识注册表中的每个设备，IoT 中心都会公开一组终结点。 除非标明，否则这些终结点使用 [MQTT v3.1.1](https://mqtt.org/)、HTTPS 1.1 和 [AMQP 1.0](https://www.amqp.org/) 协议进行公开。 还可通过端口 443 上的 [WebSocket](https://tools.ietf.org/html/rfc6455) 使用 AMQP 和 MQTT。
 
   * *发送设备到云的消息*。 设备使用此终结点[发送设备到云的消息](iot-hub-devguide-messages-d2c.md)。
 

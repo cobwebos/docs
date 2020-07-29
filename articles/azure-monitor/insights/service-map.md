@@ -6,27 +6,27 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: bfd25c2572e91c2984f2845e08941614fff65570
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 77684ffef6be988dbb6b7057ba8c56f5227007b6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539765"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326063"
 ---
 # <a name="using-service-map-solution-in-azure"></a>使用 Azure 中的服务映射解决方案
 
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件，并映射服务之间的通信。 可使用服务映射如所想一般作为提供重要服务的互连系统查看服务器。 服务映射显示 TCP 连接的任何体系结构中服务器、进程、入站和出站连接延迟和端口之间的连接，只需安装代理，无需任何其他配置。
 
-本指南介绍载入和使用服务映射的详细信息。 有关配置此解决方案的必备组件的信息，请参阅[启用用于 VM 的 Azure Monitor 概述](vminsights-enable-overview.md#prerequisites)。 总而言之，需要以下项：
+本指南介绍载入和使用服务映射的详细信息。 解决方案的先决条件如下所示：
 
-* 用于启用此解决方案的 Log Analytics 工作区。
+* [受支持区域](vminsights-configure-workspace.md#supported-regions)中的 Log Analytics 工作区。
 
-* 安装在 Windows 计算机或 Linux 服务器上的 Log Analytics 代理，配置为报告启用解决方案所用的同一工作区。
+* 安装在 Windows 计算机或 Linux 服务器上的[Log Analytics 代理](vminsights-enable-overview.md#agents)连接到启用了解决方案的同一工作区。
 
-* 安装在 Windows 计算机或 Linux 服务器上的 Dependency Agent。
+* 安装在 Windows 计算机或 Linux 服务器上的[依赖关系代理](vminsights-enable-overview.md#agents)。
 
 >[!NOTE]
->如果已部署服务映射，现在还可以在面向 VM 的 Azure Monitor 中查看映射，其中包括监视 VM 运行状况和性能的附加功能。 若要了解详细信息，请参阅[面向 VM 的 Azure Monitor 概述](../../azure-monitor/insights/vminsights-overview.md)。 若要了解服务映射解决方案与用于 VM 的 Azure Monitor 映射功能之间的差异，请参阅以下[常见问题解答](../faq.md#azure-monitor-for-vms)。
+>如果已部署服务映射，现在还可以在面向 VM 的 Azure Monitor 中查看映射，其中包括监视 VM 运行状况和性能的附加功能。 若要了解详细信息，请参阅[面向 VM 的 Azure Monitor 概述](./vminsights-overview.md)。 若要了解服务映射解决方案与用于 VM 的 Azure Monitor 映射功能之间的差异，请参阅以下[常见问题解答](../faq.md#azure-monitor-for-vms)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -34,7 +34,7 @@ ms.locfileid: "86539765"
 
 ## <a name="enable-service-map"></a>启用服务映射
 
-1. 从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview)或者使用[从解决方案库中添加监视解决方案](solutions.md)中所述的过程，启用服务映射解决方案。
+1. 从[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview)或使用[从解决方案库添加监视解决方案](solutions.md)中所述的过程，启用服务映射解决方案。
 1. 在要获取数据的每台计算机上[安装 Windows 上的 Dependency Agent](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows) 或[安装 Linux 上的 Dependency Agent](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux)。 依赖关系代理可以监视与直接邻居之间的连接，因此不需要在每台计算机上都具有代理。
 
 在 Azure 门户从 Log Analytics 工作区访问服务映射，并选择左窗格中的“解决方案”**** 选项。<br><br> ![选择工作区中的“解决方案”选项](./media/service-map/select-solution-from-workspace.png)。<br> 从解决方案列表中选择“ServiceMap(workspaceName)”****，并在服务映射解决方案概述页面单击“服务映射摘要”标题。<br><br> ![服务映射摘要标题](./media/service-map/service-map-summary-tile.png)。
@@ -154,7 +154,7 @@ ms.locfileid: "86539765"
 
 某些进程在计算机上充当特定角色：Web 服务器、应用程序服务器、数据库等。 “服务映射”可批注进程和计算机设备，包含的角色图标有助于以显眼的方式标识进程或服务器扮演的角色。
 
-| 角色图标 | 说明 |
+| 角色图标 | 描述 |
 |:--|:--|
 | ![Web 服务器](media/service-map/role-web-server.png) | Web 服务器 |
 | ![应用服务器](media/service-map/role-application-server.png) | 应用程序服务器 |
@@ -304,7 +304,7 @@ Linux：
 
 ## <a name="log-analytics-records"></a>Log Analytics 记录
 
-服务映射的计算机和进程清单数据可在 Log Analytics 中[搜索](../../azure-monitor/log-query/log-query-overview.md)。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
+服务映射的计算机和进程清单数据可在 Log Analytics 中[搜索](../log-query/log-query-overview.md)。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
 
 除了在进程或计算机启动或载入服务映射时生成的记录外，还针对每个唯一计算机和进程每小时生成一条记录。 这些记录的属性在下表中列出。 ServiceMapComputer_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中计算机资源的字段。 ServiceMapProcess_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中进程资源的字段。 ResourceName_s 字段与相应的 Azure Resource Manager 资源中的名称字段匹配。 
 
@@ -326,7 +326,7 @@ Linux：
 
 为了控制成本和复杂性，连接记录不会显示单个物理网络连接。 多个物理网络连接分组到一个逻辑连接中，然后在相应的表中反映该逻辑连接。  这意味着，*VMConnection* 表中的记录表示逻辑分组，而不是观测到的单个物理连接。 在给定的一分钟时间间隔内共享以下属性相同值的物理网络连接将聚合到 *VMConnection* 中的单个逻辑记录内。 
 
-| properties | 说明 |
+| 属性 | 描述 |
 |:--|:--|
 | `Direction` |连接方向，值为 *inbound* 或 *outbound* |
 | `Machine` |计算机 FQDN |
@@ -338,7 +338,7 @@ Linux：
 
 为了帮助你权衡分组造成的影响，以下记录属性中提供了有关分组的物理连接数的信息：
 
-| properties | 说明 |
+| 属性 | 描述 |
 |:--|:--|
 | `LinksEstablished` |在报告时间范围内建立的物理网络连接数 |
 | `LinksTerminated` |在报告时间范围内终止的物理网络连接数 |
@@ -349,7 +349,7 @@ Linux：
 
 除了连接计数指标以外，以下记录属性中还包含了有关在给定逻辑连接或网络端口上发送和接收的数据量的信息：
 
-| properties | 说明 |
+| 属性 | 描述 |
 |:--|:--|
 | `BytesSent` |在报告时间范围内发送的字节总数 |
 | `BytesReceived` |在报告时间范围内接收的字节总数 |
@@ -377,7 +377,7 @@ Linux：
 
 *VMConnection* 还包含以下记录属性中每个连接记录的远程端的地理位置信息： 
 
-| properties | 说明 |
+| 属性 | 描述 |
 |:--|:--|
 | `RemoteCountry` |托管 RemoteIp 的国家/地区的名称。  例如，*美国* |
 | `RemoteLatitude` |地理位置的纬度。  例如 *47.68* |
@@ -387,7 +387,7 @@ Linux：
 
 将会根据一组 IP 检查 *VMConnection* 表中的每个 RemoteIp 属性，以识别已知的恶意活动。 如果 RemoteIp 识别为恶意，则会在以下记录属性中填充以下属性（如果未将该 IP 视为恶意，则这些属性为空）：
 
-| properties | 说明 |
+| 属性 | 描述 |
 |:--|:--|
 | `MaliciousIp` |RemoteIp 地址 |
 | `IndicatorThreadType` |检测到的威胁标志是以下值之一：Botnet**、C2**、CryptoMining**、Darknet**、DDos**、MaliciousUrl**、Malware**、Phishing**、Proxy**、PUA** 和 Watchlist**。   |
@@ -405,7 +405,7 @@ Linux：
 
 类型为 *ServiceMapComputer_CL* 的记录包含具有服务映射代理的服务器的清单数据。 这些记录的属性在下表中列出：
 
-| properties | 说明 |
+| 属性 | 描述 |
 |:--|:--|
 | `Type` | *ServiceMapComputer_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -431,7 +431,7 @@ Linux：
 
 类型为 *ServiceMapProcess_CL* 的记录包含具有服务映射代理的服务器上 TCP 连接进程的清单数据。 这些记录的属性在下表中列出：
 
-| properties | 说明 |
+| 属性 | 描述 |
 |:--|:--|
 | `Type` | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -550,7 +550,7 @@ Microsoft 通过使用服务映射服务，自动收集使用情况和性能数�
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 Log Analytics 中的[日志搜索](../../azure-monitor/log-query/log-query-overview.md)，以检索服务映射收集的数据。
+详细了解 Log Analytics 中的[日志搜索](../log-query/log-query-overview.md)，以检索服务映射收集的数据。
 
 ## <a name="troubleshooting"></a>疑难解答
 
@@ -603,3 +603,4 @@ Microsoft Dependency Agent 基于 Microsoft Visual Studio 运行时库。 如果
 ## <a name="suggestions"></a>建议
 
 是否有任何关于服务映射或本文档的反馈？  请访问 [User Voice 页面](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)，可在此处推荐功能或对现有建议投票。
+

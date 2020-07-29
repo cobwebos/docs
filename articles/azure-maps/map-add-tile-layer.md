@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: 6bb3cfa7266688ac8973bd3838d0d03e9efe8d50
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: bb277a3413a21011b537b47bdc8fc1979c8e81c5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242298"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87279553"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>将图块层添加到地图
 
@@ -24,7 +24,7 @@ ms.locfileid: "86242298"
 
 * X、Y、缩放表示法-X 是列、Y 是磁贴网格中磁贴的行位置，而缩放表示法基于缩放级别。
 * Quadkey 表示法-将 x、y 和缩放信息合并为一个字符串值。 此字符串值将成为单个磁贴的唯一标识符。
-* 边界框-指定边界方框坐标格式的图像： `{west},{south},{east},{north}` 。 此格式通常由[Web 映射服务 (WMS) ](https://www.opengeospatial.org/standards/wms)使用。
+* 边界框-指定边界方框坐标格式的图像： `{west},{south},{east},{north}` 。 此格式通常由[Web 映射服务（WMS）](https://www.opengeospatial.org/standards/wms)使用。
 
 > [!TIP]
 > [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) 是直观显示地图上的大型数据集的好办法。 矢量数据不仅可以从图像生成，还可以作为图块层呈现。 通过将矢量数据呈现为图块层，地图控件只需加载小于其所表示的矢量数据的文件大小的磁贴。 此方法通常用于在地图上呈现数百万行数据。

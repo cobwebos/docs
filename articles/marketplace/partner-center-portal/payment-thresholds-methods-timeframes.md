@@ -1,17 +1,18 @@
 ---
 title: 按区域的付款详细信息 - Microsoft 商业市场
 description: 了解转账付款的估计时间，以及你可以从中接收付款的 Microsoft 店面，根据你所在的国家/地区和付款帐户类型而异。
-author: mingshen
+author: mingshen-ms
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 33c4286c5a3fa8be68c1e6ec3bd331aa1e804cb4
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 44246fa122b7c602e47c44e48c43c2a42d01de77
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745016"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327321"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>付款阈值、方法和时间范围
 

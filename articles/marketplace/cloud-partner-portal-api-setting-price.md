@@ -4,15 +4,15 @@ description: 介绍用于指定虚拟机产品/服务的定价的三种方法。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 8d6dcd7f3f86e111cfb17fb08c4faadac1552b94
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d49f9df9fdc7dd8d2fb53b9ad6eb6eae64965fb7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039102"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87271716"
 ---
 # <a name="pricing-for-virtual-machine-offers"></a>虚拟机套餐的定价
 
@@ -104,7 +104,7 @@ VM 发布者已在2019年7月2日向新的 Azure 虚拟机大小增加了新价�
 
 下表显示了可以为自定义核心定价指定的不同区域及其对应的货币代码。
 
-| **区域** | **名称**             | **货币代码** |
+| **区域** | **Name**             | **货币代码** |
 |------------|----------------------|-------------------|
 | DZ         | 阿尔及利亚              | DZD               |
 | AR         | 阿根廷            | ARS               |

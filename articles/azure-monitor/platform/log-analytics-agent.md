@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 9f8850b83b2af7f0d3007cd716f9e077361a02e2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 409a119804354b85e3af380d33a4801549ef8133
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091107"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325281"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理概述
 Azure Log Analytics 代理是为在任何云、本地计算机以及 [System Center Operations Manager](/system-center/scom/) 监视的虚拟机中进行全面管理而开发的。 Windows 和 Linux 代理将收集的数据从不同来源发送到 Azure Monitor 中的 Log Analytics 工作区，以及监视解决方案中定义的任何唯一日志或指标。 Log Analytics 代理还支持 Azure Monitor 中的见解和其他服务，例如[用于 VM 的 Azure Monitor](../insights/vminsights-enable-overview.md)、[Azure 安全中心](../../security-center/index.yml)和 [Azure 自动化](../../automation/automation-intro.md)。
@@ -72,15 +72,15 @@ Log Analytics 代理将数据发送到 Azure Monitor 中的 Log Analytics 工作
 
 |源 | 方法 | 说明|
 |-------|-------------|-------------|
-|Azure VM| [通过 Azure 门户手动安装](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json) | 指定要从 Log Analytics 工作区部署的 VM。 |
+|Azure VM| [通过 Azure 门户手动安装](../learn/quick-collect-azurevm.md?toc=%2fazure%2fazure-monitor%2ftoc.json) | 指定要从 Log Analytics 工作区部署的 VM。 |
 | | 使用 Azure CLI 或 Azure 资源管理器模板通过适用于 [Windows](../../virtual-machines/extensions/oms-windows.md) 或 [Linux](../../virtual-machines/extensions/oms-linux.md) 的 Log Analytics VM 扩展进行安装 | 该扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Azure Monitor 工作区中。 |
 | | [用于 VM 的 Azure Monitor](../insights/vminsights-enable-overview.md) | 使用用于 VM 的 Azure Monitor 启用监视时，它将安装 Log Analytics 扩展和代理。 |
 | | [Azure 安全中心自动预配](../../security-center/security-center-enable-data-collection.md) | Azure 安全中心可在所有受支持的 Azure VM 以及任何新建的 Azure VM 中预配 Log Analytics 代理（如果支持），以监视安全漏洞和威胁。 如果启用，将预配任何没有安装代理的新的或现有 VM。 |
 | 混合 Windows 计算机| [手动安装](agent-windows.md) | 从命令行安装 Microsoft Monitoring Agent. |
 | | [Azure 自动化 DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation) | 通过 Azure 自动化 DSC 自动执行安装。 |
 | | [具有 Azure Stack 的资源管理器模板](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) | 如果在数据中心中部署了 Microsoft Azure Stack，请使用 Azure 资源管理器模板。| 
-| 混合 Linux 计算机| [手动安装](../../azure-monitor/learn/quick-collect-linux-computer.md)|调用 GitHub 上托管的包装器脚本安装 Linux 代理。 | 
-| System Center Operations Manager|[将 Operations Manager 与 Log Analytics 集成](../../azure-monitor/platform/om-agents.md) | 配置 Operations Manager 和 Azure Monitor 日志之间的集成，以便转发 Windows 计算机收集的数据，这些计算机向管理组报告。|  
+| 混合 Linux 计算机| [手动安装](../learn/quick-collect-linux-computer.md)|调用 GitHub 上托管的包装器脚本安装 Linux 代理。 | 
+| System Center Operations Manager|[将 Operations Manager 与 Log Analytics 集成](./om-agents.md) | 配置 Operations Manager 和 Azure Monitor 日志之间的集成，以便转发 Windows 计算机收集的数据，这些计算机向管理组报告。|  
 
 
 ## <a name="supported-windows-operating-systems"></a>支持的 Windows 操作系统
@@ -209,7 +209,7 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 Log An
 > [!NOTE]
 > 如果代理服务器无需进行身份验证，Linux 代理仍要求提供伪用户名/密码。 这可以是任何用户名或密码。
 
-|properties| 描述 |
+|属性| 描述 |
 |--------|-------------|
 |协议 | https |
 |user | 用于代理身份验证的可选用户名 |
@@ -229,3 +229,4 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 Log An
 * 查看[数据源](agent-data-sources.md)，了解可用于从 Windows 或 Linux 系统收集数据的数据源。 
 * 了解[日志查询](../log-query/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。 
 * 了解[监视解决方案](../insights/solutions.md)如何将功能添加到 Azure Monitor，以及如何将数据收集到 Log Analytics 工作区中。
+

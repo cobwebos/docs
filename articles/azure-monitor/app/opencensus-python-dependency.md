@@ -6,18 +6,18 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: e99ea1d5a90455a4c470346fbbe5d1095c426e81
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c5f78535a3bd5ab93d3020d14a6242257c492297
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499454"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321286"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>使用 OpenCensus Python 跟踪依赖项
 
 依赖项是由应用程序调用的外部组件。 可以使用 OpenCensus Python 及其各种集成收集依赖项数据。 然后，将数据作为 `dependencies` 遥测发送到 Azure Monitor 下的 Application Insights。
 
-首先，使用最新版 [OpenCensus Python SDK](../../azure-monitor/app/opencensus-python.md) 检测 Python 应用程序。
+首先，使用最新版 [OpenCensus Python SDK](./opencensus-python.md) 检测 Python 应用程序。
 
 ## <a name="in-process-dependencies"></a>进程内依赖项
 
@@ -170,8 +170,9 @@ config_integration.trace_integrations(['sqlalchemy'])
 
 ## <a name="next-steps"></a>后续步骤
 
-* [应用程序映射](../../azure-monitor/app/app-map.md)
-* [可用性](../../azure-monitor/app/monitor-web-app-availability.md)
-* [搜索](../../azure-monitor/app/diagnostic-search.md)
-* [日志（分析）查询](../../azure-monitor/log-query/log-query-overview.md)
-* [事务诊断](../../azure-monitor/app/transaction-diagnostics.md)
+* [应用程序映射](./app-map.md)
+* [可用性](./monitor-web-app-availability.md)
+* [搜索](./diagnostic-search.md)
+* [日志（分析）查询](../log-query/log-query-overview.md)
+* [事务诊断](./transaction-diagnostics.md)
+

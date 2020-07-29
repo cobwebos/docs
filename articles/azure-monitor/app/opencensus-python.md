@@ -7,12 +7,12 @@ ms.author: lechen
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
 ms.custom: tracking-python
-ms.openlocfilehash: 35d56c5318046a0f9ffc52f61fac886c473cf0bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eec4a46596b9cd39a43b6bb1f8969d41e99916b6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024361"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322544"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>为 Python 应用程序设置 Azure Monitor
 
@@ -474,13 +474,14 @@ exporter = metrics_exporter.new_metrics_exporter(
 
 ## <a name="next-steps"></a>后续步骤
 
-* [跟踪传入请求](./../../azure-monitor/app/opencensus-python-dependency.md)
-* [跟踪传出请求](./../../azure-monitor/app/opencensus-python-request.md)
-* [应用程序映射](./../../azure-monitor/app/app-map.md)
-* [端到端性能监视](./../../azure-monitor/learn/tutorial-performance.md)
+* [跟踪传入请求](./opencensus-python-dependency.md)
+* [跟踪传出请求](./opencensus-python-request.md)
+* [应用程序映射](./app-map.md)
+* [端到端性能监视](../learn/tutorial-performance.md)
 
 ### <a name="alerts"></a>警报
 
-* [可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)：创建测试来确保站点在 Web 上可见。
-* [智能诊断](../../azure-monitor/app/proactive-diagnostics.md)：这些测试可自动运行，因此不需要进行任何设置。 它们会告诉你应用是否具有异常的失败请求速率。
-* [指标警报](../../azure-monitor/platform/alerts-log.md)：设置警报以在某个指标超过阈值时发出警告。 可以在编码到应用中的自定义指标中设置它们。
+* [可用性测试](./monitor-web-app-availability.md)：创建测试来确保站点在 Web 上可见。
+* [智能诊断](./proactive-diagnostics.md)：这些测试可自动运行，因此不需要进行任何设置。 它们会告诉你应用是否具有异常的失败请求速率。
+* [指标警报](../platform/alerts-log.md)：设置警报以在某个指标超过阈值时发出警告。 可以在编码到应用中的自定义指标中设置它们。
+

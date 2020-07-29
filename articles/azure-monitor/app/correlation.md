@@ -7,26 +7,26 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: tracking-python
-ms.openlocfilehash: 432ff655ef072d491227d297e620612203f73d3f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b4facaee44a0bc5c7d64376ca80e5aaf8d0768d0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092977"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323156"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
-在微服务的世界中，每次逻辑操作都需要在服务的不同组件中完成工作。 可以通过 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 单独监视这些组件。 Application Insights 支持分布式遥测关联，可用来检测哪个组件要对故障或性能下降问题负责。
+在微服务的世界中，每次逻辑操作都需要在服务的不同组件中完成工作。 可以通过 [Application Insights](./app-insights-overview.md) 单独监视这些组件。 Application Insights 支持分布式遥测关联，可用来检测哪个组件要对故障或性能下降问题负责。
 
 本文介绍了 Application Insights 用于关联由多个组件发送的遥测的数据模型。 其中阐述了 context-propagation 技术和协议， 以及如何在不同的语言和平台上实现相关的策略。
 
 ## <a name="data-model-for-telemetry-correlation"></a>遥测关联的数据模型
 
-Application Insights 定义了用于分配遥测关联的[数据模型](../../azure-monitor/app/data-model.md)。 要将遥测与逻辑操作关联，每个遥测项都应包含名为 `operation_Id` 的上下文字段。 此标识符由分布式跟踪中的每个遥测项共享。 因此，即使失去单个层的遥测，也仍可关联其他组件报告的遥测。
+Application Insights 定义了用于分配遥测关联的[数据模型](./data-model.md)。 要将遥测与逻辑操作关联，每个遥测项都应包含名为 `operation_Id` 的上下文字段。 此标识符由分布式跟踪中的每个遥测项共享。 因此，即使失去单个层的遥测，也仍可关联其他组件报告的遥测。
 
-分布式逻辑操作通常由一系列小规模操作（某个组件处理的请求）构成。 这些操作由[请求遥测](../../azure-monitor/app/data-model-request-telemetry.md)定义。 每个请求遥测项都具有自身的 `id`，用于对自身进行唯一全局标识。 与此请求关联的所有遥测项（例如跟踪和异常）应将 `operation_parentId` 设置为请求 `id` 的值。
+分布式逻辑操作通常由一系列小规模操作（某个组件处理的请求）构成。 这些操作由[请求遥测](./data-model-request-telemetry.md)定义。 每个请求遥测项都具有自身的 `id`，用于对自身进行唯一全局标识。 与此请求关联的所有遥测项（例如跟踪和异常）应将 `operation_parentId` 设置为请求 `id` 的值。
 
-每个传出操作（例如，对另一个组件的 HTTP 调用）是由[依赖项遥测](../../azure-monitor/app/data-model-dependency-telemetry.md)表示的。 依赖项遥测也定义了自身的全局独一无二的 `id`。 此依赖项调用发起的请求遥测将此 `id` 用作其 `operation_parentId`。
+每个传出操作（例如，对另一个组件的 HTTP 调用）是由[依赖项遥测](./data-model-dependency-telemetry.md)表示的。 依赖项遥测也定义了自身的全局独一无二的 `id`。 此依赖项调用发起的请求遥测将此 `id` 用作其 `operation_parentId`。
 
 可以结合 `dependency.id` 使用 `operation_Id`、`operation_parentId` 和 `request.id`，生成分布式逻辑操作的视图。 这些字段还定义了遥测调用的因果关系顺序。
 
@@ -216,7 +216,7 @@ public void ConfigureServices(IServiceCollection services)
 | `Operation_Id`                         | `TraceId`                                           |
 | `Operation_ParentId`                   | `ChildOf` 类型的 `Reference`（父级范围）     |
 
-有关详细信息，请参阅 [Application Insights 遥测数据模型](../../azure-monitor/app/data-model.md)。
+有关详细信息，请参阅 [Application Insights 遥测数据模型](./data-model.md)。
 
 有关 OpenTracing 概念的定义，请参阅 OpenTracing [规范](https://github.com/opentracing/specification/blob/master/specification.md)和 [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md)。
 
@@ -372,10 +372,11 @@ ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 编写[自定义遥测](../../azure-monitor/app/api-custom-events-metrics.md)。
+- 编写[自定义遥测](./api-custom-events-metrics.md)。
 - 对于 ASP.NET Core 和 ASP.NET 中的高级关联方案，请参阅[跟踪自定义操作](custom-operations-tracking.md)。
-- 详细了解如何为其他 SDK [设置 cloud_RoleName](../../azure-monitor/app/app-map.md#set-cloud-role-name)。
-- 在 Application Insights 中载入微服务的所有组件。 查看[支持的平台](../../azure-monitor/app/platforms.md)。
-- 有关 Application Insights 的类型，请参阅[数据模型](../../azure-monitor/app/data-model.md)。
-- 了解如何[扩展和筛选遥测](../../azure-monitor/app/api-filtering-sampling.md)。
+- 详细了解如何为其他 SDK [设置 cloud_RoleName](./app-map.md#set-cloud-role-name)。
+- 在 Application Insights 中载入微服务的所有组件。 查看[支持的平台](./platforms.md)。
+- 有关 Application Insights 的类型，请参阅[数据模型](./data-model.md)。
+- 了解如何[扩展和筛选遥测](./api-filtering-sampling.md)。
 - 参阅 [Application Insights 配置参考](configuration-with-applicationinsights-config.md)。
+
