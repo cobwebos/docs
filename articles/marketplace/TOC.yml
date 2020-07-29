@@ -121,7 +121,7 @@
                   href: ./partner-center-portal/create-azure-vm-technical-asset.md
                 - name: Azure VM 技术资产常见问题解答
                   href: ./partner-center-portal/common-issues-during-vhd-creation.md
-                - name: 认证 Azure VM 映像
+                - name: 测试通过 VHD 部署的虚拟机
                   href: ./partner-center-portal/azure-vm-image-certification.md
                 - name: SAS URI
                   items:

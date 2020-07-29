@@ -1,6 +1,5 @@
 ---
-title: 创建多个模型和终结点
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （经典）：创建多个模型 & 终结点-Azure
 description: 使用 PowerShell 创建多个具有相同算法和不同训练数据集的机器学习模型和 Web 服务终结点。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 5b158c2fbdbfba91055d64f92f64c51dc6c3d391
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9cb5b0b87b1d6adb8e0e5cda06049cfddba3d950
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955703"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283531"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>使用机器学习工作室（经典）和 PowerShell 从一个试验创建多个 Web 服务终结点
+
+**适用于：** ![不](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-azure-ml.md) ![ 是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） 
 
 这是一个常见的机器学习问题：你需要创建具有相同训练工作流并使用相同算法的多个模型， 但是需要它们使用不同的训练数据集作为输入。 本文演示如何仅使用单个试验在 Azure 机器学习工作室（经典）中大规模地执行此操作。
 
@@ -50,7 +51,7 @@ ms.locfileid: "85955703"
 如果此实验部署为 Web 服务，那么与此输出关联的终结点以 .ilearner 文件的格式返回训练的模板。
 
 另请注意，所设置的 Web 服务参数可定义“导入数据”模块使用的 URL。 这样即可使用参数来指定单个训练数据集，以便训练每个位置的模型。
-也可通过其他方式来这样做。 您可以使用包含 web 服务参数的 SQL 查询从 Azure SQL 数据库中的数据库中获取数据。 也可使用“Web 服务输入”模块将数据集传递到 Web 服务。
+也可通过其他方式来这样做。 可将 SQL 查询与 Web 服务参数结合使用，从 Azure SQL 数据库中的数据库获取数据。 也可使用“Web 服务输入”模块将数据集传递到 Web 服务。
 
 ![训练的模型模块将输出到 Web 服务输出模块](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
 

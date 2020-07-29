@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: sukishen
-ms.openlocfilehash: d9a8b44cc6e78eda4a3e0b18d59d2372e7129c05
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 69129ad0ecda6b5893a5f758b8cac9a30dd0b093
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124165"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282103"
 ---
 # <a name="about-azure-networking-msp-partners"></a>关于 Azure 网络 MSP 合作伙伴
 
@@ -40,6 +40,7 @@ Azure 网络 MSP 是一组专门的托管服务提供商，可解决云和混合
 |[NTT 数据](https://us.nttdata.com/en/digital/cloud-transformation)|[托管服务：10 周实现](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/nttdata-2932930.managed_service)|||||
 |[Equinix](https://www.equinix.com/)|[云优化 WAN 研讨会](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/equinix.cloudoptimizedwan?tab=Overview)|[ExpressRoute 连接性战略研讨会](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/equinix.expressroutestrategy?tab=Overview)||||
 |[IIJ](https://www.iij.ad.jp/biz/cloudex/)|[ExpressRoute 实现：1 小时简报](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/internet_initiative_japan_inc.iij_cxm_consulting)|[ExpressRoute：2 周实现](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/internet_initiative_japan_inc.iij_cxmer_consulting)||||
+|[联合无线](https://www.federatedwireless.com/caas/)||||[联合无线连接即服务](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/federatedwireless1580839623708.fw_caas?tab=Overview)|
 |[Infosys](https://www.infosys.com/services/microsoft-cloud-business/pages/index.aspx)|[适用于 Azure 的 Infosys 集成+](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/infosysltd.infosys-integrate-for-azure?tab=Overview)|||||
 |[Interxion](https://www.interxion.com/products/interconnection/cloud-connect/support-your-cloud-strategy/)|[Azure 网络评估 -5 天](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/interxionhq.inxn_azure_networking_assessment)|||||
 |[Liquid Telecom](https://liquidcloud.africa/azure-networking)|[云就绪 - 2 小时评估](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/liquidtelecommunicationsoperationslimited.liquid_cloud_readiness_assessment)|||||
@@ -54,7 +55,7 @@ Azure 网络 MSP 是一组专门的托管服务提供商，可解决云和混合
 |[Vigilant IT](https://vigilant.it/manage-cloud-service/)|[Azure 运行状况检查：5 日评估](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute：5 日实现](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandis 托管 ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Fortinet 提供支持的 Vandis 托管 VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview)；[Palo Alto Networks 提供支持的 Vandis 托管 VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 
-以下 Azure 网络 MSP 合作伙伴提供的 azure Marketplace 适用于托管 ExpressRoute、虚拟 WAN、安全服务和私有边缘区域服务： [Amdocs](https://www.amdocs.com/); [德国 Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406); [IX 范围](https://www.ixreach.com/services/sdn-cloud-connect/); [InterCloud](https://intercloud.com/partners/microsoft-azure/); [KINX](https://www.kinx.net/service/cloud/?lang=en);[OmniClouds](https://omniclouds.com/); [Sejong 电信](https://www.sejongtelecom.net/en/pages/service/cloud_ms);[联合无线](https://www.federatedwireless.com/caas/)
+以下 Azure 网络 MSP 合作伙伴提供的 azure Marketplace 适用于托管 ExpressRoute、虚拟 WAN、安全服务和私有边缘区域服务： [Amdocs](https://www.amdocs.com/); [德国 Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406); [IX 范围](https://www.ixreach.com/services/sdn-cloud-connect/); [InterCloud](https://intercloud.com/partners/microsoft-azure/); [KINX](https://www.kinx.net/service/cloud/?lang=en);[OmniClouds](https://omniclouds.com/); [Sejong 电信](https://www.sejongtelecom.net/en/pages/service/cloud_ms);
 
 ## <a name="expressroute-partners"></a><a name="expressroute"></a>ExpressRoute 合作伙伴
 

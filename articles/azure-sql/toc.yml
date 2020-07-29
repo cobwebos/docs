@@ -78,6 +78,8 @@
                   href: database/authentication-mfa-ssms-configure.md
                 - name: 条件性访问
                   href: database/conditional-access-configure.md
+                - name: 服务主体（应用程序）
+                  href: database/authentication-aad-service-principal.md
             - name: 透明数据加密 (TDE)
               items:
                 - name: 概述
@@ -141,6 +143,8 @@
               href: database/long-term-backup-retention-configure.md
         - name: 安全性
           items:
+            - name: 创建 Azure AD 来宾用户并将其设置为 Azure AD 管理员
+              href: database/authentication-aad-guest-users.md
             - name: 为 TDE 配置 BYOK
               href: database/transparent-data-encryption-byok-configure.md
             - name: 在存储中存储漏洞扫描结果
@@ -277,6 +281,8 @@
               href: database/transparent-data-encryption-byok-key-rotation.md
             - name: 删除 TDE 保护器
               href: database/transparent-data-encryption-byok-remove-tde-protector.md
+            - name: 使用服务主体创建用户
+              href: database/authentication-aad-service-principal-tutorial.md
         - name: 移动数据
           items:
             - name: 使用 DMS 迁移
@@ -1138,7 +1144,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
     - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 连接错误
           href: database/troubleshoot-common-errors-issues.md

@@ -9,11 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a33933e63cc7c15de7d60430521f810f8546988c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad92f796205d84a372de610cb210bbf8878a6c9b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667873"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282766"
 ---
 # <a name="configure-replication-to-azure-sql-edge-preview"></a>配置到 Azure SQL Edge（预览版）的复制 
 
@@ -23,7 +24,7 @@ ms.locfileid: "84667873"
   
 - Azure SQL Edge 的实例必须是发布服务器的推送订阅服务器。
 - 发布服务器和分发服务器可以是：
-   - SQL Server 在本地运行的实例，或在 Azure 虚拟机中运行 SQL Server 的实例。 有关详细信息，请参阅 [Azure 虚拟机上的 SQL Server 概述](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-infrastructure-services/)。 SQL Server 实例必须使用比 SQL Server 2016 更高的版本。
+   - SQL Server 在本地运行的实例，或在 Azure 虚拟机中运行 SQL Server 的实例。 有关详细信息，请参阅 [Azure 虚拟机上的 SQL Server 概述](https://docs.microsoft.com/azure/azure-sql/virtual-machines/)。 SQL Server 实例必须使用比 SQL Server 2016 更高的版本。
    - Azure SQL 托管实例的实例。 SQL 托管实例可以托管发布服务器、分发服务器和订阅服务器数据库。 有关详细信息，请参阅[通过 SQL 数据库托管实例进行复制](https://docs.microsoft.com/azure/sql-database/replication-with-sql-database-managed-instance/)。
 
 - 不能将分发数据库和复制代理放置在 Azure SQL Edge 的实例上。  
@@ -31,7 +32,7 @@ ms.locfileid: "84667873"
 > [!NOTE]
 > 如果尝试使用不受支持的版本配置复制，可能会收到以下两个错误： MSSQL_REPL20084 （"进程无法连接到订阅服务器。"）和 MSSQL_REPL40532 （"无法打开 \<name> 登录所请求的服务器。 登录失败。 "）。  
 
-## <a name="remarks"></a>注解
+## <a name="remarks"></a>备注
 
 在配置复制时，必须了解以下要求和最佳做法：
 

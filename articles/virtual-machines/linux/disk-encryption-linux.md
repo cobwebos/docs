@@ -4,16 +4,16 @@ description: 本文介绍了如何针对各种方案为 Linux VM 启用 Microsof
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
-ms.topic: article
+ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7664cebbd12e075e9b9ea7ea75021b61569a80cf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7452a08125008e3d25ffb7d0eff59f55ca9be0b1
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080278"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372648"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM 上的 Azure 磁盘加密方案
 
@@ -408,8 +408,8 @@ Azure 磁盘加密不支持以下 Linux 方案、功能和技术：
 - 创建加密 VM 的映像或快照，并使用它来部署更多 Vm。
 - 内核故障转储 (kdump)。
 - Oracle ACFS（ASM 群集文件系统）。
-- Gen2 VM（请参阅：[对 Azure 中第 2 代 VM 的支持](generation-2.md#generation-1-vs-generation-2-capabilities)）。
-- Lsv2 系列 VM（请参阅：[Lsv2 系列](../lsv2-series.md)）。
+- Gen2 VM（请参阅：[Azure 对第 2 代 VM 的支持](generation-2.md#generation-1-vs-generation-2-capabilities)）。
+- Lsv2 系列 Vm 的 NVMe 磁盘（请参阅： [Lsv2 系列](../lsv2-series.md)）。
 - 具有“嵌套装入点”的 VM，即一个路径中有多个装入点（例如“/1stmountpoint/data/2stmountpoint”）。
 - 一个 VM，其中的数据驱动器装载在 OS 文件夹之上。
 - 带有写入加速器磁盘的 M 系列 Vm。

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: a49e5fbe9eac689b630a0f3b443729faf29cdb0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 492f44353a9a43279afa4869640193f1baddd41c
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84974511"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372869"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器故障排除指南
 
@@ -48,7 +48,7 @@ Microsoft Azure 存储资源管理器是一款独立应用，可用于在 Window
 
 Azure 存储提供两个访问层：“管理”和“数据”。  订阅和存储帐户是通过管理层访问的。 容器、Blob 和其他数据资源是通过数据层访问的。 例如，若要从 Azure 获取存储帐户的列表，应向管理终结点发送请求。 若要列出帐户中的 Blob 容器，应向相应的服务终结点发送请求。
 
-RBAC 角色可以向你授予管理或数据层访问权限。 例如，“读取者”角色授予对管理层资源的只读访问权限。
+RBAC 角色可以授予你进行管理或数据层访问的权限。 例如，“读取者”角色授予对管理层资源的只读访问权限。
 
 严格地讲，“读取者”角色不提供数据层的权限，并非一定要有该角色才能访问数据层。
 
@@ -58,18 +58,18 @@ RBAC 角色可以向你授予管理或数据层访问权限。 例如，“读�
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>如果我无法从管理员获取管理层权限，该怎么办？
 
-如果要访问 blob 容器或队列，可以使用 Azure 凭据附加到这些资源。
+若要访问 blob 容器或队列，可以使用 Azure 凭据连接到这些资源。
 
-1. 打开 "连接" 对话框。
-2. 选择 "通过 Azure Active Directory 添加资源（Azure AD）。 单击“下一步”。
-3. 选择与你要附加到的资源关联的用户帐户和租户。 单击“下一步”。
+1. 打开“连接”对话框。
+2. 选择“通过 Azure Active Directory (Azure AD)添加资源”。 单击“下一步”。
+3. 选择与要连接到的资源关联的用户帐户和租户。 单击“下一步”。
 4. 选择资源类型，输入资源的 URL，并为连接输入唯一的显示名称。 单击“下一步”。 单击“连接”。
 
-对于其他资源类型，目前还没有 RBAC 相关解决方案。 一种解决方法是请求一个 SAS URI 并将其[附加到资源](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)。
+目前，对于其他资源类型，我们尚未制定与 RBAC 相关的解决方案。 一种解决方法是请求一个 SAS URI 并将其[附加到资源](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)。
 
-### <a name="recommended-built-in-rbac-roles"></a>建议的内置 RBAC 角色
+### <a name="recommended-azure-built-in-roles"></a>推荐的 Azure 内置角色
 
-可以使用多个内置 RBAC 角色提供存储资源管理器所需的权限。 其中一些角色是：
+有几个 Azure 内置角色可以提供使用存储资源管理器所需的权限。 其中一些角色是：
 - [所有者](/azure/role-based-access-control/built-in-roles#owner)：管理所有内容，包括对资源的访问权限。 **注意**：此角色将授予你密钥访问权限。
 - [参与者](/azure/role-based-access-control/built-in-roles#contributor)：管理所有内容，不包括对资源的访问权限。 **注意**：此角色将授予你密钥访问权限。
 - [读者](/azure/role-based-access-control/built-in-roles#reader)：读取和列出资源。
@@ -82,7 +82,7 @@ RBAC 角色可以向你授予管理或数据层访问权限。 例如，“读�
 
 如果存在以下情况之一，则往往会发生证书错误：
 
-- 该应用通过_透明代理_进行连接。 这意味着服务器（如公司服务器）正在截取 HTTPS 流量，对其进行解密，然后使用自签名证书对其进行加密。
+- 应用通过_透明代理_进行连接。 这意味着一台服务器（例如公司的服务器）正在截取 HTTPS 流量，对其进行解密，然后使用自签名证书对其进行加密。
 - 正在运行的应用程序正在向收到的 HTTPS 消息注入自签名 TLS/SSL 证书。 注入证书的应用程序示例包括防病毒软件和网络流量检查软件。
 
 当存储资源管理器看到自签名或不受信任的证书时，无法再判断收到的 HTTPS 消息是否被更改。 如果拥有自签名证书的副本，可通过执行以下步骤，让存储资源管理器信任它：
@@ -304,7 +304,7 @@ RBAC 角色可以向你授予管理或数据层访问权限。 例如，“读�
 
 ## <a name="linux-dependencies"></a>Linux 依赖项
 
-### <a name="snap"></a>Snap
+### <a name="snap"></a>对齐
 
 Snap Store 中以内嵌项的形式提供了存储资源管理器 1.10.0 和更高版本。 存储资源管理器内嵌项会自动安装其所有依赖项，并在新版内嵌项推出时更新。 安装存储资源管理器内嵌项是建议的安装方法。
 
@@ -314,25 +314,25 @@ Snap Store 中以内嵌项的形式提供了存储资源管理器 1.10.0 和更�
 snap connect storage-explorer:password-manager-service :password-manager-service
 ```
 
-### <a name="targz-file"></a>gz 文件
+### <a name="targz-file"></a>.tar.gz 文件
 
 还可以下载 .tar.gz 文件格式的应用程序，但必须手动安装依赖项。
 
-Gz 下载中提供的存储资源管理器仅支持以下版本的 Ubuntu。 存储资源管理器可以在其他 Linux 分发版上运行，但不正式支持。
+仅以下 Ubuntu 版本支持 .tar.gz 下载中提供的存储资源管理器。 存储资源管理器可以在其他 Linux 发行版上运行，但未得到正式支持。
 
 - Ubuntu 20.04 x64
 - Ubuntu 18.04 x64
 - Ubuntu 16.04 x64
 
-存储资源管理器要求在您的系统上安装 .NET Core。 建议使用 .NET Core 2.1，但存储资源管理器也适用于2.2。
+存储资源管理器要求在系统上安装 .NET Core。 建议安装 .NET Core 2.1，但存储资源管理器也可使用 .NET Core 2.2。
 
 > [!NOTE]
-> 存储资源管理器 1.7.0 及更低版本需要 .NET Core 2.0。 如果安装了更高版本的 .NET Core，则必须[修补存储资源管理器](#patching-storage-explorer-for-newer-versions-of-net-core)。 如果正在运行存储资源管理器1.8.0 或更高版本，则至少需要 .NET Core 2.1。
+> 存储资源管理器 1.7.0 及更低版本需要 .NET Core 2.0。 如果安装了更高版本的 .NET Core，则必须[修补存储资源管理器](#patching-storage-explorer-for-newer-versions-of-net-core)。 如果运行存储资源管理器 1.8.0 或更高版本，则至少需要 .NET Core 2.1。
 
 # <a name="ubuntu-2004"></a>[Ubuntu 20.04](#tab/2004)
 
-1. 下载存储资源管理器 gz 文件。
-2. 安装[.Net Core 运行时](https://docs.microsoft.com/dotnet/core/install/linux)：
+1. 下载存储资源管理器 .tar.gz 文件。
+2. 安装 [.NET Core 运行时](https://docs.microsoft.com/dotnet/core/install/linux)：
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      dpkg -i packages-microsoft-prod.deb; \
@@ -344,8 +344,8 @@ Gz 下载中提供的存储资源管理器仅支持以下版本的 Ubuntu。 存
 
 # <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
-1. 下载存储资源管理器 gz 文件。
-2. 安装[.Net Core 运行时](https://docs.microsoft.com/dotnet/core/install/linux)：
+1. 下载存储资源管理器 .tar.gz 文件。
+2. 安装 [.NET Core 运行时](https://docs.microsoft.com/dotnet/core/install/linux)：
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      dpkg -i packages-microsoft-prod.deb; \
@@ -357,8 +357,8 @@ Gz 下载中提供的存储资源管理器仅支持以下版本的 Ubuntu。 存
 
 # <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
-1. 下载存储资源管理器 gz 文件。
-2. 安装[.Net Core 运行时](https://docs.microsoft.com/dotnet/core/install/linux)：
+1. 下载存储资源管理器 .tar.gz 文件。
+2. 安装 [.NET Core 运行时](https://docs.microsoft.com/dotnet/core/install/linux)：
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      dpkg -i packages-microsoft-prod.deb; \
@@ -369,7 +369,7 @@ Gz 下载中提供的存储资源管理器仅支持以下版本的 Ubuntu。 存
    ```
 ---
 
-存储资源管理器所需的许多库都预安装了规范的 Ubuntu 标准安装。 自定义环境可能缺少某些库。 如果在启动存储资源管理器时遇到问题，我们建议确保在系统上安装以下包：
+存储资源管理器所需的许多库都已随 Canonical 的 Ubuntu 标准安装进行预安装。 自定义环境可能缺少其中某些库。 如果在启动存储资源管理器时遇到问题，建议确保以下包已安装在系统上：
 
 - iproute2
 - libasound2

@@ -16,11 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 56132eae03a52af425e00bec93a63a697a2a55e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec4d91d90a952805781d6d38a0fc8a8fcef84f39
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84204729"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283463"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure 操作安全性最佳做法
 本文提供了用于保护 Azure 中的数据、应用程序和其他资产的一系列操作最佳做法。
@@ -181,7 +182,7 @@ Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用�
 
 对于 Azure 云服务，请将每个角色配置为使用[多个实例](../../cloud-services/cloud-services-choose-me.md)。
 
-对于 [Azure 虚拟机](/azure/virtual-machines/windows/overview)，请确保 VM 体系结构包含多个 VM，并且每个 VM 包含在[可用性集](/azure/virtual-machines/virtual-machines-windows-manage-availability)中。 建议使用虚拟机规模集来实现自动缩放功能。
+对于 [Azure 虚拟机](../../virtual-machines/windows/overview.md)，请确保 VM 体系结构包含多个 VM，并且每个 VM 包含在[可用性集](../../virtual-machines/windows/tutorial-availability-sets.md)中。 建议使用虚拟机规模集来实现自动缩放功能。
 
 **** 最佳做法：应用程序中的分层安全防御可以减少攻击成功的可能性。 使用 Azure 平台的内置功能对其应用程序实施安全设计。  
 **** 详细信息：攻击风险会随着应用程序的规模（外围应用）的增大而增大。 可以使用允许列表关闭负载均衡器（[Azure 负载均衡器](/azure/load-balancer/load-balancer-get-started-internet-portal)和 [Azure 应用程序网关](/azure/application-gateway/application-gateway-create-probe-portal)）上不需要的公开 IP 地址空间和侦听端口，来减少外围应用。

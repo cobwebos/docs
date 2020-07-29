@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 00369ae45a13414ce46f324e37afe24be24a48e0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 6a3a52c90187920be13628a6d2fa44159e1109d7
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132936"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371781"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>用于解决 Azure SQL 数据库和 Azure SQL 托管实例常见安全要求的 playbook
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -324,7 +324,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库或 S
 
 - 始终确保针对安全相关的操作提供审核线索。
 
-- 可以检索内置 RBAC 角色的定义以查看所用的权限，并通过 PowerShell 根据这些信息的摘录和累积创建自定义角色。
+- 可以检索 Azure 内置角色的定义，以查看所使用的权限，并通过 PowerShell 基于这些权限的摘录和 cumulations 创建自定义角色。
 
 - 由于 db_owner 数据库角色的任何成员都可以更改透明数据加密 (TDE) 等安全设置或更改 SLO，因此，应谨慎地授予此成员身份。 但是，许多任务要求使用 db_owner 特权。 例如，更改数据库选项等任何数据库设置的任务。 在任何解决方案中，审核都发挥着关键的作用。
 

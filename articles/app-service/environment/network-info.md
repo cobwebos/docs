@@ -4,15 +4,15 @@ description: 了解 ASE 网络流量以及如何通过 ASE 设置网络安全组
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 06/29/2020
+ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 10cb1149880c70d991dd5ab49acceab3283372a7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6fde04be99eaa61287b486eaefdcb92d66d88bc7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517847"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280913"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
 
@@ -158,13 +158,14 @@ ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 * 在所有端口上允许不同 ASE 子网之间发送的流量
 
 **Outbound**
+* UDP 到端口53上的所有 Ip
 * UDP 到端口123上的所有 Ip
 * TCP 到端口80、443上的所有 Ip
 * TCP 到 IP 服务标记 AzureSQL 上的端口1433
 * TCP 到端口12000上的所有 Ip
 * 在所有端口上允许发往 ASE 子网的流量
 
-这些端口不包括成功使用应用所需的端口。 例如，你的应用程序可能需要在端口3306上调用 MySQL 服务器。在 DNS 端口上，不需要将端口53作为流量添加到 DNS 不受 NSG 规则的影响。 端口123上的网络时间协议（NTP）是操作系统使用的时间同步协议。 NTP 终结点并不特定于应用服务，可能因操作系统而异，并且不是定义完善的地址列表。 若要防止时间同步问题，则需要允许 UDP 流量发送到端口123上的所有地址。 发往端口12000流量的出站 TCP 适用于系统支持和分析。 终结点是动态的，并且不是定义完善的地址集。
+这些端口不包括成功使用应用所需的端口。 例如，你的应用可能需要在端口3306上调用 MySQL 服务器。 端口123上的网络时间协议（NTP）是操作系统使用的时间同步协议。 NTP 终结点并不特定于应用服务，可能因操作系统而异，并且不是定义完善的地址列表。 若要防止时间同步问题，则需要允许 UDP 流量发送到端口123上的所有地址。 发往端口12000流量的出站 TCP 适用于系统支持和分析。 终结点是动态的，并且不是定义完善的地址集。
 
 常规应用访问端口为：
 
@@ -202,7 +203,7 @@ ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 
 3. 在路由表 UI 中选择 "**路由**" "  >  **添加**"。
 
-4. 将“下一跃点类型”设置为 Internet，将“地址前缀”设置为 0.0.0.0/0。**************** 选择“保存”。
+4. 将“下一跃点类型”设置为 Internet，将“地址前缀”设置为 0.0.0.0/0。**************** 选择“保存” 。
 
     然后将看到如下内容：
 

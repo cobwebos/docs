@@ -5,16 +5,17 @@ description: 了解如何使用 Azure CLI 创建新的 Azure 机器学习工作�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
 ms.date: 06/25/2020
-ms.openlocfilehash: 64963bfc28921d195d9ed0f96b2673a9c9e4aa2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 1cc280dc12fcb462e11a568910eef053e4bdac50
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392703"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319688"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 创建 Azure 机器学习工作区
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +60,13 @@ az extension add -n azure-cli-ml
 Azure 机器学习工作区依赖于以下 Azure 服务或实体：
 
 > [!IMPORTANT]
-> 如果未指定现有 Azure 服务，则将在创建工作区期间自动创建一个。 必须始终指定资源组。 附加自己的存储帐户时，请确保该帐户已启用 Azure Blob 和 Azure 文件功能，并且已禁用该分层命名空间（ADLS 第2代）。 稍后，你可以在创建工作区后，随时附加自己的存储帐户。
+> 如果未指定现有 Azure 服务，则将在创建工作区期间自动创建一个。 必须始终指定资源组。 附加自己的存储帐户时，请确保它满足以下条件：
+>
+> * 存储帐户_不_是高级帐户（Premium_LRS 和 Premium_GRS）
+> * Azure Blob 和 Azure 文件功能都已启用
+> * 已禁用分层命名空间（ADLS 第2代）
+>
+> 这些要求仅适用于工作区使用的_默认_存储帐户。
 
 | 服务 | 用于指定现有实例的参数 |
 | ---- | ---- |
@@ -147,6 +154,9 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
     此命令的响应类似于以下文本，它是存储帐户的 ID：
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"`
+
+    > [!IMPORTANT]
+    > 如果要使用现有的 Azure 存储帐户，则该帐户不能是高级帐户（Premium_LRS 和 Premium_GRS）。 它也不能具有分层命名空间（与 Azure Data Lake Storage Gen2 一起使用）。 工作区的_默认_存储帐户不支持高级存储或分层命名空间。 可以将高级存储或分层命名空间用于_非默认_存储帐户。
 
 + **Azure Application Insights**：
 
@@ -355,7 +365,7 @@ az group delete -g <resource-group-name>
 ### <a name="moving-the-workspace"></a>移动工作区
 
 > [!WARNING]
-> 不支持将 Azure 机器学习工作区移到另一个订阅，也不支持将拥有的订阅移到新租户。 这样做可能会导致错误。
+> 不支持将 Azure 机器学习工作区移动到另一个订阅，或将拥有的订阅移到新租户。 这样做可能会导致错误。
 
 ### <a name="deleting-the-azure-container-registry"></a>删除 Azure 容器注册表
 

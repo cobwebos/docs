@@ -3,12 +3,12 @@ title: 备份和还原已加密的 Azure VM
 description: 介绍如何使用 Azure 备份服务备份和还原已加密的 Azure VM。
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 1689ff89f15248f6771ccdce525cc136221e5577
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 20310c6c51a2467e9389bc77dd9ada4848c69be4
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538898"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371747"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>备份和还原已加密的 Azure VM
 
@@ -47,16 +47,16 @@ Azure 备份可以在使用或者不使用 Azure AD 应用的情况下，通过 
 
 1. 确保你有一个或多个启用了 ADE 的 [Windows](../virtual-machines/linux/disk-encryption-overview.md) 或 [Linux](../virtual-machines/linux/disk-encryption-overview.md) VM。
 2. 查看 Azure VM 备份的[支持矩阵](backup-support-matrix-iaas.md)
-3. [创建](backup-azure-arm-vms-prepare.md#create-a-vault)一个恢复服务备份保管库（如果没有）。
+3. [创建](backup-create-rs-vault.md)一个恢复服务备份保管库（如果没有）。
 4. 如果为已启用备份的 VM 启用加密，则只需为备份服务提供 Key Vault 访问权限，这样，备份就可以继续进行，而不会发生中断。 [详细了解](#provide-permissions)如何分配这些权限。
 
 此外，在某些情况下，还需要完成几项操作：
 
-- **在 VM 上安装 VM 代理**：Azure 备份通过为在计算机上运行的 Azure VM 代理安装一个扩展来备份 Azure VM。 如果 VM 是从 Azure 市场映像创建的，则代理已安装并正在运行。 如果创建了自定义 VM 或者迁移了本地计算机，则可能需要[手动安装代理](backup-azure-arm-vms-prepare.md#install-the-vm-agent)。
+- **在 VM 上安装 VM 代理**：Azure 备份通过为在计算机上运行的 Azure VM 代理安装一个扩展来备份 Azure VM。 如果 VM 是根据 Azure 市场映像创建的，则代理将安装并运行。 如果创建了自定义 VM 或者迁移了本地计算机，则可能需要[手动安装代理](backup-azure-arm-vms-prepare.md#install-the-vm-agent)。
 
 ## <a name="configure-a-backup-policy"></a>配置备份策略
 
-1. 如果尚未创建恢复服务备份保管库，请遵照[这些说明](backup-azure-arm-vms-prepare.md#create-a-vault)操作
+1. 如果尚未创建恢复服务备份保管库，请遵照[这些说明](backup-create-rs-vault.md)操作
 2. 在门户中打开保管库，在“开始”部分选择“备份”。**** ****
 
     ![“备份”边栏选项卡](./media/backup-azure-vms-encryption/select-backup.png)
@@ -66,7 +66,7 @@ Azure 备份可以在使用或者不使用 Azure AD 应用的情况下，通过 
 
       ![“方案”边栏选项卡](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
 
-5. 在“备份策略” > “选择备份策略”中，选择要与保管库关联的策略。**** **** 然后单击“确定”。
+5. 在“备份策略” > “选择备份策略”中，选择要与保管库关联的策略。**** **** 。
     - 备份策略指定备份创建时间以及这些备份的存储时长。
     - 默认策略的详细信息会在下拉菜单下列出。
 
@@ -98,7 +98,7 @@ Azure 备份可以在使用或者不使用 Azure AD 应用的情况下，通过 
 2. 在“备份项”**** 中，单击“Azure 虚拟机”****。
 3. 在“备份项”**** 列表中，单击省略号 (...)。
 4. 单击“立即备份”****。
-5. 在“立即备份”中，使用日历控件选择恢复点的最后保留日期****。 然后单击“确定”。
+5. 在“立即备份”中，使用日历控件选择恢复点的最后保留日期****。 。
 6. 监视门户通知。 可以在保管库仪表板 >“备份作业” > “进行中”监视作业进度。  创建初始备份可能需要一些时间，具体取决于 VM 的大小。
 
 ## <a name="provide-permissions"></a>提供权限

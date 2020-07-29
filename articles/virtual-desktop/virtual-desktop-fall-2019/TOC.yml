@@ -1,10 +1,10 @@
-- name: Windows 虚拟桌面 2019 秋季版
+- name: Windows 虚拟桌面（经典）
   href: ../index.yml
 - name: 概述
   items:
     - name: 什么是 Windows 虚拟桌面？
       href: ../overview.md
-    - name: 2020 春季版文档
+    - name: Windows 虚拟桌面文档
       href: ../create-host-pools-azure-marketplace.md
 - name: 教程
   items:

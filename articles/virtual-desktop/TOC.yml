@@ -1,4 +1,4 @@
-- name: Windows 虚拟桌面 2020 春季版
+- name: Windows 虚拟桌面
   href: index.yml
 - name: 概述
   items:
@@ -6,7 +6,7 @@
       href: overview.md
     - name: 新增功能
       href: whats-new.md
-    - name: 2019 秋季版文档
+    - name: Windows 虚拟桌面（经典）文档
       href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: 教程
   items:

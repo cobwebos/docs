@@ -5,18 +5,18 @@ description: 了解使用 Azure 机器学习 SDK 时如何获取解释，以了�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 04d9e82c56979a459734b8732c127922361a1100
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 7f2ca2a84123d3bb7dd92a797d517a2490544efa
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072383"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307006"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>使用 interpretability 包在 Python 中 & 预测来解释 ML 模型（预览版）
 

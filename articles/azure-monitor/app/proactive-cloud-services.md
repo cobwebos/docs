@@ -4,11 +4,12 @@ description: 使用 Azure Application Insights 监视 Azure 云服务中的问�
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.reviewer: harelbr
-ms.openlocfilehash: 997c5e063c4181a597520e60e2a7669401b9677d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cdfc6dc3ac74997743512ee07f9293699e3ad10
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669737"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309284"
 ---
 # <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>使用 Azure 诊断与 Azure Application Insights 的集成针对 Azure 云服务中的问题发出警报
 
@@ -110,7 +111,7 @@ EventLogs
 
 了解有关自动检测的详细信息：
 
-[故障异常](../../azure-monitor/app/proactive-failure-diagnostics.md)
-[内存泄露](../../azure-monitor/app/proactive-potential-memory-leak.md)
-[性能异常](../../azure-monitor/app/proactive-performance-diagnostics.md)
+[故障异常](./proactive-failure-diagnostics.md)
+[内存泄露](./proactive-potential-memory-leak.md)
+[性能异常](./proactive-performance-diagnostics.md)
 

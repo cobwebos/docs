@@ -6,18 +6,15 @@ ms.author: lcozzens
 ms.date: 02/18/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 32c4fe3e542135201a7bf4a23aeff94a0e2f902e
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: bcafdbdfd07456a01d956b622d9c5e6ed4b0b6f2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023561"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371849"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>使用客户托管的密钥对应用配置数据进行加密
 Azure 应用配置对[静态敏感信息进行加密](../security/fundamentals/encryption-atrest.md)。 通过使用客户管理的密钥，可以管理加密密钥，从而提供增强的数据保护。  使用托管密钥加密时，将使用用户提供 Azure Key Vault 密钥对应用配置中的所有敏感信息进行加密。  这样就可以根据需要轮换加密密钥。  它还可以通过撤消应用配置实例对密钥的访问权限来撤消 Azure 应用配置对敏感信息的访问。
-
-> [!NOTE]
-> 客户托管的密钥现在已在*除*印度中部的所有地区正式发布。 在**印度中部**区域，Azure 应用配置提供客户管理的密钥作为公共预览。 使用公共预览版产品/服务，客户可以在产品/服务正式发布之前体验新功能。  公共预览功能和服务并非供生产使用。
 
 ## <a name="overview"></a>概述 
 Azure 应用配置使用 Microsoft 提供的256位 AES 加密密钥来加密静态的敏感信息。 每个应用配置实例都有其自己的加密密钥，该密钥由服务管理并用于加密敏感信息。 敏感信息包括在键值对中找到的值。  启用客户托管的密钥功能后，应用配置将使用分配给应用配置实例的托管标识对 Azure Active Directory 进行身份验证。 然后，托管标识调用 Azure Key Vault 并包装应用配置实例的加密密钥。 然后存储已包装的加密密钥，并在应用配置中将已包装的加密密钥缓存一小时。 应用配置每小时刷新已包装版本的应用配置实例的加密密钥。 这可确保在正常操作情况下的可用性。 
@@ -81,7 +78,7 @@ Azure 应用配置使用 Microsoft 提供的256位 AES 加密密钥来加密静�
     az appconfig identity assign --name contoso-app-config --resource-group contoso-resource-group --identities [system]
     ```
     
-    此命令的输出包含系统分配的标识的主体 ID （"principalId"）和租户 ID （"tenandId"）。  这将用于向标识授予对托管密钥的访问权限。
+    此命令的输出包含系统分配的标识的主体 ID （"principalId"）和租户 ID （"tenandId"）。  这些 Id 将用于向标识授予对托管密钥的访问权限。
 
     ```json
     {

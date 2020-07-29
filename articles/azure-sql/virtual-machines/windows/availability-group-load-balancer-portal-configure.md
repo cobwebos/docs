@@ -3,7 +3,7 @@ title: 配置可用性组侦听程序和负载均衡器（Azure 门户）
 description: 有关为 Azure 虚拟机中的 SQL Server Always On 可用性组创建侦听器的分步说明
 services: virtual-machines
 documentationcenter: na
-author: MikeRayMSFT
+author: MashaMSFT
 editor: monicar
 ms.assetid: d1f291e9-9af2-41ba-9d29-9541e3adcfcf
 ms.service: virtual-machines-sql
@@ -11,13 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
-ms.author: mikeray
+ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a2eb6278a9e796c33178f895eede6fd8f2144e9a
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: a83755a08a3579484796cd56623cb3401d03d874
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921685"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284279"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>为 Azure 虚拟机中的 SQL Server Always On 可用性组配置负载均衡器
 
@@ -147,9 +148,9 @@ Azure 创建探测，并使用它来测试哪个 SQL Server 实例具有可用�
    | 端口 |*1433* |
    | 后端端口 |*1433*.将忽略此值，因为此规则使用“浮动 IP (直接服务器返回)”。 |
    | 探测 |使用为此负载均衡器创建的探测的名称。 |
-   | **会话暂留** |无 |
+   | **会话持续性** |无 |
    | **空闲超时(分钟)** |*4* |
-   | 浮动 IP (直接服务器返回) |**已启用** |
+   | **浮动 IP (直接服务器返回)** |**已启用** |
 
    > [!NOTE]
    > 可能需要在边栏选项卡中向下滚动才能查看所有设置。
@@ -235,7 +236,7 @@ SQLCMD 连接会自动连接到托管主副本的 SQL Server 实例。
    |设置 |值
    |:-----|:----
    |**名称** |用于标识探测的名称。
-   |协议 |TCP
+   |**协议** |TCP
    |端口 |一个未使用的 TCP 端口，必须在所有虚拟机上可用。 此端口不能用于任何其他用途。 两个侦听器不能使用相同的探测端口。 
    |间隔 |探测尝试之间的时间长短。 使用默认值 (5)。
    |不正常阈值 |在将虚拟机视为运行状况不正常之前连续阈值应失败的次数。
@@ -312,7 +313,7 @@ SQLCMD 连接会自动连接到托管主副本的 SQL Server 实例。
 
 如果你有一个 Azure 网络安全组来限制访问，请确保允许的规则包括：
 - 后端 SQL Server VM IP 地址
-- AG 侦听器的负载均衡器浮动 IP 地址
+- 负载均衡器浮动 AG 侦听程序的 IP 地址
 - 群集核心 IP 地址（如果适用）。
 
 ## <a name="next-steps"></a>后续步骤

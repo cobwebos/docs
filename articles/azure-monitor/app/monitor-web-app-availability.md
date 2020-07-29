@@ -4,16 +4,16 @@ description: 在 Application Insights 中设置 Web 测试。 当网站不可用
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 6daa2e4abb1b6580fd70f104e85f3a917f47dcdc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f9c5fa691456195943f97419c1175fd5b586878
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024582"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87310270"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>监视任意网站的可用性
 
-部署 Web 应用/网站后，可以设置重复执行的测试来监视可用性和响应能力。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 将来自全球各地的 Web 请求定期发送到应用程序。 如果应用程序无响应或响应太慢，它可以提醒你。
+部署 Web 应用/网站后，可以设置重复执行的测试来监视可用性和响应能力。 [Azure Application Insights](./app-insights-overview.md) 将来自全球各地的 Web 请求定期发送到应用程序。 如果应用程序无响应或响应太慢，它可以提醒你。
 
 对于可以从公共 Internet 访问的任何 HTTP 或 HTTPS 终结点，均可设置可用性测试。 无需更改要测试的网站。 事实上，该网站甚至不需要是你拥有的网站。 可以测试服务所依赖的 REST API 的可用性。
 
@@ -107,9 +107,9 @@ ms.locfileid: "87024582"
 * 在 Git 或 Azure Boards 中记录问题或工作项以跟踪问题。 Bug 中将包含转至此事件的链接。
 * 在 Visual Studio 中打开 Web 测试结果。
 
-从[此处](../../azure-monitor/app/transaction-diagnostics.md)详细了解端到端事务诊断体验。
+从[此处](./transaction-diagnostics.md)详细了解端到端事务诊断体验。
 
-单击异常行可查看导致综合可用性测试失败的服务器端异常的详细信息。 还可以获取[调试快照](../../azure-monitor/app/snapshot-debugger.md)，进行更丰富的代码级诊断。
+单击异常行可查看导致综合可用性测试失败的服务器端异常的详细信息。 还可以获取[调试快照](./snapshot-debugger.md)，进行更丰富的代码级诊断。
 
 ![服务器端诊断](./media/monitor-web-app-availability/open-instance-4.png)
 
@@ -120,8 +120,8 @@ ms.locfileid: "87024582"
 
 ## <a name="automation"></a>自动化
 
-* [使用 PowerShell 脚本自动设置可用性测试](../../azure-monitor/app/powershell.md#add-an-availability-test)。
-* 设置在引发警报时调用的 [webhook](../../azure-monitor/platform/alerts-webhooks.md) 。
+* [使用 PowerShell 脚本自动设置可用性测试](./powershell.md#add-an-availability-test)。
+* 设置在引发警报时调用的 [webhook](../platform/alerts-webhooks.md) 。
 
 ## <a name="troubleshooting"></a>故障排除
 
@@ -131,3 +131,4 @@ ms.locfileid: "87024582"
 
 * [可用性警报](availability-alerts.md)
 * [多步骤 Web 测试](availability-multistep.md)
+

@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: eba250f3ca6a7af8480d24a99e6c3e8278009b82
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8119477a69771c67db1f1e59c082d5d0d611214b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499437"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305850"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>使用 Application Insights 分析实时 Azure 云服务
 
@@ -25,7 +25,7 @@ Application Insights Profiler 随 Azure 诊断扩展一同安装。 只需将 Az
 ## <a name="enable-profiler-for-azure-cloud-services"></a>对 Azure 云服务启用 Profiler
 1. 请进行检查，确保使用的是 [.NET Framework 4.6.1](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 或更新版本。 如果使用的是 OS 系列 4，则需要使用[启动任务](../../cloud-services/cloud-services-dotnet-install-dotnet.md)安装 .NET Framework 4.6.1 或更新版本。 默认情况下，OS 系列 5 包含 .NET Framework 的兼容版本。 
 
-1. [将 Application Insights SDK 添加到 Azure 云服务](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json)。
+1. [将 Application Insights SDK 添加到 Azure 云服务](./cloudservices.md?toc=%2fazure%2fazure-monitor%2ftoc.json)。
 
     **云服务 WAD 中附带的探查器中的 bug 已修复。** 用于云服务的最新版本的 WAD (1.12.2.0) 适用于所有最新版本的 App Insights SDK。 云服务主机将自动升级 WAD，但不会立即升级。 若要强制升级，可以重新部署服务或重新启动节点。
 
@@ -41,7 +41,7 @@ Application Insights Profiler 随 Azure 诊断扩展一同安装。 只需将 Az
 
       ![诊断配置文件的位置](./media/profiler-cloudservice/cloudservice-solutionexplorer.png)  
 
-      如果找不到该文件，请参阅[针对 Azure 云服务和虚拟机设置诊断](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)。
+      如果找不到该文件，请参阅[针对 Azure 云服务和虚拟机设置诊断](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?view=vs-2019)。
 
     b. 添加以下 `SinksConfig` 部分作为 `WadCfg` 的子元素：  
 
@@ -73,3 +73,4 @@ Application Insights Profiler 随 Azure 诊断扩展一同安装。 只需将 Az
 * 生成到应用程序的流量（例如，启动[可用性测试](monitor-web-app-availability.md)）。 然后等待 10 到 15 分钟，这样跟踪就会开始发送到 Application Insights 实例。
 * 请参阅 Azure 门户中的 [Profiler 跟踪](profiler-overview.md?toc=/azure/azure-monitor/toc.json)。
 * 若要排查 Profiler 问题，请参阅 [Profiler 故障排除](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json)。
+

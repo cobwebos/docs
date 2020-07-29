@@ -10,19 +10,19 @@
       items:
         - name: 简介
           href: get-started.md
-        - name: 第 1 步：创建 Synapse 工作区
+        - name: 1 创建 Synapse 工作区
           href: get-started-create-workspace.md
-        - name: 第 2 步：使用 SQL 池进行分析
+        - name: 2 使用 SQL 池进行分析
           href: get-started-analyze-sql-pool.md
-        - name: 第 3 步：使用 Spark 进行分析
+        - name: 3 使用 Spark 进行分析
           href: get-started-analyze-spark.md
-        - name: 第 4 步：使用按需 SQL 进行分析
+        - name: 4 使用按需 SQL 进行分析
           href: get-started-analyze-sql-on-demand.md
-        - name: 第 5 步：分析存储帐户中的数据
+        - name: 5 分析存储帐户中的数据
           href: get-started-analyze-storage.md
-        - name: 第 6 步：通过管道进行编排
+        - name: 6 通过管道进行编排
           href: get-started-pipelines.md
-        - name: 第 7 步：使用 Power BI 进行可视化
+        - name: 7 使用 Power BI 进行可视化
           href: get-started-visualize-power-bi.md
     - name: 备忘单
       href: overview-cheat-sheet.md
@@ -264,6 +264,8 @@
                   href: /sql/t-sql/statements/alter-materialized-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 结果集缓存
               href: /sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: 机器学习预测
+              href: ./sql-data-warehouse/sql-data-warehouse-predict.md
             - name: 表
               items:
                 - name: 概述
@@ -554,7 +556,7 @@
               href: ../data-factory/connector-azure-database-for-postgresql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure 文件存储
               href: ../data-factory/connector-azure-file-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Azure SQL Database
+            - name: Azure SQL 数据库
               href: ../data-factory/connector-azure-sql-database.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure SQL 托管实例
               href: ../data-factory/connector-azure-sql-database-managed-instance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

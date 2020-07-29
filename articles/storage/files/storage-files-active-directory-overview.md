@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: cb57606259fe674519015fd2de741d6c1d08c5e9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 48441a48fe6f72e88e080967451d9904c3e586b2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127190"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372309"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>适用于 SMB 访问的 Azure 文件基于标识的身份验证选项概述
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -123,7 +123,7 @@ Azure 文件共享利用 Kerberos 协议在本地 AD DS 或 Azure AD DS 进行�
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>为 Azure 文件配置共享级别权限
 
-启用 Azure AD DS 或本地 AD DS 身份验证后，你可以使用内置 RBAC 角色或为 Azure AD 标识配置自定义角色，并将访问权限分配给存储帐户中的任何文件共享。 已分配的权限允许授予的标识仅获取对该共享的访问权限，而不是其他任何内容，甚至是根目录。 你仍需要分别为 Azure 文件共享配置目录或文件级权限。
+一旦启用 Azure AD DS 或本地 AD DS 身份验证，就可以使用 Azure 内置角色或为 Azure AD 标识配置自定义角色，并将访问权限分配给存储帐户中的任何文件共享。 已分配的权限允许授予的标识仅获取对该共享的访问权限，而不是其他任何内容，甚至是根目录。 你仍需要分别为 Azure 文件共享配置目录或文件级权限。
 
 ### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>配置 Azure 文件的目录或文件级权限
 
@@ -146,7 +146,7 @@ Azure 文件共享在目录和文件级别（包括根目录）强制实施标�
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 文件的详细信息以及基于 SMB 的基于身份的身份验证，请参阅以下资源：
 
-- [规划 Azure 文件存储部署](storage-files-planning.md)
+- [规划 Azure 文件部署](storage-files-planning.md)
 - [启用 Azure 文件共享的通过 SMB 进行本地 Active Directory 域服务身份验证](storage-files-identity-auth-active-directory-enable.md)
 - [启用 Azure 文件上 Azure Active Directory 域服务身份验证](storage-files-identity-auth-active-directory-domain-service-enable.md)
 - [常见问题](storage-files-faq.md)

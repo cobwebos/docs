@@ -5,17 +5,18 @@ description: 创建 Azure 机器学习数据集监视器（预览版）、监视
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: sgilley
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 06/25/2020
-ms.openlocfilehash: 7ee9d37b19d4796f826fbd9831f6e84a92a12e7c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 270e93302a90c458ccbdfdc4d2ced8f0d3c263af
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031178"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319671"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>检测数据集中的数据偏移（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

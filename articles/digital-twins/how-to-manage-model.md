@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: fec93169a8c49422c9e310cddc08ae3412b89166
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b8a53ae598130086a9009dbec891052e863cdf0f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132273"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281355"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 数字孪生模型
 
@@ -65,8 +65,11 @@ Azure 数字孪生的模型以 DTDL 编写，并保存为*json*文件。 还有�
 
 按照此方法，你可以继续为医院的 wards、区域或医院本身定义模型。
 
-> [!TIP]
-> 有一个可用于分析和验证 DTDL 的客户端库。 它生成 DTDL 内容的 c # 对象模型，该模型可用于模型驱动开发方案，如生成 UI 元素。 你还可以使用此库来确保模型在上传之前没有语法错误。 有关此库的详细信息以及对 DTDL 验证程序构建的示例的访问权限，请参阅[*操作方法：分析和验证模型*](how-to-use-parser.md)。
+### <a name="validate-syntax"></a>验证语法
+
+有一个可用于分析和验证 DTDL 的客户端库。 它生成 DTDL 内容的 c # 对象模型，该模型可用于模型驱动开发方案，如生成 UI 元素。 你还可以使用此库来确保模型在上传之前没有语法错误。 
+
+有关此库的详细信息以及对 DTDL 验证程序构建的示例的访问权限，请参阅[*操作方法：分析和验证模型*](how-to-use-parser.md)。
 
 ## <a name="manage-models-with-apis"></a>利用 Api 管理模型。
 
@@ -82,7 +85,10 @@ Azure 数字孪生的模型以 DTDL 编写，并保存为*json*文件。 还有�
 
 创建模型后，可以将其上传到 Azure 数字孪生实例。
 
-下面是演示如何执行此操作的代码片段：
+> [!TIP]
+> 建议在将模型上传到 Azure 数字孪生实例之前，先对其进行验证。 你可以使用 "[*操作方法：分析和验证模型*](how-to-use-parser.md)" 中所述的[DTDL 客户端分析器库](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)和[DTDL 验证器示例](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)来检查模型，然后将它们上载到服务中。
+
+准备好上载模型时，可以使用以下代码片段：
 
 ```csharp
 // 'client' is an instance of DigitalTwinsClient
@@ -126,10 +132,7 @@ client.CreateModels(dtdlStrings);
 ]
 ```
  
-上载时，将验证模型文件。
-
-> [!TIP] 
-> 请注意，您还可以使用[DTDL 客户端分析器库](how-to-use-parser.md)来验证客户端上的模型。
+上传时，模型文件由服务进行验证。
 
 ### <a name="retrieve-models"></a>检索模型
 

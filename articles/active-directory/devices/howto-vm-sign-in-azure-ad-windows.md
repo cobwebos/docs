@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8c9fbf2d86c2e066566bab11b1701909be64a37
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 588e63e630caa4746b493d4530e301f72e5ccb5f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025840"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282936"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Windows 虚拟机
 
@@ -208,7 +208,7 @@ az role assignment create \
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>使用 Windows VM Azure AD 凭据登录
 
 > [!IMPORTANT]
-> 仅允许从 Azure AD 加入或混合 Azure AD 加入到 VM 的**同一**目录中的 Windows 10 电脑连接到连接到 Azure AD 的 vm 的远程连接。 此外，对于使用 Azure AD 凭据的 RDP，用户必须属于两个 RBAC 角色之一： "虚拟机管理员登录名" 或 "虚拟机用户登录名"。 目前，Azure 堡垒不能用于使用 AADLoginForWindows 扩展进行 Azure Active Directory 身份验证登录。 仅支持直接 RDP。
+> 仅允许从已注册 Azure AD 的 Windows 10 Pc （20H1 的最低版本为）或 Azure AD 加入或混合 Azure AD 联接到与 VM**相同**的目录的 Windows 10 电脑进行远程连接到 Azure AD。 此外，对于使用 Azure AD 凭据的 RDP，用户必须属于两个 RBAC 角色之一： "虚拟机管理员登录名" 或 "虚拟机用户登录名"。 如果使用 Azure AD 注册的 Windows 10 PC，则必须以 AzureAD\UPN 格式输入凭据（例如 AzureAD\john@contoso.com ）。 目前，不能使用 AADLoginForWindows 扩展的 Azure Active Directory 身份验证来登录 Azure 堡垒;仅支持直接 RDP。
 
 使用 Azure AD 登录到 Windows Server 2019 虚拟机： 
 
@@ -342,7 +342,7 @@ az role assignment create \
 验证你用来启动远程桌面连接的 Windows 10 电脑是 Azure AD 联接的，或者是连接到你的 VM 加入同一 Azure AD 目录的混合 Azure AD。 有关设备标识的详细信息，请参阅[什么是设备标识一](/azure/active-directory/devices/overview)文。
 
 > [!NOTE]
-> Windows 10 20H1 将添加对 Azure AD 已注册电脑的支持，以启动到 VM 的远程桌面连接。 加入 Windows 预览体验计划以试用并探索 Windows 10 的新功能。
+> Windows 10 内部版本20H1 添加了对 Azure AD 已注册电脑的支持，以启动到 VM 的 RDP 连接。 当使用注册的 Azure AD （未 Azure AD 加入或混合 Azure AD 加入） PC 作为 RDP 客户端启动到 VM 的连接时，必须以 AzureAD\UPn 格式输入凭据（例如 AzureAD\john@contoso.com ）。
 
 此外，请在 Azure AD 联接完成后验证是否未卸载 AADLoginForWindows 扩展。
  

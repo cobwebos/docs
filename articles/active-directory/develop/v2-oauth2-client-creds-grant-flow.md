@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 7/27/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e25af1f629ea6fa7db14ce89dfffaa340486a989
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd641b57cfdd7f9481e17a90dbbd81d5e43f8ad2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82689785"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311103"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft 标识平台和 OAuth 2.0 客户端凭据流
 
@@ -27,7 +27,7 @@ ms.locfileid: "82689785"
 
 OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调用其他 Web 服务时使用它自己的凭据（而不是模拟用户）进行身份验证。 在这种情况下，客户端通常是中间层 Web 服务、后台程序服务或网站。 为了进行更高级别的保证，Microsoft 标识平台还允许调用服务将证书（而不是共享机密）用作凭据。
 
-在较典型的 *三重 OAuth*中，客户端应用程序有权代表特定用户访问资源。 该权限通常在[许可](v2-permissions-and-consent.md)过程中由用户委托给应用程序。 但是，在客户端凭据（双重 OAuth）流中，权限直接授予应用程序本身。 应用向资源出示令牌时，该资源强制要求应用本身而不是用户拥有执行操作的授权。
+在客户端凭据流中，管理员将权限直接授予应用程序本身。 当应用向资源出示令牌时，该资源会强制应用本身拥有执行操作的授权，因为身份验证中没有用户参与。  本文介绍了[授权应用程序调用 api](#application-permissions)所需的步骤，以及[如何获取调用该 api 所需的令牌](#get-a-token)。
 
 ## <a name="protocol-diagram"></a>协议图
 
@@ -52,6 +52,9 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 
 对于需要访问使用者用户（拥有个人 Microsoft 帐户）所拥有数据的守护程序和服务帐户而言，这种授权类型很常见。 对于组织拥有的数据，建议通过应用程序权限获取必要的授权。
 
+> [!NOTE]
+> 若要启用此基于 ACL 的授权模式，Azure AD 不要求应用程序获得另一个应用程序的令牌，因此，无需声明即可颁发仅限应用的令牌 `rules` 。 公开 Api 的应用程序必须实现权限检查才能接受令牌。
+
 ### <a name="application-permissions"></a>应用程序权限
 
 可使用 API 公开一组应用程序权限，而不是使用 ACL。 应用程序权限由组织管理员向应用程序授予，并且只可用于访问该组织与其员工所拥有的数据。 例如，Microsoft Graph 公开多个应用程序权限来执行以下操作：
@@ -61,14 +64,12 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 * 以任何用户的身份发送邮件
 * 读取目录数据
 
-有关应用程序权限的详细信息，请转到 [Microsoft Graph](https://developer.microsoft.com/graph)。
+有关应用程序权限的详细信息，请查看[许可和权限文档](v2-permissions-and-consent.md#permission-types)。
 
 若要在应用中使用应用程序权限，请执行后续部分所述的步骤。
 
-
 > [!NOTE]
 > 以应用程序形式（不同于与以用户身份）进行身份验证时，不能使用“委托的权限”（用户授予的范围）。  必须使用“应用程序权限”（也称为“角色”），这些权限是由管理员为应用程序授予的（或通过 Web API 预授权来授予的）。
-
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>在应用注册门户中请求权限
 
@@ -105,11 +106,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
 ```
 
-| 参数 | 条件 | 描述 |
+| 参数 | 条件 | 说明 |
 | --- | --- | --- |
-| `tenant` | 必需 | 要向其请求权限的目录租户。 此参数可采用 GUID 或友好名称格式。 如果不知道用户属于哪个租户并想让他们登录到任一租户，请使用 `common`。 |
-| `client_id` | 必需 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验分配给应用的应用（客户端）ID。 |
-| `redirect_uri` | 必选 | 要向其发送响应，供应用处理的重定向 URI。 它必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码并可包含其他路径段。 |
+| `tenant` | 必须 | 要向其请求权限的目录租户。 此参数可采用 GUID 或友好名称格式。 如果不知道用户属于哪个租户并想让他们登录到任一租户，请使用 `common`。 |
+| `client_id` | 必须 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验分配给应用的应用（客户端）ID。 |
+| `redirect_uri` | 必须 | 要向其发送响应，供应用处理的重定向 URI。 它必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码并可包含其他路径段。 |
 | `state` | 建议 | 同时随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 该 state 用于在身份验证请求出现之前，于应用中编码用户的状态信息，例如之前所在的页面或视图。 |
 
 此时，Azure AD 强制要求只有租户管理员可以登录来完成请求。 系统会要求管理员批准在应用注册门户中针对应用请求的所有直接应用程序权限。
@@ -168,13 +169,13 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token'
 ```
 
-| 参数 | 条件 | 描述 |
+| 参数 | 条件 | 说明 |
 | --- | --- | --- |
-| `tenant` | 必需 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
-| `client_id` | 必需 | 分配给应用的应用程序 ID。 可以在注册应用的门户中找到此信息。 |
-| `scope` | 必需 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 在 Microsoft Graph 示例中，该值为 `https://graph.microsoft.com/.default`。 <br/>此值告知 Microsoft 标识平台终结点：在为应用配置的所有直接应用程序权限中，终结点应该为与要使用的资源关联的权限颁发令牌。 若要了解有关 `/.default` 范围的详细信息，请参阅[许可文档](v2-permissions-and-consent.md#the-default-scope)。 |
-| `client_secret` | 必需 | 在应用注册门户中为应用生成的客户端机密。 在发送客户端密码之前必须对其进行 URL 编码。 |
-| `grant_type` | 必选 | 必须设置为 `client_credentials`。 |
+| `tenant` | 必须 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
+| `client_id` | 必须 | 分配给应用的应用程序 ID。 可以在注册应用的门户中找到此信息。 |
+| `scope` | 必须 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 在 Microsoft Graph 示例中，该值为 `https://graph.microsoft.com/.default`。 <br/>此值告知 Microsoft 标识平台终结点：在为应用配置的所有直接应用程序权限中，终结点应该为与要使用的资源关联的权限颁发令牌。 若要了解有关 `/.default` 范围的详细信息，请参阅[许可文档](v2-permissions-and-consent.md#the-default-scope)。 |
+| `client_secret` | 必须 | 在应用注册门户中为应用生成的客户端机密。 在发送客户端密码之前必须对其进行 URL 编码。 |
+| `grant_type` | 必须 | 必须设置为 `client_credentials`。 |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>第二种情况：使用证书访问令牌请求
 
@@ -190,9 +191,9 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-| 参数 | 条件 | 描述 |
+| 参数 | 条件 | 说明 |
 | --- | --- | --- |
-| `tenant` | 必需 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
+| `tenant` | 必须 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
 | `client_id` | 必须 |分配给应用的应用程序（客户端）ID。 |
 | `scope` | 必须 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 在 Microsoft Graph 示例中，该值为 `https://graph.microsoft.com/.default`。 <br/>此值告知 Microsoft 标识平台终结点：在为应用配置的所有直接应用程序权限中，终结点应该为与要使用的资源关联的权限颁发令牌。 若要了解有关 `/.default` 范围的详细信息，请参阅[许可文档](v2-permissions-and-consent.md#the-default-scope)。 |
 | `client_assertion_type` | 必须 | 该值必须设置为 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |

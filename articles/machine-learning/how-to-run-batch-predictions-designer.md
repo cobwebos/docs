@@ -5,16 +5,17 @@ description: 了解如何使用设计器训练模型并设置批量预测管道�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: peterlu
 author: peterclu
 ms.date: 02/24/2020
-ms.custom: Ignite2019, designer
-ms.openlocfilehash: a464ab001eec877ffc6dc0ab5e33e82493c226ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, designer
+ms.openlocfilehash: 61465210c9ad476c6d8d2987330498aa0efa39d4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84429942"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319603"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>使用 Azure 机器学习设计器运行批量预测（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -33,6 +34,8 @@ ms.locfileid: "84429942"
 ## <a name="prerequisites"></a>先决条件
 
 本操作指南假设你已有一个训练管道。 有关设计器的引导式简介，请完成[设计器教程的第一部分](tutorial-designer-automobile-price-train-score.md)。 
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="create-a-batch-inference-pipeline"></a>创建批量推理管道
 

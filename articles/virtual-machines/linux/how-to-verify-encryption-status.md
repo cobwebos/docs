@@ -3,15 +3,16 @@ title: 验证 Linux 的加密状态 -Azure 磁盘加密
 description: 本文提供了从平台和 OS 级别验证加密状态的说明。
 author: kailashmsft
 ms.service: security
-ms.topic: article
+ms.topic: how-to
 ms.author: kaib
 ms.date: 03/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: e2916a71f167c415f6bf1dde8ff82a38b0e0557c
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 58bb3f38938414f25551d0df47a50b6a8f386acc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873986"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283327"
 ---
 # <a name="verify-encryption-status-for-linux"></a>验证 Linux 的加密状态 
 
@@ -279,7 +280,7 @@ az storage account list --query [].[id] -o tsv
 ```
 存储帐户 ID 采用以下格式列出：
 
-/subscriptions/\<订阅 ID>/resourceGroups/\<资源组名称>/providers/Microsoft.Storage/storageAccounts/\<存储帐户名称>
+/subscriptions/\<subscription id>/resourceGroups/\<resource group name>/providers/Microsoft.Storage/storageAccounts/\<storage account name>
 
 选择相应的 ID，并将其存储在变量上：
 ```bash

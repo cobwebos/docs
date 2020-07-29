@@ -9,12 +9,12 @@ ms.date: 07/21/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: b76e25b2961bf3fb268da6622cbfcce3a50a3396
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab8d262e4eac08ce21b7ad01402c3608d52a1aab
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096623"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372886"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob 存储中的网络文件系统（NFS）3.0 协议支持（预览版）
 
@@ -46,7 +46,7 @@ Blob 存储现在支持网络文件系统（NFS）3.0 协议。 这种支持使 
 > [!IMPORTANT]
 > 务必按顺序完成这些任务。 你无法在你的帐户上启用 NFS 3.0 协议之前装入你创建的容器。 此外，在你的帐户上启用了 NFS 3.0 协议后，你将无法禁用它。
 
-## <a name="network-security"></a>网络安全性
+## <a name="network-security"></a>网络安全
 
 存储帐户必须包含在 VNet 中。 VNet 使客户端可以安全地连接到你的存储帐户。 保护帐户中数据的唯一方法是使用 VNet 和其他网络安全设置。 用于保护数据的任何其他工具（包括帐户密钥授权、Azure Active Directory （AD）安全和访问控制列表（Acl））尚不支持在其上启用了 NFS 3.0 协议支持的帐户。 
 
@@ -87,10 +87,8 @@ Blob 存储现在支持网络文件系统（NFS）3.0 协议。 这种支持使 
 
 - 在存储帐户中禁用 NFS 3.0 支持的功能（在启用后）
 
-- 可以通过使用 NFS 3.0 和其他 REST Api 或 Sdk 来写入 blob。 
-
-  如果要使用 REST Api 或 Sdk 来写入 blob，请确保使用 NFS 3.0 来执行读取操作，否则 blob 可能会损坏。
-
+- 能够使用 REST Api 或 Sdk 写入 blob。 
+  
 ## <a name="nfs-30-features-not-yet-supported"></a>尚不支持 NFS 3.0 功能
 
 Azure Data Lake Storage Gen2 尚不支持以下 NFS 3.0 功能。

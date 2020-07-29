@@ -4,16 +4,16 @@ description: 对 AzCopy 进行配置、优化和故障排除
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/10/2020
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: acfe868f26d7509d1dd06554482b4fb3b29a5b22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e79f186688f3b6531ac24df4e3ae4201cf1903c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504349"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282426"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>对 AzCopy 进行配置、优化和故障排除
 
@@ -40,14 +40,14 @@ AzCopy 目前不支持要求通过 NTLM 或 Kerberos 进行身份验证的代理
 
 ### <a name="bypassing-a-proxy"></a>绕过代理 ###
 
-如果在 Windows 上运行 AzCopy，并且想要告诉它根本_不_使用代理（而不是自动检测设置），请使用这些命令。 使用这些设置时，AzCopy 将不会查找或尝试使用任何代理。
+如果是在 Windows 上运行 AzCopy，并且想让它完全不使用代理（而不是自动检测设置），请使用以下命令。 使用这些设置时，AzCopy 不会寻求使用或尝试使用任何代理。
 
 | 操作系统 | 环境 | 命令  |
 |--------|-----------|----------|
-| **Windows** | 命令提示符（CMD） | `set HTTPS_PROXY=dummy.invalid` <br>`set NO_PROXY=*`|
+| **Windows** | 命令提示符 (CMD) | `set HTTPS_PROXY=dummy.invalid` <br>`set NO_PROXY=*`|
 | **Windows** | PowerShell | `$env:HTTPS_PROXY="dummy.invalid"` <br>`$env:NO_PROXY="*"`<br>|
 
-在其他操作系统上，如果要不使用代理，只需将 HTTPS_PROXY 变量保留为未设置。
+在其他操作系统上，如果想要不使用代理，只需不设置 HTTPS_PROXY 变量即可。
 
 ## <a name="optimize-performance"></a>优化性能
 
@@ -63,7 +63,7 @@ AzCopy 目前不支持要求通过 NTLM 或 Kerberos 进行身份验证的代理
 
 ### <a name="run-benchmark-tests"></a>运行基准测试
 
-可以对特定的 blob 容器或文件共享运行性能基准测试，以查看一般性能统计信息和标识性能瓶颈。 
+可对特定的 Blob 容器或文件共享运行性能基准测试，以查看常规的性能统计信息和识别性能瓶颈。 您可以通过上传或下载生成的测试数据来运行测试。 
 
 使用以下命令运行性能基准测试。
 
@@ -77,13 +77,11 @@ AzCopy 目前不支持要求通过 NTLM 或 Kerberos 进行身份验证的代理
 
 此命令通过将测试数据上传到指定的目标来运行性能基准测试。 测试数据将在内存中生成、上传到目标，并在完成测试后从目标中删除。 可以使用可选的命令参数来指定要生成的文件数以及文件的大小。
 
-有关详细的参考文档，请参阅[azcopy 基准](storage-ref-azcopy-bench.md)。
-
-若要查看此命令的详细帮助指导，请键入 `azcopy benchmark -h` 并按 ENTER 键。
+如果希望通过下载数据来运行此测试，请将 `mode` 参数设置为 `download` 。 如需详细的参考文档，请参阅 [azcopy benchmark](storage-ref-azcopy-bench.md)。 
 
 ### <a name="optimize-throughput"></a>优化吞吐量
 
-可以在命令中使用 `cap-mbps` 标志来设置吞吐量数据速率的上限。 例如，以下命令将恢复作业，并将每秒的上限吞吐量恢复为 `10` 兆字节（Mb）。 
+可以在命令中使用 `cap-mbps` 标志来设置吞吐量数据速率的上限。 例如，以下命令恢复作业并将吞吐量上限设置为每秒 `10` 兆位 (Mb)。 
 
 ```azcopy
 azcopy jobs resume <job-id> --cap-mbps 10
@@ -193,7 +191,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 | 操作系统 | 命令  |
 |--------|-----------|
-| **Windows** | PowerShell`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> 在命令提示符下，使用：`set AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **Windows** | PowerShell：`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> 在命令提示符处使用 `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **macOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 
@@ -205,7 +203,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 | 操作系统 | 命令  |
 |--------|-----------|
-| **Windows** | PowerShell`$env:AZCOPY_LOG_LOCATION="<value>"` <br> 在命令提示符下，使用：`set AZCOPY_LOG_LOCATION=<value>`|
+| **Windows** | PowerShell：`$env:AZCOPY_LOG_LOCATION="<value>"` <br> 在命令提示符处使用 `set AZCOPY_LOG_LOCATION=<value>`|
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
 | **macOS** | `export AZCOPY_LOG_LOCATION=<value>` |
 

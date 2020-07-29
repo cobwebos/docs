@@ -31,6 +31,8 @@
       href: powershell-create-instance.md
     - name: 使用模板创建托管域
       href: template-create-instance.md
+    - name: 使用 Azure AD PowerShell 配置作用域内同步
+      href: powershell-scoped-synchronization.md
 - name: 概念
   items:
     - name: 管理基础知识

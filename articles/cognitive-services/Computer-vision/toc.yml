@@ -55,7 +55,7 @@
               href: QuickStarts/CSharp-hand-text.md
             - name: Java
               href: QuickStarts/java-hand-text.md
-            - name: JavaScript
+            - name: Javascript
               href: QuickStarts/javascript-hand-text.md
             - name: Python
               href: QuickStarts/python-hand-text.md
@@ -109,11 +109,9 @@
       href: concept-recognizing-text.md
     - name: 成人内容检测
       href: concept-detecting-adult-content.md
-- name: 操作指南
+- name: 容器
   items:
-    - name: 调用计算机视觉 API
-      href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
-    - name: 使用容器
+    - name: 读取 API 容器
       items:
         - name: 安装和运行容器
           href: computer-vision-how-to-install-containers.md
@@ -127,6 +125,10 @@
         - name: 使用容器实例
           href: deploy-computer-vision-on-container-instances.md
           displayName: 'container instances, container, containers, images'
+- name: 操作指南
+  items:
+    - name: 调用计算机视觉 API
+      href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
     - name: 分析实时视频
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
 - name: 参考
@@ -135,6 +137,8 @@
       href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
     - name: Azure PowerShell
       href: 'https://aka.ms/azure-powershell-cognitiveservices'
+    - name: 计算机视觉 API v3.1-preview.1
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005'
     - name: 计算机视觉 API v3.0
       href: 'https://aka.ms/computer-vision-v3-ref'
     - name: 计算机视觉 API v2.1

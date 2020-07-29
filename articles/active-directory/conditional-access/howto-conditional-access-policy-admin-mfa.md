@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af82a9d19f8dee9062d15a58e83ee3c2a8c59af6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a2830db6132e665d3f876a535fb645e936971b2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995422"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283055"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>条件访问：要求对管理员执行 MFA
 
@@ -67,7 +68,7 @@ Microsoft 建议你至少要求对以下角色进行 MFA：
    1. 在“排除”下  选择“用户和组”  ，然后选择组织的紧急访问帐户或不受限帐户。 
    1. 选择“完成”  。
 1. 在“云应用或操作”   >   “包括”下，选择“所有云应用”，然后选择“完成”。  
-1. 在“条件”   >   “客户端应用(预览版)”下，将“配置”设置为“是”，然后选择“完成”。   
+1. 在 "**条件**  >  " "**客户端应用（预览）**" 下，在 "**选择将应用此策略的客户端应用"** 下，保留所有默认设置，然后选择 "**完成**
 1. 在“访问控制”   >   “授予”下，依次选择“授予访问权限”、“需要多重身份验证”、“选择”。   
 1. 确认设置，然后将“启用策略”设置为“打开”。  
 1. 选择“创建”  ，以便创建启用策略所需的项目。

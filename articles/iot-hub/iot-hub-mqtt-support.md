@@ -10,12 +10,14 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 72c012ba9ce28c0ca5dd5a315cf94b8895558a0b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+- 'Role: IoT Device'
+- 'Role: Cloud Development'
+ms.openlocfilehash: df6de62eefc0971ece0e0035299425689af5f784
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001683"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307618"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
 
@@ -47,7 +49,7 @@ IoT 中心不是功能完备的 MQTT 中转站，并未支持 MQTT v3.1.1 标准
 
 下表包含了每种受支持语言的代码示例链接，并指定了通过 MQTT 或基于 Web 套接字的 MQTT 协议建立到 IoT 中心的连接时要使用的参数。
 
-| Language | MQTT 协议参数 | 基于 Web 套接字的 MQTT 协议参数
+| 语言 | MQTT 协议参数 | 基于 Web 套接字的 MQTT 协议参数
 | --- | --- | --- |
 | [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | azure-iot-device-mqtt.Mqtt | azure-iot-device-mqtt.MqttWs |
 | [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable).MQTT | IotHubClientProtocol.MQTT_WS |
@@ -80,7 +82,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 |Java     |    230 秒     |     否    |
 |C     | 240 秒 |  [是](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 秒 |  [是](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python (V2)   | 60 秒 |  否   |
+|Python   | 60 秒 |  否   |
 
 按照 [MQTT 规范](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)，IoT 中心的 keep-alive ping 时间间隔是客户端 keep-alive 值的 1.5 倍。 但是，IoT 中心将服务器端最大超时限制为 29.45 分钟（1767 秒），因为所有 Azure 服务都绑定到了 Azure 负载均衡器 TCP 空闲超时（29.45 分钟）。 
 
@@ -439,7 +441,7 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" +
 
 若要深入了解如何规划 IoT 中心部署，请参阅：
 
-* [Azure IoT 认证设备目录](https://catalog.azureiotsolutions.com/)
+* [Azure IoT 已认证设备目录](https://catalog.azureiotsolutions.com/)
 * [支持其他协议](iot-hub-protocol-gateway.md)
 * [与事件中心比较](iot-hub-compare-event-hubs.md)
 * [缩放、高可用性和灾难恢复](iot-hub-scaling.md)

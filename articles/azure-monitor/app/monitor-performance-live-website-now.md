@@ -3,12 +3,12 @@ title: 使用 Azure Application Insights 监视实时 ASP.NET Web 应用 | Micro
 description: 在不重新部署网站的情况下监视网站性能。 使用托管在本地或 VM 中的 ASP.NET Web 应用。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 93b150b831a01989093fd916d17e31aee27beb3a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 70a405d2c32641be2ed4038fbffebce0e1340f83
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499522"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87310440"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>在运行时使用 Application Insights 无代码附加检测 Web 应用
 
@@ -22,7 +22,7 @@ ms.locfileid: "86499522"
 - 如果将应用部署到 Azure VM 或 Azure 虚拟机规模集，请按照[这些说明](azure-vm-vmss-apps.md)操作。
 - 如果应用部署在 Azure 应用服务中，请遵循[这些说明](azure-web-apps.md)。
 - 如果应用部署在 Azure VM 中，则可通过 Azure 控制面板启用 Application Insights 监视。
-- （我们还单独提供了有关检测 [Azure 云服务](../../azure-monitor/app/cloudservices.md)的文章。）
+- （我们还单独提供了有关检测 [Azure 云服务](./cloudservices.md)的文章。）
 
 
 ![包含失败请求、服务器响应时间和服务器请求信息的 App Insights 概览图屏幕截图](./media/monitor-performance-live-website-now/overview-graphs.png)
@@ -40,12 +40,12 @@ ms.locfileid: "86499522"
 |  | 构建时 | 运行时 |
 | --- | --- | --- |
 | **请求 & 异常** |是 |是 |
-| **[更详细异常](../../azure-monitor/app/asp-net-exceptions.md)** | |是 |
-| **[依赖项诊断](../../azure-monitor/app/asp-net-dependencies.md)** |在 NET 4.6+ 上，但更少详细信息 |是，完整的详细信息：结果代码、SQL 命令文本、HTTP 谓词|
-| **[系统性能计数器](../../azure-monitor/app/performance-counters.md)** |是 |是 |
+| **[更详细异常](./asp-net-exceptions.md)** | |是 |
+| **[依赖项诊断](./asp-net-dependencies.md)** |在 NET 4.6+ 上，但更少详细信息 |是，完整的详细信息：结果代码、SQL 命令文本、HTTP 谓词|
+| **[系统性能计数器](./performance-counters.md)** |是 |是 |
 | **[自定义遥测 API][api]** |是 |否 |
-| **[跟踪日志集成](../../azure-monitor/app/asp-net-trace-logs.md)** |是 |否 |
-| **[页面视图和用户数据](../../azure-monitor/app/javascript.md)** |是 |否 |
+| **[跟踪日志集成](./asp-net-trace-logs.md)** |是 |否 |
+| **[页面视图和用户数据](./javascript.md)** |是 |否 |
 | **需要重新生成代码** |是 | 否 |
 
 
@@ -70,7 +70,7 @@ ms.locfileid: "86499522"
 
 ## <a name="customize-monitoring-options"></a>自定义监视选项
 
-启用 Application Insights 就会将 DLL 和 ApplicationInsights.config 添加到 Web 应用。 可以[编辑 .config 文件](../../azure-monitor/app/configuration-with-applicationinsights-config.md)，对某些选项进行更改。
+启用 Application Insights 就会将 DLL 和 ApplicationInsights.config 添加到 Web 应用。 可以[编辑 .config 文件](./configuration-with-applicationinsights-config.md)，对某些选项进行更改。
 
 ## <a name="when-you-re-publish-your-app-re-enable-application-insights"></a>重新发布应用时，请重新启用 Application Insights
 
@@ -106,7 +106,7 @@ ms.locfileid: "86499522"
 
 ### <a name="cant-connect-no-telemetry"></a>无法连接？ 没有遥测数据？
 
-* 在服务器防火墙中打开[必需的传出端口](../../azure-monitor/app/ip-addresses.md#outgoing-ports)，以便让状态监视器正常工作。
+* 在服务器防火墙中打开[必需的传出端口](./ip-addresses.md#outgoing-ports)，以便让状态监视器正常工作。
 
 ### <a name="unable-to-login"></a>无法登录
 
@@ -261,7 +261,7 @@ Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\Po
 ### <a name="when-do-i-use-status-monitor"></a>何时使用状态监视器？
 
 * 检测在 IIS 服务器上运行的任何 Web 应用，即使它已在运行。
-* 为 Web 应用启用其他遥测，此类应用已在编译时[通过 Application Insights SDK 生成](../../azure-monitor/app/asp-net.md)。 
+* 为 Web 应用启用其他遥测，此类应用已在编译时[通过 Application Insights SDK 生成](./asp-net.md)。 
 
 ### <a name="can-i-close-it-after-it-runs"></a>可以在它运行后关闭它吗？
 
@@ -319,7 +319,7 @@ Application Insights SDK 版本 2.4 是[支持 .NET 4.0 的最新版本](https:/
 
 查看遥测：
 
-* [浏览指标](../../azure-monitor/platform/metrics-charts.md)，以便监视性能和使用情况
+* [浏览指标](../platform/metrics-charts.md)，以便监视性能和使用情况
 * [搜索事件和日志][diagnostic]以诊断问题
 * [分析](../log-query/log-query-overview.md)，以便进行更高级的查询
 
@@ -331,11 +331,12 @@ Application Insights SDK 版本 2.4 是[支持 .NET 4.0 的最新版本](https:/
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
+[api]: ./api-custom-events-metrics.md
 [availability]: monitor-web-app-availability.md
-[client]: ../../azure-monitor/app/javascript.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[greenbrown]: ../../azure-monitor/app/asp-net.md
+[client]: ./javascript.md
+[diagnostic]: ./diagnostic-search.md
+[greenbrown]: ./asp-net.md
 [qna]: ../faq.md
-[roles]: ../../azure-monitor/app/resources-roles-access-control.md
-[usage]: ../../azure-monitor/app/javascript.md
+[roles]: ./resources-roles-access-control.md
+[usage]: ./javascript.md
+

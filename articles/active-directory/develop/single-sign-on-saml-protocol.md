@@ -4,22 +4,22 @@ titleSuffix: Microsoft identity platform
 description: 本文介绍 Azure Active Directory 中的单一登录 (SSO) SAML 协议
 services: active-directory
 documentationcenter: .net
-author: rwike77
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.author: ryanwi
+ms.author: kenwith
 ms.custom: aaddev
-ms.reviewer: hirsin
-ms.openlocfilehash: a68c0248ce364be486610c406388586b69cbb3f4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.reviewer: paulgarn
+ms.openlocfilehash: f3896bf795e3b1ca258f65fa2c6f4974f2115014
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076940"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282987"
 ---
 # <a name="single-sign-on-saml-protocol"></a>单一登录 SAML 协议
 
@@ -48,8 +48,8 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
-| ID | 必需 | Azure AD 使用此属性来填充返回的响应的 `InResponseTo` 属性。 ID 的开头不能是数字，因此常见的策略是在 GUID 的字符串表示法前面加上类似于“id”的字符串。 例如，`id6c1c178c166d486687be4aaf5e482730` 是有效的 ID。 |
-| 版本 | 必需 | 此参数应设置为 **2.0**。 |
+| ID | 必须 | Azure AD 使用此属性来填充返回的响应的 `InResponseTo` 属性。 ID 的开头不能是数字，因此常见的策略是在 GUID 的字符串表示法前面加上类似于“id”的字符串。 例如，`id6c1c178c166d486687be4aaf5e482730` 是有效的 ID。 |
+| 版本 | 必须 | 此参数应设置为 **2.0**。 |
 | IssueInstant | 必选 | 这是具有 UTC 值和[往返格式（“o”）](https://msdn.microsoft.com/library/az4se3k1.aspx)的日期时间字符串。 Azure AD 需要这种类型的日期时间值，但不评估或使用该值。 |
 | AssertionConsumerServiceUrl | 可选 | 如果提供，此参数必须与 Azure AD 中云服务的 `RedirectUri` 匹配。 |
 | ForceAuthn | 可选 | 一个布尔值。 如果为 true，意味着用户会被强制重新验证，即使他们具有与 Azure AD 之间的有效会话。 |

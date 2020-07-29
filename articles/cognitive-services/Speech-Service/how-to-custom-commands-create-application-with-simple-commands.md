@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 6552d13ab68d8028cd95b18f2d0895d53bba462c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d166257dd28773d89a4f1fd56de3cb1a22242523
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090954"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284160"
 ---
 # <a name="create-application-with-simple-commands"></a>通过简单的命令创建应用程序
 
@@ -44,7 +44,7 @@ ms.locfileid: "87090954"
 
 1. 通过选择左侧窗格顶部的 "**新建命令**" 来创建新命令。 此时将打开**新的命令**窗口。
 1. 为 "**名称**" 字段提供值作为**TurnOn**。
-1. 选择“创建” 。
+1. 选择“创建”。
 
 中间窗格列出了命令的不同属性。 配置命令的以下属性。 有关命令的所有配置属性的说明，请参阅 "[引用](./custom-commands-references.md)"。
 
@@ -84,7 +84,7 @@ ms.locfileid: "87090954"
     | 设置    | 建议的值                          | 描述                                        |
     | ---------- | ---------------------------------------- | -------------------------------------------------- |
     | **Name**       | ConfirmationResponse                  | 描述规则用途的名称          |
-    | **条件** | None                                     | 确定何时可以运行规则的条件    |
+    | **条件** | 无                                     | 确定何时可以运行规则的条件    |
     | **操作**    | > 简单编辑器 > 第一种变体发送语音响应 >`Ok, turning the tv on` | 规则条件为 true 时要执行的操作 |
     
 
@@ -95,6 +95,7 @@ ms.locfileid: "87090954"
 
 1. 选择 "**保存**" 以保存操作。
 1. 返回 "**完成规则**" 部分，选择 "**保存**" 以保存所有更改。 
+
 
     > [!NOTE]
     > 不需要使用命令附带的默认完成规则。 如果需要，可以删除现有的默认完成规则并添加自己的规则。
@@ -125,8 +126,8 @@ ms.locfileid: "87090954"
 | 设置    | 建议的值                          |
 | ---------- | ---------------------------------------- |
 | 名称  | ConfirmationResponse                  |
-| 条件 | None                                     |
-| “操作”    | > 简单编辑器 > 第一种变体发送语音响应 >`Ok, setting temperature to 40 degrees` |
+| 条件 | 无                                     |
+| 操作    | > 简单编辑器 > 第一种变体发送语音响应 >`Ok, setting temperature to 40 degrees` |
 
 选择 "**保存**" 以保存对命令所做的所有更改。
 
@@ -136,8 +137,8 @@ ms.locfileid: "87090954"
 | 设置    | 建议的值                          |
 | ---------- | ---------------------------------------- |
 | 规则名称  | ConfirmationResponse                  |
-| 条件 | None                                     |
-| “操作”    | > 简单编辑器 > 第一种变体发送语音响应 >`Ok, setting an alarm for 9 am tomorrow` |
+| 条件 | 无                                     |
+| 操作    | > 简单编辑器 > 第一种变体发送语音响应 >`Ok, setting an alarm for 9 am tomorrow` |
 
 选择 "**保存**" 以保存对命令所做的所有更改。
 

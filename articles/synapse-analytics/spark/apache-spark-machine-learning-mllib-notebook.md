@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 8cd189bf4037d42348d9a94c47cf0122e63af58f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b7ae2e3045b8f6e56b756ac1b2a4233ac8af9688
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089288"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373447"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>使用 Apache Spark MLlib 和 Azure Synapse Analytics 构建机器学习应用
 
@@ -225,7 +225,7 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 现在有两个数据帧，下一个任务就是创建模型公式并针对训练数据帧运行公式，然后针对测试数据帧进行验证。 你应该试验不同版本的模型公式，以查看不同组合的影响。
 
 > [!Note]
-> 要保存模型，需要 Azure 存储 Blob 数据参与者 RBAC 角色。 在存储帐户下，导航到“访问控制(IAM)”，然后选择“添加角色分配”。 向 SQL Database 服务器分配存储 Blob 数据参与者 RBAC 角色。 只有具有“所有者”特权的成员能够执行此步骤。 若要了解 Azure 资源的各种内置角色，请参阅此[指南](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+> 要保存模型，需要 Azure 存储 Blob 数据参与者 RBAC 角色。 在存储帐户下，导航到“访问控制(IAM)”，然后选择“添加角色分配”。 向 SQL Database 服务器分配存储 Blob 数据参与者 RBAC 角色。 只有具有“所有者”特权的成员能够执行此步骤。 有关各种 Azure 内置角色，请参阅本[指南](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 ```python
 ## Create a new LR object for the model
