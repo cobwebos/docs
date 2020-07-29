@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 07/27/2020
 ms.author: aahi
-ms.openlocfilehash: f76b444f737c4deb0fc61953c839c8826f379d5e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 00a4f7f6de207d5e8ad1bcd448cc587e3106d3a6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207268"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87316962"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>使用 Azure 门户创建认知服务资源
 
@@ -43,7 +43,7 @@ ms.locfileid: "86207268"
     - 语言理解 (LUIS)
     - 文本分析
     - 转换器
-    - 必应搜索 v7 <br> (Web、图像、新闻、视频、视觉对象) 
+    - 必应搜索 v7 <br>（Web、图像、新闻、视频、视觉对象）
     - 必应自定义搜索
     - 必应实体搜索
     - 必应自动建议
@@ -94,6 +94,7 @@ ms.locfileid: "86207268"
 
     ***
 
+[!INCLUDE [Register Azure resource for subscription](./includes/register-resource-subscription.md)]
 
 ## <a name="get-the-keys-for-your-resource"></a>获取资源的密钥
 

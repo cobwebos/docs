@@ -6,21 +6,21 @@ author: cweining
 ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8beb1d60ca8dcc18978ffeb523a7d63f90ca6c01
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f514dd7b54ac091535aeab43a8a7d2a645b50a09
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049807"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315795"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>使用 Application Insights Profiler 探查在 Azure 虚拟机或虚拟机规模集上运行的 Web 应用
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Azure Application Insights Profiler 也可以部署在以下服务上：
-* [Azure 应用服务](../../azure-monitor/app/profiler.md?toc=/azure/azure-monitor/toc.json)
+* [Azure 应用服务](./profiler.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 * [Azure 云服务](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
-* [Azure Service Fabric](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Service Fabric](?toc=%2fazure%2fazure-monitor%2ftoc.json)
 
 ## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>在虚拟机或虚拟机规模集上部署 Profiler
 本文介绍如何在 Azure 虚拟机 (VM) 或 Azure 虚拟机规模集上运行 Application Insights Profiler。 Profiler 与适用于 VM 的 Azure 诊断扩展一同安装。 请将该扩展配置为运行 Profiler，并将 Application Insights SDK 内置到应用程序中。
@@ -67,7 +67,7 @@ Azure Application Insights Profiler 也可以部署在以下服务上：
 
 1. 如果目标应用程序通过 [IIS](https://www.microsoft.com/web/downloads/platform.aspx) 运行，请启用 `IIS Http Tracing` Windows 功能。
 
-   a. 与环境建立远程访问连接，然后使用 [添加 Windows 功能]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) 窗口。 或者，以管理员身份在 PowerShell 中运行以下命令：  
+   a. 与环境建立远程访问连接，然后使用 [添加 Windows 功能](/iis/configuration/system.webserver/tracing/) 窗口。 或者，以管理员身份在 PowerShell 中运行以下命令：  
 
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
@@ -117,3 +117,4 @@ Azure Application Insights Profiler 也可以部署在以下服务上：
 [resourceexplorerput]: ./media/profiler-vm/resource-explorer-put.png
 [resourceexplorersinksconfig]: ./media/profiler-vm/resource-explorer-sinks-config.png
 [wadextension]: ./media/profiler-vm/wad-extension.png
+

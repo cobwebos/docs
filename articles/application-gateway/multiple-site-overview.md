@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 07/20/2020
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: b3e6bc6d2dd5568dcc11a37c6ab44bd3b4089c66
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 23f76f18256ecadcbef59a498292222ea358008f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067936"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290981"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>应用程序网关的多站点托管功能
 
@@ -40,12 +40,8 @@ ms.locfileid: "87067936"
 >[!NOTE]
 > 此功能处于预览阶段，仅适用于应用程序网关 Standard_v2 和 WAF_v2 SKU。 若要了解有关预览的详细信息，请参阅[此处的使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-在[Azure 门户](create-multiple-sites-portal.md)中，可以在单独的文本框中进行定义，如下面的屏幕截图中所示。
-
-:::image type="content" source="./media/multiple-site-overview/wildcard-listener-example.png" alt-text="通配符侦听器示例配置":::
-
 >[!NOTE]
->如果你要创建新的多站点侦听器，或将多个主机名添加到 Azure 门户中的现有多站点侦听器，则默认情况下会将其添加到 `HostNames` 侦听器配置的参数，该参数会将更多的功能添加到 `HostName` 配置中的现有参数。
+>此功能当前仅通过[Azure PowerShell](tutorial-multiple-sites-powershell.md)和[Azure CLI](tutorial-multiple-sites-cli.md)提供。 即将推出门户支持。
 
 在[Azure PowerShell](tutorial-multiple-sites-powershell.md)中，必须使用 `-HostNames` 而不是 `-HostName` 。 使用主机名时，可以将最多5个主机名提及为逗号分隔值并使用通配符。 例如： `-HostNames "*.contoso.com,*.fabrikam.com"`
 
@@ -77,7 +73,7 @@ ms.locfileid: "87067936"
 *   属性 "hostname" 采用一个字符串作为输入，其中你可以只提及一个非通配符域名，而 "主机名" 采用字符串数组作为输入，其中最多可以提及5个通配符域名。 但不能同时使用这两个属性。
 *   不能使用目标侦听器创建使用通配符或多个主机名的[重定向](redirect-overview.md)规则。
 
-请参阅[使用 Azure 门户创建多站点](create-multiple-sites-portal.md)或使用[Azure PowerShell](tutorial-multiple-sites-powershell.md)或[使用 Azure CLI](tutorial-multiple-sites-cli.md)来了解如何在多站点侦听器中配置通配符主机名。
+请参阅[使用 Azure PowerShell 创建多站点](tutorial-multiple-sites-powershell.md)或[使用 Azure CLI](tutorial-multiple-sites-cli.md)来了解如何在多站点侦听器中配置通配符主机名。
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>主机标头和服务器名称指示 (SNI)
 
@@ -95,6 +91,9 @@ ms.locfileid: "87067936"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解多个站点托管后，请参阅[使用 Azure 门户创建多站点](create-multiple-sites-portal.md)或使用[Azure PowerShell](tutorial-multiple-sites-powershell.md)或[使用 Azure CLI](tutorial-multiple-sites-cli.md)获取有关创建应用程序网关以托管多个网站的分步指南。
+了解如何在应用程序网关上配置多站点托管
+* [使用 Azure 门户](create-multiple-sites-portal.md)
+* [使用 Azure PowerShell](tutorial-multiple-sites-powershell.md) 
+* [使用 Azure CLI](tutorial-multiple-sites-cli.md)
 
 可以查看 [Resource Manager template using multiple site hosting](https://github.com/Azure/azure-quickstart-templates/blob/master/201-application-gateway-multihosting)（使用多站点托管的 Resource Manager 模板），了解如何进行基于模板的端到端部署。

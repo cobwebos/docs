@@ -8,26 +8,23 @@ ms.topic: troubleshooting
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1010f89057d83a11fb2e156f01509e909270b044
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4622e64b585d3d4795b11d29e7bffdf9991203c6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083566"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292546"
 ---
 # <a name="troubleshooting-overview-feedback-and-support-for-windows-virtual-desktop"></a>Windows 虚拟桌面的疑难解答概述、反馈和支持
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面 2019 秋季版，请参阅[此文](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md)。
->
-> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>此内容适用于 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果使用的是没有 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md)。
 
 本文概述了在设置 Windows 虚拟桌面环境时可能会遇到的问题，并提供解决这些问题的方法。
 
-## <a name="report-issues-during-public-preview"></a>公开预览期间的报告问题
+## <a name="report-issues"></a>报告问题
 
-若要在2020春季发行版的公共预览版期间报告问题或提供建议功能，请访问[Windows 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)。 你可以使用技术社区讨论最佳实践，或者建议和投票新功能。 当你报告与公共预览版本相关的问题时，请确保将问题类型标记为 "**春季 2020 Update （预览版）**"。
+若要通过 Azure 资源管理器集成报告 Windows 虚拟桌面的问题或建议功能，请访问[Windows 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)。 你可以使用技术社区讨论最佳实践，或者建议和投票新功能。
 
 当你进行 post 请求帮助或建议新功能时，请确保尽可能详细地描述你的主题。 详细信息可以帮助其他用户解答你的问题，或者了解你要为其建议的功能。
 

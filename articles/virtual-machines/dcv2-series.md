@@ -4,15 +4,15 @@ description: DC 系列 VM 的规格。
 author: susaxen
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 88aaa10bf84d0195cc22d11d7fa1cfdcd639d475
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c5074a81625f38cf94d5acd9751414bad4a9c3e8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207430"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292469"
 ---
 # <a name="dcsv2-series"></a>DCsv2 系列
 
@@ -47,7 +47,7 @@ DCsv2 系列可以在公有云中处理数据和代码时帮助保护数据和�
 
 
 
-## <a name="other-sizes"></a>其他大小
+## <a name="other-sizes-and-information"></a>其他大小和信息
 
 - [常规用途](sizes-general.md)
 - [内存优化](sizes-memory.md)
@@ -56,6 +56,10 @@ DCsv2 系列可以在公有云中处理数据和代码时帮助保护数据和�
 - [高性能计算](sizes-hpc.md)
 - [前几代](sizes-previous-gen.md)
 
+定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
+
+有关磁盘类型的详细信息：[磁盘类型](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。
+了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。

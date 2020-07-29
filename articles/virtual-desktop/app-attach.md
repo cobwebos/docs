@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 76edc88f127d7e52514ab72539f7212ac982b5e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f8e20f97ae19a33674631e4dee18901d54462b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204465"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291503"
 ---
 # <a name="set-up-msix-app-attach"></a>设置 MSIX 应用附加
 
@@ -29,7 +29,7 @@ ms.locfileid: "85204465"
 在开始之前，需要配置 MSIX 应用附加：
 
 - 访问 Windows 预览体验门户以获取支持 MSIX 应用附加 API 的 Windows 10 版本。
-- 正常运行的 Windows 虚拟桌面部署。 若要了解如何部署 Windows 虚拟桌面秋季2019版，请参阅[在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。 若要了解如何部署 Windows 虚拟桌面2020版，请参阅[使用 Azure 门户创建主机池](./create-host-pools-azure-marketplace.md)。
+- 正常运行的 Windows 虚拟桌面部署。 若要了解如何部署 Windows 虚拟桌面（经典），请参阅[在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。 若要了解如何使用 Azure 资源管理器集成部署 Windows 虚拟桌面，请参阅[使用 Azure 门户创建主机池](./create-host-pools-azure-marketplace.md)。
 - .MSIX 打包工具。
 - Windows 虚拟桌面部署中将存储 .MSIX 包的网络共享。
 

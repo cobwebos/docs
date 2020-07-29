@@ -1,7 +1,7 @@
 ---
 title: Azure PowerShell 脚本示例-将 IPv6 前端配置标准负载均衡器（预览版）
 titlesuffix: Azure Virtual Network
-description: 使用 Powershell 在 Azure 虚拟网络中启用 IPv6 终结点
+description: 了解如何在虚拟网络脚本示例中配置标准负载均衡器的 IPv6 前端。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 2de93f66bdb2647bcc612322d90eb9197e0ad63e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24057c494d76cf9435ed60ecf2a13db4eab36fbf
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068672"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291908"
 ---
 # <a name="configure-ipv6-frontend-in-virtual-network-script-sample-with-standard-load-balancerpreview"></a>在虚拟网络脚本示例中配置 IPv6 前端标准负载均衡器（预览版）
 
@@ -249,7 +249,7 @@ Remove-AzResourceGroup -Name <resourcegroupname> -Force
 
 此脚本使用以下命令创建资源组、虚拟机、可用性集、负载均衡器和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| 命令 | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | 创建子网配置。 在虚拟网络创建过程中会使用此配置。 |

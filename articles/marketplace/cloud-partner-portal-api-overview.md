@@ -4,15 +4,15 @@ description: 市场 API 操作的说明、要使用的先决条件和列表。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 51c8b91ccf85087f965d632dee9296076aba0d86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bfb6e9cb510f5fe887f108dfdea5932406aafe0d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011952"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292924"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>云合作伙伴门户 API 参考
 
@@ -42,7 +42,7 @@ ms.locfileid: "87011952"
 
 本参考详细介绍了用于执行以下常见任务的 API。
 
-### <a name="offers"></a>产品/服务
+### <a name="offers"></a>产品
 
 - [检索所有产品/服务](./cloud-partner-portal-api-retrieve-offers.md)
 - [检索特定产品/服务](./cloud-partner-portal-api-retrieve-specific-offer.md)
@@ -50,7 +50,7 @@ ms.locfileid: "87011952"
 - [创建产品/服务](./cloud-partner-portal-api-creating-offer.md)
 - [发布产品/服务](./cloud-partner-portal-api-publish-offer.md)
 
-### <a name="operations"></a>操作
+### <a name="operations"></a>Operations
 
 - [检索操作](./cloud-partner-portal-api-retrieve-operations.md)
 - [取消操作](./cloud-partner-portal-api-cancel-operations.md)

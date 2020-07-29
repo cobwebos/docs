@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 01ac6ccbc2789d2052bab07e2da51630b6dbf581
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 834083b0f472de6ac1fd157ee966ebb021286cff
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79537153"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290187"
 ---
 # <a name="azure-database-for-mysql-advanced-threat-protection"></a>Azure Database for MySQL 高级威胁防护
 
@@ -20,7 +20,7 @@ Azure Database for MySQL 的高级威胁防护可检测异常活动，指出有�
 > [!NOTE]
 > 高级威胁防护是公开预览版。
 
-高级威胁防护包含在高级数据安全产品/服务中，是一个针对高级安全功能的统一软件包。 可以通过[Azure 门户](https://portal.azure.com)或使用[REST API](/rest/api/mysql/serversecurityalertpolicies)来访问和管理高级威胁防护。 此功能可用于常规用途和内存优化服务器。
+高级威胁防护包含在高级数据安全产品/服务中，是一个针对高级安全功能的统一软件包。 可以通过[Azure 门户](https://portal.azure.com)或使用[REST API](/rest/api/mysql)来访问和管理高级威胁防护。 此功能可用于常规用途和内存优化服务器。
 
 > [!NOTE]
 > 高级威胁防护功能在以下 Azure 政府和主权云区域中不**** 可用：US Gov 德克萨斯州、US Gov 亚利桑那州、US Gov 爱荷华州、US Gov 弗吉尼亚州、US DoD 东部、US DoD 中部、德国中部、德国北部、中国东部、中国东部 2。 请访问[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)，以了解常规产品可用性。

@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 8a951a4920f2f80a4b9738317bdb2da96c613d53
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8d94acabb434d0e722e352de46197a86e994e145
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013039"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290028"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什么是自动化机器学习 (AutoML)？
 
@@ -37,7 +37,7 @@ ms.locfileid: "87013039"
 
 分类是一个常见的机器学习任务。 分类是一种监督式学习，其中的模型使用训练数据进行学习，并将学习所得应用于新数据。 Azure 机器学习为这些任务专门提供特征化，例如用于分类的深度神经网络文本特征化器。 详细了解[特征化选项](how-to-configure-auto-features.md#featurization)。 
 
-分类模型的主要目标是根据从其训练数据中获得的经验，预测新数据将属于哪些类别。 常见分类示例包括欺诈检测、手写识别和对象检测。 了解详细信息，并查看[使用自动 ML 创建分类模型](tutorial-first-experiment-automated-ml.md)的示例。
+分类模型的主要目标是根据从其训练数据中获得的经验，预测新数据将属于哪些类别。 常见分类示例包括欺诈检测、手写识别和对象检测。 详细了解[使用自动化 ML 创建分类模型](tutorial-first-experiment-automated-ml.md)并查看其示例。
 
 参阅以下 Python 笔记本中的分类和自动化机器学习示例：[欺诈检测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)、[营销预测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)和[新闻组数据分类](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)
 
@@ -136,7 +136,7 @@ ms.locfileid: "87013039"
 
 + Azure 机器学习工作室：[通过以下步骤](how-to-use-automated-ml-for-ml-models.md#customize-featurization)在“查看其他配置”部分中启用“自动特征化”。
 
-+ Python SDK：在 [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) 对象中指定 `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'`。 详细了解 [启用特征化]((how-to-configure-auto-features.md)。 
++ Python SDK：在 [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) 对象中指定 `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'`。 了解有关[启用特征化](how-to-configure-auto-features.md)的详细信息。 
 
 ## <a name="ensemble-models"></a><a name="ensemble"></a> 系综模型
 
@@ -174,7 +174,7 @@ ms.locfileid: "87013039"
 
  使用远程计算时，有更多的功能可用，如下表中所示。 其中一些功能仅在企业工作区中可用。
 
-| 功能                                                    | Remote | Local | 需要 <br>企业工作区 |
+| Feature                                                    | Remote | Local | 需要 <br>企业工作区 |
 |------------------------------------------------------------|--------|-------|-------------------------------|
 | 数据流式处理（最高 100 GB 的大数据支持）          | ✓      |       | ✓                             |
 | 基于 DNN-BERT 的文本特征化和训练             | ✓      |       | ✓                             |
@@ -271,21 +271,21 @@ ONNX 运行时还支持 C#。因此，你可以在 C# 应用中使用自动生�
 
 ## <a name="next-steps"></a>后续步骤
 
-可以通过多个资源来启动并运行 AutoML。 
+有多种资源可帮助你启动并运行 AutoML。 
 
 ### <a name="tutorials-how-tos"></a>教程/操作指南
 教程是 AutoML 方案的端到端介绍性示例。
-+ **对于代码首次体验**，请遵循[教程：使用 Azure 机器学习 Python SDK 自动训练回归模型](tutorial-auto-train-models.md)。
++ 若要体验 Code First，请按[教程：使用 Azure 机器学习 Python SDK 自动训练回归模型](tutorial-auto-train-models.md)的说明操作。
 
- + 若**要获得低或无代码体验**，请参阅[教程：使用 Azure 机器学习 STUDIO 创建自动 ML 分类模型](tutorial-first-experiment-automated-ml.md)。
+ + 若要实现少代码或无代码体验，请参阅[教程：使用 Azure 机器学习工作室创建自动化 ML 分类模型](tutorial-first-experiment-automated-ml.md)。
 
-如何向文章提供 AutoML 提供的功能的更多详细信息。 例如， 
+操作指南文章提供了 AutoML 所提供功能的更多详细信息。 例如， 
 
-+ 配置自动定型试验的设置
++ 配置自动训练试验的设置
     + 在 Azure 机器学习工作室中[使用这些步骤](how-to-use-automated-ml-for-ml-models.md)。 
     + 在 Python SDK 中[使用这些步骤](how-to-configure-auto-train.md)。
 
-+  使用[以下步骤](how-to-auto-train-forecast.md)，了解如何使用时序数据自动进行训练。
++  了解如何[使用这些步骤](how-to-auto-train-forecast.md)通过时序数据自动进行训练。
 
 ### <a name="jupyter-notebook-samples"></a>Jupyter 笔记本示例 
 
@@ -293,8 +293,8 @@ ONNX 运行时还支持 C#。因此，你可以在 C# 应用中使用自动生�
 
 ### <a name="python-sdk-reference"></a>Python SDK 参考 
 
-通过[AutoML 类参考文档](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)，加深 SDK 设计模式和类规范的专业知识。 
+阅读 [AutoML 类参考文档](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)，加深你对 SDK 设计模式和类规范的专业知识的理解。 
 
 > [!Note]
-> 其他 Microsoft 解决方案（例如[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)、 [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)、 [Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)和[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/) ）还提供了自动机器学习功能
+> 自动化机器学习功能也可以在其他 Microsoft 解决方案（例如 [ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)、[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)、[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated) 和 [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)）中使用
 

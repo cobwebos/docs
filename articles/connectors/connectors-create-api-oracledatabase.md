@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: f4bca70fbec5cf847a6bb5c0b97ed3496d6c2f8c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 988d1efd348fe8e85dd33fbe35cc8dc9362c081b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039986"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290614"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle 数据库连接器入门
 
@@ -122,10 +122,11 @@ ms.locfileid: "87039986"
 
 ## <a name="get-some-help"></a>获取帮助
 
-若要提问、解答问题和了解其他逻辑应用用户的活动，请访问[有关 Azure 逻辑应用的 Microsoft 问答页面](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。 
+若要提问、解答问题和了解其他逻辑应用用户的活动，请访问[有关 Azure 逻辑应用的 Microsoft 问答页面](/answers/topics/azure-logic-apps.html)。 
 
 可以在 [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) 上投票并提交自己的创意，帮助改进逻辑应用和连接器。 
 
 
 ## <a name="next-steps"></a>后续步骤
 [创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)，并在 [API 列表](apis-list.md)中了解逻辑应用中的可用连接器。
+

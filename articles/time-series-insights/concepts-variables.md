@@ -6,12 +6,12 @@ ms.author: shresha
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 86df87af44f5594fe09445f2cc85d2a2bc823200
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 73d5c3abb2edc940bee9727ce1f3b0c4e8e0a62e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096520"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289947"
 ---
 # <a name="time-series-model-variables"></a>时序模型变量
 
@@ -29,7 +29,7 @@ ms.locfileid: "87096520"
 
 #### <a name="numeric-variables"></a>数字变量
 
-| 变量属性 | 描述 |
+| 变量属性 | 说明 |
 | --- | ---|
 | 变量筛选器 | 筛选器是可选的条件子句，用于限制可在计算中考虑的行数。 |
 | 变量值 | 来自设备或传感器的，或使用时序表达式进行转换的用于计算的遥测值。 数字种类变量的类型必须为 *Double*。|
@@ -59,7 +59,7 @@ ms.locfileid: "87096520"
 
 #### <a name="categorical-variables"></a>分类变量
 
-| 变量属性 | 描述 |
+| 变量属性 | 说明 |
 | --- | ---|
 | 变量筛选器 | 筛选器是可选的条件子句，用于限制可在计算中考虑的行数。 |
 | 变量值 | 来自设备或传感器的用于计算的遥测值。 分类种类变量的类型必须是 *Long* 或 *String*。 |
@@ -87,7 +87,7 @@ ms.locfileid: "87096520"
       "label": "Good"
     },
     {
-      "values": [3],
+      "values": [4],
       "label": "Bad"
     }
   ],
@@ -99,7 +99,7 @@ ms.locfileid: "87096520"
 
 #### <a name="aggregate-variables"></a>聚合变量
 
-| 变量属性 | 描述 |
+| 变量属性 | 说明 |
 | --- | ---|
 | 变量筛选器 | 筛选器是可选的条件子句，用于限制可在计算中考虑的行数。 |
 | 变量聚合 | 通过支持聚合[变量类型的聚合函数](https://docs.microsoft.com/rest/api/time-series-insights/preview#aggregate-variable-kind-1)执行计算。 |

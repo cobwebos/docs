@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 04a25b6b0b243744cc81c8b71a1f03e7c7375a68
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4ad0cdedfa28e5b46f77d5e87f5bd48e25f11cc4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102478"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292402"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>了解 VM 重启 - 维护和停机
 有三种情况可能会导致 Azure 中的虚拟机受影响：计划外硬件维护、意外停机、计划内维护。
@@ -32,7 +32,7 @@ ms.locfileid: "87102478"
 
 * [在可用性集中配置多个虚拟机以确保冗余]
 * [在可用性集中对 VM 使用托管磁盘]
-* [使用计划事件主动响应影响 VM 的事件](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
+* [使用计划事件主动响应影响 VM 的事件](../articles/virtual-machines/linux/scheduled-events.md)
 * [将每个应用程序层配置到不同的可用性集中]
 * [将负载均衡器与可用性集组合在一起]
 * [使用可用性区域防范数据中心级故障]
@@ -95,7 +95,7 @@ az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Lo
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>使用计划事件主动响应影响事件的 VM
 
-如果订阅[计划事件](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)，则将通知 VM 即将发生会对 VM 造成影响的维护事件。 启用计划事件后，可在执行维护活动之前为虚拟机提供最少的时间。 例如，可能会影响 VM 的主机 OS 更新将作为事件排队等候，通知中将详述其影响，以及在未采取任何操作的情况下执行维护的时间。 当 Azure 检测到即将发生可能影响 VM 的硬件失败时，计划事件也会排队等候，以便决定执行修复的时间。 客户可以使用事件在维护前执行任务，例如，保存状态、故障转移到辅助 VM 等。 完成用于妥善处理维护事件的逻辑后，可批准未完成的计划事件，以允许平台继续进行维护。
+如果订阅[计划事件](../articles/virtual-machines/linux/scheduled-events.md)，则将通知 VM 即将发生会对 VM 造成影响的维护事件。 启用计划事件后，可在执行维护活动之前为虚拟机提供最少的时间。 例如，可能会影响 VM 的主机 OS 更新将作为事件排队等候，通知中将详述其影响，以及在未采取任何操作的情况下执行维护的时间。 当 Azure 检测到即将发生可能影响 VM 的硬件失败时，计划事件也会排队等候，以便决定执行修复的时间。 客户可以使用事件在维护前执行任务，例如，保存状态、故障转移到辅助 VM 等。 完成用于妥善处理维护事件的逻辑后，可批准未完成的计划事件，以允许平台继续进行维护。
 
 
 ## <a name="combine-a-load-balancer-with-availability-zones-or-sets"></a>将负载均衡器与可用性区域或可用性集组合在一起

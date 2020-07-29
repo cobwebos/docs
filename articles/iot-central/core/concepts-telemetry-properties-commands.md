@@ -7,12 +7,12 @@ ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 108a7940084e99348dc8fdfa0143d5c6855599df
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 554079ddec3332ced2817d18ea55ce1260d68817
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096543"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291618"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>遥测、属性和命令负载
 
@@ -30,6 +30,9 @@ Azure IoT Central 中的设备模板是用于定义以下内容的蓝图：
 
 每个示例都显示了一个来自设备功能模型（DCM）的代码段，该代码段定义类型和示例 JSON 有效负载，以说明设备应该如何与 IoT Central 的应用程序交互。
 
+> [!NOTE]
+> IoT Central 接受任何有效的 JSON，但它仅可用于可视化效果（如果它与 DCM 中的定义匹配）。 可以导出与定义不匹配的数据，请参阅[将 IoT 数据导出到 Azure 中的目标](howto-export-data.md)。
+
 定义 DCM 的 JSON 文件使用[数字双子定义语言（DTDL） V1](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v1-preview/dtdlv1.md)。 此规范包括属性格式的定义 `@id` 。
 
 有关显示所使用的部分负载的示例设备代码，请参阅[创建客户端应用程序并将其连接到 azure IoT Central 应用程序（Node.js）](tutorial-connect-device-nodejs.md)和[创建客户端应用程序并将其连接到 azure IoT Central 应用程序（Python）](tutorial-connect-device-python.md)教程。
@@ -43,9 +46,8 @@ IoT Central 允许查看设备发送到应用程序的原始数据。 此视图�
 1. 选择 "**原始数据**" 选项卡：
 
     :::image type="content" source="media/concepts-telemetry-properties-commands/raw-data.png" alt-text="原始数据视图":::
-    
-    在此视图中，您可以选择要显示的列，并设置要查看的时间范围。 "未**建模数据**" 列显示与设备模板中的任何属性或遥测定义不匹配的设备中的数据。
 
+    在此视图中，您可以选择要显示的列，并设置要查看的时间范围。 "未**建模数据**" 列显示与设备模板中的任何属性或遥测定义不匹配的设备中的数据。
 
 ## <a name="telemetry"></a>遥测
 
@@ -466,7 +468,7 @@ DCM 中的以下代码片段显示了 `integer` 状态类型的定义：
 { "IntegerState": 2 }
 ```
 
-## <a name="properties"></a>“属性”
+## <a name="properties"></a>属性
 
 > [!NOTE]
 > 属性的负载格式适用于在07/14/2020 或之后创建的应用程序。
@@ -769,7 +771,7 @@ IoT Central 需要从设备到可写属性更新的响应。 响应消息应包�
 | 值 | Label | 说明 |
 | ----- | ----- | ----------- |
 | `'ac': 200` | 已完成 | 属性更改操作已成功完成。 |
-| `'ac': 202`或`'ac': 201` | 挂起 | 属性更改操作已挂起或正在进行 |
+| `'ac': 202`或`'ac': 201` | 挂起的 | 属性更改操作已挂起或正在进行 |
 | `'ac': 4xx` | 错误 | 请求的属性更改无效或出现错误 |
 | `'ac': 5xx` | 错误 | 设备在处理请求的更改时遇到意外错误。 |
 

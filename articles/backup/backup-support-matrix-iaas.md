@@ -4,12 +4,12 @@ description: 提供有关在使用 Azure 备份服务备份 Azure VM 时的支�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 490905b28b203534e2651e5cbd9fb9ba3be2ae8d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d00f6ee8c10144a7c9fd65101dd21ccb7deeb0a6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538677"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289496"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 
@@ -109,7 +109,7 @@ DPM/MABS 磁盘上的恢复点数 | 文件服务器为 64 个，应用服务器�
 --- | ---
 **创建新 VM** | 从还原点快速创建并正常运行一个基本的 VM。<br/><br/> 可以指定 VM 的名称，选择要将此 VM 放入到的资源组和虚拟网络 (VNet)，以及为已还原的 VM 指定存储帐户。 新 VM 必须在源 VM 所在的区域创建。
 **还原磁盘** | 还原某个 VM 磁盘，然后使用它来创建新的 VM。<br/><br/> Azure 备份提供一个模板来帮助你自定义和创建 VM。 <br/><br> 还原作业会生成一个模板，可以下载该模板，并使用它来指定自定义的 VM 设置和创建 VM。<br/><br/> 磁盘将复制到指定的资源组。<br/><br/> 或者，可将磁盘附加到现有 VM，或使用 PowerShell 创建新的 VM。<br/><br/> 若要自定义 VM、添加在备份时不存在的配置设置，或添加必须使用模板或 PowerShell 配置的设置，则此选项非常有用。
-**替换现有项** | 可以还原某个磁盘，并使用它来替换现有 VM 上的磁盘。<br/><br/> 当前 VM 必须存在。 如果已将其删除，则无法使用此选项。<br/><br/> Azure 备份会在替换磁盘之前获取现有 VM 的快照，并将其存储在指定的暂存位置。 连接到该 VM 的现有磁盘将替换为所选的还原点。<br/><br/> 快照将复制到保管库，并根据保留策略进行保留。 <br/><br/> 替换磁盘操作完成后，原始磁盘会保留在资源组中。 你可以选择手动删除不需要的原始磁盘。 <br/><br/>支持替换未加密的托管 VM 的现有磁盘。 不支持对非托管磁盘、[通用化 VM](../virtual-machines/windows/capture-image-resource.md) 或[使用自定义映像创建的](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) VM 使用该选项。<br/><br/> 如果还原点中的磁盘数多于或少于当前 VM 中的磁盘数，则还原点中的磁盘数只反映 VM 配置。<br><br> 包含链接资源（如[用户分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md) 或 [Key Vault](../key-vault/general/overview.md)）的 VM 不支持替换现有磁盘，因为备份客户端应用在执行还原时对这些资源没有权限。
+**替换现有项** | 可以还原某个磁盘，并使用它来替换现有 VM 上的磁盘。<br/><br/> 当前 VM 必须存在。 如果已将其删除，则无法使用此选项。<br/><br/> Azure 备份会在替换磁盘之前获取现有 VM 的快照，并将其存储在指定的暂存位置。 连接到该 VM 的现有磁盘将替换为所选的还原点。<br/><br/> 快照将复制到保管库，并根据保留策略进行保留。 <br/><br/> 替换磁盘操作完成后，原始磁盘会保留在资源组中。 你可以选择手动删除不需要的原始磁盘。 <br/><br/>支持替换未加密的托管 VM 的现有磁盘。 不支持对非托管磁盘、[通用化 VM](../virtual-machines/windows/capture-image-resource.md) 或[使用自定义映像创建的](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) VM 使用该选项。<br/><br/> 如果还原点中的磁盘数多于或少于当前 VM 中的磁盘数，则还原点中的磁盘数只反映 VM 配置。<br><br> 对于包含链接资源的 Vm （例如，[用户分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md)和[Key Vault](../key-vault/general/overview.md)），也支持 "替换现有的"。
 **跨区域（次要区域）** | 跨区域还原可用于还原次要区域（[Azure 配对区域](../best-practices-availability-paired-regions.md#what-are-paired-regions)）中的 Azure VM。<br><br> 如果备份在次要区域中完成，则可针对所选恢复点还原所有 Azure VM。<br><br> 此功能适用于以下选项：<br> <li> [创建 VM](./backup-azure-arm-restore-vms.md#create-a-vm) <br> <li> [还原磁盘](./backup-azure-arm-restore-vms.md#restore-disks) <br><br> 当前不支持[替换现有磁盘](./backup-azure-arm-restore-vms.md#replace-existing-disks)选项。<br><br> 权限<br> 次要区域中的还原操作可以由备份管理员和应用管理员执行。
 
 ## <a name="support-for-file-level-restore"></a>文件级还原支持
@@ -160,7 +160,7 @@ Gen2 VM | 支持 <br> Azure 备份支持备份和还原 [Gen2 VM](https://azure.
 
 ## <a name="vm-storage-support"></a>VM 存储支持
 
-组件 | **支持**
+**组件** | **支持**
 --- | ---
 Azure VM 数据磁盘 | 除了国家/地区云（Azure 政府版、Azure 中国世纪互联和 Azure 德国）以外的所有地区，支持备份最多包含32个磁盘的 Azure Vm。<br><br> 备份包含非托管磁盘的 Azure VM 或经典 VM 时，最多支持 16 个磁盘。
 数据磁盘大小 | 对于 VM 中的所有磁盘，单个磁盘大小最大为 32 TB，组合磁盘大小最大为 256 TB。
@@ -176,7 +176,7 @@ Azure VM 数据磁盘 | 除了国家/地区云（Azure 政府版、Azure 中国�
 
 ## <a name="vm-network-support"></a>VM 网络支持
 
-组件 | **支持**
+**组件** | **支持**
 --- | ---
 网络接口 (NIC) 数 | 特定 Azure VM 大小支持最大数量的 NIC。<br/><br/> NIC 是在还原过程中创建 VM 时创建的。<br/><br/> 已还原 VM 上的 NIC 数目与启用保护时 VM 上的 NIC 数目相同。 启用保护后移除 NIC 不影响计数。
 内部/外部负载均衡器 |。 <br/><br/> [详细了解](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations)如何还原使用特殊网络设置的 VM。
@@ -215,8 +215,8 @@ Azure 备份支持针对传输中数据和静态数据的加密：
 **计算机** | **传输中** | **静态**
 --- | --- | ---
 没有 DPM/MABS 的本地 Windows 计算机 | ![是][green] | ![是][green]
-Azure VM | ![是][green] | ![是][green]
-本地计算机/装有 DPM 的 Azure VM | ![是][green] | ![是][green]
+Azure VM | ![是][green] | ![“是”][green]
+本地计算机/装有 DPM 的 Azure VM | ![“是”][green] | ![“是”][green]
 本地计算机/装有 MABS 的 Azure VM | ![是][green] | ![是][green]
 
 ## <a name="vm-compression-support"></a>VM 压缩支持
@@ -230,8 +230,8 @@ Azure 备份支持对备份流量进行压缩，详细情况汇总在下表中�
 --- | --- | ---
 没有 DPM/MABS 的本地 Windows 计算机 | NA | ![是][green]
 Azure VM | NA | NA
-本地计算机/装有 DPM 的 Azure VM | ![是][green] | ![是][green]
-本地计算机/装有 MABS 的 Azure VM | ![是][green] | ![是][green]
+本地计算机/装有 DPM 的 Azure VM | ![“是”][green] | ![“是”][green]
+本地计算机/装有 MABS 的 Azure VM | ![是][green] | ![“是”][green]
 
 ## <a name="next-steps"></a>后续步骤
 

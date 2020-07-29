@@ -1,6 +1,6 @@
 ---
 title: Azure DDoS 保护标准概述
-description: 了解 Azure DDoS 保护服务。
+description: 了解 Azure DDoS 防护标准（与应用程序设计最佳做法结合时）如何防御 DDoS 攻击。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: fc47e1f4fbdb48e6e0abc1f2a7e32127b0325f47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e92f3b5d8c48c783648285c9a03d8cb8d391a5ac
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82130976"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289599"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS 保护标准概述
 
@@ -25,9 +25,9 @@ ms.locfileid: "82130976"
 Azure DDoS 保护与应用程序设计最佳做法相结合，可提供针对 DDoS 攻击的防御。 Azure DDoS 防护提供了以下服务层级：
 
 - **基本**：作为 Azure 平台的一部分自动启用。 始终在流量监视和常见网络级别攻击的实时缓解措施下，提供 Microsoft 联机服务所利用的相同防御。整个 Azure 全球网络的规模可用于跨区域分散和缓解攻击流量。为 IPv4 和 IPv6 Azure [公共 IP 地址](virtual-network-public-ip-address.md)提供保护。
-- **标准**：在专门针对 Azure 虚拟网络资源优化的“基本”服务层级上提供其他风险缓解功能。 DDoS 保护标准易于启用，无需更改应用程序。 通过专用流量监控和机器学习算法优化保护策略。 策略应用到与部署在虚拟网络中资源相关的公共 IP 地址，例如 Azure 负载均衡器、Azure 应用程序网关和 Azure Service Fabric 实例，但此保护不适用于应用服务环境。可在攻击期间通过 Azure Monitor 视图并针对历史记录获得实时遥测。 可通过诊断设置获取大量攻击缓解分析。 可通过 [Azure 应用程序网关 Web 应用程序防火墙](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或通过从 Azure 市场安装第三方防火墙来添加应用程序层保护。 为 IPv4 和 IPv6 Azure [公共 IP 地址](virtual-network-public-ip-address.md)提供保护。
+- **标准**：在专门针对 Azure 虚拟网络资源优化的“基本”服务层级上提供其他风险缓解功能。 DDoS 保护标准易于启用，无需更改应用程序。 通过专用流量监视和机器学习算法调整保护策略。 策略应用到与部署在虚拟网络中资源相关的公共 IP 地址，例如 Azure 负载均衡器、Azure 应用程序网关和 Azure Service Fabric 实例，但此保护不适用于应用服务环境。可在攻击期间通过 Azure Monitor 视图并针对历史记录获得实时遥测。 可通过诊断设置获取大量攻击缓解分析。 可通过 [Azure 应用程序网关 Web 应用程序防火墙](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或通过从 Azure 市场安装第三方防火墙来添加应用程序层保护。 为 IPv4 和 IPv6 Azure [公共 IP 地址](virtual-network-public-ip-address.md)提供保护。
 
-|功能                                         |基本 DDoS 防护                 |标准 DDoS 防护                      |
+|Feature                                         |基本 DDoS 防护                 |标准 DDoS 防护                      |
 |------------------------------------------------|--------------------------------------|----------------------------------------------|
 |活动流量监视 & always on 检测 |是                                   |是                                           |
 |自动攻击缓解                    |是                                   |是                                           |
@@ -72,7 +72,7 @@ DDoS 保护标准功能包括：
 
 DDoS 保护标准监控实际流量利用率，并不断将其与 DDoS 策略中定义的阈值进行比较。 当超过流量阈值时，将自动启动 DDoS 缓解。 当流量回到阈值以下时，缓解将移除。
 
-![缓解操作](./media/ddos-protection-overview/mitigation.png)
+![缓解](./media/ddos-protection-overview/mitigation.png)
 
 在风险缓解期间，DDoS 保护服务重定向发送到受保护资源的流量，并执行多个检查，如以下检查：
 
@@ -80,7 +80,7 @@ DDoS 保护标准监控实际流量利用率，并不断将其与 DDoS 策略中
 - 与客户端交互，确定该流量是否可能是欺骗性数据包（例如：SYN Auth 或 SYN Cookie，或者通过丢弃数据包，让源重新传输它）。
 - 如果没有其他可以执行的强制方法，将对数据包进行速率限制。
 
-DDoS 保护会阻止攻击流量并将剩余流转至预期目的地。 在检测到攻击的几分钟内，会使用 Azure Monitor 指标通知你。 通过在 DDoS 保护标准遥测上配置日志记录，可将日志写入可用选项以供将来分析。 Azure Monitor 中 DDoS 保护标准的指标数据会保留 30 天。
+DDoS 保护会阻止攻击流量并将剩余流量转发至其预期目的地。 在检测到攻击的几分钟内，会使用 Azure Monitor 指标通知你。 通过在 DDoS 保护标准遥测上配置日志记录，可将日志写入可用选项以供将来分析。 Azure Monitor 中 DDoS 保护标准的指标数据会保留 30 天。
 
 Mircosoft 已与 [BreakingPoint Cloud](https://www.ixiacom.com/products/breakingpoint-cloud) 合作构建接口，用户可在其中针对已启用 DDoS 保护的公共 IP 地址生成用于模拟的流量。 借助 BreakPoint Cloud 模拟，你可以：
 

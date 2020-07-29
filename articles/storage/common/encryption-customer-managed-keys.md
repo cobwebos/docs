@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d53818c91d32bc7435d1328c2ae73a8eb3172cd4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: af70b1746b2ac847d964975aaf1b2186aa89be01
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029784"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292727"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>在 Azure Key Vault 中使用客户托管密钥管理 Azure 存储加密
 
@@ -51,7 +51,7 @@ ms.locfileid: "87029784"
 
 在启用或禁用客户托管密钥时，或者在修改密钥或密钥版本时，对根加密密钥的保护会变化，但你不需要重新加密 Azure 存储帐户中的数据。
 
-客户托管密钥只能在现有存储帐户上启用。 必须为密钥保管库配置访问策略，以便向与存储帐户关联的托管标识授予权限。 托管标识仅在创建存储帐户后可用。
+客户托管密钥只能在现有存储帐户上启用。 必须为密钥保管库配置访问策略，以便向与存储帐户关联的托管标识授予权限。 托管标识仅在存储帐户创建后可用。
 
 随时可以在客户托管的密钥与 Microsoft 管理的密钥之间进行切换。 有关 Microsoft 托管密钥的详细信息，请参阅[关于加密密钥管理](storage-service-encryption.md#about-encryption-key-management)。
 
@@ -70,7 +70,7 @@ ms.locfileid: "87029784"
 
 Azure 存储加密支持2048、3072和4096大小的 RSA 和 RSA-HSM 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)中的“Key Vault 密钥”。
 
-使用 Azure Key Vault 具有相关的成本。 有关详细信息，请参阅[Key Vault 定价](/pricing/details/key-vault/)。
+使用 Azure Key Vault 具有相关的成本。 有关详细信息，请参阅[Key Vault 定价](https://azure.microsoft.com/pricing/details/key-vault/)。
 
 ## <a name="rotate-customer-managed-keys"></a>轮换客户管理的密钥
 

@@ -3,16 +3,16 @@ title: 使用 Azure Active Directory 凭据登录到 Linux VM
 description: 了解如何创建和配置 Linux VM，以使用 Azure Active Directory 身份验证进行登录。
 author: SanDeo-MSFT
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: sandeo
-ms.openlocfilehash: 89b89d30de46727f4d5b52a236a4b0133e663bb9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fe9d4e5a981f9d626bb6086659593e1c3ce06469
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088761"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291141"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>预览：使用 Azure Active Directory 身份验证登录到 Azure 中的 Linux 虚拟机
 
