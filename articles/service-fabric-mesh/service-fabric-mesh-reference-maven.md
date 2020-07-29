@@ -5,15 +5,17 @@ author: suhuruli
 ms.author: suhuruli
 ms.date: 11/26/2018
 ms.topic: reference
-ms.openlocfilehash: bcc3fb7c6c3adce0997d0960c4d98227089b048b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 3a1aa004f47ba700ef4b96004dfe5b835788dcc7
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75459014"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372461"
 ---
 # <a name="maven-plugin-for-service-fabric-mesh"></a>适用于 Service Fabric 网格的 Maven 插件
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Java SDK
 - Maven

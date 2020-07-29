@@ -12,15 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 4/15/2019
+ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36844c3c2fcfdbf016b3e2d148345e9ce31ea2b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: baf3566e90802f73accdd27f1cd5435e4af7b9be
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356145"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281814"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>对 Azure Active Directory 直通身份验证进行故障排除
 
@@ -62,7 +63,7 @@ ms.locfileid: "85356145"
 2. 导入代理计算机上的 PowerShell 模块：
  
  ```powershell
- Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication  Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
+ Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
  ```
 3. 运行调用 PowerShell 命令： 
 
@@ -93,7 +94,7 @@ ms.locfileid: "85356145"
 | 80002 | 身份验证代理的密码验证请求已超时。 | 检查是否可以从身份验证代理访问你的 Active Directory。
 | 80003 | 身份验证代理收到的响应无效。 | 如果在多个用户中均可重现此问题，请检查你的 Active Directory 配置。
 | 80004 | 在登录请求中使用的用户主体名称 (UPN) 不正确。 | 要求用户使用正确的用户名登录。
-| 80005 | 身份验证代理：出现错误。 | 暂时性的错误。 请稍后重试。
+| 80005 | 身份验证代理：出现错误。 | 暂时性的错误。 请稍后再试。
 | 80007 | 身份验证代理无法连接到 Active Directory。 | 检查是否可以从身份验证代理访问你的 Active Directory。
 | 80010 | 身份验证代理无法解密密码。 | 如果可始终重现该问题，请安装并注册新的身份验证代理。 并卸载当前的代理。 
 | 80011 | 身份验证代理无法检索到解密密钥。 | 如果可始终重现该问题，请安装并注册新的身份验证代理。 并卸载当前的代理。

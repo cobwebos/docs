@@ -1,7 +1,7 @@
 ---
 title: 创建、更改或删除 Azure 公共 IP 地址前缀
 titlesuffix: Azure Virtual Network
-description: 了解如何创建、更改或删除公共 IP 地址前缀。
+description: 了解公共 IP 地址前缀以及查找其他信息的位置（如果您不熟悉）。 还了解如何创建、更改或删除一个。
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: allensu
-ms.openlocfilehash: 4eac4a7ecc6febedd205fcde45ea550dd15a6b93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85e649944b155fc9e51fe01c282fc7f34f8a00d2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84703836"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283157"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>创建、更改或删除公共 IP 地址前缀
 
@@ -70,7 +71,7 @@ ms.locfileid: "84703836"
 
    |设置|必需？|详细信息|
    |---|---|---|
-   |“属性”|是|公共 IP 地址的名称在所选的资源组中必须唯一。|
+   |名称|是|公共 IP 地址的名称在所选的资源组中必须唯一。|
    |空闲超时(分钟)|否|在不依赖客户端发送保持连接消息的情况下，TCP 或 HTTP 连接持续打开的分钟数。 |
    |DNS 名称标签|否|必须在创建该名称的 Azure 区域（跨所有订阅和所有客户）中保持唯一。 Azure 会在其 DNS 中自动注册该名称和 IP 地址，使你能够连接到使用该名称的资源。 Azure 会将“location.cloudapp.azure.com”**（其中 location 是所选的位置）此类默认子网追加到提供的名称后面，以创建完全限定的 DNS 名称。有关详细信息，请参阅[将 Azure DNS 与 Azure 公共 IP 地址配合使用](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address)。|
 

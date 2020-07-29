@@ -6,19 +6,19 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: 59d5c6c4a9c3af70eb08e9d5a05d516f4b8b8bdd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d85fe36bb948ae9a0c81fa25f87450c7f5fe93b7
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096633"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337256"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-preview"></a>Azure Cache for Redis 与 Azure Private Link （预览版）
 Azure 专用终结点是一个网络接口，该接口将你私下并安全地连接到 Azure 缓存，以供 Azure 专用链接提供支持的 Redis。 
 
 在本文中，你将了解如何使用 Azure 门户创建 Azure 缓存、Azure 虚拟网络和专用终结点。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * Azure 订阅- [免费创建一个](https://azure.microsoft.com/free/)
 
 > [!NOTE]
@@ -29,11 +29,11 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
 ## <a name="create-a-cache"></a>创建缓存
 1. 若要创建缓存，请登录到 [Azure 门户](https://portal.azure.com)并选择“创建资源”  。 
 
-    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="选择 创建资源。":::
+    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="选择 "创建资源"。":::
    
 1. 在“新建”页上选择“数据库”，然后选择“Azure Cache for Redis”。  
 
-    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="为 Redis 选择 Azure 缓存。":::
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="为 Redis 选择 "Azure 缓存"。":::
    
 1. 在“新建 Redis 缓存”页上配置新缓存的设置。
    
@@ -59,7 +59,7 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
 
 1. 选择“创建资源”。
 
-    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="选择 创建资源。":::
+    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="选择 "创建资源"。":::
 
 2. 在 "**新建**" 页上，选择 "**网络**"，然后选择 "**虚拟网络**"。
 
@@ -73,7 +73,7 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
     | 订阅     | 单击下拉箭头并选择你的订阅。                                  |
     | 资源组   | 下拉，然后选择一个资源组。 |
     | **实例详细信息** |                                                                 |
-    | 名称             | 回车**\<virtual-network-name>**                                    |
+    | 名称             | 输入“\<virtual-network-name>”                                    |
     | 区域           | 单击**\<region-name>** |
 
 4. 选择 " **Ip 地址**" 选项卡，或选择页面底部的 " **ip 地址**" 按钮。
@@ -82,7 +82,7 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
 
     | 设置            | 值                      |
     |--------------------|----------------------------|
-    | IPv4 地址空间 | 回车**\<IPv4-address-space>** |
+    | IPv4 地址空间 | 输入“\<IPv4-address-space>” |
 
 6. 在 "**子网名称**" 下，选择 word**默认值**。
 
@@ -90,14 +90,14 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
 
     | 设置            | 值                      |
     |--------------------|----------------------------|
-    | 子网名称 | 回车**\<subnet-name>** |
-    | 子网地址范围 | 回车**\<subnet-address-range>**
+    | 子网名称 | 输入“\<subnet-name>” |
+    | 子网地址范围 | 输入“\<subnet-address-range>”
 
 8. 选择“保存” 。
 
 9. 选择 "**查看**" 和 "创建" 选项卡或选择 "查看" 和 "**创建**" 按钮。
 
-10. 选择“创建” 。
+10. 选择“创建”。
 
 
 ## <a name="create-a-private-endpoint"></a>创建专用终结点 
@@ -110,7 +110,7 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
 
 2. 在屏幕左侧选择 "**专用终结点**"。
 
-    :::image type="content" source="media/cache-private-link/8-select-private-endpoint.png" alt-text="选择 专用链接。":::
+    :::image type="content" source="media/cache-private-link/8-select-private-endpoint.png" alt-text="选择 "专用链接"。":::
 
 3. 选择 " **+ 添加**" 按钮以创建专用终结点。 
 
@@ -118,7 +118,7 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
 
 4. 在 "**创建专用终结点" 页**上，配置专用终结点的设置。
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 单击下拉箭头并选择你的订阅。 |
@@ -149,3 +149,9 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
 11. 选择“查看 + 创建”。 **** 你将转到 " **查看**" 和 "创建   " 选项卡，Azure 将在其中验证你的配置。
 
 12. 出现绿色**验证通过**消息后，选择 "**创建**"。
+
+
+## <a name="next-steps"></a>后续步骤
+
+若要了解有关专用链接的详细信息，请参阅[Azure 专用链接文档](https://docs.microsoft.com/azure/private-link/private-link-overview)。 
+

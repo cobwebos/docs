@@ -1,6 +1,6 @@
 ---
-title: Windows 虚拟桌面主机池负载平衡（秋季2019）-Azure
-description: 了解 Windows 虚拟桌面（秋季2019版）环境的主机池负载平衡方法。
+title: Windows 虚拟桌面（经典）主机池负载平衡-Azure
+description: Windows 虚拟桌面环境的主机池负载平衡方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 50819fc6b1e13aeb1c0eddf306ecdfbe8147a44f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3854471b2e74bd7c3315ae622a36588af0270d8c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046265"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284993"
 ---
-# <a name="host-pool-load-balancing-methods-fall-2019-release"></a>主机池负载平衡方法（秋季2019版）
+# <a name="host-pool-load-balancing-methods-in-windows-virtual-desktop-classic"></a>Windows 虚拟桌面中的主机池负载平衡方法（经典）
 
 >[!IMPORTANT]
->本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。 如果要尝试管理 2020 年春季版更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../host-pool-load-balancing.md)。
+>此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。 如果尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../host-pool-load-balancing.md)。
 
 Windows 虚拟桌面支持两种负载平衡方法。 每个方法都确定在连接到主机池中的资源时，哪些会话主机将承载用户会话。
 

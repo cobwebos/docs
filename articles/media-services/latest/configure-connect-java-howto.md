@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2019
+ms.custom: devx-track-java
 ms.author: juliako
-ms.openlocfilehash: 2337a7543f84d7eba5f565d875129cf22e8b27ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 098e1db7470124dc7c15b3ee65d6ab9cb3fadabd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001207"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319824"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>连接到媒体服务 v3 API - Java
 

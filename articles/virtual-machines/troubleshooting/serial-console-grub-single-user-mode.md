@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: e31a10b1086679b7c2493f5a6d6b62f75e363dd4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3b074bb1d439a6d20ac476f4e10b6a26b7107be8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036465"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284704"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>使用串行控制台访问 GRUB 和单用户模式
 在启动虚拟机（VM）时，可能会出现 "总计启动加载（GRUB）"。 由于它是在操作系统开始之前显示的，因此无法通过 SSH 访问 GRUB。 在 GRUB 中，可以修改启动配置，使其在单用户模式下启动。
@@ -241,7 +241,7 @@ Oracle Linux 原本就启用了 GRUB。 若要进入 GRUB，请运行来重新�
 ## <a name="next-steps"></a>后续步骤
 若要详细了解串行控制台，请参阅：
 * [Linux 串行控制台文档](serial-console-linux.md)
-* [使用串行控制台在各种分发中启用 GRUB](/archive/blogs/linuxonazure/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time)
+* [使用串行控制台在各种分发中启用 GRUB](http://linuxonazure.azurewebsites.net/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)
 * [对 NMI 和 SysRq 调用使用串行控制台](serial-console-nmi-sysrq.md)
 * [适用于 Windows Vm 的串行控制台](serial-console-windows.md)
 * [启动诊断](boot-diagnostics.md)

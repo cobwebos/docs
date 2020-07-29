@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: e547ae59f7b3260f46756825bca2bef1c10bcc97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52bf42434640dc965999895549b4fa12a139dcce
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75665881"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284058"
 ---
 # <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用查找必应搜索中的结果
 
@@ -20,9 +21,9 @@ ms.locfileid: "75665881"
 例如，可以根据搜索条件查找新闻项，并用 Twitter 将这些项发布为 Twitter 信息提要中的推文。
 
 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
-如需特定于连接器的技术信息，请参阅[必应搜索连接器参考](https://docs.microsoft.com/connectors/bingsearch/)。
+如需特定于连接器的技术信息，请参阅[必应搜索连接器参考](/connectors/bingsearch/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [认知服务帐户](../cognitive-services/cognitive-services-apis-create-account.md)
 
@@ -49,10 +50,10 @@ ms.locfileid: "75665881"
 
    对于此示例，请提供从必应搜索返回匹配的新闻文章的条件。
 
-   | properties | 必须 | 值 | 描述 |
+   | 属性 | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | 搜索查询 | 是 | <*搜索词*> | 输入要使用的搜索关键字。 |
-   | 市场 | 是 | <区域设置> | 搜索区域设置。 默认为“zh-CN”，但可以选择另一个值。 |
+   | 市场 | 是 | <*locale*> | 搜索区域设置。 默认为“zh-CN”，但可以选择另一个值。 |
    | 安全搜索 | 是 | <*搜索级别*> | 用于排除成人内容的筛选级别。 默认为“中等”，但可以选择另一个级别。 |
    | 计数 | 否 | <*结果-计数*> | 返回指定数量的结果。 默认为 20，但可以指定另一个值。 实际返回的结果数可能会少于指定的数量。 |
    | Offset | 否 | <*skip-值*> | 返回结果前要跳过的结果数 |
@@ -100,10 +101,10 @@ ms.locfileid: "75665881"
 
    对于此示例，提供返回触发器结果子集的条件。
 
-   | properties | 必须 | 值 | 描述 |
+   | 属性 | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | 搜索查询 | 是 | <*搜索表达式*> | 输入用于查询触发器结果的表达式。 可以从动态内容列表的字段中进行选择，或使用表达式生成器创建表达式。 |
-   | 市场 | 是 | <区域设置> | 搜索区域设置。 默认为“zh-CN”，但可以选择另一个值。 |
+   | 市场 | 是 | <*locale*> | 搜索区域设置。 默认为“zh-CN”，但可以选择另一个值。 |
    | 安全搜索 | 是 | <*搜索级别*> | 用于排除成人内容的筛选级别。 默认为“中等”，但可以选择另一个级别。 |
    | 计数 | 否 | <*结果-计数*> | 返回指定数量的结果。 默认为 20，但可以指定另一个值。 实际返回的结果数可能会少于指定的数量。 |
    | Offset | 否 | <*skip-值*> | 返回结果前要跳过的结果数 |
@@ -147,7 +148,7 @@ ms.locfileid: "75665881"
 
 1. 系统提示输入连接信息时，请提供以下详细信息：
 
-   | properties | 必须 | 值 | 说明 |
+   | 属性 | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | 连接名称 | 是 | <*connection-name*> | 为连接创建的名称 |
    | API 版本 | 是 | <*API 版本*> | 默认情况下，必应搜索 API 版本设置为当前版本。 可以根据需要选择早期版本。 |
@@ -158,7 +159,7 @@ ms.locfileid: "75665881"
 
    ![创建连接](./media/connectors-create-api-bing-search/bing-search-create-connection.png)
 
-2. 完成后，选择“创建”。
+2. 完成操作后，选择“创建”。
 
 ## <a name="connector-reference"></a>连接器参考
 
@@ -167,3 +168,4 @@ ms.locfileid: "75665881"
 ## <a name="next-steps"></a>后续步骤
 
 * 了解其他[逻辑应用连接器](../connectors/apis-list.md)
+

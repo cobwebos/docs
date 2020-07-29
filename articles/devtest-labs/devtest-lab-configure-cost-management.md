@@ -3,12 +3,12 @@ title: 查看 Azure 开发测试实验室的每月估计实验室成本趋势
 description: 本文介绍了如何在 Azure 开发测试实验室中跟踪实验室（每月预估成本趋势图表）的成本。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b8bf8b1db82983cd7e1ecc5a45bf2d47a2787cc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 220cbd1bc793e4bcfdf03a184d7463114506e6e0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482762"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283820"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>跟踪与 Azure 开发测试实验室中的实验室相关的成本
 本文提供了有关如何跟踪实验室成本的信息。 其中介绍了如何查看实验室当前日历月的估计成本趋势。 本文还介绍了如何在实验室中查看每个资源的每月到目前的成本。
@@ -18,7 +18,7 @@ ms.locfileid: "85482762"
 
 若要查看月评估成本趋势图表，请按以下步骤操作： 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 选择“所有服务”****，并从列表中选择“开发测试实验室”****。
 3. 在实验室列表中，选择实验室。  
 4. 在左侧菜单中选择 "**配置和策略**"。  
@@ -69,12 +69,12 @@ ms.locfileid: "85482762"
      - 同样，如果定义 Webhook URL，则须在“成本阈值”窗格中将“通知”设置为“开”。********
      - 须在将 Webhook 输入此处之前创建 Webhook。  
 
-       有关 Webhook 的详细信息，请参阅[创建 Webhook 或 API Azure 函数](../azure-functions/functions-create-a-web-hook-or-api-function.md)。 
+       有关 Webhook 的详细信息，请参阅[创建 Webhook 或 API Azure 函数](../azure-functions/functions-bindings-http-webhook.md)。 
 
 ## <a name="view-cost-by-resource"></a>按资源查看成本 
 使用实验室中的每月成本趋势功能，你可以查看当前日历月所用的空间。 它还会根据您在过去7天内的支出，显示到月末结束之前的计划。 为了帮助你了解实验室中的支出在提前达到阈值的原因，你可以使用**按资源**划分的成本功能，该功能可显示表中**每个资源**的本月到目前的成本。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 选择“所有服务”****，并从列表中选择“开发测试实验室”****。
 3. 从实验室列表，选择所需的实验室。  
 4. 在左侧菜单中选择 "**配置和策略**"。
@@ -93,4 +93,3 @@ ms.locfileid: "85482762"
 * [创建自定义映像](devtest-lab-create-template.md) - 创建 VM 时，指定一个基本映像，可以是自定义映像或市场映像。 本文演示了如何从 VHD 文件创建自定义映像。
 * [配置市场映像](devtest-lab-configure-marketplace-images.md) - 开发测试实验室支持创建基于 Azure 市场映像的 VM。 本文展示了如何指定可用于在实验室中创建 VM 的 Azure 市场映像（如果有）。
 * [在实验室中创建 VM](devtest-lab-add-vm.md) - 演示了如何从基本映像（自定义或市场映像）创建 VM，以及如何在 VM 中使用项目。
-

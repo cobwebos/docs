@@ -1,6 +1,6 @@
 ---
 title: Azure 网络服务概述
-description: 了解 Azure 中的网络服务及其功能 - 连接服务、应用程序保护服务、应用程序交付服务和网络监视。
+description: 了解 Azure 中的网络服务，包括连接服务、应用程序保护服务、应用程序交付服务和网络监视。
 services: networking
 documentationcenter: na
 author: KumudD
@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 097d2b4dffd1dda02d8e342a11b3a907bad4e90a
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 5b32f6b368af62bad13a505472a9ddd4709c032c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851647"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282154"
 ---
 # <a name="azure-networking-services-overview"></a>Azure 网络服务概述
 
@@ -71,7 +71,7 @@ Azure Virtual WAN 是一种网络服务，提供到 Azure 并穿过该服务的�
 ![虚拟 WAN 示意图](./media/networking-overview/virtualwan1.png)
 
 ### <a name="azure-dns"></a><a name="dns"></a>Azure DNS
-Azure DNS 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。 有关详细信息，请参阅[什么是 Azure DNS？](../dns/dns-overview.md)
+Azure DNS 是 DNS 域的托管服务，DNS 域使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。 有关详细信息，请参阅[什么是 Azure DNS？](../dns/dns-overview.md)
 
 ### <a name="azure-bastion"></a><a name="bastion"></a>Azure Bastion
 Azure Bastion 服务是的一种新型的完全托管平台 PaaS 服务，可在虚拟网络中进行预配。 可通过 TLS 直接在 Azure 门户中实现与虚拟机之间的安全无缝的 RDP/SSH 连接。 在你通过 Azure Bastion 连接时，你的虚拟机无需公共 IP 地址。 有关详细信息，请参阅[什么是 Azure 堡垒？](../bastion/bastion-overview.md)。
@@ -190,7 +190,7 @@ Azure 应用程序网关是一种 Web 流量负载均衡器，可用于管理 We
 |[网络观察程序](#networkwatcher)|帮助监视和排查连接问题，帮助诊断 VPN、NSG 和路由问题，捕获 VM 上的数据包，使用 Azure Functions 和逻辑应用自动触发诊断工具|<p>[诊断 VM 流量筛选器问题](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md)</p><p>[诊断 VM 路由问题](../network-watcher/diagnose-vm-network-routing-problem.md)</p><p>[监视 VM 之间的通信](../network-watcher/connection-monitor.md)</p><p>[诊断网络之间的通信问题](../network-watcher/diagnose-communication-problem-between-networks.md)</p><p>[记录传入和传出 VM 的网络流量](../network-watcher/network-watcher-nsg-flow-logging-portal.md)</p>|
 |[ExpressRoute 监视器](#expressroutemonitor)|提供网络性能、可用性和利用率的实时监视，帮助自动发现网络拓扑，提供更快的故障隔离，检测暂时性网络问题，帮助分析历史网络性能特征，支持多订阅|<p>[为 ExpressRoute 配置网络性能监视器](../expressroute/how-to-npm.md)</p><p>[ExpressRoute 监视、指标和警报](../expressroute/expressroute-monitoring-metrics-alerts.md)</p>|
 |[Azure Monitor](#azuremonitor)|帮助你了解应用程序的性能，并主动识别影响应用程序及其所依赖资源的问题。|<p>[流量管理器指标和警报](../traffic-manager/traffic-manager-metrics-alerts.md)</p><p>[针对标准负载均衡器的 Azure Monitor 诊断](../load-balancer/load-balancer-standard-diagnostics.md)</p><p>[监视 Azure 防火墙日志和指标](../firewall/tutorial-diagnostics.md)</p><p>[Azure web application firewall monitoring and logging](../frontdoor/waf-front-door-monitor.md)（Azure Web 应用程序防火墙监视和日志记录）</p>|
-|[虚拟网络 TAP](#vnettap)|提供对数据包收集器的虚拟机网络流量的连续流式处理，启用网络和应用程序性能管理解决方案和安全分析工具|[创建 VNet 点击资源](../virtual-network/tutorial-tap-virtual-network-cli.md)|
+|[虚拟网络点击](#vnettap)|提供对数据包收集器的虚拟机网络流量的连续流式处理，启用网络和应用程序性能管理解决方案和安全分析工具|[创建 VNet 点击资源](../virtual-network/tutorial-tap-virtual-network-cli.md)|
 |
 
 ### <a name="network-watcher"></a><a name="networkwatcher"></a>网络观察程序
@@ -199,7 +199,7 @@ Azure 网络观察程序提供所需的工具用于监视、诊断 Azure 虚拟�
 若要了解如何查看 ExpressRoute 线路指标、资源日志和警报，请参阅 [ExpressRoute 监视、指标和警报](../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json)。
 ### <a name="azure-monitor"></a><a name="azuremonitor"></a>Azure Monitor
 Azure Monitor 提供用于收集、分析和处理来自云与本地环境的遥测数据的综合解决方案，可将应用程序的可用性和性能最大化。 它可以帮助你了解应用程序的性能，并主动识别影响应用程序及其所依赖资源的问题。 有关详细信息，请参阅 [Azure Monitor 概述](../azure-monitor/overview.md?toc=%2fazure%2fnetworking%2ftoc.json)。
-### <a name="virtual-network-tap"></a><a name="vnettap"></a>虚拟网络 TAP
+### <a name="virtual-network-tap"></a><a name="vnettap"></a>虚拟网络点击
 通过 Azure 虚拟网络 TAP（终端接入点），可让你持续将虚拟机网络流量流式传输到网络数据包收集器或分析工具。 收集器或分析工具由[网络虚拟设备](https://azure.microsoft.com/solutions/network-appliances/)合作伙伴提供。 
 
 下图显示虚拟网络 TAP 的工作原理。 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: surmb
-ms.openlocfilehash: 46cb4d0d099cd21db3ce51c337d3b059206bb425
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2ee34e1a7959aafa5db949b443fd58cca58719c6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096560"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281185"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>用应用程序网关重写 HTTP 标头和 URL
 
@@ -59,7 +59,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 使用重写操作来指定要重写的 URL、请求标头或响应标头以及要将其重写到的新值。 URL 或新的或现有的标头的值可以设置为以下类型的值：
 
-* Text
+* 文本
 * 请求标头。 若要指定请求标头，需使用语法 {http_req_*headerName*}
 * 响应标头。 若要指定响应标头，需使用语法 {http_resp_*headerName*}
 * 服务器变量。 若要指定服务器变量，需使用语法 {var_*serverVariable*}。 请参阅支持的服务器变量列表
@@ -109,25 +109,25 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 | add_x_forwarded_for_proxy | 带有变量（请参阅此表后面的说明）的 X 转发的客户端请求标头字段 `client_ip` 的格式为 IP1、IP2、IP3 等。 如果的 X 转发的字段不在客户端请求标头中，则该 `add_x_forwarded_for_proxy` 变量等于 `$client_ip` 变量。   如果要重写应用程序网关设置的 X 转发的标头，使标头只包含没有端口信息的 IP 地址，则此变量特别有用。 |
 | ciphers_supported         | 客户端支持的加密法列表。               |
 | ciphers_used              | 用于建立的 TLS 连接的密码字符串。 |
-| client_ip                 | 应用程序网关从中接收请求的客户端的 IP 地址。 如果在应用程序网关和发起方的客户端之前有反向代理， *client_ip*将返回反向代理的 ip 地址。 |
+| client_ip                 | 应用程序网关从中接收请求的客户端的 IP 地址。 如果在应用程序网关和发起方的客户端之前有反向代理， `client_ip` 将返回反向代理的 IP 地址。 |
 | client_port               | 客户端端口。                                             |
 | client_tcp_rtt            | 有关客户端 TCP 连接的信息。 在支持 TCP_INFO 套接字选项的系统上可用。 |
 | client_user               | 使用 HTTP 身份验证时，提供用于身份验证的用户名。 |
-| 主机                      | 此优先级顺序如下：请求行中的主机名、主机请求标头字段中的主机名或与请求匹配的服务器名称。 示例：在请求中 *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* ，主机值将为*contoso.com* |
+| 主机                      | 此优先级顺序如下：请求行中的主机名、主机请求标头字段中的主机名或与请求匹配的服务器名称。 示例：在请求中 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` ，主机值将是`contoso.com` |
 | cookie_*name*             | *name* Cookie。                                           |
 | http_method               | 用于发出 URL 请求的方法。 例如，GET 或 POST。 |
 | http_status               | 会话状态。 例如 200、400 或 403。           |
 | http_version              | 请求协议。 通常为 HTTP/1.0、HTTP/1.1 或 HTTP/2.0。 |
-| query_string              | 请求的 URL 中的 "？" 后面的变量/值对的列表。 示例：在请求中 *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* ，query_string 值将为*id = 123&title = fabrikam* |
+| query_string              | 请求的 URL 中的 "？" 后面的变量/值对的列表。 示例：在请求中 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` ，query_string 值将为`id=123&title=fabrikam` |
 | received_bytes            | 请求的长度（包括请求行、标头和请求正文）。 |
 | request_query             | 请求行中的参数。                           |
 | request_scheme            | 请求方案：http 或 https。                           |
-| request_uri               | 完整的原始请求 URI（带参数）。 示例：在请求中 *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* ，request_uri 值将为 */article.aspx？ id = 123&title = fabrikam* |
+| request_uri               | 完整的原始请求 URI（带参数）。 示例：在请求中 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam*` ，request_uri 值将为`/article.aspx?id=123&title=fabrikam` |
 | sent_bytes                | 发送到客户端的字节数。                        |
 | server_port               | 接受请求的服务器端口。              |
 | ssl_connection_protocol   | 已建立的 TLS 连接的协议。               |
 | ssl_enabled               | 如果连接在 TLS 模式下建立，则为“On”。 否则为空字符串。 |
-| uri_path                  | 标识宿主中 web 客户端要访问的特定资源。 这是请求 URI 中没有参数的部分。 示例：在请求中 *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* ，uri_path 值将为 */article.aspx* |
+| uri_path                  | 标识宿主中 web 客户端要访问的特定资源。 这是请求 URI 中没有参数的部分。 示例：在请求中 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` ，uri_path 值将为`/article.aspx` |
 
  
 
@@ -230,7 +230,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 假设有一个购物网站方案，其中用户的可见性链接应简单明了，但后端服务器需要查询字符串参数来显示正确的内容。
 
-在这种情况下，应用程序网关可以从 URL 捕获参数，并从 URL 添加查询字符串键值对。 例如，假设用户想要重写 https://www.contoso.com/fashion/shirts 到 https://www.contoso.com/buy.aspx?category=fashion&product=shirts ，可以通过以下 URL 重写配置来实现。
+在这种情况下，应用程序网关可以从 URL 捕获参数，并从 URL 添加查询字符串键值对。 例如，假设用户想要重写 `https://www.contoso.com/fashion/shirts` 到 `https://www.contoso.com/buy.aspx?category=fashion&product=shirts` ，可以通过以下 URL 重写配置来实现。
 
 **条件**-如果服务器变量 `uri_path` 等于模式`/(.+)/(.+)`
 

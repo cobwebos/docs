@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 9c927015114bb0e7230dcb96cd16a81e7763f64d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ad34195e003e0ca2d73000d3482cc79c3dbe3ee0
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325876"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372104"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes 服务群集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,6 +34,8 @@ ms.locfileid: "87325876"
 
 * 使用 Azure 机器学习 SDK、机器学习 CLI 或 [Azure 机器学习工作室](https://ml.azure.com)创建 AKS 群集。 此过程会自动将群集连接到工作区。
 * 将现有的 AKS 群集附加到 Azure 机器学习工作区。 可使用 Azure 机器学习 SDK、机器学习 CLI 或 Azure 机器学习工作室来附加群集。
+
+AKS 群集和 AML 工作区可以位于不同的资源组中。
 
 > [!IMPORTANT]
 > 创建或附加过程是一次性任务。 将 AKS 群集连接到工作区后，便可将其用于部署。 如果不再需要 AKS 群集，可将其拆离或删除。 拆离或删除后，将无法再部署到该群集。
@@ -61,11 +63,28 @@ ms.locfileid: "87325876"
 
 - 本文中的 CLI 片段假设已创建 `inferenceconfig.json` 文档____。 有关如何创建此文档的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
+- 如果附加的 AKS 群集[启用了授权 IP 范围以访问 API 服务器](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)，请为 AKS 群集启用 AML CONTOL 平面 IP 范围。 AML 控制平面跨配对区域部署，并在 AKS 群集上部署推断 pod。 如果不访问 API 服务器，则无法部署推断 pod。 在 AKS 群集中启用 IP 范围时，同时使用两个[成对区域]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions)的[ip 范围](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519)
+ 
+ - 计算名称在工作区中必须是唯一的
+   - 名称是必须提供的，且长度必须介于 3 到 24 个字符之间。
+   - 有效字符为大写字母、小写字母、数字和-字符。
+   - 名称必须以字母开头
+   - 名称必须在 Azure 区域内的全部现有计算中都是唯一的。 如果选择的名称不是唯一的，则会显示警报
+   
+ - 如果要将模型部署到 GPU 节点或 FPGA 节点（或任何特定的 SKU），则必须创建具有特定 SKU 的群集。 不支持在现有群集中创建辅助节点池并在辅助节点池中部署模型。
+ 
+ - 如果需要在群集中部署标准负载均衡器（SLB）而不是基本负载均衡器（BLB），请在 AKS 门户/CLI/SDK 中创建群集，并将其附加到 AML 工作区。 
+
+
+
 ## <a name="create-a-new-aks-cluster"></a>创建新的 AKS 群集
 
-**时间估计**：大约 20 分钟。
+**估计时间**：约10分钟。
 
 对于工作区而言，创建或附加 AKS 群集是一次性过程。 可以将此群集重复用于多个部署。 如果删除该群集或包含该群集的资源组，则在下次需要进行部署时必须创建新群集。 可将多个 AKS 群集附加到工作区。
+ 
+Azure 机器学习现在支持使用启用了专用链接的 Azure Kubernetes 服务。
+若要创建专用 AKS 群集，请[在此处](https://docs.microsoft.com/azure/aks/private-clusters)执行文档
 
 > [!TIP]
 > 如果要使用 Azure 虚拟网络保护 AKS 群集，则必须先创建虚拟网络。 有关详细信息，请参阅 [Azure 虚拟网络中的安全试验和推理](how-to-enable-virtual-network.md#aksvnet)。

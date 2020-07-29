@@ -4,24 +4,22 @@ description: 了解如何通过软删除来防止 Azure 文件共享被意外删
 ms.topic: conceptual
 ms.date: 02/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7070cb1ee3881fbec2c6f44eae18f3bc51f8051d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0ec2d3bf84aed19b608a92b6f21cd1674ba5b7cf
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054371"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282698"
 ---
 # <a name="accidental-delete-protection-for-azure-file-shares-using-azure-backup"></a>使用 Azure 备份对 Azure 文件共享的意外删除保护
 
-若要针对网络攻击或意外删除提供保护，在为各自的存储帐户中的任何文件共享配置备份时，会为存储帐户中的所有文件共享启用[软删除](../storage/files/storage-files-prevent-file-share-deletion.md)。 使用软删除时，即使恶意执行组件删除了文件共享，文件共享的内容和恢复点（快照）也至少保留了14天，允许恢复文件共享，而不会丢失数据。  
-
-仅标准存储帐户和高级存储帐户支持软删除，当前在[这些区域](azure-file-share-support-matrix.md)的 Azure 备份端启用软删除。
+若要针对网络攻击或意外删除提供保护，在为各自的存储帐户中的任何文件共享配置备份时，会为存储帐户中的所有文件共享启用[软删除](../storage/files/storage-files-prevent-file-share-deletion.md)。 使用软删除时，即使恶意执行组件删除了文件共享，文件共享的内容和恢复点（快照）也至少保留了14天，允许恢复文件共享，而不会丢失数据。  标准存储帐户和高级存储帐户支持软删除，Azure 备份会为托管备份文件共享的所有存储帐户启用软删除。
 
 以下流程图显示了在为存储帐户中的文件共享启用软删除时备份项的不同步骤和状态：
 
  ![软删除流程图](./media/soft-delete-afs/soft-delete-flow-chart.png)
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="when-will-soft-delete-be-enabled-for-file-shares-in-my-storage-account"></a>何时将对存储帐户中的文件共享启用软删除？
 

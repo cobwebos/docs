@@ -4,15 +4,15 @@ description: 了解如何使用合作伙伴中心在 Azure Marketplace 中创建
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: anbene
-ms.author: mingshen
+author: keferna
+ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: b2a1e523e2af8c0be9c4211dfc8a0ffd2a889ca0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5ead227d886805c0ed48ebb52c4c0e30ef13b851
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053668"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320028"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>创建 IoT Edge 模块产品/服务
 
@@ -231,7 +231,7 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 5. 隐私策略地址（链接）
 6. 名称
 7. 摘要
-8. 描述
+8. 说明
 9. 有用链接
 10. 屏幕截图/视频
 
@@ -252,7 +252,7 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 #### <a name="call-out-descriptions"></a>拨出说明
 
 1. 名称
-2. 描述
+2. 说明
 3. 有用链接
 4. 屏幕截图
 
@@ -418,7 +418,7 @@ Azure 容器注册表名称：提供包含容器映像的 [Azure 容器注册表
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. 访问密钥
+1. 访问键
 2. 用户名
 3. 密码
 

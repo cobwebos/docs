@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 550b4fb7ba17d911618e0b60d16c0a9f9d1f2cfa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 94c668e7ffaff81fed9c2e511bc38239069fa43e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077276"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305204"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>在 Azure Monitor 中使用 Log Analytics 网关连接无法访问 Internet 的计算机
 
@@ -89,7 +89,7 @@ Log Analytics 网关支持以下语言：
 
 Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它不支持安全套接字层 (SSL)。  为了确保传输到 Log Analytics 的数据的安全性，请将网关配置为至少使用 TLS 1.2。 旧版 TLS 或 SSL 容易受到攻击。 尽管这些协议目前允许后向兼容，但请勿使用。  
 
-有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)。 
+有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](./data-security.md#sending-data-securely-using-tls-12)。 
 
 ### <a name="supported-number-of-agent-connections"></a>支持的代理连接数
 
@@ -114,7 +114,7 @@ Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它�
  
    ![下载 Log Analytics 网关的步骤屏幕截图](./media/gateway/download-gateway.png)
 
-or 
+或 
 
 1. 在工作区边栏选项卡中的“设置”**** 下方，选择“高级设置”****。
 1. 中转到 "**连接的源**" "  >  **Windows 服务器**"，选择 "**下载 Log Analytics 网关**"。
@@ -141,7 +141,7 @@ or
    ![网关代理配置的屏幕截图](./media/gateway/gateway-wizard02.png)
 
 1. 如果尚未启用 Microsoft 更新，会显示“Microsoft 更新”页，可以在其中选择启用 Microsoft 更新。 做出选择，然后选择 "**下一步**"。 否则，继续执行下一步。
-1. 在“目标文件夹”页上，保留默认文件夹 C:\Program Files\OMS Gateway，或输入网关的安装位置。**** 然后选择“下一步”。
+1. 在“目标文件夹”页上，保留默认文件夹 C:\Program Files\OMS Gateway，或输入网关的安装位置。**** 然后，选择“下一步”。
 1. 在“准备安装”页上，选择“安装”。  如果用户帐户控制请求提供安装权限，请选择“是”。****
 1. 安装完成后，选择 "**完成**"。 若要验证该服务是否正在运行，请打开 services.msc 管理单元，并检查服务列表中是否出现“OMS 网关”并且其状态为“正在运行”。********
 
@@ -153,7 +153,7 @@ or
  
 下表突出显示了安装程序支持的参数。
 
-|参数| 注释|
+|参数| 说明|
 |----------|------| 
 |PORTNUMBER | 网关侦听的 TCP 端口号 |
 |PROXY | 代理服务器的 IP 地址 |
@@ -248,7 +248,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 首次向 Log Analytics 工作区注册 Operations Manager 管理组时，操作控制台中不会显示为管理组指定代理配置的选项。 只有在成功向服务注册管理组之后，此选项才可用。  
 
-若要配置集成，请在运行操作控制台的系统上，以及管理组中的所有管理服务器上，使用 Netsh 更新系统代理配置。 执行以下步骤：
+若要配置集成，请在运行操作控制台的系统上，以及管理组中的所有管理服务器上，使用 Netsh 更新系统代理配置。 执行以下步骤:
 
 1. 打开权限提升的命令提示符：
 
@@ -270,7 +270,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
    ![Operations Manager 的屏幕截图，其中显示了代理服务器地址](./media/gateway/scom02.png)
 
-1. 选择**完成**。 Operations Manager 管理组现已配置为通过网关服务器与 Log Analytics 服务通信。
+1. 选择“完成”。 Operations Manager 管理组现已配置为通过网关服务器与 Log Analytics 服务通信。
 
 ### <a name="configure-operations-manager-where-specific-agents-use-a-proxy-server"></a>配置 Operations Manager，其中的特定代理使用代理服务器
 
@@ -327,9 +327,9 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 如果步骤 3 出错，则表示该模块未导入。 如果 PowerShell 找不到该模块，则可能会发生此错误。 可在 OMS 网关安装路径中找到该模块： *C:\Program FILES\MICROSOFT OMS Gateway\PowerShell\OmsGateway*。
 
-| **Cmdlet** | **参数** | **描述** | **示例** |
+| **Cmdlet** | **参数** | **说明** | **示例** |
 | --- | --- | --- | --- |  
-| `Get-OMSGatewayConfig` |键 |获取服务的配置 |`Get-OMSGatewayConfig` |  
+| `Get-OMSGatewayConfig` |密钥 |获取服务的配置 |`Get-OMSGatewayConfig` |  
 | `Set-OMSGatewayConfig` |密钥（必需） <br> 值 |更改服务的配置 |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
 | `Get-OMSGatewayRelayProxy` | |获取中继（上游）代理的地址 |`Get-OMSGatewayRelayProxy` |  
 | `Set-OMSGatewayRelayProxy` |地址<br> 用户名<br> 密码（安全字符串） |设置中继（上游）代理的地址（和凭据） |1. 设置中继代理和凭据：<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2. 设置不需要身份验证的中继代理：`Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3. 清除中继代理设置：<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
@@ -388,4 +388,5 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 ## <a name="next-steps"></a>后续步骤
 
-[添加数据源](../../azure-monitor/platform/agent-data-sources.md)以便从连接的源中收集数据，并将数据存储在 Log Analytics 工作区中。
+[添加数据源](./agent-data-sources.md)以便从连接的源中收集数据，并将数据存储在 Log Analytics 工作区中。
+

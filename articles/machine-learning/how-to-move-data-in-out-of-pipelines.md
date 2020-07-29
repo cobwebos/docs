@@ -5,17 +5,17 @@ description: 了解 Azure 机器学习管道中数据的输入和输出。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: laobri
 author: lobrien
 ms.date: 07/20/2020
-ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 4c1a64b96e1548e0eeaadbccc5ff2ec3020f3ba2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to, contperfq4, tracking-python
+ms.openlocfilehash: 3fe49215055b5b090c9d8e4e25a832544c5c88ce
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030838"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319637"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>将数据移入 ML 管道和在 ML 管道之间移动数据的步骤 (Python)
 

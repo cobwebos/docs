@@ -2,15 +2,15 @@
 title: Azure Linux VM 的计算基准测试分数
 description: 比较运行 Linux 的 Azure VM 的 CoreMark 计算基准测试分数。
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/29/2020
 ms.reviewer: davberg
-ms.openlocfilehash: afe1bddd5822b506dcf2c177fc308b717ddc2129
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61deac4c94902dc392a23f05674e2b1fb3f3cf87
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82580445"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373413"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Linux VM 的计算基准测试分数
 以下 CoreMark 基准测试分数显示运行 Ubuntu 的 Azure 高性能 VM 产品阵容的计算性能。 此外，还提供了 [Windows VM](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)的计算基准测试分数。

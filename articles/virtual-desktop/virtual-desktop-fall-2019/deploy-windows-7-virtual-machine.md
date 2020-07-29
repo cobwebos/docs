@@ -1,6 +1,6 @@
 ---
-title: 部署 Windows 7 虚拟机 Windows 虚拟桌面秋季 2019-Azure
-description: 如何在 Windows 虚拟机上配置和部署 Windows 7 虚拟机。
+title: 部署 Windows 7 虚拟机 Windows 虚拟桌面（经典）-Azure
+description: 如何在 Windows 虚拟桌面上配置和部署 Windows 7 虚拟机 Windows 虚拟桌面（经典）。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,21 +8,21 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3d8ce67f129844c09a93b29c8100fe28096c520c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 99c82f63e88815edba13bf88ba23c18493649dd9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085871"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285078"
 ---
-# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop---fall-2019"></a>在 Windows 虚拟桌面上部署 Windows 7 虚拟机-秋季2019
+# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop-classic"></a>在 Windows 虚拟桌面（经典）上部署 Windows 7 虚拟机
 
 >[!IMPORTANT]
->本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。 如果要尝试管理 2020 年春季版更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../deploy-windows-7-virtual-machine.md)。
+>此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。 如果尝试管理 Windows 虚拟桌面当前版本中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../deploy-windows-7-virtual-machine.md)。
 
 在 Windows 虚拟机上部署 Windows 7 虚拟机（VM）的过程与运行更高版本 Windows 的 Vm 略有不同。 本指南将介绍如何部署 Windows 7。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请按照[使用 PowerShell 创建主机池](create-host-pools-powershell-2019.md)中的说明创建主机池。 之后，请按照在[Azure Marketplace 中创建主机池](create-host-pools-azure-marketplace-2019.md#optional-assign-additional-users-to-the-desktop-application-group)中的说明将一个或多个用户分配到桌面应用程序组。
 

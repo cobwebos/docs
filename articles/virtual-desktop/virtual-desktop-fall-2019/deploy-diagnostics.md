@@ -1,6 +1,6 @@
 ---
-title: 部署适用于 Windows 虚拟桌面的诊断工具-Azure
-description: 如何部署适用于 Windows 虚拟桌面的诊断 UX 工具。
+title: 部署适用于 Windows 虚拟桌面的诊断工具（经典）-Azure
+description: 如何部署适用于 Windows 虚拟桌面的诊断 UX 工具（经典）。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 544610f4011f7ad12d5b311aab3afd4bc1373ac5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf05d495442a39b42fddf5f373fb2616bf0c6fbe
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362333"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285095"
 ---
-# <a name="deploy-the-diagnostics-tool"></a>部署诊断工具
+# <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>部署 Windows 虚拟桌面（经典）诊断工具
 
 >[!IMPORTANT]
->本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。
+>此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。
 
 >[!IMPORTANT]
 >从2020年3月16日起，我们暂时禁用了影响用户体验的诊断查询，这是因为增加了对服务的需求。 这将导致工具停止工作，因为它依赖于这些查询才能运行。 当诊断查询再次可用时，我们将更新本文。
@@ -34,7 +34,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 - 向特定会话主机上的活动用户发送消息。
 - 将用户登录到会话主机。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 你需要创建 Azure Active Directory 应用注册和 Log Analytics 工作区，然后才能部署该工具的 Azure 资源管理器模板。 你或管理员需要这些权限才能执行此操作：
 

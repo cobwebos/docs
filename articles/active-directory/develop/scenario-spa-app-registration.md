@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 238bcc6c706f2fab969c98b73ca879d064498693
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: efd51e90bb14f3d97b76eb6ac45b384192bb8da0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026503"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311562"
 ---
 # <a name="single-page-application-app-registration"></a>单页应用程序：应用注册
 
 要在 Microsoft 标识平台中注册单页应用程序 (SPA)，请完成以下步骤。 注册步骤在支持隐式授权流的 MSAL 1.0 和支持使用 PKCE 的授权代码流的 MSAL 2.0 之间有所不同。
+
+[!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
 
 ## <a name="create-the-app-registration"></a>创建应用注册
 
@@ -67,7 +69,7 @@ ms.locfileid: "87026503"
 
 现在，你已经完成了单页应用程序 (SPA) 的注册，并配置了重定向 URI，客户端将被重定向到该 URI，并且安全令牌也将发送到该 URI。 通过选择“ID 令牌”和“访问令牌”中的一个或选择两个，即表示启用了隐式授权流。
 
-请按照[教程](tutorial-v2-javascript-spa.md)获取进一步指导。 
+请按照[教程](tutorial-v2-javascript-spa.md)获取进一步指导。
 
 ## <a name="note-about-authorization-flows"></a>关于授权流的注意事项
 

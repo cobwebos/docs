@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 7ec89d985c025814d903ae9a16f9b0f5123b3571
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef16339d9a584eb12c611a25d636a9287265953a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056437"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284330"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Azure API 管理层的基于功能的比较
 
@@ -31,7 +31,7 @@ ms.locfileid: "87056437"
 | Azure AD 集成<sup>1</sup>                                                             | 否          | 是       | 否    | 是      | 是     |
 | 虚拟网络 (VNet) 支持                                                               | 否          | 是       | 否    | 否       | 是     |
 | 多区域部署                                                                      | 否          | 否        | 否    | 否       | 是     |
-| 多个自定义域名                                                                 | 否          | 否        | 否    | 否       | 是     |
+| 多个自定义域名                                                                 | 否          | 是        | 否    | 否       | 是     |
 | 开发人员门户<sup>2</sup>                                                                 | 否          | 是       | 是   | 是      | 是     |
 | 内置缓存                                                                               | 否          | 是       | 是   | 是      | 是     |
 | 内置分析                                                                           | 否          | 是       | 是   | 是      | 是     |
@@ -42,7 +42,7 @@ ms.locfileid: "87056437"
 | [备份和还原](api-management-howto-disaster-recovery-backup-restore.md)               | 否          | 是       | 是   | 是      | 是     |
 | [基于 Git 的管理](api-management-configuration-repository-git.md)                        | 否          | 是       | 是   | 是      | 是     |
 | 直接管理 API                                                                        | 否          | 是       | 是   | 是      | 是     |
-| Azure Monitor 日志和指标                                                               | 是         | 是       | 是   | 是      | 是     |
+| Azure Monitor 日志和指标                                                               | “是”         | 是       | 是   | 是      | 是     |
 | 静态 IP                                                                                    | 否          | 是       | 是   | 是      | 是     |
 
 <sup>1</sup> 允许使用 Azure AD（和 Azure AD B2C）作为标识提供者，以用于开发人员门户上的用户登录。<br/>

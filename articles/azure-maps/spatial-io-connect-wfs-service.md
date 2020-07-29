@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 42e8356dabc8172ddb75595dc63b01aaf4244958
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 890bf60ac794740716817094a60f2b4cb4ba5835
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124657"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282783"
 ---
 # <a name="connect-to-a-wfs-service"></a>连接到 WFS 服务
 
@@ -26,7 +27,7 @@ Web 功能服务（WF）是一项 web 服务，用于查询具有标准化 API �
 - 仅使用发出的请求 `HTTP GET` 。
 - 支持的操作：
 
-    | 操作 | 说明 |
+    | Operation | 说明 |
     | :-- | :-- |
     | GetCapabilities | 使用有效的 WF 操作和参数生成元数据文档 |
     | GetFeature | 返回数据源中的选定功能 |

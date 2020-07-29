@@ -5,12 +5,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中使用静态
 services: container-service
 ms.topic: article
 ms.date: 07/21/2020
-ms.openlocfilehash: 89068210e0a2656c0a0642417532b28d8f10d93a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 38caddeece7b8e2a49d09e25a22e9996cf65d069
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130845"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87335947"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用静态公共 IP 地址创建入口控制器
 
@@ -65,9 +65,12 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 > 以下示例为名为 *ingress-basic* 的入口资源创建 Kubernetes 命名空间。 根据需要为你自己的环境指定一个命名空间。 如果 AKS 群集未启用 RBAC，请将 `--set rbac.create=false` 添加到 Helm 命令中。
 
 > [!TIP]
-> 若要为对群集中容器的请求启用[客户端源 IP 保留][client-source-ip]，请将 `--set controller.service.externalTrafficPolicy=Local` 添加到 Helm install 命令中。 客户端源 IP 存储在 X-Forwarded-For 下的请求头中。 使用启用了客户端源 IP 保留的入口控制器时，TLS 传递将不起作用。
+> 若要为对群集中容器的请求启用[客户端源 IP 保留][client-source-ip]，请将 `--set controller.service.externalTrafficPolicy=Local` 添加到 Helm install 命令中。 客户端源 IP 存储在 X-Forwarded-For 下的请求头中。 使用启用了“客户端源 IP 保留”的入口控制器时，TLS 直通将不起作用。
 
-使用入口控制器的 IP 地址以及要用于 FQDN 前缀的唯一名称来更新以下脚本 ：
+使用入口控制器的**IP 地址**以及要用于 FQDN 前缀的**唯一名称**更新以下脚本。
+
+> [!IMPORTANT]
+> 运行命令时，必须更新替换*STATIC_IP* ，并将其*DNS_LABEL*为自己的 IP 地址和唯一名称。
 
 ```console
 # Create a namespace for your ingress resources
@@ -83,7 +86,7 @@ helm install nginx-ingress stable/nginx-ingress \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set controller.service.loadBalancerIP="STATIC_IP" \
-    --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"="demo-aks-ingress"
+    --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"="DNS_LABEL"
 ```
 
 为 NGINX 入口控制器创建 Kubernetes 负载均衡器服务时，会分配你的静态 IP 地址，如以下示例输出中所示：

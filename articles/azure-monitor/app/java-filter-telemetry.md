@@ -3,12 +3,13 @@ title: 在 Java Web 应用中筛选 Azure Application Insights 遥测
 description: 筛选出无需监视的事件，减少遥测流量。
 ms.topic: conceptual
 ms.date: 3/14/2019
-ms.openlocfilehash: cd53a0e02eb43bdf7cde4952ed4835c6d1cdd126
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-java
+ms.openlocfilehash: 825c807d9af542e8776e3b6361b8f6b6dd08f164
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322578"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372172"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>在 Java Web 应用中筛选遥测
 

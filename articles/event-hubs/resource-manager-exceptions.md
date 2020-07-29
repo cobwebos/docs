@@ -3,12 +3,12 @@ title: Azure 事件中心 - 资源管理器异常 | Microsoft Docs
 description: Azure 资源管理器公开的 Azure 事件中心异常列表以及建议的处理措施。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: d8d52f0a0c58ee756afa4d5d8599e2981edb9cdc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa1a3ca647bbf9e6590446549455a9853411fd7d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312513"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281032"
 ---
 # <a name="azure-event-hubs---resource-manager-exceptions"></a>Azure 事件中心 - 资源管理器异常
 本文列出了使用 Azure 资源管理器通过模板或直接调用来与 Azure 事件中心交互时生成的异常。
@@ -44,7 +44,7 @@ ms.locfileid: "85312513"
 | BadRequest | 无 | 无法更新辅助命名空间 | 无法更新命名空间，因为它是[GeoDR 配对](event-hubs-geo-dr.md)中的辅助命名空间。 | 如果需要，请改为对此配对中的主要命名空间进行更改。 否则，中断 GeoDR 配对以进行更改。 |
 | BadRequest | 无 | 无法在基本 SKU 中设置自动扩充 | 无法在基本层事件中心命名空间中启用自动扩充。 | 若要在命名空间中[启用自动扩充](event-hubs-auto-inflate.md)，请确保它位于标准层。 |
 | BadRequest | 无 | 容量不足，无法创建命名空间。 请联系事件中心管理员。 | 所选区域已达到容量限制，无法创建更多命名空间。 | 选择另一个区域来容纳命名空间。 |
-| BadRequest | 无 | 无法对实体类型 'ConsumerGroup' 执行该操作，因为命名空间 '<命名空间名称>' 使用的是“基本”层。  | 基本层事件中心命名空间的 [配额]((event-hubs-quotas.md#event-hubs-basic-and-standard---quotas-and-limits) 为一个使用者组（默认设置）。 不支持创建更多使用者组。 | 继续使用默认使用者组 ($Default)，如果需要更多使用者组，请考虑改用标准层事件中心命名空间。 | 
+| BadRequest | 无 | 无法对实体类型 'ConsumerGroup' 执行该操作，因为命名空间 '<命名空间名称>' 使用的是“基本”层。  | 基本层事件中心命名空间具有一个使用者组（默认值）的[配额](event-hubs-quotas.md#event-hubs-basic-and-standard---quotas-and-limits)。 不支持创建更多使用者组。 | 继续使用默认使用者组 ($Default)，如果需要更多使用者组，请考虑改用标准层事件中心命名空间。 | 
 | BadRequest | 无 | 命名空间 '<命名空间名称>' 不存在。 | 找不到提供的命名空间。 | 仔细检查命名空间名称是否正确，以及是否可以在订阅中找到该名称。 如果找不到，请[创建事件中心命名空间](event-hubs-create.md)。 | 
 | BadRequest | 无 | 资源的 location 属性与其包含命名空间不匹配。 | 在特定区域中创建事件中心失败，因为此区域与命名空间的区域不匹配。 | 尝试在命名空间所在的同一区域中创建事件中心。 | 
 

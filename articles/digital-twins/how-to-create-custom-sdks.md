@@ -7,23 +7,26 @@ ms.author: baanders
 ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2e2a7f09ac6ff3be119a07ed0a2162525801ceef
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e7533b87e28fa2bb95aaaddd31f7871e8ccdb600
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87061853"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285605"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>使用 AutoRest 创建 Azure 数字孪生的自定义 Sdk
 
-目前，用于与 Azure 数字孪生 Api 交互的已发布数据平面 SDK 仅适用于 .NET （c #）。 你可以阅读有关 .NET SDK 和 Api 的一般信息，请参阅[*操作方法：使用 Azure 数字孪生 api 和 sdk*](how-to-use-apis-sdks.md)。 如果你使用的是另一种语言，本文将演示如何使用 AutoRest 根据你选择的语言生成自己的 SDK。
+目前，用于与 Azure 数字孪生 Api 交互的已发布数据平面 SDK 仅适用于 .NET （c #）。 你可以阅读有关 .NET SDK 和 Api 的一般信息，请参阅[*操作方法：使用 Azure 数字孪生 api 和 sdk*](how-to-use-apis-sdks.md)。 如果你使用的是另一种语言，本文将演示如何使用 AutoRest 按你选择的语言生成自己的数据平面 SDK。
+
+>[!NOTE]
+> 如果需要，还可以使用 AutoRest 生成控制平面 SDK。 为此，请使用[控制平面 Swagger （OpenAPI）文件](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview)而不是数据平面来完成本文中的步骤。
 
 ## <a name="set-up-your-machine"></a>设置计算机
 
 若要生成 SDK，你将需要：
 * [AutoRest](https://github.com/Azure/autorest)，版本2.0.4413 （目前不支持版本3）
 * 作为 AutoRest 的先决条件[Node.js](https://nodejs.org)
-* *digitaltwins.js*的[Azure 数字孪生 Swagger （OpenAPI）文件](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview)及其随附的示例文件夹。 将 Swagger 文件及其示例的文件夹下载到本地计算机。
+* *digitaltwins.js*的 Azure 数字孪生[数据平面 Swagger （OpenAPI）文件](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins/preview/2020-05-31-preview)及其随附的示例文件夹。 将 Swagger 文件及其示例的文件夹下载到本地计算机。
 
 一旦你的计算机配备了上述列表中的所有内容，你就可以使用 AutoRest 创建该 SDK。
 
@@ -53,7 +56,7 @@ AutoRest 支持多种语言代码生成器。
 
 本部分提供有关如何将 SDK 构建为类库的说明，它是其自己的项目，可以包含在其他项目中。 这些步骤依赖于**Visual Studio** （可从[此处](https://visualstudio.microsoft.com/downloads/)安装最新版本）。
 
-步骤如下：
+下面是相关步骤：
 
 1. 为类库创建新的 Visual Studio 解决方案
 2. 使用*ADTApi*作为项目名称

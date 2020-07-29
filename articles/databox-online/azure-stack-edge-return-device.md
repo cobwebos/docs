@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 07/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 29ecd2e90812da533eb59db71a876b6d23f20918
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 018fe9b97b343bc07cf3c04a1d0e84edaf6cc7ac
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067048"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283854"
 ---
 # <a name="return-your-azure-stack-edge-device"></a>返回 Azure Stack 边缘设备
 
@@ -117,14 +117,14 @@ ms.locfileid: "87067048"
 
 在 Azure 数据中心接收到设备后，会检查设备是否损坏或是否有任何篡改迹象。
 
-- 如果设备完好无损并处于良好的形状，则该资源的计费指示器将停止。 Microsoft 支持部门将与你联系以确认设备已退回。 然后，你可以在 Azure 门户中删除与该设备关联的资源。
+- 如果设备完好无损并处于良好的形状，则该资源的计费指示器将停止。 Azure Stack Edge 运营团队将与你联系，以确认返回了设备。 然后，你可以在 Azure 门户中删除与该设备关联的资源。
 - 如果设备严重损坏，可能会收取罚款。 有关详细信息，请参阅[有关设备丢失或损坏的 FAQ](https://azure.microsoft.com/pricing/details/databox/edge/) 和[产品服务条款](https://www.microsoft.com/licensing/product-licensing/products)。  
 
 
 可以在以下时段从 Azure 门户删除设备：
 
 - 下订单后，在 Microsoft 准备好设备之前。
-- 将设备退回给 Microsoft，设备通过 Azure 数据中心的物理检测，并且 Microsoft 支持部门打电话确认已退回设备之后。
+- 将设备返回给 Microsoft 后，它会通过 Azure 数据中心的物理检测，并 Azure Stack Edge 运营团队调用以确认返回了设备。
 
 如果你已针对其他订阅或位置激活了设备，Microsoft 将在一个工作日内将你的订单转移到新的订阅或位置。 移动订单后，可以删除此资源。
 

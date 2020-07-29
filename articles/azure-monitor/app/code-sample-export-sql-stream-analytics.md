@@ -3,12 +3,12 @@ title: 从 Azure Application Insights 导出到 SQL | Microsoft Docs
 description: 使用流分析将 Application Insights 数据连续导出到 SQL。
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 4975d91cc20b81de302a1dd0cb7b3326878a96a1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9c559a61794b36ea1bc33abc14271151fbea9d4c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540088"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311222"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>演练：使用流分析从 Application Insights 导出到 SQL
 本文介绍如何使用[连续导出][export]和[azure 流分析](https://azure.microsoft.com/services/stream-analytics/)，将遥测数据从[AZURE 应用程序 Insights][start]移入 azure SQL 数据库。 
@@ -24,9 +24,9 @@ ms.locfileid: "86540088"
 ## <a name="add-application-insights-to-your-application"></a>将 Application Insights 添加到应用程序
 开始操作：
 
-1. [为网页设置 Application Insights](../../azure-monitor/app/javascript.md)。 
+1. [为网页设置 Application Insights](./javascript.md)。 
    
-    （本示例侧重于处理来自客户端浏览器的页面视图数据，但你也可以针对 [Java](../../azure-monitor/app/java-get-started.md) 或 [ASP.NET](../../azure-monitor/app/asp-net.md) 应用的服务器端设置 Application Insights，并处理请求、依赖项和其他服务器遥测数据。）
+    （本示例侧重于处理来自客户端浏览器的页面视图数据，但你也可以针对 [Java](./java-get-started.md) 或 [ASP.NET](./asp-net.md) 应用的服务器端设置 Application Insights，并处理请求、依赖项和其他服务器遥测数据。）
 2. 发布应用，并观察 Application Insights 资源中出现的遥测数据。
 
 ## <a name="create-storage-in-azure"></a>在 Azure 中创建存储
@@ -61,7 +61,7 @@ ms.locfileid: "86540088"
     ![选择事件类型](./media/code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. 让我们累积一些数据。 请休息一下，让其他人先使用该应用程序一段时间。 应用程序中会逐渐传入遥测数据，[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)中会显示统计图表，[诊断搜索](../../azure-monitor/app/diagnostic-search.md)中会显示各个事件。 
+1. 让我们累积一些数据。 请休息一下，让其他人先使用该应用程序一段时间。 应用程序中会逐渐传入遥测数据，[指标资源管理器](../platform/metrics-charts.md)中会显示统计图表，[诊断搜索](./diagnostic-search.md)中会显示各个事件。 
    
     此外，数据将导出到存储。 
 2. 在门户中检查导出的数据 - 选择“浏览”，选择存储帐户，然后选择“容器”；也可以在 Visual Studio 中检查。  在 Visual Studio 中，请选择“查看”>“Cloud Explorer”，并打开“Azure”>“存储”。 （如果没有此菜单选项，则需要安装 Azure SDK：打开“新建项目”对话框，打开 Visual C# /云/获取用于 .NET 的 Microsoft Azure SDK。）
@@ -128,7 +128,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ![创建 PageViewsTable](./media/code-sample-export-sql-stream-analytics/34-create-table.png)
 
-本示例使用页面视图中的数据。 若要查看其他可用的数据，请检查 JSON 输出，并查看[导出数据模型](../../azure-monitor/app/export-data-model.md)。
+本示例使用页面视图中的数据。 若要查看其他可用的数据，请检查 JSON 输出，并查看[导出数据模型](./export-data-model.md)。
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>创建 Azure 流分析实例
 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 流分析服务，并创建新的流分析作业：
@@ -165,7 +165,7 @@ webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
 
 * `webapplication27` 是 Application Insights 资源的名称，**全部小写**。 
 * `1234...` 是 Application Insights 资源的检测密钥，但**删除了短划线**。 
-* `PageViews` 是要分析的数据类型。 可用的类型取决于在连续导出中设置的筛选器。 检查导出的数据以查看其他可用类型，并查看[导出数据模型](../../azure-monitor/app/export-data-model.md)。
+* `PageViews` 是要分析的数据类型。 可用的类型取决于在连续导出中设置的筛选器。 检查导出的数据以查看其他可用类型，并查看[导出数据模型](./export-data-model.md)。
 * `/{date}/{time}` 是以文本形式写入的模式。
 
 若要获取 Application Insights 资源的名称和 iKey，请在资源的概述页中打开“概要”，或打开“设置”。
@@ -215,7 +215,7 @@ webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
 
 ```
 
-请注意，前几个属性是特定于页面视图数据的属性。 其他遥测数据类型的导出具有不同的属性。 请参阅[属性类型和值的详细数据模型参考。](../../azure-monitor/app/export-data-model.md)
+请注意，前几个属性是特定于页面视图数据的属性。 其他遥测数据类型的导出具有不同的属性。 请参阅[属性类型和值的详细数据模型参考。](./export-data-model.md)
 
 ## <a name="set-up-output-to-database"></a>设置数据库的输出
 选择“SQL”作为输出。
@@ -243,15 +243,16 @@ FROM [dbo].[PageViewsTable]
 ```
 
 ## <a name="related-articles"></a>相关文章
-* [使用流分析导出到 Power BI](../../azure-monitor/app/export-power-bi.md )
-* [属性类型和值的详细数据模型参考。](../../azure-monitor/app/export-data-model.md)
-* [Application Insights 中的连续导出](../../azure-monitor/app/export-telemetry.md)
+* [使用流分析导出到 Power BI](./export-power-bi.md)
+* [属性类型和值的详细数据模型参考。](./export-data-model.md)
+* [Application Insights 中的连续导出](./export-telemetry.md)
 * [Application Insights](https://azure.microsoft.com/services/application-insights/)
 
 <!--Link references-->
 
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[export]: ../../azure-monitor/app/export-telemetry.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
+[diagnostic]: ./diagnostic-search.md
+[export]: ./export-telemetry.md
+[metrics]: ../platform/metrics-charts.md
 [portal]: https://portal.azure.com/
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[start]: ./app-insights-overview.md
+

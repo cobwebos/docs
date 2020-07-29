@@ -7,15 +7,16 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: 32fa54ef0d8eccaf8745ee37cb028d4f3c6d73eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7dab9753334a1f071d85d0d2bccbd88340e37634
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79247288"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284092"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>使用 Azure 事件中心和 Azure 逻辑应用监视、接收和发送事件
 
-本文演示如何使用 Azure 事件中心连接器监视和管理从逻辑应用发送到 [Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)的事件。 通过这样的方式可以创建逻辑应用，从事件中心自动执行检查、发送和接收事件的任务和工作流。 如需特定于连接器的技术信息，请参阅 [Azure 事件中心连接器参考](https://docs.microsoft.com/connectors/eventhubs/)</a>。
+本文演示如何使用 Azure 事件中心连接器监视和管理从逻辑应用发送到 [Azure 事件中心](../event-hubs/event-hubs-about.md)的事件。 通过这样的方式可以创建逻辑应用，从事件中心自动执行检查、发送和接收事件的任务和工作流。 如需特定于连接器的技术信息，请参阅 [Azure 事件中心连接器参考](/connectors/eventhubs/)</a>。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -172,7 +173,7 @@ ms.locfileid: "79247288"
 
 ## <a name="connector-reference"></a>连接器参考
 
-如需技术详细信息（例如触发器、操作和限制，如连接器的 Swagger 文件所述），请查看[连接器的参考页](https://docs.microsoft.com/connectors/eventhubs/)。
+如需技术详细信息（例如触发器、操作和限制，如连接器的 Swagger 文件所述），请查看[连接器的参考页](/connectors/eventhubs/)。
 
 > [!NOTE]
 > 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ise 标记版本会改用[ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
