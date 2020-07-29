@@ -7,6 +7,7 @@ description: 了解 Visual Studio Code 和 Azure Dev Spaces 如何帮助调试�
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 ms.openlocfilehash: 73a2ae1f603626acf7ec4d42838b301c88ee21da
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "84307344"

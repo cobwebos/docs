@@ -15,6 +15,7 @@ ms.author: sasarava
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3fbc6c7b8811f3cf46b4f31387c2181c8d085e39
 ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83684885"
