@@ -5,26 +5,29 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: dd75ad4ed1024292868f113e474fe8b8b73679b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/24/2020
+ms.openlocfilehash: e1c60542ec16ca19d26a77c1b9fb9676cf875e3d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75445131"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318260"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>优化 Azure Cosmos DB 中的查询成本
 
-Azure Cosmos DB 提供了丰富的数据库操作，包括对容器中的项进行操作的关系和分层查询。 与这些操作关联的成本取决于完成操作所需的 CPU、IO 和内存。 可以考虑将请求单位 (RU) 视为执行各种数据库操作以提供请求所需的资源的单一度量值，而无需虑和管理硬件资源。 本文介绍如何评估查询的请求单位费用，并在性能和成本方面优化查询。 
+Azure Cosmos DB 提供了丰富的数据库操作，包括对容器中的项进行操作的关系和分层查询。 与这些操作关联的成本取决于完成操作所需的 CPU、IO 和内存。 可以考虑将请求单位 (RU) 视为执行各种数据库操作以提供请求所需的资源的单一度量值，而无需虑和管理硬件资源。 本文介绍如何评估查询的请求单位费用，并在性能和成本方面优化查询。
 
-Azure Cosmos DB 中的查询通常按吞吐量从最快/最高效到较慢/效率较低进行排序，如下所示：  
+通常，按如下所示，按从最快/最高效的方式对读取 Azure Cosmos DB：  
 
-* 针对单个分区键和项键的 GET 操作。
+* 点读取次数（对单个项 ID 和分区键的键/值查找）。
 
 * 单个分区键内具有筛选器子句的查询。
 
 * 针对任何属性都没有等于或范围筛选器子句的查询。
 
 * 不包含筛选器的查询。
+
+由于项 ID 上的键/值查找是最有效的读取类型，因此应确保项 ID 具有有意义的值。
 
 从一个或多个分区读取数据的查询会导致较高的延迟并使用较多的请求单位数。 因为每个分区都具有针对所有属性的自动索引编制，因此，可以基于索引高效地执行查询。 通过使用并行选项，可以更快地进行使用多个分区的查询。 若要了解有关分区和分区键的详细信息，请参阅[在 Azure Cosmos DB 中进行分区](partitioning-overview.md)。
 
@@ -35,7 +38,7 @@ Azure Cosmos DB 中的查询通常按吞吐量从最快/最高效到较慢/效�
 此外可以使用 SDK 以编程方式获取查询的成本。 要测量任何操作（如创建、更新或删除）的开销，请在使用 REST API 时检查 `x-ms-request-charge` 标头。 如果使用的是 .NET 或 Java SDK，则 `RequestCharge` 属性是获取请求费用的等效属性，并且此属性存在于 ResourceResponse 或 FeedResponse 中。
 
 ```csharp
-// Measure the performance (request units) of writes 
+// Measure the performance (request units) of writes
 ResourceResponse<Document> response = await client.CreateDocumentAsync(collectionSelfLink, myDocument); 
 
 Console.WriteLine("Insert of an item consumed {0} request units", response.RequestCharge); 

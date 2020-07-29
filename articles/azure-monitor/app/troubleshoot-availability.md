@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 04/28/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 8544ad292d9e8982e236566fb53189c70922232c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0ac8dd189bee1c1d4f5a7a4d0f7de68b085fbc56
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041389"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318141"
 ---
 # <a name="troubleshooting"></a>故障排除
 
@@ -81,7 +81,7 @@ ms.locfileid: "87041389"
 
 ### <a name="i-dont-see-any-related-server-side-telemetry-to-diagnose-test-failures"></a>看不到任何相关服务器端遥测数据，无法诊断测试失败？*
 
-如果已为服务器端应用程序设置 Application Insights，则可能是因为[采样](../../azure-monitor/app/sampling.md)正在进行。 请选择其他可用性结果。
+如果已为服务器端应用程序设置 Application Insights，则可能是因为[采样](./sampling.md)正在进行。 请选择其他可用性结果。
 
 ### <a name="can-i-call-code-from-my-web-test"></a>是否可从 Web 测试调用代码？
 
@@ -96,7 +96,7 @@ ms.locfileid: "87041389"
 
    下面是两种可能的解决方案：
 
-   * 请将防火墙配置为允许从[我们的 Web 测试代理 IP 地址](../../azure-monitor/app/ip-addresses.md)发出的传入请求。
+   * 请将防火墙配置为允许从[我们的 Web 测试代理 IP 地址](./ip-addresses.md)发出的传入请求。
    * 编写自己的代码，定期测试内部服务器。 在防火墙后的测试服务器上以后台进程的方式运行该代码。 测试进程可以通过核心 SDK 包中的 [TrackAvailability()](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API 将其结果发送到 Application Insights。 这要求测试服务器能够以传出访问的方式访问 Application Insights 引入终结点，但与允许传入请求相比，这种方式的安全风险要小得多。 结果将显示在“可用性 Web 测试”边栏选项卡中，但是与通过门户创建的测试相比，体验会略微简化。 自定义可用性测试还会在“分析”、“搜索”和“指标”中显示为可用性结果。
 
 ### <a name="uploading-a-multi-step-web-test-fails"></a>上传多步骤 Web 测试失败
@@ -134,3 +134,4 @@ ms.locfileid: "87041389"
 
 * [多步骤 Web 测试](availability-multistep.md)
 * [URL ping 测试](monitor-web-app-availability.md)
+

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 7d8998b450613e097230d7692a8ad1990830993b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 64c461c5d3e1bb34f480e5173621f8753eadbbd8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539323"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318311"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>存储在 Log Analytics 和 Application Insights 中的个人数据指南
 
@@ -48,7 +48,7 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
     ```
   请记住，不仅要查找用户可读的用户名，还要查找可直接追溯到特定用户的 GUID！
 * *设备 ID*：与用户 ID 一样，设备 ID 有时被视为“私人数据”。 可使用上面针对用户 ID 列出的方法来识别可能存在此问题的表。 
-* *自定义数据*：Log Analytics 允许使用各种方法进行收集：自定义日志和自定义字段、[HTTP 数据收集器 API](../../azure-monitor/platform/data-collector-api.md) 以及作为系统事件日志一部分收集的自定义数据。 所有这些数据都很有可能包含私人数据，应该进行检查以验证是否存在任何此类数据。
+* *自定义数据*：Log Analytics 允许使用各种方法进行收集：自定义日志和自定义字段、[HTTP 数据收集器 API](./data-collector-api.md) 以及作为系统事件日志一部分收集的自定义数据。 所有这些数据都很有可能包含私人数据，应该进行检查以验证是否存在任何此类数据。
 * *解决方案捕获的数据*：由于解决方案机制是开放式的，因此建议查看解决方案生成的所有表以确保符合性。
 
 ### <a name="application-data"></a>应用程序数据
@@ -124,5 +124,6 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
 >  虽然绝大多数清除操作完成起来会比 SLA 快得多，但由于其对 Application Insights 使用的数据平台造成的严重影响，因此**将完成清除操作所需的正式 SLA 设置为 30 天**。
 
 ## <a name="next-steps"></a>后续步骤
-- 若要详细了解如何收集、处理和保护 Log Analytics 数据，请参阅 [Log Analytics 数据安全性](../../azure-monitor/platform/data-security.md)。
-- 若要详细了解如何收集、处理和保护 Application Insights 数据，请参阅 [Application Insights 数据安全性](../../azure-monitor/app/data-retention-privacy.md)。
+- 若要详细了解如何收集、处理和保护 Log Analytics 数据，请参阅 [Log Analytics 数据安全性](./data-security.md)。
+- 若要详细了解如何收集、处理和保护 Application Insights 数据，请参阅 [Application Insights 数据安全性](../app/data-retention-privacy.md)。
+

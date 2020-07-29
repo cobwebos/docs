@@ -9,19 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 07/21/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 0bb7812d75fa3276b52a182f9184e28a21a910ae
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2be68a858773dd4e76126ba6cd04ad98a2fd6a06
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737480"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87313432"
 ---
 # <a name="oauth-20-and-openid-connect-protocols-on-microsoft-identity-platform"></a>Microsoft 标识平台上的 OAuth 2.0 和 OpenID 连接协议
 
-用于“标识即服务”的 Microsoft 标识平台终结点分别使用行业标准协议 OpenID Connect (OIDC) 和 OAuth 2.0 实现身份验证和授权。 尽管此服务与标准兼容，但这些协议的两个实现之间仍然存在微妙的差异。 如果选择通过直接发送和处理 HTTP 请求，或使用第三方开放源代码库来编写代码，而不是使用我们的其中一个[开放源代码库](reference-v2-libraries.md)，则可以参考此处提供的有用信息。
+标识为服务的 Microsoft 标识平台终结点分别使用行业标准协议 OpenID Connect （OIDC）和 OAuth 2.0 实现身份验证和授权。 尽管此服务与标准兼容，但这些协议的两个实现之间仍然存在微妙的差异。 如果选择通过直接发送和处理 HTTP 请求，或使用第三方开放源代码库来编写代码，而不是使用我们的其中一个[开放源代码库](reference-v2-libraries.md)，则可以参考此处提供的有用信息。
 
 ## <a name="the-basics"></a>基础知识
 
@@ -30,7 +31,7 @@ ms.locfileid: "83737480"
 ![显示 OAuth 2.0 角色的关系图](./media/active-directory-v2-flows/protocols-roles.svg)
 
 * “授权服务器”是 Microsoft 标识平台终结点，它负责确保用户的标识、授予和吊销对资源的访问权限，以及颁发令牌。 授权服务器也称为标识提供者 - 它可安全处理与用户信息、用户访问权，以及流中各方彼此间信任关系有关的任何项目。
-* 资源所有者通常是最终用户。 它是拥有数据的一方，并且有权允许第三方访问该数据或资源。
+* 资源所有者通常是最终用户。 它是拥有数据的一方，具有允许客户端访问该数据或资源的能力。
 * OAuth 客户端是应用，按照其应用程序 ID 进行标识。 OAuth 客户端通常是与最终用户交互的对象，并向授权服务器请求令牌。 客户端必须获得资源所有者授权才能访问资源。
 * **资源服务器**是资源或数据所在的位置。 它信任授权服务器安全验证和授权 OAuth 客户端，并使用持有者访问令牌来确保可以授予对资源的访问权限。
 
@@ -69,16 +70,20 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 ## <a name="tokens"></a>令牌
 
-OAuth 2.0 和 OpenID Connect 的 Microsoft 标识平台实现广泛使用了持有者令牌，包括表示为 JWT（JSON Web 令牌）的持有者令牌。 持有者令牌是一种轻型安全令牌，它授予对受保护资源的“持有者”访问权限。 从这个意义上来说，“持有者”是可以提供令牌的任何一方。 虽然某一方必须首先通过 Microsoft 标识平台的身份验证才能收到持有者令牌，但如果不采取必要的步骤在传输过程和存储中对令牌进行保护，令牌可能会被意外的某一方拦截并使用。 虽然某些安全令牌具有内置机制来防止未经授权方使用它们，但是持有者令牌没有这一机制，因此必须在安全的通道（例如传输层安全 (HTTPS)）中进行传输。 如果持有者令牌以明文形式传输，则恶意方可以使用中间人攻击来获取令牌并将其用于对受保护资源进行未经授权的访问。 当存储或缓存持有者令牌供以后使用时，也应遵循同样的安全原则。 请始终确保应用以安全的方式传输和存储持有者令牌。 有关持有者令牌的更多安全注意事项，请参阅 [RFC 6750 第 5 部分](https://tools.ietf.org/html/rfc6750)。
+OAuth 2.0 和 OpenID Connect 广泛使用持有者**令牌**，通常表示为[Jwt （JSON Web 令牌）](https://tools.ietf.org/html/rfc7519)。 持有者令牌是一种轻型安全令牌，它授予对受保护资源的“持有者”访问权限。 从这种意义上来说，"持有者" 是获取令牌副本的任何人。 虽然某一方必须首先通过 Microsoft 标识平台的身份验证才能收到持有者令牌，但如果不采取必要的步骤在传输过程和存储中对令牌进行保护，令牌可能会被意外的某一方拦截并使用。 虽然某些安全令牌具有内置机制来防止未经授权方使用它们，但是持有者令牌没有这一机制，因此必须在安全的通道（例如传输层安全 (HTTPS)）中进行传输。 如果持有者令牌以明文形式传输，则恶意方可以使用中间人攻击来获取令牌并将其用于对受保护资源进行未经授权的访问。 当存储或缓存持有者令牌供以后使用时，也应遵循同样的安全原则。 请始终确保应用以安全的方式传输和存储持有者令牌。 有关持有者令牌的更多安全注意事项，请参阅 [RFC 6750 第 5 部分](https://tools.ietf.org/html/rfc6750)。
 
-有关 Microsoft 标识平台终结点中使用的不同类型令牌的详细信息，请参阅 [Microsoft 标识平台终结点令牌引用](v2-id-and-access-tokens.md)。
+在 OAuth 2.0/OIDC 中主要有3种类型的令牌：
+
+* [访问令牌](access-tokens.md)-资源服务器从客户端接收的标记，包含已授予客户端的权限。  
+* [ID 令牌](id-tokens.md)-客户端从授权服务器接收的标记，用于登录用户并获取有关它们的基本信息。
+* 刷新令牌-客户端使用它来获取新的访问令牌和 ID 令牌。  它们是不透明的字符串，只能由授权服务器理解。
 
 ## <a name="protocols"></a>协议
 
-如果已准备好查看部分示例请求，请从下列教程之一开始。 每个教程对应于特定的身份验证方案。 如果在确定适当的流时需要帮助，请查看[可使用 Microsoft 标识平台构建的应用类型](v2-app-types.md)。
+如果已准备好查看一些示例请求，请开始了解以下协议文档之一。 每个教程对应于特定的身份验证方案。 如果在确定适当的流时需要帮助，请查看[可使用 Microsoft 标识平台构建的应用类型](v2-app-types.md)。
 
-* [使用 OAuth 2.0 构建移动和本机应用程序](v2-oauth2-auth-code-flow.md)
-* [使用 OpenID Connect 构建 Web 应用](v2-protocols-oidc.md)
-* [使用 OAuth 2.0 隐式流构建单页应用](v2-oauth2-implicit-grant-flow.md)
+* [利用 OAuth 2.0 生成移动应用程序、本机应用程序和 web 应用程序](v2-oauth2-auth-code-flow.md)
+* [通过 OpenID Connect 登录用户](v2-protocols-oidc.md)
 * [使用 OAuth 2.0 客户端凭据流构建守护程序或服务器端进程](v2-oauth2-client-creds-grant-flow.md)
 * [使用 OAuth 2.0 代理流在 Web API 中获取令牌](v2-oauth2-on-behalf-of-flow.md)
+* [采用 OAuth 2.0 隐式流构建单页应用](v2-oauth2-implicit-grant-flow.md)

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: fcd73a5bb6de162fc258d93398b7d00044429588
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d9a4f7aa270aa4ed2b02e61da984e14379a241a9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096613"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289936"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>诊断 Azure 时序见解 Gen2 环境并对其进行故障排除
 
@@ -121,7 +121,7 @@ ms.locfileid: "87096613"
 
 ## <a name="problem-all-my-instances-in-the-gen2-explorer-lack-a-parent"></a>问题： Gen2 资源管理器中的所有实例都缺少父项
 
-如果你的环境未定义时序模型层次结构，则可能出现此问题。 有关详细信息，请阅读有关如何[使用时序模型](./time-series-insights-update-how-to-tsm.md)的信息。
+如果你的环境未定义时序模型层次结构，则可能出现此问题。 有关详细信息，请阅读有关如何[使用时序模型](/azure/time-series-insights/time-series-insights-overview)的信息。
 
   [![Unparented 实例将显示警告。](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 
@@ -135,7 +135,7 @@ ms.locfileid: "87096613"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读有关如何[使用时序模型的](./time-series-insights-update-how-to-tsm.md)信息。
+- 阅读有关如何[使用时序模型的](/azure/time-series-insights/time-series-insights-overview)信息。
 
 - 了解[支持的 JSON 形状](./how-to-shape-query-json.md)。
 

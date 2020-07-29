@@ -1,6 +1,6 @@
 ---
-title: Windows 虚拟桌面秋季2019中的委托访问-Azure
-description: 如何在 Windows 虚拟桌面部署上委派管理功能，包括示例。
+title: Windows 虚拟桌面中的委托访问（经典）-Azure
+description: 如何在 Windows 虚拟桌面（经典）部署中委派管理功能，包括示例。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 91be20de49f549f3530e6c817906f1abf8f106b6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fbb8c6e100a9f72c20bcfaba7049b6724ee458b2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527551"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292535"
 ---
-# <a name="delegated-access-in-windows-virtual-desktop-fall-2019"></a>Windows 虚拟桌面中的委托访问秋季2019
+# <a name="delegated-access-in-windows-virtual-desktop-classic"></a>Windows 虚拟桌面（经典）中的委托访问
 
 >[!IMPORTANT]
->本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。 如果要尝试管理 2020 年春季版更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../delegated-access-virtual-desktop.md)。
+>此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。 如果尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../delegated-access-virtual-desktop.md)。
 
 Windows 虚拟桌面具有委派的访问模型，使你可以通过为特定用户分配角色来定义允许该用户拥有的访问量。 角色分配有三个组件：安全主体、角色定义和作用域。 Windows 虚拟桌面委托访问模型基于 Azure RBAC 模型。 若要详细了解特定的角色分配及其组件，请参阅[Azure 基于角色的访问控制概述](../../role-based-access-control/built-in-roles.md)。
 
@@ -29,7 +29,7 @@ Windows 虚拟桌面委托访问为角色分配的每个元素支持以下值：
     * 服务主体
 * 角色定义
     * 内置角色
-* 范围
+* 作用域
     * 租户组
     * 租户
     * 主机池

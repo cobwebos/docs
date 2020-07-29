@@ -1,6 +1,5 @@
 ---
-title: 管理工作区
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （经典）：管理工作区-Azure
 description: 管理对 Azure 机器学习工作室（经典）工作区的访问，部署并管理机器学习 API Web 服务
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/27/2017
-ms.openlocfilehash: 4d12b5fbfb934106f7c18edb2996b51e8f6a57f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c501d7d93973338273246d803df86e4d723ae542
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705128"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318447"
 ---
 # <a name="manage-an-azure-machine-learning-studio-classic-workspace"></a>管理 Azure 机器学习工作室（经典）工作区
+
+**适用于：** ![不](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-azure-ml.md) ![ 是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） 
+
 
 > [!NOTE]
 > 有关在机器学习 Web 服务门户中管理 Web 服务的信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)。
@@ -33,13 +35,13 @@ ms.locfileid: "84705128"
 若要在 Azure 门户中管理工作室（经典）工作区，请执行以下操作：
 
 1. 使用 Azure 订阅管理员帐户登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在页面顶部的搜索框中，输入“机器学习工作室(经典)工作区”，并选择“机器学习工作室(经典)工作区”  。
+2. 在页面顶部的搜索框中，输入“机器学习工作室(经典)工作区”，并选择“机器学习工作室(经典)工作区”****。
 3. 单击想要管理的工作区。
 
 除了标准的资源管理信息和可用选项外，还可以：
 
 - 查看**属性** - 此页显示工作区和资源信息，并可以更改此工作区连接到的订阅和资源组。
-- **重新同步存储密钥** - 此工作区维护存储帐户的密钥。 如果存储帐户更改密钥，则可以单击“重新同步密钥”  将密钥与工作区同步。
+- **重新同步存储密钥** - 此工作区维护存储帐户的密钥。 如果存储帐户更改密钥，则可以单击“重新同步密钥”**** 将密钥与工作区同步。
 
 若要管理与此工作室（经典）工作区关联的 Web 服务，请使用“机器学习 Web 服务”门户。 有关完整信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)。
 

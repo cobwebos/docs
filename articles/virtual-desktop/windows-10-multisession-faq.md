@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 218ec6a5beab32729e106a7397d58ebaa2a30123
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: adc0d63a51535b27b42abbe0115ff25594eb2b4f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086919"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292474"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise 多会话常见问题解答
 
@@ -102,6 +102,6 @@ Windows 10 企业多会话版本1809及更高版本都受支持，并在 Azure �
 
 若要了解有关 Windows 虚拟桌面和 Windows 10 企业多会话的详细信息：
 
-- 阅读我们的[Windows 虚拟桌面预览版文档](overview.md)
+- 阅读我们的[Windows 虚拟桌面文档](overview.md)
 - 访问我们的[Windows 虚拟桌面 TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)
 - 通过[Windows 虚拟桌面教程](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)设置 Windows 虚拟桌面部署

@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 47b1a3a44c494560dde9ffdab004ea576f434ffe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8a8f5cb792f524354754b4368c0b68d5f9d40699
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091294"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291369"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>为 Windows 虚拟桌面启用 Azure 多重身份验证
 
 >[!IMPORTANT]
-> 如果你从秋季2019文档访问此页，请确保在完成后[返回到秋季2019文档](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。
+> 如果要从 Windows 虚拟桌面（经典）文档访问此页面，请确保在完成后[返回到 Windows 虚拟桌面（经典）文档](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。
 
 适用于 windows 虚拟桌面的 Windows 客户端是将 Windows 虚拟桌面与本地计算机集成的最佳选项。 但是，当你将 Windows 虚拟桌面帐户配置到 Windows 客户端时，你需要采取某些措施来保护你的用户和用户安全。
 
@@ -26,7 +26,7 @@ ms.locfileid: "87091294"
 
 尽管记住凭据很方便，但它也可以使部署在企业方案或个人设备上不太安全。 若要保护用户，你需要确保客户端始终询问 Azure 多重身份验证（MFA）凭据。 本文将演示如何配置 Windows 虚拟桌面的条件性访问策略，以便启用此设置。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 下面是你需要入门的内容：
 
@@ -50,10 +50,10 @@ ms.locfileid: "87091294"
 7. 选择“完成”。
 8. 在 "**云应用或操作**  >  **包括**" 下，选择 "**选择应用**"。
 9. 根据所使用的 Windows 虚拟桌面版本，选择以下应用组之一。
-   - 如果使用的是秋季2019版，请选择以下两个应用：
+   - 如果使用的是 Windows 虚拟桌面（经典），请选择以下两个应用：
        - **Windows 虚拟桌面**（应用 ID 5a0aa725-4958-4b0c-80a9-34562e23f3b7）
        - **Windows 虚拟桌面客户端**（应用 ID fa4345a4-a730-4230-84a8-7d9651b86739）
-   - 如果使用的是春季2020版本，请改为选择以下两个应用：
+   - 如果使用的是 Windows 虚拟桌面，请改为选择以下两个应用：
        -  **Windows 虚拟桌面**（应用 ID 9cdead84-a844-4324-93f2-b2e6bb768d07）
        -  **Windows 虚拟桌面客户端**（应用 ID a85cf173-4192-42f8-81fa-777a763e6e2c）
 

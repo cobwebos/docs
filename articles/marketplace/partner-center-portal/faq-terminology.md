@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 2f3d4050e51c5394edaa3c72213bc8da48ab568e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+author: shganesh-dev
+ms.author: shganesh
+ms.openlocfilehash: f0f14bf24bd867344ec72c86a6fd517085b66d1f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011832"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317546"
 ---
 # <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>商业市场分析术语和常见问题
 
@@ -68,8 +70,8 @@ ms.locfileid: "87011832"
 | 市场订阅 ID | 客户、订单 | 与客户用来购买市场产品/服务的 Azure 订阅关联的唯一标识符。 该 ID 以前称为“Azure 订阅 GUID”。|
 | 产品名称  | 订单| 市场产品/服务的名称。|
 | 产品/服务类型  | 订单| Microsoft 市场产品/服务的类型。|
-| 产品/服务类型：托管应用程序  | 订单 | 需要满足以下条件时，请使用“Azure 应用：托管应用”产品/服务类型：使用 VM 为客户部署基于订阅的解决方案，或部署基于 IaaS 的整个解决方案。 你或客户要求解决方案由合作伙伴管理。 |
-| 产品/服务类型：Azure 应用程序| 订单 | 如果解决方案需要在简单的 VM 以外实现附加的部署和配置自动化，请使用“Azure 应用程序解决方案模板”产品/服务类型。|
+| 产品/服务类型：托管应用程序  | 顺序 | 需要满足以下条件时，请使用“Azure 应用：托管应用”产品/服务类型：使用 VM 为客户部署基于订阅的解决方案，或部署基于 IaaS 的整个解决方案。 你或客户要求解决方案由合作伙伴管理。 |
+| 产品/服务类型：Azure 应用程序| 顺序 | 如果解决方案需要在简单的 VM 以外实现附加的部署和配置自动化，请使用“Azure 应用程序解决方案模板”产品/服务类型。|
 | 产品/服务类型：咨询服务| 订单| Azure 市场中的咨询服务有助于将客户与服务联系起来，以支持和扩展他们对 Azure 的使用。|
 | 产品/服务类型：容器 | 订单| 如果解决方案是预配为基于 Kubernetes 的 Azure 容器服务的 Docker 容器映像，请使用“容器”产品/服务类型。|
 | 产品/服务类型：Dynamics 365 Business Central| 订单| 如果你的解决方案与 Dynamics 365 for Finance and Operations 集成，请使用此产品/服务类型|

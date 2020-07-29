@@ -1,6 +1,5 @@
 ---
-title: 复制其他人的数据科学示例
-titleSuffix: ML Studio (classic) - Azure
+title: 复制数据科学示例-ML Studio （经典）-Azure
 description: 数据科学的商业机密：让他人为你完成工作。 从 Azure AI 库获取机器学习示例。
 services: machine-learning
 ms.service: machine-learning
@@ -10,11 +9,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 91f1f69db7f3faa9e1bbdae7966716c974a4dfa5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59343c500f50430530b24fbfb7d747108377efd8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82930278"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318770"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>复制其他人的工作以执行数据科研
 ## <a name="video-5-data-science-for-beginners-series"></a>视频 5：适合初学者的数据科学系列

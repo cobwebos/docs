@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2020
 ms.author: aschhab
-ms.openlocfilehash: 7926e3b8aedde63c3a1a5a57c42b3d4f29cb9797
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-java
+ms.openlocfilehash: 35e2e86f68e1f53febabc75fcc537dbdd4481882
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076247"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369027"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>将现有 Java 消息服务（JMS）2.0 应用程序从 Apache ActiveMQ 迁移到 Azure 服务总线
 
@@ -34,7 +35,7 @@ Azure 服务总线和 Apache ActiveMQ 都是消息代理，充当用于客户端
 
 尽管如此，这两者之间也存在一些差异，如下表所示：
 
-| Category | ActiveMQ | Azure 服务总线 |
+| 类别 | ActiveMQ | Azure 服务总线 |
 | --- | --- | --- |
 | 应用程序分层 | 群集单体架构 | 双层 <br> （网关 + 后端） |
 | 协议支持 | <ul> <li>AMQP</li> <li> 阻碍 </li> <li> OpenWire </li> </ul> | AMQP |

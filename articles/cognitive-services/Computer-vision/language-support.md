@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 81d0183b6dde1a5fe6bd9cd36910fd3dfc1cc5b1
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 16bb5fa41389dcf1ddd8ee2e3434e15755bb0d8d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205297"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290929"
 ---
 # <a name="language-support-for-computer-vision"></a>计算机视觉的语言支持
 
@@ -23,42 +23,42 @@ ms.locfileid: "86205297"
 
 ## <a name="optical-character-recognition-ocr"></a>光学字符识别 (OCR)
 
-计算机视觉的 OCR Api 支持多种语言。 它们不需要指定语言代码。 有关详细信息，请参阅[光学字符识别 (OCR) ](concept-recognizing-text.md) 。
+计算机视觉的 OCR Api 支持多种语言。 它们不需要指定语言代码。 有关详细信息，请参阅[光学字符识别（OCR）](concept-recognizing-text.md) 。
 
-|语言| 语言代码 | OCR API | 读取 API |
-|:-----|:----:|:-----:|:---:|
-|阿拉伯语 | `ar`|✔ | |
-|中文(简体) | `zh-Hans`|✔ | |
-|中文(繁体) | `zh-Hant`|✔ | |
-|捷克语 | `cs` |✔ | |
-|丹麦语 | `da` |✔ | |
-|荷兰语 | `nl` |✔ |✔ |
-|英语 | `en` |✔ |✔ |
-|芬兰语 | `fi` |✔ | |
-|法语 | `fr` |✔ |✔ |
-|德语 | `de` |✔ |✔ |
-|希腊语 | `el` |✔ | |
-|匈牙利语 | `hu` |✔ | |
-|意大利语 | `it` |✔ |✔ |
-|日语 | `ja` |✔ | |
-|韩语 | `ko` |✔ | |
-|挪威语 | `nb` |✔ | |
-|波兰语 | `pl` |✔ | |
-|葡萄牙语 | `pt` |✔ |✔ |
-|罗马尼亚语 | `ro` |✔ | |
-|俄语 | `ru` |✔ | |
-|塞尔维亚语（西里尔） | `sr-Cyrl` |✔ | |
-|塞尔维亚语（拉丁） | `sr-Latn` |✔ | |
-|斯洛伐克语 | `sk` |✔ | |
-|西班牙语 | `es` |✔ |✔ |
-|瑞典语 | `sw` |✔ | |
-|土耳其语 | `tr` |✔ | |
+|语言| 语言代码 | OCR API | 读取3.0 版 | 读取 3.1-预览。1 |
+|:-----|:----:|:-----:|:---:|:---:|
+|阿拉伯语 | `ar`|✔ | | |
+|中文(简体) | `zh-Hans`|✔ | |✔ |
+|中文(繁体) | `zh-Hant`|✔ | | |
+|捷克语 | `cs` |✔ | | |
+|丹麦语 | `da` |✔ | | |
+|荷兰语 | `nl` |✔ |✔ |✔ |
+|英语 | `en` |✔ |✔ |✔ |
+|芬兰语 | `fi` |✔ | | |
+|法语 | `fr` |✔ |✔ |✔ |
+|德语 | `de` |✔ |✔ |✔ |
+|希腊语 | `el` |✔ | | |
+|匈牙利语 | `hu` |✔ | | |
+|意大利语 | `it` |✔ |✔ |✔ |
+|日语 | `ja` |✔ | | |
+|韩语 | `ko` |✔ | | |
+|挪威语 | `nb` |✔ | | |
+|波兰语 | `pl` |✔ | | |
+|葡萄牙语 | `pt` |✔ |✔ |✔ |
+|罗马尼亚语 | `ro` |✔ | | |
+|俄语 | `ru` |✔ | | |
+|塞尔维亚语（西里尔） | `sr-Cyrl` |✔ | | |
+|塞尔维亚语（拉丁） | `sr-Latn` |✔ | | |
+|斯洛伐克语 | `sk` |✔ | | |
+|西班牙语 | `es` |✔ |✔ |✔ |
+|瑞典语 | `sw` |✔ | | |
+|土耳其语 | `tr` |✔ | | |
 
 ## <a name="image-analysis"></a>图像分析
 
 [分析 - 图像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 的某些操作可以返回其他语言（使用 `language` 查询参数指定）的结果。 某些操作会返回英语结果而不管你指定何种语言，另外一些操作会针对不支持的语言引发异常。 操作是通过 `visualFeatures` 和 `details` 查询参数指定的；请参阅[概述](home.md)以获取能够通过图像分析完成的所有操作的列表。
 
-|语言 | 语言代码 | 类别 | 标记 | 说明 | 成人 | 品牌 | Color | 面 | ImageType | 对象 | 名人 | 特征点 |
+|语言 | 语言代码 | 类别 | Tags | 说明 | 成人 | 品牌 | Color | 面 | ImageType | 对象 | 名人 | 特征点 |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |中文 | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |英语 | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

@@ -4,15 +4,15 @@ description: 上线 API 启动产品/服务上线一览过程。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 5c5448a853447a0eacc8d974a5b00d5d1e8f4be2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d612b796f85c9eaab1600c55cde7e79acb49f352
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535937"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292933"
 ---
 # <a name="go-live"></a>上线
 
@@ -26,17 +26,17 @@ ms.locfileid: "86535937"
 ## <a name="uri-parameters"></a>URI 参数
 --------------
 
-|  **名称**      |   **说明**                                                           | **Data type** |
+|  **Name**      |   **说明**                                                           | **Data type** |
 |  --------      |   ---------------                                                           | ------------- |
 | publisherId    | 要检索的产品/服务的发布者标识符，例如 `contoso`       |  字符串       |
 | offerId        | 要检索的产品/服务的产品/服务标识符                                   |  字符串       |
-| api-version    | API 最新版本                                                   |  日期         |
+| api-version    | API 最新版本                                                   |  Date         |
 |  |  |  |
 
 ## <a name="header"></a>标头
 ------
 
-|  **名称**       |     **值**       |
+|  **Name**       |     **值**       |
 |  ---------      |     ----------      |
 | Content-Type    | `application/json`  |
 | 授权   | `Bearer YOUR_TOKEN` |
@@ -56,7 +56,7 @@ ms.locfileid: "86535937"
 
 ### <a name="response-header"></a>响应标头
 
-|  **名称**             |      **值**                                                            |
+|  **Name**             |      **值**                                                            |
 |  --------             |      ----------                                                           |
 | 位置    |  用于检索此操作的状态的相对路径            |
 |  |  |

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 97e687acba0c94f72ca571c498fb54531118714b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 286d8d8c202a4fc59a18501eff16a569e2d09047
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095990"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318039"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Monitor 中的 Azure Key Vault 分析解决方案
 
@@ -34,7 +34,7 @@ ms.locfileid: "87095990"
 ## <a name="install-and-configure-the-solution"></a>安装和配置解决方案
 使用以下说明来安装和配置 Azure 密钥保管库解决方案：
 
-1. 使用[从解决方案库中添加 Azure Monitor 解决方案](../../azure-monitor/insights/solutions.md)中所述的流程，将 Azure Key Vault 解决方案添加到 Log Analytics 工作区。
+1. 使用[从解决方案库中添加 Azure Monitor 解决方案](./solutions.md)中所述的流程，将 Azure Key Vault 解决方案添加到 Log Analytics 工作区。
 2. 使用[门户](#enable-key-vault-diagnostics-in-the-portal)或 [PowerShell](#enable-key-vault-diagnostics-using-powershell) 为要监视的 Key Vault 资源启用诊断日志记录
 
 ### <a name="enable-key-vault-diagnostics-in-the-portal"></a>在门户中启用 Key Vault 诊断
@@ -132,7 +132,7 @@ Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日
 若要使用更新的解决方案，请执行以下操作：
 
 1. [将诊断配置为直接从 Key Vault 发送到 Log Analytics 工作区](#enable-key-vault-diagnostics-in-the-portal)  
-2. 使用[从解决方案库中添加 Azure Monitor 解决方案](../../azure-monitor/insights/solutions.md)中所述的过程，启用 Azure Key Vault 解决方案
+2. 使用[从解决方案库中添加 Azure Monitor 解决方案](./solutions.md)中所述的过程，启用 Azure Key Vault 解决方案
 3. 更新所有已保存的查询、仪表板或警报，以使用的新数据类型
    + 类型从KeyVaults 更改为 AzureDiagnostics。 可以使用 ResourceType 筛选 Key Vault 日志。
    + 不要使用 `KeyVaults`，应使用 `AzureDiagnostics | where ResourceType'=="VAULTS"`
@@ -149,4 +149,5 @@ Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [Azure Monitor 中的日志查询](../../azure-monitor/log-query/log-query-overview.md)查看详细的 Azure Key Vault 数据。
+* 使用 [Azure Monitor 中的日志查询](../log-query/log-query-overview.md)查看详细的 Azure Key Vault 数据。
+
