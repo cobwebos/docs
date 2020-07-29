@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 03/27/2020
-ms.openlocfilehash: d8da5bb32836ff50240bf6b781227fde8839be5c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: 00efa3ea6fcd299dcdc51b3002d6b0459edf2ec4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087996"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281151"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>使用 Azure SQL 配置和管理 Azure AD 身份验证
 
@@ -216,7 +216,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 也可通过调用以下 CLI 命令来预配 SQL 托管实例的 Azure AD 管理员：
 
-| 命令 | 描述 |
+| 命令 | 说明 |
 | --- | --- |
 |[az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | 预配 SQL 托管实例（必须来自当前订阅）的 Azure Active Directory 管理员。 |
 |[az sql mi ad-admin delete](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | 删除 SQL 托管实例的 Azure Active Directory 管理员。 |
@@ -237,8 +237,6 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 ### <a name="azure-portal"></a>Azure 门户
 
 1. 在 [Azure 门户](https://portal.azure.com/)右上角，选择你的连接，以下拉可能的 Active Directory 列表。 选择正确的 Active Directory 作为默认的 Azure AD。 此步骤将与订阅关联的 Active Directory 链接到服务器，确保为 Azure AD 和服务器使用相同的订阅。
-
-    ![choose-ad][8]
 
 2. 搜索并选择“SQL 服务器”。
 
@@ -324,7 +322,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 可以通过调用以下 CLI 命令来预配 Azure AD 管理员：
 
-| 命令 | 描述 |
+| 命令 | 说明 |
 | --- | --- |
 |[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | 为托管 SQL 数据库或 Azure Synapse 的服务器预配 Azure Active Directory 管理员。 （必须来自当前订阅） |
 |[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | 为托管 SQL 数据库或 Azure Synapse 的服务器删除 Azure Active Directory 管理员。 |
@@ -538,8 +536,11 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 - 有关数据库主体的详细信息，请参阅[主体](https://msdn.microsoft.com/library/ms181127.aspx)。
 - 有关数据库角色的详细信息，请参阅[数据库角色](https://msdn.microsoft.com/library/ms189121.aspx)。
 - 有关 SQL 数据库中的防火墙规则的详细信息，请参阅 [SQL 数据库防火墙规则](firewall-configure.md)。
+- 有关如何将 Azure AD guest 用户设置为 Azure AD 管理员的信息，请参阅[创建 Azure AD 来宾用户并将其设置为 Azure AD 管理员](authentication-aad-guest-users.md)。
+- 有关如何使用 Azure SQL 提供服务主体的信息，请参阅[使用 Azure AD 应用程序创建 Azure AD 用户](authentication-aad-service-principal-tutorial.md)
 
 <!--Image references-->
+
 [11]: ./media/authentication-aad-configure/active-directory-integrated.png
 [12]: ./media/authentication-aad-configure/12connect-using-pw-auth2.png
 [13]: ./media/authentication-aad-configure/13connect-to-db2.png

@@ -1,79 +1,117 @@
 ---
 title: 实现 IoT 即插即用预览模型发现 |Microsoft Docs
-description: 作为解决方案开发人员，了解如何在解决方案中实现 IoT 即插即用模型发现。
-author: Philmea
-ms.author: philmea
-ms.date: 12/26/2019
+description: 作为解决方案生成器，可以了解如何在解决方案中实现 IoT 即插即用模型发现。
+author: prashmo
+ms.author: prashmo
+ms.date: 07/23/2020
 ms.topic: conceptual
-ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-manager: philmea
-ms.openlocfilehash: 74eb38269a3c7fbdc6d95554a8a8cef14eb0b787
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 364b85a8ead09858b97d5d7e6ca8c130b9960b2c
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81770476"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337375"
 ---
 # <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>在 IoT 解决方案中实现 IoT 即插即用预览模型发现
 
-本文介绍了如何作为解决方案开发人员在 IoT 解决方案中实现 IoT 即插即用预览模型发现。  IoT 即插即用模式发现是 IoT 即插即用设备如何识别其支持的功能模型和接口，以及 IoT 解决方案如何检索这些功能模型和接口。
+本文介绍了如何作为解决方案生成器在 IoT 解决方案中实现 IoT 即插即用预览模型发现。 模型发现介绍了如何：
 
-IoT 解决方案分为两大类：专门构建的解决方案，适用于一组已知的 IoT 即插即用设备和与任何 IoT 即插即用设备一起使用的模型驱动的解决方案。
+- IoT 即插即用设备注册其模型 ID。
+- IoT 解决方案检索设备实现的接口。
 
-此概念文章介绍了如何在这两种类型的解决方案中实现模型发现。
+IoT 解决方案分为两大类别：
+
+- *专门构建的 iot 解决方案*适用于一组已知的 iot 即插即用设备型号。
+
+- *模型驱动的 iot 解决方案*可与任何 IoT 即插即用设备配合使用。 构建模型驱动的解决方案更为复杂，但优点在于您的解决方案适用于将来添加的任何设备。
+
+    若要生成模型驱动的 IoT 解决方案，需要根据 IoT 即插即用接口基元构建逻辑：遥测、属性和命令。 解决方案的逻辑通过合并多个遥测、属性和命令功能来表示设备。
+
+本文介绍如何在这两种类型的解决方案中实现模型发现。
 
 ## <a name="model-discovery"></a>模型发现
 
-IoT 即插即用设备首次连接到 IoT 中心时，会发送一个模型信息遥测消息。 此消息包括设备实现的接口 Id。 要使你的解决方案与设备一起工作，它必须解析这些 Id 并检索每个接口的定义。
+若要发现设备实现的模型，解决方案可以通过使用基于事件的发现或基于克隆的发现来获取模型 ID：
 
-以下是 IoT 即插即用设备在使用设备预配服务（DPS）连接到集线器时所采用的步骤：
+### <a name="event-based-discovery"></a>基于事件的发现
 
-1. 当设备处于开启状态时，它将连接到 DPS 的全局终结点，并使用允许的方法之一进行身份验证。
-1. 然后，DPS 对设备进行身份验证，并查找规则，告诉它要将设备分配到哪个 IoT 中心。 然后，DPS 向该中心注册设备。
-1. DPS 会将 IoT 中心连接字符串返回到设备。
-1. 然后，设备会将发现遥测消息发送到 IoT 中心。 发现遥测消息包含设备所实现的接口的 Id。
-1. IoT 即插即用设备现在已准备好使用 IoT 中心的解决方案。
+当 IoT 即插即用设备连接到 IoT 中心时，它将注册其实现的模型。 此注册将导致[数字克隆更改事件](concepts-digital-twin.md#digital-twin-change-events)通知。 若要了解如何启用针对数字克隆事件的路由，请参阅[使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)。
 
-如果设备直接连接到 IoT 中心，它将使用嵌入到设备代码中的连接字符串进行连接。 然后，设备会将发现遥测消息发送到 IoT 中心。
+解决方案可以使用以下代码片段中所示的事件来了解正在连接的 IoT 即插即用设备并获取其型号 ID：
 
-若要详细了解模型信息遥测消息，请参阅[ModelInformation](concepts-common-interfaces.md)接口。
+```json
+iothub-connection-device-id:sample-device
+iothub-enqueuedtime:7/22/2020 8:02:27 PM
+iothub-message-source:digitalTwinChangeEvents
+correlation-id:100f322dc2c5
+content-type:application/json-patch+json
+content-encoding:utf-8
+[
+  {
+    "op": "replace",
+    "path": "/$metadata/$model",
+    "value": "dtmi:com:example:TemperatureController;1"
+  }
+]
+```
 
-### <a name="purpose-built-iot-solutions"></a>专门构建的 IoT 解决方案
+添加或更新设备模型 ID 时，触发此事件。
 
-专门构建的 IoT 解决方案适用于一组已知的 IoT 即插即用设备功能模型和接口。
+### <a name="twin-based-discovery"></a>基于克隆的发现
 
-你将提前连接到你的解决方案的设备的功能模型和接口。 使用以下步骤来准备解决方案：
+如果解决方案想要了解给定设备的功能，则可以使用[获取数字](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin/getdigitaltwin)克隆 API 来检索信息。
 
-1. 将接口 JSON 文件存储在解决方案可以从中读取的[模型存储库](./howto-manage-models.md)中。
-1. 根据预期的 IoT 即插即用功能模型和接口，在 IoT 解决方案中编写逻辑。
-1. 订阅来自你的解决方案使用的 IoT 中心的通知。
+在以下数字设备代码段中， `$metadata.$model` 包含 IoT 即插即用设备的型号 ID：
 
-收到新设备连接的通知后，请执行以下步骤：
+```json
+{
+    "$dtId": "sample-device",
+    "$metadata": {
+        "$model": "dtmi:com:example:TemperatureController;1",
+        "serialNumber": {
+            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
+        }
+    }
+}
+```
 
-1. 阅读发现遥测消息以检索功能模型的 Id 和设备实现的接口。
-1. 将功能模型的 ID 与事先存储的功能模型的 id 进行比较。
-1. 现在，你知道已连接的设备类型。 使用之前编写的逻辑使用户能够适当地与设备交互。
+此解决方案还可以使用 "**获取**克隆" 从设备克隆检索模型 ID，如以下代码片段所示：
 
-### <a name="model-driven-solutions"></a>模型驱动的解决方案
+```json
+{
+    "deviceId": "sample-device",
+    "etag": "AAAAAAAAAAc=",
+    "deviceEtag": "NTk0ODUyODgx",
+    "status": "enabled",
+    "statusUpdateTime": "0001-01-01T00:00:00Z",
+    "connectionState": "Disconnected",
+    "lastActivityTime": "2020-07-17T06:12:26.8402249Z",
+    "cloudToDeviceMessageCount": 0,
+    "authenticationType": "sas",
+    "x509Thumbprint": {
+        "primaryThumbprint": null,
+        "secondaryThumbprint": null
+    },
+    "modelId": "dtmi:com:example:TemperatureController;1",
+    "version": 15,
+    "properties": {...}
+    }
+}
+```
 
-模型驱动的 IoT 解决方案可与任何 IoT 即插即用设备配合使用。 构建模型驱动的 IoT 解决方案更复杂，但优点在于您的解决方案适用于将来添加的任何设备。
+## <a name="model-resolution"></a>模型解析
 
-若要生成模型驱动的 IoT 解决方案，需要根据 IoT 即插即用接口基元构建逻辑：遥测、属性和命令。 IoT 解决方案的逻辑通过合并多个遥测、属性和命令功能来表示设备。
+解决方案使用模型解析获取从模型 ID 中构成模型的接口的访问权限。 
 
-解决方案还必须订阅来自其使用的 IoT 中心的通知。
-
-当解决方案收到新设备连接的通知时，请执行以下步骤：
-
-1. 阅读发现遥测消息以检索功能模型的 Id 和设备实现的接口。
-1. 对于每个 ID，请阅读完整的 JSON 文件以查找设备的功能。
-1. 检查是否每个接口都存在于你为存储解决方案之前检索到的 JSON 文件而生成的任何缓存中。
-1. 然后，检查公共模型存储库中是否存在具有该 ID 的接口。 有关详细信息，请参阅[公共模型存储库](howto-manage-models.md)。
-1. 如果接口不存在于公共模型存储库中，请尝试在解决方案已知的任何公司模型存储库中查找它。 需要连接字符串才能访问公司模型存储库。 有关详细信息，请参阅[公司模型存储库](howto-manage-models.md)。
-1. 如果找不到公共模型存储库中的所有接口或公司模型存储库中的所有接口，可以检查设备是否可以提供接口定义。 设备可以实现标准[ModelDefinition](concepts-common-interfaces.md)接口，以发布有关如何使用命令检索接口文件的信息。
-1. 如果找到了设备实现的每个接口的 JSON 文件，则可以枚举设备的功能。 使用之前编写的逻辑使用户能够与设备交互。
-1. 你随时都可以调用数字孪生 API 来检索设备的功能模型 ID 和接口 Id。
+- 解决方案可以选择将这些接口作为文件存储在本地文件夹中。 
+- 解决方案可以使用[模型存储库](concepts-model-repository.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已了解了 IoT 解决方案的模型发现，接下来详细了解[Azure Iot 平台](overview-iot-plug-and-play.md)，以利用解决方案的其他功能。
+现在，你已了解有关使用 IoT 解决方案的模型发现的详细信息，请详细了解[Azure iot 平台](overview-iot-plug-and-play.md)，以使用解决方案的其他功能。
+
+- [从解决方案与设备交互](quickstart-service-node.md)
+- [IoT 数字克隆 REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [Azure IoT 资源管理器](howto-use-iot-explorer.md)

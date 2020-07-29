@@ -5,20 +5,20 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 05/29/2020
+ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: baab0160247e17556f0928f12f26a5ecca767210
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f6185cbb871d63cfdf5a4c336944158593b63e4a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129298"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372835"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>在 Windows 虚拟桌面上使用 Microsoft 团队
 
 >[!IMPORTANT]
->Microsoft 团队的媒体优化目前为公共预览版。 建议在为生产工作负荷部署团队之前评估优化的团队用户体验。 某些功能可能不受支持或者受限。
+>Microsoft 365 政府环境不支持团队媒体优化。
 
 >[!NOTE]
 >Microsoft 团队的媒体优化仅适用于 Windows 10 计算机上的 Windows 桌面客户端。 媒体优化需要 Windows 桌面客户端版本1.2.1026.0 或更高版本。
@@ -27,7 +27,7 @@ Windows 虚拟桌面上的 Microsoft 团队支持聊天和协作。 借助媒体
 
 借助 Microsoft 团队的媒体优化，Windows 桌面客户端会在本地处理音频和视频，以供团队调用和会议。 你仍可将 Windows 虚拟桌面上的 Microsoft 团队与其他客户端配合使用，而无需进行优化的呼叫和会议。 所有平台都支持团队聊天和协作功能。 若要在远程会话中重定向本地设备，请查看[自定义主机池的远程桌面协议属性](#customize-remote-desktop-protocol-properties-for-a-host-pool)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在 Windows 虚拟桌面上使用 Microsoft 团队之前，需要执行以下操作：
 
@@ -53,15 +53,21 @@ Windows 虚拟桌面上的 Microsoft 团队支持聊天和协作。 借助媒体
 
 ### <a name="install-the-teams-websocket-service"></a>安装团队 WebSocket 服务
 
-在 VM 映像上安装[WebSocket 服务](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj0i)。 如果遇到安装错误，请安装[最新的 Microsoft Visual C++ 可再发行组件](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)，然后重试。
+在 VM 映像上安装最新的[WebSocket 服务](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt)。 如果遇到安装错误，请安装[最新的 Microsoft Visual C++ 可再发行组件](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)，然后重试。
 
 #### <a name="latest-websocket-service-versions"></a>最新 WebSocket 服务版本
 
-下表列出了适用于每个用户组的当前版本：
+下表列出了 WebSocket 服务的最新版本：
 
-|版本    |发布日期  |
-|-----------|--------------|
-|0.11.0     |05/29/2020    |
+|版本        |发布日期  |
+|---------------|--------------|
+|1.0.2006.11001 |07/28/2020    |
+|0.11.0         |05/29/2020    |
+
+#### <a name="updates-for-version-10200611001"></a>版本1.0.2006.11001 的更新
+
+- 解决了在调用或会议导致传入视频下降的同时，最大程度地降低团队应用的问题。
+- 添加了对选择一个监视器以在多监视器桌面会话中共享的支持。
 
 ### <a name="install-microsoft-teams"></a>安装 Microsoft 团队
 
@@ -117,7 +123,7 @@ Windows 虚拟桌面上的 Microsoft 团队支持聊天和协作。 借助媒体
 
 3. 选择用户配置文件映像，然后选择 "**设置**"。
 
-      如果已加载媒体优化，则将在 "设备" 菜单中枚举本地可用的音频设备和相机。 如果菜单显示**远程音频**，请退出团队应用，然后重试。 如果菜单中未显示设备，请返回以[安装 Microsoft 团队](#install-microsoft-teams)，并确保已完成安装过程。
+      如果已加载媒体优化，则将在 "设备" 菜单中枚举本地可用的音频设备和相机。 如果菜单显示**远程音频**，请退出团队应用，然后重试。 如果菜单中未显示设备，请检查本地 PC 上的隐私设置。 确保在 "**设置**" "  >  **隐私**  >  "**应用权限**设置 "**允许应用访问你的麦克风**" 设置为 **"开启**"。 断开与远程会话的连接，然后重新连接并再次检查音频和视频设备。 若要通过视频加入呼叫和会议，还必须授予应用访问相机的权限。
 
 ## <a name="known-issues-and-limitations"></a>已知问题和限制
 
@@ -133,9 +139,7 @@ Windows 虚拟桌面上的 Microsoft 团队支持聊天和协作。 借助媒体
 ### <a name="calls-and-meetings"></a>呼叫和会议
 
 - Windows 虚拟桌面环境中的团队桌面客户端不支持实时事件。 目前，我们建议你改为在远程会话中加入[团队 web 客户端](https://teams.microsoft.com)的实时事件。
-- 当你展开应用程序时，最大程度地降低团队应用程序的运行可能导致传入视频源消失。
 - 呼叫或会议当前不支持应用程序共享。 桌面会话支持桌面共享。
-- 在多监视器安装程序中进行桌面共享时，将共享所有监视器。
 - 当前不支持对控件进行控制和控制。
 - Windows 虚拟桌面上的团队每次仅支持一个传入视频输入。 这意味着每当有人尝试共享其屏幕时，都会显示其屏幕，而不是会议主持人的屏幕。
 - 由于 WebRTC 限制，传入和传出视频流解析仅限于720p。

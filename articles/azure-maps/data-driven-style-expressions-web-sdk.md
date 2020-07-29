@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: codepen
-ms.openlocfilehash: aaf974eca4b307fc122cf0ee5fdb0ddbcf75088a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 54477bd74df660edb12f6daffbaa2a7390f9516a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242604"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285707"
 ---
-# <a name="data-driven-style-expressions-web-sdk"></a>Web SDK (的数据驱动样式表达式) 
+# <a name="data-driven-style-expressions-web-sdk"></a>数据驱动样式表达式（Web SDK）
 
 使用表达式可以将业务逻辑应用到样式选项，这些选项可观察数据源中每个形状中定义的属性。 表达式可以筛选数据源或层中的数据。 表达式可以包含条件逻辑，如 if 语句。 而且，它们可用于使用：字符串运算符、逻辑运算符和数学运算符来操作数据。
 
@@ -28,7 +28,7 @@ ms.locfileid: "86242604"
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
-表达式表示为 JSON 数组。 数组中表达式的第一个元素是一个字符串，该字符串指定表达式运算符的名称。 例如，"+" 或 "case"。 如果任何) 是表达式的参数，则后面的元素 (。 每个参数都是一个文本值 (字符串、数字、布尔值、 `null`) 或其他表达式数组。 以下伪代码定义表达式的基本结构。 
+表达式表示为 JSON 数组。 数组中表达式的第一个元素是一个字符串，该字符串指定表达式运算符的名称。 例如，"+" 或 "case"。 接下来的元素（如果有）是表达式的参数。 每个参数都是一个文本值（字符串、数字、布尔值或 `null` ）或另一个表达式数组。 以下伪代码定义表达式的基本结构。 
 
 ```javascript
 [ 

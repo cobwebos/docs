@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 1ba9edba97ce89cede54287076e50eb587af10f3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4a57719ec9e7b22ed81ee6f07a568a993846de42
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242468"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374314"
 ---
 # <a name="drawing-package-requirements"></a>绘图包要求
 
@@ -187,7 +187,7 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 ### <a name="directoryinfo"></a>directoryInfo
 
-| properties  | type | 必需 | 说明 |
+| properties  | type | 必须 | 说明 |
 |-----------|------|----------|-------------|
 | name      | string | true   |  建筑物名称。 |
 | streetAddress|    字符串 |    false    | 建筑物地址。 |
@@ -208,7 +208,7 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 `buildingLevels` 对象包含建筑物楼层的 JSON 数组。
 
-| 属性  | 类型 | 必需 | 说明 |
+| 属性  | 类型 | 必须 | 说明 |
 |-----------|------|----------|-------------|
 |levelName    |string    |true |    楼层的描述性名称。 例如：Floor 1、Lobby、Blue Parking、Basement 等。|
 |序号 | integer |    true | 序号用于确定楼层的垂直顺序。 每个设施都必须有序号为 0 的楼层。 |
@@ -218,15 +218,15 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 ### <a name="georeference"></a>georeference
 
-| 属性  | 类型 | 必需 | 说明 |
+| 属性  | 类型 | 必须 | 说明 |
 |-----------|------|----------|-------------|
 |lat    | numeric |    true |    设施绘图的原点的纬度（用十进制表示）。 坐标原点必须位于 WGS84 Web Mercator (`EPSG:3857`)。|
 |lon    |numeric|    true|    设施绘图的原点的经度（用十进制表示）。 坐标原点必须位于 WGS84 Web Mercator (`EPSG:3857`)。 |
-|angle|    numeric|    true|   True 与绘图的垂直 (Y) 轴之间的顺时针角度（以度为单位）。   |
+|angle|    numeric|    true|   True 与绘图的垂直（Y）轴之间的顺时针角度（以度为单位）。   |
 
 ### <a name="dwglayers"></a>dwgLayers
 
-| 属性  | 类型 | 必需 | 说明 |
+| 属性  | 类型 | 必须 | 说明 |
 |-----------|------|----------|-------------|
 |exterior    |字符串数组|    true|    定义建筑物外表面轮廓的一个或多个图层的名称。|
 |单位|    字符串数组|    true|    定义单元的一个或多个图层的名称。|
@@ -240,7 +240,7 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 `unitProperties` 对象包含 unit 属性的 JSON 数组。
 
-| properties  | 类型 | 必需 | 说明 |
+| properties  | 类型 | 必须 | 说明 |
 |-----------|------|----------|-------------|
 |unitName    |string    |true    |要与此 `unitProperty` 记录关联的单元的名称。 只有当在一个或多个 `unitLabel` 图层中找到与 `unitName` 匹配的标签时，此记录才有效。 |
 |categoryName|    字符串|    false    |类别名称。 有关完整的类别列表，请参阅[类别](https://aka.ms/pa-indoor-spacecategories)。 |
@@ -260,7 +260,7 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 `zoneProperties` 对象包含 zone 属性的 JSON 数组。
 
-| properties  | 类型 | 必需 | 说明 |
+| properties  | 类型 | 必须 | 说明 |
 |-----------|------|----------|-------------|
 |zoneName        |string    |true    |要与 `zoneProperty` 记录关联的区域的名称。 只有当在区域的 `zoneLabel` 图层中找到与 `zoneName` 匹配的标签时，此记录才有效。  |
 |categoryName|    字符串|    false    |类别名称。 有关完整的类别列表，请参阅[类别](https://aka.ms/pa-indoor-spacecategories)。 |
@@ -279,7 +279,7 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
     "version": "1.1", 
     "directoryInfo": { 
         "name": "Contoso Building", 
-        "streetAddresss": "Contoso Way", 
+        "streetAddress": "Contoso Way", 
         "unit": "1", 
         "locality": "Contoso eastside", 
         "postalCode": "98052", 

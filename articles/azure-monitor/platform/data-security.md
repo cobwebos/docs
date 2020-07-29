@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
-ms.openlocfilehash: 540e824f301c402e1f65f6186b26ad1672e21d37
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ef34dbfd3af326dbf2d82e09a4c5c8c8e4a91a84
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539340"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319790"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics 数据安全
 本文档旨在提供特定于 Azure Log Analytics 的信息（Azure Monitor 的功能），用于补充有关 [Azure 信任中心](https://www.microsoft.com/en-us/trust-center?rtc=1)的信息。  
@@ -148,7 +148,7 @@ Azure Log Analytics 满足以下要求：
 
 会对已连接系统与 Log Analytics 服务之间的所有通信进行加密。 TLS (HTTPS) 协议用于加密。  遵循 Microsoft SDL 过程，已确保 Log Analytics 是最新的，加密协议也是最新的。
 
-每种类型的代理都会收集 Log Analytics 的数据。 收集的数据类型取决于所用解决方案的类型。 可以查看[从解决方案库中添加 Log Analytics 解决方案](../../azure-monitor/insights/solutions.md)中的数据收集的摘要。 此外，会针对大多数解决方案提供更详细的收集信息。 解决方案包含一组预定义的视图、日志搜索查询、数据收集规则和处理逻辑。 只有管理员可以使用 Log Analytics 导入解决方案。 解决方案完成导入后，会将它移到 Operations Manager 管理服务器（如果使用），再移到你选定的任何代理。 然后，该代理收集数据。
+每种类型的代理都会收集 Log Analytics 的数据。 收集的数据类型取决于所用解决方案的类型。 可以查看[从解决方案库中添加 Log Analytics 解决方案](../insights/solutions.md)中的数据收集的摘要。 此外，会针对大多数解决方案提供更详细的收集信息。 解决方案包含一组预定义的视图、日志搜索查询、数据收集规则和处理逻辑。 只有管理员可以使用 Log Analytics 导入解决方案。 解决方案完成导入后，会将它移到 Operations Manager 管理服务器（如果使用），再移到你选定的任何代理。 然后，该代理收集数据。
 
 ## <a name="2-send-data-from-agents"></a>2.从代理发送数据
 使用注册密钥注册所有代理类型，并使用基于证书的身份验证和带端口443的 TLS 在代理与 Log Analytics 服务之间建立安全连接。 Log Analytics 使用机密存储生成和维护密钥。 私钥每隔 90 天会进行轮换、存储在 Azure 中，并受遵循严格的法规和合规性操作的 Azure Operations 管理。
@@ -172,6 +172,7 @@ Log Analytics 服务通过使用 Azure 身份验证对证书和数据完整性�
 若要访问 Log Analytics 工作区，请使用组织帐户或先前设置的 Microsoft 帐户登录到 Azure 门户。 门户与 Log Analytics 服务之间的所有流量通过安全 HTTPS 通道发送。 使用门户时，会在用户客户端（Web 浏览器）上生成会话 ID，会将数据存储在本地缓存中，直到该会话终止。 终止后，会删除该缓存。 不会自动删除不包含个人身份信息的客户端 Cookie。 会话 Cookie 标记为 HTTPOnly，并且受到保护。 在预先确定的空闲期过后，会终止 Azure 门户会话。
 
 ## <a name="next-steps"></a>后续步骤
-* 遵循 [Azure VM 快速入门](../../azure-monitor/learn/quick-collect-azurevm.md)，了解如何使用 Log Analytics 收集 Azure VM 的数据。  
+* 遵循 [Azure VM 快速入门](../learn/quick-collect-azurevm.md)，了解如何使用 Log Analytics 收集 Azure VM 的数据。  
 
-*  如果想要从环境中的 Windows 或 Linux 物理机或虚拟机收集数据，请参阅[适用于 Linux 计算机的快速入门](../../azure-monitor/learn/quick-collect-linux-computer.md)或[适用于 Windows 计算机的快速入门](../../azure-monitor/learn/quick-collect-windows-computer.md)
+*  如果想要从环境中的 Windows 或 Linux 物理机或虚拟机收集数据，请参阅[适用于 Linux 计算机的快速入门](../learn/quick-collect-linux-computer.md)或[适用于 Windows 计算机的快速入门](../learn/quick-collect-windows-computer.md)
+

@@ -4,17 +4,17 @@ description: 介绍异常检测的工作原理、发送通知的方式以及如�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: anbene
 ms.author: mingshen
+author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: becd15ceea41e40b35848f46f9657c501acf659a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: cb134c82f231eb8b6329b1acafb181032edd6936
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122024"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320079"
 ---
-# <a name="anomaly-detection-service-for-metered-billing"></a>按流量计费的异常情况检测服务
+# <a name="anomaly-detection-service-for-metered-billing"></a>针对按流量计费的异常情况检测服务
 
 [Marketplace 计量服务](marketplace-metering-service-apis-faq.md)使你可以在基于非标准单位收费的商业市场计划中创建产品/服务。 通过计费计费，你可以将客户使用情况事件发送到 Microsoft，并根据该使用情况准备计费。
 
@@ -58,9 +58,9 @@ ms.locfileid: "86122024"
 
 ## <a name="when-and-how-to-get-support"></a>何时以及如何获取支持
 
-如果你将错误的使用情况发送到 Microsoft，或将导致客户 undercharge，Microsoft 将不会在报告的使用情况下向客户发起帐单或为该使用付费。 由于正在报告下，你将必须承担收入损失。
+如果你将错误的使用情况发送到 Microsoft，或将导致客户 undercharge，Microsoft 将不会在报告的使用情况下向客户发起帐单或为该使用付费。 你必须自行承担由于少报而导致的收入损失。
 
-如果下列情况之一适用，则可以打开支持票证，为客户请求退款或计费调整：
+如果下述任一情况适用，可打开支持票证，为客户请求退款或调整帐单：
 
 - 您确认我们发现的异常之一是真正的问题，不正确的用法会导致客户**overcharge** 。
 - 你发现你向我们发送了错误的使用情况，并且错误的用法会导致客户**overcharge** 。
@@ -76,6 +76,6 @@ ms.locfileid: "86122024"
 
 有关发布者支持选项的详细信息，请参阅[合作伙伴中心的商业市场计划支持](support.md)。
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-step"></a>下一步
 
 - 了解[Marketplace 计量服务 API](marketplace-metering-service-apis.md)。

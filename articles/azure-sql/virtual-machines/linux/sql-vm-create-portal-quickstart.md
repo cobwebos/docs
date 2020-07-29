@@ -10,13 +10,14 @@ ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 41f39c7e60e79e034d4c855a77bfee0f6fa2094d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ce3ab92be33b378aeb6694efe181ee19da5d3f4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669505"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284347"
 ---
-# <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>预配在 Azure 门户中运行 SQL Server 的 Linux 虚拟机
+# <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>在 Azure 门户中预配运行 SQL Server 的 Linux 虚拟机
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
@@ -26,7 +27,7 @@ ms.locfileid: "84669505"
 在本快速入门教程中，你将使用 Azure 门户创建装有 SQL Server 2017 的 Linux 虚拟机。 学习以下内容： 
 
 
-* [从库中创建 SQL Server 运行的 Linux VM](#create)
+* [从库中创建运行 SQL Server 的 Linux VM](#create)
 * [使用 ssh 连接到新的 VM](#connect)
 * [更改 SA 密码](#password)
 * [针对远程连接进行配置](#remote)
@@ -71,7 +72,7 @@ ms.locfileid: "84669505"
 1. 然后键入或选择以下值：
    * **区域**：选择合适的 Azure 区域。
    * **可用性选项**：选择最适合应用和数据的可用性与冗余选项。
-   * **更改大小**：选择此选项以选择计算机大小，完成后，选择“选择”。 有关 VM 计算机大小的详细信息，请参阅 [Linux VM 大小](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes)。
+   * **更改大小**：选择此选项以选择计算机大小，完成后，选择“选择”。 有关 VM 计算机大小的详细信息，请参阅[vm 大小](../../../virtual-machines/sizes.md)。
 
      ![选择 VM 大小](./media/sql-vm-create-portal-quickstart/vmsizes.png)
 
@@ -81,7 +82,7 @@ ms.locfileid: "84669505"
    * **身份验证类型**：选择“SSH 公钥”。
 
      > [!Note]
-     > 可以选择使用“SSH 公钥”或“密码”进行身份验证。 SSH 更安全。 有关如何生成 SSH 密钥的说明，请参阅[在 Linux 和 Mac 上为 Azure 中的 Linux VM 创建 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys)。
+     > 可以选择使用“SSH 公钥”或“密码”进行身份验证。 SSH 更安全。 有关如何生成 SSH 密钥的说明，请参阅[在 Linux 和 Mac 上为 Azure 中的 Linux VM 创建 SSH 密钥](../../../virtual-machines/linux/mac-create-ssh-keys.md)。
 
    * **用户名**：输入 VM 的管理员名称。
    * **SSH 公钥**：输入 RSA 公钥。
@@ -92,7 +93,7 @@ ms.locfileid: "84669505"
 1. 在后面的其他选项卡中对设置进行任何所需的更改，或保留默认设置。
     * **磁盘**
     * **网络**
-    * **管理**
+    * **Management**
     * **来宾配置**
     * **标记**
 
@@ -121,7 +122,7 @@ ssh azureadmin@40.55.55.555
 
 1. 选择“打开”，并根据提示输入用户名和密码。
 
-若要详细了解如何连接到 Linux VM，请参阅[使用门户在 Azure 上创建 Linux VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal)。
+若要详细了解如何连接到 Linux VM，请参阅[使用门户在 Azure 上创建 Linux VM](../../../virtual-machines/linux/quick-create-portal.md)。
 
 > [!NOTE]
 > 如果出现有关不会在注册表中缓存服务器主机密钥的 PuTTY 安全警报，请从以下选项中进行选择。 如果你信任此主机，请选择“是”将密钥添加到 PuTTy 缓存并继续进行连接。 如果你只想建立连接一次，而无需将密钥添加到缓存，请选择“否”。 如果你不信任此主机，请选择“取消”以放弃连接。
@@ -166,7 +167,7 @@ ssh azureadmin@40.55.55.555
 > [!TIP]
 > 如果在预配过程中已在设置中选择了入站端口“MS SQL (1433)”，则已进行这些更改。 有关如何配置防火墙，可以转到下一部分。
 
-1. 在门户中选择“虚拟机”，并选择 SQL Server VM。
+1. 在门户中选择“虚拟机”，然后选择 SQL Server VM。
 1. 在左侧窗格中的“设置”下，选择“网络”。
 1. 在“网络”窗口中，选择“入站端口规则”下的“添加入站端口”。 
 

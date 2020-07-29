@@ -1,6 +1,6 @@
 ---
-title: Windows 虚拟桌面管理工具-Azure
-description: 如何排查 Windows 虚拟桌面管理工具的问题。
+title: Windows 虚拟桌面（经典）管理工具-Azure
+description: 如何排查 Windows 虚拟桌面（经典）管理工具的问题。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bb9206d2c2c15c036b0cf1184b79ed126966eb3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 442cdce2ebb6c1a3e38932411dfa2b081a44ef9f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82614793"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283361"
 ---
-# <a name="troubleshoot-the-windows-virtual-desktop-management-tool"></a>排查 Windows 虚拟桌面管理工具问题
+# <a name="troubleshoot-the-windows-virtual-desktop-classic-management-tool"></a>Windows 虚拟桌面（经典）管理工具疑难解答
 
 >[!IMPORTANT]
->本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。
+>此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。
 
 本文介绍部署 Windows 虚拟桌面管理工具时可能出现的问题，以及如何修复这些问题。
 
@@ -35,7 +35,7 @@ ms.locfileid: "82614793"
 - 用户拥有其订阅和租户级别全局管理员的所有者权限，但他们无法登录到 Azure。
 - 用户的帐户设置已启用多重身份验证。
 
-修复此问题的方法：
+解决方法：
 
 1. 确保为 Azure Active Directory 用户主体名称创建的用户具有 "参与者" 订阅级别。
 2. 用 UPN 帐户登录到 <portal.azure.com> 以检查帐户设置，并确保未启用多重身份验证。 如果已打开，请将其关闭。

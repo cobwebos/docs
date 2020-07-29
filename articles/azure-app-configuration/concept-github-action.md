@@ -6,11 +6,12 @@ ms.author: lcozzens
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 6d072cd03fa0e5c8da4593d8633a268d3b5a50fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66d0e32e7dfdd5ab2abee5108ac8ce54c5222747
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84197067"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371815"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>将 GitHub 存储库同步到应用程序配置
 
@@ -24,7 +25,7 @@ GitHub Actions [工作流](https://help.github.com/articles/about-github-actions
 若要深入了解 GitHub 工作流和操作，请参阅这篇 GitHub [文档](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow)。 
 
 ## <a name="enable-github-actions-in-your-repository"></a>在存储库中启用 GitHub Actions
-若要开始使用此 GitHub 操作，请转到存储库，然后选择“操作”选项卡。依次单击“新建工作流”和“自己创建工作流”。 最后，在市场中搜索“Azure 应用程序配置同步”。
+若要开始使用此 GitHub 操作，请在存储库中选择 "**操作**" 选项卡。选择 "**新建工作流**"，然后**自行设置工作流**。 最后，在市场中搜索“Azure 应用程序配置同步”。
 > [!div class="mx-imgBorder"]
 > ![选择“操作”选项卡](media/find-github-action.png)
 
@@ -251,7 +252,7 @@ jobs:
 ## <a name="use-max-depth-to-limit-github-action"></a>使用最大深度限制 GitHub 操作
 嵌套 JSON 特性的默认行为是平展整个对象。  下面的 JSON 定义了此键值对：
 
-| 键 | “值” |
+| 密钥 | Value |
 | --- | --- |
 | Object:Inner:InnerKey | InnerValue |
 
@@ -294,7 +295,7 @@ jobs:
 
 假设 depth 值为 2，上面的示例现在返回以下键值对：
 
-| 密钥 | “值” |
+| 密钥 | Value |
 | --- | --- |
 | Object:Inner | {"InnerKey":"InnerValue"} |
 

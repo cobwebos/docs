@@ -5,18 +5,18 @@ description: 了解如何从已部署的 Azure 机器学习模型中收集数据
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: sgilley
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 07/14/2020
-ms.custom: seodec18
-ms.openlocfilehash: 9ae1ec7eb566871402d44a0f24878b4ea92197f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 3ece750ab63c2c8e33fbfb46739eec55de4f5d07
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090223"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320181"
 ---
 # <a name="collect-data-from-models-in-production"></a>收集生产中模型的数据
 

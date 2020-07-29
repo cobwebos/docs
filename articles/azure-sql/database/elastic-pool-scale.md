@@ -10,12 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
-ms.date: 3/14/2019
-ms.openlocfilehash: 4cc5ad575b0fbe371d9432668e8ccf43b45ae717
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/28/2020
+ms.openlocfilehash: 8cd8dda807b27bc1a83176c6a46596eccfd19073
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84032068"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372087"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>在 Azure SQL 数据库中缩放弹性池资源
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -55,7 +56,17 @@ ms.locfileid: "84032068"
 >
 > - 如果更改服务层或者重新缩放弹性池的计算大小，则应使用池中所有数据库的已用空间之和来计算估计值。
 > - 如果向/从弹性池移动数据库，则只有数据库使用的空间会影响延迟，弹性池使用的空间不会影响延迟。
->
+> - 对于标准和常规用途弹性池，如果弹性池使用高级文件共享（[PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)）存储，则将数据库移入/移出弹性池或在弹性池之间移动数据库的延迟将与数据库大小成正比。 若要确定池是否正在使用 PFS 存储，请在池中的任何数据库的上下文中执行以下查询。 如果 AccountType 列中的值为 `PremiumFileStorage` ，则该池使用的是 PFS 存储。
+
+```sql
+SELECT s.file_id,
+       s.type_desc,
+       s.name,
+       FILEPROPERTYEX(s.name, 'AccountType') AS AccountType
+FROM sys.database_files AS s
+WHERE s.type_desc IN ('ROWS', 'LOG');
+```
+
 > [!TIP]
 > 若要监视正在进行的操作，请参阅：[使用 SQL REST API 管理操作](https://docs.microsoft.com/rest/api/sql/operations/list)、[使用 CLI 管理操作](/cli/azure/sql/db/op)、[使用 T-SQL 监视操作](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)及以下两个 PowerShell 命令：[Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) 和 [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity)。
 

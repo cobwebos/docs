@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
-ms.openlocfilehash: 42924b4ac5493fc910079ca1f89a6195ccba55e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 16fba1f036299a84db8301dbc09c7f4884d985f3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007905"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305085"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Windows Azure 诊断扩展 (WAD) 配置架构版本和历史记录
 本文提供了作为 Microsoft Azure SDK 的一部分提供的 [Windows Azure 诊断扩展 (WAD)](diagnostics-extension-overview.md) 架构版本的历史记录。  
@@ -47,7 +47,7 @@ ms.locfileid: "87007905"
 ### <a name="diagnostics-extension-111"></a>诊断扩展 1.11
 添加了对 Azure Monitor 接收器的支持。 此接收器仅适用于性能计数器。 允许将在 VM、VMSS 或云服务上收集的性能计数器作为自定义指标发送到 Azure Monitor。 Azure Monitor 接收器支持：
 * 通过 [Azure Monitor 指标 API](/rest/api/monitor/metrics/list) 检索发送到 Azure Monitor 的所有性能计数器。
-* 通过 Azure Monitor 中新的[统一警报体验](../../azure-monitor/platform/alerts-overview.md)根据发送到 Azure Monitor 的所有性能计数器发出警报
+* 通过 Azure Monitor 中新的[统一警报体验](./alerts-overview.md)根据发送到 Azure Monitor 的所有性能计数器发出警报
 * 将性能计数器中的通配符运算符视为指标上的“实例”维度。 例如，如果你收集了“LogicalDisk(\*)/DiskWrites/sec”计数器，则可以根据“实例”维度进行筛选和拆分，以基于每个逻辑磁盘（C：、D：等）的磁盘写入次数/秒进行绘图或发出警报
 
 将 Azure Monitor 定义为诊断扩展配置中的新接收器
@@ -155,7 +155,7 @@ ms.locfileid: "87007905"
 添加了路由到 EventHub 的功能。
 
 ### <a name="diagnostics-extension-15"></a>诊断扩展 1.5
-添加了 sinks 元素和将诊断数据发送到 [Application Insights](../../azure-monitor/app/cloudservices.md) 的功能，因此可以更轻松地在应用程序以及系统和基础结构级别诊断问题。
+添加了 sinks 元素和将诊断数据发送到 [Application Insights](../app/cloudservices.md) 的功能，因此可以更轻松地在应用程序以及系统和基础结构级别诊断问题。
 
 ### <a name="azure-sdk-26-and-diagnostics-extension-13"></a>Azure SDK 2.6 和诊断扩展 1.3
 对 Visual Studio 中的云服务项目进行了以下更改。 （这些更改同样适用于更高版本的 Azure SDK。）
@@ -190,3 +190,4 @@ ms.locfileid: "87007905"
 * **云服务应用程序的诊断只能在角色级别配置，而不是在实例级别配置。**
 * **每次部署应用程序时，都会更新诊断配置** – 如果从服务器资源管理器更改诊断配置并重新部署应用，这可能会导致奇偶校验问题。
 * **在 Azure SDK 2.5 及更高版本中，故障转储是在诊断配置文件而非代码中配置的** – 如果在代码中配置了故障转储，则必须手动将配置从代码传输至配置文件，因为故障转储并未在迁移至 Azure SDK 2.6 的过程中传输。
+

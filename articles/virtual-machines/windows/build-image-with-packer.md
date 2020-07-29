@@ -4,16 +4,16 @@ description: 了解如何使用 Packer 在 Azure 中创建 Windows 虚拟机映�
 author: cynthn
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 14b2e3df6d7ea3f72c1968cfed222a1b9b0d636d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1597d249899756ac0d43d2dcd90019179b81bb3b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525851"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284653"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>如何使用 Packer 在 Azure 中创建 Windows 虚拟机映像
 Azure 中的每个虚拟机 (VM) 都是基于定义 Windows 分发和操作系统版本的映像创建的。 映像可以包括预安装的应用程序和配置。 Azure 市场为最常见的操作系统和应用程序环境提供许多第一和第三方映像，或者也可创建满足自身需求的自定义映像。 本文详细介绍了如何使用开源工具 [Packer](https://www.packer.io/) 在 Azure 中定义和生成自定义映像。
@@ -234,7 +234,7 @@ New-AzVm `
 
 
 ## <a name="test-vm-and-webserver"></a>测试 VM 和 Web 服务器
-使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 获取 VM 的公共 IP 地址。 以下示例获取前面创建的“myPublicIP”的 IP 地址：
+使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 获取 VM 的公共 IP 地址。 以下示例获取前面创建的“myPublicIP”  的 IP 地址：
 
 ```powershell
 Get-AzPublicIPAddress `

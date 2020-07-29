@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 126cca9d3606b378e59e4f4e1c5b52d985d19d94
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c20f668c57e8c2e74c320ca535aea18e633daf8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80055688"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326114"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>网络性能监视器解决方案：性能监视
 
@@ -128,4 +128,5 @@ ms.locfileid: "80055688"
 ![已在其中选择节点属性的拓扑图](media/network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
 
 ## <a name="next-steps"></a>后续步骤
-[搜索日志](../../azure-monitor/log-query/log-query-overview.md)以查看详细的网络性能数据记录。
+[搜索日志](../log-query/log-query-overview.md)以查看详细的网络性能数据记录。
+

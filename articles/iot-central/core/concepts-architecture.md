@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 12ad231d81b6c134ebb8d4902b3f95c978e9622d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e4b81f2350795b1244289119d714e99bc06ba6f
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695328"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337137"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central 体系结构
 
@@ -134,7 +135,7 @@ Azure IoT Central 将时序存储用于从设备发送的度量数据。 设备�
 
 在 IoT Central 应用程序设备模板中包含：
 
-- **设备功能模型**指定设备的功能，例如它发送的遥测数据、用于定义设备状态的属性，以及设备响应的命令。 设备功能已组织到一个或多个界面中。 有关设备功能模型的详细信息，请参阅[IoT 即插即用（预览版）](../../iot-pnp/overview-iot-plug-and-play.md)文档。
+- **设备功能模型**指定设备的功能，例如它发送的遥测数据、用于定义设备状态的属性，以及设备响应的命令。 设备功能已组织到一个或多个界面中。
 - **云属性**指定 IoT Central 为设备存储的属性。 这些属性只存储在 IoT Central 中，而不会发送到设备。
 - **视图**指定生成器创建的、让操作员监视和管理设备的仪表板和窗体。
 - **自定义项**让生成器替代设备功能模型中的某些定义，使之与 IoT Central 应用程序更相关。
@@ -167,7 +168,7 @@ Azure IoT Central 中的安全功能包括：
 UI Shell 是一个现代的基于 HTML5 浏览器的应用程序，响应速度快。
 管理员可以通过应用自定义主题，并将帮助链接修改为指向你自己的自定义帮助资源，来自定义应用程序的 UI。 若要详细了解 UI 自定义，请参阅[自定义 Azure IoT Central UI](howto-customize-ui.md) 一文。
 
-操作员可以创建个性化的应用程序仪表板。 可以设置多个仪表板，用于显示不同的数据，并可以在它们之间进行切换。
+操作员可以创建个性化的应用程序仪表板。 可以创建多个仪表板用于显示不同的数据，并可以切换这些仪表板。
 
 ## <a name="next-steps"></a>后续步骤
 

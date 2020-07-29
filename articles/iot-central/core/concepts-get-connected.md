@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: a66613406de66cf9478b90d4ad58c115a30fdf5d
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 82d797189096994e02c77e9d342c00b13dfa187d
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224721"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337086"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>连接到 Azure IoT Central
 
@@ -25,14 +25,14 @@ ms.locfileid: "86224721"
 
 通常，必须先在应用程序中注册设备，然后才能进行连接。 但是，IoT Central 支持在[没有首先注册的情况下可以连接设备](#connect-without-registering-devices)的方案。
 
-IoT Central 使用[Azure IoT 中心设备预配服务 (DPS) ](../../iot-dps/about-iot-dps.md)来管理连接过程。 设备首先连接到 DPS 终结点，以检索连接到应用程序所需的信息。 IoT Central 应用程序在内部使用 IoT 中心来处理设备连接。 使用 DPS：
+IoT Central 使用[Azure IoT 中心设备预配服务（DPS）](../../iot-dps/about-iot-dps.md)来管理连接过程。 设备首先连接到 DPS 终结点，以检索连接到应用程序所需的信息。 IoT Central 应用程序在内部使用 IoT 中心来处理设备连接。 使用 DPS：
 
 - 可让 IoT Central 支持大规模的设备加入和连接。
 - 可让你离线生成设备凭据并配置设备，而无需通过 IoT Central UI 注册设备。
 - 可让你使用自己的设备 ID 在 IoT Central 中注册设备。 使用自己的设备 ID 可以简化与现有后端办公系统的集成。
 - 可以通过一致的单一方式将设备连接到 IoT Central。
 
-为了保护设备与应用程序之间的通信，IoT Central 支持共享访问签名 (SAS) 和 x.509 证书。 在生产环境中，建议使用 x.509 证书。
+为了保护设备与应用程序之间的通信，IoT Central 支持共享访问签名（SAS）和 x.509 证书。 在生产环境中，建议使用 x.509 证书。
 
 本文介绍以下用例：
 
@@ -74,7 +74,7 @@ IoT Central 使用[Azure IoT 中心设备预配服务 (DPS) ](../../iot-dps/abou
 
 若要将设备与 x.509 证书连接到应用程序，请执行以下操作：
 
-1. 使用** (x.509) **证明类型的证书创建*注册组*。
+1. 创建使用**证书（x.509）** 证明类型的*注册组*。
 2. 添加并验证注册组中的中间或根 x.509 证书。
 3. 注册并连接使用从注册组中的根或中间证书生成的叶 x.509 证书的设备。
 
@@ -183,7 +183,7 @@ IoT Central 使用[Azure IoT 中心设备预配服务 (DPS) ](../../iot-dps/abou
 
 ## <a name="individual-enrollment-based-device-connectivity"></a>基于注册的单个设备连接
 
-对于连接设备的每个设备都有自己的身份验证凭据，请使用单独的注册。 单个注册是允许连接的单个设备的条目。 个人注册可使用 x.509 叶证书或 SAS 令牌 (从物理或虚拟受信任的平台模块) 作为证明机制。 设备 ID (也称为 "注册 ID") 在单个注册中是字母数字、小写形式，可以包含连字符。 有关详细信息，请参阅[DPS 单个注册](https://docs.microsoft.com/azure/iot-dps/concepts-service#individual-enrollment)。
+对于连接设备的每个设备都有自己的身份验证凭据，请使用单独的注册。 单个注册是允许连接的单个设备的条目。 个人注册可使用 x.509 叶证书或 SAS 令牌（来自物理或虚拟受信任的平台模块）作为证明机制。 单个注册中的设备 ID （也称为 "注册 ID"）是字母数字、小写形式，可以包含连字符。 有关详细信息，请参阅[DPS 单个注册](https://docs.microsoft.com/azure/iot-dps/concepts-service#individual-enrollment)。
 
 > [!NOTE]
 > 为设备创建单个注册时，其优先级高于 IoT Central 应用程序中的默认组注册选项。
@@ -192,17 +192,17 @@ IoT Central 使用[Azure IoT 中心设备预配服务 (DPS) ](../../iot-dps/abou
 
 IoT Central 支持用于单个注册的以下证明机制：
 
-- **对称密钥证明：** 对称密钥证明是使用 DPS 实例对设备进行身份验证的一种简单方法。 若要创建使用对称密钥的单个注册，请打开 "**设备连接**" 页，选择 "**单个注册**" 作为连接方法，并将 "**共享访问签名" (SAS) **作为机制。 输入 base64 编码的主密钥和辅助密钥，并保存所做的更改。 使用**id 范围**、**设备 ID**以及主密钥或辅助密钥来连接设备。
+- **对称密钥证明：** 对称密钥证明是使用 DPS 实例对设备进行身份验证的一种简单方法。 若要创建使用对称密钥的单个注册，请打开 "**设备连接**" 页，选择 "**单个注册**" 作为 "连接方法"，并选择 "**共享访问签名（SAS）** " 作为机制。 输入 base64 编码的主密钥和辅助密钥，并保存所做的更改。 使用**id 范围**、**设备 ID**以及主密钥或辅助密钥来连接设备。
 
     > [!TIP]
     > 对于测试，可以使用**OpenSSL**生成 base64 编码的密钥：`openssl rand -base64 64`
 
-- **X.509 证书：** 若要使用 x.509 证书创建单个注册，请打开 "**设备连接**" 页，选择 "**单个注册**" 作为连接方法，并将**证书 (x.509) **为该机制。 与单个注册条目一起使用的设备证书要求将颁发者和使用者 CN 设置为设备 ID。
+- **X.509 证书：** 若要使用 x.509 证书创建单个注册，请打开 "**设备连接**" 页，选择 "**单个注册**" 作为连接方法，然后选择 "**证书" （x.509）** 作为机制。 与单个注册条目一起使用的设备证书要求将颁发者和使用者 CN 设置为设备 ID。
 
     > [!TIP]
     > 对于测试，可以使用适用于[Node.js的 Azure IoT 设备预配设备 SDK 工具](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools)来生成自签名证书：`node create_test_cert.js device "mytestdevice"`
 
-- **受信任的平台模块 (TPM) 证明：**[TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation)是一种硬件安全模块。 使用 TPM 是连接设备的最安全方式之一。 本文假设使用的是独立的、固件或集成的 TPM。 软件仿真 Tpm 非常适合用于原型制作或测试，但它们不提供与离散、固件或集成 Tpm 相同的安全性级别。 请勿在生产环境中使用软件 Tpm。 若要创建使用 TPM 的单个注册，请打开 "**设备连接**" 页，选择 "**单个注册**" 作为 "连接方法"，选择 " **TPM** " 作为机制。 输入 TPM 认可密钥并保存设备连接信息。
+- **受信任的平台模块（TPM）证明：**[TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation)是一种硬件安全模块。 使用 TPM 是连接设备的最安全方式之一。 本文假设使用的是独立的、固件或集成的 TPM。 软件仿真 Tpm 非常适合用于原型制作或测试，但它们不提供与离散、固件或集成 Tpm 相同的安全性级别。 请勿在生产环境中使用软件 Tpm。 若要创建使用 TPM 的单个注册，请打开 "**设备连接**" 页，选择 "**单个注册**" 作为 "连接方法"，选择 " **TPM** " 作为机制。 输入 TPM 认可密钥并保存设备连接信息。
 
 ## <a name="automatically-associate-with-a-device-template"></a>自动与设备模板关联
 
@@ -213,13 +213,13 @@ IoT Central 的主要功能之一是能够在设备连接上自动关联设备�
 
 以下代码片段显示了在 DPS 注册呼叫过程中设备必须发送的其他有效负载的格式，以使自动关联能够正常工作。
 
-这是使用不支持 IoT 即插即用的已正式提供设备 SDK 的设备的格式：
+这是使用公开提供的设备 SDK 的设备的格式：
 
 ```javascript
     iotcModelId: '< this is the URN for the capability model>';
 ```
 
-这是使用公共预览版设备 SDK 但支持 IoT 即插即用的设备的格式：
+这是使用公共预览版设备 SDK 的设备的格式：
 
 ```javascript
 '__iot:interfaces': {
@@ -281,8 +281,6 @@ Azure 设备 SDK 为实现设备代码提供最简便的方法。 以下设备 S
 | 属性（可写） | 设备孪生所需的和报告的属性 |
 | 命令 | 直接方法 |
 
-若要了解有关使用设备 Sdk 的详细信息，请参阅[将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序](howto-connect-devkit.md)，了解示例代码。
-
 ### <a name="protocols"></a>协议
 
 设备 SDK 支持下述用于连接到 IoT 中心的网络协议：
@@ -295,7 +293,7 @@ Azure 设备 SDK 为实现设备代码提供最简便的方法。 以下设备 S
 
 如果设备无法使用这些受支持协议中的任何一种，可以使用 Azure IoT Edge 进行协议转换。 IoT Edge 支持其他边缘智能方案，可以将处理从 Azure IoT Central 应用程序卸载到边缘。
 
-## <a name="security"></a>安全性
+## <a name="security"></a>安全
 
 在设备与 Azure IoT Central 之间交换的所有数据都经过加密。 如果设备已连接到任何面向设备的 IoT 中心终结点，则 IoT 中心会对从该设备发出的所有请求进行身份验证。 为了避免通过网络交换凭据，设备使用签名的令牌进行身份验证。 有关详细信息，请参阅[控制对 IoT 中心的访问](../../iot-hub/iot-hub-devguide-security.md)。
 

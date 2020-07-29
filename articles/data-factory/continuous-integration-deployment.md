@@ -11,11 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: d997c6d4eae93290cbb1e4cafe6c7ad662a65933
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c12cfc21668a13586d94089a7049f6f0d6066d7
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336871"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336916"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure 数据工厂中的持续集成和交付
 
@@ -48,7 +49,7 @@ ms.locfileid: "85336871"
 
 1.  在拉取请求获得批准并已将更改合并到主分支后，更改将发布到开发工厂。
 
-1.  团队在准备好将更改部署到测试或 UAT 工厂后，会转到其 Azure Pipelines 发布阶段，并会将所需版本的开发工厂部署到 UAT。 此部署作为 Azure Pipelines 任务的一部分发生，使用资源管理器模板参数来应用相应的配置。
+1.  当团队准备好将更改部署到测试或 UAT （用户验收测试）工厂时，团队会转到其 Azure Pipelines 版本，并将所需版本的开发工厂部署到 UAT。 此部署作为 Azure Pipelines 任务的一部分发生，使用资源管理器模板参数来应用相应的配置。
 
 1.  在测试工厂中验证更改后，将使用下一个管道发布任务部署到生产工厂。
 

@@ -1,6 +1,6 @@
 ---
-title: Windows 虚拟桌面诊断日志分析（秋季2019）-Azure
-description: 了解如何结合使用 log analytics 和 Windows 虚拟桌面（秋季2019版）诊断功能。
+title: Windows 虚拟桌面（经典）诊断日志分析-Azure
+description: 如何将 log analytics 用于 Windows 虚拟桌面（经典）诊断功能。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c4c59268f63252813c7e08608d5d8ee499b11f53
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 500758839b426143650707d3d77d78e8a064533e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077612"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285061"
 ---
-# <a name="use-log-analytics-for-the-diagnostics-feature-fall-2019-release"></a>将 Log Analytics 用于诊断功能（秋季2019版）
+# <a name="use-log-analytics-for-the-diagnostics-feature-in-windows-virtual-desktop-classic"></a>在 Windows 虚拟桌面（经典）中使用诊断功能 Log Analytics
 
 >[!IMPORTANT]
->本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。 如果要尝试管理 2020 年春季版更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../diagnostics-log-analytics.md)。
+>此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。 如果尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../diagnostics-log-analytics.md)。
 
 Windows 虚拟桌面提供了一项诊断功能，使管理员能够通过单个界面识别问题。 每次分配 Windows 虚拟桌面角色的用户使用该服务时，此功能都会记录诊断信息。 每个日志都包含有关活动中涉及的 Windows 虚拟桌面角色、在会话过程中出现的任何错误消息、租户信息和用户信息的信息。 诊断功能将为用户和管理操作创建活动日志。 每个活动日志分为以下三个主要类别：
 

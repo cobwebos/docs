@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 68be8d08939464d200da588c481447f8206c9117
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 720a768679cdbd45224e5c9a05b8f8d0c9b9ea81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117202"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326080"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -113,7 +113,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 ### <a name="configure-the-solution"></a>配置解决方案 
 
-1. 将网络性能监视器解决方案从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)添加到工作区。 也可以使用[从解决方案库中添加 Azure Monitor 解决方案](../../azure-monitor/insights/solutions.md)中所述的过程。 
+1. 将网络性能监视器解决方案从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)添加到工作区。 也可以使用[从解决方案库中添加 Azure Monitor 解决方案](./solutions.md)中所述的过程。 
 2. 打开 Log Analytics 工作区，然后选择“概览”磁贴****。 
 3. 选择带有“解决方案需要进行额外配置”** 消息的“网络性能监视器”**** 磁贴。
 
@@ -291,3 +291,4 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 ## <a name="next-steps"></a>后续步骤 
 详细了解[性能监视器](network-performance-monitor-performance-monitor.md)、[服务连接性监视器](network-performance-monitor-performance-monitor.md)和 [ExpressRoute 监视器](network-performance-monitor-expressroute.md)。 
+

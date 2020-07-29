@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 2ed9e9e4ec658fc506ad2bd449ee1a49d510503f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c1ac3c1e312704f8a0afa751d0efc6d0cef897f9
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081332"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371764"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>使用适用于 Azure SQL 数据库中的服务器的虚拟网络服务终结点和规则
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -139,7 +139,7 @@ PolyBase 通常用于将数据从 Azure 存储帐户加载到 Azure Synapse Anal
 1. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后选择“添加角色分配”。  将“存储 Blob 数据参与者”RBAC 角色分配给托管 Azure Synapse Analytics 的服务器，后者已在步骤 #1 中向 Azure Active Directory (AAD) 注册。
 
    > [!NOTE]
-   > 只有对存储帐户具有“所有者”权限的成员才能执行此步骤。 若要了解 Azure 资源的各种内置角色，请参阅此[指南](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
+   > 只有对存储帐户具有“所有者”权限的成员才能执行此步骤。 有关各种 Azure 内置角色，请参阅本[指南](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
   
 1. **通过 Polybase 连接到 Azure 存储帐户：**
 

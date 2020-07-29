@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: 7774ea5138e6d77547e386531e573457cd6d2862
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5353bad3ff631fd7baa5d9892d38449ba622ea46
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525936"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284670"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>Linux VM 启动到 Grub 救援
 
@@ -35,7 +35,7 @@ ms.locfileid: "86525936"
 * 如果出现“未知的文件系统”错误，则请注意，此错误可能是由于启动分区中的文件系统损坏，或者是由于内核配置不正确。 
 
    * 对于文件系统问题，请按 [Linux Recovery:Cannot SSH to Linux VM due to file system errors (fsck, inodes)](/archive/blogs/linuxonazure/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes)（Linux 恢复：由于文件系统错误（fsck、inode）而无法通过 SSH 连接到 Linux VM）一文中的步骤操作。
-   * 对于内核问题，请按 [Linux Recovery:Manually fixing non-boot issues related to Kernel problems](/archive/blogs/linuxonazure/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems)（Linux 恢复：手动修复与内核问题相关的非启动问题）或 [Linux Recovery:Fixing non-boot issues related to Kernel problems using chroot](/archive/blogs/linuxonazure/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot)（Linux 恢复：使用 chroot 修复与内核问题相关的非启动问题）一文中的步骤操作。
+   * 对于内核问题，请按 [Linux Recovery:Manually fixing non-boot issues related to Kernel problems](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/)（Linux 恢复：手动修复与内核问题相关的非启动问题）或 [Linux Recovery:Fixing non-boot issues related to Kernel problems using chroot](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/)（Linux 恢复：使用 chroot 修复与内核问题相关的非启动问题）一文中的步骤操作。
    
 ### <a name="error---file-not-found"></a>错误 - 找不到文件
 

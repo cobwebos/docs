@@ -7,11 +7,12 @@ ms.date: 12/12/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 89d068fbd835a5b4f8886a2ed77691f94a701bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8660cb18f5e7ac5f3695eb15475570b107bf25c
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759104"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337069"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>将 Azure IoT Edge 设备连接到 Azure IoT Central 应用程序
 
@@ -57,7 +58,7 @@ Azure IoT Edge 设备可以是具有连接到 IoT Edge 设备的下游设备的�
 
 ![部署清单生命周期的流程图](./media/concepts-iot-edge/dmflow.png)
 
-IoT 即插即用（预览版）对 IoT Edge 设备建模，如下所示：
+IoT Central 对 IoT Edge 设备建模，如下所示：
 
 * 每个 IoT Edge 设备模板都具有设备功能模型。
 * 对于部署清单中列出的每个自定义模块，都会生成模块功能模型。

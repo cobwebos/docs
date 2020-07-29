@@ -1,24 +1,24 @@
 ---
-title: '在 Python (预览版中评估 ML 模型的公平) '
+title: 在 Python 中评估 ML 模型的公平（预览版）
 titleSuffix: Azure Machine Learning
 description: 了解如何在中评估模型的公平 Azure 机器学习
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: luquinta
 ms.date: 07/09/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 4f791ef9e18032ce6773f4262586431e693b43b2
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 5e6f241fcf30d4090a1af9a26441a5a10b939972
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206742"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307057"
 ---
-# <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>将 Azure 机器学习与 Fairlearn 开源包一起使用，以 (预览版评估 ML 模型的公平) 
+# <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>将 Azure 机器学习与 Fairlearn 开源包一起使用，以评估 ML 模型（预览版）的公平
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -26,7 +26,7 @@ ms.locfileid: "86206742"
 
 * 评估模型预测的公平。 若要在机器学习中了解有关公平的详细信息，请参阅[机器学习一文中的公平](concept-fairness-ml.md)。
 * 在 Azure 机器学习 studio 中上传、列出和下载公平评估见解。
-* 请参阅 Azure 机器学习 studio 中的 "公平评估" 仪表板，与模型 () "公平见解交互。
+* 请参阅 Azure 机器学习 studio 中的 "公平评估" 仪表板，与模型的公平见解交互。
 
 >[!NOTE]
 > 公平评估并非纯粹的技术运动。 **此包可帮助你评估机器学习模型的公平，但只有你可以配置并做出有关模型执行方式的决策。**  尽管此包有助于识别量化指标以评估公平，但机器学习模型的开发人员还必须执行定性分析来评估其自己的模型的公平。
@@ -49,7 +49,7 @@ pip install fairlearn==0.4.6
 
 1. 训练 Jupyter 笔记本中的示例模型。 
 
-    对于数据集，我们使用众所周知的成人人口数据集，我们使用 (加载这些数据集， `shap` 以方便) 。 出于本示例的目的，我们将此数据集视为一个贷款决策问题，并假设标签指示每个个体是否偿还过去的贷款。 我们将使用数据来训练预测值，以预测之前不可见的个人是否会报答贷款。 假设模型预测用于决定是否应向个人提供贷款。
+    对于数据集，我们使用的是众所周知的成人人口统计数据集，我们使用这些数据集 `shap` 进行加载（为方便）。 出于本示例的目的，我们将此数据集视为一个贷款决策问题，并假设标签指示每个个体是否偿还过去的贷款。 我们将使用数据来训练预测值，以预测之前不可见的个人是否会报答贷款。 假设模型预测用于决定是否应向个人提供贷款。
 
     ```python
     from sklearn.model_selection import train_test_split
@@ -147,7 +147,7 @@ pip install fairlearn==0.4.6
 
 3. 预先计算公平指标。
 
-    使用 Fairlearn 的包创建仪表板词典 `metrics` 。 `_create_group_metric_set`方法的参数与仪表板构造函数类似，只是将敏感功能作为字典传递 (以确保名称) 可用。 在这种情况下，还必须指定预测类型 (二元分类) 调用此方法时。
+    使用 Fairlearn 的包创建仪表板词典 `metrics` 。 `_create_group_metric_set`方法的参数与仪表板构造函数类似，只是将敏感功能作为字典传递（以确保名称可用）。 调用此方法时，还必须指定预测类型（在本例中为二元分类）。
 
     ```python
     #  Create a dictionary of model(s) you want to assess for fairness 
@@ -190,10 +190,10 @@ pip install fairlearn==0.4.6
     ```
 5. 检查 Azure 机器学习 studio 中的 "公平" 仪表板
 
-    如果你完成了前面的步骤 (上传 Azure 机器学习) 生成的公平见解，则可以在[Azure 机器学习 studio](https://ml.azure.com)中查看 "公平" 仪表板。 此仪表板是 Fairlearn 中提供的相同可视化仪表板，可用于分析敏感功能的子组中的发达国家 (例如，雌雄) 。
+    如果完成前面的步骤（将生成的公平见解上载到 Azure 机器学习），则可以在[Azure 机器学习 studio](https://ml.azure.com)中查看 "公平" 仪表板。 此仪表板是 Fairlearn 中提供的相同可视化仪表板，可用于分析敏感功能的子组（例如，男与女性）之间的发达国家。
     通过以下途径之一访问 Azure 机器学习工作室中的可视化仪表板：
 
-    * **试验窗格 (预览) **
+    * **试验窗格（预览版）**
     1. 在左侧窗格中选择“试验”，以查看在 Azure 机器学习中运行的试验列表。
     1. 选择特定的试验可查看该试验中的所有运行。
     1. 选择一个 "运行"，然后选择 "**公平**" 选项卡，然后选择 "说明可视化" 仪表板。
@@ -230,7 +230,7 @@ s # # 为多个模型上载公平见解
 
 2. 注册模型
 
-    接下来，在 Azure 机器学习中注册这两个模型。 为方便起见，在后续方法调用中，将结果存储在字典中，这会将 `id` 已注册模型的设置 (格式) 的字符串映射 `name:version` 到预测器本身：
+    接下来，在 Azure 机器学习中注册这两个模型。 为方便起见，在后续方法调用中，将结果存储在字典中，后者将 `id` 已注册模型（格式为的字符串 `name:version` ）的设置为预测器本身：
 
     ```python
     model_dict = {}
@@ -306,14 +306,14 @@ s # # 为多个模型上载公平见解
     ```
 
 
-    与上一节类似，你可以遵循上述路径中所述的某个路径 (Azure 机器学习 studio 中的**试验**或**模型**) 来访问可视化仪表板，并在公平和性能方面对这两种模型进行比较。
+    与上一节类似，你可以按照 Azure 机器学习 studio 中所述的其中一个路径（通过**试验**或**模型**）来访问可视化面板，并将这两个模型与公平和性能进行比较。
 
 
 ## <a name="upload-unmitigated-and-mitigated-fairness-insights"></a>上传 unmitigated 并缓解公平见解
 
-您可以使用 Fairlearn 的[缓解算法](https://fairlearn.github.io/user_guide/mitigation.html)，将其生成的缓解模式 (s) 与原始的 unmitigated 模型进行比较，并在比较的模型之间导航性能/公平权衡。
+您可以使用 Fairlearn 的[缓解算法](https://fairlearn.github.io/user_guide/mitigation.html)，将其生成的缓解模式与原始 unmitigated 模型进行比较，并在比较的模型之间导航性能/公平权衡。
 
-若要查看演示如何使用[网格搜索](https://fairlearn.github.io/user_guide/mitigation.html#grid-search)缓解算法的示例 (这会创建一组具有不同公平和性能折衷的缓解模型) 查看此[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb)。 
+若要查看演示如何使用[网格搜索](https://fairlearn.github.io/user_guide/mitigation.html#grid-search)缓解算法（这将创建具有不同公平和性能权衡的缓解模型的集合），请查看此[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb)。 
 
 如果在一次运行中上传多个模型的公平见解，则可以比较与公平和性能相关的模型。 您可以进一步单击模型比较图表中显示的任何模型，以便查看特定模型的详细公平信息。
 

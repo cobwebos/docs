@@ -4,20 +4,20 @@ description: 了解如何使用 Python 在 Azure 中创建和管理 Windows VM�
 author: cynthn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: tracking-python
-ms.openlocfilehash: 92b6d8c6cd59f82439beec24c003aac6673014e7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5bddb1d141b461eec794de0849b6234c6a5c6102
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088319"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284449"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>在 Azure 中使用 Python 创建和管理 Windows VM
 
-[Azure 虚拟机](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) 需要多个支持性 Azure 资源。 本文介绍如何使用 Python 创建、管理和删除 VM 资源。 你将学习如何执行以下操作：
+[Azure 虚拟机](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) 需要多个支持性 Azure 资源。 本文介绍如何使用 Python 创建、管理和删除 VM 资源。 学习如何：
 
 > [!div class="checklist"]
 > * 创建 Visual Studio 项目

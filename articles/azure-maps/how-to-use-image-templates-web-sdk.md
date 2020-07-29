@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: codepen
-ms.openlocfilehash: 12c407ecacdce6b9052ca70ef70a2ae87928b6c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 2942ae25e3ac84ae6f91ebbba08581eb87bcd169
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064694"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285673"
 ---
 # <a name="how-to-use-image-templates"></a>如何使用图像模板
 

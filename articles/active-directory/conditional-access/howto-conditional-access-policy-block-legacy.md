@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d6539a233fbb8038d82a8ea41da2c9e79745324
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 15e3c5ba72ff7b97e03cd7aa2b68eeffb2aa7882
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995184"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283004"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>条件访问：阻止传统身份验证
 
@@ -35,7 +36,7 @@ ms.locfileid: "83995184"
    1. 选择“完成”。
 1. 在“云应用或操作”下，选择“所有云应用”。
    1. 选择“完成”。
-1. 在“条件” > “客户端应用（预览）”下，将“配置”设置为“是”。
+1. 在 "**条件**  >  " "客户端**应用（预览）**" 下，在 "**选择将应用此策略的客户端应用**：
    1. 仅选中“移动应用和桌面客户端” > “其他客户端”复选框。
    1. 选择“完成”。
 1. 在“访问控制” > “授予”下，选择“阻止访问”。

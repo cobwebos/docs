@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: e28fc3c5779f2c31abbb48a7ced448cd8f92d1a2
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 3f24e3538f05ca3b6a27907e0b794705402fce7c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171849"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285435"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中进行备份和还原
 
@@ -41,8 +41,8 @@ Azure Database for MySQL 对数据文件和事务日志进行备份。 根据所
 根据服务器上的 "备份保留期" 设置保留备份。 你可以选择7到35天的保留期。 默认保持期为7天。 可以通过使用[Azure 门户](https://docs.microsoft.com/azure/mysql/howto-restore-server-portal#set-backup-configuration)或[Azure CLI](https://docs.microsoft.com/azure/mysql/howto-restore-server-cli#set-backup-configuration)更新备份配置，在创建服务器或更高版本期间设置保留期。 
 
 备份保留期控制可以往回检索多长时间的时间点还原，因为它基于可用备份。 备份保留期也可以从还原角度被视为恢复窗口。 在备份保留期内执行时间点还原所需的所有备份将保留在备份存储中。 例如，如果 "备份保留期" 设置为 "7 天"，则会将恢复时段视为 "最后7天"。 在这种情况下，将保留在过去7天内还原服务器所需的所有备份。 具有7天的备份保留时段：
-- 具有 4 TB 存储的旧服务器将保留最多2个完整数据库备份、所有差异备份和自最早的完整数据库备份以来执行的事务日志备份。
--   具有大型存储空间（16 TB）的服务器将保留完整的数据库快照、所有差异快照和事务日志备份，过去8天。
+- 具有最多 4 TB 存储空间的服务器将保留最多2个完整数据库备份、所有差异备份和自最早的完整数据库备份以来执行的事务日志备份。
+-   具有高达 16 TB 存储的服务器将保留完整的数据库快照、所有差异快照和事务日志备份，过去8天。
 
 ### <a name="backup-redundancy-options"></a>备份冗余选项
 

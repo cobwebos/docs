@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 05/24/2020
-ms.openlocfilehash: 62163217862f586be7ed5c0a6000693f8e7fcdd6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ca41a403f789fd529ac65c21799d3d3e7f3becf6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043189"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285452"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>排查 IoT Edge 上的实时视频分析问题
 
@@ -266,6 +266,9 @@ IoT Edge 上的实时视频分析提供了一种基于方法的直接编程模�
 
 当自行指导故障排除步骤不能解决您的问题时，请转到 Azure 门户并提出[支持票证](../../azure-portal/supportability/how-to-create-azure-support-request.md)。
 
+> [!WARNING]
+> 日志中可能包含个人身份信息（PII），例如你的 IP 地址。 一旦我们完成了日志的所有本地副本的检查并关闭支持票证，就会立即将其删除。  
+
 若要收集应添加到票证的相关日志，请按照后续部分中的说明进行操作。 你可以在支持请求的**详细信息**窗格上上传日志文件。
 
 ### <a name="use-the-support-bundle-command"></a>使用支持捆绑服务命令
@@ -309,7 +312,7 @@ IoT Edge 上的实时视频分析提供了一种基于方法的直接编程模�
 
 1. 选择“更新”。
 1. 选择“查看 + 创建”。 成功的验证消息将在绿色横幅下发布。
-1. 选择“创建” 。
+1. 选择“创建”。
 1. 更新**模块标识**，以指向 DebugLogsDirectory 参数，该参数指向收集日志的目录：
 
     a. 在 "**模块**" 表下，选择 " **lvaEdge**"。  

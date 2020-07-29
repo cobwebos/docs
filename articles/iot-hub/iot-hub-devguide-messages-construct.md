@@ -6,17 +6,17 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 07/22/2019
 ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 4d33a47e0498c82dff967242cfbc12a89c94a3b5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dd2b88d923d0398dc42362242b94b978ccd24252
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327729"
+ms.locfileid: "87336712"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>创建和读取 IoT 中心消息
 
@@ -61,6 +61,8 @@ IoT 中心消息由以下部分组成：
 | iothub-connection-module-id |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 **moduleId**。 | 否 | connectionModuleId |
 | iothub-connection-auth-generation-id |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 **connectionDeviceGenerationId**（根据[设备标识属性](iot-hub-devguide-identity-registry.md#device-identity-properties)）。 | 否 |connectionDeviceGenerationId |
 | iothub-connection-auth-method |由 IoT 中心对设备到云的消息设置的身份验证方法。 此属性包含用于验证发送消息的设备的身份验证方法的相关信息。| 否 | connectionAuthMethod |
+| dt-dataschema | 此值由 IoT 中心在设备到云消息上设置。 它包含设备连接中设置的设备型号 ID。 此功能在[IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)中提供。 | 否 | 空值 |
+| dt-主题 | 正在发送设备到云消息的组件的名称。 此功能在[IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)中提供。 | 是 | 不适用 |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>**C2D** IoT 中心消息的系统属性
 
@@ -89,8 +91,9 @@ IoT 中心消息由以下部分组成：
 |contentType|content-type|contentType|ContentType|iothub-content-type|
 |contentEncoding|content-encoding|contentEncoding|ContentEncoding|iothub-content-encoding|
 |iothub-enqueuedtime|iothub-enqueuedtime|enqueuedTime| 空值 |iothub-enqueuedtime|
-|iothub-interface-name|iothub-interface-name|interfaceName|Iothub-interface-name|iothub-interface-name|
 |CorrelationId|correlation-id|correlationId|CorrelationId|correlation-id|
+|dt-dataschema|dt-dataschema|dt-dataschema|dt-dataschema|dt-dataschema|
+|dt-主题|dt-主题|dt-主题|dt-主题|dt-主题|
 
 ## <a name="message-size"></a>消息大小
 

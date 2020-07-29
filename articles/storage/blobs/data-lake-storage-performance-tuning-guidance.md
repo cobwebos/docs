@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: bf22ce87ed3d535a7c1bd03a8d7f747bee3ab13a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f38dc72a45d84b549baa17c34f2c64ac35b83e3e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106384"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285384"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>优化 Azure Data Lake Storage Gen2 性能
 
@@ -47,7 +47,7 @@ Data Lake Storage Gen2 可进行缩放，以便为所有分析方案提供必要
 |--------------------|------------------------------------------------------|------------------------------|
 | DistCp            | -m (mapper)   | [链接](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure 数据工厂| parallelCopies    | [链接](../../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | fs.azure.block.size, -m (mapper)    |   [链接](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
+| Sqoop           | fs.azure.block.size, -m (mapper)    |   [链接](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>调整数据集结构
 
@@ -131,7 +131,7 @@ HDInsight 群集由两个头节点和一些辅助角色节点组成。 每个辅
 
 除上述常规准则外，每个应用程序都有不同的参数，可用于优化该特定应用程序。 下表列出了一些参数和链接，有助于开始对每个应用程序执行性能优化。
 
-| 工作负荷 | 用于设置任务数的参数 |
+| 工作负载 | 用于设置任务数的参数 |
 |----------|------------------------|
 | [HDInsight 上的 Spark](data-lake-storage-performance-tuning-spark.md) | <ul><li>Num-executors</li><li>Executor-memory</li><li>Executor-cores</li></ul> |
 | [Hive on HDInsight](data-lake-storage-performance-tuning-hive.md) | <ul><li>hive.tez.container.size</li></ul> |

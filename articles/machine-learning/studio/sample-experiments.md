@@ -1,6 +1,5 @@
 ---
-title: 通过示例开始试验
-titleSuffix: ML Studio (classic) - Azure
+title: 机器学习工作室（经典）：通过示例开始试验 - Azure
 description: 了解如何通过 Azure AI 库和 Azure 机器学习工作室（经典）使用示例机器学习试验来创建新试验。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: 79251257e38c9a9b59f759192d3d536185396291
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b26864c5ad8280fe4857ccdb2ce6fbacf1ba47b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706012"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324924"
 ---
 # <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>根据 Azure AI 库中的工作示例创建 Azure 机器学习工作室（经典）试验
+
+**适用于：** ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-azure-ml.md) ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典） 
+
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
@@ -41,7 +43,7 @@ ms.locfileid: "84706012"
 1. 请单击页面顶部的“ **浏览全部** ”。
 2. 在左侧“类别”部分的“优化依据”下，选择“试验” 以查看库中的所有试验。
 3. 可以通过多种方式找到满足要求的试验︰
-   * **选择左侧的筛选器。** 例如，若要浏览使用基于 PCA 的异常情况检测算法的试验：请在“类别”下单击“试验” 。 然后，在“所用算法”下单击“全部显示”，并在对话框中选择“基于 PCA 的异常情况检测”。   可能需要滚动才能看到它。<br></br>
+   * **选择左侧的筛选器。** 例如，若要浏览使用基于 PCA 的异常情况检测算法的试验：请在“类别”下单击“试验” 。 然后，在“所用算法”下单击“全部显示”，并在对话框中选择“基于 PCA 的异常情况检测”。 可能需要滚动才能看到它。<br></br>
      ![选择筛选器](./media/sample-experiments/choose-an-algorithm.png)
    * **使用搜索框。** 例如，若要查找由 Microsoft 提供且与使用双类支持向量机算法的数字识别相关的试验，请在搜索框中输入“数字识别”。 然后，选择筛选器“试验”、“仅限 Microsoft 内容”和“双类支持向量机”：<br></br>
      ![使用搜索框](./media/sample-experiments/search-for-experiments.png)

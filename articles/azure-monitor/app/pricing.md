@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: ff7d088a80ceaf01e9434ef62beb0e771cdf6b55
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3914764035d65482bcf224f8d0eda9c6579e03a4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081655"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309675"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -24,9 +24,9 @@ ms.locfileid: "87081655"
 
 ## <a name="pricing-model"></a>定价模型
 
-[Azure Application Insights][start] 采用基于引入的数据量（还可以选择用于更长的数据保留期）的即用即付模型。 每个 Application Insights 资源作为独立服务计费，并在 Azure 订阅的帐单中产生相应费用。 数据量的衡量标准是 Application Insights 从用户应用程序收到的未压缩 JSON 数据包的大小。 使用[实时指标流](../../azure-monitor/app/live-stream.md)时，不会根据数据量收费。
+[Azure Application Insights][start] 采用基于引入的数据量（还可以选择用于更长的数据保留期）的即用即付模型。 每个 Application Insights 资源作为独立服务计费，并在 Azure 订阅的帐单中产生相应费用。 数据量的衡量标准是 Application Insights 从用户应用程序收到的未压缩 JSON 数据包的大小。 使用[实时指标流](./live-stream.md)时，不会根据数据量收费。
 
-[多步骤 Web 测试](../../azure-monitor/app/availability-multistep.md)会额外收费。 多步骤 Web 测试是指执行一系列操作的 Web 测试。 单页“ping 测试”不单独计费。 进行 ping 测试和多步测试时发送的遥测数据与应用发送的其他遥测数据计费方式相同。
+[多步骤 Web 测试](./availability-multistep.md)会额外收费。 多步骤 Web 测试是指执行一系列操作的 Web 测试。 单页“ping 测试”不单独计费。 进行 ping 测试和多步测试时发送的遥测数据与应用发送的其他遥测数据计费方式相同。
 
 用于[对自定义指标维度启用警报](./pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)的 Application Insights 选项也可能会产生额外的费用，因为这可能会导致创建其他预聚合指标。 请[详细了解](./pre-aggregated-metrics-log-metrics.md) Application Insights 中基于日志的预聚合指标，以及有关 Azure Monitor 自定义指标的[定价](https://azure.microsoft.com/pricing/details/monitor/)。
 
@@ -48,7 +48,7 @@ ms.locfileid: "87081655"
 
 ### <a name="learn-from-what-similar-customers-collect"></a>参考类似客户收集的信息
 
-在 Application Insights 的 Azure 监视定价计算器中，如果启用“根据应用程序活动估算数据量”功能，可以提供有关应用程序的输入（如果以后会收集客户端遥测数据，请提供每月请求数和页面查看次数），然后，计算器会告知类似由应用程序收集的中间值和第 90 个百分位的数据量。 这些应用程序涉及各种 Application Insights 配置（例如，某些应用程序具有默认[采样](../../azure-monitor/app/sampling.md)、有些没有采样等），因此你仍然拥有控制权，可以使用采样将引入的数据量减少到远低于中间值级别。 不过，这只能简单地了解其他类似客户遇到的情况。
+在 Application Insights 的 Azure 监视定价计算器中，如果启用“根据应用程序活动估算数据量”功能，可以提供有关应用程序的输入（如果以后会收集客户端遥测数据，请提供每月请求数和页面查看次数），然后，计算器会告知类似由应用程序收集的中间值和第 90 个百分位的数据量。 这些应用程序涉及各种 Application Insights 配置（例如，某些应用程序具有默认[采样](./sampling.md)、有些没有采样等），因此你仍然拥有控制权，可以使用采样将引入的数据量减少到远低于中间值级别。 不过，这只能简单地了解其他类似客户遇到的情况。
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>了解自己的使用情况和估算成本
 
@@ -56,10 +56,10 @@ ms.locfileid: "87081655"
 
 ![选择定价](./media/pricing/pricing-001.png)
 
-A. 查看当月数据量。 这包括接收和保留的所有数据（在通过服务器和客户端应用以及可用性测试进行[采样](../../azure-monitor/app/sampling.md)后）。  
-B. 会单独对[多步骤 Web 测试](../../azure-monitor/app/availability-multistep.md)计费。 （这不包括简单可用性测试，它已包括在数据量费用中。）  
+A. 查看当月数据量。 这包括接收和保留的所有数据（在通过服务器和客户端应用以及可用性测试进行[采样](./sampling.md)后）。  
+B. 对[多步骤 web 测试](./availability-multistep.md)收取单独的费用。 （这不包括简单可用性测试，它已包括在数据量费用中。）  
 C. 查看上个月的数据量趋势。  
-D. 启用数据引入[采样](../../azure-monitor/app/sampling.md)。
+D. 启用数据引入[采样](./sampling.md)。
 E. 设置每日数据量上限。  
 
 （请注意，本文的屏幕截图中显示的所有价格仅用作示例。 有关在你所在区域中以相应的货币计价的当前价格，请参阅 [Application Insights 定价][pricing]）
@@ -177,17 +177,17 @@ union (AppAvailabilityResults),
 Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=/azure/billing/TOC.json)中心提供了大量实用功能。 例如，通过“成本分析”功能，可以查看 Azure 资源的支出。 按资源类型添加筛选器（对于 Application Insights，将其添加到 microsoft.insights/components），可以跟踪自己的资源支出。 然后，对于“分组依据”，选择“计量类别”或“计量”。  对于当前定价计划中的 Application Insights 资源，由于所有 Azure Monitor 组件只有一个日志后端，因此大多数使用情况将“计量类别”显示为“Log Analytics”。 
 
 通过[在 Azure 门户中下载使用情况信息](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)，可以更好地了解你的使用情况。
-在下载的电子表格中，可以查看每天每个 Azure 资源的使用情况。 在此 Excel 电子表格中，可通过以下方式查找 Application Insights 资源的使用情况：先按“计量类别”列进行筛选，以显示“Application Insights”和“Log Analytics”，然后按“实例 ID”列添加一个“包含 microsoft.insights/components”筛选器。  由于所有 Azure Monitor 组件只有一个日志后端，因此，大多数 Application Insights 使用情况都是根据“计量类别”为 Log Analytics 的计量报告的。  只有旧式定价层和多步骤 Web 测试中的 Application Insights 资源才使用计量类别 Application Insights 进行报告。  使用情况显示在“已使用数量”列中，每个条目的单位显示在“度量单位”列中。  另外还提供更多详细信息，可帮助你[了解 Microsoft Azure 帐单](../../cost-management-billing/understand/review-individual-bill.md)。
+在下载的电子表格中，可以查看每天每个 Azure 资源的使用情况。 在此 Excel 电子表格中，可通过以下方式查找 Application Insights 资源的使用情况：先按“计量类别”列进行筛选，以显示“Application Insights”和“Log Analytics”，然后按“实例 ID”列添加一个“包含 microsoft.insights/components”筛选器。  由于所有 Azure Monitor 组件只有一个日志后端，因此，大多数 Application Insights 使用情况都是根据“计量类别”为 Log Analytics 的计量报告的。  只有旧式定价层和多步骤 Web 测试中的 Application Insights 资源才使用计量类别 Application Insights 进行报告。  使用情况显示在“使用的数量”列中，每个条目的单位显示在“度量单位”列中。  另外还提供更多详细信息，可帮助你[了解 Microsoft Azure 帐单](../../cost-management-billing/understand/review-individual-bill.md)。
 
 ## <a name="managing-your-data-volume"></a>管理数据量
 
 可以使用以下方法管理发送的数据量：
 
-* **采样**：可以使用采样减少从服务器和客户端应用发送的遥测量，同时最大程度减小指标失真。 采样是你可用来调整发送数据量的主要工具。 了解有关[采样功能](../../azure-monitor/app/sampling.md)的详细信息。
+* **采样**：可以使用采样减少从服务器和客户端应用发送的遥测量，同时最大程度减小指标失真。 采样是你可用来调整发送数据量的主要工具。 了解有关[采样功能](./sampling.md)的详细信息。
 
-* 限制 AJAX 调用：可以限制每个页面视图中[可报告的 AJAX 调用数](../../azure-monitor/app/javascript.md#configuration)，也可以关闭 AJAX 报表。
+* 限制 AJAX 调用：可以限制每个页面视图中[可报告的 AJAX 调用数](./javascript.md#configuration)，也可以关闭 AJAX 报表。
 
-* 禁用不需要的模块：[编辑 ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 关闭不需要的集合模块。 例如，用户可能认为不再需要性能计数器或依赖项数据。
+* 禁用不需要的模块：[编辑 ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 关闭不需要的集合模块。 例如，用户可能认为不再需要性能计数器或依赖项数据。
 
 * 预先聚合指标：如果将对 TrackMetric 的调用放在应用中，则可通过使用重载降低流量，这种重载接受对一批度量值的平均偏差和标准偏差的计算结果。 也可使用[预先聚合包](https://www.myget.org/gallery/applicationinsights-sdk-labs)。
  
@@ -207,7 +207,7 @@ Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quic
 
 可以使用每日容量上限，限制所收集的数据。 但是，如果达到上限，会丢失当天剩余时间从应用程序发送的所有遥测数据。 不建议使应用程序达到每日上限。 达到每日上限后，无法跟踪应用程序的运行状况和性能。
 
-不使用每日容量上限，而是使用[采样](../../azure-monitor/app/sampling.md)，将数据量调整到所需级别。 然后，仅在应用程序意外开始发送远高于预期的遥测量时，才使用每日上限作为“最后的手段”。
+不使用每日容量上限，而是使用[采样](./sampling.md)，将数据量调整到所需级别。 然后，仅在应用程序意外开始发送远高于预期的遥测量时，才使用每日上限作为“最后的手段”。
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>确定要定义的每日数据限制
 
@@ -219,7 +219,7 @@ Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quic
 
 ![调整每日遥测数据量上限](./media/pricing/pricing-003.png)
 
-若要[通过 Azure 资源管理器更改每日上限](../../azure-monitor/app/powershell.md)，需要更改 `dailyQuota` 属性。  通过 Azure 资源管理器，还可以设置 `dailyQuotaResetTime` 以及每日上限的 `warningThreshold`。
+若要[通过 Azure 资源管理器更改每日上限](./powershell.md)，需要更改 `dailyQuota` 属性。  通过 Azure 资源管理器，还可以设置 `dailyQuotaResetTime` 以及每日上限的 `warningThreshold`。
 
 ### <a name="create-alerts-for-the-daily-cap"></a>创建针对每日上限的警报
 
@@ -230,13 +230,13 @@ Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quic
 * 已达到 Application Insights 组件的每日上限
 
 ## <a name="sampling"></a>采样
-[采样](../../azure-monitor/app/sampling.md)是一种方法，可降低向应用发送遥测的速率，同时仍可在诊断搜索过程中查找相关事件。 此外，还可保留正确的事件计数。
+[采样](./sampling.md)是一种降低遥测发送到应用的速率的方法，同时保留在诊断搜索过程中查找相关事件的能力。 此外，还可保留正确的事件计数。
 
 采样是降低费用同时又不超出每月配额的有效方式。 采样算法会保留遥测的相关项，这样，当使用“搜索”时便可查找与特定异常相关的请求。 该算法还保留正确计数，使用户可在指标资源管理器中看到请求率、异常率和其他计数的正确值。
 
 有数种形式的采样。
 
-* [自适应采样](../../azure-monitor/app/sampling.md)是用于 ASP.NET SDK 的默认设置。 自适应采样可自动调整为应用发送的遥测量。 它会在 Web 应用的 SDK 中自动运行，以便减少网络上的遥测流量。 
+* [自适应采样](./sampling.md)是用于 ASP.NET SDK 的默认设置。 自适应采样可自动调整为应用发送的遥测量。 它会在 Web 应用的 SDK 中自动运行，以便减少网络上的遥测流量。 
 * *引入采样*是一种替代方法，会在应用的遥测进入 Application Insights 服务时运行。 引入采样不会影响从应用发送的遥测量，但会减少服务保留的量。 可以使用引入采样来降低来自浏览器和其他 SDK 的遥测所使用的配额。
 
 若要设置引入采样，请转到“定价”窗格：
@@ -310,7 +310,7 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
   * *节点*是托管应用的物理/虚拟服务器计算机或平台即服务角色实例。
   * 开发计算机、客户端浏览器和移动设备不计为节点。
   * 如果应用有多个组件（例如 Web 服务和后端辅助角色）发送遥测数据，则会对组件分开计数。
-  * 定价未考虑[实时指标流](../../azure-monitor/app/live-stream.md)数据。 在订阅中，将按节点而非应用计费。 如果有 5 个节点在为 12 个应用发送遥测数据，则按 5 个节点计费。
+  * 定价未考虑[实时指标流](./live-stream.md)数据。 在订阅中，将按节点而非应用计费。 如果有 5 个节点在为 12 个应用发送遥测数据，则按 5 个节点计费。
 * 虽然是按月计费，但对于从应用发送遥测数据的节点来说，实际上是按小时计费。 小时费率为月费除以 744（每月的小时数，每月按 31 天算）。
 * 每天为每个检测到的节点分配的数据量为 200 MB（时间粒度为小时）。 分配的数据如果未使用，不会从当天转到第二天。
   * 如果选择“按节点”定价层，则每个订阅都会收到基于向该订阅中的 Application Insights 资源发送遥测数据的节点数的每日数据限额。 因此，如果全天有 5 个节点在发送数据，则该订阅中的所有 Application Insights 资源可以共用 1 GB 的数据限额。 无所谓某些节点是否比其他节点发送更多数据，因为包含的数据在所有节点之间共享。 如果 Application Insights 资源在特定的某一天收到的数据量超出了为该订阅分配的每日数据限额，则会对超额数据按 GB 计费。 
@@ -319,7 +319,7 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>演示如何确定不同节点计数的示例
 
-| 场景                               | 每日节点计数总数 |
+| 方案                               | 每日节点计数总数 |
 |:---------------------------------------|:----------------:|
 | 1 个应用程序使用 3 个 Azure 应用服务实例和 1 个虚拟服务器 | 4 |
 | 3 个应用程序正运行在 2 个 VM 上，这些应用程序的 Application Insights 资源属于同一订阅，并且位于“按节点”层中 | 2 | 
@@ -339,10 +339,11 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 ## <a name="next-steps"></a>后续步骤
 
-* [采样](../../azure-monitor/app/sampling.md)
+* [样本](./sampling.md)
 
 [api]: app-insights-api-custom-events-metrics.md
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[start]: ./app-insights-overview.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
+

@@ -4,16 +4,16 @@ description: 本文包含一系列 AzCopy 示例命令，以帮助你创建容�
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/10/2020
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: ac96008987b0dbed9e3a39f92e608b8ae6c82512
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bcb4563f7106161920b89897b706b05d2f819938
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513773"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282443"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>使用 AzCopy 和 Blob 存储传输数据
 
@@ -111,7 +111,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 
 ### <a name="upload-specific-files"></a>上传特定的文件
 
-可以指定完整的文件名，或使用包含通配符 (*) 的部分名称。
+您可以使用完整的文件名、包含通配符（*）的部分名称或使用日期和时间来上传特定文件。
 
 #### <a name="specify-multiple-complete-file-names"></a>指定多个完整文件名
 
@@ -140,6 +140,18 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 还可以使用 `--exclude-pattern` 选项来排除文件。 有关详细信息，请参阅 [azcopy copy](storage-ref-azcopy-copy.md) 参考文档。
 
 `--include-pattern` 和 `--exclude-pattern` 选项仅适用于文件名，而不适用于路径。  若要复制目录树中存在的所有文本文件，请使用 `–recursive` 选项获取整个目录树，然后使用 `–include-pattern` 并指定 `*.txt` 来获取所有文本文件。
+
+#### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>上传在日期和时间之后修改的文件 
+
+结合 `--include-after` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 以 ISO-8601 格式指定日期和时间（例如： `2020-08-19T15:04:00Z` ）。 
+
+|    |     |
+|--------|-----------|
+| **语法** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>'  --include-after <Date-Time-in-ISO-8601-format>` |
+| **示例** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory'  --include-after '2020-08-19T15:04:00Z'` |
+| **示例**（分层命名空间） | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory'   --include-after '2020-08-19T15:04:00Z'` |
+
+有关详细参考信息，请参阅[azcopy copy](storage-ref-azcopy-copy.md)参考文档。
 
 ## <a name="download-files"></a>下载文件
 
@@ -202,7 +214,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 
 ### <a name="download-specific-files"></a>下载特定的文件
 
-可以指定完整的文件名，或使用包含通配符 (*) 的部分名称。
+您可以使用完整的文件名、包含通配符（*）的部分名称或使用日期和时间来下载特定文件。 
 
 #### <a name="specify-multiple-complete-file-names"></a>指定多个完整文件名
 
@@ -232,6 +244,18 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 
 `--include-pattern` 和 `--exclude-pattern` 选项仅适用于文件名，而不适用于路径。  若要复制目录树中存在的所有文本文件，请使用 `–recursive` 选项获取整个目录树，然后使用 `–include-pattern` 并指定 `*.txt` 来获取所有文本文件。
 
+#### <a name="download-files-that-were-modified-after-a-date-and-time"></a>下载在日期和时间之后修改的文件 
+
+结合 `--include-after` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 以 ISO-8601 格式指定日期和时间（例如： `2020-08-19T15:04:00Z` ）。 
+
+|    |     |
+|--------|-----------|
+| **语法** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>/*' '<local-directory-path>' --include-after <Date-Time-in-ISO-8601-format>` |
+| **示例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/*' 'C:\myDirectory'  --include-after '2020-08-19T15:04:00Z'` |
+| **示例**（分层命名空间） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory/*' 'C:\myDirectory'  --include-after '2020-08-19T15:04:00Z'` |
+
+有关详细参考信息，请参阅[azcopy copy](storage-ref-azcopy-copy.md)参考文档。
+
 ## <a name="copy-blobs-between-storage-accounts"></a>在存储帐户之间复制 Blob
 
 可以使用 AzCopy 将 Blob 复制到其他存储帐户。 复制操作是同步的，因此，当命令返回时，表示已复制所有文件。 
@@ -241,7 +265,7 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 > [!NOTE]
 > 此方案在当前版本中存在以下限制。
 >
-> - 必须向每个源 URL 追加一个 SAS 令牌。 如果使用 Azure Active Directory (AD) 提供授权凭据，则只能从目标 URL 中省略 SAS 令牌。 请确保已在目标帐户中设置适当的角色。 请参阅[选项1：使用 Azure Active Directory](storage-use-azcopy-v10.md?toc=/azure/storage/blobs/toc.json#option-1-use-azure-active-directory)。
+> - 必须向每个源 URL 追加一个 SAS 令牌。 如果使用 Azure Active Directory (AD) 提供授权凭据，则只能从目标 URL 中省略 SAS 令牌。 请确保已在目标帐户中设置了适当的角色。 请参阅[选项 1：使用 Azure Active Directory](storage-use-azcopy-v10.md?toc=/azure/storage/blobs/toc.json#option-1-use-azure-active-directory)。
 >-  高级块 Blob 存储帐户不支持访问层。 请通过将 `s2s-preserve-access-tier` 设置为 `false`（例如：`--s2s-preserve-access-tier=false`），在复制操作中省略 Blob 的访问层。
 
 本部分包含以下示例：

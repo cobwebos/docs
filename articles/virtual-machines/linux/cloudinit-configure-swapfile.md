@@ -4,14 +4,15 @@ description: 如何在通过 Azure CLI 进行创建时使用 cloud-init 在 Linu
 author: rickstercdn
 manager: gwallace
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 1247652e536042ee249054d86aed3c3f8e7aa7bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f8746e67ba712ac4c2c3e832fcb5ffefb170d59
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78969198"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371934"
 ---
 # <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>在 Linux VM 上使用 cloud-init 配置交换分区
 本文介绍如何使用 [cloud-init](https://cloudinit.readthedocs.io) 在各种 Linux 分发版中配置交换分区。 在传统上，交换分区由 Linux 代理 (WALA) 根据分发版的需要进行配置。  本文档概述在预配期间，使用 cloud-init 按需生成交换分区的过程。  有关 cloud-init 如何在 Azure 以及受支持的 Linux 发行版中本机工作的详细信息，请参阅 [cloud-init 概述](using-cloud-init.md)

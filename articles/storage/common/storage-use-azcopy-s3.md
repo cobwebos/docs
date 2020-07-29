@@ -5,15 +5,15 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/13/2020
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: ee58f21881c9799eba27dec3e71c601e94401deb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 88acb4fe31470dab3ca6f273fd8d942e7f84e687
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036703"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281882"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>使用 AzCopy 将数据从 Amazon S3 复制到 Azure 存储
 
@@ -50,9 +50,6 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 AzCopy 使用[从 URL 放置块](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API，因此数据将在 AWS S3 与存储服务器之间直接复制。 这些复制操作不会占用计算机的网络带宽。
 
-> [!IMPORTANT]
-> 此功能目前处于预览状态。 如果你决定在完成复制操作后从 S3 桶中删除数据，请务必在删除数据之前，确认是否已将数据正确复制到存储帐户。
-
 > [!TIP]
 > 本部分中的示例将路径参数括在单引号 ('') 中。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
 
@@ -73,7 +70,7 @@ AzCopy 使用[从 URL 放置块](https://docs.microsoft.com/rest/api/storageserv
 >
 > 也可以使用虚拟托管样式的 URL（例如：`http://bucket.s3.amazonaws.com`）。 
 >
-> 若要详细了解桶的虚拟托管，请参阅 [桶的虚拟托管]](https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html) 。
+> 若要详细了解桶的虚拟托管，请参阅 [桶的虚拟托管]](https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html)。
 
 ### <a name="copy-a-directory"></a>复制目录
 
@@ -84,6 +81,19 @@ AzCopy 使用[从 URL 放置块](https://docs.microsoft.com/rest/api/storageserv
 | **语法** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **示例** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 | **示例**（分层命名空间）| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+
+> [!NOTE]
+> 此示例将添加 `--recursive` 标记以复制所有子目录中的文件。
+
+### <a name="copy-the-contents-of-a-directory"></a>复制目录的内容
+
+可以复制目录的内容，而无需使用通配符（*）复制包含目录本身。
+
+|    |     |
+|--------|-----------|
+| **语法** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>/*' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
+| **示例** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory/*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+| **示例**（分层命名空间）| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory/*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-a-bucket"></a>复制桶
 

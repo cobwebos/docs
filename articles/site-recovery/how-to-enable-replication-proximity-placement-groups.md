@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: ec516ac1cd9c2a6201bfc77bd1169bcd8ea83e44
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1f64c7aa45b748bdb8174bd69dbfc25f43329c10
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091498"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285333"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>将邻近放置组中运行的 Azure 虚拟机复制到另一个区域
 
@@ -28,14 +28,21 @@ ms.locfileid: "87091498"
 -  如果将某个可用性集固定到邻近放置组，且可用性集中的 VM 在故障转移/故障恢复时具有分配约束，则系统将在可用性集和邻近放置组之外创建虚拟机。
 -  非托管磁盘不支持适用于邻近放置组的 Site Recovery。
 
-> [!Note]
+> [!NOTE]
 > Azure Site Recovery 不支持从适用于 Hyper-v 到 Azure 的托管磁盘的故障回复。 因此，不支持从 Azure 到 Hyper-v 的邻近位置组故障回复。
 
 ## <a name="prerequisites"></a>先决条件
 
 1. 确保已有 Azure PowerShell Az 模块。 如需进安装或升级 Azure PowerShell，请遵循此[安装和配置 Azure PowerShell 指南](/powershell/azure/install-az-ps)。
+2. 最小 Azure PowerShell Az 版本应为4.1.0。 若要检查当前版本，请使用以下命令-
+    ```
+    Get-InstalledModule -Name Az
+    ```
 
 ## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>为邻近放置组中的虚拟机设置 Site Recovery
+
+> [!NOTE]
+> 请确保你具有目标邻近组的唯一 ID。 如果要创建新的邻近位置组，请检查[此处](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#create-a-proximity-placement-group)的命令，如果使用现有的邻近位置组，请在[此处](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#list-proximity-placement-groups)使用命令。
 
 ### <a name="azure-to-azure"></a>Azure 到 Azure
 
@@ -48,7 +55,7 @@ ms.locfileid: "87091498"
 7. 按照[此处](./azure-to-azure-powershell.md#create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover)所述，使用[这些](./azure-to-azure-powershell.md#create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container)步骤创建主保护容器和恢复保护容器之间的保护容器映射，以及用于故障恢复的保护容器映射。
 8. 通过[这些](./azure-to-azure-powershell.md#create-cache-storage-account-and-target-storage-account)步骤创建缓存存储帐户。
 9. 按照[此处](./azure-to-azure-powershell.md#create-network-mappings)所述，创建所需的网络映射。
-10. 要复制包含托管磁盘的 Azure 虚拟机，请使用以下 PowerShell cmdlet - 
+10. 若要复制包含托管磁盘的 Azure 虚拟机，请使用以下 PowerShell cmdlet-
 
 ```azurepowershell
 #Get the resource group that the virtual machine must be created in when failed over.
@@ -77,7 +84,7 @@ $diskconfigs += $OSDiskReplicationConfig, $DataDisk1ReplicationConfig
 
 #Start replication by creating replication protected item. Using a GUID for the name of the replication protected item to ensure uniqueness of name.
 
-$TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryProximityPlacementGroupId $recPpg.Id
+$TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryProximityPlacementGroupId $targetPpg.Id
 ```
 成功启动复制操作后，虚拟机数据将复制到恢复区域。
 
@@ -85,7 +92,7 @@ $TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -A
 
 初始复制完成后，复制过程将转移到差异同步阶段。 此时，虚拟机受到保护，可对其执行测试故障转移操作。 初始复制完成后，表示虚拟机的复制项的复制状态将转换为“受保护”状态。
 
-获取虚拟机对应的复制保护项的详细信息，监视该虚拟机的复制状态和复制运行状况。 
+获取虚拟机对应的复制保护项的详细信息，监视该虚拟机的复制状态和复制运行状况。
 
 ```azurepowershell
 Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $PrimaryProtContainer | Select FriendlyName, ProtectionState, ReplicationHealth
@@ -130,7 +137,7 @@ $VM1 = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $Protection
 
 # Enable replication for virtual machine CentOSVM1 using the Az.RecoveryServices module 2.0.0 onwards to replicate to managed disks
 # The name specified for the replicated item needs to be unique within the protection container. Using a random GUID to ensure uniqueness
-$Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -logStorageAccountId $LogStorageAccount.Id -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1" -RecoveryProximityPlacementGroupId $recPpg.Id
+$Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -logStorageAccountId $LogStorageAccount.Id -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1" -RecoveryProximityPlacementGroupId $targetPpg.Id
 ```
 8. 可使用 Get-ASRReplicationProtectedItem cmdlet 检查虚拟机的复制状态和复制运行状况。
 
@@ -161,7 +168,7 @@ Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Protecti
     
     ```azurepowershell
     $OSType = "Windows"          # "Windows" or "Linux"
-    $DRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId   $StorageAccountID -OSDiskName $OSDiskNameList[$i] -OS $OSType -RecoveryResourceGroupId $ResourceGroupID -RecoveryProximityPlacementGroupId $recPpg.Id
+    $DRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId   $StorageAccountID -OSDiskName $OSDiskNameList[$i] -OS $OSType -RecoveryResourceGroupId $ResourceGroupID -RecoveryProximityPlacementGroupId $targetPpg.Id
     ```
     c. 等待 VM 在完成初始复制后进入受保护状态。 这可能需要一段时间，具体取决于诸如要复制的数据量和 Azure 的可用上游带宽等因素。 进入受保护状态后，更新作业状态和 StateDescription，如下所示： 
     

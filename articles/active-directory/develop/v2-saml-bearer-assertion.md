@@ -9,14 +9,15 @@ ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.author: ryanwi
-ms.reviewer: hirsin
+ms.author: kenwith
+ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: 1cd79b1f9e4cd3afadee250da0c184c0c5b8ac07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d745ddcf7b1d5bd7976a0ca8461c13d8ae3c849
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886171"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282375"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft 标识平台和 OAuth 2.0 SAML 持有者断言流
 当客户端需要使用现有的信任关系时，你可以通过 OAuth 2.0 SAML 持有者断言流使用 SAML 断言请求 OAuth 访问令牌。 应用于 SAML 断言的签名提供已授权应用的身份验证。 SAML 断言是标识提供者颁发的 XML 安全令牌，由服务提供者使用。 出于安全相关的目的，该服务提供者依赖于其内容来识别断言的使用者。

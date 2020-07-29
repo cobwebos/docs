@@ -12,12 +12,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: 18e93ce18ed746612996399dc1aeb258abd26165
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: f2f30230418637b53826bd314e395e760db7087f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "69637213"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87306008"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>如何通过 Java 使用 Twilio 实现语音和短信功能
 本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。 所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。 有关 Twilio 以及在应用程序中使用语音和短信的详细信息，请参阅[后续步骤](#NextSteps)部分。

@@ -3,12 +3,12 @@ title: 模板函数 - 资源
 description: 介绍可在 Azure Resource Manager 模板中用于检索资源相关值的函数。
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 19f5b6c07010c82ba6675e6db031e663ef7c5cdd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 89241558164505573e098bdf580af6542c6095c5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044964"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372376"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 模板的资源函数
 
@@ -108,7 +108,7 @@ ms.locfileid: "87044964"
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
 
-此函数的语法因列表操作的名称而异。 每个实现都为支持列表操作的资源类型返回值。 操作名称必须以 `list` 开头。 一些常见用法为 `listKeys` 、 `listKeyValue` 和 `listSecrets` 。
+此函数的语法因列表操作的名称而异。 每个实现都为支持列表操作的资源类型返回值。 操作名称必须以 `list` 开头。 一些常见用法是 `listKeys`、`listKeyValue` 和 `listSecrets`。
 
 ### <a name="parameters"></a>parameters
 
@@ -118,9 +118,9 @@ ms.locfileid: "87044964"
 | apiVersion |是 |string |资源运行时状态的 API 版本。 通常采用 **yyyy-mm-dd**格式。 |
 | functionValues |否 |object | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas。 本文中演示了传递函数值的示例。 |
 
-### <a name="valid-uses"></a>有效的使用方式
+### <a name="valid-uses"></a>有效使用
 
-列表函数可用于资源定义的属性。 不要使用在模板的 "输出" 部分中公开敏感信息的列表函数。 输出值存储在部署历史记录中，可能由恶意用户检索。
+列表函数可以在资源定义的属性中使用。 请勿使用在模板的 outputs 节中公开敏感信息的列表函数。 输出值存储在部署历史记录中，可能会被恶意用户检索到。
 
 与[属性迭代](copy-properties.md)一起使用时，可以使用 `input` 的 list 函数，因为表达式已分配给资源属性。 不能将它们与 `count` 一起使用，因为必须在解析 list 函数之前确定计数。
 
@@ -287,7 +287,7 @@ ms.locfileid: "87044964"
 
 ### <a name="list-example"></a>List 示例
 
-下面的示例在为[部署脚本](deployment-script-template.md)设置值时使用 listKeys。
+以下示例在为[部署脚本](deployment-script-template.md)设置值时使用了 listKeys。
 
 ```json
 "storageAccountSettings": {
@@ -296,7 +296,7 @@ ms.locfileid: "87044964"
 }
 ```
 
-下一个示例演示采用参数的列表函数。 在这种情况下，函数为**listAccountSas**。 在到期时间传递对象。 到期时间必须是将来的时间。
+下一个示例演示采用参数的列表函数。 在本例中，函数为 listAccountSas。 请为到期时间传递一个对象。 到期时间必须是将来的时间。
 
 ```json
 "parameters": {
@@ -399,7 +399,7 @@ ms.locfileid: "87044964"
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 类型 | 描述 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | resourceName 或 resourceIdentifier |是 |string |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 当引用以前部署的资源或者资源名称不明确时，请提供资源 ID。 |
 | apiVersion |否 |string |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，则需要此参数。 通常情况下，格式为 **yyyy-mm-dd**。 如需查看适用于你的资源的有效 API 版本，请参阅[模板参考](/azure/templates/)。 |
@@ -665,7 +665,7 @@ reference 函数只能用在资源定义的 properties 中以及模板或部署�
 
 ### <a name="remarks"></a>备注
 
-`resourceGroup()` 函数不能用于[在订阅级别部署的](deploy-to-subscription.md)模板中。 它只能用于部署到资源组的模板中。 可以在以资源组为目标的[链接模板或嵌套模板（具有内部范围）](linked-templates.md)中使用 `resourceGroup()` 函数，即使父模板部署到订阅，也是如此。 在这种情况下，链接模板或嵌套模板将在资源组级别进行部署。 若要详细了解如何在订阅级别部署中将资源组作为目标，请参阅[将 Azure 资源部署到多个订阅或资源组](cross-resource-group-deployment.md)。
+`resourceGroup()` 函数不能用于[在订阅级别部署的](deploy-to-subscription.md)模板中。 它只能用于部署到资源组的模板中。 可以在以资源组为目标的[链接模板或嵌套模板（具有内部范围）](linked-templates.md)中使用 `resourceGroup()` 函数，即使父模板部署到订阅，也是如此。 在这种情况下，链接模板或嵌套模板将在资源组级别进行部署。 若要详细了解如何在订阅级别部署中将资源组作为目标，请参阅[将 Azure 资源部署到多个订阅或资源组](cross-scope-deployment.md)。
 
 resourceGroup 函数的一个常见用途是在与资源组相同的位置中创建资源。 以下示例使用资源组位置作为默认参数值。
 
@@ -680,7 +680,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 还可以使用 resourceGroup 函数将资源组中的标记应用于资源。 有关详细信息，请参阅[应用资源组中的标记](../management/tag-resources.md#apply-tags-from-resource-group)。
 
-使用嵌套模板部署到多个资源组时，可以指定评估 resourceGroup 函数的范围。 有关详细信息，[将 Azure 资源部署到多个订阅或资源组](cross-resource-group-deployment.md)。
+使用嵌套模板部署到多个资源组时，可以指定评估 resourceGroup 函数的范围。 有关详细信息，[将 Azure 资源部署到多个订阅或资源组](cross-scope-deployment.md)。
 
 ### <a name="resource-group-example"></a>资源组示例
 
@@ -890,7 +890,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 ### <a name="remarks"></a>备注
 
-使用嵌套模板部署到多个订阅时，可以指定评估 subscription 函数的范围。 有关详细信息，[将 Azure 资源部署到多个订阅或资源组](cross-resource-group-deployment.md)。
+使用嵌套模板部署到多个订阅时，可以指定评估 subscription 函数的范围。 有关详细信息，[将 Azure 资源部署到多个订阅或资源组](cross-scope-deployment.md)。
 
 ### <a name="subscription-example"></a>订阅示例
 
@@ -918,7 +918,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必须 | 在任务栏的搜索框中键入 | 描述 |
+| 参数 | 必须 | 在任务栏的搜索框中键入 | 说明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
 | resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |

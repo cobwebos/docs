@@ -3,15 +3,15 @@ title: 创建并上传 OpenBSD 映像
 description: 了解如何创建和上传包含 OpenBSD 操作系统的虚拟硬盘 (VHD)，以便通过 Azure CLI 创建 Azure 虚拟机
 author: gbowerman
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/24/2017
 ms.author: guybo
-ms.openlocfilehash: 79e2bc04a32755413625b3fb4b2b4de2ad12ad7f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 08b18dae6cec3f30ba9ecc69a3537eec428cc9ee
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502701"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372716"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>创建 OpenBSD 磁盘映像并将其上传到 Azure
 本文介绍如何创建和上传包含 OpenBSD 操作系统的虚拟硬盘 (VHD)。 上传后，可将其用作自己的映像，通过 Azure CLI 在 Azure 中创建虚拟机 (VM)。

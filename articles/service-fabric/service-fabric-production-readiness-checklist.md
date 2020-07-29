@@ -3,12 +3,12 @@ title: Azure Service Fabric 生产就绪情况核对清单
 description: 遵循最佳做法，让 Service Fabric 应用程序和群集做好生产准备。
 ms.topic: conceptual
 ms.date: 6/05/2019
-ms.openlocfilehash: 7011860b8e1162b35cbfee3a9e796163710b7fdc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf5245b4b97706703d9f96e047ecb49786ff6266
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610024"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282052"
 ---
 # <a name="production-readiness-checklist"></a>生产就绪情况核对清单
 
@@ -22,7 +22,7 @@ ms.locfileid: "85610024"
 1. 对主节点类型使用 D2v2 或更高版本的 SKU。 建议选择至少有 50 GB 硬盘容量的 SKU。
 1. 生产群集必须是[安全的](service-fabric-cluster-security.md)。 有关设置安全群集的示例，请参阅此[群集模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG)。 使用证书的通用名称，避免使用自签名证书。
 1. 添加[容器和服务的资源约束](service-fabric-resource-governance.md)，以便它们消耗的节点资源不超过 75%。 
-1. 理解并设置[持续性级别](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)。 对于运行有状态工作负载的节点类型，建议使用银级或更高的持续性级别。 主节点类型应将持续性级别设置为银级或更高级别。
+1. 理解并设置[持续性级别](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)。 对于运行有状态工作负载的节点类型，建议使用银级或更高的持续性级别。
 1. 理解并选取节点类型的[可靠性级别](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster)。 建议使用银级或更高级别的可靠性。
 1. 对工作负载进行负载和缩放测试，确定群集的[容量需求](service-fabric-cluster-capacity.md)。 
 1. 服务和应用程序受到监视，并且系统会生成并存储应用程序日志，并会发送警报。 例如，请参阅[将日志记录添加到 Service Fabric 的应用程序](service-fabric-how-to-diagnostics-log.md)和[监视包含 Azure Monitor 日志的容器](service-fabric-diagnostics-oms-containers.md)。

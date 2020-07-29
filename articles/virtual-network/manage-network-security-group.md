@@ -1,7 +1,7 @@
 ---
 title: 创建、更改或删除 Azure 网络安全组
 titlesuffix: Azure Virtual Network
-description: 了解如何创建、更改或删除网络安全组。
+description: 了解在何处可以找到有关安全规则以及如何创建、更改或删除网络安全组的信息。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 38fe9582595969ac92d3468b3b7e8c0a9d793c0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfb6426ec4e75f6484df37008522b966ebc3af6f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708274"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281253"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>创建、更改或删除网络安全组
 
@@ -32,7 +32,7 @@ ms.locfileid: "84708274"
 
 - **PowerShell 用户**：运行[Azure Cloud Shell](https://shell.azure.com/powershell)中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 在 "Azure Cloud Shell 浏览器" 选项卡中，找到 "**选择环境**" 下拉列表，然后选择 " **PowerShell** " （如果尚未选择）。
 
-    如果在本地运行 PowerShell，请使用 Azure PowerShell 模块版本1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az.Network` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 运行 `Connect-AzAccount`，创建与 Azure 的连接。
+    如果在本地运行 PowerShell，请使用 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az.Network` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 运行 `Connect-AzAccount`，创建与 Azure 的连接。
 
 - **Azure 命令行接口（CLI）用户**：运行[Azure Cloud Shell](https://shell.azure.com/bash)中的命令，或从计算机运行 CLI。 如果在本地运行 Azure CLI，请使用 Azure CLI 2.0.28 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 运行 `az login`，创建与 Azure 的连接。
 

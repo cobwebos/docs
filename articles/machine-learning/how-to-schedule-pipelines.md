@@ -5,16 +5,17 @@ description: 通过适用于 Python 的 Azure 机器学习 SDK 来计划 Azure �
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
-ms.custom: tracking-python
-ms.openlocfilehash: 3fede6bf194d0dd6b18118df7a44b7ccd0224a25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: c076ceafc35a11f172ff35b7ab5ce89d1bf99f17
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84552172"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319552"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>通过适用于 Python 的 Azure 机器学习 SDK 来计划机器学习管道
 

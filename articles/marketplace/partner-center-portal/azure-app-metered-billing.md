@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: d1ed294412e44c79fc1eb8cbc01bf134f08a953f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.author: mingshen
+author: mingshen-ms
+ms.openlocfilehash: 07779769dae4c43148bbf4a8205feceea85ed363
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118930"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320045"
 ---
 # <a name="managed-application-metered-billing"></a>托管应用程序计费计费 
 
@@ -109,21 +111,13 @@ ms.locfileid: "86118930"
 
 ## <a name="get-support"></a>获取支持
 
-如果下列情况之一适用，则可以打开支持票证。
+如果你有以下问题之一，你可以打开支持票证。
 
 * Marketplace 计量服务 API 的技术问题。
 * 由于你端的错误或错误而需要升级的问题（例如 使用情况事件错误）。
 * 与计费计费相关的任何其他问题。
 
-请按照以下步骤提交支持票证：
-
-1. 转到[支持页](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)。 将自动为您填充前几个下拉菜单。 对于 Marketplace 支持，请将产品系列标识为**云和在线服务**，将产品作为**Marketplace 发布者**。 不要更改预填充的下拉菜单选项。
-2. 在 "选择产品版本" 下，选择 "Live 产品/**服务管理**"。
-3. 在 "选择最能描述此问题的类别" 下，选择 " **Azure 应用程序产品/服务**"。
-4. 在 "选择最能描述此问题的问题" 下，选择 "**按流量计费**"。
-5. 通过选择 "**下一步**" 按钮，你将被定向到 "**问题详细信息**" 页，你可以在其中输入有关问题的更多详细信息。
-
-有关发布者支持选项的详细信息，请参阅[合作伙伴中心的商业市场计划支持](support.md)。
+按照对[合作伙伴中心中的 "商业市场" 计划的支持](./support.md)中的说明，了解发布者支持选项并与 Microsoft 建立支持票证。
 
 ## <a name="next-steps"></a>后续步骤
 

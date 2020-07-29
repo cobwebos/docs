@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 578fb481ec858e65ede49bdce2d8bc26470aa2ca
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 71d0a1f2551338207a71b6c547d9c2cd57fea777
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850771"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284381"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>将作用域内角色分配到管理单元
 
@@ -53,10 +53,12 @@ ms.locfileid: "85850771"
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-$administrative = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-$AdminUser = Get-AzureADUser -ObjectId 'janedoe@fabidentity.onmicrosoft.com'
-$uaRoleMemberInfo = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo -Property @{ObjectId = $AdminUser.ObjectId}
-Add-AzureADScopedRoleMembership -RoleObjectId $UserAdminRole.ObjectId -ObjectId $administrative unitObj.ObjectId -RoleMemberInfo  $uaRoleMemberInfo
+$AdminUser = Get-AzureADUser -ObjectId "Use the user's UPN, who would be an admin on this unit"
+$Role = Get-AzureADDirectoryRole | Where-Object -Property DisplayName -EQ -Value "User Account Administrator"
+$administrativeUnit = Get-AzureADAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
+$RoleMember = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo
+$RoleMember.ObjectId = $AdminUser.ObjectId
+Add-AzureADScopedRoleMembership -ObjectId $administrativeUnit.ObjectId -RoleObjectId $Role.ObjectId -RoleMemberInfo $RoleMember
 ```
 
 可以根据特定环境的需要更改突出显示的部分。
@@ -85,8 +87,8 @@ Request body
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-$administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-Get-AzureADScopedRoleMembership -ObjectId $administrative unitObj.ObjectId | fl *
+$administrativeUnit = Get-AzureADAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
+Get-AzureADScopedRoleMembership -ObjectId $administrativeUnit.ObjectId | fl *
 ```
 
 可以根据特定环境的需要更改突出显示的部分。

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 34b1ce42850fcefcc2b0d146e7f33d720fd8062d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a99499110951ccbc0458b5ce848930fed9205dad
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202540"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371990"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>使用本地 Web UI 管理 Data Box 和 Data Box Heavy
 
@@ -35,7 +35,7 @@ Data Box 和 Data Box Heavy 的本地 Web UI 用于设备的初始配置。 你�
 
 如果遇到任何设备问题，可通过系统日志创建支持包。 Microsoft 支持部门使用此包来解决此问题。 要生成支持包，请执行以下步骤：
 
-1. 在本地 Web UI 中，转到“联系支持部门”并单击“创建支持包”   。
+1. 在本地 web UI 中，前往 "**联系支持**人员"，然后选择 "**创建支持包**"。
 
     ![创建支持包 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
@@ -43,14 +43,13 @@ Data Box 和 Data Box Heavy 的本地 Web UI 用于设备的初始配置。 你�
 
     ![创建支持包 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 
-3. 支持包创建完成后，单击“下载支持包”  。 
+3. 支持包创建完成后，选择 "**下载支持包**"。
 
     ![创建支持包 4](media/data-box-local-web-ui-admin/create-support-package-4.png)
 
 4. 浏览并选择下载位置。 打开文件夹以查看内容。
 
     ![创建支持包 5](media/data-box-local-web-ui-admin/create-support-package-5.png)
-
 
 ## <a name="shut-down-or-restart-your-device"></a>关闭或重启设备
 
@@ -59,7 +58,7 @@ Data Box 和 Data Box Heavy 的本地 Web UI 用于设备的初始配置。 你�
 若要关闭设备，请执行以下步骤。
 
 1. 在本地 Web UI 中，转到“关闭或重启”  。
-2. 单击“关闭”  。
+2. 选择“关闭”。
 
     ![关闭 Data Box 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
 
@@ -72,11 +71,11 @@ Data Box 和 Data Box Heavy 的本地 Web UI 用于设备的初始配置。 你�
 要重启 Data Box，请执行以下步骤。
 
 1. 在本地 Web UI 中，转到“关闭或重启”  。
-2. 请单击“重启”  。
+2. 选择“重启”。****
 
     ![重启 Data Box 1](media/data-box-local-web-ui-admin/restart-local-web-ui-1.png)
 
-3. 出现确认提示时，单击“确定”以继续  。
+3. 出现确认提示时，请选择 **"确定"** 继续。
 
    设备将关闭并重启。
 
@@ -90,9 +89,9 @@ Data Box 和 Data Box Heavy 的本地 Web UI 用于设备的初始配置。 你�
 
     ![设备已准备好寄送](media/data-box-portal-admin/ready-to-ship.png)
 
-2. 单击“下载文件列表”，以下载在 Data Box 上复制的文件列表。 
+2. 选择 "**下载文件列表**"，下载 Data Box 上复制的文件列表。
 
-    ![单击“下载文件列表”](media/data-box-portal-admin/download-list-of-files.png)
+    ![选择文件的下载列表](media/data-box-portal-admin/download-list-of-files.png)
 
 3. 在文件资源管理器中可以看到，已根据用于连接到设备的协议和使用的 Azure 存储类型，生成了单独的文件列表。
 
@@ -179,10 +178,51 @@ Data Box 和 Data Box Heavy 的本地 Web UI 用于设备的初始配置。 你�
     ![禁用校验和](media/data-box-local-web-ui-admin/disable-checksum.png)
 
 2. 禁用校验和验证****
-3. 单击“应用”。
+3. 选择“应用”。
 
 > [!NOTE]
 > "跳过校验和计算" 选项仅在 Azure Data Box 处于解锁状态时才可用。 锁定设备时，不会显示此选项。
 
-- 了解如何[通过 Azure 门户管理 Data Box 和 Azure Data Box Heavy](data-box-portal-admin.md)。
+## <a name="enable-smb-signing"></a>启用 SMB 签名
 
+服务器消息块（SMB）签名是一种功能，通过该功能，可以在数据包级别对使用 SMB 的通信进行数字签名。 此签名可防止在传输过程中修改 SMB 数据包的攻击。
+
+有关 SMB 签名的详细信息，请参阅[服务器消息块签名概述](https://support.microsoft.com/help/887429/overview-of-server-message-block-signing)。
+
+在 Azure 设备中启用 SMB 签名：
+
+1. 在设备的本地 web UI 的右上角，选择 "**设置**"。
+
+    ![打开“设置”](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. **启用**SMB 签名。
+
+    ![启用 SMB 签名](media/data-box-local-web-ui-admin/data-box-smb-signing-1.png)
+
+3. 选择“应用”。
+4. 在本地 Web UI 中，转到“关闭或重启”****。
+5. 选择“重启”。****
+
+## <a name="enable-tls-11"></a>启用 TLS 1。1
+
+默认情况下，Azure Data Box 使用传输层安全性（TLS）1.2 进行加密，因为它比 TSL 1.1 更安全。 但是，如果你或你的客户端使用浏览器访问不支持 TLS 1.2 的数据，则可以启用 TLS 1.1。
+
+有关与 TLS 相关的详细信息，请参阅[Azure Data Box Gateway 安全性](../databox-online/data-box-gateway-security.md)。
+
+在 Azure 设备中启用 TLS 1.1：
+
+1. 在设备的本地 web UI 的右上角，选择 "**设置**"。
+
+    ![打开“设置”](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. **启用**TLS 1.1。
+
+    ![启用 TLS 1。1](media/data-box-local-web-ui-admin/data-box-tls-1-1.png)
+
+3. 选择“应用”。
+4. 在本地 Web UI 中，转到“关闭或重启”****。
+5. 选择“重启”。****
+
+## <a name="next-steps"></a>后续步骤
+
+- 了解如何[通过 Azure 门户管理 Data Box 和 Azure Data Box Heavy](data-box-portal-admin.md)。
