@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: cd7e7df5c789743cf6bd84c6150fd901490bdedd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e10843eab8ac2ccbda3d6876f51c88a598d7139
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751631"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371679"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure 存储的 azure 安全基线
 
@@ -42,7 +42,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="12-monitor-and-log-vnet-subnet-and-nic-configuration-and-traffic"></a>1.2：监视和记录 Vnet、子网和 NIC 配置与流量
 
-**指南**： Azure 存储提供分层的安全模型。 可以将对存储帐户的访问限制为来自指定 IP 地址、IP 范围或来自 Azure 虚拟网络 (VNet) 中的子网列表的请求。 可以使用 Azure 安全中心并按照网络保护建议来帮助保护 Azure 中的网络资源。 此外，为通过存储帐户防火墙为存储帐户配置的虚拟网络/子网启用 NSG 流日志，并将日志发送到存储帐户以进行流量审核。 
+**指南**： Azure 存储提供分层的安全模型。 可将存储帐户的访问权限限制给源自指定的 IP 地址、IP 范围，或 Azure 虚拟网络 (VNet) 中某个子网列表的请求。 可以使用 Azure 安全中心并按照网络保护建议来帮助保护 Azure 中的网络资源。 此外，为通过存储帐户防火墙为存储帐户配置的虚拟网络/子网启用 NSG 流日志，并将日志发送到存储帐户以进行流量审核。 
 
 请注意，如果你有附加到存储帐户的专用终结点，则无法为子网配置网络安全组（NSG）规则。 
 
@@ -72,7 +72,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [如何启用高级威胁防护](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
 
-- [了解 Azure 安全中心的集成式威胁情报](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+- [了解 Azure 安全中心集成的威胁情报](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
 
 **Azure 安全中心监视**：是
 
@@ -146,7 +146,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [如何创建虚拟网络](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 
-- [如何创建具有安全配置的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [如何创建采用安全配置的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -258,7 +258,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="29-enable-dns-query-logging"></a>2.9：启用 DNS 查询日志记录
 
-**指南**： Azure Monitor 中的 Azure DNS 分析（预览版）解决方案将深入了解有关安全性、性能和操作的 DNS 基础结构。 此功能当前不支持 Azure 存储帐户，但你可以使用第三方 dns 日志记录解决方案。 
+**指导**：Azure Monitor 中的 Azure DNS Analytics（预览）解决方案收集有关 DNS 基础结构安全性、性能和操作的见解。 此功能当前不支持 Azure 存储帐户，但你可以使用第三方 dns 日志记录解决方案。 
 
 - [使用 DNS Analytics 预览解决方案收集有关 DNS 基础结构的见解](https://docs.microsoft.com/azure/azure-monitor/insights/dns-analytics)
 
@@ -280,7 +280,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="31-maintain-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
-**指南**： Azure AD 具有内置角色，必须显式分配这些角色并可查询。 使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组的成员的帐户。 
+**指南**： Azure AD 具有内置角色，必须显式分配这些角色并可查询。 使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组成员的帐户。 
 
 - [如何使用 PowerShell 获取 Azure AD 中的目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
@@ -294,7 +294,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 **指南**： Azure 存储帐户和 Azure Active Directory 具有默认密码或空白密码的概念。 Azure 存储实现了支持 Azure 基于角色的访问控制（RBAC）以及共享密钥和共享访问签名（SAS）的访问控制模型。 共享密钥和 SAS 身份验证的特性是没有与调用方关联的标识，因此不能执行安全主体基于权限的授权。 
 
-- [授权访问 Azure 存储中的数据](https://docs.microsoft.com/azure/storage/common/storage-auth)
+- [授予访问 Azure 存储中的数据的权限](https://docs.microsoft.com/azure/storage/common/storage-auth)
 
 - [了解 Azure 存储帐户的安全主体和访问控制](https://docs.microsoft.com/azure/storage/common/storage-introduction)
 
@@ -322,7 +322,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [了解 Azure AD 的 SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
-- [授权访问 Azure 存储中的数据](https://docs.microsoft.com/azure/storage/common/storage-auth)
+- [授予访问 Azure 存储中的数据的权限](https://docs.microsoft.com/azure/storage/common/storage-auth)
 
 - [使用 Azure Active Directory 授予对 Blob 和队列的访问权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad)
 
@@ -336,7 +336,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [如何在 Azure 中启用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
-- [如何在 Azure 安全中心内监视标识和访问](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [如何在 Azure 安全中心监视标识和访问](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
 
 **Azure 安全中心监视**：是
 
@@ -370,7 +370,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="38-manage-azure-resource-from-only-approved-locations"></a>3.8：仅从批准的位置管理 Azure 资源
 
-**指南**：使用条件访问命名位置，仅允许从 IP 地址范围或国家/地区的特定逻辑分组访问。 
+**指导**：使用条件访问命名位置，仅允许从 IP 地址范围或国家/地区的特定逻辑分组进行访问。 
 
 - [如何在 Azure 中配置命名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
 
@@ -388,7 +388,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [如何在 Azure 门户中使用 RBAC 配置对 Azure Blob 和队列数据的访问权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
 
-- [授权访问 Azure 存储中的数据](https://docs.microsoft.com/azure/storage/common/storage-auth)
+- [授予访问 Azure 存储中的数据的权限](https://docs.microsoft.com/azure/storage/common/storage-auth)
 
 - [使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
 
@@ -398,11 +398,11 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期查看和协调用户访问权限
 
-**指南**：查看 Azure Active Directory 日志，以帮助发现可包括具有存储帐户管理角色的帐户的陈旧帐户。 此外，使用 Azure 标识访问评审来有效地管理组成员身份、访问可用于访问存储帐户资源和角色分配的企业应用程序。 应定期查看用户访问权限，以确保只有正确的用户才能继续访问。  
+**指导**：检查 Azure Active Directory 日志，以帮助发现可能包含具有存储帐户管理角色的陈旧帐户。 此外，使用 Azure 标识访问评审来有效地管理组成员身份、访问可用于访问存储帐户资源和角色分配的企业应用程序。 应定期评审用户的访问权限，确保只有适当的用户才持续拥有访问权限。  
 
 你还可以使用共享访问签名（SAS）提供对存储帐户中的资源的安全委派访问权限，而不会影响数据的安全性。 你可以控制客户端可以访问哪些资源、客户端对这些资源拥有哪些权限、SAS 的有效期，以及其他参数。
 
-另外，请查看对容器和 blob 的匿名读取访问。 默认情况下，只有拥有相应权限的用户才能访问容器及其包含的任何 Blob。 你可以使用 Azure Monitor 来使用匿名身份验证条件来对存储帐户的匿名访问进行警报。
+另外，请查看对容器和 blob 的匿名读取访问。 默认情况下，容器和其中的任何 Blob 只能由已获得适当权限的用户访问。 你可以使用 Azure Monitor 来使用匿名身份验证条件来对存储帐户的匿名访问进行警报。
 
 降低 unsuspected 用户帐户访问权限的一种有效方法是限制授予用户的访问权限的持续时间。 受时间限制的 SAS Uri 是自动终止用户对存储帐户的访问权限的一种有效方式。 此外，通常需要定期轮换存储帐户密钥，以确保通过存储帐户密钥进行意外访问的方式有限。
 
@@ -506,7 +506,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [了解 Azure 中的客户数据保护](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
-**Azure 安全中心监视**：目前不可用
+**Azure 安全中心监视**：当前不可用
 
 **责任**：客户
 
@@ -528,13 +528,13 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [了解 Azure 中的客户数据保护](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
-**Azure 安全中心监视**：目前不可用
+**Azure 安全中心监视**：当前不可用
 
 **责任**：客户
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指南**： Azure Active Directory （Azure AD）通过基于角色的访问控制（RBAC）授予对受保护资源的访问权限。 Azure 存储定义了一组内置的 RBAC 角色，它们包含用于访问 Blob 或队列数据的通用权限集。 
+**指南**： Azure Active Directory （Azure AD）通过基于角色的访问控制（RBAC）授予对受保护资源的访问权限。 Azure 存储空间定义一组 Azure 内置角色，这些角色包含用于访问 blob 或队列数据的公用权限集。 
 
 - [如何为 Azure 存储帐户分配 RBAC 角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-rbac-roles-using-the-azure-portal)
 
@@ -544,7 +544,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [如何创建和配置 AAD 实例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
-- [授权访问 Azure 存储中的数据](https://docs.microsoft.com/azure/storage/common/storage-auth)
+- [授予访问 Azure 存储中的数据的权限](https://docs.microsoft.com/azure/storage/common/storage-auth)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -554,7 +554,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 **指南**：不适用；此建议适用于计算资源。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -566,7 +566,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：记录对关键 Azure 资源的更改并对此类更改发出警报
 
@@ -624,7 +624,7 @@ Azure 安全中心监视：不适用
 
 **指导**：使用 Azure 安全中心提供的默认风险评级（安全功能分数）。 
 
-- [了解 Azure 安全中心安全分数](https://docs.microsoft.com/azure/security-center/security-center-secure-score)
+- [了解 Azure 安全中心安全功能分数](https://docs.microsoft.com/azure/security-center/security-center-secure-score)
 
 **Azure 安全中心监视**：不适用
 
@@ -759,7 +759,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制用户在计算资源中执行脚本的能力
 
@@ -860,7 +860,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8：为操作系统部署系统配置管理工具
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 Azure 安全中心监视：不适用
 
@@ -878,7 +878,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：为操作系统实现自动配置监视
 
-**指南**：不适用；此建议适用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 Azure 安全中心监视：不适用
 
@@ -1011,13 +1011,13 @@ AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAcco
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
-**指南**：若要在存储帐户上启用客户管理的密钥，必须使用 Azure Key Vault 来存储密钥。 必须同时启用密钥保管库上的“软删除”和“不清除”属性 。 Key Vault 的软删除功能可以恢复已删除的保管库和保管库对象，例如密钥、机密和证书。 如果将存储帐户数据备份到 Azure 存储 blob，请启用软删除，在删除 blob 或 blob 快照时保存和恢复数据。 你应将备份视为敏感数据，并应用相关的访问和数据保护控件作为此基线的一部分。 此外，为了改进保护，你可以将关键业务数据对象存储在蠕虫（一次写入一次，读取多个）状态。
+**指南**：若要在存储帐户上启用客户管理的密钥，必须使用 Azure Key Vault 来存储密钥。 必须同时启用密钥保管库上的“软删除”和“不清除”属性 。 Key Vault 的软删除功能可以恢复已删除的保管库和保管库对象，例如密钥、机密和证书。 如果将存储帐户数据备份到 Azure 存储 blob，请启用软删除，在删除 blob 或 blob 快照时保存和恢复数据。 你应将备份视为敏感数据，并应用相关的访问和数据保护控制作为此基线的一部分。 此外，为了改进保护，你可以将关键业务数据对象存储在蠕虫（一次写入一次，读取多个）状态。
 
 - [如何使用 Azure Key Vault 软删除](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell)
 
 - [Azure 存储 Blob 的软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
-- [使用不可变存储存储业务关键型 Blob 数据](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)
+- [使用不可变的存储来存储业务关键型 Blob 数据](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)
 
 **Azure 安全中心监视**：是
 
@@ -1035,7 +1035,7 @@ AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAcco
 
 - [Microsoft 安全响应中心事件分析](https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/)
 
-- [客户还可以利用 NIST 的计算机安全事件处理指南来帮助创建自己的事件响应计划](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
+- [客户还可以利用 NIST 的“计算机安全事件处理指南”来制定他们自己的事件响应计划](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
 **Azure 安全中心监视**：不适用
 
@@ -1043,13 +1043,13 @@ AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAcco
 
 ### <a name="102-create-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级确定过程
 
-**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。 
+**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心对用于发出警报的调查结果或分析的置信度，以及导致警报的活动背后存在恶意意图的可信度。 
 
-此外，请明确标记订阅（例如 生产或非生产），并创建命名系统以清楚地标识和分类 Azure 资源，尤其是那些用于处理敏感数据的资源。 你要保证根据 Azure 资源以及事件的发生环境的重要性来设置警报修正的优先级。
+此外，使用标记清楚地标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 - [Azure 安全中心中的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
 
-- [使用标记组织 Azure 资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [使用标记整理 Azure 资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure 安全中心监视**：是
 
@@ -1057,27 +1057,27 @@ AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAcco
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指南**：定期执行练习来测试系统的事件响应功能，以帮助保护 Azure 资源。 识别弱点和差距，并根据需要修改计划。
+**指南**：定期执行演练来测试系统的事件响应功能，以帮助保护 Azure 资源。 识别弱点和差距，并根据需要修改计划。
 
-- [NIST 出版物 - 适用于 IT 计划和功能的测试、培训和练习计划指南](https://csrc.nist.gov/publications/detail/sp/800-84/final)
+- [NIST 发布 - IT 计划和功能的测试、训练和演练计划指南](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全事件联系人详细信息并为安全事件配置警报通知
 
-**指导**：如果 Microsoft 安全响应中心 (MSRC) 发现非法或未经授权的一方访问了你的数据，Microsoft 将使用安全事件联系人信息来与你取得联系。 事后审查事件，确保问题得到解决。
+**指导**：如果 Microsoft 安全响应中心 (MSRC) 发现数据被某方非法访问或未经授权访问，Microsoft 会使用安全事件联系信息联系用户。 事后审查事件，确保问题得到解决。
 
 - [如何设置 Azure 安全中心安全联系人](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
 
 **Azure 安全中心监视**：是
 
-**责任**：客户
+责任：客户
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
-**指南**：使用连续导出功能导出 Azure 安全中心警报和建议，以帮助识别 Azure 资源的风险。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Azure Sentinel。
+**指南**：使用连续导出功能导出 Azure 安全中心警报和建议，以帮助确定 Azure 资源的风险。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Azure Sentinel。
 
 - [如何配置连续导出](https://docs.microsoft.com/azure/security-center/continuous-export)
 
@@ -1089,7 +1089,7 @@ AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAcco
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自动响应安全警报
 
-**指南**：使用 Azure 安全中心的工作流自动化功能，可通过 "逻辑应用" 自动触发有关安全警报和建议的响应，以保护 Azure 资源。
+**指导**：使用 Azure 安全中心内的工作流自动化功能，通过“逻辑应用”针对安全警报和建议自动触发响应，以保护 Azure 资源。
 
 - [如何配置工作流自动化和逻辑应用](https://docs.microsoft.com/azure/security-center/workflow-automation)
 

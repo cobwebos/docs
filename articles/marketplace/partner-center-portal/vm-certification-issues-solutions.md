@@ -4,15 +4,15 @@ description: 本文说明了 VM 映像的常见错误消息。 它还讨论相�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
-author: v-miegge
-ms.author: v-krmall
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: e73ff612aa07016f69c717a74678d5d1923e87b8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 594a47f397ca78476ed987ac0e06a3cacc79ec3b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120647"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319892"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>虚拟机认证过程中的问题和解决方案 
 
@@ -43,7 +43,7 @@ ms.locfileid: "86120647"
 1. 选择你的 Linux VM。
 1. 请参阅 "**诊断设置**"。
 1. 通过更新**存储帐户**启用基本矩阵。
-1. 选择“保存”。
+1. 选择“保存” 。
 
    ![启用来宾级监视](./media/vm-certification-issues-solutions-1.png)
 
@@ -63,7 +63,7 @@ ms.locfileid: "86120647"
 
 预配问题可能包括以下故障方案：
 
-|方案|错误|原因|解决方案|
+|方案|错误|Reason|解决方案|
 |---|---|---|---|
 |1|虚拟硬盘（VHD）无效|如果 VHD 页脚中的指定 cookie 值不正确，则 VHD 将被视为无效。|重新创建映像并提交请求。|
 |2|无效的 blob 类型|VM 预配失败，因为使用的块是 blob 类型而不是页类型。|重新创建映像并提交请求。|
@@ -208,8 +208,8 @@ Microsoft 认证工具包可帮助你运行测试用例，并验证你的 VHD �
 ||18.04 LTS|4.18.0-1023|
 ||18.04 LTS|5.0.0-1025|
 ||18.10|4.18.0-1023|
-||19.04 |5.0.0-1010|
-||19.04 |5.3.0-1004|
+||19.04|5.0.0-1010|
+||19.04|5.3.0-1004|
 |RHEL 和美分 OS|6.10|2.6.32-754.15。3|
 ||7.2|3.10.0-327.79。2|
 ||7.3|3.10.0-514.66。2|
@@ -261,7 +261,7 @@ Azure 上的所有 Vhd 都必须将虚拟大小调整为 1 mb 的倍数。 如�
     
 请参阅下表，了解当你使用共享访问签名（SAS） URL 下载 VM 映像时出现的任何问题。
 
-|方案|错误|原因|解决方案|
+|方案|错误|Reason|解决方案|
 |---|---|---|---|
 |1|找不到 Blob|VHD 可以从指定位置删除或移动。|| 
 |2|Blob 正在使用中|VHD 由其他内部进程使用。|使用 SAS URL 下载 VHD 时，VHD 应处于已使用状态。|
@@ -304,7 +304,7 @@ Azure 上的所有 Vhd 都必须将虚拟大小调整为 1 mb 的倍数。 如�
 
 有关与数据磁盘相关的错误的解决方案，请使用下表：
 
-|错误|原因|解决方案|
+|错误|Reason|解决方案|
 |---|---|---|
 |`DataDisk- InvalidUrl:`|如果提交产品/服务时为逻辑单元号（LUN）指定了无效的数字，则可能会发生此错误。|验证数据磁盘的 LUN 编号序列是否位于 "合作伙伴中心" 中。|
 |`DataDisk- NotFound:`|出现此错误的原因可能是数据磁盘未位于指定的 SAS URL。|验证数据磁盘是否位于请求中指定的 SAS URL。|

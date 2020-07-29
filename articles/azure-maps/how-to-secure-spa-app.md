@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 96dd1cf6a5d6cea69899bf920c86018384ebbc3c
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 5b7f26a03c117620be7c16abaf689763e370e5ba
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126444"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285690"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>如何使用非交互式登录保护单页面应用程序
 
@@ -108,7 +109,7 @@ ms.locfileid: "87126444"
     > [!div class="mx-imgBorder"]
     > ![授予 RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. 在 "**角色分配**" 选项卡上的 "**角色**" 下，选择内置 Azure Maps 角色定义，如**Azure Maps 数据读取器**或**Azure Maps 数据参与者**。 在 "**分配访问权限**" 下，选择**Function App**。 按名称选择主体。 再选择“保存”。
+2. 在 "**角色分配**" 选项卡上的 "**角色**" 下，选择内置 Azure Maps 角色定义，如**Azure Maps 数据读取器**或**Azure Maps 数据参与者**。 在 "**分配访问权限**" 下，选择**Function App**。 按名称选择主体。 选择“保存”。
 
    * 有关[添加或删除角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)的详细信息，请参阅。
 

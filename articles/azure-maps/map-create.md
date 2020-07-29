@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: b4d3784bda1ba5a94dad1cae45513120b3686869
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: b7bebfb227de3f9f1c51024845054d2d7a02f923
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130488"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285639"
 ---
 # <a name="create-a-map"></a>创建地图
 
@@ -156,4 +156,4 @@ map.setCamera({
 > [将控件添加到地图](map-add-controls.md)
 
 > [!div class="nextstepaction"]
-> [示例代码](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [代码示例](https://docs.microsoft.com/samples/browse/?products=azure-maps)

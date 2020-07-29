@@ -416,6 +416,8 @@
                   href: how-to-custom-commands-add-interaction-rules.md
                 - name: 为语音响应添加语言生成模板
                   href: how-to-custom-commands-add-language-generation-templates.md
+                - name: 使用自定义语音
+                  href: how-to-custom-commands-use-custom-voice.md
             - name: 集成
               items:
                 - name: 使用语音 SDK 与客户端应用集成
@@ -452,6 +454,8 @@
               href: faq-voice-assistants.md
             - name: 语音 SDK
               href: speech-sdk.md
+            - name: 对静态数据的自定义命令加密
+              href: custom-commands-encryption-of-data-at-rest.md
     - name: Direct Line 语音
       items:
         - name: 什么是 Direct Line 语音？

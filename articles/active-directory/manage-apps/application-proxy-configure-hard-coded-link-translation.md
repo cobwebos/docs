@@ -16,13 +16,14 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e8d6f97870699cea7f55abe42290acdc82c385e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 563e5e811eec907ba286bdfb264fc51d32137e96
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764836"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282919"
 ---
-# <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理重定向已发布应用的硬编码链接
+# <a name="redirect-hard-coded-links-for-apps-published-with-azure-ad-application-proxy"></a>重定向 Azure AD 应用程序代理发布的应用的硬编码链接
 
 Azure AD 应用程序代理使本地应用对远程或在自己设备上的用户可用。 但是，某些应用已通过嵌入到 HTML 中的本地链接开发。 远程使用应用时，这些链接将无法正常跳转。 如果有多个指向彼此的本地应用程序，你的用户会需要这些链接在他们不在办公室时能继续正常使用。 
 
@@ -32,13 +33,13 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 如果无法在租户中使用自定义域，还有其他几个选项可提供此功能。 所有这些选项也都与自定义域兼容且彼此兼容，因此可以根据需要配置自定义域和其他解决方案。
 
 > [!NOTE]
-> 通过 Javascript 生成的硬编码内部 Url 不支持链接转换。
+> 通过 JavaScript 生成的硬编码内部 Url 不支持链接转换。
 
-**选项1：使用 Managed Browser 或 Microsoft edge** –此解决方案仅适用于计划建议或要求用户通过 Intune Managed Browser 或 Microsoft Edge 浏览器访问应用程序的情况。 它处理所有已发布的 URL。 
+**选项1：使用 Microsoft edge** –此解决方案仅适用于你计划建议或要求用户通过 Microsoft Edge 浏览器访问应用程序的情况。 它处理所有已发布的 URL。 
 
 **选项 2：使用 MyApps 扩展** - 此解决方案要求用户安装客户端浏览器扩展，但它将处理所有已发布的 URL，并可与大多数热门浏览器一起使用。 
 
-**选项 3：使用链接转换设置** - 这是一种管理端设置，对用户不可见。 但是，它仅处理 HTML 和 CSS 中的 URL。   
+**选项 3：使用链接转换设置** - 这是一种管理端设置，对用户不可见。 但是，它只会在 HTML 和 CSS 中处理 Url。   
 
 无论用户位于何处，这三个功能都可使链接保持正常工作。 如果具有直接指向内部终结点或端口的应用，可以将这些内部 URL 映射到已发布的外部应用程序代理服务器 URL 中。 
 
@@ -49,11 +50,11 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 > 或者，如果需要配置链接转换的应用程序是 SharePoint，请参阅[配置 SharePoint 2013 的备用访问映射](https://technet.microsoft.com/library/cc263208.aspx)，以获取映射链接的另一种方法。 
 
  
-### <a name="option-1-intune-managed-browser-and-microsoft-edge-integration"></a>选项1： Intune Managed Browser 和 Microsoft Edge 集成 
+### <a name="option-1-microsoft-edge-integration"></a>选项1： Microsoft Edge 集成 
 
-你可以使用 Intune Managed Browser 或 Microsoft Edge 进一步保护你的应用程序和内容。 若要使用此解决方案，需要求/建议用户通过 Intune Managed Browser 访问应用程序。 随应用程序代理一起发布的所有内部 URL 都将由 Managed Browser 识别并重定向到相应的外部 URL。 这可确保所有硬编码内部 URL 正常运行，并且如果用户在浏览器中直接键入该内部 URL，即使该用户是远程用户，该 URL 也可正常运行。  
+你可以使用 Microsoft Edge 进一步保护你的应用程序和内容。 若要使用此解决方案，需要/建议用户通过 Microsoft Edge 访问应用程序。 使用应用程序代理发布的所有内部 Url 都将被边缘识别并重定向到相应的外部 URL。 这可确保所有硬编码内部 URL 正常运行，并且如果用户在浏览器中直接键入该内部 URL，即使该用户是远程用户，该 URL 也可正常运行。  
 
-若要了解详细信息（包括如何配置此选项），请参阅 [Managed Browser](https://docs.microsoft.com/intune/app-configuration-managed-browser) 文档。  
+若要了解详细信息，包括如何配置此选项，请参阅使用[适用于 iOS 和 Android 的 Edge 管理 web 访问 Microsoft Intune](https://docs.microsoft.com/mem/intune/apps/manage-microsoft-edge)文档。  
 
 ### <a name="option-2-myapps-browser-extension"></a>选项 2：MyApps 浏览器扩展 
 
@@ -72,9 +73,9 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 
 ## <a name="how-link-translation-works"></a>链接转换工作原理
 
-身份验证后，如果代理服务器将应用程序数据传递给用户，应用程序代理会扫描应用程序，确定硬编码链接并将其替换为其各自已发布的外部 URL。
+进行身份验证后，当代理服务器将应用程序数据传递给用户时，应用程序代理会扫描应用程序的硬编码链接，并将其替换为其相应的已发布外部 Url。
 
-应用程序代理假定应用程序采用 UTF-8 编码。 如果不是这种情况，则在 http 响应标头中指定编码类型，如 `Content-Type:text/html;charset=utf-8`。
+应用程序代理假定应用程序采用 UTF-8 编码。 如果不是这种情况，请指定 HTTP 响应标头中的编码类型，如 `Content-Type:text/html;charset=utf-8` 。
 
 ### <a name="which-links-are-affected"></a>哪些链接受影响？
 
@@ -83,13 +84,13 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 本地应用程序中有两种常见类型的内部链接：
 
 - 相对内部链接，可指向本地文件结构（如 `/claims/claims.html`）中的共享资源。**** 这些链接在通过应用程序代理发布的应用中自动运行，并且在有无链接转换时均能继续运行。 
-- 硬编码内部链接，指向其他本地应用（如 `http://expenses`）或已发布文件（如 `http://expenses/logo.jpg`）。**** 链接转换功能对硬编码内部链接进行操作，并将其更改为指向远程用户需要访问的外部 URL。
+- 其他本地应用的**硬编码内部链接**，如 `http://expenses` 或发布的文件 `http://expenses/logo.jpg` 。 链接转换功能适用于硬编码内部链接，并将其更改为指向远程用户需要浏览的外部 Url。
 
 应用程序代理支持链接转换的 HTML 代码标记的完整列表包括：
 * a
 * 音频
 * base
-* button
+* 按钮
 * div
 * 嵌入
 * 表单
@@ -102,11 +103,11 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 * 链接
 * 项
 * meta
-* 对象 (object)
+* object
 * 脚本
-* source
+* target
 * 跟踪
-* video
+* 视频
 
 此外，CSS 内还翻译了 URL 属性。
 
@@ -140,7 +141,7 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 3. 将“转换应用程序主体中的 URL”改为“是”。********
 
    ![选择“是”可转换应用程序主体中的 URL](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)
-4. 单击“保存”应用所做的更改。
+4. 选择“保存”应用所做的更改。
 
 现在，当用户访问此应用程序时，代理将自动扫描租户上通过应用程序代理发布的内部 URL。
 

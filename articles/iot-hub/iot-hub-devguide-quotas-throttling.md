@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 675391a92c991f80faadf8b75abc79dcb4cd19d7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bee22391664250888816dc2b4bbb93622cab7942
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322952"
+ms.locfileid: "87335556"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
 
@@ -30,9 +30,9 @@ ms.locfileid: "87322952"
 
 层还决定了 IoT 中心对所有操作强制实施的限制。
 
-### <a name="iot-plug-and-play"></a>IoT 即插即用
+## <a name="iot-plug-and-play"></a>IoT 即插即用
 
-在公开预览期间，IoT 即插即用设备将为每个接口发送单独的消息，这可能会增加计入消息配额的消息数量。
+IoT 即插即用设备为每个接口发送至少一条遥测消息（包括根），这可能会增加计入消息配额的消息数。
 
 ## <a name="operation-throttles"></a>操作限制
 

@@ -574,6 +574,9 @@
           href: role-based-access-control.md
         - href: cosmos-db-advanced-threat-protection.md
           name: 高级威胁防护
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: 安全基线
           href: security-baseline.md
     - name: 企业就绪情况
@@ -626,7 +629,7 @@
               href: cassandra-import-data.md
         - name: 概念
           items:
-            - name: 常见问题
+            - name: 常见问题解答
               href: cassandra-faq.md
             - name: 弹性缩放
               href: manage-scale-cassandra.md
@@ -724,7 +727,7 @@
               href: mongodb-feature-support-36.md
             - name: 线路协议支持 (3.2)
               href: mongodb-feature-support.md
-            - name: 常见问题
+            - name: 常见问题解答
               href: mongodb-api-faq.md
         - name: 操作指南
           items:
@@ -794,7 +797,7 @@
               href: tutorial-query-graph.md
         - name: 概念
           items:
-            - name: 常见问题
+            - name: 常见问题解答
               href: gremlin-api-faq.md
         - name: 操作指南
           items:
@@ -879,7 +882,7 @@
               maintainContext: true
         - name: 概念
           items:
-            - name: 常见问题
+            - name: 常见问题解答
               href: table-api-faq.md
         - name: 操作指南
           items:
@@ -988,7 +991,7 @@
           href: how-to-manage-indexing-policy.md
         - name: 定义唯一键
           href: how-to-define-unique-keys.md
-    - name: 性能和故障排除
+    - name: 性能
       items:
         - name: 查询
           items:
@@ -996,28 +999,20 @@
               href: profile-sql-api-query.md
             - name: 调整查询性能
               href: sql-api-query-metrics.md
-            - name: 查询性能故障排除
-              href: troubleshoot-query-performance.md
         - name: .NET
           items:
             - name: .NET SDK v3 性能提示
               href: performance-tips-dotnet-sdk-v3-sql.md
             - name: .NET SDK v2 性能提示
               href: performance-tips.md
-            - name: 排查 .NET SDK 问题
-              href: troubleshoot-dot-net-sdk.md
         - name: Java
           items:
             - name: 适用于 Java SDK v4 的性能提示
               href: performance-tips-java-sdk-v4-sql.md
-            - name: 排查 Java SDK v4 问题
-              href: troubleshoot-java-sdk-v4-sql.md
             - name: Async Java SDK v2
               href: performance-tips-async-java.md
             - name: Sync Java SDK v2
               href: performance-tips-java.md
-            - name: 排除故障 - Async Java SDK v2
-              href: troubleshoot-java-async-sdk.md
         - name: 性能测试 - 示例应用
           href: performance-testing.md
         - name: 以经济高效的方式读取和写入
@@ -1026,6 +1021,36 @@
       items:
         - name: 迁移到 Java V4 SDK
           href: migrate-java-v4-sdk.md
+    - name: 疑难解答
+      items:
+        - name: 常见错误
+          items:
+            - name: 查询性能故障排除
+              href: troubleshoot-query-performance.md
+            - name: 排查服务请求超时故障
+              href: troubleshoot-request-timeout.md
+            - name: 排查请求速率过大故障
+              href: troubleshoot-request-rate-too-large.md
+            - name: 未找到疑难解答
+              href: troubleshoot-not-found.md
+            - name: 故障排除未经授权
+              href: troubleshoot-unauthorized.md
+        - name: .NET
+          items:
+            - name: 排查 .NET SDK 常规故障
+              href: troubleshoot-dot-net-sdk.md
+            - name: 排查请求标头太大故障
+              href: troubleshoot-dot-net-sdk-request-header-too-large.md
+            - name: 排查请求超时故障
+              href: troubleshoot-dot-net-sdk-request-timeout.md
+            - name: 排查服务不可用故障
+              href: troubleshoot-service-unavailable.md
+        - name: .Java
+          items:
+            - name: 排查 Java SDK v4 问题
+              href: troubleshoot-java-sdk-v4-sql.md
+            - name: 排除故障 - Async Java SDK v2
+              href: troubleshoot-java-async-sdk.md
     - name: 更改源
       items:
         - name: Azure Cosmos DB 触发器日志
@@ -1255,7 +1280,7 @@
       href: query-cheat-sheet.md
     - name: SQL 演练
       href: 'https://www.documentdb.com/sql/demo'
-    - name: 常见问题
+    - name: 常见问题解答
       href: faq.md
     - name: 白皮书
       href: whitepapers.md

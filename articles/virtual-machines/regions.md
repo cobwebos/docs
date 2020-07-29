@@ -4,15 +4,15 @@ description: 了解在 Azure 中运行虚拟机的区域。
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/28/2019
-ms.openlocfilehash: 5cff97e7fea2cf9ef4da87e2d2ec700678d1d39b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 44370b378899228949aa1bddcc92570ad282fe92
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531073"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284721"
 ---
 # <a name="regions-for-virtual-machines-in-azure"></a>Azure 中虚拟机的区域
 
@@ -47,7 +47,7 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
 |:--- |:--- |
 | 美国西部 |美国东部 |
 | 北欧 |西欧 |
-| 东南亚 |东亚 |
+| Southeast Asia |东亚 |
 
 可在[此处查看区域对的完整列表](../best-practices-availability-paired-regions.md#what-are-paired-regions)。
 
@@ -75,7 +75,7 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
 
 | 复制策略 | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| 数据在多个设施之间进行复制。 |否 |是 |是 |是 |
+| 数据在多个设施之间进行复制。 |否 |是 |“是” |“是” |
 | 可以从辅助位置和主位置读取数据。 |否 |否 |否 |是 |
 | 在单独的节点上维护的数据副本数。 |3 |3 |6 |6 |
 

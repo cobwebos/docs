@@ -4,12 +4,12 @@ description: Azure 中的警报概述。 警报、经典警报和警报界面。
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: 37980f3cebdee2754a9741a8a45ec6932e7e98ce
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e0741a23d7e5ece0898d83c53782afc353d9a7e5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327117"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371594"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警报概述 
 
@@ -178,7 +178,7 @@ ms.locfileid: "87327117"
 
 ## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>警报实例的基于角色的访问控制 (RBAC)
 
-使用和管理警报实例需要用户具有[监视参与者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)或[监视读取者](../../role-based-access-control/built-in-roles.md#monitoring-reader)的内置 RBAC 角色。 在任何 Azure 资源管理器范围（从订阅级别到资源级别的粒度分配）内都支持这些角色。 例如，如果用户只具有虚拟机 `ContosoVM1` 的“监视参与者”访问权限，则该用户只能使用和管理 `ContosoVM1` 上生成的警报。
+对于警报实例的消耗和管理，要求用户拥有[监视参与者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)或[监视读取器](../../role-based-access-control/built-in-roles.md#monitoring-reader)的 Azure 内置角色。 在任何 Azure 资源管理器范围（从订阅级别到资源级别的粒度分配）内都支持这些角色。 例如，如果用户只具有虚拟机 `ContosoVM1` 的“监视参与者”访问权限，则该用户只能使用和管理 `ContosoVM1` 上生成的警报。
 
 ## <a name="manage-your-alert-instances-programmatically"></a>以编程方式管理警报实例
 
@@ -212,4 +212,3 @@ ms.locfileid: "87327117"
 - [在 Azure 中管理警报实例](https://aka.ms/managing-alert-instances)
 - [Managing Smart Groups](https://aka.ms/managing-smart-groups)（管理智能组）
 - [详细了解 Azure 警报定价](https://azure.microsoft.com/pricing/details/monitor/)
-

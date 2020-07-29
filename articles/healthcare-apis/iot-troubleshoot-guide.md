@@ -8,22 +8,22 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: jasteppe
-ms.openlocfilehash: e74e3475256858955a5ab0dc99e7b858548e2485
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eff1272318413da7855134b0a8a44dd0a0711a6c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096579"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285571"
 ---
-# <a name="iot-connector-preview-troubleshooting-guide-and-how-to"></a>IoT Connector （预览版）疑难解答指南和操作方法
+# <a name="iot-connector-preview-troubleshooting-guide"></a>IoT 连接器（预览版）疑难解答指南
 
-本文介绍如何排查常见的 IoT Connector （预览版）错误消息和条件。
+本文介绍常见 IoT Connector （预览版）错误消息和条件的疑难解答步骤。  
 
-你还将了解如何创建 IoT Connector （预览版） JSON 映射的副本。
+你还将了解如何在 Azure 门户之外创建用于编辑和存档的 IoT Connector （预览版） JSON 映射文件的副本。
 
 ## <a name="error-messages-and-fixes"></a>错误消息和修补程序
 
-|Message   |条件  |Fix         |
+|消息   |条件  |Fix         |
 |----------|-----------|------------|
 |映射名称无效，映射名称应为 device 或 FHIR|提供的映射类型不是设备或 FHIR|使用两种受支持的映射类型之一（例如： Device 或 FHIR）|
 |未定义重新生成密钥参数|重新生成密钥请求|在重新生成密钥请求中包含参数|
