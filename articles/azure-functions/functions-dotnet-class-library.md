@@ -2,13 +2,13 @@
 title: Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
 description: '了解如何开发使用 C # 的 Azure 功能。'
 ms.topic: conceptual
-ms.date: 09/12/2018
-ms.openlocfilehash: 9ecc2dad8d1d520b44972022d47c312f495d5c38
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/24/2020
+ms.openlocfilehash: 7c00dcd3648ef175d4e834fceef3444f7943e70b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506499"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288193"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
 
@@ -31,7 +31,7 @@ Functions 运行时版本使用特定版本的 .NET。 下表显示了可与项�
 | ---- | ---- |
 | Functions 3.x | .NET Core 3.1 |
 | Functions 2.x | .NET Core 2.2 |
-| Functions 1.x | .NET Framework 4.6 |
+| Functions 1.x | .NET Framework 4.7 |
 
 若要了解详细信息，请参阅 [Azure Functions 运行时版本概述](functions-versions.md)
 

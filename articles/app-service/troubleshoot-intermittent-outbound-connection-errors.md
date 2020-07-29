@@ -4,14 +4,15 @@ description: 排查 Azure 应用服务中的间歇性连接错误和相关性能
 author: v-miegge
 manager: barbkess
 ms.topic: troubleshooting
-ms.date: 03/24/2020
+ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
-ms.openlocfilehash: 704c6b026ab656ce52b34e5ac70ba7e2087ccbcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d337c9cff4b0d7dbfb18a7ba0cf213265286017
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252434"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289145"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>排查 Azure 应用服务中的间歇性出站连接错误
 
@@ -37,21 +38,23 @@ ms.locfileid: "85252434"
 
 ## <a name="avoiding-the-problem"></a>避免问题
 
-避免 SNAT 端口问题意味着需要避免对同一主机和端口反复创建新连接。
+如果目标是支持服务终结点的 Azure 服务，则可以通过使用[VNet 集成](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)和服务终结点来避免 SNAT 端口耗尽问题。 使用 VNet 集成并将服务终结点置于集成子网中时，指向这些服务的应用出站流量不会有出站 SNAT 端口限制。
 
-“Azure 的出站连接”文档的[解决问题部分](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#problemsolving)介绍了缓解 SNAT 端口耗尽问题的一般策略。  这些策略中的以下策略适用于托管在 Azure 应用服务中的应用和功能。
+避免 SNAT 端口问题意味着避免在同一主机和端口上重复创建新连接。
+
+Azure 文档的**出站连接**的[问题解决部分](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#problemsolving)中讨论了用于缓解 SNAT 端口耗尽的常规策略。 在这些策略中，以下各项适用于托管在 Azure 应用服务上的应用程序和功能。
 
 ### <a name="modify-the-application-to-use-connection-pooling"></a>修改应用程序以使用连接池
 
-* 对于池 HTTP 连接，请查看[使用 HttpClientFactory 的池 HTTP 连接](https://docs.microsoft.com/aspnet/core/performance/performance-best-practices#pool-http-connections-with-httpclientfactory)。
-* 有关 SQL Server 连接池的信息，请查看 [SQL Server 连接池 (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)。
-* 若要对实体框架应用程序实现池，请查看 [DbContext 池](https://docs.microsoft.com/ef/core/what-is-new/ef-core-2.0#dbcontext-pooling)。
+* 对于 "池 HTTP 连接"，请查看[池 http 连接与 HttpClientFactory](https://docs.microsoft.com/aspnet/core/performance/performance-best-practices#pool-http-connections-with-httpclientfactory)。
+* 有关 SQL Server 连接池的信息，请查看[SQL Server 连接池（ADO.NET）](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)。
+* 若要实现与 entity framework 应用程序的池，请查看[DbContext pooling](https://docs.microsoft.com/ef/core/what-is-new/ef-core-2.0#dbcontext-pooling)。
 
-下面是有关通过不同的解决方案堆栈实现连接池的链接集合。
+下面是用于通过不同解决方案堆栈实现连接池的链接集合。
 
 #### <a name="node"></a>节点
 
-默认情况下，NodeJS 的连接不会保持活动状态。 下面是适用于连接池的常用数据库和包，其中包含有关如何实现它们的示例。
+默认情况下，NodeJS 的连接不会保持活动状态。 下面是适用于连接池的常用数据库和包，其中包含如何实现它们的示例。
 
 * [MySQL](https://github.com/mysqljs/mysql#pooling-connections)
 * [MongoDB](https://blog.mlab.com/2017/05/mongodb-connection-pooling-for-express-applications/)
@@ -61,11 +64,11 @@ ms.locfileid: "85252434"
 HTTP 保持活动状态
 
 * [agentkeepalive](https://www.npmjs.com/package/agentkeepalive)
-* [Node.js v13.9.0 文档](https://nodejs.org/api/http.html)
+* [Node.js 13.9.0 文档](https://nodejs.org/api/http.html)
 
 #### <a name="java"></a>Java
 
-下面是用于 JDBC 连接池的常用库，其中包含有关如何实现它们的示例：JDBC 连接池。
+下面是用于 JDBC 连接池的常用库，其中包含如何实现它们的示例： JDBC 连接池。
 
 * [Tomcat 8](https://tomcat.apache.org/tomcat-8.0-doc/jdbc-pool.html)
 * [C3p0](https://github.com/swaldman/c3p0)
@@ -79,12 +82,12 @@ HTTP 连接池
 
 #### <a name="php"></a>PHP
 
-尽管 PHP 不支持连接池，但你可以尝试使用到后端服务器的持久数据库连接。
+尽管 PHP 不支持连接池，但你可以尝试使用持久的数据库连接到后端服务器。
  
 * MySQL 服务器
 
-   * 适用于较新版本的 [MySQLi 连接](https://www.php.net/manual/mysqli.quickstart.connections.php)
-   * 适用于较旧 PHP 版本的 [mysql_pconnect](https://www.php.net/manual/function.mysql-pconnect.php)
+   * 针对较新版本的[MySQLi 连接](https://www.php.net/manual/mysqli.quickstart.connections.php)
+   * 旧版本的 PHP [mysql_pconnect](https://www.php.net/manual/function.mysql-pconnect.php)
 
 * 其他数据源
 
@@ -95,14 +98,14 @@ HTTP 连接池
 * [MySQL](https://github.com/mysqljs/mysql#pooling-connections)
 * [MongoDB](https://blog.mlab.com/2017/05/mongodb-connection-pooling-for-express-applications/)
 * [PostgreSQL](https://node-postgres.com/features/pooling)
-* [SQL Server](https://github.com/tediousjs/node-mssql#connection-pools)（注意：除 Microsoft SQL Server 以外，SQLAlchemy 还可用于其他数据库）
-* [HTTP Keep-Alive](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive)（使用会话 [session-objects](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive) 时，Keep-Alive 是自动的）。
+* [SQL Server](https://github.com/tediousjs/node-mssql#connection-pools) （注意： SQLAlchemy 可用于除 MicrosoftSQL 服务器以外的其他数据库）
+* [HTTP 保持活动状态](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive)（使用会话[会话对象](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive)时，keep-alive 会自动进行）。
 
-对于其他环境，请查看有关在应用程序中实现连接池的特定于提供商或驱动程序的文档。
+对于其他环境，请查看用于在应用程序中实现连接池的提供程序或特定于驱动程序的文档。
 
 ### <a name="modify-the-application-to-reuse-connections"></a>修改应用程序以重复使用连接
 
-*  有关在 Azure Functions 中管理连接的其他指导和示例，请查看[在 Azure Functions 中管理连接](https://docs.microsoft.com/azure/azure-functions/manage-connections)。
+*  有关管理 Azure 功能中的连接的其他指针和示例，请查看[Azure Functions 中的 "管理连接](https://docs.microsoft.com/azure/azure-functions/manage-connections)"。
 
 ### <a name="modify-the-application-to-use-less-aggressive-retry-logic"></a>修改应用程序以使用主动性较低的重试逻辑
 
@@ -121,7 +124,7 @@ HTTP 连接池
 
 避免出站 TCP 限制更易于解决，因为限制是由辅助角色的大小设置的。 可以查看[沙盒跨 VM 数字限制-TCP 连接](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)的限制
 
-|限制名称|描述|小型（A1）|中（A2）|大（A3）|隔离层（ASE）|
+|限制名称|说明|小型（A1）|中（A2）|大（A3）|隔离层（ASE）|
 |---|---|---|---|---|---|
 |连接|跨整个 VM 的连接数|1920|3968|8064|16,000|
 
@@ -153,7 +156,7 @@ TCP 连接和 SNAT 端口不是直接相关的。 TCP 连接使用检测程序�
 * TCP 连接限制发生在辅助实例级别。 对于 SNAT 端口限制，Azure 网络出站负载平衡不使用 TCP 连接指标。
 * [沙盒跨 VM 数字限制-Tcp 连接](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)中描述了 tcp 连接限制
 
-|限制名称|描述|小型（A1）|中（A2）|大（A3）|隔离层（ASE）|
+|限制名称|说明|小型（A1）|中（A2）|大（A3）|隔离层（ASE）|
 |---|---|---|---|---|---|
 |连接|跨整个 VM 的连接数|1920|3968|8064|16,000|
 

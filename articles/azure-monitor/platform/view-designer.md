@@ -6,18 +6,28 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/10/2019
-ms.openlocfilehash: 6e351abeede6d1057a9b37ab1f1cfb9021ccd06e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c0af92bdec6248a38040f972734764fa1bc10226
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505084"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289096"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>在 Azure Monitor 中使用视图设计器创建自定义视图
 在 Azure Monitor 中使用视图设计器即可在 Azure 门户中创建各种自定义视图，使 Log Analytics 工作区中的数据可视化。 本文概述了视图设计器以及创建和编辑自定义视图的过程。
 
 > [!IMPORTANT]
-> Azure Monitor 中的视图被分段并替换为提供其他功能的[工作簿](workbooks-overview.md)。 有关将现有视图转换为工作簿的详细信息，请参阅[Azure Monitor 查看设计器到工作簿过渡指南](view-designer-conversion-overview.md)"。
+> Azure Monitor 中的视图被分段并替换为提供其他功能的[工作簿](workbooks-overview.md)。 有关将现有视图转换为工作簿的详细信息，请参阅[Azure Monitor 查看设计器到工作簿过渡指南](view-designer-conversion-overview.md)"。 请参阅下表，了解今后几个月将执行的步骤。
+> 
+> | 更改 | 这意味着什么 | 预期日期 |
+> |:---|:---|:---|
+> | 禁用创建通过视图设计器创建的新视图。 | 你将无法再在 Azure 门户中创建并保存新的自定义视图。| 2020年11月 |
+> | 禁用具有视图设计器的现有视图的编辑函数。 | 你将无法再修改并保存对现有自定义视图所做的更改。 | 2020年11月 |
+> | 禁止将视图部署到 Log Analytics 工作区 | 你将无法再使用 ARM 将自定义视图部署到 Log Analytics 工作区。 | 2021年3月 |
+> | 视图设计器在 Azure 门户中不再可用 | 门户体验将不再支持视图设计器。 | 2021年6月 |
+> | 从工作区摘要中删除的自定义视图 | 你将无法再访问你的自定义视图数据。 | 2021年12月 |
+ 
+
 
 有关视图设计器的详细信息，请参阅：
 
@@ -38,7 +48,7 @@ ms.locfileid: "86505084"
 | 自定义视图 | 在选择磁贴时显示。 每个视图包含一个或多个可视化部件。 |
 | 可视化部件 | 根据一个或多个[日志查询](../log-query/log-query-overview.md)，提供 Log Analytics 工作区中数据的可视化效果。 大多数部件会包括提供高级可视化效果的标头，以及显示最匹配结果的列表。 每个部件类型提供了 Log Analytics 工作区中记录的不同可视化效果。 选择部件中的元素即可进行日志查询，获取详细的记录。 |
 
-## <a name="required-permissions"></a>所需的权限
+## <a name="required-permissions"></a>所需权限
 你至少需要 Log Analytics 工作区中的[参与者级别权限](manage-access.md#manage-access-using-azure-permissions)，才能创建或修改视图。 如果没有此权限，则菜单中不会显示“视图设计器”选项。
 
 

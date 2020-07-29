@@ -3,12 +3,12 @@ title: 将 Azure 事件中心与 Azure 专用链接服务集成
 description: 了解如何将 Azure 事件中心与 Azure 专用链接服务集成
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: bfed3f8e4c19463e10b721006d742726cf916900
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a07204615c4d81373d744e83862e6de14c7f8165
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512243"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287963"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link"></a>将 Azure 事件中心与 Azure 专用链接集成
 使用 Azure 专用链接服务，可以通过虚拟网络中的专用终结点访问 Azure 服务（例如 Azure 事件中心、Azure 存储和 Azure Cosmos DB）以及 Azure 托管的客户服务/合作伙伴服务。
@@ -26,9 +26,7 @@ ms.locfileid: "86512243"
 > 使用虚拟网络时，受信任的 Microsoft 服务不受支持。
 >
 > 不适用于虚拟网络常见 Azure 方案（请注意，该列表内容并不详尽）-
-> - Azure Monitor（诊断设置）
 > - Azure 流分析
-> - 与 Azure 事件网格的集成
 > - Azure IoT 中心路由
 > - Azure IoT Device Explorer
 >
@@ -64,7 +62,7 @@ ms.locfileid: "86512243"
 1. 选择页面顶部的“专用终结点连接”选项卡。 
 1. 在页面顶部选择“+ 专用终结点”按钮。
 
-    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text="网络 页-专用终结点连接选项卡-添加专用终结点链接":::
+    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text=""网络" 页-专用终结点连接选项卡-添加专用终结点链接":::
 7. 在“基本信息”页上执行以下步骤： 
     1. 选择要在其中创建专用终结点的 Azure 订阅。 
     2. 选择专用终结点资源的资源组。

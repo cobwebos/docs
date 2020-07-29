@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: d067d4a7fff385deea946ffa5475e1eb83548a50
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e71c426fee62187bb680c7b8bd1af92d87e85274
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096412"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288804"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-gen2"></a>预配和管理 Azure 时序见解 Gen2
 
@@ -93,7 +93,7 @@ ms.locfileid: "87096412"
 
 * 由于缩放单位不适用于 Azure 时序见解 Gen2 环境，因此删除了 Azure 门户的 "**配置**" 边栏选项卡。 但是，可以使用“存储配置”来配置新引入的暖存储。****
 
-* Azure 门户的**引用数据**边栏选项卡在 Azure 时序见解 Gen2 中被删除，因为引用数据概念已替换为[时序模型（TSM）](./time-series-insights-update-how-to-tsm.md)。
+* Azure 门户的**引用数据**边栏选项卡在 Azure 时序见解 Gen2 中被删除，因为引用数据概念已替换为[时序模型（TSM）](/azure/time-series-insights/concepts-model-overview)。
 
 [![Azure 门户中的 Azure 时序见解 Gen2 环境](media/v2-update-manage/create-and-manage-overview-confirm.png)](media/v2-update-manage/create-and-manage-overview-confirm.png#lightbox)
 

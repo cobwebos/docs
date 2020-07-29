@@ -3,12 +3,12 @@ title: 在 Azure 开发测试实验室中配置实验室以使用远程桌面网
 description: 了解如何使用远程桌面网关在 Azure 开发测试实验室中配置实验室，以确保安全访问实验室 Vm，而无需公开 RDP 端口。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 68cb830c765a71b06f9732c4062be23d9e7f67d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc45a0c2953f8f84289fa01d4af72bf98544bd7f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483833"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288069"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>将 Azure 开发测试实验室中的实验室配置为使用远程桌面网关
 在 Azure 开发测试实验室中，可以为实验室配置远程桌面网关，以确保无需公开 RDP 端口即可安全访问实验室虚拟机（Vm）。 实验室为实验室用户提供了一个中心位置，用于查看并连接到他们有权访问的所有虚拟机。 "**虚拟机**" 页上的 "**连接**" 按钮创建计算机特定的 RDP 文件，您可以打开该文件以连接到计算机。 可以通过将实验室连接到远程桌面网关，进一步自定义和保护 RDP 连接。 
@@ -36,7 +36,7 @@ ms.locfileid: "85483833"
 ### <a name="requirements-for-remote-desktop-gateway-machines"></a>远程桌面网关计算机的要求
 - TLS/SSL 证书必须安装在网关计算机上才能处理 HTTPS 通信。 如果只有一台计算机，则证书必须与网关场的负载均衡器的完全限定的域名（FQDN）或计算机本身的 FQDN 相匹配。 通配符 TLS/SSL 证书不起作用。  
 - 在网关计算机上安装的签名证书。 使用[Create-SigningCertificate.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1)脚本创建签名证书。
-- 安装支持远程桌面网关令牌身份验证的可[插入身份验证](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273)模块。 例如 `RDGatewayFedAuth.msi` ， [SYSTEM CENTER VIRTUAL MACHINE MANAGER （VMM）映像](/system-center/vmm/install-console?view=sc-vmm-1807)附带了这样一个模块。 有关 System Center 的详细信息，请参阅[System center 文档](https://docs.microsoft.com/system-center/)和[定价详细](https://www.microsoft.com/cloud-platform/system-center-pricing)信息。  
+- 安装支持远程桌面网关令牌身份验证的可[插入身份验证](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273)模块。 例如 `RDGatewayFedAuth.msi` ， [SYSTEM CENTER VIRTUAL MACHINE MANAGER （VMM）映像](/system-center/vmm/install-console?view=sc-vmm-1807)附带了这样一个模块。 有关 System Center 的详细信息，请参阅[System center 文档](/system-center/)和[定价详细](https://www.microsoft.com/cloud-platform/system-center-pricing)信息。  
 - 网关服务器可以处理对发出的请求 `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` 。
 
     网关主机名是网关场的负载均衡器的 FQDN 或计算机本身的 FQDN （如果只有一个计算机）。 `{lab-machine-name}`是您尝试连接的实验室计算机的名称，而 `{port-number}` 是将建立连接的端口。  默认情况下，此端口为3389。  但是，如果虚拟机正在开发测试实验室中使用[共享 IP](devtest-lab-shared-ip.md)功能，则该端口将有所不同。
@@ -65,7 +65,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 
 使用以下步骤将实验室配置为使用令牌身份验证：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 选择“所有服务”****，并从列表中选择“开发测试实验室”****。
 1. 从实验室列表中，选择**实验室**。
 1. 在实验室页面上，选择 "**配置和策略**"。
@@ -159,5 +159,3 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章，详细了解远程桌面服务：[远程桌面服务文档](/windows-server/remote/remote-desktop-services/Welcome-to-rds)
-
-

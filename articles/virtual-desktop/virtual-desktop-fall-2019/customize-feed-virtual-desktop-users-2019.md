@@ -1,6 +1,6 @@
 ---
-title: 自定义 Windows 虚拟桌面秋季2019用户的源-Azure
-description: 如何通过 PowerShell cmdlet 为 Windows 虚拟桌面用户自定义源。
+title: 自定义 Windows 虚拟桌面（经典）用户的源-Azure
+description: 如何通过 PowerShell cmdlet 为 Windows 虚拟桌面（经典）用户自定义源。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9c573fc1aa220b9301e51ef0ccb1190d9243250e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab1206a8963d9ba3b556a48b2e973eea663c9cb8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011220"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288658"
 ---
-# <a name="customize-feed-for-windows-virtual-desktop-users"></a>为 Windows 虚拟桌面用户自定义源
+# <a name="customize-feed-for-windows-virtual-desktop-classic-users"></a>为 Windows 虚拟桌面（经典）用户自定义源
 
 >[!IMPORTANT]
->本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。 如果要尝试管理 2020 年春季版更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../customize-feed-for-virtual-desktop-users.md)。
+>此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。 如果尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../customize-feed-for-virtual-desktop-users.md)。
 
 你可以自定义该源，使 RemoteApp 和远程桌面资源以可识别的方式显示给用户。
 

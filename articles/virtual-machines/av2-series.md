@@ -4,15 +4,15 @@ description: Av2 系列 VM 的规范。
 author: migerdes
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 1b5b77bb9bdf679fe0fd8bf73966dd45acc80155
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cdcc26a8a22e9a1dc7af75667cdb33bb044c7858
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085769"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288585"
 ---
 # <a name="av2-series"></a>Av2 系列
 
@@ -28,7 +28,6 @@ ACU：100
 
 内存保留更新：支持
 
-定价计算器和区域可用性信息：<a href="https://azure.microsoft.com/en-us/pricing/calculator/">定价计算器</a>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大数据磁盘数/吞吐量：IOPS | 最大 NIC 数 | 预期网络带宽（Mbps）
 |---|---|---|---|---|---|---|---|
@@ -51,9 +50,9 @@ ACU：100
 - [高性能计算](sizes-hpc.md)
 - [前几代](sizes-previous-gen.md)
 
-定价计算器和区域可用性信息：<a href="https://azure.microsoft.com/en-us/pricing/calculator/">定价计算器</a>
+定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
 
-有关磁盘类型的详细信息：<a href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/">磁盘类型</a>
+有关磁盘类型的详细信息：[磁盘类型](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
 
 ## <a name="next-steps"></a>后续步骤
 

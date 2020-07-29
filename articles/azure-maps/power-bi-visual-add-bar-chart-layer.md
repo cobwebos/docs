@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 34d2d96e28f90249ad25788f6994dac63f83b1f6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6a686f6915e332893f619e66944591999063a07c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261684"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288166"
 ---
 # <a name="add-a-bar-chart-layer"></a>添加条形图层
 
-**条形图层**用于通过允许将位置数据可视化为地图上的3d 栏或圆柱，来将数据提取到下一个维度中。 类似于气泡图层，以后条形图可以使用颜色和相对高度，同时轻松地直观显示两个度量值。 为了使条形具有高度，需要将度量值添加到 "**字段**" 窗格的**大小**存储桶中。 如果未提供度量值，则不会将高度作为平面正方形或圆，具体取决于 "**条形图" 形状**选项。
+**条形图层**用于通过允许将位置数据可视化为地图上的3d 栏或圆柱，来将数据提取到下一个维度中。 类似于气泡图层，以后条形图可以使用颜色和相对高度，同时轻松地直观显示两个度量值。 为了使条形具有高度，需要将度量值添加到 "**字段**" 窗格的**大小**存储桶中。 如果未提供度量值，则没有高度的条形将显示为平面正方形或圆，具体取决于 "**条形图" 形状**选项。
 
 > [!div class="mx-imgBorder"]
 > ![使用条形图层显示点数据的地图](media/power-bi-visual/bar-chart-layer-styled.png)

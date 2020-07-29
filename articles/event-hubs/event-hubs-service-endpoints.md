@@ -3,12 +3,12 @@ title: 虚拟网络服务终结点 - Azure 事件中心 | Microsoft Docs
 description: 本文提供了有关如何将 Microsoft EventHub 服务终结点添加到虚拟网络的信息。
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 134e310e0859bb6c0a50630f467513e07e6ff390
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5d1f6bb8e1160a328c30cfd6ef1726e3cf011aee
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066692"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288006"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>将虚拟网络服务终结点与 Azure 事件中心配合使用
 
@@ -25,7 +25,6 @@ ms.locfileid: "87066692"
 >
 > 不适用于虚拟网络常见 Azure 方案（请注意，该列表内容并不详尽）-
 > - Azure 流分析
-> - 与 Azure 事件网格的集成
 > - Azure IoT 中心路由
 > - Azure IoT Device Explorer
 >
@@ -60,7 +59,7 @@ ms.locfileid: "87066692"
 2. 在左侧菜单中，选择“网络”选项。 如果选择“所有网络”选项，则事件中心将接受来自任何 IP 地址的连接。 此设置等效于一个接受 0.0.0.0/0 IP 地址范围的规则。 
 
     ![防火墙 - 已选择“所有网络”选项](./media/event-hubs-firewall/firewall-all-networks-selected.png)
-1. 若要 restrct 访问特定网络，请选择页面顶部的 "**所选网络**" 选项。
+1. 若要限制对特定网络的访问，请选择页面顶部的 "**所选网络**" 选项。
 2. 在页面的 "**虚拟网络**" 部分中，选择 "+ 添加现有虚拟网络"。 如果要创建新的 VNet，请选择 " **+ 创建新虚拟网络**"。 
 
     ![添加现有虚拟网络](./media/event-hubs-tutorial-vnet-and-firewalls/add-vnet-menu.png)
@@ -85,9 +84,9 @@ ms.locfileid: "87066692"
 
 模板参数：
 
-* **namespaceName**：事件中心命名空间。
-* **vnetRuleName**：要创建的虚拟网络规则的名称。
-* **virtualNetworkingSubnetId**：虚拟网络子网的完全限定的资源管理器路径；例如，虚拟网络默认子网的 `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default`。
+* `namespaceName`：事件中心命名空间。
+* `vnetRuleName`：要创建的虚拟网络规则的名称。
+* `virtualNetworkingSubnetId`：虚拟网络子网的完全限定资源管理器路径;例如， `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` 对于虚拟网络的默认子网。
 
 > [!NOTE]
 > 虽然不可能具有拒绝规则，但 Azure 资源管理器模板的默认操作设置为“允许”，不限制连接。

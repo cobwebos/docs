@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 384335898c7cd6b379c6107152b49e9931cf513a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b82b79d076871b961d5c496bc70beac1b5067b2d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194961"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288104"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Azure 逻辑应用中 Google 连接器的数据安全和隐私策略
 
-从**2020**开始，，由于 Google 的[数据安全和隐私策略](https://www.blog.google/technology/safety-security/project-strobe/)的更改，可能会影响使用[Gmail 连接器](https://docs.microsoft.com/connectors/gmail/)的逻辑应用工作流。 如果逻辑应用使用 gmail 连接器，其中包含 Gmail 使用者帐户（以或结尾的电子邮件地址 @gmail.com @googlemail.com ），则逻辑应用只能使用特定[的 Google 批准触发器、操作和连接器](#approved-connectors)。
+从**2020**开始，，由于 Google 的[数据安全和隐私策略](https://www.blog.google/technology/safety-security/project-strobe/)的更改，可能会影响使用[Gmail 连接器](/connectors/gmail/)的逻辑应用工作流。 如果逻辑应用使用 gmail 连接器，其中包含 Gmail 使用者帐户（以或结尾的电子邮件地址 @gmail.com @googlemail.com ），则逻辑应用只能使用特定[的 Google 批准触发器、操作和连接器](#approved-connectors)。
 
 > [!NOTE]
 > 如果逻辑应用将 Gmail 连接器与 G Suite 企业帐户（带有自定义域的电子邮件地址）结合使用，则逻辑应用不会受到影响，也不会限制使用 Gmail 连接器。
@@ -62,7 +62,7 @@ ms.locfileid: "85194961"
 
   ![不符合逻辑应用-示例3](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-3.png)
 
-有关最新信息，请参阅[Gmail 连接器技术参考文档](https://docs.microsoft.com/connectors/gmail/)。
+有关最新信息，请参阅[Gmail 连接器技术参考文档](/connectors/gmail/)。
 
 <a name="update-affected-workflows"></a>
 
@@ -74,11 +74,11 @@ ms.locfileid: "85194961"
 
 1. 在 Gmail 连接器中，使用 Google 客户端应用的客户端 ID 和客户端机密值。
 
-有关详细信息，请参阅[Gmail 连接器的技术参考文档](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。
+有关详细信息，请参阅[Gmail 连接器的技术参考文档](/connectors/gmail/#authentication-and-bring-your-own-application)。
 
 ### <a name="create-google-client-app"></a>创建 Google 客户端应用
 
-若要为客户端应用程序设置项目，请使用[GOOGLE API 控制台向导](https://console.developers.google.com/start/api?id=gmail&credential=client_key)并按照说明进行操作。 或者，有关详细步骤，请查看[Gmail 连接器技术参考文档](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)中的说明。
+若要为客户端应用程序设置项目，请使用[GOOGLE API 控制台向导](https://console.developers.google.com/start/api?id=gmail&credential=client_key)并按照说明进行操作。 或者，有关详细步骤，请查看[Gmail 连接器技术参考文档](/connectors/gmail/#authentication-and-bring-your-own-application)中的说明。
 
 完成后，屏幕看起来像此示例，只不过你将拥有自己的**客户端 ID**和**客户端密钥**值，你稍后会在逻辑应用中使用它。
 
@@ -98,7 +98,7 @@ ms.locfileid: "85194961"
 
    ![提供连接信息](./media/connectors-google-data-security-privacy-policy/authentication-type-bring-your-own.png)
 
-   | Property | “值” | 描述 |
+   | 属性 | 值 | 说明 |
    |----------|-------|-------------|
    | **身份验证类型** | **自带应用程序** | 指定将使用自己的客户端应用进行身份验证。 |
    | **客户端 ID** | <*client-ID*> | Google 客户端应用的客户端 ID |
@@ -117,4 +117,5 @@ ms.locfileid: "85194961"
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解[Gmail 连接器](https://docs.microsoft.com/connectors/gmail/)
+详细了解[Gmail 连接器](/connectors/gmail/)
+

@@ -3,12 +3,13 @@ title: 监视在任何环境中运行的 Java 应用程序 - Azure Monitor Appli
 description: 使用 Java 独立代理监视在任何环境中运行的 Java 应用程序的应用程序性能，而无需检测该应用。 分布式跟踪和应用程序映射。
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 6499fbc62a78cb333c623dbea8269144e623921c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-java
+ms.openlocfilehash: b1a23c01fdf8a0145c26b709f36709a7b710103f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014235"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374297"
 ---
 # <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>为 Azure Monitor Application Insights 配置 JVM 参数 Java 独立代理
 

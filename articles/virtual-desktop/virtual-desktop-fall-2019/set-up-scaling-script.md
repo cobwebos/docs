@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 自动化来改变会话主机规模 - Azure
-description: 如何利用 Azure 自动化自动改变 Windows 虚拟桌面会话主机规模。
+title: 缩放会话承载 Azure 自动化 Windows 虚拟桌面（经典）-Azure
+description: 如何利用 Azure 自动化自动缩放 Windows 虚拟桌面（经典）会话主机。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 690f59c643f1fe8c8cfc74758a0f8f13b129f78a
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 4c09ce867a7d4dbc11c42485c39c40bd427fa451
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172061"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288641"
 ---
-# <a name="scale-session-hosts-using-azure-automation"></a>使用 Azure 自动化来改变会话主机规模
+# <a name="scale-windows-virtual-desktop-classic-session-hosts-using-azure-automation"></a>使用 Azure 自动化缩放 Windows 虚拟桌面（经典）会话主机
 
 >[!IMPORTANT]
->本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。
+>此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。
 
 可以通过改变虚拟机 (VM) 规模来降低 Windows 虚拟桌面总部署成本。 这是指在非高峰使用时段关闭和取消分配会话主机 VM，并在高峰时段重新启用和重新分配。
 
