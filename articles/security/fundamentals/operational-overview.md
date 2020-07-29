@@ -17,6 +17,7 @@ ms.date: 10/31/2019
 ms.author: tomsh
 ms.openlocfilehash: 00a71fec9c0bfc1db45eee7129b7c2a8adaef0fa
 ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83674242"
