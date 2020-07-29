@@ -7,12 +7,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
 ms.date: 08/16/2019
 ms.custom: include file
-ms.openlocfilehash: 86b16c92f7a9bd3f594b01820db6cbf7ef5ecb6b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: b2d4ce0de130942ccd52dc2894d91a4e4f667c99
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104346"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326608"
 ---
 将产品/服务发布到 marketplace 后，需将产品/服务连接到 CRM 系统。 通过这种方式，你可以在客户提出兴趣或部署产品后立即收到客户联系信息。
 

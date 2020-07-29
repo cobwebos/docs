@@ -1,7 +1,7 @@
 ---
 title: Azure CLI 脚本示例 - 配置 IPv6 前端
 titlesuffix: Azure Virtual Network
-description: 使用 Azure CLI 在 Azure 虚拟网络中启用 IPv6 终结点
+description: 使用 Azure CLI 脚本示例来配置 IPv6 终结点，并在 Azure 中部署双堆栈（IPv4 + IPv6）应用程序。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
-ms.openlocfilehash: 1ef8742bc4f8de2d08d9bb4fc98b3df6f9420737
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5f5e741e972015820af2e0e33372eb41c9e78210
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80235029"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281593"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>在虚拟网络脚本示例中配置 IPv6 终结点（预览）
 
@@ -27,7 +27,7 @@ ms.locfileid: "80235029"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要使用 Azure 虚拟网络的 IPv6 功能，你必须按如下所示配置订阅一次：
 
 ```azurecli
@@ -276,7 +276,7 @@ az group delete --name <resourcegroupname> --yes
 
 此脚本使用以下命令创建资源组、虚拟机、可用性集、负载均衡器和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| 命令 | 说明 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) | 创建 Azure 虚拟网络和子网。 |

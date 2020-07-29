@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 51716bdd6ab7f5b5102ccba3e6d57855dee5df33
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 6b6dba101c7793198fe9d1e2bef1bcd99ddac618
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855913"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281729"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>优化性能 Azure Data Lake Storage Gen1
 
@@ -43,11 +43,11 @@ Data Lake Storage Gen1 可进行缩放，以便为所有分析方案提供必要
 
 | 工具          | 设置 | 更多详细信息                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| Powershell       | PerFileThreadCount、ConcurrentFileCount | [链接](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell)。 |
-| AdlCopy    | Azure Data Lake Analytics 单元 | [链接](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)。         |
-| DistCp            | -m (mapper) | [链接](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)。                             |
-| Azure 数据工厂| parallelCopies | [链接](../data-factory/copy-activity-performance.md)。                          |
-| Sqoop           | fs.azure.block.size, -m (mapper) | [链接](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)。        |
+| Powershell       | PerFileThreadCount、ConcurrentFileCount | [Link](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell) |
+| AdlCopy    | Azure Data Lake Analytics 单元 | [Link](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
+| DistCp            | -m (mapper) | [Link](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
+| Azure 数据工厂| parallelCopies | [Link](../data-factory/copy-activity-performance.md)                          |
+| Sqoop           | fs.azure.block.size, -m (mapper) | [Link](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>调整数据集结构
 
@@ -124,14 +124,14 @@ HDInsight 群集由两个头节点和一些辅助角色节点组成。 每个辅
 
 除上述常规准则外，每个应用程序都有不同的参数，可用于优化该特定应用程序。 下表列出了一些参数和链接，有助于开始对每个应用程序执行性能优化。
 
-| 工作负荷               | 用于设置任务数的参数                                                         |
+| 工作负载               | 用于设置任务数的参数                                                         |
 |--------------------|-------------------------------------------------------------------------------------|
 | [HDInsight 上的 Spark](data-lake-store-performance-tuning-spark.md)  | <ul><li>Num-executors</li><li>Executor-memory</li><li>Executor-cores</li></ul> |
 | [Hive on HDInsight](data-lake-store-performance-tuning-hive.md)    | <ul><li>hive.tez.container.size</li></ul>         |
 | [MapReduce on HDInsight](data-lake-store-performance-tuning-mapreduce.md)            | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
 | [Storm on HDInsight](data-lake-store-performance-tuning-storm.md)| <ul><li>工作进程数</li><li>Spout 执行器实例数</li><li>Bolt 执行器实例数 </li><li>Spout 任务数</li><li>Bolt 任务数</li></ul>|
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
 * [Azure Data Lake Analytics 入门](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

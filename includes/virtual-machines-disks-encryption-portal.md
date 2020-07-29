@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a8702f14bfb9aed5a3595203dde1d86ea56a151b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 950fd82e14902c3a7a94fddb44d50ac372ebe119
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133787"
+ms.locfileid: "87177001"
 ---
 [!INCLUDE [virtual-machines-disks-encryption-create-key-vault-portal](virtual-machines-disks-encryption-create-key-vault-portal.md)]
 
@@ -42,7 +42,7 @@ VM 部署过程与标准部署过程类似，唯一的差别在于，你需要�
 1. 导航到与磁盘加密集位于同一区域中的 VM。
 1. 打开 VM 并选择“停止”。
 
-    ![示例 VM 的主覆盖屏幕截图。 其中突出显示了“停止”按钮](media/virtual-machines-disk-encryption-portal/server-side-encryption-stop-vm-to-encrypt-disk-fix.png)
+    ![示例 VM 的主覆盖屏幕截图，其中突出显示了 "停止" 按钮。](media/virtual-machines-disk-encryption-portal/server-side-encryption-stop-vm-to-encrypt-disk-fix.png)
 
 1. VM 停止后，选择“磁盘”，然后选择要加密的磁盘。
 

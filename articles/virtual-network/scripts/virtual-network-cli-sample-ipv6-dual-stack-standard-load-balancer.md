@@ -1,7 +1,7 @@
 ---
 title: Azure CLI 脚本示例 - 配置 IPv6 前端 - 标准负载均衡器
 titlesuffix: Azure Virtual Network
-description: 使用 Azure CLI 在 Azure 虚拟网络中启用 IPv6 终结点
+description: 了解如何使用标准负载均衡器在虚拟网络脚本示例中配置 IPv6 终结点。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 5f5856a89a04b58b138ee23a5f289ceff0915acf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2509034abb37c7dc90b65569d14f228eadb746c8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80235035"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281610"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancerpreview"></a>使用标准负载均衡器（预览版）在虚拟网络脚本示例中配置 IPv6 终结点
 
@@ -27,7 +27,7 @@ ms.locfileid: "80235035"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要使用 Azure 虚拟网络的 IPv6 功能，你必须按如下所示配置订阅一次：
 
 ```azurecli
@@ -285,7 +285,7 @@ az vm create \
 ## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>在 Azure 门户中查看 IPv6 双堆栈虚拟网络
 可以在 Azure 门户中查看 IPv6 双堆栈虚拟网络，如下所示：
 1. 在门户的搜索栏中输入 *dsVnet*。
-2. 当“myVirtualNetwork”出现在搜索结果中时，将其选中。**** 此时会启动名为 *dsVnet* 的双堆栈虚拟网络的“概述”页。**** 该双堆栈虚拟网络显示了位于 *dsSubnet* 双堆栈子网中的两个 NIC，这些 NIC 采用 IPv4 和 IPv6 配置。 
+2. 当“myVirtualNetwork”出现在搜索结果中时，将其选中。 此时会启动名为 *dsVnet* 的双堆栈虚拟网络的“概述”页。**** 该双堆栈虚拟网络显示了位于 *dsSubnet* 双堆栈子网中的两个 NIC，这些 NIC 采用 IPv4 和 IPv6 配置。 
 
 > [!NOTE]
 > 适用于 Azure 虚拟网络的 IPv6 可在此预览版本的只读 Azure 门户中使用。
@@ -302,7 +302,7 @@ az group delete --name <resourcegroupname> --yes
 
 此脚本使用以下命令创建资源组、虚拟机、可用性集、负载均衡器和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| 命令 | 说明 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) | 创建 Azure 虚拟网络和子网。 |

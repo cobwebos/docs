@@ -1,6 +1,6 @@
 ---
-title: Windows 虚拟桌面故障排除概述-秋季 2019-Azure
-description: 有关在设置 Windows 虚拟桌面租户环境时解决问题的概述。
+title: Windows 虚拟桌面（经典）疑难解答概述-Azure
+description: 有关在设置 Windows 虚拟桌面（经典）租户环境时解决问题的概述。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 82ac5a8178973396c4c1975cb1c84d23e61430f7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: efcdc203884a5aaff3b02e730f1dddb7fff66e95
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87069926"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289829"
 ---
-# <a name="troubleshooting-overview-feedback-and-support"></a>故障排除概述、反馈和支持
+#  <a name="windows-virtual-desktop-classic-troubleshooting-overview-feedback-and-support"></a>Windows 虚拟桌面（经典）疑难解答概述、反馈和支持
 
 >[!IMPORTANT]
->本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。 如果要尝试管理 2020 年春季版更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../troubleshoot-set-up-overview.md)。
+>此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。 如果尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../troubleshoot-set-up-overview.md)。
 
 本文概述了在设置 Windows 虚拟桌面租户环境时可能会遇到的问题，并提供解决这些问题的方法。
 

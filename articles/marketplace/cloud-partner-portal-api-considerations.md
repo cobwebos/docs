@@ -4,15 +4,15 @@ description: 使用市场 API 时的版本控制、错误处理和授权问题�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 8e50e4feff5c98c97418c9675a3f862f7d7d0274
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c8d5c9365e2cedce7a6ed877bcf93ecd17ff220b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092229"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287866"
 ---
 # <a name="api-considerations"></a>API 注意事项
 
