@@ -3,18 +3,18 @@ title: 在 Azure Application Insights 中使用搜索 | Microsoft Docs
 description: 搜索和筛选由 Web 应用发送的原始遥测数据。
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: 7a264f25f92bed1b93848c323fd59eafd7b09215
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f88e0fb8fbd7e9605635ede1e8f71b57de84b74e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033609"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324448"
 ---
 # <a name="using-search-in-application-insights"></a>使用 Application Insights 中的搜索
 
-搜索是 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的一项功能，可用于查找和浏览单个遥测项，例如页面视图、异常或 Web 请求。 此外，可以查看编写的日志跟踪和事件。
+搜索是 [Application Insights](./app-insights-overview.md) 中的一项功能，可用于查找和浏览单个遥测项，例如页面视图、异常或 Web 请求。 此外，可以查看编写的日志跟踪和事件。
 
-（若要对数据进行更复杂的查询，请使用 [Analytics](../../azure-monitor/log-query/get-started-portal.md)。）
+（若要对数据进行更复杂的查询，请使用 [Analytics](../log-query/get-started-portal.md)。）
 
 ## <a name="where-do-you-see-search"></a>哪里可以看到“搜索”？
 
@@ -56,13 +56,13 @@ ms.locfileid: "87033609"
 
 事件类型包括：
 
-* **跟踪** - [诊断日志](../../azure-monitor/app/asp-net-trace-logs.md)，包括 TrackTrace、log4Net、NLog 和 System.Diagnostic.Trace 调用。
+* **跟踪** - [诊断日志](./asp-net-trace-logs.md)，包括 TrackTrace、log4Net、NLog 和 System.Diagnostic.Trace 调用。
 * **请求** - 服务器应用程序收到的 HTTP 请求，包括页面、脚本、图像、样式文件和数据。 这些事件用于创建请求和响应概述图表。
-* **页面视图** - [由 Web 客户端发送的遥测数据](../../azure-monitor/app/javascript.md)，用于创建页面视图报告。
-* **自定义事件** - 如果插入了对 TrackEvent() 的调用以便[监视使用情况](../../azure-monitor/app/api-custom-events-metrics.md)，可以在此处搜索这些调用。
-* **异常** - 未捕获到的[服务器中的异常](../../azure-monitor/app/asp-net-exceptions.md)，以及使用 TrackException() 记录的异常。
-* **依赖项** - [发自服务器应用程序的调用](../../azure-monitor/app/asp-net-dependencies.md)，调用对象为 REST API 或数据库等其他服务器，以及[客户端代码](../../azure-monitor/app/javascript.md)中的 AJAX 调用。
-* **可用性** - [可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)的结果。
+* **页面视图** - [由 Web 客户端发送的遥测数据](./javascript.md)，用于创建页面视图报告。
+* **自定义事件** - 如果插入了对 TrackEvent() 的调用以便[监视使用情况](./api-custom-events-metrics.md)，可以在此处搜索这些调用。
+* **异常** - 未捕获到的[服务器中的异常](./asp-net-exceptions.md)，以及使用 TrackException() 记录的异常。
+* **依赖项** - [发自服务器应用程序的调用](./asp-net-dependencies.md)，调用对象为 REST API 或数据库等其他服务器，以及[客户端代码](./javascript.md)中的 AJAX 调用。
+* **可用性** - [可用性测试](./monitor-web-app-availability.md)的结果。
 
 ## <a name="filter-on-property-values"></a>按属性值筛选
 
@@ -81,10 +81,10 @@ ms.locfileid: "87033609"
 ## <a name="search-the-data"></a>搜索数据
 
 > [!NOTE]
-> 若要编写更复杂的查询，请在“搜索”边栏选项卡的顶部打开[**日志（分析）** ](../../azure-monitor/log-query/get-started-portal.md)。
+> 若要编写更复杂的查询，请在“搜索”边栏选项卡的顶部打开[**日志（分析）** ](../log-query/get-started-portal.md)。
 >
 
-可以搜索任何属性值中的关键词。 如果已编写包含属性值的[自定义事件](../../azure-monitor/app/api-custom-events-metrics.md)，可使用此功能。
+可以搜索任何属性值中的关键词。 如果已编写包含属性值的[自定义事件](./api-custom-events-metrics.md)，可使用此功能。
 
 可以设置时间范围，因为搜索一小段时间内的值可以更快地返回结果。
 
@@ -110,7 +110,7 @@ ms.locfileid: "87033609"
 
 如果应用生成大量遥测（且使用的是 ASP.NET SDK 版本 2.0.0-beta3 或更高版本），自适应采样模块将通过仅发送具有代表性的事件部分来自动减少发送到门户的量。 但是，以组为单位选择或取消选择与同一请求相关的事件，以便可以在相关事件之间浏览。
 
-[了解采样](../../azure-monitor/app/sampling.md)。
+[了解采样](./sampling.md)。
 
 ## <a name="create-work-item"></a>创建工作项
 
@@ -128,24 +128,25 @@ ms.locfileid: "87033609"
 
 除了 Application Insights SDK 原本发送的遥测数据以外，可以：
 
-* 从 [.NET](../../azure-monitor/app/asp-net-trace-logs.md) 或 [Java](../../azure-monitor/app/java-trace-logs.md) 中偏好的日志记录框架捕获日志跟踪。 也就是说，可以搜索日志跟踪并将其与页面视图、异常和其他事件相关联。
-* [编写代码](../../azure-monitor/app/api-custom-events-metrics.md)用于发送自定义事件、页面视图和异常。
+* 从 [.NET](./asp-net-trace-logs.md) 或 [Java](./java-trace-logs.md) 中偏好的日志记录框架捕获日志跟踪。 也就是说，可以搜索日志跟踪并将其与页面视图、异常和其他事件相关联。
+* [编写代码](./api-custom-events-metrics.md)用于发送自定义事件、页面视图和异常。
 
-[了解如何向 Application Insights 发送日志和自定义的遥测数据](../../azure-monitor/app/asp-net-trace-logs.md)。
+[了解如何向 Application Insights 发送日志和自定义的遥测数据](./asp-net-trace-logs.md)。
 
 ## <a name="q--a"></a><a name="questions"></a>问题解答
 
 ### <a name="how-much-data-is-retained"></a><a name="limits"></a>保留多少数据？
 
-请参阅[限制摘要](../../azure-monitor/app/pricing.md#limits-summary)。
+请参阅[限制摘要](./pricing.md#limits-summary)。
 
 ### <a name="how-can-i-see-post-data-in-my-server-requests"></a>如何查看服务器请求中的 POST 数据？
 
-我们不自动记录 POST 数据，但可以使用 [TrackTrace 或日志调用](../../azure-monitor/app/asp-net-trace-logs.md)。 POST 数据放在消息参数中。 无法像筛选属性一样筛选消息，但消息的大小限制更大。
+我们不自动记录 POST 数据，但可以使用 [TrackTrace 或日志调用](./asp-net-trace-logs.md)。 POST 数据放在消息参数中。 无法像筛选属性一样筛选消息，但消息的大小限制更大。
 
 ## <a name="next-steps"></a><a name="add"></a>后续步骤
 
-* [在 Analytics 中编写复杂查询](../../azure-monitor/log-query/get-started-portal.md)
-* [向 Application Insights 发送日志和自定义的遥测数据](../../azure-monitor/app/asp-net-trace-logs.md)
-* [设置可用性和响应能力测试](../../azure-monitor/app/monitor-web-app-availability.md)
+* [在 Analytics 中编写复杂查询](../log-query/get-started-portal.md)
+* [向 Application Insights 发送日志和自定义的遥测数据](./asp-net-trace-logs.md)
+* [设置可用性和响应能力测试](./monitor-web-app-availability.md)
 * [故障排除](../faq.md)
+

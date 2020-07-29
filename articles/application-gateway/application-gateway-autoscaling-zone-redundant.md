@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 0a82a35f1736aa7908928cbca3397cbe9c705e5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f10bb1f4065f3bdb517fcad4f3eb6caa331c5233
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088100"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87273195"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自动缩放和区域冗余应用程序网关 v2 
 
-应用程序网关和 Web 应用程序防火墙 (WAF) 在 Standard_v2 和 WAF_v2 SKU 中也可用。 v2 SKU 提供性能增强，并添加了对自动缩放、区域冗余等关键新功能以及静态 VIP 的支持。 Standard 和 WAF SKU 中的现有功能在新的 v2 SKU 中仍受支持，不过存在几种例外情况，具体请参阅[比较](#differences-from-v1-sku)部分。
+应用程序网关在 Standard_v2 SKU 下提供。 Web 应用程序防火墙（WAF）在 WAF_v2 SKU 下提供。 v2 SKU 提供性能增强，并添加了对自动缩放、区域冗余等关键新功能以及静态 VIP 的支持。 Standard 和 WAF SKU 中的现有功能在新的 v2 SKU 中仍受支持，不过存在几种例外情况，具体请参阅[比较](#differences-from-v1-sku)部分。
 
 新的 v2 SKU 包括以下增强：
 
@@ -148,13 +148,13 @@ Azure 应用程序网关始终以高度可用的方式部署。 服务由多个�
 
 下表比较了每个 SKU 提供的功能。
 
-| 功能                                           | v1 SKU   | v2 SKU   |
+| Feature                                           | v1 SKU   | v2 SKU   |
 | ------------------------------------------------- | -------- | -------- |
 | 自动缩放                                       |          | &#x2713; |
 | 区域冗余                                   |          | &#x2713; |
 | 静态 VIP                                        |          | &#x2713; |
 | Azure Kubernetes 服务 (AKS) 入口控制器 |          | &#x2713; |
-| Azure Key Vault 集成                       |          | &#x2713; |
+| Azure 密钥保管库集成                       |          | &#x2713; |
 | 重写 HTTP(S) 标头                           |          | &#x2713; |
 | 基于 URL 的路由                                 | &#x2713; | &#x2713; |
 | 多站点托管                             | &#x2713; | &#x2713; |

@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 中排查出站 SMTP 连接问题 | Microsoft Docs
-description: 了解如何在 Azure 中排查出站 SMTP 连接问题。
+description: 了解发送电子邮件的建议方法，以及如何解决 Azure 中的出站 SMTP 连接问题。
 services: virtual-network
 author: genlin
 manager: dcscontentpm
@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: 148a8bf7626d8b8ee687658990fdaf2fce9f7de7
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e58f498ca254378354fb0e9e21d04fe9969588c9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590088"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265256"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>在 Azure 中排查出站 SMTP 连接问题
 
@@ -37,7 +38,7 @@ ms.locfileid: "83590088"
 
 在 2017 年 11 月 15 日之后创建的即用即付或 Microsoft 合作伙伴网络订阅中存在技术限制，此类限制会阻止这些订阅中的 VM 直接发送的电子邮件。 如需将电子邮件从 Azure VM 直接发送到外部电子邮件提供商（不使用经身份验证的 SMTP 中继），可以请求去除该限制。 Microsoft 会自行审核和批准此类请求，并且仅在进行额外的防欺诈检查后授予相关权限。 若要发出请求，请使用以下问题类型建立支持案例：“技术” > “虚拟网络” > “连接” > “无法发送电子邮件(SMTP/端口 25)”。 请确保添加详细信息，解释为什么要直接向电子邮件提供商发送邮件而不是使用经身份验证的中继。
 
-在豁免即用即付或 Microsoft 合作伙伴网络订阅并通过 Azure 门户“停止”又“启动”VM 之后，该订阅中的所有 VM 都会被豁免。 豁免仅适用于所请求的订阅，并且仅适用于直接路由到 Internet 的虚拟机流量。 不支持通过 Azure PaaS 服务（例如 [Azure 防火墙](https://azure.microsoft.com/services/azure-firewall/)）路由端口 25 的流量。
+在豁免即用即付或 Microsoft 合作伙伴网络订阅并通过 Azure 门户“停止”又“启动”VM 之后，该订阅中的所有 VM 都会被豁免。 豁免仅适用于请求的订阅，并且仅适用于直接路由到 Internet 的虚拟机流量。 不支持通过 Azure PaaS 服务（如 [Azure 防火墙](https://azure.microsoft.com/services/azure-firewall/)）路由端口 25 流量。
 
 > [!NOTE]
 > 如果确定发生违反服务条款的情况，Microsoft 保留撤销此豁免的权利。
@@ -45,7 +46,7 @@ ms.locfileid: "83590088"
 ## <a name="msdn-azure-pass-azure-in-open-education-bizspark-and-free-trial"></a>MSDN、Azure Pass、Azure 开放许可、教育、BizSpark 和免费试用版
 2017 年 11 月 15 日后创建的 MSDN、Azure Pass、Azure 开放许可、Azure 教育、BizSpark、Azure 赞助、Azure Student、免费试用版或任何 Visual Studio 订阅均存在技术限制，此类限制会阻止从这些订阅中的 VM 直接向电子邮件提供商发送的电子邮件。 此限制是为了防止滥用邮件。 不接受去除此限制的请求。
 
-如果使用这些订阅类型，建议使用 SMTP 中继服务（如本文前面部分所述）或更改订阅类型。
+如果使用这些订阅类型，建议使用 SMTP 中继服务，如本文前面部分所述，或者更改订阅类型。
 
 ## <a name="cloud-service-provider-csp"></a>云服务提供商 (CSP)
 

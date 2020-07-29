@@ -3,12 +3,12 @@ title: Azure Application Insights 中的数据保留和存储 | Microsoft Docs
 description: 保留和隐私政策声明
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 16483c9417c08ea60853d7e70b7121cd0af9db71
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 039e86f964649441967dff82270a3a6c460612f0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540054"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324465"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的数据收集、保留和存储
 
@@ -38,24 +38,24 @@ Application Insights SDK 可用于多种应用程序类型：托管在自己的 
 ## <a name="what-data-does-it-collect"></a>它收集哪些数据？
 有三种数据源：
 
-* SDK。可以[在开发阶段](../../azure-monitor/app/asp-net.md)或者[在运行时](../../azure-monitor/app/monitor-performance-live-website-now.md)将它与应用集成。 不同类型的应用程序有不同的 SDK。 还有一个网页[SDK](../../azure-monitor/app/javascript.md)，它与页面一起加载到最终用户的浏览器中。
+* SDK。可以[在开发阶段](./asp-net.md)或者[在运行时](./monitor-performance-live-website-now.md)将它与应用集成。 不同类型的应用程序有不同的 SDK。 还有一个网页[SDK](./javascript.md)，它与页面一起加载到最终用户的浏览器中。
   
-  * 每个 SDK 有许多[模块](../../azure-monitor/app/configuration-with-applicationinsights-config.md)，这些模块使用不同的技术收集不同类型的遥测数据。
+  * 每个 SDK 有许多[模块](./configuration-with-applicationinsights-config.md)，这些模块使用不同的技术收集不同类型的遥测数据。
   * 如果在开发环境中安装 SDK，则除了使用标准模块发送自己的遥测数据以外，还可以使用 SDK 的 API 发送这些数据。 这些自定义遥测数据可以包含所要发送的任何数据。
-* 在某些 Web 服务器中，还装有与应用一起运行并发送有关 CPU、内存和网络占用量的遥测数据的代理。 例如，Azure VM、Docker 主机和 [Java EE 服务器](../../azure-monitor/app/java-agent.md)都可能拥有此类代理。
-* [可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)是 Microsoft 运行的过程，可定期将请求发送到 Web 应用。 结果将发送到 Application Insights 服务。
+* 在某些 Web 服务器中，还装有与应用一起运行并发送有关 CPU、内存和网络占用量的遥测数据的代理。 例如，Azure VM、Docker 主机和 [Java EE 服务器](./java-agent.md)都可能拥有此类代理。
+* [可用性测试](./monitor-web-app-availability.md)是 Microsoft 运行的过程，可定期将请求发送到 Web 应用。 结果将发送到 Application Insights 服务。
 
 ### <a name="what-kinds-of-data-are-collected"></a>收集哪些类型的数据？
 主要类别如下：
 
-* [Web 服务器遥测数据](../../azure-monitor/app/asp-net.md) - HTTP 请求。  URI、处理请求花费的时间、响应代码、客户端 IP 地址。 `Session id`.
-* [网页](../../azure-monitor/app/javascript.md) - 页面、用户和会话计数。 页面加载时间。 异常。 Ajax 调用。
+* [Web 服务器遥测数据](./asp-net.md) - HTTP 请求。  URI、处理请求花费的时间、响应代码、客户端 IP 地址。 `Session id`.
+* [网页](./javascript.md) - 页面、用户和会话计数。 页面加载时间。 异常。 Ajax 调用。
 * 性能计数器 - 内存、CPU、IO、网络占用量。
 * 客户端和服务器上下文 - OS、区域性、设备类型、浏览器和屏幕分辨率。
-* [异常](../../azure-monitor/app/asp-net-exceptions.md)和崩溃 - **堆栈转储**、`build id`、CPU 类型。 
-* [依赖项](../../azure-monitor/app/asp-net-dependencies.md) - 对外部服务的调用，例如 REST、SQL、AJAX。 URI 或连接字符串、持续时间、成功结果、命令。
-* [可用性测试](../../azure-monitor/app/monitor-web-app-availability.md) - 测试持续时间、步骤、响应。
-* [跟踪日志](../../azure-monitor/app/asp-net-trace-logs.md)和[自定义遥测](../../azure-monitor/app/api-custom-events-metrics.md) - **在日志或遥测中编写的任何内容**。
+* [异常](./asp-net-exceptions.md)和崩溃 - **堆栈转储**、`build id`、CPU 类型。 
+* [依赖项](./asp-net-dependencies.md) - 对外部服务的调用，例如 REST、SQL、AJAX。 URI 或连接字符串、持续时间、成功结果、命令。
+* [可用性测试](./monitor-web-app-availability.md) - 测试持续时间、步骤、响应。
+* [跟踪日志](./asp-net-trace-logs.md)和[自定义遥测](./api-custom-events-metrics.md) - **在日志或遥测中编写的任何内容**。
 
 [更多详细信息](#data-sent-by-application-insights)。
 
@@ -71,16 +71,16 @@ Application Insights SDK 可用于多种应用程序类型：托管在自己的 
 ![按 F12 打开“网络”选项卡。](./media/data-retention-privacy/08-browser.png)
 
 ### <a name="can-i-write-code-to-filter-the-telemetry-before-it-is-sent"></a>是否可以编写代码来筛选遥测数据，然后将它发送出去？
-可以编写[遥测处理器插件](../../azure-monitor/app/api-filtering-sampling.md)来实现此目的。
+可以编写[遥测处理器插件](./api-filtering-sampling.md)来实现此目的。
 
 ## <a name="how-long-is-the-data-kept"></a>数据保留多长时间？
-原始数据点（即，可以在 Analytics 中查询并在“搜索”中检查的项）最多可以保留 730 天。 可以[选择保留期限](./pricing.md#change-the-data-retention-period) 30 天、60 天、90 天、120 天、180 天、270 天、365 天、550 天或 730 天。 如果需要将数据保留超过 730 天，则可以使用[连续导出](../../azure-monitor/app/export-telemetry.md)在数据引入过程中将其复制到存储帐户。 
+原始数据点（即，可以在 Analytics 中查询并在“搜索”中检查的项）最多可以保留 730 天。 可以[选择保留期限](./pricing.md#change-the-data-retention-period) 30 天、60 天、90 天、120 天、180 天、270 天、365 天、550 天或 730 天。 如果需要将数据保留超过 730 天，则可以使用[连续导出](./export-telemetry.md)在数据引入过程中将其复制到存储帐户。 
 
 保留时间超过 90 天的数据将产生额外费用。 在 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)上详细了解 Application Insights 定价。
 
 1 分钟粒度的聚合数据（即，在指标资源管理器中显示的计数、平均值和其他统计信息）可保留 90 天。
 
-[调试快照](../../azure-monitor/app/snapshot-debugger.md)存储15天。 此保留策略是逐个应用程序进行设置。 如果需要，可以在 Azure 门户中打开支持案例，以请求增加此值。
+[调试快照](./snapshot-debugger.md)存储15天。 此保留策略是逐个应用程序进行设置。 如果需要，可以在 Azure 门户中打开支持案例，以请求增加此值。
 
 ## <a name="who-can-access-the-data"></a>谁可以访问该数据？
 你和团队成员（如果使用组织帐户）可以看到数据。 
@@ -94,7 +94,7 @@ Microsoft 只使用这些数据来向你提供服务。
 * 创建新的 Application Insights 资源时，可以选择存储位置。 [在此处](https://azure.microsoft.com/global-infrastructure/services/?products=all)了解有关每个区域 Application Insights 可用性的详细信息。
 
 #### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>这是否意味着应用必须托管在美国、欧洲或东南亚？
-* 不是。 应用程序可在任何位置运行，不管是在自己的本地主机中还是云中。
+* 否。 应用程序可在任何位置运行，不管是在自己的本地主机中还是云中。
 
 ## <a name="how-secure-is-my-data"></a>数据的安全性如何？
 Application Insights 是一项 Azure 服务。 [Azure Security, Privacy, and Compliance white paper](https://go.microsoft.com/fwlink/?linkid=392408)（Azure 安全性、隐私性和遵从性白皮书）中介绍了安全政策。
@@ -213,7 +213,7 @@ AzureLogHandler(
 | Windows Server 2012 - 2016 | 受支持，并且默认已启用。 | 确认你仍在使用[默认设置](/windows-server/security/tls/tls-registry-settings) |
 | Windows 7 SP1 和 Windows Server 2008 R2 SP1 | 默认情况下支持但不启用。 | 有关启用方法的详细信息，请参阅[传输层安全性 (TLS) 注册表设置](/windows-server/security/tls/tls-registry-settings)页。  |
 | Windows Server 2008 SP2 | 对 TLS 1.2 的支持需要更新。 | 请参阅 Windows Server 2008 SP2 中的[更新以添加对 TLS 1.2 的支持](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s)。 |
-|Windows Vista | 不提供支持。 | 不可用
+|Windows Vista | 不提供支持。 | 空值
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>检查 Linux 分发版正在运行哪个 OpenSSL 版本
 
@@ -233,7 +233,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>Application Insights 中存储的个人数据
 
-[Application Insights 个人数据文章](../../azure-monitor/platform/personal-data-mgmt.md)深入探讨了此问题。
+[Application Insights 个人数据文章](../platform/personal-data-mgmt.md)深入探讨了此问题。
 
 #### <a name="can-my-users-turn-off-application-insights"></a>用户是否可以关闭 Application Insights？
 无法直接配合使用。 我们未提供用户可操作的开关来关闭 Application Insights。
@@ -247,9 +247,9 @@ SDK 根据平台的不同而异，可以安装多个组件。 （请参阅[Appli
 
 | 操作 | 收集的数据类（参阅下一表格） |
 | --- | --- |
-| [将 Application Insights SDK 添加到 .NET Web 项目][greenbrown] |ServerContext<br/>推断<br/>性能计数器<br/>Requests<br/>**异常**<br/>会话<br/>users |
+| [将 Application Insights SDK 添加到 .NET Web 项目][greenbrown] |ServerContext<br/>推断<br/>性能计数器<br/>Requests<br/>**异常**<br/>会话<br/>用户 |
 | [在 IIS 上安装状态监视器][redfield] |依赖项<br/>ServerContext<br/>推断<br/>性能计数器 |
-| [将 Application Insights SDK 添加到 Java Web 应用][java] |ServerContext<br/>推断<br/>请求<br/>会话<br/>users |
+| [将 Application Insights SDK 添加到 Java Web 应用][java] |ServerContext<br/>推断<br/>请求<br/>会话<br/>用户 |
 | [将 JavaScript SDK 添加到网页][client] |ClientContext <br/>推断<br/>页面<br/>ClientPerf<br/>Ajax |
 | [定义默认属性][apiproperties] |所有标准事件和自定义事件的**属性** |
 | [调用 TrackMetricapi][api] |数字值<br/>**属性** |
@@ -286,7 +286,7 @@ SDK 根据平台的不同而异，可以安装多个组件。 （请参阅[Appli
 可以通过[编辑 ApplicationInsights.config 来关闭某些数据][config]
 
 > [!NOTE]
-> 客户端 IP 用于推断地理位置，但默认情况下，不再存储 IP 数据且将所有的零写入关联的字段。 若要了解有关个人数据处理的详细信息，推荐参阅这一篇[文章](../../azure-monitor/platform/personal-data-mgmt.md#application-data)。 如果需要存储 IP 地址数据，我们的[“IP 地址收集”一文](./ip-collection.md)会指导你完成选择。
+> 客户端 IP 用于推断地理位置，但默认情况下，不再存储 IP 数据且将所有的零写入关联的字段。 若要了解有关个人数据处理的详细信息，推荐参阅这一篇[文章](../platform/personal-data-mgmt.md#application-data)。 如果需要存储 IP 地址数据，我们的[“IP 地址收集”一文](./ip-collection.md)会指导你完成选择。
 
 ## <a name="credits"></a>信用
 本产品包括由 MaxMind 创建的 GeoLite2 数据，可从获取 [https://www.maxmind.com](https://www.maxmind.com) 。
@@ -295,13 +295,14 @@ SDK 根据平台的不同而异，可以安装多个组件。 （请参阅[Appli
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiproperties]: ../../azure-monitor/app/api-custom-events-metrics.md#properties
-[client]: ../../azure-monitor/app/javascript.md
-[config]: ../../azure-monitor/app/configuration-with-applicationinsights-config.md
-[greenbrown]: ../../azure-monitor/app/asp-net.md
-[java]: ../../azure-monitor/app/java-get-started.md
-[platforms]: ../../azure-monitor/app/platforms.md
+[api]: ./api-custom-events-metrics.md
+[apiproperties]: ./api-custom-events-metrics.md#properties
+[client]: ./javascript.md
+[config]: ./configuration-with-applicationinsights-config.md
+[greenbrown]: ./asp-net.md
+[java]: ./java-get-started.md
+[platforms]: ./platforms.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
-[redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[redfield]: ./monitor-performance-live-website-now.md
+[start]: ./app-insights-overview.md
+

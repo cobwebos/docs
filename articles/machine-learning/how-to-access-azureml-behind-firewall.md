@@ -5,18 +5,18 @@ description: 使用 Azure 防火墙控制对 Azure 机器学习工作区的访�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 10b9e055ce5b1e2ba27d942a987bf6b38291f094
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 75e2ffcad4caeb6500f05ce3801797084c18a043
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031416"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321643"
 ---
 # <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>将 Azure 防火墙后的工作区用于 Azure 机器学习
 
@@ -41,18 +41,18 @@ Azure 防火墙可用于控制对 Azure 机器学习工作区和公共 Internet 
 | ---- | ---- |
 | **\*.batchai.core.windows.net** | 训练群集 |
 | **ml.azure.com** | Azure 机器学习工作室 |
-| **default.exp-tas.com** | 由 Azure 机器学习 studio 使用 |
+| **default.exp-tas.com** | 由 Azure 机器学习工作室使用 |
 | **\*.azureml.ms** | 由 Azure 机器学习 API 使用 |
 | **\*.experiments.azureml.net** | 由 Azure 机器学习中运行的试验使用 |
 | **\*.modelmanagement.azureml.net** | 用于注册和部署模型|
 | **mlworkspace.azure.ai** | 由 Azure 门户在查看工作区时使用 |
 | **\*.aether.ms** | 在运行 Azure 机器学习管道时使用 |
 | **\*.instances.azureml.net** | Azure 机器学习计算实例 |
-| **\*。 instances.azureml.ms** | 当工作区启用了专用链接时 Azure 机器学习计算实例 |
+| **\*.instances.azureml.ms** | 当工作区启用了专用链接时的 Azure 机器学习计算实例 |
 | **windows.net** | Azure Blob 存储 |
 | **vault.azure.net** | Azure Key Vault |
 | **azurecr.io** | Azure 容器注册表 |
-| **mcr.microsoft.com** | 用于基本 docker 映像的 Microsoft 容器注册表 |
+| **mcr.microsoft.com** | 用于 docker 基础映像的 Microsoft 容器注册表 |
 
 ## <a name="python-hosts"></a>Python 主机
 

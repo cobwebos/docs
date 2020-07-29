@@ -5,23 +5,23 @@ description: 了解如何在使用 Azure 机器学习训练期间使用数据存
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/08/2020
-ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 194864d223d908cc2d8b1d7f14efe81e16bbd058
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: how-to, seodec18, tracking-python
+ms.openlocfilehash: 45fb9ef25bdfa43db9c167d58011fc6196020b65
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031501"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321626"
 ---
 # <a name="connect-to-azure-storage-services"></a>连接到 Azure 存储服务
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何**通过 Azure 机器学习数据存储连接到 Azure 存储服务**。 数据存储会存储连接信息，例如与工作区关联的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 中的订阅 ID 和令牌授权，让你能够安全地访问存储，而无需在脚本中对其进行硬编码。 
+本文介绍如何通过 Azure 机器学习数据存储连接到 Azure 存储服务。 数据存储会存储连接信息，例如与工作区关联的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 中的订阅 ID 和令牌授权，让你能够安全地访问存储，而无需在脚本中对其进行硬编码。 
 
 **对于不受支持的存储解决方案**，以及在 ML 试验期间节省数据出口成本，请[将数据移](#move)到支持的 Azure 存储解决方案。  可从[这些 Azure 存储解决方案](#matrix)创建数据存储。 
 
@@ -72,10 +72,10 @@ ms.locfileid: "87031501"
 
 [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction?toc=/azure/storage/blobs/toc.json) 基于 Azure Blob 存储而构建，专为企业大数据分析设计。 Data Lake Storage Gen2 的一个基本部分是向 Blob 存储添加[分层命名空间](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)。 分层命名空间将对象/文件组织到目录层次结构中，以便进行有效的数据访问。
 
-创建工作区时，会自动将 Azure Blob 容器和 Azure 文件共享注册到工作区。 它们分别命名为 `workspaceblobstore` 和 `workspacefilestore`。 `workspaceblobstore` 用于存储工作区项目和机器学习试验日志。 `workspacefilestore` 用于存储通过[计算实例](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files)授权的笔记本和 R 脚本。 `workspaceblobstore`容器设置为默认数据存储，无法从工作区中删除。
+创建工作区时，会自动将 Azure Blob 容器和 Azure 文件共享注册到工作区。 它们分别命名为 `workspaceblobstore` 和 `workspacefilestore`。 `workspaceblobstore` 用于存储工作区项目和机器学习试验日志。 `workspacefilestore` 用于存储通过[计算实例](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files)授权的笔记本和 R 脚本。 `workspaceblobstore` 容器设为默认数据存储，无法从工作区中删除。
 
 > [!IMPORTANT]
-> Azure 机器学习设计器（预览版）将在你打开设计器主页中的示例时，自动创建一个名为 azureml_globaldatasets 的数据存储。 此数据存储仅包含示例数据集。 请不要将此数据存储用于任何机密数据访问。
+> Azure 机器学习设计器（预览版）会在你打开设计器主页中的示例时自动创建一个名为 **azureml_globaldatasets** 的数据存储。 此数据存储仅包含示例数据集。 请不要将此数据存储用于任何机密数据访问。
 > ![为设计器示例数据集自动创建的数据存储](media/how-to-access-data/datastore-designer-sample.png)
 
 <a name="access"></a>
@@ -91,12 +91,12 @@ ms.locfileid: "87031501"
 
 ### <a name="python-sdk"></a>Python SDK
 
-所有注册方法都位于 [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) 类，并具有窗体 `register_azure_*`。
+所有注册方法都位于 [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) 类上，且具有 `register_azure_*` 格式。
 
 > [!IMPORTANT]
 > 如果计划为虚拟网络中的存储帐户创建数据存储，请参阅[访问虚拟网络中的数据](#access-data-in-a-virtual-network)部分。
 
-可在 [Azure 门户](https://portal.azure.com)上找到填充 `register_azure_*()` 方法所需的信息。
+可以在 [Azure 门户](https://portal.azure.com)中找到必要的信息来填充 `register_azure_*()` 方法。
 
 * 数据存储名称应仅包含小写字母、数字和下划线。 
 
@@ -105,7 +105,7 @@ ms.locfileid: "87031501"
       1. 对于帐户密钥，请转到“设置”窗格中的“访问密钥” 。 
       1. 对于 SAS 令牌，请转到“设置”窗格中的“共享访问签名” 。
 
-* 如果计划使用服务主体进行身份验证，请使用**应用注册**，并选择要使用的应用。 
+* 如果计划使用服务主体进行身份验证，请转到“应用注册”，然后选择要使用的应用。 
     * 其对应的“概览”页面将包含租户 ID 和客户端 ID 之类的必需信息。
 
 > [!IMPORTANT]
@@ -157,7 +157,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 #### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage Gen2
 
-对于 Azure Data Lake Storage Gen2 (ADLS Gen 2) 数据存储，请使用 [register_azure_data_lake_gen2()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) 通过[服务主体权限](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)注册连接到 Azure DataLake Gen 2 存储的凭据数据存储。 若要使用服务主体，需要[注册应用程序](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)，并向服务主体授予“存储 Blob 数据读取者”访问权限。 详细了解 [ADLS Gen 2 中的访问控制设置](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。 
+对于 Azure Data Lake Storage Gen2 (ADLS Gen 2) 数据存储，请使用 [register_azure_data_lake_gen2()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) 通过[服务主体权限](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)注册连接到 Azure DataLake Gen 2 存储的凭据数据存储。 若要使用服务主体，需要[注册应用程序](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)，并向服务主体授予“存储 Blob 数据读取者”访问权限。 详细了解 [ADLS Gen2 的访问控制设置](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。 
 
 以下代码会创建 `adlsgen2_datastore_name` 数据存储并将其注册到 `ws` 工作区。 此数据存储使用提供的服务主体凭据访问 `account_name` 存储帐户中的文件系统 `test`。
 
@@ -183,10 +183,10 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 
 ### <a name="azure-machine-learning-studio"></a>Azure 机器学习工作室 
 
-在 Azure 机器学习工作室中，通过几个步骤创建新的数据存储：
+在 Azure 机器学习工作室中通过几个步骤创建新的数据存储：
 
 > [!IMPORTANT]
-> 如果你的数据存储帐户位于虚拟网络中，则需要执行其他配置步骤以确保 studio 可以访问你的数据。 请参阅[网络隔离 & 隐私性](how-to-enable-virtual-network.md#machine-learning-studio)，以确保应用适当的配置步骤。 
+> 如果数据存储帐户位于虚拟网络中，则需要执行其他配置步骤以确保工作室可以访问你的数据。 请参阅[网络隔离 & 隐私性](how-to-enable-virtual-network.md#machine-learning-studio)，以确保应用适当的配置步骤。 
 
 1. 登录到 [Azure 机器学习工作室](https://ml.azure.com/)。
 1. 在左窗格中的“管理”下，选择“数据存储” 。
@@ -248,7 +248,7 @@ datastore = ws.get_default_datastore()
 > [!NOTE]
 > 目前不支持上传到 AzureDataLakeGen2 数据存储。
 
-### <a name="upload"></a>上载
+### <a name="upload"></a>上传
 
 使用 Python SDK 将目录或独立文件上传到数据存储：
 
@@ -302,12 +302,12 @@ Azure 机器学习提供多种方法来使用模型进行评分。 其中一些�
 | [Web 服务](how-to-deploy-and-where.md) | &nbsp; | 将模型部署为 Web 服务。 |
 | [Azure IoT Edge 模块](how-to-deploy-and-where.md) | &nbsp; | 将模型部署到 IoT Edge 设备。 |
 
-对于 SDK 不提供对数据存储的访问权限的情况，也许可以通过使用相关 Azure SDK 访问数据以创建自定义代码。 例如，[适用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python) 是可用于访问 Blob 或文件中存储的数据的客户端库。
+对于 SDK 不提供对数据存储的访问权限的情况，也许可以通过使用相关 Azure SDK 访问数据以创建自定义代码。 例如，可使用[适用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python) 这一客户端库来访问存储在 blob 或文件中的数据。
 
 
 ## <a name="access-data-in-a-virtual-network"></a>访问虚拟网络中的数据
 
-如果存储位于虚拟网络后面，则必须对工作区和数据存储执行额外的配置步骤，才能访问数据。 有关如何在虚拟网络中使用数据存储和数据集的详细信息，请参阅[使用专用虚拟网络进行定型 & 推理中的网络隔离](how-to-enable-virtual-network.md#use-datastores-and-datasets)。
+如果存储位于虚拟网络后面，则必须对工作区和数据存储执行额外的配置步骤才能访问数据。 若要详细了解如何在虚拟网络中使用数据存储和数据集，请参阅[使用专用虚拟网络进行训练和推理的过程中的网络隔离](how-to-enable-virtual-network.md#use-datastores-and-datasets)。
 
 <a name="move"></a>
 

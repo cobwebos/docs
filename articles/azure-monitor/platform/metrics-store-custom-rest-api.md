@@ -7,18 +7,19 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 84709c022631543101889f784231158ebb96b6f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c315cc8c9dfcfa66999ff263fab95f414061e54e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77662258"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321252"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>使用 REST API 将 Azure 资源的自定义指标发送到 Azure Monitor 指标存储
 
 本文展示了如何通过 REST API 将 Azure 资源的自定义指标发送到 Azure Monitor 指标存储。 在这些指标位于 Azure Monitor 中之后，你可以像对标准指标一样对其执行所有操作。 示例包括绘制图标、发出警报以及将其路由到其他外部工具。  
 
 >[!NOTE]  
->REST API 仅允许为 Azure 资源发送自定义指标。 若要为其他环境中或本地的资源发送自定义指标，可以使用 [Application Insights](../../azure-monitor/app/api-custom-events-metrics.md)。    
+>REST API 仅允许为 Azure 资源发送自定义指标。 若要为其他环境中或本地的资源发送自定义指标，可以使用 [Application Insights](../app/api-custom-events-metrics.md)。    
 
 
 ## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>创建服务主体并授权其发布指标 
@@ -92,7 +93,7 @@ curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "g
 1. 无法针对作为 Azure 资源的订阅或资源组发布指标。 
 1. 无法将已过去了 20 分钟的指标放入到存储中。 指标存储针对警报和实时图表绘制进行了优化。 
 2. 维度名称的数量应当与值数量匹配，反之亦然。 检查值。 
-2. 你可能在针对不支持自定义指标的区域发布指标。 请参阅[支持的区域](../../azure-monitor/platform/metrics-custom-overview.md#supported-regions)。 
+2. 你可能在针对不支持自定义指标的区域发布指标。 请参阅[支持的区域](./metrics-custom-overview.md#supported-regions)。 
 
 
 
@@ -116,5 +117,5 @@ curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "g
 
  
 ## <a name="next-steps"></a>后续步骤
-- 详细了解[自定义指标](../../azure-monitor/platform/metrics-custom-overview.md)。
+- 详细了解[自定义指标](./metrics-custom-overview.md)。
 

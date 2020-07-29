@@ -4,13 +4,14 @@ description: 按照 Service Fabric 客户端 REST API 规范生成和使用 Serv
 author: rapatchi
 ms.topic: conceptual
 ms.date: 11/27/2017
+ms.custom: devx-track-java
 ms.author: rapatchi
-ms.openlocfilehash: c093958b9a8c5a21cb6996db891705ec8c3d21ab
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 24ee4a3d8109626bf93e01fbd10c00140762c9c6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246276"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324618"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Azure Service Fabric Java 客户端 API
 
@@ -121,7 +122,7 @@ ms.locfileid: "86246276"
     * 若要使用基于未来的异步编程并使用回调，则可使用 API 调用的此变体
  3. **public Observable\<Void> removeReplicaAsync(String nodeName, UUID partitionId, String replicaId)**
     * 若要使用反应式异步编程，则可使用 API 调用的此变体
- 4. **公共可观察 \<ServiceResponse\<Void>> removeReplicaWithServiceResponseAsync (字符串 nodeName、UUID partitionId、String replicaId) **
+ 4. **公共可观察 \<ServiceResponse\<Void>> removeReplicaWithServiceResponseAsync （String nodeName，UUID partitionId，String replicaId）**
     * 若要使用反应式异步编程并处理原始 REST 响应，则可使用 API 调用的此变体
 
 ## <a name="next-steps"></a>后续步骤

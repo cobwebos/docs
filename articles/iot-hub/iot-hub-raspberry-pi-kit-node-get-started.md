@@ -10,11 +10,14 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: wesmc
-ms.openlocfilehash: 3175956e35603cc4ad3a938f3d316c0af8f2d227
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+ms.openlocfilehash: 1188c597b3e46af140173d59b2cbac972d0c018c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81640537"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324023"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (Node.js)
 

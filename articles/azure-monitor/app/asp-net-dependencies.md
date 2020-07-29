@@ -3,16 +3,16 @@ title: 在 Azure Application Insights 中跟踪依赖项 | Microsoft Docs
 description: 使用 Application Insights 监视来自本地或 Microsoft Azure Web 应用程序的依赖项调用。
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 9980db352e5d2c342131e0d6a2cd1248adb10810
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a7f42c19c835e4f5c49f4d7aa91504b606a09f5b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067716"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321371"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>在 Azure Application Insights 中跟踪依赖项 
 
-*依赖项*是应用程序调用的一个组件。 它通常是使用 HTTP、数据库或文件系统调用的服务。 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 可以度量依赖项调用的持续时间、调用结果是否失败，以及依赖项名称等附加信息。 可以调查特定的依赖项调用，并将其与请求和异常相关联。
+*依赖项*是应用程序调用的一个组件。 它通常是使用 HTTP、数据库或文件系统调用的服务。 [Application Insights](./app-insights-overview.md) 可以度量依赖项调用的持续时间、调用结果是否失败，以及依赖项名称等附加信息。 可以调查特定的依赖项调用，并将其与请求和异常相关联。
 
 ## <a name="automatically-tracked-dependencies"></a>自动跟踪的依赖项
 
@@ -202,6 +202,7 @@ services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [异常](../../azure-monitor/app/asp-net-exceptions.md)
-* [用户和页面数据](../../azure-monitor/app/javascript.md)
-* [可用性](../../azure-monitor/app/monitor-web-app-availability.md)
+* [异常](./asp-net-exceptions.md)
+* [用户和页面数据](./javascript.md)
+* [可用性](./monitor-web-app-availability.md)
+

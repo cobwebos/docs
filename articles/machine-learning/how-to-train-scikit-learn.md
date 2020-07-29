@@ -1,26 +1,26 @@
 ---
 title: 训练 scikit-learn 机器学习模型
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习 SKlearn 估算器类在企业范围内运行 scikit-learn 训练脚本。 示例脚本对鸢尾花图像进行分类，以基于 scikit-learn 的 iris 数据集构建机器学习模型。
+description: 了解如何运行 scikit-learn-了解 Azure 机器学习上的培训脚本。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
-ms.author: maxluk
-author: maxluk
-ms.date: 03/09/2020
-ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 3669bfb10a990f042d1470fbabee19809a6785cc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: jordane
+author: jpe316
+ms.date: 07/24/2020
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: dfe3d0e7bf0d291807a5a051f834753c7816801a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060701"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320874"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模构建 scikit-learn 模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，你将了解如何使用 Azure 机器学习 [SKlearn 估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)类在企业范围内运行 scikit-learn 训练脚本。 
+本文介绍如何运行 scikit-learn-了解 Azure 机器学习的培训脚本。
 
 本文中的示例脚本用来对鸢尾花图像进行分类，以基于 scikit-learn 的 [iris 数据集](https://archive.ics.uci.edu/ml/datasets/iris)构建机器学习模型。
 
@@ -38,31 +38,10 @@ ms.locfileid: "87060701"
 
     - [安装 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
     - [创建工作区配置文件](how-to-configure-environment.md#workspace)。
-    - 下载数据集和示例脚本文件 
-        - [iris 数据集](https://archive.ics.uci.edu/ml/datasets/iris)
-        - [train_iris.py](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn)
-    - 此外，还可以在 GitHub 示例页上找到本指南的完整 [Jupyter Notebook 版本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb)。 该笔记本包含一个扩展部分，该部分包括智能超参数优化以及按主要指标检索最佳模型。
 
 ## <a name="set-up-the-experiment"></a>设置试验
 
 本部分将准备训练实验，包括加载所需 python 包、初始化工作区、创建实验以及上传训练数据和训练脚本。
-
-### <a name="import-packages"></a>导入程序包
-
-首先，导入必需的 Python 库。
-
-```Python
-import os
-import urllib
-import shutil
-import azureml
-
-from azureml.core import Experiment
-from azureml.core import Workspace, Run
-
-from azureml.core.compute import ComputeTarget, AmlCompute
-from azureml.core.compute_target import ComputeTargetException
-```
 
 ### <a name="initialize-a-workspace"></a>初始化工作区
 
@@ -71,81 +50,72 @@ from azureml.core.compute_target import ComputeTargetException
 根据在[先决条件部分](#prerequisites)中创建的 `config.json` 文件创建工作区对象。
 
 ```Python
+from azureml.core import Workspace
+
 ws = Workspace.from_config()
 ```
 
-### <a name="create-a-machine-learning-experiment"></a>创建机器学习试验
 
-创建一个试验和文件夹来容纳训练脚本。 在此示例中，创建一个名为“sklearn-iris”的试验。
+### <a name="prepare-scripts"></a>准备脚本
 
-```Python
-project_folder = './sklearn-iris'
-os.makedirs(project_folder, exist_ok=True)
+在本教程中，已在[此处](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn/train_iris.py)为你提供训练脚本**train_iris。** 实际上，你应该能够原样获取任何自定义训练脚本，并使用 Azure ML 运行它，而无需修改你的代码。
 
-experiment = Experiment(workspace=ws, name='sklearn-iris')
+注意：
+- 提供的培训脚本演示了如何使用脚本中的对象将一些指标记录到 Azure ML 运行 `Run` 中。
+- 提供的训练脚本使用了来自 `iris = datasets.load_iris()` 函数的示例数据。  对于你自己的数据，你可能需要使用[上传数据集和脚本](how-to-train-keras.md#data-upload)之类的步骤来使数据在训练期间可用。
+
+### <a name="define-your-environment"></a>定义环境。
+
+#### <a name="create-a-custom-environment"></a>创建自定义环境。
+
+创作你的 conda 环境（sklearn-env. docker-compose.override.yml）。
+若要从笔记本编写 conda 环境，可以在单元顶部添加线条 ```%%writefile sklearn-env.yml``` 。
+
+```yaml
+name: sklearn-training-env
+dependencies:
+  - python=3.6.2
+  - scikit-learn
+  - numpy
+  - pip:
+    - azureml-defaults
 ```
 
-### <a name="prepare-training-script"></a>准备训练脚本
+从此 Conda 环境规范创建 Azure ML 环境。 环境将在运行时打包到 docker 容器中。
+```python
+from azureml.core import Environment
 
-在本教程中，已为你提供了训练脚本 **train_iris.py**。 实际上，你应该能够原样获取任何自定义训练脚本，并使用 Azure ML 运行它，而无需修改你的代码。
-
-若要使用 Azure ML 跟踪和指标功能，请在你的训练脚本内添加少量 Azure ML 代码。  训练脚本 **train_iris.py** 展示了如何在脚本中使用 `Run` 对象将一些指标记录到 Azure ML 运行中。
-
-提供的训练脚本使用了来自 `iris = datasets.load_iris()` 函数的示例数据。  对于你自己的数据，你可能需要使用[上传数据集和脚本](how-to-train-keras.md#data-upload)之类的步骤来使数据在训练期间可用。
-
-将训练脚本 **train_iris.py** 复制到你的项目目录中。
-
-```
-import shutil
-shutil.copy('./train_iris.py', project_folder)
+myenv = Environment.from_conda_specification(name = "myenv", file_path = "sklearn-env.yml")
 ```
 
-## <a name="create-or-get-a-compute-target"></a>创建或获取计算目标
+#### <a name="use-a-curated-environment"></a>使用特选环境
+如果你不想构建自己的映像，Azure ML 会提供预构建的特选容器环境。 有关详细信息，请参阅[此处](resource-curated-environments.md)。
+如果要使用特选环境，可以改为运行以下命令：
 
-创建用于运行 scikit-learn 作业的计算目标。 Scikit-learn 仅支持单节点 CPU 计算。
-
-下面的代码为你的远程训练计算资源创建 Azure 机器学习托管计算 (AmlCompute)。 创建 AmlCompute 需要花费大约 5 分钟。 如果你的工作区中已有使用该名称的 AmlCompute，则此代码会跳过创建流程。
-
-```Python
-cluster_name = "cpu-cluster"
-
-try:
-    compute_target = ComputeTarget(workspace=ws, name=cluster_name)
-    print('Found existing compute target')
-except ComputeTargetException:
-    print('Creating a new compute target...')
-    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2', 
-                                                           max_nodes=4)
-
-    compute_target = ComputeTarget.create(ws, cluster_name, compute_config)
-
-    compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
+```python
+env = Environment.get(workspace=ws, name="AzureML-Tutorial")
 ```
 
-[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
+### <a name="create-a-scriptrunconfig"></a>创建 ScriptRunConfig
 
-有关计算目标的详细信息，请参阅[什么是计算目标](concept-compute-target.md)一文。
+此 ScriptRunConfig 将提交作业以在本地计算目标上执行。
 
-## <a name="create-a-scikit-learn-estimator"></a>创建 scikit-learn 估算器
+```python
+from azureml.core import ScriptRunConfig
 
-[scikit-learn 估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn?view=azure-ml-py)提供了一种在计算目标上启动 scikit-learn 训练作业的简单方法。 它是通过 [`SKLearn`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) 类实现的，该类可用来支持单节点 CPU 训练。
+sklearnconfig = ScriptRunConfig(source_directory='.', script='train_iris.py')
+src.run_config.environment = myenv
+```
 
-如果你的训练脚本需要额外的 pip 或 conda 包才能运行，则可以通过使用 `pip_packages` 和 `conda_packages` 参数传递其名称在生成的 Docker 映像中安装这些包。
+如果要针对远程群集进行提交，则可以将 run_config 更改为所需的计算目标。
 
-```Python
-from azureml.train.sklearn import SKLearn
+### <a name="submit-your-run"></a>提交运行
+```python
+from azureml.core import Experiment
 
-script_params = {
-    '--kernel': 'linear',
-    '--penalty': 1.0,
-}
+run = Experiment(ws,'train-sklearn').submit(config=sklearnconfig)
+run.wait_for_completion(show_output=True)
 
-estimator = SKLearn(source_directory=project_folder, 
-                    script_params=script_params,
-                    compute_target=compute_target,
-                    entry_script='train_iris.py',
-                    pip_packages=['joblib']
-                   )
 ```
 
 > [!WARNING]
@@ -153,15 +123,7 @@ estimator = SKLearn(source_directory=project_folder,
 
 有关自定义 Python 环境的详细信息，请参阅[创建和管理用于训练和部署的环境](how-to-use-environments.md)。 
 
-## <a name="submit-a-run"></a>提交运行
-
-[运行对象](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)在作业运行时和运行后提供运行历史记录的接口。
-
-```Python
-run = experiment.submit(estimator)
-run.wait_for_completion(show_output=True)
-```
-
+## <a name="what-happens-during-run-execution"></a>运行执行过程中发生的情况
 执行运行时，会经历以下阶段：
 
 - **准备**：根据 TensorFlow 估算器创建 Docker 映像。 将映像上传到工作区的容器注册表，缓存以用于后续运行。 还会将日志流式传输到运行历史记录，可以查看日志以监视进度。
@@ -184,7 +146,7 @@ import joblib
 joblib.dump(svm_model_linear, 'model.joblib')
 ```
 
-使用以下代码将模型注册到工作区。 通过指定参数 `model_framework`、`model_framework_version` 和 `resource_configuration`，无代码模型部署将可供使用。 这允许你通过已注册模型直接将模型部署为 Web 服务，[`ResourceConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.resource_configuration.resourceconfiguration?view=azure-ml-py) 对象定义 Web 服务的计算资源。
+使用以下代码将模型注册到工作区。 通过指定参数 `model_framework`、`model_framework_version` 和 `resource_configuration`，无代码模型部署将可供使用。 无代码模型部署允许您从已注册的模型直接将您的模型部署为 web 服务，而 [`ResourceConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.resource_configuration.resourceconfiguration?view=azure-ml-py) 对象则定义 web 服务的计算资源。
 
 ```Python
 from azureml.core import Model
@@ -203,7 +165,7 @@ model = run.register_model(model_name='sklearn-iris',
 
 ### <a name="preview-no-code-model-deployment"></a>（预览版）无代码模型部署
 
-除了传统的部署路线之外，还可以为 scikit-learn 使用无代码部署功能（预览版）。 所有内置 scikit-learn 模型类型都支持无代码模型部署。 通过使用 `model_framework`、`model_framework_version` 和 `resource_configuration` 参数注册你的模型（如上所示），可以简单地使用 [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 静态函数来部署模型。
+除了传统的部署路由，还可以使用无代码部署功能（预览版）进行 scikit-learn。 所有内置 scikit-learn 模型类型都支持无代码模型部署。 通过使用 `model_framework`、`model_framework_version` 和 `resource_configuration` 参数注册你的模型（如上所示），可以简单地使用 [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 静态函数来部署模型。
 
 ```python
 web_service = Model.deploy(ws, "scikit-learn-service", [model])

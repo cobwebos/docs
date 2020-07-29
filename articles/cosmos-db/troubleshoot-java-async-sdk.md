@@ -9,11 +9,13 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 10ad2fa3eb03254894c51fff66389ec3a8da4c38
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: devx-track-java
+ms.openlocfilehash: 60d73f8b3eae21ab399853e8d05b67b7b431ee5f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651891"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321048"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>排查将 Azure Cosmos DB Async Java SDK v2 于 SQL API 帐户配合使用时出现的问题
 
@@ -71,14 +73,14 @@ ulimit -a
 * 将公共 IP 分配给 Azure VM。
 
 ##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>无法访问服务 - 防火墙
-``ConnectTimeoutException`` 指示 SDK 无法访问服务。
-使用直接模式时，可能会出现类似如下的错误：
+``ConnectTimeoutException`` 指示 SDK 不能访问服务。
+使用直接模式时，可能会出现如下所示的故障：
 ```
 GoneException{error=null, resourceAddress='https://cdb-ms-prod-westus-fd4.documents.azure.com:14940/apps/e41242a5-2d71-5acb-2e00-5e5f744b12de/services/d8aa21a5-340b-21d4-b1a2-4a5333e7ed8a/partitions/ed028254-b613-4c2a-bf3c-14bd5eb64500/replicas/131298754052060051p//', statusCode=410, message=Message: The requested resource is no longer available at the server., getCauseInfo=[class: class io.netty.channel.ConnectTimeoutException, message: connection timed out: cdb-ms-prod-westus-fd4.documents.azure.com/101.13.12.5:14940]
 ```
 
-如果应用计算机上有防火墙正在运行，请打开端口范围 10,000 到 20,000，这是直接模式使用的端口范围。
-请遵循[主机上的连接限制](#connection-limit-on-host)。
+如果应用计算机上有防火墙运行，请打开 10,000 到 20,000 这一端口范围，该范围由直接模式使用。
+另请按[主机上的连接限制](#connection-limit-on-host)中的说明操作。
 
 #### <a name="http-proxy"></a>HTTP 代理
 
@@ -173,7 +175,7 @@ createObservable
 
 ### <a name="connection-pool-exhausted-issue"></a>连接池耗尽问题
 
-`PoolExhaustedException` 是客户端故障。 此故障表明应用工作负载高于 SDK 连接池可以提供的工作负载。 增加连接池大小或将负载分发到多个应用。
+`PoolExhaustedException` 是客户端故障。 此故障表明应用工作负荷高于 SDK 连接池可以提供的工作负载。 增加连接池大小或将负载分发到多个应用。
 
 ### <a name="request-rate-too-large"></a>请求速率过大
 此故障是服务器端故障。 它表明预配的吞吐量已用完。 请稍后重试。 如果经常遇到此故障，请考虑增加集合吞吐量。
@@ -188,7 +190,7 @@ Azure Cosmos DB 仿真器 HTTPS 证书是自签名证书。 若要将 SDK 与仿
 Exception in thread "main" java.lang.NoSuchMethodError: rx.Observable.toSingle()Lrx/Single;
 ```
 
-上述异常表明你依赖于旧版本的 RxJava 库（例如 1.2.2）。 我们的 SDK 依赖于 RxJava 1.3.8，它具有早期版本的 RxJava 中没有的 API。 
+上述异常表明在旧版 RxJava 库（例如 1.2.2）上有依赖项。 我们的 SDK 依赖于 RxJava 1.3.8，它具有早期版本的 RxJava 中没有的 API。 
 
 此类问题的解决方法是，确定其他哪些依赖项会引入 RxJava-1.2.2，并排除对 RxJava-1.2.2 的传递依赖关系，让 CosmosDB SDK 能够引入较新版本。
 
@@ -198,7 +200,7 @@ mvn dependency:tree
 ```
 有关详细信息，请参阅 [maven 依赖项树指南](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html)。
 
-确定 RxJava-1.2.2 是项目中其他哪个依赖项的传递依赖项，即可在 pom 文件中修改该库的依赖项，并排除它带来的 RxJava 传递依赖关系：
+确定 RxJava-1.2.2 是项目的哪个其他依赖项的传递依赖项以后，即可在 pom 文件中修改该库的依赖项，排除 RxJava 传递依赖项：
 
 ```xml
 <dependency>
@@ -214,7 +216,7 @@ mvn dependency:tree
 </dependency>
 ```
 
-有关详细信息，请参阅[排除传递依赖关系指南](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html)。
+有关详细信息，请参阅[排除传递依赖项指南](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html)。
 
 
 ## <a name="enable-client-sdk-logging"></a><a name="enable-client-sice-logging"></a>启用客户端 SDK 日志记录

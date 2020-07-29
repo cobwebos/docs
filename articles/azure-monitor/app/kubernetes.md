@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: 4bb1af6ca2126b7ae58a6c836624ec78a071a5a5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3cd43963175594fcdc1c3c67d6b2493ce1ccd313
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075284"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321915"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications-with-istio---deprecated"></a>采用 Istio 对 Kubernetes 托管的应用程序进行零检测应用程序监视 - 已弃用
 
@@ -18,10 +18,10 @@ ms.locfileid: "87075284"
 > 此功能当前正被弃用，在 2020 年 8 月 1 日之后将不再受支持。
 > 目前只能[通过独立代理为 Java](./java-in-process-agent.md) 启用无代码监视。 对于其他语言，请使用 SDK 监视 AKS 上的应用：[ASP.Net Core](./asp-net-core.md)、[ASP.Net](./asp-net.md)、[Node.js](./nodejs.md)、[JavaScript](./javascript.md) 和 [Python](./opencensus-python.md)。
 
-Azure Monitor 现在利用 Kubernetes 群集上的服务网格技术为任何由 Kubernetes 托管的应用提供现成的应用程序监视功能。 使用默认的 Application Insight 功能，例如使用[应用程序映射](../../azure-monitor/app/app-map.md)对依赖关系建模，使用[实时指标流](../../azure-monitor/app/live-stream.md)进行实时监视，使用[默认仪表板](../../azure-monitor/app/overview-dashboard.md)、[指标资源管理器](../../azure-monitor/platform/metrics-getting-started.md)和[工作簿](../../azure-monitor/platform/workbooks-overview.md)进行强大的可视化操作。 此功能可帮助用户查明所选 Kubernetes 命名空间中所有 Kubernetes 工作负荷的性能瓶颈和故障热点。 利用包含 Istio 之类技术的现有服务网格投资，Azure Monitor 可以在不修改应用程序代码的情况下实现自动检测的应用监视。
+Azure Monitor 现在利用 Kubernetes 群集上的服务网格技术为任何由 Kubernetes 托管的应用提供现成的应用程序监视功能。 使用默认的 Application Insight 功能，例如使用[应用程序映射](./app-map.md)对依赖关系建模，使用[实时指标流](./live-stream.md)进行实时监视，使用[默认仪表板](./overview-dashboard.md)、[指标资源管理器](../platform/metrics-getting-started.md)和[工作簿](../platform/workbooks-overview.md)进行强大的可视化操作。 此功能可帮助用户查明所选 Kubernetes 命名空间中所有 Kubernetes 工作负荷的性能瓶颈和故障热点。 利用包含 Istio 之类技术的现有服务网格投资，Azure Monitor 可以在不修改应用程序代码的情况下实现自动检测的应用监视。
 
 > [!NOTE]
-> 这是在 Kubernetes 上执行应用程序监视的多种方式之一。 还可以使用 [Application Insights SDK](../../azure-monitor/azure-monitor-app-hub.yml) 来检测托管在 Kubernetes 中的任何应用，不需要使用服务网格。 若要在不使用 SDK 来检测应用程序的情况下监视 Kubernetes，可以使用以下方法。
+> 这是在 Kubernetes 上执行应用程序监视的多种方式之一。 还可以使用 [Application Insights SDK](../azure-monitor-app-hub.yml) 来检测托管在 Kubernetes 中的任何应用，不需要使用服务网格。 若要在不使用 SDK 来检测应用程序的情况下监视 Kubernetes，可以使用以下方法。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -34,12 +34,12 @@ Azure Monitor 现在利用 Kubernetes 群集上的服务网格技术为任何由
 
 通过对 Kubernetes 托管的应用使用零检测应用程序监视，你将能够使用：
 
-- [应用程序映射](../../azure-monitor/app/app-map.md)
-- [实时流指标](../../azure-monitor/app/live-stream.md)
-- [仪表板](../../azure-monitor/app/overview-dashboard.md)
-- [指标资源管理器](../../azure-monitor/platform/metrics-getting-started.md)
-- [分布式跟踪](../../azure-monitor/app/distributed-tracing.md)
-- [端到端事务监视](../../azure-monitor/learn/tutorial-performance.md#identify-slow-server-operations)
+- [应用程序映射](./app-map.md)
+- [实时流指标](./live-stream.md)
+- [仪表板](./overview-dashboard.md)
+- [指标资源管理器](../platform/metrics-getting-started.md)
+- [分布式跟踪](./distributed-tracing.md)
+- [端到端事务监视](../learn/tutorial-performance.md#identify-slow-server-operations)
 
 ## <a name="installation-steps"></a>安装步骤
 
@@ -141,4 +141,5 @@ kubectl delete -f <filename.yaml>
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 Azure Monitor 和容器如何一起工作，请访问[用于容器的 Azure Monitor 概述](../../azure-monitor/insights/container-insights-overview.md)。
+若要详细了解 Azure Monitor 和容器如何一起工作，请访问[用于容器的 Azure Monitor 概述](../insights/container-insights-overview.md)。
+

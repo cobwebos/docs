@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c3d43bc20c31475a00a0ea81e4abdeb5405162a7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a1e72fba4ece24afffba573d954c7627af46a6cd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081791"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87273367"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -596,6 +596,9 @@ Functions v2 自动收集 HTTP 请求、ServiceBus、EventHub 和 SQL 的依赖�
 可以编写自定义代码来显示这些依赖项。 有关示例，请参阅 [C# 自定义遥测部分](#log-custom-telemetry-in-c-functions)中的示例代码。 该示例代码会导致 Application Insights 中出现如下图所示的应用程序映射：
 
 ![应用程序映射](./media/functions-monitoring/app-map.png)
+
+> [!NOTE]
+> 依赖关系是在信息级别编写的。 如果在警告或更高版本中进行筛选，将看不到此数据。 此外，自动收集依赖项在非用户范围内进行。 因此，请确保级别至少设置为 host.js上的用户范围外的**信息**（即函数之外的 <YOUR_FUNCTION_NAME>。用户密钥）（如果你想要捕获这些依赖项）。
 
 ## <a name="enable-application-insights-integration"></a>启用 Application Insights 集成
 

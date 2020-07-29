@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 121b3ced2e021f3907983623ea60185286797670
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: a74fe2bf6b326dac782ac75418a7f4960e66501a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024433"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87274997"
 ---
 # <a name="conditional-access-conditions"></a>条件访问：Conditions
 
@@ -63,6 +63,9 @@ Azure AD 条件访问支持以下设备平台：
 ## <a name="client-apps-preview"></a>客户端应用（预览）
 
 条件访问策略默认应用到基于浏览器的应用程序，以及利用新式身份验证协议的应用程序。 除这些应用程序以外，管理员还可以选择包括 Exchange ActiveSync 客户端以及其他利用旧式协议的客户端。
+
+> [!NOTE]
+> 删除客户端应用条件中的 "是/否" 切换后，可以更轻松地查看选定的客户端应用。 这不会影响现有策略适用的客户端应用。
 
 - 浏览者
    - 这包括使用 SAML、WS 联合身份验证、OpenID Connect 等协议的基于 Web 的应用程序，或注册为 OAuth 机密客户端的服务。
@@ -116,17 +119,17 @@ Azure AD 条件访问支持以下设备平台：
 
 若要自动将此扩展部署到 Chrome 浏览器，请创建以下注册表项：
 
-- 路径 HKEY_LOCAL_MACHINE \Software\Policies\Google\Chrome\ExtensionInstallForcelist
-- 名称1
-- 类型 REG_SZ （String）
-- Data ppnbnpeolgkicgegkbkbjmhlideopiji; https \: //clients2.google.com/service/update2/crx
+- Path HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist
+- 名称 1
+- 类型 REG_SZ（字符串）
+- Data ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx
 
 对于 Windows 8.1 和 7 中的 Chrome 支持，请创建以下注册表项：
 
-- 路径 HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls
-- 名称1
-- 类型 REG_SZ （String）
-- Data {"pattern"： " https://device.login.microsoftonline.com "，"filter"： {"ISSUER"： {"CN"： "MS-组织-Access"}}}
+- Path HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls
+- 名称 1
+- 类型 REG_SZ（字符串）
+- Data {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}
 
 这些浏览器支持设备身份验证，允许根据策略对设备进行识别和验证。 如果浏览器以专用模式运行，设备检查将失败。
 

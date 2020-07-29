@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 68f7ec9aaffa2bad73d77d730749642a1b57f50b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 22eab216714d45e4b8a91fd58325424d4baef95e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044853"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272940"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表单识别器的新增功能
 
@@ -26,7 +26,7 @@ ms.locfileid: "87044853"
 ## <a name="july-2020"></a>2020 年 7 月
 
 ### <a name="new-features"></a>新增功能
-* **2.0 版本参考**查看 v2.0 [API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)和更新的适用于[.net](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer)、 [Python](https://docs.microsoft.com/python/api/overview/azure/formrecognizer)、 [Java](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)和[JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer)的 sdk。
+* **2.0 版本参考**查看 v2.0 [API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)和更新的适用于[.net](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre?view=azure-dotnet)、 [Python](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)、 [Java](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)和[JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)的 sdk。
 * **表增强和提取增强**功能包括准确性改进和表提取增强功能，尤其是在不带标签的自定义训练中了解表标头和结构的功能。 
 * **货币支持**全局货币符号的检测和提取。
 * **Azure Gov**表单识别器现已在 Azure Gov 中提供。
@@ -50,10 +50,10 @@ ms.locfileid: "87044853"
 
 ### <a name="new-features"></a>新增功能
 * **SDK 支持表单识别器 API V2.0 公共预览版**本月，我们扩展了服务支持，包括预览版 SDK for 窗体识别器 v2.0 （预览版）。 使用以下链接开始使用你选择的语言： 
-   * [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer)
+   * [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre?view=azure-dotnet)
    * [Java SDK](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)
-   * [Python SDK](https://docs.microsoft.com/python/api/overview/azure/formrecognizer)
-   * [JavaScript SDK](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer)
+   * [Python SDK](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)
+   * [JavaScript SDK](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)
 
   新的 SDK 支持用于窗体识别器的 v2.0 REST API 的所有功能。 例如，你可以使用或不带标签来训练模型，并从窗体提取文本、键值对和表、从收据中提取数据以及预先生成的回执服务，并从文档中提取带有布局服务的文本和表。 可以通过[Sdk 反馈窗体](https://aka.ms/FR_SDK_v1_feedback)在 sdk 上共享你的反馈。
  

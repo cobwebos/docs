@@ -4,15 +4,15 @@ description: 了解如何使用所需的计划在 Azure Marketplace 上创建虚
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: emuench
-ms.author: mingshen
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 07/17/2020
-ms.openlocfilehash: 6df1620f2d1097ac23e5dfa3903fefc74d13fa65
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8da76650f9cc3da0ff8f79a9d3df7a00cdd01a24
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012019"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324686"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure 市场创建 Azure 虚拟机产品/服务
 
@@ -118,7 +118,7 @@ ms.locfileid: "87012019"
 
 在 "**属性**" 页上，定义用于对 Azure Marketplace 上的产品/服务、应用程序版本以及支持产品/服务的法律合同进行分组的类别。
 
-### <a name="category"></a>Category
+### <a name="category"></a>类别
 
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
@@ -534,7 +534,7 @@ Microsoft 将向你发送电子邮件，让你知道何时有预览版产品/服
 4. 条款和条件
 5. 隐私策略地址（链接）
 6. 产品名称
-7. 说明
+7. 描述
 8. 有用链接
 9. 屏幕截图/视频
 
@@ -566,7 +566,7 @@ Microsoft 将向你发送电子邮件，让你知道何时有预览版产品/服
 #### <a name="call-out-descriptions"></a>拨出说明
 
 1. 名称
-2. 说明
+2. 描述
 3. 有用链接
 4. 屏幕截图/视频
 

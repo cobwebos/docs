@@ -1,16 +1,17 @@
 ---
 title: Azure Monitor 日志查询中的 app() 表达式 | Microsoft Docs
-description: app 表达式在 Azure Monitor 日志查询中用于从同一资源组、另一资源组或另一订阅中的特定 Application Insights 应用检索数据。
+description: 在 Azure Monitor 日志查询中使用 app 表达式从同一资源组、另一个资源组或另一个订阅中的特定 Application Insights 应用检索数据。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2019
-ms.openlocfilehash: 5d31c829487400f8eb239c0b837e53eecafeb900
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 7cb8073d048118e704dafb0c70fe7cdb6774344a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201106"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324533"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor 查询中的 app() 表达式
 
@@ -72,5 +73,6 @@ union
 ## <a name="next-steps"></a>后续步骤
 
 - 参阅 [workspace 表达式](workspace-expression.md)，以引用 Log Analytics 工作区。
-- 了解 [Azure Monitor 数据是如何存储的](../../azure-monitor/log-query/log-query-overview.md)。
+- 了解 [Azure Monitor 数据是如何存储的](./log-query-overview.md)。
 - 访问有关 [Kusto 查询语言](/azure/kusto/query/)的完整文档。
+

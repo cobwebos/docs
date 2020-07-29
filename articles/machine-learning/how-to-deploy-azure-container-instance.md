@@ -5,17 +5,18 @@ description: 了解如何使用 Azure 容器实例将 Azure 机器学习模型�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: 44c197b7d9935a7b0631c6cbcd96fde783c2fffe
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6ad6ca72f0861324a10e93a1eadbdc11c6104574
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087259"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320963"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>将模型部署到 Azure 容器实例
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,6 +28,11 @@ ms.locfileid: "86087259"
 
 有关 ACI 的配额和区域可用性的信息，请参阅 [Azure 容器实例的配额和区域可用性](https://docs.microsoft.com/azure/container-instances/container-instances-quotas)文章。
 
+> [!IMPORTANT]
+> 强烈建议在部署到 web 服务之前进行本地调试。有关详细信息，请参阅[本地调试](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)
+>
+> 你还可以参阅 Azure 机器学习-[部署到本地笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)
+
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
@@ -35,7 +41,7 @@ ms.locfileid: "86087259"
 
 - [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 或 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)。
 
-- 本文中的 Python 代码片段假设设置了以下变量：
+- 本文中的 Python 代码片段假设设置了以下变量____：
 
     * `ws` - 设置为工作区。
     * `model` - 设置为注册的模型。
@@ -43,11 +49,11 @@ ms.locfileid: "86087259"
 
     有关如何设置这些变量的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
-- 本文中的 CLI 片段假设已创建 `inferenceconfig.json` 文档。 有关如何创建此文档的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
+- 本文中的 CLI 片段假设已创建 `inferenceconfig.json` 文档____。 有关如何创建此文档的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 ## <a name="deploy-to-aci"></a>部署到 ACI
 
-要将模型部署到 Azure 容器实例，请创建一个描述所需计算资源的部署配置。 例如，核心数和内存。 此外，还需要一个推理配置，描述托管模型和 Web 服务所需的环境。 有关如何创建推理配置的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
+要将模型部署到 Azure 容器实例，请创建一个描述所需计算资源的部署配置。 例如，核心数和内存。 此外，还需要一个推理配置，描述托管模型和 Web 服务所需的环境____。 有关如何创建推理配置的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 > [!NOTE]
 > * ACI 仅适用于大小 <1GB 的小型模型。 

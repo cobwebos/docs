@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: 32d17962938c9a1dc301c7a1a681801ed488c584
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: c61862ccc7bac839627e9e7a9fbff9859155c6a2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985012"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323071"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>使用 Sqoop 在 Data Lake Storage Gen1 和 Azure SQL 数据库之间复制数据
 
@@ -102,16 +102,16 @@ HDInsight 群集已经具有可用的 Sqoop 包。 如果已将 HDInsight 群集
    例如，
 
     ```console
-    sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
+    sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=user1@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
     ```
 
-1. 验证数据是否已经传输到 Data Lake Storage Gen1 帐户。 运行下面的命令：
+1. 验证数据是否已经传输到 Data Lake Storage Gen1 帐户。 运行以下命令：
 
     ```console
     hdfs dfs -ls adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/
     ```
 
-   应会看到以下输出：
+   你会看到以下输出。
 
     ```console
     -rwxrwxrwx   0 sshuser hdfs          0 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/_SUCCESS
@@ -134,7 +134,7 @@ HDInsight 群集已经具有可用的 Sqoop 包。 如果已将 HDInsight 群集
    例如，
 
     ```console
-    sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
+    sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=user1@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
     ```
 
 1. 验证数据是否已经上传到 SQL 数据库表。 使用 [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) 或 Visual Studio 连接到 Azure SQL 数据库，并运行以下查询。
@@ -156,7 +156,7 @@ HDInsight 群集已经具有可用的 Sqoop 包。 如果已将 HDInsight 群集
 
 ## <a name="performance-considerations-while-using-sqoop"></a>使用 Sqoop 时的性能注意事项
 
-有关优化 Sqoop 作业以便将数据复制到 Data Lake Storage Gen1 的性能的信息，请参阅[Sqoop 性能博客文章](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)。
+有关优化 Sqoop 作业以便将数据复制到 Data Lake Storage Gen1 的性能的信息，请参阅[Sqoop 性能博客文章](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,7 +1,7 @@
 ---
 title: 创建、更改或删除 Azure 虚拟网络
 titlesuffix: Azure Virtual Network
-description: 了解如何在 Azure 中创建、更改或删除虚拟网络。
+description: 创建和删除虚拟网络并更改现有虚拟网络的设置，如 DNS 服务器和 IP 地址空间。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 3f0060944a2733c31c3bef67aa005e5476778ce2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a35576435780ee43d9f2aa99167b736f90799ab
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710025"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265239"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>创建、更改或删除虚拟网络
 
@@ -71,7 +72,7 @@ ms.locfileid: "84710025"
 
 ## <a name="view-virtual-networks-and-settings"></a>查看虚拟网络和设置
 
-1. 在门户顶部的搜索框中，输入“虚拟网络”**。 当“虚拟网络”出现在搜索结果中时，请将其选中****。
+1. 在门户顶部的搜索框中，输入“虚拟网络”。 当“虚拟网络”出现在搜索结果中时，请将其选中。
 2. 在虚拟网络列表中，选择要查看其设置的虚拟网络。
 3. 将列出所选虚拟网络的以下设置：
    - **概览**：提供有关虚拟网络的信息，包括地址空间和 DNS 服务器。 以下屏幕截图显示了名为 **** MyVNet 的虚拟网络的概述设置：
@@ -93,7 +94,7 @@ ms.locfileid: "84710025"
      - [锁](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [自动化脚本](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)
 
-命令
+**命令**
 
 - Azure CLI: [az network vnet show](/cli/azure/network/vnet)
 - PowerShell：[Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork)
@@ -116,15 +117,15 @@ ms.locfileid: "84710025"
 
 添加或删除地址范围：
 
-1. 在门户顶部的搜索框中，输入“虚拟网络”**。 当“虚拟网络”出现在搜索结果中时，请将其选中****。
+1. 在门户顶部的搜索框中，输入“虚拟网络”。 当“虚拟网络”出现在搜索结果中时，请将其选中。
 2. 在虚拟网络列表中，单击要为其添加或删除地址范围的虚拟网络。
 3. 选择“设置”下的“地址空间”**** ****。
 4. 完成以下选项之一：
     - **添加地址范围**：输入新的地址范围。 该地址范围不能与为虚拟网络定义的现有地址范围重叠。
     - **删除地址范围**：在要删除的地址范围右侧，选择“...”，然后选择“删除”**** ****。 如果该地址范围包含子网，则无法删除该地址范围。 要删除某个地址范围，必须先删除存在于该地址范围内的所有子网（以及已连接到这些子网的所有资源）。
-5. 选择“保存”。
+5. 选择“保存” 。
 
-命令
+**命令**
 
 - Azure CLI: [az network vnet update](/cli/azure/network/vnet)
 - PowerShell：[Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork)
@@ -133,7 +134,7 @@ ms.locfileid: "84710025"
 
 所有连接到虚拟网络的 VM 都会注册到为虚拟网络指定的 DNS 服务器。 它们还使用指定的 DNS 服务器进行名称解析。 VM 中的每个网络接口 (NIC) 可以有自己的 DNS 服务器设置。 如果 NIC 有自己的 DNS 服务器设置，这些设置会替代虚拟网络的 DNS 服务器设置。 若要了解有关 NIC DNS 设置的详细信息，请参阅[网络接口任务和设置](virtual-network-network-interface.md#change-dns-servers)。 若要详细了解 Azure 云服务中 VM 和角色实例的名称解析，请参阅 [VM 和角色实例的名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md)。 添加、更改或删除 DNS 服务器：
 
-1. 在门户顶部的搜索框中，输入“虚拟网络”**。 当“虚拟网络”出现在搜索结果中时，请将其选中****。
+1. 在门户顶部的搜索框中，输入“虚拟网络”。 当“虚拟网络”出现在搜索结果中时，请将其选中。
 2. 在虚拟网络列表中，选择要更改其 DNS 服务器的虚拟网络。
 3. 选择“设置”下的“DNS 服务器”。**** ****
 4. 选择以下选项之一：
@@ -146,7 +147,7 @@ ms.locfileid: "84710025"
 5. 选择“保存” 。
 6. 重启已连接到虚拟网络的 VM，以便为其分配新的 DNS 服务器设置。 VM 在重启之前，将继续使用其当前 DNS 设置。
 
-命令
+**命令**
 
 - Azure CLI: [az network vnet update](/cli/azure/network/vnet)
 - PowerShell：[Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork)
@@ -155,10 +156,10 @@ ms.locfileid: "84710025"
 
 只有在没有资源连接到虚拟网络的情况下，才能删除该虚拟网络。 如果还有资源连接到虚拟网络中的任何子网，则必须首先删除已连接到虚拟网络中所有子网的资源。 删除资源所采取的步骤因资源而异。 若要了解如何删除连接到子网的资源，请阅读要删除的每种资源类型的相关文档。 删除虚拟网络：
 
-1. 在门户顶部的搜索框中，输入“虚拟网络”**。 当“虚拟网络”出现在搜索结果中时，请将其选中****。
+1. 在门户顶部的搜索框中，输入“虚拟网络”。 当“虚拟网络”出现在搜索结果中时，请将其选中。
 2. 从虚拟网络列表中，选择要删除的虚拟网络。
 3. 在“设置”下单击“已连接的设备”，以确认没有设备连接到该虚拟网络。**** **** 如果有连接的设备，则必须先删除它们，然后才能删除虚拟网络。 如果没有连接的设备，请选择“概述”。****
-4. 选择“删除” ****。
+4. 选择“删除” 。
 5. 若要确认删除虚拟网络，请选择“是”****。
 
 命令

@@ -4,15 +4,15 @@ description: 用于检索产品/服务的当前状态的 API。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 5652e7b6123a9836c574059e83101a073eea56ea
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 336f23f83c33bcee1887d0e41710e686b794a663
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535869"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272005"
 ---
 # <a name="retrieve-offer-status"></a>检索产品/服务状态
 
@@ -29,7 +29,7 @@ ms.locfileid: "86535869"
 |  -------------  |  ------------------------------------------  |  ------------  |
 |  publisherId    | 发布者标识符，例如 `Contoso`  |     字符串     |
 |  offerId        | 唯一标识产品/服务的 GUID      |     字符串     |
-|  api-version    | API 的最新版本                        |     日期       |
+|  api-version    | API 的最新版本                        |     Date       |
 |  |  |
 
 ## <a name="header"></a>标头
@@ -151,10 +151,10 @@ ms.locfileid: "86535869"
 |  NeverPublished              | 产品/服务从未发布过。                          |
 |  NotStarted                  | 产品/服务是新的，且未启动。                            |
 |  WaitingForPublisherReview   | 产品/服务正在等待发布者批准。                 |
-|  运行                     | 正在处理产品/服务提交。                     |
-|  已成功                   | 产品/服务提交已完成处理。               |
+|  正在运行                     | 正在处理产品/服务提交。                     |
+|  成功                   | 产品/服务提交已完成处理。               |
 |  已取消                    | 产品/服务提交已取消。                           |
-|  已失败                      | 产品/服务提交失败。                                 |
+|  失败                      | 产品/服务提交失败。                                 |
 |  |  |
 
 ### <a name="step-status"></a>步骤状态

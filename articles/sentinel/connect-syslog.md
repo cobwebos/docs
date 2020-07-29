@@ -1,6 +1,6 @@
 ---
 title: 将 Syslog 数据连接到 Azure Sentinel |Microsoft Docs
-description: 在设备和 Sentinel 之间使用 Linux 计算机上的代理，将支持 Syslog 的任何本地设备连接到 Azure Sentinel。 
+description: 使用设备和 Sentinel 之间 Linux 计算机上的代理将支持 Syslog 的任何计算机或设备连接到 Azure Sentinel。 
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,66 +12,90 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/30/2019
+ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 38e47469723d767561dd778b8f175780ab181fd4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 27c1ad4907b0b16ce6830a6fe787b78f6129eadd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076263"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322833"
 ---
-# <a name="connect-your-external-solution-using-syslog"></a>使用 Syslog 连接外部解决方案
+# <a name="collect-data-from-linux-based-sources-using-syslog"></a>使用 Syslog 从基于 Linux 的源收集数据
 
-可以将支持 Syslog 的任何本地设备连接到 Azure Sentinel。 这是通过在设备和 Azure Sentinel 之间使用基于 Linux 计算机的代理来完成的。 如果 Linux 计算机位于 Azure 中，则可以将设备或应用程序中的日志流式传输到在 Azure 中创建的专用工作区，并进行连接。 如果 Linux 计算机不在 Azure 中，则可以将设备中的日志流式传输到专用的本地 VM 或计算机上，以便在其中安装适用于 Linux 的代理。 
+可以使用适用于 Linux 的 Log Analytics agent （以前称为 OMS 代理），将基于 Linux 的 Syslog 支持的计算机或设备中的事件流式传输到 Azure Sentinel。 你可以对任何允许你直接在计算机上安装 Log Analytics 代理的计算机执行此操作。 计算机的本机 Syslog 后台程序将收集指定类型的本地事件，并将它们以本地方式转发到代理，这会将它们流式传输到 Log Analytics 工作区。
 
 > [!NOTE]
-> 如果设备支持 Syslog CEF，则连接将更完整，应选择此选项，并按照[连接来自 CEF 的数据](connect-common-event-format.md)中的说明进行操作。
+> - 如果设备在**Syslog 上支持通用事件格式（CEF）**，则会收集更完整的数据集，并在集合中对数据进行分析。 应选择此选项，并按照[使用 CEF 连接外部解决方案](connect-common-event-format.md)中的说明进行操作。
+>
+> - Log Analytics 支持**rsyslog**或**syslog-ng**的守护程序发送的消息收集，其中 rsyslog 是默认值。 对于 syslog 事件收集，不支持 Red Hat Enterprise Linux （RHEL）版本5（RHEL）、CentOS 和 Oracle Linux 版本（**sysklog**）上的默认 syslog 守护程序。 要从这些发行版的此版本中收集 syslog 数据，应安装并配置 rsyslog 守护程序以替换 sysklog。
 
 ## <a name="how-it-works"></a>工作原理
 
-Syslog 是普遍适用于 Linux 的事件日志记录协议。 应用程序将发送可能存储在本地计算机或传递到 Syslog 收集器的消息。 安装适用于 Linux 的 Log Analytics 代理后，它将配置本地 Syslog 后台程序，以将消息转发到此代理。 然后，此代理将消息发送到 Azure Monitor，将在后者中创建相应的记录。
+**Syslog**是 Linux 通用的事件日志记录协议。 如果在 VM 或设备上安装了**适用于 Linux 的 Log Analytics 代理**，则安装例程会将本地 Syslog 守护程序配置为将消息转发到 TCP 端口25224上的代理。 然后，代理通过 HTTPS 将消息发送到 Log Analytics 工作区，在该工作区中，该消息将被解析为**Azure Sentinel > 日志**的 Syslog 表中的事件日志条目。
 
 有关详细信息，请参阅[中的 Syslog 数据源 Azure Monitor](../azure-monitor/platform/data-sources-syslog.md)。
 
-> [!NOTE]
-> - 代理可以从多个源收集日志，但必须在专用代理计算机上安装日志。
-> - 如果要在同一 VM 上同时支持 CEF 和 Syslog 的连接器，请执行以下步骤以避免复制数据：
->    1. 按照说明连接到[CEF](connect-common-event-format.md)。
->    2. 若要连接 Syslog 数据，请参阅 "**设置**  >  " "**工作区设置**  >  " "**高级设置**  >  " "**数据**  >  **Syslog** " 并设置设备及其优先级，使其不是你在 CEF 配置中使用的相同设施和属性。 <br></br>如果选择 "**将下面的配置应用到我的计算机**"，则会将这些设置应用到连接到此工作区的所有 vm。
+## <a name="configure-syslog-collection"></a>配置 Syslog 收集
 
-
-## <a name="connect-your-syslog-appliance"></a>连接 Syslog 设备
+### <a name="configure-your-linux-machine-or-appliance"></a>配置 Linux 计算机或设备
 
 1. 在 Azure Sentinel 中，选择 "**数据连接器**"，然后选择**Syslog**连接器。
 
-2. 在**Syslog**边栏选项卡上，选择 "**打开连接器" 页面**。
+1. 在**Syslog**边栏选项卡上，选择 "**打开连接器" 页面**。
 
-3. 安装 Linux 代理：
+1. 安装 Linux 代理。 在 "**选择安装代理的位置：**
     
-    - 如果 Linux 虚拟机位于 Azure 中，请选择 **"在 Azure Linux 虚拟机上下载并安装代理"**。 在 "**虚拟机**" 边栏选项卡中，选择要在其上安装代理的虚拟机，然后单击 "**连接**"。
-    - 如果 Linux 计算机不在 Azure 中，请选择 **"在 linux 非 azure 计算机上下载并安装代理"**。 在 "**直接代理**" 边栏选项卡中，复制**下载和板载 agent for LINUX**的命令并在计算机上运行该命令。 
+    **对于 Azure Linux VM：**
+      
+    1. 选择 **"在 Azure Linux 虚拟机上安装代理"**。
+    
+    1. 单击 "**下载 & 适用于 Azure Linux 虚拟机的代理 >** " 链接。 
+    
+    1. 在 "**虚拟机**" 边栏选项卡中，单击要在其上安装代理的虚拟机，然后单击 "**连接**"。 对于要连接的每个 VM，请重复此步骤。
+    
+    **对于任何其他 Linux 计算机：**
+
+    1. 选择 **"在非 Azure Linux 计算机上安装代理"**
+
+    1. 单击 "**下载 & 非 Azure Linux 计算机的安装代理" >** 链接。 
+
+    1. 在 "**代理管理**" 边栏选项卡中，单击 " **linux 服务器**" 选项卡，然后复制适用于**linux 的下载和载入代理**的命令并在 linux 计算机上运行它。 
     
    > [!NOTE]
    > 请确保根据组织的安全策略配置这些计算机的安全设置。 例如，你可以配置网络设置，使其符合组织的网络安全策略，并更改守护程序中的端口和协议，使其符合安全要求。
 
-4. 选择 "**打开工作区高级设置配置**"。
+### <a name="configure-the-log-analytics-agent"></a>配置 Log Analytics 代理
 
-5. 在 "**高级设置**" 边栏选项卡中，选择 "**数据**  >  **系统日志**"。 然后，添加要收集的连接器的功能。
+1. 在 Syslog 连接器边栏选项卡底部，单击 "**打开工作区高级设置配置 >** " 链接。
+
+1. 在 "**高级设置**" 边栏选项卡中，选择 "**数据**  >  **系统日志**"。 然后，添加要收集的连接器的功能。
     
-    添加 syslog 设备在其日志标头中包含的工具。 你可以在**syslog 中的 syslog 设备** `/etc/rsyslog.d/security-config-omsagent.conf` 上、在文件夹中以及从**r-syslog**中查看此配置 `/etc/syslog-ng/security-config-omsagent.conf` 。
+    - 添加 syslog 设备在其日志标头中包含的工具。 
     
-    如果要将异常 SSH 登录检测与收集的数据一起使用，请添加**auth**和**authpriv**。 有关更多详细信息，请参阅[以下部分](#configure-the-syslog-connector-for-anomalous-ssh-login-detection)。
+    - 如果要将异常 SSH 登录检测与收集的数据一起使用，请添加**auth**和**authpriv**。 有关更多详细信息，请参阅[以下部分](#configure-the-syslog-connector-for-anomalous-ssh-login-detection)。
 
-6. 如果已添加要监视的所有设备，并调整每个设备的任何严重性选项，请选中 "**将下面的配置应用到我的计算机**" 复选框。
+1. 如果已添加要监视的所有设备，并调整每个设备的任何严重性选项，请选中 "**将下面的配置应用到我的计算机**" 复选框。
 
-7. 选择“保存” 。 
+1. 选择“保存” 。 
 
-8. 在 syslog 设备上，确保正在发送指定的设施。
+1. 在 VM 或设备上，请确保正在发送指定的设施。
 
-9. 若要在 syslog 日志的 Azure Monitor 中使用相关架构，请搜索**syslog**。
+1. 若要在**日志**中查询 syslog 日志数据，请 `Syslog` 在 "查询" 窗口中键入。
 
-10. 您可以使用[Azure Monitor 日志查询中的函数中](../azure-monitor/log-query/functions.md)所述的 Kusto 函数来分析 Syslog 消息。 然后，您可以将其另存为新的 Log Analytics 函数，用作一种新的数据类型。
+1. 您可以使用[Azure Monitor 日志查询中的函数中](../azure-monitor/log-query/functions.md)所述的查询参数来分析 Syslog 消息。 然后，可以将查询另存为新的 Log Analytics 函数，并将其用作新的数据类型。
+
+> [!NOTE]
+>
+> 你可以使用现有的[CEF 日志转发器计算机](connect-cef-agent.md)从普通 Syslog 源收集和转发日志。 但是，您必须执行以下步骤以避免以这两种格式将事件发送到 Azure Sentinel，因为这将导致事件重复。
+>
+>    已根据[CEF 源设置了数据收集](connect-common-event-format.md)，并按上述方式配置 Log Analytics 代理：
+>
+> 1. 在以 CEF 格式发送日志的每台计算机上，必须编辑 Syslog 配置文件，以删除用于发送 CEF 消息的工具。 这样一来，在 CEF 中发送的功能也不会在 Syslog 中发送。 有关如何执行此操作的详细说明，请参阅在[Linux 代理上配置 Syslog](../azure-monitor/platform/data-sources-syslog.md#configure-syslog-on-linux-agent) 。
+>
+> 1. 必须在这些计算机上运行以下命令，才能在 Azure Sentinel 中通过 Syslog 配置禁用代理的同步。 这可以确保在上一步中所做的配置更改不会被覆盖。<br>
+> `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
+
 
 ### <a name="configure-the-syslog-connector-for-anomalous-ssh-login-detection"></a>为异常 SSH 登录检测配置 Syslog 连接器
 

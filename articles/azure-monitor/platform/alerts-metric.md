@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.subservice: alerts
-ms.openlocfilehash: b535cda8fe7d98748eb0657a599a61ed1f8549d2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c040958d9518485bc5d583fc01aedd50d5c6e57a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045361"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321116"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理指标警报
 
@@ -32,7 +32,7 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 
 3. 在加载的上下文窗格中单击“选择目标”，选择要发出警报的目标资源  。 使用“订阅”和“资源类型”下拉列表查找要监视的资源。   也可以使用搜索栏查找资源。
 
-4. 如果选定的资源具有可创建警报的指标，则右下方的“可用信号”将包含这些指标。  可在[此文](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)中查看指标警报支持的资源类型的完整列表。
+4. 如果选定的资源具有可创建警报的指标，则右下方的“可用信号”将包含这些指标。  可在[此文](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)中查看指标警报支持的资源类型的完整列表。
 
 5. 选择目标资源后，单击“添加条件”  。
 
@@ -136,7 +136,8 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure 资源管理器模板创建指标警报](../../azure-monitor/platform/alerts-metric-create-templates.md)。
+- [使用 Azure 资源管理器模板创建指标警报](./alerts-metric-create-templates.md)。
 - [了解指标警报的工作原理](alerts-metric-overview.md)。
 - [了解指标警报与动态阈值条件的工作原理](alerts-dynamic-thresholds.md)。
-- [了解指标警报的 Webhook 架构](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)
+- [了解指标警报的 Webhook 架构](./alerts-metric-near-real-time.md#payload-schema)
+

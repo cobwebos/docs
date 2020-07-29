@@ -4,15 +4,15 @@ description: 回答了通过 Resource Manager 模型创建的 Linux 虚拟机的
 author: cynthn
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 09f34eec84deeaf76d62ae0aff881e53bf5dd13f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 31755ea096724ffd314d970b2119f0d5ed31bf03
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502395"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87268418"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>有关 Linux 虚拟机的常见问题
 本文讨论有关在 Azure 中使用 Resource Manager 部署模型创建的 Linux 虚拟机的一些常见问题。 有关本主题的 Windows 版本，请参阅[有关 Windows 虚拟机的常见问题](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -36,7 +36,7 @@ Azure 存储帐户还可为操作系统磁盘和任何数据磁盘提供存储�
 不要使用临时磁盘 (/dev/sdb1) 存储数据。 它只是用于临时存储。 有丢失无法恢复的数据的风险。
 
 ## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>可否复制或克隆现有的 Azure VM？
-是。 有关说明，请参阅[如何在 Resource Manager 部署模型中创建 Linux 虚拟机的副本](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+是的。 有关说明，请参阅[如何在 Resource Manager 部署模型中创建 Linux 虚拟机的副本](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 ## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>为什么在 Azure Resource Manager 中看不到加拿大中部和加拿大东部区域？
 针对现有 Azure 订阅创建的虚拟机不会自动注册到加拿大中部和加拿大东部这两个新区域。 通过 Azure 门户使用 Azure Resource Manager 将虚拟机部署到其他任何区域时，将自动完成此注册。 将虚拟机部署到其他任何 Azure 区域后，新区域可供后续虚拟机使用。
@@ -45,7 +45,7 @@ Azure 存储帐户还可为操作系统磁盘和任何数据磁盘提供存储�
 能，目前可行。 首先需停止解除分配 VM。 然后便可添加或删除 NIC（除非它是 VM 上的最后一个 NIC）。 
 
 ## <a name="are-there-any-computer-name-requirements"></a>是否有任何计算机名称要求？
-是。 计算机名称的最大长度为 64 个字符。 有关命名资源的详细信息，请参阅[命名约定规则和限制](/azure/architecture/best-practices/resource-naming)。
+是的。 计算机名称的最大长度为 64 个字符。 有关命名资源的详细信息，请参阅[命名约定规则和限制](/azure/architecture/best-practices/resource-naming)。
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>是否存在资源组名称要求？
 是的。 资源组名称的最大长度为 90 个字符。 有关资源组的详细信息，请参阅[命名约定规则和限制](/azure/architecture/best-practices/resource-naming)。

@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: bb21bcefa0f9fb6f691ebfb578177c64543c1403
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46c219a82d45129ed0856d22d88be819938e5240
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549644"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325298"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>使用自动化脚本创建 Service Manager Web 应用
 
-使用以下脚本创建用于 Service Manager 实例的 Web 应用。 此处提供了有关 Service Manager 连接的详细信息：[Service Manager Web 应用](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+使用以下脚本创建用于 Service Manager 实例的 Web 应用。 此处提供了有关 Service Manager 连接的详细信息：[Service Manager Web 应用](./itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
 通过提供以下所需详细信息来运行脚本：
 
@@ -318,4 +318,5 @@ if(!$err)
 ```
 
 ## <a name="next-steps"></a>后续步骤
-[配置混合连接](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection)。
+[配置混合连接](./itsmc-connections.md#configure-the-hybrid-connection)。
+

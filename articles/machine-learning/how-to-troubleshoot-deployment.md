@@ -11,16 +11,16 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 68c328bde853bbf4e48ab7ab1a6e2c7b51198f59
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 47daf331c717ebb9752644deac826330681bb31a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030685"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320810"
 ---
-# <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>排查通过 Azure Kubernetes 服务和 Azure 容器实例进行的模型 Docker 部署 
+# <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>使用 Azure Kubernetes 服务和 Azure 容器实例对模型的 Docker 部署进行故障排除 
 
-了解如何使用 Azure 机器学习对 Azure 容器实例（ACI）和 Azure Kubernetes 服务（AKS）进行常见的 Docker 部署错误的疑难解答和解决。
+了解如何使用 Azure 机器学习排查、解决或规避 Azure 容器实例 (ACI) 和 Azure Kubernetes 服务 (AKS) 的常见 Docker 部署错误。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -30,31 +30,31 @@ ms.locfileid: "87030685"
 * [用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
 * 若要在本地调试，则必须在本地系统上安装一个有效的 Docker。
 
-    若要验证 Docker 安装，请从终端或命令提示符使用命令 `docker run hello-world`。 有关安装 Docker 或排除 Docker 错误的详细信息，请参阅 [Docker 文档](https://docs.docker.com/)。
+    若要验证 Docker 安装，请使用终端或命令提示符中的命令 `docker run hello-world`。 有关安装 Docker 或排除 Dcoker 错误的详细信息，请参阅 [Docker 文档](https://docs.docker.com/)。
 
-## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>适用于 Docker 部署机器学习模型的步骤
+## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>机器学习模型的 Docker 部署步骤
 
 在 Azure 机器学习中部署模型时，系统将执行大量任务。
 
-建议模型部署的方法是通过使用[环境](how-to-use-environments.md)对象作为输入参数的[deploy （） API。](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 在这种情况下，服务会在部署阶段创建基本的 docker 映像，并在一次调用中装载所需的模型。 基本部署任务包括：
+推荐使用的模型部署方法是使用 [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 并以 [Environment](how-to-use-environments.md) 对象作为输入参数。 在这种情况下，服务将在部署阶段创建一个基础 docker 映像，并在一次调用中装载所需的全部模型。 基本部署任务包括：
 
 1. 在工作区模型注册表中注册模型。
 
 2. 定义推理配置：
-    1. 根据你在环境 yaml 文件中指定的依赖项创建一个 [Environment](how-to-use-environments.md) 对象，或者使用我们获得的环境之一。
+    1. 基于你在环境 yaml 文件中指定的依赖项创建一个 [Environment](how-to-use-environments.md) 对象，或者使用我们获得的环境之一。
     2. 基于环境和评分脚本创建推理配置（InferenceConfig 对象）。
 
 3. 将模型部署到 Azure 容器实例 (ACI) 服务或 Azure Kubernetes 服务 (AKS)。
 
 请参阅[模型管理](concept-model-management-and-deployment.md)简介，详细了解此过程。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 如果遇到任何问题，首先需要将部署任务（上述）分解为单独的步骤，以查出问题所在。
 
-假设你使用新的/推荐的部署方法，也就是使用 [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 并将 [Environment](how-to-use-environments.md) 对象作为输入参数，则你的代码可以分解为三个主要步骤：
+假设你使用新的/推荐的部署方法，也就是使用 [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 并以 [Environment](how-to-use-environments.md) 对象作为输入参数，则你的代码可以分为三个主要步骤：
 
-1. 注册模型。 以下是一些示例代码：
+1. 注册模型。 下面是一些示例代码：
 
     ```python
     from azureml.core.model import Model
@@ -79,7 +79,7 @@ ms.locfileid: "87030685"
     inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
     ```
 
-3. 使用上一步中创建的推理配置来部署模型：
+3. 使用在前面步骤中创建的推理配置来部署模型：
 
     ```python
     from azureml.core.webservice import AciWebservice
@@ -99,12 +99,12 @@ ms.locfileid: "87030685"
 
 ## <a name="debug-locally"></a>本地调试
 
-如果将模型部署到 ACI 或 AKS 时遇到问题，请尝试将其部署为本地 Web 服务。 使用本地 Web 服务可以更容易地排除问题。 包含模型的 Docker 映像将下载到本地系统，并在本地系统上启动。
+如果将模型部署到 ACI 或 AKS 时遇到问题，请尝试将其部署为本地 Web 服务。 使用本地 Web 服务可简化解决问题的过程。 在本地系统上下载并启动包含模型的 Docker 映像。
 
 可以在[MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks)存储库中找到示例[本地部署笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb)，以浏览可运行的示例。
 
 > [!WARNING]
-> 生产方案不支持本地 Web 服务部署。
+> 生成方案不支持本地 Web 服务部署。
 
 若要进行本地部署，请修改代码以使用 `LocalWebservice.deploy_configuration()` 创建部署配置。 然后使用 `Model.deploy()` 部署该服务。 以下示例将模型（包含在 model 变量中）部署为本地 Web 服务：
 
@@ -128,7 +128,7 @@ service.wait_for_deployment(True)
 print(service.port)
 ```
 
-如果要定义自己的 conda 规范 YAML，必须使用版本 >= 1.0.45 作为 pip 依赖项列出 azureml 默认值。 此包包含将模型托管为 Web 服务所需的功能。
+如果定义你自己的 Conda 规范 YAML，则必须将版本大于等于 1.0.45 的 azureml-defaults 作为 pip 依赖项列出。 此包包含将模型作为 Web 服务托管时所需的功能。
 
 此时，你可以正常使用该服务。 例如，以下代码演示了将数据发送到该服务的过程：
 
@@ -150,10 +150,10 @@ print(prediction)
 
 ### <a name="update-the-service"></a>更新服务
 
-在本地测试期间，可能需要更新 `score.py` 文件以添加记录或尝试解决发现的任何问题。 若要重新加载对 `score.py` 文件的更改，请使用 `reload()`。 例如，以下代码重新加载服务的脚本，然后向其发送数据。 使用更新后的 `score.py` 文件对数据进行评分：
+在本地测试中，可能需要更新 `score.py` 文件以添加记录或尝试解决发现的任何问题。 若要重新加载对 `score.py` 文件的更改，请使用 `reload()`。 例如，以下代码重新加载服务的脚本，然后向其发送数据。 使用 `score.py` 文件对数据进行评分：
 
 > [!IMPORTANT]
-> `reload` 方法仅适用于本地部署。 有关将部署更新到其他计算目标的信息，请参阅[部署模型](how-to-deploy-and-where.md#update)的“更新”部分。
+> `reload` 方法仅适用于本地部署。 有关更新部署到其他计算目标的信息，请参阅[部署模型](how-to-deploy-and-where.md#update)更新部分。
 
 ```python
 service.reload()
@@ -161,7 +161,7 @@ print(service.run(input_data=test_sample))
 ```
 
 > [!NOTE]
-> 脚本从服务所使用的 `InferenceConfig` 对象指定的位置重新加载。
+> 可从服务所使用的 `InferenceConfig` 对象指定的位置重新加载该脚本。
 
 若要更改模型、Conda 依赖项或部署配置，请使用 [update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#update--args-)。 以下示例更新服务使用的模型：
 
@@ -171,11 +171,11 @@ service.update([different_model], inference_config, deployment_config)
 
 ### <a name="delete-the-service"></a>删除服务
 
-若要删除服务，请使用 [delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#delete--)。
+要删除服务，请使用 [delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#delete--)。
 
-### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a>检查 Docker 日志
+### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a> 检查 Docker 日志
 
-可以通过服务对象打印详细的 Docker 引擎日志消息。 可以查看 ACI、AKS 和本地部署的日志。 以下示例演示如何打印日志。
+可以通过服务对象打印详细的 Docker 引擎日志消息。 可以查看 ACI、AKS 和 Local 部署的日志。 以下示例演示如何打印日志。
 
 ```python
 # if you already have the service object handy
@@ -184,12 +184,14 @@ print(service.get_logs())
 # if you only know the name of the service (note there might be multiple services with the same name but different version number)
 print(ws.webservices['mysvc'].get_logs())
 ```
-
+如果在日志中看到行多次 `Booting worker with pid: <pid>` 出现，这意味着没有足够的内存来启动辅助角色。
+可以通过增大的值来解决该错误。 `memory_gb``deployment_config`
+ 
 ## <a name="container-cannot-be-scheduled"></a>无法计划容器
 
-将服务部署到 Azure Kubernetes Service 计算目标时，Azure 机器学习将尝试使用请求的资源量来计划服务。 如果在5分钟后，群集中没有可用的可用资源量的节点，则部署将失败，并显示消息 `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` 。 可通过添加更多节点、更改节点的 SKU 或更改服务的资源要求来解决此错误。 
+将服务部署到 Azure Kubernetes Service 计算目标时，Azure 机器学习将尝试使用请求的资源量来计划服务。 如果在 5 分钟后，群集中未提供具有相应的可用资源量的节点，则部署会失败，并显示消息“`Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00`”。 可通过添加更多节点、更改节点的 SKU 或更改服务的资源要求来解决此错误。 
 
-例如，如果看到一条错误消息，指出该 `0/3 nodes are available: 3 Insufficient nvidia.com/gpu` 服务需要 gpu，并且群集中有三个节点没有可用 gpu，则该错误消息通常会指示需要更多的资源。 如果使用的是 GPU SKU，则可以通过添加更多节点来解决此问题；如果使用的不是 GPU SKU，则可以通过切换到启用 GPU 的 SKU，或将环境更改为不需要 GPU 来解决此问题。  
+该错误消息通常会指示你更需要哪一种资源 - 例如，如果看到一条指示“`0/3 nodes are available: 3 Insufficient nvidia.com/gpu`”的错误消息，则意味着该服务需要 GPU，且群集中有三个节点没有可用的 GPU。 如果使用的是 GPU SKU，则可以通过添加更多节点来解决此问题；如果使用的不是 GPU SKU，则可以通过切换到启用 GPU 的 SKU，或将环境更改为不需要 GPU 来解决此问题。  
 
 ## <a name="service-launch-fails"></a>服务启动失败
 
@@ -199,7 +201,7 @@ print(ws.webservices['mysvc'].get_logs())
 
 ## <a name="function-fails-get_model_path"></a>函数故障：get_model_path()
 
-通常情况下，在评分脚本的 `init()` 函数中，会调用 [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) 函数来查找容器中的模型文件或模型文件所在的文件夹。 如果找不到模型文件或文件夹，函数将失败。 调试此错误的最简单方法是在容器 shell 中运行以下 Python 代码：
+通常情况下，在评分脚本的 `init()` 函数中，会调用 [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) 来查找容器中的模型文件或模型文件的文件夹。 如果找不到模型文件或文件夹，函数将失败。 调试此错误的最简单方法是在容器 shell 中运行以下 Python 代码：
 
 ```python
 from azureml.core.model import Model
@@ -208,7 +210,7 @@ logging.basicConfig(level=logging.DEBUG)
 print(Model.get_model_path(model_name='my-best-model'))
 ```
 
-此示例将打印容器中的本地路径（相对于 `/var/azureml-app`），评分脚本应可在此路径中找到模型文件或文件夹。 然后可以验证文件或文件夹是否确实位于其应该在的位置。
+该示例将打印容器中的本地路径（相对于 `/var/azureml-app`），其中评分脚本有望找到模型文件或文件夹。 然后可以验证文件或文件夹是否确实位于其应该在的位置。
 
 将日志记录级别设置为 DEBUG 可能会导致记录其他信息，这可能有助于识别故障。
 
@@ -241,18 +243,18 @@ Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持
 
 有两种方法可以帮助防止 503 状态代码：
 
-* 更改自动缩放创建新副本的利用率级别。
+* 更改自动缩放创建新副本的利用率。
     
-    默认情况下，自动缩放目标利用率设置为 70%，这意味着服务可以处理高达 30% 的 峰值每秒请求数 (RPS)。 可以通过将 `autoscale_target_utilization` 设置为较低的值来调整利用率目标。
+    默认情况下，自动缩放目标利用率设置为 70%，这意味着服务可以处理高达 30% 的大量每秒请求数 (RPS)。 可以通过将 `autoscale_target_utilization` 设置为较低的值来调整利用率目标。
 
     > [!IMPORTANT]
-    > 这项更改不会导致更快创建副本。 反而会以较低的利用率阈值创建副本。 可以在利用率达到 30% 时，通过将值改为 30% 来创建副本，而不是等待该服务的利用率达到 70% 时再创建。
+    > 该更改不会导致更快创建副本。 而会以较低的利用率阈值创建副本。 可以在利用率达到 30% 时，通过将值改为 30% 来创建副本，而不是等待该服务的利用率达到 70% 时再创建。
     
-    如果 Web 服务已在使用当前最大副本数量，而你仍会看到 503 状态代码，请增加 `autoscale_max_replicas` 值以增加副本的最大数量。
+    如果 Web 服务已在使用当前最大副本，然后你仍能看见 503 状态代码，则请增加 `autoscale_max_replicas` 值以增加副本的最大数量。
 
-* 更改副本最小数量。 增加最小副本数量可以提供一个更大的池来处理传入峰值。
+* 更改副本最小数量。 增加最小副本可提供一个更大的池来处理传入峰值。
 
-    若要增加副本的最小数量，请将 `autoscale_min_replicas` 设置为更大的值。 可以使用以下代码计算所需的副本数量，将值替换为特定于项目的值：
+    若要增加副本的最小数量，请将 `autoscale_min_replicas` 设置为更大的值。 可以使用以下代码计算所需的副本，将值替换为项目指定的值：
 
     ```python
     from math import ceil
@@ -272,7 +274,7 @@ Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持
     ```
 
     > [!NOTE]
-    > 如果收到的峰值请求数大于新的最小副本数可以处理的数量，则可能会再次收到 503 代码。 例如，服务流量增加时，可能需要增加最小副本数量。
+    > 如果收到请求高峰大于新的最小副本可以处理的数量，则可能会再次收到 503 代码。 例如，服务流量增加时，可能需要增加最小副本数据。
 
 有关设置 `autoscale_target_utilization`、`autoscale_max_replicas` 和 `autoscale_min_replicas` 的详细信息，请参阅 [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) 模块参考。
 
@@ -280,11 +282,11 @@ Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持
 
 504 状态代码指示请求已超时。默认超时值为 1 分钟。
 
-可通过修改 score.py，删除不必要的调用来增加超时值或尝试加快服务速度。 如果这些操作不能解决问题，请使用本文中的信息调试 score.py 文件。 代码可能处于无响应状态或无限循环。
+可以通过修改 score.py 删除不必要的调用来增加超时值或尝试加快服务速度。 如果这些操作不能解决问题，请使用本文中的信息调试 score.py 文件。 代码可能处于无响应状态或无限循环。
 
 ## <a name="advanced-debugging"></a>高级调试
 
-某些情况下，可能需要以交互方式调试模型部署中包含的 Python 代码。 例如，输入脚本失败，并且无法通过其他记录确定原因的情况。 通过使用 Visual Studio Code 和针对 Visual Studio 的 Python 工具 (PTVSD)，可以附加到在 Docker 容器中运行的代码。
+某些情况下，可能需要以交互方式调试包含在模型部署中的 Python 代码。 例如，如果输入脚本失败，并且无法通过其他记录确定原因。 通过使用 Visual Studio Code 和针对 Visual Studio 的 Python 工具 (PTVSD)，可以附加到在 Docker 容器中运行的代码。
 
 > [!IMPORTANT]
 > 使用 `Model.deploy()` 和 `LocalWebservice.deploy_configuration` 在本地部署模型时，此调试方法不起作用。 相反，你必须使用 [Model.package()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-) 方法创建一个映像。
@@ -299,11 +301,11 @@ Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持
     python -m pip install --upgrade ptvsd
     ```
 
-    有关结合使用 PTVSD 和 VS Code 的详细信息，请参阅[远程调试](https://code.visualstudio.com/docs/python/debugging#_remote-debugging)。
+    有关结合使用 VS Code 和 PTVSD 的详细信息，请参阅[远程调试](https://code.visualstudio.com/docs/python/debugging#_remote-debugging)。
 
 1. 若要配置 VS Code，使其与 Docker 映像进行通信，请创建新的调试配置：
 
-    1. 在 VS Code 中，选择“调试”菜单，然后选择“打开配置” 。 将打开一个名为 launch.json 的文件。
+    1. 在 VS Code 中，选择“调试”菜单，然后选择“打开配置” 。 打开一个名为 launch.json 的文件。
 
     1. 在 launch.json 文件中，找到包含 `"configurations": [` 的行，然后在其后插入以下文本：
 
@@ -324,13 +326,13 @@ Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持
         ```
 
         > [!IMPORTANT]
-        > 如果“配置”部分已存在其他条目，请在插入的代码后添加一个逗号 (,)。
+        > 如果“配置”部分已存在其他项，请在插入的代码后添加一个逗号 (,)。
 
         本部分使用端口 5678 附加到 Docker 容器。
 
     1. 保存 launch.json 文件。
 
-### <a name="create-an-image-that-includes-ptvsd"></a>创建包含 PTVSD 的映像
+### <a name="create-an-image-that-includes-ptvsd"></a>创建包括 PTVSD 的映像
 
 1. 修改部署的 Conda 环境，使其包括 PTVSD。 以下示例演示使用 `pip_packages` 参数添加它的过程：
 
@@ -379,13 +381,13 @@ Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持
     package.pull()
     ```
 
-    创建并下载映像后，映像路径（包括存储库、名称和标记，在此示例中为摘要信息）会显示在类似于如下所示的消息中：
+    创建并下载映像后，映像路径（包括存储库、名称和标记，在此示例中也是摘要）会显示在类似于以下内容的消息中：
 
     ```text
     Status: Downloaded newer image for myregistry.azurecr.io/package@sha256:<image-digest>
     ```
 
-1. 如果希望简化映像的操作，请使用以下命令添加标记。 将 `myimagepath` 替换为上一步中的位置值。
+1. 如果希望简化映像的操作，请使用以下命令添加标记。 将 `myimagepath` 替换为前面步骤中的位置值。
 
     ```bash
     docker tag myimagepath debug:1
@@ -396,7 +398,7 @@ Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持
 ### <a name="debug-the-service"></a>调试服务
 
 > [!TIP]
-> 如果在 `score.py` 文件中为 PTVSD 连接设置超时，则必须在超时到期之前将 VS Code 连接到调试会话。 启动 VS Code，打开 `score.py` 的本地副本，设置一个断点，使其准备就绪，然后再使用本部分中的步骤进行操作。
+> 如果在 `score.py` 文件中为 PTVSD 连接设置超时，则必须在超时到达之前将 VS Code 连接到调试会话。 启动 VS Code，打开 `score.py` 的本地副本，设置一个断点，使其准备就绪，然后再使用本部分中的步骤进行操作。
 >
 > 有关调试和设置断点的详细信息，请参阅[调试](https://code.visualstudio.com/Docs/editor/debugging)。
 
@@ -406,18 +408,18 @@ Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持
     docker run --rm --name debug -p 8000:5001 -p 5678:5678 debug:1
     ```
 
-1. 若要将 VS Code 附加到容器中的 PTVSD，请打开 VS Code 并按 F5 或选择“调试”。 出现提示时，请选择“Azure 机器学习：Docker 调试”配置。 还可以从侧栏中选择“调试”图标，即“Azure 机器学习：Docker 调试”项（位于“调试”下拉菜单中），然后使用绿色箭头附加调试程序。
+1. 若要将 VS Code 附加到容器中的 PTVSD，请打开 VS Code 并按 F5 或选择“调试”。 出现提示时，请选择“Azure 机器学习: Docker 调试”配置。 还可以选择左侧栏中的“调试”图标，“Azure 机器学习: Docker 调试”项（位于“调试”下拉菜单），然后使用绿色箭头附加调试器。
 
-    ![“调试”图标、“启动调试”按钮和配置选择器](./media/how-to-troubleshoot-deployment/start-debugging.png)
+    ![“调试”图标、“启动调试”按钮和“配置”选择器](./media/how-to-troubleshoot-deployment/start-debugging.png)
 
-此时，VS Code 会连接到 Docker 容器内的 PTVSD，并在之前设置的断点处停止。 现在，你可以在代码运行时逐句调试代码、进行查看变量等操作。
+此时，VS Code 会连接到 Docker 容器内的 PTVSD，并在之前设置的断点处停止。 现在可以在代码运行时逐句调试代码、查看变量等。
 
 有关使用 VS Code 调试 Python 的详细信息，请参阅[调试 Python 代码](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019)。
 
 <a id="editfiles"></a>
 ### <a name="modify-the-container-files"></a>修改容器文件
 
-若要更改映像中的文件，可以附加到正在运行的容器，并执行 bash shell。 在这里，你可以使用 vim 编辑文件：
+若要更改映像中的文件，可以附加到正在运行的容器，并执行 bash shell。 你可以在此使用 vim 编辑文件：
 
 1. 若要连接正在运行的容器，并在容器中启动 bash shell，请使用以下命令：
 
@@ -431,20 +433,20 @@ Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持
     cd /var/azureml-app
     ```
 
-    在这里，你可以使用 vim 编辑 `score.py` 文件。 有关使用 vim 的详细信息，请参阅[使用 Vim 编辑器](https://www.tldp.org/LDP/intro-linux/html/sect_06_02.html)。
+    你可以在此使用 vim 编辑 `score.py` 文件。 有关使用 vim 的详细信息，请参阅[使用 Vim 编辑器](https://www.tldp.org/LDP/intro-linux/html/sect_06_02.html)。
 
-1. 通常不会保留对容器所做的更改。 若要保存所做的任何更改，请在退出上一个步骤中（即另一个 shell 中）启动的 shell 之前，使用以下命令：
+1. 通常不会保留容器的更改。 若要保存所做的任何更改，请在退出前面步骤中（即，另一个 shell 中）启动的 shell 之前，使用以下命令：
 
     ```bash
     docker commit debug debug:2
     ```
 
-    此命令创建一个名为 `debug:2` 的新映像，其中包含你进行的编辑。
+    此命令创建一个名为 `debug:2` 的新映像，其中包含你的编辑内容。
 
     > [!TIP]
     > 需要停止当前容器并开始使用新版本，更改才会生效。
 
-1. 请确保将对容器中的文件所做的更改与 VS Code 使用的本地文件保持同步。 否则，调试程序体验将达不到预期效果。
+1. 请确保将对容器中的文件所做的更改与 VS Code 使用的本地文件保持同步。 否则，调试器体验将达不到预期效果。
 
 ### <a name="stop-the-container"></a>停止容器
 

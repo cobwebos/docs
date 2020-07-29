@@ -1,6 +1,5 @@
 ---
-title: 模型如何成为 Web 服务
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （经典）：模型如何成为 web 服务-Azure
 description: 关于 Azure 机器学习工作室（经典）模型从开发试验逐步演变为 Web 服务的机制的概述。
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 4d7ab5cada77ccebc214e09b43fbb70b3ad8bb59
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 6a02ac6db7e560fcb90a87b7bc96284c279c1654
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117191"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324992"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>机器学习工作室（经典）模型如何从试验逐步演变为 Web 服务
+
+**适用于：** ![不](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-azure-ml.md) ![ 是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） 
+
 
 Azure 机器学习工作室（经典）提供交互式画布，使你能开发、运行、测试和迭代表示预测分析模型的试验。 有大量各种不同的模块可用于：
 

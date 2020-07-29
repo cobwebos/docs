@@ -2,43 +2,65 @@
 title: 将资源部署到订阅
 description: 介绍了如何在 Azure 资源管理器模板中创建资源组。 它还展示了如何在 Azure 订阅范围内部署资源。
 ms.topic: conceptual
-ms.date: 07/01/2020
-ms.openlocfilehash: ab39fed11ee53849e7d588d16749de96172b234d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: a4e21f29762a30baec8d5cf6e3914da2b5faadeb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832808"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321762"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在订阅级别创建资源组和资源
 
-若要简化资源管理，可在 Azure 订阅级别部署资源。 例如，可将[策略](../../governance/policy/overview.md)和[基于角色的访问控制](../../role-based-access-control/overview.md)部署到订阅，这些资源将应用于整个订阅。 还可创建资源组并将资源部署到这些资源组。
+若要简化资源管理，可以使用 Azure 资源管理器模板（ARM 模板）在 Azure 订阅级别部署资源。 例如，你可以将[策略](../../governance/policy/overview.md)和[基于角色的访问控制](../../role-based-access-control/overview.md)部署到你的订阅，这会在你的订阅中应用这些控制。 你还可以在订阅中创建资源组，并将资源部署到订阅中的资源组。
 
 > [!NOTE]
 > 可在订阅级别部署中部署到 800 个不同的资源组。
 
-若要在订阅级别部署模板，请使用 Azure CLI、PowerShell 或 REST API。
+若要在订阅级别部署模板，请使用 Azure CLI、PowerShell、REST API 或门户。
 
 ## <a name="supported-resources"></a>支持的资源
 
-可在订阅级别部署以下资源类型：
+并非所有资源类型都可以部署到订阅级别。 此部分列出了支持的资源类型。
 
+对于 Azure 蓝图，使用：
+
+* [项目](/azure/templates/microsoft.blueprint/blueprints/artifacts)
 * [蓝图](/azure/templates/microsoft.blueprint/blueprints)
-* [预算](/azure/templates/microsoft.consumption/budgets)
-* [部署](/azure/templates/microsoft.resources/deployments) - 用于部署到资源组的嵌套模板。
-* [eventSubscriptions](/azure/templates/microsoft.eventgrid/eventsubscriptions)
-* [peerAsns](/azure/templates/microsoft.peering/2019-09-01-preview/peerasns)
+* [blueprintAssignments](/azure/templates/microsoft.blueprint/blueprintassignments)
+* [版本（蓝图）](/azure/templates/microsoft.blueprint/blueprints/versions)
+
+对于 Azure 策略，请使用：
+
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
-* [remediations](/azure/templates/microsoft.policyinsights/2019-07-01/remediations)
-* [resourceGroups](/azure/templates/microsoft.resources/resourcegroups)
+* [remediations](/azure/templates/microsoft.policyinsights/remediations)
+
+对于基于角色的访问控制，请使用：
+
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
-* [scopeAssignments](/azure/templates/microsoft.managednetwork/scopeassignments)
+
+对于部署到资源组的嵌套模板，请使用：
+
+* [部署](/azure/templates/microsoft.resources/deployments)
+
+若要创建新的资源组，请使用：
+
+* [resourceGroups](/azure/templates/microsoft.resources/resourcegroups)
+
+若要管理订阅，请使用：
+
+* [预算](/azure/templates/microsoft.consumption/budgets)
 * [supportPlanTypes](/azure/templates/microsoft.addons/supportproviders/supportplantypes)
 * [标记](/azure/templates/microsoft.resources/tags)
-* [workspacesettings](/azure/templates/microsoft.security/workspacesettings)
+
+其他支持的类型包括：
+
+* [scopeAssignments](/azure/templates/microsoft.managednetwork/scopeassignments)
+* [eventSubscriptions](/azure/templates/microsoft.eventgrid/eventsubscriptions)
+* [peerAsns](/azure/templates/microsoft.peering/2019-09-01-preview/peerasns)
 
 ### <a name="schema"></a>架构
 
@@ -91,6 +113,47 @@ New-AzSubscriptionDeployment `
 
 每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
 
+## <a name="deployment-scopes"></a>部署范围
+
+部署到订阅时，可以将订阅或订阅中的任何资源组作为目标。 部署模板的用户必须具有对指定作用域的访问权限。
+
+在模板的 resources 节中定义的资源会应用于订阅。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        subscription-level-resources
+    ],
+    "outputs": {}
+}
+```
+
+若要以订阅中的资源组为目标，请添加嵌套部署并包括 `resourceGroup` 属性。 在下面的示例中，嵌套部署面向名为的资源组 `rg2` 。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "nestedDeployment",
+            "resourceGroup": "rg2",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    nested-template
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
 ## <a name="use-template-functions"></a>使用模板函数
 
 对于订阅级别部署，在使用模板函数时有一些重要注意事项：
@@ -111,9 +174,11 @@ New-AzSubscriptionDeployment `
   /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   ```
 
-## <a name="create-resource-groups"></a>创建资源组
+## <a name="resource-groups"></a>资源组
 
-若要在 Azure 资源管理器模板中创建资源组，请为该资源组定义包含名称和位置的 [Microsoft.Resources/resourceGroups](/azure/templates/microsoft.resources/allversions) 资源。 你可以创建一个资源组并在同一模板中将资源部署到该资源组。
+### <a name="create-resource-groups"></a>创建资源组
+
+若要在 ARM 模板中创建资源组，请使用资源组的名称和位置定义一个[resourceGroups/](/azure/templates/microsoft.resources/allversions)资源组。
 
 以下模板创建空资源组。
 
@@ -133,7 +198,7 @@ New-AzSubscriptionDeployment `
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-06-01",
       "name": "[parameters('rgName')]",
       "location": "[parameters('rgLocation')]",
       "properties": {}
@@ -164,7 +229,7 @@ New-AzSubscriptionDeployment `
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-06-01",
       "location": "[parameters('rgLocation')]",
       "name": "[concat(parameters('rgNamePrefix'), copyIndex())]",
       "copy": {
@@ -180,7 +245,7 @@ New-AzSubscriptionDeployment `
 
 有关资源迭代的信息，请参阅[在 Azure 资源管理器模板中部署资源的多个实例](./copy-resources.md)，以及[教程：使用资源管理器模板创建多个资源实例](./template-tutorial-create-multiple-instances.md)。
 
-## <a name="resource-group-and-resources"></a>资源组和资源
+### <a name="create-resource-group-and-resources"></a>创建资源组和资源
 
 若要创建资源组并向其部署资源，请使用嵌套模板。 嵌套模板定义要部署到资源组的资源。 将嵌套模板设置为依赖于资源组，确保资源组存在，然后再部署资源。 最多可部署到 800 个资源组。
 
@@ -208,14 +273,14 @@ New-AzSubscriptionDeployment `
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-06-01",
       "name": "[parameters('rgName')]",
       "location": "[parameters('rgLocation')]",
       "properties": {}
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-06-01",
       "name": "storageDeployment",
       "resourceGroup": "[parameters('rgName')]",
       "dependsOn": [
@@ -406,14 +471,16 @@ New-AzSubscriptionDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-deployments/blueprints-new-blueprint/azuredeploy.json"
 ```
 
-## <a name="template-samples"></a>模板示例
+## <a name="access-control"></a>访问控制
 
-* [创建资源组、将其锁定并授予其权限](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment)。
-* [创建资源组、策略和策略分配](https://github.com/Azure/azure-docs-json-samples/blob/master/subscription-level-deployment/azuredeploy.json)。
+若要了解如何分配角色，请参阅[使用 RBAC 和 Azure 资源管理器模板管理对 Azure 资源的访问权限](../../role-based-access-control/role-assignments-template.md)。
+
+下面的示例创建一个资源组，对其应用锁，并为主体分配一个角色。
+
+:::code language="json" source="~/quickstart-templates/subscription-deployments/create-rg-lock-role-assignment/azuredeploy.json":::
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何分配角色，请参阅[使用 RBAC 和 Azure 资源管理器模板管理对 Azure 资源的访问权限](../../role-based-access-control/role-assignments-template.md)。
 * 若要通过示例来了解如何为 Azure 安全中心部署工作区设置，请参阅 [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)。
 * 示例模板可在 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments) 找到。
 * 还可在[管理组级别](deploy-to-management-group.md)和[租户级别](deploy-to-tenant.md)部署模板。

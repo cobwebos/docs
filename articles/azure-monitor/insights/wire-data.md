@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/29/2020
-ms.openlocfilehash: afcad5df1072f2eb474e54aaeca866735a12c5c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 340eb1a983f074a5ab934a30c55649852ec08b62
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84424459"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325145"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor 中的 Wire Data 2.0（预览版）解决方案
 
@@ -53,7 +54,7 @@ ms.locfileid: "84424459"
 
 Wire Data 从 Microsoft 依赖关系代理获取其数据。 Dependency Agent 依赖 Log Analytics 代理连接到 Azure Monitor。 这意味着服务器必须首先安装和配置 Log Analytics 代理，然后再安装 Dependency Agent。 下表介绍了 Wire Data 解决方案支持的连接的源。
 
-| **连接的源** | **支持** | **说明** |
+| **连接的源** | 支持 | **说明** |
 | --- | --- | --- |
 | Windows 代理 | 是 | Wire Data 从 Windows 代理计算机分析和收集数据。 <br><br> 除了[适用于 windows 的 Log Analytics 代理](../platform/agent-windows.md)，windows 代理还需要 Microsoft 依赖关系代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](vminsights-enable-overview.md#supported-operating-systems)。 |
 | Linux 代理 | 是 | Wire Data 从 Linux 代理计算机分析和收集数据。<br><br> 除了[适用于 linux 的 Log Analytics 代理](../learn/quick-collect-linux-computer.md)，linux 代理还需要 Microsoft 依赖关系代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](vminsights-enable-overview.md#supported-operating-systems)。 |
@@ -166,7 +167,7 @@ Dependency Agent 本身不传输任何数据，它不需要对防火墙或端口
 
 执行以下步骤，为工作区配置 Wire Data 解决方案。
 
-1. 从[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview)或使用[从解决方案库添加监视解决方案](../../azure-monitor/insights/solutions.md)中所述的过程，启用 Activity Log Analytics 解决方案。
+1. 从[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview)或使用[从解决方案库添加监视解决方案](./solutions.md)中所述的过程，启用 Activity Log Analytics 解决方案。
 2. 在希望从中获取数据的每台计算机上安装 Dependency Agent。 Dependency Agent 可以监视与直接邻居之间的连接，因此不需要在每台计算机上都具有代理。
 
 > [!NOTE]
@@ -181,7 +182,7 @@ Dependency Agent 本身不传输任何数据，它不需要对防火墙或端口
 
 使用以下步骤在运行 Windows 的每台计算机上安装 Dependency Agent：
 
-1. 遵循[从托管在环境中的 Windows 计算机收集数据](../../azure-monitor/platform/agent-windows.md)所述步骤安装 Log Analytics 代理。
+1. 遵循[从托管在环境中的 Windows 计算机收集数据](../platform/agent-windows.md)所述步骤安装 Log Analytics 代理。
 2. 使用上一部分中的链接下载 Windows Dependency Agent，然后使用以下命令运行该代理：`InstallDependencyAgent-Windows.exe`
 3. 按照向导安装代理。
 4. 如果 Dependency Agent 无法启动，请检查日志以获取详细的错误信息。 对于 Windows 代理，日志目录是 %Programfiles%\Microsoft Dependency Agent\logs。
@@ -207,7 +208,7 @@ InstallDependencyAgent-Windows.exe /?
 
 使用以下步骤在每台 Linux 计算机上安装 Dependency Agent：
 
-1. 遵循[从托管在环境中的 Linux 计算机收集数据](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key)所述步骤安装 Log Analytics 代理。
+1. 遵循[从托管在环境中的 Linux 计算机收集数据](../learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key)所述步骤安装 Log Analytics 代理。
 2. 使用上一部分中的链接下载 Linux 依赖关系代理，然后以 root 身份使用以下命令安装该代理：sh InstallDependencyAgent-Linux64.bin
 3. 如果 Dependency Agent 无法启动，请检查日志以获取详细的错误信息。 在 Linux 代理上，日志目录是：/var/opt/microsoft/dependency-agent/log。
 
@@ -383,7 +384,7 @@ rpm -e dependency-agent dependency-agent-connector
 
 将为每种输入数据创建 _WireData_ 类型的记录。 WireData 记录具有下表中所示的属性：
 
-| Property | 说明 |
+| 属性 | 说明 |
 |---|---|
 | Computer | 从中收集了数据的计算机名称 |
 | TimeGenerated | 记录的时间 |
@@ -394,7 +395,7 @@ rpm -e dependency-agent dependency-agent-connector
 | IPVersion | IP 版本 |
 | 方向 | 入站或出站 |
 | MaliciousIP | 某个已知恶意源的 IP 地址 |
-| severity | 可疑恶意软件的严重性 |
+| 严重性 | 可疑恶意软件的严重性 |
 | RemoteIPCountry | 远程 IP 地址所在的国家/地区 |
 | ManagementGroupName | Operations Manager 管理组的名称 |
 | SourceSystem | 从中收集了数据的源 |
@@ -415,4 +416,5 @@ rpm -e dependency-agent dependency-agent-connector
 
 ## <a name="next-steps"></a>后续步骤
 
-- [搜索日志](../../azure-monitor/log-query/log-query-overview.md)以查看详细的线路数据搜索记录。
+- [搜索日志](../log-query/log-query-overview.md)以查看详细的线路数据搜索记录。
+
