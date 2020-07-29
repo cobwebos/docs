@@ -15,6 +15,7 @@ ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.openlocfilehash: 910aaf84d3563d4410826d3c0bdfde3d2dfc75e3
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885627"

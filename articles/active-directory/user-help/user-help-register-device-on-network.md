@@ -15,6 +15,7 @@ ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: 68d7b06aa6473a99422d8cfb51f6e3a465933a0f
 ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83747392"
