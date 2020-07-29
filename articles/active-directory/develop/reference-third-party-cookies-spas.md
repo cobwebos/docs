@@ -13,12 +13,12 @@ ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 1478ee1396390e26d333230b0254578ec748ef6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc93f4062851f01dd127c108ca60bc240a1940e6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477254"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311749"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>在 Safari 和其他阻止第三方 Cookie 的浏览器中处理 ITP
 
@@ -46,7 +46,7 @@ Apple Safari 提供默认已启用的隐私保护功能，称为[智能跟踪保
 
 SPA 有两个额外的限制：
 
-* [必须将重定向 URI 标记为类型 `spa`](v2-oauth2-auth-code-flow.md#setup-required-for-single-page-apps) 才能在登录终结点上启用 CORS。
+* [必须将重定向 URI 标记为类型 `spa`](v2-oauth2-auth-code-flow.md#redirect-uri-setup-required-for-single-page-apps) 才能在登录终结点上启用 CORS。
 * 通过授权代码流颁发给 `spa` 重定向 URI 的刷新令牌的生存期为 24 小时，而不是 90 天。
 
 ![SPA 应用的代码流](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)

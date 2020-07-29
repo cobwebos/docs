@@ -10,28 +10,28 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: f37109cc2677ad5ef18c5677bda9308a78cebccf
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 7d6c0928196c9e8e1abf6aa7f724a58753ce3d2a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851304"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289043"
 ---
 # <a name="add-interaction-rules"></a>添加交互规则
 
-本文介绍*交互规则*。 这些附加规则处理更具体或复杂的情况。 你可以创建自己的自定义交互规则，但在本文中，你将对以下目标方案使用交互规则：
+在本文中，你将了解**交互规则**。 这些是用于处理更具体或复杂情况的其他规则。 虽然你可以自由创作你自己的自定义交互规则，但在本文中，你将对以下目标方案使用交互规则：
 
 * 确认命令
 * 向命令添加单步更正
 
 若要了解有关交互规则的详细信息，请参阅[参考](./custom-commands-references.md)部分。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 你必须已完成以下文章中的步骤：
 > [!div class="checklist"]
-> * [通过简单的命令创建应用程序](./how-to-custom-commands-create-application-with-simple-commands.md)
-> * [向命令添加参数](./how-to-custom-commands-add-parameters-to-commands.md)
+> * [如何：用简单命令创建应用程序](./how-to-custom-commands-create-application-with-simple-commands.md)
+> * [如何：向命令添加参数](./how-to-custom-commands-add-parameters-to-commands.md)
 
 ## <a name="add-confirmations-to-a-command"></a>向命令添加确认
 
@@ -40,7 +40,7 @@ ms.locfileid: "85851304"
 1. 在左窗格中选择 " **SetTemperature** " 命令。
 1. 通过在中间窗格中选择 "**添加**" 来添加交互规则。 然后选择 "**交互规则**" "  >  **确认" 命令**。
 
-    此操作将添加三个交互规则。 此规则要求用户确认警报的日期和时间，并在下一轮需要确认（是/否）。
+    此操作将添加三个交互规则，这些规则将要求用户确认警报的日期和时间，并在下一轮需要确认（是/否）。
 
     1. 按照以下配置修改**Confirm 命令**交互规则：
         1. 重命名**名称**以**确认温度**。
@@ -75,14 +75,14 @@ ms.locfileid: "85851304"
 
 选择**训练**，等待训练完成，然后选择 "**测试**"。
 
-- **输入**：将温度设置为80度。
-- **输出**：正常80？
-- **输入**：否。
+- **输入**：将温度设置为80度
+- **输出**：是否确实要将温度设置为80度？
+- **输入**：否
 - **输出**：没有问题。 什么是温度？
-- **输入**：83度。
-- **输出**：正常83？
-- **输入**：是。
-- **输出**：正常，将温度设置为83度。
+- **输入**：72度
+- **输出**：是否确实要将温度设置为72度？
+- **输入**：是
+- **输出**：正常，将温度设置为83度
 
 
 ## <a name="implement-corrections-in-a-command"></a>在命令中实现更正

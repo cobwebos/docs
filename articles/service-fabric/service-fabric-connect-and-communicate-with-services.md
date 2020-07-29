@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: a873a32aa8c12b535c06711ea7dc7a4aa920a27f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5081ad813d871db0f60284bca4a0c53ee5bbf6b2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257768"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287762"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>在 Service Fabric 中与服务建立连接和通信
 在 Service Fabric 中，服务在 Service Fabric 群集（通常分布在多个 VM 间）中的某个位置运行。 它可以从一个位置移动到另一个位置（由服务所有者移动或由 Service Fabric 自动移动）。 服务不以静态方式绑定到特定计算机或地址。
@@ -58,7 +58,7 @@ Service Fabric 提供一种服务发现和解析服务，称为“命名服务�
 有关如何使用反向代理服务的更多详细信息，请参阅 [Azure Service Fabric 中的反向代理](service-fabric-reverseproxy.md)一文。
 
 ## <a name="connections-from-external-clients"></a>来自外部客户端的连接
-在群集内相互连接的服务通常可以直接访问其他服务的终结点，因为群集中的节点处于相同的本地网络上。 但是在某些环境中，群集可能位于通过一组有限端口对外部入口流量进行路由的负载均衡器之后。 在这些情况下，服务仍可以使用命名服务相互通信和解析地址，但必须执行额外步骤才能允许外部客户端连接到服务。
+在群集内相互连接的服务通常可以直接访问其他服务的终结点，因为群集中的节点处于相同的本地网络上。 但在某些环境中，群集可能位于负载均衡器后面，后者通过一组有限的端口来路由流量。 在这些情况下，服务仍可以使用命名服务相互通信和解析地址，但必须执行额外步骤才能允许外部客户端连接到服务。
 
 ## <a name="service-fabric-in-azure"></a>Azure 中的 Service Fabric
 Azure 中的 Service Fabric 群集位于 Azure 负载均衡器之后。 发送到群集的所有外部流量都必须通过该负载均衡器。 该负载均衡器自动在给定端口上将入站流量转发到打开了相同端口的随机 *节点* 。 Azure 负载均衡器只了解节点上打开的端口，它不了解各个服务打开的端口   。

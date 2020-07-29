@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: df56f53b64a35737700529b80c004efeb31eaabc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4da024eb4eb3747b8e0d6b291ca5b00df12aaeab
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80348662"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367514"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure 应用配置最佳实践
 
@@ -42,7 +42,7 @@ ms.locfileid: "80348662"
 
 应用配置将存储的所有密钥视为独立的实体。 应用配置不会尝试推断键之间的任何关系，也不会根据层次结构继承键值。 不过，你可以通过在应用程序代码中结合使用带有正确配置堆栈的标签来聚合多组密钥。
 
-接下来举例说明。 假设你有一个名为**Asset1**的设置，其值可能因开发环境而异。 创建名为 "Asset1" 的项，其标签为空，标签为 "开发"。 在第一个标签中，你为**Asset1**设置了默认值，并在后者中为 "开发" 指定了一个特定值。
+我们来看一个示例。 假设你有一个名为**Asset1**的设置，其值可能因开发环境而异。 创建名为 "Asset1" 的项，其标签为空，标签为 "开发"。 在第一个标签中，你为**Asset1**设置了默认值，并在后者中为 "开发" 指定了一个特定值。
 
 在代码中，首先检索没有任何标签的键值，然后使用 "开发" 标签第二次检索相同的一组键值。 当你第二次检索值时，将覆盖以前的键值。 .NET Core 配置系统允许您 "堆栈" 多组配置数据彼此之上。 如果一个键存在于多个集中，则使用包含它的最后一个集。 使用新式编程框架（如 .NET Core）时，如果使用本机配置提供程序来访问应用配置，则可免费获取此堆栈功能。 下面的代码片段演示如何在 .NET Core 应用程序中实现堆栈：
 

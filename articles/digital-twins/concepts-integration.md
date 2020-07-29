@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d82289366d79f44460b96d75781cac4fa50de53a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 9c7c1000ed5229886d4a964161042eca6517c230
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129723"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367429"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>将 Azure 数字孪生与其他服务集成
 
@@ -20,11 +20,11 @@ Azure 数字孪生通常与其他服务一起使用。 使用[**事件路由**](
 
 ## <a name="data-ingress"></a>数据入口
 
-Azure 数字孪生可以驱动来自 IoT 中心的数据。 这使你能够从环境中的物理设备收集遥测数据，并使用云中的 Azure 数字孪生图处理此数据。
+Azure 数字孪生可以由任何服务（IoT 中心、逻辑应用、你自己的自定义服务等）中的数据和事件驱动。 这使你能够从环境中的物理设备收集遥测数据，并使用云中的 Azure 数字孪生图处理此数据。
 
 Azure 数字孪生没有内置的 IoT 中心。 你可以使用当前在生产环境中的现有 IoT 中心，或部署新的 IoT 中心。 这使你可以完全访问 IoT 中心的所有设备管理功能。
 
-若要将数据从 IoT 中心引入 Azure 数字孪生，请使用[azure 函数](../azure-functions/functions-overview.md)。 了解有关此模式的详细信息，请参阅[*如何：从 IoT 中心引入遥测*](how-to-ingest-iot-hub-data.md)，或在 Azure 数字孪生教程中亲自尝试[*：连接端到端解决方案*](tutorial-end-to-end.md)。
+若要将数据从任何源引入 Azure 数字孪生，请使用[azure 函数](../azure-functions/functions-overview.md)。 了解有关此模式的详细信息，请参阅[*如何：从 IoT 中心引入遥测*](how-to-ingest-iot-hub-data.md)，或在 Azure 数字孪生教程中亲自尝试[*：连接端到端解决方案*](tutorial-end-to-end.md)。
 
 ## <a name="data-egress-services"></a>数据传出服务
 

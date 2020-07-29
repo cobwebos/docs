@@ -12,12 +12,12 @@ ms.date: 03/28/2019
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae90a682ea2d1abb8159ec28ed02ed122494f512
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0f45cc2444a14fc138d201e3d7f81e687f53d3ac
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019244"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285894"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租户限制管理对 SaaS 云应用程序的访问
 
@@ -69,6 +69,11 @@ ms.locfileid: "87019244"
 
 对于 login.microsoftonline.com、login.microsoft.com 和 login.windows.net 的每个传入请求，请插入两个 HTTP 标头：“Restrict-Access-To-Tenants”和“Restrict-Access-Context” 。
 
+> [!NOTE]
+> 配置 SSL 拦截和标头注入时，请确保排除发往的流量 https://device.login.microsoftonline.com 。 此 URL 用于设备身份验证，执行 TLS 中断和检查可能会影响客户端证书身份验证，这可能会导致设备注册和基于设备的条件访问出现问题。
+
+
+
 这些标头应包含以下元素：
 
 - 对于 "*限制访问到租户*"，请使用的值 \<permitted tenant list\> ，它是要允许用户访问的租户的逗号分隔列表。 已注册到某个租户的任何域都可用于在此列表中标识该租户。 例如，若要允许访问 Contoso 和 Fabrikam 租户，名称/值对如下所示： `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
@@ -81,6 +86,9 @@ ms.locfileid: "87019244"
 为了防止用户插入其自己的包含未批准租户的 HTTP 标头，代理需要替换 Restrict-Access-To-Tenants 标头（如果传入的请求中已提供此标头）。
 
 必须强制客户端针对发往 login.microsoftonline.com、login.microsoft.com 和 login.windows.net 的所有请求使用代理。 例如，如果使用 PAC 文件来指示客户端使用代理，则不应该允许最终用户编辑或禁用这些 PAC 文件。
+
+> [!NOTE]
+> 不要在代理配置中包含 login.microsoftonline.com 下的子域。 这样做会包括 device.login.microsoftonline.com，并可能会影响客户端证书身份验证，该身份验证用于设备注册和基于设备的条件访问方案。 将代理服务器配置为从 TLS 中断和检查和标头注入中排除 device.login.microsoftonline.com。
 
 ## <a name="the-user-experience"></a>用户体验
 

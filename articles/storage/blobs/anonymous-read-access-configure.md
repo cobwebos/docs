@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: a153a3735bbc46dbbce7e58374e1015ac1ec0bfb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: daf4eb4492f723b049dc62a16351e04ffc252337
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133174"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289251"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>配置容器和 blob 的匿名公共读取访问权限
 
-Azure 存储为容器和 blob 支持可选的匿名公共读取访问。 默认情况下，不允许匿名访问数据。 除非显式启用匿名访问，否则，对容器及其 blob 的所有请求都必须使用 Azure Active Directory （Azure AD）或共享密钥授权进行授权。 如果将容器的公共访问级别设置配置为允许匿名访问，则客户端可以读取该容器中的数据而无需对请求进行授权。
+Azure 存储为容器和 blob 支持可选的匿名公共读取访问。 默认情况下，不允许匿名访问数据。 除非显式启用匿名访问，否则对容器及其 blob 的所有请求都必须获得授权。 如果将容器的公共访问级别设置配置为允许匿名访问，则客户端可以读取该容器中的数据而无需对请求进行授权。
 
 > [!WARNING]
 > 当容器配置为公共访问时，任何客户端都可以读取该容器中的数据。 公共访问权限会带来潜在的安全风险，因此，如果你的方案不需要，Microsoft 建议你禁止将其用于存储帐户。 有关详细信息，请参阅[阻止对容器和 blob 的匿名公共读取访问](anonymous-read-access-prevent.md)。
@@ -41,7 +41,7 @@ Azure 存储为容器和 blob 支持可选的匿名公共读取访问。 默认�
 
 ## <a name="allow-or-disallow-public-read-access-for-a-storage-account"></a>允许或禁止对存储帐户进行公共读取访问
 
-默认情况下，允许对存储帐户中的单个容器进行公共访问。 允许公共访问时，具有相应权限的用户可以修改容器的公共访问设置，以启用对该容器中的数据的匿名公共访问。
+默认情况下，将存储帐户配置为允许具有适当权限的用户启用对容器的公共访问。 允许公共访问时，具有相应权限的用户可以修改容器的公共访问设置，以启用对该容器中的数据的匿名公共访问。 Blob 数据永远不能用于公共访问，除非用户使用额外步骤显式配置容器的公共访问设置。
 
 请记住，默认情况下，容器的公共访问权限始终处于关闭状态，必须显式配置为允许匿名请求。 无论存储帐户的设置如何，你的数据将永远不能用于公共访问，除非具有适当权限的用户执行此附加步骤以在容器上启用公共访问。
 

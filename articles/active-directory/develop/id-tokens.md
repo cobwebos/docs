@@ -14,12 +14,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: aca2e0a878470a644aff3a42411b69da9096fc78
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: af554b2055102b12a8c0e89c6301400f76021ede
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170514"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87313330"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft 标识平台 ID 令牌
 
@@ -27,11 +27,11 @@ ms.locfileid: "87170514"
 
 ## <a name="using-the-id_token"></a>使用 id_token
 
-ID 令牌应该用来验证某个用户是否符合其声称的身份，以及用来获取该用户的其他有用信息 - 它不应该用来替代[访问令牌](access-tokens.md)进行授权。 它提供的声明可以用于应用程序内部的用户体验、作为数据库中的键以及提供客户端应用程序访问权限。  为数据库创建键时，不应使用 `idp`，因为它会扰乱来宾方案。  应当仅在 `sub` 上进行键控（这始终是唯一的），如果需要，可以使用 `tid` 进行路由。  如果需要跨服务共享数据，`oid`+`sub`+`tid` 将起作用，因为多个服务都获得相同的 `oid`。
+ID 令牌应该用来验证某个用户是否符合其声称的身份，以及用来获取该用户的其他有用信息 - 它不应该用来替代[访问令牌](access-tokens.md)进行授权。 它所提供的声明可用于应用程序内的 UX，作为[数据库中的键](#using-claims-to-reliably-identify-a-user-subject-and-object-id)，以及提供对客户端应用程序的访问。  
 
 ## <a name="claims-in-an-id_token"></a>id_token 中的声明
 
-Microsoft 标识的 `id_tokens` 为 [JWT](https://tools.ietf.org/html/rfc7519)（JSON Web 令牌），这意味着它们由标头、有效负载和签名部分组成。 可以使用标头和签名来验证令牌的真实性，而有效负载则包含客户端请求的用户信息。 除非另有说明，否则此处列出的所有 JWT 声明均出现在 v1.0 和 v2.0 令牌中。
+`id_tokens`是[jwt](https://tools.ietf.org/html/rfc7519) （JSON Web 令牌），这意味着它们由标头、有效负载和签名部分组成。 可以使用标头和签名来验证令牌的真实性，而有效负载则包含客户端请求的用户信息。 除非另有说明，否则此处列出的所有 JWT 声明均出现在 v1.0 和 v2.0 令牌中。
 
 ### <a name="v10"></a>v1.0
 
@@ -54,7 +54,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |声明 | 格式 | 说明 |
 |-----|--------|-------------|
 |`typ` | 字符串 - 始终为“JWT” | 指示令牌是 JWT 令牌。|
-|`alg` | String | 指示用于对令牌签名的算法。 示例：“RS256” |
+|`alg` | 字符串 | 指示用于对令牌签名的算法。 示例：“RS256” |
 |`kid` | String | 用于对此令牌进行签名的公钥的指纹。 已在 v1.0 和 v2.0 `id_tokens` 中发出。 |
 |`x5t` | String | 与 `kid` 相同（在用法和值方面）。 但是，这是在 v1.0 `id_tokens` 中仅出于兼容目的而发出的旧式声明。 |
 
@@ -76,7 +76,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`preferred_username` | 字符串 | 表示用户的主用户名。 可以是电子邮件地址、电话号码或未指定格式的一般用户名。 其值是可变的，可能随时改变。 由于此值是可变的，因此它不能用于做出授权决定。 需要 `profile` 范围才能接收此声明。|
 |`email` | 字符串 | 对于具有电子邮件地址的来宾帐户，默认情况下会提供 `email` 声明。  你的应用可以使用 `email` [可选声明](active-directory-optional-claims.md)为托管用户（来自与资源相同的租户）请求电子邮件声明。  在 v2.0 终结点上，应用程序还可以请求 `email` OpenID Connect 范围 - 你无需同时请求可选声明和范围来获取声明。  电子邮件声明仅支持来自用户个人资料信息的可寻址邮件。 |
 |`name` | String | 此 `name` 声明提供了标识令牌使用者的用户可读值。 该值不一定唯一，而且可变，只能用于显示目的。 需要 `profile` 作用域才能接收此声明。 |
-|`nonce`| 字符串 | nonce 与发送给 IDP 的原始 /authorize 请求中包含的参数匹配。 如果不匹配，应用程序会拒绝此令牌。 |
+|`nonce`| String | nonce 与发送给 IDP 的原始 /authorize 请求中包含的参数匹配。 如果不匹配，应用程序会拒绝此令牌。 |
 |`oid` | 字符串，GUID | 在 Microsoft 标识系统中，对象的不可变标识符在这种情况下是用户帐户。 此 ID 唯一标识应用程序中的用户 - 同一个用户登录两个不同的应用程序会在 `oid` 声明中收到相同值。 Microsoft Graph 将返回此 ID 作为给定用户帐户的 `id` 属性。 因为 `oid` 允许多个应用关联用户，需要 `profile` 作用域才能收到此声明。 请注意，如果单个用户存在于多个租户中，该用户将包含每个租户中的不同对象 ID - 它们将视为不同帐户，即使用户使用相同的凭据登录到每个帐户，也是如此。 `oid` 声明是一个 GUID，不能重复使用。 |
 |`roles`| 字符串数组 | 分配给已登录用户的角色集。 |
 |`rh` | 不透明字符串 |Azure 用来重新验证令牌的内部声明。 应忽略。 |
@@ -87,14 +87,25 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`ver` | 字符串，1.0 或 2.0 | 指示 id_token 的版本。 |
 
 > [!NOTE]
-> 与上面的示例中所示，1.0 和 v2.0 id_token 的信息量有所不同。 该版本实质上指定了从其颁发它的 Azure AD 平台终结点。 [Azure AD 的 OAuth 实现](about-microsoft-identity-platform.md)已多年来发展。 目前 Azure AD 的应用程序有两个不同的 Outh 终结点。 可以使用归类为 v2.0 或1.0 版的任何新终结点。 这两个终结点的 OAuth 终结点是不同的。 V2.0 终结点较新，而1.0 版终结点的功能将迁移到此终结点。 新开发人员应使用 v2.0 终结点。
+> 与上面的示例中所示，1.0 和 v2.0 id_token 的信息量有所不同。 版本基于请求它的位置的终结点。 尽管现有应用程序可能使用 Azure AD 终结点，但新应用程序应使用 v2.0 "Microsoft 标识平台" 终结点。
 >
 > - 1.0 版： Azure AD 终结点：`https://login.microsoftonline.com/common/oauth2/authorize`
-> - v2.0： Microsoft identitypPlatform 终结点：`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
+> - v2.0： Microsoft 标识平台终结点：`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
+
+### <a name="using-claims-to-reliably-identify-a-user-subject-and-object-id"></a>使用声明可靠标识用户（使用者和对象 ID）
+
+标识用户时（例如，在数据库中查找，或确定其拥有的权限），使用的信息将保持不变并在一段时间内保持不变，这一点非常重要。  旧应用程序有时使用字段，如电子邮件地址、电话号码或 UPN。  所有这些都可能会随时间而变化，并且还可以在一段时间内重复使用-当员工更改其名称时，或者为员工提供一个与以前的、不再存在的员工相关的电子邮件地址。 因此，您的应用程序不使用用户可读的数据来识别用户的用户可读一般是非常**重要**的。  改为使用 OIDC 标准提供的声明，或使用由 Microsoft 提供的扩展声明 `sub` `oid` 。
+
+若要正确地存储每个用户的信息，请使用 `sub` 或 `oid` 单独使用（作为 guid 是唯一的），并根据 `tid` 需要使用分片。  如果需要跨服务共享数据，最好的 `oid` + `tid` 做法是，所有应用程序都获得相同的 `oid` 和 `tid` 声明给给定的用户。  `sub`Microsoft 标识平台中的声明为 "成对"-它是唯一的，它基于令牌收件人、租户和用户的组合。  因此，为给定用户请求 ID 令牌的两个应用将接收不同 `sub` 声明，但 `oid` 对于该用户具有相同的声明。
+
+>[!NOTE]
+> 不要使用 `idp` 声明来存储有关用户的信息，尝试跨租户关联用户。  它在设计上不能充当 `oid` `sub` 用户的用户更改的和声明，以确保应用程序无法跨租户跟踪用户。  
+>
+> 来宾方案（用户托管在一个租户中，在另一个租户中进行身份验证）应将用户视为服务的新用户。  Contoso 租户中的文档和权限不应应用于 Fabrikam 租户。 这对于防止在租户之间发生意外数据泄露非常重要。
 
 ## <a name="validating-an-id_token"></a>验证 id_token
 
-验证 `id_token` 与[验证访问令牌](access-tokens.md#validating-tokens)的第一步类似 - 客户端应验证是否是正确的颁发者发送回令牌且令牌未遭篡改。 由于 `id_tokens` 始终是 JWT 令牌，因此可以使用许多现有的库来验证这些令牌 - 建议使用这其中的一个库来验证，而不要自行进行验证。
+验证 `id_token` 是否类似于[验证访问令牌](access-tokens.md#validating-tokens)的第一步-客户端可以验证正确的颁发者是否已发送回令牌并且未被篡改。 由于 `id_tokens` 始终是 JWT 令牌，因此可以使用许多现有的库来验证这些令牌 - 建议使用这其中的一个库来验证，而不要自行进行验证。  请注意，只有机密客户端（带有机密的客户端）应验证 ID 令牌。  公共应用程序（完全在设备或网络上运行的代码（例如，用户的浏览器或其家庭网络）不能从验证 ID 令牌中获益，因为恶意用户可能会截获和编辑用于验证令牌的密钥。
 
 若要手动验证令牌，请参阅[验证访问令牌](access-tokens.md#validating-tokens)中详述的步骤。 验证令牌上的签名以后，应验证 id_token 中的以下 JWT 声明（这些也可以由令牌验证库来完成）：
 

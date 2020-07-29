@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: 279ba2ca5b82d7bad5b55736179f92a0146bdc84
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/28/2020
+ms.openlocfilehash: 904b3ce1c2d05d713ee1ae99662148217f2a358e
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048153"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337817"
 ---
 # <a name="export-data-module"></a>导出数据模块
 
@@ -42,9 +42,12 @@ ms.locfileid: "87048153"
 
 1. 对于“数据存储”，请从下拉列表中选择现有数据存储。 还可以创建新的数据存储。 通过访问[访问 Azure 存储服务中的数据](../how-to-access-data.md)来查看方法。
 
-1. 复选框“再生成输出”决定是否在运行时执行模块以再生成输出。 
+    > [!NOTE]
+    > 不支持将特定数据类型的数据导出到指定为其他数据类型的 SQL 数据库列。
 
-    默认情况下，它处于未选中状态，这意味着如果模块已经以相同的参数执行，系统将重用上次运行的输出来减少运行时间。 
+1. 复选框“重新生成输出”决定是否在运行时执行模块以重新生成输出。 
+
+    默认情况下，它处于未选中状态，这意味着如果以前已经以相同的参数执行了模块，系统将重用上次运行的输出以减少运行时间。 
 
     如果选中了此复选框，系统将再次执行模块以再生成输出。
 

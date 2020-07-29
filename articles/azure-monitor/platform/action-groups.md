@@ -3,28 +3,26 @@ title: 在 Azure 门户中创建和管理器操作组
 description: 了解如何在 Azure 门户中创建和管理操作组。
 author: dkamstra
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 0c090238192b49af00856f6fcd002e95d154d2c0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a9d0fa9efaa07582212344e617d9a42f264b99ee
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321847"
+ms.locfileid: "87337708"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 可以在订阅中最多配置 2,000 个操作组。
-
-如果将操作配置为通过电子邮件或短信通知某个人员，则他们将收到确认消息，指示他们已被添加到操作组中。
 
 本文演示如何在 Azure 门户中创建和管理操作组。
 
 每个操作包含以下属性：
 
-* **Name**：操作组中的唯一标识符。  
-* **操作类型**：已执行的操作。 示例包括发送语音呼叫、短信、电子邮件，或者触发各种类型的自动化操作。 请参阅本文下文中的“类型”。
-* **详细信息**：因“操作类型”而异的相应详细信息。
+* **类型**：已执行的通知或操作。 示例包括发送语音呼叫、短信、电子邮件，或者触发各种类型的自动化操作。 请参阅本文下文中的“类型”。
+* **Name**：操作组中的唯一标识符。
+* **详细信息**：按*类型*变化的相应详细信息。
 
 有关如何使用 Azure 资源管理器模板以配置操作组的信息，请参阅[操作组资源管理器模板](./action-groups-create-resource-manager-template.md)。
 
@@ -32,33 +30,75 @@ ms.locfileid: "87321847"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“监视”。 “监视”窗格将所有监视设置和数据合并到一个视图中。
 
-1. 选择“警报”，然后选择“管理操作”。
+1. 选择 "**警报**"，然后选择 "**管理操作**"。
 
     ![“管理操作”按钮](./media/action-groups/manage-action-groups.png)
     
-1. 选择“添加操作组”，并填写字段。
+1. 选择 "**添加操作组**"，并在向导体验中填写相关字段。
 
-    ![“添加操作组”命令](./media/action-groups/add-action-group.png)
+    ![“添加操作组”命令](./media/action-groups/add-action-group.PNG)
+
+### <a name="configure-basic-action-group-settings"></a>配置基本操作组设置
+
+在 "**项目详细信息**" 下：
+
+选择要在其中保存操作组的**订阅**和**资源组**。
+
+在“实例详细信息”下：
+
+1. 输入**操作组名称**。
+
+1. 输入**显示名称**。 使用此组发送通知时，显示名称用于代替完整的操作组名称。
+
+      ![“添加操作组”对话框](./media/action-groups/action-group-1-basics.png)
+
+
+### <a name="configure-notifications"></a>配置通知
+
+1. 单击 "**下一步：通知 >** " 按钮转到 "**通知**" 选项卡，或选择屏幕顶部的 "**通知**" 选项卡。
+
+1. 定义要在触发警报时发送的通知的列表。 为每个通知提供以下内容：
+
+    a. **通知类型**：选择要发送的通知的类型。 可用选项是：
+      * 电子邮件 Azure 资源管理器角色-将电子邮件发送给分配到某些订阅级别 ARM 角色的用户。
+      * 电子邮件/短信/推送/语音-将这些通知类型发送给特定收件人。
     
-1. 在“操作组名称”框中输入名称，然后在“短名称”框中输入名称。 使用此组发送通知时，短名称被用来代替完整的操作组名称。
+    b. **名称**：输入通知的唯一名称。
 
-      ![“添加操作组”对话框](./media/action-groups/action-group-define.png)
-
-1. “订阅”框会自动填充当前订阅。 此“订阅”是在其中保存操作组的订阅。
-
-1. 选择在其中保存操作组的“资源组”。
-
-1. 定义操作的列表。 为每个操作提供以下内容：
-
-    1. **Name**：输入此操作的唯一标识符。
-
-    1. **操作类型**：选择自动化 Runbook、Azure 函数、通过电子邮件发送 Azure 资源管理器角色、电子邮件/短信/推送/语音、ITSM、逻辑应用、安全 Webhook、Webhook。
-
-    1. **详细信息**：根据操作类型，输入电话号码、电子邮件地址、webhook URI、Azure 应用、ITSM 连接或自动化 runbook。 对于 ITSM 操作，另外指定 ITSM 工具需要的“工作项”和其他字段。
+    c. **详细信息**：根据所选的通知类型，输入电子邮件地址、电话号码等。
     
-    1. **常见警报架构**：可以选择启用[常见警报架构](https://aka.ms/commonAlertSchemaDocs)，这可获得在 Azure Monitor 中的所有警报服务中具有单个可扩展和统一的警报有效负载的优势。
+    d. **常见警报架构**：可以选择启用[常见警报架构](https://aka.ms/commonAlertSchemaDocs)，这可获得在 Azure Monitor 中的所有警报服务中具有单个可扩展和统一的警报有效负载的优势。
 
-1. 选择“确定”创建操作组。
+    !["通知" 选项卡](./media/action-groups/action-group-2-notifications.png)
+    
+### <a name="configure-actions"></a>配置操作
+
+1. 单击 "**下一步：操作 >** " 按钮转到 "**操作**" 选项卡，或选择屏幕顶部的 "**操作**" 选项卡。
+
+1. 定义触发警报时要触发的操作的列表。 为每个操作提供以下内容：
+
+    a. **操作类型**：选择自动化 Runbook、Azure 函数、ITSM、逻辑应用、安全 Webhook、webhook。
+    
+    b. **名称**：输入操作的唯一名称。
+
+    c. **详细信息**：根据操作类型，输入 webhook URI、Azure 应用、ITSM 连接或自动化 runbook。 对于 ITSM 操作，另外指定 ITSM 工具需要的“工作项”和其他字段。
+    
+    d. **常见警报架构**：可以选择启用[常见警报架构](https://aka.ms/commonAlertSchemaDocs)，这可获得在 Azure Monitor 中的所有警报服务中具有单个可扩展和统一的警报有效负载的优势。
+    
+    !["操作" 选项卡](./media/action-groups/action-group-3-actions.png)
+
+### <a name="create-the-action-group"></a>创建操作组
+
+1. 如果你愿意，可以浏览“选项卡”设置。 这使你可以将键/值对关联到分类的操作组，并且是适用于任何 Azure 资源的功能。
+
+    !["标记" 选项卡](./media/action-groups/action-group-4-tags.png)
+    
+1. 单击“查看 + 创建”以查看设置。 这会快速验证输入，以确保选择所有必填字段。 如果有问题，将在此处报告。 查看设置后，单击 "**创建**" 预配操作组。
+    
+    !["查看" 和 "创建" 选项卡](./media/action-groups/action-group-5-review.png)
+
+> [!NOTE]
+> 将操作配置为通过电子邮件或短信通知人员时，他们将收到一条确认消息，指示已将其添加到操作组。
 
 ## <a name="manage-your-action-groups"></a>管理操作组
 
@@ -115,16 +155,16 @@ ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](./itsmc-overvi
 2. 启用操作组以使用 Azure AD 应用程序。
 
     > [!NOTE]
-    > 此脚本必须由 [Azure AD 应用程序管理员角色](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles)的成员执行。
+    > 你必须是 [Azure AD 应用程序管理员角色](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles)的成员才能执行此脚本。
     
     - 修改 PowerShell 脚本的 Connect-AzureAD 调用以使用 Azure AD 租户 ID。
     - 将 PowerShell 脚本的变量 $myAzureADApplicationObjectId 修改为使用 Azure AD 应用程序的对象 ID。
-    - 运行修改后的脚本。
+    - 运行修改的脚本。
     
 3. 配置操作组安全 Webhook 操作。
     - 从脚本中复制值 $myApp.ObjectId，并将其输入到 Webhook 操作定义中的“应用程序对象 ID”字段。
     
-    ![安全 Webhook 操作](./media/action-groups/action-groups-secure-webhook.png)
+    ![保护 Webhook 操作](./media/action-groups/action-groups-secure-webhook.png)
 
 #### <a name="secure-webhook-powershell-script"></a>安全 Webhook PowerShell 脚本
 

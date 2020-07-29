@@ -3,12 +3,12 @@ title: 在 Azure 开发测试实验室中向实验室添加标记 | Microsoft Do
 description: 了解如何在 Azure 开发测试实验室中向实验室添加标记
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: bf835cee705012fd175a3132edde1d241311c576
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30f0f2ed4b8cc98985326db652371b8ceb16bfb4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483000"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287581"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中向实验室添加标记
 
@@ -29,7 +29,7 @@ ms.locfileid: "85483000"
 
 ## <a name="steps-to-manage-tags-in-an-existing-lab"></a>在现有实验室中管理标记的具体步骤
 
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 如果需要，请选择“所有服务”****，并从列表中选择“开发测试实验室”****。 你的实验室可能已显示在 "**所有资源**" 下的仪表板中。
 1. 在实验室列表中，选择要在其中添加或管理标记的实验室。
 1. 在实验室的“概览”**** 区域中，选择“配置和策略”****。
@@ -52,7 +52,7 @@ ms.locfileid: "85483000"
 * 标记名称不能超过 512 个字符，标记值不能超过 256 个字符。 对于存储帐户，标记名称不能超过 128 个字符，标记值不能超过 256 个字符。
 * 应用于资源组的标记不会被该资源组中的资源继承。
 
-[使用标记整理 Azure 资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)更详细地介绍了如何在 Azure 中使用标记，包括如何使用 PowerShell 或 Azure CLI 管理标记。
+[使用标记整理 Azure 资源](../azure-resource-manager/management/tag-resources.md)更详细地介绍了如何在 Azure 中使用标记，包括如何使用 PowerShell 或 Azure CLI 管理标记。
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

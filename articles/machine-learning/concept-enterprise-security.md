@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: 94724ea44b52ae885594fe55b67d74a03e339dab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 723c30856593044c91220b4e3ab267ab140c5ffd
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012845"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366921"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure 机器学习的企业安全性
 
@@ -75,7 +75,7 @@ ms.locfileid: "87012845"
 | 查看模型/映像 | ✓ | ✓ | ✓ |
 | 调用 Web 服务 | ✓ | ✓ | ✓ |
 
-如果内置角色不符合你的需求，可以创建自定义角色。 只有针对工作区上和机器学习计算的操作支持自定义角色。 自定义角色对工作区及其中的计算资源拥有读取、写入或删除权限。 可以使角色在特定工作区级别、特定资源组级别或特定订阅级别可用。 有关详细信息，请参阅[管理 Azure 机器学习工作区中的用户和角色](how-to-assign-roles.md)。
+如果内置角色不符合你的需求，可以创建自定义角色。 支持自定义角色来控制工作区内的所有操作，例如创建计算、提交运行、注册数据存储或部署模型。 自定义角色可以对工作区的各种资源（如群集、数据存储、模型和终结点）拥有读取、写入或删除权限。 可以使角色在特定工作区级别、特定资源组级别或特定订阅级别可用。 有关详细信息，请参阅[管理 Azure 机器学习工作区中的用户和角色](how-to-assign-roles.md)。
 
 > [!WARNING]
 > Azure Active Directory 企业对企业协作支持 Azure 机器学习，但目前 Azure Active Directory 的企业对消费者协作不支持。
@@ -99,7 +99,7 @@ ms.locfileid: "87012845"
 
 不建议管理员撤销托管标识对上表中所述资源的访问权限。 可以使用重新同步密钥操作来恢复访问权限。
 
-Azure 机器学习将在订阅中为每个工作区区域创建一个额外的应用程序（名称以 `aml-` 或 `Microsoft-AzureML-Support-App-` 开头），该应用程序具有参与者级别的访问权限。 例如，在同一订阅中，如果在美国东部和欧洲北部各有一个工作区，则会看到两个这样的应用程序。 通过这些应用程序，Azure 机器学习可帮助管理计算资源。
+对于每个工作区区域，Azure 机器学习将在订阅中创建一个拥有参与者级别访问权限的附加应用程序（名称以 `aml-` 或 `Microsoft-AzureML-Support-App-` 开头）。 例如，在同一订阅中，如果在美国东部和欧洲北部各有一个工作区，则会看到两个这样的应用程序。 Azure 机器学习可以通过这些应用程序来帮助你管理计算资源。
 
 ## <a name="network-security"></a>网络安全性
 
@@ -155,10 +155,6 @@ Azure 机器学习在 Azure Cosmos DB 实例中存储指标和元数据。 此�
 
 * 在订阅中注册 Microsoft.MachineLearning 和 Microsoft.DocumentDB 资源提供程序（如果尚未注册）。
 
-* 授予机器学习应用（在标识和访问管理中）对订阅的参与者权限。
-
-    ![在门户中的标识和访问管理中向“Azure 机器学习应用”授权](./media/concept-enterprise-security/authorize-azure-machine-learning.png)
-
 * 创建 Azure 机器学习工作区时，请使用以下参数。 这两个参数都是必需的，并且在 SDK、CLI、REST API 和资源管理器模板中受支持。
 
     * `resource_cmk_uri`：此参数是密钥保管库中客户管理的密钥的完整资源 URI，其中包括[密钥的版本信息](../key-vault/about-keys-secrets-and-certificates.md#objects-identifiers-and-versioning)。 
@@ -185,9 +181,9 @@ Azure 机器学习在 Azure Cosmos DB 实例中存储指标和元数据。 此�
 若要使用自己的（客户管理的）密钥来加密 Azure 容器注册表，需要创建自己的 ACR 并在预配工作区时附加它，或者加密预配工作区时创建的默认实例。
 
 > [!IMPORTANT]
-> Azure 机器学习要求在 Azure 容器注册表中启用管理员帐户。 默认情况下，当你创建容器注册表时，将禁用此设置。 有关启用管理员帐户的信息，请参阅[管理员帐户](/azure/container-registry/container-registry-authentication#admin-account)。
+> Azure 机器学习要求在 Azure 容器注册表中启用管理员帐户。 创建容器注册表时，默认情况下此设置已禁用。 有关如何启用管理员帐户的信息，请参阅[管理员帐户](/azure/container-registry/container-registry-authentication#admin-account)。
 >
-> 为工作区创建 Azure 容器注册表后，请不要将其删除。 删除 Azure 容器注册表会破坏 Azure 机器学习工作区。
+> 为工作区创建 Azure 容器注册表后，请不要将其删除。 删除该注册表将损坏 Azure 机器学习工作区。
 
 有关使用现有 Azure 容器注册表创建工作区的示例，请参阅以下文章：
 
@@ -293,7 +289,7 @@ Microsoft 还建议不要在环境变量中存储敏感信息（如帐户密钥�
 * RequestUrl
 * StatusCode
 * RequestId
-* Duration
+* 持续时间
 
 > [!IMPORTANT]
 > Azure 机器学习工作区中的一些操作不会将信息记录到活动日志中。 例如，不会记录训练运行的启动和模型的注册。

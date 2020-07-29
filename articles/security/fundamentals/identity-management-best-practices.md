@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 35fd95272530ed31f8ee197679e9368ca74ebef1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 852a8c8eb7e6a87739c58967eefd6c18e996b225
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089662"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367395"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 
@@ -204,7 +204,7 @@ ms.locfileid: "87089662"
 可以使用 [RBAC](/azure/role-based-access-control/overview) 在一定范围内向用户、组和应用分配权限。 角色分配的范围可以是订阅、资源组或单个资源。
 
 **最佳做法**：在团队中分离职责，只向用户授予执行作业所需的访问权限。 只允许在特定范围内执行特定操作，而不要在 Azure 订阅或资源中向每个人都授予无限制权限。
-**详细信息**：使用 Azure 中[内置的 RBAC 角色](/azure/role-based-access-control/built-in-roles)向用户分配权限。
+**详细信息**：使用 azure 中的[azure 内置角色](/azure/role-based-access-control/built-in-roles)向用户分配权限。
 
 > [!Note]
 > 特定的权限会造成不必要的复杂性和混乱，进而积累为很难在不担心造成破坏的情况下进行修复的“旧”配置。 避免特定于资源的权限。 而是将管理组用于企业范围内的权限，并将资源组用于订阅中的权限。 避免用户特定的权限。 而是向 Azure AD 中的组分配权限。

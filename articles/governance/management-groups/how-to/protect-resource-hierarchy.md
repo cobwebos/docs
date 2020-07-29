@@ -3,12 +3,12 @@ title: 如何保护资源层次结构 - Azure 治理
 description: 了解如何通过层次结构设置（包括设置默认管理组）来保护资源层次结构。
 ms.date: 05/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 50b5ba1bccf3d603b6d273892d0c903d433786f3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 2f8d3d7ff85552fe18a49137450aefe91d0d02c9
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127990"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366766"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>如何保护资源层次结构
 
@@ -23,7 +23,7 @@ ms.locfileid: "87127990"
 - `Microsoft.Management/managementgroups/settings/write`
 - `Microsoft.Management/managementgroups/settings/read`
 
-这些操作只允许用户读取和更新层次结构设置。 这些操作不会提供对管理组层次结构或层次结构中的资源的任何其他访问权限。 这两个操作均可用于内置 RBAC 角色“层次结构设置管理员”。
+这些操作只允许用户读取和更新层次结构设置。 这些操作不会提供对管理组层次结构或层次结构中的资源的任何其他访问权限。 Azure 内置角色**层次结构设置管理员**中提供了这两项操作。
 
 ## <a name="setting---default-management-group"></a>设置 - 默认管理组
 
