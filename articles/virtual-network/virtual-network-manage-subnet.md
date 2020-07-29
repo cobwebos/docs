@@ -1,7 +1,7 @@
 ---
 title: 添加、更改或删除 Azure 虚拟网络子网
 titlesuffix: Azure Virtual Network
-description: 了解如何在 Azure 中添加、更改或删除虚拟网络子网。
+description: 了解在何处可以找到有关虚拟网络的信息，以及如何在 Azure 中添加、更改或删除虚拟网络子网。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2020
 ms.author: kumud
-ms.openlocfilehash: b43fb027116d746a60c9cd4e690e63181fff4ade
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15fe5d6d16948875253d65e70d9d440214a4a2e8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711011"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286098"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>添加、更改或删除虚拟网络子网
 
@@ -31,7 +32,7 @@ ms.locfileid: "84711011"
 
 - **PowerShell 用户**：运行[Azure Cloud Shell](https://shell.azure.com/powershell)中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 在 "Azure Cloud Shell 浏览器" 选项卡中，找到 "**选择环境**" 下拉列表，然后选择 " **PowerShell** " （如果尚未选择）。
 
-    如果在本地运行 PowerShell，请使用 Azure PowerShell 模块版本1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az.Network` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 另请运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+    如果在本地运行 PowerShell，请使用 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az.Network` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 另请运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 - **Azure 命令行接口（CLI）用户**：运行[Azure Cloud Shell](https://shell.azure.com/bash)中的命令，或从计算机运行 CLI。 如果在本地运行 Azure CLI，请使用 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 另请运行 `az login` 以创建与 Azure 的连接。
 
@@ -39,7 +40,7 @@ ms.locfileid: "84711011"
 
 ## <a name="add-a-subnet"></a>添加子网
 
-1. 转到 [Azure 门户](https://portal.azure.com)来查看虚拟网络。 搜索并选择“虚拟网络”。****
+1. 转到 [Azure 门户](https://portal.azure.com)来查看虚拟网络。 搜索并选择“虚拟网络”。
 
 2. 选择要将子网添加到的虚拟网络的名称。
 
@@ -47,7 +48,7 @@ ms.locfileid: "84711011"
 
 4. 在“添加子网”对话框中，输入以下设置的值****：
 
-    | 设置 | 描述 |
+    | 设置 | 说明 |
     | --- | --- |
     | **名称** | 名称在虚拟网络中必须唯一。 为了最大程度地兼容其他 Azure 服务，我们建议使用字母作为名称的第一个字符。 例如，Azure 应用程序网关不会部署到名称以数字开头的子网中。 |
     | **地址范围** | <p>此范围在虚拟网络的地址空间中必须唯一。 此范围不能与虚拟网络中的其他子网地址范围重叠。 必须使用无类域间路由 (CIDR) 表示法指定地址空间。</p><p>例如，在地址空间为 10.0.0.0/16 的虚拟网络中，可将子网地址空间定义为 10.0.0.0/22** **。 可以指定的最小范围为 /29，为子网提供八个 IP 地址**。 Azure 保留每个子网中的第一个地址和最后一个地址，以确保协议一致性。 此外还会保留三个地址供 Azure 服务使用。 因此，使用 /29 地址范围定义子网时，子网中会有三个可用 IP 地址**。</p><p>如果打算将虚拟网络连接到 VPN 网关，必须创建一个网关子网。 详细了解[网关子网地址范围具体考虑事项](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)。 在特定条件下，可在添加子网后更改地址范围。 若要了解有关如何更改子网地址范围的相关信息，请参阅[更改子网设置](#change-subnet-settings)。</p> |
@@ -67,7 +68,7 @@ ms.locfileid: "84711011"
 
 ## <a name="change-subnet-settings"></a>更改子网设置
 
-1. 转到 [Azure 门户](https://portal.azure.com)来查看虚拟网络。 搜索并选择“虚拟网络”。****
+1. 转到 [Azure 门户](https://portal.azure.com)来查看虚拟网络。 搜索并选择“虚拟网络”。
 
 2. 选择包含要更改的子网的虚拟网络的名称。
 
@@ -98,7 +99,7 @@ ms.locfileid: "84711011"
 
 仅当子网中无任何资源时，才可删除该子网。 如果子网中存在资源，则必须先删除这些资源，才能删除该子网。 删除资源所采取的步骤因资源而异。 若要了解如何删除子网中的资源，请阅读其中每个资源类型的文档。
 
-1. 转到 [Azure 门户](https://portal.azure.com)来查看虚拟网络。 搜索并选择“虚拟网络”。****
+1. 转到 [Azure 门户](https://portal.azure.com)来查看虚拟网络。 搜索并选择“虚拟网络”。
 
 2. 选择包含要删除的子网的虚拟网络的名称。
 

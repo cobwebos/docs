@@ -1,5 +1,5 @@
 ---
-title: 设置实例和身份验证（脚本）
+title: 设置实例和身份验证（已编写脚本）
 titleSuffix: Azure Digital Twins
 description: 请参阅如何设置 Azure 数字孪生服务的实例，包括正确的身份验证。 脚本版本。
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c601d01589a89667b630d04ddb19dfbe190cca9f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 522096b921faf34130f0c37f727d89c7bf95c530
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125765"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337902"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>设置 Azure 数字孪生实例和身份验证（脚本）
 
@@ -49,7 +49,7 @@ ms.locfileid: "87125765"
     * 对于实例：要使用的 Azure 订阅的*订阅 ID*
     * 对于实例：要在其中部署实例的*位置*。 若要查看哪些区域支持 Azure 数字孪生，请访问[*按区域提供的 azure 产品*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)。
     * 对于实例：*资源组*名称。 你可以使用现有资源组，或者输入一个新名称来创建。
-    * 对于实例： Azure 数字孪生实例的*名称*。 新实例的名称在该区域中必须是唯一的（也就是说，如果该区域中的另一个 Azure 数字孪生实例已在使用你选择的名称，则系统将要求你选择其他名称）。
+    * 对于实例： Azure 数字孪生实例的*名称*。 新实例的名称在你的订阅的区域中必须是唯一的（也就是说，如果你的订阅在已使用所选名称的区域中有另一个 Azure 数字孪生实例，则会要求你选择其他名称）。
     * 对于应用注册：要与注册关联的*Azure AD 应用程序显示名称*。 通过此应用注册，你可以配置对[Azure 数字孪生 api](how-to-use-apis-sdks.md)的访问权限。 以后，客户端应用程序将对应用程序注册进行身份验证，因此，会将配置的访问权限授予 Api。
     * 对于应用注册： Azure AD 应用程序的*Azure AD 应用程序答复 URL* 。 您可以使用 `http://localhost` 。
 

@@ -6,12 +6,13 @@ ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
-ms.openlocfilehash: f7c0cb893f65688145811cbd2a0280c2d232d7a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: b0c9ef99e4cbb0683273d613d3a85e7f6455a40d
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261913"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366715"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>从 CouchBase 迁移到 Azure Cosmos DB SQL API
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e4e2a1fc08851e4e625bfc59419fc274ebbce1c8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 578560eccb13ff4b9169e11b0674859acc1fc901
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251190"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285860"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中实现业务连续性和灾难恢复的最佳做法
 
@@ -57,9 +57,9 @@ AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部�
 
 有关如何设置终结点和路由的信息，请参阅[使用流量管理器配置地理流量路由方法](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)。
 
-### <a name="layer-7-application-routing-with-azure-front-door-service"></a>第7层应用程序通过 Azure 前门服务进行路由
+### <a name="application-routing-with-azure-front-door-service"></a>应用程序与 Azure 前门服务的路由
 
-流量管理器使用 DNS (第3层) 来整形流量。 [Azure 前门服务](../frontdoor/front-door-overview.md)提供 HTTP/HTTPS (第7层) 路由选项。 Azure 前门服务的其他功能包括 TLS 终止、自定义域、web 应用程序防火墙、URL 重写和会话相关性。 查看应用程序流量的需求，以了解哪种解决方案是最合适。
+使用基于 TCP 的拆分协议， [Azure 前门服务](../frontdoor/front-door-overview.md)确保最终用户能够立即连接到最近的前门 POP （存在点）。 Azure 前门服务的其他功能包括 TLS 终止、自定义域、web 应用程序防火墙、URL 重写和会话相关性。 查看应用程序流量的需求，以了解哪种解决方案是最合适。
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>使用虚拟网络对等互连将区域互连
 

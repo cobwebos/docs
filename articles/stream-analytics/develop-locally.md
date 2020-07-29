@@ -6,11 +6,12 @@ author: mamccrea
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.service: stream-analytics
-ms.openlocfilehash: 736fce1d4b347e36ad5c10ca89ad0627104a0232
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70097ad02c17f8c23bd9613487a905ccd562635e
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80879838"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337545"
 ---
 # <a name="develop-and-debug-azure-stream-analytics-jobs-locally"></a>在本地开发和调试 Azure 流分析作业
 
@@ -24,7 +25,7 @@ ms.locfileid: "80879838"
 
 |环境                              |说明    |
 |-----------------------------------------|------------|
-|[Visual Studio Code](visual-studio-code-explore-jobs.md)| Visual Studio Code 的 [Azure 流分析工具扩展](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa)允许你使用丰富的 IntelliSense 和原生源代码管理在本地和云中创作、管理和测试你的流分析作业。 支持在 Linux、MacOS 和 Windows 上进行开发。 若要了解详细信息，请参阅[在 Visual Studio Code 中创建 Azure 流分析作业](quick-create-vs-code.md)。|
+|[Visual Studio Code](visual-studio-code-explore-jobs.md)| 利用适用于 Visual Studio Code 的[Azure 流分析工具扩展](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa)，可以通过丰富的 IntelliSense 和本机源代码管理，在本地和云中创作、管理和测试流分析作业。 支持在 Linux、MacOS 和 Windows 上进行开发。 若要了解详细信息，请参阅[在 Visual Studio Code 中创建 Azure 流分析作业](quick-create-vs-code.md)。 扩展还支持[Visual Studio Codespaces](https://visualstudio.microsoft.com/services/visual-studio-codespaces/) ，它是云托管的开发环境。|
 |[Visual Studio 2019](stream-analytics-tools-for-visual-studio-install.md) |流分析工具是 Visual Studio 中 Azure 开发以及数据存储和处理工作负载的一部分。 可以使用 Visual Studio 编写自定义 C# 用户定义函数和反序列化程序。 若要了解详细信息，请参阅[使用 Visual Studio 创建 Azure 流分析作业](stream-analytics-quick-create-vs.md)。|
 |[命令提示符或终端](stream-analytics-tools-for-visual-studio-cicd.md)|Azure 流分析 CI/CD NuGet 包提供了用于在任意计算机上进行 Visual Studio 项目生成、本地测试的工具。 Azure 流分析 CI/CD npm 包提供了用于在任意计算机上进行 Visual Studio Code 项目生成（将生成 Azure 资源管理器模板）的工具。|
 

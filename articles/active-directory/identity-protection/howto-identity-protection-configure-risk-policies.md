@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e134c2e49df5b53ed37acddd86e41af17f43a048
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54a6c455f3702433398035a2eb6398c39b609ce9
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84464158"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337443"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>如何：配置和启用风险策略
 
@@ -30,7 +31,7 @@ ms.locfileid: "84464158"
 
 > [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 如果你的组织希望允许用户在检测到风险时自行修正，则用户必须注册自助密码重置和 Azure 多重身份验证。 为了获得最佳体验，我们建议[启用组合的安全信息注册体验](../authentication/howto-registration-mfa-sspr-combined.md)。 允许用户在无需管理员干预的情况下更快速地重新获得工作效率。 在事实后，管理员仍然可以看到这些事件并进行调查。 
 
@@ -54,7 +55,7 @@ Microsoft 建议将 "用户风险策略阈值" 设置为 "**高**"，并将 "登
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
 1. 浏览到**Azure Active Directory**  >  **安全**  >  **标识保护**  >  **概述**。
-1. 选择 "**配置用户风险策略**"。
+1. 选择 "**用户风险策略**"。
    1. 在**分配**下
       1. **用户**-选择 "**所有用户**" **，或选择 "个人和组**" （如果限制你的部署）。
          1. 还可以选择从策略中排除用户。
@@ -63,7 +64,7 @@ Microsoft 建议将 "用户风险策略阈值" 设置为 "**高**"，并将 "登
       1. **访问**-Microsoft 的建议是**允许访问**并**需要更改密码**。
    1. **强制执行策略**  - **开启**
    1. **保存**-此操作将返回到 "**概述**" 页。
-1. 选择 "**配置登录风险策略"**。
+1. 选择 **"登录风险策略"**。
    1. 在**分配**下
       1. **用户**-选择 "**所有用户**" **，或选择 "个人和组**" （如果限制你的部署）。
          1. 还可以选择从策略中排除用户。

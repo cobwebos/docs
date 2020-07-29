@@ -4,15 +4,15 @@ description: 用于创建新的或更新现有产品/服务的 API。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 249eb982ee701ea0a442121c02e55ad98e1f6fb9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 68416fa91f6b75fb3ef2b91c1297f13d84f2bdab
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011985"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292963"
 ---
 <a name="create-or-modify-an-offer"></a>创建或修改产品/服务
 =========================
@@ -28,17 +28,17 @@ ms.locfileid: "87011985"
 <a name="uri-parameters"></a>URI 参数
 --------------
 
-|  **名称**         |  **描述**                      |  **Data type**  |
+|  **Name**         |  **说明**                      |  **Data type**  |
 |  --------         |  ----------------                     |  -------------  |
 | publisherId       |  发布者标识符，例如 `contoso` |   字符串 |
 | offerId           |  产品/服务标识符                     |   字符串        |
-| api-version       |  API 最新版本            |   日期           |
+| api-version       |  API 最新版本            |   Date           |
 |  |  |  |
 
 <a name="header"></a>标头
 ------
 
-|  **名称**        |  **值**               |
+|  **Name**        |  **值**               |
 |  ---------       |  ----------              | 
 | Content-Type     | `application/json`       |
 | 授权    | `Bearer YOUR_TOKEN`      |
@@ -271,7 +271,7 @@ ms.locfileid: "87011985"
 
 ### <a name="response-status-codes"></a>响应状态代码
 
-| **代码**  |  **描述**                                                                            |
+| **代码**  |  **说明**                                                                            |
 | --------  |  ---------------                                                                            |
 |  200      | `OK`. 请求已成功处理，并且已成功修改产品/服务。           |
 |  201      | `Created`. 请求已成功处理，并且已成功创建产品/服务。   |

@@ -4,15 +4,15 @@ description: 了解如何使用多个虚拟机来确保 Linux 应用程序在 Az
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 5d15db9c9ef6e1cd637d9585fe07be269346f161
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4d908e47892f3def840f5f4dd673c83593a7b571
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502263"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292420"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>管理 Linux 虚拟机的可用性
 

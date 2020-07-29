@@ -1,7 +1,7 @@
 ---
 title: Azure PowerShell 脚本示例 - 配置 IPv6 终结点
 titlesuffix: Azure Virtual Network
-description: 使用 Powershell 在 Azure 虚拟网络中启用 IPv6 终结点
+description: 使用 Azure PowerShell 脚本配置虚拟网络中的 IPv6 终结点，并查找指向特定于命令的文档的链接，以帮助使用 PowerShell 示例。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 667cf9d8a902a329b6b0cfc0d183e4f229e59372
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 83153023d7d58f215d5e62d8502baa01b99ed2e1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068653"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291888"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-with-azure-powershell-script-sample-preview"></a>在虚拟网络中配置 IPv6 终结点，Azure PowerShell 脚本示例（预览版）
 
@@ -250,7 +250,7 @@ Remove-AzResourceGroup -Name <resourcegroupname> -Force
 
 此脚本使用以下命令创建资源组、虚拟机、可用性集、负载均衡器和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| 命令 | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | 创建子网配置。 在虚拟网络创建过程中会使用此配置。 |

@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: aa3faad88fb5474b34ff6855690882141b2e4843
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1057bb908e973c74b6dfb70931469e27f77512de
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046307"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292659"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c"></a>使用 C 从 Azure 时序见解 Gen2 环境查询数据#
 
@@ -39,9 +39,9 @@ ms.locfileid: "87046307"
     * [Gen2 查询 API](https://docs.microsoft.com/rest/api/time-series-insights/preview#query-apis)
         * [获取事件 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)、[获取时序 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries) 和[获取聚合时序 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
     * [时序模型 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
-        * [获取层次结构 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/get) 和[层次结构批处理 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch)
-        * [获取类型 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/get) 和[类型批处理 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
-        * [获取实例 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/get) 和[实例批处理 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
+        * [获取层次结构 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies) 和[层次结构批处理 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch)
+        * [获取类型 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes) 和[类型批处理 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
+        * [获取实例 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances) 和[实例批处理 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
 * 高级[搜索](https://docs.microsoft.com/rest/api/time-series-insights/preview#search-features)和 [TSX](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) 功能。
 
 ## <a name="prerequisites-and-setup"></a>先决条件和设置

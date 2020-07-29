@@ -1,15 +1,15 @@
 ---
 title: Azure Kubernetes 服务（AKS）上的 Hyperledger 结构联合会
 description: 如何在 Azure Kubernetes Service 上部署和配置 Hyperledger Fabric 联合会网络
-ms.date: 07/07/2020
+ms.date: 07/27/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 1e90eeccb015b4d5ef78b79297565ddde9cfa305
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fe06af9364ceb1d97588cac88335cb39c45f0e0f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081265"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286047"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务（AKS）上的 Hyperledger 结构联合会
 
@@ -28,13 +28,15 @@ ms.locfileid: "87081265"
 
 选项 | 服务模型 | 常见用例
 -------|---------------|-----------------
-解决方案模板 | IaaS | 解决方案模板是 Azure 资源管理器模板，可用于预配完全配置的区块链网络拓扑。 模板为给定区块链网络类型部署和配置 Microsoft Azure 计算、网络和存储服务。 提供解决方案模板时没有服务级别协议。 使用[Microsoft 问答&问题页面](/answers/topics/azure-blockchain-workbench.html)获取支持。
+解决方案模板 | IaaS | 解决方案模板是 Azure 资源管理器模板，可用于预配完全配置的区块链网络拓扑。 模板为给定区块链网络类型部署和配置 Microsoft Azure 计算、网络和存储服务。 提供解决方案模板时没有服务级别协议。 使用 [Microsoft Q&A 问题页面](/answers/topics/azure-blockchain-workbench.html)获取支持。
 [Azure 区块链服务](../service/overview.md) | PaaS | Azure 区块链服务预览版简化了联合会区块链网络的构成、管理和监管。 将 Azure 区块链服务用于需要 PaaS、联合会管理或合同和事务隐私的解决方案。
-[Azure Blockchain Workbench](../workbench/overview.md) | IaaS 和 PaaS | Azure Blockchain Workbench 预览版是 Azure 服务和功能的集合，旨在帮助创建和部署区块链应用程序，以便与其他组织共享业务流程和数据。 使用 Azure 区块链工作台为区块链解决方案或区块链应用程序概念证明。 服务级别协议未随 Azure Blockchain Workbench 一起提供。 使用[Microsoft 问答&问题页面](/answers/topics/azure-blockchain-workbench.html)获取支持。
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS 和 PaaS | Azure Blockchain Workbench 预览版是 Azure 服务和功能的集合，旨在帮助创建和部署区块链应用程序，以便与其他组织共享业务流程和数据。 使用 Azure 区块链工作台为区块链解决方案或区块链应用程序概念证明。 服务级别协议未随 Azure Blockchain Workbench 一起提供。 使用 [Microsoft Q&A 问题页面](/answers/topics/azure-blockchain-workbench.html)获取支持。
 
 ## <a name="hyperledger-fabric-consortium-architecture"></a>Hyperledger 结构联合会体系结构
 
-若要在 Azure 上构建 Hyperledger Fabric 网络，需要部署对等节点的订购服务和组织。 作为模板部署的一部分创建的不同基础组件如下：
+若要在 Azure 上构建 Hyperledger Fabric 网络，需要部署对等节点的订购服务和组织。 使用 Azure Kubernetes 服务解决方案模板上的 Hyperledger Fabric，可以创建订单节点或对等节点。 需要为要创建的每个节点部署模板。
+
+作为模板部署的一部分创建的不同基础组件如下：
 
 - **Orderer 节点**：负责分类帐中的事务排序的节点。 有序节点与其他节点一起构成了 Hyperledger Fabric 网络的订购服务。
 
@@ -58,22 +60,13 @@ ms.locfileid: "87081265"
 - **Azure 托管磁盘**： azure 托管磁盘适用于分类帐和对等节点世界状态数据库的持久存储。
 - **公共 ip**：部署的 AKS 群集的公共 ip 终结点，用于与群集进行交互。
 
-## <a name="hyperledger-fabric-blockchain-network-setup"></a>Hyperledger Fabric 区块链网络安装程序
+## <a name="deploy-the-ordererpeer-organization"></a>部署 orderer/对等组织
 
 开始之前，需要一个能够支持部署多个虚拟机和标准存储帐户的 Azure 订阅。 如果没有 Azure 订阅，可以[创建一个免费的 Azure 帐户](https://azure.microsoft.com/free/)。
 
-使用以下步骤设置 Hyperledger Fabric 区块链网络：
+若要开始 HLF 网络组件部署，请导航到[Azure 门户](https://portal.azure.com)。
 
-- [部署 orderer/对等组织](#deploy-the-ordererpeer-organization)
-- [构建联合会](#build-the-consortium)
-
-## <a name="deploy-the-ordererpeer-organization"></a>部署 orderer/对等组织
-
-若要开始 HLF 网络组件部署，请导航到[Azure 门户](https://portal.azure.com)。 选择 "**创建资源 > 区块链** **" > 在 Azure Kubernetes 服务上搜索 "Hyperledger Fabric"**。
-
-1. 选择 "**创建**" 以启动模板部署。 在**Azure Kubernetes Service 上创建 Hyperledger Fabric**会显示。
-
-    ![Azure Kubernetes 服务模板上的 Hyperledger 结构](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-fabric-aks.png)
+1. 选择 "**创建资源 > 区块链** **" > 在 Azure Kubernetes Service （预览版）中搜索 Hyperledger Fabric**。
 
 2. 在 "**基本**信息" 页中输入 "项目详细信息"。
 
@@ -136,7 +129,7 @@ ms.locfileid: "87081265"
 > 提供的 Azure HLF （azhlf）脚本仅用于帮助演示/开发测试方案。 此脚本创建的通道和联盟具有基本的 HLF 策略，可简化演示/开发测试方案。 对于生产设置，我们建议根据组织的符合性需求，使用本机 HLF Api 更新通道/联合会 HLF 策略。
 
 
-运行 Azure HLF 脚本的所有命令都可以通过 Azure Bash 命令行执行。 接口（CLI）。 可以通过登录到 Azure shell web 版本  ![Azure Kubernetes 服务模板上的 Hyperledger 结构](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) 选项位于 Azure 门户的右上角。 在命令提示符下，键入 bash，然后输入切换到 bash CLI。
+运行 Azure HLF 脚本的所有命令都可以通过 Azure Bash 命令行执行。 接口（CLI）。 可以通过   ![ Azure 门户右上角的 "Azure Kubernetes 服务模板" 选项，通过 Hyperledger Fabric 登录到 azure shell web 版本 ](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) 。 在命令提示符下，键入 bash，然后输入以切换到 bash CLI 或从 shell 工具栏选择*bash* 。
 
 有关详细信息，请参阅[Azure shell](../../cloud-shell/overview.md) 。
 
@@ -147,17 +140,17 @@ ms.locfileid: "87081265"
 
 ![Azure Kubernetes 服务模板上的 Hyperledger 结构](./media/hyperledger-fabric-consortium-azure-kubernetes-service/process-to-build-consortium-flow-chart.png)
 
-对于客户端应用程序的初始设置，请执行以下命令： 
+完成客户端应用程序的初始设置部分： 
 
-1.  [下载客户端应用程序文件](#download-client-application-files)
-2.  [设置环境变量](#setup-environment-variables)
-3.  [导入组织连接配置文件、管理员用户和 MSP](#import-organization-connection-profile-admin-user-identity-and-msp)
+1. 下载客户端应用程序文件
+1. 设置环境变量
+1. 导入组织连接配置文件、管理员用户和 MSP
 
-完成初始设置后，可以使用客户端应用程序实现以下操作：  
+完成初始设置后，请使用客户端应用程序实现以下操作：  
 
-- [通道管理命令](#channel-management-commands)
-- [联合会管理命令](#consortium-management-commands)
-- [Chaincode 管理命令](#chaincode-management-commands)
+- 通道管理
+- 联盟管理
+- Chaincode 管理
 
 ### <a name="download-client-application-files"></a>下载客户端应用程序文件
 
@@ -168,19 +161,16 @@ curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kuberne
 cd azhlfTool
 npm install
 npm run setup
-
 ```
-这些命令将克隆公共 GitHub 存储库中的 Azure HLF 客户端应用程序代码，然后加载所有相关 npm 包。 成功执行命令后，可以在当前目录中看到 node_modules 文件夹。 所有必需的包都加载到 node_modules 文件夹中。
 
+这些命令将克隆公共 GitHub 存储库中的 Azure HLF 客户端应用程序代码，然后加载所有相关 npm 包。 成功执行命令后，可以在当前目录中看到 node_modules 文件夹。 所有必需的包都加载到 node_modules 文件夹中。
 
 ### <a name="setup-environment-variables"></a>设置环境变量
 
 > [!NOTE]
 > 所有环境变量均遵循 Azure 资源命名约定。
 
-
-**为 orderer 组织客户端设置以下环境变量**
-
+#### <a name="set-environment-variables-for-orderer-organization-client"></a>为 orderer 组织客户端设置环境变量
 
 ```bash
 ORDERER_ORG_SUBSCRIPTION=<ordererOrgSubscription>
@@ -189,7 +179,8 @@ ORDERER_ORG_NAME=<ordererOrgName>
 ORDERER_ADMIN_IDENTITY="admin.$ORDERER_ORG_NAME"
 CHANNEL_NAME=<channelName>
 ```
-**为对等组织客户端设置以下环境变量**
+
+#### <a name="set-the-environment-variables-for-peer-organization-client"></a>为对等组织客户端设置环境变量
 
 ```bash
 PEER_ORG_SUBSCRIPTION=<peerOrgSubscritpion>
@@ -202,7 +193,7 @@ CHANNEL_NAME=<channelName>
 > [!NOTE]
 > 根据你的联盟中的对等组织的数量，你可能需要重复执行对等命令并相应地设置环境变量。
 
-**设置以下环境变量来设置 Azure 存储帐户**
+#### <a name="set-the-environment-variables-for-setting-up-azure-storage-account"></a>设置用于设置 Azure 存储帐户的环境变量
 
 ```bash
 STORAGE_SUBSCRIPTION=<subscriptionId>
@@ -212,7 +203,7 @@ STORAGE_LOCATION=<azureStorageAccountLocation>
 STORAGE_FILE_SHARE=<azureFileShareName>
 ```
 
-按照以下步骤创建 Azure 存储帐户。 如果已创建 Azure 存储帐户，请跳过以下步骤
+使用以下步骤创建 Azure 存储帐户。 如果已创建 Azure 存储帐户，请跳过这些步骤。
 
 ```bash
 az account set --subscription $STORAGE_SUBSCRIPTION
@@ -220,14 +211,14 @@ az group create -l $STORAGE_LOCATION -n $STORAGE_RESOURCE_GROUP
 az storage account create -n $STORAGE_ACCOUNT -g  $STORAGE_RESOURCE_GROUP -l $STORAGE_LOCATION --sku Standard_LRS
 ```
 
-按照以下步骤在 Azure 存储帐户中创建文件共享。 如果已创建文件共享，请跳过以下步骤
+使用以下步骤在 Azure 存储帐户中创建文件共享。 如果已创建文件共享，请跳过以下步骤
 
 ```bash
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
 az storage share create  --account-name $STORAGE_ACCOUNT  --account-key $STORAGE_KEY  --name $STORAGE_FILE_SHARE
 ```
 
-按照以下步骤生成 Azure 文件共享连接字符串
+使用以下步骤生成 Azure 文件共享连接字符串。
 
 ```bash
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
@@ -256,39 +247,13 @@ AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STO
 ./azhlf msp import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
 ```
 
-### <a name="channel-management-commands"></a>通道管理命令
-
-> [!NOTE]
-> 在开始进行任何通道操作之前，请确保已完成客户端应用程序的初始设置。  
-
-下面是两个通道管理命令：
-
-1. [Create 信道命令](#create-channel-command)
-2. [设置定位点对等节点命令](#setting-anchor-peers-command)
-
-
-#### <a name="create-channel-command"></a>Create 信道命令
+### <a name="create-channel-command"></a>Create 信道命令
 
 从 orderer 组织客户端发出命令以创建新通道。 此命令将创建仅包含 orderer 组织的通道。  
 
 ```bash
 ./azhlf channel create -c $CHANNEL_NAME -u $ORDERER_ADMIN_IDENTITY -o $ORDERER_ORG_NAME
 ```
-
-#### <a name="setting-anchor-peers-command"></a>设置定位点对等节点命令
-在对等组织客户端中，发出以下命令为指定通道上的对等组织设置锚点。
-
->[!NOTE]
-> 执行此命令之前，请确保使用 "联盟管理" 命令在通道中添加对等组织。
-
-```bash
-./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY
-```
-
-`<anchorPeersList>`要设置为定位点对等节点的以空格分隔的对等节点的列表。 例如，
-
-  - `<anchorPeersList>`如果只想将 peer1 节点设置为定位点对等节点，则设置为 "peer1"。
-  - `<anchorPeersList>`如果要将 peer1 和 peer3 节点设置为锚点对等，则设置为 "peer1" "peer3"。
 
 ### <a name="consortium-management-commands"></a>联合会管理命令
 
@@ -324,6 +289,21 @@ AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STO
 
 同样，若要在通道中添加更多对等组织，请根据所需的对等组织更新对等环境变量，并执行步骤1到4。
 
+### <a name="set-anchor-peers-command"></a>设置定位点对等节点命令
+
+在对等组织客户端中，发出命令为指定通道上的对等组织设置锚点。
+
+>[!NOTE]
+> 执行此命令之前，请确保使用 "联盟管理" 命令在通道中添加对等组织。
+
+```bash
+./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY --ordererOrg $ORDERER_ORG_NAME
+```
+
+`<anchorPeersList>`要设置为定位点对等节点的以空格分隔的对等节点的列表。 例如，
+
+  - `<anchorPeersList>`如果只想将 peer1 节点设置为定位点对等节点，则设置为 "peer1"。
+  - `<anchorPeersList>`如果要将 peer1 和 peer3 节点设置为锚点对等，则设置为 "peer1" "peer3"。
 
 ### <a name="chaincode-management-commands"></a>Chaincode 管理命令
 
@@ -344,7 +324,7 @@ CC_VERSION=<chaincodeVersion>
 # Default value is 'golang'  
 CC_LANG=<chaincodeLanguage>  
 # CC_PATH contains the path where your chaincode is place.
-# If you are using chaincode_example02 to validate then CC_PATH=“/home/<username>/azhlfTool/chaincode/src/chaincode_example02/go”
+# If you are using chaincode_example02 to validate then CC_PATH=“/home/<username>/azhlfTool/samples/chaincode/src/chaincode_example02/go”
 CC_PATH=<chaincodePath>  
 # Channel on which chaincode is to be instantiated/invoked/queried  
 CHANNEL_NAME=<channelName>  

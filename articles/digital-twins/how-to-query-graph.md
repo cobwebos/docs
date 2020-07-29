@@ -7,15 +7,16 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 93043874db6076b26d0fefe447db7acd83547442
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05bcbf8df695ba308a6eaff5e7401f0a6d638747
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725578"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337596"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查询 Azure 数字孪生克隆图形
 
-本文详细介绍了如何使用[Azure 数字孪生查询存储语言](concepts-query-language.md)来查询[双子图形](concepts-twins-graph.md)以获取详细信息。 使用 Azure 数字孪生[**查询 api**](how-to-use-apis-sdks.md)在图形上运行查询。
+本文提供了有关使用[Azure 数字孪生查询存储语言](concepts-query-language.md)来查询克隆[图形](concepts-twins-graph.md)以获取信息的示例和更多详细信息。 使用 Azure 数字孪生[**查询 api**](how-to-use-apis-sdks.md)在图形上运行查询。
 
 ## <a name="query-syntax"></a>查询语法
 
@@ -40,6 +41,52 @@ AND T.roomSize > 50
 
 > [!TIP]
 > 使用元数据字段查询数字克隆的 ID `$dtId` 。
+
+### <a name="query-based-on-relationships"></a>基于关系的查询
+
+当基于数字孪生关系进行查询时，Azure 数字孪生查询存储语言具有特殊的语法。
+
+关系将被提取到子句中的查询范围内 `FROM` 。 "经典" SQL 类型语言中的一个重要区别在于，此子句中的每个表达式 `FROM` 不是一个表; 相反， `FROM` 子句表示跨实体关系遍历，并使用 Azure 数字孪生版本编写 `JOIN` 。 
+
+回忆一下，通过 Azure 数字孪生[模型](concepts-models.md)功能，关系不能独立于孪生存在。 这就意味着，Azure 数字孪生查询存储语言与 `JOIN` 一般 SQL 的不同之处 `JOIN` ，因为此处的关系不能单独查询，必须绑定到一个完全不同的位置。
+为了引入这种差异， `RELATED` 子句中使用关键字 `JOIN` 来引用克隆的一组关系。 
+
+以下部分提供了此类外观的几个示例。
+
+> [!TIP]
+> 从概念上讲，这项功能模拟了 CosmosDB 的以文档为中心的功能， `JOIN` 可以在文档中的子对象上执行。 CosmosDB 使用 `IN` 关键字指示用于 `JOIN` 循环访问当前上下文文档内的数组元素。
+
+#### <a name="relationship-based-query-examples"></a>基于关系的查询示例
+
+若要获取包含关系的数据集，请使用单个 `FROM` 语句，后跟 N `JOIN` 个语句，其中的 `JOIN` 语句表示上一个或语句的结果上的关系 `FROM` `JOIN` 。
+
+下面是一个基于关系的示例查询。 此代码段选择*ID*属性为 "ABC" 的所有数字孪生，并通过*包含*关系与这些数字孪生相关的所有数字孪生。 
+
+```sql
+SELECT T, CT
+FROM DIGITALTWINS T
+JOIN CT RELATED T.contains
+WHERE T.$dtId = 'ABC' 
+```
+
+>[!NOTE] 
+> 开发人员无需将此 `JOIN` 与子句中的键值相关联 `WHERE` （或使用定义内联指定键值 `JOIN` ）。 此关联由系统自动计算，因为关系属性本身标识目标实体。
+
+#### <a name="query-the-properties-of-a-relationship"></a>查询关系的属性
+
+类似于通过 DTDL 描述的数字孪生的方式，关系也可以具有属性。 使用 Azure 数字孪生查询存储语言，可以通过将别名分配给子句内的关系，来筛选和投影关系 `JOIN` 。 
+
+例如，假设有一个具有*reportedCondition*属性的*servicedBy*关系。 在下面的查询中，为此关系提供了一个 "R" 别名，以便引用其属性。
+
+```sql
+SELECT T, SBT, R
+FROM DIGITALTWINS T
+JOIN SBT RELATED T.servicedBy R
+WHERE T.$dtId = 'ABC' 
+AND R.reportedCondition = 'clean'
+```
+
+在上面的示例中，请注意*reportedCondition*是*servicedBy*关系本身的属性（而不是具有*servicedBy*关系的某些数字类型）。
 
 ## <a name="run-queries-with-an-api-call"></a>使用 API 调用运行查询
 
@@ -75,53 +122,7 @@ catch (RequestFailedException e)
 }
 ```
 
-## <a name="query-based-on-relationships"></a>基于关系的查询
-
-当基于数字孪生关系进行查询时，Azure 数字孪生查询存储语言具有特殊的语法。
-
-关系将被提取到子句中的查询范围内 `FROM` 。 "经典" SQL 类型语言中的一个重要区别在于，此子句中的每个表达式 `FROM` 不是一个表; 相反， `FROM` 子句表示跨实体关系遍历，并使用 Azure 数字孪生版本编写 `JOIN` 。 
-
-回忆一下，通过 Azure 数字孪生[模型](concepts-models.md)功能，关系不能独立于孪生存在。 这就意味着，Azure 数字孪生查询存储语言与 `JOIN` 一般 SQL 的不同之处 `JOIN` ，因为此处的关系不能单独查询，必须绑定到一个完全不同的位置。
-为了引入这种差异， `RELATED` 子句中使用关键字 `JOIN` 来引用克隆的一组关系。 
-
-以下部分提供了此类外观的几个示例。
-
-> [!TIP]
-> 从概念上讲，这项功能模拟了 CosmosDB 的以文档为中心的功能， `JOIN` 可以在文档中的子对象上执行。 CosmosDB 使用 `IN` 关键字指示用于 `JOIN` 循环访问当前上下文文档内的数组元素。
-
-### <a name="relationship-based-query-examples"></a>基于关系的查询示例
-
-若要获取包含关系的数据集，请使用单个 `FROM` 语句，后跟 N `JOIN` 个语句，其中的 `JOIN` 语句表示上一个或语句的结果上的关系 `FROM` `JOIN` 。
-
-下面是一个基于关系的示例查询。 此代码段选择*ID*属性为 "ABC" 的所有数字孪生，并通过*包含*关系与这些数字孪生相关的所有数字孪生。 
-
-```sql
-SELECT T, CT
-FROM DIGITALTWINS T
-JOIN CT RELATED T.contains
-WHERE T.$dtId = 'ABC' 
-```
-
->[!NOTE] 
-> 开发人员无需将此 `JOIN` 与子句中的键值相关联 `WHERE` （或使用定义内联指定键值 `JOIN` ）。 此关联由系统自动计算，因为关系属性本身标识目标实体。
-
-### <a name="query-the-properties-of-a-relationship"></a>查询关系的属性
-
-类似于通过 DTDL 描述的数字孪生的方式，关系也可以具有属性。 使用 Azure 数字孪生查询存储语言，可以通过将别名分配给子句内的关系，来筛选和投影关系 `JOIN` 。 
-
-例如，假设有一个具有*reportedCondition*属性的*servicedBy*关系。 在下面的查询中，为此关系提供了一个 "R" 别名，以便引用其属性。
-
-```sql
-SELECT T, SBT, R
-FROM DIGITALTWINS T
-JOIN SBT RELATED T.servicedBy R
-WHERE T.$dtId = 'ABC' 
-AND R.reportedCondition = 'clean'
-```
-
-在上面的示例中，请注意*reportedCondition*是*servicedBy*关系本身的属性（而不是具有*servicedBy*关系的某些数字类型）。
-
-### <a name="query-limitations"></a>查询限制
+## <a name="query-limitations"></a>查询限制
 
 在查询中反映实例的更改之前，可能会有最多10秒的延迟。 例如，如果使用 DigitalTwins API 完成了创建或删除孪生等操作，则结果可能不会立即反映在查询 API 请求中。 等待一小段时间应该足以解决问题。
 

@@ -5,12 +5,12 @@ services: automation
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 74250a54d7b835ceb37614450de07e9e3baefd83
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 1ec2aed0a2cceebe4685cf75c7007d1ce0785615
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183148"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87293097"
 ---
 # <a name="troubleshoot-update-management-issues"></a>排查“更新管理”问题
 
@@ -59,7 +59,7 @@ Error details: Failed to enable the Update solution
 
 被取代的更新未正确指示为“已拒绝”，因此无法将其视为“不适用”。
 
-### <a name="resolution"></a>解决方案
+### <a name="resolution"></a>解决方法
 
 如果被取代的更新变得 100% 不适用，则应将该更新的审批状态更改为 `Declined`。 若要更改所有更新的审批状态，请执行以下操作：
 
@@ -99,7 +99,7 @@ Error details: Failed to enable the Update solution
 
 * 可能在工作区中定义的配额已满，导致无法继续存储数据。
 
-### <a name="resolution"></a>解决方案
+### <a name="resolution"></a>解决方法
 
 1. 根据操作系统，运行适用于 [Windows](update-agent-issues.md#troubleshoot-offline) 或 [Linux](update-agent-issues-linux.md#troubleshoot-offline) 的故障排除程序。
 
@@ -144,7 +144,7 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 未在订阅中注册自动化资源提供程序。
 
-### <a name="resolution"></a>解决方案
+### <a name="resolution"></a>解决方法
 
 若要注册自动化资源提供程序，请在 Azure 门户中执行以下步骤。
 
@@ -222,7 +222,7 @@ Azure 门户预览列表中未显示动态组的所选作用域的 VM。 此列�
 * ARG 查询未检索到预期的计算机。
 * 计算机未安装混合 Runbook 辅助角色。
 
-### <a name="resolution"></a>解决方案 
+### <a name="resolution"></a>解决方法 
 
 #### <a name="incorrect-access-on-selected-scopes"></a>对所选作用域的访问权限不正确
 
@@ -341,7 +341,7 @@ The client has permission to perform action 'Microsoft.Compute/virtualMachines/w
 
 当创建的更新部署包含另一个租户中的 Azure VM 时会发生此错误。
 
-### <a name="resolution"></a>解决方案
+### <a name="resolution"></a>解决方法
 
 使用以下解决方法来安排这些项。 可以将 [New-AzAutomationSchedule](/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) cmdlet 与 `ForUpdateConfiguration` 参数一起使用来创建计划。 然后，使用 [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) cmdlet，并将另一个租户中的计算机传递给 `NonAzureComputer` 参数。 以下示例介绍如何执行此操作：
 
@@ -365,7 +365,7 @@ New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationA
 
 多个注册表项都可以修改 Windows 更新，其中任何一个都可以修改重启行为。
 
-### <a name="resolution"></a>解决方案
+### <a name="resolution"></a>解决方法
 
 查看[通过编辑注册表来配置自动更新](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)和[用于管理重启的注册表项](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)下列出的注册表项，确保计算机配置正确。
 
@@ -387,7 +387,7 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 * 计算机已关闭且无法访问。
 * 计算机存在网络连接问题，因此无法访问计算机上的混合辅助角色。
 * 某个 MMA 更新更改了源计算机的 ID。
-* 如果自动化帐户中达到了 2000 个并发作业的限制，则更新运行会受到限制。 每个部署均视为一项作业，更新部署中的每台计算机均计为一个作业。 自动化帐户中当前运行的其他任何自动化作业或更新部署均计入并发作业，受其数量限制的约束。
+* 如果在自动化帐户中达到了200并发作业的限制，则会限制更新运行。 每个部署均视为一项作业，更新部署中的每台计算机均计为一个作业。 自动化帐户中当前运行的其他任何自动化作业或更新部署均计入并发作业，受其数量限制的约束。
 
 ### <a name="resolution"></a>解决方法
 
@@ -415,7 +415,7 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 
 在 Windows 上，更新一旦可用就会自动安装。 如果未计划将更新部署到计算机，则此行为可能会导致混淆。
 
-### <a name="resolution"></a>解决方案
+### <a name="resolution"></a>解决方法
 
 `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` 注册表项默认设置为 4：`auto download and install`。
 
@@ -468,7 +468,7 @@ Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
 
 可能是因为代理、网关或防火墙阻止了网络通信。 
 
-### <a name="resolution"></a>解决方案
+### <a name="resolution"></a>解决方法
 
 检查网络并确保允许适当的端口和地址。 有关更新管理和混合 Runbook 辅助角色所需的端口和地址列表，请参阅[网络要求](../automation-hybrid-runbook-worker.md#network-planning)。
 
@@ -486,7 +486,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 混合 Runbook 辅助角色无法生成自签名证书。
 
-### <a name="resolution"></a>解决方案
+### <a name="resolution"></a>解决方法
 
 请验证系统帐户是否具有对文件夹 C:\ProgramData\Microsoft\Crypto\RSA 的读取权限，然后重试。
 
@@ -496,7 +496,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 更新的默认维护时段为 120 分钟。 最多可将维护时段增至 6 小时，即 360 分钟。
 
-### <a name="resolution"></a>解决方案
+### <a name="resolution"></a>解决方法
 
 编辑任何失败的计划更新部署，并增加维护时段。
 
@@ -513,7 +513,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 未正确配置更新代理（Windows 上的 Windows 更新代理；Linux 分发的包管理器）。 更新管理依赖于计算机的更新代理来提供所需的更新、修补程序的状态，以及所部署的修补程序的结果。 如果没有该信息，则更新管理无法正确报告所需的或已安装的修补程序。
 
-### <a name="resolution"></a>解决方案
+### <a name="resolution"></a>解决方法
 
 尝试在计算机上本地执行更新。 如果此操作失败，则通常表示存在更新代理配置错误。
 

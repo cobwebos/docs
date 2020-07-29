@@ -8,22 +8,19 @@ ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 39df24380917c51f3b492bb62c98024d3d090458
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 40a907cdeb4934b4518fb6b1923d69a004f14d8d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080652"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291469"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-android-client"></a>通过 Android 客户端连接到 Windows 虚拟桌面
 
 > 适用于： Android 4.1 及更高版本、Chromebook 和 ChromeOS 53 及更高版本。
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面 2019 秋季版，请参阅[此文](./virtual-desktop-fall-2019/connect-android-2019.md)。
->
-> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>此内容适用于 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果使用的是没有 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/connect-android-2019.md)。
 
 >[!NOTE]
 > 当前在预览版中提供了从 Android 客户端访问 Windows 虚拟桌面资源的功能。

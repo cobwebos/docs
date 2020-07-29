@@ -3,15 +3,15 @@ title: 灾难恢复方案
 description: 了解发生影响 Azure 虚拟机的 Azure 服务中断事件时该怎么办。
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/31/2017
 ms.author: cynthn
-ms.openlocfilehash: 6481bfe265786ca8b79f96bbcac7fe4d58076911
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 43e7cb0906fc6008e8bdbfafec84ecfd8e8be6b6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525817"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289683"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>如果 Azure 服务中断影响了 Azure VM，该怎么办
 Microsoft 的同仁兢兢业业，只为确保在任何时候都能提供需要的服务。 但有时候会因为不可抗力的影响，造成服务意外中断。

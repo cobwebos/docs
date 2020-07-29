@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 98951dc29b7c8504cbf1654a810ebba933fef3a1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 74a20e46858aada48151809c5bedf1f93076827e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495374"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289959"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure 时序见解 Gen2 中的时序模型
 
@@ -24,9 +24,9 @@ ms.locfileid: "86495374"
 > [!TIP]
 >
 > * 有关实时时序模型的示例，请转到  [Contoso 风力发电厂演示](https://insights.timeseries.azure.com/preview/samples)环境。
-> * 了解如何使用 Azure 时序见解 Gen2 资源管理器[处理时序模型](time-series-insights-update-how-to-tsm.md)。
+> * 了解如何使用 Azure 时序见解 Gen2 资源管理器[处理时序模型](/azure/time-series-insights/how-to-edit-your-model)。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 一直以来，从 IoT 设备收集的数据缺少上下文信息，以致难以快速查找和分析传感器。 时序模型的主要动机是简化 IoT 或时序数据的查找和分析。 为了实现此目标，它会启用时序数据的策划、维护和扩充，以帮助准备随时可供使用的分析数据集。
 
@@ -75,7 +75,7 @@ ms.locfileid: "86495374"
 
 [![时序模型概述图表](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-可以通过[Azure 时序见解 Gen2 资源管理器](time-series-insights-update-how-to-tsm.md)创建和管理时序模型。 可以通过[模型设置 API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api) 来管理时序模型设置。
+可以通过[Azure 时序见解 Gen2 资源管理器](/azure/time-series-insights/concepts-model-overview)创建和管理时序模型。 可以通过[模型设置 API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api) 来管理时序模型设置。
 
 ## <a name="time-series-model-instances"></a>时序模型实例
 
@@ -97,7 +97,7 @@ ms.locfileid: "86495374"
 
 实例由 **timeSeriesId**、**typeId**、**name**、**description**、**hierarchyIds** 和 **instanceFields** 定义。 每个实例仅映射到一个*类型*和一个或多个*层次结构*。
 
-| properties | 说明 |
+| 属性 | 说明 |
 | --- | ---|
 | timeSeriesId | 与实例关联的时序的唯一 ID。 在大多数情况下，实例由诸如 deviceId 或 assetId 的属性唯一标识。 在某些情况下，可以使用更具体的组合 ID，最多可使用3个属性。 |
 | typeId | 与实例相关联的时序模型类型的区分大小写的唯一字符串 ID。 默认情况下，所有已发现的新实例都会关联到默认类型。
@@ -145,11 +145,11 @@ ms.locfileid: "86495374"
 
 层次结构由层次结构**id**、**名称**和**源**定义。
 
-| properties | 说明 |
+| 属性 | 说明 |
 | ---| ---|
 | id | 层次结构的唯一标识符，例如，在定义实例时使用。 |
 | name | 用于提供层次结构名称的字符串。 |
-| source | 指定组织的层次结构或路径，即，用户想要创建的层次结构的自上而下的父子顺序。 父子属性映射实例字段。 |
+| target | 指定组织的层次结构或路径，即，用户想要创建的层次结构的自上而下的父子顺序。 父子属性映射实例字段。 |
 
 层次结构的 JSON 表示形式如下：
 
@@ -237,7 +237,7 @@ ms.locfileid: "86495374"
 
 时序模型类型由 **id**、**name**、**description** 和 **variables** 定义。
 
-| properties | 说明 |
+| 属性 | 说明 |
 | ---| ---|
 | id | 类型的区分大小写的唯一字符串 ID。 |
 | name | 用于提供类型名称的字符串。 |
@@ -283,12 +283,13 @@ ms.locfileid: "86495374"
   ]
 }
 ```
+
 时序模型类型可以有多个变量，用于指定事件的公式和计算规则。 阅读有关[如何定义时序模型变量的](./concepts-variables.md)详细信息
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关如何通过 Api 编辑模型的详细信息，请参阅[时序模型](https://docs.microsoft.com/rest/api/time-series-insights/preview-model)参考文档。
+* 有关如何通过 Api 编辑模型的详细信息，请参阅[时序模型](https://docs.microsoft.com/rest/api/time-series-insights/preview-model)参考文档。
 
-- 探索可以用[时序模型变量](./concepts-variables.md)创建的公式和计算
+* 探索可以用[时序模型变量](./concepts-variables.md)创建的公式和计算
 
-- 了解如何在 Azure 时序见解 Gen2 中[查询数据](concepts-query-overview.md)
+* 了解如何在 Azure 时序见解 Gen2 中[查询数据](concepts-query-overview.md)

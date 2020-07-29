@@ -3,16 +3,18 @@ title: Azure Service Fabric 中支持的群集版本
 description: 了解 Azure Service Fabric 中的群集版本，包括指向 Service Fabric 团队博客中最新版本的链接。
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 211197ced52ca094d375d3ae212957fa25a523fc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d849b4471bf11183dc02735c7373f858f0c773be
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091634"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289322"
 ---
 # <a name="supported-service-fabric-versions"></a>支持的 Service Fabric 版本
 
 请确保群集始终运行受支持的 Azure Service Fabric 版本。 在公告新版 Service Fabric 的发布日期以后，至少还要过 60 天我们才会结束对旧版本的支持。 可以在 [Service Fabric 团队博客](https://azure.microsoft.com/updates/?product=service-fabric)中找到有关新版本的公告。
+
+对于给定版本的 Service Fabric 运行时，可以使用指定的或更早版本的 SDK/NuGet 包。 较新版本的包不受支持，并且可能会对较旧的群集产生问题，因为它们可能具有这些环境不支持的功能或协议更改。
 
 若要详细了解如何使群集始终运行受支持的 Service Fabric 版本，请参阅以下文档：
 

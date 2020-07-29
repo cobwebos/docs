@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 07/24/2020
 ms.author: jgao
-ms.openlocfilehash: fcdcf563cd88cbf6604877636432a406c1960cff
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 4094e610bb290fc11656dc192f3d0a495f679dc5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117051"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291807"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在模板中使用部署脚本（预览版）
 
@@ -556,48 +556,7 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 ## <a name="configure-development-environment"></a>配置开发环境
 
-可以使用预配置的 docker 容器映像作为部署脚本开发环境。 若要安装 Docker，请参阅[获取 docker](https://docs.docker.com/get-docker/)。
-还需要将文件共享配置为将包含部署脚本的目录装载到 Docker 容器中。
-
-1. 将部署脚本容器映像拉取到本地计算机：
-
-    ```command
-    docker pull mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
-    ```
-
-    此示例使用 PowerShell 2.7.0 版本。
-
-    从 Microsoft 容器注册表 (MCR) 拉取 CLI 映像：
-
-    ```command
-    docker pull mcr.microsoft.com/azure-cli:2.0.80
-    ```
-
-    此示例使用 CLI 2.0.80 版本。 部署脚本使用[此处](https://hub.docker.com/_/microsoft-azure-cli)的默认 CLI 容器映像。
-
-1. 在本地运行 Docker 映像。
-
-    ```command
-    docker run -v <host drive letter>:/<host directory name>:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
-    ```
-
-    将“&lt;主机驱动器号>”和“&lt;主机目录名>”替换为共享驱动器上的现有文件夹**** ****。  它将文件夹映射到容器中的/data 文件夹****。 例如，要映射 D:\docker：
-
-    ```command
-    docker run -v d:/docker:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
-    ```
-
-    **-it** 意味着使容器映像保持活动状态。
-
-    CLI 示例：
-
-    ```command
-    docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
-    ```
-
-1. 以下屏幕截图显示了如何运行 PowerShell 脚本，假设共享驱动器中有 helloworld.ps1 文件。
-
-    ![资源管理器模板部署脚本 docker cmd](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
+你可以使用预配置的容器映像作为部署脚本开发环境。 有关详细信息，请参阅为[模板中的部署脚本配置开发环境](./deployment-script-template-configure-dev.md)。
 
 脚本成功测试后，可以将其作为模板中的部署脚本使用。
 
@@ -621,7 +580,7 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 | DeploymentScriptInvalidOutputs | 部署脚本输出不是有效的 JSON 对象。 |
 | DeploymentScriptContainerInstancesServiceLoginFailure | 用户分配的托管标识在10次尝试后无法登录，间隔为1分钟。 |
 | DeploymentScriptContainerGroupNotFound | 由部署脚本服务创建的容器组已由外部工具或进程删除。 |
-| DeploymentScriptDownloadFailure | 下载支持脚本失败。 请参阅[使用支持脚本](#use-supporting-scripts)。|
+| DeploymentScriptDownloadFailure | 未能下载支持脚本。 请参阅[使用支持脚本](#use-supporting-scripts)。|
 | DeploymentScriptError | 用户脚本出现错误。 |
 | DeploymentScriptBootstrapScriptExecutionFailed | 启动脚本出现错误。 启动脚本是协调部署脚本执行的系统脚本。 |
 | DeploymentScriptExecutionFailed | 执行部署脚本时出现未知错误。 |

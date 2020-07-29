@@ -4,19 +4,19 @@ description: 将针对到 Web 应用的失败请求速率的异常变化向用�
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 27cf38a1cfcf8a9f87582ab3e78b48e78f3c63c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 30bb95c4c47c02fe6b3d31d6e6763656aa96fdec
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045807"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315931"
 ---
 # <a name="smart-detection---failure-anomalies"></a>智能检测 - 失败异常
-如果 Web 应用的失败请求速率出现异常上升，那么 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 会近乎实时地自动通知你。 它会对 HTTP 请求速率或报告为失败的依赖项调用的异常上升进行检测。 对于请求而言，失败的请求通常是响应代码为 400 或更高的请求。 为了帮助会审和诊断问题，通知详情中会提供失败及相关应用程序数据的特征分析。 还提供指向 Application Insights 门户的链接，以供进一步诊断。 该功能不需要任何设置或配置，因为它使用机器学习算法来预测正常的失败率。
+如果 Web 应用的失败请求速率出现异常上升，那么 [Application Insights](./app-insights-overview.md) 会近乎实时地自动通知你。 它会对 HTTP 请求速率或报告为失败的依赖项调用的异常上升进行检测。 对于请求而言，失败的请求通常是响应代码为 400 或更高的请求。 为了帮助会审和诊断问题，通知详情中会提供失败及相关应用程序数据的特征分析。 还提供指向 Application Insights 门户的链接，以供进一步诊断。 该功能不需要任何设置或配置，因为它使用机器学习算法来预测正常的失败率。
 
-此功能适用于在云或你自己的服务器上托管的任何 Web 应用，以及生成应用程序请求或依赖项数据的任何 web 应用。 例如，如果你的辅助角色调用 [TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) 或 [TrackDependency()](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)。
+此功能适用于在云或你自己的服务器上托管的任何 Web 应用，以及生成应用程序请求或依赖项数据的任何 web 应用。 例如，如果你的辅助角色调用 [TrackRequest()](./api-custom-events-metrics.md#trackrequest) 或 [TrackDependency()](./api-custom-events-metrics.md#trackdependency)。
 
-在设置[适用于项目的 Application Insights](../../azure-monitor/app/app-insights-overview.md) 后，如果应用生成特定最低数据量，在进行切换和发送警报前，智能检测失败异常将花费 24 小时来了解应用的正常行为。
+在设置[适用于项目的 Application Insights](./app-insights-overview.md) 后，如果应用生成特定最低数据量，在进行切换和发送警报前，智能检测失败异常将花费 24 小时来了解应用的正常行为。
 
 下面是一个示例警报：
 
@@ -31,10 +31,10 @@ ms.locfileid: "87045807"
 * 直接指向 Application Insights 中数据的相关搜索的链接。
 
 ## <a name="benefits-of-smart-detection"></a>智能检测的优点
-普通[指标警报](../../azure-monitor/platform/alerts-log.md)会通知你可能存在问题。 但是，智能检测将开始诊断工作，并执行以往都需要你自行完成的大量分析。 结果将整齐地打包，以帮助你快速找到问题的根源。
+普通[指标警报](../platform/alerts-log.md)会通知你可能存在问题。 但是，智能检测将开始诊断工作，并执行以往都需要你自行完成的大量分析。 结果将整齐地打包，以帮助你快速找到问题的根源。
 
 ## <a name="how-it-works"></a>工作原理
-智能检测可监视从应用收到的数据，特别是失败率。 此规则计算 `Successful request` 属性为 False 的请求数，和 `Successful call` 属性为 False 的依赖项调用数。 对于请求而言，默认情况下，`Successful request == (resultCode < 400)`（除非已将自定义代码写入[筛选器](../../azure-monitor/app/api-filtering-sampling.md#filtering)或生成自己的 [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) 调用）。 
+智能检测可监视从应用收到的数据，特别是失败率。 此规则计算 `Successful request` 属性为 False 的请求数，和 `Successful call` 属性为 False 的依赖项调用数。 对于请求而言，默认情况下，`Successful request == (resultCode < 400)`（除非已将自定义代码写入[筛选器](./api-filtering-sampling.md#filtering)或生成自己的 [TrackRequest](./api-custom-events-metrics.md#trackrequest) 调用）。 
 
 应用性能具有典型的行为模式。 某些请求或依赖项调用更容易出现失败，而且总体失败率可能会随着负载的增加而上升。 智能检测使用机器学习来查找这些异常。
 
@@ -48,7 +48,7 @@ ms.locfileid: "87045807"
 
 生成的分析以警报形式发送给用户，除非已将它配置为不这样做。
 
-与[手动设置的警报](../../azure-monitor/platform/alerts-log.md)一样，你可以检查触发警报的状态（如果问题已修复，则可以解决此问题）。 在 Application Insights 资源的“警报”页配置警报规则。 但与其他警报不同，无需设置或配置智能检测。 如果需要，可以禁用它或更改其目标电子邮件地址。
+与[手动设置的警报](../platform/alerts-log.md)一样，你可以检查触发警报的状态（如果问题已修复，则可以解决此问题）。 在 Application Insights 资源的“警报”页配置警报规则。 但与其他警报不同，无需设置或配置智能检测。 如果需要，可以禁用它或更改其目标电子邮件地址。
 
 ### <a name="alert-logic-details"></a>警报逻辑详细信息
 
@@ -292,7 +292,7 @@ ms.locfileid: "87045807"
 
 警报指示已检测到失败请求中有异常上升。 应用或其环境很可能存在某些问题。
 
-若要进一步调查，单击该页面的“查看 Application Insights 中的完整详细信息”链接可直接转到[搜索页](../../azure-monitor/app/diagnostic-search.md)，该页面已针对相关请求、异常、依赖项或跟踪进行筛选。 
+若要进一步调查，单击该页面的“查看 Application Insights 中的完整详细信息”链接可直接转到[搜索页](./diagnostic-search.md)，该页面已针对相关请求、异常、依赖项或跟踪进行筛选。 
 
 你还可以打开 [Azure 门户](https://portal.azure.com)，导航到应用的 Application Insights 资源并打开“失败”页。
 
@@ -317,7 +317,7 @@ ms.locfileid: "87045807"
 ## <a name="whats-the-difference-"></a>区别是什么...
 智能检测失败异常对其他类似但又不同的 Application Insight 功能进行补充。
 
-* [指标警报](../../azure-monitor/platform/alerts-log.md)由你设置，并且可监视各种指标，如 CPU 占用率、请求速率、页面加载时间等。 可以将它们用于发出警告，例如在需要添加更多资源时。 相比之下，智能检测失败异常涵盖小范围的关键指标（当前仅失败请求速率），设计成一旦 Web 应用的失败请求速率相较于 Web 应用的正常行为而言增加，便会以近乎实时的方式通知你。 与指标警报不同，智能检测会自动设置和更新行为中响应更改的阈值。 智能检测还会启动诊断工作，从而为你节省解决问题的时间。
+* [指标警报](../platform/alerts-log.md)由您设置，可以监视各种指标，例如 CPU 占用量、请求速率、页面加载时间等等。 可以将它们用于发出警告，例如在需要添加更多资源时。 相比之下，智能检测失败异常涵盖小范围的关键指标（当前仅失败请求速率），设计成一旦 Web 应用的失败请求速率相较于 Web 应用的正常行为而言增加，便会以近乎实时的方式通知你。 与指标警报不同，智能检测会自动设置和更新行为中响应更改的阈值。 智能检测还会启动诊断工作，从而为你节省解决问题的时间。
 
 * [智能检测性能异常](proactive-performance-diagnostics.md)还使用计算机智能发现指标中的异常模式，使得你无需执行任何配置。 但与智能检测失败异常不同，智能检测性能异常的目的是查找可能不能提供很好服务的使用情况复写体分段，例如通过特定类型浏览器上的特定页面。 将每日执行分析，如果找到任何结果，则很可能紧急程度远低于警报。 相比之下，会对传入的应用程序数据连续执行失败异常分析，如果服务器失败率超出预期值，会在几分钟内通知你。
 
@@ -332,7 +332,7 @@ ms.locfileid: "87045807"
 
 *那么，你是否正在查看我的应用程序数据？*
 
-* 不是。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](../../azure-monitor/app/data-retention-privacy.md)数据。
+* 不是。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](./data-retention-privacy.md)数据。
 
 *是否需要订阅此警报？*
 
@@ -353,11 +353,12 @@ ms.locfileid: "87045807"
 ## <a name="next-steps"></a>后续步骤
 这些诊断工具可帮助检查应用中的数据：
 
-* [指标资源管理器](../../azure-monitor/platform/metrics-charts.md)
-* [搜索资源管理器](../../azure-monitor/app/diagnostic-search.md)
-* [分析 - 功能强大的查询语言](../../azure-monitor/log-query/get-started-portal.md)
+* [指标资源管理器](../platform/metrics-charts.md)
+* [搜索资源管理器](./diagnostic-search.md)
+* [分析 - 功能强大的查询语言](../log-query/get-started-portal.md)
 
 智能检测是自动执行的。 但是或许你想要设置更多的警报？
 
-* [手动配置的指标警报](../../azure-monitor/platform/alerts-log.md)
-* [可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)
+* [手动配置的指标警报](../platform/alerts-log.md)
+* [可用性 Web 测试](./monitor-web-app-availability.md)
+
